@@ -1,0 +1,6 @@
+[submodule "human-in-loop"]
+	path = human-in-loop
+	url = https://github.com/deepeshBodh/human-in-loop.git
+[submodule "agent-skills-research"]
+	path = agent-skills-research
+	url = https://github.com/humaninloop-dev/agent-skills-research.git
