@@ -21,6 +21,8 @@
   "agents": [
     "./agents/principal-architect.md",
     "./agents/transform-producer.md",
-    "./agents/validator.md"
+    "./agents/validator.md",
+    "./agents/requirements-analyst.md",
+    "./agents/devils-advocate.md"
   ]
 }

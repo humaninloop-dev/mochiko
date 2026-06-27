@@ -62,6 +62,9 @@ These are inspectable: a workflow's filled-in contract shows whether its validat
 | Build approach | Workflow-first, one at a time | Confident | Each workflow teaches what the conventions actually need (unchanged from v1) |
 | Build order | `setup` first, then `specify` | Confident | Setup establishes the constitution (standards root); specify proves the adversarial pair (unchanged from v1) |
 | Migration tracking | Explicit registry with ported / not-yet status | Confident | Nothing falls through the gap (unchanged from v1) |
+| Human-gate placement | On gated dispositions + escalations, plus a named acceptance gate on the deliverable | Confident | Resolves OQ#1; ran cleanly across `setup` + `specify` — routine PASSes run unattended, gated dispositions/escalations stop. (2026-06-27) |
+| Memory model | In-session + workspace-as-state under `.mochiko/` (no separate context-handoff file) | Confident | Resolves OQ#3; `setup` + `specify` both dissolve the HIL context carrier into the lead; state recovery reads workspace evidence, not a context `phase` field. (2026-06-27) |
+| Gap Classification (FAIL-routing) | Folded into `loop-discipline` (knowledge→research / preference→human gate / scope→halt) | Confident | Universal FAIL-routing a real workflow (`specify`) needed now; hosting it per-workflow would re-author the doctrine; keystone-tested workflow-agnostic. (2026-06-27) |
 
 ---
 
@@ -110,6 +113,15 @@ Four structural axes carry over from the synthesis; the fifth is promoted from h
 - **Chosen:** decoupling is proven by the *absence* of coupling. A persona carries only craft + the skills it leans on, names no sibling/dispatch/workflow vocab, and **degrades gracefully** (competent with a thin brief or an ill-fitting skill; asks for what it needs rather than inventing it). The caller (`agent-dispatch.md`) holds workflow knowledge; independence is structural (different agent + disjoint skills), not a persona trait. Skills get the same treatment (no agent names; independence stated by *role*) but stay self-sufficient since they run agent-less. The keystone test governs every line; the deny-list is grep-checkable and enforced through `assess-primitive` → `transform-recipes` → `verify-output`.
 - **Full record:** [`AGENT-DECOUPLING-SYNTHESIS.md`](AGENT-DECOUPLING-SYNTHESIS.md).
 
+### `specify` confirms the empirical calls + folds Gap Classification (2026-06-27)
+
+- **Ported `specify`** as the second workflow (`/mochiko:transform-cluster specify`) — rebuilt kernel-free as a 2-member adversarial team (analyst ↔ advocate) with the command as lead/referee; the HIL `state-analyst` + both strategy skills + the context carrier dissolved onto that lead via one rehome map. All 14 primitives PASSed independent verification in a single round. Full run record: `.mochiko/transform/specify/` (`report.md`, `reconcile.md`, per-primitive assessments).
+- **The inverse of `setup`:** specify already shipped an independent producer↔validator pair (analyst ↔ advocate, disjoint skills), so **no new primitive was constructed**. The work was re-landing the dissolving DAG orchestration onto the lead and ADDING the four `loop-discipline` gates HIL lacked (default-FAIL done-condition, lead-owned verdict, hard bound + kill-switch, and the NEW human acceptance gate).
+- **Human-gate placement (OQ#1) → confirmed.** *Gated dispositions + escalations* + a named acceptance gate on the deliverable worked for both ports. Promoted to Key Decisions.
+- **Memory model (OQ#3) → confirmed.** In-session + workspace-as-state under `.mochiko/`; context-handoff absorbed into the lead. specify's `context-template` absorb is a *stronger* confirmation than setup's twin (no drift; more state, still dissolves). Promoted to Key Decisions.
+- **Decoupling doctrine → held empirically.** The decoupling-by-absence rules survived untouched: agent/skill bodies were clean by absence, coupling lived in the dissolving orchestration, and the only genuine deny-list hit was the canonical grep-catchable `analysis-specifications` "Devil's Advocate" case (decoupled to role). `verify-output`'s scan + the keystone test caught every case; **no deny-list refinement was needed** — the doctrine is proven.
+- **Gap Classification folded into `loop-discipline`.** strategy-core's FAIL-routing taxonomy is universal (it lived in the cross-workflow skill), specify needed it now, and hosting it per-workflow would re-author the doctrine — so it was added to the shared skill (human-gate-accepted), keystone-tested to stay workflow-agnostic. The run's one edit to a foundational shared primitive.
+
 ---
 
 ## Open Questions (live)
@@ -118,9 +130,9 @@ Resolved this rewrite and removed: prose-vs-gate global allocation (→ deferred
 
 Still genuinely open:
 
-1. **Human-gate placement per workflow** — every cycle / low validator-confidence only / preference-gaps only? Resolve empirically in `setup` then `specify`.
+1. **Human-gate placement per workflow** — ~~every cycle / low validator-confidence only / preference-gaps only?~~ **RESOLVED (2026-06-27, setup + specify):** *on gated dispositions + escalations*, plus a named human acceptance gate on the deliverable. Promoted to Key Decisions.
 2. **Claude-Code portability** — `rfc2119-invocation-trigger` and the `disable-model-invocation` flag are CC-specific. Adopt-and-bind, or abstract? Surfaces when the router skill is built.
-3. **Memory model** — how does `stateful-workspace-as-memory` relate to the spec/plan/task artifact layout? Is reading-the-workspace-first mandatory? Resolve when `setup` is built.
+3. **Memory model** — ~~how does `stateful-workspace-as-memory` relate to the spec/plan/task artifact layout?~~ **RESOLVED (2026-06-27, setup + specify):** in-session + workspace-as-state under `.mochiko/` (`.mochiko/memory/` durable governance; `.mochiko/specs/<feature>/` per-feature loop state); state recovery reads workspace evidence, not a context `phase` field; the HIL context-handoff template is absorbed into the lead. Promoted to Key Decisions.
 4. **Intensity modes** — global `lite/full/ultra/off` dial vs per-rule? Defer until two workflows exist and the pattern is clear.
 5. **`implement` orchestration + the deferred kernel** — do native Workflow `pipeline()` calls suffice for parallel TDD slices, or does `implement` re-open the kernel/hook question? The one place the deferred code-decision is most likely to come due.
 

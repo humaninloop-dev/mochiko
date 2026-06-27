@@ -32,7 +32,7 @@ The transformer cluster — the dogfooded implementation of [`PLAYBOOK.md`](PLAY
 | Status | Name | v3 Notes |
 |--------|------|----------|
 | `[x]` | `setup` | Ported 2026-06-27 — redesigned into a sound loop (default-FAIL done-condition, independent `validator`, escalate-on-cap, NEW constitution-acceptance human gate). Core-only scope. |
-| `[ ]` | `specify` | **Second** — rebuild as adversarial 2-member agent team |
+| `[x]` | `specify` | Ported 2026-06-27 — adversarial 2-member team (analyst↔advocate), kernel-free; default-FAIL loop + NEW human acceptance gate; `state-analyst` dissolved into the lead; strategy skills deduped into `loop-discipline`. Core-only scope. |
 | `[ ]` | `plan` | TBD |
 | `[ ]` | `tasks` | TBD |
 | `[ ]` | `implement` | TBD — needs most thought on parallel TDD slice orchestration |
@@ -47,14 +47,14 @@ The transformer cluster — the dogfooded implementation of [`PLAYBOOK.md`](PLAY
 |--------|------|-------------------|
 | `[x]` | `principal-architect` | `setup` — producer-only (skills: authoring-constitution, analysis-codebase); grading split to the generic `validator` |
 | `[x]` | `validator` | mochiko-native generic grader (see top table) — one independent grader serves `setup` (validation-constitution) + transform (verify-output); replaces the setup-specific `constitution-validator` born from the principal-architect split |
-| `[ ]` | `devils-advocate` | `specify` (adversarial critic) |
-| `[ ]` | `requirements-analyst` | `specify` (producer) |
+| `[x]` | `devils-advocate` | `specify` — adversarial critic/validator (skill: `analysis-specifications`; `validation-plan-artifacts` + `validation-task-artifacts` deferred → re-mount when plan/tasks port) |
+| `[x]` | `requirements-analyst` | `specify` — producer (skills: `authoring-requirements`, `authoring-user-stories`) |
 | `[ ]` | `technical-analyst` | `plan` |
 | `[ ]` | `task-architect` | `tasks` |
 | `[ ]` | `staff-engineer` | `implement` |
 | `[ ]` | `qa-engineer` | `implement`, `audit` |
-| `[ ]` | `state-analyst` | `specify`, `plan`, `tasks`, `implement` — orchestration coordinator |
-| `[ ]` | `ui-designer` | `specify`, `plan` — design-track |
+| `[-]` | `state-analyst` | **Dissolved (kernel-free)** — specify slice absorbed into the `specify` command lead; non-kernel judgment deduped into `loop-discipline`; no standalone agent. plan/tasks/implement orchestration handled when those clusters port. |
+| `[ ]` | `ui-designer` | `specify`, `plan` — design-track; **deferred** from specify-core (catalog never invokes it) |
 
 ---
 
@@ -63,9 +63,9 @@ The transformer cluster — the dogfooded implementation of [`PLAYBOOK.md`](PLAY
 ### Meta / foundational
 | Status | Name | Notes |
 |--------|------|-------|
-| `[ ]` | `strategy-core` | Universal workflow patterns; consumed by state-analyst |
-| `[ ]` | `strategy-specification` | Spec-pass strategy |
-| `[ ]` | `strategy-implementation` | Impl-pass strategy |
+| `[-]` | `strategy-core` | **Dissolved** — near-total dedupe into `loop-discipline` (specify run); **Gap Classification** taxonomy folded into `loop-discipline` |
+| `[-]` | `strategy-specification` | **Dissolved** — dedupe into `loop-discipline`; survivors (Input Assessment, targeted-revision, spec done-condition) → specify lead |
+| `[ ]` | `strategy-implementation` | Impl-pass strategy — expect the same dissolution into `loop-discipline` when `implement` ports |
 | `[ ]` | `syncing-claude-md` | Cross-cutting — referenced by `setup` as a documented stub (not yet ported); port with its own cluster |
 | `[ ]` | `using-git-worktrees` | Cross-cutting utility |
 | `[ ]` | `using-github-issues` | Cross-cutting utility |
@@ -82,16 +82,16 @@ The transformer cluster — the dogfooded implementation of [`PLAYBOOK.md`](PLAY
 ### Specify workflow cluster
 | Status | Name | Notes |
 |--------|------|-------|
-| `[ ]` | `analysis-specifications` | Feeds specify — gap analysis |
-| `[ ]` | `analysis-iterative` | Brainstorm / enrichment input |
-| `[ ]` | `strategy-specification` | (also listed above) |
+| `[x]` | `analysis-specifications` | Ported — the advocate's gap-analysis procedure (stays a gap-finder; verdict owned by the lead) |
+| `[x]` | `analysis-iterative` | Ported — enrichment + general brainstorm (dual-mode kept; marked general/shared in router) |
+| `[-]` | `strategy-specification` | Dissolved (see Meta/foundational section) |
 
 ### Plan / technical design cluster
 | Status | Name | Notes |
 |--------|------|-------|
-| `[ ]` | `authoring-requirements` | Requirements authoring |
+| `[x]` | `authoring-requirements` | Ported **via specify** (re-filed plan→specify) — analyst's FR-XXX / SC-XXX authoring |
 | `[ ]` | `authoring-technical-requirements` | Tech requirements |
-| `[ ]` | `authoring-user-stories` | User stories |
+| `[x]` | `authoring-user-stories` | Ported **via specify** (re-filed plan→specify) — analyst's P1/P2/P3 + Given/When/Then |
 | `[ ]` | `authoring-roadmap` | Roadmap authoring |
 | `[ ]` | `patterns-api-contracts` | API design patterns |
 | `[ ]` | `patterns-entity-modeling` | Data model patterns |
@@ -124,10 +124,10 @@ The transformer cluster — the dogfooded implementation of [`PLAYBOOK.md`](PLAY
 | `[-]` | `constitution-context-template.md` | `setup` — **absorbed into the setup lead** (in-session + `.mochiko/memory/` state); not a standalone artifact |
 | `[x]` | `codebase-analysis-template.md` | `setup` — ported verbatim |
 | `[ ]` | `codebase-inventory-schema.json` | **Deferred to spec/plan cluster** — orphan in setup (no consumer after mode-scoping) |
-| `[ ]` | `spec-template.md` | `specify` |
-| `[ ]` | `analyst-report-template.md` | `specify` |
-| `[ ]` | `advocate-report-template.md` | `specify` |
-| `[ ]` | `context-template.md` | `specify`, `plan`, `tasks`, `implement` |
+| `[x]` | `spec-template.md` | `specify` — ported (8 body slots verbatim; header rebound to workspace-as-state) |
+| `[x]` | `analyst-report-template.md` | `specify` — ported (iteration→round; counts demoted; DAG trajectory dropped) |
+| `[x]` | `advocate-report-template.md` | `specify` — ported (keep-verbatim; carries the 3-state verdict, the loop driver) |
+| `[-]` | `context-template.md` | **Absorbed into the lead** (in-session + `.mochiko/specs/<feature>/` workspace-as-state); peers inherit — not a standalone artifact |
 | `[ ]` | `plan-template.md` | `plan` |
 | `[ ]` | `plan-context-template.md` | `plan` |
 | `[ ]` | `tasks-template.md` | `tasks` |
