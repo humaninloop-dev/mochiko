@@ -6,6 +6,27 @@ Track every primitive from `human-in-loop` — check off as it lands in mochiko.
 
 ---
 
+## Mochiko-native primitives (net-new, not HIL ports)
+
+The transformer cluster — the dogfooded implementation of [`PLAYBOOK.md`](PLAYBOOK.md). It is the tool that ports everything below it. Built before any HIL primitive is ported; proven by running it on the `setup` cluster.
+
+| Status | Name | Type | Notes |
+|--------|------|------|-------|
+| `[x]` | `loop-discipline` | skill | Doctrine: the four sound-loop rules |
+| `[x]` | `workflow-contract` | template | Fill-in loop contract (default FAIL) |
+| `[x]` | `assess-primitive` | skill | Branch-by-class + 7-check lens + responsibility trace |
+| `[x]` | `reconcile-cluster` | skill | Relational verdicts + rehome-orchestration |
+| `[x]` | `transform-recipes` | skill | Per-disposition recipes + convention-wiring pass |
+| `[x]` | `verify-output` | skill | Done-condition checker (independent gate) |
+| `[x]` | `mochiko` | skill | User-invoked router / library index |
+| `[x]` | `transform-producer` | agent | Assess / reconcile / apply |
+| `[x]` | `transform-validator` | agent | Independent grading (verify-output) |
+| `[x]` | `transform-cluster` | command | Supervisor / lead-referee (owns the loop + human gate) |
+
+> Lead/referee is the `transform-cluster` command supervisor, not a separate agent — so the cluster ships **2 agents**, not 3.
+
+---
+
 ## Workflows (Commands)
 
 | Status | Name | v3 Notes |
