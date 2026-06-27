@@ -1,59 +1,129 @@
-# Mochiko Roadmap — Brainstorm Synthesis
+# Mochiko Roadmap — v2 (Re-baselined)
 
-_Generated: 2026-06-26_
+_Rewritten: 2026-06-27. Supersedes the 2026-06-26 brainstorm synthesis (kept in git history)._
 
-## Problem Statement
+**Why this is a rewrite, not an amendment:** `agent-skills-research/synthesis/my-framework.md` was refreshed on 2026-06-27 — one day after roadmap v1 — with foundational changes to *how skills, agents, and workflows must work*:
 
-Mochiko is a v3 framework that delivers the discipline of human-in-loop without its Python/MCP deterministic kernel. The bet: discipline lives in the quality of the skill library itself; native Claude Code agent teams handle orchestration. Skills and agents are the primary building block — orchestration is the layer on top, not the enforcer.
+- a new **sound-loop technique cluster** (`external-grounded-validation`, `pre-declared-done-condition`, `bounded-agent-loop`) that imposes structural requirements on every workflow;
+- three `maybe`→`adopt` upgrades, including **`deterministic-core-llm-shell`**, which makes v1's *"Confident: kernel-free"* decision no longer honest as written;
+- a new **open question #11** — *is the human a first-class external validator?* — flagged by the synthesis red-team as "the glaring omission for a framework literally named human-in-loop."
 
-## Context & Constraints
+These touch the thesis and a Confident decision, so they can't be patched in as caveats. This document re-baselines around them.
 
-- **Current state is human-in-loop**: all primitives to cherry-pick are there; kernel (~2,951 LOC + 409 tests) is explicitly excluded
-- **Two submodules available for reference**: `human-in-loop/` and `agent-skills-research/` (with synthesis doc)
-- **Source of truth for v3 design**: `agent-skills-research/synthesis/my-framework.md` — the techniques plane is more authoritative than re-reading HIL source
-- **Native substrate**: Claude Code agent teams, Workflows, and the skill/agent plugin system — no custom orchestration infrastructure
+---
+
+## What changed since v1
+
+| Disposition | Item |
+|---|---|
+| **Survives intact** | Discipline lives in the skill library, not a kernel · skills/agents are the primary building block · workflow-first build order · `setup` then `specify` |
+| **Net-new doctrine** | The sound-loop cluster — every workflow is now a *constrained loop* with a pre-declared done-condition, external/independent validation, and a bounded iteration cap |
+| **Re-centered** | The human is promoted from absent to **central thesis**: mochiko's primary external ground-truth validator |
+| **New convention** | **Producer↔validator skill pairing** at artifact granularity (a fifth skill-library axis) |
+| **Superseded** | v1's *"Kernel architecture: kernel-free — Confident"* → reframed as **deferred, code-free until dogfooding** (reasoning preserved below, not deleted) |
+
+---
+
+## Thesis (re-centered)
+
+Mochiko is the v3 successor to [human-in-loop](human-in-loop/). It delivers human-in-loop's engineering discipline **without its Python/MCP deterministic kernel** — discipline lives in the quality of the skill library, and native Claude Code agent teams + Workflows handle orchestration. Skills and agents are the primary building block; orchestration is the layer on top, not the enforcer.
+
+The re-centering, drawn from `external-grounded-validation` and open question #11:
+
+> **A loop only improves an output when its validator is external to and independent of the agent being checked. Where nothing is machine-checkable, the human is the cheapest external ground truth — so in mochiko, the human is the framework's primary external validator, present by design in every workflow loop.**
+
+The name finally means something structural, not just lineage: *human-in-loop* = the human sits inside the validation loop as ground truth.
+
+---
+
+## The sound-loop doctrine (the foundational layer)
+
+Every mochiko workflow is a **constrained loop**, not freeform generation. Without a kernel to enforce this, the discipline is carried by a `loop-discipline` doctrine skill (the rules + anti-rationalization prose) and a `workflow-contract` markdown template that each workflow instantiates. Every workflow MUST satisfy four things:
+
+1. **Pre-declared done-condition** (`pre-declared-done-condition`) — a machine- or human-checkable success condition written *before* the loop runs, **defaulting to FAIL**. "Done" cannot drift to "the agent got tired."
+2. **External, independent validation** (`external-grounded-validation`) — the agent that produced the work never grades its own output. Validation is run by a *different agent* using a *different skill* (see the producer↔validator convention). The lead/referee owns the verdict.
+3. **Bounded iteration** (`bounded-agent-loop`) — a deterministic round cap, a no-progress exit, and an escalation path. No LLM-judged "I'll stop when it's good."
+4. **A defined human gate** (open question #11) — every workflow's contract names *where the human validates* (every cycle / only on low validator-confidence / only on preference-gaps). Placement is a per-workflow call; *presence* is non-negotiable.
+
+These are inspectable: a workflow's filled-in contract shows whether its validator is genuinely independent and where its human gate sits.
+
+---
 
 ## Key Decisions
 
 | Decision | Choice | Confidence | Rationale |
 |----------|--------|------------|-----------|
-| Kernel architecture | Kernel-free — no Python/MCP DAG | Confident | Accidental complexity for sequential workflows; Claude agent teams solve the isolation problem at the platform layer |
-| Primary quality surface | Skill library + agents | Confident | Discipline injected through quality primitives, not plumbing; orchestration consumes quality, doesn't create it |
-| Build approach | Workflow-first, one at a time | Confident | Each workflow teaches what the skill conventions actually need from a real case before generalizing |
-| Build order | `setup` first, then `specify` | Confident | Setup establishes the project constitution (the standards root); specify proves the adversarial agent team pattern |
-| Migration tracking | Explicit registry with ported / not-yet status | Confident | Nothing should fall through the gap between "cherry-picked" and "not yet touched" |
+| Central thesis | Human as primary external validator | Confident | Resolves OQ#11; gives the successor-to-human-in-loop a structural spine, not just a name |
+| Kernel / code | **Deferred — code-free until dogfooding** | Confident | `deterministic-core-llm-shell` is now `adopt` *and heavy*; the synthesis says it earns its weight only where work is genuinely parallel/dependency-rich (`implement`). Build kernel-free first, dogfood `setup`+`specify`, let real drift — not theory — trigger any code. (Supersedes v1's "kernel-free, Confident.") |
+| Loop discipline | Doctrine **skill** + workflow-contract **template**, zero code | Confident | Skill-library-native; composes with `single-source-rule-fanout`, `enriched-instruction-contract`, `anti-rationalization-scaffolding`; keeps the kernel out while staying inspectable |
+| Validation mechanism | **Producer↔validator skill pairing** at artifact granularity | Confident | Concrete kernel-free form of `external-grounded-validation` — independence on two axes (different agent + different skill); already human-in-loop's latent pattern (`authoring-X` ↔ `validation-X`) |
+| Primary quality surface | Skill library + agents | Confident | Discipline injected through quality primitives, not plumbing (unchanged from v1) |
+| Build approach | Workflow-first, one at a time | Confident | Each workflow teaches what the conventions actually need (unchanged from v1) |
+| Build order | `setup` first, then `specify` | Confident | Setup establishes the constitution (standards root); specify proves the adversarial pair (unchanged from v1) |
+| Migration tracking | Explicit registry with ported / not-yet status | Confident | Nothing falls through the gap (unchanged from v1) |
+
+---
+
+## Skill-library conventions (five axes)
+
+Four structural axes carry over from the synthesis; the fifth is promoted from human-in-loop's latent pattern this rewrite.
+
+1. **Classification** (`invocation-axis-taxonomy`) — every skill declares `user-invoked` or `model-invoked`; user-invoked may call model-invoked, never each other.
+2. **Discoverability** (`router-skill`) — one user-invoked router indexes the rest with when-to-reach-each guidance.
+3. **Reliable model-invocation** (`rfc2119-invocation-trigger`) — model-invoked skills encode graded MUST/SHOULD + exact trigger phrases in their `description`.
+4. **Agent↔skill composition** (`skill-augmented-agent`) — agents declare a `skills:` list; persona (what it *cares about*) bakes into the agent, procedure (step-by-step *how*) factors into a skill.
+5. **Producer↔validator pairing** *(new)* — every skill that emits a reviewable artifact has a partner validation skill run by an independent validator agent. **Form by artifact type:** a *mirror checklist* skill for artifacts with objective acceptance criteria (e.g. `validation-constitution` checks Enforcement/Testability/Rationale); an *adversarial-critique* skill for judgment-based artifacts (e.g. `specify`'s advocate). Utility and inside-an-authoring-skill pattern skills get no partner (per `minimalism-decision-ladder`).
+
+---
 
 ## Decision Trail
 
-### Kernel-free vs. carrying the deterministic core
+### Kernel-free → deferred (superseded, not deleted)
 
-- **Options considered**: keep the Python/MCP kernel for parallel/dependency-rich workflows (implement); shed it entirely in favor of agent teams
-- **Recommendation was**: keep kernel only where work is genuinely parallel/dependency-rich
-- **Chosen**: shed entirely for now — kernel-free
-- **Key reasoning**: the synthesis explicitly kept `[[deterministic-core-llm-shell]]` at `maybe` as a signal the question is open; user resolved it definitively toward agent-team-native. The kernel can be revisited if agent teams prove insufficient for `implement`'s parallel TDD slices — but that's a future problem.
+- **v1 chose:** shed the Python/MCP kernel entirely — "kernel-free, Confident."
+- **v1 reasoning (preserved):** accidental complexity for sequential workflows; Claude agent teams solve the isolation problem at the platform layer.
+- **What changed:** the synthesis upgraded `deterministic-core-llm-shell` to `adopt` (corroborated by Anthropic's verification hierarchy), so a blanket "kernel-free" is no longer accurate.
+- **v2 chooses:** **defer**, don't reject. Build code-free now; dogfood; let concrete drift the lead can't catch by reading a contract be the upgrade trigger. The synthesis itself scopes the kernel's payoff to parallel/dependency-rich work (`implement`), so no kernel is warranted before `setup`/`specify` are real. Recorded as a `deliberate-shortcut-ledger` entry (see `BACKLOG.md`).
 
-### Workflow-first vs. infrastructure-first
+### Human-validator promoted to thesis
 
-- **Options considered**: establish four-axis skill-library conventions before any specific skills; prove concept with one workflow; port-and-upgrade HIL skills wholesale
-- **Chosen**: workflow-first — `setup` then `specify`
-- **Key reasoning**: conventions should emerge from real cases, not be imposed top-down. Each workflow will reveal what the skill structure needs.
+- **Considered:** central thesis / one belief among several / leave as open question.
+- **Chosen:** central thesis, with gate *placement* left per-workflow.
+- **Reasoning:** the synthesis red-team named the human's absence the glaring omission for this framework specifically. Promoting it resolves OQ#11 and gives mochiko a spine v1 lacked; placement stays a `setup`/`specify` discovery, consistent with workflow-first.
 
-## Open Questions
+### Loop-discipline mechanism
 
-From the synthesis, still unresolved and relevant to mochiko:
+- **Considered:** doctrine skill + contract template (hybrid) / skill only / hooks as hard gates.
+- **Chosen:** hybrid skill + template, zero code.
+- **Reasoning:** skill-library-native, inspectable, and composes with four already-adopted techniques. Hooks reintroduce the harness-specific infrastructure just shed — reconsidered only for `implement`, alongside the kernel question, after dogfooding.
 
-1. **Prose vs. gate allocation** — which behaviors earn graded anti-rationalization prose vs. a hard `PreToolUse` interceptor gate? (`[[deny-list-guardrail-hook]]` is still `maybe`)
-2. **Claude-Code portability** — how much of the skill-library kit (`rfc2119-invocation-trigger`, `invocation-axis-taxonomy`'s flag) is CC-specific vs. abstractable across hosts?
-3. **Memory model** — how does the workspace schema relate to the existing spec/plan/task artifact layout? Is reading-the-workspace-first a mandatory framework step?
-4. **Intensity as a primitive** — global dial (`lite/full/ultra/off`) or per-rule feature? (`[[intensity-modes]]` still `maybe`)
-5. **Staged-workflow spine for `implement`** — the only workflow where parallel TDD slices genuinely need dependency-ordering; does it need any lightweight DAG, or do native Workflow pipelines suffice?
+### Producer↔validator pairing convention
+
+- **Considered:** per produced artifact / literally every skill / two mechanisms by artifact type.
+- **Chosen:** per artifact, with the two-form nuance folded in.
+- **Reasoning:** gives independence on two axes (agent + skill); minimal (no validation skills that check nothing); already human-in-loop's latent pattern, now named as a law.
+
+---
+
+## Open Questions (live)
+
+Resolved this rewrite and removed: prose-vs-gate global allocation (→ deferred with the kernel), loop-discipline carrier (→ skill+template), human-as-validator (→ thesis).
+
+Still genuinely open:
+
+1. **Human-gate placement per workflow** — every cycle / low validator-confidence only / preference-gaps only? Resolve empirically in `setup` then `specify`.
+2. **Claude-Code portability** — `rfc2119-invocation-trigger` and the `disable-model-invocation` flag are CC-specific. Adopt-and-bind, or abstract? Surfaces when the router skill is built.
+3. **Memory model** — how does `stateful-workspace-as-memory` relate to the spec/plan/task artifact layout? Is reading-the-workspace-first mandatory? Resolve when `setup` is built.
+4. **Intensity modes** — global `lite/full/ultra/off` dial vs per-rule? Defer until two workflows exist and the pattern is clear.
+5. **`implement` orchestration + the deferred kernel** — do native Workflow `pipeline()` calls suffice for parallel TDD slices, or does `implement` re-open the kernel/hook question? The one place the deferred code-decision is most likely to come due.
+
+---
 
 ## Recommended Next Steps
 
-1. **Build `setup`**: port and upgrade `principal-architect` agent + the constitution skills cluster (`authoring-constitution`, `brownfield-constitution`, `validation-constitution`, `analysis-codebase`, `syncing-claude-md`). The v3 upgrade: shed the brain-mediated DAG invocation, make it a clean skill-invocation chain. See `REGISTRY.md` for the full dependency list.
+1. **Author the doctrine primitives first** (net-new, not ported): the `loop-discipline` model-invoked skill and the `workflow-contract` template. Everything else consumes them.
+2. **Build `setup`** as the first workflow under the playbook: port + upgrade `principal-architect` and the constitution cluster (`authoring-constitution`, `brownfield-constitution`, `validation-constitution`, `analysis-codebase`, `syncing-claude-md`), shedding the brain-mediated DAG invocation, and instantiate its `workflow-contract` (done-condition, `validation-constitution` as the independent validator, round cap, human gate).
+3. **Build `specify`** as a 2-member agent team (analyst producer + advocate critic, lead as referee), keeping the three `adversarial-pair-convergence-loop` invariants and the human-escalation gate.
+4. **Dogfood, then generalize.** After `setup`+`specify` run for real, extract the crystallized conventions into the playbook and CLAUDE.md, and re-evaluate the deferred-kernel ledger entry.
 
-2. **Build `specify`**: rebuild as a 2-member agent team — analyst (producer) + advocate (adversarial critic), lead as referee. Keep the three non-negotiable invariants from `[[adversarial-pair-convergence-loop]]`: referee owns the verdict, hard round cap, preference gaps escalate to human. Shed the capability-catalog and context-template DAG machinery entirely.
-
-3. **Establish the four-axis skill-library conventions as you go** — don't pre-define them; extract them from what `setup` and `specify` actually need. After two workflows, write the conventions as a living document.
-
-4. **Update `REGISTRY.md` as each primitive is ported** — mark each skill/agent/template `[x]` when it lands in mochiko, so the gap is always visible.
+See [`REGISTRY.md`](REGISTRY.md) for the migration inventory.
