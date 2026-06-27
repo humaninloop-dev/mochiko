@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Kernel-free agent-skill framework — transform human-in-loop primitives into sound-loop mochiko form",
-    "version": "0.1.0"
+    "version": "0.2.0"
   },
   "plugins": [
     {
