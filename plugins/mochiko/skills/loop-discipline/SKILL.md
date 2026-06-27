@@ -72,7 +72,7 @@ An LLM-controlled exit can run forever — burning budget, repeating failed acti
 1. **Hard round cap** — a deterministic ceiling counted by the supervisor (e.g. `max 3 produce↔validate rounds`), not judged by the model. The model's "I'll stop now" is itself LLM-controlled; the cap is the backstop.
 2. **No-progress exit** — stop when a round changes nothing, so the loop doesn't spin on stuck state.
 3. **Budget / kill-switch** — stop when the token or cost ceiling is hit; provide an out-of-band halt.
-4. **Escalate, don't silently die** — on hitting a guard instead of the goal, hand off to the human gate with failure context. Never report "done" because you ran out of rounds.
+4. **Escalate, don't silently die** — on hitting a guard instead of the goal, hand off to the human gate with failure context. Never report "done" because you ran out of rounds. Escalation is not uniform — route each finding by gap type (see *Routing a FAIL by gap type* below): only genuine judgment calls reach the human.
 
 ### 4. Defined human gate
 
@@ -80,9 +80,19 @@ Mochiko is the successor to *human-in-loop*: the human is the framework's primar
 
 - **every cycle** — high-stakes or low-automation-trust loops
 - **low validator-confidence only** — the validator can grade most cases but flags the uncertain ones
-- **preference-gap only** — the loop converges autonomously and only escalates genuine judgment calls
+- **preference-gap only** — the loop converges autonomously and only escalates genuine judgment calls (a *preference gap*; knowledge and scope gaps route elsewhere — see *Routing a FAIL by gap type* below)
 
 A workflow with no named human gate is incomplete, even if it never fires.
+
+## Routing a FAIL by gap type — a refinement of requirements 3 and 4, not a fifth requirement
+
+A FAIL is not one thing. When validation returns a finding — or the loop stalls short of its done-condition — *what you do with the finding* depends on the **kind of gap** it is. Sending every finding to the human (requirement 4) spends the human on questions a machine could settle; iterating the loop on every finding (requirement 3) grinds on gaps no round will ever close. Route each finding by its type:
+
+- **Knowledge gap** — a factual unknown an investigation could settle (e.g. "which protocol does the existing system use?", "what does this artifact already contain?"). **Route to research** — a native `Explore` pass or equivalent investigation — not to the human. The loop resolves it and continues; this is the cheapest gap to close.
+- **Preference gap** — a judgment or taste call only the human can make (e.g. "opt-in or opt-out?", "what threshold is acceptable?"). **Route to the human gate.** This is the genuine-judgment escalation that requirement 4's *preference-gap only* placement is named for — research cannot manufacture an answer to "should we".
+- **Scope gap** — the work is bigger or different than it was framed (e.g. "this spans three separate concerns", "the goal conflicts with a stated constraint"). **Halt or split** — do not keep iterating. A round cap will never converge on a target the loop was never scoped to hit; surface it through requirement 3.4's escalation, with the failure context.
+
+**The corollary — never cross the wires.** A preference question sent to research comes back empty: investigation cannot answer "should we". A knowledge question sent to the human burns the scarcest validator you have on something an investigation would have settled. Routing a gap to the wrong sink is a defect, not a shortcut — the wasted round is exactly the one requirement 3's bound exists to catch.
 
 ## How to apply: fill in the contract
 
