@@ -74,3 +74,4 @@ Runs on every recipe above:
 2. **Router registration** — add to the `mochiko` router with when-to-reach-it guidance.
 3. **Triggers** — graded exact-phrase, work-context triggers for model-invoked skills.
 4. **Path rebinding** — `.humaninloop/` → `.mochiko/`; drop kernel/catalog/MCP paths; record `kept-but-rebind`.
+5. **Decouple** — remove sibling-agent names (independence by *role*), the word `dispatch`, workflow modes/paths/phases in a persona, and "workflow-agnostic" meta-labels; keystone-test the rest.

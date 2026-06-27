@@ -32,8 +32,8 @@ A command/workflow **IS** a loop; an agent/skill **PLAYS a role in** a loop. Run
 | Class | Branch | What matters most |
 |-------|--------|-------------------|
 | **command / workflow** | IS-a-loop | who drives the loop, the done-condition, where validation + human gates sit (or are missing) |
-| **agent** | PLAYS-a-role | persona vs procedure split, the team-role it confers, its `skills:` independence |
-| **skill** | PLAYS-a-role | consumed-procedure vs emits-artifact, trigger reliability, sibling overlap |
+| **agent** | PLAYS-a-role | persona vs procedure split, the team-role it confers, its `skills:` independence, **persona decoupling** (no sibling-agent names / "dispatch" / workflow modes-paths-phases / "workflow-agnostic" meta-labels) |
+| **skill** | PLAYS-a-role | consumed-procedure vs emits-artifact, trigger reliability, sibling overlap, **decoupling** (no agent names; independence stated by *role*) |
 | **template** | artifact | placeholders, what consumes it, path coupling |
 
 Pick the branch first; it changes which checks below carry weight.
@@ -60,7 +60,7 @@ Apply the seven checks — weighting per the Step-1 branch. Full detail and per-
 | 4 | **Verdict-sink / loop-driver** | Who consumes this primitive's output, and what loops on FAIL? (The biggest thing a kernel/supervisor owned.) |
 | 5 | **Sibling / overlap** | Shared core, shared validator, or trigger collisions with siblings → emits a merge/split signal. The "look sideways" check; usually becomes a `flag-for-reconcile`. |
 | 6 | **Coupling audit** | Hardcoded paths, upstream prerequisites/handoffs, and the determinism boundary (deterministic script vs model judgment). |
-| 7 | **Conventions + loop placement** | The five conventions, and whether it supplies a done-condition / independent validation / human gate. |
+| 7 | **Conventions + loop placement** | The five conventions, and whether it supplies a done-condition / independent validation / human gate. **Decoupling scan:** flag any persona or skill carrying sibling-agent names, "dispatch," injected workflow modes/paths/phases, or "workflow-agnostic" meta-labels → a `port-with-edits` decouple action (independence stated by *role*, not agent name). |
 
 ## Step 4: Emit the disposition
 

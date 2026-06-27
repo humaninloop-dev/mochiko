@@ -4,7 +4,7 @@ description: Transform a human-in-loop primitive cluster into mochiko form via a
 
 # Transform Cluster
 
-You are the **lead / referee** for transforming one human-in-loop cluster into mochiko form. There is no kernel and no separate lead agent — **you, executing this command, are the supervisor**. You own the loop, the verdict, reconciliation arbitration, and the human gate. The work is done by two dispatched agents: `mochiko:transform-producer` and `mochiko:transform-validator`.
+You are the **lead / referee** for transforming one human-in-loop cluster into mochiko form. There is no kernel and no separate lead agent — **you, executing this command, are the supervisor**. You own the loop, the verdict, reconciliation arbitration, and the human gate. The work is done by two dispatched agents: `mochiko:transform-producer` and `mochiko:validator`.
 
 This workflow is itself a mochiko sound loop. Before you start, you MUST instantiate its `workflow-contract` (Phase 0). Honor `mochiko:loop-discipline` throughout: pre-declared done-condition (default FAIL), independent validation (producer never grades its own output), bounded iteration, and a named human gate.
 
@@ -27,7 +27,7 @@ Until then the run is **FAIL**. Running out of rounds is FAIL-and-escalate, neve
 
 1. Resolve `$ARGUMENTS` to a concrete set of primitives (list the files in the cluster). Confirm the list with the user if ambiguous.
 2. Create the run workspace: `.mochiko/transform/<cluster>/` with:
-   - `contract.md` — fill in `templates/workflow-contract.md` for this run (done-condition above; producer = `transform-producer`; validator = `transform-validator`; round cap = **3**; no-progress exit; **budget / kill-switch** — a per-run token/cost ceiling plus an out-of-band halt: stop if `.mochiko/transform/<cluster>/STOP` exists; human-gate placement — default: **on redesign/absorb/promote dispositions and on any cap-exhaustion escalation**). Fill **every** field — `loop-discipline` requires all four iteration guards; an open bracket means the loop is not ready.
+   - `contract.md` — fill in `templates/workflow-contract.md` for this run (done-condition above; producer = `transform-producer`; validator = `mochiko:validator` (the generic independent grader); round cap = **3**; no-progress exit; **budget / kill-switch** — a per-run token/cost ceiling plus an out-of-band halt: stop if `.mochiko/transform/<cluster>/STOP` exists; human-gate placement — default: **on redesign/absorb/promote dispositions and on any cap-exhaustion escalation**). Fill **every** field — `loop-discipline` requires all four iteration guards; an open bracket means the loop is not ready.
    - `context.md` — the user request, the resolved primitive list, and a running log.
 3. Invoke `mochiko:loop-discipline` to confirm the contract satisfies all four requirements before proceeding. A contract with an open bracket is not ready.
 
@@ -92,7 +92,7 @@ For each transformed primitive, dispatch the **validator** (never the producer):
 
 ```
 Task(
-  subagent_type: "mochiko:transform-validator",
+  subagent_type: "mochiko:validator",
   description: "Verify <primitive>",
   prompt: "Run mochiko:verify-output on the transformed <primitive> and its trace. Read the artifact
            itself. Return a binary PASS/FAIL with conformance items, trace audit, and a fix list.

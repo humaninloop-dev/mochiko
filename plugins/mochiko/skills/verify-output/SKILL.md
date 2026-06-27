@@ -9,7 +9,7 @@ description: This skill MUST be invoked to grade a transformed primitive against
 
 Grade a transformed primitive (or cluster) against the transform done-condition: it must (a) **conform** — satisfy the five conventions, sit correctly in a sound loop, and be kernel-free — and (b) carry a **complete responsibility trace** — every original responsibility accounted for, every drop justified. The verdict **defaults to FAIL** and only flips on evidence Read from the artifact itself.
 
-**This skill is the independent gate.** It MUST be run by a different agent than the one that produced the artifact (the `transform-validator`, not the `transform-producer`). An author grading their own work is not verification — it is the exact self-grade failure mochiko exists to prevent.
+**This skill is the independent gate.** It MUST be run by someone who did **not** author the artifact — a different agent than the one that produced it. An author grading their own work is not verification — it is the exact self-grade failure mochiko exists to prevent.
 
 ```
 NO PASS WITHOUT EVIDENCE READ FROM THE ARTIFACT.
@@ -27,7 +27,7 @@ The result is FAIL until each check is confirmed against the real file.
 
 ## When NOT to Use
 
-- By the agent that produced the artifact (independence violation — hand to `transform-validator`)
+- By the agent that produced the artifact (independence violation — it must be graded by someone who did not author it)
 - To decide or apply a disposition (→ `assess-primitive` / `reconcile-cluster` / `transform-recipes`)
 
 ## Part A: Conformance check
@@ -39,12 +39,22 @@ Read the artifact. For each item, confirm against the file — not the report.
 | 1 | **Classification** | Frontmatter declares user-invoked (`disable-model-invocation: true`) or model-invoked; no skill invokes another user-invoked skill. |
 | 2 | **Discoverability** | Registered in the `mochiko` router with when-to-reach-it guidance. |
 | 3 | **Reliable model-invocation** | Model-invoked skills carry graded, exact-phrase, work-context triggers in `description`. |
-| 4 | **Agent↔skill composition** | Agents declare a `skills:` list; persona (cares-about) in the agent, procedure (how) in the skill. |
-| 5 | **Producer↔validator pairing** | If the artifact emits a reviewable artifact, an independent validator (different agent + different skill) exists — or correctness is machine-decidable and the check degenerates to a deterministic assert (note which). |
+| 4 | **Agent↔skill composition & decoupling** | Agents declare a `skills:` list; the persona carries self-sufficient method + judgment, the skill carries the procedure. **AND the artifact is decoupled** — run the deny-list scan below over any persona or skill; any hit the keystone test confirms as coupling → FAIL. |
+| 5 | **Producer↔validator pairing** | If the artifact emits a reviewable artifact, an independent validator (different agent + different skill) exists — independence is *structural*, never a persona's self-declaration — or correctness is machine-decidable and the check degenerates to a deterministic assert (note which). |
 | 6 | **Sound-loop placement** | The loop it sits in has a pre-declared done-condition (default FAIL), independent validation, bounded iteration, and a named human gate — i.e. a filled `workflow-contract`. |
 | 7 | **Kernel-free** | No Python/MCP brain code, no DAG/catalog dependency, no orchestration plumbing reintroduced. |
 
 Any item not confirmed against the artifact → **FAIL**.
+
+### The decoupling scan (Part A item 4 — grep first, then judge)
+
+Decoupling is proven by the **absence** of workflow coupling, not by a declaration of independence. Grep any persona or skill for the deny-list; treat each hit as a candidate FAIL and confirm with the keystone test.
+
+**Deny-list (grep these):** sibling-agent **names** (e.g. `transform-validator`, `principal-architect`) · the word **dispatch** · **workflow-agnostic** and other independence-by-declaration meta-labels ("you are the producer/validator in a pair", "you are reusable") · injected workflow **modes/paths/phases** in a persona (mode names like `greenfield`/`brownfield`/`amend` stated as run-scope, workspace paths like `.mochiko/…` baked into a persona, phase names).
+
+**Keystone test (judge each survivor):** *would this line be true of this professional on **any** job? → craft, keep. Does it only make sense inside **one** workflow? → coupling, FAIL.* Intrinsic traits survive (a reviewer *is* independent; an author does not grade their own work — integrity). This-loop machinery fails.
+
+**Allowed (do not flag):** role words — "graded by an independent validator," "the command lead owns the loop," "by someone who did not author it" — state independence by *role*, not by an agent name. Skills legitimately keep their own disposition **and** procedure (they run agent-less). Caller-side files (`commands/*.md`, the router, `agent-dispatch.md`) may name agents and own workflow knowledge — the scan targets **personas and skills**, not callers.
 
 ## Part B: Trace audit
 
@@ -84,6 +94,7 @@ If you catch yourself thinking any of these, you are rationalizing a PASS:
 - "The trace is probably fine"
 - "This drop is obviously okay" (without an accepted reason)
 - "Close enough to pass"
+- "The persona *says* it's workflow-agnostic, so it's decoupled" (a declaration is not the absence — grep the deny-list)
 - "I wrote part of this, so I know it's good" (you should not be grading it at all)
 
 ## Common Rationalizations

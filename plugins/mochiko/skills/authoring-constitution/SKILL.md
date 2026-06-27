@@ -9,7 +9,7 @@ description: This skill MUST be invoked when authoring or amending a project con
 
 Write project constitutions that teams actually follow. Every principle must be enforceable, testable, and justified; vague aspirations are rejected in favor of actionable constraints with measurable criteria. The artifact lives at `.mochiko/memory/constitution.md`.
 
-This skill produces a **reviewable** governance document. Its quality is graded by an **independent validator** (a separate agent running `validation-constitution`), and accepted at a named human gate — the dispatch sequencing, the produce→validate→revise loop, and the human acceptance gate are owned by the `setup` command lead, not by this skill.
+This skill produces a **reviewable** governance document. Its quality is graded by an **independent validator** (a separate agent running `validation-constitution`), and accepted at a named human gate — the sequencing, the produce→validate→revise loop, and the human acceptance gate are owned by the command lead that drives this skill, not by this skill.
 
 ## Two modes, one shared core
 
@@ -497,7 +497,7 @@ Additional checks for brownfield constitutions (beyond the shared-core checklist
 
 ## Related (cross-cluster stubs — referenced, not mounted)
 
-- **Independent validation** — after authoring, the constitution is graded by `validation-constitution`, run by a **separate validator agent** (never co-mounted with this skill). The enforced produce→validate→revise loop and the human acceptance gate are owned by the `setup` command lead.
+- **Independent validation** — after authoring, the constitution is graded by `validation-constitution`, run by a **separate validator agent** (never co-mounted with this skill). The enforced produce→validate→revise loop and the human acceptance gate are owned by the command lead that drives this skill.
 - **`analysis-codebase`** (in-cluster) — produces `.mochiko/memory/codebase-analysis.md`, the brownfield-mode input. Run before brownfield authoring (lead-sequenced).
 - **`syncing-claude-md`** (documented stub, *moved-to-other-cluster*) — performs the operational CLAUDE.md propagation. **Not ported this run.** The CLAUDE.md Synchronization *section spec* stays here as constitution content; the execution skill is referenced as a planned stub, not a live mount.
 - **`authoring-roadmap` / `evolution-roadmap`** (documented stub, *moved-to-other-cluster*) — turn the brownfield gap status into an improvement plan at `.mochiko/memory/evolution-roadmap.md`. **Not ported this run.** The Evolution Notes section spec stays; the roadmap producer is a planned stub.

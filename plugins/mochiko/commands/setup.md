@@ -4,7 +4,7 @@ description: Create or update the project constitution via an independent produc
 
 # Setup — Project Constitution
 
-You are the **lead / supervisor** for establishing or updating the project constitution. There is no kernel and no separate lead agent — **you, executing this command, are the supervisor**. You own the loop, the done-condition, the verdict, and the human gates. The constitution itself is **authored** by a dispatched producer (`mochiko:principal-architect`) and **graded** by a different, independent validator (`mochiko:constitution-validator`). You never let those two collapse into one agent — independence is the point.
+You are the **lead / supervisor** for establishing or updating the project constitution. There is no kernel and no separate lead agent — **you, executing this command, are the supervisor**. You own the loop, the done-condition, the verdict, and the human gates. The constitution itself is **authored** by a dispatched producer (`mochiko:principal-architect`) and **graded** by a different, independent validator (`mochiko:validator`). You never let those two collapse into one agent — independence is the point.
 
 This workflow is a mochiko **sound loop**. Honor `mochiko:loop-discipline` throughout: a pre-declared done-condition that **defaults to FAIL**, independent validation (the author never grades its own constitution), bounded iteration, and named human gates. The filled `workflow-contract` for this loop is inlined below; it is the inspectable proof that all four requirements are met.
 
@@ -16,7 +16,7 @@ This workflow is a mochiko **sound loop**. Honor `mochiko:loop-discipline` throu
 
 The constitution **starts in the FAILING state** and flips to done **only** when **all** of these hold:
 
-- `mochiko:constitution-validator` returns **PASS** on `.mochiko/memory/constitution.md`, graded from the artifact file itself (not from the author's report), **AND**
+- `mochiko:validator` returns **PASS** on `.mochiko/memory/constitution.md`, graded from the artifact file itself (not from the author's report), **AND**
 - the **human acceptance gate** (Phase 4) has cleared the validated constitution, **AND**
 - in brownfield mode, the Phase-2 **analysis checkpoint** was confirmed by the human.
 
@@ -37,7 +37,7 @@ Until all three hold, the run is **FAIL**. Running out of rounds is **FAIL-and-e
 | Role | Agent | Skill(s) | Notes |
 |------|-------|----------|-------|
 | **Producer** | `mochiko:principal-architect` | `authoring-constitution`, `analysis-codebase` | authors `constitution.md` / `codebase-analysis.md`; **never grades** |
-| **Validator** | `mochiko:constitution-validator` | `validation-constitution` | grades from the constitution file itself, never the author's say-so |
+| **Validator** | `mochiko:validator` | `validation-constitution` | grades from the constitution file itself, never the author's say-so |
 
 - **Independence check:** producer agent ≠ validator agent ✓ **AND** producer skills `{authoring-constitution, analysis-codebase}` ∩ validator skill `{validation-constitution}` = ∅ ✓.
 - **Validator trustworthiness tier:** **Tier 2 — separate-context grounded LLM** (highest the artifact allows; constitution quality is model judgment, not a schema/version equality). Tier-1 deterministic sub-checks are layered in where they exist: the placeholder scan (`grep` for `[PLACEHOLDER]`/`[...]` tokens), three-part-structure presence, and — in brownfield mode — cross-check of named tools/versions against `.mochiko/memory/codebase-analysis.md`.
@@ -212,7 +212,7 @@ Check the kill-switch again (`.mochiko/memory/SETUP_STOP`). Then dispatch the **
 
 ```
 Task(
-  subagent_type: "mochiko:constitution-validator",
+  subagent_type: "mochiko:validator",
   description: "Validate constitution (round N)",
   prompt: "Run validation-constitution on .mochiko/memory/constitution.md. READ the artifact file
            itself — never the author's report. Check: three-part structure (Statement / Enforcement /
@@ -260,7 +260,7 @@ Only reachable when the validator returned **PASS**. Present the validated const
 ```
 AskUserQuestion(
   questions: [{
-    question: "The constitution at .mochiko/memory/constitution.md PASSED independent validation (validator: constitution-validator).\n\nVersion: [from the version-bump call]\nPrinciples: [count]\nEssential Floor: [status]\n\nAccept this constitution?",
+    question: "The constitution at .mochiko/memory/constitution.md PASSED independent validation (graded by the independent validator).\n\nVersion: [from the version-bump call]\nPrinciples: [count]\nEssential Floor: [status]\n\nAccept this constitution?",
     header: "Constitution Acceptance",
     options: [
       {label: "Accept", description: "Adopt the constitution; proceed to finalize"},
@@ -293,7 +293,7 @@ AskUserQuestion(
    ### Summary
    - Principles defined: [count]
    - Essential Floor: [status]
-   - Independent validation: PASS (constitution-validator); accepted at the human gate
+   - Independent validation: PASS (independent validator); accepted at the human gate
 
    ### Suggested commit
    `docs: create constitution [version] with brownfield analysis`
@@ -312,7 +312,7 @@ AskUserQuestion(
 
    ### Summary
    - Principles defined: [count] (Essential Floor I-IV + architectural V-VII)
-   - Independent validation: PASS (constitution-validator); accepted at the human gate
+   - Independent validation: PASS (independent validator); accepted at the human gate
 
    ### Suggested commit
    `docs: create constitution [version]`
@@ -381,5 +381,5 @@ If interrupted, resume from evidence in the `.mochiko/memory/` workspace (not fr
 - **Own the verdict:** the author proposes, the validator grades from the artifact, **you** declare done — and only against the pre-declared, default-FAIL done-condition.
 - **Own the human gates:** mode-select (G1), analysis checkpoint (G2), constitution acceptance (G3), cleanup (G4), and every escalation. Never auto-accept a constitution, a dropped item, or an exhaustion.
 - **Track the mode** (brownfield / greenfield / amend) throughout; it selects the producer's branch and which phases run.
-- **Never let producer and validator collapse into one agent.** `principal-architect` authors; `constitution-validator` grades; they share no skills. Independence is the point.
+- **Never let producer and validator collapse into one agent.** `principal-architect` authors; the independent `validator` grades; they share no skills. Independence is the point.
 - **Stay kernel-free:** no brain, DAG, MCP, or catalog. All orchestration is this command + the two dispatched agents + the `.mochiko/memory/` workspace.

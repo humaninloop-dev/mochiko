@@ -20,7 +20,7 @@ The transformer cluster — the dogfooded implementation of [`PLAYBOOK.md`](PLAY
 | `[x]` | `verify-output` | skill | Done-condition checker (independent gate) |
 | `[x]` | `mochiko` | skill | User-invoked router / library index |
 | `[x]` | `transform-producer` | agent | Assess / reconcile / apply |
-| `[x]` | `transform-validator` | agent | Independent grading (verify-output) |
+| `[x]` | `validator` | agent | Generic independent grader — `verify-output` + `validation-constitution` (merges the former `transform-validator` + `constitution-validator`) |
 | `[x]` | `transform-cluster` | command | Supervisor / lead-referee (owns the loop + human gate) |
 
 > Lead/referee is the `transform-cluster` command supervisor, not a separate agent — so the cluster ships **2 agents**, not 3.
@@ -31,7 +31,7 @@ The transformer cluster — the dogfooded implementation of [`PLAYBOOK.md`](PLAY
 
 | Status | Name | v3 Notes |
 |--------|------|----------|
-| `[x]` | `setup` | Ported 2026-06-27 — redesigned into a sound loop (default-FAIL done-condition, independent `constitution-validator`, escalate-on-cap, NEW constitution-acceptance human gate). Core-only scope. |
+| `[x]` | `setup` | Ported 2026-06-27 — redesigned into a sound loop (default-FAIL done-condition, independent `validator`, escalate-on-cap, NEW constitution-acceptance human gate). Core-only scope. |
 | `[ ]` | `specify` | **Second** — rebuild as adversarial 2-member agent team |
 | `[ ]` | `plan` | TBD |
 | `[ ]` | `tasks` | TBD |
@@ -45,8 +45,8 @@ The transformer cluster — the dogfooded implementation of [`PLAYBOOK.md`](PLAY
 
 | Status | Name | Workflow Affinity |
 |--------|------|-------------------|
-| `[x]` | `principal-architect` | `setup` — producer-only (skills: authoring-constitution, analysis-codebase); grading role split out |
-| `[x]` | `constitution-validator` | `setup` — **net-new** independent grader (skills: validation-constitution); born from the principal-architect split |
+| `[x]` | `principal-architect` | `setup` — producer-only (skills: authoring-constitution, analysis-codebase); grading split to the generic `validator` |
+| `[x]` | `validator` | mochiko-native generic grader (see top table) — one independent grader serves `setup` (validation-constitution) + transform (verify-output); replaces the setup-specific `constitution-validator` born from the principal-architect split |
 | `[ ]` | `devils-advocate` | `specify` (adversarial critic) |
 | `[ ]` | `requirements-analyst` | `specify` (producer) |
 | `[ ]` | `technical-analyst` | `plan` |
@@ -75,7 +75,7 @@ The transformer cluster — the dogfooded implementation of [`PLAYBOOK.md`](PLAY
 |--------|------|-------|
 | `[x]` | `authoring-constitution` | Core of setup — **absorbed `brownfield-constitution`** as a greenfield\|brownfield branch; canonical `ESSENTIAL-FLOOR.md` home |
 | `[x]` | `brownfield-constitution` | **Merged into `authoring-constitution`** (greenfield\|brownfield branch) — no standalone skill |
-| `[x]` | `validation-constitution` | Body kept verbatim; **promoted** onto the independent `constitution-validator` agent |
+| `[x]` | `validation-constitution` | Body kept verbatim; **promoted** onto the independent generic `validator` agent |
 | `[x]` | `analysis-codebase` | Setup-brownfield slice + `detect-stack.sh` (verbatim); collision/spec-plan modes deferred to spec/plan cluster; Essential-Floor deduped to authoring's canonical ref |
 | `[ ]` | `brownfield-integration` | Deferred — out of setup-core scope (REGISTRY mis-file; reads as implement-time) |
 

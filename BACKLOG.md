@@ -54,6 +54,8 @@ Concrete deferred work left by the setup-cluster port (**core-only** scope). Ful
   - **Human-gate placement** (ROADMAP OQ#1) — *on gated dispositions + escalations* (the `loop-discipline` default) worked cleanly for setup: reconcile/redesign/drop dispositions and cap-exhaustion escalations gate; routine PASSes run unattended.
   - **Memory model** (ROADMAP OQ#3 / the Memory-model item above) — in-session + `.mochiko/memory/`, workspace-as-state, context-handoff absorbed into the lead.
 
+- [ ] **Validate the agent↔workflow decoupling doctrine by porting `specify`.** The decoupling rules — personas/skills carry no workflow vocabulary, independence is structural, one generic `validator` — landed in the agent personas, the transformer skills, and conventions 4 & 5 (full record in `AGENT-DECOUPLING-SYNTHESIS.md`; ROADMAP Key Decisions + Decision Trail). The empirical test is the next port: run `/mochiko:transform-cluster specify` and confirm (a) no new persona or skill acquires a deny-list token (sibling-agent name, "dispatch," injected workflow modes/paths/phases, "workflow-agnostic" meta-label), and (b) `verify-output`'s decoupling scan + the keystone test catch any that slip in. If the doctrine holds it is proven; if a primitive genuinely needs a token, refine the deny-list/keystone test rather than carry the coupling. Pairs with the dogfood-`/mochiko:setup` behavioral check above.
+
 ## Ideas / candidates
 
 Things worth holding but not yet scoped.

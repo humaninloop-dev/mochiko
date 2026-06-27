@@ -52,19 +52,20 @@ Recipes are branches in this one skill, keyed to the vocabulary. Full step lists
 
 ## The convention-wiring pass (ALWAYS runs)
 
-Even `keep-verbatim × standalone` pays this. The floor is never zero-work. Run all four:
+Even `keep-verbatim × standalone` pays this. The floor is never zero-work. Run all five:
 
 1. **Classification tag** — set user-invoked (`disable-model-invocation: true`) or model-invoked (default). Agents get a `skills:` list; the persona-vs-procedure split is honored.
 2. **Router registration** — register the primitive in the `mochiko` router with when-to-reach-it guidance (user-invoked entries are *hinted*, not fired).
 3. **Trigger phrasing** — for model-invoked skills, graded exact-phrase triggers in `description` describing the *work context*. (Agent-consumed skills describe transformation work, not "when the user says…", to avoid false auto-trigger expectations.)
 4. **Path rebinding** — `.humaninloop/` → `.mochiko/`; drop catalog/MCP/DAG paths; fix prerequisite handoffs. Record each as `kept-but-rebind`.
+5. **Decouple persona/skill** — scrub any persona or skill of workflow coupling: remove sibling-agent names (state independence by *role*), the word "dispatch," injected workflow modes/paths/phases in a persona, and "workflow-agnostic"/independence-by-declaration meta-labels. Keystone-test the rest (true of this professional on any job → keep); push caller-side context to `agent-dispatch.md`, not the primitive. Audited by `verify-output`'s decoupling scan.
 
 ## Step sequence
 
 1. Read the finalized disposition + responsibility trace for the primitive.
 2. Apply the **body** recipe → the content.
 3. Apply the **structural** recipe → its placement and any new partner primitives (from reconcile).
-4. Run the **convention-wiring pass** (all four).
+4. Run the **convention-wiring pass** (all five).
 5. Update the **trace**: flip each responsibility to its realized tag; confirm every one is accounted for.
 6. Hand the artifact + updated trace to `verify-output` (via a different agent).
 
@@ -88,6 +89,7 @@ Trace (realized): <responsibility → final tag>...
 | Grading the result here | Independence requires `verify-output` run by a different agent. |
 | Dropping without a trace | Even `drop` emits a trace so the removed responsibilities are auditable. |
 | Splitting producer + validator skills onto one agent | The split exists precisely to keep them on different agents. |
+| Leaving workflow vocab in a persona/skill | The wiring pass decouples it. A persona naming a sibling agent or "dispatch," or declaring itself "workflow-agnostic," fails `verify-output`. |
 
 ## Related
 
