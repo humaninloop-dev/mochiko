@@ -48,16 +48,26 @@ The kernel-free successor to human-in-loop. Discipline lives in the skill librar
 | `transform-recipes` | applying a finalized disposition; running the convention-wiring pass every port pays |
 | `verify-output` | independently grading a transformed artifact (run by `transform-validator`, never the producer) |
 
+### Setup cluster (model-invoked — auto-reached during a `/mochiko:setup` run)
+| Skill | Reach when |
+|-------|------------|
+| `authoring-constitution` | authoring or amending a constitution at `.mochiko/memory/constitution.md` — greenfield (opinionated defaults: Essential Floor + recommended architectural principles) OR brownfield (codify existing patterns: Essential Floor + Emergent Ceiling, from `codebase-analysis.md`); one skill, both modes |
+| `analysis-codebase` | analyzing an existing codebase during a brownfield setup run — deterministic stack detection (`detect-stack.sh`) + architecture/convention extraction + Essential-Floor status assessment, producing `.mochiko/memory/codebase-analysis.md` |
+| `validation-constitution` | independently grading a drafted constitution: three-part-structure check, anti-pattern + placeholder scan, quantification, semantic version-bump → binary PASS/FAIL + fix list (run by `constitution-validator`, never the author) |
+
 ### Entry point (user-invoked — you run it)
 | Command | Reach when |
 |---------|------------|
 | `/mochiko:transform-cluster <cluster>` | you want to transform a whole HIL primitive cluster into mochiko form |
+| `/mochiko:setup` | you want to create, amend, or brownfield-derive the project constitution (greenfield \| brownfield \| amend) under an independent author→validator loop with a human acceptance gate |
 
 ### Agents (dispatched by the supervisor)
 | Agent | Role |
 |-------|------|
 | `transform-producer` | assesses, reconciles, and applies recipes (skills: assess-primitive, reconcile-cluster, transform-recipes) |
 | `transform-validator` | independently grades against the done-condition (skills: verify-output) |
+| `principal-architect` | setup-cluster PRODUCER — authors/updates the constitution (greenfield + brownfield) and runs codebase analysis (skills: authoring-constitution, analysis-codebase); never grades its own output |
+| `constitution-validator` | independently grades the drafted constitution against the quality checklist; defaults to FAIL, authors nothing (skills: validation-constitution) |
 
 ## Operating rules (context hygiene)
 

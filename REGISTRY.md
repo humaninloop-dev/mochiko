@@ -31,7 +31,7 @@ The transformer cluster — the dogfooded implementation of [`PLAYBOOK.md`](PLAY
 
 | Status | Name | v3 Notes |
 |--------|------|----------|
-| `[ ]` | `setup` | **Start here** — port + upgrade; shed brain-mediated DAG invocation |
+| `[x]` | `setup` | Ported 2026-06-27 — redesigned into a sound loop (default-FAIL done-condition, independent `constitution-validator`, escalate-on-cap, NEW constitution-acceptance human gate). Core-only scope. |
 | `[ ]` | `specify` | **Second** — rebuild as adversarial 2-member agent team |
 | `[ ]` | `plan` | TBD |
 | `[ ]` | `tasks` | TBD |
@@ -45,7 +45,8 @@ The transformer cluster — the dogfooded implementation of [`PLAYBOOK.md`](PLAY
 
 | Status | Name | Workflow Affinity |
 |--------|------|-------------------|
-| `[ ]` | `principal-architect` | `setup` |
+| `[x]` | `principal-architect` | `setup` — producer-only (skills: authoring-constitution, analysis-codebase); grading role split out |
+| `[x]` | `constitution-validator` | `setup` — **net-new** independent grader (skills: validation-constitution); born from the principal-architect split |
 | `[ ]` | `devils-advocate` | `specify` (adversarial critic) |
 | `[ ]` | `requirements-analyst` | `specify` (producer) |
 | `[ ]` | `technical-analyst` | `plan` |
@@ -65,18 +66,18 @@ The transformer cluster — the dogfooded implementation of [`PLAYBOOK.md`](PLAY
 | `[ ]` | `strategy-core` | Universal workflow patterns; consumed by state-analyst |
 | `[ ]` | `strategy-specification` | Spec-pass strategy |
 | `[ ]` | `strategy-implementation` | Impl-pass strategy |
-| `[ ]` | `syncing-claude-md` | Cross-cutting — keep as-is |
+| `[ ]` | `syncing-claude-md` | Cross-cutting — referenced by `setup` as a documented stub (not yet ported); port with its own cluster |
 | `[ ]` | `using-git-worktrees` | Cross-cutting utility |
 | `[ ]` | `using-github-issues` | Cross-cutting utility |
 
 ### Setup workflow cluster
 | Status | Name | Notes |
 |--------|------|-------|
-| `[ ]` | `authoring-constitution` | Core of setup |
-| `[ ]` | `brownfield-constitution` | Brownfield variant |
-| `[ ]` | `validation-constitution` | Gates setup completion |
-| `[ ]` | `analysis-codebase` | Feeds setup — brownfield analysis |
-| `[ ]` | `brownfield-integration` | Brownfield onboarding |
+| `[x]` | `authoring-constitution` | Core of setup — **absorbed `brownfield-constitution`** as a greenfield\|brownfield branch; canonical `ESSENTIAL-FLOOR.md` home |
+| `[x]` | `brownfield-constitution` | **Merged into `authoring-constitution`** (greenfield\|brownfield branch) — no standalone skill |
+| `[x]` | `validation-constitution` | Body kept verbatim; **promoted** onto the independent `constitution-validator` agent |
+| `[x]` | `analysis-codebase` | Setup-brownfield slice + `detect-stack.sh` (verbatim); collision/spec-plan modes deferred to spec/plan cluster; Essential-Floor deduped to authoring's canonical ref |
+| `[ ]` | `brownfield-integration` | Deferred — out of setup-core scope (REGISTRY mis-file; reads as implement-time) |
 
 ### Specify workflow cluster
 | Status | Name | Notes |
@@ -119,10 +120,10 @@ The transformer cluster — the dogfooded implementation of [`PLAYBOOK.md`](PLAY
 
 | Status | Name | Workflow Affinity |
 |--------|------|-------------------|
-| `[ ]` | `constitution-template.md` | `setup` |
-| `[ ]` | `constitution-context-template.md` | `setup` |
-| `[ ]` | `codebase-analysis-template.md` | `setup` |
-| `[ ]` | `codebase-inventory-schema.json` | `setup` |
+| `[x]` | `constitution-template.md` | `setup` — ported (`approved-domain-deps.md` ref softened to prose) |
+| `[-]` | `constitution-context-template.md` | `setup` — **absorbed into the setup lead** (in-session + `.mochiko/memory/` state); not a standalone artifact |
+| `[x]` | `codebase-analysis-template.md` | `setup` — ported verbatim |
+| `[ ]` | `codebase-inventory-schema.json` | **Deferred to spec/plan cluster** — orphan in setup (no consumer after mode-scoping) |
 | `[ ]` | `spec-template.md` | `specify` |
 | `[ ]` | `analyst-report-template.md` | `specify` |
 | `[ ]` | `advocate-report-template.md` | `specify` |
