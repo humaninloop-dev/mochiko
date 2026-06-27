@@ -88,6 +88,14 @@ A workflow with no named human gate is incomplete, even if it never fires.
 
 Instantiate [`workflow-contract`](../../templates/workflow-contract.md) for the workflow. The filled-in contract is the inspectable proof that all four requirements are met — a reviewer can read it and see whether the validator is genuinely independent and where the human gate sits. A workflow without a filled contract has not met this skill's bar.
 
+## Briefing the agents — a guide, not a fifth gate
+
+The four requirements above govern the **loop**. Dispatching an agent *inside* the loop is a separate concern: it is **briefing**, not gating. A mochiko agent is a self-contained professional that **degrades gracefully** — a thin brief yields a worse result, not a broken one. So [`agent-dispatch`](../../templates/agent-dispatch.md) is a caller-side *briefing guide* that raises loop quality; it is **not** a fifth requirement, and an under-filled brief does not by itself make a loop unsound.
+
+The one place briefing and loop-soundness meet is **requirement 2**: independence is carried by *who the caller dispatches* — a different agent running a different skill to grade than to produce — never by a line in a persona. A persona that *declares* itself independent or workflow-agnostic has told you nothing; the structure either separates producer from validator or it does not.
+
+**Keep personas decoupled with the keystone test.** For every line of an agent persona (or skill): *would this be true of this professional on **any** job? → craft, keep. Does it only make sense inside **one** workflow? → coupling, cut.* Intrinsic traits survive (a reviewer *is* independent and skeptical; an author does not grade their own work — integrity, true everywhere). This-loop machinery — sibling-agent names, "dispatch," modes/paths/phases, "workflow-agnostic" meta-labels — goes. Decoupling is proven by that **absence**, not by a declaration of it. (Full doctrine + the grep-checkable deny-list: `AGENT-DECOUPLING-SYNTHESIS.md`.)
+
 ## Red Flags — STOP and fix the loop
 
 If you notice yourself thinking any of these, the loop is unsound. Stop and repair it:
@@ -116,5 +124,6 @@ If you notice yourself thinking any of these, the loop is unsound. Stop and repa
 ## Related
 
 - [`workflow-contract` template](../../templates/workflow-contract.md) — the fill-in form this skill governs
+- [`agent-dispatch` template](../../templates/agent-dispatch.md) — the caller-side briefing guide for each dispatch inside the loop (not a fifth gate)
 - `verify-output` — the done-condition checker that operationalizes requirements 1–2 for the transformer
 - See `ROADMAP.md` ("The sound-loop doctrine") and `agent-skills-research/synthesis/my-framework.md` for the source techniques

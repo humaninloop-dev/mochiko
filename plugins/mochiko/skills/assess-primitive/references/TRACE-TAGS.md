@@ -26,7 +26,7 @@ A transformation is honest only if **every responsibility the primitive currentl
 ```
 TRACE: principal-architect
   - greenfield constitution authoring        → kept
-  - constitution quality grading             → moved-to-validator (new constitution-validator agent)
+  - constitution quality grading             → moved-to-validator (new independent validator agent)
   - cross-artifact feasibility review         → folded-into-skill (orphaned procedure → new skill)
   - brownfield analysis orchestration         → moved-to-lead (supervisor sequences analysis-codebase)
   - duplicated procedure prose in persona     → dedupe (lives in the skill, not the agent)

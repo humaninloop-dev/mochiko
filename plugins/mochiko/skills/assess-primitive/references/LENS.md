@@ -86,8 +86,8 @@ Apply each check, weighted by the Step-1 branch (IS-a-loop vs PLAYS-a-role vs ar
 - **Classification** — user-invoked or model-invoked? (assign if absent)
 - **Discoverability** — is it (or should it be) in the router?
 - **Reliable model-invocation** — graded, exact-phrase triggers in `description`? (agent-consumed skills describe work-context, not "when user says")
-- **Agent↔skill composition** — persona-vs-procedure split clean?
-- **Producer↔validator pairing** — does its artifact have an independent validator?
+- **Agent↔skill composition** — persona-vs-procedure split clean? **Decoupled?** Grep the deny-list (sibling-agent names, `dispatch`, `workflow-agnostic`/independence-by-declaration meta-labels, injected workflow modes/paths/phases in a persona); independence stated by *role*, not by an agent name. Keystone-test the survivors: true-of-this-professional-on-any-job stays, only-in-one-workflow is coupling to cut.
+- **Producer↔validator pairing** — does its artifact have an independent validator (different agent + different skill), guaranteed structurally rather than declared in a persona?
 - **Sound-loop** — does the loop it sits in have a done-condition / independent validation / human gate?
 
 **Output:** present/missing per convention; the loop gaps to fill (these feed `reconcile-cluster`'s rehome-orchestration).

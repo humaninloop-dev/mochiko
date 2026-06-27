@@ -1,6 +1,6 @@
 ---
 name: validation-constitution
-description: This skill MUST be invoked to grade a DRAFTED constitution against the quality checklist — three-part-structure check (enforcement/testability/rationale), anti-pattern scan, placeholder scan, quantification enforcement, and semantic version-bump determination — emitting a binary PASS/FAIL verdict plus a fix list. SHOULD also invoke whenever the setup loop's validate step needs an independent grade of a constitution produced by mochiko:authoring-constitution (greenfield or brownfield mode), or when re-validating after a FAIL-loop revision. The validator-side skill of the constitution producer↔validator pair; defaults to FAIL; consumed by the constitution-validator agent, never the author.
+description: This skill MUST be invoked to grade a DRAFTED constitution against the quality checklist — three-part-structure check (enforcement/testability/rationale), anti-pattern scan, placeholder scan, quantification enforcement, and semantic version-bump determination — emitting a binary PASS/FAIL verdict plus a fix list. SHOULD also invoke whenever the setup loop's validate step needs an independent grade of a constitution produced by mochiko:authoring-constitution (greenfield or brownfield mode), or when re-validating after a FAIL-loop revision. The validator-side skill of the constitution producer↔validator pair; defaults to FAIL; run by an independent validator (a different agent than the author), never the author.
 ---
 
 # Validating Constitution

@@ -22,8 +22,8 @@ A primitive is in mochiko form when it is **kernel-free**, satisfies the **five 
 1. **Classification** — declares user-invoked or model-invoked; user-invoked may call model-invoked, never each other.
 2. **Discoverability** — registered in the `mochiko` router with when-to-reach-it guidance.
 3. **Reliable model-invocation** — model-invoked skills carry graded, exact-phrase, work-context triggers.
-4. **Agent↔skill composition** — agents declare a `skills:` list; persona in the agent, procedure in the skill.
-5. **Producer↔validator pairing** — reviewable artifacts get an independent validator (different agent + different skill), or correctness is machine-decidable.
+4. **Agent↔skill composition** — agents declare a `skills:` list and lean on those skills when the work is in their domain. The persona carries *self-sufficient method + judgment + standards* (competent even when no skill fits); the skill carries the *exact procedure*. A persona names no workflow, no sibling agent, no "dispatch" — decoupling is proven by that **absence**, enforced by the keystone test (*true of this professional on any job → keep; only-in-this-workflow → cut*). Caller-side context lives in `agent-dispatch.md`, never the persona.
+5. **Producer↔validator pairing** — reviewable artifacts get an independent validator, and independence is **structural**: a different agent running a different skill grades than produced it, guaranteed by the loop — never asserted in a persona. (Or correctness is machine-decidable and the check degenerates to a deterministic assert.)
 
 → Conventions detail: `ROADMAP.md`. Sound-loop rules: **`loop-discipline`** + **`workflow-contract`**.
 
@@ -71,7 +71,8 @@ Every primitive gets **one body treatment × one structural move**, plus a wirin
 | Per-disposition recipes + wiring pass | `plugins/mochiko/skills/transform-recipes/` (+ `references/`) |
 | Done-condition checker (conformance + trace audit) | `plugins/mochiko/skills/verify-output/SKILL.md` |
 | Library index / discoverability | `plugins/mochiko/skills/mochiko/SKILL.md` (router) |
-| The producer / validator personas | `plugins/mochiko/agents/transform-producer.md`, `transform-validator.md` |
+| The producer / validator personas | `plugins/mochiko/agents/transform-producer.md`, `validator.md` (one generic independent grader) |
+| The caller-side dispatch briefing | `plugins/mochiko/templates/agent-dispatch.md` |
 | The orchestration (lead/referee) | `plugins/mochiko/commands/transform-cluster.md` |
 
 ## How to run it

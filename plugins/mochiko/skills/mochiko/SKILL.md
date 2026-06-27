@@ -28,7 +28,7 @@ The kernel-free successor to human-in-loop. Discipline lives in the skill librar
         ▼
    triage ─→ assess-primitive ─→ reconcile-cluster ─→ transform-recipes ─→ verify-output
              (per primitive)      (cluster scope)      (apply disposition)  (independent gate)
-        agents:  transform-producer ───────────────────────────────┘  transform-validator
+        agents:  transform-producer ───────────────────────────────┘  validator
         lead/referee = the transform-cluster command supervisor
 ```
 
@@ -39,6 +39,7 @@ The kernel-free successor to human-in-loop. Discipline lives in the skill librar
 |-------|------------|
 | `loop-discipline` | designing/reviewing any workflow or agent loop; deciding if a loop is sound; filling a `workflow-contract` |
 | `workflow-contract` (template) | instantiating the contract for a specific workflow |
+| `agent-dispatch` (template) | briefing each agent dispatch inside a loop — a caller-side guide, not a gate |
 
 ### Transformer cluster (model-invoked — auto-reached during a transform run)
 | Skill | Reach when |
@@ -46,14 +47,14 @@ The kernel-free successor to human-in-loop. Discipline lives in the skill librar
 | `assess-primitive` | diagnosing one primitive: class, disposition, responsibility trace |
 | `reconcile-cluster` | resolving cross-primitive moves (pair/split/merge/promote) + rehoming orchestration, after all primitives are assessed |
 | `transform-recipes` | applying a finalized disposition; running the convention-wiring pass every port pays |
-| `verify-output` | independently grading a transformed artifact (run by `transform-validator`, never the producer) |
+| `verify-output` | independently grading a transformed artifact (run by an independent validator, never the author) |
 
 ### Setup cluster (model-invoked — auto-reached during a `/mochiko:setup` run)
 | Skill | Reach when |
 |-------|------------|
 | `authoring-constitution` | authoring or amending a constitution at `.mochiko/memory/constitution.md` — greenfield (opinionated defaults: Essential Floor + recommended architectural principles) OR brownfield (codify existing patterns: Essential Floor + Emergent Ceiling, from `codebase-analysis.md`); one skill, both modes |
 | `analysis-codebase` | analyzing an existing codebase during a brownfield setup run — deterministic stack detection (`detect-stack.sh`) + architecture/convention extraction + Essential-Floor status assessment, producing `.mochiko/memory/codebase-analysis.md` |
-| `validation-constitution` | independently grading a drafted constitution: three-part-structure check, anti-pattern + placeholder scan, quantification, semantic version-bump → binary PASS/FAIL + fix list (run by `constitution-validator`, never the author) |
+| `validation-constitution` | independently grading a drafted constitution: three-part-structure check, anti-pattern + placeholder scan, quantification, semantic version-bump → binary PASS/FAIL + fix list (run by an independent validator, never the author) |
 
 ### Entry point (user-invoked — you run it)
 | Command | Reach when |
@@ -65,14 +66,13 @@ The kernel-free successor to human-in-loop. Discipline lives in the skill librar
 | Agent | Role |
 |-------|------|
 | `transform-producer` | assesses, reconciles, and applies recipes (skills: assess-primitive, reconcile-cluster, transform-recipes) |
-| `transform-validator` | independently grades against the done-condition (skills: verify-output) |
-| `principal-architect` | setup-cluster PRODUCER — authors/updates the constitution (greenfield + brownfield) and runs codebase analysis (skills: authoring-constitution, analysis-codebase); never grades its own output |
-| `constitution-validator` | independently grades the drafted constitution against the quality checklist; defaults to FAIL, authors nothing (skills: validation-constitution) |
+| `principal-architect` | setup-cluster author — authors/updates the constitution (greenfield + brownfield) and runs codebase analysis (skills: authoring-constitution, analysis-codebase) |
+| `validator` | one generic independent grader for any cluster — grades a finished artifact against a checklist, defaults to FAIL, authors nothing (skills: validation-constitution, verify-output) |
 
 ## Operating rules (context hygiene)
 
 - **Keep assess → reconcile in one unbroken context** per cluster — reconcile reasons across all the assessments at once; a fresh context loses the sibling picture.
-- **Always cross the producer↔validator boundary.** The producer never grades its own output; dispatch `transform-validator` for `verify-output`. The router will not let you mount both on one agent.
+- **Always cross the producer↔validator boundary.** The author never grades its own output; dispatch the independent `validator` for `verify-output`. Never mount producer and validator skills on one agent.
 - **The lead is the command, not an agent.** Verdict ownership, reconciliation arbitration, and the human gate live in `transform-cluster.md`.
 - **One cluster per run.** Transform a whole workflow-cluster together (ROADMAP: "port the cluster together"), not stray primitives.
 

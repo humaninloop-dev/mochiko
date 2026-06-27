@@ -297,4 +297,4 @@ ls -d test/ tests/ spec/ __tests__/ 2>/dev/null
 
 - **For brownfield constitutions**: **REQUIRED:** Use `mochiko:authoring-constitution` (brownfield branch) after analysis
 - **For greenfield projects**: **OPTIONAL:** Use `mochiko:authoring-constitution` directly
-- **For validation**: **OPTIONAL:** `mochiko:validation-constitution` grades the constitution (run by the independent `constitution-validator`, not the producer)
+- **For validation**: **OPTIONAL:** `mochiko:validation-constitution` grades the constitution (run by an independent validator — a different agent than the author)
