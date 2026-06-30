@@ -24,6 +24,15 @@ Each recipe is body-treatment steps + structural-move steps, then the always-on 
 3. Every original responsibility must reappear with a trace tag — redesign is the highest-risk path for silent loss.
 > Example: `brownfield-constitution` (redesign its body into a branch of the merged sibling).
 
+> **Command/workflow target shape (altitude).** When the primitive being redesigned IS a loop, the target is a *thin* supervisor whose only job is to stitch a team to a goal under a contract:
+> - **goal + lead declaration** (one or two lines);
+> - **the team casting** — which agent produces, which independent agent grades;
+> - **the per-workflow contract parameters** — *this* loop's done-condition end-state, the cap number, the named human-gate placements;
+> - **workflow-unique steps** — anything true only of this workflow (e.g. input enrichment, a prerequisite check, evidence→phase recovery);
+> - **references**, not restatements — `loop-discipline` for the four rules/tiers/gap-routing/anti-rationalization, `agent-dispatch` for briefing, and a **filled `workflow-contract` artifact** instead of an inlined contract.
+>
+> Do NOT restate the four requirements, validator tiers, gap-routing, or a filled contract inline — those `dedupe` into `loop-discipline` (see `assess-primitive` Step 5 Altitude rule). Generic discipline restated inline is the verbosity defect `verify-output` fails.
+
 ### `drop`
 1. Confirm the responsibility genuinely should not exist in mochiko (usually kernel/DAG/catalog plumbing).
 2. Remove the primitive (or the responsibility).
@@ -56,8 +65,9 @@ Each recipe is body-treatment steps + structural-move steps, then the always-on 
 
 ### `absorb-into-lead`
 1. Confirm the primitive is pure orchestration with no reusable body.
-2. Move its logic into the `commands/*.md` supervisor (the lead).
-3. Delete the now-empty primitive; tag its responsibilities `moved-to-lead`.
+2. Move only **workflow-specific** orchestration into the `commands/*.md` supervisor (the lead): sequencing unique to this workflow, this loop's contract parameters, workflow-unique steps. Tag these `moved-to-lead`.
+3. **Do not absorb generic loop-discipline.** Default-FAIL, independence, the four guards, validator tiers, tamper-proofing, gap-routing, and anti-rationalization already live in `loop-discipline` (+ `workflow-contract`, `agent-dispatch`) — the lead **references** them and those responsibilities are tagged `dedupe`. Absorbing them copies the kernel into the command body (the altitude defect).
+4. Delete the now-empty primitive.
 
 ### `rewire-cluster`
 1. Leave the body essentially as-is.
@@ -75,3 +85,4 @@ Runs on every recipe above:
 3. **Triggers** — graded exact-phrase, work-context triggers for model-invoked skills.
 4. **Path rebinding** — `.humaninloop/` → `.mochiko/`; drop kernel/catalog/MCP paths; record `kept-but-rebind`.
 5. **Decouple** — remove sibling-agent names (independence by *role*), the word `dispatch`, workflow modes/paths/phases in a persona, and "workflow-agnostic" meta-labels; keystone-test the rest.
+6. **Single-source / de-duplicate** — reference shared doctrine + templates (`loop-discipline`, `workflow-contract`, `agent-dispatch`) rather than restating them; a command references `loop-discipline` and fills a contract artifact, never inlines the rules or a filled contract.

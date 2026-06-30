@@ -16,8 +16,8 @@ sound-loop doctrine it enforces.
 
 ## What "mochiko form" means
 
-A primitive is in mochiko form when it is **kernel-free**, satisfies the **five conventions**, and is
-**correctly placed inside a sound loop**:
+A primitive is in mochiko form when it is **kernel-free**, satisfies the **five conventions**, is
+**correctly placed inside a sound loop**, and sits at the **right altitude**:
 
 1. **Classification** — declares user-invoked or model-invoked; user-invoked may call model-invoked, never each other.
 2. **Discoverability** — registered in the `mochiko` router with when-to-reach-it guidance.
@@ -26,6 +26,8 @@ A primitive is in mochiko form when it is **kernel-free**, satisfies the **five 
 5. **Producer↔validator pairing** — reviewable artifacts get an independent validator, and independence is **structural**: a different agent running a different skill grades than produced it, guaranteed by the loop — never asserted in a persona. (Or correctness is machine-decidable and the check degenerates to a deterministic assert.)
 
 → Conventions detail: `ROADMAP.md`. Sound-loop rules: **`loop-discipline`** + **`workflow-contract`**.
+
+**Altitude (single-sourcing).** A command's job is to stitch a team to a goal under a contract — it *references* shared doctrine, it does not restate it. A primitive that re-inlines what `loop-discipline`, `workflow-contract`, or `agent-dispatch` already single-source is at the wrong altitude (the verbosity defect), even when it is kernel-free and convention-clean. Enforced by `verify-output`'s altitude scan; full rationale in [`COMMAND-ALTITUDE-SYNTHESIS.md`](COMMAND-ALTITUDE-SYNTHESIS.md).
 
 ## The done-condition (default FAIL)
 

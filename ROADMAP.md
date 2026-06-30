@@ -65,6 +65,7 @@ These are inspectable: a workflow's filled-in contract shows whether its validat
 | Human-gate placement | On gated dispositions + escalations, plus a named acceptance gate on the deliverable | Confident | Resolves OQ#1; ran cleanly across `setup` + `specify` — routine PASSes run unattended, gated dispositions/escalations stop. (2026-06-27) |
 | Memory model | In-session + workspace-as-state under `.mochiko/` (no separate context-handoff file) | Confident | Resolves OQ#3; `setup` + `specify` both dissolve the HIL context carrier into the lead; state recovery reads workspace evidence, not a context `phase` field. (2026-06-27) |
 | Gap Classification (FAIL-routing) | Folded into `loop-discipline` (knowledge→research / preference→human gate / scope→halt) | Confident | Universal FAIL-routing a real workflow (`specify`) needed now; hosting it per-workflow would re-author the doctrine; keystone-tested workflow-agnostic. (2026-06-27) |
+| Command altitude / single-sourcing | A command stitches a team to a goal under a contract — it *references* shared doctrine, never restates it; enforced by `verify-output`'s altitude scan | Confident | The first ports re-inlined `loop-discipline` (a `single-source-rule-fanout` violation); fixed at the recipe (assess→`dedupe`, transform→thin-redesign + wiring step 6, verify→altitude gate) and retrofitted `specify` (329→66) + `setup` (385→78), both independently verified. See `COMMAND-ALTITUDE-SYNTHESIS.md` (2026-06-30) |
 
 ---
 
@@ -123,6 +124,12 @@ Four structural axes carry over from the synthesis; the fifth is promoted from h
 - **Gap Classification folded into `loop-discipline`.** strategy-core's FAIL-routing taxonomy is universal (it lived in the cross-workflow skill), specify needed it now, and hosting it per-workflow would re-author the doctrine — so it was added to the shared skill (human-gate-accepted), keystone-tested to stay workflow-agnostic. The run's one edit to a foundational shared primitive.
 
 ---
+
+### Command altitude — references, not restatements (2026-06-30)
+
+- **Observed:** the first two ports (`setup` 385 lines, `specify` 329) read like the deleted kernel transliterated into prose — they re-stated `loop-discipline` up to three times (intro + an inlined filled contract + a "Supervisor behaviors" footer), inlined a filled `workflow-contract`, and transliterated every `Task()`/`AskUserQuestion()` payload.
+- **Diagnosis:** not a style problem — a `single-source-rule-fanout` violation. The discipline already lives single-sourced in `loop-discipline` + `workflow-contract`; the commands duplicated it. The transform recipe caused it: `absorb-into-lead` swept *generic* discipline into the command body and no step single-sourced it back out.
+- **Chosen:** a command's irreducible job is to stitch a team to a goal under a contract — declare the team, state the per-workflow contract parameters, reference shared doctrine, name the human gates. Fixed at the recipe (assess `dedupe` rule; transform thin-redesign + wiring step 6; `verify-output` altitude scan = grep floor + keystone ceiling), then retrofitted `specify` (329→66) and `setup` (385→78), both independently verified PASS via the standard producer↔validator pass. **Substrate** (native agent teams vs. `Task`-subagents) deferred until a thin command exists to evaluate against — it now does. Full record: [`COMMAND-ALTITUDE-SYNTHESIS.md`](COMMAND-ALTITUDE-SYNTHESIS.md).
 
 ## Open Questions (live)
 

@@ -20,6 +20,8 @@ These carry forward from `agent-skills-research/synthesis/my-framework.md` — u
 
 - [ ] **`implement` orchestration** — parallel TDD slices genuinely need dependency-ordering; do native Claude Code Workflow `pipeline()` calls suffice, or does implement need a lightweight artifact DAG? Resolve before scoping the `implement` workflow.
 
+- [ ] **Command orchestration substrate — agent teams vs. `Task`-subagents** — DEFERRED from the 2026-06-30 altitude work (`COMMAND-ALTITUDE-SYNTHESIS.md`). The thin commands are substrate-agnostic and currently use one-shot `Task`-subagent dispatch under a prose lead, though the ROADMAP thesis says "agent teams handle orchestration" — a thesis↔build gap. Inputs already gathered: agent teams give producer↔validator independence for free (isolated context) **but** are experimental/flag-gated (`CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS`), ephemeral, **ignore the `skills:` frontmatter for teammates** (hits convention axis 4), and their direct teammate↔teammate messaging can *dilute* the artifact-grounded independence an adversarial pair needs. A thin command now exists to evaluate against. Relates to the Claude-Code portability item.
+
 ---
 
 ## Workflow scoping
@@ -64,6 +66,14 @@ Deferred work from the specify-cluster port (**core-only** scope). Full run reco
 - [ ] **`strategy-implementation` will likely dissolve into `loop-discipline`** when `implement` ports — the same dedupe `strategy-core` + `strategy-specification` took this run. REGISTRY notes this on its row.
 - [ ] **`ui-designer` + design track remain deferred** (out of specify-core; the specify catalog never invokes them). Scope with a dedicated design cluster or `plan`. HIL sources: `agents/ui-designer.md` + `skills/{analysis-screenshot, authoring-design-system, patterns-flow-mapping, patterns-interface-design}`.
 - [ ] **Dogfood `/mochiko:specify` for real (behavioral validation).** The port passed *structural* verification but has not run end-to-end. Run it on a real feature to confirm the produce→critique loop converges, the advocate's gap list flows back as a targeted revision, the gap-classification routing (Explore / clarification / halt) fires sensibly, and the G3 acceptance gate works. Pairs with the still-open dogfood-`/mochiko:setup` check.
+
+## Command-altitude pass (2026-06-30)
+
+The first two command ports were re-transformed to the thin "stitch a team to a goal under a contract" altitude, and the transform recipe was fixed so future commands come out thin by construction. Full record: `COMMAND-ALTITUDE-SYNTHESIS.md`; decision in ROADMAP (Key Decisions + Decision Trail).
+
+- [x] **Fix the transform recipe for altitude → DONE.** `assess-primitive` (generic discipline → `dedupe`, not `moved-to-lead`), `transform-recipes` (thin-command `redesign` target + wiring step 6 single-source), `verify-output` (altitude / single-source conformance item 8 = grep floor + keystone ceiling), `PLAYBOOK` (altitude in the mochiko-form definition).
+- [x] **Retrofit `specify` + `setup` → DONE.** specify 329→66, setup 385→78; both independently verified PASS (8 conformance items + altitude scan + trace audit; every workflow-specific responsibility preserved, generic discipline deduped to references).
+- [ ] **Apply the altitude shape to `plan`/`tasks`/`implement` when they port.** The fixed recipe now produces it by default and `verify-output`'s altitude gate fails a verbose command. Watch the "what you own" footer (the densest line) if a command grows.
 
 ## Ideas / candidates
 

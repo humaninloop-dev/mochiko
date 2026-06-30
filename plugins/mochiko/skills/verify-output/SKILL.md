@@ -7,7 +7,7 @@ description: This skill MUST be invoked to grade a transformed primitive against
 
 ## Overview
 
-Grade a transformed primitive (or cluster) against the transform done-condition: it must (a) **conform** — satisfy the five conventions, sit correctly in a sound loop, and be kernel-free — and (b) carry a **complete responsibility trace** — every original responsibility accounted for, every drop justified. The verdict **defaults to FAIL** and only flips on evidence Read from the artifact itself.
+Grade a transformed primitive (or cluster) against the transform done-condition: it must (a) **conform** — satisfy the five conventions, sit correctly in a sound loop, be kernel-free, and sit at the right **altitude** (reference shared doctrine, never restate it) — and (b) carry a **complete responsibility trace** — every original responsibility accounted for, every drop justified. The verdict **defaults to FAIL** and only flips on evidence Read from the artifact itself.
 
 **This skill is the independent gate.** It MUST be run by someone who did **not** author the artifact — a different agent than the one that produced it. An author grading their own work is not verification — it is the exact self-grade failure mochiko exists to prevent.
 
@@ -43,6 +43,7 @@ Read the artifact. For each item, confirm against the file — not the report.
 | 5 | **Producer↔validator pairing** | If the artifact emits a reviewable artifact, an independent validator (different agent + different skill) exists — independence is *structural*, never a persona's self-declaration — or correctness is machine-decidable and the check degenerates to a deterministic assert (note which). |
 | 6 | **Sound-loop placement** | The loop it sits in has a pre-declared done-condition (default FAIL), independent validation, bounded iteration, and a named human gate — i.e. a filled `workflow-contract`. |
 | 7 | **Kernel-free** | No Python/MCP brain code, no DAG/catalog dependency, no orchestration plumbing reintroduced. |
+| 8 | **Altitude / single-source** (commands & loops) | The artifact **references** shared doctrine rather than restating it: a command cites `loop-discipline`, fills a `workflow-contract` *artifact* (does not inline one), and inlines none of the four rules / validator tiers / gap-routing / anti-rationalization. Every substantive line is workflow-specific or a reference. Run the altitude scan below. |
 
 Any item not confirmed against the artifact → **FAIL**.
 
@@ -55,6 +56,21 @@ Decoupling is proven by the **absence** of workflow coupling, not by a declarati
 **Keystone test (judge each survivor):** *would this line be true of this professional on **any** job? → craft, keep. Does it only make sense inside **one** workflow? → coupling, FAIL.* Intrinsic traits survive (a reviewer *is* independent; an author does not grade their own work — integrity). This-loop machinery fails.
 
 **Allowed (do not flag):** role words — "graded by an independent validator," "the command lead owns the loop," "by someone who did not author it" — state independence by *role*, not by an agent name. Skills legitimately keep their own disposition **and** procedure (they run agent-less). Caller-side files (`commands/*.md`, the router, `agent-dispatch.md`) may name agents and own workflow knowledge — the scan targets **personas and skills**, not callers.
+
+### The altitude scan (Part A item 8 — grep first, then judge)
+
+Applies to `command`/`workflow` artifacts (and any primitive that could restate shared doctrine). Altitude is proven by the **absence** of duplicated doctrine: the command stitches a team to a goal under a contract and *references* the rest. Grep first, then judge each survivor with the keystone test.
+
+**Deterministic floor (grep — each hit is a candidate FAIL):**
+
+- **Inlined filled contract** — the command body contains a filled `workflow-contract` (section headers like "Producer ↔ Validator", "Bounded iteration", "DEFAULTS TO FAIL", an independence-check line). The contract must be a runtime *artifact* (e.g. `.mochiko/<workflow>/contract.md`), referenced — not pasted into the command.
+- **Restated doctrine** — the command restates rules that live in `loop-discipline`: the validator trustworthiness tiers, the three gap-types and their routing, tamper-proofing prose, anti-rationalization lists ("you cannot rationalize", "exhaustion ≠ done"), or a "Supervisor behaviors" section that re-lists the four requirements.
+- **Missing reference** — the command does NOT cite `loop-discipline` by name (it must).
+- **Transliterated mechanics** — literal `Task(...)` / `AskUserQuestion(...)` payload bodies or a hand-coded round counter spelled out where a reference to `agent-dispatch` + the contract's cap would do.
+
+**Keystone test (judge each survivor):** *would this line be true of any sound mochiko loop? → it belongs in `loop-discipline`; FAIL as duplication. Is it true only of THIS workflow? → it is the per-workflow parameter the command legitimately owns; keep.*
+
+**Allowed (do not flag):** a one-line goal + lead declaration; the team-casting table; *this* loop's contract parameters (done-condition end-state, the cap number, the named gate placements); workflow-unique steps; an evidence→phase recovery table; and references by name to `loop-discipline` / `workflow-contract` / `agent-dispatch`. A brief restatement of a *workflow-specific* done-condition is craft, not duplication.
 
 ## Part B: Trace audit
 
@@ -96,6 +112,7 @@ If you catch yourself thinking any of these, you are rationalizing a PASS:
 - "Close enough to pass"
 - "The persona *says* it's workflow-agnostic, so it's decoupled" (a declaration is not the absence — grep the deny-list)
 - "I wrote part of this, so I know it's good" (you should not be grading it at all)
+- "The command spells out the loop, so it's clearly disciplined" (restated doctrine is the altitude defect — it must *reference* `loop-discipline`, not copy it)
 
 ## Common Rationalizations
 
@@ -106,6 +123,7 @@ If you catch yourself thinking any of these, you are rationalizing a PASS:
 | "One missing responsibility is minor" | Silent capability loss is the failure this skill exists to catch. FAIL. |
 | "The drop is clearly justified" | Justification the lead accepted, in writing, or it's an unaccepted drop. FAIL. |
 | "It mostly conforms" | The verdict is binary. Mostly = FAIL with a fix list. |
+| "More inline detail = more disciplined" | Restated doctrine drifts from its single source and is the verbosity defect. Reference `loop-discipline`; fill a contract *artifact*. Inlined doctrine = FAIL. |
 
 ## Related
 

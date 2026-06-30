@@ -14,10 +14,10 @@ The transformer cluster — the dogfooded implementation of [`PLAYBOOK.md`](PLAY
 |--------|------|------|-------|
 | `[x]` | `loop-discipline` | skill | Doctrine: the four sound-loop rules |
 | `[x]` | `workflow-contract` | template | Fill-in loop contract (default FAIL) |
-| `[x]` | `assess-primitive` | skill | Branch-by-class + 7-check lens + responsibility trace |
+| `[x]` | `assess-primitive` | skill | Branch-by-class + 7-check lens + responsibility trace; **+ command-altitude rule (generic discipline → `dedupe`, not `moved-to-lead`) (2026-06-30)** |
 | `[x]` | `reconcile-cluster` | skill | Relational verdicts + rehome-orchestration |
-| `[x]` | `transform-recipes` | skill | Per-disposition recipes + convention-wiring pass |
-| `[x]` | `verify-output` | skill | Done-condition checker (independent gate) |
+| `[x]` | `transform-recipes` | skill | Per-disposition recipes + convention-wiring pass; **+ thin-command `redesign` target + wiring step 6 (single-source) (2026-06-30)** |
+| `[x]` | `verify-output` | skill | Done-condition checker (independent gate); **+ altitude / single-source check (item 8) (2026-06-30)** |
 | `[x]` | `mochiko` | skill | User-invoked router / library index |
 | `[x]` | `transform-producer` | agent | Assess / reconcile / apply |
 | `[x]` | `validator` | agent | Generic independent grader — `verify-output` + `validation-constitution` (merges the former `transform-validator` + `constitution-validator`) |
@@ -31,8 +31,8 @@ The transformer cluster — the dogfooded implementation of [`PLAYBOOK.md`](PLAY
 
 | Status | Name | v3 Notes |
 |--------|------|----------|
-| `[x]` | `setup` | Ported 2026-06-27 — redesigned into a sound loop (default-FAIL done-condition, independent `validator`, escalate-on-cap, NEW constitution-acceptance human gate). Core-only scope. |
-| `[x]` | `specify` | Ported 2026-06-27 — adversarial 2-member team (analyst↔advocate), kernel-free; default-FAIL loop + NEW human acceptance gate; `state-analyst` dissolved into the lead; strategy skills deduped into `loop-discipline`. Core-only scope. |
+| `[x]` | `setup` | Ported 2026-06-27 — redesigned into a sound loop (default-FAIL done-condition, independent `validator`, escalate-on-cap, NEW constitution-acceptance human gate). Core-only scope. **Re-transformed to thin/altitude shape 2026-06-30 (385→78 lines; independently verified PASS) — see `COMMAND-ALTITUDE-SYNTHESIS.md`.** |
+| `[x]` | `specify` | Ported 2026-06-27 — adversarial 2-member team (analyst↔advocate), kernel-free; default-FAIL loop + NEW human acceptance gate; `state-analyst` dissolved into the lead; strategy skills deduped into `loop-discipline`. Core-only scope. **Re-transformed to thin/altitude shape 2026-06-30 (329→66 lines; independently verified PASS) — see `COMMAND-ALTITUDE-SYNTHESIS.md`.** |
 | `[ ]` | `plan` | TBD |
 | `[ ]` | `tasks` | TBD |
 | `[ ]` | `implement` | TBD — needs most thought on parallel TDD slice orchestration |

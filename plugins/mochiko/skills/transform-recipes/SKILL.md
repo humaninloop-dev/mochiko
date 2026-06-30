@@ -36,7 +36,7 @@ Recipes are branches in this one skill, keyed to the vocabulary. Full step lists
 |-------|------|-------------|
 | `keep-verbatim` | body is already mochiko-clean | copy the body unchanged; still run the wiring pass |
 | `port-with-edits` | mostly good, localized fixes | edit the specific lines; preserve structure and voice |
-| `redesign` | body assumes a kernel/DAG/catalog, or the approach is wrong for mochiko | rewrite around mochiko primitives; carry the responsibilities, not the mechanism |
+| `redesign` | body assumes a kernel/DAG/catalog, or the approach is wrong for mochiko | rewrite around mochiko primitives; carry the responsibilities, not the mechanism. For a **command**, the target is the thin shape — goal + team + per-workflow contract params + references (see RECIPES.md) |
 | `drop` | the responsibility shouldn't exist in mochiko | remove; record `dropped + reason`; still emit a (degenerate) trace so the drop is auditable |
 
 ### Structural move (placement)
@@ -47,18 +47,19 @@ Recipes are branches in this one skill, keyed to the vocabulary. Full step lists
 | `split` (1→N) | emits an artifact with no independent validator, or one agent produces+grades | spin out the partner (esp. producer↔validator); divide responsibilities by the trace |
 | `merge-into-sibling` (N→1) | thin variant over a shared core | fold into the sibling as a branch; keep only the variant-unique slice |
 | `promote` | a check that confers a validator role | elevate to an independent validator's load-bearing tool |
-| `absorb-into-lead` | pure orchestration with no reusable body | move into the command supervisor; leave no orphan skill |
+| `absorb-into-lead` | pure orchestration with no reusable body | move **workflow-specific** orchestration into the command supervisor; **reference** (don't copy) what `loop-discipline`/`workflow-contract`/`agent-dispatch` already own; leave no orphan skill |
 | `rewire-cluster` | body is fine; the problem is the agent/workflow around it | leave the body; fix the `skills:` list, the dispatch, the gates |
 
 ## The convention-wiring pass (ALWAYS runs)
 
-Even `keep-verbatim × standalone` pays this. The floor is never zero-work. Run all five:
+Even `keep-verbatim × standalone` pays this. The floor is never zero-work. Run all six:
 
 1. **Classification tag** — set user-invoked (`disable-model-invocation: true`) or model-invoked (default). Agents get a `skills:` list; the persona-vs-procedure split is honored.
 2. **Router registration** — register the primitive in the `mochiko` router with when-to-reach-it guidance (user-invoked entries are *hinted*, not fired).
 3. **Trigger phrasing** — for model-invoked skills, graded exact-phrase triggers in `description` describing the *work context*. (Agent-consumed skills describe transformation work, not "when the user says…", to avoid false auto-trigger expectations.)
 4. **Path rebinding** — `.humaninloop/` → `.mochiko/`; drop catalog/MCP/DAG paths; fix prerequisite handoffs. Record each as `kept-but-rebind`.
 5. **Decouple persona/skill** — scrub any persona or skill of workflow coupling: remove sibling-agent names (state independence by *role*), the word "dispatch," injected workflow modes/paths/phases in a persona, and "workflow-agnostic"/independence-by-declaration meta-labels. Keystone-test the rest (true of this professional on any job → keep); push caller-side context to `agent-dispatch.md`, not the primitive. Audited by `verify-output`'s decoupling scan.
+6. **Single-source / de-duplicate** — reference shared doctrine and templates (`loop-discipline`, `workflow-contract`, `agent-dispatch`) rather than restating them. A `command`/`workflow` MUST reference `loop-discipline` and **fill a `workflow-contract` artifact at runtime** — never inline the four rules, the validator tiers, gap-routing, or a filled contract. Restated doctrine is the altitude defect `verify-output` now fails.
 
 ## Step sequence
 
@@ -76,7 +77,7 @@ TRANSFORM: <primitive-name>
 Applied:   <body> × <structural> + wiring-pass
 Artifacts: <paths created/edited>
 New partners: <any split/promote products, e.g. new validator agent + skill>
-Wiring:    classification=<...> router=<registered?> triggers=<...> rebinds=<list>
+Wiring:    classification=<...> router=<registered?> triggers=<...> rebinds=<list> single-source=<doctrine referenced, not restated>
 Trace (realized): <responsibility → final tag>...
 ```
 
@@ -90,6 +91,7 @@ Trace (realized): <responsibility → final tag>...
 | Dropping without a trace | Even `drop` emits a trace so the removed responsibilities are auditable. |
 | Splitting producer + validator skills onto one agent | The split exists precisely to keep them on different agents. |
 | Leaving workflow vocab in a persona/skill | The wiring pass decouples it. A persona naming a sibling agent or "dispatch," or declaring itself "workflow-agnostic," fails `verify-output`. |
+| Restating `loop-discipline` in a command body | Reference it, don't copy it. A command that inlines the four rules, the validator tiers, or a filled contract fails `verify-output`'s altitude check. Fill a contract *artifact* instead. |
 
 ## Related
 

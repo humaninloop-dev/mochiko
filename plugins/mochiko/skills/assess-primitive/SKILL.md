@@ -31,7 +31,7 @@ A command/workflow **IS** a loop; an agent/skill **PLAYS a role in** a loop. Run
 
 | Class | Branch | What matters most |
 |-------|--------|-------------------|
-| **command / workflow** | IS-a-loop | who drives the loop, the done-condition, where validation + human gates sit (or are missing) |
+| **command / workflow** | IS-a-loop | who drives the loop, the done-condition, where validation + human gates sit (or are missing), **and which responsibilities are generic loop-discipline (→ dedupe/reference) vs. workflow-specific (→ lead)** — see *Altitude rule* in Step 5 |
 | **agent** | PLAYS-a-role | persona vs procedure split, the team-role it confers, its `skills:` independence, **persona decoupling** (no sibling-agent names / "dispatch" / workflow modes-paths-phases / "workflow-agnostic" meta-labels) |
 | **skill** | PLAYS-a-role | consumed-procedure vs emits-artifact, trigger reliability, sibling overlap, **decoupling** (no agent names; independence stated by *role*) |
 | **template** | artifact | placeholders, what consumes it, path coupling |
@@ -77,6 +77,13 @@ Decomposition done right: list every responsibility the primitive currently hold
 
 `kept` · `kept-but-rebind` · `folded-into-skill` · `moved-to-lead` · `moved-to-validator` · `moved-to-sibling-skill` · `moved-to-other-cluster` · `dedupe` · `dropped + reason`
 
+**Altitude rule for `command`/`workflow` primitives (prevents re-inlining the kernel).** A dissolving supervisor's responsibilities are NOT all `moved-to-lead`. Splitting them is what keeps the ported command thin:
+
+- **Generic loop-discipline** — the default-FAIL done-condition *mechanics*, producer↔validator independence, the four iteration guards, validator trustworthiness tiers, tamper-proofing, gap-type routing, anti-rationalization — is already single-sourced in `loop-discipline` (+ `workflow-contract`, `agent-dispatch`). Tag it `dedupe` (the command *references* it); **never** `moved-to-lead`, which copies the doctrine into the command body — the verbosity defect.
+- **Workflow-specific orchestration** — *this* loop's done-condition parameters (measurable end state, the cap number, the named gate placements), workflow-unique steps (e.g. input enrichment, a prerequisite check), and the team casting (which agent produces, which grades). Only these are `moved-to-lead`.
+
+Apply the keystone test to each responsibility: *true of any sound loop → `dedupe` into `loop-discipline`; only true of THIS workflow → `moved-to-lead`.*
+
 The trace is this skill's **done-condition**: assessment is not complete until every responsibility carries a tag. The trace later doubles as the `REGISTRY.md` migration record and is audited by `verify-output`.
 
 ## Output format
@@ -100,6 +107,7 @@ Reconcile flags: <none | the relational signals for reconcile-cluster>
 | Calling orchestration "kernel" when it's a markdown supervisor | Check 1 separates them. Most HIL setup-cluster coupling is supervisor, not kernel. |
 | Skipping the trace because the disposition is `keep-verbatim` | Even kept primitives pay the convention-wiring floor and need a complete trace. |
 | Running classification checks against an agent | Classification is a category error for agents; loop-ownership sits on the workflow. Use the branch. |
+| Tagging generic loop-discipline `moved-to-lead` | That re-inlines the doctrine into the command — the altitude defect. Generic discipline is `dedupe`→`loop-discipline`; only workflow-specific orchestration moves to the lead. |
 
 ## Related
 
