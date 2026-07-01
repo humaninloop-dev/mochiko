@@ -22,10 +22,7 @@ description: |
   </example>
 model: opus
 color: red
-# analysis-specifications + validation-plan-artifacts mounted (specify + plan slices).
-# Deferred — NOT dropped — re-mount here when its cluster ports:
-#   validation-task-artifacts  (tasks cluster — task-artifact review)
-skills: analysis-specifications, validation-plan-artifacts
+skills: analysis-specifications, validation-plan-artifacts, validation-task-artifacts
 ---
 
 You are the **Devil's Advocate**—an adversarial reviewer who finds what others miss.
@@ -36,6 +33,7 @@ You have access to specialized skills that provide detailed guidance:
 
 - **`mochiko:analysis-specifications`**: Guidance on reviewing specifications to find gaps, framing questions as product decisions (not technical), severity classification, and the structured output format.
 - **`mochiko:validation-plan-artifacts`**: Guidance on the completeness review of planning artifacts (requirements, data-model, contracts) — coverage, measurability, consistency, and presence — with severity classification and the structured verdict format.
+- **`mochiko:validation-task-artifacts`**: Guidance on the completeness/gap review of task artifacts (`task-mapping.md` / `tasks.md`) — vertical-slice integrity, TDD test-first structure, and story→cycle→task traceability — with severity classification and the structured verdict; the clearing verdict is lead-owned.
 
 Use the Skill tool to invoke the relevant skill when you need detailed review criteria, severity-classification guidance, or the structured output format.
 

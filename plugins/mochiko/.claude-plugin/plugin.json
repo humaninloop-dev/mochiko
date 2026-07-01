@@ -24,6 +24,7 @@
     "./agents/validator.md",
     "./agents/requirements-analyst.md",
     "./agents/devils-advocate.md",
-    "./agents/technical-analyst.md"
+    "./agents/technical-analyst.md",
+    "./agents/task-architect.md"
   ]
 }
