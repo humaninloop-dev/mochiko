@@ -90,6 +90,13 @@ The kernel-free successor to human-in-loop. Discipline lives in the skill librar
 | `tasks-template` (template) | the `tasks.md` deliverable the `task-architect` fills — the cycle→TDD-task skeleton (foundation sequential + feature `[P]`, per-task file path, `[US#]`, `[EXTEND]`/`[MODIFY]` markers, `**TEST:**` block, and the Story→Cycle table as a derived echo of `task-mapping.md`) |
 | `taskarchitect-report-template` (template) | the `task-architect` producer's per-round self-disclosure (what was produced, vertical-slice rationale, TDD structure) — filled alongside `task-mapping.md`/`tasks.md`, read directly by the lead; carries no verdict |
 
+### Implement / execute cluster (model-invoked — auto-reached during a `/mochiko:implement` run)
+| Skill | Reach when |
+|-------|------------|
+| `executing-tdd-cycle` | executing an accepted cycle's task list at runtime — red/green/refactor TDD, runtime task parsing, targeted rework when specific tasks fail, and the `cycle-report.md` schema; the `staff-engineer` producer's execution skill. Runtime cycle **EXECUTION** — for design-time cycle *structuring* / test-first ordering, that's `patterns-vertical-tdd` (Tasks) |
+| `testing-end-user` | runtime verification against real infrastructure — parsing `**TEST:**` tasks, executing Setup/Action/Assert, capturing evidence, running the quality gates + classifying results by exit code, the runtime CLI/GUI/SUBJECTIVE confidence classification, and the verification report + checkpoint presentation; the `qa-engineer` validator's skill (mounted on qa **only**, never on staff) |
+| `brownfield-integration` | safely **EXTEND**ing/**MODIFY**ing existing code at implement-time — the read-before-write checklist, interface preservation, and conflict detection when a cycle touches an existing codebase; the `staff-engineer` producer's 2nd skill (the `[EXTEND]`/`[MODIFY]` marker vocabulary itself is owned by `patterns-vertical-tdd`) |
+
 ### Entry point (user-invoked — you run it)
 | Command | Reach when |
 |---------|------------|
@@ -98,6 +105,7 @@ The kernel-free successor to human-in-loop. Discipline lives in the skill librar
 | `/mochiko:specify` | you want to create a feature specification via the adversarial analyst↔advocate loop (the requirements-analyst authors `spec.md`, the devils-advocate stress-tests it) with a human acceptance gate |
 | `/mochiko:plan` | you want to create a feature's analysis→design implementation plan via the producer→two-reviewer loop (technical-analyst authors; principal-architect grades feasibility, devils-advocate grades completeness) with a human acceptance gate on `plan.md` |
 | `/mochiko:tasks` | you want to structure an accepted plan into implementation tasks — `task-mapping.md` (story→cycle mapping) + `tasks.md` (cycle→TDD tasks) — via the task-architect→devils-advocate loop with a human acceptance gate on `tasks.md`; next step `/mochiko:implement` |
+| `/mochiko:implement` | you want to turn an accepted `tasks.md` into working, verified code — cycle-by-cycle (foundation → feature) via the staff-engineer→qa-engineer producer→verifier loop, with a confidence-based per-cycle gate and a named final-acceptance gate on the implementation |
 
 ### Agents (dispatched by the supervisor)
 | Agent | Role |
@@ -108,6 +116,8 @@ The kernel-free successor to human-in-loop. Discipline lives in the skill librar
 | `devils-advocate` | **cross-workflow** adversarial reviewer — specify-cluster critic (grounded, severity-bucketed spec-gap review), plan-cluster **completeness reviewer** (coverage / measurability / consistency / presence over the plan artifacts), **and** tasks-cluster **task-artifact reviewer** (vertical-slice integrity, TDD structure, story→cycle→task traceability over `task-mapping.md`/`tasks.md`); recommends a verdict that feeds the lead's clearing decision, never the gate (skills: analysis-specifications, validation-plan-artifacts, validation-task-artifacts) |
 | `technical-analyst` | plan-cluster PRODUCER — authors the six analysis+design artifacts (requirements · constraints-and-decisions · NFRs · data-model · API contracts · quickstart); never grades its own output (skills: authoring-technical-requirements, patterns-technical-decisions, patterns-entity-modeling, patterns-api-contracts) |
 | `task-architect` | tasks-cluster PRODUCER — structures an accepted plan into implementation tasks (`task-mapping.md` story→cycle mapping + slice rationale, then `tasks.md` cycle-based TDD task list); never grades its own output (skills: patterns-vertical-tdd) |
+| `staff-engineer` | implement-cluster PRODUCER — implements each cycle through red/green/refactor TDD and brownfield EXTEND/MODIFY integration; emits an honest `cycle-report.md`; never grades its own output; the verification skill is never mounted here (skills: executing-tdd-cycle, brownfield-integration) |
+| `qa-engineer` | implement-cluster VALIDATOR — independently verifies each cycle against real infrastructure (quality-gate exit codes + captured evidence), emits a verification report + checkpoint recommendation that feeds the lead's verdict; grades a different agent's work, mounts no producer skill (skills: testing-end-user) |
 | `validator` | one generic independent grader for any cluster — grades a finished artifact against a checklist, defaults to FAIL, authors nothing (skills: validation-constitution, verify-output) |
 
 ## Operating rules (context hygiene)

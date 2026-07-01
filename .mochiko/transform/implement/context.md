@@ -1,0 +1,65 @@
+# Transform Run Context — cluster `implement`
+
+**Command:** `/mochiko:transform-cluster implement` · **Lead/referee:** the transform-cluster supervisor (this session)
+**Scope:** implement-**core** (user-selected at intake) · **Date opened:** 2026-07-01
+
+## User request (verbatim)
+
+> i want to transform the implement cluster from human in loop. ask any questions you may have during the process
+
+## Intake decisions (human gate — Phase 0, answered via AskUserQuestion)
+
+The `implement` cluster carried the migration's one open **blocking** design decision. Three were surfaced at intake; all three resolved to the recommended option:
+
+1. **Orchestration model → Sequential-first, thin lead.** Cycles execute in dependency order (foundation-before-feature) under a thin prose lead with Task-subagent dispatch — as HIL itself does, and consistent with all 4 prior thin ports. **No** native-Workflow-`pipeline()`/`parallel()` and **no** artifact-DAG this run; parallelism is deferred as a `deliberate-shortcut-ledger` entry pending dogfooding. **This closes the BACKLOG `implement` orchestration item + ROADMAP OQ#5 as "sequential-first; parallel + kernel deferred."**
+2. **Ported workflow's own human gate → Confidence-based + final acceptance.** Preserve HIL's runtime classification: deterministic CLI verifications that 100% pass auto-approve; GUI / subjective / any-failure always checkpoint; plus a named final acceptance gate before the workflow reports done. Maps to `loop-discipline`'s "low validator-confidence only" placement. (This is the *designed-in* gate of the ported artifact — distinct from the transform run's own gate in `contract.md` §4.)
+3. **Scope → Core-only.** 7 primitives (below). Defer the governance template (`approved-domain-deps.md`) and cross-cutting utilities (`using-git-worktrees`, `using-github-issues`, `syncing-claude-md`) to their own tracks. Consistent with all 4 prior ports.
+
+## Resolved primitive list (implement-core, 7)
+
+| # | Primitive | Path (HIL) | Class | Anticipated disposition *(producer confirms at assess)* |
+|---|-----------|------------|-------|----------------------------------------------------------|
+| P1 | `implement` command | `commands/implement.md` (303 ln) | command | **redesign → thin sound-loop**; the DAG-Supervisor + State-Analyst delegation dissolve into a thin sequential lead (the biggest orchestration rehome of any port) |
+| P2 | `staff-engineer` agent | `agents/staff-engineer.md` (95 ln) | agent | port-with-edits (producer; decouple — fix-mode is workflow-machinery) |
+| P3 | `qa-engineer` agent | `agents/qa-engineer.md` (93 ln) | agent | port-with-edits (independent validator; decouple) |
+| P4 | `executing-tdd-cycle` skill | `skills/executing-tdd-cycle/` (164 ln + 3 refs) | skill | port-with-edits (staff-engineer's core; hold the design↔runtime boundary vs `patterns-vertical-tdd`) |
+| P5 | `testing-end-user` skill | `skills/testing-end-user/` (280 ln + 4 refs) | skill | port-with-edits (qa's core; **reclaims the parked `**TEST:**` runtime-classification** from the tasks port) |
+| P6 | `brownfield-integration` skill | `skills/brownfield-integration/` (130 ln) | skill | port (staff-engineer's 2nd skill; **resolves the setup-run REGISTRY mis-file** → home is implement) |
+| P7 | `strategy-implementation` skill | `skills/strategy-implementation/` (90 ln) | skill | **dissolve into `loop-discipline`** (5th consecutive strategy dissolution); workflow-specific survivors rehome to the lead |
+
+## Excluded / already-handled (not assessed — confirmed by REGISTRY)
+
+- `catalogs/implement-catalog.json` (212 ln) — brain-mediated DAG, `[-]` excluded (kernel-free).
+- `scripts/check-prerequisites.sh`, `common.sh`, `create-new-feature.sh`, `setup-plan.sh` — brain/MCP scripts, `[-]` excluded.
+- `templates/context-template.md` — already **absorbed-into-lead** by prior runs (memory-model, 4× confirmed); implement's use rebinds to the lead + workspace-as-state, not a carried artifact.
+
+## Deferred (rebound by reference only — scope=core-only)
+
+- `approved-domain-deps.md` — governance/constitution artifact (reviewed by "constitution approvers"; follows constitution versioning); already softened to prose in the setup port. Reference-stub only.
+- `using-git-worktrees`, `using-github-issues`, `syncing-claude-md` — cross-cutting utilities, not implement-specific.
+- `validation-plan-artifacts` Phase-A0 codebase-discovery reclaim — brownfield/discovery track, not implement-core.
+
+## Parked responsibilities this cluster must reclaim (from prior-run follow-ups)
+
+- **qa `**TEST:**` runtime-classification** (CLI/GUI/SUBJECTIVE auto-approve vs human-checkpoint) — parked from the tasks port → reclaimed by `testing-end-user` (P5). It is already present in the HIL `testing-end-user` body ("Task Classification").
+- **`patterns-vertical-tdd` ↔ `executing-tdd-cycle` boundary** — confirm design-time *structuring* (patterns-vertical-tdd, tasks) stays disjoint from runtime *execution* (executing-tdd-cycle, P4); shared discipline banner OK, no duplicated substance.
+
+---
+
+## Running log
+
+- **2026-07-01 — Phase 0 complete.** Cluster resolved (7 core primitives); three intake decisions answered at the human gate (all recommended options); `contract.md` filled and audited against `loop-discipline`'s four requirements (all satisfied, no open brackets). Proceeding to Phase 1 (per-primitive assessment).
+- **2026-07-01 — Phase 1 complete.** All 7 primitives assessed (7 parallel `transform-producer` dispatches; assessments in `assess-*.md`). Dispositions: P1 `redesign × absorb-into-lead`; P2/P3/P4/P5/P6 `port-with-edits × standalone`; P7 `drop` (dissolve into `loop-discipline` + rehome to P1). No contradictions; assessments cross-validate. **Converged flag-set (all resolvable, feed reconcile):**
+  1. **The rehome map** — P1's a–g orchestration constraints + gate placements land ONCE on the thin lead. P7's 6 `moved-to-lead` survivors are the SAME responsibilities as P1's (P7 = doctrine source, P1 = consumer); MERGE P7-FR-B into P1-FR-1; do not double-home. **Nuance:** implement is the INVERSE of setup — the producer↔validator pair (staff↔qa) already exists; the rehome adds the missing *gates* + moves *verdict-ownership* onto the lead, it does not add a missing validator.
+  2. **Producer↔validator casting** — staff produces ≠ qa grades; already structurally correct (disjoint skills, different agents); reconcile confirms + wires execute-then-verify + lead-owned verdict.
+  3. **Fix-mode split** — craft→P2 persona; routing/trigger/bounds→lead (cross P1+P2+P4+P7).
+  4. **Confidence-gate three-way split** — classification *procedure*→P5; conservative *judgment*→P3 persona; *placement + final-acceptance wiring*→lead.
+  5. **Single-source dedupes vs `patterns-vertical-tdd`** (canonical author, tasks cluster) — the `**TEST:**` grammar (P5 restates it → dedupe/reference) + the `[EXTEND]`/`[MODIFY]` marker grammar (P6 restates it → dedupe/reference). Consume-by-reference, NOT merge (disjoint by altitude+cluster).
+  6. **REGISTRY correction** — `brownfield-integration` row moves Setup-cluster → Implement-cluster (Phase 5).
+  - **No new agent, no new skill required.** Open question for reconcile: whether the `cycle-report` / `verification-report` formats (currently in P4/P5 skill `references/`) stay there or extract to `templates/` — lead: keep in skill references (runtime-artifact formats, tightly coupled), unlike the plan/tasks producer self-disclosure reports. Reconcile decides; human gate confirms.
+  - **No `loop-discipline` edit needed** (P7 adjudicated: nothing genuinely-universal-but-missing; the family's one universal gap, Gap Classification, was already folded in during specify).
+- **2026-07-01 — Phase 2 reconcile complete + human gate CLEARED.** `reconcile.md` written; zero open flags (all 20 relational signals resolved). Human gate (contract §4a): **Accept — proceed to transform** (referee-stress-tested vs intake decisions + 4 prior ports, found sound); report-format call → **keep in skill `references/`** (not extracted to `templates/`). Finalized dispositions: P1 `redesign × absorb-into-lead`; P2–P6 `port-with-edits × standalone`; P7 `drop`. Proceeding to Phase 3 (transform) — Wave 1: 6 parallel artifact transforms (P1–P6); Wave 2: single cluster-wide wiring pass (router + `plugin.json`); P7 realized in P1 (no artifact).
+- **2026-07-01 — Phase 3 complete (transform + wiring).** Wave 1: 6 artifacts written (traces in `transform-*.md`). `implement.md` 80 ln (thin; between tasks-77/plan-82; `implement-contract.md` = per-run workspace instantiation, same pattern as tasks — no stray file). `staff-engineer.md` 89 ln (mode-section dissolved). `qa-engineer.md` (3 cycle decouples; Tier-1 spine intact). `executing-tdd-cycle/` 133 ln + 3 refs (`**TEST:**`=0; cycle-report kept in refs; boundary xref added). `testing-end-user/` + 4 refs (grammar deduped to patterns-vertical-tdd; CLI/GUI/SUBJECTIVE reclaim + exit-code determinism intact). `brownfield-integration.md` 132 ln (marker deduped; 0 drops). Wave 2: wiring PASS — plugin.json +2 agents (skills/commands are globs), router Implement-cluster section added; independent verify: mounts resolve, `testing-end-user` qa-only, `strategy-implementation` grep=0, `humaninloop:`/kernel tokens=0. Proceeding to Phase 4 (independent verification).
+- **2026-07-01 — Phase 5 complete. RUN CLOSED.** `report.md` written; `REGISTRY.md` (7 edits — implement/staff/qa/executing/testing `[x]`, brownfield-integration MOVED setup→implement `[x]`, strategy-implementation `[-]`), `ROADMAP.md` (Key Decision row + OQ#5 RESOLVED + Decision Trail entry), `BACKLOG.md` (orchestration + scoping items closed, 3 prior follow-ups marked DONE, altitude-rollout `[x]`, new Implement-port follow-ups section) all updated + lead-verified. Finalize agent independently corrected a factual error in the lead's brief ("5th"→"3rd" strategy dissolution). **The `implement` cluster is ported; the command-port series is complete (all 5 mochiko commands thin); the strategy family is fully dissolved; ROADMAP OQ#5 is resolved.**
+- **2026-07-01 — Phase 4 complete + DONE-CONDITION MET.** 7 independent `mochiko:validator` verifications (6 per-primitive + 1 cluster-integration), all **PASS — single round, zero required fixes** (verdicts in `verify-*.md`). P1 altitude clean (contract referenced-not-inlined; footer workflow-specific; `grep strategy`=0); P2 decoupling zero-residual on all surfaces; P3 body byte-identical bar 6 rebinds, Tier-1 determinism intact; P4 boundary holds (`**TEST:**`=0, sibling untouched); P5 grammar dedupe confirmed + reclaim + exit-code determinism intact; P6 marker dedupe + 0 drops + disjoint; cluster integration PASS (router complete, mounts resolve, independence structural, no dangling/dissolved). Validators noted the artifacts were *better-wired than their own Wave-1 traces claimed* (router landed before verification). **Done-condition (contract §1) MET; Phase-2 human gate cleared; no Phase-4 escalation. Run DONE.** Proceeding to Phase 5 (finalize).
+- **2026-07-01 — Phase 2 complete.** `reconcile-cluster` run once, cluster-wide; full reconciliation in `reconcile.md`. **Zero open flags** (all 20 relational signals across the 7 assessments resolved). Built the single authoritative **rehome map**: constraints (a)–(g) + both gate placements land ONCE on the thin lead, split `dedupe-to-loop-discipline` (referenced) vs `rehome-to-lead` (workflow-specific); every P7 survivor MERGED into its P1 twin (`=P1 L6/L7/L8/L9/L2`), no double-home. Stated the **inverse-of-setup nuance** (the producer↔validator pair already exists; the rehome adds the missing gates + moves verdict-ownership to the lead — it does not construct a validator). Four seams resolved: (2) producer↔validator casting confirmed (staff produces ≠ qa grades, disjoint skills, verdict lead-owned, `testing-end-user`/`verify-*` never on staff); (3) fix-mode split line-by-line (craft→P2 persona, routing/trigger/max-passes→lead, procedure→P4, backbone→loop-discipline; persona must not name trigger or bound); (4) confidence-gate three-way (classification→P5, judgment→P3, placement→lead, all land); (5) BOTH grammars deduped/referenced vs `patterns-vertical-tdd` (confirmed canonical owner of `**TEST:**` + `[EXTEND]`/`[MODIFY]`) — reference-not-merge. **Report-format call:** KEEP cycle-report (P4) + verification-report (P5) formats in skill `references/`, do NOT extract to `templates/` (runtime-artifact formats coupled to execution; unlike plan/tasks producer self-disclosure). **New primitives: NONE** — no new agent, no new skill, no `loop-discipline` edit; the thin lead absorbs orchestration. Finalized dispositions: P1 `redesign × absorb-into-lead`; P2–P6 `port-with-edits × standalone`; P7 `drop` (survivors→lead + doctrine→loop-discipline, no residual). Gated bundle enumerated for the human gate (9 items). Phase-5 REGISTRY delta noted (`brownfield-integration` Setup→Implement; `strategy-implementation`→`[-]` dissolved). **Human gate (contract §4a) fires next** on the gated bundle before Phase 3.

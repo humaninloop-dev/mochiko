@@ -35,7 +35,7 @@ The transformer cluster — the dogfooded implementation of [`PLAYBOOK.md`](PLAY
 | `[x]` | `specify` | Ported 2026-06-27 — adversarial 2-member team (analyst↔advocate), kernel-free; default-FAIL loop + NEW human acceptance gate; `state-analyst` dissolved into the lead; strategy skills deduped into `loop-discipline`. Core-only scope. **Re-transformed to thin/altitude shape 2026-06-30 (329→66 lines; independently verified PASS) — see `COMMAND-ALTITUDE-SYNTHESIS.md`.** |
 | `[x]` | `plan` | Ported 2026-07-01 — thin/altitude analysis→design loop (`plan.md`, 82 lines; independently verified PASS). **First cluster to run convention-5's two-form** (two distinct validators: `principal-architect`+`validation-feasibility` feasibility × `devils-advocate`+`validation-plan-artifacts` completeness), and the **first net-new command since the altitude fix** — thin by construction. Producer `technical-analyst`; lead owns verdict + 4 gates HIL lacked. Full run record: `.mochiko/transform/plan/`. |
 | `[x]` | `tasks` | Ported 2026-07-01 — thin/altitude Mapping→Tasks loop (`tasks.md`, 77 lines; independently verified PASS, single round). **RQ-A resolved = keep two artifacts** (`task-mapping.md` source of truth, `tasks.md` table derived echo). Single-reviewer **specify shape** (`task-architect` produces ↔ `devils-advocate`+`validation-task-artifacts` grades); lead owns verdict + 4 gates HIL lacked (default-FAIL, lead-owned verdict, cap+`TASKS_STOP`, G5 acceptance). **Decoupling doctrine held on the run's hardest surface** (task-architect: 5 sibling-names + phase-mode + context-file all cut, zero residual). Full run record: `.mochiko/transform/tasks/`. |
-| `[ ]` | `implement` | TBD — needs most thought on parallel TDD slice orchestration |
+| `[x]` | `implement` | Ported 2026-07-01 — thin **sequential** sound-loop (`implement.md`, 80 lines; independently verified PASS, single round). **Sequential-first per the orchestration decision** — `Task`-subagent dispatch under a thin lead (dependency-ordered cycles, as HIL runs); native `pipeline()`/`parallel()` + any kernel/DAG deferred to dogfooding (a `deliberate-shortcut-ledger` entry, not a silent drop). Producer `staff-engineer` ↔ independent **Tier-1** validator `qa-engineer` (real-infra + exit codes); lead owns verdict + confidence-based per-cycle gate + named final-acceptance gate. **5th/final command port — altitude rollout complete.** Full run record: `.mochiko/transform/implement/`. |
 | `[ ]` | `audit` | TBD |
 | `[-]` | `techspec` | Deprecated in HIL (merged into `plan`); **confirmed excluded (plan port, 2026-07-01)** — `plan` IS the merged form; techspec's `integrations.md`/`data-sensitivity.md` fold into `data-model.md` (sensitivity) + `contracts/api.yaml` (x-integration) |
 
@@ -51,8 +51,8 @@ The transformer cluster — the dogfooded implementation of [`PLAYBOOK.md`](PLAY
 | `[x]` | `requirements-analyst` | `specify` — producer (skills: `authoring-requirements`, `authoring-user-stories`) |
 | `[x]` | `technical-analyst` | `plan` — producer (skills: authoring-technical-requirements, patterns-technical-decisions, patterns-entity-modeling, patterns-api-contracts); authors the 6 analysis+design artifacts, never grades |
 | `[x]` | `task-architect` | `tasks` producer — decoupled (skills: `patterns-vertical-tdd`); authors `task-mapping.md` + `tasks.md`, never grades. Ported 2026-07-01; report → `taskarchitect-report-template` (no self-verdict). The run's heaviest port + hardest decoupling surface (zero residual deny-list tokens) |
-| `[ ]` | `staff-engineer` | `implement` |
-| `[ ]` | `qa-engineer` | `implement`, `audit` |
+| `[x]` | `staff-engineer` | `implement` producer (skills: `executing-tdd-cycle`, `brownfield-integration`) — writes code via TDD, emits `cycle-report.md`, never grades. Ported 2026-07-01; fix-mode decoupled (routing/trigger/max-passes → lead; intrinsic craft kept). Decoupling held on the run's hot surface ("Two Execution Modes" dissolved, zero residual) |
+| `[x]` | `qa-engineer` | `implement` **independent Tier-1 validator** (skill: `testing-end-user`) — verifies against real infra + quality-gate exit codes (deterministic), emits verification report + checkpoint, never produces. Ported 2026-07-01; the strongest (Tier-1 deterministic) validator of any cluster. **Also serves `audit`** (affinity) — reclaim when that cluster ports |
 | `[-]` | `state-analyst` | **Dissolved (kernel-free)** — specify slice absorbed into the `specify` command lead; non-kernel judgment deduped into `loop-discipline`; no standalone agent. plan/tasks/implement orchestration handled when those clusters port. |
 | `[ ]` | `ui-designer` | `specify`, `plan` — design-track; **deferred** from specify-core (catalog never invokes it) |
 
@@ -65,7 +65,7 @@ The transformer cluster — the dogfooded implementation of [`PLAYBOOK.md`](PLAY
 |--------|------|-------|
 | `[-]` | `strategy-core` | **Dissolved** — near-total dedupe into `loop-discipline` (specify run); **Gap Classification** taxonomy folded into `loop-discipline` |
 | `[-]` | `strategy-specification` | **Dissolved** — dedupe into `loop-discipline`; survivors (Input Assessment, targeted-revision, spec done-condition) → specify lead |
-| `[ ]` | `strategy-implementation` | Impl-pass strategy — expect the same dissolution into `loop-discipline` when `implement` ports |
+| `[-]` | `strategy-implementation` | **Dissolved** into `loop-discipline` (doctrine) + the implement lead (params) (implement port, 2026-07-01) — 3rd/final strategy dissolution (after `strategy-core` + `strategy-specification` in specify); zero residual, no `loop-discipline` edit needed. **Strategy family now fully dissolved** — no `strategy-*` skill survives for any workflow |
 | `[ ]` | `syncing-claude-md` | Cross-cutting — referenced by `setup` as a documented stub (not yet ported); port with its own cluster |
 | `[ ]` | `using-git-worktrees` | Cross-cutting utility |
 | `[ ]` | `using-github-issues` | Cross-cutting utility |
@@ -77,7 +77,6 @@ The transformer cluster — the dogfooded implementation of [`PLAYBOOK.md`](PLAY
 | `[x]` | `brownfield-constitution` | **Merged into `authoring-constitution`** (greenfield\|brownfield branch) — no standalone skill |
 | `[x]` | `validation-constitution` | Body kept verbatim; **promoted** onto the independent generic `validator` agent |
 | `[x]` | `analysis-codebase` | Setup-brownfield slice + `detect-stack.sh` (verbatim); collision/spec-plan modes deferred to spec/plan cluster; Essential-Floor deduped to authoring's canonical ref |
-| `[ ]` | `brownfield-integration` | Deferred — out of setup-core scope (REGISTRY mis-file; reads as implement-time) |
 
 ### Specify workflow cluster
 | Status | Name | Notes |
@@ -104,10 +103,11 @@ The transformer cluster — the dogfooded implementation of [`PLAYBOOK.md`](PLAY
 ### Implement / execute cluster
 | Status | Name | Notes |
 |--------|------|-------|
-| `[ ]` | `executing-tdd-cycle` | TDD cycle execution |
+| `[x]` | `executing-tdd-cycle` | Ported (implement, 2026-07-01) — `staff-engineer`'s core: runtime red/green/refactor + retry/fix HOW-craft + `cycle-report.md` format; the **runtime** side of the design↔runtime boundary vs `patterns-vertical-tdd` (design-time structuring) — held clean (`**TEST:**`=0, no duplicated substance); retry/fix routing deduped → `loop-discipline`, params → lead |
 | `[x]` | `validation-plan-artifacts` | Ported **via plan** (2026-07-01; re-filed implement→plan-cluster) — completeness mirror-checklist on `devils-advocate`; **absorbed `cross-artifact-checklist.md`**; feasibility checks deduped → `validation-feasibility` |
 | `[x]` | `validation-task-artifacts` | Ported (tasks, 2026-07-01) — the reviewer's task-artifact gap-finder on `devils-advocate`; gap report + recommended 3-state (**verdict lead-owned**, not clearing PASS/FAIL); embedded report templates deduped → `advocate-report-template`; disjoint boundary vs `validation-plan-artifacts` (task vs plan artifacts); two-phase Mapping/Tasks/Cross-Artifact checklists kept (Branch A); mirrors `patterns-vertical-tdd` |
-| `[ ]` | `testing-end-user` | End-user testing |
+| `[x]` | `testing-end-user` | Ported (implement, 2026-07-01) — `qa-engineer`'s core (independent **Tier-1** validator): detect/parse/execute `**TEST:**` tasks against real infra, evidence capture, result classification, deterministic quality-gate exit codes; **reclaims the parked CLI/GUI/SUBJECTIVE runtime-classification** (auto-approve vs human-checkpoint) from the tasks port; `**TEST:**` grammar deduped → `patterns-vertical-tdd` (canonical owner), keeps execution/parse semantics |
+| `[x]` | `brownfield-integration` | Ported (implement, 2026-07-01) — **mis-file corrected — home confirmed implement** (staff-engineer's 2nd skill); EXTEND/MODIFY consumption + read-before-write + interface preservation + conflict detection; `[EXTEND]`/`[MODIFY]` marker vocabulary deduped → `patterns-vertical-tdd` (canonical owner), keeps implement-time consumption/interface-impact semantics; 0 drops |
 
 ### Analysis / design cluster
 | Status | Name | Notes |
@@ -138,7 +138,7 @@ The transformer cluster — the dogfooded implementation of [`PLAYBOOK.md`](PLAY
 | `[x]` | `architect-report-template.md` | Ported (plan) — **renamed `feasibility-report-template.md`**; feasibility reviewer's report; 3-state incl. `infeasible`; Next-Steps routing lifted to lead; `type:` DAG frontmatter dropped |
 | `[x]` | `techanalyst-report-template.md` | Ported (plan) — producer self-disclosure; **`completion_status` dropped** (independence — verdict is lead-owned); iteration→round; brain-era counts demoted |
 | `[-]` | `cross-artifact-checklist.md` | **Folded into `validation-plan-artifacts`** (plan; orphan — no consumer + near-total dup; the tasks validator self-contains its own) |
-| `[ ]` | `approved-domain-deps.md` | `implement` |
+| `[ ]` | `approved-domain-deps.md` | `implement` — deferred (governance/constitution track; reference-stub) — confirmed out of implement-core scope (implement port, 2026-07-01) |
 
 ---
 
