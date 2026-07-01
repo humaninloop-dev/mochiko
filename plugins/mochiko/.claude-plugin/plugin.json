@@ -23,6 +23,7 @@
     "./agents/transform-producer.md",
     "./agents/validator.md",
     "./agents/requirements-analyst.md",
-    "./agents/devils-advocate.md"
+    "./agents/devils-advocate.md",
+    "./agents/technical-analyst.md"
   ]
 }

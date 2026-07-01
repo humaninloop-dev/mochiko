@@ -65,7 +65,22 @@ The kernel-free successor to human-in-loop. Discipline lives in the skill librar
 | `authoring-user-stories` | writing prioritized user stories (P1/P2/P3) with independently testable Given/When/Then acceptance scenarios |
 | `spec-template` (template) | the `spec.md` the analyst authors and the loop converges on — lead-seeded; header `status` carries the loop's done-condition |
 | `analyst-report-template` (template) | structuring the producer's per-round disclosure (summary, assumptions, what-changed-this-round) the lead reads directly |
-| `advocate-report-template` (template) | structuring the critic's grounded review (severity-bucketed gaps, clarifying questions, recommended status) the lead reads to own the verdict |
+| `advocate-report-template` (template) | **shared (specify + plan)** — structures the completeness reviewer's grounded review (severity-bucketed gaps, clarifying questions, recommended status) the lead reads to own the verdict; the plan completeness reviewer reuses it as-is |
+
+### Plan cluster (model-invoked — auto-reached during a `/mochiko:plan` run)
+| Skill | Reach when |
+|-------|------------|
+| `authoring-technical-requirements` | authoring the technical-requirements layer — TR-XXX decomposition, C-XXX hard constraints, NFR-XXX (numeric target + measurement method), IP-XXX provisioning, and the `constraints-and-decisions.md` artifact + C↔D / IP traceability; declares DS-XXX / INT-XXX as **analysis concerns only** (the per-attribute sensitivity taxonomy lives in `patterns-entity-modeling`, the per-endpoint `x-integration` boundary in `patterns-api-contracts`) |
+| `patterns-technical-decisions` | making/documenting a technology or architecture decision — evaluating ≥2 alternatives against weighted criteria, trade-offs + consequences, brownfield-alignment scoring, ADR record depth, marking NEEDS CLARIFICATION; owns the decision *technique* (the `constraints-and-decisions.md` artifact it fills is owned by `authoring-technical-requirements`) |
+| `patterns-entity-modeling` | modeling a feature's domain data — entities, attributes/conceptual types, relationships (cardinality + delete behavior), state machines, and per-attribute data-sensitivity classification (the canonical 4-level Public/Internal/Confidential/Restricted taxonomy); authors the canonical `data-model.md` — the single home for data-sensitivity |
+| `patterns-api-contracts` | designing the API-contract layer — user action → REST endpoint (method/idempotency/naming), request/response schemas (mapping data-model types to OpenAPI), error design, list pagination, and the per-endpoint `x-integration` boundary for endpoints wrapping external systems; assembles `contracts/api.yaml` — owns the API contract + x-integration format |
+| `validation-plan-artifacts` | independently grading the producer's plan artifacts for **completeness** — coverage / measurability / presence / cross-artifact consistency over the analysis + design sets → severity-classified gaps + 3-state `ready / needs-revision / critical-gaps` (the mirror-checklist half of the plan-review pair; an independent validator, never the author) |
+| `validation-feasibility` | adversarially grading the producer's plan artifacts for cross-artifact **feasibility** — contradiction / impossibility / buildability that no single artifact reveals → 3-state `feasible / needs-revision / infeasible` (the adversarial-critique half of the plan-review pair; the distinct `infeasible` = a business-level escalation; an independent reviewer, never the author) |
+| `plan-template` (template) | the `plan.md` deliverable the lead assembles at Phase 4 — rolling up Key Decisions · Infrastructure/IP-XXX (constraints-and-decisions) · Entities+Sensitivity (data-model) · Endpoints+Integration (contracts/api.yaml); the lead's fill-target |
+| `techanalyst-report-template` (template) | the technical-analyst producer's per-round self-disclosure (what was produced, what changed this round) — filled alongside the analysis/design artifacts, read directly by the lead + reviewers; carries no verdict |
+| `feasibility-report-template` (template) | the feasibility reviewer's cross-artifact critique — the contradiction taxonomies, the 3-state feasibility verdict, and the 4-field per-issue gate fuel the human gate reads |
+
+> The plan **completeness** reviewer reuses the shared `advocate-report-template` (registered under Specify, above) as-is — there is no plan-specific completeness report template.
 
 ### Entry point (user-invoked — you run it)
 | Command | Reach when |
@@ -73,14 +88,16 @@ The kernel-free successor to human-in-loop. Discipline lives in the skill librar
 | `/mochiko:transform-cluster <cluster>` | you want to transform a whole HIL primitive cluster into mochiko form |
 | `/mochiko:setup` | you want to create, amend, or brownfield-derive the project constitution (greenfield \| brownfield \| amend) under an independent author→validator loop with a human acceptance gate |
 | `/mochiko:specify` | you want to create a feature specification via the adversarial analyst↔advocate loop (the requirements-analyst authors `spec.md`, the devils-advocate stress-tests it) with a human acceptance gate |
+| `/mochiko:plan` | you want to create a feature's analysis→design implementation plan via the producer→two-reviewer loop (technical-analyst authors; principal-architect grades feasibility, devils-advocate grades completeness) with a human acceptance gate on `plan.md` |
 
 ### Agents (dispatched by the supervisor)
 | Agent | Role |
 |-------|------|
 | `transform-producer` | assesses, reconciles, and applies recipes (skills: assess-primitive, reconcile-cluster, transform-recipes) |
-| `principal-architect` | setup-cluster author — authors/updates the constitution (greenfield + brownfield) and runs codebase analysis (skills: authoring-constitution, analysis-codebase) |
+| `principal-architect` | **cross-workflow** — setup-cluster author (authors/updates the constitution, greenfield + brownfield; runs codebase analysis) **and** plan-cluster **feasibility reviewer** (grades the analyst's plan artifacts for cross-artifact buildability; grades a different agent's work, never its own authoring) (skills: authoring-constitution, analysis-codebase, validation-feasibility) |
 | `requirements-analyst` | specify-cluster producer — authors the feature `spec.md` (prioritized user stories + FR/SC requirements) (skills: authoring-requirements, authoring-user-stories) |
-| `devils-advocate` | specify-cluster adversarial critic — grounded, severity-bucketed gap review + a recommended verdict that feeds the lead's clearing decision (skills: analysis-specifications) |
+| `devils-advocate` | **cross-workflow** adversarial reviewer — specify-cluster critic (grounded, severity-bucketed spec-gap review) **and** plan-cluster **completeness reviewer** (coverage / measurability / consistency / presence over the plan artifacts); recommends a verdict that feeds the lead's clearing decision, never the gate (skills: analysis-specifications, validation-plan-artifacts) |
+| `technical-analyst` | plan-cluster PRODUCER — authors the six analysis+design artifacts (requirements · constraints-and-decisions · NFRs · data-model · API contracts · quickstart); never grades its own output (skills: authoring-technical-requirements, patterns-technical-decisions, patterns-entity-modeling, patterns-api-contracts) |
 | `validator` | one generic independent grader for any cluster — grades a finished artifact against a checklist, defaults to FAIL, authors nothing (skills: validation-constitution, verify-output) |
 
 ## Operating rules (context hygiene)
