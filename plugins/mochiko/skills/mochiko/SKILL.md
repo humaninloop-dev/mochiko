@@ -82,6 +82,14 @@ The kernel-free successor to human-in-loop. Discipline lives in the skill librar
 
 > The plan **completeness** reviewer reuses the shared `advocate-report-template` (registered under Specify, above) as-is — there is no plan-specific completeness report template.
 
+### Tasks cluster (model-invoked — auto-reached during a `/mochiko:tasks` run)
+| Skill | Reach when |
+|-------|------------|
+| `patterns-vertical-tdd` | structuring an accepted plan into implementation tasks — vertical-slice identification (foundation vs feature cycles), test-first cycle structure (red/green/refactor), the `**TEST:**` verification-task grammar, and story→cycle→task traceability; the `task-architect` producer's authoring skill (teaches the craft — the `tasks.md` skeleton it fills is `tasks-template`) |
+| `validation-task-artifacts` | independently grading the producer's task artifacts (`task-mapping.md` / `tasks.md`) for **completeness** — vertical-slice integrity, TDD test-first ordering, `**TEST:**` presence, cycle sizing, and story→cycle→task traceability → severity-classified gaps + 3-state `ready / needs-revision / critical-gaps` (the reviewer's skill; an independent validator, never the author). **Boundary:** this grades **task artifacts**; `validation-plan-artifacts` (Plan, above) grades **plan artifacts** — disjoint artifacts, disjoint checks |
+| `tasks-template` (template) | the `tasks.md` deliverable the `task-architect` fills — the cycle→TDD-task skeleton (foundation sequential + feature `[P]`, per-task file path, `[US#]`, `[EXTEND]`/`[MODIFY]` markers, `**TEST:**` block, and the Story→Cycle table as a derived echo of `task-mapping.md`) |
+| `taskarchitect-report-template` (template) | the `task-architect` producer's per-round self-disclosure (what was produced, vertical-slice rationale, TDD structure) — filled alongside `task-mapping.md`/`tasks.md`, read directly by the lead; carries no verdict |
+
 ### Entry point (user-invoked — you run it)
 | Command | Reach when |
 |---------|------------|
@@ -89,6 +97,7 @@ The kernel-free successor to human-in-loop. Discipline lives in the skill librar
 | `/mochiko:setup` | you want to create, amend, or brownfield-derive the project constitution (greenfield \| brownfield \| amend) under an independent author→validator loop with a human acceptance gate |
 | `/mochiko:specify` | you want to create a feature specification via the adversarial analyst↔advocate loop (the requirements-analyst authors `spec.md`, the devils-advocate stress-tests it) with a human acceptance gate |
 | `/mochiko:plan` | you want to create a feature's analysis→design implementation plan via the producer→two-reviewer loop (technical-analyst authors; principal-architect grades feasibility, devils-advocate grades completeness) with a human acceptance gate on `plan.md` |
+| `/mochiko:tasks` | you want to structure an accepted plan into implementation tasks — `task-mapping.md` (story→cycle mapping) + `tasks.md` (cycle→TDD tasks) — via the task-architect→devils-advocate loop with a human acceptance gate on `tasks.md`; next step `/mochiko:implement` |
 
 ### Agents (dispatched by the supervisor)
 | Agent | Role |
@@ -96,8 +105,9 @@ The kernel-free successor to human-in-loop. Discipline lives in the skill librar
 | `transform-producer` | assesses, reconciles, and applies recipes (skills: assess-primitive, reconcile-cluster, transform-recipes) |
 | `principal-architect` | **cross-workflow** — setup-cluster author (authors/updates the constitution, greenfield + brownfield; runs codebase analysis) **and** plan-cluster **feasibility reviewer** (grades the analyst's plan artifacts for cross-artifact buildability; grades a different agent's work, never its own authoring) (skills: authoring-constitution, analysis-codebase, validation-feasibility) |
 | `requirements-analyst` | specify-cluster producer — authors the feature `spec.md` (prioritized user stories + FR/SC requirements) (skills: authoring-requirements, authoring-user-stories) |
-| `devils-advocate` | **cross-workflow** adversarial reviewer — specify-cluster critic (grounded, severity-bucketed spec-gap review) **and** plan-cluster **completeness reviewer** (coverage / measurability / consistency / presence over the plan artifacts); recommends a verdict that feeds the lead's clearing decision, never the gate (skills: analysis-specifications, validation-plan-artifacts) |
+| `devils-advocate` | **cross-workflow** adversarial reviewer — specify-cluster critic (grounded, severity-bucketed spec-gap review), plan-cluster **completeness reviewer** (coverage / measurability / consistency / presence over the plan artifacts), **and** tasks-cluster **task-artifact reviewer** (vertical-slice integrity, TDD structure, story→cycle→task traceability over `task-mapping.md`/`tasks.md`); recommends a verdict that feeds the lead's clearing decision, never the gate (skills: analysis-specifications, validation-plan-artifacts, validation-task-artifacts) |
 | `technical-analyst` | plan-cluster PRODUCER — authors the six analysis+design artifacts (requirements · constraints-and-decisions · NFRs · data-model · API contracts · quickstart); never grades its own output (skills: authoring-technical-requirements, patterns-technical-decisions, patterns-entity-modeling, patterns-api-contracts) |
+| `task-architect` | tasks-cluster PRODUCER — structures an accepted plan into implementation tasks (`task-mapping.md` story→cycle mapping + slice rationale, then `tasks.md` cycle-based TDD task list); never grades its own output (skills: patterns-vertical-tdd) |
 | `validator` | one generic independent grader for any cluster — grades a finished artifact against a checklist, defaults to FAIL, authors nothing (skills: validation-constitution, verify-output) |
 
 ## Operating rules (context hygiene)
