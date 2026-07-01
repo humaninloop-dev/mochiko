@@ -33,11 +33,11 @@ The transformer cluster — the dogfooded implementation of [`PLAYBOOK.md`](PLAY
 |--------|------|----------|
 | `[x]` | `setup` | Ported 2026-06-27 — redesigned into a sound loop (default-FAIL done-condition, independent `validator`, escalate-on-cap, NEW constitution-acceptance human gate). Core-only scope. **Re-transformed to thin/altitude shape 2026-06-30 (385→78 lines; independently verified PASS) — see `COMMAND-ALTITUDE-SYNTHESIS.md`.** |
 | `[x]` | `specify` | Ported 2026-06-27 — adversarial 2-member team (analyst↔advocate), kernel-free; default-FAIL loop + NEW human acceptance gate; `state-analyst` dissolved into the lead; strategy skills deduped into `loop-discipline`. Core-only scope. **Re-transformed to thin/altitude shape 2026-06-30 (329→66 lines; independently verified PASS) — see `COMMAND-ALTITUDE-SYNTHESIS.md`.** |
-| `[ ]` | `plan` | TBD |
+| `[x]` | `plan` | Ported 2026-07-01 — thin/altitude analysis→design loop (`plan.md`, 82 lines; independently verified PASS). **First cluster to run convention-5's two-form** (two distinct validators: `principal-architect`+`validation-feasibility` feasibility × `devils-advocate`+`validation-plan-artifacts` completeness), and the **first net-new command since the altitude fix** — thin by construction. Producer `technical-analyst`; lead owns verdict + 4 gates HIL lacked. Full run record: `.mochiko/transform/plan/`. |
 | `[ ]` | `tasks` | TBD |
 | `[ ]` | `implement` | TBD — needs most thought on parallel TDD slice orchestration |
 | `[ ]` | `audit` | TBD |
-| `[-]` | `techspec` | Deprecated in HIL (merged into `plan`); evaluate when plan is ported |
+| `[-]` | `techspec` | Deprecated in HIL (merged into `plan`); **confirmed excluded (plan port, 2026-07-01)** — `plan` IS the merged form; techspec's `integrations.md`/`data-sensitivity.md` fold into `data-model.md` (sensitivity) + `contracts/api.yaml` (x-integration) |
 
 ---
 
@@ -45,11 +45,11 @@ The transformer cluster — the dogfooded implementation of [`PLAYBOOK.md`](PLAY
 
 | Status | Name | Workflow Affinity |
 |--------|------|-------------------|
-| `[x]` | `principal-architect` | `setup` — producer-only (skills: authoring-constitution, analysis-codebase); grading split to the generic `validator` |
+| `[x]` | `principal-architect` | `setup` producer (authoring-constitution, analysis-codebase) **+ `plan` feasibility reviewer** (validation-feasibility, re-broadened 2026-07-01) — produce-in-setup / review-in-plan (decoupling-legit); **G1: never re-mounts `validation-constitution`** (no constitution self-grade) |
 | `[x]` | `validator` | mochiko-native generic grader (see top table) — one independent grader serves `setup` (validation-constitution) + transform (verify-output); replaces the setup-specific `constitution-validator` born from the principal-architect split |
-| `[x]` | `devils-advocate` | `specify` — adversarial critic/validator (skill: `analysis-specifications`; `validation-plan-artifacts` + `validation-task-artifacts` deferred → re-mount when plan/tasks port) |
+| `[x]` | `devils-advocate` | `specify` critic (`analysis-specifications`) **+ `plan` completeness reviewer** (`validation-plan-artifacts` re-mounted 2026-07-01); `validation-task-artifacts` still stubbed (re-mount when tasks ports) |
 | `[x]` | `requirements-analyst` | `specify` — producer (skills: `authoring-requirements`, `authoring-user-stories`) |
-| `[ ]` | `technical-analyst` | `plan` |
+| `[x]` | `technical-analyst` | `plan` — producer (skills: authoring-technical-requirements, patterns-technical-decisions, patterns-entity-modeling, patterns-api-contracts); authors the 6 analysis+design artifacts, never grades |
 | `[ ]` | `task-architect` | `tasks` |
 | `[ ]` | `staff-engineer` | `implement` |
 | `[ ]` | `qa-engineer` | `implement`, `audit` |
@@ -90,21 +90,22 @@ The transformer cluster — the dogfooded implementation of [`PLAYBOOK.md`](PLAY
 | Status | Name | Notes |
 |--------|------|-------|
 | `[x]` | `authoring-requirements` | Ported **via specify** (re-filed plan→specify) — analyst's FR-XXX / SC-XXX authoring |
-| `[ ]` | `authoring-technical-requirements` | Tech requirements |
+| `[x]` | `authoring-technical-requirements` | Ported (plan, 2026-07-01) — owns TR/C/NFR/IP + `constraints-and-decisions.md` + C↔D/IP traceability; DS→`patterns-entity-modeling`, x-integration→`patterns-api-contracts`, technique→`patterns-technical-decisions` (thin declarations + refs) |
 | `[x]` | `authoring-user-stories` | Ported **via specify** (re-filed plan→specify) — analyst's P1/P2/P3 + Given/When/Then |
-| `[ ]` | `authoring-roadmap` | Roadmap authoring |
-| `[ ]` | `patterns-api-contracts` | API design patterns |
-| `[ ]` | `patterns-entity-modeling` | Data model patterns |
-| `[ ]` | `patterns-flow-mapping` | Flow design |
-| `[ ]` | `patterns-interface-design` | UI patterns |
-| `[ ]` | `patterns-technical-decisions` | ADR / decision records |
-| `[ ]` | `patterns-vertical-tdd` | Vertical slice patterns |
+| `[x]` | `patterns-api-contracts` | Ported (plan) — API contracts (OpenAPI) + **x-integration boundary authoring** (added — canonical home; repaired the dangling authoring-technical-requirements ref) |
+| `[x]` | `patterns-entity-modeling` | Ported (plan) — data-model + **canonical data-sensitivity 4-level taxonomy** (absorbed from authoring-technical-requirements; single `data-model.md` template) |
+| `[x]` | `patterns-technical-decisions` | Ported (plan) — decision technique / ADR; references authoring-technical-requirements for the `constraints-and-decisions.md` artifact (boundary + dedupe) |
+| `[x]` | `validation-feasibility` | **NEW — net-new, not a HIL port (plan, 2026-07-01).** Feasibility reviewer's adversarial-critique skill on `principal-architect`; cross-artifact contradiction / impossibility / buildability → 3-state incl. `infeasible`; the convention-5 **two-form** partner of `validation-plan-artifacts` (homes the feasibility review the setup PA port disclaimed) |
+| `[ ]` | `authoring-roadmap` | Roadmap authoring — **deferred** (setup-brownfield track, not plan-core) |
+| `[ ]` | `patterns-flow-mapping` | Flow design — **deferred** (design track / ui-designer, not plan-core) |
+| `[ ]` | `patterns-interface-design` | UI patterns — **deferred** (design track / ui-designer, not plan-core) |
+| `[ ]` | `patterns-vertical-tdd` | Vertical slice patterns — **deferred** (tasks cluster, not plan-core) |
 
 ### Implement / execute cluster
 | Status | Name | Notes |
 |--------|------|-------|
 | `[ ]` | `executing-tdd-cycle` | TDD cycle execution |
-| `[ ]` | `validation-plan-artifacts` | Gates plan completion |
+| `[x]` | `validation-plan-artifacts` | Ported **via plan** (2026-07-01; re-filed implement→plan-cluster) — completeness mirror-checklist on `devils-advocate`; **absorbed `cross-artifact-checklist.md`**; feasibility checks deduped → `validation-feasibility` |
 | `[ ]` | `validation-task-artifacts` | Gates task completion |
 | `[ ]` | `testing-end-user` | End-user testing |
 
@@ -126,16 +127,16 @@ The transformer cluster — the dogfooded implementation of [`PLAYBOOK.md`](PLAY
 | `[ ]` | `codebase-inventory-schema.json` | **Deferred to spec/plan cluster** — orphan in setup (no consumer after mode-scoping) |
 | `[x]` | `spec-template.md` | `specify` — ported (8 body slots verbatim; header rebound to workspace-as-state) |
 | `[x]` | `analyst-report-template.md` | `specify` — ported (iteration→round; counts demoted; DAG trajectory dropped) |
-| `[x]` | `advocate-report-template.md` | `specify` — ported (keep-verbatim; carries the 3-state verdict, the loop driver) |
+| `[x]` | `advocate-report-template.md` | **shared (specify + plan)** — ported via specify (keep-verbatim; 3-state verdict); **reused as-is by plan's completeness review** (RQ4, 2026-07-01 — no new file) |
 | `[-]` | `context-template.md` | **Absorbed into the lead** (in-session + `.mochiko/specs/<feature>/` workspace-as-state); peers inherit — not a standalone artifact |
-| `[ ]` | `plan-template.md` | `plan` |
-| `[ ]` | `plan-context-template.md` | `plan` |
+| `[x]` | `plan-template.md` | Ported (plan, 2026-07-01) — the `plan.md` deliverable; the lead's fill-target; `[...]` model-fill style (not `{{}}`) |
+| `[-]` | `plan-context-template.md` | **Absorbed into the plan lead** (memory-model — 3rd confirmation; in-session + `.mochiko/specs/<feature>/` workspace-as-state; state recovery reads workspace evidence) — not a standalone artifact |
 | `[ ]` | `tasks-template.md` | `tasks` |
 | `[ ]` | `tasks-context-template.md` | `tasks` |
-| `[ ]` | `evolution-roadmap-template.md` | `plan` |
-| `[ ]` | `architect-report-template.md` | `plan` |
-| `[ ]` | `techanalyst-report-template.md` | `plan` |
-| `[ ]` | `cross-artifact-checklist.md` | `plan`, `tasks` |
+| `[ ]` | `evolution-roadmap-template.md` | `plan`-filed but **deferred** (roadmap track, not plan-core) |
+| `[x]` | `architect-report-template.md` | Ported (plan) — **renamed `feasibility-report-template.md`**; feasibility reviewer's report; 3-state incl. `infeasible`; Next-Steps routing lifted to lead; `type:` DAG frontmatter dropped |
+| `[x]` | `techanalyst-report-template.md` | Ported (plan) — producer self-disclosure; **`completion_status` dropped** (independence — verdict is lead-owned); iteration→round; brain-era counts demoted |
+| `[-]` | `cross-artifact-checklist.md` | **Folded into `validation-plan-artifacts`** (plan; orphan — no consumer + near-total dup; the tasks validator self-contains its own) |
 | `[ ]` | `approved-domain-deps.md` | `implement` |
 
 ---

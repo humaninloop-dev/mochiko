@@ -28,7 +28,7 @@ These carry forward from `agent-skills-research/synthesis/my-framework.md` — u
 
 Notes for upcoming workflows, to be fleshed out before building starts.
 
-- [ ] **`plan`** — decide whether to merge `techspec` functionality in (HIL merged them, recorded in ADR-008); check what `technical-analyst` and `task-architect` agents each own vs. overlap.
+- [x] **`plan`** — **DONE (ported 2026-07-01).** techspec merge → **excluded** (HIL already merged it via ADR-008; the ported `plan` IS the merged form). technical-analyst vs task-architect overlap → no conflict: `task-architect` is the **tasks** cluster (not pulled into plan-core); `technical-analyst` owns plan's analysis+design. See ROADMAP Decision Trail + the plan-port follow-ups below.
 
 - [ ] **`tasks`** — `task-architect` + `validation-task-artifacts` + `validation-plan-artifacts` are the obvious cluster; check if `strategy-core` is consumed directly or through `state-analyst`.
 
@@ -62,10 +62,21 @@ Concrete deferred work left by the setup-cluster port (**core-only** scope). Ful
 
 Deferred work from the specify-cluster port (**core-only** scope). Full run record in `.mochiko/transform/specify/` (`report.md`, `reconcile.md`, per-primitive assessments). All 14 primitives PASSed independent verification in a single round.
 
-- [ ] **Re-mount `devils-advocate`'s deferred validation skills when plan/tasks port.** `validation-plan-artifacts` + `validation-task-artifacts` are stubbed (comment-only in the agent's `skills:` frontmatter, not live mounts — a live mount of an unported skill would dangle). Re-mount edges logged at the stub site + reconcile §7a/§G. Location: `plugins/mochiko/agents/devils-advocate.md`.
+- [~] **Re-mount `devils-advocate`'s deferred validation skills.** `validation-plan-artifacts` → **DONE (plan port, 2026-07-01)** — now a live mount (plan completeness reviewer). `validation-task-artifacts` → **still stubbed** (comment-only; re-mount when `tasks` ports — a live mount of the unported skill would dangle). Location: `plugins/mochiko/agents/devils-advocate.md`.
 - [ ] **`strategy-implementation` will likely dissolve into `loop-discipline`** when `implement` ports — the same dedupe `strategy-core` + `strategy-specification` took this run. REGISTRY notes this on its row.
 - [ ] **`ui-designer` + design track remain deferred** (out of specify-core; the specify catalog never invokes them). Scope with a dedicated design cluster or `plan`. HIL sources: `agents/ui-designer.md` + `skills/{analysis-screenshot, authoring-design-system, patterns-flow-mapping, patterns-interface-design}`.
 - [ ] **Dogfood `/mochiko:specify` for real (behavioral validation).** The port passed *structural* verification but has not run end-to-end. Run it on a real feature to confirm the produce→critique loop converges, the advocate's gap list flows back as a targeted revision, the gap-classification routing (Explore / clarification / halt) fires sensibly, and the G3 acceptance gate works. Pairs with the still-open dogfood-`/mochiko:setup` check.
+
+## Plan-port follow-ups (from the `/mochiko:transform-cluster plan` run, 2026-07-01)
+
+Deferred work from the plan-cluster port (**core-only** scope). Full run record in `.mochiko/transform/plan/` (`report.md`, `reconcile.md`, per-primitive assessments + traces). All 15 primitives + the wiring PASSed independent verification in a single round, zero required fixes.
+
+- [ ] **Re-mount `validation-task-artifacts` on `devils-advocate` when `tasks` ports.** The only remaining stubbed mount on the advocate (the plan re-mount of `validation-plan-artifacts` is done). Location: `plugins/mochiko/agents/devils-advocate.md`.
+- [ ] **Reclaim `validation-plan-artifacts`'s Phase-A0 codebase-discovery review when the brownfield/discovery track ports.** Tagged `moved-to-other-cluster` (out of plan-core); the review capability is *parked* (documented in the skill's `references/ARTIFACT-CHECKLISTS.md`), not dropped — the receiving cluster must reclaim it.
+- [ ] **`evolution-roadmap-template` + `authoring-roadmap` remain deferred** (roadmap / setup-brownfield track — REGISTRY-filed under plan but never invoked by `/plan`). Port with the roadmap track.
+- [ ] **Design track (`patterns-flow-mapping`, `patterns-interface-design`, `ui-designer`) + `patterns-vertical-tdd` remain deferred** — they belong to the design track and the tasks cluster, not plan-core. (The specify-port design-track deferral already tracks the first three.)
+- [ ] **Dogfood `/mochiko:plan` for real (behavioral validation).** The port passed *structural* verification but has not run end-to-end. Run it on a real feature (after `/mochiko:specify` produces a spec) to confirm: the producer→two-reviewer loop converges, the feasibility-once-then-completeness ordering + skip-architect routing fire sensibly, the `infeasible`→business-escalation gate works, the Phase-2 incremental review works, and the G5 `plan.md` acceptance gate fires. Pairs with the still-open dogfood-`/mochiko:setup` + `/mochiko:specify` checks.
+- [x] **Quickstart / Integration Guide label aligned.** The `technical-analyst` persona's deliverable #6 was "Integration Guide" while the router/command/template name the file `quickstart.md`; aligned the persona label to "Quickstart / Integration Guide" (coupling-free; the file stays `quickstart.md`, canonical everywhere that gates). Finalize housekeeping surfaced by the P10 + cluster verifies.
 
 ## Command-altitude pass (2026-06-30)
 
@@ -73,7 +84,7 @@ The first two command ports were re-transformed to the thin "stitch a team to a 
 
 - [x] **Fix the transform recipe for altitude → DONE.** `assess-primitive` (generic discipline → `dedupe`, not `moved-to-lead`), `transform-recipes` (thin-command `redesign` target + wiring step 6 single-source), `verify-output` (altitude / single-source conformance item 8 = grep floor + keystone ceiling), `PLAYBOOK` (altitude in the mochiko-form definition).
 - [x] **Retrofit `specify` + `setup` → DONE.** specify 329→66, setup 385→78; both independently verified PASS (8 conformance items + altitude scan + trace audit; every workflow-specific responsibility preserved, generic discipline deduped to references).
-- [ ] **Apply the altitude shape to `plan`/`tasks`/`implement` when they port.** The fixed recipe now produces it by default and `verify-output`'s altitude gate fails a verbose command. Watch the "what you own" footer (the densest line) if a command grows.
+- [~] **Apply the altitude shape to `plan`/`tasks`/`implement` when they port.** `plan` → **DONE (2026-07-01)**: came out at 82 lines thin-by-construction; `verify-output`'s altitude scan PASSed first try (no retrofit needed). `tasks`/`implement` remain. The fixed recipe produces it by default; watch the "what you own" footer if a command grows.
 
 ## Ideas / candidates
 
