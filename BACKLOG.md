@@ -34,6 +34,8 @@ Notes for upcoming workflows, to be fleshed out before building starts.
 
 - [x] **`implement`** — **DONE (ported 2026-07-01).** Cluster = `staff-engineer` (producer) + `qa-engineer` (independent Tier-1 validator) + `executing-tdd-cycle` + `testing-end-user` + `brownfield-integration` (mis-file corrected setup→implement); `strategy-implementation` **dissolved** into `loop-discipline` + the lead. Sequential-first orchestration (parallel + kernel deferred). No new primitives. See the implement-port follow-ups below + `.mochiko/transform/implement/report.md`.
 
+- [x] **`brainstorm` (net-new command, not a HIL port)** — **BUILT 2026-07-02** (scoped the same day via a live `analysis-iterative` design session; design synthesis at `.mochiko/brainstorms/brainstorm-command/synthesis.md`; decision recorded in ROADMAP Key Decisions). Landed: `commands/brainstorm.md` (thin sound-loop — two advocate gates, emergent 4-ramp handoff, direct-execution staff↔qa mini-loop), `skills/validation-brainstorm/` (two branches + `references/READINESS-CHECKLISTS.md` — the single source for the four destination stamps), `templates/handoff-brief-template.md`, the new mount on `devils-advocate`, the stamped design-light entry variant on `/mochiko:tasks`, and router + REGISTRY registration. See the brainstorm-build follow-ups below.
+
 - [ ] **`audit`** — lowest priority; scope after `implement` is landed.
 
 ---
@@ -97,6 +99,14 @@ Deferred work from the implement-cluster port (**core-only** scope). Full run re
 - [ ] **The parallelism deferral is now a live `deliberate-shortcut-ledger` candidate.** Sequential-first was a documented deferral, not a silent drop — the shortcut is: no native `pipeline()`/`parallel()` and no artifact-DAG/kernel this run. Revisit (add native parallel dispatch, or reopen the lightweight kernel/hook question) **if dogfooding shows sequential cycle execution is too slow** on a real dependency-rich feature. This is the concrete drift-trigger the "code-free until dogfooding" kernel decision was waiting for.
 - [ ] **`approved-domain-deps` + cross-cutting utilities remain deferred** (out of implement-core scope). `approved-domain-deps.md` follows the governance/constitution track (reference-stub); `using-git-worktrees`, `using-github-issues`, `syncing-claude-md` are cross-cutting utilities, not implement-specific. Port with their own tracks.
 - [ ] **`qa-engineer` still owes its `audit`-cluster affinity.** The agent is REGISTRY-filed for both `implement` (done) and `audit` (pending). When `audit` ports, reclaim the affinity — confirm `qa-engineer` (or its verification skill) serves the audit workflow without a produce+grade leak.
+
+## Brainstorm-build follow-ups (from the net-new `/mochiko:brainstorm` build, 2026-07-02)
+
+Deferred work from the first net-new workflow build. Design record: `.mochiko/brainstorms/brainstorm-command/synthesis.md` (incl. the Risks section that names these triggers).
+
+- [ ] **Dogfood `/mochiko:brainstorm` for real (behavioral validation).** The build passed independent structural verification but has not run end-to-end. Run it on a genuine design question (natural candidate: scoping the `audit` cluster) to confirm: the questioning→freeze→challenge loop converges, the live questions genuinely enrich the session, the destination recommendation + G3 fire sensibly, the pressure test's reality-grounding actually Reads the codebase, and each ramp's handoff lands. Pairs with the still-open dogfood-setup/specify/plan/tasks/implement checks.
+- [ ] **Watch the plan ramp's spec quality (ledger trigger).** A brainstorm-born `spec.md` never passed the requirements-authoring loop — the specification-equivalence checklist mirrors the spec shape as mitigation. If dogfooding shows brainstorm-born specs grading worse inside `/mochiko:plan`'s reviewer loop, revisit the ramp (deliberate-shortcut-ledger entry, not a silent assumption).
+- [ ] **Watch the `/mochiko:tasks` entry variant for scope leak.** The variant is keyed strictly to the `task-derivability` stamp; the mid-loop guard (any new entity/endpoint/integration/NFR → halt, route to `/mochiko:plan`) is the backstop. If the design-light skip leaks scope in practice, tighten the checklist or retire the variant.
 
 ## Command-altitude pass (2026-06-30)
 

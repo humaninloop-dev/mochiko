@@ -1,5 +1,5 @@
 ---
-description: Generate the implementation task breakdown via an independent producer→reviewer loop (task-architect authors the story→cycle mapping then the cycle-based tasks, devils-advocate grades both) with a human acceptance gate on tasks.md — plan-gated, default-FAIL, bounded, kernel-free.
+description: Generate the implementation task breakdown via an independent producer→reviewer loop (task-architect authors the story→cycle mapping then the cycle-based tasks, devils-advocate grades both) with a human acceptance gate on tasks.md — plan-gated (or entered via a stamped design-light handoff brief), default-FAIL, bounded, kernel-free.
 disable-model-invocation: true
 ---
 
@@ -26,9 +26,10 @@ Fill `templates/workflow-contract.md` → `.mochiko/specs/<feature>/tasks-contra
 
 1. **Capture** `$ARGUMENTS`; resolve `<feature>` (an explicit ID, else the most recent in-progress feature under `.mochiko/specs/`). If empty (the `@`-reference drop bug), recover via **G1**: ask the user to re-enter, or to confirm the detected feature.
 2. **Entry gate — plan-workflow-complete.** The plan must be done: `.mochiko/specs/<feature>/plan.md` present (workspace evidence — there is no context-file `status` to read; mochiko `plan` writes none). Missing → block and point the user to `/mochiko:plan`.
+   **Entry variant — stamped handoff brief (design-light work only).** If `plan.md` is absent but `.mochiko/specs/<feature>/handoff-brief.md` exists with a completed provenance header (digest challenged + pressure-tested, destination checklist `task-derivability` all items evidenced — the `validation-brainstorm` stamp), proceed with the brief standing in for plan's outputs, and log the skipped-plan provenance in the Phase-4 report. The stamp is the **only** key that opens this variant — an unstamped brief blocks exactly like a missing plan. If any new entity, endpoint, external integration, or NFR target surfaces mid-loop, that is a scope gap: halt and route to `/mochiko:plan` — the skip was not legitimate.
 3. **Constitution as governing context.** Read `.mochiko/memory/constitution.md` and carry its principles into the producer's brief. Missing → surface it (offer `/mochiko:setup`); this is governing context, not a blocking gate — do not auto-resolve.
 4. **Brownfield-from-plan.** Inherit brownfield context from plan's artifacts; do **not** re-run codebase analysis. (The roadmap track — `evolution-roadmap.md` / `[GAP:XXX]` — is a documented stub, deferred.)
-5. **Read plan's design outputs** (`spec.md`, `requirements.md`, `constraints-and-decisions.md`, `nfrs.md`, `data-model.md`, `contracts/api.yaml`) as the producer's inputs — workspace-as-state, no registry field.
+5. **Read plan's design outputs** (`spec.md`, `requirements.md`, `constraints-and-decisions.md`, `nfrs.md`, `data-model.md`, `contracts/api.yaml`) as the producer's inputs — workspace-as-state, no registry field. On an entry-variant run, the stamped `handoff-brief.md` stands in as the producer's input set (goal, decisions, constraints, affected areas, work items, verification).
 
 ## Phase 1 — Mapping loop  *(you own the round counter and the verdict)*
 
@@ -62,7 +63,7 @@ Resume from workspace evidence (there is no context-file `phase`/`status`):
 
 | Evidence in the workspace | Resume at |
 |---------------------------|-----------|
-| no `.mochiko/specs/<feature>/plan.md` | Phase 0 (entry blocked) |
+| no `.mochiko/specs/<feature>/plan.md` and no stamped `handoff-brief.md` | Phase 0 (entry blocked) |
 | `plan.md` present, no `task-mapping.md` | Phase 1 (produce) |
 | `task-mapping.md` present, no `advocate-report.md` this round | Phase 1 (review) |
 | mapping not `ready`, within the cap | Phase 1 (loop control) |
