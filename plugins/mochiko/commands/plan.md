@@ -28,6 +28,7 @@ Fill `templates/workflow-contract.md` → `.mochiko/specs/<feature>/plan-contrac
 2. **Constitution prerequisite.** Read `.mochiko/memory/constitution.md`. Present → carry its principles into the producer's brief as governing context. Missing → do **not** silently proceed; surface it (offer `/mochiko:setup` first). Never auto-resolve.
 3. **Entry gate.** The spec must be done: `.mochiko/specs/<feature>/spec.md` present and accepted (workspace evidence — there is no context-file `status` to read). Missing → block and point the user to `/mochiko:specify`.
 4. **Brownfield check.** Read the constitution's `project_type`. Brownfield → require `.mochiko/memory/codebase-analysis.md` (missing → offer `/mochiko:setup` or proceed greenfield with a logged warning; >14d stale by file mtime → warn); greenfield → bypass. Carry the analysis into the producer's brief when present.
+5. **Slice-scoped entry (graduation slices).** If `.mochiko/specs/<feature>/slices.md` exists (accepted), the run is **slice-scoped** — honor that file's own **Graduation contract** section (the single source of the consumption rules; do not restate it). Resolve `<slice>` (named in `$ARGUMENTS`, else the first slice in Slice-order lacking `slices/<slice>/plan.md`) and check the **staleness guard**: the live `spec.md` story-ID set must match the Spec stamp — mismatch → block and point to `/mochiko:slice`. **Scope** = the slice's stories **plus its extend obligations**, nothing else; a producer designing beyond them is a scope gap → **G4**. **Extend-mode**: the shared feature-root artifacts are brownfield input the producer extends in place — never re-derives, never forks per-slice copies; a **breaking** change to design an earlier slice already shipped is a graded amendment — an explicit `[MODIFY]` design change surfaced for this round's reviews with its migration flagged for this slice's task breakdown, never a silent rewrite. Per-slice outputs (`plan.md` · the round reports · the filled contract) go under `slices/<slice>/`, and the done-condition's artifact set reads: the six shared artifacts extended at the feature root + `slices/<slice>/plan.md`. Brief each reviewer with the artifact sets {this slice's extensions + its `plan.md`} / {the prior accumulated artifacts}, so the extension is graded against what earlier slices established.
 
 ## Phase 1 — Analysis loop  *(you own the round counter and the verdict)*
 
@@ -67,6 +68,7 @@ Resume from workspace evidence (there is no context-file `phase`/`status`):
 | Evidence in the workspace | Resume at |
 |---------------------------|-----------|
 | no `.mochiko/specs/<feature>/spec.md` | Phase 0 (entry blocked) |
+| `slices.md` present | slice-scoped: resolve the current slice (Phase 0 step 5); the rows below then read per-slice artifacts under `slices/<slice>/` alongside the shared feature root |
 | `spec.md` present, no `requirements.md` | Phase 1 (produce) |
 | analysis artifacts present, no `feasibility-report.md` / `advocate-report.md` this round | Phase 1 (review) |
 | analysis reviews not `feasible`+`ready`, within the cap | Phase 1 (loop control) |
