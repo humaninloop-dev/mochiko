@@ -74,7 +74,7 @@ The first 1-2 questions serve a dual purpose: advance the conversation toward su
 
 ## Question Format Adaptation
 
-Three formats, selected based on the user's current state:
+Four formats, selected based on the user's current state:
 
 ### Structured Options + Recommendation
 
@@ -114,7 +114,21 @@ Use when: the user has clearly decided and the remaining question is just verifi
 That seems settled. [Brief implication or transition to next topic]
 ```
 
-**Meta-principle:** Pick the format that serves the user's current state. If uncertain which format to use, prefer the open probe — it gathers information without forcing premature commitment.
+### Recommend-then-Arbitrate
+
+Use when: the user lacks domain expertise for the question at hand — or says so outright ("this is where I'd like you to recommend"). Structured options still force the user to *generate* an evaluation they don't have the domain knowledge for; an open probe produces silence. Instead, **supply the domain content yourself, then have the user sort and arbitrate it**: domain knowledge is a knowledge gap (yours or research's to fill); which of it to adopt, and how strictly, is a preference gap (only theirs).
+
+```
+[Supply a concrete recommended set — actual domain content, not option labels,
+ with the reasoning and the strongest counter-consideration for each piece]
+
+[Ask the user to sort/arbitrate: keep, drop, tighten, or re-rank —
+ not to generate alternatives]
+```
+
+Follow-through matters: a user's sort of unfamiliar material can misfire on oversight rather than judgment — walk salient demotions back past them once ("you demoted X — deliberate?") before treating the sort as settled.
+
+**Meta-principle:** Pick the format that serves the user's current state. If uncertain which format to use, prefer the open probe — it gathers information without forcing premature commitment. But when the user has explicitly handed you the domain expert's seat, the open probe is an abdication — recommend, then let them arbitrate.
 
 **Example — same topic, different formats based on state:**
 > Structured: "Which versioning mechanism fits best? A) URL path, B) Header, C) Query parameter"
