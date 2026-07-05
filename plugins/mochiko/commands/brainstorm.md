@@ -1,22 +1,23 @@
 ---
-description: Think a problem through with a live adversarial agent team — a devil's advocate challenges decisions as they form, an optional grounder verifies claims against the codebase, and a cold pressure-tester audits the finished record (and the advocate) before acceptance. The human tie-breaks deadlocks and accepts the record. Deliverable is one decision record; pipeline entry is an offer, never a default. Requires agent teams (CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS); refuses without them.
+description: Think a problem through with the user and harden the record at the end — the session is just the lead and the user (plus an optional grounder verifying facts against the codebase); at convergence a cold review pair reads the record independently, cross-examines each other to kill weak findings, and returns only the survivors for the user's rulings. Deliverable is one decision record; pipeline entry is an offer, never a default. Requires agent teams (CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS); refuses without them.
 disable-model-invocation: true
 ---
 
-# Brainstorm — Live Adversarial Thinking
+# Brainstorm — Think Together, Review Cold
 
-**Goal:** think `$ARGUMENTS` through with the user and leave one artifact behind — `.mochiko/brainstorms/<slug>/record.md`, a decision record that survived adversarial pressure while the thinking was still fluid and cold review after it settled. Empty topic (the known `@`-reference drop) → ask what we are thinking through.
+**Goal:** think `$ARGUMENTS` through with the user and leave one artifact behind — `.mochiko/brainstorms/<slug>/record.md`, a decision record hardened by an end-stage adversarial review. Empty topic (the known `@`-reference drop) → ask what we are thinking through.
 
-**You are the lead.** You run the questioning inline via `mochiko:analysis-iterative` (one question per turn, format adapted to the user's state), write the record as you go, route every challenge, own every verdict, and bring the user in as tie-breaker. Teammates pressure-test; they never author. This is a `mochiko:loop-discipline` sound loop; the Contract section below is its authoring-time fill — **no per-run contract is written**.
+**You are the lead.** You run the questioning inline via `mochiko:analysis-iterative` (one question per turn, format adapted to the user's state) and write the record as you go. The machinery enters exactly twice: grounder fact-checks when a claim needs verifying, and the review pair at convergence. Between those, the conversation is you and the user — no standing challenger. (A first-run ruling: the v2 standing episodic advocate generated 3:1 machine-to-user traffic and folded amendments into user-ruled decisions without consent — log analysis in `.mochiko/brainstorms/brainstorm-v2-revision/record.md`.) This is a `mochiko:loop-discipline` sound loop; the Contract section below is its authoring-time fill — **no per-run contract is written**.
 
 ## Hard requirement — agent teams
 
-Check `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS` in the environment before anything else; unset → stop and tell the user how to enable it (settings/env; Claude Code ≥ v2.1.178). The env check is a proxy — the **first advocate spawn is the authoritative probe**: if it fails, stop with the same instructions. Never proceed teamless — **no fallback transport**; the live team *is* this command (a deliberate dogfood-pilot choice, marked `Contested` in the design record; revisit when mochiko distributes beyond the author's machines).
+Check `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS` in the environment before anything else; unset → stop and tell the user how to enable it (settings/env; Claude Code ≥ v2.1.178). The env check is a proxy — the **first teammate spawn is the authoritative probe** (the grounder at start when its seat is filled, otherwise the review pair at convergence): if it fails, stop with the same instructions. Never proceed teamless — **no fallback transport** (a deliberate dogfood-pilot choice, marked `Contested` in the v2 design record; revisit when mochiko distributes beyond the author's machines).
 
 ## Session constraints
 
-- The conversation is the production surface. **Never narrate machinery at the user** — no "phase", "round", or "gate" talk; adversarial beats surface as conversation, not process.
-- Write the record **as you go**: every decision with its rationale, its challenge(s) and resolution, and a confidence mark — `Confident / Assumed / Contested / Unsure / Deferred`. One decision namespace (D1…); no other ID schemes. The record is the grading surface, the audit trail, and the deliverable — it must read standalone, and it must stay legible: decision entries carry statement + rationale + mark with the challenge trail as compact sub-lines; pressure-test findings and dispositions go in a closing Review section, never interleaved with the decisions.
+- The conversation is the production surface, and it belongs to you and the user. **Never narrate machinery** — no "phase", "round", or "gate" talk; teammate housekeeping (idle notifications, acks) is never narrated and never replied to.
+- Write the record **as you go**: every decision with statement + rationale + confidence mark — `Confident / Assumed / Contested / Unsure / Deferred` — one decision namespace (D1…), user corrections and reversals logged where they happen. The record is the review surface, the audit trail, and the deliverable: it must read standalone, and review findings with their dispositions live in a closing Review section, never interleaved with the decisions.
+- **Your pen covers only your own formulation.** Nothing amends a user-ruled decision and no new decision is created without the user's word.
 - Scope at the start: derive the kebab-case `<slug>`; decide whether the topic has a **reality surface** (existing code / docs / a system under redesign) — that decides the grounder seat. Read `.mochiko/memory/constitution.md` if present and carry it as governing context — never a blocking gate.
 - Tell the user at the start that they can watch or message any teammate directly.
 
@@ -24,32 +25,31 @@ Check `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS` in the environment before anything 
 
 Teammates do **not** load `skills:` frontmatter — every spawn prompt must name the skill and role itself, plus the topic and what to Read (see `templates/agent-dispatch.md` for the briefing fields).
 
-- **advocate** — spawn at start from the `mochiko:devils-advocate` agent type; brief: invoke `mochiko:validation-brainstorm` in the **live-advocate role**. Engaged episodically: when a decision crystallizes, log it in the record first, then point the advocate at the entry — **it attacks the recorded entry, not your relay** (your summary is a notification, not the artifact) — and may Read the codebase to sharpen an attack. Confirm it is alive before each engagement; a dead teammate is an escalation (respawn from the record), never a silent skip. Never re-raises a `Contested` decision.
-- **grounder** — conditional seat, filled only when the topic has a reality surface: a neutral empiricist following the relayed decisions with the code open. Verifies load-bearing claims, volunteers what nobody asked, may undercut the advocate as readily as the room. Role constraint in the spawn prompt: **reports what is, never argues what should be.** One-off fact-fetches with no standing-perspective value go to Explore subagents instead.
-- **pressure-tester** — spawned **only at convergence** (never in the room before that) from the `mochiko:devils-advocate` agent type; brief: invoke `mochiko:validation-brainstorm` in the **pressure-test role**. Reads the record **cold first**, forms its own attack, *then* may cross-examine the advocate directly — **withhold the advocate's name from its spawn prompt and hand it over only after the cold findings land** (sequestration made structural, not just instructed). Three targets: the record's content (scenario stress + reality-grounding against actual files), the advocate's coverage (what sailed through unchallenged, soft challenges, dodged resolutions, agreement drift), and the advocate's losses (an overruled challenge steelmanned once — the user's ruling stays final).
+- **grounder** — conditional seat, filled only when the topic has a reality surface: a neutral empiricist spawned at start with an initial factual-map task; thereafter it speaks only when you send it a fact to check. **Reports what is, never argues what should be**, and volunteers file-grounded facts that cut either way. One-off fact-fetches with no standing-perspective value go to Explore subagents instead. During the review it settles the reviewers' fact disputes — facts are checked, never argued.
+- **review pair** — spawned together **only at convergence** (never in the room before that): two reviewers from the `mochiko:devils-advocate` agent type, each briefed to invoke `mochiko:validation-brainstorm` in the **end-stage reviewer role**. **Withhold each reviewer's counterpart from its spawn prompt**: each reads the frozen record cold, forms its own findings independently, and reports findings-formed (count only); only then do you introduce them to each other and open the cross-examination. In the debate each attacks the other's findings and defends its own — **a finding is withdrawn by its owner or it survives**; the counterpart persuades, never vetoes. Each returns its survivors (severity, concrete failure scenario, resolution path, unresolved counterpart objections attached), a tally ("N raised, M survived"), and a recommended status; fallen findings stay retrievable on ask.
 
-## Routing — who answers what
+## Convergence, the review, and survivor routing
+
+On convergence signals (answers turning confirmatory, no new dimensions — confirm the wrap with the user per the questioning skill), spawn the pair. From spawn until every disposition is logged, the record is **frozen** except for its Review section. Route each survivor by answer-owner:
 
 - Challenge to a **user decision** → the user, directly. That is not a tie-break; it is theirs to answer.
-- Challenge to **your reasoning** → argue it out with the advocate, **max two exchanges (you count)**. Unresolved after the cap is a deadlock → **tie-break**: present both positions and your recommendation; the user rules. Each episodic engagement is one bounded challenge — there is no open-ended sub-loop.
+- Challenge to **your reasoning** → argue it with the finding's owner, **max two exchanges (you count)**; unresolved at the cap is a deadlock → **tie-break**: present both positions and your recommendation; the user rules.
 - **Fact dispute** → grounder (or an Explore subagent). Facts are checked, never argued.
-- Overruled challenge → mark the decision `Contested`; nobody re-raises it.
+- Overruled survivor → mark the decision `Contested`; nobody re-raises it.
 
-## Convergence and the cold review
-
-On convergence signals (answers turning confirmatory, no new dimensions), spawn the pressure-tester. From that spawn until its findings land, the record is **frozen** except for logging dispositions — a cold reviewer cannot grade a mutating file. Route each of its findings by kind — fact → grounder/Explore · preference → user · reasoning → argue or fold — and record a disposition per finding: **resolved / user-ruled / recorded-open**. The pressure-tester then verifies the folds in one incremental pass. **Review + verify is the bound**; a finding still blocking after the verify pass escalates to the user with both positions — the user is the top validator, and out of bounds is never silently done.
+Record a disposition per survivor — **resolved / user-ruled / recorded-open** — then the pair verifies the folds in one incremental pass, quoting the evidence they landed. **Review + verify is the bound**; a survivor still blocking after the verify pass escalates to the user with both positions — the user is the top validator, and out of bounds is never silently done.
 
 ## Done-condition (default FAIL) and acceptance
 
-Done only when: the pressure-tester has reviewed the converged record, **every finding carries a disposition**, the verify pass confirms the folds landed, and the user **accepts the record** — plain blocking text, never a timed prompt. On acceptance the record stays in place as the deliverable. Then offer, don't push: if the record is honestly the shape of a next stage (e.g. a feature description for `/mochiko:specify`), name that as an option and stop.
+Done only when: the pair has reviewed the converged record, **every survivor carries a disposition**, the verify pass confirms the folds landed, and the user **accepts the record** — plain blocking text, never a timed prompt. Zero survivors is vacuously clean — the tally is still reported. On acceptance the record stays in place as the deliverable. Then offer, don't push: if the record is honestly the shape of a next stage (e.g. a feature description for `/mochiko:specify`), name that as an option and stop.
 
 ## Contract (authoring-time fill — governed by `mochiko:loop-discipline`)
 
-- **Done-condition:** as above; initial state `FAIL` — absence of a pressure-test review, an undispositioned finding, or no user acceptance all read as not-done.
-- **Producer ↔ validator:** producer = you + the user (the session; `analysis-iterative`). Validator = the **pressure-tester** (`mochiko:devils-advocate` × `mochiko:validation-brainstorm`) — different agent, different skill, and structurally never in the room until convergence. The advocate is *additional pressure during production*, not the validator.
-- **Bounds:** pressure-test = one review + one verify pass; advocate arguments = **max two exchanges per challenge, lead-counted**, then tie-break; each episodic engagement is a single bounded challenge, so no open-ended sub-loop exists. The human-attended session is the escalation surface, not a substitute for the caps.
-- **Human gate:** tie-breaks (the preference-gap placement) + final acceptance of the record.
+- **Done-condition:** as above; initial state `FAIL` — absence of the pair's review, an undispositioned survivor, or no user acceptance all read as not-done.
+- **Producer ↔ validator:** producer = you + the user (the session; `analysis-iterative`). Validator = the **review pair** (`mochiko:devils-advocate` × `mochiko:validation-brainstorm`) — different agents, different skill, structurally never in the room until convergence, and independent of each other until their cold findings are formed.
+- **Bounds:** per reviewer — one independent cold read + one cross-examination round + one verify pass; lead↔reviewer argument = **max two exchanges per survivor, lead-counted**, then tie-break; grounder checks are facts, never arguments. The human-attended session is the escalation surface, not a substitute for the caps.
+- **Human gate:** survivor rulings on user territory + tie-breaks + final acceptance of the record.
 
 ## Recovery
 
-Teams do not survive `/resume`. To resume a session: re-read `record.md`, re-spawn the team, continue from the last decision.
+Teams do not survive `/resume`, and a shared account limit can throttle the team and the main session together — escalation then has nowhere to go but pause. Pause posture: update the record's Status line with resume state. To resume: re-read `record.md`, respawn what the stage needs (grounder mid-session; the pair at review — the frozen record makes a cold re-read cheap), and continue from the last decision or the survivor queue.

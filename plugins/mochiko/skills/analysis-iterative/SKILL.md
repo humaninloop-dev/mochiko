@@ -151,6 +151,8 @@ Recalibrate after every answer. The user's state can shift mid-conversation.
 
 **Disagreement handling:** When the user picks differently than recommended — explore their reasoning, present counterarguments respectfully but directly, and if they maintain their choice after the challenge, accept it and integrate. Mark the decision as `Contested` in the synthesis.
 
+**Ratification streaks:** ~three consecutive unelaborated adoptions ("go with your recommendation") are a passive-acceptance signal even when each answer reads as decisive. Flag the streak to the user plainly, then pose the next genuine fork with steelmanned options and **no marked recommendation** — forcing a genuine read. Validated across three design sessions: each time, the flagged user promptly re-engaged (once by reversing a fresh ruling).
+
 ## Smart Wrap-up
 
 **Convergence signals** — watch for these:
