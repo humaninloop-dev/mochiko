@@ -1,165 +1,77 @@
 ---
 name: validation-brainstorm
-description: This skill MUST be invoked to adversarially review the artifacts of a collaborative thinking session — EITHER challenging a frozen decision digest (`digest.md` — the session's decisions, rationales, confidence marks, and rejected alternatives) for unchallenged assumptions, missing dimensions, passively-accepted decisions, internal inconsistencies, and steelmanned rejected alternatives, emitting each surviving challenge as a live question; OR pressure-testing a destination-shaped synthesis/finding on three lenses — scenario stress ("what breaks this?"), reality-grounding (verifying its load-bearing factual claims against the actual codebase), and destination-readiness (grading it against the named checklist: feature-description / specification-equivalence / task-derivability / direct-execution). Emits a severity-classified report (Critical/Important/Minor) and a RECOMMENDED 3-state verdict (ready / needs-revision / critical-gaps) — the clearing verdict is lead-owned. SHOULD also invoke whenever a thinking loop's challenge or pressure-test step needs an independent grade of the session's artifacts, or when re-reviewing after a revision. The caller names the branch and, for a pressure test, the destination. Boundary: does NOT review a specification authored as a spec through its own authoring loop (that is mochiko:analysis-specifications — this skill certifies a session conclusion's fitness to ENTER a next stage of work, not a full product-gap review); does NOT grade plan or task artifacts (mochiko:validation-plan-artifacts / mochiko:validation-task-artifacts). Defaults to FAIL; run by an independent reviewer, never a co-author of the session under review.
+description: This skill MUST be invoked when serving as one of the two cold END-STAGE REVIEWERS of a collaborative thinking session's decision record (`record.md`) — spawned at convergence, never in the room during the session. Protocol — independent cold read FIRST, before any contact with the counterpart reviewer: scenario stress per decision; the five hunt classes (unchallenged assumptions, missing dimensions, passive acceptances, steelman-able rejected alternatives, inconsistencies); reality-grounding of load-bearing claims against actual files; the standalone-record fitness checklist (`references/RECORD-FITNESS.md`). Then CROSS-EXAMINE the counterpart — attack their findings, defend or withdraw your own (owner-withdrawal only; the counterpart persuades, never vetoes; fact disputes go to the fact-checker teammate, never to argument) — and return the survivors severity-classified (Critical/Important/Minor) with a tally ("N raised, M survived") and a RECOMMENDED status (ready / needs-revision / critical-gaps); the clearing verdict is lead-owned. SHOULD also invoke when verifying that a record's folded resolutions actually landed (the verify pass), or when a one-shot cold review of a decision record is requested outside a live team. Run by an independent reviewer, never a session co-author; defaults to a FAIL posture — zero findings means hunt harder, but every finding needs a concrete failure scenario or cited contradiction.
 ---
 
-# Reviewing Brainstorm Artifacts
+# End-Stage Review of a Live Thinking Session
 
 ## Overview
 
-A collaborative thinking session produces two reviewable artifacts at two moments: a **decision
-digest** frozen when the conversation converges, and a **destination-shaped synthesis** drafted
-once the conclusions have a consumer. Both are co-authored inside the session's own momentum —
-which is exactly why they need a reviewer who was not in the room. This skill is that review, in
-two branches:
+A live thinking session produces **one artifact as it goes** — `record.md`: each decision with its statement, rationale, and a confidence mark (`Confident / Assumed / Contested / Unsure / Deferred`). The session itself runs unchallenged — **you are the challenge.** At convergence the lead freezes the record and spawns **two reviewers**; you are one of them. Your counterpart exists so your findings get the same treatment the record gets: attacked before anyone acts on them. Only findings that survive the cross-examination reach the lead.
 
-- **Branch 1 — digest challenge**: adversarial critique (judgment, not a checklist) of the frozen
-  decision set, *while the thinking is still fluid*. Its findings are returned as **live
-  questions** the session can still answer cheaply.
-- **Branch 2 — finding pressure-test**: hybrid critique + checklist over the drafted synthesis —
-  does the conclusion survive contact with reality, and is it fit for the destination it claims?
+Both reviewers recommend; the **lead owns every verdict**. You challenge and grade; you never author, revise, or complete the record.
 
-The output of either branch is a **report plus a RECOMMENDED 3-state verdict** (ready /
-needs-revision / critical-gaps) — an *input* to the loop, **not** a clearing PASS/FAIL. The lead
-owns the clearing decision and routes any revision; this skill recommends, the lead routes.
+## Phase 1 — Independent cold read
 
-**Violating the letter of the rules is violating the spirit of the rules.** Softening a challenge
-because the session's participants "clearly thought about it," or ticking a readiness item off a
-skim, is the exact captured-by-the-room failure this review exists to correct.
+Sequestration is the role: form your entire attack **before any contact with your counterpart** — the lead withholds their name until your findings are formed, because inheriting another reviewer's framing destroys the independence you were spawned for.
 
-## Scope — session artifacts, and the boundaries
+Read the frozen record and work it:
 
-| Lens | Artifact | Owner |
-|------|----------|-------|
-| **Digest challenge / finding pressure-test** | `digest.md`, the destination-shaped synthesis | **this skill** |
-| **Product-gap review of a drafted spec** | a `spec.md` in its own authoring loop | `mochiko:analysis-specifications` |
-| **Plan-artifact completeness / feasibility** | requirements, NFRs, data-model, contracts | `mochiko:validation-plan-artifacts` / `mochiko:validation-feasibility` |
-| **Task-artifact quality** | `task-mapping.md`, `tasks.md` | `mochiko:validation-task-artifacts` |
+1. **Scenario stress** — what input, actor, failure, scale, or sequence breaks each conclusion?
+2. **The five hunt classes**, per decision:
 
-The nearest boundary is `analysis-specifications`: where that skill hunts product gaps in a spec
-*being authored as a spec*, this skill's specification-equivalence check certifies a session
-conclusion's **fitness to stand in** for one — shape conformance plus load-bearing substance.
-Destination-readiness is an *entry* certificate, never a substitute for the destination's own
-review loop, which still grades everything downstream.
+   | # | Class | The question |
+   |---|-------|--------------|
+   | 1 | **Unchallenged assumption** | What does this decision silently presume that nobody tested? |
+   | 2 | **Missing dimension** | What angle (cost, failure mode, actor, timescale) was never visited? |
+   | 3 | **Passive acceptance** | Was this adopted on "sounds good" — thin rationale, no pushback recorded? |
+   | 4 | **Rejected-road steelman** | Argue the strongest discarded alternative seriously — does the choice still win? |
+   | 5 | **Inconsistency** | Does this decision undercut an earlier one, each fine alone? |
 
-## When to Use
+3. **Reality-grounding** — list the record's load-bearing factual claims and verify each against the actual files, citing what you checked. An unverifiable claim is a finding, not a benefit of the doubt.
+4. **Fitness** — run [references/RECORD-FITNESS.md](references/RECORD-FITNESS.md); the record must stand alone.
 
-- Grading a frozen `digest.md` at a session's convergence point — before conclusions harden
-- Pressure-testing a destination-shaped synthesis before it is handed to its consumer
-- Re-reviewing either artifact after a revision driven by a prior round's findings
+Every finding carries: a severity, the decision(s) it touches, a **concrete failure scenario or cited contradiction**, and a resolution path — the one question or check that would settle it. A finding nothing could resolve is commentary, not a finding. **Never raise a `Contested` decision** — the user ruled with the steelman in full view; the only exception is a genuinely *new* angle the ruling never saw.
 
-## When NOT to Use
+Report **findings-formed** to the lead — the count only, not the content. The findings themselves wait for the debate.
 
-- **Mid-conversation** — there is nothing frozen to grade; wait for the digest
-- **Reviewing a spec inside its own authoring loop** — use `mochiko:analysis-specifications`
-- **Grading plan or task artifacts** — use their reviewers (see *Scope*)
-- **Authoring or fixing the digest or synthesis** — you surface findings and hand them back;
-  revision belongs to the session, never to its reviewer
+## Phase 2 — Cross-examination
 
-## Branch 1 — Digest challenge
+The lead introduces your counterpart; exchange findings directly. For each of theirs, try to refute it: a wrong fact, a misread of the record, a failure scenario that cannot occur, severity inflation — cite the record or the files. For each of yours under attack, defend it or withdraw it. **Withdrawal is the owner's alone — you persuade, never veto.** A fact dispute goes to the fact-checker teammate when one is seated (or verify against the files yourself); facts are checked, never argued. Merge duplicates into one canonical finding under its strongest formulation.
 
-Read `digest.md` itself — never a summary of the session, never a participant's account. The
-digest must carry each decision with its rationale, its confidence mark, and the alternatives
-rejected. **A digest too thin to challenge is itself the first finding** (Important): a decision
-whose rationale cannot be attacked cannot be trusted either.
+One round: attack, defense, decide. Do not iterate toward consensus — an unresolved disagreement survives as its owner's finding with the counterpart's objection attached; the lead sees both.
 
-Hunt each class in turn; do not stop at the first clean one:
+## Phase 3 — Survivor report
 
-| # | Class | The question |
-|---|-------|--------------|
-| 1 | **Unchallenged assumption** | What does this decision silently presume that nobody tested? |
-| 2 | **Missing dimension** | What angle (cost, failure mode, actor, timescale) did the session never visit? |
-| 3 | **Passive acceptance** | Which decision was adopted on "sounds good" — thin rationale, no pushback recorded? |
-| 4 | **Rejected-road steelman** | Take the strongest discarded alternative and argue it seriously — does the chosen road still win? |
-| 5 | **Internal inconsistency** | Do two decisions, each fine alone, undercut each other? |
+Return to the lead as a message (no report files): the survivors, severity-classified, each with its failure scenario, resolution path, and any unresolved counterpart objection — plus a **tally** ("N raised, M survived"; the fallen stay retrievable on ask) and a recommended status.
 
-For every finding, record the evidence (quote the digest), the severity, and — this is the branch's
-distinctive output — the **live question**: the single question the session's human should answer
-to resolve it. A challenge without an answerable question is commentary, not a finding. A steelman
-the human overrules is *resolved* — recommend the digest mark that decision `Contested`, and do not
-re-raise it in a later round.
+| Verdict | Criteria |
+|---------|----------|
+| **ready** | every hunt class actively worked, nothing blocking survived |
+| **needs-revision** | survivors resolvable by the session (answerable questions, fixable folds) |
+| **critical-gaps** | a broken load-bearing claim, an unowned decision, or a record too thin to review |
 
-## Branch 2 — Finding pressure-test
+**Never default to `ready`** — it is earned by a completed hunt, not by the record looking reasonable. Zero findings means hunt harder; but never manufacture — the debate exists to kill weak findings, so bring real ones. A record too thin to attack (decisions without rationales, rulings without owners) is itself the first finding.
 
-The caller names the **destination** the synthesis claims to be shaped for. Read the synthesis
-itself, then work all three lenses — a finding on any lens blocks `ready`:
+## The verify pass
 
-1. **Scenario stress.** Attack the substance: what input, actor, failure, scale, or sequence breaks
-   the conclusion? Probe the edges the way the digest's decisions said the world works — then probe
-   the ways it didn't say.
-2. **Reality-grounding.** List the synthesis's **load-bearing factual claims** about existing code
-   and systems ("X already handles retries", "the schema has a status column") and verify each one
-   directly against the codebase — Read/search the actual files and cite them. A claim you could
-   not verify is a finding, not a benefit of the doubt; "the session said so" is not evidence.
-3. **Destination-readiness.** Run the named checklist from
-   [references/READINESS-CHECKLISTS.md](references/READINESS-CHECKLISTS.md), citing evidence from
-   the synthesis for every item. If the work demands more than the destination provides (its
-   depth-downgrade rule trips), report **wrong depth** and recommend the shallower destination —
-   that is a scope-type finding for the lead to route, not a reason to stretch the checklist.
+When the lead reports the folds, verify each against the updated record — quote the evidence that the resolution landed. Hunt no new surface except contradictions *introduced by the folds themselves* (the class a verify pass exists to catch). Verified clean → say so; still blocking → say that plainly and let the lead escalate.
 
-## Report shape and verdict
+## Independence
 
-Both branches write the report in the shared `mochiko:advocate-report-template` shape — findings
-as the severity-classified gap table, live questions as the Clarifications section (each with
-concrete options where they exist), the recommended verdict with rationale, and genuine strengths.
-
-| Verdict | Branch 1 criteria | Branch 2 criteria |
-|---------|-------------------|-------------------|
-| **ready** | zero Critical, zero Important challenges outstanding | all three lenses hunted clean **and** every checklist item evidenced |
-| **needs-revision** | 1–3 Important, all answerable in one round of live questions | resolvable findings, right destination |
-| **critical-gaps** | 1+ Critical, or the digest is too thin to review | a broken load-bearing claim, or wrong depth |
-
-**Never default to `ready`.** It is earned by a completed hunt — every class (branch 1) or every
-lens plus every checklist item (branch 2) actively worked with nothing surfacing — never by the
-artifact looking reasonable or the session having been thorough.
-
-## Independence (stated by role)
-
-- You review a session you were **not part of**. The digest and synthesis are co-authored by the
-  session's participants; your value is precisely that their momentum has no hold on you. You never
-  author, revise, or complete the artifacts you grade.
-- Your verdict is **input**, not the gate. The lead reads the artifacts and your report and owns
-  the clearing verdict, the revision routing, and the human gate — see `loop-discipline`; this
-  skill does not restate or own them.
-- Live questions are gate fuel: preference-shaped challenges belong to the human; a factual unknown
-  belongs to investigation. Route by kind per `loop-discipline`'s gap routing — never send a
-  "should we" to research or a "does the code do X" to the human.
+- You were **never in the room**, and you stay out of the session's framing until your cold read is done — that includes your counterpart's framing.
+- Findings enter the record through the lead's pen, with dispositions; you never write the file.
+- Your status is **input**. The lead owns the clearing verdict, the survivor routing, and the human gates — see `loop-discipline`; this skill does not restate them.
 
 ## Common Mistakes
 
 | Mistake | Fix |
 |---------|-----|
-| Challenging the transcript instead of the digest | The digest is the frozen artifact. If it under-records the session, that thinness is the finding. |
-| Findings without live questions (branch 1) | Every challenge carries the one question that resolves it. Unanswerable commentary is noise. |
-| Re-raising an overruled steelman | A `Contested` mark means the human decided with eyes open. Once is a challenge; twice is nagging. |
-| Trusting the session's claims about the code | Reality-grounding means Reading the actual files and citing them. Unverified = finding. |
-| Stretching a checklist to avoid a depth downgrade | Wrong depth is a scope finding with a shallower-destination recommendation — say it plainly. |
-| Full product-gap review under the equivalence check | Certify fitness to enter the next stage; the destination's own reviewers still grade the work. |
-| Grading your own session | If you were in the room, you are a co-author. A different reviewer runs this skill. |
-
-## Red Flags — STOP and re-hunt
-
-- "The session clearly discussed this thoroughly." *(the captured-by-the-room tell)*
-- "Nothing jumped out, so it's ready."
-- "The claim about the codebase is probably right."
-- "The steelman would just annoy them — the choice is made."
-- "It's slightly past the depth rule, but close enough." *(the checklist-stretching tell)*
-- "I'll skip the lenses and just run the checklist."
-
-## Common Rationalizations
-
-| Excuse | Reality |
-|--------|---------|
-| "Challenging settled decisions wastes the session's time" | One live question now is the cheapest moment this gap will ever have. That is the branch's whole purpose. |
-| "The participants know their codebase" | Sessions routinely build on stale beliefs about existing code. Verify against the files, cite the evidence. |
-| "A checklist pass is enough for ready" | Branch 2 is three lenses. A finding-free checklist over a conclusion that breaks under scenario stress is a failed review. |
-| "Recommending a shallower destination feels like blocking" | Wrong depth shipped anyway is the expensive version of the same news. |
-| "Zero findings means it was a good session" | Zero findings means go back and hunt harder — some challenge, strength, or unverified claim is always worth surfacing. |
-
-## Related
-
-- `mochiko:advocate-report-template` — the shared report shape both branches fill
-- `mochiko:analysis-specifications` — the nearest boundary: product-gap review of a spec in its own authoring loop
-- `mochiko:validation-plan-artifacts` / `mochiko:validation-task-artifacts` / `mochiko:validation-feasibility` — the downstream reviewers a readiness certificate never replaces
-- `loop-discipline` — the loop, bounds, gap routing, and human gate are the lead's; referenced, never restated
-- [references/READINESS-CHECKLISTS.md](references/READINESS-CHECKLISTS.md) — the four destination checklists + depth-downgrade rules (the single source for what each stamp means)
+| Contacting the counterpart before your findings are formed | Sequestration order is the role. Cold read first, always. |
+| Treating the debate as consensus-seeking | One round: attack, defend, owner decides. Unresolved = survives with the objection attached. |
+| Withdrawing under pressure without a refutation | Withdraw only when shown wrong — a fact, a misread, an impossible scenario. Insistence is not refutation. |
+| Attacks without resolution paths | Every finding names the question or check that would settle it. |
+| Trusting the session's claims about code | Read the actual files and cite them. Unverified = finding. |
+| Raising a `Contested` decision | Overruled with eyes open is settled — unless your angle is genuinely new to the ruling. |
+| Softening because the participants "clearly thought about it" | The captured-by-the-room tell. You were spawned cold precisely so you are not them. |
+| Grading a session you helped author | If you were in the room, you are not a reviewer. |
