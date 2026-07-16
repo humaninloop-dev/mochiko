@@ -2,7 +2,7 @@
 
 _Synthesized: 2026-06-27 from an analysis-iterative brainstorm. This is the **design of the playbook**, not the playbook itself. The playbook (`PLAYBOOK.md`) and its primitives get built from this spec._
 
-Source of truth for "the mochiko way": [`ROADMAP.md`](ROADMAP.md) + `agent-skills-research/synthesis/my-framework.md`.
+Source of truth for "the mochiko way": [`ROADMAP.md`](../../../ROADMAP.md) + `agent-skills-research/synthesis/my-framework.md`.
 
 ---
 

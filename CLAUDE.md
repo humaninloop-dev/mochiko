@@ -45,6 +45,12 @@ Both repos are submodules — use them as read-only reference:
 
 If a decision touches the four skill-library axes (classification, discoverability, model-invocation reliability, agent↔skill composition) or any of the open design questions in `BACKLOG.md` — record the decision in `ROADMAP.md` under Key Decisions and close the backlog item. Don't let structural decisions live only in conversation context.
 
+### Recording brainstorm and design-session outputs
+
+Brainstorm and design-session artifacts (`record.md`, `synthesis.md`) live in `.mochiko/brainstorms/<topic-slug>/` — never at the repo top level. The top level is reserved for the living operating docs (`CLAUDE.md`, `ROADMAP.md`, `REGISTRY.md`, `BACKLOG.md`, `PLAYBOOK.md`). A session's *ruling* still lands in `ROADMAP.md` Key Decisions with a pointer to the session record; the record holds the full rationale.
+
+[`.mochiko/brainstorms/index.md`](.mochiko/brainstorms/index.md) is the session index — newest first, one entry per session: when, status (open / accepted / superseded), review state, what it's about, and where the outcome landed. **Read the index before opening any session directory** — it tells you which records are current, which are superseded, and which are un-reviewed. Enforced both ways: opening a session adds an entry at the top; concluding one updates its status. A session directory without an index entry, or an entry whose status contradicts its record, is a defect — fix it on sight.
+
 ## Skill-library conventions (evolving)
 
 These will be extracted from real workflows as they're built. Do not pre-define conventions that no workflow has yet needed. Current adopted axes from the synthesis:

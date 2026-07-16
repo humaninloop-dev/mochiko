@@ -1,6 +1,6 @@
 # Command Altitude Analysis Synthesis
 
-_Brainstorm: 2026-06-30. Companion to [`AGENT-DECOUPLING-SYNTHESIS.md`](AGENT-DECOUPLING-SYNTHESIS.md). Subject: why the transformed commands came out verbose, and how to fix the transformation so they don't._
+_Brainstorm: 2026-06-30. Companion to [`agent-decoupling/synthesis.md`](../agent-decoupling/synthesis.md). Subject: why the transformed commands came out verbose, and how to fix the transformation so they don't._
 
 > **Status (2026-06-30): acted on.** All four recipe fixes landed; `specify` (329→66) and `setup` (385→78) retrofitted and independently verified PASS. Substrate question deferred. Tracked in `REGISTRY.md` / `ROADMAP.md` / `BACKLOG.md`.
 

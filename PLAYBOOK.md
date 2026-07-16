@@ -5,7 +5,7 @@ How to turn a human-in-loop primitive (skill, agent, command, template) into moc
 
 This file is **doctrine + pointers only**. The rules, tests, and recipes live single-sourced in the
 skills it points to (`single-source-rule-fanout`); restating them here would guarantee drift. Design
-rationale is in [`PLAYBOOK-DESIGN.md`](PLAYBOOK-DESIGN.md); the framework thesis is in
+rationale is in [`.mochiko/brainstorms/playbook-design/synthesis.md`](.mochiko/brainstorms/playbook-design/synthesis.md); the framework thesis is in
 [`ROADMAP.md`](ROADMAP.md).
 
 The playbook is **dogfooded**: it *is* a mochiko cluster (a command supervisor + a producer/validator
@@ -27,7 +27,7 @@ A primitive is in mochiko form when it is **kernel-free**, satisfies the **five 
 
 → Conventions detail: `ROADMAP.md`. Sound-loop rules: **`loop-discipline`** + **`workflow-contract`**.
 
-**Altitude (single-sourcing).** A command's job is to stitch a team to a goal under a contract — it *references* shared doctrine, it does not restate it. A primitive that re-inlines what `loop-discipline`, `workflow-contract`, or `agent-dispatch` already single-source is at the wrong altitude (the verbosity defect), even when it is kernel-free and convention-clean. Enforced by `verify-output`'s altitude scan; full rationale in [`COMMAND-ALTITUDE-SYNTHESIS.md`](COMMAND-ALTITUDE-SYNTHESIS.md).
+**Altitude (single-sourcing).** A command's job is to stitch a team to a goal under a contract — it *references* shared doctrine, it does not restate it. A primitive that re-inlines what `loop-discipline`, `workflow-contract`, or `agent-dispatch` already single-source is at the wrong altitude (the verbosity defect), even when it is kernel-free and convention-clean. Enforced by `verify-output`'s altitude scan; full rationale in [`.mochiko/brainstorms/command-altitude/synthesis.md`](.mochiko/brainstorms/command-altitude/synthesis.md).
 
 ## The done-condition (default FAIL)
 
@@ -86,5 +86,5 @@ Every primitive gets **one body treatment × one structural move**, plus a wirin
 The supervisor instantiates a `workflow-contract`, assesses each primitive, reconciles the cluster,
 applies the dispositions, and gates each result through the independent validator and the human —
 defaulting to FAIL until the done-condition is met. The first real run (the HIL `setup` cluster) is
-the proving ground that will teach the empirical calls still open in `PLAYBOOK-DESIGN.md`
+the proving ground that will teach the empirical calls still open in `.mochiko/brainstorms/playbook-design/synthesis.md`
 (human-gate placement, disposition short-circuiting).
