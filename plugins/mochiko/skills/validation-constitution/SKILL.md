@@ -1,6 +1,6 @@
 ---
 name: validation-constitution
-description: This skill MUST be invoked to grade a DRAFTED constitution against the quality checklist — three-part-structure check (enforcement/testability/rationale), anti-pattern scan, placeholder scan, quantification enforcement, and semantic version-bump determination — emitting a binary PASS/FAIL verdict plus a fix list. SHOULD also invoke whenever the setup loop's validate step needs an independent grade of a constitution produced by mochiko:authoring-constitution (greenfield or brownfield mode), or when re-validating after a FAIL-loop revision. The validator-side skill of the constitution producer↔validator pair; defaults to FAIL; run by an independent validator (a different agent than the author), never the author.
+description: This skill MUST be invoked to grade a DRAFTED constitution against the quality checklist — three-part-structure check (enforcement/testability/rationale), deterministic trace-ID cross-check against the session synthesis (`.mochiko/memory/governance-intent.md`), tier-declaration and waiver-format checks, module-parameterized section checks, anti-pattern scan, placeholder scan, quantification enforcement, and semantic version-bump determination — emitting a binary PASS/FAIL verdict plus a fix list. SHOULD also invoke whenever the setup loop's validate step needs an independent grade of a constitution produced by mochiko:authoring-constitution (greenfield or brownfield mode), or when re-validating after a FAIL-loop revision. The validator-side skill of the constitution producer↔validator pair; defaults to FAIL; run by an independent validator (a different agent than the author), never the author.
 ---
 
 # Validating Constitution
@@ -31,9 +31,19 @@ Skipping validation because "the constitution looks fine" or "it's mostly comple
 
 ## Core Process
 
-### Step 1: Load Quality Checklist
+Two inputs, both read from file, never from the author's report: the constitution
+(`.mochiko/memory/constitution.md`) and the session synthesis
+(`.mochiko/memory/governance-intent.md` — the traceable contract the constitution was authored
+against). A missing synthesis when the constitution carries trace stamps — or vice versa — is
+itself a FAIL.
 
-Read [references/QUALITY-CHECKLIST.md](references/QUALITY-CHECKLIST.md) and verify every item. Do not skip items because they "seem obvious" or "clearly pass."
+### Step 1: Load Quality Checklist and Assemble It
+
+Read [references/QUALITY-CHECKLIST.md](references/QUALITY-CHECKLIST.md). The structure checks are
+**module-parameterized**: read the synthesis's module selections, then assemble the working
+checklist as universal core + the checklist fragment embedded in each selected module's file
+(`templates/constitution-modules/*.md`). Verify every item. Do not skip items because they "seem
+obvious" or "clearly pass" — and do not check module fragments the synthesis did not select.
 
 ### Step 2: Check Each Principle
 
@@ -44,10 +54,37 @@ Every principle MUST have the three-part structure:
 | **Enforcement** | How is compliance verified? | CI check, code review rule, or audit process named |
 | **Testability** | What does pass/fail look like? | Concrete pass and fail conditions defined |
 | **Rationale** | Why does this rule exist? | Business or technical justification present |
+| **Trace** | Which synthesis element selected it? | `**Trace**: GI-XXX (…)` stamp present with a real ID |
 
 If any principle lacks any part, the constitution FAILS validation.
 
-### Step 3: Scan for Anti-Patterns
+### Step 3: Traceability Cross-Check (deterministic)
+
+String-match both directions against the synthesis:
+
+1. Every principle's Trace GI-ID exists in `governance-intent.md` and points at a
+   principle-bearing element (deck-kept / minted / floor-preset).
+2. Every principle-bearing element in the synthesis is realized as a principle — or appears in the
+   producer's flagged-proposals list. Unrealized-and-unflagged = FAIL.
+3. Waiver records and attached module sections match the synthesis's waiver and module-selection
+   elements one-for-one.
+
+This check is deterministic — ID presence and validity, not meaning. **Semantic fidelity of a
+stamped trace is judgment-grade residual risk**: a fabricated-but-plausible trace passes the
+string match. Flag suspected content↔intent mismatches in the fix list as advisory findings; the
+fidelity gates are the human checkpoints upstream (synthesis confirmation) and downstream (the
+acceptance gate's trace summary), not this scan.
+
+### Step 4: Tier and Waiver Checks
+
+- Governance Tier section present: named tier, graduation path, trace stamp.
+- Every Essential Floor category has a principle **or a recorded waiver** — in any mode.
+- Every waiver carries: category, waiving tier, revisit trigger, trace. A waiver at a
+  tier whose posture forbids it (`production`/`regulated`) is a FAIL.
+- Thresholds and gate strictness consistent with the declared tier, or covered by a recorded
+  session override in the synthesis.
+
+### Step 5: Scan for Anti-Patterns
 
 Compare against [references/ANTI-PATTERNS.md](references/ANTI-PATTERNS.md). Common failures:
 
@@ -58,7 +95,7 @@ Compare against [references/ANTI-PATTERNS.md](references/ANTI-PATTERNS.md). Comm
 | Placeholder syndrome | Contains `[PLACEHOLDER]`, `[COMMAND]`, `[THRESHOLD]` syntax |
 | Generic thresholds | Says "coverage must be measured" instead of "coverage ≥80%" |
 
-### Step 4: Verify No Placeholders
+### Step 6: Verify No Placeholders
 
 This is the most commonly rationalized check. Search the entire document for:
 
@@ -66,31 +103,36 @@ This is the most commonly rationalized check. Search the entire document for:
 - `[COMMAND]`
 - `[THRESHOLD]`
 - `[TOOL]`
+- `GI-XXX` (an unfilled trace stamp is a placeholder)
 - Any `[BRACKETED_TEXT]` pattern
 
 **No exceptions.** A constitution with placeholders is not ready for validation sign-off.
 
-### Step 5: Determine Version Bump
+### Step 7: Determine Version Bump
 
 | Bump | Trigger | Example |
 |------|---------|---------|
-| **MAJOR** | Principle removed or incompatibly redefined | Removing "Test-First" principle; changing coverage from 80% to 50% |
-| **MINOR** | New principle added or significant expansion | Adding "Observability" principle; adding 5+ rules to existing principle |
+| **MAJOR** | Principle removed or incompatibly redefined; tier change | Removing "Test-First" principle; poc → production |
+| **MINOR** | New principle added or significant expansion; waiver added/removed | Adding "Observability" principle; un-waiving Testing |
 | **PATCH** | Clarification or non-semantic change | Rewording for clarity; typo fixes; formatting |
 
-### Step 6: Document Validation Result
+### Step 8: Document Validation Result
 
 Produce explicit validation verdict:
 
 ```
 VALIDATION RESULT: [PASS/FAIL]
 
-Checklist items: [X/Y passed]
+Checklist items: [X/Y passed] (core + [N] module fragments: [names])
+Traceability: [principles traced X/X · synthesis elements realized-or-flagged Y/Y · waivers matched · modules matched]
+Tier/floor accounting: [tier declared · floor categories principled/waived, e.g. 3 principled + 1 waived]
 Anti-patterns found: [list or "none"]
 Version bump: [MAJOR/MINOR/PATCH] (if changes made)
 
 Issues requiring fix:
 - [list each failure]
+Advisory (judgment-grade, non-blocking):
+- [suspected trace-fidelity mismatches, or "none"]
 ```
 
 ## Quantification Requirements

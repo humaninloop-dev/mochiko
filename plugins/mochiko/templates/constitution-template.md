@@ -1,4 +1,15 @@
 <!--
+UNIVERSAL CORE TEMPLATE
+=======================
+This is the universal core every constitution shares. Type/tier-specific sections are
+ATTACHABLE MODULES in `constitution-modules/` — the session synthesis
+(`.mochiko/memory/governance-intent.md`) selects which modules attach, and the validator checks
+core + exactly the selected modules (each module file carries its own checklist fragment).
+Insert selected module sections where marked below. Do NOT inline module content for types
+that didn't select it — that is the backend-bias failure this split exists to kill.
+-->
+
+<!--
 SYNC IMPACT REPORT
 ==================
 Version change: (none) → 1.0.0 (MAJOR: Initial constitution)
@@ -6,9 +17,11 @@ Version change: (none) → 1.0.0 (MAJOR: Initial constitution)
 Modified principles: N/A (initial version)
 
 Added sections:
+- Governance Tier
 - Core Principles
 - Technology Stack
 - Quality Gates
+- [Selected modules, by name]
 - Governance
 - CLAUDE.md Synchronization
 
@@ -21,14 +34,11 @@ Templates requiring updates:
 
 Follow-up TODOs:
 - Sync CLAUDE.md with constitution content
-- Review existing code for constitution compliance
 
 Previous reports: None (initial version)
 
-INSTRUCTION: Maintain version history in this section. After each amendment, add
-the previous version to "Previous reports" with a one-line summary. Example:
-  - 1.0.0 (YYYY-MM-DD): Initial constitution with 5 core principles
-  - 1.1.0 (YYYY-MM-DD): Added API Consistency principle
+INSTRUCTION: Maintain version history here. After each amendment, add the previous version to
+"Previous reports" with a one-line summary.
 -->
 
 # [PROJECT_NAME] Constitution
@@ -36,121 +46,73 @@ the previous version to "Previous reports" with a one-line summary. Example:
 ## Overview
 
 <!--
-INSTRUCTION: Brief project description (2-3 sentences) and purpose of this constitution.
-Include: What the project does, primary technology, and governance goals.
+INSTRUCTION: Brief project description (2-3 sentences): what the project does, primary
+technology, governance goals — sourced from the synthesis's identity element.
 -->
 
 [PROJECT_DESCRIPTION]
 
 This constitution establishes enforceable development standards for [PROJECT_NAME]. It codifies principles that protect quality, security, and maintainability while enabling rapid, confident delivery.
 
+## Governance Tier
+
+<!--
+INSTRUCTION: The declared scope tier from the synthesis (GI trace required). Strictness and
+waiver posture throughout this constitution are calibrated to this tier.
+-->
+
+**Tier:** `[TIER]` — [one line: what this tier means for this project]
+**Graduation path:** [next tier + trigger, or "none expected"]
+**Trace**: GI-XXX
+
+### Waivers
+
+<!--
+INSTRUCTION: One row per floor category waived at this tier — from the synthesis's waiver
+elements. Delete the table and write "None." if nothing is waived. Waivers are only valid at
+tiers whose posture permits them (see catalog/universal-floor.md). Accumulated waivers are the
+governance re-entry checklist at tier graduation.
+-->
+
+| Floor category | Waiving tier | Revisit trigger | Trace |
+|----------------|--------------|-----------------|-------|
+| [CATEGORY] | [TIER] | [e.g. tier graduation] | GI-XXX |
+
 ---
 
 ## Core Principles
 
 <!--
-INSTRUCTION: Define 5-10 core principles. Each principle MUST have:
-1. Enforcement - How compliance is verified
-2. Testability - Pass/fail criteria
-3. Rationale - Why this constraint exists
-
-Use RFC 2119 keywords: MUST, SHOULD, MAY, MUST NOT, SHOULD NOT
+INSTRUCTION: One principle per principle-bearing synthesis element (deck-kept, minted, or
+floor-preset). Principle count is driven by the synthesis, not a fixed quota. Each principle
+MUST have Enforcement / Testability / Rationale, RFC 2119 keywords, and a Trace stamp naming
+its synthesis source. Selection belongs to the synthesis; only FORMULATION happens here.
 -->
 
 ### I. [PRINCIPLE_1_NAME]
-<!-- Example: Test-First Development (NON-NEGOTIABLE) -->
 
-[PRINCIPLE_1_DESCRIPTION]
-<!--
-Example:
-All production code MUST be written following test-driven development practices:
-- Tests MUST be written before implementation code
-- Tests MUST fail before implementation begins (Red phase)
-- Implementation MUST only satisfy the failing tests (Green phase)
--->
+[PRINCIPLE_1_DESCRIPTION — declarative constraint with RFC 2119 keywords, then specific rules]
 
 **Enforcement**:
-- [How compliance is verified - CI check, code review, tooling]
-- [Specific commands or processes that enforce this]
+- [How compliance is verified — CI check, code review, tooling — with real commands]
 
 **Testability**:
 - Pass: [What passing looks like]
 - Fail: [What failure looks like]
 
-**Rationale**: [Why this constraint exists—what failure mode it prevents, what success it enables]
+**Rationale**: [Why this constraint exists — what failure mode it prevents, what success it enables]
+
+**Trace**: GI-XXX ([deck-kept: CARD-ID | minted | floor-preset: CARD-ID])
 
 ---
 
-### II. [PRINCIPLE_2_NAME]
-<!-- Example: Code Quality & Maintainability -->
-
-[PRINCIPLE_2_DESCRIPTION]
-
-**Enforcement**:
-- [Verification method]
-
-**Testability**:
-- Pass: [Criteria]
-- Fail: [Criteria]
-
-**Rationale**: [Why this matters]
-
----
-
-### III. [PRINCIPLE_3_NAME]
-<!-- Example: Architecture & Design -->
-
-[PRINCIPLE_3_DESCRIPTION]
-
-**Enforcement**:
-- [Verification method]
-
-**Testability**:
-- Pass: [Criteria]
-- Fail: [Criteria]
-
-**Rationale**: [Why this matters]
-
----
-
-### IV. [PRINCIPLE_4_NAME]
-<!-- Example: Security by Default -->
-
-[PRINCIPLE_4_DESCRIPTION]
-
-**Enforcement**:
-- [Verification method]
-
-**Testability**:
-- Pass: [Criteria]
-- Fail: [Criteria]
-
-**Rationale**: [Why this matters]
-
----
-
-### V. [PRINCIPLE_5_NAME]
-<!-- Example: Error Handling & Resilience -->
-
-[PRINCIPLE_5_DESCRIPTION]
-
-**Enforcement**:
-- [Verification method]
-
-**Testability**:
-- Pass: [Criteria]
-- Fail: [Criteria]
-
-**Rationale**: [Why this matters]
-
----
-
-<!-- Add more principles as needed (VI, VII, VIII...) -->
+<!-- Repeat per principle (II, III, …). Floor principles first, then type/minted principles. -->
 
 ## Technology Stack
 
 <!--
-INSTRUCTION: Document mandated technology choices with rationale.
+INSTRUCTION: Mandated technology choices with rationale, from the synthesis's real-commands
+and existing-practices elements (brownfield: from codebase-analysis.md).
 This section MUST match exactly in CLAUDE.md.
 -->
 
@@ -160,83 +122,43 @@ This section MUST match exactly in CLAUDE.md.
 | Framework | [FRAMEWORK] | [Why this choice] |
 | Testing | [TEST_FRAMEWORK] | [Why this choice] |
 | Linting | [LINTER] | [Why this choice] |
-| Type Checking | [TYPE_CHECKER] | [Why this choice] |
 | CI/CD | [CI_PLATFORM] | [Why this choice] |
 
 ## Quality Gates
 
 <!--
-INSTRUCTION: Define automated checks that block merge.
-This section MUST match exactly in CLAUDE.md.
-
-CRITICAL: Replace ALL placeholders with actual tool names and commands.
-- Use tools detected in codebase analysis
-- Use industry-standard defaults if not detected
-- NEVER leave [PLACEHOLDER] syntax in final constitution
-
-Examples by stack:
-- Python: `ruff check .`, `pytest --cov-fail-under=80`, `pip-audit`
-- Node.js: `eslint .`, `npm test -- --coverage`, `npm audit`
-- .NET: `dotnet build --warnaserror`, `dotnet test /p:CollectCoverage=true`, `dotnet list package --vulnerable`
-- Go: `golangci-lint run`, `go test -coverprofile=coverage.out`, `govulncheck ./...`
+INSTRUCTION: Automated checks that block merge. This section MUST match exactly in CLAUDE.md.
+- Replace ALL placeholders with actual commands from the synthesis's real-commands table.
+- Coverage thresholds are TIER-PARAMETERIZED — take the pre-seed from the FLOOR-TEST card's
+  tier row (catalog/universal-floor.md) unless the session overrode it. Never hardcode one
+  tier's numbers into another tier's constitution.
+- Gates for waived floor categories are omitted — the waiver record above covers the absence.
 -->
 
 | Gate | Requirement | Measurement | Enforcement |
 |------|-------------|-------------|-------------|
 | Static Analysis | Zero errors | `[actual lint command]` | CI automated |
-| Type Checking | Zero errors | `[actual type check command]` | CI automated |
 | Test Suite | All tests pass | `[actual test command]` | CI automated |
-| Test Coverage | ≥80% (warning), ≥60% (blocking) | `[actual coverage command]` | CI automated |
-| Security Scan | No high/critical vulnerabilities | `[actual security tool, e.g., Trivy, Snyk]` | CI automated |
-| Secret Scan | No secrets in code | `[actual secret scanner, e.g., gitleaks, Trivy]` | CI automated |
+| Test Coverage | [tier pre-seed or session override] | `[actual coverage command]` | CI automated |
+| Security Scan | [tier-appropriate requirement] | `[actual security tool]` | CI automated |
 | Code Review | ≥1 approval | PR status | Branch protection |
 
-## Project Structure
-
-<!--
-INSTRUCTION: Define the expected folder organization.
-Include if your project has specific structure requirements.
+<!-- ═══════════════════ SELECTED MODULES ATTACH HERE ═══════════════════
+INSTRUCTION: Insert each module section selected in the synthesis (constitution-modules/*.md),
+in the order listed there. Every attached module traces to its GI module-selection element.
 -->
-
-```
-[PROJECT_ROOT]/
-├── [SOURCE_DIR]/
-│   ├── [LAYER_1]/        # [Purpose]
-│   ├── [LAYER_2]/        # [Purpose]
-│   └── [LAYER_3]/        # [Purpose]
-├── [TEST_DIR]/
-│   ├── unit/             # Unit tests
-│   └── integration/      # Integration tests
-└── [CONFIG_FILES]
-```
-
-### Layer Import Rules
-
-<!--
-INSTRUCTION: Define dependency rules if using layered architecture.
--->
-
-| Layer | MAY Import | MUST NOT Import |
-|-------|------------|-----------------|
-| [LAYER_1] | [Allowed layers] | [Prohibited layers] |
-| [LAYER_2] | [Allowed layers] | [Prohibited layers] |
-| [LAYER_3] | [Allowed layers] | [Prohibited layers] |
-
-**Domain Layer Note**: The domain layer MAY import libraries listed in the project's approved domain dependencies registry. Maintain this registry as a project-level document that records each approved domain dependency together with the justification for permitting it in the domain layer.
 
 ## Governance
 
 <!--
-INSTRUCTION: Specify who approves constitution changes.
-Options:
-- CODEOWNERS file (recommended): Reference GitHub/GitLab CODEOWNERS
-- Named role: "Tech Lead", "Principal Engineer", "Architecture Board"
-- Team reference: "@org/team-name"
+INSTRUCTION: Who approves constitution changes — CODEOWNERS (recommended), named role, or team
+reference. Calibrate ceremony to team reality from the synthesis (a solo poc does not need an
+architecture board).
 -->
 
 ### Approvers
 
-Constitution amendments MUST be approved by: [APPROVER - e.g., CODEOWNERS, @org/architecture-team, Tech Lead]
+Constitution amendments MUST be approved by: [APPROVER]
 
 ### Amendment Process
 
@@ -247,10 +169,14 @@ Constitution amendments MUST be approved by: [APPROVER - e.g., CODEOWNERS, @org/
 5. Update version per semantic versioning rules below
 6. Update CLAUDE.md to reflect changes (mandatory sync)
 
+An amendment that **bumps the tier or un-waives a floor category** is a governance event: re-run
+`/mochiko:setup` (amend mode) so the change passes through the interrogation delta and the
+synthesis is updated — waivers are revisited against their recorded triggers.
+
 ### Version Policy
 
-- **MAJOR**: Principle removal or incompatible redefinition
-- **MINOR**: New principle added or significant expansion of existing principle
+- **MAJOR**: Principle removal or incompatible redefinition; tier change
+- **MINOR**: New principle added or significant expansion of existing principle; waiver added or removed
 - **PATCH**: Clarification, wording improvement, or non-semantic refinement
 
 ### Exception Registry
@@ -268,19 +194,11 @@ When a principle cannot be followed, approved exceptions MUST be recorded in `do
 | Expiry | Date by which must be resolved, or "Permanent" with justification |
 | Tracking Issue | Link to issue for resolution (if applicable) |
 
-### Exception Process
-
-1. Document the specific constraint preventing compliance in PR description
-2. Propose the minimal deviation required with quantified scope
-3. Obtain explicit approval in code review
-4. Add entry to Exception Registry
-5. Add TODO comment in code with exception ID reference: `# EX-001: <reason>`
-
 ### Compliance Review
 
 - All PRs MUST include constitution compliance verification
-- Quarterly audits SHOULD assess codebase alignment with principles
-- Violations MUST be tracked and addressed within current sprint
+- Periodic audits SHOULD assess codebase alignment with principles (cadence per tier)
+- Violations MUST be tracked and addressed
 
 ## CLAUDE.md Synchronization
 
@@ -289,18 +207,17 @@ The `CLAUDE.md` file at repository root MUST remain synchronized with this const
 ### Mandatory Sync Artifacts
 
 <!--
-INSTRUCTION: This table defines what MUST be replicated in CLAUDE.md.
-Add rows for any constitution sections that AI agents need to follow.
+INSTRUCTION: This table defines what MUST be replicated in CLAUDE.md. Add a row per attached
+module whose content AI agents need (e.g. layer-rules → Architecture section).
 -->
 
 | Constitution Section | CLAUDE.md Section | Sync Rule |
 |---------------------|-------------------|-----------|
-| Core Principles (I-X) | Principles Summary | MUST list all principles with enforcement keywords |
-| Layer Import Rules | Architecture section | MUST replicate MAY/MUST NOT import rules |
+| Core Principles | Principles Summary | MUST list all principles with enforcement keywords |
+| Governance Tier | Governance Tier | MUST state tier + active waivers |
 | Technology Stack | Technical Stack | MUST match exactly |
 | Quality Gates | Quality Gates | MUST match exactly |
-| Project Structure | Project Structure | MUST match if present |
-| Development Workflow | Development Workflow | MUST match branch/review rules |
+| [Attached module sections] | [Corresponding section] | MUST match per module |
 | Governance | Governance section | MUST include versioning and commit rules |
 
 ### Synchronization Process

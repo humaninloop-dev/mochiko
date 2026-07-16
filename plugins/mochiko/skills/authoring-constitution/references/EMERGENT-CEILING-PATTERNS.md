@@ -125,7 +125,7 @@ External dependencies MUST be justified and isolated behind port interfaces.
 
 **Domain Layer Dependencies**:
 
-The domain layer MAY import libraries from an approved domain dependencies registry. These are gold standard libraries (>80% ecosystem adoption) that provide domain modeling capabilities without I/O coupling. See [RECOMMENDED-PATTERNS.md](RECOMMENDED-PATTERNS.md) for the qualification criteria; the project SHOULD maintain its own approved-dependency registry in its constitution or docs (there is no shipped registry file to point at).
+The domain layer MAY import libraries from an approved domain dependencies registry. These are gold standard libraries (>80% ecosystem adoption) that provide domain modeling capabilities without I/O coupling. See the BE-HEX card in [catalog/backend-service.md](catalog/backend-service.md) for the qualification criteria; the project SHOULD maintain its own approved-dependency registry in its constitution or docs (there is no shipped registry file to point at).
 
 **Port Interface Requirements**:
 

@@ -15,10 +15,10 @@ One entry per session directory under `.mochiko/brainstorms/<topic-slug>/`, **ne
 - **Landed:** `/mochiko:brainstorm` v0.6.0 + `validation-brainstorm`; ROADMAP Key Decisions (v2.2 row); BACKLOG v2.1-dogfood item closed.
 
 ## `setup-constitution-flexibility` — setup rewrite: constitution flexibility & deep elicitation
-- **When:** 2026-07-05 · **Status:** accepted (review: 15 findings → 11 survivors → 11/11 folds verified) · **the rewrite itself is not yet built or tracked in REGISTRY/BACKLOG**
+- **When:** 2026-07-05 · **Status:** accepted (review: 15 findings → 11 survivors → 11/11 folds verified) · **built 2026-07-16 at plugin v0.7.0** (stage 1 — frontend catalog shelf deferred to stage 2, tracked in BACKLOG's Setup-v2 follow-ups)
 - **Artifacts:** [record.md](setup-constitution-flexibility/record.md) (canonical) · [synthesis.md](setup-constitution-flexibility/synthesis.md) (post-acceptance digest)
 - **About:** fundamental rewrite of `/mochiko:setup` — the constitution should follow the user's declared intent, not a fixed backend-flavored baseline: a rigorous interrogation session precedes and governs authoring, sensitive to project type and scope.
-- **Landed:** design only, in this record. Doubles as the first completed end-to-end dogfood run of brainstorm v2.1 (cost + behavior numbers feed the v2.2 revision above).
+- **Landed:** `/mochiko:setup` v2 (team-form, per two build-time rulings recorded in ROADMAP's Decision Trail: brainstorm-v0.6.0 command shape + team-form substrate) + the constitution cluster rewrite (catalog, modules, synthesis contract, trace-checking validator); ROADMAP Key Decisions (setup v2 row); REGISTRY setup rows. Doubles as the first completed end-to-end dogfood run of brainstorm v2.1 (cost + behavior numbers feed the v2.2 revision above).
 
 ## `fact-checker-seat` — the fact-checker seat: role, value, and the rename
 - **When:** 2026-07-05 · **Status:** ruled and built at plugin v0.5.1 · record un-reviewed (bare session)
