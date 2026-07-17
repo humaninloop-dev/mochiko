@@ -273,6 +273,7 @@ The universal core is fixed; everything type- or tier-specific attaches as a **m
 | `layer-rules` | A layered-architecture card (e.g. BE-HEX) was kept |
 | `release-gates` | The deployment dimension elicited a real release process |
 | `evolution-notes` | Mode is brownfield (always) |
+| `knowledge-management` | The knowledge-management dimension elicited adoption (offered default-on, adopted or declined whole; a recorded decline is durable — never attach it) |
 
 Procedure: read the synthesis's **module selections**; attach exactly those module sections at the
 marked point in the core template; fill each from the synthesis (and, brownfield, the analysis);

@@ -47,9 +47,9 @@ retired ID.
 
 ## Pruned dimensions
 
-[Named skips only — "dimension 7 (deployment) skipped: poc tier, no release process." Or "none".]
+[Named skips only — "dimension 8 (deployment) skipped: poc tier, no release process." Or "none".]
 
-## Real commands (dimension 6/7 → the validator's placeholder bar)
+## Real commands (dimension 6/8 → the validator's placeholder bar)
 
 | Purpose | Command | Source |
 |---------|---------|--------|
@@ -72,7 +72,7 @@ One element per dealt card — **dropped cards are rulings too**:
 One element per minted intent — traced to the elicited answer, never to prompting:
 
 - **GI-0XX — [Intent name]:** [what to enforce, how strictly — the user's words distilled]
-  *Elicited from:* [dimension 8 answer, quoted or closely paraphrased]
+  *Elicited from:* [dimension 9 answer, quoted or closely paraphrased]
 
 ## Waivers
 
@@ -84,14 +84,17 @@ Only at tiers whose waiver posture permits it; every waiver is auditable:
 
 ## Module selections
 
-Template modules the synthesis selects (the validator checks core + exactly these):
+Template modules the session ruled on — **declines are rulings too** (recorded, durable: amend
+runs offer only modules with *no* recorded ruling here; a recorded decline is never re-asked
+until the user reopens it). The validator checks core + exactly the adopted modules:
 
-| GI-ID | Module | Selected because |
-|-------|--------|------------------|
-| GI-0XX | [layer-rules] | [BE-HEX kept] |
-| … | | |
+| GI-ID | Module | Ruling | Because |
+|-------|--------|--------|---------|
+| GI-0XX | [layer-rules] | adopted | [BE-HEX kept] |
+| GI-0XX | [knowledge-management] | [adopted \| declined] | [offered default-on at dimension 7; a decline also memorializes in dimension 10] |
+| … | | | |
 
-## Deliberate exclusions (dimension 9)
+## Deliberate exclusions (dimension 10)
 
 - **GI-0XX:** [what governance will not cover at this tier + why]
 

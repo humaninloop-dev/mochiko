@@ -11,7 +11,7 @@ session synthesis at `.mochiko/memory/governance-intent.md` (see
 select and filter the deck (tier, type) are elicited. Minted principles trace to elicited intent,
 never to shallow prompting.
 
-## The nine dimensions (in order, adaptively)
+## The ten dimensions (in order, adaptively)
 
 Work through these **adaptively, not as a fixed script** — one question per turn, skipping what an
 answer has already settled, probing deeper where answers are vague.
@@ -24,11 +24,27 @@ answer has already settled, probing deeper where answers are vague.
 | 4 | **Risk surface** | What failure costs: data loss, money, reputation, compliance, user trust | Honest floor strictness — tunes the tier preset |
 | 5 | **Team reality** | Solo vs team, experience mix, review culture | Enforcement must fit who's enforcing |
 | 6 | **Existing practices & tools** | Detected stack, CI, linters, tests; brownfield analysis feeds in here | The real commands the validator requires |
-| 7 | **Deployment & release reality** | Target, environments, cadence, what blocks a release, rollback expectations | Quality Gates; Observability/Error-Handling strictness; sharpens the tier declaration |
-| 8 | **Values & non-negotiables** | What the user insists on enforcing and explicitly refuses | The preference gap only they can fill; primary source for minted principles |
-| 9 | **Deliberate exclusions** | What governance will not cover at this tier | Recorded waivers and exclusions |
+| 7 | **Knowledge management** | Adopt or decline the `knowledge-management` module — the operating-docs bundle (`.mochiko/brainstorms/` + `index.md`, `BACKLOG.md`, `ROADMAP.md`), offered default-on, taken whole | Module ruling (recorded either way); G5 scaffolding; collision rulings |
+| 8 | **Deployment & release reality** | Target, environments, cadence, what blocks a release, rollback expectations | Quality Gates; Observability/Error-Handling strictness; sharpens the tier declaration |
+| 9 | **Values & non-negotiables** | What the user insists on enforcing and explicitly refuses | The preference gap only they can fill; primary source for minted principles |
+| 10 | **Deliberate exclusions** | What governance will not cover at this tier | Recorded waivers and exclusions |
 
-**Dimension 8 phrasing pre-filters for enforceability.** Probe for values as *enforceable
+**Dimension 7 offers the knowledge-management module default-on, whole.** Recommend adoption —
+the user must actively decline (the projects most needing imposed structure are the least likely
+to ask for it) — and never deal an inner menu: the bundle
+(`templates/constitution-modules/knowledge-management.md`) is adopted or declined as one unit; a
+project for which any part feels heavy declines the module, not a fragment. It sits here because
+everything the call depends on (tier, type, risk, team, detected practices) is declared by the
+time dimension 6 completes, and brownfield doc evidence is still fresh. The ruling is recorded in
+the synthesis **either way**; a decline also memorializes in dimension 10. **Brownfield collision
+beat** — fired only when dimension-6 evidence shows an existing doc colliding with a bundle name:
+the hard floor is *never overwrite or rename existing content*; the default is to **codify** an
+existing doc whose semantics fit into the module role; a true semantic collision (name taken,
+different meaning — e.g. a product roadmap at `ROADMAP.md`) is put to the user with the evidence
+on the table — adopt the existing doc into the role, or nest the module's artifact under
+`.mochiko/` — and the ruling lands in the synthesis.
+
+**Dimension 9 phrasing pre-filters for enforceability.** Probe for values as *enforceable
 behavior* ("what should CI or review block?"), not moods ("quality matters"). Elicited intent that
 still resists enforceable formulation is not dropped and not authored as vagueness — the producer
 flags it as a proposal for the user to rule on at acceptance.
@@ -45,25 +61,27 @@ skip is auditable; a silent one is a gap.
 
 The interrogation runs in **all three modes** — it covers only what the mode leaves unknown:
 
-- **Greenfield** — the full nine dimensions, subject to the pruning license.
+- **Greenfield** — the full ten dimensions, subject to the pruning license.
 - **Brownfield** — the codebase analysis pre-fills dimension 6; the session focuses on what code
   cannot say: intent, tier, risk, values. **Confront detected-reality-vs-declared-intent conflicts
   in the open** ("you declared production tier; the codebase has no tests") — never silently
   resolve them. A confrontation's resolution (tier adjusted, gap accepted into a roadmap, principle
   written as MUST-implement) is a session ruling, recorded in the synthesis.
 - **Amend** — a micro-session scoped to the delta. An amendment that bumps the tier or un-waives a
-  floor category is a governance event and gets the relevant agenda slice (dimensions 2, 4, 9 at
-  minimum); a wording-level amendment may need no interrogation at all.
+  floor category is a governance event and gets the relevant agenda slice (dimensions 2, 4, 10 at
+  minimum); a wording-level amendment may need no interrogation at all. An amend run also offers,
+  **once**, every module the synthesis records no ruling on — the answer is recorded either way,
+  and a recorded decline is never re-asked (permanent until the user reopens it).
 
 ## After the dimensions: deck arbitration, then waiver rulings
 
 1. **Deal the deck** — shelves selected by type (dimension 3), cards filtered/parameterized by tier
-   (dimension 2), presets tuned by risk/values (dimensions 4, 8). Present cards with
+   (dimension 2), presets tuned by risk/values (dimensions 4, 9). Present cards with
    recommendations per their tier defaults; the user **keeps / tightens / loosens / drops /
    re-ranks** each. Use the recommend-then-arbitrate format from `analysis-iterative` — the user
    sorts and arbitrates supplied content, they are not asked to generate it. Every ruling is
    recorded.
-2. **Mint** — turn dimension-8 intent that no card covers into minted-principle intents (what to
+2. **Mint** — turn dimension-9 intent that no card covers into minted-principle intents (what to
    enforce, how strictly — formulation is the producer's job later).
 3. **Waiver rulings** — for any floor category the tier permits waiving and the user chooses to
    waive: record the category, the waiving tier, and the revisit trigger (default: tier

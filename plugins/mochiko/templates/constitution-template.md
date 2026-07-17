@@ -208,7 +208,10 @@ The `CLAUDE.md` file at repository root MUST remain synchronized with this const
 
 <!--
 INSTRUCTION: This table defines what MUST be replicated in CLAUDE.md. Add a row per attached
-module whose content AI agents need (e.g. layer-rules → Architecture section).
+module whose content AI agents need (e.g. layer-rules → Architecture section). When the
+knowledge-management module is attached, include its rows below (delete them otherwise) — the
+operating-manual text must reach every agent session via CLAUDE.md (sync machinery stub-backed
+until `syncing-claude-md` ports; the rows still bind at review time).
 -->
 
 | Constitution Section | CLAUDE.md Section | Sync Rule |
@@ -218,6 +221,8 @@ module whose content AI agents need (e.g. layer-rules → Architecture section).
 | Technology Stack | Technical Stack | MUST match exactly |
 | Quality Gates | Quality Gates | MUST match exactly |
 | [Attached module sections] | [Corresponding section] | MUST match per module |
+| Knowledge Management *(module — only when adopted)* | Recording sessions & operating docs | MUST carry the operating-manual text: session-org + index maintenance contract, `BACKLOG.md`/`ROADMAP.md` roles and circulation |
+| Knowledge Management *(module — only when adopted)* | Session index pointer | MUST name `.mochiko/brainstorms/index.md` as the session index, read-before-opening |
 | Governance | Governance section | MUST include versioning and commit rules |
 
 ### Synchronization Process

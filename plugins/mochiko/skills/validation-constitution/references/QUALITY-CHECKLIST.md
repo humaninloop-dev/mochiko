@@ -57,6 +57,7 @@ bottom of that module's file in `templates/constitution-modules/`:
 - [ ] `layer-rules` fragment (if selected)
 - [ ] `release-gates` fragment (if selected)
 - [ ] `evolution-notes` fragment (if selected — always selected in brownfield mode)
+- [ ] `knowledge-management` fragment (if selected — adopted whole; never check it against a synthesis that records a decline)
 
 ## No Placeholders Rule
 

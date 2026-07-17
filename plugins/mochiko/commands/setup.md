@@ -76,12 +76,14 @@ summary: **confirm** (→ interrogation) / **edit** (corrections, bounded re-run
 checkpoint + the deterministic detect-stack baseline — no machine validator (the constitution is
 the deliverable, and gets one).
 
-**Interrogation** *(inline — you, not a teammate)* — run the agenda's nine dimensions adaptively;
+**Interrogation** *(inline — you, not a teammate)* — run the agenda's ten dimensions adaptively;
 an early low-tier declaration licenses pruning (skips named, never silent). Brownfield: the
 analysis pre-fills the existing-practices dimension; **confront detected-reality-vs-declared-intent
 conflicts in the open** ("you declared production tier; the codebase has no tests") — never
 silently resolve. Amend: micro-session scoped to the delta (a tier bump or un-waive is a
-governance event and gets its agenda slice). Then deal the catalog
+governance event and gets its agenda slice); additionally offer, **once**, every module the
+synthesis records no ruling on — record the answer in `governance-intent.md` either way (a
+recorded decline is permanent until the user reopens it; never re-ask). Then deal the catalog
 (`…/authoring-constitution/references/catalog/` — shelves by declared type, cards filtered and
 parameterized by tier), arbitrate card by card (recommend-then-arbitrate; the user keeps /
 tightens / drops / re-ranks), collect minted intents, and take waiver rulings where the tier
@@ -116,9 +118,15 @@ user's ruling** — proposals fold in only by the user's word (then re-validate)
 **Finalize** *(gate G5)* — report from the accepted artifacts: `constitution.md` +
 `governance-intent.md` (both durable — the synthesis is the amend baseline and the traceability
 surface; never offer to delete either), brownfield `codebase-analysis.md` (offer retain /
-remove), the PASS + acceptance trail, a suggested commit, next step (`/mochiko:specify`).
-Cross-cutting stubs, referenced not dispatched: CLAUDE.md sync (`syncing-claude-md`, unported)
-and evolution roadmap (`authoring-roadmap`, unported).
+remove), the PASS + acceptance trail, a suggested commit, next step (`/mochiko:specify`; when
+knowledge-management was adopted, also `/mochiko:brainstorm` — the layer exists so sessions have
+somewhere to land). **Knowledge-management adopted → scaffold the bundle here**
+(`.mochiko/brainstorms/` + `index.md`, `BACKLOG.md`, `ROADMAP.md`), honoring the session's
+collision rulings, on a hard **never-overwrite floor**: existing content is never overwritten or
+renamed — this explicitly governs the repo-root writes the module introduces (everything else
+setup touches stays under `.mochiko/memory/`). Cross-cutting stubs, referenced not dispatched:
+CLAUDE.md sync (`syncing-claude-md`, unported) and evolution roadmap (`authoring-roadmap`,
+unported).
 
 ## Contract (authoring-time fill — governed by `mochiko:loop-discipline`)
 
