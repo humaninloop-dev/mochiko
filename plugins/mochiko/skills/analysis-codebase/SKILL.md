@@ -11,7 +11,8 @@ Systematically analyze an existing codebase to extract the structural informatio
 `/mochiko:setup` run needs: the tech stack, architecture, conventions, domain entities, and an
 **assessment** of the Essential Floor (Security / Testing / Error Handling / Observability). The
 deliverable is `.mochiko/memory/codebase-analysis.md` — the producer's read of "what this codebase
-already is," which the constitution author and the Phase-2 human checkpoint consume.
+already is," consumed by the analysis checkpoint (the setup lead's human gate), the interrogation
+session's existing-practices dimension, and the constitution author.
 
 > **Scope (this run).** Only the **Setup-Brownfield** path is wired here. The other two HIL modes
 > are moved to their own clusters and are *not* carried this run:
@@ -121,10 +122,19 @@ sub-procedure with domain-entity extraction and an Essential-Floor status assess
 The four Essential-Floor categories — **Security, Testing, Error Handling, Observability** — are
 **defined canonically** in
 [`authoring-constitution/references/ESSENTIAL-FLOOR.md`](../authoring-constitution/references/ESSENTIAL-FLOOR.md).
-Governance owns *require-floor* (what the categories are and why they are non-negotiable). This
-skill owns the other half — **assess-status**: detect each category's present / partial / absent
-state in the existing codebase, with file-cited evidence. **Do not redefine the categories here.**
-Read the canonical definition, then assess against it using the indicators below.
+Governance owns *require-floor* (what the categories are, their tier-parameterized strictness, and
+their waiver posture). This skill owns the other half — **assess-status**: detect each category's
+present / partial / absent state in the existing codebase, with file-cited evidence. **Do not
+redefine the categories here.** Read the canonical definition, then assess against it using the
+indicators below.
+
+**The assessment is tier-blind and waiver-blind by design.** Report what IS — the same codebase
+gets the same status regardless of the tier the user later declares. Downstream, the setup
+session interprets the statuses against declared intent (an `absent` at declared production tier
+becomes an open confrontation; at poc tier it may become a recorded waiver) — that interpretation
+belongs to the session and the constitution, never to this analysis. Do not soften an `absent` to
+`partial` because the project "is only a poc", and do not mark a category "waived" — waivers are
+governance rulings, not codebase facts.
 
 #### Security — status indicators
 

@@ -1,78 +1,176 @@
 ---
-description: Create or update the project constitution via an independent producer→validator loop with a human acceptance gate — brownfield-aware (greenfield | brownfield | amend).
+description: Create or update the project constitution — an interrogation session elicits the user's governance intent (tier, type, risk, values) before anything is authored, closing on a ratified synthesis that becomes a traceable contract on the producer; a principal-architect teammate authors from it, an independent validator teammate grades from the files (trace-IDs, tier, waivers, modules), and the user accepts with a trace summary in hand — brownfield-aware (greenfield | brownfield | amend). Requires agent teams (CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS); refuses without them.
+disable-model-invocation: true
 ---
 
-# Setup — Project Constitution
+# Setup — Constitution From Interrogated Intent
 
-You are the **lead / supervisor** for establishing or updating the project constitution — you own the loop, the verdict, and the human gates. The constitution is **authored** by `mochiko:principal-architect` and independently **graded** by `mochiko:validator`; never let those two collapse into one agent. The validator grades from the artifact file; **you own the done verdict.**
+**Goal:** establish or update `.mochiko/memory/constitution.md` so it follows the user's declared
+intent — never a fixed baseline. The session elicits *what to govern and how strictly* before any
+authoring; the ratified synthesis (`.mochiko/memory/governance-intent.md`) is a **traceable
+contract** on the producer: selection belongs to the session, only formulation to the producer.
+`$ARGUMENTS` = optional setup request; empty is fine — detection proposes the mode.
 
-This is a mochiko **sound loop**: invoke **`mochiko:loop-discipline`** and honor all four requirements (default-FAIL done-condition, independent validation, bounded iteration, named human gates), and brief each dispatch per **`agent-dispatch`**. Those rules are not restated here — this command states only what is specific to *this* workflow.
+**You are the lead.** You run the interrogation inline via `mochiko:analysis-iterative` (one
+question per turn) against the agenda in
+`${CLAUDE_PLUGIN_ROOT}/skills/authoring-constitution/references/INTERROGATION-AGENDA.md`, write
+the synthesis, own the loop (round counter, verdict, escalations), and hold every gate. The
+machinery holds two seats — a producer and a cold validator — and beyond those seats the
+conversation is you and the user. This is a `mochiko:loop-discipline` sound loop; the Contract
+section below is its authoring-time fill — **no per-run contract is written**.
 
-**Argument:** `$ARGUMENTS` = optional setup request (e.g. "set up project governance", "amend the testing principle"). Empty is fine — Phase 0 detects the mode.
+## Hard requirement — agent teams
 
-## Contract parameters (fill the artifact — don't inline it)
+Check `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS` in the environment before anything else; unset →
+stop and tell the user how to enable it (settings/env; Claude Code ≥ v2.1.178). The env check is
+a proxy — the **first teammate spawn is the authoritative probe** (the producer): if it fails,
+stop with the same instructions. Never proceed teamless — no fallback transport (the same
+deliberate dogfood-pilot bet as `/mochiko:brainstorm`, marked `Contested`; revisit when mochiko
+distributes beyond the author's machines).
 
-Fill `templates/workflow-contract.md` → `.mochiko/memory/contract.md` with the values below, then confirm it against `mochiko:loop-discipline`. The filled artifact is the inspectable proof — not this command body.
+## Session constraints
 
-- **Done-condition** — starts FAILing; clears only when **(1)** `mochiko:validator` returns PASS on `.mochiko/memory/constitution.md` graded from the file, **(2)** the Phase-4 human acceptance has cleared, **and (3)** in brownfield mode the Phase-2 analysis checkpoint was confirmed. Out of rounds = escalate, never done.
-- **Team** — producer `mochiko:principal-architect` (`authoring-constitution`, `analysis-codebase`) authors, never grades; validator `mochiko:validator` (`validation-constitution`) grades from the file, never authors. Disjoint agents and skills. Record in the contract the validator's Tier-2 standing + its deterministic sub-checks (placeholder scan, three-part-structure presence, and — brownfield — tools/versions cross-checked against `codebase-analysis.md`).
-- **Bounds** — cap **3** produce↔validate rounds (you count); no-progress exit when the validator's fix-list is unchanged round-over-round; kill-switch `.mochiko/memory/SETUP_STOP` checked before each dispatch.
-- **Gates** — G1 mode-select · G2 analysis checkpoint (brownfield) · G3 constitution acceptance · G4 cleanup · escalation on any guard trip.
+- The conversation belongs to you and the user. **Never narrate machinery** — no "phase",
+  "round", or "gate" talk; teammate housekeeping is never narrated and never replied to.
+- Announce each seat in one line when you fill it — an unexplained teammate spawn reads as a
+  malfunction. Tell the user they can watch or message any teammate directly.
+- Workspace: `mkdir -p .mochiko/memory`. Kill-switch: stop and escalate if
+  `.mochiko/memory/SETUP_STOP` exists — check before each dispatch.
+- **Mode is yours** (greenfield | brownfield | amend) — it selects which stages run and the
+  producer's branch. It is carried in-session + by workspace evidence; there is no context file.
 
-> Why this done-condition differs from HIL's: HIL exited on "no clarifications OR max-3 iterations reached" — LLM-controlled and defaulting to DONE on cap, violating `loop-discipline` req. 1. The clarification exchange survives only as an in-loop human gate, never the done-condition; plus the new G3 acceptance gate.
+## The team
 
-## Phase 0 — Detect & mode-select  *(human gate G1)*
+Teammates do **not** load `skills:` frontmatter — every spawn prompt must name the skill and
+role itself, plus what to Read (see `templates/agent-dispatch.md` for the briefing fields).
 
-1. `mkdir -p .mochiko/memory`. Run stack detection (an *input*, not the quality gate): `bash ${CLAUDE_PLUGIN_ROOT}/skills/analysis-codebase/scripts/detect-stack.sh .`. Count source files (the brownfield heuristic) and check for an existing `.mochiko/memory/constitution.md` (present → `amend`; absent → `create`).
-2. **Brownfield heuristic:** source-file count > 5 **AND** a framework/ORM detected → suggest **brownfield**; otherwise default **greenfield**.
-3. **G1 mode-select:** present the detection result and let the user choose **brownfield** (full analysis, then author from real patterns), **greenfield** (constitution only, opinionated defaults), or **amend** (update the existing constitution without re-analysis).
-4. **Route:** brownfield → Phase 1 · greenfield → Phase 3 · amend → Phase 3. Mode is carried in-session + the `.mochiko/memory/` workspace — there is no separate context-handoff file (HIL's `setup-context-*.md` is absorbed into this lead).
+- **producer** — `mochiko:principal-architect`, one standing seat spanning both of its jobs, so
+  analysis context flows into authoring and fix-list context survives across rounds. Brownfield:
+  spawn at analysis (runs `mochiko:analysis-codebase`, mode setup-brownfield, on the detect-stack
+  output → writes `.mochiko/memory/codebase-analysis.md`, returns summary + Essential-Floor table
+  + clarifications). All modes: after synthesis ratification it authors via
+  `mochiko:authoring-constitution` → `.mochiko/memory/constitution.md` — brief it to Read the
+  synthesis (its contract; formulation only, flagged proposals for anything beyond) and, in
+  brownfield, the analysis; in amend, the existing constitution (preserve untouched principles;
+  semver bump). It **returns** a report + any flagged proposals + clarifications; it never grades.
+- **validator** — `mochiko:validator`, spawned **cold at first validation**, never in the room
+  before that and never messaged by the producer. Brief it to run
+  `mochiko:validation-constitution` **from the files** (constitution + synthesis, never the
+  producer's report): three-part + trace-stamp structure, the deterministic trace-ID cross-check
+  both ways, tier + waiver-format + floor-accounting checks, module-parameterized section
+  checklist, anti-pattern + placeholder scans, semver call — brownfield adds the
+  tools/versions↔analysis cross-check. Returns binary PASS/FAIL + fix list; **the fix list flows
+  through you** to the producer — that routing is the independence the loop rests on.
 
-## Phase 1 — Brownfield analysis  *(brownfield only)*
+## The flow
 
-Dispatch `mochiko:principal-architect` (briefed per `agent-dispatch`) to run `analysis-codebase` (mode: setup-brownfield) on the project, using the Phase-0 detect-stack output + file count as inputs: inventory existing patterns and entities, and assess the Essential Floor — Security, Testing, Error Handling, Observability — as present / partial / absent, using `codebase-analysis-template.md`. It writes `.mochiko/memory/codebase-analysis.md` and returns a summary + Essential-Floor table + entities + architecture pattern + any clarifications.
+**Detect & mode-select** *(gate G1)* — run
+`bash ${CLAUDE_PLUGIN_ROOT}/skills/analysis-codebase/scripts/detect-stack.sh .` (an input, not the
+quality gate), count source files, check for an existing constitution (present → suggest
+**amend**; >5 source files + framework detected → suggest **brownfield**; else **greenfield**).
+The user chooses. Brownfield → analysis; greenfield/amend → interrogation.
 
-## Phase 2 — Analysis checkpoint  *(brownfield only · human gate G2)*
+**Brownfield analysis** *(gate G2)* — spawn the producer for the analysis, then present its
+summary: **confirm** (→ interrogation) / **edit** (corrections, bounded re-run) / **reject**
+(fall back to greenfield, or abort). The analysis is an intermediate input gated by this human
+checkpoint + the deterministic detect-stack baseline — no machine validator (the constitution is
+the deliverable, and gets one).
 
-Present the analysis summary and let the user **confirm** (→ Phase 3), **edit** (collect corrections, re-run Phase 1 — bounded by the same round discipline as Phase 3; a human-correction gate, not a done-condition), or **reject** (fall back to greenfield, or abort). `codebase-analysis.md` is an **intermediate input**, not the deliverable: its gate is this human checkpoint plus the deterministic `detect-stack.sh` baseline — there is no separate analysis-validator (that would over-engineer an intermediate artifact). The **constitution** is the deliverable and gets the independent validator in Phase 3.
+**Interrogation** *(inline — you, not a teammate)* — run the agenda's ten dimensions adaptively;
+an early low-tier declaration licenses pruning (skips named, never silent). Brownfield: the
+analysis pre-fills the existing-practices dimension; **confront detected-reality-vs-declared-intent
+conflicts in the open** ("you declared production tier; the codebase has no tests") — never
+silently resolve. Amend: micro-session scoped to the delta (a tier bump or un-waive is a
+governance event and gets its agenda slice); additionally offer, **once**, every module the
+synthesis records no ruling on — record the answer in `governance-intent.md` either way (a
+recorded decline is permanent until the user reopens it; never re-ask). Then deal the catalog
+(`…/authoring-constitution/references/catalog/` — shelves by declared type, cards filtered and
+parameterized by tier), arbitrate card by card (recommend-then-arbitrate; the user keeps /
+tightens / drops / re-ranks), collect minted intents, and take waiver rulings where the tier
+permits.
 
-## Phase 3 — Constitution loop  *(all modes · the sound loop; you own the round counter)*
+**Synthesis confirmation** *(gate G3, all modes)* — assemble
+`templates/governance-intent-template.md` → `.mochiko/memory/governance-intent.md` (GI-IDs on
+every element; **amend updates the persisted file delta-wise** — untouched elements keep their
+IDs; an amend where no synthesis exists yet backfills one from the existing constitution first,
+each standing principle landing as a kept element). Present it: **confirm** (record the stamp →
+constitution loop) / **edit** (fold corrections, re-present) / **reject** (back to
+interrogation). This checkpoint is the synthesis↔intent fidelity gate — nothing is authored
+before it clears.
 
-Initialize `round = 0`; the constitution is FAIL until proven otherwise.
+**Constitution loop** *(you own the counter; the deliverable is FAIL until proven otherwise)* —
+**produce** (dispatch the producer; on round > 1 pass the validator's fix list verbatim for
+targeted revision — don't regress passing items; if it returns clarifications it cannot resolve,
+ask the user and feed answers forward — an in-loop human gate, never the done-condition) →
+**validate** (spawn/dispatch the validator) → PASS: record verdict + version bump → acceptance.
+FAIL: increment round; cap **3** / fix list unchanged round-over-round / kill-switch → **escalate**
+(last fix list + stop reason; give-guidance-and-retry / accept-with-noted-gaps / abort — the run
+stays FAIL unless the user explicitly accepts); else loop.
 
-1. **Produce.** Dispatch `mochiko:principal-architect` to run `authoring-constitution` → `.mochiko/memory/constitution.md`, briefed per `agent-dispatch` for the mode:
-   - **brownfield** — Read `codebase-analysis.md`; use ACTUAL tools/versions/commands (never placeholder tokens); the four Essential-Floor principles + an Emergent Ceiling codifying existing good patterns; `project_type: brownfield`.
-   - **greenfield** — opinionated defaults: Essential Floor (I–IV) + architectural principles (V–VII: Hexagonal Architecture, Single Responsibility, Dependency Discipline); concrete commands for the detected stack; `project_type: greenfield`.
-   - **amend** — Read the existing constitution; preserve principles unless explicitly changing; bump the version (semver).
-   Every principle carries Statement / Enforcement / Testability / Rationale with RFC-2119 keywords (MUST/SHOULD/MAY), using `constitution-template.md`. On round > 1, pass the validator's fix list for targeted revision (don't regress passing items). Then the **clarification sub-gate** (human, in-loop, NOT the done-condition): if the producer raises questions it cannot resolve, ask the user and feed answers into the next dispatch.
-2. **Validate.** Dispatch `mochiko:validator` to run `validation-constitution` on the file (it Reads the artifact, never the author's report): three-part structure on every principle, anti-pattern scan, placeholder scan, threshold quantification, the semver-bump call, and — brownfield — named tools/versions cross-checked against `codebase-analysis.md`. Returns binary PASS/FAIL + fix list + version-bump call.
-3. **Loop control.** PASS → record the verdict + version bump → Phase 4. FAIL → increment `round`; if the cap (3) / no-progress / kill-switch tripped → **escalate** (present the last fix list + stop reason; options: give-guidance-and-retry / accept-with-noted-gaps / abort; the run stays FAIL unless the human explicitly accepts); else loop to step 1 with the fix list.
+**Acceptance** *(gate G4 — reachable only on validator PASS)* — present the validated
+constitution (version, tier, principle count, floor accounting incl. waivers) **with a trace
+summary**: which principles trace to which synthesis elements (deck-kept / minted /
+floor-preset), waiver records, and **every flagged proposal from the producer, each needing the
+user's ruling** — proposals fold in only by the user's word (then re-validate). **accept** (done)
+/ **amend** (changes become the fix list, re-enter the loop — must PASS again) / **reject**
+(abort; the draft stays in `.mochiko/memory/`).
 
-## Phase 4 — Constitution acceptance  *(human gate G3)*
+**Finalize** *(gate G5)* — report from the accepted artifacts: `constitution.md` +
+`governance-intent.md` (both durable — the synthesis is the amend baseline and the traceability
+surface; never offer to delete either), brownfield `codebase-analysis.md` (offer retain /
+remove), the PASS + acceptance trail, a suggested commit, next step (`/mochiko:specify`; when
+knowledge-management was adopted, also `/mochiko:brainstorm` — the layer exists so sessions have
+somewhere to land). **Knowledge-management adopted → scaffold the bundle here**
+(`.mochiko/brainstorms/` + `index.md`, `BACKLOG.md`, `ROADMAP.md`), honoring the session's
+collision rulings, on a hard **never-overwrite floor**: existing content is never overwritten or
+renamed — this explicitly governs the repo-root writes the module introduces (everything else
+setup touches stays under `.mochiko/memory/`). Cross-cutting stubs, referenced not dispatched:
+CLAUDE.md sync (`syncing-claude-md`, unported) and evolution roadmap (`authoring-roadmap`,
+unported).
 
-Reachable only on validator PASS. Present the validated constitution (version, principle count, Essential-Floor status) and let the user **accept** (→ Phase 5; the done-condition is now satisfied), **amend** (re-enter Phase 3 with the changes as the fix list — still bounded; it must PASS again), or **reject** (abort; the draft remains under `.mochiko/memory/`).
+## Contract (authoring-time fill — governed by `mochiko:loop-discipline`)
 
-## Phase 5 — Finalize  *(human gate G4)*
+- **Done-condition:** default **FAIL**; clears only when the validator returns PASS graded from
+  the files **and** G3 synthesis confirmation cleared (all modes) **and** G4 acceptance cleared
+  (**and** G2 confirmed, in brownfield). Out of rounds = escalate, never done.
+- **Producer ↔ validator:** `principal-architect` (authoring-constitution, analysis-codebase)
+  authors, never grades; `validator` (validation-constitution) grades from files, never authors —
+  disjoint agents, disjoint skills, structurally separated (validator cold-spawned, fix list
+  lead-routed, no producer↔validator messaging). Validator standing: Tier-2 with deterministic
+  sub-checks (placeholder scan, trace-ID cross-check, three-part presence; brownfield
+  tools/versions↔analysis).
+- **Bounds:** ≤3 produce↔validate rounds (you count) · no-progress exit · kill-switch
+  `.mochiko/memory/SETUP_STOP`. The interrogation is bounded by user-driven convergence — a
+  human-attended session, not an agent loop.
+- **Out of scope, explicitly:** drift detection between invocations. Setup is on-demand tooling —
+  waiver revisit triggers fire on re-invocation only; a project that never re-runs setup is never
+  re-checked, **by design**, not oversight.
+- **Human gates:** G1 mode-select · G2 analysis checkpoint (brownfield) · the interrogation
+  itself + the in-loop clarification sub-gate · G3 synthesis confirmation · G4 acceptance with
+  trace summary + flagged-proposal rulings · G5 cleanup · escalation on any guard trip.
 
-1. **Report** (per mode), read from the accepted constitution: the artifacts (`constitution.md` deliverable + brownfield `codebase-analysis.md`), principle count + Essential-Floor status, the independent-validation PASS + human acceptance, a suggested commit (`docs: create constitution [version]` / `docs: update constitution to [version]`), and the next step (`/mochiko:specify`).
-2. **Cross-cutting follow-ups — documented stubs, NOT wired this run** (referenced so nothing is silently lost; do not dispatch — there are no live skill mounts): **CLAUDE.md sync** (the `syncing-claude-md` cluster — the constitution template still carries its own `## CLAUDE.md Synchronization` content; only the operational sync action is deferred) and **evolution roadmap** (the `authoring-roadmap` cluster + `evolution-roadmap-template.md`).
-3. **Cleanup (G4):** `.mochiko/memory/` holds durable state (`constitution.md`, and brownfield `codebase-analysis.md`) — no ephemeral context file to delete. Offer retain / remove-analysis-only; never offer to delete `constitution.md` — it is the deliverable.
+## Recovery
 
-## State recovery
+Teams do not survive `/resume`. Resume from workspace evidence, respawning what the stage needs
+(the standing producer rereads the synthesis + fix list cheaply; a validator respawn is cold by
+design):
 
-Resume from workspace evidence (no context-file `phase`):
-
-| Evidence in the workspace | Resume at |
-|---------------------------|-----------|
-| `.mochiko/memory/` missing or empty | Phase 0 |
-| brownfield chosen, `codebase-analysis.md` missing | Phase 1 |
-| `codebase-analysis.md` present, not yet confirmed | Phase 2 |
-| analysis confirmed (or greenfield/amend), no `constitution.md` | Phase 3 (produce) |
-| `constitution.md` present, no recorded validator PASS | Phase 3 (validate) |
-| validator PASS recorded, not yet accepted | Phase 4 |
-| accepted | Phase 5 |
-| `.mochiko/memory/SETUP_STOP` present | escalate |
+| Evidence in `.mochiko/memory/` | Resume at |
+|--------------------------------|-----------|
+| missing or empty | detect & mode-select |
+| brownfield chosen, `codebase-analysis.md` missing | analysis |
+| `codebase-analysis.md` present, unconfirmed | G2 |
+| mode set, `governance-intent.md` missing | interrogation |
+| `governance-intent.md` present, no confirmation stamp | G3 |
+| synthesis confirmed, `constitution.md` missing/stale | loop (produce) |
+| `constitution.md` present, no recorded PASS | loop (validate) |
+| PASS recorded, not accepted | G4 |
+| accepted | G5 |
+| `SETUP_STOP` present | escalate |
 
 ---
 
-**What you own (not the agents):** the loop (round counter, no-progress check, cap, kill-switch, escalation); the verdict (the validator grades from the artifact, you declare done against the default-FAIL done-condition); the human gates; the **mode** (greenfield / brownfield / amend — it selects the producer's branch and which phases run); and never letting producer and validator collapse into one agent. Stay kernel-free; brief agents per `agent-dispatch`; always dispatch via the Task tool (never inline agent behavior); do not modify git or push. Full rules: `mochiko:loop-discipline`.
+**What you own (not the agents):** the interrogation and the synthesis pen; the loop; the
+verdict against the default-FAIL done-condition; the human gates; the mode; and never letting
+producer and validator collapse into one seat. Stay kernel-free; brief every spawn per
+`agent-dispatch`; do not modify git or push. Full rules: `mochiko:loop-discipline`.

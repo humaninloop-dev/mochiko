@@ -8,6 +8,12 @@ One entry per session directory under `.mochiko/brainstorms/<topic-slug>/`, **ne
 
 ---
 
+## `setup-operating-docs-scaffolding` — setup scaffolds the operating-docs layer
+- **When:** 2026-07-17 · **Status:** accepted · record cold-reviewed (single reviewer per sizing gate: 12 findings → 9 survivors → 9/9 dispositioned, verify pass PASS) · **built 2026-07-17 at plugin v0.8.0**
+- **Artifacts:** [record.md](setup-operating-docs-scaffolding/record.md) (canonical) · [synthesis.md](setup-operating-docs-scaffolding/synthesis.md) (post-acceptance digest, fidelity-checked PASS)
+- **About:** the operating-docs layer (brainstorm session org + `index.md`, `BACKLOG.md`, `ROADMAP.md`) becomes an elective **default-on knowledge-management constitution module** — adopted or declined whole; elicited by a new interrogation dimension #7 (after existing-practices), scaffolded at G5 finalize on a never-overwrite floor with per-project rulings on true collisions; enforced via three carriers (command index-bookkeeping, CLAUDE.md-sync rows, testable invariants run at session open/close); offered once to existing constitutions on amend (D1–D7 + 5 build items).
+- **Landed:** record accepted 2026-07-17; all five build items built same day (the user landed the changes directly from the record post-session, as ruled): `constitution-modules/knowledge-management.md` (new) · `INTERROGATION-AGENDA.md` dimension #7 (agenda now ten) · `constitution-template.md` sync rows · `setup.md` (G5 scaffolding + brainstorm next-step + amend module-offer) · `brainstorm.md` (index bookkeeping + open/close invariants) · ripple edits (governance-intent template module-ruling declines, authoring/validation module rows, router). Ruling: ROADMAP Key Decisions (KM-module row, 2026-07-17); open thread + dogfood watches: BACKLOG (module-elicitation scaling item + KM-module follow-ups).
+
 ## `brainstorm-v2-2-revision` — sized lens-split review (brainstorm v2.2)
 - **When:** opened 2026-07-05, concluded 2026-07-16 · **Status:** accepted; built at plugin v0.6.0 · record un-reviewed (bare session)
 - **Artifacts:** [record.md](brainstorm-v2-2-revision/record.md)
@@ -15,10 +21,10 @@ One entry per session directory under `.mochiko/brainstorms/<topic-slug>/`, **ne
 - **Landed:** `/mochiko:brainstorm` v0.6.0 + `validation-brainstorm`; ROADMAP Key Decisions (v2.2 row); BACKLOG v2.1-dogfood item closed.
 
 ## `setup-constitution-flexibility` — setup rewrite: constitution flexibility & deep elicitation
-- **When:** 2026-07-05 · **Status:** accepted (review: 15 findings → 11 survivors → 11/11 folds verified) · **the rewrite itself is not yet built or tracked in REGISTRY/BACKLOG**
+- **When:** 2026-07-05 · **Status:** accepted (review: 15 findings → 11 survivors → 11/11 folds verified) · **built 2026-07-16 at plugin v0.7.0** (stage 1 — frontend catalog shelf deferred to stage 2, tracked in BACKLOG's Setup-v2 follow-ups)
 - **Artifacts:** [record.md](setup-constitution-flexibility/record.md) (canonical) · [synthesis.md](setup-constitution-flexibility/synthesis.md) (post-acceptance digest)
 - **About:** fundamental rewrite of `/mochiko:setup` — the constitution should follow the user's declared intent, not a fixed backend-flavored baseline: a rigorous interrogation session precedes and governs authoring, sensitive to project type and scope.
-- **Landed:** design only, in this record. Doubles as the first completed end-to-end dogfood run of brainstorm v2.1 (cost + behavior numbers feed the v2.2 revision above).
+- **Landed:** `/mochiko:setup` v2 (team-form, per two build-time rulings recorded in ROADMAP's Decision Trail: brainstorm-v0.6.0 command shape + team-form substrate) + the constitution cluster rewrite (catalog, modules, synthesis contract, trace-checking validator); ROADMAP Key Decisions (setup v2 row); REGISTRY setup rows. Doubles as the first completed end-to-end dogfood run of brainstorm v2.1 (cost + behavior numbers feed the v2.2 revision above).
 
 ## `fact-checker-seat` — the fact-checker seat: role, value, and the rename
 - **When:** 2026-07-05 · **Status:** ruled and built at plugin v0.5.1 · record un-reviewed (bare session)

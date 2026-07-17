@@ -1,8 +1,14 @@
-# Essential Floor (NON-NEGOTIABLE)
+# Essential Floor
 
-> **Canonical home.** This file is the single source of truth for the four NON-NEGOTIABLE Essential Floor categories. Both modes of `authoring-constitution` (greenfield writes them from defaults; brownfield assesses the codebase against them) reference this definition, and the cross-cluster `analysis-codebase` skill references it for its present/partial/absent status assessment rather than re-defining the categories. Edit the four categories here, nowhere else.
+> **Canonical home.** This file is the single source of truth for the four Essential Floor category **definitions**. Both modes of `authoring-constitution` (greenfield writes them from tier defaults; brownfield assesses the codebase against them) reference this definition, and the cross-cluster `analysis-codebase` skill references it for its present/partial/absent status assessment rather than re-defining the categories. Edit the four categories here, nowhere else.
 
-Every constitution MUST include principles for these four categories, regardless of codebase state.
+Every constitution MUST **account for** all four floor categories — with a principle, or, at a low
+tier, a **recorded waiver** (which tier waived it + the revisit trigger). The floor concept is
+invariant: no session emits a floor-less constitution, and absence is never silent. Floor
+**strictness and waiver posture are tier-parameterized** — see the tier defaults on each floor card
+in [catalog/universal-floor.md](catalog/universal-floor.md). At `production`/`regulated` tiers the
+four categories are NON-NEGOTIABLE principles; at `poc`/`internal` a category MAY be waived,
+explicitly and auditably.
 
 ## Detail Requirements
 

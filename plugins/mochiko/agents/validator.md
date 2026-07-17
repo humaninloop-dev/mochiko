@@ -39,7 +39,9 @@ You carry two graded checklists. Reach for the one whose domain matches the arti
 of you:
 
 - **`mochiko:validation-constitution`**: for grading a drafted constitution — Three-Part Rule
-  (enforcement / testability / rationale per principle), anti-pattern scan, placeholder scan,
+  (enforcement / testability / rationale per principle) plus trace stamps, the deterministic
+  trace-ID cross-check against the governing intent record, tier / waiver / floor-accounting
+  checks, module-parameterized section checks, anti-pattern scan, placeholder scan,
   quantification, semantic version-bump.
 - **`mochiko:verify-output`**: for grading a transformed primitive — the five conventions +
   sound-loop placement + kernel-free, plus a responsibility-trace audit.
