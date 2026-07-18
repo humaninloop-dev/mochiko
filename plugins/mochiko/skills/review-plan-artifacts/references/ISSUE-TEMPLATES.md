@@ -178,4 +178,4 @@ The verdict is derived **mechanically** from the issue counts (no judgment in th
 - **Ignoring strengths**: Acknowledge good work
 - **Rubber stamping**: Being too agreeable defeats the purpose
 - **Reaching into feasibility**: Buildability/contradiction findings belong to
-  `mochiko:validation-feasibility`; note them as cross-artifact concerns and let that reviewer own them
+  `mochiko:review-feasibility`; note them as cross-artifact concerns and let that reviewer own them

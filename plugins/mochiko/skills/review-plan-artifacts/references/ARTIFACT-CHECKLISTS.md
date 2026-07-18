@@ -17,8 +17,8 @@ internally consistent with the decisions that were made?"
 
 They deliberately **do not** grade cross-artifact **feasibility / buildability / contradiction** —
 "can these artifacts actually be built together, or do they contradict / overreach?" That is a
-distinct adversarial review owned by `mochiko:validation-feasibility`. The exact handoff is in
-[the boundary table](#scope-boundary--handoff-to-validation-feasibility) at the foot of this file;
+distinct adversarial review owned by `mochiko:review-feasibility`. The exact handoff is in
+[the boundary table](#scope-boundary--handoff-to-review-feasibility) at the foot of this file;
 do not re-import those checks here.
 
 ---
@@ -54,7 +54,7 @@ Grade these when reviewing the analysis output set (e.g. `requirements.md`,
 | Trade-off documentation | Are downsides of chosen options acknowledged? | Important |
 
 > Whether a requirement or NFR **contradicts** a stated constraint is a feasibility concern →
-> `mochiko:validation-feasibility`. This checklist grades only that the constraints/decisions are
+> `mochiko:review-feasibility`. This checklist grades only that the constraints/decisions are
 > sourced, justified, and complete.
 
 ### Checklist — NFRs (`nfrs.md`)
@@ -67,7 +67,7 @@ Grade these when reviewing the analysis output set (e.g. `requirements.md`,
 | Category coverage | Are all relevant quality categories addressed? | Important |
 
 > Whether the design can **meet** an NFR target, and whether NFR targets **conflict** with
-> constraints or with each other, are feasibility concerns → `mochiko:validation-feasibility`.
+> constraints or with each other, are feasibility concerns → `mochiko:review-feasibility`.
 > This checklist grades only that targets are present, measurable, and have a defined measurement
 > method.
 
@@ -124,7 +124,7 @@ Grade these when reviewing the design output set (e.g. `data-model.md`, `contrac
 > This checklist grades that integration boundaries and their failure modes are **documented and
 > present**. Whether the documented failure modes are **realistic vs aspirational**, and whether the
 > design can actually be **built** against the named systems, are feasibility concerns →
-> `mochiko:validation-feasibility`.
+> `mochiko:review-feasibility`.
 
 ### Checklist — Integration Guide (`quickstart.md`)
 
@@ -173,7 +173,7 @@ consistency checklist that previously lived as a standalone template.
 > contradicts a *decided* approach (e.g. uses JWT when sessions were chosen) is a consistency
 > failure and stays here. Whether two *constraints/requirements* contradict each other, or whether
 > the design can be **built** within the constraints / meet the NFR targets, is a feasibility
-> concern → `mochiko:validation-feasibility`.
+> concern → `mochiko:review-feasibility`.
 
 ### Named consistency groups
 
@@ -264,12 +264,12 @@ moved (not dropped); rebind by reference when that track ports.
 
 ---
 
-## Scope boundary — handoff to `validation-feasibility` {#scope-boundary--handoff-to-validation-feasibility}
+## Scope boundary — handoff to `review-feasibility` {#scope-boundary--handoff-to-review-feasibility}
 
 This is the explicit seam between the two plan reviewers, so the feasibility side can mirror it
-exactly. **This skill keeps the left column; `mochiko:validation-feasibility` owns the right.**
+exactly. **This skill keeps the left column; `mochiko:review-feasibility` owns the right.**
 
-| Family | THIS skill keeps (completeness lens) | `validation-feasibility` owns (buildability lens) |
+| Family | THIS skill keeps (completeness lens) | `review-feasibility` owns (buildability lens) |
 |--------|--------------------------------------|---------------------------------------------------|
 | Coverage / traceability | FR→TR coverage, orphan TRs, NFR source tracing, entity coverage, endpoint coverage, FR→TR→entity→endpoint traceability, IP / IP-NFR coverage | — |
 | Measurability | testable TR criteria; NFR measurable target present; measurement method defined | — |
@@ -280,4 +280,4 @@ exactly. **This skill keeps the left column; `mochiko:validation-feasibility` ow
 
 **The one-line test:** *"is it here, traceable, measurable, and does it honor the decisions?"* →
 this skill. *"can these pieces be built together without contradiction or overreach?"* →
-`validation-feasibility`.
+`review-feasibility`.

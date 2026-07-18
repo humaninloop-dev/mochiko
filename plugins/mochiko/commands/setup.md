@@ -1,5 +1,5 @@
 ---
-description: Establish or update the project's governance on native Claude Code surfaces — an interrogation session elicits the user's governance intent (tier, type, risk, values) before anything is authored, closing on a ratified synthesis that becomes a traceable contract on the producer; a principal-architect teammate authors the surface set (a marked CLAUDE.md governance region, paths-scoped rules files, skill pointers, and a governance ledger), an independent validator teammate grades trace closure from the files, and the user accepts with a trace summary in hand — brownfield-aware (greenfield | brownfield | amend). Requires agent teams (CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS); refuses without them.
+description: Establish or update the project's governance on native Claude Code surfaces — an interrogation session elicits the user's governance intent (tier, type, risk, values) before anything is authored, closing on a synthesis that a tier-sized cold intent review stress-tests before the user ratifies it (pair / single / recorded waiver — the user rules at the gate); the ratified synthesis becomes a traceable contract on the producer; a principal-architect teammate authors the surface set (a marked CLAUDE.md governance region, paths-scoped rules files, skill pointers, and a governance ledger), an independent validator teammate grades trace closure from the files, and the user accepts with a trace summary in hand — brownfield-aware (greenfield | brownfield | amend). Requires agent teams (CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS); refuses without them.
 disable-model-invocation: true
 ---
 
@@ -23,16 +23,18 @@ selection belongs to the session, only formulation to the producer. Design recor
 question per turn) against the agenda in
 `${CLAUDE_PLUGIN_ROOT}/skills/authoring-constitution/references/INTERROGATION-AGENDA.md`, write
 the synthesis, own the loop (round counter, verdict, escalations), and hold every gate. The
-machinery holds two seats — a producer and a cold validator — and beyond those seats the
-conversation is you and the user. This is a `mochiko:loop-discipline` sound loop; the Contract
+machinery holds three kinds of seats — a producer, cold intent reviewer(s) at the pre-G3
+synthesis review, and a cold validator — and beyond those seats the conversation is you and the
+user. This is a `mochiko:loop-discipline` sound loop; the Contract
 section below is its authoring-time fill — **no per-run contract is written**.
 
 ## Hard requirement — agent teams
 
 Check `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS` in the environment before anything else; unset →
 stop and tell the user how to enable it (settings/env; Claude Code ≥ v2.1.178). The env check is
-a proxy — the **first teammate spawn is the authoritative probe** (the producer): if it fails,
-stop with the same instructions. Never proceed teamless — **no fallback transport** (the same
+a proxy — the **first teammate spawn is the authoritative probe** (the producer in brownfield;
+otherwise the intent reviewers at the synthesis review, or the producer when that review was
+waived): if it fails, stop with the same instructions. Never proceed teamless — **no fallback transport** (the same
 deliberate dogfood-pilot bet as `/mochiko:brainstorm`, marked `Contested`; revisit when mochiko
 distributes beyond the author's machines). Running the loop on one-shot subagents is not a
 fallback — it is the defect this section exists to forbid. **Transport is discriminable at the
@@ -51,7 +53,7 @@ agent team. Recipe: `templates/agent-dispatch.md` (Seat transport).
 - Tell the user at the start that they can watch or message any teammate directly. Announce each
   seat in one line when you fill it — an unexplained teammate spawn reads as a malfunction.
 - Workspace: `mkdir -p .mochiko/memory`. Kill-switch: stop and escalate if
-  `.mochiko/memory/SETUP_STOP` exists — check before each producer or validator send.
+  `.mochiko/memory/SETUP_STOP` exists — check before each producer, reviewer, or validator send.
 - **Mode is yours** (greenfield | brownfield | amend) — it selects which stages run and the
   producer's branch. It is carried in-session + by workspace evidence; there is no context file.
 - **Hygiene (all modes):** a `.mochiko/memory/constitution.md` found on disk is a superseded
@@ -87,6 +89,20 @@ buys. A fresh spawn per round is the subagent anti-pattern, not a team.
   brownfield, the analysis; in amend, the current surfaces (preserve untouched principles;
   bump the region's semver). It **messages you** a report + flagged proposals + clarifications;
   it never grades.
+- **intent reviewer(s)** — `mochiko:devils-advocate`, spawned **cold at the synthesis review**
+  (never in the room during interrogation), count per the user's sizing ruling. Brief each to run
+  `mochiko:review-governance-intent` against the frozen synthesis + the interrogation agenda +
+  (brownfield) `codebase-analysis.md`. In a pair, **split the hunt by lens in the spawn briefs**
+  — one **coverage** (missed dimensions, prune audits, the card-acceptance and waiver/module
+  sweeps), one **coherence** (tier↔risk↔ruling alignment, the mark/echo-rationale audit,
+  reality-conflict resolutions, cross-element contradictions) — the skill stays one document; the
+  brief sets the emphasis. **Withhold each reviewer's counterpart from its spawn prompt**:
+  findings form cold, then you introduce them for the one-shot four-message cross-exam (the
+  single-sourced protocol in `review-brainstorm`'s `references/CROSS-EXAM.md`). A **single**
+  reviewer gets the whole surface, no cross-exam, and runs the verify pass itself; in a pair the
+  verify pass is the **coherence** reviewer's. These seats produce **lead-adjudicated input
+  before G3** — never the authoritative grade (that stays the validator's, on the authored
+  surface set); they message you, never the user, and never contact the producer or validator.
 - **validator** — `mochiko:validator`, spawned **cold at first validation**, never in the room
   before that and never in contact with the producer. Brief it to run
   `mochiko:validation-constitution` **from the files** (the surface set + synthesis + trace
@@ -124,12 +140,35 @@ declared type, cards filtered and parameterized by tier), arbitrate card by card
 (recommend-then-arbitrate), collect minted intents, and take waiver rulings where the tier
 permits.
 
-**Synthesis confirmation** *(gate G3, all modes)* — assemble
-`templates/governance-intent-template.md` → `.mochiko/memory/governance-intent.md` (GI-IDs on
-every element; **amend updates the persisted file delta-wise** — untouched elements keep their
-IDs). Present it: **confirm** (record the stamp → authoring loop) / **edit** (fold corrections,
-re-present) / **reject** (back to interrogation). This checkpoint is the synthesis↔intent
-fidelity gate — nothing is authored before it clears.
+**Synthesis review** *(sizing gate + cold review, all modes — before G3)* — assemble
+`templates/governance-intent-template.md` → `.mochiko/memory/governance-intent.md` (GI-IDs **and
+a confidence mark** on every element; **amend updates the persisted file delta-wise** — untouched
+elements keep their IDs and marks). Open the **sizing gate**: state the synthesis's weight
+(element count, mark mix, reality-surface load) — its purpose is informing the user's *elevation*
+of the tier-keyed default recommendation: `poc`/`internal` → **single**, `production`/`regulated`
+→ **pair**; on amend, **event-scaled** — a governance event (tier bump, un-waive, floor/waiver
+change) gets the full tier-keyed default, lighter deltas recommend single at
+`production`/`regulated` and none-with-waiver below (the gate always opens: every amend records a
+sizing ruling or a waiver — audit-complete). The user rules **pair / single / none**; `none` →
+record the waiver in the synthesis's Review section and go to G3. Otherwise spawn per the ruling
+— the synthesis is **frozen** from spawn until dispositions land — and route each survivor by
+answer-owner: user rulings (deck / tier / waiver) and challenged dimension-prunes / scope
+decisions → **the user, directly**; your formulation → argue with the finding's owner, **two
+exchanges max (you count)**, then tie-break; **reality-surface** fact disputes → checked against
+the analysis or an Explore subagent, never argued; **user-declared facts** (team size, risk
+posture, lifespan) → **the user, as confirmation**. An overruled survivor marks its element
+`Contested`. Land every disposition in the Review section, then the **verify pass** (the
+coherence-lens reviewer, or the sole reviewer) confirms the folds → G3. On a **tier-bump amend**,
+re-deal tier-loosened deck rulings on the bump's agenda slice (or force-re-mark them) — a stale
+`Confident` never carries a lower-tier loosening upward unexamined.
+
+**Synthesis confirmation** *(gate G3, all modes)* — present the reviewed synthesis (tally +
+dispositions, or the waiver): **confirm** (record the stamp → authoring loop) / **edit** (fold
+corrections, re-present — a **material** post-review addition or change gets a bounded
+delta-pass by the still-seated reviewer before confirmation) / **reject** (back to interrogation,
+re-entering the full flow — fresh sizing and review included). This checkpoint is the
+synthesis↔intent fidelity gate — nothing is authored before it clears, and everything ratified
+was stress-tested (or its waiver recorded).
 
 **Authoring loop** *(you own the counter; the deliverable is FAIL until proven otherwise)* —
 **produce** (brief the producer seat; on round > 1 message it the validator's fix list verbatim
@@ -164,24 +203,32 @@ reading.
 
 ## Contract (authoring-time fill — governed by `mochiko:loop-discipline`)
 
-- **Done-condition:** default **FAIL**; clears only when the validator returns PASS graded from
-  the files **and** G3 synthesis confirmation cleared (all modes) **and** G4 acceptance cleared
-  (**and** G2 confirmed, in brownfield). Out of rounds = escalate, never done.
+- **Done-condition:** default **FAIL**; clears only when the sized intent review ran (or its
+  waiver is recorded) **with every survivor carrying a disposition** **and** G3 synthesis
+  confirmation cleared (all modes) **and** the validator returns PASS graded from the files
+  **and** G4 acceptance cleared (**and** G2 confirmed, in brownfield). Out of rounds = escalate,
+  never done.
 - **Producer ↔ validator:** `principal-architect` (authoring-constitution, analysis-codebase)
   authors, never grades; `validator` (validation-constitution) grades from files, never authors —
   disjoint agents, disjoint skills, structurally separated (validator cold-spawned, fix list
   lead-routed, no producer↔validator contact). Validator standing: Tier-2 with deterministic
   sub-checks (placeholder scan, two-way trace-closure over the manifest, region-marker + index→file
-  existence, Three-Part presence in the ledger; brownfield tools/versions↔analysis).
+  existence, Three-Part presence in the ledger; brownfield tools/versions↔analysis). Intent
+  reviewer(s): `devils-advocate` (review-governance-intent), cold-spawned at the synthesis
+  review, no contact with producer or validator — they produce **lead-adjudicated input** before
+  G3, never the authoritative grade (the `review-*`/`validation-*` family boundary).
 - **Bounds:** ≤3 produce↔validate rounds (you count) · no-progress exit · kill-switch
-  `.mochiko/memory/SETUP_STOP`. The interrogation is bounded by user-driven convergence — a
+  `.mochiko/memory/SETUP_STOP` · review caps: one cold read per reviewer · one four-message
+  cross-exam · a two-exchange lead↔reviewer cap per survivor · one verify pass (+ one bounded
+  G3-edit delta-pass when triggered). The interrogation is bounded by user-driven convergence — a
   human-attended session, not an agent loop.
 - **Out of scope, explicitly:** drift detection between invocations (waiver revisit triggers fire
   on re-invocation only, by design) · backward compatibility with the retired `constitution.md`
   form (D6: none — delete on sight).
 - **Human gates:** G1 mode-select · G2 analysis checkpoint (brownfield) · the interrogation
-  itself + the in-loop clarification sub-gate · G3 synthesis confirmation · G4 acceptance with
-  trace summary + flagged-proposal rulings · G5 cleanup · escalation on any guard trip.
+  itself + the in-loop clarification sub-gate · the review sizing gate + survivor rulings on
+  user territory · G3 synthesis confirmation · G4 acceptance with trace summary +
+  flagged-proposal rulings · G5 cleanup · escalation on any guard trip.
 
 ## Recovery
 
@@ -197,7 +244,10 @@ validator respawn is cold by design:
 | brownfield chosen, `codebase-analysis.md` missing | analysis |
 | `codebase-analysis.md` present, unconfirmed | G2 |
 | mode set, `governance-intent.md` missing | interrogation |
-| `governance-intent.md` present, no confirmation stamp | G3 |
+| `governance-intent.md` present, Review section empty (no sizing ruling) | synthesis review (sizing gate) |
+| sizing ruled, survivors undispositioned (sized-not-run or mid-review) | synthesis review (respawn reviewers per the ruling) |
+| dispositions folded, verify pass unrecorded | verify pass |
+| Review verified or waived, no confirmation stamp | G3 |
 | synthesis confirmed, surface set missing/stale (no region, missing named rules files, no ledger) | loop (produce) |
 | surface set present, no recorded PASS | loop (validate) |
 | PASS recorded, not accepted | G4 |
@@ -206,8 +256,9 @@ validator respawn is cold by design:
 
 ---
 
-**What you own (not the agents):** the interrogation and the synthesis pen; the loop; the
-verdict against the default-FAIL done-condition; the human gates; the mode; the governance-region
-ownership boundary; and never letting producer and validator collapse into one seat. Stay
+**What you own (not the agents):** the interrogation and the synthesis pen; the review sizing
+gate, survivor routing, and the cross-set merge; the loop; the verdict against the default-FAIL
+done-condition; the human gates; the mode; the governance-region ownership boundary; and never
+letting producer, reviewer, and validator collapse into one seat. Stay
 kernel-free; brief every spawn per `agent-dispatch`; do not modify git or push. Full rules:
 `mochiko:loop-discipline`.

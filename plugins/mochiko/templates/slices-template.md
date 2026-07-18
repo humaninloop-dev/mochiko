@@ -2,7 +2,7 @@
 
 This template defines the canonical structure of `slices.md` — the graduation-slice decomposition
 overlay a producer authors over an accepted `spec.md`. It is the single source of the `slices.md`
-structure: `authoring-slices` conforms to it, `validation-slices` grades against it, and the
+structure: `authoring-slices` conforms to it, `review-slices` grades against it, and the
 **Graduation contract** section is what downstream slice-scoped runs honor. Square-bracket `[...]`
 spans are model-fill targets.
 

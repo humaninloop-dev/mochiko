@@ -15,7 +15,7 @@ This is a mochiko **sound loop**: invoke **`mochiko:loop-discipline`** and honor
 Fill `templates/workflow-contract.md` → `.mochiko/specs/<feature>/contract.md` with the values below, then confirm it against `mochiko:loop-discipline`. The filled artifact is the inspectable proof — not this command body.
 
 - **Done-condition** — starts FAILing; clears only when **(1)** `devils-advocate` recommends `ready` on `spec.md` grounded in the file, **(2)** *you* Read `spec.md` + the advocate report and confirm no blocking gap remains (the advocate's status is input, not the gate), and **(3)** the Phase-3 human acceptance has cleared. Out of rounds = escalate, never done.
-- **Team** — producer `mochiko:requirements-analyst` (`authoring-requirements`, `authoring-user-stories`) authors, never grades; validator `mochiko:devils-advocate` (`analysis-specifications`) grades from the file, never authors. Disjoint agents and skills.
+- **Team** — producer `mochiko:requirements-analyst` (`authoring-requirements`, `authoring-user-stories`) authors, never grades; critic `mochiko:devils-advocate` (`review-specifications`) reviews from the file, never authors — it produces lead-adjudicated input, never the authoritative grade (the `review-*` family boundary). Disjoint agents and skills.
 - **Bounds** — cap **3** rounds (you count); no-progress exit when the advocate's gap set is unchanged round-over-round; kill-switch `.mochiko/specs/<feature>/SPECIFY_STOP` checked before each dispatch.
 - **Gates** — G1 input recovery · G2 clarification + preference decisions · G3 spec acceptance · escalation on any guard trip.
 

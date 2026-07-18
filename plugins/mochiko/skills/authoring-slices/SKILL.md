@@ -1,6 +1,6 @@
 ---
 name: authoring-slices
-description: This skill MUST be invoked when decomposing an accepted feature specification into graduation slices — ordered, named groups of user stories that graduate through the design→build→verify pipeline as independent units — authoring the `slices.md` overlay: story→slice assignment (every story exactly one home), dependency-closed ordering, foundation-slice designation, cross-cutting extend obligations, the Feature-Done section (SC-XXX coverage map + cross-slice seams), and the spec stamp. SHOULD also invoke when the work involves "slice the spec", "decompose the spec", "graduation slices", "story slices", "foundation slice", "slices.md", or grouping user stories into independently graduating increments. Includes the null exit: a spec that would not yield at least two slices with distinct value seams gets a recommend-whole-spec outcome, never a forced decomposition. Boundary: this slices STORIES into pipeline-unit groups at spec level (which stories advance together) — NOT stories into TDD cycles within one slice's implementation (cycle structuring is mochiko:patterns-vertical-tdd, downstream); it authors the overlay, never edits spec.md, and never grades its own output (grading is mochiko:validation-slices).
+description: This skill MUST be invoked when decomposing an accepted feature specification into graduation slices — ordered, named groups of user stories that graduate through the design→build→verify pipeline as independent units — authoring the `slices.md` overlay: story→slice assignment (every story exactly one home), dependency-closed ordering, foundation-slice designation, cross-cutting extend obligations, the Feature-Done section (SC-XXX coverage map + cross-slice seams), and the spec stamp. SHOULD also invoke when the work involves "slice the spec", "decompose the spec", "graduation slices", "story slices", "foundation slice", "slices.md", or grouping user stories into independently graduating increments. Includes the null exit: a spec that would not yield at least two slices with distinct value seams gets a recommend-whole-spec outcome, never a forced decomposition. Boundary: this slices STORIES into pipeline-unit groups at spec level (which stories advance together) — NOT stories into TDD cycles within one slice's implementation (cycle structuring is mochiko:patterns-vertical-tdd, downstream); it authors the overlay, never edits spec.md, and never grades its own output (grading is mochiko:review-slices).
 ---
 
 # Authoring Graduation Slices
@@ -33,7 +33,7 @@ Same ethos — smaller, independently verifiable units — at two different alti
 ## When NOT to Use
 
 - **Structuring cycles or tasks** — story→cycle mapping and TDD ordering are `mochiko:patterns-vertical-tdd`
-- **Grading a decomposition** — that is `mochiko:validation-slices`, run by an independent reviewer, never the author
+- **Grading a decomposition** — that is `mochiko:review-slices`, run by an independent reviewer, never the author
 - **Before the spec is accepted** — the overlay indexes a settled story set; slicing a moving spec produces a stale stamp on arrival
 - **Editing stories, requirements, or success criteria** — the overlay never touches `spec.md`; a story that cannot be placed is a finding to surface, not a story to rewrite
 - **Tiny specs** — when the null exit fires (below), recommend whole-spec and write nothing
@@ -145,7 +145,7 @@ Bad: writing a one-slice `slices.md` for a tiny spec. Good: no file; the recomme
 ## Related
 
 - [`slices-template.md`](../../templates/slices-template.md) — the canonical `slices.md` structure this skill fills, including the Graduation contract downstream consumers honor
-- `mochiko:validation-slices` — the reviewer-side mirror of this skill; grades what this skill is taught to author, run by an independent reviewer, never the author
+- `mochiko:review-slices` — the reviewer-side mirror of this skill; grades what this skill is taught to author, run by an independent reviewer, never the author
 - `mochiko:patterns-vertical-tdd` — downstream: cuts one slice's scope into vertical-slice TDD cycles (the other "slice", one level below)
 - `mochiko:authoring-user-stories` — upstream: the story quality (IDs, priorities, independent tests) this decomposition indexes
 - `loop-discipline` — the loop, bounds, and gates around this authoring are the lead's; referenced, never restated

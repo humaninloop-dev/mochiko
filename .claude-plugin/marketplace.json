@@ -5,14 +5,14 @@
     "url": "https://humaninloop.dev"
   },
   "metadata": {
-    "description": "Kernel-free agent-skill framework — transform human-in-loop primitives into sound-loop mochiko form",
-    "version": "0.6.0"
+    "description": "Kernel-free agent-skill framework — sound-loop workflows built from native agent teams and skills",
+    "version": "0.10.0"
   },
   "plugins": [
     {
       "name": "mochiko",
       "source": "./plugins/mochiko",
-      "description": "Transformer cluster: port human-in-loop primitives into mochiko form via an independent producer/validator loop with a human gate."
+      "description": "Kernel-free agent-skill framework: sound-loop workflows built from native agent teams and skills"
     }
   ]
 }

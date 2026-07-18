@@ -1,5 +1,5 @@
 ---
-name: validation-feasibility
+name: review-feasibility
 description: This skill MUST be invoked to grade plan analysis and design artifacts for cross-artifact FEASIBILITY — adversarially hunting contradictions, impossibilities, and buildability conflicts that no single artifact reveals in isolation: constraint-decision conflicts, NFR-constraint impossibilities, requirement-constraint contradictions, decision-decision conflicts, NFR-design feasibility, and constraint-design buildability — emitting a 3-state `feasible / needs-revision / infeasible` verdict with per-issue evidence, impact, and suggested resolution. SHOULD also invoke whenever a producer's analysis or design artifacts (requirements, constraints-and-decisions, NFRs, data-model, contracts) need an independent buildability review, or when re-reviewing after a structural revision (new or changed constraints, expanded requirement scope, modified NFR targets). The feasibility reviewer's driver — the adversarial-critique half of the cross-artifact review pair: its sibling grades coverage / measurability / consistency / presence, this skill grades contradiction / impossibility / buildability. Never defaults to `feasible`; grades a different agent's artifacts, never the author's own; operates over plan artifacts, NOT the constitution.
 ---
 
@@ -13,7 +13,7 @@ This is **adversarial critique, not a checklist.** A checklist asks "is each thi
 
 **Looking buildable is not being buildable.** A clean review is one where you *actively hunted* every contradiction class and found nothing — never one where nothing jumped out, or the producer is careful, or there was no time. Absence of a contradiction *you went looking for* is evidence; absence of looking is not.
 
-This is the **feasibility** half of a two-form cross-artifact review. The other half — coverage, measurability, cross-artifact consistency, presence/traceability — is a separate completeness reviewer running a mirror-checklist skill (`mochiko:validation-plan-artifacts`). The two forms are deliberately disjoint; see *The boundary* below.
+This is the **feasibility** half of a two-form cross-artifact review. The other half — coverage, measurability, cross-artifact consistency, presence/traceability — is a separate completeness reviewer running a mirror-checklist skill (`mochiko:review-plan-artifacts`). The two forms are deliberately disjoint; see *The boundary* below.
 
 ## When to Use
 
@@ -23,7 +23,7 @@ This is the **feasibility** half of a two-form cross-artifact review. The other 
 
 ## When NOT to Use
 
-- **Completeness, coverage, measurability, presence, or traceability review** — that is the mirror-checklist sibling (`mochiko:validation-plan-artifacts`), a different form on a different reviewer. See *The boundary*.
+- **Completeness, coverage, measurability, presence, or traceability review** — that is the mirror-checklist sibling (`mochiko:review-plan-artifacts`), a different form on a different reviewer. See *The boundary*.
 - **Grading a constitution** — that is `mochiko:validation-constitution`, a different artifact domain. This skill operates over plan analysis/design artifacts only. (Guardrail G1.)
 - **Authoring or revising the artifacts** — you review someone else's work; you never write or fix the artifacts you grade. (Independence.)
 - **Single-artifact internal review** — an NFR that is vague, a requirement that is incomplete *on its own* is not feasibility. Feasibility is strictly **cross-artifact**: it lives between two artifacts.
@@ -45,7 +45,7 @@ Cross-artifact contradictions / impossibilities / buildability only. Each class 
 
 This skill and the completeness sibling split the cross-artifact surface on a clean line. Hold it:
 
-| | Feasibility (this skill) | Completeness sibling (`validation-plan-artifacts`) |
+| | Feasibility (this skill) | Completeness sibling (`review-plan-artifacts`) |
 |---|--------------------------|-----------------------------------------------------|
 | **Form** | adversarial critique (judgment) | mirror checklist (objective criteria) |
 | **Owns** | **contradiction / impossibility / buildability** | **coverage / measurability / consistency / presence** |
@@ -141,5 +141,5 @@ If you catch yourself thinking any of these, you are rationalizing away the hunt
 ## Related
 
 - `loop-discipline` — the loop, the bound, and the human gate are the lead's; your verdict is input and your per-issue fuel feeds the human gate. Referenced, not restated.
-- `mochiko:validation-plan-artifacts` — the completeness sibling (mirror-checklist form). It owns coverage / measurability / consistency / presence; this skill owns contradiction / impossibility / buildability. Deliberately disjoint triggers.
+- `mochiko:review-plan-artifacts` — the completeness sibling (mirror-checklist form). It owns coverage / measurability / consistency / presence; this skill owns contradiction / impossibility / buildability. Deliberately disjoint triggers.
 - the **feasibility-report** — the destination artifact this review fills; its markdown shape is owned by that template, while this skill owns the verdict and per-issue judgments it must contain.

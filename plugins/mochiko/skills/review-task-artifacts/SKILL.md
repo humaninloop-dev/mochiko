@@ -1,6 +1,6 @@
 ---
-name: validation-task-artifacts
-description: This skill MUST be invoked to grade a producer's task artifacts against the task-quality checklist — the task-mapping (`task-mapping.md` — story→cycle mapping plus slice rationale) and the task list (`tasks.md` — cycle→TDD tasks) — checking vertical-slice quality, TDD test-first ordering, cycle definition and sizing, `**TEST:**` verification-task presence, story→cycle→task traceability, and task-ID / file-path / marker presence. Emits a severity-classified gap report (Critical/Important/Minor) and a 3-state verdict (ready / needs-revision / critical-gaps). SHOULD also invoke whenever a tasks loop's mapping-review or tasks-review step needs an independent grade of the task artifacts, or when re-reviewing after a FAIL-loop revision. The task-artifact half of the tasks producer↔validator pair; does NOT cover plan-artifact completeness (requirements, constraints-and-decisions, NFRs, data-model, contracts — that is mochiko:validation-plan-artifacts); defaults to FAIL; run by an independent validator, never the author.
+name: review-task-artifacts
+description: This skill MUST be invoked to grade a producer's task artifacts against the task-quality checklist — the task-mapping (`task-mapping.md` — story→cycle mapping plus slice rationale) and the task list (`tasks.md` — cycle→TDD tasks) — checking vertical-slice quality, TDD test-first ordering, cycle definition and sizing, `**TEST:**` verification-task presence, story→cycle→task traceability, and task-ID / file-path / marker presence. Emits a severity-classified gap report (Critical/Important/Minor) and a 3-state verdict (ready / needs-revision / critical-gaps). SHOULD also invoke whenever a tasks loop's mapping-review or tasks-review step needs an independent grade of the task artifacts, or when re-reviewing after a FAIL-loop revision. The task-artifact half of the tasks producer↔validator pair; does NOT cover plan-artifact completeness (requirements, constraints-and-decisions, NFRs, data-model, contracts — that is mochiko:review-plan-artifacts); defaults to FAIL; run by an independent validator, never the author.
 ---
 
 # Reviewing Task Artifacts
@@ -28,7 +28,7 @@ failure this skill exists to prevent. (The generic anti-rationalization doctrine
 | Lens | Artifacts | Owner |
 |------|-----------|-------|
 | **Task quality** | `task-mapping.md`, `tasks.md` | **this skill** |
-| **Plan completeness** | requirements, constraints-and-decisions, NFRs, data-model, contracts, quickstart | `mochiko:validation-plan-artifacts` |
+| **Plan completeness** | requirements, constraints-and-decisions, NFRs, data-model, contracts, quickstart | `mochiko:review-plan-artifacts` |
 
 The two reviewers are **disjoint**: different artifacts, different checks. This skill grades
 vertical-slice quality, TDD ordering, `**TEST:**`-task presence, and story→cycle→task traceability;
@@ -46,8 +46,8 @@ plus `mochiko:advocate-report-template`). **Confirmed complementary — no struc
 
 ## When NOT to Use
 
-- **Plan artifact review** — use `mochiko:validation-plan-artifacts` (requirements, constraints-and-decisions, NFRs, data-model, contracts — disjoint artifacts, disjoint checks)
-- **Specification review** — use `mochiko:analysis-specifications`
+- **Plan artifact review** — use `mochiko:review-plan-artifacts` (requirements, constraints-and-decisions, NFRs, data-model, contracts — disjoint artifacts, disjoint checks)
+- **Specification review** — use `mochiko:review-specifications`
 - **Constitution review** — use `mochiko:validation-constitution`
 - **Implementation code review** — use code-review tooling instead
 - **Creating task artifacts** — this skill validates only; authoring is the producer's job (`mochiko:patterns-vertical-tdd`)
@@ -216,6 +216,6 @@ If you notice yourself thinking any of these, STOP immediately:
 ## Related
 
 - `mochiko:patterns-vertical-tdd` — the producer-side skill this review mirrors; the reviewer checks exactly what it teaches the producer to author
-- `mochiko:validation-plan-artifacts` — the plan-artifact reviewer; disjoint artifacts and disjoint checks, complementary, no overlap
+- `mochiko:review-plan-artifacts` — the plan-artifact reviewer; disjoint artifacts and disjoint checks, complementary, no overlap
 - `mochiko:advocate-report-template` — the assembled deliverable report shape the lead reads
 - `loop-discipline` — the source of the anti-rationalization and independent-validation doctrine this skill operationalizes

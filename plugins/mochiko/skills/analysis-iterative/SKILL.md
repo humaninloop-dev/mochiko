@@ -1,6 +1,6 @@
 ---
 name: analysis-iterative
-description: This skill MUST be invoked when enriching a sparse feature description into the Who / Problem / Value triad (plus explicit out-of-scope and success criteria) before a specification is authored, or when running a collaborative think-through / brainstorm that explores a problem through adaptive, one-question-at-a-time discovery and ends in a structured synthesis. SHOULD also invoke when a feature description lacks Who/Problem/Value clarity and needs conditioning before it reaches a requirements producer, or when deliberately working through a complex, multi-decision trade-off space. A general / shared skill — useful across clusters, not tied to a single workflow. Distinct from analysis-specifications, which reviews an already-drafted spec for gaps: this skill conditions raw input BEFORE a spec exists.
+description: This skill MUST be invoked when enriching a sparse feature description into the Who / Problem / Value triad (plus explicit out-of-scope and success criteria) before a specification is authored, or when running a collaborative think-through / brainstorm that explores a problem through adaptive, one-question-at-a-time discovery and ends in a structured synthesis. SHOULD also invoke when a feature description lacks Who/Problem/Value clarity and needs conditioning before it reaches a requirements producer, or when deliberately working through a complex, multi-decision trade-off space. A general / shared skill — useful across clusters, not tied to a single workflow. Distinct from review-specifications, which reviews an already-drafted spec for gaps: this skill conditions raw input BEFORE a spec exists.
 ---
 
 # Iterative Analysis
@@ -22,7 +22,7 @@ Guide collaborative thinking by adapting questioning style, depth, and output to
 
 - **Quick clarifications** — simple questions do not need iterative questioning
 - **Implementation details** — use planning skills instead
-- **Specification review** — reviewing an already-drafted spec for gaps is post-draft work; use `mochiko:analysis-specifications` instead (this skill conditions raw input *before* a spec exists)
+- **Specification review** — reviewing an already-drafted spec for gaps is post-draft work; use `mochiko:review-specifications` instead (this skill conditions raw input *before* a spec exists)
 - **When user has clear direction** — use confirmations to verify, then wrap up fast. Do not slow down decisive users with unnecessary exploration.
 - **Time-sensitive decisions** — iterative questioning takes time
 

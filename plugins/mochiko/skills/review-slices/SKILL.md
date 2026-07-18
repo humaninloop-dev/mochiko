@@ -1,6 +1,6 @@
 ---
-name: validation-slices
-description: This skill MUST be invoked to grade a producer's `slices.md` — the graduation-slice decomposition overlay of an accepted feature specification — against the slicing checklist: story coverage (every spec story exactly one home, no orphans or inventions), dependency-closed ordering (no forward dependencies), foundation-slice legitimacy (establishes the shared design core AND delivers a testable journey), slice sizing, cross-cutting extend-obligation visibility, Feature-Done completeness (every SC-XXX mapped to a verifying slice; cross-slice seams named), spec-stamp accuracy, overlay purity (no spec edits, no stored stage fields), and the depth second-guess in both directions (a spec that should have taken the whole-spec null exit, or a whole-spec recommendation that hides real value seams). Emits a severity-classified gap report (Critical/Important/Minor) and a RECOMMENDED 3-state verdict (ready / needs-revision / critical-gaps) — the clearing verdict is lead-owned. SHOULD also invoke whenever a decomposition loop's review step needs an independent grade of `slices.md`, or when re-reviewing after a FAIL-loop revision. Boundary: grades the story→slice decomposition overlay ONLY — not task artifacts (mochiko:validation-task-artifacts), not plan artifacts (mochiko:validation-plan-artifacts), and not the spec itself (mochiko:analysis-specifications). Defaults to FAIL; run by an independent reviewer, never the author.
+name: review-slices
+description: This skill MUST be invoked to grade a producer's `slices.md` — the graduation-slice decomposition overlay of an accepted feature specification — against the slicing checklist: story coverage (every spec story exactly one home, no orphans or inventions), dependency-closed ordering (no forward dependencies), foundation-slice legitimacy (establishes the shared design core AND delivers a testable journey), slice sizing, cross-cutting extend-obligation visibility, Feature-Done completeness (every SC-XXX mapped to a verifying slice; cross-slice seams named), spec-stamp accuracy, overlay purity (no spec edits, no stored stage fields), and the depth second-guess in both directions (a spec that should have taken the whole-spec null exit, or a whole-spec recommendation that hides real value seams). Emits a severity-classified gap report (Critical/Important/Minor) and a RECOMMENDED 3-state verdict (ready / needs-revision / critical-gaps) — the clearing verdict is lead-owned. SHOULD also invoke whenever a decomposition loop's review step needs an independent grade of `slices.md`, or when re-reviewing after a FAIL-loop revision. Boundary: grades the story→slice decomposition overlay ONLY — not task artifacts (mochiko:review-task-artifacts), not plan artifacts (mochiko:review-plan-artifacts), and not the spec itself (mochiko:review-specifications). Defaults to FAIL; run by an independent reviewer, never the author.
 ---
 
 # Reviewing a Graduation-Slice Decomposition
@@ -22,7 +22,7 @@ decision and routes the revision; this skill recommends, the lead routes.
 spec-level pipeline unit: a group of user stories that graduate through design→build→verify
 together. It is distinct from a **vertical slice (cycle)** — the implementation-level TDD
 increment *within one slice's scope*, structured by `mochiko:patterns-vertical-tdd` and graded by
-`mochiko:validation-task-artifacts`. Never conflate them: a `slices.md` whose groups are shaped
+`mochiko:review-task-artifacts`. Never conflate them: a `slices.md` whose groups are shaped
 like cycles (single test-first increments rather than story journeys) has the wrong altitude —
 flag it under the journey-coherence and sizing checks.
 
@@ -35,9 +35,9 @@ observable value, is the exact failure this review exists to prevent.
 | Lens | Artifacts | Owner |
 |------|-----------|-------|
 | **Decomposition quality** | `slices.md` (against the spec it indexes) | **this skill** |
-| **Spec product gaps** | `spec.md` in its own authoring loop | `mochiko:analysis-specifications` |
-| **Plan completeness / feasibility** | requirements, NFRs, data-model, contracts | `mochiko:validation-plan-artifacts` / `mochiko:validation-feasibility` |
-| **Task-artifact quality** | `task-mapping.md`, `tasks.md` | `mochiko:validation-task-artifacts` |
+| **Spec product gaps** | `spec.md` in its own authoring loop | `mochiko:review-specifications` |
+| **Plan completeness / feasibility** | requirements, NFRs, data-model, contracts | `mochiko:review-plan-artifacts` / `mochiko:review-feasibility` |
+| **Task-artifact quality** | `task-mapping.md`, `tasks.md` | `mochiko:review-task-artifacts` |
 
 The nearest boundary is the spec: this review **reads `spec.md`** (it must, to verify coverage) but
 grades only the *decomposition* against it — a product gap discovered in the spec itself is
@@ -52,7 +52,7 @@ surfaced as an out-of-scope observation for the lead, never fixed or graded here
 ## When NOT to Use
 
 - **Grading task or plan artifacts** — use their reviewers (see *Scope*)
-- **Reviewing the spec itself** — use `mochiko:analysis-specifications`
+- **Reviewing the spec itself** — use `mochiko:review-specifications`
 - **Authoring or fixing the decomposition** — you surface gaps and hand them back; re-slicing is the producer's job
 - **During active drafting** — wait for the producer to finish the round
 
@@ -165,5 +165,5 @@ Bad: carefully grading a five-story spec's three-slice decomposition. Good: chec
 - `mochiko:authoring-slices` — the producer-side skill this review mirrors; the reviewer checks exactly what it teaches the producer to author
 - [`slices-template.md`](../../templates/slices-template.md) — the canonical structure the graded artifact must conform to
 - `mochiko:advocate-report-template` — the assembled report shape the lead reads
-- `mochiko:validation-task-artifacts` / `mochiko:validation-plan-artifacts` / `mochiko:analysis-specifications` — the neighboring reviewers this skill is disjoint from (see *Scope*)
+- `mochiko:review-task-artifacts` / `mochiko:review-plan-artifacts` / `mochiko:review-specifications` — the neighboring reviewers this skill is disjoint from (see *Scope*)
 - `loop-discipline` — the source of the independent-validation and anti-rationalization doctrine this skill operationalizes

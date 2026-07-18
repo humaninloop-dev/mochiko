@@ -8,6 +8,12 @@ One entry per session directory under `.mochiko/brainstorms/<topic-slug>/`, **ne
 
 ---
 
+## `setup-adversarial-review` — an adversarial gap review in `/mochiko:setup`
+- **When:** 2026-07-18 · **Status:** accepted · record cold-reviewed (pair, lens-split — dogfooding the design on itself: 18 raised → 13 merged survivors → 13/13 dispositioned incl. 2 user rulings, verify pass PASS) · **built same day at plugin v0.10.0**
+- **Artifacts:** [record.md](setup-adversarial-review/record.md) (canonical)
+- **About:** whether and where `/mochiko:setup` gets an adversarial gap-finding review analogous to `/mochiko:brainstorm`'s end-stage cold review — setup's existing validator seat is a Tier-2 checklist grader, while the interrogation→synthesis path (G3) had no adversarial pressure beyond the user confirming their own synthesis. Ruled (D1–D7): a sized cold review of the confidence-marked synthesis before G3 (tier-keyed sizing gate, new `review-governance-intent` skill on `devils-advocate`, survivor routing, verify pass, Review section in `governance-intent.md`, event-scaled amend sizing, G3-edit delta-pass). Plus a user-initiated library-wide split of review-shaped skills into `validation-*` vs `review-*` by *who owns the clearing* — re-ruled on corrected facts after the review's Critical finding (S1).
+- **Landed:** ROADMAP Key Decisions (setup-G3-review + validation/review split row, 2026-07-18); BACKLOG (Setup-adversarial-review build items — the skill, template deltas, `setup.md` propagation, seven-skill rename set). **Built 2026-07-18 at plugin v0.10.0** — `review-governance-intent` (coverage/coherence lens split, verify on coherence; Contested-rationale audit; cross-exam single-sourced at `review-brainstorm/references/CROSS-EXAM.md`) + template deltas + `setup.md` propagation + the seven-skill rename set; dogfood rides the setup-v3 dogfood item.
+
 ## `setup-v3-team-defect` — setup dogfood ran subagents again: diagnosing the team-mandate failure
 - **When:** 2026-07-18 · **Status:** accepted · record un-reviewed (bare session — direct skill invocation) · **built same day at plugin v0.9.1**
 - **Artifacts:** [record.md](setup-v3-team-defect/record.md) (canonical)

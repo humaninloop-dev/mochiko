@@ -24,7 +24,7 @@ Business Specifications (FR-XXX, user stories)
    Endpoints + schemas + x-integration   → mochiko:patterns-api-contracts
 ```
 
-The analysis artifacts feed the design layer; this reference covers the analysis half of the web (the box above). The design-artifact traceability — entity→FR, schema→entity, endpoint→integration, attribute→sensitivity — is authored and traced inside the design skills, and the *cross-artifact consistency between the two layers* is graded by the independent plan reviewer (`mochiko:validation-plan-artifacts`), not self-asserted here. See **Design-layer traceability** below.
+The analysis artifacts feed the design layer; this reference covers the analysis half of the web (the box above). The design-artifact traceability — entity→FR, schema→entity, endpoint→integration, attribute→sensitivity — is authored and traced inside the design skills, and the *cross-artifact consistency between the two layers* is graded by the independent plan reviewer (`mochiko:review-plan-artifacts`), not self-asserted here. See **Design-layer traceability** below.
 
 ## Analysis Cross-References
 
@@ -214,7 +214,7 @@ Verify every platform-implying constraint or NFR is provisioned.
 
 ## Cross-Artifact Consistency Rules (Analysis-Internal)
 
-These are producer **self-checks** on the analysis artifacts before finalizing. They are not the independent gate — the cross-artifact consistency *grade* is owned by `mochiko:validation-plan-artifacts` (a different agent).
+These are producer **self-checks** on the analysis artifacts before finalizing. They are not the independent gate — the cross-artifact consistency *grade* is owned by `mochiko:review-plan-artifacts` (a different agent).
 
 ### Rule 1: ID References Must Resolve
 
@@ -241,7 +241,7 @@ The traceability rules that govern the **design** artifacts are owned by the ski
 | Endpoint → User Action (every action maps to an endpoint) | `mochiko:patterns-api-contracts` |
 | Schema → Entity (response schemas match entity attributes) | `mochiko:patterns-api-contracts` |
 | Endpoint → Integration (external-system endpoints carry `x-integration`) | `mochiko:patterns-api-contracts` |
-| Cross-artifact consistency / feasibility *grading* (schema-entity alignment, NFR-vs-design feasibility, sensitivity-response alignment, contradiction detection) | the independent plan reviewer (`mochiko:validation-plan-artifacts`) |
+| Cross-artifact consistency / feasibility *grading* (schema-entity alignment, NFR-vs-design feasibility, sensitivity-response alignment, contradiction detection) | the independent plan reviewer (`mochiko:review-plan-artifacts`) |
 
 The analysis artifacts authored here are the **upstream anchor** every one of those design rules traces back to: keep TR/C/D/NFR/IP IDs stable and resolvable so the downstream chains hold.
 

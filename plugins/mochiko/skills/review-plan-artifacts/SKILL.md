@@ -1,6 +1,6 @@
 ---
-name: validation-plan-artifacts
-description: This skill MUST be invoked to grade a producer's plan artifacts against the completeness checklist — the analysis set (requirements, constraints-and-decisions, NFRs) and the design set (data-model, API contracts, quickstart) — checking FR→TR coverage, orphan technical requirements, testable/measurable criteria, NFR measurability, entity and endpoint coverage, data-sensitivity annotations present, schema-model consistency, integration-boundary presence, and cross-artifact consistency (does the design honor the decisions). Emits a severity-classified gap report (Critical/Important/Minor) and a 3-state verdict (ready / needs-revision / critical-gaps). SHOULD also invoke whenever a plan loop's completeness-review step needs an independent grade of the planning artifacts, or when re-reviewing after a FAIL-loop revision. The completeness (mirror-checklist) half of the plan producer↔validator pair; does NOT cover cross-artifact feasibility / buildability / contradiction (that is mochiko:validation-feasibility); defaults to FAIL; run by an independent validator, never the author.
+name: review-plan-artifacts
+description: This skill MUST be invoked to grade a producer's plan artifacts against the completeness checklist — the analysis set (requirements, constraints-and-decisions, NFRs) and the design set (data-model, API contracts, quickstart) — checking FR→TR coverage, orphan technical requirements, testable/measurable criteria, NFR measurability, entity and endpoint coverage, data-sensitivity annotations present, schema-model consistency, integration-boundary presence, and cross-artifact consistency (does the design honor the decisions). Emits a severity-classified gap report (Critical/Important/Minor) and a 3-state verdict (ready / needs-revision / critical-gaps). SHOULD also invoke whenever a plan loop's completeness-review step needs an independent grade of the planning artifacts, or when re-reviewing after a FAIL-loop revision. The completeness (mirror-checklist) half of the plan producer↔validator pair; does NOT cover cross-artifact feasibility / buildability / contradiction (that is mochiko:review-feasibility); defaults to FAIL; run by an independent validator, never the author.
 ---
 
 # Reviewing Plan Artifacts
@@ -23,13 +23,13 @@ failure this skill exists to prevent. (The generic anti-rationalization doctrine
 | Lens | Question | Owner |
 |------|----------|-------|
 | **Completeness** | Is everything present, traceable, measurable, and internally consistent with the decisions that were made? | **this skill** |
-| **Feasibility** | Can these artifacts be built together, or do they contradict / overreach? | `mochiko:validation-feasibility` |
+| **Feasibility** | Can these artifacts be built together, or do they contradict / overreach? | `mochiko:review-feasibility` |
 
 These are the two halves of plan review, run by two independent reviewers. This skill keeps
 coverage / measurability / presence / consistency; it deliberately does **not** grade cross-artifact
 contradictions (TR↔constraint, NFR↔constraint), NFR-design feasibility, or constraint-design
-buildability — those hand off to `validation-feasibility`. The full check-by-check seam is the
-boundary table in [ARTIFACT-CHECKLISTS.md](references/ARTIFACT-CHECKLISTS.md#scope-boundary--handoff-to-validation-feasibility).
+buildability — those hand off to `review-feasibility`. The full check-by-check seam is the
+boundary table in [ARTIFACT-CHECKLISTS.md](references/ARTIFACT-CHECKLISTS.md#scope-boundary--handoff-to-review-feasibility).
 
 ## When to Use
 
@@ -41,9 +41,9 @@ boundary table in [ARTIFACT-CHECKLISTS.md](references/ARTIFACT-CHECKLISTS.md#sco
 ## When NOT to Use
 
 - **Implementation code review** — use code-review tooling instead
-- **Cross-artifact feasibility / buildability / contradiction review** — use `mochiko:validation-feasibility`
-- **Task artifact review** — use `mochiko:validation-task-artifacts`
-- **Specification review** — use `mochiko:analysis-specifications`
+- **Cross-artifact feasibility / buildability / contradiction review** — use `mochiko:review-feasibility`
+- **Task artifact review** — use `mochiko:review-task-artifacts`
+- **Specification review** — use `mochiko:review-specifications`
 - **Constitution review** — use `mochiko:validation-constitution`
 - **During active drafting** — wait for artifact completion before review
 
@@ -140,7 +140,7 @@ are the prior set** — this skill does not decide that (it has no view of the w
 - If 2+ consistency issues are found in one prior artifact → re-read that specific artifact in full
 - If a contradiction is detected → report it as an issue; the lead routes it (a design-vs-decided
   contradiction is a Critical consistency issue here; a contradiction *between requirements/constraints*
-  is `validation-feasibility`'s)
+  is `review-feasibility`'s)
 - If unsure → note the uncertainty and recommend a targeted review
 
 ### Report shape (incremental mode)
@@ -193,7 +193,7 @@ Before finalizing the review, verify:
 - [ ] Suggested fixes are actionable
 - [ ] Verdict matches the issue counts
 - [ ] Cross-artifact concerns noted
-- [ ] Feasibility/buildability findings handed to `validation-feasibility`, not graded here
+- [ ] Feasibility/buildability findings handed to `review-feasibility`, not graded here
 - [ ] Strengths acknowledged
 
 ## Common Mistakes
@@ -220,7 +220,7 @@ Good: always verify consistency with the prior artifact set.
 
 ### Grading feasibility here
 Bad: blocking on "the design can't meet the latency NFR" or "these two constraints contradict".
-Good: note it as a cross-artifact concern and hand it to `validation-feasibility` — that is its gate, not this one.
+Good: note it as a cross-artifact concern and hand it to `review-feasibility` — that is its gate, not this one.
 
 ## Red Flags — STOP and Restart Properly
 
@@ -247,6 +247,6 @@ If you notice yourself thinking any of these, STOP immediately:
 
 ## Related
 
-- `mochiko:validation-feasibility` — the feasibility / buildability / contradiction half of plan review; the boundary with this skill is the table in ARTIFACT-CHECKLISTS.md
+- `mochiko:review-feasibility` — the feasibility / buildability / contradiction half of plan review; the boundary with this skill is the table in ARTIFACT-CHECKLISTS.md
 - `mochiko:advocate-report-template` — the deliverable report shape the lead reads
 - `loop-discipline` — the source of the anti-rationalization and independent-validation doctrine this skill operationalizes
