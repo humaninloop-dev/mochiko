@@ -43,8 +43,9 @@ ls -la CLAUDE.md CONTRIBUTING.md .github/PULL_REQUEST_TEMPLATE.md 2>/dev/null
 # Look for architecture docs
 ls -la docs/architecture* docs/adr/* ADR/* 2>/dev/null
 
-# Look for existing constitution
-ls -la .mochiko/memory/constitution.md 2>/dev/null
+# Look for existing mochiko governance (region marker + ledger)
+grep -l "mochiko:governance:begin" CLAUDE.md 2>/dev/null
+ls -la .mochiko/memory/governance-ledger.md .claude/rules/mochiko/ 2>/dev/null
 ```
 
 ## Team Signal Detection

@@ -40,8 +40,8 @@ Name the skill as a hint, not a command: the agent decides whether it fits.
 |---|-------|----------------|---------|
 | 1 | **Skill(s) to lean on** | The model-invoked skill(s) likely to fit this work, by name — a hint the agent can take or set aside | "This is in `mochiko:validation-constitution`'s domain." |
 | 2 | **Role this run** | What the agent is doing in plain terms — author / grade / reconcile — so it frames its output | "You are grading this artifact independently." |
-| 3 | **Input(s) to read** | Every artifact the agent should Read before acting (and any in-session inputs) | "Read `.mochiko/memory/constitution.md` and `…/codebase-analysis.md`." |
-| 4 | **Where the output goes** | The path to write to, or "return only, write nothing" | "Write to `.mochiko/memory/constitution.md`." |
+| 3 | **Input(s) to read** | Every artifact the agent should Read before acting (and any in-session inputs) — incl. the governance obligated-read line naming relevant `.claude/rules/mochiko/` files | "Read `.mochiko/memory/governance-intent.md` and `…/codebase-analysis.md`; read `.claude/rules/mochiko/api.md` before authoring." |
+| 4 | **Where the output goes** | The path to write to, or "return only, write nothing" | "Write the governance region into `CLAUDE.md` (between the mochiko:governance markers only)." |
 | 5 | **What good looks like** | The bar the output must clear this run | "Every principle has Statement/Enforcement/Testability/Rationale; no placeholders." |
 | 6 | **Prior feedback (retries)** | On round > 1, paste the validator's prior issues verbatim; else omit | "Address: <validator's issues-requiring-fix>." |
 | 7 | **Independence framing** | The plain-language reminder that matches the structural guarantee | Author: "Don't grade your own output." · Grader: "Read the artifact itself; default FAIL; quote your evidence." |
