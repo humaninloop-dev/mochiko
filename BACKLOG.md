@@ -4,6 +4,8 @@ Lightweight capture of open design decisions and workflow scoping work. Not a fu
 
 Items close when a decision is made and recorded in `ROADMAP.md`, or when the work lands in `REGISTRY.md`.
 
+> **Note (2026-07-18):** the HIL→mochiko **transformer cluster was retired** (`transform-cluster` command, `transform-producer` agent, and the `assess-primitive` / `reconcile-cluster` / `transform-recipes` / `verify-output` skills — see `ROADMAP.md` Key Decisions). The `…-port follow-ups (from the /mochiko:transform-cluster … run)` sections below are **historical records** of how each workflow was ported; the run tool no longer exists, but the follow-up items themselves remain valid where still open.
+
 ---
 
 ## Open design decisions

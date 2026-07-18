@@ -1,7 +1,7 @@
 {
   "name": "mochiko",
   "version": "0.9.1",
-  "description": "Kernel-free agent-skill framework: transform human-in-loop primitives into sound-loop mochiko form",
+  "description": "Kernel-free agent-skill framework: sound-loop workflows built from native agent teams and skills",
   "author": {
     "name": "HumanInLoop",
     "url": "https://humaninloop.dev"
@@ -10,8 +10,6 @@
   "keywords": [
     "agent-skills",
     "workflow",
-    "transformation",
-    "migration",
     "sound-loop",
     "kernel-free",
     "human-in-loop"
@@ -20,7 +18,6 @@
   "skills": "./skills/",
   "agents": [
     "./agents/principal-architect.md",
-    "./agents/transform-producer.md",
     "./agents/validator.md",
     "./agents/requirements-analyst.md",
     "./agents/devils-advocate.md",

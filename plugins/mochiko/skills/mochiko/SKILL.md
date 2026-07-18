@@ -1,6 +1,6 @@
 ---
 name: mochiko
-description: User-invoked router for the mochiko skill library. Indexes the available skills, agents, and workflows and says when to reach each. Start here when you want to transform a human-in-loop primitive into mochiko form, or to find the right mochiko skill for a task.
+description: User-invoked router for the mochiko skill library. Indexes the available skills, agents, and workflows and says when to reach each. Start here to find the right mochiko skill, agent, or workflow for a task.
 disable-model-invocation: true
 ---
 
@@ -12,7 +12,7 @@ disable-model-invocation: true
 
 ## What mochiko is
 
-The kernel-free successor to human-in-loop. Discipline lives in the skill library; native agent teams + a markdown command supervisor handle orchestration. Every workflow is a **sound loop** (see `loop-discipline`). See `ROADMAP.md` for the thesis and `PLAYBOOK.md` for the transformation doctrine.
+The kernel-free successor to human-in-loop. Discipline lives in the skill library; native agent teams + a markdown command supervisor handle orchestration. Every workflow is a **sound loop** (see `loop-discipline`). See `ROADMAP.md` for the thesis.
 
 ## Flow graph
 
@@ -22,14 +22,8 @@ The kernel-free successor to human-in-loop. Discipline lives in the skill librar
   │   workflow-contract ...... the fill-in loop contract (template)      │
   └──────────────────────────────────────────────────────────────────────┘
 
-  TRANSFORM A PRIMITIVE  (the first dogfood cluster)
-  run:  /mochiko:transform-cluster <cluster>          ← user-invoked entry (hint)
-        │
-        ▼
-   triage ─→ assess-primitive ─→ reconcile-cluster ─→ transform-recipes ─→ verify-output
-             (per primitive)      (cluster scope)      (apply disposition)  (independent gate)
-        agents:  transform-producer ───────────────────────────────┘  validator
-        lead/referee = the transform-cluster command supervisor
+  Each workflow below is a sound loop: a command supervisor stitches a
+  producer/validator agent team to a goal under a workflow-contract.
 ```
 
 ## When to reach each
@@ -40,14 +34,6 @@ The kernel-free successor to human-in-loop. Discipline lives in the skill librar
 | `loop-discipline` | designing/reviewing any workflow or agent loop; deciding if a loop is sound; filling a `workflow-contract` |
 | `workflow-contract` (template) | instantiating the contract for a specific workflow |
 | `agent-dispatch` (template) | briefing each agent dispatch inside a loop — a caller-side guide, not a gate |
-
-### Transformer cluster (model-invoked — auto-reached during a transform run)
-| Skill | Reach when |
-|-------|------------|
-| `assess-primitive` | diagnosing one primitive: class, disposition, responsibility trace |
-| `reconcile-cluster` | resolving cross-primitive moves (pair/split/merge/promote) + rehoming orchestration, after all primitives are assessed |
-| `transform-recipes` | applying a finalized disposition; running the convention-wiring pass every port pays |
-| `verify-output` | independently grading a transformed artifact (run by an independent validator, never the author) |
 
 ### Setup cluster (model-invoked — auto-reached during a `/mochiko:setup` run)
 | Skill | Reach when |
@@ -117,7 +103,6 @@ The kernel-free successor to human-in-loop. Discipline lives in the skill librar
 ### Entry point (user-invoked — you run it)
 | Command | Reach when |
 |---------|------------|
-| `/mochiko:transform-cluster <cluster>` | you want to transform a whole HIL primitive cluster into mochiko form |
 | `/mochiko:setup` | you want to create, amend, or brownfield-derive the project's governance (greenfield \| brownfield \| amend) — no constitution.md: governance lands on native surfaces (a marked CLAUDE.md governance region, `paths`-scoped rules files, skill pointers, a governance ledger). The lead interrogates your governance intent first (tier, type, risk, values; ten dimensions, deck arbitration, waiver rulings) and you ratify the synthesis at a named checkpoint before anything is authored; then a producer teammate authors the surface set from that synthesis as a traceable contract and an independent validator teammate grades trace closure from the files, closing on your acceptance with a trace summary. **Requires agent teams** (`CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS`); refuses without them |
 | `/mochiko:specify` | you want to create a feature specification via the adversarial analyst↔advocate loop (the requirements-analyst authors `spec.md`, the devils-advocate stress-tests it) with a human acceptance gate |
 | `/mochiko:slice` | you want to decompose an accepted spec into **graduation slices** — ordered story groups that then run `/mochiko:plan` → `/mochiko:tasks` → `/mochiko:implement` **per slice** instead of whole-spec — via the task-architect→devils-advocate loop with a human acceptance gate on `slices.md`; null-exit-aware (a spec without ≥2 distinct value seams gets a reviewed whole-spec recommendation instead) |
@@ -129,7 +114,6 @@ The kernel-free successor to human-in-loop. Discipline lives in the skill librar
 ### Agents (dispatched by the supervisor)
 | Agent | Role |
 |-------|------|
-| `transform-producer` | assesses, reconciles, and applies recipes (skills: assess-primitive, reconcile-cluster, transform-recipes) |
 | `principal-architect` | **cross-workflow** — setup-cluster author (authors/updates the governance surface set, greenfield + brownfield; runs codebase analysis) **and** plan-cluster **feasibility reviewer** (grades the analyst's plan artifacts for cross-artifact buildability; grades a different agent's work, never its own authoring) (skills: authoring-constitution, analysis-codebase, validation-feasibility) |
 | `requirements-analyst` | specify-cluster producer — authors the feature `spec.md` (prioritized user stories + FR/SC requirements) (skills: authoring-requirements, authoring-user-stories) |
 | `devils-advocate` | **cross-workflow** adversarial reviewer — specify-cluster critic (grounded, severity-bucketed spec-gap review), plan-cluster **completeness reviewer** (coverage / measurability / consistency / presence over the plan artifacts), tasks-cluster **task-artifact reviewer** (vertical-slice integrity, TDD structure, story→cycle→task traceability over `task-mapping.md`/`tasks.md`), brainstorm-cluster **end-stage reviewer(s)** (sized at the user's convergence gate — a lens-split cold pair by default over the finished record: independent findings first, then a one-shot cross-examination; survivors only — spawn prompts name the skill + role + lens, since teammates ignore `skills:` frontmatter), **and** slice-cluster **decomposition reviewer** (coverage, dependency closure, foundation legitimacy, Feature-Done coverage, depth over `slices.md`); recommends a verdict that feeds the lead's clearing decision, never the gate (skills: analysis-specifications, validation-plan-artifacts, validation-task-artifacts, validation-brainstorm, validation-slices) |
@@ -137,15 +121,14 @@ The kernel-free successor to human-in-loop. Discipline lives in the skill librar
 | `task-architect` | **cross-workflow** PRODUCER — tasks-cluster (structures an accepted plan into `task-mapping.md` story→cycle mapping + `tasks.md` cycle-based TDD task list) **and** slice-cluster (decomposes an accepted spec into the `slices.md` graduation-slice overlay: foundation designation, dependency-closed ordering, Feature-Done declaration); never grades its own output (skills: patterns-vertical-tdd, authoring-slices) |
 | `staff-engineer` | implement-cluster PRODUCER — implements each cycle through red/green/refactor TDD and brownfield EXTEND/MODIFY integration; emits an honest `cycle-report.md`; never grades its own output; the verification skill is never mounted here (skills: executing-tdd-cycle, brownfield-integration) |
 | `qa-engineer` | implement-cluster VALIDATOR — independently verifies each cycle against real infrastructure (quality-gate exit codes + captured evidence), emits a verification report + checkpoint recommendation that feeds the lead's verdict; grades a different agent's work, mounts no producer skill (skills: testing-end-user) |
-| `validator` | one generic independent grader for any cluster — grades a finished artifact against a checklist, defaults to FAIL, authors nothing (skills: validation-constitution, verify-output) |
+| `validator` | one generic independent grader for any cluster — grades a finished artifact against a checklist, defaults to FAIL, authors nothing (skills: validation-constitution) |
 
 ## Operating rules (context hygiene)
 
-- **Keep assess → reconcile in one unbroken context** per cluster — reconcile reasons across all the assessments at once; a fresh context loses the sibling picture.
-- **Always cross the producer↔validator boundary.** The author never grades its own output; dispatch the independent `validator` for `verify-output`. Never mount producer and validator skills on one agent.
-- **The lead is the command, not an agent.** Verdict ownership, reconciliation arbitration, and the human gate live in `transform-cluster.md`.
-- **One cluster per run.** Transform a whole workflow-cluster together (ROADMAP: "port the cluster together"), not stray primitives.
+- **Always cross the producer↔validator boundary.** The author never grades its own output; the lead dispatches an independent validator that Reads the artifact itself. Never mount producer and validator skills on one agent.
+- **The lead is the command, not an agent.** Verdict ownership, iteration bounds, and the human gate live in the workflow's `commands/<name>.md` supervisor, not in any persona.
+- **Keep a producer↔validator round in one unbroken context** so the validator reasons across the whole artifact at once — a fresh context loses the picture.
 
 ## Adding to the library
 
-New primitives register here as part of the convention-wiring pass (a `verify-output` Part-A item). A primitive that is not in this router fails discoverability — it is, by construction, undiscoverable.
+New primitives register here when they are authored. A primitive that is not in this router fails discoverability — it is, by construction, undiscoverable.
