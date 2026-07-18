@@ -67,4 +67,29 @@ other fields are filled.
 > A thin brief is a quality cost, recoverable by the agent. A collapsed
 > producer↔validator boundary is an unsound loop, recoverable by no one downstream.
 
-**Briefing version:** v2 · **Governed by:** `loop-discipline` · **Pairs with:** `workflow-contract.md`
+---
+
+## Seat transport (team-form commands only)
+
+A team-form command's seats ride the **same Agent tool** as one-shot subagents — since
+Claude Code v2.1.178 there is no separate team-creation step, the fork is one parameter,
+and the substrate documentedly picks wrong sometimes (*"Claude may sometimes use subagents
+instead of creating a team"* — agent-teams docs). So the caller carries the mechanics, not
+just the vocabulary:
+
+- **Spawning a seat** = one Agent call carrying **`name:`** (e.g. `name: producer`), phrased
+  in the docs' own idiom — "create an agent team", "spawn a teammate named `<seat>`" — not
+  only mochiko's "seat". **A spawn without a `name:` is a one-shot subagent — in a team-form
+  command, the forbidden transport.**
+- **Every later round** is a `SendMessage` to that same name. A fresh spawn per round is the
+  subagent anti-pattern wearing a team's clothes.
+- **Verify before proceeding:** the first spawn is the authoritative probe — confirm it
+  yielded an **addressable teammate** (a named agent you can `SendMessage`; the agent panel
+  alone doesn't distinguish teammates from subagents, per the docs). Not addressable → kill
+  it and respawn, explicitly requesting an agent team.
+
+One-shot dispatch stays correct for the commands designed on it (specify/plan/tasks/
+implement) — this section binds only commands that hard-require teams. Defect history +
+ruling: `.mochiko/brainstorms/setup-v3-team-defect/record.md` (D1).
+
+**Briefing version:** v3 · **Governed by:** `loop-discipline` · **Pairs with:** `workflow-contract.md`

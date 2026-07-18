@@ -35,7 +35,13 @@ a proxy — the **first teammate spawn is the authoritative probe** (the produce
 stop with the same instructions. Never proceed teamless — **no fallback transport** (the same
 deliberate dogfood-pilot bet as `/mochiko:brainstorm`, marked `Contested`; revisit when mochiko
 distributes beyond the author's machines). Running the loop on one-shot subagents is not a
-fallback — it is the defect this section exists to forbid.
+fallback — it is the defect this section exists to forbid. **Transport is discriminable at the
+call:** a seat is spawned by one Agent call carrying **`name:`** — in the docs' idiom ("create
+an agent team", "spawn a teammate") — and every later round is a `SendMessage` to that name; **a
+spawn without a `name:` is a one-shot subagent, the forbidden form.** After the first spawn,
+**verify the seat is addressable** (you can message it by name — the agent panel alone doesn't
+confirm) before proceeding; not addressable → kill it and respawn, explicitly requesting an
+agent team. Recipe: `templates/agent-dispatch.md` (Seat transport).
 
 ## Session constraints
 

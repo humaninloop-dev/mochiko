@@ -8,6 +8,12 @@ One entry per session directory under `.mochiko/brainstorms/<topic-slug>/`, **ne
 
 ---
 
+## `setup-v3-team-defect` — setup dogfood ran subagents again: diagnosing the team-mandate failure
+- **When:** 2026-07-18 · **Status:** accepted · record un-reviewed (bare session — direct skill invocation) · **built same day at plugin v0.9.1**
+- **Artifacts:** [record.md](setup-v3-team-defect/record.md) (canonical)
+- **About:** the post-v3 dogfood run of `/mochiko:setup` (kinako) executed its producer as a one-shot subagent despite the hard team requirement — fork **B, set-and-ignored**: the lead probed `AGENT_TEAMS=1` itself, followed every surrounding instruction, then dispatched via the Agent tool. Refutes BACKLOG's seat-idiom mitigation hypothesis; docs-grounded cause: since v2.1.178 the teammate/subagent fork is one `name:` parameter on the same Agent tool, and the docs admit Claude "may sometimes use subagents instead of creating a team." Ruled (D1): seat-transport mechanics single-sourced in `agent-dispatch.md` + discriminating line and post-spawn addressability check in both team-form commands; D9's no-fallback mandate stands.
+- **Landed:** ROADMAP Key Decisions (team-transport row, 2026-07-18); BACKLOG D7-investigation item closed, v3-dogfood item inherits D1's acceptance test, substrate item datapoint added; build: `agent-dispatch.md` v3 + `setup.md`/`brainstorm.md` hard-requirement addenda. Verification pending: the kinako re-run (resume at *loop (produce)*) showing team-form observed.
+
 ## `constitution-native-surfaces` — replacing constitution.md with native context surfaces
 - **When:** 2026-07-18 · **Status:** accepted · record cold-reviewed (pair per sizing gate: 16 raised → 8 merged survivors → 8/8 dispositioned, verify pass PASS incl. 2 propagation fixes)
 - **Artifacts:** [record.md](constitution-native-surfaces/record.md) (canonical)
