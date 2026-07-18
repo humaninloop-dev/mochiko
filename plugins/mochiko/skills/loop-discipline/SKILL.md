@@ -30,7 +30,7 @@ You cannot rationalize your way out of any of the four.
 
 ## When NOT to Use
 
-- For a single, non-iterative skill invocation that emits no reviewable artifact (no loop, no contract needed — but it still pays the convention-wiring floor; see `transform-recipes`)
+- For a single, non-iterative skill invocation that emits no reviewable artifact (no loop, no contract needed — but it still follows the library conventions: classification, router registration, triggers)
 - For purely informational queries
 
 ## The Four Requirements
@@ -45,7 +45,7 @@ A done-condition has three parts:
 
 | Part | What it states | Bad | Good |
 |------|----------------|-----|------|
-| **Measurable end state** | The observable fact that means "done" | "the output is good" | "`verify-output` returns PASS and every responsibility has a trace tag" |
+| **Measurable end state** | The observable fact that means "done" | "the output is good" | "the validator returns PASS and every required section is present and traced" |
 | **Stated check** | *How* completion is proven, named in advance | "I'll know it when I see it" | "the validator reads the artifact and confirms all five conventions present" |
 | **Constraints** | What must not be violated on the way | (none) | "no original responsibility silently dropped" |
 
@@ -135,5 +135,4 @@ If you notice yourself thinking any of these, the loop is unsound. Stop and repa
 
 - [`workflow-contract` template](../../templates/workflow-contract.md) — the fill-in form this skill governs
 - [`agent-dispatch` template](../../templates/agent-dispatch.md) — the caller-side briefing guide for each dispatch inside the loop (not a fifth gate)
-- `verify-output` — the done-condition checker that operationalizes requirements 1–2 for the transformer
 - See `ROADMAP.md` ("The sound-loop doctrine") and `agent-skills-research/synthesis/my-framework.md` for the source techniques

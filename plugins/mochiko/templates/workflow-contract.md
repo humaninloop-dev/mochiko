@@ -22,9 +22,9 @@ INSTRUCTIONS:
 
 <!-- The artifact starts FAILing and only flips on real evidence. State all three parts. -->
 
-- **Measurable end state:** [the observable fact that means done — e.g. "verify-output returns PASS for every primitive in the cluster"]
-- **Stated check (how it is proven):** [named in advance — e.g. "the validator agent Reads each transformed artifact + its trace and confirms conformance"]
-- **Constraints (must not be violated):** [e.g. "no original responsibility silently dropped; kernel-free maintained"]
+- **Measurable end state:** [the observable fact that means done — e.g. "the validator returns PASS and every required section is present"]
+- **Stated check (how it is proven):** [named in advance — e.g. "the validator agent Reads the artifact and confirms every checklist item"]
+- **Constraints (must not be violated):** [e.g. "kernel-free maintained; no acceptance criterion left unverified"]
 - **Initial state:** `FAIL` <!-- always FAIL until proven otherwise -->
 
 ## 2. Producer ↔ Validator (independence on two axes)
@@ -48,8 +48,8 @@ INSTRUCTIONS:
 ## 4. Human gate
 
 - **Placement:** [every cycle | low validator-confidence only | preference-gap only]
-- **Where it fires:** [the phase/condition — e.g. "before applying redesign/absorb/promote dispositions, and on any cap-exhaustion escalation"]
-- **What the human decides:** [e.g. "accept/override the disposition; accept a dropped-responsibility reason; final verdict"]
+- **Where it fires:** [the phase/condition — e.g. "on low validator confidence, and on any cap-exhaustion escalation"]
+- **What the human decides:** [e.g. "accept/override the validator's verdict; final acceptance"]
 
 ---
 

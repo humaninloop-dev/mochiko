@@ -27,12 +27,11 @@ Both repos are submodules — use them as read-only reference:
 
 ## How to work in this repo
 
-### Porting a primitive from human-in-loop
-
-1. Read the HIL source in `human-in-loop/plugins/humaninloop/`
-2. Check `agent-skills-research/synthesis/my-framework.md` for any technique notes on it
-3. Ask: what does this primitive do that the brain was doing for it? Replace brain dependencies with skill-invocation or agent-team patterns
-4. Mark it `[x]` in `REGISTRY.md` when landed; `[~]` if ported but needs a follow-up upgrade pass
+> The human-in-loop → mochiko transformation tool (the `transform-cluster` command, its
+> `transform-producer` agent, and the `assess-primitive` / `reconcile-cluster` /
+> `transform-recipes` / `verify-output` skills) was **retired 2026-07-18** once the migration
+> landed. The build record is preserved in `REGISTRY.md`, `ROADMAP.md`, and `BACKLOG.md`, and
+> the run archive in `.mochiko/transform/`. New primitives are authored directly in mochiko form.
 
 ### Starting a new workflow
 
@@ -47,7 +46,7 @@ If a decision touches the four skill-library axes (classification, discoverabili
 
 ### Recording brainstorm and design-session outputs
 
-Brainstorm and design-session artifacts (`record.md`, `synthesis.md`) live in `.mochiko/brainstorms/<topic-slug>/` — never at the repo top level. The top level is reserved for the living operating docs (`CLAUDE.md`, `ROADMAP.md`, `REGISTRY.md`, `BACKLOG.md`, `PLAYBOOK.md`). A session's *ruling* still lands in `ROADMAP.md` Key Decisions with a pointer to the session record; the record holds the full rationale.
+Brainstorm and design-session artifacts (`record.md`, `synthesis.md`) live in `.mochiko/brainstorms/<topic-slug>/` — never at the repo top level. The top level is reserved for the living operating docs (`CLAUDE.md`, `ROADMAP.md`, `REGISTRY.md`, `BACKLOG.md`). A session's *ruling* still lands in `ROADMAP.md` Key Decisions with a pointer to the session record; the record holds the full rationale.
 
 [`.mochiko/brainstorms/index.md`](.mochiko/brainstorms/index.md) is the session index — newest first, one entry per session: when, status (open / accepted / superseded), review state, what it's about, and where the outcome landed. **Read the index before opening any session directory** — it tells you which records are current, which are superseded, and which are un-reviewed. Enforced both ways: opening a session adds an entry at the top; concluding one updates its status. A session directory without an index entry, or an entry whose status contradicts its record, is a defect — fix it on sight.
 

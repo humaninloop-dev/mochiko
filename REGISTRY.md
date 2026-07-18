@@ -8,22 +8,26 @@ Track every primitive from `human-in-loop` — check off as it lands in mochiko.
 
 ## Mochiko-native primitives (net-new, not HIL ports)
 
-The transformer cluster — the dogfooded implementation of [`PLAYBOOK.md`](PLAYBOOK.md). It is the tool that ports everything below it. Built before any HIL primitive is ported; proven by running it on the `setup` cluster.
+The transformer cluster — the dogfooded tool that ported everything below it. Built before any HIL primitive was ported; proven by running it on the `setup` cluster.
+
+> **RETIRED 2026-07-18.** The transformer cluster (`transform-cluster` command, `transform-producer` agent, and the `assess-primitive` / `reconcile-cluster` / `transform-recipes` / `verify-output` skills, plus the deleted `PLAYBOOK.md` doctrine doc) was removed once the migration landed — the six rows below are marked `[R]`. Its outputs (every workflow in this registry) remain; the run archive is preserved in `.mochiko/transform/`. The four unmarked rows (`loop-discipline`, `workflow-contract`, `mochiko`, `validator`) are general doctrine/library infrastructure and stay in active use.
+
+**Status key (this table)**: `[x]` built & in use · `[R]` built, then retired 2026-07-18
 
 | Status | Name | Type | Notes |
 |--------|------|------|-------|
 | `[x]` | `loop-discipline` | skill | Doctrine: the four sound-loop rules |
 | `[x]` | `workflow-contract` | template | Fill-in loop contract (default FAIL) |
-| `[x]` | `assess-primitive` | skill | Branch-by-class + 7-check lens + responsibility trace; **+ command-altitude rule (generic discipline → `dedupe`, not `moved-to-lead`) (2026-06-30)** |
-| `[x]` | `reconcile-cluster` | skill | Relational verdicts + rehome-orchestration |
-| `[x]` | `transform-recipes` | skill | Per-disposition recipes + convention-wiring pass; **+ thin-command `redesign` target + wiring step 6 (single-source) (2026-06-30)** |
-| `[x]` | `verify-output` | skill | Done-condition checker (independent gate); **+ altitude / single-source check (item 8) (2026-06-30)** |
+| `[R]` | `assess-primitive` | skill | Branch-by-class + 7-check lens + responsibility trace; **+ command-altitude rule (generic discipline → `dedupe`, not `moved-to-lead`) (2026-06-30)** |
+| `[R]` | `reconcile-cluster` | skill | Relational verdicts + rehome-orchestration |
+| `[R]` | `transform-recipes` | skill | Per-disposition recipes + convention-wiring pass; **+ thin-command `redesign` target + wiring step 6 (single-source) (2026-06-30)** |
+| `[R]` | `verify-output` | skill | Done-condition checker (independent gate); **+ altitude / single-source check (item 8) (2026-06-30)** |
 | `[x]` | `mochiko` | skill | User-invoked router / library index |
-| `[x]` | `transform-producer` | agent | Assess / reconcile / apply |
-| `[x]` | `validator` | agent | Generic independent grader — `verify-output` + `validation-constitution` (merges the former `transform-validator` + `constitution-validator`) |
-| `[x]` | `transform-cluster` | command | Supervisor / lead-referee (owns the loop + human gate) |
+| `[R]` | `transform-producer` | agent | Assess / reconcile / apply |
+| `[x]` | `validator` | agent | Generic independent grader — `validation-constitution` (the `verify-output` half retired with the transformer cluster; merged the former `transform-validator` + `constitution-validator`) |
+| `[R]` | `transform-cluster` | command | Supervisor / lead-referee (owned the loop + human gate) |
 
-> Lead/referee is the `transform-cluster` command supervisor, not a separate agent — so the cluster ships **2 agents**, not 3.
+> Lead/referee was the `transform-cluster` command supervisor, not a separate agent — so the cluster shipped **2 agents**, not 3.
 
 ---
 
@@ -48,7 +52,7 @@ The transformer cluster — the dogfooded implementation of [`PLAYBOOK.md`](PLAY
 | Status | Name | Workflow Affinity |
 |--------|------|-------------------|
 | `[x]` | `principal-architect` | `setup` producer (authoring-constitution, analysis-codebase) **+ `plan` feasibility reviewer** (validation-feasibility, re-broadened 2026-07-01) — produce-in-setup / review-in-plan (decoupling-legit); **G1: never re-mounts `validation-constitution`** (no constitution self-grade) |
-| `[x]` | `validator` | mochiko-native generic grader (see top table) — one independent grader serves `setup` (validation-constitution) + transform (verify-output); replaces the setup-specific `constitution-validator` born from the principal-architect split |
+| `[x]` | `validator` | mochiko-native generic grader (see top table) — independent grader for `setup` (validation-constitution); the transform half (`verify-output`) retired with the transformer cluster 2026-07-18; replaces the setup-specific `constitution-validator` born from the principal-architect split |
 | `[x]` | `devils-advocate` | **cross-workflow reviewer** — `specify` critic (`analysis-specifications`) + `plan` completeness reviewer (`validation-plan-artifacts`) + `tasks` task-artifact reviewer (`validation-task-artifacts` **re-mounted live 2026-07-01** — the last stubbed mount now closed) + `brainstorm` **end-stage reviewer(s)** (`validation-brainstorm`, net-new mount 2026-07-02; v2.1 2026-07-05; v2.2 2026-07-16 — spawned cold at convergence per the user's sizing ruling: a lens-split pair by default (decision-quality / record-integrity), single for a lean record; counterpart withheld until independent findings are formed, then a one-shot four-message cross-examination → survivors only; teammates ignore `skills:` frontmatter, so the spawn prompt names the skill + role + lens) + `slice` decomposition reviewer (`validation-slices`, net-new mount 2026-07-02 — coverage / closure / foundation legitimacy / Feature-Done / depth) |
 | `[x]` | `requirements-analyst` | `specify` — producer (skills: `authoring-requirements`, `authoring-user-stories`) |
 | `[x]` | `technical-analyst` | `plan` — producer (skills: authoring-technical-requirements, patterns-technical-decisions, patterns-entity-modeling, patterns-api-contracts); authors the 6 analysis+design artifacts, never grades |
