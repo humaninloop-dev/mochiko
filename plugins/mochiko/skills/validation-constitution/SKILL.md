@@ -1,13 +1,17 @@
 ---
 name: validation-constitution
-description: This skill MUST be invoked to grade a DRAFTED constitution against the quality checklist — three-part-structure check (enforcement/testability/rationale), deterministic trace-ID cross-check against the session synthesis (`.mochiko/memory/governance-intent.md`), tier-declaration and waiver-format checks, module-parameterized section checks, anti-pattern scan, placeholder scan, quantification enforcement, and semantic version-bump determination — emitting a binary PASS/FAIL verdict plus a fix list. SHOULD also invoke whenever the setup loop's validate step needs an independent grade of a constitution produced by mochiko:authoring-constitution (greenfield or brownfield mode), or when re-validating after a FAIL-loop revision. The validator-side skill of the constitution producer↔validator pair; defaults to FAIL; run by an independent validator (a different agent than the author), never the author.
+description: This skill MUST be invoked to grade a DRAFTED governance surface set against the quality checklist — there is NO constitution.md; the graded set is the CLAUDE.md governance region (between the mochiko:governance markers), the `paths`-scoped `.claude/rules/mochiko/` files, and the governance ledger (`.mochiko/memory/governance-ledger.md`), judged against the session synthesis (`.mochiko/memory/governance-intent.md`) and the producer's trace summary manifest. Checks: two-way trace closure over the manifest (every GI element → one primary home + companion entries; every surface element → GI), region-marker integrity, index→home existence, per-principle three-part structure in the ledger (enforcement/testability/rationale), tier-declaration and waiver-format checks, module-parameterized checks, anti-pattern scan, placeholder scan, quantification enforcement, and semantic version-bump determination — emitting a binary PASS/FAIL verdict plus a fix list. SHOULD also invoke whenever the setup loop's validate step needs an independent grade of a surface set produced by mochiko:authoring-constitution (greenfield or brownfield mode), or when re-validating after a FAIL-loop revision. The validator-side skill of the governance producer↔validator pair; defaults to FAIL; run by an independent validator (a different agent than the author), never the author.
 ---
 
 # Validating Constitution
 
 ## Overview
 
-Constitution validation ensures governance documents are enforceable, testable, and free of anti-patterns before finalization. Every constitution MUST pass quality validation—no exceptions for "simple projects" or "tight deadlines."
+Governance validation ensures the surface set is enforceable, testable, trace-closed, and free of
+anti-patterns before finalization. **The graded artifact is a set, not a file** — the CLAUDE.md
+governance region, the rules files, and the ledger are one deliverable and are graded together;
+grading only the region is partial validation, which is not validation. Every set MUST pass — no
+exceptions for "simple projects" or "tight deadlines."
 
 **Violating the letter of the rules is violating the spirit of the rules.**
 
@@ -31,60 +35,83 @@ Skipping validation because "the constitution looks fine" or "it's mostly comple
 
 ## Core Process
 
-Two inputs, both read from file, never from the author's report: the constitution
-(`.mochiko/memory/constitution.md`) and the session synthesis
-(`.mochiko/memory/governance-intent.md` — the traceable contract the constitution was authored
-against). A missing synthesis when the constitution carries trace stamps — or vice versa — is
-itself a FAIL.
+The inputs, all read from file, never from the author's report: the **surface set** — the
+CLAUDE.md governance region (between `<!-- mochiko:governance:begin -->` /
+`<!-- mochiko:governance:end -->`), every rules file under `.claude/rules/mochiko/`, and the
+ledger (`.mochiko/memory/governance-ledger.md`) — plus the session synthesis
+(`.mochiko/memory/governance-intent.md`, the traceable contract) and the producer's **trace
+summary manifest**. A missing synthesis when the set carries trace keys, a missing manifest, or a
+missing member of the set — each is itself a FAIL. A `.mochiko/memory/constitution.md` on disk is
+a superseded artifact the lead should have deleted — flag it in the fix list.
 
 ### Step 1: Load Quality Checklist and Assemble It
 
 Read [references/QUALITY-CHECKLIST.md](references/QUALITY-CHECKLIST.md). The structure checks are
 **module-parameterized**: read the synthesis's module selections, then assemble the working
 checklist as universal core + the checklist fragment embedded in each selected module's file
-(`templates/constitution-modules/*.md`). Verify every item. Do not skip items because they "seem
-obvious" or "clearly pass" — and do not check module fragments the synthesis did not select.
+(`templates/constitution-modules/*.md`), applied to the module's **routed** content (region
+pointer / rules files / ledger section — per the authoring skill's routing table). Verify every
+item. Do not skip items because they "seem obvious" or "clearly pass" — and do not check module
+fragments the synthesis did not select.
 
-### Step 2: Check Each Principle
+### Step 2: Region and Surface Integrity (deterministic)
 
-Every principle MUST have the three-part structure:
+- Exactly one governance region in `CLAUDE.md`, both markers present, correctly ordered.
+- The region carries the ratified stamp (version · date · tier, one line), the principle index,
+  universal principles as short imperative lines, the technology stack, and the quality-gates
+  summary — and stays **short-form** (detail belongs to the ledger; a region restating ledger
+  detail is a fix-list item).
+- Every index line's pointer resolves: the named rules file exists under `.claude/rules/mochiko/`,
+  the named skill exists, or the principle's home is the region itself.
+- Every rules file carries `paths` frontmatter honest to its concern and operative rules in the
+  body. **A universal principle homed in a rules file is a FAIL** (delivery to spawned producers
+  is unproven; universal content belongs in the region).
+
+### Step 3: Check Each Principle (three-part, in the ledger)
+
+Every principle in the manifest MUST have a ledger entry keyed by its GI-ID carrying the
+three-part structure:
 
 | Part | Purpose | Verification |
 |------|---------|--------------|
 | **Enforcement** | How is compliance verified? | CI check, code review rule, or audit process named |
 | **Testability** | What does pass/fail look like? | Concrete pass and fail conditions defined |
 | **Rationale** | Why does this rule exist? | Business or technical justification present |
-| **Trace** | Which synthesis element selected it? | `**Trace**: GI-XXX (…)` stamp present with a real ID |
+| **Home** | Where does its operative text live? | Named home matches the index and the actual surface |
 
-If any principle lacks any part, the constitution FAILS validation.
+If any principle lacks any part, the set FAILS validation.
 
-### Step 3: Traceability Cross-Check (deterministic)
+### Step 4: Trace Closure Cross-Check (deterministic, both ways, over the manifest)
 
-String-match both directions against the synthesis:
+String-match against the synthesis and the surfaces:
 
-1. Every principle's Trace GI-ID exists in `governance-intent.md` and points at a
-   principle-bearing element (deck-kept / minted / floor-preset).
-2. Every principle-bearing element in the synthesis is realized as a principle — or appears in the
-   producer's flagged-proposals list. Unrealized-and-unflagged = FAIL.
-3. Waiver records and attached module sections match the synthesis's waiver and module-selection
+1. Every manifest row's GI-ID exists in `governance-intent.md` and points at a principle-bearing
+   element (deck-kept / minted / floor-preset).
+2. Every principle-bearing element in the synthesis appears in the manifest — realized on a
+   surface — or in the producer's flagged-proposals list. Unrealized-and-unflagged = FAIL.
+3. Every manifest row closes on the surfaces: **one primary enforceable home** (region line,
+   rules file, or skill pointer) **plus its companion entries** (index line + ledger entry), each
+   actually present. A missing companion is a FAIL — this is the check that catches an index line
+   pointing at a file that doesn't exist, or a rule with no ledger metadata.
+4. Waiver records and routed module content match the synthesis's waiver and module-selection
    elements one-for-one.
 
-This check is deterministic — ID presence and validity, not meaning. **Semantic fidelity of a
+This check is deterministic — ID presence and closure, not meaning. **Semantic fidelity of a
 stamped trace is judgment-grade residual risk**: a fabricated-but-plausible trace passes the
 string match. Flag suspected content↔intent mismatches in the fix list as advisory findings; the
 fidelity gates are the human checkpoints upstream (synthesis confirmation) and downstream (the
 acceptance gate's trace summary), not this scan.
 
-### Step 4: Tier and Waiver Checks
+### Step 5: Tier and Waiver Checks
 
-- Governance Tier section present: named tier, graduation path, trace stamp.
+- Ledger carries the declared tier, graduation path, trace; the region stamp's tier matches.
 - Every Essential Floor category has a principle **or a recorded waiver** — in any mode.
 - Every waiver carries: category, waiving tier, revisit trigger, trace. A waiver at a
   tier whose posture forbids it (`production`/`regulated`) is a FAIL.
 - Thresholds and gate strictness consistent with the declared tier, or covered by a recorded
   session override in the synthesis.
 
-### Step 5: Scan for Anti-Patterns
+### Step 6: Scan for Anti-Patterns
 
 Compare against [references/ANTI-PATTERNS.md](references/ANTI-PATTERNS.md). Common failures:
 
@@ -95,9 +122,10 @@ Compare against [references/ANTI-PATTERNS.md](references/ANTI-PATTERNS.md). Comm
 | Placeholder syndrome | Contains `[PLACEHOLDER]`, `[COMMAND]`, `[THRESHOLD]` syntax |
 | Generic thresholds | Says "coverage must be measured" instead of "coverage ≥80%" |
 
-### Step 6: Verify No Placeholders
+### Step 7: Verify No Placeholders
 
-This is the most commonly rationalized check. Search the entire document for:
+This is the most commonly rationalized check. Search **every member of the set** (region, every
+rules file, ledger, manifest) for:
 
 - `[PLACEHOLDER]`
 - `[COMMAND]`
@@ -106,9 +134,9 @@ This is the most commonly rationalized check. Search the entire document for:
 - `GI-XXX` (an unfilled trace stamp is a placeholder)
 - Any `[BRACKETED_TEXT]` pattern
 
-**No exceptions.** A constitution with placeholders is not ready for validation sign-off.
+**No exceptions.** A surface set with placeholders is not ready for validation sign-off.
 
-### Step 7: Determine Version Bump
+### Step 8: Determine Version Bump
 
 | Bump | Trigger | Example |
 |------|---------|---------|
@@ -116,7 +144,7 @@ This is the most commonly rationalized check. Search the entire document for:
 | **MINOR** | New principle added or significant expansion; waiver added/removed | Adding "Observability" principle; un-waiving Testing |
 | **PATCH** | Clarification or non-semantic change | Rewording for clarity; typo fixes; formatting |
 
-### Step 8: Document Validation Result
+### Step 9: Document Validation Result
 
 Produce explicit validation verdict:
 
@@ -124,8 +152,9 @@ Produce explicit validation verdict:
 VALIDATION RESULT: [PASS/FAIL]
 
 Checklist items: [X/Y passed] (core + [N] module fragments: [names])
-Traceability: [principles traced X/X · synthesis elements realized-or-flagged Y/Y · waivers matched · modules matched]
-Tier/floor accounting: [tier declared · floor categories principled/waived, e.g. 3 principled + 1 waived]
+Surface integrity: [region markers OK · index→home resolution X/X · rules files paths-scoped Y/Y · universal-in-rules violations: none/list]
+Trace closure: [manifest rows closed X/X (primary home + companions) · synthesis elements realized-or-flagged Y/Y · waivers matched · modules matched]
+Tier/floor accounting: [tier declared (region stamp = ledger) · floor categories principled/waived, e.g. 3 principled + 1 waived]
 Anti-patterns found: [list or "none"]
 Version bump: [MAJOR/MINOR/PATCH] (if changes made)
 

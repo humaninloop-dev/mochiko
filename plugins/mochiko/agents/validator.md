@@ -7,7 +7,7 @@ description: |
 
   <example>
   Context: A finished constitution needs an independent quality grade before it is accepted.
-  user: "Grade .mochiko/memory/constitution.md against the constitution quality checklist. Read the file itself; default FAIL."
+  user: "Grade the governance surface set (CLAUDE.md governance region, .claude/rules/mochiko/, .mochiko/memory/governance-ledger.md) against the governance quality checklist. Read the files themselves; default FAIL."
   assistant: "I'll Read the constitution and grade it — Three-Part Rule, anti-pattern and placeholder scans, quantification, version-bump — and return a binary PASS/FAIL with a fix list."
   <commentary>
   Independent grading of a finished artifact against an explicit checklist is the validator's core work.

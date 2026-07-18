@@ -3,11 +3,12 @@ GOVERNANCE INTENT — the session synthesis (fill target)
 ========================================================
 Written by the /mochiko:setup lead at the close of the interrogation session and ratified at the
 synthesis-confirmation checkpoint BEFORE any authoring. Lives durably at
-`.mochiko/memory/governance-intent.md`, beside the constitution it governs.
+`.mochiko/memory/governance-intent.md`, beside the governance ledger of the surface set it
+governs (there is no constitution.md — governance lands on native surfaces).
 
-This artifact is a TRACEABLE CONTRACT on the constitution producer, not a brief:
-- Every principle in the authored constitution MUST trace to exactly one element here
-  (its GI-ID), and every principle-bearing element here MUST be realized in the constitution
+This artifact is a TRACEABLE CONTRACT on the surface-set producer, not a brief:
+- Every principle in the authored surface set MUST trace to exactly one element here
+  (its GI-ID), and every principle-bearing element here MUST be realized on a surface
   or surfaced as a flagged proposal at the acceptance gate.
 - Producer latitude is confined to FORMULATION (wording, enforcement mechanics, three-part
   structure with real commands) — never SELECTION.
@@ -28,7 +29,7 @@ retired ID.
 
 **Session date:** [YYYY-MM-DD] · **Mode:** [greenfield | brownfield | amend]
 **Confirmed at synthesis checkpoint:** [YYYY-MM-DD] by [user]
-**Governs:** `.mochiko/memory/constitution.md` v[X.Y.Z]
+**Governs:** the governance surface set v[X.Y.Z] (CLAUDE.md governance region · `.claude/rules/mochiko/` · `.mochiko/memory/governance-ledger.md`)
 
 ## Tier declaration
 

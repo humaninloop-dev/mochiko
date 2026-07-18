@@ -8,6 +8,12 @@ One entry per session directory under `.mochiko/brainstorms/<topic-slug>/`, **ne
 
 ---
 
+## `constitution-native-surfaces` — replacing constitution.md with native context surfaces
+- **When:** 2026-07-18 · **Status:** accepted · record cold-reviewed (pair per sizing gate: 16 raised → 8 merged survivors → 8/8 dispositioned, verify pass PASS incl. 2 propagation fixes)
+- **Artifacts:** [record.md](constitution-native-surfaces/record.md) (canonical)
+- **About:** `constitution.md` dissolves entirely into native Claude Code surfaces: `CLAUDE.md` becomes the thin ratified core (stamp, index, universal principles as short lines, stack, gates summary) inside a marked setup-owned governance region; scope-bound principles go to `paths`-scoped `.claude/rules/`; procedure to skills; governance ledger + Three-Part metadata to `.mochiko/memory/` (D1–D8). Grounded by a fact-checker map (docs + repo), an inheritance check, and an empirical rules-delivery probe (negative → universal principles retreated into CLAUDE.md). Second thread (dogfood setup ran subagents, not teams) dispositioned as an out-of-scope defect (D7).
+- **Landed:** ROADMAP Key Decisions (constitution-dissolution row, 2026-07-18); BACKLOG (D7 substrate-defect item); build started same day — setup v3 rewrite adopting the brainstorm command's team system (post-acceptance user ruling, ROADMAP Decision Trail).
+
 ## `setup-operating-docs-scaffolding` — setup scaffolds the operating-docs layer
 - **When:** 2026-07-17 · **Status:** accepted · record cold-reviewed (single reviewer per sizing gate: 12 findings → 9 survivors → 9/9 dispositioned, verify pass PASS) · **built 2026-07-17 at plugin v0.8.0**
 - **Artifacts:** [record.md](setup-operating-docs-scaffolding/record.md) (canonical) · [synthesis.md](setup-operating-docs-scaffolding/synthesis.md) (post-acceptance digest, fidelity-checked PASS)

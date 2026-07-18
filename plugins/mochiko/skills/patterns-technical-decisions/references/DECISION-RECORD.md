@@ -140,12 +140,13 @@ D1 (JWT auth)
   → API contract includes /auth/refresh
 ```
 
-## Constitution Alignment
+## Governance Alignment
 
-Document how decisions align with the project constitution (`.mochiko/memory/constitution.md`):
+Document how decisions align with the project's governance (the CLAUDE.md governance region and
+its `.claude/rules/mochiko/` files):
 
 ```markdown
-### Constitution Alignment
+### Governance Alignment
 
 | Principle | Alignment | Notes |
 |-----------|-----------|-------|
