@@ -1,69 +1,207 @@
 ---
-description: Create the analysis→design implementation plan via an independent producer→two-reviewer loop (technical-analyst authors; principal-architect grades feasibility, devils-advocate grades completeness) with a human acceptance gate on plan.md — governance-gated, default-FAIL, bounded, kernel-free.
+description: Create the analysis→design implementation plan via an independent producer→two-reviewer team loop — a standing technical-analyst seat authors the six analysis+design artifacts across two phases (Analysis then Design), a cold principal-architect seat grades cross-artifact feasibility once, a standing devils-advocate seat grades completeness across both phases, the user accepts plan.md at a named gate; governance-gated, two-phase, default-FAIL, bounded, kernel-free. Requires agent teams (CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS); refuses without them.
 disable-model-invocation: true
 ---
 
 # Plan — Implementation Plan (Analysis → Design)
 
-You are the **lead / supervisor** for producing a feature's implementation plan across two phases — Analysis then Design. You own the loop, the verdict, and the human gates. The six analysis+design artifacts are **authored** by `mochiko:technical-analyst` and independently graded by **two** reviewers: `mochiko:principal-architect` checks cross-artifact **feasibility** (can these pieces be built *together*?), `mochiko:devils-advocate` checks **completeness** (is anything missing?). Never let the producer grade its own output, and never collapse the two reviewers into the author. Each reviewer *recommends* a status; **you own the clearing verdict** — their status is input, never the gate.
+**Goal:** turn an accepted `spec.md` into an accepted `plan.md` — the six analysis+design
+artifacts (`requirements.md` · `constraints-and-decisions.md` · `nfrs.md` · `data-model.md` ·
+`contracts/api.yaml` · `quickstart.md`), authored across two phases and independently graded for
+**feasibility** (can these pieces be built *together*?) and **completeness** (is anything
+missing?) before the user accepts the assembled plan. `$ARGUMENTS` = optional feature ID or
+description; empty or detected-from-workspace is handled by triage below.
 
-This is a mochiko **sound loop**: invoke **`mochiko:loop-discipline`** and honor all four requirements (default-FAIL done-condition, independent validation, bounded iteration, named human gates), and brief each dispatch per **`agent-dispatch`**. Those rules are not restated here — this command states only what is specific to *this* workflow.
+**You are the lead**, and this is a **team-form command in the mochiko command shape**: Read
+`${CLAUDE_PLUGIN_ROOT}/templates/command-shape.md` (both layers) before anything else — the
+shape's rules bind here and are not restated; this file carries only plan's parameters. You own
+the loop (per-phase round counters, verdict, escalation) and every human gate. This is a
+`mochiko:loop-discipline` sound loop; the Contract section below is its authoring-time fill.
 
-**Argument:** `$ARGUMENTS` = optional feature ID or description; else the feature is detected from the workspace. Empty input (the known `@`-reference drop bug) is recovered in Phase 0.
+## Team-form parameters (shape Layer 2)
 
-## Contract parameters (fill the artifact — don't inline it)
+Hard-require `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS` per the shape. The **authoritative
+first-spawn probe** is the producer — always the first seat filled (Phase 1 produces before it
+reviews). Transport mechanics + the addressability check: `templates/agent-dispatch.md` (Seat
+transport). The no-fallback bet is the same `Contested` dogfood-pilot ruling as the other
+team-form commands.
 
-Fill `templates/workflow-contract.md` → `.mochiko/specs/<feature>/plan-contract.md` with the values below, then confirm it against `mochiko:loop-discipline`. The filled artifact is the inspectable proof — not this command body.
+## Session constraints
 
-- **Done-condition** — starts FAILing; clears only when **(1)** all six artifacts exist (`requirements.md` · `constraints-and-decisions.md` · `nfrs.md` · `data-model.md` · `contracts/api.yaml` · `quickstart.md`), **(2)** `principal-architect` returns `feasible` on the Phase-1 analysis **and** `devils-advocate` returns `ready` on both phases, each grounded in the files, **(3)** *you* Read the artifacts + both reviewer reports and confirm no blocking gap remains, **and (4)** the Phase-4 human acceptance on `plan.md` has cleared. Out of rounds = escalate, never done.
-- **Team** — producer `mochiko:technical-analyst` (`authoring-technical-requirements`, `patterns-technical-decisions`, `patterns-entity-modeling`, `patterns-api-contracts`) authors both phases, never grades; feasibility reviewer `mochiko:principal-architect` (`review-feasibility`) and completeness reviewer `mochiko:devils-advocate` (`review-plan-artifacts`) grade from the files, never author. Disjoint agents and skills — two independent reviewers, neither the producer.
-- **Bounds** — cap **3** produce↔review rounds per phase (you count); no-progress exit when a reviewer's gap set is unchanged round-over-round; kill-switch `.mochiko/specs/<feature>/PLAN_STOP` checked before each dispatch.
-- **Gates** — G1 input recovery · G2 feasibility-rejection · G3 clarification (incl. the "Research this" knowledge-gap branch) · G4 exit-early offering · G5 plan.md acceptance · escalation on any guard trip.
+- Workspace: resolve `<feature>` (an explicit ID from `$ARGUMENTS`, else the most recent
+  in-progress feature under `.mochiko/specs/`); seed `.mochiko/specs/<feature>/`. The deliverables
+  live alongside the spec they plan.
+- Kill-switch: stop and escalate if `.mochiko/specs/<feature>/PLAN_STOP` exists — check before
+  each seat send.
+- **Deliverables & IDs:** the six artifacts (`requirements.md` FR→TR · `constraints-and-decisions.md`
+  C-XXX/D-XXX/IP-XXX · `nfrs.md` NFR-XXX · `data-model.md` entities + sensitivity ·
+  `contracts/api.yaml` OpenAPI + `x-integration` · `quickstart.md`) + the assembled `plan.md`,
+  authored per the producer's skills and `templates/plan-template.md` — no placeholder tokens. The
+  producer's self-disclosure is `techanalyst-report.md` (from
+  `templates/techanalyst-report-template.md`) — its Assumptions / Open Questions are the
+  producer-authored uncertainty carrier (the shape's producer-authored branch), not confidence
+  marks. Feasibility findings live in `feasibility-report.md`, completeness gaps in
+  `advocate-report.md`.
 
-> Why this done-condition differs from HIL's: HIL declared "no hard caps" and routed on each agent's verdict *field* — it could self-declare done at pass 1, violating `loop-discipline` reqs 1 & 3. The two reviewers' three-state statuses survive only as input to your verdict; the deterministic cap and the new G5 acceptance gate close the gates HIL lacked.
+## The seats
+
+- **producer** — `mochiko:technical-analyst` (`authoring-technical-requirements`,
+  `patterns-technical-decisions`, `patterns-entity-modeling`, `patterns-api-contracts`), one
+  **named standing seat across both phases**. Phase 1: author `requirements.md`,
+  `constraints-and-decisions.md`, `nfrs.md`; Phase 2: author `data-model.md`, `contracts/api.yaml`,
+  `quickstart.md` (+ `techanalyst-report.md` each round) — the standing seat carries the Phase-1
+  analysis rationale into the Phase-2 design rather than reconstructing it from the files. Brief it
+  per `agent-dispatch`: `spec.md`, the governance obligated-read line (per the prerequisite), the
+  brownfield analysis when present, the templates to fill per its skills. Round > 1 within a phase
+  is a message to the same seat carrying the reviewers' gap list verbatim (fix the flagged gaps;
+  don't regress passing sections). It never grades.
+- **feasibility reviewer** — `mochiko:principal-architect` (`review-feasibility`), spawned **cold
+  after the Phase-1 analysis is authored**, never in contact with the producer. Grade cross-artifact
+  feasibility from the files → `feasibility-report.md` (three-state `feasible` / `needs-revision` /
+  `infeasible`). It grades **once**; re-fire it (a message to the same seat) **only on a structural
+  change** — new/changed constraints, expanded requirement scope, or modified NFR targets. It never
+  grades Phase 2 (the completeness reviewer carries cross-artifact consistency there). Its output is
+  **lead-adjudicated input** (the `review-*` family boundary).
+- **completeness reviewer** — `mochiko:devils-advocate` (`review-plan-artifacts`), spawned **cold at
+  the first completeness review**, never in contact with the producer, one **named standing seat
+  across both phases**. Phase 1: grade completeness / coverage / consistency from the files →
+  `advocate-report.md` (`ready` / `needs-revision` / `critical-gaps`). Phase 2: a message to the
+  same seat in **incremental mode** — a full review of the new design artifacts plus a brief
+  consistency check back to the Phase-1 analysis (the `review-plan-artifacts` incremental procedure);
+  you select the mode and supply the {new design}/{prior analysis} artifact sets. Its retained
+  Phase-1 context is what makes the Phase-2 consistency check incremental rather than a full re-read.
+  Round > 1 within a phase is a message to the same seat: re-Read the revised files. Its output is
+  **lead-adjudicated input**; there is no sized end-stage review — the bounded in-loop critique is
+  this workflow's independent validation (declared in the Contract).
 
 ## Phase 0 — Prerequisites & entry triage  *(human gate G1)*
 
-1. **Capture** `$ARGUMENTS`; resolve `<feature>` (an explicit ID, else the most recent in-progress feature under `.mochiko/specs/`). If empty (the `@`-reference drop bug), recover via **G1**: ask the user to re-enter, or to confirm the detected feature.
-2. **Governance prerequisite.** Check `CLAUDE.md` for the mochiko governance region (`<!-- mochiko:governance:begin -->`). Present → governance reaches every spawned producer natively; add to the producer's brief the **one-line obligated read** naming the `.claude/rules/mochiko/` files and skills relevant to what it authors (`paths`-scoped rules don't fire for from-scratch authoring). Missing → do **not** silently proceed; surface it (offer `/mochiko:setup` first). Never auto-resolve.
-3. **Entry gate.** The spec must be done: `.mochiko/specs/<feature>/spec.md` present and accepted (workspace evidence — there is no context-file `status` to read). Missing → block and point the user to `/mochiko:specify`.
-4. **Brownfield check.** Read the declared project type from `.mochiko/memory/governance-intent.md`. Brownfield → require `.mochiko/memory/codebase-analysis.md` (missing → offer `/mochiko:setup` or proceed greenfield with a logged warning; >14d stale by file mtime → warn); greenfield → bypass. Carry the analysis into the producer's brief when present.
-5. **Slice-scoped entry (graduation slices).** If `.mochiko/specs/<feature>/slices.md` exists (accepted), the run is **slice-scoped** — honor that file's own **Graduation contract** section (the single source of the consumption rules; do not restate it). Resolve `<slice>` (named in `$ARGUMENTS`, else the first slice in Slice-order lacking `slices/<slice>/plan.md`) and check the **staleness guard**: the live `spec.md` story-ID set must match the Spec stamp — mismatch → block and point to `/mochiko:slice`. **Scope** = the slice's stories **plus its extend obligations**, nothing else; a producer designing beyond them is a scope gap → **G4**. **Extend-mode**: the shared feature-root artifacts are brownfield input the producer extends in place — never re-derives, never forks per-slice copies; a **breaking** change to design an earlier slice already shipped is a graded amendment — an explicit `[MODIFY]` design change surfaced for this round's reviews with its migration flagged for this slice's task breakdown, never a silent rewrite. Per-slice outputs (`plan.md` · the round reports · the filled contract) go under `slices/<slice>/`, and the done-condition's artifact set reads: the six shared artifacts extended at the feature root + `slices/<slice>/plan.md`. Brief each reviewer with the artifact sets {this slice's extensions + its `plan.md`} / {the prior accumulated artifacts}, so the extension is graded against what earlier slices established.
+1. **Capture** `$ARGUMENTS`; resolve `<feature>` (an explicit ID, else the most recent in-progress
+   feature under `.mochiko/specs/`). If empty (the `@`-reference drop bug), recover via **G1**: ask
+   the user to re-enter, or to confirm the detected feature.
+2. **Governance prerequisite.** Check `CLAUDE.md` for the mochiko governance region
+   (`<!-- mochiko:governance:begin -->`). Present → governance reaches the producer natively at
+   spawn; add to its brief the **one-line obligated read** naming the `.claude/rules/mochiko/` files
+   and skills relevant to what it authors (`paths`-scoped rules don't fire for from-scratch
+   authoring). Missing → do **not** silently proceed; surface it (offer `/mochiko:setup` first).
+   Never auto-resolve.
+3. **Entry gate.** The spec must be done: `.mochiko/specs/<feature>/spec.md` present and accepted
+   (workspace evidence). Missing → block and point the user to `/mochiko:specify`.
+4. **Brownfield check.** Read the declared project type from `.mochiko/memory/governance-intent.md`.
+   Brownfield → require `.mochiko/memory/codebase-analysis.md` (missing → offer `/mochiko:setup` or
+   proceed greenfield with a logged warning; >14d stale by file mtime → warn); greenfield → bypass.
+   Carry the analysis into the producer's brief when present.
+5. **Slice-scoped entry (graduation slices).** If `.mochiko/specs/<feature>/slices.md` exists
+   (accepted), the run is **slice-scoped** — apply that file's own **Graduation contract** section for
+   slice resolution, the staleness guard, scope (= the slice's stories + its extend obligations),
+   extend-mode, graded amendment, and artifact layout; do not restate those rules here (the Graduation
+   contract is their single home). **plan's own bindings on top:** a producer designing beyond scope is
+   a scope gap → **G4**; a `[MODIFY]` graded amendment is surfaced for this round's reviews with its
+   migration flagged for this slice's task breakdown; per-slice `plan.md` + round reports land under
+   `slices/<slice>/`, so the done-condition's artifact set reads the six shared artifacts (extended at
+   the feature root) + `slices/<slice>/plan.md`; brief each reviewer with the artifact sets {this
+   slice's extensions + its `plan.md`} / {the prior accumulated artifacts}, so the extension is graded
+   against what earlier slices established.
 
 ## Phase 1 — Analysis loop  *(you own the round counter and the verdict)*
 
-Seed `.mochiko/specs/<feature>/`; `round = 1`; the analysis is FAIL until proven. The architect grades feasibility **once**, after the analysis is authored — not in Phase 2 (don't spend a completeness pass on infeasible requirements).
+`round = 1`; the analysis is FAIL until proven. The architect grades feasibility **once**, after the
+analysis is authored — not in Phase 2 (don't spend a completeness pass on infeasible requirements).
 
-1. **Produce.** Dispatch `mochiko:technical-analyst` to author `requirements.md` (FR→TR mapping), `constraints-and-decisions.md` (Part 3 = IP-XXX infrastructure), and `nfrs.md` (+ `techanalyst-report.md`), briefed per `agent-dispatch`: `spec.md`, the governance obligated-read line (per the prerequisite), the brownfield analysis when present, and — on round > 1 — the reviewers' gap list for targeted revision (fix flagged gaps; don't regress passing sections).
-2. **Feasibility (architect, once).** Dispatch `mochiko:principal-architect` to grade cross-artifact feasibility from the files → `feasibility-report.md` (three-state `feasible` / `needs-revision` / `infeasible`).
-3. **Completeness (advocate).** Dispatch `mochiko:devils-advocate` to grade completeness / coverage / consistency from the files → `advocate-report.md` (`ready` / `needs-revision` / `critical-gaps`).
-4. **Verdict (you).** Read the artifacts + both reports. `feasible` **and** `ready` **and** you find no blocking gap → Phase 2. Otherwise classify each finding and route it per `loop-discipline`'s gap-routing (knowledge → native `Explore`, the "Research this" branch in G3; preference → G2/G3; scope → G4): architect concerns → **G2**; advocate gaps → **G3**; architect `infeasible` → escalate as a business-level scope decision, not a routine revision. Then apply the bounds (increment `round`; cap / no-progress / kill-switch → **G4** / escalate) and loop to step 1. **Re-run the architect (step 2) only on a structural change** — new/changed constraints, expanded requirement scope, or modified NFR targets; a clarification-only revision goes straight back to step 3.
+1. **Produce.** The producer authors `requirements.md` (FR→TR mapping), `constraints-and-decisions.md`
+   (Part 3 = IP-XXX infrastructure), and `nfrs.md` (+ `techanalyst-report.md`); on round > 1 the
+   message carries the reviewers' gap list for targeted revision (fix flagged gaps; don't regress
+   passing sections). The round-1 spawn is the authoritative probe — confirm addressability.
+2. **Feasibility (architect, once).** The feasibility reviewer, cold, grades cross-artifact
+   feasibility from the files → `feasibility-report.md`.
+3. **Completeness (advocate).** The completeness reviewer, cold at first review, grades completeness /
+   coverage / consistency from the files → `advocate-report.md`.
+4. **Verdict (you).** Read the artifacts + both reports. `feasible` **and** `ready` **and** you find
+   no blocking gap → Phase 2. Otherwise classify each finding and route it per `loop-discipline`'s
+   gap-routing (knowledge → native `Explore`, the "Research this" branch in G3; preference → G2/G3;
+   scope → G4): architect concerns → **G2**; advocate gaps → **G3**; architect `infeasible` →
+   escalate as a business-level scope decision, not a routine revision. Then apply the bounds
+   (increment `round`; cap / no-progress / kill-switch → **G4** / escalate) and loop to step 1.
+   **Re-run the architect (step 2) only on a structural change** — new/changed constraints, expanded
+   requirement scope, or modified NFR targets; a clarification-only revision goes straight back to
+   step 3.
 
 ## Phase 2 — Design loop  *(incremental review; you own the round counter)*
 
-`round = 1`; the design is FAIL until proven. No architect re-review here — the advocate carries cross-artifact consistency in incremental mode.
+`round = 1`; the design is FAIL until proven. No architect re-review here — the advocate carries
+cross-artifact consistency in incremental mode.
 
-1. **Produce.** Dispatch `mochiko:technical-analyst` to author `data-model.md` (entities + sensitivity annotations), `contracts/api.yaml` (OpenAPI + `x-integration` boundaries), and `quickstart.md` (+ `techanalyst-report.md`), briefed per `agent-dispatch` with the Phase-1 analysis as input and the design-phase skills (`patterns-entity-modeling`, `patterns-api-contracts`).
-2. **Incremental review (advocate).** Dispatch `mochiko:devils-advocate` in **incremental mode** — a full review of the new design artifacts plus a brief consistency check back to the Phase-1 analysis (the `review-plan-artifacts` incremental procedure); you select the mode and supply the {new design}/{prior analysis} artifact sets → `advocate-report.md`.
-3. **Verdict (you).** Read the design artifacts + report. `ready` and no blocking gap → Phase 3. Otherwise route gaps per `loop-discipline` (→ **G3**), apply the bounds (cap / no-progress / kill-switch → **G4** / escalate), and loop to step 1.
+1. **Produce.** The producer authors `data-model.md` (entities + sensitivity annotations),
+   `contracts/api.yaml` (OpenAPI + `x-integration` boundaries), and `quickstart.md` (+
+   `techanalyst-report.md`), carrying its Phase-1 analysis context forward.
+2. **Incremental review (advocate).** Message the completeness reviewer in **incremental mode** — a
+   full review of the new design artifacts plus a brief consistency check back to the Phase-1
+   analysis (the `review-plan-artifacts` incremental procedure); you select the mode and supply the
+   {new design}/{prior analysis} artifact sets → `advocate-report.md`.
+3. **Verdict (you).** Read the design artifacts + report. `ready` and no blocking gap → Phase 3.
+   Otherwise route gaps per `loop-discipline` (→ **G3**), apply the bounds (cap / no-progress /
+   kill-switch → **G4** / escalate), and loop to step 1.
 
-**Mid-loop gates (both phases).** **G2** feasibility-rejection: present the architect's concerns and let the user accept-resolution / relax / keep-as-is / give-direction. **G3** clarification: present a reviewer's gaps, take answers (logged in-session), and feed them into the next produce — a "Research this" answer routes the knowledge gap to native `Explore` (per `loop-discipline`), never to the user. **G4** exit-early / escalation: on a guard trip or stalled gaps, present the last findings and let the user continue-refining / accept-with-noted-gaps / stop-and-review — the run stays FAIL unless the human explicitly accepts. None of these ends the loop on its own.
+**Mid-loop gates (both phases).** **G2** feasibility-rejection: present the architect's concerns and
+let the user accept-resolution / relax / keep-as-is / give-direction. **G3** clarification: present a
+reviewer's gaps, take answers (logged in-session), and feed them into the next produce — a "Research
+this" answer routes the knowledge gap to native `Explore` (per `loop-discipline`), never to the user.
+**G4** exit-early / escalation: on a guard trip or stalled gaps, present the last findings and let the
+user continue-refining / accept-with-noted-gaps / stop-and-review — the run stays FAIL unless the
+human explicitly accepts. None of these ends the loop on its own.
 
 ## Phase 3 — Assemble plan.md
 
-After both verdicts clear, assemble the `plan.md` deliverable from `templates/plan-template.md`: extract the key decisions from `constraints-and-decisions.md`, the entity summary (with sensitivity) from `data-model.md`, and the endpoint summary (with integrations) from `contracts/api.yaml`. `plan.md` is the lead's fill-target — a summary over the validated artifacts, not new design.
+After both verdicts clear, assemble the `plan.md` deliverable from `templates/plan-template.md`:
+extract the key decisions from `constraints-and-decisions.md`, the entity summary (with sensitivity)
+from `data-model.md`, and the endpoint summary (with integrations) from `contracts/api.yaml`.
+`plan.md` is the lead's fill-target — a summary over the validated artifacts, not new design.
 
 ## Phase 4 — plan.md acceptance  *(human gate G5)*
 
-Reachable only after your clearing verdict. Present the validated plan (decision / entity / endpoint counts, any noted limitations) and ask the user to **accept** (→ Phase 5; the done-condition is now satisfied), **amend** (re-enter the relevant phase with the changes as the gap list — still bounded; it must clear a verdict again), or **reject** (abort; the drafts remain under `.mochiko/specs/<feature>/`).
+Reachable only after your clearing verdict. Present the validated plan (decision / entity / endpoint
+counts, any noted limitations) and ask the user to **accept** (→ Phase 5; the done-condition is now
+satisfied), **amend** (re-enter the relevant phase with the changes as the gap list — still bounded;
+it must clear a verdict again), or **reject** (abort; the drafts remain under
+`.mochiko/specs/<feature>/`).
 
 ## Phase 5 — Finalize
 
-Report the artifacts (the six deliverables + `plan.md` + the three round reports `techanalyst-report.md` / `feasibility-report.md` / `advocate-report.md`), the per-phase round counts, the decision / entity / endpoint counts, a suggested commit (`docs: plan <feature>`), and the next step (`/mochiko:tasks`). Offer a lightweight retain/clean choice for the intermediate round reports; never offer to delete `plan.md` or the six artifacts — they are the deliverables.
+Report the artifacts (the six deliverables + `plan.md` + the three round reports
+`techanalyst-report.md` / `feasibility-report.md` / `advocate-report.md`), the per-phase round
+counts, the decision / entity / endpoint counts, a suggested commit (`docs: plan <feature>`), and
+the next step (`/mochiko:tasks`). Offer a lightweight retain/clean choice for the intermediate round
+reports; never offer to delete `plan.md` or the six artifacts — they are the deliverables.
+
+## Contract (authoring-time fill — governed by `mochiko:loop-discipline`)
+
+- **Done-condition:** default **FAIL**; clears only when **(1)** all six artifacts exist
+  (`requirements.md` · `constraints-and-decisions.md` · `nfrs.md` · `data-model.md` ·
+  `contracts/api.yaml` · `quickstart.md`), **(2)** `principal-architect` returns `feasible` on the
+  Phase-1 analysis **and** `devils-advocate` returns `ready` on both phases, each grounded in the
+  files, **(3)** *you* Read the artifacts + both reviewer reports and confirm no blocking gap remains
+  (each reviewer's status is input, never the gate), **and (4)** the Phase-4 human acceptance on
+  `plan.md` has cleared. Out of rounds = escalate, never done.
+- **Producer ↔ validator:** `technical-analyst` (authoring-technical-requirements,
+  patterns-technical-decisions, patterns-entity-modeling, patterns-api-contracts) authors both
+  phases, never grades; **two independent reviewers**, neither the producer — `principal-architect`
+  (review-feasibility) grades feasibility, `devils-advocate` (review-plan-artifacts) grades
+  completeness — from the files, never authoring. Disjoint agents, disjoint skills, structurally
+  separated (both reviewers cold-spawned, gap lists lead-routed, no producer↔reviewer contact).
+  **Validation model:** the bounded in-loop critique — every round, unsized by design; no sized
+  end-stage review (the shape's in-loop-critique branch).
+- **Bounds:** cap **3** produce↔review rounds **per phase** (you count); no-progress exit when a
+  reviewer's gap set is unchanged round-over-round; kill-switch `PLAN_STOP` checked before each seat
+  send; a G5 amend re-enters the relevant bounded phase.
+- **Human gates:** G1 input recovery + governance / entry / brownfield surface · G2
+  feasibility-rejection · G3 clarification (incl. the "Research this" knowledge-gap branch) · G4
+  exit-early / escalation · G5 `plan.md` acceptance · escalation on any guard trip.
 
 ## State recovery
 
-Resume from workspace evidence (there is no context-file `phase`/`status`):
+Pause posture (per the shape): note the resume stage on the deliverable. Resume from workspace
+evidence, respawning what the stage needs — a respawned producer re-reads the artifacts + the gap
+list; a reviewer respawn is cold by design:
 
 | Evidence in the workspace | Resume at |
 |---------------------------|-----------|
@@ -81,4 +219,11 @@ Resume from workspace evidence (there is no context-file `phase`/`status`):
 
 ---
 
-**What you own (not the agents):** the two-phase sequence (Analysis → Design) and the per-phase loop (round counter, no-progress check, cap, kill-switch, escalation); the verdict (each reviewer grades from the files, you Read the artifacts and decide against the default-FAIL done-condition — their status is input); the architect-feasibility-once-then-advocate ordering and the skip-architect-unless-structural routing; the Phase-2 incremental mode selection; the human gates (G1–G5); the governance / entry / brownfield prerequisites; `plan.md` assembly; verifying each dispatch actually wrote its expected files (a missing output → log and ask retry/abort); and never letting the producer grade its own output or the two reviewers collapse into the author. Stay kernel-free; brief agents per `agent-dispatch`; always dispatch via the Task tool (never inline agent behavior); do not modify git or push. Full rules: `mochiko:loop-discipline`.
+**What you own (not the seats):** the two-phase sequence (Analysis → Design) and the per-phase loop
+(round counter, no-progress check, cap, kill-switch, escalation); the verdict against the
+default-FAIL done-condition; the architect-feasibility-once-then-advocate ordering and the
+skip-architect-unless-structural routing; the Phase-2 incremental mode selection; the human gates
+(G1–G5); the governance / entry / brownfield prerequisites; `plan.md` assembly; verifying each seat
+actually wrote its expected files (a missing output → log and ask retry/abort); and never letting the
+producer grade its own output or the two reviewers collapse into the author. Full rules:
+`mochiko:loop-discipline`.

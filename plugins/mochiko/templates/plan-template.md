@@ -1,6 +1,6 @@
 # Implementation Plan: [FEATURE]
 
-**Branch**: `[###-feature-name]` | **Date**: [DATE] | **Spec**: [link]
+**Feature**: `[feature-slug]` | **Date**: [DATE] | **Spec**: [link]
 **Input**: Feature specification from `.mochiko/specs/<feature>/spec.md`
 
 ## Summary

@@ -131,7 +131,7 @@ Before finalizing:
 - [ ] Context explains WHY decision is needed
 - [ ] Rationale connects to specific criteria
 - [ ] Trade-offs explicitly documented
-- [ ] Constitution alignment checked
+- [ ] Governance alignment checked
 - [ ] Dependencies between decisions mapped
 
 ## Common Mistakes
@@ -160,6 +160,6 @@ Before finalizing:
 ❌ Decisions documented in isolation
 ✅ Map decision dependencies: "D2 (session storage) depends on D1 (auth mechanism)"
 
-### Constitution Blindness
+### Governance Blindness
 ❌ Making decisions that violate project principles
-✅ Check alignment with constitution before finalizing
+✅ Check alignment with the project governance before finalizing

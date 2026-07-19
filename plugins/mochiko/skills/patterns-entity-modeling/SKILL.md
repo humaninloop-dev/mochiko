@@ -222,7 +222,7 @@ This is the **single canonical `data-model.md` template**. Every attribute carri
 | **Public** | Freely shareable, no access controls needed | Product names, public profile info |
 | **Internal** | Organization-internal, basic access controls | Transaction IDs, internal status codes |
 | **Confidential** | Sensitive, role-based access required | Email addresses, billing addresses, standard PII |
-| **Restricted** | Highly sensitive, strict access and audit | Passwords, SSNs, payment card numbers |
+| **Restricted** | Highly sensitive, strict access and audit | Passwords, SSNs, payment card numbers, credentials |
 
 ---
 
