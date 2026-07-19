@@ -67,7 +67,17 @@ Route each synthesis element by its scope; the routing IS part of formulation qu
   for every spawn path).
 - **Scope-bound** (governs work on a path-identifiable slice: layers, API surface, tests,
   frontend) → a **`paths`-scoped rules file** under `.claude/rules/mochiko/`, one concern per
-  file, operative rules in the body, `paths` globs honest to the concern.
+  file, operative rules in the body, `paths` globs honest to the concern. Honest cuts both ways:
+  the globs must cover **every path whose code can violate the concern** — including layers that
+  orchestrate the governed operation through ports/interfaces — not just the layer that
+  implements the mechanism. Test each glob set against the kept architecture card, layer by
+  layer: "could code in this layer violate this rule?" — yes → its glob belongs in `paths`.
+- **Scope-bound delivery caveat** (observed, kinako dogfood 2026-07-19): rules files inject on
+  **Read** of a matching file, not on Write — an agent creating a new file under a scoped path
+  never sees the rule, which is exactly the greenfield-scaffolding case. Whenever the set
+  includes any rules file, emit the standing new-file read line in the region's Governance
+  operations (per the template), naming the actual scoped paths. Word it as observed behavior,
+  not doctrine — platform delivery may change.
 - **Procedure-shaped** (a how-to, not a constraint) → a **pointer to the skill** that carries the
   procedure; the index line names it. Mint a new skill only for a session-minted procedure.
 - **Every principle, regardless of home** → an **index line** in the region and a **ledger
@@ -139,6 +149,8 @@ Artifact shapes (region block, rules file, ledger):
 | Missing/fabricated trace stamps | Trace closure fails; or a plausible stamp hides a deviation | Key every ledger entry to its real GI source; deviations go through flagged proposals |
 | Fat governance region | A verbose region re-creates the always-on cost the dissolution exists to fix | Region entries stay short-form; detail lives in the ledger or behind pointers |
 | Universal principle in a rules file | Rules delivery to spawned producers is unproven; the principle silently misses authoring agents | Universal → CLAUDE.md region lines; rules files are for `paths`-scoped concerns only |
+| Rule scoped to the mechanism's home layer only | Layers that orchestrate the operation (e.g. application use cases persisting through ports) never trigger the rule | Run the per-layer violation test; every layer that can violate the concern gets a glob |
+| Rules files emitted without the new-file read line | Rules inject on Read, not Write — scaffolding writes governed code without ever seeing the rules | Emit the region's standing read-before-create line whenever any rules file exists |
 | Editing outside the markers | Setup clobbers user-authored CLAUDE.md content | Regenerate only the region; everything outside the markers is untouchable |
 | Index without a home, home without an index line | Trace closure fails; a principle exists nowhere or invisibly | Every principle = index line + primary home + ledger entry; write the trace summary as you author |
 | One tier's numbers in another tier's governance | A poc graded like production, or production loosened to poc | Take tier parameterization from the floor cards; honor session overrides |
@@ -241,7 +253,9 @@ Every governance set MUST include, per
    placeholder tokens); coverage pre-seeds tier-parameterized from the FLOOR-TEST card unless the
    session overrode them. Gates for waived categories are omitted; the waiver record covers the
    absence.
-6. **Scope-bound rules files**: per the routing; `paths` frontmatter honest to the concern.
+6. **Scope-bound rules files**: per the routing; `paths` frontmatter honest to the concern
+   (violation-coverage tested, per the routing's per-layer test). When any rules file is
+   emitted, the region's Governance operations carries the standing new-file read line.
 7. **Governance ledger**: tier + graduation path · waiver table (category, waiving tier, revisit
    trigger, trace; "None." when nothing is waived — waivers only at tiers whose posture permits,
    per [catalog/universal-floor.md](references/catalog/universal-floor.md)) · per-principle

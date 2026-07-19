@@ -41,5 +41,6 @@ structure and the project's actual conventions (brownfield: from codebase-analys
 - [ ] Layer Import Rules table present; every layer has MAY and MUST NOT columns filled
 - [ ] Import rules consistent with the kept architecture card's layer structure
 - [ ] Enforcement for layer rules names a real tool (import linter / CI rule), not "code review" alone at production+ tier
+- [ ] Every rules file whose concern a layer can violate (per the Import Rules table — including orchestration through ports) includes that layer in its `paths`
 - [ ] CLAUDE.md sync table carries a row for this module's content
 -->

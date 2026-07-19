@@ -59,6 +59,11 @@ bottom of that module's file in `templates/constitution-modules/`:
 - [ ] `evolution-notes` fragment (if selected — always selected in brownfield mode)
 - [ ] `knowledge-management` fragment (if selected — adopted whole; never check it against a synthesis that records a decline)
 
+## Rules-File Scope & Delivery (when any rules file exists)
+
+- [ ] Each rules file's `paths` globs cover every path whose code can violate the concern — per-layer violation test against the kept architecture card, not just the mechanism's home layer
+- [ ] The governance region carries the standing new-file read line (rules inject on Read, not Write — read the matching rules file, or read back the created file, before creating a file under a scoped path)
+
 ## No Placeholders Rule
 
 - [ ] Technology Stack has NO `[PLACEHOLDER]` syntax - all actual tool names

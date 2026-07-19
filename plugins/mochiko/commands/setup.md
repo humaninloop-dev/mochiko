@@ -176,7 +176,11 @@ suggested commit, next step (`/mochiko:specify`; when knowledge-management was a
 collision rulings, on the hard never-overwrite floor. Downstream delivery is native: CLAUDE.md
 (region included) loads for every session and spawned agent; dispatch briefs in downstream
 commands carry the **obligated read** for `paths`-scoped rules their producers won't trigger by
-reading.
+reading. When the accepted set includes rules files, **offer the injection probe** (optional —
+state the token cost): `mochiko:testing-governance-injection` empirically verifies delivery via
+disposable probe subagents over throwaway stubs at the scoped paths (unconditional cleanup);
+findings feed an amend run, and it re-runs standalone as a regression check after real scaffolds
+land.
 
 ## Contract (authoring-time fill — governed by `mochiko:loop-discipline`)
 

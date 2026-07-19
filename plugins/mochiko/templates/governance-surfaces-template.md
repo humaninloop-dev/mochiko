@@ -51,6 +51,7 @@ the ledger, module detail behind pointers.
 
 - Ledger (waivers · amendment policy · exceptions · Three-Part metadata): `.mochiko/memory/governance-ledger.md`
 - Amend via `/mochiko:setup` (tier bumps and un-waives are governance events)
+[- Path-scoped rules inject on **Read**, not Write (observed behavior, kinako dogfood 2026-07-19) — before creating a new file under [the actual scoped paths, e.g. `src/`, `tests/`], read the matching `.claude/rules/mochiko/` file or read back the file you created <!-- standing line: emit whenever the set includes any rules file -->]
 [- Operating docs (knowledge-management module): sessions in `.mochiko/brainstorms/` + `index.md`; rulings graduate to `ROADMAP.md`; threads land in `BACKLOG.md` <!-- GI-XXX -->]
 [- Release gates: [one-line summary] — detail in the ledger <!-- GI-XXX -->]
 <!-- mochiko:governance:end -->
@@ -58,8 +59,13 @@ the ledger, module detail behind pointers.
 
 # Shape 2 — a scope-bound rules file (`.claude/rules/mochiko/<concern>.md`)
 
-One concern per file. The `paths` globs must be honest to the concern — a glob that matches
-everything is a universal principle wearing a costume (those belong in the region).
+One concern per file. The `paths` globs must be honest to the concern — and honest cuts both
+ways: a glob that matches everything is a universal principle wearing a costume (those belong in
+the region), while globs that stop at the mechanism's home layer silently exempt code that can
+violate the concern. Cover **every path whose code can violate the rule** — including layers that
+orchestrate the governed operation through ports/interfaces, not just the layer that implements
+it (kinako dogfood 2026-07-19: storage invariants scoped to domain+infrastructure missed the
+application layer's use cases persisting through ports).
 
 ```markdown
 ---

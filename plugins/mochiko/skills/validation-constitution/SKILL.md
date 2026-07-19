@@ -66,6 +66,13 @@ fragments the synthesis did not select.
 - Every rules file carries `paths` frontmatter honest to its concern and operative rules in the
   body. **A universal principle homed in a rules file is a FAIL** (delivery to spawned producers
   is unproven; universal content belongs in the region).
+- **Scope coverage** (per rules file): the `paths` globs cover every path whose code can violate
+  the concern — cross-check against the layer-rules Import Rules table when that module is
+  attached (a layer that MAY invoke the governed operation but matches no glob is a fix-list
+  item), otherwise against the region's technology-stack and module pointers.
+- **New-file read line** (when any rules file exists): the region's Governance operations carries
+  the standing line — rules inject on Read, not Write; read the matching rules file (or read back
+  the created file) before creating a file under a scoped path. Absence is a fix-list item.
 
 ### Step 3: Check Each Principle (three-part, in the ledger)
 
@@ -152,7 +159,7 @@ Produce explicit validation verdict:
 VALIDATION RESULT: [PASS/FAIL]
 
 Checklist items: [X/Y passed] (core + [N] module fragments: [names])
-Surface integrity: [region markers OK · index→home resolution X/X · rules files paths-scoped Y/Y · universal-in-rules violations: none/list]
+Surface integrity: [region markers OK · index→home resolution X/X · rules files paths-scoped Y/Y · scope coverage Z/Z · new-file read line present/absent/n-a · universal-in-rules violations: none/list]
 Trace closure: [manifest rows closed X/X (primary home + companions) · synthesis elements realized-or-flagged Y/Y · waivers matched · modules matched]
 Tier/floor accounting: [tier declared (region stamp = ledger) · floor categories principled/waived, e.g. 3 principled + 1 waived]
 Anti-patterns found: [list or "none"]
