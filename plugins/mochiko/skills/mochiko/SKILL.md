@@ -30,7 +30,7 @@ The kernel-free successor to human-in-loop. Discipline lives in the skill librar
 `.mochiko/brainstorms/setup-adversarial-review/record.md` D5): the prefix encodes **who owns the
 clearing**. `validation-*` = the skill **issues the authoritative grade** — a binary PASS/FAIL
 checklist grade, default FAIL, on the `validator` persona (today: `validation-constitution`
-alone; its PASS is still human-gated downstream). `review-*` = the skill **produces
+and `validation-command-shape`; a PASS is still human-gated downstream). `review-*` = the skill **produces
 lead-adjudicated input** — severity-ranked findings and a *recommended* status that the lead or a
 human adjudicates; the reviewer's verdict never clears anything by itself.
 
@@ -42,6 +42,7 @@ human adjudicates; the reviewer's verdict never clears anything by itself.
 | `loop-discipline` | designing/reviewing any workflow or agent loop; deciding if a loop is sound; filling a `workflow-contract` |
 | `workflow-contract` (template) | instantiating the contract for a specific workflow |
 | `agent-dispatch` (template) | briefing each agent dispatch inside a loop — a caller-side guide, not a gate |
+| `command-shape` (template) | the codified command pattern's **sole authoritative home** (Layer 1 form-agnostic core · Layer 2 team transport) — obligated-read by conformant commands; referenced, never restated |
 
 ### Setup cluster (model-invoked — auto-reached during a `/mochiko:setup` run)
 | Skill | Reach when |
@@ -109,6 +110,12 @@ human adjudicates; the reviewer's verdict never clears anything by itself.
 
 > Downstream consumption is carried by the artifact itself: `/mochiko:plan`, `/mochiko:tasks`, and `/mochiko:implement` each carry a slice-scoped entry variant keyed to `slices.md` presence, honoring its Graduation contract. Feature-close execution of the Feature-Done section has no owning workflow yet (deferred to the `audit` scoping — see `BACKLOG.md`).
 
+### Framework maintenance (model-invoked — reached when authoring or auditing mochiko's own commands)
+| Skill | Reach when |
+|-------|------------|
+| `authoring-commands` | authoring a new `commands/*.md` supervisor in the codified command shape, converting an existing command's form (incl. one-shot → team-form, on recorded per-command grounds with a confirm-or-revert checkpoint), or running a minimalism/strip wave over a command cluster with version-stamped strip notes (`plugins/mochiko/strips/`); the `command-architect` producer's skill — references `command-shape.md`, never restates it |
+| `validation-command-shape` | independently grading a command's conformance to the shape — deterministic grep floor (references present, no restated single-sourced prose, exceptions marked, frontmatter) beneath a prose judgment ceiling (altitude, parameter completeness, contract-fill soundness), plus the strip-note audit at wave close → binary PASS/FAIL + fix list on the `validator` persona (never the author) |
+
 ### Entry point (user-invoked — you run it)
 | Command | Reach when |
 |---------|------------|
@@ -130,7 +137,8 @@ human adjudicates; the reviewer's verdict never clears anything by itself.
 | `task-architect` | **cross-workflow** PRODUCER — tasks-cluster (structures an accepted plan into `task-mapping.md` story→cycle mapping + `tasks.md` cycle-based TDD task list) **and** slice-cluster (decomposes an accepted spec into the `slices.md` graduation-slice overlay: foundation designation, dependency-closed ordering, Feature-Done declaration); never grades its own output (skills: patterns-vertical-tdd, authoring-slices) |
 | `staff-engineer` | implement-cluster PRODUCER — implements each cycle through red/green/refactor TDD and brownfield EXTEND/MODIFY integration; emits an honest `cycle-report.md`; never grades its own output; the verification skill is never mounted here (skills: executing-tdd-cycle, brownfield-integration) |
 | `qa-engineer` | implement-cluster VALIDATOR — independently verifies each cycle against real infrastructure (quality-gate exit codes + captured evidence), emits a verification report + checkpoint recommendation that feeds the lead's verdict; grades a different agent's work, mounts no producer skill (skills: testing-end-user) |
-| `validator` | one generic independent grader for any cluster — grades a finished artifact against a checklist, defaults to FAIL, authors nothing (skills: validation-constitution) |
+| `validator` | one generic independent grader for any cluster — grades a finished artifact against a checklist, defaults to FAIL, authors nothing (skills: validation-constitution, validation-command-shape) |
+| `command-architect` | **framework-facing producer** — authors new commands in the codified command shape, converts existing ones on recorded per-command grounds (team-form as the declared default preference; first-dogfood confirm-or-revert checkpoint), and first-passes strip waves (Tier-1 altitude proposals + drafted Tier-2 rationales + strip-note entries); never grades its own output — the `validator` audits via `validation-command-shape` (skills: authoring-commands) |
 
 ## Operating rules (context hygiene)
 

@@ -1,5 +1,6 @@
 ---
 description: Create a feature specification via an independent author→critic loop (requirements-analyst writes spec.md, devils-advocate stress-tests it) with a human acceptance gate — sparse input is enriched first; default-FAIL, bounded, kernel-free.
+disable-model-invocation: true
 ---
 
 # Specify — Feature Specification

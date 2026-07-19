@@ -88,8 +88,10 @@ just the vocabulary:
   alone doesn't distinguish teammates from subagents, per the docs). Not addressable → kill
   it and respawn, explicitly requesting an agent team.
 
-One-shot dispatch stays correct for the commands designed on it (specify/plan/tasks/
-implement) — this section binds only commands that hard-require teams. Defect history +
+One-shot dispatch remains the **rebuttable default** for the commands designed on it
+(specify/plan/tasks/implement) — team-form is the declared default *preference* pending each
+command's own conversion assessment (`.mochiko/brainstorms/pattern-codification-and-minimalism/record.md`,
+D2) — and this section binds only commands that hard-require teams. Defect history +
 ruling: `.mochiko/brainstorms/setup-v3-team-defect/record.md` (D1).
 
 **Briefing version:** v3 · **Governed by:** `loop-discipline` · **Pairs with:** `workflow-contract.md`

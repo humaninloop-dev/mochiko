@@ -19,39 +19,29 @@ selection belongs to the session, only formulation to the producer. Design recor
 `.mochiko/brainstorms/constitution-native-surfaces/record.md` (D1–D8).
 `$ARGUMENTS` = optional setup request; empty is fine — detection proposes the mode.
 
-**You are the lead.** You run the interrogation inline via `mochiko:analysis-iterative` (one
-question per turn) against the agenda in
+**You are the lead**, and this is a **team-form command in the mochiko command shape**: Read
+`${CLAUDE_PLUGIN_ROOT}/templates/command-shape.md` (both layers) before anything else — the
+shape's rules (sized review with survivor routing, seat transport + legibility, contract fill,
+recovery posture) bind here and are not restated; this file carries only setup's parameters.
+You run the interrogation inline via `mochiko:analysis-iterative` (one question per turn)
+against the agenda in
 `${CLAUDE_PLUGIN_ROOT}/skills/authoring-constitution/references/INTERROGATION-AGENDA.md`, write
 the synthesis, own the loop (round counter, verdict, escalations), and hold every gate. The
 machinery holds three kinds of seats — a producer, cold intent reviewer(s) at the pre-G3
 synthesis review, and a cold validator — and beyond those seats the conversation is you and the
-user. This is a `mochiko:loop-discipline` sound loop; the Contract
-section below is its authoring-time fill — **no per-run contract is written**.
+user. This is a `mochiko:loop-discipline` sound loop; the Contract section below is its
+authoring-time fill.
 
-## Hard requirement — agent teams
+## Team-form parameters (shape Layer 2)
 
-Check `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS` in the environment before anything else; unset →
-stop and tell the user how to enable it (settings/env; Claude Code ≥ v2.1.178). The env check is
-a proxy — the **first teammate spawn is the authoritative probe** (the producer in brownfield;
-otherwise the intent reviewers at the synthesis review, or the producer when that review was
-waived): if it fails, stop with the same instructions. Never proceed teamless — **no fallback transport** (the same
-deliberate dogfood-pilot bet as `/mochiko:brainstorm`, marked `Contested`; revisit when mochiko
-distributes beyond the author's machines). Running the loop on one-shot subagents is not a
-fallback — it is the defect this section exists to forbid. **Transport is discriminable at the
-call:** a seat is spawned by one Agent call carrying **`name:`** — in the docs' idiom ("create
-an agent team", "spawn a teammate") — and every later round is a `SendMessage` to that name; **a
-spawn without a `name:` is a one-shot subagent, the forbidden form.** After the first spawn,
-**verify the seat is addressable** (you can message it by name — the agent panel alone doesn't
-confirm) before proceeding; not addressable → kill it and respawn, explicitly requesting an
-agent team. Recipe: `templates/agent-dispatch.md` (Seat transport).
+Hard-require `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS` per the shape. The **authoritative
+first-spawn probe** is the producer in brownfield; otherwise the intent reviewers at the
+synthesis review, or the producer when that review was waived. Transport mechanics + the
+addressability check: `templates/agent-dispatch.md` (Seat transport). The no-fallback bet is
+the same `Contested` dogfood-pilot ruling as `/mochiko:brainstorm`'s.
 
 ## Session constraints
 
-- The conversation is the production surface, and it belongs to you and the user. **Never narrate
-  machinery** — no "phase", "round", or "gate" talk; teammate housekeeping (idle notifications,
-  acks) is never narrated and never replied to.
-- Tell the user at the start that they can watch or message any teammate directly. Announce each
-  seat in one line when you fill it — an unexplained teammate spawn reads as a malfunction.
 - Workspace: `mkdir -p .mochiko/memory`. Kill-switch: stop and escalate if
   `.mochiko/memory/SETUP_STOP` exists — check before each producer, reviewer, or validator send.
 - **Mode is yours** (greenfield | brownfield | amend) — it selects which stages run and the
@@ -67,17 +57,10 @@ agent team. Recipe: `templates/agent-dispatch.md` (Seat transport).
   regenerate-what-setup-owns rule; the knowledge-management bundle scaffolding keeps its hard
   never-overwrite floor.
 
-## The team
-
-Teammates do **not** load `skills:` frontmatter — every spawn prompt must name the skill and
-role itself, plus what to Read (see `templates/agent-dispatch.md` for the briefing fields). A
-teammate's plain text is not visible to you: its reports arrive as **messages**, and your
-follow-ups go to the **same named seat** via message — that continuity is what the standing seat
-buys. A fresh spawn per round is the subagent anti-pattern, not a team.
+## The seats
 
 - **producer** — `mochiko:principal-architect`, one **named standing seat** spanning both of its
-  jobs, so analysis context flows into authoring and fix-list context survives across rounds:
-  spawn it once, then **message the same seat** for every later round or clarification.
+  jobs, so analysis context flows into authoring and fix-list context survives across rounds.
   Brownfield: spawn at analysis (runs `mochiko:analysis-codebase`, mode setup-brownfield, on the
   detect-stack output → writes `.mochiko/memory/codebase-analysis.md`, messages you a summary +
   Essential-Floor table + clarifications). All modes: after synthesis ratification, brief it (by
@@ -96,13 +79,11 @@ buys. A fresh spawn per round is the subagent anti-pattern, not a team.
   — one **coverage** (missed dimensions, prune audits, the card-acceptance and waiver/module
   sweeps), one **coherence** (tier↔risk↔ruling alignment, the mark/echo-rationale audit,
   reality-conflict resolutions, cross-element contradictions) — the skill stays one document; the
-  brief sets the emphasis. **Withhold each reviewer's counterpart from its spawn prompt**:
-  findings form cold, then you introduce them for the one-shot four-message cross-exam (the
-  single-sourced protocol in `review-brainstorm`'s `references/CROSS-EXAM.md`). A **single**
-  reviewer gets the whole surface, no cross-exam, and runs the verify pass itself; in a pair the
-  verify pass is the **coherence** reviewer's. These seats produce **lead-adjudicated input
-  before G3** — never the authoritative grade (that stays the validator's, on the authored
-  surface set); they message you, never the user, and never contact the producer or validator.
+  brief sets the emphasis. A **single** reviewer gets the whole surface, no cross-exam, and runs
+  the verify pass itself; in a pair the verify pass is the **coherence** reviewer's. These seats
+  produce **lead-adjudicated input before G3** — never the authoritative grade (that stays the
+  validator's, on the authored surface set); they message you, never the user, and never contact
+  the producer or validator.
 - **validator** — `mochiko:validator`, spawned **cold at first validation**, never in the room
   before that and never in contact with the producer. Brief it to run
   `mochiko:validation-constitution` **from the files** (the surface set + synthesis + trace
@@ -110,8 +91,8 @@ buys. A fresh spawn per round is the subagent anti-pattern, not a team.
   integrity, index→file existence, ledger completeness (Three-Part per principle), tier + waiver
   + floor-accounting checks, module-parameterized checks, anti-pattern + placeholder scans,
   semver call — brownfield adds the tools/versions↔analysis cross-check. It **messages you**
-  binary PASS/FAIL + a fix list; round > 1 is a **message to the same validator seat**. **The fix
-  list flows through you** to the producer — that routing is the independence the loop rests on.
+  binary PASS/FAIL + a fix list. **The fix list flows through you** to the producer — that
+  routing is the independence the loop rests on.
 
 ## The flow
 
@@ -143,23 +124,19 @@ permits.
 **Synthesis review** *(sizing gate + cold review, all modes — before G3)* — assemble
 `templates/governance-intent-template.md` → `.mochiko/memory/governance-intent.md` (GI-IDs **and
 a confidence mark** on every element; **amend updates the persisted file delta-wise** — untouched
-elements keep their IDs and marks). Open the **sizing gate**: state the synthesis's weight
-(element count, mark mix, reality-surface load) — its purpose is informing the user's *elevation*
-of the tier-keyed default recommendation: `poc`/`internal` → **single**, `production`/`regulated`
-→ **pair**; on amend, **event-scaled** — a governance event (tier bump, un-waive, floor/waiver
-change) gets the full tier-keyed default, lighter deltas recommend single at
-`production`/`regulated` and none-with-waiver below (the gate always opens: every amend records a
-sizing ruling or a waiver — audit-complete). The user rules **pair / single / none**; `none` →
-record the waiver in the synthesis's Review section and go to G3. Otherwise spawn per the ruling
-— the synthesis is **frozen** from spawn until dispositions land — and route each survivor by
-answer-owner: user rulings (deck / tier / waiver) and challenged dimension-prunes / scope
-decisions → **the user, directly**; your formulation → argue with the finding's owner, **two
-exchanges max (you count)**, then tie-break; **reality-surface** fact disputes → checked against
-the analysis or an Explore subagent, never argued; **user-declared facts** (team size, risk
-posture, lifespan) → **the user, as confirmation**. An overruled survivor marks its element
-`Contested`. Land every disposition in the Review section, then the **verify pass** (the
-coherence-lens reviewer, or the sole reviewer) confirms the folds → G3. On a **tier-bump amend**,
-re-deal tier-loosened deck rulings on the bump's agenda slice (or force-re-mark them) — a stale
+elements keep their IDs and marks). Run the shape's sized review with these bindings.
+**Weight statement** = element count, mark mix, reality-surface load — purposed as input to the
+user's *elevation* of the **tier-keyed default**: `poc`/`internal` → **single**,
+`production`/`regulated` → **pair**; on amend, **event-scaled** — a governance event (tier bump,
+un-waive, floor/waiver change) gets the full tier-keyed default, lighter deltas recommend single
+at `production`/`regulated` and none-with-waiver below (the gate always opens: every amend
+records a sizing ruling or a waiver — audit-complete); **none** → waiver in the synthesis's
+Review section → G3. **Survivor-routing bindings:** user rulings (deck / tier / waiver) and
+challenged dimension-prunes / scope decisions → the user, directly; **user-declared facts**
+(team size, risk posture, lifespan) → the user, as confirmation; **reality-surface** fact
+disputes → checked against the analysis or an Explore subagent. **Verify pass** = the
+coherence-lens reviewer (or the sole reviewer) → G3. On a **tier-bump amend**, re-deal
+tier-loosened deck rulings on the bump's agenda slice (or force-re-mark them) — a stale
 `Confident` never carries a lower-tier loosening upward unexamined.
 
 **Synthesis confirmation** *(gate G3, all modes)* — present the reviewed synthesis (tally +
@@ -232,8 +209,7 @@ reading.
 
 ## Recovery
 
-Teams do not survive `/resume`, and a shared account limit can throttle the team and the main
-session together — pause posture: note the resume stage in one line at the top of
+Pause posture (per the shape): note the resume stage in one line at the top of
 `governance-intent.md` (or in the region stamp once it exists). Resume from workspace evidence,
 respawning what the stage needs — the producer seat re-reads the synthesis + fix list cheaply; a
 validator respawn is cold by design:
