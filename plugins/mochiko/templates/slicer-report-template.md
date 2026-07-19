@@ -40,9 +40,9 @@ reviewer to follow what was produced and what changed. It is also where a **null
 
 ---
 
-## Constitution Alignment
+## Governance Alignment
 
-{{constitution_alignment}}
+{{governance_alignment}}
 
 ---
 
@@ -91,9 +91,10 @@ reviewer to follow what was produced and what changed. It is also where a **null
 7. **Feature-Done Coverage** discloses how the SC coverage map was closed (every SC-# to a
    verifying slice) and which cross-slice seams were identified — including any SC whose coverage
    forced a re-slice.
-8. **Constitution Alignment** discloses how the decomposition aligns to the project constitution
-   when one is present; **Open Questions** records producer-surfaced unknowns (including any
-   un-homeable cross-cutting story flagged for spec amendment) and feeds the clarification loop.
+8. **Governance Alignment** discloses how the decomposition aligns to the project's governance (the
+   CLAUDE.md governance region + its `.claude/rules/mochiko/` files) when present; **Open
+   Questions** records producer-surfaced unknowns (including any un-homeable cross-cutting story
+   flagged for spec amendment) and feeds the clarification loop.
 9. **Handoff to Review** is a *pointer*, not a claim: name what the reviewer should grade and any
    known soft spots. It is **not** a "ready" assertion.
 10. **Output location** — `.mochiko/specs/<feature>/slicer-report.md`, seeded and collected by the
