@@ -84,22 +84,11 @@ These are valid concerns but belong in later design and implementation work, not
 
 ## Output Format
 
-```markdown
-## Gaps Found
-
-### Critical
-- **Gap**: [What's missing]
-  - **Question**: [Product decision needed]
-  - **Options**: [2-3 choices]
-
-### Important
-- **Gap**: [What's missing]
-  - **Question**: [Product decision needed]
-  - **Options**: [2-3 choices]
-
-### Minor (Deferred)
-- [Gap description] - can be resolved during planning
-```
+The report structure — the gap table (type + severity), clarifications with concrete
+options and impact, the recommended status, and strengths — is single-sourced at
+`templates/advocate-report-template.md`; fill that structure rather than inventing one.
+When invoked outside a workflow that names a report path, return the same structure
+inline.
 
 ## Review Process
 
@@ -163,4 +152,3 @@ Before finalizing the review, verify:
 
 - **`mochiko:authoring-requirements`** — drafts the requirements this skill reviews; it runs *before* this skill (if no spec exists yet, author one first).
 - **`mochiko:analysis-iterative`** — pre-spec input enrichment for a sparse or vague idea (producer-side, before a draft exists). This skill is the post-draft, reviewer-side counterpart; their triggers are deliberately disjoint (enrich an idea vs. review a draft for gaps).
-- **Verdict ownership** — the severity-bucketed gaps and clarifying questions this skill emits are INPUT to the reviewer/lead, who owns the clearing verdict and drives any revision round. This skill finds and frames gaps; it does not emit a clearing PASS/FAIL of its own.

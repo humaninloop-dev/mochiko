@@ -114,7 +114,7 @@ human adjudicates; the reviewer's verdict never clears anything by itself.
 ### Framework maintenance (model-invoked — reached when authoring or auditing mochiko's own commands)
 | Skill | Reach when |
 |-------|------------|
-| `authoring-commands` | authoring a new `commands/*.md` supervisor in the codified command shape, converting an existing command's form (incl. one-shot → team-form, on recorded per-command grounds with a confirm-or-revert checkpoint), or running a minimalism/strip wave over a command cluster with version-stamped strip notes (`plugins/mochiko/strips/`); the `command-architect` producer's skill — references `command-shape.md`, never restates it |
+| `authoring-commands` | authoring a new `commands/*.md` supervisor in the codified command shape, converting an existing command's form (incl. one-shot → team-form, on recorded per-command grounds with a confirm-or-revert checkpoint), or running a minimalism/strip wave over a command cluster with version-stamped strip notes (`.mochiko/strips/`, repo-side — never shipped in the plugin); the `command-architect` producer's skill — references `command-shape.md`, never restates it |
 | `validation-command-shape` | independently grading a command's conformance to the shape — deterministic grep floor (references present, no restated single-sourced prose, exceptions marked, frontmatter) beneath a prose judgment ceiling (altitude, parameter completeness, contract-fill soundness), plus the strip-note audit at wave close → binary PASS/FAIL + fix list on the `validator` persona (never the author) |
 
 ### Entry point (user-invoked — you run it)

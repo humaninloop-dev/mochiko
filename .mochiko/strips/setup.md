@@ -4,6 +4,11 @@ Entry formats: `strips/README.md`. Wave context: the D4 codification pre-shrink 
 shared team-form prose relocated into `templates/command-shape.md` (design:
 `.mochiko/brainstorms/pattern-codification-and-minimalism/record.md`, D3/D4/D9).
 
+## [v0.13.0] Footer ground rules (kernel-free · git)
+- **Disposition:** relocated → `templates/command-shape.md` (Layer 1, Ground rules — homed at shape v2, the specify wave's S8 home revision)
+- **Tier failed:** 1 (altitude — verbatim in five command footers; true of every conformant command)
+- **Content:** "Stay kernel-free; … do not modify git or push." (the footer keeps its `agent-dispatch` briefing pointer)
+
 ## [v0.11.0] Hard-requirement transport mechanics
 - **Disposition:** relocated → `templates/command-shape.md` (Layer 2, Hard requirement) + `templates/agent-dispatch.md` (Seat transport — already the mechanics' single source; the command's restatement removed)
 - **Tier failed:** 1 (altitude — restated shape/transport prose)

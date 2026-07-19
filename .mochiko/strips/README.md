@@ -7,6 +7,14 @@ NON-LOADED: no command or runtime surface references it — the log must never i
 context. It is read at framework-maintenance time only (strip waves, dogfood re-add reviews,
 validation-command-shape audits). Strip notes never live inside commands/ (files there
 register as commands) and never inline in SKILL.md/command bodies.
+
+LOCATION (amended 2026-07-19, user ruling): `.mochiko/strips/` — repo-side, beside the other
+operational layers (.mochiko/transform/, .mochiko/brainstorms/). Strip notes are operational
+maintenance logs and must NEVER live under `plugins/` — the plugin directory is the shipped
+artifact, and anything inside it distributes with the plugin whether loaded or not. (The
+original D6 ruling placed them at plugins/mochiko/strips/; relocated out of the shippable
+tree once the first wave made the leak visible.) A future wave that writes a strip note
+anywhere under `plugins/` is a defect — fix on sight.
 -->
 
 One file per primitive: `strips/<primitive>.md` (e.g. `strips/brainstorm.md` for

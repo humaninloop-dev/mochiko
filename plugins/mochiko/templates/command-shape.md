@@ -20,9 +20,12 @@ here and only here. A command line that must restate shape content (rare) carrie
 marked exception — `<!-- shape-exception: why -->` — the audit's deterministic floor keys
 on that marker.
 
-PROVISIONAL (fold S8): this home was derived from two team-form exemplars. A home-revision
-checkpoint runs at the first one-shot→team-form conversion, against the needs that
-conversion reveals.
+S8 CHECKPOINT: the home-revision checkpoint ran at the first one-shot→team-form conversion
+(specify, 2026-07-19) → shape v2: the artifact's uncertainty carrier became a [PARAM]
+(lead-penned records carry confidence marks; producer-authored artifacts carry their own
+assumption/open-question surface), the sized end-stage review's applicability was scoped
+(an in-loop independent critique satisfies validation via the Contract clause), and the
+ground rules (kernel-free · no git mutations) were homed here from the command footers.
 -->
 
 # The Mochiko Command Shape
@@ -40,17 +43,23 @@ dispatch is briefed per `templates/agent-dispatch.md` — both referenced, never
 **The conversation is the production surface.** It belongs to the lead and the user. Never
 narrate machinery — no "phase", "round", or "gate" talk in user-facing prose.
 
-**As-you-go artifact with confidence marks.** The deliverable is written as the session
-progresses, never reconstructed at the end: every element carries statement + rationale + a
-confidence mark — `Confident / Assumed / Contested / Unsure / Deferred` — with user
-corrections and reversals logged where they happen, in one ID namespace [PARAM: the
-artifact, its path, its ID scheme]. The artifact is the review surface, the audit trail,
-and the deliverable: it reads standalone, and review findings with their dispositions live
-in a closing Review section, never interleaved with the elements. The lead's pen covers
-only its own formulation — nothing amends a user-ruled element, and no new element is
-created, without the user's word.
+**As-you-go artifact.** The deliverable is written as the work progresses, never
+reconstructed at the end, in one ID namespace [PARAM: the artifact, its path, its ID
+scheme]. Its uncertainty is carried on the artifact itself [PARAM: the carrier — a
+**lead-penned record** carries statement + rationale + a confidence mark per element
+(`Confident / Assumed / Contested / Unsure / Deferred`) with user corrections and
+reversals logged where they happen; a **producer-authored artifact** carries its own
+assumption / open-question surface instead]. A lead-penned record is additionally the
+review surface and the audit trail: it reads standalone, review findings with their
+dispositions live in a closing Review section, never interleaved with the elements — and
+the lead's pen covers only its own formulation: nothing amends a user-ruled element, and
+no new element is created, without the user's word.
 
-**Sized end-stage review.** At convergence the lead opens a **sizing gate**: state the
+**Sized end-stage review.** This element binds where the workflow reviews a
+judgment-heavy record or synthesis at convergence [PARAM: the reviewed artifact — or a
+Contract-section declaration that the loop's bounded, in-loop independent critique is the
+workflow's validation, satisfying the producer↔validator clause without a sized review].
+Where it binds: at convergence the lead opens a **sizing gate**: state the
 artifact's weight (element count, confidence-mark mix, reality-surface load) and the
 estimated review cost; recommend **pair / single / none** [PARAM: the default keying —
 e.g. heavyweight→pair, or tier-keyed]; the user rules. **None** → a review waiver in the
@@ -92,6 +101,10 @@ counts it — the lead), **Human gates** (every named gate). **No per-run contra
 written** — a per-run form whose values are constant at authoring time is ritual, not proof
 (`workflow-contract.md` stays the form for loops whose values genuinely vary per run).
 
+**Ground rules.** Stay kernel-free — no Python/MCP brain code, no capability catalogs, no
+DAG-mediated orchestration. A command suggests commits; it never runs git mutations and
+never pushes.
+
 **Recovery.** Sessions and teams do not survive `/resume`, and a shared account limit can
 throttle the team and the main session together — escalation then has nowhere to go but
 pause. Pause posture: note resume state on the deliverable [PARAM: where]. Resume from
@@ -129,7 +142,7 @@ whom is the independence guarantee, carried by the roster, never by a persona's 
 
 ---
 
-**Shape version:** v1 · **Governed by:** `mochiko:loop-discipline` · **Pairs with:**
-`agent-dispatch.md` (call-time briefing + seat transport) · `workflow-contract.md` (the
-per-run contract form) · **Provisional (S8):** home-revision checkpoint at the first
-one-shot→team-form conversion.
+**Shape version:** v2 (2026-07-19 — the S8 home-revision checkpoint, run at the specify
+conversion: uncertainty-carrier [PARAM] · sized-review applicability scoped · ground rules
+homed) · **Governed by:** `mochiko:loop-discipline` · **Pairs with:** `agent-dispatch.md`
+(call-time briefing + seat transport) · `workflow-contract.md` (the per-run contract form).

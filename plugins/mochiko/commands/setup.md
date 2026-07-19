@@ -239,6 +239,5 @@ validator respawn is cold by design:
 **What you own (not the agents):** the interrogation and the synthesis pen; the review sizing
 gate, survivor routing, and the cross-set merge; the loop; the verdict against the default-FAIL
 done-condition; the human gates; the mode; the governance-region ownership boundary; and never
-letting producer, reviewer, and validator collapse into one seat. Stay
-kernel-free; brief every spawn per `agent-dispatch`; do not modify git or push. Full rules:
-`mochiko:loop-discipline`.
+letting producer, reviewer, and validator collapse into one seat. Brief every spawn per
+`agent-dispatch`. Full rules: `mochiko:loop-discipline`.

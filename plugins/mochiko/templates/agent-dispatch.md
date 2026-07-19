@@ -89,7 +89,8 @@ just the vocabulary:
   it and respawn, explicitly requesting an agent team.
 
 One-shot dispatch remains the **rebuttable default** for the commands designed on it
-(specify/plan/tasks/implement) — team-form is the declared default *preference* pending each
+(plan/tasks/implement — specify converted team-form 2026-07-19 per its recorded D2
+assessment, `.mochiko/strips/specify.md`) — team-form is the declared default *preference* pending each
 command's own conversion assessment (`.mochiko/brainstorms/pattern-codification-and-minimalism/record.md`,
 D2) — and this section binds only commands that hard-require teams. Defect history +
 ruling: `.mochiko/brainstorms/setup-v3-team-defect/record.md` (D1).
