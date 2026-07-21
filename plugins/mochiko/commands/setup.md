@@ -118,8 +118,10 @@ tier bump or un-waive is a governance event and gets its agenda slice); addition
 `governance-intent.md` either way (a recorded decline is permanent until the user reopens it;
 never re-ask). Then deal the catalog (`…/authoring-constitution/references/catalog/` — shelves by
 declared type, cards filtered and parameterized by tier), arbitrate card by card
-(recommend-then-arbitrate), collect minted intents, and take waiver rulings where the tier
-permits.
+(recommend-then-arbitrate), collect minted intents, run the layered-architecture beat when a
+layered principle was kept or minted (module ruling + domain-dependency seed arbitration —
+`…/authoring-constitution/references/DOMAIN-DEPENDENCIES.md`), and take waiver rulings where the
+tier permits.
 
 **Synthesis review** *(sizing gate + cold review, all modes — before G3)* — assemble
 `templates/governance-intent-template.md` → `.mochiko/memory/governance-intent.md` (GI-IDs **and

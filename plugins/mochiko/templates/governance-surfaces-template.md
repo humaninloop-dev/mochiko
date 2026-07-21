@@ -13,9 +13,12 @@ by `validation-constitution`:
 
 Ownership (D8): the region between the markers — and everything under .claude/rules/mochiko/ and
 the ledger — is setup-owned and idempotently REGENERATED on re-runs and amends. Content outside
-the markers is user territory: NEVER touched. HTML comments in CLAUDE.md are stripped before
-context injection (doc-confirmed) — trace stamps there are context-free; comment handling in
-rules files is undocumented, so the ledger is always the canonical metadata record.
+the markers is user territory: NEVER touched. One carve-out: a domain-dependency registry block
+(`mochiko:domain-registry` markers) inside a layer-scoped rules file is preserved verbatim
+across regenerations — implement-time additions live there
+(`authoring-constitution/references/DOMAIN-DEPENDENCIES.md`). HTML comments in CLAUDE.md are
+stripped before context injection (doc-confirmed) — trace stamps there are context-free; comment
+handling in rules files is undocumented, so the ledger is always the canonical metadata record.
 -->
 
 # Shape 1 — the CLAUDE.md governance region
@@ -111,6 +114,13 @@ Read by setup/amend runs and the validator only — never force-loaded into work
 | Exception | Principle (GI-ID) | Granted | Expires/revisit |
 |-----------|-------------------|---------|-----------------|
 | [none yet] | | | |
+
+[## Domain-dependency policy (only when `layer-rules` is adopted)]
+[Qualification criteria (domain-relevance filters first, then ubiquity) · trust-signal
+hierarchy: `authoring-constitution/references/DOMAIN-DEPENDENCIES.md` · add-process + tier gate
+(self-serve + `domain_deps_added` cycle-report disclosure at poc/internal; human ruling before
+entry at production/regulated). The list itself lives ONLY in the domain rules file's
+`mochiko:domain-registry` block — preserved across regenerations, no ledger copy.]
 
 ## Principles (Three-Part metadata, keyed by GI-ID)
 

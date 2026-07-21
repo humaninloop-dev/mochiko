@@ -83,7 +83,13 @@ The interrogation runs in **all three modes** — it covers only what the mode l
    recorded.
 2. **Mint** — turn dimension-9 intent that no card covers into minted-principle intents (what to
    enforce, how strictly — formulation is the producer's job later).
-3. **Waiver rulings** — for any floor category the tier permits waiving and the user chooses to
+3. **Layered-architecture beat** — fired when a layered-architecture card was kept **or** a
+   layered intent was minted: record the `layer-rules` module ruling in the synthesis (either
+   way), then run the domain-dependency seed arbitration per
+   [DOMAIN-DEPENDENCIES.md](DOMAIN-DEPENDENCIES.md) — seeds and rulings land in the synthesis's
+   Domain-dependency seeds table. An undiscussed registry degrades to "standard library only" —
+   stricter than anyone ratified.
+4. **Waiver rulings** — for any floor category the tier permits waiving and the user chooses to
    waive: record the category, the waiving tier, and the revisit trigger (default: tier
    graduation).
 

@@ -8,6 +8,12 @@ One entry per session directory under `.mochiko/brainstorms/<topic-slug>/`, **ne
 
 ---
 
+## `domain-dependency-allowlist` — pragmatic domain-layer dependency allowlists in `/mochiko:setup`
+- **When:** 2026-07-21 · **Status:** accepted · record reviewed (user-sized solo cold subagent + lead pressure-test of every finding against cited files: 9 raised → 7 confirmed / 1 weakened / 1 reframed / 0 refuted → 9/9 dispositioned incl. 3 user rulings)
+- **Artifacts:** [record.md](domain-dependency-allowlist/record.md) (canonical)
+- **About:** the Flutter dogfood run authored a domain layer restricted to the Dart SDK only. BE-HEX and the `layer-rules` module already carry an "approved domain dependencies registry" concept, but nothing in setup ever elicits or populates it. Ruled (D1–D5 + review folds): seed-eagerly-grow-lazily allowlist arbitration keyed to `layer-rules` attachment (card kept **or minted**); domain-relevance filters candidates before a codified trust-signal hierarchy ranks them (Flutter Favorites / golang.org/x / blessed.rs …, live-verified); tier-keyed add-gate with a cycle-report visibility floor; registry list in a preserve-in-place block of the paths-scoped domain rules file with policy in the ledger. Multi-stack registries and a mobile/app shelf deferred to BACKLOG.
+- **Landed:** ROADMAP Key Decisions (domain-allowlist row, 2026-07-21); BACKLOG (`approved-domain-deps.md` item closed; Domain-allowlist follow-ups added — mobile/app shelf, multi-stack registries, kinako amend dogfood). **Built 2026-07-21 at plugin v0.18.0** — `references/DOMAIN-DEPENDENCIES.md` (single source) + the layered-architecture beat (agenda + setup.md) + BE-HEX/`layer-rules` registry-block machinery + ownership carve-outs (SKILL.md + surfaces template) + synthesis seeds section + implement-side visibility floor (`domain_deps_added` + confidence-gate hook).
+
 ## `pattern-codification-and-minimalism` — codify the team-form build pattern; strip the library to minimum
 - **When:** 2026-07-18 · **Status:** accepted · record cold-reviewed (pair, lens-split: 17 raised → 13 merged survivors → 13/13 dispositioned incl. 3 user rulings, verify pass PASS) · **codification built 2026-07-19 at plugin v0.11.0**
 - **Artifacts:** [record.md](pattern-codification-and-minimalism/record.md) (canonical)

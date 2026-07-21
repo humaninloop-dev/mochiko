@@ -120,7 +120,10 @@ For each cycle, `round = 1`; the cycle is FAIL until verified:
    evidence. Apply the **confidence gate**: qa classifies each verification (the CLI / GUI / SUBJECTIVE
    classification procedure lives in `testing-end-user`); if every verification is a deterministic CLI
    check that passed 100%, **auto-approve** and advance to the next cycle; if any is GUI / subjective,
-   or anything failed, **checkpoint to the human**. On a pass verdict → next cycle. On a checkpoint
+   or anything failed, **checkpoint to the human**. A non-empty `domain_deps_added` in the cycle
+   report at `production`/`regulated` tier (tier: the CLAUDE.md governance region stamp) also forces
+   the human checkpoint — a domain-registry addition is never auto-approved there; at lower tiers
+   surface the additions in your verdict, non-blocking. On a pass verdict → next cycle. On a checkpoint
    failure → **targeted retry** (step 1, failed tasks only; increment `round`), applying the bounds
    (max 3/cycle; a 2+-round stall → surface). Route knowledge / preference / scope gaps per
    `loop-discipline` (→ **G3** / **G4** / escalate).
@@ -188,7 +191,8 @@ suggested commit (`feat: implement <feature>`), and the next step. Never modify 
 - **Human gates:** G1 input recovery + governance / entry surface · G3 clarification (incl. the
   "Research this" knowledge-gap branch when staff flags ambiguity) · G4 exit-early / escalation on any
   guard trip · the **confidence gate** (per cycle: deterministic CLI verifications that 100% pass →
-  auto-approve; GUI / subjective / any-failure → human checkpoint) · **G5** the named final-acceptance
+  auto-approve; GUI / subjective / any-failure / a `production`+-tier domain-registry addition →
+  human checkpoint) · **G5** the named final-acceptance
   gate before "done." **No G2** — implement has a single verifier, so plan's feasibility-rejection slot
   is intentionally unused.
 

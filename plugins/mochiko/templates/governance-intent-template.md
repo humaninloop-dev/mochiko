@@ -106,8 +106,18 @@ until the user reopens it). The validator checks core + exactly the adopted modu
 
 | GI-ID | Module | Ruling | Because | Mark |
 |-------|--------|--------|---------|------|
-| GI-0XX | [layer-rules] | adopted | [BE-HEX kept] | [Confident] |
+| GI-0XX | [layer-rules] | adopted | [BE-HEX kept \| layered intent minted] | [Confident] |
 | GI-0XX | [knowledge-management] | [adopted \| declined] | [offered default-on at dimension 7; a decline also memorializes in dimension 10] | [Confident] |
+| … | | | | |
+
+## Domain-dependency seeds (only when `layer-rules` is adopted)
+
+Session-arbitrated registry seeds per `authoring-constitution/references/DOMAIN-DEPENDENCIES.md`
+— domain-relevance filtered, trust-ranked, each level-cited; rejected seeds are rulings too:
+
+| GI-ID | Dependency | Signal level | Ruling | Mark |
+|-------|------------|--------------|--------|------|
+| GI-0XX | [equatable] | [1 — Flutter Favorites, live-verified] | [kept \| dropped] | [Confident] |
 | … | | | | |
 
 ## Deliberate exclusions (dimension 10)

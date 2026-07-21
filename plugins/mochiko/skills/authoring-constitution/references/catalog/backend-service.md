@@ -33,11 +33,15 @@ layers depend on inner layers, never reverse.
 | **Infrastructure** | DI wiring, configuration, entry points | `src/infrastructure/` | all layers (for wiring) | domain logic directly |
 
 **Approved Domain Dependencies** — the domain layer MAY import libraries from the project's
-approved domain dependencies registry when they meet qualification criteria: **ubiquity** (>80%
-adoption — effectively an ecosystem standard) and **domain-relevance** (domain modeling without
-I/O). Common approved libraries: `pydantic`/`attrs` (Python), `zod`/`decimal.js`/`uuid`
-(TypeScript), `go-playground/validator`/`shopspring/decimal` (Go), `serde`/`rust_decimal` (Rust).
-Projects SHOULD maintain their own registry as a project-level document.
+approved domain dependencies registry when they meet both qualification criteria:
+**domain-relevance** (domain modeling without I/O) and **ubiquity** (>80% adoption —
+effectively an ecosystem standard). Domain-relevance filters candidates FIRST; trust signals
+rank what passes — the seed arbitration, trust-signal hierarchy, and implement-time growth
+process are single-sourced in [../DOMAIN-DEPENDENCIES.md](../DOMAIN-DEPENDENCIES.md). Common
+approved libraries: `pydantic`/`attrs` (Python), `zod`/`decimal.js`/`uuid` (TypeScript),
+`go-playground/validator`/`shopspring/decimal` (Go), `serde`/`rust_decimal` (Rust),
+`equatable`/`decimal` (Dart). The registry lives in the domain-layer rules file's marked
+registry block (see the `layer-rules` module).
 
 **Port Interface Requirements** — all external service interactions MUST go through port
 interfaces: defined as `Protocol` (Python) / `interface` (TypeScript, Go) / `trait` (Rust); domain

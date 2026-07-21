@@ -16,6 +16,7 @@ files_created:              # New files created during this cycle
 files_modified:             # Existing files modified during this cycle
   - src/models/user.ts
 brownfield_tasks: 1         # Count of tasks with [EXTEND] or [MODIFY] markers
+domain_deps_added: []       # Domain-layer registry additions this cycle (package names; [] if none)
 checkpoint_criteria_met: true  # The implementer's self-assessment (the lead verifies independently)
 ---
 ```
@@ -31,6 +32,7 @@ checkpoint_criteria_met: true  # The implementer's self-assessment (the lead ver
 | `files_created` | list of strings | yes | Paths of new files created (empty list if none) |
 | `files_modified` | list of strings | yes | Paths of existing files modified (empty list if none) |
 | `brownfield_tasks` | integer | yes | Count of tasks with `[EXTEND]` or `[MODIFY]` markers |
+| `domain_deps_added` | list of strings | yes | Domain-layer dependency registry additions made this cycle (empty list if none). The visibility floor for registry growth: additions are disclosed here and surfaced at the checkpoint; at `production`/`regulated` tiers a non-empty list forces a human checkpoint — never auto-approved |
 | `checkpoint_criteria_met` | boolean | yes | The implementer's assessment of whether the cycle's checkpoint criteria are satisfied; a self-report, not the verdict — the lead verifies independently and decides |
 
 ## Prose Sections
