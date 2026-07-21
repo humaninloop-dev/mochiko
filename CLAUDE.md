@@ -10,7 +10,16 @@ Read [`BACKLOG.md`](BACKLOG.md) for open design decisions and upcoming workflow 
 
 ## Reference sources
 
-Both repos are submodules — use them as read-only reference:
+> **The `human-in-loop` and `agent-skills-research` submodules were removed on 2026-07-21** so
+> the plugin installs cleanly for other users (git otherwise tries to fetch them on install). The
+> migration has already landed, so they are not needed day-to-day; the paths below will not exist
+> until the submodules are re-added. Restore them only when reference access is genuinely needed:
+> ```
+> git submodule add https://github.com/deepeshBodh/human-in-loop.git human-in-loop
+> git submodule add https://github.com/humaninloop-dev/agent-skills-research.git agent-skills-research
+> ```
+
+These were read-only reference sources:
 
 - `human-in-loop/plugins/humaninloop/` — all primitives to cherry-pick (skills, agents, commands, templates)
 - `agent-skills-research/synthesis/my-framework.md` — the authoritative v3 design doc; read this before making any structural decisions
