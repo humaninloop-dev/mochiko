@@ -221,6 +221,21 @@ C1 (Foundation) → C2 (Foundation)
 
 ---
 
+## Review
+
+> Lead-filled at acceptance (G5), before presenting — not the producer's to author.
+
+**Sizing ruling** (G1): [single / none] — [why, keyed to governance tier + slice role].
+
+**Review trail**: [`advocate-report.md` — [outcome] (mapping round N, tasks round N) ·
+`taskarchitect-report.md` — producer disclosure across N rounds]. List only the reports the sized
+roster produced.
+
+**Waiver** (if any): [which reviewer waived · at which gate (G1) · why]. Omit when the reviewer was
+seated.
+
+---
+
 ## Notes
 
 - **TDD Discipline**: Every cycle starts with a failing test and ends with a real-infrastructure `**TEST:**` verification task that gates cycle completion

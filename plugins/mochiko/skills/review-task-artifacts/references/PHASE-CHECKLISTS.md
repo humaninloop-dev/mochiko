@@ -31,12 +31,14 @@ is told to build.
 | Dependency accuracy | Are cycle dependencies correct and minimal? | Important |
 | Slice sizing | Are cycles appropriately sized (not too big/small)? | Important |
 | Traceability | Can we trace from story to cycle? | Important |
+| Story reference discipline | Does the mapping cite story IDs (`US-#`) with at most a one-line gloss, rather than re-quoting story text from `spec.md`? | Important |
 | Infrastructure coverage — *dormant/parked* | Are all IP-XXX items from constraints-and-decisions.md mapped to foundation cycles? | Critical |
 | Platform-app ordering — *dormant/parked* | Do platform foundation cycles precede application foundation cycles? | Critical |
 
 ### Key Questions
 
 - Are any P1/P2 stories missing from the mapping?
+- Does the mapping cite stories by `US-#` ID — coverage verified against the story→cycle index — rather than re-quoting story text?
 - Are there cycles that are really horizontal slices (all models, then all services)?
 - Is the foundation too large? Too small?
 - Are there unnecessary dependencies between feature cycles?

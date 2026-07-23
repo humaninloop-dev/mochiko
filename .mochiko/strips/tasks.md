@@ -6,6 +6,65 @@ the **D2 conversion assessment** (one-shot → team-form) and re-checked the **S
 checkpoint** against tasks' needs (a standing producer spanning two phases + ONE standing reviewer with
 an early-gate + cumulative-mode pattern — no new shape gap; shape stays v2).
 
+## [v0.20.0] Wave context — token-reduction build, wave 2 (tasks cluster)
+
+Provenance: the token-reduction epic (`.mochiko/brainstorms/workflow-token-reduction/record.md`, D1–D6,
+accepted 2026-07-23), landed as a ROADMAP Key Decision; wave 1 (the plan cluster, v0.19.0) landed the
+same rulings on `plan`, and this is the tasks-cluster analogue per the user's "apply the same reduction
+to the tasks workflow". This wave is **contained to the tasks cluster** — implement-cluster and
+command-shape Layer-2 items are queued waves (BACKLOG). **No `command-shape.md` revision this wave → no
+cross-command re-audit** (the practiced trigger rule). **Additions (not strips — logged here for
+provenance):** the **D5 review-sizing step** (Phase 0 step 7, part of G1 — roster single /
+none-with-recorded-waiver, single the default at every tier, strongly recommended at
+`production`/`regulated` tier or a foundation slice; bound *by reference* to the shape's sized review
+applied to tasks' **in-loop** single-reviewer roster, no `command-shape.md` edit; in-session
+ratification); the **D2 cost entry** (Phase 4, referencing `templates/run-costs-template.md`); the
+**`## Review` section** added to `templates/tasks-template.md` (the D5 waiver's durable home) and its
+**G5 lead-fill clause** (Phase 3, before presenting). Its explicit fill-ownership marker
+(**lead-filled at G5, not the producer's**) + the Phase-3 fill clause are a **deliberate step
+beyond plan's mirror** — plan-template leaves fill-ownership implicit; tasks makes it explicit
+because its deliverable is **producer-authored**, so naming the fill lead-owned keeps the producer
+from fabricating lead-owned facts, and it gives the D5 ruling the on-disk home the v0.19.0 audit
+flagged as missing. The seat-declaration qualifier (the reviewer
+seated "unless the G1 sizing ruling waives it"), the Contract validation-model / done-condition /
+**producer↔validator** / human-gates updates, and the state-recovery conditioning all ride the D5
+sizing ruling — additions/edits in service of D5, not independent strips. The **producer↔validator**
+qualifier ("the reviewer on the G1-sized roster" + the none-branch validator = you + the user) keeps
+the Contract internally consistent once the done-condition became sizing-conditional, mirroring plan's
+wave-1 landing.
+
+> **Sizing-binding watch-item for the audit:** the Phase-0 sizing step uses the conformant "Run the
+> shape's sized review with these bindings" idiom (matching brainstorm.md:30 / setup.md:129 /
+> plan.md's Phase-0 step 6), stating only tasks' parameters and referencing the mechanic — no
+> `<!-- shape-exception -->` marker carried. Its one novelty is applying the sized-review mechanic to
+> tasks' **in-loop single-reviewer** roster (the shape frames it end-stage), disclosed in-line and
+> authorized by the in-session ratification. tasks is single-reviewer, so the roster options are
+> **single / none-with-recorded-waiver** (no "both") — the **none** waiver drops the only independent
+> reviewer, a larger call than plan's dropping one of two, guarded by the strongly-recommended default
+> and your never-thinning clause-(3) Read. If the `validation-command-shape` grep floor reads the
+> binding as restated shape prose, the codified marker is the ready remedy (per the plan), landed
+> in-wave.
+
+## [v0.20.0] D6d — round-report retain/clean offer → clean-by-default
+- **Disposition:** superseded in place (ruled behavior change — the offer is gone; cleanup now defaults to clean)
+- **Tier:** n/a — a user-ruled behavior change (epic **D6d** + Q6 "no softening"), not an altitude/purpose failure
+- **Content (verbatim, replaced):** "Offer a lightweight retain/clean choice for the intermediate round
+  reports; never offer to delete `task-mapping.md` or `tasks.md` — they are the deliverables." → now:
+  "**Clean the intermediate round reports by default** (retain only on request); never touch
+  `task-mapping.md` or `tasks.md` — they are the deliverables."
+- **Consumers assessed:** tasks-only (the finalize step is tasks' own; single-consumer, in-wave per D9).
+
+## [v0.20.0] D5 — validation-model "unsized by design" phrasing replaced
+- **Disposition:** superseded in place (the in-loop critique is now sized at G1, not unsized by design)
+- **Tier:** n/a — a user-ruled scope change (epic **D5** + in-session ratification), not an altitude/purpose failure
+- **Content (verbatim, replaced):** "the bounded in-loop critique — every round, unsized by design; no
+  sized end-stage review (the shape's in-loop-critique branch)." → now: "…every round, at the
+  **G1-sized roster** (single / none-with-recorded-waiver, per Phase 0); no sized *end-stage* review
+  (the shape's in-loop-critique branch, with the roster sized at G1)." The "no sized end-stage review /
+  in-loop-critique branch" reference is **retained** — tasks still has no end-stage review; only its
+  in-loop roster is now sized.
+- **Consumers assessed:** tasks-only (Contract fill is tasks' own; single-consumer, in-wave per D9).
+
 ## [v0.16.0] Conversion note (D2/S4 — one-shot → team-form, 2026-07-19)
 
 - **Command-specific rationale (user-ratified):** tasks runs a producer↔reviewer cycle (≤3 rounds per

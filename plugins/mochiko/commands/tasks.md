@@ -53,10 +53,12 @@ dogfood-pilot ruling as the other team-form commands.
   obligated-read line (per the prerequisite), the brownfield context when present, the templates to
   fill per its skill. Round > 1 within a phase is a message to the same seat carrying the reviewer's
   gap list verbatim (fix the flagged gaps; don't regress passing slices). It never grades.
-- **reviewer** — `mochiko:devils-advocate` (`review-task-artifacts`), spawned **cold at the first
-  (mapping) review**, never in contact with the producer, one **named standing seat across both
-  phases**. Phase 1: grade the mapping from the file (the `review-task-artifacts` Mapping checklist —
-  slice quality, foundation separation, story coverage, cycle sizing) → `advocate-report.md`
+- **reviewer** — `mochiko:devils-advocate` (`review-task-artifacts`), seated **unless the G1 sizing
+  ruling waives it** (single is the default roster; dropped only under a recorded **none** waiver),
+  spawned **cold at the first (mapping) review**, never in contact with the producer, one **named
+  standing seat across both phases**. Phase 1: grade the mapping from the file (the
+  `review-task-artifacts` Mapping checklist — slice quality, foundation separation, story coverage,
+  cycle sizing) → `advocate-report.md`
   (`ready` / `needs-revision` / `critical-gaps`). Phase 2: a message to the same seat in **cumulative
   mode** — a full review of `tasks.md` plus a cross-check back to `task-mapping.md` (mapping↔tasks
   alignment, the story→cycle→task chain, cycle/dependency consistency — the `review-task-artifacts`
@@ -96,6 +98,17 @@ dogfood-pilot ruling as the other team-form commands.
    so the done-condition's artifact set reads them there; brief the reviewer with the artifact sets
    {this slice's `task-mapping.md`/`tasks.md`} / {the accumulated feature-root plan artifacts}, so the
    breakdown is graded against what earlier slices established.
+7. **Review sizing (part of G1).** Run the shape's sized review with these bindings, applied to the
+   **in-loop reviewer roster** — tasks reviews every round, so the gate sizes the roster at entry, not
+   an end-stage pass. **Weight statement** = story count (the slice's when slice-scoped), whole-spec vs
+   slice-scoped, governance tier, and the expected cycle count where the mapping inputs make it evident.
+   **Default = single at every tier** (the reviewer seated); at `production`/`regulated` tier or a
+   foundation slice, state that single is **strongly recommended** — dropping the only independent
+   reviewer is a larger call than plan's dropping one of two, and its named risk under **none** is that
+   vertical-slice integrity, TDD test-first ordering, and mapping↔tasks alignment then surface only
+   through your clause-(3) Read. **None branch** = the waiver lands in `tasks.md`'s Review section; your
+   clause-(3) Read of both artifacts stays the validation floor and never thins. The ruling holds for
+   the run — carried in-session until the lead fills that Review section.
 
 ## Phase 1 — Mapping loop  *(you own the round counter and the verdict)*
 
@@ -139,7 +152,9 @@ explicitly accepts. Neither ends the loop on its own.
 
 ## Phase 3 — tasks.md acceptance  *(human gate G5)*
 
-Reachable only after your clearing verdict. Present the validated deliverables (cycle / foundation /
+Reachable only after your clearing verdict. **Before presenting, fill `tasks.md`'s `## Review`
+section** — the G1 sizing ruling, the review trail, and any waiver (the template's lead-filled
+section, not the producer's to author). Present the validated deliverables (cycle / foundation /
 feature / `[P]` counts, any noted gaps) and ask the user to **accept** (→ Phase 4; the done-condition
 is now satisfied), **amend** (re-enter the relevant phase with the changes as the gap list — still
 bounded; it must clear a verdict again), or **reject** (abort; the drafts remain under
@@ -147,49 +162,64 @@ bounded; it must clear a verdict again), or **reject** (abort; the drafts remain
 
 ## Phase 4 — Finalize
 
-Report the artifacts (`task-mapping.md` · `tasks.md` deliverables + the round reports
-`taskarchitect-report.md` / `advocate-report.md`), the per-phase round counts, the cycle / foundation
-/ feature / `[P]` counts, a suggested commit (`docs: tasks <feature>`), and the next step
-(`/mochiko:implement`). Offer a lightweight retain/clean choice for the intermediate round reports;
-never offer to delete `task-mapping.md` or `tasks.md` — they are the deliverables.
+Report the artifacts (`task-mapping.md` · `tasks.md` deliverables + the round reports the sized roster
+produced — `taskarchitect-report.md`, plus `advocate-report.md` per the G1 roster), the per-phase
+round counts, the cycle / foundation / feature / `[P]` counts, a suggested commit
+(`docs: tasks <feature>`), and the next step (`/mochiko:implement`). **Clean the intermediate round
+reports by default** (retain only on request); never touch `task-mapping.md` or `tasks.md` — they are
+the deliverables.
+
+**Cost entry.** Append a row to `.mochiko/specs/<feature>/run-costs.md` per
+`templates/run-costs-template.md`: ask the user for the `/usage` figure (record `not captured` if
+unavailable — never block), plus the run shape you observed — seats spawned, per-phase rounds, the G1
+sizing ruling, date / workflow / slice. Manual baseline (the epic-ruled protocol); deeper per-seat
+forensics need a transcript parse and stay on-demand.
 
 ## Contract (authoring-time fill — governed by `mochiko:loop-discipline`)
 
 - **Done-condition:** default **FAIL**; clears only when **(1)** both artifacts exist
-  (`task-mapping.md` · `tasks.md`), **(2)** `devils-advocate` returns `ready` on the Phase-1 mapping
-  **and** on the Phase-2 tasks, each grounded in the files, **(3)** *you* Read the artifacts + the
-  reviewer reports and confirm no blocking gap remains (the reviewer's status is input, never the
-  gate), **and (4)** the Phase-3 human acceptance on `tasks.md` has cleared. Out of rounds = escalate,
-  never done.
+  (`task-mapping.md` · `tasks.md`), **(2)** the reviewer **on the G1-sized roster** returns `ready` on
+  the Phase-1 mapping **and** on the Phase-2 tasks, each grounded in the files — a reviewer the ruling
+  waived contributing its **recorded waiver** in place of a status, never a silent skip, **(3)** *you*
+  Read the artifacts + the roster's reviewer reports and confirm no blocking gap remains (the
+  reviewer's status is input, never the gate; your Read of both artifacts never thins, whatever the
+  roster), **and (4)** the Phase-3 human acceptance on `tasks.md` has cleared. Out of rounds =
+  escalate, never done.
 - **Producer ↔ validator:** `task-architect` (patterns-vertical-tdd) authors both phases, never
-  grades; a **single independent reviewer**, not the producer — `devils-advocate`
-  (review-task-artifacts) grades the task artifacts from the files, never authoring. Disjoint agents,
-  disjoint skills, structurally separated (reviewer cold-spawned, gap lists lead-routed, no
-  producer↔reviewer contact). **Validation model:** the bounded in-loop critique — every round,
-  unsized by design; no sized end-stage review (the shape's in-loop-critique branch).
+  grades; the validator is the **reviewer on the G1-sized roster**, not the producer —
+  `devils-advocate` (review-task-artifacts) grades the task artifacts from the files, never authoring.
+  Disjoint agents, disjoint skills, structurally separated (reviewer cold-spawned, gap lists
+  lead-routed, no producer↔reviewer contact). Under a **none** waiver you + the user are the
+  validator — recorded, never silent (your clause-(3) Read never thins). **Validation model:** the
+  bounded in-loop critique — every round, at the **G1-sized roster** (single /
+  none-with-recorded-waiver, per Phase 0); no sized *end-stage* review (the shape's in-loop-critique
+  branch, with the roster sized at G1).
 - **Bounds:** cap **3** produce↔review rounds **per phase** (you count); no-progress exit when the
   reviewer's gap set is unchanged round-over-round; kill-switch `TASKS_STOP` checked before each seat
   send; a G5 amend re-enters the relevant bounded phase.
-- **Human gates:** G1 input recovery + governance / entry / brownfield surface · G3 clarification
-  (incl. the "Research this" knowledge-gap branch) · G4 exit-early / escalation · G5 `tasks.md`
-  acceptance · escalation on any guard trip. **No G2** — tasks is single-reviewer, so plan's
-  feasibility-rejection slot is intentionally unused.
+- **Human gates:** G1 input recovery + governance / entry / brownfield surface + **review sizing
+  (single / none-with-waiver)** · G3 clarification (incl. the "Research this" knowledge-gap branch) ·
+  G4 exit-early / escalation · G5 `tasks.md` acceptance · escalation on any guard trip. **No G2** —
+  tasks is single-reviewer, so plan's feasibility-rejection slot is intentionally unused.
 
 ## State recovery
 
 Pause posture (per the shape): note the resume stage on the deliverable. Resume from workspace
 evidence, respawning what the stage needs — a respawned producer re-reads the artifacts + the gap
-list; a reviewer respawn is cold by design:
+list; a reviewer respawn is cold by design. The reviewer roster on resume follows the **G1 sizing
+ruling**; recover it from the reviewer evidence on disk (an `advocate-report.md` on disk means the
+reviewer was seated) — or, resumed before the reviewer wrote and with `tasks.md`'s Review section not
+yet filled to carry it, **re-confirm the ruling in one question** before respawning:
 
 | Evidence in the workspace | Resume at |
 |---------------------------|-----------|
 | no `.mochiko/specs/<feature>/plan.md` | Phase 0 (entry blocked) |
 | `slices.md` present | slice-scoped: resolve the current slice (Phase 0 step 6); the rows below then read per-slice artifacts under `slices/<slice>/` |
 | `plan.md` present, no `task-mapping.md` | Phase 1 (produce) |
-| `task-mapping.md` present, no `advocate-report.md` this round | Phase 1 (review) |
-| mapping not `ready`, within the cap | Phase 1 (loop control) |
+| `task-mapping.md` present, the G1 roster's `advocate-report.md` not yet written this round | Phase 1 (review) |
+| mapping not `ready` on the G1 roster (or waived), within the cap | Phase 1 (loop control) |
 | mapping cleared, no `tasks.md` | Phase 2 (produce) |
-| `tasks.md` present, advocate not `ready`, within the cap | Phase 2 (loop control) |
+| `tasks.md` present, advocate not `ready` (or waived) on the G1 roster, within the cap | Phase 2 (loop control) |
 | both cleared, not yet accepted | Phase 3 |
 | accepted | Phase 4 |
 | `.mochiko/specs/<feature>/TASKS_STOP` present | escalate (G4) |

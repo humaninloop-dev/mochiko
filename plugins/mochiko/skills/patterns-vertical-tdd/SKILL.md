@@ -230,13 +230,14 @@ See [CYCLE-STRUCTURE.md](references/CYCLE-STRUCTURE.md) for the full `**TEST:**`
 
 The story→cycle decisions and the slice rationale behind them are authored into **`task-mapping.md`** — the source of truth for how stories become cycles. `tasks.md`'s Story → Cycle table is a **derived echo** of `task-mapping.md`, regenerated from it, never an independent second source.
 
+**Cite stories by ID, don't re-quote them.** The mapping references each story by its `US-#` ID, never the re-quoted story sentence from `spec.md` — a one-line gloss only where a bare ID would be unreadable. The story→cycle table (the `US-#` → cycle index) is this artifact's compact **coverage surface**, what the reviewer grades story coverage against; let the IDs carry the links rather than restating story text per cycle.
+
 ### Simple Case: Story = Cycle
 
 When a user story is well-scoped, it becomes one cycle:
 
 ```
-US-1: As a user, I can create a task with a title
-  → Cycle 1: Task creation
+US-1 (task creation) → Cycle 1: Task creation
 ```
 
 ### Split Case: Story > Cycle
@@ -244,7 +245,7 @@ US-1: As a user, I can create a task with a title
 When a story is too large, split into multiple cycles:
 
 ```
-US-2: As a user, I can manage my tasks (create, edit, delete, complete)
+US-2 (task management: create / edit / delete / complete)
   → Cycle 2: Task creation (foundation)
   → Cycle 3: Task editing
   → Cycle 4: Task deletion
@@ -256,8 +257,8 @@ US-2: As a user, I can manage my tasks (create, edit, delete, complete)
 When stories are too small, merge into one cycle:
 
 ```
-US-3: As a user, I can see task count
-US-4: As a user, I can see completed count
+US-3 (task count)
+US-4 (completed count)
   → Cycle 6: Task statistics (covers US-3 and US-4)
 ```
 
@@ -335,3 +336,4 @@ Before finalizing task mapping or task list:
 - [ ] Dependencies are minimal and explicit
 - [ ] Cycles are independently testable
 - [ ] Story→cycle decisions and rationale recorded in task-mapping.md (tasks.md's Story → Cycle table derives from it)
+- [ ] Mapping cites stories by `US-#` ID (one-line gloss max), never re-quoted story text — the Story → Cycle table is the coverage surface
