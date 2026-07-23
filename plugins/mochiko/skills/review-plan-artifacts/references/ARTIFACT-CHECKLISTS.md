@@ -188,6 +188,7 @@ Use these as the spot-check lens when running the consistency pass quickly:
 - The artifact references FR-XXX / US-XXX IDs correctly.
 - No orphaned requirements (mentioned but not addressed).
 - No invented requirements (addressed but not in spec).
+- Coverage is verified against the artifact's own ID index (Traceability Summary / matrix), not against prose; upstream requirement text re-quoted inline instead of cited by ID is a traceability gap.
 
 **Decision Consistency**
 - The artifact honors decisions from `constraints-and-decisions.md`.

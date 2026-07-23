@@ -50,6 +50,17 @@ See `contracts/api.yaml` for full OpenAPI specification.
 | `contracts/api.yaml` | ✅ Complete |
 | `quickstart.md` | ✅ Complete |
 
+## Review
+
+**Sizing ruling** (G1): [both / completeness-only / none] — [why, keyed to governance tier + slice role].
+
+**Review trail**: [`feasibility-report.md` — [outcome] (round N) · `advocate-report.md` — [outcome]
+(analysis round N, design round N) · `techanalyst-report.md` — producer disclosure across N rounds].
+List only the reports the sized roster produced.
+
+**Waiver** (if any): [which reviewer(s) waived · at which gate (G1) · why]. Omit when the roster was
+full (both reviewers seated).
+
 ## Next Steps
 
 Run the tasks workflow to generate implementation tasks from this plan.

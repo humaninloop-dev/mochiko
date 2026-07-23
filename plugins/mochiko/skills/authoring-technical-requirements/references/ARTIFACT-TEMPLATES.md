@@ -59,7 +59,7 @@ System MUST [technical capability described in technology-agnostic terms].
 
 ### Decomposition Examples
 
-**Business FR:** "Users must be able to sign in to their account" (FR-001)
+**Business FR:** FR-001 (users sign in) — cited by ID with a one-line gloss, never the re-quoted spec sentence
 
 **Technical decomposition:**
 

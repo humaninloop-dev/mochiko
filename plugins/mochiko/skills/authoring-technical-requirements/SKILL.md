@@ -135,6 +135,8 @@ At the analysis layer, flag **which** data the feature treats as sensitive — a
 
 Every artifact connects to others. No artifact stands alone.
 
+**Cite IDs, never re-quote text.** Trace to an upstream requirement by its ID (FR-/SC-/TR-/C-/NFR-/D-/IP-), not by reproducing its sentence — a one-line gloss is the ceiling, used only where a bare ID would be unreadable. The traceability *is* the ID link; re-quoting the source text down the chain adds no trace and is what the completeness review flags as a gap — and every re-quoted line is re-paid at each of the ~ten mandated reads a feature's artifacts get. Each artifact's compact ID index — the **Traceability Summary** table ([ARTIFACT-TEMPLATES.md](references/ARTIFACT-TEMPLATES.md)) — is the coverage surface the completeness reviewer grades against; keep it current and let the bare IDs carry the links.
+
 See [TRACEABILITY-PATTERNS.md](references/TRACEABILITY-PATTERNS.md) for detailed cross-reference patterns and dependency chains.
 
 **Mandatory links:**
@@ -173,6 +175,8 @@ Before finalizing, verify:
 - [ ] Cross-references between artifacts are consistent
 - [ ] Language is technology-agnostic (except real infrastructure constraints)
 - [ ] ID sequences are sequential with no gaps (TR-001, TR-002..., C-001..., D-001..., IP-001...)
+- [ ] Upstream requirements cited by ID, never re-quoted (one-line gloss max where a bare ID is unreadable)
+- [ ] Each artifact's Traceability Summary (ID index) is current; per-section entries stay compact — no restated upstream text
 
 ## Common Mistakes
 

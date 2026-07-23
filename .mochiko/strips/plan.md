@@ -6,6 +6,55 @@ conversion assessment** (one-shot → team-form) and re-checked the **S8 home-re
 against plan's needs (a standing producer spanning two phases + two reviewer seats, one of them
 fire-once — no new shape gap; shape stays v2).
 
+## [v0.19.0] Wave context — token-reduction build, wave 1 (plan cluster)
+
+Provenance: the token-reduction epic (`.mochiko/brainstorms/workflow-token-reduction/record.md`, D1–D6,
+accepted 2026-07-23) + its coupled `standing-seat-lifecycle` record, both landed as ROADMAP Key
+Decisions. This wave is **contained to the plan cluster** — implement-cluster and command-shape Layer-2
+items are queued waves (BACKLOG). **No `command-shape.md` revision this wave → no cross-command
+re-audit** (the practiced trigger rule). **Additions (not strips — logged here for provenance):**
+the **D5 review-sizing step** (Phase 0, part of G1 — roster both / completeness-only /
+none-with-recorded-waiver, defaults keyed to governance tier + slice role; bound *by reference* to the
+shape's sized review applied to plan's **in-loop** roster, no `command-shape.md` edit; in-planning user
+ratification); the **D2 cost entry** (Phase 5, referencing the new `templates/run-costs-template.md`);
+the **`## Review` section** added to `templates/plan-template.md` (the D5 waiver's durable home). The
+seat-declaration qualifiers (both reviewers "per the G1 sizing ruling"), the Contract
+validation-model / done-condition / **producer↔validator** / human-gates updates, and the
+state-recovery conditioning all ride the D5 sizing ruling — additions/edits in service of D5, not
+independent strips. The **producer↔validator** qualifier ("reviewers on the G1-sized roster" + the
+none-branch validator = you + the user) is a **coherence propagation beyond the three Contract
+sub-edits the plan named** — landed to keep the Contract internally consistent once the done-condition
+became sizing-conditional, mirroring `brainstorm.md`'s sized producer↔validator clause (its
+"Validator = the reviewers per the sizing ruling … under a waiver the user is the sole validator").
+
+> **Sizing-binding watch-item for the audit:** the Phase-0 sizing step uses the conformant
+> "Run the shape's sized review with these bindings" idiom (matching brainstorm.md:30 / setup.md:129),
+> stating only plan's parameters and referencing the mechanic — no `<!-- shape-exception -->` marker
+> carried. Its one novelty is applying the sized-review mechanic to plan's **in-loop** roster (the shape
+> frames it end-stage), disclosed in-line and authorized by the in-planning ratification. If the
+> `validation-command-shape` grep floor reads the binding as restated shape prose, the codified marker
+> is the ready remedy (per the plan) — landed in-wave, not reworded around.
+
+## [v0.19.0] D6d — round-report retain/clean offer → clean-by-default
+- **Disposition:** superseded in place (ruled behavior change — the offer is gone; cleanup now defaults to clean)
+- **Tier:** n/a — a user-ruled behavior change (epic **D6d** + Q6 "no softening"), not an altitude/purpose failure
+- **Content (verbatim, replaced):** "Offer a lightweight retain/clean choice for the intermediate round
+  reports; never offer to delete `plan.md` or the six artifacts — they are the deliverables." → now:
+  "**Clean the intermediate round reports by default** (retain only on request); never touch `plan.md`
+  or the six artifacts — they are the deliverables."
+- **Consumers assessed:** plan-only (the finalize step is plan's own; single-consumer, in-wave per D9).
+
+## [v0.19.0] D5 — validation-model "unsized by design" phrasing replaced
+- **Disposition:** superseded in place (the in-loop critique is now sized at G1, not unsized by design)
+- **Tier:** n/a — a user-ruled scope change (epic **D5** + in-planning ratification), not an altitude/purpose failure
+- **Content (verbatim, replaced):** "the bounded in-loop critique — every round, unsized by design; no
+  sized end-stage review (the shape's in-loop-critique branch)." → now: "…every round, at the
+  **G1-sized roster** (both / completeness-only / none-with-recorded-waiver, per Phase 0); no sized
+  *end-stage* review (the shape's in-loop-critique branch, with the roster count sized at G1)." The "no
+  sized end-stage review / in-loop-critique branch" reference is **retained** — plan still has no
+  end-stage review; only its in-loop roster is now sized.
+- **Consumers assessed:** plan-only (Contract fill is plan's own; single-consumer, in-wave per D9).
+
 ## [v0.15.0] Conversion note (D2/S4 — one-shot → team-form, 2026-07-19)
 
 - **Command-specific rationale (user-ratified):** plan runs a producer↔two-reviewer cycle (≤3 rounds

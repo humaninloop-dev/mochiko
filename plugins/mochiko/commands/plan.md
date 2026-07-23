@@ -55,16 +55,18 @@ team-form commands.
   brownfield analysis when present, the templates to fill per its skills. Round > 1 within a phase
   is a message to the same seat carrying the reviewers' gap list verbatim (fix the flagged gaps;
   don't regress passing sections). It never grades.
-- **feasibility reviewer** — `mochiko:principal-architect` (`review-feasibility`), spawned **cold
+- **feasibility reviewer** — `mochiko:principal-architect` (`review-feasibility`), seated **only when
+  the G1 sizing ruling includes it** (dropped under completeness-only / none), spawned **cold
   after the Phase-1 analysis is authored**, never in contact with the producer. Grade cross-artifact
   feasibility from the files → `feasibility-report.md` (three-state `feasible` / `needs-revision` /
   `infeasible`). It grades **once**; re-fire it (a message to the same seat) **only on a structural
   change** — new/changed constraints, expanded requirement scope, or modified NFR targets. It never
   grades Phase 2 (the completeness reviewer carries cross-artifact consistency there). Its output is
   **lead-adjudicated input** (the `review-*` family boundary).
-- **completeness reviewer** — `mochiko:devils-advocate` (`review-plan-artifacts`), spawned **cold at
-  the first completeness review**, never in contact with the producer, one **named standing seat
-  across both phases**. Phase 1: grade completeness / coverage / consistency from the files →
+- **completeness reviewer** — `mochiko:devils-advocate` (`review-plan-artifacts`), seated **unless the
+  G1 sizing ruling waives it** (kept under both / completeness-only; dropped only under none),
+  spawned **cold at the first completeness review**, never in contact with the producer, one
+  **named standing seat across both phases**. Phase 1: grade completeness / coverage / consistency from the files →
   `advocate-report.md` (`ready` / `needs-revision` / `critical-gaps`). Phase 2: a message to the
   same seat in **incremental mode** — a full review of the new design artifacts plus a brief
   consistency check back to the Phase-1 analysis (the `review-plan-artifacts` incremental procedure);
@@ -102,6 +104,16 @@ team-form commands.
    the feature root) + `slices/<slice>/plan.md`; brief each reviewer with the artifact sets {this
    slice's extensions + its `plan.md`} / {the prior accumulated artifacts}, so the extension is graded
    against what earlier slices established.
+6. **Review sizing (part of G1).** Run the shape's sized review with these bindings, applied to the
+   **in-loop reviewer roster** — plan reviews every round, so the gate sizes the roster's *count* at
+   entry, not an end-stage pass. **Weight statement** = story count (the slice's when slice-scoped),
+   whole-spec vs slice-scoped, governance tier. **Default keying** = `production`/`regulated` tier or
+   a foundation slice → **both** reviewers; `poc`/`internal` light features → **completeness-only**
+   (the feasibility reviewer drops — its named risk: cross-artifact contradictions then surface only
+   through the completeness reviewer's consistency checks and your verdict, with no dedicated
+   feasibility pass); **none** → recorded waiver. **None branch** = the waiver lands in `plan.md`'s
+   Review section; your clause-(3) Read of every artifact stays the validation floor and never thins.
+   The ruling holds for the run — carried in-session until `plan.md` assembly.
 
 ## Phase 1 — Analysis loop  *(you own the round counter and the verdict)*
 
@@ -167,51 +179,67 @@ it must clear a verdict again), or **reject** (abort; the drafts remain under
 
 ## Phase 5 — Finalize
 
-Report the artifacts (the six deliverables + `plan.md` + the three round reports
-`techanalyst-report.md` / `feasibility-report.md` / `advocate-report.md`), the per-phase round
-counts, the decision / entity / endpoint counts, a suggested commit (`docs: plan <feature>`), and
-the next step (`/mochiko:tasks`). Offer a lightweight retain/clean choice for the intermediate round
-reports; never offer to delete `plan.md` or the six artifacts — they are the deliverables.
+Report the artifacts (the six deliverables + `plan.md` + the round reports the sized roster produced
+— `techanalyst-report.md`, plus `feasibility-report.md` / `advocate-report.md` per the G1 roster),
+the per-phase round counts, the decision / entity / endpoint counts, a suggested commit
+(`docs: plan <feature>`), and the next step (`/mochiko:tasks`). **Clean the intermediate round reports
+by default** (retain only on request); never touch `plan.md` or the six artifacts — they are the
+deliverables.
+
+**Cost entry.** Append a row to `.mochiko/specs/<feature>/run-costs.md` per
+`templates/run-costs-template.md`: ask the user for the `/usage` figure (record `not captured` if
+unavailable — never block), plus the run shape you observed — seats spawned, per-phase rounds, the G1
+sizing ruling, date / workflow / slice. Manual baseline (the epic-ruled protocol); deeper per-seat
+forensics need a transcript parse and stay on-demand.
 
 ## Contract (authoring-time fill — governed by `mochiko:loop-discipline`)
 
 - **Done-condition:** default **FAIL**; clears only when **(1)** all six artifacts exist
   (`requirements.md` · `constraints-and-decisions.md` · `nfrs.md` · `data-model.md` ·
-  `contracts/api.yaml` · `quickstart.md`), **(2)** `principal-architect` returns `feasible` on the
-  Phase-1 analysis **and** `devils-advocate` returns `ready` on both phases, each grounded in the
-  files, **(3)** *you* Read the artifacts + both reviewer reports and confirm no blocking gap remains
-  (each reviewer's status is input, never the gate), **and (4)** the Phase-4 human acceptance on
-  `plan.md` has cleared. Out of rounds = escalate, never done.
+  `contracts/api.yaml` · `quickstart.md`), **(2)** each reviewer **on the G1-sized roster** returns
+  its clearing status grounded in the files — `principal-architect` `feasible` on the Phase-1
+  analysis, `devils-advocate` `ready` on both phases — a reviewer the ruling dropped contributing its
+  **recorded waiver** in place of a status, never a silent skip, **(3)** *you* Read the artifacts +
+  the roster's reviewer reports and confirm no blocking gap remains (each reviewer's status is input,
+  never the gate; your Read of every artifact never thins, whatever the roster), **and (4)** the
+  Phase-4 human acceptance on `plan.md` has cleared. Out of rounds = escalate, never done.
 - **Producer ↔ validator:** `technical-analyst` (authoring-technical-requirements,
   patterns-technical-decisions, patterns-entity-modeling, patterns-api-contracts) authors both
-  phases, never grades; **two independent reviewers**, neither the producer — `principal-architect`
-  (review-feasibility) grades feasibility, `devils-advocate` (review-plan-artifacts) grades
-  completeness — from the files, never authoring. Disjoint agents, disjoint skills, structurally
-  separated (both reviewers cold-spawned, gap lists lead-routed, no producer↔reviewer contact).
-  **Validation model:** the bounded in-loop critique — every round, unsized by design; no sized
-  end-stage review (the shape's in-loop-critique branch).
+  phases, never grades; the validators are the **reviewers on the G1-sized roster**, neither the
+  producer — `principal-architect` (review-feasibility) grades feasibility, `devils-advocate`
+  (review-plan-artifacts) grades completeness — from the files, never authoring. Disjoint agents,
+  disjoint skills, structurally separated (reviewers cold-spawned, gap lists lead-routed, no
+  producer↔reviewer contact). Under a **none** waiver you + the user are the validator — recorded,
+  never silent (your clause-(3) Read never thins).
+  **Validation model:** the bounded in-loop critique — every round, at the **G1-sized roster**
+  (both / completeness-only / none-with-recorded-waiver, per Phase 0); no sized *end-stage* review
+  (the shape's in-loop-critique branch, with the roster count sized at G1).
 - **Bounds:** cap **3** produce↔review rounds **per phase** (you count); no-progress exit when a
   reviewer's gap set is unchanged round-over-round; kill-switch `PLAN_STOP` checked before each seat
   send; a G5 amend re-enters the relevant bounded phase.
-- **Human gates:** G1 input recovery + governance / entry / brownfield surface · G2
-  feasibility-rejection · G3 clarification (incl. the "Research this" knowledge-gap branch) · G4
-  exit-early / escalation · G5 `plan.md` acceptance · escalation on any guard trip.
+- **Human gates:** G1 input recovery + governance / entry / brownfield surface + **review sizing
+  (both / completeness-only / none-with-waiver)** · G2 feasibility-rejection · G3 clarification
+  (incl. the "Research this" knowledge-gap branch) · G4 exit-early / escalation · G5 `plan.md`
+  acceptance · escalation on any guard trip.
 
 ## State recovery
 
 Pause posture (per the shape): note the resume stage on the deliverable. Resume from workspace
 evidence, respawning what the stage needs — a respawned producer re-reads the artifacts + the gap
-list; a reviewer respawn is cold by design:
+list; a reviewer respawn is cold by design. The reviewer roster on resume follows the **G1 sizing
+ruling**; recover it from the reviewer evidence on disk (a `feasibility-report.md` on disk means the
+feasibility reviewer was seated) — or, resumed before any reviewer wrote and with `plan.md` not yet
+assembled to carry it, **re-confirm the ruling in one question** before respawning:
 
 | Evidence in the workspace | Resume at |
 |---------------------------|-----------|
 | no `.mochiko/specs/<feature>/spec.md` | Phase 0 (entry blocked) |
 | `slices.md` present | slice-scoped: resolve the current slice (Phase 0 step 5); the rows below then read per-slice artifacts under `slices/<slice>/` alongside the shared feature root |
 | `spec.md` present, no `requirements.md` | Phase 1 (produce) |
-| analysis artifacts present, no `feasibility-report.md` / `advocate-report.md` this round | Phase 1 (review) |
-| analysis reviews not `feasible`+`ready`, within the cap | Phase 1 (loop control) |
+| analysis artifacts present, the G1 roster's reviewer reports not yet written this round | Phase 1 (review) |
+| analysis reviews not clearing on the G1 roster (`feasible`+`ready`, waived seats excepted), within the cap | Phase 1 (loop control) |
 | analysis cleared, no `data-model.md` | Phase 2 (produce) |
-| design artifacts present, advocate not `ready`, within the cap | Phase 2 (loop control) |
+| design artifacts present, the sized roster not `ready` (or waived), within the cap | Phase 2 (loop control) |
 | both phases cleared, no `plan.md` | Phase 3 |
 | `plan.md` present, not yet accepted | Phase 4 |
 | accepted | Phase 5 |

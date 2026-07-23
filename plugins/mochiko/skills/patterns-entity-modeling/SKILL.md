@@ -198,6 +198,8 @@ See [VALIDATION-RULES.md](references/VALIDATION-RULES.md) for constraint pattern
 
 This is the **single canonical `data-model.md` template**. Every attribute carries a sensitivity classification; every Confidential or Restricted attribute carries a Sensitivity Details block (format in [DATA-SENSITIVITY.md](references/DATA-SENSITIVITY.md)).
 
+**Cite upstream by ID, don't re-quote it.** An entity's `Traceability` line and a realized DS-XXX note reference the upstream requirement by ID (FR-/US-/DS-), never the requirement's sentence — a one-line gloss only where a bare ID would be unreadable. The **Data Sensitivity Summary** and **Entity Summary** tables are this artifact's compact ID index, the coverage surface the plan reviewer grades entity→requirement traceability against; keep them current rather than restating requirement text per entity.
+
 ```markdown
 # Data Model: {feature_id}
 
@@ -361,7 +363,8 @@ Before finalizing entity model, verify:
 - [ ] Data Sensitivity Summary table reflects all Confidential+ attributes
 - [ ] State machines documented for stateful entities
 - [ ] Brownfield status indicated for each entity
-- [ ] Traceability to requirements documented
+- [ ] Traceability to requirements documented — cited by ID (FR-/US-/DS-), not re-quoted (one-line gloss max)
+- [ ] Sensitivity Details blocks carry only per-attribute handling (encryption / retention / access / audit / masking / compliance); the level definitions and DS-XXX text are referenced, not restated per block
 
 ## Common Mistakes
 

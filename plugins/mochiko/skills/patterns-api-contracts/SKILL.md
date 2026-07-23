@@ -274,7 +274,7 @@ security:
 
 ## Traceability
 
-Track endpoint to requirement mapping:
+Track endpoint to requirement mapping. **Cite upstream by ID, never re-quote it:** an endpoint's `Source Requirements` and this table reference FR-/US- by ID with at most a one-line description — never the requirement's sentence reproduced. This endpoint→requirement table is the contract's compact ID index, the coverage surface the plan reviewer grades endpoint coverage against; keep it current and let the IDs carry the links.
 
 | Endpoint | Method | FR | US | Description |
 |----------|--------|-----|-----|-------------|
@@ -304,7 +304,8 @@ Before finalizing API contracts:
 - [ ] Endpoints wrapping external systems have an `x-integration` block with documented failure modes and a fallback for each
 - [ ] Brownfield patterns matched (if applicable)
 - [ ] OpenAPI spec is valid
-- [ ] Traceability to requirements complete
+- [ ] Traceability to requirements complete — FR-/US- cited by ID, not re-quoted (one-line description max)
+- [ ] Schema descriptions stay compact — data-model attribute definitions referenced, not restated (types map by reference to `data-model.md`)
 
 ## Common Mistakes
 

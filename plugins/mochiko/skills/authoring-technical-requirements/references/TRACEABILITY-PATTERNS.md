@@ -6,6 +6,8 @@ Cross-reference patterns, dependency chains, and completeness validation rules f
 
 Every artifact connects to others. No artifact stands alone. The traceability web ensures that business intent is preserved through technical translation, and that every technical decision traces to a business justification.
 
+**The link is the ID, not the quoted text.** Every cross-reference in these patterns is a bare ID (FR-/TR-/C-/D-/NFR-/IP-/SC-) — a one-line gloss only where a bare ID would be unreadable, never the upstream sentence reproduced. Re-quoting source text down the chain adds no traceability and multiplies every artifact's cost across the ~ten mandated reads a feature gets; the compact ID index (each artifact's Traceability Summary / matrix) is the coverage surface the independent review grades against.
+
 ```
 Business Specifications (FR-XXX, user stories)
         │
@@ -130,7 +132,7 @@ Some traceability relationships form chains that must be consistent end-to-end. 
 ### Full Traceability Chain
 
 ```
-FR-001 (business: "users can sign in")
+FR-001 (business: user sign-in)
   └── TR-001 (technical: authentication flow)
         ├── C-001 (constraint: must use existing identity provider)
         ├── D-002 (decision: JWT with refresh tokens)
@@ -146,7 +148,7 @@ FR-001 (business: "users can sign in")
 ### Constraint Impact Chain
 
 ```
-C-002 (regulatory: GDPR Art. 17 right to erasure)
+C-002 (regulatory: right to erasure)
   ├── TR-015 (technical: data deletion workflow)
   ├── D-004 (decision: soft-delete with 30-day purge)
   └── IP-003 (provisioning: scheduled purge job)

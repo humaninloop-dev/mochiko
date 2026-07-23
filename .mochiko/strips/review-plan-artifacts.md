@@ -10,6 +10,18 @@ bullet like the one stripped from `review-specifications`). One contested keep (
 is a library-wide consistency ruling, not a cluster call (see the wave return); note L16 already carries
 the `loop-discipline` reference the strip disposition would add.
 
+## [v0.19.0] Wave context — token-reduction build, wave 1 (D4 additive check)
+
+Token-reduction epic **D4** (reference-by-ID). **One additive row, no strips:** under the
+Cross-Artifact Consistency → **Requirement Traceability** named group
+(`references/ARTIFACT-CHECKLISTS.md`), a coverage check was added — coverage is verified against each
+artifact's own ID index (Traceability Summary / matrix), not prose, and upstream requirement text
+re-quoted inline instead of cited by ID is flagged as a traceability gap. This closes the D4 loop on
+the review side: the authoring skills keep the ID index as the coverage surface, and the completeness
+reviewer grades against it. An **addition, not a strip** — logged here for provenance. Plan-cluster-only
+skill (completeness mirror-checklist mounted on `devils-advocate`); single-consumer, in-wave per D9. No
+`command-shape.md` touch this wave → no cross-command re-audit.
+
 ## [v0.15.0] KEPT: the "Report shape (incremental mode)" block
 - **Tier-2 evidence:** scrutinized directly against the `review-specifications` Output-Format strip
   precedent (specify wave, v0.13.0) — does the embedded report mock restate a template-owned shape?
