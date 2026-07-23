@@ -1,34 +1,15 @@
-<!--
-COMMAND SHAPE — the codified mochiko command pattern
-====================================================
-The single authoritative home of the shape /mochiko:brainstorm and /mochiko:setup were
-built in (design: .mochiko/brainstorms/pattern-codification-and-minimalism/record.md —
-D1 codifies the artifact shape, D3/D8 make this template the surface, fold S2 makes it
-the SOLE home). Commands and the keeper skills (authoring-commands, validation-command-shape)
-REFERENCE this file; none of them restate it. A shape revision is therefore one edit here
-plus a re-audit of the conformant commands — the D1 churn constraint, carried structurally.
-
-Two layers, deliberately (fold S2 closed D2's layering thread):
-- LAYER 1 — FORM-AGNOSTIC CORE: what every mochiko command carries, team-form or one-shot.
-- LAYER 2 — TEAM TRANSPORT: what a command that hard-requires agent teams adds.
-A one-shot command conforms to Layer 1 alone; a team-form command to both.
-
-HOW A COMMAND CONSUMES THIS: an obligated read. A conformant command instructs its lead to
-Read this file up front, then states only its per-workflow parameters. Everything tagged
-[PARAM] below is a parameter — it lives in the command; everything else is shape — it lives
-here and only here. A command line that must restate shape content (rare) carries an inline
-marked exception — `<!-- shape-exception: why -->` — the audit's deterministic floor keys
-on that marker.
-
-S8 CHECKPOINT: the home-revision checkpoint ran at the first one-shot→team-form conversion
-(specify, 2026-07-19) → shape v2: the artifact's uncertainty carrier became a [PARAM]
-(lead-penned records carry confidence marks; producer-authored artifacts carry their own
-assumption/open-question surface), the sized end-stage review's applicability was scoped
-(an in-loop independent critique satisfies validation via the Contract clause), and the
-ground rules (kernel-free · no git mutations) were homed here from the command footers.
--->
-
 # The Mochiko Command Shape
+
+The single authoritative home of the mochiko command pattern — commands and the keeper
+skills reference this file; none restate it (a shape revision is one edit here plus a
+re-audit of the conformant commands). **How a command consumes this:** an obligated read —
+the lead Reads this file up front; the command states only its per-workflow parameters.
+Everything tagged **[PARAM]** below is a parameter — it lives in the command; everything
+else is shape — it lives here and only here. A command line that must restate shape content
+(rare) carries an inline marked exception — `<!-- shape-exception: why -->` — the audit's
+deterministic floor keys on that marker. A one-shot command conforms to Layer 1 alone; a
+team-form command to both layers. (Design provenance + revision history:
+`.mochiko/strips/command-shape.md`.)
 
 ## Layer 1 — form-agnostic core
 
@@ -105,6 +86,18 @@ written** — a per-run form whose values are constant at authoring time is ritu
 DAG-mediated orchestration. A command suggests commits; it never runs git mutations and
 never pushes.
 
+**Run-cost entry.** Every run ends with a recorded cost entry — a **manual baseline** (the
+platform exposes no session-readable token total; deeper transcript forensics stay an
+on-demand, human-initiated step). At finalize, ask the user for the visible usage figure
+(e.g. from `/usage`) and append one row to `run-costs.md` beside the deliverable (the
+feature directory for feature-scoped runs; the workflow's artifact directory otherwise):
+
+`| date | command | scope | seats | rounds/cycles | review sizing | usage (user-supplied, or "unavailable") | notes |`
+
+Recorded with that limitation stated. The row is what makes any efficiency change
+verifiable against a before/after — never skip it because the figure is unavailable;
+record the run-shape counts regardless.
+
 **Recovery.** Sessions and teams do not survive `/resume`, and a shared account limit can
 throttle the team and the main session together — escalation then has nowhere to go but
 pause. Pause posture: note resume state on the deliverable [PARAM: where]. Resume from
@@ -142,7 +135,8 @@ whom is the independence guarantee, carried by the roster, never by a persona's 
 
 ---
 
-**Shape version:** v2 (2026-07-19 — the S8 home-revision checkpoint, run at the specify
-conversion: uncertainty-carrier [PARAM] · sized-review applicability scoped · ground rules
-homed) · **Governed by:** `mochiko:loop-discipline` · **Pairs with:** `agent-dispatch.md`
-(call-time briefing + seat transport) · `workflow-contract.md` (the per-run contract form).
+**Shape version:** v3 (2026-07-23 — workflow-token-reduction wave 1: run-cost entry added ·
+provenance header relocated to the strip note; v2 2026-07-19 — the S8 home-revision
+checkpoint) · **Governed by:** `mochiko:loop-discipline` · **Pairs with:**
+`agent-dispatch.md` (call-time briefing + seat transport) · `workflow-contract.md` (the
+per-run contract form) · `report-format.md` (the report envelope seats write to).

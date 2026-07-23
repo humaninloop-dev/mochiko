@@ -48,8 +48,8 @@ bet is the same `Contested` dogfood-pilot ruling as the other team-form commands
 - **critic** — `mochiko:devils-advocate`, spawned **cold at first critique**, never in
   contact with the producer. Brief it to run `mochiko:review-specifications` against
   `spec.md` — it Reads the spec file itself, never the producer's report — writing
-  `advocate-report.md` (from `templates/advocate-report-template.md`): severity-bucketed
-  gaps, product-framed clarifying questions, genuine strengths, and a recommended status
+  `advocate-report.md` (from `templates/advocate-report-template.md`): severity-classified
+  findings, product-framed clarifying questions, and a recommended verdict
   (`ready` / `needs-revision` / `critical-gaps`). Round > 1 is a message to the same seat:
   re-Read the revised spec. Its output is **lead-adjudicated input** (the `review-*`
   family boundary); there is no sized end-stage review here — the bounded in-loop critique
@@ -93,8 +93,9 @@ draft stays under `.mochiko/specs/<feature>/`).
 
 **Finalize** — report the artifacts (`spec.md` deliverable + the two reports), the round
 count, story / FR counts, a suggested commit (`docs: specify <feature>`), and the next
-step (`/mochiko:plan`). Offer a retain/clean choice for the round reports; never offer to
-delete `spec.md` — it is the deliverable.
+step (`/mochiko:plan`). Round reports are cleaned by default (their outcome stamps live in
+the deliverable); the user may ask to retain them. Never offer to delete `spec.md` — it is
+the deliverable.
 
 ## Contract (authoring-time fill — governed by `mochiko:loop-discipline`)
 

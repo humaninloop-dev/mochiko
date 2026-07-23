@@ -61,8 +61,9 @@ human adjudicates; the reviewer's verdict never clears anything by itself.
 | `authoring-requirements` | writing technology-agnostic functional requirements (FR-XXX) with measurable success criteria (SC-XXX) and edge cases |
 | `authoring-user-stories` | writing prioritized user stories (P1/P2/P3) with independently testable Given/When/Then acceptance scenarios |
 | `spec-template` (template) | the `spec.md` the analyst authors and the loop converges on — lead-seeded; header `status` carries the loop's done-condition |
-| `analyst-report-template` (template) | structuring the producer's per-round disclosure (summary, assumptions, what-changed-this-round) the lead reads directly |
-| `advocate-report-template` (template) | **shared (specify + plan)** — structures the completeness reviewer's grounded review (severity-bucketed gaps, clarifying questions, recommended status) the lead reads to own the verdict; the plan completeness reviewer reuses it as-is |
+| `analyst-report-template` (template) | structuring the producer's per-round disclosure (assumptions, what-changed-this-round) the lead reads directly |
+| `advocate-report-template` (template) | **shared (specify + plan + tasks + slice)** — structures every pipeline reviewer's grounded review, machine-first (severity-classified `findings:` YAML, clarifying questions, recommended verdict, one-line `strengths:`) the lead reads to own the verdict |
+| `report-format` (template) | **shared (all workflows)** — the report envelope every workflow report follows: machine-first frontmatter, conditional prose (failures keep narrative; clean reports are frontmatter-only), no-self-verdict, no-restatement; each report template carries only its payload schema over this envelope |
 
 ### Plan cluster (model-invoked — auto-reached during a `/mochiko:plan` run)
 | Skill | Reach when |

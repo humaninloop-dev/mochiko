@@ -18,6 +18,7 @@ The transformer cluster — the dogfooded tool that ported everything below it. 
 |--------|------|------|-------|
 | `[x]` | `loop-discipline` | skill | Doctrine: the four sound-loop rules |
 | `[x]` | `workflow-contract` | template | Fill-in loop contract (default FAIL) |
+| `[x]` | `report-format` | template | **NEW 2026-07-23 (token-reduction wave 1, v0.22.0):** the report envelope single-source — machine-first YAML-first shape every workflow report follows (conditional prose per S8, no-self-verdict, no-restatement, findings schema); all eight report formats reference it. Design: `.mochiko/brainstorms/workflow-token-reduction/record.md` + ROADMAP Decision Trail wave-1 entry |
 | `[R]` | `assess-primitive` | skill | Branch-by-class + 7-check lens + responsibility trace; **+ command-altitude rule (generic discipline → `dedupe`, not `moved-to-lead`) (2026-06-30)** |
 | `[R]` | `reconcile-cluster` | skill | Relational verdicts + rehome-orchestration |
 | `[R]` | `transform-recipes` | skill | Per-disposition recipes + convention-wiring pass; **+ thin-command `redesign` target + wiring step 6 (single-source) (2026-06-30)** |

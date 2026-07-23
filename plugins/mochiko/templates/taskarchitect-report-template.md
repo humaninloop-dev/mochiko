@@ -1,80 +1,53 @@
 # Task Architect Report Template
 
-This template defines the structure for the task-architect's self-disclosure report — authored alongside the task artifacts (`task-mapping.md` and/or `tasks.md`) on each round and read directly by the lead and the reviewer to follow what was produced and what changed.
+The task-architect's self-disclosure report — authored alongside the task artifacts
+(`task-mapping.md` and/or `tasks.md`) on each round; read by the lead and the reviewer to
+follow what was produced and what changed. Envelope + shared rules (machine-first, no
+self-verdict, conditional prose): `templates/report-format.md` — this file carries only the
+payload.
 
 ---
 
 ```markdown
-# Task Architect Report
-
-> Feature: {{feature_id}}
-> Round: {{round}}
-> Generated: {{timestamp}}
-
 ---
-
-## What Was Produced
-
-{{production_summary}}
-
+report: disclosure
+feature: {{feature_id}}
+round: {{round}}
+produced: [task-mapping.md]            # or [tasks.md], or both — discloses, never drives the mapping → tasks sequence
+changed_this_round:                    # round 1 for an artifact: [initial]; later: the reviewer gap IDs addressed
+  - "{{G1: C4 split into C4/C5 — two value seams}}"
+slicing_notes:                         # deltas/judgment calls NOT already in task-mapping.md (the rationale's home); [] on a clean round
+  - "{{C3 kept unsplit despite size — single seam, one line why}}"
+governance_alignment: "{{aligned | the rules/GI IDs touched and any exception, one line}}"
+open_questions: []                     # producer-surfaced unknowns feeding the clarification loop
+handoff: "{{which artifacts to grade + known soft spots, one line}}"
 ---
-
-## What Changed This Round
-
-{{changes_this_round}}
-
----
-
-## Vertical-Slice Rationale
-
-{{slice_rationale}}
-
----
-
-## TDD Structure
-
-{{tdd_structure}}
-
----
-
-## Governance Alignment
-
-{{governance_alignment}}
-
----
-
-## Open Questions
-
-{{open_questions}}
-
----
-
-## Handoff to Review
-
-{{handoff_to_review}}
-
----
-
-## Artifacts Produced (optional)
-
-| Artifact | What's in it |
-|----------|--------------|
-| {{artifact}} | {{artifact_summary}} |
 ```
 
 ---
 
 ## Usage Notes
 
-1. **This is a self-disclosure report, not a verdict.** It records what the task-architect produced this round; it carries no done-state and no PASS/FAIL. The clearing verdict lives in the reviewer report, and the lead owns the loop decision — never read this report as a gate. There is deliberately no "Completion" and no "Ready for Review" field: the producer must not self-assert a state the lead owns.
-2. **Foreground prose; the lead and reviewer read it directly.** What Was Produced, What Changed This Round, the Vertical-Slice Rationale, the TDD Structure, Governance Alignment, and Open Questions are the decision-relevant content. There is no parser — write for a human reader.
-3. **`{{round}}`** is the lead's bounded-loop round counter: round 1 is the first draft of the artifact this round produced; later rounds are revisions following a reviewer critique.
-4. **The report discloses which artifact-type it produced — it does not drive the sequence.** State in What Was Produced (and list in Artifacts Produced) whether this round produced the story→cycle mapping (`task-mapping.md`), the cycle-based task list (`tasks.md`), or a revision of one. The lead owns the mapping → tasks sequence and supplies the mapping as input when the task list is produced; this report only *discloses* what it made.
-5. **What Changed This Round** — on the first round for an artifact, state "Initial mapping" or "Initial task list." On later rounds, list the specific gaps addressed since the previous round, so the lead can see progress (and detect a stalled, no-change round).
-6. **Vertical-Slice Rationale** discloses why the slices were cut the way they were — why each cycle is a true vertical slice, how foundation was separated from features, and where inter-cycle dependencies come from. It is descriptive self-disclosure that helps the reviewer judge slicing quality; it is not a claim that the slicing is correct.
-7. **TDD Structure** discloses how each cycle follows test-first discipline — the test-before-implementation ordering and the real-integration verification task that gates each cycle's completion. Descriptive, not a verdict on the structure's soundness.
-8. **Handoff to Review** — `{{handoff_to_review}}` is a *pointer*, not a claim: name what is handed to the reviewer to grade (which artifacts, what to focus on, any known soft spots). It is **not** a "ready" / "done" assertion — the verdict is the reviewer's and the clearing decision is the lead's.
-9. **Governance Alignment** discloses how the produced artifacts align to the project's governance (the CLAUDE.md governance region + its `.claude/rules/mochiko/` files); **Open Questions** records producer-surfaced unknowns and feeds the clarification loop / gap routing, where the reviewer stress-tests them.
-10. **`## Artifacts Produced` is optional.** List the artifacts written this round — `task-mapping.md` and/or `tasks.md` — as a quick pointer to what the reviewer should open. The reviewer and lead read those artifacts directly, so this is a convenience disclosure, not a tracked metric (it replaces the brain-era per-phase count/metric tables) — omit it if it adds nothing.
-11. **Output location** — the filled report lives at `.mochiko/specs/<feature>/taskarchitect-report.md`, seeded and collected by the lead, alongside the task artifacts.
-12. **This is a reference template** — the task-architect fills in actual content following this structure.
+1. **This is a self-disclosure report, not a verdict.** No done-state, no PASS/FAIL, and
+   deliberately no "Completion"/"Ready for Review" field — the producer must not
+   self-assert a state the lead owns (the envelope's no-self-verdict rule). The clearing
+   verdict lives in the reviewer report; the lead owns the loop decision.
+2. **Machine-first; the rationale lives in the deliverable.** `task-mapping.md` is the
+   source of truth for slicing decisions — the vertical-slice rationale, foundation
+   separation, and dependency reasoning are authored *there*, where the reviewer grades
+   them. `slicing_notes` carries only judgment calls that have no home in the artifact
+   (e.g. a considered-and-rejected split). Never restate mapping content here; cite cycle
+   IDs.
+3. **`produced`** discloses which artifact-type this round made; the lead owns the
+   mapping → tasks sequence and supplies the mapping as input when the task list is
+   produced.
+4. **`changed_this_round`** — first round for an artifact: `[initial]`. Later rounds: the
+   specific reviewer gaps addressed by ID, so the lead can see progress and detect a
+   stalled, no-change round.
+5. **`handoff`** is a *pointer*, not a claim — **not** a "ready" assertion.
+6. A routine round is frontmatter-only; add `## Notes of note` only for genuine
+   difficulties the fields can't carry.
+7. **Output location** — `.mochiko/specs/<feature>/taskarchitect-report.md`, seeded and
+   collected by the lead, alongside the task artifacts.
+8. **This is a reference template** — the task-architect fills in actual content following
+   this structure.

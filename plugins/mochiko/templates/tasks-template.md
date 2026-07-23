@@ -20,7 +20,7 @@ Each cycle follows TDD discipline:
 - **TN.X-1**: Refactor and verify
 - **TN.X**: **TEST:** — verify [behavior] with real infrastructure (Setup/Action/Assert/Capture)
 
-The final task of every cycle is a real-infrastructure `**TEST:**` verification task — not a plain demo. It exercises the slice against real APIs, files, or databases and **gates cycle completion**. See [`CYCLE-STRUCTURE.md`](../skills/patterns-vertical-tdd/references/CYCLE-STRUCTURE.md) for the canonical `**TEST:**` grammar (Setup/Action/Assert/Capture) and worked examples.
+The final task of every cycle is a real-infrastructure `**TEST:**` verification task — not a plain demo. It exercises the slice against real APIs, files, or databases and **gates cycle completion**. See [`TEST-GRAMMAR.md`](../skills/patterns-vertical-tdd/references/TEST-GRAMMAR.md) for the canonical `**TEST:**` grammar (Setup/Action/Assert/Capture) and worked examples.
 
 ### Markers
 

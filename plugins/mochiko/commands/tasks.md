@@ -150,8 +150,9 @@ bounded; it must clear a verdict again), or **reject** (abort; the drafts remain
 Report the artifacts (`task-mapping.md` · `tasks.md` deliverables + the round reports
 `taskarchitect-report.md` / `advocate-report.md`), the per-phase round counts, the cycle / foundation
 / feature / `[P]` counts, a suggested commit (`docs: tasks <feature>`), and the next step
-(`/mochiko:implement`). Offer a lightweight retain/clean choice for the intermediate round reports;
-never offer to delete `task-mapping.md` or `tasks.md` — they are the deliverables.
+(`/mochiko:implement`). Intermediate round reports are cleaned by default; the user may ask
+to retain them. Never offer to delete `task-mapping.md` or `tasks.md` — they are the
+deliverables.
 
 ## Contract (authoring-time fill — governed by `mochiko:loop-discipline`)
 

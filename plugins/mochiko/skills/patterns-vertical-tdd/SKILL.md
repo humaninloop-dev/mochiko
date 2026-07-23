@@ -133,7 +133,7 @@ The canonical `tasks.md` skeleton the producer fills is [`tasks-template.md`](..
 **Checkpoint**: [Observable outcome when cycle is complete]
 ```
 
-The final task of every cycle is a **`**TEST:**` verification task** — a real-infrastructure gate, not another automated unit test. Its full grammar (fields, action modifiers, assert patterns, classification) lives in [CYCLE-STRUCTURE.md](references/CYCLE-STRUCTURE.md).
+The final task of every cycle is a **`**TEST:**` verification task** — a real-infrastructure gate, not another automated unit test. Its full grammar (fields, action modifiers, assert patterns, classification) lives in [TEST-GRAMMAR.md](references/TEST-GRAMMAR.md).
 
 ### Task Numbering
 
@@ -224,7 +224,7 @@ The verification task should:
 - Verify the slice against its spec acceptance criteria
 - Gate cycle completion — this real-infrastructure gate is what makes the vertical slice actually vertical
 
-See [CYCLE-STRUCTURE.md](references/CYCLE-STRUCTURE.md) for the full `**TEST:**` grammar (Setup / Action / Assert / Capture).
+See [TEST-GRAMMAR.md](references/TEST-GRAMMAR.md) for the full `**TEST:**` grammar (Setup / Action / Assert / Capture).
 
 ## Mapping Stories to Cycles
 

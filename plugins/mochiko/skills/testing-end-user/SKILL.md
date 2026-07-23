@@ -13,7 +13,7 @@ Execute verification tasks that validate real infrastructure behavior through st
 
 Verification testing exists to catch failures before they reach production. Every shortcut in this process is a potential production incident waiting to happen.
 
-**Grammar ownership (single source):** the `**TEST:**` construct — its legal marker set, field skeleton, action-modifier vocabulary, and assert-pattern vocabulary — is authored and owned by `patterns-vertical-tdd` in [`CYCLE-STRUCTURE.md`](../patterns-vertical-tdd/references/CYCLE-STRUCTURE.md). This skill **consumes** that grammar; it does not redefine it. What this skill owns is the **runtime**: how to detect, parse, execute, evaluate, capture, classify, report, and gate. Where the grammar and the execution meet below, the vocabulary is referenced and the *how* is retained.
+**Grammar ownership (single source):** the `**TEST:**` construct — its legal marker set, field skeleton, action-modifier vocabulary, and assert-pattern vocabulary — is authored and owned by `patterns-vertical-tdd` in [`TEST-GRAMMAR.md`](../patterns-vertical-tdd/references/TEST-GRAMMAR.md). This skill **consumes** that grammar; it does not redefine it. What this skill owns is the **runtime**: how to detect, parse, execute, evaluate, capture, classify, report, and gate. Where the grammar and the execution meet below, the vocabulary is referenced and the *how* is retained.
 
 ## When to Use
 
@@ -44,7 +44,7 @@ Detect a verification task by its marker line:
 - [ ] **TN.X**: **TEST:** - {Description}
 ```
 
-The full field skeleton (`**Setup**` / `**Action**` / `**Assert**` / `**Capture**`) and the legal marker set — unified `**TEST:**` plus the legacy variants (`TEST:VERIFY`, `TEST:CONTRACT`, `HUMAN VERIFICATION`) — are defined by the grammar owner in [`CYCLE-STRUCTURE.md`](../patterns-vertical-tdd/references/CYCLE-STRUCTURE.md) (§ *Unified TEST: Format*, § *Legacy Format Support*). Consume that vocabulary; do not re-enumerate it here. What this skill owns is *how to find and read those tasks* — the detection boundaries and field-extraction algorithm live in [references/TASK-PARSING.md](references/TASK-PARSING.md).
+The full field skeleton (`**Setup**` / `**Action**` / `**Assert**` / `**Capture**`) and the legal marker set — unified `**TEST:**` plus the legacy variants (`TEST:VERIFY`, `TEST:CONTRACT`, `HUMAN VERIFICATION`) — are defined by the grammar owner in [`TEST-GRAMMAR.md`](../patterns-vertical-tdd/references/TEST-GRAMMAR.md) (§ *Unified TEST: Format*, § *Legacy Format Support*). Consume that vocabulary; do not re-enumerate it here. What this skill owns is *how to find and read those tasks* — the detection boundaries and field-extraction algorithm live in [references/TASK-PARSING.md](references/TASK-PARSING.md).
 
 ### Execution Sequence
 
@@ -60,7 +60,7 @@ Run setup commands sequentially. Fail fast if any setup fails — a setup failur
 
 **3. Execute Actions**
 
-Run each action honoring its modifiers. The modifier *vocabulary* — `(background)`, `(timeout Ns)`, `(in path)` — is defined in [`CYCLE-STRUCTURE.md`](../patterns-vertical-tdd/references/CYCLE-STRUCTURE.md) (§ *Action Modifiers*). The **execution semantics this skill owns**:
+Run each action honoring its modifiers. The modifier *vocabulary* — `(background)`, `(timeout Ns)`, `(in path)` — is defined in [`TEST-GRAMMAR.md`](../patterns-vertical-tdd/references/TEST-GRAMMAR.md) (§ *Action Modifiers*). The **execution semantics this skill owns**:
 
 - **`(background)`** — start the action asynchronously and **track its PID** so its output can be read for later asserts and the process can be cleaned up (pass or fail).
 - **`(timeout Ns)`** — enforce `N` seconds as the per-action limit, overriding the 60s default; on expiry, capture whatever output exists, kill the process, and mark the result `TIMEOUT`.
@@ -70,7 +70,7 @@ Capture all console output, track background processes, and enforce timeouts. Se
 
 **4. Evaluate Asserts**
 
-Evaluate each assert against the captured evidence. The assert-pattern *vocabulary* — `Console contains "…"` (and its `(within Ns)` timed form), `File exists: …`, `Response status: …` — is defined in [`CYCLE-STRUCTURE.md`](../patterns-vertical-tdd/references/CYCLE-STRUCTURE.md) (§ *Assert Patterns*). The **evaluation semantics this skill owns**:
+Evaluate each assert against the captured evidence. The assert-pattern *vocabulary* — `Console contains "…"` (and its `(within Ns)` timed form), `File exists: …`, `Response status: …` — is defined in [`TEST-GRAMMAR.md`](../patterns-vertical-tdd/references/TEST-GRAMMAR.md) (§ *Assert Patterns*). The **evaluation semantics this skill owns**:
 
 - **`Console contains "{text}"`** — substring match against the captured stdout/stderr. The `(within Ns)` form is a timed match against streaming (background) output — poll until the text appears or the window elapses.
 - **`File exists: {path}`** — a filesystem check (`test -f {path}`).
@@ -81,10 +81,11 @@ Each assert MUST receive an explicit pass/fail evaluation. **No default to PASS*
 
 **5. Generate Report**
 
-- **All PASS** → minimal report (status + duration).
-- **Any FAIL** → rich report with the evidence table.
-
-See [references/REPORT-TEMPLATES.md](references/REPORT-TEMPLATES.md) for the report formats and truncation rules.
+Machine-first, per [references/REPORT-TEMPLATES.md](references/REPORT-TEMPLATES.md): the
+persisted verification-report file is YAML frontmatter (per-task results, quality gates,
+classification, recommendation) — **all PASS** → frontmatter only; **any FAIL / PARTIAL /
+TIMEOUT / ERROR** → a `## Failures` section with the evidence tables and bounded output
+excerpts for the failing items. Truncation rules there.
 
 **6. Present Checkpoint**
 
@@ -150,23 +151,10 @@ When a verification run includes quality gates, execute them alongside `**TEST:*
 Add a `quality_gates` section to the verification-report YAML frontmatter:
 
 ```yaml
-verification:
-  test_tasks:
-    total: 2
-    passed: 2
-  quality_gates:
-    lint:
-      status: pass
-      command: "pnpm lint"
-    build:
-      status: pass
-      command: "pnpm build"
-    tests:
-      status: pass
-      command: "pnpm test"
-      passed: 47
-      failed: 0
-      skipped: 2
+quality_gates:
+  lint:  {status: pass, command: "pnpm lint"}
+  build: {status: pass, command: "pnpm build"}
+  tests: {status: pass, command: "pnpm test", passed: 47, failed: 0, skipped: 2}
 ```
 
 Each quality gate entry records the command run and its status. For test suites, include pass/fail/skip counts when available.
@@ -258,6 +246,5 @@ If any of these thoughts arise, STOP immediately:
 
 - [references/TASK-PARSING.md](references/TASK-PARSING.md) — detection boundaries, field-extraction algorithm, and legacy-marker normalization (parse semantics; grammar vocabulary is referenced from the owner)
 - [references/EVIDENCE-CAPTURE.md](references/EVIDENCE-CAPTURE.md) — console capture, background-process PID tracking, timeout handling, cleanup
-- [references/REPORT-TEMPLATES.md](references/REPORT-TEMPLATES.md) — minimal and rich report formats, checkpoint presentation
-- [references/TESTING-EVIDENCE.md](references/TESTING-EVIDENCE.md) — RED/GREEN/REFACTOR hardening record for this skill's anti-rationalization content
-- **Grammar owner:** [`../patterns-vertical-tdd/references/CYCLE-STRUCTURE.md`](../patterns-vertical-tdd/references/CYCLE-STRUCTURE.md) — the canonical `**TEST:**` marker set, field skeleton, action-modifier vocabulary, and assert-pattern vocabulary this skill consumes (§ *Unified TEST: Format*, § *Field Definitions*, § *Action Modifiers*, § *Assert Patterns*, § *Legacy Format Support*)
+- [references/REPORT-TEMPLATES.md](references/REPORT-TEMPLATES.md) — the verification-report file format (frontmatter + failure-only prose), checkpoint presentation, truncation
+- **Grammar owner:** [`../patterns-vertical-tdd/references/TEST-GRAMMAR.md`](../patterns-vertical-tdd/references/TEST-GRAMMAR.md) — the canonical `**TEST:**` marker set, field skeleton, action-modifier vocabulary, and assert-pattern vocabulary this skill consumes (§ *Unified TEST: Format*, § *Field Definitions*, § *Action Modifiers*, § *Assert Patterns*, § *Legacy Format Support*)

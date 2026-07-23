@@ -111,9 +111,11 @@ For each check in the applicable artifact-type checklist:
 
 ### Step 5: Emit the report
 
+In the `advocate-report-template.md` shape (machine-first — findings YAML):
+
 - Classify the verdict from the issue counts (mechanical — see *Verdict Criteria*)
-- Document every issue with evidence and an actionable suggested fix
-- Acknowledge what was done well
+- One finding entry per issue: evidence anchor (`at:`) and an actionable one-line fix
+- Fill the one-line `strengths:` field — what was genuinely done well
 
 ## Incremental Review Mode
 
@@ -145,31 +147,21 @@ are the prior set** — this skill does not decide that (it has no view of the w
 
 ### Report shape (incremental mode)
 
-```markdown
-## Review Summary
+The same `advocate-report-template.md` shape, with the incremental fields set and this
+skill's consistency-check results as an extra frontmatter block (permitted per the
+envelope):
 
-| Aspect | Status |
-|--------|--------|
-| **New artifact set** | {artifacts} — FULL REVIEW |
-| **Prior artifact set** | CONSISTENCY CHECK ONLY |
-
-## New Artifact Issues
-
-{Full issue documentation with evidence}
-
-## Cross-Artifact Consistency
-
-| Check | Status | Notes |
-|-------|--------|-------|
-| Entity names match the data model | Pass/Fail | {any mismatches} |
-| Schemas match the data model | Pass/Fail | {any gaps} |
-| Decisions honored in design | Pass/Fail | {any contradictions} |
-| Sensitivity annotations present | Pass/Fail | {any missing} |
-| Integration boundaries documented | Pass/Fail | {any missing} |
-
-## Verdict
-
-{ready / needs-revision / critical-gaps}
+```yaml
+incremental: true
+scope:
+  full_review: [data-model.md, contracts/api.yaml]
+  consistency_only: [requirements.md, constraints-and-decisions.md, nfrs.md]
+consistency_checks:   # pass/fail per check; a fail also lands as a finding
+  entity_names: pass
+  schemas: pass
+  decisions_honored: pass
+  sensitivity_annotations: pass
+  integration_boundaries: pass
 ```
 
 ## Verdict Criteria
@@ -194,7 +186,7 @@ Before finalizing the review, verify:
 - [ ] Verdict matches the issue counts
 - [ ] Cross-artifact concerns noted
 - [ ] Feasibility/buildability findings handed to `review-feasibility`, not graded here
-- [ ] Strengths acknowledged
+- [ ] The one-line `strengths:` field filled
 
 ## Common Mistakes
 

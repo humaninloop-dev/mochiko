@@ -1,6 +1,6 @@
 # Task Parsing Rules
 
-> **Grammar vs. parsing (single source).** The *legal grammar* — which markers, fields, action-modifiers, and assert-patterns exist — is owned by `patterns-vertical-tdd` in [`CYCLE-STRUCTURE.md`](../../patterns-vertical-tdd/references/CYCLE-STRUCTURE.md). This file does **not** redefine that vocabulary; it defines how to **parse** it at runtime: the detection boundaries, the extraction regexes, and the normalization of legacy markers into the unified structure. The regexes below are parse mechanics for the grammar defined there — when the two would differ, the grammar owner wins.
+> **Grammar vs. parsing (single source).** The *legal grammar* — which markers, fields, action-modifiers, and assert-patterns exist — is owned by `patterns-vertical-tdd` in [`TEST-GRAMMAR.md`](../../patterns-vertical-tdd/references/TEST-GRAMMAR.md). This file does **not** redefine that vocabulary; it defines how to **parse** it at runtime: the detection boundaries, the extraction regexes, and the normalization of legacy markers into the unified structure. The regexes below are parse mechanics for the grammar defined there — when the two would differ, the grammar owner wins.
 
 ## Table of Contents
 
@@ -16,7 +16,7 @@
 
 ## Overview
 
-This document defines how to extract structured data from verification task markers in `tasks.md`. The unified `**TEST:**` format is preferred, with legacy formats supported for backward compatibility. Which markers are legal is defined by the grammar owner (§ *Unified TEST: Format*, § *Legacy Format Support* in [`CYCLE-STRUCTURE.md`](../../patterns-vertical-tdd/references/CYCLE-STRUCTURE.md)); this document is the how-to-parse them.
+This document defines how to extract structured data from verification task markers in `tasks.md`. The unified `**TEST:**` format is preferred, with legacy formats supported for backward compatibility. Which markers are legal is defined by the grammar owner (§ *Unified TEST: Format*, § *Legacy Format Support* in [`TEST-GRAMMAR.md`](../../patterns-vertical-tdd/references/TEST-GRAMMAR.md)); this document is the how-to-parse them.
 
 ## Task Detection
 
@@ -53,7 +53,7 @@ Task descriptions may span multiple lines with sub-bullets:
 
 ## Field Markers
 
-The legal field set (which fields exist and whether they are required) is defined by the grammar owner (§ *Field Definitions* in [`CYCLE-STRUCTURE.md`](../../patterns-vertical-tdd/references/CYCLE-STRUCTURE.md)). The patterns below are how to **extract** each field's value at parse time.
+The legal field set (which fields exist and whether they are required) is defined by the grammar owner (§ *Field Definitions* in [`TEST-GRAMMAR.md`](../../patterns-vertical-tdd/references/TEST-GRAMMAR.md)). The patterns below are how to **extract** each field's value at parse time.
 
 ### Required Fields
 

@@ -60,8 +60,8 @@ same `Contested` dogfood-pilot ruling as the other team-form commands.
 - **reviewer** — `mochiko:devils-advocate`, spawned **cold at first review**, never in contact
   with the producer. Brief it to run `mochiko:review-slices` against `slices.md` **and** the
   `spec.md` it indexes — it Reads both files itself, never the producer's report — writing
-  `advocate-report.md` (from `templates/advocate-report-template.md`): severity-bucketed gaps,
-  product-framed clarifying questions, genuine strengths, and a recommended status (`ready` /
+  `advocate-report.md` (from `templates/advocate-report-template.md`): severity-classified
+  findings, product-framed clarifying questions, and a recommended verdict (`ready` /
   `needs-revision` / `critical-gaps`). On a **null-exit round** it grades the depth call from
   `spec.md` + the disclosed reasoning. Round > 1 is a message to the same seat: re-Read the
   revised files. Its output is **lead-adjudicated input** (the `review-*` family boundary); there
@@ -108,8 +108,8 @@ user explicitly accepts). Else `round += 1`, loop to produce.
 commit (`docs: slice <feature>`), and the next step: `/mochiko:plan <feature> --slice
 <foundation-id>` (or plain `/mochiko:plan <feature>` after a null exit). Feature-done is
 **declared, not verified** — the Feature-Done section executes at feature-close, once every slice
-ships. Offer a retain/clean choice for the round reports; never offer to delete `slices.md` — it
-is the deliverable.
+ships. Round reports are cleaned by default; the user may ask to retain them. Never offer
+to delete `slices.md` — it is the deliverable.
 
 ## Contract (authoring-time fill — governed by `mochiko:loop-discipline`)
 

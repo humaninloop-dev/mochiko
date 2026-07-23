@@ -84,11 +84,11 @@ These are valid concerns but belong in later design and implementation work, not
 
 ## Output Format
 
-The report structure — the gap table (type + severity), clarifications with concrete
-options and impact, the recommended status, and strengths — is single-sourced at
-`templates/advocate-report-template.md`; fill that structure rather than inventing one.
-When invoked outside a workflow that names a report path, return the same structure
-inline.
+The report structure — the findings list (type + severity, machine-first YAML),
+clarifications with concrete options and impact, the recommended verdict, and the one-line
+`strengths:` field — is single-sourced at `templates/advocate-report-template.md`; fill
+that structure rather than inventing one. When invoked outside a workflow that names a
+report path, return the same structure inline.
 
 ## Review Process
 

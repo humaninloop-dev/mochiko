@@ -110,9 +110,11 @@ For each check in the applicable artifact-type checklist:
 
 ### Step 4: Emit the report
 
+In the `advocate-report-template.md` shape (machine-first — findings YAML):
+
 - Classify the verdict from the issue counts (mechanical — see *Verdict Criteria*)
-- Document every issue with evidence and an actionable suggested fix
-- Acknowledge what was done well
+- One finding entry per issue: evidence anchor (`at:`) and an actionable one-line fix
+- Fill the one-line `strengths:` field — what was genuinely done well
 
 > A deterministic Tier-1 pre-assert over the greppable slice (task-ID `TN.X` format, file-path
 > presence, `**TEST:**`-task presence, marker presence, traceability presence) is a possible future
@@ -163,7 +165,7 @@ Before finalizing the review, verify:
 - [ ] Suggested fixes are actionable
 - [ ] Verdict matches the issue counts
 - [ ] Cross-artifact traceability (`tasks.md` ↔ `task-mapping.md`) verified when both are in scope
-- [ ] Strengths acknowledged
+- [ ] The one-line `strengths:` field filled
 
 ## Common Mistakes
 

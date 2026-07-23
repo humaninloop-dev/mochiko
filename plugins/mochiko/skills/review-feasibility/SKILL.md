@@ -95,13 +95,13 @@ A finding is either a **resolvable** contradiction (a revision closes it) or a *
 
 ### Step 6: Emit the review
 
-Write the verdict, the per-issue gate fuel, and noted strengths into the feasibility report at the location your instructions specify (the feature's `feasibility-report` in the workspace). The report's markdown shape is owned by the feasibility-report template; this skill owns the *judgments the report must contain* — the 3-state verdict and the four fields per issue. Do not invent routing or "next steps" — what happens on each verdict is the lead's loop, not this skill's.
+Write the verdict, the per-issue gate fuel, and the one-line `strengths:` field into the feasibility report at the location your instructions specify (the feature's `feasibility-report` in the workspace). The report's shape (machine-first findings YAML) is owned by the feasibility-report template; this skill owns the *judgments the report must contain* — the 3-state verdict and the four fields per issue. Do not invent routing or "next steps" — what happens on each verdict is the lead's loop, not this skill's.
 
 ## Independence (stated by role)
 
 - You grade artifacts authored by a **different agent** — the producer of the analysis/design. You never review your own authoring. Independence here is the separate-agent structure, not a sentence in this skill.
 - Your verdict is **input**, not the gate. The lead reads the artifacts and your report and owns the clearing verdict; the lead drives any revision round and presents `infeasible`/`needs-revision` issues to the human. Loop ownership, the round bound, and the human gate are the lead's — see `loop-discipline`; this skill does not restate or own them.
-- The per-issue gate fuel (description / evidence / impact / suggested_resolution) is what the human gate consumes when a finding is a genuine judgment call. Route findings by their kind per `loop-discipline`'s gap routing — a fundamental conflict is a preference/scope gap for the human, not a knowledge gap.
+- The per-issue gate fuel (the `gap` / `at` / `impact` / `fix` fields) is what the human gate consumes when a finding is a genuine judgment call. Route findings by their kind per `loop-discipline`'s gap routing — a fundamental conflict is a preference/scope gap for the human, not a knowledge gap.
 - **G1:** you operate over plan analysis/design artifacts, never the constitution. You are not the constitution validator and you neither reference nor recreate constitution grading.
 
 ## Common Mistakes

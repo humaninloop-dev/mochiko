@@ -241,12 +241,9 @@ ISSUE-TEMPLATES.md → Assembled Report); this is a worked illustration, not a s
 
 None
 
-### Strengths
+### Strengths (one line in the assembled report's `strengths:` field)
 
-- All P1/P2 stories mapped to cycles
-- Foundation cycles clearly separated
-- Good use of `[P]` markers for parallel features
-- Task IDs follow the correct format
+`strengths: "P1/P2 stories fully mapped, foundation cleanly separated, [P] markers well used, task IDs correct"`
 
 ### Verdict rationale
 

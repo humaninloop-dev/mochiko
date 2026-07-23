@@ -1,228 +1,142 @@
-# Report Templates
+# Verification Report Formats
 
-## Table of Contents
+Envelope + shared rules: `templates/report-format.md` — this file carries only the
+verification payloads. Two distinct surfaces:
 
-- [Overview](#overview)
-- [Success Report (Minimal)](#success-report-minimal)
-- [Failure Report (Rich)](#failure-report-rich)
-- [Partial Success Report](#partial-success-report)
-- [Timeout Report](#timeout-report)
-- [Error Report](#error-report)
-- [Checkpoint Presentation](#checkpoint-presentation)
-- [Report Truncation](#report-truncation)
-- [Report Storage](#report-storage)
+1. **The verification report file** — persisted per verification run (per-cycle and
+   final-validation in the implement workflow, at the path the caller names). Machine-first:
+   the frontmatter is the report; prose only on failure.
+2. **The checkpoint presentation** — in-memory, shown to the human at the gate, discarded
+   after the decision. Never persisted.
 
-## Overview
+Reports are adaptive: minimal for success, rich for failures — a passing verification is
+frontmatter-only; debug value concentrates in failures, which keep full detail.
 
-This document defines report formats for different verification outcomes. Reports are adaptive: minimal for success, rich for failures.
+## The Verification Report File
 
-## Success Report (Minimal)
+### Frontmatter Schema
 
-When all assertions pass, use the minimal format:
-
-```markdown
-## Verification: T{N}.{X} - PASS
-
-**Description**: {task description}
-**Result**: All {count} assertions passed
-**Duration**: {time}s
-
-**Recommendation**: Approve
+```yaml
+---
+report: verification        # or final-validation for the whole-implementation run
+feature: user-auth
+cycle: 3                    # omitted on final-validation
+attempt: 1                  # pairs with the cycle-report attempt this run verifies
+status: pass | fail | partial | timeout | error
+test_tasks:                 # one row per **TEST:** task executed
+  - {id: T3.5, classification: CLI, status: pass, asserts: "4/4", duration: 3.2s}
+  - {id: T3.6, classification: GUI, status: pass, asserts: "2/2", duration: 8.1s,
+     evidence: "/tmp/claude/verify-T3.6-shot.png"}
+quality_gates:
+  lint:  {status: pass, command: "pnpm lint"}
+  build: {status: pass, command: "pnpm build"}
+  tests: {status: pass, command: "pnpm test", passed: 47, failed: 0, skipped: 2}
+recommendation: approve | reject | retry | needs-human
+---
 ```
 
-### Example
+### Field Definitions
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| `report` / `feature` / `slice` | yes | Per the envelope (`slice:` only when slice-scoped); `final-validation` for the whole-implementation run |
+| `cycle` / `attempt` | per-cycle only | The cycle and attempt this verification pairs with |
+| `status` | yes | Aggregate result: `pass` only when every assert passed and every gate is green; `partial` for mixed; `timeout`/`error` per the result classification |
+| `test_tasks` | yes | One row per `**TEST:**` task: `id`, `classification` (CLI / GUI / SUBJECTIVE — drives auto-approve vs human checkpoint), `status`, `asserts` (passed/total), `duration`, `evidence` (path) where captured |
+| `quality_gates` | yes | One entry per gate run: `status` from the exit code (`0` = pass — deterministic, never a judgment), `command`, and pass/fail/skip counts for test suites |
+| `recommendation` | yes | The verifier's recommendation to the gate — input to the lead's verdict, never the verdict |
+
+### Conditional Prose *(mandatory when `status` is not `pass`)*
+
+Per failed/partial/timed-out/errored task, full detail under one section:
 
 ```markdown
-## Verification: T2.4 - PASS
+## Failures
 
-**Description**: File watcher detects changes
-**Result**: All 2 assertions passed
-**Duration**: 3.2s
-
-**Recommendation**: Approve
-```
-
-## Failure Report (Rich)
-
-When any assertion fails, use the rich format:
-
-```markdown
-## Verification: T{N}.{X} - NEEDS REVIEW
-
-**Description**: {task description}
-**Duration**: {time}s
-
-### Assertion Results
+### T{N}.{X} — {FAIL | PARTIAL n/m | TIMEOUT | ERROR}
 
 | # | Assert | Expected | Actual | Status |
 |---|--------|----------|--------|--------|
-| 1 | {assert description} | {expected value} | {actual value} | PASS/FAIL |
-| 2 | {assert description} | {expected value} | {actual value} | PASS/FAIL |
+| 1 | Console contains "FileWatchEvent: created" | Match | No match | FAIL |
 
-### Console Output
-
+**Output** (bounded excerpt — see Truncation):
 ```
-{relevant console output, truncated if > 50 lines}
+Error: Permission denied for inotify
 ```
 
-### Actions Executed
-
-| # | Command | Duration | Exit Code |
-|---|---------|----------|-----------|
-| 1 | `{command}` | {time}s | {code} |
-| 2 | `{command}` | {time}s | {code} |
-
-### Analysis
-
-{Brief analysis of what might have gone wrong}
-
-### Recommendation
-
-{Approve | Reject | Retry with adjustments}
-
-**Reasoning**: {Why this recommendation}
+**Actions run:** `dart run bin/watcher.dart /tmp/watcher-test` (bg) · `touch /tmp/watcher-test/test.jsonl` (0.1s, exit 0)
+**Analysis:** {what went wrong, one short paragraph}
+**Phase** (ERROR only): setup | action | assert · **Limit** (TIMEOUT only): {elapsed}s of {limit}s
 ```
 
-### Example
+Failed quality gates likewise: the gate's failing output excerpt under `## Failures`.
+A passing report carries **no prose** — no evidence tables, no narration; the captured
+evidence stays in logs/scratch, pointed to by `evidence:` fields.
+
+### Examples
+
+Passing per-cycle report (complete file):
 
 ```markdown
-## Verification: T2.4 - NEEDS REVIEW
+---
+report: verification
+feature: user-auth
+cycle: 3
+attempt: 1
+status: pass
+test_tasks:
+  - {id: T3.5, classification: CLI, status: pass, asserts: "4/4", duration: 3.2s}
+quality_gates:
+  lint:  {status: pass, command: "pnpm lint"}
+  build: {status: pass, command: "pnpm build"}
+  tests: {status: pass, command: "pnpm test", passed: 47, failed: 0, skipped: 2}
+recommendation: approve
+---
+```
 
-**Description**: File watcher detects changes
-**Duration**: 5.1s
+Failing per-cycle report:
 
-### Assertion Results
+```markdown
+---
+report: verification
+feature: user-auth
+cycle: 4
+attempt: 2
+status: fail
+test_tasks:
+  - {id: T4.6, classification: CLI, status: fail, asserts: "1/2", duration: 5.1s}
+quality_gates:
+  lint:  {status: pass, command: "pnpm lint"}
+  build: {status: pass, command: "pnpm build"}
+  tests: {status: fail, command: "pnpm test", passed: 46, failed: 1, skipped: 2}
+recommendation: reject
+---
+
+## Failures
+
+### T4.6 — FAIL
 
 | # | Assert | Expected | Actual | Status |
 |---|--------|----------|--------|--------|
-| 1 | Console contains "FileWatchEvent: created" | Match found | No match | FAIL |
+| 1 | Console contains "FileWatchEvent: created" | Match | No match | FAIL |
 | 2 | File exists: /tmp/watcher-test/test.jsonl | Exists | Exists | PASS |
 
-### Console Output
-
+**Output:**
 ```
 Starting file watcher...
 Watching directory: /tmp/watcher-test
 Error: Permission denied for inotify
 ```
 
-### Actions Executed
-
-| # | Command | Duration | Exit Code |
-|---|---------|----------|-----------|
-| 1 | `dart run bin/watcher.dart /tmp/watcher-test` (bg) | N/A | N/A |
-| 2 | `touch /tmp/watcher-test/test.jsonl` | 0.1s | 0 |
-
-### Analysis
-
-The file watcher failed to start due to inotify permissions. The touch command succeeded, but no event was detected.
-
-### Recommendation
-
-Reject
-
-**Reasoning**: File watcher infrastructure needs configuration (inotify limits).
-```
-
-## Partial Success Report
-
-When some assertions pass and some fail:
-
-```markdown
-## Verification: T{N}.{X} - PARTIAL ({pass}/{total})
-
-**Description**: {task description}
-**Duration**: {time}s
-**Pass Rate**: {percentage}%
-
-### Assertion Results
-
-| # | Assert | Status |
-|---|--------|--------|
-| 1 | {assert description} | PASS |
-| 2 | {assert description} | FAIL |
-| 3 | {assert description} | PASS |
-
-### Failed Assertion Details
-
-**Assert #2**: {full assert description}
-- **Expected**: {expected}
-- **Actual**: {actual}
-- **Context**: {relevant output}
-
-### Recommendation
-
-Needs Human Judgment
-
-**Options**:
-1. **Approve**: If the failed assertion is non-critical
-2. **Reject**: If the failed assertion blocks functionality
-3. **Retry**: If the failure might be transient
-```
-
-## Timeout Report
-
-When an action exceeds its time limit:
-
-```markdown
-## Verification: T{N}.{X} - TIMEOUT
-
-**Description**: {task description}
-**Duration**: {elapsed}s (limit: {limit}s)
-
-### Timeout Details
-
-**Command**: `{command}`
-**Elapsed**: {elapsed}s
-**Limit**: {limit}s
-
-### Partial Output
-
-```
-{any output captured before timeout}
-```
-
-### Recommendation
-
-Retry with adjustments
-
-**Suggestions**:
-1. Increase the timeout with the `(timeout Ns)` modifier
-2. Check if the command has a startup delay
-3. Verify system resources are available
-```
-
-## Error Report
-
-When execution fails (not an assertion failure):
-
-```markdown
-## Verification: T{N}.{X} - ERROR
-
-**Description**: {task description}
-
-### Error Details
-
-**Phase**: {setup | action | assert}
-**Command**: `{command}`
-**Exit Code**: {code}
-
-### Error Output
-
-```
-{error message}
-```
-
-### Recommendation
-
-Reject
-
-**Reasoning**: An execution error prevents verification. Fix the underlying issue before retrying.
+**Actions run:** `dart run bin/watcher.dart /tmp/watcher-test` (bg) · `touch /tmp/watcher-test/test.jsonl` (0.1s, exit 0)
+**Analysis:** The watcher failed to start (inotify permissions); the touch succeeded but no
+event was detected. Same failure as the gate's `watcher_test.dart` red.
 ```
 
 ## Checkpoint Presentation
 
-After generating the report, present it to the human.
+After generating the report, present the checkpoint to the human (in-memory — never
+persisted; regenerate full evidence on "View Details").
 
 ### All Pass
 
@@ -260,8 +174,6 @@ AskUserQuestion(
 
 ### If Retry Selected
 
-Prompt for adjustments:
-
 ```
 AskUserQuestion(
   questions: [{
@@ -277,46 +189,23 @@ AskUserQuestion(
 )
 ```
 
-## Report Truncation
+## Truncation
 
-### Console Output
+Failure evidence in the report is bounded; full evidence always survives in a log file the
+report points to:
 
-If output exceeds 50 lines:
+- **Output excerpts:** if over 50 lines, include first 25 / last 25 with `[{N} lines
+  truncated]` between, plus the full-log path: `` Full log: /tmp/claude/verify-T{N}.{X}-output.log ``
+- **Assert tables:** if more than 10 asserts, show the failing rows plus the first passing
+  rows to 10 total, with a count note.
 
-```markdown
-### Console Output (first 25 / last 25 lines)
+## Storage
 
-```
-{first 25 lines}
-...
-[{N} lines truncated]
-...
-{last 25 lines}
-```
-
-Full log: `/tmp/claude/verify-T{N}.{X}-output.log`
-```
-
-### Large Tables
-
-If more than 10 assertions:
-
-```markdown
-### Assertion Results (10/{total})
-
-| # | Assert | Status |
-|---|--------|--------|
-{first 10 rows}
-
-**Note**: {remaining} additional assertions. See the full report for details.
-```
-
-## Report Storage
-
-Reports are not persisted to disk by default. They are:
-
-1. Generated in memory
-2. Presented to the human via the checkpoint
-3. Discarded after the human decision
-
-If the human requests "View Details", regenerate with full evidence.
+- **The verification report file** is persisted at the path the caller names (in implement:
+  per-cycle and final-validation reports in the feature/slice directory) — it is what the
+  lead Reads for the verdict and what a resumed run finds as workspace evidence.
+- **The checkpoint presentation** is generated in memory, shown at the gate, and discarded
+  after the human decision.
+- **Captured evidence** (full console output, screenshots, logs) lives outside the report
+  (`/tmp/claude/…` or the caller's scratch), referenced by path from `evidence:` fields and
+  truncation pointers.

@@ -159,11 +159,11 @@ skill owns.
 ## Assembled Report
 
 The deliverable report the lead reads is structured with `mochiko:advocate-report-template` — the
-shared producer-disclosure shape: a severity-bucketed **Gaps Found** table, **Clarifications
-Needed**, the **Verdict** (`ready` / `needs-revision` / `critical-gaps`), and **What's Strong**. The
-task-specific additions this skill folds in are the **Checks-Executed tables above** and the
-`TM-`/`TT-`/`TX-` issue IDs. Reference the template for the report skeleton rather than re-embedding
-it here.
+shared reviewer shape (machine-first): the severity-classified `findings:` YAML, **Clarifications
+Needed** where a gap requires a product decision, the `verdict:` (`ready` / `needs-revision` /
+`critical-gaps`) with its one-line basis, and the one-line `strengths:` field. The task-specific
+additions this skill folds in are the **Checks-Executed tables above** and the `TM-`/`TT-`/`TX-`
+issue IDs. Reference the template for the report skeleton rather than re-embedding it here.
 
 ## Verdict Decision Tree
 

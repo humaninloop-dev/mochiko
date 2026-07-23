@@ -1,40 +1,13 @@
-<!--
-AGENT DISPATCH BRIEFING — a caller-side guide
-=============================================
-A checklist for the CALLER (a `commands/*.md` supervisor) when it dispatches a mochiko
-agent. It is a briefing guide, NOT a correctness gate.
-
-WHY THIS EXISTS:
-A mochiko agent is a self-contained professional: it carries its craft and the skills it
-can lean on, and it DEGRADES GRACEFULLY. Hand it a rich brief and it does its best work
-immediately; hand it a thin one and it still works — it falls back on its own method and
-asks for what it genuinely needs rather than inventing it. So a sparse brief produces a
-WORSE result, not a broken agent. This checklist exists to raise loop quality, not to
-make the agent functional.
-
-The agent owns NONE of this knowledge. It does not know which workflow it is in, which
-other agents exist, or what "done" means this run — and it should not. All of that lives
-HERE, on the caller side, where workflow knowledge belongs. Do not push any of it into the
-persona (that is the coupling this template is the antidote to).
-
-This is the call-time companion to `workflow-contract.md`:
-- `workflow-contract` proves the LOOP is sound (done-condition, independence, bounds, gate).
-- `agent-dispatch` is how the caller briefs each CALL inside that loop well.
-
-HOW TO USE:
-- This is a checklist, not a file you commit. Fold the fields below into the prompt string
-  of each Task() call in a `commands/*.md` supervisor.
-- Independence (loop-discipline req. 2) is STRUCTURAL, and it is the one thing the caller
-  MUST get right: guarantee it by dispatching a DIFFERENT agent (running a DIFFERENT skill)
-  to grade than to produce, and by never asking one agent to grade its own output. The
-  persona asserts nothing about this — the structure carries it.
--->
-
 # Agent Dispatch Briefing — [AGENT] for [WORKFLOW], [PHASE]
 
-A good brief carries the context below. None of it is a precondition for the agent to
-*function* — it is how the caller gets the agent's *best* work and keeps the loop sound.
-Name the skill as a hint, not a command: the agent decides whether it fits.
+A caller-side checklist, not a file you commit: fold the fields below into the prompt of
+each dispatch a `commands/*.md` supervisor makes. A good brief carries the context below.
+None of it is a precondition for the agent to *function* — the agent degrades gracefully
+on a thin brief — it is how the caller gets the agent's *best* work and keeps the loop
+sound. The agent owns none of this knowledge (workflow, siblings, "done") — all of that
+lives on the caller side; never push it into a persona. Name the skill as a hint, not a
+command: the agent decides whether it fits. (Rationale + provenance:
+`.mochiko/strips/agent-dispatch.md`.)
 
 | # | Field | What to provide | Example |
 |---|-------|----------------|---------|
@@ -88,11 +61,12 @@ just the vocabulary:
   alone doesn't distinguish teammates from subagents, per the docs). Not addressable → kill
   it and respawn, explicitly requesting an agent team.
 
-One-shot dispatch remains the **rebuttable default** for the commands designed on it
-(plan/tasks/implement — specify converted team-form 2026-07-19 per its recorded D2
-assessment, `.mochiko/strips/specify.md`) — team-form is the declared default *preference* pending each
-command's own conversion assessment (`.mochiko/brainstorms/pattern-codification-and-minimalism/record.md`,
-D2) — and this section binds only commands that hard-require teams. Defect history +
+All seven commands are currently team-form, each per its recorded conversion assessment
+with a first-dogfood confirm-or-revert checkpoint (`.mochiko/strips/<command>.md`;
+assessment doctrine: `.mochiko/brainstorms/pattern-codification-and-minimalism/record.md`,
+D2). One-shot dispatch remains the rebuttable Layer-1 default for any future command
+designed on it; this section binds only commands that hard-require teams. Defect history +
 ruling: `.mochiko/brainstorms/setup-v3-team-defect/record.md` (D1).
 
-**Briefing version:** v3 · **Governed by:** `loop-discipline` · **Pairs with:** `workflow-contract.md`
+**Briefing version:** v4 (2026-07-23 — header relocated to the strip note; roster
+staleness fixed) · **Governed by:** `loop-discipline` · **Pairs with:** `workflow-contract.md`

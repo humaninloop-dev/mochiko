@@ -110,9 +110,10 @@ surfacing — never by the overlay looking tidy.
    and/or the spec), the severity, and an actionable suggested fix.
 3. **Cross-reference** — coverage (check 1) and SC coverage (check 9) are set comparisons against
    the spec; do them explicitly, not by impression.
-4. **Emit** — the report in the shared `mochiko:advocate-report-template` shape: the
-   severity-classified gap table, clarifying questions where a gap needs a product decision, the
-   recommended verdict with rationale, and genuine strengths.
+4. **Emit** — the report in the shared `mochiko:advocate-report-template` shape
+   (machine-first): the severity-classified findings YAML, clarifying questions where a gap
+   needs a product decision, the recommended verdict with its one-line basis, and the
+   one-line `strengths:` field.
 
 ## Quality checklist
 
@@ -123,7 +124,7 @@ Before finalizing the review:
 - [ ] Every issue carries quoted evidence and an actionable fix
 - [ ] Severities match the classification table, not convenience
 - [ ] Verdict derived mechanically from the counts
-- [ ] Strengths acknowledged
+- [ ] The one-line `strengths:` field filled
 
 ## Common Mistakes
 

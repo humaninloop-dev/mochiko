@@ -83,9 +83,9 @@ Produce `cycle-report.md` following the format in [references/CYCLE-REPORT-FORMA
 ### Progress Tracking
 
 - Mark each task `[x]` in `tasks.md` immediately after completing it
-- Write `cycle-report.md` with YAML frontmatter and prose sections
+- Write `cycle-report.md` machine-first: the YAML frontmatter is the report — a clean passing cycle needs no prose
 - The frontmatter's structured fields are your self-report — the lead reads them when deciding the cycle checkpoint, and verifies independently rather than trusting them
-- The prose sections carry the human-readable context the lead and the next cycle's implementation need
+- Prose is conditional (per the format): `Notes of note` only when there are non-obvious decisions, difficulties, or blockers to flag; a `Failure narrative` (full detail) whenever the cycle failed or was blocked
 
 ### Reworking Specific Failed Tasks
 
@@ -153,7 +153,7 @@ See [references/TDD-ANTI-RATIONALIZATION.md](references/TDD-ANTI-RATIONALIZATION
 
 **What goes wrong:** "While I'm here" changes accumulate. New bugs appear in code that was working. Cycle report doesn't reflect actual changes.
 
-**Fix:** Refactor phase is limited to code introduced in this cycle. Note improvement opportunities in the cycle report's "Notes for Next Cycle" section.
+**Fix:** Refactor phase is limited to code introduced in this cycle. Note improvement opportunities as a one-line entry in the cycle report's `Notes of note` block instead of acting on them.
 
 ### Mistake: Skipping Failure Reason Verification
 
@@ -163,6 +163,6 @@ See [references/TDD-ANTI-RATIONALIZATION.md](references/TDD-ANTI-RATIONALIZATION
 
 ## Reference Files
 
-- [references/CYCLE-REPORT-FORMAT.md](references/CYCLE-REPORT-FORMAT.md) — Structured YAML frontmatter schema and prose sections
+- [references/CYCLE-REPORT-FORMAT.md](references/CYCLE-REPORT-FORMAT.md) — Structured YAML frontmatter schema and the conditional prose rules (notes of note, failure narrative)
 - [references/TASK-PARSING.md](references/TASK-PARSING.md) — Task pattern extraction, file paths, markers
 - [references/TDD-ANTI-RATIONALIZATION.md](references/TDD-ANTI-RATIONALIZATION.md) — Common shortcuts and why they fail

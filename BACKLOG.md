@@ -39,6 +39,45 @@ Machinery built same day at plugin v0.18.0 (see ROADMAP Key Decisions). Record:
 
 ---
 
+## Token-reduction wave 1 (from the `workflow-token-reduction` epic, built 2026-07-23 at plugin v0.22.0; independently audited **PASS**, one audit-round fix)
+
+The epic's BACKLOG scoping was deliberately deferred (user ruling); this wave re-opened it for
+the **report layer** on four in-session rulings (all-report-formats scope · YAML-first machine-first
+form · D2+D6 folded in · strengths → one-line field). Built: `templates/report-format.md` (the
+report envelope single-source) + all eight report formats rewritten machine-first (cycle,
+verification incl. the previously-improvised per-cycle file, advocate, feasibility, four producer
+disclosures) + five review-skill retargets + command-shape **v3** (D2 run-cost entry + D6c) +
+agent-dispatch **v4** (D6c + team-form staleness fix) + D6a grammar split + D6b orphan deletions +
+D6d clean-by-default. Full record: ROADMAP Decision Trail (wave-1 entry); strip notes
+`[v0.22.0]`-stamped in `.mochiko/strips/`. **Deliberately untouched (scope call, not an
+omission):** setup's `codebase-analysis.md` (a disk-written analysis report consumed by the G2
+gate + the constitution author) and brainstorm's `synthesis.md` / record Review section — these
+are analysis/deliverable surfaces, not round reports; they come into scope only if a later wave
+targets analysis outputs. Setup/brainstorm's remaining returns (validator verdict, trace-summary
+manifest, reviewer survivors, injection-probe report) are message-form. Still open from the epic:
+
+- [ ] **Wave-1 dogfood (next kinako run).** The acceptance check for the strip: seats actually
+  author the slim formats (frontmatter-only passing reports; failure narrative on fails); the lead's
+  confidence gate reads the frontmatter fields; the first `run-costs.md` rows land (D2 manual
+  baseline — usage figure + run-shape counts); no consumer starves (a starved consumer re-adds via
+  the strip notes' evidence-gated path with a marked override, never silently).
+- [ ] **D4 — reference-by-ID down the artifact chain** (priority 2, the largest build): authoring-*
+  skills + artifact templates gain no-restatement rules + size guidance; compact ID index per
+  artifact. Rides the ~10×-mandated-read multiplier (epic F-b).
+- [ ] **D5 — review sizing gates generalized + the floored verification-depth gate**: command texts
+  of the five pipeline stages.
+- [ ] **D2 upgrade path — the one-shot OTel probe** (probe-then-graduate, epic S1/F-d): enable the
+  documented config in a dogfood run; observe console behavior, per-run aggregation, teammate
+  attribution; automation graduates on probe evidence only.
+- [ ] **Standing-seat build items stay deferred** (`standing-seat-lifecycle` record D1–D4 —
+  conditioned checkpoint recycling, respawn briefs, the Layer-2 transport-vs-lifecycle rewrite,
+  per-seat measurement). **Version-number handoff:** that record's D3 targeted "shape v2→v3"; this
+  wave took v3 (run-cost + header), so the lifecycle rewrite lands as **v4+**. Its D2
+  respawn-briefs-from-artifacts ruling is a named consumer of this wave's slimmed reports — the
+  sufficiency watch-item rides the wave-1 dogfood above.
+
+---
+
 ## Workflow scoping
 
 Notes for upcoming workflows, to be fleshed out before building starts.
@@ -137,6 +176,7 @@ The dissolution of `constitution.md` into native surfaces, built from the accept
 ruling: ROADMAP Key Decisions + Decision Trail, 2026-07-18).
 
 - [x] **Investigate the D7 substrate defect → RESOLVED (2026-07-18): set-and-ignored; the seat-idiom mitigation hypothesis is refuted; fix built same day.** The v3 re-run (kinako, Claude Code v2.1.214, plugin cache 0.9.0) reproduced the defect with `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` probed and echoed **by the lead itself**, every surrounding instruction followed (kill-switch check, seat-announcement beat) — then the producer dispatched as a one-shot subagent. Docs-grounded root cause: since v2.1.178 a teammate rides the **same Agent tool** as a subagent (the fork is a `name:` parameter + `SendMessage` follow-ups), and the docs admit *"Claude may sometimes use subagents instead of creating a team"* — capability-level vocabulary alone loses to that affordance. Fix (D1, user-ruled): seat-transport recipe single-sourced in `templates/agent-dispatch.md` (v3) + discriminating line and post-spawn addressability check in both team-form commands' hard-requirement sections. Verification inherited by the v3 dogfood item below. Record: `.mochiko/brainstorms/setup-v3-team-defect/record.md`.
+- [ ] **Defect: `validation-constitution/references/QUALITY-CHECKLIST.md` "Structure Quality — universal core" block is pre-dissolution stale.** Surfaced by the wave-1 audit (2026-07-23, out-of-scope observation): the block still checks the dissolved `constitution.md` document shape — "SYNC IMPACT REPORT present as HTML comment" (the concept whose orphaned reference D6b just deleted), Overview section, Roman-numeral Core Principles, Technology Stack / Quality Gates tables — none of which exist in the v3 surface set (CLAUDE.md region + rules files + ledger). The SKILL.md's manifest/trace-closure grading is current; only this reference section went stale. Rewrite the block against the surface set (or delete it if the SKILL.md checks supersede it) — a latent false-FAIL generator for the setup validator. Needs setup-cluster context; deliberately not fixed inside the token-reduction wave.
 - [ ] **Empirical: HTML-comment stripping in `.claude/rules/` files.** Docs confirm stripping for CLAUDE.md, are silent for rules files (fact-check 2026-07-18). The ledger is metadata-primary regardless (D2 as amended); if a test shows rules-file comments are stripped, in-file trace comments become a free option. Method the checker suggested: an `InstructionsLoaded` hook or `/context` check on a comment-bearing rule file.
 - [ ] **Empirical: fresh-session rules-loading test.** The session's probe (marker rules file → freshly spawned agent → marker absent) carried a stated confound: the file was created mid-session, so the negative can mean spawned agents don't get project rules on that path, or rules snapshot at main-session start. Re-run with the rule file present **before** session start. Either result stands: universal principles stay in CLAUDE.md (doc-confirmed); this only decides how much the scope-bound obligated-read must carry.
 - [ ] **Dogfood `/mochiko:setup` v3 for real (supersedes the v2 dogfood check).** Named checks carried over from v2 (interrogation-as-session, deck arbitration, G3 fidelity catch, flagged proposals reaching G4 un-folded, teams-unset refusal) **plus v3's own:** the producer authors the full surface set; the validator's manifest grading closes the trace both ways and catches a seeded missing-companion; the governance region regenerates idempotently around hand-edited CLAUDE.md content; a superseded `constitution.md` is deleted on sight; a downstream command's producer demonstrably receives CLAUDE.md governance natively (no read-and-inject) and obeys the obligated read for scoped rules; **team-form observed** (standing producer seat messaged across rounds — feeds the substrate item). **This check is now also D1's acceptance test for the team-transport fix (2026-07-18):** resume the paused kinako run at *loop (produce)* per the recovery table — synthesis is ratified, surface set absent. Record: `.mochiko/brainstorms/setup-v3-team-defect/record.md`.

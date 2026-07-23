@@ -170,8 +170,9 @@ it must clear a verdict again), or **reject** (abort; the drafts remain under
 Report the artifacts (the six deliverables + `plan.md` + the three round reports
 `techanalyst-report.md` / `feasibility-report.md` / `advocate-report.md`), the per-phase round
 counts, the decision / entity / endpoint counts, a suggested commit (`docs: plan <feature>`), and
-the next step (`/mochiko:tasks`). Offer a lightweight retain/clean choice for the intermediate round
-reports; never offer to delete `plan.md` or the six artifacts — they are the deliverables.
+the next step (`/mochiko:tasks`). Intermediate round reports are cleaned by default (their
+outcome stamps live in `plan.md`); the user may ask to retain them. Never offer to delete
+`plan.md` or the six artifacts — they are the deliverables.
 
 ## Contract (authoring-time fill — governed by `mochiko:loop-discipline`)
 
