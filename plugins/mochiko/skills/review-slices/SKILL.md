@@ -59,7 +59,9 @@ surfaced as an out-of-scope observation for the lead, never fixed or graded here
 ## The checks
 
 Read **both** files — `slices.md` *and* the `spec.md` it indexes. Coverage cannot be verified from
-the overlay alone. Run every check; do not stop at the first finding.
+the overlay alone. Run every check; do not stop at the first finding. The overlay follows the
+deliverable envelope (`templates/artifact-format.md`) — one-line seams/obligations, ≤ 3-line
+rationale; **density is never itself a finding**, a gap is missing or unverifiable substance.
 
 | # | Check | The question | Typical severity |
 |---|-------|--------------|------------------|

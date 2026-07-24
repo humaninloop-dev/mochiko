@@ -33,7 +33,7 @@ dogfood-pilot ruling as the other team-form commands.
   break down.
 - Kill-switch: stop and escalate if `.mochiko/specs/<feature>/TASKS_STOP` exists — check before
   each seat send.
-- **Deliverables & IDs:** `task-mapping.md` (the freehand story→cycle mapping + vertical-slice
+- **Deliverables & IDs:** `task-mapping.md` (the compact story→cycle mapping + vertical-slice
   rationale — the **source of truth** for slicing decisions) and `tasks.md` (cycle→TDD tasks:
   foundation cycles sequential, feature cycles `[P]`; a file path per task; `[US#]` story tags;
   `[EXTEND]`/`[MODIFY]` markers; the Story→Cycle table = a **derived echo** of `task-mapping.md`,
@@ -103,7 +103,7 @@ dogfood-pilot ruling as the other team-form commands.
 expensive full TDD breakdown — the tasks analogue of plan's feasibility-once gate (cheap rework
 avoidance).
 
-1. **Produce.** The producer authors `task-mapping.md` — the freehand story→cycle mapping +
+1. **Produce.** The producer authors `task-mapping.md` — the compact story→cycle mapping +
    vertical-slice rationale, the **source of truth** for slicing decisions (+ `taskarchitect-report.md`);
    on round > 1 the message carries the reviewer's gap list for targeted revision (fix flagged gaps;
    don't regress passing slices). The round-1 spawn is the authoritative probe — confirm addressability.

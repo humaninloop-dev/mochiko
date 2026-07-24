@@ -9,6 +9,12 @@ Each check carries a fixed question and a severity (Critical / Important / Minor
 derived **mechanically** from the issue counts (see SKILL.md → Verdict Criteria) — this is a
 mirror checklist, not open-ended hunting.
 
+The graded artifacts follow the deliverable envelope (`templates/artifact-format.md`):
+dense by construction — one-line entries, statement-carries-the-content, ID citations
+instead of re-quoted text, each artifact's summary table as its **ID index**. Verify
+coverage against the ID index; **density is never itself a finding** — a gap is missing
+or unverifiable substance, not missing prose.
+
 ## Scope of these checklists
 
 These checklists grade **completeness, coverage, measurability, presence, and cross-artifact
@@ -98,7 +104,7 @@ Grade these when reviewing the design output set (e.g. `data-model.md`, `contrac
 | Attribute completeness | Do all entities have required fields? | Critical |
 | Relationship definition | Are all connections documented with cardinality and delete behavior? | Critical |
 | PII identification | Are sensitive fields annotated with classification? | Critical |
-| Sensitivity details | Do Confidential+ attributes have full handling requirements? | Critical |
+| Sensitivity details | Does every Confidential+ attribute have a Sensitivity Details row (specifics + deviations), with the handling-by-level defaults stated once in the document? | Critical |
 | Compliance coverage | Are relevant compliance requirements (GDPR, PCI, etc.) addressed? | Important |
 | Retention policies | Are data retention and deletion policies specified? | Important |
 | Encryption standards | Are encryption requirements specified for each classification level? | Important |
@@ -128,12 +134,16 @@ Grade these when reviewing the design output set (e.g. `data-model.md`, `contrac
 
 ### Checklist — Integration Guide (`quickstart.md`)
 
+`quickstart.md` is **conditional** (authored only when the feature has a real
+external-integration surface — see `patterns-api-contracts`). First check the condition:
+
 | Check | Question | Severity |
 |-------|----------|----------|
-| Flow coverage | Are common user flows documented with examples? | Important |
+| Conditionality honored | If an integration surface exists (external API consumers, `x-integration` systems, non-trivial auth), is `quickstart.md` present? If none exists, is its null path recorded in `plan.md` (no stub file)? | Important |
+| Flow coverage | Are common user flows documented with runnable examples (citing the contract, not re-documenting it)? | Important |
 | Auth documentation | Is the authentication sequence clear? | Important |
-| Error documentation | Are error handling patterns explained? | Important |
-| External integrations | Is the external system boundary overview present? | Important |
+| Error documentation | Are error handling patterns explained (conventions cited, top cases tabulated)? | Important |
+| External integrations | Is the external system boundary overview present (one line per `x-integration` system)? | Important |
 
 ### Key Questions — Design
 

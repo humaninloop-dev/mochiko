@@ -100,6 +100,11 @@ report path, return the same structure inline.
 6. **Generate questions** with concrete options
 7. **Group related gaps** to avoid overwhelming stakeholders
 
+The spec follows the deliverable envelope (`templates/artifact-format.md`): one-line
+scenarios (2-3 per story), one-line FR/SC/edge-case entries, compact entities. **Density
+is never itself a gap** — grade substance (a missing flow, an unmeasurable criterion, an
+unstated assumption), never prose volume.
+
 ## Quality Checklist
 
 Before finalizing the review, verify:

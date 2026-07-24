@@ -60,6 +60,12 @@ When both are supplied, run the **Cross-Artifact Review** to cross-check `tasks.
 `task-mapping.md` (the cumulative pass). Detailed checklists are in
 [PHASE-CHECKLISTS.md](references/PHASE-CHECKLISTS.md).
 
+Both artifacts follow the deliverable envelope (`templates/artifact-format.md`):
+`task-mapping.md` is a compact mapping (tables + ≤ 2-line rationale cells), `tasks.md`
+carries one-line task entries and no doctrine sections. **Density is never itself a
+finding** — grade coverage, ordering, and traceability against the tables, not prose
+volume.
+
 | Artifact type | Focus | Key checks |
 |---------------|-------|------------|
 | **`task-mapping.md`** | story→cycle mapping, slice quality | story coverage, true vertical slices, foundation separation, cycle sizing, story→cycle traceability |
