@@ -39,31 +39,43 @@ Machinery built same day at plugin v0.18.0 (see ROADMAP Key Decisions). Record:
 
 ---
 
-## Token-reduction wave 1 (from the `workflow-token-reduction` epic, built 2026-07-23 at plugin v0.22.0; independently audited **PASS**, one audit-round fix)
+## Token-reduction waves 1–2 (from the `workflow-token-reduction` epic; wave 1 built 2026-07-23 at v0.22.0, wave 2 built 2026-07-24 at v0.23.0; each independently audited **PASS**, one audit-round fix apiece)
 
-The epic's BACKLOG scoping was deliberately deferred (user ruling); this wave re-opened it for
-the **report layer** on four in-session rulings (all-report-formats scope · YAML-first machine-first
-form · D2+D6 folded in · strengths → one-line field). Built: `templates/report-format.md` (the
-report envelope single-source) + all eight report formats rewritten machine-first (cycle,
-verification incl. the previously-improvised per-cycle file, advocate, feasibility, four producer
-disclosures) + five review-skill retargets + command-shape **v3** (D2 run-cost entry + D6c) +
-agent-dispatch **v4** (D6c + team-form staleness fix) + D6a grammar split + D6b orphan deletions +
-D6d clean-by-default. Full record: ROADMAP Decision Trail (wave-1 entry); strip notes
-`[v0.22.0]`-stamped in `.mochiko/strips/`. **Deliberately untouched (scope call, not an
-omission):** setup's `codebase-analysis.md` (a disk-written analysis report consumed by the G2
-gate + the constitution author) and brainstorm's `synthesis.md` / record Review section — these
-are analysis/deliverable surfaces, not round reports; they come into scope only if a later wave
-targets analysis outputs. Setup/brainstorm's remaining returns (validator verdict, trace-summary
-manifest, reviewer survivors, injection-probe report) are message-form. Still open from the epic:
+The epic's BACKLOG scoping was deliberately deferred (user ruling); the waves re-open it per
+layer. **Wave 1 — the report layer**, on four in-session rulings (all-report-formats scope ·
+YAML-first machine-first form · D2+D6 folded in · strengths → one-line field). Built:
+`templates/report-format.md` (the report envelope single-source) + all eight report formats
+rewritten machine-first (cycle, verification incl. the previously-improvised per-cycle file,
+advocate, feasibility, four producer disclosures) + five review-skill retargets + command-shape
+**v3** (D2 run-cost entry + D6c) + agent-dispatch **v4** (D6c + team-form staleness fix) + D6a
+grammar split + D6b orphan deletions + D6d clean-by-default. **Wave 2 — the deliverable/artifact
+layer (D4 closed)**, on four ratified rulings R1–R4 + four arbitrated trades T1–T4 (scope = the
+pipeline chain + codebase-analysis; form = dense-by-construction human-legible, NOT machine-first;
+single source = `templates/artifact-format.md`; one ceremony). Built: the artifact envelope
+(reference-by-ID · per-artifact ID index · statement-carries-the-content · size guidance ·
+density-is-not-a-gap) + dense forms across the authoring cluster (statement-line TR/C/D/IP/NFR
+blocks · sensitivity handling-defaults-once + per-attribute rows · one-line 2-3 G/W/T scenarios ·
+task-mapping's first canonical compact shape · tasks-template boilerplate strips · codebase-analysis
+merged check table) + conditional-capped quickstart (T3, null path in plan.md) + four review-skill
+density retargets. Full records: ROADMAP Decision Trail (wave-1 + wave-2 entries); strip notes
+`[v0.22.0]`/`[v0.23.0]`-stamped in `.mochiko/strips/`. **Deliberately untouched (scope calls, not
+omissions):** brainstorm's record/`synthesis.md` (length is the audit-trail function; own session
+doctrine) and the governance surfaces (`CLAUDE.md` region + rules files already thin by the
+dissolution design; `governance-intent.md` / ledger have their own recent design) — noted as
+candidates if a later wave targets governance volumes. Still open from the epic:
 
-- [ ] **Wave-1 dogfood (next kinako run).** The acceptance check for the strip: seats actually
-  author the slim formats (frontmatter-only passing reports; failure narrative on fails); the lead's
-  confidence gate reads the frontmatter fields; the first `run-costs.md` rows land (D2 manual
-  baseline — usage figure + run-shape counts); no consumer starves (a starved consumer re-adds via
-  the strip notes' evidence-gated path with a marked override, never silently).
-- [ ] **D4 — reference-by-ID down the artifact chain** (priority 2, the largest build): authoring-*
-  skills + artifact templates gain no-restatement rules + size guidance; compact ID index per
-  artifact. Rides the ~10×-mandated-read multiplier (epic F-b).
+- [ ] **Waves 1–2 dogfood (next kinako run).** The acceptance check for both strips: seats author
+  the slim report formats (frontmatter-only passing reports; failure narrative on fails) AND the
+  dense artifact forms (statement-line blocks, sensitivity rows, compact mapping, 2-3 one-line
+  scenarios; quickstart only when an integration surface exists, its null path in plan.md); the
+  lead's confidence gate reads the frontmatter fields; reviewers converge without density-as-gap
+  findings; the first `run-costs.md` rows land (D2 manual baseline — usage figure + run-shape
+  counts) and the artifact-layer disk sizes are compared against the kinako baseline (~555k B
+  design layer); no consumer starves (a starved consumer re-adds via the strip notes'
+  evidence-gated path with a marked override, never silently).
+- [x] **D4 — reference-by-ID down the artifact chain → DONE (wave 2, 2026-07-24, v0.23.0).**
+  Landed as `templates/artifact-format.md` + the authoring-cluster dense forms + per-artifact ID
+  indexes + review-skill retargets; see the ROADMAP Decision Trail wave-2 entry.
 - [ ] **D5 — review sizing gates generalized + the floored verification-depth gate**: command texts
   of the five pipeline stages.
 - [ ] **D2 upgrade path — the one-shot OTel probe** (probe-then-graduate, epic S1/F-d): enable the

@@ -52,8 +52,8 @@ team-form commands.
   `patterns-technical-decisions`, `patterns-entity-modeling`, `patterns-api-contracts`), one
   **named standing seat across both phases**. Phase 1: author `requirements.md`,
   `constraints-and-decisions.md`, `nfrs.md`; Phase 2: author `data-model.md`, `contracts/api.yaml`,
-  `quickstart.md` (+ `techanalyst-report.md` each round) — the standing seat carries the Phase-1
-  analysis rationale into the Phase-2 design rather than reconstructing it from the files. Brief it
+  `quickstart.md` when applicable (+ `techanalyst-report.md` each round) — the standing seat carries
+  the Phase-1 analysis rationale into the Phase-2 design rather than reconstructing it from the files. Brief it
   per `agent-dispatch`: `spec.md`, the governance obligated-read line (per the prerequisite), the
   brownfield analysis when present, the templates to fill per its skills. Round > 1 within a phase
   is a message to the same seat carrying the reviewers' gap list verbatim (fix the flagged gaps;
