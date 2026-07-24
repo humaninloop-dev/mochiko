@@ -8,6 +8,12 @@ One entry per session directory under `.mochiko/brainstorms/<topic-slug>/`, **ne
 
 ---
 
+## `model-tiered-seats` — Haiku scribe + explorer seats: model tiering as token-epic angle 2
+- **When:** 2026-07-24 · **Status:** accepted · record pair-reviewed (lens-split per sizing gate: 13 raised → 12 survived cross-exam → 10 merged survivors → 10/10 dispositioned incl. a 5-item user-accepted amendment batch; verify pass CLEAN after one fold-contradiction fix; clearing verdict ready)
+- **Artifacts:** [record.md](model-tiered-seats/record.md) (canonical)
+- **About:** second re-examination angle feeding the workflow-token-reduction epic's deferred BACKLOG scoping, seeded by a free-form conversation proposing Haiku scribe/explorer seats (recorded as unverified propositions P-scribe/P-explorer/P-ladder/P-caution). Fact-grounded headlines: every mochiko persona is `model: opus` with no model axis anywhere in doctrine; Explore silently stopped being guaranteed-cheap at Claude Code v2.1.198 (Opus-capped inherit) — un-cheapening the gap-resolver at 10+ sites; the scribe's designed target no longer exists post-wave-1/2; a plugin cannot shadow native Explore (scoped names, lowest precedence). Ruled (D1–D6 + 9 review folds): cost-weighted usage on the two documented channels with context-health as standing test and segments named; scribe closed as a non-avenue (re-open condition recorded); class-keyed cheap/session gap routing at `loop-discipline` dispatched to a disposable-per-gap scoped `model: haiku` explorer (honest build: the rule + ~10 site edits); no rostered seat changes tier — seat-tiering deferred to a dedicated brainstorm gated on reliability evidence (steelmans preserved); three probe items ride the epic's OTel/dogfood watch.
+- **Landed:** ROADMAP Key Decisions (model-tiered-seats row, 2026-07-24), third row of the token-epic cluster; **BACKLOG stays deferred per the epic's ruling** — build scoping re-opens from the three records together.
+
 ## `standing-seat-lifecycle` — standing-seat context accumulation and strategic producer recycling
 - **When:** 2026-07-23 · **Status:** accepted · record pair-reviewed (lens-split per sizing gate: 16 raised → 13 carried → 11 merged survivors → 11/11 dispositioned incl. 2 in-review user rulings; verify pass CLEAN, 4 optional polish notes applied; clearing verdict ready)
 - **Artifacts:** [record.md](standing-seat-lifecycle/record.md) (canonical)

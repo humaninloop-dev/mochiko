@@ -72,7 +72,13 @@ candidates if a later wave targets governance volumes. Still open from the epic:
   findings; the first `run-costs.md` rows land (D2 manual baseline — usage figure + run-shape
   counts) and the artifact-layer disk sizes are compared against the kinako baseline (~555k B
   design layer); no consumer starves (a starved consumer re-adds via the strip notes'
-  evidence-gated path with a marked override, never silently).
+  evidence-gated path with a marked override, never silently). **Calibration watches riding this
+  run:** (a) the envelope's size defaults (≤ 3-line rationale, one-line entries) and the ≤ 150-line
+  quickstart cap were set by judgment, not evidence — a form that squeezes out real substance is a
+  starved consumer and re-adds through the same evidence-gated path; (b) T3 has two branches and
+  one feature may not exercise both — the null path (no integration surface → one-line record in
+  plan.md, no stub file) needs a feature without an external integration surface before it counts
+  as verified.
 - [x] **D4 — reference-by-ID down the artifact chain → DONE (wave 2, 2026-07-24, v0.23.0).**
   Landed as `templates/artifact-format.md` + the authoring-cluster dense forms + per-artifact ID
   indexes + review-skill retargets; see the ROADMAP Decision Trail wave-2 entry.
@@ -81,6 +87,19 @@ candidates if a later wave targets governance volumes. Still open from the epic:
 - [ ] **D2 upgrade path — the one-shot OTel probe** (probe-then-graduate, epic S1/F-d): enable the
   documented config in a dogfood run; observe console behavior, per-run aggregation, teammate
   attribution; automation graduates on probe evidence only.
+- [ ] **Wave-3 candidates — the layers R1 deliberately scoped out (2026-07-24; candidates, not
+  commitments — each needs its own ruling before any strip).** (1) **The governance/memory layer:**
+  kinako's `governance-intent.md` 26.2k B + `governance-ledger.md` 47.4k B + `trace-summary.md`
+  12.9k B (~21.6k tok est. combined) — excluded because they carry their own fresh design
+  (constitution-native-surfaces ruled the ledger metadata-primary, read only by setup/amend + the
+  validator; the intent is the amendable ratified contract), so any densification must be designed
+  inside the setup cluster, not imposed by an artifact wave. **Revisit trigger:** a kinako amend
+  run showing the setup-side read cost mattering, or the intent/ledger growing superlinearly with
+  amendments. (2) **Brainstorm `record.md` / `synthesis.md`:** excluded because record length IS
+  the audit-trail function and the session doctrine (v2.2) already governs synthesis as a derived
+  on-request digest — only re-examine if a completed session's transcript forensics show record
+  *authoring* (not review reading, already optimized) as a material pool. Neither item enters
+  scope silently; a wave-3 opens the way waves 1–2 did — rulings ratified in-session first.
 - [ ] **Standing-seat build items stay deferred** (`standing-seat-lifecycle` record D1–D4 —
   conditioned checkpoint recycling, respawn briefs, the Layer-2 transport-vs-lifecycle rewrite,
   per-seat measurement). **Version-number handoff:** that record's D3 targeted "shape v2→v3"; this
