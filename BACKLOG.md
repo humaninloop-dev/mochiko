@@ -109,6 +109,97 @@ candidates if a later wave targets governance volumes. Still open from the epic:
 
 ---
 
+## Kinako-dogfood workflow changes (mvp-thin-loop oversight trace, 2026-07-24)
+
+The first field evidence of the pipeline's blind spots, from the kinako mvp-thin-loop dogfood
+(2026-07-24): five UI gaps traced root-cause through the full artifact chain — evidence layer at
+`humaninloop-dev/kinako` → `.mochiko/specs/mvp-thin-loop/oversight-trace.md` (findings F1–F5,
+first-origin + missed-gates + classification per finding). Unifying diagnosis: every gate
+verified artifact-internal consistency; none exercised the launched artifact's user journey, and
+app-internal user actions had no machine-traceable artifact. Each item below was
+**pressure-tested in-session for single-project overfit** (n = instantiating findings; 2 of 9
+raw proposals cut, 2 slimmed) and is **awaiting founder ratification** — ratified items land as
+one edit wave (author ≠ grader: `validator` audits touched primitives), ruling promoted to
+ROADMAP Key Decisions, entries closed. **Confirm-or-revert vehicle: the kinako UI fix wave**
+(the same next-kinako-run the token-reduction waves 1–2 dogfood item above rides) — each change
+either fires during that run (confirmed) or sits unexercised (flagged, revisit). **Meta-rule
+riding the ratification:** single-project-retro changes default to checklist/hunt-line edits in
+existing skills; new artifacts, stages, or hard gates require n≥2 across projects.
+
+- [ ] **Surface-task rule (adopt; n=2).** Owner: `patterns-vertical-tdd` (rule) +
+  `review-task-artifacts` (check). Every acceptance scenario in which the developer performs an
+  action MUST map to a task that builds the user-reachable surface where the action happens;
+  entity/port/use-case/CLI tasks do not discharge it — the reviewer asks, per scenario, "name
+  the task where the user does this in the shipped surface." Evidence: kinako F2 (allowlist +
+  injection-scope UI never tasked in any S1/S2 cycle — first origin s1/task-mapping C7
+  "Delivers"; the S2 mirror deleted the word "UI") and F3 (the only setup-UI task scoped to
+  readiness display). Confirm: the kinako allowlist-UI and setup-integrate fixes run through
+  `/mochiko:tasks` and this check produces surface tasks.
+- [ ] **Journey-gate class, graded form (adopt; n=5).** Owner: `testing-end-user` (doctrine) +
+  `qa-engineer`; touches the implement entry variant and the audit charter. The scenario's actor
+  and entry surface are part of "real infrastructure": a `**TEST:**` whose spec text has the
+  developer acting in the app cannot be discharged by a CLI/fixture except as an explicit,
+  logged substitution with open residue; ≥1 launched-artifact journey gate per slice; journey
+  gates **block feature-close** (not slice-close — kinako's slice-close honesty wasn't the
+  failure, the compounding silence was) and open deferrals re-surface at every subsequent slice
+  start. Evidence: all five kinako findings passed through "no gate exercised the launched app"
+  (T6.8 `[ ]` across S1→S4; "developer adds repo" = fixture store write; "watch the run in the
+  app" = CLI script; the browse gate test called `refresh()` itself). Cross-refs: the `audit`
+  scoping item (feature-close verification charter) and the slice-build "Feature-close
+  verification has no owning workflow" item — this rule gives that pass its hard gate class.
+  Confirm: the kinako fix wave closes through a launched-app journey gate.
+- [ ] **Two spec-review hunt classes (adopt; n=2).** Owner: `review-specifications` (the
+  `devils-advocate` mount). (a) **Display meaningfulness** — for every MUST-display requirement:
+  what does the user literally see, and can they act on it? (kinako F5: "provenance" satisfied
+  by raw UUIDs; TR-025 ratified ID-sufficiency; no artifact required "can tell which
+  repo/session"). (b) **Lifecycle twins** — for every background state-change: when does each
+  surface reflect it; for every elicited lifecycle edge case, generate its twin (kinako F4:
+  elicitation reached app-*closed* catch-up — edge case 4/FR-013 — and stopped one step short of
+  app-*open* staleness). Guard ratified with it: future hunt-class additions require n≥2 or
+  high severity — hunt lists must not grow one class per retro. Confirm: the next
+  `/mochiko:specify` review exercises both.
+- [ ] **Split-gate assert-union invariant (adopt; n=1, zero-cost).** Owner: `loop-discipline`.
+  When a gate is split (e.g. CI half / human half), the union of the halves' asserts MUST equal
+  the original gate's — splitting may never shrink; the reviewer diffs asserts-before vs
+  asserts-after. Evidence: kinako F3 — the tasks advocate's round-1 CI-testability gap produced
+  the T6.7/T6.8 split that dropped the config-write assert from the app-journey half
+  (task-mapping still carried "a pre-seeded foreign MCP/hook entry survives the write"), then
+  round 2 blessed the result: **the review loop itself caused the shrink**. Adopted despite n=1
+  because the mechanism is the scariest found and the check costs nothing.
+- [ ] **Runbook walked-stamp (adopt; n=1 doc).** Owner: convention — landing surface decided at
+  ratification (likely a `testing-end-user` reference or the implement/audit command side; no
+  runbook-authoring skill exists today). Any doc claiming "as it actually runs today" carries,
+  per step, either an executed-date stamp or `UNVERIFIED`; a doc with `UNVERIFIED` steps may not
+  claim "today." Evidence: kinako's `dogfood-runbook.md` §0–2 — claims "the loop as it actually
+  runs today" while instructing unbuilt UI; its overclaims cover four of the five detonations.
+- [ ] **Residues route to a tracked surface (slimmed adopt; n=1–2).** Owner:
+  `executing-tdd-cycle` (rule) + `authoring-slices` (Feature-Done condition). Any
+  flagged/deferred/remaining line in a cycle report MUST also land in an existing tracked
+  surface (the feature's backlog/obligations section) at cycle close; Feature-Done requires that
+  surface empty. Deliberately **no new artifact** (overfit guard). Evidence: kinako F4 — the C10
+  cycle report's "plus a background refresh trigger" flag dropped at transcription into the
+  app-shell obligation (which cited other sources); F3's write-trigger wiring bundled invisibly
+  under a sandbox-only deferral rationale. Jointly with the journey-gate item this also covers
+  the cut "no out-of-pipeline integration steps" proposal: feature-close wiring executes against
+  the tracked surface and closes through journey gates.
+- [ ] **Plan designs its surfaces (slimmed adopt; n≈4 paths).** Owner: plan cluster
+  (`technical-analyst` craft; `review-plan-artifacts` check). The plan MUST design every
+  user-facing surface it commits to build; an api-contracts "app-internal, deliberately not
+  endpoints" note is an omission note, not a design — app-internal user actions need a designed
+  home. Evidence: kinako s1/plan.md designed no browse or setup surface at all; four of the five
+  findings pass through that vacancy (F2 no surface to task; F3 no write-action in the surface;
+  F4 no load-timing design; F5 no display-form design). The full surfaces-inventory *artifact*
+  was deliberately NOT adopted (overfit guard) — revisit at the next GUI-project run.
+- [ ] **Watch-line (deferred; n=1 each — upgrade on a second instance, per the meta-rule):**
+  (a) **scaffolding→production promotions re-open design review** — for now one prompt line in
+  `patterns-technical-decisions`' promotion-decision guidance ("which constraints did the
+  scaffolding context never face — launch context, inherited environment, packaging?"; kinako F1
+  / D-011 promoted the terminal orchestrator examining only CI-testability); (b) **out-of-pipeline
+  integration steps** — cut as a standalone rule (covered by the journey-gate + residues items);
+  re-raise if a feature-close wiring step again bypasses gates.
+
+---
+
 ## Workflow scoping
 
 Notes for upcoming workflows, to be fleshed out before building starts.
