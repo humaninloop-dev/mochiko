@@ -1,3 +1,6 @@
+<!-- Form: templates/artifact-format.md (the deliverable envelope). plan.md is a summary
+     over the validated artifacts — tables + "See X" pointers, never restated content. -->
+
 # Implementation Plan: [FEATURE]
 
 **Feature**: `[feature-slug]` | **Date**: [DATE] | **Spec**: [link]
@@ -48,7 +51,7 @@ See `contracts/api.yaml` for full OpenAPI specification.
 | `nfrs.md` | ✅ Complete |
 | `data-model.md` | ✅ Complete |
 | `contracts/api.yaml` | ✅ Complete |
-| `quickstart.md` | ✅ Complete |
+| `quickstart.md` | ✅ Complete — *or* "not applicable — no external integration surface" (conditional; see `patterns-api-contracts`) |
 
 ## Next Steps
 

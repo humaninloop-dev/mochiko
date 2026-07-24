@@ -1,6 +1,9 @@
 # Codebase Analysis Template
 
-This template defines the structure for brownfield codebase analysis output.
+This template defines the structure for brownfield codebase analysis output. It follows
+the deliverable envelope ([`artifact-format.md`](artifact-format.md)) **slimmed but
+legible**: findings as file-cited table rows, one line each; the judgment prose
+(strengths, recommendations) stays prose — the analysis checkpoint's human reader needs it.
 
 ---
 
@@ -97,36 +100,22 @@ This template defines the structure for brownfield codebase analysis output.
 
 ### Essential Floor Status
 
-| Category | Status | Evidence |
-|----------|--------|----------|
-| Security | {{present\|partial\|absent}} | {{description}} |
-| Testing | {{present\|partial\|absent}} | {{description}} |
-| Error Handling | {{present\|partial\|absent}} | {{description}} |
-| Observability | {{present\|partial\|absent}} | {{description}} |
+| Category | Check | Status | Evidence (file-cited, one line) |
+|----------|-------|--------|--------------------------------|
+| Security | Auth at boundaries | {{present\|partial\|absent}} | {{evidence}} |
+| Security | Secrets from env | {{status}} | {{evidence}} |
+| Security | Input validation | {{status}} | {{evidence}} |
+| Testing | Test framework configured | {{status}} | {{evidence}} |
+| Testing | Test files present | {{status}} | {{count}} files found |
+| Testing | CI runs tests | {{status}} | {{evidence}} |
+| Error Handling | Explicit error types | {{status}} | {{evidence}} |
+| Error Handling | Context preservation | {{status}} | {{evidence}} |
+| Error Handling | Appropriate status codes | {{status}} | {{evidence}} |
+| Observability | Structured logging | {{status}} | {{evidence}} |
+| Observability | Correlation IDs | {{status}} | {{evidence}} |
+| Observability | No PII in logs | {{status}} | {{evidence}} |
 
-#### Security Assessment Details
-
-- **Auth at boundaries**: {{status}} - {{evidence}}
-- **Secrets from env**: {{status}} - {{evidence}}
-- **Input validation**: {{status}} - {{evidence}}
-
-#### Testing Assessment Details
-
-- **Test framework configured**: {{status}} - {{evidence}}
-- **Test files present**: {{status}} - {{count}} files found
-- **CI runs tests**: {{status}} - {{evidence}}
-
-#### Error Handling Assessment Details
-
-- **Explicit error types**: {{status}} - {{evidence}}
-- **Context preservation**: {{status}} - {{evidence}}
-- **Appropriate status codes**: {{status}} - {{evidence}}
-
-#### Observability Assessment Details
-
-- **Structured logging**: {{status}} - {{evidence}}
-- **Correlation IDs**: {{status}} - {{evidence}}
-- **No PII in logs**: {{status}} - {{evidence}}
+**Category rollup:** Security {{status}} · Testing {{status}} · Error Handling {{status}} · Observability {{status}}
 
 ### Recommended Constitution Focus
 

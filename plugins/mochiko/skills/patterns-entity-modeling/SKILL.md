@@ -149,11 +149,12 @@ Is the data publicly available or intended for public sharing?
 ### Annotating Sensitivity
 
 1. Add a **Sensitivity** column to every entity's attributes table (see Attribute Format above).
-2. For every **Confidential** or **Restricted** attribute, add a **Sensitivity Details** block specifying encryption (at rest / in transit), retention, access control, audit, masking, and compliance mapping.
-3. Roll the classifications up into the **Data Sensitivity Summary** table at the top of `data-model.md` (entity / attribute / classification / compliance).
-4. Where an attribute realizes a declared DS-XXX requirement from analysis, note it in the compliance/description cell for traceability.
+2. State the **handling defaults once per document**: `data-model.md` carries the handling-by-level matrix (from [DATA-SENSITIVITY.md](references/DATA-SENSITIVITY.md)) a single time, under the summary. Per-attribute handling then follows the level default by construction.
+3. For every **Confidential** or **Restricted** attribute, add one row to its entity's **Sensitivity Details** table — recording only the attribute's **specifics** (retention, access control) and any **deviations** from its level default, plus its compliance mapping. Never repeat the level-default aspects (encryption, audit, masking) per attribute.
+4. Roll the classifications up into the **Data Sensitivity Summary** table at the top of `data-model.md` (entity / attribute / classification / compliance) — the artifact's **ID/coverage index**.
+5. Where an attribute realizes a declared DS-XXX requirement from analysis, note it in the compliance cell for traceability.
 
-See [DATA-SENSITIVITY.md](references/DATA-SENSITIVITY.md) for the full sensitivity-details field definitions, the handling-by-level matrix, the Sensitivity Details block format, and compliance-mapping examples.
+See [DATA-SENSITIVITY.md](references/DATA-SENSITIVITY.md) for the field definitions, the handling-by-level matrix, the compact Sensitivity Details row format, and compliance-mapping examples.
 
 ## Relationship Modeling
 
@@ -196,33 +197,32 @@ See [VALIDATION-RULES.md](references/VALIDATION-RULES.md) for constraint pattern
 
 ## data-model.md Structure
 
-This is the **single canonical `data-model.md` template**. Every attribute carries a sensitivity classification; every Confidential or Restricted attribute carries a Sensitivity Details block (format in [DATA-SENSITIVITY.md](references/DATA-SENSITIVITY.md)).
+This is the **single canonical `data-model.md` template**, following the deliverable
+envelope in [`artifact-format.md`](../../templates/artifact-format.md). Every attribute
+carries a sensitivity classification; the handling-by-level defaults appear **once per
+document**; every Confidential or Restricted attribute is one **Sensitivity Details row**
+(specifics + deviations only — format in [DATA-SENSITIVITY.md](references/DATA-SENSITIVITY.md)).
+Density is not a gap; a gap is a missing entity, classification, or relationship.
 
 ```markdown
 # Data Model: {feature_id}
 
 > Entity definitions with relationships, per-attribute sensitivity annotations, and state machines.
 
----
-
-## Data Sensitivity Summary
+## Data Sensitivity Summary  *(the coverage index)*
 
 | Entity | Attribute | Classification | Compliance |
 |--------|-----------|---------------|------------|
 | User | email | Confidential | GDPR Art. 6 |
 | User | passwordHash | Restricted | NIST 800-63 |
-| Payment | cardNumber | Restricted | PCI-DSS |
-| Order | transactionId | Internal | - |
-| Product | name | Public | - |
 
-### Classification Levels
+**Handling defaults (once per document — per-attribute rows record only specifics and deviations):**
 
-| Level | Definition | Examples |
-|-------|------------|----------|
-| **Public** | Freely shareable, no access controls needed | Product names, public profile info |
-| **Internal** | Organization-internal, basic access controls | Transaction IDs, internal status codes |
-| **Confidential** | Sensitive, role-based access required | Email addresses, billing addresses, standard PII |
-| **Restricted** | Highly sensitive, strict access and audit | Passwords, SSNs, payment card numbers, credentials |
+| Aspect | Confidential | Restricted |
+|--------|-------------|------------|
+| Encryption at rest / in transit | Required (AES-256 / TLS 1.3+) | Required, strong (AES-256 / TLS 1.3+) |
+| Audit logging | All access logged | All access logged + real-time anomaly alerts |
+| Masking in logs/UIs | Required | Never displayed, never logged |
 
 ---
 
@@ -237,9 +237,7 @@ This is the **single canonical `data-model.md` template**. Every attribute carri
 
 ## Entity: User [EXTENDS EXISTING]
 
-> Existing entity extended with authentication fields.
-
-**Traceability:** FR-001, FR-002, US#1
+Existing entity extended with authentication fields. **Traceability:** FR-001, FR-002, US#1
 
 ### Attributes
 
@@ -255,39 +253,18 @@ This is the **single canonical `data-model.md` template**. Every attribute carri
 | id | UUID | Internal | Existing primary key |
 | email | Email | Confidential | Existing email field |
 
-### Sensitivity Details (Confidential+ attributes)
+### Sensitivity Details  *(one row per Confidential+ attribute — specifics + deviations from the level default)*
 
-#### passwordHash (Restricted)
-
-| Aspect | Requirement |
-|--------|-------------|
-| Encryption at Rest | Required — AES-256 |
-| Encryption in Transit | Required — TLS 1.3+ |
-| Retention Period | Retain until account deletion; purge on delete |
-| Access Control | System-only; no user or admin read access |
-| Audit | All access logged; real-time alerts on anomalous access |
-| Masking | Never displayed; never logged |
-| Compliance | NIST 800-63 (credential storage) |
-
-#### email (Confidential)
-
-| Aspect | Requirement |
-|--------|-------------|
-| Encryption at Rest | Required — AES-256 |
-| Encryption in Transit | Required — TLS 1.3+ |
-| Retention Period | Delete within 30 days of account closure |
-| Access Control | Authenticated users read own; admins read all |
-| Audit | All access logged with timestamp and user |
-| Masking | Displayed masked in logs: j***@example.com |
-| Compliance | GDPR Art. 6 (consent via signup), Art. 17 (deletion within 30 days) |
+| Attribute | Level | Retention | Access | Deviations | Compliance |
+|-----------|-------|-----------|--------|------------|------------|
+| passwordHash | Restricted | Until account deletion; purge on delete | System-only; no user/admin read | — | NIST 800-63 (DS-001) |
+| email | Confidential | Delete ≤ 30d after account closure | Users read own; admins read all | Log masking: j***@example.com | GDPR Art. 6, Art. 17 |
 
 ---
 
 ## Entity: Session [NEW]
 
-> User authentication session.
-
-**Traceability:** FR-003, US#2
+User authentication session. **Traceability:** FR-003, US#2
 
 ### Attributes
 
@@ -305,19 +282,11 @@ This is the **single canonical `data-model.md` template**. Every attribute carri
 |--------------|-------------|--------|-----------------|-------------|
 | user | N:1 | User | Cascade | Session belongs to user |
 
-### Sensitivity Details (Confidential+ attributes)
+### Sensitivity Details
 
-#### token (Restricted)
-
-| Aspect | Requirement |
-|--------|-------------|
-| Encryption at Rest | Required — AES-256 |
-| Encryption in Transit | Required — TLS 1.3+ |
-| Retention Period | Purge on session expiry |
-| Access Control | System-only |
-| Audit | Issued / revoked events logged |
-| Masking | Never logged in full |
-| Compliance | - |
+| Attribute | Level | Retention | Access | Deviations | Compliance |
+|-----------|-------|-----------|--------|------------|------------|
+| token | Restricted | Purge on session expiry | System-only | Audit: issued/revoked events only | — |
 
 ---
 
@@ -325,13 +294,9 @@ This is the **single canonical `data-model.md` template**. Every attribute carri
 
 [Cross-entity relationship documentation — see RELATIONSHIP-PATTERNS.md]
 
----
-
 ## State Machines
 
-[State machine documentation if applicable — see STATE-MACHINES.md]
-
----
+[State machine documentation — only when stateful entities exist; omit otherwise — see STATE-MACHINES.md]
 
 ## Validation Rules
 
@@ -357,7 +322,7 @@ Before finalizing entity model, verify:
 - [ ] All attributes have type, required flag, sensitivity, description
 - [ ] Relationships include cardinality, direction, and delete behavior
 - [ ] Every attribute classified Public / Internal / Confidential / Restricted
-- [ ] Every Confidential or Restricted attribute has a Sensitivity Details block
+- [ ] Handling defaults stated once per document; every Confidential or Restricted attribute has a Sensitivity Details row (specifics + deviations)
 - [ ] Data Sensitivity Summary table reflects all Confidential+ attributes
 - [ ] State machines documented for stateful entities
 - [ ] Brownfield status indicated for each entity
@@ -387,7 +352,7 @@ Before finalizing entity model, verify:
 
 ### Unclassified Sensitivity
 ❌ Email, phone, address, password fields with no classification
-✅ Classify every attribute (Public / Internal / Confidential / Restricted); give Confidential+ a Sensitivity Details block
+✅ Classify every attribute (Public / Internal / Confidential / Restricted); give Confidential+ a Sensitivity Details row
 
 ### Under-classifying When Unsure
 ❌ Defaulting ambiguous data to Internal to avoid the handling burden

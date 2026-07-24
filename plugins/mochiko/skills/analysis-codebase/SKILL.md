@@ -115,7 +115,10 @@ sub-procedure with domain-entity extraction and an Essential-Floor status assess
 - Inconsistencies and strengths to preserve
 
 **Output**: `.mochiko/memory/codebase-analysis.md`, following
-[`codebase-analysis-template.md`](../../templates/codebase-analysis-template.md).
+[`codebase-analysis-template.md`](../../templates/codebase-analysis-template.md). The
+artifact follows the deliverable envelope ([`artifact-format.md`](../../templates/artifact-format.md))
+**slimmed but legible**: findings in tables with file-cited evidence, one line per check;
+the judgment prose (strengths, recommendations) stays prose — the G2 gate reader needs it.
 
 ### Essential-Floor Status Assessment
 

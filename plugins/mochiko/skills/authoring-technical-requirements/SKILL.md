@@ -9,6 +9,13 @@ description: This skill MUST be invoked when authoring the technical-requirement
 
 Translate business specifications into three traceable analysis artifacts: requirements, constraints-and-decisions, and NFRs. Every artifact traces to a business source. Every target is measurable. Every constraint accounts for its design impact.
 
+All three artifacts follow the deliverable envelope in
+[`artifact-format.md`](../../templates/artifact-format.md): dense by construction — **the
+statement carries the content** (no Description field re-explaining the ID line), entries
+one line each, upstream text cited by ID and never re-quoted, the summary tables at each
+artifact's head are its **ID index** (the reviewer coverage surface). Density is not a
+gap; a gap is missing substance.
+
 **Violating the letter of the rules is violating the spirit of the rules.**
 
 ## When to Use
@@ -48,9 +55,9 @@ Map every business FR to one or more TRs. A single FR-001 ("users can sign in") 
 |-------|----------|---------|
 | ID | Yes | TR-XXX sequential format |
 | Source FR | Yes | Which FR(s) this implements |
-| Description | Yes | Technical capability (WHAT, not HOW) |
-| Acceptance Criteria | Yes | Testable technical conditions |
-| Dependencies | No | Other TRs, constraints, or NFRs referenced |
+| Statement | Yes | The technical capability in one-to-two lines (WHAT, not HOW) — the statement IS the description; no separate paragraph |
+| Acceptance Criteria | Yes | Testable technical conditions, one line each |
+| Dependencies | No | Other TRs, constraints, or NFRs — cited by ID, never re-quoted |
 
 **No orphan TRs.** Every TR maps to at least one FR. **No unmapped FRs.** Every FR has at least one TR.
 
@@ -66,21 +73,21 @@ Document hard boundaries (constraints) and the technology decisions shaped by th
 |-------|----------|---------|
 | ID | Yes | C-XXX sequential format |
 | Type | Yes | infrastructure / compatibility / regulatory / migration / organizational |
-| Description | Yes | The hard boundary |
+| Statement | Yes | The hard boundary as a one-to-two-line fact — the statement IS the description |
 | Source | Yes | Where this constraint originates |
 | Severity | Yes | blocking / significant / minor |
-| Impact | Yes | What design choices this eliminates; references D-XXX decisions it shapes |
+| Impact | Yes | What design choices this eliminates, one line each; references D-XXX decisions it shapes |
 
 **Section 2: Technology Decisions (D-XXX)**
 
 | Field | Required | Purpose |
 |-------|----------|---------|
 | ID | Yes | D-XXX sequential format |
-| Context | Yes | The situation requiring a decision |
-| Options | Yes | Alternatives evaluated |
+| Context | Yes | The situation requiring a decision — one-to-two lines |
+| Options | Yes | Alternatives evaluated (compact table: option / pros / cons, one line each) |
 | Choice | Yes | Selected option |
-| Consequences | Yes | Trade-offs accepted |
-| Rationale | Yes | Why this choice; references C-XXX constraints that shaped it |
+| Consequences | Yes | Trade-offs accepted, one line each |
+| Rationale | Yes | Why this choice, ≤ 3 lines; references C-XXX constraints that shaped it |
 
 **Constraints are facts, not preferences.** Each decision record MUST reference the constraints that shaped the choice. Each constraint impact field SHOULD reference decisions it influences.
 
@@ -95,8 +102,8 @@ Document hard boundaries (constraints) and the technology decisions shaped by th
 | ID | Yes | IP-XXX sequential format |
 | Type | Yes | compute / networking / storage / ci-cd / monitoring / security / environment-config |
 | Source | Yes | C-XXX or NFR-XXX that necessitates this provisioning |
-| Description | Yes | What must be provisioned (WHAT, not HOW) |
-| Acceptance Criteria | Yes | Verifiable provisioning conditions |
+| Statement | Yes | What must be provisioned in one-to-two lines (WHAT, not HOW) — the statement IS the description |
+| Acceptance Criteria | Yes | Verifiable provisioning conditions, one line each |
 
 **Every constraint that implies platform work gets an IP-XXX item.** Constraints document boundaries; IP-XXX items document what those boundaries require operationally.
 
@@ -108,9 +115,9 @@ Define measurable quality attributes. Every NFR has a numeric target.
 |-------|----------|---------|
 | ID | Yes | NFR-XXX sequential format |
 | Category | Yes | performance / availability / scalability / security / other |
-| Requirement | Yes | The quality attribute |
+| Requirement | Yes | The quality attribute — one line (the statement IS the description) |
 | Target | Yes | Specific numeric threshold |
-| Measurement Method | Yes | How to verify the target is met |
+| Measurement Method | Yes | How to verify the target is met — tool, conditions, frequency, compact |
 | Source | Yes | Business requirement or stakeholder justifying this |
 
 **"Fast" is not a requirement.** "p95 response time < 200ms under 1000 concurrent users, measured by APM" is.

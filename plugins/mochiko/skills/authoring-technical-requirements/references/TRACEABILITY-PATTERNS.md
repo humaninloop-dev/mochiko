@@ -32,14 +32,14 @@ The analysis artifacts feed the design layer; this reference covers the analysis
 
 Every technical requirement MUST trace to at least one business functional requirement.
 
-**Pattern:**
+**Pattern** (the source rides the statement line — see ARTIFACT-TEMPLATES.md):
 ```markdown
 ## TR-001: Authentication Flow
 
-**Source:** FR-001, FR-003
+**FR-001, FR-003 · MUST** — System MUST [capability].
 ```
 
-**Validation rule:** Scan all TR entries. Each MUST have a non-empty `Source` field referencing at least one FR-XXX.
+**Validation rule:** Scan all TR entries. Each MUST carry at least one FR-XXX reference on its statement line.
 
 **Reverse check:** Scan all FRs from the business specification. Each FR MUST appear as a source in at least one TR. If an FR has no corresponding TR, it was missed during translation.
 
@@ -51,12 +51,10 @@ Technical requirements SHOULD reference constraints that affect their implementa
 ```markdown
 ## TR-005: Data Storage
 
-**Dependencies:**
-- C-001 (must use existing PostgreSQL cluster)
-- C-003 (zero-downtime migration required)
+**Deps:** C-001 (existing PostgreSQL cluster) · C-003 (zero-downtime migration)
 ```
 
-**Why this matters:** When architects read a TR, they need to see which constraints apply immediately, not discover them later in a separate document.
+**Why this matters:** When architects read a TR, they need to see which constraints apply immediately, not discover them later in a separate document. The parenthetical gloss is the envelope's one-line allowance — never re-quote the constraint's text.
 
 ### TR → NFR (Quality Binding)
 
@@ -66,9 +64,7 @@ Technical requirements SHOULD reference NFRs that set quality targets for their 
 ```markdown
 ## TR-001: Authentication Flow
 
-**Dependencies:**
-- NFR-001 (p95 latency < 200ms applies to this flow)
-- NFR-004 (zero plaintext PII in error responses)
+**Deps:** NFR-001 (p95 latency applies to this flow) · NFR-004 (no plaintext PII in error responses)
 ```
 
 ### C → D (Constraint-Decision Link)
@@ -79,20 +75,17 @@ Constraints SHOULD reference the decisions they shaped. Decisions MUST reference
 ```markdown
 ## C-001: Existing PostgreSQL Infrastructure
 
-**Impact:**
-- Eliminates NoSQL options
-- Shapes D-001 (database choice)
+**Impact:** eliminates NoSQL options · shapes D-001 (database choice)
 ```
 
 **Pattern (Decision side):**
 ```markdown
 ## D-001: Primary Database
 
-**Shaped By:**
-- C-001 (must use existing PostgreSQL cluster)
+**Context** (…) · **Shaped by:** C-001 (existing PostgreSQL cluster)
 ```
 
-**Validation rule:** Every D-XXX entry MUST have a non-empty `Shaped By` field. Every C-XXX entry SHOULD reference at least one D-XXX in its Impact section.
+**Validation rule:** Every D-XXX entry MUST have a non-empty `Shaped by` reference. Every C-XXX entry SHOULD reference at least one D-XXX in its Impact line.
 
 > The C↔D link is the *traceability*; the decision *technique* that fills each D-XXX (evaluating alternatives, scoring trade-offs, ADR depth) is owned by `mochiko:patterns-technical-decisions`.
 
@@ -104,11 +97,10 @@ Every NFR MUST trace to a business source that justifies the target.
 ```markdown
 ## NFR-001: API Response Latency
 
-**Source:** FR-001 implies real-time user interaction;
-           stakeholder expectation of "instant feedback" in spec section 3.2
+**performance · source:** FR-001 (real-time interaction; "instant feedback" expectation, spec §3.2) — …
 ```
 
-**Validation rule:** No NFR without a source. Targets pulled from thin air are not requirements — they are guesses.
+**Validation rule:** No NFR without a source on its statement line. Targets pulled from thin air are not requirements — they are guesses.
 
 ### C/NFR → IP (Infrastructure Provisioning)
 
@@ -118,10 +110,10 @@ Every constraint or NFR that implies platform work SHOULD reference the IP-XXX i
 ```markdown
 ## IP-001: Compute Provisioning
 
-**Source:** C-001 (existing AWS environment), NFR-003 (10,000 concurrent users)
+**compute · MUST · source:** C-001 (existing AWS environment), NFR-003 (10k concurrent users) — …
 ```
 
-**Validation rule:** Every constraint implying platform provisioning has a corresponding IP-XXX; every IP-XXX traces back to a C-XXX or NFR-XXX in its `Source`.
+**Validation rule:** Every constraint implying platform provisioning has a corresponding IP-XXX; every IP-XXX traces back to a C-XXX or NFR-XXX on its statement line.
 
 ## Dependency Chains
 

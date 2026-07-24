@@ -9,6 +9,11 @@ description: This skill MUST be invoked when authoring the functional-requiremen
 
 Write technology-agnostic functional requirements, identify edge cases, and define measurable success criteria. Focus on WHAT the system does and WHY, never HOW it's implemented.
 
+The artifact this layer lands in (`spec.md`) follows the deliverable envelope in
+[`artifact-format.md`](../../templates/artifact-format.md) — dense by construction,
+human-legible: one-line FR/SC/edge-case entries, ≤ 3-line overview prose, omit empty
+sections, no restated doctrine. Density is not a gap; a gap is missing substance.
+
 ## When to Use
 
 - Starting a new feature specification
@@ -124,30 +129,24 @@ Define 3-5 measurable outcomes using SC-XXX format:
 
 ## Key Entities (Optional)
 
-When the feature involves data, describe entities conceptually:
+When the feature involves data, describe entities conceptually and compactly — one
+purpose line plus concept-level attribute and relationship lists:
 
 ```markdown
 ## Key Entities
 
 ### RecurringPattern
-Represents the schedule for a repeating task.
-
-**Attributes:**
-- Frequency (how often: daily, weekly, monthly)
-- Interval (every N occurrences)
-- End condition (never, after N times, on date)
-
-**Relationships:**
-- Belongs to one Task
-- Generates many TaskInstances
+The schedule for a repeating task. **Attributes:** frequency (daily/weekly/monthly) ·
+interval (every N) · end condition (never / after N / on date). **Relationships:**
+belongs to one Task; generates many TaskInstances.
 ```
 
 ### Entity Description Rules
 
-- Describe purpose, not schema
+- Describe purpose, not schema — one line
 - List attributes as concepts, not columns
 - Focus on relationships, not foreign keys
-- No data types, constraints, or indexes
+- No data types, constraints, or indexes (the full model is `data-model.md`, downstream)
 
 ## Validation Script
 

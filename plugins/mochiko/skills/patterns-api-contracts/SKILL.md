@@ -274,12 +274,35 @@ security:
 
 ## Traceability
 
-Track endpoint to requirement mapping:
+Track endpoint to requirement mapping — this table is the contract's **ID index** (the
+coverage surface reviewers verify against, per `templates/artifact-format.md`):
 
 | Endpoint | Method | FR | US | Description |
 |----------|--------|-----|-----|-------------|
 | /auth/login | POST | FR-001 | US#1 | User login |
 | /users/me | GET | FR-004 | US#4 | Get current user |
+
+## The Quickstart (`quickstart.md`) — conditional, capped
+
+`quickstart.md` is the human-facing integration guide over the finished contract — and it
+is **conditional**: author it **only when the feature has a real integration surface**
+(external consumers of the API, an external system wrapped via `x-integration`, or a
+non-trivial auth sequence a caller must follow). A feature whose endpoints only serve its
+own UI over standard auth does not need one — record the null path as one line in
+`plan.md`'s artifact table ("not applicable — no external integration surface"), never a
+stub file.
+
+When authored, it is **capped and dense** (deliverable envelope,
+`templates/artifact-format.md`): target ≤ 150 lines —
+
+- **Common flows** — one runnable example per primary flow (request + expected response,
+  trimmed to the fields that matter); cite endpoint + schema by name, never re-document
+  what `api.yaml` already defines.
+- **Auth sequence** — the steps a caller actually performs, compact.
+- **Error handling** — the pattern and the top recoverable cases as a table; cite
+  ERROR-PATTERNS conventions, don't restate them.
+- **External-system overview** — one line per `x-integration` system: name, criticality,
+  what the caller observes when it degrades.
 
 ## Validation
 
@@ -304,7 +327,8 @@ Before finalizing API contracts:
 - [ ] Endpoints wrapping external systems have an `x-integration` block with documented failure modes and a fallback for each
 - [ ] Brownfield patterns matched (if applicable)
 - [ ] OpenAPI spec is valid
-- [ ] Traceability to requirements complete
+- [ ] Traceability to requirements complete (the endpoint↔FR/US table — the contract's ID index)
+- [ ] Quickstart authored iff a real integration surface exists (≤ 150 lines, cites the contract, never re-documents it); otherwise its null path recorded in `plan.md`
 
 ## Common Mistakes
 

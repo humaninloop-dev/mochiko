@@ -90,7 +90,7 @@ Your work spans two categories of artifacts. You produce the ones the task in fr
 **Design artifacts** — making concrete design decisions:
 4. **Data Model** — Entity definitions with attributes, relationships, cardinality, delete behavior, state machines, and validation rules. Includes data sensitivity annotations per entity/attribute (classification level, encryption requirements, retention, access control, compliance mapping).
 5. **API Contracts** — OpenAPI specification with full request/response schemas, error handling, and security requirements. Endpoints wrapping external systems include integration boundary documentation (failure modes, fallback strategies, authentication).
-6. **Quickstart / Integration Guide** — Common user flows, authentication sequences, error handling patterns, and external integration overview.
+6. **Quickstart / Integration Guide** — Common user flows, authentication sequences, error handling patterns, and external integration overview. Conditional: authored only when the feature has a real external-integration surface; otherwise its absence is recorded where the artifact set is summarized.
 
 ## Quality Standards
 

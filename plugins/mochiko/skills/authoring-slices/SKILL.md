@@ -11,7 +11,7 @@ description: This skill MUST be invoked when decomposing an accepted feature spe
 
 A whole-spec pipeline moves every user story through design, tasking, and implementation together — the highest-value stories cannot reach verified working code until the entire spec has crossed each stage, and every stage's artifacts spread attention across all stories at once. A **graduation-slice decomposition** fixes both: `slices.md` is a small, reviewed **overlay** on an accepted `spec.md` that groups its user stories into ordered, named slices, each of which graduates through the downstream stages as its own unit.
 
-This skill is the slicing judgment plus the artifact authoring. The output conforms to [`slices-template.md`](../../templates/slices-template.md) — the canonical `slices.md` structure, including the **Graduation contract** section that tells downstream consumers how to honor the decomposition. The overlay **indexes** the spec; it never rewrites it. `spec.md` stays whole and stays the single source of stories, requirements, and success criteria.
+This skill is the slicing judgment plus the artifact authoring. The output conforms to [`slices-template.md`](../../templates/slices-template.md) — the canonical `slices.md` structure, including the **Graduation contract** section that tells downstream consumers how to honor the decomposition. The overlay **indexes** the spec; it never rewrites it. `spec.md` stays whole and stays the single source of stories, requirements, and success criteria. Density per the deliverable envelope ([`artifact-format.md`](../../templates/artifact-format.md)): rationale ≤ 3 lines per slice, seams and obligations one line each — the overlay is an index, not an essay.
 
 ## Vocabulary — two "slices", two levels
 

@@ -230,6 +230,41 @@ See [TEST-GRAMMAR.md](references/TEST-GRAMMAR.md) for the full `**TEST:**` gramm
 
 The story→cycle decisions and the slice rationale behind them are authored into **`task-mapping.md`** — the source of truth for how stories become cycles. `tasks.md`'s Story → Cycle table is a **derived echo** of `task-mapping.md`, regenerated from it, never an independent second source.
 
+### task-mapping.md — canonical compact shape
+
+`task-mapping.md` follows the deliverable envelope
+([`artifact-format.md`](../../templates/artifact-format.md)); it is a **mapping, not an
+essay** — the story→cycle table plus per-cycle rationale lines, nothing more:
+
+```markdown
+# Task Mapping: {feature_id}
+
+> Source of truth for story→cycle decisions and slice rationale. Expanded into tasks.md.
+
+## Story → Cycle Mapping  *(the ID index)*
+
+| Story | Priority | Cycle(s) | Case |
+|-------|----------|----------|------|
+| US-1 | P1 | C1 | Simple |
+| US-2 | P1 | C2, C3 | Split — [why, one line] |
+| US-3, US-4 | P2 | C4 | Merge — [why, one line] |
+
+## Cycles
+
+| Cycle | Title | Type | Depends on | Stories | Rationale (≤ 2 lines) |
+|-------|-------|------|-----------|---------|-----------------------|
+| C1 | [title] | Foundation | — | US-1 | [why this is a vertical slice; what it establishes] |
+| C2 | [title] | Feature [P] | C1 | US-2 | [why these tasks graduate together] |
+
+## Slicing notes  *(only when a decision needs more than its rationale cell — ≤ 3 lines each; omit when empty)*
+
+- **C2/C3 split:** [the judgment that didn't fit the cell]
+```
+
+Cite spec/plan content by ID (`US-#`, `FR-#`, `C-#`) — never re-quote it. A mapping that
+needs pages of prose is hiding slicing uncertainty that belongs in the producer's
+disclosure report, not the artifact.
+
 ### Simple Case: Story = Cycle
 
 When a user story is well-scoped, it becomes one cycle:

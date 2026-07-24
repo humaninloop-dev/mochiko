@@ -31,20 +31,24 @@ This is a discipline-enforcing skill. The structured format exists to ensure sto
 
 ## User Story Format
 
-Generate 2-5 user stories per feature using this exact structure:
+Generate 2-5 user stories per feature using this exact structure. The story lands in
+`spec.md`, which follows the deliverable envelope in
+[`artifact-format.md`](../../templates/artifact-format.md) — every field below is dense:
+the journey ≤ 2 lines, the priority justification and independent test one line each,
+and **each acceptance scenario a single line**:
 
 ```markdown
 ### User Story N - [Brief Title] (Priority: P#)
 
-[Describe this user journey in plain language]
+[The user journey in plain language — ≤ 2 lines]
 
-**Why this priority**: [Explain the value and priority level]
+**Why this priority**: [value and priority level — one line]
 
-**Independent Test**: [How this can be tested standalone]
+**Independent Test**: [how this is tested standalone — one line]
 
 **Acceptance Scenarios**:
-1. **Given** [state], **When** [action], **Then** [outcome]
-2. **Given** [state], **When** [action], **Then** [outcome]
+1. **Given** [state], **When** [action], **Then** [outcome] — one line
+2. **Given** [state], **When** [action], **Then** [outcome] — one line
 ```
 
 ## Priority Definitions
@@ -66,16 +70,14 @@ Each scenario follows the Given/When/Then pattern:
 - **Then**: The expected outcome (result)
 
 **Rules:**
-1. Each story needs 2-4 acceptance scenarios
-2. Cover both happy path and key edge cases
+1. Each story needs 2-3 acceptance scenarios — the happy path plus the key edge case(s); more than 3 means the story is compound or the scenarios overlap
+2. Each scenario is **one line** — a scenario that needs a paragraph is hiding several scenarios or restating context the Given already carries
 3. Scenarios must be independently verifiable
 4. Use concrete, observable outcomes (not implementation details)
 
 **Good example:**
 ```
-**Given** a user has an active subscription,
-**When** they click "Cancel Subscription",
-**Then** they see a confirmation dialog with the cancellation date
+**Given** an active subscription, **When** the user clicks "Cancel Subscription", **Then** a confirmation dialog shows the cancellation date
 ```
 
 **Bad example:**
@@ -84,6 +86,7 @@ Each scenario follows the Given/When/Then pattern:
 **When** the API receives a DELETE request,
 **Then** the subscription_status column is set to "cancelled"
 ```
+(implementation-level — and spread over three lines carrying no extra substance)
 
 ## Independent Test Requirement
 
@@ -99,10 +102,10 @@ This enables parallel testing and clear verification.
 Before finalizing, verify each user story:
 
 - [ ] Has a clear, descriptive title
-- [ ] Priority is assigned with justification
-- [ ] User journey is described in plain language
-- [ ] Independent test is specified
-- [ ] 2-4 acceptance scenarios using Given/When/Then
+- [ ] Priority is assigned with justification (one line)
+- [ ] User journey is described in plain language (≤ 2 lines)
+- [ ] Independent test is specified (one line)
+- [ ] 2-3 acceptance scenarios using Given/When/Then, one line each
 - [ ] No implementation details or technology references
 - [ ] Outcomes are observable and measurable
 

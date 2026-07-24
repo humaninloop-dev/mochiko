@@ -1,6 +1,6 @@
 # Artifact Templates
 
-Complete templates and field definitions for the **three analysis artifacts this skill authors**: `requirements.md` (TR-XXX), `constraints-and-decisions.md` (C-XXX / D-XXX / IP-XXX), and `nfrs.md` (NFR-XXX). Each template shows the full document structure with all required fields.
+Templates and field definitions for the **three analysis artifacts this skill authors**: `requirements.md` (TR-XXX), `constraints-and-decisions.md` (C-XXX / D-XXX / IP-XXX), and `nfrs.md` (NFR-XXX). All three follow the deliverable envelope in [`artifact-format.md`](../../../templates/artifact-format.md): the statement carries the content (no separate Description paragraph), entries are one line each, upstream text is cited by ID and never re-quoted, and each artifact's summary table is its **ID index** — the coverage surface reviewers verify against.
 
 > **Design-artifact templates live with their canonical owners.** The `data-model.md` template (entities + per-attribute data-sensitivity taxonomy) is owned by `mochiko:patterns-entity-modeling`; the `contracts/api.yaml` template (endpoints, schemas, and the `x-integration` boundary extension) and the integration `quickstart.md` are owned by `mochiko:patterns-api-contracts`. This bundle declares the analysis requirements those design artifacts build on — it does not restate their templates.
 
@@ -13,34 +13,24 @@ Complete templates and field definitions for the **three analysis artifacts this
 
 > Technical decomposition of business functional requirements.
 
----
-
-## Traceability Summary
+## Traceability Summary  *(the ID index)*
 
 | Source FR | Technical Requirements | Coverage |
 |-----------|----------------------|----------|
 | FR-001 | TR-001, TR-002, TR-003 | Full |
 | FR-002 | TR-004, TR-005 | Full |
-| FR-003 | TR-006 | Full |
 
 ---
 
 ## TR-001: [Descriptive Title]
 
-**Source:** FR-001
-**Priority:** MUST
+**FR-001 · MUST** — System MUST [technical capability in technology-agnostic terms; the statement is the description].
 
-**Description:**
-System MUST [technical capability described in technology-agnostic terms].
+**Criteria:**
+- [Testable condition, one line]
+- [Testable condition, one line]
 
-**Acceptance Criteria:**
-- [ ] [Testable condition 1]
-- [ ] [Testable condition 2]
-- [ ] [Testable condition 3]
-
-**Dependencies:**
-- C-001 (constraint that affects this requirement)
-- NFR-002 (quality attribute that applies)
+**Deps:** C-001 · NFR-002  *(omit if none)*
 
 ---
 ```
@@ -51,17 +41,15 @@ System MUST [technical capability described in technology-agnostic terms].
 |-------|----------|--------|-------|
 | ID | Yes | TR-XXX | Sequential, three-digit padded, no gaps |
 | Title | Yes | Free text | Descriptive, concise |
-| Source | Yes | FR-XXX reference(s) | Must reference existing FR(s) |
-| Priority | Yes | MUST / SHOULD / MAY | RFC 2119 keyword |
-| Description | Yes | Paragraph | Technology-agnostic; describes WHAT, not HOW |
-| Acceptance Criteria | Yes | Checkbox list | Each item independently testable |
-| Dependencies | No | ID references | Links to C-XXX, NFR-XXX, other TR-XXX |
+| Source | Yes | FR-XXX reference(s) | On the statement line; must reference existing FR(s) |
+| Priority | Yes | MUST / SHOULD / MAY | RFC 2119 keyword, on the statement line |
+| Statement | Yes | One-to-two lines | Technology-agnostic; WHAT, not HOW — no separate Description paragraph |
+| Criteria | Yes | Bullet list, one line each | Each item independently testable |
+| Deps | No | ID references | C-XXX, NFR-XXX, other TR-XXX — cited by ID, never re-quoted |
 
 ### Decomposition Examples
 
 **Business FR:** "Users must be able to sign in to their account" (FR-001)
-
-**Technical decomposition:**
 
 | TR | Title | Aspect |
 |----|-------|--------|
@@ -70,37 +58,23 @@ System MUST [technical capability described in technology-agnostic terms].
 | TR-003 | Account Lockout | Brute-force protection, lockout thresholds |
 | TR-004 | Authentication Audit | Login attempt logging, anomaly flags |
 
-Each TR addresses a distinct technical concern that the single business FR implies but does not state.
+Each TR addresses a distinct technical concern the single business FR implies but does not state.
 
-### Writing Acceptance Criteria
+### Writing Criteria
 
-**Good acceptance criteria are:**
-- Independently testable (pass/fail, no ambiguity)
-- Technology-agnostic (no specific tools or implementations)
-- Complete (cover success, failure, and edge cases)
-
-**Examples:**
+Good criteria are independently testable (pass/fail), technology-agnostic, and cover success, failure, and edge cases — one line each:
 
 ```markdown
-**TR-001: Authentication Flow**
+## TR-001: Authentication Flow
 
-**Acceptance Criteria:**
-- [ ] Valid credentials result in authenticated session
-- [ ] Invalid credentials return generic error (no credential-type leakage)
-- [ ] Expired accounts cannot authenticate
-- [ ] Authentication completes within NFR-001 latency target
-- [ ] All authentication attempts logged per TR-004
-```
+**FR-001 · MUST** — System MUST validate credentials and establish an authenticated session.
 
-```markdown
-**TR-007: Data Export**
-
-**Acceptance Criteria:**
-- [ ] Export includes all user-owned data elements
-- [ ] Export format is machine-readable and portable
-- [ ] Export request completes within NFR-003 time limit
-- [ ] Export excludes system-internal data (classified Internal or below)
-- [ ] Export availability notified through existing notification channel
+**Criteria:**
+- Valid credentials result in an authenticated session
+- Invalid credentials return a generic error (no credential-type leakage)
+- Expired accounts cannot authenticate
+- Authentication completes within the NFR-001 latency target
+- All attempts logged per TR-004
 ```
 
 ---
@@ -114,38 +88,23 @@ Each TR addresses a distinct technical concern that the single business FR impli
 
 > Hard boundaries and technology choices that shape the implementation.
 
----
-
 ## Part 1: Hard Constraints
 
-### Constraint Summary
+### Constraint Summary  *(the ID index)*
 
 | ID | Type | Source | Severity |
 |----|------|--------|----------|
-| C-001 | infrastructure | Existing production environment | Hard |
-| C-002 | regulatory | GDPR Article 17 | Hard |
-| C-003 | compatibility | Legacy API consumers | Hard |
-| C-004 | migration | Zero-downtime deployment requirement | Hard |
+| C-001 | infrastructure | Existing production environment | blocking |
+| C-002 | regulatory | GDPR Article 17 | blocking |
 
 ---
 
 ### C-001: [Descriptive Title]
 
-**Type:** infrastructure
-**Source:** [Where this constraint originates -- existing system, regulation, contract]
-**Severity:** Hard
+**infrastructure · blocking · source:** [where it originates] — [the boundary stated as a one-to-two-line fact, not a preference].
 
-**Description:**
-[The hard boundary, stated as a fact, not a preference.]
-
-**Impact:**
-- Eliminates [design choice A] as an option
-- Requires [design consideration B]
-- Affects TR-001, TR-003
-- Shapes D-001
-
-**Verification:**
-[How to confirm this constraint still applies -- who to ask, what to check.]
+**Impact:** eliminates [design choice A] · requires [consideration B] · affects TR-001, TR-003 · shapes D-001
+**Verify:** [how to confirm it still applies — one line]  *(omit if self-evident)*
 
 ---
 
@@ -153,75 +112,49 @@ Each TR addresses a distinct technical concern that the single business FR impli
 
 > **Decision *technique* is owned by `mochiko:patterns-technical-decisions`.** The field schema below is the artifact slot a decision lands in; how to evaluate alternatives, score trade-offs, and set ADR depth lives in that skill. Fill these fields with the result; do not restate the evaluation method here.
 
-### Decision Summary
+### Decision Summary  *(the ID index)*
 
 | ID | Decision | Choice | Shaped By |
 |----|----------|--------|-----------|
 | D-001 | Primary database | PostgreSQL 15 | C-001 |
 | D-002 | Auth mechanism | JWT with refresh tokens | C-003 |
-| D-003 | Caching strategy | Redis with TTL | NFR-001 |
 
 ---
 
 ### D-001: [Decision Title]
 
-**Context:**
-[What problem needed solving and why a decision was required.]
-
-**Shaped By:**
-- C-001 (constraint that narrowed options)
-- NFR-001 (quality target that influenced choice)
-
-**Options Considered:**
+**Context** ([one-to-two lines: the problem needing a decision]) · **Shaped by:** C-001 · NFR-001
 
 | Option | Pros | Cons |
 |--------|------|------|
-| [Option A] | [advantages] | [disadvantages] |
-| [Option B] | [advantages] | [disadvantages] |
-| [Option C] | [advantages] | [disadvantages] |
+| [Option A] | [one line] | [one line] |
+| [Option B] | [one line] | [one line] |
 
-**Choice:** [Selected option]
-
-**Rationale:**
-[WHY this choice — not just restating the choice, but the reasoning that led to it.]
-
-**Consequences:**
-- [Trade-off 1 accepted]
-- [Trade-off 2 accepted]
-- [Future consideration]
-
-**Constitution Alignment:**
-[How this decision aligns with project principles, if applicable.]
+**Choice:** [selected option] — **Rationale** (≤ 3 lines): [WHY this choice — the reasoning, not a restatement of the choice].
+**Consequences:** [trade-off 1 accepted] · [trade-off 2] · [future consideration]
+**Governance alignment:** [one line — only when a project principle applies; omit otherwise]
 
 ---
 
 ## Part 3: Infrastructure Requirements
 
-### Infrastructure Summary
+### Infrastructure Summary  *(the ID index)*
 
 | ID | Type | Source Constraint | Priority |
 |----|------|-------------------|----------|
 | IP-001 | compute | C-001 | MUST |
 | IP-002 | ci-cd | C-004, NFR-002 | MUST |
-| IP-003 | monitoring | NFR-001 | SHOULD |
 
 ---
 
 ### IP-001: [Descriptive Title]
 
-**Type:** compute
-**Source:** C-001, NFR-003
-**Priority:** MUST
+**compute · MUST · source:** C-001, NFR-003 — [what must be provisioned, one-to-two lines; WHAT, not HOW].
 
-**Description:**
-[What must be provisioned or configured — stated as a requirement, not implementation.]
+**Criteria:**
+- [Verifiable condition, one line]
 
-**Acceptance Criteria:**
-- [ ] [Verifiable condition 1]
-- [ ] [Verifiable condition 2]
-
-**Dependencies:**
-- IP-002 (needs CI/CD before deployment)
+**Deps:** IP-002  *(omit if none)*
 
 ---
 ```
@@ -232,12 +165,12 @@ Each TR addresses a distinct technical concern that the single business FR impli
 |-------|----------|--------|-------|
 | ID | Yes | C-XXX | Sequential, three-digit padded, no gaps |
 | Title | Yes | Free text | Descriptive, concise |
-| Type | Yes | infrastructure / compatibility / regulatory / migration / organizational | Exactly one type |
-| Source | Yes | Free text | Traceable origin -- system, regulation, contract, team |
-| Severity | Yes | Hard | All constraints are hard boundaries by definition |
-| Description | Yes | Paragraph | States the boundary as fact |
-| Impact | Yes | Bullet list | What design choices this eliminates or forces; references to D-XXX |
-| Verification | No | Free text | How to confirm constraint still applies |
+| Type | Yes | infrastructure / compatibility / regulatory / migration / organizational | On the statement line; exactly one type |
+| Source | Yes | Free text | On the statement line; traceable origin — system, regulation, contract, team |
+| Severity | Yes | blocking / significant / minor | On the statement line |
+| Statement | Yes | One-to-two lines | States the boundary as fact — no separate Description paragraph |
+| Impact | Yes | One line, `·`-separated (or a short bullet list) | What this eliminates or forces; references to affected TR-XXX and shaped D-XXX |
+| Verify | No | One line | How to confirm the constraint still applies |
 
 ### Field Definitions — Decisions
 
@@ -245,13 +178,13 @@ Each TR addresses a distinct technical concern that the single business FR impli
 |-------|----------|--------|-------|
 | ID | Yes | D-XXX | Sequential, three-digit padded, no gaps |
 | Title | Yes | Free text | Descriptive, concise |
-| Context | Yes | Paragraph | Problem that needed solving |
-| Shaped By | Yes | C-XXX / NFR-XXX references | Constraints and NFRs that narrowed options |
-| Options Considered | Yes | Table | Minimum 2 alternatives with pros/cons |
+| Context | Yes | One-to-two lines | The problem that needed solving |
+| Shaped By | Yes | C-XXX / NFR-XXX references | On the context line; constraints and NFRs that narrowed options |
+| Options | Yes | Table, one line per option | Minimum 2 alternatives with pros/cons |
 | Choice | Yes | Free text | Selected option |
-| Rationale | Yes | Paragraph | WHY, not just WHAT |
-| Consequences | Yes | Bullet list | Trade-offs accepted, future considerations |
-| Constitution Alignment | No | Paragraph | How choice follows project principles |
+| Rationale | Yes | ≤ 3 lines | WHY, not just WHAT |
+| Consequences | Yes | One line, `·`-separated (or a short bullet list) | Trade-offs accepted, future considerations |
+| Governance alignment | No | One line | Only when a project principle applies — omit otherwise |
 
 ### Field Definitions — Infrastructure Requirements
 
@@ -259,12 +192,12 @@ Each TR addresses a distinct technical concern that the single business FR impli
 |-------|----------|--------|-------|
 | ID | Yes | IP-XXX | Sequential, three-digit padded |
 | Title | Yes | Free text | Descriptive, concise |
-| Type | Yes | compute / networking / storage / ci-cd / monitoring / security / environment-config | Exactly one |
-| Source | Yes | C-XXX / NFR-XXX refs | Constraints/NFRs that necessitate this |
-| Priority | Yes | MUST / SHOULD / MAY | RFC 2119 |
-| Description | Yes | Paragraph | WHAT to provision, not HOW |
-| Acceptance Criteria | Yes | Checkbox list | Independently verifiable |
-| Dependencies | No | IP-XXX refs | Other infra items this depends on |
+| Type | Yes | compute / networking / storage / ci-cd / monitoring / security / environment-config | On the statement line; exactly one |
+| Source | Yes | C-XXX / NFR-XXX refs | On the statement line; constraints/NFRs that necessitate this |
+| Priority | Yes | MUST / SHOULD / MAY | RFC 2119, on the statement line |
+| Statement | Yes | One-to-two lines | WHAT to provision, not HOW — no separate Description paragraph |
+| Criteria | Yes | Bullet list, one line each | Independently verifiable |
+| Deps | No | IP-XXX refs | Other infra items this depends on |
 
 ### Infrastructure Types
 
@@ -311,36 +244,22 @@ Each TR addresses a distinct technical concern that the single business FR impli
 
 > Measurable quality attributes with specific targets.
 
----
-
-## NFR Summary
+## NFR Summary  *(the ID index)*
 
 | ID | Category | Target | Source |
 |----|----------|--------|--------|
 | NFR-001 | performance | p95 < 200ms | FR-001 (user expects instant feedback) |
 | NFR-002 | availability | 99.9% monthly | Business SLA commitment |
-| NFR-003 | scalability | 10,000 concurrent users | Growth projection Y1 |
-| NFR-004 | security | Zero plaintext PII in logs | Compliance requirement |
 
 ---
 
 ## NFR-001: [Descriptive Title]
 
-**Category:** performance
-**Source:** [Business requirement or stakeholder that justifies this target]
+**performance · source:** [business requirement or stakeholder justifying the target] — [the quality attribute, one line].
 
-**Requirement:**
-[The quality attribute in plain language.]
-
-**Target:**
-[Specific, measurable numeric threshold.]
-
-**Measurement Method:**
-[How to verify the target is met -- tools, conditions, frequency.]
-
-**Applies To:**
-- TR-001 (authentication flow must meet this latency)
-- TR-005 (search results must meet this latency)
+**Target:** [specific, measurable numeric threshold]
+**Measured:** [tool + conditions + frequency — compact; a multi-condition method uses a short bullet list]
+**Applies to:** TR-001 · TR-005  *(omit if it applies globally)*
 
 ---
 ```
@@ -351,12 +270,12 @@ Each TR addresses a distinct technical concern that the single business FR impli
 |-------|----------|--------|-------|
 | ID | Yes | NFR-XXX | Sequential, three-digit padded, no gaps |
 | Title | Yes | Free text | Descriptive, concise |
-| Category | Yes | performance / availability / scalability / security / usability / maintainability | Exactly one category |
-| Source | Yes | Free text | Business requirement, SLA, or stakeholder justifying the target |
-| Requirement | Yes | Paragraph | Plain language quality attribute |
+| Category | Yes | performance / availability / scalability / security / usability / maintainability | On the statement line; exactly one category |
+| Source | Yes | Free text | On the statement line; business requirement, SLA, or stakeholder justifying the target |
+| Requirement | Yes | One line | The quality attribute — the statement IS the description |
 | Target | Yes | Numeric | Specific, measurable threshold |
-| Measurement Method | Yes | Paragraph | Tools, conditions, frequency of measurement |
-| Applies To | No | TR-XXX references | Which technical requirements this NFR constrains |
+| Measured | Yes | Compact line or short list | Tool, conditions, frequency of measurement |
+| Applies to | No | TR-XXX references | Which technical requirements this NFR constrains |
 
 ### NFR Categories with Examples
 
@@ -371,26 +290,16 @@ Each TR addresses a distinct technical concern that the single business FR impli
 
 ### Writing Measurement Methods
 
-Every NFR target needs a measurement method that specifies:
-
-1. **What tool or technique** measures it
-2. **Under what conditions** the measurement is valid
-3. **How frequently** measurement occurs
-
-**Example:**
+Every target's `Measured:` line names **what tool**, **under what conditions**, and **how frequently**. Compact example:
 
 ```markdown
 ## NFR-001: API Response Latency
 
-**Target:** p95 < 200ms, p99 < 500ms
+**performance · source:** FR-001 (real-time interaction expectation) — API responses feel instantaneous under production load.
 
-**Measurement Method:**
-Measured by application performance monitoring (APM) under the following conditions:
-- Load: 1,000 concurrent authenticated users
-- Operation mix: 70% reads, 20% writes, 10% searches
-- Measurement window: rolling 24-hour periods
-- Excludes: scheduled maintenance windows, bulk import operations
-- Frequency: Continuous monitoring with daily reporting
+**Target:** p95 < 200ms, p99 < 500ms
+**Measured:** APM, rolling 24h windows, continuous — at 1,000 concurrent users (70% read / 20% write / 10% search); excludes maintenance windows and bulk imports
+**Applies to:** TR-001 · TR-005
 ```
 
 ---

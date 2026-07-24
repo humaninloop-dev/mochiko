@@ -1,6 +1,8 @@
 # Data Sensitivity Classification
 
-Reference documentation for classifying the sensitivity of entity attributes and specifying their handling requirements in `data-model.md`. The four-level taxonomy and the decision tree live in the SKILL; this reference holds the per-aspect field definitions, the handling-by-level matrix, the Sensitivity Details block format, and compliance-mapping examples.
+Reference documentation for classifying the sensitivity of entity attributes and specifying their handling requirements in `data-model.md`. The four-level taxonomy and the decision tree live in the SKILL; this reference holds the per-aspect field definitions, the handling-by-level matrix, the compact Sensitivity Details row format, and compliance-mapping examples.
+
+**Density (deliverable envelope, `templates/artifact-format.md`):** the handling-by-level matrix is stated **once per `data-model.md`** — the self-containment floor; each Confidential+ attribute then carries **one row** recording only its specifics (retention, access) and deviations from its level default, never a repeated per-attribute aspect table.
 
 ## Classification Levels
 
@@ -15,18 +17,17 @@ Reference documentation for classifying the sensitivity of entity attributes and
 
 ## Sensitivity Annotation — Field Definitions
 
-For each attribute classified **Confidential** or **Restricted**, document a Sensitivity Details block with these aspects:
+Every Confidential+ attribute's handling covers these aspects. **Encryption, audit, and masking are carried by the level default** (the matrix below, stated once per document); **retention and access control are per-attribute specifics** (they vary by data semantics); anything departing from the level default is a named **deviation**:
 
-| Field | Required | Format | Rules |
-|-------|----------|--------|-------|
-| Classification | Yes | Public / Internal / Confidential / Restricted | Per attribute |
-| Encryption at Rest | Yes (Confidential+) | Required / Not required + standard | Mandatory for Confidential and Restricted |
-| Encryption in Transit | Yes (Confidential+) | Required / Not required + standard | Mandatory for all classifications |
-| Retention Period | Yes (Confidential+) | Duration + expiry action | How long kept, what happens after |
-| Access Control | Yes (Confidential+) | Role-based description | Who can read, write, delete |
-| Audit | Yes (Confidential+) | Yes / No | Whether access is logged |
-| Masking | No | Display format | How data appears in UIs and logs |
-| Compliance | No | Regulation + requirement | GDPR, HIPAA, PCI-DSS, SOC2, NIST mappings |
+| Aspect | Carried by | Format | Rules |
+|--------|-----------|--------|-------|
+| Classification | Attribute table + Details row | Public / Internal / Confidential / Restricted | Per attribute |
+| Encryption at Rest / in Transit | Level default | Per the handling matrix | Deviation named in the row only if it departs |
+| Audit | Level default | Per the handling matrix | Deviation named in the row only if it departs |
+| Masking | Level default | Per the handling matrix | Attribute-specific display formats named in the row |
+| Retention Period | Details row (per attribute) | Duration + expiry action | How long kept, what happens after |
+| Access Control | Details row (per attribute) | Role-based description | Who can read, write, delete |
+| Compliance | Details row (per attribute) | Regulation + requirement | GDPR, HIPAA, PCI-DSS, SOC2, NIST mappings; cite DS-XXX where realized |
 
 ## Handling Requirements by Classification Level
 
@@ -57,37 +58,20 @@ Is the data publicly available or intended for public sharing?
     │       └── When in doubt → CONFIDENTIAL (classify up, not down)
 ```
 
-## Sensitivity Details Block Format
+## Sensitivity Details Row Format
 
-Place one block per Confidential+ attribute inside its entity section:
+Each entity with Confidential+ attributes carries one **Sensitivity Details** table — one row per attribute, recording specifics + deviations only (the level default carries the rest):
 
 ```markdown
-### Sensitivity Details (Confidential+ attributes)
+### Sensitivity Details
 
-#### email (Confidential)
-
-| Aspect | Requirement |
-|--------|-------------|
-| Encryption at Rest | Required — AES-256 |
-| Encryption in Transit | Required — TLS 1.3+ |
-| Retention Period | Delete within 30 days of account closure |
-| Access Control | Authenticated users read own; admins read all |
-| Audit | All access logged with timestamp and user |
-| Masking | Displayed masked in logs: j***@example.com |
-| Compliance | GDPR Art. 6 (consent via signup), Art. 17 (deletion within 30 days) |
-
-#### password_hash (Restricted)
-
-| Aspect | Requirement |
-|--------|-------------|
-| Encryption at Rest | Required — AES-256 |
-| Encryption in Transit | Required — TLS 1.3+ |
-| Retention Period | Retain until account deletion; purge on delete |
-| Access Control | System-only; no user or admin read access |
-| Audit | All access logged; real-time alerts on anomalous access |
-| Masking | Never displayed; never logged |
-| Compliance | NIST 800-63 (credential storage) |
+| Attribute | Level | Retention | Access | Deviations | Compliance |
+|-----------|-------|-----------|--------|------------|------------|
+| email | Confidential | Delete ≤ 30d after account closure | Users read own; admins read all | Log masking: j***@example.com | GDPR Art. 6, Art. 17 |
+| password_hash | Restricted | Until account deletion; purge on delete | System-only; no user/admin read | — | NIST 800-63 |
 ```
+
+`Deviations` is `—` when the attribute's handling is exactly its level default; a named departure (a weaker or stronger aspect, an attribute-specific masking format) is spelled out. An attribute needing more room than a row can carry (rare) may add a one-line footnote under the table — never a per-attribute aspect table.
 
 ## Data Sensitivity Summary
 
@@ -123,13 +107,12 @@ A per-attribute classification often realizes a **DS-XXX** data-sensitivity requ
 
 - [ ] Every attribute carries exactly one classification (Public / Internal / Confidential / Restricted)
 - [ ] PII expressed through classification (Confidential or Restricted), not a parallel marker
-- [ ] Every Confidential+ attribute has a Sensitivity Details block
-- [ ] Encryption at rest specified for all Confidential+ attributes
-- [ ] Encryption in transit specified for all attributes that need it
-- [ ] Retention period and expiry action defined for Confidential+ attributes
-- [ ] Access control documented for Confidential+ attributes
-- [ ] Audit logging indicated for Confidential+ attributes
-- [ ] Masking specified where data appears in logs or UIs
-- [ ] Compliance mappings recorded where a regulation applies
+- [ ] Handling-by-level defaults stated once per document
+- [ ] Every Confidential+ attribute has a Sensitivity Details row
+- [ ] Retention period and expiry action defined per Confidential+ attribute
+- [ ] Access control documented per Confidential+ attribute
+- [ ] Deviations from the level default named per attribute (encryption / audit / masking departures never silent)
+- [ ] Attribute-specific masking formats named where data appears in logs or UIs
+- [ ] Compliance mappings recorded where a regulation applies (DS-XXX cited where realized)
 - [ ] Data Sensitivity Summary table reflects all Confidential+ attributes
 - [ ] Ambiguous data classified up (Confidential), not down

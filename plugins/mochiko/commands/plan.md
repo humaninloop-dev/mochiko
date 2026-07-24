@@ -1,13 +1,14 @@
 ---
-description: Create the analysis→design implementation plan via an independent producer→two-reviewer team loop — a standing technical-analyst seat authors the six analysis+design artifacts across two phases (Analysis then Design), a cold principal-architect seat grades cross-artifact feasibility once, a standing devils-advocate seat grades completeness across both phases, the user accepts plan.md at a named gate; governance-gated, two-phase, default-FAIL, bounded, kernel-free. Requires agent teams (CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS); refuses without them.
+description: Create the analysis→design implementation plan via an independent producer→two-reviewer team loop — a standing technical-analyst seat authors the analysis+design artifacts across two phases (Analysis then Design), a cold principal-architect seat grades cross-artifact feasibility once, a standing devils-advocate seat grades completeness across both phases, the user accepts plan.md at a named gate; governance-gated, two-phase, default-FAIL, bounded, kernel-free. Requires agent teams (CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS); refuses without them.
 disable-model-invocation: true
 ---
 
 # Plan — Implementation Plan (Analysis → Design)
 
-**Goal:** turn an accepted `spec.md` into an accepted `plan.md` — the six analysis+design
+**Goal:** turn an accepted `spec.md` into an accepted `plan.md` — the analysis+design
 artifacts (`requirements.md` · `constraints-and-decisions.md` · `nfrs.md` · `data-model.md` ·
-`contracts/api.yaml` · `quickstart.md`), authored across two phases and independently graded for
+`contracts/api.yaml` · `quickstart.md` when the feature has an external-integration surface),
+authored across two phases and independently graded for
 **feasibility** (can these pieces be built *together*?) and **completeness** (is anything
 missing?) before the user accepts the assembled plan. `$ARGUMENTS` = optional feature ID or
 description; empty or detected-from-workspace is handled by triage below.
@@ -33,10 +34,12 @@ team-form commands.
   live alongside the spec they plan.
 - Kill-switch: stop and escalate if `.mochiko/specs/<feature>/PLAN_STOP` exists — check before
   each seat send.
-- **Deliverables & IDs:** the six artifacts (`requirements.md` FR→TR · `constraints-and-decisions.md`
+- **Deliverables & IDs:** the artifacts (`requirements.md` FR→TR · `constraints-and-decisions.md`
   C-XXX/D-XXX/IP-XXX · `nfrs.md` NFR-XXX · `data-model.md` entities + sensitivity ·
-  `contracts/api.yaml` OpenAPI + `x-integration` · `quickstart.md`) + the assembled `plan.md`,
-  authored per the producer's skills and `templates/plan-template.md` — no placeholder tokens. The
+  `contracts/api.yaml` OpenAPI + `x-integration` · `quickstart.md` **conditional** — authored
+  only when a real external-integration surface exists, per `patterns-api-contracts`; its null
+  path recorded in `plan.md`) + the assembled `plan.md`, authored per the producer's skills and
+  `templates/plan-template.md` — no placeholder tokens. The
   producer's self-disclosure is `techanalyst-report.md` (from
   `templates/techanalyst-report-template.md`) — its Assumptions / Open Questions are the
   producer-authored uncertainty carrier (the shape's producer-authored branch), not confidence
@@ -98,7 +101,7 @@ team-form commands.
    contract is their single home). **plan's own bindings on top:** a producer designing beyond scope is
    a scope gap → **G4**; a `[MODIFY]` graded amendment is surfaced for this round's reviews with its
    migration flagged for this slice's task breakdown; per-slice `plan.md` + round reports land under
-   `slices/<slice>/`, so the done-condition's artifact set reads the six shared artifacts (extended at
+   `slices/<slice>/`, so the done-condition's artifact set reads the shared artifacts (extended at
    the feature root) + `slices/<slice>/plan.md`; brief each reviewer with the artifact sets {this
    slice's extensions + its `plan.md`} / {the prior accumulated artifacts}, so the extension is graded
    against what earlier slices established.
@@ -132,8 +135,9 @@ analysis is authored — not in Phase 2 (don't spend a completeness pass on infe
 cross-artifact consistency in incremental mode.
 
 1. **Produce.** The producer authors `data-model.md` (entities + sensitivity annotations),
-   `contracts/api.yaml` (OpenAPI + `x-integration` boundaries), and `quickstart.md` (+
-   `techanalyst-report.md`), carrying its Phase-1 analysis context forward.
+   `contracts/api.yaml` (OpenAPI + `x-integration` boundaries), and — when the feature has an
+   external-integration surface — `quickstart.md` (+ `techanalyst-report.md`), carrying its
+   Phase-1 analysis context forward.
 2. **Incremental review (advocate).** Message the completeness reviewer in **incremental mode** — a
    full review of the new design artifacts plus a brief consistency check back to the Phase-1
    analysis (the `review-plan-artifacts` incremental procedure); you select the mode and supply the
@@ -167,18 +171,19 @@ it must clear a verdict again), or **reject** (abort; the drafts remain under
 
 ## Phase 5 — Finalize
 
-Report the artifacts (the six deliverables + `plan.md` + the three round reports
+Report the artifacts (the deliverables + `plan.md` + the three round reports
 `techanalyst-report.md` / `feasibility-report.md` / `advocate-report.md`), the per-phase round
 counts, the decision / entity / endpoint counts, a suggested commit (`docs: plan <feature>`), and
 the next step (`/mochiko:tasks`). Intermediate round reports are cleaned by default (their
 outcome stamps live in `plan.md`); the user may ask to retain them. Never offer to delete
-`plan.md` or the six artifacts — they are the deliverables.
+`plan.md` or the analysis+design artifacts — they are the deliverables.
 
 ## Contract (authoring-time fill — governed by `mochiko:loop-discipline`)
 
-- **Done-condition:** default **FAIL**; clears only when **(1)** all six artifacts exist
+- **Done-condition:** default **FAIL**; clears only when **(1)** the artifacts exist
   (`requirements.md` · `constraints-and-decisions.md` · `nfrs.md` · `data-model.md` ·
-  `contracts/api.yaml` · `quickstart.md`), **(2)** `principal-architect` returns `feasible` on the
+  `contracts/api.yaml` · `quickstart.md` when applicable, else its null path recorded in
+  `plan.md`), **(2)** `principal-architect` returns `feasible` on the
   Phase-1 analysis **and** `devils-advocate` returns `ready` on both phases, each grounded in the
   files, **(3)** *you* Read the artifacts + both reviewer reports and confirm no blocking gap remains
   (each reviewer's status is input, never the gate), **and (4)** the Phase-4 human acceptance on
