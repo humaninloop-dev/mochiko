@@ -65,6 +65,8 @@ dogfood-pilot ruling as the other team-form commands.
   makes the final validation informed by what it already verified rather than a cold whole-repo read.
   Its output is **lead-adjudicated input** — qa's status is input, never the gate. The verification
   skill is **never** mounted on the producer, and staff never grades its own cycle.
+- **architecture scribe** — `mochiko:principal-architect` (`mochiko:authoring-architecture`), a
+  **disposable Finalize dispatch**, fired only on structural change per the KM landing.
 
 ## Phase 0 — Prerequisites & entry triage  *(human gate G1)*
 
@@ -164,6 +166,9 @@ working tree).
 Report the outputs (the working code + a `cycle-report.md` per cycle + the final verification report),
 the per-cycle and fix-pass round counts, the cycle / task / fix-pass counts + quality-gate status, a
 suggested commit (`feat: implement <feature>`), and the next step. Never modify git or push.
+**KM landing** — `.mochiko/memory/knowledge-management.md` exists → run its landing ritual +
+invariants under fix-on-sight; structural change → `ARCHITECTURE.md` via a fresh
+`principal-architect` dispatch (`mochiko:authoring-architecture`). No copy → skip.
 
 ## Contract (authoring-time fill — governed by `mochiko:loop-discipline`)
 

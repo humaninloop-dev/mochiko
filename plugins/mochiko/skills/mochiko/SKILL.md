@@ -46,6 +46,8 @@ human adjudicates; the reviewer's verdict never clears anything by itself.
 | `validation-constitution` | independently grading a drafted governance surface set against the synthesis + trace manifest — trace closure, surface integrity, three-part structure, tier/waiver accounting, anti-pattern + placeholder scans, version bump → binary PASS/FAIL + fix list (never the author) |
 | `review-governance-intent` | serving as a cold **G3 intent reviewer** in a setup run — stress-testing the frozen, confidence-marked synthesis *before* the user ratifies it (coverage/coherence pair or solo per the sizing ruling) → survivors + tally + recommended status (never a session participant; clearing is the lead's + G3's) |
 | `testing-governance-injection` | empirically probing that an **accepted** surface set delivers — disposable probe subagents (plus a negative control) verify rules inject on the promised paths and change behavior; findings versioned, fed to an amend run, never auto-fixed. Delivery only — static grading stays `validation-constitution` |
+| `grooming-operating-docs` | a knowledge-management invariant cap/bound trips at a command boundary (horizon caps, item bound/count, dead pointer, status disagreement, `[x]` in BACKLOG) — fix-on-sight groom resolving everything from the project-pinned copy at `.mochiko/memory/knowledge-management.md` |
+| `authoring-architecture` | authoring/updating `ARCHITECTURE.md` (the KM module's living system view) at a plan/implement landing on structural change — current state only; rationale links to the decisions layer, never restated |
 
 ### Specify cluster (model-invoked — auto-reached during a `/mochiko:specify` run)
 | Skill | Reach when |

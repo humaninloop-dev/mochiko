@@ -60,7 +60,7 @@ See [DECISION-RECORD.md](references/DECISION-RECORD.md) for the full ADR format,
 
 ## Where decisions are recorded
 
-The decision records this skill produces are written into the **`constraints-and-decisions.md`** artifact — but that artifact's shape is **not** this skill's to define. Its file structure, its Section-2 Technology-Decisions **`D-XXX`** field schema, and the constraint↔decision / infrastructure-planning traceability are owned by `mochiko:authoring-technical-requirements`. Do not restate the artifact template here.
+Feature-scope decision records are written into the **`constraints-and-decisions.md`** artifact — but that artifact's shape is **not** this skill's to define. **Project-scope** decisions (a project carrying the knowledge-management module) land in the decisions layer instead — a `DECISIONS.md` index row + a `.mochiko/decisions/<date>-<slug>.md` record, schema per the module's project-pinned copy — same technique, different destination. Its file structure, its Section-2 Technology-Decisions **`D-XXX`** field schema, and the constraint↔decision / infrastructure-planning traceability are owned by `mochiko:authoring-technical-requirements`. Do not restate the artifact template here.
 
 Boundary (handoff `mochiko:authoring-technical-requirements` → this skill):
 

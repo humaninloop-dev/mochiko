@@ -1,3 +1,21 @@
+<!-- ARCHIVED 2026-07-25 (operating-docs-maintenance D8): the HIL→mochiko migration-tracking
+job ended with the migration. Read-job: provenance query — what was ported, retired, or
+abandoned, the status the filesystem cannot express. Frozen except the disposition table
+below; the stable path keeps historical pointers resolving. Never groom. -->
+
+## Disposition of the 13 open `[ ]` rows at archive time (R3 ruling, 2026-07-25)
+
+| Row | Disposition |
+|-----|-------------|
+| `audit` | still wanted → BACKLOG (audit-scoping item) |
+| `ui-designer` · `patterns-flow-mapping` · `patterns-interface-design` · `analysis-screenshot` · `authoring-design-system` | still wanted → BACKLOG (design-track item) |
+| `codebase-inventory-schema.json` | still wanted → BACKLOG (spec/plan-cluster port item) |
+| `authoring-roadmap` | **abandoned** (R3 — its document kind retired with ROADMAP, D4) |
+| `evolution-roadmap-template.md` | **abandoned** (with `authoring-roadmap`; the task-architect `[GAP:XXX]` read stays a documented stub) |
+| `syncing-claude-md` | **abandoned** (constitution sync died at the v3 dissolution; the KM sync-rows carrier replaced by scaffolded CLAUDE.md pointers, D7) |
+| `using-git-worktrees` · `using-github-issues` | **abandoned** (no consumer demand recorded; re-open on demand) |
+| `approved-domain-deps.md` | resolved-dissolved 2026-07-21 at v0.18.0 (registry block + ledger + `DOMAIN-DEPENDENCIES.md`) |
+
 # Mochiko Migration Registry
 
 Track every primitive from `human-in-loop` — check off as it lands in mochiko. Items grouped by type, then by workflow affinity. A primitive may appear in multiple workflows.

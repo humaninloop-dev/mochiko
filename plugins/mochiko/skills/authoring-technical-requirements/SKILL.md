@@ -30,7 +30,7 @@ gap; a gap is missing substance.
 ## When NOT to Use
 
 - **Writing business requirements** -- Use `mochiko:authoring-requirements` instead
-- **Evaluating alternatives / making a technology decision** -- This skill owns the `constraints-and-decisions.md` artifact structure (the D-XXX field schema) and the C↔D traceability; the decision *technique* — comparing alternatives, weighing trade-offs, ADR depth, the ≥2-alternatives discipline — lives in `mochiko:patterns-technical-decisions`
+- **Evaluating alternatives / making a technology decision** -- This skill owns the `constraints-and-decisions.md` artifact structure (the D-XXX field schema) and the C↔D traceability; the decision *technique* — comparing alternatives, weighing trade-offs, ADR depth, the ≥2-alternatives discipline — lives in `mochiko:patterns-technical-decisions`. **Project-scope** decisions (the knowledge-management decisions layer — `DECISIONS.md` + `.mochiko/decisions/`) are not this artifact's; only feature-scope D-XXX records live here
 - **Designing solutions** -- This skill defines the problem space, not solutions
 - **Choosing technologies** -- Constraints document real boundaries, not preferences
 - **Implementation planning** -- Use planning skills after technical requirements exist

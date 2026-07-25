@@ -76,6 +76,9 @@ team-form commands.
   Round > 1 within a phase is a message to the same seat: re-Read the revised files. Its output is
   **lead-adjudicated input**; there is no sized end-stage review — the bounded in-loop critique is
   this workflow's independent validation (declared in the Contract).
+- **architecture scribe** — `mochiko:principal-architect` (`mochiko:authoring-architecture`), a
+  **disposable Finalize dispatch**, fired only on structural change per the KM landing — never the
+  feasibility seat.
 
 ## Phase 0 — Prerequisites & entry triage  *(human gate G1)*
 
@@ -176,7 +179,10 @@ Report the artifacts (the deliverables + `plan.md` + the three round reports
 counts, the decision / entity / endpoint counts, a suggested commit (`docs: plan <feature>`), and
 the next step (`/mochiko:tasks`). Intermediate round reports are cleaned by default (their
 outcome stamps live in `plan.md`); the user may ask to retain them. Never offer to delete
-`plan.md` or the analysis+design artifacts — they are the deliverables.
+`plan.md` or the analysis+design artifacts — they are the deliverables. **KM landing** —
+`.mochiko/memory/knowledge-management.md` exists → run its landing ritual + invariants under
+fix-on-sight; structural change → `ARCHITECTURE.md` via a fresh `principal-architect` dispatch
+(`mochiko:authoring-architecture`), never the feasibility seat. No copy → skip.
 
 ## Contract (authoring-time fill — governed by `mochiko:loop-discipline`)
 

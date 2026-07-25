@@ -24,23 +24,26 @@ answer has already settled, probing deeper where answers are vague.
 | 4 | **Risk surface** | What failure costs: data loss, money, reputation, compliance, user trust | Honest floor strictness — tunes the tier preset |
 | 5 | **Team reality** | Solo vs team, experience mix, review culture | Enforcement must fit who's enforcing |
 | 6 | **Existing practices & tools** | Detected stack, CI, linters, tests; brownfield analysis feeds in here | The real commands the validator requires |
-| 7 | **Knowledge management** | Adopt or decline the `knowledge-management` module — the operating-docs bundle (`.mochiko/brainstorms/` + `index.md`, `BACKLOG.md`, `ROADMAP.md`), offered default-on, taken whole | Module ruling (recorded either way); G5 scaffolding; collision rulings |
+| 7 | **Knowledge management** | Adopt or decline the `knowledge-management` module — the operating-docs layer (brainstorms + `index.md`, open-only `BACKLOG.md` + trail, `ROADMAP.md`, the decisions layer, `ARCHITECTURE.md`, `GLOSSARY.md`, plus the enforcement surfaces), offered default-on — **core taken whole, electives (`CHANGELOG.md` / `RUNBOOK.md`) per-doc** | Module ruling (recorded either way); elective rulings; G5 scaffolding; collision rulings |
 | 8 | **Deployment & release reality** | Target, environments, cadence, what blocks a release, rollback expectations | Quality Gates; Observability/Error-Handling strictness; sharpens the tier declaration |
 | 9 | **Values & non-negotiables** | What the user insists on enforcing and explicitly refuses | The preference gap only they can fill; primary source for minted principles |
 | 10 | **Deliberate exclusions** | What governance will not cover at this tier | Recorded waivers and exclusions |
 
-**Dimension 7 offers the knowledge-management module default-on, whole.** Recommend adoption —
-the user must actively decline (the projects most needing imposed structure are the least likely
-to ask for it) — and never deal an inner menu: the bundle
-(`templates/constitution-modules/knowledge-management.md`) is adopted or declined as one unit; a
-project for which any part feels heavy declines the module, not a fragment. It sits here because
+**Dimension 7 offers the knowledge-management module default-on: core whole, electives
+per-doc.** Recommend adoption — the user must actively decline (the projects most needing
+imposed structure are the least likely to ask for it). The **core** bundle
+(`templates/constitution-modules/knowledge-management.md`) is adopted or declined as one unit —
+a project for which the core feels heavy declines the module, not a fragment — while the
+**electives** (`CHANGELOG.md` for release-shaped projects, `RUNBOOK.md` for deployed services)
+are per-doc opt-ins elicited by project type; each elective ruling is recorded and durable
+(re-ruled 2026-07-25, deliberately superseding the prior no-inner-menu clause). It sits here because
 everything the call depends on (tier, type, risk, team, detected practices) is declared by the
 time dimension 6 completes, and brownfield doc evidence is still fresh. The ruling is recorded in
 the synthesis **either way**; a decline also memorializes in dimension 10. **Brownfield collision
 beat** — fired only when dimension-6 evidence shows an existing doc colliding with a bundle name:
 the hard floor is *never overwrite or rename existing content*; the default is to **codify** an
 existing doc whose semantics fit into the module role; a true semantic collision (name taken,
-different meaning — e.g. a product roadmap at `ROADMAP.md`) is put to the user with the evidence
+different meaning — e.g. a product feature roadmap at `ROADMAP.md`) is put to the user with the evidence
 on the table — adopt the existing doc into the role, or nest the module's artifact under
 `.mochiko/` — and the ruling lands in the synthesis.
 

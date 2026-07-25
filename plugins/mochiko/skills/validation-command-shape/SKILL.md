@@ -33,7 +33,9 @@ Against the command file:
 
 1. **References present** — the file contains `loop-discipline` AND `agent-dispatch`;
    a team-form file (one containing `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS`) also contains
-   `command-shape` — the obligated read of the shape home.
+   `command-shape` — the obligated read of the shape home. The five KM-carrying commands
+   (brainstorm · specify · plan · implement · setup) also contain the project-copy
+   reference `.mochiko/memory/knowledge-management.md` — never the module template's path.
 2. **Frontmatter** — `disable-model-invocation: true` present; `description:` non-empty.
 3. **No restated shape prose** — the shape home's signature lines do not appear in the
    command (they live in the home; a command references them). Grep for these markers;

@@ -4,9 +4,11 @@
 
 Mochiko is the v3 successor to [human-in-loop](human-in-loop/). The core bet: engineering discipline lives in the quality of the skill library, not in a deterministic kernel. Native Claude Code agent teams and Workflows handle orchestration. Skills and agents are the primary building block — orchestration is the layer on top, not the enforcer.
 
-Read [`ROADMAP.md`](ROADMAP.md) for the full v3 thesis and architectural decisions.
-Read [`REGISTRY.md`](REGISTRY.md) for the migration inventory — what's been ported, what hasn't.
-Read [`BACKLOG.md`](BACKLOG.md) for open design decisions and upcoming workflow scoping.
+Read [`ROADMAP.md`](ROADMAP.md) for the thesis, current work, and standing bets.
+Read [`DECISIONS.md`](DECISIONS.md) for the ruled-decision index (rationale lives in session records and `.mochiko/decisions/`).
+Read [`BACKLOG.md`](BACKLOG.md) for the complete open-item set.
+
+History: the pre-migration fat `ROADMAP.md` and the retired `REGISTRY.md` are frozen at `.mochiko/archive/` (provenance queries only); closed backlog items live in `.mochiko/archive/backlog-trail.md`.
 
 ## Reference sources
 
@@ -22,7 +24,7 @@ Read [`BACKLOG.md`](BACKLOG.md) for open design decisions and upcoming workflow 
 These were read-only reference sources:
 
 - `human-in-loop/plugins/humaninloop/` — all primitives to cherry-pick (skills, agents, commands, templates)
-- `agent-skills-research/synthesis/my-framework.md` — the authoritative v3 design doc; read this before making any structural decisions
+- `agent-skills-research/synthesis/my-framework.md` — the authoritative v3 design doc
 
 **The techniques plane is more authoritative than re-reading HIL source.** When the synthesis and HIL source conflict on design intent, the synthesis wins.
 
@@ -30,42 +32,32 @@ These were read-only reference sources:
 
 **No kernel infrastructure.** Never introduce Python/MCP brain code, capability catalogs, or DAG-mediated orchestration. If a workflow needs structure, use native Claude Code Workflows and agent teams.
 
-**Skills and agents are the quality surface.** Discipline is injected through how skills are written and how agents are composed — not through plumbing. When porting a primitive, ask: does this skill survive without the brain? If not, redesign it, don't carry the brain dependency forward.
-
-**Workflow-first build order.** Port primitives in the context of a workflow, not in isolation. The workflow reveals what the skill actually needs. See `REGISTRY.md` for the build order.
+**Skills and agents are the quality surface.** Discipline is injected through how skills are written and how agents are composed — not through plumbing. A primitive that only works with a brain behind it gets redesigned, not carried forward.
 
 ## How to work in this repo
 
-> The human-in-loop → mochiko transformation tool (the `transform-cluster` command, its
-> `transform-producer` agent, and the `assess-primitive` / `reconcile-cluster` /
-> `transform-recipes` / `verify-output` skills) was **retired 2026-07-18** once the migration
-> landed. The build record is preserved in `REGISTRY.md`, `ROADMAP.md`, and `BACKLOG.md`, and
-> the run archive in `.mochiko/transform/`. New primitives are authored directly in mochiko form.
+> The HIL→mochiko transformer cluster was **retired 2026-07-18** (`.mochiko/decisions/2026-07-18-transformer-cluster-retired.md`); the run archive is `.mochiko/transform/`. New primitives are authored directly in mochiko form.
 
-### Starting a new workflow
+### Starting new work
 
-1. Check `BACKLOG.md` for any scoping notes on that workflow
-2. Identify the skills, agents, and templates in `REGISTRY.md` under that workflow's cluster
-3. Port the cluster together — don't port agents without their skills or skills without their agents
-4. Update `REGISTRY.md` and resolve any related `BACKLOG.md` items
+1. Check `BACKLOG.md` for the item and its scoping notes; `ROADMAP.md` for where it sits.
+2. Port or author a cluster together — never agents without their skills or skills without their agents.
+3. Author ≠ grader: built or converted primitives get an independent audit (`validation-command-shape` for commands; the matching `validation-*`/`review-*` skill otherwise).
 
-### Making a structural decision
+### Landing work (the subtractive ritual)
 
-If a decision touches the four skill-library axes (classification, discoverability, model-invocation reliability, agent↔skill composition) or any of the open design questions in `BACKLOG.md` — record the decision in `ROADMAP.md` under Key Decisions and close the backlog item. Don't let structural decisions live only in conversation context.
+Closing **or superseding** anything is one move, per the project-pinned KM invariants at [`.mochiko/memory/knowledge-management.md`](.mochiko/memory/knowledge-management.md): append the `DECISIONS.md` row (a `.mochiko/decisions/` record when no session record exists) · move the closed `BACKLOG.md` item to the trail · touch `ROADMAP.md` Now/Next — statuses agreeing across the brainstorms index, the record, and the decisions index. A landing that only adds is incomplete. A tripped cap or bound invokes `mochiko:grooming-operating-docs` on sight. Don't let structural decisions live only in conversation context. (Compliance here is manual until more commands run in-repo.)
 
 ### Recording brainstorm and design-session outputs
 
-Brainstorm and design-session artifacts (`record.md`, `synthesis.md`) live in `.mochiko/brainstorms/<topic-slug>/` — never at the repo top level. The top level is reserved for the living operating docs (`CLAUDE.md`, `ROADMAP.md`, `REGISTRY.md`, `BACKLOG.md`). A session's *ruling* still lands in `ROADMAP.md` Key Decisions with a pointer to the session record; the record holds the full rationale.
+Session artifacts (`record.md`, `synthesis.md`) live in `.mochiko/brainstorms/<topic-slug>/` — never at the repo top level. **The top level is reserved for the living operating docs: `CLAUDE.md`, `ROADMAP.md`, `DECISIONS.md`, `BACKLOG.md`** (plus `ARCHITECTURE.md` / `GLOSSARY.md` when they gain content). A session's ruling lands as `DECISIONS.md` row(s) pointing at the record; the record holds the rationale.
 
-[`.mochiko/brainstorms/index.md`](.mochiko/brainstorms/index.md) is the session index — newest first, one entry per session: when, status (open / accepted / superseded), review state, what it's about, and where the outcome landed. **Read the index before opening any session directory** — it tells you which records are current, which are superseded, and which are un-reviewed. Enforced both ways: opening a session adds an entry at the top; concluding one updates its status. A session directory without an index entry, or an entry whose status contradicts its record, is a defect — fix it on sight.
+[`.mochiko/brainstorms/index.md`](.mochiko/brainstorms/index.md) is the session index — newest first. **Read the index before opening any session directory.** Opening a session adds an entry; concluding one updates it. A directory without an entry, or an entry whose status contradicts its record, is a defect — fix on sight.
 
-## Skill-library conventions (evolving)
+## Skill-library conventions (five axes)
 
-These will be extracted from real workflows as they're built. Do not pre-define conventions that no workflow has yet needed. Current adopted axes from the synthesis:
-
-- **Classification**: every skill declares whether it is `user-invoked` or `model-invoked` — the organizing principle for who may call what
-- **Discoverability**: one user-invoked router skill indexes the others with when-to-reach-each guidance
-- **Model-invocation reliability**: model-invoked skills encode graded trigger phrases in their description
-- **Agent↔skill composition**: agents declare a `skills:` list; persona (what the agent cares about) bakes into the agent, procedure (step-by-step how) factors into a skill
-
-Document conventions here as they crystallize from `setup` and `specify`.
+1. **Classification** — every skill declares `user-invoked` or `model-invoked`; user-invoked may call model-invoked, never each other.
+2. **Discoverability** — one user-invoked router indexes the rest with when-to-reach-each guidance.
+3. **Reliable model-invocation** — model-invoked skills encode graded MUST/SHOULD + exact trigger phrases in their `description` (delivery truncates at 1,536 chars — measure first).
+4. **Agent↔skill composition** — agents declare `skills:`; persona carries judgment, skill carries procedure; a persona contains no trace of any workflow (decoupling by absence, the keystone test). Caller-side context lives in `agent-dispatch.md`. Details: [`.mochiko/brainstorms/agent-decoupling/synthesis.md`](.mochiko/brainstorms/agent-decoupling/synthesis.md).
+5. **Producer↔validator pairing** — every reviewable artifact is graded by a structurally independent validator (different agent, different skill); mirror-checklist form for objective criteria, adversarial-critique form for judgment artifacts.

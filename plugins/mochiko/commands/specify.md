@@ -95,7 +95,9 @@ draft stays under `.mochiko/specs/<feature>/`).
 count, story / FR counts, a suggested commit (`docs: specify <feature>`), and the next
 step (`/mochiko:plan`). Round reports are cleaned by default (their outcome stamps live in
 the deliverable); the user may ask to retain them. Never offer to delete `spec.md` — it is
-the deliverable.
+the deliverable. **KM landing** — `.mochiko/memory/knowledge-management.md` exists → run its
+landing ritual + invariants under fix-on-sight; mint new domain terms into `GLOSSARY.md`.
+No copy → skip.
 
 ## Contract (authoring-time fill — governed by `mochiko:loop-discipline`)
 

@@ -55,7 +55,7 @@ the ledger, module detail behind pointers.
 - Ledger (waivers · amendment policy · exceptions · Three-Part metadata): `.mochiko/memory/governance-ledger.md`
 - Amend via `/mochiko:setup` (tier bumps and un-waives are governance events)
 [- Path-scoped rules inject on **Read**, not Write (observed behavior, kinako dogfood 2026-07-19) — before creating a new file under [the actual scoped paths, e.g. `src/`, `tests/`], read the matching `.claude/rules/mochiko/` file or read back the file you created <!-- standing line: emit whenever the set includes any rules file -->]
-[- Operating docs (knowledge-management module): sessions in `.mochiko/brainstorms/` + `index.md`; rulings graduate to `ROADMAP.md`; threads land in `BACKLOG.md` <!-- GI-XXX -->]
+[- Operating docs (knowledge-management module): sessions in `.mochiko/brainstorms/` + `index.md`; rulings land in `DECISIONS.md`; open threads in `BACKLOG.md`; direction in `ROADMAP.md`; landing ritual + invariants at `.mochiko/memory/knowledge-management.md`; groom: `mochiko:grooming-operating-docs` <!-- GI-XXX -->]
 [- Release gates: [one-line summary] — detail in the ledger <!-- GI-XXX -->]
 <!-- mochiko:governance:end -->
 ```

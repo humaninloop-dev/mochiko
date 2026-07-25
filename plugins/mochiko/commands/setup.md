@@ -89,9 +89,11 @@ the same `Contested` dogfood-pilot ruling as `/mochiko:brainstorm`'s.
   `mochiko:validation-constitution` **from the files** (the surface set + synthesis + trace
   summary, never the producer's report): trace closure both ways over the manifest, region-marker
   integrity, index→file existence, ledger completeness (Three-Part per principle), tier + waiver
-  + floor-accounting checks, module-parameterized checks, anti-pattern + placeholder scans,
-  semver call — brownfield adds the tools/versions↔analysis cross-check. It **messages you**
-  binary PASS/FAIL + a fix list. **The fix list flows through you** to the producer — that
+  + floor-accounting checks, module-parameterized checks — knowledge-management attached → the
+  module fragment's **repo-level invariant re-audit runs**, resolved from the project-pinned
+  copy (`.mochiko/memory/knowledge-management.md`) when one exists — anti-pattern + placeholder
+  scans, semver call — brownfield adds the tools/versions↔analysis cross-check. It **messages
+  you** binary PASS/FAIL + a fix list. **The fix list flows through you** to the producer — that
   routing is the independence the loop rests on.
 
 ## The flow
@@ -173,16 +175,22 @@ the rules files, `governance-ledger.md`, and `governance-intent.md` (the last tw
 synthesis is the amend baseline and the traceability surface; never offer to delete either),
 brownfield `codebase-analysis.md` (offer retain / remove), the PASS + acceptance trail, a
 suggested commit, next step (`/mochiko:specify`; when knowledge-management was adopted, also
-`/mochiko:brainstorm`). **Knowledge-management adopted → scaffold the bundle here**
-(`.mochiko/brainstorms/` + `index.md`, `BACKLOG.md`, `ROADMAP.md`), honoring the session's
-collision rulings, on the hard never-overwrite floor. Downstream delivery is native: CLAUDE.md
+`/mochiko:brainstorm`). **Knowledge-management adopted → scaffold the module here** per its
+template (`templates/constitution-modules/knowledge-management.md`): the core set + adopted
+electives **and the enforcement surfaces with it** — the **project-pinned copy** (document
+contracts + landing ritual + invariants) at `.mochiko/memory/knowledge-management.md`, which commands resolve at
+runtime (template changes reach a pinned project only as an **amend offer**), the rules file,
+the CLAUDE.md pointers — honoring collision rulings on the hard never-overwrite floor. Amend
+with the module attached → G5 is setup's KM landing: run the ritual + invariants from the copy
+under fix-on-sight. Downstream delivery is native: CLAUDE.md
 (region included) loads for every session and spawned agent; dispatch briefs in downstream
 commands carry the **obligated read** for `paths`-scoped rules their producers won't trigger by
 reading. When the accepted set includes rules files, **offer the injection probe** (optional —
 state the token cost): `mochiko:testing-governance-injection` empirically verifies delivery via
 disposable probe subagents over throwaway stubs at the scoped paths (unconditional cleanup);
 findings feed an amend run, and it re-runs standalone as a regression check after real scaffolds
-land.
+land. Knowledge-management adopted → its rules file joins the probe surfaces; the module's
+dogfood **gates on the probe** — recommend, don't just offer.
 
 ## Contract (authoring-time fill — governed by `mochiko:loop-discipline`)
 

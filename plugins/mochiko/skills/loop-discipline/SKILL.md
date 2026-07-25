@@ -135,4 +135,4 @@ If you notice yourself thinking any of these, the loop is unsound. Stop and repa
 
 - [`workflow-contract` template](../../templates/workflow-contract.md) — the fill-in form this skill governs
 - [`agent-dispatch` template](../../templates/agent-dispatch.md) — the caller-side briefing guide for each dispatch inside the loop (not a fifth gate)
-- See `ROADMAP.md` ("The sound-loop doctrine") for the source techniques
+- See the archived mochiko `ROADMAP.md` ("The sound-loop doctrine", `.mochiko/archive/ROADMAP.md` in the mochiko repo) for the source techniques
