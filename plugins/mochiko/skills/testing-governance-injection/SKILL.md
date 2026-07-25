@@ -10,12 +10,9 @@ description: This skill MUST be invoked when empirically probing that an accepte
 Static validation grades what the surfaces SAY; this skill tests what the harness DOES: which
 rule documents actually land in an agent's context when it touches governed paths, and whether
 they change what the agent will do. The two answers can diverge — the originating dogfood run
-(kinako, 2026-07-19, ~220k subagent tokens, ~3 min) probed a validator-PASSed surface set and
-caught two delivery defects static grading cannot see: rules injecting on **Read but not Write**
-(so greenfield scaffolding never saw them), and `paths` scoped to a mechanism's home layer while
-an orchestrating layer wrote governed code blind. Both are now guarded upstream
-(`authoring-constitution` routing, `validation-constitution` checks) — **this probe is the check
-that catches the next unknown-unknown.**
+(kinako, 2026-07-19) probed a validator-PASSed surface set and caught two delivery defects
+static grading cannot see, both now guarded upstream — **this probe is the check that catches
+the next unknown-unknown.**
 
 Everything this skill observes is **versioned harness behavior, never doctrine**: stamp every
 finding with the Claude Code version and date, and never promote an observation into a skill or

@@ -120,14 +120,7 @@ acceptance gate's trace summary), not this scan.
 
 ### Step 6: Scan for Anti-Patterns
 
-Compare against [references/ANTI-PATTERNS.md](references/ANTI-PATTERNS.md). Common failures:
-
-| Anti-Pattern | Detection |
-|--------------|-----------|
-| Vague principle | Contains words like "appropriate", "reasonable", "clean" without metrics |
-| Missing enforcement | Principle states rule but no verification mechanism |
-| Placeholder syndrome | Contains `[PLACEHOLDER]`, `[COMMAND]`, `[THRESHOLD]` syntax |
-| Generic thresholds | Says "coverage must be measured" instead of "coverage ≥80%" |
+Compare against [references/ANTI-PATTERNS.md](references/ANTI-PATTERNS.md) — the canonical scan list.
 
 ### Step 7: Verify No Placeholders
 
@@ -173,15 +166,9 @@ Advisory (judgment-grade, non-blocking):
 
 ## Quantification Requirements
 
-Vague language MUST be replaced with measurable criteria:
-
-| Vague | Quantified |
-|-------|------------|
-| "Code should be clean" | "Zero lint warnings from configured rules" |
-| "Functions should be short" | "Functions MUST NOT exceed 40 lines" |
-| "Tests should cover the code" | "Coverage MUST be ≥80% for new code" |
-| "Response should be fast" | "API MUST respond in <200ms p95" |
-| "Secure by default" | "All inputs MUST be validated; auth required on all endpoints" |
+Vague language MUST be replaced with measurable criteria — the patterns and quantified examples
+live in [references/ANTI-PATTERNS.md](references/ANTI-PATTERNS.md) (*Vague Principle*, *Generic
+Thresholds*, *Missing Enforcement*).
 
 ## Common Mistakes
 
@@ -221,57 +208,8 @@ If you notice yourself thinking any of these, STOP immediately:
 | "Anti-patterns don't apply here" | Every rationalization claims uniqueness. They apply. |
 | "I'm being pragmatic" | Pragmatic = following validation process. Skipping is not pragmatic. |
 | "Can validate more thoroughly later" | "Later" rarely comes. Validate now or ship broken governance. |
-
-## Explicit Loophole Closures
-
-### "The constitution looks fine"
-
-Looking fine is not validation. Run every checklist item. Document every result. A constitution is validated when all checks pass, not when it "looks fine."
-
-### "This is a small change"
-
-Small changes require validation. A one-line change can introduce vague language, remove enforcement, or add placeholders. Size does not determine validation necessity.
-
-### "I'll add the missing parts later"
-
-Constitutions with missing parts FAIL validation. Return to authoring. Do not sign off on incomplete governance.
-
-### "User asked to skip validation"
-
-User requests do not override process. Explain why validation matters. If user insists, document that validation was skipped against recommendation—but never claim a validated constitution when validation was skipped.
-
-### "The project is just prototyping"
-
-Prototypes become production. Governance established during prototyping persists. Validate now or inherit broken governance later.
-
-## Testing Evidence
-
-### Baseline Testing Results (RED Phase)
-
-Pressure scenarios tested without skill loaded revealed these agent behaviors:
-
-**Scenario 1: Time pressure + "looks complete"**
-- Agent rationalized: "The constitution appears comprehensive and I wrote it carefully"
-- Skipped checklist, missed placeholder in Quality Gates section
-- Verdict: FAIL - proceeded without systematic validation
-
-**Scenario 2: User satisfaction signal**
-- Agent rationalized: "User already reviewed the draft and seemed satisfied"
-- Skipped anti-pattern scan, missed vague "appropriate level" language
-- Verdict: FAIL - treated user satisfaction as validation
-
-**Scenario 3: Minor update context**
-- Agent rationalized: "This is just updating one threshold, full validation is overkill"
-- Skipped Steps 1-3, only checked the changed line
-- Verdict: FAIL - partial validation is not validation
-
-### Skill Effectiveness (GREEN Phase)
-
-Same scenarios re-run with skill loaded:
-- Agent cited "letter = spirit" principle when tempted to skip
-- Agent ran full checklist despite time pressure
-- Agent produced binary PASS/FAIL verdicts
-- All placeholders and anti-patterns caught
+| "User asked to skip validation" | User requests do not override process. If the user insists, document that validation was skipped against recommendation — never claim a validated set when validation was skipped. |
+| "I'll add the missing parts later" | Missing parts = FAIL. Return to authoring; never sign off incomplete governance. |
 
 ## Related Skills
 

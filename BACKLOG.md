@@ -58,8 +58,12 @@ re-measures at proposal time. Order below is the order of execution.
   confirmed canonical, `authoring-slices` drops its 2-line downstream restatement **in its wave
   (authoring-*)**; item 4 — letter/spirit aphorism keep-and-survivor-log + strengthen-bare-copies
   rider (`.mochiko/strips/loop-discipline.md`; queue's canonical-home premise corrected there).
-- [ ] **Waves, ordered by never-stripped mass:** analysis/testing/validation/misc → review-* →
-  patterns-* → authoring-*. Per D3: pre-wave ≥3-consumer enumeration by citation count
+- [ ] **Waves, ordered by never-stripped mass:** ~~analysis/testing/validation/misc~~ → review-* →
+  patterns-* → authoring-*. **Wave 1 DONE 2026-07-25 at v0.25.0 — audit FAIL→fixed→PASS; ledger
+  on the ROADMAP row; next wave-open: review-\* (note: review-specifications gained the canonical
+  hunt-taxonomy table at wave-1 audit-fix time — reconcile there; authoring-\* wave owes the
+  authoring-slices Graduation-contract restatement drop, R4b item 3).** Per D3: pre-wave
+  ≥3-consumer enumeration by citation count
   (cross-skill reference homes included: TEST-GRAMMAR, CROSS-EXAM,
   ESSENTIAL-FLOOR/INTERROGATION-AGENDA), per-skill ratification, per-wave audit + version bump.
   Accounting per D4/R2: SKILL.md body-lines denominator, description/reference cuts on separate

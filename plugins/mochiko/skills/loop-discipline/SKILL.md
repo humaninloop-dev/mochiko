@@ -35,7 +35,7 @@ You cannot rationalize your way out of any of the four.
 
 ## The Four Requirements
 
-Derived from the sound-loop technique cluster (`pre-declared-done-condition`, `external-grounded-validation`, `bounded-agent-loop`) plus open question #11 (the human gate). Each maps to one axis of goal / validation / loop / human.
+Each requirement maps to one axis of goal / validation / loop / human.
 
 ### 1. Pre-declared done-condition — default FAIL
 
@@ -135,4 +135,4 @@ If you notice yourself thinking any of these, the loop is unsound. Stop and repa
 
 - [`workflow-contract` template](../../templates/workflow-contract.md) — the fill-in form this skill governs
 - [`agent-dispatch` template](../../templates/agent-dispatch.md) — the caller-side briefing guide for each dispatch inside the loop (not a fifth gate)
-- See `ROADMAP.md` ("The sound-loop doctrine") and `agent-skills-research/synthesis/my-framework.md` for the source techniques
+- See `ROADMAP.md` ("The sound-loop doctrine") for the source techniques

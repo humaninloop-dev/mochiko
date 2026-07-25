@@ -5,13 +5,13 @@ description: This skill MUST be invoked when executing an already-structured cyc
 
 # Executing TDD Cycles
 
-**Violating the letter of the rules is violating the spirit of the rules.**
+**Violating the letter of the rules is violating the spirit of the rules.** TDD discipline
+exists to catch failures before they compound — every shortcut in this process is a regression
+waiting to happen.
 
 ## Overview
 
 Turn a cycle's task list into implemented code through strict red/green/refactor discipline. Parse the current cycle's tasks from `tasks.md`, write failing tests first, implement code to pass them, refactor, mark tasks complete, and produce a structured `cycle-report.md`. This skill governs the runtime *execution* of a cycle and of any targeted rework — it does not structure the cycles or decide when they run.
-
-TDD discipline exists to catch failures before they compound. Every shortcut in this process is a regression waiting to happen.
 
 ## When to Use
 
@@ -37,14 +37,7 @@ Execute in strict order. No skipping steps. No reordering.
 
 **1. Parse Cycle Tasks**
 
-Extract the task list for the current cycle from the feature's `tasks.md` (under `.mochiko/specs/<feature>/`). See [references/TASK-PARSING.md](references/TASK-PARSING.md) for parsing rules.
-
-For each task, extract:
-- Task ID (`T{N}.{X}`)
-- Description
-- File path(s) in backticks
-- `[EXTEND]` or `[MODIFY]` markers
-- Sub-bullet details
+Extract the task list for the current cycle from the feature's `tasks.md` (under `.mochiko/specs/<feature>/`). See [references/TASK-PARSING.md](references/TASK-PARSING.md) for the parsing rules and the per-task fields to extract.
 
 **2. Red Phase — Write Failing Tests**
 
@@ -137,29 +130,12 @@ See [references/TDD-ANTI-RATIONALIZATION.md](references/TDD-ANTI-RATIONALIZATION
 
 ## Common Mistakes
 
-### Mistake: Writing Tests After Implementation
-
-**What goes wrong:** Tests become retroactive justification. They pass because they were written to match the code, not because the code satisfies the requirement.
-
-**Fix:** Always write the test first. Run it. Verify it fails for the right reason. Then implement.
-
-### Mistake: Full Cycle Re-Implementation on Retry
-
-**What goes wrong:** Working code gets rewritten, introducing new bugs. Token budget wasted on already-complete tasks.
-
-**Fix:** Trace failures to specific tasks. Re-open only those tasks. Leave passing code untouched.
-
-### Mistake: Scope Creep During Refactor Phase
-
-**What goes wrong:** "While I'm here" changes accumulate. New bugs appear in code that was working. Cycle report doesn't reflect actual changes.
-
-**Fix:** Refactor phase is limited to code introduced in this cycle. Note improvement opportunities as a one-line entry in the cycle report's `Notes of note` block instead of acting on them.
-
-### Mistake: Skipping Failure Reason Verification
-
-**What goes wrong:** Test fails due to syntax error or wrong import, not because the assertion caught a missing implementation. Green phase "passes" the test by fixing the syntax, not by implementing the feature.
-
-**Fix:** After writing a failing test, verify the failure message matches your expectation. A `ModuleNotFoundError` is not a meaningful test failure.
+| Mistake | What goes wrong | Fix |
+|---------|-----------------|-----|
+| Tests after implementation | Retroactive justification — tests pass because they were written to match the code | Test first, run it, verify it fails for the right reason, then implement |
+| Full cycle re-implementation on retry | Working code rewritten, new bugs, budget wasted on complete tasks | Trace failures to specific tasks; re-open only those; leave passing code untouched |
+| Scope creep during refactor | "While I'm here" changes break code that was working; the report drifts from reality | Refactor only this cycle's code; note opportunities in `Notes of note` instead of acting |
+| Skipping failure-reason verification | Syntax/import errors mistaken for meaningful failures — green "passes" by fixing syntax, not implementing | Verify the failure message matches expectation; a `ModuleNotFoundError` is not a test failure |
 
 ## Reference Files
 

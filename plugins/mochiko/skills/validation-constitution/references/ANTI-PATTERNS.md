@@ -89,3 +89,6 @@ Test coverage MUST be:
 - ≥60% overall (blocking threshold)
 - Non-decreasing (ratchet rule)
 ```
+
+Performance thresholds quantify the same way: "API MUST respond in <200ms p95", never
+"response should be fast".

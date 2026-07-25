@@ -2,7 +2,27 @@
 
 Entry formats: `strips/README.md`. Wave context: workflow-token-reduction wave 1 (design:
 `.mochiko/brainstorms/workflow-token-reduction/record.md`, D3 + S8 + Q6; rulings ratified
-2026-07-23) — reports strip to their verified consumers, machine-first.
+2026-07-23) — reports strip to their verified consumers, machine-first. Skill-succinctness
+wave-1 entries atop (batch-ratified 2026-07-25): body 164 → 140 lines, 24 cut = 15% — in the
+10–40 previously-stripped band.
+
+## [v0.25.0] Task-extraction preview list (net −7 lines)
+- **Disposition:** relocated → `references/TASK-PARSING.md` (the declared parsing home, pointed at two lines above; pointer now names "the per-task fields to extract")
+- **Tier failed:** 1 (preview copy of the reference's field list)
+- **Content:** ID / description / file-paths / markers / sub-bullets extraction list
+- **Consumers assessed:** 6 consumer files checked at wave open; none reference the list
+
+## [v0.25.0] Common Mistakes densified: 4 subsections → 4-row table (net −17 lines)
+- **Disposition:** compressed in place (densification, zero deletions — every mistake/failure/fix survives as a row)
+- **Tier failed:** n/a — form only
+- **Content:** tests-after-implementation, full-cycle re-implementation, refactor scope creep, failure-reason verification
+- **Consumers assessed:** none reference the subsection headings
+
+## [v0.25.0] Aphorism consequence-anchored (R4b rider, net 0 lines)
+- **Disposition:** reordered in place — the existing consequence sentence ("TDD discipline exists to catch failures before they compound…") moved from mid-Overview to directly under the aphorism
+- **Tier failed:** n/a — rider execution, not a strip
+- **Content:** unchanged text, relocated within the file
+- **Consumers assessed:** n/a
 
 ## [v0.22.0] Cycle-report prose sections (What Was Done · Decisions Made · Notes for Next Cycle)
 - **Disposition:** deleted from `references/CYCLE-REPORT-FORMAT.md` (What Was Done, Decisions Made) · deleted per the epic's Q6 ruling, **no optional-field resurrection** (Notes for Next Cycle)

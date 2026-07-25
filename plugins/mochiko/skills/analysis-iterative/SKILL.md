@@ -28,15 +28,7 @@ Guide collaborative thinking by adapting questioning style, depth, and output to
 
 ## Adaptive Flow
 
-```
-Opening ──→ Discovery ──→ Adaptive Questioning ──→ Conclusion
-  │              │                │                      │
-  │              │                │                      │
-  Brief,         Reveals          Format adapts per      Synthesis depth
-  topic-         complexity       turn: structured       matches
-  specific       and thinking     options / open         conversation
-  entry          depth            probes / confirmations depth
-```
+Opening → Discovery → Adaptive Questioning → Conclusion.
 
 **Opening** establishes the topic and asks the first question. Do not recite a fixed introduction script. Adapt tone and framing to the topic — a migration planning session opens differently than a notification brainstorm.
 
@@ -61,16 +53,6 @@ The first 1-2 questions serve a dual purpose: advance the conversation toward su
 - **Long, detailed, multi-dimensional** → Complex problem space. Plan for more questions and a comprehensive synthesis.
 
 **"Unsure" is a first-class signal.** When the user says "I don't know" or "I'm not sure," it means probe deeper from a different angle — not fill in a default recommendation and move on. After 3+ consecutive "unsure" answers, reframe the question from a different angle or suggest narrowing the scope to a concrete sub-problem.
-
-**Example — crisp answer branch:**
-> "A, definitely. These are for ops teams monitoring infrastructure."
->
-> → Confident and specific. Next question can offer structured options and move quickly.
-
-**Example — unsure answer branch:**
-> "Honestly, I'm not sure how to categorize it. We're moving from a monolith..."
->
-> → Unsure with some detail. Next question should be an open probe to help the user map what they know before offering options.
 
 ## Question Format Adaptation
 
@@ -130,13 +112,6 @@ Follow-through matters: a user's sort of unfamiliar material can misfire on over
 
 **Meta-principle:** Pick the format that serves the user's current state. If uncertain which format to use, prefer the open probe — it gathers information without forcing premature commitment. But when the user has explicitly handed you the domain expert's seat, the open probe is an abdication — recommend, then let them arbitrate.
 
-**Example — same topic, different formats based on state:**
-> Structured: "Which versioning mechanism fits best? A) URL path, B) Header, C) Query parameter"
->
-> Open probe: "What's the technical sophistication of the external partners who need to consume this API?"
->
-> Confirmation: "URL versioning for all consumers — that sounds settled. Moving on to deprecation policy."
-
 ## Reading Confidence Signals
 
 Recalibrate after every answer. The user's state can shift mid-conversation.
@@ -190,26 +165,15 @@ Generate the synthesis document using [SYNTHESIS.md](SYNTHESIS.md).
 
 ## Common Mistakes
 
-### Always Using Structured Options
-Not every turn needs options and a recommendation. When the user is unsure, open probes help them discover what they think. Structured options on an uncertain user force premature decisions.
-
-### Ignoring "Unsure" Signals
-"I don't know" means probe deeper, not "doesn't care." Treating uncertainty as indifference leads to recommendations the user passively accepts but does not own.
-
-### Multiple Questions Per Turn
-One question per turn — always. Multiple questions fracture attention and produce shallow answers across all of them instead of one thoughtful answer.
-
-### Questions That Don't Connect
-Every question must show how the previous answer shapes the direction. Jumping topics without connecting breaks the collaborative momentum.
-
-### Premature Synthesis
-The skill may nudge toward wrap-up but must not force it. If core decisions are not yet made or key trade-offs are unaddressed, continue asking.
-
-### Rigid Opening Script
-Do not recite a fixed "I'll ask you a series of questions" introduction. Adapt the opening to the topic's tone and the user's apparent energy.
-
-### Padding the Synthesis
-Match output depth to conversation depth. A 3-question session does not need a Decision Trail, Risks section, or Open Questions. Include only sections with real content.
+| Mistake | Why it fails | Fix |
+|---------|--------------|-----|
+| Always using structured options | Options force premature decisions on an unsure user | Open probes help them discover what they think |
+| Ignoring "unsure" signals | Uncertainty read as indifference → recommendations passively accepted, never owned | Probe deeper from a different angle |
+| Multiple questions per turn | Fractured attention, shallow answers across all of them | One question per turn — always |
+| Questions that don't connect | Topic-jumping breaks collaborative momentum | Show how the previous answer shapes the direction |
+| Premature synthesis | Forced wrap-up leaves core trade-offs unaddressed | Nudge, never force; the user has final say |
+| Rigid opening script | A recited introduction ignores the topic's tone and energy | Adapt the opening to both |
+| Padding the synthesis | Filler sections dilute a lean conversation's record | Output depth matches conversation depth |
 
 ---
 

@@ -65,6 +65,17 @@ Focus on these user-facing gaps:
 | **Success/failure states** | "What happens if the user...?" |
 | **Permissions** | "Who can do X? Who cannot?" |
 
+The five requirement-defect classes those questions hunt (the canonical hunt taxonomy — the
+`devils-advocate` persona names these classes and leans on this section for the detail):
+
+| Class | What it looks like |
+|-------|--------------------|
+| **Missing requirements** | features mentioned but not specified; implicit expectations; dependencies on undefined behavior |
+| **Ambiguities** | vague terms without quantification; requirements open to interpretation; unclear boundaries and limits |
+| **Edge cases** | empty states; cancelled mid-flow; missing permissions; unstated limits (max items, max size) |
+| **Assumption gaps** | assumptions that should be requirements (and the reverse); hidden dependencies |
+| **Contradictions** | requirements that conflict; inconsistent terminology; mutually exclusive acceptance criteria |
+
 ## What to Avoid
 
 - Implementation details (databases, APIs, protocols)

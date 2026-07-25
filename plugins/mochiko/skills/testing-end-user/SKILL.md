@@ -115,12 +115,8 @@ Before execution, classify the task from its Action and Assert content. This run
 
 ### Evidence Types
 
-| Type | Capture Method |
-|------|----------------|
-| `console` | stdout/stderr from commands |
-| `screenshot` | Platform-specific screen capture |
-| `logs` | Contents of specified log files |
-| `timing` | Duration of each action |
+The four evidence types (`console` / `screenshot` / `logs` / `timing`) and their capture methods
+are catalogued in [references/EVIDENCE-CAPTURE.md](references/EVIDENCE-CAPTURE.md).
 
 ## Quality Gates
 
@@ -148,16 +144,9 @@ When a verification run includes quality gates, execute them alongside `**TEST:*
 
 ### Quality Gate Report Format
 
-Add a `quality_gates` section to the verification-report YAML frontmatter:
-
-```yaml
-quality_gates:
-  lint:  {status: pass, command: "pnpm lint"}
-  build: {status: pass, command: "pnpm build"}
-  tests: {status: pass, command: "pnpm test", passed: 47, failed: 0, skipped: 2}
-```
-
-Each quality gate entry records the command run and its status. For test suites, include pass/fail/skip counts when available.
+Record each gate in the verification-report's `quality_gates` frontmatter section — the format
+(status from exit code, command, pass/fail/skip counts for suites) is defined in
+[references/REPORT-TEMPLATES.md](references/REPORT-TEMPLATES.md).
 
 ### Quality Gate Auto-Resolution
 
@@ -206,41 +195,14 @@ If any of these thoughts arise, STOP immediately:
 
 ## Common Mistakes
 
-### Mistake: Skipping Setup Validation
-
-**What goes wrong:** An action fails mysteriously because setup was assumed complete.
-
-**Fix:** Always run setup commands. Always capture setup output. Fail explicitly if setup fails.
-
-### Mistake: Missing Background Process Cleanup
-
-**What goes wrong:** Background processes from previous tests interfere with the current test.
-
-**Fix:** Track all PIDs. Kill processes after the test (pass or fail). Verify cleanup completed.
-
-### Mistake: Truncating Evidence Prematurely
-
-**What goes wrong:** Critical failure information is cut off from the report.
-
-**Fix:** Follow the truncation rules in REPORT-TEMPLATES.md. Always include log file locations. Preserve full evidence for human review.
-
-### Mistake: Reporting PASS Without Assert Verification
-
-**What goes wrong:** Claiming PASS when asserts were not actually evaluated.
-
-**Fix:** Each assert MUST have an explicit pass/fail evaluation. No default to PASS. Unevaluated asserts are failures.
-
-### Mistake: Proceeding After a Rejected Checkpoint
-
-**What goes wrong:** Continuing execution when the human explicitly rejected.
-
-**Fix:** Rejection gates completion. Human approval is mandatory. Retry or abort on rejection.
-
-### Mistake: Skipping Checkpoint Presentation
-
-**What goes wrong:** The test runs but the human never sees results. No audit trail. No approval gate.
-
-**Fix:** Every test MUST end with a checkpoint presentation. No silent completion. Human-in-loop is the point.
+| Mistake | What goes wrong | Fix |
+|---------|-----------------|-----|
+| Skipping setup validation | Actions fail mysteriously on assumed-complete setup | Run setup, capture its output, fail explicitly |
+| Missing background cleanup | Stale processes interfere with the next test | Track all PIDs; kill after pass or fail; verify cleanup |
+| Truncating evidence prematurely | Critical failure information cut from the report | Follow REPORT-TEMPLATES.md truncation rules; include log-file locations |
+| PASS without assert verification | PASS claimed on unevaluated asserts | Every assert gets an explicit pass/fail; unevaluated = failure |
+| Proceeding after rejection | Execution continues past an explicit human reject | Rejection gates completion; retry or abort |
+| Skipping checkpoint presentation | Human never sees results — no audit trail, no gate | Every test ends with a checkpoint; no silent completion |
 
 ## Reference Files
 

@@ -11,7 +11,8 @@ Craft for implementing a task that touches existing code. Brownfield tasks arriv
 
 **The existing code is not wrong until proven otherwise.** It has consumers, tests, and patterns that evolved for reasons not immediately visible.
 
-**Violating the letter of the rules is violating the spirit of the rules.**
+**Violating the letter of the rules is violating the spirit of the rules.** Every shortcut in
+read-before-write discipline is a broken consumer waiting to surface.
 
 ## When to Use
 
@@ -51,12 +52,9 @@ Before writing any code in an existing file, complete all five steps:
 
 ### Interface Preservation
 
-When extending existing code:
+When extending existing code (the signature/export/public-API MUST-NOTs are the table above):
 
-- Do NOT change function signatures (parameter order, types, return types)
-- Do NOT change export surfaces (what is exported, export names)
 - Do NOT rename existing variables, functions, or classes
-- Do NOT change the file's public API unless the task explicitly says `[MODIFY]`
 - DO add new exports alongside existing ones
 - DO follow the file's established patterns for new code
 
@@ -81,29 +79,12 @@ Surface these as blockers rather than silently resolving them — they belong in
 
 ## Common Mistakes
 
-### Mistake: Not Reading the Full File
-
-**What goes wrong:** You add code that duplicates existing functionality, uses different naming conventions, or conflicts with code you didn't see.
-
-**Fix:** Always read the entire file before making any changes. Skim is not sufficient for brownfield work.
-
-### Mistake: Silently Rewriting When Asked to Extend
-
-**What goes wrong:** Existing consumers break because the interface changed. Tests fail for unrelated code. Your report doesn't explain why unrelated files were modified.
-
-**Fix:** EXTEND means extend. If you cannot extend, flag it. Never silently rewrite.
-
-### Mistake: Ignoring Existing Error Handling
-
-**What goes wrong:** Your new code throws raw exceptions while the rest of the file uses Result types. Or your code returns null while existing code throws. Inconsistency confuses consumers.
-
-**Fix:** Step 3 of the Read-Before-Write Checklist. Match the existing error handling pattern exactly.
-
-### Mistake: Adding "Better" Patterns
-
-**What goes wrong:** You introduce a "better" pattern alongside the existing one. Now the file has two patterns. The next developer doesn't know which to follow. Consistency is more valuable than local improvement.
-
-**Fix:** Follow existing patterns, even if you'd prefer different ones. Note the improvement opportunity in your report.
+| Mistake | What goes wrong | Fix |
+|---------|-----------------|-----|
+| Not reading the full file | Duplicated functionality, mismatched conventions, conflicts with unseen code | Read the entire file first — skimming is not sufficient for brownfield work |
+| Silently rewriting when asked to extend | Consumers break on the changed interface; unrelated tests fail; unexplained modifications | EXTEND means extend; if you cannot extend, flag it |
+| Ignoring existing error handling | Raw exceptions beside Result types — inconsistency confuses consumers | Match the file's error-handling pattern exactly (checklist step 3) |
+| Adding "better" patterns | Two patterns in one file; the next developer can't tell which to follow | Follow existing patterns; note the improvement opportunity in your report |
 
 ## Common Rationalizations
 
@@ -118,11 +99,13 @@ Surface these as blockers rather than silently resolving them — they belong in
 
 ## Red Flags — STOP and Reconsider
 
-- "This existing code is messy, I'll clean it up" — Not the current scope. Note it, don't fix it.
-- "I'll use a better pattern here" — Consistency beats local optimization. Follow what exists.
-- "The existing tests don't cover this" — That's a pre-existing gap, not a problem to fix now.
-- "I need to refactor this to make my change work" — Flag it — don't silently refactor.
-- "This interface doesn't make sense" — It made sense to someone. Read more context before judging.
+If any of these thoughts arise, stop — the Rationalizations table above rebuts each:
+
+- "This existing code is messy, I'll clean it up"
+- "I'll use a better pattern here"
+- "The existing tests don't cover this" — a pre-existing gap, not a problem to fix now
+- "I need to refactor this to make my change work"
+- "This interface doesn't make sense"
 
 **No exceptions:**
 - Not for "obviously broken" code

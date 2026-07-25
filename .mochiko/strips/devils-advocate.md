@@ -13,7 +13,7 @@ were ruled in their command waves.
 - **Consumers assessed:** all six mounted skills' delivered descriptions verified live same day (R1 measurement pass); the agent file is the only consuming surface
 
 ## [v0.25.0] "What You Hunt For" catalog bullets → category names + the existing pointer
-- **Disposition:** relocated → `review-specifications`' Gap Categories section (the section's own closing line already declared it canonical: "lean on it … rather than working from a copy here")
+- **Disposition:** relocated → `review-specifications`' Gap Categories section. **Audit catch (wave-1 audit, 2026-07-25):** the home initially held only the question-framing taxonomy, not the five defect classes — the surviving pointer line had been dishonest since before this wave; the five-class table landed in Gap Categories at fix time, making the relocation (and the pointer) true
 - **Tier failed:** 1 (persona keeps the five hunt-category names — what the agent cares about; the per-category bullets were the skill's catalog copied, contradicting the file's own single-source line)
 - **Content:** 3–4 example bullets under each of Missing Requirements / Ambiguities / Edge Cases / Assumption Gaps / Contradictions and Conflicts (~20 lines)
 - **Consumers assessed:** `review-specifications` untouched; the agent file is the only consuming surface

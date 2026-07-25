@@ -4,6 +4,20 @@ Entry formats: `strips/README.md`. Wave context: skill-succinctness wave-1 open 
 ≥3-consumer queue ruling, user-approved 2026-07-25 (design:
 `.mochiko/brainstorms/skill-succinctness-strip/record.md`).
 
+## [v0.25.0] Sound-loop provenance clause + dead reference pointer (0 lines, ~230 chars)
+- **Disposition:** deleted (provenance clause: "Derived from the sound-loop technique cluster (…) plus open question #11"; the axis-mapping sentence kept) · repaired (Related pointer to `agent-skills-research/synthesis/my-framework.md` — **dead since the submodule was removed 2026-07-21** — now points at `ROADMAP.md` alone)
+- **Tier failed:** 2 (provenance, not procedure) · dead-pointer repair (D2 reference scope)
+- **Content:** the technique-cluster name list; the removed-submodule path
+- **Consumers assessed:** 21 consuming files enumerated at wave open — none reference either line; the four requirements, gap-type routing, and keystone test (what consumers actually point at) are untouched
+
+## [v0.25.0] KEPT: the entire remaining body (whole-core survivor ruling)
+- **Tier-2 evidence:** contested as a whole at the under-band pass (1.9% by chars, 0 lines — deeply
+  under the 30–70 band by ruling) and kept: this is the doctrine home 21 files point at; the four
+  requirements each name their failure mode, the gap-routing corollary names the crossed-wires
+  defect, the keystone test names the coupling failure, and the scoped aphorism instance is
+  consequence-anchored. Cutting the doctrine home trades dead-pointer risk across the library for
+  zero altitude gain. Session ruling: batch-3 ratification 2026-07-25.
+
 ## [v0.25.0] KEPT: the letter/spirit aphorism set — 11 skill copies, library-wide ruling
 - **Tier-2 evidence:** ruled keep-and-survivor-log (R4b item 4, user-approved 2026-07-25).
   Strip-to-reference has no home: this skill's own line ("Violating the letter of THESE rules…")

@@ -24,9 +24,8 @@ Default FAIL; the verdict clears only check by check.
 The two-layer design is deliberate: the **deterministic floor** runs first and its results
 are recorded as the evidence (it is grep — it cannot be rationalized past); the **judgment
 ceiling** does the work grep cannot. A floor failure is a FAIL regardless of how good the
-prose reads. (The floor revives the retired `verify-output` altitude gate's floor+ceiling
-design; the residual risk that the judgment layer rationalizes is recorded as accepted —
-the floor is the backstop.)
+prose reads. (The residual risk that the judgment layer
+rationalizes is recorded as accepted — the floor is the backstop.)
 
 ## The deterministic floor (grep-checkable — run first, record results as evidence)
 

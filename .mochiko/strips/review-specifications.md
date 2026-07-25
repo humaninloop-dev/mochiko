@@ -4,6 +4,9 @@ Entry formats: `strips/README.md`. Wave context: the specify cluster wave (v0.13
 Single-consumer primitive (the specify critique, mounted on `devils-advocate`) — strips
 ruled in-wave.
 
+## [v0.25.0] RETURNED: the five requirement-defect classes landed in Gap Categories (canonical-home landing, +11 lines)
+- **Evidence:** wave-1 audit catch (skill-succinctness pass, 2026-07-25) — the `devils-advocate` agent's "What You Hunt For" catalog was stripped with disposition "relocated → this section" (R4b item 2), but the section held only the question-framing taxonomy; the pointer in the agent ("the canonical gap taxonomy … lives in `mochiko:review-specifications`") had been dishonest since before the wave. The five-class table (missing requirements / ambiguities / edge cases / assumption gaps / contradictions) landed here at audit-fix time, making this section the true canonical home. Provenance: `.mochiko/strips/devils-advocate.md`. This is a cross-primitive dedup landing (R4a Tier-1 credit), not a re-add of previously stripped content from this skill.
+
 ## [v0.13.0] Output Format block
 - **Disposition:** relocated → `templates/advocate-report-template.md` (the report shape's single source; the skill now references it)
 - **Tier failed:** 1 (altitude — a second home for the report structure, already drifted: the skill's block lacked the Verdict and What's-Strong sections the template carries)
