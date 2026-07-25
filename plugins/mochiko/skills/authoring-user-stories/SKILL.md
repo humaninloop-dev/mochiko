@@ -53,21 +53,14 @@ and **each acceptance scenario a single line**:
 
 ## Priority Definitions
 
-| Priority | Meaning | Criteria |
-|----------|---------|----------|
-| **P1** | Core functionality | MVP requirement, blocks other features, must ship |
-| **P2** | Important | Complete experience but can ship without initially |
-| **P3** | Nice to have | Enhances experience, future consideration |
-
-See [PRIORITY-DEFINITIONS.md](references/PRIORITY-DEFINITIONS.md) for detailed guidance on priority assignment.
+P1 (core functionality — MVP requirement, blocks other features, must ship) · P2 (important —
+complete experience, but can ship without initially) · P3 (nice to have — future consideration).
+Detailed assignment guidance: [PRIORITY-DEFINITIONS.md](references/PRIORITY-DEFINITIONS.md).
 
 ## Acceptance Scenario Guidelines
 
-Each scenario follows the Given/When/Then pattern:
-
-- **Given**: The initial state or precondition (context)
-- **When**: The action the user takes (trigger)
-- **Then**: The expected outcome (result)
+Each scenario follows the Given/When/Then pattern — Given (the initial state or precondition),
+When (the user's action), Then (the expected, observable outcome).
 
 **Rules:**
 1. Each story needs 2-3 acceptance scenarios — the happy path plus the key edge case(s); more than 3 means the story is compound or the scenarios overlap
@@ -75,18 +68,8 @@ Each scenario follows the Given/When/Then pattern:
 3. Scenarios must be independently verifiable
 4. Use concrete, observable outcomes (not implementation details)
 
-**Good example:**
-```
-**Given** an active subscription, **When** the user clicks "Cancel Subscription", **Then** a confirmation dialog shows the cancellation date
-```
-
-**Bad example:**
-```
-**Given** the database has the user record,
-**When** the API receives a DELETE request,
-**Then** the subscription_status column is set to "cancelled"
-```
-(implementation-level — and spread over three lines carrying no extra substance)
+Worked good/bad pairs (scenarios, journeys, justifications, independent tests):
+[EXAMPLES.md](references/EXAMPLES.md).
 
 ## Independent Test Requirement
 
@@ -111,20 +94,12 @@ Before finalizing, verify each user story:
 
 ## Validation Script
 
-Validate user story format with the included script:
+Validate format (priority markers + justification, Given/When/Then completeness, independent
+test presence, header format):
 
 ```bash
 python scripts/validate-user-stories.py path/to/spec.md
 ```
-
-The script checks:
-- Priority markers (P1, P2, P3)
-- Given/When/Then syntax completeness
-- Independent test presence
-- Priority justification
-- Header format
-
-See [EXAMPLES.md](references/EXAMPLES.md) for complete user story examples.
 
 ## Common Rationalizations
 
@@ -139,45 +114,7 @@ See [EXAMPLES.md](references/EXAMPLES.md) for complete user story examples.
 
 ## Red Flags - STOP and Restart Properly
 
-If you notice yourself thinking any of these, STOP immediately:
-
-- "The priority is self-evident"
-- "Given/When/Then is overkill for this"
-- "Independent test isn't needed for simple stories"
-- "The user just wants quick stories"
-- "We'll refine the acceptance scenarios later"
-- "This is just a placeholder story"
-
-**All of these mean:** You are rationalizing. Write complete stories with all required sections.
-
-**No exceptions:**
-- Not for "simple" features
-- Not for "we'll refine later"
-- Not for "tight deadlines"
-- Not even if user says "just give me quick stories"
-
-## Common Mistakes
-
-### Technical Stories Instead of User Stories
-❌ "As a developer, I want to refactor the auth module"
-✅ "As a user, I want to log in securely so my account is protected"
-
-### Missing Priority Justification
-❌ Just saying "P1" without explaining why
-✅ "**Why this priority**: Core login flow - users cannot access any features without this"
-
-### Implementation Details in Acceptance Scenarios
-❌ "Then the React component re-renders with updated state"
-✅ "Then the user sees the updated balance immediately"
-
-### Vague Outcomes
-❌ "Then the user is happy" or "Then it works correctly"
-✅ "Then the user sees a confirmation message with order number"
-
-### Compound Stories
-❌ One story covering login, registration, AND password reset
-✅ Separate stories for each distinct user journey
-
-### Non-Testable Criteria
-❌ "Then the system is performant"
-✅ "Then the page loads within 2 seconds"
+If any excuse in the table above arises as a thought mid-authoring, STOP immediately — you are
+rationalizing; write complete stories with all required sections. No exceptions: not for
+"simple" features, "we'll refine later", "tight deadlines", nor even if the user says "just
+give me quick stories".

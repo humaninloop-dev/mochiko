@@ -11,7 +11,7 @@ description: This skill MUST be invoked when decomposing an accepted feature spe
 
 A whole-spec pipeline moves every user story through design, tasking, and implementation together — the highest-value stories cannot reach verified working code until the entire spec has crossed each stage, and every stage's artifacts spread attention across all stories at once. A **graduation-slice decomposition** fixes both: `slices.md` is a small, reviewed **overlay** on an accepted `spec.md` that groups its user stories into ordered, named slices, each of which graduates through the downstream stages as its own unit.
 
-This skill is the slicing judgment plus the artifact authoring. The output conforms to [`slices-template.md`](../../templates/slices-template.md) — the canonical `slices.md` structure, including the **Graduation contract** section that tells downstream consumers how to honor the decomposition. The overlay **indexes** the spec; it never rewrites it. `spec.md` stays whole and stays the single source of stories, requirements, and success criteria. Density per the deliverable envelope ([`artifact-format.md`](../../templates/artifact-format.md)): rationale ≤ 3 lines per slice, seams and obligations one line each — the overlay is an index, not an essay.
+This skill is the slicing judgment plus the artifact authoring. The output conforms to [`slices-template.md`](../../templates/slices-template.md) — the canonical `slices.md` structure. The overlay **indexes** the spec; it never rewrites it. `spec.md` stays whole and stays the single source of stories, requirements, and success criteria. Density per the deliverable envelope ([`artifact-format.md`](../../templates/artifact-format.md)): rationale ≤ 3 lines per slice, seams and obligations one line each — the overlay is an index, not an essay.
 
 ## Vocabulary — two "slices", two levels
 
@@ -103,26 +103,6 @@ Before handing off:
 - [ ] Rationale recorded per slice; no status/stage fields (state is derived from the workspace)
 - [ ] `spec.md` untouched
 
-## Common Mistakes
-
-### Horizontal grouping
-Bad: "all the API stories" in one slice, "all the UI stories" in another — layers, not journeys. Good: each slice is a coherent set of user journeys; the layers live inside every slice.
-
-### Priority-only ordering
-Bad: all P1 stories first regardless of dependency. Good: dependency closure orders; priority breaks ties among independent slices.
-
-### The everything-foundation
-Bad: stuffing every P1 story into the foundation slice "to be safe" — that is the whole-spec batch wearing a slice costume. Good: the foundation is the *minimal* set that establishes the shared core and still delivers a journey.
-
-### Silent cross-cutting spread
-Bad: assigning "audit logging" to slice 1 and assuming later slices will remember. Good: an explicit extend obligation recorded on every slice it touches.
-
-### Tracking fields
-Bad: a `status: planned` column per slice. Good: no stored stage — a slice's pipeline position is derived from which artifacts exist in its workspace directory.
-
-### Stub on null exit
-Bad: writing a one-slice `slices.md` for a tiny spec. Good: no file; the recommendation and reasoning go in the report.
-
 ## Red Flags — STOP and re-slice
 
 - "We'll figure out the shared design when we get there" — foundation designation exists precisely so you don't
@@ -144,8 +124,8 @@ Bad: writing a one-slice `slices.md` for a tiny spec. Good: no file; the recomme
 
 ## Related
 
-- [`slices-template.md`](../../templates/slices-template.md) — the canonical `slices.md` structure this skill fills, including the Graduation contract downstream consumers honor
-- `mochiko:review-slices` — the reviewer-side mirror of this skill; grades what this skill is taught to author, run by an independent reviewer, never the author
-- `mochiko:patterns-vertical-tdd` — downstream: cuts one slice's scope into vertical-slice TDD cycles (the other "slice", one level below)
+- [`slices-template.md`](../../templates/slices-template.md) — the canonical `slices.md` structure this skill fills
+- `mochiko:review-slices` — the reviewer-side mirror; grades this skill's output (independent reviewer, never the author)
+- `mochiko:patterns-vertical-tdd` — downstream: cuts one slice's scope into cycles (the vocabulary table's other "slice")
 - `mochiko:authoring-user-stories` — upstream: the story quality (IDs, priorities, independent tests) this decomposition indexes
 - `loop-discipline` — the loop, bounds, and gates around this authoring are the lead's; referenced, never restated

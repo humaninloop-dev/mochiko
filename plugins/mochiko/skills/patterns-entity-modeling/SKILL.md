@@ -11,11 +11,9 @@ Extract and model domain entities from requirements using Domain-Driven Design p
 
 ## When to Use
 
-- Creating data-model.md from requirements or specifications
-- Extracting entities from user stories and functional requirements
+- Creating data-model.md — extracting entities from requirements, user stories, and specifications
 - Defining attributes, types, and constraints for entities
-- Modeling relationships between entities with cardinality
-- Documenting state machines for stateful entities
+- Modeling relationships with cardinality, and state machines for stateful entities
 - Classifying the sensitivity of each attribute (Public / Internal / Confidential / Restricted) and its handling requirements
 - Brownfield analysis of existing data models
 
@@ -81,18 +79,6 @@ Every entity typically needs:
 | updatedAt | Timestamp | Yes | Last modification |
 | deletedAt | Timestamp | No | Soft delete marker |
 
-### Attribute Format
-
-```markdown
-| Attribute | Type | Required | Default | Sensitivity | Description |
-|-----------|------|----------|---------|-------------|-------------|
-| id | UUID | Yes | auto-generated | Internal | Unique identifier |
-| email | Email | Yes | - | Confidential | User's email address |
-| name | Text(100) | No | null | Public | Display name |
-| role | Enum[admin,member,guest] | Yes | member | Internal | Access level |
-| isVerified | Boolean | Yes | false | Internal | Email verified flag |
-```
-
 ### Conceptual Types
 
 Use conceptual types (not database-specific):
@@ -148,7 +134,7 @@ Is the data publicly available or intended for public sharing?
 
 ### Annotating Sensitivity
 
-1. Add a **Sensitivity** column to every entity's attributes table (see Attribute Format above).
+1. Add a **Sensitivity** column to every entity's attributes table (the attribute-table format in the *data-model.md Structure* template below).
 2. State the **handling defaults once per document**: `data-model.md` carries the handling-by-level matrix (from [DATA-SENSITIVITY.md](references/DATA-SENSITIVITY.md)) a single time, under the summary. Per-attribute handling then follows the level default by construction.
 3. For every **Confidential** or **Restricted** attribute, add one row to its entity's **Sensitivity Details** table — recording only the attribute's **specifics** (retention, access control) and any **deviations** from its level default, plus its compliance mapping. Never repeat the level-default aspects (encryption, audit, masking) per attribute.
 4. Roll the classifications up into the **Data Sensitivity Summary** table at the top of `data-model.md` (entity / attribute / classification / compliance) — the artifact's **ID/coverage index**.
@@ -160,34 +146,13 @@ See [DATA-SENSITIVITY.md](references/DATA-SENSITIVITY.md) for the field definiti
 
 Relationships connect entities with defined cardinality: One-to-One (1:1), One-to-Many (1:N), or Many-to-Many (N:M).
 
-See [RELATIONSHIP-PATTERNS.md](references/RELATIONSHIP-PATTERNS.md) for detailed patterns, join entity examples, and documentation formats.
-
-### Relationship Diagram (Text)
-
-```markdown
-## Entity Relationships
-
-```
-User ──1:N──▶ Task (owns)
-User ──1:N──▶ Session (has)
-User ◀──N:M──▶ Project (via ProjectMember)
-Task ──N:1──▶ Project (belongs to)
-```
-```
+See [RELATIONSHIP-PATTERNS.md](references/RELATIONSHIP-PATTERNS.md) for detailed patterns, join entity examples, the text-diagram notation and symbol reference, and documentation formats.
 
 ## State Machine Modeling
 
 Entities with status fields need state transition documentation.
 
-See [STATE-MACHINES.md](references/STATE-MACHINES.md) for patterns, diagram formats, and common workflows.
-
-### When to Model State
-
-Model state machines when:
-- Entity has a `status` or `state` field
-- Requirements mention workflow or lifecycle
-- Specific actions change entity state
-- Certain actions only valid in certain states
+See [STATE-MACHINES.md](references/STATE-MACHINES.md) for when to model state, patterns, diagram formats, and common workflows.
 
 ## Validation Rules
 
@@ -330,34 +295,7 @@ Before finalizing entity model, verify:
 
 ## Common Mistakes
 
-### Missing Entities
-❌ Skipping entities mentioned in requirements ("we'll add that later")
-✅ Evaluate every noun from requirements for entity status
-
-### Anemic Entities
-❌ Entity with only `id` field and no attributes
-✅ Every entity needs meaningful attributes that describe its purpose
-
-### Implementation Types
-❌ Using `VARCHAR(255)`, `INT(11)`, `BIGINT` in data model
-✅ Use conceptual types: `Text(100)`, `Integer`, `Identifier`
-
-### Undefined Relationships
-❌ Reference attributes without relationship documentation
-✅ Every `Reference(Entity)` needs cardinality and relationship description
-
-### Hidden State Machines
-❌ Status/state fields without transition documentation
-✅ Every status field needs state machine diagram and valid transitions
-
-### Unclassified Sensitivity
-❌ Email, phone, address, password fields with no classification
-✅ Classify every attribute (Public / Internal / Confidential / Restricted); give Confidential+ a Sensitivity Details row
-
-### Under-classifying When Unsure
-❌ Defaulting ambiguous data to Internal to avoid the handling burden
-✅ When in doubt, classify up (Confidential), not down
-
-### Orphan Entities
-❌ Entities with no relationships to other entities
-✅ Every entity connects to at least one other entity (or is explicitly standalone)
+| Mistake | ❌ Bad | ✅ Good |
+|---------|--------|---------|
+| Anemic entities | Entity with only `id` field and no attributes | Every entity needs meaningful attributes that describe its purpose |
+| Orphan entities | Entities with no relationships to other entities | Every entity connects to at least one other entity (or is explicitly standalone) |

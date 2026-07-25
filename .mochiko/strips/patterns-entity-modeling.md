@@ -1,8 +1,45 @@
 # Strip notes — `skills/patterns-entity-modeling/`
 
-Entry formats: `strips/README.md`. Wave context: workflow-token-reduction wave 2 (design:
+Entry formats: `strips/README.md`. Wave context: [v0.27.0] entries — skill-succinctness wave 3
+(design: `.mochiko/brainstorms/skill-succinctness-strip/record.md`, ratified 2026-07-25);
+[v0.23.0] entries — workflow-token-reduction wave 2 (design:
 `.mochiko/brainstorms/workflow-token-reduction/record.md` D4 + the wave-2 rulings R1–R4;
 ratified 2026-07-24).
+
+## [v0.27.0] In-file second copies and homed mistake rows stripped; reference drift repaired (body 359 → 297, −17%; DATA-SENSITIVITY.md 118 → 90)
+- **Disposition:** deleted as in-file/reference restatements, each home Read before landing:
+  the Attribute Format block (the same table format appears twice in the canonical
+  data-model.md template 150 lines down — the declared single source; the Annotating-Sensitivity
+  step-1 pointer retargeted to the template), the relationship text-diagram (verbatim in
+  `references/RELATIONSHIP-PATTERNS.md`, richer — self-ref row + Symbol Reference), the
+  When-to-Model-State bullets (identical four in `references/STATE-MACHINES.md`), six
+  Common-Mistakes rows (homes: the in-file checklist rows, Conceptual Types section, the
+  decision tree's classify-up line, the two references) · **drift repair (reference ledger):**
+  `references/DATA-SENSITIVITY.md`'s own header declares "the four-level taxonomy and the
+  decision tree live in the SKILL," yet the file duplicated the Classification Levels table,
+  the PII paragraph, and the decision tree — all three cut from the reference (−28 lines), the
+  SKILL copies untouched as the declared home; external-consumer grep: none (reference cited
+  only within this skill) · densified: two surviving mistakes (anemic, orphan — no other home
+  for either) → one 3-column table, When-to-Use 7 → 5
+- **Tier failed:** 1 throughout (every cut had a verified home; the reference cut is the
+  duplication-only-reference case D2 scopes in)
+- **Content:** the format block, one text diagram, four bullets, six mistake subsections; the
+  reference's levels table + PII paragraph + tree
+- **Consumers assessed:** wave-open enumeration — 10 citing files incl.
+  `scripts/validate-model.py`: its regexes check `## Relationships` / `## State Machine` /
+  attribute-table shapes in the **authored artifact**, not the SKILL's teaching sections — no
+  coupling to the stripped blocks
+
+## [v0.27.0] KEPT: the remaining body (under-band survivor ruling, 17% vs 30–70)
+- **Tier-2 evidence:** post-v0.23.0 this body is dominated by canonical-home content that has
+  no other legal residence: the ~100-line data-model.md template (the single canonical
+  template, this wave's untouchable core), the sensitivity taxonomy + decision tree + PII
+  mapping (ownership declared by the reference's own header — the wave's drift repair pointed
+  *into* the SKILL), the five-step annotation procedure, the conceptual-type vocabulary
+  (`patterns-api-contracts`' Type Mapping maps *from* it), entity-extraction heuristics and
+  entity-vs-attribute rules, the brownfield status table, and the validation-script scope
+  paragraph (names the producer-self-check-vs-independent-review boundary). D1: the band is a
+  calibration bar, not a quota. Session ruling: wave-3 batch-2 ratified 2026-07-25.
 
 ## [v0.23.0] Per-attribute Sensitivity Details blocks → once-per-document defaults + one row per attribute
 - **Disposition:** revised per the wave-2 form ruling (R2's self-containment floor) — the 7-row per-attribute aspect table is deleted from the canonical data-model template (SKILL.md) and `references/DATA-SENSITIVITY.md`; handling-by-level defaults are stated **once per document**, each Confidential+ attribute is **one row** (Level · Retention · Access · Deviations · Compliance)

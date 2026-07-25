@@ -17,12 +17,10 @@ This is a discipline-enforcing skill. The test-first structure exists because te
 
 ## When to Use
 
-- Transforming user stories into implementation tasks
+- Transforming user stories into implementation tasks as the task-structuring producer
 - Creating task-mapping.md from a specification
 - Structuring tasks.md with proper TDD ordering
-- When implementation approach needs vertical slice organization
-- Breaking down large features into testable increments
-- When authoring implementation task artifacts as the task-structuring producer
+- Breaking down large features into vertically sliced, testable increments
 
 ## When NOT to Use
 
@@ -54,31 +52,11 @@ Cycle 3: User profile management (model + service + endpoint + test)
 
 ### 2. Test-First at Task Level
 
-Every cycle structures tasks so tests come before implementation:
-
-```
-Cycle N: [Feature]
-├── Task N.1: Write failing test
-├── Task N.2: Implement to pass
-├── Task N.3: Refactor and verify
-└── Task N.4: TEST — verify against real infrastructure
-```
+Every cycle structures tasks so tests come before implementation — the failing test opens the cycle, the `**TEST:**` real-infrastructure verification closes it (see *Cycle Structure* below).
 
 ### 3. Foundation + Parallel
 
-```
-Foundation Cycles (sequential)
-├── C0: Platform infrastructure (compute, CI/CD, monitoring)
-├── C1: Core data model + basic CRUD
-├── C2: Authentication framework
-└── C3: API infrastructure
-
-Feature Cycles (parallel-eligible)
-├── C4: [P] Search functionality
-├── C5: [P] Filtering
-├── C6: [P] Export feature
-└── C7: Notifications (depends on C4)
-```
+Foundation cycles run sequentially and establish what every feature depends on; feature cycles follow, parallel-eligible unless they depend on another feature cycle (see *Foundation vs Feature Cycles* below).
 
 ### 4. Layered Testability
 
@@ -110,36 +88,9 @@ A good vertical slice:
 
 ## Cycle Structure
 
-The canonical `tasks.md` skeleton the producer fills is [`tasks-template.md`](../../templates/tasks-template.md) — the single source of the cycle / `tasks.md` structure. This section and [CYCLE-STRUCTURE.md](references/CYCLE-STRUCTURE.md) teach how to fill it; the formats below **conform to that template and must not drift from it**. The template's final cycle task — validate acceptance criteria — is authored using the `**TEST:**` verification grammar shown below: a real-infrastructure gate, not a re-run of the automated tests.
+The canonical `tasks.md` skeleton the producer fills is [`tasks-template.md`](../../templates/tasks-template.md) — the single source of the cycle / `tasks.md` structure: the `### Cycle N` header with Stories/Dependencies/Type lines, the `TN.X` task list, the closing `**Checkpoint**:`. [CYCLE-STRUCTURE.md](references/CYCLE-STRUCTURE.md) teaches how to fill it — cycle anatomy, task-ID format, file-path conventions, worked examples. Consult those two sources; do not restate the format.
 
-### Standard Cycle Format
-
-```markdown
-### Cycle N: [Descriptive title of the vertical slice]
-
-> Stories: US-X, US-Y (comma-separated story IDs this cycle covers)
-> Dependencies: C1, C2 (cycles that must complete first, or "None")
-> Type: Foundation | Feature [P] (Foundation = sequential, Feature [P] = parallel-eligible)
-
-- [ ] **TN.1**: Write failing test for [behavior] in [test file path]
-- [ ] **TN.2**: Implement [component] to pass test in [source file path]
-- [ ] **TN.3**: Refactor and verify tests pass
-- [ ] **TN.4**: **TEST:** - [What to verify with real infrastructure]
-  - **Setup**: [Prerequisites] (optional)
-  - **Action**: [Command or instruction]
-  - **Assert**: [Expected outcome]
-  - **Capture**: [console, screenshot, logs] (optional)
-
-**Checkpoint**: [Observable outcome when cycle is complete]
-```
-
-The final task of every cycle is a **`**TEST:**` verification task** — a real-infrastructure gate, not another automated unit test. Its full grammar (fields, action modifiers, assert patterns, classification) lives in [TEST-GRAMMAR.md](references/TEST-GRAMMAR.md).
-
-### Task Numbering
-
-- Cycle 1 tasks: T1.1, T1.2, T1.3, T1.4
-- Cycle 2 tasks: T2.1, T2.2, T2.3, T2.4
-- etc.
+The final task of every cycle is a **`**TEST:**` verification task** — a real-infrastructure gate validating the cycle's acceptance criteria, not a re-run of the automated tests. Its full grammar (fields, action modifiers, assert patterns, classification) lives in [TEST-GRAMMAR.md](references/TEST-GRAMMAR.md).
 
 ### Markers
 
@@ -152,79 +103,18 @@ The final task of every cycle is a **`**TEST:**` verification task** — a real-
 
 ## Foundation vs Feature Cycles
 
-### Foundation Cycles
+**Foundation cycles** establish infrastructure that ALL features depend on — platform infrastructure (IP-XXX items from constraints-and-decisions.md), data models, auth, API framework, error handling — and complete sequentially before any feature cycle starts. **Identification**: Ask "Could ANY user story work **in production** without this?" If no, it's foundation.
 
-**Purpose**: Establish infrastructure that ALL features depend on.
-
-**Characteristics**:
-- Must complete before any feature cycle
-- Sequential (C1 before C2 before C3)
-- Typically includes: platform infrastructure (IP-XXX items from constraints-and-decisions.md), data models, auth, API framework, error handling
-
-**Identification**: Ask "Could ANY user story work **in production** without this?" If no, it's foundation.
-
-### Feature Cycles
-
-**Purpose**: Deliver user value incrementally.
-
-**Characteristics**:
-- Can start once foundation is complete
-- Often parallel-eligible
-- Map directly to user stories
-- Independently testable
-
-**Identification**: Ask "Does this deliver value a user could observe?" If yes, it's a feature.
+**Feature cycles** deliver user value incrementally — mapping directly to user stories, independently testable, often parallel-eligible once foundation is complete. **Identification**: Ask "Does this deliver value a user could observe?" If yes, it's a feature.
 
 ## TDD Task Sequence
 
-Each cycle follows the red-green-refactor pattern:
+Each cycle follows the red-green-refactor pattern (the task lines themselves are template-defined):
 
-### Task 1: Write Failing Test (Red)
-
-```markdown
-- [ ] **TN.1**: Write failing E2E test for [user action produces result] in tests/e2e/test_[feature].py
-```
-
-The test should:
-- Express the acceptance criteria
-- Be specific about expected behavior
-- FAIL when run (nothing implemented yet)
-
-### Task 2: Implement to Pass (Green)
-
-```markdown
-- [ ] **TN.2**: Implement [component] to pass test in src/[path]/[file].py
-```
-
-Implementation should:
-- Make the test pass
-- Be minimal (just enough to pass)
-- Include all necessary layers (model, service, endpoint)
-
-### Task 3: Refactor and Verify
-
-```markdown
-- [ ] **TN.3**: Refactor and verify tests pass
-```
-
-Refactoring should:
-- Improve code quality without changing behavior
-- Ensure all tests still pass
-- Address any code review concerns
-
-### Task 4: Verify Against Real Infrastructure (TEST)
-
-```markdown
-- [ ] **TN.4**: **TEST:** - [behavior verified against real infrastructure]
-```
-
-The verification task should:
-- Exercise the slice against **real** infrastructure (real files, DBs, APIs — not mocks)
-- Produce a tangible, observable outcome (console output, file, response, UI state)
-- Verify the slice against its spec acceptance criteria
-- Gate cycle completion — this real-infrastructure gate is what makes the vertical slice actually vertical
-
-See [TEST-GRAMMAR.md](references/TEST-GRAMMAR.md) for the full `**TEST:**` grammar (Setup / Action / Assert / Capture).
+- **Red — write the failing test first.** The test expresses the acceptance criteria, is specific about expected behavior, and must FAIL when run — nothing is implemented yet.
+- **Green — implement to pass.** Minimal code (just enough to pass), but complete across all necessary layers (model, service, endpoint).
+- **Refactor and verify.** Improve code quality without changing behavior; all tests still pass.
+- **TEST — verify against real infrastructure.** Exercise the slice against **real** files, DBs, and APIs — never mocks — producing a tangible, observable outcome that verifies the slice against its **spec acceptance criteria** and gates cycle completion. This gate is what makes the vertical slice actually vertical; author it in the `**TEST:**` grammar (see *Cycle Structure* above).
 
 ## Mapping Stories to Cycles
 
@@ -265,36 +155,13 @@ Cite spec/plan content by ID (`US-#`, `FR-#`, `C-#`) — never re-quote it. A ma
 needs pages of prose is hiding slicing uncertainty that belongs in the producer's
 disclosure report, not the artifact.
 
-### Simple Case: Story = Cycle
+### Case column: Simple / Split / Merge
 
-When a user story is well-scoped, it becomes one cycle:
+- **Simple** — story = cycle: a well-scoped story becomes one cycle (US-1 create-a-task → C1).
+- **Split** — story > cycle: a too-large story splits across cycles (US-2 manage-tasks → create / edit / delete / complete cycles).
+- **Merge** — stories < cycle: too-small stories share one cycle (US-3 task-count + US-4 completed-count → one statistics cycle).
 
-```
-US-1: As a user, I can create a task with a title
-  → Cycle 1: Task creation
-```
-
-### Split Case: Story > Cycle
-
-When a story is too large, split into multiple cycles:
-
-```
-US-2: As a user, I can manage my tasks (create, edit, delete, complete)
-  → Cycle 2: Task creation (foundation)
-  → Cycle 3: Task editing
-  → Cycle 4: Task deletion
-  → Cycle 5: Task completion
-```
-
-### Merge Case: Stories < Cycle
-
-When stories are too small, merge into one cycle:
-
-```
-US-3: As a user, I can see task count
-US-4: As a user, I can see completed count
-  → Cycle 6: Task statistics (covers US-3 and US-4)
-```
+Size calibration — when to split or merge — is in [SLICE-IDENTIFICATION.md](references/SLICE-IDENTIFICATION.md).
 
 ## Common Rationalizations
 
@@ -322,38 +189,7 @@ If any of these thoughts arise, STOP immediately:
 
 **All of these mean:** Rationalization is occurring. Return to test-first discipline.
 
-**No exceptions:**
-- Not for "simple" features
-- Not for "tight deadlines"
-- Not for "just the foundation"
-- Not for "we'll refactor later"
-- Not even if the user says "just write the code"
-
-## Common Mistakes
-
-### Writing Tests After Implementation
-❌ Task order: Implement → Test → Refactor
-✅ Task order: Test (failing) → Implement (pass) → Refactor → TEST (verify)
-
-### Horizontal Slicing Disguised as Vertical
-❌ Cycle 1: All models, Cycle 2: All services, Cycle 3: All tests
-✅ Cycle 1: User creation (model + service + endpoint + test for one feature)
-
-### Missing Test Task in Cycle
-❌ Cycle structure: Implement → Demo
-✅ Cycle structure: Test → Implement → Refactor → TEST (verify)
-
-### Foundation Cycles Without TDD
-❌ "Foundation is just setup, skip the test task"
-✅ Foundation cycles follow the same test-first pattern
-
-### Cycles Too Large (Not Vertical)
-❌ One cycle covering "user management" (create, edit, delete, list)
-✅ Separate cycles: Create user, Edit user, Delete user, List users
-
-### Missing File Paths in Tasks
-❌ "Implement user service"
-✅ "Implement user service in src/services/user_service.py"
+**No exceptions** — not for "simple" features, tight deadlines, "just the foundation", "we'll refactor later", nor even if the user says "just write the code".
 
 ## Quality Checklist
 

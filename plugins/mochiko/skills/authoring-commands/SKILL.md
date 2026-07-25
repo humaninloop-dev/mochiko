@@ -79,9 +79,8 @@ you propose, the user rules contested lines, an independent audit closes the wav
    all-consumer pass.
 4. **Log every outcome** per the entry formats in `.mochiko/strips/README.md` — one note
    per primitive at `.mochiko/strips/<primitive>.md`, **repo-side, never under `plugins/`**
-   (the plugin directory is the shipped artifact; operational logs must not distribute) —
-   strip entries, survivor-provenance entries for contested keeps, re-add entries later —
-   each stamped with the plugin version. One version bump per wave.
+   (why: the README) — strip entries, survivor-provenance entries for contested keeps,
+   re-add entries later — each stamped with the plugin version. One version bump per wave.
 5. **Hand the wave to the independent audit** before it ships.
 
 ## Common mistakes

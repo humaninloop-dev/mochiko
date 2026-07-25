@@ -58,21 +58,40 @@ re-measures at proposal time. Order below is the order of execution.
   confirmed canonical, `authoring-slices` drops its 2-line downstream restatement **in its wave
   (authoring-*)**; item 4 — letter/spirit aphorism keep-and-survivor-log + strengthen-bare-copies
   rider (`.mochiko/strips/loop-discipline.md`; queue's canonical-home premise corrected there).
-- [ ] **Waves, ordered by never-stripped mass:** ~~analysis/testing/validation/misc~~ →
-  ~~review-*~~ → patterns-* → authoring-*. **Wave 1 DONE 2026-07-25 at v0.25.0 — audit
+- [x] **Waves, ordered by never-stripped mass — PASS COMPLETE 2026-07-25:**
+  ~~analysis/testing/validation/misc~~ → ~~review-*~~ → ~~patterns-*~~ → ~~authoring-*~~.
+  **Wave 1 DONE 2026-07-25 at v0.25.0 — audit
   FAIL→fixed→PASS; ledger on the ROADMAP row. Wave 2 (review-\*) DONE 2026-07-25 at v0.26.0 —
   audit PASS on first grade (six non-blocking note nits, all folded); cluster 1,156→1,011 body
   lines (−12.5%), ledger on the ROADMAP row; the wave-1 taxonomy RETURN reconciled clean;
-  CROSS-EXAM.md audited as a clean single source. Next wave-open: patterns-\*. Carried notes:
-  authoring-\* wave owes the authoring-slices Graduation-contract restatement drop (R4b item 3);
-  band convention applied as ratified in wave-2 batch 1 — a prior-wave zero-strip assessment
-  counts as previously-assessed → 10–40 band.** Per D3: pre-wave
+  CROSS-EXAM.md audited as a clean single source. Wave 3 (patterns-\*) DONE 2026-07-25 at
+  v0.27.0 — audit PASS on first grade (three nits, all folded); cluster 1,249→805 body lines
+  (−35.5%), ledger on the ROADMAP row; band ruling: prior patterns-\* notes were
+  workflow-token-reduction artifact rulings, not body assessments → 30–70 band for all four;
+  DATA-SENSITIVITY.md drift repaired; TEST-GRAMMAR audited clean. Wave 4 (authoring-\*, final)
+  DONE 2026-07-25 at v0.28.0 — audit PASS on first grade, third consecutive (five note-accuracy
+  nits, all folded); cluster 1,199→873 body lines (−27.2%), ledger on the ROADMAP row; R4b
+  item 3 executed (authoring-slices' Graduation-contract restatement dropped, slices-template
+  canonical); two under-band KEPT closes (constitution 21%, commands 1%); auditor-confirmed no
+  template/reference file changed — every cut a true dedup. Pass totals (wave-open measures):
+  27 skills, 5,724→4,369 body lines (−23.7%) across pilot + four waves. Watch-item revisited
+  at close: evidence + proposed band-by-authorship-era ruling recorded on the ROADMAP row —
+  **awaiting user ratification**. Band convention as ratified in wave-2
+  batch 1 — a prior-wave zero-strip **assessment** counts as previously-assessed → 10–40 band.** Per D3: pre-wave
   ≥3-consumer enumeration by citation count
   (cross-skill reference homes included: TEST-GRAMMAR, CROSS-EXAM,
   ESSENTIAL-FLOOR/INTERROGATION-AGENDA), per-skill ratification, per-wave audit + version bump.
   Accounting per D4/R2: SKILL.md body-lines denominator, description/reference cuts on separate
   ledgers, true reductions only, `templates/` banned as a relocation destination. Scripts /
   `OPENAPI-TEMPLATE.yaml` / `templates/` out of scope (R5; revisit triggers in the record).
+- [ ] **validation-constitution QUALITY-CHECKLIST post-dissolution drift** (found at wave-4
+  open, 2026-07-25): its "Structure Quality — universal core" section still grades the
+  dissolved `constitution.md` — "SYNC IMPACT REPORT present as HTML comment" (whose format
+  reference was deleted as dead at v0.22.0), Roman-numeral Core Principles, "CLAUDE.md Sync
+  Mandate with mapping table", version footer. Out of the authoring-\* cluster, so flagged not
+  fixed. Fix: retarget the section at the governance surface set (region / rules files /
+  ledger / trace summary, per `templates/governance-surfaces-template.md`); re-audit
+  `validation-constitution`'s other sections for sibling drift while there.
 
 ## Domain-allowlist follow-ups (from the `domain-dependency-allowlist` session, 2026-07-21)
 

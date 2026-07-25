@@ -37,22 +37,9 @@ This skill owns the decision-making **technique** — how to evaluate, decide, a
 
 ### Phase 1: Evaluate Options
 
-For each decision point, consider 2-3 alternatives minimum.
+For each decision point, consider 2-3 alternatives minimum, evaluated against the eight criteria — Fit, Complexity, Team Familiarity, Ecosystem, Scalability, Security, Cost, Brownfield Alignment.
 
-**Quick Criteria Reference:**
-
-| Criterion | Key Question |
-|-----------|--------------|
-| **Fit** | Does it solve the problem fully? |
-| **Complexity** | How hard to implement and maintain? |
-| **Team Familiarity** | Does the team know this tech? |
-| **Ecosystem** | Good docs, active community? |
-| **Scalability** | Will it grow with the project? |
-| **Security** | Good security posture? |
-| **Cost** | Total cost of ownership? |
-| **Brownfield Alignment** | Fits existing stack? |
-
-See [EVALUATION-MATRIX.md](references/EVALUATION-MATRIX.md) for detailed criteria, scoring, and technology category comparisons.
+See [EVALUATION-MATRIX.md](references/EVALUATION-MATRIX.md) for the detailed criteria table, scoring, and technology category comparisons.
 
 ### Phase 2: Decide
 
@@ -61,37 +48,15 @@ Score options against weighted criteria. Document:
 - Why criteria were weighted as they were
 - What trade-offs are accepted
 
-**Quick Comparison Format:**
-
-| Option | Pros | Cons | Alignment | Verdict |
-|--------|------|------|-----------|---------|
-| Option A | + Fast, + Simple | - New dep | High | **Best** |
-| Option B | + Familiar | - Slow | Medium | Good |
-| Option C | + Feature-rich | - Complex | Low | Poor |
+Use the two comparison shapes in [EVALUATION-MATRIX.md](references/EVALUATION-MATRIX.md) — the weighted decision matrix or the quick side-by-side options comparison; don't invent a third format.
 
 **When a decision cannot be resolved** — missing information, or an unsettled judgment call — mark it **NEEDS CLARIFICATION** rather than guessing. Marking the gap is this skill's job. *Driving* its resolution — looping the decision back for another round, or escalating a genuine judgment call to the human gate — belongs to the command supervisor that runs the loop, not to this skill (see `mochiko:loop-discipline`).
 
 ### Phase 3: Document
 
-Record decisions in ADR format for future maintainers.
+Record decisions in ADR format for future maintainers — Status, Context, Decision, Rationale (connected to criteria), Alternatives Considered, and Consequences/trade-offs.
 
-**Quick Decision Record:**
-
-```markdown
-## Decision: [Title]
-
-**Status**: Proposed | Accepted | Deprecated
-
-**Context**: [Why this decision is needed]
-
-**Decision**: [What we chose]
-
-**Rationale**: [Why - connect to criteria]
-
-**Trade-offs Accepted**: [What we gave up]
-```
-
-See [DECISION-RECORD.md](references/DECISION-RECORD.md) for full ADR format, consequences, and dependency tracking.
+See [DECISION-RECORD.md](references/DECISION-RECORD.md) for the full ADR format, rationale best practices, consequence documentation, and dependency tracking.
 
 ## Where decisions are recorded
 
@@ -108,14 +73,7 @@ Author the decision *content* with the technique in this skill; place it into th
 
 ## Brownfield Alignment
 
-Always check existing stack first:
-
-| Scenario | Alignment | Action |
-|----------|-----------|--------|
-| Existing dep solves problem | High | Prefer reuse |
-| New dep, same ecosystem | Medium | Document justification |
-| New dep, different ecosystem | Low | Strong justification needed |
-| Conflicting with existing | None | Avoid or escalate |
+Always check the existing stack first — the alignment-scoring table (High = prefer reuse … None = avoid or escalate) lives in [EVALUATION-MATRIX.md](references/EVALUATION-MATRIX.md) under Brownfield Considerations.
 
 ## Quality Checklist
 
@@ -133,33 +91,3 @@ Before finalizing:
 - [ ] Trade-offs explicitly documented
 - [ ] Governance alignment checked
 - [ ] Dependencies between decisions mapped
-
-## Common Mistakes
-
-### Single Option "Evaluation"
-❌ "We evaluated Option A and chose it"
-✅ "We compared Option A, Option B, and Option C against weighted criteria"
-
-### Shiny Object Syndrome
-❌ Choosing newest technology because it's trending
-✅ Require strong justification for unfamiliar dependencies over existing stack
-
-### Vague Rationale
-❌ "We chose JWT because it's better"
-✅ "We chose JWT because: stateless (fits our scale), team familiarity (3/4 devs), ecosystem support"
-
-### Ignoring Team Skills
-❌ Choosing Rust for a Python team without accounting for learning curve
-✅ Weight team familiarity criterion appropriately in evaluation matrix
-
-### Missing Trade-offs
-❌ Only listing positives of chosen option
-✅ Explicitly document what was given up: "Trade-off: JWT requires token refresh handling"
-
-### Orphan Decisions
-❌ Decisions documented in isolation
-✅ Map decision dependencies: "D2 (session storage) depends on D1 (auth mechanism)"
-
-### Governance Blindness
-❌ Making decisions that violate project principles
-✅ Check alignment with the project governance before finalizing

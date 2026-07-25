@@ -11,14 +11,11 @@ Design RESTful API contracts that map user actions to endpoints with complete sc
 
 ## When to Use
 
-- Designing new API endpoints for a feature
-- Mapping user actions to HTTP methods and paths
-- Creating OpenAPI specifications from requirements
-- Defining request/response schemas for endpoints
+- Designing new API endpoints — mapping user actions to HTTP methods and paths
+- Creating OpenAPI specifications (`contracts/` artifacts) with request/response schemas
 - Documenting error responses for an API
 - Documenting integration boundaries for endpoints that wrap external systems
 - Integrating with existing API patterns (brownfield)
-- Creating `contracts/` directory artifacts
 
 ## When NOT to Use
 
@@ -32,26 +29,16 @@ Design RESTful API contracts that map user actions to endpoints with complete sc
 
 ### User Action to Endpoint Mapping
 
-| User Action | HTTP Method | Endpoint Pattern |
-|-------------|-------------|------------------|
-| Create resource | POST | `/resources` |
-| List resources | GET | `/resources` |
-| Get single resource | GET | `/resources/{id}` |
-| Update resource | PUT/PATCH | `/resources/{id}` |
-| Delete resource | DELETE | `/resources/{id}` |
-| Perform action | POST | `/resources/{id}/{action}` |
-| Get nested resource | GET | `/resources/{id}/children` |
-
-### Method Selection
-
-| Scenario | Method | Idempotent? |
-|----------|--------|-------------|
-| Create new resource | POST | No |
-| Full replacement | PUT | Yes |
-| Partial update | PATCH | No |
-| Read resource | GET | Yes |
-| Remove resource | DELETE | Yes |
-| Trigger action | POST | Usually No |
+| User Action | Method | Endpoint Pattern | Idempotent? |
+|-------------|--------|------------------|-------------|
+| Create resource | POST | `/resources` | No |
+| List resources | GET | `/resources` | Yes |
+| Get single resource | GET | `/resources/{id}` | Yes |
+| Full replacement | PUT | `/resources/{id}` | Yes |
+| Partial update | PATCH | `/resources/{id}` | No |
+| Delete resource | DELETE | `/resources/{id}` | Yes |
+| Trigger action | POST | `/resources/{id}/{action}` | Usually No |
+| Get nested resource | GET | `/resources/{id}/children` | Yes |
 
 ### Resource Naming Conventions
 
@@ -61,50 +48,9 @@ Design RESTful API contracts that map user actions to endpoints with complete sc
 - Use query params for filtering: `/users?role=admin`
 - Use nested paths for relationships: `/users/{userId}/tasks`
 
-## Endpoint Documentation Format
-
-Document each endpoint with description, source requirements, request/response schemas, and error cases:
-
-```markdown
-## POST /api/auth/login
-
-**Description**: Authenticate user with email and password
-
-**Source Requirements**: FR-001, US#1
-
-### Request
-{JSON request body example}
-
-### Response (200 OK)
-{JSON response body example}
-
-### Error Responses
-| Status | Code | Description |
-|--------|------|-------------|
-| 400 | INVALID_INPUT | Missing or malformed fields |
-| 401 | INVALID_CREDENTIALS | Wrong email or password |
-```
-
 ## Schema Definition
 
-### Request Schema Format
-
-```yaml
-LoginRequest:
-  type: object
-  required:
-    - email
-    - password
-  properties:
-    email:
-      type: string
-      format: email
-      description: User's email address
-    password:
-      type: string
-      minLength: 8
-      description: User's password
-```
+Request/response schemas follow standard OpenAPI object definitions — complete, copy-ready examples live in [OPENAPI-TEMPLATE.yaml](references/OPENAPI-TEMPLATE.yaml).
 
 ### Type Mapping from Data Model
 
@@ -127,20 +73,7 @@ The conceptual types come from the data model (`mochiko:patterns-entity-modeling
 
 Use standard error format with machine-readable codes and human-readable messages.
 
-See [ERROR-PATTERNS.md](references/ERROR-PATTERNS.md) for complete HTTP status codes, error code conventions, and response formats.
-
-### Quick Reference
-
-| Status | When to Use |
-|--------|-------------|
-| 400 | Invalid input format |
-| 401 | Missing/invalid auth |
-| 403 | No permission |
-| 404 | Resource missing |
-| 409 | State conflict |
-| 422 | Business rule violation |
-| 429 | Rate limit exceeded |
-| 500 | Server error |
+See [ERROR-PATTERNS.md](references/ERROR-PATTERNS.md) for complete HTTP status codes (with when-to-use guidance per status), error code conventions, and response formats.
 
 ## List Endpoints
 
@@ -182,34 +115,7 @@ Add an `x-integration` block to an operation when handling the request requires 
 
 ### The `x-integration` extension format
 
-Attach `x-integration` to the operation, alongside `summary`, `requestBody`, and `responses`:
-
-```yaml
-/auth/login:
-  post:
-    summary: Authenticate user
-    operationId: login
-    # ... requestBody, responses ...
-    x-integration:
-      system: "Auth0"                      # external system name + version
-      protocol: "OIDC / OAuth 2.0"         # how you talk to it
-      api_version: "Authentication API v2" # the external contract version you target
-      criticality: "Critical"              # impact if it is unavailable
-      auth: "Machine-to-machine client credentials (client_id + client_secret) sourced from the secrets manager; never sent in the client request"
-      failure_modes:
-        - failure: "Auth0 timeout (>3s)"
-          detection: "HTTP request timeout"
-          impact: "User cannot sign in"
-          fallback: "Retry with exponential backoff (max 3); return 503 with Retry-After if still failing"
-        - failure: "Auth0 returns 5xx"
-          detection: "Upstream HTTP status code"
-          impact: "Login unavailable"
-          fallback: "Fail closed; return 503 SERVICE_UNAVAILABLE; never fall back to a weaker local credential check"
-        - failure: "Auth0 rate-limits the client (429)"
-          detection: "Upstream 429 + Retry-After header"
-          impact: "Some logins rejected under load"
-          fallback: "Honor Retry-After; surface 429 RATE_LIMITED to the caller"
-```
+Attach `x-integration` to the operation, alongside `summary`, `requestBody`, and `responses`. A complete worked example on a live operation — realistic failure modes, detections, and fallbacks included — lives in [OPENAPI-TEMPLATE.yaml](references/OPENAPI-TEMPLATE.yaml); the field rules are below.
 
 ### Field reference
 
@@ -244,33 +150,6 @@ Each entry in `failure_modes`:
 ## OpenAPI Structure
 
 See [OPENAPI-TEMPLATE.yaml](references/OPENAPI-TEMPLATE.yaml) for a complete, copy-ready template with all sections (including an `x-integration` example on an endpoint that wraps an external system).
-
-### Minimal Structure
-
-```yaml
-openapi: 3.0.3
-info:
-  title: {Feature Name} API
-  version: 1.0.0
-
-servers:
-  - url: /api
-
-paths:
-  /resource:
-    get: ...
-    post: ...
-
-components:
-  schemas: ...
-  securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-
-security:
-  - bearerAuth: []
-```
 
 ## Traceability
 
@@ -332,34 +211,9 @@ Before finalizing API contracts:
 
 ## Common Mistakes
 
-### Verbs in URLs
-❌ `/getUsers`, `/createUser`, `/deleteUser`
-✅ `/users` with appropriate HTTP methods (GET, POST, DELETE)
-
-### GET for State-Changing Actions
-❌ `GET /users/{id}/delete`
-✅ `DELETE /users/{id}` or `POST /users/{id}/archive`
-
-### Missing Error Responses
-❌ Only documenting 200 OK response
-✅ Define all error cases: 400, 401, 403, 404, 409, 422, 500
-
-### Inconsistent Naming
-❌ Mixing `/user-profiles`, `/userSettings`, `/user_preferences`
-✅ Pick one style consistently: `/user-profiles`, `/user-settings`, `/user-preferences`
-
-### Generic Error Codes
-❌ Just returning 400 or 500 for all errors
-✅ Specific codes: `INVALID_EMAIL`, `USER_NOT_FOUND`, `RATE_LIMIT_EXCEEDED`
-
-### Missing Examples
-❌ Schema definitions without realistic example values
-✅ Include `example:` fields showing real-world data
-
-### Optimistic Integration Boundaries
-❌ Wrapping an external system (payment, auth, email) with only the 200 path documented
-✅ Add `x-integration` with realistic failure modes (timeout, 5xx, rate-limit) and a fallback for each
-
-### Skipping Brownfield Check
-❌ Creating new patterns when existing API conventions exist
-✅ Always check existing API style (auth, error format, pagination) first
+| Mistake | ❌ Bad | ✅ Good |
+|---------|--------|---------|
+| Verbs in URLs | `/getUsers`, `/createUser`, `/deleteUser` | `/users` with appropriate HTTP methods (GET, POST, DELETE) |
+| GET for state-changing actions | `GET /users/{id}/delete` | `DELETE /users/{id}` or `POST /users/{id}/archive` |
+| Inconsistent naming | Mixing `/user-profiles`, `/userSettings`, `/user_preferences` | One style consistently: `/user-profiles`, `/user-settings` |
+| Missing examples | Schema definitions without realistic example values | Include `example:` fields showing real-world data |

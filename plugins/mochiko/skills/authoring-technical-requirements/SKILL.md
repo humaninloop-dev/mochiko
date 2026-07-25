@@ -49,15 +49,7 @@ See [ARTIFACT-TEMPLATES.md](references/ARTIFACT-TEMPLATES.md) for complete field
 
 ### 1. Technical Requirements (requirements.md) -- TR-XXX
 
-Map every business FR to one or more TRs. A single FR-001 ("users can sign in") may decompose into TR-001 (authentication flow), TR-002 (token management), TR-003 (session handling).
-
-| Field | Required | Purpose |
-|-------|----------|---------|
-| ID | Yes | TR-XXX sequential format |
-| Source FR | Yes | Which FR(s) this implements |
-| Statement | Yes | The technical capability in one-to-two lines (WHAT, not HOW) — the statement IS the description; no separate paragraph |
-| Acceptance Criteria | Yes | Testable technical conditions, one line each |
-| Dependencies | No | Other TRs, constraints, or NFRs — cited by ID, never re-quoted |
+Map every business FR to one or more TRs, each addressing a distinct technical concern the FR implies but does not state (worked decomposition + field definitions: ARTIFACT-TEMPLATES.md).
 
 **No orphan TRs.** Every TR maps to at least one FR. **No unmapped FRs.** Every FR has at least one TR.
 
@@ -67,58 +59,21 @@ Map every business FR to one or more TRs. A single FR-001 ("users can sign in") 
 
 Document hard boundaries (constraints) and the technology decisions shaped by them, in a single unified artifact.
 
-**Section 1: Hard Constraints (C-XXX)**
-
-| Field | Required | Purpose |
-|-------|----------|---------|
-| ID | Yes | C-XXX sequential format |
-| Type | Yes | infrastructure / compatibility / regulatory / migration / organizational |
-| Statement | Yes | The hard boundary as a one-to-two-line fact — the statement IS the description |
-| Source | Yes | Where this constraint originates |
-| Severity | Yes | blocking / significant / minor |
-| Impact | Yes | What design choices this eliminates, one line each; references D-XXX decisions it shapes |
-
-**Section 2: Technology Decisions (D-XXX)**
-
-| Field | Required | Purpose |
-|-------|----------|---------|
-| ID | Yes | D-XXX sequential format |
-| Context | Yes | The situation requiring a decision — one-to-two lines |
-| Options | Yes | Alternatives evaluated (compact table: option / pros / cons, one line each) |
-| Choice | Yes | Selected option |
-| Consequences | Yes | Trade-offs accepted, one line each |
-| Rationale | Yes | Why this choice, ≤ 3 lines; references C-XXX constraints that shaped it |
+**Section 1: Hard Constraints (C-XXX)** and **Section 2: Technology Decisions (D-XXX)** — field schemas in ARTIFACT-TEMPLATES.md.
 
 **Constraints are facts, not preferences.** Each decision record MUST reference the constraints that shaped the choice. Each constraint impact field SHOULD reference decisions it influences.
 
 **No exceptions:** Not for "well-known" constraints. Not for "obvious" technology choices. Not even when the team has consensus — document the constraint and its source explicitly.
 
-> **The decision *technique* lives in `mochiko:patterns-technical-decisions`.** This skill owns the D-XXX **field schema** above (the fields every decision record carries) and the C↔D traceability inside `constraints-and-decisions.md`. *How* the choice is reached — comparing alternatives in an evaluation matrix, scoring trade-offs, ADR record depth, the ≥2-alternatives discipline, brownfield alignment — is the decision technique; reach `mochiko:patterns-technical-decisions` for it and record its result in the D-XXX slots defined here. Do not restate the evaluation method in this artifact.
+> **The decision *technique* lives in `mochiko:patterns-technical-decisions`** — reach it to evaluate alternatives, and record its result in the D-XXX slots. This skill owns only the field schema and the C↔D traceability.
 
-**Section 3: Infrastructure Requirements (IP-XXX)**
-
-| Field | Required | Purpose |
-|-------|----------|---------|
-| ID | Yes | IP-XXX sequential format |
-| Type | Yes | compute / networking / storage / ci-cd / monitoring / security / environment-config |
-| Source | Yes | C-XXX or NFR-XXX that necessitates this provisioning |
-| Statement | Yes | What must be provisioned in one-to-two lines (WHAT, not HOW) — the statement IS the description |
-| Acceptance Criteria | Yes | Verifiable provisioning conditions, one line each |
+**Section 3: Infrastructure Requirements (IP-XXX)** — field schema in ARTIFACT-TEMPLATES.md.
 
 **Every constraint that implies platform work gets an IP-XXX item.** Constraints document boundaries; IP-XXX items document what those boundaries require operationally.
 
 ### 3. Non-Functional Requirements (nfrs.md) -- NFR-XXX
 
-Define measurable quality attributes. Every NFR has a numeric target.
-
-| Field | Required | Purpose |
-|-------|----------|---------|
-| ID | Yes | NFR-XXX sequential format |
-| Category | Yes | performance / availability / scalability / security / other |
-| Requirement | Yes | The quality attribute — one line (the statement IS the description) |
-| Target | Yes | Specific numeric threshold |
-| Measurement Method | Yes | How to verify the target is met — tool, conditions, frequency, compact |
-| Source | Yes | Business requirement or stakeholder justifying this |
+Define measurable quality attributes. Every NFR has a numeric target. Field schema in ARTIFACT-TEMPLATES.md.
 
 **"Fast" is not a requirement.** "p95 response time < 200ms under 1000 concurrent users, measured by APM" is.
 
@@ -126,17 +81,13 @@ Define measurable quality attributes. Every NFR has a numeric target.
 
 ### 4. System Integrations -- INT-XXX (thin analysis declaration)
 
-At the analysis layer, flag **which** external systems the feature depends on and **how critical** each is — an INT-XXX declaration that becomes a technical requirement ("the feature MUST integrate with `<system>`; its unavailability is `<criticality>`"). This is the requirement that an integration exists and matters; it is **not** the integration's wire-level contract.
-
-> **Canonical home: `mochiko:patterns-api-contracts`.** Once the API contract is designed, the per-endpoint integration boundary — the `x-integration` OpenAPI extension (system name, protocol, API version, criticality, failure modes [detection / impact / fallback], authentication) — is attached to the operation that actually wraps the external system. Flag the dependency here as an upstream integration concern; the boundary itself is authored there.
+At the analysis layer, flag **which** external systems the feature depends on and **how critical** each is — an INT-XXX declaration that becomes a technical requirement ("the feature MUST integrate with `<system>`; its unavailability is `<criticality>`"). This is the requirement that an integration exists and matters; it is **not** the integration's wire-level contract — the per-endpoint `x-integration` boundary is authored in `mochiko:patterns-api-contracts` (the canonical home).
 
 **Optimistic integration maps are incomplete.** Every external dependency fails eventually — so every INT-XXX declaration MUST carry through to documented failure modes and a fallback when its boundary is authored in `mochiko:patterns-api-contracts`. A declaration with no downstream boundary is an outage waiting to happen.
 
 ### 5. Data Sensitivity -- DS-XXX (thin analysis declaration)
 
-At the analysis layer, flag **which** data the feature treats as sensitive — a DS-XXX declaration that becomes a technical requirement ("the feature handles `<data>`, which is sensitive and MUST be classified and protected"). This is the requirement that sensitive data is present and must be governed; it is **not** the per-attribute classification itself.
-
-> **Canonical home: `mochiko:patterns-entity-modeling`.** When the data model is authored, each attribute receives its per-attribute sensitivity classification — the four levels (Public / Internal / Confidential / Restricted), the encryption / retention / access-control / audit / masking handling, the compliance mapping, and the classification decision tree — in the canonical `data-model.md`. Declare the concern here; classify each entity there.
+At the analysis layer, flag **which** data the feature treats as sensitive — a DS-XXX declaration that becomes a technical requirement ("the feature handles `<data>`, which is sensitive and MUST be classified and protected"). This is the requirement that sensitive data is present and must be governed; it is **not** the per-attribute classification itself — that is authored against the data model in `mochiko:patterns-entity-modeling` (the canonical home).
 
 ## Traceability Rules
 
@@ -151,18 +102,9 @@ See [TRACEABILITY-PATTERNS.md](references/TRACEABILITY-PATTERNS.md) for detailed
 - C -> impact (every constraint identifies what it restricts)
 - C/NFR -> IP (constraints and NFRs with infrastructure implications reference IP-XXX items)
 
-**Completeness check:** No FR without a TR. No TR without acceptance criteria. No NFR without a numeric target. No constraint without a source. No decision without referenced constraints. No infrastructure-implying constraint without an IP-XXX.
-
 ## Technology-Agnostic Writing
 
-Describe WHAT the system must achieve, not HOW.
-
-| Wrong (HOW) | Right (WHAT) |
-|-------------|--------------|
-| "Must use PostgreSQL" | "Must support ACID transactions on relational data" |
-| "Must implement OAuth 2.0" | "Must support secure delegated authentication" |
-| "Must use Redis for caching" | "Must cache frequently-accessed data with < 10ms retrieval" |
-| "Must encrypt with AES-256" | "Must encrypt at rest using industry-standard algorithms" |
+Describe WHAT the system must achieve, not HOW — "Must use PostgreSQL" becomes "Must support ACID transactions on relational data."
 
 **Exception:** Constraints MAY name specific technologies when they reflect real infrastructure facts (e.g., "existing production database is PostgreSQL 15").
 
@@ -181,45 +123,9 @@ Before finalizing, verify:
 - [ ] Language is technology-agnostic (except real infrastructure constraints)
 - [ ] ID sequences are sequential with no gaps (TR-001, TR-002..., C-001..., D-001..., IP-001...)
 
-## Common Mistakes
-
-### Transcribing Instead of Translating
-Copying FRs as TRs unchanged. Translation means decomposition: one FR often becomes multiple TRs with distinct technical concerns.
-
-### Unmeasurable NFRs
-"System must be highly available." Replace with: "System MUST maintain 99.9% uptime measured monthly, excluding scheduled maintenance windows."
-
-### Integrations Declared but Never Bounded
-Flagging an external dependency (INT-XXX) at analysis without ensuring its boundary gets authored. Every INT-XXX declaration MUST carry through to explicit failure modes and a fallback when the `x-integration` boundary is authored in `mochiko:patterns-api-contracts`. A declaration with no downstream boundary is an optimistic integration map.
-
-### Preferences Disguised as Constraints
-"Must use React" is a preference unless there is a real constraint (existing team expertise, existing codebase). Constraints trace to facts.
-
-### Unclassified Sensitive Data
-Handling user or sensitive data without flagging it for classification. Every data element the feature touches that could be sensitive needs a DS-XXX declaration here, and a full per-attribute classification when the data model is authored in `mochiko:patterns-entity-modeling`.
-
-### Orphan Artifacts
-TRs that trace to no FR. NFRs with no source justification. Integrations referenced by no TR. Every artifact connects to the web of traceability.
-
 ## Red Flags -- STOP and Restart Properly
 
-If any of these thoughts arise, STOP immediately:
-
-- "This FR is straightforward, no need for a separate TR"
-- "NFR targets can be filled in during planning"
-- "Only two integrations, no need for a formal catalogue"
-- "Data sensitivity is obvious, no need to classify"
-- "Constraints are implied, everyone knows them"
-- "This is a simple system, skip the failure modes"
-
-**All of these mean:** A shortcut is being rationalized. Restart with the full process.
-
-**No exceptions:**
-- Not for "simple" systems
-- Not for "well-understood" domains
-- Not for "tight timelines"
-- Not for "we'll fill in details later"
-- Not even if the spec seems complete and thorough
+If any excuse in the table below arises as a thought mid-authoring, STOP immediately — a shortcut is being rationalized; restart with the full process. No exceptions: not for "simple" systems, "well-understood" domains, "tight timelines", or a spec that seems complete and thorough.
 
 ## Common Rationalizations
 

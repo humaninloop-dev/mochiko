@@ -4,17 +4,6 @@ Reference documentation for classifying the sensitivity of entity attributes and
 
 **Density (deliverable envelope, `templates/artifact-format.md`):** the handling-by-level matrix is stated **once per `data-model.md`** — the self-containment floor; each Confidential+ attribute then carries **one row** recording only its specifics (retention, access) and deviations from its level default, never a repeated per-attribute aspect table.
 
-## Classification Levels
-
-| Level | Definition | Examples |
-|-------|------------|----------|
-| **Public** | Freely shareable, no access controls needed | Product names, public profile info |
-| **Internal** | Organization-internal, basic access controls | Transaction IDs, internal status codes |
-| **Confidential** | Sensitive, role-based access required | Email addresses, billing addresses, standard PII |
-| **Restricted** | Highly sensitive, strict access and audit | Passwords, SSNs, payment card numbers, credentials |
-
-**PII and classification:** PII is expressed *through* these levels, not as a separate marker. Standard PII (email, phone, postal address) → **Confidential**. Highly sensitive PII (SSN, credentials, payment cards, health data) → **Restricted**.
-
 ## Sensitivity Annotation — Field Definitions
 
 Every Confidential+ attribute's handling covers these aspects. **Encryption, audit, and masking are carried by the level default** (the matrix below, stated once per document); **retention and access control are per-attribute specifics** (they vary by data semantics); anything departing from the level default is a named **deviation**:
@@ -40,23 +29,6 @@ Every Confidential+ attribute's handling covers these aspects. **Encryption, aud
 | Retention limits | None | Organization policy | Defined period | Minimum necessary |
 | Masking in logs | Not required | Not required | Required | Required (no logging preferred) |
 | Breach notification | Not required | Internal review | Required (regulatory timeline) | Immediate (regulatory timeline) |
-
-## Classification Decision Tree
-
-```
-Is the data publicly available or intended for public sharing?
-├── Yes → PUBLIC
-└── No
-    ├── Is it internal operational data with no PII?
-    │   ├── Yes → INTERNAL
-    │   └── No
-    │       ├── Is it PII, financial, or business-sensitive?
-    │       │   ├── Yes → Is it highly sensitive (credentials, SSN, payment cards)?
-    │       │   │   ├── Yes → RESTRICTED
-    │       │   │   └── No → CONFIDENTIAL
-    │       │   └── No → INTERNAL
-    │       └── When in doubt → CONFIDENTIAL (classify up, not down)
-```
 
 ## Sensitivity Details Row Format
 

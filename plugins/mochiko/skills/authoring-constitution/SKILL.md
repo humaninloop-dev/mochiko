@@ -15,10 +15,10 @@ lands on the surfaces Claude Code natively loads, each at its disclosure tier
 
 | Surface | Carries | Disclosure |
 |---------|---------|------------|
-| `CLAUDE.md` **governance region** (between `<!-- mochiko:governance:begin -->` / `<!-- mochiko:governance:end -->`) | Ratified stamp (version · date · tier, one line) · principle index (one line each + pointer) · **universal principles as short imperative lines** · technology stack · quality-gates summary · module pointers | Always-on, every session and every spawned agent |
+| `CLAUDE.md` **governance region** (between `<!-- mochiko:governance:begin -->` / `<!-- mochiko:governance:end -->`) | Ratified stamp · principle index · **universal principles as short imperative lines** · tech stack · quality-gates summary · module pointers | Always-on, every session and every spawned agent |
 | `.claude/rules/mochiko/*.md` | Scope-bound principles, one file per concern, `paths` frontmatter | On matching-file reads (plus the dispatch-brief obligated read for authoring producers) |
 | Skill pointers | Procedure-shaped standards → the index/rule points at the skill; mint a new skill only when the session minted a procedure | On trigger / when a brief names it |
-| `.mochiko/memory/governance-ledger.md` | Per-principle **Enforcement / Testability / Rationale** keyed by GI-ID · tier + graduation path · waiver table with revisit triggers · amendment process + semver policy · exception registry · amendment log | Read only by setup/amend runs and the validator |
+| `.mochiko/memory/governance-ledger.md` | Per-principle **Three-Part records** keyed by GI-ID · tier + graduation path · waivers · amendment policy · exceptions · amendment log | Read only by setup/amend runs and the validator |
 
 Authoring also emits the **trace summary** — the manifest mapping every GI element to its primary
 enforceable home + companion entries (index line, ledger entry). The independent validator grades
@@ -31,19 +31,18 @@ brief**: it owns *selection* (which principles, at what tier, with which waivers
 this skill owns *formulation* (wording, enforcement mechanics, surface routing).
 
 This skill produces a **reviewable** surface set. Its quality is graded by an **independent
-validator** (a separate agent running `validation-constitution`), and accepted at a named human
-gate — the sequencing, the produce→validate→revise loop, and the human gates are owned by the
-command lead that drives this skill, not by this skill.
+validator** (a separate agent running `validation-constitution` — never co-mounted with this
+skill), and accepted at a named human gate — the sequencing, the produce→validate→revise loop,
+and the human gates are owned by the command lead that drives this skill, not by this skill.
 
 ## The synthesis contract (selection vs. formulation)
 
 The non-negotiable discipline of this skill:
 
 - **Every principle traces.** Each authored principle carries its GI trace: on `CLAUDE.md`, as an
-  HTML comment beside the line (comments are stripped from context — zero cost); in a rules file
-  and always in the **ledger**, as the `GI-XXX (deck-kept: CARD-ID | minted | floor-preset:
-  CARD-ID)` key. The ledger entry is the canonical trace record (rules-file comment handling is
-  undocumented — never rely on it alone).
+  HTML comment beside the line; always in the **ledger**, as the `GI-XXX (deck-kept: CARD-ID |
+  minted | floor-preset: CARD-ID)` key — the canonical trace record (why the ledger is canonical:
+  the template's comment block).
 - **Every element is realized or flagged.** Each principle-bearing synthesis element becomes a
   principle on some surface, or is surfaced as a flagged proposal — never silently dropped.
 - **No unsanctioned selection.** Do not add, remove, merge, or reinterpret principles beyond the
@@ -67,17 +66,12 @@ Route each synthesis element by its scope; the routing IS part of formulation qu
   for every spawn path).
 - **Scope-bound** (governs work on a path-identifiable slice: layers, API surface, tests,
   frontend) → a **`paths`-scoped rules file** under `.claude/rules/mochiko/`, one concern per
-  file, operative rules in the body, `paths` globs honest to the concern. Honest cuts both ways:
-  the globs must cover **every path whose code can violate the concern** — including layers that
-  orchestrate the governed operation through ports/interfaces — not just the layer that
-  implements the mechanism. Test each glob set against the kept architecture card, layer by
-  layer: "could code in this layer violate this rule?" — yes → its glob belongs in `paths`.
-- **Scope-bound delivery caveat** (observed, kinako dogfood 2026-07-19): rules files inject on
-  **Read** of a matching file, not on Write — an agent creating a new file under a scoped path
-  never sees the rule, which is exactly the greenfield-scaffolding case. Whenever the set
-  includes any rules file, emit the standing new-file read line in the region's Governance
-  operations (per the template), naming the actual scoped paths. Word it as observed behavior,
-  not doctrine — platform delivery may change.
+  file, operative rules in the body, `paths` globs covering **every path whose code can violate
+  the concern** — run the per-layer violation test (worked reasoning + kinako example: the
+  template's Shape 2 preamble).
+- **Scope-bound delivery caveat**: rules files inject on **Read**, not Write — whenever the set
+  includes any rules file, emit the region's standing new-file read line, naming the actual
+  scoped paths (Shape 1 carries the line and its observed-behavior wording).
 - **Procedure-shaped** (a how-to, not a constraint) → a **pointer to the skill** that carries the
   procedure; the index line names it. Mint a new skill only for a session-minted procedure.
 - **Every principle, regardless of home** → an **index line** in the region and a **ledger
@@ -111,15 +105,12 @@ Artifact shapes (region block, rules file, ledger):
 > so and stop — authoring without it reproduces exactly the producer-decides-selection failure
 > the synthesis exists to prevent.
 
-> **Ownership boundary (D8).** The governance region is regenerated **in place, idempotently**:
-> replace only what sits between the markers; never touch user content outside them. Rules files
-> under `.claude/rules/mochiko/` and the ledger are setup-owned and regenerated whole — with
-> **one carve-out**: a domain-dependency registry block (`mochiko:domain-registry` markers)
-> inside a layer-scoped rules file is **preserved verbatim** across regenerations —
-> implement-time additions live there (see `references/DOMAIN-DEPENDENCIES.md`). In amend,
-> preserve untouched principles verbatim (their GI-IDs are stable) and bump the region's semver.
-> A `.mochiko/memory/constitution.md` on disk is superseded — the lead deletes it; never author
-> into it.
+> **Ownership boundary (D8).** Regenerate only what sits between the markers — user content
+> outside them is untouchable. Rules files and the ledger are setup-owned and regenerated whole,
+> except the preserved `mochiko:domain-registry` block (the template's comment block +
+> `references/DOMAIN-DEPENDENCIES.md`). In amend, preserve untouched principles verbatim (their
+> GI-IDs are stable) and bump the region's semver. A `.mochiko/memory/constitution.md` on disk
+> is superseded — the lead deletes it; never author into it.
 
 ## When to Use
 
@@ -139,26 +130,6 @@ Artifact shapes (region block, rules file, ledger):
   (lead-conducted, upstream); this skill formulates a ratified synthesis, it does not interview.
 - **Analyzing the codebase** → run `analysis-codebase` first; brownfield mode consumes its output.
 
-## Common Mistakes (shared core)
-
-| Mistake | Problem | Fix |
-|---------|---------|-----|
-| Vague principles | "Code should be clean" has no enforcement | Add specific, measurable criteria: "Functions MUST be ≤40 lines" |
-| Missing enforcement | Principles without verification become suggestions | Every principle's ledger entry needs CI automation, code review checklist, or audit process |
-| Untestable criteria | "Good architecture" can't be verified | Define binary pass/fail: "No domain imports from infrastructure layer" |
-| No rationale | Future maintainers don't know why rules exist | Explain the failure mode prevented and success enabled |
-| Selecting beyond the synthesis | Producer defaults silently override elicited intent — the failure this contract exists to prevent | Formulate only what the synthesis selects; everything else is a flagged proposal |
-| Authoring vagueness for hard intent | Elicited intent that resists enforcement gets watered into an aspiration | Flag it as a proposal; the user rules at acceptance |
-| Missing/fabricated trace stamps | Trace closure fails; or a plausible stamp hides a deviation | Key every ledger entry to its real GI source; deviations go through flagged proposals |
-| Fat governance region | A verbose region re-creates the always-on cost the dissolution exists to fix | Region entries stay short-form; detail lives in the ledger or behind pointers |
-| Universal principle in a rules file | Rules delivery to spawned producers is unproven; the principle silently misses authoring agents | Universal → CLAUDE.md region lines; rules files are for `paths`-scoped concerns only |
-| Rule scoped to the mechanism's home layer only | Layers that orchestrate the operation (e.g. application use cases persisting through ports) never trigger the rule | Run the per-layer violation test; every layer that can violate the concern gets a glob |
-| Rules files emitted without the new-file read line | Rules inject on Read, not Write — scaffolding writes governed code without ever seeing the rules | Emit the region's standing read-before-create line whenever any rules file exists |
-| Editing outside the markers | Setup clobbers user-authored CLAUDE.md content | Regenerate only the region; everything outside the markers is untouchable |
-| Index without a home, home without an index line | Trace closure fails; a principle exists nowhere or invisibly | Every principle = index line + primary home + ledger entry; write the trace summary as you author |
-| One tier's numbers in another tier's governance | A poc graded like production, or production loosened to poc | Take tier parameterization from the floor cards; honor session overrides |
-| Copying misfitting shelf examples | Backend-flavored examples (RFC 7807, `/health`) land in an SPA's governance | Formulate from the category definition, fitted to the declared type |
-
 ---
 
 # Shared core (both modes)
@@ -166,18 +137,12 @@ Artifact shapes (region block, rules file, ledger):
 ## The Three-Part Principle Rule
 
 Every principle MUST have three components, recorded in its **ledger entry**. A principle without
-all three is incomplete and should not be accepted.
+all three is incomplete and should not be accepted. Worked Three-Part examples: the four floor
+principles in [references/ESSENTIAL-FLOOR.md](references/ESSENTIAL-FLOOR.md).
 
 ### 1. Enforcement
 
 How compliance is verified. Without enforcement, a principle is a suggestion.
-
-```markdown
-**Enforcement**:
-- CI runs `ruff check .` and blocks merge on violations
-- Code review MUST verify test files accompany new functionality
-- Quarterly audit checks exception registry for staleness
-```
 
 | Type | Examples | Strength |
 |------|----------|----------|
@@ -193,13 +158,6 @@ enforcement — the docs say so explicitly; the teeth are CI, hooks, review, aud
 ### 2. Testability
 
 What pass/fail looks like. A principle without testable criteria is merely an aspiration.
-
-```markdown
-**Testability**:
-- Pass: `flutter analyze` exits with code 0
-- Fail: Any file exceeds 400 lines without documented exception
-```
-
 Binary outcome; measurable threshold where applicable; observable without subjective judgment;
 reproducible by any team member.
 
@@ -210,42 +168,23 @@ justifies the enforcement overhead.
 
 ## Principle Writing Format
 
-**On the surface** (region line or rules-file rule) — the operative constraint only, RFC 2119
-keywords, short:
-
-```markdown
-- API errors MUST use RFC 7807 problem+json. <!-- GI-007 -->
-```
-
-**In the ledger** — the full record:
-
-```markdown
-### GI-XXX — [Principle Name] · [home: CLAUDE.md | rules/mochiko/<file>.md | skill:<name>]
-
-**Enforcement**: [how compliance is verified — specific commands or processes]
-**Testability**: [pass/fail criteria, measurable thresholds]
-**Rationale**: [why this constraint exists]
-**Trace**: GI-XXX (deck-kept: CARD-ID | minted | floor-preset: CARD-ID)
-```
+The surface (region line or rules-file rule) carries the **operative constraint only** — RFC 2119
+keywords, short, GI trace comment. The ledger carries the full Three-Part record keyed by GI-ID.
+Both shapes live in the template (Shape 1 line, Shape 3 record); do not restate them.
 
 ## RFC 2119 Keywords
 
-| Keyword | Meaning |
-|---------|---------|
-| **MUST / MUST NOT** | Absolute requirement / prohibition; no exceptions |
-| **SHOULD / SHOULD NOT** | Recommended / discouraged; valid exceptions exist |
-| **MAY** | Optional; implementation choice |
-
-See [references/RFC-2119-KEYWORDS.md](references/RFC-2119-KEYWORDS.md) for detailed usage.
+MUST / MUST NOT (absolute; no exceptions) · SHOULD / SHOULD NOT (recommended / discouraged; valid
+exceptions exist) · MAY (optional). Detailed usage:
+[references/RFC-2119-KEYWORDS.md](references/RFC-2119-KEYWORDS.md).
 
 ## Mandatory content inventory
 
 Every governance set MUST include, per
 [`governance-surfaces-template.md`](../../templates/governance-surfaces-template.md):
 
-1. **Ratified stamp** (region, one line): version · ratified date · tier. The semver policy:
-   MAJOR — principle removal / incompatible redefinition / tier change · MINOR — new principle or
-   waiver change · PATCH — clarification.
+1. **Ratified stamp** (region, one line): version · ratified date · tier; semver per the
+   template's amendment policy (Shape 3).
 2. **Principle index** (region): one line per principle — name, imperative gist, pointer to its
    home when the home is not the region itself.
 3. **Universal principles** (region): the short imperative lines, floor principles first. At
@@ -256,14 +195,12 @@ Every governance set MUST include, per
    placeholder tokens); coverage pre-seeds tier-parameterized from the FLOOR-TEST card unless the
    session overrode them. Gates for waived categories are omitted; the waiver record covers the
    absence.
-6. **Scope-bound rules files**: per the routing; `paths` frontmatter honest to the concern
-   (violation-coverage tested, per the routing's per-layer test). When any rules file is
-   emitted, the region's Governance operations carries the standing new-file read line.
-7. **Governance ledger**: tier + graduation path · waiver table (category, waiving tier, revisit
-   trigger, trace; "None." when nothing is waived — waivers only at tiers whose posture permits,
-   per [catalog/universal-floor.md](references/catalog/universal-floor.md)) · per-principle
-   Three-Part entries · amendment process (tier bumps and un-waives are governance events routed
-   back through setup's amend mode) · exception registry · amendment log.
+6. **Scope-bound rules files**: per the routing — globs violation-coverage tested, the standing
+   new-file read line emitted.
+7. **Governance ledger**: sections per the template's Shape 3. Riders: waiver table says "None."
+   when nothing is waived; waivers only at tiers whose posture permits, per
+   [catalog/universal-floor.md](references/catalog/universal-floor.md); tier bumps and un-waives
+   are governance events routed back through setup's amend mode.
 8. **Trace summary**: the manifest — every GI element → primary home + companions; every surface
    element → its GI element.
 
@@ -323,8 +260,7 @@ a roadmap gap; waived → a ledger waiver record, not a pretend-principle and no
 session already confronted detected-reality-vs-declared-intent conflicts — author the ruling the
 synthesis records, never re-litigate it.
 
-**Emergent Ceiling:** codify existing good patterns (naming conventions, architecture patterns,
-error formats) as principles with enforcement — see
+**Emergent Ceiling:** codify existing good patterns as principles with enforcement — see
 [references/EMERGENT-CEILING-PATTERNS.md](references/EMERGENT-CEILING-PATTERNS.md). Ceiling
 principles trace like any other; a ceiling pattern no synthesis element sanctions is a **flagged
 proposal**. Only codify patterns that are intentionally good: "Would I recommend this for a new
@@ -342,13 +278,5 @@ lives in its ledger section.
 
 ## Related (cross-cluster; referenced, not mounted)
 
-- **Independent validation** — after authoring, the surface set is graded by
-  `validation-constitution`, run by a **separate validator agent** (never co-mounted with this
-  skill). The produce→validate→revise loop and the human gates are owned by the command lead.
 - **`analysis-codebase`** (in-cluster) — produces `.mochiko/memory/codebase-analysis.md`, the
   brownfield-mode input. Run before brownfield authoring (lead-sequenced).
-- **`authoring-roadmap` / `evolution-roadmap`** (documented stub, *moved-to-other-cluster*) — turn
-  the brownfield gap status into an improvement plan at `.mochiko/memory/evolution-roadmap.md`.
-  **Not ported.** The Evolution Notes module spec stays; the roadmap producer is a planned stub.
-- *(Retired 2026-07-18: the `syncing-claude-md` stub. Governance lives on CLAUDE.md — there is no
-  constitution→CLAUDE.md copy left to synchronize.)*
