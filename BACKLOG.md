@@ -28,6 +28,51 @@ These carry forward from `agent-skills-research/synthesis/my-framework.md` — u
 
 ---
 
+## Team-method-vs-command-shape build items (from the `team-method-vs-command-shape` session, 2026-07-25)
+
+Rulings D1–D5 ratified 2026-07-25 (ROADMAP Key Decisions row; record
+`.mochiko/brainstorms/team-method-vs-command-shape/record.md` — bare session, un-reviewed;
+trigger evidence: the transcript-backed kinako MVP-H1 team-session note, stored as the session's
+input). Build not started; items land via `command-architect` (author) + `validation-command-shape`
+(independent audit) per the keeper pattern.
+
+- [ ] **Layer 2 mesh rewrite (D1–D3).** `templates/command-shape.md` Layer 2: in-loop mesh becomes
+  the default (producers hand work to the verifier directly; the lead rules on policy / deviations /
+  scope), the "Independence by structure" sentence re-carved — cold-review isolation restated as a
+  **stage property** (D2: cold spawn, withheld counterparts, bounded cross-exam), and the devolved
+  clean-cycle verdict doctrine landed (D3: deterministic-CLI 100% pass + no reported deviations +
+  no domain-deps advances on qa's PASS-with-evidence; everything judgment-shaped escalates; the
+  lead's done-condition read shifts to final validation + escalated cycles). The rewrite MUST name
+  the traffic classes: peer-routable = verification hand-offs; lead-routed = coordination notices,
+  policy, deviations, scope — the counterweight to kinako's observed qa hub-drift (inbox 11, the
+  run's highest). Conformant-command re-audit follows (a shape revision = one edit + re-audit).
+  **Version coordination:** standing-seat-lifecycle's deferred D3 rewrite targets the same Layer 2
+  at v4+ — sequence or combine the two rewrites deliberately, never as accidental collisions.
+- [ ] **Plan absorbs tasks (D4+D5).** Merge `/mochiko:tasks` into `/mochiko:plan` — one design-room
+  command spanning analysis → design → structuring; surface 7 → 6. One final acceptance on the
+  whole package (design + mapping + task breakdown = implement's unchanged entry condition); the
+  standalone design-acceptance signature dissolves; mid-course rulings (NEEDS-CLARIFICATION,
+  contested forks, scope) route as they arise per `loop-discipline`, untouched; every validator
+  unchanged (feasibility, plan-artifacts, task-artifacts) — the reduction is ceremony, never
+  verification; a sizing-gated design checkpoint stays available on request (D5's absorbed
+  B-steelman). Mechanics: `command-architect` authors the merged command to the shape;
+  `commands/tasks.md` retirement strip-noted with provenance; router / REGISTRY rows updated; the
+  open plan + tasks dogfood / confirm-or-revert items (Plan-port + Tasks-port follow-ups below) are
+  **inherited by the merged command** — annotate both at build time.
+- [ ] **Cold-checkout gate (kinako rule 7).** The one bug kinako shipped passed six cycles +
+  independent qa verification because every machine involved was warm (`build/` gitignored;
+  `dart compile exe` doesn't create its `-o` parent) — team verification is warm-machine
+  verification; any step depending on a gitignored path passes locally and fails on a fresh clone.
+  Add a fresh-clone verification step. **Placement needs one ruling:** implement's final validation
+  vs the audit / feature-close charter.
+- [ ] **Deferred direction (recorded, not ruled — re-open in a dedicated session):** the build-room
+  merge (structuring seat inside implement — the seam the kinako evidence actually witnessed: a
+  7-minute in-session architect authoring seams/ownership/fallbacks), slice folding into the spec
+  side (toward the four-command surface: setup · brainstorm · specify · build), and multi-stream
+  implement (stream partition in the mapping + the three concurrency-safety mechanisms — frozen
+  seam signatures, contested-file single-ownership, named wait-fallbacks — as task-artifact
+  content). Design input preserved in the record (R1/D4).
+
 ## Skill-succinctness strip pass (from the `skill-succinctness-strip` session, 2026-07-25)
 
 Doctrine ratified 2026-07-25 (ROADMAP Key Decisions row; record

@@ -8,6 +8,12 @@ One entry per session directory under `.mochiko/brainstorms/<topic-slug>/`, **ne
 
 ---
 
+## `team-method-vs-command-shape` — the kinako lead+team working method vs the codified command shape
+- **When:** 2026-07-25 · **Status:** accepted · record **un-reviewed** (bare session — direct `analysis-iterative` invocation; rulings user-accepted or counter-ruled inline, no sizing gate)
+- **Artifacts:** [record.md](team-method-vs-command-shape/record.md) (canonical) · [inputs/kinako-mvp-h1-team-note.md](team-method-vs-command-shape/inputs/kinako-mvp-h1-team-note.md) (transcript-backed session note)
+- **About:** contrasting the kinako MVP-H1 build session's observed team structure (peer-routed verification, two concurrent producer streams behind frozen seams, a near-silent exception-handler lead) with the codified mochiko command shape (lead-routed independence, sequential single-producer cycle loop, lead owns every verdict and gate). Ruled (D1–D5 + the R1 reframe to the command *surface*): in-loop mesh as Layer 2's default (D1 `Contested`); cold review stays cold as a **stage property** (D2); clean-cycle verdicts devolve to the producer↔qa pair, judgment-shaped outcomes still escalate (D3); first surface reduction — `/mochiko:tasks` merges into `/mochiko:plan`, 7 → 6 (D4 `Contested`, start-small; build-room merge + slice-fold `Deferred`); one final package acceptance in the merged plan (D5). Half the kinako note's rules confirmed as *existing* mochiko doctrine (no fork); its one shipped bug became the cold-checkout build item.
+- **Landed:** ROADMAP Key Decisions (team-method row, 2026-07-25); BACKLOG "Team-method-vs-command-shape build items" (Layer 2 mesh rewrite · plan-absorbs-tasks merge · cold-checkout gate · deferred direction). Build not started.
+
 ## `skill-succinctness-strip` — per-skill succinctness pass: 30–70% reduction under strip doctrine
 - **When:** 2026-07-25 · **Status:** accepted · record solo-cold-reviewed + lead
   citation-verified (user-sized at D5: reviewer formed 18 → reported 13 → 13/13 lead-confirmed;
