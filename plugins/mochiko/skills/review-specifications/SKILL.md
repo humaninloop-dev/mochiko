@@ -11,12 +11,10 @@ Find gaps in specifications and generate clarifying questions that a product own
 
 ## When to Use
 
-- Reviewing a spec.md before implementation begins
+- Reviewing a drafted spec.md for gaps as an independent reviewer — the gap-review checkpoint before downstream planning and design begins
 - Validating requirements completeness after a spec is drafted
 - Generating questions for stakeholder clarification
 - Checking user stories for missing acceptance criteria
-- As a gap-review checkpoint before downstream planning and design begins
-- When reviewing a drafted specification for gaps as an independent reviewer
 
 ## When NOT to Use
 
@@ -38,20 +36,14 @@ Find gaps in specifications and generate clarifying questions that a product own
 | "What's the retry policy for failed API calls?" | "How long should users wait before seeing an error?" |
 | "What HTTP status code for invalid input?" | "What message should users see for invalid input?" |
 
+Implementation details (databases, APIs, protocols), technical edge cases, architecture decisions,
+and performance targets are valid concerns — they belong in later design work, not spec review.
+
 ## Question Format
 
-Every question must be framed as a decision the stakeholder can make:
-
-```markdown
-**Question**: [Clear product decision]
-
-**Options**:
-1. [Concrete choice] - [What this means for users]
-2. [Concrete choice] - [What this means for users]
-3. [Concrete choice] - [What this means for users]
-
-**Why this matters**: [User or business impact]
-```
+Every question must be framed as a decision the stakeholder can make: 2-3 concrete options with
+what each means for users, plus why it matters. The exact shape is the Clarifications block of
+`templates/advocate-report-template.md` — fill that structure, don't invent a variant.
 
 ## Gap Categories
 
@@ -75,15 +67,6 @@ The five requirement-defect classes those questions hunt (the canonical hunt tax
 | **Edge cases** | empty states; cancelled mid-flow; missing permissions; unstated limits (max items, max size) |
 | **Assumption gaps** | assumptions that should be requirements (and the reverse); hidden dependencies |
 | **Contradictions** | requirements that conflict; inconsistent terminology; mutually exclusive acceptance criteria |
-
-## What to Avoid
-
-- Implementation details (databases, APIs, protocols)
-- Technical edge cases (connection failures, race conditions)
-- Architecture decisions (caching, queuing, scaling)
-- Performance specifications (latency, throughput)
-
-These are valid concerns but belong in later design and implementation work, not specification.
 
 ## Severity Classification
 
@@ -132,37 +115,16 @@ Before finalizing the review, verify:
 
 ## Common Mistakes
 
-### Technical Questions Instead of Product Questions
-❌ "What retry policy should we use?"
-✅ "How long should users wait before seeing an error?"
-
-### Vague Questions
-❌ "What about errors?"
-✅ "What message should users see when payment fails?"
-
-### Open-Ended Questions Without Options
-❌ "How should we handle this case?"
-✅ "Options: (1) Show warning and continue, (2) Block action, (3) Ask for confirmation"
-
-### Too Many Gaps at Once
-❌ Presenting 20+ gaps to stakeholders
-✅ Limit to 5-7 critical/important gaps per review round
-
-### Missing "Why This Matters"
-❌ Just listing the gap without context
-✅ Explain user or business impact for each question
-
-### Implementation Bias
-❌ "Should we cache this data?" (assumes caching)
-✅ "How quickly should users see updated data?"
-
-### Scope Creep Disguised as Gaps
-❌ Adding new features as "missing requirements"
-✅ Only clarify scope of existing features
-
-### Ignoring Existing Context
-❌ Asking questions already answered elsewhere
-✅ Reference existing patterns and decisions before asking
+| Mistake | ❌ | ✅ |
+|---------|-----|-----|
+| Technical instead of product questions | "What retry policy should we use?" | "How long should users wait before seeing an error?" |
+| Vague questions | "What about errors?" | "What message should users see when payment fails?" |
+| Open-ended without options | "How should we handle this case?" | "Options: (1) Show warning and continue, (2) Block action, (3) Ask for confirmation" |
+| Too many gaps at once | Presenting 20+ gaps to stakeholders | Limit to 5-7 critical/important gaps per review round |
+| Missing "why this matters" | Just listing the gap without context | Explain user or business impact for each question |
+| Implementation bias | "Should we cache this data?" (assumes caching) | "How quickly should users see updated data?" |
+| Scope creep disguised as gaps | Adding new features as "missing requirements" | Only clarify scope of existing features |
+| Ignoring existing context | Asking questions already answered elsewhere | Reference existing patterns and decisions before asking |
 
 ## Related Skills
 

@@ -64,14 +64,9 @@ Detailed checklists are in [ARTIFACT-CHECKLISTS.md](references/ARTIFACT-CHECKLIS
 
 ## Issue Classification
 
-| Severity | Definition | Action |
-|----------|------------|--------|
-| **Critical** | Blocks progress; must resolve | Return to the responsible producer |
-| **Important** | Significant gap; should resolve | Flag for this round |
-| **Minor** | Polish item; can defer | Note for later |
-
-See [ISSUE-TEMPLATES.md](references/ISSUE-TEMPLATES.md) for classification rules, issue-documentation
-formats, and the working report shape.
+Three severities — Critical / Important / Minor. The severity table, classification rules,
+issue-documentation formats, and the working report shape are single-sourced in
+[ISSUE-TEMPLATES.md](references/ISSUE-TEMPLATES.md).
 
 ## Review Process
 
@@ -97,25 +92,19 @@ by hand. (See ARTIFACT-CHECKLISTS.md → Automated Validation.)
 
 ### Step 3: Execute the checklist
 
-For each check in the applicable artifact-type checklist:
-1. Ask the question
-2. Look for evidence in the artifact
-3. If an issue is found, classify its severity
-4. Document the issue with evidence
+For each check in the applicable artifact-type checklist: ask the question, look for evidence in
+the artifact, classify any issue's severity, and document the issue with that evidence.
 
 ### Step 4: Cross-reference
 
-- Check traceability (requirement → artifact)
-- Check consistency (artifacts agree with each other and honor the decisions)
-- Check completeness (nothing obviously missing)
+Check traceability (requirement → artifact), consistency (artifacts agree with each other and
+honor the decisions), and completeness (nothing obviously missing).
 
 ### Step 5: Emit the report
 
-In the `advocate-report-template.md` shape (machine-first — findings YAML):
-
-- Classify the verdict from the issue counts (mechanical — see *Verdict Criteria*)
-- One finding entry per issue: evidence anchor (`at:`) and an actionable one-line fix
-- Fill the one-line `strengths:` field — what was genuinely done well
+In the `advocate-report-template.md` shape (machine-first — findings YAML): the verdict from the
+issue counts (mechanical — see *Verdict Criteria*), one finding entry per issue with its evidence
+anchor (`at:`) and an actionable one-line fix, and the one-line `strengths:` field filled.
 
 ## Incremental Review Mode
 
@@ -166,13 +155,8 @@ consistency_checks:   # pass/fail per check; a fail also lands as a finding
 
 ## Verdict Criteria
 
-Derived mechanically from the issue counts — the mapping itself carries no judgment:
-
-| Verdict | Criteria |
-|---------|----------|
-| **ready** | Zero Critical, zero Important issues |
-| **needs-revision** | 1–3 Important issues, fixable in one round |
-| **critical-gaps** | 1+ Critical, or 4+ Important issues |
+Derived mechanically from the issue counts — the mapping itself carries no judgment; it is
+single-sourced in [ISSUE-TEMPLATES.md → Verdict Criteria](references/ISSUE-TEMPLATES.md#verdict-criteria).
 
 ## Quality Checklist
 
@@ -190,29 +174,14 @@ Before finalizing the review, verify:
 
 ## Common Mistakes
 
-### Over-classification of severity
-Bad: marking style issues "Critical".
-Good: reserve Critical for issues that genuinely block progress.
-
-### Missing evidence
-Bad: "The data model is incomplete."
-Good: "The data model is missing the User entity referenced in FR-003."
-
-### Vague suggestions
-Bad: "Fix the contracts."
-Good: "Add the error-response schema for the 404 case in GET /users/{id}."
-
-### Reviewing implementation details
-Bad: commenting on code patterns, variable names, or framework choices.
-Good: focus on design completeness, traceability, and consistency.
-
-### Skipping cross-artifact checks
-Bad: reviewing only the new artifact in isolation.
-Good: always verify consistency with the prior artifact set.
-
-### Grading feasibility here
-Bad: blocking on "the design can't meet the latency NFR" or "these two constraints contradict".
-Good: note it as a cross-artifact concern and hand it to `review-feasibility` — that is its gate, not this one.
+| Mistake | Bad | Good |
+|---------|-----|------|
+| Over-classified severity | Marking style issues "Critical" | Reserve Critical for issues that genuinely block progress |
+| Missing evidence | "The data model is incomplete" | "The data model is missing the User entity referenced in FR-003" |
+| Vague suggestions | "Fix the contracts" | "Add the error-response schema for the 404 case in GET /users/{id}" |
+| Reviewing implementation details | Commenting on code patterns, variable names, or framework choices | Design completeness, traceability, and consistency |
+| Skipping cross-artifact checks | Reviewing only the new artifact in isolation | Always verify consistency with the prior artifact set |
+| Grading feasibility here | Blocking on "the design can't meet the latency NFR" or "these two constraints contradict" | Note it as a cross-artifact concern and hand it to `review-feasibility` — that is its gate, not this one |
 
 ## Red Flags — STOP and Restart Properly
 

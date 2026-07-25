@@ -66,16 +66,11 @@ Load [references/FEASIBILITY-LENS.md](references/FEASIBILITY-LENS.md) and look t
 
 ### Step 3: Capture each finding as gate fuel
 
-For every contradiction found, record the four fields the human gate will consume:
-
-| Field | What it states |
-|-------|----------------|
-| **description** | the conflict, in one sentence |
-| **evidence** | the specific artifact IDs in tension (e.g. `C-003` vs `D-002`) and the incompatibility |
-| **impact** | what breaks downstream if it ships unresolved |
-| **suggested_resolution** | a concrete, actionable fix (relax the NFR / change the decision / add infrastructure / escalate) |
-
-Vague evidence ("these seem to conflict") is not a finding. Cite the IDs.
+For every contradiction found, record the four fields the human gate will consume — `gap` (the
+conflict, one sentence), `at` (the artifact IDs in tension, e.g. `C-003` ↔ `D-002`), `impact`
+(what breaks downstream if it ships unresolved), and `fix` (a concrete resolution — relax the
+NFR / change the decision / add infrastructure / escalate) — as the feasibility-report template
+defines them. Vague evidence ("these seem to conflict") is not a finding. Cite the IDs.
 
 ### Step 4: Classify each finding — resolvable vs fundamental
 

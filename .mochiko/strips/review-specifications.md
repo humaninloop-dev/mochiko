@@ -4,6 +4,33 @@ Entry formats: `strips/README.md`. Wave context: the specify cluster wave (v0.13
 Single-consumer primitive (the specify critique, mounted on `devils-advocate`) — strips
 ruled in-wave.
 
+## [v0.26.0] Question Format → template pointer; What to Avoid deleted; When-to-Use merged; Common Mistakes densified (body 166 → 128, −23%, in-band 10–40)
+- **Disposition:** deduped → `templates/advocate-report-template.md` (the **pre-existing**
+  Clarifications block holds the exact question shape — Read and confirmed before landing;
+  nothing was written to templates/ this wave, so D4's destination ban is not engaged — this is
+  R4a dedup credit, not a relocation; the in-body copy had
+  drifted: "Why this matters" vs the template's "Why it matters" — the same second-home symptom
+  as this skill's v0.13.0 Output-Format strip) · deleted (the What-to-Avoid section — within-file
+  triplication with the Core Principle table and When-NOT-to-Use routing; its one non-duplicated
+  sentence folded into Core Principle) · deleted (three near-synonym When-to-Use bullets merged
+  into one) · densified (form-only): eight Common-Mistakes ❌/✅ subsections → one 3-column table
+- **Tier failed:** 1 (Question Format, What to Avoid) · 2 (the merged When-to-Use bullets — no
+  distinct trigger per bullet) · n/a for the densification — all ❌/✅ pairs preserved
+- **Content:** the fenced question template; the four avoid-bullets + closing line; two trigger
+  bullets; Common-Mistakes subsection headers
+- **Consumers assessed:** wave-open enumeration — 7 citing files, none reference the stripped
+  sections; `mochiko:authoring-requirements` (both remaining pointers) verified to exist
+- **Wave-1 reconciliation:** the +11 canonical hunt-taxonomy table (v0.25.0 RETURNED below) sits
+  cleanly in Gap Categories — nothing else in the file duplicates it; both Gap-Categories tables
+  KEPT as the canonical home `devils-advocate` points at
+
+## [v0.26.0] KEPT: the severity table and Core Principle table
+- **Tier-2 evidence:** contested at the wave-2 pass and kept — the severity table carries
+  **spec-specific wording** ("Cannot build without this answer" / "Will cause rework") and this
+  skill has no references/ tree to relocate to; the Core Principle wrong/right table is the
+  skill's unique teaching content, now also carrying the folded altitude sentence. Session
+  ruling: batch-2 ratification 2026-07-25.
+
 ## [v0.25.0] RETURNED: the five requirement-defect classes landed in Gap Categories (canonical-home landing, +11 lines)
 - **Evidence:** wave-1 audit catch (skill-succinctness pass, 2026-07-25) — the `devils-advocate` agent's "What You Hunt For" catalog was stripped with disposition "relocated → this section" (R4b item 2), but the section held only the question-framing taxonomy; the pointer in the agent ("the canonical gap taxonomy … lives in `mochiko:review-specifications`") had been dishonest since before the wave. The five-class table (missing requirements / ambiguities / edge cases / assumption gaps / contradictions) landed here at audit-fix time, making this section the true canonical home. Provenance: `.mochiko/strips/devils-advocate.md`. This is a cross-primitive dedup landing (R4a Tier-1 credit), not a re-add of previously stripped content from this skill.
 

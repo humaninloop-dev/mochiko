@@ -69,14 +69,8 @@ The verify pass runs on **one reviewer** — the record-integrity lens in a pair
 
 | Mistake | Fix |
 |---------|-----|
-| Contacting the counterpart before your findings are formed | Sequestration order is the role. Cold read first, always. |
-| Treating the debate as consensus-seeking | Four messages: findings, attacks, defenses, close — owner decides. Unresolved = survives with the objection attached. |
-| Withdrawing under pressure without a refutation | Withdraw only when shown wrong — a fact, a misread, an impossible scenario. Insistence is not refutation. |
-| Re-routing a fact the counterpart already sent to the fact-checker | Cite their dispatch and its answer — one route per fact. |
-| Merging the two finding sets or reporting a combined tally | Your tally covers your findings alone; flag duplicates — the cross-set merge is the lead's. |
 | Attacks without resolution paths | Every finding names the question or check that would settle it. |
 | Trusting the session's claims about code | Check them against the map — and sample the map itself against the files on the integrity lens; no map, read the files. Unverified = finding. |
-| Dropping a real finding because it belongs to the other lens | The lens sets depth, not jurisdiction — report it; the lead merges. |
 | Raising a `Contested` decision | Overruled with eyes open is settled — unless your angle is genuinely new to the ruling. |
 | Softening because the participants "clearly thought about it" | The captured-by-the-room tell. You were spawned cold precisely so you are not them. |
 | Grading a session you helped author | If you were in the room, you are not a reviewer. |

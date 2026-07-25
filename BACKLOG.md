@@ -58,11 +58,15 @@ re-measures at proposal time. Order below is the order of execution.
   confirmed canonical, `authoring-slices` drops its 2-line downstream restatement **in its wave
   (authoring-*)**; item 4 — letter/spirit aphorism keep-and-survivor-log + strengthen-bare-copies
   rider (`.mochiko/strips/loop-discipline.md`; queue's canonical-home premise corrected there).
-- [ ] **Waves, ordered by never-stripped mass:** ~~analysis/testing/validation/misc~~ → review-* →
-  patterns-* → authoring-*. **Wave 1 DONE 2026-07-25 at v0.25.0 — audit FAIL→fixed→PASS; ledger
-  on the ROADMAP row; next wave-open: review-\* (note: review-specifications gained the canonical
-  hunt-taxonomy table at wave-1 audit-fix time — reconcile there; authoring-\* wave owes the
-  authoring-slices Graduation-contract restatement drop, R4b item 3).** Per D3: pre-wave
+- [ ] **Waves, ordered by never-stripped mass:** ~~analysis/testing/validation/misc~~ →
+  ~~review-*~~ → patterns-* → authoring-*. **Wave 1 DONE 2026-07-25 at v0.25.0 — audit
+  FAIL→fixed→PASS; ledger on the ROADMAP row. Wave 2 (review-\*) DONE 2026-07-25 at v0.26.0 —
+  audit PASS on first grade (six non-blocking note nits, all folded); cluster 1,156→1,011 body
+  lines (−12.5%), ledger on the ROADMAP row; the wave-1 taxonomy RETURN reconciled clean;
+  CROSS-EXAM.md audited as a clean single source. Next wave-open: patterns-\*. Carried notes:
+  authoring-\* wave owes the authoring-slices Graduation-contract restatement drop (R4b item 3);
+  band convention applied as ratified in wave-2 batch 1 — a prior-wave zero-strip assessment
+  counts as previously-assessed → 10–40 band.** Per D3: pre-wave
   ≥3-consumer enumeration by citation count
   (cross-skill reference homes included: TEST-GRAMMAR, CROSS-EXAM,
   ESSENTIAL-FLOOR/INTERROGATION-AGENDA), per-skill ratification, per-wave audit + version bump.

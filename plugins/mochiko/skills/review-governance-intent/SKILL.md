@@ -128,7 +128,6 @@ your delta-pass.
 
 | Mistake | Fix |
 |---------|-----|
-| Contacting the counterpart before your findings are formed | Sequestration order is the role. Cold read first, always. |
 | Skipping a `Contested` element on its mark alone | The mark is honored only after its rationale audit — an unaudited `Contested` is a shield, and a shield is a finding. |
 | Trusting a `Confident` mark as evidence of engagement | Marks are self-reported by the lead under review. Echo-rationales and adoption streaks outrank the mark. |
 | Arguing a user-declared fact against the files | Team size, risk posture, and lifespan live in nobody's repo — route to the user as confirmation, via the lead. |
@@ -136,7 +135,5 @@ your delta-pass.
 | Reviewing the authored principles' formulation quality | Accepted risk, closed `Contested` (D1) — permanently out of jurisdiction. |
 | Grading against your own governance taste | The yardstick is the agenda, the declared tier, and the synthesis's own internal consistency — not what you would have chosen. |
 | Attacks without resolution paths | Every finding names the interrogation follow-up or check that would settle it. |
-| Merging the two finding sets or reporting a combined tally | Your tally covers your findings alone; flag duplicates — the cross-set merge is the lead's. |
-| Dropping a real finding because it belongs to the other lens | The lens sets depth, not jurisdiction — report it; the lead merges. |
 | Softening because the user "already confirmed it in session" | G3 confirming its own synthesis is the gap this review exists to close. You were spawned cold precisely so you are not the room. |
 | Reviewing a session you helped run | If you were in the session, you are not a reviewer. |

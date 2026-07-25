@@ -80,15 +80,10 @@ volume.
 
 ## Issue Classification
 
-| Severity | Definition | Action |
-|----------|------------|--------|
-| **Critical** | Blocks progress; must resolve | Return to the responsible producer |
-| **Important** | Significant gap; should resolve | Flag for this round |
-| **Minor** | Polish item; can defer | Note for later |
-
-See [ISSUE-TEMPLATES.md](references/ISSUE-TEMPLATES.md) for classification rules, issue-documentation
-formats, the task-specific Checks-Executed tables, the `TM-`/`TT-`/`TX-` ID conventions, and the
-verdict decision tree.
+Three severities — Critical / Important / Minor. The severity classification (categories and
+examples per level), issue-documentation formats, the task-specific Checks-Executed tables, the
+`TM-`/`TT-`/`TX-` ID conventions, and the verdict decision tree are single-sourced in
+[ISSUE-TEMPLATES.md](references/ISSUE-TEMPLATES.md).
 
 ## Review Process
 
@@ -102,64 +97,30 @@ Read and understand:
 
 ### Step 2: Execute the checklist
 
-For each check in the applicable artifact-type checklist:
-1. Ask the question
-2. Look for evidence in the artifact
-3. If an issue is found, classify its severity
-4. Document the issue with evidence
+For each check in the applicable artifact-type checklist: ask the question, look for evidence in
+the artifact, classify any issue's severity, and document the issue with that evidence.
 
 ### Step 3: Cross-reference
 
-- Check traceability (the story → cycle → task chain is complete)
-- Check consistency (`tasks.md` and `task-mapping.md` agree)
-- Check completeness (nothing obviously missing)
+Check traceability (the story → cycle → task chain is complete), consistency (`tasks.md` and
+`task-mapping.md` agree), and completeness (nothing obviously missing).
 
 ### Step 4: Emit the report
 
-In the `advocate-report-template.md` shape (machine-first — findings YAML):
+In the `advocate-report-template.md` shape (machine-first — findings YAML): the verdict from the
+issue counts (mechanical — see *Verdict Criteria*), one finding entry per issue with its evidence
+anchor (`at:`) and an actionable one-line fix, and the one-line `strengths:` field filled.
 
-- Classify the verdict from the issue counts (mechanical — see *Verdict Criteria*)
-- One finding entry per issue: evidence anchor (`at:`) and an actionable one-line fix
-- Fill the one-line `strengths:` field — what was genuinely done well
-
-> A deterministic Tier-1 pre-assert over the greppable slice (task-ID `TN.X` format, file-path
-> presence, `**TEST:**`-task presence, marker presence, traceability presence) is a possible future
-> parity item with the plan reviewer's checker; none is built for the core tasks port (minimalism).
-> The core of this review is model judgment — is this a *true* vertical slice? is the checkpoint
+> No deterministic pre-assert exists on the tasks side (unlike the plan reviewer's checker). The
+> core of this review is model judgment — is this a *true* vertical slice? is the checkpoint
 > observable vs test-only? — which no grep settles.
 
 ## Verdict Criteria
 
-Derived mechanically from the issue counts — the mapping itself carries no judgment. This is the
-**recommended** verdict the lead reads; the lead owns the clearing decision and the revision loop.
-
-| Verdict | Criteria |
-|---------|----------|
-| **ready** | Zero Critical, zero Important issues |
-| **needs-revision** | 1–3 Important issues, fixable in one round |
-| **critical-gaps** | 1+ Critical, or 4+ Important issues |
-
-## Key Principles to Validate
-
-These mirror what the producer (`mochiko:patterns-vertical-tdd`) is told to author — the reviewer
-checks exactly what the producer is taught to build.
-
-### Vertical slicing
-- Cycles deliver observable user value, not horizontal layers
-- Each cycle is independently testable
-- Foundation cycles hold shared infrastructure; feature cycles can parallelize
-
-### TDD structure
-- Every cycle starts with a failing-test task (test-first ordering)
-- Implementation follows the test
-- Each cycle ends with a `**TEST:**` verification task against real infrastructure
-- No implementation task precedes its test
-
-### Traceability
-- Every P1/P2 story maps to at least one cycle
-- Every cycle has corresponding tasks
-- Every task has a specific file path
-- Story labels (`[US#]`) link tasks back to requirements
+Derived mechanically from the issue counts — the mapping itself carries no judgment; it is
+single-sourced in [ISSUE-TEMPLATES.md → Verdict Decision Tree](references/ISSUE-TEMPLATES.md#verdict-decision-tree).
+This is the **recommended** verdict the lead reads; the lead owns the clearing decision and the
+revision loop.
 
 ## Quality Checklist
 
@@ -175,29 +136,14 @@ Before finalizing the review, verify:
 
 ## Common Mistakes
 
-### Skipping the cross-artifact check
-Bad: reviewing `tasks.md` in isolation.
-Good: when both are in scope, verify every cycle in `task-mapping.md` appears in `tasks.md` and the story→cycle→task chain is unbroken.
-
-### Over-classification of severity
-Bad: marking formatting issues "Critical".
-Good: reserve Critical for gaps that genuinely block implementation.
-
-### Missing evidence
-Bad: "The cycles are not vertical slices."
-Good: "Cycle 2 groups all database tasks (T2.1–T2.4) with no user-facing value — a horizontal layer, not a vertical slice."
-
-### Not verifying `**TEST:**`-task presence
-Bad: assuming every cycle has proper TDD structure.
-Good: explicitly check each cycle ends with a `**TEST:**` verification task carrying real-infrastructure Setup/Action/Assert steps, not a vague "Demo".
-
-### Ignoring traceability gaps
-Bad: accepting tasks with no story label.
-Good: every task traces back to a user story via its cycle mapping.
-
-### Reviewing during active drafting
-Bad: reviewing an incomplete artifact mid-creation.
-Good: wait for the producer to finish the artifact before validation.
+| Mistake | Bad | Good |
+|---------|-----|------|
+| Skipping the cross-artifact check | Reviewing `tasks.md` in isolation | When both are in scope, verify every cycle in `task-mapping.md` appears in `tasks.md` and the story→cycle→task chain is unbroken |
+| Over-classified severity | Marking formatting issues "Critical" | Reserve Critical for gaps that genuinely block implementation |
+| Missing evidence | "The cycles are not vertical slices" | "Cycle 2 groups all database tasks (T2.1–T2.4) with no user-facing value — a horizontal layer, not a vertical slice" |
+| Not verifying `**TEST:**` presence | Assuming every cycle has proper TDD structure | Explicitly check each cycle ends with a `**TEST:**` task carrying real-infrastructure Setup/Action/Assert steps, not a vague "Demo" |
+| Ignoring traceability gaps | Accepting tasks with no story label | Every task traces back to a user story via its cycle mapping |
+| Reviewing during active drafting | Reviewing an incomplete artifact mid-creation | Wait for the producer to finish the artifact before validation |
 
 ## Red Flags — STOP and Restart Properly
 

@@ -112,10 +112,9 @@ surfacing — never by the overlay looking tidy.
    and/or the spec), the severity, and an actionable suggested fix.
 3. **Cross-reference** — coverage (check 1) and SC coverage (check 9) are set comparisons against
    the spec; do them explicitly, not by impression.
-4. **Emit** — the report in the shared `mochiko:advocate-report-template` shape
-   (machine-first): the severity-classified findings YAML, clarifying questions where a gap
-   needs a product decision, the recommended verdict with its one-line basis, and the
-   one-line `strengths:` field.
+4. **Emit** — the report in the shared `mochiko:advocate-report-template` shape (machine-first):
+   findings YAML, clarifying questions where a gap needs a product decision, the recommended
+   verdict with its one-line basis, and the one-line `strengths:` field.
 
 ## Quality checklist
 
@@ -130,20 +129,13 @@ Before finalizing the review:
 
 ## Common Mistakes
 
-### Grading the overlay without the spec
-Bad: checking `slices.md` for internal tidiness. Good: coverage, SC mapping, and the stamp are all comparisons **against `spec.md`** — read it.
-
-### Accepting a plumbing foundation
-Bad: "the foundation is infrastructure, value comes later." Good: a first slice with no testable journey is a Critical structural issue — that is the whole-spec batch's worst property, reintroduced.
-
-### Treating layer groupings as slices
-Bad: "the API slice, the UI slice." Good: each slice must read as a user journey; horizontal grouping is Critical, however balanced the sizes.
-
-### Missing the silent seam
-Bad: checking only the seams the section lists. Good: derive the seams the story assignments *imply* and flag the ones the section omits.
-
-### Stretching past a wrong depth
-Bad: carefully grading a five-story spec's three-slice decomposition. Good: check 13 first-classes the question — recommend the null exit and mark the rest of the review moot.
+| Mistake | Bad | Good |
+|---------|-----|------|
+| Grading the overlay without the spec | Checking `slices.md` for internal tidiness | Coverage, SC mapping, and the stamp are all comparisons **against `spec.md`** — read it |
+| Accepting a plumbing foundation | "The foundation is infrastructure, value comes later" | A first slice with no testable journey is Critical — the whole-spec batch's worst property, reintroduced |
+| Treating layer groupings as slices | "The API slice, the UI slice" | Each slice must read as a user journey; horizontal grouping is Critical, however balanced the sizes |
+| Missing the silent seam | Checking only the seams the section lists | Derive the seams the story assignments *imply*; flag the ones the section omits |
+| Stretching past a wrong depth | Carefully grading a five-story spec's three-slice decomposition | Check 13 first-classes the question — recommend the null exit and mark the rest moot |
 
 ## Red Flags — STOP and re-check
 

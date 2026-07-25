@@ -10,6 +10,21 @@ bullet like the one stripped from `review-specifications`). One contested keep (
 is a library-wide consistency ruling, not a cluster call (see the wave return); note L16 already carries
 the `loop-discipline` reference the strip disposition would add.
 
+## [v0.26.0] Severity + verdict tables → ISSUE-TEMPLATES pointers; steps and Common Mistakes densified (body 240 → 209, −13%, in-band 10–40)
+- **Disposition:** relocated → `references/ISSUE-TEMPLATES.md` (severity table held there **verbatim** under Severity Levels; verdict mapping held richer under Verdict Criteria — both Read and confirmed before landing, wave-2 batch-1 ratification 2026-07-25) · densified (form-only, zero content deletions): Step-3 execute list → one sentence, Step-4 cross-reference bullets → one sentence, Step-5 emit bullets → one sentence (the `advocate-report-template` holds the `at:`/`strengths:`/verdict shape — verified), six Common-Mistakes Bad/Good subsections → one 3-column table
+- **Tier failed:** 1 (both tables restated their declared single source, referenced directly below each) · n/a for the densifications — form only
+- **Content:** the two 3-row tables; the numbered/bulleted step mechanics; the Common-Mistakes subsection headers (all Bad/Good pairs preserved in the table)
+- **Consumers assessed:** wave-open enumeration — 7 citing files, none reference the stripped tables or section anchors; the in-body *Verdict Criteria* heading survives as the pointer so Step 5's internal see-reference stays valid
+
+## [v0.26.0] KEPT: Red Flags (incl. the two generic bullets), Common Rationalizations, Incremental Review Mode
+- **Tier-2 evidence:** contested at the wave-2 pass and kept — the two generic red-flag bullets
+  ("this case is different", "spirit not letter") sit at the reviewer's point of temptation, the
+  same presence mechanism the R4b aphorism ruling protects, and `loop-discipline` holds no
+  red-flag list to relocate to; every rationalization row names a failure + counter pair; the
+  Incremental section stands on its v0.15.0 KEPT (plan-only unique, re-affirmed untouched). The
+  aphorism copy (L16) is consequence-anchored — qualifies under the R4b rider, no edit needed.
+  Session ruling: batch-1 ratification 2026-07-25.
+
 ## [v0.15.0] KEPT: the "Report shape (incremental mode)" block
 - **Tier-2 evidence:** scrutinized directly against the `review-specifications` Output-Format strip
   precedent (specify wave, v0.13.0) — does the embedded report mock restate a template-owned shape?
