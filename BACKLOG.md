@@ -75,8 +75,8 @@ re-measures at proposal time. Order below is the order of execution.
   canonical); two under-band KEPT closes (constitution 21%, commands 1%); auditor-confirmed no
   template/reference file changed — every cut a true dedup. Pass totals (wave-open measures):
   27 skills, 5,724→4,369 body lines (−23.7%) across pilot + four waves. Watch-item revisited
-  at close: evidence + proposed band-by-authorship-era ruling recorded on the ROADMAP row —
-  **awaiting user ratification**. Band convention as ratified in wave-2
+  at close: band-by-authorship-era ruling **user-ratified 2026-07-25** — own ROADMAP Key
+  Decisions row. Band convention as ratified in wave-2
   batch 1 — a prior-wave zero-strip **assessment** counts as previously-assessed → 10–40 band.** Per D3: pre-wave
   ≥3-consumer enumeration by citation count
   (cross-skill reference homes included: TEST-GRAMMAR, CROSS-EXAM,
