@@ -35,21 +35,29 @@ Doctrine ratified 2026-07-25 (ROADMAP Key Decisions row; record
 Execution deferred to dedicated sessions per D5. Baseline frozen at plugin v0.23.0; each wave
 re-measures at proposal time. Order below is the order of execution.
 
-- [ ] **Pilot (R6 — gate for everything below): `analysis-codebase` through the full loop** —
-  architect per-line proposal (Tier-1/Tier-2, contested lines with drafted rationale), per-skill
-  user ratification, strip + `.mochiko/strips/analysis-codebase.md` note, independent audit
-  (author≠grader), measured %. Then a **D1–D4 confirm-or-revise checkpoint** — calibrates R3's
-  provisional bands (30–70 never-stripped / 10–40 previously-stripped) before any wave runs.
-- [ ] **R1 measurement pass (at execution open, before any description work):** dump the delivered
-  skill listing, diff all 27 `description:` strings against their files, record the truncation
-  boundary (~1.5k chars arrives complete / ~1.8k cut mid-sentence) and **diagnose
-  `validation-constitution`'s missing description** (live absent-fire defect); then scope the
-  description sub-pass as repair / reorder-triggers-ahead-of-boundary / cut, on evidence.
-  Trigger-fidelity criterion watches under-fire AND wrong-fire (negative triggers protected).
-- [ ] **Rule the ≥3-consumer escalation queue at wave-1 open (R4b)** — the queue in this file's
-  Strip-wave section, incl. the letter/spirit aphorism (11 skill copies + `loop-discipline`
-  home): keep-and-survivor-log or strip-to-reference, decided library-wide, never per-cluster.
-  Cross-skill dedup into genuinely conditional homes earns Tier-1 credit (R4a).
+- [x] **Pilot (R6) — DONE 2026-07-25 at plugin v0.24.0:** `analysis-codebase` 309→171 body lines
+  (45%, mid-band); per-hunk user-ratified; independent audit FAIL→fixed→PASS (phantom strip entry
+  + dangling reference caught — author≠grader proven empirically). Note:
+  `.mochiko/strips/analysis-codebase.md`; build stamp: ROADMAP row.
+- [x] **R1 measurement pass — DONE 2026-07-25:** cap is exactly 1,536 chars; three live-defect
+  descriptions repaired under it (ledger entries in `.mochiko/strips/{review-brainstorm,
+  review-governance-intent,validation-constitution}.md`); absent-fire diagnosed to the
+  total-listing-budget hypothesis (details on the ROADMAP row).
+- [x] **D1–D4 checkpoint — CONFIRMED 2026-07-25:** D1–D4 confirmed unrevised; R3 bands
+  de-provisionalized (30–70 never-stripped / 10–40 previously-stripped); D3 gains the
+  pilot-earned step — architect diffs landed edits against the ratified proposal before writing
+  strip notes. Waves cleared to run.
+- [ ] **Fresh-session delivery probe:** re-run the listing probe in a NEW session (in-session
+  listings are session-start snapshots — post-edit probes serve pre-edit text) to confirm the two
+  repaired descriptions deliver un-truncated and to confirm-or-kill the total-budget hypothesis
+  (does `validation-constitution`'s description reappear at the reduced ~24.7k total?). If still
+  absent, wave-pass description-mass cuts are the remaining remedy.
+- [x] **≥3-consumer escalation queue — RULED 2026-07-25 (R4b, user-approved):** items 1–2
+  (devils-advocate dedupe to the ruled precedent form) executed at wave-1 open, v0.25.0
+  (`.mochiko/strips/devils-advocate.md`); item 3 — `slices-template.md`'s Graduation contract
+  confirmed canonical, `authoring-slices` drops its 2-line downstream restatement **in its wave
+  (authoring-*)**; item 4 — letter/spirit aphorism keep-and-survivor-log + strengthen-bare-copies
+  rider (`.mochiko/strips/loop-discipline.md`; queue's canonical-home premise corrected there).
 - [ ] **Waves, ordered by never-stripped mass:** analysis/testing/validation/misc → review-* →
   patterns-* → authoring-*. Per D3: pre-wave ≥3-consumer enumeration by citation count
   (cross-skill reference homes included: TEST-GRAMMAR, CROSS-EXAM,
@@ -409,24 +417,12 @@ through v0.17.0 (see below).
   against the primitive's strip notes, evidence-linked by default with marked overrides; any version
   bump with re-adds triggers the validator audit on touched primitives; an override-count threshold
   flags a primitive for audit regardless.
-- [ ] **≥3-consumer escalation queue (raised across the five waves, not yet ruled — D9's guard; scheduled 2026-07-25: ruled at the skill-succinctness pass's wave-1 open, R4b — see that section above).**
-  Rule each at the scheduled all-consumer pass, Tier-2-tested against every consumer; per-wave
-  provenance is in the `.mochiko/strips/*` notes. Net open queue:
-  1. **`devils-advocate`'s six per-mount "Skills Available" paragraphs** — each restates its mounted
-     skill's own `description:`; dedupe across all six clusters. The other five agents' instances were
-     ruled in-wave (`task-architect` · `principal-architect` · `technical-analyst` · `staff-engineer` ·
-     `qa-engineer`; `requirements-analyst` already at altitude) — `devils-advocate` is the sole
-     remaining agent instance.
-  2. **`devils-advocate`'s "What You Hunt For" generic gap taxonomy** — its own closing line points to
-     `review-specifications` yet copies the catalog; persona-generic-vs-copied-catalog dedupe, rule at
-     the same all-consumer `devils-advocate` pass.
-  3. **`slices-template.md`'s Graduation-contract section** (consumed by the plan/tasks/implement
-     slice-scoped entries, now all locally de-restated) — its Staleness-guard/Regression-safety rules
-     overlap `authoring-slices`' spec-stamp duty + the regression-by-construction default; rule against
-     all three consuming entries at once.
-  4. **The letter/spirit aphorism** — 11 skill copies + the canonical `loop-discipline` home; a
-     library-wide keep-or-strip ruling (if kept, survivor-log the set; if stripped, replace copies with
-     a `loop-discipline` reference).
+- [x] **≥3-consumer escalation queue — RULED 2026-07-25** at the skill-succinctness wave-1 open
+  (R4b, user-approved). DONE: dispositions + provenance in `.mochiko/strips/devils-advocate.md`
+  (items 1–2, executed at v0.25.0) and `.mochiko/strips/loop-discipline.md` (item 4,
+  keep-and-survivor-log + strengthen-bare-copies rider; the queue's canonical-home premise
+  corrected there); item 3 (Graduation contract confirmed canonical; `authoring-slices` drops its
+  restatement) executes in the authoring-* wave — tracked in the succinctness section above.
 
 ## Knowledge-management-module follow-ups (from the operating-docs-scaffolding build, 2026-07-17)
 
