@@ -28,6 +28,36 @@ These carry forward from `agent-skills-research/synthesis/my-framework.md` — u
 
 ---
 
+## Skill-succinctness strip pass (from the `skill-succinctness-strip` session, 2026-07-25)
+
+Doctrine ratified 2026-07-25 (ROADMAP Key Decisions row; record
+`.mochiko/brainstorms/skill-succinctness-strip/record.md` — D1–D5 + ratified batch R1–R7).
+Execution deferred to dedicated sessions per D5. Baseline frozen at plugin v0.23.0; each wave
+re-measures at proposal time. Order below is the order of execution.
+
+- [ ] **Pilot (R6 — gate for everything below): `analysis-codebase` through the full loop** —
+  architect per-line proposal (Tier-1/Tier-2, contested lines with drafted rationale), per-skill
+  user ratification, strip + `.mochiko/strips/analysis-codebase.md` note, independent audit
+  (author≠grader), measured %. Then a **D1–D4 confirm-or-revise checkpoint** — calibrates R3's
+  provisional bands (30–70 never-stripped / 10–40 previously-stripped) before any wave runs.
+- [ ] **R1 measurement pass (at execution open, before any description work):** dump the delivered
+  skill listing, diff all 27 `description:` strings against their files, record the truncation
+  boundary (~1.5k chars arrives complete / ~1.8k cut mid-sentence) and **diagnose
+  `validation-constitution`'s missing description** (live absent-fire defect); then scope the
+  description sub-pass as repair / reorder-triggers-ahead-of-boundary / cut, on evidence.
+  Trigger-fidelity criterion watches under-fire AND wrong-fire (negative triggers protected).
+- [ ] **Rule the ≥3-consumer escalation queue at wave-1 open (R4b)** — the queue in this file's
+  Strip-wave section, incl. the letter/spirit aphorism (11 skill copies + `loop-discipline`
+  home): keep-and-survivor-log or strip-to-reference, decided library-wide, never per-cluster.
+  Cross-skill dedup into genuinely conditional homes earns Tier-1 credit (R4a).
+- [ ] **Waves, ordered by never-stripped mass:** analysis/testing/validation/misc → review-* →
+  patterns-* → authoring-*. Per D3: pre-wave ≥3-consumer enumeration by citation count
+  (cross-skill reference homes included: TEST-GRAMMAR, CROSS-EXAM,
+  ESSENTIAL-FLOOR/INTERROGATION-AGENDA), per-skill ratification, per-wave audit + version bump.
+  Accounting per D4/R2: SKILL.md body-lines denominator, description/reference cuts on separate
+  ledgers, true reductions only, `templates/` banned as a relocation destination. Scripts /
+  `OPENAPI-TEMPLATE.yaml` / `templates/` out of scope (R5; revisit triggers in the record).
+
 ## Domain-allowlist follow-ups (from the `domain-dependency-allowlist` session, 2026-07-21)
 
 Machinery built same day at plugin v0.18.0 (see ROADMAP Key Decisions). Record:
@@ -379,7 +409,7 @@ through v0.17.0 (see below).
   against the primitive's strip notes, evidence-linked by default with marked overrides; any version
   bump with re-adds triggers the validator audit on touched primitives; an override-count threshold
   flags a primitive for audit regardless.
-- [ ] **≥3-consumer escalation queue (raised across the five waves, not yet ruled — D9's guard).**
+- [ ] **≥3-consumer escalation queue (raised across the five waves, not yet ruled — D9's guard; scheduled 2026-07-25: ruled at the skill-succinctness pass's wave-1 open, R4b — see that section above).**
   Rule each at the scheduled all-consumer pass, Tier-2-tested against every consumer; per-wave
   provenance is in the `.mochiko/strips/*` notes. Net open queue:
   1. **`devils-advocate`'s six per-mount "Skills Available" paragraphs** — each restates its mounted

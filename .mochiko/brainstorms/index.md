@@ -8,6 +8,28 @@ One entry per session directory under `.mochiko/brainstorms/<topic-slug>/`, **ne
 
 ---
 
+## `skill-succinctness-strip` — per-skill succinctness pass: 30–70% reduction under strip doctrine
+- **When:** 2026-07-25 · **Status:** accepted · record solo-cold-reviewed + lead
+  citation-verified (user-sized at D5: reviewer formed 18 → reported 13 → 13/13 lead-confirmed;
+  3 Criticals folded incl. a killed founding premise; 7-item amendment batch R1–R7 user-ratified
+  after per-item recommendations; clearing verdict ready)
+- **Artifacts:** [record.md](skill-succinctness-strip/record.md) (canonical)
+- **About:** doctrine for questioning all 27 skills one by one and shrinking them 30–70% under the
+  existing strip doctrine (`.mochiko/strips/README.md`). Ruled (D1–D5 + batch): calibration-bar-
+  not-quota with prior-status-split provisional bands (30–70 never-stripped / 10–40 previously-
+  stripped); scope = bodies + **measure-first** descriptions + references, with scripts/yaml/
+  `templates/` out; wave production with per-skill user ratification, waves ordered by
+  never-stripped mass; true-reductions-only accounting (sham cuts forbidden, `templates/` banned
+  as relocation destination); cold-review-then-defer close. **Headline review find (C1): the
+  "descriptions load fully into every session" premise is false** — delivery truncates ~1.8k-char
+  descriptions mid-sentence and `validation-constitution` renders no description at all (live
+  absent-fire defect, predates the session). D1–D4 were streak-adopted, flagged, and explicitly
+  re-affirmed post-review (R7).
+- **Landed:** ROADMAP Key Decisions (skill-succinctness row, 2026-07-25); BACKLOG
+  "Skill-succinctness strip pass" section (pilot `analysis-codebase` → R1 measurement pass →
+  ≥3-consumer queue ruling at wave-1 open → four waves); execution deferred to later sessions
+  per D5.
+
 ## `model-tiered-seats` — Haiku scribe + explorer seats: model tiering as token-epic angle 2
 - **When:** 2026-07-24 · **Status:** accepted · record pair-reviewed (lens-split per sizing gate: 13 raised → 12 survived cross-exam → 10 merged survivors → 10/10 dispositioned incl. a 5-item user-accepted amendment batch; verify pass CLEAN after one fold-contradiction fix; clearing verdict ready)
 - **Artifacts:** [record.md](model-tiered-seats/record.md) (canonical)
