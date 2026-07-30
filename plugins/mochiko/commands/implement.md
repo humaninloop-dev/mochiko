@@ -1,5 +1,5 @@
 ---
-description: Execute an accepted task breakdown into working, verified code via an independent producer→verifier team loop — a standing staff-engineer seat implements each cycle through red/green/refactor TDD (foundation cycles before feature cycles) then fix-passes a final validation, a standing qa-engineer seat verifies each cycle and the whole implementation independently against real infrastructure, with a confidence-based per-cycle gate and a named final-acceptance gate; tasks-gated, cycle-by-cycle, default-FAIL, bounded, kernel-free. Requires agent teams (CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS); refuses without them.
+description: Execute an accepted task breakdown into working, verified code via an independent producer→verifier team loop — a standing staff-engineer seat implements each cycle through red/green/refactor TDD (foundation cycles before feature cycles) then fix-passes a final validation, a standing qa-engineer seat verifies each cycle and the whole implementation independently against real infrastructure, honoring the approved architecture (briefed input, a diagram-anchored deviation escalation self-checked at cycle open and close, and a built-vs-approved landing diff), with a confidence-based per-cycle gate and a named final-acceptance gate; package-gated, cycle-by-cycle, default-FAIL, bounded, kernel-free. Requires agent teams (CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS); refuses without them.
 disable-model-invocation: true
 ---
 
@@ -53,9 +53,13 @@ dogfood-pilot ruling as the other team-form commands.
   conventions the foundation cycles set flow into the feature cycles, and a fix pass that may touch
   any cycle's files draws on whole-implementation knowledge rather than re-reading the growing
   codebase cold each cycle. Brief it per `agent-dispatch`: the cycle's tasks + per-task file paths,
-  the design inputs, the governance obligated-read line (per the prerequisite), `[EXTEND]`/`[MODIFY]`
-  brownfield markers when present; round > 1 within a cycle carries the checkpoint's failed tasks for
-  targeted retry (fix the flagged tasks; don't regress passing code). It never verifies.
+  the design inputs **including the approved `architecture.md`**, the governance obligated-read line
+  (per the prerequisite), `[EXTEND]`/`[MODIFY]` brownfield markers when present; round > 1 within a
+  cycle carries the checkpoint's failed tasks for targeted retry (fix the flagged tasks; don't regress
+  passing code). The brief carries the **diagram-anchored deviation self-check** (Phase 1 step 3): at
+  cycle open and cycle close, ask "does this cycle add/remove a box, add/remove/redirect an arrow, or
+  move a responsibility across a boundary on the approved diagram?" — a yes stops and surfaces at the
+  cycle verdict, never silently built. It never verifies.
 - **verifier** — `mochiko:qa-engineer` (`testing-end-user`), spawned **cold at the first cycle
   verification**, never in contact with the producer, one **named standing seat across all cycles and
   the final validation**. Each cycle: verify against real infrastructure — execute the cycle's
@@ -66,25 +70,32 @@ dogfood-pilot ruling as the other team-form commands.
   Its output is **lead-adjudicated input** — qa's status is input, never the gate. The verification
   skill is **never** mounted on the producer, and staff never grades its own cycle.
 - **architecture scribe** — `mochiko:principal-architect` (`mochiko:authoring-architecture`), a
-  **disposable Finalize dispatch**, fired only on structural change per the KM landing.
+  **disposable dispatch** with **two distinct firing conditions** (seam N1 — keep them separate): the
+  **built-vs-approved diff** fires **whenever an approved structural delta existed** in `architecture.md`
+  (broad, independent of what was built — so an approved-but-not-built delta cannot escape), run at final
+  validation so its divergence report reaches the G5 acceptance; the **`ARCHITECTURE.md` fold** fires only
+  on a **built structural change** (narrow, the KM writer moment), at Finalize. Never the verifier seat.
 
 ## Phase 0 — Prerequisites & entry triage  *(human gate G1)*
 
 1. **Capture** `$ARGUMENTS`; resolve `<feature>` (an explicit ID, else the most recent in-progress
    feature under `.mochiko/specs/`). If empty (the `@`-reference drop bug), recover via **G1**: ask
    the user to re-enter, or to confirm the detected feature.
-2. **Entry gate — tasks-workflow-complete.** The task breakdown must be done:
-   `.mochiko/specs/<feature>/tasks.md` present and complete (workspace evidence). Missing → block and
-   point the user to `/mochiko:tasks`.
+2. **Entry gate — plan-package-complete.** The implementation package must be done:
+   `.mochiko/specs/<feature>/tasks.md` present and complete, alongside the accepted `plan.md` and
+   `architecture.md` (workspace evidence — `/mochiko:plan` produces all three in one package). Missing →
+   block and point the user to `/mochiko:plan`.
 3. **Governance prerequisite.** Check `CLAUDE.md` for the mochiko governance region
    (`<!-- mochiko:governance:begin -->`). Present → governance reaches every spawned seat natively;
    add to each producer/verifier brief the **one-line obligated read** naming the
    `.claude/rules/mochiko/` files relevant to the cycle's file paths (code-touching seats also trigger
    `paths`-scoped rules by reading). Missing → do **not** silently proceed; surface it (offer
    `/mochiko:setup`). Governing context, not a blocking gate — never auto-resolve.
-4. **Read the design inputs** (`plan.md`, `task-mapping.md`, `data-model.md`, `contracts/api.yaml`,
-   `constraints-and-decisions.md`, `requirements.md`) under `.mochiko/specs/<feature>/` as the
-   producer's inputs — workspace-as-state, no registry field.
+4. **Read the design inputs** (`plan.md`, `architecture.md`, `task-mapping.md`, `data-model.md`,
+   `contracts/api.yaml`, `constraints-and-decisions.md`, `requirements.md`) under
+   `.mochiko/specs/<feature>/` as the producer's inputs — workspace-as-state, no registry field. The
+   approved `architecture.md` is the **anchor for the deviation self-check** (Phase 1 step 3) and the
+   **built-vs-approved diff** (Phase 2).
 5. **Project scaffolding.** From the detected stack, create any missing ignore-files
    (`.gitignore` / `.dockerignore` / lint-ignore) — project-relative outputs, one-time before the
    cycle loop.
@@ -118,13 +129,21 @@ For each cycle, `round = 1`; the cycle is FAIL until verified:
    infrastructure: execute the cycle's `**TEST:**` tasks, run the quality gates, capture evidence →
    verification report + checkpoint recommendation. Every produced cycle is paired with a qa
    verification in the same round (the first verification cold-spawns the qa seat).
-3. **Confidence gate + verdict (you).** Read `cycle-report.md` + the verification report + qa's
-   evidence. Apply the **confidence gate**: qa classifies each verification (the CLI / GUI / SUBJECTIVE
-   classification procedure lives in `testing-end-user`); if every verification is a deterministic CLI
-   check that passed 100%, **auto-approve** and advance to the next cycle; if any is GUI / subjective,
-   or anything failed, **checkpoint to the human**. A non-empty `domain_deps_added` in the cycle
-   report at `production`/`regulated` tier (tier: the CLAUDE.md governance region stamp) also forces
-   the human checkpoint — a domain-registry addition is never auto-approved there; at lower tiers
+3. **Architecture deviation check + confidence gate + verdict (you).** Read `cycle-report.md` + the
+   verification report + qa's evidence. **Architecture deviation (self-checked at cycle open and close):**
+   the producer applies the diagram-anchored mechanical test — does this cycle add/remove a box,
+   add/remove/redirect an arrow, or move a responsibility across a boundary on the approved diagram? A
+   **yes stops the cycle and surfaces at this verdict** — you present the deviation and the user re-rules;
+   the approved `architecture.md` target is **amendable mid-implement with the user's consent** (a
+   consented target amendment, the same mechanism as plan's design-time return to sign-off), and an
+   amendment updates `architecture.md` before the cycle resumes. Drift is caught at the moment it is
+   created, one cycle deep — never deferred to landing. Then apply the **confidence gate**: qa classifies
+   each verification (the CLI / GUI / SUBJECTIVE classification procedure lives in `testing-end-user`); if
+   every verification is a deterministic CLI check that passed 100% **and no architecture deviation was
+   surfaced**, **auto-approve** and advance to the next cycle; if any is GUI / subjective, anything failed,
+   **or an architecture deviation surfaced**, **checkpoint to the human**. A non-empty `domain_deps_added`
+   in the cycle report at `production`/`regulated` tier (tier: the CLAUDE.md governance region stamp) also
+   forces the human checkpoint — a domain-registry addition is never auto-approved there; at lower tiers
    surface the additions in your verdict, non-blocking. On a pass verdict → next cycle. On a checkpoint
    failure → **targeted retry** (step 1, failed tasks only; increment `round`), applying the bounds
    (max 3/cycle; a 2+-round stall → surface). Route knowledge / preference / scope gaps per
@@ -138,9 +157,16 @@ Reachable when every cycle has cleared. `round = 1`; final-validation is FAIL un
    quality gates + the cross-cutting `**TEST:**` verifications against real infrastructure →
    verification report.
 2. **Verdict (you).** Read the report + confirm the done-condition's end state: all `tasks.md` `[x]`,
-   quality gates pass, traceability to requirements holds, governance alignment. Clear → the **G5
-   acceptance gate**.
-3. **Fix-pass on failure.** Message the producer for a **fix pass** — scoped strictly to the reported
+   quality gates pass, traceability to requirements holds, governance alignment. Clear → step 3 (the
+   built-vs-approved diff), then the **G5 acceptance gate**.
+3. **Built-vs-approved diff (backstop).** When an **approved structural delta existed** in
+   `architecture.md` (the broad trigger — checked independent of what was built, so a silently-descoped
+   approved delta is caught), fire the `authoring-architecture` dispatch in **diff mode**: it receives the
+   approved target + the built code and reports **built vs. approved** — "built as approved" or the
+   divergence. This report feeds the G5 presentation (seam N1 — this diff is distinct from the
+   `ARCHITECTURE.md` fold at Finalize, which fires only on a built structural change). No approved delta
+   existed → skip.
+4. **Fix-pass on failure.** Message the producer for a **fix pass** — scoped strictly to the reported
    failures, **unconstrained by cycle boundaries** (may touch files from any cycle), briefed with the
    final-validation failures; then re-verify (step 1). Increment `round`; apply the bounds (max 3 fix
    passes; a 2+-round stall on the same failure → surface / escalate).
@@ -155,11 +181,12 @@ human explicitly accepts. Neither ends the loop on its own.
 ## Phase 3 — Final acceptance  *(human gate G5 — the named final-acceptance gate)*
 
 Reachable only after your clearing verdict on final-validation. Present the verified implementation
-(cycle / task / fix-pass counts, quality-gate results, an evidence summary, any noted gaps) and ask
-the user to **accept** (→ Phase 4; the done-condition is now satisfied), **amend** (re-enter the
-relevant cycle or fix-pass with the changes as the failure list — still bounded; it must clear a
-verdict again), or **reject** (abort; the work remains under `.mochiko/specs/<feature>/` and the
-working tree).
+(cycle / task / fix-pass counts, quality-gate results, an evidence summary, any noted gaps) **and the
+built-vs-approved architecture result** (Phase 2 step 3 — "built as approved" or the divergence, when an
+approved delta existed) and ask the user to **accept** (→ Phase 4; the done-condition is now satisfied),
+**amend** (re-enter the relevant cycle or fix-pass with the changes as the failure list — still bounded;
+it must clear a verdict again), or **reject** (abort; the work remains under `.mochiko/specs/<feature>/`
+and the working tree).
 
 ## Phase 4 — Finalize
 
@@ -167,8 +194,10 @@ Report the outputs (the working code + a `cycle-report.md` per cycle + the final
 the per-cycle and fix-pass round counts, the cycle / task / fix-pass counts + quality-gate status, a
 suggested commit (`feat: implement <feature>`), and the next step. Never modify git or push.
 **KM landing** — `.mochiko/memory/knowledge-management.md` exists → run its landing ritual +
-invariants under fix-on-sight; structural change → `ARCHITECTURE.md` via a fresh
-`principal-architect` dispatch (`mochiko:authoring-architecture`). No copy → skip.
+invariants under fix-on-sight; a **built structural change** (the narrow trigger, distinct from Phase 2's
+approved-delta-existed diff — seam N1) → fold the resulting system into `ARCHITECTURE.md` via a fresh
+`principal-architect` dispatch (`mochiko:authoring-architecture`), never the verifier seat. No copy →
+skip.
 
 ## Contract (authoring-time fill — governed by `mochiko:loop-discipline`)
 
@@ -178,8 +207,10 @@ invariants under fix-on-sight; structural change → `ARCHITECTURE.md` via a fre
   codes, grounded in the workspace, **(3)** *you* Read the cycle-reports + verification reports and
   confirm no blocking gap remains: acceptance criteria met, quality gates pass, `tasks.md` fully `[x]`,
   traceability to requirements holds, and the implementation aligns with the project's governance (the
-  CLAUDE.md governance region + its rules files) — qa's status is input, never the gate — **and (4)**
-  the Phase-3 final-acceptance human gate (G5) has cleared. Out of rounds = escalate, never done.
+  CLAUDE.md governance region + its rules files) — qa's status is input, never the gate — **(4)** when an
+  approved structural delta existed in `architecture.md`, the built-vs-approved diff has run and its
+  divergence (if any) was surfaced for the G5 decision, **and (5)** the Phase-3 final-acceptance human gate
+  (G5) has cleared. Out of rounds = escalate, never done.
 - **Producer ↔ validator:** `staff-engineer` (executing-tdd-cycle, brownfield-integration) implements
   each cycle via TDD and fix-passes final validation, never verifies; a **single independent verifier**,
   not the producer — `qa-engineer` (testing-end-user) verifies against real infrastructure, never
@@ -195,11 +226,12 @@ invariants under fix-on-sight; structural change → `ARCHITECTURE.md` via a fre
   `IMPLEMENT_STOP` checked before each seat send. You count every round.
 - **Human gates:** G1 input recovery + governance / entry surface · G3 clarification (incl. the
   "Research this" knowledge-gap branch when staff flags ambiguity) · G4 exit-early / escalation on any
-  guard trip · the **confidence gate** (per cycle: deterministic CLI verifications that 100% pass →
-  auto-approve; GUI / subjective / any-failure / a `production`+-tier domain-registry addition →
-  human checkpoint) · **G5** the named final-acceptance
-  gate before "done." **No G2** — implement has a single verifier, so plan's feasibility-rejection slot
-  is intentionally unused.
+  guard trip · the **confidence gate** (per cycle: deterministic CLI verifications that 100% pass **and no
+  architecture deviation surfaced** → auto-approve; GUI / subjective / any-failure / **a surfaced
+  architecture deviation** / a `production`+-tier domain-registry addition → human checkpoint, the
+  deviation carrying a consented-target-amendment decision on `architecture.md`) · **G5** the named
+  final-acceptance gate before "done" (presenting the built-vs-approved architecture result). **No G2** —
+  implement has a single verifier, so there is no feasibility-rejection gate.
 
 ## State recovery
 
@@ -218,6 +250,7 @@ design:
 | current cycle not passed, within the cap | Phase 1 (retry / loop control) |
 | all `tasks.md` `[x]`, no final verification report | Phase 2 (final validation) |
 | final-validation failed, within the cap | Phase 2 (fix-pass / loop control) |
+| final-validation cleared, an approved architecture delta existed, no built-vs-approved diff yet | Phase 2 (built-vs-approved diff) |
 | final-validation cleared, not yet accepted | Phase 3 |
 | accepted | Phase 4 |
 | `.mochiko/specs/<feature>/IMPLEMENT_STOP` present | escalate (G4) |
@@ -230,9 +263,12 @@ escalation); the execute→verify pairing (every produced cycle followed by a qa
 same round, never skipped); the verdict against the default-FAIL done-condition (qa grades from real
 infrastructure, you Read the cycle-reports + verification reports and decide — cycle-checkpoint =
 criteria-met + gates pass; final-validation = all `[x]` + gates + traceability + governance alignment;
-qa's status is input); the fix-pass routing and its max-3 bound; the two implementation gates (the
-per-cycle **confidence gate** auto-approve-vs-checkpoint placement, the named final-acceptance **G5**)
-plus G1 / G3 / G4; the tasks-complete entry gate and the governance / design-input prerequisites;
-project scaffolding; verifying each seat actually wrote its expected files (a missing output → log and
-ask retry/abort); and never mounting the verification skill on staff or letting staff grade its own
-cycle. Full rules: `mochiko:loop-discipline`.
+qa's status is input); the **architecture deviation escalation** (the diagram-anchored test surfaced at
+the cycle verdict, the consented-target-amendment decision on `architecture.md`) and the **built-vs-approved
+diff** at final validation (the broad approved-delta-existed trigger, distinct from the narrow
+`ARCHITECTURE.md` fold — seam N1), with the divergence presented at G5; the fix-pass routing and its max-3
+bound; the two implementation gates (the per-cycle **confidence gate** auto-approve-vs-checkpoint
+placement, the named final-acceptance **G5**) plus G1 / G3 / G4; the plan-package-complete entry gate and
+the governance / design-input prerequisites; project scaffolding; verifying each seat actually wrote its
+expected files (a missing output → log and ask retry/abort); and never mounting the verification skill on
+staff or letting staff grade its own cycle. Full rules: `mochiko:loop-discipline`.

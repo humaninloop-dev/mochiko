@@ -2,7 +2,7 @@
 
 Detailed review checklists for task artifacts, organized **by artifact type**: the mapping review
 (`task-mapping.md`), the tasks review (`tasks.md`), and the cross-artifact pass that reviews the two
-together. The caller (the `/mochiko:tasks` lead) supplies which task artifacts are in scope for a
+together. The caller (the `/mochiko:plan` lead) supplies which task artifacts are in scope for a
 given review; this reference does not encode a driving sequence — sequencing is the lead's, not the
 checklist's.
 

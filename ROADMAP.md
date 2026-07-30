@@ -12,7 +12,7 @@ dogfood evidence rather than speculation.
 
 - **KM-module redesign dogfood** — fresh-project scaffold + rules-injection probe of the rebuilt module (2026-07-25) → [BACKLOG](BACKLOG.md#operating-docs--km-module)
 - **Kinako follow-up run** — waves-1–2 didn't land: investigate, then the UI fix wave through journey gates (2026-07-24) → [BACKLOG](BACKLOG.md#kinako-follow-up-run)
-- **Team-method build items** — Layer-2 mesh rewrite · plan-absorbs-tasks merge · cold-checkout gate (2026-07-25) → [BACKLOG](BACKLOG.md#team-method-build-items)
+- **Team-method build items** — Layer-2 mesh rewrite · cold-checkout gate (2026-07-25; the plan-absorbs-tasks merge built 2026-07-30 at v0.30.0) → [BACKLOG](BACKLOG.md#team-method-build-items)
 
 ## Next
 
@@ -22,6 +22,7 @@ dogfood evidence rather than speculation.
 - Fresh-session description-delivery probe (2026-07-25) → [BACKLOG](BACKLOG.md#defects--empirical-checks)
 - `validation-constitution` QUALITY-CHECKLIST post-dissolution fix (2026-07-25) → [BACKLOG](BACKLOG.md#defects--empirical-checks)
 - Re-evaluate the deferred-kernel shortcut entry once the pipeline dogfoods complete (roadmap-v2's surviving next-step; its convention-extraction clause discharged at the 2026-07-25 migration) → [BACKLOG](BACKLOG.md#token-reduction-epic)
+- Architecture-primitive dogfood — first merged-plan run with the architecture stage (built 2026-07-30 at v0.30.0) → [BACKLOG](BACKLOG.md#architecture-primitive-build-items)
 
 ## Later *(non-committed)*
 

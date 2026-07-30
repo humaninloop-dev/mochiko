@@ -1,6 +1,6 @@
 ---
 name: review-feasibility
-description: This skill MUST be invoked to grade plan analysis and design artifacts for cross-artifact FEASIBILITY — adversarially hunting contradictions, impossibilities, and buildability conflicts that no single artifact reveals in isolation: constraint-decision conflicts, NFR-constraint impossibilities, requirement-constraint contradictions, decision-decision conflicts, NFR-design feasibility, and constraint-design buildability — emitting a 3-state `feasible / needs-revision / infeasible` verdict with per-issue evidence, impact, and suggested resolution. SHOULD also invoke whenever a producer's analysis or design artifacts (requirements, constraints-and-decisions, NFRs, data-model, contracts) need an independent buildability review, or when re-reviewing after a structural revision (new or changed constraints, expanded requirement scope, modified NFR targets). The feasibility reviewer's driver — the adversarial-critique half of the cross-artifact review pair: its sibling grades coverage / measurability / consistency / presence, this skill grades contradiction / impossibility / buildability. Never defaults to `feasible`; grades a different agent's artifacts, never the author's own; operates over plan artifacts, NOT the constitution.
+description: This skill MUST be invoked to grade plan analysis and design artifacts for cross-artifact FEASIBILITY — adversarially hunting contradictions, impossibilities, and buildability conflicts that no single artifact reveals in isolation: constraint-decision conflicts, NFR-constraint impossibilities, requirement-constraint contradictions, decision-decision conflicts, NFR-design feasibility, and constraint-design buildability — plus, when `architecture.md` is in scope, the architecture pass: topology feasibility (NFR↔topology, constraint↔topology) and governance conformance (layer rules, dependency allowlist, GI-linked principles) routed to amendment/waiver, never silently passed — emitting a 3-state `feasible / needs-revision / infeasible` verdict with per-issue evidence, impact, and suggested resolution. SHOULD also invoke whenever a producer's analysis or design artifacts (requirements, constraints-and-decisions, NFRs, architecture, data-model, contracts) need an independent buildability review, or when re-reviewing after a structural revision (new or changed constraints, expanded requirement scope, modified NFR targets). The feasibility reviewer's driver — the adversarial-critique half of the cross-artifact review pair: its sibling grades coverage / measurability / consistency / presence, this skill grades contradiction / impossibility / buildability. Never defaults to `feasible`; grades a different agent's artifacts, never the author's own; operates over plan artifacts, NOT the constitution.
 ---
 
 # Reviewing Feasibility
@@ -20,11 +20,12 @@ This is the **feasibility** half of a two-form cross-artifact review. The other 
 - When the producer's analysis artifacts (requirements, constraints-and-decisions, NFRs) need an independent buildability review before the work proceeds — typically ahead of the completeness pass, though that sequencing is the lead's, not this skill's.
 - When design artifacts (data-model, contracts) exist and you must confirm the design *as specified* can meet the NFR targets and is deployable under the stated constraints.
 - When re-reviewing after a **structural** revision — new or changed constraints, expanded requirement scope, or modified NFR targets — that could introduce a new cross-artifact conflict.
+- When the design-time **architecture** (`architecture.md`) is under review — the proposed topology is now something NFRs and constraints can be *infeasible against*, and something that must *conform to the governance surface*. This adds **the architecture pass** (below) on top of the six classes.
 
 ## When NOT to Use
 
 - **Completeness, coverage, measurability, presence, or traceability review** — that is the mirror-checklist sibling (`mochiko:review-plan-artifacts`), a different form on a different reviewer. See *The boundary*.
-- **Grading a constitution** — that is `mochiko:validation-constitution`, a different artifact domain. This skill operates over plan analysis/design artifacts only. (Guardrail G1.)
+- **Grading a constitution** — that is `mochiko:validation-constitution`, a different artifact domain. This skill operates over plan analysis/design artifacts only. (Guardrail G1.) The **architecture pass** below is not an exception: it reads the governance surface **as an input** and grades whether the proposed *topology* conforms to it — a conformance check on a plan artifact, never a grade of whether the constitution itself is well-formed.
 - **Authoring or revising the artifacts** — you review someone else's work; you never write or fix the artifacts you grade. (Independence.)
 - **Single-artifact internal review** — an NFR that is vague, a requirement that is incomplete *on its own* is not feasibility. Feasibility is strictly **cross-artifact**: it lives between two artifacts.
 
@@ -41,6 +42,38 @@ Cross-artifact contradictions / impossibilities / buildability only. Each class 
 | 5 | **NFR ↔ design feasibility** | Can the design *as specified* meet the NFR targets? | NFRs ↔ data-model / contracts |
 | 6 | **Constraint ↔ design buildability** | Are the design artifacts buildable/deployable given the constraints and captured infrastructure? | constraints / infrastructure ↔ data-model / contracts |
 
+## The architecture pass *(when `architecture.md` is in scope)*
+
+When the design-time architecture artifact (`architecture.md`, owned by
+`mochiko:patterns-system-design`) is under review, the hunt gains an **architecture pass** on top of
+the six classes — two lens groups, both cross-artifact, both adversarial. Hunting heuristics and
+worked examples are in [references/FEASIBILITY-LENS.md](references/FEASIBILITY-LENS.md#architecture-pass).
+
+**A. Topology feasibility** — classes 5–6 lifted to the container level, upstream of the detailed design:
+
+| Lens | The question | Artifacts in tension |
+|------|--------------|----------------------|
+| **NFR ↔ topology** | Can the *proposed component shape and interaction styles* hit the NFR targets? (a sync call-chain across four services vs a p95 target; single-region topology vs a global-latency NFR) | NFRs ↔ architecture |
+| **Constraint ↔ topology** | Is the topology buildable/deployable under the constraints and captured `IP-XXX`? (a shape needing a managed queue the constraints forbid and no `IP-XXX` provisions) | constraints / IP ↔ architecture |
+
+**B. Governance conformance** — does the proposed topology conform to the constitution's
+*architectural surface*? Read the governance region + relevant rules files (layer-rules, the
+domain-dependency registry when attached) **as input**, and grade:
+
+- **Layer rules honored** — the topology's dependencies respect the layer-import rules; no boundary the layer governance forbids.
+- **Dependency allowlist** — cross-component / cross-domain dependencies stay within the declared allowlist.
+- **GI-linked principles satisfiable** — the principles the architecture cites as binding it (`respects BE-HEX layering per GI-XXX`) are actually satisfied by the topology, not merely asserted.
+
+Conformance is **verified, not asserted** — a topology that *cites* a principle but *violates* it is a governance-conformance finding, not a pass.
+
+**Routing — never silent approval at a feature gate.** A topology that must break a governance
+surface is **never awarded `feasible` silently.** It surfaces with exactly two exits: **redesign to
+conform**, or a **user-ruled amendment/waiver** through the existing `governance-ledger.md` machinery.
+The feature-level review never overrules the constitution. Which exit is taken is the lead's/human's
+routing per `loop-discipline` — you report the conflict and that these are the only two exits; you do
+not clear it yourself. (A governance-conformance conflict with no conforming redesign is a
+**fundamental** finding — the `infeasible` escalation, not a louder `needs-revision`.)
+
 ## The boundary (mirror it exactly)
 
 This skill and the completeness sibling split the cross-artifact surface on a clean line. Hold it:
@@ -53,6 +86,8 @@ This skill and the completeness sibling split the cross-artifact surface on a cl
 | **Verdict** | `feasible / needs-revision / infeasible` | `ready / needs-revision / critical-gaps` |
 
 Where the two brush — e.g. an NFR that is *both* unmeasurable *and* impossible to meet — you take the **impossibility**; the sibling takes the **measurability**. You do **not** review whether every FR is mapped to a requirement, whether alternatives were considered, whether an NFR is individually measurable, or whether the formatting is right. Those are the sibling's. Reaching into them is boundary creep — a Common Mistake below.
+
+**On the architecture artifact,** the same line is drawn one level up: you own **topology feasibility + governance conformance** (the architecture pass); the sibling owns **component-table↔diagram coverage, qualifying-flow sequence coverage, and whether `data-model.md` / contracts conform to the approved shape**. "Can this topology be built and does it honor governance?" is yours; "are the architecture's own pieces present and covered?" is the sibling's.
 
 ## Core Process
 
@@ -97,7 +132,7 @@ Write the verdict, the per-issue gate fuel, and the one-line `strengths:` field 
 - You grade artifacts authored by a **different agent** — the producer of the analysis/design. You never review your own authoring. Independence here is the separate-agent structure, not a sentence in this skill.
 - Your verdict is **input**, not the gate. The lead reads the artifacts and your report and owns the clearing verdict; the lead drives any revision round and presents `infeasible`/`needs-revision` issues to the human. Loop ownership, the round bound, and the human gate are the lead's — see `loop-discipline`; this skill does not restate or own them.
 - The per-issue gate fuel (the `gap` / `at` / `impact` / `fix` fields) is what the human gate consumes when a finding is a genuine judgment call. Route findings by their kind per `loop-discipline`'s gap routing — a fundamental conflict is a preference/scope gap for the human, not a knowledge gap.
-- **G1:** you operate over plan analysis/design artifacts, never the constitution. You are not the constitution validator and you neither reference nor recreate constitution grading.
+- **G1:** you operate over plan analysis/design artifacts, never the constitution. You are not the constitution validator and you neither reference nor recreate constitution grading — its well-formedness is not yours to judge. The architecture pass's governance-conformance lens is consistent with this: it reads the governance surface **as an input** to grade the *topology's* conformance to it, never to grade the constitution itself.
 
 ## Common Mistakes
 

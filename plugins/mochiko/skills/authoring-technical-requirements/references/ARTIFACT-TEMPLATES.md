@@ -112,12 +112,13 @@ Good criteria are independently testable (pass/fail), technology-agnostic, and c
 
 > **Decision *technique* is owned by `mochiko:patterns-technical-decisions`.** The field schema below is the artifact slot a decision lands in; how to evaluate alternatives, score trade-offs, and set ADR depth lives in that skill. Fill these fields with the result; do not restate the evaluation method here.
 
-### Decision Summary  *(the ID index)*
+### Decision Summary  *(the ID index — all D-XXX, both origins)*
 
-| ID | Decision | Choice | Shaped By |
-|----|----------|--------|-----------|
-| D-001 | Primary database | PostgreSQL 15 | C-001 |
-| D-002 | Auth mechanism | JWT with refresh tokens | C-003 |
+| ID | Decision | Choice | Shaped By | Origin |
+|----|----------|--------|-----------|--------|
+| D-001 | Primary database | PostgreSQL 15 | C-001 | analysis |
+| D-002 | Auth mechanism | JWT with refresh tokens | C-003 | analysis |
+| D-004 | Avatar processing placement | async worker off a queue | NFR-002 | structural |
 
 ---
 
@@ -133,6 +134,30 @@ Good criteria are independently testable (pass/fail), technology-agnostic, and c
 **Choice:** [selected option] — **Rationale** (≤ 3 lines): [WHY this choice — the reasoning, not a restatement of the choice].
 **Consequences:** [trade-off 1 accepted] · [trade-off 2] · [future consideration]
 **Governance alignment:** [one line — only when a project principle applies; omit otherwise]
+
+---
+
+### Structural Decisions  *(architecture-time — authored by the architecture seat, not the analysis author)*
+
+> Topology D-XXX rows (component boundaries, interaction style, responsibility placement) decided at
+> the architecture stage and authored by `mochiko:patterns-system-design` — the analysis-time author
+> **preserves** this subsection, never fills it. Same D-XXX record format as above, same ADR
+> discipline (`mochiko:patterns-technical-decisions`), continuing the shared D-XXX sequence. The
+> architecture delta summary links each structural change to its row here. Omit the subsection when
+> the feature makes no structural decisions.
+
+### D-004: [Structural Decision Title]
+
+**Context** ([the topology choice needing a decision]) · **Shaped by:** NFR-002 · C-003
+
+| Option | Pros | Cons |
+|--------|------|------|
+| [Option A] | [one line] | [one line] |
+| [Option B] | [one line] | [one line] |
+
+**Choice:** [selected shape] — **Rationale** (≤ 3 lines): [WHY this topology].
+**Consequences:** [trade-off accepted] · [future consideration]
+**Governance alignment:** [one line — the layer/dependency principle the shape respects; omit if none]
 
 ---
 
@@ -176,7 +201,8 @@ Good criteria are independently testable (pass/fail), technology-agnostic, and c
 
 | Field | Required | Format | Rules |
 |-------|----------|--------|-------|
-| ID | Yes | D-XXX | Sequential, three-digit padded, no gaps |
+| ID | Yes | D-XXX | Sequential, three-digit padded, no gaps — one shared sequence across both origins |
+| Origin | Yes | analysis / structural | Which stage authored the row: `analysis` (this skill's author — technology decisions) or `structural` (the architecture seat via `mochiko:patterns-system-design` — topology decisions, grouped in the Structural Decisions subsection) |
 | Title | Yes | Free text | Descriptive, concise |
 | Context | Yes | One-to-two lines | The problem that needed solving |
 | Shaped By | Yes | C-XXX / NFR-XXX references | On the context line; constraints and NFRs that narrowed options |

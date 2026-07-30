@@ -1,6 +1,6 @@
 {
   "name": "mochiko",
-  "version": "0.29.0",
+  "version": "0.30.0",
   "description": "Kernel-free agent-skill framework: sound-loop workflows built from native agent teams and skills",
   "author": {
     "name": "HumanInLoop",
@@ -21,6 +21,7 @@
     "./agents/validator.md",
     "./agents/requirements-analyst.md",
     "./agents/devils-advocate.md",
+    "./agents/system-architect.md",
     "./agents/technical-analyst.md",
     "./agents/task-architect.md",
     "./agents/staff-engineer.md",

@@ -8,7 +8,7 @@ disable-model-invocation: true
 **Goal:** decompose an accepted `spec.md` into an accepted `slices.md` — ordered, named story
 groups (a designated foundation slice, dependency-closed ordering, cross-cutting extend
 obligations, a declared Feature-Done section) that graduate through `/mochiko:plan` →
-`/mochiko:tasks` → `/mochiko:implement` as independent units instead of one whole-spec batch —
+`/mochiko:implement` as independent units instead of one whole-spec batch —
 authored and independently graded before the user accepts it. Design record:
 `.mochiko/brainstorms/vertical-graduation/synthesis.md`. `$ARGUMENTS` = optional feature ID or
 description; empty or detected-from-workspace is handled by triage below.

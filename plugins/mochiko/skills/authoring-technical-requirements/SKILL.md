@@ -67,6 +67,16 @@ Document hard boundaries (constraints) and the technology decisions shaped by th
 
 > **The decision *technique* lives in `mochiko:patterns-technical-decisions`** — reach it to evaluate alternatives, and record its result in the D-XXX slots. This skill owns only the field schema and the C↔D traceability.
 
+**Structural Decisions section (architecture-time D-XXX rows).** `constraints-and-decisions.md`
+carries a designated **Structural Decisions** subsection inside Section 2, grouping the D-XXX rows
+that record *topology* choices — component boundaries, interaction style, responsibility placement —
+decided during the architecture stage. These rows are authored by the **architecture seat**
+(`mochiko:patterns-system-design`), **not** this skill's analysis-time author, who keeps its own
+technology-decision D-XXX rows and **preserves** this section rather than filling it. Both origins
+share one D-XXX field schema, the same ADR discipline (`mochiko:patterns-technical-decisions`), and
+one continuous D-XXX sequence; the architecture delta summary links each structural change to its row
+here. (Template + the `Origin` marker: ARTIFACT-TEMPLATES.md.)
+
 **Section 3: Infrastructure Requirements (IP-XXX)** — field schema in ARTIFACT-TEMPLATES.md.
 
 **Every constraint that implies platform work gets an IP-XXX item.** Constraints document boundaries; IP-XXX items document what those boundaries require operationally.
@@ -117,6 +127,7 @@ Before finalizing, verify:
 - [ ] Every TR has testable acceptance criteria
 - [ ] Every constraint has a source, type, and severity classification
 - [ ] Every decision references the constraints that shaped it (C-XXX ↔ D-XXX)
+- [ ] Architecture-time topology decisions live as D-XXX rows in the **Structural Decisions** section (authored by the architecture seat; the analysis-time author preserves it, never fills it)
 - [ ] Every NFR has a numeric target AND measurement method
 - [ ] Every constraint implying platform provisioning has a corresponding IP-XXX
 - [ ] Cross-references between artifacts are consistent

@@ -6,6 +6,60 @@ conversion assessment** (one-shot → team-form) and re-checked the **S8 home-re
 against plan's needs (a standing producer spanning two phases + two reviewer seats, one of them
 fire-once — no new shape gap; shape stays v2).
 
+## [v0.30.0] Build note — merged design-room command: absorbs `/mochiko:tasks` + gains the architecture stage (2026-07-30)
+
+Design records: `.mochiko/brainstorms/team-method-vs-command-shape/record.md` (D4/D5 — plan absorbs
+tasks) + `.mochiko/brainstorms/architecture-design-primitive/record.md` (AD-D1–D9 with folds R1–R10,
+seam notes N1–N3). Not a strip wave — a feature build; the architecture-stage **additions** are recorded
+in the `DECISIONS.md` rows AD-D1–D9 (lead-owned landing), not here (Job-4 rule: pure additions ride the
+decision row, the v3 run-cost precedent). This note logs the version stamp, the **relocation** (tasks'
+structuring loop moved *into* plan), and the consequent cross-reference change. Overall command surface
+7 → 6 — see the tasks retirement note (`strips/tasks.md` v0.30.0).
+
+- **Relocation IN (from `commands/tasks.md`, now retired):** the entire Mapping → Tasks structuring loop
+  — the standing `task-architect` (`patterns-vertical-tdd`) producer seat, the `devils-advocate`
+  (`review-task-artifacts`) reviewer in its early-mapping-then-cumulative modes, the two-sub-stage round
+  loop, and the task-artifact deliverables (`task-mapping.md` · `tasks.md`) — relocated into plan's
+  **Phase 4**. tasks' standalone `tasks.md`-acceptance gate (its G5) **dissolves** into plan's single
+  final **package acceptance (G7)** per team-method D5 (the standalone signature was load-bearing only
+  while a command boundary sat there). The `review-task-artifacts` validator is **unchanged** in
+  structure — same agent, same skill, same checklists; only its caller moved. The completeness reviewer
+  is now **one standing `devils-advocate` seat** that runs `review-plan-artifacts` across the design
+  stages and `review-task-artifacts` across structuring (the skill is named per dispatch, never loaded as
+  frontmatter — shape Layer 2), rather than two separately-spawned reviewers across two commands.
+- **Addition — the architecture stage (AD-D1–D9; recorded in DECISIONS, summarized here for the trail):**
+  a new **Phase 2** between Analysis and Detailed design, authored by a **new standing `system-architect`
+  seat** (`mochiko:patterns-system-design`) — the delta `architecture.md` artifact + the structural D-XXX
+  rows into `constraints-and-decisions.md`, its own **early sign-off gate (G3)** presenting the *rendered*
+  diagram (degrade-with-record fallback, D8/R5, marked as a shape-exception in the command), always-on
+  incl. the no-delta form (D5), and a bootstrap **baseline-confirmation gate (G2)** when no
+  `ARCHITECTURE.md` exists (R6a). The `principal-architect` feasibility seat gains an **architecture pass**
+  (topology feasibility + governance conformance) — the carve-out of its former "never grades past Phase 1"
+  bar (R1, named build work); `review-plan-artifacts` gains architecture-coverage + conforms-to-architecture
+  checks (referenced, the skill owns them). Detailed design (former Phase 2, now **Phase 3**) must conform
+  to the approved architecture; a contradiction found in authoring **returns to G3** for a consented target
+  amendment (R2).
+- **Gate renumber (consequent):** the architecture gates insert early, so plan's gates renumber —
+  G1 (entry) · **G2** baseline-confirm (bootstrap) · **G3** architecture sign-off · G4 feasibility/governance
+  rejection (was G2, now also carrying the governance two-exit, D9.3) · G5 clarification (was G3) · G6
+  exit-early (was G4) · **G7** final package acceptance (was plan's G5 *and* tasks' G5, merged).
+- **Cross-reference change:** Phase 5's next-step pointer `→ /mochiko:tasks` is superseded; the merged
+  command produces the whole package and points `→ /mochiko:implement`. `templates/plan-template.md` gained
+  an **Architecture** section (pointers to `architecture.md`, per the summary-not-restatement rule) and now
+  lists `architecture.md` / `task-mapping.md` / `tasks.md` in its Artifacts manifest.
+- **Producer report added:** `templates/sysarchitect-report-template.md` — the `system-architect`'s
+  self-disclosure carrier (report: disclosure, per `report-format.md`), parallel to the techanalyst /
+  taskarchitect report templates.
+- **Conversion re-assessment:** the merge does not re-open the team-form ruling — all three producers
+  (technical-analyst, system-architect, task-architect) and both reviewers stay standing/cold seats per the
+  existing conversion assessments below and tasks' (retired) assessment. **S8 home-revision checkpoint
+  re-checked:** the merged command is a larger team (3 producers + 2 reviewers, 7 gates) but rides the
+  existing shape — Layer 1 as-you-go artifact + producer-authored uncertainty branch, Layer 2 standing/cold
+  seats + independence-by-structure — with **no new shape gap** (the rendered-diagram gate is a
+  per-workflow gate, not shape doctrine; marked shape-exception where a line would otherwise restate
+  shape). Shape stays v3. The first-dogfood confirm-or-revert checkpoint carries forward: the open "Dogfood
+  `/mochiko:plan`" item now exercises the merged, architecture-first command.
+
 ## [v0.15.0] Conversion note (D2/S4 — one-shot → team-form, 2026-07-19)
 
 - **Command-specific rationale (user-ratified):** plan runs a producer↔two-reviewer cycle (≤3 rounds

@@ -91,6 +91,43 @@ Grade these when reviewing the analysis output set (e.g. `requirements.md`,
 
 ---
 
+## Architecture Artifact
+
+Grade this when reviewing the design-time architecture (`architecture.md`) — the container-level
+topology + current→target delta the detailed design conforms to (authored by
+`mochiko:patterns-system-design`, upstream of the design set).
+
+### Checklist — Architecture (`architecture.md`)
+
+| Check | Question | Severity |
+|-------|----------|----------|
+| Component-diagram coverage | Does every component-table entry appear in the container diagram, and every diagram box in the table? | Critical |
+| Qualifying-flow coverage | Does every **qualifying flow** — any flow crossing ≥2 components with non-trivial ordering or failure semantics (user journey *or* system flow) — have a sequence diagram? | Critical |
+| Delta-summary links | Does the delta summary link each structural change to a `D-XXX` row (link, not restatement)? | Important |
+| Status annotation | Is every component marked new / modified / existing? | Important |
+| Baseline present | Is the current-state baseline present — seeded from `ARCHITECTURE.md`, or reconstructed-and-confirmed with a confidence note, or greenfield-empty? | Important |
+| No-delta form | If the feature is no-delta, does it still present the reseeded diagram + the one-line no-structural-change claim? | Important |
+| Deployment-view conditionality | If `IP-XXX` rows exist, is the deployment view present? If none, is its absence recorded (not a stub)? | Minor |
+
+> **Qualifying-flow coverage is keyed to ordering/failure complexity, NOT story priority.** A check
+> that reads "every P1 journey has a sequence diagram" under-enforces exactly the ordering-critical
+> system flows (async settlement, retry, webhook) this coverage exists to guarantee — a P1 journey is
+> the **floor, never the cap**. Grade against the qualifying-flow definition, not P1.
+>
+> Whether the topology can **meet the NFRs** or is **buildable under the constraints**, and whether it
+> **conforms to governance** (layer rules, dependency allowlist), are feasibility concerns →
+> `mochiko:review-feasibility` (its architecture pass). This checklist grades that the pieces are
+> **present, covered, and internally consistent**.
+
+### Key Questions — Architecture
+
+- Is there a component in the table with no box in the diagram, or a box with no table row?
+- Is there a multi-component flow with real ordering or failure semantics and no sequence diagram?
+- Does every structural change in the delta summary point at a `D-XXX` row?
+- Was the baseline actually seeded or confirmed, or silently assumed?
+
+---
+
 ## Design Artifacts
 
 Grade these when reviewing the design output set (e.g. `data-model.md`, `contracts/api.yaml`,
@@ -173,6 +210,7 @@ consistency checklist that previously lived as a standalone template.
 | Requirements-decisions alignment | Do decisions serve the requirements they reference? | Critical |
 | Decisions-model consistency | Are model choices consistent with technology decisions? | Critical |
 | Model-contract consistency | Do schemas reflect the data model exactly? | Critical |
+| Architecture conformance | Do `data-model.md` and contracts conform to the approved architecture — no entity or endpoint implying a component the architecture does not declare? | Critical |
 | Sensitivity-contract alignment | Do API responses respect data classification (no Restricted data in responses)? | Critical |
 | Integration-contract alignment | Do contract integration boundaries match the systems implied by requirements? | Critical |
 | Requirement traceability | Can we trace from FR to TR to entity to endpoint? | Important |
@@ -205,6 +243,15 @@ Use these as the spot-check lens when running the consistency pass quickly:
   approach is a Critical consistency failure here; a contradiction *between two requirements or
   constraints* is feasibility's).
 - The original rationale still applies.
+
+**Architecture Conformance**
+- Every entity's owning component and every endpoint's serving component is one the approved
+  `architecture.md` declares — a `data-model.md` entity or a contract endpoint that implies a
+  component the architecture never drew is a Critical consistency failure here (the design
+  introduced structure the approved shape did not carry).
+- No new cross-component interaction in the design that the container diagram does not show.
+- Whether the *topology itself* can meet the NFRs / is buildable under the constraints is
+  feasibility's, not this — see the boundary table.
 
 **Naming Conventions**
 - API endpoints follow patterns established in `constraints-and-decisions.md`.
@@ -287,6 +334,7 @@ exactly. **This skill keeps the left column; `mochiko:review-feasibility` owns t
 | Consistency (does the design honor the decisions?) | requirements-decisions alignment; decisions-model consistency; model-contract / schema-model consistency; sensitivity-contract alignment; integration-contract alignment; constraint-decision cross-refs; constitution compliance; decision-honored-by-design | — |
 | **Contradiction** (do artifacts conflict?) | — | **TR ↔ constraint contradictions; NFR ↔ constraint conflicts; NFR ↔ NFR impossibilities** |
 | **Buildability** (can it be built / met?) | — | **NFR-design feasibility (can the design meet the NFR targets?); constraint-design buildability (can the design satisfy the constraints?); integration failure modes realistic vs aspirational** |
+| **Architecture** (topology artifact) | component-table↔diagram coverage; qualifying-flow sequence coverage; delta-summary D-XXX links; component status; **data-model / contracts conform to the approved architecture** | **topology feasibility (can the proposed topology meet the NFRs / be built under the constraints?); governance conformance (layer rules honored, dependencies within the allowlist, GI-linked principles satisfiable by the topology)** — its **architecture pass** |
 
 **The one-line test:** *"is it here, traceable, measurable, and does it honor the decisions?"* →
 this skill. *"can these pieces be built together without contradiction or overreach?"* →

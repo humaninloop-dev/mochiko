@@ -9,6 +9,44 @@ whole-implementation final validation, and a per-cycle confidence gate that auto
 deterministic-CLI-pass cycles — **no new shape gap; shape stays v2**, so no template revision and no
 cross-command re-audit this wave).
 
+## [v0.30.0] Build note — implement honors the approved architecture (AD-D6; 2026-07-30)
+
+Design record: `.mochiko/brainstorms/architecture-design-primitive/record.md` (AD-D6 with folds R2/R7/R8,
+seam note N1). Not a strip — **additions** (recorded in `DECISIONS.md` row AD-D6, lead-owned landing);
+logged here with the version stamp for the audit trail and to name the seam-N1 resolution the record left
+to build.
+
+- **Briefed input (D6.1):** the approved `architecture.md` joins the design inputs read at Phase 0 step 4
+  and is added to the producer's per-cycle brief — it is the **anchor** for the two new mechanisms below.
+- **Deviation escalation (D6.2 + R7) — the diagram-anchored mechanical test:** "does this cycle add/remove
+  a box, add/remove/redirect an arrow, or move a responsibility across a boundary on the approved diagram?"
+  — **self-checked by the producer at cycle open AND cycle close**, surfaced at the cycle verdict (Phase 1
+  step 3). A surfaced deviation **stops** and forces the human checkpoint (folded into the confidence gate:
+  auto-approve now also requires *no deviation surfaced*); the user re-rules and the approved target is
+  **amendable mid-implement with consent** (a consented target amendment updating `architecture.md`, the
+  same mechanism as plan's design-time return to G3). Drift caught one cycle deep, never deferred to landing.
+- **Built-vs-approved landing diff (D6.3 + R8) — new build capability:** at final validation (Phase 2 step
+  3), when an **approved structural delta existed** in `architecture.md`, the `authoring-architecture`
+  dispatch runs in **diff mode** (approved target + built code → "built as approved" or the divergence). The
+  divergence is surfaced at the **G5** acceptance presentation. This is a *new* capability (R8 — the prior
+  `authoring-architecture` only wrote prose from built code); assigned to that dispatch as a named build
+  item, taking the approved artifact as input.
+- **Seam N1 made explicit (the record's carry-forward):** the `authoring-architecture` dispatch now has
+  **two distinct firing conditions**, kept separate at build — the **diff** fires on *approved-delta-existed*
+  (broad, independent of what was built, so a silently-descoped approved delta cannot escape both mechanisms),
+  run at final validation to reach the G5 decision; the **`ARCHITECTURE.md` fold** fires only on a *built
+  structural change* (narrow, the KM writer moment), at Finalize. An approved-but-not-built delta triggers the
+  diff without forcing a doc update. **Placement resolution (build decision):** the record has the diff "at
+  landing" yet its divergence "surfaces at implement's acceptance," and acceptance (G5, Phase 3) precedes the
+  Finalize landing (Phase 4) — resolved by running the diff at final validation (Phase 2, end) so its report
+  is available at G5, while the doc fold stays at Finalize. Flagged as a build-seam resolution the record
+  deferred (N1).
+- **Consequent edits:** Phase 0 entry gate retargeted to `/mochiko:plan` (the package producer) after the
+  `/mochiko:tasks` retirement (see `strips/tasks.md` v0.30.0); done-condition gains clause (4) (the diff ran
+  when an approved delta existed); the confidence gate, G5 presentation, state-recovery table, and the
+  "What you own" footer updated to carry the deviation check + the diff. **No shape gap** — both mechanisms
+  are per-workflow gates/steps, not shape doctrine; shape stays v3.
+
 ## [v0.17.0] Conversion note (D2/S4 — one-shot → team-form, 2026-07-19)
 
 - **Command-specific rationale (user-ratified):** implement runs a producer↔verifier cycle across a

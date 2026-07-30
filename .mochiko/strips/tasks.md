@@ -6,6 +6,43 @@ the **D2 conversion assessment** (one-shot → team-form) and re-checked the **S
 checkpoint** against tasks' needs (a standing producer spanning two phases + ONE standing reviewer with
 an early-gate + cumulative-mode pattern — no new shape gap; shape stays v2).
 
+> **RETIRED at v0.30.0** — `commands/tasks.md` was removed from the plugin; the primitive is retired,
+> not stripped line-by-line. This note is kept as the provenance trail (retirement entry below); the
+> entries beneath it are frozen history from tasks' one-shot→team-form life.
+
+## [v0.30.0] RETIRED — `/mochiko:tasks` merged into `/mochiko:plan` (2026-07-30)
+
+- **Disposition:** relocated → `commands/plan.md` (Phase 4, the Structuring loop). The whole command
+  primitive is retired; the file is deleted from `commands/`. Design records:
+  `.mochiko/brainstorms/team-method-vs-command-shape/record.md` (D4 — surface reduction, tasks merges
+  into plan; D5 — one final package acceptance) + the architecture-design build that executed the merge
+  simultaneously (`.mochiko/brainstorms/architecture-design-primitive/record.md`).
+- **What relocated (intact):** the standing `task-architect` (`patterns-vertical-tdd`) producer seat, the
+  standing `devils-advocate` (`review-task-artifacts`) reviewer with its **early-mapping-then-cumulative**
+  pattern, the two-sub-stage Mapping → Tasks round loop (≤3 rounds each), and the deliverables
+  `task-mapping.md` · `tasks.md`. The `review-task-artifacts` validator is **structurally unchanged** —
+  same agent, same skill, same Mapping/Cross-Artifact checklists; only its caller (the plan lead instead
+  of the tasks lead) moved. In plan the reviewer is the **same standing `devils-advocate` seat** that
+  runs `review-plan-artifacts` earlier, switching skills per stage (named per dispatch, shape Layer 2).
+- **What dissolved (not relocated):** tasks' standalone `tasks.md`-acceptance gate (its G5) — folded into
+  plan's single final **package acceptance (G7)** per team-method D5 (design + mapping + tasks accepted as
+  one package, which is `/mochiko:implement`'s unchanged entry). The standalone signature was load-bearing
+  only while a command boundary sat between plan and tasks; that boundary is gone.
+- **Tier failed:** n/a — this is a build-time surface reduction (a ruled merge), not an altitude/purpose
+  strip. Command surface **7 → 6** (brainstorm · setup · specify · slice · plan · implement).
+- **Cross-references updated (consequent):** `commands/implement.md` Phase 0 entry gate now points to
+  `/mochiko:plan` (was `/mochiko:tasks`) and reads the package (`tasks.md` + `plan.md` + `architecture.md`);
+  `commands/slice.md` pipeline line drops `/mochiko:tasks` (`/mochiko:plan → /mochiko:implement`);
+  `commands/plan.md` Phase 5 next-step points `→ /mochiko:implement` (was `→ /mochiko:tasks`);
+  `templates/agent-dispatch.md` "seven commands" → "six commands".
+- **NOT updated by this seat (flagged to lead + skills seat — out of the command-authoring lane):**
+  `skills/mochiko/SKILL.md` (the router still lists a `/mochiko:tasks` row and `/mochiko:plan → /mochiko:tasks
+  → /mochiko:implement` pipeline mentions) and `skills/review-task-artifacts/{SKILL.md,references/*}` (the
+  "the `/mochiko:tasks` lead" caller references, now the `/mochiko:plan` lead). These are `skills/` edits,
+  owned by the primitives seat — must land before v0.30.0 ships or the router advertises a retired command.
+
+### — frozen history below (tasks' one-shot → team-form life, v0.16.0) —
+
 ## [v0.16.0] Conversion note (D2/S4 — one-shot → team-form, 2026-07-19)
 
 - **Command-specific rationale (user-ratified):** tasks runs a producer↔reviewer cycle (≤3 rounds per
