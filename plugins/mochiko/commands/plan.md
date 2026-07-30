@@ -55,19 +55,26 @@ team-form commands.
   `quickstart.md` when applicable (+ `techanalyst-report.md` each round) — the standing seat carries
   the Phase-1 analysis rationale into the Phase-2 design rather than reconstructing it from the files. Brief it
   per `agent-dispatch`: `spec.md`, the governance obligated-read line (per the prerequisite), the
-  brownfield analysis when present, the templates to fill per its skills. Round > 1 within a phase
-  is a message to the same seat carrying the reviewers' gap list verbatim (fix the flagged gaps;
-  don't regress passing sections). It never grades.
+  brownfield analysis when present, the templates to fill per its skills. **Peer-edged with the
+  completeness reviewer only:** it hands each round's finished artifacts straight there. The
+  **feasibility architect is lead-gated** — fired once, re-fired only on a structural change: a
+  policy call, yours. Round > 1 within a phase reaches the same seat with the completeness gap list
+  already in hand (peer-routed); the architect's concerns arrive through you (G2). You rule the
+  round and hold the revision targeted (fix the flagged gaps; don't regress passing sections). It
+  never grades.
 - **feasibility reviewer** — `mochiko:principal-architect` (`review-feasibility`), spawned **cold
-  after the Phase-1 analysis is authored**, never in contact with the producer. Grade cross-artifact
+  after the Phase-1 analysis is authored**, **lead-gated thereafter** — you fire it, and its concerns
+  reach the producer through you (G2). Grade cross-artifact
   feasibility from the files → `feasibility-report.md` (three-state `feasible` / `needs-revision` /
   `infeasible`). It grades **once**; re-fire it (a message to the same seat) **only on a structural
   change** — new/changed constraints, expanded requirement scope, or modified NFR targets. It never
   grades Phase 2 (the completeness reviewer carries cross-artifact consistency there). Its output is
   **lead-adjudicated input** (the `review-*` family boundary).
 - **completeness reviewer** — `mochiko:devils-advocate` (`review-plan-artifacts`), spawned **cold at
-  the first completeness review**, never in contact with the producer, one **named standing seat
-  across both phases**. Phase 1: grade completeness / coverage / consistency from the files →
+  the first completeness review**, peer-edged with the producer thereafter, one **named standing seat
+  across both phases**. **Delivery is not a start signal** — it grades only when you open the pass
+  (Phase 1: after the architect; Phase 2: on your mode-selecting message).
+  Phase 1: grade completeness / coverage / consistency from the files →
   `advocate-report.md` (`ready` / `needs-revision` / `critical-gaps`). Phase 2: a message to the
   same seat in **incremental mode** — a full review of the new design artifacts plus a brief
   consistency check back to the Phase-1 analysis (the `review-plan-artifacts` incremental procedure);
@@ -115,9 +122,12 @@ team-form commands.
 analysis is authored — not in Phase 2 (don't spend a completeness pass on infeasible requirements).
 
 1. **Produce.** The producer authors `requirements.md` (FR→TR mapping), `constraints-and-decisions.md`
-   (Part 3 = IP-XXX infrastructure), and `nfrs.md` (+ `techanalyst-report.md`); on round > 1 the
-   message carries the reviewers' gap list for targeted revision (fix flagged gaps; don't regress
-   passing sections). The round-1 spawn is the authoritative probe — confirm addressability.
+   (Part 3 = IP-XXX infrastructure), and `nfrs.md` (+ `techanalyst-report.md`), handing the completed
+   set to the completeness reviewer directly (peer-routable delivery); **you sequence when it
+   grades** — the architect first (step 2), so an infeasible analysis never buys a completeness
+   pass. On round > 1 the producer already holds the completeness gap list for targeted revision
+   (fix flagged gaps; don't regress passing sections). The round-1
+   spawn is the authoritative probe — confirm addressability.
 2. **Feasibility (architect, once).** The feasibility reviewer, cold, grades cross-artifact
    feasibility from the files → `feasibility-report.md`.
 3. **Completeness (advocate).** The completeness reviewer, cold at first review, grades completeness /
@@ -199,7 +209,9 @@ fix-on-sight; structural change → `ARCHITECTURE.md` via a fresh `principal-arc
   phases, never grades; **two independent reviewers**, neither the producer — `principal-architect`
   (review-feasibility) grades feasibility, `devils-advocate` (review-plan-artifacts) grades
   completeness — from the files, never authoring. Disjoint agents, disjoint skills, structurally
-  separated (both reviewers cold-spawned, gap lists lead-routed, no producer↔reviewer contact).
+  separated (both reviewers cold-spawned; the completeness gap list hands off peer-routed
+  producer↔reviewer per the shape's mesh, the architect's routes through you at G2, with every
+  verdict yours).
   **Validation model:** the bounded in-loop critique — every round, unsized by design; no sized
   end-stage review (the shape's in-loop-critique branch).
 - **Bounds:** cap **3** produce↔review rounds **per phase** (you count); no-progress exit when a
@@ -207,7 +219,9 @@ fix-on-sight; structural change → `ARCHITECTURE.md` via a fresh `principal-arc
   send; a G5 amend re-enters the relevant bounded phase.
 - **Human gates:** G1 input recovery + governance / entry / brownfield surface · G2
   feasibility-rejection · G3 clarification (incl. the "Research this" knowledge-gap branch) · G4
-  exit-early / escalation · G5 `plan.md` acceptance · escalation on any guard trip.
+  exit-early / escalation · G5 `plan.md` acceptance · escalation on any guard trip. **No devolved
+  branch** — both reviews are judgment grades, never all-deterministic-CLI, so no gate is skipped
+  and every verdict is yours.
 
 ## State recovery
 

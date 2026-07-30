@@ -83,9 +83,10 @@ the same `Contested` dogfood-pilot ruling as `/mochiko:brainstorm`'s.
   the verify pass itself; in a pair the verify pass is the **coherence** reviewer's. These seats
   produce **lead-adjudicated input before G3** — never the authoritative grade (that stays the
   validator's, on the authored surface set); they message you, never the user, and never contact
-  the producer or validator.
+  the producer or validator — a **cold review stage**, not in-loop traffic, so that isolation
+  stands deliberately under the mesh.
 - **validator** — `mochiko:validator`, spawned **cold at first validation**, never in the room
-  before that and never in contact with the producer. Brief it to run
+  before that, **peer-edged with the producer** for fix-list hand-offs thereafter. Brief it to run
   `mochiko:validation-constitution` **from the files** (the surface set + synthesis + trace
   summary, never the producer's report): trace closure both ways over the manifest, region-marker
   integrity, index→file existence, ledger completeness (Three-Part per principle), tier + waiver
@@ -93,8 +94,12 @@ the same `Contested` dogfood-pilot ruling as `/mochiko:brainstorm`'s.
   module fragment's **repo-level invariant re-audit runs**, resolved from the project-pinned
   copy (`.mochiko/memory/knowledge-management.md`) when one exists — anti-pattern + placeholder
   scans, semver call — brownfield adds the tools/versions↔analysis cross-check. It **messages
-  you** binary PASS/FAIL + a fix list. **The fix list flows through you** to the producer — that
-  routing is the independence the loop rests on.
+  you** binary PASS/FAIL + a fix list, and on FAIL hands that list to the producer directly
+  (peer-routable). Independence here is structural — disjoint agents, disjoint skills, cold spawn —
+  never the routing; the round's **verdict stays yours**.
+  <!-- shape-exception: setup carried the library's most explicit statement of the falsified
+  routing=independence claim; the correction is stated at the seat so the deletion is not silent -->
+
 
 ## The flow
 
@@ -152,10 +157,14 @@ synthesis↔intent fidelity gate — nothing is authored before it clears, and e
 was stress-tested (or its waiver recorded).
 
 **Authoring loop** *(you own the counter; the deliverable is FAIL until proven otherwise)* —
-**produce** (brief the producer seat; on round > 1 message it the validator's fix list verbatim
-for targeted revision — don't regress passing items; if it messages clarifications it cannot
-resolve, ask the user and feed answers forward — an in-loop human gate, never the done-condition)
-→ **validate** (spawn the validator cold on round 1; message the same seat after) → PASS: record
+**produce** (brief the producer seat; on round > 1 the validator's fix list has already reached it
+directly — you rule the round and hold the revision targeted, don't regress passing items; if it
+messages clarifications it cannot resolve, ask the user and feed answers forward — an in-loop human
+gate, never the done-condition)
+→ **validate** (spawn the validator cold on round 1; message the same seat after — **lead-routed
+deliberately**: the validator's check surface is mode-parameterized every round, brownfield adding
+the tools/versions↔analysis cross-check and an attached knowledge-management module adding the
+invariant re-audit, so selecting it is a policy call, not a hand-off) → PASS: record
 verdict + version bump → acceptance. FAIL: increment round; cap **3** / fix list unchanged
 round-over-round / kill-switch → **escalate** (last fix list + stop reason;
 give-guidance-and-retry / accept-with-noted-gaps / abort — the run stays FAIL unless the user
@@ -201,8 +210,9 @@ dogfood **gates on the probe** — recommend, don't just offer.
   never done.
 - **Producer ↔ validator:** `principal-architect` (authoring-constitution, analysis-codebase)
   authors, never grades; `validator` (validation-constitution) grades from files, never authors —
-  disjoint agents, disjoint skills, structurally separated (validator cold-spawned, fix list
-  lead-routed, no producer↔validator contact). Validator standing: Tier-2 with deterministic
+  disjoint agents, disjoint skills, structurally separated (validator cold-spawned; fix-list
+  hand-offs peer-routed producer↔validator per the shape's mesh, with the round's verdict yours).
+  Validator standing: Tier-2 with deterministic
   sub-checks (placeholder scan, two-way trace-closure over the manifest, region-marker + index→file
   existence, Three-Part presence in the ledger; brownfield tools/versions↔analysis). Intent
   reviewer(s): `devils-advocate` (review-governance-intent), cold-spawned at the synthesis
@@ -219,7 +229,9 @@ dogfood **gates on the probe** — recommend, don't just offer.
 - **Human gates:** G1 mode-select · G2 analysis checkpoint (brownfield) · the interrogation
   itself + the in-loop clarification sub-gate · the review sizing gate + survivor rulings on
   user territory · G3 synthesis confirmation · G4 acceptance with trace summary +
-  flagged-proposal rulings · G5 cleanup · escalation on any guard trip.
+  flagged-proposal rulings · G5 cleanup · escalation on any guard trip. **No devolved branch** —
+  validation here is a Tier-2 judgment grade, never all-deterministic-CLI, so no gate is skipped
+  and every verdict is yours.
 
 ## Recovery
 

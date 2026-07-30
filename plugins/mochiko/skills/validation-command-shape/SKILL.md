@@ -5,10 +5,13 @@ description: |
   deterministic grep floor (references present, no restated single-sourced prose,
   exceptions marked, frontmatter correct) beneath a prose judgment ceiling (altitude,
   parameter completeness, contract-fill soundness), plus the strip-note audit during
-  minimalism waves → binary PASS/FAIL + fix list. Use when grading an authored or
-  converted commands/*.md file, auditing shape conformance, or closing a strip wave.
-  MUST BE USED when the task says "grade this command", "audit shape conformance", or
-  "audit this strip wave". Run by an independent grader, never the author.
+  minimalism waves and the shape-revision audit (a revised command-shape.md graded for
+  ruling fidelity, altitude, logging, and re-audit coverage) → binary PASS/FAIL + fix
+  list. Use when grading an authored or converted commands/*.md file, auditing shape
+  conformance, closing a strip wave, or auditing a shape-home revision.
+  MUST BE USED when the task says "grade this command", "audit shape conformance",
+  "audit this strip wave", or "audit this shape revision". Run by an independent grader,
+  never the author.
 ---
 
 # Validation: Command Shape
@@ -16,9 +19,12 @@ description: |
 ## Overview
 
 Binary PASS/FAIL over a `commands/*.md` file (and, in a strip wave, its cluster's strip
-notes) against the shape whose sole authoritative home is
-`${CLAUDE_PLUGIN_ROOT}/templates/command-shape.md`. **Read the command file and the shape
-home this run** — grading from a summary or the author's report is a FAIL by itself.
+notes; in a shape-revision run, the shape home itself — checks 11–14) against the shape
+whose sole authoritative home is
+`${CLAUDE_PLUGIN_ROOT}/templates/command-shape.md`. **Read the graded file and the shape
+home this run** (a revision run: the shape home, the ruling source, and the prior
+version's text via git) — grading from a summary or the author's report is a FAIL by
+itself.
 Default FAIL; the verdict clears only check by check.
 
 The two-layer design is deliberate: the **deterministic floor** runs first and its results
@@ -53,9 +59,9 @@ Against the command file:
 4. **Exceptions marked** — every intentional restatement carries
    `<!-- shape-exception: ... -->` with a non-empty justification; an exception marker
    with no justification is a floor FAIL.
-5. **Strip-wave runs only** — every strip-note entry touched this wave carries a version
-   stamp (a `[v` prefix per entry heading), and every re-add entry contains either an
-   evidence link or the literal `override` marker.
+5. **Strip-wave and revision runs** — every strip-note entry touched this wave or
+   revision carries a version stamp (a `[v` prefix per entry heading), and every re-add
+   entry contains either an evidence link or the literal `override` marker.
 
 ## The judgment ceiling (prose — the grade grep cannot give)
 
@@ -74,20 +80,39 @@ Against the command file:
 9. **Preserved responsibilities (conversions and strips)** — nothing workflow-specific was
    dropped without a strip entry, and every relocation points at a home that actually
    contains the content (Read the home to confirm).
-10. **Strip-note quality (waves)** — entries name tier + disposition; shared-primitive
+10. **Strip-note quality (waves and revisions)** — entries name tier + disposition; shared-primitive
     entries name the consumers assessed; contested keeps carry survivor-provenance
     entries.
+
+## Shape-revision runs (grading a revised `command-shape.md`)
+
+The graded file is the shape home itself. Read it, the ruling source the revision cites,
+and the prior version's text (git) this run. Checks 1–10 do not apply, except check 5's
+stamp form and check 10's entry-quality bar, which govern any strip-note entries the
+revision writes.
+
+11. **Floor — footer stamped:** the version line is bumped with date + ruling source, and
+    the prior version history is preserved.
+12. **Floor — rewrites logged:** every line rewritten or removed from the prior version
+    carries a version-stamped strip-note entry (check 5's form); pure additions instead
+    appear in the revision's decision row.
+13. **Ceiling — ruling fidelity:** every cited ruling is encoded, and nothing beyond the
+    rulings entered the home — diff against the prior version; each hunk traces to a
+    ruling or is named as a gap.
+14. **Ceiling — altitude + re-audit set:** new doctrine is true of every conformant
+    command (per-command variance is a `[PARAM]` tag), and the handoff names every
+    conformant command the revision affects — an unnamed affected command is a gap.
 
 ## Verdict
 
 ```
-VALIDATE: <command path>
-Checklist run:  validation-command-shape (floor 1–5, ceiling 6–10)
-Evidence read:  <files Read this run>     # command + shape home mandatory; absent ⇒ FAIL
+VALIDATE: <graded file — command path, or the shape home in a revision run>
+Checklist run:  validation-command-shape (floor 1–5, ceiling 6–10; revision runs 11–14)
+Evidence read:  <files Read this run>     # graded file + shape home mandatory (revision runs: home + ruling source + prior version); absent ⇒ FAIL
 Floor:          [per check — PASS/FAIL + the grep evidence]
 Ceiling:        [per check — PASS/FAIL + one-line evidence]
 VERDICT: PASS | FAIL
 Issues requiring fix: <item → missing thing → concrete fix>
 ```
 
-Never edit the file graded; never grade a command this context authored.
+Never edit the file graded; never grade an artifact this context authored.

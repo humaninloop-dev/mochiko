@@ -6,8 +6,30 @@ and tasks' v0.16.0). The wave also ran the **D2 conversion assessment** (one-sho
 re-checked the **S8 home-revision checkpoint** against implement's needs (a standing producer spanning
 the whole cycle sequence + the fix-pass loop, a standing verifier fired once per cycle + a
 whole-implementation final validation, and a per-cycle confidence gate that auto-approves
-deterministic-CLI-pass cycles — **no new shape gap; shape stays v2**, so no template revision and no
-cross-command re-audit this wave).
+deterministic-CLI-pass cycles — **no new shape gap at that wave, when the shape was v2**, so it made
+no template revision and no cross-command re-audit). **Stale as a standing claim:** the shape is now
+**v4** (2026-07-30), and its D3 devolution changed exactly that confidence gate — see the v0.31.0
+entries below.
+
+## [v0.31.0] Lead-as-switchboard routing superseded by the in-loop mesh (shape v4 conforming edit)
+- **Disposition:** superseded → `templates/command-shape.md` v4 (Layer 2 — "Independence by structure" + "In-loop mesh"). Rewritten in place at command altitude: the verifier is still cold-spawned at the first cycle verification (a spawn-timing parameter), the producer↔verifier peer edge is now declared on the roster, and the doctrine stays in the shape.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/team-method-vs-command-shape/record.md` **D1**, scoped by **D2**), not a minimalism strip. Permanent no-contact was the falsified claim; cold *arrival* survives as a property of the stage.
+- **Content (superseded, verbatim):**
+  - seat roster: "spawned **cold at the first cycle verification**, never in contact with the producer"
+  - Phase 1 step 2: "**Verify — same round, never skipped.** Message the verifier to verify the cycle against real infrastructure"
+  - Contract, Producer ↔ validator: "(verifier cold-spawned at the first cycle verification, evidence/reports lead-routed, no producer↔verifier contact)"
+- **Kept deliberately (not superseded):** Phase 2 step 1's lead-routed final validation — the endgame is the lead's under v4, now stated rather than left implicit; and Phase 1 step 1's lead-dispatched targeted retry — a retry follows a failure, and the verdict on a non-clean unit is the lead's.
+
+## [v0.31.0] The clean-cycle verdict devolves to the producer↔verifier pair (shape v4 conforming edit)
+- **Disposition:** superseded → `templates/command-shape.md` v4 (Layer 2 — "Clearing under the mesh"). implement supplies the parameters: the **cycle** is its clearing unit, and the escalated branch's checkpoint keying is a `production`/`regulated`-tier domain-registry addition.
+- **Tier failed:** n/a — supersession by ruling (record **D3**), not a minimalism strip.
+- **Content (superseded, faithfully compressed):**
+  - Phase 1 step 3 header + read: "**Confidence gate + verdict (you).** Read `cycle-report.md` + the verification report + qa's evidence." — the lead read every cycle, clean deterministic ones included; those now clear unread.
+  - Phase 1 step 3 branch: "if every verification is a deterministic CLI check that passed 100%, **auto-approve** and advance to the next cycle" — the auto-approve was the lead's act; it is now the pair's, on qa's PASS-with-evidence.
+  - Contract done-condition (3): "*you* Read the cycle-reports + verification reports" → the final-validation report plus every **escalated** cycle's reports; "qa's status is input, never the gate" gains "wherever judgment exists".
+  - Contract human gates: "the **confidence gate** (per cycle: deterministic CLI verifications that 100% pass → auto-approve; GUI / subjective / any-failure / a `production`+-tier domain-registry addition → human checkpoint)" → restated as the per-cycle checkpoint carrying the **exact skip predicate**, per shape v4's Contract requirement.
+  - "What you own": "the verdict against the default-FAIL done-condition (qa grades from real infrastructure, you Read the cycle-reports + verification reports and decide …)"
+  - frontmatter `description:`: "with a confidence-based per-cycle gate"
 
 ## [v0.17.0] Conversion note (D2/S4 — one-shot → team-form, 2026-07-19)
 

@@ -3,7 +3,17 @@
 Entry formats: `strips/README.md`. Wave context: the slice cluster wave (BACKLOG item 7, the
 second one-shot-command wave after specify's at v0.13.0). The wave also ran the **D2 conversion
 assessment** (one-shot → team-form) and re-checked the **S8 home-revision checkpoint** against
-slice's needs (no new shape gap — shape stays v2).
+slice's needs (no new shape gap at that wave, when the shape was v2). **Stale as a standing claim:**
+the shape is now **v4** (2026-07-30) — see the v0.31.0 entry below.
+
+## [v0.31.0] Lead-relayed gap lists superseded by the in-loop mesh (shape v4 conforming edit)
+- **Disposition:** superseded → `templates/command-shape.md` v4 (Layer 2 — "Independence by structure" + "In-loop mesh"). Rewritten in place: the reviewer is still cold-spawned at first review, and the producer↔reviewer peer edge is declared on the roster.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/team-method-vs-command-shape/record.md` **D1**, scoped by **D2**), not a minimalism strip. Permanent no-contact was the falsified claim; cold *arrival* survives as a property of the stage.
+- **Content (superseded, verbatim):**
+  - producer seat: "Round > 1 is a message to the same seat carrying the reviewer's gap list verbatim"
+  - reviewer seat: "spawned **cold at first review**, never in contact with the producer"
+  - Contract, Producer ↔ validator: "(reviewer cold-spawned, gap lists lead-routed, no producer↔reviewer contact)"
+- **Kept deliberately (not superseded):** every verdict stays the lead's — slice has no deterministic-CLI verification, so **D3's devolved branch cannot apply here**; the Contract now declares that absence rather than leaving it implicit. The **null-exit** round is unaffected: it is graded and ruled exactly as before.
 
 ## [v0.14.0] Conversion note (D2/S4 — one-shot → team-form, 2026-07-19)
 

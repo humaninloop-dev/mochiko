@@ -10,6 +10,8 @@ per ruled decision).
 
 | Date | Decision | Status | Rationale |
 |------|----------|--------|-----------|
+| 2026-07-30 | Layer-2 mesh rewrite executed (D1–D3 + rewrite detail → shape v4; six commands conformed at v0.31.0, all independently audit-PASSed; additions incl. the hand-off-not-a-start-signal hold; loop-discipline pass + agent-dispatch peer-edge field escalated) | ruled | [ADR](.mochiko/decisions/2026-07-30-layer-2-mesh-rewrite-executed.md) |
+| 2026-07-30 | Shape-home revision encoded as a keeper-skill mode — `authoring-commands` Job 4 + `validation-command-shape` revision checks 11–14 (v0.30.0; unblocks the Layer-2 mesh rewrite dispatch) | ruled | [ADR](.mochiko/decisions/2026-07-30-shape-home-revision-mode.md) |
 | 2026-07-25 | OD-D2/D4 naming correction — the **forward view keeps the `ROADMAP.md` name** (no `DIRECTION.md`); the decision index is `DECISIONS.md`; the fat pre-migration roadmap stays frozen in the archive | ruled (user, at build review — corrects the naming fills) | [ADR](.mochiko/decisions/2026-07-25-roadmap-name-carries-forward-view.md) |
 | 2026-07-25 | OD-D1 — BACKLOG fails by shape + missing carrier (fixable in kind); ROADMAP is the wrong document kind | ruled | [operating-docs-maintenance](.mochiko/brainstorms/operating-docs-maintenance/record.md) |
 | 2026-07-25 | OD-D2 — `ROADMAP.md`: thesis · Now/Next/Later (caps 5/7/10) · standing bets · nothing else | ruled | [operating-docs-maintenance](.mochiko/brainstorms/operating-docs-maintenance/record.md) |

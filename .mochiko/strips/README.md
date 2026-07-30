@@ -19,7 +19,7 @@ anywhere under `plugins/` is a defect — fix on sight.
 
 One file per primitive: `strips/<primitive>.md` (e.g. `strips/brainstorm.md` for
 `commands/brainstorm.md`, `strips/loop-discipline.md` for the skill). Entries are appended
-newest-first, each stamped with the plugin version that made it. Three entry types:
+newest-first, each stamped with the plugin version that made it. Four entry types:
 
 ## Strip entry — a line that left the primitive
 
@@ -30,6 +30,23 @@ newest-first, each stamped with the plugin version that made it. Three entry typ
 - **Content:** <the stripped text, verbatim or faithfully compressed>
 - **Consumers assessed:** <shared primitives only: every consumer checked, per D9's guard>
 ```
+
+## Supersession-by-ruling entry — a line a ruling retired (not a minimalism strip)
+
+```
+## [vX.Y.Z] <one-line description>
+- **Disposition:** superseded → <the home that now carries it, or the rewrite that replaced it>
+- **Tier failed:** n/a — supersession by ruling (<record or ADR + the decision ID>)
+- **Content:** <the superseded text, verbatim or faithfully compressed>
+- **Kept deliberately:** <what survived the same edit, and why — omit when nothing did>
+- **Consumers assessed:** <shared primitives only, as above>
+```
+
+The ground is a **decision**, never a tier: the line was not too verbose, it was made wrong —
+or made someone else's — by a ruling. Cite the ruling; a tier number here is a category error.
+The *Kept deliberately* field exists because a doctrine reversal usually spares part of what it
+touches, and an unrecorded survivor reads to the next auditor as an oversight.
+(Coined uniformly across the v0.31.0 shape-v4 wave; formalized here so later entries have a bar.)
 
 ## Survivor-provenance entry — a kept line whose right to exist was contested
 
