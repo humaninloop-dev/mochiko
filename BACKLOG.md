@@ -73,11 +73,6 @@ un-reviewed). Land via `command-architect` + independent `validation-command-sha
   briefing-field table has no home for either, and field 6 (prior feedback verbatim-paste)
   still assumes the superseded v3 lead-relay. User ruling: ninth field (shared-primitive
   change) vs. shape-sentence-only.
-- [ ] **Plan absorbs tasks (D4+D5)** — merge `/mochiko:tasks` into `/mochiko:plan` (7 → 6):
-  one design-room command, one final package acceptance (design + mapping + tasks = implement's
-  unchanged entry); validators unchanged; sizing-gated design checkpoint on request. Mechanics:
-  authored to the shape; `tasks.md` retirement strip-noted; router rows updated; the plan+tasks
-  dogfood items below are **inherited by the merged command** — annotate at build.
 - [ ] **Cold-checkout gate (kinako rule 7)** — warm-machine verification passed a bug six
   cycles (`build/` gitignored; `dart compile exe` missing `-o` parent). Add a fresh-clone
   verification step. **Placement ruling needed:** implement final validation vs the audit
@@ -86,6 +81,22 @@ un-reviewed). Land via `command-architect` + independent `validation-command-sha
   implement), slice-fold toward a four-command surface, multi-stream implement (frozen seams ·
   single-ownership · wait-fallbacks as task-artifact content). Re-open in a dedicated session;
   design input preserved in the record (R1/D4).
+
+## Architecture-primitive build items
+
+Rulings AD-D1–D9 (DECISIONS.md 2026-07-30; record
+`.mochiko/brainstorms/architecture-design-primitive/record.md`). **Built 2026-07-30 at
+v0.32.0** together with the plan-absorbs-tasks merge; both independent audits PASS; closed
+build item in the trail.
+
+- [ ] **Architecture-primitive dogfood** (2026-07-30) — first merged-plan run with the
+  architecture stage: watch the R6a bootstrap + baseline-confirm gate, the rendered-diagram
+  sign-off + degrade-with-record fallback (R5), the qualifying-flow sequence trigger (R4),
+  structural D-XXX rows landing in the designated `constraints-and-decisions.md` section
+  (R3), implement's cycle open/close deviation self-check + built-vs-approved diff reaching
+  the acceptance gate (seam-N1 placement), and the `ARCHITECTURE.md` fold staying distinct.
+  Rides the merged-command dogfood (plan+tasks item below) and the team-form
+  confirm-or-revert.
 
 ## Pipeline dogfood & confirm-or-revert
 
