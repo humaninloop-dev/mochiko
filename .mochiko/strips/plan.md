@@ -4,17 +4,23 @@ Entry formats: `strips/README.md`. Wave context: the plan cluster wave (BACKLOG 
 one-shot-command wave after specify's v0.13.0 and slice's v0.14.0). The wave also ran the **D2
 conversion assessment** (one-shot → team-form) and re-checked the **S8 home-revision checkpoint**
 against plan's needs (a standing producer spanning two phases + two reviewer seats, one of them
-fire-once — no new shape gap; shape stays v2).
+fire-once — no new shape gap at that wave, when the shape was v2). **Stale as a standing claim:** the
+shape is now **v4** (2026-07-30) — see the v0.31.0 entry below.
 
-## [v0.30.0] Build note — merged design-room command: absorbs `/mochiko:tasks` + gains the architecture stage (2026-07-30)
+## [v0.32.0] Build note + shape-v4 re-conform — merged design-room command: absorbs `/mochiko:tasks` + gains the architecture stage (2026-07-30)
 
 Design records: `.mochiko/brainstorms/team-method-vs-command-shape/record.md` (D4/D5 — plan absorbs
 tasks) + `.mochiko/brainstorms/architecture-design-primitive/record.md` (AD-D1–D9 with folds R1–R10,
 seam notes N1–N3). Not a strip wave — a feature build; the architecture-stage **additions** are recorded
 in the `DECISIONS.md` rows AD-D1–D9 (lead-owned landing), not here (Job-4 rule: pure additions ride the
 decision row, the v3 run-cost precedent). This note logs the version stamp, the **relocation** (tasks'
-structuring loop moved *into* plan), and the consequent cross-reference change. Overall command surface
-7 → 6 — see the tasks retirement note (`strips/tasks.md` v0.30.0).
+structuring loop moved *into* plan), the consequent cross-reference change, and the **shape-v4
+re-conform** the merge required. Overall command surface 7 → 6 — see the tasks retirement note
+(`strips/tasks.md` v0.32.0).
+
+> **Version note:** this build was originally stamped **v0.30.0**; while it was in flight, origin/main
+> released **v0.30.0** and **v0.31.0** (the shape-v3→v4 mesh rewrite + the six-command re-conform,
+> below). The merge rebased this build onto v4, so it lands at **v0.32.0** and is re-stamped throughout.
 
 - **Relocation IN (from `commands/tasks.md`, now retired):** the entire Mapping → Tasks structuring loop
   — the standing `task-architect` (`patterns-vertical-tdd`) producer seat, the `devils-advocate`
@@ -42,7 +48,23 @@ structuring loop moved *into* plan), and the consequent cross-reference change. 
 - **Gate renumber (consequent):** the architecture gates insert early, so plan's gates renumber —
   G1 (entry) · **G2** baseline-confirm (bootstrap) · **G3** architecture sign-off · G4 feasibility/governance
   rejection (was G2, now also carrying the governance two-exit, D9.3) · G5 clarification (was G3) · G6
-  exit-early (was G4) · **G7** final package acceptance (was plan's G5 *and* tasks' G5, merged).
+  exit-early (was G4) · **G7** final package acceptance (was plan's G5 *and* tasks' G5, merged). Note the
+  renumber against main's v0.31.0 entry below: that entry conformed the *two-phase* plan, where
+  feasibility-rejection was **G2**; in the merged command it is **G4** (its "G2" references are frozen
+  two-phase history).
+- **Shape-v4 re-conform (the merge work, this task):** the merged command was re-authored against
+  `command-shape.md` **v4** (main's v0.31.0 bumped it from v3). The v4 idiom adopted: (a) the **in-loop
+  mesh** — each producer is **peer-edged with the completeness reviewer**, handing finished artifacts
+  directly (peer-routable delivery), while **delivery is not a start signal** (the lead opens every round
+  and every review pass); (b) the **feasibility architect stays lead-gated** — fired selectively, its
+  concerns routed through the lead at **G4** (not peer-edged, matching main's v0.31.0 narrowing on the
+  two-phase plan); (c) the roster **names each seat's peer edges** per the v4 seat-roster PARAM; (d) the
+  Contract states **"No devolved branch"** — every plan review is a judgment grade (feasibility,
+  completeness, architecture coverage, task-artifact quality), never all-deterministic-CLI, so no gate is
+  skipped and every verdict is the lead's; (e) "no producer↔reviewer contact" is dropped from the Contract
+  (independence now rides disjoint agents/skills + cold *arrival*, not routing). The architecture stage's
+  own peer edge: `system-architect` is peer-edged with the completeness reviewer for the coverage grade;
+  the architecture *feasibility pass* is lead-gated like the analysis pass.
 - **Cross-reference change:** Phase 5's next-step pointer `→ /mochiko:tasks` is superseded; the merged
   command produces the whole package and points `→ /mochiko:implement`. `templates/plan-template.md` gained
   an **Architecture** section (pointers to `architecture.md`, per the summary-not-restatement rule) and now
@@ -54,11 +76,25 @@ structuring loop moved *into* plan), and the consequent cross-reference change. 
   (technical-analyst, system-architect, task-architect) and both reviewers stay standing/cold seats per the
   existing conversion assessments below and tasks' (retired) assessment. **S8 home-revision checkpoint
   re-checked:** the merged command is a larger team (3 producers + 2 reviewers, 7 gates) but rides the
-  existing shape — Layer 1 as-you-go artifact + producer-authored uncertainty branch, Layer 2 standing/cold
-  seats + independence-by-structure — with **no new shape gap** (the rendered-diagram gate is a
+  existing shape — Layer 1 as-you-go artifact + producer-authored uncertainty branch, Layer 2 mesh
+  peer-edges + independence-by-cold-arrival — with **no new shape gap** (the rendered-diagram gate is a
   per-workflow gate, not shape doctrine; marked shape-exception where a line would otherwise restate
-  shape). Shape stays v3. The first-dogfood confirm-or-revert checkpoint carries forward: the open "Dogfood
-  `/mochiko:plan`" item now exercises the merged, architecture-first command.
+  shape). Shape stays **v4** (this build conforms to it, does not revise it). The first-dogfood
+  confirm-or-revert checkpoint carries forward: the open "Dogfood `/mochiko:plan`" item now exercises the
+  merged, architecture-first command.
+
+## [v0.31.0] Lead-relayed gap lists superseded by the in-loop mesh (shape v4 conforming edit)
+- **Disposition:** superseded → `templates/command-shape.md` v4 (Layer 2 — "Independence by structure" + "In-loop mesh"). Rewritten in place: both reviewers are still cold-spawned at their own stage (a spawn-timing parameter), and the producer↔reviewer peer edges are declared on the roster.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/team-method-vs-command-shape/record.md` **D1**, scoped by **D2**), not a minimalism strip. Permanent no-contact was the falsified claim; cold *arrival* survives as a property of the stage.
+- **Content (superseded, verbatim):**
+  - producer seat: "Round > 1 within a phase is a message to the same seat carrying the reviewers' gap list verbatim"
+  - feasibility reviewer: "spawned **cold after the Phase-1 analysis is authored**, never in contact with the producer"
+  - completeness reviewer: "spawned **cold at the first completeness review**, never in contact with the producer"
+  - Phase 1 step 1: "on round > 1 the message carries the reviewers' gap list for targeted revision"
+  - Contract, Producer ↔ validator: "(both reviewers cold-spawned, gap lists lead-routed, no producer↔reviewer contact)"
+- **Kept deliberately (not superseded):** every verdict stays the lead's — plan has no deterministic-CLI verification, so **D3's devolved branch cannot apply here**; the Contract now declares that absence rather than leaving it implicit. Also kept lead-gated: the **feasibility architect's engagement** (fired once, re-fired only on a structural change) and **Phase 2's mode-selecting message** — both policy calls under the traffic classes, not hand-offs.
+- **In-wave correction (audit round, 2026-07-30):** the peer edge this wave first wrote was **blanket** — "**Peer-edged with both reviewers:** it hands each round's finished artifacts straight to them" — and its Phase 1 step 1 counterpart "handing them to the reviewers directly when the round's set is complete". The audit caught that this silently peer-routed the *architect*, whose fire-once/re-fire-on-structural-change engagement is a lead-gated policy call, and that it read as licensing a completeness pass before the feasibility gate. Narrowed to the **completeness reviewer only**, with the lead sequencing when it grades. Logged as an in-wave correction, not a separate version: the superseded text never shipped outside this wave.
+  - **Second audit round (same wave):** the narrowing was applied to the roster bullet and Phase 1 step 1 but **not propagated**, leaving three sites still asserting the blanket edge. Substance was upheld; only propagation failed. Also superseded, same correction: the feasibility-reviewer bullet's "peer-edged with the producer thereafter" → "**lead-gated thereafter** — you fire it, and its concerns reach the producer through you (G2)"; and the Contract's "gap-list hand-offs peer-routed producer↔reviewer per the shape's mesh, with every verdict yours" → the completeness list peer-routed, "the architect's routes through you at G2". Added in the same pass (not a supersession): the completeness reviewer's **verifying-side hold** — "Delivery is not a start signal — it grades only when you open the pass (Phase 1: after the architect; Phase 2: on your mode-selecting message)". The producer-side hold is universal and lives in the shape home; this one is plan-specific — two-reviewer ordering plus a mode-selected Phase 2 — so it binds at the seat and makes Phase 1 step 1's "you sequence when it grades" a reference to a bound rule rather than a bare assertion.
 
 ## [v0.15.0] Conversion note (D2/S4 — one-shot → team-form, 2026-07-19)
 

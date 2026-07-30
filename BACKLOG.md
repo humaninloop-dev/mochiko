@@ -60,14 +60,19 @@ mochiko's own migration executed same day (this file's shape is its result).
 Rulings D1–D5 (DECISIONS.md 2026-07-25; record `team-method-vs-command-shape` — bare session,
 un-reviewed). Land via `command-architect` + independent `validation-command-shape` audit.
 
-- [ ] **Layer-2 mesh rewrite (D1–D3)** — `templates/command-shape.md` Layer 2: in-loop mesh
-  default (producers hand work to the verifier; lead rules policy/deviations/scope);
-  cold-review isolation restated as a **stage property**; devolved clean-cycle verdicts
-  (deterministic-CLI 100% + no deviations + no domain-deps → advance on qa's PASS). MUST name
-  the traffic classes (peer-routable = verification hand-offs; lead-routed = coordination,
-  policy, deviations, scope). Conformant-command re-audit follows. **Version coordination:**
-  standing-seat-lifecycle's D3 rewrite targets the same Layer 2 at v4+ — sequence or combine
-  deliberately.
+- [ ] **loop-discipline all-consumer pass** (2026-07-30; provenance:
+  `.mochiko/decisions/2026-07-30-layer-2-mesh-rewrite-executed.md`) — SKILL.md:56 ("The
+  lead/referee owns the verdict") literally forbids shape v4's devolved clean branch; needs a
+  narrow qualifier pointing at the devolved branch, done-condition verdict staying the lead's.
+  ≥3-consumer rule (22 referencing files, 7 commands) escalated it out of the mesh wave.
+  Riders: dedup ruling on "status is input, never the gate" (v4 hoisted it into the home;
+  restated in all six commands' Contracts) · verdict-ownership triplication recurrences
+  (plan/implement/tasks — their own strip notes claim it deduped).
+- [ ] **agent-dispatch.md peer-edge briefing field** (2026-07-30; same ADR) — shape v4
+  obliges the lead's brief to carry each seat's peer edges AND the gap-list hold, but the
+  briefing-field table has no home for either, and field 6 (prior feedback verbatim-paste)
+  still assumes the superseded v3 lead-relay. User ruling: ninth field (shared-primitive
+  change) vs. shape-sentence-only.
 - [ ] **Cold-checkout gate (kinako rule 7)** — warm-machine verification passed a bug six
   cycles (`build/` gitignored; `dart compile exe` missing `-o` parent). Add a fresh-clone
   verification step. **Placement ruling needed:** implement final validation vs the audit
@@ -81,7 +86,7 @@ un-reviewed). Land via `command-architect` + independent `validation-command-sha
 
 Rulings AD-D1–D9 (DECISIONS.md 2026-07-30; record
 `.mochiko/brainstorms/architecture-design-primitive/record.md`). **Built 2026-07-30 at
-v0.30.0** together with the plan-absorbs-tasks merge; both independent audits PASS; closed
+v0.32.0** together with the plan-absorbs-tasks merge; both independent audits PASS; closed
 build item in the trail.
 
 - [ ] **Architecture-primitive dogfood** (2026-07-30) — first merged-plan run with the
@@ -187,6 +192,14 @@ together.
 
 ## Defects & empirical checks
 
+- [ ] **`validation-command-shape` check-1 setup carve-out** (2026-07-30; provenance:
+  `.mochiko/decisions/2026-07-30-layer-2-mesh-rewrite-executed.md`) — check 1 says the five
+  KM-carrying commands reference the project copy, "never the module template's path"; setup
+  is the scaffolder that must name the template as its scaffold source (setup.md L182). Read
+  mechanically the check FAILs a correct file — a latent false-FAIL generator. Carve out the
+  scaffold-source naming explicitly (or mark setup's line). Rider: the run-cost element
+  carries no `[PARAM]` and no command mentions it — confirm the obligation is reachable by a
+  lead who only Reads the home.
 - [ ] **`validation-constitution` QUALITY-CHECKLIST post-dissolution drift** (2026-07-23,
   re-confirmed at succinctness wave 4) — its "Structure Quality — universal core" section still
   grades the dissolved `constitution.md` (SYNC IMPACT REPORT, Roman-numeral principles, sync

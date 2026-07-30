@@ -41,12 +41,14 @@ bet is the same `Contested` dogfood-pilot ruling as the other team-form commands
   `templates/analyst-report-template.md`) via `mochiko:authoring-requirements` +
   `mochiko:authoring-user-stories`: the feature description (enriched where applicable),
   the governance obligated-read line, the template to fill per those skills — no
-  placeholder tokens. Round > 1 is a message to the same seat carrying the critic's gap
-  list verbatim (fix the flagged gaps; don't regress passing sections). If it messages
+  placeholder tokens. **Peer-edged with the critic:** it hands each round's `spec.md` straight
+  there. Round > 1 reaches the same seat with the critic's gap list already in hand
+  (peer-routed) — you rule the round and hold the revision targeted (fix the flagged gaps;
+  don't regress passing sections). If it messages
   clarifications it cannot resolve, ask the user (G2) and feed the answers forward — an
   in-loop human gate, never the done-condition. It never grades.
-- **critic** — `mochiko:devils-advocate`, spawned **cold at first critique**, never in
-  contact with the producer. Brief it to run `mochiko:review-specifications` against
+- **critic** — `mochiko:devils-advocate`, spawned **cold at first critique**, peer-edged
+  with the producer thereafter. Brief it to run `mochiko:review-specifications` against
   `spec.md` — it Reads the spec file itself, never the producer's report — writing
   `advocate-report.md` (from `templates/advocate-report-template.md`): severity-classified
   findings, product-framed clarifying questions, and a recommended verdict
@@ -108,14 +110,17 @@ No copy → skip.
 - **Producer ↔ validator:** `requirements-analyst` (authoring-requirements,
   authoring-user-stories) authors, never grades; `devils-advocate`
   (review-specifications) reviews from the file, never authors — disjoint agents,
-  disjoint skills, structurally separated (critic cold-spawned, gap lists lead-routed, no
-  producer↔critic contact). **Validation model:** the bounded in-loop critique — every
+  disjoint skills, structurally separated (critic cold-spawned; gap-list hand-offs peer-routed
+  producer↔critic per the shape's mesh, with every verdict yours). **Validation model:** the
+  bounded in-loop critique — every
   round, unsized by design; no sized end-stage review (the shape's in-loop-critique
   branch).
 - **Bounds:** ≤3 rounds (you count) · no-progress exit · kill-switch `SPECIFY_STOP` · a
   G3 amend re-enters the same bounded loop.
 - **Human gates:** G1 input recovery + governance surface · G2 clarifications +
-  preference-gap decisions · G3 spec acceptance · escalation on any guard trip.
+  preference-gap decisions · G3 spec acceptance · escalation on any guard trip. **No devolved
+  branch** — the critique is a judgment grade, never all-deterministic-CLI, so no gate is
+  skipped and every verdict is yours.
 
 ## Recovery
 

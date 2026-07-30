@@ -1,5 +1,5 @@
 ---
-description: Turn an accepted spec into an accepted implementation package — analysis, an architecture design with its own early sign-off, detailed design, and the task breakdown — via an independent producer→reviewer team loop. A standing technical-analyst seat authors analysis then detailed design; a standing system-architect seat authors the architecture delta artifact first among the design work and stops the run at a rendered-diagram sign-off; a standing task-architect seat structures the mapping then tasks; a cold principal-architect seat grades analysis feasibility then the architecture (topology + governance); a cold devils-advocate seat grades completeness then the task artifacts; the user signs off the architecture early and accepts the whole package at a named final gate. Governance-gated, architecture-first, default-FAIL, bounded, kernel-free. Requires agent teams (CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS); refuses without them.
+description: Turn an accepted spec into an accepted implementation package — analysis, an architecture design with its own early sign-off, detailed design, and the task breakdown — via an independent producer→reviewer team loop. A standing technical-analyst seat authors analysis then detailed design; a standing system-architect seat authors the architecture delta artifact first among the design work and stops the run at a rendered-diagram sign-off; a standing task-architect seat structures the mapping then tasks; a cold principal-architect seat grades analysis feasibility then the architecture (topology + governance); a cold devils-advocate seat grades completeness then the task artifacts, peer-edged with the active producer; the user signs off the architecture early and accepts the whole package at a named final gate. Governance-gated, architecture-first, default-FAIL, bounded, kernel-free. Requires agent teams (CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS); refuses without them.
 disable-model-invocation: true
 ---
 
@@ -56,8 +56,12 @@ dogfood-pilot ruling as the other team-form commands.
 ## The seats
 
 Three producers, two reviewers. Each producer authors its own artifacts and never grades; each
-reviewer grades from the files, cold, and never contacts a producer — independence stays
-structural (shape Layer 2).
+reviewer grades from the files and never authors. Independence is structural (shape Layer 2):
+disjoint agents, disjoint skills, reviewers arriving **cold at their stage**. In-loop the mesh is
+the default — a producer hands its finished artifacts to the completeness reviewer **directly**
+(peer-routed), but **delivery is not a start signal**: the reviewer grades, and the producer
+revises, only when you open the round. The **feasibility architect is lead-gated** — you fire it
+selectively and its concerns reach the producer through you. Every verdict is yours.
 
 - **producer** — `mochiko:technical-analyst` (`authoring-technical-requirements`,
   `patterns-technical-decisions`, `patterns-entity-modeling`, `patterns-api-contracts`), one
@@ -69,7 +73,11 @@ structural (shape Layer 2).
   authoring reveals is a design-time deviation (Phase 3). The standing seat carries the analysis
   rationale forward. Brief it per `agent-dispatch`: `spec.md`, the approved `architecture.md` (in
   detailed design), the governance obligated-read line, the brownfield analysis when present, the
-  templates to fill. Round > 1 within a stage carries the reviewers' gap list verbatim. It never grades.
+  templates to fill. **Peer-edged with the completeness reviewer:** it hands each stage's finished
+  artifacts straight there; the feasibility architect is lead-gated, its concerns reaching the
+  producer through you (G4). Round > 1 within a stage reaches the same seat with the completeness
+  gap list already in hand (peer-routed) — you rule the round and hold the revision targeted (fix
+  the flagged gaps; don't regress passing sections). It never grades.
 - **system-architect** — `mochiko:patterns-system-design`, one **named standing seat for the
   architecture stage** (a new seat: topology judgment is distinct from requirements decomposition).
   Authors `architecture.md` — the delta system view (current + proposed target, the change
@@ -79,42 +87,51 @@ structural (shape Layer 2).
   `constraints-and-decisions.md` (+ `sysarchitect-report.md`). It consumes `spec.md`, the analysis
   artifacts, the seeded current-state baseline (Phase 2 step 1), and the governance region + relevant
   rules files (layer-rules / domain-dependency registry when attached) — the artifact cites the
-  principles that bound the target. Brief it per `agent-dispatch`. Round > 1 carries the reviewers'
-  gap list. It never grades; the artifact structure and the D-XXX schema are its skills' homes, not
+  principles that bound the target. Brief it per `agent-dispatch`. **Peer-edged with the completeness
+  reviewer** for the coverage grade — it hands `architecture.md` straight there; the feasibility
+  **architecture pass is lead-gated** (you fire it). Round > 1 reaches the same seat with the
+  completeness gap list in hand (peer-routed); architect / governance concerns arrive through you
+  (G4). It never grades; the artifact structure and the D-XXX schema are its skills' homes, not
   restated here. `technical-analyst` consumes the approved architecture downstream.
 - **task-architect** — `mochiko:patterns-vertical-tdd`, one **named standing seat across mapping and
   tasks**. Mapping: author `task-mapping.md` (story→cycle mapping + vertical-slice rationale, the
   source of truth). Tasks: expand it into `tasks.md` (+ `taskarchitect-report.md` each round) — the
   standing seat carries its Phase-4 slicing judgment from the mapping into the expansion. Brief it per
   `agent-dispatch`: the accepted design outputs (incl. `architecture.md`), the governance
-  obligated-read line, the brownfield context, the templates. Round > 1 carries the reviewer's gap
-  list. It never grades.
+  obligated-read line, the brownfield context, the templates. **Peer-edged with the completeness
+  reviewer** (running `review-task-artifacts`): it hands each round's finished artifact straight
+  there. Round > 1 reaches the same seat with the reviewer's gap list already in hand (peer-routed) —
+  you rule the round and hold the revision targeted. It never grades.
 - **feasibility reviewer** — `mochiko:principal-architect` (`review-feasibility`), spawned **cold
-  after the Phase-1 analysis is authored**, never in contact with any producer, one **named standing
-  seat**. It grades in two moments, each **once** and re-fired (a message to the same seat) **only on
-  a structural change** to its inputs: (1) **analysis feasibility** on the Phase-1 artifacts —
-  cross-artifact contradiction / impossibility / buildability, no topology needed → `feasibility-report.md`;
-  (2) the **architecture pass** on `architecture.md` in Phase 2 — **topology feasibility** (can the
-  proposed topology carry the NFRs and constraints it is graded against) **and governance conformance**
-  (layers honored, dependencies within allowlist, NFR-linked principles satisfiable by the topology) →
-  `feasibility-report.md`. This is the carve-out of its former "never grades past Phase 1" bar: it now
-  grades the architecture too, but **not** the detailed-design artifacts (the completeness reviewer
-  carries their cross-artifact consistency and their conformance to the approved architecture). Its
-  output is **lead-adjudicated input** (the `review-*` family boundary).
-- **completeness reviewer** — `mochiko:devils-advocate`, spawned **cold at the first review**, never
-  in contact with any producer, one **named standing seat across every stage** — it runs the skill the
-  stage calls for: `review-plan-artifacts` across analysis, architecture, and detailed design, then
-  `review-task-artifacts` across mapping and tasks (the skill is named per dispatch, never loaded as
-  frontmatter). Analysis: completeness / coverage / consistency → `advocate-report.md`. Architecture:
-  the extended `review-plan-artifacts` **architecture coverage** checklist (its checks are that skill's
-  home — referenced, not restated). Detailed design: incremental mode — a full review of the new design
-  artifacts, a consistency check back to the analysis, **and the conforms-to-approved-architecture
-  check** over `data-model.md`/`contracts`. Mapping: the `review-task-artifacts` Mapping checklist.
-  Tasks: cumulative mode — a full `tasks.md` review plus the cross-check back to `task-mapping.md`.
-  Its retained context is what makes each later stage's check incremental rather than a cold re-read.
-  Round > 1 within a stage: re-Read the revised files. Its output is **lead-adjudicated input**; there
-  is no sized end-stage review — the bounded in-loop critique is this workflow's independent validation
-  (declared in the Contract). Single completeness reviewer, never a producer.
+  after the Phase-1 analysis is authored**, **lead-gated thereafter** — you fire it, and its concerns
+  reach the producer through you (G4). It grades in two moments, each **once** and re-fired (a
+  message to the same seat) **only on a structural change** to its inputs: (1) **analysis feasibility**
+  on the Phase-1 artifacts — cross-artifact contradiction / impossibility / buildability, no topology
+  needed → `feasibility-report.md`; (2) the **architecture pass** on `architecture.md` in Phase 2 —
+  **topology feasibility** (can the proposed topology carry the NFRs and constraints it is graded
+  against) **and governance conformance** (layers honored, dependencies within allowlist, NFR-linked
+  principles satisfiable by the topology) → `feasibility-report.md`. This is the carve-out of its
+  former "never grades past Phase 1" bar: it now grades the architecture too, but **not** the
+  detailed-design artifacts (the completeness reviewer carries their cross-artifact consistency and
+  their conformance to the approved architecture). Its output is **lead-adjudicated input** (the
+  `review-*` family boundary).
+- **completeness reviewer** — `mochiko:devils-advocate`, spawned **cold at the first review**,
+  **peer-edged with the active producer thereafter**, one **named standing seat across every stage** —
+  it runs the skill the stage calls for: `review-plan-artifacts` across analysis, architecture, and
+  detailed design, then `review-task-artifacts` across mapping and tasks (the skill is named per
+  dispatch, never loaded as frontmatter). **Delivery is not a start signal** — it grades only when you
+  open the pass (in the design stages: after the architect, per your sequencing; in structuring: on
+  your mode-selecting message). Analysis: completeness / coverage / consistency → `advocate-report.md`.
+  Architecture: the extended `review-plan-artifacts` **architecture coverage** checklist (its checks
+  are that skill's home — referenced, not restated). Detailed design: incremental mode — a full review
+  of the new design artifacts, a consistency check back to the analysis, **and the
+  conforms-to-approved-architecture check** over `data-model.md`/`contracts`. Mapping: the
+  `review-task-artifacts` Mapping checklist. Tasks: cumulative mode — a full `tasks.md` review plus the
+  cross-check back to `task-mapping.md`. Its retained context is what makes each later stage's check
+  incremental rather than a cold re-read. Round > 1 within a stage: re-Read the revised files. Its
+  output is **lead-adjudicated input**; there is no sized end-stage review — the bounded in-loop
+  critique is this workflow's independent validation (declared in the Contract). Single completeness
+  reviewer, never a producer.
 - **architecture scribe** — `mochiko:principal-architect` (`mochiko:authoring-architecture`), a
   **disposable Finalize dispatch**, fired only per the KM landing — never the feasibility seat, and
   distinct from the architecture stage above (that stage *proposes* a delta; this scribe *records* the
@@ -159,11 +176,13 @@ analysis is authored — before the architecture stage spends its work on infeas
 
 1. **Produce.** The producer authors `requirements.md` (FR→TR mapping), `constraints-and-decisions.md`
    (its C-XXX / non-structural D-XXX / Part-3 IP-XXX — leaving the structural-decisions section for the
-   architect), and `nfrs.md` (+ `techanalyst-report.md`); on round > 1 the message carries the
-   reviewers' gap list for targeted revision. The round-1 spawn is the authoritative probe — confirm
-   addressability.
-2. **Feasibility (architect, once).** The feasibility reviewer, cold, grades analysis feasibility from
-   the files → `feasibility-report.md`.
+   architect), and `nfrs.md` (+ `techanalyst-report.md`), handing the completed set to the completeness
+   reviewer directly (peer-routable delivery); **you sequence when it grades** — the architect first
+   (step 2), so an infeasible analysis never buys a completeness pass. On round > 1 the producer already
+   holds the completeness gap list for targeted revision (fix flagged gaps; don't regress passing
+   sections). The round-1 spawn is the authoritative probe — confirm addressability.
+2. **Feasibility (architect, once — lead-gated).** You fire the feasibility reviewer, cold; it grades
+   analysis feasibility from the files → `feasibility-report.md`.
 3. **Completeness (advocate).** The completeness reviewer, cold at first review, grades completeness /
    coverage / consistency from the files → `advocate-report.md`.
 4. **Verdict (you).** Read the artifacts + both reports. `feasible` **and** `ready` **and** no blocking
@@ -191,16 +210,17 @@ cascade the sign-off exists to prevent). `round = 1`; the architecture is FAIL u
 2. **Produce architecture.** The system-architect authors `architecture.md` — the delta view (current +
    proposed target, the structural change highlighted), scoped per the artifact's size bound — and
    writes the structural **D-XXX rows** into the structural-decisions section of
-   `constraints-and-decisions.md` (+ `sysarchitect-report.md`); on round > 1 the message carries the
-   reviewers' gap list. Genuine-alternative topology choices get D-XXX rows here (existing ADR
-   discipline); the delta summary links each structural change to its D-XXX row, never restating it.
-3. **Architecture review.** The feasibility reviewer runs its **architecture pass** — topology
-   feasibility (against the NFRs/constraints) + governance conformance → `feasibility-report.md`. The
-   completeness reviewer runs the extended `review-plan-artifacts` **architecture coverage** checks →
-   `advocate-report.md`. A proposed architecture that must break a governance surface surfaces the
-   conflict here with exactly two exits (redesign to conform, or a user-ruled amendment/waiver through
-   the existing `governance-ledger.md` machinery — **G4**); the feature gate never overrules the
-   constitution.
+   `constraints-and-decisions.md` (+ `sysarchitect-report.md`), handing `architecture.md` to the
+   completeness reviewer directly (peer-routable delivery); on round > 1 it already holds the reviewers'
+   gap list. Genuine-alternative topology choices get D-XXX rows here (existing ADR discipline); the
+   delta summary links each structural change to its D-XXX row, never restating it.
+3. **Architecture review.** You fire the feasibility reviewer for its **architecture pass** — topology
+   feasibility (against the NFRs/constraints) + governance conformance → `feasibility-report.md`
+   (lead-gated). The completeness reviewer, on your open, runs the extended `review-plan-artifacts`
+   **architecture coverage** checks → `advocate-report.md`. A proposed architecture that must break a
+   governance surface surfaces the conflict here with exactly two exits (redesign to conform, or a
+   user-ruled amendment/waiver through the existing `governance-ledger.md` machinery — **G4**); the
+   feature gate never overrules the constitution.
 4. **Verdict + sign-off (human gate G3).** Read `architecture.md` + both reports. On a clear grade,
    present the **rendered** diagram to the user — via the session's render surface (side-panel file
    render, published artifact, IDE preview), never a raw mermaid block. You (the plan supervisor) are
@@ -222,16 +242,18 @@ carries cross-artifact consistency **and** architecture conformance in increment
 
 1. **Produce.** The producer authors `data-model.md` (entities + sensitivity), `contracts/api.yaml`
    (OpenAPI + `x-integration`), and — when the feature has an external-integration surface —
-   `quickstart.md` (+ `techanalyst-report.md`), carrying its analysis context forward and conforming to
-   the approved `architecture.md`.
+   `quickstart.md` (+ `techanalyst-report.md`), carrying its analysis context forward, conforming to
+   the approved `architecture.md`, and handing the design set to the completeness reviewer directly
+   (peer-routable delivery).
 2. **Design-time deviation (return to sign-off).** If the detailed-design authoring reveals a
    **contradiction with the approved architecture** — the design cannot conform without changing the
    topology — the producer **stops and surfaces it**; you return to the **G3** sign-off for a consented
    target amendment (the same mechanism as the mid-implement and mid-cycle deviation rule), then resume.
    A contradiction is never silently designed around.
-3. **Incremental review (advocate).** Message the completeness reviewer in **incremental mode** — a full
-   review of the new design artifacts, a consistency check back to the analysis, and the
-   conforms-to-approved-architecture check → `advocate-report.md`.
+3. **Incremental review (advocate).** On your open, the completeness reviewer grades in **incremental
+   mode** — a full review of the new design artifacts, a consistency check back to the analysis, and the
+   conforms-to-approved-architecture check (you select the mode and supply the {new design}/{prior
+   analysis} artifact sets) → `advocate-report.md`.
 4. **Verdict (you).** Read the design artifacts + report. `ready`, no blocking gap, and no unresolved
    architecture contradiction → Phase 4. Otherwise route gaps per `loop-discipline` (→ **G5**), apply
    the bounds (cap / no-progress / kill-switch → **G6** / escalate), and loop to step 1.
@@ -246,16 +268,20 @@ The design is absorbed into the task breakdown here — the former `/mochiko:tas
 room. Two sub-stages, each `round = 1` and FAIL until proven; the reviewer grades the mapping's slicing
 quality **before** the expensive full TDD breakdown.
 
-1. **Mapping — produce.** The task-architect authors `task-mapping.md` (+ `taskarchitect-report.md`);
-   round > 1 carries the reviewer's gap list.
-2. **Mapping — review + verdict.** The completeness reviewer runs the `review-task-artifacts` Mapping
-   checklist → `advocate-report.md`. `ready` + no blocking gap → sub-stage Tasks. Otherwise route gaps
-   (→ **G5**), apply the bounds (cap / no-progress / kill-switch → **G6**), loop to step 1.
+1. **Mapping — produce.** The task-architect authors `task-mapping.md` (+ `taskarchitect-report.md`),
+   handing it to the completeness reviewer directly when the round's artifact is complete; on round > 1
+   it already holds the reviewer's gap list for targeted revision.
+2. **Mapping — review + verdict.** On your open, the completeness reviewer runs the
+   `review-task-artifacts` Mapping checklist → `advocate-report.md`. `ready` + no blocking gap →
+   sub-stage Tasks. Otherwise route gaps (→ **G5**), apply the bounds (cap / no-progress / kill-switch →
+   **G6**), loop to step 1.
 3. **Tasks — produce.** The task-architect expands `task-mapping.md` into `tasks.md` (+
-   `taskarchitect-report.md`), briefed with the mapping as the input to expand.
-4. **Tasks — review + verdict.** Message the reviewer in **cumulative mode** — a full `tasks.md` review
-   plus the cross-check back to `task-mapping.md` (both artifact sets supplied) → `advocate-report.md`.
-   `ready` + no blocking gap → Phase 5. Otherwise route gaps (→ **G5**), apply the bounds, loop to step 3.
+   `taskarchitect-report.md`), briefed with the mapping as the input to expand, handing the result across
+   peer-routed.
+4. **Tasks — review + verdict.** On your open, the completeness reviewer grades in **cumulative mode** —
+   a full `tasks.md` review plus the cross-check back to `task-mapping.md` (you supply both artifact
+   sets) → `advocate-report.md`. `ready` + no blocking gap → Phase 5. Otherwise route gaps (→ **G5**),
+   apply the bounds, loop to step 3.
 
 ## Phase 5 — Assemble & accept the package  *(human gate G7)*
 
@@ -308,9 +334,11 @@ the confirmed baseline.) No copy → skip.
   `principal-architect` (review-feasibility) grades analysis feasibility + the architecture pass;
   `devils-advocate` (review-plan-artifacts, then review-task-artifacts) grades completeness, architecture
   coverage, detailed-design conformance, and the task artifacts — all from the files, never authoring.
-  Disjoint agents, disjoint skills, structurally separated (both reviewers cold-spawned, gap lists
-  lead-routed, no producer↔reviewer contact). **Validation model:** the bounded in-loop critique — every
-  round, unsized by design; no sized end-stage review (the shape's in-loop-critique branch).
+  Disjoint agents, disjoint skills, structurally separated (reviewers cold-spawned at their stage; the
+  completeness gap list hands off peer-routed producer↔reviewer per the shape's mesh, the feasibility
+  architect lead-gated with its concerns routed through you at G4, every verdict yours). **Validation
+  model:** the bounded in-loop critique — every round, unsized by design; no sized end-stage review (the
+  shape's in-loop-critique branch).
 - **Bounds:** cap **3** produce↔review rounds **per stage** (analysis, architecture, detailed design,
   mapping, tasks — you count each); no-progress exit when a reviewer's gap set is unchanged round-over-round;
   kill-switch `PLAN_STOP` checked before each seat send; a G7 amend re-enters the relevant bounded stage (an
@@ -319,7 +347,9 @@ the confirmed baseline.) No copy → skip.
   baseline confirmation (bootstrap only) · **G3** architecture sign-off (always-on; rendered diagram,
   degrade-with-record fallback) · G4 feasibility / governance rejection (incl. the governance two-exit) ·
   G5 clarification (incl. the "Research this" knowledge-gap branch) · G6 exit-early / escalation · **G7**
-  final package acceptance · escalation on any guard trip.
+  final package acceptance · escalation on any guard trip. **No devolved branch** — every review is a
+  judgment grade (feasibility, completeness, architecture coverage, task-artifact quality), never
+  all-deterministic-CLI, so no gate is skipped and every verdict is yours.
 
 ## State recovery
 
@@ -351,9 +381,11 @@ respawn is cold by design:
 
 **What you own (not the seats):** the stage sequence (Analysis → Architecture → Detailed design →
 Structuring) and each stage's loop (round counter, no-progress check, cap, kill-switch, escalation); the
-verdict against the default-FAIL done-condition; the architecture-first ordering and its **early sign-off
-(G3)** before detailed design; the feasibility-once-per-input-then-re-fire-on-structural-change routing
-(analysis + architecture pass); the skip-architect-unless-structural rule for the detailed-design stage;
+peer-edge sequencing (you open every round and every review pass — delivery is a hand-off, not a start
+signal — while routine artifact delivery rides the mesh peer-routed); the verdict against the
+default-FAIL done-condition; the architecture-first ordering and its **early sign-off (G3)** before
+detailed design; the feasibility-once-per-input-then-re-fire-on-structural-change routing (analysis +
+architecture pass, lead-gated); the skip-architect-unless-structural rule for the detailed-design stage;
 the completeness reviewer's per-stage skill/mode selection; the design-time deviation return to G3; the
 governance two-exit; the human gates (G1–G7); the governance / entry / brownfield prerequisites; `plan.md`
 assembly and the single-package acceptance; verifying each seat actually wrote its expected files (a

@@ -4,26 +4,33 @@ Entry formats: `strips/README.md`. Wave context: the tasks cluster wave (BACKLOG
 one-shot-command wave after specify's v0.13.0, slice's v0.14.0, and plan's v0.15.0). The wave also ran
 the **D2 conversion assessment** (one-shot → team-form) and re-checked the **S8 home-revision
 checkpoint** against tasks' needs (a standing producer spanning two phases + ONE standing reviewer with
-an early-gate + cumulative-mode pattern — no new shape gap; shape stays v2).
+an early-gate + cumulative-mode pattern — no new shape gap at that wave, when the shape was v2).
+**Stale as a standing claim:** the shape is now **v4** (2026-07-30) — see the v0.31.0 entry below.
 
-> **RETIRED at v0.30.0** — `commands/tasks.md` was removed from the plugin; the primitive is retired,
+> **RETIRED at v0.32.0** — `commands/tasks.md` was removed from the plugin; the primitive is retired,
 > not stripped line-by-line. This note is kept as the provenance trail (retirement entry below); the
-> entries beneath it are frozen history from tasks' one-shot→team-form life.
+> v0.31.0 entry beneath it is main's v4 conforming edit of the *then-live* command (now moot — the
+> command is gone), and the v0.16.0 entries below that are frozen one-shot→team-form history.
 
-## [v0.30.0] RETIRED — `/mochiko:tasks` merged into `/mochiko:plan` (2026-07-30)
+## [v0.32.0] RETIRED — `/mochiko:tasks` merged into `/mochiko:plan` (2026-07-30)
 
 - **Disposition:** relocated → `commands/plan.md` (Phase 4, the Structuring loop). The whole command
-  primitive is retired; the file is deleted from `commands/`. Design records:
-  `.mochiko/brainstorms/team-method-vs-command-shape/record.md` (D4 — surface reduction, tasks merges
-  into plan; D5 — one final package acceptance) + the architecture-design build that executed the merge
-  simultaneously (`.mochiko/brainstorms/architecture-design-primitive/record.md`).
-- **What relocated (intact):** the standing `task-architect` (`patterns-vertical-tdd`) producer seat, the
-  standing `devils-advocate` (`review-task-artifacts`) reviewer with its **early-mapping-then-cumulative**
-  pattern, the two-sub-stage Mapping → Tasks round loop (≤3 rounds each), and the deliverables
-  `task-mapping.md` · `tasks.md`. The `review-task-artifacts` validator is **structurally unchanged** —
-  same agent, same skill, same Mapping/Cross-Artifact checklists; only its caller (the plan lead instead
-  of the tasks lead) moved. In plan the reviewer is the **same standing `devils-advocate` seat** that
-  runs `review-plan-artifacts` earlier, switching skills per stage (named per dispatch, shape Layer 2).
+  primitive is retired; the file is deleted from `commands/` (a tombstone awaits `git rm` by the lead).
+  Design records: `.mochiko/brainstorms/team-method-vs-command-shape/record.md` (D4 — surface reduction,
+  tasks merges into plan; D5 — one final package acceptance) + the architecture-design build that executed
+  the merge (`.mochiko/brainstorms/architecture-design-primitive/record.md`).
+- **Version note:** originally stamped v0.30.0; re-stamped **v0.32.0** after origin/main released v0.30.0
+  + v0.31.0 (the shape-v3→v4 rewrite, whose v0.31.0 conforming edit of the *live* tasks command — below —
+  this retirement now supersedes: the command it conformed no longer exists).
+- **What relocated (intact, v4-conformed in plan):** the standing `task-architect` (`patterns-vertical-tdd`)
+  producer seat, the standing `devils-advocate` (`review-task-artifacts`) reviewer with its
+  **early-mapping-then-cumulative** pattern, the two-sub-stage Mapping → Tasks round loop (≤3 rounds each),
+  and the deliverables `task-mapping.md` · `tasks.md`. The `review-task-artifacts` validator is
+  **structurally unchanged** — same agent, same skill, same Mapping/Cross-Artifact checklists; only its
+  caller (the plan lead instead of the tasks lead) moved. In plan the reviewer is the **same standing
+  `devils-advocate` seat** that runs `review-plan-artifacts` earlier, switching skills per stage (named per
+  dispatch, shape Layer 2), and is **peer-edged with the task-architect** per the v4 mesh — so main's
+  v0.31.0 peer-edge conform of this loop is preserved, not lost, in its new home.
 - **What dissolved (not relocated):** tasks' standalone `tasks.md`-acceptance gate (its G5) — folded into
   plan's single final **package acceptance (G7)** per team-method D5 (design + mapping + tasks accepted as
   one package, which is `/mochiko:implement`'s unchanged entry). The standalone signature was load-bearing
@@ -35,11 +42,23 @@ an early-gate + cumulative-mode pattern — no new shape gap; shape stays v2).
   `commands/slice.md` pipeline line drops `/mochiko:tasks` (`/mochiko:plan → /mochiko:implement`);
   `commands/plan.md` Phase 5 next-step points `→ /mochiko:implement` (was `→ /mochiko:tasks`);
   `templates/agent-dispatch.md` "seven commands" → "six commands".
-- **NOT updated by this seat (flagged to lead + skills seat — out of the command-authoring lane):**
+- **NOT updated by this seat (routed to the primitives seat — out of the command-authoring lane):**
   `skills/mochiko/SKILL.md` (the router still lists a `/mochiko:tasks` row and `/mochiko:plan → /mochiko:tasks
   → /mochiko:implement` pipeline mentions) and `skills/review-task-artifacts/{SKILL.md,references/*}` (the
   "the `/mochiko:tasks` lead" caller references, now the `/mochiko:plan` lead). These are `skills/` edits,
-  owned by the primitives seat — must land before v0.30.0 ships or the router advertises a retired command.
+  owned by the primitives seat (the lead confirmed routing) — must land before v0.32.0 ships or the router
+  advertises a retired command.
+
+## [v0.31.0] Lead-relayed gap lists superseded by the in-loop mesh (shape v4 conforming edit)
+- **Disposition:** superseded → `templates/command-shape.md` v4 (Layer 2 — "Independence by structure" + "In-loop mesh"). Rewritten in place: the reviewer is still cold-spawned at the first (mapping) review, and the producer↔reviewer peer edge is declared on the roster.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/team-method-vs-command-shape/record.md` **D1**, scoped by **D2**), not a minimalism strip. Permanent no-contact was the falsified claim; cold *arrival* survives as a property of the stage.
+- **Content (superseded, verbatim):**
+  - producer seat: "Round > 1 within a phase is a message to the same seat carrying the reviewer's gap list verbatim"
+  - reviewer seat: "spawned **cold at the first (mapping) review**, never in contact with the producer"
+  - Phase 1 step 1: "on round > 1 the message carries the reviewer's gap list for targeted revision"
+  - Contract, Producer ↔ validator: "(reviewer cold-spawned, gap lists lead-routed, no producer↔reviewer contact)"
+- **Kept deliberately (not superseded):** every verdict stays the lead's — tasks has no deterministic-CLI verification, so **D3's devolved branch cannot apply here**; the Contract now declares that absence rather than leaving it implicit.
+- **Scope note:** conforming edits only. The `/mochiko:tasks` → `/mochiko:plan` merge (record **D4/D5**) is a separate backlog item and was deliberately not touched here; tasks is edited as a live command.
 
 ### — frozen history below (tasks' one-shot → team-form life, v0.16.0) —
 

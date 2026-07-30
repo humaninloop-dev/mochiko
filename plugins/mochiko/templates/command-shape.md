@@ -18,8 +18,10 @@ team-form command to both layers. (Design provenance + revision history:
 
 **One lead.** The body addresses a single lead: it owns the loop (counters, verdicts,
 escalation), every human gate, and the user-facing conversation; agents produce and review,
-the lead adjudicates. The loop is declared a `mochiko:loop-discipline` sound loop and every
-dispatch is briefed per `templates/agent-dispatch.md` — both referenced, never restated.
+the lead adjudicates — one narrow exception, team-form only: Layer 2's devolved clean branch
+clears a unit on the verifying seat's evidence, with no lead read and no gate. The loop is
+declared a `mochiko:loop-discipline` sound loop and every dispatch is briefed per
+`templates/agent-dispatch.md` — both referenced, never restated.
 
 **The conversation is the production surface.** It belongs to the lead and the user. Never
 narrate machinery — no "phase", "round", or "gate" talk in user-facing prose.
@@ -78,8 +80,9 @@ its authoring-time fill of `loop-discipline`'s four requirements: **Done-conditi
 (initial state FAIL; the concrete not-done states named; user acceptance of the deliverable
 is part of it — plain blocking text, never a timed prompt), **Producer ↔ validator**
 (different agents, different skills, structural separation), **Bounds** (every cap, and who
-counts it — the lead), **Human gates** (every named gate). **No per-run contract file is
-written** — a per-run form whose values are constant at authoring time is ritual, not proof
+counts it — the lead), **Human gates** (every named gate; a gate carrying Layer 2's devolved
+branch states the exact predicate that skips it). **No per-run contract file is written** —
+a per-run form whose values are constant at authoring time is ritual, not proof
 (`workflow-contract.md` stays the form for loops whose values genuinely vary per run).
 
 **Ground rules.** Stay kernel-free — no Python/MCP brain code, no capability catalogs, no
@@ -122,21 +125,56 @@ prompt names the skill and role itself, plus what to Read (briefing fields:
 `agent-dispatch.md`). A teammate's plain text is not visible to the lead: reports arrive as
 **messages**, and every follow-up goes to the **same named seat** — that continuity is what
 a standing seat buys. A fresh spawn per round is the subagent anti-pattern wearing a team's
-clothes. [PARAM: the seat roster — agent, skill, spawn timing, standing or cold.]
+clothes. [PARAM: the seat roster — agent, skill, spawn timing, standing or cold, and each
+seat's peer edges.]
 
 **Seat legibility.** Tell the user at the start that they can watch or message any teammate
 directly. Announce each seat in one line when it is filled — an unexplained teammate spawn
 reads as a malfunction. Teammate housekeeping (idle notifications, acks) is never narrated
 and never replied to.
 
-**Independence by structure.** Cold seats (reviewers, validators) are never in the room
-before their stage, and producer↔validator traffic routes through the lead — who talks to
-whom is the independence guarantee, carried by the roster, never by a persona's say-so.
+**Independence by structure.** Independence is carried by **who fills the seats and when
+they arrive** — disjoint agents, disjoint skills, no seat grading its own output — never by
+a persona's say-so, and for in-loop seats never by routing. **Cold arrival is a property of
+the stage, not of the traffic:** a seat is cold when it is not in the room before its own
+stage, and that is what the end-stage review's isolation rests on (cold spawn, counterparts
+withheld, the bounded cross-exam — Layer 1). A seat that arrives cold at its stage still
+meshes in-loop from then on; the two are independent.
+
+**In-loop mesh — the default.** *In-loop* = the workflow's own produce→check rounds (Layer
+1's in-loop-critique branch), never the sized end-stage review. Producers hand work to the
+verifying seat **directly**; the lead is the exception handler, not the switchboard. The
+traffic classes:
+
+- **Peer-routable** — verification hand-offs: work-is-ready, and the evidence and status
+  coming back (the verdict on a non-clean unit is the lead's — see Clearing). A peer-routed
+  gap list is a **hand-off, not a start signal**: the producing seat revises only when the
+  lead opens the next round, and the lead's brief carries that hold.
+- **Lead-routed** — coordination notices, policy, reported deviations, scope: rulings, not
+  hand-offs. A seat relaying between other seats has drifted into a hub — that traffic was
+  the lead's.
+
+The lead names each seat's peer edges in its brief.
+
+**Clearing under the mesh.** The lead's read is the escalations and the endgame, not every
+clean result. One unit of work [PARAM: the unit — e.g. a cycle, a round] advances on the
+verifying seat's **PASS-with-evidence, unread by the lead**, when *all* of: every
+verification in it is a deterministic CLI check that passed 100% · no deviation was
+reported · no domain-registry addition was made. **Everything else returns to the lead** —
+any failure, any GUI or subjective verification, any reported deviation, any
+domain-registry addition — for its verdict and whatever human checkpoint the command binds
+there [PARAM: that checkpoint's keying]. The devolved branch is *exactly* the
+deterministic-and-clean one, and that is the guard: the verifying seat's status is **input,
+never the gate**, wherever judgment exists — for a green deterministic run the
+classification always was the gate and the lead's read was ceremony.
 
 ---
 
-**Shape version:** v3 (2026-07-23 — workflow-token-reduction wave 1: run-cost entry added ·
-provenance header relocated to the strip note; v2 2026-07-19 — the S8 home-revision
-checkpoint) · **Governed by:** `mochiko:loop-discipline` · **Pairs with:**
+**Shape version:** v4 (2026-07-30 — team-method-vs-command-shape D1–D3: the in-loop mesh
+becomes Layer 2's default with named traffic classes · cold isolation restated as a
+review-stage property · the deterministic-clean verdict devolves to the pair; v3 2026-07-23
+— workflow-token-reduction wave 1: run-cost entry added · provenance header relocated to the
+strip note; v2 2026-07-19 — the S8 home-revision checkpoint) · **Governed by:**
+`mochiko:loop-discipline` · **Pairs with:**
 `agent-dispatch.md` (call-time briefing + seat transport) · `workflow-contract.md` (the
 per-run contract form) · `report-format.md` (the report envelope seats write to).
