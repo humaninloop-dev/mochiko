@@ -49,7 +49,11 @@ Against the command file:
    a team-form file (one containing `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS`) also contains
    `command-shape` — the obligated read of the shape home. The five KM-carrying commands
    (brainstorm · specify · plan · implement · setup) also contain the project-copy
-   reference `.mochiko/memory/knowledge-management.md` — never the module template's path.
+   reference `.mochiko/memory/knowledge-management.md` — and never the module template's
+   path, **with one carve-out: `setup`, the scaffolder, names
+   `templates/constitution-modules/knowledge-management.md` as its scaffold source alongside
+   the project copy** (the copy is what commands resolve at runtime; the template is what
+   setup scaffolds it from — a template path in any other command is still a FAIL).
    A file whose validation model (P6) binds a **sized end-stage review** also contains
    `sized-end-stage-review` — the conditional read for that branch; a file declaring the
    in-loop-critique branch must **not** contain it (loading it there is the sham-read the

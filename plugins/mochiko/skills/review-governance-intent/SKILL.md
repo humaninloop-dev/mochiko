@@ -1,14 +1,14 @@
 ---
 name: review-governance-intent
-description: This skill MUST be invoked when serving as a cold G3 INTENT REVIEWER in a `/mochiko:setup` run — stress-testing the frozen, confidence-marked interrogation synthesis (`.mochiko/memory/governance-intent.md`) BEFORE the user ratifies it at the synthesis-confirmation checkpoint — spawned at the sizing gate (one of a coverage/coherence lens-briefed pair by default at `production`/`regulated` tier, or solo when sized down), never a participant in the interrogation session. Protocol — independent cold read FIRST; the five setup hunt classes (missed dimensions against the ten-dimension agenda, unchallenged tier calls, passive card acceptances, too-easily-resolved reality conflicts, thin-rationale echo hunts); reality-grounding against `codebase-analysis.md` in brownfield. Then CROSS-EXAMINE the counterpart per the single-sourced pair protocol (`review-brainstorm`'s `references/CROSS-EXAM.md`) and return survivors severity-classified (Critical/Important/Minor) with a tally and a RECOMMENDED status (ready / needs-revision / critical-gaps) — survivor routing, the clearing verdict, and G3 are the lead's and the user's. SHOULD also invoke for the verify pass over the synthesis's folded dispositions (the coherence lens in a pair, automatic when solo) or the bounded delta-pass on a material G3-edit. Run by an independent reviewer, never the session lead; defaults to a FAIL posture — zero findings means hunt harder, and every finding needs a concrete failure scenario or cited contradiction.
+description: This skill MUST be invoked when serving as a cold G3 INTENT REVIEWER in a `/mochiko:setup` run — stress-testing the frozen, confidence-marked interrogation synthesis (`.mochiko/memory/governance-intent.md`) BEFORE the user ratifies it at the synthesis-confirmation checkpoint — spawned at the sizing gate (one of a coverage/coherence lens-briefed pair by default, or solo when sized down), never a participant in the interrogation session. Protocol — independent cold read FIRST; the five setup hunt classes (missed dimensions against the ten-dimension agenda, unchallenged fact-profile calls, passive card acceptances, too-easily-resolved reality conflicts, thin-rationale echo hunts); reality-grounding against `codebase-analysis.md` in brownfield. Then CROSS-EXAMINE the counterpart per the single-sourced pair protocol (`review-brainstorm`'s `references/CROSS-EXAM.md`) and return survivors severity-classified (Critical/Important/Minor) with a tally and a RECOMMENDED status (ready / needs-revision / critical-gaps) — survivor routing, the clearing verdict, and G3 are the lead's and the user's. SHOULD also invoke for the verify pass over the synthesis's folded dispositions (the coherence lens in a pair, automatic when solo) or the bounded delta-pass on a material G3-edit. Run by an independent reviewer, never the session lead; defaults to a FAIL posture — zero findings means hunt harder, and every finding needs a concrete failure scenario or cited contradiction.
 ---
 
 # G3 Intent Review — Stress-Testing the Governance Synthesis
 
 ## Overview
 
-A `/mochiko:setup` interrogation closes on one artifact — `governance-intent.md`: the tier
-declaration, deck rulings, minted intents, waivers, module selections, and exclusions that become
+A `/mochiko:setup` interrogation closes on one artifact — `governance-intent.md`: the fact
+profile, floor-expression and deck rulings, minted intents, waivers, module selections, and exclusions that become
 a **traceable contract** on the surface-set producer, each element carrying a GI-ID and a
 confidence mark (`Confident / Assumed / Contested / Unsure / Deferred`) the lead assigned at
 assembly. The session itself runs unchallenged — the card arbitration is recommend-then-arbitrate,
@@ -18,8 +18,8 @@ re-ratification plus a produce→validate round. The synthesis is **frozen** fro
 dispositions land.
 
 Your spawn brief may scope your hunt to a **lens** — *coverage* (the agenda surface: missed
-dimensions, prune audits, the card-acceptance and waiver/module sweeps) or *coherence* (internal
-consistency: tier↔risk↔ruling alignment, the mark/echo-rationale audit, reality-conflict
+dimensions, convergence-skip audits, the card-acceptance and waiver/module sweeps) or *coherence* (internal
+consistency: fact↔risk↔ruling alignment, the mark/echo-rationale audit, reality-conflict
 resolutions against the analysis, cross-element contradictions). The lens sets your depth, not
 your jurisdiction: work your lens hard, and still report anything real you trip over outside it —
 the lead owns the cross-set merge. Solo, the whole surface is yours. **The verify pass belongs to
@@ -32,7 +32,7 @@ and grade; you never author, revise, or ratify the synthesis.
 **Out of your jurisdiction, permanently:** the authored surface set and its Tier-2 grading
 (`mochiko:validation-constitution`, downstream — a different artifact, a different family), and
 **formulation/enforceability quality** of authored principles — that risk was put to the user and
-accepted, all tiers, closed `Contested` (design record D1); do not re-raise it.
+accepted, closed `Contested` (design record D1); do not re-raise it.
 
 ## Phase 1 — Independent cold read
 
@@ -46,14 +46,15 @@ its ten dimensions are your coverage yardstick), and, in brownfield,
 
 | # | Class | The question |
 |---|-------|--------------|
-| 1 | **Missed dimension** | Which of the agenda's ten dimensions left no trace in the synthesis? A skip must be a *named* prune — and a prune's rationale must hold at the declared tier (a `production` declaration voids a poc-era skip). |
-| 2 | **Unchallenged tier call** | Does GI-001 square with the declared risk surface, identity, and team reality — or was the tier adopted on "sounds right"? Is the graduation path honest? Do tier-loosened deck rulings carry a recorded basis? |
-| 3 | **Passive card acceptance** | Recommend-then-arbitrate invites waving cards through. Hunt adoption streaks, rulings whose Adjustment column is empty where the tier preset begged tuning, and `Confident` marks on unelaborated adoptions. |
+| 1 | **Missed dimension** | Which of the agenda's ten dimensions left no trace in the synthesis? A skip must be a *named* convergence skip — there is no pruning license, so any dimension left unasked needs an earlier answer that genuinely settled it. |
+| 2 | **Unchallenged fact profile** | Does GI-001 square with the declared identity, risk surface, and detected reality — or were module-driving facts adopted on "sounds right"? Was every negative confirmed with its consequence stated (the S4 fail-safe — a casual "no regulated data" that silently forecloses a compliance module is exactly the miss to hunt)? Do the triggered modules match the facts per [../authoring-constitution/references/COMPLIANCE-MODULES.md](../authoring-constitution/references/COMPLIANCE-MODULES.md)? |
+| 3 | **Passive card acceptance** | Recommend-then-arbitrate invites waving cards through. Hunt adoption streaks on the arbitrated layer, floor rows whose expression column is empty where the type begged translation, and `Confident` marks on unelaborated adoptions. |
 | 4 | **Too-easily-resolved reality conflict** | Brownfield: where detected reality contradicted declared intent, was the conflict confronted in the open — or resolved in one beat? Check the ruling against what `codebase-analysis.md` actually says. |
 | 5 | **Thin-rationale echo hunt** | The marks are **self-reported by the reviewed lead** — a sloppy lead yields falsely-confident marks. A ruling column that merely echoes the card text, or a minted intent traced to prompting rather than an elicited answer, is an independent signal no mark can launder. |
 
-Sweep the remaining elements with the same eye: waivers (does the tier's waiver posture permit
-each one? does each carry a revisit trigger?), module selections (every module ruled on, declines
+Sweep the remaining elements with the same eye: waivers (does each carry a recorded
+justification? none naming a legal-mandate module obligation — D4.2? "permanent (D4.1
+pending)" stated where no revisit trigger was ruled?), module selections (every module ruled on, declines
 recorded), minted intents (provenance quoted from dimension 9, not invented), and exclusions.
 
 **Use the marks to prioritize, never to skip.** `Assumed / Unsure / Deferred` elements get your
@@ -88,7 +89,7 @@ Return to the lead as a message (no report files): **your own** survivors, sever
 each with its failure scenario, resolution path, any unresolved counterpart objection, and any
 flagged duplicate of a counterpart finding — plus a **tally** ("N raised, M survived"; the fallen
 stay retrievable on ask) and a recommended status. The cross-set merge and the combined count are
-the lead's, as is the survivor routing (user rulings, challenged prunes, and scope decisions go
+the lead's, as is the survivor routing (user rulings, challenged skips, and scope decisions go
 to the user directly; your formulation challenges get argued with you under the lead's
 two-exchange cap; an overruled survivor marks its element `Contested`).
 
@@ -96,7 +97,7 @@ two-exchange cap; an overruled survivor marks its element `Contested`).
 |---------|----------|
 | **ready** | every hunt class actively worked, nothing blocking survived |
 | **needs-revision** | survivors resolvable by the session (an interrogation follow-up, a re-dealt card, a fixable fold) |
-| **critical-gaps** | a tier call contradicted by its own risk declaration, an unrecorded ruling, or a synthesis too thin to review |
+| **critical-gaps** | a fact profile contradicted by its own risk declaration or detected reality, an unrecorded ruling, or a synthesis too thin to review |
 
 **Never default to `ready`** — it is earned by a completed hunt, not by the synthesis looking
 reasonable. A synthesis too thin to attack (rulings without rationale, marks without basis) is
@@ -131,9 +132,9 @@ your delta-pass.
 | Skipping a `Contested` element on its mark alone | The mark is honored only after its rationale audit — an unaudited `Contested` is a shield, and a shield is a finding. |
 | Trusting a `Confident` mark as evidence of engagement | Marks are self-reported by the lead under review. Echo-rationales and adoption streaks outrank the mark. |
 | Arguing a user-declared fact against the files | Team size, risk posture, and lifespan live in nobody's repo — route to the user as confirmation, via the lead. |
-| Re-litigating the tier *choice* the user ruled with open eyes | Challenge the tier's **consistency** with the declared risk and rulings — the choice itself is the user's. |
+| Re-litigating the floor's *level* | The level is the library's, asserted (PO-D2) — challenge expression, waivers, and fact consistency, never the level itself. |
 | Reviewing the authored principles' formulation quality | Accepted risk, closed `Contested` (D1) — permanently out of jurisdiction. |
-| Grading against your own governance taste | The yardstick is the agenda, the declared tier, and the synthesis's own internal consistency — not what you would have chosen. |
+| Grading against your own governance taste | The yardstick is the agenda, the asserted floor, and the synthesis's own internal consistency — not what you would have chosen. |
 | Attacks without resolution paths | Every finding names the interrogation follow-up or check that would settle it. |
 | Softening because the user "already confirmed it in session" | G3 confirming its own synthesis is the gap this review exists to close. You were spawned cold precisely so you are not the room. |
 | Reviewing a session you helped run | If you were in the session, you are not a reviewer. |

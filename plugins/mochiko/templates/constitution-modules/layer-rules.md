@@ -38,13 +38,13 @@ structure and the project's actual conventions (brownfield: from codebase-analys
 ### Domain-Dependency Registry
 
 The domain layer MAY import libraries listed in the registry block below — seeded at setup
-(session-arbitrated), grown at implement time under the tier-keyed add-process. Craft and
+(session-arbitrated), grown at implement time under the human-gated add-process. Craft and
 policy single source: `authoring-constitution/references/DOMAIN-DEPENDENCIES.md`.
 
 The authored domain-layer rules file carries **two parts with different ownership**:
 
 - **Policy preamble** (setup-owned, regenerated): the qualification criteria, the add-process,
-  and the tier gate — regenerated from the governance ledger's Domain-dependency policy section.
+  and the add gate — regenerated from the governance ledger's Domain-dependency policy section.
 - **Registry block** (living, preserved): the list itself, between
   `<!-- mochiko:domain-registry:begin -->` and `<!-- mochiko:domain-registry:end -->` markers —
   **preserved verbatim across setup/amend regenerations** (implement-time additions live here;
@@ -57,7 +57,7 @@ The authored domain-layer rules file carries **two parts with different ownershi
 - [ ] Project Structure tree present with real directory names (no [LAYER_N] placeholders)
 - [ ] Layer Import Rules table present; every layer has MAY and MUST NOT columns filled
 - [ ] Import rules consistent with the kept (or minted) architecture ruling's layer structure
-- [ ] Enforcement for layer rules names a real tool (import linter / CI rule), not "code review" alone at production+ tier
+- [ ] Enforcement for layer rules names a real tool (import linter / CI rule), not "code review" alone — production-strength enforcement
 - [ ] Every rules file whose concern a layer can violate (per the Import Rules table — including orchestration through ports) includes that layer in its `paths`
 - [ ] Domain-layer rules file carries exactly one `mochiko:domain-registry` begin/end marker pair, with the policy preamble above it
 - [ ] Every registry row carries justification, signal level, provenance, and gate fields (no blank metadata)

@@ -19,7 +19,9 @@ This artifact is a TRACEABLE CONTRACT on the surface-set producer, not a brief:
 AMEND RUNS UPDATE THIS FILE DELTA-WISE: touched elements are edited or superseded (never
 renumbered), new elements take fresh IDs, untouched elements keep their IDs, and the Amendment
 Log records each delta. The traceability cross-check always runs against this persisted,
-updated file.
+updated file. LEGACY MIGRATION: an amend run meeting a tier declaration (the retired axis)
+supersedes it — never renumbered — elicits the fact profile once, and re-records existing
+waivers under the D4 model.
 
 GI-ID rule: sequential GI-001, GI-002, … — unique forever within this file; never reuse a
 retired ID.
@@ -42,24 +44,32 @@ downstream issues the authoritative grade on the authored surface set (both stil
 **Confirmed at synthesis checkpoint:** [YYYY-MM-DD] by [user]
 **Governs:** the governance surface set v[X.Y.Z] (CLAUDE.md governance region · `.claude/rules/mochiko/` · `.mochiko/memory/governance-ledger.md`)
 
-## Tier declaration
+## Fact profile
 
-- **GI-001 — Tier:** `[poc | internal | production | regulated]` *(labels soft — record the
-  project's own name if renamed)* · **Mark:** [Confident | Assumed | Contested | Unsure | Deferred]
-- **Graduation path:** [expected next tier + trigger, or "none expected"]
-- **Rationale:** [why this tier — from dimensions 1, 2, 4]
+The module-driving facts (interrogation dimension 2), each with its consequence-stated
+confirmation — negatives are recorded facts too (the S4 fail-safe, per
+`authoring-constitution/references/COMPLIANCE-MODULES.md`):
+
+- **GI-001 — Facts:** industry: [x] · data classes: [x] · jurisdictions/markets: [x] ·
+  contractual commitments: [x] · **Mark:** [Confident | Assumed | Contested | Unsure | Deferred]
+- **Modules triggered (mechanical):** [module list with trigger fact each, or "none — negatives
+  confirmed: (each negative + its stated consequence)"]
+- **Brownfield cross-check:** [declared facts vs `codebase-analysis.md` / DS-XXX / detected
+  integrations — "consistent" or the confrontation's ruling] *(brownfield only)*
 
 ## Project identity & type
 
-- **GI-002 — Type:** [frontend | backend | fullstack | cli | library | service] → shelves dealt:
-  [list] · **Mark:** [Confident | Assumed | Contested | Unsure | Deferred]
+- **GI-002 — Type:** [frontend | backend | fullstack | service | mobile | desktop] → shelves
+  dealt: [list] · **Mark:** [Confident | Assumed | Contested | Unsure | Deferred]
 - **Identity:** [what's being built, for whom, lifespan — 2-3 sentences]
-- **Risk surface:** [what failure costs — the honest strictness driver]
+- **Risk surface:** [what failure costs — honest context for the floor's expression]
 - **Team reality:** [solo/team, review culture — what enforcement can lean on]
 
-## Pruned dimensions
+## Convergence skips
 
-[Named skips only — "dimension 8 (deployment) skipped: poc tier, no release process." Or "none".]
+[Named skips only — a dimension left unasked because an earlier answer settled it ("dimension 5
+settled by dimension 1: solo founder"). A skip is convergence bookkeeping, never a scope ruling
+— there is no pruning license. Or "none".]
 
 ## Real commands (dimension 6/8 → the validator's placeholder bar)
 
@@ -69,18 +79,20 @@ downstream issues the authoritative grade on the authored surface set (both stil
 | Test | `[actual command]` | [detected / declared] |
 | [etc.] | | |
 
-## Deck rulings
+## Floor expression & deck rulings
 
-One element per dealt card — **dropped cards are rulings too**:
+Floor cards enter asserted — their rows record *expression* (type translation), never a level
+ruling; arbitrated cards (architecture-opinion and kin) record the user's ruling. **Dropped
+arbitrated cards are rulings too:**
 
-| GI-ID | Card | Ruling | Adjustment (if any) | Mark |
-|-------|------|--------|---------------------|------|
-| GI-0XX | FLOOR-SEC | kept | [tightened/loosened how, or "at tier preset"] | [Confident] |
-| GI-0XX | BE-HEX | dropped | [user's stated reason] | [Confident] |
+| GI-ID | Card | Layer | Ruling / Expression | Mark |
+|-------|------|-------|---------------------|------|
+| GI-0XX | FLOOR-SEC | floor-asserted | [expression shaped how, or "at floor level"] | [Confident] |
+| GI-0XX | BE-HEX | arbitrated | [kept/tightened/dropped + user's stated reason] | [Confident] |
 | … | | | | |
 
-*(On a tier-bump amend, tier-loosened rulings are re-dealt on the bump's agenda slice or
-force-re-marked — a stale `Confident` never carries a lower-tier loosening upward unexamined.)*
+*(On a fact-profile or un-waive amend, affected rulings are re-dealt on the event's agenda
+slice or force-re-marked — a stale `Confident` never carries an unexamined ruling forward.)*
 
 ## Minted principle intents
 
@@ -92,17 +104,21 @@ One element per minted intent — traced to the elicited answer, never to prompt
 
 ## Waivers
 
-Only at tiers whose waiver posture permits it; every waiver is auditable:
+Any asserted standard may be waived with a recorded justification (D4) — **except legal-mandate
+module obligations (D4.2)**. Waivers are permanent pending the D4.1 revisit; a revisit trigger
+is the user's option, never a default. Every waiver is auditable:
 
-| GI-ID | Floor category | Waiving tier | Revisit trigger | Mark |
-|-------|----------------|--------------|-----------------|------|
-| GI-0XX | [e.g. Observability] | [poc] | [tier graduation to internal, or explicit re-run] | [Confident] |
+| GI-ID | Standard (floor category / card / non-legal module obligation) | Justification | Revisit trigger (optional) | Mark |
+|-------|---------------------------------------------------------------|---------------|---------------------------|------|
+| GI-0XX | [e.g. FLOOR-TEST coverage gate] | [recorded reason] | [or "permanent (D4.1 pending)"] | [Confident] |
 
 ## Module selections
 
-Template modules the session ruled on — **declines are rulings too** (recorded, durable: amend
-runs offer only modules with *no* recorded ruling here; a recorded decline is never re-asked
-until the user reopens it). The validator checks core + exactly the adopted modules:
+**Template modules** (the operating-docs layer — knowledge-management, layer-rules,
+release-gates), ruled in session; *compliance modules attach mechanically in the Fact profile
+above, never here.* **Declines are rulings too** (recorded, durable: amend runs offer only
+modules with *no* recorded ruling here; a recorded decline is never re-asked until the user
+reopens it). The validator checks core + exactly the adopted modules:
 
 | GI-ID | Module | Ruling | Because | Mark |
 |-------|--------|--------|---------|------|
@@ -122,7 +138,8 @@ Session-arbitrated registry seeds per `authoring-constitution/references/DOMAIN-
 
 ## Deliberate exclusions (dimension 10)
 
-- **GI-0XX:** [what governance will not cover at this tier + why]
+- **GI-0XX:** [what governance will not cover + why — never a floor category (the floor leaves
+  only by recorded waiver, above)]
   · **Mark:** [Confident | Assumed | Contested | Unsure | Deferred]
 
 ## Review
@@ -135,8 +152,9 @@ verify pass; waived or verified → G3. -->
 **[YYYY-MM-DD] — [first ratification | amend]**
 
 - **Sizing:** lead stated weight [element count · mark mix · reality-surface load]; recommended
-  [pair | single | none] ([tier-keyed per D3 | tier × delta weight per D6]); **user ruled:**
-  [pair | single | none]
+  [pair | single | none] ([pair default on first ratification | event-scaled on amend:
+  governance event → pair · lighter substantive delta → single · wording-level →
+  none-with-recorded-waiver]); **user ruled:** [pair | single | none]
 - *(if none)* **Waiver:** waived by [user] at the sizing gate — [stated reason]. The synthesis
   proceeds to G3 unreviewed; this record is the audit trail.
 - *(otherwise)* **Review:** reviewer(s) [coverage / coherence lenses | solo]; **tally** [N raised

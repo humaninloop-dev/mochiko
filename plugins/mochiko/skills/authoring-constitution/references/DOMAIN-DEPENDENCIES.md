@@ -61,15 +61,12 @@ A non-empty day-one registry is the point: an empty list reads as prohibition.
 
 ## Growth (implement time — the add-process authored into the policy)
 
-Tier-keyed gate, with a visibility floor at every tier:
+One universal gate at the asserted floor (the retired tier fork is gone — PO-D2):
 
-- **`poc` / `internal`** — self-serve: the implementer MAY add a dependency that meets both
-  criteria directly to the registry block, recording justification + signal level; the addition
-  MUST be disclosed in the cycle report (`domain_deps_added`) — visible and contestable at the
-  cycle checkpoint, non-blocking.
-- **`production` / `regulated`** — gated: a proposed addition surfaces to the human as an
-  explicit ruling BEFORE entering the registry; the cycle checkpoint MUST NOT auto-approve
-  while `domain_deps_added` is non-empty.
+- A proposed addition that meets both criteria surfaces to the human as an **explicit ruling
+  BEFORE entering the registry**; the cycle checkpoint MUST NOT auto-approve while
+  `domain_deps_added` is non-empty. The cycle report's `domain_deps_added` disclosure is the
+  visibility floor — every addition visible and contested at the checkpoint, never silent.
 
 Additions never require a setup re-run; the next amend run re-validates the block's rows.
 
@@ -81,7 +78,7 @@ Additions never require a setup re-run; the next amend run re-validates the bloc
   setup/amend regenerations (the one carve-out from rules-files-regenerated-whole; see the
   ownership boundary in the authoring skill). Row schema:
   `| Dependency | Justification | Signal level | Added (by/when) | Gate |`.
-- **The policy** (these criteria, the hierarchy, the add-process, the tier gate) is
+- **The policy** (these criteria, the hierarchy, the add-process, the gate) is
   setup-owned: recorded in the governance ledger's Domain-dependency policy section and
   regenerated into the rules file's preamble. No copy of the list exists outside the block —
   nothing can drift.

@@ -1,5 +1,5 @@
 ---
-description: Establish or update the project's governance on the surfaces Claude Code natively loads — an interrogation session elicits the user's declared intent (tier, type, risk, values) before anything is authored, closing on a confidence-marked synthesis that a tier-sized cold intent review stress-tests before the user ratifies it at G3 (pair / single / recorded waiver — the user rules the sizing); the ratified synthesis is then a traceable contract on a principal-architect producer teammate that authors the surface set (a marked CLAUDE.md governance region, paths-scoped rules files, skill pointers, a governance ledger), an independent validator teammate grades trace closure from the files, and the user accepts with the trace summary in hand. Greenfield | brownfield | amend; every stage user-gated, default-FAIL, bounded, kernel-free. Requires agent teams (CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS); refuses without them.
+description: Establish or update the project's governance on the surfaces Claude Code natively loads — an interrogation session elicits the user's declared intent (the fact profile, type, risk, values) before anything is authored, closing on a confidence-marked synthesis that a sized cold intent review (pair default) stress-tests before the user ratifies it at G3 (pair / single / recorded waiver — the user rules the sizing); the ratified synthesis is then a traceable contract on a principal-architect producer teammate that authors the surface set (a marked CLAUDE.md governance region, paths-scoped rules files, skill pointers, a governance ledger), an independent validator teammate grades trace closure from the files, and the user accepts with the trace summary in hand. Greenfield | brownfield | amend; every stage user-gated, default-FAIL, bounded, kernel-free. Requires agent teams (CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS); refuses without them.
 disable-model-invocation: true
 ---
 
@@ -61,25 +61,27 @@ yours.
   dimensions, worked adaptively via `mochiko:analysis-iterative`, then the catalog deck
   (`…/authoring-constitution/references/catalog/`, which owns the shelf model) · rules:
   the user, card by card (recommend-then-arbitrate) · decides: the kept / dropped / minted / waived
-  set. A low-tier declaration licenses agenda pruning, **every skip named, never silent**.
-  Brownfield: the analysis pre-fills the existing-practices dimension, and
-  detected-reality-vs-declared-intent conflicts are **confronted in the open**, never silently
-  resolved. Amend: a micro-session scoped to the delta; a tier bump or un-waive is a governance
-  event, taking its own agenda slice where tier-loosened rulings are re-dealt or force-re-marked.
-  Offer **once** each module the synthesis records no ruling on, recording the answer either way — a
-  decline stands until reopened, never re-asked. A layered principle kept or minted runs the
+  set. **No pruning license**: every dimension is real for a deployed, operated product — only
+  convergence skips, each named, never silent. Brownfield: the analysis pre-fills the
+  existing-practices dimension, and detected-reality-vs-declared-intent conflicts are
+  **confronted in the open**, never silently resolved. Amend: a micro-session scoped to the
+  delta, superseding any legacy tier declaration (the agenda's migration clause); a fact-profile
+  change (module attach/detach) or un-waive is a governance event, taking its own agenda slice
+  where affected rulings are re-dealt or force-re-marked. Offer **once** each module the synthesis
+  records no ruling on, recording the answer either way — a decline stands until reopened, never
+  re-asked. A layered principle kept or minted runs the
   **layered-architecture beat**: module ruling + domain-dependency seed arbitration
-  (`…/authoring-constitution/references/DOMAIN-DEPENDENCIES.md`). Waivers ruled where the tier
-  permits.
+  (`…/authoring-constitution/references/DOMAIN-DEPENDENCIES.md`). Waivers ruled per D4 — any
+  asserted standard, recorded justification, legal-mandate module obligations excepted.
 - **Review sizing** *(all modes, before G3)* — evidence: the synthesis's weight, stated per the
   template and purposed as input to the user's *elevation* of the default, never as the default ·
-  rules: the user · decides: the reviewer count. The default is tier-keyed (`poc`/`internal` →
-  single, `production`/`regulated` → pair), **event-scaled on amend**: a governance event (tier bump,
-  un-waive, floor or waiver change) takes that full default; lighter deltas recommend single at
-  `production`/`regulated`, none-with-waiver below. The gate always opens: every amend records a
+  rules: the user · decides: the reviewer count. The default is a **pair**, **event-scaled on
+  amend**: a governance event (un-waive, floor change, module attach/detach) takes the full pair;
+  a lighter substantive delta recommends single; a wording-level delta,
+  none-with-recorded-waiver. The gate always opens: every amend records a
   ruling or a waiver, keeping the trail audit-complete. **none** → straight to G3, waiver recorded.
-- **Survivor rulings** — evidence: a survivor in user territory — deck, tier or waiver rulings,
-  challenged dimension-prunes and scope decisions, and **user-declared facts** (team size, risk
+- **Survivor rulings** — evidence: a survivor in user territory — deck, fact-profile or waiver rulings,
+  challenged convergence-skips and scope decisions, and **user-declared facts** (team size, risk
   posture, lifespan) as confirmation · rules: the user · decides: its disposition. Reality-surface
   disputes take Bindings' fact route instead, never argument.
 - **G3 synthesis confirmation** *(all modes)* — evidence: the reviewed synthesis with its tally and
@@ -91,10 +93,11 @@ yours.
 - **Clarification** *(in-loop)* — evidence: a producer or validator question it cannot resolve from
   its inputs · rules: the user · decides: the answer, fed forward into the round — a human gate
   inside the loop, never part of the done-condition.
-- **G4 acceptance** *(only on validator PASS)* — evidence: the validated set — region version and
-  tier, principle count by home (CLAUDE.md lines / rules files / skill pointers), floor accounting
-  with waivers — **with the trace summary** and **every flagged proposal from the producer** · rules:
-  the user, proposal by proposal · decides: **accept** (done) / **amend** (changes become the fix
+- **G4 acceptance** *(only on validator PASS)* — evidence: the validated set — region version,
+  floor and attached modules, principle count by home (CLAUDE.md lines / rules files / skill
+  pointers), floor accounting with waivers — **with the trace summary** and **every flagged
+  proposal from the producer** · rules: the user, proposal by proposal · decides: **accept**
+  (done) / **amend** (changes become the fix
   list; must PASS again) / **reject** (abort; drafts stay, stamped unaccepted). A proposal folds in
   only by the user's word, then the set re-validates.
 - **G5 finalize** — evidence: the accepted artifacts and the PASS + acceptance trail · rules: the

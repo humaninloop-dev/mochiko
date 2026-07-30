@@ -10,6 +10,8 @@ per ruled decision).
 
 | Date | Decision | Status | Rationale |
 |------|----------|--------|-----------|
+| 2026-07-30 | PO narrowing build landed (v0.36.0) — stages 0–4 executed: fact-profile dimension + `COMPLIANCE-MODULES.md` (thin seed, D4.2 strata, S4 fail-safe) · floor collapsed to the asserted production row · D4 waiver model + trace-key `module:` token · setup/implement re-keyed; audits stage-0 FAIL→PASS · cluster FAIL→6 fixes→PASS · shape PASS×2; two absorbed defects closed (trail) | ruled | [ADR](.mochiko/decisions/2026-07-30-po-narrowing-build-scope.md) |
+| 2026-07-30 | PO narrowing build scoped — 9 rulings: non-legal module obligations waivable under D4 (closes the recorded-open) · thin module-registry seed · both open defects absorbed (check-1 rider discharged by supersession) · dimension 2 → fact profile · semver + amend-sizing re-keys · legacy-migration clause · one ceremony, target v0.36.0 · "production" survives as the floor's name | ruled | [ADR](.mochiko/decisions/2026-07-30-po-narrowing-build-scope.md) |
 | 2026-07-30 | PO-D1 — target: customer-facing product applications only (SaaS/web/mobile/desktop; application-vs-building-block axis; libraries/SDKs/CLIs deferred) | ruled | [production-only-focus](.mochiko/brainstorms/production-only-focus/record.md) |
 | 2026-07-30 | PO-D2 — governance tier axis retired: one asserted production floor + fact-triggered compliance modules | ruled | [production-only-focus](.mochiko/brainstorms/production-only-focus/record.md) |
 | 2026-07-30 | PO-D3 — library owns the standard; setup elicits facts; safety floor + modules asserted, architecture-opinion cards stay arbitrated (S7) | ruled | [production-only-focus](.mochiko/brainstorms/production-only-focus/record.md) |
