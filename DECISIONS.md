@@ -10,6 +10,13 @@ per ruled decision).
 
 | Date | Decision | Status | Rationale |
 |------|----------|--------|-----------|
+| 2026-07-30 | PO-D1 — target: customer-facing product applications only (SaaS/web/mobile/desktop; application-vs-building-block axis; libraries/SDKs/CLIs deferred) | ruled | [production-only-focus](.mochiko/brainstorms/production-only-focus/record.md) |
+| 2026-07-30 | PO-D2 — governance tier axis retired: one asserted production floor + fact-triggered compliance modules | ruled | [production-only-focus](.mochiko/brainstorms/production-only-focus/record.md) |
+| 2026-07-30 | PO-D3 — library owns the standard; setup elicits facts; safety floor + modules asserted, architecture-opinion cards stay arbitrated (S7) | ruled | [production-only-focus](.mochiko/brainstorms/production-only-focus/record.md) |
+| 2026-07-30 | PO-D4 — waivers reach everything, recorded + auditable; legal-mandate module obligations unwaivable (D4.2); expiry deferred (D4.1) | ruled (`Contested`; expiry `Deferred`) | [production-only-focus](.mochiko/brainstorms/production-only-focus/record.md) |
+| 2026-07-30 | PO-D5 — depth agenda in tiers: security + ops hardening + shelf builds ride the narrowing; IaC staged next; multi-repo later; a11y → compliance modules (S8) | ruled | [production-only-focus](.mochiko/brainstorms/production-only-focus/record.md) |
+| 2026-07-30 | PO-D6 — identity written into ROADMAP thesis + CLAUDE.md with the backend-seeded-today qualification (S3) | ruled | [production-only-focus](.mochiko/brainstorms/production-only-focus/record.md) |
+| 2026-07-30 | PO-D7 — immature-but-in-scope teams served: full floor + recorded-waiver on-ramp; maturity axis rejected road recorded | ruled | [production-only-focus](.mochiko/brainstorms/production-only-focus/record.md) |
 | 2026-07-30 | CS-D1 — command-rebuild scope: the whole loaded surface (files + shape architecture + read chain); surface cardinality evidence-gated | ruled | [command-succinctness-strip](.mochiko/brainstorms/command-succinctness-strip/record.md) |
 | 2026-07-30 | CS-D2/D2′ — 70% demoted to intent; success criterion = goal-shape conformance with structural not-done states; true-reductions-only accounting retained | ruled (D2 amended by D2′ in-session) | [command-succinctness-strip](.mochiko/brainstorms/command-succinctness-strip/record.md) |
 | 2026-07-30 | CS-D3 — "align to /goal" = goal-shaped documents (condition-first files); runtime `/goal` adoption rejected as additive | ruled | [command-succinctness-strip](.mochiko/brainstorms/command-succinctness-strip/record.md) |

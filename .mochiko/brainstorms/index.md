@@ -8,6 +8,12 @@ One entry per session directory under `.mochiko/brainstorms/<topic-slug>/`, **ne
 
 ---
 
+## `production-only-focus` — narrowing mochiko to production-quality codebases only
+- **When:** 2026-07-30 · **Status:** accepted · record pair-reviewed (lens-split per sizing gate: 14 raised → 13 survived cross-exam → 9 lead-merged survivors → 9/9 dispositioned incl. the user-adopted 5-ruling batch; verify pass caught 2 fold-contradictions, both repaired, re-verified CLEAN; clearing verdict ready)
+- **Artifacts:** [record.md](production-only-focus/record.md) (canonical, incl. verbatim fact-checker map F1–F33 + boundary addendum) · [run-costs.md](production-only-focus/run-costs.md)
+- **About:** mochiko narrows to customer-facing product applications only — SaaS/web/mobile/desktop on the application-vs-building-block axis (D1); the poc→regulated tier ladder dies for one asserted production floor + fact-triggered compliance modules (D2); the library owns the standard, setup elicits facts, architecture-opinion cards stay arbitrated (D3+S7); universal recorded waivers with the legal-mandate exception D4.2, expiry deferred (D4); three-tier depth agenda — security/ops/shelves ride, IaC staged, multi-repo later, a11y → modules (D5+S8); identity written into the operating docs with the backend-seeded-today qualification (D6); immature-in-scope teams enter at the full floor via the waiver on-ramp (D7).
+- **Landed:** DECISIONS.md rows PO-D1–D7 (2026-07-30) · ROADMAP thesis target sentence + Next row (narrowing build) + Later reframe (frontend/mobile shelves → Tier I; monorepo → Tier-III note; distributed-artifact shelf deferred per D1; seat-tiering untouched) · CLAUDE.md "What this is" target paragraph · BACKLOG "Production-only narrowing" section (build surface + Tier-I/II scoping + PO watches). Build not started.
+
 ## `command-succinctness-strip` — goal-shaped command rebuild: the ≥70% instinct becomes condition-first anatomy
 - **When:** 2026-07-30 · **Status:** accepted · record pair-reviewed (lens-split per sizing gate: 24 raised → 24 survived cross-exam → 18 lead-merged → 18/18 dispositioned incl. the user batch U1–U5; verify pass 16-clean + one blocking fold V1 user-ruled and re-verified CLEAN; checker errata + corrigendum over the map's derived aggregates; clearing verdict ready)
 - **Artifacts:** [record.md](command-succinctness-strip/record.md) (canonical, incl. verbatim map + errata + corrigendum) · [run-costs.md](command-succinctness-strip/run-costs.md)
