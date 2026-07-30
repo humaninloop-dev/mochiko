@@ -10,6 +10,20 @@
 
 [Extract from feature spec: primary requirement + technical approach from decisions]
 
+## Architecture
+
+The system view — components, boundaries, interactions, and the delta this feature introduces —
+was designed first among the design work and **signed off** at the architecture gate. It lives in
+`architecture.md`; see it for the container diagram, the key-flow sequence diagrams, and the
+component register (never restated here — pointers only).
+
+**Delta summary**: [one line — what this feature changes structurally, or "no structural change"].
+
+| Aspect | Where |
+|--------|-------|
+| Container diagram (delta-marked) · key-flow sequence diagrams · component register | `architecture.md` |
+| Structural decisions (D-XXX) | `constraints-and-decisions.md` — structural-decisions section |
+
 ## Key Decisions
 
 | Decision | Choice | Shaped By | Rationale |
@@ -49,10 +63,14 @@ See `contracts/api.yaml` for full OpenAPI specification.
 | `requirements.md` | ✅ Complete |
 | `constraints-and-decisions.md` | ✅ Complete |
 | `nfrs.md` | ✅ Complete |
+| `architecture.md` | ✅ Complete — signed off |
 | `data-model.md` | ✅ Complete |
 | `contracts/api.yaml` | ✅ Complete |
 | `quickstart.md` | ✅ Complete — *or* "not applicable — no external integration surface" (conditional; see `patterns-api-contracts`) |
+| `task-mapping.md` | ✅ Complete |
+| `tasks.md` | ✅ Complete |
 
 ## Next Steps
 
-Run the tasks workflow to generate implementation tasks from this plan.
+Run `/mochiko:implement` to execute this package — the accepted design, architecture, and task
+breakdown are its entry condition.

@@ -15,7 +15,7 @@ implementation code, and not plan-artifact completeness (that is a separate revi
 below).
 
 The output is a **gap-finding report plus a RECOMMENDED 3-state verdict** (ready / needs-revision /
-critical-gaps) — an *input* to the loop, **not** a clearing PASS/FAIL. The `/mochiko:tasks` **lead**
+critical-gaps) — an *input* to the loop, **not** a clearing PASS/FAIL. The `/mochiko:plan` **lead**
 owns the clearing decision and routes the revision loop; this skill recommends, the lead routes.
 
 **Violating the letter of the rules is violating the spirit of the rules.** Running the checklist

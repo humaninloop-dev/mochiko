@@ -176,7 +176,7 @@ Are there Critical issues?
           └── 4+   → verdict: critical-gaps
 ```
 
-The verdict is a **recommendation** — a gap-finding input. The `/mochiko:tasks` lead owns the
+The verdict is a **recommendation** — a gap-finding input. The `/mochiko:plan` lead owns the
 clearing decision and routes the revision loop.
 
 ## Issue ID Conventions

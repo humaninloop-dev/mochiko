@@ -61,7 +61,7 @@ just the vocabulary:
   alone doesn't distinguish teammates from subagents, per the docs). Not addressable → kill
   it and respawn, explicitly requesting an agent team.
 
-All seven commands are currently team-form, each per its recorded conversion assessment
+All six commands are currently team-form, each per its recorded conversion assessment
 with a first-dogfood confirm-or-revert checkpoint (`.mochiko/strips/<command>.md`;
 assessment doctrine: `.mochiko/brainstorms/pattern-codification-and-minimalism/record.md`,
 D2). One-shot dispatch remains the rebuttable Layer-1 default for any future command

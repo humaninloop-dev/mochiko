@@ -1,6 +1,6 @@
 ---
 name: review-plan-artifacts
-description: This skill MUST be invoked to grade a producer's plan artifacts against the completeness checklist — the analysis set (requirements, constraints-and-decisions, NFRs) and the design set (data-model, API contracts, quickstart) — checking FR→TR coverage, orphan technical requirements, testable/measurable criteria, NFR measurability, entity and endpoint coverage, data-sensitivity annotations present, schema-model consistency, integration-boundary presence, and cross-artifact consistency (does the design honor the decisions). Emits a severity-classified gap report (Critical/Important/Minor) and a 3-state verdict (ready / needs-revision / critical-gaps). SHOULD also invoke whenever a plan loop's completeness-review step needs an independent grade of the planning artifacts, or when re-reviewing after a FAIL-loop revision. The completeness (mirror-checklist) half of the plan producer↔validator pair; does NOT cover cross-artifact feasibility / buildability / contradiction (that is mochiko:review-feasibility); defaults to FAIL; run by an independent validator, never the author.
+description: This skill MUST be invoked to grade a producer's plan artifacts against the completeness checklist — the analysis set (requirements, constraints-and-decisions, NFRs) and the design set (data-model, API contracts, quickstart) — checking FR→TR coverage, orphan technical requirements, testable/measurable criteria, NFR measurability, entity and endpoint coverage, data-sensitivity annotations present, schema-model consistency, integration-boundary presence, architecture coverage (component-table↔diagram coverage, qualifying-flow sequence coverage keyed to ordering/failure not story priority, delta-summary D-XXX links), and cross-artifact consistency (does the design honor the decisions and conform to the approved architecture). Emits a severity-classified gap report (Critical/Important/Minor) and a 3-state verdict (ready / needs-revision / critical-gaps). SHOULD also invoke whenever a plan loop's completeness-review step needs an independent grade of the planning artifacts, or when re-reviewing after a FAIL-loop revision. The completeness (mirror-checklist) half of the plan producer↔validator pair; does NOT cover cross-artifact feasibility / buildability / contradiction (that is mochiko:review-feasibility); defaults to FAIL; run by an independent validator, never the author.
 ---
 
 # Reviewing Plan Artifacts
@@ -55,8 +55,9 @@ Detailed checklists are in [ARTIFACT-CHECKLISTS.md](references/ARTIFACT-CHECKLIS
 | Artifact type | Focus | Key checks |
 |---------------|-------|------------|
 | **Analysis artifacts** | requirements, constraints/decisions, NFRs | FR→TR coverage, orphan TRs, testable criteria, sourced constraints, ≥2 alternatives + rationale, NFR measurability, IP coverage |
+| **Architecture** | architecture.md (design-time topology + delta) | component-table↔diagram coverage, qualifying-flow sequence coverage, delta-summary D-XXX links, component status annotations |
 | **Design artifacts** | data-model, API contracts, quickstart | entity coverage, relationships, sensitivity annotations present, endpoint coverage, schemas, error handling, integration-boundary presence |
-| **Cross-artifact** | the sets together | alignment, consistency (design honors the decisions), traceability |
+| **Cross-artifact** | the sets together | alignment, consistency (design honors the decisions *and the approved architecture*), traceability |
 
 > Brownfield codebase-discovery review is **out of scope** for plan-core completeness — it belongs to
 > the discovery track (see ARTIFACT-CHECKLISTS.md). Sequencing of which set is reviewed when is the
@@ -149,6 +150,7 @@ consistency_checks:   # pass/fail per check; a fail also lands as a finding
   entity_names: pass
   schemas: pass
   decisions_honored: pass
+  architecture_conformance: pass   # data-model/contracts conform to the approved architecture
   sensitivity_annotations: pass
   integration_boundaries: pass
 ```

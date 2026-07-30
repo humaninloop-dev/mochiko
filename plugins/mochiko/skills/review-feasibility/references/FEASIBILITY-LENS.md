@@ -78,6 +78,47 @@ Throughout: feasibility findings are **cross-artifact**. A flaw inside a single 
 
 ---
 
+## Architecture pass {#architecture-pass}
+
+Fires when `architecture.md` (the design-time topology, owned by `mochiko:patterns-system-design`) is
+under review. Two lens groups — **topology feasibility** (7–8) and **governance conformance** (9) —
+both cross-artifact, both adversarial. Same discipline as the six classes: you are trying to prove the
+topology cannot be built or cannot conform, not ticking a box.
+
+### 7. NFR ↔ Topology feasibility
+
+**Seam:** non-functional targets ↔ the proposed topology (components + interaction styles).
+**Question:** can the *component shape and the way the pieces talk* meet the NFR targets — before any data-model or contract detail exists?
+
+**Worked example.** `NFR-004: p95 end-to-end < 120 ms.` The container diagram routes a single user request synchronously through four services in series, each with its own network hop and datastore call. The serial hop budget alone exceeds the target. The topology cannot meet the NFR as drawn.
+
+**Evidence:** the `NFR-XXX`, the specific topology element (the sync chain, the single region, the missing cache/queue), and why the shape cannot hit the target.
+**Resolvable vs fundamental:** collapsing the chain, adding async/caching, or co-locating is *resolvable*; if the NFR and the only shape the constraints allow are mutually exclusive, *fundamental*.
+**Boundary watch:** "the NFR has no measurement method" is the completeness sibling's; "the topology can't meet it" is yours. This is class 5 (NFR↔design) lifted one level up — at the container shape, upstream of data-model/contracts.
+
+### 8. Constraint ↔ Topology buildability
+
+**Seam:** constraints / captured infrastructure (`IP-XXX`) ↔ the proposed topology.
+**Question:** is the topology buildable and deployable *given* the constraints and the infrastructure actually provisioned?
+
+**Worked example.** The container diagram introduces a managed message queue as a new component, but `C-006` forbids new managed infrastructure and no `IP-XXX` row provisions a queue. The topology names a component the constraints do not allow to exist. Not buildable as drawn.
+
+**Evidence:** the topology element needing the capability, the `C-XXX`/`IP-XXX` that withholds it, and the buildability gap.
+**Resolvable vs fundamental:** adding the missing `IP-XXX` (if the constraint permits) or re-shaping to an allowed mechanism is *resolvable*; a categorical forbiddance of the only infrastructure the shape needs is *fundamental*. This is class 6 (constraint↔design) lifted one level up.
+
+### 9. Topology ↔ Governance conformance
+
+**Seam:** the proposed topology ↔ the constitution's architectural surface (governance region + layer-rules + domain-dependency registry), read **as input**.
+**Question:** does the topology conform to the governance the project already ratified — layer-import rules, the dependency allowlist, and the principles the architecture cites as binding it?
+
+**Worked example.** The governance region carries a BE-HEX layer rule: `domain MUST NOT import infrastructure`. The container diagram draws the domain service calling the datastore adapter directly, crossing the forbidden boundary. Or: the architecture asserts `respects BE-HEX layering per GI-007`, but a drawn dependency violates exactly that principle. Non-conforming.
+
+**Evidence:** the governance surface (the layer rule / allowlist entry / `GI-XXX`), the topology element that breaks it, and the specific violation. "Cites the principle" is not "satisfies the principle" — verify, don't take the assertion.
+**The two exits (never a silent pass):** a non-conforming topology surfaces with exactly two exits — **redesign to conform**, or a **user-ruled amendment/waiver** through `governance-ledger.md`. The feature-level review never overrules the constitution. A conflict with a conforming redesign available is *resolvable* (`needs-revision`); one where the governance and the required shape are mutually exclusive is *fundamental* (`infeasible`, escalates for the amendment/waiver decision).
+**G1 watch:** you grade the *topology's conformance* to governance (a plan artifact against an input), never whether the governance itself is well-formed — that is `validation-constitution`, a different domain.
+
+---
+
 ## Severity within a feasibility finding
 
 Severity here is internal to the feasibility lens (distinct from the sibling's coverage severities):
@@ -114,7 +155,7 @@ This is the **output contract** of the review — what each finding must carry s
 
 - Not a coverage checklist — "is every FR mapped?" is the completeness sibling's.
 - Not measurability-in-isolation — "does this NFR have a measurement method?" is the sibling's.
-- Not consistency / traceability / presence — "do the entity names match the requirement references?" is the sibling's.
-- Not constitution grading — that is a different artifact domain entirely (G1).
+- Not consistency / traceability / presence — "do the entity names match the requirement references?" is the sibling's. On the architecture artifact, "does every table component appear in the diagram?" and "do data-model/contracts conform to the approved shape?" are the sibling's too.
+- Not constitution grading — you never judge whether the constitution *itself* is well-formed (G1, `validation-constitution`'s domain). The architecture pass's governance-conformance lens reads the governance surface only **as an input**, to grade the *topology's* conformance to it.
 
-Cross-artifact contradiction, impossibility, and buildability — nothing else.
+Cross-artifact contradiction, impossibility, and buildability — plus, when `architecture.md` is in scope, topology feasibility and governance conformance (the architecture pass). Nothing else.
