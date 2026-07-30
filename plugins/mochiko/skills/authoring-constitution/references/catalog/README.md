@@ -1,51 +1,56 @@
-# Principle Catalog — the tier/type-tagged deck
+# Principle Catalog — the type-shelved deck
 
 The catalog is the **seed content** for constitution principles: battle-tested cards the
 interrogation session deals, arbitrates, and adapts. It is a starting position, never the final
 one — **the interrogation leads, the deck follows.** Principle content comes from three sources,
 all recorded in the session synthesis (`.mochiko/memory/governance-intent.md`):
 
-1. **Deck-kept** — a catalog card the user kept (possibly tightened/loosened) during arbitration.
-2. **Minted** — a principle written fresh from the user's elicited intent (values dimension). Minted
-   content MUST trace to elicited intent, never to shallow prompting.
-3. **Floor-preset-with-override** — an Essential Floor card at its tier default, with any
-   session-elicited overrides.
+1. **Floor-asserted** — an Essential Floor card at the asserted production level, its expression
+   shaped by type facts during the session; deviations only ever through recorded waivers
+   (never a loosened card).
+2. **Deck-kept** — an arbitrated catalog card the user kept (possibly tightened) during
+   arbitration.
+3. **Minted** — a principle written fresh from the user's elicited intent (values dimension).
+   Minted content MUST trace to elicited intent, never to shallow prompting.
 
 ## Shelf model
 
-One file per shelf. A project's **type** (declared in the session) selects which shelves are dealt;
-its **tier** filters and parameterizes the cards on those shelves.
+One file per shelf. A project's **type** (declared in the session) selects which shelves are
+dealt. Mochiko's target is customer-facing product applications (PO-D1): SaaS, web, mobile,
+desktop.
 
 | Shelf | File | Dealt to | Status |
 |-------|------|----------|--------|
 | Universal floor | [universal-floor.md](universal-floor.md) | every project, every type | seeded |
 | Backend / service | [backend-service.md](backend-service.md) | backend, service, fullstack (API side) | seeded |
-| Frontend | `frontend.md` | frontend, fullstack (UI side) | **planned — next authoring pass** |
-| CLI | — | cli | **empty by decision — mint-driven** |
-| Library | — | library | **empty by decision — mint-driven** |
+| Frontend | `frontend.md` | frontend, fullstack (UI side) | **planned — Tier-I roadmap work** |
+| Mobile | `mobile.md` | mobile | **planned — Tier-I roadmap work** |
+| Desktop | `desktop.md` | desktop | **planned — Tier-I roadmap work** |
 
-**Empty shelves are deliberate, not missing.** The CLI and library shelves grow from principles
-minted in real sessions (see Graduation seam, below) rather than from another speculative
-author-baseline. When a shelf is empty for the declared type, the session leans on minting: the
-universal floor still applies, and type principles come from elicited intent.
+*(The former CLI and library shelves retired with their types under PO-D1's deferral of
+building-block software — libraries, SDKs, CLIs are out of scope, deferred not rejected.)*
 
-## Tier taxonomy
+**Planned shelves are honest gaps, not silent ones** (the identity docs carry the same
+qualification): only backend/service has seeded type content today. When a shelf is planned or
+absent for the declared type, the session leans on minting and on adapting the universal floor's
+category requirements to the type — never on copying misfitting examples.
 
-Fixed named tiers are the spine — deck filtering and waiver defaults hang off stable tier names —
-but the session's risk / values / exclusions dimensions tune the preset per project. **Tier sets
-the starting position, never the final one.** Labels are soft and may be renamed by usage; the
-structure (an ordered strictness axis with named waiver defaults) is the decision.
+## The asserted production floor
 
-| Tier | Meaning | Floor posture | Waiver posture |
-|------|---------|---------------|----------------|
-| `poc` | Throwaway or proof-of-concept; lifespan measured in weeks | Floor cards dealt at minimum strictness | Any floor category MAY be waived (recorded) |
-| `internal` | Internal tool with real users but bounded blast radius | Floor cards at moderate strictness | Floor categories MAY be waived with recorded justification |
-| `production` | Real users, real data, real cost of failure | Floor cards at full strictness | Floor categories MUST NOT be waived |
-| `regulated` | Compliance obligations on top of production stakes | Full strictness + audit-evidence variants | Floor categories MUST NOT be waived |
+There is exactly one standard level — the production floor (PO-D2). The retired
+`poc → internal → production → regulated` ladder is gone: no card carries per-tier defaults or
+strictness ladders, and no session negotiates the floor's level. What varies per project:
 
-A waiver is never silent: it is recorded in the synthesis and in the constitution itself — which
-tier waived it and the revisit trigger (tier graduation). Accumulated waivers become the
-governance re-entry checklist when the project graduates tiers.
+- **Expression** — type facts translate each floor category into its correct form (an API error
+  schema vs UI error states; a web health check vs a desktop crash reporter).
+- **Modules** — compliance obligations attach additively from the fact profile per
+  [../COMPLIANCE-MODULES.md](../COMPLIANCE-MODULES.md) (the retired `regulated` rows live there
+  as seed content).
+- **Waivers** — any asserted standard can be waived with a recorded, auditable justification in
+  the governance ledger (D4; permanent pending the D4.1 revisit) — except legal-mandate module
+  obligations (D4.2). A waiver is never silent: recorded in the synthesis and the ledger, it is
+  the honest staged-adoption on-ramp for early-stage teams (PO-D7). Accumulated waivers are the
+  governance re-entry checklist as the team matures.
 
 ## Card format
 
@@ -54,19 +59,22 @@ Every card carries:
 ```markdown
 ### CARD-ID — Card Name
 **Type tags:** [which project types this card fits]
-**Tier defaults:** poc: [out|offer|default-in] · internal: … · production: … · regulated: …
-**Tier parameterization:** [what tightens or loosens by tier — thresholds, enforcement strength]
+**Layer:** [floor-asserted | arbitrated]
+**Asserted level / Recommended form:** [the single production-level content — thresholds,
+             enforcement strength; floor-asserted cards state the asserted level, arbitrated
+             cards the recommended form]
 **Content:** [the principle material — statement skeleton, enforcement/testability/rationale
              source, or a pointer to the canonical definition]
 ```
 
-- **`default-in`** — dealt as recommended-keep at that tier.
-- **`offer`** — dealt as an option, no recommendation weight.
-- **`out`** — not dealt at that tier (the user can still ask for it).
+- **floor-asserted** — enters every session at the asserted level; not arbitrated; expression
+  shaped by type; loosening only via recorded waiver.
+- **arbitrated** — dealt recommend-then-arbitrate (the S7 carve-out layer: architecture-opinion
+  and other per-project-judgment cards); the user keeps / tightens / drops / re-ranks.
 
-Arbitration is a session act: the user keeps, drops, tightens, or re-ranks each dealt card — and
-every ruling lands in the synthesis with a trace-ID. A dropped card is a recorded ruling, not an
-absence.
+Arbitration is a session act on the arbitrated layer — and every ruling lands in the synthesis
+with a trace-ID. A dropped card is a recorded ruling, not an absence. Floor cards are not
+kept/dropped: their per-project record is the expression shaping and any waivers.
 
 ## Graduation seam (deferred mechanism, named seam)
 

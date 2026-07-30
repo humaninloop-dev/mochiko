@@ -14,6 +14,34 @@ entries below. **Also stale:** the shape is **v5** as of the v0.35.0 wave below,
 
 ---
 
+# v0.36.0 — the production-only re-key (stage 4)
+
+**Wave context:** the PO narrowing build, stage 4 of 5 — the two commands aligned with the
+constitution cluster rewritten earlier in the same wave. Scope ADR:
+`.mochiko/decisions/2026-07-30-po-narrowing-build-scope.md`, scoping PO-D1–D7 from
+`.mochiko/brainstorms/production-only-focus/record.md`. **One site, in Bindings**; shape stays **v5**
+(G = 8, S = 4, blocks unmoved), Bindings 178 → 175 w.
+
+## [v0.36.0] The cycle checkpoint no longer keys on tier
+- **Disposition:** superseded → the one universal gate at the asserted floor in
+  `authoring-constitution/references/DOMAIN-DEPENDENCIES.md` ("Growth" — human ruling before
+  registry entry; the checkpoint MUST NOT auto-approve while `domain_deps_added` is non-empty), with
+  the same always-forces reading now in `executing-tdd-cycle/references/CYCLE-REPORT-FORMAT.md`'s
+  field table
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/decisions/2026-07-30-po-narrowing-build-scope.md`; PO-D2 retired the tier fork)
+- **Content:** "the escalated checkpoint keys on tier — `production`/`regulated` (the `CLAUDE.md`
+  stamp) forces it for a `domain_deps_added` entry; non-blocking below." → "a non-empty
+  `domain_deps_added` **always** forces the escalated human checkpoint — never auto-approved, no
+  stamp read."
+- **Kept deliberately:** P14 stays bound — the clearing unit (**the cycle**) and the
+  architecture-deviation de-devolution are unchanged; only the checkpoint's key moved. Noted while
+  editing: the Cycle-checkpoint constraint already required an empty `domain_deps_added` for
+  devolution *unconditionally*, so the tier fork had left Bindings and Constraints in latent
+  disagreement — this re-key closes it rather than creating consistency that was never there.
+
+---
+
 # v0.35.0 — the goal-shape wave (CS-D10 step 4)
 
 **Wave context:** command goal-shape rebuild, **step 4 of 4** — the five-command wave following the
@@ -183,7 +211,7 @@ deviation triggers were re-read clause by clause against `git show c47684d` afte
 | Team-method D3 — **everything else returns to the lead**: any failure · any GUI or subjective verification · any reported deviation · any registry addition | v0.31.0 | Same line's "Otherwise it fires — …", all four classes enumerated |
 | AD-D6 × D3 fold — a surfaced architecture deviation **is** a reported deviation and **de-devolves** the cycle (no parallel gate) | v0.32.0 | Bindings' P14 line ("a surfaced architecture deviation **de-devolves** it") — kept out of the gate line so the fold is stated once |
 | Domain-allowlist D2/F2 — the `domain_deps_added` **visibility floor**: disclosed in the cycle report and surfaced at the checkpoint | DECISIONS row (2026-07-21) | Cycle-checkpoint evidence + Bindings' uncertainty carrier (the field named in both) |
-| Domain-allowlist — the **confidence-gate hook**: a registry addition at `production`/`regulated` **forces** the human checkpoint regardless of deterministic-CLI pass; lower tiers surface non-blocking | DECISIONS row | Bindings' P14 keying line, with the tier source (`CLAUDE.md` stamp) named |
+| Domain-allowlist — the **confidence-gate hook**: a registry addition at `production`/`regulated` **forces** the human checkpoint regardless of deterministic-CLI pass; lower tiers surface non-blocking | DECISIONS row | **Superseded by v0.36.0** (the entry above): always forces, no stamp read — this row records the v0.35.0-era keying |
 | v4 mesh D1/D2 — verifier **cold at the first cycle verification**, standing after; the producer↔verifier **peer edge** declared on the roster | v0.31.0 | Verifier seat row (spawn + peer-edge cells) |
 | v4 mesh — the **endgame is lead-routed**; the devolved branch clears cycles, never the final validation | v0.31.0 *Kept deliberately* | Ordering invariants: "The final validation is lead-routed, never devolved" + the verifier row's peer-edge cell |
 | v4 mesh — a **retry is lead-dispatched** (a retry follows a failure; the verdict on a non-clean unit is the lead's) | v0.31.0 *Kept deliberately* | Producer seat row: "retries and fix passes are dispatched by you" |

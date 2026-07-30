@@ -7,6 +7,61 @@ shared team-form prose relocated into `templates/command-shape.md` (design:
 
 ---
 
+# v0.36.0 — the production-only re-key (stage 4)
+
+**Wave context:** the PO narrowing build, stage 4 of 5 — `setup.md` and `implement.md` aligned with
+the constitution cluster rewritten earlier in the same wave. Scope ADR:
+`.mochiko/decisions/2026-07-30-po-narrowing-build-scope.md` (rulings 4, 6, 7, 9), scoping PO-D1–D7
+from `.mochiko/brainstorms/production-only-focus/record.md`. **A ruling re-key inside the existing
+five blocks, not a re-shape:** shape stays **v5**, G = 10, S = 3, A and R untouched, no block
+re-bounded. **Constraints measured 1,051 → 1,076 w against the 1,080 ceiling (90·(G+2)) — 4 w of
+headroom**, the tightest margin on this surface; the re-keys were written at minimum length in the
+ruling's own vocabulary for that reason, and any future addition to setup's Constraints needs a
+strip first.
+
+## [v0.36.0] The tier ladder retired from setup's five ruled sites
+- **Disposition:** superseded → the asserted production floor + the fact profile, whose homes are
+  `authoring-constitution/references/INTERROGATION-AGENDA.md` (dimension 2, the no-pruning-license
+  clause, the amend migration clause), `…/references/COMPLIANCE-MODULES.md` (mechanical module
+  attachment, the D4.2 legal-mandate stratum) and `templates/governance-intent-template.md` (the D4
+  waiver table, the event-scaled sizing line)
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/decisions/2026-07-30-po-narrowing-build-scope.md`; PO-D1–D7)
+- **Content:** the five superseded keys, old → new —
+  1. **Frontmatter** — "declared intent (tier, type, risk, values)" → "(the fact profile, type,
+     risk, values)"; "a tier-sized cold intent review" → "a sized cold intent review (pair
+     default)".
+  2. **Interrogation** — "A low-tier declaration licenses agenda pruning, **every skip named, never
+     silent**." → "**No pruning license**: every dimension is real for a deployed, operated product
+     — only convergence skips, each named, never silent." · "a tier bump or un-waive is a governance
+     event, taking its own agenda slice where tier-loosened rulings are re-dealt or force-re-marked"
+     → a fact-profile change (module attach/detach) or un-waive, **affected** rulings re-dealt, plus
+     the legacy-tier-declaration supersession pointer at the amend clause · "Waivers ruled where the
+     tier permits." → "Waivers ruled per D4 — any asserted standard, recorded justification,
+     legal-mandate module obligations excepted."
+  3. **Review sizing** — "The default is tier-keyed (`poc`/`internal` → single,
+     `production`/`regulated` → pair) … a governance event (tier bump, un-waive, floor or waiver
+     change) takes that full default; lighter deltas recommend single at `production`/`regulated`,
+     none-with-waiver below." → "The default is a **pair** … a governance event (un-waive, floor
+     change, module attach/detach) takes the full pair; a lighter substantive delta recommends
+     single; a wording-level delta, none-with-recorded-waiver."
+  4. **Survivor rulings** — "deck, tier or waiver rulings" → "deck, fact-profile or waiver rulings".
+  5. **G4 evidence** — "region version and tier" → "region version, floor and attached modules".
+- **Kept deliberately:** the sizing gate's always-opens clause with its weight/elevation evidence
+  (the event-scaling changed, the gate did not) · the amend re-deal / force-re-mark mechanic, re-keyed
+  to "affected" rather than deleted · **"Tier-2 judgment grade"** in the validator-check-surface
+  invariant — the validator-trustworthiness sense, untouched by the governance-tier retirement and a
+  deliberate survivor of ruling 9's residue grep.
+- **Residue reported, not edited:** Survivor rulings still reads "challenged dimension-prunes" —
+  stale vocabulary for a retired mechanism (the agenda now says *convergence skips*), outside this
+  stage's ruled sites and left for the lead to rule on.
+- **Lead ruling on the residue (same wave, post-report):** edited — "challenged dimension-prunes" →
+  "challenged convergence-skips", the same rename the cluster audit required in
+  `review-governance-intent` (its finding 5); word-count-neutral against the 4-w Constraints
+  margin. Lead-authored, covered by the stage-4 delta re-audit.
+
+---
+
 # v0.35.0 — the goal-shape wave (CS-D10 step 4)
 
 **Wave context:** command goal-shape rebuild, **step 4 of 4** — the remaining-five wave (design:
@@ -60,6 +115,9 @@ model and the ceiling — Seats 230 vs fitted 185, Bindings 189 vs 149, Recovery
 vs 100: **~+130**. Frontmatter `description:` +8 w over today's (held, per the trigger-fidelity
 rule, not re-shrunk). The remainder is rounding. No block is over ceiling; nothing was padded to
 reach a ceiling.
+
+**Stale as a standing claim:** the narrowing build has now run — see the **v0.36.0 section above**;
+the paragraph below records the v0.35.0-era state only.
 
 **Production-only (PO-D1–D7) deliberately NOT pre-implemented.** The narrowing build is open
 (ROADMAP *Next*; BACKLOG "Production-only narrowing"), so setup's **tier axis survives verbatim** —

@@ -208,20 +208,20 @@ together.
 
 Rulings PO-D1–D7 (DECISIONS.md 2026-07-30); record
 `.mochiko/brainstorms/production-only-focus/record.md` (pair-reviewed, verify CLEAN). Identity
-landed in ROADMAP thesis + CLAUDE.md same day; plugin-source build open below.
+landed in ROADMAP thesis + CLAUDE.md same day; **narrowing build DONE 2026-07-30 at v0.36.0 —
+trail** (scope ADR `2026-07-30-po-narrowing-build-scope`). Tier-I depth items open below.
 
-- [ ] **Narrowing build — the consequence-list edit surface** (2026-07-30) — ~18–20 files,
-  setup/constitution cluster + two implement sites (record: "Mechanical edit surface"): tier
-  dimension + pruning license removed (deployment always interrogated); type list narrows,
-  mobile/desktop ADDED; floor cards collapse to the `production` row (regulated rows → module
-  content); architecture-opinion cards stay arbitrated (S7); governance templates re-shaped to
-  the waiver model (D4/D4.2, permanent pending D4.1); setup sizing gate → fixed pair; implement
-  registry checkpoint always-blocking; fact→module trigger mechanism authored with the
-  fact-validation fail-safe (S4); `validation-constitution` waiver checks rewritten.
-- [ ] **Security-depth scoping session (Tier I, first in line)** (2026-07-30, PO-D5) — threat
-  modeling at plan time, security requirements with teeth, blocking SAST/dep-vuln gates, a
-  security lens in the validator set; own scoping session before build (map F21: today = one
-  floor card + DS-XXX annotations).
+- [ ] **Security-depth build (Tier I)** (2026-07-30; rulings SD-D1–D6, record
+  `.mochiko/brainstorms/security-depth-scoping/record.md` — pair-reviewed, verify CLEAN round
+  3) — build surface (record: "Build surface" + its V4 extension): `patterns-threat-modeling`
+  skill + `SECURITY-AREAS.md` registry · trust-boundary diagram convention · SEC-XXX full
+  plumbing + DS-XXX close (F95) · FLOOR-SEC row edits (SAST high/critical · no-hand-rolled
+  line · tooling map + enforcement clause relocated universal) · semgrep floor rulesets
+  (governance-protected) · contracts checks (F96/F97) · quality-gates producer (F94) ·
+  coverage ledger + `validation-constitution` check · persona edits (keystone-checked) · spec
+  producer prompt · gate canaries · F19 fix as prerequisite · one command edit (`plan.md`
+  Bindings, shape-v5 audited). Fences: DAST/pentest · per-regime content · type-specific
+  expressions (shelves) · runtime ops.
 - [ ] **Ops & observability hardening (Tier I)** (2026-07-30, PO-D5) — SLOs as first-class
   NFRs, RUNBOOK elective→asserted, incident-response basics, release-health expectations per
   product kind; mostly promoting existing electives to asserted (map F32).
@@ -233,26 +233,18 @@ landed in ROADMAP thesis + CLAUDE.md same day; plugin-source build open below.
   artifact class, map F23). Own scoping session; data lifecycle + reliability/resilience ride
   Tier II behind it.
 - [ ] **PO watches & revisits** (2026-07-30) — D4.1 waiver-expiry revisit (user-flagged
-  "I will come to revisit") · non-legal module waivability ambiguity (D2 additive-only vs D4;
-  home: the D4.1 revisit or the trigger-mechanism build) · D7 waiver-as-normal-state dogfood
-  watch (if young teams live on permanent floor waivers, revisit expiry/maturity design).
+  "I will come to revisit") · D7 waiver-as-normal-state dogfood watch (if young teams live on
+  permanent floor waivers, revisit expiry/maturity design). (The non-legal module waivability
+  ambiguity was ruled 2026-07-30 — waivable under D4; ADR `po-narrowing-build-scope`.)
 
 ## Defects & empirical checks
 
-- [ ] **`validation-command-shape` check-1 setup carve-out** (2026-07-30; provenance:
-  `.mochiko/decisions/2026-07-30-layer-2-mesh-rewrite-executed.md`) — check 1 says the five
-  KM-carrying commands reference the project copy, "never the module template's path"; setup
-  is the scaffolder that must name the template as its scaffold source (setup.md L182). Read
-  mechanically the check FAILs a correct file — a latent false-FAIL generator. Carve out the
-  scaffold-source naming explicitly (or mark setup's line). Rider: the run-cost element
-  carries no `[PARAM]` and no command mentions it — confirm the obligation is reachable by a
-  lead who only Reads the home.
-- [ ] **`validation-constitution` QUALITY-CHECKLIST post-dissolution drift** (2026-07-23,
-  re-confirmed at succinctness wave 4) — its "Structure Quality — universal core" section still
-  grades the dissolved `constitution.md` (SYNC IMPACT REPORT, Roman-numeral principles, sync
-  mandate, version footer). Retarget at the surface set per
-  `templates/governance-surfaces-template.md`; re-audit sibling sections for drift. A latent
-  false-FAIL generator.
+- [ ] **Shape-home keying watch: "Out of rounds = escalate, never done."** (2026-07-30,
+  shape-audit advisory at the PO wave) — the sentence is verbatim shape prose
+  (`command-shape.md` bounds line) carried by 3 of 6 commands (setup · plan · specify); not a
+  check-8 keyed marker today, so it passes audits. Raise if a command's Constraints block ever
+  needs those words back (setup sits at 4 w of Constraints headroom) — either key a marker and
+  strip the three, or record it as a mandated-exemplar phrase like the bounds set.
 - [ ] **Fresh-session description-delivery probe** (2026-07-25, succinctness R1) — re-run the
   listing probe in a NEW session: do the two repaired descriptions deliver un-truncated, and
   does `validation-constitution`'s description reappear at the reduced total (confirm-or-kill

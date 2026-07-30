@@ -199,6 +199,19 @@ paraphrase of it.
    not setup's Constraints at 780/900 — that 13.3% figure was fitted, not measured, and the note
    said "measured".
 
+## [v0.36.0] Check-1 KM-clause carve-out: setup scaffold-source naming
+- **Disposition:** re-keyed, not stripped — "never the module template's path" gains the setup
+  carve-out (setup, the scaffolder, names `templates/constitution-modules/knowledge-management.md`
+  as its scaffold source alongside the project copy; a template path in any other command
+  remains a FAIL).
+- **Tier failed:** n/a — re-key by ruling (PO narrowing build Stage 0,
+  `.mochiko/decisions/2026-07-30-po-narrowing-build-scope.md`).
+- **Provenance:** latent false-FAIL recorded at
+  `.mochiko/decisions/2026-07-30-layer-2-mesh-rewrite-executed.md`; absorbed as PO narrowing
+  build Stage 0 (`.mochiko/decisions/2026-07-30-po-narrowing-build-scope.md`). The backlog
+  item's run-cost rider was discharged by supersession (the shape's run-cost element was
+  dropped at v5 — CS step-1 adjudications).
+
 ## [v0.34.0] Check 8's `out of rounds = escalate` marker dropped — third homeless-marker instance
 - **Disposition:** deleted from check 8's marker list.
 - **Tier failed:** n/a — supersession by ruling (**pilot-checkpoint ruling**, user, 2026-07-30;

@@ -45,7 +45,7 @@ checkpoint_criteria_met: true  # The implementer's self-assessment (the lead ver
 | `files_created` | list of strings | yes | Paths of new files created (empty list if none) |
 | `files_modified` | list of strings | yes | Paths of existing files modified (empty list if none) |
 | `brownfield_tasks` | integer | yes | Count of tasks with `[EXTEND]` or `[MODIFY]` markers |
-| `domain_deps_added` | list of strings | yes | Domain-layer dependency registry additions made this cycle (empty list if none). The visibility floor for registry growth: additions are disclosed here and surfaced at the checkpoint; at `production`/`regulated` tiers a non-empty list forces a human checkpoint — never auto-approved |
+| `domain_deps_added` | list of strings | yes | Domain-layer dependency registry additions made this cycle (empty list if none). The visibility floor for registry growth: additions are disclosed here and surfaced at the checkpoint; a non-empty list always forces a human checkpoint — never auto-approved |
 | `deviations` | list of strings | yes | Departures from the task descriptions, one line each, citing the task ID (e.g. `"T3.4: argon2 over bcrypt (C-012 allows)"`). `[]` if none |
 | `checkpoint_criteria_met` | boolean | yes | The implementer's assessment of whether the cycle's checkpoint criteria are satisfied; a self-report, not the verdict — the lead verifies independently and decides |
 

@@ -126,8 +126,8 @@ verifier, so implement numbers no G2 — there is no feasibility-rejection gate.
 - **Fact route:** real infrastructure — executed `**TEST:**` tasks and quality-gate exit codes;
   knowledge gaps go to a native `Explore` pass.
 - **Clearing unit + checkpoint keying:** the **cycle**; a surfaced architecture deviation
-  **de-devolves** it; the escalated checkpoint keys on tier — `production`/`regulated` (the
-  `CLAUDE.md` stamp) forces it for a `domain_deps_added` entry; non-blocking below.
+  **de-devolves** it, and a non-empty `domain_deps_added` **always** forces the escalated human
+  checkpoint — never auto-approved, no stamp read.
 - **KM landing:** `.mochiko/memory/knowledge-management.md` exists → run its ritual + invariants
   under fix-on-sight; a **built** structural change folds the built system into `ARCHITECTURE.md`.
   No copy → skip.

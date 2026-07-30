@@ -1,6 +1,6 @@
 ---
 name: authoring-constitution
-description: This skill MUST be invoked when authoring or amending a project's governance surface set — formulating enforceable principles from a ratified session synthesis (`.mochiko/memory/governance-intent.md`) and landing them on native Claude Code surfaces; there is NO constitution.md. The set: a marked, setup-owned governance region in `CLAUDE.md` (ratified stamp, principle index, universal principles as short imperative lines, tech stack, quality-gates summary, module pointers), `paths`-scoped `.claude/rules/` files for scope-bound principles, skill pointers for procedure-shaped standards, and a governance ledger at `.mochiko/memory/governance-ledger.md` (Three-Part metadata keyed by GI-ID, waivers, amendment/version policy, exception registry) — plus the trace summary manifest. Handles BOTH modes in one place: greenfield (authoring from the synthesis's deck rulings and minted intents) and brownfield (the same, additionally codifying an existing codebase's patterns — Essential Floor assessed against the code plus an Emergent Ceiling, informed by `.mochiko/memory/codebase-analysis.md`). SHOULD also invoke when the authoring work concerns principle enforcement, testability, rationale, the Three-Part Rule, RFC 2119 keywords, trace stamps, tier declarations, floor waivers, surface routing, the governance region, module assembly, an Essential Floor, or an Emergent Ceiling. The single governance-authoring skill for both new and existing projects — there is no separate brownfield skill.
+description: This skill MUST be invoked when authoring or amending a project's governance surface set — formulating enforceable principles from a ratified session synthesis (`.mochiko/memory/governance-intent.md`) and landing them on native Claude Code surfaces; there is NO constitution.md. The set: a marked, setup-owned governance region in `CLAUDE.md` (ratified stamp, principle index, universal principles as short imperative lines, tech stack, quality-gates summary, module pointers), `paths`-scoped `.claude/rules/` files for scope-bound principles, skill pointers for procedure-shaped standards, and a governance ledger at `.mochiko/memory/governance-ledger.md` (Three-Part metadata keyed by GI-ID, waivers, amendment/version policy, exception registry) — plus the trace summary manifest. Handles BOTH modes in one place: greenfield (authoring from the synthesis's deck rulings and minted intents) and brownfield (the same, additionally codifying an existing codebase's patterns — Essential Floor assessed against the code plus an Emergent Ceiling, informed by `.mochiko/memory/codebase-analysis.md`). SHOULD also invoke when the authoring work concerns principle enforcement, testability, rationale, the Three-Part Rule, RFC 2119 keywords, trace stamps, the fact profile, compliance modules, floor waivers, surface routing, the governance region, module assembly, an Essential Floor, or an Emergent Ceiling. The single governance-authoring skill for both new and existing projects — there is no separate brownfield skill.
 ---
 
 # Authoring Constitution — Governance on Native Surfaces
@@ -10,7 +10,7 @@ description: This skill MUST be invoked when authoring or amending a project's g
 Write project governance that teams — and Claude Code sessions — actually follow. Every principle
 must be enforceable, testable, and justified; vague aspirations are rejected in favor of
 actionable constraints with measurable criteria. **There is no `constitution.md`.** Governance
-lands on the surfaces Claude Code natively loads, each at its disclosure tier
+lands on the surfaces Claude Code natively loads, each at its disclosure level
 (design record: `.mochiko/brainstorms/constitution-native-surfaces/record.md`, D1–D8):
 
 | Surface | Carries | Disclosure |
@@ -18,7 +18,7 @@ lands on the surfaces Claude Code natively loads, each at its disclosure tier
 | `CLAUDE.md` **governance region** (between `<!-- mochiko:governance:begin -->` / `<!-- mochiko:governance:end -->`) | Ratified stamp · principle index · **universal principles as short imperative lines** · tech stack · quality-gates summary · module pointers | Always-on, every session and every spawned agent |
 | `.claude/rules/mochiko/*.md` | Scope-bound principles, one file per concern, `paths` frontmatter | On matching-file reads (plus the dispatch-brief obligated read for authoring producers) |
 | Skill pointers | Procedure-shaped standards → the index/rule points at the skill; mint a new skill only when the session minted a procedure | On trigger / when a brief names it |
-| `.mochiko/memory/governance-ledger.md` | Per-principle **Three-Part records** keyed by GI-ID · tier + graduation path · waivers · amendment policy · exceptions · amendment log | Read only by setup/amend runs and the validator |
+| `.mochiko/memory/governance-ledger.md` | Per-principle **Three-Part records** keyed by GI-ID · floor + attached compliance modules · waivers · amendment policy · exceptions · amendment log | Read only by setup/amend runs and the validator |
 
 Authoring also emits the **trace summary** — the manifest mapping every GI element to its primary
 enforceable home + companion entries (index line, ledger entry). The independent validator grades
@@ -27,7 +27,8 @@ trace closure over it; write it as part of the output, not as an afterthought.
 Governance is authored **from a ratified session synthesis** —
 `.mochiko/memory/governance-intent.md`, produced by the setup lead's interrogation session and
 confirmed by the user before authoring begins. The synthesis is a **traceable contract, not a
-brief**: it owns *selection* (which principles, at what tier, with which waivers and modules);
+brief**: it owns *selection* (which principles, with which waivers and modules — the floor is
+asserted, its expression session-shaped);
 this skill owns *formulation* (wording, enforcement mechanics, surface routing).
 
 This skill produces a **reviewable** surface set. Its quality is graded by an **independent
@@ -40,9 +41,9 @@ and the human gates are owned by the command lead that drives this skill, not by
 The non-negotiable discipline of this skill:
 
 - **Every principle traces.** Each authored principle carries its GI trace: on `CLAUDE.md`, as an
-  HTML comment beside the line; always in the **ledger**, as the `GI-XXX (deck-kept: CARD-ID |
-  minted | floor-preset: CARD-ID)` key — the canonical trace record (why the ledger is canonical:
-  the template's comment block).
+  HTML comment beside the line; always in the **ledger**, as the `GI-XXX (floor-asserted: CARD-ID |
+  deck-kept: CARD-ID | minted | module: <module>-<obligation>)` key — the canonical trace record
+  (why the ledger is canonical: the template's comment block).
 - **Every element is realized or flagged.** Each principle-bearing synthesis element becomes a
   principle on some surface, or is surfaced as a flagged proposal — never silently dropped.
 - **No unsanctioned selection.** Do not add, remove, merge, or reinterpret principles beyond the
@@ -51,9 +52,10 @@ The non-negotiable discipline of this skill:
   fix in silently and do not author vagueness — emit a **flagged proposal**: what you propose,
   why, and which synthesis element (if any) it touches. Flagged proposals are ruled on by the
   user at the acceptance gate.
-- **Waivers are authored, not skipped.** A waived floor category gets a waiver record in the
-  ledger (category, waiving tier, revisit trigger, trace) — absence is always deliberate and
-  auditable.
+- **Waivers are authored, not skipped.** A waived standard gets a waiver record in the ledger
+  (standard, justification, optional revisit trigger, trace — D4: permanent pending the D4.1
+  revisit; legal-mandate module obligations are never waivable, D4.2) — absence is always
+  deliberate and auditable.
 
 ## Surface routing (which content lands where)
 
@@ -81,19 +83,22 @@ Route each synthesis element by its scope; the routing IS part of formulation qu
 
 | Mode | Use when | Adds on top of the shared core |
 |------|----------|--------------------------------|
-| **greenfield** | A new project with no existing code to honor. | Principles formulated from the synthesis's deck rulings + minted intents; floor cards at their tier parameterization. |
+| **greenfield** | A new project with no existing code to honor. | Principles formulated from the synthesis's deck rulings + minted intents; floor cards at the asserted production level. |
 | **brownfield** | An existing codebase — *codify what is already there*. Requires `.mochiko/memory/codebase-analysis.md` (produced upstream by `analysis-codebase`). | Essential Floor *assessed against the code* (present/partial/absent) **+** an Emergent Ceiling codifying good existing patterns **+** the `evolution-notes` module. |
 
 **The shared core is authored once, identically, in both modes** — the Three-Part Principle Rule,
 RFC 2119 keywords, surface routing, the mandatory content inventory, and module assembly below.
 The content sources:
 
-- **both → [references/catalog/](references/catalog/README.md)** — the tier/type-tagged principle
-  deck (universal floor + type shelves). The synthesis's deck rulings name which cards were kept
-  and how they were adjusted; the cards carry the principle material to formulate from.
+- **both → [references/catalog/](references/catalog/README.md)** — the type-shelved principle
+  deck (asserted universal floor + arbitrated type shelves). The synthesis's floor-expression
+  and deck rulings name what was shaped, kept, and adjusted; the cards carry the principle
+  material to formulate from.
 - **both → [references/ESSENTIAL-FLOOR.md](references/ESSENTIAL-FLOOR.md)** — the canonical
-  definition of the four floor categories. Tier strictness and waiver posture per category live
-  on the floor cards in the catalog.
+  definition of the four floor categories. The asserted level and waiver posture per category
+  live on the floor cards in the catalog; audit-evidence variants live in
+  [references/COMPLIANCE-MODULES.md](references/COMPLIANCE-MODULES.md) and attach via the
+  synthesis's fact profile.
 - **brownfield → [references/EMERGENT-CEILING-PATTERNS.md](references/EMERGENT-CEILING-PATTERNS.md)**
   for the existing-pattern library.
 
@@ -119,7 +124,7 @@ Artifact shapes (region block, rules file, ledger):
 - Authoring for an **existing** codebase, codifying its conventions without disrupting working
   code (brownfield mode).
 - Amending an existing surface set against a delta-updated synthesis: adding/redefining
-  principles, waivers, or tier, with a semver bump and an amendment-log entry.
+  principles, waivers, or attached modules, with a semver bump and an amendment-log entry.
 - Establishing enforcement mechanisms, testability criteria, and amendment/version policy.
 
 ## When NOT to Use
@@ -183,30 +188,33 @@ exceptions exist) · MAY (optional). Detailed usage:
 Every governance set MUST include, per
 [`governance-surfaces-template.md`](../../templates/governance-surfaces-template.md):
 
-1. **Ratified stamp** (region, one line): version · ratified date · tier; semver per the
-   template's amendment policy (Shape 3).
+1. **Ratified stamp** (region, one line): version · ratified date · floor + attached modules;
+   semver per the template's amendment policy (Shape 3).
 2. **Principle index** (region): one line per principle — name, imperative gist, pointer to its
    home when the home is not the region itself.
-3. **Universal principles** (region): the short imperative lines, floor principles first. At
-   `production`/`regulated` tier, floor principles are marked `(NON-NEGOTIABLE)`.
+3. **Universal principles** (region): the short imperative lines, floor principles first.
+   Floor principles are marked `(NON-NEGOTIABLE)`.
 4. **Technology stack** (region): mandated choices — from the synthesis's real-commands and
    existing-practices elements; brownfield populates from the codebase analysis.
 5. **Quality-gates summary** (region): the blocking checks with **actual commands** (never
-   placeholder tokens); coverage pre-seeds tier-parameterized from the FLOOR-TEST card unless the
+   placeholder tokens); coverage pre-seeds from the FLOOR-TEST card's asserted level unless the
    session overrode them. Gates for waived categories are omitted; the waiver record covers the
    absence.
 6. **Scope-bound rules files**: per the routing — globs violation-coverage tested, the standing
    new-file read line emitted.
 7. **Governance ledger**: sections per the template's Shape 3. Riders: waiver table says "None."
-   when nothing is waived; waivers only at tiers whose posture permits, per
-   [catalog/universal-floor.md](references/catalog/universal-floor.md); tier bumps and un-waives
-   are governance events routed back through setup's amend mode.
+   when nothing is waived; every waiver carries its recorded justification per the D4 model
+   ([catalog/universal-floor.md](references/catalog/universal-floor.md)); legal-mandate module
+   obligations are never waived (D4.2 —
+   [references/COMPLIANCE-MODULES.md](references/COMPLIANCE-MODULES.md)); fact-profile changes
+   (module attach/detach) and un-waives are governance events routed back through setup's amend
+   mode.
 8. **Trace summary**: the manifest — every GI element → primary home + companions; every surface
    element → its GI element.
 
 > Every governance set MUST **account for** all four Essential Floor categories
-> ([references/ESSENTIAL-FLOOR.md](references/ESSENTIAL-FLOOR.md)) — with a principle or, where
-> the tier permits, a recorded waiver. A floor category with neither is a defect in either mode.
+> ([references/ESSENTIAL-FLOOR.md](references/ESSENTIAL-FLOOR.md)) — with a principle or a
+> recorded waiver (D4). A floor category with neither is a defect in either mode.
 
 There is **no CLAUDE.md-synchronization section**: governance lives ON CLAUDE.md — the
 sync-a-copy problem died with the dissolved artifact.
@@ -221,9 +229,10 @@ table):
 | Module | Attach when | Routes to |
 |--------|-------------|-----------|
 | `layer-rules` | A layered-architecture principle was kept **or minted** (the module ruling lands in the synthesis either way — the interrogation's layered-architecture beat) | `paths`-scoped rules files (one per layer concern; the domain file carries the preserved registry block + policy preamble — `references/DOMAIN-DEPENDENCIES.md`) + index lines + ledger entries (incl. the Domain-dependency policy section) |
-| `release-gates` | The deployment dimension elicited a real release process | Region: one summary line + pointer; detail in the ledger |
+| `release-gates` | Always offered (a deployed/operated target class — PO-D1); content from the always-interrogated deployment dimension | Region: one summary line + pointer; detail in the ledger |
 | `evolution-notes` | Mode is brownfield (always) | Ledger section (floor status, gap references, confrontation rulings) + region pointer |
 | `knowledge-management` | The KM dimension elicited adoption (default-on, whole; a recorded decline is durable) | Region: the operating-manual **pointer** + index line; the bundle scaffolding and command carriers are unchanged (lead-executed at finalize) |
+| **compliance modules** (`hipaa`, `pci-dss`, … — [references/COMPLIANCE-MODULES.md](references/COMPLIANCE-MODULES.md)) | The fact profile triggered them (mechanical attachment, recorded in the synthesis's Fact profile — never a session choice) | Obligations formulated as principles at their stratum (legal-mandate = unwaivable), routed by scope like any principle; the ledger records module + stratum per obligation |
 
 **Never route module content the synthesis didn't select** — an unselected module attached "to be
 safe" is unsanctioned selection. Each module's validator checklist fragment still applies to its
@@ -236,10 +245,11 @@ routed content.
 No fixed default principle set: the synthesis's deck rulings and minted intents ARE the
 selection. The job is formulation + routing quality.
 
-1. **Floor principles** — for each floor card the synthesis keeps: formulate at the card's tier
-   parameterization, fitted to the declared project type; route (floor principles are typically
-   universal → region lines). Worked examples in ESSENTIAL-FLOOR.md are backend-flavored; for
-   other types, formulate from the category definition instead of copying the example.
+1. **Floor principles** — for each floor card: formulate at the asserted level, fitted to the
+   declared project type per the synthesis's expression rulings; route (floor principles are
+   typically universal → region lines). Worked examples in ESSENTIAL-FLOOR.md are
+   backend-flavored; for other types, formulate from the category definition instead of copying
+   the example.
 2. **Type principles** — for each kept shelf card: formulate from the card's content, honoring
    every recorded tighten/loosen ruling; these are typically scope-bound → rules files.
 3. **Minted principles** — for each minted intent: structure the elicited intent into a

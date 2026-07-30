@@ -13,7 +13,7 @@ This constitution was created from brownfield analysis (`.mochiko/memory/codebas
 [DATE]).
 
 **Essential Floor Status** (assessed against the codebase; waived categories carry their waiver
-record in the Governance Tier section, not a gap):
+record in the ledger's Waivers section, not a gap):
 
 | Category | Status | Response |
 |----------|--------|----------|
@@ -22,9 +22,9 @@ record in the Governance Tier section, not a gap):
 | Error Handling | [status] | [response] |
 | Observability | [status] | [response] |
 
-**Confrontations resolved in session:** [detected-reality-vs-declared-intent conflicts and their
-rulings, from the synthesis — e.g. "declared production tier with no tests: ruled MUST-implement,
-GAP-002." Or "none."]
+**Confrontations resolved in session:** [detected-reality-vs-floor conflicts and their
+rulings, from the synthesis — e.g. "the floor requires tests and the codebase has none: ruled
+MUST-implement, GAP-002." Or "none."]
 
 See `.mochiko/memory/evolution-roadmap.md` for the improvement plan.
 <!-- Roadmap stub (moved-to-other-cluster): producing evolution-roadmap.md is the roadmap
@@ -33,7 +33,7 @@ when that cluster lands. -->
 
 <!-- ── Validator checklist fragment (checked only when this module is attached) ──
 - [ ] Essential Floor status table present, all four categories assessed
-- [ ] Every "absent"/"partial" category has a response: codified pattern, GAP reference, or a waiver record in Governance Tier
+- [ ] Every "absent"/"partial" category has a response: codified pattern, GAP reference, or a waiver record in the ledger's Waivers section
 - [ ] Statuses match codebase-analysis.md (cross-check)
 - [ ] Technology stack matches codebase analysis
 - [ ] Quality gates reflect current + target state

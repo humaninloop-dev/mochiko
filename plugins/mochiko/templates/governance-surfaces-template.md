@@ -30,13 +30,13 @@ the ledger, module detail behind pointers.
 <!-- mochiko:governance:begin -->
 ## Governance
 
-**Ratified:** v[X.Y.Z] · [YYYY-MM-DD] · tier: [poc|internal|production|regulated] <!-- GI-TIER -->
+**Ratified:** v[X.Y.Z] · [YYYY-MM-DD] · production floor · modules: [attached compliance modules, or "none"] <!-- GI-001 (fact profile) -->
 
 ### Principles
 
 <!-- Universal principles: the operative line IS the governance. Scope-bound and
      procedure-shaped principles: the line is an index entry pointing at the home. -->
-- [Imperative universal principle, RFC 2119, one line] [(NON-NEGOTIABLE) where the tier mandates] <!-- GI-XXX -->
+- [Imperative universal principle, RFC 2119, one line] [(NON-NEGOTIABLE) for floor principles] <!-- GI-XXX -->
 - [Imperative universal principle] <!-- GI-XXX -->
 - [Concern name] — see `.claude/rules/mochiko/[file].md` <!-- GI-XXX -->
 - [Procedure name] — follow skill `[skill-name]` when [trigger] <!-- GI-XXX -->
@@ -48,12 +48,12 @@ the ledger, module detail behind pointers.
 ### Quality gates
 
 - `[actual command]` MUST pass before merge <!-- GI-XXX -->
-- Coverage ≥ [tier-parameterized]% on new code (`[actual command]`) <!-- GI-XXX -->
+- Coverage ≥ [asserted floor level, session-overridable]% on new code (`[actual command]`) <!-- GI-XXX -->
 
 ### Governance operations
 
 - Ledger (waivers · amendment policy · exceptions · Three-Part metadata): `.mochiko/memory/governance-ledger.md`
-- Amend via `/mochiko:setup` (tier bumps and un-waives are governance events)
+- Amend via `/mochiko:setup` (fact-profile changes — module attach/detach — and un-waives are governance events)
 [- Path-scoped rules inject on **Read**, not Write (observed behavior, kinako dogfood 2026-07-19) — before creating a new file under [the actual scoped paths, e.g. `src/`, `tests/`], read the matching `.claude/rules/mochiko/` file or read back the file you created <!-- standing line: emit whenever the set includes any rules file -->]
 [- Operating docs (knowledge-management module): sessions in `.mochiko/brainstorms/` + `index.md`; rulings land in `DECISIONS.md`; open threads in `BACKLOG.md`; direction in `ROADMAP.md`; landing ritual + invariants at `.mochiko/memory/knowledge-management.md`; groom: `mochiko:grooming-operating-docs` <!-- GI-XXX -->]
 [- Release gates: [one-line summary] — detail in the ledger <!-- GI-XXX -->]
@@ -93,20 +93,25 @@ Read by setup/amend runs and the validator only — never force-loaded into work
 ```markdown
 # Governance Ledger
 
-**Tier:** [tier] · **Graduation path:** [next tier + trigger] · **Trace:** GI-TIER
+**Governance Floor:** production (asserted) · **Modules:** [attached compliance modules with strata, or "none"] · **Trace:** GI-001 (fact profile)
 **Version:** [X.Y.Z] (must match the region stamp)
 
 ## Waivers
 
-| Category | Waiving tier | Revisit trigger | Trace |
-|----------|--------------|-----------------|-------|
-| [floor category or "None."] | [tier] | [concrete trigger] | GI-XXX |
+Any asserted standard, with a recorded justification (D4); permanent pending the D4.1 revisit.
+**Legal-mandate module obligations are unwaivable (D4.2)** — a waiver row naming one is a
+validator FAIL.
+
+| Standard | Justification | Revisit trigger (optional) | Trace |
+|----------|---------------|----------------------------|-------|
+| [floor category / card / non-legal module obligation, or "None."] | [recorded reason] | [or "permanent (D4.1 pending)"] | GI-XXX |
 
 ## Amendment policy
 
-- Route: `/mochiko:setup` amend mode; tier bumps and un-waives are governance events.
-- Semver: MAJOR — principle removal / incompatible redefinition / tier change · MINOR — new
-  principle or waiver change · PATCH — clarification.
+- Route: `/mochiko:setup` amend mode; fact-profile changes (module attach/detach) and
+  un-waives are governance events.
+- Semver: MAJOR — principle removal / incompatible redefinition / floor-level change / module
+  attach or detach · MINOR — new principle or waiver change · PATCH — clarification.
 - Approvers: [from the synthesis's team reality]
 
 ## Exception registry
@@ -117,10 +122,10 @@ Read by setup/amend runs and the validator only — never force-loaded into work
 
 [## Domain-dependency policy (only when `layer-rules` is adopted)]
 [Qualification criteria (domain-relevance filters first, then ubiquity) · trust-signal
-hierarchy: `authoring-constitution/references/DOMAIN-DEPENDENCIES.md` · add-process + tier gate
-(self-serve + `domain_deps_added` cycle-report disclosure at poc/internal; human ruling before
-entry at production/regulated). The list itself lives ONLY in the domain rules file's
-`mochiko:domain-registry` block — preserved across regenerations, no ledger copy.]
+hierarchy: `authoring-constitution/references/DOMAIN-DEPENDENCIES.md` · add-process + gate
+(human ruling before registry entry; `domain_deps_added` cycle-report disclosure — the
+checkpoint never auto-approves while it is non-empty). The list itself lives ONLY in the domain
+rules file's `mochiko:domain-registry` block — preserved across regenerations, no ledger copy.]
 
 ## Principles (Three-Part metadata, keyed by GI-ID)
 
@@ -134,7 +139,7 @@ entry at production/regulated). The list itself lives ONLY in the domain rules f
 
 **Rationale**: [Failure mode prevented; success enabled.]
 
-**Trace**: GI-XXX (deck-kept: CARD-ID | minted | floor-preset: CARD-ID)
+**Trace**: GI-XXX (floor-asserted: CARD-ID | deck-kept: CARD-ID | minted | module: <module>-<obligation>)
 
 [## Evolution notes (brownfield — the evolution-notes module's ledger section)]
 [Floor status table · gap references · session confrontation rulings.]
@@ -156,9 +161,9 @@ validator's grading surface. One row per principle-bearing GI element:
 
 | GI-ID | Principle | Source | Primary home | Companions present |
 |-------|-----------|--------|--------------|--------------------|
-| GI-001 | [name] | deck-kept: CARD-ID | CLAUDE.md region line | index ✓ · ledger ✓ |
-| GI-002 | [name] | minted | rules/mochiko/api.md | index ✓ · ledger ✓ |
-| GI-003 | [name] | floor-preset: CARD-ID | skill:mochiko:executing-tdd-cycle | index ✓ · ledger ✓ |
+| GI-003 | [name] | deck-kept: CARD-ID | CLAUDE.md region line | index ✓ · ledger ✓ |
+| GI-004 | [name] | minted | rules/mochiko/api.md | index ✓ · ledger ✓ |
+| GI-005 | [name] | floor-asserted: CARD-ID | skill:mochiko:executing-tdd-cycle | index ✓ · ledger ✓ |
 
 Flagged proposals: [none | list — each awaiting the user's ruling at acceptance]
 Waivers: [none | GI-IDs]

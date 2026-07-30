@@ -1,14 +1,14 @@
 # Essential Floor
 
-> **Canonical home.** This file is the single source of truth for the four Essential Floor category **definitions**. Both modes of `authoring-constitution` (greenfield writes them from tier defaults; brownfield assesses the codebase against them) reference this definition, and the cross-cluster `analysis-codebase` skill references it for its present/partial/absent status assessment rather than re-defining the categories. Edit the four categories here, nowhere else.
+> **Canonical home.** This file is the single source of truth for the four Essential Floor category **definitions**. Both modes of `authoring-constitution` (greenfield writes them at the asserted floor level; brownfield assesses the codebase against them) reference this definition, and the cross-cluster `analysis-codebase` skill references it for its present/partial/absent status assessment rather than re-defining the categories. Edit the four categories here, nowhere else.
 
-Every constitution MUST **account for** all four floor categories — with a principle, or, at a low
-tier, a **recorded waiver** (which tier waived it + the revisit trigger). The floor concept is
-invariant: no session emits a floor-less constitution, and absence is never silent. Floor
-**strictness and waiver posture are tier-parameterized** — see the tier defaults on each floor card
-in [catalog/universal-floor.md](catalog/universal-floor.md). At `production`/`regulated` tiers the
-four categories are NON-NEGOTIABLE principles; at `poc`/`internal` a category MAY be waived,
-explicitly and auditably.
+Every constitution MUST **account for** all four floor categories — with a principle or a
+**recorded waiver** (D4: justification in the governance ledger; permanent pending the D4.1
+revisit). The floor concept is invariant: no session emits a floor-less constitution, and absence
+is never silent. The floor's **level is single and asserted** — the production level on each
+floor card in [catalog/universal-floor.md](catalog/universal-floor.md); nothing can lower it, and
+a deviation is only ever a recorded waiver, never a loosened card. Audit-evidence variants live
+in [COMPLIANCE-MODULES.md](COMPLIANCE-MODULES.md) and attach via the fact profile.
 
 ## Detail Requirements
 

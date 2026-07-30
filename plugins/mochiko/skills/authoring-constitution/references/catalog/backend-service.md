@@ -2,8 +2,10 @@
 
 Dealt when the declared project type is **backend, service, or fullstack (API side)**. These were
 mochiko's former universal greenfield defaults; they are now type-selected cards — good
-architecture for services, misfitting baggage for an SPA or a CLI. Each card pairs with the
-`layer-rules` template module where noted.
+architecture for services, misfitting baggage for an SPA or a mobile app. All three are
+**arbitrated-layer** cards (architecture-opinion — PO-D3's S7 carve-out): architecture choice is
+per-project judgment, not a rigor dial, so they are dealt recommend-then-arbitrate, never
+asserted. Each card pairs with the `layer-rules` template module where noted.
 
 Cards carry their full principle material here (statement, enforcement, testability, rationale
 inputs). The session arbitrates: keep / tighten / drop / re-rank — every ruling recorded in the
@@ -14,8 +16,8 @@ synthesis with a trace-ID.
 ### BE-HEX — Hexagonal Architecture (Ports & Adapters)
 
 **Type tags:** backend, service, fullstack-api
-**Tier defaults:** poc: out · internal: offer · production: default-in · regulated: default-in
-**Tier parameterization:** at `internal`, enforcement MAY be code-review-only; at `production`+, import-linter rules in CI are the default enforcement.
+**Layer:** arbitrated (architecture-opinion — recommended for services; the user keeps / tightens / drops)
+**When kept:** production-strength enforcement — import-linter rules in CI; code-review-only is not an enforcement mode.
 **Template module:** selecting this card selects the `layer-rules` module (Project Structure + Layer Import Rules sections).
 
 **Content:**
@@ -67,8 +69,8 @@ maintainability.
 ### BE-SRP — Single Responsibility & Module Boundaries
 
 **Type tags:** backend, service, fullstack-api
-**Tier defaults:** poc: out · internal: offer · production: default-in · regulated: default-in
-**Tier parameterization:** metric limits are session-tunable; at `internal` the complexity gate MAY be a linter warning rather than a CI block.
+**Layer:** arbitrated (architecture-opinion — recommended for services; the user keeps / tightens / drops)
+**When kept:** production-strength enforcement — the complexity gate is a CI block; metric limits stay session-tunable.
 
 **Content:**
 
@@ -104,8 +106,8 @@ doing too much.
 ### BE-DEP — Dependency Discipline
 
 **Type tags:** backend, service, fullstack-api
-**Tier defaults:** poc: out · internal: offer · production: default-in · regulated: default-in
-**Tier parameterization:** at `regulated`, add license compliance and a documented supply-chain review; vulnerability blocking severity may tighten (high/critical → medium+).
+**Layer:** arbitrated (architecture-opinion — recommended for services; the user keeps / tightens / drops)
+**When kept:** production-strength enforcement — dependency scanning blocks merge at high/critical. License compliance, documented supply-chain review, and tightened blocking severity (medium+) are compliance-module content ([../COMPLIANCE-MODULES.md](../COMPLIANCE-MODULES.md)), attached via the fact profile.
 
 **Content:**
 

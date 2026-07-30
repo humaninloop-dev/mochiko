@@ -1,6 +1,6 @@
 ---
 name: validation-constitution
-description: This skill MUST be invoked to grade a DRAFTED governance surface set against the quality checklist — there is NO constitution.md; the graded set is the CLAUDE.md governance region (between the mochiko:governance markers), the `paths`-scoped `.claude/rules/mochiko/` files, and the governance ledger (`.mochiko/memory/governance-ledger.md`), judged against the session synthesis and the producer's trace manifest. Checks include two-way trace closure, region-marker integrity, index→home existence, per-principle three-part structure (enforcement/testability/rationale), tier-declaration and waiver-format checks, anti-pattern and placeholder scans, quantification enforcement, and semantic version-bump determination — emitting a binary PASS/FAIL verdict plus a fix list. SHOULD also invoke whenever the setup loop's validate step needs an independent grade of a surface set produced by mochiko:authoring-constitution, or when re-validating after a FAIL-loop revision. The validator-side skill of the governance producer↔validator pair; defaults to FAIL; run by an independent validator, never the author.
+description: This skill MUST be invoked to grade a DRAFTED governance surface set against the quality checklist — there is NO constitution.md; the graded set is the CLAUDE.md governance region (between the mochiko:governance markers), the `paths`-scoped `.claude/rules/mochiko/` files, and the governance ledger (`.mochiko/memory/governance-ledger.md`), judged against the session synthesis and the producer's trace manifest. Checks include two-way trace closure, region-marker integrity, index→home existence, per-principle three-part structure (enforcement/testability/rationale), floor/module accounting and waiver-format checks (the D4 model), anti-pattern and placeholder scans, quantification enforcement, and semantic version-bump determination — emitting a binary PASS/FAIL verdict plus a fix list. SHOULD also invoke whenever the setup loop's validate step needs an independent grade of a surface set produced by mochiko:authoring-constitution, or when re-validating after a FAIL-loop revision. The validator-side skill of the governance producer↔validator pair; defaults to FAIL; run by an independent validator, never the author.
 ---
 
 # Validating Constitution
@@ -57,7 +57,7 @@ fragments the synthesis did not select.
 ### Step 2: Region and Surface Integrity (deterministic)
 
 - Exactly one governance region in `CLAUDE.md`, both markers present, correctly ordered.
-- The region carries the ratified stamp (version · date · tier, one line), the principle index,
+- The region carries the ratified stamp (version · date · production floor + attached modules, one line), the principle index,
   universal principles as short imperative lines, the technology stack, and the quality-gates
   summary — and stays **short-form** (detail belongs to the ledger; a region restating ledger
   detail is a fix-list item).
@@ -93,7 +93,7 @@ If any principle lacks any part, the set FAILS validation.
 String-match against the synthesis and the surfaces:
 
 1. Every manifest row's GI-ID exists in `governance-intent.md` and points at a principle-bearing
-   element (deck-kept / minted / floor-preset).
+   element (floor-asserted / deck-kept / minted / compliance-module obligation).
 2. Every principle-bearing element in the synthesis appears in the manifest — realized on a
    surface — or in the producer's flagged-proposals list. Unrealized-and-unflagged = FAIL.
 3. Every manifest row closes on the surfaces: **one primary enforceable home** (region line,
@@ -109,14 +109,19 @@ string match. Flag suspected content↔intent mismatches in the fix list as advi
 fidelity gates are the human checkpoints upstream (synthesis confirmation) and downstream (the
 acceptance gate's trace summary), not this scan.
 
-### Step 5: Tier and Waiver Checks
+### Step 5: Floor, Module, and Waiver Checks
 
-- Ledger carries the declared tier, graduation path, trace; the region stamp's tier matches.
+- Ledger carries the Governance Floor header — production floor asserted, attached compliance
+  modules with their strata (or "none"), fact-profile trace (GI-001); the region stamp matches.
 - Every Essential Floor category has a principle **or a recorded waiver** — in any mode.
-- Every waiver carries: category, waiving tier, revisit trigger, trace. A waiver at a
-  tier whose posture forbids it (`production`/`regulated`) is a FAIL.
-- Thresholds and gate strictness consistent with the declared tier, or covered by a recorded
-  session override in the synthesis.
+- Every waiver carries: standard, justification, revisit trigger or "permanent (D4.1 pending)",
+  trace. **A waiver naming a legal-mandate module obligation is a FAIL** (D4.2 — strata per
+  `authoring-constitution/references/COMPLIANCE-MODULES.md`).
+- Attached compliance modules match the synthesis's fact profile one-for-one — every triggered
+  module attached, none without a recorded trigger fact; module obligations are additive —
+  attached content that loosens a floor principle is a FAIL.
+- Thresholds and gate strictness consistent with the asserted floor level, or covered by a
+  recorded session override in the synthesis.
 
 ### Step 6: Scan for Anti-Patterns
 
@@ -140,7 +145,7 @@ rules file, ledger, manifest) for:
 
 | Bump | Trigger | Example |
 |------|---------|---------|
-| **MAJOR** | Principle removed or incompatibly redefined; tier change | Removing "Test-First" principle; poc → production |
+| **MAJOR** | Principle removed or incompatibly redefined; floor-level change; module attach/detach | Removing "Test-First" principle; attaching `hipaa` |
 | **MINOR** | New principle added or significant expansion; waiver added/removed | Adding "Observability" principle; un-waiving Testing |
 | **PATCH** | Clarification or non-semantic change | Rewording for clarity; typo fixes; formatting |
 
@@ -154,7 +159,7 @@ VALIDATION RESULT: [PASS/FAIL]
 Checklist items: [X/Y passed] (core + [N] module fragments: [names])
 Surface integrity: [region markers OK · index→home resolution X/X · rules files paths-scoped Y/Y · scope coverage Z/Z · new-file read line present/absent/n-a · universal-in-rules violations: none/list]
 Trace closure: [manifest rows closed X/X (primary home + companions) · synthesis elements realized-or-flagged Y/Y · waivers matched · modules matched]
-Tier/floor accounting: [tier declared (region stamp = ledger) · floor categories principled/waived, e.g. 3 principled + 1 waived]
+Floor/module accounting: [floor asserted (region stamp = ledger) · modules matched to the fact profile · floor categories principled/waived, e.g. 3 principled + 1 waived]
 Anti-patterns found: [list or "none"]
 Version bump: [MAJOR/MINOR/PATCH] (if changes made)
 

@@ -1,15 +1,16 @@
 # Quality Checklist
 
-Before finalizing a constitution, verify all items below. The Structure section is
+Before finalizing a governance surface set, verify all items below against the shapes in
+`templates/governance-surfaces-template.md`. The Structure sections are
 **module-parameterized**: read the synthesis's module selections first, then check core + exactly
 the selected modules.
 
 ## Principle Quality
 
-- [ ] Every principle has Enforcement section
-- [ ] Every principle has Testability section
-- [ ] Every principle has Rationale section
-- [ ] Every principle has a Trace stamp (`**Trace**: GI-XXX (…)`)
+- [ ] Every principle's ledger record has an Enforcement section
+- [ ] Every principle's ledger record has a Testability section
+- [ ] Every principle's ledger record has a Rationale section
+- [ ] Every principle carries a Trace stamp (`**Trace**: GI-XXX (…)` in the ledger; the region line's trace comment where the home is the region)
 - [ ] All MUST statements have enforcement mechanisms
 - [ ] All quantifiable criteria have specific thresholds
 - [ ] No vague language without measurable criteria
@@ -17,42 +18,44 @@ the selected modules.
 ## Traceability (cross-check against `.mochiko/memory/governance-intent.md` — deterministic)
 
 - [ ] Every principle's Trace GI-ID **exists** in governance-intent.md
-- [ ] Every trace points at a **principle-bearing** element (deck-kept / minted / floor-preset — not a waiver, exclusion, or module row)
+- [ ] Every trace points at a **principle-bearing** element (floor-asserted / deck-kept / minted / compliance-module obligation — not a waiver, exclusion, or template-module row)
 - [ ] Every principle-bearing element in governance-intent.md is **realized** as a principle — or appears in the producer's flagged-proposals list
 - [ ] No two principles claim the same GI-ID
 - [ ] Waiver records match the synthesis's waiver elements one-for-one (each with its GI-ID)
-- [ ] Attached module sections match the synthesis's module selections one-for-one — nothing extra, nothing missing
+- [ ] Attached template-module sections match the synthesis's module selections one-for-one — nothing extra, nothing missing (compliance modules are checked in Floor & Module Accounting below)
 
 > Semantic fidelity of a stamped trace (does the principle's *content* faithfully realize the
 > element's *intent*?) is judgment-grade — flag suspected mismatches in the fix list, but the
 > deterministic checks above are the PASS/FAIL surface. Fidelity is guarded upstream by the
 > synthesis-confirmation checkpoint and downstream by the acceptance gate's trace summary.
 
-## Tier & Floor Accounting (all modes)
+## Floor & Module Accounting (all modes)
 
-- [ ] Governance Tier section present: named tier + graduation path + trace stamp
+- [ ] Governance Floor section present in the ledger: production floor asserted · attached compliance modules with strata (or "none") · fact-profile trace (GI-001)
 - [ ] Every Essential Floor category (Security, Testing, Error Handling, Observability) has a principle **or a recorded waiver** — neither is a FAIL
-- [ ] Every waiver record carries: floor category, waiving tier, revisit trigger, trace
-- [ ] No waiver at a tier whose posture forbids it (`production`/`regulated` — see [the floor cards](../../authoring-constitution/references/catalog/universal-floor.md))
-- [ ] Coverage thresholds and gate strictness are consistent with the declared tier (or carry a session override in the synthesis)
+- [ ] Every waiver record carries: standard, justification, revisit trigger or "permanent (D4.1 pending)", trace
+- [ ] **No waiver names a legal-mandate module obligation** (D4.2 — strata per [COMPLIANCE-MODULES.md](../../authoring-constitution/references/COMPLIANCE-MODULES.md)); one that does is a FAIL
+- [ ] Attached compliance modules match the synthesis's fact profile one-for-one — every triggered module attached, none attached without a recorded trigger fact
+- [ ] Module obligations are additive over the floor — no attached-module content loosens a floor principle
+- [ ] Coverage thresholds and gate strictness sit at the asserted floor level ([the floor cards](../../authoring-constitution/references/catalog/universal-floor.md)) or carry a session override recorded in the synthesis
 - [ ] No Quality-Gate row for a waived category (the waiver record covers the absence)
 
-## Structure Quality — universal core
+## Structure Quality — universal core (the surface set)
 
-- [ ] SYNC IMPACT REPORT present as HTML comment
-- [ ] Overview section with project description
-- [ ] Governance Tier section (incl. Waivers table or "None.")
-- [ ] Core Principles numbered with Roman numerals
-- [ ] Technology Stack table complete with rationale
-- [ ] Quality Gates table with measurement commands
-- [ ] Governance section with amendment process (incl. tier-bump/un-waive routed through amend)
-- [ ] CLAUDE.md Sync Mandate with mapping table (incl. Governance Tier row + a row per attached module the sync mandates)
-- [ ] Version footer with dates in ISO format
+- [ ] CLAUDE.md governance region present between `<!-- mochiko:governance:begin -->` / `<!-- mochiko:governance:end -->`; no setup-owned content outside the markers
+- [ ] Ratified stamp line: version · ratified date · production floor · attached modules (or "none")
+- [ ] Principle index: one line per principle; index → home → ledger closes both ways
+- [ ] Universal principles as short imperative RFC 2119 lines, floor principles first, marked `(NON-NEGOTIABLE)`
+- [ ] Technology-stack lines with actual mandated choices
+- [ ] Quality-gates summary with actual commands
+- [ ] Governance-operations block: ledger pointer · amend route (fact-profile changes — module attach/detach — and un-waives are governance events)
+- [ ] Ledger complete per Shape 3: Governance Floor header · Waivers · Amendment policy · Exception registry · Three-Part records keyed by GI-ID · amendment log (version matching the region stamp)
+- [ ] Trace summary manifest present (Shape 4): one row per principle-bearing GI element
 
 ## Structure Quality — selected modules
 
-For **each module the synthesis selects**, run the validator checklist fragment embedded at the
-bottom of that module's file in `templates/constitution-modules/`:
+For **each template module the synthesis selects**, run the validator checklist fragment embedded
+at the bottom of that module's file in `templates/constitution-modules/`:
 
 - [ ] `layer-rules` fragment (if selected)
 - [ ] `release-gates` fragment (if selected)
@@ -66,8 +69,8 @@ bottom of that module's file in `templates/constitution-modules/`:
 
 ## No Placeholders Rule
 
-- [ ] Technology Stack has NO `[PLACEHOLDER]` syntax - all actual tool names
-- [ ] Quality Gates has NO `[COMMAND]` placeholders - all actual commands
+- [ ] Technology stack has NO `[PLACEHOLDER]` syntax - all actual tool names
+- [ ] Quality gates have NO `[COMMAND]` placeholders - all actual commands
 - [ ] Coverage thresholds are numeric (e.g., "≥80%", NOT "[THRESHOLD]%")
 - [ ] Security tools are named (e.g., "Trivy + Snyk", NOT "[SECURITY_COMMAND]")
 - [ ] Test commands are complete (e.g., "`pytest --cov`", NOT "`[TEST_COMMAND]`")
@@ -75,7 +78,7 @@ bottom of that module's file in `templates/constitution-modules/`:
 
 ## Governance Quality
 
-- [ ] Version follows semantic versioning (tier change = MAJOR; waiver change = MINOR)
+- [ ] Version follows semantic versioning (floor-level change / module attach or detach = MAJOR; new principle or waiver change = MINOR; clarification = PATCH)
 - [ ] Amendment process is actionable
 - [ ] Exception registry format defined
 - [ ] Compliance review expectations set

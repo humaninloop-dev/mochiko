@@ -66,18 +66,18 @@ the judgment prose (strengths, recommendations) stays prose — the G2 gate read
 The four Essential-Floor categories — **Security, Testing, Error Handling, Observability** — are
 **defined canonically** in
 [`authoring-constitution/references/ESSENTIAL-FLOOR.md`](../authoring-constitution/references/ESSENTIAL-FLOOR.md).
-Governance owns *require-floor* (what the categories are, their tier-parameterized strictness, and
-their waiver posture). This skill owns the other half — **assess-status**: detect each category's
+Governance owns *require-floor* (what the categories are, the asserted level, and the waiver
+posture). This skill owns the other half — **assess-status**: detect each category's
 present / partial / absent state in the existing codebase, with file-cited evidence. **Do not
 redefine the categories here.** Read the canonical definition, then assess against it using the
 indicators below.
 
-**The assessment is tier-blind and waiver-blind by design.** Report what IS — the same codebase
-gets the same status regardless of the tier the user later declares. Downstream, the setup
-session interprets the statuses against declared intent (an `absent` at declared production tier
-becomes an open confrontation; at poc tier it may become a recorded waiver) — that interpretation
+**The assessment is intent-blind and waiver-blind by design.** Report what IS — the same codebase
+gets the same status regardless of anything the session later rules. Downstream, the setup
+session interprets the statuses against the asserted floor (an `absent` category becomes an open
+confrontation, resolved as a MUST-implement principle or a recorded waiver) — that interpretation
 belongs to the session and the constitution, never to this analysis. Do not soften an `absent` to
-`partial` because the project "is only a poc", and do not mark a category "waived" — waivers are
+`partial` because the project "is young", and do not mark a category "waived" — waivers are
 governance rulings, not codebase facts.
 
 #### Security — status indicators

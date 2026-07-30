@@ -1,10 +1,11 @@
 <!--
 MODULE: release-gates
 =====================
-Attach when: the synthesis's deployment-and-release dimension elicited a real release process
-worth governing — environments, cadence, release-blocking criteria, rollback expectations.
-Typically internal tier and above; a poc with no release process prunes the dimension and never
-selects this module. Trace: the GI module-selection element that names `release-gates`.
+Attach when: always offered for the target class — customer-facing software the team deploys
+and operates has a real release process by definition (PO-D1), and the deployment-and-release
+dimension (always interrogated — no pruning license) supplies its content: environments,
+cadence, release-blocking criteria, rollback expectations. Trace: the GI module-selection
+element that names `release-gates`.
 -->
 
 ## Release Gates
@@ -35,5 +36,5 @@ verification commands.
 - [ ] Environments and cadence stated with the project's real environment names
 - [ ] Release-gate table present; every gate has a concrete verification (command/dashboard), no placeholders
 - [ ] Rollback procedure documented with a time expectation
-- [ ] Gates consistent with the tier (a regulated tier names its audit-evidence gate)
+- [ ] Gates consistent with the attached compliance modules (an attached module names its audit-evidence gate)
 -->
