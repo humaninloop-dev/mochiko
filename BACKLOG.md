@@ -211,10 +211,17 @@ Rulings PO-D1–D7 (DECISIONS.md 2026-07-30); record
 landed in ROADMAP thesis + CLAUDE.md same day; **narrowing build DONE 2026-07-30 at v0.36.0 —
 trail** (scope ADR `2026-07-30-po-narrowing-build-scope`). Tier-I depth items open below.
 
-- [ ] **Security-depth scoping session (Tier I, first in line)** (2026-07-30, PO-D5) — threat
-  modeling at plan time, security requirements with teeth, blocking SAST/dep-vuln gates, a
-  security lens in the validator set; own scoping session before build (map F21: today = one
-  floor card + DS-XXX annotations).
+- [ ] **Security-depth build (Tier I)** (2026-07-30; rulings SD-D1–D6, record
+  `.mochiko/brainstorms/security-depth-scoping/record.md` — pair-reviewed, verify CLEAN round
+  3) — build surface (record: "Build surface" + its V4 extension): `patterns-threat-modeling`
+  skill + `SECURITY-AREAS.md` registry · trust-boundary diagram convention · SEC-XXX full
+  plumbing + DS-XXX close (F95) · FLOOR-SEC row edits (SAST high/critical · no-hand-rolled
+  line · tooling map + enforcement clause relocated universal) · semgrep floor rulesets
+  (governance-protected) · contracts checks (F96/F97) · quality-gates producer (F94) ·
+  coverage ledger + `validation-constitution` check · persona edits (keystone-checked) · spec
+  producer prompt · gate canaries · F19 fix as prerequisite · one command edit (`plan.md`
+  Bindings, shape-v5 audited). Fences: DAST/pentest · per-regime content · type-specific
+  expressions (shelves) · runtime ops.
 - [ ] **Ops & observability hardening (Tier I)** (2026-07-30, PO-D5) — SLOs as first-class
   NFRs, RUNBOOK elective→asserted, incident-response basics, release-health expectations per
   product kind; mostly promoting existing electives to asserted (map F32).

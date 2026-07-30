@@ -8,6 +8,12 @@ One entry per session directory under `.mochiko/brainstorms/<topic-slug>/`, **ne
 
 ---
 
+## `security-depth-scoping` — security depth as a Tier-I production-only build
+- **When:** 2026-07-30 · **Status:** accepted · record pair-reviewed (lens-split per sizing gate: 29 raised → 25 survived cross-exam → 20 lead-merged survivors → 20/20 dispositioned incl. the 6-ruling user batch; verify NOT CLEAN×2 → 9 repairs + 1 tidy penned (V1/V2 + R2 substantive, user-ratified) → CLEAN at round 3; clearing verdict ready)
+- **Artifacts:** [record.md](security-depth-scoping/record.md) (canonical, incl. verbatim fact-checker map F1–F100 + errata)
+- **About:** PO-D5's first Tier-I item scoped against the post-v0.36.0 surface. Ruled (SD-D1–D6): woven form — no security seat, craft in `patterns-threat-modeling` + persona-judgment edits (D1); threat modeling inside `architecture.md` — trust-boundary convention + STRIDE sweep, coarse declared-sensitivity key, contradictions ride plan's existing backward path (D2); SEC-XXX minted with full plumbing, two-phase authoring, seat-aligned dual closures (D3, `Contested` — user over the lead's reuse recommendation); SAST asserted at high/critical with the brownfield floor-line/generic split and governance-protected floor rulesets (D4); ASVS-derived area registry (V10 included, version-pinned) + semgrep-on-SAST "established, never hand-rolled" carrier + ownership-check obligations + once-per-app coverage ledger with known-gaps (D5); the lens at three sites, never a seat (D6). Review headline: the fact map held (23/100 sampled clean); the broken claims were fold-ordering and carrier-reach defects, all repaired at source.
+- **Landed:** DECISIONS.md rows SD-D1–D6 (2026-07-30) · BACKLOG: scoping item → trail, "Security-depth build" opened with the reviewed build surface · ROADMAP Next touch. Build not started.
+
 ## `production-only-focus` — narrowing mochiko to production-quality codebases only
 - **When:** 2026-07-30 · **Status:** accepted · record pair-reviewed (lens-split per sizing gate: 14 raised → 13 survived cross-exam → 9 lead-merged survivors → 9/9 dispositioned incl. the user-adopted 5-ruling batch; verify pass caught 2 fold-contradictions, both repaired, re-verified CLEAN; clearing verdict ready)
 - **Artifacts:** [record.md](production-only-focus/record.md) (canonical, incl. verbatim fact-checker map F1–F33 + boundary addendum) · [run-costs.md](production-only-focus/run-costs.md)
