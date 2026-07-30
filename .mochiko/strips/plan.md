@@ -31,7 +31,7 @@ promoted from an HTML comment to visible body text (~50 w), G2's greenfield-dege
 (~20 w), `GLOSSARY.md` minting in the KM binding (~8 w), and the fix round's two audit-mandated
 restores (~31 w — the `@`-reference recovery and the `preference → G5` class), less the 21 w of G7
 provenance relocated to make room under the Constraints ceiling. Run-level: the file drops
-19,749 B while the v5 shared read floor adds 2,895 B → **−16,854 B per plan run**, against the
+19,749 B while the v5 shared read floor adds 3,225 B → **−16,524 B per plan run**, against the
 −17,430 B the floor projected.
 
 > **Standing habit adopted (auditor-suggested, 2026-07-30):** re-run `wc` and sweep every headline
@@ -59,6 +59,20 @@ pressure. **Recommend confirming the ceiling, not loosening it**, with the cavea
 little room for a command that wants narrative provenance in Constraints. That is arguably the
 ceiling working as designed: provenance belongs in a non-loaded note, not in a file paid on every
 run.
+
+## [v0.35.0] Ceremony polish — the pilot's run-level figure corrected to the live shared floor
+
+- **Disposition:** corrected in place (correction class)
+- **Tier failed:** n/a — figure correction at the wave ceremony
+- **Cause:** the **stale-summary failure mode** this note's own standing-habit block quote names,
+  arriving one more time: the run-level line was keyed to a shared-floor delta of +2,895 B, which
+  was correct when measured and went stale when `command-shape.md` grew to 16,735 B.
+- **Content:** the v5 shared read floor adds **+3,225 B**, not +2,895, so the pilot's run-level
+  result is **−16,524 B per plan run**, not −16,854 (the file's own 19,749 B drop is unchanged and
+  re-verified). Against the −17,430 B the floor projected, the pilot still lands inside its
+  projection, so no conclusion in this note reverses — only the number.
+- **Kept deliberately:** the 19,749 B file drop, the accounted-overage breakdown, and the
+  standing-habit block quote, which now has a fourth instance to its name.
 
 ## [v0.34.0] The phase body and the Contract section retired into the five-block anatomy
 - **Disposition:** superseded → the goal-shaped anatomy. `Phase 0`→**G1** + the Slice-scope

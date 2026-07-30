@@ -1,5 +1,5 @@
 ---
-description: Establish or update the project's governance on native Claude Code surfaces — an interrogation session elicits the user's governance intent (tier, type, risk, values) before anything is authored, closing on a synthesis that a tier-sized cold intent review stress-tests before the user ratifies it (pair / single / recorded waiver — the user rules at the gate); the ratified synthesis becomes a traceable contract on the producer; a principal-architect teammate authors the surface set (a marked CLAUDE.md governance region, paths-scoped rules files, skill pointers, and a governance ledger), an independent validator teammate grades trace closure from the files, and the user accepts with a trace summary in hand — brownfield-aware (greenfield | brownfield | amend). Requires agent teams (CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS); refuses without them.
+description: Establish or update the project's governance on the surfaces Claude Code natively loads — an interrogation session elicits the user's declared intent (tier, type, risk, values) before anything is authored, closing on a confidence-marked synthesis that a tier-sized cold intent review stress-tests before the user ratifies it at G3 (pair / single / recorded waiver — the user rules the sizing); the ratified synthesis is then a traceable contract on a principal-architect producer teammate that authors the surface set (a marked CLAUDE.md governance region, paths-scoped rules files, skill pointers, a governance ledger), an independent validator teammate grades trace closure from the files, and the user accepts with the trace summary in hand. Greenfield | brownfield | amend; every stage user-gated, default-FAIL, bounded, kernel-free. Requires agent teams (CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS); refuses without them.
 disable-model-invocation: true
 ---
 
@@ -7,259 +7,171 @@ disable-model-invocation: true
 
 **Goal:** establish or update the project's governance so it follows the user's declared intent —
 never a fixed baseline — and lives where Claude Code natively loads it. There is **no
-`constitution.md`**: the deliverable is a **surface set** — a marked, setup-owned **governance
-region in `CLAUDE.md`** (ratified stamp · principle index · universal principles as short
-imperative lines · tech stack · quality-gates summary · module pointers), **`paths`-scoped
-`.claude/rules/` files** for scope-bound principles, **skill pointers** for procedure-shaped
-standards, and a **governance ledger** at `.mochiko/memory/governance-ledger.md` (Three-Part
-metadata keyed by GI-ID, waivers with revisit triggers, amendment process, exception registry —
-read only by setup/amend and the validator). The ratified synthesis
-(`.mochiko/memory/governance-intent.md`) remains the **traceable contract** on the producer:
-selection belongs to the session, only formulation to the producer. Design record:
-`.mochiko/brainstorms/constitution-native-surfaces/record.md` (D1–D8).
-`$ARGUMENTS` = optional setup request; empty is fine — detection proposes the mode.
+`constitution.md`**: the deliverable is the surface set in Bindings. `$ARGUMENTS` = optional setup
+request; empty is fine — detection proposes the mode.
 
-**You are the lead**, and this is a **team-form command in the mochiko command shape**: Read
-`${CLAUDE_PLUGIN_ROOT}/templates/command-shape.md` (both layers) before anything else — the
-shape's rules (sized review with survivor routing, seat transport + legibility, contract fill,
-recovery posture) bind here and are not restated; this file carries only setup's parameters.
-You run the interrogation inline via `mochiko:analysis-iterative` (one question per turn)
-against the agenda in
-`${CLAUDE_PLUGIN_ROOT}/skills/authoring-constitution/references/INTERROGATION-AGENDA.md`, write
-the synthesis, own the loop (round counter, verdict, escalations), and hold every gate. The
-machinery holds three kinds of seats — a producer, cold intent reviewer(s) at the pre-G3
-synthesis review, and a cold validator — and beyond those seats the conversation is you and the
-user. This is a `mochiko:loop-discipline` sound loop; the Contract section below is its
-authoring-time fill.
+**You are the lead** of a team-form command in the mochiko command shape: Read
+`${CLAUDE_PLUGIN_ROOT}/templates/command-shape.md` (both layers) and `mochiko:loop-discipline`
+first; brief every dispatch per `templates/agent-dispatch.md`; Read
+`templates/sized-end-stage-review.md` at the sizing gate. This file carries only setup's
+parameters. Hard-requires `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS`. **First-spawn probe:** the
+producer in brownfield; otherwise the intent reviewer(s) at the synthesis review, or the producer
+if it was waived.
 
-## Team-form parameters (shape Layer 2)
+## Goal
 
-Hard-require `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS` per the shape. The **authoritative
-first-spawn probe** is the producer in brownfield; otherwise the intent reviewers at the
-synthesis review, or the producer when that review was waived. Transport mechanics + the
-addressability check: `templates/agent-dispatch.md` (Seat transport). The no-fallback bet is
-the same `Contested` dogfood-pilot ruling as `/mochiko:brainstorm`'s.
+The surface set in Bindings exists and carries the user's ratified intent, not a baseline: the
+sized intent review ran (or its waiver is recorded) with every survivor dispositioned · G3 cleared,
+in every mode · `validator` returned PASS graded from the files · G4 accepted with the trace summary
+in hand and every flagged proposal ruled · G2 confirmed, in brownfield · G5's landing ran where the
+pinned knowledge-management copy exists. The region's semver is bumped, its stamp ratified.
 
-## Session constraints
+**Not done:** a surface authored before G3 · an undispositioned survivor with no recorded waiver · a
+validator FAIL, or a PASS read off its report · a proposal folded without the user's word · a floor
+category with neither principle nor waiver · out of rounds · G4 unaccepted.
 
-- Workspace: `mkdir -p .mochiko/memory`. Kill-switch: stop and escalate if
-  `.mochiko/memory/SETUP_STOP` exists — check before each producer, reviewer, or validator send.
-- **Mode is yours** (greenfield | brownfield | amend) — it selects which stages run and the
-  producer's branch. It is carried in-session + by workspace evidence; there is no context file.
-- **Hygiene (all modes):** a `.mochiko/memory/constitution.md` found on disk is a superseded
-  artifact from the pre-dissolution form — **delete it on sight** (no migration, no offer; the
-  dogfooding-stage ruling D6). Say so in one line.
-- **Ownership boundary (D8):** the CLAUDE.md governance region — delimited by
-  `<!-- mochiko:governance:begin -->` / `<!-- mochiko:governance:end -->` markers — is
-  setup-owned and **idempotently regenerated**: re-runs and amends replace the region in place.
-  Everything outside the markers is user content and is **never touched**. All other writes
-  (rules files under `.claude/rules/mochiko/`, the ledger, the synthesis) follow the same
-  regenerate-what-setup-owns rule; the knowledge-management bundle scaffolding keeps its hard
-  never-overwrite floor.
+## Seats & checks
 
-## The seats
+| seat | agent × skill(s) | produces / grades | spawn | peer edges |
+|---|---|---|---|---|
+| producer | `principal-architect` × `analysis-codebase`, `authoring-constitution` | brownfield: `codebase-analysis.md` + Essential-Floor read; all modes: the surface set + trace summary, plus flagged proposals and unresolved clarifications; never grades | standing across both jobs — at analysis in brownfield (**probe seat**), else first produce | takes each fix list from the validator directly |
+| intent reviewer(s) | `devils-advocate` × `review-governance-intent` | stress-tests the frozen synthesis, lens-briefed coverage / coherence in a pair → survivors, tally, status: input you adjudicate, not the grade | cold at the synthesis review, count per the sizing ruling (**probe seat** when first) | none — messages you, never the user, never the producer or validator: a cold review stage, not in-loop traffic |
+| validator | `validator` × `validation-constitution` | grades the surface set **from the files** — set + synthesis + trace summary, never the producer's report → PASS/FAIL + fix list; never authors | cold at first validation, messaged after | hands each fix list to the producer directly; the round-opening send is yours |
 
-- **producer** — `mochiko:principal-architect`, one **named standing seat** spanning both of its
-  jobs, so analysis context flows into authoring and fix-list context survives across rounds.
-  Brownfield: spawn at analysis (runs `mochiko:analysis-codebase`, mode setup-brownfield, on the
-  detect-stack output → writes `.mochiko/memory/codebase-analysis.md`, messages you a summary +
-  Essential-Floor table + clarifications). All modes: after synthesis ratification, brief it (by
-  message; spawn now if greenfield/amend never needed analysis) to author via
-  `mochiko:authoring-constitution` → the **surface set** (CLAUDE.md governance region ·
-  `.claude/rules/mochiko/*.md` · skill pointers · `governance-ledger.md`) **plus the trace
-  summary** (each GI element → its primary enforceable home + companion entries) — Read the
-  synthesis (its contract; formulation only, flagged proposals for anything beyond) and, in
-  brownfield, the analysis; in amend, the current surfaces (preserve untouched principles;
-  bump the region's semver). It **messages you** a report + flagged proposals + clarifications;
-  it never grades.
-- **intent reviewer(s)** — `mochiko:devils-advocate`, spawned **cold at the synthesis review**
-  (never in the room during interrogation), count per the user's sizing ruling. Brief each to run
-  `mochiko:review-governance-intent` against the frozen synthesis + the interrogation agenda +
-  (brownfield) `codebase-analysis.md`. In a pair, **split the hunt by lens in the spawn briefs**
-  — one **coverage** (missed dimensions, prune audits, the card-acceptance and waiver/module
-  sweeps), one **coherence** (tier↔risk↔ruling alignment, the mark/echo-rationale audit,
-  reality-conflict resolutions, cross-element contradictions) — the skill stays one document; the
-  brief sets the emphasis. A **single** reviewer gets the whole surface, no cross-exam, and runs
-  the verify pass itself; in a pair the verify pass is the **coherence** reviewer's. These seats
-  produce **lead-adjudicated input before G3** — never the authoritative grade (that stays the
-  validator's, on the authored surface set); they message you, never the user, and never contact
-  the producer or validator — a **cold review stage**, not in-loop traffic, so that isolation
-  stands deliberately under the mesh.
-- **validator** — `mochiko:validator`, spawned **cold at first validation**, never in the room
-  before that, **peer-edged with the producer** for fix-list hand-offs thereafter. Brief it to run
-  `mochiko:validation-constitution` **from the files** (the surface set + synthesis + trace
-  summary, never the producer's report): trace closure both ways over the manifest, region-marker
-  integrity, index→file existence, ledger completeness (Three-Part per principle), tier + waiver
-  + floor-accounting checks, module-parameterized checks — knowledge-management attached → the
-  module fragment's **repo-level invariant re-audit runs**, resolved from the project-pinned
-  copy (`.mochiko/memory/knowledge-management.md`) when one exists — anti-pattern + placeholder
-  scans, semver call — brownfield adds the tools/versions↔analysis cross-check. It **messages
-  you** binary PASS/FAIL + a fix list, and on FAIL hands that list to the producer directly
-  (peer-routable). Independence here is structural — disjoint agents, disjoint skills, cold spawn —
-  never the routing; the round's **verdict stays yours**.
-  <!-- shape-exception: setup carried the library's most explicit statement of the falsified
-  routing=independence claim; the correction is stated at the seat so the deletion is not silent -->
+**Validation model:** two branches, different stages — the **sized end-stage review** of the
+frozen `governance-intent.md` before G3, per `templates/sized-end-stage-review.md`, then the
+produce↔validate loop, whose PASS is the authoritative grade on the surface set. Every verdict is
+yours.
 
+## Constraints
 
-## The flow
+- **G1 mode-select** — evidence: `bash ${CLAUDE_PLUGIN_ROOT}/skills/analysis-codebase/scripts/detect-stack.sh .`
+  (an input, never the quality gate), the source-file count, and any existing governance region in
+  `CLAUDE.md` · rules: the user · decides: the mode — **greenfield | brownfield | amend** — which
+  selects the stages and the producer's branch. Region present → amend; >5 source files with a
+  framework → brownfield; else greenfield. Brownfield opens at analysis, the rest at the
+  interrogation.
+- **G2 analysis checkpoint** *(brownfield)* — evidence: the producer's summary, Essential-Floor
+  table and clarifications · rules: the user · decides: **confirm** (→ interrogation) / **edit**
+  (corrections, one bounded re-run) / **reject** (greenfield fallback, or abort). No machine
+  validator: the analysis is an intermediate input, gated here and by the deterministic detect-stack
+  baseline — the surface set is the deliverable, and that gets one.
+- **Interrogation** *(yours, inline — no seat runs it)* — evidence:
+  `${CLAUDE_PLUGIN_ROOT}/skills/authoring-constitution/references/INTERROGATION-AGENDA.md`'s ten
+  dimensions, worked adaptively via `mochiko:analysis-iterative`, then the catalog deck
+  (`…/authoring-constitution/references/catalog/`, which owns the shelf model) · rules:
+  the user, card by card (recommend-then-arbitrate) · decides: the kept / dropped / minted / waived
+  set. A low-tier declaration licenses agenda pruning, **every skip named, never silent**.
+  Brownfield: the analysis pre-fills the existing-practices dimension, and
+  detected-reality-vs-declared-intent conflicts are **confronted in the open**, never silently
+  resolved. Amend: a micro-session scoped to the delta; a tier bump or un-waive is a governance
+  event, taking its own agenda slice where tier-loosened rulings are re-dealt or force-re-marked.
+  Offer **once** each module the synthesis records no ruling on, recording the answer either way — a
+  decline stands until reopened, never re-asked. A layered principle kept or minted runs the
+  **layered-architecture beat**: module ruling + domain-dependency seed arbitration
+  (`…/authoring-constitution/references/DOMAIN-DEPENDENCIES.md`). Waivers ruled where the tier
+  permits.
+- **Review sizing** *(all modes, before G3)* — evidence: the synthesis's weight, stated per the
+  template and purposed as input to the user's *elevation* of the default, never as the default ·
+  rules: the user · decides: the reviewer count. The default is tier-keyed (`poc`/`internal` →
+  single, `production`/`regulated` → pair), **event-scaled on amend**: a governance event (tier bump,
+  un-waive, floor or waiver change) takes that full default; lighter deltas recommend single at
+  `production`/`regulated`, none-with-waiver below. The gate always opens: every amend records a
+  ruling or a waiver, keeping the trail audit-complete. **none** → straight to G3, waiver recorded.
+- **Survivor rulings** — evidence: a survivor in user territory — deck, tier or waiver rulings,
+  challenged dimension-prunes and scope decisions, and **user-declared facts** (team size, risk
+  posture, lifespan) as confirmation · rules: the user · decides: its disposition. Reality-surface
+  disputes take Bindings' fact route instead, never argument.
+- **G3 synthesis confirmation** *(all modes)* — evidence: the reviewed synthesis with its tally and
+  dispositions, or the recorded waiver · rules: the user · decides: **confirm** (record the stamp →
+  the authoring loop) / **edit** (fold corrections, re-present; a **material** post-review change
+  first takes a bounded delta-pass from the still-seated reviewer) / **reject** (back to the
+  interrogation, re-entering the full flow — fresh sizing and review). Nothing is authored before it
+  clears, so everything ratified was stress-tested or waived.
+- **Clarification** *(in-loop)* — evidence: a producer or validator question it cannot resolve from
+  its inputs · rules: the user · decides: the answer, fed forward into the round — a human gate
+  inside the loop, never part of the done-condition.
+- **G4 acceptance** *(only on validator PASS)* — evidence: the validated set — region version and
+  tier, principle count by home (CLAUDE.md lines / rules files / skill pointers), floor accounting
+  with waivers — **with the trace summary** and **every flagged proposal from the producer** · rules:
+  the user, proposal by proposal · decides: **accept** (done) / **amend** (changes become the fix
+  list; must PASS again) / **reject** (abort; drafts stay, stamped unaccepted). A proposal folds in
+  only by the user's word, then the set re-validates.
+- **G5 finalize** — evidence: the accepted artifacts and the PASS + acceptance trail · rules: the
+  user · decides: retain or remove the brownfield `codebase-analysis.md`, the module scaffold where
+  knowledge-management was adopted, and — where the accepted set includes rules files — the probe:
+  **optional, token cost stated**, `mochiko:testing-governance-injection` verifies delivery
+  empirically and its findings feed an amend run. Knowledge-management adopted → its rules file joins
+  the probe surfaces and the module's dogfood **gates** on it: recommend, don't merely offer.
+- **Escalation** — evidence: any of the bounds below tripping · rules: the user, holding the last fix list
+  and the stop reason · decides: give-guidance-and-retry / accept-with-noted-gaps / abort — the run
+  stays FAIL unless the user explicitly accepts.
+- **Bounds:** cap **3** produce↔validate rounds (you count) · no-progress exit on a fix list
+  unchanged round-over-round · kill-switch `.mochiko/memory/SETUP_STOP`, checked before every
+  producer, reviewer or validator send · review caps: one cold read per reviewer, one four-message
+  cross-exam, a two-exchange lead↔reviewer cap per survivor, one verify pass, plus one bounded delta-pass
+  on a material G3 edit. The interrogation is bounded instead by user-driven convergence — a
+  human-attended session, not an agent loop. Out of rounds = escalate, never done.
+- **Workspace + hygiene:** `mkdir -p .mochiko/memory`. A `.mochiko/memory/constitution.md` on disk
+  is a superseded pre-dissolution artifact — **delete it on sight**, no migration and no offer, and
+  say so in one line.
+- **Ownership boundary:** the governance region between `<!-- mochiko:governance:begin -->` /
+  `<!-- mochiko:governance:end -->` is setup-owned and **idempotently regenerated** — re-runs and
+  amends replace it in place; everything outside those markers is user content, never touched. Rules
+  files, ledger and synthesis follow the same rule; the knowledge-management bundle scaffolding keeps
+  its hard **never-overwrite** floor.
+- **The synthesis is the producer's contract** (the selection-vs-formulation split and the
+  flagged-proposal route are `authoring-constitution`'s); in amend it works from the current
+  surfaces, preserving untouched principles and bumping the region's semver.
+- **The validator's check surface is mode-parameterized every round** — brownfield adds the
+  tools/versions↔`codebase-analysis.md` cross-check; an attached knowledge-management module adds the
+  repo-level invariant re-audit from the project-pinned copy. Selecting it is a policy call that
+  stays yours; the inbound fix list is peer-routed. **No devolved branch:** every verdict is a Tier-2
+  judgment grade with deterministic sub-checks inside, never all-CLI, so no gate is skipped and no
+  unit clears unread.
+- **Out of scope, explicitly:** drift detection between invocations — waiver revisit triggers fire
+  on re-invocation only, by design · backward compatibility with the retired `constitution.md` form.
 
-**Detect & mode-select** *(gate G1)* — run
-`bash ${CLAUDE_PLUGIN_ROOT}/skills/analysis-codebase/scripts/detect-stack.sh .` (an input, not the
-quality gate), count source files, check for an existing governance region in `CLAUDE.md`
-(present → suggest **amend**; >5 source files + framework detected → suggest **brownfield**; else
-**greenfield**). Apply the constitution-hygiene rule if the old artifact is on disk. The user
-chooses. Brownfield → analysis; greenfield/amend → interrogation.
+## Bindings
 
-**Brownfield analysis** *(gate G2)* — the producer runs the analysis, then present its summary:
-**confirm** (→ interrogation) / **edit** (corrections, bounded re-run) / **reject** (fall back to
-greenfield, or abort). The analysis is an intermediate input gated by this human checkpoint + the
-deterministic detect-stack baseline — no machine validator (the surface set is the deliverable,
-and gets one).
-
-**Interrogation** *(inline — you, not a teammate)* — run the agenda's ten dimensions adaptively;
-an early low-tier declaration licenses pruning (skips named, never silent). Brownfield: the
-analysis pre-fills the existing-practices dimension; **confront detected-reality-vs-declared-intent
-conflicts in the open** — never silently resolve. Amend: micro-session scoped to the delta (a
-tier bump or un-waive is a governance event and gets its agenda slice); additionally offer,
-**once**, every module the synthesis records no ruling on — record the answer in
-`governance-intent.md` either way (a recorded decline is permanent until the user reopens it;
-never re-ask). Then deal the catalog (`…/authoring-constitution/references/catalog/` — shelves by
-declared type, cards filtered and parameterized by tier), arbitrate card by card
-(recommend-then-arbitrate), collect minted intents, run the layered-architecture beat when a
-layered principle was kept or minted (module ruling + domain-dependency seed arbitration —
-`…/authoring-constitution/references/DOMAIN-DEPENDENCIES.md`), and take waiver rulings where the
-tier permits.
-
-**Synthesis review** *(sizing gate + cold review, all modes — before G3)* — assemble
-`templates/governance-intent-template.md` → `.mochiko/memory/governance-intent.md` (GI-IDs **and
-a confidence mark** on every element; **amend updates the persisted file delta-wise** — untouched
-elements keep their IDs and marks). Run the shape's sized review with these bindings.
-**Weight statement** = element count, mark mix, reality-surface load — purposed as input to the
-user's *elevation* of the **tier-keyed default**: `poc`/`internal` → **single**,
-`production`/`regulated` → **pair**; on amend, **event-scaled** — a governance event (tier bump,
-un-waive, floor/waiver change) gets the full tier-keyed default, lighter deltas recommend single
-at `production`/`regulated` and none-with-waiver below (the gate always opens: every amend
-records a sizing ruling or a waiver — audit-complete); **none** → waiver in the synthesis's
-Review section → G3. **Survivor-routing bindings:** user rulings (deck / tier / waiver) and
-challenged dimension-prunes / scope decisions → the user, directly; **user-declared facts**
-(team size, risk posture, lifespan) → the user, as confirmation; **reality-surface** fact
-disputes → checked against the analysis or an Explore subagent. **Verify pass** = the
-coherence-lens reviewer (or the sole reviewer) → G3. On a **tier-bump amend**, re-deal
-tier-loosened deck rulings on the bump's agenda slice (or force-re-mark them) — a stale
-`Confident` never carries a lower-tier loosening upward unexamined.
-
-**Synthesis confirmation** *(gate G3, all modes)* — present the reviewed synthesis (tally +
-dispositions, or the waiver): **confirm** (record the stamp → authoring loop) / **edit** (fold
-corrections, re-present — a **material** post-review addition or change gets a bounded
-delta-pass by the still-seated reviewer before confirmation) / **reject** (back to interrogation,
-re-entering the full flow — fresh sizing and review included). This checkpoint is the
-synthesis↔intent fidelity gate — nothing is authored before it clears, and everything ratified
-was stress-tested (or its waiver recorded).
-
-**Authoring loop** *(you own the counter; the deliverable is FAIL until proven otherwise)* —
-**produce** (brief the producer seat; on round > 1 the validator's fix list has already reached it
-directly — you rule the round and hold the revision targeted, don't regress passing items; if it
-messages clarifications it cannot resolve, ask the user and feed answers forward — an in-loop human
-gate, never the done-condition)
-→ **validate** (spawn the validator cold on round 1; message the same seat after — **lead-routed
-deliberately**: the validator's check surface is mode-parameterized every round, brownfield adding
-the tools/versions↔analysis cross-check and an attached knowledge-management module adding the
-invariant re-audit, so selecting it is a policy call, not a hand-off) → PASS: record
-verdict + version bump → acceptance. FAIL: increment round; cap **3** / fix list unchanged
-round-over-round / kill-switch → **escalate** (last fix list + stop reason;
-give-guidance-and-retry / accept-with-noted-gaps / abort — the run stays FAIL unless the user
-explicitly accepts); else loop.
-
-**Acceptance** *(gate G4 — reachable only on validator PASS)* — present the validated surface set
-(region version + tier, principle count by home — CLAUDE.md lines / rules files / skill
-pointers — floor accounting incl. waivers) **with the trace summary**: which principles trace to
-which synthesis elements (deck-kept / minted / floor-preset), each principle's primary home +
-companions, waiver records, and **every flagged proposal from the producer, each needing the
-user's ruling** — proposals fold in only by the user's word (then re-validate). **accept** (done)
-/ **amend** (changes become the fix list, re-enter the loop — must PASS again) / **reject**
-(abort; drafts stay in place, marked unaccepted in the region stamp).
-
-**Finalize** *(gate G5)* — report from the accepted artifacts: the CLAUDE.md governance region,
-the rules files, `governance-ledger.md`, and `governance-intent.md` (the last two durable — the
-synthesis is the amend baseline and the traceability surface; never offer to delete either),
-brownfield `codebase-analysis.md` (offer retain / remove), the PASS + acceptance trail, a
-suggested commit, next step (`/mochiko:specify`; when knowledge-management was adopted, also
-`/mochiko:brainstorm`). **Knowledge-management adopted → scaffold the module here** per its
-template (`templates/constitution-modules/knowledge-management.md`): the core set + adopted
-electives **and the enforcement surfaces with it** — the **project-pinned copy** (document
-contracts + landing ritual + invariants) at `.mochiko/memory/knowledge-management.md`, which commands resolve at
-runtime (template changes reach a pinned project only as an **amend offer**), the rules file,
-the CLAUDE.md pointers — honoring collision rulings on the hard never-overwrite floor. Amend
-with the module attached → G5 is setup's KM landing: run the ritual + invariants from the copy
-under fix-on-sight. Downstream delivery is native: CLAUDE.md
-(region included) loads for every session and spawned agent; dispatch briefs in downstream
-commands carry the **obligated read** for `paths`-scoped rules their producers won't trigger by
-reading. When the accepted set includes rules files, **offer the injection probe** (optional —
-state the token cost): `mochiko:testing-governance-injection` empirically verifies delivery via
-disposable probe subagents over throwaway stubs at the scoped paths (unconditional cleanup);
-findings feed an amend run, and it re-runs standalone as a regression check after real scaffolds
-land. Knowledge-management adopted → its rules file joins the probe surfaces; the module's
-dogfood **gates on the probe** — recommend, don't just offer.
-
-## Contract (authoring-time fill — governed by `mochiko:loop-discipline`)
-
-- **Done-condition:** default **FAIL**; clears only when the sized intent review ran (or its
-  waiver is recorded) **with every survivor carrying a disposition** **and** G3 synthesis
-  confirmation cleared (all modes) **and** the validator returns PASS graded from the files
-  **and** G4 acceptance cleared (**and** G2 confirmed, in brownfield). Out of rounds = escalate,
-  never done.
-- **Producer ↔ validator:** `principal-architect` (authoring-constitution, analysis-codebase)
-  authors, never grades; `validator` (validation-constitution) grades from files, never authors —
-  disjoint agents, disjoint skills, structurally separated (validator cold-spawned; fix-list
-  hand-offs peer-routed producer↔validator per the shape's mesh, with the round's verdict yours).
-  Validator standing: Tier-2 with deterministic
-  sub-checks (placeholder scan, two-way trace-closure over the manifest, region-marker + index→file
-  existence, Three-Part presence in the ledger; brownfield tools/versions↔analysis). Intent
-  reviewer(s): `devils-advocate` (review-governance-intent), cold-spawned at the synthesis
-  review, no contact with producer or validator — they produce **lead-adjudicated input** before
-  G3, never the authoritative grade (the `review-*`/`validation-*` family boundary).
-- **Bounds:** ≤3 produce↔validate rounds (you count) · no-progress exit · kill-switch
-  `.mochiko/memory/SETUP_STOP` · review caps: one cold read per reviewer · one four-message
-  cross-exam · a two-exchange lead↔reviewer cap per survivor · one verify pass (+ one bounded
-  G3-edit delta-pass when triggered). The interrogation is bounded by user-driven convergence — a
-  human-attended session, not an agent loop.
-- **Out of scope, explicitly:** drift detection between invocations (waiver revisit triggers fire
-  on re-invocation only, by design) · backward compatibility with the retired `constitution.md`
-  form (D6: none — delete on sight).
-- **Human gates:** G1 mode-select · G2 analysis checkpoint (brownfield) · the interrogation
-  itself + the in-loop clarification sub-gate · the review sizing gate + survivor rulings on
-  user territory · G3 synthesis confirmation · G4 acceptance with trace summary +
-  flagged-proposal rulings · G5 cleanup · escalation on any guard trip. **No devolved branch** —
-  validation here is a Tier-2 judgment grade, never all-deterministic-CLI, so no gate is skipped
-  and every verdict is yours.
+- **The surface set** — the marked governance region in `CLAUDE.md` · `paths`-scoped
+  `.claude/rules/mochiko/*.md` · skill pointers · `.mochiko/memory/governance-ledger.md` · the
+  **trace summary** manifest. Their composition and read scope: `mochiko:authoring-constitution`.
+- **The synthesis:** `.mochiko/memory/governance-intent.md`, `GI-XXX` namespace, assembled from
+  `templates/governance-intent-template.md` (which owns the ID rule, the Review section and the
+  delta-wise amend update). Durable (the amend baseline + traceability surface); never offer to
+  delete it or the ledger.
+- **Brownfield:** `.mochiko/memory/codebase-analysis.md` — the producer's `analysis-codebase`
+  setup-brownfield output over detect-stack.
+- **Uncertainty carrier:** the lead-penned synthesis, a confidence mark per GI element; the
+  producer's own side rides its flagged proposals and clarifications.
+- **Fact route:** reality-surface disputes → `codebase-analysis.md`, else a native `Explore` pass;
+  user-declared facts are only confirmed, never checked.
+- **Verify-pass owner:** the coherence-lens reviewer; the sole reviewer when sized down.
+- **KM landing:** knowledge-management adopted → scaffold it at G5 per
+  `templates/constitution-modules/knowledge-management.md` (which owns adoption granularity, the
+  enforcement surfaces, the never-overwrite floor and collision rulings), including the
+  **project-pinned copy** at `.mochiko/memory/knowledge-management.md`, which every command resolves
+  at runtime. Amend with the module attached → G5 is setup's own KM landing: run that copy's ritual
+  and invariants under fix-on-sight.
 
 ## Recovery
 
-Pause posture (per the shape): note the resume stage in one line at the top of
-`governance-intent.md` (or in the region stamp once it exists). Resume from workspace evidence,
-respawning what the stage needs — the producer seat re-reads the synthesis + fix list cheaply; a
-validator respawn is cold by design:
+Note the resume stage in one line atop `governance-intent.md`, or in the region stamp once it
+exists; resume from workspace evidence, respawning what the stage needs.
 
-| Evidence | Resume at |
-|----------|-----------|
-| `.mochiko/memory/` missing or empty and no governance region in `CLAUDE.md` | detect & mode-select |
-| brownfield chosen, `codebase-analysis.md` missing | analysis |
+| Evidence in the workspace | Resume at |
+|---|---|
+| `.mochiko/memory/` missing or empty and no governance region in `CLAUDE.md` | G1 |
+| brownfield chosen, `codebase-analysis.md` missing | analysis (produce) |
 | `codebase-analysis.md` present, unconfirmed | G2 |
 | mode set, `governance-intent.md` missing | interrogation |
-| `governance-intent.md` present, Review section empty (no sizing ruling) | synthesis review (sizing gate) |
-| sizing ruled, survivors undispositioned (sized-not-run or mid-review) | synthesis review (respawn reviewers per the ruling) |
+| `governance-intent.md` present, Review section empty (no sizing ruling) | the sizing gate |
+| sizing ruled, survivors undispositioned (sized-not-run, or mid-review) | the synthesis review — respawn reviewers per the ruling |
 | dispositions folded, verify pass unrecorded | verify pass |
-| Review verified or waived, no confirmation stamp | G3 |
-| synthesis confirmed, surface set missing/stale (no region, missing named rules files, no ledger) | loop (produce) |
+| Review section verified or waived, no confirmation stamp | G3 |
+| synthesis confirmed, surface set missing or stale (no region, missing named rules files, no ledger) | loop (produce) |
 | surface set present, no recorded PASS | loop (validate) |
 | PASS recorded, not accepted | G4 |
-| accepted | G5 |
+| accepted | G5 — report the region, rules files, ledger, synthesis and any brownfield analysis, the PASS + acceptance trail, a suggested commit, next step `/mochiko:specify` (+ `/mochiko:brainstorm` when knowledge-management was adopted) |
 | `SETUP_STOP` present | escalate |
-
----
-
-**What you own (not the agents):** the interrogation and the synthesis pen; the review sizing
-gate, survivor routing, and the cross-set merge; the loop; the verdict against the default-FAIL
-done-condition; the human gates; the mode; the governance-region ownership boundary; and never
-letting producer, reviewer, and validator collapse into one seat. Brief every spawn per
-`agent-dispatch`. Full rules: `mochiko:loop-discipline`.

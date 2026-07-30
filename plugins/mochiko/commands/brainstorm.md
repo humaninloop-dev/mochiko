@@ -5,43 +5,105 @@ disable-model-invocation: true
 
 # Brainstorm — Think Together, Review Cold
 
-**Goal:** think `$ARGUMENTS` through with the user and leave one artifact behind — `.mochiko/brainstorms/<slug>/record.md`, a decision record hardened by an end-stage adversarial review the user sizes. Empty topic (the known `@`-reference drop) → ask what we are thinking through.
+**Goal:** think `$ARGUMENTS` through with the user and leave one hardened decision record
+behind. Empty topic (the known `@`-reference drop bug) → ask what we are thinking through.
 
-**You are the lead**, and this is a **team-form command in the mochiko command shape**: Read `${CLAUDE_PLUGIN_ROOT}/templates/command-shape.md` (both layers) before anything else — the shape's rules (as-you-go artifact discipline, sized end-stage review with survivor routing, seat transport + legibility, contract fill, recovery posture) bind here and are not restated; this file carries only brainstorm's parameters. You run the questioning inline via `mochiko:analysis-iterative` (one question per turn, format adapted to the user's state) and write the record as you go. The machinery holds two seats — the fact-checker and the review at convergence — and beyond them the conversation is you and the user: no standing challenger (a first-run ruling: the v2 standing episodic advocate generated 3:1 machine-to-user traffic and folded amendments into user-ruled decisions without consent — log analysis in `.mochiko/brainstorms/brainstorm-v2-revision/record.md`). This is a `mochiko:loop-discipline` sound loop; the Contract section below is its authoring-time fill.
+**You are the lead** of a team-form command in the mochiko command shape: Read
+`${CLAUDE_PLUGIN_ROOT}/templates/command-shape.md` (both layers) and
+`mochiko:loop-discipline` before anything else; brief every dispatch per
+`templates/agent-dispatch.md`; at the sizing gate Read
+`templates/sized-end-stage-review.md`. This file carries only brainstorm's parameters. You
+run the questioning inline via `mochiko:analysis-iterative` — one question per turn, format
+adapted to the user's state. **First-spawn probe:** the fact-checker at start where its seat
+fills, otherwise the reviewers at convergence.
 
-## Team-form parameters (shape Layer 2)
+## Goal
 
-Hard-require `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS` per the shape. The **authoritative first-spawn probe** is the fact-checker at start when its seat is filled, otherwise the reviewers at convergence. Transport mechanics + the addressability check: `templates/agent-dispatch.md` (Seat transport). The no-fallback bet's provenance is this command's own v2 design record (`Contested`).
+`.mochiko/brainstorms/<slug>/record.md` exists, each decision carrying statement + rationale +
+confidence mark; the sized review ran per the user's ruling with **every survivor
+dispositioned** and the verify
+pass confirming the folds landed — or the ruling was **none** and the waiver is recorded; the
+session's index entry names where the outcome landed; the KM close ritual ran; and the user
+has accepted the record. Zero survivors is vacuously clean — the tally is still reported.
 
-## Session parameters
+**Not done:** an unreviewed record with no recorded waiver · an undispositioned survivor · an
+unrun verify pass · a reviewer's status taken as the disposition without your read · no user
+acceptance · a synthesis shipped without its fidelity check.
 
-- **The artifact:** `.mochiko/brainstorms/<slug>/record.md` — one decision namespace (D1…), statement + rationale + confidence mark per decision, user corrections and reversals logged where they happen; review findings with their dispositions in the closing Review section, per the shape.
-- Scope at the start: derive the kebab-case `<slug>`; decide whether the topic has a **reality surface** (existing code / docs / a system under redesign) — that decides the fact-checker seat. Governance context is native — the CLAUDE.md governance region (if the project has one) loads with the session; read `.mochiko/memory/governance-ledger.md` only when a decision needs waiver/amendment detail. Never a blocking gate.
-- **Index bookkeeping** (the knowledge-management module's command carrier): when `.mochiko/brainstorms/index.md` exists — or the CLAUDE.md governance region carries the knowledge-management pointer — **read the index before opening** (it says which records are current, superseded, un-reviewed), add this session's entry on open (status: open), and update it at acceptance or supersession, naming where the outcome landed (a `DECISIONS.md` row, or an explicit no-graduation). At open and close, run the module's invariants — and at close, the subtractive landing ritual — from the **project-pinned copy** (`.mochiko/memory/knowledge-management.md`) under fix-on-sight. No index and no module → skip without ceremony — the layer was declined.
-- The fact-checker seat's one-line announcement (per the shape) states what reality surface warrants it and that its factual map arrives shortly.
+## Seats & checks
 
-## The seats
+| seat | agent × skill | produces / grades | spawn | peer edges |
+|---|---|---|---|---|
+| fact-checker | a neutral empiricist, no skill mounted | produces the reality map, and settles the reviewers' fact disputes; reports what is, never argues what should be, volunteering file-grounded facts that cut either way; never grades the record | at start, conditional on the topic having a reality surface; **probe seat** when filled, its announcement naming that surface | you only, one send per fact; the reviewers' fact disputes reach it through you |
+| reviewer(s) | `mochiko:devils-advocate` × `mochiko:review-brainstorm` in the **end-stage reviewer role**; a pair splits the hunt by lens — one **decision-quality**, one **record-integrity** | grades the frozen record; never authors it | cold at convergence only, never in the room before it; count per the sizing ruling | withheld from each other until findings are formed; one cross-exam |
 
-- **fact-checker** — conditional seat, filled only when the topic has a reality surface: a neutral empiricist spawned at start with an initial factual-map task; thereafter it speaks only when you send it a fact to check. **Its map lands in the record verbatim** — a checker-authored section, pasted unedited; you write around it, never restate it (the first completed run's headline finding was an over-claim living in the lead's paraphrase of the map, not in the map). **Reports what is, never argues what should be**, and volunteers file-grounded facts that cut either way. One-off fact-fetches with no standing-perspective value go to Explore subagents instead. During the review it settles the reviewers' fact disputes — facts are checked, never argued. (The design records call this seat the *grounder* — renamed 2026-07-05 after the name misread as a findings-tester.)
-- **reviewers** — spawned **only at convergence** (never in the room before that), count per the user's sizing ruling: `mochiko:devils-advocate` agents briefed to invoke `mochiko:review-brainstorm` in the **end-stage reviewer role**. In a pair, **split the hunt by lens in the spawn briefs** — one **decision-quality** (scenario stress, hunt classes 1–4, rejected-road steelmans), one **record-integrity** (inconsistencies, the fitness checklist, reality-grounding as a sample audit of the map) — the skill stays one document; the brief sets the emphasis. Both briefs name the record's map as the fact substrate: reviewers do **not** re-read the reality surface the map already covers (the first completed run read it three times over — the pair's dominant cost). A **single** reviewer gets the whole hunt surface and no cross-examination — its findings arrive undebated, the trade the sizing gate priced.
+**Validation model:** the sized end-stage review of `record.md`; there is no in-loop critique
+seat.
 
-## Convergence — this workflow's review bindings
+## Constraints
 
-On convergence signals (answers turning confirmatory, no new dimensions — confirm the wrap with the user per the questioning skill), run the shape's sized end-stage review with these bindings: **weight statement** = decision count, confidence-mark mix, reality-surface load; **default keying** = a heavyweight record defaults to the full pair; **fact disputes** → the fact-checker (or an Explore subagent); **verify pass** = the record-integrity reviewer's (the sole reviewer's, in single mode).
+- **Review sizing** *(at convergence)* — evidence: convergence signals — answers turning
+  confirmatory, no new dimensions, the wrap confirmed with the user · rules: the user, on your
+  weight statement (decision count · confidence-mark mix · reality-surface load) · decides:
+  pair / single / none, a heavyweight record defaulting to the full pair; **none** records a
+  waiver. A single reviewer gets the whole hunt surface and no cross-examination — its
+  findings arrive undebated, the trade this gate priced.
+- **Survivor rulings** — evidence: a survivor in user territory — a challenge to a user
+  ruling, or a user-declared fact offered as confirmation · rules: the user · decides: its
+  disposition. Theirs to answer, not a tie-break.
+- **Tie-break** — evidence: a lead↔reviewer argument unresolved at the two-exchange cap ·
+  rules: the user, on both positions plus your recommendation · decides: the disposition, and
+  whether the element marks `Contested`.
+- **Acceptance** — evidence: every survivor dispositioned and the verify pass recorded, or the
+  waiver · rules: the user · decides: done. Then offer, don't push: if the record is honestly
+  the shape of a next stage (e.g. a feature description for `/mochiko:specify`), name it as an
+  option and stop.
+- **Bounds:** per reviewer one cold read, plus (pair only) the one-shot four-message
+  cross-exam, plus one verify pass; lead↔reviewer argument **max two exchanges per survivor**,
+  you count them; one fact-checker dispatch per fact. No kill-switch and no no-progress exit —
+  the human-attended session is the escalation surface, not a substitute for the caps.
+- **Invariants:** **no standing challenger** — beyond these two seats the conversation is you
+  and the user: the v2 standing episodic advocate generated 3:1 machine-to-user traffic and
+  folded amendments into user-ruled decisions without consent
+  (`.mochiko/brainstorms/brainstorm-v2-revision/record.md`). A **reality surface** is existing
+  code, docs, or a system under redesign; that call at the start fills or leaves empty the
+  fact-checker seat. The checker's map lands **verbatim**, a checker-authored section you write
+  around and never restate — the first completed run's headline finding was an over-claim
+  living in the lead's paraphrase of the map, not in the map. Both reviewer briefs name that
+  map as the fact substrate: reviewers do **not** re-read the reality surface it already covers
+  (the first completed run read it three times over — the pair's dominant cost); the lens split
+  lives in those briefs, never in the skill, which stays one document. (Both rules'
+  evidence: `.mochiko/brainstorms/brainstorm-v2-2-revision/record.md`.) The **synthesis is
+  on request only, after acceptance** — never auto-generated; write it beside the record
+  stamped ***derived — record canonical***, and before it ships the reviewer that ran the
+  verify pass — still seated — sample-checks its fidelity (every ruling present, no confidence
+  mark inflated, no rejected alternative resurrected). Under a waiver it is stamped
+  **"derived, unchecked"** instead — the same recorded-absence discipline as the waiver.
+  Governance context is native: the CLAUDE.md governance region loads with the session; read
+  `.mochiko/memory/governance-ledger.md` only when a decision needs waiver or amendment
+  detail — never a blocking gate. `KEPT:` the no-fallback transport bet stays `Contested`, its
+  provenance this command's own v2 design record
+  (`.mochiko/brainstorms/brainstorm-command-rewrite/record.md`, D9).
 
-## Done-condition and acceptance
+## Bindings
 
-Done only when: the review ran per the sizing ruling — **every survivor carries a disposition** and the verify pass confirms the folds landed — or the ruling was **none** and the waiver is recorded; and the user **accepts the record**. Zero survivors is vacuously clean — the tally is still reported. On acceptance the record stays in place as the deliverable; update the session's index entry (status + where the outcome landed) and run the close invariants, per the index-bookkeeping parameter above. Then offer, don't push: if the record is honestly the shape of a next stage (e.g. a feature description for `/mochiko:specify`), name that as an option and stop.
-
-**The synthesis — on request only, after acceptance.** Never auto-generate it. If the user asks for a compact digest, write `synthesis.md` beside the record, stamped ***derived — record canonical***; before it ships, the reviewer that ran the verify pass — still seated — sample-checks its fidelity against the record (every ruling present, no confidence mark inflated, no rejected alternative resurrected). If the review was waived, stamp it **"derived, unchecked"** instead — the same recorded-absence discipline as the waiver.
-
-## Contract (authoring-time fill — governed by `mochiko:loop-discipline`)
-
-- **Done-condition:** as above; initial state `FAIL` — an unreviewed record with no recorded waiver, an undispositioned survivor, an unrun verify pass, or no user acceptance all read as not-done.
-- **Producer ↔ validator:** producer = you + the user (the session; `analysis-iterative`). Validator = the reviewers per the sizing ruling (`mochiko:devils-advocate` × `mochiko:review-brainstorm`) — different agents, different skill, structurally never in the room until convergence, and in a pair independent of each other until their cold findings are formed. Under a waiver the user is the sole validator — recorded, never silent.
-- **Bounds:** per reviewer — one cold read + (pair only) the one-shot four-message cross-examination + one verify pass, owned by the integrity reviewer or the sole reviewer; lead↔reviewer argument = **max two exchanges per survivor, lead-counted**, then tie-break; fact-checker dispatches are facts, never arguments — one dispatch per fact. The human-attended session is the escalation surface, not a substitute for the caps.
-- **Human gates:** review sizing at convergence + survivor rulings on user territory + tie-breaks + final acceptance of the record.
+- **Artifacts:** `.mochiko/brainstorms/<slug>/record.md` in one decision namespace (D1…) — the
+  deliverable, kept in place at acceptance; a conditional `synthesis.md` beside it. Derive the
+  kebab-case `<slug>` at the start.
+- **Uncertainty carrier:** the lead-penned record.
+- **Fact route:** the fact-checker seat; an `Explore` subagent when it is unfilled, or for a
+  one-off fetch with no standing-perspective value.
+- **Verify-pass owner:** the record-integrity reviewer, or the sole reviewer in single mode.
+- **KM landing:** `.mochiko/brainstorms/index.md` is the session index — read it before
+  opening, enter this session on open (status: open), and at acceptance or supersession update
+  it with where the outcome landed (a `DECISIONS.md` row, or an explicit no-graduation). Run
+  the open and close invariants — at close, the subtractive landing ritual — from the
+  project-pinned `.mochiko/memory/knowledge-management.md` under fix-on-sight. No index and no
+  module → skip; the layer was declined.
 
 ## Recovery
 
-Pause posture (per the shape): update the record's Status line with resume state. To resume: re-read `record.md`, respawn what the stage needs — the fact-checker mid-session; the reviewers per the sizing ruling at review (the frozen record makes a cold re-read cheap) — and continue from the last decision or the survivor queue.
+No resume table — the record is the whole state. Note resume state on its `Status` line; to
+resume, re-read `record.md` and continue from the last decision or the survivor queue,
+respawning the fact-checker mid-session or the reviewers per the sizing ruling (the frozen
+record makes a cold re-read cheap).

@@ -27,6 +27,53 @@ reduction. Author ≠ grader intact: `command-architect` authored both this and 
 trigger surface for the new floor (five-block/anatomy/ordinal/ceiling/slot vocabulary) — the
 phrases a caller uses when asking for a v5 grade.
 
+## [v0.35.0] Ceremony polish — three residual auditor fixes to the check-6 term definitions
+
+- **Disposition:** corrected in place (correction class — no content left or entered the
+  primitive; three definitions were made unambiguous)
+- **Tier failed:** n/a — auditor-found defects at the wave ceremony, not a strip
+- **Cause:** two of the three are the **stale-summary failure mode** this build has now hit four
+  times (`.mochiko/strips/plan.md`'s standing-habit block quote): a definition written against an
+  earlier draft of the surface it measures. The third is a plain ambiguity nobody had needed to
+  resolve until two commands contested it.
+- **Content:**
+  1. **`G` re-keyed to the complete three-part form.** Was "bullets matching `^- \*\*` that
+     contain `evidence:`"; now requires **all three** of `evidence:` · `rules:` · `decides:`.
+     Keying on `evidence:` alone over-counted by one wherever a non-gate bullet cites evidence —
+     **two live instances**, `brainstorm`'s Invariants and `specify`'s Enrichment — and each
+     false hit loosened that command's Constraints ceiling by 90 w. Measured under the corrected
+     rule and recorded in the check as its own evidence: **G = 4 brainstorm · 4 specify · 4 slice
+     · 10 setup · 8 implement · 7 plan** (37 total). No command's verdict changes: brainstorm
+     tightens 630 → 540 against a measured 511 (5.4% headroom), specify likewise stays under.
+  2. **`A` gains the KM-fold exclusion.** A doc the command folds *into* rather than produces
+     (`ARCHITECTURE.md`, `GLOSSARY.md`, `DECISIONS.md`, a session index) is not one of its own
+     outputs — the KM binding already carries the `+30` term, so counting a fold target paid for
+     the same content twice and inflated Bindings by 12 w each. **Contested twice — at `plan` and
+     at `implement`** — before being written down, which is the signal that it belonged in the
+     definition rather than in each grader's head.
+  3. **Heading-vs-ceiling ambiguity resolved: the `## Heading` line does not count.** A 2-word
+     ambiguity, resolved on the calibration's own recorded evidence rather than by preference —
+     `brainstorm`'s measured Bindings floor of 113 w sits at ~0.9% headroom under the
+     un-augmented 114 (90 + 12·2), which is arithmetic only with the heading excluded. Counting
+     it would put the declared floor case 1 w *over* its own ceiling and make the `+30` term's
+     stated ground incoherent.
+- **Kept deliberately:** every ceiling formula, including `90·(G+2)` — the tightened `G` changes
+  what the formula is fed, never the formula.
+- **Regression check run, and one consequence handed off.** Constraints was re-measured for all six
+  under the tightened `G`: every command still passes (brainstorm 511/540 · specify 441/540 · slice
+  470/540 · setup 1,051/1,080 · implement 796/900 · plan 789/810). Bindings is the surface fix 2
+  moves, and **`implement`'s verdict is now sensitive to how `A` is counted**: its Bindings block
+  measures **178 w**, against a ceiling of 192 at `A = 6` (7.3% headroom), **180 at `A = 5`** (1.1%
+  — the "fails on formatting, not on bloat" zone), and **168 at `A = 4`, which is a FAIL by 10 w**.
+  Reading its Bindings under the corrected definition — working code + `cycle-report.md` + the
+  per-cycle verification report + the final-validation report + the built-vs-approved diff report,
+  with the design inputs excluded as references and `ARCHITECTURE.md` excluded as a fold target —
+  gives `A = 5`, so it passes narrowly; the floor table's pre-wave fitted `A = 4` would fail it.
+  **`A` is a judgment count the grader owns, so this is a handoff, not a verdict:** the bounded
+  confirm of this edit should settle `implement`'s `A` explicitly rather than inherit either
+  number. `plan`, the other contested case, is unaffected with room (231 w against 276 at `A = 13`
+  once its two fold targets come out). `specify` is unaffected (145 w against 156 at `A = 3`).
+
 ## [v0.33.0] Per-check disposition table — all ten v4 command-grading checks, plus 11–14
 
 D9 requires this table and makes **silence on any check a FAIL** in the audit of the revision.

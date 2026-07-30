@@ -77,21 +77,38 @@ Against the command file:
 
    **Count the four terms first, mechanically, and record them as the check's evidence** — the
    ceiling is worthless if the grader and the author count differently:
-   - `G` = **gate lines in Constraints** = bullets matching `^- \*\*` that contain
-     `evidence:` — the three-part form the shape mandates for P7. **`G` is not "numbered
-     gates":** a workflow that numbers nothing still has gates (`brainstorm` carries **G = 4**
-     — sizing, survivor rulings, tie-break, acceptance — while the checker map correctly
-     records it as having 0 *numbered* gates). Counting numbers instead of gate lines is the
-     miscount this clause exists to prevent.
+   - `G` = **gate lines in Constraints** = bullets matching `^- \*\*` that contain **all three
+     of `evidence:` · `rules:` · `decides:`** — the complete three-part form the shape mandates
+     for P7. Keying on `evidence:` alone **over-counts**: an invariant or bounds bullet may cite
+     evidence without being a gate, and two live instances were found this way (`brainstorm`'s
+     Invariants, `specify`'s Enrichment), each inflating `G` by one and so loosening the
+     Constraints ceiling by 90 w per false hit. **`G` is not "numbered gates"** either: a
+     workflow that numbers nothing still has gates (`brainstorm` carries **G = 4** — sizing,
+     survivor rulings, tie-break, acceptance — while the checker map correctly records it as
+     having 0 *numbered* gates). Measured across the six conformant commands under the
+     three-part rule: **G = 4 brainstorm · 4 specify · 4 slice · 10 setup · 8 implement ·
+     7 plan**. Counting numbers, or counting a bare `evidence:`, instead of complete gate lines
+     is the miscount this clause exists to prevent.
    - `S` = data rows in the Seats & checks table (excluding header and separator).
    - `A` = artifacts P10 binds — the command's own outputs: deliverables + round reports.
-     Input and reference paths cited elsewhere in Bindings do **not** count.
+     Input and reference paths cited elsewhere in Bindings do **not** count, and neither does a
+     **KM-landing fold target** — a doc the command folds *into* rather than produces
+     (`ARCHITECTURE.md`, `GLOSSARY.md`, `DECISIONS.md`, a session index). The KM binding already
+     carries its own `+30` term, so counting a fold target as an output pays for the same
+     content twice and inflates the Bindings ceiling by 12 w each. Contested twice — at `plan`
+     and at `implement` — before being written down here.
    - `R` = data rows in the Recovery table (0 where the block is one-lined).
 
    Ceilings: preamble ≤ 130 · Goal ≤ 150 · Seats & checks ≤ 100 + 45·S · Constraints ≤
    90·(G+2) · **Bindings ≤ 90 + 12·A, plus 30 where a KM-landing or index-bookkeeping binding
    is present** · Recovery ≤ 60 + 14·R. Over a ceiling is a floor FAIL — name the block, the
    count, the term values, and the bound.
+
+   **A block's `## Heading` line does not count toward its ceiling** — count body words only.
+   This is the reading the calibration's own evidence requires, not a preference: `brainstorm`'s
+   measured Bindings floor of 113 w sits at ~0.9% headroom under the un-augmented 114 (90 +
+   12·2), which is arithmetic only with the heading excluded. Counting it would put the declared
+   floor case 1 w *over* its own ceiling and make the `+30` term's stated ground incoherent.
 
    **Provisional:** calibrated on the v5 floor arithmetic
    (`.mochiko/strips/command-shape.md`), confirmed or revised at the pilot checkpoint. Measured

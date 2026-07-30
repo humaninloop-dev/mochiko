@@ -107,17 +107,7 @@ pilot checkpoint. Interaction note: CS-D7 scopes skill edits for *this delivery*
 `loop-discipline` all-consumer pass (team-method section) — that pass stays open for the
 skill's own sizing.
 
-- [ ] **Step 4 — remaining-five wave + ceremony** (2026-07-30; steps 1–2 DONE → trail) —
-  brainstorm/specify/slice/setup/implement re-author goal-shaped against shape v5, per-command
-  user ratification, one audit ceremony + version bump (v0.35.0); the ceremony audits the five
-  plus a bounded confirm of the v0.34.0 marker-drop/transition-note delta. Wave disciplines
-  from the pilot (`.mochiko/strips/plan.md` block-quote): per-command `DECISIONS.md`-trace grep
-  + CS-D8 KEPT re-grade (specify's enrichment boundary + slice's "No G2" are live `KEPT:`
-  entries; setup carries the last `shape-exception`) · compressed-evidence-clause grep (routing
-  classes, named-cause recoveries) · wc-sweep after every fix round · floors: brainstorm 872 ·
-  specify 991 · slice 1,076 · implement 1,354 · setup 1,629 (materially under = dropped-content
-  finding) · sized-review reference in brainstorm + setup only · read retained in all five.
-- [ ] **Deferred: the `loop-discipline` read-drop** (2026-07-30, pilot-checkpoint ruling 5) —
+- [ ] **Deferred: the `loop-discipline` read-drop** (2026-07-30, pilot-checkpoint ruling 5; steps 1–4 all DONE → trail, v0.35.0) —
   lands as a one-clause shape edit + delta re-audit when the named trigger fires: **first live
   dogfooded run of a rebuilt command with gates un-rationalized** (CS-D7 replacement guarantee;
   authoring-loop evidence ruled insufficient — ADR `2026-07-30-goal-shape-pilot-checkpoint`).

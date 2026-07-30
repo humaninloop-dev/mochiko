@@ -45,6 +45,71 @@ a **respawn is cold by design** — both added because check 8 named them as hom
 home carried the text, and a marker with no home cannot license relocating the line out of a
 command.
 
+## [v0.35.0] Ceremony polish — stale shared-read-floor figures and the six-run net table corrected
+
+- **Disposition:** corrected in place (correction class)
+- **Tier failed:** n/a — figure correction at the wave ceremony
+- **Cause:** the **stale-summary failure mode** again — the shared-floor arithmetic was measured
+  when `command-shape.md` stood at 16,405 B and never re-swept after the file's own later edits
+  took it to **16,735 B**. Every figure derived from that base was 330 B optimistic.
+- **Content:** `command-shape.md` 16,405 → **16,735 B**; shared reads 29,611 → **32,836 B**, so
+  the per-run delta is **+3,225 B**, not +2,895 (live check: 16,735 + 4,175 dispatch + 11,926
+  `loop-discipline` = 32,836). The two sibling scenario figures shift by the same 330:
+  **+3,806** before the Run-cost drop (was +3,476) and **+5,717** before the split (was +5,387).
+  **The +5,387 → +5,717 shift was not in the ceremony's named fix list** (which specified
+  +2,895 and +3,476) — it is included because it derives off the same corrected base, and fixing
+  its two siblings while leaving it would have manufactured a fresh inconsistency in the same
+  sentence. Logged rather than folded in silently; approved at the ceremony.
+- **The net table re-based to landed sizes** (second fix round, at the bounded confirm's
+  direction). The first round corrected only the shared column, which left the table
+  **mixed-basis** — a landed shared Δ over a floor-projected own-file Δ — and that is a worse
+  defect than the stale figure it replaced, because the nets then described no real quantity at
+  all. All six own-file deltas are now the shipped file against its pre-wave size, `wc -c`-measured:
+  brainstorm **−1,095** · specify **−1,489** · slice **−3,176** · setup **−5,629** · implement
+  **−10,542** · plan **−19,749**. Nets become **+5,122 / +1,736 / +49 / +588 / −7,317 / −16,524**,
+  total **−16,346 B**. The `before the split` column is re-based on the same footing (own landed
+  + 5,717, since pre-split there was no conditional add-on), totalling **−7,378**; leaving it
+  projected would have re-created the mixed-basis defect one column over. plan's row now reads
+  **−19,749**, which reconciles this table with `.mochiko/strips/plan.md`'s run-level figure —
+  the two notes previously disagreed.
+  *Superseded projection pair, recorded per the correction-class discipline:* nets
+  **+2,664 / +1,149 / −748 / −2,313 / −10,642 / −17,681, total −27,571**, against a `before the
+  split` total of −20,583. **Cause:** those rows are `today (B) − floor (B)` — a projection of the
+  measured floor, computed before any command shipped — and the wave then landed every command
+  *above* its floor row (deliberately, per CS-D8), so the projection overstated the saving on all
+  six. It was never a run cost.
+- **Two prose claims corrected, both false of the shipped surface:** `slice` does **not** flip
+  net-better (**+49**, marginally worse), and **four** commands regress per run at landed sizes —
+  brainstorm, specify, slice, setup — so it is **three besides brainstorm**, not one. Both claims
+  were true of the projection and survived the first fix round unchecked, which is the same
+  failure mode one level up: a *claim* keyed to a figure, not re-read when the figure moved.
+- **Kept deliberately, each re-checked against the landed figures rather than assumed:** the
+  split's 2,492 B/run relief and 500 B/run cost are independent of the basis and unmoved; the
+  **8,968 B** six-run improvement survives exactly, since it is 4 × 2,492 saved less 2 × 500 paid;
+  and the "brainstorm's net is 500 B worse un-split" comparison still holds precisely (+5,122
+  against +4,622). The split's transition is stated as (**−7,378 → −16,346**) — the two re-based
+  column totals — so the paragraph cannot contradict the table above it.
+- **The three-component attribution retired** (final round, validator-prescribed). It read "the
+  split itself 5,116 B · the Run-cost drop 3,486 B · the audit fix pass 366 B", with the caveat
+  that "only the first is ruling B's; crediting all 8,968 B to the split would overstate it by
+  75%". Under the corrected reading **all 8,968 B is ruling B's**: the split's effect *grew* from
+  5,116 to 8,968 as the rest of the shape shrank, because the relocated block's share of the file
+  rose from 1,850 to 2,492 B and each of the 642 B shaved off the shared floor is paid on all six
+  runs (642 × 6 = 3,852; 5,116 + 3,852 = 8,968). The Run-cost drop and the fix pass are what made
+  the split worth *more*, not separate credits competing with it — so the 75% overstatement caveat
+  was itself the error, and it is deleted rather than re-scoped.
+- **Also re-keyed here:** the floor table's **per-gate unit cost, 40–55 w → 69.2 w/gate** (37
+  measured gate lines, 2,562 words). The `90·(G+2)` ceiling is untouched. The ceremony specified
+  **74.6 w/gate over 39 gates**; that pair is recorded in the re-key paragraph as superseded,
+  because it is the same measurement taken with the `evidence:`-only counting rule that this same
+  ceremony's grader fix deletes.
+- **The orphaned "down from 1,142 B" parenthetical deleted.** The first round left it as found,
+  flagged as not reconstructible from this note. The bounded confirm resolved it: it derives from a
+  **replaced intermediate that never shipped**, so it has no basis on any footing — projected or
+  landed. Removed rather than re-derived, and the sentence reads correctly without it: brainstorm's
+  net is 500 B worse un-split, which is the whole of the claim. A deletion on confirmed grounds,
+  not a guess.
+
 ## [v0.34.0] The `loop-discipline` read-drop deferred to a named live-run trigger
 - **Disposition:** superseded → the v5 transition note is rewritten. The read itself is
   **unchanged and still obligated**; what changed is the *status of its planned removal*:
@@ -396,9 +461,19 @@ artifacts; bytes are derived at each command's own measured bytes/word). Frontma
 and it is 585 words across the six.
 
 Fitted unit costs: preamble ≈ 100–108 w · Goal ≈ 85 + 2.5·artifacts · Seats & checks ≈ 98 +
-29·seats · Constraints ≈ 40–55 w per gate + 50 w bounds + the workflow's invariant set ·
+29·seats · Constraints ≈ **69.2 w per gate** + 50 w bounds + the workflow's invariant set ·
 Bindings ≈ 65 + 9·artifacts (+30 where a KM/index binding applies) · Recovery ≈ 45 + 11·rows.
 The `plan` skeleton reproduces at 1,662 body words against a fitted 1,655 (0.4%).
+
+**Per-gate cost re-keyed at the v0.35.0 ceremony:** the fitted **40–55 w** was contradicted by
+the built surface — the six conformant commands carry **37 gate lines totalling 2,562 words,
+i.e. 69.2 w/gate**, measured under the three-part `evidence:`/`rules:`/`decides:` rule. The
+grader's `90·(G+2)` Constraints ceiling is **unchanged**; only this fitted unit cost moves.
+*Superseded figure, recorded because it was specified for this ceremony:* **74.6 w/gate over 39
+gates**, which is the same measurement taken with the `evidence:`-only counting rule that the
+ceremony's grader fix deletes — the 39 counts `brainstorm`'s Invariants and `specify`'s
+Enrichment bullets as gates. Keying the unit cost to it would have preserved the miscount inside
+the correction that removes it.
 
 | command | seats | gates | resume rows | artifacts | today (w) | **floor (w)** | Δ | today (B) | floor (B) |
 |---|---|---|---|---|---|---|---|---|---|
@@ -450,36 +525,44 @@ Three findings the checkpoint needs:
    baseline that correction C2 already disqualified) will overstate the word reduction available.
 3. **Run-level, the shared always-read floor grows — and the sized-review split was ruled in
    because of it.** Shape v5 grows the always-read floor even after the split:
-   `command-shape.md` 12,502 → **16,405 B** and `agent-dispatch.md` 5,183 → 4,175 B (−1,008),
-   so shared reads (with `loop-discipline`'s 11,926 B retained) go **29,611 → 32,506 B, +2,895 B
-   on every run** — down from **+5,387 B** before the split and **+3,476 B** before the Run-cost
+   `command-shape.md` 12,502 → **16,735 B** and `agent-dispatch.md` 5,183 → 4,175 B (−1,008),
+   so shared reads (with `loop-discipline`'s 11,926 B retained) go **29,611 → 32,836 B, +3,225 B
+   on every run** — down from **+5,717 B** before the split and **+3,806 B** before the Run-cost
    drop. `sized-end-stage-review.md` (2,992 B) is then a **conditional** add-on paid only by the
    two commands that bind that branch. (Figures measured after the audit fix pass and the
    Run-cost supersession; the drop alone returned 581 B to every run of every command.)
 
+   **All figures are landed sizes** (v0.35.0 re-base): each `own file Δ` is the shipped file
+   against its pre-wave size, `wc -c`-measured on the six delivered commands. This is a measured
+   run cost, not a projection.
+
    | command | own file Δ | shared Δ | conditional | **net / run** | before the split |
    |---|---|---|---|---|---|
-   | brainstorm *(binds)* | −3,553 | +2,895 | +2,992 | **+2,334** | +1,834 |
-   | specify | −2,076 | +2,895 | — | **+819** | +3,311 |
-   | slice | −3,973 | +2,895 | — | **−1,078** | +1,414 |
-   | setup *(binds)* | −8,530 | +2,895 | +2,992 | **−2,643** | −3,143 |
-   | implement | −13,867 | +2,895 | — | **−10,972** | −8,480 |
-   | plan | −20,906 | +2,895 | — | **−18,011** | −15,519 |
-   | **six-run total** | | | | **−29,551** | −20,583 |
+   | brainstorm *(binds)* | −1,095 | +3,225 | +2,992 | **+5,122** | +4,622 |
+   | specify | −1,489 | +3,225 | — | **+1,736** | +4,228 |
+   | slice | −3,176 | +3,225 | — | **+49** | +2,541 |
+   | setup *(binds)* | −5,629 | +3,225 | +2,992 | **+588** | +88 |
+   | implement | −10,542 | +3,225 | — | **−7,317** | −4,825 |
+   | plan | −19,749 | +3,225 | — | **−16,524** | −14,032 |
+   | **six-run total** | | | | **−16,346** | −7,378 |
 
    The split moves **2,492 B/run off each of the four non-binding commands** and costs the two
    binding ones **500 B/run each** (the 2,992 B file against the 2,492 B they also save) — the
    irreducible overhead of any split: the pointer left behind plus the new file's own header.
-   `slice` **flips to net-better** (−1,078) and `specify`'s regression falls from +3,311 to
-   **+819**, so **one regressing command remains besides brainstorm**. Six-run total improves by
-   8,968 B against the un-split baseline — attributed per component, since three separate changes
-   contributed: **the split itself 5,116 B** (−20,583 → −25,699), **the Run-cost drop 3,486 B**
-   (581 B × 6 runs), and **the audit fix pass 366 B** (61 B × 6). Only the first is ruling B's;
-   crediting all 8,968 B to the split would overstate it by 75%. **brainstorm and setup pay for
+   At landed sizes `slice` does **not** flip net-better — it lands at **+49**, marginally worse per
+   run — and `specify`'s regression falls from +4,228 to **+1,736** without clearing zero. **Four
+   commands still regress per run: brainstorm, specify, slice and setup** — i.e. **three besides
+   brainstorm**, not one. (Both of those claims read the other way until the v0.35.0 re-base; they
+   were true of the floor projection and false of the shipped surface.) Six-run total improves by
+   8,968 B against the un-split baseline (**−7,378 → −16,346**) — a figure independent of the
+   re-base, since the split's effect is 4 × 2,492 saved less 2 × 500 paid. The split's effect grew
+   from 5,116 B to 8,968 B as the rest of the shape shrank — the relocated block's share rose from
+   1,850 to 2,492 B, and each of the 642 B shaved (581 Run-cost + 61 fix pass) is paid six times.
+   **brainstorm and setup pay for
    the other four,
    knowingly** — they bind the review and keep the load (checkpoint ruling B's own framing), and
-   brainstorm's net is 500 B *worse* than it would have been un-split (down from 1,142 B, because
-   the Run-cost drop returns 581 B to it as well). That is the honest price and it is not hidden:
+   brainstorm's net is 500 B *worse* than it would have been un-split. That is the honest price and
+   it is not hidden:
    brainstorm is the thinnest command and the least able to amortize either the anatomy's fixed
    cost (finding 1) or this split's overhead. Under D2's true-reductions-only rule, the genuine
    reductions in this whole revision are **the Run-cost drop (581 B, every run), agent-dispatch's

@@ -5,161 +5,110 @@ disable-model-invocation: true
 
 # Slice — Graduation-Slice Decomposition (Spec → Slices)
 
-**Goal:** decompose an accepted `spec.md` into an accepted `slices.md` — ordered, named story
-groups (a designated foundation slice, dependency-closed ordering, cross-cutting extend
-obligations, a declared Feature-Done section) that graduate through `/mochiko:plan` →
-`/mochiko:implement` as independent units instead of one whole-spec batch —
-authored and independently graded before the user accepts it. Design record:
+**Goal:** decompose an accepted `spec.md` into an accepted `slices.md` — ordered, named story groups
+that graduate through `/mochiko:plan` → `/mochiko:implement` as independent units instead of one
+whole-spec batch — authored and independently graded before the user accepts it. Design record:
 `.mochiko/brainstorms/vertical-graduation/synthesis.md`. `$ARGUMENTS` = optional feature ID or
-description; empty or detected-from-workspace is handled by triage below.
+description; empty or detected-from-workspace is resolved at G1.
 
-**You are the lead**, and this is a **team-form command in the mochiko command shape**: Read
-`${CLAUDE_PLUGIN_ROOT}/templates/command-shape.md` (both layers) before anything else — the
-shape's rules bind here and are not restated; this file carries only slice's parameters. You own
-the loop (round counter, verdict, escalation) and every human gate. This is a
-`mochiko:loop-discipline` sound loop; the Contract section below is its authoring-time fill.
+**You are the lead** of a team-form command in the mochiko command shape: Read
+`${CLAUDE_PLUGIN_ROOT}/templates/command-shape.md` (both layers) and `mochiko:loop-discipline`
+before anything else; brief every dispatch per `templates/agent-dispatch.md`. This file carries only
+slice's parameters. **First-spawn probe:** the `task-architect` producer — always the first seat
+filled, since nothing reviews before an overlay or a null exit exists.
 
-## Team-form parameters (shape Layer 2)
+## Goal
 
-Hard-require `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS` per the shape. The **authoritative
-first-spawn probe** is the producer — always the first seat filled. Transport mechanics + the
-addressability check: `templates/agent-dispatch.md` (Seat transport). The no-fallback bet is the
-same `Contested` dogfood-pilot ruling as the other team-form commands.
+Either `slices.md` exists conforming to `templates/slices-template.md` — exact spec stamp, every
+`US-#` homed exactly once, a designated foundation slice, dependency-closed Slice-order,
+cross-cutting extend obligations placed, Feature-Done complete — **or** the **null exit** was taken
+(no file; the whole-spec reasoning disclosed in `slicer-report.md`); `devils-advocate` recommends
+`ready` grounded in the files, or on a null-exit round on the depth call; you Read `spec.md` + the
+artifacts + the report and confirm no blocking gap remains; and G4 acceptance has cleared on
+whichever of the two shapes was produced.
 
-## Session constraints
+**Not done:** no `slices.md` and no recorded null exit · a reviewer status short of `ready` · a
+blocking gap open · the reviewer's status taken as the gate without your read · out of rounds · G4
+unaccepted.
 
-- Workspace: resolve `<feature>` (an explicit ID from `$ARGUMENTS`, else the most recent
-  in-progress feature under `.mochiko/specs/`). The deliverable `slices.md` lives alongside the
-  spec it indexes.
-- **Entry gate — spec accepted.** `.mochiko/specs/<feature>/spec.md` must be present and accepted
-  (workspace evidence — there is no context-file `status`). Missing or unaccepted → block and
-  point the user to `/mochiko:specify`.
-- **Already-decomposed guard.** If `slices.md` already exists: no slice has graduated (no
-  `slices/<id>/` stage artifacts) → offer re-decomposition (overwrite) or stop; **any slice
-  already graduated → halt and escalate** — amending a live decomposition is deliberately
-  unsupported (a recorded deferral, not an oversight; `BACKLOG.md`).
-- Kill-switch: stop and escalate if `.mochiko/specs/<feature>/SLICE_STOP` exists — check before
-  each seat send.
-- **Deliverable & IDs:** `slices.md`, producer-authored per `templates/slices-template.md` (every
-  `US-#` homed exactly once; the Feature-Done section's `SC-#` coverage map + seams; the spec
-  stamp). Its uncertainty carrier is the producer's `slicer-report.md` (from
-  `templates/slicer-report-template.md`) — its Open Questions, and on a null-exit round its
-  whole-spec disclosure (the shape's producer-authored branch), not confidence marks. The
-  reviewer's gap IDs live in `advocate-report.md`.
+## Seats & checks
 
-## The seats
+| seat | agent × skill | produces / grades | spawn | peer edges |
+|---|---|---|---|---|
+| producer | `task-architect` × `authoring-slices` | authors `slices.md` + `slicer-report.md` from their templates, no placeholder tokens; may instead take the **null exit** — recommend whole-spec, write no `slices.md`, disclose the reasoning in the report; never grades | one **named standing seat** across rounds; **probe seat** | hands each round's output straight to the reviewer; round > 1 reaches it with the gap list in hand |
+| reviewer | `devils-advocate` × `review-slices` | grades `slices.md` **and** the `spec.md` it indexes, from the files and never the producer's report → `advocate-report.md`; on a null-exit round grades the **depth call** from `spec.md` + the disclosed reasoning; never authors | cold at first review, standing after — round > 1 re-Reads the revised files | peer-edged with the producer |
 
-- **producer** — `mochiko:task-architect`, one **named standing seat** across rounds. Brief it to
-  author `slices.md` from `templates/slices-template.md` (+ `slicer-report.md` from its template)
-  via `mochiko:authoring-slices`: `spec.md` as the input to Read, the governance obligated-read
-  line (per the prerequisite), the template to fill per the skill — no placeholder tokens. Round >
-  1 reaches the same seat with the reviewer's gap list already in hand (peer-routed) — you rule the
-  round and hold the revision targeted (fix the flagged gaps; don't regress passing slices).
-  **Peer-edged with the reviewer:** it hands each round's output straight there. **Null exit:** it
-  may instead recommend whole-spec — no
-  `slices.md` written, reasoning disclosed in `slicer-report.md`; the round proceeds to review
-  either way. It never grades.
-- **reviewer** — `mochiko:devils-advocate`, spawned **cold at first review**, peer-edged with
-  the producer thereafter. Brief it to run `mochiko:review-slices` against `slices.md` **and** the
-  `spec.md` it indexes — it Reads both files itself, never the producer's report — writing
-  `advocate-report.md` (from `templates/advocate-report-template.md`): severity-classified
-  findings, product-framed clarifying questions, and a recommended verdict (`ready` /
-  `needs-revision` / `critical-gaps`). On a **null-exit round** it grades the depth call from
-  `spec.md` + the disclosed reasoning. Round > 1 is a message to the same seat: re-Read the
-  revised files. Its output is **lead-adjudicated input** (the `review-*` family boundary); there
-  is no sized end-stage review here — the bounded in-loop critique is this workflow's independent
-  validation (declared in the Contract). Single reviewer, never the producer.
+**Validation model:** the loop's bounded in-loop critique, every round, from a **single reviewer** —
+unsized by design. Its output is **lead-adjudicated input** (the `review-*` family boundary) and
+every verdict is yours.
 
-## The flow
+## Constraints
 
-**Triage** *(gate G1)* — capture `$ARGUMENTS`; resolve `<feature>`. Empty (the known
-`@`-reference drop) → recover via G1: ask the user to re-enter, or confirm the detected feature.
-Apply the entry gate and the already-decomposed guard (Session constraints). **Governance
-prerequisite:** check `CLAUDE.md` for the mochiko governance region
-(`<!-- mochiko:governance:begin -->`). Present → governance reaches the producer natively at
-spawn; add to its brief the one-line **obligated read** naming the `.claude/rules/mochiko/` files
-relevant to what it authors. Missing → surface it (offer `/mochiko:setup`) — governing context,
-never a blocking gate; don't auto-resolve.
+- **G1 entry** — evidence: `$ARGUMENTS`; the resolved `<feature>` (an explicit ID, else the most
+  recent in-progress feature under `.mochiko/specs/`); `spec.md` present **and accepted**; whether
+  `slices.md` already exists and whether any slice has graduated; `CLAUDE.md`'s governance region ·
+  rules: the user · decides: whether the run opens, and on what feature. Empty `$ARGUMENTS` (the
+  known `@`-reference drop bug) → ask the user to re-enter it, or to confirm the detected feature. A
+  missing or unaccepted spec **blocks** — point the user to `/mochiko:specify`. **Already
+  decomposed:** no slice has graduated (no `slices/<id>/` stage artifacts) → offer re-decomposition
+  (overwrite) or stop; **any slice already graduated → halt and escalate** — amending a live
+  decomposition is deliberately unsupported, a recorded deferral in `BACKLOG.md`, not an oversight. A
+  missing governance region is surfaced (offer `/mochiko:setup`) — governing context, never a
+  blocking gate, and never auto-resolved.
+- **G2 clarification** — evidence: a reviewer gap you classify as preference, or a producer question
+  it cannot resolve · rules: the user · decides: the answer fed forward. **A preference gap is ruled
+  here**; a **"Research this"** knowledge gap routes to a native `Explore` pass, never to the user;
+  an **un-homeable cross-cutting story is a spec-amendment finding** — surface it and offer a
+  `/mochiko:specify` amendment, never force a placement.
+- **G3 escalation** — evidence: a cap trip, a gap set unchanged round-over-round, the kill-switch, or
+  a `critical-gaps` verdict · rules: the user, on the last gap list plus the stop reason · decides:
+  continue-refining / accept-with-noted-gaps / abort — **the run stays FAIL unless the user
+  explicitly accepts**.
+- **G4 acceptance** — evidence: your clearing verdict, in one of two shapes · rules: the user ·
+  decides: for a **decomposition** (slice count and names, foundation choice, story coverage, SC
+  coverage, seams, any noted gaps) — **accept** / **amend** (changes become the gap list; still
+  bounded) / **reject** (abort; the draft stays under `.mochiko/specs/<feature>/`); for a **null
+  exit** (the whole-spec recommendation and its reviewed reasoning) — **accept** (the pipeline runs
+  whole-spec exactly as before, the done-condition satisfied with no `slices.md`) / **override**
+  (re-enter the loop directed to decompose; still bounded).
+- **Bounds:** cap **3** rounds, you count them; no-progress exit when the gap set is unchanged
+  round-over-round; kill-switch — stop and escalate if `.mochiko/specs/<feature>/SLICE_STOP` exists,
+  checked before each seat send; a G4 amend or override re-enters the same bounded loop; out of
+  rounds = escalate, never done.
+- **Invariants:** a **wrong-depth** finding flips the outcome shape (decompose ↔ whole-spec) — it
+  counts as a round, not a special case. **No devolved branch** — the review is a judgment
+  grade, never all-deterministic-CLI, so no gate is skipped and every verdict is yours. Hold every
+  revision targeted (fix the flagged gaps; don't regress passing slices). **Feature-done is declared,
+  not verified** — the Feature-Done section executes at feature-close, once every slice ships.
 
-**Decomposition loop** *(you own the counter; the decomposition is FAIL until proven otherwise)* —
-initialize `round = 1` → **produce** → **review** → **verdict (you):** Read `spec.md`, `slices.md`
-(when written) + both reports directly. Reviewer `ready` **and** you find no unresolved blocking
-gap → acceptance. Otherwise classify each gap and route it per `loop-discipline`'s gap routing —
-an **un-homeable cross-cutting story** is a spec-amendment finding (surface it, offer
-`/mochiko:specify` amendment; don't force a placement); a **"Research this"** knowledge gap routes
-to a native `Explore` pass, never to the user; a preference gap → G3 — then apply the bounds: cap
-**3** rounds · no-progress exit when the gap set is unchanged round-over-round · kill-switch. A
-**wrong-depth** finding flips the outcome shape (decompose ↔ whole-spec) — it counts as a round,
-not a special case. Any trip, or `critical-gaps` → **escalate** (G4: present the last gap list +
-stop reason; continue-refining / accept-with-noted-gaps / abort — the run stays FAIL unless the
-user explicitly accepts). Else `round += 1`, loop to produce.
+## Bindings
 
-**Acceptance** *(gate G5 — reachable only on your clearing verdict)* — two shapes:
-
-- **Decomposition produced** — present the validated overlay (slice count + names, foundation
-  choice, story coverage, SC coverage, seams, any noted gaps): **accept** (→ finalize; the
-  done-condition is now satisfied) / **amend** (re-enter the loop with the changes as the gap list
-  — still bounded; it must clear a verdict again) / **reject** (abort; the draft stays under
-  `.mochiko/specs/<feature>/`).
-- **Null exit** — present the whole-spec recommendation and its reviewed reasoning: **accept** (→
-  finalize; the pipeline runs whole-spec exactly as before — the done-condition is satisfied with
-  no `slices.md`) / **override** (re-enter the loop directed to decompose — still bounded).
-
-**Finalize** — report the outcome (`slices.md` + slice / foundation / story counts and SC coverage
-— or the accepted whole-spec recommendation), the round count, the round reports, a suggested
-commit (`docs: slice <feature>`), and the next step: `/mochiko:plan <feature> --slice
-<foundation-id>` (or plain `/mochiko:plan <feature>` after a null exit). Feature-done is
-**declared, not verified** — the Feature-Done section executes at feature-close, once every slice
-ships. Round reports are cleaned by default; the user may ask to retain them. Never offer
-to delete `slices.md` — it is the deliverable.
-
-## Contract (authoring-time fill — governed by `mochiko:loop-discipline`)
-
-- **Done-condition:** default **FAIL**; clears only when **(1)** EITHER `slices.md` exists
-  conforming to `templates/slices-template.md` (exact spec stamp; every story homed once;
-  Feature-Done complete) OR the **null exit** was taken (no file; reasoning in `slicer-report.md`),
-  **(2)** the reviewer recommends `ready` grounded in the files (or, on a null-exit round, on the
-  depth call), **(3)** you Read `spec.md` + the artifacts + the report and confirm no blocking gap
-  remains (the reviewer's status is input, never the gate), **and (4)** G5 acceptance has cleared —
-  accepting either the decomposition or the whole-spec recommendation. Out of rounds = escalate,
-  never done.
-- **Producer ↔ validator:** `task-architect` (authoring-slices) authors the overlay, never grades;
-  `devils-advocate` (review-slices) grades from the files, never authors — disjoint agents,
-  disjoint skills, structurally separated (reviewer cold-spawned; gap-list hand-offs peer-routed
-  producer↔reviewer per the shape's mesh, with every verdict yours). A single reviewer.
-  **Validation model:** the bounded in-loop
-  critique — every round, unsized by design; no sized end-stage review (the shape's
-  in-loop-critique branch).
-- **Bounds:** ≤3 rounds (you count) · no-progress exit · kill-switch `SLICE_STOP` · a G5
-  amend/override re-enters the same bounded loop.
-- **Human gates:** G1 input recovery + entry / already-decomposed / governance surface · G3
-  clarification (incl. the preference-gap decision) · G5 two-shape acceptance · escalation (G4) on
-  any guard trip. **No G2** — slice is single-reviewer, so plan's feasibility-rejection slot is
-  intentionally unused. **No devolved branch** — the review is a judgment grade, never
-  all-deterministic-CLI, so no gate is skipped and every verdict is yours.
+- **Artifacts** under `.mochiko/specs/<feature>/`, alongside the spec they index: `slices.md`,
+  producer-authored from `templates/slices-template.md` · `slicer-report.md` and
+  `advocate-report.md` (carrying the reviewer's gap IDs), each from its template. IDs: slices `S#`;
+  the `US-#` and `SC-#` namespaces are `spec.md`'s — echoed, never minted. Round reports are cleaned
+  by default unless the user asks to retain them; **never offer to delete `slices.md`** — it is the
+  deliverable.
+- **Uncertainty carrier:** producer-authored — `slicer-report.md`'s Open Questions, and on a
+  null-exit round its whole-spec disclosure.
+- **Fact route:** `spec.md` and the artifacts themselves; a knowledge gap goes to a native `Explore`
+  pass.
+- **Next step:** `/mochiko:plan <feature> --slice <foundation-id>`, or plain `/mochiko:plan
+  <feature>` after an accepted null exit.
 
 ## Recovery
 
-Pause posture (per the shape): note the resume stage on `slices.md` (or `slicer-report.md` before
-the overlay exists). Resume from workspace evidence, respawning what the stage needs — a respawned
-producer re-reads `spec.md` + the gap list; a reviewer respawn is cold by design:
+Note the resume stage on `slices.md`, or on `slicer-report.md` before the overlay exists; resume
+from workspace evidence, respawning what the stage needs — a respawned producer re-reads `spec.md` +
+the gap list.
 
 | Evidence | Resume at |
 |----------|-----------|
-| no `.mochiko/specs/<feature>/spec.md` (or unaccepted) | triage (entry blocked) |
-| `slices.md` present with graduated slices (`slices/<id>/` artifacts exist) | triage (halt — amend deferred) |
+| no `spec.md`, or unaccepted | G1 (entry blocked) |
+| `slices.md` present with graduated slices (`slices/<id>/` artifacts exist) | G1 (halt — amend deferred) |
 | spec accepted; no `slices.md` and no `slicer-report.md` | loop (produce, round 1) |
 | `slices.md` (or a null-exit `slicer-report.md`) present, no `advocate-report.md` this round | loop (review) |
 | `advocate-report.md` not `ready`, within the cap | loop (produce) |
-| `advocate-report.md` `ready`, not yet accepted | G5 |
-| accepted | finalize |
-| `SLICE_STOP` present | escalate |
-
----
-
-**What you own (not the seats):** input triage and the entry / already-decomposed / governance
-prerequisites; the loop, the gap routing (including the un-homeable-story spec-amendment finding),
-and the verdict against the default-FAIL done-condition; the human gates including the two-shape
-G5 acceptance; verifying each dispatch wrote its expected files (a missing output → log and ask
-retry/abort — a null-exit round expects `slicer-report.md` only); and never letting producer and
-reviewer collapse into one seat. Full rules: `mochiko:loop-discipline`.
+| `advocate-report.md` `ready`, not yet accepted | G4 |
+| accepted | finalize — report the outcome (slice / foundation / story counts and SC coverage, or the accepted whole-spec recommendation), the round count, the round reports, a suggested commit (`docs: slice <feature>`), and the next step |
+| `SLICE_STOP` present | escalate (G3) |
