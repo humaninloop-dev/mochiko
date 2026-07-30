@@ -107,15 +107,7 @@ pilot checkpoint. Interaction note: CS-D7 scopes skill edits for *this delivery*
 `loop-discipline` all-consumer pass (team-method section) — that pass stays open for the
 skill's own sizing.
 
-- [ ] **Step 1 — shape v5 + grader revision** (2026-07-30) — condition-first rewrite of
-  `command-shape.md` (five-block anatomy; Seat transport absorbed from `agent-dispatch.md`;
-  **without** the read-drop), publishing the v4→v5 slot-by-slot map (every v4 `[PARAM]` → block
-  or supersession entry — never retired by omission) and per-command parameter-floor arithmetic
-  (a floor exceeding the projection changes anatomy or ambition before the pilot);
-  `validation-command-shape` revised in lockstep (per-check disposition table over all ten
-  checks, floor teeth, check 9 grading structural-prevention claims). Author: command-architect;
-  grader: validator. Graded exemplar + conformance definition: record D5 folds.
-- [ ] **Step 2 — plan pilot** (2026-07-30) — goal-shaped `plan.md` with the `loop-discipline`
+- [ ] **Step 2 — plan pilot** (2026-07-30; step 1 DONE 2026-07-30 → trail) — goal-shaped `plan.md` with the `loop-discipline`
   read retained; full loop (author → independent audit → measure vs the exemplar standard →
   confirm-or-revise-the-anatomy checkpoint), the checkpoint additionally grading loop-holding
   (gates un-rationalized, bounds honored) and the cardinality trigger (~2× median goal-shaped

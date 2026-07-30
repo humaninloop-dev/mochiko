@@ -5,6 +5,87 @@ Entry formats: `strips/README.md`. Wave context: workflow-token-reduction wave 1
 v4 also fixed a staleness: the footer paragraph claimed plan/tasks/implement were still
 one-shot; all seven commands have been team-form since v0.17.0 (BACKLOG conversion rows).
 
+---
+
+# v0.33.0 — briefing v4 → v5 (Seat transport leaves; the remainder assessed line-by-line)
+
+**Wave context:** command goal-shape rebuild, **step 1 of 4** (design:
+`.mochiko/brainstorms/command-succinctness-strip/record.md`, CS-D6; `DECISIONS.md` 2026-07-30).
+D6 ruled two things about this file: Seat transport moves out to shape Layer 2, and **the rest is
+assessed line-by-line at v5 altitude**. That assessment's outcome: the 8-field briefing table and
+the one-hard-line independence section are this file's enduring job and survive intact; two
+connective/duplicative lines strip; nothing else leaves. File 800 → 663 words, 5,183 → 4,175 B
+(−17.1% / −19.4%) — a **true reduction only for the 137 words that were deduped or deleted**; the
+~230 words of Seat transport are a *relocation*, and they now cost every command run from
+`command-shape.md` instead (net run-level accounting: `.mochiko/strips/command-shape.md`, the
+floor-arithmetic entry, finding 3).
+
+**Additions this revision** — for the decision row, not strips: the closing pointer naming shape
+Layer 2 as Seat transport's new home + the form-agnostic framing ("it briefs a call, whether that
+call fills a seat or fires a one-shot subagent") · in the independence section, three lines
+relating the per-call check to the shape's structural one (the Seats & checks table is where no
+row grades its own output; this checklist is the per-call restatement at the moment of the call) ·
+`command-shape.md` added to the Pairs-with line.
+
+## [v0.33.0] Seat transport relocated out → `command-shape.md` Layer 2
+- **Disposition:** relocated → `templates/command-shape.md` **Layer 2** (arrival entry:
+  `.mochiko/strips/command-shape.md`, same version).
+- **Tier failed:** n/a — supersession by ruling (**CS-D6**: the section is "command-layer-only
+  content currently sitting in a file every skill dispatch also references"; the split cost a
+  cross-file reference hop on every run). Not a minimalism strip — the content is unchanged and
+  still live, one file over.
+- **Content (the relocated section, faithfully compressed — the mechanics moved substantively
+  verbatim):** a team-form command's seats ride the same Agent tool as one-shot subagents (no
+  separate team-creation step since v2.1.178; the fork is one parameter; the substrate
+  documentedly picks wrong sometimes — *"Claude may sometimes use subagents instead of creating a
+  team"*, agent-teams docs) · spawning a seat = one Agent call carrying **`name:`**, phrased in
+  the docs' idiom, and **a spawn without a `name:` is a one-shot subagent — the forbidden
+  transport** in a team-form command · every later round is a `SendMessage` to that same name ·
+  verify the first spawn yielded an **addressable teammate**, since the agent panel alone doesn't
+  distinguish teammates from subagents — not addressable → kill and respawn, explicitly
+  requesting a team.
+- **Also relocated here (roster + provenance, non-live):** "All six commands are currently
+  team-form, each per its recorded conversion assessment with a first-dogfood confirm-or-revert
+  checkpoint (`.mochiko/strips/<command>.md`; assessment doctrine:
+  `.mochiko/brainstorms/pattern-codification-and-minimalism/record.md`, D2). One-shot dispatch
+  remains the rebuttable Layer-1 default for any future command designed on it; this section
+  binds only commands that hard-require teams. Defect history + ruling:
+  `.mochiko/brainstorms/setup-v3-team-defect/record.md` (D1)." **Kept deliberately:** the live
+  rule in that paragraph — one-shot conforms to Layer 1 alone, team-form to both layers — was
+  already stated in `command-shape.md`'s header and is not duplicated. The roster sentence is
+  standing staleness risk (it was wrong once already, fixed at v4) and belongs in a non-loaded
+  log, not a runtime template.
+- **`SendMessage` note:** v4's transport bullet closed with "A fresh spawn per round is the
+  subagent anti-pattern wearing a team's clothes." That sentence already existed **verbatim** in
+  `command-shape.md` Layer 2's "Seats, not dispatches"; on arrival the duplicate died rather than
+  landing twice. Deduplication, logged so the loss is not silent.
+- **Consumers assessed:** all six commands name "`templates/agent-dispatch.md` (Seat transport)"
+  for transport — correct while they are v4 files, re-pointed at shape Layer 2 when re-authored
+  (pilot + wave). Every non-command consumer of this file (the skill dispatches: `authoring-*`,
+  `review-*`, `validation-*`, and the agent personas that brief calls) used the 8-field table and
+  the independence section only, never the transport section — they lose nothing and now read a
+  file 19% smaller.
+
+## [v0.33.0] Two connective lines stripped from the briefing body
+- **Disposition:** deleted.
+- **Tier failed:** (1) "A good brief carries the context below." — **Tier 2**: pure connective
+  prose introducing the table that follows it; names no behavior and prevents no failure.
+  (2) "A field you leave out isn't a failure — it's context the agent will ask for or supply from
+  its own judgment." — **Tier 1**: restates the header's own degrades-gracefully rule ("None of
+  it is a precondition for the agent to *function* — the agent degrades gracefully on a thin
+  brief") eleven lines later, in the same file.
+- **Kept deliberately:** the actionable half of (2) — "Fill what raises quality; trust the
+  professional with the rest." — survives as the table's closing line, and the header's
+  degrades-gracefully rule survives verbatim as the single statement of that point.
+
+## [v0.33.0] Title placeholder `[PHASE]` → `[STAGE]`
+- **Disposition:** superseded → `[STAGE]`.
+- **Tier failed:** n/a — supersession by ruling (**CS-D3/D5**: the phase posture dies with the
+  flow/phase body; shape v5 forbids `## Phase` headings and the anatomy speaks of stages). A
+  briefing template that still says "phase" teaches the vocabulary the wave is removing.
+
+---
+
 ## [v0.22.0] HTML comment header relocated (runtime-loaded rationale)
 - **Disposition:** relocated → here (D6c). The live kernel stayed in the visible body: "a caller-side checklist, not a file you commit — fold the fields into each dispatch prompt", the degrades-gracefully point, the workflow-knowledge-stays-caller-side rule. The header's independence bullet was redundant with the body's "What the caller MUST get right" section and simply died.
 - **Tier failed:** pure waste (map §5): Read-tool template loads do not strip HTML comments — the 1,783 B header (27% of the file) cost context on every team-form run.

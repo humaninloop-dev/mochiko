@@ -1,13 +1,12 @@
-# Agent Dispatch Briefing — [AGENT] for [WORKFLOW], [PHASE]
+# Agent Dispatch Briefing — [AGENT] for [WORKFLOW], [STAGE]
 
 A caller-side checklist, not a file you commit: fold the fields below into the prompt of
-each dispatch a `commands/*.md` supervisor makes. A good brief carries the context below.
-None of it is a precondition for the agent to *function* — the agent degrades gracefully
-on a thin brief — it is how the caller gets the agent's *best* work and keeps the loop
-sound. The agent owns none of this knowledge (workflow, siblings, "done") — all of that
-lives on the caller side; never push it into a persona. Name the skill as a hint, not a
-command: the agent decides whether it fits. (Rationale + provenance:
-`.mochiko/strips/agent-dispatch.md`.)
+each dispatch a `commands/*.md` supervisor makes. None of it is a precondition for the agent
+to *function* — the agent degrades gracefully on a thin brief — it is how the caller gets the
+agent's *best* work and keeps the loop sound. The agent owns none of this knowledge
+(workflow, siblings, "done") — all of that lives on the caller side; never push it into a
+persona. Name the skill as a hint, not a command: the agent decides whether it fits.
+(Rationale + provenance: `.mochiko/strips/agent-dispatch.md`.)
 
 | # | Field | What to provide | Example |
 |---|-------|----------------|---------|
@@ -20,8 +19,7 @@ command: the agent decides whether it fits. (Rationale + provenance:
 | 7 | **Independence framing** | The plain-language reminder that matches the structural guarantee | Author: "Don't grade your own output." · Grader: "Read the artifact itself; default FAIL; quote your evidence." |
 | 8 | **Return vs. write** | What to return in the reply vs. what to persist to a file | "WRITE the artifact; RETURN a short report + any clarifications you need." |
 
-A field you leave out isn't a failure — it's context the agent will ask for or supply from
-its own judgment. Fill what raises quality; trust the professional with the rest.
+Fill what raises quality; trust the professional with the rest.
 
 ---
 
@@ -35,38 +33,23 @@ Everything above is quality. **Independence is structure, and it is not optional
 
 This is the caller's job, carried by *who it dispatches* — never by a line in the persona.
 A loop that violates it is unsound (see `loop-discipline` req. 2), no matter how well the
-other fields are filled.
+other fields are filled. In a command, the same guarantee is visible in the artifact rather
+than trusted at call time: the shape's **Seats & checks** table is where no row grades its
+own output. This checklist is the per-call restatement of that structure, at the moment of
+the call.
 
 > A thin brief is a quality cost, recoverable by the agent. A collapsed
 > producer↔validator boundary is an unsound loop, recoverable by no one downstream.
 
 ---
 
-## Seat transport (team-form commands only)
+**Seat transport** (spawning a named teammate, the `name:` discriminator, the addressability
+probe) now lives in `templates/command-shape.md` **Layer 2** — command-layer-only mechanics,
+homed with the rest of the team transport. This file is form-agnostic: it briefs a call,
+whether that call fills a seat or fires a one-shot subagent.
 
-A team-form command's seats ride the **same Agent tool** as one-shot subagents — since
-Claude Code v2.1.178 there is no separate team-creation step, the fork is one parameter,
-and the substrate documentedly picks wrong sometimes (*"Claude may sometimes use subagents
-instead of creating a team"* — agent-teams docs). So the caller carries the mechanics, not
-just the vocabulary:
-
-- **Spawning a seat** = one Agent call carrying **`name:`** (e.g. `name: producer`), phrased
-  in the docs' own idiom — "create an agent team", "spawn a teammate named `<seat>`" — not
-  only mochiko's "seat". **A spawn without a `name:` is a one-shot subagent — in a team-form
-  command, the forbidden transport.**
-- **Every later round** is a `SendMessage` to that same name. A fresh spawn per round is the
-  subagent anti-pattern wearing a team's clothes.
-- **Verify before proceeding:** the first spawn is the authoritative probe — confirm it
-  yielded an **addressable teammate** (a named agent you can `SendMessage`; the agent panel
-  alone doesn't distinguish teammates from subagents, per the docs). Not addressable → kill
-  it and respawn, explicitly requesting an agent team.
-
-All six commands are currently team-form, each per its recorded conversion assessment
-with a first-dogfood confirm-or-revert checkpoint (`.mochiko/strips/<command>.md`;
-assessment doctrine: `.mochiko/brainstorms/pattern-codification-and-minimalism/record.md`,
-D2). One-shot dispatch remains the rebuttable Layer-1 default for any future command
-designed on it; this section binds only commands that hard-require teams. Defect history +
-ruling: `.mochiko/brainstorms/setup-v3-team-defect/record.md` (D1).
-
-**Briefing version:** v4 (2026-07-23 — header relocated to the strip note; roster
-staleness fixed) · **Governed by:** `loop-discipline` · **Pairs with:** `workflow-contract.md`
+**Briefing version:** v5 (2026-07-30 — command-succinctness-strip D6: Seat transport relocated
+to `command-shape.md` Layer 2 · the team-form roster paragraph relocated to the strip note ·
+the degrades-gracefully restatement deduped; v4 2026-07-23 — header relocated to the strip
+note; roster staleness fixed) · **Governed by:** `loop-discipline` · **Pairs with:**
+`command-shape.md` (the command pattern + seat transport) · `workflow-contract.md`
