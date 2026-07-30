@@ -98,6 +98,35 @@ build item in the trail.
   Rides the merged-command dogfood (plan+tasks item below) and the team-form
   confirm-or-revert.
 
+## Command goal-shape rebuild
+
+Rulings CS-D1–D10 (DECISIONS.md 2026-07-30; record
+`.mochiko/brainstorms/command-succinctness-strip/record.md` — pair-reviewed, verify CLEAN).
+Execution pilot-first per CS-D10; the anatomy is unprecedented, so nothing fans out before the
+pilot checkpoint. Interaction note: CS-D7 scopes skill edits for *this delivery* past the
+`loop-discipline` all-consumer pass (team-method section) — that pass stays open for the
+skill's own sizing.
+
+- [ ] **Step 1 — shape v5 + grader revision** (2026-07-30) — condition-first rewrite of
+  `command-shape.md` (five-block anatomy; Seat transport absorbed from `agent-dispatch.md`;
+  **without** the read-drop), publishing the v4→v5 slot-by-slot map (every v4 `[PARAM]` → block
+  or supersession entry — never retired by omission) and per-command parameter-floor arithmetic
+  (a floor exceeding the projection changes anatomy or ambition before the pilot);
+  `validation-command-shape` revised in lockstep (per-check disposition table over all ten
+  checks, floor teeth, check 9 grading structural-prevention claims). Author: command-architect;
+  grader: validator. Graded exemplar + conformance definition: record D5 folds.
+- [ ] **Step 2 — plan pilot** (2026-07-30) — goal-shaped `plan.md` with the `loop-discipline`
+  read retained; full loop (author → independent audit → measure vs the exemplar standard →
+  confirm-or-revise-the-anatomy checkpoint), the checkpoint additionally grading loop-holding
+  (gates un-rationalized, bounds honored) and the cardinality trigger (~2× median goal-shaped
+  command, or gates resisting one Goal statement).
+- [ ] **Steps 3–4 — read-drop ruling + remaining-five wave** (2026-07-30) — checkpoint rules
+  the read-drop on pilot evidence (CS-D7 replacement guarantee); the five re-author in one wave,
+  per-command ratification, one audit ceremony + version bump, with the approved read-drop
+  landing inside the same ceremony (+ named delta re-audit of pilot plan; shape-revision checks
+  11–14 on the ceremony's shape edit). Survivor discipline throughout: CS-D8 re-grading +
+  `DECISIONS.md`-row trace grep before any cut; strip notes at `.mochiko/strips/`.
+
 ## Pipeline dogfood & confirm-or-revert
 
 Every command passed structural verification + the kinako artifact pass on content; the
