@@ -10,6 +10,13 @@ per ruled decision).
 
 | Date | Decision | Status | Rationale |
 |------|----------|--------|-----------|
+| 2026-07-30 | PO-D1 — target: customer-facing product applications only (SaaS/web/mobile/desktop; application-vs-building-block axis; libraries/SDKs/CLIs deferred) | ruled | [production-only-focus](.mochiko/brainstorms/production-only-focus/record.md) |
+| 2026-07-30 | PO-D2 — governance tier axis retired: one asserted production floor + fact-triggered compliance modules | ruled | [production-only-focus](.mochiko/brainstorms/production-only-focus/record.md) |
+| 2026-07-30 | PO-D3 — library owns the standard; setup elicits facts; safety floor + modules asserted, architecture-opinion cards stay arbitrated (S7) | ruled | [production-only-focus](.mochiko/brainstorms/production-only-focus/record.md) |
+| 2026-07-30 | PO-D4 — waivers reach everything, recorded + auditable; legal-mandate module obligations unwaivable (D4.2); expiry deferred (D4.1) | ruled (`Contested`; expiry `Deferred`) | [production-only-focus](.mochiko/brainstorms/production-only-focus/record.md) |
+| 2026-07-30 | PO-D5 — depth agenda in tiers: security + ops hardening + shelf builds ride the narrowing; IaC staged next; multi-repo later; a11y → compliance modules (S8) | ruled | [production-only-focus](.mochiko/brainstorms/production-only-focus/record.md) |
+| 2026-07-30 | PO-D6 — identity written into ROADMAP thesis + CLAUDE.md with the backend-seeded-today qualification (S3) | ruled | [production-only-focus](.mochiko/brainstorms/production-only-focus/record.md) |
+| 2026-07-30 | PO-D7 — immature-but-in-scope teams served: full floor + recorded-waiver on-ramp; maturity axis rejected road recorded | ruled | [production-only-focus](.mochiko/brainstorms/production-only-focus/record.md) |
 | 2026-07-30 | Layer-2 mesh rewrite executed (D1–D3 + rewrite detail → shape v4; six commands conformed at v0.31.0, all independently audit-PASSed; additions incl. the hand-off-not-a-start-signal hold; loop-discipline pass + agent-dispatch peer-edge field escalated) | ruled | [ADR](.mochiko/decisions/2026-07-30-layer-2-mesh-rewrite-executed.md) |
 | 2026-07-30 | Shape-home revision encoded as a keeper-skill mode — `authoring-commands` Job 4 + `validation-command-shape` revision checks 11–14 (v0.30.0; unblocks the Layer-2 mesh rewrite dispatch) | ruled | [ADR](.mochiko/decisions/2026-07-30-shape-home-revision-mode.md) |
 | 2026-07-25 | OD-D2/D4 naming correction — the **forward view keeps the `ROADMAP.md` name** (no `DIRECTION.md`); the decision index is `DECISIONS.md`; the fat pre-migration roadmap stays frozen in the archive | ruled (user, at build review — corrects the naming fills) | [ADR](.mochiko/decisions/2026-07-25-roadmap-name-carries-forward-view.md) |

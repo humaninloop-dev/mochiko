@@ -179,6 +179,39 @@ together.
   cycle execution too slow** on a dependency-rich feature; the concrete drift-trigger the
   code-free bet waits on. Re-evaluation queued in ROADMAP.md *Next*.
 
+## Production-only narrowing
+
+Rulings PO-D1–D7 (DECISIONS.md 2026-07-30); record
+`.mochiko/brainstorms/production-only-focus/record.md` (pair-reviewed, verify CLEAN). Identity
+landed in ROADMAP thesis + CLAUDE.md same day; plugin-source build open below.
+
+- [ ] **Narrowing build — the consequence-list edit surface** (2026-07-30) — ~18–20 files,
+  setup/constitution cluster + two implement sites (record: "Mechanical edit surface"): tier
+  dimension + pruning license removed (deployment always interrogated); type list narrows,
+  mobile/desktop ADDED; floor cards collapse to the `production` row (regulated rows → module
+  content); architecture-opinion cards stay arbitrated (S7); governance templates re-shaped to
+  the waiver model (D4/D4.2, permanent pending D4.1); setup sizing gate → fixed pair; implement
+  registry checkpoint always-blocking; fact→module trigger mechanism authored with the
+  fact-validation fail-safe (S4); `validation-constitution` waiver checks rewritten.
+- [ ] **Security-depth scoping session (Tier I, first in line)** (2026-07-30, PO-D5) — threat
+  modeling at plan time, security requirements with teeth, blocking SAST/dep-vuln gates, a
+  security lens in the validator set; own scoping session before build (map F21: today = one
+  floor card + DS-XXX annotations).
+- [ ] **Ops & observability hardening (Tier I)** (2026-07-30, PO-D5) — SLOs as first-class
+  NFRs, RUNBOOK elective→asserted, incident-response basics, release-health expectations per
+  product kind; mostly promoting existing electives to asserted (map F32).
+- [ ] **Shelf builds — the translation tables (Tier I)** (2026-07-30, PO-D5) — order:
+  frontend → mobile → desktop (map F30: only backend/service seeded; desktop net-new). Absorbs
+  the frontend + mobile shelf items in Deferred tracks below.
+- [ ] **IaC / deployment engineering — staged (Tier II)** (2026-07-30, PO-D5) — stage 1:
+  release gates + environment discipline asserted; stage 2: infrastructure-code authoring (new
+  artifact class, map F23). Own scoping session; data lifecycle + reliability/resilience ride
+  Tier II behind it.
+- [ ] **PO watches & revisits** (2026-07-30) — D4.1 waiver-expiry revisit (user-flagged
+  "I will come to revisit") · non-legal module waivability ambiguity (D2 additive-only vs D4;
+  home: the D4.1 revisit or the trigger-mechanism build) · D7 waiver-as-normal-state dogfood
+  watch (if young teams live on permanent floor waivers, revisit expiry/maturity design).
+
 ## Defects & empirical checks
 
 - [ ] **`validation-command-shape` check-1 setup carve-out** (2026-07-30; provenance:
@@ -232,13 +265,16 @@ together.
 - [ ] **Design track** (2026-06-27, carried; archive REGISTRY disposition) — `ui-designer` +
   `analysis-screenshot` / `authoring-design-system` / `patterns-flow-mapping` /
   `patterns-interface-design`; port as a dedicated cluster (HIL sources listed in the archive).
-- [ ] **Frontend catalog shelf (stage 2)** (2026-07-16, user-ruled in-scope) —
+- [ ] **Frontend catalog shelf (stage 2)** (2026-07-16, user-ruled in-scope; **now Tier-I of
+  the production-only narrowing, PO-D5 2026-07-30 — first among the shelf builds**) —
   `catalog/frontend.md`: type principles + frontend-appropriate floor examples (universal shelf
-  examples are backend-flavored). CLI/library shelves stay mint-driven — do not author
-  speculatively.
-- [ ] **Mobile/app shelf** (2026-07-21) — flavored clean-architecture-for-apps card selecting
-  `layer-rules`. Acceptance: a Flutter setup session deals flavored layered material. Carries
-  F6: greenfield app sessions risk backend-flavored paths globs until this lands.
+  examples are backend-flavored). CLI/library shelves retire under PO-D1's deferral — do not
+  author speculatively.
+- [ ] **Mobile/app shelf** (2026-07-21; **now Tier-I of the production-only narrowing, PO-D5
+  2026-07-30 — after frontend, before the net-new desktop shelf**) — flavored
+  clean-architecture-for-apps card selecting `layer-rules`. Acceptance: a Flutter setup session
+  deals flavored layered material. Carries F6: greenfield app sessions risk backend-flavored
+  paths globs until this lands.
 - [ ] **Multi-stack / monorepo registries** (2026-07-21) — per-stack registries, paths scopes,
   seeding. **Revisit: first multi-stack setup run.**
 - [ ] **`codebase-inventory-schema.json` port** (2026-06-27; provenance: unrecoverable — HIL
