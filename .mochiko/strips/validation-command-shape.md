@@ -152,6 +152,34 @@ paraphrase of it.
    not setup's Constraints at 780/900 — that 13.3% figure was fitted, not measured, and the note
    said "measured".
 
+## [v0.34.0] Check 8's `out of rounds = escalate` marker dropped — third homeless-marker instance
+- **Disposition:** deleted from check 8's marker list.
+- **Tier failed:** n/a — supersession by ruling (**pilot-checkpoint ruling**, user, 2026-07-30;
+  ADR `.mochiko/decisions/2026-07-30-goal-shape-pilot-checkpoint.md`).
+- **The defect:** the marker was **mis-specified, not merely homeless.** Grepped
+  case-insensitively it fires on a conformant command's ruled bounds line — and **D5 fold (a)'s
+  graded exemplar mandates that exact phrase in Constraints**: "Bounds (once, for every loop, in
+  Constraints): round cap lead-counted · no-progress exit · kill-switch · **out of rounds =
+  escalate, never done**." A check cannot forbid text the ruled preservation standard requires. Same
+  class as `unsized by design` (dropped at the v0.33.0 fix pass): a marker keyed to a phrase that
+  is a *binding* in the command, not a restatement of doctrine the command could point at instead.
+- **Content (the removed marker, verbatim):** "`out of rounds = escalate` (home: the anatomy's
+  Constraints spec, which carries it in lowercase mid-sentence — grep case-insensitively; commands
+  capitalise it sentence-initially)".
+- **Kept deliberately:** the anatomy's own bounds sentence in `command-shape.md` still reads "out of
+  rounds = escalate, never done" — the *doctrine* is homed and unchanged; only the grep that
+  punished commands for honoring it is gone. Also kept: the standing clause added at v0.33.0 that a
+  marker whose home does not contain it is a broken check — it is what caught this one, and it now
+  needs a companion reading, recorded here: **a marker must also not fire on text the exemplar
+  mandates.**
+- **Pattern, third instance:** `unsized by design` (author-detected at the v0.33.0 rework),
+  `structurally separated` + `respawn is cold by design` (audit-detected, same pass), and this one
+  (audit-detected at the pilot). All four share one cause — **markers written from the *commands'*
+  repeated phrasing (the checker map's 4–6/6 repetition set) rather than from the *home's* text**,
+  which silently inverts the check: it grades what commands say instead of what the home owns. The
+  surviving markers were re-derived from home text at v0.33.0; this was the last one written the
+  old way. Carried into the step-4 wave briefing.
+
 ### Open tension carried to the audit
 
 Check 1's KM clause requires the five KM-carrying commands to contain

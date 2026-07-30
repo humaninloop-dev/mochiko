@@ -7,6 +7,185 @@ against plan's needs (a standing producer spanning two phases + two reviewer sea
 fire-once — no new shape gap at that wave, when the shape was v2). **Stale as a standing claim:** the
 shape is now **v4** (2026-07-30) — see the v0.31.0 entry below.
 
+---
+
+# v0.34.0 — the goal-shape pilot (CS-D10 step 2)
+
+**Wave context:** command goal-shape rebuild, **step 2 of 4** — the pilot (design:
+`.mochiko/brainstorms/command-succinctness-strip/record.md`, CS-D3/D4/D5 + D8 + D10;
+`DECISIONS.md` 2026-07-30). plan was chosen as the pilot because it is the heaviest file and
+carries every content class: 6 seats, 7 gates, slice-scoping, the architecture stage. Authored
+against **shape v5** (`.mochiko/strips/command-shape.md` v0.33.0) with the obligated
+`loop-discipline` read **retained** — the drop is step 4 and checkpoint-gated, so a v5 command
+that omits it is non-conformant, not early. This file's rewrite is the **first live run** of the
+revised `validation-command-shape`, including the negative direction of check 1 (plan declares the
+in-loop branch, so it must **not** reference `sized-end-stage-review.md` — it does not).
+
+**Measured: 4,439 → 1,950 words (−56.1%), 33,833 → 14,084 B (−58.4%)** — `wc`-measured after the
+fix round, superseding this headline's pre-fix figures (1,940 w / 14,053 B / −56.3% / −58.5%).
+Against the pre-pilot measured floor of 1,791 w: **+159 w (+8.9%)** — over, not under, which is the
+safe side of CS-D8 (landing materially *under* a floor row would signal dropped content). The
+overage is accounted line by line: the completeness reviewer's mode-selection binding (~45 w, a
+v0.31.0 *Kept deliberately* item the floor draft compressed too far), the G3 render fallback
+promoted from an HTML comment to visible body text (~50 w), G2's greenfield-degeneration case
+(~20 w), `GLOSSARY.md` minting in the KM binding (~8 w), and the fix round's two audit-mandated
+restores (~31 w — the `@`-reference recovery and the `preference → G5` class), less the 21 w of G7
+provenance relocated to make room under the Constraints ceiling. Run-level: the file drops
+19,749 B while the v5 shared read floor adds 2,895 B → **−16,854 B per plan run**, against the
+−17,430 B the floor projected.
+
+> **Standing habit adopted (auditor-suggested, 2026-07-30):** re-run `wc` and sweep every headline
+> figure after **each** fix round, not only at first delivery. This was the **third** stale-headline
+> instance in this build (the grader note's 180/1,861/12,441 at the v0.33.0 delta, this note's
+> pre-fix figures here, and the interim Constraints 782/791 correction) — always the same cause: a
+> summary written before the last edit landed. Carried into the step-4 wave briefing material so
+> five commands do not reproduce it five times.
+
+Block sizes against the grader's ceilings (terms as the grader counts them — **G=7** gate lines,
+S=6 seat rows, A=15 artifacts, R=17 resume rows): preamble 99/130 · Goal 123/150 · Seats & checks
+317/370 · **Constraints 791/810 (97.7%)** · Bindings 233/300 · Recovery 253/298.
+
+**The ceiling was genuinely tested, and it held.** The fix round's two mandated restores took
+Constraints to **812/810 — two words OVER**, a real floor FAIL on check 6. The restored content is
+protected (check 14 demanded it), so it could not go; and loosening a ceiling I calibrated myself,
+to fit a file I authored myself, is precisely the quota-override the sibling wave's D1 forbids —
+in the opposite direction. Resolved instead by relocating the one piece of **pure provenance** in
+the block: G7's sentence naming which two signatures dissolved into it (21 w), whose home is this
+note's v0.32.0 entry. Constraints lands at **791/810** with 19 words spare.
+
+Datapoint for the checkpoint: plan is the heaviest command, so if any Constraints block cannot fit
+90·(G+2), it is this one — and it fits, but only after provenance was moved out under audit
+pressure. **Recommend confirming the ceiling, not loosening it**, with the caveat that it leaves
+little room for a command that wants narrative provenance in Constraints. That is arguably the
+ceiling working as designed: provenance belongs in a non-loaded note, not in a file paid on every
+run.
+
+## [v0.34.0] The phase body and the Contract section retired into the five-block anatomy
+- **Disposition:** superseded → the goal-shaped anatomy. `Phase 0`→**G1** + the Slice-scope
+  constraint · `Phase 1`→ the seat rows + G4/G5/G6 + the ordering invariants (its step-4 verdict
+  narration is the record's D5 fold (a) graded exemplar, distilled to exactly the three ruled
+  constraint lines) · `Phase 2`→**G2**/**G3** + ordering invariants · `Phase 3`→ the
+  design-contradiction-returns-to-G3 invariant · `Phase 4`→ the mapping-before-tasks invariant +
+  the mode-selection binding · `Phase 5`→ `plan.md` in Bindings + **G7** · `Phase 6`→ the KM
+  binding + the Recovery table's accepted row. The `Contract` section's four clauses →
+  **Goal** (done-condition + not-done states), the **Seats & checks** table (producer↔validator),
+  **Constraints** (bounds + gates).
+- **Tier failed:** n/a — supersession by ruling (**CS-D3** condition-first documents · **CS-D4**
+  "the connective procedure is deleted, and what survives is *restructured*" · **CS-D5** the
+  five-block anatomy and the Contract-as-document inversion).
+- **Content:** ten `## Phase`/`## Contract`/`## State recovery` sections, 2,873 words of ordered
+  procedure and appendix. Not reproduced verbatim here — every *rule* inside them survives in the
+  ledger below, and the deleted remainder is connective narration ("Then apply the bounds…", "loop
+  to step 1", step numbering, and the lead's job description restated per phase). Recoverable in
+  full at `git show c47684d:plugins/mochiko/commands/plan.md`.
+- **Kept deliberately:** every gate, bound, routing decision, trigger, ordering rule and artifact
+  binding — see the CS-D8 ledger below, which resolves each one individually.
+
+## [v0.34.0] The `What you own (not the seats)` footer deleted
+- **Disposition:** deleted.
+- **Tier failed:** 1 — a declared duplicate. 157 words restating the gate list, the counter
+  ownership, the verdict ownership, the peer-edge sequencing, the feasibility routing, the
+  skip-architect rule, the deviation return, the governance two-exit, and the collapse
+  prohibition — every one of which is now a Constraints line or a Seats-table cell. The checker
+  map recorded this footer class as already-deduped-once at v0.13.0–v0.17.0 and still surviving
+  (record §9.4); the anatomy leaves it nowhere to hide.
+- **Kept deliberately:** nothing was unique to it. The one clause with no other home — "verifying
+  each seat actually wrote its expected files (a missing output → log and ask retry/abort)" — is
+  **not** dropped: it is the lead's dispatch hygiene, and it survives as the Recovery block's
+  evidence-driven resume (a missing artifact *is* a resume row) plus G6's escalation menu.
+
+## [v0.34.0] The `shape-exception` marker retired — its ground dissolved at v5
+- **Disposition:** superseded → the AD-D8/R5 degrade-with-record fallback survives as **visible
+  Constraints content** on the G3 line; the `<!-- shape-exception: ... -->` marker around it is
+  retired. plan now carries **zero** exception markers.
+- **Tier failed:** n/a — supersession by ruling (**CS-D8** re-grade + the checkpoint's
+  re-justify-or-supersede instruction).
+- **Content (the retired marker, verbatim):** `<!-- shape-exception: D8/R5 — when an attended
+  session has none of those render surfaces, the gate degrades with record: present the diagram
+  source + component table and record "presented un-rendered" on the artifact (a recorded absence,
+  mirroring waiver discipline). Plan is never hard-blocked by rendering. -->`
+- **Grounds for retirement, stated plainly because this is the pilot's one contestable call:** the
+  marker existed because the fallback *mirrored the shape's waiver discipline* — recorded absence
+  rather than silent degradation. At v5 that discipline no longer lives anywhere plan reads: it
+  left Layer 1 with the sized-end-stage-review block, into a conditional home
+  (`templates/sized-end-stage-review.md`) that plan is **forbidden** to load (it declares the
+  in-loop branch; check 1 enforces the negative direction). A marker whose cited restatement target
+  is unreachable from the graded file points a future auditor at content they cannot find — the
+  exact false-positive class the v0.33.0 grader fix pass named for check 8's homeless markers. The
+  fallback restates nothing in plan's v5 read set, so it is plain P7 content.
+- **Kept deliberately:** the fallback's every element — the trigger (no render surface in an
+  attended session), the degraded presentation (diagram source + component table), the recorded
+  stamp ("presented un-rendered" on the artifact), and the never-hard-blocked guarantee. It is now
+  *more* visible than at v4, where the whole rule sat inside an HTML comment.
+- **Consequence for the audit:** plan's contribution to the surface's `shape-exception` inventory
+  goes 1 → 0; `setup.md:100–101` remains the only live marker, unexamined here and due at step 4.
+
+## [v0.34.0] Skill-owned content stripped from the command body
+- **Disposition:** relocated → the skills that already own it (no new home written; verified by
+  reading each skill's declaration this run).
+- **Tier failed:** 1 (altitude).
+- **Content:**
+  - The architecture artifact's **scope bound** — "scoped to the delta neighborhood past the
+    artifact's size threshold (the full-system view is linked, never inlined — the same scope bound
+    governs the no-delta presentation)". Home: `mochiko:patterns-system-design`, which states
+    "scopes the diagram to the delta neighborhood (changed components + direct collaborators; past
+    a threshold the full view is linked)". **Kept deliberately:** plan's G3 line still says the
+    no-delta case presents the *neighborhood-scoped* diagram — the binding survives as a reference,
+    the rule's statement does not.
+  - The **ADR discipline** for topology alternatives — "Genuine-alternative topology choices get
+    D-XXX rows here (existing ADR discipline); the delta summary links each structural change to
+    its D-XXX row, never restating it". Home: `mochiko:patterns-technical-decisions` (the
+    decision/ADR technique) + `patterns-system-design` (the delta-summary→D-XXX link).
+    **Kept deliberately:** the *designated structural-decisions section* and its architect
+    ownership stay in plan's Bindings — that is plan's own artifact binding, not ADR technique.
+  - The standing seats' **retention rationale** — e.g. "Its retained context is what makes each
+    later stage's check incremental rather than a cold re-read". Home: this note's v0.15.0
+    conversion entry, which records the retention bet in full. The Seats table carries the
+    operative fact (standing, and across which stages).
+
+## [v0.34.0] CS-D8 survivor re-grade ledger — every protected line resolved
+
+CS-D8 (extended by user ruling U4) protects two sets: `KEPT:`/Tier-2-evidenced lines, **and** every
+line traceable to a `DECISIONS.md` row. plan carries **no `KEPT:` survivor-provenance entries**;
+its protection set is the *Kept deliberately* fields of the two prior supersessions plus the
+DECISIONS row trace. Grepped before any cut, per D8's enumeration procedure. **All 23 rows survive
+translated — zero superseded, zero dropped.**
+
+**Two rows were restored at the pilot fix round, not found by the author.** The independent audit
+FAILed the pilot on check 14 (preserved responsibilities) for the `@`-reference recovery and the
+`preference → G5` routing class — both genuinely dropped in the first draft, both restored below
+and marked. Recorded here rather than silently folded, because the pattern matters for step 4: the
+losses were in *compressed evidence clauses*, not in deleted sections — G1's evidence list and
+G5's routing enumeration each lost a clause while the surrounding gate line still read as
+complete. The five-command wave should grep the routing classes and the named-cause recoveries
+per command rather than trusting a gate line that looks whole.
+
+| protected line | source | resolved |
+|---|---|---|
+| Every verdict stays the lead's; **no devolved branch** (plan has no deterministic-CLI verification, so shape D3's branch cannot apply — declared, not left implicit) | v0.31.0 *Kept deliberately* | Ordering invariants: "**No devolved branch** — every review here is a judgment grade, so no gate is skipped and no unit clears unread" + the validation-model line's "every verdict is yours" |
+| Feasibility architect **lead-gated**, fires once, re-fires only on structural change | v0.31.0 *Kept deliberately* + second audit round | Seat row (spawn + peer-edge cells) **and** the ordering invariant naming the three structural triggers and the clarification-only exception |
+| The completeness reviewer's **mode-selecting message** is the lead's policy call | v0.31.0 *Kept deliberately* | Validation-model line: you select skill + mode per stage and supply the artifact sets (incremental / cumulative, with both named) |
+| **Delivery is not a start signal** — it grades only when you open the pass | v0.31.0 in-wave addition (plan-specific: two-reviewer ordering + mode-selected stage) | Seat row ("grades only when you open the pass") + the ordering invariant |
+| Slice binding 1 — a producer designing beyond scope is a scope gap → G6 | v0.15.0 slice-scoped entry, *four genuine bindings kept* | Slice-scope constraint, first binding |
+| Slice binding 2 — a `[MODIFY]` graded amendment surfaced for this round's reviews, migration flagged | same | Slice-scope constraint, second binding |
+| Slice binding 3 — per-slice outputs → the done-condition's artifact set | same | Bindings' artifact preamble (per-slice layout → the Goal's artifact set) |
+| Slice binding 4 — the reviewer briefing sets {this slice + extensions} / {prior accumulated} | same | Slice-scope constraint, third binding |
+| Graduation contract is the single home; do not restate | v0.15.0 audit catch (the D1 churn liability) | Slice-scope constraint opens by naming it as the single home for the six rules, and restates none of them — the defect that entry was written about is not reintroduced |
+| AD-D1 · AD-D2 — design-time architecture, first design artifact, own early sign-off | DECISIONS rows | Ordering invariant ("the **first** artifact of the design work") + **G3** |
+| AD-D3 — delta model, baseline bootstrap, landing fold | DECISIONS row | **G2** (bootstrap + confirm-before-delta) · Bindings' `architecture.md` · the KM-landing binding (baseline → `ARCHITECTURE.md` via the scribe) |
+| AD-D4 — artifact contents (C4 diagram, sequence, component table, deployment view) | DECISIONS row | Referenced, never restated: Bindings names `patterns-system-design` as the owner of structure **and** scope bound |
+| AD-D5 — always-on, no-delta included | DECISIONS row | G3: "*(always-on)*" + the no-delta presentation with its one-line claim, "the judgment is shown, never silently made by the producer" |
+| AD-D7 — `system-architect` × `patterns-system-design`; feasibility gains the architecture pass; structural D-XXX architect-authored | DECISIONS row (`Contested`) | Two seat rows + Bindings' designated structural-decisions section |
+| AD-D8 / R5 — rendered-diagram sign-off, plan supervisor presents, degrade-with-record | DECISIONS row | G3, in full — presenter named, render surfaces enumerated, raw-mermaid prohibition, and the fallback now visible (marker retired above) |
+| AD-D9 — governance binds the design; conflicts route to amendment/waiver, never overruled at a feature gate | DECISIONS row | **G4**, the two-exit with "the feature gate never overrules the constitution" |
+| Team-method D4/D5 — plan absorbs tasks; **one** package acceptance | DECISIONS row | The mapping and tasks stages in the seat table + the mapping-before-tasks ordering invariant; **G7** declared as "the package's **one** standing acceptance". The *provenance* of the merge — which two signatures dissolved into G7 — is **not** in the command: it is history, already single-sourced in this note's v0.32.0 gate-renumber entry. Relocated at the fix round (see the ceiling note below); the ruling is encoded by the file's structure, not by narrating what the file used to be. |
+| Vertical-graduation — slice-scoped entry variant | DECISIONS row | The Slice-scope constraint + Bindings' per-slice layout |
+| The **`@`-reference recovery** — empty `$ARGUMENTS` has a *named cause* (the `@`-reference drop bug) and a two-option prompt (re-enter, or confirm the detected feature) | record §7 protected set (the `command-altitude` retrofit-regression warning names the `@`-reference recovery among the hard-won fixes verbosity encodes); still carried by `implement.md` | **G1** decides-clause. **Restored at the pilot fix round** — the first draft compressed G1's evidence list and lost both the cause and the prompt, leaving "empty is resolved at G1" with no recovery behavior. Exactly the retrofit-regression class §7 warned about, caught by the audit's check 14. |
+| All three of the exemplar's **gap-routing classes** — knowledge → `Explore` / the research branch · **preference → G5** · scope → G6 | record D5 fold (a) graded exemplar, line 1; `loop-discipline` gap routing | **G5** names the preference class and the knowledge branch and points scope at G6; **G6**'s evidence carries the scope trigger. **Preference restored at the pilot fix round** — the first draft carried knowledge and scope but dropped preference, so the exemplar's own preservation standard was not met on the line it was drawn from. |
+| The `quickstart.md` **null path recorded** in `plan.md` | current body (conditional artifact) | Bindings (conditional + null path) **and** the Goal's not-done states |
+| `plan.md` is a summary over validated artifacts, **never new design** | current body | Bindings, on the `plan.md` entry |
+| Round reports cleaned by default; never offer to delete a deliverable | current body | Bindings' Reports entry |
+
 ## [v0.32.0] Build note + shape-v4 re-conform — merged design-room command: absorbs `/mochiko:tasks` + gains the architecture stage (2026-07-30)
 
 Design records: `.mochiko/brainstorms/team-method-vs-command-shape/record.md` (D4/D5 — plan absorbs

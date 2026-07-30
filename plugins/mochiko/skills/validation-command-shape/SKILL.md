@@ -119,7 +119,6 @@ Against the command file:
    - `reads as a malfunction` (the seat-announcement rule — home: `command-shape.md`
      Layer 2)
    - `input, never the gate` (home: Layer 2 Clearing)
-   - `Out of rounds = escalate` (home: the anatomy's Constraints spec)
    - `disjoint agents, disjoint skills` / `structural separation` (home: Layer 2 Independence
      by structure, which states both phrasings — the table *shows* independence; prose
      asserting it is restatement)

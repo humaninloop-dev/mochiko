@@ -45,6 +45,35 @@ a **respawn is cold by design** — both added because check 8 named them as hom
 home carried the text, and a marker with no home cannot license relocating the line out of a
 command.
 
+## [v0.34.0] The `loop-discipline` read-drop deferred to a named live-run trigger
+- **Disposition:** superseded → the v5 transition note is rewritten. The read itself is
+  **unchanged and still obligated**; what changed is the *status of its planned removal*:
+  from "checkpoint-gated, lands at the wave ceremony" to "**deferred to a named trigger**".
+- **Tier failed:** n/a — supersession by ruling (**pilot-checkpoint ruling**, user, 2026-07-30;
+  ADR `.mochiko/decisions/2026-07-30-goal-shape-pilot-checkpoint.md`). Ground: the checkpoint found
+  that **authoring-loop evidence cannot settle the question**. The pilot proved a goal-shaped file
+  can *carry* the four requirements structurally; it cannot prove a lead *obeys* them mid-loop
+  under rationalization pressure, which is the actual risk on record from the prior wave
+  (`command-altitude/synthesis.md:47`). CS-D7's replacement guarantee is therefore not
+  discharged by the pilot.
+- **Content (the superseded note, verbatim):** "Its command-layer drop is checkpoint-gated, not
+  pending: the pilot runs with the read retained, the pilot checkpoint rules the drop on that
+  evidence, and — if approved — the drop lands as one shape-home edit inside the wave ceremony
+  (`command-succinctness-strip` record, D7 + D10 steps 2–4)."
+- **The named trigger, as encoded:** the first **live dogfooded run** of a rebuilt command in which
+  the gates were not rationalized and the bounds held. Until that evidence exists, a command
+  omitting the read is non-conformant, not early.
+- **Kept deliberately:** the retention itself, its non-conformance consequence, and the
+  transition note's presence in the always-read home — so the retention keeps reading as *ruled*
+  rather than as an oversight, which was the note's original purpose.
+- **Consequence for step 4:** the wave ceremony no longer carries a second shape-home edit. CS-D10
+  step 4's "approved read-drop lands inside this same ceremony" is **spent** — with it, the named
+  delta re-audit of pilot `plan` that existed only to cover that edit. The wave's re-audit surface
+  is the five re-authored commands, nothing more.
+- **Consumers assessed:** all six commands keep the read (five gain it in v5 form at this wave;
+  `plan` already carries it). `loop-discipline` itself is untouched — this defers an edit to the
+  *reference*, and never touched the skill.
+
 ## [v0.33.0] The Run-cost entry element dropped from the shape
 - **Disposition:** superseded → **nothing** replaces it in the shape. Cost measurement leaves the
   command layer entirely; retirement is by this explicit entry, never by omission.
@@ -77,15 +106,19 @@ command.
   ever bound, and that no floor check could catch because it was unslotted, was either dead or
   silently non-conformant surface-wide for two shape versions. Raised at the checkpoint as an open
   question; ruled here rather than carried further.
-- **Reference sweep (this entry's scope).** `command-shape.md`'s footer keeps its **v3 history
-  line** ("run-cost entry added") — that is accurate version history, which the grader's check 16
-  requires be preserved, and the v5 stamp now records the drop beside it. The **grader carries no
-  run-cost reference** (verified: zero hits in `validation-command-shape/SKILL.md`), and none is
-  added — the element is gone, so there is nothing to check. One reference survives deliberately
-  outside this file: `skills/authoring-commands/SKILL.md` cites "the v3 run-cost precedent" for the
-  logging convention that *pure additions go in the decision row, not the strip note*. That
-  precedent is still factually true of what v3 did and still governs how additions are logged, so
-  it is not stale and is not swept.
+- **Reference sweep (this entry's scope).** `command-shape.md` retains **two** run-cost mentions,
+  both correct to keep and both in the footer: the **v5 stamp's drop record** ("the Run-cost entry
+  element dropped") and the **v3 history line** ("run-cost entry added") — the latter is accurate
+  version history, which the grader's check 16 requires be preserved. (An earlier count in this
+  note said "one"; that was a case-sensitive grep for `run-cost` missing the capitalised
+  `Run-cost` in the v5 stamp. Corrected.) The **grader carries no run-cost reference** (verified:
+  zero hits in `validation-command-shape/SKILL.md`), and none is added — the element is gone, so
+  there is nothing to check. One reference survives deliberately outside this file:
+  `skills/authoring-commands/SKILL.md` cites "the v3 run-cost precedent" for the logging
+  convention that *pure additions go in the decision row, not the strip note*. That precedent is
+  still factually true of what v3 did and still governs how additions are logged, so it is not
+  stale and is not swept — now glossed there as **"since retired"** so a reader does not go
+  hunting for a shape element that no longer exists.
 - **Consumers assessed:** **zero commands** bound it, so no command changes and no re-audit surface
   is added by this drop — the only surface-wide consequence is that the always-read shape is
   smaller for every run. `authoring-commands` Job 1 step 3's parameter walkthrough never listed it
@@ -198,7 +231,11 @@ mechanics; the quote's home is `.mochiko/strips/agent-dispatch.md`) · the run-c
 rule — **moot: the whole element was dropped later in this same fix round by user ruling** (entry
 above), so that ~15 w of pass credit is withdrawn from the arithmetic below and the element's full
 removal is accounted as the supersession, not as this pass · the no-fallback bet's parenthetical
-framing · Clearing's closing rationale
+framing · the Hard-requirement paragraph's closing sentence "Running the loop on one-shot
+subagents is not a fallback — it is the defect this layer forbids" (a restatement: **the rule
+itself survives** in Layer 2's Seat transport bullet, "a spawn without a `name:` is a one-shot
+subagent — in a team-form command, the forbidden transport", which is also the marker's home for
+check 8) · Clearing's closing rationale
 clause ("for a green deterministic run the classification always was the gate and the lead's
 read was ceremony" — its ground is the v0.31.0 entry below, which carries the dogfood evidence)
 · connective phrasing in One lead, As-you-go artifact, Seats-not-dispatches and the traffic
@@ -232,7 +269,7 @@ v0.22.0 header relocation, the v0.31.0 mesh re-carve) and is close to pure condi
 its remaining sentences are the traffic classes, the devolved branch's three conditions and
 their explicit negation, the cold-arrival property, and the transport mechanics. Cutting further
 would take rules, not narration — which the sibling wave's **D1** forbids ("no line is cut while
-its evidence stands. No quota-override strips"). Reporting −0.4% is the honest outcome of
+its evidence stands. No quota-override strips"). Reporting −1.2% is the honest outcome of
 applying clause 1 to a layer that had little left to give; manufacturing a bigger number here
 would be the quota-override D1 names.
 
@@ -373,6 +410,13 @@ The `plan` skeleton reproduces at 1,662 body words against a fitted 1,655 (0.4%)
 | plan | 6 | 7 | 17 | 15 | 4,439 | **1,791** *(measured)* | −59.7% | 33,833 | 12,927 |
 | **TOTAL** | | | | | **14,697** | **7,713** | **−47.5%** | **109,342** | **56,437** |
 
+Gate counts are **gate lines** in the goal-shaped Constraints block (the countable form the shape
+mandates for P7), not numbered-gate labels: `plan` is **G = 7** (G1–G7; its escalation gate *is*
+G6, not an eighth), measured as 7 gate-form bullets in the drafted skeleton — which is the value
+the grader's Constraints ceiling of 90·(7+2) = 810 is keyed to. `brainstorm` is **G = 4** with
+zero *numbered* gates. Counts for the four un-drafted commands are fitted from their current
+gate inventories, not measured.
+
 **Verdict against the record's projection (~5–6k words surface-wide): the floor EXCEEDED it.**
 7,713 w was **+28.6% over the 6k top of the band and +54.3% over the 5k bottom.** Per CS-D10
 step 1 ("a floor exceeding the projection changes the anatomy or the ambition *before* the
@@ -428,7 +472,11 @@ Three findings the checkpoint needs:
    irreducible overhead of any split: the pointer left behind plus the new file's own header.
    `slice` **flips to net-better** (−1,078) and `specify`'s regression falls from +3,311 to
    **+819**, so **one regressing command remains besides brainstorm**. Six-run total improves by
-   8,968 B against the un-split baseline. **brainstorm and setup pay for the other four,
+   8,968 B against the un-split baseline — attributed per component, since three separate changes
+   contributed: **the split itself 5,116 B** (−20,583 → −25,699), **the Run-cost drop 3,486 B**
+   (581 B × 6 runs), and **the audit fix pass 366 B** (61 B × 6). Only the first is ruling B's;
+   crediting all 8,968 B to the split would overstate it by 75%. **brainstorm and setup pay for
+   the other four,
    knowingly** — they bind the review and keep the load (checkpoint ruling B's own framing), and
    brainstorm's net is 500 B *worse* than it would have been un-split (down from 1,142 B, because
    the Run-cost drop returns 581 B to it as well). That is the honest price and it is not hidden:

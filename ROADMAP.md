@@ -16,7 +16,7 @@ frontend/mobile/desktop shelves are Tier-I roadmap work.**
 - **KM-module redesign dogfood** — fresh-project scaffold + rules-injection probe of the rebuilt module (2026-07-25) → [BACKLOG](BACKLOG.md#operating-docs--km-module)
 - **Kinako follow-up run** — waves-1–2 didn't land: investigate, then the UI fix wave through journey gates (2026-07-24) → [BACKLOG](BACKLOG.md#kinako-follow-up-run)
 - **Team-method build items** — cold-checkout gate · loop-discipline all-consumer pass · agent-dispatch peer-edge field (mesh rewrite DONE 2026-07-30 → shape v4; plan-absorbs-tasks merge DONE 2026-07-30 at v0.32.0 — trail) → [BACKLOG](BACKLOG.md#team-method-build-items)
-- **Command goal-shape rebuild** — step 1 DONE (shape v5 + grader, v0.33.0); next: the plan pilot per CS-D10 (2026-07-30) → [BACKLOG](BACKLOG.md#command-goal-shape-rebuild)
+- **Command goal-shape rebuild** — steps 1–2 DONE (shape v5 + grader v0.33.0; plan pilot v0.34.0, −56.1%); next: the remaining-five wave (2026-07-30) → [BACKLOG](BACKLOG.md#command-goal-shape-rebuild)
 
 ## Next
 

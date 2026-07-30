@@ -54,12 +54,14 @@ it varies]. The **Goal** block states
 the same run as a *checkable condition* — if either could be pasted over the other, one of
 them is doing nothing.
 
-> **Transition note (v5).** The obligated `mochiko:loop-discipline` read **stays.** Its
-> command-layer drop is checkpoint-gated, not pending: the pilot runs with the read retained,
-> the pilot checkpoint rules the drop on that evidence, and — if approved — the drop lands as
-> one shape-home edit inside the wave ceremony (`command-succinctness-strip` record, D7 +
-> D10 steps 2–4). Until that edit lands, a command that omits the read is non-conformant,
-> not early.
+> **Transition note (v5).** The obligated `mochiko:loop-discipline` read **stays, and its drop is
+> deferred — not pending a ceremony.** The pilot checkpoint ruled that *authoring-loop* evidence
+> cannot settle it: whether a goal-shaped command holds its gates without the read is answerable
+> only by a run. **Named trigger for reopening:** the first live dogfooded run of a rebuilt command
+> in which the gates were not rationalized and the bounds held. Until that evidence exists, a
+> command that omits the read is non-conformant, not early
+> (ADR `.mochiko/decisions/2026-07-30-goal-shape-pilot-checkpoint.md`; `command-succinctness-strip`
+> D7 + D10).
 
 **Goal.** One measurable end state [PARAM: the end state — the artifact set that exists, the
 checks that passed, the gates that were ruled, and the user's acceptance], plus the states
@@ -225,7 +227,9 @@ slot set supersedes v4's 13 tags · the obligated `loop-discipline` read retaine
 checkpoint-gated transition note · **pilot-checkpoint ruling B (same revision):** the sized
 end-stage review's doctrine split out to `templates/sized-end-stage-review.md` as a
 conditional read, loaded only where P6 binds it · **the Run-cost entry element dropped** by user
-ruling (step-1 adjudications), retiring v3's manual-baseline carrier; v4 2026-07-30 — team-method-vs-command-shape D1–D3: the
+ruling (step-1 adjudications), retiring v3's manual-baseline carrier · **v0.34.0 pilot checkpoint:**
+the `loop-discipline` read-drop **deferred to a named live-run trigger**, authoring evidence ruled
+insufficient; v4 2026-07-30 — team-method-vs-command-shape D1–D3: the
 in-loop mesh becomes Layer 2's default with named traffic classes · cold isolation restated as
 a review-stage property · the deterministic-clean verdict devolves to the pair; v3 2026-07-23
 — workflow-token-reduction wave 1: run-cost entry added · provenance header relocated to the

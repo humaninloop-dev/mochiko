@@ -107,17 +107,20 @@ pilot checkpoint. Interaction note: CS-D7 scopes skill edits for *this delivery*
 `loop-discipline` all-consumer pass (team-method section) — that pass stays open for the
 skill's own sizing.
 
-- [ ] **Step 2 — plan pilot** (2026-07-30; step 1 DONE 2026-07-30 → trail) — goal-shaped `plan.md` with the `loop-discipline`
-  read retained; full loop (author → independent audit → measure vs the exemplar standard →
-  confirm-or-revise-the-anatomy checkpoint), the checkpoint additionally grading loop-holding
-  (gates un-rationalized, bounds honored) and the cardinality trigger (~2× median goal-shaped
-  command, or gates resisting one Goal statement).
-- [ ] **Steps 3–4 — read-drop ruling + remaining-five wave** (2026-07-30) — checkpoint rules
-  the read-drop on pilot evidence (CS-D7 replacement guarantee); the five re-author in one wave,
-  per-command ratification, one audit ceremony + version bump, with the approved read-drop
-  landing inside the same ceremony (+ named delta re-audit of pilot plan; shape-revision checks
-  11–14 on the ceremony's shape edit). Survivor discipline throughout: CS-D8 re-grading +
-  `DECISIONS.md`-row trace grep before any cut; strip notes at `.mochiko/strips/`.
+- [ ] **Step 4 — remaining-five wave + ceremony** (2026-07-30; steps 1–2 DONE → trail) —
+  brainstorm/specify/slice/setup/implement re-author goal-shaped against shape v5, per-command
+  user ratification, one audit ceremony + version bump (v0.35.0); the ceremony audits the five
+  plus a bounded confirm of the v0.34.0 marker-drop/transition-note delta. Wave disciplines
+  from the pilot (`.mochiko/strips/plan.md` block-quote): per-command `DECISIONS.md`-trace grep
+  + CS-D8 KEPT re-grade (specify's enrichment boundary + slice's "No G2" are live `KEPT:`
+  entries; setup carries the last `shape-exception`) · compressed-evidence-clause grep (routing
+  classes, named-cause recoveries) · wc-sweep after every fix round · floors: brainstorm 872 ·
+  specify 991 · slice 1,076 · implement 1,354 · setup 1,629 (materially under = dropped-content
+  finding) · sized-review reference in brainstorm + setup only · read retained in all five.
+- [ ] **Deferred: the `loop-discipline` read-drop** (2026-07-30, pilot-checkpoint ruling 5) —
+  lands as a one-clause shape edit + delta re-audit when the named trigger fires: **first live
+  dogfooded run of a rebuilt command with gates un-rationalized** (CS-D7 replacement guarantee;
+  authoring-loop evidence ruled insufficient — ADR `2026-07-30-goal-shape-pilot-checkpoint`).
 
 ## Pipeline dogfood & confirm-or-revert
 

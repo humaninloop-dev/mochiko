@@ -97,7 +97,7 @@ protocol: one edit here plus a re-audit of the conformant commands.
 2. **Edit at shape altitude:** doctrine true of every conformant command lives in the
    home; per-command variance stays a `[PARAM]` tag. Rewritten or removed content follows
    Job 3's logging (version-stamped strip-note entry); pure additions are recorded in the
-   revision's decision row, not the strip note (the v3 run-cost precedent).
+   revision's decision row, not the strip note (the v3 run-cost precedent, since retired).
 3. **Stamp the footer:** bump the shape version with date + ruling source, preserving the
    prior version history.
 4. **Name the re-audit set:** every conformant command whose text the revision affects,
