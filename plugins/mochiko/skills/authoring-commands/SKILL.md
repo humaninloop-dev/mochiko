@@ -2,20 +2,22 @@
 name: authoring-commands
 description: |
   Author a mochiko command in the codified command shape, convert an existing command to it
-  (incl. one-shot → team-form), or run a minimalism/strip pass over a command cluster with
-  version-stamped strip notes. Use when creating a new commands/*.md supervisor, converting
-  a command's orchestration form, or stripping/relocating command or primitive prose.
+  (incl. one-shot → team-form), run a minimalism/strip pass over a command cluster with
+  version-stamped strip notes, or execute a ruled shape-home revision — a rulings-driven
+  edit to command-shape.md itself. Use when creating a new commands/*.md supervisor,
+  converting a command's orchestration form, stripping/relocating command or primitive
+  prose, or encoding session rulings into the shape home.
   MUST BE USED when the task says "author a command", "convert this command to team form",
-  "apply the command shape", or "run a strip wave / minimalism pass". Producer craft only —
-  the authored/converted command is graded independently (validation-command-shape), never
-  by its author.
+  "apply the command shape", "run a strip wave / minimalism pass", or "revise the command
+  shape / shape home". Producer craft only — the authored/converted/revised artifact is
+  graded independently (validation-command-shape), never by its author.
 ---
 
-# Authoring Commands — Build, Convert, Strip
+# Authoring Commands — Build, Convert, Strip, Revise
 
 ## Overview
 
-Three jobs, one discipline: a command states its per-workflow parameters and references
+Four jobs, one discipline: a command states its per-workflow parameters and references
 everything else. The shape's single authoritative home is
 `${CLAUDE_PLUGIN_ROOT}/templates/command-shape.md` (Layer 1 form-agnostic core · Layer 2
 team transport) — **Read it first, every run**; this skill never restates its content.
@@ -82,6 +84,26 @@ you propose, the user rules contested lines, an independent audit closes the wav
    (why: the README) — strip entries, survivor-provenance entries for contested keeps,
    re-add entries later — each stamped with the plugin version. One version bump per wave.
 5. **Hand the wave to the independent audit** before it ships.
+
+## Job 4 — shape-home revision
+
+A ruled edit to `command-shape.md` itself — standalone, unlike the revisions that ride a
+first conversion (Job 2 step 3) or a strip wave (Job 3). The home's own header carries the
+protocol: one edit here plus a re-audit of the conformant commands.
+
+1. **Read** the shape home and the ruling source (session record or ADR) this run. The
+   rulings are the requirements — nothing beyond them enters the revision; a gap the
+   rulings don't cover goes back to the user, never gets invented.
+2. **Edit at shape altitude:** doctrine true of every conformant command lives in the
+   home; per-command variance stays a `[PARAM]` tag. Rewritten or removed content follows
+   Job 3's logging (version-stamped strip-note entry); pure additions are recorded in the
+   revision's decision row, not the strip note (the v3 run-cost precedent).
+3. **Stamp the footer:** bump the shape version with date + ruling source, preserving the
+   prior version history.
+4. **Name the re-audit set:** every conformant command whose text the revision affects,
+   listed in the handoff — the re-audit is its own graded step, never skipped.
+5. **Hand off for independent audit** (`validation-command-shape`, shape-revision mode).
+   Never grade your own output.
 
 ## Common mistakes
 
