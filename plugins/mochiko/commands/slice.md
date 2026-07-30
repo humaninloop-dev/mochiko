@@ -53,12 +53,14 @@ same `Contested` dogfood-pilot ruling as the other team-form commands.
   author `slices.md` from `templates/slices-template.md` (+ `slicer-report.md` from its template)
   via `mochiko:authoring-slices`: `spec.md` as the input to Read, the governance obligated-read
   line (per the prerequisite), the template to fill per the skill — no placeholder tokens. Round >
-  1 is a message to the same seat carrying the reviewer's gap list verbatim (fix the flagged gaps;
-  don't regress passing slices). **Null exit:** it may instead recommend whole-spec — no
+  1 reaches the same seat with the reviewer's gap list already in hand (peer-routed) — you rule the
+  round and hold the revision targeted (fix the flagged gaps; don't regress passing slices).
+  **Peer-edged with the reviewer:** it hands each round's output straight there. **Null exit:** it
+  may instead recommend whole-spec — no
   `slices.md` written, reasoning disclosed in `slicer-report.md`; the round proceeds to review
   either way. It never grades.
-- **reviewer** — `mochiko:devils-advocate`, spawned **cold at first review**, never in contact
-  with the producer. Brief it to run `mochiko:review-slices` against `slices.md` **and** the
+- **reviewer** — `mochiko:devils-advocate`, spawned **cold at first review**, peer-edged with
+  the producer thereafter. Brief it to run `mochiko:review-slices` against `slices.md` **and** the
   `spec.md` it indexes — it Reads both files itself, never the producer's report — writing
   `advocate-report.md` (from `templates/advocate-report-template.md`): severity-classified
   findings, product-framed clarifying questions, and a recommended verdict (`ready` /
@@ -123,8 +125,9 @@ to delete `slices.md` — it is the deliverable.
   never done.
 - **Producer ↔ validator:** `task-architect` (authoring-slices) authors the overlay, never grades;
   `devils-advocate` (review-slices) grades from the files, never authors — disjoint agents,
-  disjoint skills, structurally separated (reviewer cold-spawned, gap lists lead-routed, no
-  producer↔reviewer contact). A single reviewer. **Validation model:** the bounded in-loop
+  disjoint skills, structurally separated (reviewer cold-spawned; gap-list hand-offs peer-routed
+  producer↔reviewer per the shape's mesh, with every verdict yours). A single reviewer.
+  **Validation model:** the bounded in-loop
   critique — every round, unsized by design; no sized end-stage review (the shape's
   in-loop-critique branch).
 - **Bounds:** ≤3 rounds (you count) · no-progress exit · kill-switch `SLICE_STOP` · a G5
@@ -132,7 +135,8 @@ to delete `slices.md` — it is the deliverable.
 - **Human gates:** G1 input recovery + entry / already-decomposed / governance surface · G3
   clarification (incl. the preference-gap decision) · G5 two-shape acceptance · escalation (G4) on
   any guard trip. **No G2** — slice is single-reviewer, so plan's feasibility-rejection slot is
-  intentionally unused.
+  intentionally unused. **No devolved branch** — the review is a judgment grade, never
+  all-deterministic-CLI, so no gate is skipped and every verdict is yours.
 
 ## Recovery
 

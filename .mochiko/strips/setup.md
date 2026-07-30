@@ -4,6 +4,18 @@ Entry formats: `strips/README.md`. Wave context: the D4 codification pre-shrink 
 shared team-form prose relocated into `templates/command-shape.md` (design:
 `.mochiko/brainstorms/pattern-codification-and-minimalism/record.md`, D3/D4/D9).
 
+## [v0.31.0] Fix-list routing no longer carries independence (shape v4 conforming edit)
+- **Disposition:** superseded → `templates/command-shape.md` v4 (Layer 2 — "Independence by structure" + "In-loop mesh"). Rewritten in place: the validator is still cold-spawned at first validation, the producer↔validator peer edge is declared on the roster, and independence is restated as structural (disjoint agents, disjoint skills, cold spawn).
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/team-method-vs-command-shape/record.md` **D1**, scoped by **D2**), not a minimalism strip. This command carried the library's most explicit statement of the falsified claim.
+- **Content (superseded, verbatim):**
+  - validator seat: "**The fix list flows through you** to the producer — that routing is the independence the loop rests on."
+  - validator seat: "spawned **cold at first validation**, never in the room before that and never in contact with the producer"
+  - Authoring loop: "on round > 1 message it the validator's fix list verbatim for targeted revision"
+  - Contract, Producer ↔ validator: "(validator cold-spawned, fix list lead-routed, no producer↔validator contact)"
+- **Kept deliberately (not superseded):** the pre-G3 **intent reviewers'** no-contact clause ("they message you, never the user, and never contact the producer or validator"). Per **D2** that is a *cold review stage*, not in-loop traffic, so the mesh does not reach it — the command now says so explicitly rather than leaving it to look like an oversight.
+- **Added (not a strip):** a Contract human-gates declaration that setup has **no devolved branch** — its validation is a Tier-2 judgment grade, never all-deterministic-CLI, so D3's devolution cannot apply and every verdict stays the lead's.
+- **Kept deliberately, second (audit round, 2026-07-30):** the **producer→validator outbound leg stays lead-routed**. The auditor flagged the silence as the defect and left the resolution to recorded grounds; the grounds are that setup's validator has no fixed check surface — it is mode-parameterized every round (brownfield adds the tools/versions↔analysis cross-check; an attached knowledge-management module adds the repo-level invariant re-audit), so selecting it is a **policy call**, which the shape's traffic classes route to the lead, not a hand-off. This is the same reasoning the wave lead applied to plan's Phase-2 mode-selecting message. Now stated in the command rather than left silent.
+
 ## [v0.13.0] Footer ground rules (kernel-free · git)
 - **Disposition:** relocated → `templates/command-shape.md` (Layer 1, Ground rules — homed at shape v2, the specify wave's S8 home revision)
 - **Tier failed:** 1 (altitude — verbatim in five command footers; true of every conformant command)

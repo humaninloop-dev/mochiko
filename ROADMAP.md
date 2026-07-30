@@ -12,7 +12,7 @@ dogfood evidence rather than speculation.
 
 - **KM-module redesign dogfood** — fresh-project scaffold + rules-injection probe of the rebuilt module (2026-07-25) → [BACKLOG](BACKLOG.md#operating-docs--km-module)
 - **Kinako follow-up run** — waves-1–2 didn't land: investigate, then the UI fix wave through journey gates (2026-07-24) → [BACKLOG](BACKLOG.md#kinako-follow-up-run)
-- **Team-method build items** — Layer-2 mesh rewrite · plan-absorbs-tasks merge · cold-checkout gate (2026-07-25) → [BACKLOG](BACKLOG.md#team-method-build-items)
+- **Team-method build items** — plan-absorbs-tasks merge · cold-checkout gate · loop-discipline all-consumer pass (mesh rewrite DONE 2026-07-30 → shape v4, trail) → [BACKLOG](BACKLOG.md#team-method-build-items)
 
 ## Next
 

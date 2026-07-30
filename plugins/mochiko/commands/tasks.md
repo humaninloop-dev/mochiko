@@ -51,10 +51,12 @@ dogfood-pilot ruling as the other team-form commands.
   judgment forward, so Phase 2 expands the mapping it just authored rather than reconstructing the
   rationale from the file. Brief it per `agent-dispatch`: plan's design outputs, the governance
   obligated-read line (per the prerequisite), the brownfield context when present, the templates to
-  fill per its skill. Round > 1 within a phase is a message to the same seat carrying the reviewer's
-  gap list verbatim (fix the flagged gaps; don't regress passing slices). It never grades.
+  fill per its skill. **Peer-edged with the reviewer:** it hands each round's finished artifact
+  straight there. Round > 1 within a phase reaches the same seat with the reviewer's gap list already
+  in hand (peer-routed) — you rule the round and hold the revision targeted (fix the flagged gaps;
+  don't regress passing slices). It never grades.
 - **reviewer** — `mochiko:devils-advocate` (`review-task-artifacts`), spawned **cold at the first
-  (mapping) review**, never in contact with the producer, one **named standing seat across both
+  (mapping) review**, peer-edged with the producer thereafter, one **named standing seat across both
   phases**. Phase 1: grade the mapping from the file (the `review-task-artifacts` Mapping checklist —
   slice quality, foundation separation, story coverage, cycle sizing) → `advocate-report.md`
   (`ready` / `needs-revision` / `critical-gaps`). Phase 2: a message to the same seat in **cumulative
@@ -104,9 +106,10 @@ expensive full TDD breakdown — the tasks analogue of plan's feasibility-once g
 avoidance).
 
 1. **Produce.** The producer authors `task-mapping.md` — the compact story→cycle mapping +
-   vertical-slice rationale, the **source of truth** for slicing decisions (+ `taskarchitect-report.md`);
-   on round > 1 the message carries the reviewer's gap list for targeted revision (fix flagged gaps;
-   don't regress passing slices). The round-1 spawn is the authoritative probe — confirm addressability.
+   vertical-slice rationale, the **source of truth** for slicing decisions (+ `taskarchitect-report.md`),
+   handing it to the reviewer directly when the round's artifact is complete; on round > 1 it already
+   holds the reviewer's gap list for targeted revision (fix flagged gaps; don't regress passing
+   slices). The round-1 spawn is the authoritative probe — confirm addressability.
 2. **Early mapping review.** The reviewer, cold, grades the mapping from the file (the
    `review-task-artifacts` Mapping checklist — slice quality, foundation separation, story coverage,
    cycle sizing) → `advocate-report.md`.
@@ -165,8 +168,9 @@ deliverables.
 - **Producer ↔ validator:** `task-architect` (patterns-vertical-tdd) authors both phases, never
   grades; a **single independent reviewer**, not the producer — `devils-advocate`
   (review-task-artifacts) grades the task artifacts from the files, never authoring. Disjoint agents,
-  disjoint skills, structurally separated (reviewer cold-spawned, gap lists lead-routed, no
-  producer↔reviewer contact). **Validation model:** the bounded in-loop critique — every round,
+  disjoint skills, structurally separated (reviewer cold-spawned; gap-list hand-offs peer-routed
+  producer↔reviewer per the shape's mesh, with every verdict yours). **Validation model:** the
+  bounded in-loop critique — every round,
   unsized by design; no sized end-stage review (the shape's in-loop-critique branch).
 - **Bounds:** cap **3** produce↔review rounds **per phase** (you count); no-progress exit when the
   reviewer's gap set is unchanged round-over-round; kill-switch `TASKS_STOP` checked before each seat
@@ -174,7 +178,8 @@ deliverables.
 - **Human gates:** G1 input recovery + governance / entry / brownfield surface · G3 clarification
   (incl. the "Research this" knowledge-gap branch) · G4 exit-early / escalation · G5 `tasks.md`
   acceptance · escalation on any guard trip. **No G2** — tasks is single-reviewer, so plan's
-  feasibility-rejection slot is intentionally unused.
+  feasibility-rejection slot is intentionally unused. **No devolved branch** — the review is a
+  judgment grade, never all-deterministic-CLI, so no gate is skipped and every verdict is yours.
 
 ## State recovery
 

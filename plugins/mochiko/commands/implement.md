@@ -1,5 +1,5 @@
 ---
-description: Execute an accepted task breakdown into working, verified code via an independent producer→verifier team loop — a standing staff-engineer seat implements each cycle through red/green/refactor TDD (foundation cycles before feature cycles) then fix-passes a final validation, a standing qa-engineer seat verifies each cycle and the whole implementation independently against real infrastructure, with a confidence-based per-cycle gate and a named final-acceptance gate; tasks-gated, cycle-by-cycle, default-FAIL, bounded, kernel-free. Requires agent teams (CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS); refuses without them.
+description: Execute an accepted task breakdown into working, verified code via an independent producer→verifier team loop — a standing staff-engineer seat implements each cycle through red/green/refactor TDD (foundation cycles before feature cycles) then fix-passes a final validation, a standing qa-engineer seat verifies each cycle and the whole implementation independently against real infrastructure, with a per-cycle checkpoint whose deterministic-clean branch devolves to the producer↔verifier pair and a named final-acceptance gate; tasks-gated, cycle-by-cycle, default-FAIL, bounded, kernel-free. Requires agent teams (CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS); refuses without them.
 disable-model-invocation: true
 ---
 
@@ -49,7 +49,8 @@ dogfood-pilot ruling as the other team-form commands.
   execute the cycle's task list through red/green/refactor TDD → `cycle-report.md`; on a
   cycle-checkpoint failure, targeted retry of only the failed tasks (same seat, never rewriting
   passing code); in Phase 2, a fix pass scoped to the final-validation failures, unconstrained by
-  cycle boundaries. The standing seat carries the **accumulating implementation** forward — the
+  cycle boundaries. **Peer-edged with the verifier:** it hands each completed cycle straight there.
+  The standing seat carries the **accumulating implementation** forward — the
   conventions the foundation cycles set flow into the feature cycles, and a fix pass that may touch
   any cycle's files draws on whole-implementation knowledge rather than re-reading the growing
   codebase cold each cycle. Brief it per `agent-dispatch`: the cycle's tasks + per-task file paths,
@@ -57,13 +58,15 @@ dogfood-pilot ruling as the other team-form commands.
   brownfield markers when present; round > 1 within a cycle carries the checkpoint's failed tasks for
   targeted retry (fix the flagged tasks; don't regress passing code). It never verifies.
 - **verifier** — `mochiko:qa-engineer` (`testing-end-user`), spawned **cold at the first cycle
-  verification**, never in contact with the producer, one **named standing seat across all cycles and
-  the final validation**. Each cycle: verify against real infrastructure — execute the cycle's
+  verification**, one **named standing seat across all cycles and the final validation**,
+  **peer-edged with the producer** for cycle verification hand-offs. Each cycle: verify against real
+  infrastructure — execute the cycle's
   `**TEST:**` tasks, run the quality gates (lint / build / test), capture evidence → verification
   report + a checkpoint recommendation. Phase 2: a whole-implementation final validation (full
   quality gates + the cross-cutting `**TEST:**` verifications). Its retained per-cycle context is what
   makes the final validation informed by what it already verified rather than a cold whole-repo read.
-  Its output is **lead-adjudicated input** — qa's status is input, never the gate. The verification
+  Outside the devolved clean branch (Phase 1 step 3) its output is **lead-adjudicated input** — qa's
+  status is input, never the gate. The verification
   skill is **never** mounted on the producer, and staff never grades its own cycle.
 - **architecture scribe** — `mochiko:principal-architect` (`mochiko:authoring-architecture`), a
   **disposable Finalize dispatch**, fired only on structural change per the KM landing.
@@ -114,29 +117,34 @@ For each cycle, `round = 1`; the cycle is FAIL until verified:
    (`cycle-report.md`); on round > 1 the message carries the checkpoint's failed tasks for **targeted
    retry** — re-open only those, don't regress passing code. The round-1 (foundation cycle 1) spawn is
    the authoritative probe — confirm addressability.
-2. **Verify — same round, never skipped.** Message the verifier to verify the cycle against real
-   infrastructure: execute the cycle's `**TEST:**` tasks, run the quality gates, capture evidence →
-   verification report + checkpoint recommendation. Every produced cycle is paired with a qa
-   verification in the same round (the first verification cold-spawns the qa seat).
-3. **Confidence gate + verdict (you).** Read `cycle-report.md` + the verification report + qa's
-   evidence. Apply the **confidence gate**: qa classifies each verification (the CLI / GUI / SUBJECTIVE
-   classification procedure lives in `testing-end-user`); if every verification is a deterministic CLI
-   check that passed 100%, **auto-approve** and advance to the next cycle; if any is GUI / subjective,
-   or anything failed, **checkpoint to the human**. A non-empty `domain_deps_added` in the cycle
-   report at `production`/`regulated` tier (tier: the CLAUDE.md governance region stamp) also forces
-   the human checkpoint — a domain-registry addition is never auto-approved there; at lower tiers
-   surface the additions in your verdict, non-blocking. On a pass verdict → next cycle. On a checkpoint
-   failure → **targeted retry** (step 1, failed tasks only; increment `round`), applying the bounds
-   (max 3/cycle; a 2+-round stall → surface). Route knowledge / preference / scope gaps per
+2. **Verify — same round, never skipped.** The producer hands the completed cycle **straight to the
+   verifier** (peer-routable), which verifies against real infrastructure: execute the cycle's
+   `**TEST:**` tasks, run the quality gates, capture evidence → verification report + checkpoint
+   recommendation. Every produced cycle is paired with a qa verification in the same round (you
+   cold-spawn the qa seat at the first verification).
+3. **Clearing the cycle.** qa classifies each verification (the CLI / GUI / SUBJECTIVE classification
+   procedure lives in `testing-end-user`). **The cycle is this workflow's clearing unit, and the
+   shape's devolved branch applies to it:** every verification a deterministic CLI check at 100% pass
+   **and** no deviation reported in `cycle-report.md` **and** an empty `domain_deps_added` → qa's
+   **PASS-with-evidence advances the cycle**, unread by you; its one-line clearance notice is a
+   coordination message — you count the cycle from it and dispatch the next. **Everything else is
+   yours:** any failure, any GUI / subjective verification, any reported deviation, any non-empty
+   `domain_deps_added` → Read `cycle-report.md` + the verification report + qa's evidence and rule.
+   Escalated-branch checkpoint keying: at `production`/`regulated` tier (tier: the CLAUDE.md
+   governance region stamp) a domain-registry addition forces the **human checkpoint**; at lower tiers
+   surface the additions in your verdict, non-blocking. On your pass verdict → next cycle. On a
+   checkpoint failure → **targeted retry** (step 1, failed tasks only; increment `round`), applying
+   the bounds (max 3/cycle; a 2+-round stall → surface). Route knowledge / preference / scope gaps per
    `loop-discipline` (→ **G3** / **G4** / escalate).
 
 ## Phase 2 — Final validation & fix-pass loop  *(you own the round counter)*
 
 Reachable when every cycle has cleared. `round = 1`; final-validation is FAIL until proven.
 
-1. **Final validation.** Message the verifier for a whole-implementation verification — the full
-   quality gates + the cross-cutting `**TEST:**` verifications against real infrastructure →
-   verification report.
+1. **Final validation.** The endgame is yours: message the verifier for a whole-implementation
+   verification — the full quality gates + the cross-cutting `**TEST:**` verifications against real
+   infrastructure → verification report. Lead-routed deliberately — the devolved branch clears
+   cycles, never the endgame.
 2. **Verdict (you).** Read the report + confirm the done-condition's end state: all `tasks.md` `[x]`,
    quality gates pass, traceability to requirements holds, governance alignment. Clear → the **G5
    acceptance gate**.
@@ -175,16 +183,19 @@ invariants under fix-on-sight; structural change → `ARCHITECTURE.md` via a fre
 - **Done-condition:** default **FAIL**; clears only when **(1)** every cycle in `tasks.md` is complete
   (all tasks `[ ]` → `[x]`, each with its `cycle-report.md`), **(2)** `qa-engineer` verification passes
   on every cycle **and** on the final-validation run — real-infrastructure evidence + quality-gate exit
-  codes, grounded in the workspace, **(3)** *you* Read the cycle-reports + verification reports and
+  codes, grounded in the workspace, **(3)** *you* Read the final-validation report and every escalated
+  cycle's reports and
   confirm no blocking gap remains: acceptance criteria met, quality gates pass, `tasks.md` fully `[x]`,
   traceability to requirements holds, and the implementation aligns with the project's governance (the
-  CLAUDE.md governance region + its rules files) — qa's status is input, never the gate — **and (4)**
+  CLAUDE.md governance region + its rules files) — qa's status is input, never the gate, wherever
+  judgment exists; cycles cleared on the devolved branch are not re-read — **and (4)**
   the Phase-3 final-acceptance human gate (G5) has cleared. Out of rounds = escalate, never done.
 - **Producer ↔ validator:** `staff-engineer` (executing-tdd-cycle, brownfield-integration) implements
   each cycle via TDD and fix-passes final validation, never verifies; a **single independent verifier**,
   not the producer — `qa-engineer` (testing-end-user) verifies against real infrastructure, never
   implements. Disjoint agents, disjoint skills, structurally separated (verifier cold-spawned at the
-  first cycle verification, evidence/reports lead-routed, no producer↔verifier contact); the
+  first cycle verification; cycle verification hand-offs peer-routed producer↔verifier per the shape's
+  mesh, with every non-clean verdict and the endgame yours); the
   verification skill is **never** mounted on staff. **Validation model:** the bounded in-loop critique —
   qa's per-cycle verification + the final validation, unsized by design; no sized end-stage review (the
   shape's in-loop-critique branch).
@@ -195,9 +206,12 @@ invariants under fix-on-sight; structural change → `ARCHITECTURE.md` via a fre
   `IMPLEMENT_STOP` checked before each seat send. You count every round.
 - **Human gates:** G1 input recovery + governance / entry surface · G3 clarification (incl. the
   "Research this" knowledge-gap branch when staff flags ambiguity) · G4 exit-early / escalation on any
-  guard trip · the **confidence gate** (per cycle: deterministic CLI verifications that 100% pass →
-  auto-approve; GUI / subjective / any-failure / a `production`+-tier domain-registry addition →
-  human checkpoint) · **G5** the named final-acceptance
+  guard trip · the **per-cycle checkpoint**, which carries the shape's devolved branch — it is
+  skipped **exactly** when every verification in the cycle is a deterministic CLI check at 100% pass
+  **and** no deviation is reported **and** `domain_deps_added` is empty (that cycle clears on qa's
+  PASS-with-evidence, unread by you); otherwise it fires — GUI / subjective / any failure / any
+  reported deviation, with a `production`+-tier domain-registry addition forcing the human checkpoint
+  · **G5** the named final-acceptance
   gate before "done." **No G2** — implement has a single verifier, so plan's feasibility-rejection slot
   is intentionally unused.
 
@@ -227,11 +241,14 @@ design:
 **What you own (not the seats):** the cycle sequence (foundation before feature; current = first
 unchecked) and each cycle's loop (round counter, no-progress check, retry cap, kill-switch,
 escalation); the execute→verify pairing (every produced cycle followed by a qa verification in the
-same round, never skipped); the verdict against the default-FAIL done-condition (qa grades from real
-infrastructure, you Read the cycle-reports + verification reports and decide — cycle-checkpoint =
-criteria-met + gates pass; final-validation = all `[x]` + gates + traceability + governance alignment;
-qa's status is input); the fix-pass routing and its max-3 bound; the two implementation gates (the
-per-cycle **confidence gate** auto-approve-vs-checkpoint placement, the named final-acceptance **G5**)
+same round, never skipped — the hand-off is peer-routed, the pairing is still yours to enforce); the
+verdict on every non-clean cycle and on the endgame (qa grades from real
+infrastructure, you Read the escalated cycles' reports and the final-validation report and decide —
+cycle-checkpoint = criteria-met + gates pass; final-validation = all `[x]` + gates + traceability +
+governance alignment; qa's status is input wherever judgment exists — a cycle on the devolved clean
+branch clears without your read, and you count it from qa's clearance notice); the fix-pass routing
+and its max-3 bound; the two implementation gates (the per-cycle checkpoint and its devolved-branch
+predicate, the named final-acceptance **G5**)
 plus G1 / G3 / G4; the tasks-complete entry gate and the governance / design-input prerequisites;
 project scaffolding; verifying each seat actually wrote its expected files (a missing output → log and
 ask retry/abort); and never mounting the verification skill on staff or letting staff grade its own
