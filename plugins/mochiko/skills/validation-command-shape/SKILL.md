@@ -6,7 +6,7 @@ description: |
   phase/flow/Contract headings absent, no ordinal steps inside Constraints, per-block
   ceilings, no seat row grading its own output, references present, no restated
   single-sourced prose, exceptions marked, frontmatter correct) beneath a prose judgment
-  ceiling (altitude, parameter completeness over the P1–P16 slot set, Goal/Constraints
+  ceiling (altitude, parameter completeness over the P1–P17 slot set, Goal/Constraints
   soundness, preserved responsibilities), plus the strip-note audit during minimalism waves
   and the shape-revision audit (a revised command-shape.md graded for ruling fidelity,
   altitude, logging, and re-audit coverage) → binary PASS/FAIL + fix list. Use when grading
@@ -36,10 +36,12 @@ ceiling** does the work grep cannot. A floor failure is a FAIL regardless of how
 prose reads. (The residual risk that the judgment layer
 rationalizes is recorded as accepted — the floor is the backstop.)
 
-Shape v5 is goal-shaped: the command **is** its contract, in five blocks. The floor below
-grades that structure mechanically. The per-check disposition from v4 — what was kept,
-dropped, or re-keyed at this revision, and why — is recorded in
-`.mochiko/strips/validation-command-shape.md`; read it when auditing the revision itself.
+The shape has been goal-shaped since v5: the command **is** its contract, in five blocks. The
+floor below grades that structure mechanically. The per-check disposition from v4 — what was
+kept, dropped, or re-keyed at that revision, and why — is recorded in
+`.mochiko/strips/validation-command-shape.md`; read it when auditing the revision itself. The
+v6 lockstep edits (the P17 slot, its `+60` ceiling term, two check-8 markers) are logged in the
+same note.
 
 ## The deterministic floor (grep-checkable — run first, record results as evidence)
 
@@ -103,10 +105,20 @@ Against the command file:
      and at `implement` — before being written down here.
    - `R` = data rows in the Recovery table (0 where the block is one-lined).
 
-   Ceilings: preamble ≤ 130 · Goal ≤ 150 · Seats & checks ≤ 100 + 45·S · Constraints ≤
+   Ceilings: preamble ≤ 130 · Goal ≤ 150 · **Seats & checks ≤ 100 + 45·S, plus 60 where a P17
+   lifecycle line is present** (grep `**Seat lifecycle:**`) · Constraints ≤
    90·(G+2) · **Bindings ≤ 90 + 12·A, plus 30 where a KM-landing or index-bookkeeping binding
    is present** · Recovery ≤ 60 + 14·R. Over a ceiling is a floor FAIL — name the block, the
    count, the term values, and the bound.
+
+   **The P17 `+60` term, calibrated at shape v6** — the same construction as Bindings' `+30`,
+   for the same reason: a newly declared slot lands inside an already-tight block, so without a
+   term of its own the three commands that bind it fail on the binding rather than on bloat.
+   Measured at the revision: `brainstorm` 187 · `plan` 347 · `implement` 319, against
+   un-augmented ceilings of 190 · 370 · 280 — implement is **39 w over** on a 48-word
+   lifecycle line it is required to carry. Sized to the heaviest legitimate binding plus the
+   headroom the tight-ceiling rule asks for; re-key it if a later binding lands materially
+   larger.
 
    **A block's `## Heading` line does not count toward its ceiling** — count body words only.
    This is the reading the calibration's own evidence requires, not a preference: `brainstorm`'s
@@ -144,6 +156,9 @@ Against the command file:
      by structure, which states both phrasings — the table *shows* independence; prose
      asserting it is restatement)
    - `respawn is cold by design` (home: Layer 2 Independence by structure)
+   - `artifact set alone` and `invented number` (home: Layer 2 Per-seat context lifecycle —
+     the respawn-brief rule and the no-self-report rationale). A command binds P17 by naming
+     *its own* unit, seat and cadence; reproducing the doctrine behind them is restatement.
 
    Every marker above must be text one of the named homes actually carries — a marker whose
    home does not contain it is a broken check, not a strict one, and is fixed by re-keying the
@@ -169,8 +184,13 @@ Against the command file:
     bounds · **P9** invariants + survivors · **P10** artifact set · **P11** uncertainty
     carrier · **P12** fact route · **P13** verify-pass owner (sized review only) · **P14**
     clearing unit + checkpoint keying (devolved branch only) · **P15** pause location ·
-    **P16** resume rows. An unbound parameter is a gap, not a style choice; a conditional
-    slot that does not bind carries its stated absence (check 3's rule).
+    **P16** resume rows · **P17** lifecycle override (team-form, override only). An unbound
+    parameter is a gap, not a style choice; a conditional slot that does not bind carries its
+    stated absence (check 3's rule) — **P17 the one exception**: an unbound P17 states nothing
+    at all, because Layer 2's default governs the silence (TC-D6 rejected forced per-command
+    explicitness, so a "no lifecycle override" line would be the defect, not the conformance).
+    Grade P17 the other way instead — a command whose recycle moments or counted unit visibly
+    differ from the Layer-2 default while it carries no `**Seat lifecycle:**` line is the gap.
 13. **Goal and Constraints sound** — the Goal's end state is measurable and its not-done
     states are real states of this workflow, not generic FAIL prose; every gate the body
     relies on appears as a Constraints line carrying all three of opening evidence · who

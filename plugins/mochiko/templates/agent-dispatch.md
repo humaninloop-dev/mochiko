@@ -43,13 +43,18 @@ the call.
 
 ---
 
-**Seat transport** (spawning a named teammate, the `name:` discriminator, the addressability
-probe) now lives in `templates/command-shape.md` **Layer 2** — command-layer-only mechanics,
-homed with the rest of the team transport. This file is form-agnostic: it briefs a call,
-whether that call fills a seat or fires a one-shot subagent.
+**Seat transport and per-seat context lifecycle** (spawning a named teammate, the `name:`
+discriminator, the first-spawn probe, and the recycle cadence with its respawn-as-reset
+briefing) live in `templates/command-shape.md` **Layer 2** — command-layer-only mechanics,
+homed with the team transport they belong to. This file is form-agnostic: it briefs a call,
+whether that call fills a seat, **refills one with a versioned-name successor**, or fires a
+one-shot subagent — a refill is an ordinary dispatch to brief, never the transport anti-pattern.
 
-**Briefing version:** v5 (2026-07-30 — command-succinctness-strip D6: Seat transport relocated
+**Briefing version:** v6 (2026-08-01 — `standing-seat-lifecycle` D3 as amended by TC-D6: the
+Layer-2 pointer retargeted — lifecycle joins transport at the same home, and a versioned-name
+refill is named as a briefable call; v5 2026-07-30 — command-succinctness-strip D6: Seat transport relocated
 to `command-shape.md` Layer 2 · the team-form roster paragraph relocated to the strip note ·
 the degrades-gracefully restatement deduped; v4 2026-07-23 — header relocated to the strip
 note; roster staleness fixed) · **Governed by:** `loop-discipline` · **Pairs with:**
-`command-shape.md` (the command pattern + seat transport) · `workflow-contract.md`
+`command-shape.md` (the command pattern, seat transport + per-seat context lifecycle) ·
+`workflow-contract.md`

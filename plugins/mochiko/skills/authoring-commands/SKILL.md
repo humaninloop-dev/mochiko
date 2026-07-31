@@ -20,8 +20,8 @@ description: |
 Four jobs, one discipline: a command states its per-workflow parameters and references
 everything else. The shape's single authoritative home is
 `${CLAUDE_PLUGIN_ROOT}/templates/command-shape.md` (Layer 1 form-agnostic core · Layer 2
-team transport) — **Read it first, every run**; this skill never restates its content.
-Dispatch briefing + seat transport: `templates/agent-dispatch.md`. Loop soundness:
+team transport **and per-seat context lifecycle**) — **Read it first, every run**; this skill
+never restates its content. Dispatch briefing: `templates/agent-dispatch.md`. Loop soundness:
 `mochiko:loop-discipline`.
 
 ## Job 1 — author a new command

@@ -6,6 +6,260 @@ Shape v3 also *added* the Run-cost entry element (D2 — recorded in ROADMAP, no
 
 ---
 
+# v0.38.0 — shape v5 → v6, Layer 2 re-framed into two axes
+
+**Wave context:** the queued Layer-2 context-lifecycle rewrite and the transport repair executed
+as **one** shape revision, per the user ruling **R1** on
+`.mochiko/brainstorms/plan-run-transport-forensics/record.md` (2026-08-01) and the
+combine-precedented-waves practice. Ruling sources, all three: `team-lead-strategic-compaction`
+**TC-D1–D6** (2026-07-31) · `standing-seat-lifecycle` **D1–D3** as amended (2026-07-23) ·
+the forensics record's **R2** (probe discriminator), **R3** (refusal stands), **R4** (micro-send
+hygiene). The BACKLOG build spec is "Standing-seat build items — surface specified 2026-07-31".
+
+**Version note — the ceremony was briefed as v0.37.0 and landed at v0.38.0.** `0.37.0` was
+already spent at `HEAD` (551f5d2) by the `@`-reference-recovery supersession, which carries its
+own five strip entries at that stamp. Two waves cannot share a version stamp, so this one takes
+the next: **0.38.0**. Flagged to the wave lead rather than silently re-used. (Unrelated
+coincidence worth naming so a later reader does not conflate them: the forensics record notes the
+user labelling the *observed run* "v0.38.0" while every readable surface said 0.36.0 — that label
+is still unexplained and has nothing to do with this bump.)
+
+**Coordination markers discharged.** Both deferral markers below are now **spent** by this
+revision: the `[v0.31.0]` marker ("the next Layer-2 rewrite … whoever builds it starts from v4")
+and the `[v0.33.0]` marker that re-based it to v5. The rewrite started from **v5** as that marker
+directed, and `standing-seat-lifecycle` D3 is no longer unbuilt.
+
+**Additions this revision** — recorded for the decision row, not as strips (the v3 run-cost
+precedent, since retired): the whole **Per-seat context lifecycle** subsection (seats-only lead
+responsibility · the governed-set criterion · the counted-not-observed ~≥3 gate-pause cadence ·
+respawn-as-reset with versioned-name successors · end-of-need shutdown · the no-ritual-sends
+line) · the two-axis framing paragraph opening Layer 2 · the `### Team transport` /
+`### Per-seat context lifecycle` subheadings · **P17** in the slot index · the seat-persists-
+across-incarnations clause in Respawn-as-reset (added so a roster row reading *standing* does not
+read as "never recycle" — without it every recycled seat's P5 row contradicts the cadence).
+
+**Slot map — no v5 slot moves.** **P1–P16 are unchanged in binding, wording, and block.** One
+slot is **new: P17** — the per-command lifecycle override, team-form, **override-only**. P17 is
+the one slot in the set whose *absence is silent by ruling*: check 3's stated-absence rule does
+not reach it, because TC-D6 explicitly rejected forced per-command explicitness ("a mandatory
+line in every command while a differing command writes the same override line under either
+option"). Retirement by omission is forbidden and nothing is retired here — the v4→v5 map above
+stands untouched.
+
+**Run cost — re-measured after the fix round, which is the only basis these figures have.**
+`command-shape.md` **16,735 → 23,060 B** (+6,325; words 2,547 → 3,518) and `agent-dispatch.md`
+4,175 → 4,624 (+449), so the shared always-read floor goes **32,836 → 39,610 B, +6,774 B on every
+team-form run** (with `loop-discipline`'s 11,926 B still retained). Layer 2 itself: **737 → 1,519
+words** — the new lifecycle subsection 566 w / 3,453 B, the transport axis +216 w; those three
+are unmoved by the closing sweep, which edited only the footer. *(Superseded figures, recorded so
+the drift is traceable rather than silently overwritten: round 1 — 22,481 B / 3,437 w, floor
+39,003, +6,167, measured before F1 and F4 existed; round 2 — 22,845 B / 3,488 w, floor 39,395,
++6,559, measured before the closing footer sweep. **Each was true of a file that no longer
+ships**, which is the whole reason this paragraph is re-measured at every close rather than
+carried.)*
+**The fix round made this larger, deliberately:** F1's positive roster check costs more words
+than the two negative signals it replaced, and buying a probe that cannot silently false-pass is
+worth more than the bytes — the whole reason this revision exists is a run that spent ~285
+minutes on transport a cheaper check waved through. **This is the
+largest single run-cost growth the shape has taken**, larger than v5's +3,225. No offsetting
+saving is claimed and none exists: nothing was relocated out and nothing was dropped. The honest
+trade is stated rather than dressed — the doctrine this adds was **absent** from the shipped v5,
+and the forensics run measured the cost of its absence in the same units the shape is paid in
+(≈285 min of seat runtime with a 14+-pass standing seat nobody recycled, ~30 min of pure ritual
+loss, and a whole run on the forbidden transport). A reader is entitled to weigh 6.6 KB/run
+against that themselves; the strip discipline's job here is to make sure the bytes are not
+hidden.
+
+## [v0.38.0] The standing-seat continuity clause retired
+- **Disposition:** superseded → continuity's home is now named **per seat** in the new Per-seat
+  context lifecycle subsection ("Continuity lives in the transcript or in the artifacts — named
+  per seat, never assumed"); the "Seats, not dispatches" sentence keeps its live half.
+- **Tier failed:** n/a — supersession by ruling (`standing-seat-lifecycle` **D3**, ruled Q7
+  option b: *"the sentence 'that continuity is what a standing seat buys' is retired"*; carried
+  into Layer 2 shape-wide by **TC-D5**). Ground on record: the map's arithmetic **inverts** the
+  claim for exactly the longest-lived seats — the transcript a standing seat carries stops being
+  the cheaper carrier once it exceeds the artifact set a fresh successor would read.
+- **Content (v5, verbatim):** "…and every follow-up goes to the **same named seat**, which is
+  the continuity a standing seat exists to buy."
+- **Kept deliberately:** the whole operative rule — reports arrive as messages, a teammate's
+  plain text is invisible to the lead, and every follow-up goes to the same named seat. Only the
+  *causal claim* about what standing buys was retired; the routing it justified is untouched,
+  now reading "— or, after a recycle, to its named successor" so the rule survives recycling.
+- **Consumers assessed:** the per-command benefit lines D3 named (`implement.md`:52–55/:64–65,
+  `plan.md`:52, `tasks.md`:52) **no longer exist as written** — the goal-shape rebuild (v0.35.0)
+  already compressed them into P5 spawn cells, and `tasks.md` was merged into `plan` at v0.30.0.
+  What survives in the six commands is spawn-column wording only ("standing across rounds",
+  "cold at first review, standing after"), which the new doctrine leaves accurate: the
+  seat-persists-across-incarnations clause was added precisely so those rows stay true.
+
+## [v0.38.0] The fresh-spawn anti-pattern line retargeted at transport
+- **Disposition:** superseded → rewritten in place, in the same Seat-transport bullet, as a
+  rule about **nameless one-shot dispatch** plus an explicit carve-out for deliberate recycling.
+- **Tier failed:** n/a — supersession by ruling (`standing-seat-lifecycle` **D3**: the line *"is
+  retargeted at transport: nameless one-shot dispatch that loses roster, messaging, and
+  independence structure remains forbidden — the recorded setup-v3 defect stays fully guarded —
+  while deliberate boundary recycling (externalized state per D2, same seat name, named policy
+  per D1) is defined as not that anti-pattern"*).
+- **Content (v5, verbatim):** "**Every later round** is a `SendMessage` to that same name. A
+  fresh spawn per round is the subagent anti-pattern wearing a team's clothes."
+- **Kept deliberately:** every-later-round-is-a-`SendMessage` (the routing rule) and the
+  anti-pattern itself — the setup-v3 defect stays guarded, now named by what actually causes it
+  rather than by spawn frequency. The `name:`-discriminator bullet above it and its
+  `forbidden transport` marker (grader check 8) are **untouched**.
+- **Amended against the record:** D3 wrote the carve-out as "**same seat name**"; TC-D5
+  superseded that to **versioned names** pending the v2.1.199 name-refusal check. The rewrite
+  encodes the versioned-name form, and the forensics run supplies the field evidence D3 lacked —
+  a live respawn's name takeover produced a silently-failed send ("Nothing was sent", transcript
+  line 1623).
+
+## [v0.38.0] The first-spawn probe's addressability discriminator replaced
+- **Disposition:** superseded → the probe now keys on a **positive, documented roster check** —
+  Read the team config's `members` array and confirm the seat's `name` is in it. Refusal is
+  unchanged and no degraded branch was added.
+- **Tier failed:** n/a — supersession by ruling (forensics **R2**, user 2026-08-01, on the F1
+  finding). The check was not verbose — it was **falsified**: named subagents are
+  `SendMessage`-addressable in the current harness, so the probe passed on precisely the
+  transport it exists to reject, for a whole run ("the first-spawn probe, which succeeded",
+  transcript line 144).
+- **Content (v5, verbatim):** "**Verify before proceeding:** the first spawn is the
+  authoritative probe — confirm it yielded an **addressable teammate** (a named agent you can
+  `SendMessage`; the agent panel alone does not distinguish teammates from subagents). Not
+  addressable → kill it and respawn, explicitly requesting an agent team."
+- **Kept deliberately:** the first spawn as the authoritative probe (P2) · the agent-panel
+  caveat (still true, and doc-confirmed) · the kill-and-respawn-explicitly-requesting-a-team
+  recovery · and the refusal it falls back to.
+- **Ruling R3 encoded as a stop, not a branch:** "the same result again stops the run per the
+  hard requirement, there being no degraded branch to take." The alternative on the table —
+  proceed degraded-with-record — was **rejected by the user**; the run that proved degraded mode
+  survivable is the same run that proved it goes unnoticed, which is what the refusal buys.
+- **R2's documentation verification: PERFORMED** (independent fact-check + auditor, 2026-08-01,
+  against the agent-teams and sub-agents pages) — the residual this entry first recorded as
+  *unperformed* is **closed**, and the check was rebuilt on what the docs gave. Two doc facts
+  carry it: the team config lives at `~/.claude/teams/{team-name}/config.json` with the team
+  name "`session-` followed by the first eight characters of the session ID", and it "contains a
+  `members` array with each member's name and agent ID"; and **"`SendMessage` doesn't require
+  agent teams to be enabled"** (sub-agents page) — which is *why* addressability cannot
+  discriminate, stated now from the docs rather than inferred from one run. Verified live twice:
+  by the auditor, and again in the fix round from this session's own
+  `~/.claude/teams/session-88d68b64/config.json`, whose `members` array carries each seat by
+  name. A one-shot subagent does not appear there.
+- **The first fix replaced a broken negative with two more negatives — corrected here.** The
+  round-1 encoding keyed on the *absence* of subagent markers ("subagent in this session",
+  "resumed from a transcript"), which is **the same proof-by-absence that failed at v5**: it
+  infers teammate-ness from what the harness didn't say, and neither string is documented, so a
+  wording change would silently false-pass the probe exactly as before. The roster check is
+  **positive and documented** — the seat is either in `members` or it is not. The two transcript
+  signals survive **demoted to corroboration and explicitly marked observed-not-documented**
+  ("useful mid-run and never the proof"), which is the only honest status for a v2.1.220
+  transcript string.
+
+## [v0.38.0] SSL D3's per-roster lifecycle declaration — superseded before it was built
+- **Disposition:** superseded → **TC-D6**: the lifecycle policy's home is the **Layer-2 default
+  cadence** with per-command **override** lines, not a declaration in every command's seat
+  roster. Nothing was removed from the shape, because this clause never landed in it.
+- **Tier failed:** n/a — supersession by ruling (`team-lead-strategic-compaction` **TC-D5**
+  marking, U4a: *"the lifecycle rulings are absorbed with one ruled exception: D6 supersedes
+  standing-seat D3's clause 'declared in each command's seat-roster [PARAM]'"*; `DECISIONS.md`
+  2026-07-23 row carries the same supersession).
+- **Content (the superseded clause, verbatim):** "**Per-seat context lifecycle** — standing /
+  stage-scoped / boundary-recycled — becomes a per-seat choice keyed to loop length, declared in
+  each command's seat-roster [PARAM]."
+- **What was built instead:** the axis is Layer-2 doctrine with **P17** as an override-only
+  slot. Under the superseded clause all six commands would have carried a lifecycle declaration
+  per seat (≈20 rows); under TC-D6 **three** carry one line each and three carry nothing.
+- **Kept deliberately:** D3's substance — the two axes, the per-seat continuity choice, the
+  transport retarget, the end-of-need shutdown norm with its S6 gate — all encoded. Only the
+  *location* of the policy moved.
+
+## [v0.38.0] Layer 2's heading and internal order rewritten
+- **Disposition:** superseded → `## Layer 2 — team transport and per-seat context lifecycle`,
+  with the seven existing paragraphs gathered under `### Team transport` and the new doctrine
+  under `### Per-seat context lifecycle`.
+- **Tier failed:** n/a — supersession by ruling (`standing-seat-lifecycle` **D3**: *"Layer 2 of
+  `command-shape.md` is rewritten around two axes"*, with team transport "unchanged"; **TC-D2**
+  binds the site).
+- **Content (v5, verbatim):** "## Layer 2 — team transport".
+- **Kept deliberately — and this is the load-bearing claim of the whole revision:** the transport
+  axis's content is **unchanged apart from the three entries above**. Hard requirement · Seat
+  transport's `name:` bullet · Seats, not dispatches · Seat legibility · Independence by
+  structure · In-loop mesh · Clearing under the mesh are carried across **verbatim**, in order.
+  Every grader check-8 marker homed in Layer 2 (`forbidden transport`, the `skills:`-frontmatter
+  note, `reads as a malfunction`, `input, never the gate`, `structural separation`,
+  `respawn is cold by design`) still resolves to text this file carries — verified by grep after
+  the edit, since a marker whose home stops carrying it is a broken check, not a strict one.
+- **Consumers assessed:** all six commands cite the shape home **by path, none by section
+  anchor**, so the new subheadings break no pointer. `validation-command-shape` names the file
+  and never the section — unaffected. `authoring-commands`' Overview *did* enumerate the layers
+  ("Layer 1 form-agnostic core · Layer 2 team transport") and was made stale by this rename;
+  **corrected in the same wave** rather than deferred, together with a second pointer in that
+  same sentence that had been stale since v0.33.0 — entry:
+  `.mochiko/strips/authoring-commands.md` [v0.38.0]. The `mochiko:command-architect` agent
+  description references the shape generically and enumerates no layers — checked, unaffected.
+
+## [v0.38.0] Grader lockstep — the P17 slot, its ceiling term, two markers
+- **Disposition:** relocated/extended → `skills/validation-command-shape/SKILL.md`; the
+  per-check disposition is logged in `.mochiko/strips/validation-command-shape.md` at this same
+  stamp. Recorded here too because the shape's own rule couples them.
+- **Tier failed:** n/a — a revision consequence, not a strip. A new declared slot with no grader
+  term is a slot the audit cannot see.
+- **Content:** check 12 gains **P17** with the ruled no-stated-absence carve-out and an inverted
+  grading direction (the gap is a command that *needs* an override line and lacks one) · check 6
+  gains **Seats & checks +60 where a P17 lifecycle line is present**, keyed on the literal
+  `**Seat lifecycle:**` label the shape now mandates · check 8 gains two markers
+  (`artifact set alone`, `invented number`) · the frontmatter's "P1–P16 slot set" → "P1–P17".
+- **Why the ceiling term was forced, measured:** the three binding commands land at **187 / 347 /
+  319** words in Seats & checks against un-augmented ceilings of **190 / 370 / 280** —
+  `implement` is **39 w over** on a line the shape requires it to carry, and `brainstorm` clears
+  by 3. Without the term, binding P17 correctly would be a floor FAIL, which is the
+  "fails on formatting, not on bloat" failure the Bindings `+30` term already exists to prevent.
+  Same construction, same reason.
+- **Consumers assessed:** `validation-command-shape` is the only grader of this surface;
+  `authoring-commands` Job 1 step 3 walks the `[PARAM]` tags generically and needs no edit (P17
+  is tagged, so the walkthrough finds it) — its Job 4 is what this run executed and it is
+  unchanged. `loop-discipline` untouched: this revision adds no loop requirement.
+
+**Re-audit coverage — the named set.** The shape's rule is one edit here plus a re-audit of the
+conformant commands. This revision's set, all of it owed to the independent audit and none of it
+deferrable to a later ceremony:
+
+1. **`templates/command-shape.md`** — shape-revision mode, `validation-command-shape` checks
+   16–19 (the revision graded as its own artifact).
+2. **`commands/brainstorm.md` · `commands/implement.md` · `commands/plan.md`** — full command
+   grade (checks 1–15). Each gained a P17 line and each sits inside the new `+60` term; the
+   `implement` line is the tightest fit in the set.
+3. **`commands/specify.md` · `commands/slice.md` · `commands/setup.md`** — **confirmatory**
+   pass, and it is a real check, not a formality: the claim under grade is that each one's
+   recycle moments do **not** differ from the Layer-2 default and its counted unit is
+   unambiguous, so the correct binding is *silence*. A grader that finds a genuine difference in
+   any of the three has found a missing P17 line.
+4. **`skills/validation-command-shape/SKILL.md`** — the lockstep edits above, graded for
+   honesty and minimality (author ≠ grader holds: this revision's author wrote them).
+5. **`templates/agent-dispatch.md`** — briefing v6, the matching D3 retarget (entry:
+   `.mochiko/strips/agent-dispatch.md`).
+
+**Deliberately not encoded, with the reason** — so the audit grades an absence rather than
+hunting one. Three, and the ruled set is **SSL D1–D4** and **TC-D1–D6** (this note's earlier
+"D1–D3" was the *encoded* subset, not the ruled one — corrected):
+
+1. **TC-D2's known limit** — the Layer-2 home enters the lead's context as message history and
+   is summarized away by the lead's own compaction; an unmitigated, accepted risk. Encoding it
+   would require a post-compaction re-read duty on the lead, which is **exactly the lead-side
+   lever TC-D1 rejected at Q8**. Writing it in would contradict the ruling that scopes this whole
+   doctrine to the seats. It stays a recorded risk in the record, not shape text.
+2. **SSL D4 — per-seat measurement rides the epic's OTel probe.** No shape surface, **by
+   design**: D4 extends a *measurement* decision (probe scope, `agent.name` attribution, the
+   §5 unknowns, a manual `/usage` reading at gates) and binds no command behavior. A shape that
+   mandated telemetry would also be the first step toward the kernel the project forbids. Its
+   absence here is the ruling's intent, not an omission.
+3. **TC-D5's cost rider** — no per-respawn token figure exists for any seat, so the **~≥3
+   default is probe-tunable**, not measured. Encoded as the *value* only, never as a claim about
+   it: Layer 2 states "recycles at **~≥3**" and says nothing about what it saves. The tilde is
+   load-bearing and deliberate. When the probe lands, one shape edit re-tunes all six commands —
+   which is why no command restates the number (`implement`'s line names its unit and override
+   and inherits the value).
+
+---
+
 # v0.33.0 — shape v4 → v5, the goal-shaped anatomy
 
 **Wave context:** command goal-shape rebuild, **step 1 of 4** (design:

@@ -14,6 +14,61 @@ entries below. **Also stale:** the shape is **v5** as of the v0.35.0 wave below,
 
 ---
 
+## [v0.38.0] `RETURNED:` — the seat-recycling binding, re-added as a P17 lifecycle line
+
+- **Evidence:** `.mochiko/brainstorms/team-lead-strategic-compaction/record.md` **TC-D5/TC-D6**
+  (`DECISIONS.md` 2026-07-31) + `.mochiko/brainstorms/plan-run-transport-forensics/record.md`
+  **R1** (user-ruled 2026-08-01) + the open BACKLOG item "Standing-seat build items — surface
+  specified 2026-07-31". Wave note: `.mochiko/strips/command-shape.md` v0.38.0. Not an override
+  re-add — every ground the v0.35.0 revert gave is discharged below, by name.
+
+**The three grounds of the v0.35.0 revert, each answered:**
+
+1. *"The wave's contract is translation under true-reductions-only accounting, and this was its
+   only line of new behavior."* — **Spent.** That was the goal-shape translation wave's contract;
+   this is the build wave the same entry pointed at ("the BACKLOG item remains the build's proper
+   home"), and its contract is to build.
+2. *"D1's cycle floor is probe-calibrated and the D4 probe is deferred, so the command would carry
+   an approximate threshold."* — **Still true of the probe, and answered by where the number now
+   lives.** The D4 probe remains deferred, but **TC-D6 ruled the ~≥3 default into Layer 2** as a
+   probe-tunable shape value. So implement carries **no threshold at all**: the re-added line
+   names its *unit* (the cycle) and its *override*, and inherits the number. When the probe tunes
+   the default, one shape edit re-tunes all six commands and implement needs no touch — which is
+   the outcome this ground was protecting.
+3. *"Standing-seat D3 — the Layer-2 reframe that would give each command a per-seat lifecycle
+   `[PARAM]` — is unbuilt … so the invariant was a workaround for a missing shape slot rather
+   than a home."* — **Discharged: the slot now exists.** Shape **v6** carries the two-axis Layer 2
+   and **P17**, so the re-added text is a slot binding, not a workaround.
+
+**What came back, and it is smaller than what left.** The revert removed an 88-w `Seat recycling`
+invariant from Constraints plus "recycled per Constraints" / "recycled per slice" from the two
+spawn cells. What returns is a **48-w** `**Seat lifecycle:**` line beneath the Seats & checks
+table — **40 w less**, and in a different block, because the doctrine the 88 words carried is now
+in the shape home. **Constraints is untouched by this re-add**, measured **784/900** at this
+revision — *not* the 796 the v0.35.0 entry records: that figure was correct when written and the
+**v0.37.0 `@`-reference supersession took 12 words out of G1**. Re-measured rather than carried,
+because a figure quoted from a prior wave is exactly the kind that goes stale unread. The words
+land in Seats & checks instead: **271 → 319**, against the ceiling's new `+60` P17 term
+(280 → 340).
+
+**What the line binds, all three of implement's genuine differences from the Layer-2 default:**
+the **counted unit is the cycle** (implement's Bounds count three different things — retries per
+cycle, fix passes, and stall rounds — so the lifecycle denominator is ambiguous without this) ·
+the **verifier's per-slice override** with its final-validation incarnation briefed from the
+on-disk verification reports (standing-seat **D1**, the ruled asymmetry) · the **retry/fix-pass
+respawn** carrying the failed-task list **and** the just-failed `cycle-report.md` **relayed at
+dispatch** (D1's S1 fold, on F-g's finding that the next attempt overwrites that file — a later
+re-read would hit the wrong report).
+
+**Not re-added, deliberately:** the producer's `~≥3` cycle floor and the gate-pause/cache-warmth
+condition — both are now the Layer-2 default and restating them in the command would be the
+restatement the shape forbids (TC-D6 as amended, RI-2: "implement conforms on the producer floor
+but carries one explicit override"). The two **spawn cells are left as they are** ("standing
+across the cycle sequence and the fix-pass loop" · "cold at the first cycle verification,
+standing after"): shape v6 states that a roster row reading *standing* describes the **seat**,
+not one context, so the cells are accurate under recycling and needed no re-edit — this is the
+clause that made the v0.35.0 cell edits unnecessary rather than merely reverted.
+
 ## [v0.37.0] `@`-reference recovery superseded — the platform bug it named is resolved
 - **Disposition:** superseded → user ruling (2026-08-01). The bug-attributed re-enter workaround retires; the most-recent-feature resolution is relocated into the decides-clause with a confirm.
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/decisions/2026-08-01-at-reference-recovery-superseded.md`; `DECISIONS.md` 2026-08-01).

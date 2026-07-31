@@ -7,6 +7,38 @@ one-shot; all seven commands have been team-form since v0.17.0 (BACKLOG conversi
 
 ---
 
+## [v0.38.0] The Layer-2 pointer retargeted — lifecycle joins transport at the same home
+
+- **Disposition:** superseded → rewritten in place. Briefing **v5 → v6**. The paragraph was
+  already a ~50-word pointer after v5's relocation, so this is the minimal matching edit the
+  ruling asks for, not a second home.
+- **Tier failed:** n/a — supersession by ruling (`standing-seat-lifecycle` **D3**:
+  *"`agent-dispatch.md`'s Seat-transport section gains the matching retarget"*, as amended by
+  **TC-D6**; wave note: `.mochiko/strips/command-shape.md` v0.38.0).
+- **Content (v5, verbatim):** "**Seat transport** (spawning a named teammate, the `name:`
+  discriminator, the addressability probe) now lives in `templates/command-shape.md` **Layer 2**
+  — command-layer-only mechanics, homed with the rest of the team transport. This file is
+  form-agnostic: it briefs a call, whether that call fills a seat or fires a one-shot subagent."
+- **What changed and why, clause by clause:** "the addressability probe" → "the first-spawn
+  probe" (the v5 discriminator was **falsified** this same revision — naming the retired check
+  in a pointer would send a reader hunting for text that no longer exists) · the pointer's
+  contents list gains "the recycle cadence with its respawn-as-reset briefing", because the
+  lifecycle axis now lives at the same address · the form-agnostic sentence gains a third case,
+  **"refills one with a versioned-name successor"**, with the retarget stated in six words: *a
+  refill is an ordinary dispatch to brief, never the transport anti-pattern.* That clause is the
+  whole of D3's ask on this file — this is the one place a caller decides how to brief a
+  respawn, so it is where the carve-out has to be visible.
+- **Kept deliberately:** the pointer form itself (no doctrine returns to this file — the v5
+  relocation stands) · the form-agnostic framing and its one-shot-subagent case, which is what
+  keeps this file usable by non-command dispatches.
+- **Consumers assessed:** every skill and command that briefs a dispatch reads this file; none
+  restates the pointer, so nothing downstream breaks. The **eight briefing fields and the
+  independence hard line are untouched** — a respawn brief is filled with the same eight fields
+  as any other call, which is precisely why no new machinery was added here. `command-shape.md`
+  Layer 2 carries the reciprocal wording (its own note, same stamp); `loop-discipline` untouched.
+
+---
+
 # v0.33.0 — briefing v4 → v5 (Seat transport leaves; the remainder assessed line-by-line)
 
 **Wave context:** command goal-shape rebuild, **step 1 of 4** (design:

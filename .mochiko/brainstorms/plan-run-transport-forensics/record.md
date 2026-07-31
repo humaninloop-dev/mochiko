@@ -1,8 +1,9 @@
 # Plan-run transport forensics — the S1 `author-navigate` run
 
-**When:** run 2026-07-31 (12:52 local start), analysis 2026-08-01 · **Status:** open — bare
-session (solo lead forensic over a captured transcript, un-reviewed; the
-`team-method-vs-command-shape` precedent); recommendations pending user ruling.
+**When:** run 2026-07-31 (12:52 local start), analysis 2026-08-01 · **Status:** accepted —
+bare session (solo lead forensic over a captured transcript, un-reviewed; the
+`team-method-vs-command-shape` precedent); R1–R5 user-ruled 2026-08-01, build landed same day
+at v0.38.0 (shape v6; audit FAIL→PASS in one fix round + two sweeps — see Landing).
 **Input:** [inputs/2026-07-31-plan-s1-run-transcript.txt](inputs/2026-07-31-plan-s1-run-transcript.txt)
 — the full 1,844-line session capture of `/mochiko:plan author-navigate --slice S1` in
 `mochiko-app` (Claude Code v2.1.220). Line cites below are into that file.
@@ -138,7 +139,7 @@ verified closures; honest self-corrections) is the production-only depth bet doi
    doctrinally required, so this is the depth bet's price, mitigated only by better first
    drafts.
 
-## Recommendations (pending ruling)
+## Recommendations (ruled 2026-08-01 — outcomes in Landing)
 
 **R1 — execute the queued Layer-2 context-lifecycle rewrite and the transport repair as ONE
 shape revision** (v5→v6, one re-audit ceremony, per the combine-precedented-waves practice):
@@ -153,6 +154,9 @@ governed; the implement re-add) and the `validation-command-shape` teeth, per th
 no longer proves teammate. The check must key on evidence the harness actually gives (the
 resolve output's own classification, or a team-roster query), phrased against the current docs
 — to be verified against official Claude Code documentation at build time, not invented.
+*(Superseded at build: the doc check found a **positive** discriminator — the team config's
+`members` array at `~/.claude/teams/session-<first-8-of-session-id>/config.json`; the resolve
+strings this paragraph names shipped only as observed-not-documented corroboration.)*
 
 **R3 — rule the degraded-transport branch** *(new ruling needed)*: when only subagent
 transport exists, does a team-form command **refuse** (the letter of the no-fallback bet,
@@ -173,9 +177,41 @@ conversation cannot be mechanically graded; adding machinery would be invented e
 Keep the ban, log this run as the breach evidence, revisit only if it recurs post-R1 (the
 rewrite's dispatch-brief already re-states the register).
 
+## Landing (2026-08-01)
+
+**Rulings (user, 2026-08-01):** R1 adopted — one combined v5→v6 revision · R3 adopted as
+**keep refuse + fix probe** (no degraded branch; the Contested no-fallback bet's letter holds,
+its revisit trigger unchanged) · R4 adopted — the no-ritual-sends line · R5 adopted — vocab
+ban recorded, no machinery. R2 executed as part of R1.
+
+**Built (plugin v0.38.0, shape v6; command-architect authored, independent
+`validation-command-shape` audit):** Layer 2 re-framed into team transport + per-seat context
+lifecycle (TC-D1–D6 · SSL D1–D3 as amended encoded; SSL D4 and TC-D5's cost rider deliberately
+not, logged); the first-spawn probe rebuilt on the **documented positive roster check** (team
+config `members` array — found by an independent doc check after the audit's Critical caught
+round 1 re-encoding proof-by-absence), transcript strings demoted to corroboration; **P17**
+lifecycle-override slot (override-only — silence is conformant) + grader lockstep with the
+`+60` ceiling term; lifecycle lines in brainstorm (fact-checker cadence-exempt), implement
+(cycle unit · per-slice verifier override · retry relay), plan (unit counted **cumulatively
+across stages** — the exact counter-reset failure this run measured). Audit: FAIL (1 Critical,
+3 Important, 4 Minor) → fix round → PASS + two footer/figure sweeps. Run cost stated, not
+offset: shared always-read floor 32,836 → 39,610 B (**+6,774 B/run**).
+
+**Banked from the doc sweep:** TC-D5's P26 watch-item settled — v2.1.199's documented
+name-refusal ("SendMessage… refuses the send rather than delivering it to the wrong agent")
+confirms versioned-name successors as the right shipped default. TC-D4's governed-set ranking
+was field-confirmed by this run within one pass (≤15 predicted, 14+ observed).
+
+**Landed:** DECISIONS.md row (2026-08-01) · BACKLOG "Standing-seat build items" → trail ·
+ROADMAP Next token-epic touch · index status updates (this entry; the compaction entry's
+build state).
+
 ## Open questions
 
 - Where does the **v0.38.0** label come from? No surface this sandbox can read carries it.
+  *(Landing note: this wave itself now occupies plugin v0.38.0 — 0.37.0 was consumed by the
+  concurrent `@`-reference wave mid-session. Coincidence with the user's run label; the label's
+  origin stays unexplained.)*
 - Whether `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS` was set in the `mochiko-app` session — the
   transcript never shows the env check, only the (falsely-passing) probe.
 - TC-D4's governed-set ranking predicted this seat's pass count within one — worth citing in

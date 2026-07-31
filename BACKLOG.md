@@ -198,14 +198,6 @@ together.
   not an artifact wave; revisit: an amend run showing read cost mattering); (2) brainstorm
   `record.md`/`synthesis.md` (record length IS the audit trail; revisit: transcript forensics
   showing record *authoring* as a material pool). Neither enters scope silently.
-- [ ] **Standing-seat build items — surface specified 2026-07-31 (TC-D1–D6)** — the Layer-2
-  context-lifecycle rewrite lands **first** (TC-D5's sequencing invariant; the 2026-07-30
-  implement revert's re-add trigger): counted-loop-unit cadence default (~≥3 at gate pauses,
-  count-not-observe) · governed-set criterion (standing multi-unit; corrected ranking) ·
-  versioned-name respawn with the name-refusal check at build · brainstorm's fact-checker
-  parameter line (cadence-exempt) · implement's per-slice verifier override; then per-command
-  text (the implement re-add). Records: `standing-seat-lifecycle` D1–D4 (machinery; one
-  clause superseded) + `team-lead-strategic-compaction` TC-D1–D6 (shape-wide parameters).
 - [ ] **Parallelism deferral — live shortcut-ledger candidate** (2026-07-01) — revisit native
   `pipeline()`/`parallel()` or the lightweight kernel question **if dogfooding shows sequential
   cycle execution too slow** on a dependency-rich feature; the concrete drift-trigger the

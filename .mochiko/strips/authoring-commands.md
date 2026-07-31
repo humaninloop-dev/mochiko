@@ -3,6 +3,32 @@
 Entry formats: `strips/README.md`. Wave context: [v0.28.0] entries — skill-succinctness wave 4
 (design: `.mochiko/brainstorms/skill-succinctness-strip/record.md`, ratified 2026-07-25).
 
+## [v0.38.0] Two stale pointers in the Overview corrected (shape v6 wave)
+
+- **Disposition:** corrected in place (correction class) — two clauses, one sentence, no
+  doctrine added or removed. Wave note: `.mochiko/strips/command-shape.md` v0.38.0.
+- **Tier failed:** n/a — factual staleness in a pointer, fixed on sight while the same wave held
+  the pen on the primitives being pointed at.
+- **Content, both clauses:**
+  - "(Layer 1 form-agnostic core · **Layer 2 team transport**)" → "**Layer 2 team transport and
+    per-seat context lifecycle**". Made stale **by this revision**, which re-framed Layer 2 into
+    two axes; a keeper skill naming one of them would send an author to the home expecting
+    transport alone.
+  - "Dispatch briefing **+ seat transport**: `templates/agent-dispatch.md`" → "Dispatch
+    briefing: …". This one was stale **before this wave**: Seat transport left
+    `agent-dispatch.md` for shape Layer 2 at **v0.33.0** (command-succinctness-strip D6) and the
+    keeper skill's pointer was never re-swept. Corrected here rather than carried, and its
+    pre-existing provenance is stated so this wave takes credit only for noticing it.
+- **Kept deliberately:** the whole Overview otherwise — the four-jobs framing, the
+  never-restates-its-content rule, the Read-it-first-every-run obligation, and the
+  `loop-discipline` pointer. **Job 4 (shape-home revision) is unchanged**: this wave *executed*
+  Job 4 and found its procedure sound, so nothing in it was edited on the strength of one run.
+- **Consumers assessed:** `authoring-commands` is read by the command-architect agent at
+  authoring time only — no command or runtime surface loads it, so the correction costs no run
+  any bytes. The `mochiko:command-architect` agent's own description references the shape
+  generically ("a codified shape", "the shape's single-sourced home") and carries **no** layer
+  enumeration — checked, unaffected. `validation-command-shape` names the file, not the layers.
+
 ## [v0.28.0] One README-duplicated rationale clause stripped (body 93 → 92, −1%, deep under-band)
 
 > Count convention: figures use the cluster's uniform `total − 4` measure. This SKILL's

@@ -45,6 +45,10 @@ status taken as the gate without your read · out of rounds · G7 unaccepted.
 the completeness reviewer's skill and mode per stage and supply the artifact sets it grades across (incremental for detailed design: {new design} / {prior analysis};
 cumulative for tasks: {`tasks.md`} / {`task-mapping.md`}) — a policy call, not a hand-off.
 
+**Seat lifecycle:** the counted unit is the produce↔review round tallied **cumulatively across
+the five stages**, not the per-stage cap below — the completeness seat outlives every stage
+boundary and is the longest-lived of the governed seats here.
+
 ## Constraints
 
 - **G1 entry** — evidence: `$ARGUMENTS`, `spec.md` present and accepted, the governance region

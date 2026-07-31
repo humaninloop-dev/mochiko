@@ -77,7 +77,8 @@ grades · spawn (standing / cold / disposable, and when — the probe seat marke
 [PARAM: the seat rows]. The table **is** the producer↔validator proof: independence is
 visible in it, and **no row grades its own output**. Beneath it, one line naming which
 validation branch this workflow runs [PARAM: the validation model — the loop's bounded
-in-loop critique, or the sized end-stage review of a named artifact].
+in-loop critique, or the sized end-stage review of a named artifact] — and, where Layer 2's
+lifecycle default is overridden, the `**Seat lifecycle:**` line [PARAM: P17 — see Layer 2].
 
 **Constraints.** The gates, **in order**, one bullet each, in this exact form so the set is
 countable — `- **<label>** — evidence: … · rules: … · decides: …` [PARAM: the gate lines; a
@@ -114,7 +115,9 @@ then has nowhere to go but pause. Resume from **workspace evidence**, never a co
 validation model · **P7** gate lines · **P8** bounds · **P9** invariants + survivors · **P10**
 artifact set (paths + ID namespaces) · **P11** uncertainty carrier · **P12** fact route ·
 **P13** verify-pass owner (sized review only) · **P14** clearing unit + checkpoint keying
-(devolved branch only) · **P15** pause location · **P16** resume rows.
+(devolved branch only) · **P15** pause location · **P16** resume rows · **P17** lifecycle
+override (team-form, **override only** — an unbound P17 states nothing at all: the block-absence
+rule above does not reach it, because Layer 2's default is what governs the silence).
 
 ## Layer 1 — form-agnostic core
 
@@ -149,7 +152,14 @@ branch satisfies producer↔validator on its own.
 DAG-mediated orchestration. A command suggests commits; it never runs git mutations and
 never pushes.
 
-## Layer 2 — team transport
+## Layer 2 — team transport and per-seat context lifecycle
+
+Two independent axes. **Team transport** is how seats are spawned, addressed, and kept
+independent. **Per-seat context lifecycle** is how long one seat's context lives before it is
+reset. A seat recycled on a cadence is still fully team-form in transport; neither axis is
+evidence about the other.
+
+### Team transport
 
 **Hard requirement — agent teams.** Check `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS` in the
 environment before anything else; unset → stop and tell the user how to enable it
@@ -165,18 +175,29 @@ substrate sometimes picks wrong, so the lead carries the mechanics — not just 
   in the docs' own idiom — "create an agent team", "spawn a teammate named `<seat>`" — not
   only mochiko's "seat". **A spawn without a `name:` is a one-shot subagent — in a team-form
   command, the forbidden transport.**
-- **Every later round** is a `SendMessage` to that same name. A fresh spawn per round is the
-  subagent anti-pattern wearing a team's clothes.
-- **Verify before proceeding:** the first spawn is the authoritative probe — confirm it
-  yielded an **addressable teammate** (a named agent you can `SendMessage`; the agent panel
-  alone does not distinguish teammates from subagents). Not addressable → kill it and
-  respawn, explicitly requesting an agent team.
+- **Every later round** is a `SendMessage` to that same seat — its name, or after a recycle
+  its named successor. The anti-pattern is **nameless one-shot dispatch**: a round re-spawned
+  with no roster, no messaging, no independence structure. Deliberate boundary recycling under
+  the lifecycle axis below is not that anti-pattern and is never read as one.
+- **Verify before proceeding — check the roster, because addressability does not discriminate.**
+  `SendMessage` doesn't require agent teams to be enabled, so a *named subagent* is addressable
+  too and a send that merely succeeds proves nothing (one full live run passed this probe on
+  subagent transport). Confirm the seat **positively, from the team's own roster**: the team
+  config at `~/.claude/teams/<team>/config.json` — `<team>` being `session-` followed by the
+  first eight characters of the session ID — holds a `members` array carrying each member's name
+  and agent ID. **Read it and confirm the seat's `name` is in `members`.** A one-shot subagent
+  never appears there. Not in `members` ⇒ the forbidden transport: kill it and respawn explicitly
+  requesting an agent team; the same result again stops the run per the hard requirement, there
+  being no degraded branch to take. Two corroborating signals — **observed, not documented**, so
+  useful mid-run and never the proof: the harness resolving a name as a *subagent in this
+  session*, and a send landing *resumed from a transcript in the background*. The agent panel
+  distinguishes neither.
 
 **Seats, not dispatches.** Teammates do **not** load `skills:` frontmatter — every spawn
 prompt names the skill and role itself, plus what to Read (briefing fields:
 `agent-dispatch.md`). A teammate's plain text is invisible to the lead: reports arrive as
-**messages**, and every follow-up goes to the **same named seat**, which is the continuity a
-standing seat exists to buy.
+**messages**, and every follow-up goes to the **same named seat** — or, after a recycle, to its
+named successor.
 
 **Seat legibility.** Tell the user at the start that they can watch or message any teammate
 directly. Announce each seat in one line when it is filled — an unexplained teammate spawn
@@ -218,9 +239,70 @@ command binds there (P14). The devolved branch is *exactly* the deterministic-an
 and that exactness is the guard: wherever judgment exists, the verifying seat's status is
 **input, never the gate**.
 
+### Per-seat context lifecycle
+
+**Continuity lives in the transcript or in the artifacts — named per seat, never assumed.** A
+standing seat re-processes its whole transcript every round, and a gate pause past the cache
+lifetime re-pays it at full price; past a few units the artifact set a fresh successor reads is
+the cheaper carrier. Standing is a choice with a cost, never a property that buys continuity
+free.
+
+**The lead's context responsibility is the seats', not its own.** No lead-unilateral compaction
+lever exists — the model can neither invoke nor observe compaction, on its own context or a
+seat's. The seats' one real lever is **kill-and-respawn**, and it is a reset, not a summary: it
+discards everything not on disk.
+
+**The governed set — standing seats whose lifetime spans multiple units.** The criterion
+governs, never a list. A seat that arrives cold and then stands is governed once it is
+multi-unit: cold arrival guarantees freshness at its first round, not its fifteenth. Exempt are
+cold end-stage seats — already cold at their own stage, so recycling one buys freshness it
+already has — and any governed seat with **no countable unit**, cadence-exempt for want of a
+denominator and covered by the user override below.
+
+**The default cadence.** At each gate pause the lead **counts** each governed seat's completed
+loop units — the command's own counted unit, the one its Bounds already count — and recycles at
+**~≥3**, cache warmth composing on the same trigger: an early, still-warm pause keeps the seat
+standing, where recycling costs more than it saves. **Counted, never observed** — no occupancy
+measurement, no seat self-report: no surface exposes a seat's context occupancy to the lead or
+to the seat itself, so a self-reported context-health line is an **invented number**. The user,
+who can see the panes, may order a recycle at any gate. A command writes a lifecycle line
+**only to override** — where its recycle moments genuinely differ from this default, or its
+counted unit is ambiguous in the file. No override → nothing is written, and the default governs
+the silence (**P17**, tagged with the other slots in The blocks).
+
+**Respawn-as-reset.** The successor is briefed from the **existing on-disk artifact set alone** —
+no lead-authored state summary, no new handoff artifact — so a seat is recyclable at a boundary
+**iff** that set is current on disk, which is why the dying seat shuts down when its work is on
+disk, *before* the gate pause. The successor takes a **versioned name** (`producer-2`),
+announced like any seat: never reuse the dead seat's bare name — a send to a name that now
+resolves to a different agent is refused rather than delivered, and a refused send is a lost
+round, not an error that stops you. The **seat** persists across incarnations; a roster row
+reading *standing* describes the seat, not one context.
+
+**End-of-need shutdown.** A seat whose remaining work is zero and whose re-summons is improbable
+shuts down rather than idling to session end — hygiene plus the platform's documented advice,
+never a measured saving that outranks a live re-summons likelihood.
+
+**No ritual sends.** Every send to a standing seat re-materializes its whole transcript, so
+nothing is sent that is not a real dispatch: no compact requests (compaction is not a lever
+either of you holds) and no stamp-only resumes — fold one-line confirmations into the next real
+dispatch.
+
 ---
 
-**Shape version:** v5 (2026-07-30 — command-succinctness-strip D3 · D5 (+ folds a–c) · D6 ·
+**Shape version:** v6 (2026-08-01 — `team-lead-strategic-compaction` TC-D1–D6 ·
+`standing-seat-lifecycle` D1–D3 as amended — the **encoded subset** of the ruled D1–D4 (D3's
+per-roster-declaration clause superseded by TC-D6; D4's absence is by design, per the strip
+note) · `plan-run-transport-forensics` R1/R2/R3/R4: Layer 2 re-framed into its two axes —
+**team transport** unchanged in content, plus a new **per-seat context lifecycle** axis
+(seats-only lead responsibility · governed-set criterion · the counted-not-observed ~≥3 gate-pause
+cadence · respawn-as-reset with versioned-name successors · end-of-need shutdown · the
+no-ritual-sends line) · the standing-seat continuity clause retired · the fresh-spawn
+anti-pattern retargeted at nameless one-shot **transport** · the first-spawn probe's broken
+addressability discriminator replaced with a **documented positive roster check** (the team
+config's `members` array), the harness's name-classification and send-delivery strings demoted
+to observed-not-documented corroboration, refusal preserved with no degraded branch · **P17**
+added to the slot set, override-only; v5 2026-07-30 — command-succinctness-strip D3 · D5 (+ folds a–c) · D6 ·
 D7/D10 as amended at verify V1: the goal-shaped five-block anatomy replaces the flow/phase
 body and the Contract appendix · Seat transport absorbed from `agent-dispatch.md` · the P1–P16
 slot set supersedes v4's 13 tags · the obligated `loop-discipline` read retained under a

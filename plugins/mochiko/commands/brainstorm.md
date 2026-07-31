@@ -40,6 +40,9 @@ acceptance · a synthesis shipped without its fidelity check.
 **Validation model:** the sized end-stage review of `record.md`; there is no in-loop critique
 seat.
 
+**Seat lifecycle:** the fact-checker meets the governed criterion but counts no loop unit —
+**cadence-exempt**, recycled only on the user's gate-time order.
+
 ## Constraints
 
 - **Review sizing** *(at convergence)* — evidence: convergence signals — answers turning

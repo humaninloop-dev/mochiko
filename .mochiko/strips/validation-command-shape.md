@@ -7,6 +7,94 @@ current conventions; D1 forbids cutting to reach a band).
 
 ---
 
+# v0.38.0 — the grader revised alongside shape v6 (lockstep, four edits)
+
+**Wave context:** the Layer-2 two-axis revision (wave note: `.mochiko/strips/command-shape.md`
+v0.38.0; rulings TC-D1–D6 · `standing-seat-lifecycle` D1–D3 as amended · forensics R1–R4). The
+shape's rule couples the two files: a slot the shape declares and the grader cannot see is a
+slot that is not enforced. Body 2,429 → 2,686 words (16,113 → 17,763 B, **+10.2% w**). Four
+edits, each traceable to a shape change; **no check was loosened and none removed.**
+
+## [v0.38.0] Check 12 — the slot set gains P17, with an inverted grading direction
+- **Disposition:** extended → "P1–P16" becomes "P1–P17"; the frontmatter `description:` is
+  re-keyed to match (it advertises the slot set to the model that fires the skill, so a stale
+  range there is a real miss, not cosmetics).
+- **Tier failed:** n/a — a revision consequence.
+- **The one carve-out, and why it is a carve-out rather than sloppiness:** check 12's standing
+  rule is that "a conditional slot that does not bind carries its stated absence (check 3's
+  rule)". Applying that to P17 would oblige **every** command to write a "no lifecycle
+  override" line — which is verbatim the option **TC-D6 rejected** ("forced per-command
+  explicitness … adds a mandatory line to every command"). So an unbound P17 states **nothing**,
+  and the grader is given the inverse test instead: *a command whose recycle moments or counted
+  unit visibly differ from the Layer-2 default while carrying no `**Seat lifecycle:**` line is
+  the gap.* This keeps the slot enforceable in the direction that can actually fail — silence is
+  the conforming state, so only wrongful silence is gradeable.
+- **Consumers assessed:** `authoring-commands` Job 1 step 3 walks the `[PARAM]` tags generically
+  and finds P17 without an edit (the slot is tagged in the home). No other primitive enumerates
+  the slot set.
+
+## [v0.38.0] Check 6 — a `+60` Seats & checks term for the P17 line
+- **Disposition:** extended → "**Seats & checks ≤ 100 + 45·S, plus 60 where a P17 lifecycle line
+  is present**", keyed on a grep for the literal `**Seat lifecycle:**` label the shape now
+  mandates, so the term's condition is deterministic rather than judged.
+- **Tier failed:** n/a — forced by the shape change; **not** a relaxation reached for on the
+  author's convenience, which is why the measurement is recorded rather than asserted.
+- **The arithmetic, measured at the revision** (body words, the block's `##` heading excluded
+  per the existing rule): `brainstorm` **187** against 190 · `plan` **347** against 370 ·
+  `implement` **319** against 280. `implement` is **39 w over** on a line the shape *requires*
+  it to carry, and `brainstorm` clears its un-augmented ceiling by **3 words**. Without a term,
+  binding a mandatory slot correctly would be a floor FAIL — the "fails on formatting, not on
+  bloat" defect the **Bindings `+30`** term already exists to prevent. Same construction, same
+  ground, and it is stated here so a later auditor can re-derive it instead of trusting it.
+- **Sizing, and its honest slack:** 60 is set from the heaviest legitimate binding at this
+  revision (`implement`'s 48-word line; `plan` 34, `brainstorm` 22) plus the headroom the
+  tight-ceiling rule asks for, and
+  it clears under **both** counting conventions in circulation on this surface (with table pipes
+  counted as tokens, and without). Re-key it if a later binding lands materially larger.
+- **What was deliberately *not* done:** the un-augmented `100 + 45·S` base is **untouched** —
+  raising the base would have loosened the ceiling for the three commands that bind nothing.
+
+## [v0.38.0] Check 8 — two markers for the new lifecycle doctrine
+- **Disposition:** extended → `artifact set alone` and `invented number` join the restated-prose
+  marker set (home: `command-shape.md` Layer 2, Per-seat context lifecycle), with one line
+  distinguishing a legitimate P17 binding from a restatement: a command names *its own* unit,
+  seat and cadence; reproducing the doctrine behind them is the hit.
+- **Tier failed:** n/a — a revision consequence.
+- **Both markers verified against the home after the edit**, per check 8's own rule that a
+  marker whose home does not carry it is a broken check: `artifact set alone` sits in the
+  lifecycle subsection's **fifth** paragraph (Respawn-as-reset), `invented number` closes the
+  no-self-report clause in its fourth (The default cadence).
+- **Re-keyed in the fix round, and the first key was a live instance of the defect this check
+  exists to prevent.** The marker was first written as `respawn-as-reset`, which is **mis-cased
+  against its own home**: the doctrine paragraph heads `**Respawn-as-reset.**` (capital R), so
+  the only lowercase hit in the file is the **footer version-history line** — a marker keyed to
+  a version stamp rather than to doctrine, i.e. exactly the "broken check, not a strict one"
+  the clause above forbids. Re-keyed to `artifact set alone`, verified case-sensitively present
+  at the Respawn-as-reset paragraph. Recorded rather than quietly swapped, because a grader
+  reading only the fixed line would never learn that the check's own rule caught its author.
+- **Markers deliberately NOT added, with the reason** — this is the half of the decision that
+  would otherwise be invisible: **`~≥3` / the cadence value** (implement carries the ruled floor
+  *as its own parameter value* per TC-D5, so a marker would fire on conformant text) ·
+  **`counted, never observed`** (too close to the wording a legitimate override line needs to
+  disambiguate its unit) · **the versioned-name rule** (no command has cause to state it, so a
+  marker would guard nothing) · **a probe-discriminator check** (commands bind only the probe
+  *seat* (P2); the discriminator is homed and no command carries it — verified by grep across
+  all six: zero hits for `addressable`, `same name`, or transport-discriminator text). Adding
+  markers that cannot fire, or that fire on conformant text, is how a floor stops being trusted.
+
+## [v0.38.0] Overview — the shape-version reference made version-proof
+- **Disposition:** corrected in place (correction class).
+- **Cause:** the Overview opened "Shape v5 is goal-shaped", which reads as *the current shape is
+  v5* and was false the moment v6 landed — the same stale-summary failure mode this note's
+  v0.35.0 entry records one level up. The sentence's real claim is historical: the goal shape
+  arrived at v5 and still holds.
+- **Content:** "Shape v5 is goal-shaped: the command **is** its contract, in five blocks." →
+  "The shape has been goal-shaped since v5: …", plus a pointer line naming the v6 lockstep edits
+  logged in this note. **The five-block claim itself is unchanged and still true at v6** — the
+  anatomy was not touched by this revision, only Layer 2.
+
+---
+
 # v0.33.0 — the grader revised alongside shape v5 (CS-D9)
 
 **Wave context:** command goal-shape rebuild, **step 1 of 4** (design:

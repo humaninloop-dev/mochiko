@@ -46,6 +46,11 @@ final validation, unsized by design. The verification skill is **never** mounted
 Outside the devolved branch qa's output is **lead-adjudicated input** and the verdict is yours. One
 verifier, so implement numbers no G2 — there is no feasibility-rejection gate.
 
+**Seat lifecycle:** the counted unit is the **cycle**. **Override —** the verifier recycles per
+**slice** boundary, its final-validation incarnation additionally briefed from the on-disk
+verification reports. A retry or fix-pass respawn carries the failed-task list **and** the
+just-failed `cycle-report.md`, relayed at dispatch: the next attempt overwrites that file.
+
 ## Constraints
 
 - **G1 entry** — evidence: `$ARGUMENTS` · rules: the user · decides: the resolved `<feature>` (an
