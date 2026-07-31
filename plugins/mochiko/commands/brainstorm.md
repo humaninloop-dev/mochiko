@@ -6,7 +6,7 @@ disable-model-invocation: true
 # Brainstorm — Think Together, Review Cold
 
 **Goal:** think `$ARGUMENTS` through with the user and leave one hardened decision record
-behind. Empty topic (the known `@`-reference drop bug) → ask what we are thinking through.
+behind. Empty topic → ask what we are thinking through.
 
 **You are the lead** of a team-form command in the mochiko command shape: Read
 `${CLAUDE_PLUGIN_ROOT}/templates/command-shape.md` (both layers) and

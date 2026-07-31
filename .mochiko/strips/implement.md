@@ -14,6 +14,14 @@ entries below. **Also stale:** the shape is **v5** as of the v0.35.0 wave below,
 
 ---
 
+## [v0.37.0] `@`-reference recovery superseded — the platform bug it named is resolved
+- **Disposition:** superseded → user ruling (2026-08-01). The bug-attributed re-enter workaround retires; the most-recent-feature resolution is relocated into the decides-clause with a confirm.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/decisions/2026-08-01-at-reference-recovery-superseded.md`; `DECISIONS.md` 2026-08-01).
+- **Content (superseded, verbatim):** "Empty `$ARGUMENTS` (the known `@`-reference drop bug) → ask the user to re-enter it, or to confirm the detected feature (an explicit ID, else the most recent in-progress feature under `.mochiko/specs/`)."
+- **Kept deliberately:** the resolution clause and a confirm — G1 now decides "the resolved `<feature>` (an explicit ID, else the most recent in-progress feature under `.mochiko/specs/`, confirmed with the user before the run opens)". Only the re-enter workaround and the bug attribution left.
+- **Consumers assessed:** five-command recovery — see the shared consumer list in the `strips/plan.md` v0.37.0 entry; implement carried the resolution clause `plan` referenced, and keeps it.
+- **Protected-set note:** as recorded in the plan entry — record §7's protection premise for this recovery is spent now the bug is resolved; deliberate supersession, not a check-14 re-drop.
+
 # v0.36.0 — the production-only re-key (stage 4)
 
 **Wave context:** the PO narrowing build, stage 4 of 5 — the two commands aligned with the

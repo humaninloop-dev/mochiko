@@ -49,9 +49,9 @@ cumulative for tasks: {`tasks.md`} / {`task-mapping.md`}) — a policy call, not
 
 - **G1 entry** — evidence: `$ARGUMENTS`, `spec.md` present and accepted, the governance region
   (`<!-- mochiko:governance:begin -->`), the declared project type in `governance-intent.md`,
-  repo-root `ARCHITECTURE.md`, `slices.md` · rules: the user · decides: the resolved `<feature>`.
-  Empty `$ARGUMENTS` (the known `@`-reference drop bug) → ask the user to re-enter it, or to
-  confirm the detected feature. An absent or unaccepted spec blocks to `/mochiko:specify`; a
+  repo-root `ARCHITECTURE.md`, `slices.md` · rules: the user · decides: the resolved `<feature>`
+  (an explicit ID, else the most recent in-progress feature under `.mochiko/specs/`, confirmed with
+  the user before the run opens). An absent or unaccepted spec blocks to `/mochiko:specify`; a
   missing governance region is
   surfaced (offer `/mochiko:setup`), never auto-resolved; brownfield requires
   `codebase-analysis.md` (missing → offer setup or proceed greenfield with a logged warning; >14d

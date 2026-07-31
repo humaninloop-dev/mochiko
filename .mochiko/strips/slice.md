@@ -9,6 +9,14 @@ command goal-shaped; the v0.31.0 entry's "now v4" claim is likewise frozen histo
 
 ---
 
+## [v0.37.0] `@`-reference recovery superseded — the platform bug it named is resolved
+- **Disposition:** superseded → user ruling (2026-08-01). The bug-attributed re-enter workaround retires; the detected-feature resolution (already in G1's evidence) gains a confirm.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/decisions/2026-08-01-at-reference-recovery-superseded.md`; `DECISIONS.md` 2026-08-01).
+- **Content (superseded, verbatim):** "Empty `$ARGUMENTS` (the known `@`-reference drop bug) → ask the user to re-enter it, or to confirm the detected feature."
+- **Kept deliberately:** the detected-feature confirm — G1's evidence resolution now reads "the resolved `<feature>` (an explicit ID, else the most recent in-progress feature under `.mochiko/specs/`, confirmed with the user before the run opens)". Only the re-enter workaround and the bug attribution left.
+- **Consumers assessed:** five-command recovery — see the shared consumer list in the `strips/plan.md` v0.37.0 entry.
+- **Protected-set note:** as recorded in the plan entry — record §7's protection premise for this recovery is spent now the bug is resolved; deliberate supersession, not a check-14 re-drop.
+
 # v0.35.0 — the goal-shape rebuild, step 4 of 4 (CS-D10)
 
 **Wave context:** command goal-shape rebuild, **step 4** — the remaining-five wave

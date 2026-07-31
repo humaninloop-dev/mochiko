@@ -41,8 +41,8 @@ yours.
 
 - **G1 entry** — evidence: `$ARGUMENTS`, and `CLAUDE.md`'s governance region
   (`<!-- mochiko:governance:begin -->`) · rules: the user · decides: the resolved feature
-  description and whether the run is governed. Empty `$ARGUMENTS` (the known `@`-reference drop
-  bug) → ask the user to re-enter it, or proceed and enrich from scratch. A missing governance
+  description and whether the run is governed. Empty `$ARGUMENTS` → ask the user to re-enter it, or
+  proceed and enrich from scratch. A missing governance
   region is **surfaced** — offer `/mochiko:setup` first, or proceed ungoverned for this spec —
   never auto-resolved. Then triage: *rich* (Who / Problem / Value clear from the description or the
   governance region's domain context) → the loop; *sparse* → enrichment.

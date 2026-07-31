@@ -8,6 +8,14 @@ the shape is now **v5** (2026-07-30) — see the v0.35.0 section below.
 
 ---
 
+## [v0.37.0] `@`-reference drop-bug attribution removed — the bug is resolved
+- **Disposition:** superseded → user ruling (2026-08-01). Only the bug-cause parenthetical retires; the empty-args ask is fully kept.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/decisions/2026-08-01-at-reference-recovery-superseded.md`; `DECISIONS.md` 2026-08-01).
+- **Content (superseded, verbatim):** the parenthetical "(the known `@`-reference drop bug)" inside G1's "Empty `$ARGUMENTS` (the known `@`-reference drop bug) → ask the user to re-enter it, or proceed and enrich from scratch."
+- **Kept deliberately:** the whole empty-args recovery — "Empty `$ARGUMENTS` → ask the user to re-enter it, or proceed and enrich from scratch." specify is an entry command with no feature to fall back to, so the ask is legitimate on its own merit; only the resolved-bug attribution is gone.
+- **Consumers assessed:** five-command recovery — see the shared consumer list in the `strips/plan.md` v0.37.0 entry; specify/brainstorm remove attribution only, plan/implement/slice keep a detected-feature confirm.
+- **Protected-set note:** as recorded in the plan entry — record §7's protection premise for this recovery is spent now the bug is resolved; deliberate supersession, not a check-14 re-drop.
+
 # v0.35.0 — the goal-shape rebuild wave (CS-D10 step 4)
 
 **Wave context:** command goal-shape rebuild, **step 4 of 4** — the five-command wave after the

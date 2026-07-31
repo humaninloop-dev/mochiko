@@ -45,10 +45,10 @@ every verdict is yours.
 ## Constraints
 
 - **G1 entry** — evidence: `$ARGUMENTS`; the resolved `<feature>` (an explicit ID, else the most
-  recent in-progress feature under `.mochiko/specs/`); `spec.md` present **and accepted**; whether
+  recent in-progress feature under `.mochiko/specs/`, confirmed with the user before the run opens);
+  `spec.md` present **and accepted**; whether
   `slices.md` already exists and whether any slice has graduated; `CLAUDE.md`'s governance region ·
-  rules: the user · decides: whether the run opens, and on what feature. Empty `$ARGUMENTS` (the
-  known `@`-reference drop bug) → ask the user to re-enter it, or to confirm the detected feature. A
+  rules: the user · decides: whether the run opens, and on what feature. A
   missing or unaccepted spec **blocks** — point the user to `/mochiko:specify`. **Already
   decomposed:** no slice has graduated (no `slices/<id>/` stage artifacts) → offer re-decomposition
   (overwrite) or stop; **any slice already graduated → halt and escalate** — amending a live

@@ -9,6 +9,14 @@ shape is now **v4** (2026-07-30) — see the v0.31.0 entry below.
 
 ---
 
+## [v0.37.0] `@`-reference recovery superseded — the platform bug it named is resolved
+- **Disposition:** superseded → user ruling (2026-08-01). The bug-attributed re-enter workaround retires; the detected-feature resolution survives with a confirm (see *Kept deliberately*).
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/decisions/2026-08-01-at-reference-recovery-superseded.md`; `DECISIONS.md` 2026-08-01).
+- **Content (superseded, verbatim):** G1's decides-clause tail — "Empty `$ARGUMENTS` (the known `@`-reference drop bug) → ask the user to re-enter it, or to confirm the detected feature."
+- **Kept deliberately:** the *confirm the detected feature* half, retained on its own merit (an expensive run must not open silently on a guessed feature) and strengthened into the resolution rule — G1 now decides "the resolved `<feature>` (an explicit ID, else the most recent in-progress feature under `.mochiko/specs/`, confirmed with the user before the run opens)". Only the re-enter workaround and the bug attribution left.
+- **Consumers assessed:** the recovery spanned five commands — `specify` · `plan` · `implement` · `slice` · `brainstorm`; each carries its own v0.37.0 entry. plan/implement/slice keep the detected-feature confirm; specify/brainstorm keep their empty-args ask (attribution only removed).
+- **Protected-set note:** `command-succinctness-strip` record §7 named the `@`-reference recovery among the hard-won fixes verbosity encodes, and this pilot (v0.34.0) restored it under independent-audit check 14 after a first draft dropped it (see that entry's ledger row below). That protection premise — "a platform bug silently corrupts `$ARGUMENTS`" — is spent now the bug is resolved; this entry is the deliberate supersession a future check-14 pass should read, not a re-drop.
+
 # v0.34.0 — the goal-shape pilot (CS-D10 step 2)
 
 **Wave context:** command goal-shape rebuild, **step 2 of 4** — the pilot (design:

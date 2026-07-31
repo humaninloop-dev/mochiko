@@ -48,10 +48,9 @@ verifier, so implement numbers no G2 — there is no feasibility-rejection gate.
 
 ## Constraints
 
-- **G1 entry** — evidence: `$ARGUMENTS` · rules: the user · decides: the resolved `<feature>`. Empty
-  `$ARGUMENTS` (the known `@`-reference drop bug) → ask the user to re-enter it, or to confirm the
-  detected feature (an explicit ID, else the most recent in-progress feature under
-  `.mochiko/specs/`).
+- **G1 entry** — evidence: `$ARGUMENTS` · rules: the user · decides: the resolved `<feature>` (an
+  explicit ID, else the most recent in-progress feature under `.mochiko/specs/`, confirmed with the
+  user before the run opens).
 - **Package gate** — evidence: `tasks.md` present and complete alongside the accepted `plan.md` and
   `architecture.md`, plus the design inputs and `slices.md` (Bindings) · rules: the user · decides:
   whether the run opens. Missing or incomplete → block, pointing the user to `/mochiko:plan`.
