@@ -190,15 +190,22 @@ together.
   the five pipeline stages (verification depth never zero, real-infra floor).
 - [ ] **D2 upgrade — the one-shot OTel probe** — enable documented config in a dogfood run;
   observe console/per-run aggregation/teammate attribution; automation graduates on probe
-  evidence only. Standing-seat D4 + model-tiered D6 probe questions ride it.
+  evidence only. Standing-seat D4 + model-tiered D6 probe questions ride it, plus TC's three
+  recorded-open (2026-07-31): `CLAUDE_AUTOCOMPACT_PCT_OVERRIDE` teammate applicability ·
+  `subagentStatusLine` teammate coverage + `tokenCount` semantics · cost-one-recycle.
 - [ ] **Wave-3 candidates (candidates, not commitments)** — (1) governance/memory layer
   (intent 26.2k B · ledger 47.4k B · trace summary 12.9k B; densify inside the setup cluster,
   not an artifact wave; revisit: an amend run showing read cost mattering); (2) brainstorm
   `record.md`/`synthesis.md` (record length IS the audit trail; revisit: transcript forensics
   showing record *authoring* as a material pool). Neither enters scope silently.
-- [ ] **Standing-seat build items (deferred)** — conditioned checkpoint recycling · respawn
-  briefs from artifacts · the Layer-2 transport-vs-lifecycle rewrite (**v4+** — coordinate with
-  the team-method mesh rewrite above) · per-seat measurement. Record D1–D4.
+- [ ] **Standing-seat build items — surface specified 2026-07-31 (TC-D1–D6)** — the Layer-2
+  context-lifecycle rewrite lands **first** (TC-D5's sequencing invariant; the 2026-07-30
+  implement revert's re-add trigger): counted-loop-unit cadence default (~≥3 at gate pauses,
+  count-not-observe) · governed-set criterion (standing multi-unit; corrected ranking) ·
+  versioned-name respawn with the name-refusal check at build · brainstorm's fact-checker
+  parameter line (cadence-exempt) · implement's per-slice verifier override; then per-command
+  text (the implement re-add). Records: `standing-seat-lifecycle` D1–D4 (machinery; one
+  clause superseded) + `team-lead-strategic-compaction` TC-D1–D6 (shape-wide parameters).
 - [ ] **Parallelism deferral — live shortcut-ledger candidate** (2026-07-01) — revisit native
   `pipeline()`/`parallel()` or the lightweight kernel question **if dogfooding shows sequential
   cycle execution too slow** on a dependency-rich feature; the concrete drift-trigger the
