@@ -228,10 +228,23 @@ trail** (scope ADR `2026-07-30-po-narrowing-build-scope`). Tier-I depth items op
   coverage ledger + `validation-constitution` check · persona edits (keystone-checked) · spec
   producer prompt · gate canaries · F19 fix as prerequisite · one command edit (`plan.md`
   Bindings, shape-v5 audited). Fences: DAST/pentest · per-regime content · type-specific
-  expressions (shelves) · runtime ops.
-- [ ] **Ops & observability hardening (Tier I)** (2026-07-30, PO-D5) — SLOs as first-class
-  NFRs, RUNBOOK elective→asserted, incident-response basics, release-health expectations per
-  product kind; mostly promoting existing electives to asserted (map F32).
+  expressions (shelves) · runtime ops. Tooling-map relocation target named 2026-07-31 (OO-M4):
+  `authoring-constitution/references/STACK-TOOLING.md` — whichever build lands first creates
+  it, the other joins.
+- [ ] **Ops & observability build (Tier I)** (2026-07-31; rulings OO-D1–D7, record
+  `.mochiko/brainstorms/ops-observability-hardening/record.md` — pair-reviewed 25→20 merged,
+  20/20 dispositioned, verify CLEAN round 2) — build surface (record: "Build surface", M-folds
+  incorporated): fifth floor category **Operations** + FLOOR-OPS card across the nine-file
+  enumeration ripple (incl. `principal-architect.md` keystone-checked · both QUALITY-CHECKLIST
+  lines · `codebase-analysis-template.md:118` rollup) · FLOOR-OBS established-tooling line ·
+  dimension-8 SLO beats → region one-liner + `paths`-scoped SLO rules file over
+  `.mochiko/specs/**` · RUNBOOK contract in KM + dual-key `implement.md` landing fold (the one
+  command edit, shape-v5 audited) · release-gates reference line · `STACK-TOOLING.md` universal
+  home (create-or-join) + OTel disambiguation · feasibility SLO row + plan-artifacts coverage
+  row · vertical-tdd instrumentation TEST rule + task-artifacts dual-keyed row · known-gap
+  validator check · clause-level waiver-key wording · bounded alert canary. Fences:
+  release-process assertion · SLO achievement · incident machinery + error budgets (Tier-II
+  reliability) · per-kind shelf expressions · dormant IP rows stay dormant.
 - [ ] **Shelf builds — the translation tables (Tier I)** (2026-07-30, PO-D5) — order:
   frontend → mobile → desktop (map F30: only backend/service seeded; desktop net-new). Absorbs
   the frontend + mobile shelf items in Deferred tracks below.

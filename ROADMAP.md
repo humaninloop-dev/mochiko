@@ -26,7 +26,7 @@ frontend/mobile/desktop shelves are Tier-I roadmap work.**
 - Token epic: D5 sizing-gate generalization + the one-shot OTel probe (2026-07-23; probe gains TC's three recorded-open questions) · Layer-2 lifecycle rewrite now specified, D3-first (TC-D1–D6, 2026-07-31) → [BACKLOG](BACKLOG.md#token-reduction-epic)
 - Defect probes: fresh-session description-delivery (2026-07-25; the QUALITY-CHECKLIST drift closed with the PO wave — trail) → [BACKLOG](BACKLOG.md#defects--empirical-checks)
 - Re-evaluate the deferred-kernel shortcut entry once the pipeline dogfoods complete (roadmap-v2's surviving next-step; its convention-extraction clause discharged at the 2026-07-25 migration) → [BACKLOG](BACKLOG.md#token-reduction-epic)
-- Security-depth build (Tier I) — scoped 2026-07-30 (SD-D1–D6, verify-CLEAN record; trail); then ops-hardening + shelf-build scoping → [BACKLOG](BACKLOG.md#production-only-narrowing)
+- Tier-I builds queued: security-depth (scoped 2026-07-30, SD-D1–D6) · ops & observability (scoped 2026-07-31, OO-D1–D7; both verify-CLEAN, trail); then shelf-build scoping → [BACKLOG](BACKLOG.md#production-only-narrowing)
 - Architecture-primitive dogfood — first merged-plan run with the architecture stage (built 2026-07-30 at v0.32.0) → [BACKLOG](BACKLOG.md#architecture-primitive-build-items)
 
 ## Later *(non-committed)*
