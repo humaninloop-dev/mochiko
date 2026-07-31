@@ -15,7 +15,7 @@ frontend/mobile/desktop shelves are Tier-I roadmap work.**
 
 - **KM-module redesign dogfood** — fresh-project scaffold + rules-injection probe of the rebuilt module (2026-07-25) → [BACKLOG](BACKLOG.md#operating-docs--km-module)
 - **Kinako follow-up run** — waves-1–2 didn't land: investigate, then the UI fix wave through journey gates (2026-07-24) → [BACKLOG](BACKLOG.md#kinako-follow-up-run)
-- **Team-method build items** — cold-checkout gate · loop-discipline all-consumer pass · agent-dispatch peer-edge field (mesh rewrite DONE 2026-07-30 → shape v4; plan-absorbs-tasks merge DONE 2026-07-30 at v0.32.0 — trail) → [BACKLOG](BACKLOG.md#team-method-build-items)
+- **Team-method build items** — DONE 2026-07-31 at v0.39.0 (loop-discipline qualifier · agent-dispatch v7 ninth field · cold-checkout gate in implement's final validation; audits FAIL→fix→PASS; trail); residual: deferred direction, dedicated session → [BACKLOG](BACKLOG.md#team-method-build-items)
 - **Command goal-shape rebuild** — DONE 2026-07-30 at v0.35.0 (all six goal-shaped, −35.7% w; trail); residual: the deferred read-drop on its live-run trigger → [BACKLOG](BACKLOG.md#command-goal-shape-rebuild)
 - **Production-only narrowing build** — DONE 2026-07-30 at v0.36.0 (tier axis retired, ~19 files + 2 commands, all audits PASS; trail); next: Tier-I scoping, security first → [BACKLOG](BACKLOG.md#production-only-narrowing)
 

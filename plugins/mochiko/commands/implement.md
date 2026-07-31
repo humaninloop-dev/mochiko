@@ -28,9 +28,9 @@ built-vs-approved diff ran and any divergence reached G5; the KM landing ran; an
 at G5.
 
 **Not done:** an unchecked task, or a cycle with no report · a failing quality gate · a cycle or the
-final validation unverified · a non-clean cycle advanced without your verdict · a surfaced
-architecture deviation neither built as approved nor consented as an amendment · an approved delta
-whose diff never ran · out of rounds · G5 unaccepted.
+final validation unverified · a warm-only final validation · a non-clean cycle advanced without your
+verdict · a surfaced architecture deviation neither built as approved nor consented as an
+amendment · an approved delta whose diff never ran · out of rounds · G5 unaccepted.
 
 ## Seats & checks
 
@@ -102,6 +102,9 @@ just-failed `cycle-report.md`, relayed at dispatch: the next attempt overwrites 
   cycle execution is a `deliberate-shortcut-ledger` deferral, not a capability drop. Every produced
   cycle is paired with a verification in the same round, never skipped: the hand-off is peer-routed,
   the pairing is yours to enforce. The final validation is lead-routed, never devolved.
+- **Cold checkout:** the final validation builds and runs the quality gates from a **fresh clone**
+  of the repository, never only the warm working tree; that clone's results are part of G5's
+  evidence.
 - **Scaffolding:** from the detected stack, create any missing ignore files (`.gitignore` /
   `.dockerignore` / lint-ignore), project-relative, once before the cycle loop.
 - **Slice scope** *(when an accepted `slices.md` exists)* — that file's **Graduation contract** is

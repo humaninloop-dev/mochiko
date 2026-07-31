@@ -60,23 +60,6 @@ mochiko's own migration executed same day (this file's shape is its result).
 Rulings D1–D5 (DECISIONS.md 2026-07-25; record `team-method-vs-command-shape` — bare session,
 un-reviewed). Land via `command-architect` + independent `validation-command-shape` audit.
 
-- [ ] **loop-discipline all-consumer pass** (2026-07-30; provenance:
-  `.mochiko/decisions/2026-07-30-layer-2-mesh-rewrite-executed.md`) — SKILL.md:56 ("The
-  lead/referee owns the verdict") literally forbids shape v4's devolved clean branch; needs a
-  narrow qualifier pointing at the devolved branch, done-condition verdict staying the lead's.
-  ≥3-consumer rule (22 referencing files, 7 commands) escalated it out of the mesh wave.
-  Riders: dedup ruling on "status is input, never the gate" (v4 hoisted it into the home;
-  restated in all six commands' Contracts) · verdict-ownership triplication recurrences
-  (plan/implement/tasks — their own strip notes claim it deduped).
-- [ ] **agent-dispatch.md peer-edge briefing field** (2026-07-30; same ADR) — shape v4
-  obliges the lead's brief to carry each seat's peer edges AND the gap-list hold, but the
-  briefing-field table has no home for either, and field 6 (prior feedback verbatim-paste)
-  still assumes the superseded v3 lead-relay. User ruling: ninth field (shared-primitive
-  change) vs. shape-sentence-only.
-- [ ] **Cold-checkout gate (kinako rule 7)** — warm-machine verification passed a bug six
-  cycles (`build/` gitignored; `dart compile exe` missing `-o` parent). Add a fresh-clone
-  verification step. **Placement ruling needed:** implement final validation vs the audit
-  charter.
 - [ ] **Deferred direction (recorded, not ruled)** — build-room merge (structuring seat inside
   implement), slice-fold toward a four-command surface, multi-stream implement (frozen seams ·
   single-ownership · wait-fallbacks as task-artifact content). Re-open in a dedicated session;
@@ -286,8 +269,8 @@ trail** (scope ADR `2026-07-30-po-narrowing-build-scope`). Tier-I depth items op
 - [ ] **`audit` workflow scoping** (2026-07-02 charter) — feature-close verification:
   qa-engineer executes `slices.md`'s Feature-Done section (SC coverage + cross-slice seams)
   against real infra; human FEATURE-DONE gate. Scoping decides whole-workflow vs branch; the
-  journey-gate class (Cluster 2) gives the pass its hard gate class; the cold-checkout gate's
-  placement ruling may land here.
+  journey-gate class (Cluster 2) gives the pass its hard gate class; the cold-checkout step
+  (ruled into implement's final validation 2026-07-31) migrates here if audit takes feature-close.
 - [ ] **Feature-close verification has no owning workflow** (2026-07-02) — until audit owns
   it, the section is executable by hand; implement surfaces "declared, not verified" after the
   last slice.

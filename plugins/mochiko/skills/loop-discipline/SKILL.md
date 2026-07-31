@@ -53,7 +53,7 @@ The contract ships the result as **FAIL** and it only flips on real evidence. An
 
 ### 2. External, independent validation
 
-**Never let the producer grade its own output.** Validation is run by a **different agent** using a **different skill**, working from the artifact itself — not from the producer's say-so. The lead/referee owns the verdict.
+**Never let the producer grade its own output.** Validation is run by a **different agent** using a **different skill**, working from the artifact itself — not from the producer's say-so. The lead/referee owns the verdict — one structural exception: where a command shape defines a **devolved clean branch**, a unit clears on the verifying seat's PASS-with-evidence without a lead verdict, exactly on that shape's stated conditions ([`command-shape`](../../templates/command-shape.md), Layer 2 *Clearing under the mesh*); the workflow's done-condition verdict is the lead's either way.
 
 Rank validators by trustworthiness; prefer the highest the artifact allows:
 

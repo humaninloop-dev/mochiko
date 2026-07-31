@@ -7,6 +7,39 @@ one-shot; all seven commands have been team-form since v0.17.0 (BACKLOG conversi
 
 ---
 
+## [v0.39.0] Field 6's verbatim-paste-only retry brief — the superseded v3 lead-relay
+
+- **Disposition:** superseded → rewritten in place as a two-routing field. Briefing **v6 → v7**.
+  The verbatim paste survives as *one* of the two routings (the case where no peer edge carried
+  the feedback); what died is the assumption that it is the *only* one.
+- **Tier failed:** n/a — supersession by ruling (team-method **D1/D3**, `DECISIONS.md` 2026-07-25
+  row → `.mochiko/brainstorms/team-method-vs-command-shape/record.md`; escalation raised at
+  `.mochiko/decisions/2026-07-30-layer-2-mesh-rewrite-executed.md`, **closed by**
+  `.mochiko/decisions/2026-07-31-team-method-escalations-closed.md`). D1 made the verifying seat's
+  gap list **peer-routed**; a field instructing the lead to paste it verbatim describes a relay the
+  mesh retired, and re-pasting text the producer already holds is the hub drift D1 forbids.
+- **Content (v6, verbatim — the whole table row):**
+  ```
+  | 6 | **Prior feedback (retries)** | On round > 1, paste the validator's prior issues verbatim; else omit | "Address: <validator's issues-requiring-fix>." |
+  ```
+- **Kept deliberately:** the field itself, its number and its name (nothing renumbers — the
+  ninth field appends) · the `On round > 1 … else omit` conditionality · **the verbatim paste and
+  its example cell**, unchanged in wording, now bound to the no-peer-edge routing: a one-shot
+  regrade or a successor that was not in the room for the hand-off has no gap list to point at, and
+  a command may bind that relay explicitly (`implement`'s P17 lifecycle line relays the failed-task
+  list and the just-failed `cycle-report.md` at dispatch — this field stays consistent with it,
+  never restates it).
+- **Consumers assessed:** every command and skill that briefs a dispatch reads this file; **none
+  restates field 6**, so no stale copy is inherited. Team-form commands with a peer-edged
+  producer↔verifier pair (`implement`, and any later binder) gain the first routing; one-shot and
+  lead-routed dispatches — the `review-*`/`validation-*` skill calls, `plan`'s lead-gated
+  reviewers, `setup`'s lead-routed validate — keep exactly the v6 behavior under the second
+  routing. `command-shape.md` Layer 2 is unchanged by this wave and remains the sole home of both
+  the peer-edge obligation and the hand-off hold (field 9 points at it; it is not restated here).
+  `loop-discipline` requirement 2 is amended in the same wave (its own note, same stamp).
+
+---
+
 ## [v0.38.0] The Layer-2 pointer retargeted — lifecycle joins transport at the same home
 
 - **Disposition:** superseded → rewritten in place. Briefing **v5 → v6**. The paragraph was
