@@ -6,8 +6,8 @@ surface is [`ROADMAP.md`](ROADMAP.md). Closing an item = the KM landing ritual
 (`.mochiko/memory/knowledge-management.md`): decision row + move here → the trail
 (`.mochiko/archive/backlog-trail.md`) + touch ROADMAP.md. No `[x]` lives here.
 
-*Last groomed: 2026-08-01 — baseline: 60 open items (52 at the 2026-07-25 migration; +8, all
-provenance-carried), per-item bound ≤15 lines.*
+*Last groomed: 2026-08-01 (delivery sweep) — baseline: 55 open items (60 pre-sweep: 3 closed
+to the trail, 2 merged; 52 at the 2026-07-25 migration), per-item bound ≤15 lines.*
 
 ---
 
@@ -23,17 +23,20 @@ provenance-carried), per-item bound ≤15 lines.*
 - [ ] **Intensity modes** (2026-06-27; provenance: unrecoverable — same source) — global
   `lite/full/ultra/off` dial vs per-rule. Defer until the pattern is clear from real runs.
 - [ ] **Command orchestration substrate — teams vs `Task`-subagents** (2026-06-30,
-  `.mochiko/brainstorms/command-altitude/synthesis.md`) — all seven commands are team-form by
-  ruling, but **no run has yet proven team-form execution**: two defect runs dispatched
-  subagents despite the mandate (root cause + fix: `setup-v3-team-defect` record,
-  `agent-dispatch.md` v3 + addressability check), and the kinako artifacts can't distinguish
-  transport (no transcripts). Blocks on the team-form confirm-or-revert item below. Datapoint
-  history: archive `DECISIONS.md` rows + `brainstorm-command-rewrite` / `brainstorm-v2-revision`
-  records.
+  `.mochiko/brainstorms/command-altitude/synthesis.md`) — all six commands are team-form by
+  ruling, but **no run has yet proven team-form execution**: three defect runs dispatched
+  subagents despite the mandate (latest 2026-07-31, transcript in
+  `plan-run-transport-forensics/inputs/` — "the team never existed"; probe rebuilt v0.38.0 on
+  the team-config roster check, not yet exercised live). Blocks on the team-form
+  confirm-or-revert item below. Datapoint history: archive `DECISIONS.md` rows +
+  `brainstorm-command-rewrite` / `brainstorm-v2-revision` / `setup-v3-team-defect` /
+  `plan-run-transport-forensics` records.
 - [ ] **Module-elicitation scaling** (2026-07-17, `setup-operating-docs-scaffolding` record) —
-  one interrogation dimension per future module, or a consolidated modules beat? Datapoint
-  (2026-07-21): `layer-rules` landed as a *beat*, agenda stayed ten. **Revisit: next module
-  design.**
+  one interrogation dimension per future module, or a consolidated modules beat? Datapoints:
+  `layer-rules` landed as a *beat* (2026-07-21); compliance modules ruled fact-triggered off
+  dimension 2, agenda stays ten (PO 2026-07-30); ops SLOs elicited at dimension 8, no new
+  dimension (OO-D3 2026-07-31). Three-for-three consolidated — open only for a genuinely new
+  *constitution* module. **Revisit: next module design.**
 - [ ] **D9 catalog-graduation seam** (2026-07-16, `setup-constitution-flexibility` record) —
   after real sessions mint principles, harvest candidates from trace stamps and design the
   graduation pass (curation authority, admission bar, versioning). From artifacts, not
@@ -50,7 +53,9 @@ mochiko's own migration executed same day (this file's shape is its result).
   (project-pinned copy · rules file · CLAUDE.md pointers) never-overwriting; **module dogfood
   gates on the injection probe**; landing ritual + invariants fire at the five command
   boundaries; a seeded cap trip invokes `grooming-operating-docs`. Mochiko's own compliance is
-  manual until more commands run in-repo (accepted risk, D9 fold).
+  manual until more commands run in-repo (accepted risk, D9 fold). Partial credit (2026-07-31
+  mochiko-app *amend* run): injection probe ran at G5, landing ritual observed at 2 of 5
+  boundaries (amend + plan) — the fresh-setup half and the seeded cap trip remain.
 - [ ] **Brainstorm bookkeeping watch** (2026-07-17, carried) — on a KM project:
   read-index-before-open fires, entries land/update with named landings, close invariants catch
   a seeded defect, the no-module branch stays silent. Honest residual: drift on a session-less
@@ -74,13 +79,13 @@ Rulings AD-D1–D9 (DECISIONS.md 2026-07-30; record
 v0.32.0** together with the plan-absorbs-tasks merge; both independent audits PASS; closed
 build item in the trail.
 
-- [ ] **Architecture-primitive dogfood** (2026-07-30) — first merged-plan run with the
-  architecture stage: watch the R6a bootstrap + baseline-confirm gate, the rendered-diagram
-  sign-off + degrade-with-record fallback (R5), the qualifying-flow sequence trigger (R4),
-  structural D-XXX rows landing in the designated `constraints-and-decisions.md` section
-  (R3), implement's cycle open/close deviation self-check + built-vs-approved diff reaching
-  the acceptance gate (seam-N1 placement), and the `ARCHITECTURE.md` fold staying distinct.
-  Rides the merged-command dogfood (plan+tasks item below) and the team-form
+- [ ] **Architecture-primitive dogfood** (2026-07-30) — the first merged-plan run happened
+  (2026-07-31 S1): R4 sequence trigger fired (six qualifying flows) · R3 structural D-XXX
+  rows landed in the designated section (D-017–D-022) · R5's degrade-with-record fallback
+  exercised (un-rendered, G3 stamp). Open: R6a bootstrap (baseline existed, branch never
+  entered) · the rendered-diagram primary path · implement's cycle open/close deviation
+  self-check + built-vs-approved diff at the acceptance gate (seam-N1) · the
+  `ARCHITECTURE.md` fold staying distinct (no implement run yet). Rides the team-form
   confirm-or-revert.
 - [ ] **Per-slice `architecture.md` ↔ repo `ARCHITECTURE.md` tie-back** (2026-08-01;
   provenance: mochiko-app dogfood observation, to-brainstorm) — in the mochiko-app dogfood the
@@ -104,7 +109,8 @@ pass closed 2026-07-31 (v0.39.0, trail). The read-drop deferral below is the ope
   Trigger terms re-keyed by the 2026-08-01 flexibility ruling (R16: "gates not rationalized" →
   measured against the stated default + recorded departures; "bounds held" → declared bounds
   under the U1-D counter rule); re-specification landed with shape v7 (v0.40.0 transition
-  note) — only the trigger's firing remains open.
+  note). The re-keyed trigger needs v7-form constructs (P18 gates · stated-default trail ·
+  declared bounds) — now sequenced behind the convert-on-touch item: no v6-form run can fire it.
 
 ## Lead-owned process flexibility build (shape v7)
 
@@ -133,21 +139,27 @@ Every command passed structural verification + the kinako artifact pass on conte
 `DECISIONS.md` + each command's strip note. Kinako artifact evidence: the 2026-07-24 validation
 pass (evidence repo `humaninloop-dev/kinako`).
 
-- [ ] **Team-form confirm-or-revert — instrumented run (residual A)** (2026-07-24) — capture
-  seat spawn / standing-vs-respawn / messaging, or make an explicit accept-on-weak-evidence
-  ruling. Blocks the orchestration-substrate decision above. A revert logs `RETURNED:` in the
-  command's strip note.
+- [ ] **Team-form confirm-or-revert — instrumented run (residual A)** (2026-07-24) — the
+  capture half is DONE: the 2026-07-31 plan S1 run + forensics record hold all three artifacts
+  (seat spawn — every seat a subagent, F1 · standing-vs-respawn — 14+ passes, respawn with a
+  name-takeover send failure · messaging — zero peer edges across ~44 hand-offs). Open: the
+  **verdict** — a run on true team transport (repaired v0.38.0 roster probe, never exercised
+  live) or an explicit accept-on-weak-evidence ruling. Blocks the orchestration-substrate
+  decision above. A revert logs `RETURNED:` in the command's strip note.
 - [ ] **Setup v3 dogfood** (2026-07-18, carried) — live-run residue only (authoring half
-  kinako-validated): the runtime named checks (validator catches a seeded missing-companion ·
-  downstream producer receives CLAUDE.md governance natively · region regenerates idempotently),
-  the G3 sizing-gate/waiver/delta-pass firing, the KM dimension-7 + collision beats, the
-  injection-probe G5 offer (residual C).
+  kinako-validated). Partial credit (2026-07-31 mochiko-app *amend*): G3 sizing gate fired ·
+  injection-probe G5 offered and ran (residual C met). Open: validator catches a seeded
+  missing-companion · downstream producer receives CLAUDE.md governance natively · region
+  regenerates idempotently (amend showed non-destructive only) · G3 waiver + delta-pass
+  branches · KM dimension-7 + collision beats — and the fresh-setup form itself.
 - [ ] **Specify dogfood** (2026-06-27, carried) — loop content kinako-validated (3 rounds to
   `ready`); open: team-form checks (probe fires, standing producer messaged round > 1, critic
   cold).
 - [ ] **Plan dogfood (+ tasks, inherited by the merged command)** (2026-07-01, carried) —
-  content kinako-validated; open: team-form checks (standing producer across the phase
-  boundary, incremental advocate mode, architect fires once + structural-change re-fire).
+  content kinako-validated; the 2026-07-31 S1 run observed the named behaviors (standing
+  producer across the phase boundary · incremental advocate · architect once +
+  structural-change re-fire) **but on subagent transport** (F1 — the probe false-passed), so
+  the team-form qualifier failed on all. Open: the same checks on proven team transport.
 - [ ] **Implement dogfood** (2026-07-01, carried) — content kinako-validated (21 cycles, 407
   tests); open: team-form checks (standing producer across cycles/fix-pass, cold qa, confidence
   gate observed live).
@@ -156,9 +168,11 @@ pass (evidence repo `humaninloop-dev/kinako`).
   **graded-amendment/breaking change** (mid-flight spec edit) · **`infeasible` escalation** ·
   the **"Research this" → Explore** branch · team-form checks.
 - [ ] **Brainstorm v2.2 review-machinery dogfood** (2026-07-16) — the sized lens-split review
-  has since run in five pair-form sessions (operating-docs the latest: 35→29→CLEAN); still
-  open formally: the cost re-measure from transcripts (target pair ≈150–170k), the argument-cap
-  watch (0-for-2), the one-shot-exchange calibration bet.
+  has now run in ~10 pair-form sessions; still open formally: the cost re-measure (target pair
+  ≈150–170k; carrier retired at v0.33.0 — rides the OTel probe; one whole-session figure
+  exists, operating-docs ≈400k out, not pair-isolated) · the argument-cap watch (~0-for-10,
+  ripe to rule) · the one-shot-exchange calibration bet (datapoint 2026-08-01: a cross-exam
+  message delayed, not lost — "sender receipts prove neither delivery nor timeliness").
 - [ ] **Post-fix confirmation run (residual E)** (2026-07-24) — after the Cluster-2
   ratification lands, re-run the pipeline to confirm the surface-task rule / journey gates /
   residue routing actually catch the kinako gaps.
@@ -171,8 +185,9 @@ in this repo's git history at `7920ccb` BACKLOG).
 
 - [ ] **Waves 1–2 didn't land — investigate, then dogfood (residual B)** — kinako artifacts
   show the dense forms ABSENT in S4-era entries, design layer ~28% above the 555k baseline, no
-  v0.22/0.23 stamp, run-costs 2/~15 rows. A strip-didn't-land bug is on the table: confirm the
-  forms apply, then re-run + re-measure. Acceptance checks + calibration watches (envelope size
+  v0.22/0.23 stamp, run-costs 2/~15 rows. A strip-didn't-land bug is on the table — candidate
+  mechanism found 2026-07-31: a stale plugin cache (0.7.0/0.28.0/0.36.0 cached vs the labelled
+  v0.38.0, forensics record) — confirm the forms apply, then re-run + re-measure. Acceptance checks + calibration watches (envelope size
   defaults; T3's two branches): archive ROADMAP wave-1/wave-2 trail entries.
 - [ ] **Cluster-2 ratification wave** — pressure-tested, awaiting founder ratification; lands
   as one edit wave (author ≠ grader), ruling → DECISIONS.md row. Items (owner · n): 
@@ -186,8 +201,6 @@ in this repo's git history at `7920ccb` BACKLOG).
   watch-lines (scaffolding→production promotions; out-of-pipeline integration steps —
   upgrade on a second instance). **Meta-rule riding:** single-project-retro changes default to
   checklist edits; new artifacts/stages/gates need n≥2. Full text: git history (`7920ccb`).
-- [ ] **D2 baseline capture defect** — `run-costs.md` caught 2 of ~15 stage-runs; decide
-  acceptable-partial vs a per-stage prompt in the protocol.
 - [ ] **Artifact-filename collisions across stages** — same-named advocate reports overwrite
   across plan/tasks phases and slices; an earlier stage's review is silently lost. Decide a
   stage-qualified filename convention. n=1 but silent.
@@ -201,7 +214,10 @@ Epic + angles: DECISIONS.md rows 2026-07-23/24; records `workflow-token-reductio
 together.
 
 - [ ] **D5 — review sizing gates generalized + floored verification depth** — command texts of
-  the five pipeline stages (verification depth never zero, real-infra floor).
+  the five pipeline stages (verification depth never zero, real-infra floor). Gap sharpened
+  2026-08-01 (delivery sweep): the v7 flexibility ruling makes stated defaults lead-departable
+  while D5's never-zero floor is encoded nowhere — land it as a floor invariant (P18 carrier);
+  natural site: each command's convert-on-touch ceremony.
 - [ ] **D2 upgrade — the one-shot OTel probe** — enable documented config in a dogfood run;
   observe console/per-run aggregation/teammate attribution; automation graduates on probe
   evidence only. Standing-seat D4 + model-tiered D6 probe questions ride it, plus TC's three
@@ -252,8 +268,14 @@ trail** (scope ADR `2026-07-30-po-narrowing-build-scope`). Tier-I depth items op
   release-process assertion · SLO achievement · incident machinery + error budgets (Tier-II
   reliability) · per-kind shelf expressions · dormant IP rows stay dormant.
 - [ ] **Shelf builds — the translation tables (Tier I)** (2026-07-30, PO-D5) — order:
-  frontend → mobile → desktop (map F30: only backend/service seeded; desktop net-new). Absorbs
-  the frontend + mobile shelf items in Deferred tracks below.
+  frontend → mobile → desktop (map F30: only backend/service seeded; desktop net-new).
+  Frontend (`catalog/frontend.md`; 2026-07-16 user-ruled in-scope): type principles +
+  frontend-appropriate floor examples (universal shelf examples are backend-flavored);
+  CLI/library shelves retire under PO-D1 — never author speculatively. Mobile (2026-07-21):
+  flavored clean-architecture-for-apps card selecting `layer-rules`; acceptance: a Flutter
+  setup session deals flavored layered material; carries F6 — greenfield app sessions risk
+  backend-flavored paths globs until it lands. (Absorbed the two Deferred-tracks shelf items
+  at the 2026-08-01 groom.)
 - [ ] **IaC / deployment engineering — staged (Tier II)** (2026-07-30, PO-D5) — stage 1:
   release gates + environment discipline asserted; stage 2: infrastructure-code authoring (new
   artifact class, map F23). Own scoping session; data lifecycle + reliability/resilience ride
@@ -261,7 +283,9 @@ trail** (scope ADR `2026-07-30-po-narrowing-build-scope`). Tier-I depth items op
 - [ ] **PO watches & revisits** (2026-07-30) — D4.1 waiver-expiry revisit (user-flagged
   "I will come to revisit") · D7 waiver-as-normal-state dogfood watch (if young teams live on
   permanent floor waivers, revisit expiry/maturity design). (The non-legal module waivability
-  ambiguity was ruled 2026-07-30 — waivable under D4; ADR `po-narrowing-build-scope`.)
+  ambiguity was ruled 2026-07-30 — waivable under D4; ADR `po-narrowing-build-scope`.) D7
+  first datapoint (2026-07-31 mochiko-app amend): zero waivers, floor asserted clean —
+  pointing away from the concern.
 
 ## Ergonomics: output, language & run-hygiene
 
@@ -281,38 +305,45 @@ Raw captures (2026-08-01) — to triage/brainstorm; grooming may re-key into fin
 - [ ] **Plain-language sweep + internal-jargon leak to end users** (2026-08-01; provenance:
   capture session, to-brainstorm) — the language across mochiko is too complex; needs a
   plain-English sweep. Concrete leak: the plugin's end user is shown "Layer -2" (internal
-  shape/architecture vocabulary) which means nothing to them. Brainstorm: audit user-facing
-  surfaces for internal jargon, draw an end-user vs. internal vocabulary boundary, and sweep
-  command/skill output.
+  shape/architecture vocabulary) which means nothing to them. Sweep finding (2026-08-01):
+  "Layer -2" appears in no shipped file — the leak is runtime lead prose, so a file sweep
+  won't find it; the fix targets the shape's user-facing vocabulary ban (today an enumerated
+  three-term list) and interacts with the R5 record-don't-build ruling. Brainstorm: the
+  end-user vs. internal vocabulary boundary, and where the ban's term list should grow.
 
 ## Defects & empirical checks
 
 - [ ] **Shape-home keying watch: "Out of rounds = escalate, never done."** (2026-07-30,
-  shape-audit advisory at the PO wave) — the sentence is verbatim shape prose
-  (`command-shape.md` bounds line) carried by 3 of 6 commands (setup · plan · specify); not a
-  check-8 keyed marker today, so it passes audits. Raise if a command's Constraints block ever
-  needs those words back (setup sits at 4 w of Constraints headroom) — either key a marker and
-  strip the three, or record it as a mandated-exemplar phrase like the bounds set.
-- [ ] **Fresh-session description-delivery probe** (2026-07-25, succinctness R1) — re-run the
-  listing probe in a NEW session: do the two repaired descriptions deliver un-truncated, and
-  does `validation-constitution`'s description reappear at the reduced total (confirm-or-kill
-  the total-budget hypothesis)? If still absent: wave-pass description-mass cuts.
+  shape-audit advisory at the PO wave) — verbatim shape prose (`command-shape.md` bounds line)
+  carried by **4 of 6** commands (setup · plan · slice · specify; line-wrapped — flatten
+  before counting). The mandated-exemplar disposition is already recorded
+  (`.mochiko/strips/validation-command-shape.md` [v0.34.0], re-ratified [v0.40.0]), so no
+  check-8 marker fires by design. Remaining trigger only: raise if a command's Constraints
+  block ever needs those words back (setup sits at 4 w of Constraints headroom).
+- [ ] **Fresh-session description-delivery probe** (2026-07-25, succinctness R1; re-scoped
+  2026-08-01) — total-budget hypothesis dead: no description exceeds 1,536 chars (max 1,517),
+  the two repaired descriptions deliver complete, yet **five** skills render name-only
+  (validation-constitution · review-slices · review-task-artifacts · testing-end-user ·
+  testing-governance-injection; observed from a subagent context, not a cold session).
+  Re-scope: diagnose the five-skill absent-fire set in a cold-session probe.
 - [ ] **HTML-comment stripping in `.claude/rules/` files** (2026-07-18) — docs confirm
   stripping for CLAUDE.md, silent for rules files. If stripped, in-file trace comments become a
   free option. Method: `InstructionsLoaded` hook or `/context` on a comment-bearing rule.
 - [ ] **Fresh-session rules-loading test** (2026-07-18) — the negative probe's confound: the
   rule file was created mid-session. Re-run with the file present before session start; either
-  result stands (universal principles stay in CLAUDE.md).
+  result stands (universal principles stay in CLAUDE.md). Note (2026-08-01): both shipped
+  rules files are `paths`-scoped — a different mechanism than the original unconditional
+  probe; the re-run needs an unconditional marker file.
 - [ ] **Trace-check ergonomics watch** (2026-07-16) — v3 manifest grading: watch for false
   FAILs on trace mechanics vs substance; if the fix-list loop thrashes on mechanics, tighten
-  templates before touching the check.
-- [ ] **Strip-pass residual: brainstorm/setup light pass** (2026-07-19) — reads as discharged
-  by the v0.11.0 pre-shrink; confirm and close. Re-add protocol stands
-  (`.mochiko/strips/README.md`): evidence-linked re-adds, marked overrides, audit on re-add
-  bumps.
-- [ ] **Experimental-API churn watch** (2026-07-04) — agent-teams behavior changed across five
-  point releases; if an update breaks spawn/messaging semantics, re-verify against docs. The
-  commands name capabilities, not version mechanics, to keep this surface small.
+  templates before touching the check. First datapoint (2026-07-31 amend run): round 2 of 3
+  consumed entirely by trace arithmetic — genuine defects, not false FAILs, but PASS came at
+  round 3 of 3, zero headroom.
+- [ ] **Experimental-API churn watch** (2026-07-04; re-baselined 2026-08-01 at CC v2.1.220) —
+  if an update breaks spawn/messaging semantics, re-verify against docs. Fired once and
+  discharged clean: the addressability discriminator rotted, probe rebuilt on the documented
+  team-config roster check (v0.38.0) — the worked precedent for the next firing. The commands
+  name capabilities, not version mechanics, to keep this surface small.
 - [ ] **Two-level "slice" vocabulary watch** (2026-07-02) — graduation slice (spec-level) vs
   vertical slice (cycle-level); if dogfooding shows conflation, sharpen triggers or rename one
   level.
@@ -330,21 +361,12 @@ Raw captures (2026-08-01) — to triage/brainstorm; grooming may re-key into fin
 - [ ] **Design track** (2026-06-27, carried; archive REGISTRY disposition) — `ui-designer` +
   `analysis-screenshot` / `authoring-design-system` / `patterns-flow-mapping` /
   `patterns-interface-design`; port as a dedicated cluster (HIL sources listed in the archive).
-- [ ] **Frontend catalog shelf (stage 2)** (2026-07-16, user-ruled in-scope; **now Tier-I of
-  the production-only narrowing, PO-D5 2026-07-30 — first among the shelf builds**) —
-  `catalog/frontend.md`: type principles + frontend-appropriate floor examples (universal shelf
-  examples are backend-flavored). CLI/library shelves retire under PO-D1's deferral — do not
-  author speculatively.
-- [ ] **Mobile/app shelf** (2026-07-21; **now Tier-I of the production-only narrowing, PO-D5
-  2026-07-30 — after frontend, before the net-new desktop shelf**) — flavored
-  clean-architecture-for-apps card selecting `layer-rules`. Acceptance: a Flutter setup session
-  deals flavored layered material. Carries F6: greenfield app sessions risk backend-flavored
-  paths globs until this lands.
 - [ ] **Multi-stack / monorepo registries** (2026-07-21) — per-stack registries, paths scopes,
   seeding. **Revisit: first multi-stack setup run.**
-- [ ] **`codebase-inventory-schema.json` port** (2026-06-27; provenance: unrecoverable — HIL
-  submodule removed 2026-07-21) — the collision/spec-plan-mode contract for
-  `analysis-codebase`; port with the spec/plan cluster and wire its consumer then.
+- [ ] **`codebase-inventory-schema.json` port** (2026-06-27; provenance:
+  `.mochiko/transform/setup/assess-codebase-inventory-schema.md` — the full draft-07 shape
+  survives in-repo; HIL submodule removed 2026-07-21) — the collision/spec-plan-mode contract
+  for `analysis-codebase`; port with the spec/plan cluster and wire its consumer then.
 - [ ] **Phase-A0 codebase-discovery reclaim** (2026-07-01) — `review-plan-artifacts`' parked
   discovery review (documented in its ARTIFACT-CHECKLISTS); the brownfield/discovery track must
   reclaim it.
@@ -356,9 +378,10 @@ Raw captures (2026-08-01) — to triage/brainstorm; grooming may re-key into fin
 - [ ] **Slice spec-amend mode** (2026-07-02, recorded deferral) — re-place changed/new stories
   without touching shipped slices, escalate when a shipped slice's stories changed; design when
   a real mid-flight amendment hits.
-- [ ] **Brownfield onboarding path** (idea) — a distinct entry path into setup; HIL had
-  `brownfield-constitution` + `brownfield-integration` craft.
 - [ ] **Context handoff document** (idea) — cross-session serialization; a deliberate add-on
   if pursued (setup/specify dissolved the HIL carrier into the lead).
-- [ ] **Deliberate shortcut ledger** (idea) — deferral tracking with upgrade triggers; the
-  parallelism entry above is its first live candidate.
+- [ ] **Deliberate shortcut ledger** (idea; defect-backed 2026-08-01) — deferral tracking with
+  upgrade triggers; the parallelism entry above is its first live candidate. Delivery sweep:
+  `implement.md:102` names `deliberate-shortcut-ledger` as a live mechanism but no carrier
+  exists anywhere (a protected, strip-recorded line pointing at nothing), and ≥5
+  ledger-shaped entries sit scattered across records — build the carrier or re-point the line.
