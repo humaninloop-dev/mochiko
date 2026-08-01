@@ -4,6 +4,122 @@ Entry formats: `strips/README.md`. Wave context: skill-succinctness wave-1 open 
 ≥3-consumer queue ruling, user-approved 2026-07-25 (design:
 `.mochiko/brainstorms/skill-succinctness-strip/record.md`).
 
+---
+
+# v0.40.0 — the D6(a) rewrite, ratified on its own acceptance card
+
+**Wave context:** `lead-owned-process-flexibility`
+(`.mochiko/brainstorms/lead-owned-process-flexibility/record.md`), **D6(a) ratified at
+acceptance A1 on its own card** — R31 gave it one because doctrine surgery on the skill
+carrying mochiko's whole loop discipline deserves its own yes, and the card shows the internal
+`Contested` element (U1-C's tier-ranking decline). Wave note: `.mochiko/strips/command-shape.md`
+[v0.40.0]. Body **12,291 → 15,124 B** (words 1,946 → 2,367, +22%), measured after the repair
+round. A growth revision, and
+nothing was loosened: requirements 1 and 4 are untouched, and 2 and 3 gain clauses.
+
+**Scope, and it is narrower than the build brief's compression.** R28 scoped D6(a) to
+**command-supervised loops**; *"non-command loops keep the four requirements exactly as written
+today"*. So the skill did **not** narrow to command-scope — it gained a **two-scope** framing
+paragraph, and each amendment below is marked as command-supervised. An agent loop or a skill's
+own produce → check still reads all four exactly as before, including guard 1's static
+deterministic ceiling (F11's text, unchanged).
+
+**Additions this revision** — recorded for the decision row, not as strips: the two-scope
+paragraph under the sound-loop box · requirement 2's U1-B floor clause — carrying the waiver
+qualifier **"at the weight card"** verbatim, added at the repair round so the three files that
+state invariant 2 (`command-shape.md` Layer 1, this skill, `sized-end-stage-review.md`) state it
+at one strength rather than three · requirement 3's command-supervised carrier paragraph. **Preserved untouched, checked line by line:** the
+`A LOOP IS ONLY SOUND WHEN` box · the letter/spirit aphorism (a `KEPT:` survivor, [v0.25.0]) ·
+requirement 1 in full · requirement 4 in full · the validator trust ranking (which U1-C
+**declined** to elevate to floor — a `Contested` element, so touching it here would encode the
+option the user rejected) · the tamper-proof clause · the whole *Routing a FAIL by gap type*
+section and its corollary · the keystone test and the decoupling-by-absence material · the Red
+Flags list · every Common-Rationalizations row but the one logged below.
+
+## [v0.40.0] The single-carrier claim superseded — a command supervisor is its own contract
+- **Disposition:** superseded → rewritten in place at four sites, all naming one carrier rule:
+  the Overview sentence · the *How to apply* section (retitled "name the carrier, then fill it",
+  now a three-branch list) · the Common-Rationalizations row · the Related pointer.
+- **Tier failed:** n/a — supersession by ruling (**OQ-2**, adopted verbatim at acceptance **A2**;
+  raised as **R17**, which observes that D1-as-amended falsifies F30's constant-at-authoring
+  premise for a departing run). The paired shape-side entry is
+  `.mochiko/strips/command-shape.md` [v0.40.0] "The per-run-contract prohibition retired".
+- **Content (verbatim, all four rewritten sites — an auditor without `git` sees everything that
+  left):**
+  1. Overview — "the discipline is carried by this skill (the rules) plus a
+     [`workflow-contract`](../../templates/workflow-contract.md) that each workflow fills in."
+  2. *How to apply: fill in the contract* (the section heading itself is part of what left) —
+     "Instantiate [`workflow-contract`](../../templates/workflow-contract.md) for the workflow.
+     The filled-in contract is the inspectable proof that all four requirements are met — a
+     reviewer can read it and see whether the validator is genuinely independent and where the
+     human gate sits. **A workflow without a filled contract has not met this skill's bar.**"
+  3. Common Rationalizations, the contract row — "| \"This loop is too simple to need a
+     contract\" | Then the contract takes 2 minutes to fill. Simple loops with no contract are
+     how unsound loops ship. |"
+  4. Related, the contract pointer — "- [`workflow-contract`
+     template](../../templates/workflow-contract.md) — the fill-in form this skill governs"
+- **The defect this closes, on record since the fact map:** **F21** recorded that
+  `command-shape.md`:24–27 already superseded the *How to apply* sentence for commands, and
+  **F25** that no command in the six writes a contract — so the skill has been stating a bar its
+  largest consumer class provably did not meet, for two shape versions. The revival gives the
+  sentence a true reading rather than deleting it.
+- **Kept deliberately:** the bar itself — a loop whose requirements are written down nowhere has
+  not met it — now reaching the real failure: *"a loop with no filled carrier, or one whose
+  composed bounds and gates live only in the lead's context, has not met this skill's bar."* That
+  second clause is R18's measured hazard (F88's resume tax) turned into the rule. Also kept: the
+  contract as the inspectable proof a reviewer reads for independence and human-gate placement.
+- **Consumers assessed** (5 files reference `workflow-contract`; all checked this wave):
+  `templates/workflow-contract.md` — revised, entry `.mochiko/strips/workflow-contract.md`
+  [v0.40.0] · `templates/command-shape.md` — revised, entry above · `skills/mochiko/SKILL.md` —
+  the router carried the stale claim in **two** places ("a command supervisor stitches … to a
+  goal **under a workflow-contract**"; the reach-when cell "instantiating the contract for a
+  specific workflow") — **corrected in this same wave**, entry `.mochiko/strips/mochiko.md`
+  [v0.40.0] · `skills/validation-command-shape/SKILL.md` — its only mention is the new check 22,
+  authored this wave · `templates/agent-dispatch.md` — a bare `Pairs with:` pointer that names no
+  fill rule, **unaffected and byte-verified unchanged**. One further hit outside that set:
+  `templates/slices-template.md:101` lists "filled contracts" among per-slice artifacts — still
+  correct, since a departing run's contract lands beside its deliverable.
+
+## [v0.40.0] Requirement 3's cap re-read as the command's *stated default bounds*
+- **Disposition:** superseded **in place — guard 1's text stands, its reach does not.** A
+  command-supervised paragraph is added below the four guards; the guards themselves, including
+  guard 1's "deterministic ceiling counted by the supervisor … not judged by the model", are
+  carried across verbatim and still govern every non-command loop.
+- **Tier failed:** n/a — supersession by ruling (**D6(a)**, ratified at **A1**: *"Requirement 3's
+  carrier: the command's **stated default bounds** plus recorded departures plus U1-D's
+  counter/no-silent-re-declaration rules — not command-static-only, and never
+  declaration-only"*). U1-D closes the R16/R20 cluster; A3 adds that a declared **cost range** is
+  a bound.
+- **Content (the reading that was retired, the line itself unchanged):** guard 1 read as
+  requiring a *command-static* cap for every loop, which under D1-as-amended would forbid the
+  composition U2 grants — and, read the other way, a declaration-only bound would be the
+  re-declaration loophole R20 names (raise the bound just before busting it).
+- **Kept deliberately, and this is the whole point of the "never declaration-only" clause:** the
+  cap is still deterministic, still counted by a supervisor who is not the model deciding it is
+  done, still escalating rather than silently dying. What the amendment adds is that a composed
+  bound is a bound *in the same sense* — lead-counted, rising only at a user checkpoint,
+  re-declared only on the record — and one sentence naming the failure it prevents: "a cap that
+  lives only in the lead's head, or one raised quietly just before it would have been busted, is
+  the LLM-controlled exit wearing a number." The two Common-Rationalizations rows that price this
+  exact excuse ("The model will stop when it's done" · "Separate agent is overkill here") are
+  **untouched**, and F23/F24's Red Flags with them.
+- **Consumers assessed:** the six commands take the obligated read and each states its own bounds
+  — **unchanged and still conformant**, since under U2 their caps *are* stated defaults
+  (`.mochiko/strips/command-shape.md` [v0.40.0], P7/P8 entry). `workflow-contract.md` §3 gains the
+  matching declared-cost-range and named-counter fields, logged in its own note. No `review-*` or
+  `validation-*` skill restates guard 1 — grep for `Hard round cap` returns this skill and the
+  contract template only.
+
+## [v0.40.0] KEPT: requirement 2's never-self-grade absolute, under the U1-B addition
+- **Tier-2 evidence:** the U1-B clause added at this revision gives the *lead's own pen* a
+  non-discretionary cold grade, which is an addition on top of the absolute — never a trade
+  against it. Recorded as a survivor because a reader meeting "whether a review runs is the
+  lead's call" for the first time could mistake it for a softening: it is not, and the skill now
+  says so in the same breath ("Composition reaches which reviews run; it never reaches the
+  never-self-grade rule above"). The session's own trail is the evidence — two lead bookkeeping
+  overstatements (R25, B8) and one reviewer over-reach (B9), **every one caught by the other
+  side's read, none by its author** (record, verify pass round 3).
+
 ## [v0.39.0] Requirement 2's unqualified verdict absolute → qualified for the devolved clean branch
 
 - **Disposition:** superseded → rewritten in place, same sentence position in requirement 2

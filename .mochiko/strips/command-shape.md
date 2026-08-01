@@ -6,6 +6,218 @@ Shape v3 also *added* the Run-cost entry element (D2 — recorded in ROADMAP, no
 
 ---
 
+# v0.40.0 — shape v6 → v7, the lead composes the process under a floor
+
+**Wave context:** `lead-owned-process-flexibility`
+(`.mochiko/brainstorms/lead-owned-process-flexibility/record.md`, accepted 2026-08-01 —
+pair-reviewed 40 raised → 39 survived → 31 lead-merged, 31/31 dispositioned, verify CLEAN at
+round 3), rulings **D1–D6 as amended at review (U1–U4)** plus acceptance **A1–A4**;
+`DECISIONS.md` 2026-08-01 row. BACKLOG build spec: "Lead-owned process flexibility build
+(shape v7)". Five primitives revised in one wave under the primitive-edit ceremony (OQ-3).
+**No `commands/*.md` file was edited** — D4 (`Contested`) rules convert-on-touch, so all six
+stay v6-form and the library runs mixed-form in the interim.
+
+**Additions this revision** — recorded for the decision row, not as strips (the v3 run-cost
+precedent, since retired): the **floor's four invariants** and the **cost-of-being-wrong rigor
+doctrine**, both new Layer-1 subsections · the default-pipeline / departure-by-record paragraph
+opening the anatomy · the `<!-- shape-form: v7 -->` marker and its Conformance bullet · the v7
+interim note · **P18 · P19 · P20** in the slot index · the Recovery counter-state clause · the
+Seats-&-checks capability-roster clause · the Layer-2 cadence clause naming a departing run's
+counted unit (OQ-4) · "who **composes the run**" in One lead.
+
+**Slot map — no v6 slot moves.** **P1–P17 are unchanged in binding, wording, and block.** Three
+slots are **new**, and all three are **v7-form only**: **P18** floor gates + the
+always-cold-graded lead-penned surface (Constraints) · **P19** run-start declaration home +
+counted unit (Bindings) · **P20** departure-trail home (Bindings). Retirement by omission is
+forbidden and nothing is retired here — the v5→v6 and v4→v5 maps below stand untouched. P17's
+own no-stated-absence carve-out is unchanged; P18–P20 do **not** inherit it, because a v6-form
+file is out of their scope entirely rather than silently conformant within it.
+
+**Run cost — re-measured with `wc` after the edit, and it is the largest growth the shape has
+taken.** Measured **after the repair round**, which is the only basis these figures have:
+`command-shape.md` **23,060 → 31,626 B** (+8,566; words 3,518 → 4,860) · `loop-discipline`
+**12,291 → 15,124 B** (+2,833) · `agent-dispatch.md` **unchanged at 5,770 B** (OQ-4 ruled
+transport unaffected). The shared always-read floor for a team-form run therefore goes
+**41,121 → 52,520 B, +11,399 B on every run** — larger than v6's +6,774 and v5's +3,225
+combined. The conditional `sized-end-stage-review.md` adds **2,992 → 5,123 B** (+2,131) on the
+two commands that bind it; `workflow-contract.md` 3,272 → 5,572 and
+`validation-command-shape` 17,761 → 22,920 are paid at authoring/audit time, not per run.
+*(Superseded figures, recorded so the drift is traceable rather than silently overwritten:
+round 1 — command-shape 31,436 B / 4,823 w, floor 52,307, +11,186, sized-end-stage-review 4,622,
+measured before the closing fixes to the interim note, the sizing template's interim clause and
+check 21; round 2 — floor 52,497, +11,376, loop-discipline 15,101, sized-end-stage-review 4,705,
+measured before the repair round's four fixes. **Each was true of a file that no longer ships**,
+which is why this paragraph is re-measured at every close rather than carried.)* **No offsetting saving is claimed and none exists:** nothing was
+relocated out, and the one clause that genuinely left was replaced by a longer conditional. The
+honest trade, stated rather than dressed — v7 buys a floor a composed run cannot silently skip,
+paid for with the largest per-run read in the shape's history, and it buys it on a doctrine
+whose *own* overhead is still unmeasured (next paragraph). A reader is entitled to weigh
+11 KB/run against that themselves; the strip discipline's job is to keep the bytes visible.
+
+**R21's recorded-open cost obligation — carried here, deliberately not encoded in the shape.**
+OQ-1 carries R21: *a measured cost estimate for declaration + trail + composition on one light
+and one heavy run* (verify N3). It is logged in this note rather than written into
+`command-shape.md` because the shape's own **Run-cost entry element was dropped by user ruling
+at v5** ([v0.33.0] entry below), which took cost measurement out of the command layer entirely;
+a per-run cost-measurement duty in the shape would resurrect exactly what that ruling retired.
+**Status: open, unmeasured.** A3's ratification narrows the residue to the estimate alone
+(record, N6) — the cost *dimension* is covered, because floor invariant 3 makes a declared cost
+range a bound with a counter. The first light and first heavy conversions are the natural
+measurement sites, and the figures above are the wave's own contribution to that estimate.
+
+## [v0.40.0] The per-run-contract prohibition retired — the contract returns for departing runs
+- **Disposition:** superseded → `workflow-contract.md` **v2**, revived as the **per-run carrier
+  a departing run instantiates**; a default run declares in one line on its deliverable (P19).
+  The anatomy sentence is rewritten in place; the footer's Pairs-with line is re-keyed to
+  "conditional — the per-run carrier a **departing** run instantiates".
+- **Tier failed:** n/a — supersession by ruling (`lead-owned-process-flexibility` **OQ-2**,
+  proposed answer adopted verbatim at acceptance **A2**, 2026-08-01; raised as **R17**).
+- **Content (v6, verbatim):** "There is no `Contract` section, and no per-run contract file is
+  written — a per-run form whose values are constant at authoring time is ritual, not proof
+  (`workflow-contract.md` stays the form for loops whose values genuinely vary per run)."
+- **Protected content, leaving by ruling and named as such:** this sentence was logged
+  `Kept deliberately … verbatim` at [v0.33.0] ("The `Contract` section retired as a section"),
+  so it is exactly the class check 14 reads as a regression when it vanishes silently. It does
+  not vanish: **its premise was falsified, not its wording outgrown.** R17 states the ground —
+  under D1-as-amended the values are no longer constant at authoring time for a departing run,
+  which is the *only* condition the prohibition ever rested on.
+- **Kept deliberately:** "There is no `Contract` section" — unchanged, and with it floor check
+  4's `## Contract` heading ban, which is untouched and still fires. The prohibition's actual
+  target was an appendix inside the command and a ritual form for a run whose values never
+  varied; a departing run's values vary by construction, and its form lives beside the
+  deliverable, never inside the command.
+- **Consumers assessed:** `loop-discipline` carried the matching claim in three places (the
+  Overview carrier sentence, "How to apply: fill in the contract", the Related pointer) and the
+  Common-Rationalizations row — **all four reconciled in this same wave**, entry:
+  `.mochiko/strips/loop-discipline.md` [v0.40.0]. `workflow-contract.md` itself is revised and
+  logged at `.mochiko/strips/workflow-contract.md` [v0.40.0]. `skills/mochiko` (the router)
+  carried the claim twice and is corrected in this wave — `.mochiko/strips/mochiko.md`
+  [v0.40.0]. `validation-command-shape` carried no per-run-contract reference before this wave
+  (grep: zero hits) and now carries exactly one, inside the new check 22.
+  `templates/agent-dispatch.md` holds a bare `Pairs with:` pointer that states no fill rule —
+  unaffected, byte-verified unchanged. **No command binds a contract** (grep across all six for
+  `workflow-contract`: zero hits), so the revival adds no interim obligation to any unconverted
+  file.
+
+## [v0.40.0] P7 gate lines and P8 bounds re-read as the *default's* carriers, not as prescriptions
+- **Disposition:** superseded **in place — the text stands, its status does not.** Both PARAM
+  specs are carried across verbatim; what a ruling retired is the reading under which they bind
+  the lead unconditionally. The Constraints block now opens on "the stated default pipeline, and
+  the floor it runs inside", marks P18's floor gates as the non-departable subset, and closes the
+  gates/bounds pair with the departure rule. (Same construction as [v0.38.0]'s "SSL D3's
+  per-roster lifecycle declaration": a supersession is logged even where no text was deleted,
+  because the auditor needs the trace either way.)
+- **Tier failed:** n/a — supersession by ruling (**D1 as amended at U2**, the never-dealt option
+  dealt and adopted: *"commands state a default pipeline (today's gate lines, seats, bounds
+  survive as that default); the lead departs at will, each departure one trail line; nothing
+  obliges the default to run"*; ratified with the set at **A4**). D1's original clauses — "not a
+  prescribed pipeline", "no static round counts in commands" — were themselves superseded in
+  place at U2 and are **not** what this revision encodes.
+- **Content (v6, the status that was retired — the lines themselves are unchanged):** P7 "The
+  gates, **in order**, one bullet each, in this exact form so the set is countable" and P8 "Then
+  the bounds, stated once for every loop in the file … the lead counts them, and out of rounds =
+  escalate, never done", read against F31's inventory as unconditional for every command form.
+- **Kept deliberately, and the audit turns on it:** the three-part gate-line form
+  (`- **<label>** — evidence: … · rules: … · decides: …`), the countability it exists to give the
+  grader's `G` term, the lead as the bounds' counter, and **"out of rounds = escalate, never
+  done" verbatim** — that phrase is mandated by D5 fold (a)'s graded exemplar and is why check 8
+  carries no marker for it (`.mochiko/strips/validation-command-shape.md` [v0.34.0]). Because the
+  lines survive, **F65's forcing dissolves**: `G` stays non-zero, the `90·(G+2)` ceiling keeps its
+  denominator, and checks 1/3/6/12/13 all still key on real text — which is what made D6(d)
+  additive rather than a rewrite.
+- **Consumers assessed:** all six commands, none edited. Under U2 their gate lines and caps
+  **are** stated defaults, so each remains conformant unconverted; the audit branches on the v7
+  marker they do not carry (check 20), and reads their gates as this command's obligations until
+  the conversion touch. `authoring-commands` Job 1 step 3 walks the `[PARAM]` tags generically and
+  finds P18–P20 without an edit. `loop-discipline` requirement 3 gains the matching
+  command-scoped carrier clause — logged in its own note.
+
+## [v0.40.0] The Goal block's process residue left the end state
+- **Disposition:** superseded → rewritten in place. The end state is **artifact state + floor
+  compliance + user acceptance**; the default pipeline stays stated in Constraints, and a
+  departing run still reaches done with its departures on the trail (P20).
+- **Tier failed:** n/a — supersession by ruling (**D6(b)**, ratified with the set at **A4**:
+  *"Goal blocks lose process residue. Done = artifact state + floor compliance + user acceptance.
+  'The validator returned PASS' and 'the sized review ran' leave the done-condition"*; R15's
+  inverted-absence-of-proof finding is resolved by the same one reading D2.4 now shares).
+- **Content (v6, verbatim):** "One measurable end state [PARAM: the end state — the artifact set
+  that exists, the checks that passed, the gates that were ruled, and the user's acceptance]".
+- **Kept deliberately:** **Initial state is FAIL** and the absence-of-proof reading behind it ·
+  user acceptance as part of the end state, plain blocking text, never a timed prompt · the
+  not-done states (P4) · the KM-landing condition under fix-on-sight and the rule that a command
+  states only its own landing additions. Nothing about default-FAIL was loosened: what left is a
+  *process* description of how done was reached, not the proof that it was.
+- **Consumers assessed:** the six commands' Goal blocks name reviewer clearances today (`plan`
+  hard-codes six, `setup` both branches) — **correct and unchanged for a v6-form file**, which is
+  why the residue clause in the grader is v7-form-only (check 23). Each Goal is rewritten at its
+  own conversion touch, never here.
+
+## [v0.40.0] The v5 transition note's reopening trigger re-specified
+- **Disposition:** superseded → rewritten in place. The obligated `mochiko:loop-discipline` read
+  is **unchanged and still obligated**; both of the trigger's terms are re-keyed to surfaces the
+  lead-composed form actually produces.
+- **Tier failed:** n/a — supersession by ruling (**R16**, lead fold on D4/OQ-1, ratified with the
+  record at A4: the v0.34.0 trigger's terms *survive, re-keyed* — "the gates were not
+  rationalized" measurable against the stated default plus recorded departures, "the bounds held"
+  against declared bounds under U1-D's counter-and-no-silent-re-declaration rule).
+- **Content (v6, verbatim):** "**Named trigger for reopening:** the first live dogfooded run of a
+  rebuilt command in which the gates were not rationalized and the bounds held."
+- **Why it needed re-keying rather than carrying:** F38 recorded that the trigger presupposes
+  gates and bounds that exist *to hold*; under U2 they exist as defaults a lead may depart from,
+  so "not rationalized" had to be re-anchored on the recorded departure and "held" on the
+  declared bound with its counter — otherwise the second term is near-unfalsifiable against a
+  silently re-declarable bound, which is precisely dI7's finding.
+- **Kept deliberately:** the retention itself · its non-conformance consequence (a command
+  omitting the read is non-conformant, not early) · the v0.34.0 ground that authoring-loop
+  evidence cannot settle the drop · both ADR citations. The note stays in the always-read home so
+  the retention keeps reading as *ruled* rather than as an oversight — its original purpose,
+  logged as `KEPT:` at [v0.33.0] and unbroken here.
+- **Consumers assessed:** `validation-command-shape` check 1 is the only grader keyed to this
+  note; its stale pointer ("ruled at the pilot checkpoint … D7 + D10 step 3") was re-pointed at
+  the re-specified trigger in the same wave — entry:
+  `.mochiko/strips/validation-command-shape.md` [v0.40.0]. All six commands keep the read;
+  none quotes the note.
+
+**Re-audit coverage — the named set.** The shape's rule is one edit here plus a re-audit of the
+conformant commands. This revision's set, all owed to the independent audit:
+
+1. **`templates/command-shape.md`** — shape-revision mode, `validation-command-shape` checks
+   16–19 (the revision graded as its own artifact).
+2. **`skills/loop-discipline/SKILL.md`** · **`templates/sized-end-stage-review.md`** ·
+   **`templates/workflow-contract.md`** · **`skills/validation-command-shape/SKILL.md`** — the
+   four sibling primitives, each graded against its own ruling set and its strip entries
+   (OQ-3's named obligation set; author ≠ grader holds — this revision's author wrote all five).
+3. **All six `commands/*.md`** — a **confirmatory** pass under check 20's v6 branch, and it is a
+   real check rather than a formality: the claim under grade is that each is **still conformant
+   unconverted**, its gate lines and bounds standing as written, checks 1–19 passing exactly as
+   they did at v6, and checks 21–23 correctly not run. A grader that finds any of the six
+   degraded by this revision has found a defect in the interim branch, not in the command.
+4. **`templates/agent-dispatch.md`** — **not** in the set, and the absence is ruled rather than
+   assumed: OQ-4 split transport from lifecycle and confirmed transport unaffected. Byte-verified
+   unchanged this wave.
+
+**Deliberately not encoded, with the reason** — so the audit grades an absence rather than
+hunting one:
+
+1. **The validator-tier ranking as floor status, plus a bookkeeping linter** — **declined by the
+   user at U1-C** (R5), and the D6(a) tier element marks `Contested` in the record. Validator-tier
+   selection stays lead judgment under the floor; the linter is a recorded non-blocking build
+   suggestion, not shape text. Encoding either would install the floor the user declined.
+2. **A weight-tier ladder, in any form** — D1's own rejected alternative and the framing the user
+   overrode by card. The rigor doctrine names four factors and no tiers; a ladder is what "no
+   codified weight-tier ladder anywhere" forbids.
+3. **A cost-measurement duty in the shape** — R21's obligation is logged in this note instead, for
+   the reason given above: the v5 Run-cost supersession removed cost measurement from the command
+   layer by user ruling, and re-adding it here would contradict a `DECISIONS.md`-traceable drop.
+4. **Ceiling re-calibration for v7-form blocks** — P18–P20 add words to Constraints and Bindings
+   that no check-6 term yet pays for. Nothing in the record rules on it, and inventing a term now
+   would be calibrating against zero measured v7-form bodies. Named in the grader instead (check
+   20): the first conversion measures its blocks and lands any needed term in the same wave, on
+   the `+60` P17 precedent — and until one exists an over-ceiling stays a floor FAIL, so the
+   deferral loosens nothing.
+
+---
+
 # v0.38.0 — shape v5 → v6, Layer 2 re-framed into two axes
 
 **Wave context:** the queued Layer-2 context-lifecycle rewrite and the transport repair executed

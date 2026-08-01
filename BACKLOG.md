@@ -103,7 +103,8 @@ skill's own sizing.
   authoring-loop evidence ruled insufficient — ADR `2026-07-30-goal-shape-pilot-checkpoint`).
   Trigger terms re-keyed by the 2026-08-01 flexibility ruling (R16: "gates not rationalized" →
   measured against the stated default + recorded departures; "bounds held" → declared bounds
-  under the U1-D counter rule); re-specification rides the shape-v7 build item above.
+  under the U1-D counter rule); re-specification landed with shape v7 (v0.40.0 transition
+  note) — only the trigger's firing remains open.
 
 ## Lead-owned process flexibility build (shape v7)
 
@@ -111,18 +112,19 @@ Rulings D1–D6-as-amended + A1–A4 (DECISIONS.md 2026-08-01; record
 `.mochiko/brainstorms/lead-owned-process-flexibility/record.md` — pair-reviewed 40→39→31,
 31/31 dispositioned, verify CLEAN round 3).
 
-- [ ] **Shape v7 + doctrine wave** (2026-08-01) — encode: stated-default pipeline + recorded
-  departures (U2) · hardened floor (U1/A3: run-start weight card user-ruled · folds always
-  cold-graded · bound counter + rise-only-at-user-checkpoint + re-declaration recorded · cost
-  ranges are bounds) · `loop-discipline` rewrite per ratified D6(a), command-scoped ·
-  `sized-end-stage-review.md` kept as default pattern, sizing→lead by **recorded supersession**
-  (U4) · `validation-command-shape` additive re-key (floor-presence · declaration/trail ·
-  departure-license · dual-form interim branch) · `workflow-contract.md` revival + Recovery
-  counter-state row (A2) · lifecycle re-key (departing runs name their counted unit, OQ-4) ·
-  v0.34.0 read-drop trigger re-specified (R16 — absorbs the goal-shape residual above) · R21
-  cost estimate (one light + one heavy run). Ceremony per OQ-3: strip notes + independent
-  audits per primitive; commands convert on next touch (D4 `Contested`). Watches: first
-  external dogfood (R22) · each converted command's first live run.
+- [ ] **Convert-on-touch residuals** (2026-08-01; build DONE at v0.40.0 → trail) — owed at each
+  command's conversion touch: measure the v7-form Constraints/Bindings blocks and land any
+  check-6 ceiling term in the same wave (check 20 names the owed work; over-ceiling stays a
+  floor FAIL meanwhile — beyond-record, user-ratified at wave close 2026-08-01 together with
+  the marker-retirement clause) · bind
+  P18–P20 · state the v6-form run's weight-card home (shape-audit obs). Next touch of
+  `review-brainstorm`/`review-governance-intent`: align the verify-pass trigger phrasing with
+  U1-B (logged in `.mochiko/strips/sized-end-stage-review.md`). R21 (recorded-open): measure
+  declaration + trail + composition cost on the first light and the first heavy conversion —
+  the natural sites; detail in `.mochiko/strips/command-shape.md` [v0.40.0]. Watches: first
+  external dogfood (R22) · each converted command's first live run · floor-read growth
+  +11,399 B/run (token epic, no offset claimed; static read-cost — distinct from R21's per-run
+  composition overhead).
 
 ## Pipeline dogfood & confirm-or-revert
 

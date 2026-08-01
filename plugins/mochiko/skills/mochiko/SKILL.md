@@ -17,8 +17,10 @@ The kernel-free successor to human-in-loop. Discipline lives in the skill librar
 ## How the library composes
 
 Doctrine consumed by every workflow: `loop-discipline` (the four sound-loop rules) and the
-`workflow-contract` template. Each workflow below is a sound loop — a command supervisor
-stitches a producer/validator agent team to a goal under a workflow-contract.
+carrier each loop writes them down in. Each workflow below is a sound loop — a command
+supervisor stitches a producer/validator agent team to a goal, and **is its own contract**
+(`command-shape`); the `workflow-contract` template is the per-run carrier a run that departs
+from its command's stated default instantiates, and the form every non-command loop fills.
 
 **The two review-skill families** (the `validation-*`/`review-*` split, 2026-07-18 — design:
 `.mochiko/brainstorms/setup-adversarial-review/record.md` D5): the prefix encodes **who owns the
@@ -34,9 +36,9 @@ human adjudicates; the reviewer's verdict never clears anything by itself.
 | Skill | Reach when |
 |-------|------------|
 | `loop-discipline` | designing/reviewing any workflow or agent loop; deciding if a loop is sound; filling a `workflow-contract` |
-| `workflow-contract` (template) | instantiating the contract for a specific workflow |
+| `workflow-contract` (template) | instantiating the per-run contract for a command run that departs from its stated default or declares non-default bounds, and for any non-command loop |
 | `agent-dispatch` (template) | briefing each agent dispatch inside a loop — a caller-side guide, not a gate |
-| `command-shape` (template) | the codified command pattern's **sole authoritative home** (Layer 1 form-agnostic core · Layer 2 team transport) — obligated-read by conformant commands; referenced, never restated |
+| `command-shape` (template) | the codified command pattern's **sole authoritative home** (Layer 1 form-agnostic core, including the non-waivable floor · Layer 2 team transport **and per-seat context lifecycle**) — obligated-read by conformant commands; referenced, never restated |
 
 ### Setup cluster (model-invoked — auto-reached during a `/mochiko:setup` run)
 | Skill | Reach when |

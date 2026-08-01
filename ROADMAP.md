@@ -16,7 +16,7 @@ frontend/mobile/desktop shelves are Tier-I roadmap work.**
 - **KM-module redesign dogfood** — fresh-project scaffold + rules-injection probe of the rebuilt module (2026-07-25) → [BACKLOG](BACKLOG.md#operating-docs--km-module)
 - **Kinako follow-up run** — waves-1–2 didn't land: investigate, then the UI fix wave through journey gates (2026-07-24) → [BACKLOG](BACKLOG.md#kinako-follow-up-run)
 - **Team-method build items** — DONE 2026-07-31 at v0.39.0 (loop-discipline qualifier · agent-dispatch v7 ninth field · cold-checkout gate in implement's final validation; audits FAIL→fix→PASS; trail); residual: deferred direction, dedicated session → [BACKLOG](BACKLOG.md#team-method-build-items)
-- **Lead-owned process flexibility — shape v7 build** (2026-08-01) — stated-default + recorded-departure commands under the hardened floor; absorbs the goal-shape rebuild's residual (read-drop trigger re-keyed, R16; that row's DONE state: trail) → [BACKLOG](BACKLOG.md#lead-owned-process-flexibility-build-shape-v7)
+- **Lead-owned process flexibility — shape v7 build** — DONE 2026-08-01 at v0.40.0 (six primitives — shape home + four doctrine files + router; both audits PASS, repair spot-verify 4/4; six commands stay v6-form on the interim branch; trail); residual: convert-on-touch ceremony per command → [BACKLOG](BACKLOG.md#lead-owned-process-flexibility-build-shape-v7)
 - **Production-only narrowing build** — DONE 2026-07-30 at v0.36.0 (tier axis retired, ~19 files + 2 commands, all audits PASS; trail); next: Tier-I scoping, security first → [BACKLOG](BACKLOG.md#production-only-narrowing)
 
 ## Next

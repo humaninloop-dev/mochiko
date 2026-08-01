@@ -6,12 +6,13 @@ description: |
   phase/flow/Contract headings absent, no ordinal steps inside Constraints, per-block
   ceilings, no seat row grading its own output, references present, no restated
   single-sourced prose, exceptions marked, frontmatter correct) beneath a prose judgment
-  ceiling (altitude, parameter completeness over the P1–P17 slot set, Goal/Constraints
-  soundness, preserved responsibilities), plus the strip-note audit during minimalism waves
-  and the shape-revision audit (a revised command-shape.md graded for ruling fidelity,
-  altitude, logging, and re-audit coverage) → binary PASS/FAIL + fix list. Use when grading
-  an authored or converted commands/*.md file, auditing shape conformance, closing a strip
-  wave, or auditing a shape-home revision.
+  ceiling (altitude, parameter completeness over the P1–P20 slot set, Goal/Constraints
+  soundness, preserved responsibilities), the shape-revision audit (a revised command-shape.md
+  graded for ruling fidelity, altitude, logging, and re-audit coverage), the strip-note audit
+  during minimalism waves, and — on a v7-form file — floor presence, declaration/trail carriers
+  and departure license under the dual-form interim branch → binary PASS/FAIL + fix list. Use
+  when grading an authored or converted commands/*.md file, auditing shape conformance, closing
+  a strip wave, or auditing a shape-home revision.
   MUST BE USED when the task says "grade this command", "audit shape conformance",
   "audit this strip wave", or "audit this shape revision". Run by an independent grader,
   never the author.
@@ -22,7 +23,7 @@ description: |
 ## Overview
 
 Binary PASS/FAIL over a `commands/*.md` file (and, in a strip wave, its cluster's strip
-notes; in a shape-revision run, the shape home itself — checks 11–14) against the shape
+notes; in a shape-revision run, the shape home itself — checks 16–19) against the shape
 whose sole authoritative home is
 `${CLAUDE_PLUGIN_ROOT}/templates/command-shape.md`. **Read the graded file and the shape
 home this run** (a revision run: the shape home, the ruling source, and the prior
@@ -41,7 +42,11 @@ floor below grades that structure mechanically. The per-check disposition from v
 kept, dropped, or re-keyed at that revision, and why — is recorded in
 `.mochiko/strips/validation-command-shape.md`; read it when auditing the revision itself. The
 v6 lockstep edits (the P17 slot, its `+60` ceiling term, two check-8 markers) are logged in the
-same note.
+same note, as are the v7 ones (checks 20–23, the P18–P20 extension of check 12).
+
+**Since shape v7 the library is mixed-form**, and the grader branches on a declared marker
+rather than on a reading: **run check 20 first** and grade the file on the branch it returns.
+Checks 1–19 are unchanged from v6 and apply to both forms.
 
 ## The deterministic floor (grep-checkable — run first, record results as evidence)
 
@@ -60,10 +65,12 @@ Against the command file:
    `sized-end-stage-review` — the conditional read for that branch; a file declaring the
    in-loop-critique branch must **not** contain it (loading it there is the sham-read the
    split exists to prevent).
-   **Re-keyed by ruling, disposition pending:** the `loop-discipline` member of this set is
-   retained by shape v5's transition note, and whether it leaves is ruled at the pilot
-   checkpoint (`command-succinctness-strip` D7 + D10 step 3). Until that ruling lands, a
-   missing `loop-discipline` reference is a FAIL. Never treat its absence as anticipated.
+   **Re-keyed by ruling, disposition still pending:** the `loop-discipline` member of this set
+   is retained by the shape's transition note, whose reopening trigger was **re-specified at
+   v7** against the stated default plus recorded departures and declared bounds
+   (`command-shape.md`, *Transition note*; `lead-owned-process-flexibility` R16). The read has
+   not been dropped and no live run has yet met the trigger, so a missing `loop-discipline`
+   reference is a FAIL in both forms. Never treat its absence as anticipated.
 2. **Frontmatter** — `disable-model-invocation: true` present; `description:` non-empty.
 3. **Blocks present per their bindings** — the goal-shaped anatomy, graded on the binding
    and not the heading: `## Goal`, `## Seats & checks`, `## Constraints`, `## Bindings`,
@@ -191,6 +198,11 @@ Against the command file:
     explicitness, so a "no lifecycle override" line would be the defect, not the conformance).
     Grade P17 the other way instead — a command whose recycle moments or counted unit visibly
     differ from the Layer-2 default while it carries no `**Seat lifecycle:**` line is the gap.
+    **A v7-form file extends the set by three:** **P18** floor gates + the always-cold-graded
+    lead-penned surface · **P19** run-start declaration home + counted unit · **P20**
+    departure-trail home. These three are graded **only** on check 20's v7 branch — a v6-form
+    file neither binds nor states them, and demanding them there is the defect, the mixed-form
+    interim being ruled rather than tolerated.
 13. **Goal and Constraints sound** — the Goal's end state is measurable and its not-done
     states are real states of this workflow, not generic FAIL prose; every gate the body
     relies on appears as a Constraints line carrying all three of opening evidence · who
@@ -233,11 +245,60 @@ revision writes.
     ruling defers the re-audit to a named later ceremony, the note's re-audit-coverage line
     names that ceremony and the delta set it must cover.
 
+## Lead-composed process (shape v7) — the form branch and the three v7-form checks
+
+Added at shape v7 (`lead-owned-process-flexibility` D6(d), ruled additive): the v6 checks above
+are unchanged — gate lines and bounds survive as the *stated default's* carriers, so check 6's
+`G` arithmetic and every one of checks 1–19 still keys on real text.
+
+20. **Form branch (floor — run this first)** — grep the file for the literal
+    `<!-- shape-form: v7 -->`. **Present ⇒ v7-form:** checks 21–23 apply, and check 12's slot
+    set runs to P20. **Absent ⇒ v6-form:** grade on checks 1–19 exactly as at shape v6, do not
+    run 21–23, and read its gate lines and bounds as this command's obligations rather than as
+    departable defaults — the ruled interim state (`command-shape.md`, v7 interim note; D4
+    `Contested`, convert-on-touch), never a gap to report. Record which branch ran as the
+    check's evidence. **Never infer the form from the prose:** a file that reads as
+    lead-composed while carrying no marker is v6-form, and the missing marker is the finding.
+    **Ceilings await calibration for the v7 form** — check 6's terms were measured on v6-form
+    bodies, and P18–P20 add words to Constraints and Bindings that no term yet pays for. The
+    first conversion measures its blocks and lands any needed term **in the same wave** (the
+    precedent is check 6's `+60` P17 term). Until such a term exists an over-ceiling is still a
+    floor FAIL: the fix is the measured re-key, never a waived check.
+21. **Floor presence (floor, v7-form)** — each of the four floor invariants is reachable
+    through its own carrier in this file, and never through a restatement of the floor itself
+    (which lives in the home, and copied here would be a check-8 hit):
+    (1) **user gates** — P18 marks this workflow's floor gates and each marked gate's
+    Constraints line reads `rules: the user`. The **run-start weight card** is one of them in
+    every workflow (U1-A makes it a standing stop), so a P18 set that omits it is the gap; an
+    otherwise-empty floor-gate set states that absence and its ground. (2) **author≠grader** — check 7 grades the roster, and additionally, where P11
+    binds the lead-penned-record branch, P18 names that surface as always cold-graded.
+    (3) **declared bounds** — the P8 bounds name the lead as counter (check 13), and nothing in
+    the file lets a bound rise anywhere but at a user checkpoint. (4) **honest trail** — P20 is
+    bound (check 22). An invariant reachable only through the lead's good judgment is not
+    reachable: name the missing carrier, not the missing virtue.
+22. **Declaration and trail carriers named (floor, v7-form)** — **P19** binds where the
+    run-start declaration lands (one line on the named deliverable for a default run; an
+    instantiated `workflow-contract.md` for a departing run) **and** names this workflow's
+    counted unit; **P20** binds where departure lines are recorded. Both must be a path or a
+    named artifact section, never "the lead records it". A P19 that names no counted unit is a
+    gap in its own right: it leaves a composed run with no denominator for its bounds or for
+    Layer 2's recycle cadence.
+23. **Departure license carries its trail (floor, v7-form)** — a file that states a departable
+    default while binding no P20 grants a license it cannot audit; that is a FAIL, not a style
+    gap. The rule the binding encodes is **a departure with no trail line is a FAIL** — of the
+    run, at its artifact; of the file, wherever its own text lets a stage be skipped, collapsed
+    or merged without one. Grade the opposite direction too: the Goal must be free of
+    **process residue** — a done-condition naming a round count, a seat's choreography, or "the
+    sized review ran" / "the validator returned PASS" re-imposes as an obligation exactly what
+    the shape made departable. (A v6-form file legitimately carries that text; this clause
+    reaches v7-form files only.)
+
 ## Verdict
 
 ```
 VALIDATE: <graded file — command path, or the shape home in a revision run>
-Checklist run:  validation-command-shape (floor 1–10, ceiling 11–15; revision runs 16–19)
+Checklist run:  validation-command-shape (floor 1–10, ceiling 11–15; revision runs 16–19;
+                v7-form files also 20–23, and check 20 runs first on every command)
 Evidence read:  <files Read this run>     # graded file + shape home mandatory (revision runs: home + ruling source + prior version); absent ⇒ FAIL
 Floor:          [per check — PASS/FAIL + the grep evidence]
 Ceiling:        [per check — PASS/FAIL + one-line evidence]

@@ -7,6 +7,115 @@ current conventions; D1 forbids cutting to reach a band).
 
 ---
 
+# v0.40.0 — the grader re-keyed **additively** alongside shape v7 (lockstep, five edits)
+
+**Wave context:** the lead-owned-process-flexibility doctrine wave (wave note:
+`.mochiko/strips/command-shape.md` [v0.40.0]; rulings **D6(d)** as amended at **U2**, ratified
+with the set at **A4**). Body **17,761 → 22,920 B**, words 2,688 → 3,506 (**+30.4% w**),
+measured at the close. Five
+edits; **no check was loosened, none removed, and no check number changed.**
+
+**Why this re-key is additive rather than a rewrite, stated with its arithmetic.** D6(d)'s first
+form was forced by **F65**: at `G = 0` the `90·(G+2)` Constraints ceiling collapses to 180 words
+and **fires a floor FAIL on all six commands** (brainstorm +331 · specify +256 · slice +278 ·
+plan +608 · implement +637 · setup +896 over). **U2 dissolves that forcing** — gate lines and
+bounds survive as the stated default's carriers, so `G` stays non-zero and check 6 keeps its
+denominator. Per F71/F75 the checks that survive untouched are 2 · 4 · 5 · 7 · 8 · 9 · 10 · 11 ·
+14 · 15, and checks 1 · 3 · 6 · 12 · 13 keep working because the text they key on is still there.
+This is D6(d)'s answer to **F76** on F76's own terms: the deterministic floor stays the backstop,
+and nothing moved wholesale onto the judgment layer — **all four new checks are floor checks.**
+
+**`description:` re-measured against the 1,536-char delivery truncation** (skill-library axis 3):
+**1,092 → 1,211 chars = 78.8% of the boundary**, up from 71.1%. Not truncated. The added text is
+trigger surface for the new branch (`dual-form`, `v7-form`, floor-presence, departure license) —
+the vocabulary a caller uses when handing over a converted command.
+
+## [v0.40.0] Four new floor checks: 20 the form branch, 21–23 the v7-form set
+- **Disposition:** extended → a new section, *Lead-composed process (shape v7)*, carrying checks
+  **20** (form branch, run first) · **21** (floor presence) · **22** (declaration and trail
+  carriers named) · **23** (departure license carries its trail). Checks 1–19 keep their numbers,
+  their text and their order.
+- **Tier failed:** n/a — a revision consequence. A floor the shape declares and the grader cannot
+  see is a floor that is not enforced; the shape's own rule couples the two files.
+- **Check 20 is the answer to R6** — *"mixed-form interim has no valid grader in either
+  ordering"*. It keys on the literal `<!-- shape-form: v7 -->` marker the shape now mandates in a
+  converted command's preamble, which is the "form declaration in the file" R6 asked for: present
+  ⇒ v7-form, 21–23 apply and check 12 runs to P20; absent ⇒ v6-form, graded exactly as at v6 with
+  21–23 not run. **Deterministic, not judged** — and the check says so explicitly: *"never infer
+  the form from the prose"*, because an inferred branch is the ordering problem R6 named,
+  reintroduced one layer down.
+- **What checks 21–23 grade, and the direction each can fail in:** 21 grades the four floor
+  invariants as **reachable through carriers** (P18's marked floor gates and lead-penned surface ·
+  check 7's roster · P8's counter · P20) and states the failure mode in the negative — *"an
+  invariant reachable only through the lead's good judgment is not reachable"*, which is R2's
+  finding (all four invariants were presence-checks a driver-replay passes with the Critical
+  never surfacing) turned into a gradeable thing. 22 grades P19 and P20 as **paths or named
+  artifact sections**, with a P19 that names no counted unit called a gap in its own right —
+  that clause is **OQ-4**'s, and without it a composed run has no denominator for its bounds or
+  for Layer 2's recycle cadence (F47's exemption firing by default is R23's finding). 23 grades
+  both directions: no P20 under a departable default is a FAIL, and so is **process residue** in
+  the Goal (D6(b)) — with the residue clause explicitly scoped v7-form-only, because a v6-form
+  Goal legitimately carries "the validator returned PASS".
+- **Nothing was added that cannot fire, and nothing fires on conformant text** — the discipline
+  this note's [v0.34.0] entry records after four homeless/mis-specified markers. Each new check
+  keys on a slot binding or a literal marker the shape mandates, not on phrasing the commands
+  happen to share.
+- **Consumers assessed:** `authoring-commands` Job 1 step 3 walks the `[PARAM]` tags generically
+  and finds P18–P20 without an edit; its Job 4 is what this wave executed and is unchanged.
+  `mochiko` (the router) lists this skill by name and enumerates no checks — unaffected.
+
+## [v0.40.0] Check 12 — the slot set gains P18–P20, v7-form only
+- **Disposition:** extended → the enumeration keeps P1–P17 verbatim and adds the three v7 slots
+  with an explicit branch condition; the frontmatter's "P1–P17 slot set" → "P1–P20".
+- **Tier failed:** n/a — a revision consequence.
+- **The carve-out, and why it is the opposite of P17's:** an unbound **P17** states nothing
+  because Layer 2's default governs the silence (TC-D6). **P18–P20** are not silent-by-default —
+  a v6-form file is **outside their scope entirely**, which is a different thing and is written
+  as such: *"demanding them there is the defect, the mixed-form interim being ruled rather than
+  tolerated."* Collapsing the two carve-outs would let a grader read v6-form silence as
+  conformance *within* the v7 set, which is exactly the false pass the branch exists to prevent.
+- **Consumers assessed:** as above; no other primitive enumerates the slot set.
+
+## [v0.40.0] Check 1 — the `loop-discipline` retention re-pointed at the re-specified trigger
+- **Disposition:** re-keyed in place. **The check's verdict is unchanged: a missing
+  `loop-discipline` reference is still a FAIL, in both forms.** Only the pointer moves.
+- **Tier failed:** n/a — supersession by ruling (**R16**; shape-side entry
+  `.mochiko/strips/command-shape.md` [v0.40.0] "The v5 transition note's reopening trigger
+  re-specified").
+- **Content (v6, verbatim):** "**Re-keyed by ruling, disposition pending:** the `loop-discipline`
+  member of this set is retained by shape v5's transition note, and whether it leaves is ruled at
+  the pilot checkpoint (`command-succinctness-strip` D7 + D10 step 3)."
+- **Why it could not simply be carried:** that sentence points at a checkpoint which **already
+  ruled** (v0.34.0 deferred the drop to a named live-run trigger), so the grader was directing an
+  auditor to a disposition that no longer exists — the stale-pointer class this note records four
+  times over. The replacement names the current trigger and adds the fact an auditor actually
+  needs: no live run has met it, so the read stays obligated.
+- **Kept deliberately:** the FAIL-on-absence rule, the "never treat its absence as anticipated"
+  clause, and the whole rest of check 1 (the KM-path clause with its `setup` carve-out, the
+  bidirectional `sized-end-stage-review` test) — untouched.
+
+## [v0.40.0] Overview — the mixed-form branching order stated up front
+- **Disposition:** extended → two sentences after the existing v6-lockstep pointer: the library
+  is mixed-form since v7, **run check 20 first**, and checks 1–19 apply to both forms.
+- **Tier failed:** n/a — a revision consequence. A branch that exists only at check 20 is a
+  branch a grader can reach after already grading the file on the wrong set.
+
+## [v0.40.0] Overview — the shape-revision check range corrected (11–14 → 16–19)
+- **Disposition:** corrected in place (correction class — no content left or entered the
+  primitive; a wrong number was made right).
+- **Cause:** the Overview's parenthetical read "in a shape-revision run, the shape home itself —
+  **checks 11–14**", a survival from the pre-v5 numbering. The revision checks have been
+  **16–19** since v0.33.0, and the skill's own revision section says so ("Checks 1–14 do not
+  apply, except check 10's stamp form and check 15's entry-quality bar"), so the Overview
+  contradicted the body it introduces. Same stale-summary failure mode this note's [v0.35.0] and
+  [v0.38.0] entries record.
+- **Found and fixed in this wave** rather than deferred, because the wave adds checks 20–23 and
+  a wrong range in the Overview becomes materially more misleading with every number appended.
+  Logged rather than folded in silently: it is a pre-existing defect, **not** a v7 consequence,
+  and an auditor is entitled to know which of this wave's edits the rulings actually required.
+
+---
+
 # v0.38.0 — the grader revised alongside shape v6 (lockstep, four edits)
 
 **Wave context:** the Layer-2 two-axis revision (wave note: `.mochiko/strips/command-shape.md`

@@ -7,7 +7,7 @@ description: This skill MUST be invoked when designing, authoring, or reviewing 
 
 ## Overview
 
-Every mochiko workflow is a **constrained loop**, never freeform generation. Mochiko has no kernel to enforce this — the discipline is carried by this skill (the rules) plus a [`workflow-contract`](../../templates/workflow-contract.md) that each workflow fills in. A loop that does not satisfy all four requirements below is not a mochiko workflow; it is unbounded generation wearing a loop costume.
+Every mochiko workflow is a **constrained loop**, never freeform generation. Mochiko has no kernel to enforce this — the discipline is carried by this skill (the rules) plus the carrier each loop writes them down in: a **command supervisor is its own contract** (the command *is* the document — [`command-shape`](../../templates/command-shape.md)), while a **departing** command run and every non-command loop instantiate [`workflow-contract`](../../templates/workflow-contract.md). A loop that does not satisfy all four requirements below is not a mochiko workflow; it is unbounded generation wearing a loop costume.
 
 **Violating the letter of these rules is violating the spirit of them.** "The loop basically validates" or "the lead will stop when it's clearly done" is not loop discipline — it is the exact failure this skill exists to prevent.
 
@@ -19,6 +19,8 @@ A LOOP IS ONLY SOUND WHEN:
   and a HUMAN GATE is named in its contract.
 You cannot rationalize your way out of any of the four.
 ```
+
+**Two scopes, one set of requirements.** All four are universal. Inside a **command-supervised loop** two of them are additionally shaped by the command shape's non-waivable floor — requirement 2 gains a non-discretionary grade on the lead's own pen, and requirement 3's cap is carried by the command's *stated default bounds*, departable only by record. Each is marked below. Every other loop — an agent loop, a skill's own produce → check — reads all four exactly as written here.
 
 ## When to Use
 
@@ -55,6 +57,8 @@ The contract ships the result as **FAIL** and it only flips on real evidence. An
 
 **Never let the producer grade its own output.** Validation is run by a **different agent** using a **different skill**, working from the artifact itself — not from the producer's say-so. The lead/referee owns the verdict — one structural exception: where a command shape defines a **devolved clean branch**, a unit clears on the verifying seat's PASS-with-evidence without a lead verdict, exactly on that shape's stated conditions ([`command-shape`](../../templates/command-shape.md), Layer 2 *Clearing under the mesh*); the workflow's done-condition verdict is the lead's either way.
 
+**Command-supervised loops add one floor clause** (home: [`command-shape`](../../templates/command-shape.md) Layer 1, *The floor*, invariant 2). *Whether* any given review runs is the lead's composition call — but the lead's own folds and any lead-penned record take **one cold-seat grade, non-discretionarily**, and a lead-penned deliverable ships with zero cold reads only by a recorded user waiver **at the weight card**. Composition reaches which reviews run; it never reaches the never-self-grade rule above.
+
 Rank validators by trustworthiness; prefer the highest the artifact allows:
 
 1. **Deterministic ground truth** — a test result, exit code, JSON-schema check, file diff, version equality. Strongest.
@@ -73,6 +77,8 @@ An LLM-controlled exit can run forever — burning budget, repeating failed acti
 2. **No-progress exit** — stop when a round changes nothing, so the loop doesn't spin on stuck state.
 3. **Budget / kill-switch** — stop when the token or cost ceiling is hit; provide an out-of-band halt.
 4. **Escalate, don't silently die** — on hitting a guard instead of the goal, hand off to the human gate with failure context. Never report "done" because you ran out of rounds. Escalation is not uniform — route each finding by gap type (see *Routing a FAIL by gap type* below): only genuine judgment calls reach the human.
+
+**Under a command supervisor the carrier changes; the guards do not.** Guard 1's deterministic ceiling is carried by the command's **stated default bounds** — the lead may compose a run away from them, but only by a recorded trail line, and whatever it declares instead is a bound in exactly the same sense: lead-counted, rising **only at a user checkpoint**, re-declared only on the record, and a declared **cost range** counts ([`command-shape`](../../templates/command-shape.md) Layer 1, *The floor*, invariant 3). A cap that lives only in the lead's head, or one raised quietly just before it would have been busted, is the LLM-controlled exit wearing a number.
 
 ### 4. Defined human gate
 
@@ -94,9 +100,15 @@ A FAIL is not one thing. When validation returns a finding — or the loop stall
 
 **The corollary — never cross the wires.** A preference question sent to research comes back empty: investigation cannot answer "should we". A knowledge question sent to the human burns the scarcest validator you have on something an investigation would have settled. Routing a gap to the wrong sink is a defect, not a shortcut — the wasted round is exactly the one requirement 3's bound exists to catch.
 
-## How to apply: fill in the contract
+## How to apply: name the carrier, then fill it
 
-Instantiate [`workflow-contract`](../../templates/workflow-contract.md) for the workflow. The filled-in contract is the inspectable proof that all four requirements are met — a reviewer can read it and see whether the validator is genuinely independent and where the human gate sits. A workflow without a filled contract has not met this skill's bar.
+The four requirements are met **in writing**, in whichever carrier the loop declares:
+
+- **A command supervisor** — the command file itself: done-condition = its Goal, producer↔validator = its Seats & checks table, bounds and human gates = its Constraints ([`command-shape`](../../templates/command-shape.md)). A run that follows the command's stated default fills no form; it declares itself in one line on the deliverable.
+- **A command run that departs from that default, or declares non-default bounds** — instantiate [`workflow-contract`](../../templates/workflow-contract.md) for that run. What varies is the composed process, so the composed process is what gets written down.
+- **Any other loop** — instantiate the same form for the workflow.
+
+The filled carrier is the inspectable proof that all four requirements are met — a reviewer can read it and see whether the validator is genuinely independent and where the human gate sits. A loop with no filled carrier, or one whose composed bounds and gates live only in the lead's context, has not met this skill's bar.
 
 ## Briefing the agents — a guide, not a fifth gate
 
@@ -129,10 +141,10 @@ If you notice yourself thinking any of these, the loop is unsound. Stop and repa
 | "The model will stop when it's done" | LLM-controlled exits never reliably fire. The deterministic cap is the only backstop. |
 | "We don't need a default-FAIL, we'll see if it works" | Absence of proof must read as not-done. Default-PASS hides every silent failure. |
 | "Human gates slow us down" | The whole framework is named for the human in the loop. Placement is negotiable; presence is not. |
-| "This loop is too simple to need a contract" | Then the contract takes 2 minutes to fill. Simple loops with no contract are how unsound loops ship. |
+| "This loop is too simple to need a contract" | Then its carrier takes 2 minutes to fill. Loops whose bounds and gates live only in the lead's context are how unsound loops ship. |
 
 ## Related
 
-- [`workflow-contract` template](../../templates/workflow-contract.md) — the fill-in form this skill governs
+- [`workflow-contract` template](../../templates/workflow-contract.md) — the per-run carrier this skill governs, instantiated for a departing command run or a non-command loop (a command supervisor is its own contract: [`command-shape`](../../templates/command-shape.md))
 - [`agent-dispatch` template](../../templates/agent-dispatch.md) — the caller-side briefing guide for each dispatch inside the loop (not a fifth gate)
 - See the archived mochiko `ROADMAP.md` ("The sound-loop doctrine", `.mochiko/archive/ROADMAP.md` in the mochiko repo) for the source techniques
