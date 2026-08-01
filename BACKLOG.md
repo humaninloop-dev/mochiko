@@ -326,6 +326,18 @@ Raw captures (2026-08-01) — to triage/brainstorm; grooming may re-key into fin
 
 ## Defects & empirical checks
 
+- [ ] **Inter-agent message delivery — content emitted as text, not `SendMessage`** (2026-08-01;
+  provenance: capture-session observation, to-brainstorm) — observed buggy behavior: a teammate's
+  output reaches the lead as plain assistant text instead of a `SendMessage` tool call, so the
+  lead never actually receives it. Verbatim symptom: "The map is complete but never reached you —
+  it went out as text, not SendMessage. Sending all four sections now." Distinct from the
+  team-form transport items (zero-peer-edges, subagents-vs-teams) which ask whether the team
+  exists at all — this is a message-fidelity defect *within* attempted hand-offs: the payload is
+  composed but never dispatched through the messaging tool, and the sender only notices after the
+  fact. Brainstorm: root cause (affordance/prompt gap that lets a seat narrate a hand-off instead
+  of calling `SendMessage`), whether a structural nudge or gate can force tool-call dispatch at
+  hand-off boundaries, and detection (a hand-off round that produced no `SendMessage` tool call).
+  Relates to Pipeline-dogfood residual A + the orchestration-substrate open decision.
 - [ ] **Shape-home keying watch: "Out of rounds = escalate, never done."** (2026-07-30,
   shape-audit advisory at the PO wave) — verbatim shape prose (`command-shape.md` bounds line)
   carried by **4 of 6** commands (setup · plan · slice · specify; line-wrapped — flatten

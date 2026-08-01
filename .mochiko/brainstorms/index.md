@@ -8,6 +8,11 @@ One entry per session directory under `.mochiko/brainstorms/<topic-slug>/`, **ne
 
 ---
 
+## `verbosity-caveman-ops-separation` — output verbosity, caveman as product, and ops-vs-shipped packaging
+- **When:** 2026-08-01 · **Status:** open
+- **Artifacts:** [record.md](verbosity-caveman-ops-separation/record.md) (canonical, in progress)
+- **About:** three user-named threads: (1) mochiko's user-facing output and report layer are too verbose (BACKLOG ergonomics capture); (2) whether the caveman terse-output style — today an operator preference in this repo's `CLAUDE.md` — becomes a shipped part of mochiko (seam with intensity-modes open decision + token-reduction epic); (3) whether mochiko's own ops primitives (agents/commands/skills that build and maintain mochiko itself) should be treated/packaged differently from what ships to end users in the plugin.
+
 ## `validator-worktree-isolation` — worktree isolation for implement's verification steps
 - **When:** 2026-08-01 · **Status:** accepted · record pair-reviewed (lens-split: 13+13 raised → 12+12 survived cross-exam → 19 lead-merged → 19/19 dispositioned incl. the 7-ruling user batch U1–U7 and 4 answered fact routes; verify round 1 NOT CLEAN — 2 fold-introduced blockers repaired same round + 7 polish taken → round 2 CLEAN; clearing verdict accepted)
 - **Artifacts:** [record.md](validator-worktree-isolation/record.md) (canonical, incl. the verbatim four-dispatch fact map F1–F71 under a lead scope note)
