@@ -1,0 +1,338 @@
+PROVENANCE: user-pasted transcript excerpt, supplied with the session-opening request 2026-07-31.
+Source session: mochiko-app repo (/Users/deepeshadmin/Documents/GitHub/mochiko-app), Claude Code v2.1.220,
+plugin cache path shows mochiko 0.36.0. Excerpt begins at the /mochiko:setup invocation; the earlier
+turns of the pasted log (frontend-stack Q&A, tolaria comparison) are omitted as non-process evidence.
+Verbatim below; display-truncation markers ("+N lines (ctrl+o to expand)") are the terminal's, not edits.
+========================================================================
+
+❯ /mochiko:setup based on gaps identified, i want to tighten the stack. I also
+want to decide the state management too.
+
+  Read 1 file (ctrl+o to expand)
+
+● Skill(mochiko:loop-discipline)
+  ⎿  Successfully loaded skill
+
+● Bash(bash /home/agent/.claude/plugins/cache/mochiko/mochiko/0.36.0/skills/anal
+      ysis-codebase/scripts/detect-stack.sh . 2>&1 | head -40; echo ----; git
+      ls-files | grep…)
+  ⎿  {
+       "project_type": "unknown",
+       "package_manager": "unknown",
+     … +18 lines (ctrl+o to expand)
+
+  Searched for 1 pattern (ctrl+o to expand)
+
+● User answered Claude's questions:
+  ⎿  · Governance region exists (v0.1.0) and the repo has no source files. Which
+     mode should this run take? → Amend (Recommended)
+
+● Bash(grep -n "GI-002\|## Review\|module" .mochiko/memory/governance-intent.md
+      | head -30; echo ====; sed -n "$(grep -n 'GI-002'
+      .mochiko/memory/governance-intent.md…)
+  ⎿  15:The module-driving facts, each with its consequence-stated confirma
+     tion (user confirmed the
+     28:  attestation commitments (attestation module does not attach).
+     … +59 lines (ctrl+o to expand)
+
+● User answered Claude's questions:
+  ⎿  · Which styling/component stack should the ratified stack declare? →
+     shadcn/ui on Radix + Tailwind 4 (Recommended)
+     · Icon library — rule it now or leave it to implementation? → lucide-react
+     (Recommended)
+     · State management posture for the frontend? → React built-ins only
+     (Recommended)
+     · Should the governance stack lines carry versions? → Tools only, no
+     versions (Recommended)
+
+● All four ruled. Folding the delta into the synthesis before the review sizing:
+
+  [lead folds delta into .mochiko/memory/governance-intent.md — GI-002 amended block
+   (11 lines added) + GI-032 minted (9 lines added); reads of template + synthesis interleaved]
+
+● User answered Claude's questions:
+  ⎿  · How should the pre-confirmation intent review be sized for this amend? →
+     Single reviewer (Recommended)
+
+● Recording the sizing and briefing the reviewer — reading the briefing template
+  first:
+
+● Update(.mochiko/memory/governance-intent.md)
+  ⎿  Added 9 lines
+      "2026-07-31 — amend (stack tightening)"
+      - Sizing: lead stated weight (2 elements — GI-002 edited + GI-032 minted · both
+        Confident, user-ruled card by card · low reality load — one external claim, tolaria's
+        manifest, fetched this session); recommended single (event-scaled: lighter substantive
+        delta, no governance event); user ruled: single
+      - Review: (in progress — sole reviewer, combined lenses, cold; verify pass owner:
+        the sole reviewer)
+
+● The synthesis is now frozen. Filling the reviewer seat — a cold
+  devils-advocate you can watch or message directly (this spawn is also the
+  transport probe):
+
+● mochiko:devils-advocate(Cold intent review of amend delta)
+
+› Message from @intent-reviewer (ctrl+o to expand)
+
+● The reviewer returned 17 raised → 10 survived, needs-revision — one Critical,
+  all session-resolvable. My adjudication of the ten:
+
+  Five are mine to fold (formulation defects — I'll land them): S3 record
+  Tailwind v4 in the synthesis (your card literally said "Tailwind 4"; I
+  under-recorded it — governance lines stay version-free), S6 one-line basis per
+  card incl. the lucide-vs-Phosphor divergence, S8 bound the tolaria citation
+  (state posture only — its manifest ships PostHog/Sentry, which GI-015/GI-011
+  forbid), S9 ground GI-032 in the approved S1 architecture rather than star
+  counts, S10 target version v0.2.0 (MINOR: new principle) + header/ledger fold
+  obligations.
+
+  Four consequence rulings are yours — the Critical plus three the reviewer
+  showed ride your copy-in choice:
+
+● User answered Claude's questions:
+  ⎿  · Vendored shadcn code (src/components/ui/**) vs the blocking gates: the
+     coverage ratchet and size lints would fire on copied upstream TSX. How
+     should the floor treat it? → Exclude, justified (Recommended)
+     · Copy-in code has no lockfile row, so GI-014's enforcers never see it.
+     Adopt a provenance discipline for copied components? → Adopt discipline
+     (Recommended)
+     · layering.md's src/ row MAY-import list ("src/domain/, React, Tauri APIs")
+     doesn't name UI packages — the new stack contradicts the ratified table.
+     Extend it? → Extend the MAY row (Recommended)
+     · Two import rules have no mechanical guard: src/domain/ purity (zod-only)
+     and GI-032's store ban. Add ESLint no-restricted-imports for both? → Add
+     both guards (Recommended)
+
+● All four ruled as recommended. Landing the folds — the delta rewritten with
+  rulings, bases, and enforcement reality:
+
+  [lead rewrites the GI-002 amend block 11→46 lines and GI-032 5→17 lines;
+   then lands the Review block with the survivor-disposition table:]
+
+  | # | Sev | GI element(s) | Finding | Disposition |
+  | S1 | Critical | GI-002, GI-009, GI-013 | copy-in TSX collides with the coverage ratchet + size lints; no vendored-code ruling | user-ruled: src/components/ui/** excluded from ratchet + size lints, justification recorded; app code keeps the full floor |
+  | S2 | Important | GI-002, GI-014 | copy-in invisible to every GI-014 enforcer; delta's "lockfile-level" sentence claimed otherwise | user-ruled: provenance discipline (upstream source+version per component, MIT notices, advisory/material-edit re-sync); sentence corrected |
+  | S3 | Important | GI-002 | Tailwind generation unruled; v4 is a different product shape | resolved — v4 recorded in synthesis + ledger; no-versions ruling preserved |
+  | S4 | Important | GI-002, GI-012/GI-020 | src/ MAY-import row contradicts the new stack | user-ruled: row extended; S1 register mirror flagged for next spec touch |
+  | S5 | Important | GI-002, GI-012/GI-026 | src/domain/ package purity mechanically unenforced | user-ruled: no-restricted-imports override scoped to src/domain/**, zod allowlisted |
+  | S6 | Important | GI-002 | four rulings, zero recorded rationale (bundled-assent defect recurring) | resolved — basis folded per card |
+  | S7 | Important | GI-032, GI-028 | no enforcement reality recorded; "or kin" mechanically uncatchable | user-ruled: partial-mechanical store denylist under pnpm lint; "kin" advisory per R3b precedent |
+  | S8 | Important | GI-032, GI-015/GI-011 | tolaria promoted to authority unbounded — its frontend ships PostHog + Sentry | resolved — citation bounded to state posture only |
+  | S9 | Minor | GI-032 | grounding leaned on a level-4 proxy; on-point S1 architecture uncited | resolved — S1 register row now primary grounding |
+  | S10 | Minor | delta metadata | no target version; header/stamp/ledger rows stale | resolved — target v0.2.0 stated (MINOR); producer fold obligations listed |
+
+● All ten dispositions are folded into the synthesis and recorded in its Review
+  block. The reviewer is now running its verify pass over the repairs.
+
+› Message from @intent-reviewer
+
+● The verify pass came back folds-incomplete — 10/10 dispositions landed but
+  three defects in my own pen. Fixing all three plus the cheap residuals:
+
+  [lead lands: header dual-version fix · two commands-table rows (domain purity +
+   store denylist ESLint guards) · fourth expression-not-waiver clause · Amendment Log
+   row · S10 producer-obligations expansion · GI-032 third-state-item grounding
+   (A-ARCH-1) · a BACKLOG.md item for the S1-register mirror]
+
+● All three defects cleared and the residuals landed. The reviewer is
+  re-reading those three spots now; on its PASS the delta comes straight to you
+  for confirmation.
+
+› Message from @intent-reviewer
+
+● D1 and D3 are clear. One sentence stands: my Waivers clause claimed a
+  materially-edited vendored component re-enters the floor, but the ruled
+  mechanism is purely path-based — nothing actually re-attaches the gates. The
+  reviewer offered two fixes, and this one touches how you work day-to-day, so
+  it's yours:
+
+● User answered Claude's questions:
+  ⎿  · A heavily-customized shadcn component would currently stay in the
+     excluded vendored path — outside coverage and size gates — forever. How
+     should the floor re-attach? → Graduation rule (Recommended)
+
+● Landing the graduation rule in both places, then the reviewer's final read:
+
+  [two edits: graduation rule into the GI-002 amend block + the Waivers clause rewrite]
+
+› Message from @intent-reviewer
+
+● PASS is in. Recording it, then the delta is yours to confirm:
+
+  [Verify pass: PASS (sole reviewer, 2026-07-31) — 10/10 dispositions landed.
+   Three fold-introduced defects raised and cleared (D1 commands-table rows · D2
+   waiver-clause reasoning, whose repair carried one follow-on overclaim, cured by the
+   graduation rule · D3 lead-pen metadata). Two non-blocking residuals routed to the
+   producer.]
+
+● User answered Claude's questions:
+  ⎿  · Confirm the reviewed stack-tightening delta (→ v0.2.0)? → Confirm
+
+  ⎿  Interrupted · What should Claude do instead?
+
+❯ what was the previous question, ask again
+
+● Confirmed. Stamping the synthesis and opening the authoring loop:
+
+  [resume-line + header stamps; spawns producer]
+
+● mochiko:principal-architect(Author v0.2.0 surface amendments)
+
+● User answered Claude's questions:
+  ⎿  · Confirm the reviewed stack-tightening delta (→ v0.2.0)? (GI-002: Tailwind
+     v4 + shadcn copy-in on Radix + lucide-react, vendored-code rules incl.
+     graduation, layer-row extension, ESLint import guards · GI-032: React
+     built-ins only for frontend state. Review: 17→10 survivors all
+     dispositioned, verify pass PASS.) → Confirm
+
+● Confirmed — stamping the synthesis and opening the authoring loop:
+
+  [duplicate stamp edits — one Edit error, header reconciled after greps]
+
+● mochiko:principal-architect(Author v0.2.0 surface amendments)
+
+› Message from @producer-2
+
+● Good catch by the seat — and the collision is my own making: after the
+  interrupt and re-ask, I stamped and spawned a second producer while the first
+  (spawned on your original confirm) was already mid-round. It has written
+  nothing, so there's no corruption; the first producer is moving through the
+  exact brief with the ledger still ahead of it. Standing the duplicate down:
+
+● To be clear about what happened: I double-spawned the producer — once on your
+  first confirm, again after the interrupt/re-ask. producer-2 ran a stop-check
+  before writing anything and caught it, so the surfaces are clean. The original
+  producer owns the round and is mid-way through. I've asked producer-2 for its
+  one flagged observation on the landed CLAUDE.md before it closes out — that
+  goes into the validation round.
+
+› Message from @producer-2
+
+● producer-2 closed out clean — zero writes confirmed. Its ledger trap list is
+  exactly what the live producer is about to hit, so I'm routing that forward
+  now — five exact-string ledger traps (stale version claims, line counts, the
+  un-landed residual) plus two formulation calls are in the live producer's
+  hands mid-round instead of surfacing as validator FAILs later.
+
+› Message from @producer
+
+● The producer's round is complete — all four surfaces amended, all five traps
+  folded, two flagged proposals held for your acceptance. Now the independent
+  grade — a cold validator reading the files themselves, never the producer's
+  report:
+
+● mochiko:validator(Grade v0.2.0 surface set from files)
+
+› Message from @producer
+
+● Producer's closeout is clean: all five traps verified landed with fresh greps,
+  the gate line adopted the three-bullet split (FP-1), and the state-line
+  placement is recorded as a deliberate call for the validator to grade (FP-2).
+
+› Message from @validator
+
+● FAIL — 5 fixes, all precise, all in the delta. The valuable ones: the ledger's
+  GI-009/GI-013 test criteria contradict the very carve-out added to them;
+  "materially edited" has four undefined gradations doing load-bearing work; and
+  the producer's second concern (shadcn's CLI owns components.json and may
+  rewrite provenance rows out of it) never landed on a graded surface.
+  Preservation, tracing, versions, and the KM re-audit all passed. Opening round 2.
+
+› Message from @producer
+
+● All five fixes landed, plus a new tooling.md rules file guarding the exact
+  globs a silent misconfiguration would exploit. Sending the validator back for
+  the re-grade.
+
+› Message from @validator
+
+● Round 2: FAIL — but only 2 defects left, both trace arithmetic introduced by
+  the new file (an untraced GI-029 rule in tooling.md, and a flagged-proposal
+  count of 3 against 4 in-place flags). All five round-1 fixes verified landed.
+  Opening the final round.
+
+› Message from @producer
+
+● Round-3 fixes are in — GI-029 traced through all four spots, the proposal
+  count corrected to 4 with the enumeration shown, and the optional wording fix
+  taken. The validator is on its final re-read now.
+
+› Message from @validator
+
+● PASS — round 3 of 3. The v0.2.0 set is validated: trace closed both directions
+  (GI-001…GI-032, 19 principles + 13 non-principle elements, 0
+  unrealized-and-unflagged), every v0.1.0 principle byte-identical, all region
+  changes inside the markers, MINOR bump correct.
+
+  Four producer-authored proposals stand annotated on the surfaces, and they're
+  yours to rule, one by one:
+
+● User answered Claude's questions:
+  ⎿  · When a vendored component graduates into app code, what happens to its
+     provenance row? → Keep row, mark graduated (Recommended)
+     · Where do per-component provenance rows live? (components.json is shadcn's
+     CLI-owned config — a CLI run can reorder or drop extension rows.) →
+     Sibling provenance file (Recommended)
+     · The material-edit test (what forces graduation):
+     structure/props/behaviour = material; styling-layer changes = not;
+     ambiguity counts as material. Accept? → Accept as authored (Recommended)
+     · The coverage-ratchet baseline filename must match coverage-baseline* —
+     purely so tooling.md's rules inject whenever the baseline is edited. Accept
+     the naming convention? → Accept (Recommended)
+
+● While it folds, recording the four rulings in the synthesis (my pen, the audit
+  trail):
+
+  [G4 acceptance-gate rulings block appended to governance-intent.md]
+
+› Message from @producer
+
+● All four rulings are folded — the carrier repoint is complete (provenance
+  lives in app-owned components.provenance.json, born with the first copy-in).
+  The validator is on the bounded re-read now.
+
+› Message from @validator
+
+● PASS. The folds are clean — carrier repoint coherent everywhere, 4↔4 bijection
+  on rulings, no phantom edits, versions consistent, v0.1.0 content untouched.
+  The set is complete and validated. Final acceptance is yours:
+
+  The v0.2.0 governance surface set: CLAUDE.md region · layering.md ·
+  dependencies.md · tooling.md (new) · governance-ledger.md. Floor accounting:
+  production floor asserted · zero waivers (four expression riders) · modules
+  unchanged · MINOR bump correct.
+
+● User answered Claude's questions:
+  ⎿  · Accept the validated v0.2.0 governance surface set? → Accept
+
+  [landing ritual: DECISIONS.md row appended · resume line → DONE · header
+   "Governs" → v0.2.0 accepted · G4 block closure with landing-ritual note]
+
+● User answered Claude's questions:
+  ⎿  · Run the governance-injection probe? It empirically verifies the
+     path-scoped rules files (incl. the new tooling.md) actually inject when
+     their trigger files are read — findings feed a future amend. Rough cost:
+     ~30–80k tokens. → Run it (Recommended)
+
+● Skill(mochiko:testing-governance-injection)
+
+● 6 agents finished
+   ├ Injection probe A: src/domain ts · 2 tool uses · 26.1k tokens
+   ├ Injection probe B: provenance json · 2 tool uses · 25.9k tokens
+   ├ Injection probe C: eslint config · 2 tool uses · 26.1k tokens
+   ├ Injection probe D: coverage baseline · 2 tool uses · 26.1k tokens
+   ├ Injection probe E: real BACKLOG read · 1 tool use · 19.7k tokens
+   └ Injection probe N: negative control css · 2 tool uses · 26.0k tokens
+
+● 2 agents finished
+   ├ Behavioral probe: loosen lint caps · 2 tool uses · 28.7k tokens
+   └ Behavioral probe: add analytics dep · 6 tool uses · 43.7k tokens
+
+========================================================================
+END EXCERPT. Editorial notes on this file: bracketed [...] passages condense the lead's
+file-edit traffic (the full diffs were in the paste; counts and edit targets preserved);
+all AskUserQuestion cards, teammate messages, tallies, verdicts, and round structure are
+verbatim. User-ruling count across the excerpt: 18 individual rulings on 10 card stops
+(mode 1 · dealt cards 4 · sizing 1 · review-survivor consequences 4 · graduation 1 ·
+G3 confirm 1 (asked twice, interrupt) · G4 proposals 4 · accept 1 · probe 1).

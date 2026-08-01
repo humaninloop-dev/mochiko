@@ -80,6 +80,13 @@ build item in the trail.
   the acceptance gate (seam-N1 placement), and the `ARCHITECTURE.md` fold staying distinct.
   Rides the merged-command dogfood (plan+tasks item below) and the team-form
   confirm-or-revert.
+- [ ] **Per-slice `architecture.md` ↔ repo `ARCHITECTURE.md` tie-back** (2026-08-01;
+  provenance: mochiko-app dogfood observation, to-brainstorm) — in the mochiko-app dogfood the
+  design-time `architecture.md` was written into a spec *slice* subfolder; open question is how
+  a per-slice/per-feature `architecture.md` (`patterns-system-design`) folds up to / ties into
+  the repo-level `ARCHITECTURE.md` (`authoring-architecture`). Brainstorm: expected placement
+  (feature-level vs slice-level), the fold seam between the two, and whether per-slice nesting is
+  a placement anomaly or intended granularity.
 
 ## Command goal-shape rebuild
 
@@ -94,6 +101,28 @@ skill's own sizing.
   lands as a one-clause shape edit + delta re-audit when the named trigger fires: **first live
   dogfooded run of a rebuilt command with gates un-rationalized** (CS-D7 replacement guarantee;
   authoring-loop evidence ruled insufficient — ADR `2026-07-30-goal-shape-pilot-checkpoint`).
+  Trigger terms re-keyed by the 2026-08-01 flexibility ruling (R16: "gates not rationalized" →
+  measured against the stated default + recorded departures; "bounds held" → declared bounds
+  under the U1-D counter rule); re-specification rides the shape-v7 build item above.
+
+## Lead-owned process flexibility build (shape v7)
+
+Rulings D1–D6-as-amended + A1–A4 (DECISIONS.md 2026-08-01; record
+`.mochiko/brainstorms/lead-owned-process-flexibility/record.md` — pair-reviewed 40→39→31,
+31/31 dispositioned, verify CLEAN round 3).
+
+- [ ] **Shape v7 + doctrine wave** (2026-08-01) — encode: stated-default pipeline + recorded
+  departures (U2) · hardened floor (U1/A3: run-start weight card user-ruled · folds always
+  cold-graded · bound counter + rise-only-at-user-checkpoint + re-declaration recorded · cost
+  ranges are bounds) · `loop-discipline` rewrite per ratified D6(a), command-scoped ·
+  `sized-end-stage-review.md` kept as default pattern, sizing→lead by **recorded supersession**
+  (U4) · `validation-command-shape` additive re-key (floor-presence · declaration/trail ·
+  departure-license · dual-form interim branch) · `workflow-contract.md` revival + Recovery
+  counter-state row (A2) · lifecycle re-key (departing runs name their counted unit, OQ-4) ·
+  v0.34.0 read-drop trigger re-specified (R16 — absorbs the goal-shape residual above) · R21
+  cost estimate (one light + one heavy run). Ceremony per OQ-3: strip notes + independent
+  audits per primitive; commands convert on next touch (D4 `Contested`). Watches: first
+  external dogfood (R22) · each converted command's first live run.
 
 ## Pipeline dogfood & confirm-or-revert
 
@@ -231,6 +260,28 @@ trail** (scope ADR `2026-07-30-po-narrowing-build-scope`). Tier-I depth items op
   "I will come to revisit") · D7 waiver-as-normal-state dogfood watch (if young teams live on
   permanent floor waivers, revisit expiry/maturity design). (The non-legal module waivability
   ambiguity was ruled 2026-07-30 — waivable under D4; ADR `po-narrowing-build-scope`.)
+
+## Ergonomics: output, language & run-hygiene
+
+Raw captures (2026-08-01) — to triage/brainstorm; grooming may re-key into finer themes.
+
+- [ ] **Validator worktree isolation in implement** (2026-08-01; provenance: capture session,
+  to-brainstorm) — give the implement command's validation/QA step the option to run in a git
+  worktree for cleaner separation from the producer's working tree (isolate the grader from
+  uncommitted producer state / avoid cross-contamination). Brainstorm: which validation gates
+  warrant it, per-gate worktree setup cost, and interaction with the cold-checkout step already
+  ruled into implement's final validation (2026-07-31).
+- [ ] **Reduce mochiko output verbosity — explore "caveman"** (2026-08-01; provenance: capture
+  session, to-brainstorm) — mochiko's user-facing output is too verbose; explore the "caveman"
+  terse-output style and how to bring it into `setup` and mochiko generally. Brainstorm: where
+  terseness helps vs. where detail is load-bearing, global dial vs. per-surface, and the seam
+  with the token-reduction epic (which targets inter-agent/report tokens, not user-facing prose).
+- [ ] **Plain-language sweep + internal-jargon leak to end users** (2026-08-01; provenance:
+  capture session, to-brainstorm) — the language across mochiko is too complex; needs a
+  plain-English sweep. Concrete leak: the plugin's end user is shown "Layer -2" (internal
+  shape/architecture vocabulary) which means nothing to them. Brainstorm: audit user-facing
+  surfaces for internal jargon, draw an end-user vs. internal vocabulary boundary, and sweep
+  command/skill output.
 
 ## Defects & empirical checks
 
