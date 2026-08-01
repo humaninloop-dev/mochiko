@@ -15,18 +15,15 @@ frontend/mobile/desktop shelves are Tier-I roadmap work.**
 
 - **KM-module redesign dogfood** — fresh-project scaffold + rules-injection probe of the rebuilt module (2026-07-25) → [BACKLOG](BACKLOG.md#operating-docs--km-module)
 - **Kinako follow-up run** — waves-1–2 didn't land: investigate, then the UI fix wave through journey gates (2026-07-24) → [BACKLOG](BACKLOG.md#kinako-follow-up-run)
-- **Team-method build items** — DONE 2026-07-31 at v0.39.0 (loop-discipline qualifier · agent-dispatch v7 ninth field · cold-checkout gate in implement's final validation; audits FAIL→fix→PASS; trail); residual: deferred direction, dedicated session → [BACKLOG](BACKLOG.md#team-method-build-items)
-- **Lead-owned process flexibility — shape v7 build** — DONE 2026-08-01 at v0.40.0 (six primitives — shape home + four doctrine files + router; both audits PASS, repair spot-verify 4/4; six commands stay v6-form on the interim branch; trail); residual: convert-on-touch ceremony per command → [BACKLOG](BACKLOG.md#lead-owned-process-flexibility-build-shape-v7)
-- **Production-only narrowing build** — DONE 2026-07-30 at v0.36.0 (tier axis retired, ~19 files + 2 commands, all audits PASS; trail); next: Tier-I scoping, security first → [BACKLOG](BACKLOG.md#production-only-narrowing)
 
 ## Next
 
 - Team-form confirm-or-revert — instrumented run or an explicit accept-on-weak-evidence ruling (2026-07-24) → [BACKLOG](BACKLOG.md#pipeline-dogfood--confirm-or-revert)
 - Cluster-2 oversight-trace ratification wave (2026-07-24) → [BACKLOG](BACKLOG.md#kinako-follow-up-run)
-- Token epic: D5 sizing-gate generalization + the one-shot OTel probe (2026-07-23; probe gains TC's three recorded-open questions) · Layer-2 lifecycle rewrite DONE 2026-08-01 at v0.38.0 (shape v6 + transport-probe repair; trail) → [BACKLOG](BACKLOG.md#token-reduction-epic)
-- Defect probes: fresh-session description-delivery (2026-07-25; the QUALITY-CHECKLIST drift closed with the PO wave — trail) → [BACKLOG](BACKLOG.md#defects--empirical-checks)
+- Token epic: D5 sizing-gate generalization + the one-shot OTel probe (2026-07-23; probe gains TC's three recorded-open questions) → [BACKLOG](BACKLOG.md#token-reduction-epic)
+- Defect probes: fresh-session description-delivery (2026-07-25) → [BACKLOG](BACKLOG.md#defects--empirical-checks)
 - Re-evaluate the deferred-kernel shortcut entry once the pipeline dogfoods complete (roadmap-v2's surviving next-step; its convention-extraction clause discharged at the 2026-07-25 migration) → [BACKLOG](BACKLOG.md#token-reduction-epic)
-- Tier-I builds queued: security-depth (scoped 2026-07-30, SD-D1–D6) · ops & observability (scoped 2026-07-31, OO-D1–D7; both verify-CLEAN, trail); then shelf-build scoping → [BACKLOG](BACKLOG.md#production-only-narrowing)
+- Tier-I builds queued: security-depth (scoped 2026-07-30, SD-D1–D6) · ops & observability (scoped 2026-07-31, OO-D1–D7); then shelf-build scoping → [BACKLOG](BACKLOG.md#production-only-narrowing)
 - Architecture-primitive dogfood — first merged-plan run with the architecture stage (built 2026-07-30 at v0.32.0) → [BACKLOG](BACKLOG.md#architecture-primitive-build-items)
 
 ## Later *(non-committed)*
@@ -53,4 +50,4 @@ frontend/mobile/desktop shelves are Tier-I roadmap work.**
 - **KM pin adopts partial core** (recorded deviation, 2026-07-25; narrowed 2026-07-31 — rules file + plugin-scope `ARCHITECTURE.md` exist, GLOSSARY still deferred) — revisit: first in-repo setup/amend run or the module dogfood.
 
 ---
-*Last groomed: 2026-07-25 (migration baseline — see BACKLOG's stamp line for open-item figures).*
+*Last groomed: 2026-08-01 — Now 2 · Next 7 · Later 10; open-item figures on BACKLOG's stamp line. Three DONE build rows swept from Now to the trail (residuals in BACKLOG).*

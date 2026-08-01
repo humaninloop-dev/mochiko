@@ -6,7 +6,8 @@ surface is [`ROADMAP.md`](ROADMAP.md). Closing an item = the KM landing ritual
 (`.mochiko/memory/knowledge-management.md`): decision row + move here → the trail
 (`.mochiko/archive/backlog-trail.md`) + touch ROADMAP.md. No `[x]` lives here.
 
-*Last groomed: 2026-07-25 (migration) — baseline: 52 open items, per-item bound ≤15 lines.*
+*Last groomed: 2026-08-01 — baseline: 60 open items (52 at the 2026-07-25 migration; +8, all
+provenance-carried), per-item bound ≤15 lines.*
 
 ---
 
@@ -58,7 +59,8 @@ mochiko's own migration executed same day (this file's shape is its result).
 ## Team-method build items
 
 Rulings D1–D5 (DECISIONS.md 2026-07-25; record `team-method-vs-command-shape` — bare session,
-un-reviewed). Land via `command-architect` + independent `validation-command-shape` audit.
+un-reviewed). Build items DONE 2026-07-31 at v0.39.0 → trail; the deferred direction below is
+the open remainder.
 
 - [ ] **Deferred direction (recorded, not ruled)** — build-room merge (structuring seat inside
   implement), slice-fold toward a four-command surface, multi-stream implement (frozen seams ·
@@ -92,10 +94,8 @@ build item in the trail.
 
 Rulings CS-D1–D10 (DECISIONS.md 2026-07-30; record
 `.mochiko/brainstorms/command-succinctness-strip/record.md` — pair-reviewed, verify CLEAN).
-Execution pilot-first per CS-D10; the anatomy is unprecedented, so nothing fans out before the
-pilot checkpoint. Interaction note: CS-D7 scopes skill edits for *this delivery* past the
-`loop-discipline` all-consumer pass (team-method section) — that pass stays open for the
-skill's own sizing.
+Steps 1–4 DONE → trail (v0.33.0–v0.35.0); the CS-D7-scoped `loop-discipline` all-consumer
+pass closed 2026-07-31 (v0.39.0, trail). The read-drop deferral below is the open remainder.
 
 - [ ] **Deferred: the `loop-discipline` read-drop** (2026-07-30, pilot-checkpoint ruling 5; steps 1–4 all DONE → trail, v0.35.0) —
   lands as a one-clause shape edit + delta re-audit when the named trigger fires: **first live
