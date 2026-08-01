@@ -37,7 +37,7 @@ frontend/mobile/desktop shelves are Tier-I roadmap work.**
 - Distributed-artifact shelf (libraries/SDKs/CLIs) — deferred per PO-D1
 - Seat-tiering brainstorm (reliability-gated; untouched by the PO reframe — model-seat sense)
 - Token wave-3 candidates (governance/memory layer · brainstorm records)
-- Ergonomics sweep: output verbosity (caveman) · plain-language / internal-jargon leak (e.g. "Layer -2") · validator worktree isolation
+- Ergonomics sweep: output verbosity (caveman) · plain-language / internal-jargon leak (e.g. "Layer -2") — validator worktree isolation built 2026-08-01 (v0.42.0, trail)
 
 ## Standing bets & revisit conditions
 

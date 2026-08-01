@@ -291,19 +291,15 @@ trail** (scope ADR `2026-07-30-po-narrowing-build-scope`). Tier-I depth items op
 
 Raw captures (2026-08-01) — to triage/brainstorm; grooming may re-key into finer themes.
 
-- [ ] **Validator snapshot-isolation build (implement)** (2026-08-01; provenance:
-  `.mochiko/brainstorms/validator-worktree-isolation/record.md` — accepted, pair-reviewed,
-  verify CLEAN) — build D0–D8/U1–U7: rewrite implement's cold-checkout constraint
-  (`implement.md:105-107`) to the always-cold final validation from uncommitted state via
-  the git-semantics filtered snapshot (supersession ceremony; sibling carriers: the
-  2026-07-31 ADR `:35-38` superseded-mechanism marker + the DECISIONS.md cold-checkout row
-  annotation) · per-cycle isolation as a lead-composed option (D5 triggers, D7 carry-set) ·
-  every verification report names its evidence tree (U7) · scaffolding ensures the
-  `/.claude/worktrees` ignore entry + the `:!.claude/worktrees` listing exclusion (B1) ·
-  teardown bound to disposition. At build scoping: implement's convert-on-touch decision
-  (F66) · shape-home F18-reading clarification (pure addition vs ceremony) · harness-sweep
-  fact check (Open thread 7). Watches (U5): record every interference observation; measure
-  per-cycle cost at the first composed-in run. Open threads 1–7 live in the record.
+- [ ] **Validator snapshot-isolation watches** (2026-08-01; provenance:
+  `validator-worktree-isolation` record, U5 + Open threads — build DONE at v0.42.0, audit
+  PASS; trail) — standing watches, per U5's never-close-silently ruling: record every
+  implement-run interference observation on the run, composed-in or not · measure per-cycle
+  snapshot cost at the first composed-in run (F33 UNVERIFIED) · check non-npm dependency
+  behavior at the first non-npm composed-in run (F71; kinako/Flutter the live candidate) ·
+  implement's v7 convert-on-touch trigger stays live (F66 — conversion deferred by user
+  ruling at the v0.42.0 touch; a dedicated wave takes it, carrying the first-conversion
+  ceiling-term obligation).
 - [ ] **Layer-2 working-tree ownership gap** (2026-08-01; provenance:
   `validator-worktree-isolation` record, Open thread 6) — command-shape Layer 2 says nothing
   about seats sharing one working tree (F19: independence is defined context-scoped) while

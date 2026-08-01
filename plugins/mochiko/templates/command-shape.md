@@ -227,7 +227,9 @@ branch satisfies producer↔validator on its own.
 
 **Ground rules.** Stay kernel-free — no Python/MCP brain code, no capability catalogs, no
 DAG-mediated orchestration. A command suggests commits; it never runs git mutations and
-never pushes.
+never pushes. That ban's surface is refs, index, tracked content, and history — an ephemeral,
+self-removed verification worktree is not a mutation of it (`validator-worktree-isolation` U1,
+2026-08-01).
 
 ## Layer 2 — team transport and per-seat context lifecycle
 

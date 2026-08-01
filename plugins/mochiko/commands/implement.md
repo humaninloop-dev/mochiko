@@ -37,7 +37,7 @@ amendment · an approved delta whose diff never ran · out of rounds · G5 unacc
 | seat | agent × skill(s) | produces / grades | spawn | peer edges |
 |---|---|---|---|---|
 | producer | `staff-engineer` × `executing-tdd-cycle`, `brownfield-integration` | implements each cycle through red/green/refactor TDD → `cycle-report.md`; targeted retry of only the failed tasks; the final-validation fix pass, unconstrained by cycle boundaries; reports its architecture deviation self-check; never verifies | standing across the cycle sequence and the fix-pass loop; **probe seat**, foundation cycle 1 | hands each completed cycle straight to the verifier; retries and fix passes are dispatched by you |
-| verifier | `qa-engineer` × `testing-end-user` | verifies each cycle, then the whole implementation, against real infrastructure — executes the cycle's `**TEST:**` tasks, runs the quality gates, captures evidence → verification report + a checkpoint recommendation; never implements | cold at the first cycle verification, standing after | peer-edged with the producer for cycle hand-offs; the endgame is lead-routed |
+| verifier | `qa-engineer` × `testing-end-user` | verifies each cycle, then the whole implementation, against real infrastructure — executes the cycle's `**TEST:**` tasks, runs the quality gates, captures evidence → a verification report naming its evidence tree + a checkpoint recommendation; never implements | cold at the first cycle verification, standing after | peer-edged with the producer for cycle hand-offs; the endgame is lead-routed |
 | arch-diff | `principal-architect` × `authoring-architecture`, diff mode | reports built vs. approved — "built as approved", or the divergence | disposable, at final validation, whenever an approved structural delta existed | none — never the verifier seat |
 | arch-scribe | `principal-architect` × `authoring-architecture` | folds the resulting system into `ARCHITECTURE.md` | disposable, at finalize, on a built structural change only, per the KM landing | none |
 
@@ -102,11 +102,18 @@ just-failed `cycle-report.md`, relayed at dispatch: the next attempt overwrites 
   cycle execution is a `deliberate-shortcut-ledger` deferral, not a capability drop. Every produced
   cycle is paired with a verification in the same round, never skipped: the hand-off is peer-routed,
   the pairing is yours to enforce. The final validation is lead-routed, never devolved.
-- **Cold checkout:** the final validation builds and runs the quality gates from a **fresh clone**
-  of the repository, never only the warm working tree; that clone's results are part of G5's
-  evidence.
+- **Cold tree:** the final validation builds and runs the quality gates from a dependency-cold
+  snapshot of the **uncommitted working state** — `git ls-files -co --exclude-standard
+  :!.claude/worktrees` copied to `.claude/worktrees/mochiko-<purpose>/`, carrying no warm items —
+  its results part of G5's evidence.
+- **Per-cycle qa isolation:** yours to compose per run — that snapshot plus a declared carry-set of
+  warm gitignored items, dependencies **copied or installed, never linked**. Tear **either**
+  snapshot down only after its evidence is captured and any snapshot-only failure dispositioned; a
+  failed cycle's, after its retry. Triggers, evidence provenance, the git-dependent-gate fallback,
+  and rationale: `.mochiko/brainstorms/validator-worktree-isolation/record.md` (D3–D7).
 - **Scaffolding:** from the detected stack, create any missing ignore files (`.gitignore` /
-  `.dockerignore` / lint-ignore), project-relative, once before the cycle loop.
+  `.dockerignore` / lint-ignore) and the `/.claude/worktrees` ignore entry, project-relative, once
+  before the cycle loop.
 - **Slice scope** *(when an accepted `slices.md` exists)* — that file's **Graduation contract** is
   the single home for slice resolution, the staleness guard, scope, extend-mode, graded amendment,
   and layout; not restated. implement's own bindings on top: the package gate and the cycle loop read

@@ -1,7 +1,7 @@
 # Validator Worktree Isolation in Implement — Decision Record
 
 - **Session:** `.mochiko/brainstorms/validator-worktree-isolation/` · 2026-08-01
-- **Status:** **accepted** (user, 2026-08-01) — pair-reviewed, 19/19 survivors dispositioned incl. the U1–U7 batch; verify round 1 NOT CLEAN (B1/B2 repaired same round + 7 polish) → round 2 CLEAN. Landed: DECISIONS.md row (2026-08-01) · BACKLOG build item ("Validator snapshot-isolation build") + Layer-2 working-tree capture. Synthesis: not generated (on request). Build not started. Sizing trail: pair, user-sized at convergence on the lead's weight statement (6 decisions at freeze · 58-fact surface at freeze · supersedes a shipped ruled constraint). *(Resume: re-read this record; if the verify pass has not reported, re-dispatch it to reviewer-integrity; then user acceptance.)*
+- **Status:** **accepted** (user, 2026-08-01) — pair-reviewed, 19/19 survivors dispositioned incl. the U1–U7 batch; verify round 1 NOT CLEAN (B1/B2 repaired same round + 7 polish) → round 2 CLEAN. Landed: DECISIONS.md row (2026-08-01) · BACKLOG build item + Layer-2 working-tree capture. Synthesis: not generated (on request). **Built 2026-08-01 at v0.42.0** — audit PASS (fix round folded); build item → trail, U5 watches open in BACKLOG; Open threads 1/5/7 dispositioned below. Sizing trail: pair, user-sized at convergence on the lead's weight statement (6 decisions at freeze · 58-fact surface at freeze · supersedes a shipped ruled constraint). *(Resume: re-read this record; if the verify pass has not reported, re-dispatch it to reviewer-integrity; then user acceptance.)*
 - **Driver (BACKLOG › Ergonomics, 2026-08-01, to-brainstorm):** give the implement command's
   validation/QA step the option to run in a git worktree for cleaner separation from the
   producer's working tree — isolate the grader from uncommitted producer state / avoid
@@ -209,7 +209,8 @@ declines the option composes a fully independent verification regardless.
 1. **Shape-home clarification of the F18 ban reading** — U1 ruled the reading for this
    design; whether `command-shape.md`'s ground-rule line gains the clarifying sentence is
    decided at build scoping (a pure addition rides the decision row; any rewording is
-   ceremony).
+   ceremony). **Dispositioned at build (2026-08-01):** user ruled yes — the sentence landed
+   in Layer 1 Ground rules as a pure addition (audit-verified zero deletions), citing U1.
 2. **Per-cycle cost is unmeasured** (F33 UNVERIFIED) — measured at the first composed-in run
    (U5); until then D3(ii)'s optionality is priced by judgment.
 3. **No citable incident artifact exists** (F41–F47) — every future interference observation
@@ -218,7 +219,9 @@ declines the option composes a fully independent verification regardless.
    composed-in run on a non-npm stack (kinako/Flutter is the live candidate).
 5. **implement's v7 conversion** — this build touches implement, so convert-on-touch (F66)
    fires at build scoping; until conversion, U7's report-provenance line is the visibility
-   carrier.
+   carrier. **Dispositioned at build (2026-08-01):** user ruled **defer** to a dedicated
+   wave — this wave stayed surgical v6-form; the deferral is recorded in the `[v0.42.0]`
+   strip entry and the F66 trigger stays live.
 6. **Layer 2 says nothing about seats sharing a working tree** (F19) while F48 documents
    three real authoring-side collisions — out of D1's scope; captured as a new BACKLOG item
    at close (wrap ruling).
@@ -226,7 +229,12 @@ declines the option composes a fully independent verification regardless.
    documents a periodic sweep) — whether the sweep touches non-worktree directories there is
    unestablished (verify-pass polish note 3). Fact-checked at build; if it does, the
    snapshot home moves to a sibling ignored directory — the D6 ruling carries the property
-   (in-repo + ignored + explicitly excluded), not the literal path.
+   (in-repo + ignored + explicitly excluded), not the literal path. **Dispositioned at
+   build (2026-08-01):** F72–F75 — the sweep is worktree-registry-scoped; a plain snapshot
+   directory is not a target (small version-sensitive residual, honestly marked). The real
+   hazard is F76 name collision (+ F77: harness background sessions share the directory) —
+   resolved by the **`mochiko-` name prefix** on snapshot dirs (`implement.md`; recorded in
+   the `[v0.42.0]` strip entry). Home unchanged.
 
 ## Fact-checker map (verbatim)
 
@@ -473,6 +481,24 @@ Two facts follow directly, stated without design intent. First: on the note's ow
 Counter-observation worth having: a plain read-only gate did **not** touch the tree. `node -e "require('left-pad')"` left the `node_modules` mtime fingerprint byte-identical. So the read-mostly intuition holds for *execution*; it breaks on the *install/refresh* commands a cold environment must run first.
 
 **F71 — stack variance and probe limits, flagged.** All of F68–F70 is npm-specific. I established nothing equivalent for pip/site-packages, Dart's pub cache, or pnpm's content-addressable store, and their layouts differ in ways that matter (pnpm's store is global with symlinks into `node_modules`; Dart's pub cache is user-global with a project-local `.dart_tool/`; pip typically installs into a venv outside the repo or gitignored inside it). **UNVERIFIED for every non-npm stack** — and kinako, the only dogfood datapoint, is Flutter/Dart. Also honest: I *created* `node_modules/.cache/x` by hand to test destruction; I did **not** observe a real bundler writing there, so "build tools write into `node_modules/.cache`" is **UNVERIFIED** by my probe despite being common convention. One cross-stack generality I can state from measured repo facts rather than vendor docs: whatever the layout, the dependency dir is normally **gitignored** (F32 measured `node_modules/` and `build/` absent from both worktree and clone), so it is reconstructed rather than carried by any of the four isolation mechanisms mapped so far — which is exactly why F70(1)'s wipe-and-reinstall is on the critical path for every one of them.
+
+### post-acceptance build-scoping dispatch (F72–F77 — Open thread 7)
+
+Headline: **the sweep is worktree-registry-scoped, not directory-scoped — a plain snapshot directory under `.claude/worktrees/` is not a sweep target.** That conclusion rests on the mechanism plus one near-miss doc sentence, not on an explicit statement, so I mark the enumeration mechanism UNVERIFIED and give you the discriminator the docs imply. A *different* collision hazard at that path is real and measured (F76). Scratch probes deleted; scratchpad empty.
+
+**F72 — the sweep's documented scope is worktree-and-provenance-scoped, never directory-scoped.** Verbatim (worktrees page, "Clean up subagent and background-session worktrees"): "A periodic sweep removes **worktrees that Claude created for subagents and background sessions** once they are older than your `cleanupPeriodDays` setting. The sweep skips a worktree that still holds work: changed or untracked files, or unpushed commits. It never removes worktrees you create with `--worktree`." The settings page ties the cadence and names the target class: "The same age cutoff applies to automatic removal of **orphaned worktrees** at startup" (`cleanupPeriodDays`, default 30 days, minimum 1).
+
+**F73 — every documented sweep predicate and remedy is a git-worktree-registry operation, not a filesystem one.** The skip predicate is git state: "changed or untracked files, or **unpushed commits**" — and unpushed-commits is only meaningful for a registered worktree on a branch. The protection mechanism is a git command: "While an agent is running, Claude runs **`git worktree lock`** on its worktree so that concurrent cleanup cannot remove it." The manual remedy is a git command: "To clean up a worktree that the sweep keeps, run **`git worktree remove`**, adding `--force` if the worktree has uncommitted changes or untracked files." And the enumeration instruction the docs give users is literally the registry command (agent-view): "List leftover entries with **`git worktree list`** in the project directory and remove each with `git worktree remove <path>`."
+
+**F74 — the closest thing to a direct statement, and it points the safe way** (agent-view, marked min-version 2.1.211): "**A worktree directory that git no longer recognizes is left on disk when its session is deleted, so remove leftover directories you don't need by hand.**" Git recognition is what determines whether Claude Code removes a directory; where recognition is absent the directory is *left*, and cleanup falls to the user by hand. Precision caveat, stated because it matters: that sentence governs **session deletion**, not the periodic sweep, so it is strong adjacent evidence rather than a statement about the sweep itself.
+
+**F75 — verdict: UNVERIFIED as an explicit statement; git-worktree registration is unambiguously the discriminator the docs imply.** No sentence on either page says the sweep enumerates via `git worktree list`, and none says it scans `.claude/worktrees/` as a filesystem tree. But nothing in the documented sweep has anything to act on for an unregistered directory: it has no branch, no commits, no lock, and no registry entry. Confirmed empirically in a scratch repo (git 2.53.0): a plain directory at `.claude/worktrees/snap/` does **not** appear in `git worktree list` (only the main checkout is listed), and `git worktree prune -v` leaves its contents intact (`file.txt` still present afterwards). On the docs plus that behavior a plain snapshot directory is not a sweep target — but since this rests on inference from the mechanism rather than a doc sentence, treat the residual risk as small-but-not-zero and version-sensitive: the sweep's implementation is unspecified and could change without the docs changing.
+
+**F76 — a different collision hazard at that path IS real, and it cuts the other way.** Measured, git 2.53.0: `git worktree add --detach .claude/worktrees/snap HEAD` onto a **non-empty** existing directory **fails** — `fatal: '.claude/worktrees/snap' already exists`. Onto an **empty** existing directory it **succeeds**. So a snapshot occupying `.claude/worktrees/<name>/` would block a later worktree creation at that same name. Compounding it, the docs' name-reuse rule keys on directory existence and does not distinguish a registered worktree from a plain directory: "**Passing `--worktree` a name whose directory already exists opens that existing worktree instead of creating a new one.**" That rule is documented for the user-facing `--worktree` flag; whether subagent-isolation naming can collide the same way is **UNVERIFIED**.
+
+**F77 — two adjacent settings surfaced that the earlier map lacked.** `worktree.bgIsolation` set to `"none"` disables worktree isolation for background sessions: "Background sessions then edit your working copy directly without moving into a worktree first." And background sessions isolate into the same directory the design is considering: "Before editing files, Claude moves the session into an isolated git worktree under `.claude/worktrees/`, so parallel sessions can read the same checkout but each writes to its own." Its documented skip list contains one entry bearing directly on this design — Claude skips the worktree when "**The write is outside the working directory**" — alongside skipping when the session is already inside a linked worktree, and when the directory isn't a git repository with no `WorktreeCreate` hook configured.
+
+Net for build scoping: the sweep is not the threat to a snapshot parked at `.claude/worktrees/<name>/`; **name collision with git's own refusal to create a worktree over a non-empty directory is** (F76).
 
 ## Review
 

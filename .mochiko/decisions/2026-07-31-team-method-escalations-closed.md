@@ -67,3 +67,16 @@ for the works-warm-only bug class, placed once per run at final validation rathe
 The `agent-dispatch.md` trailer now reads v7 (2026-07-31) above v6 (2026-08-01) — the
 pre-existing v6 stamp post-dates this wave's ruled date. Same anomaly exists on
 `command-shape.md` v6. Recorded so the next auditor does not read it as a fresh defect.
+
+## Superseded-mechanism note (2026-08-01)
+
+Decision 3's **fresh clone** mechanism is superseded by the git-semantics filtered snapshot
+(`git ls-files -co --exclude-standard` → copy), ruled at
+`.mochiko/brainstorms/validator-worktree-isolation/record.md` D3(i)/D4 and built at v0.42.0.
+Ground: executed as written against an uncommitted implementation, a clone of HEAD gates a tree
+that does not contain the work under validation (that record's F22–F24).
+
+**The ruling's intent stands** — the works-warm-only catch and the final validation's results as
+part of G5's evidence, with a warm-only final validation still a named not-done state. Only the
+mechanism changed: the clone gated what the repository contains, the snapshot gates what the disk
+contains.

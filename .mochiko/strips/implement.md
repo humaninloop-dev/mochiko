@@ -14,6 +14,98 @@ entries below. **Also stale:** the shape is **v5** as of the v0.35.0 wave below,
 
 ---
 
+## [v0.42.0] Cold checkout's **fresh clone** superseded by the git-semantics filtered snapshot
+
+- **Disposition:** superseded → the `**Cold tree:**` + `**Per-cycle qa isolation:**` constraints
+  that replaced it, plus the extended `**Scaffolding:**` constraint and the verifier seat row.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/validator-worktree-isolation/record.md`
+  **D3(i)/D4**, with D5–D7 for the option, carry-set and teardown; `DECISIONS.md` row
+  2026-08-01 "Validator snapshot-isolation ruled"). Not a minimalism strip: the line was made
+  wrong, not verbose — executed against an uncommitted implementation, a clone of HEAD gates a
+  tree that does not contain the work under validation (F22–F24).
+- **Content:**
+  ```
+  - **Cold checkout:** the final validation builds and runs the quality gates from a **fresh clone**
+    of the repository, never only the warm working tree; that clone's results are part of G5's
+    evidence.
+  ```
+- **Kept deliberately:**
+  - **The works-warm-only catch** — the whole ground of the 2026-07-31 ruling. The snapshot drops
+    gitignored dirs exactly as a clone does, so the catch is preserved by mechanism, not by
+    assertion (record F14/F15, F32/F57c).
+  - **G5 evidence status** — "its results part of G5's evidence" survives verbatim in intent.
+  - **Warm-only as a named not-done state** — untouched in the Goal block ("a warm-only final
+    validation"). See the deviation note below on where the Constraints echo went.
+- **Consumers assessed** (the three-carrier set enumerated at D3(i), one disposition each):
+  - `plugins/mochiko/commands/implement.md` — **edited** under this entry (the carrier being
+    superseded).
+  - `.mochiko/decisions/2026-07-31-team-method-escalations-closed.md` — **marker appended**
+    ("Superseded-mechanism note (2026-08-01)"); the ADR's existing text is untouched, intent
+    standing.
+  - `DECISIONS.md`, the 2026-07-31 cold-checkout row — **annotated** in the same landing
+    ("cold-checkout *mechanism* superseded 2026-08-01 → the validator snapshot-isolation row;
+    intent stands").
+
+**Two ceiling-forced deviations, recorded rather than silent.** implement's Constraints ceiling is
+90·(G+2) = **900 w** at G = 8, and the block stood at **817 w** before this wave — 83 w of headroom
+against a ruled addition set (mechanism · per-cycle option · carry-set · teardown · fallback ·
+evidence provenance) that measured ~136 w at first draft. Both moves below were made to land the
+ruling inside the floor rather than ship a check-6 FAIL; neither drops a responsibility.
+
+1. **"never only the warm working tree" is not restated in Constraints.** The prohibition survives
+   as the Goal block's not-done state, which this wave did not touch. Dropping the Constraints echo
+   removed a duplication; the mandatory phrasing of the replacement ("builds and runs the quality
+   gates from a dependency-cold snapshot") carries the same obligation at the point of use.
+2. **U7's report-provenance obligation landed in the Seats & checks verifier row**, not Constraints —
+   "→ a verification report **naming its evidence tree** + a checkpoint recommendation" (+5 w;
+   Seats 319 → 324 against its 340 ceiling). That row covers both reports U7 names, per-cycle and
+   final, since the same seat produces both. The variant/carry-set enumeration ("warm, or snapshot
+   path + variant + carry-set") is single-sourced to the record and reached from the Constraints
+   reference, which names evidence provenance explicitly.
+
+Post-edit measurement, all blocks: preamble 114/130 · Goal 149/150 · Seats & checks 324/340 ·
+Constraints **887/900** · Bindings 175/180 · Recovery 239/242. G unchanged at 8 (neither new bullet
+carries the three-part `evidence:`/`rules:`/`decides:` form), so the ceiling term is unchanged.
+
+**Two measurement notes, so the next auditor does not re-derive them.**
+
+1. **The Bindings term is A = 5**, not the **A = 6** this file's v0.35.0 entry measured.
+   `validation-command-shape` check 6 now bars counting a **KM-landing fold target** — a doc the
+   command folds *into* rather than produces — as an own-output, which removes `ARCHITECTURE.md`
+   from the set. What remains: working code · `cycle-report.md` · the per-cycle verification
+   report · the final-validation report · the built-vs-approved diff report. Ceiling
+   90 + 12·5 + 30 = **180**, measured **175**. **This retires the v0.35.0 entry's "At-risk
+   measurement" flag** (`Bindings passes at A=6 and A=5 but fails at A=4`): the failing case needed
+   the built-vs-approved diff report discounted *as well*, and the skill bars only the fold target,
+   so A = 4 is not reachable under the written rule. The flag is answered, not re-argued.
+2. **The "preamble 114/130" figure above counts the `# ` title line; strict body-only is 103.**
+   Check 6's exclusion is written for a block's `## Heading`, and the preamble has no `##` heading,
+   so the margin is unsettled by the letter of the rule. Recorded rather than ruled because both
+   readings clear 130 comfortably — nothing in this wave turns on it.
+
+**v7 convert-on-touch deferred at this touch — by user ruling.** The record's Open thread 5 fires
+convert-on-touch (F66) at build scoping because this build touches implement; the user ruled this
+wave **surgical and v6-form**, with conversion going to a dedicated wave. So implement carries **no**
+`<!-- shape-form: v7 -->` marker and no P18–P20 bindings, and is graded on the v6 slot set. **The F66
+trigger stays live** — the next touch faces the same decision.
+
+*Pure additions this wave, riding the decision row rather than this note:*
+
+- **The U1 ban clarification** — one sentence in `command-shape.md`'s Layer 1 Ground rules: the
+  ban's surface is refs, index, tracked content, and history; an ephemeral self-removed
+  verification worktree is not a mutation of it.
+- **The `mochiko-` snapshot name prefix** — the snapshot home is
+  `.claude/worktrees/mochiko-<purpose>/`, never a bare `<purpose>`. Ground: **F76** measured that
+  `git worktree add` refuses a **non-empty existing directory** (`fatal: '…' already exists`), and
+  the docs' name-reuse rule keys on directory existence without distinguishing a registered
+  worktree from a plain one — so a snapshot parked on a name the harness later wants would block
+  worktree creation there. **F77** puts real traffic at that path: background sessions isolate into
+  `.claude/worktrees/` as well. The prefix makes the collision impossible by construction rather
+  than by convention. The periodic sweep is *not* the hazard here — F72–F75 establish it as
+  worktree-registry-scoped, so an unregistered directory is not a target.
+
+---
+
 ## [v0.38.0] `RETURNED:` — the seat-recycling binding, re-added as a P17 lifecycle line
 
 - **Evidence:** `.mochiko/brainstorms/team-lead-strategic-compaction/record.md` **TC-D5/TC-D6**
