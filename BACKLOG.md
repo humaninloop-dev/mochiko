@@ -6,10 +6,10 @@ surface is [`ROADMAP.md`](ROADMAP.md). Closing an item = the KM landing ritual
 (`.mochiko/memory/knowledge-management.md`): decision row + move here → the trail
 (`.mochiko/archive/backlog-trail.md`) + touch ROADMAP.md. No `[x]` lives here.
 
-*Last groomed: 2026-08-01 (delivery sweep; shape-v7 wave close) — baseline: 55 open items
-(convert-on-touch residuals closed to the trail, post-conversion watches opened in place; 60
-pre-sweep: 3 closed to the trail, 2 merged; 52 at the 2026-07-25 migration), per-item bound
-≤15 lines.*
+*Last groomed: 2026-08-01 (verbosity/caveman session landing) — baseline: 54 open items (2
+closed to the trail: verbosity capture + intensity modes; 1 opened: output-style build;
+plain-language amended in place; 55 at the delivery sweep / shape-v7 wave close; 52 at the
+2026-07-25 migration), per-item bound ≤15 lines.*
 
 ---
 
@@ -22,8 +22,6 @@ pre-sweep: 3 closed to the trail, 2 merged; 52 at the 2026-07-25 migration), per
 - [ ] **Claude-Code portability** (2026-06-27; provenance: unrecoverable — same source) —
   `rfc2119-invocation-trigger` + `disable-model-invocation` are CC-specific: adopt-and-bind or
   abstract? Surfaces when the router evolves.
-- [ ] **Intensity modes** (2026-06-27; provenance: unrecoverable — same source) — global
-  `lite/full/ultra/off` dial vs per-rule. Defer until the pattern is clear from real runs.
 - [ ] **Command orchestration substrate — teams vs `Task`-subagents** (2026-06-30,
   `.mochiko/brainstorms/command-altitude/synthesis.md`) — all six commands are team-form by
   ruling, but **no run has yet proven team-form execution**: three defect runs dispatched
@@ -310,19 +308,28 @@ Raw captures (2026-08-01) — to triage/brainstorm; grooming may re-key into fin
   notes, all recovered by falling back to HEAD as baseline). Scope a doctrine line — tree
   ownership / write discipline per seat — kept out of the validator-isolation session's
   validator-only scope by ruling (D1).
-- [ ] **Reduce mochiko output verbosity — explore "caveman"** (2026-08-01; provenance: capture
-  session, to-brainstorm) — mochiko's user-facing output is too verbose; explore the "caveman"
-  terse-output style and how to bring it into `setup` and mochiko generally. Brainstorm: where
-  terseness helps vs. where detail is load-bearing, global dial vs. per-surface, and the seam
-  with the token-reduction epic (which targets inter-agent/report tokens, not user-facing prose).
+- [ ] **Output-style build — caveman levels + ops separation, three waves** (2026-08-01;
+  rulings D1–D10 + 20 verified folds, record
+  `.mochiko/brainstorms/verbosity-caveman-ops-separation/record.md` — pair-reviewed, verify
+  CLEAN round 2) — **wave 1** (first, highest yield: 79.9% of driver report bytes): D4 report
+  repair — F59 clause fix · sanctioned-section bound · mechanical prose-on-clean check
+  (hosts: `implement.md` clearing conditions + both payload homes; settle at build open:
+  shape's devolving-conditions text vs per-command P14 carrier) · `ultra` with `full` failure
+  narratives. **Wave 2**: style-home template (clause manifest: F25 exemptions whole ·
+  disclose-once · per-surface `off/lite/full/ultra` values) + bindings (command-shape L1 ·
+  report-format · artifact-format + authoring surfaces) + governance-region style section on
+  the **preserve-on-regenerate carve-out** + `paths` rules file + setup. **Wave 3**: trio move
+  repo-side (**probe-first**) + full leakage scrub (per-line supersession entries citing D7;
+  changelog detail verbatim to strip notes). Ceremony per touched file (templates under the
+  four-glob rule, F43 erratum); measure vs the 816,601 B / 79.9% baseline (F53–F55).
 - [ ] **Plain-language sweep + internal-jargon leak to end users** (2026-08-01; provenance:
-  capture session, to-brainstorm) — the language across mochiko is too complex; needs a
-  plain-English sweep. Concrete leak: the plugin's end user is shown "Layer -2" (internal
-  shape/architecture vocabulary) which means nothing to them. Sweep finding (2026-08-01):
-  "Layer -2" appears in no shipped file — the leak is runtime lead prose, so a file sweep
-  won't find it; the fix targets the shape's user-facing vocabulary ban (today an enumerated
-  three-term list) and interacts with the R5 record-don't-build ruling. Brainstorm: the
-  end-user vs. internal vocabulary boundary, and where the ban's term list should grow.
+  capture session; amended 2026-08-01 by `verbosity-caveman-ops-separation` D3) — the
+  language across mochiko is too complex; needs a plain-English sweep. Concrete leak: the
+  plugin's end user is shown "Layer -2" (internal vocabulary); it appears in no shipped file —
+  the leak is runtime lead prose, so a file sweep won't find it. **The rule's home is now
+  ruled** (D3): the style home carries plain-English-for-end-users + the ban as a principle
+  with non-exhaustive examples (lands at the build's wave 2). **Remaining here: the sweep
+  work itself** — term hunting across runtime prose, worked examples for the ban's list.
 
 ## Defects & empirical checks
 

@@ -15,6 +15,7 @@ frontend/mobile/desktop shelves are Tier-I roadmap work.**
 
 - **KM-module redesign dogfood** — fresh-project scaffold + rules-injection probe of the rebuilt module (2026-07-25) → [BACKLOG](BACKLOG.md#operating-docs--km-module)
 - **Kinako follow-up run** — waves-1–2 didn't land: investigate, then the UI fix wave through journey gates (2026-07-24) → [BACKLOG](BACKLOG.md#kinako-follow-up-run)
+- **Output-style build** — caveman levels + ops separation, three waves, report repair first (ruled 2026-08-01, D1–D10) → [BACKLOG](BACKLOG.md#ergonomics-output-language--run-hygiene)
 
 ## Next
 
@@ -37,7 +38,7 @@ frontend/mobile/desktop shelves are Tier-I roadmap work.**
 - Distributed-artifact shelf (libraries/SDKs/CLIs) — deferred per PO-D1
 - Seat-tiering brainstorm (reliability-gated; untouched by the PO reframe — model-seat sense)
 - Token wave-3 candidates (governance/memory layer · brainstorm records)
-- Ergonomics sweep: output verbosity (caveman) · plain-language / internal-jargon leak (e.g. "Layer -2") — validator worktree isolation built 2026-08-01 (v0.42.0, trail)
+- Plain-language sweep (internal-jargon leak, e.g. "Layer -2") — the rule's home ruled into the style home 2026-08-01 (D3); the sweep work itself remains — the output-verbosity half graduated to the Now build row
 
 ## Standing bets & revisit conditions
 
@@ -50,4 +51,4 @@ frontend/mobile/desktop shelves are Tier-I roadmap work.**
 - **KM pin adopts partial core** (recorded deviation, 2026-07-25; narrowed 2026-07-31 — rules file + plugin-scope `ARCHITECTURE.md` exist, GLOSSARY still deferred) — revisit: first in-repo setup/amend run or the module dogfood.
 
 ---
-*Last groomed: 2026-08-01 — Now 2 · Next 7 · Later 10; open-item figures on BACKLOG's stamp line. Three DONE build rows swept from Now to the trail (residuals in BACKLOG). Shape-v7 full-surface conversion landed v0.43.0 (all six commands; marker retired; trail).*
+*Last groomed: 2026-08-01 — Now 3 · Next 7 · Later 10; open-item figures on BACKLOG's stamp line. Output-style build (verbosity/caveman/ops-separation session) entered Now; two ergonomics/design items closed to the trail; plain-language Later row re-keyed to sweep-only.*
