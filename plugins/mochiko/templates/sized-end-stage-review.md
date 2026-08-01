@@ -2,8 +2,7 @@
 
 Conditional shape doctrine, read at the sizing gate when P6 binds this branch — never loaded
 by a command running the in-loop critique instead. `command-shape.md` declares the slots cited
-below (P5 · P7 · P12 · P13); none live here. (Provenance:
-`.mochiko/strips/sized-end-stage-review.md`.) This is the **stated default** review pattern
+below (P5 · P7 · P12 · P13); none live here. This is the **stated default** review pattern
 wherever P6 binds it: departing from it is a recorded departure like any other
 (`command-shape.md` Layer 1, *The floor*), never a silent omission. All of the following hold:
 
@@ -44,11 +43,5 @@ wherever P6 binds it: departing from it is a recorded departure like any other
 
 ---
 
-**Version:** v2 (2026-08-01 — `lead-owned-process-flexibility` D6(c) ratified at A4: this
-pattern **survives as the stated default** wherever P6 binds it · **U4** — the sizing gate
-passes user → lead by recorded supersession · **U1-B** — the verify pass hardens to floor
-status and `none` on a lead-penned artifact requires a recorded user waiver · interim note for
-unconverted commands added, then **retired at the v0.43.0 wave close** — both its deferrals spent
-once the last command converted, the trail home it anticipated now bound at P20; v1 2026-07-30 — command-succinctness-strip, pilot-checkpoint ruling
-B: split out of `command-shape.md` Layer 1 v5 as a conditional read; text unchanged in
-substance) · **Governed by:** `mochiko:loop-discipline` · **Pairs with:** `command-shape.md`
+**Version:** v2 (2026-08-01) · **Governed by:** `mochiko:loop-discipline` · **Pairs with:**
+`command-shape.md`

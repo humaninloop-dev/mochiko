@@ -19,7 +19,7 @@ the numbers.
 2. **Fix the tripped invariant first**, then sweep the rest of the list once.
 3. **Delivery sweep** *(on an "already delivered?" doubt, or a tripped open-item-count
    watch)* — verify each open item's **stated obligation** against the delivered state: the
-   trail, `.mochiko/strips/`, the decisions layer, git history, and the primitives on disk.
+   trail, the decisions layer, git history, and the primitives on disk.
    Adjacent work never counts; run-gated items stay open without run evidence. Per-item
    verdict — delivered / partial / open — with citations, every delivered claim
    independently re-verified before it is presented. Delivered → closure candidates the
@@ -38,7 +38,7 @@ the numbers.
    entry-size figure) the count watch reads next time.
 8. **Expansion-heavy-surface watch** — check whether any operating doc's writes have become
    mechanical derivations from artifacts (`CHANGELOG.md` first, when adopted). A hit is the
-   recorded re-open trigger for the report-writer ruling (`model-tiered-seats` D3): log it as
+   recorded re-open trigger for the report-writer ruling: log it as
    a BACKLOG item for the user — never act on it here.
 
 ## Boundaries

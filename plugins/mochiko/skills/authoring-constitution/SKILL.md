@@ -10,8 +10,7 @@ description: This skill MUST be invoked when authoring or amending a project's g
 Write project governance that teams — and Claude Code sessions — actually follow. Every principle
 must be enforceable, testable, and justified; vague aspirations are rejected in favor of
 actionable constraints with measurable criteria. **There is no `constitution.md`.** Governance
-lands on the surfaces Claude Code natively loads, each at its disclosure level
-(design record: `.mochiko/brainstorms/constitution-native-surfaces/record.md`, D1–D8):
+lands on the surfaces Claude Code natively loads, each at its disclosure level:
 
 | Surface | Carries | Disclosure |
 |---------|---------|------------|
@@ -112,8 +111,14 @@ Artifact shapes (region block, rules file, ledger):
 
 > **Ownership boundary (D8).** Regenerate only what sits between the markers — user content
 > outside them is untouchable. Rules files and the ledger are setup-owned and regenerated whole,
-> except the preserved `mochiko:domain-registry` block (the template's comment block +
-> `references/DOMAIN-DEPENDENCIES.md`). In amend, preserve untouched principles verbatim (their
+> except the two preserved blocks: `mochiko:domain-registry` (the template's comment block +
+> `references/DOMAIN-DEPENDENCIES.md`) and the `mochiko:output-style` switch line in the
+> region's Governance operations. Write the style line default-on when the region is first
+> authored; on every later run **read the existing values and re-emit them unchanged** — the
+> user sets their register there, and regenerating the defaults over it silently reverts them.
+> The same preservation covers the Shape-5 output-style rules file: refresh it only to track those
+> values, and keep any line the user added to it.
+> In amend, preserve untouched principles verbatim (their
 > GI-IDs are stable) and bump the region's semver. A `.mochiko/memory/constitution.md` on disk
 > is superseded — the lead deletes it; never author into it.
 
@@ -201,7 +206,10 @@ Every governance set MUST include, per
    session overrode them. Gates for waived categories are omitted; the waiver record covers the
    absence.
 6. **Scope-bound rules files**: per the routing — globs violation-coverage tested, the standing
-   new-file read line emitted.
+   new-file read line emitted. **Plus one unconditional file every run**, routed from no
+   principle: the output-style rules file per the template's Shape 5, scoped over the
+   deliverable-authoring paths — edit-time reinforcement of the register, never the carrier that
+   reaches creates.
 7. **Governance ledger**: sections per the template's Shape 3. Riders: waiver table says "None."
    when nothing is waived; every waiver carries its recorded justification per the D4 model
    ([catalog/universal-floor.md](references/catalog/universal-floor.md)); legal-mandate module

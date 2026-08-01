@@ -4,6 +4,8 @@ This template defines the structure for brownfield codebase analysis output. It 
 the deliverable envelope ([`artifact-format.md`](artifact-format.md)) **slimmed but
 legible**: findings as file-cited table rows, one line each; the judgment prose
 (strengths, recommendations) stays prose — the analysis checkpoint's human reader needs it.
+Register: `full` per [`artifact-format.md`](artifact-format.md) rule 11; that same human
+reader is why plain English wins wherever terse and plain pull apart.
 
 ---
 

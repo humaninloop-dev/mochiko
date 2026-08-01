@@ -1,8 +1,7 @@
 <!--
 GOVERNANCE SURFACES TEMPLATE — the canonical shapes of the dissolved constitution
 =================================================================================
-There is NO constitution.md (design: .mochiko/brainstorms/constitution-native-surfaces/record.md,
-D1–D8). Governance is a SET, authored by `authoring-constitution` and graded as one deliverable
+There is NO constitution.md. Governance is a SET, authored by `authoring-constitution` and graded as one deliverable
 by `validation-constitution`:
 
   1. A marked governance region in CLAUDE.md          (always-on; short-form only)
@@ -13,10 +12,14 @@ by `validation-constitution`:
 
 Ownership (D8): the region between the markers — and everything under .claude/rules/mochiko/ and
 the ledger — is setup-owned and idempotently REGENERATED on re-runs and amends. Content outside
-the markers is user territory: NEVER touched. One carve-out: a domain-dependency registry block
-(`mochiko:domain-registry` markers) inside a layer-scoped rules file is preserved verbatim
-across regenerations — implement-time additions live there
-(`authoring-constitution/references/DOMAIN-DEPENDENCIES.md`). HTML comments in CLAUDE.md are
+the markers is user territory: NEVER touched. TWO carve-outs, both preserved verbatim across
+regenerations: (1) a domain-dependency registry block (`mochiko:domain-registry` markers) inside
+a layer-scoped rules file — implement-time additions live there
+(`authoring-constitution/references/DOMAIN-DEPENDENCIES.md`); (2) the output-style switch line
+(`mochiko:output-style` markers) in Governance operations — setup writes it default-on ONCE, and
+every later regeneration keeps whatever per-surface values the user set. Regenerating it back to
+the defaults silently reverts a user's ruling, which is the failure the carve-out exists to
+prevent (style home: `templates/output-style.md`). HTML comments in CLAUDE.md are
 stripped before context injection (doc-confirmed) — trace stamps there are context-free; comment
 handling in rules files is undocumented, so the ledger is always the canonical metadata record.
 -->
@@ -54,6 +57,9 @@ the ledger, module detail behind pointers.
 
 - Ledger (waivers · amendment policy · exceptions · Three-Part metadata): `.mochiko/memory/governance-ledger.md`
 - Amend via `/mochiko:setup` (fact-profile changes — module attach/detach — and un-waives are governance events)
+<!-- mochiko:output-style:begin -->
+- Writing style — conversation: `full` · reports: `ultra` *(internal agent hand-offs)* · documents: `full`. Terse and plain-English by default. Set any of the three to `off`, `lite`, `full`, or `ultra` and your choice is kept when this section is regenerated; "normal mode" turns it off for one session.
+<!-- mochiko:output-style:end -->
 [- Path-scoped rules inject on **Read**, not Write (observed behavior, kinako dogfood 2026-07-19) — before creating a new file under [the actual scoped paths, e.g. `src/`, `tests/`], read the matching `.claude/rules/mochiko/` file or read back the file you created <!-- standing line: emit whenever the set includes any rules file -->]
 [- Operating docs (knowledge-management module): sessions in `.mochiko/brainstorms/` + `index.md`; rulings land in `DECISIONS.md`; open threads in `BACKLOG.md`; direction in `ROADMAP.md`; landing ritual + invariants at `.mochiko/memory/knowledge-management.md`; groom: `mochiko:grooming-operating-docs` <!-- GI-XXX -->]
 [- Release gates: [one-line summary] — detail in the ledger <!-- GI-XXX -->]
@@ -168,3 +174,41 @@ validator's grading surface. One row per principle-bearing GI element:
 Flagged proposals: [none | list — each awaiting the user's ruling at acceptance]
 Waivers: [none | GI-IDs]
 ```
+
+# Shape 5 — the output-style rules file (`.claude/rules/mochiko/output-style.md`)
+
+A Shape-2 file with fixed content, emitted every run rather than routed from a principle, scoped
+over the paths where pipeline deliverables are authored. It is **edit-time reinforcement, never
+the carrier**:
+
+- **For:** a producer *editing* an existing deliverable, which reads the file at touch time and
+  writes in the right register.
+- **NOT for:** reaching file **creates**. `paths` rules inject on **Read, not Write** — the same
+  observed behavior the region's standing new-file line records — so a file written from scratch
+  never triggers this one. The always-loaded governance region is what reaches creates; this file
+  is the second delivery, never the only one. (Anyone re-opening that question: it was ruled, not
+  overlooked.)
+- **Create-or-join:** the `.claude/rules/mochiko/` scaffold is shared. Whichever concern lands
+  first creates the directory and the region's index line; every later concern joins it, one file
+  per concern.
+
+```markdown
+---
+paths:
+  - ".mochiko/specs/**"
+---
+
+# Writing style
+
+- Documents here are written `full` by default — dense, articles droppable, fragments fine. The
+  **Writing style** line in `CLAUDE.md`'s Governance section is the authority whenever it differs.
+- Never compress: IDs, identifiers, paths, commands, contract clauses, numeric targets and error
+  strings — verbatim.
+- Stop compressing wherever it would leave a requirement, criterion or constraint ambiguous. A
+  human signs these off, so plain English beats terse every time the two pull apart.
+```
+
+Preserved like the switch line: written once, refreshed only to track the region's Writing-style
+values, and any line the user adds to it survives every regeneration. Full rules ship with
+mochiko (the `output-style` template; deliverable envelope `artifact-format.md` rule 11) — this
+file cites them and never restates them.

@@ -6,7 +6,6 @@ to *function* — the agent degrades gracefully on a thin brief — it is how th
 agent's *best* work and keeps the loop sound. The agent owns none of this knowledge
 (workflow, siblings, "done") — all of that lives on the caller side; never push it into a
 persona. Name the skill as a hint, not a command: the agent decides whether it fits.
-(Rationale + provenance: `.mochiko/strips/agent-dispatch.md`.)
 
 | # | Field | What to provide | Example |
 |---|-------|----------------|---------|
@@ -51,14 +50,6 @@ homed with the team transport they belong to. This file is form-agnostic: it bri
 whether that call fills a seat, **refills one with a versioned-name successor**, or fires a
 one-shot subagent — a refill is an ordinary dispatch to brief, never the transport anti-pattern.
 
-**Briefing version:** v7 (2026-07-31 — team-method escalations closed
-(ADR `.mochiko/decisions/2026-07-31-team-method-escalations-closed.md`): a **ninth field** by user
-ruling — peer edges + hand-off holds, carried by reference to shape Layer 2 — and field 6 re-routed
-for the mesh, the v3 lead-relay surviving as one of its two routings; v6 2026-08-01 — `standing-seat-lifecycle` D3 as amended by TC-D6: the
-Layer-2 pointer retargeted — lifecycle joins transport at the same home, and a versioned-name
-refill is named as a briefable call; v5 2026-07-30 — command-succinctness-strip D6: Seat transport relocated
-to `command-shape.md` Layer 2 · the team-form roster paragraph relocated to the strip note ·
-the degrades-gracefully restatement deduped; v4 2026-07-23 — header relocated to the strip
-note; roster staleness fixed) · **Governed by:** `loop-discipline` · **Pairs with:**
+**Briefing version:** v7 (2026-07-31) · **Governed by:** `loop-discipline` · **Pairs with:**
 `command-shape.md` (the command pattern, seat transport + per-seat context lifecycle) ·
 `workflow-contract.md`

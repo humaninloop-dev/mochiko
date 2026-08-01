@@ -74,7 +74,7 @@ yours.
   pre-loop only; the loop's own critique drives later rounds, so never re-enrich. **It is
   lead-inline because enrich-or-not is loop-entry triage: it conditions the input, and it neither
   authors nor grades** — handing it to the producer would have that seat author from input it shaped
-  itself (`KEPT:` survivor — evidence: `.mochiko/strips/specify.md`).
+  itself (`KEPT:` survivor).
 - **Loop invariants:** hold every revision targeted — fix the flagged gaps, don't regress passing
   sections. **No devolved branch** — the critique is a judgment grade, never all-deterministic-CLI,
   so no gate is skipped and every verdict is yours.

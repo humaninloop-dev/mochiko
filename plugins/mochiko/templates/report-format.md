@@ -40,7 +40,10 @@ fields are not.
    carries a FAIL / blocking finding: what failed, why, what was tried — debug value
    concentrates exactly there); **notes of note** (non-obvious decisions, difficulties,
    flagged blockers — only when non-empty); a **null-exit reasoning** block where a
-   workflow defines one. A clean/passing report is frontmatter-only.
+   workflow defines one. A clean/passing report is frontmatter-only. **The set is closed
+   for cycle and verification reports** — these three, nothing else. A body section outside
+   them is a defect there, not an author's judgment call; a fact that wants one belongs in
+   a field. Each payload home names which of its own sections carry the three.
 3. **Omit empty.** An empty section or list-valued field with nothing to say is omitted
    (or `[]`), never written as "None" prose.
 4. **No self-verdict (producer disclosures).** A `disclosure` report records what the
@@ -65,10 +68,20 @@ fields are not.
 7. **Evidence is captured, not narrated.** Slim reports do not reduce evidence *capture*
    — full output lives in logs/scratch with pointers from the report; the report carries
    results and bounded excerpts only where a failure requires them.
+8. **Register — `ultra`, except the failure narrative.** Reports write `ultra`. The
+   **failure narrative writes `full`** — it is what a lead scopes a retry from, so what
+   failed, why, what was tried, and the state things were left in survive whole, never
+   thinned to `ultra`. Levels, the clause manifest, the ambiguity guardrail and the switch:
+   `templates/output-style.md`.
+9. **Prose on a clean report is a defect.** `status: pass` plus body content outside rule
+   2's set is **not a clean report**: it fails the deterministic-and-clean clearing
+   conditions (`command-shape.md`, Layer 2) and returns to the lead instead of devolving.
+   Read mechanically — status and section headings, never prose quality. This is the
+   report layer's twin of `artifact-format.md` rule 8: on a report, prose the envelope
+   does not sanction *is* a finding.
 
 ---
 
-**Format version:** v1 (2026-07-23 — workflow-token-reduction wave 1) · **Governed by:**
-the workflow-token-reduction epic record (D3 + the wave-1 rulings) · **Consumed by:** the
-report templates in this directory, `executing-tdd-cycle/references/CYCLE-REPORT-FORMAT.md`,
+**Format version:** v2 (2026-08-01) · **Consumed by:** the report templates in this
+directory, `executing-tdd-cycle/references/CYCLE-REPORT-FORMAT.md`,
 `testing-end-user/references/REPORT-TEMPLATES.md`.

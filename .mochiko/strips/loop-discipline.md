@@ -6,6 +6,37 @@ Entry formats: `strips/README.md`. Wave context: skill-succinctness wave-1 open 
 
 ---
 
+**Wave context (v0.44.0 — the D7 leakage scrub).** `verbosity-caveman-ops-separation` D7 as
+folded at review (S4): **full scrub** of ops leakage from the shipped tree, with no
+changelog-worthy detail lost — every removed block is preserved verbatim below. Ruling:
+`DECISIONS.md` 2026-08-01 "Output verbosity, caveman & ops separation ruled" row.
+
+**The leak test this wave used, recorded so a future sweep inherits it: *whose artifact does the
+pointer name?*** Mochiko's own ops records — `.mochiko/strips/`, `.mochiko/brainstorms/`,
+`.mochiko/decisions/`, `.mochiko/archive/` — are leaks: they resolve to nothing in an installed
+plugin. Adopter runtime paths (`.mochiko/specs/`, `.mochiko/memory/`) and the KM module's
+document contracts are the **user's** artifacts and are untouchable. A prefix-based sweep on
+`.mochiko/` would gut the KM module and the brainstorm command; 101 of this tree's 146
+`.mochiko/` references were correctly left alone on that test.
+
+## [v0.44.0] Keystone-test doctrine pointer
+- **Disposition:** superseded → deleted from the shipped file; preserved verbatim here.
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row above)
+- **Content (verbatim):**
+```
+(Full doctrine + the grep-checkable deny-list: `.mochiko/brainstorms/agent-decoupling/synthesis.md`.)
+```
+- **Kept deliberately:** the keystone test itself, whole — the any-job question, the intrinsic-traits carve-out, the this-loop-machinery list, and decoupling-proven-by-absence.
+
+## [v0.44.0] Archived-ROADMAP source-techniques pointer (Reference Files list)
+- **Disposition:** superseded → deleted from the shipped file; preserved verbatim here.
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row above)
+- **Content (verbatim):**
+```
+- See the archived mochiko `ROADMAP.md` ("The sound-loop doctrine", `.mochiko/archive/ROADMAP.md` in the mochiko repo) for the source techniques
+```
+- **Consumers assessed:** the two live reference rows above it (`workflow-contract` and `agent-dispatch` templates) are untouched — both point at shipped files.
+
 # v0.40.0 — the D6(a) rewrite, ratified on its own acceptance card
 
 **Wave context:** `lead-owned-process-flexibility`

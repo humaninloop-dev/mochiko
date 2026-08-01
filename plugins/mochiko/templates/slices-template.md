@@ -118,7 +118,7 @@ spans are model-fill targets.
    a finalized `slices.md`. Density per the deliverable envelope
    ([`artifact-format.md`](artifact-format.md)): value seams and obligations one line each,
    rationale ≤ 3 lines, `How verified` / `What must hold` cells one line — the Slice-order
-   table is the overlay's ID index.
+   table is the overlay's ID index. Register: `full` per that envelope's rule 11.
 2. **The overlay is derivative.** It references `spec.md` content by ID (`US-#`, `SC-#`) and never
    restates, splits, or amends it. The Spec stamp is what keeps the derivation honest — it must
    list the spec's **full** story-ID set, exactly.

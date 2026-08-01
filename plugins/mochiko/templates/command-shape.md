@@ -8,8 +8,7 @@ Everything tagged **[PARAM]** below is a parameter — it lives in the command; 
 else is shape — it lives here and only here. A command line that must restate shape content
 (rare) carries an inline marked exception — `<!-- shape-exception: why -->` — the audit's
 deterministic floor keys on that marker. A one-shot command conforms to Layer 1 alone; a
-team-form command to both layers. (Design provenance, revision history, and the v4→v5 slot
-map: `.mochiko/strips/command-shape.md`.)
+team-form command to both layers.
 
 ## The anatomy — a goal-shaped document, five blocks
 
@@ -44,9 +43,8 @@ lead composes them; a default run declares in one line on the deliverable instea
   heading, no `## The flow` heading, and no ordinal-step list inside **Constraints**.
 - Every parameter this file declares for the command's form is bound.
 - **The preservation standard for any rewrite:** every routing decision and every trigger
-  survives; the narration around them dies. The graded exemplar — 8 lines of phase narrative
-  carrying ~15 discrete rules, distilled to 3 constraint lines — is fold (a) of D5 in
-  `.mochiko/brainstorms/command-succinctness-strip/record.md`. A line traceable to a
+  survives; the narration around them dies. The graded exemplar: 8 lines of phase narrative
+  carrying ~15 discrete rules, distilled to 3 constraint lines. A line traceable to a
   `DECISIONS.md` row or carrying `KEPT:` Tier-2 evidence is translated into the new anatomy
   or superseded by a logged ruling; it is never dropped in the rewrite.
 
@@ -71,9 +69,7 @@ them is doing nothing.
 > skipped stage is legible rather than inferred — and (b) **the bounds held** — the run's
 > declared bounds were counted by the lead, rose only at a user checkpoint, and every
 > re-declaration is on the record. Until that evidence exists, a command that omits the read is
-> non-conformant, not early
-> (ADR `.mochiko/decisions/2026-07-30-goal-shape-pilot-checkpoint.md`; `command-succinctness-strip`
-> D7 + D10; re-key: `lead-owned-process-flexibility` R16).
+> non-conformant, not early.
 
 **Goal.** One measurable end state [PARAM: the end state — the artifact set that exists, the
 floor satisfied, and the user's acceptance], plus the states that read as *not* done [PARAM:
@@ -110,7 +106,8 @@ exit, the kill-switch path] — the lead counts them, and out of rounds = escala
 done. Gates and bounds are the **default's** carriers, not prescriptions: the lead departs
 from either by recorded trail line (P20), never by silence, and a declared bound rises only
 at a user checkpoint (Layer 1, *The floor*). Then this workflow's invariants — entry gates, guards, prerequisites, ordering rules,
-what is deliberately out of scope — and any `KEPT:` survivor with the pointer to its evidence
+what is deliberately out of scope — and any `KEPT:` survivor with its claim, its evidence
+pointer living in the strip note rather than in the command
 [PARAM: the invariants and survivors].
 
 **Bindings.** The concrete referents. Each artifact's path and ID namespace [PARAM: the
@@ -194,8 +191,13 @@ lead-authored artifact, **earns a cold review of that artifact**; a first consti
 high on every factor and earns the full apparatus. Same doctrine, both outcomes, no tier ladder.
 
 **The conversation is the production surface.** It belongs to the lead and the user, and it
-carries no machinery: no "phase", "round", or "gate" talk in user-facing prose. (The anatomy
-bans phase *headings*; this bans the vocabulary the user hears.)
+carries no machinery: **no internal shape or architecture vocabulary in user-facing prose** —
+a principle, not a word list, whose worked examples ("phase", "round", "gate", "Layer -2") are
+non-exhaustive. (The anatomy bans phase *headings*; this bans the vocabulary the user hears.)
+It is written in the mochiko register: chat defaults to `full` — terse and plain-English, with
+compression stopping wherever it would make the meaning ambiguous, and plain winning wherever
+terse and plain pull apart. Levels, the clause manifest, and the switch:
+`templates/output-style.md`.
 
 **As-you-go artifact.** The deliverable is written as the work progresses, never reconstructed
 at the end, in one ID namespace (P10), with its uncertainty on the artifact itself (P11). A
@@ -213,8 +215,7 @@ branch satisfies producer↔validator on its own.
 **Ground rules.** Stay kernel-free — no Python/MCP brain code, no capability catalogs, no
 DAG-mediated orchestration. A command suggests commits; it never runs git mutations and
 never pushes. That ban's surface is refs, index, tracked content, and history — an ephemeral,
-self-removed verification worktree is not a mutation of it (`validator-worktree-isolation` U1,
-2026-08-01).
+self-removed verification worktree is not a mutation of it.
 
 ## Layer 2 — team transport and per-seat context lifecycle
 
@@ -296,9 +297,11 @@ The lead names each seat's peer edges in its brief (P5's peer-edge column).
 **Clearing under the mesh.** The lead reads the escalations and the endgame, not every clean
 result. One unit of work (P14) advances on the verifying seat's **PASS-with-evidence, unread
 by the lead**, when *all* of: every verification in it is a deterministic CLI check that
-passed 100% · no deviation was reported · no domain-registry addition was made. **Everything
-else returns to the lead** — any failure, any GUI or subjective verification, any reported
-deviation, any domain-registry addition — for its verdict and whatever human checkpoint the
+passed 100% · no deviation was reported · no domain-registry addition was made · **every
+report in it is clean by `report-format.md` rule 9** — a passing report carrying prose
+outside its sanctioned set is not clean. **Everything else returns to the lead** — any
+failure, any GUI or subjective verification, any reported deviation, any domain-registry
+addition, any prose-bearing clean report — for its verdict and whatever human checkpoint the
 command binds there (P14). The devolved branch is *exactly* the deterministic-and-clean one,
 and that exactness is the guard: wherever judgment exists, the verifying seat's status is
 **input, never the gate**.
@@ -356,58 +359,8 @@ dispatch.
 
 ---
 
-**Shape version:** v7 (2026-08-01 — `lead-owned-process-flexibility`
-(`.mochiko/brainstorms/lead-owned-process-flexibility/record.md`) D1–D6 as amended at review
-(U1–U4) plus acceptance A1–A4: **D1/U2** — a command carries goal · capability roster · bindings
-· floor · a **stated default pipeline**, P7 and P8 surviving as that default's carriers rather
-than as prescriptions, the lead departing at will by recorded trail line · **D2 as amended
-(U1-A/B/D, A3)** — the four-invariant floor added to Layer 1: user gates plus a run-start
-weight card · author≠grader with the lead's own folds and any lead-penned record
-non-discretionarily cold-graded, zero-cold-read only by recorded waiver · declared bounds with a
-lead-counted counter, rise-only-at-a-user-checkpoint and recorded re-declaration, **cost ranges
-being bounds** · the honest trail of departures-from-default naming the grading that ran ·
-**D5/U3** — the cost-of-being-wrong rigor doctrine, input-confidence **split** into ambiguity
-discount vs consistency risk and scored on the artifact under review, with the worked example
-carried as binding guidance · **D6(b)** — Goal blocks lose process residue · **OQ-2/A2** —
-`workflow-contract.md` revived as the per-run carrier for departing runs, a default run
-declaring in one line on the deliverable, and Recovery gaining counter state · **OQ-4** — a
-departing run names its counted unit, keeping the lifecycle cadence a denominator · **D4** —
-the `Contested` convert-on-touch interim, the v7 form marker branching the audit · **R16** —
-the v5 transition note's read-drop trigger re-specified against defaults + declared bounds ·
-**P18–P20** added to the slot set · **v7 addenda (2026-08-01, v0.43.0), two, in order:** *(i)* at
-the first conversion the interim note gained the v6-form run's weight-card home — an owed *siting*
-of invariant 1, not new doctrine; *(ii)* at the wave close, all six commands converted and
-grader-verified 6/6, the **form marker, the v7 interim note and P18–P20's form conditional retire**
-on the marker clause's own stated trigger ("it retires when the last command converts") — the
-library is single-form, P18–P20 bind unconditionally, and (i) retires with the note that carried
-it. The version stands at v7 across both: scaffolding raised, then taken down, with no doctrine
-changed either time; v6 2026-08-01 — `team-lead-strategic-compaction` TC-D1–D6 ·
-`standing-seat-lifecycle` D1–D3 as amended — the **encoded subset** of the ruled D1–D4 (D3's
-per-roster-declaration clause superseded by TC-D6; D4's absence is by design, per the strip
-note) · `plan-run-transport-forensics` R1/R2/R3/R4: Layer 2 re-framed into its two axes —
-**team transport** unchanged in content, plus a new **per-seat context lifecycle** axis
-(seats-only lead responsibility · governed-set criterion · the counted-not-observed ~≥3 gate-pause
-cadence · respawn-as-reset with versioned-name successors · end-of-need shutdown · the
-no-ritual-sends line) · the standing-seat continuity clause retired · the fresh-spawn
-anti-pattern retargeted at nameless one-shot **transport** · the first-spawn probe's broken
-addressability discriminator replaced with a **documented positive roster check** (the team
-config's `members` array), the harness's name-classification and send-delivery strings demoted
-to observed-not-documented corroboration, refusal preserved with no degraded branch · **P17**
-added to the slot set, override-only; v5 2026-07-30 — command-succinctness-strip D3 · D5 (+ folds a–c) · D6 ·
-D7/D10 as amended at verify V1: the goal-shaped five-block anatomy replaces the flow/phase
-body and the Contract appendix · Seat transport absorbed from `agent-dispatch.md` · the P1–P16
-slot set supersedes v4's 13 tags · the obligated `loop-discipline` read retained under a
-checkpoint-gated transition note · **pilot-checkpoint ruling B (same revision):** the sized
-end-stage review's doctrine split out to `templates/sized-end-stage-review.md` as a
-conditional read, loaded only where P6 binds it · **the Run-cost entry element dropped** by user
-ruling (step-1 adjudications), retiring v3's manual-baseline carrier · **v0.34.0 pilot checkpoint:**
-the `loop-discipline` read-drop **deferred to a named live-run trigger**, authoring evidence ruled
-insufficient; v4 2026-07-30 — team-method-vs-command-shape D1–D3: the
-in-loop mesh becomes Layer 2's default with named traffic classes · cold isolation restated as
-a review-stage property · the deterministic-clean verdict devolves to the pair; v3 2026-07-23
-— workflow-token-reduction wave 1: run-cost entry added · provenance header relocated to the
-strip note; v2 2026-07-19 — the S8 home-revision checkpoint) · **Governed by:**
-`mochiko:loop-discipline` · **Pairs with:** `agent-dispatch.md` (call-time briefing) ·
-`sized-end-stage-review.md` (conditional — the sized-review branch of P6) ·
-`workflow-contract.md` (conditional — the per-run carrier a **departing** run instantiates) ·
-`report-format.md` (the report envelope seats write to).
+**Shape version:** v8 (2026-08-01) · **Governed by:** `mochiko:loop-discipline` ·
+**Pairs with:** `agent-dispatch.md` (call-time briefing) · `sized-end-stage-review.md`
+(conditional — the sized-review branch of P6) · `workflow-contract.md` (conditional — the
+per-run carrier a **departing** run instantiates) · `report-format.md` (the report envelope
+seats write to).

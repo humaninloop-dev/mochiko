@@ -49,6 +49,7 @@ the selected modules.
 - [ ] Technology-stack lines with actual mandated choices
 - [ ] Quality-gates summary with actual commands
 - [ ] Governance-operations block: ledger pointer · amend route (fact-profile changes — module attach/detach — and un-waives are governance events)
+- [ ] Preserved carve-outs survived this regeneration: the `mochiko:domain-registry` block and the `mochiko:output-style` pair (the region's switch line + its Shape-5 rules file). On an amend, each still carries the values that were there before the run — a carve-out regenerated back to its defaults silently reverts a user's ruling, so it is a FAIL, not a cosmetic diff
 - [ ] Ledger complete per Shape 3: Governance Floor header · Waivers · Amendment policy · Exception registry · Three-Part records keyed by GI-ID · amendment log (version matching the region stamp)
 - [ ] Trace summary manifest present (Shape 4): one row per principle-bearing GI element
 

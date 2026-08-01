@@ -22,8 +22,7 @@ supervisor stitches a producer/validator agent team to a goal, and **is its own 
 (`command-shape`); the `workflow-contract` template is the per-run carrier a run that departs
 from its command's stated default instantiates, and the form every non-command loop fills.
 
-**The two review-skill families** (the `validation-*`/`review-*` split, 2026-07-18 — design:
-`.mochiko/brainstorms/setup-adversarial-review/record.md` D5): the prefix encodes **who owns the
+**The two review-skill families** (the `validation-*`/`review-*` split, 2026-07-18): the prefix encodes **who owns the
 clearing**. `validation-*` = the skill **issues the authoritative grade** — a binary PASS/FAIL
 checklist grade, default FAIL, on the `validator` persona (today: `validation-constitution`
 and `validation-command-shape`; a PASS is still human-gated downstream). `review-*` = the skill **produces
@@ -63,6 +62,7 @@ human adjudicates; the reviewer's verdict never clears anything by itself.
 | `advocate-report-template` (template) | **shared (specify + plan + slice)** — structures every pipeline reviewer's grounded review, machine-first (severity-classified `findings:` YAML, clarifying questions, recommended verdict, one-line `strengths:`) the lead reads to own the verdict |
 | `report-format` (template) | **shared (all workflows)** — the report envelope every workflow report follows: machine-first frontmatter, conditional prose (failures keep narrative; clean reports are frontmatter-only), no-self-verdict, no-restatement; each report template carries only its payload schema over this envelope |
 | `artifact-format` (template) | **shared (all workflows)** — the deliverable envelope the pipeline artifacts follow (spec, requirements, constraints-and-decisions, nfrs, data-model, contracts, quickstart, plan, task-mapping, tasks, slices, codebase-analysis): dense-by-construction + human-legible — reference-by-ID, per-artifact ID index, statement-carries-the-content, size guidance, omit-empty, density-is-not-a-gap review rule; artifact templates and authoring skills carry only their own section schema over this envelope |
+| `output-style` (template) | **shared (all workflows)** — the register every mochiko surface writes in: per-surface levels (chat `full` · reports `ultra`, failure narratives `full` · artifacts `full`), the drop / never-compress / keep-the-user's-language clauses, plain-English-for-end-users with the vocabulary ban as a principle, the safety exemptions, disclose-once, and the per-surface switch line setup writes into the governance region. Carriers state the operative default inline and reference this file; a routine run never loads it |
 
 ### Plan cluster (model-invoked — auto-reached during a `/mochiko:plan` run)
 | Skill | Reach when |

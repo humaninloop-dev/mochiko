@@ -71,7 +71,21 @@ Error: Permission denied for inotify
 
 Failed quality gates likewise: the gate's failing output excerpt under `## Failures`.
 A passing report carries **no prose** — no evidence tables, no narration; the captured
-evidence stays in logs/scratch, pointed to by `evidence:` fields.
+evidence stays in logs/scratch, pointed to by `evidence:` fields. One sanctioned exception,
+spelled out below: the single `## Notes of note` line a non-blocking finding takes.
+
+`## Failures` **is** this surface's failure narrative, and with it the sanctioned set closes
+(`report-format.md` rule 2): that section, notes of note, and a null-exit block where the
+workflow defines one — nothing else. A `## Findings`, `## Judgment-call grades`, or
+`## Checkpoint recommendation` section is outside it: a blocking finding is a `## Failures`
+row, and the recommendation is the `recommendation:` field. A **non-blocking** finding on an
+otherwise clean run has an in-set home — `## Notes of note`, one ID-cited line, which is the
+sole prose a passing report may carry; the no-prose rule above still bans evidence tables and
+narration. Register per envelope rule 8 — `## Failures` writes `full`, since the lead scopes
+its retry from it; whatever non-diagnostic prose remains writes `ultra`. And, restated here
+because this is where the report is authored — **prose on a clean report is a defect**
+(envelope rule 9): `status: pass` with a body section **outside that set** is not a clean
+report; it fails the clearing conditions and returns to the lead.
 
 ### Examples
 

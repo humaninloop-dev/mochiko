@@ -26,7 +26,7 @@ waivers under the D4 model.
 GI-ID rule: sequential GI-001, GI-002, … — unique forever within this file; never reuse a
 retired ID.
 
-CONFIDENCE MARKS (setup-adversarial-review D2): every GI element carries a mark from
+CONFIDENCE MARKS: every GI element carries a mark from
 `Confident / Assumed / Contested / Unsure / Deferred`, assigned by the lead at assembly from the
 session's own indicators — updated DELTA-WISE on amend (untouched elements keep their marks).
 The marks are the G3 intent review's prioritization substrate; they are lead-self-reported, so

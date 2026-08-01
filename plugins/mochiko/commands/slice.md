@@ -7,8 +7,7 @@ disable-model-invocation: true
 
 **Goal:** decompose an accepted `spec.md` into an accepted `slices.md` — ordered, named story groups
 that graduate through `/mochiko:plan` → `/mochiko:implement` as independent units instead of one
-whole-spec batch — authored and independently graded before the user accepts it. Design record:
-`.mochiko/brainstorms/vertical-graduation/synthesis.md`. `$ARGUMENTS` = optional feature ID or
+whole-spec batch — authored and independently graded before the user accepts it. `$ARGUMENTS` = optional feature ID or
 description; empty or detected-from-workspace is resolved at G1.
 
 **You are the lead** of a team-form command in the mochiko command shape: Read

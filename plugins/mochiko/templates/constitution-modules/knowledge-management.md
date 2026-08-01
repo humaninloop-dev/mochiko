@@ -8,8 +8,7 @@ which the core feels heavy declines the module, not a fragment); the electives
 (`CHANGELOG.md`, `RUNBOOK.md`) are per-doc opt-in, elicited by project type. The ruling is
 recorded in the synthesis either way; a recorded decline is durable — amend runs never
 re-offer a ruled module.
-(Redesign ruled 2026-07-25 — `.mochiko/brainstorms/operating-docs-maintenance/record.md`
-D1–D12 + R1–R7; deliberately supersedes the prior four-part "no inner menu" bundle rule.)
+(Redesign ruled 2026-07-25 — deliberately supersedes the prior four-part "no inner menu" bundle rule.)
 Trace: the GI module-selection element that names `knowledge-management`.
 
 AUTHORING SOURCE ONLY: this template is the module's single authoring-time source. At

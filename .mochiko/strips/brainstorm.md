@@ -7,6 +7,53 @@ the shape is now **v5** (2026-07-30) — see the v0.35.0 section below.
 
 ---
 
+**Wave context (v0.44.0 — the D7 leakage scrub).** `verbosity-caveman-ops-separation` D7 as
+folded at review (S4): **full scrub** of ops leakage from the shipped tree, with no
+changelog-worthy detail lost — every removed block is preserved verbatim below. Ruling:
+`DECISIONS.md` 2026-08-01 "Output verbosity, caveman & ops separation ruled" row.
+
+**The leak test this wave used, recorded so a future sweep inherits it: *whose artifact does the
+pointer name?*** Mochiko's own ops records — `.mochiko/strips/`, `.mochiko/brainstorms/`,
+`.mochiko/decisions/`, `.mochiko/archive/` — are leaks: they resolve to nothing in an installed
+plugin. Adopter runtime paths (`.mochiko/specs/`, `.mochiko/memory/`) and the KM module's
+document contracts are the **user's** artifacts and are untouchable. A prefix-based sweep on
+`.mochiko/` would gut the KM module and the brainstorm command; 101 of this tree's 146
+`.mochiko/` references were correctly left alone on that test.
+
+## [v0.44.0] v2-revision evidence citation (standing-advocate rule)
+- **Disposition:** superseded → deleted from the shipped file; preserved verbatim here.
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row above)
+- **Content (verbatim):**
+```
+(`.mochiko/brainstorms/brainstorm-v2-revision/record.md`)
+```
+- **Kept deliberately:** the dogfood finding it evidenced, stated in the rule itself — 3:1 machine-to-user traffic and amendments folded into user-ruled decisions without consent.
+
+## [v0.44.0] v2-2-revision evidence citation (lens-split rule)
+- **Disposition:** superseded → deleted from the shipped file; preserved verbatim here.
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row above)
+- **Content (verbatim):**
+```
+(Both rules'
+  evidence: `.mochiko/brainstorms/brainstorm-v2-2-revision/record.md`.)
+```
+- **Kept deliberately:** both rules — the three-reads cost finding and the lens split living in the briefs, not the skill.
+
+## [v0.44.0] KEPT survivor's evidence pointer (no-fallback transport bet)
+- **Disposition:** superseded → the pointer lives here; the `KEPT:` marker and its claim stay in
+  the command per the amended P9.
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row above), executed under the lead's stage-A ruling (option (a)).
+- **Content (verbatim, the pointer only):**
+```
+, its
+  provenance this command's own v2 design record
+  (`.mochiko/brainstorms/brainstorm-command-rewrite/record.md`, D9).
+```
+- **Kept deliberately:** `KEPT:` plus the survivor's claim — the no-fallback transport bet stays
+  `Contested`. The audit still sees a marked survivor; only its evidence moved.
+- **Tier-2 evidence (the pointer, preserved for the verify-path):** this command's own v2 design
+  record, `.mochiko/brainstorms/brainstorm-command-rewrite/record.md`, D9.
+
 ## [v0.43.0] The `<!-- shape-form: v7 -->` marker retired from the preamble
 - **Disposition:** superseded → deleted. The marker was added by this same version's conversion
   entry below and retires in the same version, at the wave close.

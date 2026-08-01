@@ -52,7 +52,12 @@ checkpoint_criteria_met: true  # The implementer's self-assessment (the lead ver
 ## Conditional Prose
 
 Prose sections per the conditional-prose rule (`report-format.md`) — a clean passing cycle
-is frontmatter-only:
+is frontmatter-only. This file's sanctioned set is **exactly the two sections below**; a
+third H2 is a defect. Register per envelope rule 8: `## Notes of note` writes `ultra`, the
+failure narrative `full`. And, restated here because this is where the report is authored —
+**prose on a clean report is a defect** (envelope rule 9): `status: pass` with any body
+section beyond those two is not a clean report; it fails the clearing conditions and returns
+to the lead.
 
 ### Notes of note *(only when non-empty)*
 
@@ -66,7 +71,7 @@ each, ID-cited), genuine difficulties, and flagged blockers the lead should weig
 checkpoint. Not a narration of what the tasks already describe; cite IDs, never restate
 task text.
 
-### Failure narrative *(mandatory when `status` is `fail` or `blocked`, or any task failed)*
+### Failure narrative *(mandatory when `status` is `fail` or `blocked`, or a task failed in execution)*
 
 ```markdown
 ## Failure narrative
@@ -75,6 +80,11 @@ task text.
 Debug value concentrates here — full detail: what failed (per failed task), why (the
 failing test/output evidence), what was tried, and the state things were left in. A failed
 cycle keeps the fuller narrative; the slim format above is the passing-cycle format.
+
+**A task you were never meant to run is not an execution failure.** A verifier-owned
+`**TEST:**` gate the producer must not execute belongs in `failed_tasks:` with that one-line
+reason, and it triggers no narrative: a cycle whose only incomplete task is one of those,
+everything else green, is a clean passing cycle and stays frontmatter-only.
 
 ## Examples
 

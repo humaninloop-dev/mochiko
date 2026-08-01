@@ -1,5 +1,6 @@
 <!-- Form: templates/artifact-format.md (the deliverable envelope). plan.md is a summary
-     over the validated artifacts — tables + "See X" pointers, never restated content. -->
+     over the validated artifacts — tables + "See X" pointers, never restated content.
+     Register: `full` per artifact-format.md rule 11. -->
 
 # Implementation Plan: [FEATURE]
 

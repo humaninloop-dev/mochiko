@@ -81,16 +81,14 @@ seat.
   the human-attended session is the escalation surface, not a substitute for the caps.
 - **Invariants:** **no standing challenger** — beyond these two seats the conversation is you
   and the user: the v2 standing episodic advocate generated 3:1 machine-to-user traffic and
-  folded amendments into user-ruled decisions without consent
-  (`.mochiko/brainstorms/brainstorm-v2-revision/record.md`). A **reality surface** is existing
+  folded amendments into user-ruled decisions without consent. A **reality surface** is existing
   code, docs, or a system under redesign; that call at the start fills or leaves empty the
   fact-checker seat. The checker's map lands **verbatim**, a checker-authored section you write
   around and never restate — the first completed run's headline finding was an over-claim
   living in the lead's paraphrase of the map, not in the map. Both reviewer briefs name that
   map as the fact substrate: reviewers do **not** re-read the reality surface it already covers
   (the first completed run read it three times over — the pair's dominant cost); the lens split
-  lives in those briefs, never in the skill, which stays one document. (Both rules'
-  evidence: `.mochiko/brainstorms/brainstorm-v2-2-revision/record.md`.) The **synthesis is
+  lives in those briefs, never in the skill, which stays one document. The **synthesis is
   on request only, after acceptance** — never auto-generated; write it beside the record
   stamped ***derived — record canonical***, and before it ships the reviewer that ran the
   verify pass — still seated — sample-checks its fidelity (every ruling present, no confidence
@@ -98,9 +96,7 @@ seat.
   **"derived, unchecked"** instead — the same recorded-absence discipline as the waiver.
   Governance context is native: the CLAUDE.md governance region loads with the session; read
   `.mochiko/memory/governance-ledger.md` only when a decision needs waiver or amendment
-  detail — never a blocking gate. `KEPT:` the no-fallback transport bet stays `Contested`, its
-  provenance this command's own v2 design record
-  (`.mochiko/brainstorms/brainstorm-command-rewrite/record.md`, D9).
+  detail — never a blocking gate. `KEPT:` the no-fallback transport bet stays `Contested`.
 
 ## Bindings
 

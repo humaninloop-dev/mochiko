@@ -1,7 +1,8 @@
 <!-- Form: templates/artifact-format.md (the deliverable envelope) — dense by
      construction. Task lines stay one line each (path + behavior); cite spec/plan
      content by ID, never re-quote it; no doctrine sections (TDD discipline, execution
-     strategy) — the skills single-source those. -->
+     strategy) — the skills single-source those. Register: `full` per artifact-format.md
+     rule 11; task IDs, paths and commands are never-compress items. -->
 
 # Implementation Tasks: [FEATURE NAME]
 

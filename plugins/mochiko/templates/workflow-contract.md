@@ -79,8 +79,4 @@ INSTRUCTIONS:
 
 <!-- All five sections filled with no remaining brackets = the loop is sound per loop-discipline. -->
 
-**Contract version:** v2 (2026-08-01 — `lead-owned-process-flexibility` OQ-2, ruled at
-acceptance A2: revived as the **per-run** carrier for a departing command run or a non-command
-loop, a default run declaring in one line on its deliverable instead; §3 gains the declared cost
-range and the named counter; §5 added for departures, floor gates, counted unit and counter
-state; v1 — the fill-in form for every workflow) · **Governed by:** `loop-discipline`
+**Contract version:** v2 (2026-08-01) · **Governed by:** `loop-discipline`

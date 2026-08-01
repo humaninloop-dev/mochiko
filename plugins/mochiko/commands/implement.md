@@ -70,10 +70,11 @@ just-failed `cycle-report.md`, relayed at dispatch: the next attempt overwrites 
   verification report, qa's classified evidence + recommendation · rules: you, except on the devolved
   branch · decides: the cycle advances, or a targeted retry. It carries the shape's **devolved
   branch**, skipped **exactly** when every verification in the cycle is a deterministic CLI check at
-  100% pass **and** no deviation is reported **and** `domain_deps_added` is empty: the cycle then
+  100% pass **and** no deviation is reported **and** `domain_deps_added` is empty **and** both
+  reports are clean by the envelope's prose check (`report-format.md`): the cycle then
   clears on qa's PASS-with-evidence, unread by you, counted from its one-line clearance notice.
   Otherwise it fires — any failure, any GUI or subjective verification, any reported deviation, any
-  registry addition — and you rule on the reports.
+  registry addition, any prose on a passing report — and you rule on the reports.
 - **Architecture deviation** — evidence: the producer's diagram-anchored self-check, run at cycle
   open **and** cycle close — does this cycle add or remove a box, add, remove or redirect an arrow,
   or move a responsibility across a boundary on the approved diagram? · rules: the user · decides:
@@ -118,8 +119,7 @@ just-failed `cycle-report.md`, relayed at dispatch: the next attempt overwrites 
 - **Per-cycle qa isolation:** yours to compose per run — that snapshot plus a declared carry-set of
   warm gitignored items, dependencies **copied or installed, never linked**. Tear **either**
   snapshot down only after its evidence is captured and any snapshot-only failure dispositioned; a
-  failed cycle's, after its retry. Triggers, evidence provenance, the git-dependent-gate fallback,
-  and rationale: `.mochiko/brainstorms/validator-worktree-isolation/record.md` (D3–D7).
+  failed cycle's, after its retry.
 - **Scaffolding:** from the detected stack, create any missing ignore files (`.gitignore` /
   `.dockerignore` / lint-ignore) and the `/.claude/worktrees` ignore entry, project-relative, once
   before the cycle loop.

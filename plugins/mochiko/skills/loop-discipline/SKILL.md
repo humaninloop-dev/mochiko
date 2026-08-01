@@ -116,7 +116,7 @@ The four requirements above govern the **loop**. Dispatching an agent *inside* t
 
 The one place briefing and loop-soundness meet is **requirement 2**: independence is carried by *who the caller dispatches* — a different agent running a different skill to grade than to produce — never by a line in a persona. A persona that *declares* itself independent or workflow-agnostic has told you nothing; the structure either separates producer from validator or it does not.
 
-**Keep personas decoupled with the keystone test.** For every line of an agent persona (or skill): *would this be true of this professional on **any** job? → craft, keep. Does it only make sense inside **one** workflow? → coupling, cut.* Intrinsic traits survive (a reviewer *is* independent and skeptical; an author does not grade their own work — integrity, true everywhere). This-loop machinery — sibling-agent names, "dispatch," modes/paths/phases, "workflow-agnostic" meta-labels — goes. Decoupling is proven by that **absence**, not by a declaration of it. (Full doctrine + the grep-checkable deny-list: `.mochiko/brainstorms/agent-decoupling/synthesis.md`.)
+**Keep personas decoupled with the keystone test.** For every line of an agent persona (or skill): *would this be true of this professional on **any** job? → craft, keep. Does it only make sense inside **one** workflow? → coupling, cut.* Intrinsic traits survive (a reviewer *is* independent and skeptical; an author does not grade their own work — integrity, true everywhere). This-loop machinery — sibling-agent names, "dispatch," modes/paths/phases, "workflow-agnostic" meta-labels — goes. Decoupling is proven by that **absence**, not by a declaration of it.
 
 ## Red Flags — STOP and fix the loop
 
@@ -147,4 +147,3 @@ If you notice yourself thinking any of these, the loop is unsound. Stop and repa
 
 - [`workflow-contract` template](../../templates/workflow-contract.md) — the per-run carrier this skill governs, instantiated for a departing command run or a non-command loop (a command supervisor is its own contract: [`command-shape`](../../templates/command-shape.md))
 - [`agent-dispatch` template](../../templates/agent-dispatch.md) — the caller-side briefing guide for each dispatch inside the loop (not a fifth gate)
-- See the archived mochiko `ROADMAP.md` ("The sound-loop doctrine", `.mochiko/archive/ROADMAP.md` in the mochiko repo) for the source techniques

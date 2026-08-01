@@ -3,8 +3,7 @@
 The domain layer under a layered architecture MAY import approved third-party libraries — an
 empty or undiscussed registry degrades to "standard library only" in practice, a stricter rule
 than anyone ratified. This file is the single source for how the allowlist is **seeded** during
-the interrogation's arbitration stage and how it **grows** at implement time. Design record:
-`.mochiko/brainstorms/domain-dependency-allowlist/record.md` (D1–D5 + review folds).
+the interrogation's arbitration stage and how it **grows** at implement time.
 
 ## When this fires
 

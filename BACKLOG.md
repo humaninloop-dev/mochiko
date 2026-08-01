@@ -6,10 +6,10 @@ surface is [`ROADMAP.md`](ROADMAP.md). Closing an item = the KM landing ritual
 (`.mochiko/memory/knowledge-management.md`): decision row + move here → the trail
 (`.mochiko/archive/backlog-trail.md`) + touch ROADMAP.md. No `[x]` lives here.
 
-*Last groomed: 2026-08-01 (verbosity/caveman session landing) — baseline: 54 open items (2
-closed to the trail: verbosity capture + intensity modes; 1 opened: output-style build;
-plain-language amended in place; 55 at the delivery sweep / shape-v7 wave close; 52 at the
-2026-07-25 migration), per-item bound ≤15 lines.*
+*Last groomed: 2026-08-01 (output-style build close) — baseline: 54 open items (build item
+delivered to the trail at v0.44.0, replaced in place by the post-build remainders item; earlier
+same day: 2 closed to the trail, plain-language amended; 55 at the delivery sweep / shape-v7
+wave close; 52 at the 2026-07-25 migration), per-item bound ≤15 lines.*
 
 ---
 
@@ -210,7 +210,10 @@ in this repo's git history at `7920ccb` BACKLOG).
 
 Epic + angles: DECISIONS.md rows 2026-07-23/24; records `workflow-token-reduction`,
 `standing-seat-lifecycle`, `model-tiered-seats`. Build scoping re-opens from the three records
-together.
+together. Seam note (2026-08-01, `verbosity-caveman-ops-separation` D8): epic D3's
+conditional-prose intent was **finished by the output-style build wave 1** (v0.44.0) — never a
+wave-3 candidate again; the always-read floor re-baselined at that build (−4,490 B/run on
+`command-shape.md`).
 
 - [ ] **D5 — review sizing gates generalized + floored verification depth** — command texts of
   the five pipeline stages (verification depth never zero, real-infra floor). Gap sharpened
@@ -308,20 +311,22 @@ Raw captures (2026-08-01) — to triage/brainstorm; grooming may re-key into fin
   notes, all recovered by falling back to HEAD as baseline). Scope a doctrine line — tree
   ownership / write discipline per seat — kept out of the validator-isolation session's
   validator-only scope by ruling (D1).
-- [ ] **Output-style build — caveman levels + ops separation, three waves** (2026-08-01;
-  rulings D1–D10 + 20 verified folds, record
-  `.mochiko/brainstorms/verbosity-caveman-ops-separation/record.md` — pair-reviewed, verify
-  CLEAN round 2) — **wave 1** (first, highest yield: 79.9% of driver report bytes): D4 report
-  repair — F59 clause fix · sanctioned-section bound · mechanical prose-on-clean check
-  (hosts: `implement.md` clearing conditions + both payload homes; settle at build open:
-  shape's devolving-conditions text vs per-command P14 carrier) · `ultra` with `full` failure
-  narratives. **Wave 2**: style-home template (clause manifest: F25 exemptions whole ·
-  disclose-once · per-surface `off/lite/full/ultra` values) + bindings (command-shape L1 ·
-  report-format · artifact-format + authoring surfaces) + governance-region style section on
-  the **preserve-on-regenerate carve-out** + `paths` rules file + setup. **Wave 3**: trio move
-  repo-side (**probe-first**) + full leakage scrub (per-line supersession entries citing D7;
-  changelog detail verbatim to strip notes). Ceremony per touched file (templates under the
-  four-glob rule, F43 erratum); measure vs the 816,601 B / 79.9% baseline (F53–F55).
+- [ ] **Output-style post-build remainders** (2026-08-01; build DONE at v0.44.0 → trail;
+  provenance: `verbosity-caveman-ops-separation` record + DECISIONS build row) — three
+  riders: **(1) D6 trio move, probe-gated** — the S14 probe failed in-session (spawn
+  instantiated generic; repo-side agents load only at session start): in a FRESH session,
+  spawn `mochiko-probe` as a teammate + confirm the repo-side skill fires, then execute the
+  move per the cold-session-complete DEFERRED entry in
+  `.mochiko/strips/authoring-commands.md` (move set · router section + `:28` · the
+  `validator.md:27,44-47` fourth-consumer edit with its own strip entry · plugin.json
+  10→9 agents; probe pair on disk is the instrument, delete-when-recorded). Carries the
+  D6-rationale correction: the shipped generic `validator` mounts the departing skill —
+  "exclusively mochiko's own authoring" is not exact. **(2) Measurement watch** — re-profile
+  the first comparable slice-run against the 816,601 B / 79.9%-report-prose baseline
+  (F53–F55 method); always-read floor re-baselined: `command-shape.md` 26,745 B (−4,490
+  B/run). **(3) Style dogfood** — first setup/amend run writes the switch line + Shape-5
+  rules file into a real project; watch the preserve-on-regenerate carve-out and disclose-once
+  fire as designed.
 - [ ] **Plain-language sweep + internal-jargon leak to end users** (2026-08-01; provenance:
   capture session; amended 2026-08-01 by `verbosity-caveman-ops-separation` D3) — the
   language across mochiko is too complex; needs a plain-English sweep. Concrete leak: the

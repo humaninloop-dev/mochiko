@@ -7,6 +7,50 @@ one-shot; all seven commands have been team-form since v0.17.0 (BACKLOG conversi
 
 ---
 
+**Wave context (v0.44.0 — the D7 leakage scrub).** `verbosity-caveman-ops-separation` D7 as
+folded at review (S4): **full scrub** of ops leakage from the shipped tree, with no
+changelog-worthy detail lost — every removed block is preserved verbatim below. Ruling:
+`DECISIONS.md` 2026-08-01 "Output verbosity, caveman & ops separation ruled" row.
+
+**The leak test this wave used, recorded so a future sweep inherits it: *whose artifact does the
+pointer name?*** Mochiko's own ops records — `.mochiko/strips/`, `.mochiko/brainstorms/`,
+`.mochiko/decisions/`, `.mochiko/archive/` — are leaks: they resolve to nothing in an installed
+plugin. Adopter runtime paths (`.mochiko/specs/`, `.mochiko/memory/`) and the KM module's
+document contracts are the **user's** artifacts and are untouchable. A prefix-based sweep on
+`.mochiko/` would gut the KM module and the brainstorm command; 101 of this tree's 146
+`.mochiko/` references were correctly left alone on that test.
+
+## [v0.44.0] Briefing version-history block relocated (class 2, 1,011 B / 11 lines)
+- **Disposition:** superseded → relocated **verbatim** into this note (below). In-file residue: the
+  bare stamp plus the live routing (`Governed by / Pairs with`), which is wiring a run consumes, not history.
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row above)
+- **Content (verbatim, the whole block as it stood at the scrub):**
+```
+**Briefing version:** v7 (2026-07-31 — team-method escalations closed
+(ADR `.mochiko/decisions/2026-07-31-team-method-escalations-closed.md`): a **ninth field** by user
+ruling — peer edges + hand-off holds, carried by reference to shape Layer 2 — and field 6 re-routed
+for the mesh, the v3 lead-relay surviving as one of its two routings; v6 2026-08-01 — `standing-seat-lifecycle` D3 as amended by TC-D6: the
+Layer-2 pointer retargeted — lifecycle joins transport at the same home, and a versioned-name
+refill is named as a briefable call; v5 2026-07-30 — command-succinctness-strip D6: Seat transport relocated
+to `command-shape.md` Layer 2 · the team-form roster paragraph relocated to the strip note ·
+the degrades-gracefully restatement deduped; v4 2026-07-23 — header relocated to the strip
+note; roster staleness fixed) · **Governed by:** `loop-discipline` · **Pairs with:**
+`command-shape.md` (the command pattern, seat transport + per-seat context lifecycle) ·
+`workflow-contract.md`
+```
+- **Kept deliberately:** the version *number* and its date stay in the file — a consumer still
+  learns which revision it is reading; only the per-revision narrative left.
+
+## [v0.44.0] Rationale-and-provenance pointer
+- **Disposition:** superseded → deleted; this note is the home it pointed at.
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row above)
+- **Content (verbatim):**
+```
+(Rationale + provenance: `.mochiko/strips/agent-dispatch.md`.)
+```
+- **Kept deliberately:** the caller-side rule above it — workflow/siblings/"done" live on the caller
+  side, and the skill is named as a hint, not a command.
+
 ## [v0.39.0] Field 6's verbatim-paste-only retry brief — the superseded v3 lead-relay
 
 - **Disposition:** superseded → rewritten in place as a two-routing field. Briefing **v6 → v7**.

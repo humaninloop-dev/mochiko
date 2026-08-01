@@ -15,7 +15,6 @@ frontend/mobile/desktop shelves are Tier-I roadmap work.**
 
 - **KM-module redesign dogfood** — fresh-project scaffold + rules-injection probe of the rebuilt module (2026-07-25) → [BACKLOG](BACKLOG.md#operating-docs--km-module)
 - **Kinako follow-up run** — waves-1–2 didn't land: investigate, then the UI fix wave through journey gates (2026-07-24) → [BACKLOG](BACKLOG.md#kinako-follow-up-run)
-- **Output-style build** — caveman levels + ops separation, three waves, report repair first (ruled 2026-08-01, D1–D10) → [BACKLOG](BACKLOG.md#ergonomics-output-language--run-hygiene)
 
 ## Next
 
@@ -51,4 +50,4 @@ frontend/mobile/desktop shelves are Tier-I roadmap work.**
 - **KM pin adopts partial core** (recorded deviation, 2026-07-25; narrowed 2026-07-31 — rules file + plugin-scope `ARCHITECTURE.md` exist, GLOSSARY still deferred) — revisit: first in-repo setup/amend run or the module dogfood.
 
 ---
-*Last groomed: 2026-08-01 — Now 3 · Next 7 · Later 10; open-item figures on BACKLOG's stamp line. Output-style build (verbosity/caveman/ops-separation session) entered Now; two ergonomics/design items closed to the trail; plain-language Later row re-keyed to sweep-only.*
+*Last groomed: 2026-08-01 — Now 2 · Next 7 · Later 10; open-item figures on BACKLOG's stamp line. Output-style build landed same day at v0.44.0 (three waves; trio move deferred probe-gated — remainders item in BACKLOG Ergonomics); its Now row swept to the trail.*

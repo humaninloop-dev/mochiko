@@ -9,6 +9,48 @@ same version.
 
 ---
 
+**Wave context (v0.44.0 — the D7 leakage scrub).** `verbosity-caveman-ops-separation` D7 as
+folded at review (S4): **full scrub** of ops leakage from the shipped tree, with no
+changelog-worthy detail lost — every removed block is preserved verbatim below. Ruling:
+`DECISIONS.md` 2026-08-01 "Output verbosity, caveman & ops separation ruled" row.
+
+**The leak test this wave used, recorded so a future sweep inherits it: *whose artifact does the
+pointer name?*** Mochiko's own ops records — `.mochiko/strips/`, `.mochiko/brainstorms/`,
+`.mochiko/decisions/`, `.mochiko/archive/` — are leaks: they resolve to nothing in an installed
+plugin. Adopter runtime paths (`.mochiko/specs/`, `.mochiko/memory/`) and the KM module's
+document contracts are the **user's** artifacts and are untouchable. A prefix-based sweep on
+`.mochiko/` would gut the KM module and the brainstorm command; 101 of this tree's 146
+`.mochiko/` references were correctly left alone on that test.
+
+## [v0.44.0]  version-history block relocated (class 2, 810 B / 8 lines)
+- **Disposition:** superseded → relocated **verbatim** into this note (below). In-file residue: the
+  bare stamp plus the live routing (`Governed by / Pairs with`), which is wiring a run consumes, not history.
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row above)
+- **Content (verbatim, the whole block as it stood at the scrub):**
+```
+**Version:** v2 (2026-08-01 — `lead-owned-process-flexibility` D6(c) ratified at A4: this
+pattern **survives as the stated default** wherever P6 binds it · **U4** — the sizing gate
+passes user → lead by recorded supersession · **U1-B** — the verify pass hardens to floor
+status and `none` on a lead-penned artifact requires a recorded user waiver · interim note for
+unconverted commands added, then **retired at the v0.43.0 wave close** — both its deferrals spent
+once the last command converted, the trail home it anticipated now bound at P20; v1 2026-07-30 — command-succinctness-strip, pilot-checkpoint ruling
+B: split out of `command-shape.md` Layer 1 v5 as a conditional read; text unchanged in
+substance) · **Governed by:** `mochiko:loop-discipline` · **Pairs with:** `command-shape.md`
+```
+- **Kept deliberately:** the version *number* and its date stay in the file — a consumer still
+  learns which revision it is reading; only the per-revision narrative left.
+
+## [v0.44.0] Provenance pointer
+- **Disposition:** superseded → deleted; this note is the home it pointed at.
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row above)
+- **Content (verbatim):**
+```
+(Provenance:
+`.mochiko/strips/sized-end-stage-review.md`.)
+```
+- **Kept deliberately:** the slot-ownership sentence before it and the stated-default/recorded-
+  departure rule after it — both operative.
+
 # v0.43.0 — the v2 interim note retired, both its deferrals spent
 
 **Wave context:** the v7 conversion wave closed with all six commands converted (wave note

@@ -68,7 +68,7 @@ Against the command file:
    **Re-keyed by ruling, disposition still pending:** the `loop-discipline` member of this set
    is retained by the shape's transition note, whose reopening trigger was **re-specified at
    v7** against the stated default plus recorded departures and declared bounds
-   (`command-shape.md`, *Transition note*; `lead-owned-process-flexibility` R16). The read has
+   (`command-shape.md`, *Transition note*). The read has
    not been dropped and no live run has yet met the trigger, so a missing `loop-discipline`
    reference is a FAIL. Never treat its absence as anticipated.
 2. **Frontmatter** — `disable-model-invocation: true` present; `description:` non-empty.
@@ -170,8 +170,8 @@ Against the command file:
    12·2), which is arithmetic only with the heading excluded. Counting it would put the declared
    floor case 1 w *over* its own ceiling and make the `+30` term's stated ground incoherent.
 
-   **Provisional:** calibrated on the v5 floor arithmetic
-   (`.mochiko/strips/command-shape.md`), confirmed or revised at the pilot checkpoint. Measured
+   **Provisional:** calibrated on the v5 floor arithmetic, confirmed or revised at the pilot
+   checkpoint. Measured
    headroom at the floor: tightest is `plan`'s Constraints (705 w against 810, 13%); the
    Bindings `+30` term exists because without it `brainstorm`'s measured Bindings floor sat at
    ~0.9% headroom — a ceiling that tight fails on formatting, not on bloat.
@@ -225,8 +225,10 @@ Against the command file:
 12. **Parameter completeness** — every slot the shape home declares for the command's form
     is bound: **P1** goal line · **P2** probe seat (team-form) · **P3** end state · **P4**
     not-done states · **P5** seat rows · **P6** validation model · **P7** gate lines · **P8**
-    bounds · **P9** invariants + survivors · **P10** artifact set · **P11** uncertainty
-    carrier · **P12** fact route · **P13** verify-pass owner (sized review only) · **P14**
+    bounds · **P9** invariants + survivors (a `KEPT:` survivor carries its **claim**; its
+    evidence pointer lives in the strip note, not in the command) · **P10** artifact set ·
+    **P11** uncertainty carrier · **P12** fact route · **P13** verify-pass owner (sized
+    review only) · **P14**
     clearing unit + checkpoint keying (devolved branch only) · **P15** pause location ·
     **P16** resume rows · **P17** lifecycle override (team-form, override only). An unbound
     parameter is a gap, not a style choice; a conditional slot that does not bind carries its
@@ -254,7 +256,10 @@ Against the command file:
     blocks or superseded by a cited ruling.
 15. **Strip-note quality (waves and revisions)** — entries name tier + disposition;
     shared-primitive entries name the consumers assessed; contested keeps carry
-    survivor-provenance entries. A revision's note additionally carries its slot map: every
+    survivor-provenance entries. **Every `KEPT:` survivor in the graded command has a
+    matching entry in that command's note carrying its Tier-2 evidence pointer** — since
+    v0.44.0 the pointer lives only there, so a survivor with no such entry is evidence that
+    vanished, and that is a FAIL. A revision's note additionally carries its slot map: every
     prior-version parameter maps to a new home or is retired by an explicit supersession
     entry — retirement by omission is a FAIL.
 
@@ -282,7 +287,7 @@ revision writes.
 
 ## Lead-composed process (shape v7) — the ceiling terms and the three floor checks
 
-Added at shape v7 (`lead-owned-process-flexibility` D6(d), ruled additive): checks 1–19 are
+Added at shape v7 (ruled additive): checks 1–19 are
 unchanged — gate lines and bounds survive as the *stated default's* carriers, so check 6's `G`
 arithmetic and every one of checks 1–19 still keys on real text. **Checks 20–23 run on every
 command.** Nothing here was renumbered when the dual-form branch retired at v0.43.0: check 20 kept

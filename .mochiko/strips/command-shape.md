@@ -6,6 +6,225 @@ Shape v3 also *added* the Run-cost entry element (D2 — recorded in ROADMAP, no
 
 ---
 
+**Wave context (v0.44.0 — the D7 leakage scrub).** `verbosity-caveman-ops-separation` D7 as
+folded at review (S4): **full scrub** of ops leakage from the shipped tree, with no
+changelog-worthy detail lost — every removed block is preserved verbatim below. Ruling:
+`DECISIONS.md` 2026-08-01 "Output verbosity, caveman & ops separation ruled" row.
+
+**The leak test this wave used, recorded so a future sweep inherits it: *whose artifact does the
+pointer name?*** Mochiko's own ops records — `.mochiko/strips/`, `.mochiko/brainstorms/`,
+`.mochiko/decisions/`, `.mochiko/archive/` — are leaks: they resolve to nothing in an installed
+plugin. Adopter runtime paths (`.mochiko/specs/`, `.mochiko/memory/`) and the KM module's
+document contracts are the **user's** artifacts and are untouchable. A prefix-based sweep on
+`.mochiko/` would gut the KM module and the brainstorm command; 101 of this tree's 146
+`.mochiko/` references were correctly left alone on that test.
+
+## [v0.44.0] Shape version-history block relocated (class 2, 6,418 B / 70 lines)
+- **Disposition:** superseded → relocated **verbatim** into this note (below). In-file residue: the
+  bare stamp plus the live routing (`Governed by / Pairs with`), which is wiring a run consumes, not history.
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row above)
+- **Content (verbatim, the whole block as it stood at the scrub):**
+```
+**Shape version:** v8 (2026-08-01 — `verbosity-caveman-ops-separation`
+(`.mochiko/brainstorms/verbosity-caveman-ops-separation/record.md`), two revisions in one
+wave: **D4 part 3 as folded at review (S2)** — Layer 2's devolved branch gains a **fourth
+clearing condition**, a passing report carrying prose outside the envelope's sanctioned set
+being not clean, so it returns to the lead instead of devolving; the check itself is
+mechanical and lives in `report-format.md` (rules 2 and 9), referenced here and never
+restated, the three original conditions unchanged · **D1/D2/D3 with folds S11/S12** — Layer
+1's conversation rule gains the register binding (chat `full`, plain winning over terse where
+they pull apart) and its three-term vocabulary list is **superseded by the ban-as-principle**,
+worked examples non-exhaustive; the manifest, levels and switch single-source to
+`templates/output-style.md`. **Re-audit set:** `commands/implement.md` — the only command that
+binds the devolved branch, its cycle-checkpoint line carrying the condition set in
+implement's own carriers (plan · setup · slice · specify each state **No devolved branch**;
+brainstorm binds none). The Layer 1 revision ripples to no command: no command file restates
+the ban or the conversation rule (verified by grep at the revision); v7 2026-08-01 —
+`lead-owned-process-flexibility`
+(`.mochiko/brainstorms/lead-owned-process-flexibility/record.md`) D1–D6 as amended at review
+(U1–U4) plus acceptance A1–A4: **D1/U2** — a command carries goal · capability roster · bindings
+· floor · a **stated default pipeline**, P7 and P8 surviving as that default's carriers rather
+than as prescriptions, the lead departing at will by recorded trail line · **D2 as amended
+(U1-A/B/D, A3)** — the four-invariant floor added to Layer 1: user gates plus a run-start
+weight card · author≠grader with the lead's own folds and any lead-penned record
+non-discretionarily cold-graded, zero-cold-read only by recorded waiver · declared bounds with a
+lead-counted counter, rise-only-at-a-user-checkpoint and recorded re-declaration, **cost ranges
+being bounds** · the honest trail of departures-from-default naming the grading that ran ·
+**D5/U3** — the cost-of-being-wrong rigor doctrine, input-confidence **split** into ambiguity
+discount vs consistency risk and scored on the artifact under review, with the worked example
+carried as binding guidance · **D6(b)** — Goal blocks lose process residue · **OQ-2/A2** —
+`workflow-contract.md` revived as the per-run carrier for departing runs, a default run
+declaring in one line on the deliverable, and Recovery gaining counter state · **OQ-4** — a
+departing run names its counted unit, keeping the lifecycle cadence a denominator · **D4** —
+the `Contested` convert-on-touch interim, the v7 form marker branching the audit · **R16** —
+the v5 transition note's read-drop trigger re-specified against defaults + declared bounds ·
+**P18–P20** added to the slot set · **v7 addenda (2026-08-01, v0.43.0), two, in order:** *(i)* at
+the first conversion the interim note gained the v6-form run's weight-card home — an owed *siting*
+of invariant 1, not new doctrine; *(ii)* at the wave close, all six commands converted and
+grader-verified 6/6, the **form marker, the v7 interim note and P18–P20's form conditional retire**
+on the marker clause's own stated trigger ("it retires when the last command converts") — the
+library is single-form, P18–P20 bind unconditionally, and (i) retires with the note that carried
+it. The version stands at v7 across both: scaffolding raised, then taken down, with no doctrine
+changed either time; v6 2026-08-01 — `team-lead-strategic-compaction` TC-D1–D6 ·
+`standing-seat-lifecycle` D1–D3 as amended — the **encoded subset** of the ruled D1–D4 (D3's
+per-roster-declaration clause superseded by TC-D6; D4's absence is by design, per the strip
+note) · `plan-run-transport-forensics` R1/R2/R3/R4: Layer 2 re-framed into its two axes —
+**team transport** unchanged in content, plus a new **per-seat context lifecycle** axis
+(seats-only lead responsibility · governed-set criterion · the counted-not-observed ~≥3 gate-pause
+cadence · respawn-as-reset with versioned-name successors · end-of-need shutdown · the
+no-ritual-sends line) · the standing-seat continuity clause retired · the fresh-spawn
+anti-pattern retargeted at nameless one-shot **transport** · the first-spawn probe's broken
+addressability discriminator replaced with a **documented positive roster check** (the team
+config's `members` array), the harness's name-classification and send-delivery strings demoted
+to observed-not-documented corroboration, refusal preserved with no degraded branch · **P17**
+added to the slot set, override-only; v5 2026-07-30 — command-succinctness-strip D3 · D5 (+ folds a–c) · D6 ·
+D7/D10 as amended at verify V1: the goal-shaped five-block anatomy replaces the flow/phase
+body and the Contract appendix · Seat transport absorbed from `agent-dispatch.md` · the P1–P16
+slot set supersedes v4's 13 tags · the obligated `loop-discipline` read retained under a
+checkpoint-gated transition note · **pilot-checkpoint ruling B (same revision):** the sized
+end-stage review's doctrine split out to `templates/sized-end-stage-review.md` as a
+conditional read, loaded only where P6 binds it · **the Run-cost entry element dropped** by user
+ruling (step-1 adjudications), retiring v3's manual-baseline carrier · **v0.34.0 pilot checkpoint:**
+the `loop-discipline` read-drop **deferred to a named live-run trigger**, authoring evidence ruled
+insufficient; v4 2026-07-30 — team-method-vs-command-shape D1–D3: the
+in-loop mesh becomes Layer 2's default with named traffic classes · cold isolation restated as
+a review-stage property · the deterministic-clean verdict devolves to the pair; v3 2026-07-23
+— workflow-token-reduction wave 1: run-cost entry added · provenance header relocated to the
+strip note; v2 2026-07-19 — the S8 home-revision checkpoint) · **Governed by:**
+`mochiko:loop-discipline` · **Pairs with:** `agent-dispatch.md` (call-time briefing) ·
+`sized-end-stage-review.md` (conditional — the sized-review branch of P6) ·
+`workflow-contract.md` (conditional — the per-run carrier a **departing** run instantiates) ·
+`report-format.md` (the report envelope seats write to).
+```
+- **Kept deliberately:** the version *number* and its date stay in the file — a consumer still
+  learns which revision it is reading; only the per-revision narrative left.
+- **The quote above is frozen at the scrub, and it is one revision short of v8's final state.**
+  It names two revisions because the third — the **P9 KEPT-clause amendment** — landed in the
+  *same edit* that relocated this block, so the history was already out of the file before P9
+  could be written into it. The quote is deliberately **not** back-edited: it is the verbatim
+  capture, and amending it would forfeit exactly the fidelity this relocation exists to preserve.
+  The missing line is therefore recorded here as its own history entry, in the form it would have
+  taken in the footer:
+
+  > **· D7 + S4 (wave 3, executed under the lead's stage-A option (a))** — P9's KEPT-survivor
+  > clause amended: a `KEPT:` survivor carries its **claim** in the command, its evidence pointer
+  > living in the strip note. Full entry below; the lockstep grader re-key is recorded in
+  > `.mochiko/strips/validation-command-shape.md`.
+
+  **A reader reconstructing v8 needs the quote plus this line.** Anyone re-cutting a version
+  history for this file should assemble it from both.
+
+## [v0.44.0] Design-provenance pointer, preamble
+- **Disposition:** superseded → deleted from the shipped file; this note is the home it pointed at.
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row above)
+- **Content (verbatim):**
+```
+(Design provenance, revision history, and the v4→v5 slot
+map: `.mochiko/strips/command-shape.md`.)
+```
+- **Consumers assessed:** none — no file cited the shape's provenance parenthetical.
+
+## [v0.44.0] The preservation standard's exemplar citation — **doctrine-clause citation, verify-path**
+- **Disposition:** superseded → the citation relocates here; **the claim stays whole in the
+  doctrine.** A maintainer verifying the exemplar walks: this entry → the session record named below.
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row above)
+- **Content (verbatim, the citation only):**
+```
+is fold (a) of D5 in
+  `.mochiko/brainstorms/command-succinctness-strip/record.md`
+```
+- **Kept deliberately:** the exemplar itself — "8 lines of phase narrative carrying ~15 discrete
+  rules, distilled to 3 constraint lines" — which is the measurable content of the standard. The
+  sentence was re-punctuated to a colon so it reads whole without the citation.
+
+## [v0.44.0] The transition note's reopening-trigger citations — **doctrine-clause citation, verify-path**
+- **Disposition:** superseded → citations relocate here; the trigger and its two measurable terms
+  stay in the note verbatim. Verify-path: this entry → the ADR and records named below.
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row above)
+- **Content (verbatim):**
+```
+> (ADR `.mochiko/decisions/2026-07-30-goal-shape-pilot-checkpoint.md`; `command-succinctness-strip`
+> D7 + D10; re-key: `lead-owned-process-flexibility` R16).
+```
+- **Kept deliberately:** the whole deferral — that the `loop-discipline` read stays, why authoring
+  evidence cannot settle it, both (a)/(b) trigger terms, and "non-conformant, not early".
+
+## [v0.44.0] The git-ban carve-out's citation — **doctrine-clause citation, verify-path**
+- **Disposition:** superseded → citation relocates here; the carve-out rule stays in Ground rules.
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row above)
+- **Content (verbatim):**
+```
+(`validator-worktree-isolation` U1,
+2026-08-01)
+```
+- **Kept deliberately:** the operative sentence — an ephemeral, self-removed verification worktree
+  is not a mutation of the banned surface. Without it `implement`'s cold-tree snapshot reads as a
+  ban violation.
+
+## [v0.44.0] P9's KEPT-survivor clause: evidence pointer moves out of the command
+- **Disposition:** superseded → the amended P9 clause, which now reads "*any `KEPT:` survivor with
+  its claim, its evidence pointer living in the strip note rather than in the command*".
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row above), executed under the lead's stage-A ruling (option (a), 2026-08-01):
+  a KEPT evidence pointer **is** a class-1 pointer, so leaving it carved an exception into the
+  user's `Contested` full-scrub ruling — the user's to narrow, not the build's.
+- **Content (verbatim, the superseded clause):**
+```
+and any `KEPT:` survivor with the pointer to its evidence
+```
+- **Kept deliberately:** the `KEPT:` marker itself and the survivor's claim, both still required in
+  the command — the audit still sees which lines are protected survivors, only their evidence now
+  lives one hop away. The walk-path survives via `.claude/rules/mochiko/primitive-edits.md`, which
+  fires on every `plugins/mochiko/**` touch and names this directory (D7's own stated mitigation).
+- **Consumers assessed:** `validation-command-shape` reads P9 at its P9 slot and its check 14/15
+  surfaces. **The lockstep re-key LANDED IN PLACE this wave** — entry:
+  `.mochiko/strips/validation-command-shape.md` `[v0.44.0]`. The first plan deferred it to the D6
+  trio move so the skill would arrive repo-side already re-keyed; the S14 probe then failed on the
+  agent half in-session, the move was gated to a fresh session, and the lead ruled the re-key must
+  ship now — at v0.44.0 the shipped grader would otherwise contradict the shipped shape. It landed
+  on the **P9 slot label** and on **check 15** (not check 14): the pointer requirement did not
+  disappear, it moved to the strip note, so the grader now checks it where it actually lives —
+  without that, the obligation would have been deleted from the command and checked on neither
+  surface. Live KEPT instances, both re-audited after their pointer edits and both passing the new
+  check as written: `commands/specify.md`, `commands/brainstorm.md`.
+
+# v0.44.0 (shape v8) — the style wave's three revisions
+
+**Wave context:** `verbosity-caveman-ops-separation` (record:
+`.mochiko/brainstorms/verbosity-caveman-ops-separation/record.md`); ruling row: `DECISIONS.md`
+2026-08-01 "Output verbosity, caveman & ops separation ruled". **Three revisions carry one shape
+version**, all riding the same unreleased plugin version and the same record — wave 1's Layer 2
+clearing condition (D4 part 3 / S2) · wave 2's Layer 1 register binding (D1/D2/D3 + S11/S12) ·
+wave 3's **P9 KEPT-clause amendment** (D7 + S4, executed under the lead's stage-A option (a)),
+which landed in the same edit as the version-block relocation because the two touch the same file.
+The Layer 2 condition and the Layer 1 register lines are pure additions and ride the decision row.
+**Two supersessions ride v8** — the vocabulary ban and the P9 clause — each with its own entry
+below, alongside the relocated history and the three doctrine-clause citations.
+
+## [v0.44.0] The user-facing vocabulary ban's enumerated three-term list
+- **Disposition:** superseded → the **ban-as-principle** in the same Layer 1 paragraph, the three
+  terms surviving in place as **non-exhaustive worked examples**; the growth mechanism relocates
+  to `templates/output-style.md` (the style home minted this wave).
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D3 as folded
+  at review, S11; the `DECISIONS.md` row above).
+- **Content (verbatim, the superseded clause):**
+  ```
+  carries no machinery: no "phase", "round", or "gate" talk in user-facing prose.
+  ```
+- **Why the ruling retired it:** an enumerated list bans only what it enumerates. The driver leak
+  — the end user shown "Layer -2" (record F3) — was internal vocabulary the list never named, so
+  a file sweep found nothing and the term escaped by not being on the list. As a principle, a
+  term is banned by class the moment it names mochiko's machinery rather than the user's work,
+  and the list becomes a worked-example surface that grows without a doctrine edit.
+- **Kept deliberately:** the paragraph around it, whole — "The conversation is the production
+  surface", its ownership sentence, and the anatomy parenthetical distinguishing banned
+  *headings* from banned *vocabulary*. All three terms survive as examples; none was deleted.
+- **Consumers assessed:** zero. Grepped `"phase"` · `"round"` · `"gate"` · `user-facing prose` ·
+  `Layer -2` across `commands/`, `skills/` and `templates/` at the revision — no file outside
+  `command-shape.md` restates the ban or the conversation rule, so this half owes no command
+  re-audit (v8's re-audit set, `commands/implement.md`, is owed by the Layer 2 half alone).
+
+---
+
 # v0.43.0 (wave close) — the dual-form scaffolding retires; the always-read floor shrinks
 
 **Wave context:** the v7 conversion wave closed with **all six commands converted** — implement

@@ -6,6 +6,48 @@ Entry formats: `strips/README.md`. Wave context: workflow-token-reduction wave 1
 wave-1 entries atop (batch-ratified 2026-07-25): body 164 → 140 lines, 24 cut = 15% — in the
 10–40 previously-stripped band.
 
+Verbosity/caveman wave-1 entries atop (design:
+`.mochiko/brainstorms/verbosity-caveman-ops-separation/record.md`, D4 as folded at review
+(S2/S13); ruling: `DECISIONS.md` 2026-08-01 "Output verbosity, caveman & ops separation
+ruled" row) — the report repair: the format text that forced prose onto passing cycles is
+corrected, and the envelope's register and prose-on-clean check are bound where the report is
+actually authored.
+
+## [v0.44.0] Failure-narrative trigger: "or any task failed" narrowed to execution failures
+- **Disposition:** superseded → `references/CYCLE-REPORT-FORMAT.md`'s corrected trigger, *"or a
+  task failed in execution"*, plus a carve-out paragraph under the same section naming the
+  verifier-owned case explicitly.
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D4 part 1,
+  the F59 clause fix; `DECISIONS.md` 2026-08-01 row above).
+- **Content (verbatim, the whole superseded line):**
+  ```
+  ### Failure narrative *(mandatory when `status` is `fail` or `blocked`, or any task failed)*
+  ```
+- **Why the ruling retired it:** every cycle report in the `author-navigate` driver run carried a
+  non-empty `failed_tasks:` naming one verifier-owned `**TEST:**` gate the producer must not
+  execute (record F59). Under *"or any task failed"* the format itself owed a narrative on a
+  passing cycle — a producer following the shipped text arrived at prose correctly, and 8/8
+  passing reports carried it (F58, 79.9% of report bytes). The text was the defect, not the
+  author.
+- **Kept deliberately:** the other two trigger conditions (`status` `fail` / `blocked`) verbatim;
+  the section's full-detail body paragraph; and the `failed_tasks:` disclosure itself — the
+  verifier-owned task is still listed with its one-line reason. Only the narrative obligation
+  lifts.
+- **Consumers assessed:** `skills/executing-tdd-cycle/SKILL.md` is the reference's only consumer
+  (`:74`, `:81`, `:142`) and needs no edit — `:81` already reads *"a `Failure narrative` (full
+  detail) whenever the cycle failed or was blocked"*, i.e. the corrected trigger, and `:79`
+  already reads *"a clean passing cycle needs no prose"*. The defect was localized to the
+  reference. `templates/report-format.md` rule 2 never carried a task-level clause, so it is
+  unaffected.
+
+## [v0.44.0] KEPT: the envelope's register + prose-on-clean check, restated in this payload home
+- **Tier-2 evidence:** a deliberate exception to the no-restatement rule, recorded here so a
+  later minimalism wave does not read it as Tier-1 duplication and relocate it. Ground: record
+  F72 — the driver run's report prose was authored against this payload home, one hop *below*
+  `templates/report-format.md`, where the stricter frontmatter-only rule already failed to reach
+  (F58). D4's S2 fold names the restatement in both payload homes as a host of the check, so the
+  binding is ruled, not stylistic. Cut it only with a ruling that also re-homes the check.
+
 ## [v0.25.0] Task-extraction preview list (net −7 lines)
 - **Disposition:** relocated → `references/TASK-PARSING.md` (the declared parsing home, pointed at two lines above; pointer now names "the per-task fields to extract")
 - **Tier failed:** 1 (preview copy of the reference's field list)

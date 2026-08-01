@@ -7,6 +7,58 @@ current conventions; D1 forbids cutting to reach a band).
 
 ---
 
+**Wave context (v0.44.0 — P9 lockstep re-key, in place).** The shape's P9 clause was amended
+this wave (KEPT survivor keeps its claim; its evidence pointer moves to the strip note —
+`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row, executed under the lead's stage-A option (a)). The lead's first plan was to re-key
+this skill as it landed repo-side with the D6 trio move; **the S14 probe failed on the agent half
+in-session** (spawn accepted, but the type never instantiated from `.claude/agents/`), so the move
+is deferred to a fresh-session probe and this skill **ships one more version, correctly re-keyed
+in place**.
+
+## [v0.44.0] Three provenance pointers scrubbed; the operative read instruction kept
+- **Disposition:** superseded → deleted from the shipped file, preserved verbatim here. The trio
+  ships one more version (the D6 move is gated on a fresh-session probe), so its shipped-tree
+  pointers are live leaks for adopters and scrub now rather than at the move.
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row), executed under the lead's pointer ruling (2026-08-01)
+- **Content (verbatim, all three):**
+```
+   (`command-shape.md`, *Transition note*; `lead-owned-process-flexibility` R16). The read has
+```
+```
+   **Provisional:** calibrated on the v5 floor arithmetic
+   (`.mochiko/strips/command-shape.md`), confirmed or revised at the pilot checkpoint. Measured
+```
+```
+Added at shape v7 (`lead-owned-process-flexibility` D6(d), ruled additive): checks 1–19 are
+```
+- **Kept deliberately — `:43`, and the distinction that kept it:** *"…`.mochiko/strips/<this
+  primitive>.md`; **read it when auditing the revision itself**"* stays. **It is an operative
+  instruction, not provenance — kept; exits with the move.** D7's scrub classes are provenance
+  pointers and version history; a path telling the skill **where to perform its own function** is
+  neither, and deleting it breaks the function rather than trimming a citation. The lead ruled this
+  distinction explicitly after two of its own messages disagreed: *"an operative instruction telling
+  the skill where to perform its own function is neither, and deleting it breaks the function."*
+  **A future sweep inherits the test: ask whether the path is cited or used.**
+- **Kept deliberately — the claims:** the transition-note FAIL rule (a missing `loop-discipline`
+  reference is a FAIL, never read as anticipated), the `Provisional` calibration basis and every
+  measured figure under it, and the v7 additive statement with checks 20–23. Only citations left.
+- **Consumers assessed:** none — no file cites this skill's provenance lines.
+
+## [v0.44.0] P9 slot label + check 15 re-keyed to the amended KEPT clause
+- **Disposition:** pure addition — no text removed. The P9 slot label gains "(a `KEPT:` survivor
+  carries its **claim**; its evidence pointer lives in the strip note, not in the command)", and
+  check 15 gains the matching obligation.
+- **Tier failed:** n/a — lockstep re-key riding the shape revision's ruling.
+- **Why check 15 and not check 14:** the requirement did not disappear, it **moved**. Before, the
+  command carried the pointer and check 14 saw it there. After, the pointer lives in the note — so
+  the grader now reads it where it actually is: *"Every `KEPT:` survivor in the graded command has
+  a matching entry in that command's note carrying its Tier-2 evidence pointer … a survivor with
+  no such entry is evidence that vanished, and that is a FAIL."* Without this the obligation would
+  have been deleted from one surface and checked on neither.
+- **Consumers assessed:** the two live `KEPT:` survivors — `commands/specify.md` and
+  `commands/brainstorm.md` — both have their pointer entries in their own notes this wave, so both
+  pass the new check as written. Re-audit of both commands is owed to the independent grader.
+
 # v0.43.0 (wave close) — the dual-form branch retires; the ceiling basis is re-measured (K2)
 
 **Wave context:** the v7 conversion wave closed with all six commands converted (wave note

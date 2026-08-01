@@ -35,6 +35,10 @@ frontmatter, but no sentence that a field, a table row, or an ID citation could 
    list entries (acceptance criteria, edge cases, scenarios, impacts, consequences) are
    one line each. These are defaults, not caps on substance — a genuinely complex
    decision may carry more, and the extra length should be substance, never padding.
+   Exceeding the guidance is **reported, never graded**: the producing seat carries one
+   line in its report naming the delta (e.g. "overview 9 lines vs ≤ 3 default"), which
+   gives the lead the signal without handing any reviewer a prose-volume dimension
+   (rule 8).
 5. **Table over prose.** Where content is enumerable (fields, mappings, statuses,
    checks), a table carries it. Prose is for judgment and rationale only.
 6. **Omit empty.** A section or field with nothing to say is omitted, never written as
@@ -57,13 +61,17 @@ frontmatter, but no sentence that a field, a table row, or an ID citation could 
     would look for it (e.g. a one-line "not applicable — no external integration
     surface" in `plan.md`'s artifact table), so absence is a decision, never an
     oversight.
+11. **Register.** Deliverables write `full` — dense, articles droppable, fragments fine —
+    under the never-compress list and the ambiguity guardrail: IDs, identifiers, commands,
+    contract clauses and error strings stay verbatim, and compression stops wherever it
+    would make a requirement, criterion or constraint ambiguous. A human reads these at an
+    acceptance gate, so plain English wins wherever terse and plain pull apart. Levels, the
+    clause manifest and the switch: `templates/output-style.md`.
 
 ---
 
-**Format version:** v1 (2026-07-24 — workflow-token-reduction wave 2) · **Governed by:**
-the workflow-token-reduction epic record (D4 + the wave-2 rulings R1–R4/T1–T4) ·
-**Consumed by:** the artifact templates in this directory, the artifact-authoring skills
-(`authoring-requirements`, `authoring-user-stories`, `authoring-technical-requirements`,
-`patterns-entity-modeling`, `patterns-api-contracts`, `patterns-vertical-tdd`,
-`authoring-slices`, `analysis-codebase`), and the review-skill checklists that grade the
-artifacts.
+**Format version:** v2 (2026-08-01) · **Consumed by:** the artifact templates in this
+directory, the artifact-authoring skills (`authoring-requirements`, `authoring-user-stories`,
+`authoring-technical-requirements`, `patterns-entity-modeling`, `patterns-api-contracts`,
+`patterns-vertical-tdd`, `authoring-slices`, `analysis-codebase`), and the review-skill
+checklists that grade the artifacts.

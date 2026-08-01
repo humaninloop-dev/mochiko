@@ -133,7 +133,9 @@ yours.
   `<!-- mochiko:governance:end -->` is setup-owned and **idempotently regenerated** — re-runs and
   amends replace it in place; everything outside those markers is user content, never touched. Rules
   files, ledger and synthesis follow the same rule; the knowledge-management bundle scaffolding keeps
-  its hard **never-overwrite** floor.
+  its hard **never-overwrite** floor, and the template's marked carve-outs — the domain registry and
+  the output-style pair (the region's switch line and its Shape-5 rules file) — are preserved
+  verbatim, written default-on once and never regenerated back over the user's values.
 - **The synthesis is the producer's contract** (the selection-vs-formulation split and the
   flagged-proposal route are `authoring-constitution`'s); in amend it works from the current
   surfaces, preserving untouched principles and bumping the region's semver.

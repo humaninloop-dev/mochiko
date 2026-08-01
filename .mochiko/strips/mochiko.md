@@ -6,6 +6,29 @@ Entry formats: `strips/README.md`. Wave context: skill-succinctness wave 1 (desi
 single physical lines, so the R2 line denominator undercounts this skill; dual accounting
 recorded here and flagged on the wave's ROADMAP row.
 
+**Wave context (v0.44.0 — the D7 leakage scrub).** `verbosity-caveman-ops-separation` D7 as
+folded at review (S4): **full scrub** of ops leakage from the shipped tree, with no
+changelog-worthy detail lost — every removed block is preserved verbatim below. Ruling:
+`DECISIONS.md` 2026-08-01 "Output verbosity, caveman & ops separation ruled" row.
+
+**The leak test this wave used, recorded so a future sweep inherits it: *whose artifact does the
+pointer name?*** Mochiko's own ops records — `.mochiko/strips/`, `.mochiko/brainstorms/`,
+`.mochiko/decisions/`, `.mochiko/archive/` — are leaks: they resolve to nothing in an installed
+plugin. Adopter runtime paths (`.mochiko/specs/`, `.mochiko/memory/`) and the KM module's
+document contracts are the **user's** artifacts and are untouchable. A prefix-based sweep on
+`.mochiko/` would gut the KM module and the brainstorm command; 101 of this tree's 146
+`.mochiko/` references were correctly left alone on that test.
+
+## [v0.44.0] Review-family split's design-record citation
+- **Disposition:** superseded → deleted from the shipped file; preserved verbatim here.
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row above)
+- **Content (verbatim):**
+```
+— design:
+`.mochiko/brainstorms/setup-adversarial-review/record.md` D5
+```
+- **Kept deliberately:** the split's date (2026-07-18) and the whole operative rule — the prefix encodes who owns the clearing.
+
 ## [v0.40.0] The router's contract claim corrected — a command supervisor is its own contract
 - **Disposition:** superseded → rewritten in place at **two** sites: the *How the library
   composes* sentence and the `workflow-contract` reach-when cell. A **third** correction rode the
