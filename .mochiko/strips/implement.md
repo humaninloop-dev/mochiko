@@ -14,6 +14,248 @@ entries below. **Also stale:** the shape is **v5** as of the v0.35.0 wave below,
 
 ---
 
+## [v0.43.0] The `<!-- shape-form: v7 -->` marker retired from the preamble
+- **Disposition:** superseded → deleted. The marker was added by this same version's conversion
+  entry below and retires in the same version, at the wave close.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-01 wave-close
+  ratifications row, *shape-form marker retirement when the last command converts*; the trigger
+  was written into the marker clause itself). **Ground and full record:**
+  `.mochiko/strips/command-shape.md` [v0.43.0 wave close], entry 1 — *The form marker and its
+  Conformance bullet retired* — not restated here.
+- **Content (verbatim):** `<!-- shape-form: v7 -->`
+- **Kept deliberately:** the entire preamble otherwise — goal line, obligated reads, probe seat —
+  and every P18–P20 binding the marker used to gate. The slots bind unconditionally now; nothing
+  the marker declared was lost, because the marker declared only which grading branch to take, and
+  there is one branch.
+- **Consumers assessed:** `validation-command-shape` check 20 was the sole grep consumer and its
+  form branch retired in the same ceremony. All six commands swept together — a marker left in any
+  one of them would be the only file in the library still declaring a form.
+- **Measured:** `commands/implement.md` **16,046 → 16,021 B** (−25). Derived figures in this note's
+  conversion section re-measured accordingly, superseded values kept inline.
+
+# v0.43.0 — the first v6→v7 conversion
+
+**Wave context:** shape **v7** landed at v0.40.0 (`lead-owned-process-flexibility`,
+`.mochiko/brainstorms/lead-owned-process-flexibility/record.md`; `DECISIONS.md` 2026-08-01 — the
+lead-owned-process-flexibility row plus the shape-v7 wave-close ratification row), with **D4**
+ruling **convert-on-touch** and all six commands staying v6-form. implement's conversion was
+**deferred by user ruling at the v0.42.0 touch** — that wave was ruled surgical and v6-form, the
+**F66** trigger left live and the conversion routed to a dedicated wave. This is that wave; the
+F66 deferral is discharged. BACKLOG: "convert-on-touch residuals".
+
+It also carries the **first-conversion ceiling-term obligation**, user-ratified at the v0.40.0 wave
+close (2026-08-01) — *the first conversion measures its Constraints/Bindings blocks and lands any
+needed check-6 term in the same wave* — which discharges item 4 of the v0.40.0 shape note's
+*Deliberately not encoded* list. Both terms landed:
+`.mochiko/strips/validation-command-shape.md` [v0.43.0].
+
+**Post-conversion measurement, all blocks, body-only in words** (`## Heading` lines excluded, per
+check 6): preamble **114/130** (published as 118 while the 4-word form marker stood;
+retired at the wave close) · Goal **145/150** · Seats & checks **324/340** (unchanged) ·
+Constraints **1031/1110** · Bindings **263/290** · Recovery **239/242** (unchanged). Term
+derivation as check 6 requires: **G = 9** — the eight prior gate lines plus the run-start weight
+card, all nine carrying the complete three-part `evidence:`/`rules:`/`decides:` form — so
+Constraints is 90·(9+2) = 990 **plus the new +120 P18 term** = 1110. **S = 4** and **R = 13**, both
+unchanged. **A = 5**, unchanged from the v0.42.0 reading (working code · `cycle-report.md` · the
+per-cycle verification report · the final-validation report · the built-vs-approved diff report),
+so Bindings is 90 + 12·5 + 30 (KM) **plus the new +110 P19/P20 term** = 290.
+
+> **One A-term judgment, recorded so the next auditor does not re-derive it.** P19 names
+> `implement-contract.md` as a **departing** run's per-run carrier. It is **not counted in A**: it
+> is neither a deliverable nor a round report, and it exists only on a departing run. Counting it
+> (A = 6) would raise the Bindings ceiling to 302 and so only loosen the check — the conservative
+> reading is the one measured here.
+
+## [v0.43.0] The Goal's end state loses its seat choreography and its lead-read clause
+- **Disposition:** superseded → rewritten in place as artifact state. The verified evidence the end
+  state named **survives as the artifacts that carry it** — a verification report per cycle and one
+  for the whole implementation, each naming its real-infrastructure evidence tree and its
+  quality-gate exit codes.
+- **Tier failed:** n/a — supersession by ruling (**D6(b)**, ratified at **A4**, 2026-08-01: *"Goal
+  blocks lose process residue. Done = artifact state + floor compliance + user acceptance"*; graded
+  by `validation-command-shape` check 23, v7-form only).
+- **Protected content, leaving by ruling and named as such:** the second clause is
+  `DECISIONS.md`-traceable — the [v0.31.0] entry below records the team-method **D3** rewrite of
+  the Contract done-condition into exactly this text ("the final-validation report plus every
+  **escalated** cycle's reports"). It is superseded by a cited ruling, not dropped.
+- **Content (v6, verbatim — the two clauses that left):**
+  ```
+  `qa-engineer` verification passed on every
+  cycle **and** on the whole-implementation final validation, on real-infrastructure evidence and
+  quality-gate exit codes; you Read the final-validation report and every escalated cycle's reports and
+  found no blocking gap —
+  ```
+- **Kept deliberately:**
+  - **All four build-state findings**, in substance verbatim: "criteria met, gates passing,
+    traceability to requirements holding, the build aligned with the project's governance" → "the
+    built code meets its criteria, holds traceability to requirements, and aligns with the
+    project's governance", *gates passing* carried by the quality-gate exit codes named one clause
+    earlier. Nothing in the finding set was dropped.
+  - **The real-infrastructure evidence and quality-gate exit codes** — moved from *what qa did* to
+    *what the reports contain*, so the Goal and the D5 verification floor (now in P18) read the
+    same evidence.
+  - **The not-re-read consequence of the devolved branch** — untouched at the Cycle-checkpoint
+    constraint the v0.35.0 ledger assigned it to: "the cycle then clears on qa's PASS-with-evidence,
+    **unread by you**".
+  - **"the KM landing ran" and "the user accepted at G5"** — both are explicit end-state elements
+    in the shape's own Goal spec (the KM landing under fix-on-sight; user acceptance as part of the
+    end state), so neither reads as residue.
+- **Consumers assessed:** not a shared primitive. Two cross-file consumers checked: the grader's
+  check 23 (this is the text it was written for — `.mochiko/strips/validation-command-shape.md`
+  [v0.40.0]) and the five remaining commands, whose Goal blocks **stay exactly as written** — the
+  residue clause is v7-form-only and each converts at its own touch (shape note [v0.40.0], *The
+  Goal block's process residue left the end state*, Consumers assessed).
+
+## [v0.43.0] The not-done state `a non-clean cycle advanced without your verdict`
+- **Disposition:** superseded → deleted from the Goal. The rule it echoed is unchanged at its
+  ledgered home, the **Cycle checkpoint** constraint: "Otherwise it fires — any failure, any GUI or
+  subjective verification, any reported deviation, any registry addition — and you rule on the
+  reports."
+- **Tier failed:** n/a — supersession by ruling (**D6(b)**, as above). It made the lead's own
+  process step a done-condition element, which is the residue class check 23 fails; and it can
+  never be rescued as a floor gate, because the cycle checkpoint reads `rules: you`, not `rules:
+  the user`, and check 21's floor-gate test keys on the latter.
+- **Protected content, leaving by ruling:** `DECISIONS.md`-traceable to team-method **D3**
+  ([v0.31.0] below). The v0.35.0 CS-D8 ledger assigns that row's home to the **Constraints**
+  cycle-checkpoint line — "Same line's *Otherwise it fires — …*, all four classes enumerated" — not
+  to this Goal state. The protected content stays where the ledger put it; only the Goal echo left.
+- **Content (v6, verbatim):** `a non-clean cycle advanced without your verdict`
+- **Kept deliberately:** the whole devolved-branch predicate and its four escalation classes, in the
+  Cycle-checkpoint constraint; the lead's verdict ownership, in the validation-model line.
+- **Consumers assessed:** as above — not a shared primitive; grader check 23 and the five v6-form
+  commands, both unaffected.
+
+## [v0.43.0] Two not-done states re-read from process to artifact state
+- **Disposition:** superseded → rewritten in place. The same states, named by the artifact that is
+  missing rather than by the step that did not run.
+- **Tier failed:** n/a — supersession by ruling (**D6(b)**, as above).
+- **Content (v6, verbatim → v7):**
+  - `a cycle or the final validation unverified` → `a cycle or the final validation with no
+    real-infrastructure evidence`
+  - `an approved delta whose diff never ran` → `an approved delta with no built-vs-approved diff
+    report`
+- **Protected content:** the second is `DECISIONS.md`-traceable to **AD-D6.3/R8**, whose v0.35.0
+  ledger row names *the Goal's end state and not-done state* among its four resolution homes. Both
+  homes survive in the converted Goal — the diff report exists (end state) / an approved delta with
+  no diff report (not-done) — so the row is **preserved**, and this entry records a rewording, not
+  a supersession of the row. The first state is re-anchored on the D5 verification floor now stated
+  in P18, which is what "unverified" always meant here.
+- **Kept deliberately:** **`a warm-only final validation`** — untouched, exactly as the [v0.42.0]
+  entry below logged it ("Warm-only as a named not-done state — untouched in the Goal block"); and
+  every other not-done state, unedited.
+- **Consumers assessed:** as above.
+
+*Pure additions this wave, riding the decision row rather than these entries:*
+
+- **The form marker** `<!-- shape-form: v7 -->` in the preamble — check 20's branch key.
+- **The run-start weight-card gate line** (P7) — U1-A's standing user stop, in the three-part
+  countable form, taking **G from 8 to 9**.
+- **`**Floor gates:**`** (P18) — the floor set (the run-start weight card · the package gate · the
+  governance surface's absence ruling · **G3**'s preference ruling · **G4** · **G5** · the
+  architecture-deviation consent) with the non-floor two named, so the absence is stated rather
+  than inferred; the **D5
+  verification-depth floor** at its named natural site (`workflow-token-reduction` **D5** as split
+  at S5, ruled 2026-07-23, no-softening confirmed — all three limbs carried: depth may thin on a
+  light cycle, never to zero, and *none* is a reviewer-count option only); and the
+  lead-penned-surface element stated as an **absence**, implement's P11 being producer-authored.
+- **`**Run-start declaration:**`** (P19) and **`**Departure trail:**`** (P20) in Bindings — the
+  declaration on the deliverable's progress surface for a default run, an instantiated
+  `implement-contract.md` for a departing one, and the **cycle** named as the counted unit (check
+  22), the same unit the Bounds and the P17 lifecycle line already count.
+- **One new not-done state** — `a departure with no trail line`, the honest-trail invariant made
+  visible in the Goal as floor compliance.
+
+**Two judgments made here rather than deferred, flagged for the grader.**
+
+1. **The floor-gate set is seven of nine, and the ground is *who rules*, not how heavy the gate
+   is.** *(Corrected at the audit's fix round 1 — the governance surface moved into the floor set;
+   the original six-of-nine reading is superseded, see the axis note below.)* The two left as
+   departable defaults are the two whose ruling was never the user's to lose: **G1 entry** and the
+   **cycle checkpoint** (`rules: you`, so check 21's test excludes it by construction). **G3 is
+   marked floor on its narrow limb only** — the *preference ruling* is the user's under floor
+   invariant 1; *when* it is presented stays the lead's under **D3**'s consolidation authority,
+   which is home doctrine and is deliberately not restated in the command.
+
+   **Why G1 clears, stated on the ground that actually carries it.** The first draft argued only
+   the explicit-ID case (an explicit `<feature>` in `$ARGUMENTS` leaves nothing to rule), which is
+   too narrow — it says nothing about the detected-feature branch. The clearing ground is
+   structural: **the package gate is floor and its evidence is the resolved feature's package**,
+   deciding "whether the run opens". So a lead that composes out G1's confirm still puts the
+   resolved feature in front of the user before the run opens, on the very next gate. G1's confirm
+   is a convenience stop, not the invariant's only carrier — which is exactly what makes it safely
+   departable and the package gate not.
+
+   **Why the governance surface is floor: the blocking and floor axes are independent, and the
+   first draft conflated them.** *Blocking* asks whether the run stops; *floor* asks who rules.
+   This gate is **non-blocking AND floor** — its own protected text ("Absence is **surfaced, never
+   auto-resolved** — governing context, not a blocking gate") settles the first axis and says
+   nothing about the second, while `rules: the user, when it is absent` settles the second
+   outright. Excluding it produced a contradiction inside one block: a gate reading `rules: the
+   user` sitting in a not-floor list whose own sentence defines floor as never-departable. The
+   alternative repair — reading the surfacing as departable — was **not taken**: it would be a
+   behavior change to a protected pre-wave line, which no ruling in this wave authorizes.
+2. **The declaration and the trail share one surface.** Both land at the head of `tasks.md` — the
+   deliverable's progress surface, where Recovery already notes the resume stage, so a resumed lead
+   finds declaration, departures and resume state in one place. **`cycle-report.md` was rejected as
+   a home:** the P17 lifecycle line records that the next attempt **overwrites** that file, so a
+   trail parked there is a trail that can vanish mid-run.
+
+**Recovery left untouched, deliberately.** The shape's counter-state clause is home doctrine (v7
+Recovery block); implement's pause line — "Note the resume stage on the deliverable" — does not
+contradict it and names the same surface P19 binds, so no edit was owed.
+
+### R21 heavy-site measurement — the first measured v7 conversion
+
+`lead-owned-process-flexibility` **R21** carries a recorded-open obligation: *a measured cost
+estimate for declaration + trail + composition on one light and one heavy run* (verify N3, narrowed
+by **A3** to the estimate alone). implement is the **heavy site** — the library's densest command.
+Figures are `wc`-measured after the last edit (**re-measured at the audit's fix round 1**, which
+added 3 w to the P18 binding — the superseded figures were 16,028 B / +1,526 / Constraints 1028,
+recorded here so the drift is traceable rather than silently overwritten). **No offsetting saving
+is claimed, because none exists:** the Goal strip returned 67 B against 1,611 B of additions.
+
+**File growth.** `commands/implement.md` **14,502 → 16,021 B** (+1,519; words 2,014 → 2,242,
++11.3%). Attribution, each construct measured on its own text:
+
+| construct | bytes | words |
+|---|---|---|
+| ~~`<!-- shape-form: v7 -->` marker~~ — added here, **retired at the wave close** | ±0 | ±0 |
+| run-start weight-card gate line (P7) | +266 | +44 |
+| `**Floor gates:**` — floor set + D5 depth floor + P11 absence (P18) | +674 | +100 |
+| `**Run-start declaration:**` (P19) | +473 | +61 |
+| `**Departure trail:**` (P20) | +173 | +27 |
+| Goal block, D6(b) residue strip | −67 | −4 |
+| **net** | **+1,519** | **+228** |
+
+**Per-run read cost.** implement.md is an obligated read once per run, so this is **+1,519 B on
+every implement run** — 10.5% on top of the command itself. It is not the whole delta a run pays
+this wave: the shape-home edits add **+450 B to `command-shape.md`** (31,816 → 32,266 — the
+v6-form weight-card clause 236 B, its footer stamp 213 B), and *that* one is paid by **every
+team-form run of any command**, converted or not, because the shape home is the shared always-read
+floor. Against v7's own doctrine cost (+11,399 B/run, measured at
+v0.40.0), conversion is the small half of the bill.
+
+**Run-time cost of declaration + trail — an estimate, and marked as one.** Three components, none
+yet observed on a live run:
+
+- **The declaration, every run.** One line on `tasks.md` stating the four-factor read and the
+  composed process. At the density this repo's own cards use, ~30–60 words (~200–400 B), produced
+  once and re-read on every resume. It is the only one of the three a **default** run pays.
+- **The trail, per departure.** ~15–25 words (~100–170 B) a line. A run that takes the stated
+  default pays **zero**, and the cost scales with departures — the intended shape: the lead buys
+  flexibility by the line.
+- **The contract, departing runs only.** `templates/workflow-contract.md` measures **5,572 B**
+  today, so a departing run reads 5.6 KB and writes a filled copy of comparable size to
+  `.mochiko/specs/<feature>/implement-contract.md`. The largest run-time item by far, and
+  **conditional by construction** — no default run touches it.
+
+**The honest read at this site.** A default implement run pays the +1,519 B read plus one
+declaration line — ~1.8 KB, on the command carrying the library's largest protected surface. A
+departing run adds ~5.6 KB of template plus its fill, plus a line per departure. **The light site
+stays unmeasured**, so R21 remains open at half; the next conversion of a light command closes it.
+
+---
+
 ## [v0.42.0] Cold checkout's **fresh clone** superseded by the git-semantics filtered snapshot
 
 - **Disposition:** superseded → the `**Cold tree:**` + `**Per-cycle qa isolation:**` constraints

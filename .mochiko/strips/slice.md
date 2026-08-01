@@ -9,6 +9,255 @@ command goal-shaped; the v0.31.0 entry's "now v4" claim is likewise frozen histo
 
 ---
 
+## [v0.43.0] The `<!-- shape-form: v7 -->` marker retired from the preamble
+- **Disposition:** superseded → deleted. The marker was added by this same version's conversion
+  entry below and retires in the same version, at the wave close.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-01 wave-close
+  ratifications row, *shape-form marker retirement when the last command converts*; the trigger
+  was written into the marker clause itself). **Ground and full record:**
+  `.mochiko/strips/command-shape.md` [v0.43.0 wave close], entry 1 — *The form marker and its
+  Conformance bullet retired* — not restated here.
+- **Content (verbatim):** `<!-- shape-form: v7 -->`
+- **Kept deliberately:** the entire preamble otherwise — goal line, obligated reads, probe seat —
+  and every P18–P20 binding the marker used to gate. The slots bind unconditionally now; nothing
+  the marker declared was lost, because the marker declared only which grading branch to take, and
+  there is one branch.
+- **Consumers assessed:** `validation-command-shape` check 20 was the sole grep consumer and its
+  form branch retired in the same ceremony. All six commands swept together — a marker left in any
+  one of them would be the only file in the library still declaring a form.
+- **Measured:** `commands/slice.md` **9,929 → 9,904 B** (−25). Derived figures in this note's
+  conversion section re-measured accordingly, superseded values kept inline.
+
+# v0.43.0 — the v6→v7 conversion
+
+**Wave context:** shape **v7** landed at v0.40.0 (`lead-owned-process-flexibility`,
+`.mochiko/brainstorms/lead-owned-process-flexibility/record.md`; `DECISIONS.md` 2026-08-01 — the
+lead-owned-process-flexibility row plus the shape-v7 wave-close ratification row), with **D4** ruling
+**convert-on-touch** and all six commands staying v6-form. The user **widened that to all six
+commands in one wave on 2026-08-01**, so slice converts here rather than at its next touch. The
+audit-cleared precedent is `implement` (this wave, `.mochiko/strips/implement.md` [v0.43.0]), whose
+two check-6 ceiling terms — **+120** on Constraints where P18 binds, **+110** on Bindings where the
+P19/P20 pair binds — this conversion is the second body measured against. BACKLOG:
+"convert-on-touch residuals".
+
+**Post-conversion measurement, all blocks, body-only in words** (`## Heading` lines excluded, per
+check 6): preamble **118 → 118/130** (the conversion's +4 was the form marker, retired at the wave close) · Goal **125 → 83/150** · Seats & checks **176/190** (unchanged)
+· Constraints **458 → 572/750** · Bindings **112 → 215/236** · Recovery **160/172** (unchanged). Term
+derivation as check 6 requires: **G = 4 → 5** — the four prior gate lines plus the run-start weight
+card, all five carrying the complete three-part `evidence:`/`rules:`/`decides:` form — so Constraints
+is 90·(5+2) = 630 **plus the +120 P18 term** = 750. **S = 2** and **R = 8**, both unchanged. **A = 3**,
+unchanged (`slices.md` · `slicer-report.md` · `advocate-report.md`), and slice binds no KM landing, so
+Bindings is 90 + 12·3 **plus the +110 P19/P20 term** = 236. Neither v7 term needed a re-key: at 572/750
+and 215/236 this conversion lands inside the band implement calibrated them on, and a conversion that
+merely fits is not a re-key case.
+
+> **Two counting notes, recorded so the next auditor does not re-derive them.**
+> 1. **The preamble baseline is 118, not the 110 this file's [v0.35.0] section published — measured at
+>    the landing commit, not inferred.** On `git show b32dd82:plugins/mochiko/commands/slice.md` (the
+>    v0.35.0 landing, "Land goal-shape wave v0.35.0") that preamble measures **118 title-included ·
+>    110 title-excluded**, so its note was written title-**excluded**; and the preamble text is
+>    byte-identical from b32dd82 through this conversion (v0.37.0 touched G1 only), so the baseline
+>    transfers unchanged. The v0.43.0 precedent measures title-**included** — implement's published
+>    **114** reproduces only with the title counted (103 title-excluded) — and that is the graded
+>    reading here. *(This sentence cited **118** until the wave-close sweep. 118 is implement's
+>    marker-era title-included figure: its note never published it, and it reproduces from
+>    implement's file under no convention, so the evidence offered here was false even though the
+>    conclusion it supported was right. Note the collision that hid it — **118 is slice's own**
+>    title-included preamble, appearing four more times in this blockquote, so precedent and slice
+>    read as coincidentally sharing a figure. The precedent's number is 114, not slice's 118.)*
+>    **The convention is per-note, not per-wave, so do not generalize this correction.** At the *same*
+>    commit, `brainstorm`'s note published **107**, which is its title-**included** figure (100
+>    excluded): two notes from one wave, opposite rules. A later conversion must re-measure its own
+>    baseline at b32dd82 rather than apply a blanket ±title correction in either direction.
+>    slice's preamble measures **118/130, 9.2% headroom** *(published as 122/130, 6.2% while the
+>    4-word form marker stood; re-measured at the wave-close sweep that retired it — which also
+>    retired the claim it carried: at 9.2% the preamble is the file's **fourth**-tightest block,
+>    behind Recovery 160/172 (7.0%), Seats 176/190 (7.4%) and Bindings 215/236 (8.9%). Point a
+>    later addition's headroom question at Recovery, not here.)*
+> 2. **`slice-contract.md` is not counted in A**, on implement's recorded ground: P19 names it as a
+>    **departing** run's per-run carrier, it is neither a deliverable nor a round report, and it exists
+>    only on a departing run. Counting it (A = 4) would raise the Bindings ceiling to 248 and so only
+>    loosen the check; the conservative reading is the one measured here.
+
+## [v0.43.0] The Goal's end state loses its reviewer-clearance clause and its lead-read clause
+
+- **Disposition:** superseded → deleted from the Goal. Both clauses' rules are unchanged at their
+  ledgered homes (below); only the Goal echo left. The end state is now artifact state + acceptance:
+  the conforming `slices.md`, **or** the recorded null exit, plus G4.
+- **Tier failed:** n/a — supersession by ruling (**D6(b)**, ratified at **A4**, 2026-08-01: *"Goal
+  blocks lose process residue. Done = artifact state + floor compliance + user acceptance"*; graded by
+  `validation-command-shape` check 23, v7-form only). Both clauses are the "the review ran / returned
+  PASS" class verbatim — the first names the reviewer's returned status, the second the lead's own
+  read step.
+- **Content (v6, verbatim — the two clauses that left):**
+  ```
+  `devils-advocate` recommends
+  `ready` grounded in the files, or on a null-exit round on the depth call; you Read `spec.md` + the
+  artifacts + the report and confirm no blocking gap remains;
+  ```
+- **Protected content, checked at source before removal — none of it left the file.** The [v0.35.0]
+  CS-D8 survivor re-grade ledger is the authority on where each protected line lives, and it homes
+  none of this text in the Goal:
+  - *"Cold reviewer **arrival**; producer↔reviewer peer edge; **every verdict the lead's**"*
+    (DECISIONS 2026-07-30, Layer-2 mesh + v0.31.0) → ledgered to "the **validation-model line**",
+    which is untouched and still reads: "Its output is **lead-adjudicated input** (the `review-*`
+    family boundary) and every verdict is yours."
+  - *"The **null-exit round is graded and ruled exactly as before**"* (v0.31.0 *Kept deliberately*) →
+    ledgered to "Reviewer row's depth-call clause + G4's second shape", both untouched. The reviewer
+    row still reads "on a null-exit round grades the **depth call** from `spec.md` + the disclosed
+    reasoning".
+  - *"The **null exit** — recommend whole-spec, no file, reasoning disclosed"* (DECISIONS 2026-07-02,
+    vertical-graduation) → the Goal **is** one of its five ledgered homes, as "the `or` branch" — and
+    that branch survives **verbatim**, untouched by this entry. The null exit is a routing decision;
+    removing it was never on the table.
+- **Kept deliberately:**
+  - **The whole conformance clause** — spec stamp, every `US-#` homed exactly once, foundation slice,
+    dependency-closed Slice-order, cross-cutting extend obligations, Feature-Done complete — unedited.
+    These are the three elements the v0.35.0 repair round had to *restore* after a draft dropped them;
+    they were re-checked at source this wave and are byte-identical.
+  - **The two-shape end state** — decomposition **or** null exit — and G4 acceptance on whichever was
+    produced, both unedited.
+- **Consumers assessed:** not a shared primitive. Two cross-file consumers checked: the grader's check
+  23 (`.mochiko/strips/validation-command-shape.md` [v0.40.0]) and the other five commands, whose Goal
+  blocks are unaffected — the residue clause is v7-form-only and each command converts on its own file.
+
+## [v0.43.0] Two not-done states superseded as process residue
+
+- **Disposition:** superseded → deleted from the Goal. Neither rule moves: both are lead-process steps
+  restated as done-conditions, and their homes are elsewhere in the file, unedited.
+- **Tier failed:** n/a — supersession by ruling (**D6(b)**, as above). Check 23's residue class reaches
+  a done-condition naming "a seat's choreography" or "the validator returned PASS"; the first state is
+  the reviewer's returned status, the second is the lead's own read step. Neither can be rescued as a
+  floor gate: neither is a gate line at all, so check 21's `rules: the user` test never reaches them.
+- **Content (v6, verbatim):**
+  - `a reviewer status short of `ready``
+  - `the reviewer's status taken as the gate without your read`
+- **Protected content:** the second echoes the *every verdict the lead's* row traced above, whose
+  ledgered home is the validation-model line — where it stays. The v0.14.0 *Verdict-ownership
+  triplication* entry already deduped this rule once, to the then-Contract's clause; the v0.35.0
+  goal-shape rebuild re-homed that clause to the validation-model line, and this entry retires the
+  Goal's surviving third copy rather than the rule.
+- **Kept deliberately:** the reviewer's grading obligation and its two shapes (reviewer row), the
+  lead's verdict ownership (validation-model line), the `critical-gaps` escalation trigger (**G3**),
+  and **`a blocking gap open`** — untouched in the not-done list, because it names a state of the run
+  rather than a step that did not run.
+- **Consumers assessed:** as above — not a shared primitive; grader check 23 and the five other
+  commands, both unaffected.
+
+*Pure additions this wave, riding the decision row rather than these entries:*
+
+- **The form marker** `<!-- shape-form: v7 -->` in the preamble — check 20's branch key.
+- **The run-start weight-card gate line** (P7) — U1-A's standing user stop, in the three-part countable
+  form, taking **G from 4 to 5**. Sited after **G1** so the process is composed once the feature and
+  the accepted spec are resolved, and before the loop it composes.
+- **`**Floor gates:**`** (P18) — the floor set, which is **all five gates**, with the ground stated
+  (each reads `rules: the user`) and the non-floor absence stated rather than inferred; **G2** scoped
+  to its two user-ruled limbs; and the lead-penned-surface element stated as an **absence**, slice's
+  P11 being producer-authored.
+- **`**Run-start declaration:**`** (P19) and **`**Departure trail:**`** (P20) in Bindings — the
+  declaration on the run's standing artifact for a default run, an instantiated `slice-contract.md`
+  for a departing one, and the **round** named as the counted unit (check 22), the same unit the
+  Bounds already count.
+- **One new not-done state** — `a departure with no trail line`, the honest-trail invariant made
+  visible in the Goal as floor compliance.
+
+**Three judgments made here rather than deferred, flagged for the grader.**
+
+1. **The floor-gate set is all five, and the ground is *who rules*.** slice has no `rules: you` gate —
+   unlike implement's cycle checkpoint, which check 21's test excludes by construction — so every gate
+   line in the file reads `rules: the user` and every one is floor. **G1 was not left departable on
+   implement's reasoning, because implement's reasoning does not transfer.** There, G1's confirm was
+   safely departable *because the package gate is floor and re-presents the resolved feature before the
+   run opens* — the invariant had a second carrier. slice has no second carrier: its G1 **is**
+   structurally implement's package gate, deciding "whether the run opens, and on what feature" and
+   carrying both the unaccepted-spec block and the **already-graduated halt**. Compose G1 out and no
+   user stop precedes the run at all.
+2. **The precedent's blocking-vs-floor lesson is consumed inside G1, not dodged.** G1's governance limb
+   states "governing context, never a **blocking** gate" — that settles the *blocking* axis and says
+   nothing about the *floor* axis, which `rules: the user` settles outright. Marking G1 floor therefore
+   changes no behaviour: the governance-region absence stays surfaced-and-non-blocking exactly as
+   written, while the ruling it opens stays the user's. **G2 is the one scoped limb:** its preference
+   ruling and its un-homeable-story amendment offer are the user's, but its **"Research this" route to
+   `Explore`** is excluded — that route exists precisely to keep a knowledge gap *off* the user, so it
+   is not a user ruling that could be lost.
+3. **The declaration and the trail share one surface, and that surface moves.** Both land at the head
+   of the run's standing artifact — the same one Recovery already notes the resume stage on, so a
+   resumed lead finds declaration, departures and resume state in one place. slice needs the moving
+   clause that implement did not: **`slices.md` does not exist at run start and never exists on a null
+   exit**, so binding P19 to the deliverable alone would leave a null-exit run with no declaration home
+   at all. Hence `slicer-report.md` until the overlay exists and on a null exit, **moved across
+   whenever the outcome shape flips** — a real path in this workflow, not a hypothetical: a wrong-depth
+   finding flips decompose ↔ whole-spec as a normal round (Invariants), and a G4 override re-enters the
+   loop directed to decompose. Without the carry-across, that flip strands the trail on a report the
+   next round overwrites, which is exactly the failure check 23 grades. **`advocate-report.md` was
+   rejected as a home** for implement's reason — a round report the next round overwrites is a trail
+   that can vanish mid-run.
+
+   **One residual tension, flagged rather than papered over.** Bindings states "Round reports are
+   cleaned by default unless the user asks to retain them", and on a null-exit run the declaration and
+   trail live on `slicer-report.md`, which is a round report. It is not edited here, because the Goal
+   already requires that file to carry the null exit's disclosed reasoning — on a null-exit run it *is*
+   the run's record, so cleaning it would un-do the done-condition. If the grader reads that as too
+   implicit, the fix is one clause on the artifacts line, not a change to this binding.
+
+**Recovery left untouched, deliberately** — on the precedent's ground. The counter-state clause is home
+doctrine (v7 Recovery block); slice's pause line, "Note the resume stage on `slices.md`, or on
+`slicer-report.md` before the overlay exists", already names the exact two surfaces P19 binds, so no
+edit was owed. The 8-row evidence table is likewise unchanged: every row keys on workspace evidence,
+which a composed run leaves exactly as a default run does.
+
+**Not a re-add of the [v0.14.0] contract fill, and flagged so the grader can rule it either way.**
+That entry relocated "Fill `templates/workflow-contract.md` → `.mochiko/specs/<feature>/slice-contract.md`
+… The filled artifact is the inspectable proof — not this command body", on the ground that the shape
+retired per-run fills whose **values are constant at authoring time**. P19 revives the same filename on
+the opposite ground: **OQ-2 as ruled at A2** makes a departing run's values genuinely vary per run,
+which is what un-does that premise — and only for departing runs, a default run writing one line
+instead. Different trigger, different ground, ruling-created, so it is logged here as an addition
+rather than as a `RETURNED:` entry. implement's conversion made the identical call for
+`implement-contract.md` against its own [v0.17.0] strip, and cleared audit.
+
+### Measured file growth — the light-site half of R21
+
+`lead-owned-process-flexibility` **R21** carries a recorded-open obligation: *a measured cost estimate
+for declaration + trail + composition on one light and one heavy run* (verify N3, narrowed by **A3** to
+the estimate alone). implement measured the **heavy site** and recorded that "the light site stays
+unmeasured, so R21 remains open at half". slice is a light site — the shallowest-reduction command of
+the v0.35.0 wave, 1,230 words against implement's 2,014 — so this section closes that half. Figures are
+measured after the last edit.
+
+**File growth.** `commands/slice.md` **8,715 → 9,904 B** (+1,189; words 1,230 → 1,405, +14.2%).
+Attribution, each construct measured on its own text, UTF-8 bytes:
+
+| construct | bytes | words |
+|---|---|---|
+| ~~`<!-- shape-form: v7 -->` marker~~ — added here, **retired at the wave close** | ±0 | ±0 |
+| run-start weight-card gate line (P7) | +261 | +44 |
+| `**Floor gates:**` — floor set + G2 scoping + P11 absence (P18) | +459 | +70 |
+| `**Run-start declaration:**` (P19) | +560 | +77 |
+| `**Departure trail:**` (P20) | +162 | +26 |
+| Goal block, D6(b) residue strip | −253 | −42 |
+| **net** | **+1,189** | **+175** |
+
+**The light-vs-heavy read.** In absolute terms the two sites cost nearly the same — **+1,189 B here
+against implement's +1,544** — because the v7 constructs are fixed-size obligations, not
+proportional ones: four of the six rows above would measure within a few dozen bytes on any command.
+In *relative* terms they diverge, and that is the finding: **+14.6% on slice against +11.5% on
+implement**, because the same fixed bill lands on a body two-thirds the size. **The v7 conversion is
+regressive — the lighter the command, the larger the share it pays.** slice's P19 is the one
+genuinely larger construct (+560 B against implement's +473), and it is larger for a workflow reason,
+not a drafting one: slice's declaration home moves with the outcome shape (judgment 3), which
+implement's fixed `tasks.md` home never has to say. Per-run read cost: **+1,214 B on every slice run**,
+the command being an obligated read once per run, on top of the shared `command-shape.md` floor every
+team-form run already pays.
+
+**Run-time cost, estimated and marked as one** — no live v7 slice run exists. A **default** run pays
+one declaration line (~30–60 w, ~200–400 B) and nothing else; a departure pays ~15–25 w a line; a
+**departing** run additionally reads `templates/workflow-contract.md` (**5,572 B**) and writes a filled
+`slice-contract.md` of comparable size. Same three components implement measured, same conditional
+structure — the flexibility is bought by the line, and a default run never touches the largest item.
+
+---
+
 ## [v0.37.0] `@`-reference recovery superseded — the platform bug it named is resolved
 - **Disposition:** superseded → user ruling (2026-08-01). The bug-attributed re-enter workaround retires; the detected-feature resolution (already in G1's evidence) gains a confirm.
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/decisions/2026-08-01-at-reference-recovery-superseded.md`; `DECISIONS.md` 2026-08-01).

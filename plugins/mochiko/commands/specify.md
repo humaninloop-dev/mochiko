@@ -18,13 +18,11 @@ only specify's parameters. **First-spawn probe:** the producer — always the fi
 ## Goal
 
 `.mochiko/specs/<feature>/spec.md` exists, conforming to its template with no placeholder tokens,
-with both round reports written; the critic recommends `ready` grounded in the file; you Read
-`spec.md` + `advocate-report.md` and confirm no blocking gap remains; G3 acceptance has cleared;
-and the KM landing ran.
+with the round reports for the grading that actually ran, and no blocking gap left open against it;
+G3 acceptance has cleared; and the KM landing ran.
 
-**Not done:** default **FAIL** · a critic status short of `ready` · a blocking gap open · the
-critic's status taken as the gate without your read · out of rounds · G3 unaccepted. A G3 **amend**
-re-enters the loop and must clear a verdict again.
+**Not done:** default **FAIL** · a blocking gap open · a departure with no trail line · out of
+rounds · G3 unaccepted.
 
 ## Seats & checks
 
@@ -46,18 +44,27 @@ yours.
   region is **surfaced** — offer `/mochiko:setup` first, or proceed ungoverned for this spec —
   never auto-resolved. Then triage: *rich* (Who / Problem / Value clear from the description or the
   governance region's domain context) → the loop; *sparse* → enrichment.
+- **Run-start weight card** — evidence: your stated read of the four rigor factors against this
+  feature description, plus the process you compose from it — the stated default below, or your
+  departures from it · rules: the user · decides: the run's composed process.
 - **G2 clarification** — evidence: a producer clarification it cannot resolve, or a gap you
   classify as preference · rules: the user · decides: the answer fed forward into the next
   dispatch. **A preference gap is ruled here**; a knowledge gap routes to a native `Explore` pass,
   never to the user; a scope gap escalates. An in-loop gate, never the done-condition.
 - **G3 acceptance** — evidence: your clearing verdict on `spec.md` + `advocate-report.md` (story
   and FR counts, outstanding clarifications) · rules: the user · decides: **accept** (done) /
-  **amend** (the requested changes become the gap list; still bounded) / **reject** (abort; the
-  draft stays under `.mochiko/specs/<feature>/`).
+  **amend** (the requested changes become the gap list; still bounded, and clear a verdict again) /
+  **reject** (abort; the draft stays under `.mochiko/specs/<feature>/`).
 - **Escalation** — evidence: a cap trip, a gap set unchanged round-over-round, the kill-switch, or
   a `critical-gaps` verdict · rules: the user, on the last gap list plus the stop reason · decides:
   give-guidance-and-retry / accept-with-noted-gaps / abort — **the run stays FAIL unless the user
   explicitly accepts**.
+- **Floor gates:** the run-start weight card · **G2**'s preference ruling · **G3** · **Escalation**
+  · and **G1** on its two user-ruled limbs — the empty-`$ARGUMENTS` ask and the governance-absence
+  surfacing, never auto-resolved — the user's whatever you compose, never departable. G1's
+  rich/sparse triage is yours, and departable. No lead-penned surface takes a standing cold grade
+  here: P11 is producer-authored, and enrichment lands in the producer's brief rather than in an
+  artifact of yours.
 - **Bounds:** cap **3** rounds, you count them; no-progress exit when the gap set is unchanged
   round-over-round; kill-switch — stop and escalate if `.mochiko/specs/<feature>/SPECIFY_STOP`
   exists, checked before each seat send; out of rounds = escalate, never done.
@@ -89,6 +96,13 @@ yours.
 - **Governance brief:** where the region is present, governance reaches the producer natively at
   spawn — add to its brief the one-line **obligated read** naming the `.claude/rules/mochiko/` files
   relevant to what it authors (`paths`-scoped rules do not fire for from-scratch authoring).
+- **Run-start declaration:** one line on `spec.md`'s `Status` header — where Recovery already notes
+  the resume stage — for a default run; a run that departs from the stated default, or declares
+  non-default bounds, instantiates `templates/workflow-contract.md` as
+  `.mochiko/specs/<feature>/specify-contract.md` beside the reports instead. Counted unit: the
+  **round**, the unit the Bounds already count.
+- **Departure trail:** one line per departure, appended under that same `Status`-header declaration
+  as it is taken and carried into G3's evidence — never your context alone.
 - **KM landing:** `.mochiko/memory/knowledge-management.md` exists → run its landing ritual +
   invariants under fix-on-sight, and mint new domain terms into `GLOSSARY.md`. No copy → skip.
 

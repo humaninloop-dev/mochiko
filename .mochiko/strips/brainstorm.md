@@ -7,6 +7,248 @@ the shape is now **v5** (2026-07-30) — see the v0.35.0 section below.
 
 ---
 
+## [v0.43.0] The `<!-- shape-form: v7 -->` marker retired from the preamble
+- **Disposition:** superseded → deleted. The marker was added by this same version's conversion
+  entry below and retires in the same version, at the wave close.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-01 wave-close
+  ratifications row, *shape-form marker retirement when the last command converts*; the trigger
+  was written into the marker clause itself). **Ground and full record:**
+  `.mochiko/strips/command-shape.md` [v0.43.0 wave close], entry 1 — *The form marker and its
+  Conformance bullet retired* — not restated here.
+- **Content (verbatim):** `<!-- shape-form: v7 -->`
+- **Kept deliberately:** the entire preamble otherwise — goal line, obligated reads, probe seat —
+  and every P18–P20 binding the marker used to gate. The slots bind unconditionally now; nothing
+  the marker declared was lost, because the marker declared only which grading branch to take, and
+  there is one branch.
+- **Consumers assessed:** `validation-command-shape` check 20 was the sole grep consumer and its
+  form branch retired in the same ceremony. All six commands swept together — a marker left in any
+  one of them would be the only file in the library still declaring a form.
+- **Measured:** `commands/brainstorm.md` **10,632 → 10,607 B** (−25). Derived figures in this note's
+  conversion section re-measured accordingly, superseded values kept inline.
+
+# v0.43.0 — the v6→v7 conversion
+
+**Wave context:** shape **v7** landed at v0.40.0 (`lead-owned-process-flexibility`,
+`.mochiko/brainstorms/lead-owned-process-flexibility/record.md`; `DECISIONS.md` 2026-08-01),
+with **D4** ruling **convert-on-touch** and all six commands staying v6-form. `implement`
+converted first in the dedicated v0.43.0 wave and cleared its independent audit; the user then
+**widened that wave to all six** (2026-08-01), so brainstorm converts here against the cleared
+precedent rather than on a touch of its own. BACKLOG: "convert-on-touch residuals". The two
+check-6 v7 ceiling terms were calibrated and landed at the precedent conversion
+(`.mochiko/strips/validation-command-shape.md` [v0.43.0]) — this conversion **fits inside both
+and re-keys neither**.
+
+**Post-conversion measurement, all blocks, body-only in words** (`##` heading lines excluded and
+the `#` title line counted in the preamble, per check 6 as the precedent measured it — *this
+note's own [v0.35.0] preamble figure of 107 was measured on the same title-included convention,
+verified at commit `b32dd82`, where the block reads 107 title-included / 100 title-excluded;
+107 − 5 for the parenthetical the [v0.37.0] entry removed = the 102 v6 baseline below*):
+preamble **102/130** (was 102 — the conversion's +4 was the form marker, retired at the wave close) · Goal **123/150** (was 115) · Seats & checks **187/250**
+(unchanged) · Constraints **714/750** (was 511) · Bindings **230/254** (was 139) · Recovery
+**50/60** (unchanged). Term derivation as check 6 requires: **G = 4 → 5** — the four prior gate
+lines (review sizing · survivor rulings · tie-break · acceptance) plus the run-start weight
+card, all five carrying the complete three-part `evidence:`/`rules:`/`decides:` form — so
+Constraints is 90·(5+2) = 630 **plus the +120 P18 term** = 750. **S = 2** and **R = 0**, both
+unchanged. **A = 2**, unchanged (`record.md` · the conditional `synthesis.md`; the session index
+is a KM-landing fold target, not an output), so Bindings is 90 + 12·2 + 30 (KM) **plus the +110
+P19/P20 term** = 254. Bytes: **8,577 → 10,607** (+2,030 B, +23.7%). Constraints carries the
+U4 sizing flip below; the P18 bullet measures **122 w** and the block's residual headroom is
+**36 w (4.8%)** — under the ceiling, and stated here because it is the tightest block in the
+file and the next editor should know it before adding to it.
+
+> **A-term judgment, following the precedent's recorded one.** P19 names
+> `brainstorm-contract.md` as a **departing** run's per-run carrier. It is **not counted in A** —
+> neither a deliverable nor a round report, and it exists only on a departing run. Counting it
+> (A = 3) would raise the Bindings ceiling to 266 and only loosen the check; the conservative
+> reading is the one measured here (`.mochiko/strips/implement.md` [v0.43.0]).
+
+> **The sizing-gate ownership question — raised by this seat, ruled by the wave lead, EXECUTED
+> here.** `templates/sized-end-stage-review.md` **v2** moved sizing ownership user → lead by
+> recorded supersession (U4), and its interim note says an unconverted command's user-ruled
+> sizing "stands, as written, in those commands **until their conversion touch**". This is that
+> touch. The author's first pass left the **Review sizing** line verbatim at `rules: the user`
+> and escalated rather than deciding — flipping it removes a user gate from the floor set, the
+> unsafe direction, on a `DECISIONS.md`-traceable line (Brainstorm v2.2 row). **The wave lead
+> ruled: execute the flip at this touch** — an already-user-ratified supersession whose named
+> landing site is exactly this conversion, and leaving it un-executed strands the template's
+> interim note pointing at a touch that already happened. The flip is landed and logged as its
+> own supersession entry below; brainstorm's floor set is consequently **four of five**, with
+> the sizing line named in P18 as the one lead-ruled gate. The template's other conversion-touch
+> obligation was discharged in the same pass: P20 names the home for a below-default sizing
+> trail line. **This paragraph is the escalation's provenance — who raised it, who ruled it —
+> kept because the first pass's reasoning is what the ruling answered.**
+
+## [v0.43.0] The Goal's end state loses "the sized review ran" and the verify-pass clause
+
+- **Disposition:** superseded → rewritten in place as artifact state. What the clauses proved
+  **survives as what the record carries** — its Review section holding the sizing ruling, every
+  survivor's disposition, and the verify outcome quoting the evidence the folds landed.
+- **Tier failed:** n/a — supersession by ruling (**D6(b)**, ratified at **A4**, 2026-08-01:
+  *"Goal blocks lose process residue. Done = artifact state + floor compliance + user
+  acceptance"*; graded by `validation-command-shape` check 23, v7-form only).
+- **Content (v6, verbatim — the clause that left):**
+  ```
+  the sized review ran per the user's ruling with **every survivor
+  dispositioned** and the verify
+  pass confirming the folds landed — or the ruling was **none** and the waiver is recorded
+  ```
+- **Protected traces checked at source before removing anything:** the v0.35.0 CS-D8 ledger
+  homes the Brainstorm v2.2 sized-review row ("weight-statement inputs · heavyweight→pair
+  default · none→waiver") at the **Review sizing gate line**, not at the Goal, so this entry
+  supersedes only the Goal's echo of it and the row's home stands. *(That home was itself edited
+  later in this same wave by the lead-ruled U4 flip — its own entry below. All three of the
+  row's parts survive there: the weight-statement inputs, the heavyweight→pair default, and the
+  none→waiver path. What changed is who rules the size, not the keying.)* The waiver's Goal consequence is a `Kept deliberately` survivor
+  of the [v0.35.0] *waiver's sole-validator clause* entry; it is **reworded, not dropped**
+  (below).
+- **Kept deliberately:**
+  - **Every survivor dispositioned** — in substance verbatim, re-read as the Review section's
+    content rather than as the review's own event.
+  - **The waiver's Goal consequence** — "or the ruling was **none** and the waiver is recorded"
+    → "or, in their place, the recorded waiver". The `none`→waiver *trigger* survives on the
+    Review sizing gate line, and the waiver is floor-anchored at P18 as the one zero-cold-read
+    path — after the U4 flip below, ruled by the user at the weight card rather than at the
+    sizing gate, which is what makes the anchoring load-bearing rather than decorative.
+  - **The per-decision standard** (statement + rationale + confidence mark) — untouched, the
+    [v0.35.0] uncertainty-carrier entry's assigned home.
+  - **"the KM close ritual ran" and "the user has accepted the record"** — both are explicit
+    end-state elements in the shape's own Goal spec, so neither reads as residue.
+- **Consumers assessed:** not a shared primitive. Cross-file consumers checked: the grader's
+  check 23 (this is the text class it was written for) and the four sibling conversions running
+  in parallel this wave, each owning its own Goal block — no text is shared between them.
+
+## [v0.43.0] The zero-survivor tally rule re-read from reporting to artifact state
+
+- **Disposition:** superseded → rewritten in place. The same rule, named by what the record
+  carries rather than by what the lead reports.
+- **Tier failed:** n/a — supersession by ruling (**D6(b)**, as above).
+- **Content (v6, verbatim → v7):** `Zero survivors is vacuously clean — the tally is still
+  reported` → `the tally is on the record even at zero survivors, which is vacuously clean`
+- **Protected content:** `DECISIONS.md`-traceable (Brainstorm v2.2 tally rule; the v0.35.0
+  CS-D8 ledger row homes it at "**Goal**, final clause"). The home survives in the converted
+  Goal, so the row is **preserved** and this entry records a rewording, not a supersession of
+  the row.
+- **Kept deliberately:** both halves — the vacuous-clean reading and the still-reported tally.
+- **Consumers assessed:** as above.
+
+## [v0.43.0] Two not-done states re-read from process to artifact state
+
+- **Disposition:** superseded → rewritten in place. The same states, named by the artifact that
+  is missing or wrong rather than by the step that did not run.
+- **Tier failed:** n/a — supersession by ruling (**D6(b)**, as above).
+- **Content (v6, verbatim → v7):**
+  - `an unrun verify pass` → `folds with no verify outcome recorded`
+  - `a reviewer's status taken as the disposition without your read` → `a survivor dispositioned
+    by a reviewer's status alone`
+- **Protected content:** neither is `DECISIONS.md`-traceable to a Goal home. The second is a
+  **v0.35.0 addition** ("a **not-done state** for a reviewer's status taken as the disposition
+  without the lead's read", logged in that wave's *Additions* list), so no protected row is
+  touched; only its lead-read choreography — the residue class check 23 fails — left, and the
+  guard it carried is preserved as artifact state. The first re-anchors on the verify pass,
+  which **hardened to floor** at U1-B/D6(c) and is now stated as such at P18.
+- **Kept deliberately:** the lead's ownership of the merge and the verdict, which the deleted
+  half asserted — homed at `templates/sized-end-stage-review.md` ("**The cross-set merge and the
+  combined tally are the lead's, never a reviewer's**", read this run to confirm) and in
+  `review-brainstorm`'s own description ("the cross-set merge and clearing verdict are
+  lead-owned"); the seat table's "grades the frozen record; never authors it" is untouched. The
+  four remaining not-done states are unedited.
+- **Consumers assessed:** as above.
+
+## [v0.43.0] Review sizing passes user → lead (U4), and `none` passes to the user's waiver
+
+- **Disposition:** superseded → the Review sizing gate line survives **as the stated default's
+  carrier** with its `rules:` clause flipped to the lead, and the gate leaves the P18 floor set.
+- **Tier failed:** n/a — supersession by ruling. Two citations, both required: **U4**
+  (`.mochiko/brainstorms/lead-owned-process-flexibility/record.md` — "review sizing passes to
+  the lead **by recorded supersession** of the brainstorm-v2-2 ruling; the supersession is logged
+  at the landing under the primitive-edit ceremony", ratified with the set at **A4**, 2026-08-01)
+  and **`templates/sized-end-stage-review.md` v2's interim note**, which defers the edit to each
+  command's conversion touch — "that stands, as written, in those commands **until their
+  conversion touch**". This is brainstorm's touch, so the deferral is spent here. Executed on the
+  **wave lead's explicit ruling** after this seat escalated it rather than deciding alone (the
+  provenance paragraph above).
+- **Protected content, leaving by ruling and named as such:** the `rules: the user` clause is
+  `DECISIONS.md`-traceable — the Brainstorm v2.2 row (the sized lens-split review), whose
+  v0.35.0 CS-D8 ledger entry reads "Sized review: weight-statement inputs · heavyweight→pair
+  default · none→waiver → **Review sizing** gate line, all three parts + the default keying P7
+  requires". Only the *owner* of the sizing call leaves; all three parts stay.
+- **Content (v6, verbatim — the clause that left):**
+  ```
+  rules: the user, on your
+  weight statement (decision count · confidence-mark mix · reality-surface load) · decides:
+  pair / single / none, a heavyweight record defaulting to the full pair; **none** records a
+  waiver.
+  ```
+- **Kept deliberately:**
+  - **The default keying** — "a heavyweight record defaulting to the full pair" — untouched, and
+    still what P7 requires a review-sizing line to carry. The lead sizes *against* that stated
+    default; it did not become discretionary by changing hands.
+  - **The weight-statement inputs**, all three (decision count · confidence-mark mix ·
+    reality-surface load) — now the lead's own statement rather than its submission to the user.
+  - **The `none`→waiver path** — kept, and *hardened*: `none` is no longer available to whoever
+    rules the gate. `record.md` is lead-penned, so per the template's own clause ("On a
+    **lead-penned** artifact `none` is not the lead's to take") a zero-cold-read run needs the
+    user's recorded waiver at the weight card. The flip therefore moves the sizing call to the
+    lead **without** moving the waiver: U1-B's protection is strictly the same as before.
+  - **The single-reviewer trade clause** — "its findings arrive undebated, the trade this gate
+    priced" — untouched.
+  - **A user gate, not lost but relocated:** the run-start weight card (P7, added this wave)
+    carries the composed process including the review, so the user still rules the *shape* of
+    the review at run start; what the lead gained is the size under it.
+- **Ripple, executed in the same pass so the file does not self-contradict:** the frontmatter
+  `description:` ("at convergence **the user sizes** the review at a named gate" → the lead
+  sizes, under the user's weight card, with `none` on the user's recorded waiver alone) · **P18**
+  drops review sizing, the floor set becoming **four of five** with the sizing line named as the
+  one lead-ruled gate (check 21(1) requires every marked gate to read `rules: the user`, and the
+  four that remain do) · the below-default sizing trail line binds at **P20**, which the
+  template's interim note names as its home at the conversion touch.
+- **Consumers assessed:** `sized-end-stage-review.md`'s interim note is the shared surface. Its
+  deferral is now **spent for brainstorm** — the note's "unconverted command wins for its own
+  run" tie-break no longer reaches this file. `setup` is the other command binding this branch
+  and is executing the same flip in this same wave, in its own seat; the note itself is
+  untouched here (a shared-template edit is not this seat's to make, and its retirement belongs
+  to the wave close that retires the form marker). The other four commands do not bind P6's
+  sized branch.
+
+*Pure additions this wave, riding the decision row rather than these entries:*
+
+- **The form marker** `<!-- shape-form: v7 -->` in the preamble — check 20's branch key.
+- **The run-start weight-card gate line** (P7) — U1-A's standing user stop, in the three-part
+  countable form, taking **G from 4 to 5**.
+- **`**Floor gates:**`** (P18) — the floor set is **four of five**: the weight card · survivor
+  rulings · tie-break · acceptance, each reading `rules: the user`. **Review sizing is named as
+  the one lead-ruled gate and deliberately excluded**, so the non-floor case is *stated* rather
+  than inferred — the shape of the exclusion the precedent's fix round asked for, and the U4
+  flip above is what created it (at v6 the fact map recorded brainstorm as 4 user-ruled / 0
+  lead-ruled). Survivor rulings and tie-break are scoped as **conditional in firing, not in who
+  rules** — the precedent's lesson that blocking and floor are independent axes. Plus the
+  **always-cold-graded lead-penned surface** (U1-B, check 21(2)): `record.md` is lead-penned, so
+  the sized review and the verify pass over the lead's folds are non-discretionary wherever a
+  review runs, and zero cold reads ship only on the user's recorded waiver at the weight card —
+  never on the lead's sizing, which is precisely why the flip costs the floor nothing.
+- **`**Run-start declaration:**`** + **`**Departure trail:**`** (P19/P20) — the declaration on
+  `record.md`'s `Status` line for a default run (the surface Recovery already keeps, so the
+  counter state and the resume state are one surface, which is why Recovery needed no edit and
+  stays at 50/60), an instantiated `templates/workflow-contract.md` as
+  `.mochiko/brainstorms/<slug>/brainstorm-contract.md` for a departing one; the departure trail
+  under that same declaration, part of what the user accepts. **Counted unit: the lead↔reviewer
+  exchange per survivor** — the one bound the file already tells the lead to count ("max two
+  exchanges per survivor, you count them"); the cold reads, the cross-exam and the verify pass
+  are one-shot, which is why no seat accrues a recycle denominator and the P17 cadence-exempt
+  line stays accurate as written.
+- **A not-done state** `a departure with no trail line` — invariant 4's Goal carrier, per the
+  precedent.
+
+*Judgment considered and deliberately not written:* the review **freeze**
+(`sized-end-stage-review.md`: the artifact is frozen from reviewer spawn until every disposition
+lands, Review section excepted) versus a departure line landing on the `Status` line mid-review.
+No carve-out clause was invented — the file already directs `Status`-line writes during a run
+(Recovery's resume note), so the coexistence is the file's settled practice and not a
+contradiction this conversion introduces. Flagged for the audit rather than resolved by
+command-local doctrine.
+
+---
+
 ## [v0.37.0] `@`-reference drop-bug attribution removed — the bug is resolved
 - **Disposition:** superseded → user ruling (2026-08-01). Only the bug-cause parenthetical retires; the empty-topic ask is fully kept.
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/decisions/2026-08-01-at-reference-recovery-superseded.md`; `DECISIONS.md` 2026-08-01).

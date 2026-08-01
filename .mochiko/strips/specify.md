@@ -4,7 +4,365 @@ Entry formats: `strips/README.md`. Wave context: the specify cluster wave (the f
 the five one-shot-command waves; BACKLOG item 7 of the pattern-codification build). The
 wave also ran the **D2 conversion assessment** and the **S8 home-revision checkpoint**
 (shape v1 → v2 — see the REGISTRY `command-shape.md` row). **Stale as a standing claim:**
-the shape is now **v5** (2026-07-30) — see the v0.35.0 section below.
+the shape is now **v5** (2026-07-30) — see the v0.35.0 section below. **Also stale:** the shape is
+**v7**, and specify converted to v7 form at v0.43.0 — see the section immediately below.
+
+---
+
+## [v0.43.0] The `<!-- shape-form: v7 -->` marker retired from the preamble
+- **Disposition:** superseded → deleted. The marker was added by this same version's conversion
+  entry below and retires in the same version, at the wave close.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-01 wave-close
+  ratifications row, *shape-form marker retirement when the last command converts*; the trigger
+  was written into the marker clause itself). **Ground and full record:**
+  `.mochiko/strips/command-shape.md` [v0.43.0 wave close], entry 1 — *The form marker and its
+  Conformance bullet retired* — not restated here.
+- **Content (verbatim):** `<!-- shape-form: v7 -->`
+- **Kept deliberately:** the entire preamble otherwise — goal line, obligated reads, probe seat —
+  and every P18–P20 binding the marker used to gate. The slots bind unconditionally now; nothing
+  the marker declared was lost, because the marker declared only which grading branch to take, and
+  there is one branch.
+- **Consumers assessed:** `validation-command-shape` check 20 was the sole grep consumer and its
+  form branch retired in the same ceremony. All six commands swept together — a marker left in any
+  one of them would be the only file in the library still declaring a form.
+- **Measured:** `commands/specify.md` **9,109 → 9,084 B** (−25). Derived figures in this note's
+  conversion section re-measured accordingly, superseded values kept inline.
+
+# v0.43.0 — the v6→v7 conversion (R21's **light site**)
+
+**Wave context:** shape **v7** landed at v0.40.0 (`lead-owned-process-flexibility`,
+`.mochiko/brainstorms/lead-owned-process-flexibility/record.md`; `DECISIONS.md` 2026-08-01 — the
+lead-owned-process-flexibility row plus the shape-v7 wave-close ratification row), with **D4**
+ruling **convert-on-touch** and all six commands staying v6-form. The first conversion
+(`implement`, this wave) is **audit-cleared** and is this conversion's precedent
+(`.mochiko/strips/implement.md` [v0.43.0]); the user **widened the wave to all six commands on
+2026-08-01**, so specify converts here rather than at its next touch. BACKLOG:
+"convert-on-touch residuals".
+
+specify is also **R21's light site** — `lead-owned-process-flexibility` **R21** carries a
+recorded-open obligation for *a measured cost estimate for declaration + trail + composition on one
+light and one heavy run* (verify N3, narrowed by **A3** to the estimate alone). The heavy site was
+measured at implement; the light-site figures are the final section of this entry, and
+`.mochiko/strips/command-shape.md`'s R21 status paragraph is updated to match.
+
+**Post-conversion measurement, all blocks, body-only in words** (`## Heading` lines excluded, per
+check 6): preamble **90/130** (published as 94 while the 4-word form marker stood;
+retired at the wave close) · Goal **60/150** · Seats & checks **147/190** (unchanged) ·
+Constraints **560/750** · Bindings **224/266** · Recovery **120/158** (unchanged). Term derivation
+as check 6 requires: **G = 5** — the four prior gate lines (G1 entry · G2 clarification · G3
+acceptance · Escalation) plus the run-start weight card, all five carrying the complete three-part
+`evidence:`/`rules:`/`decides:` form — so Constraints is 90·(5+2) = 630 **plus the +120 P18 term**
+= 750. **S = 2** and **R = 7**, both unchanged, and **no P17 lifecycle line** (see the judgments
+below), so Seats & checks keeps its un-augmented 100 + 45·2 = 190. **A = 3**, unchanged
+(`spec.md` · `analyst-report.md` · `advocate-report.md`), so Bindings is 90 + 12·3 + 30
+(KM/`GLOSSARY.md`) **plus the +110 P19/P20 term** = 266.
+
+> **Preamble counting basis, stated because this figure is the one that drifts.** Check 6 excludes
+> a block's `## Heading`; the preamble has no `##` heading, so the question is what else counts.
+> The figure published here — **90** — is **title-included**, the basis this
+> wave's precedent uses ("The 'preamble 114/130' figure above counts the `# ` title line; strict
+> body-only is 103", `.mochiko/strips/implement.md` [v0.42.0]). Strict body-only is **85**; the
+> `# Specify` title adds 5. *(Published as **94** while the 4-word form marker stood; the marker
+> retired at the wave close, so this is re-measured, not re-based.)*
+>
+> **Reconciled against this file's own prior figure, because a mid-wave note reported it wrong in
+> the other direction.** It was relayed that the [v0.35.0] headline was measured title-*excluded*,
+> making the real baseline ~8 w higher than published. **It was not:** that entry's "preamble
+> 90/130" is exactly 85 + 5, i.e. already title-included, and the pre-conversion file carried no
+> marker to count — verified against the HEAD baseline this run. So the v6→v7 preamble delta is
+> **90 → 94, +4 w, the marker and nothing else**, and no correction is owed to the [v0.35.0]
+> figure. The finding the relay *did* surface is real but different: this note's own first draft
+> published the strict **85** as its headline, off-basis from both the precedent and this file's
+> prior entry. Fixed above. No preamble text was trimmed — the ceiling is not in play at **90/130
+> (30.8% headroom)**, the marker-era 94/130 (27.7%) being superseded by the wave-close sweep, and a
+> trim would have owed its own supersession entry.
+
+> **The A-term judgment, carried from the precedent rather than re-derived.** P19 names
+> `specify-contract.md` as a **departing** run's per-run carrier. It is **not counted in A**: it is
+> neither a deliverable nor a round report, and it exists only on a departing run. Counting it
+> (A = 4) would raise the Bindings ceiling to 278 and so only loosen the check — the conservative
+> reading is the one measured here, matching implement's recorded call.
+
+**Neither v7 ceiling term is re-keyed, and the light site is the evidence the calibration asked
+for.** The grader's calibration clause states its basis as one v7-form body — the library's
+heaviest command — and predicts that "a typical P18 should measure well under" implement's 100 w,
+implement's carrying the ruled verification-depth floor no other command has. Measured here: P18 is
+**74 w** against the **+120** term, and the P19 + P20 pair is **79 w** (52 + 27) against the
+**+110** term. Both fit with room, which is explicitly *not* a re-key case — check **6**'s
+calibration clause, which owns that sentence: "Re-key either term only if a later conversion lands
+a materially larger binding; a conversion that merely fits is not a re-key case." (Check 20 states
+the same rule in its own words; the quoted sentence is check 6's.) The prediction holds and the
+terms stand unchanged.
+
+## [v0.43.0] The Goal's end state loses the critic's recommendation and the lead's read *(clause corrected at the audit's fix round 1)*
+- **Disposition:** superseded → rewritten in place as artifact state, **conditionally phrased**.
+  Both clauses collapse into the one condition they were evidence for: `spec.md` carries **no
+  blocking gap left open against it**, alongside **the round reports for the grading that actually
+  ran**.
+
+  > **Corrected at the audit's fix round 1 — the first rewrite failed check 23, and the reasoning
+  > that produced it is superseded here rather than quietly dropped.** The delivered clause read
+  > *"with both round reports written and no blocking gap left open against it in
+  > `advocate-report.md`"*, and this entry defended `with both round reports written` as artifact
+  > state: *"It is artifact state (the two reports exist), not a round count, and it is the
+  > v0.35.0 wave's own logged addition to P3."* **That defense is wrong, and the ground is worth
+  > stating because it generalizes.** Artifact state is only a safe done-condition while the
+  > artifact set is **fixed**; v7 makes the set **composed**. Under D1/U2 the critic pass is a
+  > departable default, and specify's P18 does not floor it — so a run that composes the critique
+  > out, takes its trail line, and is ruled at the weight card produces no `advocate-report.md` at
+  > all. The old clause made that legitimate run **unable to reach done**, which is exactly the
+  > obligation-reimposition check 23 exists to catch: naming a *fixed* artifact set is the same
+  > defect as naming a round count, wearing different clothes. The repair is the wave's common
+  > phrasing — the end state names **the grading that actually ran**, which is also floor
+  > invariant 4's own language, and drops the `in \`advocate-report.md\`` anchor that presupposed
+  > the report exists. Cost: **+3 w** (Goal 57 → 60, ceiling 150).
+- **Tier failed:** n/a — supersession by ruling (**D6(b)**, ratified at **A4**, 2026-08-01: *"Goal
+  blocks lose process residue. Done = artifact state + floor compliance + user acceptance"*; graded
+  by `validation-command-shape` check 23, v7-form only). "The critic recommends `ready`" is check
+  23's named `the validator returned PASS` class verbatim; "you Read … and confirm" is the lead's
+  own choreography.
+- **Content (v6, verbatim — the two clauses that left):**
+  ```
+  the critic recommends `ready` grounded in the file; you Read
+  `spec.md` + `advocate-report.md` and confirm no blocking gap remains;
+  ```
+- **Kept deliberately:**
+  - **The lead's read of both artifacts, verbatim at its ledgered home** — G3's evidence clause,
+    untouched this wave: "your clearing verdict on `spec.md` + `advocate-report.md` (story and FR
+    counts, outstanding clarifications)". The read did not become optional; it stopped being a
+    *done-condition element*.
+  - **`grounded in the file, never the producer's report`** — untouched in the critic's seat row,
+    which is where the v0.35.0 wave put it: "grades `spec.md` **from the file, never the producer's
+    report**".
+  - **The three-way status itself** (`ready` / `needs-revision` / `critical-gaps`) — untouched in
+    the critic's seat row, in the Escalation gate's evidence (`a critical-gaps verdict`), and in
+    the two Recovery rows that key on it — as *workspace evidence for resuming*, never as a
+    done-condition.
+  - **The round reports as an end-state element** — kept, but **re-phrased conditionally at the
+    audit's fix round 1**: `with both round reports written` → `with the round reports for the
+    grading that actually ran`. The v0.35.0 wave's logged addition to P3 (the artifact set naming
+    the reports, not only `spec.md`) survives; what left is its unconditional *both*, which
+    presupposed a critique that v7 makes departable. See the correction note above.
+  - **"G3 acceptance has cleared" and "the KM landing ran"** — both are explicit end-state elements
+    in the shape's own Goal spec (user acceptance; the KM landing under fix-on-sight), so neither
+    reads as residue.
+- **Consumers assessed:** not a shared primitive. Two cross-file consumers checked: the grader's
+  check 23 (this is the text class it was written for — `.mochiko/strips/validation-command-shape.md`
+  [v0.40.0]), and the wave's other commands, whose Goal blocks this entry does not touch — the
+  residue clause is per-file, each command's own seat de-residues its own Goal under its own strip
+  entry, and a command that has not yet converted stays v6-form and fully conformant meanwhile
+  (shape note [v0.40.0], *The Goal block's process residue left the end state*, Consumers assessed).
+  Written this way deliberately: a count of how many commands were still v6-form as I wrote would be
+  false by wave close, this wave converting all six in parallel.
+
+## [v0.43.0] The not-done state ``a critic status short of `ready` ``
+- **Disposition:** superseded → deleted from the Goal. Nothing replaces it: the artifact-state
+  condition it stood in for is the sibling state `a blocking gap open`, which is untouched.
+- **Tier failed:** n/a — supersession by ruling (**D6(b)**, as above). It made the validator's
+  returned status a done-condition element — the exact inversion check 23 fails, since under
+  D1-as-amended whether the default critique runs at all is the lead's to compose.
+- **Content (v6, verbatim):** ``a critic status short of `ready` `` — the trailing space inside the
+  double-backtick fence is a markdown-fencing artifact, not part of the superseded text.
+- **Kept deliberately:** the status triple and its routing, at all four homes named in the entry
+  above; and the Escalation gate's `critical-gaps` trigger, which is the one place a critic status
+  still *forces* something, and forces a **user** ruling rather than a done-condition.
+- **Consumers assessed:** as above — not a shared primitive.
+
+## [v0.43.0] The not-done state `the critic's status taken as the gate without your read`
+- **Disposition:** superseded → deleted from the Goal. The rule it carried is unchanged at its two
+  standing homes, neither touched this wave.
+- **Tier failed:** n/a — supersession by ruling (**D6(b)**, as above). It is a lead-choreography
+  clause ("without your read") in a done-condition; and it can never be rescued as a floor gate,
+  because the lead's read is not a gate any line rules — check 21's floor-gate test keys on
+  `rules: the user`, and no gate in this file rules the lead's own read.
+- **Protected content, leaving by ruling and named as such:** this line is the recorded survivor of
+  the [v0.35.0] entry *Three check-8 marker restatements removed from the Contract and Recovery*,
+  which superseded "the critic's status is **input, never the gate**" and logged its replacement
+  explicitly — *"The rule survives, the phrasing does not: the Goal's not-done states carry 'the
+  critic's status taken as the gate without your read'."* Removing it is therefore a change to a
+  recorded home, superseded by a cited ruling rather than dropped silently.
+- **Kept deliberately — the rule, at both homes, re-read this run to confirm they hold it:**
+  - the **validation-model line**, untouched: "The critic's output is **lead-adjudicated input**
+    (the `review-*` family boundary) and every verdict is yours."
+  - **`command-shape.md` Layer 2 *Clearing*** — the doctrine home the v0.35.0 entry relocated the
+    phrasing to, and an obligated read of this command ("wherever judgment exists, the verifying
+    seat's status is **input, never the gate**").
+  - and **G3's evidence clause**, which names the lead's clearing verdict over both artifacts.
+- **Consumers assessed:** as above — not a shared primitive.
+
+## [v0.43.0] The Goal's amend sentence relocated into G3's decides-clause
+- **Disposition:** superseded → **relocated** into the gate that already ruled it. G3's `amend`
+  branch now reads "(the requested changes become the gap list; still bounded, **and clear a
+  verdict again**)".
+- **Tier failed:** n/a — supersession by ruling (**D6(b)**, as above) — a done-condition sentence
+  describing loop re-entry and a fresh verdict is process residue by construction. It is also the
+  precedent's shape: implement carries exactly this content in **G5**'s decides-clause, never in
+  its Goal ("amend (the changes become the failure list; re-enter the relevant cycle or fix pass,
+  still bounded, and clear a verdict again)").
+- **Content (v6, verbatim):** `A G3 **amend** re-enters the loop and must clear a verdict again.`
+- **Kept deliberately:** **both halves of the responsibility, in one place.** Loop re-entry under
+  the cap was already in G3's own text ("the requested changes become the gap list; still
+  bounded"); the fresh-verdict half is what this relocation adds there (+5 w), so no clause of the
+  superseded sentence is lost. Recorded as a relocation rather than a pure addition precisely
+  because those five words are a survivor, not new content.
+- **Consumers assessed:** as above — not a shared primitive.
+
+*Pure additions this wave, riding the decision row rather than these entries:*
+
+- **The form marker** `<!-- shape-form: v7 -->` in the preamble — check 20's branch key.
+- **The run-start weight-card gate line** (P7) — U1-A's standing user stop, in the three-part
+  countable form, taking **G from 4 to 5**.
+- **`**Floor gates:**`** (P18) — the floor set (the run-start weight card · **G2**'s preference
+  ruling · **G3** · **Escalation** · **G1** on its two user-ruled limbs) with the departable
+  remainder named, so the absence is stated rather than inferred; and the lead-penned-surface
+  element stated as an **absence**, specify's P11 being producer-authored.
+- **`**Run-start declaration:**`** (P19) and **`**Departure trail:**`** (P20) in Bindings — the
+  declaration on `spec.md`'s `Status` header for a default run, an instantiated
+  `specify-contract.md` for a departing one, and the **round** named as the counted unit (check 22),
+  the same unit the Bounds already count.
+- **One new not-done state** — `a departure with no trail line`, the honest-trail invariant made
+  visible in the Goal as floor compliance.
+
+**Four judgments made here rather than deferred, flagged for the grader.**
+
+1. **The floor-gate set is all five gates — four whole, G1 on two scoped limbs — and the ground is
+   *who rules*.** specify has **no `rules: you` gate at all**: unlike implement, it runs no
+   deterministic verification and declares no devolved branch, so every one of its five gate lines
+   reads `rules: the user` and the who-rules test returns floor on each. Marking fewer would
+   reproduce the contradiction the precedent's audit caught at fix round 1 — a `rules: the user`
+   gate sitting in a not-floor list whose own sentence defines floor as never-departable.
+   - **G2 is marked floor on its narrow limb only** — the *preference ruling* is the user's under
+     floor invariant 1; *when* it is presented stays the lead's under **D3**'s consolidation
+     authority, which is home doctrine and is deliberately not restated in the command. This is
+     the precedent's treatment of implement's G3, which is the same gate.
+   - **Why G1 is floor here although implement's G1 was not.** implement's G1 cleared on a
+     structural ground: the package gate is floor and its evidence is the resolved feature's
+     package, so a lead composing out G1's confirm still puts the resolution in front of the user
+     on the very next gate. **specify has no such downstream carrier** — it is the pipeline's entry
+     command, gating no upstream package. Its two user-ruled limbs are the empty-`$ARGUMENTS` ask
+     (protected at [v0.37.0]: "specify is an entry command with no feature to fall back to, so the
+     ask is legitimate on its own merit") and the governance-absence surfacing, whose own text
+     reads **never auto-resolved** — the same clause, on the same gate content, that the implement
+     audit *moved into* the floor set. Excluding it would repeat a corrected error.
+   - **What is scoped out, and why it is not a hedge:** G1's *rich/sparse triage*. The Enrichment
+     invariant already declares enrich-or-not to be the lead's loop-entry triage, and enrichment
+     itself is an interactive user-facing session — so composing the triage differently removes no
+     user ruling, which is exactly the departability test.
+2. **The declaration and the trail share `spec.md`'s `Status` header.** That header is already the
+   lead's own line on a producer-authored file — bound there by the v0.35.0 Recovery block and
+   audit-cleared since — so a resumed lead finds declaration, departures and resume state in one
+   place, and P19/P15 name one surface rather than two. **`advocate-report.md` was rejected as a
+   home:** it is critic-owned and rewritten every round, the same overwrite hazard that made the
+   precedent reject `cycle-report.md`.
+3. **The counted unit is the `round`, and no P17 lifecycle line is owed.** specify's Bounds count
+   exactly one thing ("cap **3** rounds, you count them"), so the lifecycle denominator is
+   unambiguous from the file — the condition that forced implement's P17 override (three different
+   counters) does not hold here. Under check 12's carve-out an unbound P17 states nothing at all,
+   so nothing was written, and Seats & checks keeps its un-augmented 190 ceiling.
+4. **`specify-contract.md` is not counted in A** — the precedent's recorded judgment applied, not
+   re-derived; see the note above the entries.
+
+**Recovery left untouched, deliberately.** The shape's v7 counter-state clause is home doctrine;
+specify's pause line — "Note the resume stage on `spec.md`'s `Status` header line" — does not
+contradict it and names the same surface P19 binds, so no edit was owed. Same call as the
+precedent.
+
+### R21 light-site measurement — the light half of the estimate closes
+
+**R21's obligation** (`lead-owned-process-flexibility` OQ-1, verify N3, narrowed by **A3** to the
+estimate alone) named *one light and one heavy run*. implement took the heavy site at this same
+wave; specify is the light site — a twice-stripped entry command (v0.13.0 and v0.31.0) with the
+library's smallest protected surface. Figures are `wc`-measured after the last edit. **The one
+offsetting saving is real and is the largest of the conversion:** the D6(b) Goal strip returned
+191 B against 1,434 B of additions.
+
+**File growth.** `commands/specify.md` **7,866 → 9,084 B** (+1,218; words 1,095 → 1,269, +15.9%).
+Attribution, each construct measured on its own text — the columns reconcile to the file delta
+exactly:
+
+| construct | bytes | words |
+|---|---|---|
+| ~~`<!-- shape-form: v7 -->` marker~~ — added here, **retired at the wave close** | ±0 | ±0 |
+| run-start weight-card gate line (P7) | +276 | +45 |
+| `**Floor gates:**` — floor set + P11 absence (P18) | +514 | +74 |
+| `**Run-start declaration:**` (P19) | +414 | +52 |
+| `**Departure trail:**` (P20) | +178 | +27 |
+| G3 decides-clause, the relocated verdict half | +27 | +5 |
+| Goal block, D6(b) residue strip | −191 | −29 |
+| **net** | **+1,218** | **+174** |
+
+**Light vs heavy — the comparison R21 wanted both sites for.** Set against implement's
+14,502 → 16,021 B (+1,519):
+
+| | heavy (`implement`) | light (`specify`) |
+|---|---|---|
+| conversion delta | +1,544 B | **+1,243 B** |
+| …as % of the command | 10.6% | **15.8%** |
+| P18 binding | 100 w | **74 w** |
+| P19 + P20 binding | 88 w | **79 w** |
+| Goal strip (offset) | −67 B | **−191 B** |
+| departing run's contract, vs the command's own pre-conversion size | 38% | **71%** |
+
+**A third conversion corroborates the trend, and the series is stated on one declared basis.**
+`slice` also converted this wave. All three rows are **byte deltas against each command's HEAD
+baseline** — the basis this whole section uses, since the per-construct attribution above is
+byte-attributed. The series is monotone in the command's own size, which is the finding below
+stated as data:
+
+| command | pre-conversion size | conversion delta | as % of the command |
+|---|---|---|---|
+| `implement` (heavy site) | 14,502 B | +1,544 B | 10.6% |
+| `slice` (corroborating) | 8,715 B | +1,214 B | 13.9% |
+| `specify` (light site) | **7,866 B** | +1,243 B | **15.8%** |
+
+> **Basis note, so slice's two published percentages reconcile at a glance.** slice's own note
+> reports that conversion as **+14.6%**, which is its **word** delta (1,230 → 1,409 w;
+> 179/1,230 = 14.55%); the **13.9%** above is the same conversion's **byte** delta
+> (1,214/8,715). Both are correct on their own basis — this note carries the identical duality for
+> specify (**+16.3%** words, **+15.8%** bytes) — and the trend is the same either way. Recorded
+> because the two numbers otherwise read as a disagreement: they are one measurement in two units,
+> not two measurements.
+
+**The finding, and it is the one a single site could not have produced: the v7 constructs are
+near-constant in size, so the lighter the command, the heavier the conversion in relative terms.**
+Four of the six constructs land within ~20% of their heavy-site counterparts — the marker is
+byte-identical, and P20 is 5 B *larger* here — because each states a fixed thing (a home, a counted
+unit, a floor set) whose length is set by the shape, not by the command. The absolute bill is
+smaller at the light site and the percentage bill is half again larger.
+
+**Per-run read cost.** specify.md is an obligated read once per run, so this is **+1,243 B on every
+specify run** — 15.8% on top of the command itself, against 10.6% at the heavy site. It is not the
+whole delta a run pays this wave: the shape-home clause adds **+450 B to `command-shape.md`**
+(31,816 → 32,266), and *that* one is paid by **every team-form run of any command**, converted or
+not, the shape home being the shared always-read floor — it is recorded once, at
+`.mochiko/strips/command-shape.md` [v0.43.0], and is not double-counted as specify's. Against v7's
+own doctrine cost (+11,399 B/run, measured at v0.40.0), conversion remains the small half of the
+bill at both sites.
+
+**Run-time cost of declaration + trail — an estimate, and marked as one.** Three components, none
+yet observed on a live run; the per-component figures mirror the heavy site's, because the
+components are the shape's, not the command's:
+
+- **The declaration, every run.** One line on `spec.md`'s `Status` header stating the four-factor
+  read and the composed process. At the density this repo's own cards use, ~30–60 words
+  (~200–400 B), produced once and re-read on every resume. It is the only one of the three a
+  **default** run pays.
+- **The trail, per departure.** ~15–25 words (~100–170 B) a line. A run that takes the stated
+  default pays **zero**, and the cost scales with departures — the intended shape: the lead buys
+  flexibility by the line.
+- **The contract, departing runs only.** `templates/workflow-contract.md` measures **5,572 B**
+  today, so a departing specify run reads 5.6 KB and writes a filled copy of comparable size to
+  `.mochiko/specs/<feature>/specify-contract.md`. The largest run-time item by far, and
+  **conditional by construction** — no default run touches it. **This is where the light site
+  diverges most sharply:** that template is 71% of specify's own pre-conversion size (38% at
+  implement), so on a light command the departure carrier, not the conversion, is the dominant
+  cost — the first place to look if the estimate is ever revisited against live-run evidence.
+
+**The honest read at this site.** A default specify run pays the +1,243 B read plus one declaration
+line — **~1.5 KB**, against the heavy site's ~1.8 KB. A departing run adds ~5.6 KB of template plus
+its fill, plus a line per departure. **Both R21 sites are now measured**, so the estimate obligation
+is discharged pending only a live-run confirmation; `.mochiko/strips/command-shape.md`'s R21 status
+paragraph is updated to say so.
 
 ---
 

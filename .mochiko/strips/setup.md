@@ -4,6 +4,379 @@ Entry formats: `strips/README.md`. Wave context: the D4 codification pre-shrink 
 shared team-form prose relocated into `templates/command-shape.md` (design:
 `.mochiko/brainstorms/pattern-codification-and-minimalism/record.md`, D3/D4/D9).
 **Stale as a standing claim:** the shape is now **v5** — see the v0.35.0 section below.
+**Also stale:** the shape is **v7** as of the v0.43.0 conversion below, and setup is **v7-form** —
+it carries the `<!-- shape-form: v7 -->` marker and binds P18–P20.
+
+---
+
+## [v0.43.0] The `<!-- shape-form: v7 -->` marker retired from the preamble
+- **Disposition:** superseded → deleted. The marker was added by this same version's conversion
+  entry below and retires in the same version, at the wave close.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-01 wave-close
+  ratifications row, *shape-form marker retirement when the last command converts*; the trigger
+  was written into the marker clause itself). **Ground and full record:**
+  `.mochiko/strips/command-shape.md` [v0.43.0 wave close], entry 1 — *The form marker and its
+  Conformance bullet retired* — not restated here.
+- **Content (verbatim):** `<!-- shape-form: v7 -->`
+- **Kept deliberately:** the entire preamble otherwise — goal line, obligated reads, probe seat —
+  and every P18–P20 binding the marker used to gate. The slots bind unconditionally now; nothing
+  the marker declared was lost, because the marker declared only which grading branch to take, and
+  there is one branch.
+- **Consumers assessed:** `validation-command-shape` check 20 was the sole grep consumer and its
+  form branch retired in the same ceremony. All six commands swept together — a marker left in any
+  one of them would be the only file in the library still declaring a form.
+- **Measured:** `commands/setup.md` **16,919 → 16,894 B** (−25). Derived figures in this note's
+  conversion section re-measured accordingly, superseded values kept inline.
+
+# v0.43.0 — the v6→v7 conversion
+
+**Wave context:** shape **v7** landed at v0.40.0 (`lead-owned-process-flexibility`,
+`.mochiko/brainstorms/lead-owned-process-flexibility/record.md`; `DECISIONS.md` 2026-08-01 — the
+lead-owned-process-flexibility row plus the shape-v7 wave-close ratification row), with **D4** ruling
+**convert-on-touch** and all six commands staying v6-form. The first conversion (`implement`,
+v0.43.0) is audit-cleared and is this conversion's precedent; the user **widened the wave to all six
+commands on 2026-08-01**, so setup converts here rather than at a later touch. BACKLOG:
+"convert-on-touch residuals".
+
+**No new check-6 term is claimed.** The first conversion already landed both v7 ceiling terms
+(`+120` on Constraints where P18 binds, `+110` on Bindings where the P19/P20 pair binds —
+`.mochiko/strips/validation-command-shape.md` [v0.43.0]). setup fits inside them: its P18 binding
+measures **72 w** against implement's 100 w, exactly as the calibration note predicted ("implement's
+100-w P18 additionally carries a clause no other command will — the ruled verification-depth floor —
+so a typical P18 should measure well under it"). **This is a conversion that merely fits, which the
+skill's own text says is not a re-key case.**
+
+**The v0.36.0 Constraints advisory is discharged, not overridden.** That entry recorded setup at
+1,076/1,080 w — "the tightest margin on this surface" — and ruled that "any future addition to
+setup's Constraints needs a strip first". No strip was needed here because **the ceiling moved with
+the additions, not around them**: the weight-card gate line is itself a gate, taking G from 10 to 11
+and raising 90·(G+2) by 90 w, and the P18 binding brings its own `+120` term. 1,080 → 1,290 against
+a block that grew 1,076 → 1,205, leaving **85 w (6.6%)** — the healthiest headroom this block has
+had since v0.35.0, and inside the 6–9% band the P17/P19 term calibrations produced. The advisory's
+substance still stands for anything that is *not* a gate line or a P18 binding.
+
+**Post-conversion measurement, all blocks, body-only in words** (`## Heading` lines excluded, per
+check 6): preamble **123/130** (published as 127 while the 4-word form marker stood;
+retired at the wave close) · Goal **130/150** · Seats & checks **227/235** (unchanged) ·
+Constraints **1205/1290** · Bindings **283/326** · Recovery **208/242** (unchanged). Term derivation
+as check 6 requires: **G = 11** — the ten prior gate lines plus the run-start weight card, all eleven
+carrying the complete three-part `evidence:`/`rules:`/`decides:` form — so Constraints is
+90·(11+2) = 1170 **plus the +120 P18 term** = 1290. **S = 3** and **R = 13**, both unchanged.
+**A = 8**, unchanged from the v0.35.0 reading (the governance region · the `paths`-scoped rules
+files · the skill pointers · the ledger · the trace summary · the synthesis · the brownfield
+analysis · the scaffolded KM copy), so Bindings is 90 + 12·8 + 30 (KM) **plus the +110 P19/P20 term**
+= 326.
+
+> **Two measurement judgments, recorded so the next auditor does not re-derive them.**
+>
+> 1. **The A term is unchanged at 8, and the conservative alternative also passes.** Check 6 bars
+>    counting a **KM-landing fold target** — a doc the command folds *into* rather than produces.
+>    setup does not fold into the project-pinned copy; it **scaffolds** it (G5, the KM-landing
+>    binding), so it is a genuine own-output and the v0.35.0/v0.36.0 count of 8 stands. Recorded
+>    because the reading is arguable: at **A = 7** the ceiling is 314 and Bindings' measured 283
+>    still passes (90.1%), so nothing in this conversion turns on it.
+> 2. **`setup-contract.md` is not counted in A.** P19 names it as a **departing** run's per-run
+>    carrier; it is neither a deliverable nor a round report and exists only on a departing run.
+>    Same disposition and same ground as the precedent's `implement-contract.md` judgment: counting
+>    it would only loosen the check, so the conservative reading is the one measured.
+>
+> **One tight margin, and its baseline verified against git rather than carried.** The preamble
+> measures **123/130 title-included**, **113 title-excluded** *(published as 127/117 while the
+> 4-word form marker stood; re-measured at the wave-close sweep that retired it)*. Check 6's
+> exclusion is written for a
+> block's `## Heading` and the preamble has no `##` heading, so the letter of the rule leaves the
+> reading unsettled — the same ambiguity `.mochiko/strips/implement.md` [v0.42.0] recorded rather
+> than ruled. **Both readings clear 130.**
+>
+> A mid-wave warning held that this note's published v0.35.0 figure was measured title-*excluded*,
+> which would put the real baseline ~8 w higher than published. **Checked and not true of setup:**
+> `git show` on the goal-shape rewrite commits (`b32dd82`, `17465b7`, 2026-07-31) measures the
+> preamble at **123 title-included / 113 title-excluded**, and the published figure is **123** — the
+> title-*included* count, matching this wave's precedent. No hidden 8 w exists here and no trim was
+> owed. Recorded so the next auditor does not re-derive it. (Every figure in this note was measured
+> from the file this run, never carried from a prior wave.)
+>
+> At **7 w** on the title-included reading this is nonetheless the file's tightest block — but only
+> just, and the margin is worth stating honestly: Seats & checks sits at 8 w (227/235), so the
+> preamble leads by 1 w, not by the 5 the marker-era **3 w** figure implied. Any future preamble
+> addition still needs a strip first, and so does a Seats addition.
+
+## [v0.43.0] The Goal's end state loses its sized-review and validator-PASS clauses
+
+- **Disposition:** superseded → rewritten in place as artifact state. The clearances the end state
+  named **survive as the artifact states that carry them** — the synthesis's ratified stamp and its
+  closed Review section (the review's own durable record, per
+  `templates/governance-intent-template.md`), and the trace closing across the surface set.
+- **Tier failed:** n/a — supersession by ruling (**D6(b)**, ratified at **A4**, 2026-08-01: *"Goal
+  blocks lose process residue. Done = artifact state + floor compliance + user acceptance"*; graded
+  by `validation-command-shape` check 23, v7-form only).
+- **Protected content, leaving by ruling and named as such:** the second clause is
+  `DECISIONS.md`-traceable — the [v0.35.0] CS-D8 ledger row for **D4** (*"the setup loop survives
+  with a distributed target; **trace is the spine**"*) names the Goal's "PASS graded from the files"
+  as one of that row's three homes. It is superseded by a cited ruling, not dropped, and **the row
+  keeps all three homes**: the other two (Bindings' trace summary, the synthesis-is-the-contract
+  invariant) are untouched, and the Goal home survives re-read as the trace's *closure* rather than
+  as the seat's verdict — which is what "trace is the spine" always meant here. The first clause is
+  traceable to the adversarial **D7.8** propagation row, whose four homes (done-condition, review
+  caps, human gates, recovery rows) all survive: the review caps, the sizing and survivor-ruling
+  gate lines, and the three Review-section Recovery rows are untouched by this wave, and the
+  done-condition home survives as the Review-section clause below.
+- **Content (v6, verbatim — the clauses that left):**
+  ```
+  the
+  sized intent review ran (or its waiver is recorded) with every survivor dispositioned · G3 cleared,
+  in every mode · `validator` returned PASS graded from the files
+  ```
+- **Replaced by (v7, verbatim):**
+  ```
+  the
+  synthesis is ratified at G3, in every mode, its Review section closed — every survivor
+  dispositioned, or the waiver recorded · the trace closes across the set
+  ```
+- **Kept deliberately:**
+  - **The waiver escape**, in substance verbatim — "(or its waiver is recorded)" → "or the waiver
+    recorded". Under **U1-B** this clause is no longer merely an escape but a *floor-compliance*
+    element: `governance-intent.md` is lead-penned, so it ships uncold-read only on a recorded user
+    waiver. The Goal now carries that invariant rather than a description of the review running.
+  - **"G3 cleared, in every mode"** — the all-modes scope is kept word-for-word ("ratified at G3, in
+    every mode"); only its position moved, into the synthesis clause it qualifies.
+  - **Every survivor dispositioned** — unmoved in substance, re-sited on the artifact section that
+    holds the dispositions.
+  - **"never the producer's report"** — the anti-rubber-stamp half of the retired clause is **not in
+    the Goal's gift to drop**: it survives verbatim in the validator seat row ("grades the surface
+    set **from the files** — set + synthesis + trace summary, never the producer's report"), Read
+    this run to confirm.
+  - **The default pipeline itself** — both review branches stay stated in Constraints and in the
+    validation-model line, exactly as written. Nothing about *what runs by default* changed; only
+    the done-condition stopped naming it.
+  - **The G4, G2, G5 and semver/stamp clauses** — untouched, verbatim.
+- **Consumers assessed:** not a shared primitive. Four cross-file consumers checked: the grader's
+  check 23 (this is the text it was written for) · `templates/governance-intent-template.md`, which
+  owns the Review section and already declares it "this file's durable record of the sized pre-G3
+  review (or its waiver)" — Read this run, no edit owed · `mochiko:validation-constitution`, whose
+  Step 4 "Trace Closure Cross-Check (deterministic, both ways, over the manifest)" is the home the
+  new clause references rather than restates — Read this run · and the other five commands, whose
+  Goal blocks are each rewritten under their own note in this same wave, bound by nothing here.
+
+## [v0.43.0] Review sizing flips user → lead (U4, executed at the conversion touch)
+
+- **Disposition:** superseded → rewritten in place. The gate line survives whole as the stated
+  default's carrier; only *who rules it* changed. The sizing decision is presented on the
+  **run-start weight card**, which is user-ruled, so the user still sees every sizing call — they
+  no longer own it.
+- **Tier failed:** n/a — supersession by ruling (**U4**, 2026-08-01: *"review sizing passes to the
+  lead by recorded supersession of the brainstorm-v2-2 ruling"*, ratified with the set at **A4**;
+  executed here per `templates/sized-end-stage-review.md` **v2**'s interim note, Read this run:
+  *"A command not yet converted to shape v7 still says the user rules on sizing; that stands, as
+  written, in those commands **until their conversion touch**"* — setup's touch is this wave).
+- **Protected content, leaving by ruling and named as such:** two `DECISIONS.md`-traceable lines
+  from the [v0.35.0] CS-D8 ledger. (i) The **user-territory sizing ruling** — the ledger row
+  *"Weight-statement inputs + elevation purpose … the elevation purpose **kept** on the sizing gate
+  line"*. The elevation purpose is **kept, not dropped**: only its possessive left, so the clause
+  now reads agnostic and the `rules:` clause settles who elevates. (ii) The **event-scaled keying**
+  row is untouched entirely — it describes the *default*, not its owner.
+- **Content (v6, verbatim — two sites):**
+  ```
+  purposed as input to the user's *elevation* of the default, never as the default ·
+  rules: the user · decides: the reviewer count.
+  ```
+  ```
+  (pair / single / recorded waiver — the user rules the sizing)
+  ```
+- **Replaced by (v7, verbatim):**
+  ```
+  purposed as input to the *elevation* of the default, never as the default ·
+  rules: you, presented on the weight card · decides: the reviewer count.
+  ```
+  ```
+  (pair / single / recorded waiver — the lead sizes it on the user's weight card)
+  ```
+- **Kept deliberately:**
+  - **The default sizing keying, verbatim** — the pair default, the event scaling on amend
+    (governance event → full pair; lighter substantive delta → single; wording-level →
+    none-with-recorded-waiver). It survives as the **stated default**; what changed is that
+    departing from it is now the lead's call, one P20 trail line.
+  - **"The gate always opens: every amend records a ruling or a waiver, keeping the trail
+    audit-complete"** — verbatim, and still literally true: a lead's sizing ruling is a ruling. The
+    audit-completeness this clause buys is unchanged.
+  - **"none → straight to G3, waiver recorded"** — verbatim. It is *narrowed*, not rewritten:
+    **U1-B** makes `none` on setup's lead-penned synthesis not the lead's to take, and P18 carries
+    that constraint rather than duplicating it into this line.
+  - **The whole evidence clause's substance** — the weight statement, its template sourcing, and
+    the never-as-the-default warning.
+- **The frontmatter site was edited rather than held.** The v0.35.0 note holds `description:` under
+  the trigger-fidelity rule, and that rule is about *not re-shrinking* it — it does not license
+  shipping a sentence the body now contradicts. "the user rules the sizing" would have been simply
+  false after the flip, so it is corrected in place at equal length, its trigger content (pair /
+  single / recorded waiver) untouched.
+- **Consumers assessed:** (i) `templates/sized-end-stage-review.md` v2 — already flipped; this
+  conversion is what its interim note defers to, and after this wave its "unconverted command wins
+  for its own run" carve-out no longer reaches setup. Not edited (template, out of scope). (ii)
+  **`brainstorm.md`** — the other sized-review binder; its flip is being executed in this same wave
+  under its own note. (iii) **`templates/governance-intent-template.md`:157** still prints
+  `**user ruled:** [pair | single | none]` in the Review-section scaffold — a **live residue of
+  this flip, reported not edited** (template, out of scope): the field label now names the wrong
+  ruler for a v7-form setup run. Flagged for the wave lead. (iv) Recovery's row keyed on
+  *"Review section empty (no sizing ruling)"* — unaffected, a ruling still gets recorded.
+
+## [v0.43.0] The not-done state `a validator FAIL, or a PASS read off its report`
+
+- **Disposition:** superseded → rewritten in place as `an unclosed trace`. The same state, named by
+  the artifact property that is missing rather than by the seat's verdict.
+- **Tier failed:** n/a — supersession by ruling (**D6(b)**, as above). It named the validator's
+  verdict, which is the residue class check 23 fails by name ("the validator returned PASS").
+- **Protected content, leaving by ruling:** `DECISIONS.md`-traceable to the same **D4** row as the
+  entry above, and to the adversarial **D4/D5** row (the `validation-*` vs `review-*` family split).
+  The [v0.35.0] ledger assigns that second row's home to the **intent-reviewer seat row** and the
+  **validation-model line**, not to this Goal state — both untouched. Only the Goal echo left.
+- **Content (v6, verbatim):** `a validator FAIL, or a PASS read off its report`
+- **Kept deliberately:** the read-from-the-files rule and the never-from-the-report rule, both in
+  the validator seat row; the authoritative-grade declaration, in the validation-model line; and
+  every other not-done state, unedited — including **"a floor category with neither principle nor
+  waiver"** (Setup-v2 **D1**) and **"a surface authored before G3"**, the ordering invariant G3's
+  own gate line carries ("Nothing is authored before it clears").
+- **Consumers assessed:** as above — not a shared primitive; grader check 23 and the five sibling
+  conversions, none of which reads this line.
+
+*Pure additions this wave, riding the decision row rather than these entries:*
+
+- **The form marker** `<!-- shape-form: v7 -->` in the preamble — check 20's branch key.
+- **The run-start weight-card gate line** (P7) — U1-A's standing user stop, in the three-part
+  countable form, taking **G from 10 to 11**. Keyed to setup's own weight object: the run's scope,
+  *a first surface set or an amend's delta* — the distinction the whole driver session turned on
+  (a 2-element amend that drew the full apparatus).
+- **`**Floor gates:**`** (P18) — the floor set (the run-start weight card · **G2** in brownfield ·
+  the **Interrogation**'s card rulings · **Survivor rulings** · **G3** · the **Clarification**'s
+  answer · **G4** · **G5** · **Escalation**) with the non-floor two named, so the absence is stated
+  rather than inferred; and the **lead-penned surface** element bound to `governance-intent.md`
+  (check 21(2)), setup's P11 being the lead-penned-record branch.
+- **`**Run-start declaration:**`** (P19) and **`**Departure trail:**`** (P20) in Bindings — the
+  declaration atop `governance-intent.md` for a default run, an instantiated `setup-contract.md` for
+  a departing one, and the **produce↔validate round** named as the counted unit (check 22).
+- **One new not-done state** — `a departure with no trail line`, the honest-trail invariant made
+  visible in the Goal as floor compliance. Same addition as the precedent's.
+
+**Four judgments made here rather than deferred, flagged for the grader.**
+
+1. **The floor-gate set is nine of eleven, and the ground is *who rules*.** setup is the library's
+   most user-ruled command — **ten of eleven** gate lines read `rules: the user` after the U4 flip
+   above (Review sizing is the eleventh, now `rules: you`) — because its entire product *is* the
+   user's rulings, so a large floor set is the honest reading rather than an over-marking. What the lead still composes is substantial and unaffected: whether and how large
+   the intent review runs, how many produce↔validate rounds, the interrogation's pacing and
+   convergence, and how few stops deliver the floor rulings.
+
+   **Three limbs scoped narrowly, not whole gates.** Following the precedent's **G3** treatment:
+   the **Interrogation** is floor on its *card rulings* — the kept/dropped/minted/waived set is the
+   user's; the session's pacing and its named convergence skips are the lead's. **Survivor rulings**
+   is floor where a review ran and survivors exist — it is conditional by construction, not
+   departable-when-inconvenient. The **Clarification**'s *answer* is floor; when it is presented
+   stays the lead's under **D3**'s consolidation authority, which is home doctrine and deliberately
+   not restated in the command.
+
+   **Why G5 is floor, since it is the least obvious member.** Its decides-clause rules on
+   *deleting* the brownfield analysis and the module scaffold, and on a probe whose token cost is
+   stated — and under **A3** a declared cost range is a floor bound, which rises only at a user
+   checkpoint. Both are the user's. A light run where nothing needs removing and no rules files
+   exist reaches the gate **vacuous, not departed**, so marking it floor costs nothing in the light
+   case and protects the heavy one.
+
+2. **Why G1 clears, on the ground that actually carries it.** G1 reads `rules: the user`, so its
+   exclusion needs a structural ground, not a convenience one. The ground is that a mis-detected
+   mode cannot cost a surface: **nothing is authored before G3** (G3's own gate line, floor), and
+   the interrogation between them is **attended card by card** — so a wrong mode surfaces to the
+   user, in the room, before any surface exists. G1's confirm is a convenience stop; the invariant's
+   real carriers are G3 and the interrogation, both floor. The narrower argument — that the
+   detection rules are deterministic — was **not** relied on: it says nothing about who should rule
+   a borderline call.
+
+3. **Why Review sizing clears — by construction once the U4 flip landed, not by argument.** The
+   gate line now reads `rules: you`, so check 21's floor test excludes it the same way implement's
+   cycle checkpoint is excluded: mechanically, on the `rules:` clause. No structural argument is
+   needed or offered.
+
+   **Recorded because the first draft of this conversion got here the hard way, and the trail should
+   show it.** Before the flip was directed, this entry argued the exclusion against a line still
+   reading `rules: the user` — with the gate's own "**The gate always opens**: every amend records a
+   ruling or a waiver, keeping the trail audit-complete" sitting on top of it. That is exactly the
+   shape of the precedent's fix-round defect (a `rules: the user` gate outside the floor set whose
+   own sentence reads as never-departable), and it was surviving only on an argument. **The flip
+   dissolves the tension rather than answering it.** The always-opens clause is untouched and still
+   true — a lead's sizing ruling is a ruling — and a below-default sizing is one P20 trail line, so
+   audit-completeness is carried whole.
+
+   **The residual user-ruled limb is not lost — it is where P18 puts it.** Because
+   `governance-intent.md` is lead-penned, a `none` sizing is *not* the lead's to take: the floor's
+   second invariant gives that artifact one cold-seat grade unless the user waived it on the record
+   at the weight card. P18 states exactly that, so the one part of sizing that stays the user's is
+   bound to the surface it protects rather than to the gate that lost ownership.
+
+   **One divergence from the template's interim clause, taken deliberately.**
+   `sized-end-stage-review.md` v2 says a below-default sizing is recorded "where that command
+   already records review outcomes — the artifact's **Review section**", adding that "P20 names that
+   home explicitly at the conversion touch". setup's P20 names the **declaration head** of the same
+   file, not the Review section, because P20 must be one home for *every* departure — collapsed
+   stages and skipped rounds have no business in a Review section. The `none` waiver still lands in
+   the Review section under the template's own rule; the two records are different things (the
+   review's own artifact record vs. the departure record) and both survive.
+
+4. **The declaration and the trail share one surface, chosen for durability.** Both land atop
+   `governance-intent.md`. **`codebase-analysis.md` was rejected as a home** even though it is the
+   first artifact a brownfield run writes: G5 rules on *removing* it, so a trail parked there is a
+   trail the run's own last gate can delete — the same failure mode the precedent avoided when it
+   rejected `cycle-report.md` for being overwritten. The synthesis is the only run artifact Bindings
+   marks **durable** and never-offer-to-delete, and Recovery already keeps resume state on it, so a
+   resumed lead finds declaration, departures and resume state in one place.
+
+   **The counted unit is the produce↔validate round**, the unit the Bounds already count. The
+   interrogation was rejected as the denominator: it is lead-inline with no seat running it, so it
+   cannot be any governed seat's unit. One precision added because setup's producer is the library's
+   only seat standing across **two jobs** — a brownfield analysis job counts as one against its
+   cadence. Without that clause the producer's denominator is ambiguous in brownfield, which is
+   exactly the cadence-exemption-by-missing-denominator failure **OQ-4** exists to prevent.
+
+**Recovery left untouched, deliberately** — the same disposition as the precedent's, and for the
+same reason. The shape's counter-state clause is home doctrine (v7 Recovery block); setup's pause
+line already names `governance-intent.md`, the surface P19 binds. One difference from the precedent
+was checked rather than assumed: setup's pause line also offers the region stamp as an alternative
+resume site ("or in the region stamp once it exists"), while P19 binds the declaration to the
+synthesis alone. That is a divergence without a contradiction — the *resume stage* may move once the
+region exists; the declaration and its trail stay where they were written, on the durable artifact.
+No edit was owed.
+
+### R21 — a second heavy site, not the light one
+
+`lead-owned-process-flexibility` **R21** remains **open at half**. Its residue is *the light site*,
+and **setup is not it**: setup is the second-heaviest command in the library — the densest gate
+surface (G = 11 after this wave, against implement's 9) and, per the record's own errata, **the
+heaviest bound surface in the set by a factor of two** (F60-a, 8 individual hard bounds). These
+figures corroborate the heavy band the precedent measured; they do not close R21. The next
+conversion of a genuinely light command (`specify`, `slice`, or `brainstorm`) closes it.
+
+**File growth.** `commands/setup.md` **15,331 → 16,894 B** (+1,563; words 2,103 → 2,331, +10.8%).
+Attribution, each construct measured on its own text:
+
+| construct | bytes | words |
+|---|---|---|
+| ~~`<!-- shape-form: v7 -->` marker~~ — added here, **retired at the wave close** | ±0 | ±0 |
+| run-start weight-card gate line (P7) | +315 | +54 |
+| `**Floor gates:**` — floor set + non-floor two + the lead-penned surface (P18) | +514 | +72 |
+| U4 review-sizing flip — gate line (+18 B) + frontmatter (+18 B) | +36 | +7 |
+| `**Run-start declaration:**` (P19) | +536 | +69 |
+| `**Departure trail:**` (P20) | +162 | +26 |
+| Goal block, D6(b) residue strip | ±0 | ±0 |
+| **net** | **+1,563** | **+228** |
+
+**The Goal row is a genuine zero, not an unmeasured cell.** The block is byte-identical in size
+(778 → 778 B) and word-identical (130 → 130 w) across a rewrite that changed three clauses:
+`wc`-verified after the last edit, and the diff is in the commit. **No offsetting saving is claimed**
+— the residue strip returned what the two new Goal elements cost, and nothing more.
+
+**Per-run read cost.** setup.md is an obligated read once per run, so this is **+1,588 B on every
+setup run** — 10.4% on top of the command itself, within a hair of the precedent's 10.6% at the
+heavy site. As at that site, it is not the whole delta a run pays for v7: the shape home's
+always-read floor (+11,399 B/run, measured at v0.40.0) dominates, and setup additionally binds
+`sized-end-stage-review.md`, whose v7 revision added +2,131 B on the two commands that read it.
+Against those, the conversion is the small share of the bill.
 
 ---
 

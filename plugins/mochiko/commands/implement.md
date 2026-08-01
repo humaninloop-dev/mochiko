@@ -19,18 +19,17 @@ implemented before anything verifies it.
 
 ## Goal
 
-Every `tasks.md` task is `[x]` with its `cycle-report.md`; `qa-engineer` verification passed on every
-cycle **and** on the whole-implementation final validation, on real-infrastructure evidence and
-quality-gate exit codes; you Read the final-validation report and every escalated cycle's reports and
-found no blocking gap — criteria met, gates passing, traceability to requirements holding, the build
-aligned with the project's governance; where an approved structural delta existed, the
-built-vs-approved diff ran and any divergence reached G5; the KM landing ran; and the user accepted
-at G5.
+Every `tasks.md` task is `[x]` with its `cycle-report.md`; a verification report per cycle and one for
+the whole implementation, each naming its real-infrastructure evidence tree and its quality-gate exit
+codes; the built code meets its criteria, holds traceability to requirements, and aligns with the
+project's governance; where an approved structural delta existed, its built-vs-approved diff report
+exists and any divergence it names was ruled at G5; the KM landing ran; and the user accepted at G5.
 
 **Not done:** an unchecked task, or a cycle with no report · a failing quality gate · a cycle or the
-final validation unverified · a warm-only final validation · a non-clean cycle advanced without your
-verdict · a surfaced architecture deviation neither built as approved nor consented as an
-amendment · an approved delta whose diff never ran · out of rounds · G5 unaccepted.
+final validation with no real-infrastructure evidence · a warm-only final validation · a surfaced
+architecture deviation neither built as approved nor consented as an amendment · an approved delta
+with no built-vs-approved diff report · a departure with no trail line · out of rounds · G5
+unaccepted.
 
 ## Seats & checks
 
@@ -59,6 +58,9 @@ just-failed `cycle-report.md`, relayed at dispatch: the next attempt overwrites 
 - **Package gate** — evidence: `tasks.md` present and complete alongside the accepted `plan.md` and
   `architecture.md`, plus the design inputs and `slices.md` (Bindings) · rules: the user · decides:
   whether the run opens. Missing or incomplete → block, pointing the user to `/mochiko:plan`.
+- **Run-start weight card** — evidence: your stated read of the four rigor factors against this
+  breakdown, plus the process you compose from it — the stated default below, or your departures from
+  it · rules: the user · decides: the run's composed process.
 - **Governance surface** — evidence: `CLAUDE.md`'s `<!-- mochiko:governance:begin -->` region ·
   rules: the user, when it is absent · decides: proceed on governing context, or run
   `/mochiko:setup` first. Absence is **surfaced, never auto-resolved** — governing context, not a
@@ -91,6 +93,13 @@ just-failed `cycle-report.md`, relayed at dispatch: the next attempt overwrites 
   accept (done) / amend (the changes become the failure list; re-enter the relevant cycle or fix
   pass, still bounded, and clear a verdict again) / reject (the work remains under
   `.mochiko/specs/<feature>/` and in the working tree).
+- **Floor gates:** the run-start weight card · the package gate · the governance surface's absence
+  ruling · **G3**'s preference ruling · **G4** · **G5** · the architecture-deviation consent — the
+  user's whatever you compose, never departable. G1 and the cycle checkpoint (yours by definition)
+  are not. **Verification depth is floored:** it may thin on a light cycle — quality gates plus spot
+  evidence rather than full evidence capture — never to zero. No cycle closes without
+  real-infrastructure evidence; *none* is a reviewer-count option, never a verification one. No
+  lead-penned surface takes a standing cold grade here: P11 is producer-authored.
 - **Bounds:** **targeted retry** — trace a checkpoint failure to its tasks and re-open only those,
   **max 3 attempts per cycle**, never regressing passing code; **fix pass** — failure-scoped after a
   final-validation failure, **max 3 passes**; **convergence stall** — the same failure pattern
@@ -142,6 +151,13 @@ just-failed `cycle-report.md`, relayed at dispatch: the next attempt overwrites 
 - **Clearing unit + checkpoint keying:** the **cycle**; a surfaced architecture deviation
   **de-devolves** it, and a non-empty `domain_deps_added` **always** forces the escalated human
   checkpoint — never auto-approved, no stamp read.
+- **Run-start declaration:** one line at the head of `tasks.md` — the deliverable's progress surface,
+  where Recovery already notes the resume stage — for a default run; a run that departs from the
+  stated default, or declares non-default bounds, instantiates `templates/workflow-contract.md` as
+  `.mochiko/specs/<feature>/implement-contract.md` beside the reports instead. Counted unit: the
+  **cycle**, the unit the bounds and the lifecycle cadence already count.
+- **Departure trail:** one line per departure, appended under that same `tasks.md` declaration as it
+  is taken and carried into G5's evidence — never your context alone.
 - **KM landing:** `.mochiko/memory/knowledge-management.md` exists → run its ritual + invariants
   under fix-on-sight; a **built** structural change folds the built system into `ARCHITECTURE.md`.
   No copy → skip.

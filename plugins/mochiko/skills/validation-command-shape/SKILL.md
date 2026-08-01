@@ -9,8 +9,8 @@ description: |
   ceiling (altitude, parameter completeness over the P1–P20 slot set, Goal/Constraints
   soundness, preserved responsibilities), the shape-revision audit (a revised command-shape.md
   graded for ruling fidelity, altitude, logging, and re-audit coverage), the strip-note audit
-  during minimalism waves, and — on a v7-form file — floor presence, declaration/trail carriers
-  and departure license under the dual-form interim branch → binary PASS/FAIL + fix list. Use
+  during minimalism waves, plus floor presence, declaration/trail carriers and departure
+  license on every command → binary PASS/FAIL + fix list. Use
   when grading an authored or converted commands/*.md file, auditing shape conformance, closing
   a strip wave, or auditing a shape-home revision.
   MUST BE USED when the task says "grade this command", "audit shape conformance",
@@ -44,9 +44,9 @@ kept, dropped, or re-keyed at that revision, and why — is recorded in
 v6 lockstep edits (the P17 slot, its `+60` ceiling term, two check-8 markers) are logged in the
 same note, as are the v7 ones (checks 20–23, the P18–P20 extension of check 12).
 
-**Since shape v7 the library is mixed-form**, and the grader branches on a declared marker
-rather than on a reading: **run check 20 first** and grade the file on the branch it returns.
-Checks 1–19 are unchanged from v6 and apply to both forms.
+**Every command is graded on the full 1–23 set.** The dual-form branch that ran here from shape
+v7 until v0.43.0 retired with the form marker when the last command converted; there is no
+per-file branch left to take, and a file's form is no longer a thing the grader establishes.
 
 ## The deterministic floor (grep-checkable — run first, record results as evidence)
 
@@ -70,7 +70,7 @@ Against the command file:
    v7** against the stated default plus recorded departures and declared bounds
    (`command-shape.md`, *Transition note*; `lead-owned-process-flexibility` R16). The read has
    not been dropped and no live run has yet met the trigger, so a missing `loop-discipline`
-   reference is a FAIL in both forms. Never treat its absence as anticipated.
+   reference is a FAIL. Never treat its absence as anticipated.
 2. **Frontmatter** — `disable-model-invocation: true` present; `description:` non-empty.
 3. **Blocks present per their bindings** — the goal-shaped anatomy, graded on the binding
    and not the heading: `## Goal`, `## Seats & checks`, `## Constraints`, `## Bindings`,
@@ -96,12 +96,13 @@ Against the command file:
      evidence without being a gate, and two live instances were found this way (`brainstorm`'s
      Invariants, `specify`'s Enrichment), each inflating `G` by one and so loosening the
      Constraints ceiling by 90 w per false hit. **`G` is not "numbered gates"** either: a
-     workflow that numbers nothing still has gates (`brainstorm` carries **G = 4** — sizing,
-     survivor rulings, tie-break, acceptance — while the checker map correctly records it as
-     having 0 *numbered* gates). Measured across the six conformant commands under the
-     three-part rule: **G = 4 brainstorm · 4 specify · 4 slice · 10 setup · 8 implement ·
-     7 plan**. Counting numbers, or counting a bare `evidence:`, instead of complete gate lines
-     is the miscount this clause exists to prevent.
+     workflow that numbers nothing still has gates (`brainstorm` carries **G = 5** — the run-start
+     weight card, sizing, survivor rulings, tie-break, acceptance — while the checker map correctly
+     records it as having 0 *numbered* gates). Re-measured across the six commands at the v0.43.0 wave close,
+     each having gained the run-start weight card as a gate line: **G = 5 brainstorm · 5 specify ·
+     5 slice · 11 setup · 9 implement · 8 plan** (each +1 on the pre-conversion count these
+     figures supersede). Counting numbers, or counting a bare `evidence:`, instead of complete
+     gate lines is the miscount this clause exists to prevent.
    - `S` = data rows in the Seats & checks table (excluding header and separator).
    - `A` = artifacts P10 binds — the command's own outputs: deliverables + round reports.
      Input and reference paths cited elsewhere in Bindings do **not** count, and neither does a
@@ -113,10 +114,13 @@ Against the command file:
    - `R` = data rows in the Recovery table (0 where the block is one-lined).
 
    Ceilings: preamble ≤ 130 · Goal ≤ 150 · **Seats & checks ≤ 100 + 45·S, plus 60 where a P17
-   lifecycle line is present** (grep `**Seat lifecycle:**`) · Constraints ≤
-   90·(G+2) · **Bindings ≤ 90 + 12·A, plus 30 where a KM-landing or index-bookkeeping binding
-   is present** · Recovery ≤ 60 + 14·R. Over a ceiling is a floor FAIL — name the block, the
-   count, the term values, and the bound.
+   lifecycle line is present** (grep `**Seat lifecycle:**`) · **Constraints ≤ 90·(G+2), plus 120
+   where a P18 floor-gate binding is present** (grep `**Floor gates:**`) · **Bindings ≤ 90 + 12·A,
+   plus 30 where a KM-landing or index-bookkeeping binding is present, plus 110 where the P19/P20
+   declaration-and-trail pair is bound** (grep `**Run-start declaration:**`) · Recovery ≤ 60 + 14·R.
+   Over a ceiling is a floor FAIL — name the block, the count, the term values, and the bound. The
+   two v7 terms are conditional on their literals, not on a file's form: a command binding
+   neither slot carries neither literal and earns neither term.
 
    **The P17 `+60` term, calibrated at shape v6** — the same construction as Bindings' `+30`,
    for the same reason: a newly declared slot lands inside an already-tight block, so without a
@@ -126,6 +130,39 @@ Against the command file:
    lifecycle line it is required to carry. Sized to the heaviest legitimate binding plus the
    headroom the tight-ceiling rule asks for; re-key it if a later binding lands materially
    larger.
+
+   **The two v7-form terms, calibrated at the first conversion (`implement`, v0.43.0)** — same
+   construction as the P17 `+60`, and landed under check 20's measure-in-the-same-wave rule. P18
+   lands inside Constraints and the P19/P20 pair inside Bindings, both already-tight blocks, so
+   without terms of their own a converting command fails on the binding rather than on bloat.
+   Measured at the conversion: implement's `**Floor gates:**` bullet is **100 w** (the floor-gate
+   set + the ruled verification-depth floor + the lead-penned-surface absence) against a
+   Constraints block that went 887 → 1031 w — the new weight-card gate line's 44 w are **already
+   paid** by G 8 → 9 (+90), so the P18 binding is the whole overage; and its
+   `**Run-start declaration:**` + `**Departure trail:**` bullets are **88 w** against a Bindings
+   block that went 175 → 263 w. Each term is its measured binding rounded up with the headroom the
+   tight-ceiling rule asks for — **+120** on a 100-w binding, **+110** on an 88-w one — leaving
+   implement at 1031/1110 (7.1%) and 263/290 (9.3%), the headroom band the P17 term produced
+   (319/340, 6.2%). **Calibration basis — re-measured across all six commands at the v0.43.0 wave
+   close, superseding the single-body basis this paragraph first claimed.** P18 bindings measure
+   **70–122 w**: slice 70 · setup 72 · specify 74 · plan 93 · implement 100 · brainstorm 122. The
+   original prediction — that implement's 100 w sat near the top, since it alone carries the ruled
+   verification-depth floor — was **wrong**: brainstorm exceeds it by 22 w, because a session
+   command's gates are almost all user-ruled, so its floor-gate set enumerates nearly the whole
+   gate list. A P18 binding is driven by how much of the gate set is the user's, not by how heavy
+   the command is.
+
+   **`+120` stands above its own basis, deliberately.** It is a *Constraints* term, not a P18
+   budget: what it must cover is the block, and every command clears with room — brainstorm
+   714/750 · specify 560/750 · slice 572/750 · plan 927/1020 · implement 1031/1110 · setup
+   1205/1290. Re-keying up to fit the 122-w outlier would loosen a ceiling **nothing is failing**,
+   which is the quota-override the pilot's rule forbids.
+
+   **Re-key condition, stated unambiguously because the exceeds-basis case is now live:** a P18
+   binding larger than 122 w is **not**, on its own, grounds for a re-key. Re-key only when a
+   command's **Constraints block** actually exceeds `90·(G+2) + 120` — and then only after
+   confirming the overage is the P18 binding rather than bloat elsewhere in the block, because the
+   fix for bloat is a cut, never a term. The same test governs the Bindings `+110`.
 
    **A block's `## Heading` line does not count toward its ceiling** — count body words only.
    This is the reading the calibration's own evidence requires, not a preference: `brainstorm`'s
@@ -198,11 +235,9 @@ Against the command file:
     explicitness, so a "no lifecycle override" line would be the defect, not the conformance).
     Grade P17 the other way instead — a command whose recycle moments or counted unit visibly
     differ from the Layer-2 default while it carries no `**Seat lifecycle:**` line is the gap.
-    **A v7-form file extends the set by three:** **P18** floor gates + the always-cold-graded
-    lead-penned surface · **P19** run-start declaration home + counted unit · **P20**
-    departure-trail home. These three are graded **only** on check 20's v7 branch — a v6-form
-    file neither binds nor states them, and demanding them there is the defect, the mixed-form
-    interim being ruled rather than tolerated.
+    The set runs to **P20**, the last three added at shape v7: **P18** floor gates + the
+    always-cold-graded lead-penned surface · **P19** run-start declaration home + counted unit ·
+    **P20** departure-trail home.
 13. **Goal and Constraints sound** — the Goal's end state is measurable and its not-done
     states are real states of this workflow, not generic FAIL prose; every gate the body
     relies on appears as a Constraints line carrying all three of opening evidence · who
@@ -245,26 +280,21 @@ revision writes.
     ruling defers the re-audit to a named later ceremony, the note's re-audit-coverage line
     names that ceremony and the delta set it must cover.
 
-## Lead-composed process (shape v7) — the form branch and the three v7-form checks
+## Lead-composed process (shape v7) — the ceiling terms and the three floor checks
 
-Added at shape v7 (`lead-owned-process-flexibility` D6(d), ruled additive): the v6 checks above
-are unchanged — gate lines and bounds survive as the *stated default's* carriers, so check 6's
-`G` arithmetic and every one of checks 1–19 still keys on real text.
+Added at shape v7 (`lead-owned-process-flexibility` D6(d), ruled additive): checks 1–19 are
+unchanged — gate lines and bounds survive as the *stated default's* carriers, so check 6's `G`
+arithmetic and every one of checks 1–19 still keys on real text. **Checks 20–23 run on every
+command.** Nothing here was renumbered when the dual-form branch retired at v0.43.0: check 20 kept
+its slot and now carries what outlived the branch.
 
-20. **Form branch (floor — run this first)** — grep the file for the literal
-    `<!-- shape-form: v7 -->`. **Present ⇒ v7-form:** checks 21–23 apply, and check 12's slot
-    set runs to P20. **Absent ⇒ v6-form:** grade on checks 1–19 exactly as at shape v6, do not
-    run 21–23, and read its gate lines and bounds as this command's obligations rather than as
-    departable defaults — the ruled interim state (`command-shape.md`, v7 interim note; D4
-    `Contested`, convert-on-touch), never a gap to report. Record which branch ran as the
-    check's evidence. **Never infer the form from the prose:** a file that reads as
-    lead-composed while carrying no marker is v6-form, and the missing marker is the finding.
-    **Ceilings await calibration for the v7 form** — check 6's terms were measured on v6-form
-    bodies, and P18–P20 add words to Constraints and Bindings that no term yet pays for. The
-    first conversion measures its blocks and lands any needed term **in the same wave** (the
-    precedent is check 6's `+60` P17 term). Until such a term exists an over-ceiling is still a
-    floor FAIL: the fix is the measured re-key, never a waived check.
-21. **Floor presence (floor, v7-form)** — each of the four floor invariants is reachable
+20. **Ceiling terms current (floor)** — check 6's two v7 terms are live and applied wherever
+    their literals appear: **+120** on Constraints where a P18 floor-gate binding is present,
+    **+110** on Bindings where the P19/P20 pair is bound. Re-key either term only on the condition
+    check 6's calibration paragraph states — and until that happens, an over-ceiling is still a
+    floor FAIL: the fix is a measured re-key, never a waived check. Record the applied terms as
+    the check's evidence.
+21. **Floor presence (floor)** — each of the four floor invariants is reachable
     through its own carrier in this file, and never through a restatement of the floor itself
     (which lives in the home, and copied here would be a check-8 hit):
     (1) **user gates** — P18 marks this workflow's floor gates and each marked gate's
@@ -276,29 +306,28 @@ are unchanged — gate lines and bounds survive as the *stated default's* carrie
     the file lets a bound rise anywhere but at a user checkpoint. (4) **honest trail** — P20 is
     bound (check 22). An invariant reachable only through the lead's good judgment is not
     reachable: name the missing carrier, not the missing virtue.
-22. **Declaration and trail carriers named (floor, v7-form)** — **P19** binds where the
+22. **Declaration and trail carriers named (floor)** — **P19** binds where the
     run-start declaration lands (one line on the named deliverable for a default run; an
     instantiated `workflow-contract.md` for a departing run) **and** names this workflow's
     counted unit; **P20** binds where departure lines are recorded. Both must be a path or a
     named artifact section, never "the lead records it". A P19 that names no counted unit is a
     gap in its own right: it leaves a composed run with no denominator for its bounds or for
     Layer 2's recycle cadence.
-23. **Departure license carries its trail (floor, v7-form)** — a file that states a departable
+23. **Departure license carries its trail (floor)** — a file that states a departable
     default while binding no P20 grants a license it cannot audit; that is a FAIL, not a style
     gap. The rule the binding encodes is **a departure with no trail line is a FAIL** — of the
     run, at its artifact; of the file, wherever its own text lets a stage be skipped, collapsed
     or merged without one. Grade the opposite direction too: the Goal must be free of
     **process residue** — a done-condition naming a round count, a seat's choreography, or "the
     sized review ran" / "the validator returned PASS" re-imposes as an obligation exactly what
-    the shape made departable. (A v6-form file legitimately carries that text; this clause
-    reaches v7-form files only.)
+    the shape made departable.
 
 ## Verdict
 
 ```
 VALIDATE: <graded file — command path, or the shape home in a revision run>
 Checklist run:  validation-command-shape (floor 1–10, ceiling 11–15; revision runs 16–19;
-                v7-form files also 20–23, and check 20 runs first on every command)
+                plus 20–23 on every command)
 Evidence read:  <files Read this run>     # graded file + shape home mandatory (revision runs: home + ruling source + prior version); absent ⇒ FAIL
 Floor:          [per check — PASS/FAIL + the grep evidence]
 Ceiling:        [per check — PASS/FAIL + one-line evidence]

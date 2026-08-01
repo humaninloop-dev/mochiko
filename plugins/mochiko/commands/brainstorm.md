@@ -1,5 +1,5 @@
 ---
-description: Think a problem through with the user and harden the record at the end — the session is just the lead and the user (plus a fact-checker teammate, seated from the start whenever the topic touches existing code, that maps the reality surface into the record and verifies claims against the files); at convergence the user sizes the review at a named gate — a lens-split cold pair by default (independent reads, one four-message cross-examination, only survivors return for rulings), a single reviewer for lean records, or a recorded waiver. Deliverable is one decision record, plus a fidelity-checked synthesis on request after acceptance; pipeline entry is an offer, never a default. Requires agent teams (CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS); refuses without them.
+description: Think a problem through with the user and harden the record at the end — the session is just the lead and the user (plus a fact-checker teammate, seated from the start whenever the topic touches existing code, that maps the reality surface into the record and verifies claims against the files); at convergence the lead sizes the review at a named gate, under the weight card the user ruled at run start — a lens-split cold pair by default (independent reads, one four-message cross-examination, only survivors return for rulings), a single reviewer for lean records, or, on the user's recorded waiver alone, none. Deliverable is one decision record, plus a fidelity-checked synthesis on request after acceptance; pipeline entry is an offer, never a default. Requires agent teams (CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS); refuses without them.
 disable-model-invocation: true
 ---
 
@@ -20,15 +20,16 @@ fills, otherwise the reviewers at convergence.
 ## Goal
 
 `.mochiko/brainstorms/<slug>/record.md` exists, each decision carrying statement + rationale +
-confidence mark; the sized review ran per the user's ruling with **every survivor
-dispositioned** and the verify
-pass confirming the folds landed — or the ruling was **none** and the waiver is recorded; the
-session's index entry names where the outcome landed; the KM close ritual ran; and the user
-has accepted the record. Zero survivors is vacuously clean — the tally is still reported.
+confidence mark, and its Review section carrying the sizing ruling, **every survivor's
+disposition**, and the verify outcome quoting the evidence the folds landed — or, in their
+place, the recorded waiver; the tally is on the record even at zero survivors, which is
+vacuously clean; the session's index entry names where the outcome landed; the KM close ritual
+ran; and the user has accepted the record.
 
-**Not done:** an unreviewed record with no recorded waiver · an undispositioned survivor · an
-unrun verify pass · a reviewer's status taken as the disposition without your read · no user
-acceptance · a synthesis shipped without its fidelity check.
+**Not done:** an unreviewed record with no recorded waiver · an undispositioned survivor · a
+survivor dispositioned by a reviewer's status alone · folds with no verify outcome recorded · a
+departure with no trail line · no user acceptance · a synthesis shipped without its fidelity
+check.
 
 ## Seats & checks
 
@@ -45,12 +46,17 @@ seat.
 
 ## Constraints
 
+- **Run-start weight card** — evidence: your stated read of the four rigor factors against this
+  topic, plus the process you compose from it — the stated default below, or your departures
+  from it · rules: the user · decides: the run's composed process.
 - **Review sizing** *(at convergence)* — evidence: convergence signals — answers turning
-  confirmatory, no new dimensions, the wrap confirmed with the user · rules: the user, on your
-  weight statement (decision count · confidence-mark mix · reality-surface load) · decides:
-  pair / single / none, a heavyweight record defaulting to the full pair; **none** records a
-  waiver. A single reviewer gets the whole hunt surface and no cross-examination — its
-  findings arrive undebated, the trade this gate priced.
+  confirmatory, no new dimensions, the wrap confirmed with the user · rules: you, on your own
+  weight statement (decision count · confidence-mark mix · reality-surface load), sizing under
+  the user's weight card and never around it · decides: pair / single, a heavyweight record
+  defaulting to the full pair and any size below that default costing one trail line. **None is
+  not yours to take** — `record.md` is lead-penned, so shipping it uncold-read needs the user's
+  recorded waiver at the weight card. A single reviewer gets the whole hunt surface and no
+  cross-examination — its findings arrive undebated, the trade this gate priced.
 - **Survivor rulings** — evidence: a survivor in user territory — a challenge to a user
   ruling, or a user-declared fact offered as confirmation · rules: the user · decides: its
   disposition. Theirs to answer, not a tie-break.
@@ -61,6 +67,14 @@ seat.
   waiver · rules: the user · decides: done. Then offer, don't push: if the record is honestly
   the shape of a next stage (e.g. a feature description for `/mochiko:specify`), name it as an
   option and stop.
+- **Floor gates:** the weight card · survivor rulings · tie-break · acceptance — each reading
+  `rules: the user`, none of them yours to compose away. **Review sizing is the one lead-ruled
+  gate here**, so it is deliberately out of the set: it sizes under the weight card the user
+  already ruled, never around it. Survivor rulings and tie-break fire only when their evidence
+  exists; that bounds when they open, never who rules them. **`record.md` is lead-penned, so it
+  always takes the cold grade** — the sized review and the verify pass over your folds are
+  non-discretionary wherever a review runs, and it ships with zero cold reads only on the user's
+  recorded waiver at the weight card, never on your sizing.
 - **Bounds:** per reviewer one cold read, plus (pair only) the one-shot four-message
   cross-exam, plus one verify pass; lead↔reviewer argument **max two exchanges per survivor**,
   you count them; one fact-checker dispatch per fact. No kill-switch and no no-progress exit —
@@ -97,6 +111,15 @@ seat.
 - **Fact route:** the fact-checker seat; an `Explore` subagent when it is unfilled, or for a
   one-off fetch with no standing-perspective value.
 - **Verify-pass owner:** the record-integrity reviewer, or the sole reviewer in single mode.
+- **Run-start declaration:** one line on `record.md`'s `Status` line — the surface Recovery
+  already keeps — for a default run; a departing run, or one declaring non-default bounds,
+  instantiates `templates/workflow-contract.md` as
+  `.mochiko/brainstorms/<slug>/brainstorm-contract.md` beside the record. Counted unit: the
+  lead↔reviewer **exchange per survivor**, the bound you count; the cold reads, the cross-exam
+  and the verify pass are one-shot.
+- **Departure trail:** one line per departure under that same declaration as it is taken,
+  part of what the user accepts — a review sized below the default included
+  (`sized-end-stage-review.md` defers that line here).
 - **KM landing:** `.mochiko/brainstorms/index.md` is the session index — read it before
   opening, enter this session on open (status: open), and at acceptance or supersession update
   it with where the outcome landed (a `DECISIONS.md` row, or an explicit no-graduation). Run

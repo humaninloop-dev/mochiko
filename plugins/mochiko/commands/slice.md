@@ -22,14 +22,11 @@ filled, since nothing reviews before an overlay or a null exit exists.
 Either `slices.md` exists conforming to `templates/slices-template.md` — exact spec stamp, every
 `US-#` homed exactly once, a designated foundation slice, dependency-closed Slice-order,
 cross-cutting extend obligations placed, Feature-Done complete — **or** the **null exit** was taken
-(no file; the whole-spec reasoning disclosed in `slicer-report.md`); `devils-advocate` recommends
-`ready` grounded in the files, or on a null-exit round on the depth call; you Read `spec.md` + the
-artifacts + the report and confirm no blocking gap remains; and G4 acceptance has cleared on
+(no file; the whole-spec reasoning disclosed in `slicer-report.md`); and G4 acceptance has cleared on
 whichever of the two shapes was produced.
 
-**Not done:** no `slices.md` and no recorded null exit · a reviewer status short of `ready` · a
-blocking gap open · the reviewer's status taken as the gate without your read · out of rounds · G4
-unaccepted.
+**Not done:** no `slices.md` and no recorded null exit · a blocking gap open · a departure with no
+trail line · out of rounds · G4 unaccepted.
 
 ## Seats & checks
 
@@ -55,6 +52,9 @@ every verdict is yours.
   decomposition is deliberately unsupported, a recorded deferral in `BACKLOG.md`, not an oversight. A
   missing governance region is surfaced (offer `/mochiko:setup`) — governing context, never a
   blocking gate, and never auto-resolved.
+- **Run-start weight card** — evidence: your stated read of the four rigor factors against this spec,
+  plus the process you compose from it — the stated default below, or your departures from it ·
+  rules: the user · decides: the run's composed process.
 - **G2 clarification** — evidence: a reviewer gap you classify as preference, or a producer question
   it cannot resolve · rules: the user · decides: the answer fed forward. **A preference gap is ruled
   here**; a **"Research this"** knowledge gap routes to a native `Explore` pass, never to the user;
@@ -71,6 +71,11 @@ every verdict is yours.
   exit** (the whole-spec recommendation and its reviewed reasoning) — **accept** (the pipeline runs
   whole-spec exactly as before, the done-condition satisfied with no `slices.md`) / **override**
   (re-enter the loop directed to decompose; still bounded).
+- **Floor gates:** **G1**, the run-start weight card, **G3**, **G4**, and **G2** on its user-ruled
+  limbs — the preference ruling and the un-homeable-story amendment offer (its knowledge-gap route to
+  `Explore` stays yours). That is all five: each reads `rules: the user`, so none is departable
+  however you compose the run, and there is no non-floor gate here to name. **No lead-penned surface
+  takes a standing cold grade:** P11 is producer-authored.
 - **Bounds:** cap **3** rounds, you count them; no-progress exit when the gap set is unchanged
   round-over-round; kill-switch — stop and escalate if `.mochiko/specs/<feature>/SLICE_STOP` exists,
   checked before each seat send; a G4 amend or override re-enters the same bounded loop; out of
@@ -93,6 +98,14 @@ every verdict is yours.
   null-exit round its whole-spec disclosure.
 - **Fact route:** `spec.md` and the artifacts themselves; a knowledge gap goes to a native `Explore`
   pass.
+- **Run-start declaration:** one line at the head of the run's standing artifact — `slices.md` once
+  it exists, `slicer-report.md` until then and on a null exit, the surface Recovery already notes the
+  resume stage on, moved across whenever the outcome shape flips — for a default run; a run that
+  departs from the stated default, or declares non-default bounds, instantiates
+  `templates/workflow-contract.md` as `.mochiko/specs/<feature>/slice-contract.md` beside the reports
+  instead. Counted unit: the **round**, the unit the Bounds already count.
+- **Departure trail:** one line per departure, appended under that same declaration as it is taken
+  and carried into G4's evidence — never your context alone.
 - **Next step:** `/mochiko:plan <feature> --slice <foundation-id>`, or plain `/mochiko:plan
   <feature>` after an accepted null exit.
 

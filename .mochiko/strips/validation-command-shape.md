@@ -7,6 +7,172 @@ current conventions; D1 forbids cutting to reach a band).
 
 ---
 
+# v0.43.0 (wave close) — the dual-form branch retires; the ceiling basis is re-measured (K2)
+
+**Wave context:** the v7 conversion wave closed with all six commands converted (wave note
+`.mochiko/strips/command-shape.md` [v0.43.0 wave close]). Two jobs in one ceremony: retire the
+form branch this skill carried, and repair the calibration basis the batch audit falsified (**K2**).
+Body **22,920 → 25,293 B**, words 3,506 → 3,875 (+10.5% w) across the whole v0.43.0 wave. **This
+file is an audit-time read and never touches the always-read floor** — its growth is paid by
+graders, not by runs, which is why the K2 repair was written for completeness rather than brevity.
+**Renumbered nothing:** checks 20–23 keep their slots and their order.
+
+## [v0.43.0] Check 20's form branch retired — checks 20–23 run on every command
+- **Disposition:** superseded → rewritten in place. Check 20 keeps its number and now carries what
+  outlived the branch: the ceiling terms' currency and the re-key/no-waiver rule.
+- **Tier failed:** n/a — supersession by ruling (the shape's marker-retirement trigger, met when
+  the last command converted; `DECISIONS.md` 2026-08-01 wave-close ratifications row).
+- **Content (v0.40.0–v0.43.0, verbatim — the branch clauses that left):**
+  ```
+  20. **Form branch (floor — run this first)** — grep the file for the literal
+      `<!-- shape-form: v7 -->`. **Present ⇒ v7-form:** checks 21–23 apply, and check 12's slot
+      set runs to P20. **Absent ⇒ v6-form:** grade on checks 1–19 exactly as at shape v6, do not
+      run 21–23, and read its gate lines and bounds as this command's obligations rather than as
+      departable defaults — the ruled interim state (`command-shape.md`, v7 interim note; D4
+      `Contested`, convert-on-touch), never a gap to report. Record which branch ran as the
+      check's evidence. **Never infer the form from the prose:** a file that reads as
+      lead-composed while carrying no marker is v6-form, and the missing marker is the finding.
+  ```
+- **Kept deliberately, and it is the half that matters:** the **ceiling-currency and anti-waiver
+  rule** — the two terms named with their values, and *"an over-ceiling is still a floor FAIL: the
+  fix is a measured re-key, never a waived check"* — carried into the rewritten check 20 nearly
+  verbatim. The branch expired; the rule it sat beside did not. Also kept: **checks 21, 22 and 23
+  entire**, every clause, losing only their `, v7-form` scope tags.
+- **Four sibling scope tags retired with it,** each a pointer to the branch rather than a rule of
+  its own: check 12's *"graded **only** on check 20's v7 branch — a v6-form file neither binds nor
+  states them"* · check 23's closing *"(A v6-form file legitimately carries that text; this clause
+  reaches v7-form files only.)"* · check 6's *"the two v7 terms reach v7-form files only"*, re-keyed
+  to condition on the **literals** rather than on a form · the Overview's mixed-form paragraph and
+  the frontmatter's *"on a v7-form file … under the dual-form interim branch"*. Check 1's *"a FAIL
+  in both forms"* lost its two-form premise and now reads *"a FAIL"* — the retention itself is
+  untouched.
+- **Consumers assessed:** `command-shape.md` retired the marker clause, the interim note and
+  P18–P20's form conditional in the same ceremony (its note's wave-close section). The six command
+  files still carry the inert literal — flagged there as an open follow-up, not silently swept.
+  **The strip files' own prior entries are frozen history and were not edited**, per this
+  directory's convention: the [v0.40.0] entry below still describes the branch as live, and that
+  is correct of the version it stamps.
+
+## [v0.43.0] K2 — the calibration basis falsified by five more measurements, repaired
+- **Disposition:** superseded → rewritten and extended. The single-body basis is replaced by the
+  measured six-body range; the term value `+120` is **unchanged**.
+- **Tier failed:** n/a — a falsified measurement, caught by the batch audit (**K2**). Not a
+  minimalism strip and not a doctrine change: the paragraph made a *prediction*, five conversions
+  tested it, and it was wrong.
+- **Content (v0.43.0 first pass, verbatim):**
+  ```
+  **Calibration basis, stated so a re-key is judged and not guessed:** one
+  v7-form body, and the library's heaviest command (G = 9, its densest protected surface).
+  implement's 100-w P18 additionally carries a clause no other command will — the ruled
+  verification-depth floor — so a typical P18 should measure well under it. Re-key either term only
+  if a later conversion lands a materially larger binding; a conversion that merely fits is not a
+  re-key case.
+  ```
+- **What falsified it, measured:** P18 bindings across the six commands run **70–122 w** — slice 70
+  · setup 72 · specify 74 · plan 93 · implement 100 · **brainstorm 122**. The prediction that
+  implement's 100 w sat near the top was wrong by 22 w. The mechanism the first pass missed: a P18
+  binding scales with **how much of the gate set is the user's**, not with how heavy the command
+  is, and a session command's gates are almost all user-ruled. (Author's note, since this
+  paragraph's own history is now its best argument: the first pass reasoned from the one body it
+  had and said so — the basis was declared, which is why the audit could falsify it in one pass
+  rather than discovering it as drift years later.)
+- **Why the term stands above its own basis — the conservative option, taken deliberately.**
+  `+120` is a **Constraints** term, not a P18 budget: it must cover the *block*, and all six clear
+  with room — brainstorm 714/750 · specify 560/750 · slice 572/750 · plan 927/1020 · implement
+  1031/1110 · setup 1205/1290. Re-keying up to +150 to "fit" the 122-w outlier would **loosen a
+  ceiling nothing is failing**, which is the quota-override the pilot's rule forbids and the exact
+  move this skill exists to catch.
+- **Kept deliberately:** the whole derivation above the basis sentence — the P17-construction
+  framing, implement's per-block measurements, the already-paid G 8→9 arithmetic, the Bindings
+  88-w/`+110` pair, and the headroom-band comparison to P17's 319/340. Only the basis claim and its
+  re-key sentence were wrong; the arithmetic that produced the terms was not.
+- **Also corrected in the same pass, same class (stale measurements, not rulings):** check 6's `G`
+  inventory — every command gained the run-start weight card as a gate line, so **G = 5 brainstorm
+  · 5 specify · 5 slice · 11 setup · 9 implement · 8 plan**, each +1 on the superseded figures —
+  and the anti-miscount example's `brainstorm carries G = 4`, now **G = 5** with the weight card
+  named first in its enumeration. Both were false of every command in the library the moment the
+  conversions landed; neither was in the assigned scope, and shipping a grader whose stated `G`
+  inventory disagrees with its own six graded files would have re-created the K2 defect one check
+  higher.
+- **Consumers assessed:** the terms' two grep literals are unchanged, so no command needs an edit;
+  all six were re-measured against `90·(G+2) + 120` and `90 + 12·A + 30 + 110` at this ceremony and
+  **all six PASS**. `command-shape.md` states P18–P20 but mandates no literal for them — unchanged.
+
+---
+
+# v0.43.0 — the v7 ceilings calibrated at the first conversion (two edits)
+
+**Wave context:** the first v6→v7 command conversion (`commands/implement.md`; wave note
+`.mochiko/strips/implement.md` [v0.43.0]). The edits discharge the **first-conversion
+ceiling-term obligation** user-ratified at the v0.40.0 wave close (2026-08-01) — *the first
+conversion measures its Constraints/Bindings blocks and lands any needed check-6 term in the same
+wave* — which is item 4 of the v0.40.0 shape note's *Deliberately not encoded* list
+(`.mochiko/strips/command-shape.md`). Body **22,920 → 24,916 B**, words 3,506 → 3,810 (+8.7%).
+**No check was loosened in substance, none removed, no check number changed** — the two terms are
+the measured price of slots the shape already mandates, and an over-ceiling remains a floor FAIL.
+`description:` **untouched, byte-verified** at 1,239 chars (80.7% of the 1,536 delivery bound): no
+trigger surface changed, since a caller reaches this skill the same way for a v7-form file as it
+did the day check 20 landed.
+
+## [v0.43.0] Check 6's ceilings line gains the two v7-form terms
+- **Disposition:** superseded → rewritten in place. The Constraints and Bindings clauses each gain
+  a grep-keyed term on the **P17 `+60` construction**: `+120` on Constraints where a P18 floor-gate
+  binding is present (key: `**Floor gates:**`), `+110` on Bindings where the P19/P20 pair is bound
+  (key: `**Run-start declaration:**`). Both are scoped v7-form-only in the same sentence, since a
+  v6-form file binds neither slot and so cannot carry either literal.
+- **Tier failed:** n/a — supersession by ruling (the first-conversion obligation above, itself
+  riding `lead-owned-process-flexibility` **D6(d)** as amended at **U2** and ratified at **A4**;
+  `DECISIONS.md` 2026-08-01).
+- **Content (v0.40.0, verbatim — the two clauses that changed):**
+  ```
+  · Constraints ≤
+  90·(G+2) · **Bindings ≤ 90 + 12·A, plus 30 where a KM-landing or index-bookkeeping binding
+  is present**
+  ```
+- **Kept deliberately:** every other ceiling and every term — preamble ≤ 130, Goal ≤ 150, the Seats
+  `100 + 45·S` with its P17 `+60`, Recovery `60 + 14·R`, the Bindings `+30` KM term (which the new
+  term stacks with, never replaces), the four-term counting procedure and its two anti-miscount
+  clauses, the `## Heading`-excluded rule, and the *Provisional* calibration paragraph. **"Over a
+  ceiling is a floor FAIL — name the block, the count, the term values, and the bound" survives
+  verbatim**, which is the clause that keeps this a calibration and not a waiver.
+- **Consumers assessed:** the six commands — `implement` is the only v7-form file and the only one
+  either term can reach; the other five carry neither literal (grep: zero hits for `**Floor
+  gates:**` and `**Run-start declaration:**` across all five), so their check-6 arithmetic is
+  **byte-for-byte unchanged**. `templates/command-shape.md` states P18–P20 but mandates no literal
+  for them, so the two keys are minted at this conversion and stated here, in the grader, where
+  `**Seat lifecycle:**` is also enforced — a later conversion earns the terms by carrying the same
+  literals.
+
+## [v0.43.0] Check 20's *ceilings await calibration* deferral discharged
+- **Disposition:** superseded → rewritten in place. The clause now states the two landed terms and
+  the re-key condition instead of the deferral it carried.
+- **Tier failed:** n/a — supersession by ruling (the same first-conversion obligation; the deferral
+  was written to be spent at exactly this event).
+- **Content (v0.40.0, verbatim):**
+  ```
+  **Ceilings await calibration for the v7 form** — check 6's terms were measured on v6-form
+  bodies, and P18–P20 add words to Constraints and Bindings that no term yet pays for. The
+  first conversion measures its blocks and lands any needed term **in the same wave** (the
+  precedent is check 6's `+60` P17 term). Until such a term exists an over-ceiling is still a
+  floor FAIL: the fix is the measured re-key, never a waived check.
+  ```
+- **Kept deliberately, and it is the load-bearing half:** *"an over-ceiling is still a floor FAIL:
+  the fix is a measured re-key, never a waived check"* — carried into the rewrite almost verbatim.
+  The deferral is what expired; the anti-waiver rule it guarded is permanent. Also kept: the whole
+  of check 20's form-branch logic, which this wave did not touch.
+- **Consumers assessed:** `.mochiko/strips/command-shape.md`'s v0.40.0 *Deliberately not encoded*
+  item 4 is the only other surface asserting the deferral; it is annotated as discharged in the
+  same landing (that note's [v0.43.0] addendum). No command quotes this clause (grep: zero hits).
+
+*Pure additions this wave, riding the decision row rather than these entries:* the **calibration
+paragraph** in check 6, stating for both terms the measured binding, the arithmetic, the resulting
+headroom against the P17 precedent's band, the calibration basis (one v7-form body — the library's
+heaviest command, whose P18 additionally carries a ruled clause no other command will), and the
+re-key condition. Written to the bar the P17 paragraph set: a term whose ground is not readable is
+a number the next auditor cannot check.
+
+---
+
 # v0.40.0 — the grader re-keyed **additively** alongside shape v7 (lockstep, five edits)
 
 **Wave context:** the lead-owned-process-flexibility doctrine wave (wave note:

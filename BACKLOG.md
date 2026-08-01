@@ -6,8 +6,10 @@ surface is [`ROADMAP.md`](ROADMAP.md). Closing an item = the KM landing ritual
 (`.mochiko/memory/knowledge-management.md`): decision row + move here → the trail
 (`.mochiko/archive/backlog-trail.md`) + touch ROADMAP.md. No `[x]` lives here.
 
-*Last groomed: 2026-08-01 (delivery sweep) — baseline: 55 open items (60 pre-sweep: 3 closed
-to the trail, 2 merged; 52 at the 2026-07-25 migration), per-item bound ≤15 lines.*
+*Last groomed: 2026-08-01 (delivery sweep; shape-v7 wave close) — baseline: 55 open items
+(convert-on-touch residuals closed to the trail, post-conversion watches opened in place; 60
+pre-sweep: 3 closed to the trail, 2 merged; 52 at the 2026-07-25 migration), per-item bound
+≤15 lines.*
 
 ---
 
@@ -109,8 +111,9 @@ pass closed 2026-07-31 (v0.39.0, trail). The read-drop deferral below is the ope
   Trigger terms re-keyed by the 2026-08-01 flexibility ruling (R16: "gates not rationalized" →
   measured against the stated default + recorded departures; "bounds held" → declared bounds
   under the U1-D counter rule); re-specification landed with shape v7 (v0.40.0 transition
-  note). The re-keyed trigger needs v7-form constructs (P18 gates · stated-default trail ·
-  declared bounds) — now sequenced behind the convert-on-touch item: no v6-form run can fire it.
+  note). The re-keyed trigger's v7-form constructs (P18 gates · stated-default trail · declared
+  bounds) exist on every command since the v0.43.0 conversion wave — the first live run with
+  gates ruled and bounds held fires it.
 
 ## Lead-owned process flexibility build (shape v7)
 
@@ -118,19 +121,17 @@ Rulings D1–D6-as-amended + A1–A4 (DECISIONS.md 2026-08-01; record
 `.mochiko/brainstorms/lead-owned-process-flexibility/record.md` — pair-reviewed 40→39→31,
 31/31 dispositioned, verify CLEAN round 3).
 
-- [ ] **Convert-on-touch residuals** (2026-08-01; build DONE at v0.40.0 → trail) — owed at each
-  command's conversion touch: measure the v7-form Constraints/Bindings blocks and land any
-  check-6 ceiling term in the same wave (check 20 names the owed work; over-ceiling stays a
-  floor FAIL meanwhile — beyond-record, user-ratified at wave close 2026-08-01 together with
-  the marker-retirement clause) · bind
-  P18–P20 · state the v6-form run's weight-card home (shape-audit obs). Next touch of
-  `review-brainstorm`/`review-governance-intent`: align the verify-pass trigger phrasing with
-  U1-B (logged in `.mochiko/strips/sized-end-stage-review.md`). R21 (recorded-open): measure
-  declaration + trail + composition cost on the first light and the first heavy conversion —
-  the natural sites; detail in `.mochiko/strips/command-shape.md` [v0.40.0]. Watches: first
-  external dogfood (R22) · each converted command's first live run · floor-read growth
-  +11,399 B/run (token epic, no offset claimed; static read-cost — distinct from R21's per-run
-  composition overhead).
+- [ ] **Shape-v7 post-conversion watches** (2026-08-01; conversions DONE at v0.43.0 → trail) —
+  open remainders of the discharged convert-on-touch item: align the
+  `review-brainstorm`/`review-governance-intent` verify-pass trigger phrasing with U1-B at
+  those skills' next touch (logged in `.mochiko/strips/sized-end-stage-review.md`) · each
+  converted command's first live run is its own checkpoint, and the first run with gates ruled
+  and bounds held also fires the `loop-discipline` read-drop trigger (goal-shape section) ·
+  R22: the first external dogfood grades the uniform stated default for distributed leads ·
+  R21's declaration + trail estimate awaits live-run confirmation (both conversion sites
+  measured; regressive fixed-cost finding — near-constant v7 constructs, so lighter commands
+  pay a larger share — `.mochiko/strips/command-shape.md`) · token-epic figure: the always-read
+  floor now 52,129 B/run (−581 at the marker retirement, the first shrink in three revisions).
 
 ## Pipeline dogfood & confirm-or-revert
 
@@ -216,8 +217,11 @@ together.
 - [ ] **D5 — review sizing gates generalized + floored verification depth** — command texts of
   the five pipeline stages (verification depth never zero, real-infra floor). Gap sharpened
   2026-08-01 (delivery sweep): the v7 flexibility ruling makes stated defaults lead-departable
-  while D5's never-zero floor is encoded nowhere — land it as a floor invariant (P18 carrier);
-  natural site: each command's convert-on-touch ceremony.
+  while D5's never-zero floor is encoded nowhere — land it as a floor invariant (P18 carrier).
+  Partial landing at the v0.43.0 conversion wave: implement's P18 encodes the never-zero /
+  real-infra depth floor verbatim in intent; reviewer-count sizing is now lead-composed under
+  v7 stated defaults (U4). Remaining: rule whether v7 composition + the weight card discharges
+  D5's sizing-gate generalization for the other four stages — take it at the next groom.
 - [ ] **D2 upgrade — the one-shot OTel probe** — enable documented config in a dogfood run;
   observe console/per-run aggregation/teammate attribution; automation graduates on probe
   evidence only. Standing-seat D4 + model-tiered D6 probe questions ride it, plus TC's three
@@ -297,9 +301,8 @@ Raw captures (2026-08-01) — to triage/brainstorm; grooming may re-key into fin
   implement-run interference observation on the run, composed-in or not · measure per-cycle
   snapshot cost at the first composed-in run (F33 UNVERIFIED) · check non-npm dependency
   behavior at the first non-npm composed-in run (F71; kinako/Flutter the live candidate) ·
-  implement's v7 convert-on-touch trigger stays live (F66 — conversion deferred by user
-  ruling at the v0.42.0 touch; a dedicated wave takes it, carrying the first-conversion
-  ceiling-term obligation).
+  (F66 discharged 2026-08-01: the v0.43.0 wave converted implement, first-conversion
+  ceiling terms landed.)
 - [ ] **Layer-2 working-tree ownership gap** (2026-08-01; provenance:
   `validator-worktree-isolation` record, Open thread 6) — command-shape Layer 2 says nothing
   about seats sharing one working tree (F19: independence is defined context-scoped) while

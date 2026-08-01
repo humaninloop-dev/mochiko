@@ -5,9 +5,275 @@ one-shot-command wave after specify's v0.13.0 and slice's v0.14.0). The wave als
 conversion assessment** (one-shot → team-form) and re-checked the **S8 home-revision checkpoint**
 against plan's needs (a standing producer spanning two phases + two reviewer seats, one of them
 fire-once — no new shape gap at that wave, when the shape was v2). **Stale as a standing claim:** the
-shape is now **v4** (2026-07-30) — see the v0.31.0 entry below.
+shape is now **v4** (2026-07-30) — see the v0.31.0 entry below. **Stale again:** the shape reached
+**v5** at the v0.34.0 pilot below and **v7** at v0.40.0; plan is **v7-form** as of the v0.43.0
+conversion at the top of this note.
 
 ---
+
+## [v0.43.0] The `<!-- shape-form: v7 -->` marker retired from the preamble
+- **Disposition:** superseded → deleted. The marker was added by this same version's conversion
+  entry below and retires in the same version, at the wave close.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-01 wave-close
+  ratifications row, *shape-form marker retirement when the last command converts*; the trigger
+  was written into the marker clause itself). **Ground and full record:**
+  `.mochiko/strips/command-shape.md` [v0.43.0 wave close], entry 1 — *The form marker and its
+  Conformance bullet retired* — not restated here.
+- **Content (verbatim):** `<!-- shape-form: v7 -->`
+- **Kept deliberately:** the entire preamble otherwise — goal line, obligated reads, probe seat —
+  and every P18–P20 binding the marker used to gate. The slots bind unconditionally now; nothing
+  the marker declared was lost, because the marker declared only which grading branch to take, and
+  there is one branch.
+- **Consumers assessed:** `validation-command-shape` check 20 was the sole grep consumer and its
+  form branch retired in the same ceremony. All six commands swept together — a marker left in any
+  one of them would be the only file in the library still declaring a form.
+- **Measured:** `commands/plan.md` **15,842 → 15,817 B** (−25). Derived figures in this note's
+  conversion section re-measured accordingly, superseded values kept inline.
+
+# v0.43.0 — the v6→v7 conversion
+
+**Wave context:** shape **v7** landed at v0.40.0 (`lead-owned-process-flexibility`,
+`.mochiko/brainstorms/lead-owned-process-flexibility/record.md`; `DECISIONS.md` 2026-08-01 — the
+lead-owned-process-flexibility row plus the shape-v7 wave-close ratification row), with **D4**
+ruling **convert-on-touch** and all six commands staying v6-form. This wave converted `implement`
+first — audit-cleared, and the precedent this conversion follows — and was **user-widened on
+2026-08-01 to all six commands**; plan is one of the five that followed. BACKLOG: "convert-on-touch
+residuals".
+
+The **first-conversion ceiling-term obligation** was discharged at implement
+(`.mochiko/strips/validation-command-shape.md` [v0.43.0] — the `+120` P18 and `+110` P19/P20 terms).
+plan measures its blocks against those terms and **needs no re-key**.
+
+**Post-conversion measurement, all blocks, body-only in words** (`## Heading` lines excluded per
+check 6; the `# ` title counts to the preamble, as implement's measurement counted it): preamble
+**99/130** (the 4-word form marker retired at the wave close) · Goal **108/150** (was 121) · Seats & checks **350/430**
+<!-- Preamble provenance, verified against git rather than assumed, because the wave found this
+     convention published both ways across the notes: plan's v0.34.0 figure of 99 was itself
+     measured TITLE-INCLUDED — the pilot commit (7898d86) measures 99 incl. title / 87 excl., and
+     the note published 99. So the baseline above is like-for-like, not 8–12 w light. plan's `# `
+     title is 12 tokens. The ceiling verdict is convention-independent here either way: 99/130
+     title-included, 87/130 title-excluded (published as 103/91 while the 4-word form marker
+     stood; re-measured at the wave-close sweep) — under 130 on both readings, so no preamble trim is
+     owed and no supersession entry arises from it. -->
+
+(unchanged) · Constraints **927/1020** (was 788) · Bindings **337/410** (was 231) · Recovery
+**251/298** (unchanged in count; two row keys re-worded, below).
+
+Term derivation as check 6 requires: **G = 8** — the seven prior gate lines plus the run-start
+weight card, all eight carrying the complete three-part `evidence:`/`rules:`/`decides:` form — so
+Constraints is 90·(8+2) = 900 **plus the new +120 P18 term** = 1020. **S = 6** and **R = 17**, both
+unchanged, Seats carrying the P17 `+60` term (370 + 60 = 430). **A = 15**, unchanged: ten
+deliverables (`requirements.md` · `constraints-and-decisions.md` · `nfrs.md` · `architecture.md` ·
+`data-model.md` · `contracts/api.yaml` · `quickstart.md` · `task-mapping.md` · `tasks.md` ·
+`plan.md`) plus five round reports, with `ARCHITECTURE.md` and `GLOSSARY.md` excluded as KM fold
+targets — so Bindings is 90 + 12·15 + 30 (KM) **plus the new +110 P19/P20 term** = 410.
+
+> **The A-term judgment implement recorded holds here unchanged.** P19 names `plan-contract.md` as
+> a **departing** run's per-run carrier. It is **not counted in A**: neither a deliverable nor a
+> round report, and it exists only on a departing run. Counting it would only loosen the check.
+
+> **Datapoint for the `+110` term, recorded so a later re-key is judged and not guessed.** plan's
+> P19/P20 pair measures **106 w** against implement's **88 w** — the basis the term was sized on —
+> so the second measured v7 binding already exceeds the first by 20 w. It is **not a re-key case**:
+> the term is not what binds here, Bindings landing at 337/410 (**17.8%** headroom, wider than
+> implement's 9.3%). The pair is larger because plan's declaration carries two homes plus a
+> two-clause counted unit (the per-stage cap *and* the cumulative lifecycle tally), where
+> implement's counted unit is one word. A conversion that merely fits is not a re-key case.
+
+## [v0.43.0] The Goal's end state loses its six reviewer clearances and its lead-read clause
+
+- **Disposition:** superseded → rewritten in place as artifact state. What the clearances certified
+  survives as **properties of the package**: requirements traced through to the task breakdown,
+  no cross-artifact contradiction, and conformance to the signed-off architecture target.
+- **Tier failed:** n/a — supersession by ruling (**D6(b)**, ratified at **A4**, 2026-08-01: *"Goal
+  blocks lose process residue. Done = artifact state + floor compliance + user acceptance"*; graded
+  by `validation-command-shape` check 23, v7-form only). The fact map named this exact surface —
+  **F56**: plan's Goal "hard-codes **six** distinct reviewer clearances into the done-condition …
+  the densest mandated-review-branch surface in the set" — and the v0.40.0 shape wave deferred its
+  rewrite to this touch.
+- **Content (v6, verbatim — the two spans that left):**
+  ```
+  `principal-architect` returned `feasible` on the analysis
+  **and** on the architecture pass; `devils-advocate` returned `ready` on the analysis, the
+  architecture coverage, the detailed design, the mapping **and** the tasks, each grounded in the
+  files;
+  ```
+  ```
+  you Read the
+  artifacts and reports and found no blocking gap;
+  ```
+- **Protected content: none of it is in plan's protected set, and this was checked before the cut.**
+  The v0.34.0 **CS-D8 survivor re-grade ledger** below resolves all 23 protected rows, and not one
+  names the Goal's **end state** as its home: verdict-ownership / no-devolved-branch → the Ordering
+  invariants + the validation-model line · feasibility's lead-gated fire-once engagement → the seat
+  row + ordering invariant · the mode-selecting message → the validation-model line ·
+  **AD-D1/D2/D5/D8** → **G3** and the ordering invariant · **AD-D9** → **G4** · **AD-D3** → **G2**,
+  Bindings and the KM binding · **AD-D7** → two seat rows + Bindings. **Every one of those homes is
+  untouched by this conversion** — the architecture-primitive content from the v0.32.0 merge is
+  carried, not edited.
+- **Kept deliberately:**
+  - **The `quickstart.md` null path** — the one protected row whose ledger home *is* the Goal
+    ("Bindings (conditional + null path) **and** the Goal's not-done states"). Its not-done state is
+    untouched, word for word.
+  - **The three graded properties, in substance.** FR→TR traceability, cross-artifact consistency
+    and conformance-to-the-approved-architecture are what `review-plan-artifacts` grades and
+    `review-feasibility` contradicts; they now read as states of the package rather than as statuses
+    a seat returned. "with no unresolved contradiction" survives as "carries no cross-artifact
+    contradiction".
+  - **G3's clearance — floor compliance, not residue.** G3 reads `rules: the user`, so under D6(b)
+    its clearance belongs in done exactly as "the user accepted … at G7" does. Reworded only
+    ("conforms to an architecture target signed off at G3"); the not-done state "an unsigned or
+    re-opened architecture target" is untouched.
+  - **"each grounded in the files"** — the evidence-not-say-so bar. Its home is the obligated
+    `mochiko:loop-discipline` read, verified by reading it this run: `SKILL.md:58` ("working from
+    the artifact itself — not from the producer's say-so") and `:68` ("A PASS is invalid unless the
+    evidence was actually Read from the real artifact"). plan's validation-model line keeps its
+    lead-adjudicated-input clause unedited.
+  - **"the KM landing ran" and "the user accepted the whole package at G7"** — both explicit
+    end-state elements in the shape's own Goal spec, so neither reads as residue.
+  - **The round reports** — not dropped from the end state, **re-scoped to what ran** ("alongside
+    the round reports for the grading that actually ran"). Requiring all five unconditionally would
+    re-impose the stated default as an obligation, which is the residue class itself; scoping them
+    to the grading that ran is the honest-trail invariant reading the same evidence.
+- **Consumers assessed:** not a shared primitive. Two cross-file consumers checked: the grader's
+  check 23 (this Goal is text it was written against — `.mochiko/strips/validation-command-shape.md`
+  [v0.40.0]) and the four commands still v6-form (specify · slice · setup · brainstorm), whose Goal
+  blocks **stay exactly as written** — the residue clause is v7-form-only and each converts at its
+  own touch.
+
+## [v0.43.0] Two not-done states superseded — the reviewer-status pair
+
+- **Disposition:** superseded → deleted from the Goal. Both rules stand unchanged at their ledgered
+  homes in **Constraints** and the validation-model line.
+- **Tier failed:** n/a — supersession by ruling (**D6(b)**, as above).
+- **Content (v6, verbatim):**
+  - `any reviewer status short of `feasible`/`ready``
+  - `a reviewer status taken as the gate without your read`
+- **Protected content, leaving by ruling and named as such:** the second is the Goal-side echo of
+  the v0.31.0 *Kept deliberately* row "Every verdict stays the lead's; **no devolved branch**",
+  whose CS-D8 ledger home is the **Ordering invariants** line ("**No devolved branch** — every
+  review here is a judgment grade, so no gate is skipped and no unit clears unread") **plus** the
+  validation-model line ("every verdict is yours") — not this Goal state. The protected content
+  stays where the ledger put it; only the echo left. Same disposition implement's conversion made
+  for "a non-clean cycle advanced without your verdict", on the same ground: it made the lead's own
+  process step a done-condition element, and it can never be rescued as a floor gate, because a
+  lead's read is not a `rules: the user` line and check 21's floor-gate test keys on that.
+- **Kept deliberately:** the whole verdict-ownership and no-devolved-branch surface, unedited, at
+  both homes; `infeasible` as a distinct escalating state, at **G4**; and every other not-done
+  state, unedited.
+- **Consumers assessed:** as above — not a shared primitive; grader check 23 and the four v6-form
+  commands, both unaffected.
+
+## [v0.43.0] Recovery's two `plan.md` resume keys re-keyed from presence to assembly
+
+- **Disposition:** superseded → re-worded in place, forced by P19. With the declaration opening
+  `plan.md` at run start, *file presence* no longer discriminates the assemble and acceptance
+  stages; *assembly* does. Left unfixed, a resumed lead reading "`plan.md` present, unaccepted"
+  would jump a run's first minute straight to G7.
+- **Tier failed:** n/a — supersession by ruling (**OQ-2 / A2**, 2026-08-01 — the run-start
+  declaration's home; this re-key is that ruling's consequence in this file).
+- **Content (v6, verbatim → v7):**
+  - `| all stages cleared, no `plan.md` | assemble |` → `| all stages cleared, `plan.md` unassembled | assemble |`
+  - `| `plan.md` present, unaccepted | G7 |` → `| `plan.md` assembled, unaccepted | G7 |`
+- **Kept deliberately:** both rows' resume targets and the table's other fifteen rows, unedited; and
+  the pause line ("Note the resume stage on the deliverable"), which names the same surface P19
+  binds — so no edit was owed there, matching implement's judgment on its own Recovery block.
+- **Consumers assessed:** not a shared primitive. `templates/plan-template.md` **assessed and not
+  edited**: the declaration is one lead-written line at the head of the artifact, above the summary
+  the template fills, and the template's own head is a metadata line rather than a rigid schema.
+  Flagged here rather than silently edited — a template change is its own primitive edit with its
+  own audit.
+
+*Pure additions this wave, riding the decision row rather than these entries:*
+
+- **The form marker** `<!-- shape-form: v7 -->` in the preamble — check 20's branch key.
+- **The run-start weight-card gate line** (P7) — U1-A's standing user stop, in the three-part
+  countable form, taking **G from 7 to 8**.
+- **`**Floor gates:**`** (P18) — the floor set (all eight gates, two of them limb-scoped) with the
+  empty not-floor set stated rather than inferred, plus the lead-penned surface named (judgment 2
+  below).
+- **`**Run-start declaration:**`** (P19) and **`**Departure trail:**`** (P20) in Bindings — the
+  declaration at the head of `plan.md` for a default run, an instantiated `plan-contract.md` for a
+  departing one, and the **produce↔review round** named as the counted unit (check 22), the same
+  unit the Bounds cap per stage and the P17 lifecycle line tallies cumulatively.
+- **One new not-done state** — `a departure with no trail line`, the honest-trail invariant made
+  visible in the Goal as floor compliance.
+
+**Three judgments made here rather than deferred, flagged for the grader.**
+
+1. **The floor-gate set is all eight, and the not-floor set is empty.** The test is *who rules*, and
+   every gate in plan reads `rules: the user` — grep-verified this run, and the fact map records the
+   same at **F55** for the pre-conversion seven. Where implement kept two gates departable, plan has
+   none to keep: it numbers no `rules: you` gate at all, implement's cycle checkpoint having no
+   analogue here (the ordering invariants declare **no devolved branch**).
+
+   **Why G1 is floor here although implement's G1 is not.** implement cleared its G1 on a structural
+   ground — its **package gate** is floor and its evidence is the resolved feature's package, so a
+   lead that composes out G1's confirm still puts the resolved feature in front of the user on the
+   very next gate. **plan has no second gate carrying that evidence**: the weight card's evidence is
+   the rigor read, not the feature resolution. That leaves only the narrow explicit-ID argument,
+   which implement's own audit rejected as too narrow for saying nothing about the detected-feature
+   branch. And the confirm is protected: the [v0.37.0] entry below kept it **on its own merit** —
+   "an expensive run must not open silently on a guessed feature" — by user ruling. Marking it
+   departable would be a behavior change to protected content that no ruling in this wave
+   authorizes.
+
+   **Two limbs scoped rather than marked whole**, per the precedent's blocking-vs-floor lesson:
+   **G2** is floor *on its bootstrap limb* (a present `ARCHITECTURE.md` skips the gate — its own
+   line already says so), and **G5** is floor *on its preference ruling* only (a knowledge gap
+   routes to `Explore`, a scope gap to G6 — neither is the user's). *When* each floor gate is
+   presented stays the lead's under **D3**'s consolidation authority, which is home doctrine and is
+   deliberately not restated in the command.
+
+2. **`plan.md` is named as the lead-penned surface, although P11 is producer-authored.** Check 21(2)
+   keys the always-cold-graded naming on P11's lead-penned-*record* branch, which plan does not bind
+   — its uncertainty carrier is each report's Assumptions / Open Questions. Reading the check
+   narrowly would let plan state an absence and stop, and that reading is wrong on the floor's own
+   words: `plan.md` is **your fill-target** (Bindings), so it is a lead-penned **deliverable**, and
+   Layer 1 invariant 2 says one ships with zero cold reads *only by a recorded user waiver*. Before
+   this conversion `plan.md` went from the lead's pen to G7 with no independent read at all. The
+   binding states the floor and nothing beyond it — one cold-seat grade **wherever a review ran**,
+   the waiver at the weight card — so a run that composes every review out is not forced into a
+   grade; it is forced to have the user say so.
+
+3. **The declaration and the trail share `plan.md`'s head, opened at run start.** plan's other
+   artifacts are producer-authored and revised in place; `plan.md` is the package's summary, the
+   lead's own surface, and what G7 accepts — the only durable home where the user meets the trail at
+   the gate that reads it, which is why P20 carries it into G7's evidence. The cost is a `plan.md`
+   that exists from run start carrying only its declaration, which is what forced the Recovery
+   re-key above. **`requirements.md` was rejected as a home:** it is producer-authored and rewritten
+   across revision rounds, so a trail parked there is a trail a producer can overwrite — the same
+   hazard that ruled out `cycle-report.md` at implement.
+
+**On the revived `plan-contract.md` name — not a re-add, and carrying no `RETURNED:` entry.** P19's
+departing-run carrier re-uses the filename retired at [v0.15.0] below ("Per-run contract fill").
+What was stripped there was an *unconditional, authoring-time* fill whose values were constant ("a
+per-run form whose values are constant at authoring time is ritual, not proof"); what **A2** revives
+is a *conditional, per-run* carrier instantiated **only** when a run departs from the stated default
+or declares non-default bounds — values D1-as-amended makes genuinely vary per run. Same file name,
+different rule, different ruling; the stripped text does not return.
+
+**File growth.** `commands/plan.md` **14,344 → 15,817 B** (+1,473; words 1,986 → 2,218, +11.7%).
+Attribution, each construct measured on its own text, and reconciling exactly to the file delta:
+
+| construct | bytes | words |
+|---|---|---|
+| ~~`<!-- shape-form: v7 -->` marker~~ — added here, **retired at the wave close** | ±0 | ±0 |
+| run-start weight-card gate line (P7) | +280 | +46 |
+| `**Floor gates:**` — the eight-gate floor set + the lead-penned surface (P18) | +559 | +93 |
+| `**Run-start declaration:**` (P19) | +558 | +79 |
+| `**Departure trail:**` (P20) | +172 | +27 |
+| Goal block, D6(b) residue strip | −107 | −13 |
+| Recovery, two resume keys re-worded | +11 | 0 |
+| **net** | **+1,473** | **+232** |
+
+**R21 — still open at half, and this conversion does not close it.** implement measured the heavy
+site; `lead-owned-process-flexibility` **R21** (narrowed by **A3** to the estimate alone) asks for
+one light run as well. plan is the library's *second*-heaviest command, not a light one, so the
+light-site residue stands. What plan adds to the record is a second heavy-ish datapoint: **+1,498 B
+on every plan run** (10.4% on top of the command itself), plus one declaration line on a default
+run, plus ~15–25 w per departure, plus — departing runs only — `templates/workflow-contract.md`'s
+5,572 B and a filled copy of comparable size at `plan-contract.md`.
 
 ## [v0.37.0] `@`-reference recovery superseded — the platform bug it named is resolved
 - **Disposition:** superseded → user ruling (2026-08-01). The bug-attributed re-enter workaround retires; the detected-feature resolution survives with a confirm (see *Kept deliberately*).

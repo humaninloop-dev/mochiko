@@ -18,16 +18,15 @@ produces before anything reviews.
 
 ## Goal
 
-Every artifact in Bindings exists; `principal-architect` returned `feasible` on the analysis
-**and** on the architecture pass; `devils-advocate` returned `ready` on the analysis, the
-architecture coverage, the detailed design, the mapping **and** the tasks, each grounded in the
-files; the architecture sign-off (G3) cleared with no unresolved contradiction; you Read the
-artifacts and reports and found no blocking gap; the KM landing ran; and the user accepted the
+Every deliverable in Bindings exists, alongside the round reports for the grading that actually
+ran; the package traces the business requirements through to the task breakdown, carries no
+cross-artifact contradiction, and conforms to an architecture target signed off at G3; `plan.md`
+assembles that validated set, never new design; the KM landing ran; and the user accepted the
 whole package at G7. The package is `/mochiko:implement`'s unchanged entry condition.
 
-**Not done:** a missing artifact, or an unrecorded `quickstart.md` null path · any reviewer
-status short of `feasible`/`ready` · an unsigned or re-opened architecture target · a reviewer
-status taken as the gate without your read · out of rounds · G7 unaccepted.
+**Not done:** a missing artifact, or an unrecorded `quickstart.md` null path · an unsigned or
+re-opened architecture target · a design element contradicting that approved target · a departure
+with no trail line · out of rounds · G7 unaccepted.
 
 ## Seats & checks
 
@@ -60,6 +59,9 @@ boundary and is the longest-lived of the governed seats here.
   surfaced (offer `/mochiko:setup`), never auto-resolved; brownfield requires
   `codebase-analysis.md` (missing → offer setup or proceed greenfield with a logged warning; >14d
   stale by mtime → warn); an absent `ARCHITECTURE.md` sets the bootstrap flag for G2.
+- **Run-start weight card** — evidence: your stated read of the four rigor factors against this
+  feature's accepted spec, plus the process you compose from it — the stated default below, or
+  your departures from it · rules: the user · decides: the run's composed process.
 - **G2 baseline** *(bootstrap only)* — evidence: the architect's reconstructed current-state
   topology, marked reconstructed with its confidence noted · rules: the user · decides: the
   delta's current-state seed, **before any delta is designed on it**. A present `ARCHITECTURE.md`
@@ -91,6 +93,12 @@ boundary and is the longest-lived of the governed seats here.
   the decision / entity / endpoint / cycle counts with any noted limitations · rules: the user ·
   decides: done / amend (re-enter the relevant bounded stage; an architecture amend re-clears G3)
   / reject (drafts remain in place). This is the package's **one** standing acceptance.
+- **Floor gates:** every gate above — **G1**'s feature confirm · the run-start weight card ·
+  **G2**'s baseline confirm on its bootstrap limb · **G3** · **G4** · **G5**'s preference ruling ·
+  **G6** · **G7** — the user's whatever you compose, never departable; plan numbers no lead-ruled
+  gate, so the not-floor set is empty. **`plan.md` is the one lead-penned surface here:** wherever
+  a review ran it takes one cold-seat grade before G7, never your own read in place of one — zero
+  cold reads only by a recorded waiver at the weight card.
 - **Bounds:** cap **3** produce↔review rounds **per stage** (analysis · architecture · detailed
   design · mapping · tasks), you count each; no-progress exit on a gap set unchanged
   round-over-round; kill-switch `PLAN_STOP` checked before each seat send; out of rounds =
@@ -135,6 +143,14 @@ boundary and is the longest-lived of the governed seats here.
 - **Uncertainty carrier:** producer-authored — each report's Assumptions / Open Questions, not
   confidence marks.
 - **Fact route:** the artifacts themselves; a knowledge gap goes to a native `Explore` pass.
+- **Run-start declaration:** one line at the head of `plan.md`, opened at run start to carry it
+  and assembled at the end — the surface Recovery already notes the resume stage on — for a
+  default run; a run that departs from the stated default, or declares non-default bounds,
+  instantiates `templates/workflow-contract.md` as `.mochiko/specs/<feature>/plan-contract.md`
+  beside the reports instead. Counted unit: the **produce↔review round** — capped per stage by the
+  Bounds, tallied cumulatively across the five stages by the lifecycle line.
+- **Departure trail:** one line per departure, appended under that same `plan.md` declaration as
+  it is taken and carried into G7's evidence — never your context alone.
 - **KM landing:** `.mochiko/memory/knowledge-management.md` exists → run its ritual + invariants
   under fix-on-sight, and mint new domain terms into `GLOSSARY.md`. A **bootstrap-confirmed
   baseline** (G2) lands as the initial `ARCHITECTURE.md` via the scribe seat. Plan records only
@@ -161,7 +177,7 @@ stage needs — a respawned producer re-reads the artifacts + gap list.
 | `task-mapping.md` present, not `ready`, within the cap | mapping (loop control) |
 | mapping cleared, no `tasks.md` | tasks (produce) |
 | `tasks.md` present, not `ready`, within the cap | tasks (loop control) |
-| all stages cleared, no `plan.md` | assemble |
-| `plan.md` present, unaccepted | G7 |
+| all stages cleared, `plan.md` unassembled | assemble |
+| `plan.md` assembled, unaccepted | G7 |
 | accepted | finalize — report artifacts, per-stage round counts, the decision / entity / endpoint / cycle counts, a suggested commit (`docs: plan <feature>`), next step `/mochiko:implement` |
 | `PLAN_STOP` present | escalate (G6) |

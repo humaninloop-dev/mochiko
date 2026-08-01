@@ -6,6 +6,217 @@ Shape v3 also *added* the Run-cost entry element (D2 — recorded in ROADMAP, no
 
 ---
 
+# v0.43.0 (wave close) — the dual-form scaffolding retires; the always-read floor shrinks
+
+**Wave context:** the v7 conversion wave closed with **all six commands converted** — implement
+first (section below), then brainstorm · plan · setup · slice · specify in parallel, each at
+[v0.43.0] in its own note. The marker clause's own stated trigger fired: *"it retires when the
+last command converts."* Precondition **independently verified before any edit**: 6/6 command
+files carry exactly one `<!-- shape-form: v7 -->`, zero duplicates, zero omissions. Ruling:
+`DECISIONS.md` 2026-08-01 wave-close ratifications row (marker retirement). Sibling entries this
+ceremony: `.mochiko/strips/validation-command-shape.md` [v0.43.0 wave close] ·
+`.mochiko/strips/sized-end-stage-review.md` [v0.43.0].
+
+**The version stands at v7.** Three revisions running, this note has recorded growth; this one
+records the opposite, and the honest framing is that **nothing was ruled** — scaffolding raised
+for a mixed-form interim came down when the interim ended. No doctrine changed, no slot moved, no
+`[PARAM]` was touched.
+
+## [v0.43.0] The form marker and its Conformance bullet retired
+- **Disposition:** superseded → deleted. The library is single-form; there is no branch left to
+  declare, and the audit's branch key has nothing to key.
+- **Tier failed:** n/a — supersession by ruling (the marker clause's **own** retirement trigger,
+  written into it at v7 and now met; `DECISIONS.md` 2026-08-01 wave-close ratifications row).
+- **Content (v7, verbatim):**
+  ```
+  - **Form is declared, never inferred.** A command authored or converted at v7 carries the
+    literal marker `<!-- shape-form: v7 -->` in its preamble; a file without it is v6-form and
+    is graded on the v6 slot set (interim note below). The marker is the audit's branch key,
+    and it retires when the last command converts.
+  ```
+- **Kept deliberately:** every other Conformance bullet, untouched — block-presence-per-binding
+  with its stated-absence rule, one-class-per-block, the gates-as-ordered-constraints ban on
+  `## Phase`/`## The flow`/ordinal steps, parameter-completeness, and **the preservation standard
+  for any rewrite** (the clause governing this very entry). The bullet list loses one member and
+  nothing else.
+- **Consumers assessed:** `validation-command-shape` check 20 was the only grader keyed to the
+  marker — retired in the same ceremony, its entry in that note. The **six command files still
+  carry the literal**; it is now inert rather than false, and removing it is a six-file edit
+  deliberately **not** taken here — see the flagged follow-up at the end of this section.
+
+## [v0.43.0] The v7 interim note retired whole — including this wave's own addition
+- **Disposition:** superseded → deleted. Every clause described a v6-form file, and no v6-form
+  file exists.
+- **Tier failed:** n/a — supersession by ruling (same trigger; the note's own scope was the
+  interim, and the interim is over).
+- **Content (v7 + the v0.43.0 addendum, verbatim):**
+  ```
+  > **Interim note (v7 — `Contested`, ruled over a pilot-first recommendation).** Shape v7 lands
+  > now and the six commands convert **when next touched or needed**
+  > (`lead-owned-process-flexibility` D4). Until a command carries the v7 marker it is **v6-form
+  > and fully conformant**, and three v7 clauses do not reach it: its gate lines and bounds stand
+  > exactly as written — read as this command's obligations, not yet as departable defaults · its
+  > Goal may name the checks and clearances the v7 spec calls process residue · and P18–P20 are
+  > out of its scope rather than silently absent from it. It is graded on the v6 slot set
+  > (P1–P17). The floor reaches a v6-form run all the same: binding no P19, it carries the
+  > run-start weight card in conversation — presented and ruled at run start — with the resume note
+  > its Recovery block already keeps as the card's record. The library runs mixed-form in the
+  > interim; the audit branches on the marker, never on the auditor's judgment, and each converted
+  > command's first live run is its own checkpoint.
+  ```
+- **Superseding my own addition, named as such.** The final sentence-and-a-half — the **v6-form
+  run's weight-card home** — was added *earlier in this same wave* by this same author (entry
+  immediately below, *addendum: the v6-form run's weight-card home*). It answered a real gap: the
+  floor demands a run-start weight card in every run, and a v6-form file bound no P19 to home it.
+  **That gap is now closed by construction, not by argument** — every command binds P19, so every
+  run's card has a durable home and the conversational fallback has no case left to cover. A
+  clause written for a population of zero is dead text; it goes out the way it came in, recorded.
+  The addendum entry below **stands as history** and is not rewritten.
+- **Kept deliberately:** the **v5 transition note** (the obligated `loop-discipline` read and its
+  re-specified reopening trigger) — untouched, byte-verified. It is not marker machinery: its
+  subject is a read that every command still carries and a trigger no live run has yet met, and
+  `validation-command-shape` check 1 still keys on it. Confusing the two notes would have dropped
+  a live, `DECISIONS.md`-traceable retention.
+- **Consumers assessed:** `sized-end-stage-review.md`'s v2 interim note cited this note as the
+  authority for "the unconverted command wins for its own run" — retired in the same ceremony
+  (`.mochiko/strips/sized-end-stage-review.md` [v0.43.0]). `validation-command-shape` check 20's
+  v6 branch cited it — retired in the same ceremony. No command quotes it (grep: zero hits).
+
+## [v0.43.0] P18–P20's form conditional retired — the three slots bind unconditionally
+- **Disposition:** superseded → deleted. The slot index's three v7 entries stand; only the
+  sentence scoping them to one form goes.
+- **Tier failed:** n/a — supersession by ruling (same trigger).
+- **Content (v7, verbatim):** "**P18–P20 are v7-form slots** — a v6-form file (no marker) neither
+  binds nor states them."
+- **Kept deliberately:** **P18 · P19 · P20 themselves**, wording unchanged, in their blocks — and
+  the conditionals that are *real* rather than form-scoped: P2's team-form, P13's sized-review-only,
+  P14's devolved-branch-only, and **P17's silent-absence carve-out**, which is a TC-D6 ruling and
+  has nothing to do with form. Retirement by omission is forbidden here as everywhere: nothing was
+  retired but the scoping sentence.
+- **Consumers assessed:** `validation-command-shape` check 12 carried the matching carve-out
+  ("graded **only** on check 20's v7 branch") — retired in the same ceremony.
+
+**Run cost — the floor shrinks, for the first time in three revisions.** `command-shape.md`
+**31,816 → 31,235 B** (−581; words 4,885 → 4,776). Against the wave's own earlier addendum
+(32,266 B) this ceremony alone removes **−1,031 B**. The shared always-read floor for a team-form
+run therefore goes **52,710 → 52,129 B, −581 on every run** — the whole saving being
+`command-shape.md`'s, since `loop-discipline` (15,124 B) and `agent-dispatch.md` (5,770 B) are
+byte-verified untouched. **This is a real reduction and it is small**, and both halves of that
+should be said: the shape's growth history reads v5 **+3,225** · v6 **+6,774** · v7 **+11,399** ·
+this close **−581**, so the de-scaffolding returns about **5%** of what v7 charged. The interim
+cost what it cost; what retires is only the part that existed to manage having two forms at once.
+`validation-command-shape` grew **+2,373 B** in the same ceremony and **does not touch the floor**
+— it is an audit-time read, and the K2 re-calibration it carries is measurement, not doctrine.
+
+**The six inert markers — flagged, then swept in the same version (user-ruled).** Raised here as
+an open follow-up when this ceremony's scope was three files and a parallel `specify` fix was in
+flight. **Ruled and executed 2026-08-01:** the ratified clause retires *the marker*, and the
+literal lives in the command files, so six inert comments are residue of a mechanism this same
+wave retired. All six swept — `<!-- shape-form: v7 -->` deleted from every preamble, **−25 B each,
+−150 B total**, grep across `plugins/` returning **zero hits**: the mechanism is gone from the
+shipped tree rather than merely unreferenced. One `[v0.43.0]` supersession entry per command strip
+note, each citing entry 1 above as its ground rather than restating it.
+
+**The derived-figure sweep, and the four figures it took two re-grades to find.** Every figure that
+reads off a command's file size was re-measured — the six conversion sections' headline block
+measurements and file-growth lines, the per-construct attribution tables, and the R21 heavy/light
+series with its trend arithmetic — superseded values kept inline throughout. **Four secondary
+passages were missed and are now repaired**, every one a marker-era preamble figure (+4 w) that
+survived while the same note's published headline was corrected a few lines above:
+
+1. `setup` — 127/130 title-included, 117 excluded, and the "3 w tightest block" margin.
+2. `slice` — 122/130, 6.2% headroom.
+3. `plan` — an HTML provenance comment, 103/130 and 91/130.
+4. `slice` again — **a citation of `implement`'s figure, not its own**: "implement's published 118
+   reproduces only with the title counted". implement's note publishes **114** and has never
+   contained 118; 118 is implement's marker-era value, reproducing from implement's file under no
+   convention. Repaired to 114 (103 excluded).
+
+**Three of the four carried a conclusion, not just a digit** — which is the whole reason a stale
+figure in a strip note matters. slice's (2) said the preamble was the file's tightest block; at
+118/130 (9.2%) it is fourth, behind Recovery 7.0%, Seats 7.4% and Bindings 8.9%. setup's stated a
+3 w margin that is really 7 w, leading Seats by 1 w rather than 5. slice's (4) was the load-bearing
+one: the sentence's entire job is to justify slice's counting convention by appeal to the
+precedent's published figure, and it cited a number the precedent never published. The convention
+it argues for is still correct; the evidence offered for it was not. Every conclusion was
+re-stated, not merely re-numbered.
+
+**Two lessons, and the second is the one a per-note sweep cannot reach.** First: a sweep that
+follows published headlines misses the same figure where it was *reasoned with* — a counting note,
+a provenance comment, a margin warning — and that is precisely where staleness does damage, because
+there the number is advice to the next editor. Second, from (4): **a stale figure can be a
+cross-note citation**, one note quoting another's. Items 1–3 were notes misquoting themselves, so a
+per-note pass finds them; (4) survived both the author's sweep and the first re-grade because both
+were keyed per-note. **The method this wave leaves behind: check each note for every *other*
+note's superseded values, not only its own.** The hazard compounds when the two notes' figures
+collide — 118 is also slice's own preamble count, appearing four more times in the same blockquote,
+so the false citation read as a coincidence rather than an error.
+
+`specify`'s retained 94/130 was ambiguous rather than wrong (its own blockquote marked it
+superseded); it was made explicit in the same pass rather than left to the next reader's judgment.
+
+---
+
+# v0.43.0 — addendum: the v6-form run's weight-card home (one clause, version stands at v7)
+
+> **Superseded at the wave close, same version** — see the entry above (*The v7 interim note
+> retired whole*). The clause below was written for v6-form runs and retired when the last command
+> converted. This section stands unedited as the record of why it was added and what it cost.
+
+**Wave context:** the first v6→v7 command conversion (`commands/implement.md`; wave note
+`.mochiko/strips/implement.md` [v0.43.0]). One clause enters the shape home, and it is a **pure
+addition riding the decision row** — no strip entry is owed for the clause itself; this section
+exists to record its ground, its cost, and its re-audit set.
+
+**The clause, verbatim,** appended to the v7 interim note after "It is graded on the v6 slot set
+(P1–P17).":
+
+> The floor reaches a v6-form run all the same: binding no P19, it carries the run-start weight
+> card in conversation — presented and ruled at run start — with the resume note its Recovery
+> block already keeps as the card's record.
+
+**Ground — a gap the shape audit surfaced and the first conversion owed.** Floor invariant 1
+demands a **run-start user-ruled weight card in every run** (U1-A, a standing user stop), but the
+card's durable home is P19's, and a **v6-form file binds no P19** (slot map above: P18–P20 are
+v7-form only). So between v0.40.0 and the last conversion, five of the six commands ran under an
+invariant whose carrier was unstated — not waived, just homeless. The clause states the home
+without minting doctrine: presented and ruled in conversation, recorded on the resume note the
+command's Recovery block already keeps. It adds **no new obligation to any v6-form command** and
+requires **no edit to any of the five**, which is why it lands as one sentence in the interim note
+rather than as a slot. Named in the BACKLOG "convert-on-touch residuals" item as owed at the first
+conversion.
+
+**Version judgment, stated so the audit grades a call and not an omission: the shape stays at v7.**
+This is a *siting* of an invariant the v7 revision already ruled, not a revision of it — nothing in
+the anatomy, the slot set, the floor or either Layer changed, and no `[PARAM]` moved. The footer
+records it as a dated **v7 addendum** with its version stamp and ruling source rather than minting
+a v7.1, so the file still shows when it last changed and why, and the v7 history is preserved
+intact. A grader that reads check 16 as demanding a bumped *number* here should say so — the call
+is deliberate and reversible in one edit.
+
+**Run cost.** `command-shape.md` **31,816 → 32,266 B** (+450; words 4,885 → 4,963) — the clause
+236 B, the footer stamp 213 B. Paid on **every team-form run of any command**, converted or not,
+the shape home being the shared always-read floor. Small against v7's own +11,399 B/run, and
+recorded rather than rounded away because that is this note's whole discipline. No offsetting
+saving is claimed; nothing left the file.
+
+**Re-audit coverage — the named set.** The shape's rule is one edit here plus a re-audit of the
+conformant commands. This addendum's set:
+
+1. **`commands/implement.md`** — a **full grade** on check 20's v7 branch: checks 1–19 plus 21–23,
+   with check 12's slot set run to P20. It is the wave's principal artifact and the first v7-form
+   file the grader has ever seen.
+2. **The five remaining commands** (`brainstorm` · `specify` · `slice` · `plan` · `setup`) — a
+   **confirmatory** pass under check 20's v6 branch. The claim under grade is that this clause left
+   each of them conformant and unedited: no marker, no P18–P20, checks 1–19 passing exactly as at
+   v0.40.0, checks 21–23 correctly not run, and their check-6 arithmetic untouched by the two new
+   v7-form terms (neither literal appears in any of the five — grep-verified at the landing).
+3. **`skills/validation-command-shape/SKILL.md`** — graded against the two terms it landed and its
+   own strip entries (`.mochiko/strips/validation-command-shape.md` [v0.43.0]); author ≠ grader
+   holds, this wave's author having written both it and the command.
+
+---
+
 # v0.40.0 — shape v6 → v7, the lead composes the process under a floor
 
 **Wave context:** `lead-owned-process-flexibility`
@@ -39,7 +250,9 @@ taken.** Measured **after the repair round**, which is the only basis these figu
 **12,291 → 15,124 B** (+2,833) · `agent-dispatch.md` **unchanged at 5,770 B** (OQ-4 ruled
 transport unaffected). The shared always-read floor for a team-form run therefore goes
 **41,121 → 52,520 B, +11,399 B on every run** — larger than v6's +6,774 and v5's +3,225
-combined. The conditional `sized-end-stage-review.md` adds **2,992 → 5,123 B** (+2,131) on the
+combined. *(Floor figure superseded at the v0.43.0 wave close: the dual-form scaffolding retired
+and the floor now measures **52,129 B**. The +11,399 growth this paragraph records is unchanged as
+history — what came back off is −581, logged in the wave-close section at the top of this note.)* The conditional `sized-end-stage-review.md` adds **2,992 → 5,123 B** (+2,131) on the
 two commands that bind it; `workflow-contract.md` 3,272 → 5,572 and
 `validation-command-shape` 17,761 → 22,920 are paid at authoring/audit time, not per run.
 *(Superseded figures, recorded so the drift is traceable rather than silently overwritten:
@@ -60,10 +273,48 @@ and one heavy run* (verify N3). It is logged in this note rather than written in
 `command-shape.md` because the shape's own **Run-cost entry element was dropped by user ruling
 at v5** ([v0.33.0] entry below), which took cost measurement out of the command layer entirely;
 a per-run cost-measurement duty in the shape would resurrect exactly what that ruling retired.
-**Status: open, unmeasured.** A3's ratification narrows the residue to the estimate alone
-(record, N6) — the cost *dimension* is covered, because floor invariant 3 makes a declared cost
-range a bound with a counter. The first light and first heavy conversions are the natural
-measurement sites, and the figures above are the wave's own contribution to that estimate.
+A3's ratification narrows the residue to the estimate alone (record, N6) — the cost *dimension* is
+covered, because floor invariant 3 makes a declared cost range a bound with a counter. The first
+light and first heavy conversions are the natural measurement sites, and the figures above are the
+wave's own contribution to that estimate.
+
+**Status (updated v0.43.0, second revision): both sites measured — the estimate obligation is
+discharged, pending only a live-run confirmation.** *(Superseding this note's own earlier reading,
+recorded so the drift is traceable rather than silently overwritten: "open at half — the heavy site
+is measured, the light site is not", written when the wave carried one conversion and the light
+site was expected at some later touch. The user widened the wave to all six commands on
+2026-08-01, so both sites landed in the same version.)* **All three files' figures below were
+re-measured after the wave close swept the six inert form markers (−25 B each); the superseded
+values were implement 16,046 B / +1,544 / 10.6% · specify 9,109 B / +1,243 / 15.8% · slice
+9,929 B / +1,214 / 13.9%, each true of a file that no longer ships.
+
+- **Heavy site — `implement`**, the library's densest command: file 14,502 → 16,021 B (+1,519;
+  +10.5% of the command), P18 100 w, P19+P20 88 w, Goal strip −67 B. Full per-construct
+  attribution, per-run read delta, and the declaration / trail / departing-contract estimate:
+  `.mochiko/strips/implement.md` [v0.43.0], *R21 heavy-site measurement*.
+- **Light site — `specify`**, a twice-stripped entry command: file 7,866 → 9,084 B (+1,218;
+  **+15.5%** of the command), P18 74 w, P19+P20 79 w, Goal strip −191 B. Same measurement basis:
+  `.mochiko/strips/specify.md` [v0.43.0], *R21 light-site measurement*.
+
+**What having both sites bought, which neither alone could give.** The v7 constructs are
+**near-constant in size** — they state a home, a counted unit, a floor set, each sized by the shape
+rather than by the command — so the absolute bill is smaller on a light command while the
+*relative* bill is half again larger (15.5% vs 10.5%). A third conversion in the same wave sits
+between them and makes the series monotone in the command's own size — `slice`, 8,715 → 9,904 B
+(+1,189; **13.6%**). All three percentages here are **byte** deltas against HEAD; slice's own note
+reports that conversion as **+14.2%** on a **word** basis (1,230 → 1,405 w), which is the same
+measurement in the other unit, not a competing figure — the trend holds identically on either.
+
+The same constancy shows in the conditional carrier: `workflow-contract.md` (5,572 B) is 38% of
+implement's pre-conversion size but **71%** of specify's, so on a light command a *departing* run's
+contract, not the conversion, is the dominant cost. Both notes' run-time components (declaration
+~30–60 w every run · trail ~15–25 w per departure · the contract on departing runs only) are the
+same figures at both sites, for the same reason.
+
+**What remains open, and it is not R21's estimate.** No live run has yet exercised a declaration or
+a trail, so every run-time figure above is an estimate and is marked as one in both notes. R21 asked
+for a measured estimate on one light and one heavy run and now has one; confirming it against a live
+run rides each converted command's first-run checkpoint (D4), not this obligation.
 
 ## [v0.40.0] The per-run-contract prohibition retired — the contract returns for departing runs
 - **Disposition:** superseded → `workflow-contract.md` **v2**, revived as the **per-run carrier
@@ -215,6 +466,12 @@ hunting one:
    20): the first conversion measures its blocks and lands any needed term in the same wave, on
    the `+60` P17 precedent — and until one exists an over-ceiling stays a floor FAIL, so the
    deferral loosens nothing.
+   **→ DISCHARGED at v0.43.0.** The first conversion measured one v7-form body and landed both
+   terms on the P17 construction — Constraints `+120` keyed on `**Floor gates:**`, Bindings `+110`
+   keyed on `**Run-start declaration:**` — with the calibration written into check 6 and check 20's
+   deferral sentence rewritten to state them. Entries:
+   `.mochiko/strips/validation-command-shape.md` [v0.43.0]; measurement:
+   `.mochiko/strips/implement.md` [v0.43.0].
 
 ---
 

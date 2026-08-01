@@ -42,24 +42,13 @@ wherever P6 binds it: departing from it is a recorded departure like any other
 - **Review + verify is the bound:** a survivor still blocking after that escalates to the
   user with both positions — out of bounds is never silently done.
 
-> **Interim note (v2).** Sizing ownership moved user → lead by recorded supersession (U4 —
-> `.mochiko/strips/sized-end-stage-review.md`). A command not yet converted to shape v7 still
-> says the user rules on sizing; **that stands, as written, in those commands** until their
-> conversion touch (`command-shape.md`, the v7 interim note). Where the two disagree, **the
-> unconverted command wins for its own run** — it is the file that binds. What does not change
-> either way is the protection: the floor's second invariant gives a lead-penned artifact its
-> cold grade whoever named the size. **The trail line above has a home before P20 exists:** in
-> an unconverted command a size below the default is recorded where that command already records
-> review outcomes — the artifact's **Review section**, beside the waiver record the `none` path
-> writes there. P20 names that home explicitly at the conversion touch; until then the
-> deliverable is it, by the same logic that lets the unconverted command win.
-
 ---
 
 **Version:** v2 (2026-08-01 — `lead-owned-process-flexibility` D6(c) ratified at A4: this
 pattern **survives as the stated default** wherever P6 binds it · **U4** — the sizing gate
 passes user → lead by recorded supersession · **U1-B** — the verify pass hardens to floor
 status and `none` on a lead-penned artifact requires a recorded user waiver · interim note for
-unconverted commands added; v1 2026-07-30 — command-succinctness-strip, pilot-checkpoint ruling
+unconverted commands added, then **retired at the v0.43.0 wave close** — both its deferrals spent
+once the last command converted, the trail home it anticipated now bound at P20; v1 2026-07-30 — command-succinctness-strip, pilot-checkpoint ruling
 B: split out of `command-shape.md` Layer 1 v5 as a conditional read; text unchanged in
 substance) · **Governed by:** `mochiko:loop-discipline` · **Pairs with:** `command-shape.md`

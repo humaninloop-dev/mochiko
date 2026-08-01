@@ -42,10 +42,6 @@ lead composes them; a default run declares in one line on the deliverable instea
 - Each block carries only its own class of content.
 - **Gates appear as ordered constraints, never as numbered procedural steps.** No `## Phase`
   heading, no `## The flow` heading, and no ordinal-step list inside **Constraints**.
-- **Form is declared, never inferred.** A command authored or converted at v7 carries the
-  literal marker `<!-- shape-form: v7 -->` in its preamble; a file without it is v6-form and
-  is graded on the v6 slot set (interim note below). The marker is the audit's branch key,
-  and it retires when the last command converts.
 - Every parameter this file declares for the command's form is bound.
 - **The preservation standard for any rewrite:** every routing decision and every trigger
   survives; the narration around them dies. The graded exemplar — 8 lines of phase narrative
@@ -150,18 +146,7 @@ artifact set (paths + ID namespaces) · **P11** uncertainty carrier · **P12** f
 override (team-form, **override only** — an unbound P17 states nothing at all: the block-absence
 rule above does not reach it, because Layer 2's default is what governs the silence) · **P18**
 floor gates + the always-cold-graded lead-penned surface · **P19** run-start declaration home
-+ counted unit · **P20** departure-trail home. **P18–P20 are v7-form slots** — a v6-form file
-(no marker) neither binds nor states them.
-
-> **Interim note (v7 — `Contested`, ruled over a pilot-first recommendation).** Shape v7 lands
-> now and the six commands convert **when next touched or needed**
-> (`lead-owned-process-flexibility` D4). Until a command carries the v7 marker it is **v6-form
-> and fully conformant**, and three v7 clauses do not reach it: its gate lines and bounds stand
-> exactly as written — read as this command's obligations, not yet as departable defaults · its
-> Goal may name the checks and clearances the v7 spec calls process residue · and P18–P20 are
-> out of its scope rather than silently absent from it. It is graded on the v6 slot set
-> (P1–P17). The library runs mixed-form in the interim; the audit branches on the marker, never
-> on the auditor's judgment, and each converted command's first live run is its own checkpoint.
++ counted unit · **P20** departure-trail home.
 
 ## Layer 1 — form-agnostic core
 
@@ -389,7 +374,14 @@ declaring in one line on the deliverable, and Recovery gaining counter state · 
 departing run names its counted unit, keeping the lifecycle cadence a denominator · **D4** —
 the `Contested` convert-on-touch interim, the v7 form marker branching the audit · **R16** —
 the v5 transition note's read-drop trigger re-specified against defaults + declared bounds ·
-**P18–P20** added to the slot set; v6 2026-08-01 — `team-lead-strategic-compaction` TC-D1–D6 ·
+**P18–P20** added to the slot set · **v7 addenda (2026-08-01, v0.43.0), two, in order:** *(i)* at
+the first conversion the interim note gained the v6-form run's weight-card home — an owed *siting*
+of invariant 1, not new doctrine; *(ii)* at the wave close, all six commands converted and
+grader-verified 6/6, the **form marker, the v7 interim note and P18–P20's form conditional retire**
+on the marker clause's own stated trigger ("it retires when the last command converts") — the
+library is single-form, P18–P20 bind unconditionally, and (i) retires with the note that carried
+it. The version stands at v7 across both: scaffolding raised, then taken down, with no doctrine
+changed either time; v6 2026-08-01 — `team-lead-strategic-compaction` TC-D1–D6 ·
 `standing-seat-lifecycle` D1–D3 as amended — the **encoded subset** of the ruled D1–D4 (D3's
 per-roster-declaration clause superseded by TC-D6; D4's absence is by design, per the strip
 note) · `plan-run-transport-forensics` R1/R2/R3/R4: Layer 2 re-framed into its two axes —

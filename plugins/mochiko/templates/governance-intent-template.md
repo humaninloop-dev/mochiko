@@ -151,12 +151,14 @@ verify pass; waived or verified → G3. -->
 
 **[YYYY-MM-DD] — [first ratification | amend]**
 
-- **Sizing:** lead stated weight [element count · mark mix · reality-surface load]; recommended
-  [pair | single | none] ([pair default on first ratification | event-scaled on amend:
-  governance event → pair · lighter substantive delta → single · wording-level →
-  none-with-recorded-waiver]); **user ruled:** [pair | single | none]
-- *(if none)* **Waiver:** waived by [user] at the sizing gate — [stated reason]. The synthesis
-  proceeds to G3 unreviewed; this record is the audit trail.
+- **Sizing:** lead stated weight [element count · mark mix · reality-surface load]; the default
+  [pair on first ratification | event-scaled on amend: governance event → pair · lighter
+  substantive delta → single · wording-level → none-with-recorded-waiver]; **lead sized:**
+  [pair | single | none], stated on the user's run-start weight card — below the default also
+  takes a departure-trail line.
+- *(if none)* **Waiver:** this record is lead-penned, so `none` is not the lead's to take —
+  waived by [user] at the **weight card**, [stated reason]. The synthesis proceeds to G3
+  unreviewed; this record is the audit trail.
 - *(otherwise)* **Review:** reviewer(s) [coverage / coherence lenses | solo]; **tally** [N raised
   → M merged survivors]; recommended status [ready | needs-revision | critical-gaps]
 - **Survivor dispositions** (every survivor carries one):

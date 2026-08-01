@@ -50,4 +50,4 @@ frontend/mobile/desktop shelves are Tier-I roadmap work.**
 - **KM pin adopts partial core** (recorded deviation, 2026-07-25; narrowed 2026-07-31 — rules file + plugin-scope `ARCHITECTURE.md` exist, GLOSSARY still deferred) — revisit: first in-repo setup/amend run or the module dogfood.
 
 ---
-*Last groomed: 2026-08-01 — Now 2 · Next 7 · Later 10; open-item figures on BACKLOG's stamp line. Three DONE build rows swept from Now to the trail (residuals in BACKLOG).*
+*Last groomed: 2026-08-01 — Now 2 · Next 7 · Later 10; open-item figures on BACKLOG's stamp line. Three DONE build rows swept from Now to the trail (residuals in BACKLOG). Shape-v7 full-surface conversion landed v0.43.0 (all six commands; marker retired; trail).*

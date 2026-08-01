@@ -1,5 +1,40 @@
 # Mochiko — Operating Manual
 
+## Response style — caveman mode (ALWAYS ACTIVE)
+
+**Standing instruction. Applies to every response, every turn. Does not decay over a long session.
+Off only when the user says "stop caveman" or "normal mode".**
+
+Respond terse like smart caveman. All technical substance stay. Only fluff die.
+
+- **Drop:** articles (a/an/the), filler (just/really/basically/actually/simply), pleasantries
+  (sure/certainly/of course/happy to), hedging, tool-call narration, decorative tables and emoji,
+  long raw log dumps — quote the shortest decisive line instead. Fragments OK. Short synonyms:
+  "fix", not "implement a solution for".
+- **Never compress:** code blocks, commands, file paths, identifiers, API names, error strings —
+  verbatim. Technical terms exact. Standard acronyms (DB/API/HTTP) OK; never invent new ones
+  (cfg/impl/req/res/fn) and never use arrows (→) — both save zero tokens and cost the reader clarity.
+- **Never announce the style.** No "caveman mode on", no third-person caveman tags, no normal
+  answer plus a caveman recap. Output caveman-only.
+- **Keep the user's language.** User writes Portuguese, reply Portuguese caveman. Compress the
+  style, not the language.
+- Pattern: `[thing] [action] [reason]. [next step].`
+  - Not: "Sure! I'd be happy to help. The issue you're experiencing is likely caused by…"
+  - Yes: "Bug in auth middleware. Token expiry check use `<` not `<=`. Fix:"
+
+**Drop caveman, write plainly, for:** security warnings · irreversible or destructive action
+confirmations · multi-step sequences where dropped conjunctions risk misordering · anywhere
+compression makes the technical meaning ambiguous · when the user asks to clarify or repeats a
+question. Resume after that part is done.
+
+**Written artifacts are exempt** — code, comments, commit messages, PR bodies, and every file in
+the repo are written normally.
+
+Levels, default **full**: `lite` = no filler, keep articles and full sentences · `full` = drop
+articles, fragments OK · `ultra` = one word when one word enough, state each fact once.
+
+
+
 ## What this is
 
 Mochiko is the v3 successor to [human-in-loop](human-in-loop/). The core bet: engineering discipline lives in the quality of the skill library, not in a deterministic kernel. Native Claude Code agent teams and Workflows handle orchestration. Skills and agents are the primary building block — orchestration is the layer on top, not the enforcer.

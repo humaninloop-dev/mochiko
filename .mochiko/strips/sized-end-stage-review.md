@@ -9,6 +9,66 @@ same version.
 
 ---
 
+# v0.43.0 — the v2 interim note retired, both its deferrals spent
+
+**Wave context:** the v7 conversion wave closed with all six commands converted (wave note
+`.mochiko/strips/command-shape.md` [v0.43.0 wave close]). Raised by the batch audit as **K1**: the
+note's operative clauses describe unconverted commands, and no unconverted command exists. Body
+**5,123 → 4,256 B** (words 771 → 630, −18.3%). Still a **conditional** read, so the saving is paid
+back only to the two commands whose P6 binds it — it does not reach the shared always-read floor.
+
+## [v0.43.0] The v2 interim note retired whole — a note whose population is now zero
+- **Disposition:** superseded → deleted. Both of its clauses were addressed to "a command not yet
+  converted to shape v7"; that set is empty.
+- **Tier failed:** n/a — supersession by ruling (the shape's marker-retirement trigger, met when
+  the last command converted; `DECISIONS.md` 2026-08-01 wave-close ratifications row. Raised as
+  **K1** at the batch audit).
+- **Content (v2, verbatim):**
+  ```
+  > **Interim note (v2).** Sizing ownership moved user → lead by recorded supersession (U4 —
+  > `.mochiko/strips/sized-end-stage-review.md`). A command not yet converted to shape v7 still
+  > says the user rules on sizing; **that stands, as written, in those commands** until their
+  > conversion touch (`command-shape.md`, the v7 interim note). Where the two disagree, **the
+  > unconverted command wins for its own run** — it is the file that binds. What does not change
+  > either way is the protection: the floor's second invariant gives a lead-penned artifact its
+  > cold grade whoever named the size. **The trail line above has a home before P20 exists:** in
+  > an unconverted command a size below the default is recorded where that command already records
+  > review outcomes — the artifact's **Review section**, beside the waiver record the `none` path
+  > writes there. P20 names that home explicitly at the conversion touch; until then the
+  > deliverable is it, by the same logic that lets the unconverted command win.
+  ```
+- **Both deferrals spent, each verified against the files rather than assumed:**
+  1. **The sizing conflict.** The note existed because U4 moved sizing user → lead while the two
+     binding commands still said the user rules. **Both binders flipped at their conversion touch
+     this wave** — `brainstorm` and `setup`, each logged at [v0.43.0] in its own strip note. There
+     is no disagreement left for "the unconverted command wins" to arbitrate.
+  2. **The trail-line home.** The note supplied an interim home (the artifact's Review section)
+     *"before P20 exists"*. **P20 now exists and is bound in both binders** — verified by grep:
+     both carry the `**Departure trail:**` binding. The clause's own stated condition retires it.
+- **Kept deliberately:** the **whole body above the note**, untouched — the lead-owned sizing gate
+  with its pair/single/none outcomes and waiver record, the cold-and-mutually-withheld reviewers,
+  the one-shot cross-exam reference, the per-reviewer tally with the lead-owned merge, survivor
+  routing by answer-owner, and **the verify pass as floor** (U1-B). Two protections the note
+  restated survive at their real homes and were **not** dropped with it: the floor's second
+  invariant giving a lead-penned artifact its cold grade *whoever named the size* (home:
+  `command-shape.md` Layer 1, *The floor*, invariant 2 — the note was echoing it, not owning it),
+  and the below-default trail line, which the header's stated-default sentence still requires and
+  P20 now homes. The version footer records the retirement rather than dropping the note's history.
+- **Consumers assessed** — the two commands whose P6 binds this file, both flipped this wave:
+  - `commands/brainstorm.md` — **converted at [v0.43.0]**, sizing flipped to the lead per U4, P20
+    bound. Its strip entry cites *this note's deferral* as the ground for the flip.
+  - `commands/setup.md` — **converted at [v0.43.0]**, same flip, P20 bound, same citation.
+  - **Those citations stay valid as history and must not be read as dangling.** Each entry records
+    why its command flipped *at the moment it flipped*, when the note was live and was the
+    authority. A strip entry is a record of a landing, not a live pointer; retiring the note it
+    cites does not falsify it, and the two entries were deliberately left unedited (this
+    directory's entries are frozen once stamped).
+  - No third consumer: no other command references `sized-end-stage-review` (grep across all six —
+    the four in-loop-critique commands must *not* contain it, per `validation-command-shape`
+    check 1's negative direction, and do not).
+
+---
+
 # v0.40.0 — v1 → v2, the sizing gate changes hands and the verify pass becomes floor
 
 **Wave context:** `lead-owned-process-flexibility`

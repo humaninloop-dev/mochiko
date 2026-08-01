@@ -1,5 +1,5 @@
 ---
-description: Establish or update the project's governance on the surfaces Claude Code natively loads — an interrogation session elicits the user's declared intent (the fact profile, type, risk, values) before anything is authored, closing on a confidence-marked synthesis that a sized cold intent review (pair default) stress-tests before the user ratifies it at G3 (pair / single / recorded waiver — the user rules the sizing); the ratified synthesis is then a traceable contract on a principal-architect producer teammate that authors the surface set (a marked CLAUDE.md governance region, paths-scoped rules files, skill pointers, a governance ledger), an independent validator teammate grades trace closure from the files, and the user accepts with the trace summary in hand. Greenfield | brownfield | amend; every stage user-gated, default-FAIL, bounded, kernel-free. Requires agent teams (CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS); refuses without them.
+description: Establish or update the project's governance on the surfaces Claude Code natively loads — an interrogation session elicits the user's declared intent (the fact profile, type, risk, values) before anything is authored, closing on a confidence-marked synthesis that a sized cold intent review (pair default) stress-tests before the user ratifies it at G3 (pair / single / recorded waiver — the lead sizes it on the user's weight card); the ratified synthesis is then a traceable contract on a principal-architect producer teammate that authors the surface set (a marked CLAUDE.md governance region, paths-scoped rules files, skill pointers, a governance ledger), an independent validator teammate grades trace closure from the files, and the user accepts with the trace summary in hand. Greenfield | brownfield | amend; every stage user-gated, default-FAIL, bounded, kernel-free. Requires agent teams (CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS); refuses without them.
 disable-model-invocation: true
 ---
 
@@ -21,14 +21,15 @@ if it was waived.
 ## Goal
 
 The surface set in Bindings exists and carries the user's ratified intent, not a baseline: the
-sized intent review ran (or its waiver is recorded) with every survivor dispositioned · G3 cleared,
-in every mode · `validator` returned PASS graded from the files · G4 accepted with the trace summary
-in hand and every flagged proposal ruled · G2 confirmed, in brownfield · G5's landing ran where the
-pinned knowledge-management copy exists. The region's semver is bumped, its stamp ratified.
+synthesis is ratified at G3, in every mode, its Review section closed — every survivor
+dispositioned, or the waiver recorded · the trace closes across the set · G4 accepted with the trace
+summary in hand and every flagged proposal ruled · G2 confirmed, in brownfield · G5's landing ran
+where the pinned knowledge-management copy exists. The region's semver is bumped, its stamp
+ratified.
 
-**Not done:** a surface authored before G3 · an undispositioned survivor with no recorded waiver · a
-validator FAIL, or a PASS read off its report · a proposal folded without the user's word · a floor
-category with neither principle nor waiver · out of rounds · G4 unaccepted.
+**Not done:** a surface authored before G3 · an undispositioned survivor with no recorded waiver ·
+an unclosed trace · a proposal folded without the user's word · a floor category with neither
+principle nor waiver · a departure with no trail line · out of rounds · G4 unaccepted.
 
 ## Seats & checks
 
@@ -51,6 +52,10 @@ yours.
   selects the stages and the producer's branch. Region present → amend; >5 source files with a
   framework → brownfield; else greenfield. Brownfield opens at analysis, the rest at the
   interrogation.
+- **Run-start weight card** — evidence: your stated read of the four rigor factors against this
+  run's scope — a first surface set, or an amend's delta — plus the process you compose from it:
+  the stated default below, or your departures from it · rules: the user · decides: the run's
+  composed process.
 - **G2 analysis checkpoint** *(brownfield)* — evidence: the producer's summary, Essential-Floor
   table and clarifications · rules: the user · decides: **confirm** (→ interrogation) / **edit**
   (corrections, one bounded re-run) / **reject** (greenfield fallback, or abort). No machine
@@ -74,11 +79,11 @@ yours.
   (`…/authoring-constitution/references/DOMAIN-DEPENDENCIES.md`). Waivers ruled per D4 — any
   asserted standard, recorded justification, legal-mandate module obligations excepted.
 - **Review sizing** *(all modes, before G3)* — evidence: the synthesis's weight, stated per the
-  template and purposed as input to the user's *elevation* of the default, never as the default ·
-  rules: the user · decides: the reviewer count. The default is a **pair**, **event-scaled on
-  amend**: a governance event (un-waive, floor change, module attach/detach) takes the full pair;
-  a lighter substantive delta recommends single; a wording-level delta,
-  none-with-recorded-waiver. The gate always opens: every amend records a
+  template and purposed as input to the *elevation* of the default, never as the default ·
+  rules: you, presented on the weight card · decides: the reviewer count. The default is a
+  **pair**, **event-scaled on amend**: a governance event (un-waive, floor change, module
+  attach/detach) takes the full pair; a lighter substantive delta recommends single; a
+  wording-level delta, none-with-recorded-waiver. The gate always opens: every amend records a
   ruling or a waiver, keeping the trail audit-complete. **none** → straight to G3, waiver recorded.
 - **Survivor rulings** — evidence: a survivor in user territory — deck, fact-profile or waiver rulings,
   challenged convergence-skips and scope decisions, and **user-declared facts** (team size, risk
@@ -109,6 +114,12 @@ yours.
 - **Escalation** — evidence: any of the bounds below tripping · rules: the user, holding the last fix list
   and the stop reason · decides: give-guidance-and-retry / accept-with-noted-gaps / abort — the run
   stays FAIL unless the user explicitly accepts.
+- **Floor gates:** the run-start weight card · **G2** *(brownfield)* · the **Interrogation**'s card
+  rulings · **Survivor rulings** · **G3** · the **Clarification**'s answer · **G4** · **G5** ·
+  **Escalation** — the user's whatever you compose, never departable. **G1** and **Review sizing**
+  (yours by ruling) are not: the mode is re-ruled in the room before anything is authored.
+  **Lead-penned surface:** `governance-intent.md` — always cold-graded, its `none` only on a
+  recorded user waiver.
 - **Bounds:** cap **3** produce↔validate rounds (you count) · no-progress exit on a fix list
   unchanged round-over-round · kill-switch `.mochiko/memory/SETUP_STOP`, checked before every
   producer, reviewer or validator send · review caps: one cold read per reviewer, one four-message
@@ -151,6 +162,14 @@ yours.
 - **Fact route:** reality-surface disputes → `codebase-analysis.md`, else a native `Explore` pass;
   user-declared facts are only confirmed, never checked.
 - **Verify-pass owner:** the coherence-lens reviewer; the sole reviewer when sized down.
+- **Run-start declaration:** one line atop `governance-intent.md` — durable by binding, and where
+  Recovery already notes the resume stage — written as the file opens, carrying the card as ruled;
+  a run that departs from the stated default, or declares non-default bounds, instantiates
+  `templates/workflow-contract.md` as `.mochiko/memory/setup-contract.md` beside it instead.
+  Counted unit: the **produce↔validate round** the Bounds already count, a brownfield analysis job
+  counting as one against the producer's cadence.
+- **Departure trail:** one line per departure, appended under that same declaration as it is taken
+  and carried into G4's evidence — never your context alone.
 - **KM landing:** knowledge-management adopted → scaffold it at G5 per
   `templates/constitution-modules/knowledge-management.md` (which owns adoption granularity, the
   enforcement surfaces, the never-overwrite floor and collision rulings), including the
