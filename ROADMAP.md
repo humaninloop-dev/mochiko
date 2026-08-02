@@ -13,6 +13,7 @@ frontend/mobile/desktop shelves are Tier-I roadmap work.**
 
 ## Now
 
+- **Goals-driven commands: specify pilot** — commands become pure goal statements, zero process (GD-D1–D8, 2026-08-02); pilot wave rebuilds specify only → [BACKLOG](BACKLOG.md#goals-driven-commands-ground-up-purge)
 - **KM-module redesign dogfood** — fresh-project scaffold + rules-injection probe of the rebuilt module (2026-07-25) → [BACKLOG](BACKLOG.md#operating-docs--km-module)
 - **Kinako follow-up run** — waves-1–2 didn't land: investigate, then the UI fix wave through journey gates (2026-07-24) → [BACKLOG](BACKLOG.md#kinako-follow-up-run)
 
@@ -50,4 +51,4 @@ frontend/mobile/desktop shelves are Tier-I roadmap work.**
 - **KM pin adopts partial core** (recorded deviation, 2026-07-25; narrowed 2026-07-31 — rules file + plugin-scope `ARCHITECTURE.md` exist, GLOSSARY still deferred) — revisit: first in-repo setup/amend run or the module dogfood.
 
 ---
-*Last groomed: 2026-08-02 — Now 2 · Next 7 · Later 10; open-item figures on BACKLOG's stamp line. Doctrine purge wave 1 landed at v0.46.0: `loop-discipline` + `command-shape.md` deleted, six commands self-contained (mechanics inlined), command audits grade the command's own text; the read-drop deferral closed by supersession (plugin now 6 commands · 9 agents · 27 skills — ADR `2026-08-02-doctrine-purge-wave-1`). Prior groom same day: framework-maintenance trio deleted at v0.45.0 (ADR `2026-08-02-framework-trio-deleted`).*
+*Last groomed: 2026-08-02 — Now 3 · Next 7 · Later 10; open-item figures on BACKLOG's stamp line. Doctrine purge wave 1 landed at v0.46.0: `loop-discipline` + `command-shape.md` deleted, six commands self-contained (mechanics inlined), command audits grade the command's own text; the read-drop deferral closed by supersession (plugin now 6 commands · 9 agents · 27 skills — ADR `2026-08-02-doctrine-purge-wave-1`). Prior groom same day: framework-maintenance trio deleted at v0.45.0 (ADR `2026-08-02-framework-trio-deleted`).*

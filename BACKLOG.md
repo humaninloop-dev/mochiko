@@ -95,6 +95,32 @@ build item in the trail.
   (feature-level vs slice-level), the fold seam between the two, and whether per-slice nesting is
   a placement anomaly or intended granularity.
 
+## Goals-driven commands (ground-up purge)
+
+Rulings GD-D1–D8 + 15/15 review dispositions (DECISIONS.md 2026-08-02; record
+`.mochiko/brainstorms/goals-driven-commands/record.md` — cold-reviewed solo, `critical-gaps`
+pre-repair, all repaired/ruled, accepted).
+
+- [ ] **Pilot wave: specify + implement** (2026-08-02; both BUILT same day at v0.47.0, audits
+  PASS ×2 — implement user-widened into the pilot at build, D6 amendment in the record) —
+  remaining obligation: **dogfood watches** — wrong-persona/invisible-resource picks (D4) ·
+  user acceptance treated as goal (thread 3) · team-formation degradation (thread 6,
+  unmitigated by design pending its session) · implement-specific: TDD-as-outcome honored,
+  architecture-divergence acceptance reaching the user.
+- [ ] **Later waves: remaining four commands + purge** (2026-08-02) — plan/slice/
+  brainstorm/setup rebuilt goals-only; skill kill list classified craft-vs-process at the wave,
+  each kill its own DECISIONS row, borderlines (e.g. `review-specifications`) surfaced for
+  ruling; shared doctrine/template deletion (agent-dispatch · workflow-contract · output-style/
+  report-format process carriers · `primitive-edits.md` + rules file) lands with the **last**
+  command rebuild; CLAUDE.md edit surface in lockstep (five axes · landing paragraph · ceremony
+  text). Sequence pinned in the record's D8.
+- [ ] **Team formation under zero process** (2026-08-02, C4 deferral) — dedicated session:
+  whether goal-form runs degrade to one-shot subagents (two recorded incidents say prose alone
+  didn't prevent it) and whether any mechanism should survive; R3 refusal-stands untouched
+  until then.
+- [ ] **Surface count** (2026-08-02, D6 deferral) — six → fewer? Per-merge consumer assessment,
+  after the pilot proves the form.
+
 ## Command goal-shape rebuild
 
 Rulings CS-D1–D10 (DECISIONS.md 2026-07-30; record
