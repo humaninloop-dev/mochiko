@@ -3,6 +3,24 @@
 Entry formats: `strips/README.md`. Wave context: [v0.28.0] entries — skill-succinctness wave 4
 (design: `.mochiko/brainstorms/skill-succinctness-strip/record.md`, ratified 2026-07-25).
 
+## [v0.45.0] Skill deleted whole — framework-maintenance purge; the DEFERRED move superseded
+- **Disposition:** superseded → deleted outright; no relocated home (git history holds the
+  full body, last shipped v0.44.0)
+- **Tier failed:** n/a — supersession by ruling (user ruling 2026-08-02; ADR
+  `.mochiko/decisions/2026-08-02-framework-trio-deleted.md`)
+- **Content:** the whole `authoring-commands` skill (author / convert / strip-wave / Job-4
+  shape-home revision procedures). The [v0.44.0] DEFERRED entry below is **superseded**: the
+  S14 probe was re-run in a fresh session and PASSED both halves (repo-side agent spawned as
+  itself; repo-side skill discovered and fired), but the user ruled delete-outright over the
+  move — the move set, router-edit list, and CLAUDE.md re-homing it prescribes are discharged
+  by deletion, not executed. The [v0.44.0] KEPT entry's "exits with the move" clause resolves
+  the same way: the operative `:82-83` pointer left with the file.
+- **Kept deliberately:** `.mochiko/strips/` itself and its README — the strip-note ceremony
+  outlives the skill that taught it (its home is `CLAUDE.md` + `primitive-edits.md`, both
+  re-keyed this version).
+- **Consumers assessed:** `command-architect` agent (deleted same wave, own note) · router
+  Framework-maintenance row (deleted) · no other consumer.
+
 ## [v0.44.0] KEPT: the strip-note write instruction (`:82-83`) — operative, not provenance
 - **Tier-2 evidence:** *"**Log every outcome** per the entry formats in `.mochiko/strips/README.md`
   — one note per primitive at `.mochiko/strips/<primitive>.md`, **repo-side, never under

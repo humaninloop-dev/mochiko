@@ -312,16 +312,11 @@ Raw captures (2026-08-01) — to triage/brainstorm; grooming may re-key into fin
   ownership / write discipline per seat — kept out of the validator-isolation session's
   validator-only scope by ruling (D1).
 - [ ] **Output-style post-build remainders** (2026-08-01; build DONE at v0.44.0 → trail;
-  provenance: `verbosity-caveman-ops-separation` record + DECISIONS build row) — three
-  riders: **(1) D6 trio move, probe-gated** — the S14 probe failed in-session (spawn
-  instantiated generic; repo-side agents load only at session start): in a FRESH session,
-  spawn `mochiko-probe` as a teammate + confirm the repo-side skill fires, then execute the
-  move per the cold-session-complete DEFERRED entry in
-  `.mochiko/strips/authoring-commands.md` (move set · router section + `:28` · the
-  `validator.md:27,44-47` fourth-consumer edit with its own strip entry · plugin.json
-  10→9 agents; probe pair on disk is the instrument, delete-when-recorded). Carries the
-  D6-rationale correction: the shipped generic `validator` mounts the departing skill —
-  "exclusively mochiko's own authoring" is not exact. **(2) Measurement watch** — re-profile
+  provenance: `verbosity-caveman-ops-separation` record + DECISIONS build row) — was three
+  riders; **rider (1), the D6 trio move, closed 2026-08-02 by supersession**: probe re-run
+  fresh-session PASSED both halves, but the user ruled delete-outright over the move — trio
+  deleted at v0.45.0, probe pair deleted, fourth-consumer edit landed (DECISIONS row + ADR
+  `2026-08-02-framework-trio-deleted`). Two riders remain: **(2) Measurement watch** — re-profile
   the first comparable slice-run against the 816,601 B / 79.9%-report-prose baseline
   (F53–F55 method); always-read floor re-baselined: `command-shape.md` 26,745 B (−4,490
   B/run). **(3) Style dogfood** — first setup/amend run writes the switch line + Shape-5

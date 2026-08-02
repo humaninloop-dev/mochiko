@@ -1,6 +1,6 @@
 # Architecture — the mochiko plugin
 
-Current-state map of the shipped plugin at [`plugins/mochiko/`](plugins/mochiko/) (v0.36.0,
+Current-state map of the shipped plugin at [`plugins/mochiko/`](plugins/mochiko/) (v0.45.0,
 [`plugin.json`](plugins/mochiko/.claude-plugin/plugin.json)). Scope is the plugin only — the
 repo-side knowledge plane (`.mochiko/`, the operating docs) is covered by
 [`CLAUDE.md`](CLAUDE.md). Rationale for every boundary here lives in the decisions layer
@@ -22,8 +22,8 @@ flowchart LR
   user -->|"/mochiko:* + gate rulings"| commands
   subgraph plugin ["plugins/mochiko/"]
     commands["commands/ — 6 supervisors"]
-    agents["agents/ — 10 personas"]
-    skills["skills/ — 30 skills"]
+    agents["agents/ — 9 personas"]
+    skills["skills/ — 28 skills"]
     templates["templates/ — shape, artifact + report schemas"]
     commands -->|"spawn seats, briefed per agent-dispatch"| agents
     agents -->|"carry procedure from"| skills
@@ -53,8 +53,8 @@ pinned in [`CLAUDE.md`](CLAUDE.md#skill-library-conventions-five-axes).
 | Layer | Home | Count | Role |
 |---|---|---|---|
 | **Commands** | [`plugins/mochiko/commands/`](plugins/mochiko/commands/) | 6 | User-invoked team-form supervisors (`disable-model-invocation: true`). Each file carries only its workflow's parameters — goal, seats, gates, bindings, recovery — over the single-sourced shape. The lead (the command context) owns every verdict, iteration bound, and human gate. |
-| **Agents** | [`plugins/mochiko/agents/`](plugins/mochiko/agents/) | 10 | Personas (all `model: opus`) that carry judgment and declare `skills:`. A persona contains no trace of any workflow — decoupling by absence; caller-side context rides the dispatch brief. |
-| **Skills** | [`plugins/mochiko/skills/`](plugins/mochiko/skills/) | 30 | Procedure. One user-invoked router ([`skills/mochiko/`](plugins/mochiko/skills/mochiko/SKILL.md)) indexes the other 29, which are model-invoked with graded MUST/SHOULD triggers in their descriptions. Deterministic sub-checks ride as `scripts/` inside skills (e.g. `analysis-codebase`'s `detect-stack.sh`); depth rides as `references/`. |
+| **Agents** | [`plugins/mochiko/agents/`](plugins/mochiko/agents/) | 9 | Personas (all `model: opus`) that carry judgment and declare `skills:`. A persona contains no trace of any workflow — decoupling by absence; caller-side context rides the dispatch brief. |
+| **Skills** | [`plugins/mochiko/skills/`](plugins/mochiko/skills/) | 28 | Procedure. One user-invoked router ([`skills/mochiko/`](plugins/mochiko/skills/mochiko/SKILL.md)) indexes the other 27, which are model-invoked with graded MUST/SHOULD triggers in their descriptions. Deterministic sub-checks ride as `scripts/` inside skills (e.g. `analysis-codebase`'s `detect-stack.sh`); depth rides as `references/`. |
 | **Templates** | [`plugins/mochiko/templates/`](plugins/mochiko/templates/) | 20 + `constitution-modules/` | Three kinds: **doctrine homes** ([`command-shape.md`](plugins/mochiko/templates/command-shape.md), `workflow-contract.md`, `agent-dispatch.md`, `sized-end-stage-review.md`) — referenced, never restated; **artifact schemas** (spec, slices, plan, tasks, governance-intent, …) over the shared `artifact-format.md` envelope; **report schemas** (per-seat reports) over the shared `report-format.md` envelope. `constitution-modules/` is setup's module library (knowledge-management, layer-rules, release-gates, evolution-notes). |
 
 The plugin manifest, [`.claude-plugin/plugin.json`](plugins/mochiko/.claude-plugin/plugin.json),
@@ -273,29 +273,13 @@ deviation self-check at cycle open/close, and the arch-diff seat's built-vs-appr
 final validation. The two disposable seats (arch-diff at final validation, arch-scribe at
 finalize) run outside the cycle loop and are omitted from the diagram.
 
-### Framework maintenance — mochiko authoring itself
-
-No slash command; reached when authoring or auditing mochiko's own commands.
-`command-architect` × `authoring-commands` authors, converts, and strip-passes command files;
-`validator` × `validation-command-shape` grades conformance to
-[`templates/command-shape.md`](plugins/mochiko/templates/command-shape.md) — a deterministic
-grep floor beneath a prose judgment ceiling. Author ≠ grader holds here too.
-
-```mermaid
-flowchart LR
-  ca["command-architect ×<br/>authoring-commands"] --> cmd[("commands/*.md")]
-  cmd --> val["validator ×<br/>validation-command-shape"]
-  val -->|"PASS/FAIL + fix list"| ca
-  shape["templates/command-shape.md<br/>(single-sourced home)"] -.->|"referenced, never restated"| cmd
-```
-
 ### Shared seats
 
 Four personas serve multiple clusters — the reuse axis of the agent layer: `devils-advocate`
 reviews in five (specify, plan, slice, brainstorm, setup); `principal-architect` authors in
 setup, reviews feasibility in plan, and scribes/diffs architecture in plan and implement;
 `task-architect` produces in slice and plan's structuring stage; `validator` grades setup's
-surfaces and the framework's commands.
+surfaces (and any artifact handed to it with an explicit checklist).
 
 ## Cross-cutting doctrine
 

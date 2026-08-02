@@ -6,6 +6,22 @@ Entry formats: `strips/README.md`. Wave context: skill-succinctness wave 1 (desi
 single physical lines, so the R2 line denominator undercounts this skill; dual accounting
 recorded here and flagged on the wave's ROADMAP row.
 
+## [v0.45.0] Framework-maintenance rows deleted — the trio purge
+- **Disposition:** superseded → deleted (the primitives they indexed left the plugin)
+- **Tier failed:** n/a — supersession by ruling (user ruling 2026-08-02; ADR
+  `.mochiko/decisions/2026-08-02-framework-trio-deleted.md`)
+- **Content:** the `### Framework maintenance` section whole (heading + table +
+  `authoring-commands` and `validation-command-shape` rows) · the `command-architect` row in
+  the Agents table · `:28`'s family example trimmed ("today: `validation-constitution` and
+  `validation-command-shape`" → `validation-constitution` only) · the `validator` row's
+  skills list drops `validation-command-shape`.
+- **Kept deliberately:** the `validation-*`/`review-*` split doctrine paragraph itself — the
+  family survives with one member; and the "Adding to the library" discoverability rule,
+  which is what obliged these deletions (an unindexed primitive is undiscoverable, and an
+  indexed non-primitive is a defect).
+- **Consumers assessed:** router-only edit; the six command entries and remaining 27 skill
+  rows untouched.
+
 **Wave context (v0.44.0 — the D7 leakage scrub).** `verbosity-caveman-ops-separation` D7 as
 folded at review (S4): **full scrub** of ops leakage from the shipped tree, with no
 changelog-worthy detail lost — every removed block is preserved verbatim below. Ruling:

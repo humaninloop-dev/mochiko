@@ -24,8 +24,8 @@ from its command's stated default instantiates, and the form every non-command l
 
 **The two review-skill families** (the `validation-*`/`review-*` split, 2026-07-18): the prefix encodes **who owns the
 clearing**. `validation-*` = the skill **issues the authoritative grade** — a binary PASS/FAIL
-checklist grade, default FAIL, on the `validator` persona (today: `validation-constitution`
-and `validation-command-shape`; a PASS is still human-gated downstream). `review-*` = the skill **produces
+checklist grade, default FAIL, on the `validator` persona (today: `validation-constitution`;
+a PASS is still human-gated downstream). `review-*` = the skill **produces
 lead-adjudicated input** — severity-ranked findings and a *recommended* status that the lead or a
 human adjudicates; the reviewer's verdict never clears anything by itself.
 
@@ -112,12 +112,6 @@ human adjudicates; the reviewer's verdict never clears anything by itself.
 
 > Downstream consumption is carried by the artifact itself: `/mochiko:plan` and `/mochiko:implement` each carry a slice-scoped entry variant keyed to `slices.md` presence, honoring its Graduation contract. Feature-close execution of the Feature-Done section has no owning workflow yet (deferred to the `audit` scoping — see `BACKLOG.md`).
 
-### Framework maintenance (model-invoked — reached when authoring or auditing mochiko's own commands)
-| Skill | Reach when |
-|-------|------------|
-| `authoring-commands` | authoring a new `commands/*.md` supervisor in the codified shape, converting a command's form, or running a strip wave with version-stamped notes (`.mochiko/strips/`, repo-side); the `command-architect`'s skill — references `command-shape.md`, never restates it |
-| `validation-command-shape` | independently grading a command's conformance to the shape — deterministic grep floor (references present, no restated single-sourced prose, exceptions marked, frontmatter) beneath a prose judgment ceiling (altitude, parameter completeness, contract-fill soundness), plus the strip-note audit at wave close → binary PASS/FAIL + fix list on the `validator` persona (never the author) |
-
 ### Entry point (user-invoked — you run it)
 | Command | Reach when |
 |---------|------------|
@@ -139,8 +133,7 @@ human adjudicates; the reviewer's verdict never clears anything by itself.
 | `task-architect` | **cross-workflow** PRODUCER — the `/mochiko:plan` structuring stage (structures the accepted design into `task-mapping.md` story→cycle mapping + `tasks.md` cycle-based TDD task list) **and** slice-cluster (decomposes an accepted spec into the `slices.md` graduation-slice overlay: foundation designation, dependency-closed ordering, Feature-Done declaration); never grades its own output (skills: patterns-vertical-tdd, authoring-slices) |
 | `staff-engineer` | implement-cluster PRODUCER — implements each cycle through red/green/refactor TDD and brownfield EXTEND/MODIFY integration; emits an honest `cycle-report.md`; never grades its own output; the verification skill is never mounted here (skills: executing-tdd-cycle, brownfield-integration) |
 | `qa-engineer` | implement-cluster VALIDATOR — independently verifies each cycle against real infrastructure (quality-gate exit codes + captured evidence), emits a verification report + checkpoint recommendation that feeds the lead's verdict; grades a different agent's work, mounts no producer skill (skills: testing-end-user) |
-| `validator` | one generic independent grader for any cluster — grades a finished artifact against a checklist, defaults to FAIL, authors nothing (skills: validation-constitution, validation-command-shape) |
-| `command-architect` | **framework-facing producer** — authors/converts commands in the codified shape and first-passes strip waves; never grades its own output — the `validator` audits via `validation-command-shape` (skills: authoring-commands) |
+| `validator` | one generic independent grader for any cluster — grades a finished artifact against a checklist, defaults to FAIL, authors nothing (skills: validation-constitution) |
 
 ## Operating rules (context hygiene)
 

@@ -50,4 +50,4 @@ frontend/mobile/desktop shelves are Tier-I roadmap work.**
 - **KM pin adopts partial core** (recorded deviation, 2026-07-25; narrowed 2026-07-31 — rules file + plugin-scope `ARCHITECTURE.md` exist, GLOSSARY still deferred) — revisit: first in-repo setup/amend run or the module dogfood.
 
 ---
-*Last groomed: 2026-08-01 — Now 2 · Next 7 · Later 10; open-item figures on BACKLOG's stamp line. Output-style build landed same day at v0.44.0 (three waves; trio move deferred probe-gated — remainders item in BACKLOG Ergonomics); its Now row swept to the trail.*
+*Last groomed: 2026-08-02 — Now 2 · Next 7 · Later 10; open-item figures on BACKLOG's stamp line. Framework-maintenance trio deleted outright at v0.45.0 (user ruling supersedes the deferred D6 move; S14 probe re-run PASSED both halves first; plugin now 6 commands · 9 agents · 28 skills — ADR `2026-08-02-framework-trio-deleted`).*

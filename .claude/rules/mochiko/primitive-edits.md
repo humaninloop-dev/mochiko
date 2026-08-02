@@ -23,15 +23,16 @@ change is done. Full contracts: `.mochiko/strips/README.md` · `templates/comman
 
   An edit whose only trace is the changed file, with nothing in `.mochiko/strips/`, is **incomplete**.
 
-- **Check** — the independent **author ≠ grader** audit: `mochiko:validation-command-shape` for a
-  command, the matching `validation-*` / `review-*` skill otherwise. The editor never grades their
-  own edit — dispatch a separate validator.
+- **Check** — the independent **author ≠ grader** audit: `mochiko:validator` grading against
+  `templates/command-shape.md` as the explicit checklist for a command (the dedicated
+  `validation-command-shape` skill was deleted at v0.45.0), the matching `validation-*` /
+  `review-*` skill otherwise. The editor never grades their own edit — dispatch a separate
+  validator.
 
 **Protected content leaves ONLY by ruling.** A line in a record's protected set, marked `KEPT:`, or
 traceable to a `DECISIONS.md` row may be removed only as a recorded supersession-by-ruling. A silent
-deletion is exactly what the audit's preserved-responsibilities check
-(`validation-command-shape` check 14) reads as a regression — and it has already caught one drop of
-the same line at the v0.34.0 plan pilot.
+deletion is exactly what the audit's preserved-responsibilities check reads as a regression — and it
+has already caught one drop of the same line at the v0.34.0 plan pilot.
 
 Pure additions ride the decision row (no strip note). Never edit `.mochiko/archive/**` or the
 backlog trail — frozen / append-only.

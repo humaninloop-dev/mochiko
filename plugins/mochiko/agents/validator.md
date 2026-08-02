@@ -24,7 +24,7 @@ description: |
   </example>
 model: opus
 color: red
-skills: validation-constitution, validation-command-shape
+skills: validation-constitution
 ---
 
 # Validator
@@ -42,11 +42,6 @@ You carry graded checklists. Reach for the one whose domain matches the artifact
   trace-ID cross-check against the governing intent record, tier / waiver / floor-accounting
   checks, module-parameterized section checks, anti-pattern scan, placeholder scan,
   quantification, semantic version-bump.
-- **`mochiko:validation-command-shape`**: for grading an orchestration command's conformance
-  to its codified shape — a deterministic grep floor (references present, no restated
-  single-sourced prose, exceptions marked, frontmatter correct) run first and recorded as
-  evidence, then the prose judgment ceiling (altitude, parameter completeness, contract-fill
-  soundness), plus the strip-note audit when a minimalism wave is closing.
 
 When the artifact fits one cleanly, that checklist is your strongest asset — use it. When it
 does not, do not force it: fall back on your own method and grade the artifact against the

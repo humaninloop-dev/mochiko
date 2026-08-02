@@ -5,6 +5,25 @@ Entry formats: `strips/README.md`. Wave context: skill-succinctness wave 1 (desi
 80 → 79 lines, 1 cut = 1% — **deeply under the 30–70 never-stripped band by ruling** (born under
 current conventions; D1 forbids cutting to reach a band).
 
+## [v0.45.0] Skill deleted whole — framework-maintenance purge
+- **Disposition:** superseded → deleted outright; the command-audit *responsibility* re-homed
+  to `mochiko:validator` grading against `templates/command-shape.md` as an explicit checklist
+  (re-keyed in `CLAUDE.md` + `.claude/rules/mochiko/primitive-edits.md` this version); full
+  body in git history, last shipped v0.44.0
+- **Tier failed:** n/a — supersession by ruling (user ruling 2026-08-02; ADR
+  `.mochiko/decisions/2026-08-02-framework-trio-deleted.md`; supersedes the D6 move plan this
+  note's v0.44.0 wave context anticipated — the S14 probe passed on fresh-session re-run, but
+  delete-outright was ruled over the move)
+- **Content:** the whole grading skill — deterministic grep floor + prose judgment ceiling,
+  checks 1–20 incl. the check-15 P9 re-key and check-14 preserved-responsibilities, strip-note
+  wave-close audit. Deleted whole, not compressed.
+- **Kept deliberately:** `templates/command-shape.md` (the bar it graded against — still the
+  obligated read of all six shipped commands) and the `validator` persona's generic
+  checklist-grading method, which now carries command audits.
+- **Consumers assessed:** `agents/validator.md` mount (dropped same wave — `strips/validator.md`) ·
+  router rows `:28/:119/:142` (edited/deleted same wave) · `CLAUDE.md` + `primitive-edits.md`
+  audit pointers (re-keyed) · no command references the skill.
+
 ---
 
 **Wave context (v0.44.0 — P9 lockstep re-key, in place).** The shape's P9 clause was amended
