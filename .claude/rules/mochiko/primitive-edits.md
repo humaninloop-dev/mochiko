@@ -24,11 +24,12 @@ change is done. Full contracts: `.mochiko/strips/README.md`.
   An edit whose only trace is the changed file, with nothing in `.mochiko/strips/`, is **incomplete**.
 
 - **Check** — the independent **author ≠ grader** audit: `mochiko:validator` grading a command
-  against **the command's own text** — internal coherence (default-FAIL goal, counted bounds,
-  named floor gates, no self-grading seat row, workspace-evidence recovery) plus preserved
-  responsibilities (`templates/command-shape.md` was deleted at v0.46.0; the dedicated
-  `validation-command-shape` skill at v0.45.0) — the matching `validation-*` / `review-*` skill
-  otherwise. The editor never grades their own edit — dispatch a separate validator.
+  against **the command's own text** — internal coherence (default-FAIL goal · harness present:
+  plan approval for producing seats, author ≠ grader independence, decisions reserved to the
+  user · bindings complete: paths, templates, entry condition) plus preserved responsibilities
+  (`templates/command-shape.md` was deleted at v0.46.0; the dedicated `validation-command-shape`
+  skill at v0.45.0) — the matching `validation-*` / `review-*` skill otherwise. The editor never
+  grades their own edit — dispatch a separate validator.
 
 **Protected content leaves ONLY by ruling.** A line in a record's protected set, marked `KEPT:`, or
 traceable to a `DECISIONS.md` row may be removed only as a recorded supersession-by-ruling. A silent

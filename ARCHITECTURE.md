@@ -1,6 +1,6 @@
 # Architecture — the mochiko plugin
 
-Current-state map of the shipped plugin at [`plugins/mochiko/`](plugins/mochiko/) (v0.46.0,
+Current-state map of the shipped plugin at [`plugins/mochiko/`](plugins/mochiko/) (v0.48.0,
 [`plugin.json`](plugins/mochiko/.claude-plugin/plugin.json)). Scope is the plugin only — the
 repo-side knowledge plane (`.mochiko/`, the operating docs) is covered by
 [`CLAUDE.md`](CLAUDE.md). Rationale for every boundary here lives in the decisions layer
@@ -13,8 +13,8 @@ data flow.
 Mochiko is a kernel-free Claude Code plugin: a product-delivery pipeline (governance → spec →
 slices → plan → implementation) run entirely through native primitives — markdown command
 supervisors, agent-team personas, and skills. There is no orchestration engine: each command
-*is* the orchestrator for its workflow, and every workflow is a bounded, default-FAIL loop with
-named human gates.
+*is* the orchestrator for its workflow, and every command is a goal + harness contract the lead
+composes a run toward, with named decisions reserved to the user.
 
 ```mermaid
 flowchart LR
@@ -52,7 +52,7 @@ pinned in [`CLAUDE.md`](CLAUDE.md#skill-library-conventions-five-axes).
 
 | Layer | Home | Count | Role |
 |---|---|---|---|
-| **Commands** | [`plugins/mochiko/commands/`](plugins/mochiko/commands/) | 6 | User-invoked team-form supervisors (`disable-model-invocation: true`). Each file is **self-contained** — goal, seats, gates, bounds, transport, lifecycle, bindings, recovery all stated in the command itself (doctrine purge, v0.46.0). The lead (the command context) owns every verdict, iteration bound, and human gate. |
+| **Commands** | [`plugins/mochiko/commands/`](plugins/mochiko/commands/) | 6 | User-invoked goal+harness contracts (`disable-model-invocation: true`). Each file states its Goal (default FAIL), Harness (plan approval for producing seats · author ≠ grader independence · decisions reserved to the user), and Bindings (v8 rebuild, v0.48.0). The lead plans and orchestrates the run — teammates or subagents per seat is its call. |
 | **Agents** | [`plugins/mochiko/agents/`](plugins/mochiko/agents/) | 9 | Personas (all `model: opus`) that carry judgment and declare `skills:`. A persona contains no trace of any workflow — decoupling by absence; caller-side context rides the dispatch brief. |
 | **Skills** | [`plugins/mochiko/skills/`](plugins/mochiko/skills/) | 27 | Procedure. One user-invoked router ([`skills/mochiko/`](plugins/mochiko/skills/mochiko/SKILL.md)) indexes the other 26, which are model-invoked with graded MUST/SHOULD triggers in their descriptions. Deterministic sub-checks ride as `scripts/` inside skills (e.g. `analysis-codebase`'s `detect-stack.sh`); depth rides as `references/`. |
 | **Templates** | [`plugins/mochiko/templates/`](plugins/mochiko/templates/) | 17 + `constitution-modules/` | Two kinds: **artifact schemas** (spec, slices, plan, tasks, governance-intent, …) over the shared `artifact-format.md` envelope; **report schemas** (per-seat reports) over the shared `report-format.md` envelope. The former doctrine homes (`workflow-contract.md`, `agent-dispatch.md`, `sized-end-stage-review.md`) were deleted at the doctrine purge (v0.46.0–v0.47.0) — their mechanics live inline in each command. `constitution-modules/` is setup's module library (knowledge-management, layer-rules, release-gates, evolution-notes). |
@@ -79,13 +79,14 @@ outside the four layers (templates is referenced by commands and skills, not reg
   cluster's contract live in exactly one file; commands and skills reference them at altitude
   (pointer depth, never restated).
 
-### Command form (each command self-contained)
+### Command form (goal + harness)
 
-Every command is an agent-teams-gated, bounded, default-FAIL loop with named human gates
-(G1…Gn) and workspace-as-state recovery — a run resumes from artifact evidence alone; there is
-no run registry and no daemon. Since the doctrine purge (v0.46.0) each command file carries its
-own loop mechanics — weight-card factors, floor rules, team transport, seat lifecycle, ground
-rules — with no shared shape home; commands evolve independently.
+Every command is a goal + harness contract (v8 rebuild, v0.48.0): a verifiable done-condition
+that defaults to FAIL, a harness — plan approval before any producing seat works, author ≠
+grader independence, the decisions reserved to the user — and the bindings the lead cannot
+invent (paths, templates, entry conditions). The lead plans and orchestrates the run within
+that frame; teammates vs subagents is its per-seat call. There is no run registry and no
+daemon; commands evolve independently.
 
 ## Cluster map
 
@@ -116,9 +117,9 @@ flowchart LR
   validator["validator ×<br/>validation-constitution"]
   lead -->|"interrogation, inline"| synthesis[("governance-intent.md")]
   synthesis --> reviewers -->|"survivors + tally"| lead
-  lead -->|"G3 ratified contract"| producer --> surfaces[("CLAUDE.md region ·<br/>.claude/rules/mochiko/ ·<br/>governance-ledger.md")]
+  lead -->|"ratified contract"| producer --> surfaces[("CLAUDE.md region ·<br/>.claude/rules/mochiko/ ·<br/>governance-ledger.md")]
   surfaces --> validator -->|"fix list"| producer
-  lead ---|"G1–G5 rulings"| user
+  lead ---|"user rulings + acceptance"| user
 ```
 
 Optional post-acceptance probe: `testing-governance-injection` empirically verifies the rules
@@ -172,7 +173,7 @@ flowchart LR
   lead -->|"seeded template + brief"| producer
   producer --> spec[("specs/&lt;feature&gt;/spec.md")]
   spec -->|"graded from the file"| critic -->|"advocate-report.md"| lead
-  lead -->|"G3 acceptance"| user(("User"))
+  lead -->|"spec acceptance"| user(("User"))
 ```
 
 ### Slice — graduation-slice decomposition
@@ -195,7 +196,7 @@ flowchart LR
   lead --> producer
   producer --> slices[("specs/&lt;feature&gt;/slices.md<br/>or reviewed null exit")]
   slices --> reviewer -->|"advocate-report.md"| lead
-  lead -->|"G4 accept / override"| user(("User"))
+  lead -->|"accept / override"| user(("User"))
 ```
 
 Downstream consumption is carried by the artifact itself: `slices.md`'s Graduation contract is
@@ -205,7 +206,7 @@ the single home for how slice-scoped plan/implement runs consume it.
 
 [`commands/plan.md`](plugins/mochiko/commands/plan.md). Four producer stages (analysis →
 architecture → detailed design → structuring) under two reviewer lenses. The architecture is
-the first design artifact and stops the run at a rendered-diagram sign-off (G3) before
+the first design artifact and stops the run at a rendered-diagram sign-off before
 anything is designed against it.
 
 | Seat | Wiring |
@@ -233,7 +234,7 @@ flowchart LR
   ta & sa & karch --> pkg[("specs/&lt;feature&gt;/: requirements ·<br/>constraints-and-decisions · nfrs ·<br/>architecture · data-model ·<br/>contracts/api.yaml · task-mapping ·<br/>tasks · plan.md")]
   pkg --> feas & comp
   feas & comp -->|"reports"| lead
-  lead -->|"G3 architecture sign-off ·<br/>G7 package acceptance"| user(("User"))
+  lead -->|"architecture sign-off ·<br/>package acceptance"| user(("User"))
 ```
 
 The architecture scribe runs at finalize, outside the round loop, and is omitted from the
@@ -265,7 +266,7 @@ flowchart LR
   se --> code[("working code +<br/>cycle-report.md")]
   code -->|"TEST: tasks, quality gates,<br/>real infrastructure"| qa
   qa -->|"verification report +<br/>recommendation"| lead
-  lead -->|"deviation gate · G5 acceptance"| user(("User"))
+  lead -->|"deviation consent · final acceptance"| user(("User"))
 ```
 
 The approved `architecture.md` is briefed input, guarded twice: the producer's diagram-anchored

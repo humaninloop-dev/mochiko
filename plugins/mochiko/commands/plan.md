@@ -1,227 +1,67 @@
 ---
-description: Turn an accepted spec into an accepted implementation package — analysis, an architecture design with its own early sign-off, detailed design, and the task breakdown — via an independent producer→reviewer team loop. A standing technical-analyst seat authors analysis then detailed design; a standing system-architect seat authors the architecture delta artifact first among the design work and stops the run at a rendered-diagram sign-off; a standing task-architect seat structures the mapping then tasks; a cold principal-architect seat grades analysis feasibility then the architecture (topology + governance); a cold devils-advocate seat grades completeness then the task artifacts, peer-edged with the active producer; the user signs off the architecture early and accepts the whole package at a named final gate. Governance-gated, architecture-first, default-FAIL, bounded, kernel-free. Requires agent teams (CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS); refuses without them.
+description: Turn an accepted spec into an accepted implementation package — analysis, a user-signed architecture, detailed design, and the task breakdown.
 disable-model-invocation: true
 ---
 
-# Plan — Implementation Package (Analysis → Architecture → Design → Structuring)
+# Plan — Implementation Package
 
 **Goal:** turn an accepted `spec.md` into one accepted implementation package — analysis,
-architecture (signed off early), detailed design, and the task breakdown — independently graded
-for feasibility, completeness, and task-artifact quality. `$ARGUMENTS` = optional feature ID;
-empty or detected-from-workspace is resolved at G1.
-
-**You are the lead**: you compose the run and own its counters, every verdict, every escalation,
-every human gate, and the user-facing conversation — agents produce and review, you adjudicate.
-Every dispatch carries its own brief in the spawn or send prompt — the seat's role and skill
-(named as a hint, the agent decides fit), the exact inputs to Read, where the output lands
-(write vs return), the bar it must clear, its peer edges and holds, and the independence
-reminder that matches the seat (author: never grade your own output; grader: read the artifact
-itself, default FAIL, quote evidence) — the seat owns none of this context and gets all of it
-from you; on a retry, a peer-routed gap list is pointed at and the round opened, a relayed one
-pasted verbatim. This file is self-contained: plan's whole
-contract lives here. **First-spawn probe:** the `technical-analyst` producer — analysis
-produces before anything reviews.
+architecture, detailed design, and the task breakdown. `$ARGUMENTS` = optional feature ID;
+empty → resolve from `.mochiko/specs/` and confirm with the user.
 
 ## Goal
 
-Every deliverable in Bindings exists, alongside the round reports for the grading that actually
-ran; the package traces the business requirements through to the task breakdown, carries no
-cross-artifact contradiction, and conforms to an architecture target signed off at G3; `plan.md`
-assembles that validated set, never new design; the KM landing ran; and the user accepted the
-whole package at G7. The package is `/mochiko:implement`'s unchanged entry condition.
+The package exists under `.mochiko/specs/<feature>/`: `requirements.md` (FR→TR) ·
+`constraints-and-decisions.md` (C-XXX / D-XXX / IP-XXX) · `nfrs.md` (NFR-XXX) ·
+`architecture.md` — **signed off by the user, on a rendered diagram, before any detailed
+design was built on it** · `data-model.md` · `contracts/api.yaml` · `quickstart.md` when a
+real external-integration surface exists (its null path recorded in `plan.md`) ·
+`task-mapping.md` · `tasks.md` (`[US#]` tags, its Story→Cycle table a derived echo of the
+mapping) · `plan.md`, a summary over the validated artifacts, never new design. The package
+was independently graded — feasibility and completeness — traces the business requirements
+through to the task breakdown, carries no cross-artifact contradiction, conforms to the
+signed-off architecture, and the user accepted it whole. It is `/mochiko:implement`'s
+unchanged entry condition.
 
-**Not done:** a missing artifact, or an unrecorded `quickstart.md` null path · an unsigned or
-re-opened architecture target · a design element contradicting that approved target · a departure
-with no trail line · out of rounds · G7 unaccepted.
+**Not done — default FAIL:** a missing artifact, or an unrecorded `quickstart.md` null path ·
+an unsigned architecture, or a design element contradicting the signed-off target · a package
+never graded by anyone but its authors · user acceptance not given.
 
-## Seats & checks
+## Harness
 
-| seat | agent × skill(s) | produces / grades | spawn | peer edges |
-|---|---|---|---|---|
-| producer | `technical-analyst` × `authoring-technical-requirements`, `patterns-technical-decisions`, `patterns-entity-modeling`, `patterns-api-contracts` | authors the analysis set, then the detailed design conforming to the approved `architecture.md`; never grades | standing across analysis + detailed design; **probe seat** | hands finished artifacts to completeness directly; architect concerns arrive via you (G4) |
-| system-architect | `system-architect` × `patterns-system-design` | authors `architecture.md` + the structural D-XXX rows; never grades | standing, architecture stage | hands `architecture.md` to completeness; feasibility is lead-fired |
-| task-architect | `task-architect` × `patterns-vertical-tdd` | authors `task-mapping.md`, then expands it into `tasks.md`; never grades | standing across mapping + tasks | hands each round's artifact to completeness |
-| feasibility | `principal-architect` × `review-feasibility` | grades analysis feasibility, then the architecture pass (topology + governance); never authors, and never grades the detailed design | cold once the analysis is authored; **lead-gated** thereafter | none — its concerns reach producers only through you (G4) |
-| completeness | `devils-advocate` × `review-plan-artifacts`, then `review-task-artifacts` | grades coverage / measurability / consistency at every stage, architecture coverage, and conformance to the approved architecture; never authors | cold at first review, standing after | peer-edged with the active producer; grades only when you open the pass |
-| architecture scribe | `principal-architect` × `authoring-architecture` | records a bootstrap-confirmed baseline into `ARCHITECTURE.md` | disposable, at finalize, per the KM landing | none — never the feasibility seat |
-
-**Validation model:** the loop's bounded in-loop critique, every round. Each reviewer's output is
-**lead-adjudicated input** (the `review-*` family boundary) and every verdict is yours. You select
-the completeness reviewer's skill and mode per stage and supply the artifact sets it grades across (incremental for detailed design: {new design} / {prior analysis};
-cumulative for tasks: {`tasks.md`} / {`task-mapping.md`}) — a policy call, not a hand-off. No
-seat ever grades its own output.
-
-**Team transport:** check `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS` before anything else — unset →
-stop and tell the user how to enable it (settings/env; Claude Code ≥ v2.1.178); the first spawn
-is the authoritative probe, and there is no teamless fallback. A seat is spawned with **`name:`**
-— a nameless spawn is a one-shot subagent, the forbidden transport; every later round is a
-`SendMessage` to that same named seat. Verify from the roster: the `members` array in
-`~/.claude/teams/<team>/config.json` (`<team>` = `session-` + first eight chars of the session
-ID) must carry the seat's `name` — absent ⇒ kill and respawn explicitly requesting an agent team;
-failing again stops the run. Teammates don't load `skills:` frontmatter — every spawn prompt
-names the skill and role itself. Tell the user up front they can watch or message any teammate;
-announce each seat in one line when filled; never narrate or reply to teammate housekeeping. A
-peer-routed gap list is a **hand-off, not a start signal** — a producer revises only when you
-open the next round, and your brief carries that hold.
-
-**Seat lifecycle:** the counted unit is the produce↔review round tallied **cumulatively across
-the five stages**, not the per-stage cap below — the completeness seat outlives every stage
-boundary and is the longest-lived of the governed seats here. At each gate pause, count each
-standing multi-unit seat's completed rounds and recycle at ~≥3 — counted, never observed; the
-user may order a recycle at any gate; an early, still-warm pause keeps the seat standing. A
-respawn is a reset: briefed from the on-disk artifact set alone, versioned successor name
-(`producer-2`), never the dead seat's bare name. End-of-need shutdown; no ritual sends.
-
-## Constraints
-
-- **G1 entry** — evidence: `$ARGUMENTS`, `spec.md` present and accepted, the governance region
-  (`<!-- mochiko:governance:begin -->`), the declared project type in `governance-intent.md`,
-  repo-root `ARCHITECTURE.md`, `slices.md` · rules: the user · decides: the resolved `<feature>`
-  (an explicit ID, else the most recent in-progress feature under `.mochiko/specs/`, confirmed with
-  the user before the run opens). An absent or unaccepted spec blocks to `/mochiko:specify`; a
-  missing governance region is
-  surfaced (offer `/mochiko:setup`), never auto-resolved; brownfield requires
-  `codebase-analysis.md` (missing → offer setup or proceed greenfield with a logged warning; >14d
-  stale by mtime → warn); an absent `ARCHITECTURE.md` sets the bootstrap flag for G2.
-- **Run-start weight card** — evidence: your stated read of the four rigor factors against this
-  feature's accepted spec — **reversibility** (rework cost if the design is wrong) · **blast
-  radius** (how much downstream work reads the package as authoritative) · **precedent**
-  (first-of-kind, or mirroring an audit-cleared pattern) · **input confidence** (scored on the
-  artifact under review; a user ruling discounts ambiguity risk only, and one introducing new
-  surface raises consistency risk) — plus the process you compose from it — the stated default
-  below, or your departures from it · rules: the user · decides: the run's composed process.
-  Rigor scales with cost-of-being-wrong, never task size; diff size is at most a hint.
-- **G2 baseline** *(bootstrap only)* — evidence: the architect's reconstructed current-state
-  topology, marked reconstructed with its confidence noted · rules: the user · decides: the
-  delta's current-state seed, **before any delta is designed on it**. A present `ARCHITECTURE.md`
-  skips this gate — its content is the seed. Greenfield with no prior structure degenerates
-  cleanly: the baseline is empty, the target is the whole picture.
-- **G3 architecture sign-off** *(always-on)* — evidence: `architecture.md` + both reports clear,
-  and the **rendered** diagram presented by you via the session's render surface (side-panel
-  render, published artifact, IDE preview), never a raw mermaid block · rules: the user ·
-  decides: the approved target — detailed design opens only once it clears. A no-delta feature
-  still presents the neighborhood-scoped diagram plus its one-line "changes nothing structurally"
-  claim, so the judgment is shown, never silently made by the producer. With none of those render
-  surfaces in an attended session the gate **degrades with record**: present the diagram source +
-  component table and record "presented un-rendered" on the artifact. Plan is never hard-blocked
-  by rendering.
-- **G4 feasibility / governance rejection** — evidence: architect concerns, or an architecture
-  that must break a governance surface · rules: the user · decides: redesign to conform, or an
-  amendment/waiver through `governance-ledger.md` — exactly two exits; the feature gate never
-  overrules the constitution. An `infeasible` grade escalates as a business-level scope decision,
-  not a routine revision.
-- **G5 clarification** — evidence: an advocate gap, or a producer question it cannot resolve ·
-  rules: the user · decides: the answer fed forward. You route each finding by judgment: **a
-  genuine judgment call is ruled here**; a gap answerable by investigation routes to a native
-  `Explore` pass (the "Research this" branch), never to the user; work bigger than the run was
-  framed is G6's.
-- **G6 exit-early / escalation** — evidence: a cap trip, a gap set unchanged round-over-round,
-  `PLAN_STOP`, or a producer designing beyond slice scope · rules: the user · decides:
-  continue-refining / accept-with-noted-gaps / abort — the run stays FAIL unless the user
-  explicitly accepts.
-- **G7 package acceptance** — evidence: every stage's clearing verdict, `plan.md` assembled, and
-  the decision / entity / endpoint / cycle counts with any noted limitations · rules: the user ·
-  decides: done / amend (re-enter the relevant bounded stage; an architecture amend re-clears G3)
-  / reject (drafts remain in place). This is the package's **one** standing acceptance.
-- **Floor gates:** every gate above — **G1**'s feature confirm · the run-start weight card ·
-  **G2**'s baseline confirm on its bootstrap limb · **G3** · **G4** · **G5**'s judgment-call
-  ruling · **G6** · **G7** — the user's whatever you compose, never departable; plan numbers no
-  lead-ruled gate, so the not-floor set is empty. Batch rulings into the fewest checkpoints that
-  respect these gates. **`plan.md` is the one lead-penned surface here:** wherever
-  a review ran it takes one cold-seat grade before G7, non-discretionarily, never your own read
-  in place of one — zero cold reads only by a recorded waiver at the weight card.
-- **Bounds:** cap **3** produce↔review rounds **per stage** (analysis · architecture · detailed
-  design · mapping · tasks), you count each; no-progress exit on a gap set unchanged
-  round-over-round; kill-switch `PLAN_STOP` checked before each seat send; out of rounds =
-  escalate, never done. Any bound this run declares — including a declared cost range — has you
-  as its named counter, **rises only at a user checkpoint**, and is re-declared only on the
-  record; busting a bound escalates, never silently continues.
-- **Ordering invariants:** the architecture is the **first** artifact of the design work — nothing
-  downstream is authored against an unapproved shape. Feasibility grades **once** per input and
-  re-fires only on a structural change (new or changed constraints, expanded requirement scope,
-  modified NFR targets); a clarification-only revision returns to the completeness pass alone. The
-  mapping is graded **before** the expensive TDD breakdown. A detailed-design contradiction with
-  the approved architecture **stops the producer and returns to G3** for a consented target
-  amendment — never designed around silently. Delivery is a hand-off, not a start signal: you open
-  every round and every review pass. **No devolved branch** — every review here is a judgment
-  grade, so no gate is skipped and no unit clears unread.
-- **Slice scope** *(when an accepted `slices.md` exists)* — that file's **Graduation contract** is
-  the single home for slice resolution, the staleness guard, scope, extend-mode, graded amendment,
-  and artifact layout; not restated. plan's own bindings on top: a producer designing beyond scope
-  is a scope gap → G6; a `[MODIFY]` graded amendment is surfaced for this round's reviews with its
-  migration flagged for the slice's task breakdown; each reviewer is briefed with {this slice's
-  extensions + artifacts} / {the prior accumulated artifacts}, so the extension is graded against
-  what earlier slices established; the architecture delta seeds from the accumulated feature-root
-  `architecture.md`/`ARCHITECTURE.md`, never per-slice from scratch.
-- **Optional design checkpoint** — on request in a judgment-heavy run, a look at the design before
-  structuring is spent on it; a courtesy, never a standing gate.
-- **Ground rules:** kernel-free — no brain code, no capability catalogs, no DAG-mediated
-  orchestration. Suggest commits; never run git mutations, never push. No internal machinery
-  vocabulary in user-facing prose — the conversation is yours and the user's, in the mochiko
-  register (`templates/output-style.md`). User acceptance is plain blocking text, never a timed
-  prompt. Deliverables are written as the work progresses, never reconstructed at the end.
+- **You are the lead.** Plan the run and orchestrate it toward the Goal; teammates or
+  subagents per seat is your call. The architecture is designed and signed off **before**
+  detailed design builds on it; a later contradiction with the signed-off target returns to
+  the user for a consented amendment, never designed around silently.
+- **Plan approval:** any seat that writes artifacts plans first and works only on a plan you
+  approved; grading and fact-finding seats are exempt.
+- **Independence:** no output is cleared by its author; grading reads the artifacts
+  themselves — never the author's report — default FAIL.
+- **Reserved to the user:** architecture sign-off, presented on a rendered diagram (no render
+  surface → present source + component table and record it) · a governance conflict — conform,
+  or amend/waive through `governance-ledger.md`; feature work never overrules the
+  constitution · an infeasible grade — escalated as a business-level scope decision · package
+  acceptance (done / amend / reject).
+- **Entry:** an absent or unaccepted `spec.md` blocks — point to `/mochiko:specify`. A
+  missing governance region is surfaced (offer `/mochiko:setup`), never auto-resolved; on a
+  brownfield codebase a missing or stale `.mochiko/memory/codebase-analysis.md` is surfaced
+  the same way — offer setup, or proceed greenfield with the warning logged.
+- Suggest commits; never run git mutations, never push. User acceptance is plain blocking
+  text, never a timed prompt.
 
 ## Bindings
 
-- **Artifacts**, under `.mochiko/specs/<feature>/` (slice-scoped: `plan.md`, `architecture.md`,
-  the task artifacts and round reports land under `slices/<slice>/`, so the Goal's artifact set
-  reads the shared feature-root artifacts extended there plus the per-slice ones):
-  `requirements.md` (FR→TR) · `constraints-and-decisions.md` (C-XXX / D-XXX / IP-XXX, with a
-  designated **structural-decisions section** the architect owns) · `nfrs.md` (NFR-XXX) ·
-  `architecture.md` (its structure and scope bound are `patterns-system-design`'s) ·
-  `data-model.md` (entities + sensitivity) · `contracts/api.yaml` (OpenAPI + `x-integration`) ·
-  `quickstart.md` **conditional** on a real external-integration surface, its null path recorded
-  in `plan.md` · `task-mapping.md` (the slicing source of truth) · `tasks.md` (`[US#]` tags,
-  `[EXTEND]`/`[MODIFY]` markers; its Story→Cycle table a **derived echo** of the mapping) ·
-  `plan.md`, your fill-target from `templates/plan-template.md` — a summary over validated
-  artifacts, never new design.
-- **Reports:** `techanalyst-report.md` · `sysarchitect-report.md` · `taskarchitect-report.md` ·
-  `feasibility-report.md` · `advocate-report.md`. Cleaned by default at finalize (outcome stamps
-  live in `plan.md`); never offer to delete a deliverable.
-- **Uncertainty carrier:** producer-authored — each report's Assumptions / Open Questions, not
-  confidence marks.
-- **Fact route:** the artifacts themselves; a knowledge gap goes to a native `Explore` pass.
-- **Run-start declaration:** one line at the head of `plan.md`, opened at run start to carry it
-  and assembled at the end — the surface Recovery already notes the resume stage on — for a
-  default run; a run that departs from the stated default, or declares non-default bounds,
-  writes a departure record at `.mochiko/specs/<feature>/plan-contract.md`
-  beside the reports instead — the done-condition and bounds as (re-)declared, departures
-  taken, and the counter state Recovery reads on resume. Counted unit: the **produce↔review round** — capped per stage by the
-  Bounds, tallied cumulatively across the five stages by the lifecycle line.
-- **Departure trail:** one line per departure from the stated default, appended under that same
-  `plan.md` declaration as it is taken and carried into G7's evidence — never your context alone;
-  the trail names the grading that actually ran. Departure is by record, never by silence.
-- **KM landing:** `.mochiko/memory/knowledge-management.md` exists → run its ritual + invariants
-  under fix-on-sight, and mint new domain terms into `GLOSSARY.md`. A **bootstrap-confirmed
-  baseline** (G2) lands as the initial `ARCHITECTURE.md` via the scribe seat. Plan records only
-  what plan itself established — the confirmed baseline; implement records what it builds. No copy
-  → skip.
-
-## Recovery
-
-Note the resume stage on the deliverable, with the run's counter state — rounds consumed ·
-bounds declared · departures taken. Sessions and teams do not survive `/resume`, and a shared
-account limit can throttle the team and the main session together — escalation then has nowhere
-to go but pause. Resume from workspace evidence, never a context `phase` field, respawning only
-what the stage needs — a respawned producer re-reads the artifacts + gap list, and a respawn is
-cold by design.
-
-| Evidence in the workspace | Resume at |
-|---|---|
-| no `spec.md`, or unaccepted | entry blocked (G1) |
-| `slices.md` present | resolve the current slice; the rows below then read per-slice artifacts alongside the shared feature root |
-| `spec.md` present, no `requirements.md` | analysis (produce) |
-| analysis present, no report this round | analysis (review) |
-| analysis not `feasible`+`ready`, within the cap | analysis (loop control) |
-| analysis cleared, no `architecture.md`, or baseline unconfirmed | architecture (baseline / produce) |
-| `architecture.md` present, unsigned | architecture (review / G3) |
-| architecture signed off, no `data-model.md` | detailed design (produce) |
-| design present, advocate not `ready`, or an open architecture contradiction | detailed design (loop control / return to G3) |
-| design cleared, no `task-mapping.md` | mapping (produce) |
-| `task-mapping.md` present, not `ready`, within the cap | mapping (loop control) |
-| mapping cleared, no `tasks.md` | tasks (produce) |
-| `tasks.md` present, not `ready`, within the cap | tasks (loop control) |
-| all stages cleared, `plan.md` unassembled | assemble |
-| `plan.md` assembled, unaccepted | G7 |
-| accepted | finalize — report artifacts, per-stage round counts, the decision / entity / endpoint / cycle counts, a suggested commit (`docs: plan <feature>`), next step `/mochiko:implement` |
-| `PLAN_STOP` present | escalate (G6) |
+- **Artifacts** as listed in the Goal; `plan.md` from `templates/plan-template.md`;
+  `architecture.md`'s structure and scope bound are `mochiko:patterns-system-design`'s; the
+  structural D-XXX rows live in `constraints-and-decisions.md`'s designated section.
+- **Slice scope** (accepted `slices.md` present): its Graduation contract is the single home
+  for slice resolution, scope, extend-mode, and layout — `plan.md`, `architecture.md`, and
+  task artifacts land under `slices/<slice>/`; the architecture delta seeds from the
+  accumulated feature-root `architecture.md` / `ARCHITECTURE.md`, never per-slice from
+  scratch.
+- **Baseline:** repo-root `ARCHITECTURE.md` is the current-state seed; absent → the
+  reconstructed baseline is confirmed with the user before a delta is designed on it, and
+  lands as the initial `ARCHITECTURE.md` where the KM copy
+  (`.mochiko/memory/knowledge-management.md`) exists.
+- **Register:** user-facing prose per `templates/output-style.md`.
+- **Next step:** `/mochiko:implement`.

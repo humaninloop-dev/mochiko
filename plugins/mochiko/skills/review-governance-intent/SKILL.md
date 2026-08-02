@@ -1,9 +1,9 @@
 ---
 name: review-governance-intent
-description: This skill MUST be invoked when serving as a cold G3 INTENT REVIEWER in a `/mochiko:setup` run — stress-testing the frozen, confidence-marked interrogation synthesis (`.mochiko/memory/governance-intent.md`) BEFORE the user ratifies it at the synthesis-confirmation checkpoint — spawned at the sizing gate (one of a coverage/coherence lens-briefed pair by default, or solo when sized down), never a participant in the interrogation session. Protocol — independent cold read FIRST; the five setup hunt classes (missed dimensions against the ten-dimension agenda, unchallenged fact-profile calls, passive card acceptances, too-easily-resolved reality conflicts, thin-rationale echo hunts); reality-grounding against `codebase-analysis.md` in brownfield. Then CROSS-EXAMINE the counterpart per the single-sourced pair protocol (`review-brainstorm`'s `references/CROSS-EXAM.md`) and return survivors severity-classified (Critical/Important/Minor) with a tally and a RECOMMENDED status (ready / needs-revision / critical-gaps) — survivor routing, the clearing verdict, and G3 are the lead's and the user's. SHOULD also invoke for the verify pass over the synthesis's folded dispositions (the coherence lens in a pair, automatic when solo) or the bounded delta-pass on a material G3-edit. Run by an independent reviewer, never the session lead; defaults to a FAIL posture — zero findings means hunt harder, and every finding needs a concrete failure scenario or cited contradiction.
+description: This skill MUST be invoked when serving as a cold INTENT REVIEWER in a `/mochiko:setup` run — stress-testing the frozen, confidence-marked interrogation synthesis (`.mochiko/memory/governance-intent.md`) BEFORE the user ratifies it at setup's synthesis-ratification checkpoint — spawned at the sizing gate (one of a coverage/coherence lens-briefed pair by default, or solo when sized down), never a participant in the interrogation session. Protocol — independent cold read FIRST; the five setup hunt classes (missed dimensions against the ten-dimension agenda, unchallenged fact-profile calls, passive card acceptances, too-easily-resolved reality conflicts, thin-rationale echo hunts); reality-grounding against `codebase-analysis.md` in brownfield. Then CROSS-EXAMINE the counterpart per the single-sourced pair protocol (`review-brainstorm`'s `references/CROSS-EXAM.md`) and return survivors severity-classified (Critical/Important/Minor) with a tally and a RECOMMENDED status (ready / needs-revision / critical-gaps) — survivor routing, the clearing verdict, and ratification are the lead's and the user's. SHOULD also invoke for the verify pass over the synthesis's folded dispositions (the coherence lens in a pair, automatic when solo) or the bounded delta-pass on a material post-review edit. Run by an independent reviewer, never the session lead; defaults to a FAIL posture — zero findings means hunt harder, and every finding needs a concrete failure scenario or cited contradiction.
 ---
 
-# G3 Intent Review — Stress-Testing the Governance Synthesis
+# Intent Review — Stress-Testing the Governance Synthesis
 
 ## Overview
 
@@ -13,7 +13,7 @@ a **traceable contract** on the surface-set producer, each element carrying a GI
 confidence mark (`Confident / Assumed / Contested / Unsure / Deferred`) the lead assigned at
 assembly. The session itself runs unchallenged — the card arbitration is recommend-then-arbitrate,
 the pipeline's highest passive-acceptance-risk stretch — **you are the challenge**, and you run
-*before* G3: a gap you catch costs one interrogation follow-up; the same gap post-authoring costs
+*before* ratification: a gap you catch costs one interrogation follow-up; the same gap post-authoring costs
 re-ratification plus a produce→validate round. The synthesis is **frozen** from your spawn until
 dispositions land.
 
@@ -26,7 +26,7 @@ the lead owns the cross-set merge. Solo, the whole surface is yours. **The verif
 the coherence lens** in a pair (it grades the lead's folds — a consistency job), and to you
 automatically when solo.
 
-Every reviewer recommends; the **lead owns every verdict, and the user owns G3**. You challenge
+Every reviewer recommends; the **lead owns every verdict, and the user owns ratification**. You challenge
 and grade; you never author, revise, or ratify the synthesis.
 
 **Out of your jurisdiction, permanently:** the authored surface set and its Tier-2 grading
@@ -103,17 +103,17 @@ two-exchange cap; an overruled survivor marks its element `Contested`).
 reasonable. A synthesis too thin to attack (rulings without rationale, marks without basis) is
 itself the first finding.
 
-## The verify pass — and the G3-edit delta-pass
+## The verify pass — and the post-review-edit delta-pass
 
 When the lead assigns the verify pass (coherence lens in a pair, you automatically when solo),
 verify each fold against the updated synthesis — quote the evidence that the disposition landed.
 Hunt no new surface except contradictions *introduced by the folds themselves*. Verified clean →
 say so; still blocking → say that plainly and let the lead escalate.
 
-**The G3-edit delta-pass.** If the user materially adds or changes content via G3-`edit` after
+**The post-review-edit delta-pass.** If the user materially adds or changes content at ratification after
 the review, the lead sends you — still seated — the delta for a **bounded** pass: generate
 challenges for the edited elements only, so "ratifying a stress-tested synthesis" stays true of
-everything ratified. A G3-`reject` re-enters the full flow (fresh sizing, fresh review) — not
+everything ratified. A ratification `reject` re-enters the full flow (fresh review) — not
 your delta-pass.
 
 ## Independence
@@ -123,7 +123,7 @@ your delta-pass.
 - Findings enter the synthesis through the lead's pen, with dispositions in its Review section;
   you never write the file.
 - Your status is **input**. The lead owns the clearing verdict and the survivor routing; the user
-  owns G3 — its command states them; this skill does not restate them.
+  owns ratification — its command states them; this skill does not restate them.
 
 ## Common Mistakes
 
@@ -136,5 +136,5 @@ your delta-pass.
 | Reviewing the authored principles' formulation quality | Accepted risk, closed `Contested` (D1) — permanently out of jurisdiction. |
 | Grading against your own governance taste | The yardstick is the agenda, the asserted floor, and the synthesis's own internal consistency — not what you would have chosen. |
 | Attacks without resolution paths | Every finding names the interrogation follow-up or check that would settle it. |
-| Softening because the user "already confirmed it in session" | G3 confirming its own synthesis is the gap this review exists to close. You were spawned cold precisely so you are not the room. |
+| Softening because the user "already confirmed it in session" | A session confirming its own synthesis is the gap this review exists to close. You were spawned cold precisely so you are not the room. |
 | Reviewing a session you helped run | If you were in the session, you are not a reviewer. |

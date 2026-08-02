@@ -39,7 +39,7 @@ here:
 - **`mochiko:review-task-artifacts`** — completeness review of `task-mapping.md` / `tasks.md`.
 - **`mochiko:review-brainstorm`** — cold end-stage review of a thinking session's `record.md`.
 - **`mochiko:review-slices`** — completeness review of the `slices.md` decomposition overlay.
-- **`mochiko:review-governance-intent`** — cold G3 review of the setup synthesis (`governance-intent.md`).
+- **`mochiko:review-governance-intent`** — cold pre-ratification review of the setup synthesis (`governance-intent.md`).
 
 Use the Skill tool to invoke the relevant one.
 

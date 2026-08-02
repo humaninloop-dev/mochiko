@@ -12,17 +12,15 @@ disable-model-invocation: true
 
 ## What mochiko is
 
-The kernel-free successor to human-in-loop. Discipline lives in the skill library; native agent teams + a markdown command supervisor handle orchestration. Every command owns and states its own loop — done-condition (default FAIL), independent validation, counted bounds, named human gates — in its own file. See `ROADMAP.md` for the thesis.
+The kernel-free successor to human-in-loop. Discipline lives in the skill library; the lead plans and orchestrates natively (teammates or subagents, its call). Every command is **goal + harness**: a verifiable done-condition (default FAIL) plus the non-waivable frame — plan approval for producing seats, author ≠ grader independence, the decisions reserved to the user, and the bindings the lead cannot invent. See `ROADMAP.md` for the thesis.
 
 ## How the library composes
 
-Each workflow below is a bounded, default-FAIL loop — a command supervisor stitches a
-producer/validator agent team to a goal, and **is its own contract**: its Goal, Seats & checks,
-Constraints and Recovery carry the whole run. A run that departs from its command's stated
-default, or declares non-default bounds, writes a departure record at the path its command
-names. Any loop, command or not, is sound only when its done-condition was written before it
-ran and defaults to FAIL, its validator is a different agent running a different skill than
-the producer, its iteration is deterministically bounded, and a human gate is named.
+Each command below states its Goal, Harness, and Bindings — the whole contract — and the
+lead composes the run toward it. Any run, command or not, is sound only when its
+done-condition was written before it ran and defaults to FAIL, no output is cleared by its
+author (the grade reads the artifact itself), and the decisions the command reserves to the
+user are ruled by the user.
 
 **The two review-skill families** (the `validation-*`/`review-*` split, 2026-07-18): the prefix encodes **who owns the
 clearing**. `validation-*` = the skill **issues the authoritative grade** — a binary PASS/FAIL
@@ -39,7 +37,7 @@ human adjudicates; the reviewer's verdict never clears anything by itself.
 | `authoring-constitution` | authoring or amending the project's **governance surface set** (no constitution.md — CLAUDE.md governance region + `paths`-scoped rules files + skill pointers + governance ledger + trace manifest) from the ratified session synthesis (`governance-intent.md`); greenfield and brownfield in one skill |
 | `analysis-codebase` | analyzing an existing codebase during a brownfield setup run — deterministic stack detection (`detect-stack.sh`) + architecture/convention extraction + intent-blind Essential-Floor status assessment, producing `.mochiko/memory/codebase-analysis.md` |
 | `validation-constitution` | independently grading a drafted governance surface set against the synthesis + trace manifest — trace closure, surface integrity, three-part structure, floor/module/waiver accounting, anti-pattern + placeholder scans, version bump → binary PASS/FAIL + fix list (never the author) |
-| `review-governance-intent` | serving as a cold **G3 intent reviewer** in a setup run — stress-testing the frozen, confidence-marked synthesis *before* the user ratifies it (coverage/coherence pair or solo per the sizing ruling) → survivors + tally + recommended status (never a session participant; clearing is the lead's + G3's) |
+| `review-governance-intent` | serving as a cold intent reviewer in a setup run — stress-testing the frozen, confidence-marked synthesis *before* the user ratifies it (coverage/coherence pair or solo) → survivors + tally + recommended status (never a session participant; clearing is the lead's, ratification the user's) |
 | `testing-governance-injection` | empirically probing that an **accepted** surface set delivers — disposable probe subagents (plus a negative control) verify rules inject on the promised paths and change behavior; findings versioned, fed to an amend run, never auto-fixed. Delivery only — static grading stays `validation-constitution` |
 | `grooming-operating-docs` | a knowledge-management invariant cap/bound trips at a command boundary (horizon caps, item bound/count, dead pointer, status disagreement, `[x]` in BACKLOG) — fix-on-sight groom resolving everything from the project-pinned copy at `.mochiko/memory/knowledge-management.md` |
 | `authoring-architecture` | authoring/updating `ARCHITECTURE.md` (the KM module's living system view) at a plan/implement landing on structural change — current state only; rationale links to the decisions layer, never restated |
@@ -109,12 +107,12 @@ human adjudicates; the reviewer's verdict never clears anything by itself.
 ### Entry point (user-invoked — you run it)
 | Command | Reach when |
 |---------|------------|
-| `/mochiko:setup` | you want to create, amend, or brownfield-derive the project's governance (lands on native surfaces — no constitution.md). The lead interrogates your intent (ten dimensions), a **sized cold review** stress-tests the synthesis, you ratify at a named checkpoint; then a producer authors the surface set and an independent validator grades it, closing on your acceptance. **Requires agent teams** (`CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS`); refuses without them |
-| `/mochiko:specify` | you want to create a feature specification via the adversarial analyst↔advocate loop (the requirements-analyst authors `spec.md`, the devils-advocate stress-tests it) with a human acceptance gate |
-| `/mochiko:slice` | you want to decompose an accepted spec into **graduation slices** — ordered story groups that then run `/mochiko:plan` → `/mochiko:implement` **per slice** instead of whole-spec — via the task-architect→devils-advocate loop with a human acceptance gate on `slices.md`; null-exit-aware (a spec without ≥2 distinct value seams gets a reviewed whole-spec recommendation instead) |
-| `/mochiko:plan` | you want to turn an accepted spec into an accepted implementation **package** — analysis, the **architecture** delta (signed off early at a rendered-diagram gate), detailed design, and the task breakdown (`task-mapping.md` + `tasks.md`) — via a producer→reviewer team loop (technical-analyst + system-architect + task-architect author; principal-architect grades feasibility then the architecture's topology/governance, devils-advocate grades completeness then the task artifacts) with the architecture sign-off early and one final package-acceptance gate; slice-scoped when `slices.md` is present; next step `/mochiko:implement` |
-| `/mochiko:implement` | you want to turn an accepted `tasks.md` into working, verified code — cycle-by-cycle (foundation → feature) via the staff-engineer→qa-engineer producer→verifier loop, with a confidence-based per-cycle gate and a named final-acceptance gate on the implementation |
-| `/mochiko:brainstorm` | you want to think a problem through one question at a time — a fact-checker verifies claims against the files as you go; at convergence **you size the cold review** at a named gate (lens-split pair default / single / recorded waiver); the deliverable is `record.md`, pipeline entry offered, never defaulted. **Requires agent teams** (`CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS`); refuses without them |
+| `/mochiko:setup` | you want to create, amend, or brownfield-derive the project's governance (lands on native surfaces — no constitution.md). The lead interrogates your intent, you ratify the synthesis before anything is authored, an independent grade confirms the trace from the files, and you accept the surface set |
+| `/mochiko:specify` | you want to create a feature specification — `spec.md` authored, independently stress-tested from the file, and accepted by you |
+| `/mochiko:slice` | you want to decompose an accepted spec into **graduation slices** — ordered story groups that then run `/mochiko:plan` → `/mochiko:implement` **per slice** instead of whole-spec — independently graded, with your acceptance on `slices.md`; null-exit-aware (a spec without ≥2 distinct value seams gets a reviewed whole-spec recommendation instead) |
+| `/mochiko:plan` | you want to turn an accepted spec into an accepted implementation **package** — analysis, the **architecture** delta (you sign it off on a rendered diagram before detailed design builds on it), detailed design, and the task breakdown (`task-mapping.md` + `tasks.md`) — independently graded for feasibility and completeness; slice-scoped when `slices.md` is present; next step `/mochiko:implement` |
+| `/mochiko:implement` | you want to turn an accepted `tasks.md` into working, verified code — TDD-built, independently verified against real infrastructure with captured evidence, closing on your acceptance |
+| `/mochiko:brainstorm` | you want to think a problem through one question at a time; the deliverable is a cold-reviewed `record.md` you accept, pipeline entry offered, never defaulted |
 
 ### Agents (dispatched by the supervisor)
 | Agent | Role |
@@ -132,7 +130,7 @@ human adjudicates; the reviewer's verdict never clears anything by itself.
 ## Operating rules (context hygiene)
 
 - **Always cross the producer↔validator boundary.** The author never grades its own output; the lead dispatches an independent validator that Reads the artifact itself. Never mount producer and validator skills on one agent.
-- **The lead is the command, not an agent.** Verdict ownership, iteration bounds, and the human gate live in the workflow's `commands/<name>.md` supervisor, not in any persona.
+- **The lead is the command, not an agent.** Verdict ownership and the decisions reserved to the user live in the workflow's `commands/<name>.md` goal+harness contract, not in any persona.
 - **Keep a producer↔validator round in one unbroken context** so the validator reasons across the whole artifact at once — a fresh context loses the picture.
 
 ## Adding to the library

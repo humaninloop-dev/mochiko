@@ -115,7 +115,7 @@ topology cannot be built or cannot conform, not ticking a box.
 
 **Evidence:** the governance surface (the layer rule / allowlist entry / `GI-XXX`), the topology element that breaks it, and the specific violation. "Cites the principle" is not "satisfies the principle" — verify, don't take the assertion.
 **The two exits (never a silent pass):** a non-conforming topology surfaces with exactly two exits — **redesign to conform**, or a **user-ruled amendment/waiver** through `governance-ledger.md`. The feature-level review never overrules the constitution. A conflict with a conforming redesign available is *resolvable* (`needs-revision`); one where the governance and the required shape are mutually exclusive is *fundamental* (`infeasible`, escalates for the amendment/waiver decision).
-**G1 watch:** you grade the *topology's conformance* to governance (a plan artifact against an input), never whether the governance itself is well-formed — that is `validation-constitution`, a different domain.
+**Boundary watch:** you grade the *topology's conformance* to governance (a plan artifact against an input), never whether the governance itself is well-formed — that is `validation-constitution`, a different domain.
 
 ---
 

@@ -184,6 +184,32 @@ neutral), so the streak was read as engagement, not passive acceptance — no re
 - DECISIONS.md: supersession annotations on the affected prior rows; ROADMAP standing-bet
   line ("Hard-require agent teams") superseded.
 
+## Build (2026-08-02, plugin v0.48.0)
+
+Built same day, one wave per D4. Six commands rewritten to Goal · Harness · Bindings
+(45–73 lines; 346 total from 1,249). Six independent author≠grader audits
+(`mochiko:validator`, each against the command's own text + the strip note's kept-set):
+specify · setup · plan PASS clean; brainstorm FAIL→fix→PASS (lead's-pen boundary + pipeline
+next-step restored, waiver synthesis stamp restored, fidelity-check drop named in the strip
+note); slice FAIL→fix→PASS (overwrite-or-stop user decision restored, slicer-report
+template bound, governance surfacing restored for cross-command consistency); implement
+FAIL→fix→PASS (full deviation-arrow predicate restored, producer judgment-call ruling
+restored to the reserved set). Plan's brownfield codebase-analysis surfacing added as a
+pure addition on an audit advisory.
+
+**Wave-level lead rulings at the audits (recorded so future auditors don't re-flag):**
+- Entry lines home in **Harness** on all six commands — D6's "entry conditions" assignment
+  to Bindings is satisfied in substance; cross-command consistency wins.
+- D6's ~30–50 line figure is a target, not a ceiling — plan (67) and implement (75) carry
+  kept-responsibility content, not choreography.
+
+Ripple: router re-worded to goal+harness · repo `ARCHITECTURE.md` command-form section +
+diagram labels · `primitive-edits.md` audit bar · G-refs swept from
+`review-governance-intent`, `devils-advocate`, `FEASIBILITY-LENS`, `INTERROGATION-AGENDA` ·
+plugin.json 0.48.0. Strip notes `[v0.48.0]` ×6 with verbatim superseded files. DECISIONS
+supersession annotations: shape-v7 wave row · lead-owned-process-flexibility row · TC-D5 /
+TC-D6 rows · CS-D5 row · team-transport row · validator snapshot-isolation carrier note.
+
 ## Open questions
 
 - Whether the KM landing ritual, dropped from command text (D2), still fires reliably from
