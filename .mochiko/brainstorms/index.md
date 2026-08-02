@@ -8,6 +8,12 @@ One entry per session directory under `.mochiko/brainstorms/<topic-slug>/`, **ne
 
 ---
 
+## `command-architecture-realignment` — commands become goal + harness; choreography dies in place
+- **When:** 2026-08-02 · **Status:** accepted · record **un-reviewed** (bare session — direct `analysis-iterative` invocation; rulings user-accepted inline, flagged reversals ratified deliberately, Q4/Q5/Q7 streak flagged and read as engagement)
+- **Artifacts:** [record.md](command-architecture-realignment/record.md) (canonical)
+- **About:** the user's stance — the volume of encoded detail in commands is itself the defect; it encodes distrust of the lead. Ruled (D1–D6): commands become **goal + harness** — the command's job is to create the harness the goal requires, the lead plans and orchestrates within it (D1 `Contested` — no relocation, choreography deleted in place, no new skills/shared mechanics); harness keep/drop set ruled with both reversals (departure trail, counted bounds) flagged and deliberately ratified, control moving to native **plan approval** (D2); plan approval for producer seats only, author≠grader kept for after-the-fact (D3); one conversion wave across all six commands, no pilot (D4 `Contested`); transport-neutral — the team mandate dies, teammates vs subagents is the lead's per-seat call (D5, supersedes the 2026-07-04 standing bet); shape v8 anatomy Goal · Harness · Bindings, ~30–50 lines per command, no stage/gate vocabulary in Goals (D6).
+- **Landed:** DECISIONS.md row (2026-08-02) · BACKLOG "Command v8 goal+harness rebuild" opened · ROADMAP Now touch + standing-bet supersession. Build not started.
+
 ## `verbosity-caveman-ops-separation` — output verbosity, caveman as product, and ops-vs-shipped packaging
 - **When:** 2026-08-01 · **Status:** accepted · record pair-reviewed (lens-split: 20+9 raised → 18+8 survived cross-exam → 20 lead-merged → 20/20 dispositioned incl. the 8-item user batch and the "file prose" pain ruling; F43 map erratum checker-settled mid-review; verify round 1 NOT CLEAN — 1 blocking statement-not-amended-at-fold + 5 non-blocking, all repaired same round → round 2 CLEAN; acceptance explicitly covered the two flagged lead formulations)
 - **Artifacts:** [record.md](verbosity-caveman-ops-separation/record.md) (canonical, incl. the verbatim four-section fact map F1–F74 + erratum)

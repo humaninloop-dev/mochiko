@@ -13,6 +13,26 @@ wave close; 52 at the 2026-07-25 migration), per-item bound ≤15 lines.*
 
 ---
 
+## Command v8 goal+harness rebuild
+
+Ruling: DECISIONS.md row 2026-08-02; record
+`.mochiko/brainstorms/command-architecture-realignment/record.md` (D1–D6, un-reviewed bare
+session).
+
+- [ ] **Shape v8 conversion wave — all six commands** (2026-08-02, record above) — one wave,
+  no pilot (D4 `Contested`). Each command rebuilt to Goal · Harness · Bindings, ~30–50 lines:
+  Goal in artifact-and-acceptance terms (no stage/gate vocabulary) · Harness = plan approval
+  for producer seats + author≠grader one-liner + user-reserved decisions · Bindings = paths,
+  templates, entry conditions. Deleted in place, no relocation: seat tables, default
+  pipelines, recovery tables, counted bounds/caps/kill-switches, weight card, departure
+  trail, seat lifecycle, transport mandate + roster probe, KM-landing steps. Ceremony:
+  per-command strip notes with supersession-by-ruling entries citing the record ·
+  independent author≠grader audit per command · DECISIONS.md supersession annotations on
+  CS-D1–D10 / v7 floor rows / TC command-carrier rows / transport rows · ROADMAP
+  standing-bet supersession ("hard-require agent teams" → transport-neutral). Watches: KM
+  ritual firing from CLAUDE.md/rules alone post-drop; first live v8 run is the shape's
+  first evidence.
+
 ## Open design decisions
 
 - [ ] **Prose vs. gate allocation** (2026-06-27; provenance: unrecoverable —

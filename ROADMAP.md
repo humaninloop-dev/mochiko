@@ -13,6 +13,7 @@ frontend/mobile/desktop shelves are Tier-I roadmap work.**
 
 ## Now
 
+- **Command v8 goal+harness rebuild** — one wave, all six commands to Goal · Harness · Bindings; choreography dies in place (2026-08-02) → [BACKLOG](BACKLOG.md#command-v8-goalharness-rebuild)
 - **KM-module redesign dogfood** — fresh-project scaffold + rules-injection probe of the rebuilt module (2026-07-25) → [BACKLOG](BACKLOG.md#operating-docs--km-module)
 - **Kinako follow-up run** — waves-1–2 didn't land: investigate, then the UI fix wave through journey gates (2026-07-24) → [BACKLOG](BACKLOG.md#kinako-follow-up-run)
 
@@ -41,7 +42,7 @@ frontend/mobile/desktop shelves are Tier-I roadmap work.**
 
 ## Standing bets & revisit conditions
 
-- **Hard-require agent teams, no fallback** (`Contested`, 2026-07-04) — revisit: distribution beyond the author's machines.
+- ~~**Hard-require agent teams, no fallback**~~ (`Contested`, 2026-07-04) — **superseded 2026-08-02** by transport-neutral commands (command-architecture-realignment D5): teammates vs subagents is the lead's per-seat call.
 - **Code-free until dogfooding** (2026-06-27) — revisit: sequential cycle execution proves too slow on a dependency-rich feature.
 - **In-loop mesh as Layer-2 default** (`Contested`, 2026-07-25) — revisit: first dogfood of the rewritten Layer 2.
 - **Plan absorbs tasks — start-small surface** (`Contested`, 2026-07-25) — revisit: merged-command dogfood.
@@ -50,4 +51,4 @@ frontend/mobile/desktop shelves are Tier-I roadmap work.**
 - **KM pin adopts partial core** (recorded deviation, 2026-07-25; narrowed 2026-07-31 — rules file + plugin-scope `ARCHITECTURE.md` exist, GLOSSARY still deferred) — revisit: first in-repo setup/amend run or the module dogfood.
 
 ---
-*Last groomed: 2026-08-02 — Now 2 · Next 7 · Later 10; open-item figures on BACKLOG's stamp line. Doctrine purge complete in two waves: wave 1 (v0.46.0) deleted `loop-discipline` + `command-shape.md`, six commands self-contained, audits grade the command's own text; wave 2 (v0.47.0) deleted `agent-dispatch.md` + `sized-end-stage-review.md` + `workflow-contract.md` — the doctrine-template class is empty, dispatch briefs and the review protocol inlined, the per-run form replaced by a plain departure record at the same paths (ADRs `2026-08-02-doctrine-purge-wave-1`/`-wave-2`). Plugin: 6 commands · 9 agents · 27 skills · 17 templates + modules.*
+*Last groomed: 2026-08-02 (command-v8 ruling touch) — Now 3 · Next 7 · Later 10; open-item figures on BACKLOG's stamp line. Doctrine purge complete in two waves: wave 1 (v0.46.0) deleted `loop-discipline` + `command-shape.md`, six commands self-contained, audits grade the command's own text; wave 2 (v0.47.0) deleted `agent-dispatch.md` + `sized-end-stage-review.md` + `workflow-contract.md` — the doctrine-template class is empty, dispatch briefs and the review protocol inlined, the per-run form replaced by a plain departure record at the same paths (ADRs `2026-08-02-doctrine-purge-wave-1`/`-wave-2`). Plugin: 6 commands · 9 agents · 27 skills · 17 templates + modules.*
