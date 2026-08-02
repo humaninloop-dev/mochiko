@@ -112,7 +112,8 @@ Rulings D1–D6-as-amended + A1–A4 (DECISIONS.md 2026-08-01; record
 - [ ] **Shape-v7 post-conversion watches** (2026-08-01; conversions DONE at v0.43.0 → trail) —
   open remainders of the discharged convert-on-touch item: align the
   `review-brainstorm`/`review-governance-intent` verify-pass trigger phrasing with U1-B at
-  those skills' next touch (logged in `.mochiko/strips/sized-end-stage-review.md`) · each
+  those skills' next touch (logged in `.mochiko/strips/sized-end-stage-review.md`; the
+  template itself deleted at doctrine purge wave 2, v0.47.0 — the watch survives) · each
   converted command's first live run is its own checkpoint (the read-drop trigger it also
   carried is moot — superseded 2026-08-02, doctrine purge) ·
   R22: the first external dogfood grades the uniform stated default for distributed leads ·

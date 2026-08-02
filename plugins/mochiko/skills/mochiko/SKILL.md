@@ -18,9 +18,11 @@ The kernel-free successor to human-in-loop. Discipline lives in the skill librar
 
 Each workflow below is a bounded, default-FAIL loop — a command supervisor stitches a
 producer/validator agent team to a goal, and **is its own contract**: its Goal, Seats & checks,
-Constraints and Recovery carry the whole run. The `workflow-contract` template is the per-run
-carrier a run that departs from its command's stated default instantiates, and the form every
-non-command loop fills.
+Constraints and Recovery carry the whole run. A run that departs from its command's stated
+default, or declares non-default bounds, writes a departure record at the path its command
+names. Any loop, command or not, is sound only when its done-condition was written before it
+ran and defaults to FAIL, its validator is a different agent running a different skill than
+the producer, its iteration is deterministically bounded, and a human gate is named.
 
 **The two review-skill families** (the `validation-*`/`review-*` split, 2026-07-18): the prefix encodes **who owns the
 clearing**. `validation-*` = the skill **issues the authoritative grade** — a binary PASS/FAIL
@@ -30,12 +32,6 @@ lead-adjudicated input** — severity-ranked findings and a *recommended* status
 human adjudicates; the reviewer's verdict never clears anything by itself.
 
 ## When to reach each
-
-### Doctrine (model-invoked — auto-reached when designing any loop)
-| Skill | Reach when |
-|-------|------------|
-| `workflow-contract` (template) | instantiating the per-run contract for a command run that departs from its stated default or declares non-default bounds, and for any non-command loop |
-| `agent-dispatch` (template) | briefing each agent dispatch inside a loop — a caller-side guide, not a gate |
 
 ### Setup cluster (model-invoked — auto-reached during a `/mochiko:setup` run)
 | Skill | Reach when |

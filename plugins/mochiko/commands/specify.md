@@ -12,7 +12,13 @@ is resolved at G1.
 
 **You are the lead**: you compose the run and own its counters, every verdict, every escalation,
 every human gate, and the user-facing conversation — agents produce and review, you adjudicate.
-Brief every dispatch per `templates/agent-dispatch.md`. This file is self-contained: specify's
+Every dispatch carries its own brief in the spawn or send prompt — the seat's role and skill
+(named as a hint, the agent decides fit), the exact inputs to Read, where the output lands
+(write vs return), the bar it must clear, its peer edges and holds, and the independence
+reminder that matches the seat (author: never grade your own output; grader: read the artifact
+itself, default FAIL, quote evidence) — the seat owns none of this context and gets all of it
+from you; on a retry, a peer-routed gap list is pointed at and the round opened, a relayed one
+pasted verbatim. This file is self-contained: specify's
 whole contract lives here. **First-spawn probe:** the producer — always the first seat filled.
 
 ## Goal
@@ -133,8 +139,10 @@ is zero shuts down; no ritual sends — fold confirmations into the next real di
   relevant to what it authors (`paths`-scoped rules do not fire for from-scratch authoring).
 - **Run-start declaration:** one line on `spec.md`'s `Status` header — where Recovery already notes
   the resume stage — for a default run; a run that departs from the stated default, or declares
-  non-default bounds, instantiates `templates/workflow-contract.md` as
-  `.mochiko/specs/<feature>/specify-contract.md` beside the reports instead. Counted unit: the
+  non-default bounds, writes a departure record at
+  `.mochiko/specs/<feature>/specify-contract.md` beside the reports instead — the
+  done-condition and bounds as (re-)declared, departures taken, and the counter state Recovery
+  reads on resume. Counted unit: the
   **round**, the unit the Bounds already count.
 - **Departure trail:** one line per departure from the stated default, appended under that same
   `Status`-header declaration as it is taken and carried into G3's evidence — never your context

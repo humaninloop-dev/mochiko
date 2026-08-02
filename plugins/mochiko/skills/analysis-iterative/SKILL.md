@@ -189,7 +189,7 @@ Open exploration — brainstorming, trade-off analysis, thinking a problem throu
 
 When the work is conditioning a sparse feature description before a specification is authored — the description is thin on the **Who / Problem / Value** triad — run the focused variant in [SPECIFICATION-INPUT.md](SPECIFICATION-INPUT.md). It fills the missing triad elements plus scope and success, and concludes with the [ENRICHMENT.md](ENRICHMENT.md) artifact, handed to whoever authors the specification next (the requirements producer).
 
-The enriched description is plain output: whoever requested the enrichment reads the artifact directly. How a caller asks for this shape — and tells you which triad elements it already knows are missing — is a caller-side dispatch concern (see the agent-dispatch briefing), not something this skill parses or owns.
+The enriched description is plain output: whoever requested the enrichment reads the artifact directly. How a caller asks for this shape — and tells you which triad elements it already knows are missing — is a caller-side dispatch concern, carried in the caller's own brief, not something this skill parses or owns.
 
 ## Reference
 

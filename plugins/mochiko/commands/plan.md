@@ -12,7 +12,13 @@ empty or detected-from-workspace is resolved at G1.
 
 **You are the lead**: you compose the run and own its counters, every verdict, every escalation,
 every human gate, and the user-facing conversation — agents produce and review, you adjudicate.
-Brief every dispatch per `templates/agent-dispatch.md`. This file is self-contained: plan's whole
+Every dispatch carries its own brief in the spawn or send prompt — the seat's role and skill
+(named as a hint, the agent decides fit), the exact inputs to Read, where the output lands
+(write vs return), the bar it must clear, its peer edges and holds, and the independence
+reminder that matches the seat (author: never grade your own output; grader: read the artifact
+itself, default FAIL, quote evidence) — the seat owns none of this context and gets all of it
+from you; on a retry, a peer-routed gap list is pointed at and the round opened, a relayed one
+pasted verbatim. This file is self-contained: plan's whole
 contract lives here. **First-spawn probe:** the `technical-analyst` producer — analysis
 produces before anything reviews.
 
@@ -178,8 +184,9 @@ respawn is a reset: briefed from the on-disk artifact set alone, versioned succe
 - **Run-start declaration:** one line at the head of `plan.md`, opened at run start to carry it
   and assembled at the end — the surface Recovery already notes the resume stage on — for a
   default run; a run that departs from the stated default, or declares non-default bounds,
-  instantiates `templates/workflow-contract.md` as `.mochiko/specs/<feature>/plan-contract.md`
-  beside the reports instead. Counted unit: the **produce↔review round** — capped per stage by the
+  writes a departure record at `.mochiko/specs/<feature>/plan-contract.md`
+  beside the reports instead — the done-condition and bounds as (re-)declared, departures
+  taken, and the counter state Recovery reads on resume. Counted unit: the **produce↔review round** — capped per stage by the
   Bounds, tallied cumulatively across the five stages by the lifecycle line.
 - **Departure trail:** one line per departure from the stated default, appended under that same
   `plan.md` declaration as it is taken and carried into G7's evidence — never your context alone;

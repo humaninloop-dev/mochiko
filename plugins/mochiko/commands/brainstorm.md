@@ -10,8 +10,12 @@ behind. Empty topic → ask what we are thinking through.
 
 **You are the lead**: you compose the run and own its counters, every verdict, every
 escalation, every human gate, and the user-facing conversation — agents produce and review,
-you adjudicate. Brief every dispatch per `templates/agent-dispatch.md`; at the sizing gate
-Read `templates/sized-end-stage-review.md`. This file is self-contained: brainstorm's whole
+you adjudicate. Every dispatch carries its own brief in the spawn or send prompt — the seat's
+role and skill (named as a hint, the agent decides fit), the exact inputs to Read, where the
+output lands (write vs return), the bar it must clear, its peer edges and holds, and the
+independence reminder that matches the seat (author: never grade your own output; grader:
+read the artifact itself, default FAIL, quote evidence) — the seat owns none of this context
+and gets all of it from you. This file is self-contained: brainstorm's whole
 contract lives here. You run the questioning inline via `mochiko:analysis-iterative` — one
 question per turn, format adapted to the user's state. **First-spawn probe:** the
 fact-checker at start where its seat fills, otherwise the reviewers at convergence.
@@ -76,6 +80,18 @@ shutdown; no ritual sends.
   not yours to take** — `record.md` is lead-penned, so shipping it uncold-read needs the user's
   recorded waiver at the weight card. A single reviewer gets the whole hunt surface and no
   cross-examination — its findings arrive undebated, the trade this gate priced.
+- **Review protocol** — the record is **frozen** from reviewer spawn until every disposition
+  lands (Review section excepted). Each reviewer reads it cold, forms findings independently,
+  and reports findings-formed — count only — before its counterpart is introduced; a pair then
+  runs the one-shot four-message cross-exam
+  (`skills/review-brainstorm/references/CROSS-EXAM.md`, the pair protocol's single source —
+  owner-withdrawal only, the counterpart persuades, never vetoes). Each reviewer returns its
+  own survivors (severity, concrete failure scenario, resolution path, unresolved counterpart
+  objections attached) and its own tally ("N raised, M survived"; fallen retrievable on ask)
+  with a recommended status — **the cross-set merge and the combined tally are yours, never a
+  reviewer's**. Fact disputes go to the fact route, never argument; a fact already routed is
+  cited, never re-routed. An overruled survivor marks its element `Contested`; nobody
+  re-raises it.
 - **Survivor rulings** — evidence: a survivor in user territory — a challenge to a user
   ruling, or a user-declared fact offered as confirmation · rules: the user · decides: its
   disposition. Theirs to answer, not a tie-break.
@@ -141,13 +157,14 @@ shutdown; no ritual sends.
 - **Verify-pass owner:** the record-integrity reviewer, or the sole reviewer in single mode.
 - **Run-start declaration:** one line on `record.md`'s `Status` line — the surface Recovery
   already keeps — for a default run; a departing run, or one declaring non-default bounds,
-  instantiates `templates/workflow-contract.md` as
-  `.mochiko/brainstorms/<slug>/brainstorm-contract.md` beside the record. Counted unit: the
+  writes a departure record at
+  `.mochiko/brainstorms/<slug>/brainstorm-contract.md` beside the record instead: the
+  done-condition and bounds as (re-)declared, departures taken, and the counter state Recovery
+  reads on resume. Counted unit: the
   lead↔reviewer **exchange per survivor**, the bound you count; the cold reads, the cross-exam
   and the verify pass are one-shot.
 - **Departure trail:** one line per departure under that same declaration as it is taken,
-  part of what the user accepts — a review sized below the default included
-  (`sized-end-stage-review.md` defers that line here).
+  part of what the user accepts — a review sized below the default included.
 - **KM landing:** `.mochiko/brainstorms/index.md` is the session index — read it before
   opening, enter this session on open (status: open), and at acceptance or supersession update
   it with where the outcome landed (a `DECISIONS.md` row, or an explicit no-graduation). Run
@@ -158,7 +175,9 @@ shutdown; no ritual sends.
 ## Recovery
 
 No resume table — the record is the whole state. Note resume state on its `Status` line, with
-the run's counter state — exchanges consumed · bounds declared · departures taken. Sessions
+the run's counter state — exchanges consumed · bounds declared · departures taken; a departing
+run's counter state lives in `brainstorm-contract.md` beside the record instead — read it
+there on resume. Sessions
 and teams do not survive `/resume`; resume from the workspace, never a context `phase` field:
 re-read `record.md` and continue from the last decision or the survivor queue, respawning the
 fact-checker mid-session or the reviewers per the sizing ruling (the frozen record makes a

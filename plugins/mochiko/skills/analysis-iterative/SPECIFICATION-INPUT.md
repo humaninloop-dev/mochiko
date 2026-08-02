@@ -6,7 +6,7 @@ A focused variant of the iterative-analysis engine for conditioning a sparse fea
 
 The work in front of you is: a raw feature description is missing some of the Who / Problem / Value triad, and it needs conditioning before it reaches whoever authors the specification (the requirements producer).
 
-Whether a description is sparse enough to enrich, and which triad elements are missing, is decided by the caller before this skill runs. If the caller named the missing elements, fill exactly those; if it did not, infer the gaps from the original input through the opening questions. (How a caller signals "enrich this" and passes the known-missing elements is a caller-side dispatch concern — see the agent-dispatch briefing — not something this skill parses.)
+Whether a description is sparse enough to enrich, and which triad elements are missing, is decided by the caller before this skill runs. If the caller named the missing elements, fill exactly those; if it did not, infer the gaps from the original input through the opening questions. (How a caller signals "enrich this" and passes the known-missing elements is a caller-side dispatch concern, carried in the caller's own brief — not something this skill parses.)
 
 ## Question Agenda
 

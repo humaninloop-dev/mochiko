@@ -12,8 +12,13 @@ request; empty is fine — detection proposes the mode.
 
 **You are the lead**: you compose the run and own its counters, every verdict, every escalation,
 every human gate, and the user-facing conversation — agents produce and review, you adjudicate.
-Brief every dispatch per `templates/agent-dispatch.md`; Read
-`templates/sized-end-stage-review.md` at the sizing gate. This file is self-contained: setup's
+Every dispatch carries its own brief in the spawn or send prompt — the seat's role and skill
+(named as a hint, the agent decides fit), the exact inputs to Read, where the output lands
+(write vs return), the bar it must clear, its peer edges and holds, and the independence
+reminder that matches the seat (author: never grade your own output; grader: read the files
+themselves, default FAIL, quote evidence) — the seat owns none of this context and gets all of
+it from you; on a retry, a peer-routed fix list is pointed at and the round opened, a relayed
+one pasted verbatim. This file is self-contained: setup's
 whole contract lives here. Hard-requires `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS`. **First-spawn
 probe:** the producer in brownfield; otherwise the intent reviewer(s) at the synthesis review, or
 the producer if it was waived.
@@ -40,7 +45,7 @@ principle nor waiver · a departure with no trail line · out of rounds · G4 un
 | validator | `validator` × `validation-constitution` | grades the surface set **from the files** — set + synthesis + trace summary, never the producer's report → PASS/FAIL + fix list; never authors | cold at first validation, messaged after | hands each fix list to the producer directly; the round-opening send is yours |
 
 **Validation model:** two branches, different stages — the **sized end-stage review** of the
-frozen `governance-intent.md` before G3, per `templates/sized-end-stage-review.md`, then the
+frozen `governance-intent.md` before G3 (protocol in Constraints), then the
 produce↔validate loop, whose PASS is the authoritative grade on the surface set. Every verdict is
 yours. No seat ever grades its own output.
 
@@ -110,6 +115,21 @@ shutdown; no ritual sends.
   attach/detach) takes the full pair; a lighter substantive delta recommends single; a
   wording-level delta, none-with-recorded-waiver. The gate always opens: every amend records a
   ruling or a waiver, keeping the trail audit-complete. **none** → straight to G3, waiver recorded.
+- **Review protocol** — the synthesis is **frozen** from reviewer spawn until every disposition
+  lands (Review section excepted). Each reviewer reads it cold, forms findings independently,
+  and reports findings-formed — count only — before its counterpart is introduced; a pair then
+  runs the one-shot four-message cross-exam
+  (`skills/review-brainstorm/references/CROSS-EXAM.md`, the pair protocol's single source —
+  owner-withdrawal only, the counterpart persuades, never vetoes). Each reviewer returns its
+  own survivors (severity, concrete failure scenario, resolution path, unresolved counterpart
+  objections attached) and its own tally ("N raised, M survived"; fallen retrievable on ask)
+  with a recommended status — **the cross-set merge and the combined tally are yours, never a
+  reviewer's**. Your own formulation is argued with the finding's owner within the Bounds' cap;
+  unresolved at the cap is a deadlock → tie-break with both positions plus your
+  recommendation, the user rules. A fact already routed is cited, never re-routed; an
+  overruled survivor marks its element `Contested`, and nobody re-raises it. The verify pass
+  is floor, not sizing — wherever a review ran it is non-discretionary; a survivor still
+  blocking after review + verify escalates to the user with both positions.
 - **Survivor rulings** — evidence: a survivor in user territory — deck, fact-profile or waiver rulings,
   challenged convergence-skips and scope decisions, and **user-declared facts** (team size, risk
   posture, lifespan) as confirmation · rules: the user · decides: its disposition. Reality-surface
@@ -203,8 +223,10 @@ shutdown; no ritual sends.
 - **Verify-pass owner:** the coherence-lens reviewer; the sole reviewer when sized down.
 - **Run-start declaration:** one line atop `governance-intent.md` — durable by binding, and where
   Recovery already notes the resume stage — written as the file opens, carrying the card as ruled;
-  a run that departs from the stated default, or declares non-default bounds, instantiates
-  `templates/workflow-contract.md` as `.mochiko/memory/setup-contract.md` beside it instead.
+  a run that departs from the stated default, or declares non-default bounds, writes a
+  departure record at `.mochiko/memory/setup-contract.md` beside it instead — the
+  done-condition and bounds as (re-)declared, departures taken, and the counter state Recovery
+  reads on resume.
   Counted unit: the **produce↔validate round** the Bounds already count, a brownfield analysis job
   counting as one against the producer's cadence.
 - **Departure trail:** one line per departure from the stated default, appended under that same

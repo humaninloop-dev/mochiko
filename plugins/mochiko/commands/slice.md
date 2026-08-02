@@ -12,7 +12,13 @@ description; empty or detected-from-workspace is resolved at G1.
 
 **You are the lead**: you compose the run and own its counters, every verdict, every escalation,
 every human gate, and the user-facing conversation — agents produce and review, you adjudicate.
-Brief every dispatch per `templates/agent-dispatch.md`. This file is self-contained: slice's whole
+Every dispatch carries its own brief in the spawn or send prompt — the seat's role and skill
+(named as a hint, the agent decides fit), the exact inputs to Read, where the output lands
+(write vs return), the bar it must clear, its peer edges and holds, and the independence
+reminder that matches the seat (author: never grade your own output; grader: read the artifact
+itself, default FAIL, quote evidence) — the seat owns none of this context and gets all of it
+from you; on a retry, a peer-routed gap list is pointed at and the round opened, a relayed one
+pasted verbatim. This file is self-contained: slice's whole
 contract lives here. **First-spawn probe:** the `task-architect` producer — always the first seat
 filled, since nothing reviews before an overlay or a null exit exists.
 
@@ -132,9 +138,10 @@ dead seat's bare name. End-of-need shutdown; no ritual sends.
 - **Run-start declaration:** one line at the head of the run's standing artifact — `slices.md` once
   it exists, `slicer-report.md` until then and on a null exit, the surface Recovery already notes the
   resume stage on, moved across whenever the outcome shape flips — for a default run; a run that
-  departs from the stated default, or declares non-default bounds, instantiates
-  `templates/workflow-contract.md` as `.mochiko/specs/<feature>/slice-contract.md` beside the reports
-  instead. Counted unit: the **round**, the unit the Bounds already count.
+  departs from the stated default, or declares non-default bounds, writes a departure record
+  at `.mochiko/specs/<feature>/slice-contract.md` beside the reports
+  instead — the done-condition and bounds as (re-)declared, departures taken, and the counter
+  state Recovery reads on resume. Counted unit: the **round**, the unit the Bounds already count.
 - **Departure trail:** one line per departure from the stated default, appended under that same
   declaration as it is taken and carried into G4's evidence — never your context alone; the trail
   names the grading that actually ran. Departure is by record, never by silence.

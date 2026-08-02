@@ -25,9 +25,9 @@ flowchart LR
     agents["agents/ — 9 personas"]
     skills["skills/ — 27 skills"]
     templates["templates/ — artifact + report schemas, doctrine homes"]
-    commands -->|"spawn seats, briefed per agent-dispatch"| agents
+    commands -->|"spawn seats, each dispatch self-briefed"| agents
     agents -->|"carry procedure from"| skills
-    commands -->|"obligated reads + fill-targets"| templates
+    commands -->|"fill-targets"| templates
   end
   agents -->|"author / grade"| target[("target project: .mochiko/ artifacts,<br/>governance surfaces, working code")]
 ```
@@ -55,7 +55,7 @@ pinned in [`CLAUDE.md`](CLAUDE.md#skill-library-conventions-five-axes).
 | **Commands** | [`plugins/mochiko/commands/`](plugins/mochiko/commands/) | 6 | User-invoked team-form supervisors (`disable-model-invocation: true`). Each file is **self-contained** — goal, seats, gates, bounds, transport, lifecycle, bindings, recovery all stated in the command itself (doctrine purge, v0.46.0). The lead (the command context) owns every verdict, iteration bound, and human gate. |
 | **Agents** | [`plugins/mochiko/agents/`](plugins/mochiko/agents/) | 9 | Personas (all `model: opus`) that carry judgment and declare `skills:`. A persona contains no trace of any workflow — decoupling by absence; caller-side context rides the dispatch brief. |
 | **Skills** | [`plugins/mochiko/skills/`](plugins/mochiko/skills/) | 27 | Procedure. One user-invoked router ([`skills/mochiko/`](plugins/mochiko/skills/mochiko/SKILL.md)) indexes the other 26, which are model-invoked with graded MUST/SHOULD triggers in their descriptions. Deterministic sub-checks ride as `scripts/` inside skills (e.g. `analysis-codebase`'s `detect-stack.sh`); depth rides as `references/`. |
-| **Templates** | [`plugins/mochiko/templates/`](plugins/mochiko/templates/) | 19 + `constitution-modules/` | Three kinds: **doctrine homes** (`workflow-contract.md`, `agent-dispatch.md`, `sized-end-stage-review.md`) — referenced, never restated; **artifact schemas** (spec, slices, plan, tasks, governance-intent, …) over the shared `artifact-format.md` envelope; **report schemas** (per-seat reports) over the shared `report-format.md` envelope. `constitution-modules/` is setup's module library (knowledge-management, layer-rules, release-gates, evolution-notes). |
+| **Templates** | [`plugins/mochiko/templates/`](plugins/mochiko/templates/) | 17 + `constitution-modules/` | Two kinds: **artifact schemas** (spec, slices, plan, tasks, governance-intent, …) over the shared `artifact-format.md` envelope; **report schemas** (per-seat reports) over the shared `report-format.md` envelope. The former doctrine homes (`workflow-contract.md`, `agent-dispatch.md`, `sized-end-stage-review.md`) were deleted at the doctrine purge (v0.46.0–v0.47.0) — their mechanics live inline in each command. `constitution-modules/` is setup's module library (knowledge-management, layer-rules, release-gates, evolution-notes). |
 
 The plugin manifest, [`.claude-plugin/plugin.json`](plugins/mochiko/.claude-plugin/plugin.json),
 registers the command, agent, and skill directories and carries the version — packaging,
@@ -66,7 +66,7 @@ outside the four layers (templates is referenced by commands and skills, not reg
 - **Classification** — user-invoked primitives (the 6 commands, the router skill) may invoke
   model-invoked skills; never each other.
 - **Persona ⟂ workflow** — workflow knowledge reaches an agent only through its dispatch brief
-  (`templates/agent-dispatch.md`) and mounted skills. Spawn prompts name skill + role
+  (composed by the dispatching command) and mounted skills. Spawn prompts name skill + role
   explicitly, since teammates ignore `skills:` frontmatter.
 - **Producer ≠ grader** — every reviewable artifact is graded by a structurally independent
   seat: different agent, different skill. A verification skill is never mounted on the seat it
@@ -285,8 +285,6 @@ surfaces (and any artifact handed to it with an explicit checklist).
 
 | Primitive | Carries |
 |---|---|
-| `agent-dispatch.md` (template) | The caller-side dispatch brief — how workflow context reaches a persona without living in it. |
-| `sized-end-stage-review.md` (template) | The sizing gate: user-ruled pair / single / recorded waiver for end-stage cold reviews. |
 | `report-format.md` / `artifact-format.md` (templates) | The two shared envelopes every report and pipeline artifact follows. |
 | `analysis-iterative` (skill) | The shared questioning engine — lead-inline in brainstorm, setup's interrogation, and specify's enrichment. |
 | `grooming-operating-docs` (skill) | Fix-on-sight restoration of a target project's operating docs when a pinned knowledge-management cap trips at a command boundary. |
