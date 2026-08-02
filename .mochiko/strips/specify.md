@@ -9,6 +9,13 @@ the shape is now **v5** (2026-07-30) — see the v0.35.0 section below. **Also s
 
 ---
 
+## [v0.50.0] Goal/Harness lines reshaped for the UX-prototype stage
+- **Disposition:** superseded → the UX-prototype-bearing forms of the same lines (Goal deliverable sentence + Not-done list · intent-stage agenda line · Independence line · Reserved-to-the-user list)
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "UX mocking in specify (UX-D1–D9)"; record `.mochiko/brainstorms/ux-mocking-in-specify/record.md`)
+- **Content:** the pre-edit forms: Goal deliverable listing Intent (scope / delivery / depth-rigor / constraints / out-of-scope) + stories/FR/SC/edge-cases/Delivery-Slices with acceptance covering "intent, requirements, and slicing together" and the Not-done list without the Screens & Flows items · the intent-stage agenda "scope boundary · delivery/slicing intent · depth-rigor expectation · constraints · out-of-scope" with the synthesis governing "the authoring brief, the Delivery Slices shape, and the stress-test's rigor" · the Independence line without the prototype walk · the Reserved list without the per-story clicking item and with acceptance covering "intent, requirements, and slicing whole".
+- **Kept deliberately:** every prior clause survives inside the reshaped lines — nothing dropped, all lines extended for the UX-bearing ruling (D3), lockstep prototyping (D2), the prototype walk (D7), and the Screens & Flows deliverable (D5). Pure additions alongside: the Lockstep-prototyping harness block, the Prototype-craft binding.
+- **Consumers assessed:** router entry row (co-edited) · ARCHITECTURE.md Specify section (co-edited) · spec-template (co-edited).
+
 ## [v0.49.0] Sparse-input enrichment line superseded by the intent stage
 - **Disposition:** superseded → the Harness's "Intent stage first" block (adaptive-probe agenda via `analysis-iterative`: scope · delivery · depth-rigor · constraints · out-of-scope; one-screen user-confirmed synthesis governing brief/slicing/rigor, landing as the spec's Intent section)
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D7+D8)

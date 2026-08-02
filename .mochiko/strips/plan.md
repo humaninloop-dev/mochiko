@@ -11,6 +11,15 @@ conversion at the top of this note.
 
 ---
 
+## [v0.50.0] Goal grading sentence reshaped for the Screens & Flows trace
+- **Disposition:** superseded → the extended form: the independently-graded sentence gains the conditional Screens & Flows trace clause (SCR data → serving contract surface, FLOW action → mutation path, UX-bearing cycle cards' `**TEST:**` gates naming FLOW-XXX paths, pixels never traced), with "The user accepted it whole." split to its own sentence
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "UX mocking in specify (UX-D1–D9)"; record `.mochiko/brainstorms/ux-mocking-in-specify/record.md`, D4/D9)
+- **Content:** "The package was independently graded — feasibility and completeness — traces the business requirements through to the task breakdown, carries no cross-artifact contradiction, conforms to the signed-off architecture, and the user accepted it whole."
+- **Kept deliberately:** every clause of the sentence survives verbatim inside the extended form. Pure addition alongside: the **UX input** binding (manifest as obligated design read, slice-scoped SCR/FLOW consumption).
+- **Consumers assessed:** none — commands are entry points, nothing mounts them.
+
+---
+
 ## [v0.49.0] Task breakdown superseded by cycle cards; slice re-key
 - **Disposition:** superseded → the Goal's cycle-card `tasks.md` clause + Bindings slice-scope re-key (Graduation contract read from the spec's Delivery Slices section)
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D2+D3+D6; partially supersedes the v0.32.0 plan-absorbs-tasks task-half)

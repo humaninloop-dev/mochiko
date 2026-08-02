@@ -175,7 +175,7 @@ Parse each modifier independently.
 
 ## Assert Pattern Parsing
 
-The assert-pattern vocabulary (`Console contains` / `File exists` / `Response status`) is the grammar owner's (§ *Assert Patterns*). The regexes below extract the typed assert and its operands at parse time; evaluation of each against captured evidence is defined in the parent SKILL.
+The assert-pattern vocabulary (`Console contains` / `File exists` / `Response status` / `Screen reached` / `Page contains`) is the grammar owner's (§ *Assert Patterns*). The regexes below extract the typed assert and its operands at parse time; evaluation of each against captured evidence is defined in the parent SKILL.
 
 ### Console Contains
 
@@ -198,6 +198,20 @@ Path: Group 1
 Response status:\s*(\d+)
 ```
 Status: Group 1
+
+### Screen Reached
+
+```regex
+Screen reached:\s*(.+)
+```
+Target: Group 1 (a URL path or a selector — evaluated via Playwright in the parent SKILL)
+
+### Page Contains
+
+```regex
+Page contains "([^"]+)"
+```
+Text: Group 1 (evaluated against the rendered page via Playwright in the parent SKILL)
 
 ### Custom Assertion
 

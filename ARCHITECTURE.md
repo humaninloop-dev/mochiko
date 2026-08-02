@@ -22,8 +22,8 @@ flowchart LR
   user -->|"/mochiko:* + gate rulings"| commands
   subgraph plugin ["plugins/mochiko/"]
     commands["commands/ — 5 supervisors"]
-    agents["agents/ — 8 personas"]
-    skills["skills/ — 25 skills"]
+    agents["agents/ — 9 personas"]
+    skills["skills/ — 26 skills"]
     templates["templates/ — artifact + report schemas, doctrine homes"]
     commands -->|"spawn seats, each dispatch self-briefed"| agents
     agents -->|"carry procedure from"| skills
@@ -52,8 +52,8 @@ pinned in [`CLAUDE.md`](CLAUDE.md#skill-library-conventions-five-axes).
 | Layer | Home | Count | Role |
 |---|---|---|---|
 | **Commands** | [`plugins/mochiko/commands/`](plugins/mochiko/commands/) | 5 | User-invoked goal+harness contracts (`disable-model-invocation: true`). Each file states its Goal (default FAIL), Harness (plan approval for producing seats · author ≠ grader independence · decisions reserved to the user), and Bindings (v8 rebuild, v0.48.0; task layer de-granularized + slice absorbed into specify, v0.49.0). The lead plans and orchestrates the run — teammates or subagents per seat is its call. |
-| **Agents** | [`plugins/mochiko/agents/`](plugins/mochiko/agents/) | 8 | Personas (all `model: opus`) that carry judgment and declare `skills:`. A persona contains no trace of any workflow — decoupling by absence; caller-side context rides the dispatch brief. |
-| **Skills** | [`plugins/mochiko/skills/`](plugins/mochiko/skills/) | 25 | Procedure. One user-invoked router ([`skills/mochiko/`](plugins/mochiko/skills/mochiko/SKILL.md)) indexes the other 24, which are model-invoked with graded MUST/SHOULD triggers in their descriptions. Deterministic sub-checks ride as `scripts/` inside skills (e.g. `analysis-codebase`'s `detect-stack.sh`); depth rides as `references/`. |
+| **Agents** | [`plugins/mochiko/agents/`](plugins/mochiko/agents/) | 9 | Personas (all `model: opus`) that carry judgment and declare `skills:`. A persona contains no trace of any workflow — decoupling by absence; caller-side context rides the dispatch brief. |
+| **Skills** | [`plugins/mochiko/skills/`](plugins/mochiko/skills/) | 26 | Procedure. One user-invoked router ([`skills/mochiko/`](plugins/mochiko/skills/mochiko/SKILL.md)) indexes the other 25, which are model-invoked with graded MUST/SHOULD triggers in their descriptions. Deterministic sub-checks ride as `scripts/` inside skills (e.g. `analysis-codebase`'s `detect-stack.sh`); depth rides as `references/`. |
 | **Templates** | [`plugins/mochiko/templates/`](plugins/mochiko/templates/) | 14 + `constitution-modules/` | Two kinds: **artifact schemas** (spec — Intent + Delivery Slices sections included, plan, tasks as cycle cards, governance-intent, …) over the shared `artifact-format.md` envelope; **report schemas** (per-seat reports) over the shared `report-format.md` envelope. The former doctrine homes (`workflow-contract.md`, `agent-dispatch.md`, `sized-end-stage-review.md`) were deleted at the doctrine purge (v0.46.0–v0.47.0) — their mechanics live inline in each command. `constitution-modules/` is setup's module library (knowledge-management, layer-rules, release-gates, evolution-notes). |
 
 The plugin manifest, [`.claude-plugin/plugin.json`](plugins/mochiko/.claude-plugin/plugin.json),
@@ -157,29 +157,38 @@ is an offer, never a default.
 
 [`commands/specify.md`](plugins/mochiko/commands/specify.md). An **intent stage** opens the
 run — an adaptive-probe agenda (`analysis-iterative`: scope · delivery · depth-rigor ·
-constraints · out-of-scope) closing in a one-screen synthesis the user confirms, which
-governs the authoring brief, the slicing shape, and the stress-test's rigor and lands as the
-spec's Intent section. Then a standing author and a cold critic iterate across bounded rounds
-until the user accepts. The spec carries a **Delivery Slices** section — a graduation-slice
-decomposition (`authoring-slices`, lead-dispatched) or the single-slice line — co-accepted
-with the spec; its Graduation contract is the single home for how slice-scoped plan/implement
-runs consume it.
+UX-bearing · constraints · out-of-scope) closing in a one-screen synthesis the user confirms,
+which governs the authoring brief, the Screens & Flows obligation, the slicing shape, and the
+stress-test's rigor and lands as the spec's Intent section. Then a standing author and a cold
+critic iterate across bounded rounds until the user accepts. A UX-bearing spec carries a
+**Screens & Flows** section — the SCR/FLOW manifest plus a clickable low-fi prototype under
+`prototype/` (`product-engineer` × `authoring-prototype`), authored in story lockstep, the
+user clicking each story's slice as it lands; not UX-bearing takes the waiver line. The spec
+also carries a **Delivery Slices** section — a graduation-slice decomposition
+(`authoring-slices`, lead-dispatched) or the single-slice line — co-accepted with the spec;
+its Graduation contract is the single home for how slice-scoped plan/implement runs consume
+it.
 
 | Seat | Wiring |
 |---|---|
 | producer | `requirements-analyst` × `authoring-requirements`, `authoring-user-stories` (+ `authoring-slices` for the Delivery Slices section, or a seat of the lead's choosing) |
-| critic | `devils-advocate` × `review-specifications` (Delivery Slices grade included) |
+| prototype producer (UX-bearing) | `product-engineer` × `authoring-prototype` (Screens & Flows manifest + `prototype/` app, story lockstep with the analyst) |
+| critic | `devils-advocate` × `review-specifications` (Delivery Slices grade + Screens & Flows prototype walk included) |
 
 ```mermaid
 flowchart LR
   user(("User"))
   lead["lead: /mochiko:specify"]
   producer["requirements-analyst ×<br/>authoring-requirements +<br/>authoring-user-stories +<br/>authoring-slices"]
+  proto["product-engineer ×<br/>authoring-prototype"]
   critic["devils-advocate ×<br/>review-specifications"]
   user <-->|"intent probes → confirmed synthesis"| lead
   lead -->|"seeded template + intent-keyed brief"| producer
-  producer --> spec[("specs/&lt;feature&gt;/spec.md<br/>(Intent · stories/FR/SC ·<br/>Delivery Slices)")]
-  spec -->|"graded from the file"| critic -->|"advocate-report.md"| lead
+  lead -->|"UX-bearing: story-lockstep briefs"| proto
+  producer --> spec[("specs/&lt;feature&gt;/spec.md<br/>(Intent · stories/FR/SC ·<br/>Screens &amp; Flows · Delivery Slices)")]
+  proto --> spec
+  user <-->|"clicks each story's screens"| proto
+  spec -->|"graded from the file, prototype walked"| critic -->|"advocate-report.md"| lead
   lead -->|"spec acceptance (whole)"| user
 ```
 

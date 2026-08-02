@@ -23,6 +23,7 @@
 - **Scope boundary:** {{intent_scope}}
 - **Delivery:** {{intent_delivery}}  <!-- increments vs whole; first shippable value; sequencing constraints -->
 - **Depth / rigor:** {{intent_depth}}
+- **UX-bearing:** {{intent_ux_bearing}}  <!-- yes → Screens & Flows + prototype obligated; no → the waiver line -->
 - **Constraints:** {{intent_constraints}}
 - **Out of scope:** {{intent_out_of_scope}}
 
@@ -61,6 +62,32 @@
 ## Success Criteria
 
 {{success_criteria}}
+
+---
+
+## Screens & Flows
+
+<!-- Authored per mochiko:authoring-prototype from the Intent section's UX-bearing ruling.
+     Not UX-bearing → the single line "No UX surface — prototype waived at intent." and
+     nothing else. UX-bearing → both tables + the prototype pointer, in full. The manifest
+     is binding (screens, data, actions); the prototype's pixels are advisory. Slice column
+     only when Delivery Slices decomposes. -->
+
+{{screens_and_flows}}
+
+<!-- UX-bearing form:
+
+| ID | Screen | Purpose | Data shown | Slice |
+|----|--------|---------|------------|-------|
+| SCR-001 | [name] | [one line] | [fields/collections rendered] | S1 |
+
+| ID | Flow | Steps | Story scenario | Slice |
+|----|------|-------|----------------|-------|
+| FLOW-001 | [name] | SCR-001 → [action] → SCR-002 | US-1 / [scenario] | S1 |
+
+**Prototype:** `prototype/` — clickable low-fi rendering of this manifest; serve with bun or
+open `prototype/index.html` directly. Flows and data are binding; layout and styling advisory.
+-->
 
 ---
 

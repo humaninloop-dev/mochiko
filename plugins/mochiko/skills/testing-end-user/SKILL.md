@@ -70,11 +70,13 @@ Capture all console output, track background processes, and enforce timeouts. Se
 
 **4. Evaluate Asserts**
 
-Evaluate each assert against the captured evidence. The assert-pattern *vocabulary* — `Console contains "…"` (and its `(within Ns)` timed form), `File exists: …`, `Response status: …` — is defined in [`TEST-GRAMMAR.md`](../patterns-vertical-tdd/references/TEST-GRAMMAR.md) (§ *Assert Patterns*). The **evaluation semantics this skill owns**:
+Evaluate each assert against the captured evidence. The assert-pattern *vocabulary* — `Console contains "…"` (and its `(within Ns)` timed form), `File exists: …`, `Response status: …`, `Screen reached: …`, `Page contains "…"` — is defined in [`TEST-GRAMMAR.md`](../patterns-vertical-tdd/references/TEST-GRAMMAR.md) (§ *Assert Patterns*). The **evaluation semantics this skill owns**:
 
 - **`Console contains "{text}"`** — substring match against the captured stdout/stderr. The `(within Ns)` form is a timed match against streaming (background) output — poll until the text appears or the window elapses.
 - **`File exists: {path}`** — a filesystem check (`test -f {path}`).
 - **`Response status: {code}`** — compare the captured HTTP status against the expected code.
+- **`Screen reached: {url-path or selector}`** — a Playwright check: the browser's current URL matches the path, or the selector resolves on the current page.
+- **`Page contains "{text}"`** — a Playwright check: the text is present in the rendered page content.
 - Any other assert text is a **custom assertion for human evaluation** at the checkpoint.
 
 Each assert MUST receive an explicit pass/fail evaluation. **No default to PASS** — an unevaluated assert is a failure.
@@ -100,6 +102,15 @@ Before execution, classify the task from its Action and Assert content. This run
 | **CLI** | Backtick commands + measurable asserts | May auto-approve if 100% pass |
 | **GUI** | UI actions (`click`, `tap`) or screenshot capture | Always human checkpoint |
 | **SUBJECTIVE** | Qualitative terms (`looks`, `feels`, `appears`) | Always human checkpoint |
+
+**Browser-flow exception:** a GUI-shaped task whose actions are Playwright-driven against a
+cited `FLOW-XXX` path (from the spec's Screens & Flows manifest) and whose asserts are drawn
+only from the grammar's machine-evaluable patterns (`Screen reached:`, `Page contains`,
+`Console contains`, `Response status:`, `File exists:`) classifies as **CLI** — the walk is
+deterministic and may auto-approve at 100% pass, screenshots captured as evidence
+regardless. A subjective or custom assert anywhere in the task keeps it SUBJECTIVE/GUI. The
+binding surface is the flow — screen sequence and actions; visual appearance stays advisory
+and is never an assert target.
 
 **Default to SUBJECTIVE if uncertain** — the safe fallback. Ambiguity is a reason to escalate to a human, never a reason to auto-approve. Any failure, on any classification, forces a checkpoint.
 

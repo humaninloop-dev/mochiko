@@ -22,7 +22,11 @@ brownfield exposure; no task lists, no file paths — the builder decomposes at 
 `plan.md`, a summary over the validated artifacts, never new design. The package
 was independently graded — feasibility and completeness — traces the business requirements
 through to the task breakdown, carries no cross-artifact contradiction, conforms to the
-signed-off architecture, and the user accepted it whole. It is `/mochiko:implement`'s
+signed-off architecture, and — where the spec carries a Screens & Flows manifest — traces
+its binding rows into the design: every SCR-XXX's data shown has a serving contract surface,
+every FLOW-XXX action a mutation path, and every UX-bearing cycle card's `**TEST:**` gate
+names the FLOW-XXX paths it verifies (pixels stay advisory, never traced). The user accepted
+it whole. It is `/mochiko:implement`'s
 unchanged entry condition.
 
 **Not done — default FAIL:** a missing artifact, or an unrecorded `quickstart.md` null path ·
@@ -57,6 +61,10 @@ never graded by anyone but its authors · user acceptance not given.
   `tasks.md` from `templates/tasks-template.md` per `mochiko:patterns-vertical-tdd`;
   `architecture.md`'s structure and scope bound are `mochiko:patterns-system-design`'s; the
   structural D-XXX rows live in `constraints-and-decisions.md`'s designated section.
+- **UX input** (the spec's Screens & Flows section holds a manifest): an obligated design
+  read — its binding rows (screens, data shown, actions) are requirements input to contracts
+  and data-model; the `prototype/` app is reference, its pixels advisory. Slice-scoped runs
+  consume only their slice's SCR/FLOW rows.
 - **Slice scope** (the spec's Delivery Slices section holds a decomposition): its Graduation
   contract is the single home for slice resolution, scope, extend-mode, and layout —
   `plan.md`, `architecture.md`, and `tasks.md` land under `slices/<slice>/`; the architecture

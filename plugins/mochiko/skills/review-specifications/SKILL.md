@@ -1,6 +1,6 @@
 ---
 name: review-specifications
-description: This skill MUST be invoked when reviewing an already-drafted specification for gaps — finding missing requirements, ambiguities, unstated assumptions, and missing edge cases in an existing spec, grading its Delivery Slices section (story coverage, dependency closure, foundation legitimacy, Feature-Done, and the depth second-guess), and generating product-framed clarifying questions with concrete options and severity (Critical / Important / Minor). Reach for it on post-draft review work such as "review spec", "find gaps", "what's missing", "is the spec complete", or "clarify requirements" against a spec that already exists. SHOULD also invoke when checking spec.md for completeness or checking user stories for missing acceptance criteria before downstream design begins. This produces gap-finding INPUT (a severity-bucketed gap report plus clarifying questions), not a clearing PASS/FAIL verdict. For enriching a sparse or vague feature idea before any spec is drafted, use mochiko:analysis-iterative instead.
+description: This skill MUST be invoked when reviewing an already-drafted specification for gaps — finding missing requirements, ambiguities, unstated assumptions, and missing edge cases in an existing spec, grading its Delivery Slices section (story coverage, dependency closure, foundation legitimacy, Feature-Done, and the depth second-guess), walking a UX-bearing spec's Screens & Flows manifest against its served prototype (every FLOW-XXX clickable, every SCR-XXX reachable, every P1 scenario pathed; manifest↔prototype drift blocking), and generating product-framed clarifying questions with concrete options and severity (Critical / Important / Minor). Reach for it on post-draft review work such as "review spec", "find gaps", "what's missing", "is the spec complete", or "clarify requirements" against a spec that already exists. SHOULD also invoke when checking spec.md for completeness or checking user stories for missing acceptance criteria before downstream design begins. This produces gap-finding INPUT (a severity-bucketed gap report plus clarifying questions), not a clearing PASS/FAIL verdict. For enriching a sparse or vague feature idea before any spec is drafted, use mochiko:analysis-iterative instead.
 ---
 
 # Reviewing Specifications
@@ -90,6 +90,27 @@ a decomposition whose groups are shaped like implementation cycles is a wrong-al
 | 10 | Feature-Done seams | Cross-slice seams named where slices interact? | Important |
 | 11 | Depth second-guess | Both directions: a decomposition the intent/spec didn't warrant, or a "Single slice" line hiding real value seams? Grades the depth call itself against the Intent section's delivery ruling. | Important |
 
+## The Screens & Flows section (UX-bearing specs)
+
+Graded with the spec — same reviewer, same report. Either a SCR/FLOW manifest with its
+`prototype/` app, or the waiver line "No UX surface — prototype waived at intent." Both shapes
+get graded (the waiver via check 8, against the Intent section's UX-bearing ruling). The walk is
+adversarial, not ceremonial: **serve the prototype and click it** (bun, or open
+`prototype/index.html` directly) — a skeptic walking the app finds the gap a text read cannot.
+Authority split guard: flows, screens, and data shown are binding; layout and styling are
+advisory — a cosmetic finding against a low-fi prototype is a wrong-altitude finding.
+
+| # | Check | Question | Typical severity |
+|---|-------|----------|------------------|
+| 1 | Screen reachability | Every SCR-XXX row renders a reachable page in the served app? | Critical |
+| 2 | Flow walkability | Every FLOW-XXX clickable end-to-end, no dead ends? | Critical |
+| 3 | Scenario coverage | Every P1 story acceptance scenario carries a FLOW click path? | Critical |
+| 4 | Flow traceability | Every FLOW-XXX keyed to a real story scenario — no scope invention? | Critical |
+| 5 | Drift (both directions) | No page without a SCR row; no manifest row without its page? | Critical |
+| 6 | Data-shape honesty | Screens show honest data shape (realistic fields/cardinality), enough to expose layout and flow problems? | Important |
+| 7 | Slice tags | Decomposed spec → every SCR/FLOW row slice-tagged; out-of-slice screens greyed but reachable? | Important |
+| 8 | Waiver second-guess | The waiver line, on a spec whose stories imply user-facing screens — or a prototype the intent ruled out? Grades the UX-bearing call against the Intent section. | Important |
+
 ## Severity Classification
 
 | Severity | Definition | Action |
@@ -114,9 +135,11 @@ report path, return the same structure inline.
 4. **Identify missing edge cases** for each flow
 5. **Grade the Delivery Slices section** against the 11-check table above, reading the
    Intent section's delivery ruling first (the depth second-guess is graded against it)
-6. **Classify gaps** by severity
-7. **Generate questions** with concrete options
-8. **Group related gaps** to avoid overwhelming stakeholders
+6. **Grade the Screens & Flows section** against the 8-check table above — serve the
+   prototype and walk it; read the Intent section's UX-bearing ruling first
+7. **Classify gaps** by severity
+8. **Generate questions** with concrete options
+9. **Group related gaps** to avoid overwhelming stakeholders
 
 The spec follows the deliverable envelope (`templates/artifact-format.md`): one-line
 scenarios (2-3 per story), one-line FR/SC/edge-case entries, compact entities. **Density
@@ -137,6 +160,7 @@ Before finalizing the review, verify:
 - [ ] Related gaps grouped together
 - [ ] No implementation details in questions
 - [ ] Delivery Slices section graded (all 11 checks; the single-slice line via the depth second-guess)
+- [ ] Screens & Flows section graded (all 8 checks; the prototype actually served and walked; the waiver line via the waiver second-guess)
 
 ## Common Mistakes
 

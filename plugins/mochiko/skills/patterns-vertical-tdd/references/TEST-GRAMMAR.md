@@ -64,6 +64,8 @@ A **downstream verification step classifies tasks at runtime** and decides wheth
 | `Console contains "{text}" (within Ns)` | Timed match |
 | `File exists: {path}` | Check file system |
 | `Response status: {code}` | HTTP status check |
+| `Screen reached: {url-path or selector}` | Browser check (Playwright): current URL matches, or the selector resolves |
+| `Page contains "{text}"` | Browser check (Playwright): text present in the rendered page |
 
 ## Examples
 
@@ -96,6 +98,18 @@ A **downstream verification step classifies tasks at runtime** and decides wheth
 - **Action**: Launch the built application
 - **Assert**: Session appears in list within 1 second
 - **Assert**: Session shows correct project path with ~ alias
+- **Capture**: screenshot
+```
+
+**Browser-flow verification** (may auto-approve when driven via Playwright; the spec's
+Screens & Flows manifest is the source of the FLOW-XXX path — cite the ID, restate only the
+steps):
+```markdown
+**TEST:** FLOW-002 checkout path walks end-to-end in the built app
+- **Setup**: `npm start` (background) (timeout 30s)
+- **Action**: Playwright: navigate localhost:3000 → click "Cart" → click "Checkout" → submit payment form (per FLOW-002 steps)
+- **Assert**: Screen reached: /checkout/confirmation
+- **Assert**: Page contains "Order confirmed"
 - **Capture**: screenshot
 ```
 

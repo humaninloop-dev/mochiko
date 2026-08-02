@@ -4,6 +4,12 @@ Entry formats: `strips/README.md`. Wave context: the specify cluster wave (v0.13
 Single-consumer primitive (the specify critique, mounted on `devils-advocate`) — strips
 ruled in-wave.
 
+## [v0.50.0] Gained the Screens & Flows prototype-walk grade
+- **Disposition:** pure addition riding the decision row (new 8-check section + process step + checklist row + description clause; the process-step renumber 6→7/7→8/8→9 is the only touched existing text)
+- **Tier failed:** n/a — addition by ruling (`DECISIONS.md` row 2026-08-02 "UX mocking in specify (UX-D1–D9)"; record `.mochiko/brainstorms/ux-mocking-in-specify/record.md`, D7)
+- **Content:** nothing removed from this skill.
+- **Consumers assessed:** devils-advocate (mounts it) · specify (binds it).
+
 ## [v0.49.0] Absorbed the Delivery Slices grade (from retired review-slices)
 - **Disposition:** pure addition riding the decision row (new 11-check section + process step + checklist row + description clause) — recorded here because the absorption is half of a supersession pair (see `review-slices.md`)
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D9)

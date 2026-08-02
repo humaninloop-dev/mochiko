@@ -1,6 +1,6 @@
 {
   "name": "mochiko",
-  "version": "0.49.0",
+  "version": "0.50.0",
   "description": "Kernel-free agent-skill framework: self-contained command supervisors built from native agent teams and skills",
   "author": {
     "name": "HumanInLoop",
@@ -19,6 +19,7 @@
     "./agents/principal-architect.md",
     "./agents/validator.md",
     "./agents/requirements-analyst.md",
+    "./agents/product-engineer.md",
     "./agents/devils-advocate.md",
     "./agents/system-architect.md",
     "./agents/technical-analyst.md",

@@ -6,12 +6,28 @@ surface is [`ROADMAP.md`](ROADMAP.md). Closing an item = the KM landing ritual
 (`.mochiko/memory/knowledge-management.md`): decision row + move here → the trail
 (`.mochiko/archive/backlog-trail.md`) + touch ROADMAP.md. No `[x]` lives here.
 
-*Last groomed: 2026-08-02 (task-granularity build close) — baseline: 54 open items (the build
-item opened and delivered to the trail same day at v0.49.0, replaced in place by the
-first-live-run watch; prior baseline 54 at the 2026-08-01 output-style close; 52 at the
-2026-07-25 migration), per-item bound ≤15 lines.*
+*Last groomed: 2026-08-02 (task-granularity build close) — baseline: 55 open items (+1: the
+UX-prototype first-live-run watch, opened at the v0.50.0 build close; the v0.49.0 build item
+opened and delivered to the trail same day, replaced in place by its first-live-run watch;
+prior baseline 54 at the 2026-08-01 output-style close; 52 at the 2026-07-25 migration),
+per-item bound ≤15 lines.*
 
 ---
+
+## UX-prototype-stage watches
+
+Ruling: DECISIONS.md row 2026-08-02 (UX-D1–D9); built same day at v0.50.0.
+
+- [ ] **First live UX-bearing specify run** (2026-08-02; provenance:
+  `.mochiko/brainstorms/ux-mocking-in-specify/record.md`, open threads 1–3) — watch the first
+  UX-bearing run: intent stage rules UX-bearing sanely on non-obvious features · lockstep
+  holds (screens land with their story, not batched after) · design-system discovery
+  (`authoring-prototype` step 2) actually finds an existing system · bun/file:// degrade path
+  suffices on the user's machine · devils-advocate genuinely serves and walks the prototype
+  (Playwright) rather than text-reading the manifest · plan traces SCR/FLOW into
+  contracts/data-model · a FLOW-XXX TEST gate executes against the built app at implement.
+  Open sub-thread: prototype afterlife (archive-or-keep once the real UI ships) — unruled,
+  decide at first feature-close on the new surface.
 
 ## Task-granularity / slice-dissolution watches
 

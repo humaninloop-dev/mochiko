@@ -8,6 +8,12 @@ One entry per session directory under `.mochiko/brainstorms/<topic-slug>/`, **ne
 
 ---
 
+## `ux-mocking-in-specify` — UX mocks as a critical specify deliverable and plan-stage input
+- **When:** 2026-08-02 · **Status:** accepted · record **un-reviewed** (bare session — direct `analysis-iterative` invocation; rulings user-accepted inline; Q3–Q5 adoption streak flagged, Q6 posed steelmans-no-recommendation, user shaped D6 beyond the options; close form accept-bare-build-now user-ruled at the plan gate)
+- **Artifacts:** [record.md](ux-mocking-in-specify/record.md) (canonical, incl. Build section + three recorded open threads)
+- **About:** specs give no picture of the UI/UX — surprises at build. Ruled (UX-D1–D9): specify gains a conditional **UX-prototype stage** — clickable low-fi HTML prototype (bun + file:// degrade, design-system-honoring) under `prototype/` + a spec **Screens & Flows section** (SCR-XXX/FLOW-XXX manifest) · lockstep story+screen co-evolution (lead-reversed from post-draft-verify at the Playwright contrast), skeleton nav first · intent-stage UX-bearing ruling, waiver line when no · **binding flows / advisory pixels** at plan (SCR data → contract surface, FLOW action → mutation path) · new **product-engineer** agent (staff-level, prototyping as skill) + `authoring-prototype` · devils-advocate's stress-test walks the prototype (Playwright) · whole-feature prototype, slice-annotated, coming-soon greying · FLOW-XXX rides UX-bearing TEST gates at implement. Agents 8→9 · skills 25→26.
+- **Landed:** DECISIONS.md row (2026-08-02) · BACKLOG first-live-run watch · ROADMAP stamp touch. **Built same day at v0.50.0** (plan-approved wave: 2 new primitives · 7 edited · router/ARCHITECTURE/plugin.json ripple; strip notes `[v0.50.0]` ×3; author≠grader audits — specify/plan/agent/skill batch PASS (2 advisories folded), testing-end-user FAIL→fix→FAIL (contradiction survived in TASK-PARSING.md)→fix→PASS at round 3).
+
 ## `plan-task-granularity` — task layer de-granularized; slice dissolves into specify with a first-class intent stage
 - **When:** 2026-08-02 · **Status:** accepted · record **un-reviewed** (bare session — direct `analysis-iterative` invocation; rulings user-accepted inline; D7 lead-reversed after contrast at the user's tilt)
 - **Artifacts:** [record.md](plan-task-granularity/record.md) (canonical, incl. grep-grounded orphan sweep + cold-buildable build surface)

@@ -20,7 +20,7 @@ frontmatter, but no sentence that a field, a table row, or an ID citation could 
 ## Shared rules
 
 1. **Reference by ID — never restate.** Downstream artifacts cite upstream IDs (`FR-003`,
-   `TR-012`, `C-001`, `NFR-002`, `US-4`, `SC-005`) without re-quoting their text. A
+   `TR-012`, `C-001`, `NFR-002`, `US-4`, `SC-005`, `SCR-004`, `FLOW-002`) without re-quoting their text. A
    one-line gloss is allowed only where a bare ID would be unreadable at the point of
    use. Traceability is the ID link, not the quoted text.
 2. **The ID index.** Every ID-bearing artifact opens with (or designates) a compact
@@ -73,5 +73,5 @@ frontmatter, but no sentence that a field, a table row, or an ID citation could 
 **Format version:** v2 (2026-08-01) · **Consumed by:** the artifact templates in this
 directory, the artifact-authoring skills (`authoring-requirements`, `authoring-user-stories`,
 `authoring-technical-requirements`, `patterns-entity-modeling`, `patterns-api-contracts`,
-`patterns-vertical-tdd`, `authoring-slices`, `analysis-codebase`), and the review-skill
-checklists that grade the artifacts.
+`patterns-vertical-tdd`, `authoring-slices`, `authoring-prototype`, `analysis-codebase`), and
+the review-skill checklists that grade the artifacts.
