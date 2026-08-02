@@ -9,6 +9,14 @@ same version.
 
 ---
 
+## [v0.46.0] Shape-slot citations out (v3)
+- **Disposition:** superseded → the dispatching command (its seat rows, gate lines, fact route, verify-pass owner)
+- **Tier failed:** n/a — supersession by ruling (ADR `.mochiko/decisions/2026-08-02-doctrine-purge-wave-1.md`; DECISIONS.md 2026-08-02 "Doctrine purge wave 1" row)
+- **Content:** "when P6 binds this branch"/"`command-shape.md` declares the slots cited below (P5 · P7 · P12 · P13)" → "a command whose validation model binds this branch"/referents live in the dispatching command; "(`command-shape.md` Layer 1, *The floor*)" dropped; P7/P5/P12/P13 references reworded; "the floor's second invariant" → "the command's floor" (×2); footer "**Governed by:** `mochiko:loop-discipline` · **Pairs with:** `command-shape.md`" dropped; v2 → v3.
+- **Kept deliberately:** the whole review pattern — sizing, mutual withholding, freeze, cross-exam pointer, survivor routing, verify-pass-is-floor, review+verify bound — unchanged.
+- **Consumers assessed:** setup + brainstorm (the two binders — their sizing gates unchanged).
+
+---
 **Wave context (v0.44.0 — the D7 leakage scrub).** `verbosity-caveman-ops-separation` D7 as
 folded at review (S4): **full scrub** of ops leakage from the shipped tree, with no
 changelog-worthy detail lost — every removed block is preserved verbatim below. Ruling:

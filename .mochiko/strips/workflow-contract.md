@@ -6,6 +6,14 @@ history to carry. Wave note: `.mochiko/strips/command-shape.md` [v0.40.0].
 
 ---
 
+## [v0.46.0] loop-discipline/command-shape attributions out (v3)
+- **Disposition:** superseded → self-contained (the four-requirement enumeration was already inline)
+- **Tier failed:** n/a — supersession by ruling (ADR `.mochiko/decisions/2026-08-02-doctrine-purge-wave-1.md`; DECISIONS.md 2026-08-02 "Doctrine purge wave 1" row)
+- **Content:** "the command IS its contract (templates/command-shape.md)" → "its own Goal, Seats & checks, Constraints and Recovery"; "satisfies the four requirements of the `loop-discipline` skill" → "is sound"; the §3 bound-integrity comment's "Home: command-shape.md Layer 1, The floor, invariant 3" → "the dispatching command's Bounds state the same rule"; "(P20)"/"P18 floor gates" slot refs reworded; the closing "sound per loop-discipline" comment and footer "**Governed by:** `loop-discipline`" dropped; v2 → v3.
+- **Kept deliberately:** all five sections and the four-requirement reviewer checklist (a)–(d) — the doctrine content survives here inline.
+- **Consumers assessed:** 6 commands (each still instantiates it for departing runs) · router row unchanged.
+
+---
 **Wave context (v0.44.0 — the D7 leakage scrub).** `verbosity-caveman-ops-separation` D7 as
 folded at review (S4): **full scrub** of ops leakage from the shipped tree, with no
 changelog-worthy detail lost — every removed block is preserved verbatim below. Ruling:

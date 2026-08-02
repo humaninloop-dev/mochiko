@@ -4,16 +4,16 @@ WORKFLOW CONTRACT TEMPLATE
 WHEN TO FILL THIS IN — exactly two cases:
   1. A COMMAND RUN THAT DEPARTS from its command's stated default pipeline, or that
      declares non-default bounds. A default run needs no form: the command IS its
-     contract (templates/command-shape.md), and its values were constant at authoring
-     time. What a departing lead composes instead is what genuinely varies per run, so
-     that is what this form carries.
+     contract — its own Goal, Seats & checks, Constraints and Recovery — and its values
+     were constant at authoring time. What a departing lead composes instead is what
+     genuinely varies per run, so that is what this form carries.
   2. ANY NON-COMMAND LOOP — an agent loop, a skill's own produce → check.
 A default-running command declares in ONE LINE on its deliverable and fills nothing here.
 
-The completed contract is the inspectable proof that the loop satisfies the four
-requirements of the `loop-discipline` skill. A reviewer reads it to confirm: (a) the
-done-condition defaults to FAIL, (b) the validator is a DIFFERENT agent + DIFFERENT skill
-than the producer, (c) iteration is deterministically bounded, (d) a human gate is named.
+The completed contract is the inspectable proof that the loop is sound. A reviewer reads
+it to confirm: (a) the done-condition defaults to FAIL, (b) the validator is a DIFFERENT
+agent + DIFFERENT skill than the producer, (c) iteration is deterministically bounded,
+(d) a human gate is named.
 
 INSTRUCTIONS:
 - Replace every [PLACEHOLDER]. Do not leave brackets in a finalized contract.
@@ -58,7 +58,7 @@ INSTRUCTIONS:
 - **On hitting a guard:** escalate to the human gate with failure context. [never report done on cap exhaustion]
 
 <!-- Bound integrity (command runs): a bound rises ONLY at a user checkpoint, and every
-     re-declaration is recorded in §5. Home: command-shape.md Layer 1, The floor, invariant 3. -->
+     re-declaration is recorded in §5 — the dispatching command's Bounds state the same rule. -->
 
 ## 4. Human gate
 
@@ -70,13 +70,13 @@ INSTRUCTIONS:
 
 <!-- Command runs only; a non-command loop one-lines this section as "not applicable". -->
 
-- **Departures from the stated default:** [one line each — what the default said, what ran instead, why. This is the same trail line the deliverable carries (P20), not a second record.]
-- **Floor gates honored:** [the command's P18 floor gates, each ruled by the user — a departure never eats one]
+- **Departures from the stated default:** [one line each — what the default said, what ran instead, why. This is the same trail line the deliverable carries, not a second record.]
+- **Floor gates honored:** [the command's named floor gates, each ruled by the user — a departure never eats one]
 - **Counted unit this run:** [what the bounds and the seat-lifecycle cadence count — named, because a composed run has no default denominator]
 - **Counter state (Recovery reads this on resume):** rounds consumed [N] · bounds declared [list] · departures taken [N] · re-declarations [when, and at which user checkpoint]
 
 ---
 
-<!-- All five sections filled with no remaining brackets = the loop is sound per loop-discipline. -->
+<!-- All five sections filled with no remaining brackets = the loop is sound. -->
 
-**Contract version:** v2 (2026-08-01) · **Governed by:** `loop-discipline`
+**Contract version:** v3 (2026-08-02)

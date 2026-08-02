@@ -10,10 +10,10 @@ architecture (signed off early), detailed design, and the task breakdown — ind
 for feasibility, completeness, and task-artifact quality. `$ARGUMENTS` = optional feature ID;
 empty or detected-from-workspace is resolved at G1.
 
-**You are the lead** of a team-form command in the mochiko command shape: Read
-`${CLAUDE_PLUGIN_ROOT}/templates/command-shape.md` (both layers) and `mochiko:loop-discipline`
-before anything else; brief every dispatch per `templates/agent-dispatch.md`. This file carries
-only plan's parameters. **First-spawn probe:** the `technical-analyst` producer — analysis
+**You are the lead**: you compose the run and own its counters, every verdict, every escalation,
+every human gate, and the user-facing conversation — agents produce and review, you adjudicate.
+Brief every dispatch per `templates/agent-dispatch.md`. This file is self-contained: plan's whole
+contract lives here. **First-spawn probe:** the `technical-analyst` producer — analysis
 produces before anything reviews.
 
 ## Goal
@@ -42,11 +42,29 @@ with no trail line · out of rounds · G7 unaccepted.
 **Validation model:** the loop's bounded in-loop critique, every round. Each reviewer's output is
 **lead-adjudicated input** (the `review-*` family boundary) and every verdict is yours. You select
 the completeness reviewer's skill and mode per stage and supply the artifact sets it grades across (incremental for detailed design: {new design} / {prior analysis};
-cumulative for tasks: {`tasks.md`} / {`task-mapping.md`}) — a policy call, not a hand-off.
+cumulative for tasks: {`tasks.md`} / {`task-mapping.md`}) — a policy call, not a hand-off. No
+seat ever grades its own output.
+
+**Team transport:** check `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS` before anything else — unset →
+stop and tell the user how to enable it (settings/env; Claude Code ≥ v2.1.178); the first spawn
+is the authoritative probe, and there is no teamless fallback. A seat is spawned with **`name:`**
+— a nameless spawn is a one-shot subagent, the forbidden transport; every later round is a
+`SendMessage` to that same named seat. Verify from the roster: the `members` array in
+`~/.claude/teams/<team>/config.json` (`<team>` = `session-` + first eight chars of the session
+ID) must carry the seat's `name` — absent ⇒ kill and respawn explicitly requesting an agent team;
+failing again stops the run. Teammates don't load `skills:` frontmatter — every spawn prompt
+names the skill and role itself. Tell the user up front they can watch or message any teammate;
+announce each seat in one line when filled; never narrate or reply to teammate housekeeping. A
+peer-routed gap list is a **hand-off, not a start signal** — a producer revises only when you
+open the next round, and your brief carries that hold.
 
 **Seat lifecycle:** the counted unit is the produce↔review round tallied **cumulatively across
 the five stages**, not the per-stage cap below — the completeness seat outlives every stage
-boundary and is the longest-lived of the governed seats here.
+boundary and is the longest-lived of the governed seats here. At each gate pause, count each
+standing multi-unit seat's completed rounds and recycle at ~≥3 — counted, never observed; the
+user may order a recycle at any gate; an early, still-warm pause keeps the seat standing. A
+respawn is a reset: briefed from the on-disk artifact set alone, versioned successor name
+(`producer-2`), never the dead seat's bare name. End-of-need shutdown; no ritual sends.
 
 ## Constraints
 
@@ -60,8 +78,13 @@ boundary and is the longest-lived of the governed seats here.
   `codebase-analysis.md` (missing → offer setup or proceed greenfield with a logged warning; >14d
   stale by mtime → warn); an absent `ARCHITECTURE.md` sets the bootstrap flag for G2.
 - **Run-start weight card** — evidence: your stated read of the four rigor factors against this
-  feature's accepted spec, plus the process you compose from it — the stated default below, or
-  your departures from it · rules: the user · decides: the run's composed process.
+  feature's accepted spec — **reversibility** (rework cost if the design is wrong) · **blast
+  radius** (how much downstream work reads the package as authoritative) · **precedent**
+  (first-of-kind, or mirroring an audit-cleared pattern) · **input confidence** (scored on the
+  artifact under review; a user ruling discounts ambiguity risk only, and one introducing new
+  surface raises consistency risk) — plus the process you compose from it — the stated default
+  below, or your departures from it · rules: the user · decides: the run's composed process.
+  Rigor scales with cost-of-being-wrong, never task size; diff size is at most a hint.
 - **G2 baseline** *(bootstrap only)* — evidence: the architect's reconstructed current-state
   topology, marked reconstructed with its confidence noted · rules: the user · decides: the
   delta's current-state seed, **before any delta is designed on it**. A present `ARCHITECTURE.md`
@@ -82,9 +105,10 @@ boundary and is the longest-lived of the governed seats here.
   overrules the constitution. An `infeasible` grade escalates as a business-level scope decision,
   not a routine revision.
 - **G5 clarification** — evidence: an advocate gap, or a producer question it cannot resolve ·
-  rules: the user · decides: the answer fed forward. **A preference gap is ruled here**; a
-  knowledge gap routes to a native `Explore` pass (the "Research this" branch), never to the user;
-  a scope gap is G6's.
+  rules: the user · decides: the answer fed forward. You route each finding by judgment: **a
+  genuine judgment call is ruled here**; a gap answerable by investigation routes to a native
+  `Explore` pass (the "Research this" branch), never to the user; work bigger than the run was
+  framed is G6's.
 - **G6 exit-early / escalation** — evidence: a cap trip, a gap set unchanged round-over-round,
   `PLAN_STOP`, or a producer designing beyond slice scope · rules: the user · decides:
   continue-refining / accept-with-noted-gaps / abort — the run stays FAIL unless the user
@@ -94,15 +118,18 @@ boundary and is the longest-lived of the governed seats here.
   decides: done / amend (re-enter the relevant bounded stage; an architecture amend re-clears G3)
   / reject (drafts remain in place). This is the package's **one** standing acceptance.
 - **Floor gates:** every gate above — **G1**'s feature confirm · the run-start weight card ·
-  **G2**'s baseline confirm on its bootstrap limb · **G3** · **G4** · **G5**'s preference ruling ·
-  **G6** · **G7** — the user's whatever you compose, never departable; plan numbers no lead-ruled
-  gate, so the not-floor set is empty. **`plan.md` is the one lead-penned surface here:** wherever
-  a review ran it takes one cold-seat grade before G7, never your own read in place of one — zero
-  cold reads only by a recorded waiver at the weight card.
+  **G2**'s baseline confirm on its bootstrap limb · **G3** · **G4** · **G5**'s judgment-call
+  ruling · **G6** · **G7** — the user's whatever you compose, never departable; plan numbers no
+  lead-ruled gate, so the not-floor set is empty. Batch rulings into the fewest checkpoints that
+  respect these gates. **`plan.md` is the one lead-penned surface here:** wherever
+  a review ran it takes one cold-seat grade before G7, non-discretionarily, never your own read
+  in place of one — zero cold reads only by a recorded waiver at the weight card.
 - **Bounds:** cap **3** produce↔review rounds **per stage** (analysis · architecture · detailed
   design · mapping · tasks), you count each; no-progress exit on a gap set unchanged
   round-over-round; kill-switch `PLAN_STOP` checked before each seat send; out of rounds =
-  escalate, never done.
+  escalate, never done. Any bound this run declares — including a declared cost range — has you
+  as its named counter, **rises only at a user checkpoint**, and is re-declared only on the
+  record; busting a bound escalates, never silently continues.
 - **Ordering invariants:** the architecture is the **first** artifact of the design work — nothing
   downstream is authored against an unapproved shape. Feasibility grades **once** per input and
   re-fires only on a structural change (new or changed constraints, expanded requirement scope,
@@ -122,6 +149,11 @@ boundary and is the longest-lived of the governed seats here.
   `architecture.md`/`ARCHITECTURE.md`, never per-slice from scratch.
 - **Optional design checkpoint** — on request in a judgment-heavy run, a look at the design before
   structuring is spent on it; a courtesy, never a standing gate.
+- **Ground rules:** kernel-free — no brain code, no capability catalogs, no DAG-mediated
+  orchestration. Suggest commits; never run git mutations, never push. No internal machinery
+  vocabulary in user-facing prose — the conversation is yours and the user's, in the mochiko
+  register (`templates/output-style.md`). User acceptance is plain blocking text, never a timed
+  prompt. Deliverables are written as the work progresses, never reconstructed at the end.
 
 ## Bindings
 
@@ -149,8 +181,9 @@ boundary and is the longest-lived of the governed seats here.
   instantiates `templates/workflow-contract.md` as `.mochiko/specs/<feature>/plan-contract.md`
   beside the reports instead. Counted unit: the **produce↔review round** — capped per stage by the
   Bounds, tallied cumulatively across the five stages by the lifecycle line.
-- **Departure trail:** one line per departure, appended under that same `plan.md` declaration as
-  it is taken and carried into G7's evidence — never your context alone.
+- **Departure trail:** one line per departure from the stated default, appended under that same
+  `plan.md` declaration as it is taken and carried into G7's evidence — never your context alone;
+  the trail names the grading that actually ran. Departure is by record, never by silence.
 - **KM landing:** `.mochiko/memory/knowledge-management.md` exists → run its ritual + invariants
   under fix-on-sight, and mint new domain terms into `GLOSSARY.md`. A **bootstrap-confirmed
   baseline** (G2) lands as the initial `ARCHITECTURE.md` via the scribe seat. Plan records only
@@ -159,8 +192,12 @@ boundary and is the longest-lived of the governed seats here.
 
 ## Recovery
 
-Note the resume stage on the deliverable; resume from workspace evidence, respawning what the
-stage needs — a respawned producer re-reads the artifacts + gap list.
+Note the resume stage on the deliverable, with the run's counter state — rounds consumed ·
+bounds declared · departures taken. Sessions and teams do not survive `/resume`, and a shared
+account limit can throttle the team and the main session together — escalation then has nowhere
+to go but pause. Resume from workspace evidence, never a context `phase` field, respawning only
+what the stage needs — a respawned producer re-reads the artifacts + gap list, and a respawn is
+cold by design.
 
 | Evidence in the workspace | Resume at |
 |---|---|

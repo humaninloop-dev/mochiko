@@ -5,6 +5,12 @@ batch-1 ratified 2026-07-25; design: `.mochiko/brainstorms/skill-succinctness-st
 First strip assessment of this skill (never-stripped band 30–70): body 225 → 171 lines = **24%**,
 under-band — survivor evidence below.
 
+## [v0.46.0] loop-discipline pointers out
+- **Disposition:** superseded → the anti-rationalization content stands in this file's own red flags; loop ownership is the command's
+- **Tier failed:** n/a — supersession by ruling (ADR `.mochiko/decisions/2026-08-02-doctrine-purge-wave-1.md`; DECISIONS.md 2026-08-02 "Doctrine purge wave 1" row)
+- **Content:** same two edits as `review-plan-artifacts` — the overview parenthetical reworded, the Related bullet deleted.
+- **Consumers assessed:** plan command (structuring stage) briefs unchanged.
+
 ## [v0.26.0] "Key Principles to Validate" section deleted (−21 lines)
 - **Disposition:** relocated → three verified homes, each Read before landing: the check
   enumeration is the in-file Review Focus table (story coverage / true vertical slices /

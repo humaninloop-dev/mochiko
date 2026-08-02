@@ -5,6 +5,13 @@ batch-2 ratified 2026-07-25; design: `.mochiko/brainstorms/skill-succinctness-st
 First strip assessment of this skill (never-stripped band 30–70): body 141 → 136 lines = **3.5%**,
 deeply under-band — whole-skill survivor ruling below.
 
+## [v0.46.0] loop-discipline pointers + gap-routing taxonomy out
+- **Disposition:** superseded → routing is the lead's judgment (the knowledge/preference/scope taxonomy dropped entirely, per the purge ruling — no new home)
+- **Tier failed:** n/a — supersession by ruling (ADR `.mochiko/decisions/2026-08-02-doctrine-purge-wave-1.md`; DECISIONS.md 2026-08-02 "Doctrine purge wave 1" row)
+- **Content:** "routing per `loop-discipline`" → "routing"; "Loop ownership, the round bound, and the human gate are the lead's — see `loop-discipline`" → "— its command states them"; "Route findings by their kind per `loop-discipline`'s gap routing — a fundamental conflict is a preference/scope gap for the human, not a knowledge gap" → "Routing each finding is the lead's judgment — a fundamental conflict is the human's to rule, never something investigation can settle"; the Common-Mistakes row's "governed by `loop-discipline`" → "its command states them"; the Related bullet deleted.
+- **Kept deliberately:** the two-exit governance routing, the per-issue gate fuel, and the never-clear-it-yourself boundary — unchanged.
+- **Consumers assessed:** plan command briefs unchanged.
+
 ## [v0.26.0] Step-3 field-gloss table → prose with canonical field names (−5 lines; drift repaired)
 - **Disposition:** deduped → `templates/feasibility-report-template.md` (its **pre-existing**
   Usage Notes define all four gate-fuel fields with the same glosses — Read and confirmed before

@@ -15,6 +15,12 @@ document contracts are the **user's** artifacts and are untouchable. A prefix-ba
 `.mochiko/` would gut the KM module and the brainstorm command; 101 of this tree's 146
 `.mochiko/` references were correctly left alone on that test.
 
+## [v0.46.0] Devolved-branch citation re-pointed
+- **Disposition:** superseded → `commands/implement.md`'s cycle checkpoint (the devolved-branch home after the shape's deletion)
+- **Tier failed:** n/a — supersession by ruling (ADR `.mochiko/decisions/2026-08-02-doctrine-purge-wave-1.md`; DECISIONS.md 2026-08-02 "Doctrine purge wave 1" row)
+- **Content:** rule 9's "(`command-shape.md`, Layer 2)" → "(the dispatching command's devolved-branch terms — `commands/implement.md`'s cycle checkpoint)".
+- **Consumers assessed:** all report templates ride the envelope unchanged.
+
 ## [v0.44.0] Format version-history block relocated (class 2, 495 B / 6 lines)
 - **Disposition:** superseded → relocated **verbatim** into this note (below). In-file residue: the
   bare stamp plus the live routing (`Consumed by`), which is wiring a run consumes, not history.

@@ -10,7 +10,7 @@ paths:
 
 Editing a shipped primitive is a **landing, not an ad-hoc edit**. Any change that REMOVES or
 SUPERSEDES content — even one line, even an "obvious" cleanup — obliges both moves before the
-change is done. Full contracts: `.mochiko/strips/README.md` · `templates/command-shape.md`.
+change is done. Full contracts: `.mochiko/strips/README.md`.
 
 - **Record** — a version-stamped entry in `.mochiko/strips/<primitive>.md` (one file per primitive,
   newest-first; stamp = the `plugin.json` version that made it):
@@ -23,11 +23,12 @@ change is done. Full contracts: `.mochiko/strips/README.md` · `templates/comman
 
   An edit whose only trace is the changed file, with nothing in `.mochiko/strips/`, is **incomplete**.
 
-- **Check** — the independent **author ≠ grader** audit: `mochiko:validator` grading against
-  `templates/command-shape.md` as the explicit checklist for a command (the dedicated
-  `validation-command-shape` skill was deleted at v0.45.0), the matching `validation-*` /
-  `review-*` skill otherwise. The editor never grades their own edit — dispatch a separate
-  validator.
+- **Check** — the independent **author ≠ grader** audit: `mochiko:validator` grading a command
+  against **the command's own text** — internal coherence (default-FAIL goal, counted bounds,
+  named floor gates, no self-grading seat row, workspace-evidence recovery) plus preserved
+  responsibilities (`templates/command-shape.md` was deleted at v0.46.0; the dedicated
+  `validation-command-shape` skill at v0.45.0) — the matching `validation-*` / `review-*` skill
+  otherwise. The editor never grades their own edit — dispatch a separate validator.
 
 **Protected content leaves ONLY by ruling.** A line in a record's protected set, marked `KEPT:`, or
 traceable to a `DECISIONS.md` row may be removed only as a recorded supersession-by-ruling. A silent

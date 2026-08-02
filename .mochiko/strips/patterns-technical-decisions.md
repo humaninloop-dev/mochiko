@@ -5,6 +5,12 @@ batch-3 ratified 2026-07-25; design: `.mochiko/brainstorms/skill-succinctness-st
 First strip assessment of this skill (never-stripped band 30–70): body 161 → 89 lines = **45%**,
 in-band.
 
+## [v0.46.0] loop-discipline pointer out
+- **Disposition:** superseded → the sentence stands without the citation
+- **Tier failed:** n/a — supersession by ruling (ADR `.mochiko/decisions/2026-08-02-doctrine-purge-wave-1.md`; DECISIONS.md 2026-08-02 "Doctrine purge wave 1" row)
+- **Content:** "...not to this skill (see `mochiko:loop-discipline`)." → "...not to this skill."
+- **Consumers assessed:** plan command briefs unchanged.
+
 ## [v0.27.0] Quick-layer restatements and fully-homed Common Mistakes stripped (body 161 → 89, −45%)
 - **Disposition:** relocated → verified reference homes, each Read before landing: the
   Quick-Criteria table → `references/EVALUATION-MATRIX.md` Evaluation Criteria (same 8

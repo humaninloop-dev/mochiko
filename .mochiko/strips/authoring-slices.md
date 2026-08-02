@@ -10,6 +10,12 @@ specify-wave finding on authoring skills). One contested keep (below). The libra
 (2026-07-25, keep-and-survivor-log; this skill's copy is anchored by the Overview's discipline
 framing).
 
+## [v0.46.0] loop-discipline Related bullet out
+- **Disposition:** superseded → loop ownership is the command's
+- **Tier failed:** n/a — supersession by ruling (ADR `.mochiko/decisions/2026-08-02-doctrine-purge-wave-1.md`; DECISIONS.md 2026-08-02 "Doctrine purge wave 1" row)
+- **Content:** Related bullet "`loop-discipline` — the loop, bounds, and gates around this authoring are the lead's; referenced, never restated" deleted.
+- **Consumers assessed:** slice command briefs unchanged.
+
 ## [v0.28.0] R4b item 3 executed + homed mistake rows stripped (body 147 → 127, −14%, in 10–40 band)
 - **Disposition:** **R4b item 3 (owed since wave-1 open, ruled for this wave):**
   `templates/slices-template.md`'s Graduation contract confirmed canonical (its own principle:

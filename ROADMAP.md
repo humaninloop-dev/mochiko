@@ -50,4 +50,4 @@ frontend/mobile/desktop shelves are Tier-I roadmap work.**
 - **KM pin adopts partial core** (recorded deviation, 2026-07-25; narrowed 2026-07-31 — rules file + plugin-scope `ARCHITECTURE.md` exist, GLOSSARY still deferred) — revisit: first in-repo setup/amend run or the module dogfood.
 
 ---
-*Last groomed: 2026-08-02 — Now 2 · Next 7 · Later 10; open-item figures on BACKLOG's stamp line. Framework-maintenance trio deleted outright at v0.45.0 (user ruling supersedes the deferred D6 move; S14 probe re-run PASSED both halves first; plugin now 6 commands · 9 agents · 28 skills — ADR `2026-08-02-framework-trio-deleted`).*
+*Last groomed: 2026-08-02 — Now 2 · Next 7 · Later 10; open-item figures on BACKLOG's stamp line. Doctrine purge wave 1 landed at v0.46.0: `loop-discipline` + `command-shape.md` deleted, six commands self-contained (mechanics inlined), command audits grade the command's own text; the read-drop deferral closed by supersession (plugin now 6 commands · 9 agents · 27 skills — ADR `2026-08-02-doctrine-purge-wave-1`). Prior groom same day: framework-maintenance trio deleted at v0.45.0 (ADR `2026-08-02-framework-trio-deleted`).*

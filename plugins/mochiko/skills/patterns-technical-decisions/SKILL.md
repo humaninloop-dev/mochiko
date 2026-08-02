@@ -50,7 +50,7 @@ Score options against weighted criteria. Document:
 
 Use the two comparison shapes in [EVALUATION-MATRIX.md](references/EVALUATION-MATRIX.md) — the weighted decision matrix or the quick side-by-side options comparison; don't invent a third format.
 
-**When a decision cannot be resolved** — missing information, or an unsettled judgment call — mark it **NEEDS CLARIFICATION** rather than guessing. Marking the gap is this skill's job. *Driving* its resolution — looping the decision back for another round, or escalating a genuine judgment call to the human gate — belongs to the command supervisor that runs the loop, not to this skill (see `mochiko:loop-discipline`).
+**When a decision cannot be resolved** — missing information, or an unsettled judgment call — mark it **NEEDS CLARIFICATION** rather than guessing. Marking the gap is this skill's job. *Driving* its resolution — looping the decision back for another round, or escalating a genuine judgment call to the human gate — belongs to the command supervisor that runs the loop, not to this skill.
 
 ### Phase 3: Document
 

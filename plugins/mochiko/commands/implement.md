@@ -1,5 +1,5 @@
 ---
-description: Execute an accepted task breakdown into working, verified code via an independent producer→verifier team loop — a staff-engineer seat implements each cycle through red/green/refactor TDD (foundation cycles before feature cycles) and fix-passes the final validation; a qa-engineer seat verifies every cycle and then the whole implementation against real infrastructure with captured evidence and quality-gate exit codes; the approved architecture is briefed input, guarded by a diagram-anchored deviation self-check at cycle open and close and by a built-vs-approved diff at final validation. A per-cycle checkpoint carries the shape's deterministic-clean devolved branch; a named final-acceptance gate closes the run. Package-gated, cycle-by-cycle, default-FAIL, bounded, kernel-free. Requires agent teams (CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS); refuses without them.
+description: Execute an accepted task breakdown into working, verified code via an independent producer→verifier team loop — a staff-engineer seat implements each cycle through red/green/refactor TDD (foundation cycles before feature cycles) and fix-passes the final validation; a qa-engineer seat verifies every cycle and then the whole implementation against real infrastructure with captured evidence and quality-gate exit codes; the approved architecture is briefed input, guarded by a diagram-anchored deviation self-check at cycle open and close and by a built-vs-approved diff at final validation. A per-cycle checkpoint carries a deterministic-clean devolved branch; a named final-acceptance gate closes the run. Package-gated, cycle-by-cycle, default-FAIL, bounded, kernel-free. Requires agent teams (CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS); refuses without them.
 disable-model-invocation: true
 ---
 
@@ -11,10 +11,11 @@ verified against real infrastructure, until every cycle clears and a whole-imple
 validation passes. `$ARGUMENTS` = optional feature ID or description; empty or
 detected-from-workspace is resolved at G1.
 
-**You are the lead** of a team-form command in the mochiko command shape: Read
-`${CLAUDE_PLUGIN_ROOT}/templates/command-shape.md` (both layers) and `mochiko:loop-discipline`
-before anything else; brief every dispatch per `templates/agent-dispatch.md`. This file carries only
-implement's parameters. **First-spawn probe:** the `staff-engineer` producer — foundation cycle 1 is
+**You are the lead**: you compose the run and own its counters, every verdict, every escalation,
+every human gate, and the user-facing conversation — agents produce and review, you adjudicate; the
+one exception is the cycle checkpoint's devolved clean branch below. Brief every dispatch per
+`templates/agent-dispatch.md`. This file is self-contained: implement's whole contract lives here.
+**First-spawn probe:** the `staff-engineer` producer — foundation cycle 1 is
 implemented before anything verifies it.
 
 ## Goal
@@ -43,12 +44,30 @@ unaccepted.
 **Validation model:** the loop's bounded in-loop critique — qa's per-cycle verification plus the
 final validation, unsized by design. The verification skill is **never** mounted on the producer.
 Outside the devolved branch qa's output is **lead-adjudicated input** and the verdict is yours. One
-verifier, so implement numbers no G2 — there is no feasibility-rejection gate.
+verifier, so implement numbers no G2 — there is no feasibility-rejection gate. No seat ever grades
+its own output.
 
-**Seat lifecycle:** the counted unit is the **cycle**. **Override —** the verifier recycles per
+**Team transport:** check `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS` before anything else — unset →
+stop and tell the user how to enable it (settings/env; Claude Code ≥ v2.1.178); the first spawn is
+the authoritative probe, and there is no teamless fallback. A seat is spawned with **`name:`** — a
+nameless spawn is a one-shot subagent, the forbidden transport; every later round is a
+`SendMessage` to that same named seat. Verify from the roster: the `members` array in
+`~/.claude/teams/<team>/config.json` (`<team>` = `session-` + first eight chars of the session ID)
+must carry the seat's `name` — absent ⇒ kill and respawn explicitly requesting an agent team;
+failing again stops the run. Teammates don't load `skills:` frontmatter — every spawn prompt names
+the skill and role itself. Tell the user up front they can watch or message any teammate; announce
+each seat in one line when filled; never narrate or reply to teammate housekeeping. A peer-routed
+hand-off is **not a start signal** — the producer revises only when you open the next round, and
+your brief carries that hold.
+
+**Seat lifecycle:** the counted unit is the **cycle**; at each gate pause count each standing
+seat's completed cycles and recycle at ~≥3 — counted, never observed; the user may order a recycle
+at any gate. **Override —** the verifier recycles per
 **slice** boundary, its final-validation incarnation additionally briefed from the on-disk
 verification reports. A retry or fix-pass respawn carries the failed-task list **and** the
-just-failed `cycle-report.md`, relayed at dispatch: the next attempt overwrites that file.
+just-failed `cycle-report.md`, relayed at dispatch: the next attempt overwrites that file. A
+respawn is a reset: briefed from the on-disk artifact set alone, versioned successor name
+(`producer-2`), never the dead seat's bare name. End-of-need shutdown; no ritual sends.
 
 ## Constraints
 
@@ -59,8 +78,13 @@ just-failed `cycle-report.md`, relayed at dispatch: the next attempt overwrites 
   `architecture.md`, plus the design inputs and `slices.md` (Bindings) · rules: the user · decides:
   whether the run opens. Missing or incomplete → block, pointing the user to `/mochiko:plan`.
 - **Run-start weight card** — evidence: your stated read of the four rigor factors against this
-  breakdown, plus the process you compose from it — the stated default below, or your departures from
-  it · rules: the user · decides: the run's composed process.
+  breakdown — **reversibility** (rework cost if the build is wrong) · **blast radius** (how much
+  downstream work reads the built code as authoritative) · **precedent** (first-of-kind, or
+  mirroring an audit-cleared pattern) · **input confidence** (scored on the artifact under review;
+  a user ruling discounts ambiguity risk only, and one introducing new surface raises consistency
+  risk) — plus the process you compose from it — the stated default below, or your departures from
+  it · rules: the user · decides: the run's composed process. Rigor scales with
+  cost-of-being-wrong, never task size; diff size is at most a hint.
 - **Governance surface** — evidence: `CLAUDE.md`'s `<!-- mochiko:governance:begin -->` region ·
   rules: the user, when it is absent · decides: proceed on governing context, or run
   `/mochiko:setup` first. Absence is **surfaced, never auto-resolved** — governing context, not a
@@ -68,7 +92,7 @@ just-failed `cycle-report.md`, relayed at dispatch: the next attempt overwrites 
   `.claude/rules/mochiko/` files relevant to that cycle's file paths.
 - **Cycle checkpoint** — evidence: `cycle-report.md` (deviation self-check, `domain_deps_added`), the
   verification report, qa's classified evidence + recommendation · rules: you, except on the devolved
-  branch · decides: the cycle advances, or a targeted retry. It carries the shape's **devolved
+  branch · decides: the cycle advances, or a targeted retry. It carries this command's **devolved
   branch**, skipped **exactly** when every verification in the cycle is a deterministic CLI check at
   100% pass **and** no deviation is reported **and** `domain_deps_added` is empty **and** both
   reports are clean by the envelope's prose check (`report-format.md`): the cycle then
@@ -81,9 +105,10 @@ just-failed `cycle-report.md`, relayed at dispatch: the next attempt overwrites 
   build as approved, or a consented amendment of `architecture.md` before the cycle resumes. A yes
   stops the cycle and you present it — never silently built.
 - **G3 clarification** — evidence: an ambiguity or blocker the producer flags · rules: the user ·
-  decides: the answer fed forward into the next dispatch, logged in-session. **A preference gap is
-  ruled here**; a knowledge gap routes to a native `Explore` pass (the "Research this" branch),
-  never to the user; a scope gap is G4's.
+  decides: the answer fed forward into the next dispatch, logged in-session. You route each
+  finding by judgment: **a genuine judgment call is ruled here**; a gap answerable by
+  investigation routes to a native `Explore` pass (the "Research this" branch), never to the
+  user; work bigger than the run was framed is G4's.
 - **G4 exit-early / escalation** — evidence: a cap trip, a failing set unchanged round-over-round,
   `IMPLEMENT_STOP`, or a scope gap · rules: the user, on the last evidence · decides:
   continue-refining / accept-with-noted-gaps / stop-and-review — the run stays FAIL unless the user
@@ -95,18 +120,23 @@ just-failed `cycle-report.md`, relayed at dispatch: the next attempt overwrites 
   pass, still bounded, and clear a verdict again) / reject (the work remains under
   `.mochiko/specs/<feature>/` and in the working tree).
 - **Floor gates:** the run-start weight card · the package gate · the governance surface's absence
-  ruling · **G3**'s preference ruling · **G4** · **G5** · the architecture-deviation consent — the
+  ruling · **G3**'s judgment-call ruling · **G4** · **G5** · the architecture-deviation consent — the
   user's whatever you compose, never departable. G1 and the cycle checkpoint (yours by definition)
-  are not. **Verification depth is floored:** it may thin on a light cycle — quality gates plus spot
+  are not. Batch rulings into the fewest checkpoints that respect these gates. **Verification depth
+  is floored:** it may thin on a light cycle — quality gates plus spot
   evidence rather than full evidence capture — never to zero. No cycle closes without
   real-infrastructure evidence; *none* is a reviewer-count option, never a verification one. No
-  lead-penned surface takes a standing cold grade here: P11 is producer-authored.
+  lead-penned surface takes a standing cold grade here: the uncertainty carrier is
+  producer-authored — were you to pen a deliverable surface, it would take one cold-seat grade
+  non-discretionarily, waivable only by recorded user waiver at the weight card.
 - **Bounds:** **targeted retry** — trace a checkpoint failure to its tasks and re-open only those,
   **max 3 attempts per cycle**, never regressing passing code; **fix pass** — failure-scoped after a
   final-validation failure, **max 3 passes**; **convergence stall** — the same failure pattern
   across **2+ rounds** surfaces rather than silently continuing, no-progress being an unchanged
   failing set; kill-switch `.mochiko/specs/<feature>/IMPLEMENT_STOP`, checked before each seat send.
-  You count every round.
+  You count every round. Any bound this run declares — including a declared cost range — has you as
+  its named counter, **rises only at a user checkpoint**, and is re-declared only on the record;
+  busting a bound escalates, never silently continues.
 - **Ordering invariants:** cycles run in dependency order, **all foundation cycles before feature
   cycles**, the current cycle being the first with unchecked tasks. **Sequential-only** — parallel
   cycle execution is a `deliberate-shortcut-ledger` deferral, not a capability drop. Every produced
@@ -132,6 +162,13 @@ just-failed `cycle-report.md`, relayed at dispatch: the next attempt overwrites 
   shipped behavior; and when the last slice in Slice-order clears G5 the *feature* is **declared, not
   verified** — `slices.md`'s Feature-Done section executes at feature-close, owned by no workflow
   yet: surface it as the next step, never report feature completion here.
+- **Ground rules:** kernel-free — no brain code, no capability catalogs, no DAG-mediated
+  orchestration. Suggest commits; never run git mutations, never push — the ban's surface is refs,
+  index, tracked content, and history, so the ephemeral, self-removed verification snapshot above
+  is not a mutation of it. No internal machinery vocabulary in user-facing prose — the
+  conversation is yours and the user's, in the mochiko register (`templates/output-style.md`).
+  User acceptance is plain blocking text, never a timed prompt. Reports are written as the work
+  progresses, never reconstructed at the end.
 
 ## Bindings
 
@@ -156,16 +193,21 @@ just-failed `cycle-report.md`, relayed at dispatch: the next attempt overwrites 
   stated default, or declares non-default bounds, instantiates `templates/workflow-contract.md` as
   `.mochiko/specs/<feature>/implement-contract.md` beside the reports instead. Counted unit: the
   **cycle**, the unit the bounds and the lifecycle cadence already count.
-- **Departure trail:** one line per departure, appended under that same `tasks.md` declaration as it
-  is taken and carried into G5's evidence — never your context alone.
+- **Departure trail:** one line per departure from the stated default, appended under that same
+  `tasks.md` declaration as it is taken and carried into G5's evidence — never your context alone;
+  the trail names the grading that actually ran. Departure is by record, never by silence.
 - **KM landing:** `.mochiko/memory/knowledge-management.md` exists → run its ritual + invariants
   under fix-on-sight; a **built** structural change folds the built system into `ARCHITECTURE.md`.
   No copy → skip.
 
 ## Recovery
 
-Note the resume stage on the deliverable; resume from workspace evidence, respawning what the stage
-needs — a respawned producer re-reads the cycle's tasks, the design inputs, and any failed-task list.
+Note the resume stage on the deliverable, with the run's counter state — cycles and rounds
+consumed · bounds declared · departures taken. Sessions and teams do not survive `/resume`, and a
+shared account limit can throttle the team and the main session together — escalation then has
+nowhere to go but pause. Resume from workspace evidence, never a context `phase` field, respawning
+only what the stage needs — a respawned producer re-reads the cycle's tasks, the design inputs,
+and any failed-task list, and a respawn is cold by design.
 
 | Evidence in the workspace | Resume at |
 |---|---|

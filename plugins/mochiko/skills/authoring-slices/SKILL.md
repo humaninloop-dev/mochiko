@@ -128,4 +128,3 @@ Before handing off:
 - `mochiko:review-slices` — the reviewer-side mirror; grades this skill's output (independent reviewer, never the author)
 - `mochiko:patterns-vertical-tdd` — downstream: cuts one slice's scope into cycles (the vocabulary table's other "slice")
 - `mochiko:authoring-user-stories` — upstream: the story quality (IDs, priorities, independent tests) this decomposition indexes
-- `loop-discipline` — the loop, bounds, and gates around this authoring are the lead's; referenced, never restated

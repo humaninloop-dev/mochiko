@@ -44,7 +44,7 @@ handoff: "{{which artifacts to grade + known soft spots, one line}}"
 5. **`handoff`** is a *pointer*, not a claim — what to grade and where the soft spots are;
    **not** a "ready" assertion.
 6. **`assumptions` + `open_questions` are the producer-authored uncertainty carrier** (the
-   shape's producer-authored branch): assumptions record what was assumed and why;
+   dispatching command's producer-authored branch): assumptions record what was assumed and why;
    open questions feed the clarification loop, where the reviewer stress-tests them.
    **`governance_alignment`** discloses alignment to the CLAUDE.md governance region + its
    `.claude/rules/mochiko/` files in one line.

@@ -15,8 +15,8 @@ whether the design can be built (that is a separate review; see *Scope* below).
 
 **Violating the letter of the rules is violating the spirit of the rules.** Running the checklist
 "in spirit" while skipping checks, or downgrading a severity to avoid a hard finding, is the exact
-failure this skill exists to prevent. (The generic anti-rationalization doctrine lives in
-`loop-discipline`; the review-specific red flags are at the foot of this file.)
+failure this skill exists to prevent. (The review-specific red flags are at the foot of this
+file.)
 
 ## Scope — what this skill grades, and what it hands off
 
@@ -212,4 +212,3 @@ If you notice yourself thinking any of these, STOP immediately:
 
 - `mochiko:review-feasibility` — the feasibility / buildability / contradiction half of plan review; the boundary with this skill is the table in ARTIFACT-CHECKLISTS.md
 - `mochiko:advocate-report-template` — the deliverable report shape the lead reads
-- `loop-discipline` — the source of the anti-rationalization and independent-validation doctrine this skill operationalizes

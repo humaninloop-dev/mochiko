@@ -12,15 +12,15 @@ disable-model-invocation: true
 
 ## What mochiko is
 
-The kernel-free successor to human-in-loop. Discipline lives in the skill library; native agent teams + a markdown command supervisor handle orchestration. Every workflow is a **sound loop** (see `loop-discipline`). See `ROADMAP.md` for the thesis.
+The kernel-free successor to human-in-loop. Discipline lives in the skill library; native agent teams + a markdown command supervisor handle orchestration. Every command owns and states its own loop — done-condition (default FAIL), independent validation, counted bounds, named human gates — in its own file. See `ROADMAP.md` for the thesis.
 
 ## How the library composes
 
-Doctrine consumed by every workflow: `loop-discipline` (the four sound-loop rules) and the
-carrier each loop writes them down in. Each workflow below is a sound loop — a command
-supervisor stitches a producer/validator agent team to a goal, and **is its own contract**
-(`command-shape`); the `workflow-contract` template is the per-run carrier a run that departs
-from its command's stated default instantiates, and the form every non-command loop fills.
+Each workflow below is a bounded, default-FAIL loop — a command supervisor stitches a
+producer/validator agent team to a goal, and **is its own contract**: its Goal, Seats & checks,
+Constraints and Recovery carry the whole run. The `workflow-contract` template is the per-run
+carrier a run that departs from its command's stated default instantiates, and the form every
+non-command loop fills.
 
 **The two review-skill families** (the `validation-*`/`review-*` split, 2026-07-18): the prefix encodes **who owns the
 clearing**. `validation-*` = the skill **issues the authoritative grade** — a binary PASS/FAIL
@@ -34,10 +34,8 @@ human adjudicates; the reviewer's verdict never clears anything by itself.
 ### Doctrine (model-invoked — auto-reached when designing any loop)
 | Skill | Reach when |
 |-------|------------|
-| `loop-discipline` | designing/reviewing any workflow or agent loop; deciding if a loop is sound; filling a `workflow-contract` |
 | `workflow-contract` (template) | instantiating the per-run contract for a command run that departs from its stated default or declares non-default bounds, and for any non-command loop |
 | `agent-dispatch` (template) | briefing each agent dispatch inside a loop — a caller-side guide, not a gate |
-| `command-shape` (template) | the codified command pattern's **sole authoritative home** (Layer 1 form-agnostic core, including the non-waivable floor · Layer 2 team transport **and per-seat context lifecycle**) — obligated-read by conformant commands; referenced, never restated |
 
 ### Setup cluster (model-invoked — auto-reached during a `/mochiko:setup` run)
 | Skill | Reach when |

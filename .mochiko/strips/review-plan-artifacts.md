@@ -10,6 +10,12 @@ bullet like the one stripped from `review-specifications`). One contested keep (
 is a library-wide consistency ruling, not a cluster call (see the wave return); note L16 already carries
 the `loop-discipline` reference the strip disposition would add.
 
+## [v0.46.0] loop-discipline pointers out
+- **Disposition:** superseded → the anti-rationalization content stands in this file's own red flags; loop ownership is the command's
+- **Tier failed:** n/a — supersession by ruling (ADR `.mochiko/decisions/2026-08-02-doctrine-purge-wave-1.md`; DECISIONS.md 2026-08-02 "Doctrine purge wave 1" row)
+- **Content:** "(The generic anti-rationalization doctrine lives in `loop-discipline`; ...)" → "(The review-specific red flags are at the foot of this file.)"; the Related bullet "`loop-discipline` — the source of the anti-rationalization and independent-validation doctrine this skill operationalizes" deleted.
+- **Consumers assessed:** plan command briefs unchanged.
+
 ## [v0.26.0] Severity + verdict tables → ISSUE-TEMPLATES pointers; steps and Common Mistakes densified (body 240 → 209, −13%, in-band 10–40)
 - **Disposition:** relocated → `references/ISSUE-TEMPLATES.md` (severity table held there **verbatim** under Severity Levels; verdict mapping held richer under Verdict Criteria — both Read and confirmed before landing, wave-2 batch-1 ratification 2026-07-25) · densified (form-only, zero content deletions): Step-3 execute list → one sentence, Step-4 cross-reference bullets → one sentence, Step-5 emit bullets → one sentence (the `advocate-report-template` holds the `at:`/`strengths:`/verdict shape — verified), six Common-Mistakes Bad/Good subsections → one 3-column table
 - **Tier failed:** 1 (both tables restated their declared single source, referenced directly below each) · n/a for the densifications — form only

@@ -49,7 +49,7 @@ handoff: "{{what to grade (topology feasibility, coverage) + known soft spots, o
 5. **`changed_this_round`** — first round: `[initial]`. Later rounds: the specific reviewer gaps
    addressed by ID, so the lead can see progress and detect a stalled, no-change round.
 6. **`assumptions` + `open_questions` are the producer-authored uncertainty carrier** (the
-   shape's producer-authored branch); **`governance_alignment`** discloses conformance to the
+   dispatching command's producer-authored branch); **`governance_alignment`** discloses conformance to the
    CLAUDE.md governance region + its `.claude/rules/mochiko/` files, or the conflict and its
    chosen exit, in one line.
 7. **`handoff`** is a *pointer*, not a claim — what to grade and where the soft spots are;

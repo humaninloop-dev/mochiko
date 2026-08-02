@@ -20,8 +20,8 @@ owns the clearing decision and routes the revision loop; this skill recommends, 
 
 **Violating the letter of the rules is violating the spirit of the rules.** Running the checklist
 "in spirit" while skipping checks, or downgrading a severity to avoid a hard finding, is the exact
-failure this skill exists to prevent. (The generic anti-rationalization doctrine lives in
-`loop-discipline`; the review-specific red flags are at the foot of this file.)
+failure this skill exists to prevent. (The review-specific red flags are at the foot of this
+file.)
 
 ## Scope — task artifacts, and the boundary vs plan review
 
@@ -172,4 +172,3 @@ If you notice yourself thinking any of these, STOP immediately:
 - `mochiko:patterns-vertical-tdd` — the producer-side skill this review mirrors; the reviewer checks exactly what it teaches the producer to author
 - `mochiko:review-plan-artifacts` — the plan-artifact reviewer; disjoint artifacts and disjoint checks, complementary, no overlap
 - `mochiko:advocate-report-template` — the assembled deliverable report shape the lead reads
-- `loop-discipline` — the source of the anti-rationalization and independent-validation doctrine this skill operationalizes

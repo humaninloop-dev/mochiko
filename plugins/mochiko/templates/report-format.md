@@ -75,7 +75,8 @@ fields are not.
    `templates/output-style.md`.
 9. **Prose on a clean report is a defect.** `status: pass` plus body content outside rule
    2's set is **not a clean report**: it fails the deterministic-and-clean clearing
-   conditions (`command-shape.md`, Layer 2) and returns to the lead instead of devolving.
+   conditions (the dispatching command's devolved-branch terms — `commands/implement.md`'s
+   cycle checkpoint) and returns to the lead instead of devolving.
    Read mechanically — status and section headings, never prose quality. This is the
    report layer's twin of `artifact-format.md` rule 8: on a report, prose the envelope
    does not sanction *is* a finding.

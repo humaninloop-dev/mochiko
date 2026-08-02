@@ -123,7 +123,7 @@ your delta-pass.
 - Findings enter the synthesis through the lead's pen, with dispositions in its Review section;
   you never write the file.
 - Your status is **input**. The lead owns the clearing verdict and the survivor routing; the user
-  owns G3 — see `loop-discipline`; this skill does not restate them.
+  owns G3 — its command states them; this skill does not restate them.
 
 ## Common Mistakes
 

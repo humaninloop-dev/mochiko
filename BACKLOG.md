@@ -100,18 +100,8 @@ build item in the trail.
 Rulings CS-D1–D10 (DECISIONS.md 2026-07-30; record
 `.mochiko/brainstorms/command-succinctness-strip/record.md` — pair-reviewed, verify CLEAN).
 Steps 1–4 DONE → trail (v0.33.0–v0.35.0); the CS-D7-scoped `loop-discipline` all-consumer
-pass closed 2026-07-31 (v0.39.0, trail). The read-drop deferral below is the open remainder.
-
-- [ ] **Deferred: the `loop-discipline` read-drop** (2026-07-30, pilot-checkpoint ruling 5; steps 1–4 all DONE → trail, v0.35.0) —
-  lands as a one-clause shape edit + delta re-audit when the named trigger fires: **first live
-  dogfooded run of a rebuilt command with gates un-rationalized** (CS-D7 replacement guarantee;
-  authoring-loop evidence ruled insufficient — ADR `2026-07-30-goal-shape-pilot-checkpoint`).
-  Trigger terms re-keyed by the 2026-08-01 flexibility ruling (R16: "gates not rationalized" →
-  measured against the stated default + recorded departures; "bounds held" → declared bounds
-  under the U1-D counter rule); re-specification landed with shape v7 (v0.40.0 transition
-  note). The re-keyed trigger's v7-form constructs (P18 gates · stated-default trail · declared
-  bounds) exist on every command since the v0.43.0 conversion wave — the first live run with
-  gates ruled and bounds held fires it.
+pass closed 2026-07-31 (v0.39.0, trail); the read-drop deferral closed by supersession at the
+doctrine purge (2026-08-02, v0.46.0 → trail). No open remainder.
 
 ## Lead-owned process flexibility build (shape v7)
 
@@ -123,8 +113,8 @@ Rulings D1–D6-as-amended + A1–A4 (DECISIONS.md 2026-08-01; record
   open remainders of the discharged convert-on-touch item: align the
   `review-brainstorm`/`review-governance-intent` verify-pass trigger phrasing with U1-B at
   those skills' next touch (logged in `.mochiko/strips/sized-end-stage-review.md`) · each
-  converted command's first live run is its own checkpoint, and the first run with gates ruled
-  and bounds held also fires the `loop-discipline` read-drop trigger (goal-shape section) ·
+  converted command's first live run is its own checkpoint (the read-drop trigger it also
+  carried is moot — superseded 2026-08-02, doctrine purge) ·
   R22: the first external dogfood grades the uniform stated default for distributed leads ·
   R21's declaration + trail estimate awaits live-run confirmation (both conversion sites
   measured; regressive fixed-cost finding — near-constant v7 constructs, so lighter commands
@@ -194,7 +184,8 @@ in this repo's git history at `7920ccb` BACKLOG).
   class, graded form (`testing-end-user` + `qa-engineer`; blocks feature-close; n=5) · two
   spec-review hunt classes — display meaningfulness + lifecycle twins (`review-specifications`;
   n=2; hunt-list growth guard n≥2 rides along) · split-gate assert-union invariant
-  (`loop-discipline`; n=1, zero-cost) · runbook walked-stamp (landing surface ruled at
+  (formerly `loop-discipline`; owner deleted at the 2026-08-02 doctrine purge — re-home to
+  the commands' gate lines or drop at ratification; n=1, zero-cost) · runbook walked-stamp (landing surface ruled at
   ratification; n=1 doc) · residues route to a tracked surface (`executing-tdd-cycle` +
   `authoring-slices`; n=1–2) · plan designs its surfaces (plan cluster; n≈4 paths) ·
   watch-lines (scaffolding→production promotions; out-of-pipeline integration steps —

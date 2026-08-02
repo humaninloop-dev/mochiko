@@ -10,6 +10,12 @@ restores the boundary clauses under the cap, and is strict-YAML-safe. Delivery v
 deferred: the in-session skill listing is a session-start snapshot (probe received pre-edit
 text), so the probe re-runs in a fresh session.
 
+## [v0.46.0] loop-discipline pointer reworded
+- **Disposition:** superseded → "its command states them"
+- **Tier failed:** n/a — supersession by ruling (ADR `.mochiko/decisions/2026-08-02-doctrine-purge-wave-1.md`; DECISIONS.md 2026-08-02 "Doctrine purge wave 1" row)
+- **Content:** "— see `loop-discipline`; this skill does not restate them." → "— its command states them; this skill does not restate them."
+- **Consumers assessed:** brainstorm command briefs unchanged.
+
 ## [v0.26.0] Six pair-protocol / in-file-restatement Common-Mistakes rows deleted (body 78 → 72, −7.7%)
 - **Disposition:** deleted as pure restatements of verified single-sourced homes: three rows
   (consensus-seeking, withdrawal-under-pressure, fact re-routing) restate `references/CROSS-EXAM.md`'s

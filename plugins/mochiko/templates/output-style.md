@@ -22,7 +22,7 @@ Four values, one per surface:
 
 | Surface | Default | Covers |
 |---|---|---|
-| chat — *"conversation"* on the switch line | `full` | the lead↔user conversation (`command-shape.md` Layer 1) |
+| chat — *"conversation"* on the switch line | `full` | the lead↔user conversation (every command's ground rules bind it here) |
 | reports | `ultra` | every `report-format.md` report — **failure narratives stay `full`** (that envelope's rules 8 and 9 bind it; not restated here) |
 | artifacts — *"documents"* on the switch line | `full` | every `artifact-format.md` deliverable |
 
@@ -107,7 +107,7 @@ stylistic:
 
 ---
 
-**Style version:** v1 (2026-08-01) · **Bound by:** `command-shape.md` Layer 1 (chat) ·
+**Style version:** v1 (2026-08-01) · **Bound by:** each command's ground rules (chat) ·
 `report-format.md` (reports) · `artifact-format.md` with the artifact templates and authoring
 references (artifacts) · `governance-surfaces-template.md` + `setup.md` +
 `authoring-constitution` (Shape 1's switch line, the always-loaded carrier · Shape 5's

@@ -17,7 +17,7 @@ persona. Name the skill as a hint, not a command: the agent decides whether it f
 | 6 | **Prior feedback (retries)** | On round > 1, by the route the feedback actually took: where the verifying seat's gap list already reached this producer **peer-routed**, point at it and open the round — the dispatch is what releases field 9's hold; where no peer edge carried it — a one-shot regrade, or a successor that was not in the room for the hand-off — paste the prior issues verbatim, as before. Else omit | Peer-routed: "Open the round on `verifier`'s gap list — items 2 and 4." · Relayed: "Address: <validator's issues-requiring-fix>." |
 | 7 | **Independence framing** | The plain-language reminder that matches the structural guarantee | Author: "Don't grade your own output." · Grader: "Read the artifact itself; default FAIL; quote your evidence." |
 | 8 | **Return vs. write** | What to return in the reply vs. what to persist to a file | "WRITE the artifact; RETURN a short report + any clarifications you need." |
-| 9 | **Peer edges + hand-off holds** | Team-form seat briefs only — omitted for a one-shot: this seat's peer edges from the command's roster, and the hold that rides a peer-routed hand-off, both per `command-shape.md` **Layer 2** (in-loop mesh); named here, never restated | "Your peer edge is `verifier` — hand each finished cycle straight to it; what comes back is a hand-off, so hold until I open the round." |
+| 9 | **Peer edges + hand-off holds** | Team-form seat briefs only — omitted for a one-shot: this seat's peer edges from the dispatching command's roster, and the hold that rides a peer-routed hand-off, both stated in that command; named here, never restated | "Your peer edge is `verifier` — hand each finished cycle straight to it; what comes back is a hand-off, so hold until I open the round." |
 
 Fill what raises quality; trust the professional with the rest.
 
@@ -32,9 +32,9 @@ Everything above is quality. **Independence is structure, and it is not optional
 - [ ] No agent is ever asked to grade its own output.
 
 This is the caller's job, carried by *who it dispatches* — never by a line in the persona.
-A loop that violates it is unsound (see `loop-discipline` req. 2), no matter how well the
+A loop that violates it is unsound, no matter how well the
 other fields are filled. In a command, the same guarantee is visible in the artifact rather
-than trusted at call time: the shape's **Seats & checks** table is where no row grades its
+than trusted at call time: the command's **Seats & checks** table is where no row grades its
 own output. This checklist is the per-call restatement of that structure, at the moment of
 the call.
 
@@ -45,11 +45,9 @@ the call.
 
 **Seat transport and per-seat context lifecycle** (spawning a named teammate, the `name:`
 discriminator, the first-spawn probe, and the recycle cadence with its respawn-as-reset
-briefing) live in `templates/command-shape.md` **Layer 2** — command-layer-only mechanics,
+briefing) live in each dispatching command — command-layer-only mechanics,
 homed with the team transport they belong to. This file is form-agnostic: it briefs a call,
 whether that call fills a seat, **refills one with a versioned-name successor**, or fires a
 one-shot subagent — a refill is an ordinary dispatch to brief, never the transport anti-pattern.
 
-**Briefing version:** v7 (2026-07-31) · **Governed by:** `loop-discipline` · **Pairs with:**
-`command-shape.md` (the command pattern, seat transport + per-seat context lifecycle) ·
-`workflow-contract.md`
+**Briefing version:** v8 (2026-08-02) · **Pairs with:** `workflow-contract.md`

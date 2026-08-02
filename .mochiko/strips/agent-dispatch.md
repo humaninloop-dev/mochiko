@@ -7,6 +7,14 @@ one-shot; all seven commands have been team-form since v0.17.0 (BACKLOG conversi
 
 ---
 
+## [v0.46.0] command-shape/loop-discipline citations out (briefing v8)
+- **Disposition:** superseded → the dispatching command (transport + lifecycle homes); the independence line stands on its own
+- **Tier failed:** n/a — supersession by ruling (ADR `.mochiko/decisions/2026-08-02-doctrine-purge-wave-1.md`; DECISIONS.md 2026-08-02 "Doctrine purge wave 1" row)
+- **Content:** field 9's "both per `command-shape.md` **Layer 2** (in-loop mesh)" → "both stated in that command"; "(see `loop-discipline` req. 2)" dropped; "the shape's **Seats & checks** table" → "the command's"; the closing transport note re-pointed from command-shape Layer 2 to "each dispatching command"; footer "**Governed by:** `loop-discipline` · **Pairs with:** `command-shape.md` (...)" reduced to "**Pairs with:** `workflow-contract.md`"; v7 → v8.
+- **Kept deliberately:** all nine fields and the hard independence line — unchanged in substance.
+- **Consumers assessed:** 6 commands (still brief per this file) · router row unchanged.
+
+---
 **Wave context (v0.44.0 — the D7 leakage scrub).** `verbosity-caveman-ops-separation` D7 as
 folded at review (S4): **full scrub** of ops leakage from the shipped tree, with no
 changelog-worthy detail lost — every removed block is preserved verbatim below. Ruling:

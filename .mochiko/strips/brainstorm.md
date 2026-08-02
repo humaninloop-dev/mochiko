@@ -7,6 +7,14 @@ the shape is now **v5** (2026-07-30) — see the v0.35.0 section below.
 
 ---
 
+## [v0.46.0] Doctrine-purge rewrite — obligated reads out, shape mechanics inlined
+- **Disposition:** superseded → the command's own text
+- **Tier failed:** n/a — supersession by ruling (ADR `.mochiko/decisions/2026-08-02-doctrine-purge-wave-1.md`; DECISIONS.md 2026-08-02 "Doctrine purge wave 1" row)
+- **Content:** the preamble's obligated shape/loop-discipline reads and "in the mochiko command shape" framing left.
+- **Kept deliberately:** all gates/bounds/bindings/recovery (incl. the sizing-gate read and the `sized-end-stage-review.md` trail-line deferral) — plus inlined weight-card factors, bound-integrity rule, transport, lifecycle, ground rules, as-you-go lead-pen rules, counter-state recovery.
+- **Consumers assessed:** none.
+
+---
 **Wave context (v0.44.0 — the D7 leakage scrub).** `verbosity-caveman-ops-separation` D7 as
 folded at review (S4): **full scrub** of ops leakage from the shipped tree, with no
 changelog-worthy detail lost — every removed block is preserved verbatim below. Ruling:

@@ -63,7 +63,7 @@ The verify pass runs on **one reviewer** — the record-integrity lens in a pair
 
 - You were **never in the room**, and you stay out of the session's framing until your cold read is done — that includes your counterpart's framing.
 - Findings enter the record through the lead's pen, with dispositions; you never write the file.
-- Your status is **input**. The lead owns the clearing verdict, the survivor routing, and the human gates — see `loop-discipline`; this skill does not restate them.
+- Your status is **input**. The lead owns the clearing verdict, the survivor routing, and the human gates — its command states them; this skill does not restate them.
 
 ## Common Mistakes
 

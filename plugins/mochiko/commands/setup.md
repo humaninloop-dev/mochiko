@@ -10,13 +10,13 @@ never a fixed baseline — and lives where Claude Code natively loads it. There 
 `constitution.md`**: the deliverable is the surface set in Bindings. `$ARGUMENTS` = optional setup
 request; empty is fine — detection proposes the mode.
 
-**You are the lead** of a team-form command in the mochiko command shape: Read
-`${CLAUDE_PLUGIN_ROOT}/templates/command-shape.md` (both layers) and `mochiko:loop-discipline`
-first; brief every dispatch per `templates/agent-dispatch.md`; Read
-`templates/sized-end-stage-review.md` at the sizing gate. This file carries only setup's
-parameters. Hard-requires `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS`. **First-spawn probe:** the
-producer in brownfield; otherwise the intent reviewer(s) at the synthesis review, or the producer
-if it was waived.
+**You are the lead**: you compose the run and own its counters, every verdict, every escalation,
+every human gate, and the user-facing conversation — agents produce and review, you adjudicate.
+Brief every dispatch per `templates/agent-dispatch.md`; Read
+`templates/sized-end-stage-review.md` at the sizing gate. This file is self-contained: setup's
+whole contract lives here. Hard-requires `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS`. **First-spawn
+probe:** the producer in brownfield; otherwise the intent reviewer(s) at the synthesis review, or
+the producer if it was waived.
 
 ## Goal
 
@@ -42,7 +42,27 @@ principle nor waiver · a departure with no trail line · out of rounds · G4 un
 **Validation model:** two branches, different stages — the **sized end-stage review** of the
 frozen `governance-intent.md` before G3, per `templates/sized-end-stage-review.md`, then the
 produce↔validate loop, whose PASS is the authoritative grade on the surface set. Every verdict is
-yours.
+yours. No seat ever grades its own output.
+
+**Team transport:** check `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS` before anything else — unset →
+stop and tell the user how to enable it (settings/env; Claude Code ≥ v2.1.178); the first spawn is
+the authoritative probe, and there is no teamless fallback. A seat is spawned with **`name:`** — a
+nameless spawn is a one-shot subagent, the forbidden transport; every later round is a
+`SendMessage` to that same named seat. Verify from the roster: the `members` array in
+`~/.claude/teams/<team>/config.json` (`<team>` = `session-` + first eight chars of the session ID)
+must carry the seat's `name` — absent ⇒ kill and respawn explicitly requesting an agent team;
+failing again stops the run. Teammates don't load `skills:` frontmatter — every spawn prompt names
+the skill and role itself. Tell the user up front they can watch or message any teammate; announce
+each seat in one line when filled; never narrate or reply to teammate housekeeping. A peer-routed
+fix list is a **hand-off, not a start signal** — the producer revises only when you open the next
+round, and your brief carries that hold.
+
+**Seat lifecycle:** at each gate pause, count each standing multi-unit seat's completed
+produce↔validate rounds (a brownfield analysis job counts as one) and recycle at ~≥3 — counted,
+never observed; the user may order a recycle at any gate. Cold end-stage reviewers are exempt: they
+already arrive cold at their own stage. A respawn is a reset: briefed from the on-disk artifact set
+alone, versioned successor name (`producer-2`), never the dead seat's bare name. End-of-need
+shutdown; no ritual sends.
 
 ## Constraints
 
@@ -53,9 +73,14 @@ yours.
   framework → brownfield; else greenfield. Brownfield opens at analysis, the rest at the
   interrogation.
 - **Run-start weight card** — evidence: your stated read of the four rigor factors against this
-  run's scope — a first surface set, or an amend's delta — plus the process you compose from it:
-  the stated default below, or your departures from it · rules: the user · decides: the run's
-  composed process.
+  run's scope — a first surface set, or an amend's delta: **reversibility** (rework cost if wrong)
+  · **blast radius** (how much downstream work reads the governance as authoritative) ·
+  **precedent** (first-of-kind, or mirroring an audit-cleared pattern) · **input confidence**
+  (scored on the artifact under review; a user ruling discounts ambiguity risk only, and one
+  introducing new surface raises consistency risk) — plus the process you compose from it: the
+  stated default below, or your departures from it · rules: the user · decides: the run's composed
+  process. Rigor scales with cost-of-being-wrong, never task size; a first constitution scores
+  high on every factor and earns the full apparatus.
 - **G2 analysis checkpoint** *(brownfield)* — evidence: the producer's summary, Essential-Floor
   table and clarifications · rules: the user · decides: **confirm** (→ interrogation) / **edit**
   (corrections, one bounded re-run) / **reject** (greenfield fallback, or abort). No machine
@@ -117,15 +142,19 @@ yours.
 - **Floor gates:** the run-start weight card · **G2** *(brownfield)* · the **Interrogation**'s card
   rulings · **Survivor rulings** · **G3** · the **Clarification**'s answer · **G4** · **G5** ·
   **Escalation** — the user's whatever you compose, never departable. **G1** and **Review sizing**
-  (yours by ruling) are not: the mode is re-ruled in the room before anything is authored.
-  **Lead-penned surface:** `governance-intent.md` — always cold-graded, its `none` only on a
-  recorded user waiver.
+  (yours by ruling) are not: the mode is re-ruled in the room before anything is authored. Batch
+  rulings into the fewest checkpoints that respect these gates.
+  **Lead-penned surface:** `governance-intent.md` — always cold-graded, non-discretionarily; its
+  `none` only on a recorded user waiver at the weight card.
 - **Bounds:** cap **3** produce↔validate rounds (you count) · no-progress exit on a fix list
   unchanged round-over-round · kill-switch `.mochiko/memory/SETUP_STOP`, checked before every
   producer, reviewer or validator send · review caps: one cold read per reviewer, one four-message
   cross-exam, a two-exchange lead↔reviewer cap per survivor, one verify pass, plus one bounded delta-pass
   on a material G3 edit. The interrogation is bounded instead by user-driven convergence — a
-  human-attended session, not an agent loop. Out of rounds = escalate, never done.
+  human-attended session, not an agent loop. Out of rounds = escalate, never done. Any bound this
+  run declares — including a declared cost range — has you as its named counter, **rises only at a
+  user checkpoint**, and is re-declared only on the record; busting a bound escalates, never
+  silently continues.
 - **Workspace + hygiene:** `mkdir -p .mochiko/memory`. A `.mochiko/memory/constitution.md` on disk
   is a superseded pre-dissolution artifact — **delete it on sight**, no migration and no offer, and
   say so in one line.
@@ -147,6 +176,14 @@ yours.
   unit clears unread.
 - **Out of scope, explicitly:** drift detection between invocations — waiver revisit triggers fire
   on re-invocation only, by design · backward compatibility with the retired `constitution.md` form.
+- **Ground rules:** kernel-free — no brain code, no capability catalogs, no DAG-mediated
+  orchestration. Suggest commits; never run git mutations, never push. No internal machinery
+  vocabulary in user-facing prose — the conversation is yours and the user's, in the mochiko
+  register (`templates/output-style.md`). User acceptance is plain blocking text, never a timed
+  prompt. The deliverables are written as the work progresses, never reconstructed at the end; the
+  lead-penned synthesis reads standalone as the review surface — review findings and dispositions
+  live in its closing Review section, never interleaved, and your pen covers your own formulation
+  only: nothing amends a user-ruled element, and no new element exists, without the user's word.
 
 ## Bindings
 
@@ -170,8 +207,9 @@ yours.
   `templates/workflow-contract.md` as `.mochiko/memory/setup-contract.md` beside it instead.
   Counted unit: the **produce↔validate round** the Bounds already count, a brownfield analysis job
   counting as one against the producer's cadence.
-- **Departure trail:** one line per departure, appended under that same declaration as it is taken
-  and carried into G4's evidence — never your context alone.
+- **Departure trail:** one line per departure from the stated default, appended under that same
+  declaration as it is taken and carried into G4's evidence — never your context alone; the trail
+  names the grading that actually ran. Departure is by record, never by silence.
 - **KM landing:** knowledge-management adopted → scaffold it at G5 per
   `templates/constitution-modules/knowledge-management.md` (which owns adoption granularity, the
   enforcement surfaces, the never-overwrite floor and collision rulings), including the
@@ -182,7 +220,11 @@ yours.
 ## Recovery
 
 Note the resume stage in one line atop `governance-intent.md`, or in the region stamp once it
-exists; resume from workspace evidence, respawning what the stage needs.
+exists, with the run's counter state — rounds consumed · bounds declared · departures taken.
+Sessions and teams do not survive `/resume`, and a shared account limit can throttle the team and
+the main session together — escalation then has nowhere to go but pause. Resume from workspace
+evidence, never a context `phase` field, respawning only what the stage needs — a respawn is cold
+by design, so recovery never costs independence.
 
 | Evidence in the workspace | Resume at |
 |---|---|

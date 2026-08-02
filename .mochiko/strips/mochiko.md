@@ -6,6 +6,13 @@ Entry formats: `strips/README.md`. Wave context: skill-succinctness wave 1 (desi
 single physical lines, so the R2 line denominator undercounts this skill; dual accounting
 recorded here and flagged on the wave's ROADMAP row.
 
+## [v0.46.0] Doctrine rows out of the router
+- **Disposition:** superseded → commands self-contained; `workflow-contract` + `agent-dispatch` rows survive
+- **Tier failed:** n/a — supersession by ruling (ADR `.mochiko/decisions/2026-08-02-doctrine-purge-wave-1.md`; DECISIONS.md 2026-08-02 "Doctrine purge wave 1" row)
+- **Content:** "Every workflow is a **sound loop** (see `loop-discipline`)" → each command owns and states its own loop; the composition paragraph's "Doctrine consumed by every workflow: `loop-discipline` (the four sound-loop rules)..." and "(`command-shape`)" attribution rewritten; the doctrine table's `loop-discipline` row ("designing/reviewing any workflow or agent loop; deciding if a loop is sound; filling a `workflow-contract`") and `command-shape` row ("the codified command pattern's **sole authoritative home**... obligated-read by conformant commands") deleted.
+- **Kept deliberately:** the review-family split, all cluster sections, the operating rules (producer↔validator boundary, lead-is-the-command, unbroken-round) — the doctrine's behavioral content, still true.
+- **Consumers assessed:** router is user-invoked; no downstream skill reads it.
+
 ## [v0.45.0] Framework-maintenance rows deleted — the trio purge
 - **Disposition:** superseded → deleted (the primitives they indexed left the plugin)
 - **Tier failed:** n/a — supersession by ruling (user ruling 2026-08-02; ADR

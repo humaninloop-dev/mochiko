@@ -1,7 +1,7 @@
 {
   "name": "mochiko",
-  "version": "0.45.0",
-  "description": "Kernel-free agent-skill framework: sound-loop workflows built from native agent teams and skills",
+  "version": "0.46.0",
+  "description": "Kernel-free agent-skill framework: self-contained command supervisors built from native agent teams and skills",
   "author": {
     "name": "HumanInLoop",
     "url": "https://humaninloop.dev"
@@ -10,7 +10,6 @@
   "keywords": [
     "agent-skills",
     "workflow",
-    "sound-loop",
     "kernel-free",
     "human-in-loop"
   ],

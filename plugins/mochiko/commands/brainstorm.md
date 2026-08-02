@@ -8,14 +8,13 @@ disable-model-invocation: true
 **Goal:** think `$ARGUMENTS` through with the user and leave one hardened decision record
 behind. Empty topic → ask what we are thinking through.
 
-**You are the lead** of a team-form command in the mochiko command shape: Read
-`${CLAUDE_PLUGIN_ROOT}/templates/command-shape.md` (both layers) and
-`mochiko:loop-discipline` before anything else; brief every dispatch per
-`templates/agent-dispatch.md`; at the sizing gate Read
-`templates/sized-end-stage-review.md`. This file carries only brainstorm's parameters. You
-run the questioning inline via `mochiko:analysis-iterative` — one question per turn, format
-adapted to the user's state. **First-spawn probe:** the fact-checker at start where its seat
-fills, otherwise the reviewers at convergence.
+**You are the lead**: you compose the run and own its counters, every verdict, every
+escalation, every human gate, and the user-facing conversation — agents produce and review,
+you adjudicate. Brief every dispatch per `templates/agent-dispatch.md`; at the sizing gate
+Read `templates/sized-end-stage-review.md`. This file is self-contained: brainstorm's whole
+contract lives here. You run the questioning inline via `mochiko:analysis-iterative` — one
+question per turn, format adapted to the user's state. **First-spawn probe:** the
+fact-checker at start where its seat fills, otherwise the reviewers at convergence.
 
 ## Goal
 
@@ -39,16 +38,36 @@ check.
 | reviewer(s) | `mochiko:devils-advocate` × `mochiko:review-brainstorm` in the **end-stage reviewer role**; a pair splits the hunt by lens — one **decision-quality**, one **record-integrity** | grades the frozen record; never authors it | cold at convergence only, never in the room before it; count per the sizing ruling | withheld from each other until findings are formed; one cross-exam |
 
 **Validation model:** the sized end-stage review of `record.md`; there is no in-loop critique
-seat.
+seat. No seat ever grades its own output.
 
-**Seat lifecycle:** the fact-checker meets the governed criterion but counts no loop unit —
-**cadence-exempt**, recycled only on the user's gate-time order.
+**Team transport:** check `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS` before anything else — unset
+→ stop and tell the user how to enable it (settings/env; Claude Code ≥ v2.1.178); the first
+spawn is the authoritative probe, and there is no teamless fallback. A seat is spawned with
+**`name:`** — a nameless spawn is a one-shot subagent, the forbidden transport; every later
+send is a `SendMessage` to that same named seat. Verify from the roster: the `members` array
+in `~/.claude/teams/<team>/config.json` (`<team>` = `session-` + first eight chars of the
+session ID) must carry the seat's `name` — absent ⇒ kill and respawn explicitly requesting an
+agent team; failing again stops the run. Teammates don't load `skills:` frontmatter — every
+spawn prompt names the skill and role itself. Tell the user up front they can watch or
+message any teammate; announce each seat in one line when filled; never narrate or reply to
+teammate housekeeping.
+
+**Seat lifecycle:** the fact-checker meets the standing multi-unit criterion but counts no
+loop unit — **cadence-exempt**, recycled only on the user's gate-time order. The reviewers
+are cold end-stage seats, exempt by nature. A respawn is a reset: briefed from the on-disk
+record alone, versioned successor name, never the dead seat's bare name. End-of-need
+shutdown; no ritual sends.
 
 ## Constraints
 
 - **Run-start weight card** — evidence: your stated read of the four rigor factors against this
-  topic, plus the process you compose from it — the stated default below, or your departures
-  from it · rules: the user · decides: the run's composed process.
+  topic — **reversibility** (rework cost if the record is wrong) · **blast radius** (how much
+  downstream work will read it as authoritative) · **precedent** (first-of-kind, or mirroring an
+  audit-cleared pattern) · **input confidence** (scored on the artifact under review; a user
+  ruling discounts ambiguity risk only, and one introducing new surface raises consistency
+  risk) — plus the process you compose from it — the stated default below, or your departures
+  from it · rules: the user · decides: the run's composed process. Rigor scales with
+  cost-of-being-wrong, never task size.
 - **Review sizing** *(at convergence)* — evidence: convergence signals — answers turning
   confirmatory, no new dimensions, the wrap confirmed with the user · rules: you, on your own
   weight statement (decision count · confidence-mark mix · reality-surface load), sizing under
@@ -78,7 +97,10 @@ seat.
 - **Bounds:** per reviewer one cold read, plus (pair only) the one-shot four-message
   cross-exam, plus one verify pass; lead↔reviewer argument **max two exchanges per survivor**,
   you count them; one fact-checker dispatch per fact. No kill-switch and no no-progress exit —
-  the human-attended session is the escalation surface, not a substitute for the caps.
+  the human-attended session is the escalation surface, not a substitute for the caps. Any
+  bound this run declares — including a declared cost range — has you as its named counter,
+  **rises only at a user checkpoint**, and is re-declared only on the record; busting a bound
+  escalates, never silently continues.
 - **Invariants:** **no standing challenger** — beyond these two seats the conversation is you
   and the user: the v2 standing episodic advocate generated 3:1 machine-to-user traffic and
   folded amendments into user-ruled decisions without consent. A **reality surface** is existing
@@ -97,6 +119,16 @@ seat.
   Governance context is native: the CLAUDE.md governance region loads with the session; read
   `.mochiko/memory/governance-ledger.md` only when a decision needs waiver or amendment
   detail — never a blocking gate. `KEPT:` the no-fallback transport bet stays `Contested`.
+- **Ground rules:** kernel-free — no brain code, no capability catalogs, no DAG-mediated
+  orchestration. Suggest commits; never run git mutations, never push. No internal machinery
+  vocabulary in user-facing prose — the conversation is yours and the user's, in the mochiko
+  register (`templates/output-style.md`). User acceptance is plain blocking text, never a
+  timed prompt. The record is written as the session progresses, never reconstructed at the
+  end; it reads standalone as the review surface — review findings and dispositions live in
+  its closing Review section, never interleaved — and your pen covers your own formulation
+  only: nothing amends a user-ruled decision, and no new decision exists, without the user's
+  word. Every departure from the stated default is one trail line — by record, never by
+  silence — and rulings batch into the fewest checkpoints that respect the floor gates.
 
 ## Bindings
 
@@ -125,7 +157,9 @@ seat.
 
 ## Recovery
 
-No resume table — the record is the whole state. Note resume state on its `Status` line; to
-resume, re-read `record.md` and continue from the last decision or the survivor queue,
-respawning the fact-checker mid-session or the reviewers per the sizing ruling (the frozen
-record makes a cold re-read cheap).
+No resume table — the record is the whole state. Note resume state on its `Status` line, with
+the run's counter state — exchanges consumed · bounds declared · departures taken. Sessions
+and teams do not survive `/resume`; resume from the workspace, never a context `phase` field:
+re-read `record.md` and continue from the last decision or the survivor queue, respawning the
+fact-checker mid-session or the reviewers per the sizing ruling (the frozen record makes a
+cold re-read cheap, and a respawn is cold by design).

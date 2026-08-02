@@ -9,6 +9,14 @@ it carries the `<!-- shape-form: v7 -->` marker and binds P18–P20.
 
 ---
 
+## [v0.46.0] Doctrine-purge rewrite — obligated reads out, shape mechanics inlined
+- **Disposition:** superseded → the command's own text
+- **Tier failed:** n/a — supersession by ruling (ADR `.mochiko/decisions/2026-08-02-doctrine-purge-wave-1.md`; DECISIONS.md 2026-08-02 "Doctrine purge wave 1" row)
+- **Content:** the preamble's obligated shape/loop-discipline reads and "in the mochiko command shape" framing left.
+- **Kept deliberately:** all gates/bounds/bindings/recovery (incl. the sized-end-stage-review sizing-gate read) — plus inlined weight-card factors, floor rules, transport, lifecycle (cold end-stage reviewer exemption stated), mesh hold, ground rules, as-you-go lead-pen rules, counter-state recovery.
+- **Consumers assessed:** none.
+
+---
 ## [v0.43.0] The `<!-- shape-form: v7 -->` marker retired from the preamble
 - **Disposition:** superseded → deleted. The marker was added by this same version's conversion
   entry below and retires in the same version, at the wave close.

@@ -15,6 +15,12 @@ document contracts are the **user's** artifacts and are untouchable. A prefix-ba
 `.mochiko/` would gut the KM module and the brainstorm command; 101 of this tree's 146
 `.mochiko/` references were correctly left alone on that test.
 
+## [v0.46.0] Chat-surface binding re-pointed
+- **Disposition:** superseded → each command's ground rules (the chat register's binding site after the shape's deletion)
+- **Tier failed:** n/a — supersession by ruling (ADR `.mochiko/decisions/2026-08-02-doctrine-purge-wave-1.md`; DECISIONS.md 2026-08-02 "Doctrine purge wave 1" row)
+- **Content:** the per-surface table's "(`command-shape.md` Layer 1)" → "(every command's ground rules bind it here)"; the footer's "**Bound by:** `command-shape.md` Layer 1 (chat)" → "each command's ground rules (chat)".
+- **Consumers assessed:** 6 commands (each ground-rules block now names this file).
+
 ## [v0.44.0] Style version-history block relocated (class 2, 719 B / 8 lines)
 - **Disposition:** superseded → relocated **verbatim** into this note (below). In-file residue: the
   bare stamp plus the live routing (`Bound by`), which is wiring a run consumes, not history.

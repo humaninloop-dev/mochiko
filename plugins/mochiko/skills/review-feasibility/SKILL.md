@@ -70,7 +70,7 @@ Conformance is **verified, not asserted** — a topology that *cites* a principl
 surface is **never awarded `feasible` silently.** It surfaces with exactly two exits: **redesign to
 conform**, or a **user-ruled amendment/waiver** through the existing `governance-ledger.md` machinery.
 The feature-level review never overrules the constitution. Which exit is taken is the lead's/human's
-routing per `loop-discipline` — you report the conflict and that these are the only two exits; you do
+routing — you report the conflict and that these are the only two exits; you do
 not clear it yourself. (A governance-conformance conflict with no conforming redesign is a
 **fundamental** finding — the `infeasible` escalation, not a louder `needs-revision`.)
 
@@ -130,8 +130,8 @@ Write the verdict, the per-issue gate fuel, and the one-line `strengths:` field 
 ## Independence (stated by role)
 
 - You grade artifacts authored by a **different agent** — the producer of the analysis/design. You never review your own authoring. Independence here is the separate-agent structure, not a sentence in this skill.
-- Your verdict is **input**, not the gate. The lead reads the artifacts and your report and owns the clearing verdict; the lead drives any revision round and presents `infeasible`/`needs-revision` issues to the human. Loop ownership, the round bound, and the human gate are the lead's — see `loop-discipline`; this skill does not restate or own them.
-- The per-issue gate fuel (the `gap` / `at` / `impact` / `fix` fields) is what the human gate consumes when a finding is a genuine judgment call. Route findings by their kind per `loop-discipline`'s gap routing — a fundamental conflict is a preference/scope gap for the human, not a knowledge gap.
+- Your verdict is **input**, not the gate. The lead reads the artifacts and your report and owns the clearing verdict; the lead drives any revision round and presents `infeasible`/`needs-revision` issues to the human. Loop ownership, the round bound, and the human gate are the lead's — its command states them; this skill does not restate or own them.
+- The per-issue gate fuel (the `gap` / `at` / `impact` / `fix` fields) is what the human gate consumes when a finding is a genuine judgment call. Routing each finding is the lead's judgment — a fundamental conflict is the human's to rule, never something investigation can settle.
 - **G1:** you operate over plan analysis/design artifacts, never the constitution. You are not the constitution validator and you neither reference nor recreate constitution grading — its well-formedness is not yours to judge. The architecture pass's governance-conformance lens is consistent with this: it reads the governance surface **as an input** to grade the *topology's* conformance to it, never to grade the constitution itself.
 
 ## Common Mistakes
@@ -145,7 +145,7 @@ Write the verdict, the per-issue gate fuel, and the one-line `strengths:` field 
 | Defaulting to `feasible` | Award it only after actively hunting every class. Absence of looking ≠ feasible. |
 | Vague evidence | Cite the artifact IDs in tension (`C-XXX` vs `D-XXX`). "Seems to conflict" is not a finding. |
 | Reviewing the constitution | G1: plan artifacts only. The constitution has its own validator. |
-| Restating the loop / round cap / human-gate mechanics here | Those are the lead's, governed by `loop-discipline`. Reference, never restate. |
+| Restating the loop / round cap / human-gate mechanics here | Those are the lead's — its command states them. Reference, never restate. |
 
 ## Red Flags — STOP and re-hunt
 
@@ -170,6 +170,5 @@ If you catch yourself thinking any of these, you are rationalizing away the hunt
 
 ## Related
 
-- `loop-discipline` — the loop, the bound, and the human gate are the lead's; your verdict is input and your per-issue fuel feeds the human gate. Referenced, not restated.
 - `mochiko:review-plan-artifacts` — the completeness sibling (mirror-checklist form). It owns coverage / measurability / consistency / presence; this skill owns contradiction / impossibility / buildability. Deliberately disjoint triggers.
 - the **feasibility-report** — the destination artifact this review fills; its markdown shape is owned by that template, while this skill owns the verdict and per-issue judgments it must contain.

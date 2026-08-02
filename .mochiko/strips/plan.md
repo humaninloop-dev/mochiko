@@ -11,6 +11,14 @@ conversion at the top of this note.
 
 ---
 
+## [v0.46.0] Doctrine-purge rewrite — obligated reads out, shape mechanics inlined
+- **Disposition:** superseded → the command's own text
+- **Tier failed:** n/a — supersession by ruling (ADR `.mochiko/decisions/2026-08-02-doctrine-purge-wave-1.md`; DECISIONS.md 2026-08-02 "Doctrine purge wave 1" row)
+- **Content:** the preamble's obligated shape/loop-discipline reads and "in the mochiko command shape" framing left; G5's preference/knowledge/scope-gap taxonomy vocabulary reworded to plain lead-judgment routing.
+- **Kept deliberately:** all gates/bounds/bindings/recovery — plus inlined weight-card factors, floor rules, transport, lifecycle cadence, mesh hold, ground rules, counter-state recovery.
+- **Consumers assessed:** none.
+
+---
 ## [v0.43.0] The `<!-- shape-form: v7 -->` marker retired from the preamble
 - **Disposition:** superseded → deleted. The marker was added by this same version's conversion
   entry below and retires in the same version, at the wave close.

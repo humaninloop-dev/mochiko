@@ -161,4 +161,3 @@ Before finalizing the review:
 - [`slices-template.md`](../../templates/slices-template.md) — the canonical structure the graded artifact must conform to
 - `mochiko:advocate-report-template` — the assembled report shape the lead reads
 - `mochiko:review-task-artifacts` / `mochiko:review-plan-artifacts` / `mochiko:review-specifications` — the neighboring reviewers this skill is disjoint from (see *Scope*)
-- `loop-discipline` — the source of the independent-validation and anti-rationalization doctrine this skill operationalizes

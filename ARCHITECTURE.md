@@ -1,6 +1,6 @@
 # Architecture — the mochiko plugin
 
-Current-state map of the shipped plugin at [`plugins/mochiko/`](plugins/mochiko/) (v0.45.0,
+Current-state map of the shipped plugin at [`plugins/mochiko/`](plugins/mochiko/) (v0.46.0,
 [`plugin.json`](plugins/mochiko/.claude-plugin/plugin.json)). Scope is the plugin only — the
 repo-side knowledge plane (`.mochiko/`, the operating docs) is covered by
 [`CLAUDE.md`](CLAUDE.md). Rationale for every boundary here lives in the decisions layer
@@ -23,8 +23,8 @@ flowchart LR
   subgraph plugin ["plugins/mochiko/"]
     commands["commands/ — 6 supervisors"]
     agents["agents/ — 9 personas"]
-    skills["skills/ — 28 skills"]
-    templates["templates/ — shape, artifact + report schemas"]
+    skills["skills/ — 27 skills"]
+    templates["templates/ — artifact + report schemas, doctrine homes"]
     commands -->|"spawn seats, briefed per agent-dispatch"| agents
     agents -->|"carry procedure from"| skills
     commands -->|"obligated reads + fill-targets"| templates
@@ -52,10 +52,10 @@ pinned in [`CLAUDE.md`](CLAUDE.md#skill-library-conventions-five-axes).
 
 | Layer | Home | Count | Role |
 |---|---|---|---|
-| **Commands** | [`plugins/mochiko/commands/`](plugins/mochiko/commands/) | 6 | User-invoked team-form supervisors (`disable-model-invocation: true`). Each file carries only its workflow's parameters — goal, seats, gates, bindings, recovery — over the single-sourced shape. The lead (the command context) owns every verdict, iteration bound, and human gate. |
+| **Commands** | [`plugins/mochiko/commands/`](plugins/mochiko/commands/) | 6 | User-invoked team-form supervisors (`disable-model-invocation: true`). Each file is **self-contained** — goal, seats, gates, bounds, transport, lifecycle, bindings, recovery all stated in the command itself (doctrine purge, v0.46.0). The lead (the command context) owns every verdict, iteration bound, and human gate. |
 | **Agents** | [`plugins/mochiko/agents/`](plugins/mochiko/agents/) | 9 | Personas (all `model: opus`) that carry judgment and declare `skills:`. A persona contains no trace of any workflow — decoupling by absence; caller-side context rides the dispatch brief. |
-| **Skills** | [`plugins/mochiko/skills/`](plugins/mochiko/skills/) | 28 | Procedure. One user-invoked router ([`skills/mochiko/`](plugins/mochiko/skills/mochiko/SKILL.md)) indexes the other 27, which are model-invoked with graded MUST/SHOULD triggers in their descriptions. Deterministic sub-checks ride as `scripts/` inside skills (e.g. `analysis-codebase`'s `detect-stack.sh`); depth rides as `references/`. |
-| **Templates** | [`plugins/mochiko/templates/`](plugins/mochiko/templates/) | 20 + `constitution-modules/` | Three kinds: **doctrine homes** ([`command-shape.md`](plugins/mochiko/templates/command-shape.md), `workflow-contract.md`, `agent-dispatch.md`, `sized-end-stage-review.md`) — referenced, never restated; **artifact schemas** (spec, slices, plan, tasks, governance-intent, …) over the shared `artifact-format.md` envelope; **report schemas** (per-seat reports) over the shared `report-format.md` envelope. `constitution-modules/` is setup's module library (knowledge-management, layer-rules, release-gates, evolution-notes). |
+| **Skills** | [`plugins/mochiko/skills/`](plugins/mochiko/skills/) | 27 | Procedure. One user-invoked router ([`skills/mochiko/`](plugins/mochiko/skills/mochiko/SKILL.md)) indexes the other 26, which are model-invoked with graded MUST/SHOULD triggers in their descriptions. Deterministic sub-checks ride as `scripts/` inside skills (e.g. `analysis-codebase`'s `detect-stack.sh`); depth rides as `references/`. |
+| **Templates** | [`plugins/mochiko/templates/`](plugins/mochiko/templates/) | 19 + `constitution-modules/` | Three kinds: **doctrine homes** (`workflow-contract.md`, `agent-dispatch.md`, `sized-end-stage-review.md`) — referenced, never restated; **artifact schemas** (spec, slices, plan, tasks, governance-intent, …) over the shared `artifact-format.md` envelope; **report schemas** (per-seat reports) over the shared `report-format.md` envelope. `constitution-modules/` is setup's module library (knowledge-management, layer-rules, release-gates, evolution-notes). |
 
 The plugin manifest, [`.claude-plugin/plugin.json`](plugins/mochiko/.claude-plugin/plugin.json),
 registers the command, agent, and skill directories and carries the version — packaging,
@@ -79,13 +79,13 @@ outside the four layers (templates is referenced by commands and skills, not reg
   cluster's contract live in exactly one file; commands and skills reference them at altitude
   (pointer depth, never restated).
 
-### Command shape (shared by all six commands)
+### Command form (each command self-contained)
 
-Every command is a team-form parameterization of the shape's single-sourced home,
-[`templates/command-shape.md`](plugins/mochiko/templates/command-shape.md): an
-agent-teams-gated, bounded, default-FAIL loop with named human gates (G1…Gn) and
-workspace-as-state recovery — a run resumes from artifact evidence alone; there is no run
-registry and no daemon. The loop mechanics live in that home.
+Every command is an agent-teams-gated, bounded, default-FAIL loop with named human gates
+(G1…Gn) and workspace-as-state recovery — a run resumes from artifact evidence alone; there is
+no run registry and no daemon. Since the doctrine purge (v0.46.0) each command file carries its
+own loop mechanics — weight-card factors, floor rules, team transport, seat lifecycle, ground
+rules — with no shared shape home; commands evolve independently.
 
 ## Cluster map
 
@@ -285,8 +285,6 @@ surfaces (and any artifact handed to it with an explicit checklist).
 
 | Primitive | Carries |
 |---|---|
-| `loop-discipline` (skill) | The sound-loop rules every workflow satisfies — done-conditions, validation gates, bounds, human gates. Obligated read for every lead and for anyone designing a loop. |
-| `command-shape.md` (template) | The codified command pattern's sole home: Layer 1 form-agnostic core, Layer 2 team transport. |
 | `agent-dispatch.md` (template) | The caller-side dispatch brief — how workflow context reaches a persona without living in it. |
 | `sized-end-stage-review.md` (template) | The sizing gate: user-ruled pair / single / recorded waiver for end-stage cold reviews. |
 | `report-format.md` / `artifact-format.md` (templates) | The two shared envelopes every report and pipeline artifact follows. |

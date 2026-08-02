@@ -9,6 +9,12 @@ description + Overview + a point-of-use reminder — not the redundant Related b
 stripped from `review-specifications`. One contested keep (below). The library-wide "letter/spirit"
 aphorism (L29) was **raised, not ruled** here (see the wave return).
 
+## [v0.46.0] loop-discipline Related bullet out
+- **Disposition:** superseded → loop ownership is the command's
+- **Tier failed:** n/a — supersession by ruling (ADR `.mochiko/decisions/2026-08-02-doctrine-purge-wave-1.md`; DECISIONS.md 2026-08-02 "Doctrine purge wave 1" row)
+- **Content:** Related bullet "`loop-discipline` — the source of the independent-validation and anti-rationalization doctrine this skill operationalizes" deleted.
+- **Consumers assessed:** slice command briefs unchanged.
+
 ## [v0.26.0] Common Mistakes → table; emit item tightened (body 168 → 160, −5%; densification only)
 - **Disposition:** densified (form-only, zero content deletions): five Common-Mistakes Bad/Good
   subsections → one 3-column table; review-process item 4 (emit) trimmed by one line
