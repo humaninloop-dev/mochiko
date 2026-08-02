@@ -33,10 +33,10 @@ command 2>&1 | tee /tmp/claude/verify-{task}-output.log
 
 ```
 /tmp/claude/
-├── verify-T2.4-setup.log      # Setup command output
-├── verify-T2.4-action-1.log   # First action output
-├── verify-T2.4-action-2.log   # Second action output
-└── verify-T2.4-pids.txt       # Background process PIDs
+├── verify-C2-gate-setup.log      # Setup command output
+├── verify-C2-gate-action-1.log   # First action output
+├── verify-C2-gate-action-2.log   # Second action output
+└── verify-C2-gate-pids.txt       # Background process PIDs
 ```
 
 ### Capture Format
@@ -234,7 +234,7 @@ Track from the first setup command to the final assert evaluation.
 
 ```json
 {
-  "task_id": "T2.4",
+  "task_id": "C2-gate",
   "total_duration": "12.5s",
   "setup": {
     "duration": "0.3s",
@@ -246,7 +246,7 @@ Track from the first setup command to the final assert evaluation.
       "command": "dart run bin/watcher.dart",
       "type": "background",
       "pid": 12345,
-      "log_file": "/tmp/claude/verify-T2.4-bg-1.log"
+      "log_file": "/tmp/claude/verify-C2-gate-bg-1.log"
     },
     {
       "command": "touch /tmp/watcher-test/test.jsonl",
@@ -263,8 +263,8 @@ Track from the first setup command to the final assert evaluation.
     }
   ],
   "files": {
-    "console": "/tmp/claude/verify-T2.4-output.log",
-    "pids": "/tmp/claude/verify-T2.4-pids.txt"
+    "console": "/tmp/claude/verify-C2-gate-output.log",
+    "pids": "/tmp/claude/verify-C2-gate-pids.txt"
   }
 }
 ```

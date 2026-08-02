@@ -6,12 +6,23 @@ surface is [`ROADMAP.md`](ROADMAP.md). Closing an item = the KM landing ritual
 (`.mochiko/memory/knowledge-management.md`): decision row + move here → the trail
 (`.mochiko/archive/backlog-trail.md`) + touch ROADMAP.md. No `[x]` lives here.
 
-*Last groomed: 2026-08-01 (output-style build close) — baseline: 54 open items (build item
-delivered to the trail at v0.44.0, replaced in place by the post-build remainders item; earlier
-same day: 2 closed to the trail, plain-language amended; 55 at the delivery sweep / shape-v7
-wave close; 52 at the 2026-07-25 migration), per-item bound ≤15 lines.*
+*Last groomed: 2026-08-02 (task-granularity build close) — baseline: 54 open items (the build
+item opened and delivered to the trail same day at v0.49.0, replaced in place by the
+first-live-run watch; prior baseline 54 at the 2026-08-01 output-style close; 52 at the
+2026-07-25 migration), per-item bound ≤15 lines.*
 
 ---
+
+## Task-granularity / slice-dissolution watches
+
+Ruling: DECISIONS.md row 2026-08-02 (D1–D9); built same day at v0.49.0 (trail).
+
+- [ ] **First live v0.49.0 pipeline run** (2026-08-02; provenance:
+  `.mochiko/brainstorms/plan-task-granularity/record.md`) — watch the first
+  specify/plan/implement run on the new surface: intent stage fires adaptive (not
+  questionnaire), Delivery Slices co-accepted, cycle cards graded by the package reviewers,
+  builder decomposition disclosed in cycle reports, slice-scoped runs resolve the Graduation
+  contract from the spec section.
 
 ## Open design decisions
 

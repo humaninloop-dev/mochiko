@@ -55,7 +55,7 @@ Ask: "What must exist before ANY of these stories can work **in production**?"
 | US-4 | C4 (Feature) | Query/filter logic; independent of US-3 |
 | US-5 | C5 (Feature) | Export logic; can parallelize with others |
 
-Record these decisions and their rationale in `task-mapping.md` — the source of truth for story→cycle mapping. `tasks.md`'s Story → Cycle table is a derived echo of this mapping, not a second authority.
+Record these decisions and their rationale on the cycle cards themselves — each card's Stories line carries its story set and slice rationale; the Case field records Simple/Split/Merge with its one-line why.
 
 ### Step 4: Identify Parallelization
 

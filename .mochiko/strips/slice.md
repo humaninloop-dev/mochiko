@@ -9,6 +9,13 @@ command goal-shaped; the v0.31.0 entry's "now v4" claim is likewise frozen histo
 
 ---
 
+## [v0.49.0] Command retired — `/mochiko:slice` dissolved into `/mochiko:specify`
+- **Disposition:** superseded → `commands/specify.md` (intent stage + the spec's Delivery Slices section, co-accepted with the spec); file deleted
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D5+D6)
+- **Content:** the whole v8 goal+harness command (Goal: accepted `slices.md` conforming to `slices-template.md` or a reviewed null exit in `slicer-report.md`; Harness incl. the un-homeable-story spec-amendment offer and the graduated-slice halt; Bindings incl. S#/US-#/SC-# ID discipline and the plan-next-step pointer). Full text: git history at v0.48.0.
+- **Kept deliberately:** the un-homeable-story amendment offer (folded into specify's Reserved-to-user) · the slicing invariants and Feature-Done machinery (live on in `authoring-slices` + `spec-template.md`'s Delivery Slices section) · the Graduation contract (relocated into `spec-template.md`, staleness-guard bullet dropped — a section cannot drift from its own spec). The graduated-slice halt died (nothing can be graduated at spec time). Accepted cost, ruled: standalone re-slicing of an old accepted spec becomes a specify amend path.
+- **Consumers assessed:** router (slice rows removed) · plan/implement (slice-scope re-keyed to the spec section) · ARCHITECTURE.md (section merged into Specify) · `SLICE_STOP` kill-switch retired.
+
 ## [v0.48.0] Shape v8 goal+harness rewrite — choreography dies in place
 - **Disposition:** superseded → the v8 goal+harness rewrite of this command (whole-file)
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/command-architecture-realignment/record.md` D1–D6; DECISIONS.md 2026-08-02 command-architecture row)

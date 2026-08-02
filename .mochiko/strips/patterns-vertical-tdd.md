@@ -5,6 +5,13 @@ Entry formats: `strips/README.md`. Wave context: [v0.27.0] entries — skill-suc
 [v0.22.0–v0.23.0] entries — workflow-token-reduction waves 1–2 (design:
 `.mochiko/brainstorms/workflow-token-reduction/record.md`, D6a + D4/wave-2 rulings).
 
+## [v0.49.0] Slimmed to cycle-card structuring — task-level content superseded
+- **Disposition:** superseded → build-time decomposition in `executing-tdd-cycle` (step 2 of its execution sequence); `references/CYCLE-STRUCTURE.md` deleted
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D2+D2.1)
+- **Content:** the task-mapping.md canonical compact shape section (story→cycle + cycles tables + slicing notes) · the TDD Task Sequence section (red/green/refactor as pre-ordered task rows) · the task-level Markers table · Layered Testability · the Common Rationalizations table and Red Flags list (plan-time task-ordering framing) · checklist rows "each cycle has TDD structure (failing test first)" / "every task has a specific file path" · CYCLE-STRUCTURE.md whole (cycle anatomy, task-ID format, file-path conventions, worked task examples). Full text: git history at v0.48.0.
+- **Kept deliberately:** vertical-over-horizontal · foundation/feature test · TEST-gate ownership (TEST-GRAMMAR.md untouched as grammar owner) · SLICE-IDENTIFICATION.md (one stale task-mapping paragraph re-keyed to on-card rationale) · Simple/Split/Merge cases (now card fields). Red/green/refactor discipline was double-encoded design+runtime; the runtime copy (`executing-tdd-cycle`) is now the sole carrier — deliberate, not a loss.
+- **Consumers assessed:** router · tasks-template · executing-tdd-cycle (boundary flipped: builder now decomposes) · testing-end-user (grammar pointer intact) · brownfield-integration (marker-source wording re-keyed).
+
 ## [v0.27.0] Third-copy formats, TDD-sequence snippets, case subsections, and Common Mistakes stripped (body 368 → 204, −45%, in-band)
 - **Disposition:** relocated/deduped → verified homes, each Read before landing: the Standard
   Cycle Format block (verbatim in `references/CYCLE-STRUCTURE.md` Cycle Anatomy; conforms-to

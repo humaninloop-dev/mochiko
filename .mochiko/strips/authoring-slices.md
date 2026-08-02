@@ -10,6 +10,13 @@ specify-wave finding on authoring skills). One contested keep (below). The libra
 (2026-07-25, keep-and-survivor-log; this skill's copy is anchored by the Overview's discipline
 framing).
 
+## [v0.49.0] Re-scoped overlay → spec section
+- **Disposition:** superseded → same skill, section form: output is `spec.md`'s Delivery Slices section per `spec-template.md`; keyed to the spec's confirmed Intent delivery ruling
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D5+D6+D7)
+- **Content:** "The spec stamp (staleness guard)" section · invariant 6's overlay-never-edits-spec framing · the null-exit-writes-nothing rule ("absence of this file IS the whole-spec state — never write a stub") · Process step 9's slices-template fill + stamp · overlay-purity checklist rows · review-slices as the named grader. Full text: git history at v0.48.0.
+- **Kept deliberately:** all six invariants (6 reworded to section-indexes-never-rewrites) · sizing · cross-cutting/un-homeable escalation · Feature-Done declared-now-verified-at-close · the two-slices vocabulary table · single-slice exit (inverted from write-nothing to write-the-one-line, now gradeable).
+- **Consumers assessed:** specify (new binder) · review-specifications (new grader) · spec-template (new shape home) · router.
+
 ## [v0.46.0] loop-discipline Related bullet out
 - **Disposition:** superseded → loop ownership is the command's
 - **Tier failed:** n/a — supersession by ruling (ADR `.mochiko/decisions/2026-08-02-doctrine-purge-wave-1.md`; DECISIONS.md 2026-08-02 "Doctrine purge wave 1" row)

@@ -15,6 +15,13 @@ the decision row; nothing was removed or rewritten, and the existing *"A passing
 carries **no prose**"* rule was extended, never replaced. The one entry below records a line
 whose right to exist is contested in advance.
 
+## [v0.49.0] TEST-gate source re-keyed to cycle cards
+- **Disposition:** superseded → gate blocks at the foot of cycle cards; legacy task-line form kept parseable
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D2)
+- **Content:** the `- [ ] **TN.X**: **TEST:**` detection sample in SKILL.md · TASK-PARSING.md's task-line boundary rules (`START: - [ ] **T{N}.{X}**: **TEST:`) and task-ID extraction as the primary form · `T{N}.{X}` / `verify-T2.4` keys in REPORT-TEMPLATES.md and EVIDENCE-CAPTURE.md (now `C{N} gate` / `verify-C{N}-gate`).
+- **Kept deliberately:** the whole parsing algorithm, field extraction, legacy-marker normalization, grammar-owner banner (TEST-GRAMMAR.md still owns the vocabulary) — the legacy task-line form remains parseable by design.
+- **Consumers assessed:** qa-engineer (mounts it) · implement · patterns-vertical-tdd (grammar owner, co-edited).
+
 ## [v0.44.0] KEPT: the envelope's register + prose-on-clean check, restated in this payload home
 - **Tier-2 evidence:** a deliberate exception to the no-restatement rule, recorded so a later
   minimalism wave does not read it as Tier-1 duplication and relocate it. Ground: record F72 —

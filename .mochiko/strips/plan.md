@@ -11,6 +11,13 @@ conversion at the top of this note.
 
 ---
 
+## [v0.49.0] Task breakdown superseded by cycle cards; slice re-key
+- **Disposition:** superseded → the Goal's cycle-card `tasks.md` clause + Bindings slice-scope re-key (Graduation contract read from the spec's Delivery Slices section)
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D2+D3+D6; partially supersedes the v0.32.0 plan-absorbs-tasks task-half)
+- **Content:** Goal artifact-list clause "`task-mapping.md` · `tasks.md` (`[US#]` tags, its Story→Cycle table a derived echo of the mapping)" · Bindings "**Slice scope** (accepted `slices.md` present): its Graduation contract … `plan.md`, `architecture.md`, and task artifacts land under `slices/<slice>/`".
+- **Kept deliberately:** architecture-first sign-off, both grading lenses, package acceptance, the accumulated-baseline seeding rule — untouched. The task-breakdown *responsibility* stays in the Goal (as cycle cards); only its granularity and artifact count changed.
+- **Consumers assessed:** implement (entry condition matches the new package) · review-plan-artifacts (grades the cards) · router · ARCHITECTURE.md plan section · plan-template (rows edited).
+
 ## [v0.48.0] Shape v8 goal+harness rewrite — choreography dies in place
 - **Disposition:** superseded → the v8 goal+harness rewrite of this command (whole-file)
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/command-architecture-realignment/record.md` D1–D6; DECISIONS.md 2026-08-02 command-architecture row)

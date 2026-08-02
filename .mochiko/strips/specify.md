@@ -9,6 +9,13 @@ the shape is now **v5** (2026-07-30) — see the v0.35.0 section below. **Also s
 
 ---
 
+## [v0.49.0] Sparse-input enrichment line superseded by the intent stage
+- **Disposition:** superseded → the Harness's "Intent stage first" block (adaptive-probe agenda via `analysis-iterative`: scope · delivery · depth-rigor · constraints · out-of-scope; one-screen user-confirmed synthesis governing brief/slicing/rigor, landing as the spec's Intent section)
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D7+D8)
+- **Content:** "Sparse input (Who / Problem / Value unclear) → enrich it yourself, inline, via `mochiko:analysis-iterative` before authoring starts." and the Goal/Bindings tails "or enrich from scratch with their consent" · "Next step: /mochiko:plan (or /mochiko:slice for a multi-story spec)".
+- **Kept deliberately:** the rest of the v8 harness whole (plan approval · independence · governance-region surfacing · no-git-mutations · plain blocking acceptance). Command grew ~15 lines against the v8 ~30–50 guideline — accepted: the intent stage and Delivery Slices additions are ruled scope, not choreography creep.
+- **Consumers assessed:** router entry row · ARCHITECTURE.md Specify section · spec-template (co-edited).
+
 ## [v0.48.0] Shape v8 goal+harness rewrite — choreography dies in place
 - **Disposition:** superseded → the v8 goal+harness rewrite of this command (whole-file)
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/command-architecture-realignment/record.md` D1–D6; DECISIONS.md 2026-08-02 command-architecture row)

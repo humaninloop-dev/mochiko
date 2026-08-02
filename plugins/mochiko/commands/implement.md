@@ -5,21 +5,23 @@ disable-model-invocation: true
 
 # Implement — Execute the Task Breakdown
 
-**Goal:** turn an accepted `tasks.md` into working, verified code — TDD-built, foundation
-cycles before feature cycles, verified against real infrastructure. `$ARGUMENTS` = optional
-feature ID; empty → resolve from `.mochiko/specs/` and confirm with the user.
+**Goal:** turn an accepted `tasks.md` (cycle cards) into working, verified code — TDD-built,
+foundation cycles before feature cycles, verified against real infrastructure. `$ARGUMENTS` =
+optional feature ID; empty → resolve from `.mochiko/specs/` and confirm with the user.
 
 ## Goal
 
-Every `tasks.md` task is `[x]`; the built code was implemented test-first
-(red/green/refactor) and independently verified — executed `**TEST:**` tasks, quality gates
+Every `tasks.md` cycle card is `[x]`; each card was decomposed into concrete tasks by its
+builder at build time — the decomposition disclosed in the cycle report, never pre-written —
+and the built code was implemented test-first (red/green/refactor) and independently
+verified — executed `**TEST:**` gates, quality gates
 with exit codes, captured real-infrastructure evidence — per cycle and once for the whole
 implementation; the code meets its criteria, holds traceability to requirements, and aligns
 with the project's governance; where a structural delta was approved at plan time, a
 built-vs-approved diff report exists and any divergence it names was ruled by the user; and
 the user accepted the implementation.
 
-**Not done — default FAIL:** an unchecked task · a failing quality gate · verification
+**Not done — default FAIL:** an unchecked cycle card · a failing quality gate · verification
 without real-infrastructure evidence · a surfaced architecture deviation neither built as
 approved nor consented as an amendment · user acceptance not given.
 
@@ -49,19 +51,22 @@ approved nor consented as an amendment · user acceptance not given.
 
 ## Bindings
 
-- **Deliverable:** the working code; `tasks.md`'s checkboxes (`T{N}.{X}` namespace) are the
-  progress surface, flipped as tasks complete.
-- **Craft skills:** TDD via `mochiko:executing-tdd-cycle` (its `cycle-report.md` format —
-  honest difficulties, deviations, `domain_deps_added` — is the uncertainty carrier;
-  brownfield touches ride `mochiko:brownfield-integration`) · verification via
-  `mochiko:testing-end-user` — evidence captured, never assumed.
+- **Deliverable:** the working code; `tasks.md`'s per-card checkboxes are the progress
+  surface, flipped as cycles complete.
+- **Craft skills:** card decomposition + TDD via `mochiko:executing-tdd-cycle` (its
+  `cycle-report.md` format — the disclosed decomposition, honest difficulties, deviations,
+  `domain_deps_added` — is the uncertainty carrier; brownfield touches ride
+  `mochiko:brownfield-integration`) · verification via `mochiko:testing-end-user` —
+  evidence captured, never assumed.
 - **Design inputs:** `plan.md`, `architecture.md` (the anchor for the deviation check and
-  the built-vs-approved diff), `task-mapping.md`, `data-model.md`, `contracts/api.yaml`,
-  `constraints-and-decisions.md`, `requirements.md`.
+  the built-vs-approved diff), `data-model.md`, `contracts/api.yaml`,
+  `constraints-and-decisions.md`, `requirements.md`, and `spec.md` for the cards' cited
+  acceptance criteria.
 - **Reports** under `.mochiko/specs/<feature>/` — or `slices/<slice>/` when slice-scoped:
   cycle reports, verification reports, the final-validation report, the built-vs-approved
   diff report.
-- **Slice scope** (accepted `slices.md` present): the run reads `slices/<slice>/tasks.md`;
+- **Slice scope** (the spec's Delivery Slices section holds a decomposition; its Graduation
+  contract governs): the run reads `slices/<slice>/tasks.md`;
   quality gates still run the full repository suite; when the last slice clears, the feature
   is declared, not verified — Feature-Done executes at feature-close, surfaced as the next
   step, never reported complete here.

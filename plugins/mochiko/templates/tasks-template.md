@@ -1,123 +1,74 @@
-<!-- Form: templates/artifact-format.md (the deliverable envelope) — dense by
-     construction. Task lines stay one line each (path + behavior); cite spec/plan
-     content by ID, never re-quote it; no doctrine sections (TDD discipline, execution
-     strategy) — the skills single-source those. Register: `full` per artifact-format.md
-     rule 11; task IDs, paths and commands are never-compress items. -->
+<!-- Form: templates/artifact-format.md (the deliverable envelope) — dense by construction,
+     human-legible. This file is CYCLE CARDS, not a task list: the builder decomposes each
+     card into concrete tasks at build time, with the code in view (the decomposition is
+     disclosed in the cycle report, never pre-written here). Cite spec/plan content by ID
+     (US-#, FR-#, SC-#, C-#) — never re-quote it. Register: `full` per artifact-format.md
+     rule 11; TEST-gate commands, file paths, and identifiers are never-compress items. -->
 
-# Implementation Tasks: [FEATURE NAME]
+# Implementation Cycles: [FEATURE NAME]
 
 > Generated from `.mochiko/specs/<feature>/`: spec.md, plan.md, requirements.md, constraints-and-decisions.md, nfrs.md, data-model.md, contracts/
-> Structure: Vertical slices organized as TDD cycles
+> Structure: `mochiko:patterns-vertical-tdd` (cycle-card shape, slicing judgment)
 
 ## Overview
 
 | Metric | Value |
 |--------|-------|
-| Total Cycles | [N] |
-| Foundation Cycles | [N] |
-| Feature Cycles | [N] |
-| Parallel Opportunities | [N] |
+| Cycles | [N] ([N] foundation + [N] feature) |
+| Stories covered | [US-# list — every P1/P2 story on at least one card] |
 
 ## Cycle Format
 
-Each cycle follows TDD discipline:
-- **TN.1**: Write failing test first
-- **TN.2+**: Implement to pass test
-- **TN.X-1**: Refactor and verify
-- **TN.X**: **TEST:** — verify [behavior] with real infrastructure (Setup/Action/Assert/Capture)
-
-The final task of every cycle is a real-infrastructure `**TEST:**` verification task — not a plain demo. It exercises the slice against real APIs, files, or databases and **gates cycle completion**. See [`TEST-GRAMMAR.md`](../skills/patterns-vertical-tdd/references/TEST-GRAMMAR.md) for the canonical `**TEST:**` grammar (Setup/Action/Assert/Capture) and worked examples.
-
-### Markers
-
-| Marker | Meaning |
-|--------|---------|
-| `[P]` | Parallel-eligible (independent of other feature cycles) |
-| `[US#]` | Maps to user story (e.g., [US1], [US2]) |
-| `[EXTEND]` | Extends existing file (brownfield) |
-| `[MODIFY]` | Modifies existing code (brownfield) |
+Each card is one vertical slice: an observable, end-to-end behavior. The builder implements
+the card test-first (red/green/refactor per `mochiko:executing-tdd-cycle`, decomposition at
+build time) and the closing `**TEST:**` gate verifies it against real infrastructure —
+see [`TEST-GRAMMAR.md`](../skills/patterns-vertical-tdd/references/TEST-GRAMMAR.md) for the
+canonical Setup/Action/Assert/Capture grammar. **The card's checkbox is the progress
+surface**, flipped when the cycle's gate passes. Foundation cycles run sequentially, first;
+feature cycles are parallel-eligible `[P]` unless dependent on another feature cycle.
 
 ---
 
 <!--
-  ============================================================================
-  IMPORTANT: The cycles below are SAMPLE CYCLES for illustration purposes.
-
-  The tasks workflow MUST replace these with actual cycles based on:
-  - User stories from .mochiko/specs/<feature>/spec.md (with their priorities P1, P2, P3...)
-  - Design artifacts from .mochiko/specs/<feature>/: plan.md, requirements.md, constraints-and-decisions.md, nfrs.md, data-model.md, contracts/
-
-  Cycles MUST follow vertical slicing + TDD principles:
-  - Each cycle delivers observable, testable user value
-  - Test task comes BEFORE implementation tasks
-  - Foundation cycles are sequential; feature cycles can parallelize
-
-  More worked cycle examples (auth, filtering, brownfield markers):
-  skills/patterns-vertical-tdd/references/CYCLE-STRUCTURE.md.
-  DO NOT keep these sample cycles in the generated tasks.md file.
-  ============================================================================
+  The two cards below are SAMPLES for illustration — replace them with actual cycles from
+  the feature's spec + plan artifacts. DO NOT keep them in the generated tasks.md.
 -->
 
 ## Foundation Cycles
 
-> Sequential cycles that establish shared infrastructure. All must complete before feature cycles begin.
+> Sequential; establish what every feature cycle depends on. All complete before feature cycles begin.
 
----
+### - [ ] Cycle 1: Core entity and basic CRUD
 
-### Cycle 1: Core entity and basic CRUD
+- **Stories:** US-1 — [why these graduate together / what this cycle establishes, ≤ 2 lines]
+- **Depends on:** —
+- **Case:** Simple <!-- Simple | Split — why, one line | Merge — why, one line -->
+- **Acceptance criteria:** [spec/plan IDs this cycle must satisfy — cite, never quote]
+- **Brownfield exposure:** none <!-- none | extends `path` | modifies `path` — cycle-level surfaces only -->
 
-> Stories: US-1
-> Dependencies: None
-> Type: Foundation
-
-- [ ] **T1.1**: Write failing E2E test for entity creation in tests/e2e/test_[entity]_crud.py
-- [ ] **T1.2**: Create [Entity] model with core fields in src/models/[entity].py
-- [ ] **T1.3**: Implement [Entity]Service with CRUD operations in src/services/[entity]_service.py
-- [ ] **T1.4**: Create [entity] API endpoints in src/api/[entity].py
-- [ ] **T1.5**: Refactor and verify all tests pass
-- [ ] **T1.6**: **TEST:** - CRUD operations work via API
-  - **Action**: `curl -X POST localhost:3000/api/[entity] -d '{"name":"Test"}'`
-  - **Assert**: Response status: 201
-  - **Assert**: Console contains "[entity]_id"
-  - **Capture**: console
-
-**Checkpoint**: Can create, read, update, delete [entity] via API
+**TEST:** CRUD operations work via API
+- **Action**: `curl -X POST localhost:3000/api/[entity] -d '{"name":"Test"}'`
+- **Assert**: Response status: 201
+- **Assert**: Console contains "[entity]_id"
+- **Capture**: console
 
 ---
 
 ## Feature Cycles
 
-> Parallel-eligible cycles that deliver user value. Can proceed independently once foundation is complete.
+> Parallel-eligible once foundation is complete.
 
----
+### - [ ] Cycle 2: [Feature title] `[P]`
 
-### Cycle 2: [P] [Feature title]
+- **Stories:** US-2 — [rationale ≤ 2 lines]
+- **Depends on:** C1
+- **Case:** [Simple | Split | Merge]
+- **Acceptance criteria:** [IDs]
+- **Brownfield exposure:** extends `src/models/[entity].py`
 
-> Stories: US-2
-> Dependencies: C1
-> Type: Feature [P]
-
-- [ ] **T2.1**: Write failing test for [behavior] in tests/e2e/test_[feature].py
-- [ ] **T2.2**: [EXTEND] Add [field/method] to [Entity] in src/models/[entity].py
-- [ ] **T2.3**: Implement [feature] logic in src/services/[service].py
-- [ ] **T2.4**: Add [feature] endpoint in src/api/[endpoint].py
-- [ ] **T2.5**: Refactor and verify all tests pass
-- [ ] **T2.6**: **TEST:** - [behavior] works end to end via API
-  - **Setup**: Seed prerequisite [entity] data
-  - **Action**: `curl -X POST localhost:3000/api/[endpoint] -d '{"[field]":"value"}'`
-  - **Assert**: Response status: 200
-  - **Assert**: Console contains "[expected field]"
-  - **Capture**: console
-
-**Checkpoint**: [Observable outcome]
-
----
-
-## Story → Cycle Mapping  *(the ID index)*
-
-> Derived echo of `.mochiko/specs/<feature>/task-mapping.md` (the source of truth for slice rationale and story→cycle decisions). This table is a read-only summary view regenerated from that file — not a second authoritative source. Cycle dependencies live on each cycle's `> Dependencies:` header line — no separate dependency diagram.
-
-| Story | Priority | Cycle(s) |
-|-------|----------|----------|
-| US-1 | P1 | C1 |
-| US-2 | P1 | C2 |
+**TEST:** [behavior] works end to end via API
+- **Setup**: Seed prerequisite [entity] data
+- **Action**: `curl -X POST localhost:3000/api/[endpoint] -d '{"[field]":"value"}'`
+- **Assert**: Response status: 200
+- **Assert**: Console contains "[expected field]"
+- **Capture**: console

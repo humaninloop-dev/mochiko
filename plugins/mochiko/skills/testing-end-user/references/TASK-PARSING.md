@@ -16,7 +16,7 @@
 
 ## Overview
 
-This document defines how to extract structured data from verification task markers in `tasks.md`. The unified `**TEST:**` format is preferred, with legacy formats supported for backward compatibility. Which markers are legal is defined by the grammar owner (§ *Unified TEST: Format*, § *Legacy Format Support* in [`TEST-GRAMMAR.md`](../../patterns-vertical-tdd/references/TEST-GRAMMAR.md)); this document is the how-to-parse them.
+This document defines how to extract structured data from `**TEST:**` gate blocks on the cycle cards in `tasks.md`. The unified `**TEST:**` format is preferred, with legacy formats supported for backward compatibility. Which markers are legal is defined by the grammar owner (§ *Unified TEST: Format*, § *Legacy Format Support* in [`TEST-GRAMMAR.md`](../../patterns-vertical-tdd/references/TEST-GRAMMAR.md)); this document is the how-to-parse them.
 
 ## Task Detection
 
@@ -72,19 +72,19 @@ The legal field set (which fields exist and whether they are required) is define
 
 ## Parsing Algorithm
 
-### 1. Identify Task Boundaries
+### 1. Identify Gate Boundaries
 
 ```
-START: Line matching `- [ ] **T{N}.{X}**: **TEST:`
-END: Next task line OR end of the task block
+START: Line matching `**TEST:**` at the foot of a cycle card
+       (legacy: a task line matching `- [ ] **T{N}.{X}**: **TEST:`)
+END: Next `### Cycle` heading, next task line, OR end of the block
 ```
 
-### 2. Extract Task ID
+### 2. Extract the Owning Cycle
 
-```regex
-\*\*T(\d+)\.(\d+)\*\*:
-```
-Result: Cycle number and task number
+The gate belongs to the card it sits on — take the cycle number from the enclosing
+`### - [ ] Cycle {N}:` heading. (Legacy task-line form: `\*\*T(\d+)\.(\d+)\*\*:` yields
+cycle and task number.)
 
 ### 3. Extract Test Type
 

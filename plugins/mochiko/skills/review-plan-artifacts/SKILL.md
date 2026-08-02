@@ -1,6 +1,6 @@
 ---
 name: review-plan-artifacts
-description: This skill MUST be invoked to grade a producer's plan artifacts against the completeness checklist — the analysis set (requirements, constraints-and-decisions, NFRs) and the design set (data-model, API contracts, quickstart) — checking FR→TR coverage, orphan technical requirements, testable/measurable criteria, NFR measurability, entity and endpoint coverage, data-sensitivity annotations present, schema-model consistency, integration-boundary presence, architecture coverage (component-table↔diagram coverage, qualifying-flow sequence coverage keyed to ordering/failure not story priority, delta-summary D-XXX links), and cross-artifact consistency (does the design honor the decisions and conform to the approved architecture). Emits a severity-classified gap report (Critical/Important/Minor) and a 3-state verdict (ready / needs-revision / critical-gaps). SHOULD also invoke whenever a plan loop's completeness-review step needs an independent grade of the planning artifacts, or when re-reviewing after a FAIL-loop revision. The completeness (mirror-checklist) half of the plan producer↔validator pair; does NOT cover cross-artifact feasibility / buildability / contradiction (that is mochiko:review-feasibility); defaults to FAIL; run by an independent validator, never the author.
+description: This skill MUST be invoked to grade a producer's plan artifacts against the completeness checklist — the analysis set (requirements, constraints-and-decisions, NFRs), the design set (data-model, API contracts, quickstart), and the cycle cards (tasks.md) — checking FR→TR coverage, orphan technical requirements, testable/measurable criteria, NFR measurability, entity and endpoint coverage, data-sensitivity annotations present, schema-model consistency, integration-boundary presence, architecture coverage (component-table↔diagram coverage, qualifying-flow sequence coverage keyed to ordering/failure not story priority, delta-summary D-XXX links), cycle-card quality (vertical integrity, TEST-gate presence and grammar, story traceability, sizing, dependency minimality, brownfield exposure), and cross-artifact consistency (does the design honor the decisions and conform to the approved architecture). Emits a severity-classified gap report (Critical/Important/Minor) and a 3-state verdict (ready / needs-revision / critical-gaps). SHOULD also invoke whenever a plan loop's completeness-review step needs an independent grade of the planning artifacts, or when re-reviewing after a FAIL-loop revision. The completeness (mirror-checklist) half of the plan producer↔validator pair; does NOT cover cross-artifact feasibility / buildability / contradiction (that is mochiko:review-feasibility); defaults to FAIL; run by an independent validator, never the author.
 ---
 
 # Reviewing Plan Artifacts
@@ -35,6 +35,7 @@ boundary table in [ARTIFACT-CHECKLISTS.md](references/ARTIFACT-CHECKLISTS.md#sco
 
 - Grading an **analysis artifact set** (e.g. requirements.md + constraints-and-decisions.md + nfrs.md) for completeness
 - Grading a **design artifact set** (e.g. data-model.md + contracts/api.yaml + quickstart.md) for completeness
+- Grading the **cycle cards** (tasks.md) for slicing quality and gate presence
 - Verifying **cross-artifact consistency** before the plan advances
 - Re-reviewing planning artifacts after a FAIL-loop revision
 
@@ -42,7 +43,6 @@ boundary table in [ARTIFACT-CHECKLISTS.md](references/ARTIFACT-CHECKLISTS.md#sco
 
 - **Implementation code review** — use code-review tooling instead
 - **Cross-artifact feasibility / buildability / contradiction review** — use `mochiko:review-feasibility`
-- **Task artifact review** — use `mochiko:review-task-artifacts`
 - **Specification review** — use `mochiko:review-specifications`
 - **Constitution review** — use `mochiko:validation-constitution`
 - **During active drafting** — wait for artifact completion before review
@@ -57,7 +57,8 @@ Detailed checklists are in [ARTIFACT-CHECKLISTS.md](references/ARTIFACT-CHECKLIS
 | **Analysis artifacts** | requirements, constraints/decisions, NFRs | FR→TR coverage, orphan TRs, testable criteria, sourced constraints, ≥2 alternatives + rationale, NFR measurability, IP coverage |
 | **Architecture** | architecture.md (design-time topology + delta) | component-table↔diagram coverage, qualifying-flow sequence coverage, delta-summary D-XXX links, component status annotations |
 | **Design artifacts** | data-model, API contracts, quickstart | entity coverage, relationships, sensitivity annotations present, endpoint coverage, schemas, error handling, integration-boundary presence |
-| **Cross-artifact** | the sets together | alignment, consistency (design honors the decisions *and the approved architecture*), traceability |
+| **Cycle cards** | tasks.md | vertical integrity (each card an observable end-to-end behavior, never a horizontal layer), `**TEST:**` gate present and in the grammar (real infrastructure, never a test-suite re-run), story traceability (every P1/P2 story on ≥1 card; Simple/Split/Merge case + rationale recorded), sizing (1–3 sessions or justified), dependency minimality/explicitness (foundation sequenced, `[P]` only where truly independent), brownfield exposure stated (`none` counts), **no task lists or file paths** (pre-written decomposition is a finding — the builder decomposes at build time) |
+| **Cross-artifact** | the sets together | alignment, consistency (design honors the decisions *and the approved architecture*; cards' acceptance criteria cite real spec/plan IDs), traceability |
 
 > Brownfield codebase-discovery review is **out of scope** for plan-core completeness — it belongs to
 > the discovery track (see ARTIFACT-CHECKLISTS.md). Sequencing of which set is reviewed when is the

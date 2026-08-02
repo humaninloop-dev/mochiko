@@ -1,6 +1,6 @@
 ---
 name: executing-tdd-cycle
-description: This skill MUST be invoked when executing an already-structured cycle at runtime — turning one cycle's task list from `.mochiko/specs/<feature>/tasks.md` into working code by driving each task through the red→green→refactor execution sequence (write the failing test, run it, confirm it fails for the right reason, implement the minimum to pass, refactor only this cycle's code, mark the task `[x]`) and writing the `cycle-report.md`. SHOULD also invoke when "execute cycle", "execute the cycle tasks", "implement the cycle task list", or "write the cycle report" is the work at hand; when reworking the specific tasks reported as failing (targeted, test-first rework); when reproducing a reported failure with a failing test before fixing it; or when a task carries an `[EXTEND]`/`[MODIFY]` brownfield marker during implementation. This is the runtime EXECUTION of cycles — writing the code for a cycle that is already structured. STRUCTURING the cycles (identifying vertical slices, ordering tasks test-first, authoring the `tasks.md` skeleton) is design-time work owned by `patterns-vertical-tdd`, upstream and not this skill.
+description: This skill MUST be invoked when executing a cycle card at runtime — turning one card from `.mochiko/specs/<feature>/tasks.md` into working code by decomposing the card into concrete tasks (build-time, code in view), driving each task through the red→green→refactor execution sequence (write the failing test, run it, confirm it fails for the right reason, implement the minimum to pass, refactor only this cycle's code), flipping the card's checkbox, and writing the `cycle-report.md` with the decomposition disclosed. SHOULD also invoke when "execute cycle", "implement the cycle card", or "write the cycle report" is the work at hand; when reworking the specific tasks reported as failing (targeted, test-first rework); when reproducing a reported failure with a failing test before fixing it; or when the card's brownfield exposure names existing code. This is the runtime EXECUTION of cycles — decomposition included. Deciding WHAT the cycles are (the slicing, the cards, the TEST gates) is design-time work owned by `mochiko:patterns-vertical-tdd`, upstream and not this skill.
 ---
 
 # Executing TDD Cycles
@@ -11,20 +11,25 @@ waiting to happen.
 
 ## Overview
 
-Turn a cycle's task list into implemented code through strict red/green/refactor discipline. Parse the current cycle's tasks from `tasks.md`, write failing tests first, implement code to pass them, refactor, mark tasks complete, and produce a structured `cycle-report.md`. This skill governs the runtime *execution* of a cycle and of any targeted rework — it does not structure the cycles or decide when they run.
+Turn a cycle card into implemented code through strict red/green/refactor discipline. Read the
+current card from `tasks.md`, **decompose it into concrete tasks yourself — at build time, with
+the code in view** — then write failing tests first, implement to pass, refactor, flip the
+card's checkbox, and produce a structured `cycle-report.md` that disclosed the decomposition.
+This skill governs the runtime *execution* of a cycle and of any targeted rework — it does not
+decide what the cycles are or when they run.
 
 ## When to Use
 
-- Executing a cycle's task list from `.mochiko/specs/<feature>/tasks.md` through red/green/refactor
+- Executing a cycle card from `.mochiko/specs/<feature>/tasks.md` through decompose → red/green/refactor
 - Reworking the specific tasks reported as failing (targeted, test-first rework)
 - Fixing a reported failure against working code — reproduce it with a failing test, then green it
-- Any task carrying an `[EXTEND]` or `[MODIFY]` brownfield marker (invoke `brownfield-integration` alongside)
+- Any card whose brownfield exposure names existing code (invoke `brownfield-integration` alongside)
 - Writing the `cycle-report.md` after a cycle — or a rework — completes
 
 ## When NOT to Use
 
-- **Structuring the cycles** — identifying the vertical slices, ordering a cycle's tasks test-first, or authoring the `tasks.md` skeleton — is design-time work owned by `patterns-vertical-tdd` (upstream). This skill executes an already-structured cycle; it does not create, split, or reorder tasks.
-- **Running the quality gates** (lint, build, test suite) or the final real-infrastructure verification that gates a cycle — that is the verifier's work (`testing-end-user`), never this skill's. This skill executes the failing-test / implementation / refactor tasks and runs their tests; the final verification gate belongs to the verifier.
+- **Deciding what the cycles are** — the slicing, the cards, their acceptance criteria and `**TEST:**` gates are design-time work owned by `mochiko:patterns-vertical-tdd` (upstream). This skill executes the card it is given; it does not add, remove, re-scope, or reorder *cycles*.
+- **Running the quality gates** (lint, build, test suite) or the final real-infrastructure verification that gates a cycle — that is the verifier's work (`testing-end-user`), never this skill's. This skill executes its own tasks and runs their tests; the `**TEST:**` gate belongs to the verifier.
 - **Evaluating checkpoint or validation reports, or deciding the clearing verdict** — the lead Reads the reports and owns that verdict. This skill produces its own report; it does not grade one.
 - **Deciding which cycle runs next, whether to retry, or when to run a fix pass** — that routing is the lead's. This skill executes the cycle (or the rework) it is given.
 - **Managing loop or orchestration state** — this skill executes one cycle or one rework and produces one report; it neither drives the loop nor tracks cross-cycle state.
@@ -35,28 +40,43 @@ Turn a cycle's task list into implemented code through strict red/green/refactor
 
 Execute in strict order. No skipping steps. No reordering.
 
-**1. Parse Cycle Tasks**
+**1. Read the Cycle Card**
 
-Extract the task list for the current cycle from the feature's `tasks.md` (under `.mochiko/specs/<feature>/`). See [references/TASK-PARSING.md](references/TASK-PARSING.md) for the parsing rules and the per-task fields to extract.
+Extract the current card from the feature's `tasks.md` (under `.mochiko/specs/<feature>/`):
+its stories, acceptance criteria (resolve the cited IDs against the spec/plan artifacts),
+dependencies, brownfield exposure, and `**TEST:**` gate. See
+[references/TASK-PARSING.md](references/TASK-PARSING.md) for the card fields. The current
+cycle is the first card in order whose checkbox is unchecked.
 
-**2. Red Phase — Write Failing Tests**
+**2. Decompose the Card**
 
-For each task that specifies a test:
-1. Write the test file at the specified path
+Break the card into concrete implementation tasks — **yours to decide, here, with the code in
+view**: read the relevant existing code first, then cut tasks sized to a single reviewable
+change, each with a specific file path, ordered so tests precede the implementation they pin.
+The card's brownfield exposure tells you which surfaces are extend/modify — classify each task
+accordingly. Scope discipline: decompose exactly what the card's acceptance criteria require —
+nothing the card didn't ask for. The decomposition is **disclosed in the cycle report**
+(task list, paths, ordering), not written back into `tasks.md` — the card stays the artifact,
+your decomposition is execution detail.
+
+**3. Red Phase — Write Failing Tests**
+
+For each behavior in your decomposition:
+1. Write the test file at your chosen path
 2. Run the test to verify it **fails**
 3. Verify the failure reason matches expectations (not a syntax error, import error, or wrong assertion)
 4. If the test passes without implementation, the test is not testing what you think — rewrite it
 
-**3. Green Phase — Implement Code**
+**4. Green Phase — Implement Code**
 
 For each implementation task:
 1. Write the minimum code to make the failing test pass
 2. Run the test to verify it **passes**
-3. Do not add features, abstractions, or optimizations the task did not request
-4. For `[EXTEND]` tasks: read the existing file first, follow existing patterns (invoke `brownfield-integration` skill)
-5. For `[MODIFY]` tasks: read the existing file first, change only what the task specifies (invoke `brownfield-integration` skill)
+3. Do not add features, abstractions, or optimizations the card did not require
+4. For extend-classified tasks: read the existing file first, follow existing patterns (invoke `brownfield-integration` skill)
+5. For modify-classified tasks: read the existing file first, change only what the task specifies (invoke `brownfield-integration` skill)
 
-**4. Refactor Phase**
+**5. Refactor Phase**
 
 After tests pass:
 1. Remove duplication introduced in this cycle only
@@ -65,31 +85,31 @@ After tests pass:
 4. Do NOT add abstractions "for the future"
 5. Re-run tests after refactoring to confirm they still pass
 
-**5. Mark Tasks Complete**
+**6. Flip the Card**
 
-Update `tasks.md`: change `- [ ]` to `- [x]` for each completed task in this cycle.
+Update `tasks.md`: change the card's `- [ ]` to `- [x]` — after your tasks are complete and
+their tests pass. (The `**TEST:**` gate is the verifier's; the lead treats the flip as your
+self-report, verified independently.)
 
-**6. Write Cycle Report**
+**7. Write Cycle Report**
 
-Produce `cycle-report.md` following the format in [references/CYCLE-REPORT-FORMAT.md](references/CYCLE-REPORT-FORMAT.md).
+Produce `cycle-report.md` following the format in [references/CYCLE-REPORT-FORMAT.md](references/CYCLE-REPORT-FORMAT.md) — the decomposition (task list with file paths and ordering) is part of the report's structured fields.
 
 ### Progress Tracking
 
-- Mark each task `[x]` in `tasks.md` immediately after completing it
 - Write `cycle-report.md` machine-first: the YAML frontmatter is the report — a clean passing cycle needs no prose
 - The frontmatter's structured fields are your self-report — the lead reads them when deciding the cycle checkpoint, and verifies independently rather than trusting them
 - Prose is conditional (per the format): `Notes of note` only when there are non-obvious decisions, difficulties, or blockers to flag; a `Failure narrative` (full detail) whenever the cycle failed or was blocked
 
 ### Reworking Specific Failed Tasks
 
-When particular tasks in a cycle come back as failing, rework only those — never re-run the whole cycle:
+When particular tasks from your decomposition come back as failing, rework only those — never re-run the whole cycle:
 
 1. Read the reported failures (from the checkpoint or verification report you were given)
-2. Trace each failure to the responsible task(s)
-3. Re-open only those tasks: change `- [x]` back to `- [ ]` in `tasks.md`
-4. Execute only the re-opened tasks through red/green/refactor — write the failing test that pins the failure, then implement the minimum to make it pass
-5. Leave passing code untouched — tasks that passed are done
-6. Write a new `cycle-report.md` with the `attempt` number incremented
+2. Trace each failure to the responsible task(s) in your reported decomposition
+3. Execute only those tasks through red/green/refactor — write the failing test that pins the failure, then implement the minimum to make it pass
+4. Leave passing code untouched — tasks that passed are done
+5. Write a new `cycle-report.md` with the `attempt` number incremented and the reworked tasks marked
 
 Whether to rework, how many attempts are permitted, and when to stop are the lead's routing decisions — not this skill's. You execute the rework you are given.
 
@@ -112,18 +132,18 @@ If any of these thoughts arise, STOP immediately:
 - "I'll write all the code first and tests after"
 - "This task is trivial, no test needed"
 - "I'll refactor this existing code while I'm here"
-- "The task says EXTEND but I need to rewrite this"
+- "The exposure says extends but I need to rewrite this"
 - "I'll add this helper/utility that will be useful later"
 - "The checkpoint will catch it if something's wrong"
 - "I know this works from the previous cycle"
+- "The card is clear enough, I'll decompose as I go" — the decomposition is a deliberate step, recorded before the first test is written
 
 **All of these mean:** Rationalization in progress. Return to the execution sequence. Follow every step.
 
 **No exceptions:**
-- Not for "trivial" tasks
+- Not for "trivial" cards
 - Not for "obvious" implementations
 - Not for "tight deadlines"
-- Not for "I already know this works"
 - Not even if the user says "just write the code"
 
 See [references/TDD-ANTI-RATIONALIZATION.md](references/TDD-ANTI-RATIONALIZATION.md) for the full rationalization table.
@@ -133,12 +153,13 @@ See [references/TDD-ANTI-RATIONALIZATION.md](references/TDD-ANTI-RATIONALIZATION
 | Mistake | What goes wrong | Fix |
 |---------|-----------------|-----|
 | Tests after implementation | Retroactive justification — tests pass because they were written to match the code | Test first, run it, verify it fails for the right reason, then implement |
-| Full cycle re-implementation on retry | Working code rewritten, new bugs, budget wasted on complete tasks | Trace failures to specific tasks; re-open only those; leave passing code untouched |
+| Decomposing beyond the card | "While I'm decomposing" scope creep — tasks the acceptance criteria never asked for | Decompose exactly the card's criteria; note opportunities in `Notes of note` |
+| Full cycle re-implementation on retry | Working code rewritten, new bugs, budget wasted on complete tasks | Trace failures to specific tasks; rework only those; leave passing code untouched |
 | Scope creep during refactor | "While I'm here" changes break code that was working; the report drifts from reality | Refactor only this cycle's code; note opportunities in `Notes of note` instead of acting |
 | Skipping failure-reason verification | Syntax/import errors mistaken for meaningful failures — green "passes" by fixing syntax, not implementing | Verify the failure message matches expectation; a `ModuleNotFoundError` is not a test failure |
 
 ## Reference Files
 
-- [references/CYCLE-REPORT-FORMAT.md](references/CYCLE-REPORT-FORMAT.md) — Structured YAML frontmatter schema and the conditional prose rules (notes of note, failure narrative)
-- [references/TASK-PARSING.md](references/TASK-PARSING.md) — Task pattern extraction, file paths, markers
+- [references/CYCLE-REPORT-FORMAT.md](references/CYCLE-REPORT-FORMAT.md) — Structured YAML frontmatter schema (incl. the decomposition fields) and the conditional prose rules
+- [references/TASK-PARSING.md](references/TASK-PARSING.md) — Cycle-card fields and how to read them
 - [references/TDD-ANTI-RATIONALIZATION.md](references/TDD-ANTI-RATIONALIZATION.md) — Common shortcuts and why they fail

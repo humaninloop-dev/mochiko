@@ -21,9 +21,9 @@ flowchart LR
   user(("User"))
   user -->|"/mochiko:* + gate rulings"| commands
   subgraph plugin ["plugins/mochiko/"]
-    commands["commands/ — 6 supervisors"]
-    agents["agents/ — 9 personas"]
-    skills["skills/ — 27 skills"]
+    commands["commands/ — 5 supervisors"]
+    agents["agents/ — 8 personas"]
+    skills["skills/ — 25 skills"]
     templates["templates/ — artifact + report schemas, doctrine homes"]
     commands -->|"spawn seats, each dispatch self-briefed"| agents
     agents -->|"carry procedure from"| skills
@@ -32,14 +32,13 @@ flowchart LR
   agents -->|"author / grade"| target[("target project: .mochiko/ artifacts,<br/>governance surfaces, working code")]
 ```
 
-The pipeline the commands form (each stage user-gated; slice is optional; brainstorm's record
+The pipeline the commands form (each stage user-gated; slicing rides inside specify; brainstorm's record
 may seed any downstream stage — drawn at its typical hand-off, specify):
 
 ```mermaid
 flowchart LR
   setup["/mochiko:setup"] --> specify["/mochiko:specify"]
-  specify --> slice["/mochiko:slice"]
-  slice -->|"per slice"| plan["/mochiko:plan"]
+  specify -->|"per slice when the spec's Delivery Slices section decomposes"| plan["/mochiko:plan"]
   specify -->|"whole spec"| plan
   plan --> implement["/mochiko:implement"]
   brainstorm["/mochiko:brainstorm"] -.->|"record may seed a stage"| specify
@@ -52,10 +51,10 @@ pinned in [`CLAUDE.md`](CLAUDE.md#skill-library-conventions-five-axes).
 
 | Layer | Home | Count | Role |
 |---|---|---|---|
-| **Commands** | [`plugins/mochiko/commands/`](plugins/mochiko/commands/) | 6 | User-invoked goal+harness contracts (`disable-model-invocation: true`). Each file states its Goal (default FAIL), Harness (plan approval for producing seats · author ≠ grader independence · decisions reserved to the user), and Bindings (v8 rebuild, v0.48.0). The lead plans and orchestrates the run — teammates or subagents per seat is its call. |
-| **Agents** | [`plugins/mochiko/agents/`](plugins/mochiko/agents/) | 9 | Personas (all `model: opus`) that carry judgment and declare `skills:`. A persona contains no trace of any workflow — decoupling by absence; caller-side context rides the dispatch brief. |
-| **Skills** | [`plugins/mochiko/skills/`](plugins/mochiko/skills/) | 27 | Procedure. One user-invoked router ([`skills/mochiko/`](plugins/mochiko/skills/mochiko/SKILL.md)) indexes the other 26, which are model-invoked with graded MUST/SHOULD triggers in their descriptions. Deterministic sub-checks ride as `scripts/` inside skills (e.g. `analysis-codebase`'s `detect-stack.sh`); depth rides as `references/`. |
-| **Templates** | [`plugins/mochiko/templates/`](plugins/mochiko/templates/) | 17 + `constitution-modules/` | Two kinds: **artifact schemas** (spec, slices, plan, tasks, governance-intent, …) over the shared `artifact-format.md` envelope; **report schemas** (per-seat reports) over the shared `report-format.md` envelope. The former doctrine homes (`workflow-contract.md`, `agent-dispatch.md`, `sized-end-stage-review.md`) were deleted at the doctrine purge (v0.46.0–v0.47.0) — their mechanics live inline in each command. `constitution-modules/` is setup's module library (knowledge-management, layer-rules, release-gates, evolution-notes). |
+| **Commands** | [`plugins/mochiko/commands/`](plugins/mochiko/commands/) | 5 | User-invoked goal+harness contracts (`disable-model-invocation: true`). Each file states its Goal (default FAIL), Harness (plan approval for producing seats · author ≠ grader independence · decisions reserved to the user), and Bindings (v8 rebuild, v0.48.0; task layer de-granularized + slice absorbed into specify, v0.49.0). The lead plans and orchestrates the run — teammates or subagents per seat is its call. |
+| **Agents** | [`plugins/mochiko/agents/`](plugins/mochiko/agents/) | 8 | Personas (all `model: opus`) that carry judgment and declare `skills:`. A persona contains no trace of any workflow — decoupling by absence; caller-side context rides the dispatch brief. |
+| **Skills** | [`plugins/mochiko/skills/`](plugins/mochiko/skills/) | 25 | Procedure. One user-invoked router ([`skills/mochiko/`](plugins/mochiko/skills/mochiko/SKILL.md)) indexes the other 24, which are model-invoked with graded MUST/SHOULD triggers in their descriptions. Deterministic sub-checks ride as `scripts/` inside skills (e.g. `analysis-codebase`'s `detect-stack.sh`); depth rides as `references/`. |
+| **Templates** | [`plugins/mochiko/templates/`](plugins/mochiko/templates/) | 14 + `constitution-modules/` | Two kinds: **artifact schemas** (spec — Intent + Delivery Slices sections included, plan, tasks as cycle cards, governance-intent, …) over the shared `artifact-format.md` envelope; **report schemas** (per-seat reports) over the shared `report-format.md` envelope. The former doctrine homes (`workflow-contract.md`, `agent-dispatch.md`, `sized-end-stage-review.md`) were deleted at the doctrine purge (v0.46.0–v0.47.0) — their mechanics live inline in each command. `constitution-modules/` is setup's module library (knowledge-management, layer-rules, release-gates, evolution-notes). |
 
 The plugin manifest, [`.claude-plugin/plugin.json`](plugins/mochiko/.claude-plugin/plugin.json),
 registers the command, agent, and skill directories and carries the version — packaging,
@@ -81,7 +80,7 @@ outside the four layers (templates is referenced by commands and skills, not reg
 
 ### Command form (goal + harness)
 
-Every command is a goal + harness contract (v8 rebuild, v0.48.0): a verifiable done-condition
+Every command is a goal + harness contract (v8 rebuild, v0.48.0; task layer de-granularized + slice absorbed into specify, v0.49.0): a verifiable done-condition
 that defaults to FAIL, a harness — plan approval before any producing seat works, author ≠
 grader independence, the decisions reserved to the user — and the bindings the lead cannot
 invent (paths, templates, entry conditions). The lead plans and orchestrates the run within
@@ -156,51 +155,33 @@ is an offer, never a default.
 
 ### Specify — feature specification
 
-[`commands/specify.md`](plugins/mochiko/commands/specify.md). Sparse input is enriched once,
-lead-inline (`analysis-iterative`); then a standing author and a cold critic iterate across
-bounded rounds until the user accepts.
+[`commands/specify.md`](plugins/mochiko/commands/specify.md). An **intent stage** opens the
+run — an adaptive-probe agenda (`analysis-iterative`: scope · delivery · depth-rigor ·
+constraints · out-of-scope) closing in a one-screen synthesis the user confirms, which
+governs the authoring brief, the slicing shape, and the stress-test's rigor and lands as the
+spec's Intent section. Then a standing author and a cold critic iterate across bounded rounds
+until the user accepts. The spec carries a **Delivery Slices** section — a graduation-slice
+decomposition (`authoring-slices`, lead-dispatched) or the single-slice line — co-accepted
+with the spec; its Graduation contract is the single home for how slice-scoped plan/implement
+runs consume it.
 
 | Seat | Wiring |
 |---|---|
-| producer | `requirements-analyst` × `authoring-requirements`, `authoring-user-stories` |
-| critic | `devils-advocate` × `review-specifications` |
+| producer | `requirements-analyst` × `authoring-requirements`, `authoring-user-stories` (+ `authoring-slices` for the Delivery Slices section, or a seat of the lead's choosing) |
+| critic | `devils-advocate` × `review-specifications` (Delivery Slices grade included) |
 
 ```mermaid
 flowchart LR
+  user(("User"))
   lead["lead: /mochiko:specify"]
-  producer["requirements-analyst ×<br/>authoring-requirements +<br/>authoring-user-stories"]
+  producer["requirements-analyst ×<br/>authoring-requirements +<br/>authoring-user-stories +<br/>authoring-slices"]
   critic["devils-advocate ×<br/>review-specifications"]
-  lead -->|"seeded template + brief"| producer
-  producer --> spec[("specs/&lt;feature&gt;/spec.md")]
+  user <-->|"intent probes → confirmed synthesis"| lead
+  lead -->|"seeded template + intent-keyed brief"| producer
+  producer --> spec[("specs/&lt;feature&gt;/spec.md<br/>(Intent · stories/FR/SC ·<br/>Delivery Slices)")]
   spec -->|"graded from the file"| critic -->|"advocate-report.md"| lead
-  lead -->|"spec acceptance"| user(("User"))
+  lead -->|"spec acceptance (whole)"| user
 ```
-
-### Slice — graduation-slice decomposition
-
-[`commands/slice.md`](plugins/mochiko/commands/slice.md). Decomposes an accepted spec into
-ordered story groups that graduate through plan → implement per slice — or takes the reviewed
-**null exit** (whole-spec recommendation, no `slices.md`) when the spec lacks two distinct
-value seams.
-
-| Seat | Wiring |
-|---|---|
-| producer | `task-architect` × `authoring-slices` |
-| reviewer | `devils-advocate` × `review-slices` |
-
-```mermaid
-flowchart LR
-  lead["lead: /mochiko:slice"]
-  producer["task-architect ×<br/>authoring-slices"]
-  reviewer["devils-advocate ×<br/>review-slices"]
-  lead --> producer
-  producer --> slices[("specs/&lt;feature&gt;/slices.md<br/>or reviewed null exit")]
-  slices --> reviewer -->|"advocate-report.md"| lead
-  lead -->|"accept / override"| user(("User"))
-```
-
-Downstream consumption is carried by the artifact itself: `slices.md`'s Graduation contract is
-the single home for how slice-scoped plan/implement runs consume it.
 
 ### Plan — implementation package, architecture first
 
@@ -213,9 +194,9 @@ anything is designed against it.
 |---|---|
 | producer | `technical-analyst` × `authoring-technical-requirements`, `patterns-technical-decisions`, `patterns-entity-modeling`, `patterns-api-contracts` |
 | system-architect | `system-architect` × `patterns-system-design` — authors `architecture.md` + structural D-XXX rows (the persona also declares `patterns-technical-decisions`) |
-| task-architect | `task-architect` × `patterns-vertical-tdd` — `task-mapping.md`, then `tasks.md` |
+| cycle-card producer | `patterns-vertical-tdd` on a seat of the lead's choosing — `tasks.md` as cycle cards (no fixed persona) |
 | feasibility | `principal-architect` × `review-feasibility` — analysis, then the architecture pass |
-| completeness | `devils-advocate` × `review-plan-artifacts`, then `review-task-artifacts` |
+| completeness | `devils-advocate` × `review-plan-artifacts` (cycle cards included) |
 | architecture scribe | `principal-architect` × `authoring-architecture` — disposable, at finalize; records the initial `ARCHITECTURE.md` baseline when the target repo has none |
 
 Case distinguishes two artifacts here: lowercase `architecture.md` is the per-feature design
@@ -227,24 +208,26 @@ flowchart LR
   lead["lead: /mochiko:plan"]
   ta["technical-analyst<br/>analysis + detailed design"]
   sa["system-architect<br/>architecture.md"]
-  karch["task-architect<br/>mapping + tasks"]
+  cards["cycle cards ×<br/>patterns-vertical-tdd<br/>(lead-chosen seat)"]
   feas["principal-architect ×<br/>review-feasibility"]
-  comp["devils-advocate ×<br/>review-plan-artifacts +<br/>review-task-artifacts"]
-  lead --> ta & sa & karch
-  ta & sa & karch --> pkg[("specs/&lt;feature&gt;/: requirements ·<br/>constraints-and-decisions · nfrs ·<br/>architecture · data-model ·<br/>contracts/api.yaml · task-mapping ·<br/>tasks · plan.md")]
+  comp["devils-advocate ×<br/>review-plan-artifacts"]
+  lead --> ta & sa & cards
+  ta & sa & cards --> pkg[("specs/&lt;feature&gt;/: requirements ·<br/>constraints-and-decisions · nfrs ·<br/>architecture · data-model ·<br/>contracts/api.yaml ·<br/>tasks (cycle cards) · plan.md")]
   pkg --> feas & comp
   feas & comp -->|"reports"| lead
   lead -->|"architecture sign-off ·<br/>package acceptance"| user(("User"))
 ```
 
 The architecture scribe runs at finalize, outside the round loop, and is omitted from the
-diagram. Slice-scoped when `slices.md` exists: shared artifacts at the feature root, per-slice
-artifacts under `slices/<slice>/`.
+diagram. Slice-scoped when the spec's Delivery Slices section decomposes: shared artifacts at
+the feature root, per-slice artifacts under `slices/<slice>/`, per the spec's Graduation
+contract.
 
-### Implement — execute the task breakdown
+### Implement — execute the cycle cards
 
 [`commands/implement.md`](plugins/mochiko/commands/implement.md). Cycle-by-cycle (foundation
-before feature), each cycle implemented through red/green/refactor and independently verified
+before feature), each card decomposed by its builder at build time (disclosed in the cycle
+report), implemented through red/green/refactor, and independently verified
 against real infrastructure. The per-cycle checkpoint carries the shape's only devolved branch:
 a cycle whose verifications are all deterministic CLI checks at 100% pass, with no reported
 deviation and no new domain dependencies (`domain_deps_added` empty), clears on the verifier's
@@ -264,7 +247,7 @@ flowchart LR
   qa["qa-engineer ×<br/>testing-end-user"]
   lead -->|"cycle N"| se
   se --> code[("working code +<br/>cycle-report.md")]
-  code -->|"TEST: tasks, quality gates,<br/>real infrastructure"| qa
+  code -->|"TEST: gates, quality gates,<br/>real infrastructure"| qa
   qa -->|"verification report +<br/>recommendation"| lead
   lead -->|"deviation consent · final acceptance"| user(("User"))
 ```
@@ -276,18 +259,19 @@ finalize) run outside the cycle loop and are omitted from the diagram.
 
 ### Shared seats
 
-Four personas serve multiple clusters — the reuse axis of the agent layer: `devils-advocate`
-reviews in five (specify, plan, slice, brainstorm, setup); `principal-architect` authors in
+Three personas serve multiple clusters — the reuse axis of the agent layer: `devils-advocate`
+reviews in four (specify, plan, brainstorm, setup); `principal-architect` authors in
 setup, reviews feasibility in plan, and scribes/diffs architecture in plan and implement;
-`task-architect` produces in slice and plan's structuring stage; `validator` grades setup's
-surfaces (and any artifact handed to it with an explicit checklist).
+`validator` grades setup's surfaces (and any artifact handed to it with an explicit
+checklist). The slicing and cycle-card crafts (`authoring-slices`, `patterns-vertical-tdd`)
+are seatless — lead-dispatched to whichever producer seat fits the run.
 
 ## Cross-cutting doctrine
 
 | Primitive | Carries |
 |---|---|
 | `report-format.md` / `artifact-format.md` (templates) | The two shared envelopes every report and pipeline artifact follows. |
-| `analysis-iterative` (skill) | The shared questioning engine — lead-inline in brainstorm, setup's interrogation, and specify's enrichment. |
+| `analysis-iterative` (skill) | The shared questioning engine — lead-inline in brainstorm, setup's interrogation, and specify's intent stage. |
 | `grooming-operating-docs` (skill) | Fix-on-sight restoration of a target project's operating docs when a pinned knowledge-management cap trips at a command boundary. |
 
 ## Data flow — what lands where
@@ -300,14 +284,15 @@ the **target project's** workspace:
 - **`.mochiko/memory/`** — `governance-intent.md`, `governance-ledger.md`,
   `codebase-analysis.md` (brownfield), and the project-pinned `knowledge-management.md` every
   command resolves at runtime for its KM landing.
-- **`.mochiko/specs/<feature>/`** — the pipeline artifacts: `spec.md`, `slices.md`, the plan
-  package, `tasks.md`, per-seat reports; `slices/<slice>/` when slice-scoped.
+- **`.mochiko/specs/<feature>/`** — the pipeline artifacts: `spec.md` (Intent + Delivery
+  Slices included), the plan package, `tasks.md` (cycle cards), per-seat reports;
+  `slices/<slice>/` when slice-scoped.
 - **`.mochiko/brainstorms/<slug>/`** — `record.md` (+ optional `synthesis.md`) and the session
   index.
-- **The working tree** — implement's deliverable is the code itself; `tasks.md` checkboxes are
-  the progress ledger.
-- **Kill-switches** — per-run stop files (`SETUP_STOP`, `SPECIFY_STOP`, `SLICE_STOP`,
-  `PLAN_STOP`, `IMPLEMENT_STOP`) checked before every seat send.
+- **The working tree** — implement's deliverable is the code itself; `tasks.md`'s per-card
+  checkboxes are the progress ledger.
+- **Kill-switches** — per-run stop files (`SETUP_STOP`, `SPECIFY_STOP`, `PLAN_STOP`,
+  `IMPLEMENT_STOP`) checked before every seat send.
 
 Recovery is workspace-as-state everywhere: each command's Recovery table maps artifact evidence
 to a resume stage, so an interrupted run continues without any registry.

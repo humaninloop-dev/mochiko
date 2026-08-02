@@ -1,13 +1,13 @@
 ---
 name: brownfield-integration
-description: This skill MUST be invoked when implementing a task that touches existing code — safely making an `[EXTEND]` or `[MODIFY]` change to a file already on disk: reading the whole file before writing, following its established patterns, preserving its interface, and detecting conflicts before adding code. SHOULD also invoke when extending an existing file, modifying existing behavior, integrating against an established interface, or following patterns set by prior work in the codebase. Consumes the `[EXTEND]`/`[MODIFY]` markers that patterns-vertical-tdd defines at design time; this is the implement-time, read-before-write craft of making that one modification safely — NOT the execution of the cycle the task belongs to (that is executing-tdd-cycle, which co-fires on the same brownfield task and drives red/green/refactor).
+description: This skill MUST be invoked when implementing a task that touches existing code — safely making an `[EXTEND]` or `[MODIFY]` change to a file already on disk: reading the whole file before writing, following its established patterns, preserving its interface, and detecting conflicts before adding code. SHOULD also invoke when extending an existing file, modifying existing behavior, integrating against an established interface, or following patterns set by prior work in the codebase. Consumes the extend/modify classification the builder assigns at decomposition time (from the cycle card's brownfield exposure, declared at design time by patterns-vertical-tdd); this is the implement-time, read-before-write craft of making that one modification safely — NOT the execution of the cycle the task belongs to (that is executing-tdd-cycle, which co-fires on the same brownfield task and drives red/green/refactor).
 ---
 
 # Brownfield Integration
 
 ## Overview
 
-Craft for implementing a task that touches existing code. Brownfield tasks arrive already tagged `[EXTEND]` or `[MODIFY]`: the marker **vocabulary** is defined by `patterns-vertical-tdd`, which stamps those markers onto tasks at design time. This skill does not redefine the markers — it is the implement-time discipline of **consuming** one safely: read the existing code first, follow what is already there, preserve the interface, and surface conflicts rather than silently resolving them.
+Craft for implementing a task that touches existing code. Brownfield tasks arrive tagged `[EXTEND]` or `[MODIFY]` by the builder's own decomposition — classified from the cycle card's **brownfield exposure** line, which `patterns-vertical-tdd` declares at design time. This skill does not decide the classification — it is the implement-time discipline of **consuming** one safely: read the existing code first, follow what is already there, preserve the interface, and surface conflicts rather than silently resolving them.
 
 **The existing code is not wrong until proven otherwise.** It has consumers, tests, and patterns that evolved for reasons not immediately visible.
 
@@ -31,7 +31,7 @@ read-before-write discipline is a broken consumer waiting to surface.
 
 ### EXTEND vs. MODIFY: interface impact
 
-`patterns-vertical-tdd` owns what the `[EXTEND]` and `[MODIFY]` markers *mean*. What each one is allowed to do to an existing interface — the implement-time consumption rule this skill enforces — is below:
+The card's exposure line says *which surfaces* are extend/modify; what each classification is allowed to do to an existing interface — the implement-time consumption rule this skill enforces — is below:
 
 | Marker | Scope of change | Interface impact |
 |--------|-----------------|------------------|

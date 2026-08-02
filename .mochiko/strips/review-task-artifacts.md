@@ -5,6 +5,13 @@ batch-1 ratified 2026-07-25; design: `.mochiko/brainstorms/skill-succinctness-st
 First strip assessment of this skill (never-stripped band 30–70): body 225 → 171 lines = **24%**,
 under-band — survivor evidence below.
 
+## [v0.49.0] Skill retired — folded into `review-plan-artifacts` as the cycle-card checks
+- **Disposition:** superseded → `review-plan-artifacts` (new Cycle cards row in Review Focus: vertical integrity · TEST-gate presence/grammar · story traceability · sizing · dependency minimality · brownfield exposure · no pre-written task lists); directory deleted (SKILL.md + references/PHASE-CHECKLISTS.md + references/ISSUE-TEMPLATES.md)
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D4: one grader per accepted artifact — the package is graded whole)
+- **Content:** the 174-line SKILL.md (mapping/tasks/cross-artifact checks, TM-/TT-/TX- ID conventions, verdict decision tree, dormant brownfield checks note) + both references. Per-task checks (task-ID format, per-task file paths, TDD task ordering) died with the task lists themselves (D2); artifact-level checks were carried over compressed. Full text: git history at v0.48.0.
+- **Kept deliberately:** the "Confirmed complementary — no structural merge" boundary note is superseded in the opposite direction by this ruling — recorded here so the reversal is explicit, not an oversight.
+- **Consumers assessed:** devils-advocate (skills: roster edited) · router (row removed) · review-plan-artifacts (absorbing home edited in the same wave).
+
 ## [v0.46.0] loop-discipline pointers out
 - **Disposition:** superseded → the anti-rationalization content stands in this file's own red flags; loop ownership is the command's
 - **Tier failed:** n/a — supersession by ruling (ADR `.mochiko/decisions/2026-08-02-doctrine-purge-wave-1.md`; DECISIONS.md 2026-08-02 "Doctrine purge wave 1" row)

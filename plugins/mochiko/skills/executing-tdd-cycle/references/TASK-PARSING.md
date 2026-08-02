@@ -1,89 +1,47 @@
-# Task Parsing
+# Cycle-Card Reading
 
-Rules for extracting task information from `tasks.md`. Use these rules to identify which tasks belong to the current cycle, what files to create or modify, and how to handle brownfield markers.
+Rules for reading the current cycle card from `tasks.md`. The card carries *what the cycle
+must prove*; the concrete tasks are yours to decompose at build time (SKILL.md step 2) —
+nothing task-level is parsed from the file.
 
-## Task Pattern
-
-```markdown
-- [ ] **T{N}.{X}**: Description with `file/path.ts` reference
-  - Sub-bullet with additional details
-  - Another sub-bullet
-```
-
-### Pattern Components
-
-| Component | Format | Example |
-|-----------|--------|---------|
-| Checkbox | `- [ ]` (pending) or `- [x]` (complete) | `- [ ]` |
-| Task ID | `**T{cycle}.{task}**:` | `**T3.2**:` |
-| Description | Free text after the colon | `Implement user route handler` |
-| File path | Backtick-wrapped path in description | `` `src/routes/user.ts` `` |
-| Markers | `[EXTEND]` or `[MODIFY]` in description | `[EXTEND] existing model` |
-
-## Cycle Identification
-
-Tasks belong to a cycle based on their task ID prefix:
-- `T1.*` = Cycle 1
-- `T2.*` = Cycle 2
-- `T{N}.*` = Cycle N
-
-The current cycle is the first cycle with any unchecked tasks (`- [ ]`).
-
-## File Path Extraction
-
-File paths appear in backticks within the task description. A single task may reference multiple files:
+## Card Pattern
 
 ```markdown
-- [ ] **T2.3**: Create `src/models/user.ts` and test file `src/models/user.test.ts`
+### - [ ] Cycle {N}: {title} *({Foundation|Feature})* `[P]`?
+
+- **Stories:** US-# — rationale
+- **Depends on:** — | C{M}
+- **Case:** Simple | Split — why | Merge — why
+- **Acceptance criteria:** spec/plan IDs
+- **Brownfield exposure:** none | extends `path` | modifies `path`
+
+**TEST:** {gate title}
+- **Setup**: ...
+- **Action**: ...
+- **Assert**: ...
 ```
 
-Extract all backtick-wrapped paths. Use them to determine:
-- Which files to create (if path does not exist)
-- Which files to read first (if `[EXTEND]` or `[MODIFY]`)
+### Fields to Extract
 
-## Brownfield Markers
+| Field | Use |
+|-------|-----|
+| Checkbox | `- [ ]` pending / `- [x]` complete — on the `### Cycle` heading line |
+| Type + `[P]` | Foundation cards run sequentially, first; `[P]` marks parallel-eligible feature cards |
+| Stories | The `US-#` set this card serves — resolve against `spec.md` for the independent tests |
+| Depends on | Cards that must be complete before this one starts |
+| Acceptance criteria | Cited IDs — resolve against the spec/plan artifacts; these bound the decomposition |
+| Brownfield exposure | The existing surfaces the decomposition must classify extend/modify (read those files first; `brownfield-integration` alongside) |
+| `**TEST:**` block | The verifier's gate — parse only to know what the cycle must ultimately prove; running it is `testing-end-user`'s work |
 
-| Marker | Meaning | Action |
-|--------|---------|--------|
-| `[EXTEND]` | Add new code to existing file following existing patterns | Read file first. Add code. Do not change existing code. |
-| `[MODIFY]` | Change existing behavior in the file | Read file first. Change only what the task specifies. |
-| No marker | Create new file or greenfield implementation | Create file at specified path. |
+## Current-Cycle Identification
 
-### Marker Position
-
-Markers appear in the task description, typically before the verb:
-
-```markdown
-- [ ] **T3.4**: [EXTEND] `src/models/user.ts` with lastLogin field
-- [ ] **T4.2**: [MODIFY] `src/middleware/auth.ts` to check token expiry
-```
-
-## Multi-Line Tasks
-
-Tasks with sub-bullets contain additional implementation details:
-
-```markdown
-- [ ] **T2.1**: Write failing tests for User model `src/models/user.test.ts`
-  - Test user creation with valid data
-  - Test validation rejects missing email
-  - Test unique constraint on username
-```
-
-Sub-bullets are implementation guidance, not separate tasks. The parent task ID (`T2.1`) is the unit of completion — mark the parent `[x]` when all sub-bullets are addressed.
-
-## Checkpoint Pattern
-
-Each cycle ends with a checkpoint statement (not a task):
-
-```markdown
-**Checkpoint**: All user CRUD tests pass, lint clean, API routes registered
-```
-
-Checkpoints define the done criteria for the cycle. They are not marked with checkboxes.
+The current cycle is the **first card in file order whose checkbox is unchecked**, with all
+its `Depends on` cards checked. Flip the card's checkbox (`- [ ]` → `- [x]`) at step 6 of the
+execution sequence.
 
 ## Quality Gates Pattern
 
-Quality gates appear in a dedicated section, not as cycle tasks:
+Quality gates appear in a dedicated section, not on cards:
 
 ```markdown
 ## Quality Gates
@@ -92,4 +50,5 @@ Quality gates appear in a dedicated section, not as cycle tasks:
 - `pnpm test` all tests pass
 ```
 
-Quality gates — and the final real-infrastructure verification that gates each cycle — are executed by the verifier (`testing-end-user`), not by this skill. Parse them only to know they exist; running them is the verifier's work.
+Quality gates — and the `**TEST:**` gate on each card — are executed by the verifier
+(`testing-end-user`), not by this skill. Read them only to know they exist.

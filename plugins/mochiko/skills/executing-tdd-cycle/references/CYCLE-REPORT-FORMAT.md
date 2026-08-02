@@ -16,15 +16,18 @@ feature: user-auth
 cycle: 3                    # Cycle number (integer) or "fix" for fix passes
 attempt: 1                  # Attempt number within this cycle (1 = first attempt)
 status: pass | fail | blocked   # Execution outcome self-report (not the checkpoint verdict)
-tasks_total: 4              # Total tasks in this cycle's task list
-tasks_completed: 4          # Tasks marked [x] after execution
+decomposition:              # The build-time task breakdown of the card (this run's, disclosed)
+  - {id: T3.1, task: "failing test for POST /api/session", path: src/routes/session.test.ts}
+  - {id: T3.2, task: "session route handler", path: src/routes/session.ts}
+tasks_total: 4              # Total tasks in the decomposition above
+tasks_completed: 4          # Decomposition tasks completed
 failed_tasks: []            # Task IDs not completed / failing, with a one-line reason each
 files_created:              # New files created during this cycle
   - src/routes/api.ts
   - src/routes/api.test.ts
 files_modified:             # Existing files modified during this cycle
   - src/models/user.ts
-brownfield_tasks: 1         # Count of tasks with [EXTEND] or [MODIFY] markers
+brownfield_tasks: 1         # Count of decomposition tasks classified extend/modify
 domain_deps_added: []       # Domain-layer registry additions this cycle (package names; [] if none)
 deviations: []              # One-line, ID-cited departures from the task descriptions ([] if none)
 checkpoint_criteria_met: true  # The implementer's self-assessment (the lead verifies independently)
@@ -38,13 +41,14 @@ checkpoint_criteria_met: true  # The implementer's self-assessment (the lead ver
 | `report` / `feature` / `slice` | envelope | yes | Per `templates/report-format.md` (`slice:` only when slice-scoped) |
 | `cycle` | integer or `"fix"` | yes | Cycle number from tasks.md, or `"fix"` for fix passes |
 | `attempt` | integer | yes | 1 for first attempt, increments on retry |
+| `decomposition` | list | yes | The build-time task breakdown of the card — `{id, task, path}` per task, IDs local to this report (`T{cycle}.{n}`). The disclosure surface for the decomposition (the card in `tasks.md` stays undecomposed); rework and failure reports cite these IDs |
 | `status` | enum | yes | `pass` (all tasks done, tests green) / `fail` (tasks failing) / `blocked` (could not proceed). A self-report of execution outcome, not the checkpoint verdict |
-| `tasks_total` | integer | yes | Number of tasks in the cycle task list |
-| `tasks_completed` | integer | yes | Number of tasks marked `[x]` after execution |
+| `tasks_total` | integer | yes | Number of tasks in the decomposition |
+| `tasks_completed` | integer | yes | Decomposition tasks completed |
 | `failed_tasks` | list | yes | `[]` if none; else `- {id: T3.2, why: "<one line>"}` per failed/incomplete task |
 | `files_created` | list of strings | yes | Paths of new files created (empty list if none) |
 | `files_modified` | list of strings | yes | Paths of existing files modified (empty list if none) |
-| `brownfield_tasks` | integer | yes | Count of tasks with `[EXTEND]` or `[MODIFY]` markers |
+| `brownfield_tasks` | integer | yes | Count of decomposition tasks classified extend/modify (per the card's brownfield exposure) |
 | `domain_deps_added` | list of strings | yes | Domain-layer dependency registry additions made this cycle (empty list if none). The visibility floor for registry growth: additions are disclosed here and surfaced at the checkpoint; a non-empty list always forces a human checkpoint — never auto-approved |
 | `deviations` | list of strings | yes | Departures from the task descriptions, one line each, citing the task ID (e.g. `"T3.4: argon2 over bcrypt (C-012 allows)"`). `[]` if none |
 | `checkpoint_criteria_met` | boolean | yes | The implementer's assessment of whether the cycle's checkpoint criteria are satisfied; a self-report, not the verdict — the lead verifies independently and decides |
@@ -97,6 +101,11 @@ feature: user-auth
 cycle: 3
 attempt: 1
 status: pass
+decomposition:
+  - {id: T3.1, task: "failing E2E test for profile update", path: src/routes/api.test.ts}
+  - {id: T3.2, task: "profile update route handler", path: src/routes/api.ts}
+  - {id: T3.3, task: "wire route into router", path: src/routes/api.ts}
+  - {id: T3.4, task: "[EXTEND] lastLogin field on User", path: src/models/user.ts}
 tasks_total: 4
 tasks_completed: 4
 failed_tasks: []
@@ -122,6 +131,10 @@ feature: user-auth
 cycle: 4
 attempt: 2
 status: fail
+decomposition:
+  - {id: T4.1, task: "failing test for token refresh", path: src/middleware/auth.refresh.test.ts}
+  - {id: T4.2, task: "refresh contract test", path: src/middleware/auth.contract.test.ts}
+  - {id: T4.3, task: "refresh handling in auth middleware", path: src/middleware/auth.ts}
 tasks_total: 3
 tasks_completed: 2
 failed_tasks:

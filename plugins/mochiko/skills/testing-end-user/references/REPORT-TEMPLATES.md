@@ -23,10 +23,10 @@ feature: user-auth
 cycle: 3                    # omitted on final-validation
 attempt: 1                  # pairs with the cycle-report attempt this run verifies
 status: pass | fail | partial | timeout | error
-test_tasks:                 # one row per **TEST:** task executed
-  - {id: T3.5, classification: CLI, status: pass, asserts: "4/4", duration: 3.2s}
-  - {id: T3.6, classification: GUI, status: pass, asserts: "2/2", duration: 8.1s,
-     evidence: "/tmp/claude/verify-T3.6-shot.png"}
+test_tasks:                 # one row per **TEST:** gate executed (id = the owning cycle's gate)
+  - {id: C3-gate, classification: CLI, status: pass, asserts: "4/4", duration: 3.2s}
+  - {id: C3-gate-2, classification: GUI, status: pass, asserts: "2/2", duration: 8.1s,
+     evidence: "/tmp/claude/verify-C3-gate-2-shot.png"}
 quality_gates:
   lint:  {status: pass, command: "pnpm lint"}
   build: {status: pass, command: "pnpm build"}
@@ -53,7 +53,7 @@ Per failed/partial/timed-out/errored task, full detail under one section:
 ```markdown
 ## Failures
 
-### T{N}.{X} — {FAIL | PARTIAL n/m | TIMEOUT | ERROR}
+### C{N} gate — {FAIL | PARTIAL n/m | TIMEOUT | ERROR}
 
 | # | Assert | Expected | Actual | Status |
 |---|--------|----------|--------|--------|
@@ -99,7 +99,7 @@ cycle: 3
 attempt: 1
 status: pass
 test_tasks:
-  - {id: T3.5, classification: CLI, status: pass, asserts: "4/4", duration: 3.2s}
+  - {id: C3-gate, classification: CLI, status: pass, asserts: "4/4", duration: 3.2s}
 quality_gates:
   lint:  {status: pass, command: "pnpm lint"}
   build: {status: pass, command: "pnpm build"}
@@ -118,7 +118,7 @@ cycle: 4
 attempt: 2
 status: fail
 test_tasks:
-  - {id: T4.6, classification: CLI, status: fail, asserts: "1/2", duration: 5.1s}
+  - {id: C4-gate, classification: CLI, status: fail, asserts: "1/2", duration: 5.1s}
 quality_gates:
   lint:  {status: pass, command: "pnpm lint"}
   build: {status: pass, command: "pnpm build"}
@@ -128,7 +128,7 @@ recommendation: reject
 
 ## Failures
 
-### T4.6 — FAIL
+### C4 gate — FAIL
 
 | # | Assert | Expected | Actual | Status |
 |---|--------|----------|--------|--------|
@@ -157,7 +157,7 @@ persisted; regenerate full evidence on "View Details").
 ```
 AskUserQuestion(
   questions: [{
-    question: "Verification T{N}.{X} passed.\n\nAll {count} assertions passed in {time}s.\n\nRecommendation: Approve",
+    question: "Verification C{N} gate passed.\n\nAll {count} assertions passed in {time}s.\n\nRecommendation: Approve",
     header: "Checkpoint",
     options: [
       {label: "Approve", description: "Proceed to next task"},
@@ -174,7 +174,7 @@ AskUserQuestion(
 ```
 AskUserQuestion(
   questions: [{
-    question: "Verification T{N}.{X} needs review.\n\n{pass}/{total} assertions passed.\nFailed: {failed_assert_summary}\n\nRecommendation: {recommendation}",
+    question: "Verification C{N} gate needs review.\n\n{pass}/{total} assertions passed.\nFailed: {failed_assert_summary}\n\nRecommendation: {recommendation}",
     header: "Checkpoint",
     options: [
       {label: "Approve", description: "Accept despite failures"},
@@ -209,7 +209,7 @@ Failure evidence in the report is bounded; full evidence always survives in a lo
 report points to:
 
 - **Output excerpts:** if over 50 lines, include first 25 / last 25 with `[{N} lines
-  truncated]` between, plus the full-log path: `` Full log: /tmp/claude/verify-T{N}.{X}-output.log ``
+  truncated]` between, plus the full-log path: `` Full log: /tmp/claude/verify-C{N}-gate-output.log ``
 - **Assert tables:** if more than 10 asserts, show the failing rows plus the first passing
   rows to 10 total, with a count note.
 

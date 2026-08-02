@@ -8,6 +8,12 @@ One entry per session directory under `.mochiko/brainstorms/<topic-slug>/`, **ne
 
 ---
 
+## `plan-task-granularity` — task layer de-granularized; slice dissolves into specify with a first-class intent stage
+- **When:** 2026-08-02 · **Status:** accepted · record **un-reviewed** (bare session — direct `analysis-iterative` invocation; rulings user-accepted inline; D7 lead-reversed after contrast at the user's tilt)
+- **Artifacts:** [record.md](plan-task-granularity/record.md) (canonical, incl. grep-grounded orphan sweep + cold-buildable build surface)
+- **About:** the user's read — plan's per-task granularity is overkill. Ruled (D1–D9): plan stops at **cycle cards** (per-task lines/paths/TDD pre-ordering die; builder decomposes at build time, `executing-tdd-cycle` restriction removed) · one task artifact (mapping + tasks merge) · `task-architect` retires, slimmed `patterns-vertical-tdd` lead-dispatched seatless, graders fold into package reviewers (`review-task-artifacts`→`review-plan-artifacts`, `review-slices`→`review-specifications`) · `/mochiko:slice` merges into specify, `slices.md` becomes a spec **Delivery-slices section** (overlay + stamp machinery die) · specify opens with a setup-pattern **intent stage** (adaptive-probe agenda → one-screen confirmed synthesis landing as a spec Intent section, governing authoring, slicing, and stress-test rigor). Net: commands 6→5 · agents 9→8 · skills 27→25 · 3 templates dead. Supersedes: `vertical-graduation` overlay rationale · v0.32.0 plan-absorbs-tasks task-half.
+- **Landed:** DECISIONS.md row (2026-08-02) · BACKLOG build item · ROADMAP Now touch. **Built same day at v0.49.0** (one ceremony, four waves: spec surface · cycle cards · builder-decomposes · sweep; seven author≠grader audits — specify/plan/implement + 3 skills PASS, executing-tdd-cycle FAIL→fix→PASS on stale report examples; strip notes `[v0.49.0]` ×20; ripple: router · ARCHITECTURE.md · plugin.json 9→8 agents). Build item → trail; first-live-run watch open in BACKLOG.
+
 ## `command-architecture-realignment` — commands become goal + harness; choreography dies in place
 - **When:** 2026-08-02 · **Status:** accepted · record **un-reviewed** (bare session — direct `analysis-iterative` invocation; rulings user-accepted inline, flagged reversals ratified deliberately, Q4/Q5/Q7 streak flagged and read as engagement)
 - **Artifacts:** [record.md](command-architecture-realignment/record.md) (canonical)

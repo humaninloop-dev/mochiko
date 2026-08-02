@@ -6,6 +6,13 @@ Entry formats: `strips/README.md`. Wave context: skill-succinctness wave 1 (desi
 single physical lines, so the R2 line denominator undercounts this skill; dual accounting
 recorded here and flagged on the wave's ROADMAP row.
 
+## [v0.49.0] Router re-keyed — slice cluster + structuring table dissolved, 6→5 commands, 9→8 agents
+- **Disposition:** superseded → Specify cluster (authoring-slices row + intent-stage analysis-iterative row + Delivery-Slices consumption note) and Plan cluster (patterns-vertical-tdd + tasks-template rows)
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D1–D9)
+- **Content:** the "Structuring — mapping & tasks" section (4 rows: patterns-vertical-tdd task framing · review-task-artifacts + boundary note · tasks-template TN.X skeleton · taskarchitect-report) · the "Slice cluster" section (4 rows + the slices.md-keyed consumption note) · the `/mochiko:slice` entry row · the `task-architect` agent row · task-mapping/slices mentions in the artifact-format chain and devils-advocate roster. Full text: git history at v0.48.0.
+- **Kept deliberately:** the feature-close/audit deferral note (re-homed under the Specify cluster consumption note) · every surviving skill still carries a row (undiscoverable-by-construction rule held).
+- **Consumers assessed:** the router is itself the discoverability surface; all re-pointed rows verified against the post-wave file set.
+
 ## [v0.46.0] Doctrine rows out of the router
 - **Disposition:** superseded → commands self-contained; `workflow-contract` + `agent-dispatch` rows survive
 - **Tier failed:** n/a — supersession by ruling (ADR `.mochiko/decisions/2026-08-02-doctrine-purge-wave-1.md`; DECISIONS.md 2026-08-02 "Doctrine purge wave 1" row)

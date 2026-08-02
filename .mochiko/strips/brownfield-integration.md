@@ -5,6 +5,13 @@ Entry formats: `strips/README.md`. Wave context: skill-succinctness wave 1 (desi
 128 → 111 lines, 17 cut = 13% — **under the 30–70 never-stripped band**; per R3 the under-band
 second pass generates the survivor-provenance (KEPT) entries below.
 
+## [v0.49.0] Marker source re-keyed — builder classifies at decomposition
+- **Disposition:** superseded → tasks arrive tagged by the builder's own decomposition, classified from the cycle card's brownfield-exposure line (declared by patterns-vertical-tdd at design time)
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D2.1)
+- **Content:** "the marker **vocabulary** is defined by `patterns-vertical-tdd`, which stamps those markers onto tasks at design time" and the parallel description/interface-table clauses.
+- **Kept deliberately:** the entire consumption discipline (read-before-write, interface preservation, EXTEND-never-silently-becomes-MODIFY, conflict escalation) — untouched.
+- **Consumers assessed:** staff-engineer · executing-tdd-cycle (co-fires).
+
 ## [v0.25.0] Common Mistakes densified: 4 subsections → 4-row table (net −17 lines)
 - **Disposition:** compressed in place (densification, zero deletions)
 - **Tier failed:** n/a — form only

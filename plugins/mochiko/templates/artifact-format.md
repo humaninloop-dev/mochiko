@@ -3,7 +3,7 @@
 The single authoritative home of the form every mochiko **deliverable** follows — the
 pipeline artifact chain (`spec.md` · `requirements.md` · `constraints-and-decisions.md` ·
 `nfrs.md` · `data-model.md` · `contracts/api.yaml` · `quickstart.md` · `plan.md` ·
-`task-mapping.md` · `tasks.md` · `slices.md`) and setup's `codebase-analysis.md`. Artifact
+`tasks.md`) and setup's `codebase-analysis.md`. Artifact
 templates and artifact-authoring skills reference this file for the shared rules; each
 carries only its own section schema. (Reports are not deliverables — they follow
 `report-format.md`. Brainstorm records and the governance surfaces are governed by their

@@ -4,7 +4,7 @@ The single authoritative home of the shape every mochiko workflow **report** fol
 cycle reports, verification reports, reviewer reports, and producer disclosures. Report
 templates and report-producing skills reference this file for the envelope and the shared
 rules; each carries only its own payload schema. (Deliverables — spec.md, plan.md,
-tasks.md, slices.md, the working code — are not reports and are not governed here.)
+tasks.md, the working code — are not reports and are not governed here.)
 
 ## Who reads a report
 

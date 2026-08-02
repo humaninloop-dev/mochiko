@@ -6,6 +6,12 @@ user-approved 2026-07-25; design: `.mochiko/brainstorms/skill-succinctness-strip
 This was the sole remaining agent instance — the other five agents' Skills-Available paragraphs
 were ruled in their command waves.
 
+## [v0.49.0] Roster drops review-task-artifacts + review-slices
+- **Disposition:** superseded → the two absorbing skills already on the roster (review-plan-artifacts, review-specifications)
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D4+D9)
+- **Content:** frontmatter `skills:` entries `review-task-artifacts`, `review-slices` + their two Skills-Available bullets ("completeness review of `task-mapping.md` / `tasks.md`", "completeness review of the `slices.md` decomposition overlay").
+- **Consumers assessed:** router agent row (re-keyed same wave) · both dispatching commands.
+
 ## [v0.25.0] Six per-mount "Skills Available" paragraphs → one-liners (ruled precedent form)
 - **Disposition:** relocated → each mounted skill's own `description:` (the declared single source); the agent keeps the ruled precedent form (task-architect et al.): a single-source framing + one routing line per mount
 - **Tier failed:** 1 (each paragraph restated its mounted skill's description — the review-brainstorm and review-governance-intent instances at near-full length)

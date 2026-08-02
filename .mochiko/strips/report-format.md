@@ -15,6 +15,13 @@ document contracts are the **user's** artifacts and are untouchable. A prefix-ba
 `.mochiko/` would gut the KM module and the brainstorm command; 101 of this tree's 146
 `.mochiko/` references were correctly left alone on that test.
 
+## [v0.49.0] Deliverable list drops slices.md
+- **Disposition:** superseded → slicing is a spec.md section, covered by the existing spec.md list entry
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D6)
+- **Content:** "slices.md" in the not-reports deliverable list (line 7).
+- **Kept deliberately:** the `slice:` frontmatter field — slice-scoped runs still exist.
+- **Consumers assessed:** all report templates (envelope unchanged otherwise).
+
 ## [v0.46.0] Devolved-branch citation re-pointed
 - **Disposition:** superseded → `commands/implement.md`'s cycle checkpoint (the devolved-branch home after the shape's deletion)
 - **Tier failed:** n/a — supersession by ruling (ADR `.mochiko/decisions/2026-08-02-doctrine-purge-wave-1.md`; DECISIONS.md 2026-08-02 "Doctrine purge wave 1" row)

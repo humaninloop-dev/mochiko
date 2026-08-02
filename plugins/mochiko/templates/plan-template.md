@@ -68,10 +68,9 @@ See `contracts/api.yaml` for full OpenAPI specification.
 | `data-model.md` | ✅ Complete |
 | `contracts/api.yaml` | ✅ Complete |
 | `quickstart.md` | ✅ Complete — *or* "not applicable — no external integration surface" (conditional; see `patterns-api-contracts`) |
-| `task-mapping.md` | ✅ Complete |
-| `tasks.md` | ✅ Complete |
+| `tasks.md` (cycle cards) | ✅ Complete |
 
 ## Next Steps
 
-Run `/mochiko:implement` to execute this package — the accepted design, architecture, and task
-breakdown are its entry condition.
+Run `/mochiko:implement` to execute this package — the accepted design, architecture, and
+cycle cards are its entry condition.

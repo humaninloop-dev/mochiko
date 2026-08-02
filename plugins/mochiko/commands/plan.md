@@ -15,9 +15,11 @@ The package exists under `.mochiko/specs/<feature>/`: `requirements.md` (FR→TR
 `constraints-and-decisions.md` (C-XXX / D-XXX / IP-XXX) · `nfrs.md` (NFR-XXX) ·
 `architecture.md` — **signed off by the user, on a rendered diagram, before any detailed
 design was built on it** · `data-model.md` · `contracts/api.yaml` · `quickstart.md` when a
-real external-integration surface exists (its null path recorded in `plan.md`) ·
-`task-mapping.md` · `tasks.md` (`[US#]` tags, its Story→Cycle table a derived echo of the
-mapping) · `plan.md`, a summary over the validated artifacts, never new design. The package
+real external-integration surface exists (its null path recorded in `plan.md`) · `tasks.md`
+as **cycle cards** — per card: stories + slice rationale, foundation/feature type,
+dependencies, acceptance criteria by ID, a `**TEST:**` real-infrastructure gate, cycle-level
+brownfield exposure; no task lists, no file paths — the builder decomposes at build time ·
+`plan.md`, a summary over the validated artifacts, never new design. The package
 was independently graded — feasibility and completeness — traces the business requirements
 through to the task breakdown, carries no cross-artifact contradiction, conforms to the
 signed-off architecture, and the user accepted it whole. It is `/mochiko:implement`'s
@@ -52,13 +54,14 @@ never graded by anyone but its authors · user acceptance not given.
 ## Bindings
 
 - **Artifacts** as listed in the Goal; `plan.md` from `templates/plan-template.md`;
+  `tasks.md` from `templates/tasks-template.md` per `mochiko:patterns-vertical-tdd`;
   `architecture.md`'s structure and scope bound are `mochiko:patterns-system-design`'s; the
   structural D-XXX rows live in `constraints-and-decisions.md`'s designated section.
-- **Slice scope** (accepted `slices.md` present): its Graduation contract is the single home
-  for slice resolution, scope, extend-mode, and layout — `plan.md`, `architecture.md`, and
-  task artifacts land under `slices/<slice>/`; the architecture delta seeds from the
-  accumulated feature-root `architecture.md` / `ARCHITECTURE.md`, never per-slice from
-  scratch.
+- **Slice scope** (the spec's Delivery Slices section holds a decomposition): its Graduation
+  contract is the single home for slice resolution, scope, extend-mode, and layout —
+  `plan.md`, `architecture.md`, and `tasks.md` land under `slices/<slice>/`; the architecture
+  delta seeds from the accumulated feature-root `architecture.md` / `ARCHITECTURE.md`, never
+  per-slice from scratch.
 - **Baseline:** repo-root `ARCHITECTURE.md` is the current-state seed; absent → the
   reconstructed baseline is confirmed with the user before a delta is designed on it, and
   lands as the initial `ARCHITECTURE.md` where the KM copy

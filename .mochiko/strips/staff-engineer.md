@@ -3,6 +3,13 @@
 Entry formats: `strips/README.md`. Wave context: the implement cluster wave (v0.17.0). Implement-only
 agent (the TDD producer, mounted on `implement`) — strips ruled in-wave (single consumer).
 
+## [v0.49.0] Card-form wording re-key
+- **Disposition:** superseded → cycle-card vocabulary (card checkbox flip; exposure-driven read-before-write)
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D2+D2.1)
+- **Content:** "Updated `tasks.md` with completed task checkboxes (`[x]`)" · "when a task says EXTEND or MODIFY, you read the full file first".
+- **Kept deliberately:** persona otherwise untouched (keystone: no workflow trace added).
+- **Consumers assessed:** implement · executing-tdd-cycle.
+
 ## [v0.17.0] "Skills Available" scope duplication
 - **Disposition:** scope enumeration relocated → the two skills themselves
   (`mochiko:executing-tdd-cycle`, `mochiko:brownfield-integration`), which already single-source it —

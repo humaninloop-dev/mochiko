@@ -2,11 +2,10 @@
 
 The canonical `**TEST:**` verification-task grammar — marker set, field skeleton, action
 modifiers, assert patterns, worked examples, and legacy support. Owned by
-`patterns-vertical-tdd` (authored at design time into `tasks.md`); consumed at runtime by
-`testing-end-user`, which owns the execution/evaluation semantics. Split from
-[CYCLE-STRUCTURE.md](CYCLE-STRUCTURE.md) so the runtime verifier loads only the grammar.
+`patterns-vertical-tdd` (authored at design time onto each cycle card in `tasks.md`);
+consumed at runtime by `testing-end-user`, which owns the execution/evaluation semantics.
 
-The final task of each cycle (typically TN.4, or the last task in longer cycles) is the **Verification** task. This is NOT just another automated test—it is the gate that ensures the cycle delivers real, working functionality.
+Every cycle card closes with a **`**TEST:**` gate block**. This is NOT just another automated test—it is the gate that ensures the cycle delivers real, working functionality.
 
 ## What Verification MUST Include
 
@@ -17,15 +16,18 @@ The final task of each cycle (typically TN.4, or the last task in longer cycles)
 
 ## Unified TEST: Format
 
-Use the `**TEST:**` marker for all verification tasks:
+Use the `**TEST:**` marker for every gate — the block sits at the foot of its cycle card:
 
 ```markdown
-- [ ] **TN.X**: **TEST:** - {Description}
-  - **Setup**: {Prerequisites} (optional)
-  - **Action**: {Command or instruction}
-  - **Assert**: {Expected outcome}
-  - **Capture**: {console, screenshot, logs} (optional)
+**TEST:** {Description}
+- **Setup**: {Prerequisites} (optional)
+- **Action**: {Command or instruction}
+- **Assert**: {Expected outcome}
+- **Capture**: {console, screenshot, logs} (optional)
 ```
+
+(Legacy task-line form — `- [ ] **TN.X**: **TEST:** - {Description}` with indented fields —
+remains parseable; see *Legacy Format Support*.)
 
 A **downstream verification step classifies tasks at runtime** and decides whether to auto-approve or present a human checkpoint:
 
@@ -67,42 +69,42 @@ A **downstream verification step classifies tasks at runtime** and decides wheth
 
 **CLI verification** (may auto-approve):
 ```markdown
-- [ ] **T2.12**: **TEST:** - File watcher detects real file changes
-  - **Setup**: `mkdir /tmp/watcher-test`
-  - **Action**: `dart run bin/watcher.dart /tmp/watcher-test` (background)
-  - **Action**: `sleep 1 && touch /tmp/watcher-test/test.jsonl`
-  - **Assert**: Console contains "FileWatchEvent: created"
-  - **Capture**: console
+**TEST:** File watcher detects real file changes
+- **Setup**: `mkdir /tmp/watcher-test`
+- **Action**: `dart run bin/watcher.dart /tmp/watcher-test` (background)
+- **Action**: `sleep 1 && touch /tmp/watcher-test/test.jsonl`
+- **Assert**: Console contains "FileWatchEvent: created"
+- **Capture**: console
 ```
 
 **API verification** (may auto-approve):
 ```markdown
-- [ ] **T4.8**: **TEST:** - API server responds to health check
-  - **Setup**: Ensure database is running
-  - **Action**: `npm start` (background) (timeout 30s)
-  - **Action**: `sleep 2 && curl -s localhost:3000/health`
-  - **Assert**: Response status: 200
-  - **Assert**: Console contains "Server listening on port 3000"
-  - **Capture**: console
+**TEST:** API server responds to health check
+- **Setup**: Ensure database is running
+- **Action**: `npm start` (background) (timeout 30s)
+- **Action**: `sleep 2 && curl -s localhost:3000/health`
+- **Assert**: Response status: 200
+- **Assert**: Console contains "Server listening on port 3000"
+- **Capture**: console
 ```
 
 **GUI verification** (human checkpoint):
 ```markdown
-- [ ] **T4.16**: **TEST:** - Sessions appear in UI from real files
-  - **Setup**: Build app with `flutter build macos`
-  - **Setup**: Create test session file in Claude sessions directory
-  - **Action**: Launch the built application
-  - **Assert**: Session appears in list within 1 second
-  - **Assert**: Session shows correct project path with ~ alias
-  - **Capture**: screenshot
+**TEST:** Sessions appear in UI from real files
+- **Setup**: Build app with `flutter build macos`
+- **Setup**: Create test session file in Claude sessions directory
+- **Action**: Launch the built application
+- **Assert**: Session appears in list within 1 second
+- **Assert**: Session shows correct project path with ~ alias
+- **Capture**: screenshot
 ```
 
 **Subjective verification** (human checkpoint):
 ```markdown
-- [ ] **T5.10**: **TEST:** - Dashboard layout is well-organized
-  - **Action**: Open dashboard at localhost:3000/dashboard
-  - **Assert**: Layout feels balanced and spacing looks consistent
-  - **Capture**: screenshot
+**TEST:** Dashboard layout is well-organized
+- **Action**: Open dashboard at localhost:3000/dashboard
+- **Assert**: Layout feels balanced and spacing looks consistent
+- **Capture**: screenshot
 ```
 
 ## Bad Verification Tasks

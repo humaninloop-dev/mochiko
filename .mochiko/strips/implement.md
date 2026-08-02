@@ -14,6 +14,13 @@ entries below. **Also stale:** the shape is **v5** as of the v0.35.0 wave below,
 
 ---
 
+## [v0.49.0] Task-checkbox progress superseded by per-card checkboxes; builder decomposes
+- **Disposition:** superseded → Goal "every `tasks.md` cycle card is `[x]`" + decompose-at-build clause; Bindings deliverable/inputs/slice-scope re-keys
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D2+D2.1+D6)
+- **Content:** Goal "Every `tasks.md` task is `[x]`" · Not-done "an unchecked task" · Bindings "`tasks.md`'s checkboxes (`T{N}.{X}` namespace) are the progress surface, flipped as tasks complete" · `task-mapping.md` in Design inputs · Slice-scope key "(accepted `slices.md` present)".
+- **Kept deliberately:** TDD-built + real-infrastructure verification, cold-snapshot final validation, architecture-deviation consent, KM landing, all acceptance gates — untouched. `spec.md` added to Design inputs (cards cite acceptance-criteria IDs the builder resolves).
+- **Consumers assessed:** executing-tdd-cycle + testing-end-user (both re-keyed same wave) · router · ARCHITECTURE.md implement section.
+
 ## [v0.48.0] Shape v8 goal+harness rewrite — choreography dies in place
 - **Disposition:** superseded → the v8 goal+harness rewrite of this command (whole-file)
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/command-architecture-realignment/record.md` D1–D6; DECISIONS.md 2026-08-02 command-architecture row)

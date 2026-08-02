@@ -41,7 +41,7 @@ Verification testing exists to catch failures before they reach production. Ever
 Detect a verification task by its marker line:
 
 ```markdown
-- [ ] **TN.X**: **TEST:** - {Description}
+**TEST:** {Description}   <!-- at the foot of a cycle card; legacy task-line form also parses -->
 ```
 
 The full field skeleton (`**Setup**` / `**Action**` / `**Assert**` / `**Capture**`) and the legal marker set — unified `**TEST:**` plus the legacy variants (`TEST:VERIFY`, `TEST:CONTRACT`, `HUMAN VERIFICATION`) — are defined by the grammar owner in [`TEST-GRAMMAR.md`](../patterns-vertical-tdd/references/TEST-GRAMMAR.md) (§ *Unified TEST: Format*, § *Legacy Format Support*). Consume that vocabulary; do not re-enumerate it here. What this skill owns is *how to find and read those tasks* — the detection boundaries and field-extraction algorithm live in [references/TASK-PARSING.md](references/TASK-PARSING.md).

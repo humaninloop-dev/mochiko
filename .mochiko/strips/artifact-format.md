@@ -15,6 +15,12 @@ document contracts are the **user's** artifacts and are untouchable. A prefix-ba
 `.mochiko/` would gut the KM module and the brainstorm command; 101 of this tree's 146
 `.mochiko/` references were correctly left alone on that test.
 
+## [v0.49.0] Artifact chain drops task-mapping.md + slices.md
+- **Disposition:** superseded → both artifacts retired (mapping content on cycle cards; slicing a spec section)
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D3+D6)
+- **Content:** "`task-mapping.md` · " and " · `slices.md`" in the deliverable-chain enumeration.
+- **Consumers assessed:** authoring skills + review checklists named in the footer (all co-edited or retired this wave).
+
 ## [v0.44.0] Format version-history block relocated (class 2, 744 B / 10 lines)
 - **Disposition:** superseded → relocated **verbatim** into this note (below). In-file residue: the
   bare stamp plus the live routing (`Consumed by`), which is wiring a run consumes, not history.

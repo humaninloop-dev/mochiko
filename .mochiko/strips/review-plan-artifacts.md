@@ -10,6 +10,13 @@ bullet like the one stripped from `review-specifications`). One contested keep (
 is a library-wide consistency ruling, not a cluster call (see the wave return); note L16 already carries
 the `loop-discipline` reference the strip disposition would add.
 
+## [v0.49.0] Absorbed the cycle-card checks (from retired review-task-artifacts); boundary line removed
+- **Disposition:** superseded → the new Cycle cards row in Review Focus (the absorption); the When-NOT-to-Use "Task artifact review — use `mochiko:review-task-artifacts`" line deleted with its target
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D4)
+- **Content:** the one boundary bullet; the absorbed checks are additions.
+- **Kept deliberately:** the feasibility hand-off boundary — unchanged; the plan-review pair (completeness vs feasibility) survives whole.
+- **Consumers assessed:** devils-advocate · plan · router.
+
 ## [v0.46.0] loop-discipline pointers out
 - **Disposition:** superseded → the anti-rationalization content stands in this file's own red flags; loop ownership is the command's
 - **Tier failed:** n/a — supersession by ruling (ADR `.mochiko/decisions/2026-08-02-doctrine-purge-wave-1.md`; DECISIONS.md 2026-08-02 "Doctrine purge wave 1" row)

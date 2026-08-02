@@ -4,6 +4,12 @@ Entry formats: `strips/README.md`. Wave context: the specify cluster wave (v0.13
 Single-consumer primitive (the specify critique, mounted on `devils-advocate`) — strips
 ruled in-wave.
 
+## [v0.49.0] Absorbed the Delivery Slices grade (from retired review-slices)
+- **Disposition:** pure addition riding the decision row (new 11-check section + process step + checklist row + description clause) — recorded here because the absorption is half of a supersession pair (see `review-slices.md`)
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D9)
+- **Content:** nothing removed from this skill.
+- **Consumers assessed:** devils-advocate (mounts it) · specify (binds it).
+
 ## [v0.26.0] Question Format → template pointer; What to Avoid deleted; When-to-Use merged; Common Mistakes densified (body 166 → 128, −23%, in-band 10–40)
 - **Disposition:** deduped → `templates/advocate-report-template.md` (the **pre-existing**
   Clarifications block holds the exact question shape — Read and confirmed before landing;

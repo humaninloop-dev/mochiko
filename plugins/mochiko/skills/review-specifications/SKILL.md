@@ -1,6 +1,6 @@
 ---
 name: review-specifications
-description: This skill MUST be invoked when reviewing an already-drafted specification for gaps — finding missing requirements, ambiguities, unstated assumptions, and missing edge cases in an existing spec, and generating product-framed clarifying questions with concrete options and severity (Critical / Important / Minor). Reach for it on post-draft review work such as "review spec", "find gaps", "what's missing", "is the spec complete", or "clarify requirements" against a spec that already exists. SHOULD also invoke when checking spec.md for completeness or checking user stories for missing acceptance criteria before downstream design begins. This produces gap-finding INPUT (a severity-bucketed gap report plus clarifying questions), not a clearing PASS/FAIL verdict. For enriching a sparse or vague feature idea before any spec is drafted, use mochiko:analysis-iterative instead.
+description: This skill MUST be invoked when reviewing an already-drafted specification for gaps — finding missing requirements, ambiguities, unstated assumptions, and missing edge cases in an existing spec, grading its Delivery Slices section (story coverage, dependency closure, foundation legitimacy, Feature-Done, and the depth second-guess), and generating product-framed clarifying questions with concrete options and severity (Critical / Important / Minor). Reach for it on post-draft review work such as "review spec", "find gaps", "what's missing", "is the spec complete", or "clarify requirements" against a spec that already exists. SHOULD also invoke when checking spec.md for completeness or checking user stories for missing acceptance criteria before downstream design begins. This produces gap-finding INPUT (a severity-bucketed gap report plus clarifying questions), not a clearing PASS/FAIL verdict. For enriching a sparse or vague feature idea before any spec is drafted, use mochiko:analysis-iterative instead.
 ---
 
 # Reviewing Specifications
@@ -68,6 +68,28 @@ The five requirement-defect classes those questions hunt (the canonical hunt tax
 | **Assumption gaps** | assumptions that should be requirements (and the reverse); hidden dependencies |
 | **Contradictions** | requirements that conflict; inconsistent terminology; mutually exclusive acceptance criteria |
 
+## The Delivery Slices section
+
+The spec's Delivery Slices section is graded with the spec — same reviewer, same report. It is
+either a decomposition or the single line "Single slice — whole spec."; both shapes get graded
+(the one-liner via the depth second-guess). Vocabulary guard: a **graduation slice** groups
+user stories at spec level; a **vertical slice (cycle)** is implementation-level, downstream —
+a decomposition whose groups are shaped like implementation cycles is a wrong-altitude finding.
+
+| # | Check | Question | Typical severity |
+|---|-------|----------|------------------|
+| 1 | Story coverage | Every spec story in some slice — no orphans, no invented stories? | Critical |
+| 2 | Exactly one home | No story in two slices? | Critical |
+| 3 | Dependency closure | Every slice designable/buildable from earlier slices only? | Critical |
+| 4 | Foundation legitimacy | First slice establishes the shared design core AND delivers a testable journey (pure plumbing forbidden)? | Critical/Important |
+| 5 | Ordering rationale | Dependency first, priority as tie-break — and the rationale recorded? | Important |
+| 6 | Sizing | Within the soft 2–4 target, or explicitly justified? | Important |
+| 7 | Journey coherence | Each slice a coherent user journey, not a grab-bag? | Critical |
+| 8 | Cross-cutting visibility | Cross-cutting stories homed earliest-meaningful with extend obligations recorded on every touched slice? | Important |
+| 9 | Feature-Done SC coverage | Every SC-# mapped to a verifying slice? | Critical |
+| 10 | Feature-Done seams | Cross-slice seams named where slices interact? | Important |
+| 11 | Depth second-guess | Both directions: a decomposition the intent/spec didn't warrant, or a "Single slice" line hiding real value seams? Grades the depth call itself against the Intent section's delivery ruling. | Important |
+
 ## Severity Classification
 
 | Severity | Definition | Action |
@@ -90,9 +112,11 @@ report path, return the same structure inline.
 2. **Check each user story** for completeness
 3. **Verify success criteria** are measurable
 4. **Identify missing edge cases** for each flow
-5. **Classify gaps** by severity
-6. **Generate questions** with concrete options
-7. **Group related gaps** to avoid overwhelming stakeholders
+5. **Grade the Delivery Slices section** against the 11-check table above, reading the
+   Intent section's delivery ruling first (the depth second-guess is graded against it)
+6. **Classify gaps** by severity
+7. **Generate questions** with concrete options
+8. **Group related gaps** to avoid overwhelming stakeholders
 
 The spec follows the deliverable envelope (`templates/artifact-format.md`): one-line
 scenarios (2-3 per story), one-line FR/SC/edge-case entries, compact entities. **Density
@@ -112,6 +136,7 @@ Before finalizing the review, verify:
 - [ ] "Why this matters" explains user/business impact
 - [ ] Related gaps grouped together
 - [ ] No implementation details in questions
+- [ ] Delivery Slices section graded (all 11 checks; the single-slice line via the depth second-guess)
 
 ## Common Mistakes
 
