@@ -297,6 +297,37 @@ Raw captures (2026-08-01) — to triage/brainstorm; grooming may re-key into fin
   with non-exhaustive examples (lands at the build's wave 2). **Remaining here: the sweep
   work itself** — term hunting across runtime prose, worked examples for the ban's list.
 
+## To-triage captures (brainstorm pending)
+
+Raw captures (2026-08-04) — user-added, brainstorm pending; grooming may re-key into
+existing themes (Design track · Token-reduction/quality · Production-only).
+
+- [ ] **Design/UX skills for product engineer** (2026-08-04; provenance: capture session,
+  to-brainstorm) — add design + UX competence to the product-engineer surface. Scope the
+  brainstorm against what already exists so it doesn't duplicate: the **Design track** shelf
+  item (`ui-designer` + `analysis-screenshot` / `authoring-design-system` /
+  `patterns-flow-mapping` / `patterns-interface-design`, HIL port) and the landed
+  **UX-prototype stage** in specify (`authoring-prototype`, UX-D1–D9, v0.50.0). Decide:
+  does design/UX ride the product-engineer persona as skills, or a dedicated `ui-designer`
+  cluster the persona composes? Persona-carries-judgment / skill-carries-procedure (five-axis
+  #4) constrains the shape. Resolve overlap with the Design track before authoring.
+- [ ] **Quality-control pipeline — deepeval or equivalent** (2026-08-04; provenance: capture
+  session, to-brainstorm) — explore deepeval (or a comparable eval/QC pipeline) for automated
+  quality control over produced artifacts / generated code. Open: what does it grade (spec
+  fidelity · code · agent output), how it composes with the existing producer↔validator
+  pairing (five-axis #5) and the qa-engineer / testing-* skills, and whether it's a kernel-shaped
+  dependency (constraint check — no Python/MCP brain code; must live as skill/agent or native CC).
+  Brainstorm the fit before adopting any external harness.
+- [ ] **Incremental production-hardening levels** (2026-08-04; provenance: capture session,
+  to-brainstorm) — setup hardening for production, with levels of complexity applied
+  incrementally. **Direct tension with PO-D1–D7** (production-only, 2026-07-30): the ruling
+  asserts *one* production floor, **no tier ladder** (`production-only-focus/record.md`). An
+  "incremental levels" proposal must engage that ruling head-on — either it's a re-open of
+  PO-D1 (needs a new founder ruling) or it's an onboarding/adoption ramp *onto* the single
+  floor (staged assertion, not staged standards) that leaves the floor itself untiered. Also
+  relate to the floor-waiver mechanism (D4/D7) which already gives young teams a graduated path.
+  Brainstorm must first classify which of the two it is.
+
 ## Defects & empirical checks
 
 - [ ] **Inter-agent message delivery — content emitted as text, not `SendMessage`** (2026-08-01;
@@ -368,8 +399,10 @@ Raw captures (2026-08-01) — to triage/brainstorm; grooming may re-key into fin
   seeding. **Revisit: first multi-stack setup run.**
 - [ ] **`codebase-inventory-schema.json` port** (2026-06-27; provenance:
   `.mochiko/transform/setup/assess-codebase-inventory-schema.md` — the full draft-07 shape
-  survives in-repo; HIL submodule removed 2026-07-21) — the collision/spec-plan-mode contract
-  for `analysis-codebase`; port with the spec/plan cluster and wire its consumer then.
+  survives in git history only, `.mochiko/transform/` deleted 2026-08-04; recover via
+  `git log --all -- .mochiko/transform/setup/assess-codebase-inventory-schema.md`; HIL
+  submodule removed 2026-07-21) — the collision/spec-plan-mode contract for
+  `analysis-codebase`; port with the spec/plan cluster and wire its consumer then.
 - [ ] **Phase-A0 codebase-discovery reclaim** (2026-07-01) — `review-plan-artifacts`' parked
   discovery review (documented in its ARTIFACT-CHECKLISTS); the brownfield/discovery track must
   reclaim it.

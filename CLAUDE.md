@@ -73,7 +73,7 @@ These were read-only reference sources:
 
 ## How to work in this repo
 
-> The HIL→mochiko transformer cluster was **retired 2026-07-18** (`.mochiko/decisions/2026-07-18-transformer-cluster-retired.md`); the run archive is `.mochiko/transform/`. New primitives are authored directly in mochiko form.
+> The HIL→mochiko transformer cluster was **retired 2026-07-18** (`.mochiko/decisions/2026-07-18-transformer-cluster-retired.md`); its run archive (`.mochiko/transform/`) was deleted from the tree on 2026-08-04 and survives in git history only (provenance queries: `git log --all -- .mochiko/transform`). New primitives are authored directly in mochiko form.
 
 ### Starting new work
 
