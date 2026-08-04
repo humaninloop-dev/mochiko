@@ -6,11 +6,11 @@ surface is [`ROADMAP.md`](ROADMAP.md). Closing an item = the KM landing ritual
 (`.mochiko/memory/knowledge-management.md`): decision row + move here → the trail
 (`.mochiko/archive/backlog-trail.md`) + touch ROADMAP.md. No `[x]` lives here.
 
-*Last groomed: 2026-08-02 (task-granularity build close) — baseline: 55 open items (+1: the
-UX-prototype first-live-run watch, opened at the v0.50.0 build close; the v0.49.0 build item
-opened and delivered to the trail same day, replaced in place by its first-live-run watch;
-prior baseline 54 at the 2026-08-01 output-style close; 52 at the 2026-07-25 migration),
-per-item bound ≤15 lines.*
+*Last groomed: 2026-08-04 (epic-closure groom) — baseline: 52 open items (−6 closed as
+superseded/discharged by the v8 realignment, ADR `2026-08-04-groom-epic-closures`; +1 new
+defect: `governance-intent-template.md` weight-card staleness; two empty sections removed
+— goal-shape rebuild, shape-v7; staleness folds re-keyed the dogfood set transport-neutral;
+prior baseline 55 at the 2026-08-02 task-granularity close), per-item bound ≤15 lines.*
 
 ---
 
@@ -34,11 +34,14 @@ Ruling: DECISIONS.md row 2026-08-02 (UX-D1–D9); built same day at v0.50.0.
 Ruling: DECISIONS.md row 2026-08-02 (D1–D9); built same day at v0.49.0 (trail).
 
 - [ ] **First live v0.49.0 pipeline run** (2026-08-02; provenance:
-  `.mochiko/brainstorms/plan-task-granularity/record.md`) — watch the first
-  specify/plan/implement run on the new surface: intent stage fires adaptive (not
-  questionnaire), Delivery Slices co-accepted, cycle cards graded by the package reviewers,
-  builder decomposition disclosed in cycle reports, slice-scoped runs resolve the Graduation
-  contract from the spec section.
+  `.mochiko/brainstorms/plan-task-granularity/record.md`; absorbed the slice-dogfood
+  survivors at the 2026-08-04 groom) — watch the first specify/plan/implement run on the new
+  surface: intent stage fires adaptive (not questionnaire), Delivery Slices co-accepted,
+  cycle cards graded by the package reviewers, builder decomposition disclosed in cycle
+  reports, slice-scoped runs resolve the Graduation contract from the spec section. Folded
+  slice sub-paths (ex-residual D): single-slice null exit (small spec) · spec-amend on a
+  mid-flight edit (graded-amendment machinery died with the overlay — watch what replaces
+  it) · plan's `infeasible` escalation.
 
 ## Open design decisions
 
@@ -49,15 +52,6 @@ Ruling: DECISIONS.md row 2026-08-02 (D1–D9); built same day at v0.49.0 (trail)
 - [ ] **Claude-Code portability** (2026-06-27; provenance: unrecoverable — same source) —
   `rfc2119-invocation-trigger` + `disable-model-invocation` are CC-specific: adopt-and-bind or
   abstract? Surfaces when the router evolves.
-- [ ] **Command orchestration substrate — teams vs `Task`-subagents** (2026-06-30,
-  `.mochiko/brainstorms/command-altitude/synthesis.md`) — all six commands are team-form by
-  ruling, but **no run has yet proven team-form execution**: three defect runs dispatched
-  subagents despite the mandate (latest 2026-07-31, transcript in
-  `plan-run-transport-forensics/inputs/` — "the team never existed"; probe rebuilt v0.38.0 on
-  the team-config roster check, not yet exercised live). Blocks on the team-form
-  confirm-or-revert item below. Datapoint history: archive `DECISIONS.md` rows +
-  `brainstorm-command-rewrite` / `brainstorm-v2-revision` / `setup-v3-team-defect` /
-  `plan-run-transport-forensics` records.
 - [ ] **Module-elicitation scaling** (2026-07-17, `setup-operating-docs-scaffolding` record) —
   one interrogation dimension per future module, or a consolidated modules beat? Datapoints:
   `layer-rules` landed as a *beat* (2026-07-21); compliance modules ruled fact-triggered off
@@ -94,8 +88,9 @@ Rulings D1–D5 (DECISIONS.md 2026-07-25; record `team-method-vs-command-shape` 
 un-reviewed). Build items DONE 2026-07-31 at v0.39.0 → trail; the deferred direction below is
 the open remainder.
 
-- [ ] **Deferred direction (recorded, not ruled)** — build-room merge (structuring seat inside
-  implement), slice-fold toward a four-command surface, multi-stream implement (frozen seams ·
+- [ ] **Deferred direction (recorded, not ruled)** — slice-fold delivered 2026-08-02
+  (`/mochiko:slice` dissolved into specify at v0.49.0, commands 6→5); remaining: build-room
+  merge (structuring seat inside implement) + multi-stream implement (frozen seams ·
   single-ownership · wait-fallbacks as task-artifact content). Re-open in a dedicated session;
   design input preserved in the record (R1/D4).
 
@@ -112,8 +107,8 @@ build item in the trail.
   exercised (un-rendered, G3 stamp). Open: R6a bootstrap (baseline existed, branch never
   entered) · the rendered-diagram primary path · implement's cycle open/close deviation
   self-check + built-vs-approved diff at the acceptance gate (seam-N1) · the
-  `ARCHITECTURE.md` fold staying distinct (no implement run yet). Rides the team-form
-  confirm-or-revert.
+  `ARCHITECTURE.md` fold staying distinct (no implement run yet). (Team-form rider dropped
+  2026-08-04 groom — transport-neutral ruled 2026-08-02, command-architecture-realignment D5.)
 - [ ] **Per-slice `architecture.md` ↔ repo `ARCHITECTURE.md` tie-back** (2026-08-01;
   provenance: mochiko-app dogfood observation, to-brainstorm) — in the mochiko-app dogfood the
   design-time `architecture.md` was written into a spec *slice* subfolder; open question is how
@@ -122,68 +117,32 @@ build item in the trail.
   (feature-level vs slice-level), the fold seam between the two, and whether per-slice nesting is
   a placement anomaly or intended granularity.
 
-## Command goal-shape rebuild
+## Pipeline dogfood
 
-Rulings CS-D1–D10 (DECISIONS.md 2026-07-30; record
-`.mochiko/brainstorms/command-succinctness-strip/record.md` — pair-reviewed, verify CLEAN).
-Steps 1–4 DONE → trail (v0.33.0–v0.35.0); the CS-D7-scoped `loop-discipline` all-consumer
-pass closed 2026-07-31 (v0.39.0, trail); the read-drop deferral closed by supersession at the
-doctrine purge (2026-08-02, v0.46.0 → trail). No open remainder.
+Every command passed structural verification + the kinako artifact pass on content. Named
+per-command checks: archive `DECISIONS.md` + each command's strip note. Kinako artifact
+evidence: the 2026-07-24 validation pass (evidence repo `humaninloop-dev/kinako`). The
+team-form qualifier on these checks died 2026-08-04 groom (transport-neutral ruled
+2026-08-02, D5) — open checks re-read as behavior checks on whatever transport the lead
+composes; the v8 form means each command's next run is also its v8 first-live-run.
 
-## Lead-owned process flexibility build (shape v7)
-
-Rulings D1–D6-as-amended + A1–A4 (DECISIONS.md 2026-08-01; record
-`.mochiko/brainstorms/lead-owned-process-flexibility/record.md` — pair-reviewed 40→39→31,
-31/31 dispositioned, verify CLEAN round 3).
-
-- [ ] **Shape-v7 post-conversion watches** (2026-08-01; conversions DONE at v0.43.0 → trail) —
-  open remainders of the discharged convert-on-touch item: align the
-  `review-brainstorm`/`review-governance-intent` verify-pass trigger phrasing with U1-B at
-  those skills' next touch (logged in `.mochiko/strips/sized-end-stage-review.md`; the
-  template itself deleted at doctrine purge wave 2, v0.47.0 — the watch survives) · each
-  converted command's first live run is its own checkpoint (the read-drop trigger it also
-  carried is moot — superseded 2026-08-02, doctrine purge) ·
-  R22: the first external dogfood grades the uniform stated default for distributed leads ·
-  R21's declaration + trail estimate awaits live-run confirmation (both conversion sites
-  measured; regressive fixed-cost finding — near-constant v7 constructs, so lighter commands
-  pay a larger share — `.mochiko/strips/command-shape.md`) · token-epic figure: the always-read
-  floor now 52,129 B/run (−581 at the marker retirement, the first shrink in three revisions).
-
-## Pipeline dogfood & confirm-or-revert
-
-Every command passed structural verification + the kinako artifact pass on content; the
-**team-form half is unproven** (no transcripts). Named per-command checks: archive
-`DECISIONS.md` + each command's strip note. Kinako artifact evidence: the 2026-07-24 validation
-pass (evidence repo `humaninloop-dev/kinako`).
-
-- [ ] **Team-form confirm-or-revert — instrumented run (residual A)** (2026-07-24) — the
-  capture half is DONE: the 2026-07-31 plan S1 run + forensics record hold all three artifacts
-  (seat spawn — every seat a subagent, F1 · standing-vs-respawn — 14+ passes, respawn with a
-  name-takeover send failure · messaging — zero peer edges across ~44 hand-offs). Open: the
-  **verdict** — a run on true team transport (repaired v0.38.0 roster probe, never exercised
-  live) or an explicit accept-on-weak-evidence ruling. Blocks the orchestration-substrate
-  decision above. A revert logs `RETURNED:` in the command's strip note.
 - [ ] **Setup v3 dogfood** (2026-07-18, carried) — live-run residue only (authoring half
   kinako-validated). Partial credit (2026-07-31 mochiko-app *amend*): G3 sizing gate fired ·
   injection-probe G5 offered and ran (residual C met). Open: validator catches a seeded
   missing-companion · downstream producer receives CLAUDE.md governance natively · region
-  regenerates idempotently (amend showed non-destructive only) · G3 waiver + delta-pass
+  regenerates idempotently (amend showed non-destructive only) · waiver + delta-pass
   branches · KM dimension-7 + collision beats — and the fresh-setup form itself.
 - [ ] **Specify dogfood** (2026-06-27, carried) — loop content kinako-validated (3 rounds to
-  `ready`); open: team-form checks (probe fires, standing producer messaged round > 1, critic
-  cold).
+  `ready`); open: standing producer messaged round > 1 · critic cold — plus the v0.49.0/v0.50.0
+  first-live-run watches above (intent stage, Delivery Slices, UX-prototype).
 - [ ] **Plan dogfood (+ tasks, inherited by the merged command)** (2026-07-01, carried) —
   content kinako-validated; the 2026-07-31 S1 run observed the named behaviors (standing
   producer across the phase boundary · incremental advocate · architect once +
-  structural-change re-fire) **but on subagent transport** (F1 — the probe false-passed), so
-  the team-form qualifier failed on all. Open: the same checks on proven team transport.
+  structural-change re-fire) on subagent transport — now legitimate under D5; open: the same
+  behaviors on the v8 cycle-card form (first v8 plan run).
 - [ ] **Implement dogfood** (2026-07-01, carried) — content kinako-validated (21 cycles, 407
-  tests); open: team-form checks (standing producer across cycles/fix-pass, cold qa, confidence
-  gate observed live).
-- [ ] **Slice dogfood + unexercised sub-paths (residual D)** (2026-07-02, carried) — content
-  kinako-validated (4 slices, extend-mode); open: **null exit** (small spec) ·
-  **graded-amendment/breaking change** (mid-flight spec edit) · **`infeasible` escalation** ·
-  the **"Research this" → Explore** branch · team-form checks.
+  tests); open: standing producer across cycles/fix-pass · cold qa · builder decomposition
+  disclosed (v0.49.0) · dependency-cold snapshot final validation observed live.
 - [ ] **Brainstorm v2.2 review-machinery dogfood** (2026-07-16) — the sized lens-split review
   has now run in ~10 pair-form sessions; still open formally: the cost re-measure (target pair
   ≈150–170k; carrier retired at v0.33.0 — rides the OTel probe; one whole-session figure
@@ -208,7 +167,8 @@ in this repo's git history at `7920ccb` BACKLOG).
   defaults; T3's two branches): archive ROADMAP wave-1/wave-2 trail entries.
 - [ ] **Cluster-2 ratification wave** — pressure-tested, awaiting founder ratification; lands
   as one edit wave (author ≠ grader), ruling → DECISIONS.md row. Items (owner · n): 
-  surface-task rule (`patterns-vertical-tdd` + `review-task-artifacts`; n=2) · journey-gate
+  surface-task rule (`patterns-vertical-tdd` + `review-plan-artifacts`, which absorbed
+  `review-task-artifacts` at v0.49.0; n=2) · journey-gate
   class, graded form (`testing-end-user` + `qa-engineer`; blocks feature-close; n=5) · two
   spec-review hunt classes — display meaningfulness + lifecycle twins (`review-specifications`;
   n=2; hunt-list growth guard n≥2 rides along) · split-gate assert-union invariant
@@ -232,16 +192,9 @@ Epic + angles: DECISIONS.md rows 2026-07-23/24; records `workflow-token-reductio
 together. Seam note (2026-08-01, `verbosity-caveman-ops-separation` D8): epic D3's
 conditional-prose intent was **finished by the output-style build wave 1** (v0.44.0) — never a
 wave-3 candidate again; the always-read floor re-baselined at that build (−4,490 B/run on
-`command-shape.md`).
+`command-shape.md`). Epic D5 (sizing-gate generalization) closed 2026-08-04 — superseded at
+the v8 rebuild (trail; ADR `2026-08-04-groom-epic-closures`).
 
-- [ ] **D5 — review sizing gates generalized + floored verification depth** — command texts of
-  the five pipeline stages (verification depth never zero, real-infra floor). Gap sharpened
-  2026-08-01 (delivery sweep): the v7 flexibility ruling makes stated defaults lead-departable
-  while D5's never-zero floor is encoded nowhere — land it as a floor invariant (P18 carrier).
-  Partial landing at the v0.43.0 conversion wave: implement's P18 encodes the never-zero /
-  real-infra depth floor verbatim in intent; reviewer-count sizing is now lead-composed under
-  v7 stated defaults (U4). Remaining: rule whether v7 composition + the weight card discharges
-  D5's sizing-gate generalization for the other four stages — take it at the next groom.
 - [ ] **D2 upgrade — the one-shot OTel probe** — enable documented config in a dogfood run;
   observe console/per-run aggregation/teammate attribution; automation graduates on probe
   evidence only. Standing-seat D4 + model-tiered D6 probe questions ride it, plus TC's three
@@ -323,13 +276,14 @@ Raw captures (2026-08-01) — to triage/brainstorm; grooming may re-key into fin
   behavior at the first non-npm composed-in run (F71; kinako/Flutter the live candidate) ·
   (F66 discharged 2026-08-01: the v0.43.0 wave converted implement, first-conversion
   ceiling terms landed.)
-- [ ] **Layer-2 working-tree ownership gap** (2026-08-01; provenance:
-  `validator-worktree-isolation` record, Open thread 6) — command-shape Layer 2 says nothing
-  about seats sharing one working tree (F19: independence is defined context-scoped) while
-  three real authoring-side collisions are on record (F48: the implement/specify/setup strip
-  notes, all recovered by falling back to HEAD as baseline). Scope a doctrine line — tree
-  ownership / write discipline per seat — kept out of the validator-isolation session's
-  validator-only scope by ruling (D1).
+- [ ] **Working-tree ownership gap** (2026-08-01; provenance:
+  `validator-worktree-isolation` record, Open thread 6; doctrine home dissolved 2026-08-04
+  note) — no shipped text governs seats sharing one working tree (independence is defined
+  context-scoped, F19) while three real authoring-side collisions are on record (F48: the
+  implement/specify/setup strip notes, all recovered by falling back to HEAD as baseline).
+  Original home (`command-shape.md` Layer 2) deleted at v0.46.0 — a fix now lands as
+  per-command Harness lines or a memory rule. Scope tree ownership / write discipline per
+  seat; kept out of the validator-isolation session's validator-only scope by ruling (D1).
 - [ ] **Output-style post-build remainders** (2026-08-01; build DONE at v0.44.0 → trail;
   provenance: `verbosity-caveman-ops-separation` record + DECISIONS build row) — was three
   riders; **rider (1), the D6 trio move, closed 2026-08-02 by supersession**: probe re-run
@@ -363,20 +317,21 @@ Raw captures (2026-08-01) — to triage/brainstorm; grooming may re-key into fin
   fact. Brainstorm: root cause (affordance/prompt gap that lets a seat narrate a hand-off instead
   of calling `SendMessage`), whether a structural nudge or gate can force tool-call dispatch at
   hand-off boundaries, and detection (a hand-off round that produced no `SendMessage` tool call).
-  Relates to Pipeline-dogfood residual A + the orchestration-substrate open decision.
-- [ ] **Shape-home keying watch: "Out of rounds = escalate, never done."** (2026-07-30,
-  shape-audit advisory at the PO wave) — verbatim shape prose (`command-shape.md` bounds line)
-  carried by **4 of 6** commands (setup · plan · slice · specify; line-wrapped — flatten
-  before counting). The mandated-exemplar disposition is already recorded
-  (`.mochiko/strips/validation-command-shape.md` [v0.34.0], re-ratified [v0.40.0]), so no
-  check-8 marker fires by design. Remaining trigger only: raise if a command's Constraints
-  block ever needs those words back (setup sits at 4 w of Constraints headroom).
+  (Its former companions — residual A + the substrate decision — closed 2026-08-04, superseded
+  by transport-neutral D5; this defect is now the sole open teammate-messaging thread.)
+- [ ] **`governance-intent-template.md` weight-card staleness** (2026-08-04, groom
+  fact-check) — lines 157/160 still key the review-sizing statement and the `none` waiver to
+  "the user's run-start **weight card**", a construct deleted at the v8 rebuild (v0.48.0,
+  command-architecture-realignment D2). Re-key both lines to the v8 reality (lead-composed
+  sizing under plan approval). Shipped-primitive edit — strip entry + independent audit per
+  the primitive-edit ceremony.
 - [ ] **Fresh-session description-delivery probe** (2026-07-25, succinctness R1; re-scoped
-  2026-08-01) — total-budget hypothesis dead: no description exceeds 1,536 chars (max 1,517),
-  the two repaired descriptions deliver complete, yet **five** skills render name-only
-  (validation-constitution · review-slices · review-task-artifacts · testing-end-user ·
-  testing-governance-injection; observed from a subagent context, not a cold session).
-  Re-scope: diagnose the five-skill absent-fire set in a cold-session probe.
+  2026-08-01; set shrunk 2026-08-04 groom) — total-budget hypothesis dead: no description
+  exceeds 1,536 chars (max 1,517), the two repaired descriptions deliver complete, yet skills
+  render name-only (observed from a subagent context, not a cold session). Affected set now
+  **three** — validation-constitution · testing-end-user · testing-governance-injection
+  (review-slices + review-task-artifacts deleted at v0.49.0). Re-scope: diagnose the
+  absent-fire set in a cold-session probe.
 - [ ] **HTML-comment stripping in `.claude/rules/` files** (2026-07-18) — docs confirm
   stripping for CLAUDE.md, silent for rules files. If stripped, in-file trace comments become a
   free option. Method: `InstructionsLoaded` hook or `/context` on a comment-bearing rule.
@@ -393,8 +348,9 @@ Raw captures (2026-08-01) — to triage/brainstorm; grooming may re-key into fin
 - [ ] **Experimental-API churn watch** (2026-07-04; re-baselined 2026-08-01 at CC v2.1.220) —
   if an update breaks spawn/messaging semantics, re-verify against docs. Fired once and
   discharged clean: the addressability discriminator rotted, probe rebuilt on the documented
-  team-config roster check (v0.38.0) — the worked precedent for the next firing. The commands
-  name capabilities, not version mechanics, to keep this surface small.
+  team-config roster check (v0.38.0) — the worked precedent for the next firing. (The roster
+  probe itself died with the team mandate at the v8 rebuild, 2026-08-02 D5; the watch
+  survives — commands still name spawn/messaging capabilities.)
 - [ ] **Two-level "slice" vocabulary watch** (2026-07-02) — graduation slice (spec-level) vs
   vertical slice (cycle-level); if dogfooding shows conflation, sharpen triggers or rename one
   level.
@@ -431,8 +387,8 @@ Raw captures (2026-08-01) — to triage/brainstorm; grooming may re-key into fin
   a real mid-flight amendment hits.
 - [ ] **Context handoff document** (idea) — cross-session serialization; a deliberate add-on
   if pursued (setup/specify dissolved the HIL carrier into the lead).
-- [ ] **Deliberate shortcut ledger** (idea; defect-backed 2026-08-01) — deferral tracking with
-  upgrade triggers; the parallelism entry above is its first live candidate. Delivery sweep:
-  `implement.md:102` names `deliberate-shortcut-ledger` as a live mechanism but no carrier
-  exists anywhere (a protected, strip-recorded line pointing at nothing), and ≥5
-  ledger-shaped entries sit scattered across records — build the carrier or re-point the line.
+- [ ] **Deliberate shortcut ledger** (idea; defect-backed 2026-08-01; defect half discharged
+  2026-08-04 groom) — deferral tracking with upgrade triggers; the parallelism entry above is
+  its first live candidate. The dangling `implement.md:102` reference died with the v8 rebuild
+  (v0.48.0 — no shipped file names the ledger now); remaining: ≥5 ledger-shaped entries sit
+  scattered across records — decide whether a carrier is worth building.
