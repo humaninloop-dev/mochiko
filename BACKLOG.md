@@ -43,6 +43,25 @@ Ruling: DECISIONS.md row 2026-08-02 (D1–D9); built same day at v0.49.0 (trail)
   mid-flight edit (graded-amendment machinery died with the overlay — watch what replaces
   it) · plan's `infeasible` escalation.
 
+## Adversarial-review ceiling benchmark
+
+Ruling: DECISIONS.md row 2026-08-04 (AR-D1–D6); test deliberately parked for a dedicated session (AR-D5).
+
+- [ ] **Run the seeded-defect benchmark** (2026-08-04; provenance:
+  `.mochiko/brainstorms/adversarial-review-generality/record.md`, AR-D3/D4/D6 as amended at
+  review) — cold-runnable spec: one real spec artifact (kinako or mochiko-app); independent
+  seeder pre-sweeps (labels pre-existing defects) then injects ~10 seeds, ~60/40
+  in/off-taxonomy, off-taxonomy seeds **off-list-but-in-jurisdiction only** (wrong domain
+  model, mis-modeled actor incentives, missing regulatory/product-legal constraint,
+  cross-feature P1-journey interaction; technical shapes banned per F1 — historical dogfood
+  misses pass the same filter). Four arms on `review-specifications`: baseline · A floor-line
+  · B free-hunt-first · C disjoint lens briefs; ≥2 replicates/arm, hit = strict majority
+  (2 replicates = both). Scoring: separate cold scorer holds seed key (never seeder/arm);
+  match = location + substance; borderlines escalate to user. Verdict shape (AR-D6):
+  off-taxonomy recall primary · in-taxonomy non-regression + precision guards · per-arm
+  counts reported · null → no build. A+B composite a build-time option on a B win. Extension
+  to other review skills staged on a positive result (review-brainstorm second, only then).
+
 ## Open design decisions
 
 - [ ] **Prose vs. gate allocation** (2026-06-27; provenance: unrecoverable —

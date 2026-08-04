@@ -8,6 +8,12 @@ One entry per session directory under `.mochiko/brainstorms/<topic-slug>/`, **ne
 
 ---
 
+## `adversarial-review-generality` — how adversarial review works per workflow; is devils-advocate general enough for multi-angle review
+- **When:** 2026-08-04 · **Status:** accepted · record solo-cold-reviewed (7 raised → 7 survived → 7/7 dispositioned one-by-one with the user — F1 seed-jurisdiction ruled A, F6 marks-stand user-confirmed; verify pass CLEAN on blocking, 3 non-blocking seams repaired same round; adoption streak flagged at Q4, Q5 run recommendation-free)
+- **Artifacts:** [record.md](adversarial-review-generality/record.md) (canonical, incl. Explore-mapped per-stage review-seat table + disposition table)
+- **About:** two user questions — (1) map how adversarial review happens per workflow stage (answered as ground facts: seat table, two-form split, persona-thin/skills-carry-angles finding), (2) whether `devils-advocate` is general enough for multi-angle review. Ruled (AR-D1–D6): the worry is **checklists-as-ceiling** — no review-* skill sanctions off-taxonomy findings at its class tables, review-specifications carries no off-list license anywhere (D1) · remedy chosen **empirically** — floor-line (A) vs free-hunt-first (B, favored) vs disjoint lenses (C), stress-tested not argued (D2) · seeded-defect benchmark, off-taxonomy seeds off-list-but-in-jurisdiction only, seeder pre-sweep, pinned execution parameters (≥2 replicates strict-majority, ~10 seeds 60/40, independent cold scorer) (D3) · substrate `review-specifications` — worst case, mitigations concentrate in review-brainstorm (D4) · test runs in a **dedicated session**; this session lands the BACKLOG item (D5, ruled at a no-recommendation fork) · decision rule pre-committed in shape: off-taxonomy recall primary, in-taxonomy + precision guards, null → no build (D6).
+- **Landed:** DECISIONS.md row (2026-08-04) · BACKLOG "Adversarial-review ceiling benchmark" item (cold-runnable spec) · seatless-stages list kept as record open thread (candidate future captures, not rulings).
+
 ## `architecture-tieback` — per-slice/feature `architecture.md` ↔ repo `ARCHITECTURE.md` tie-back
 - **When:** 2026-08-04 · **Status:** accepted · record **un-reviewed** (bare session — direct `analysis-iterative` invocation; rulings user-accepted inline; Q4 contested — lead pushed back once on pure-C, user composed the A+C hybrid)
 - **Artifacts:** [record.md](architecture-tieback/record.md) (canonical, incl. grep-verified ground facts + build surface)
