@@ -115,9 +115,12 @@ groom's job.
   against the last-groomed baseline (the baseline figures live on the stamp line).
 - **Dead-pointer scan:** every `ROADMAP.md` / `DECISIONS.md` / `BACKLOG.md` pointer
   resolves, or carries the `provenance: unrecoverable` terminal stamp.
+- **In-flight agreement:** every `ARCHITECTURE.md` In-flight pointer targets an open
+  feature and resolves; a closed feature still pointed at, or a pointer to a missing
+  file, is a defect.
 - **Presence:** all core artifacts exist (electives only when adopted).
-- Vacuously satisfied at zero sessions / zero items — adopting the module never obligates
-  running sessions.
+- Vacuously satisfied at zero sessions / items / pointers — adopting the module never
+  obligates running sessions.
 
 A tripped cap or bound invokes `mochiko:grooming-operating-docs` on sight (theme-section
 merges, Next/Later re-ranks, supersession compression, staleness stamps, the
@@ -154,9 +157,9 @@ GI-XXX]
 - [ ] Core artifacts named with read-job, writer moment, and carrier (the admission rule holds for every scaffolded doc); electives present only when adopted, declines recorded
 - [ ] All three enforcement surfaces present (project-pinned copy at `.mochiko/memory/knowledge-management.md` · `paths`-scoped rules file · CLAUDE.md pointers) and the five carrying commands' landing steps reference the PROJECT copy, not this template
 - [ ] Landing ritual stated as one three-part move covering closing AND supersession
-- [ ] Invariants stated mechanically (bijection · status-agreement · open-only BACKLOG · horizon caps Now ≤5 / Next ≤7 / Later ≤10 · item bounds + count watch · dead-pointer scan with the `provenance: unrecoverable` terminal state · presence) with the vacuous-at-zero note
+- [ ] Invariants stated mechanically (bijection · status-agreement · open-only BACKLOG · horizon caps Now ≤5 / Next ≤7 / Later ≤10 · item bounds + count watch · dead-pointer scan with the `provenance: unrecoverable` terminal state · in-flight agreement (`ARCHITECTURE.md` pointers target open features and resolve) · presence) with the vacuous-at-zero note
 - [ ] Decision-record schema + glossary term format present; superseded rows compress one line per decision, status preserved
 - [ ] Disambiguation present (`ROADMAP.md` = the thin forward view, never a decision archive; `DECISIONS.md` = the thin index over records; `evolution-roadmap.md` unrelated)
 - [ ] Never-overwrite floor stated; collision rulings recorded (or "none — clean names") and matching the synthesis
-- [ ] Re-audit (run against the repo, not the document): the invariants above pass (vacuously PASS at zero sessions/items)
+- [ ] Re-audit (run against the repo, not the document): the invariants above pass (vacuously PASS at zero sessions / items / pointers)
 -->

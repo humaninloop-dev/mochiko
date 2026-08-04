@@ -109,13 +109,6 @@ build item in the trail.
   self-check + built-vs-approved diff at the acceptance gate (seam-N1) · the
   `ARCHITECTURE.md` fold staying distinct (no implement run yet). (Team-form rider dropped
   2026-08-04 groom — transport-neutral ruled 2026-08-02, command-architecture-realignment D5.)
-- [ ] **Per-slice `architecture.md` ↔ repo `ARCHITECTURE.md` tie-back** (2026-08-01;
-  provenance: mochiko-app dogfood observation, to-brainstorm) — in the mochiko-app dogfood the
-  design-time `architecture.md` was written into a spec *slice* subfolder; open question is how
-  a per-slice/per-feature `architecture.md` (`patterns-system-design`) folds up to / ties into
-  the repo-level `ARCHITECTURE.md` (`authoring-architecture`). Brainstorm: expected placement
-  (feature-level vs slice-level), the fold seam between the two, and whether per-slice nesting is
-  a placement anomaly or intended granularity.
 
 ## Pipeline dogfood
 
@@ -362,6 +355,9 @@ Raw captures (2026-08-01) — to triage/brainstorm; grooming may re-key into fin
   against real infra; human FEATURE-DONE gate. Scoping decides whole-workflow vs branch; the
   journey-gate class (Cluster 2) gives the pass its hard gate class; the cold-checkout step
   (ruled into implement's final validation 2026-07-31) migrates here if audit takes feature-close.
+  Parked rider (AT-D5, 2026-08-04, `architecture-tieback` record): at feature close, before the
+  `ARCHITECTURE.md` In-flight pointer is removed, diff shipped code vs the accumulated
+  feature-root `architecture.md` — catches descoped/partially-built slices per-slice diffs miss.
 - [ ] **Feature-close verification has no owning workflow** (2026-07-02) — until audit owns
   it, the section is executable by hand; implement surfaces "declared, not verified" after the
   last slice.

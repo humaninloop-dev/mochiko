@@ -74,5 +74,7 @@ never graded by anyone but its authors · user acceptance not given.
   reconstructed baseline is confirmed with the user before a delta is designed on it, and
   lands as the initial `ARCHITECTURE.md` where the KM copy
   (`.mochiko/memory/knowledge-management.md`) exists.
+- **In-flight pointer:** at architecture sign-off, add the feature's one-line pointer to
+  repo `ARCHITECTURE.md`'s In-flight list per `mochiko:authoring-architecture`.
 - **Register:** user-facing prose per `templates/output-style.md`.
 - **Next step:** `/mochiko:implement`.

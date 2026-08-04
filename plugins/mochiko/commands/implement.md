@@ -76,5 +76,7 @@ approved nor consented as an amendment · user acceptance not given.
   `.claude/worktrees/mochiko-<purpose>/`), its results part of the acceptance evidence;
   ensure the `/.claude/worktrees` ignore entry exists first.
 - **KM landing:** where `.mochiko/memory/knowledge-management.md` exists, a built structural
-  change folds into `ARCHITECTURE.md`.
+  change folds into `ARCHITECTURE.md` — slice-scoped, the fold is dual-target (feature-root
+  `architecture.md` accumulates the approved delta) per `mochiko:authoring-architecture`; at
+  feature close the In-flight pointer is removed.
 - **Register:** user-facing prose per `templates/output-style.md`.

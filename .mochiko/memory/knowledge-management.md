@@ -57,6 +57,10 @@ A landing that only adds is incomplete.
   last-groomed baseline (figures on the stamp lines).
 - **Dead-pointer scan:** every `ROADMAP.md` / `DECISIONS.md` / `BACKLOG.md` pointer resolves,
   or carries `provenance: unrecoverable (<what it was>, removed <date>)`.
+- **In-flight agreement:** every `ARCHITECTURE.md` In-flight pointer targets an open feature
+  and resolves; a closed feature still pointed at, or a pointer to a missing file, is a
+  defect. (Added 2026-08-04, AT-D6-C, `architecture-tieback` record — landed direct by
+  ruling, not via amend offer.)
 - **Presence:** the adopted core artifacts above exist.
 - Vacuously satisfied at zero sessions / zero items.
 
