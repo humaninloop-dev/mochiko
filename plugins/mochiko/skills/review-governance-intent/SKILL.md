@@ -81,7 +81,10 @@ synthesis, *the fact substrate* is `codebase-analysis.md` plus the detect-stack 
 fact** (what the code, CI, or docs actually contain) is checked against the analysis or the files
 — never argued; a **user-declared fact** (team size, risk posture, lifespan, values) is checkable
 against nothing on disk — flag it for the lead to route **to the user as confirmation**, never to
-argument.
+argument. A third fact type gets a third route: an **external-sourced fact** (a floor-class
+claim fed from outside the repo — vendor capability, regulatory content, a benchmark number)
+is checked per [../review-brainstorm/references/EXTERNAL-CLAIMS.md](../review-brainstorm/references/EXTERNAL-CLAIMS.md)
+— the single source of that mechanics, not restated here; never argued, per its source re-read clause.
 
 ## Phase 3 — Survivor report
 

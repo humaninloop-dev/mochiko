@@ -43,27 +43,6 @@ Ruling: DECISIONS.md row 2026-08-02 (D1–D9); built same day at v0.49.0 (trail)
   mid-flight edit (graded-amendment machinery died with the overlay — watch what replaces
   it) · plan's `infeasible` escalation.
 
-## External-claims verification build
-
-Ruling: DECISIONS.md row 2026-08-04 (ER-D1–D6); doctrine ruled, carriers staged to a build session per ER-D1.
-
-- [ ] **Build the external-claims verification doctrine** (2026-08-04; provenance:
-  `.mochiko/brainstorms/external-research-in-review/record.md`, ER-D1–D6 as amended at review) —
-  mint `review-brainstorm/references/EXTERNAL-CLAIMS.md` carrying: load-bearing trigger +
-  non-exhaustive floor classes (version/capability · security posture · regulatory ·
-  benchmarks) · inline-check mechanics + source re-read clause (quotable text; counterpart/lead
-  re-reads before an external-premise finding survives) · pair source-conflict resolution ·
-  disclosure grammar (`verified: <source>`/`memory-asserted`; undisclosed = finding). Bind:
-  5 review skills (feasibility, specifications, brainstorm, governance-intent,
-  plan-artifacts-thin — one mechanical disclosure check row only) + 2 producer surfaces
-  (patterns-technical-decisions, artifact-format) + **CROSS-EXAM.md external-claim carve-out**
-  (shipped-primitive ceremony: strip note + author≠grader audit). 8 touches, all-consumer
-  guard. **Coverage-or-exclusion obligation:** each of the six mapped memory-asserted surfaces
-  gets a bound carrier or a recorded exclusion — silent unhandled surface = build FAIL;
-  pre-ruled: catalog tool tables excluded (library-maintenance), registry growth
-  deferred-not-absent. Open thread: validator evidence-hierarchy rung for fetched quotable
-  text (`validator.md:102`).
-
 ## Adversarial-review ceiling benchmark
 
 Ruling: DECISIONS.md row 2026-08-04 (AR-D1–D6); test deliberately parked for a dedicated session (AR-D5).

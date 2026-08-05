@@ -67,6 +67,12 @@ frontmatter, but no sentence that a field, a table row, or an ID citation could 
     would make a requirement, criterion or constraint ambiguous. A human reads these at an
     acceptance gate, so plain English wins wherever terse and plain pull apart. Levels, the
     clause manifest and the switch: `templates/output-style.md`.
+12. **External claims disclose; they don't verify.** A deliverable asserting a floor-class
+    external claim (version/capability, security posture, regulatory content, benchmark
+    numbers) carries its disclosure line inline — `verified: <source>` or `memory-asserted`.
+    That line is the producer's whole obligation; verification belongs to the reviewing
+    skill, per the grammar's single source:
+    [`review-brainstorm/references/EXTERNAL-CLAIMS.md`](../skills/review-brainstorm/references/EXTERNAL-CLAIMS.md).
 
 ---
 

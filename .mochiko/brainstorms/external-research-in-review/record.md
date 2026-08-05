@@ -75,11 +75,36 @@ Mint `EXTERNAL-CLAIMS.md` as a `references/` file under one review skill (home: 
 
 **Verify pass (same reviewer, fresh read): CLEAN on substance — all 6 folds landed at source, no fold-introduced contradiction, no silent narrowing (F3 landed stronger than raised).** Three non-blocking ledger defects repaired same round: F1 disposition over-claimed "/D6" as an amendment site (D6 needed none) · ER-D6's accepted-cost consumer count corrected ~6 → 8 post-fold touch surfaces · status header advanced.
 
+## Build (2026-08-05, v0.52.0)
+
+Carriers built per ER-D1–D6 as amended. Minted `review-brainstorm/references/EXTERNAL-CLAIMS.md`
+(single-source charter per the CROSS-EXAM.md pattern: trigger + floor classes · inline-check
+mechanics + source re-read clause · pair source-conflict resolution `{#pair-source-conflict-resolution}` ·
+disclosure grammar with F6's undisclosed-claim-is-a-finding clause · ER-D5 waiver pricing ·
+fact-checker flag-don't-fetch · recorded exclusions). Bound: 5 review skills (feasibility ·
+specifications · brainstorm (owner) · governance-intent third fact route · plan-artifacts as one
+mechanical disclosure-presence row in ARTIFACT-CHECKLISTS.md) + 2 producer surfaces
+(DECISION-RECORD.md's Good-Rationale example now models `memory-asserted` · artifact-format.md
+new rule 12, appended — no renumbering) + CROSS-EXAM.md external-claim carve-out (the build's one
+supersession — strip entry `[v0.52.0]` in `.mochiko/strips/review-brainstorm.md`, consumers
+assessed: both protocol consumers). **Open thread 1 built same session** (user opted in):
+`validator.md:102` evidence hierarchy gains the fetched-quotable-text rung between artifact-Read
+and inference — a 9th consumer beyond ER-D6's eight ruled touches, disclosed in
+EXTERNAL-CLAIMS.md's footer. **Open thread 2 discharged:** all six mapped surfaces carried or
+excluded (tech decisions · feasibility physics · regulatory consequences via governance-intent's
+third route — bound; tool tables · registry growth — recorded exclusions in the file's
+Out-of-scope section). Fact-checker residual: no ninth carrier — seat is lead-briefed;
+flag-don't-fetch rides EXTERNAL-CLAIMS.md itself. Audits author≠grader ×11 (validator seats,
+session-model override — persona's pinned `model: opus` unavailable on this key):
+9 files audited, 2 FAIL→fix→PASS (EXTERNAL-CLAIMS.md footer missing the validator.md consumer;
+review-feasibility binder restated floor classes while claiming otherwise), 7 PASS round 1.
+plugin.json 0.51.0 → 0.52.0.
+
 ## Open threads
 
-1. **Validator evidence hierarchy placement** — `validator.md:102` ranks `grep > Read > inference`; fetched quotable text needs a rung in that ladder (build-session line, flagged not ruled).
-2. **Coverage-or-exclusion obligation (upgraded at review F3)** — the build session must give each of the six mapped surfaces either a bound carrier or a recorded exclusion line; a surface silently unhandled is a build FAIL. Pre-ruled here: catalog tool tables = recorded **exclusion** (static library content — currency is a library-maintenance concern riding the primitive-edit ceremony, not run-time review); registry growth keeps its deferred next-amend-run control, noted as deferred-not-absent.
-3. **ER-D5's named re-open condition** — a shipped wrong regulatory mapping re-opens for the option-C surgical carve-out.
+1. ~~**Validator evidence hierarchy placement**~~ — **built at v0.52.0** (see Build section): `validator.md:102` gained the fetched-quotable-text rung.
+2. ~~**Coverage-or-exclusion obligation (upgraded at review F3)**~~ — **discharged at v0.52.0**: six surfaces each bound or recorded-excluded (see Build section); no silent gaps.
+3. **ER-D5's named re-open condition** — a shipped wrong regulatory mapping re-opens for the option-C surgical carve-out. *(Still open — standing condition, not build work.)*
 
 ## Session trail
 

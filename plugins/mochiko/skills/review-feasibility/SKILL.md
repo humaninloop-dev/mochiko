@@ -42,6 +42,13 @@ Cross-artifact contradictions / impossibilities / buildability only. Each class 
 | 5 | **NFR ↔ design feasibility** | Can the design *as specified* meet the NFR targets? | NFRs ↔ data-model / contracts |
 | 6 | **Constraint ↔ design buildability** | Are the design artifacts buildable/deployable given the constraints and captured infrastructure? | constraints / infrastructure ↔ data-model / contracts |
 
+**External premises behind a verdict.** A feasibility call resting on an outside-repo claim is
+itself a load-bearing external claim: verify it per
+[../review-brainstorm/references/EXTERNAL-CLAIMS.md](../review-brainstorm/references/EXTERNAL-CLAIMS.md)
+— the single source of the trigger, floor classes, and inline-check mechanics; none of it
+restated here. Carry the claim's disclosure line in the finding's evidence; an undisclosed
+external claim is a finding of its own.
+
 ## The architecture pass *(when `architecture.md` is in scope)*
 
 When the design-time architecture artifact (`architecture.md`, owned by

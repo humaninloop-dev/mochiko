@@ -68,13 +68,18 @@ Use RFC 2119 keywords for constraints:
 We chose JWT with refresh tokens because:
 1. **Stateless authentication** aligns with our microservices architecture (no shared session store)
 2. **Team familiarity** - 3 of 4 engineers have production JWT experience
-3. **Ecosystem support** - jsonwebtoken is a well-maintained, audited library
+3. **Ecosystem support** - jsonwebtoken is a well-maintained, audited library (`memory-asserted`)
 4. **Constitution alignment** - follows "prefer proven over novel" principle
 
 The trade-off of token revocation complexity is acceptable because:
 - User logout can use short token expiry (15 min)
 - Compromised token detection happens at gateway level
 ```
+
+Point 3's tag models the disclosure-line grammar (`verified: <source>` / `memory-asserted`)
+from [EXTERNAL-CLAIMS.md](../../review-brainstorm/references/EXTERNAL-CLAIMS.md): every
+load-bearing outside-repo claim in a rationale carries one. Disclosure is the producer's whole
+obligation — verification belongs to the review seat, never to the author.
 
 ### Bad Rationale
 

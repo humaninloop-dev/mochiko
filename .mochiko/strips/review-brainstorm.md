@@ -10,6 +10,25 @@ restores the boundary clauses under the cap, and is strict-YAML-safe. Delivery v
 deferred: the in-session skill listing is a session-start snapshot (probe received pre-edit
 text), so the probe re-runs in a fresh session.
 
+## [v0.52.0] CROSS-EXAM.md fact-dispute rule gains an external-claim carve-out
+- **Disposition:** superseded → `references/EXTERNAL-CLAIMS.md` (external-claim disputes only;
+  every other fact dispute keeps routing to the session's fact authority exactly as shipped)
+- **Tier failed:** n/a — supersession by ruling (DECISIONS.md 2026-08-04 external-research row,
+  ER-D4 as amended at review fold F1; record
+  `.mochiko/brainstorms/external-research-in-review/record.md`)
+- **Content:** the fact-dispute bullet's totalizing reading — "route it to the session's fact
+  authority… one route per fact" as the *only* route, with no path for a fact that authority
+  holds no jurisdiction over (the fact-checker never fetches; an external-claim dispute
+  dead-ended).
+- **Kept deliberately:** the fact-dispute bullet's own text verbatim; the four-message exchange
+  and all other attack/defense standards untouched. The carve-out lands as an added bullet, not
+  a rewrite — CROSS-EXAM.md remains the single pair-protocol home, delegating exactly one
+  dispute class by pointer.
+- **Consumers assessed:** `mochiko:review-brainstorm` and `mochiko:review-governance-intent`
+  (the file's charter: "An edit here changes both skills") — neither restates the fact-dispute
+  rule locally; both pick up the carve-out through the shared file. Both also gained their own
+  EXTERNAL-CLAIMS.md binders in the same v0.52.0 build, so the routes agree.
+
 ## [v0.46.0] loop-discipline pointer reworded
 - **Disposition:** superseded → "its command states them"
 - **Tier failed:** n/a — supersession by ruling (ADR `.mochiko/decisions/2026-08-02-doctrine-purge-wave-1.md`; DECISIONS.md 2026-08-02 "Doctrine purge wave 1" row)

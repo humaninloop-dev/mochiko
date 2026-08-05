@@ -35,5 +35,11 @@ survives as its owner's finding with the counterpart's objection attached; the l
   invoking skill names it: a fact-checker teammate when one is seated, the session's reality
   surface or an Explore check otherwise). **A fact the counterpart already routed is cited,
   never re-routed** — one route per fact.
+- **External-claim carve-out.** A fact dispute whose fact is an outside-repo claim (web, docs,
+  registries, standards) does not route to the fact authority above — that authority holds no
+  web jurisdiction. It resolves per
+  [EXTERNAL-CLAIMS.md](EXTERNAL-CLAIMS.md#pair-source-conflict-resolution): both reviewers
+  re-read the cited sources before the finding survives. This file stays the pair-protocol
+  home; EXTERNAL-CLAIMS.md is delegated only this one dispute class.
 - A suspected duplicate of the counterpart's finding is **flagged by name** in your report, not
   merged — **the cross-set merge is the lead's**, under whichever formulation survives strongest.

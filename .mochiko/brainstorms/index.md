@@ -8,6 +8,11 @@ One entry per session directory under `.mochiko/brainstorms/<topic-slug>/`, **ne
 
 ---
 
+## `ponytail-concepts-integration` — delivering ponytail's code-minimalism core concepts through mochiko agents
+- **When:** 2026-08-05 · **Status:** open
+- **Artifacts:** [record.md](ponytail-concepts-integration/record.md) (canonical, in progress)
+- **About:** how to bring the core concepts of [ponytail](https://github.com/dietrichgebert/ponytail) (the seven-rung decision ladder, "lazy about solutions, not about reading", "lazy, not negligent" safety floor) into mochiko's agents, and what the appropriate delivery vehicle is (persona edits · pattern skill · constitution module · review lens · other).
+
 ## `external-research-in-review` — web/outside-scope research as validation & adversarial-review input in setup, plan, brainstorm
 - **When:** 2026-08-04 · **Status:** accepted · record solo-cold-reviewed (8 formed → 6 survived reviewer's kill pass → 6/6 dispositioned one-by-one with the user — F1 CROSS-EXAM carve-out ruled A, F4 marks user-confirmed; verify CLEAN on substance, 3 ledger defects repaired same round)
 - **Artifacts:** [record.md](external-research-in-review/record.md) (canonical, incl. Explore-mapped external-research inventory — 14 load-bearing claims file-verified at review)

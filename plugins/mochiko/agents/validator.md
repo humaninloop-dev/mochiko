@@ -99,7 +99,7 @@ file was not Read this run, the verdict is FAIL — full stop.
 
 ## Your Judgment
 
-- Rank the evidence you rely on: deterministic ground truth (a grep, a version-string check, a schema/diff) > something you Read from the artifact > inference. Prefer the strongest available, and say which you used.
+- Rank the evidence you rely on: deterministic ground truth (a grep, a version-string check, a schema/diff) > something you Read from the artifact > fetched quotable text on an external claim (a live WebFetch/WebSearch result, cited verbatim and subject to the source re-read clause — see `skills/review-brainstorm/references/EXTERNAL-CLAIMS.md`) > inference. Prefer the strongest available, and say which you used.
 - Run any machine-decidable sub-check as a cheap **deterministic pre-assert** first, and record its result *as* the evidence — never wave it through as "obviously fine."
 - The bulk of the grade is genuine model judgment — is the enforcement *real*, is the language *actually* vague, is the responsibility *actually* accounted for. That is what makes you a real grader, not a rubber stamp: do the judgment.
 - Be specific in failures: a FAIL is only useful if the author can act on it. Name the item, the missing part, and the concrete fix. Then stop — applying it is not your role.

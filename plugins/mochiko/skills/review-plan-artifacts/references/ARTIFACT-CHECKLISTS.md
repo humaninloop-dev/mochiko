@@ -221,6 +221,7 @@ consistency checklist that previously lived as a standalone template.
 | Requirement traceability | Can we trace from FR to TR to entity to endpoint? | Important |
 | Constitution compliance | Do all artifacts follow project principles? | Important |
 | Infrastructure completeness | Are all IP-XXX items addressable by design artifacts or flagged for separate provisioning cycles? | Important |
+| Disclosure presence | Does every floor-class external claim carry its disclosure line (`verified: <source>` / `memory-asserted`) per [EXTERNAL-CLAIMS.md](../../review-brainstorm/references/EXTERNAL-CLAIMS.md)? Undisclosed = issue; deep verification stays with `review-feasibility` | Important |
 
 > "Consistency" here means **does the later artifact honor the earlier decisions** — a design that
 > contradicts a *decided* approach (e.g. uses JWT when sessions were chosen) is a consistency

@@ -68,6 +68,12 @@ The five requirement-defect classes those questions hunt (the canonical hunt tax
 | **Assumption gaps** | assumptions that should be requirements (and the reverse); hidden dependencies |
 | **Contradictions** | requirements that conflict; inconsistent terminology; mutually exclusive acceptance criteria |
 
+**External and regulatory claims.** A spec asserting a regulatory obligation, compliance limit,
+or other product-legal fact carries a floor-class external claim: verify it per
+[../review-brainstorm/references/EXTERNAL-CLAIMS.md](../review-brainstorm/references/EXTERNAL-CLAIMS.md)
+— the single source of the trigger and mechanics, not restated here. An undisclosed
+external claim is a gap like any other.
+
 ## The Delivery Slices section
 
 The spec's Delivery Slices section is graded with the spec — same reviewer, same report. It is
