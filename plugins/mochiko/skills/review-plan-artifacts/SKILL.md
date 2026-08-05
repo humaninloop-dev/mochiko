@@ -41,7 +41,7 @@ boundary table in [ARTIFACT-CHECKLISTS.md](references/ARTIFACT-CHECKLISTS.md#sco
 
 ## When NOT to Use
 
-- **Implementation code review** — use code-review tooling instead
+- **Implementation code review** — use code-review tooling instead (one narrow carve-out exists: the code-minimalism lens on produced code is `mochiko:review-code-minimalism`, implement-side — not this skill)
 - **Cross-artifact feasibility / buildability / contradiction review** — use `mochiko:review-feasibility`
 - **Specification review** — use `mochiko:review-specifications`
 - **Constitution review** — use `mochiko:validation-constitution`

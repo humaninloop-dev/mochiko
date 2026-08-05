@@ -56,11 +56,17 @@ approved nor consented as an amendment · user acceptance not given.
 - **Craft skills:** card decomposition + TDD via `mochiko:executing-tdd-cycle` (its
   `cycle-report.md` format — the disclosed decomposition, honest difficulties, deviations,
   `domain_deps_added` — is the uncertainty carrier; brownfield touches ride
-  `mochiko:brownfield-integration`) · verification via `mochiko:testing-end-user` —
-  evidence captured, never assumed.
+  `mochiko:brownfield-integration`; the pre-code ladder rides
+  `mochiko:patterns-code-minimalism` at decomposition, rungs disclosed) · verification via
+  `mochiko:testing-end-user` — evidence captured, never assumed — plus the per-cycle
+  code-minimalism lens via `mochiko:review-code-minimalism`: the verification seat reads
+  the cycle's diff, `cycle-report.md`, and the codebase around the diff (reuse claims
+  never on trust); `minimalism:` findings are advisory to the checkpoint verdict, never a
+  cycle-failing gate.
 - **Design inputs:** `plan.md`, `architecture.md` (the anchor for the deviation check and
   the built-vs-approved diff), `data-model.md`, `contracts/api.yaml`,
-  `constraints-and-decisions.md`, `requirements.md`, and `spec.md` for the cards' cited
+  `constraints-and-decisions.md`, `requirements.md`, `nfrs.md` for the numeric quality
+  targets the built code must respect, and `spec.md` for the cards' cited
   acceptance criteria.
 - **Reports** under `.mochiko/specs/<feature>/` — or `slices/<slice>/` when slice-scoped:
   cycle reports, verification reports, the final-validation report, the built-vs-approved

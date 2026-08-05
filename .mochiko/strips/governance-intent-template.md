@@ -9,6 +9,20 @@ command consumer.
 **No version footer.** Unlike `command-shape.md` and `sized-end-stage-review.md`, this template
 carries no version line (checked at this edit), so no footer stamp was owed and none was invented.
 
+## [v0.53.0] Review-block sizing/waiver re-keyed off the deleted weight card
+- **Disposition:** superseded → the same two Review-section lines re-keyed to the v8 reality: sizing "composed by the lead in its run plan"; the `none` waiver "waived by [user] as an explicit reserved ruling".
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 command-architecture-realignment D2 — the weight card was deleted at the v8 rebuild, v0.48.0; this template's lines 157/160 were the stale remainder, logged as a BACKLOG defect at the 2026-08-04 groom and closed in the v0.53.0 wave).
+- **Content (verbatim, the two superseded fragments):**
+  ```
+  stated on the user's run-start weight card — below the default also
+  takes a departure-trail line.
+  ```
+  ```
+  waived by [user] at the **weight card**, [stated reason].
+  ```
+- **Kept deliberately:** the sizing defaults (pair on first ratification · event-scaled on amend), the departure-trail obligation below the default, the `none`-is-not-the-lead's-to-take rule, and the audit-trail sentence — all verbatim.
+- **Consumers assessed:** grep-verified across `plugins/` this run (`grep -rln "governance-intent-template" plugins/` → two literal consumers): setup (binds the template; its harness already reserves waivers to the user — now consistent) · `authoring-constitution/references/INTERROGATION-AGENDA.md` (re-checked, unaffected — its pointer text "see `templates/governance-intent-template.md`" doesn't restate the Review section or the sizing/waiver lines). Non-literal consumer also assessed: review-governance-intent (reads the Review block's state for recovery; state vocabulary unchanged).
+
 ---
 
 **Wave context (v0.44.0 — the D7 leakage scrub).** `verbosity-caveman-ops-separation` D7 as

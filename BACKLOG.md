@@ -6,11 +6,11 @@ surface is [`ROADMAP.md`](ROADMAP.md). Closing an item = the KM landing ritual
 (`.mochiko/memory/knowledge-management.md`): decision row + move here → the trail
 (`.mochiko/archive/backlog-trail.md`) + touch ROADMAP.md. No `[x]` lives here.
 
-*Last groomed: 2026-08-04 (epic-closure groom) — baseline: 52 open items (−6 closed as
-superseded/discharged by the v8 realignment, ADR `2026-08-04-groom-epic-closures`; +1 new
-defect: `governance-intent-template.md` weight-card staleness; two empty sections removed
-— goal-shape rebuild, shape-v7; staleness folds re-keyed the dogfood set transport-neutral;
-prior baseline 55 at the 2026-08-02 task-granularity close), per-item bound ≤15 lines.*
+*Last groomed: 2026-08-04 (epic-closure groom); 2026-08-05 delivery sweep — baseline: 49 open
+items (−3 closed at the v0.53.0 wave: ponytail code-minimalism build DONE · orphan plan
+artifacts dispositioned, ADR `2026-08-05-orphan-plan-artifacts` · weight-card staleness
+re-keyed; +1 rider on `audit` scoping: runtime NFR verification; prior baseline 52 at the
+2026-08-04 epic-closure groom), per-item bound ≤15 lines.*
 
 ---
 
@@ -349,8 +349,10 @@ existing themes (Design track · Token-reduction/quality · Production-only).
 
 ## Defects & empirical checks
 
-- [ ] **Inter-agent message delivery — content emitted as text, not `SendMessage`** (2026-08-01;
-  provenance: capture-session observation, to-brainstorm) — observed buggy behavior: a teammate's
+- [ ] **Teammate hand-off narrated as text, never dispatched via `SendMessage`** (2026-08-04;
+  provenance: capture-session observation, to-brainstorm; title line reconstructed at the
+  2026-08-05 defect close — the original was clobbered when the orphan-artifacts entry landed
+  above it) — observed buggy behavior: a teammate's
   output reaches the lead as plain assistant text instead of a `SendMessage` tool call, so the
   lead never actually receives it. Verbatim symptom: "The map is complete but never reached you —
   it went out as text, not SendMessage. Sending all four sections now." Distinct from the
@@ -362,12 +364,6 @@ existing themes (Design track · Token-reduction/quality · Production-only).
   hand-off boundaries, and detection (a hand-off round that produced no `SendMessage` tool call).
   (Its former companions — residual A + the substrate decision — closed 2026-08-04, superseded
   by transport-neutral D5; this defect is now the sole open teammate-messaging thread.)
-- [ ] **`governance-intent-template.md` weight-card staleness** (2026-08-04, groom
-  fact-check) — lines 157/160 still key the review-sizing statement and the `none` waiver to
-  "the user's run-start **weight card**", a construct deleted at the v8 rebuild (v0.48.0,
-  command-architecture-realignment D2). Re-key both lines to the v8 reality (lead-composed
-  sizing under plan approval). Shipped-primitive edit — strip entry + independent audit per
-  the primitive-edit ceremony.
 - [ ] **Fresh-session description-delivery probe** (2026-07-25, succinctness R1; re-scoped
   2026-08-01; set shrunk 2026-08-04 groom) — total-budget hypothesis dead: no description
   exceeds 1,536 chars (max 1,517), the two repaired descriptions deliver complete, yet skills
@@ -408,6 +404,10 @@ existing themes (Design track · Token-reduction/quality · Production-only).
   Parked rider (AT-D5, 2026-08-04, `architecture-tieback` record): at feature close, before the
   `ARCHITECTURE.md` In-flight pointer is removed, diff shipped code vs the accumulated
   feature-root `architecture.md` — catches descoped/partially-built slices per-slice diffs miss.
+  Rider (2026-08-05, ADR `2026-08-05-orphan-plan-artifacts`): runtime NFR verification —
+  p95/availability targets from `nfrs.md` re-checked against the built system — joins the
+  feature-close verification scope when audit is scoped (no TEST-grammar NFR assert exists;
+  implement got the minimal Design-inputs wire only).
 - [ ] **Feature-close verification has no owning workflow** (2026-07-02) — until audit owns
   it, the section is executable by hand; implement surfaces "declared, not verified" after the
   last slice.

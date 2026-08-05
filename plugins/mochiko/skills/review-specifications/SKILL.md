@@ -19,7 +19,7 @@ Find gaps in specifications and generate clarifying questions that a product own
 ## When NOT to Use
 
 - **Technical architecture review** - Use design review tools instead
-- **Code review** - Different skill domain entirely
+- **Code review** - Different skill domain entirely (the one narrow exception, the code-minimalism lens on produced code, is `mochiko:review-code-minimalism`, implement-side)
 - **Implementation planning** - Focus on design, not spec gaps
 - **Performance specifications** - Technical concern, not product
 - **When spec doesn't exist yet** - Use `mochiko:authoring-requirements` first

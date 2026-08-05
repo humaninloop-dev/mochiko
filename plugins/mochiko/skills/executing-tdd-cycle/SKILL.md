@@ -55,7 +55,10 @@ view**: read the relevant existing code first, then cut tasks sized to a single 
 change, each with a specific file path, ordered so tests precede the implementation they pin.
 The card's brownfield exposure tells you which surfaces are extend/modify — classify each task
 accordingly. Scope discipline: decompose exactly what the card's acceptance criteria require —
-nothing the card didn't ask for. The decomposition is **disclosed in the cycle report**
+nothing the card didn't ask for. Before any red-phase test is written, run the pre-code ladder
+over each prospective task per `mochiko:patterns-code-minimalism` — stop at the first rung
+that applies, and disclose each task's rung in the cycle report's decomposition.
+The decomposition is **disclosed in the cycle report**
 (task list, paths, ordering), not written back into `tasks.md` — the card stays the artifact,
 your decomposition is execution detail.
 

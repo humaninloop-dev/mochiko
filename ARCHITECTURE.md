@@ -23,7 +23,7 @@ flowchart LR
   subgraph plugin ["plugins/mochiko/"]
     commands["commands/ — 5 supervisors"]
     agents["agents/ — 9 personas"]
-    skills["skills/ — 26 skills"]
+    skills["skills/ — 28 skills"]
     templates["templates/ — artifact + report schemas, doctrine homes"]
     commands -->|"spawn seats, each dispatch self-briefed"| agents
     agents -->|"carry procedure from"| skills
@@ -53,7 +53,7 @@ pinned in [`CLAUDE.md`](CLAUDE.md#skill-library-conventions-five-axes).
 |---|---|---|---|
 | **Commands** | [`plugins/mochiko/commands/`](plugins/mochiko/commands/) | 5 | User-invoked goal+harness contracts (`disable-model-invocation: true`). Each file states its Goal (default FAIL), Harness (plan approval for producing seats · author ≠ grader independence · decisions reserved to the user), and Bindings (v8 rebuild, v0.48.0; task layer de-granularized + slice absorbed into specify, v0.49.0). The lead plans and orchestrates the run — teammates or subagents per seat is its call. |
 | **Agents** | [`plugins/mochiko/agents/`](plugins/mochiko/agents/) | 9 | Personas (all `model: opus`) that carry judgment and declare `skills:`. A persona contains no trace of any workflow — decoupling by absence; caller-side context rides the dispatch brief. |
-| **Skills** | [`plugins/mochiko/skills/`](plugins/mochiko/skills/) | 26 | Procedure. One user-invoked router ([`skills/mochiko/`](plugins/mochiko/skills/mochiko/SKILL.md)) indexes the other 25, which are model-invoked with graded MUST/SHOULD triggers in their descriptions. Deterministic sub-checks ride as `scripts/` inside skills (e.g. `analysis-codebase`'s `detect-stack.sh`); depth rides as `references/`. |
+| **Skills** | [`plugins/mochiko/skills/`](plugins/mochiko/skills/) | 28 | Procedure. One user-invoked router ([`skills/mochiko/`](plugins/mochiko/skills/mochiko/SKILL.md)) indexes the other 27, which are model-invoked with graded MUST/SHOULD triggers in their descriptions. Deterministic sub-checks ride as `scripts/` inside skills (e.g. `analysis-codebase`'s `detect-stack.sh`); depth rides as `references/`. |
 | **Templates** | [`plugins/mochiko/templates/`](plugins/mochiko/templates/) | 14 + `constitution-modules/` | Two kinds: **artifact schemas** (spec — Intent + Delivery Slices sections included, plan, tasks as cycle cards, governance-intent, …) over the shared `artifact-format.md` envelope; **report schemas** (per-seat reports) over the shared `report-format.md` envelope. The former doctrine homes (`workflow-contract.md`, `agent-dispatch.md`, `sized-end-stage-review.md`) were deleted at the doctrine purge (v0.46.0–v0.47.0) — their mechanics live inline in each command. `constitution-modules/` is setup's module library (knowledge-management, layer-rules, release-gates, evolution-notes). |
 
 The plugin manifest, [`.claude-plugin/plugin.json`](plugins/mochiko/.claude-plugin/plugin.json),
@@ -244,19 +244,19 @@ evidence without a lead read — anything else fires the human-adjudicated check
 
 | Seat | Wiring |
 |---|---|
-| producer | `staff-engineer` × `executing-tdd-cycle`, `brownfield-integration` |
-| verifier | `qa-engineer` × `testing-end-user` — never mounted on the producer |
+| producer | `staff-engineer` × `executing-tdd-cycle`, `brownfield-integration`, `patterns-code-minimalism` (the pre-code ladder at decomposition, rungs disclosed) |
+| verifier | `qa-engineer` × `testing-end-user`, `review-code-minimalism` (advisory `minimalism:` findings; reads diff + cycle report + codebase) — never mounted on the producer |
 | arch-diff | `principal-architect` × `authoring-architecture` — disposable, built-vs-approved at final validation |
 | arch-scribe | `principal-architect` × `authoring-architecture` — disposable, folds built structure into `ARCHITECTURE.md` |
 
 ```mermaid
 flowchart LR
   lead["lead: /mochiko:implement"]
-  se["staff-engineer ×<br/>executing-tdd-cycle +<br/>brownfield-integration"]
-  qa["qa-engineer ×<br/>testing-end-user"]
+  se["staff-engineer ×<br/>executing-tdd-cycle +<br/>brownfield-integration +<br/>patterns-code-minimalism"]
+  qa["qa-engineer ×<br/>testing-end-user +<br/>review-code-minimalism"]
   lead -->|"cycle N"| se
   se --> code[("working code +<br/>cycle-report.md")]
-  code -->|"TEST: gates, quality gates,<br/>real infrastructure"| qa
+  code -->|"TEST: gates, quality gates,<br/>real infrastructure +<br/>minimalism lens"| qa
   qa -->|"verification report +<br/>recommendation"| lead
   lead -->|"deviation consent · final acceptance"| user(("User"))
 ```

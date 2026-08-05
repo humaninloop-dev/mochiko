@@ -9,9 +9,10 @@ One entry per session directory under `.mochiko/brainstorms/<topic-slug>/`, **ne
 ---
 
 ## `ponytail-concepts-integration` — delivering ponytail's code-minimalism core concepts through mochiko agents
-- **When:** 2026-08-05 · **Status:** open
-- **Artifacts:** [record.md](ponytail-concepts-integration/record.md) (canonical, in progress)
-- **About:** how to bring the core concepts of [ponytail](https://github.com/dietrichgebert/ponytail) (the seven-rung decision ladder, "lazy about solutions, not about reading", "lazy, not negligent" safety floor) into mochiko's agents, and what the appropriate delivery vehicle is (persona edits · pattern skill · constitution module · review lens · other).
+- **When:** 2026-08-05 · **Status:** accepted · record pair-reviewed (lens-split: 9+8 raised → 15 merged (2 duplicates) → 15/15 dispositioned incl. the 4-ruling user batch — D5 accessibility amendment · D5 mark confirmed · D9 advisory semantics · D10 codebase-read; cross-exam exchange skipped as a recorded departure, lenses agreed at every overlap; ponytail README live-verified ×2 per ER-D3, benchmark paraphrase + "beat both" corrected at review)
+- **Artifacts:** [record.md](ponytail-concepts-integration/record.md) (canonical, incl. fact map F1–F19, seam scan S1–S5, build surface, review table)
+- **About:** how to bring ponytail's code-minimalism core into mochiko. Ruled (PT-D1–D10): generation-time ladder + review-time lens, audit tooling deferred (D1) · lens on the qa-engineer seat, narrow punt reversal (D2 `Contested`) · per-cycle firing (D3) · new `patterns-code-minimalism` single-source skill (D4) · floor reference with accessibility named explicitly (D5, review-amended) · no intensity modes (D6) · reading-first as rung-zero thin form (D7) · cycle-report becomes qa input + `minimalism:` block (D8) · advisory-to-lead verdicts (D9) · codebase-read obligation on rungs 2/3/5 (D10). Seam-scan rider: orphan `nfrs.md`/`quickstart.md` defect logged to BACKLOG mid-session.
+- **Landed:** DECISIONS.md row (2026-08-05) · BACKLOG: orphan-artifact defect (Defects section) + "Ponytail code-minimalism build" item · ROADMAP stamp touch. **Built 2026-08-05 at v0.53.0** — both new skills + full wiring, all three audits PASS; build item → trail; orphan-artifact defect closed same wave (ADR `2026-08-05-orphan-plan-artifacts`).
 
 ## `external-research-in-review` — web/outside-scope research as validation & adversarial-review input in setup, plan, brainstorm
 - **When:** 2026-08-04 · **Status:** accepted · record solo-cold-reviewed (8 formed → 6 survived reviewer's kill pass → 6/6 dispositioned one-by-one with the user — F1 CROSS-EXAM carve-out ruled A, F4 marks user-confirmed; verify CLEAN on substance, 3 ledger defects repaired same round)

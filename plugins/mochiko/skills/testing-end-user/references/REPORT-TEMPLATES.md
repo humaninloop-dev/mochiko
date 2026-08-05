@@ -31,6 +31,8 @@ quality_gates:
   lint:  {status: pass, command: "pnpm lint"}
   build: {status: pass, command: "pnpm build"}
   tests: {status: pass, command: "pnpm test", passed: 47, failed: 0, skipped: 2}
+minimalism: []              # Code-minimalism lens findings (per-cycle only; [] if none)
+  # - {task: T3.2, claimed: 7, observed: 2, evidence: "duplicates src/lib/session.ts:helper"}
 recommendation: approve | reject | retry | needs-human
 ---
 ```
@@ -44,6 +46,7 @@ recommendation: approve | reject | retry | needs-human
 | `status` | yes | Aggregate result: `pass` only when every assert passed and every gate is green; `partial` for mixed; `timeout`/`error` per the result classification |
 | `test_tasks` | yes | One row per `**TEST:**` task: `id`, `classification` (CLI / GUI / SUBJECTIVE — drives auto-approve vs human checkpoint), `status`, `asserts` (passed/total), `duration`, `evidence` (path) where captured |
 | `quality_gates` | yes | One entry per gate run: `status` from the exit code (`0` = pass — deterministic, never a judgment), `command`, and pass/fail/skip counts for test suites |
+| `minimalism` | per-cycle only | Code-minimalism lens findings (`mochiko:review-code-minimalism`): `{task, claimed, observed, evidence}` per finding, evidence one line (grep hit / stdlib call / manifest entry). **Advisory** — findings ride to the lead's checkpoint verdict and never fail a cycle the way a `**TEST:**` gate does; a builder-vs-reviewer rung dispute escalates to the user only at the checkpoint. `[]` when clean |
 | `recommendation` | yes | The verifier's recommendation to the gate — input to the lead's verdict, never the verdict |
 
 ### Conditional Prose *(mandatory when `status` is not `pass`)*

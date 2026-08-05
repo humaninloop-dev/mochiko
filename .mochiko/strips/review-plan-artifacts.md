@@ -10,6 +10,16 @@ bullet like the one stripped from `review-specifications`). One contested keep (
 is a library-wide consistency ruling, not a cluster call (see the wave return); note L16 already carries
 the `loop-discipline` reference the strip disposition would add.
 
+## [v0.53.0] Code-review punt line narrowed — minimalism-lens carve-out
+- **Disposition:** superseded → the same When-NOT-to-Use bullet with a parenthetical carve-out naming `mochiko:review-code-minimalism` (implement-side) as the one exception; general code review stays punted.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-05 "Ponytail code-minimalism ruled (PT-D1–D10)", record `.mochiko/brainstorms/ponytail-concepts-integration/record.md`, D2 — punt reversal narrow, lens-only).
+- **Content (verbatim, the superseded bullet):**
+  ```
+  - **Implementation code review** — use code-review tooling instead
+  ```
+- **Kept deliberately:** the punt itself for everything but the minimalism lens — naming, patterns, correctness beyond tests remain out of this skill and out of mochiko's review surface generally; the `:185` anti-pattern row ("Reviewing implementation details") untouched, still correct for this skill.
+- **Consumers assessed:** devils-advocate (mounts it; plan-side scope unchanged) · plan (binds it; no behavior change — the carve-out points elsewhere).
+
 ## [v0.49.0] Absorbed the cycle-card checks (from retired review-task-artifacts); boundary line removed
 - **Disposition:** superseded → the new Cycle cards row in Review Focus (the absorption); the When-NOT-to-Use "Task artifact review — use `mochiko:review-task-artifacts`" line deleted with its target
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D4)

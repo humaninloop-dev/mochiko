@@ -4,6 +4,16 @@ Entry formats: `strips/README.md`. Wave context: the specify cluster wave (v0.13
 Single-consumer primitive (the specify critique, mounted on `devils-advocate`) — strips
 ruled in-wave.
 
+## [v0.53.0] Code-review punt line narrowed — minimalism-lens carve-out
+- **Disposition:** superseded → the same When-NOT-to-Use bullet with a parenthetical carve-out naming `mochiko:review-code-minimalism` (implement-side) as the one exception; general code review stays a different domain.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-05 "Ponytail code-minimalism ruled (PT-D1–D10)", record `.mochiko/brainstorms/ponytail-concepts-integration/record.md`, D2 — punt reversal narrow, lens-only).
+- **Content (verbatim, the superseded bullet):**
+  ```
+  - **Code review** - Different skill domain entirely
+  ```
+- **Kept deliberately:** the punt for everything but the minimalism lens — this skill grades specs, never code; scope unchanged.
+- **Consumers assessed:** devils-advocate (mounts it; specify-side scope unchanged) · specify (binds it; no behavior change).
+
 ## [v0.50.0] Gained the Screens & Flows prototype-walk grade
 - **Disposition:** pure addition riding the decision row (new 8-check section + process step + checklist row + description clause; the process-step renumber 6→7/7→8/8→9 is the only touched existing text)
 - **Tier failed:** n/a — addition by ruling (`DECISIONS.md` row 2026-08-02 "UX mocking in specify (UX-D1–D9)"; record `.mochiko/brainstorms/ux-mocking-in-specify/record.md`, D7)
