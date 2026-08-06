@@ -100,3 +100,37 @@ Session artifacts (`record.md`, `synthesis.md`) live in `.mochiko/brainstorms/<t
 3. **Reliable model-invocation** — model-invoked skills encode graded MUST/SHOULD + exact trigger phrases in their `description` (delivery truncates at 1,536 chars — measure first).
 4. **Agent↔skill composition** — agents declare `skills:`; persona carries judgment, skill carries procedure; a persona contains no trace of any workflow (decoupling by absence, the keystone test). Caller-side context rides the dispatching command's own brief. Details: [`.mochiko/brainstorms/agent-decoupling/synthesis.md`](.mochiko/brainstorms/agent-decoupling/synthesis.md).
 5. **Producer↔validator pairing** — every reviewable artifact is graded by a structurally independent validator (different agent, different skill); mirror-checklist form for objective criteria, adversarial-critique form for judgment artifacts.
+
+<!-- mochiko:governance:begin -->
+## Governance
+
+**Ratified:** v1.0.0 · 2026-08-06 · production floor · modules: compliance none · knowledge-management (core + CHANGELOG) · release-gates <!-- GI-001 (fact profile) -->
+
+### Principles
+
+- Secrets MUST stay out of the repo: `.claude/settings.local.json` stays gitignored; no credentials in primitives, records, or brainstorm artifacts (NON-NEGOTIABLE) <!-- GI-003 -->
+- Every shipped-primitive edit MUST pass the author≠grader audit before the `plugin.json` bump that ships it — ceremony: `.claude/rules/mochiko/primitive-edits.md` (NON-NEGOTIABLE) <!-- GI-004 -->
+- The record layer MUST NOT silently corrupt: protected content leaves only by recorded ruling; dead pointers are defects — invariants: `.mochiko/memory/knowledge-management.md` (NON-NEGOTIABLE) <!-- GI-005 -->
+- Every primitive edit MUST be reconstructible from strips + `DECISIONS.md` + version stamps (NON-NEGOTIABLE) <!-- GI-006 -->
+- Governance surfaces point at existing constraint homes; they MUST NOT restate them <!-- GI-017 -->
+
+### Technology stack
+
+- Markdown primitive library (Claude Code plugin, `plugins/mochiko/`, semver in `plugin.json`) · no runtime, no build, no test/lint commands — quality is procedural (audits · strips · landing ritual) <!-- GI-002 -->
+
+### Quality gates
+
+- No executable gates exist (no CI/lint/test — detected, not waived); the blocking checks are procedural: audit PASS · strip entries · landing ritual complete — detail per principle in the ledger <!-- GI-004, GI-005 -->
+- Release gates: a `plugin.json` bump MUST NOT land without audits PASS · strips recorded · landing complete · `CHANGELOG.md` entry · `marketplace.json` synced — detail in the ledger <!-- GI-012 -->
+
+### Governance operations
+
+- Ledger (waivers · amendment policy · exceptions · Three-Part metadata): `.mochiko/memory/governance-ledger.md`
+- Amend via `/mochiko:setup` (fact-profile changes — module attach/detach — and un-waives are governance events); standing amend triggers: public-product transition · CI arrival · GLOSSARY.md content
+<!-- mochiko:output-style:begin -->
+- Writing style — conversation: `full` · reports: `ultra` *(internal agent hand-offs)* · documents: `full`. Terse and plain-English by default. Set any of the three to `off`, `lite`, `full`, or `ultra` and your choice is kept when this section is regenerated; "normal mode" turns it off for one session.
+<!-- mochiko:output-style:end -->
+- Path-scoped rules inject on **Read**, not Write (observed behavior, kinako dogfood 2026-07-19) — before creating a new file under `.mochiko/specs/`, `plugins/mochiko/`, or the operating docs, read the matching `.claude/rules/mochiko/` file or read back the file you created
+- Operating docs (knowledge-management module): sessions in `.mochiko/brainstorms/` + `index.md`; rulings land in `DECISIONS.md`; open threads in `BACKLOG.md`; direction in `ROADMAP.md`; landing ritual + invariants at `.mochiko/memory/knowledge-management.md`; groom: `mochiko:grooming-operating-docs` <!-- GI-009 -->
+<!-- mochiko:governance:end -->
+

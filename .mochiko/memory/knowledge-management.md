@@ -2,15 +2,20 @@
 
 Pinned 2026-07-25 from `plugins/mochiko/templates/constitution-modules/knowledge-management.md`
 (plugin v0.29.0) — the runtime source commands and the groom skill resolve; template changes
-reach this copy only as amend offers. Hand-pinned at migration (mochiko never ran setup); the
-adopted core set here: brainstorms layer · open-only `BACKLOG.md` + trail
-(`.mochiko/archive/backlog-trail.md`) · `ROADMAP.md` · `DECISIONS.md` + `.mochiko/decisions/`
-· the `paths` rules file (`.claude/rules/mochiko/operating-docs.md`) · CLAUDE.md pointers.
-**Recorded deviation (2026-07-25, audit-flagged; narrowed same day — rules file created):**
-`ARCHITECTURE.md`/`GLOSSARY.md` deferred until they gain content; command-boundary compliance
-manual until more commands run in-repo (the record's D9 accepted-risk fold). **Revisit
-trigger:** the first in-repo setup/amend run or the module dogfood — align the pin with the
-ruled core or re-ratify the deviation.
+reach this copy only as amend offers. Hand-pinned at migration; **ratified into the ruled core
+2026-08-06** by the first in-repo `/mochiko:setup` run (governance v1.0.0, GI-009 — the pin's
+revisit trigger, now discharged). The adopted core set: brainstorms layer · open-only
+`BACKLOG.md` + trail (`.mochiko/archive/backlog-trail.md`) · `ROADMAP.md` · `DECISIONS.md` +
+`.mochiko/decisions/` · `ARCHITECTURE.md` (deferral retired 2026-08-06 — doc gained content) ·
+the `paths` rules file (`.claude/rules/mochiko/operating-docs.md`) · CLAUDE.md pointers.
+Elective adopted: `CHANGELOG.md` (GI-010, release-gated). Elective declined durable:
+`RUNBOOK.md` (GI-011). **Deviation carried (re-ratified 2026-08-06):** `GLOSSARY.md` deferred
+until it gains content; command-boundary compliance manual until more commands run in-repo;
+**and `specify.md` carries no KM landing step** (validator-surfaced 2026-08-06 — the other four
+carrying commands reference this pin; pre-existing shipped-plugin defect, fix routed through the
+primitive-edit ceremony, tracked in `BACKLOG.md`).
+**Revisit trigger:** GLOSSARY.md gains content → scaffold and fold in; the specify.md KM landing
+step lands → strike that deviation line.
 
 ## Document contracts
 

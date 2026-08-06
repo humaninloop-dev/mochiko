@@ -96,6 +96,18 @@ mochiko's own migration executed same day (this file's shape is its result).
   manual until more commands run in-repo (accepted risk, D9 fold). Partial credit (2026-07-31
   mochiko-app *amend* run): injection probe ran at G5, landing ritual observed at 2 of 5
   boundaries (amend + plan) — the fresh-setup half and the seeded cap trip remain.
+- [ ] **specify.md KM landing step missing** (2026-08-06, governance v1.0.0 validator finding;
+  pin deviation at `.mochiko/memory/knowledge-management.md`) — the KM pin names specify
+  landings as a landing moment, but `plugins/mochiko/commands/specify.md` carries no KM landing
+  reference; the other four carrying commands do (brainstorm.md:45, plan.md:76, implement.md:84,
+  setup.md:61-62). Fix = primitive edit under the primitive-edits ceremony (strip-note n/a if
+  pure addition; author≠grader audit required). On landing: strike the pin's deviation line.
+- [ ] **Governance first-live-run watches** (2026-08-06, governance v1.0.0, DECISIONS row) —
+  standing amend triggers to observe: public-product transition (GI-002) · CI arrival un-narrows
+  FLOOR-SEC scanning (GI-003) · GLOSSARY.md content → scaffold (GI-009) · helper-script waiver
+  trigger (GI-008) · evolution-notes/layer-rules remain offerable on amend (GI-013/014, FP-1).
+  Release gate 5 obligation live: next `plugin.json` bump must sync `marketplace.json`
+  (currently 0.10.0 vs 0.53.0, GI-016) and append `CHANGELOG.md` (GI-010).
 - [ ] **Brainstorm bookkeeping watch** (2026-07-17, carried) — on a KM project:
   read-index-before-open fires, entries land/update with named landings, close invariants catch
   a seeded defect, the no-module branch stays silent. Honest residual: drift on a session-less

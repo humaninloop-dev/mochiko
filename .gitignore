@@ -2,6 +2,9 @@
 __pycache__/
 *.pyc
 
+# Local Claude Code settings — carries live credentials, never commit (governance GI-003/GI-015)
+.claude/settings.local.json
+
 # Stale v2-run brainstorm artifacts — topic will be re-run fresh on v2.1 (see BACKLOG, Brainstorm-v2 follow-ups)
 .mochiko/brainstorms/setup-workflow-rewrite/
 /.claude/worktrees
