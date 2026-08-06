@@ -6,11 +6,13 @@ surface is [`ROADMAP.md`](ROADMAP.md). Closing an item = the KM landing ritual
 (`.mochiko/memory/knowledge-management.md`): decision row + move here → the trail
 (`.mochiko/archive/backlog-trail.md`) + touch ROADMAP.md. No `[x]` lives here.
 
-*Last groomed: 2026-08-04 (epic-closure groom); 2026-08-05 delivery sweep — baseline: 49 open
-items (−3 closed at the v0.53.0 wave: ponytail code-minimalism build DONE · orphan plan
-artifacts dispositioned, ADR `2026-08-05-orphan-plan-artifacts` · weight-card staleness
-re-keyed; +1 rider on `audit` scoping: runtime NFR verification; prior baseline 52 at the
-2026-08-04 epic-closure groom), per-item bound ≤15 lines.*
+*Last groomed: 2026-08-06 (backlog groom) — baseline: 57 open items (prior 49 at the
+2026-08-05 delivery sweep; +7 since: 3 to-triage captures 2026-08-04 · 2 governance-v1.0.0
+items — first-live-run watches + the specify.md KM-landing defect · +1 rider absorbed · +1
+expansion-watch hit logged this groom; −0 closed). This groom: To-triage section dissolved —
+its 3 captures re-keyed into Production-only narrowing (hardening levels) and Deferred tracks
+& shelves (design/UX skills · deepeval QC); expansion-heavy-surface watch HIT logged
+(ROADMAP stamp vs CHANGELOG — user decision); all items within the ≤15-line bound.*
 
 ---
 
@@ -108,6 +110,17 @@ mochiko's own migration executed same day (this file's shape is its result).
   trigger (GI-008) · evolution-notes/layer-rules remain offerable on amend (GI-013/014, FP-1).
   Release gate 5 obligation live: next `plugin.json` bump must sync `marketplace.json`
   (currently 0.10.0 vs 0.53.0, GI-016) and append `CHANGELOG.md` (GI-010).
+- [ ] **Expansion-heavy-surface watch HIT — ROADMAP stamp line vs CHANGELOG** (2026-08-06;
+  provenance: groom-pass watch, `grooming-operating-docs` step 8; recorded re-open trigger for
+  the report-writer ruling, OD-D12 + the "Scribe/report-writer closed" standing bet) — the
+  ROADMAP last-groomed stamp had grown to a ~700-word per-version build changelog whose every
+  clause was a mechanical derivation from DECISIONS rows, trail entries, and strip notes; with
+  `CHANGELOG.md` adopted (GI-010, 2026-08-06) the per-bump detail now has a dedicated owner,
+  and the 0.53.0 CHANGELOG entry was itself "reconstructed from the ROADMAP stamp line" —
+  derivation running in both directions. Logged for the user per the skill's never-act-here
+  rule: decide whether this re-opens the report-writer/scribe question or whether the fix is
+  purely contractual (stamp = date + baseline figures only; per-bump detail lives in
+  CHANGELOG). The 2026-08-06 groom compressed the stamp to contract shape either way.
 - [ ] **Brainstorm bookkeeping watch** (2026-07-17, carried) — on a KM project:
   read-index-before-open fires, entries land/update with named landings, close invariants catch
   a seeded defect, the no-module branch stays silent. Honest residual: drift on a session-less
@@ -287,6 +300,16 @@ trail** (scope ADR `2026-07-30-po-narrowing-build-scope`). Tier-I depth items op
   ambiguity was ruled 2026-07-30 — waivable under D4; ADR `po-narrowing-build-scope`.) D7
   first datapoint (2026-07-31 mochiko-app amend): zero waivers, floor asserted clean —
   pointing away from the concern.
+- [ ] **Incremental production-hardening levels** (2026-08-04; provenance: capture session,
+  to-brainstorm; re-keyed here from To-triage at the 2026-08-06 groom) — setup hardening for
+  production, with levels of complexity applied incrementally. **Direct tension with PO-D1–D7**
+  (production-only, 2026-07-30): the ruling asserts *one* production floor, **no tier ladder**
+  (`production-only-focus/record.md`). An "incremental levels" proposal must engage that ruling
+  head-on — either it's a re-open of PO-D1 (needs a new founder ruling) or it's an
+  onboarding/adoption ramp *onto* the single floor (staged assertion, not staged standards)
+  that leaves the floor itself untiered. Also relate to the floor-waiver mechanism (D4/D7)
+  which already gives young teams a graduated path. Brainstorm must first classify which of
+  the two it is.
 
 ## Ergonomics: output, language & run-hygiene
 
@@ -327,37 +350,6 @@ Raw captures (2026-08-01) — to triage/brainstorm; grooming may re-key into fin
   ruled** (D3): the style home carries plain-English-for-end-users + the ban as a principle
   with non-exhaustive examples (lands at the build's wave 2). **Remaining here: the sweep
   work itself** — term hunting across runtime prose, worked examples for the ban's list.
-
-## To-triage captures (brainstorm pending)
-
-Raw captures (2026-08-04) — user-added, brainstorm pending; grooming may re-key into
-existing themes (Design track · Token-reduction/quality · Production-only).
-
-- [ ] **Design/UX skills for product engineer** (2026-08-04; provenance: capture session,
-  to-brainstorm) — add design + UX competence to the product-engineer surface. Scope the
-  brainstorm against what already exists so it doesn't duplicate: the **Design track** shelf
-  item (`ui-designer` + `analysis-screenshot` / `authoring-design-system` /
-  `patterns-flow-mapping` / `patterns-interface-design`, HIL port) and the landed
-  **UX-prototype stage** in specify (`authoring-prototype`, UX-D1–D9, v0.50.0). Decide:
-  does design/UX ride the product-engineer persona as skills, or a dedicated `ui-designer`
-  cluster the persona composes? Persona-carries-judgment / skill-carries-procedure (five-axis
-  #4) constrains the shape. Resolve overlap with the Design track before authoring.
-- [ ] **Quality-control pipeline — deepeval or equivalent** (2026-08-04; provenance: capture
-  session, to-brainstorm) — explore deepeval (or a comparable eval/QC pipeline) for automated
-  quality control over produced artifacts / generated code. Open: what does it grade (spec
-  fidelity · code · agent output), how it composes with the existing producer↔validator
-  pairing (five-axis #5) and the qa-engineer / testing-* skills, and whether it's a kernel-shaped
-  dependency (constraint check — no Python/MCP brain code; must live as skill/agent or native CC).
-  Brainstorm the fit before adopting any external harness.
-- [ ] **Incremental production-hardening levels** (2026-08-04; provenance: capture session,
-  to-brainstorm) — setup hardening for production, with levels of complexity applied
-  incrementally. **Direct tension with PO-D1–D7** (production-only, 2026-07-30): the ruling
-  asserts *one* production floor, **no tier ladder** (`production-only-focus/record.md`). An
-  "incremental levels" proposal must engage that ruling head-on — either it's a re-open of
-  PO-D1 (needs a new founder ruling) or it's an onboarding/adoption ramp *onto* the single
-  floor (staged assertion, not staged standards) that leaves the floor itself untiered. Also
-  relate to the floor-waiver mechanism (D4/D7) which already gives young teams a graduated path.
-  Brainstorm must first classify which of the two it is.
 
 ## Defects & empirical checks
 
@@ -426,6 +418,23 @@ existing themes (Design track · Token-reduction/quality · Production-only).
 - [ ] **Design track** (2026-06-27, carried; archive REGISTRY disposition) — `ui-designer` +
   `analysis-screenshot` / `authoring-design-system` / `patterns-flow-mapping` /
   `patterns-interface-design`; port as a dedicated cluster (HIL sources listed in the archive).
+- [ ] **Design/UX skills for product engineer** (2026-08-04; provenance: capture session,
+  to-brainstorm; re-keyed here from To-triage at the 2026-08-06 groom) — add design + UX
+  competence to the product-engineer surface. Scope the brainstorm against what already exists
+  so it doesn't duplicate: the **Design track** item above (`ui-designer` cluster, HIL port)
+  and the landed **UX-prototype stage** in specify (`authoring-prototype`, UX-D1–D9, v0.50.0).
+  Decide: does design/UX ride the product-engineer persona as skills, or a dedicated
+  `ui-designer` cluster the persona composes? Persona-carries-judgment /
+  skill-carries-procedure (five-axis #4) constrains the shape. Resolve overlap with the Design
+  track before authoring.
+- [ ] **Quality-control pipeline — deepeval or equivalent** (2026-08-04; provenance: capture
+  session, to-brainstorm; re-keyed here from To-triage at the 2026-08-06 groom) — explore
+  deepeval (or a comparable eval/QC pipeline) for automated quality control over produced
+  artifacts / generated code. Open: what does it grade (spec fidelity · code · agent output),
+  how it composes with the existing producer↔validator pairing (five-axis #5) and the
+  qa-engineer / testing-* skills, and whether it's a kernel-shaped dependency (constraint
+  check — no Python/MCP brain code; must live as skill/agent or native CC). Brainstorm the
+  fit before adopting any external harness.
 - [ ] **Multi-stack / monorepo registries** (2026-07-21) — per-stack registries, paths scopes,
   seeding. **Revisit: first multi-stack setup run.**
 - [ ] **`codebase-inventory-schema.json` port** (2026-06-27; provenance:
