@@ -5,8 +5,12 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
-## [Unreleased]
+## [0.54.0] — 2026-08-06
 
+- `specify.md` gains its missing KM landing Bindings line (governance v1.0.0 validator
+  finding — the pin named specify landings but the command carried no reference; pure
+  addition, author≠grader audit PASS round 1; pin deviation line struck).
+- `marketplace.json` synced 0.10.0 → 0.54.0 — first execution of release gate 5 (GI-016).
 - Governance surface set v1.0.0 ratified via first in-repo `/mochiko:setup` run (brownfield):
   CLAUDE.md governance region · governance ledger · KM pin ratified into ruled core ·
   release gates adopted · CHANGELOG elective adopted (this file) ·

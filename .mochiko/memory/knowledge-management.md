@@ -10,12 +10,10 @@ revisit trigger, now discharged). The adopted core set: brainstorms layer · ope
 the `paths` rules file (`.claude/rules/mochiko/operating-docs.md`) · CLAUDE.md pointers.
 Elective adopted: `CHANGELOG.md` (GI-010, release-gated). Elective declined durable:
 `RUNBOOK.md` (GI-011). **Deviation carried (re-ratified 2026-08-06):** `GLOSSARY.md` deferred
-until it gains content; command-boundary compliance manual until more commands run in-repo;
-**and `specify.md` carries no KM landing step** (validator-surfaced 2026-08-06 — the other four
-carrying commands reference this pin; pre-existing shipped-plugin defect, fix routed through the
-primitive-edit ceremony, tracked in `BACKLOG.md`).
-**Revisit trigger:** GLOSSARY.md gains content → scaffold and fold in; the specify.md KM landing
-step lands → strike that deviation line.
+until it gains content; command-boundary compliance manual until more commands run in-repo.
+(The `specify.md` no-KM-landing-step deviation was struck 2026-08-06 — the landing line
+shipped at v0.54.0, audit PASS; DECISIONS row + ADR `2026-08-06-specify-km-landing`.)
+**Revisit trigger:** GLOSSARY.md gains content → scaffold and fold in.
 
 ## Document contracts
 

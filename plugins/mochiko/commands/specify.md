@@ -78,6 +78,9 @@ its author · user acceptance not given.
 - **Governance input:** where the region is present, name the relevant
   `.claude/rules/mochiko/` files as an obligated read in the author's brief — `paths`-scoped
   rules do not fire for from-scratch authoring.
+- **KM landing:** where `.mochiko/memory/knowledge-management.md` exists, spec
+  acceptance is a landing — run its landing ritual (close/move any BACKLOG item the
+  spec discharges, touch `ROADMAP.md`) and its command-boundary invariants fix-on-sight.
 - **Register:** user-facing prose per `templates/output-style.md`.
 - **Next step:** `/mochiko:plan` — slice-scoped per the spec's Graduation contract when a
   decomposition is present.

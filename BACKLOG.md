@@ -6,13 +6,13 @@ surface is [`ROADMAP.md`](ROADMAP.md). Closing an item = the KM landing ritual
 (`.mochiko/memory/knowledge-management.md`): decision row + move here → the trail
 (`.mochiko/archive/backlog-trail.md`) + touch ROADMAP.md. No `[x]` lives here.
 
-*Last groomed: 2026-08-06 (backlog groom) — baseline: 57 open items (prior 49 at the
-2026-08-05 delivery sweep; +7 since: 3 to-triage captures 2026-08-04 · 2 governance-v1.0.0
-items — first-live-run watches + the specify.md KM-landing defect · +1 rider absorbed · +1
-expansion-watch hit logged this groom; −0 closed). This groom: To-triage section dissolved —
-its 3 captures re-keyed into Production-only narrowing (hardening levels) and Deferred tracks
-& shelves (design/UX skills · deepeval QC); expansion-heavy-surface watch HIT logged
-(ROADMAP stamp vs CHANGELOG — user decision); all items within the ≤15-line bound.*
+*Last groomed: 2026-08-06 (backlog groom) — baseline: 56 open items (57 at the groom — prior
+49 at the 2026-08-05 delivery sweep; +7 since: 3 to-triage captures 2026-08-04 · 2
+governance-v1.0.0 items · +1 rider absorbed · +1 expansion-watch hit logged at the groom;
+−1 same day: specify.md KM-landing defect closed at v0.54.0 → trail). Groom notes: To-triage
+section dissolved — its 3 captures re-keyed into Production-only narrowing (hardening levels)
+and Deferred tracks & shelves (design/UX skills · deepeval QC); expansion-heavy-surface watch
+HIT logged (ROADMAP stamp vs CHANGELOG — user decision); all items within the ≤15-line bound.*
 
 ---
 
@@ -98,18 +98,12 @@ mochiko's own migration executed same day (this file's shape is its result).
   manual until more commands run in-repo (accepted risk, D9 fold). Partial credit (2026-07-31
   mochiko-app *amend* run): injection probe ran at G5, landing ritual observed at 2 of 5
   boundaries (amend + plan) — the fresh-setup half and the seeded cap trip remain.
-- [ ] **specify.md KM landing step missing** (2026-08-06, governance v1.0.0 validator finding;
-  pin deviation at `.mochiko/memory/knowledge-management.md`) — the KM pin names specify
-  landings as a landing moment, but `plugins/mochiko/commands/specify.md` carries no KM landing
-  reference; the other four carrying commands do (brainstorm.md:45, plan.md:76, implement.md:84,
-  setup.md:61-62). Fix = primitive edit under the primitive-edits ceremony (strip-note n/a if
-  pure addition; author≠grader audit required). On landing: strike the pin's deviation line.
 - [ ] **Governance first-live-run watches** (2026-08-06, governance v1.0.0, DECISIONS row) —
   standing amend triggers to observe: public-product transition (GI-002) · CI arrival un-narrows
   FLOOR-SEC scanning (GI-003) · GLOSSARY.md content → scaffold (GI-009) · helper-script waiver
   trigger (GI-008) · evolution-notes/layer-rules remain offerable on amend (GI-013/014, FP-1).
-  Release gate 5 obligation live: next `plugin.json` bump must sync `marketplace.json`
-  (currently 0.10.0 vs 0.53.0, GI-016) and append `CHANGELOG.md` (GI-010).
+  (Gates 4+5 executed first time at the v0.54.0 bump 2026-08-06 — `marketplace.json` synced
+  0.10.0→0.54.0, CHANGELOG entry appended; the obligation is now routine per-bump, GI-012.)
 - [ ] **Expansion-heavy-surface watch HIT — ROADMAP stamp line vs CHANGELOG** (2026-08-06;
   provenance: groom-pass watch, `grooming-operating-docs` step 8; recorded re-open trigger for
   the report-writer ruling, OD-D12 + the "Scribe/report-writer closed" standing bet) — the
