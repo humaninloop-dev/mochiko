@@ -14,7 +14,6 @@ frontend/mobile/desktop shelves are Tier-I roadmap work.**
 ## Now
 
 - **KM-module redesign dogfood** — fresh-project scaffold + rules-injection probe of the rebuilt module (2026-07-25; partial credit 2026-08-06: in-repo brownfield setup ran dimension-7 core+electives, collision beat vacuous — fresh-scaffold half + injection probe remain) → [BACKLOG](BACKLOG.md#operating-docs--km-module)
-- **Kinako follow-up run** — waves-1–2 didn't land: investigate, then the UI fix wave through journey gates (2026-07-24) → [BACKLOG](BACKLOG.md#kinako-follow-up-run)
 
 ## Next
 
@@ -48,9 +47,11 @@ frontend/mobile/desktop shelves are Tier-I roadmap work.**
 - ~~**KM pin adopts partial core**~~ (recorded deviation, 2026-07-25) — **discharged 2026-08-06**: the first in-repo setup run ratified the pin into the ruled core (governance v1.0.0, GI-009); residual deviations (GLOSSARY deferral · specify.md landing step) carried in the pin with their own triggers.
 
 ---
-*Last groomed: 2026-08-06 (backlog groom; same-day touch: specify.md KM-landing defect closed
-at v0.54.0 — audit PASS, pin deviation struck, gates 4+5 executed first time, marketplace
-synced) — Now 2 · Next 6 · Later 9 · BACKLOG baseline 56 open items (per-item ≤15 lines;
+*Last groomed: 2026-08-06 (backlog groom; same-day touches: specify.md KM-landing defect
+closed at v0.54.0 — audit PASS, pin deviation struck, gates 4+5 executed first time,
+marketplace synced · kinako waves-1–2 investigation retired by user ruling, its *Now* row
+dropped, ADR `2026-08-06-kinako-waves-retired`) — Now 1 · Next 6 · Later 9 · BACKLOG
+baseline 55 open items (per-item ≤15 lines;
 figures on BACKLOG's stamp line). Plugin: 5 commands · 9 agents · 28 skills · 14 templates +
 modules, v0.54.0 (marketplace synced). Per-bump build history: `CHANGELOG.md` (from 0.53.0) ·
 `DECISIONS.md` · the trail; pre-0.53.0 stamp-line narratives live in git history (this line,

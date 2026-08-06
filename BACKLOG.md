@@ -6,10 +6,12 @@ surface is [`ROADMAP.md`](ROADMAP.md). Closing an item = the KM landing ritual
 (`.mochiko/memory/knowledge-management.md`): decision row + move here → the trail
 (`.mochiko/archive/backlog-trail.md`) + touch ROADMAP.md. No `[x]` lives here.
 
-*Last groomed: 2026-08-06 (backlog groom) — baseline: 56 open items (57 at the groom — prior
+*Last groomed: 2026-08-06 (backlog groom) — baseline: 55 open items (57 at the groom — prior
 49 at the 2026-08-05 delivery sweep; +7 since: 3 to-triage captures 2026-08-04 · 2
 governance-v1.0.0 items · +1 rider absorbed · +1 expansion-watch hit logged at the groom;
-−1 same day: specify.md KM-landing defect closed at v0.54.0 → trail). Groom notes: To-triage
+−2 same day: specify.md KM-landing defect closed at v0.54.0 → trail · kinako waves-1–2
+investigation retired by user ruling → trail, ADR `2026-08-06-kinako-waves-retired`). Groom
+notes: To-triage
 section dissolved — its 3 captures re-keyed into Production-only narrowing (hardening levels)
 and Deferred tracks & shelves (design/UX skills · deepeval QC); expansion-heavy-surface watch
 HIT logged (ROADMAP stamp vs CHANGELOG — user decision); all items within the ≤15-line bound.*
@@ -190,12 +192,6 @@ One vehicle, several riders (2026-07-24; oversight trace
 `.mochiko/specs/mvp-thin-loop/oversight-trace.md` in the evidence repo; validation-pass record
 in this repo's git history at `7920ccb` BACKLOG).
 
-- [ ] **Waves 1–2 didn't land — investigate, then dogfood (residual B)** — kinako artifacts
-  show the dense forms ABSENT in S4-era entries, design layer ~28% above the 555k baseline, no
-  v0.22/0.23 stamp, run-costs 2/~15 rows. A strip-didn't-land bug is on the table — candidate
-  mechanism found 2026-07-31: a stale plugin cache (0.7.0/0.28.0/0.36.0 cached vs the labelled
-  v0.38.0, forensics record) — confirm the forms apply, then re-run + re-measure. Acceptance checks + calibration watches (envelope size
-  defaults; T3's two branches): archive ROADMAP wave-1/wave-2 trail entries.
 - [ ] **Cluster-2 ratification wave** — pressure-tested, awaiting founder ratification; lands
   as one edit wave (author ≠ grader), ruling → DECISIONS.md row. Items (owner · n): 
   surface-task rule (`patterns-vertical-tdd` + `review-plan-artifacts`, which absorbed
