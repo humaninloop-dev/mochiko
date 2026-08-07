@@ -103,6 +103,13 @@ human adjudicates; the reviewer's verdict never clears anything by itself.
 | `/mochiko:implement` | you want to turn accepted cycle cards into working, verified code — each card decomposed by its builder at build time, TDD-built, independently verified against real infrastructure with captured evidence, closing on your acceptance |
 | `/mochiko:brainstorm` | you want to think a problem through one question at a time; the deliverable is a cold-reviewed `record.md` you accept, pipeline entry offered, never defaulted |
 
+### Output styles (product surface — you select them)
+
+The plugin ships two optional output styles — **Caveman** (terse register) and **Caveman
+BLUF** (answer-first + terse) — selectable via `/config` → Output style; they restyle the
+main conversation only and never alter workflow reports or artifacts
+(`templates/output-style.md` governs those).
+
 ### Agents (dispatched by the supervisor)
 | Agent | Role |
 |-------|------|

@@ -50,10 +50,12 @@ frontend/mobile/desktop shelves are Tier-I roadmap work.**
 *Last groomed: 2026-08-06 (backlog groom; same-day touches: specify.md KM-landing defect
 closed at v0.54.0 — audit PASS, pin deviation struck, gates 4+5 executed first time,
 marketplace synced · kinako waves-1–2 investigation retired by user ruling, its *Now* row
-dropped, ADR `2026-08-06-kinako-waves-retired`) — Now 1 · Next 6 · Later 9 · BACKLOG
+dropped, ADR `2026-08-06-kinako-waves-retired` · 2026-08-07: plugin output-styles session
+accepted AND built same day at v0.55.0 — two native output styles + router section, audit
+PASS round 1, item straight to trail) — Now 1 · Next 6 · Later 9 · BACKLOG
 baseline 55 open items (per-item ≤15 lines;
 figures on BACKLOG's stamp line). Plugin: 5 commands · 9 agents · 28 skills · 14 templates +
-modules, v0.54.0 (marketplace synced). Per-bump build history: `CHANGELOG.md` (from 0.53.0) ·
+modules · 2 output styles, v0.55.0 (marketplace synced). Per-bump build history: `CHANGELOG.md` (from 0.53.0) ·
 `DECISIONS.md` · the trail; pre-0.53.0 stamp-line narratives live in git history (this line,
 before this groom). Stamp compressed to contract shape this groom — expansion-watch hit
 logged in BACKLOG (Operating-docs / KM module section) for the user's report-writer re-open
