@@ -34,13 +34,30 @@ approved nor consented as an amendment · user acceptance not given.
 - **Independence:** no output is cleared by its author — implementation and verification are
   never the same seat; verification executes against real infrastructure and reads the code
   and its evidence, default FAIL.
+- **Bounds:** a cycle consumes an **attempt** every time a verification seat grades it —
+  whatever the round is called (rework, completion, targeted fix, re-grade); default 3
+  attempts per cycle, redeclarable at run open. Exempting a round from the count is reserved
+  to the user, never lead discretion. Two consecutive rounds with unchanged findings is a
+  no-progress stop: halt the cycle, present state. Re-verification is scoped to the delta —
+  a test-only or records-only change gets a delta-grade of the changed surface, never a full
+  gate re-sweep; a delta round re-runs no quality gates, the prior gate evidence standing
+  while the graded head is unmoved — and the graded object is the code tree (`git rev-parse
+  HEAD:<code-dir>`), so a records-only commit does not move the graded head. Rounds consumed
+  and seats spawned are surfaced to the user at each checkpoint.
 - **Reserved to the user:** architecture-deviation consent — a cycle that adds or removes a
   box, adds, removes, or redirects an arrow, or moves a responsibility across a boundary on
   the approved diagram stops and is presented: build as approved, or amend `architecture.md`
   first · requirement ambiguity or a judgment call a producer flags — answered by the user,
   investigable gaps excepted · scope escalation (work bigger than the run was framed; the
-  run stays FAIL unless the user explicitly accepts) · final acceptance (accept / amend /
-  reject).
+  run stays FAIL unless the user explicitly accepts) · exempting a grading round from the
+  attempt count (Bounds) · final acceptance (accept / amend / reject).
+- **Escalation cadence:** reserved-to-user questions accumulate and land as one batch at the
+  cycle checkpoint; only a question the build cannot proceed without interrupts mid-cycle.
+  Advisory verifier findings ride the same rule — a Minor advisory finding defaults to a
+  `BACKLOG.md` booking, never an in-cycle fix; an Important-or-above advisory finding blocks
+  the cycle and enters the checkpoint batch. A failed `**TEST:**` gate or quality gate is
+  never severity-triaged — it fails the cycle per the Goal; `minimalism:` findings stay
+  advisory at any severity, per Bindings.
 - **Entry:** the accepted package gates the run — `tasks.md` complete alongside `plan.md`
   and `architecture.md`; missing or incomplete → block, point to `/mochiko:plan`. A missing
   governance region is surfaced, never auto-resolved; present → each code-touching brief

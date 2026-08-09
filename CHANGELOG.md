@@ -5,6 +5,21 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.56.0] — 2026-08-07
+
+- `implement.md` gains an enforceable bounds contract (pure additions to Harness). New
+  **Bounds** bullet: every grading round consumes an attempt whatever its label (default 3
+  per cycle, redeclarable at run open); exempting a round is reserved to the user; two
+  unchanged-findings rounds is a no-progress stop; test-/records-only changes get a
+  delta-grade (no gate re-sweep, prior gate evidence stands); the graded object is the code
+  tree, so records-only commits don't move the graded head; round/seat cost surfaced per
+  checkpoint. New **Escalation cadence** bullet: reserved-to-user questions batch at the
+  cycle checkpoint (build-blockers excepted); Minor advisory findings default to a
+  `BACKLOG.md` booking, Important-or-above advisory findings block; gate failures are never
+  severity-triaged; `minimalism:` findings stay advisory. Provenance: the mochiko-app
+  author-navigate S1 run (R27/R28/R31/R32 "no attempt is consumed" reclassifications) +
+  the 2026-08-07 command-text audit. Author≠grader audit FAIL→fix→PASS.
+
 ## [0.55.0] — 2026-08-07
 
 - Two native output styles shipped in `output-styles/` (new plugin surface): **Caveman**
