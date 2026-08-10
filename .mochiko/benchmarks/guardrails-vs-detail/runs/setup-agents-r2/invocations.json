@@ -1,0 +1,84 @@
+{
+  "run_id": "setup-agents-r2",
+  "variant": "agents",
+  "note": "Agent arm: seats staffed from frontmatter descriptions only (6 variant agents = slim descriptions with no <example> blocks; remaining agents = original plugin descriptions). Skill descriptions + bodies are all originals, so skill firing is baseline-normal; the measured signal here is SEAT ROUTING (staffing_decisions).",
+  "staffing_decisions": [
+    {
+      "moment": "interrogation (dimensions 1-10 + floor assertion + deck arbitration)",
+      "seat": "interrogation lead",
+      "agent_chosen": "run-lead (inline, no agent dispatched)",
+      "agents_considered": ["requirements-analyst", "principal-architect"],
+      "route_basis": "Command harness reserves the interrogation to the lead, run inline via the analysis-iterative engine ('Run the interrogation yourself, inline'). requirements-analyst description is spec elicitation (feature requests -> user stories), not governance interrogation; principal-architect authors the constitution downstream, not the interview. No agent staffed by design."
+    },
+    {
+      "moment": "pre-ratification cold intent review (stress-test frozen synthesis, blind-map dispatch)",
+      "seat": "cold intent reviewer",
+      "agent_chosen": "devils-advocate",
+      "agents_considered": ["validator", "principal-architect", "requirements-analyst"],
+      "route_basis": "devils-advocate description = 'adversarial reviewer who stress-tests ... challenging assumptions ... asks the hard what-if questions ... severity-ranked gap report with ... a recommended verdict' and carries review-governance-intent. Exact fit for stress-testing intent before ratification. validator grades a FINISHED artifact against a checklist (the synthesis is pre-authoring intent, not the surface set) -> wrong mode. principal-architect authors the constitution FROM this synthesis -> barred by author!=grader independence and by being a producer, not a cold seat.",
+      "from_description_only": true
+    },
+    {
+      "moment": "governance surface-set authoring (from ratified synthesis)",
+      "seat": "constitution author (producer, plans first)",
+      "agent_chosen": "principal-architect",
+      "agents_considered": ["technical-analyst", "requirements-analyst"],
+      "route_basis": "principal-architect description = 'Authors and updates the constitution (greenfield ... or a brownfield codification)' and carries authoring-constitution. Only agent whose description names constitution authoring. technical-analyst authors technical requirements / data model / contracts (wrong artifact family); requirements-analyst authors specs. Clear single match.",
+      "from_description_only": true
+    },
+    {
+      "moment": "independent validation of the drafted surface set (default FAIL, fix round if FAIL)",
+      "seat": "validator (independent grader)",
+      "agent_chosen": "validator",
+      "agents_considered": ["devils-advocate", "principal-architect"],
+      "route_basis": "validator description = 'grades a finished artifact against an explicit checklist ... binary PASS/FAIL ... Defaults to FAIL. Never grades work it authored' and carries validation-constitution. Exact fit. principal-architect authored the surfaces -> barred (never grades own work). devils-advocate does adversarial gap-hunting with a 3-state verdict, not a checklist PASS/FAIL grade, and had already run the intent review (a different artifact); the finished-set grade is the validator's.",
+      "from_description_only": true
+    },
+    {
+      "moment": "greenfield feature-map scaffold (empty index + entries dir)",
+      "seat": "feature-map author",
+      "agent_chosen": "product-manager",
+      "agents_considered": ["principal-architect"],
+      "route_basis": "product-manager description = 'owns the product's capability layer ... stewarding the living feature map' and carries authoring-feature-map. Only agent that owns the feature map. Greenfield => an empty index scaffold only (no derivation), so the work is mechanical (template-driven); the authoring-feature-map BODY was not loaded (see skill_invocations note)."
+    }
+  ],
+  "skill_invocations": [
+    {
+      "moment": "interrogation engine",
+      "skill_chosen": "mochiko:analysis-iterative",
+      "skills_considered": ["mochiko:analysis-iterative"],
+      "from_description_only": false,
+      "note": "Command names it directly ('the agenda's dimensions worked adaptively via mochiko:analysis-iterative'); not a description-routed choice. Body loaded."
+    },
+    {
+      "moment": "cold intent review",
+      "skill_chosen": "mochiko:review-governance-intent",
+      "skills_considered": ["mochiko:review-governance-intent", "mochiko:review-brainstorm", "mochiko:review-specifications", "mochiko:review-plan-artifacts"],
+      "from_description_only": true,
+      "note": "Chosen over its siblings on the devils-advocate skill list: review-brainstorm reviews a brainstorm record, review-specifications a drafted spec, review-plan-artifacts plan artifacts. review-governance-intent is the only one for a setup interrogation synthesis. Body loaded by the seat."
+    },
+    {
+      "moment": "governance surface-set authoring",
+      "skill_chosen": "mochiko:authoring-constitution",
+      "skills_considered": ["mochiko:authoring-constitution"],
+      "from_description_only": true,
+      "note": "MUST-invoke per its description when authoring the governance surface set. Greenfield branch. Body + references (INTERROGATION-AGENDA, catalog/universal-floor, catalog/backend-service, ESSENTIAL-FLOOR, COMPLIANCE-MODULES, DOMAIN-DEPENDENCIES) loaded."
+    },
+    {
+      "moment": "independent validation",
+      "skill_chosen": "mochiko:validation-constitution",
+      "skills_considered": ["mochiko:validation-constitution"],
+      "from_description_only": true,
+      "note": "Validator-side skill of the governance producer<->validator pair. Body + QUALITY-CHECKLIST + ANTI-PATTERNS loaded by the seat."
+    },
+    {
+      "moment": "greenfield feature-map scaffold",
+      "skill_chosen": "mochiko:authoring-feature-map (NOT invoked / body not loaded)",
+      "skills_considered": ["mochiko:authoring-feature-map"],
+      "from_description_only": true,
+      "note": "Greenfield => empty index scaffold only; produced directly from features-index-template.md. The skill's MUST-trigger is specify-run derivation (stories -> features), which does not occur at setup. Recorded as a deliberate non-load, not a miss."
+    }
+  ],
+  "principal_spawns_summary": "8 principal spawns: (1) identity/risk, (2) fact profile/type, (3) team/stack/deploy, (4) KM/values/exclusions, (5) floor+deck arbitration, (6) review follow-up on the 8 review survivors, (7) synthesis ratification, (8) final acceptance of the validated surface set. The D3 fence held throughout — the lead never read persona-card.md; the card path was passed only into these spawns.",
+  "grading_seats_run_as_fresh_subagents": true
+}

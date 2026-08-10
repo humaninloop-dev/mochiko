@@ -1,0 +1,22 @@
+{
+  "run_id": "setup-agents-r2",
+  "principal_spawns": 8,
+  "approx_tokens_in_skills_loaded": 115878,
+  "skill_bytes_breakdown": {
+    "skill_bodies_SKILL_md": 62190,
+    "skill_bodies_detail": {
+      "analysis-iterative": 12367,
+      "authoring-constitution": 21156,
+      "review-governance-intent": 15052,
+      "validation-constitution": 13615
+    },
+    "skill_references_loaded": 53688,
+    "skill_references_detail": "authoring-constitution: INTERROGATION-AGENDA, catalog/README, catalog/universal-floor, catalog/backend-service, ESSENTIAL-FLOOR, COMPLIANCE-MODULES, DOMAIN-DEPENDENCIES; validation-constitution: QUALITY-CHECKLIST, ANTI-PATTERNS",
+    "skill_bodies_plus_references_total": 115878,
+    "templates_loaded_not_counted_in_skill_total": 40955,
+    "templates_detail": "governance-intent-template, governance-surfaces-template, features-index-template, constitution-modules/{knowledge-management, release-gates, layer-rules}",
+    "grand_total_all_loaded_reference_bytes": 156833
+  },
+  "byte_proxy_note": "approx_tokens_in_skills_loaded = skill SKILL.md bodies + their loaded references (115878 bytes). authoring-feature-map body NOT loaded (greenfield empty scaffold used the template only). Templates (40955 bytes) reported separately since they are template files, not skill bodies; grand total of all reference/template bytes loaded = 156833. This is the agents arm: skill bodies + descriptions are all originals, so skill-bytes are baseline-equivalent — the arm's variable is agent descriptions, which carry no per-invocation byte cost in this proxy.",
+  "wall_notes": "Single-agent simulation by the run-lead. Grading/review seats dispatched as fresh subagents for genuine author!=grader independence (cold intent reviewer, validator) plus 7 principal spawns. One cold-review dispatch stalled after reading a contaminated synthesis (a pre-drafted Review section was mistakenly present); corrected by resetting the Review section to pre-review state and re-dispatching a fresh cold reviewer. One validator FAIL -> one fix round -> re-grade. See meta.json deviations."
+}

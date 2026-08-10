@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Invoices — Ledgerline (prototype)</title>
+<link rel="stylesheet" href="../assets/app.css">
+</head>
+<body>
+<div class="shell">
+  <nav class="side" aria-label="Primary">
+    <h1>Ledgerline</h1>
+    <ul>
+      <li><a href="scr-002-invoice-list.html" aria-current="page">Invoices</a></li>
+      <li><a href="scr-003-clients.html">Clients</a></li>
+      <li><a href="scr-009-reminders.html">Reminders</a></li>
+    </ul>
+    <p class="note"><a href="../index.html">Sign out</a></p>
+  </nav>
+  <main>
+    <h2>Invoices <span class="badge">SCR-002</span></h2>
+    <p><a class="btn" href="scr-004-invoice-editor.html">New invoice</a></p>
+    <p class="note">Every invoice's current status at a glance — no need to open Stripe. Overdue
+    is computed from the due date, not a stored status.</p>
+    <table>
+      <caption class="note" style="text-align:left">Invoices for the signed-in contractor (own account only)</caption>
+      <thead>
+        <tr><th>Invoice</th><th>Client</th><th>Amount</th><th>Due</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><a href="scr-005-invoice-detail.html">INV-1005</a></td><td>Rivera Roofing</td><td>$2,480.00</td><td>2026-08-24</td><td><span class="badge sent">sent</span></td></tr>
+        <tr><td><a href="scr-005-invoice-detail.html">INV-1004</a></td><td>Delgado Landscaping</td><td>$860.50</td><td>2026-08-18</td><td><span class="badge viewed">viewed</span></td></tr>
+        <tr><td><a href="scr-005-invoice-detail.html">INV-1003</a></td><td>North Fork Cafe</td><td>$1,120.00</td><td>2026-07-30</td><td><span class="badge overdue">overdue</span></td></tr>
+        <tr><td><a href="scr-005-invoice-detail.html">INV-1002</a></td><td>Halvorsen Interiors</td><td>$540.00</td><td>2026-08-02</td><td><span class="badge paid">paid</span></td></tr>
+        <tr><td><a href="scr-004-invoice-editor.html">INV-1006</a></td><td>Chen Electric</td><td>$0.00</td><td>—</td><td><span class="badge draft">draft</span></td></tr>
+      </tbody>
+    </table>
+    <p class="note">Placeholder data — realistic shape and cardinality, not real records.</p>
+  </main>
+</div>
+</body>
+</html>

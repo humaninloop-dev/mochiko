@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>New invoice — Ledgerline (prototype)</title>
+<link rel="stylesheet" href="../assets/app.css">
+</head>
+<body>
+<div class="shell">
+  <nav class="side" aria-label="Primary">
+    <h1>Ledgerline</h1>
+    <ul>
+      <li><a href="scr-002-invoice-list.html">Invoices</a></li>
+      <li><a href="scr-003-clients.html">Clients</a></li>
+      <li><a href="scr-009-reminders.html">Reminders</a></li>
+    </ul>
+    <p class="note"><a href="../index.html">Sign out</a></p>
+  </nav>
+  <main>
+    <h2>Invoice editor <span class="badge draft">draft</span> <span class="badge">SCR-004</span></h2>
+    <div class="soon-banner" role="alert" style="border-color:#8a4b00;color:#8a4b00;background:#f7ecdd">
+      <strong>Validation error (example state — FLOW-012 / US-2 / EC-6):</strong> an invoice with no
+      line items, or a due date in the past, is rejected and stays a draft. Shown here so the
+      rejection state is walkable in the mock.</div>
+    <form action="scr-005-invoice-detail.html" method="get">
+      <label for="client">Client</label>
+      <select id="client" name="client">
+        <option>Rivera Roofing</option>
+        <option>Delgado Landscaping</option>
+        <option>North Fork Cafe</option>
+        <option>Chen Electric</option>
+      </select>
+
+      <fieldset>
+        <legend>Line items</legend>
+        <table>
+          <thead><tr><th>Description</th><th>Qty</th><th>Unit price</th><th>Line total</th></tr></thead>
+          <tbody>
+            <tr><td>Roof inspection</td><td>1</td><td>$180.00</td><td>$180.00</td></tr>
+            <tr><td>Shingle replacement (labor, hrs)</td><td>16</td><td>$135.00</td><td>$2,160.00</td></tr>
+          </tbody>
+          <tfoot>
+            <tr><td colspan="3">Subtotal</td><td>$2,340.00</td></tr>
+            <tr><td colspan="3">Tax (6.00%)</td><td>$140.40</td></tr>
+            <tr class="total-row"><td colspan="3">Total</td><td>$2,480.40</td></tr>
+          </tfoot>
+        </table>
+        <p class="note">Totals recompute exactly (Decimal) as items/tax change — US-2. Adding a
+        row is a build-time detail; the manifest binds only that line items exist and total is exact.</p>
+      </fieldset>
+
+      <label for="tax">Tax rate (%)</label>
+      <input id="tax" name="tax" type="number" step="0.01" value="6.00">
+      <label for="due">Due date</label>
+      <input id="due" name="due" type="date" value="2026-08-24">
+      <p class="note">A missing line item or a past due date is rejected (US-2 scenario 3).</p>
+
+      <button type="submit">Save draft</button>
+      <a class="btn secondary" href="scr-005-invoice-detail.html">Save &amp; review</a>
+    </form>
+  </main>
+</div>
+</body>
+</html>

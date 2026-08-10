@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ledgerline — Client (SCR-003)</title>
+  <link rel="stylesheet" href="../assets/app.css">
+</head>
+<body>
+  <header class="appbar">
+    <span class="brand">Ledgerline</span>
+    <nav>
+      <a href="../index.html">Dashboard</a>
+      <a href="scr-002-client-list.html">Clients</a>
+      <a href="scr-004-invoice-editor.html">New invoice</a>
+      <a href="scr-007-reminder-settings.html">Reminders</a>
+    </nav>
+  </header>
+  <main>
+    <h1>New / edit client <span class="feat-tag">SCR-003 · FEAT-002</span></h1>
+    <div class="card">
+      <form action="scr-002-client-list.html" method="get">
+        <label>Business / client name</label>
+        <input type="text" value="Baker Electric">
+        <label>Email (invoices are sent here)</label>
+        <input type="email" value="ops@bakerelectric.example">
+        <div class="row">
+          <div><label>Phone (optional)</label><input type="text" value=""></div>
+          <div><label>Billing address (optional)</label><input type="text" value=""></div>
+        </div>
+        <p class="muted">Name and a valid email are required. A blank name or malformed email is rejected with a field error.</p>
+        <div style="margin-top:12px">
+          <button class="btn primary" type="submit">Save client</button>
+          <a class="btn" href="scr-002-client-list.html">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </main>
+</body>
+</html>

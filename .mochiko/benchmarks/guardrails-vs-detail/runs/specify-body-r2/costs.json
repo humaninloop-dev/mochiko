@@ -1,0 +1,16 @@
+{
+  "run_id": "specify-body-r2",
+  "principal_spawns": 7,
+  "approx_tokens_in_skills_loaded": 57135,
+  "skills_loaded_bytes_breakdown": {
+    "analysis-iterative/SKILL.md": 4829,
+    "analysis-iterative/SPECIFICATION-INPUT.md (companion, from original)": 4773,
+    "authoring-feature-map/SKILL.md": 13991,
+    "authoring-user-stories/SKILL.md": 6016,
+    "authoring-requirements/SKILL.md": 4726,
+    "authoring-prototype/SKILL.md": 10080,
+    "review-specifications/SKILL.md": 12720
+  },
+  "note": "Byte sum of every skill body loaded is the token proxy. 6 cluster SKILL.md bodies loaded from variants/body/ (52362 bytes) + 1 companion procedure file (SPECIFICATION-INPUT.md, 4773 bytes) loaded from the original skill dir since the variant supplies only SKILL.md. authoring-feature-map counted once though invoked at two moments (loaded once). Non-cluster skills: none needed. Templates and .claude/rules read are project/reference files, not skill bodies, so excluded from the proxy.",
+  "wall_notes": "Single-agent simulation. Intent stage: 4 principal spawns (describe, delivery-intent, scope-edges, confirm). Prototype walk: 1. Selection: 1. Disposition+acceptance: 1. One review round (needs-revision) with producer remediation, no second review round (remediation was scoped fixes + user-ruled void fold, not a re-derivation)."
+}

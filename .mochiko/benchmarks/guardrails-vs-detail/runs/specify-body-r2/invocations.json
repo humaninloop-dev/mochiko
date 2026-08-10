@@ -1,0 +1,64 @@
+{
+  "run_id": "specify-body-r2",
+  "variant": "body",
+  "note": "Skill bodies loaded from variants/body/<name>/SKILL.md for the 11 cluster skills; companions/references from plugins/mochiko/skills/. Descriptions were ORIGINAL (the run-lead's invocation triggers). from_description_only reflects that the choice was made off the roster description alone.",
+  "invocations": [
+    {
+      "moment": "Intent stage — enrich the sparse 'Invoice lifecycle v1' description into scope/delivery/depth/UX/constraints/out-of-scope via adaptive probes before authoring",
+      "skill_chosen": "mochiko:analysis-iterative",
+      "skills_considered": ["mochiko:analysis-iterative", "mochiko:review-specifications"],
+      "from_description_only": true,
+      "body_loaded_from": "variants/body/analysis-iterative/SKILL.md (+ plugins/.../analysis-iterative/SPECIFICATION-INPUT.md companion)"
+    },
+    {
+      "moment": "Intent stage — obligated feature-map read agenda (FEATURES.md + territory entries); greenfield empty scaffold, no existing entries",
+      "skill_chosen": "mochiko:authoring-feature-map",
+      "skills_considered": ["mochiko:authoring-feature-map"],
+      "from_description_only": true,
+      "body_loaded_from": "variants/body/authoring-feature-map/SKILL.md"
+    },
+    {
+      "moment": "Stories lockstep — transform the confirmed lifecycle into prioritized user stories (US-1..US-7) with Given/When/Then + independent tests",
+      "skill_chosen": "mochiko:authoring-user-stories",
+      "skills_considered": ["mochiko:authoring-user-stories", "mochiko:authoring-requirements"],
+      "from_description_only": true,
+      "body_loaded_from": "variants/body/authoring-user-stories/SKILL.md"
+    },
+    {
+      "moment": "Screens lockstep — build the clickable low-fi prototype (skeleton nav frame, then story screens) and the Screens & Flows manifest; FEAT re-tag pass after derivation",
+      "skill_chosen": "mochiko:authoring-prototype",
+      "skills_considered": ["mochiko:authoring-prototype"],
+      "from_description_only": true,
+      "body_loaded_from": "variants/body/authoring-prototype/SKILL.md"
+    },
+    {
+      "moment": "Derivation + filter + selection card — derive proposed features from the drafted stories against the actual map, run the story filter, map SC to features, stage the map delta (product-manager seat)",
+      "skill_chosen": "mochiko:authoring-feature-map",
+      "skills_considered": ["mochiko:authoring-feature-map"],
+      "from_description_only": true,
+      "body_loaded_from": "variants/body/authoring-feature-map/SKILL.md"
+    },
+    {
+      "moment": "Spec authoring — FR-XXX (RFC 2119), SC-XXX measurable criteria, edge cases, key entities, Intent/Overview/Assumptions/Open-Questions (requirements-analyst seat)",
+      "skill_chosen": "mochiko:authoring-requirements",
+      "skills_considered": ["mochiko:authoring-requirements", "mochiko:authoring-user-stories"],
+      "from_description_only": true,
+      "body_loaded_from": "variants/body/authoring-requirements/SKILL.md"
+    },
+    {
+      "moment": "Adversarial review — grade the drafted spec + stories + feature derivation + map delta + prototype for gaps, from the artifact text (devils-advocate seat, author != grader)",
+      "skill_chosen": "mochiko:review-specifications",
+      "skills_considered": ["mochiko:review-specifications", "mochiko:review-feasibility"],
+      "from_description_only": true,
+      "body_loaded_from": "variants/body/review-specifications/SKILL.md",
+      "note": "review-feasibility considered and rejected — it grades plan/design artifacts, not a spec; review-specifications is the spec-review skill."
+    },
+    {
+      "moment": "Acceptance landing — KM landing ritual (DECISIONS row, ROADMAP touch, specs-index row) + acceptance-time map write batch",
+      "skill_chosen": "none (command-owned landing ritual; grooming not fired)",
+      "skills_considered": ["mochiko:grooming-operating-docs"],
+      "from_description_only": true,
+      "note": "grooming-operating-docs considered per its trigger (attached to command boundaries) but NOT invoked — no cap/bound tripped (Now=2<=5, Next=1<=7, Later=1<=10, 1 spec, no dead pointers). Vacuous/clean."
+    }
+  ]
+}

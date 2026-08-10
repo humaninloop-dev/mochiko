@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ledgerline — Reminder settings (SCR-007)</title>
+  <link rel="stylesheet" href="../assets/app.css">
+</head>
+<body>
+  <header class="appbar">
+    <span class="brand">Ledgerline</span>
+    <nav>
+      <a href="../index.html">Dashboard</a>
+      <a href="scr-002-client-list.html">Clients</a>
+      <a href="scr-004-invoice-editor.html">New invoice</a>
+      <a href="scr-007-reminder-settings.html">Reminders</a>
+    </nav>
+  </header>
+  <main>
+    <h1>Reminder settings <span class="feat-tag">SCR-007 · FEAT-007</span></h1>
+    <div class="card coming-soon">
+      <div class="banner">P2 · reminder defaults and bounds still open (see spec Open Questions) — shown at low fidelity.</div>
+      <form action="../index.html" method="get">
+        <label>Automatic reminders</label>
+        <select><option>On</option><option>Off</option></select>
+        <label>Send reminders (global default)</label>
+        <select>
+          <option>3 days before due, on due date, 3 days after</option>
+          <option>On due date, then every 7 days until paid (max 3)</option>
+          <option>7 days after due, then 14 days after</option>
+        </select>
+        <p class="muted">One global schedule in v1; per-invoice override deferred. Reminders stop automatically once an invoice is paid.</p>
+        <button class="btn primary" type="submit">Save reminder settings</button>
+      </form>
+    </div>
+  </main>
+</body>
+</html>

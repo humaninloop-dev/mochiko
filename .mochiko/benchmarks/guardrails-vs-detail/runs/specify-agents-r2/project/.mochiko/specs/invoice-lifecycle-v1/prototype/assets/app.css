@@ -1,0 +1,74 @@
+/* Low-fidelity prototype styles for Ledgerline — Invoice lifecycle v1.
+   Deliberately rough: system fonts, grey boxes, no polish. Layout/styling are ADVISORY.
+   Contrast and semantics kept honest because the product carries a WCAG 2.1 AA legal mandate
+   (.claude/rules/mochiko/accessibility.md) — but this is a spec artifact, not production UI. */
+
+:root {
+  --ink: #1a1a1a;
+  --muted: #595959;      /* >= 4.5:1 on white */
+  --line: #b0b0b0;
+  --box: #ececec;
+  --accent: #1f4b99;     /* draft/sent chrome */
+  --ok: #1b5e20;         /* paid */
+  --warn: #8a4b00;       /* overdue */
+  --soon: #6b6b6b;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.4;
+  background: #fff;
+}
+
+a { color: var(--accent); }
+
+.shell { display: flex; min-height: 100vh; }
+
+nav.side {
+  width: 200px;
+  border-right: 2px solid var(--line);
+  padding: 1rem;
+  background: #f6f6f6;
+}
+nav.side h1 { font-size: 1.1rem; margin: 0 0 1rem; }
+nav.side ul { list-style: none; padding: 0; margin: 0; }
+nav.side li { margin: 0.4rem 0; }
+nav.side a { display: block; padding: 0.4rem 0.5rem; border: 1px solid var(--line); background: #fff; text-decoration: none; }
+nav.side a[aria-current="page"] { border-color: var(--accent); font-weight: 700; }
+
+main { flex: 1; padding: 1.5rem 2rem; max-width: 900px; }
+h2 { margin-top: 0; }
+
+table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+th, td { border: 1px solid var(--line); padding: 0.5rem 0.6rem; text-align: left; }
+th { background: var(--box); }
+
+.badge { display: inline-block; padding: 0.1rem 0.5rem; border: 1px solid var(--line); border-radius: 3px; font-size: 0.85rem; }
+.badge.draft  { background: #fff; color: var(--muted); }
+.badge.sent   { background: #e7edf7; color: var(--accent); }
+.badge.viewed { background: #e7edf7; color: var(--accent); border-style: dashed; }
+.badge.paid   { background: #e3f0e4; color: var(--ok); }
+.badge.overdue{ background: #f7ecdd; color: var(--warn); font-weight: 700; }
+
+form { margin: 1rem 0; }
+label { display: block; margin: 0.6rem 0 0.2rem; font-weight: 600; }
+input, select, textarea { padding: 0.4rem; border: 1px solid var(--line); width: 100%; max-width: 24rem; font: inherit; }
+fieldset { border: 1px solid var(--line); margin: 1rem 0; }
+
+button, .btn {
+  display: inline-block; margin: 0.6rem 0.4rem 0 0; padding: 0.5rem 0.9rem;
+  border: 1px solid var(--accent); background: var(--accent); color: #fff;
+  text-decoration: none; font: inherit; cursor: pointer;
+}
+.btn.secondary { background: #fff; color: var(--accent); }
+.btn:focus, a:focus, button:focus, input:focus { outline: 3px solid #ffb300; outline-offset: 1px; }
+
+.soon { opacity: 0.55; }
+.soon-banner { background: #eee; border: 1px dashed var(--soon); color: var(--soon); padding: 0.5rem 0.75rem; margin: 0.5rem 0; }
+.ext-banner { background: #f3f0ff; border: 1px dashed #5a3fb0; color: #4a2f9a; padding: 0.5rem 0.75rem; margin: 0.5rem 0; }
+.note { color: var(--muted); font-size: 0.9rem; }
+.total-row td { font-weight: 700; }

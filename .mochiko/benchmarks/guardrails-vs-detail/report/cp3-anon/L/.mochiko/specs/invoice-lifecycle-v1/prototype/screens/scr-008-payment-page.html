@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Client payment page (SCR-008, Stripe-hosted, external)</title>
+  <link rel="stylesheet" href="../assets/app.css">
+</head>
+<body>
+  <header class="appbar">
+    <span class="brand">Ledgerline</span>
+    <nav><a href="../index.html">Back to prototype nav</a></nav>
+  </header>
+  <main>
+    <h1>Pay invoice #1042 <span class="feat-tag">SCR-008 · FEAT-005</span></h1>
+    <div class="external">
+      External surface — this is Stripe's hosted checkout page, NOT a Ledgerline screen. Rendered here
+      only so the pay flow is walkable. Clients have no Ledgerline account; card entry never touches our app.
+      Opening this page is the signal that marks the invoice <span class="status viewed">viewed</span>.
+    </div>
+    <div class="card">
+      <p>Baker Electric — Amount due <strong>$862.00</strong></p>
+      <label>Card number</label>
+      <input value="4242 4242 4242 4242 (Stripe test card)">
+      <div class="row">
+        <div><label>Expiry</label><input value="12 / 30"></div>
+        <div><label>CVC</label><input value="123"></div>
+      </div>
+      <div style="margin-top:12px">
+        <a class="btn primary" href="scr-005-invoice-detail-paid.html">Pay $862.00</a>
+        <a class="btn" href="../index.html">Cancel (invoice stays unpaid, marked viewed)</a>
+      </div>
+    </div>
+    <p class="muted">On confirmed payment, Stripe notifies Ledgerline and the invoice flips to <span class="status paid">paid</span> — recorded from the confirmed event, deduplicated against replays.</p>
+  </main>
+</body>
+</html>

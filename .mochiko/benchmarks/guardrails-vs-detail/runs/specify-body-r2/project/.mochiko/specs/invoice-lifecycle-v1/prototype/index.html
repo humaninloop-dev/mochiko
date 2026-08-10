@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ledgerline — Dashboard (SCR-001)</title>
+  <link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+  <header class="appbar">
+    <span class="brand">Ledgerline</span>
+    <nav>
+      <a href="index.html">Dashboard</a>
+      <a href="screens/scr-002-client-list.html">Clients</a>
+      <a href="screens/scr-004-invoice-editor.html">New invoice</a>
+      <a href="screens/scr-007-reminder-settings.html">Reminders</a>
+    </nav>
+  </header>
+  <main>
+    <h1>Invoices <span class="feat-tag">SCR-001 · FEAT-006</span></h1>
+    <p class="muted">Every invoice and its payment state — no need to open Stripe.</p>
+
+    <div class="card">
+      <table>
+        <thead>
+          <tr><th>Client</th><th>Amount</th><th>Due</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="screens/scr-005-invoice-detail-paid.html">Ada Plumbing LLC</a></td>
+            <td>$1,240.00</td><td>2026-07-20</td>
+            <td><span class="status paid">paid</span></td>
+          </tr>
+          <tr>
+            <td><a href="screens/scr-005-invoice-detail.html">Baker Electric</a></td>
+            <td>$860.50</td><td>2026-07-31</td>
+            <td><span class="status viewed">viewed</span></td>
+          </tr>
+          <tr>
+            <td><a href="screens/scr-005-invoice-detail.html">Cedar Remodel Co</a></td>
+            <td>$3,300.00</td><td>2026-07-05</td>
+            <td><span class="status sent">sent</span><span class="badge-overdue">overdue</span></td>
+          </tr>
+          <tr>
+            <td><a href="screens/scr-005-invoice-detail.html">Dunn Roofing</a></td>
+            <td>$540.00</td><td>2026-08-15</td>
+            <td><span class="status sent">sent</span></td>
+          </tr>
+          <tr>
+            <td><a href="screens/scr-004-invoice-editor.html">Everest Landscaping</a></td>
+            <td>$220.00</td><td>—</td>
+            <td><span class="status draft">draft</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <a class="btn primary" href="screens/scr-004-invoice-editor.html">+ New invoice</a>
+    <a class="btn" href="screens/scr-002-client-list.html">Manage clients</a>
+
+    <p class="muted" style="margin-top:24px">
+      Screen manifest: SCR-001 dashboard · SCR-002 client list · SCR-003 client editor ·
+      SCR-004 invoice editor · SCR-005 invoice detail · SCR-006 sent confirmation ·
+      SCR-007 reminder settings · SCR-008 client payment page (Stripe-hosted, external).
+    </p>
+  </main>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hosted payment page (external) — prototype</title>
+<link rel="stylesheet" href="../assets/app.css">
+</head>
+<body>
+<main style="max-width:30rem;margin:2rem auto;">
+  <div class="ext-banner" role="note"><strong>External — Stripe hosted checkout (SCR-008).</strong>
+  This page is rendered by Stripe, not by Ledgerline. Shown here only to complete the "get paid"
+  flow in the prototype; its look is Stripe's, not ours. Contractors never build or style it, and
+  clients see only this + the invoice email — no Ledgerline login.</div>
+
+  <h2>Pay invoice INV-1005</h2>
+  <p>Rivera Roofing &rarr; from your contractor</p>
+  <p style="font-size:1.4rem"><strong>$2,480.40</strong> due 2026-08-24</p>
+
+  <form action="scr-005-invoice-detail.html" method="get">
+    <label for="card">Card number (handled by Stripe — Ledgerline never sees it)</label>
+    <input id="card" name="card" type="text" inputmode="numeric" placeholder="•••• •••• •••• ••••" disabled>
+    <button type="submit">Pay $2,480.40</button>
+  </form>
+  <p class="note">On successful payment Stripe sends a signature-verified webhook; Ledgerline
+  flips the invoice to <em>paid</em> exactly once (US-4). Returning here re-shows paid; the client
+  is not charged twice. (Button returns to the contractor's invoice detail for the walk-through.)</p>
+</main>
+</body>
+</html>

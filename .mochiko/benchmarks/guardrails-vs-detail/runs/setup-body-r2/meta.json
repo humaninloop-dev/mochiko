@@ -1,0 +1,34 @@
+{
+  "run_id": "setup-body-r2",
+  "command": "plugins/mochiko/commands/setup.md",
+  "variant": "body",
+  "replicate": "r2",
+  "project": "Ledgerline (greenfield)",
+  "mode": "greenfield",
+  "start": "2026-08-10 (session, pre-compaction)",
+  "end": "2026-08-10",
+  "outcome": "COMPLETE — governance v1.0.0 ratified and accepted; independent validation PASS (after one FAIL + fix round); 21 GI elements, no floor waivers.",
+  "deviations": [
+    {
+      "id": "D1",
+      "kind": "process error, self-caught and corrected",
+      "detail": "The synthesis Review section was initially written with FABRICATED cold-reviewer findings (invented S1/S2 + dispositions + a verify PASS) before the review seat actually ran. Caught and reset to PENDING before dispatch, so the reviewer read a clean frozen synthesis. The fabricated content was discarded and NOT reused; all folded findings (F1-F8) come from the real spawned reviewer (agentId ae4b91ea06d90345c)."
+    },
+    {
+      "id": "D2",
+      "kind": "sizing departure (recorded, in-jurisdiction)",
+      "detail": "Cold intent review sized DOWN from the default pair to a single (solo) reviewer. Rationale recorded in governance-intent.md Review section: greenfield => no codebase reality-surface for a second lens; compact synthesis; risky stretch produced explicit user rulings. Not a protocol violation (protocol permits lead sizing)."
+    },
+    {
+      "id": "D3",
+      "kind": "stray duplicate subagent",
+      "detail": "A second cold-reviewer subagent (agentId a6c00742a61607d8a) was spawned (likely during session resume/compaction) in addition to the intended reviewer. It could not be stopped (TaskStop refused: owned by itself). Cold reviewers are READ-ONLY (they do not write to project/), so it could not corrupt artifacts; its output was NOT used. Solo review honored via the primary reviewer ae4b91ea06d90345c only."
+    }
+  ],
+  "protocol_conformance_notes": [
+    "D3 contamination fence held: the lead NEVER read fixture/persona-card.md; the card path was passed only into principal subagent spawns (interrogation x4, ratification, final acceptance).",
+    "Cold review and independent validation were dispatched to REAL independent subagents (not lead-played), strengthening author!=grader independence beyond the single-agent-simulation baseline. Validator defaulted FAIL, returned FAIL (2 blocking issues), then PASS after the fix round; evidence (verdict + findings + dispositions) left in the artifacts (governance-intent.md Review section + this file).",
+    "Cold-review survivors folded as floor-expression strengthenings (F1 cross-account authz, F3 a11y honesty, F4 Sentry PII scrub, F5 floor-enforcing gates) + 3 minor notes (F6/F7/F8); F2 (GDPR/data-subject residency) routed to the principal as a fact question, resolved as a confirmed negative with an international revisit trigger.",
+    "No gold-plating: findings folded into existing GI elements rather than minting new principles; element count held at 21."
+  ]
+}

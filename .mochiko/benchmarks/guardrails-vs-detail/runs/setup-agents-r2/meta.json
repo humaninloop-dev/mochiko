@@ -1,0 +1,47 @@
+{
+  "run_id": "setup-agents-r2",
+  "command": "plugins/mochiko/commands/setup.md (/mochiko:setup)",
+  "variant": "agents",
+  "replicate": "r2",
+  "project": "Ledgerline (greenfield, production floor)",
+  "output_dir": ".mochiko/benchmarks/guardrails-vs-detail/runs/setup-agents-r2/",
+  "start": "2026-08-10T12:49Z (first principal spawn)",
+  "end": "2026-08-10T (same session; PASS + acceptance reached)",
+  "outcome": "COMPLETE — surface set authored, independently validated PASS (after one FAIL + fix round), user-accepted; KM + greenfield feature map scaffolded.",
+  "roster_source": "6 named agents (principal-architect, validator, devils-advocate, requirements-analyst, product-manager, product-engineer) from variants/agents/ (slim descriptions, no <example> blocks); remaining agents from plugins/mochiko/agents/. Built from frontmatter descriptions/skills only, before staffing any seat.",
+  "seats_staffed": {
+    "interrogation": "run-lead inline (no agent, per command harness)",
+    "cold_intent_review": "devils-advocate",
+    "constitution_authoring": "principal-architect",
+    "independent_validation": "validator",
+    "feature_map_scaffold": "product-manager"
+  },
+  "route_misses": "none — every seat routed to the agent whose slim frontmatter description was the exact fit; no wrong-persona choice and no unstaffed seat. (The slim agent descriptions in this arm carried enough signal to route all five seats correctly.)",
+  "deviations": [
+    {
+      "type": "protocol-permitted batching",
+      "detail": "Interrogation ran as 5 batched principal spawns (identity/risk; fact-profile/type; team/stack/deploy; KM/values/exclusions; floor+deck) rather than one spawn per single question. RUN-PROTOCOL explicitly allows 'a fresh principal subagent per question batch'. One-question-per-turn craft honored within each batch's framing."
+    },
+    {
+      "type": "fidelity choice (not a protocol violation)",
+      "detail": "Grading/review seats (cold intent reviewer, validator) were dispatched as FRESH SUBAGENTS rather than played inline by the lead. The protocol specifies single-agent simulation but requires grader outputs 'strictly from the artifact text' and author!=grader independence; fresh subagents guarantee both. Principal answers were spawned per the mandated D3 fence. The lead never read persona-card.md."
+    },
+    {
+      "type": "sequencing error, self-corrected",
+      "detail": "The first governance-intent.md draft mistakenly carried a PRE-FILLED Review section (predicted findings) before the cold review ran. A first cold-reviewer spawn read that contaminated synthesis. Caught and corrected: the Review section was reset to a genuine pre-review state (sizing ruled, findings pending) and a FRESH cold reviewer re-ran Phase 1 against the clean synthesis. The recorded review (10 raised / 8 survived, 4 Critical) is that clean run; the contaminated first spawn was discarded. Net effect on the judged artifact: none — the final synthesis reflects a genuine, uncontaminated cold read and its user-ruled dispositions."
+    },
+    {
+      "type": "deliberate non-load",
+      "detail": "mochiko:authoring-feature-map body was NOT loaded for the greenfield feature-map seat — greenfield produces an empty index scaffold only (no story->feature derivation), authored directly from features-index-template.md. Recorded, not a miss."
+    },
+    {
+      "type": "trivial harness",
+      "detail": "First cold-reviewer spawn attempt used a name parameter, which the harness rejects for teammates ('teammates cannot spawn other teammates'); re-dispatched unnamed. No effect on output."
+    }
+  ],
+  "review_outcome": {
+    "cold_intent_review": "solo devils-advocate, blind-map dispatch; 10 raised, 8 survived (4 Critical/2 Important/2 Minor); needs-revision; all 8 resolved via a user-ruled interrogation follow-up (2 minted-heavy Criticals C2/C3/C4 + email M1 -> GI-012/013/014/015; C1 cleared as consequence-stated negatives; I1 deferred GI-024; I2 folded into GI-004; M2 accepted). Escalation-to-critical-gaps averted (no tax-ID/bank data stored).",
+    "validation": "validator PASS on re-grade (round 1 FAIL: missing GI-008 index line + under-reported module stamp; both fixed). Evidence in project/.mochiko/memory/validation-report.md."
+  },
+  "gold_plating_check": "Governed to the founder's ruled intent, not beyond it: coverage-% gate waived, SLO/on-call excluded, layered architecture kept in pragmatic (not full ports/adapters) form, audit trail scoped to money-bearing fields only, a11y at an automatable baseline. Additions (backup, audit trail, tenant isolation, email auth) were all user-minted in response to the cold review, not lead-invented."
+}

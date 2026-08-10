@@ -1,0 +1,68 @@
+/* Low-fidelity prototype styling for Invoice lifecycle v1.
+   Deliberately rough: system fonts, grey boxes, no polish. Pixels are advisory;
+   structure, data shape, and flows are the binding part. No design system exists in
+   the project yet, so these are neutral grey-box defaults. */
+
+* { box-sizing: border-box; }
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  margin: 0;
+  color: #1f2328;
+  background: #f4f5f6;
+}
+header.appbar {
+  background: #2d333b;
+  color: #fff;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+header.appbar .brand { font-weight: 700; }
+header.appbar nav a {
+  color: #cfd3d8;
+  text-decoration: none;
+  margin-right: 12px;
+  font-size: 14px;
+}
+header.appbar nav a:hover { color: #fff; text-decoration: underline; }
+main { max-width: 900px; margin: 20px auto; padding: 0 16px; }
+h1 { font-size: 20px; }
+.card {
+  background: #fff;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 8px; border-bottom: 1px solid #eaecef; font-size: 14px; }
+th { color: #57606a; font-weight: 600; }
+.status { font-size: 12px; padding: 2px 8px; border-radius: 10px; background: #eaecef; color: #24292f; }
+.status.draft   { background: #eaecef; color: #57606a; }
+.status.sent    { background: #ddf4ff; color: #0969da; }
+.status.viewed  { background: #fff8c5; color: #7d4e00; }
+.status.paid    { background: #dafbe1; color: #1a7f37; }
+.badge-overdue  { font-size: 12px; padding: 2px 8px; border-radius: 10px; background: #ffebe9; color: #cf222e; margin-left: 6px; }
+.btn {
+  display: inline-block; padding: 8px 14px; border: 1px solid #d0d7de;
+  border-radius: 6px; background: #f6f8fa; color: #24292f; text-decoration: none;
+  font-size: 14px; cursor: pointer;
+}
+.btn.primary { background: #1f7f37; color: #fff; border-color: #1a7f37; }
+.btn.disabled { opacity: 0.4; pointer-events: none; }
+label { display: block; font-size: 13px; color: #57606a; margin: 10px 0 4px; }
+input, select { width: 100%; padding: 8px; border: 1px solid #d0d7de; border-radius: 6px; font-size: 14px; }
+.row { display: flex; gap: 12px; }
+.row > * { flex: 1; }
+.muted { color: #8b949e; font-size: 13px; }
+.coming-soon { position: relative; opacity: 0.5; }
+.coming-soon .banner {
+  background: #fff8c5; color: #7d4e00; padding: 6px 10px; border-radius: 6px;
+  font-size: 13px; margin-bottom: 12px;
+}
+.external {
+  background: #f6f8fa; border: 1px dashed #8b949e; padding: 6px 10px;
+  border-radius: 6px; font-size: 13px; color: #57606a; margin-bottom: 12px;
+}
+.feat-tag { font-size: 11px; color: #8b949e; }

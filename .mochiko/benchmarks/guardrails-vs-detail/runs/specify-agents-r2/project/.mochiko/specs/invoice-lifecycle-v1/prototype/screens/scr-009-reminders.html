@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reminders (coming soon) — Ledgerline (prototype)</title>
+<link rel="stylesheet" href="../assets/app.css">
+</head>
+<body>
+<div class="shell">
+  <nav class="side" aria-label="Primary">
+    <h1>Ledgerline</h1>
+    <ul>
+      <li><a href="scr-002-invoice-list.html">Invoices</a></li>
+      <li><a href="scr-003-clients.html">Clients</a></li>
+      <li><a href="scr-009-reminders.html" aria-current="page">Reminders</a></li>
+    </ul>
+    <p class="note"><a href="../index.html">Sign out</a></p>
+  </nav>
+  <main class="soon">
+    <div class="soon-banner" role="note"><strong>Coming soon (SCR-009).</strong> Payment reminders
+    (US-7 / FEAT-006) are derived but <strong>not selected</strong> for this delivery. Screen kept
+    reachable and greyed so navigation never dead-ends. Reminder defaults and interval bounds are
+    deferred (see spec Assumptions).</div>
+    <h2>Payment reminders</h2>
+    <form>
+      <label for="ival">Send a reminder every</label>
+      <select id="ival" name="ival" disabled>
+        <option>(defaults not yet decided)</option>
+      </select>
+      <p class="note">Reminders go only to unpaid, sent invoices and stop the moment an invoice is
+      paid (US-7).</p>
+    </form>
+  </main>
+</div>
+</body>
+</html>

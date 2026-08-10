@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ledgerline — Invoice detail (SCR-005)</title>
+  <link rel="stylesheet" href="../assets/app.css">
+</head>
+<body>
+  <header class="appbar">
+    <span class="brand">Ledgerline</span>
+    <nav>
+      <a href="../index.html">Dashboard</a>
+      <a href="scr-002-client-list.html">Clients</a>
+      <a href="scr-004-invoice-editor.html">New invoice</a>
+      <a href="scr-007-reminder-settings.html">Reminders</a>
+    </nav>
+  </header>
+  <main>
+    <h1>Invoice #1042 — Baker Electric
+      <span class="feat-tag">SCR-005 · FEAT-005 (send action → FEAT-004)</span>
+    </h1>
+    <p><span class="status sent">sent</span> · Due 2026-07-31 · Total $862.00</p>
+
+    <div class="card">
+      <table>
+        <thead><tr><th>Description</th><th>Qty</th><th>Unit</th><th>Amount</th></tr></thead>
+        <tbody>
+          <tr><td>Panel upgrade — labor</td><td>8</td><td>$75.00</td><td>$600.00</td></tr>
+          <tr><td>Breakers &amp; materials</td><td>1</td><td>$200.00</td><td>$200.00</td></tr>
+        </tbody>
+      </table>
+      <p class="muted">Subtotal $800.00 · Tax (7.75%) $62.00 · <strong>Total $862.00</strong></p>
+    </div>
+
+    <div class="card">
+      <p class="muted">Actions</p>
+      <a class="btn primary" href="scr-006-sent-confirmation.html">Send / resend invoice</a>
+      <a class="btn" href="scr-005-invoice-detail-paid.html">Mark paid (cash / check)</a>
+      <a class="btn" href="scr-008-payment-page.html">Preview client payment page</a>
+      <a class="btn" href="../index.html">Void invoice</a>
+    </div>
+    <p class="muted">Status history: draft (2026-07-18) → sent (2026-07-19) → viewed (2026-07-22). Payment state changes are written to an append-only audit trail.</p>
+  </main>
+</body>
+</html>

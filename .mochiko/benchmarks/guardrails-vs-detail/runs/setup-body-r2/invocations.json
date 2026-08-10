@@ -1,0 +1,44 @@
+[
+  {
+    "moment": "intent enrichment / ten-dimension interrogation",
+    "skill_chosen": "analysis-iterative",
+    "skills_considered": ["analysis-iterative", "review-specifications"],
+    "from_description_only": true,
+    "note": "disambiguation trap: analysis-iterative conditions raw input via one-question-at-a-time discovery; review-specifications reviews an already-drafted spec. Correct pick — no spec exists yet."
+  },
+  {
+    "moment": "cold intent review of the frozen synthesis (blind-map dispatch, before ratification)",
+    "skill_chosen": "review-governance-intent",
+    "skills_considered": ["review-governance-intent", "review-specifications", "review-brainstorm"],
+    "from_description_only": true,
+    "note": "setup-stage governance-intent review, not a spec or brainstorm-record review. Dispatched to a real independent subagent."
+  },
+  {
+    "moment": "author the governance surface set from the ratified synthesis",
+    "skill_chosen": "authoring-constitution",
+    "skills_considered": ["authoring-constitution"],
+    "from_description_only": true,
+    "note": "greenfield mode; single governance-authoring skill for both new and existing projects."
+  },
+  {
+    "moment": "independent validation of the authored governance set (author != grader)",
+    "skill_chosen": "validation-constitution",
+    "skills_considered": ["validation-constitution", "review-governance-intent"],
+    "from_description_only": true,
+    "note": "validation-constitution grades the finished surface set against the quality checklist; review-governance-intent reviews the pre-authoring synthesis. Dispatched to a real independent validator subagent; returned FAIL then PASS after fix round."
+  },
+  {
+    "moment": "finalize — governance-injection probe offer",
+    "skill_chosen": "testing-governance-injection",
+    "skills_considered": ["testing-governance-injection"],
+    "from_description_only": true,
+    "note": "OFFERED at finalize; founder DECLINED (fresh empty repo, no matching files to touch yet). Seat not performed."
+  },
+  {
+    "moment": "finalize — greenfield feature-map scaffold",
+    "skill_chosen": "none",
+    "skills_considered": ["authoring-feature-map"],
+    "from_description_only": true,
+    "note": "correctly NOT invoked. authoring-feature-map derives features from drafted user stories at a specify run; at greenfield setup there are no stories, so FEATURES.md is scaffolded as an empty index only."
+  }
+]

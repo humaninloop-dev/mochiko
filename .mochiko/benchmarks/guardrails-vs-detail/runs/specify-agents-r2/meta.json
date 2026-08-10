@@ -1,0 +1,37 @@
+{
+  "run_id": "specify-agents-r2",
+  "command": "plugins/mochiko/commands/specify.md",
+  "variant": "agents",
+  "replicate": "r2",
+  "feature": "Invoice lifecycle v1 (Ledgerline)",
+  "start": "2026-08-10",
+  "end": "2026-08-10",
+  "seed_source": "runs/_seed-project/ copied verbatim to runs/specify-agents-r2/project/",
+  "roster_source": {
+    "slim_description_agents": ["principal-architect", "validator", "devils-advocate", "requirements-analyst", "product-manager", "product-engineer"],
+    "slim_description_path": ".mochiko/benchmarks/guardrails-vs-detail/variants/agents/",
+    "other_agents_path": "plugins/mochiko/agents/",
+    "skill_bodies_and_descriptions": "originals (plugins/mochiko/skills/)"
+  },
+  "deviations": [
+    "Intent probes batched ~2 per principal spawn (7 spawns total) rather than one-question-one-spawn. analysis-iterative is one-question-per-turn conversationally; the D3 fence requires a fresh spawn per question BATCH (protocol wording 'per question batch'), which this honors. No contamination: run-lead never read the card.",
+    "Intent-elicitation seat was run by the run-lead, not a dedicated agent: NO roster agent carries analysis-iterative in its skills, and the command frames the intent stage as lead-run ('You are the lead ... run the adaptive-probe agenda via mochiko:analysis-iterative'). Logged as a route nuance in invocations.json, not a route miss.",
+    "Derivation staged as a single workspace file (derivation/staged-map-delta.md) rather than pre-written per-feature entry drafts; full entry-template files were written to .mochiko/features/ only at the acceptance-time atomic batch, per the write rules (live map untouched until acceptance). The reviewer graded the staged file.",
+    "One adversarial review round (r1) with a fix round folded before acceptance: author fixes (G1 bounce FR-024, G5 specs-index row, G6 FEAT-004 keep-whole rationale) applied by the author seat; 3 user-ruled clarifications (C1 edit-while-unpaid, C2 soft-delete clients, C3 lightweight negative flows) folded via principal ruling. No second full review round run — fixes were additive and traceable; a stricter protocol might re-review."
+  ],
+  "outcome": {
+    "spec_status": "accepted",
+    "features_derived": 6,
+    "features_selected_now": ["FEAT-001", "FEAT-003", "FEAT-004", "FEAT-005"],
+    "features_deferred": ["FEAT-006"],
+    "parent_features": ["FEAT-002"],
+    "stories": 8,
+    "stories_rejected": 0,
+    "ux_bearing": true,
+    "prototype_screens": 9,
+    "prototype_flows": 13,
+    "review_verdict": "needs-revision (r1) -> resolved -> accepted",
+    "map_written_at_acceptance": true,
+    "km_landing": "DECISIONS row added; ROADMAP Now/Next/Later touched; no BACKLOG item discharged (CI + retention remain open); grooming not fired (no cap/bound tripped)"
+  }
+}

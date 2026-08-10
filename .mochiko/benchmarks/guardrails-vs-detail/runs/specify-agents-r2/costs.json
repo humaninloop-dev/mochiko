@@ -1,0 +1,32 @@
+{
+  "run_id": "specify-agents-r2",
+  "principal_spawns": 7,
+  "principal_spawn_detail": [
+    "intent round 1 (scope + delivery)",
+    "intent round 2 (depth/rigor + UX-bearing)",
+    "intent round 3 (constraints + out-of-scope + success)",
+    "intent synthesis confirmation",
+    "prototype lockstep walkthrough",
+    "feature selection ruling",
+    "clarifications C1-C3 + spec acceptance"
+  ],
+  "approx_tokens_in_skills_loaded": 78315,
+  "skill_bytes_loaded_detail": {
+    "analysis-iterative/SKILL.md": 12367,
+    "authoring-feature-map/SKILL.md": 28789,
+    "authoring-user-stories/SKILL.md": 6339,
+    "authoring-prototype/SKILL.md": 11403,
+    "authoring-requirements/SKILL.md": 5702,
+    "review-specifications/SKILL.md": 13715
+  },
+  "skill_bytes_note": "Sum = 78315 bytes across 6 skill bodies (each SKILL.md loaded once; authoring-feature-map used at 3 moments but counted once as loaded). Agents arm = original skill bodies, so this figure is the baseline body cost; the arm's manipulation is agent descriptions, not skill bytes.",
+  "template_bytes_loaded": {
+    "spec-template.md": 4878,
+    "feature-entry-template.md": 4220,
+    "features-index-template.md": 1979,
+    "advocate-report-template.md": 2613,
+    "total": 13690
+  },
+  "produced_artifact_bytes_total": 74020,
+  "wall_notes": "Single-session simulation by one run-lead playing all seats; 7 principal subagent spawns (D3 fence: card path passed only into spawns, never read by run-lead). One adversarial review round with a fix round (author fixes G1/G5/G6 + 3 user-ruled clarifications folded before acceptance)."
+}

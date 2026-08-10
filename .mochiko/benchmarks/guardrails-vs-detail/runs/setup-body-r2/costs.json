@@ -1,0 +1,5 @@
+{
+  "principal_spawns": 6,
+  "approx_tokens_in_skills_loaded": 40459,
+  "wall_notes": "Byte proxy = sum of body-variant SKILL.md bodies loaded to PERFORM a seat: analysis-iterative 4829 + review-governance-intent 8707 + authoring-constitution 18962 + validation-constitution 7961 = 40459 (all from variants/body/). testing-governance-injection body (4666) was also read during finalize but its seat was DECLINED by the founder, so it is excluded from the performed-seat total; including it the all-bodies-read figure is 45125. No non-cluster (original-path) skill bodies were loaded: greenfield so no analysis-codebase, no grooming (no cap tripped), authoring-feature-map not invoked (no stories at setup). Principal spawns: 4 interrogation batches + 1 synthesis ratification (F2 fact-ruling + revised-synthesis accept) + 1 final acceptance gate = 6, all card-fenced (lead never read persona-card.md). Reviewer and validator subagents are seat agents, not principal spawns, and are not counted here."
+}

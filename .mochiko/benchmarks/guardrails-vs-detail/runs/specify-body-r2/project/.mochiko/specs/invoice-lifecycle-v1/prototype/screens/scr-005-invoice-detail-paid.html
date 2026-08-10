@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ledgerline — Invoice detail, paid (SCR-005)</title>
+  <link rel="stylesheet" href="../assets/app.css">
+</head>
+<body>
+  <header class="appbar">
+    <span class="brand">Ledgerline</span>
+    <nav>
+      <a href="../index.html">Dashboard</a>
+      <a href="scr-002-client-list.html">Clients</a>
+      <a href="scr-004-invoice-editor.html">New invoice</a>
+      <a href="scr-007-reminder-settings.html">Reminders</a>
+    </nav>
+  </header>
+  <main>
+    <h1>Invoice #1039 — Ada Plumbing LLC
+      <span class="feat-tag">SCR-005 · FEAT-005</span>
+    </h1>
+    <p><span class="status paid">paid</span> · Paid 2026-07-19 · $1,240.00</p>
+
+    <div class="card">
+      <p class="muted">Paid online via Stripe on 2026-07-19. Amount and time recorded from the confirmed payment event.</p>
+      <p class="muted">(For a manually paid invoice this reads: "Marked paid manually on &lt;date&gt;".)</p>
+    </div>
+
+    <div class="card">
+      <p class="muted">Actions</p>
+      <a class="btn disabled" href="#">Send / resend invoice</a>
+      <a class="btn disabled" href="#">Mark paid</a>
+      <a class="btn" href="scr-005-invoice-detail.html">Undo manual mark (this session)</a>
+      <span class="muted">Already paid — mark-paid disabled so it can't be double-recorded. Reminders stopped. A manual mark can be undone this session; the audit trail records both the mark and the reversal.</span>
+    </div>
+    <p class="muted">Status history: draft → sent → viewed → paid. Append-only audit trail.</p>
+  </main>
+</body>
+</html>

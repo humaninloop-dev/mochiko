@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Invoice sent — Ledgerline (prototype)</title>
+<link rel="stylesheet" href="../assets/app.css">
+</head>
+<body>
+<div class="shell">
+  <nav class="side" aria-label="Primary">
+    <h1>Ledgerline</h1>
+    <ul>
+      <li><a href="scr-002-invoice-list.html">Invoices</a></li>
+      <li><a href="scr-003-clients.html">Clients</a></li>
+      <li><a href="scr-009-reminders.html">Reminders</a></li>
+    </ul>
+    <p class="note"><a href="../index.html">Sign out</a></p>
+  </nav>
+  <main>
+    <h2>Send invoice INV-1005 <span class="badge">SCR-006</span></h2>
+    <p>To: <strong>ap@riveraroofing.example</strong></p>
+    <p>The client will receive an email with a hosted payment link for the exact amount
+    <strong>$2,480.40</strong>. Status will move draft &rarr; sent.</p>
+    <form action="scr-005-invoice-detail.html" method="get">
+      <label for="msg">Message to client (optional)</label>
+      <textarea id="msg" name="msg" rows="3">Hi — attached is your invoice, payable at the link below. Thanks!</textarea>
+      <button type="submit">Send now</button>
+      <a class="btn secondary" href="scr-005-invoice-detail.html">Cancel</a>
+    </form>
+    <div class="soon-banner" role="note">If the email provider rejects the message, the invoice
+    does <strong>not</strong> silently show sent — the failure is surfaced and status stays draft
+    / send-failed (US-3 scenario 3).</div>
+  </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ledgerline — Invoice sent (SCR-006)</title>
+  <link rel="stylesheet" href="../assets/app.css">
+</head>
+<body>
+  <header class="appbar">
+    <span class="brand">Ledgerline</span>
+    <nav>
+      <a href="../index.html">Dashboard</a>
+      <a href="scr-002-client-list.html">Clients</a>
+      <a href="scr-004-invoice-editor.html">New invoice</a>
+      <a href="scr-007-reminder-settings.html">Reminders</a>
+    </nav>
+  </header>
+  <main>
+    <h1>Invoice sent <span class="feat-tag">SCR-006 · FEAT-004</span></h1>
+    <div class="card">
+      <p>Invoice #1042 emailed to <strong>ops@bakerelectric.example</strong> with a hosted Stripe payment link.</p>
+      <p class="muted">Status is now <span class="status sent">sent</span>. If the email had bounced or been rejected, this screen would show the failure instead and keep the invoice unsent so you can retry.</p>
+      <div style="margin-top:12px">
+        <a class="btn" href="scr-005-invoice-detail.html">Back to invoice</a>
+        <a class="btn" href="../index.html">Dashboard</a>
+        <a class="btn" href="scr-008-payment-page.html">Preview what the client sees</a>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

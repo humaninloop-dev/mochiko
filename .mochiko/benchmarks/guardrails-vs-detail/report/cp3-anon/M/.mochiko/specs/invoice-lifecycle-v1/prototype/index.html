@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ledgerline — Sign in (prototype)</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+<main style="max-width:26rem;margin:3rem auto;">
+  <h1>Ledgerline</h1>
+  <p class="note">Low-fidelity prototype for <strong>Invoice lifecycle v1</strong>. Entry screen
+  (SCR-001). Flows are binding; layout and styling are deliberately rough.</p>
+  <h2>Sign in</h2>
+  <form action="screens/scr-002-invoice-list.html" method="get">
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com">
+    <label for="pw">Password</label>
+    <input id="pw" name="pw" type="password" autocomplete="current-password">
+    <button type="submit">Sign in</button>
+    <a class="btn secondary" href="screens/scr-002-invoice-list.html">Sign in with Google</a>
+  </form>
+  <p class="note">Auth (email+password + Google) is an intent constraint, shown here only as the
+  app entry — no auth story in v1. Only the contractor ever signs in.</p>
+  <hr>
+  <p class="note">Screens: <a href="screens/scr-002-invoice-list.html">Invoices</a> ·
+  <a href="screens/scr-003-clients.html">Clients</a> ·
+  <a href="screens/scr-004-invoice-editor.html">New invoice</a> ·
+  <a href="screens/scr-005-invoice-detail.html">Invoice detail</a> ·
+  <a href="screens/scr-009-reminders.html">Reminders (coming soon)</a></p>
+</main>
+</body>
+</html>

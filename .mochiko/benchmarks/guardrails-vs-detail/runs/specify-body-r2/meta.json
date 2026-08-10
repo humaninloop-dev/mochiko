@@ -1,0 +1,21 @@
+{
+  "run_id": "specify-body-r2",
+  "command": "plugins/mochiko/commands/specify.md",
+  "variant": "body",
+  "replicate": "r2",
+  "feature": "Invoice lifecycle v1 (Ledgerline)",
+  "start": "2026-08-10 (approx; single continuous simulation session)",
+  "end": "2026-08-10 (approx)",
+  "seed_project": "runs/_seed-project/ copied verbatim to runs/specify-body-r2/project/ (Ledgerline post-setup, greenfield)",
+  "skill_body_source": "variants/body/<name>/SKILL.md for the 11 cluster skills; companions/references from plugins/mochiko/skills/; original descriptions; original agents",
+  "outcome": "spec accepted; 6 leaf features + 1 parent written to the live map (in-flight); KM landing complete",
+  "deviations": [
+    "Consolidated prototype walk: the command reserves the user clicking each story's screens AS THEY LAND (lockstep). In this single-agent simulation the click-through was consolidated into ONE principal walk after the skeleton + all screens were built, rather than one per story. Reactions still folded back (reminder default resolved, overdue-badge confirmed, two new gaps surfaced).",
+    "One review round + in-line producer remediation; no SECOND independent review round. The devils-advocate review (round 1) returned needs-revision; the run-lead (as producer) remediated the addressable findings and folded the user-ruled void scope (US-8, FR-031/FR-032, FLOW-018) at the disposition gate. A stricter run would re-dispatch review over the void addition; here it was accepted by the principal directly.",
+    "Story files carry their FEAT-ID mapping line written at story-authoring time (before derivation formally ran); derivation then confirmed the mapping. Bookkeeping convenience, not a derivation-from-stubs violation (map was empty greenfield).",
+    "SPECIFICATION-INPUT.md (analysis-iterative companion procedure) loaded from the original skill dir because the body variant supplies only SKILL.md — consistent with the protocol's references-resolve-to-original rule, applied to companion files too.",
+    "Auth capability recorded as an external platform prerequisite in spec Assumptions rather than minted as an unrefined map stub — respecting the principal's 'don't bloat this feature' ruling and avoiding a storyless stub."
+  ],
+  "principal_spawns": 7,
+  "principal_card_never_read_by_run_lead": true
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clients — Ledgerline (prototype)</title>
+<link rel="stylesheet" href="../assets/app.css">
+</head>
+<body>
+<div class="shell">
+  <nav class="side" aria-label="Primary">
+    <h1>Ledgerline</h1>
+    <ul>
+      <li><a href="scr-002-invoice-list.html">Invoices</a></li>
+      <li><a href="scr-003-clients.html" aria-current="page">Clients</a></li>
+      <li><a href="scr-009-reminders.html">Reminders</a></li>
+    </ul>
+    <p class="note"><a href="../index.html">Sign out</a></p>
+  </nav>
+  <main>
+    <h2>Clients <span class="badge">SCR-003</span></h2>
+    <table>
+      <thead><tr><th>Client</th><th>Email</th><th>Open invoices</th></tr></thead>
+      <tbody>
+        <tr><td>Rivera Roofing</td><td>ap@riveraroofing.example</td><td>1</td></tr>
+        <tr><td>Delgado Landscaping</td><td>maria@delgado.example</td><td>1</td></tr>
+        <tr><td>North Fork Cafe</td><td>owner@northfork.example</td><td>1</td></tr>
+        <tr><td>Halvorsen Interiors</td><td>bill@halvorsen.example</td><td>0</td></tr>
+      </tbody>
+    </table>
+
+    <fieldset>
+      <legend><strong>Add a client</strong> (SCR-003)</legend>
+      <form action="scr-003-clients.html" method="get">
+        <label for="cname">Client name</label>
+        <input id="cname" name="cname" type="text" required>
+        <label for="cemail">Client email (required — invoices are sent here)</label>
+        <input id="cemail" name="cemail" type="email" required>
+        <label for="cnotes">Notes (optional)</label>
+        <textarea id="cnotes" name="cnotes" rows="2"></textarea>
+        <button type="submit">Save client</button>
+      </form>
+      <p class="note">Saving with no email is rejected (US-1 scenario 2). Clients are scoped to
+      the signed-in contractor only (US-1 scenario 3).</p>
+    </fieldset>
+  </main>
+</div>
+</body>
+</html>

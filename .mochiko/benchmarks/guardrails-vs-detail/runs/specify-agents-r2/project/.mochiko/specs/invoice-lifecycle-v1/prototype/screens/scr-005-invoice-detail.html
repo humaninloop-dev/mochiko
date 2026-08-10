@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Invoice INV-1005 — Ledgerline (prototype)</title>
+<link rel="stylesheet" href="../assets/app.css">
+</head>
+<body>
+<div class="shell">
+  <nav class="side" aria-label="Primary">
+    <h1>Ledgerline</h1>
+    <ul>
+      <li><a href="scr-002-invoice-list.html">Invoices</a></li>
+      <li><a href="scr-003-clients.html">Clients</a></li>
+      <li><a href="scr-009-reminders.html">Reminders</a></li>
+    </ul>
+    <p class="note"><a href="../index.html">Sign out</a></p>
+  </nav>
+  <main>
+    <p><a href="scr-002-invoice-list.html">&larr; All invoices</a></p>
+    <h2>INV-1005 — Rivera Roofing <span class="badge sent">sent</span> <span class="badge">SCR-005</span></h2>
+
+    <table>
+      <thead><tr><th>Description</th><th>Qty</th><th>Unit price</th><th>Line total</th></tr></thead>
+      <tbody>
+        <tr><td>Roof inspection</td><td>1</td><td>$180.00</td><td>$180.00</td></tr>
+        <tr><td>Shingle replacement (labor, hrs)</td><td>16</td><td>$135.00</td><td>$2,160.00</td></tr>
+      </tbody>
+      <tfoot>
+        <tr><td colspan="3">Subtotal</td><td>$2,340.00</td></tr>
+        <tr><td colspan="3">Tax (6.00%)</td><td>$140.40</td></tr>
+        <tr class="total-row"><td colspan="3">Total</td><td>$2,480.40</td></tr>
+      </tfoot>
+    </table>
+    <p><strong>Due:</strong> 2026-08-24 · <strong>Status:</strong> sent
+    (client has not opened it yet — becomes <em>viewed</em> on hosted-page visit, US-8)</p>
+
+    <h3>Actions</h3>
+    <a class="btn" href="scr-006-send-confirm.html">Send / resend invoice</a>
+    <a class="btn secondary" href="scr-007-mark-paid.html">Mark paid manually</a>
+    <a class="btn secondary" href="scr-008-hosted-pay.html">Preview client payment page</a>
+    <p class="note">Resend re-notifies without creating a second payable link or charge (US-3
+    scenario 2). Once an invoice is paid, both Send-as-new and Mark-paid are disabled so it can
+    never be paid twice (US-5 scenario 2).</p>
+
+    <h3>When this invoice is paid (example state — FLOW-013 / US-5 already-paid guard)</h3>
+    <p class="note">Once status is <span class="badge paid">paid</span>, both actions above are
+    disabled so the invoice can never be paid twice:</p>
+    <p>
+      <span class="btn" aria-disabled="true" style="opacity:.5;pointer-events:none">Send / resend (disabled — paid)</span>
+      <span class="btn secondary" aria-disabled="true" style="opacity:.5;pointer-events:none">Mark paid manually (disabled — paid)</span>
+    </p>
+
+    <h3>Payment &amp; audit history</h3>
+    <table>
+      <caption class="note" style="text-align:left">Append-only trail — historical rows never edited (US-5 scenario 3)</caption>
+      <thead><tr><th>When</th><th>Event</th><th>By</th></tr></thead>
+      <tbody>
+        <tr><td>2026-08-10 09:14</td><td>Invoice created (draft)</td><td>contractor</td></tr>
+        <tr><td>2026-08-10 09:20</td><td>Sent to ap@riveraroofing.example</td><td>contractor</td></tr>
+      </tbody>
+    </table>
+  </main>
+</div>
+</body>
+</html>

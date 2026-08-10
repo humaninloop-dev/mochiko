@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mark paid — Ledgerline (prototype)</title>
+<link rel="stylesheet" href="../assets/app.css">
+</head>
+<body>
+<div class="shell">
+  <nav class="side" aria-label="Primary">
+    <h1>Ledgerline</h1>
+    <ul>
+      <li><a href="scr-002-invoice-list.html">Invoices</a></li>
+      <li><a href="scr-003-clients.html">Clients</a></li>
+      <li><a href="scr-009-reminders.html">Reminders</a></li>
+    </ul>
+    <p class="note"><a href="../index.html">Sign out</a></p>
+  </nav>
+  <main>
+    <h2>Mark INV-1005 paid manually <span class="badge">SCR-007</span></h2>
+    <p>Use this for payments received off-platform (check or cash). Amount:
+    <strong>$2,480.40</strong>.</p>
+    <form action="scr-005-invoice-detail.html" method="get">
+      <label for="method">Payment method</label>
+      <select id="method" name="method">
+        <option>Check</option>
+        <option>Cash</option>
+        <option>Bank transfer</option>
+      </select>
+      <label for="pdate">Date received</label>
+      <input id="pdate" name="pdate" type="date" value="2026-08-12">
+      <label for="pnote">Note (optional)</label>
+      <input id="pnote" name="pnote" type="text" placeholder="Check #1042">
+      <button type="submit">Record payment &amp; mark paid</button>
+      <a class="btn secondary" href="scr-005-invoice-detail.html">Cancel</a>
+    </form>
+    <p class="note">Marking paid records method + timestamp, writes an append-only audit entry,
+    and disables further payment on this invoice (US-5). Unavailable if already paid via the
+    hosted page (US-5 scenario 2).</p>
+  </main>
+</div>
+</body>
+</html>
