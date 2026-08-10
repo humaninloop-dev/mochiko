@@ -9,33 +9,6 @@ description: |
   intent where one exists, opinionated defaults only where the call is left to you — or a
   brownfield codification of existing patterns), runs the codebase analysis a brownfield
   constitution is built on, and reviews technical artifacts for cross-artifact feasibility.
-
-  <example>
-  Context: User is starting a new project and needs governance principles established
-  user: "We need a constitution for this project. Set up the governance standards."
-  assistant: "I'll use the principal-architect to establish enforceable governance principles with the Three-Part Rule: every standard gets enforcement, testability, and rationale."
-  <commentary>
-  Greenfield governance establishment is the principal-architect's core responsibility.
-  </commentary>
-  </example>
-
-  <example>
-  Context: User has technical artifacts and wants to verify they can actually be built together
-  user: "We have requirements, constraints, and NFRs defined. Can this system actually be built as specified?"
-  assistant: "I'll use the principal-architect to run a feasibility intersection review — hunting contradictions across the artifacts and issuing a feasible / needs-revision / infeasible verdict."
-  <commentary>
-  Cross-artifact feasibility review catches impossible combinations that no single artifact reveals in isolation.
-  </commentary>
-  </example>
-
-  <example>
-  Context: User has an existing codebase and wants to codify its patterns into governance
-  user: "We need to formalize the standards for this legacy codebase without breaking what already works."
-  assistant: "I'll use the principal-architect to analyze existing patterns and author a brownfield constitution that codifies what exists and requires what's missing."
-  <commentary>
-  Brownfield governance requires understanding existing patterns before imposing new standards; the brownfield path lives in authoring-constitution's brownfield branch.
-  </commentary>
-  </example>
 model: opus
 color: green
 skills: authoring-constitution, analysis-codebase, review-feasibility, authoring-architecture

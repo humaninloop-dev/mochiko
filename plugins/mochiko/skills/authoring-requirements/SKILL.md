@@ -1,6 +1,6 @@
 ---
 name: authoring-requirements
-description: This skill MUST be invoked when authoring the functional-requirements layer of a feature specification — writing technology-agnostic functional requirements in FR-XXX format with RFC 2119 keywords (MUST/SHOULD/MAY), identifying edge cases, and defining measurable success criteria in SC-XXX format. SHOULD also invoke when the authoring work involves "functional requirements", "FR-", "success criteria", "SC-", "RFC 2119", "MUST SHOULD MAY", or "edge cases". Produces technology-agnostic requirements in FR-XXX format with measurable success criteria.
+description: This skill MUST be invoked when authoring the functional-requirements layer of a feature specification — technology-agnostic functional requirements in FR-XXX format, edge cases, and measurable success criteria in SC-XXX format. SHOULD also invoke when the work involves 'functional requirements', 'FR-', 'success criteria', 'SC-', 'RFC 2119', 'MUST SHOULD MAY', or 'edge cases'.
 ---
 
 # Authoring Requirements
@@ -15,15 +15,6 @@ human-legible: one-line FR/SC/edge-case entries, ≤ 3-line overview prose, omit
 sections, no restated doctrine. Density is not a gap; a gap is missing substance.
 
 **Boundary — authored inside the product-manager's frame.** The PM owns *which* capabilities (features, the story filter, selection advice — map machinery: `mochiko:authoring-feature-map`); this craft owns *how well* the requirements are written. Neither edits the other's verdicts; a disagreement escalates to the user.
-
-## When to Use
-
-- Starting a new feature specification
-- Documenting the functional requirements behind user stories
-- Defining API contracts at the business logic level
-- Creating requirements for stakeholder review
-- When existing requirements are vague or missing structure
-- Translating informal feature requests into formal requirements
 
 ## When NOT to Use
 
@@ -56,11 +47,6 @@ MUST (absolute; no exceptions) · SHOULD (recommended; valid exceptions may exis
 
 Sequential, three-digit padded, no gaps (FR-001, FR-002…); group related requirements together.
 
-### Writing Technology-Agnostic Requirements
-
-"System MUST notify users when their subscription expires" — never "System MUST send email via
-SendGrid when subscription expires." WHAT and WHY, never HOW.
-
 ## Edge Cases
 
 Identify 3-5 boundary conditions that need explicit handling, drawn from the five categories:
@@ -86,22 +72,10 @@ Define 3-5 measurable outcomes using SC-XXX format:
 3. **Measurable**: Quantifiable where possible
 4. **Outcome-oriented**: What changes, not what's built
 
-"Users complete the workflow in under 2 minutes" — never "API responds in under 200ms" (a
-technical metric, not a stakeholder-observable outcome).
-
 ## Key Entities (Optional)
 
 When the feature involves data, describe entities conceptually and compactly — one
 purpose line plus concept-level attribute and relationship lists:
-
-```markdown
-## Key Entities
-
-### RecurringPattern
-The schedule for a repeating task. **Attributes:** frequency (daily/weekly/monthly) ·
-interval (every N) · end condition (never / after N / on date). **Relationships:**
-belongs to one Task; generates many TaskInstances.
-```
 
 ### Entity Description Rules
 

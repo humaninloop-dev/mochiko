@@ -1,6 +1,6 @@
 ---
 name: authoring-prototype
-description: This skill MUST be invoked when authoring a clickable low-fidelity UX prototype for a feature specification — building the static HTML app under `.mochiko/specs/<feature>/prototype/` (bun-servable, design-system-honoring) and the spec's **Screens & Flows section**: SCR-XXX screen entries (purpose, data shown, FEAT tag) and FLOW-XXX click-path entries (step sequences keyed to story acceptance scenarios, FEAT tag). SHOULD also invoke when the work involves "mock the UX", "clickable prototype", "low-fi mock", "screens and flows", "SCR-XXX", "FLOW-XXX", "prototype the feature", or making a spec's user experience visible before design. Skeleton nav frame first, then screens in story lockstep; flows and data are binding, pixels deliberately rough. Boundary: this authors the PROTOTYPE and its manifest — NOT the user stories it renders (mochiko:authoring-user-stories), NOT production UI code, and it never grades its own output (the prototype is graded with the spec by mochiko:review-specifications).
+description: This skill MUST be invoked when authoring a clickable low-fidelity UX prototype for a feature specification — the static HTML app under `.mochiko/specs/<feature>/prototype/` and the spec's Screens & Flows section (SCR-XXX, FLOW-XXX). SHOULD also invoke on 'mock the UX', 'clickable prototype', 'screens and flows', 'SCR-XXX', or 'FLOW-XXX'. Boundary: authors the PROTOTYPE — NOT the user stories it renders (mochiko:authoring-user-stories), NOT production UI code; never grades its own output.
 ---
 
 # Authoring a Clickable Low-Fi Prototype
@@ -30,14 +30,6 @@ two coupled artifacts:
 what the user can do (the manifest) is binding: downstream design must serve every screen's data
 and route every action. How it looks is deliberately rough and advisory: layout, styling, and
 copy may all improve at build time without ceremony.
-
-## When to Use
-
-- Authoring the prototype and Screens & Flows section during specification authoring, story by story
-- Adding screens/flows for a story just drafted (lockstep authoring)
-- Revising the prototype after a reviewer's gap list or a spec amendment
-- Running the FEAT re-tag pass after derivation, and marking out-of-selection or
-  filter-rejected screens as coming-soon
 
 ## When NOT to Use
 
@@ -99,22 +91,6 @@ copy may all improve at build time without ceremony.
 - Coming-soon screens: the real page at reduced opacity with a banner, or a stub page carrying the
   FEAT tag (rejected screens: the rejection mark and pointer) — either way reachable, so
   navigation never dead-ends.
-
-## Process
-
-1. **Read the intent ruling** — UX-bearing yes/no, scope, constraints. No → stop; the waiver line
-   is the whole output.
-2. **Discover the design system** — check the codebase (`tokens`, `theme`, component library,
-   Storybook, `design/` dirs) and the governance surfaces; note what exists in the README.
-3. **Build the skeleton** — index + nav frame + route stubs from the story set's anticipated
-   screens.
-4. **Per story, in lockstep:** draft the story's screen(s) → wire its flows → add the SCR/FLOW
-   rows → hand back for the user to click while the story is under discussion.
-5. **Re-tag with FEATs** — when derivation lands, run the re-tag pass: tag every row with its
-   feature, grey the out-of-selection screens, mark rejected stories' screens with the
-   rejection pointer.
-6. **Self-walk before handoff** — click every FLOW end-to-end, open every SCR; fix drift before
-   anyone else reads it.
 
 ## Quality checklist
 

@@ -1,6 +1,6 @@
 ---
 name: validation-constitution
-description: This skill MUST be invoked to grade a DRAFTED governance surface set against the quality checklist — there is NO constitution.md; the graded set is the CLAUDE.md governance region (between the mochiko:governance markers), the `paths`-scoped `.claude/rules/mochiko/` files, and the governance ledger (`.mochiko/memory/governance-ledger.md`), judged against the session synthesis and the producer's trace manifest. Checks include two-way trace closure, region-marker integrity, index→home existence, per-principle three-part structure (enforcement/testability/rationale), floor/module accounting and waiver-format checks (the D4 model), anti-pattern and placeholder scans, quantification enforcement, and semantic version-bump determination — emitting a binary PASS/FAIL verdict plus a fix list. SHOULD also invoke whenever the setup loop's validate step needs an independent grade of a surface set produced by mochiko:authoring-constitution, or when re-validating after a FAIL-loop revision. The validator-side skill of the governance producer↔validator pair; defaults to FAIL; run by an independent validator, never the author.
+description: This skill MUST be invoked to grade a DRAFTED governance surface set against the quality checklist — there is NO constitution.md; the graded set is the CLAUDE.md governance region, the `.claude/rules/mochiko/` files, and the governance ledger. SHOULD also invoke for the setup loop's validate step, or when re-validating after a FAIL-loop revision. Validator-side skill of the governance producer↔validator pair; defaults to FAIL; run by an independent validator, never the author.
 ---
 
 # Validating Constitution
@@ -17,14 +17,7 @@ exceptions for "simple projects" or "tight deadlines."
 
 Skipping validation because "the constitution looks fine" or "it's mostly complete" is not following the spirit of quality assurance—it is abandoning it.
 
-## When to Use
-
-- After drafting a constitution with mochiko:authoring-constitution (greenfield or brownfield mode)
-- Before presenting a constitution to users for approval
-- When updating an existing constitution (any change requires re-validation)
-- When user explicitly requests constitution review or quality check
-- When determining appropriate version bump for constitution changes
-- When auditing existing constitution for anti-patterns
+The independent review leaves its verdict and per-finding dispositions in the reviewed artifacts themselves — review evidence that lives only in conversation is a floor violation.
 
 ## When NOT to Use
 
@@ -53,93 +46,6 @@ checklist as universal core + the checklist fragment embedded in each selected m
 pointer / rules files / ledger section — per the authoring skill's routing table). Verify every
 item. Do not skip items because they "seem obvious" or "clearly pass" — and do not check module
 fragments the synthesis did not select.
-
-### Step 2: Region and Surface Integrity (deterministic)
-
-- Exactly one governance region in `CLAUDE.md`, both markers present, correctly ordered.
-- The region carries the ratified stamp (version · date · production floor + attached modules, one line), the principle index,
-  universal principles as short imperative lines, the technology stack, and the quality-gates
-  summary — and stays **short-form** (detail belongs to the ledger; a region restating ledger
-  detail is a fix-list item).
-- Every index line's pointer resolves: the named rules file exists under `.claude/rules/mochiko/`,
-  the named skill exists, or the principle's home is the region itself.
-- Every rules file carries `paths` frontmatter honest to its concern and operative rules in the
-  body. **A universal principle homed in a rules file is a FAIL** (delivery to spawned producers
-  is unproven; universal content belongs in the region).
-- **Scope coverage** (per rules file): the `paths` globs cover every path whose code can violate
-  the concern — cross-check against the layer-rules Import Rules table when that module is
-  attached (a layer that MAY invoke the governed operation but matches no glob is a fix-list
-  item), otherwise against the region's technology-stack and module pointers.
-- **New-file read line** (when any rules file exists): the region's Governance operations carries
-  the standing line — rules inject on Read, not Write; read the matching rules file (or read back
-  the created file) before creating a file under a scoped path. Absence is a fix-list item.
-
-### Step 3: Check Each Principle (three-part, in the ledger)
-
-Every principle in the manifest MUST have a ledger entry keyed by its GI-ID carrying the
-three-part structure:
-
-| Part | Purpose | Verification |
-|------|---------|--------------|
-| **Enforcement** | How is compliance verified? | CI check, code review rule, or audit process named |
-| **Testability** | What does pass/fail look like? | Concrete pass and fail conditions defined |
-| **Rationale** | Why does this rule exist? | Business or technical justification present |
-| **Home** | Where does its operative text live? | Named home matches the index and the actual surface |
-
-If any principle lacks any part, the set FAILS validation.
-
-### Step 4: Trace Closure Cross-Check (deterministic, both ways, over the manifest)
-
-String-match against the synthesis and the surfaces:
-
-1. Every manifest row's GI-ID exists in `governance-intent.md` and points at a principle-bearing
-   element (floor-asserted / deck-kept / minted / compliance-module obligation).
-2. Every principle-bearing element in the synthesis appears in the manifest — realized on a
-   surface — or in the producer's flagged-proposals list. Unrealized-and-unflagged = FAIL.
-3. Every manifest row closes on the surfaces: **one primary enforceable home** (region line,
-   rules file, or skill pointer) **plus its companion entries** (index line + ledger entry), each
-   actually present. A missing companion is a FAIL — this is the check that catches an index line
-   pointing at a file that doesn't exist, or a rule with no ledger metadata.
-4. Waiver records and routed module content match the synthesis's waiver and module-selection
-   elements one-for-one.
-
-This check is deterministic — ID presence and closure, not meaning. **Semantic fidelity of a
-stamped trace is judgment-grade residual risk**: a fabricated-but-plausible trace passes the
-string match. Flag suspected content↔intent mismatches in the fix list as advisory findings; the
-fidelity gates are the human checkpoints upstream (synthesis confirmation) and downstream (the
-acceptance gate's trace summary), not this scan.
-
-### Step 5: Floor, Module, and Waiver Checks
-
-- Ledger carries the Governance Floor header — production floor asserted, attached compliance
-  modules with their strata (or "none"), fact-profile trace (GI-001); the region stamp matches.
-- Every Essential Floor category has a principle **or a recorded waiver** — in any mode.
-- Every waiver carries: standard, justification, revisit trigger or "permanent (D4.1 pending)",
-  trace. **A waiver naming a legal-mandate module obligation is a FAIL** (D4.2 — strata per
-  `authoring-constitution/references/COMPLIANCE-MODULES.md`).
-- Attached compliance modules match the synthesis's fact profile one-for-one — every triggered
-  module attached, none without a recorded trigger fact; module obligations are additive —
-  attached content that loosens a floor principle is a FAIL.
-- Thresholds and gate strictness consistent with the asserted floor level, or covered by a
-  recorded session override in the synthesis.
-
-### Step 6: Scan for Anti-Patterns
-
-Compare against [references/ANTI-PATTERNS.md](references/ANTI-PATTERNS.md) — the canonical scan list.
-
-### Step 7: Verify No Placeholders
-
-This is the most commonly rationalized check. Search **every member of the set** (region, every
-rules file, ledger, manifest) for:
-
-- `[PLACEHOLDER]`
-- `[COMMAND]`
-- `[THRESHOLD]`
-- `[TOOL]`
-- `GI-XXX` (an unfilled trace stamp is a placeholder)
-- Any `[BRACKETED_TEXT]` pattern
-
-**No exceptions.** A surface set with placeholders is not ready for validation sign-off.
 
 ### Step 8: Determine Version Bump
 

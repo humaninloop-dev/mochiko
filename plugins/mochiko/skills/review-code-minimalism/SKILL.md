@@ -1,6 +1,6 @@
 ---
 name: review-code-minimalism
-description: This skill MUST be invoked when independently grading a cycle's produced code against the pre-code ladder — the per-cycle code-minimalism lens run by the verification seat during the verification it already performs: read the cycle's git diff AND cycle-report.md (the disclosed decomposition and its rung claims), grade each claim against mochiko:patterns-code-minimalism (the standard — never restated here), and emit a minimalism: findings block in the verification report. Rungs 2 (reuse), 3 (stdlib), and 5 (installed dependency) carry a codebase-read obligation — targeted greps for existing helpers and a dependency-manifest check, never diff + disclosure alone. SHOULD also invoke when the work involves "over-engineering in this diff", "should this have been reused", "rung claim", "code-shape audit", or "minimalism findings". Findings are ADVISORY to the lead's checkpoint verdict — never a cycle-failing gate. Mounted on the verification seat only, never on the producer. Scope is the minimalism lens ONLY: general code review (naming, patterns, correctness beyond tests) stays out of scope.
+description: This skill MUST be invoked when independently grading a cycle's produced code against the pre-code ladder — the code-minimalism lens run by the verification seat: read the cycle's git diff AND `cycle-report.md`, grade each rung claim against `mochiko:patterns-code-minimalism` (the standard, never restated here), and emit a `minimalism:` findings block. Rungs 2, 3, and 5 carry a codebase-read obligation. Findings are ADVISORY, never a cycle-failing gate. Scope is the minimalism lens ONLY.
 ---
 
 # Review — Code Minimalism Lens
@@ -16,11 +16,6 @@ this skill carries the *grading procedure*, never a copy of the ladder. It runs 
 per-cycle verification the verification seat already performs; no separate stage, no
 final-pass sweep — cycle diffs are small, context is fresh, rework is cheapest at cycle
 close.
-
-## When to Use
-
-- Grading a cycle's diff + disclosed decomposition during per-cycle verification
-- Auditing a rung claim ("reused existing", "stdlib covers it") against the actual codebase
 
 ## When NOT to Use
 

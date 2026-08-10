@@ -18,23 +18,37 @@ HIT logged (ROADMAP stamp vs CHANGELOG — user decision); all items within the 
 
 ---
 
-## Guardrails-vs-detail build
+## Guardrails-vs-detail residuals
 
-Ruling: DECISIONS.md rows 2026-08-10 (D1–D8 + benchmark verdict row); benchmark executed and
-resolved same day — verdict + curated evidence at `.mochiko/benchmarks/guardrails-vs-detail/`.
+Ruling: DECISIONS.md rows 2026-08-10 (D1–D8 + benchmark verdict) + build row 2026-08-11;
+Wave 1 delivered at v0.63.0 (trail).
 
-- [ ] **Ship winning variants + D7 cost gate** (2026-08-10; provenance:
+- [ ] **First-live-run watches on the v0.63.0/v0.64.0 cuts** (2026-08-11; provenance:
   `.mochiko/brainstorms/validator-scope-and-verbosity/record.md`, Benchmark execution section +
-  `.mochiko/benchmarks/guardrails-vs-detail/report/final-verdict.md`) — build phase:
-  ship 11 guardrails skill bodies + 11 slim descriptions + 6 prose-only agent descriptions
-  from `.mochiko/benchmarks/guardrails-vs-detail/variants/` into `plugins/mochiko/`, each
-  through the primitive-edit ceremony (strips + author≠grader audits), one plugin.json bump ·
-  land the D7 cost gate: per-class char budgets (winning-variant weight +25%, chars never
-  bytes) as an audit pre-assert with justified-exemption path · candidate floor lines from
-  the cross-cutting finding (surface every elicited unknown · review leaves verdict +
-  dispositions in artifacts) in place of returning prose · watches at first live runs:
-  F-X1-class review-evidence omission (agents ruling b) · fire-rate on slim descriptions.
-  Open threads riding: near-cap skills outside substrate (M1) · audit-substrate shrink (M2).
+  `.mochiko/benchmarks/guardrails-vs-detail/report/final-verdict.md`; extended to the Wave 2
+  substrate at v0.64.0) — watch the first live runs on the cut primitives: **F-X1
+  review-evidence** — does the independent review leave verdict + dispositions in the
+  artifacts (the floor line's job, now in 4 review/validation skills + the equivalent in
+  `review-code-minimalism`)? Recurrence re-opens agents ruling (b) (example blocks return to
+  the 10 prose-only agent descriptions) · **slim-description fire-rate** — do the 27 slim
+  descriptions still fire at their moments? Wave 1's 11 are benchmark-verified, Wave 2's 16
+  probe-verified (14/14 blind routing); a live miss on any lands as a probe-evidenced
+  RETURNED clause, not a description rewrite · **M2** audit-substrate shrink (terser bodies
+  give the preserved-responsibilities check less to grade; two datapoints held — both waves'
+  audits graded from strip inventories). M1 retired at v0.64.0 (all near-cap descriptions
+  slimmed + probe-verified). Advisory riding: dropped SHOULD-class trigger phrases inventoried
+  in the Wave 2 audit reports — restore individually on live-miss evidence only.
+- [ ] **`analysis-codebase` dangling-pointer repair** (2026-08-11; provenance: batch-A audit
+  ruling, strip `[v0.63.0]` note) — the ruled variant keeps "assess against it using the
+  indicators below" but the indicator subsections died; comprehension defect only, no lost
+  obligation. One-line reword through the ordinary edit ceremony at the next touch of this
+  skill.
+- [ ] **Review-evidence floor-line consolidation** (2026-08-11; provenance: Wave 1 user ruling
+  option note + Wave 2 spread) — the floor line now lives in 4 skills verbatim
+  (`review-specifications`, `review-governance-intent`, `validation-constitution`,
+  `review-brainstorm`, plus adapted copies in `review-feasibility`, `review-plan-artifacts`);
+  no shared review-contract home exists. Candidate: single-source it when a shared home
+  naturally appears — not worth minting a new primitive for.
 
 ## Feature-sizing & entry-points residuals
 

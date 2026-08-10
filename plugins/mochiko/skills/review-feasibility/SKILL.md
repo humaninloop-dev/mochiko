@@ -1,6 +1,6 @@
 ---
 name: review-feasibility
-description: This skill MUST be invoked to grade plan analysis and design artifacts for cross-artifact FEASIBILITY — adversarially hunting contradictions, impossibilities, and buildability conflicts that no single artifact reveals in isolation: constraint-decision conflicts, NFR-constraint impossibilities, requirement-constraint contradictions, decision-decision conflicts, NFR-design feasibility, and constraint-design buildability — plus, when `architecture.md` is in scope, the architecture pass: topology feasibility (NFR↔topology, constraint↔topology) and governance conformance (layer rules, dependency allowlist, GI-linked principles) routed to amendment/waiver, never silently passed — emitting a 3-state `feasible / needs-revision / infeasible` verdict with per-issue evidence, impact, and suggested resolution. SHOULD also invoke whenever a producer's analysis or design artifacts (requirements, constraints-and-decisions, NFRs, architecture, data-model, contracts) need an independent buildability review, or when re-reviewing after a structural revision (new or changed constraints, expanded requirement scope, modified NFR targets). The feasibility reviewer's driver — the adversarial-critique half of the cross-artifact review pair: its sibling grades coverage / measurability / consistency / presence, this skill grades contradiction / impossibility / buildability. Never defaults to `feasible`; grades a different agent's artifacts, never the author's own; operates over plan artifacts, NOT the constitution.
+description: This skill MUST be invoked to grade plan analysis/design artifacts for cross-artifact FEASIBILITY — hunting contradictions, impossibilities, buildability conflicts; plus the architecture pass when `architecture.md` is in scope. Emits a 3-state `feasible / needs-revision / infeasible` verdict. The adversarial half of the plan pair; its sibling `review-plan-artifacts` grades coverage/measurability/presence, this grades contradiction/buildability. Never defaults to `feasible`; not the constitution.
 ---
 
 # Reviewing Feasibility
@@ -14,13 +14,6 @@ This is **adversarial critique, not a checklist.** A checklist asks "is each thi
 **Looking buildable is not being buildable.** A clean review is one where you *actively hunted* every contradiction class and found nothing — never one where nothing jumped out, or the producer is careful, or there was no time. Absence of a contradiction *you went looking for* is evidence; absence of looking is not.
 
 This is the **feasibility** half of a two-form cross-artifact review. The other half — coverage, measurability, cross-artifact consistency, presence/traceability — is a separate completeness reviewer running a mirror-checklist skill (`mochiko:review-plan-artifacts`). The two forms are deliberately disjoint; see *The boundary* below.
-
-## When to Use
-
-- When the producer's analysis artifacts (requirements, constraints-and-decisions, NFRs) need an independent buildability review before the work proceeds — typically ahead of the completeness pass, though that sequencing is the lead's, not this skill's.
-- When design artifacts (data-model, contracts) exist and you must confirm the design *as specified* can meet the NFR targets and is deployable under the stated constraints.
-- When re-reviewing after a **structural** revision — new or changed constraints, expanded requirement scope, or modified NFR targets — that could introduce a new cross-artifact conflict.
-- When the design-time **architecture** (`architecture.md`) is under review — the proposed topology is now something NFRs and constraints can be *infeasible against*, and something that must *conform to the governance surface*. This adds **the architecture pass** (below) on top of the six classes.
 
 ## When NOT to Use
 
@@ -98,10 +91,6 @@ Where the two brush — e.g. an NFR that is *both* unmeasurable *and* impossible
 
 ## Core Process
 
-### Step 1: Gather the cross-artifact context
-
-Read the actual artifacts under review — never a summary, never the producer's say-so. For an analysis review: requirements, constraints-and-decisions, NFRs. For a design review: add data-model and contracts. A verdict given from anything but the artifacts themselves is not a verdict.
-
 ### Step 2: Hunt each contradiction class
 
 Load [references/FEASIBILITY-LENS.md](references/FEASIBILITY-LENS.md) and look through each of the six lenses in turn, across the artifact pairs it names. Do not stop at the first clean lens — try to break every combination. The goal is to *prove the system can't be built*; only when you genuinely cannot do you call it feasible.
@@ -130,13 +119,10 @@ A finding is either a **resolvable** contradiction (a revision closes it) or a *
 
 **Never default to `feasible`.** The not-cleared state is the absence of a clean, completed hunt. You award `feasible` only after working every class and finding nothing — never because the artifacts look buildable or the author is careful.
 
-### Step 6: Emit the review
-
-Write the verdict, the per-issue gate fuel, and the one-line `strengths:` field into the feasibility report at the location your instructions specify (the feature's `feasibility-report` in the workspace). The report's shape (machine-first findings YAML) is owned by the feasibility-report template; this skill owns the *judgments the report must contain* — the 3-state verdict and the four fields per issue. Do not invent routing or "next steps" — what happens on each verdict is the lead's loop, not this skill's.
-
 ## Independence (stated by role)
 
 - You grade artifacts authored by a **different agent** — the producer of the analysis/design. You never review your own authoring. Independence here is the separate-agent structure, not a sentence in this skill.
+- The independent review leaves its verdict and per-finding dispositions in the reviewed artifacts themselves — review evidence that lives only in conversation is a floor violation.
 - Your verdict is **input**, not the gate. The lead reads the artifacts and your report and owns the clearing verdict; the lead drives any revision round and presents `infeasible`/`needs-revision` issues to the human. Loop ownership, the round bound, and the human gate are the lead's — its command states them; this skill does not restate or own them.
 - The per-issue gate fuel (the `gap` / `at` / `impact` / `fix` fields) is what the human gate consumes when a finding is a genuine judgment call. Routing each finding is the lead's judgment — a fundamental conflict is the human's to rule, never something investigation can settle.
 - **G1:** you operate over plan analysis/design artifacts, never the constitution. You are not the constitution validator and you neither reference nor recreate constitution grading — its well-formedness is not yours to judge. The architecture pass's governance-conformance lens is consistent with this: it reads the governance surface **as an input** to grade the *topology's* conformance to it, never to grade the constitution itself.

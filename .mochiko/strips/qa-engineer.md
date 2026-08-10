@@ -2,6 +2,20 @@
 
 Entry formats: `strips/README.md`. Wave context: the implement cluster wave (v0.17.0).
 
+## [v0.64.0] Frontmatter `description:` examples stripped → prose-only agent description
+- **Disposition:** superseded → prose-only agent description (Wave 2 editorial extension of the agents-arm ruling); the `<example>` blocks were removed from the frontmatter `description:` block scalar, the prose framing (routing content) kept verbatim.
+- **Tier failed:** n/a — supersession by ruling (guardrails-vs-detail agents-arm user ruling (b) 2026-08-10, extended to the untested agents by the Wave 2 user ruling; `DECISIONS.md` 2026-08-11 build row Wave 2 residual; `report/final-verdict.md` — 0 route misses over 20+ staffings).
+- **Content:** faithfully compressed. **3 `<example>` blocks removed** from the `description:` value:
+  1. Implementation complete, run the verification tasks — routes verification / quality-gates / checkpoint work to qa-engineer.
+  2. Verify a specific feature against real infrastructure — real-infrastructure testing with evidence capture.
+  3. Run lint / build / tests before approval — deterministic quality-gate execution.
+
+  Description parsed-value char delta: **1,403 → 250** (chars of the parsed block-scalar value; block-scalar parse, not `wc -c` bytes). Verbatim removed text survives in git history of `plugins/mochiko/agents/qa-engineer.md` (pre-v0.64.0).
+- **Kept deliberately:** the prose framing of the `description:` (the routing content that staffs the agent — "Senior QA engineer who treats verification as an engineering discipline. Executes structured verification tasks, captures evidence, audits produced code's shape against the pre-code ladder (advisory findings), and gates completion on human approval.") — and the entire agent body, byte-for-byte untouched (verified against git HEAD).
+- **Consumers assessed:** grep of `plugins/mochiko/commands/` and `plugins/mochiko/skills/` for `qa-engineer`: referenced only by the router `plugins/mochiko/skills/mochiko/SKILL.md`; no command references the agent by name. Routing/staffing contract intact — the agent name and the description's prose framing are unchanged; only the illustrative `<example>` blocks were removed.
+- **Standing watch:** an F-X1-class route miss on the untested agents re-opens ruling (b).
+- **KEPT reconciliation:** the prior [v0.17.0] KEPT entry protects the "Quality Standards" + "What You Produce" persona *body* enumerations, and the [v0.17.0] strip relocated a "Skills Available" *body* bullet. Neither touches the frontmatter `description:` value or any `<example>` block. No overlap with this edit.
+
 **Consumer status (pre-ruling #1, user-supplied):** qa-engineer is **single-consumer today** (`implement`,
 the independent Tier-1 validator) but REGISTRY records a **pending `audit`-cluster affinity** ("qa-engineer
 still owes its audit-cluster affinity" — Implement-port follow-ups; "Also serves `audit` (affinity) —
