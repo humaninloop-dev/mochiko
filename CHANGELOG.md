@@ -5,6 +5,24 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.59.0] — 2026-08-10
+
+- Feature-map layer wave 4 — brownfield bootstrap + KM wiring (ruling: `feature-map-layer`
+  record D11/D12/D16-as-amended/R7/R14/R15; all edits purely additive, no strip notes
+  owed). `setup.md`: brownfield runs reconstruct the initial feature map from code (routes,
+  UI surfaces, services), confirmed by the user entry by entry, landing as `FEATURES.md` +
+  `.mochiko/features/` entries with `delivered` status and the reconstructed-from-code
+  mark (first-touch re-verify obligation carried by `authoring-feature-map`); greenfield
+  runs scaffold the empty index; the never-overwrite floor covers both writes. KM module
+  template: specs-index agreement invariant (open/close contract, rows never contradict
+  the map) + FEATURES.md joins the top-level living-doc set marked pipeline-core (never
+  scaffolded or declined with the module; map-integrity invariants stay pipeline-side per
+  R7) + the R15 boundary line (capabilities on the map, defects/tooling/process in
+  BACKLOG). `analysis-codebase`: capability signals seed the reconstruction (one pointer).
+  Lead-dispatched author≠grader audit PASS round 1, all three artifacts (the producer's
+  self-dispatched audit was not accepted as the ceremony audit). Completes the
+  feature-map-layer build: D1–D22 all carried.
+
 ## [0.58.0] — 2026-08-10
 
 - Feature-map layer waves 2+3 — the slices→features conversion (ruling: `feature-map-layer`

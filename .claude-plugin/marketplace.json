@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Kernel-free agent-skill framework — sound-loop workflows built from native agent teams and skills",
-    "version": "0.58.0"
+    "version": "0.59.0"
   },
   "plugins": [
     {

@@ -60,6 +60,8 @@ sub-procedure with domain-entity extraction and an Essential-Floor status assess
 artifact follows the deliverable envelope ([`artifact-format.md`](../../templates/artifact-format.md))
 **slimmed but legible**: findings in tables with file-cited evidence, one line per check;
 the judgment prose (strengths, recommendations) stays prose — the G2 gate reader needs it.
+The extracted capability signals (routes, UI surfaces, services) also seed setup's
+feature-map reconstruction (map machinery: `mochiko:authoring-feature-map`).
 
 ### Essential-Floor Status Assessment
 

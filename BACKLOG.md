@@ -18,25 +18,27 @@ HIT logged (ROADMAP stamp vs CHANGELOG — user decision); all items within the 
 
 ---
 
-## Feature-map layer build
+## Feature-map layer residuals
 
-Ruling: DECISIONS.md row 2026-08-10 (D1–D22); record cold-reviewed, 15/15 dispositioned.
+Ruling: DECISIONS.md row 2026-08-10 (D1–D22); build delivered 2026-08-10 at v0.57.0–v0.59.0 (trail).
 
-- [ ] **Feature-map layer build** (2026-08-10; provenance:
-  `.mochiko/brainstorms/feature-map-layer/record.md`, Build surface section as
-  review-amended) — the slices→features rebuild: `product-manager` agent (9→10) +
-  `authoring-feature-map` skill (derivation, D6 entry shape + obligations line + `retired`,
-  D8 delta grammar, D7 filter, intent map-read agenda, D12 re-verify carrier) ·
-  `authoring-slices` retires (recorded supersession; invariants re-key, D18/D22) · all five
-  commands touched (setup D12 bootstrap · specify D7/D10/D20 · plan D17/D18/D19 · implement
-  D13 landing · brainstorm verify-untouched) · templates: spec restructure (stories/ out,
-  selection section in, FEAT-tag re-key), FEATURES.md index + entry shapes, tasks re-key ·
-  `review-specifications` D16 extension · pipeline-core map-integrity invariants (incl.
-  in-flight-agreement R5) · KM: specs-index contract, top-level reservation (FEATURES.md),
-  R15 boundary line · self-application: dogfood repo's own `/mochiko:setup` amend (R12) ·
-  migration stance for slice-form specs (open thread 4) before ship. Supersedes at build:
-  Delivery-Slices machinery (v0.49.0), slice-scoped plan/implement bindings, SCR/FLOW
-  slice-tags. Open threads 1–6 ride the record.
+- [ ] **Self-application: mochiko's own governance amend for the feature layer** (2026-08-10;
+  provenance: `.mochiko/brainstorms/feature-map-layer/record.md`, R12 disposition) — the
+  KM-module changes shipped in the plugin template (specs-index agreement invariant ·
+  FEATURES.md top-level reservation · R15 map-vs-BACKLOG boundary) reach mochiko's own
+  project-pinned `.mochiko/memory/knowledge-management.md` only via a `/mochiko:setup` amend
+  run — a governance event (fact-profile/module change) the user rules. Until it runs, the
+  dogfood repo's pinned copy predates the feature layer. Note: mochiko itself is a primitive
+  library, not a product app — whether it also gets a FEATURES.md is part of the amend ruling.
+- [ ] **First live feature-surface pipeline run** (2026-08-10; provenance: the record's open
+  threads 1/3/5 + wave audits' advisories) — watch the first specify→plan→implement run on
+  the v0.59.0 surface: intent map-read fires (greenfield empty vs brownfield reconstructed) ·
+  derivation + filter produce honest rejections · selection card shows deferred SCs ·
+  acceptance-time atomic write (map untouched on a rejected spec) · per-feature plan runs
+  resolve extend-mode + cross-spec reach · implement landing executes the graduation batch
+  whole · D6 entry shape survives real use (Assumed — re-opens on friction) · oversized
+  feature (open thread 1) and selection-UX presentation (thread 5) observed. Scale trigger:
+  map at ~60 entries (thread 6) — far off.
 
 ## UX-prototype-stage watches
 

@@ -16,11 +16,13 @@ The governance surface set exists and carries the user's ratified intent: the in
 synthesis was ratified by the user before any surface was authored; the trace from ratified
 intent to authored surfaces closes across the set and an independent grade confirmed it from
 the files; the governance region's semver is bumped; and the user accepted the set with the
-trace summary in hand.
+trace summary in hand. The feature map exists at close: brownfield reconstructed and
+user-confirmed, greenfield an empty scaffold (feature-map binding below).
 
 **Not done — default FAIL:** a surface authored before the intent was ratified · an unclosed
 trace · the set never graded by anyone but its author · a floor category with neither
-principle nor recorded waiver · user acceptance not given.
+principle nor recorded waiver · user acceptance not given · no feature map at close
+(brownfield reconstruction unconfirmed, or greenfield index unscaffolded).
 
 ## Harness
 
@@ -36,7 +38,8 @@ principle nor recorded waiver · user acceptance not given.
 - **Reserved to the user:** the mode when ambiguous (greenfield / brownfield / amend) · every
   interrogation card ruling, module ruling, and waiver · synthesis ratification · detected
   reality vs declared intent conflicts (brownfield — confronted in the open, never silently
-  resolved) · final acceptance of the surface set, flagged proposal by flagged proposal.
+  resolved) · confirmation of the reconstructed feature map, entry by entry (brownfield) ·
+  final acceptance of the surface set, flagged proposal by flagged proposal.
 - Suggest commits; never run git mutations, never push. User acceptance is plain blocking
   text, never a timed prompt.
 
@@ -60,6 +63,13 @@ principle nor recorded waiver · user acceptance not given.
 - **KM module:** adopted → scaffold per
   `templates/constitution-modules/knowledge-management.md`, including the project-pinned
   copy at `.mochiko/memory/knowledge-management.md`; its never-overwrite floor holds.
+- **Feature map:** brownfield → the analysis extends into a feature-map reconstruction —
+  delivered capabilities derived from the code (routes, UI surfaces, services), confirmed
+  with the user, landing as the initial `FEATURES.md` + `.mochiko/features/` entries with
+  `delivered` status and the reconstructed-from-code mark (shape:
+  `templates/features-index-template.md` + `templates/feature-entry-template.md`; map
+  machinery and the first-touch re-verify obligation: `mochiko:authoring-feature-map`).
+  Greenfield → scaffold the empty index. The never-overwrite floor covers both writes.
 - **Register:** user-facing prose per `templates/output-style.md`.
 - **Next step:** `/mochiko:specify` (+ `/mochiko:brainstorm` when knowledge-management was
   adopted).

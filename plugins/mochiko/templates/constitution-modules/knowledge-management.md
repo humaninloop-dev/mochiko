@@ -45,6 +45,12 @@ fit in active use. **Admission rule:** a doc enters this module only with a name
 | `ARCHITECTURE.md` (repo root) | the living system view — components, boundaries, data flow; decisions record *changes*, this records the *resulting system* | plan/implement landings on structural change · `mochiko:authoring-architecture` |
 | `GLOSSARY.md` (repo root) | the project's domain language | spec landing when new terms mint · the term format below |
 
+`FEATURES.md` (repo root) — the system as capabilities, `ARCHITECTURE.md`'s capability peer —
+joins this top-level living-doc set when the pipeline runs. It is **pipeline-core**, never
+scaffolded or declined with this module: its carriers and integrity invariants live in the
+touching commands + `mochiko:authoring-feature-map`. This module contributes only the
+index-agreement invariant below.
+
 **Plus the enforcement surfaces — core, not separately declinable** (documents never scaffold
 without their carriers): the **project-pinned copy** at
 `.mochiko/memory/knowledge-management.md`, a **`paths`-scoped rules file**
@@ -74,7 +80,9 @@ pointer, resume-cold context) in theme-keyed sections that merge on groom — ne
 provenance-keyed-forever. Closing an item never deletes it: it compresses to the one-line
 DONE + pointer form and **moves to the trail**. Dead provenance gets the terminal stamp
 `provenance: unrecoverable (<what it was>, removed <date>)` — satisfying the pointer
-requirement and the dead-pointer scan at once.
+requirement and the dead-pointer scan at once. Boundary with the feature map: product
+capabilities live on the map as `proposed` entries; `BACKLOG.md` carries everything else —
+defects, tooling, process.
 
 **Decisions layer — a thin index over records:** one `DECISIONS.md` line per **ruled
 decision** — date · title · status (`ruled` / `superseded by <pointer>`) · pointer to the
@@ -106,6 +114,10 @@ groom's job.
 - **Bijection:** every directory under `.mochiko/brainstorms/` has an `index.md` entry;
   every accepted entry names its landing (a `DECISIONS.md` row, or an explicit
   no-graduation).
+- **Specs-index agreement:** every directory under `.mochiko/specs/` has a
+  `.mochiko/specs/index.md` entry, maintained by the same open/close contract as the
+  brainstorms index; a row's status never contradicts the feature map (closed = its
+  selected FEAT-IDs read `delivered`).
 - **Status-agreement:** wherever the same decision appears, brainstorms-index status ↔
   record `Status` line ↔ decisions-index status agree.
 - **Open-only:** no `[x]` item in `BACKLOG.md` — done items live in the trail.
@@ -157,7 +169,7 @@ GI-XXX]
 - [ ] Core artifacts named with read-job, writer moment, and carrier (the admission rule holds for every scaffolded doc); electives present only when adopted, declines recorded
 - [ ] All three enforcement surfaces present (project-pinned copy at `.mochiko/memory/knowledge-management.md` · `paths`-scoped rules file · CLAUDE.md pointers) and the five carrying commands' landing steps reference the PROJECT copy, not this template
 - [ ] Landing ritual stated as one three-part move covering closing AND supersession
-- [ ] Invariants stated mechanically (bijection · status-agreement · open-only BACKLOG · horizon caps Now ≤5 / Next ≤7 / Later ≤10 · item bounds + count watch · dead-pointer scan with the `provenance: unrecoverable` terminal state · in-flight agreement (`ARCHITECTURE.md` pointers target open features and resolve) · presence) with the vacuous-at-zero note
+- [ ] Invariants stated mechanically (bijection · specs-index agreement (open/close contract, rows never contradict the feature map) · status-agreement · open-only BACKLOG · horizon caps Now ≤5 / Next ≤7 / Later ≤10 · item bounds + count watch · dead-pointer scan with the `provenance: unrecoverable` terminal state · in-flight agreement (`ARCHITECTURE.md` pointers target open features and resolve) · presence) with the vacuous-at-zero note
 - [ ] Decision-record schema + glossary term format present; superseded rows compress one line per decision, status preserved
 - [ ] Disambiguation present (`ROADMAP.md` = the thin forward view, never a decision archive; `DECISIONS.md` = the thin index over records; `evolution-roadmap.md` unrelated)
 - [ ] Never-overwrite floor stated; collision rulings recorded (or "none — clean names") and matching the synthesis
