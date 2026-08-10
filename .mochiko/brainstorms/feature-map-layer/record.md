@@ -158,9 +158,9 @@ The user wants to change the specify and plan workflows to understand where a **
 ## Open threads
 
 1. **Oversized feature** (D4): a feature too big for one graduation pass even with vertical-TDD cycles inside implement — revisit trigger: first real run that hits it.
-2. **Intent-stage mechanism** (D14): PM's intent-stage ownership vs the lead-run user conversation — build must pick: PM skill shapes the lead's agenda, or PM seat consulted mid-intent. Lead's structural caveat stands.
+2. **Intent-stage mechanism** (D14): ~~open~~ **ruled at build kickoff (2026-08-10, user):** the `authoring-feature-map` skill carries the intent-stage map-read agenda and shapes the lead's intent conversation; the PM seat spawns after stories for derivation. No mid-intent relay.
 3. **D6 entry shape** is `Assumed` — line-by-line hardening happens at template authoring; first dogfood re-opens it if the shape fights real use. (Amended post-review: obligations line per D21, `retired` status per R3.)
-4. **Migration:** existing repos hold slice-form specs (kinako et al.) — build states a conversion-or-freeze stance before shipping.
+4. **Migration:** ~~open~~ **ruled at build kickoff (2026-08-10, user): freeze old, new-form new.** Existing slice-form specs stay valid frozen history; only new specify runs use the feature surface; D12's bootstrap derives the map from delivered code, never from old specs. Zero conversion.
 5. **Selection UX:** how the selection moment is presented (map delta + PM recommendation + deferred-SC list per D21) — build-time design, user ruling stays reserved.
 6. **Map scale** (R11): revisit trigger when the map crosses ~60 entries — index grouping layer, scoped map-reads.
 

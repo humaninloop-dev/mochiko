@@ -5,6 +5,26 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.57.0] — 2026-08-10
+
+- Feature-map layer wave 1 (pure additions; ruling: `feature-map-layer` record D1–D22,
+  DECISIONS.md 2026-08-10). New `product-manager` agent — the product-layer producer: owns
+  *which* (feature derivation, the story filter, map writes, selection advice); the
+  requirements-analyst owns *how well* under the PM's frame; selection is always the user's
+  ruling (D14/D15). New `authoring-feature-map` skill — one living repo-level feature map:
+  intent-stage map-read agenda, stories-first derivation with recorded filter rejections,
+  FEAT-XXX entry authoring, D8 delta grammar, acceptance-time atomic map writes including
+  the specs-index row, map-integrity invariants (incl. in-flight-agreement), foundation as
+  an ordering role. New templates `features-index-template.md` (repo-root FEATURES.md — a
+  succinct index) and `feature-entry-template.md` (full D6-as-amended entry shape:
+  capability, extent, relations, architecture link, story trace, obligations, deltas;
+  statuses proposed/in-flight/delivered/retired). Router: skills and agents tables gain
+  both rows. plugin.json: agents 9→10. Author≠grader audits: PASS round 1, all four
+  artifacts (two advisories logged: specify's wave-2 brief routes spec-index stewardship;
+  the skill's split-Process form is record-driven per D5, noted against future form
+  audits). Slice machinery untouched this wave — retirement lands with the wave-2 specify
+  cluster rebuild.
+
 ## [0.56.0] — 2026-08-07
 
 - `implement.md` gains an enforceable bounds contract (pure additions to Harness). New

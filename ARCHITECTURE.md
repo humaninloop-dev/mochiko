@@ -22,7 +22,7 @@ flowchart LR
   user -->|"/mochiko:* + gate rulings"| commands
   subgraph plugin ["plugins/mochiko/"]
     commands["commands/ — 5 supervisors"]
-    agents["agents/ — 9 personas"]
+    agents["agents/ — 10 personas"]
     skills["skills/ — 28 skills"]
     templates["templates/ — artifact + report schemas, doctrine homes"]
     commands -->|"spawn seats, each dispatch self-briefed"| agents
