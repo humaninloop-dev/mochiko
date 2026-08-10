@@ -58,11 +58,14 @@ accepted AND built same day at v0.55.0 — two native output styles + router sec
 PASS round 1, item straight to trail · 2026-08-07: implement bounds contract booked HIGH ×2
 from the mochiko-app S1 run evidence AND closed same day at v0.56.0 — Bounds + Escalation
 cadence bullets in `implement.md` Harness, audit FAIL→fix→PASS, both items straight to
-trail; 2026-08-10: feature-sizing & entry-points session accepted — D1–D15, Now row added) —
-Now 2 · Next 6 · Later 9 · BACKLOG
+trail; 2026-08-10: feature-sizing & entry-points session accepted — D1–D15, Now row added ·
+2026-08-10: pm-requirements-stacking session accepted AND built same day at v0.62.0 —
+D1–D4 + D2a/D3a, skill supersession + three command additions, audit PASS round 1 all four
+surfaces, item straight to trail) —
+Now 4 · Next 6 · Later 9 · BACKLOG
 baseline 56 open items (per-item ≤15 lines;
-figures on BACKLOG's stamp line). Plugin: 5 commands · 9 agents · 28 skills · 14 templates +
-modules · 2 output styles, v0.56.0 (marketplace synced). Per-bump build history: `CHANGELOG.md` (from 0.53.0) ·
+figures on BACKLOG's stamp line). Plugin: 6 commands · 10 agents · 28 skills · 14 templates +
+modules · 2 output styles, v0.62.0 (marketplace synced). Per-bump build history: `CHANGELOG.md` (from 0.53.0) ·
 `DECISIONS.md` · the trail; pre-0.53.0 stamp-line narratives live in git history (this line,
 before this groom). Stamp compressed to contract shape this groom — expansion-watch hit
 logged in BACKLOG (Operating-docs / KM module section) for the user's report-writer re-open

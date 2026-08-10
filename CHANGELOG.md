@@ -5,6 +5,27 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.62.0] — 2026-08-10
+
+- PM requirements-stacking build (ruling: `pm-requirements-stacking` record D1–D4 + D2a/D3a
+  as amended at review). `authoring-feature-map` skill: three-phasing-forms paragraph — an
+  extensive feature's phases reuse shipped machinery (within-run = vertical-slice cycles,
+  oversize-at-derivation = parent-minting), across-selection-round phasing = leaves under one
+  parent with the independently-useful phase-leaf bar (D1, F-6); capability-stub section
+  superseded to two-seat minting — specify's derivation may park uncertain remainder as
+  `unrefined` stubs with story-trace provenance, selectability and maturation stay
+  specify-derivation-only, `/mochiko:feature` stewards-never-matures (D2/D2a; strip
+  [v0.62.0]); confidence-keyed cut paragraph (D2); per-parent completeness ledger on the
+  selection card + two-site re-surfacing obligation (territory-touching specs +
+  stewardship touches, D3/D3a); dependency-triggered escalation split by carrier — leaf via
+  technically asserted map relation, shapeless stub via flagged-unverified PM judgment, both
+  recommendations for the user's ruling, never a PM-forced cut (D3/D4, F-4/F-7); checklist +
+  red-flag reinforcement. Command line-edits (pure additions): `specify.md` selection card
+  carries the ledger · `feature.md` stewardship touches re-surface the touched parent's
+  parked stubs and undelivered leaves · `plan.md` architecture stage asserts dependency
+  relations onto the entry with provenance (technical seat asserts, PM consumes).
+  Author≠grader audit: all four surfaces PASS round 1.
+
 ## [0.61.0] — 2026-08-10
 
 - Feature-sizing & entry-points build — **breaking change, no migration** (ruling:

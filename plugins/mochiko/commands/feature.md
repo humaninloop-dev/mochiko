@@ -17,8 +17,9 @@ them · a capability idea parked as a `proposed` stub — name + one-breath hook
 marked `unrefined`; a stub is parking, never a spec-bypass — selectability stays behind
 `/mochiko:specify`'s derivation · a flat entry retroactively promoted to parent — the
 delivered extent becomes the first child, new work lands as sibling children, status
-never regresses · a retire executed on the user's ruling, entry kept and dated · an
-integrity defect fixed on sight. **Lane intake:** the report triaged by the
+never regresses · a retire executed on the user's ruling, entry kept and dated · any
+stewardship touch on a parent (query, promotion, grooming) re-surfaces that parent's
+parked stubs and undelivered leaves · an integrity defect fixed on sight. **Lane intake:** the report triaged by the
 stable-ground test — the lane writes only surfaces no live run owns — into the feature
 lane, the product lane, or filed to the owning run; lane work captured as **one delta
 card** — a bug's acceptance is its reproduction-failing test, an improvement carries 1–3

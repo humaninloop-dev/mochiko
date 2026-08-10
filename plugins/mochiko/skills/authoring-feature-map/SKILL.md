@@ -40,9 +40,13 @@ Feature entries nest, **two levels, hard cap**: a **parent** (the capability a p
 
 **Two sizing bars:** the one-breath guidance polices the **parent's** name (and any flat entry's); the ~3-line extent bar polices the **leaf** — it bounds the deliverable.
 
+**Phasing an extensive feature — three forms, reuse the two already shipped.** An extensive requirement set is delivered in phases three ways, and only the third is new craft here: (1) **within one build run** — a leaf too large for one implement breath is cut into vertical-slice cycles at plan time (above; craft in `mochiko:patterns-vertical-tdd`), never re-invented as a second grammar; (2) **oversize at derivation** — an extent that won't fit the leaf bar mints a parent (above); (3) **across selection rounds** — an extensive feature's phases are its leaves under one parent, each selection round picking the next leaves while the parent's roll-up tracks delivered vs undelivered. A leaf cut as an across-round phase must be **independently useful** — a working increment on its own per the vertical discipline, never a horizontal layer that only pays off when a later phase lands.
+
 ## Capability stubs — parking, never a bypass
 
-`/mochiko:feature` can add `proposed` entries only as **capability stubs**: name + one-breath hook, marked `unrefined`. Only specify's derivation fills extent and relations and makes an entry selectable for delivery. A stub is parking, never a spec-bypass — the `unrefined` mark keeps the gap auditable by the map-integrity review. Derivation treats stubs as **unratified hypotheses, never extension anchors**: it ignores stub text and derives from stories; a stub matching a derived feature is confirmation, a stub matching nothing stays parked or is retired.
+A `proposed` entry may be parked as a **capability stub**: name + one-breath hook, marked `unrefined`, no extent or relations. Two seats mint stubs: `/mochiko:feature` (idea-parking at a stewardship touch) and **specify's derivation**, which may park the genuinely uncertain remainder of an extensive requirement set as `unrefined` stub children under the parent — a derivation-minted stub carries its story-trace provenance. A stub is parking, never a spec-bypass — the `unrefined` mark keeps the gap auditable by the map-integrity review.
+
+**Selectability stays behind specify's derivation.** A stub becomes selectable for delivery only when a specify run's derivation fills its extent and relations from stories — the maturation path, and the only one. `/mochiko:feature` stewards stubs (park, groom, retire, re-surface) but never matures one and never dispatches unratified scope. Derivation treats stubs as **unratified hypotheses, never extension anchors**: it ignores stub text and derives from stories; a stub matching a derived feature is confirmation, a stub matching nothing stays parked or is retired. Minting a stub is the *output* of a spec run, not a bypass of one — extending minting to derivation does not touch the selectability gate.
 
 ## When to Use
 
@@ -50,7 +54,7 @@ Feature entries nest, **two levels, hard cap**: a **parent** (the capability a p
 - Deriving proposed features and deltas from drafted user stories, and running the filter
 - Authoring or amending FEAT-XXX entries and the FEATURES.md index lines
 - Minting a parent — derivation remedy, capability-first, or retroactive promotion of a flat entry
-- Minting or grooming `unrefined` capability stubs (`/mochiko:feature` stewardship)
+- Minting or grooming `unrefined` capability stubs — at a `/mochiko:feature` stewardship touch, or parking uncertain remainder at derivation
 - Attaching a marked delta when a spec or lane run touches a `delivered` feature
 - Staging the acceptance-time map write for a specify run, including its specs-index row (spec-index stewardship rides this skill)
 - Re-verifying a reconstructed-from-code entry's extent on its first touch
@@ -95,7 +99,13 @@ After stories are drafted, derive the map delta. For each story, against the **a
 
 **Granularity guide:** a feature is a capability a product person would name in one breath — bigger than a story, smaller than a product area; the one-breath bar polices a parent's (or flat entry's) name. An extent that cannot be stated in ~3 lines is not one leaf — split it into two features, or mint a parent whose leaves each pass the bar.
 
+**Confidence-keyed cut:** when an extensive requirement set only partly resolves into buildable leaves, cut leaves for the confident portion and park the genuinely uncertain remainder as `unrefined` stub children under the same parent (derivation stub-minting, above) — story-trace provenance attached, the remainder held under the re-surfacing obligation until it becomes a leaf or is killed. Speculative leaves that age badly are the failure this avoids; the parent's completeness ledger keeps the parked remainder countable.
+
 **SC re-homing:** at derivation, every SC-XXX maps to the feature(s) whose delivery verifies it. At selection the set splits visibly: SCs covered by selected features are this delivery's done-condition; SCs covered only by unselected features travel with the `proposed` entry's obligations line. The deferred-SC list appears on the selection card — choosing a subset is choosing which success criteria wait, shown at the moment of choice.
+
+**Completeness ledger on the selection card:** for every parent in the run's territory, the selection card carries a completeness ledger line — delivered leaves / undelivered leaves / parked `unrefined` stubs / kills — pure information, shown at the moment of choice. This is the re-surfacing obligation's first site: a specify run whose territory touches a parent surfaces that parent's parked stubs and undelivered leaves on its selection card (the intent-stage map-read agenda already obliges reading the territory's entries). It fires only on territory touch — an unrelated spec's card carries no foreign parent's remainder. The second site is any `/mochiko:feature` stewardship touch on the parent.
+
+**Dependency-triggered escalation, split by carrier.** The ledger is pure information; forced disposition fires on exactly one trigger — an undelivered leaf or parked stub **blocks another piece of work from entering delivery**. An **undelivered leaf** blocking incoming work escalates on a technically asserted map relation (`<leaf> blocks <feature>`, asserted by a technical seat — system-architect at plan time or technical-analyst at derivation — with provenance; the PM consumes the relation, never asserts it). A **parked `unrefined` stub** blocking incoming work has no shape to verify against and cannot carry a map relation; it escalates as PM judgment explicitly flagged *unverified* ("incoming work appears to need <stub> — parked, unshaped; specify it now or re-scope"). Both surface as a **recommendation for the user's ruling** — cut it into a leaf now, or re-scope the dependent work — never a PM-forced cut; the PM-recommends-never-selects invariant governs, and the forced element is only that a decision is put in front of the user.
 
 ## Entry authoring
 
@@ -128,7 +138,10 @@ Before handing off:
 - [ ] Index lines agree with entry files on status and name; leaf lines under their parent; no dangling FEAT-IDs introduced
 - [ ] All delivery writes staged in the spec workspace — the live map untouched until acceptance (stewardship writes per invariant 6 excepted)
 - [ ] Acceptance batch includes the specs-index row (`.mochiko/specs/index.md`), agreeing with the map
-- [ ] Selection card prepared with recommendation, deferred-SC list, and ordering — the ruling left to the user
+- [ ] Selection card prepared with recommendation, deferred-SC list, per-parent completeness ledger line (delivered/undelivered leaves · stubs · kills), and ordering — the ruling left to the user
+- [ ] Territory-touching parents' parked stubs and undelivered leaves re-surfaced on the selection card; any dependency-blocked leaf/stub escalated as a recommendation (leaf via asserted map relation, stub via flagged-unverified judgment), never a forced cut
+- [ ] Any leaf cut as an across-round phase is independently useful — a working increment, not a horizontal layer
+- [ ] Derivation-minted stubs carry story-trace provenance; no stub matured or made selectable outside specify's derivation
 
 ## Red Flags — STOP and re-derive
 
@@ -141,6 +154,10 @@ Before handing off:
 - "This capability wants a third level" — it doesn't get one; split the parent into two parents
 - "The parent should go back to in-flight now that a new child arrived" — delivered is sticky; the child rides as a marked delta and folds when it delivers
 - "The stub already describes the feature, I'll derive from its text" — stubs are unratified hypotheses; derive from stories and let a match be confirmation
+- "I'll mint the remainder as a selectable stub so it's ready" — selectability is specify-derivation-only; `/mochiko:feature` parks and grooms, never matures
+- "This leaf is just a phase, a thin layer is fine" — a phase-leaf must stand alone as a working increment, never a horizontal layer
+- "The stub blocks this work, I'll assert it as a map relation" — stubs have no shape to verify; escalate as flagged-unverified PM judgment, not a verified relation
+- "The dependency is blocking, I'll cut the remainder to unblock it" — escalation is a recommendation for the user; the PM never forces the cut
 - "The reconstructed entry says X, good enough" — first touch re-verifies against the code before building on it
 
 ## Common Rationalizations
