@@ -66,8 +66,9 @@ given.
   the live map stays untouched until acceptance. A producer disagreement (a rejected story
   held load-bearing) escalates to the user.
 - **Selection.** The user picks which derived features build now, from the PM's selection
-  card — recommendation, dependency order, the deferred-SC list visible at the moment of
-  choice. The PM recommends, never selects.
+  card — recommendation, dependency order, the deferred-SC list, and, per parent capability
+  in the spec's territory, the completeness ledger (delivered/undelivered leaves, parked
+  stubs, kills), visible at the moment of choice. The PM recommends, never selects.
 - **Plan approval:** any seat that writes artifacts plans first and works only on a plan you
   approved; grading and fact-finding seats are exempt.
 - **Independence:** no output is cleared by its author; grading reads the files themselves —

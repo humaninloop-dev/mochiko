@@ -9,6 +9,13 @@ the same wave superseded.
 
 ---
 
+## [v0.62.0] Capability-stub minting no longer exclusive to /mochiko:feature — derivation may mint stubs
+- **Disposition:** superseded → the rewritten "Capability stubs — parking, never a bypass" section: two seats mint `unrefined` stubs (`/mochiko:feature` idea-parking AND specify's derivation parking uncertain remainder with story-trace provenance); selectability/maturation stays specify-derivation-only, `/mochiko:feature` stewards but never matures or dispatches unratified scope; the When-to-Use stub line harmonized in the same touch
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-10 pm-requirements-stacking; record D2 as corrected at review, D2a, F-3 sustained)
+- **Content:** "`/mochiko:feature` can add `proposed` entries only as **capability stubs**: name + one-breath hook, marked `unrefined`. Only specify's derivation fills extent and relations and makes an entry selectable for delivery." · When-to-Use line "Minting or grooming `unrefined` capability stubs (`/mochiko:feature` stewardship)"
+- **Kept deliberately:** the anti-spec-bypass intent survives in force — the loosening extends *minting* only, never the selectability gate ("selectability stays behind specify's derivation"); "parking, never a spec-bypass", the `unrefined`-mark auditability, and the "unratified hypotheses, never extension anchors" / ignore-stub-text / match-is-confirmation rules survive re-worded
+- **Consumers assessed:** `/mochiko:feature` (feature.md) remains the stewardship stub-minter — no exclusivity it relied on; specify.md binds the craft by reference (no command edit needed for minting); its selection card gained the ledger line in the same wave; `mochiko:review-specifications` grades derivation output including derivation-minted stubs
+
 ## [v0.61.0] Description frontmatter re-fit for nesting, stubs, and feature-command triggers
 - **Disposition:** superseded → the rewritten `description:` (adds nesting/stub/promotion trigger phrases, the `/mochiko:feature` stewardship touchpoint, the D13-scoped boundary line; measured 1,485 chars / 1,495 bytes, under the 1,536 delivery truncation)
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-10 "Feature sizing & entry points ruled (D1–D15)"; record D2–D4, D6, D12, D13)

@@ -30,7 +30,9 @@ no file paths — the builder decomposes at build time · `plan.md`, a summary o
 artifacts, never new design. A delta-scope run collapses per the Entry — its deliverable is
 the confirmed delta card, not this package. The feature's **map entry was confirmed and
 hardened** alongside the architecture — architecture link filled, extent sharpened,
-intended-vs-designed drift surfaced to the user; status stays as the scope source set it. The
+intended-vs-designed drift surfaced to the user, the dependency relations the feature's
+design implies asserted onto the entry with provenance (the technical seat asserts; the PM
+consumes them downstream); status stays as the scope source set it. The
 package was independently graded — feasibility and completeness — traces the business
 requirements through to the task breakdown, carries no cross-artifact contradiction, conforms
 to the signed-off architecture, and — where the spec carries a Screens & Flows manifest —

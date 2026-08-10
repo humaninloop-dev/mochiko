@@ -13,7 +13,6 @@ frontend/mobile/desktop shelves are Tier-I roadmap work.**
 
 ## Now
 
-- **PM requirements-stacking build** — ruled 2026-08-10 (D1–D4 + D2a/D3a; across-round phasing on shipped nesting, stubs as remainder carrier, completeness ledger + dependency-only escalation, split dependency claims); small edit wave on the v0.61.0 surface → [BACKLOG](BACKLOG.md#pm-requirements-stacking-build)
 - **Feature-sizing & entry-points residuals** — build DELIVERED 2026-08-10 at v0.61.0 (map nesting, `/mochiko:feature`, plan/implement re-key spec→feature, two-altitude design surface with graded folds; breaking change; trail); remaining: the first-live-run watch + setup baseline-bootstrap hardening → [BACKLOG](BACKLOG.md#feature-sizing--entry-points-residuals)
 - **Cold-review gap-challenge residuals** — build DELIVERED 2026-08-10 at v0.60.0 (blind angle-map phase, coverage findings, reopen routing, both review clusters; trail); remaining: the first-live-run watch → [BACKLOG](BACKLOG.md#cold-review-gap-challenge-residuals)
 - **Feature-map layer residuals** — build DELIVERED 2026-08-10 at v0.57.0–v0.59.0 (slices retired, feature = pipeline unit, `product-manager` agent, FEATURES.md map; trail); remaining: the self-application governance amend (user-gated) + the first-live-run watch (note: first-live-run watch partially overtaken by the sizing/entry-points re-key — watch items re-scope at that build) → [BACKLOG](BACKLOG.md#feature-map-layer-residuals)
@@ -59,11 +58,14 @@ accepted AND built same day at v0.55.0 — two native output styles + router sec
 PASS round 1, item straight to trail · 2026-08-07: implement bounds contract booked HIGH ×2
 from the mochiko-app S1 run evidence AND closed same day at v0.56.0 — Bounds + Escalation
 cadence bullets in `implement.md` Harness, audit FAIL→fix→PASS, both items straight to
-trail; 2026-08-10: feature-sizing & entry-points session accepted — D1–D15, Now row added) —
-Now 2 · Next 6 · Later 9 · BACKLOG
+trail; 2026-08-10: feature-sizing & entry-points session accepted — D1–D15, Now row added ·
+2026-08-10: pm-requirements-stacking session accepted AND built same day at v0.62.0 —
+D1–D4 + D2a/D3a, skill supersession + three command additions, audit PASS round 1 all four
+surfaces, item straight to trail) —
+Now 4 · Next 6 · Later 9 · BACKLOG
 baseline 56 open items (per-item ≤15 lines;
-figures on BACKLOG's stamp line). Plugin: 5 commands · 9 agents · 28 skills · 14 templates +
-modules · 2 output styles, v0.56.0 (marketplace synced). Per-bump build history: `CHANGELOG.md` (from 0.53.0) ·
+figures on BACKLOG's stamp line). Plugin: 6 commands · 10 agents · 28 skills · 14 templates +
+modules · 2 output styles, v0.62.0 (marketplace synced). Per-bump build history: `CHANGELOG.md` (from 0.53.0) ·
 `DECISIONS.md` · the trail; pre-0.53.0 stamp-line narratives live in git history (this line,
 before this groom). Stamp compressed to contract shape this groom — expansion-watch hit
 logged in BACKLOG (Operating-docs / KM module section) for the user's report-writer re-open
