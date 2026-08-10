@@ -36,6 +36,13 @@ Ruling: DECISIONS.md row 2026-08-10 (D1–D15 as amended); record accepted after
   selection semantics (user-reserved) · stub lifecycle · size signal at selection · D11
   concurrent-fold watch.
 
+## Cold-review gap-challenge build
+
+Ruling: DECISIONS.md row 2026-08-10 (D1–D10); record: `.mochiko/brainstorms/cold-review-gap-challenge/record.md` (build surface reviewed + verify-clean).
+
+- [ ] **Blind-angle-map build, both carriers** (2026-08-10; provenance: cold-review-gap-challenge record, Build surface): one wave, primitive-edit ceremony throughout. `review-brainstorm/SKILL.md` — Phase 0 blind map (D6/D7 mechanics), coverage-finding class with materiality test + hypothetical-harm severity rubric + rejected-roads check + evidence-bar carve-out (D2 as amended), hunt class 2 narrowed intra-decision (D10 — **supersession strip owed** in `.mochiko/strips/review-brainstorm.md`), verify-pass extension to reopen-born decisions (D4), critical-gaps verdict row aligned to admit Critical coverage findings (verify-pass flag); description re-measured vs 1,536-char truncation. `brainstorm.md` — two-message dispatch + coverage-survivor reopen routing (explore-now / inline / defer, same D-namespace) + verify-pass jurisdiction line. `review-governance-intent/SKILL.md` + `setup.md` — same doctrine, I4 rider: ten-dimension agenda-diff primary, blind map augments beyond the agenda (D8 `Contested`). Author≠grader audits per carrier.
+- [ ] **First-live-run watch, both carriers** (2026-08-10; provenance: D9): watch the first live brainstorm review and first live setup G3 review post-build — does the blind map produce material coverage findings (not generic noise), does reopen routing fire, does the materiality bar hold solo? Feeds the record's I8 padding open thread too.
+
 ## Feature-map layer residuals
 
 Ruling: DECISIONS.md row 2026-08-10 (D1–D22); build delivered 2026-08-10 at v0.57.0–v0.59.0 (trail).
