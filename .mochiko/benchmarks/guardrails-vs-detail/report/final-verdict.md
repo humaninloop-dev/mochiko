@@ -33,10 +33,15 @@ baseline r2 skipped by the same targeted ruling, so baseline means are n=1: cave
   briefs spelled out the review-evidence obligation explicitly, so non-reproduction does not
   cleanly exonerate the variant. Strict D6 reading: a violation in any replicate = "detail
   pays" for that floor's section.
-- **VERDICT: user ruling required** between (a) strict-D6 — example blocks return only in the
-  reviewer-facing agents (devils-advocate, validator), prose-only ships for the rest; (b)
-  noise-attribution — ship all six prose-only, watch F-X1 at first live runs; (c) one more
-  replicate pair with neutral briefs to break C-2.
+- **VERDICT: (b) ruled by the user, 2026-08-10** (lead-recommended; options (a) strict-D6 and
+  (c) further replicates presented and declined): **all six agents ship prose-only.** Basis:
+  the arm's mechanism (routing) never failed across 20+ staffing decisions in 4 runs; the
+  F-X1 violation's causal chain to the variant is weak (a run-lead paperwork behavior, not a
+  staffing failure); restoring ~2,400 chars of example blocks guards nothing measured.
+  Recorded with the C-2 confound acknowledged. **Watch item:** F-X1-class review-evidence
+  omission at first live runs on the cut descriptions; recurrence re-opens this ruling.
+  Mitigation preferred over examples: the cross-cutting finding 1 floor line ("independent
+  review leaves verdict + dispositions in the artifacts") — guardrail, not prose.
 
 **Descriptions arm (r1 only, both commands — mechanism verdict):**
 - Fire-rate: 0 misses over 12+ invocation moments across 2 commands, incl. both deliberate
@@ -75,4 +80,12 @@ baseline r2 skipped by the same targeted ruling, so baseline means are n=1: cave
 Winning-variant weights (body arm, per-class budget baseline = winner + 25%):
 - Skill bodies (cluster): budget per skill = its guardrails variant size + 25%.
 - Skill descriptions: slim sizes (≤500 chars) + 25% headroom; hard cap stays 1,536.
-- Agent descriptions: prose-only sizes (268–737 chars) + 25% — pending the agents-arm ruling.
+- Agent descriptions: prose-only sizes (268–737 chars) + 25% — live per the (b) ruling.
+
+## Status
+
+**All three arms resolved (2026-08-10):** body — guardrails bodies ship (formal D6 PASS,
+C-1 noted) · descriptions — slim descriptions ship (mechanism verdict) · agents — prose-only
+ships (user ruling (b), F-X1 watch item). Benchmark complete; next phase is the build: ship
+the winning variants through the primitive-edit ceremony (strips + author≠grader audits) and
+land the D7 cost gate with the budgets above.
