@@ -1,6 +1,6 @@
 ---
 name: review-specifications
-description: This skill MUST be invoked when reviewing an already-drafted specification for gaps — finding missing requirements, ambiguities, unstated assumptions, and missing edge cases in an existing spec, grading its Delivery Slices section (story coverage, dependency closure, foundation legitimacy, Feature-Done, and the depth second-guess), walking a UX-bearing spec's Screens & Flows manifest against its served prototype (every FLOW-XXX clickable, every SCR-XXX reachable, every P1 scenario pathed; manifest↔prototype drift blocking), and generating product-framed clarifying questions with concrete options and severity (Critical / Important / Minor). Reach for it on post-draft review work such as "review spec", "find gaps", "what's missing", "is the spec complete", or "clarify requirements" against a spec that already exists. SHOULD also invoke when checking spec.md for completeness or checking user stories for missing acceptance criteria before downstream design begins. This produces gap-finding INPUT (a severity-bucketed gap report plus clarifying questions), not a clearing PASS/FAIL verdict. For enriching a sparse or vague feature idea before any spec is drafted, use mochiko:analysis-iterative instead.
+description: This skill MUST be invoked when reviewing an already-drafted specification for gaps — finding missing requirements, ambiguities, unstated assumptions, and missing edge cases in an existing spec, grading its feature layer against the map (derivation honesty, filter rejections justified, dedup against the actual map at the run-open git baseline, granularity, entry well-formedness, delta legality, selection-card deferred-SC honesty, specs-index agreement), walking a UX-bearing spec's Screens & Flows manifest against its served prototype (every FLOW-XXX clickable, every SCR-XXX reachable, every P1 scenario pathed; manifest↔prototype drift blocking), and generating product-framed clarifying questions with concrete options and severity (Critical / Important / Minor). Reach for it on post-draft review work such as "review spec", "find gaps", "what's missing", "is the spec complete", or "clarify requirements" against a spec that already exists. SHOULD also invoke when checking spec.md for completeness or checking user stories for missing acceptance criteria before downstream design begins. This produces gap-finding INPUT (a severity-bucketed gap report plus clarifying questions), not a clearing PASS/FAIL verdict. For enriching a sparse or vague feature idea before any spec is drafted, use mochiko:analysis-iterative instead.
 ---
 
 # Reviewing Specifications
@@ -74,27 +74,28 @@ or other product-legal fact carries a floor-class external claim: verify it per
 — the single source of the trigger and mechanics, not restated here. An undisclosed
 external claim is a gap like any other.
 
-## The Delivery Slices section
+## The feature layer
 
-The spec's Delivery Slices section is graded with the spec — same reviewer, same report. It is
-either a decomposition or the single line "Single slice — whole spec."; both shapes get graded
-(the one-liner via the depth second-guess). Vocabulary guard: a **graduation slice** groups
-user stories at spec level; a **vertical slice (cycle)** is implementation-level, downstream —
-a decomposition whose groups are shaped like implementation cycles is a wrong-altitude finding.
+The spec's feature derivation and staged map delta are graded with the spec — same reviewer,
+same report: the reviewer who reads the stories is the only one who can see derivation
+dishonesty. The map machinery (derivation method, entry shape, delta grammar, write rules) is
+single-sourced in `mochiko:authoring-feature-map` and its templates — this table is the
+reviewer's mirror, not a second home. **Baseline rule:** the map-delta baseline is the **git
+state of the map at run open** — grade staged writes against the actual map files at that
+baseline, never against a workspace copy of the map.
 
 | # | Check | Question | Typical severity |
 |---|-------|----------|------------------|
-| 1 | Story coverage | Every spec story in some slice — no orphans, no invented stories? | Critical |
-| 2 | Exactly one home | No story in two slices? | Critical |
-| 3 | Dependency closure | Every slice designable/buildable from earlier slices only? | Critical |
-| 4 | Foundation legitimacy | First slice establishes the shared design core AND delivers a testable journey (pure plumbing forbidden)? | Critical/Important |
-| 5 | Ordering rationale | Dependency first, priority as tie-break — and the rationale recorded? | Important |
-| 6 | Sizing | Within the soft 2–4 target, or explicitly justified? | Important |
-| 7 | Journey coherence | Each slice a coherent user journey, not a grab-bag? | Critical |
-| 8 | Cross-cutting visibility | Cross-cutting stories homed earliest-meaningful with extend obligations recorded on every touched slice? | Important |
-| 9 | Feature-Done SC coverage | Every SC-# mapped to a verifying slice? | Critical |
-| 10 | Feature-Done seams | Cross-slice seams named where slices interact? | Important |
-| 11 | Depth second-guess | Both directions: a decomposition the intent/spec didn't warrant, or a "Single slice" line hiding real value seams? Grades the depth call itself against the Intent section's delivery ruling. | Important |
+| 1 | Derivation honesty | Every proposed feature traceable to the stories that inform it — no feature no story supports? | Critical |
+| 2 | Disposition completeness | Every drafted story homed to exactly one feature, or rejected by the filter with the why recorded in the story file? | Critical |
+| 3 | Dedup against the map | Every proposed entry deduplicated by capability against the actual map files at the run-open baseline? | Critical |
+| 4 | Granularity | Each entry within the granularity guide — one-breath capability, extent ≤ ~3 lines — or split? | Important |
+| 5 | Entry well-formedness | Every proposed entry in the entry-template shape, all fields carried? | Important |
+| 6 | Delta legality | Every delta in the full grammar — what grows, in-flight mark, named spec; no `delivered` status regressed? | Critical |
+| 7 | SC re-homing | Every SC-XXX mapped to a verifying feature; deferred SCs and one-sided seams on the owning entry's obligations line? | Critical |
+| 8 | In-flight handling | Touches to in-flight territory read into the owning spec and resolved by reference, sequenced delta, or escalation — never silent contradiction? | Critical |
+| 9 | Selection-card honesty | The deferred-SC list visible on the selection card, agreeing with the SC split? | Important |
+| 10 | Specs-index agreement | The staged specs-index row agrees with the staged map writes (slug, FEAT-IDs, outcomes)? | Important |
 
 ## The Screens & Flows section (UX-bearing specs)
 
@@ -114,7 +115,7 @@ advisory — a cosmetic finding against a low-fi prototype is a wrong-altitude f
 | 4 | Flow traceability | Every FLOW-XXX keyed to a real story scenario — no scope invention? | Critical |
 | 5 | Drift (both directions) | No page without a SCR row; no manifest row without its page? | Critical |
 | 6 | Data-shape honesty | Screens show honest data shape (realistic fields/cardinality), enough to expose layout and flow problems? | Important |
-| 7 | Slice tags | Decomposed spec → every SCR/FLOW row slice-tagged; out-of-slice screens greyed but reachable? | Important |
+| 7 | FEAT tags | Post-derivation → every SCR/FLOW row FEAT-tagged; out-of-selection and filter-rejected screens greyed but reachable, rejected ones marked with the rejection pointer? | Important |
 | 8 | Waiver second-guess | The waiver line, on a spec whose stories imply user-facing screens — or a prototype the intent ruled out? Grades the UX-bearing call against the Intent section. | Important |
 
 ## Severity Classification
@@ -139,8 +140,8 @@ report path, return the same structure inline.
 2. **Check each user story** for completeness
 3. **Verify success criteria** are measurable
 4. **Identify missing edge cases** for each flow
-5. **Grade the Delivery Slices section** against the 11-check table above, reading the
-   Intent section's delivery ruling first (the depth second-guess is graded against it)
+5. **Grade the feature layer** against the 10-check table above, reading the actual map
+   files at the run-open git baseline first (never the workspace copy)
 6. **Grade the Screens & Flows section** against the 8-check table above — serve the
    prototype and walk it; read the Intent section's UX-bearing ruling first
 7. **Classify gaps** by severity
@@ -165,7 +166,7 @@ Before finalizing the review, verify:
 - [ ] "Why this matters" explains user/business impact
 - [ ] Related gaps grouped together
 - [ ] No implementation details in questions
-- [ ] Delivery Slices section graded (all 11 checks; the single-slice line via the depth second-guess)
+- [ ] Feature layer graded (all 10 checks; delta baseline = git state of the map at run open)
 - [ ] Screens & Flows section graded (all 8 checks; the prototype actually served and walked; the waiver line via the waiver second-guess)
 
 ## Common Mistakes
@@ -184,4 +185,5 @@ Before finalizing the review, verify:
 ## Related Skills
 
 - **`mochiko:authoring-requirements`** — drafts the requirements this skill reviews; it runs *before* this skill (if no spec exists yet, author one first).
+- **`mochiko:authoring-feature-map`** — single source of the map machinery (derivation method, entry shape, delta grammar, write rules) the feature-layer checks mirror; produces the derivation and staged map delta this skill grades (independent reviewer, never the author).
 - **`mochiko:analysis-iterative`** — pre-spec input enrichment for a sparse or vague idea (producer-side, before a draft exists). This skill is the post-draft, reviewer-side counterpart; their triggers are deliberately disjoint (enrich an idea vs. review a draft for gaps).

@@ -5,9 +5,9 @@
      (US-#, FR-#, SC-#, C-#) — never re-quote it. Register: `full` per artifact-format.md
      rule 11; TEST-gate commands, file paths, and identifiers are never-compress items. -->
 
-# Implementation Cycles: [FEATURE NAME]
+# Implementation Cycles: [FEAT-XXX — FEATURE NAME]
 
-> Generated from `.mochiko/specs/<feature>/`: spec.md, plan.md, requirements.md, constraints-and-decisions.md, nfrs.md, data-model.md, contracts/
+> Generated from the spec folder: spec.md, features/FEAT-XXX/plan.md, requirements.md, constraints-and-decisions.md, nfrs.md, data-model.md, contracts/
 > Structure: `mochiko:patterns-vertical-tdd` (cycle-card shape, slicing judgment)
 
 ## Overview
@@ -40,7 +40,7 @@ feature cycles are parallel-eligible `[P]` unless dependent on another feature c
 
 ### - [ ] Cycle 1: Core entity and basic CRUD
 
-- **Stories:** US-1 — [why these graduate together / what this cycle establishes, ≤ 2 lines]
+- **Stories:** US-1 — [why these stories share this cycle / what it establishes, ≤ 2 lines]
 - **Depends on:** —
 - **Case:** Simple <!-- Simple | Split — why, one line | Merge — why, one line -->
 - **Acceptance criteria:** [spec/plan IDs this cycle must satisfy — cite, never quote]

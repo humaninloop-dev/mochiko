@@ -79,5 +79,5 @@ frontmatter, but no sentence that a field, a table row, or an ID citation could 
 **Format version:** v2 (2026-08-01) · **Consumed by:** the artifact templates in this
 directory, the artifact-authoring skills (`authoring-requirements`, `authoring-user-stories`,
 `authoring-technical-requirements`, `patterns-entity-modeling`, `patterns-api-contracts`,
-`patterns-vertical-tdd`, `authoring-slices`, `authoring-prototype`, `analysis-codebase`), and
+`patterns-vertical-tdd`, `authoring-feature-map`, `authoring-prototype`, `analysis-codebase`), and
 the review-skill checklists that grade the artifacts.

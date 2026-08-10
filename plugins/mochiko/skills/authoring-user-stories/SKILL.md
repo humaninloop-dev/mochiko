@@ -13,6 +13,8 @@ Transform feature descriptions into testable user stories with clear business va
 
 This is a discipline-enforcing skill. The structured format exists to ensure stories are unambiguous, testable, and properly prioritized. Shortcuts create ambiguous requirements that cause implementation failures.
 
+**Boundary — authored inside the product-manager's frame.** The PM owns *which* capabilities (features, the story filter, selection advice — map machinery: `mochiko:authoring-feature-map`); this craft owns *how well* the stories are written. Neither edits the other's verdicts; a disagreement escalates to the user.
+
 ## When to Use
 
 - Transforming feature descriptions into testable requirements

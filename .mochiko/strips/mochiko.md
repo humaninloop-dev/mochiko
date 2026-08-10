@@ -6,6 +6,15 @@ Entry formats: `strips/README.md`. Wave context: skill-succinctness wave 1 (desi
 single physical lines, so the R2 line denominator undercounts this skill; dual accounting
 recorded here and flagged on the wave's ROADMAP row.
 
+## [v0.58.0] authoring-slices row out; requirements-analyst row re-framed under the PM
+- **Disposition:** superseded → the skill retired whole (`.mochiko/strips/authoring-slices.md` [v0.58.0]); its craft lives in `authoring-feature-map`, whose row already stands.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-10 "Feature-map layer ruled (D1–D22)"; record `.mochiko/brainstorms/feature-map-layer/record.md`, D4/D18/D22 + D15)
+- **Content (superseded, verbatim):**
+  - Skills-table row: `| \`authoring-slices\` | authoring the spec's **Delivery Slices section** — graduation-slice decomposition (story→slice homes, dependency-closed order, foundation designation, extend obligations, Feature-Done, Graduation contract) or the single-slice line, keyed to the Intent section's delivery ruling; lead-dispatched, no fixed seat |`
+  - Agents-table row (pre-edit): `| \`requirements-analyst\` | specify-cluster producer — authors the feature \`spec.md\` (prioritized user stories + FR/SC requirements) (skills: authoring-requirements, authoring-user-stories) |` — rewritten for the D10 story files and the D15 analyst-inside-PM-frame boundary.
+- **Kept deliberately:** every other row this wave — the wave-2 seat's router ownership was these two rows only. Remaining slice-vocabulary rows (`analysis-iterative` agenda's "delivery/slicing", the Delivery-Slices consumption note, the `/mochiko:specify` + `/mochiko:plan` entry rows, `review-specifications` + `patterns-vertical-tdd` + `advocate-report-template` rows) are other seats' territory this build; a row surviving here out of step with its re-keyed primitive is a known in-flight state, converging by wave 4.
+- **Consumers assessed:** the router is itself the discoverability surface; `authoring-feature-map` carries the retired row's duty.
+
 ## [v0.49.0] Router re-keyed — slice cluster + structuring table dissolved, 6→5 commands, 9→8 agents
 - **Disposition:** superseded → Specify cluster (authoring-slices row + intent-stage analysis-iterative row + Delivery-Slices consumption note) and Plan cluster (patterns-vertical-tdd + tasks-template rows)
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D1–D9)

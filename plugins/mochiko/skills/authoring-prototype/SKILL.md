@@ -1,6 +1,6 @@
 ---
 name: authoring-prototype
-description: This skill MUST be invoked when authoring a clickable low-fidelity UX prototype for a feature specification — building the static HTML app under `.mochiko/specs/<feature>/prototype/` (bun-servable, design-system-honoring) and the spec's **Screens & Flows section**: SCR-XXX screen entries (purpose, data shown, slice tag) and FLOW-XXX click-path entries (step sequences keyed to story acceptance scenarios, slice tag). SHOULD also invoke when the work involves "mock the UX", "clickable prototype", "low-fi mock", "screens and flows", "SCR-XXX", "FLOW-XXX", "prototype the feature", or making a spec's user experience visible before design. Skeleton nav frame first, then screens in story lockstep; flows and data are binding, pixels deliberately rough. Boundary: this authors the PROTOTYPE and its manifest — NOT the user stories it renders (mochiko:authoring-user-stories), NOT production UI code, and it never grades its own output (the prototype is graded with the spec by mochiko:review-specifications).
+description: This skill MUST be invoked when authoring a clickable low-fidelity UX prototype for a feature specification — building the static HTML app under `.mochiko/specs/<feature>/prototype/` (bun-servable, design-system-honoring) and the spec's **Screens & Flows section**: SCR-XXX screen entries (purpose, data shown, FEAT tag) and FLOW-XXX click-path entries (step sequences keyed to story acceptance scenarios, FEAT tag). SHOULD also invoke when the work involves "mock the UX", "clickable prototype", "low-fi mock", "screens and flows", "SCR-XXX", "FLOW-XXX", "prototype the feature", or making a spec's user experience visible before design. Skeleton nav frame first, then screens in story lockstep; flows and data are binding, pixels deliberately rough. Boundary: this authors the PROTOTYPE and its manifest — NOT the user stories it renders (mochiko:authoring-user-stories), NOT production UI code, and it never grades its own output (the prototype is graded with the spec by mochiko:review-specifications).
 ---
 
 # Authoring a Clickable Low-Fi Prototype
@@ -20,8 +20,8 @@ two coupled artifacts:
    framework, no install *required* to view (serving is convenience, never a prerequisite).
 2. **The Screens & Flows section of `spec.md`** — the manifest, in the shape
    [`spec-template.md`](../../templates/spec-template.md) defines: `SCR-XXX` rows (screen, purpose,
-   data shown, slice) and `FLOW-XXX` rows (click-path steps, the story acceptance scenario each
-   keys to, slice). The manifest is the contract surface downstream stages trace to; the HTML is
+   data shown, FEAT tag) and `FLOW-XXX` rows (click-path steps, the story acceptance scenario each
+   keys to, FEAT tag). The manifest is the contract surface downstream stages trace to; the HTML is
    its clickable rendering. IDs per the deliverable envelope
    ([`artifact-format.md`](../../templates/artifact-format.md)) — sequential, three-digit padded,
    cited never re-quoted.
@@ -36,7 +36,8 @@ copy may all improve at build time without ceremony.
 - Authoring the prototype and Screens & Flows section during specification authoring, story by story
 - Adding screens/flows for a story just drafted (lockstep authoring)
 - Revising the prototype after a reviewer's gap list or a spec amendment
-- Marking out-of-slice screens as coming-soon when the spec decomposes into slices
+- Running the FEAT re-tag pass after derivation, and marking out-of-selection or
+  filter-rejected screens as coming-soon
 
 ## When NOT to Use
 
@@ -71,9 +72,15 @@ copy may all improve at build time without ceremony.
    library, use its tokens/primitives (colors, spacing, component names) so screens read as the
    product's family — at low fidelity, not faithful reproduction. No design system → neutral
    grey-box defaults; never invent a new visual language.
-7. **Slice tags carried.** When the spec decomposes, every SCR/FLOW row carries its slice tag;
-   screens outside the current slice stay present but visibly greyed **coming-soon** — the app
-   stays a coherent whole, not a stub maze.
+7. **FEAT tags carried — a re-tag pass at derivation.** Tags cannot exist during lockstep
+   authoring: feature derivation runs after stories, so FEAT tags land as a **re-tag pass over
+   the SCR/FLOW manifest** once derivation completes. Every row then carries the FEAT tag of the
+   feature its story homes to; screens outside the current selection stay present but visibly
+   greyed **coming-soon** — the app stays a coherent whole, not a stub maze.
+8. **Rejected stories stay visible.** A filter-rejected story's screens are kept, greyed with
+   the same coming-soon grammar, and marked **rejected** with a pointer to the rejection recorded
+   in the story file — never silently deleted; the walkable record of what was considered and
+   declined survives.
 
 ## Structure
 
@@ -90,7 +97,8 @@ copy may all improve at build time without ceremony.
 - One file per screen, named by its `SCR-XXX` id. Navigation is plain `<a href>`/`<form action>` —
   a flow is walkable by clicking, no JS state machine.
 - Coming-soon screens: the real page at reduced opacity with a banner, or a stub page carrying the
-  slice tag — either way reachable, so navigation never dead-ends.
+  FEAT tag (rejected screens: the rejection mark and pointer) — either way reachable, so
+  navigation never dead-ends.
 
 ## Process
 
@@ -102,8 +110,9 @@ copy may all improve at build time without ceremony.
    screens.
 4. **Per story, in lockstep:** draft the story's screen(s) → wire its flows → add the SCR/FLOW
    rows → hand back for the user to click while the story is under discussion.
-5. **Tag slices** — when the Delivery Slices section lands, tag every row and grey the
-   out-of-slice screens.
+5. **Re-tag with FEATs** — when derivation lands, run the re-tag pass: tag every row with its
+   feature, grey the out-of-selection screens, mark rejected stories' screens with the
+   rejection pointer.
 6. **Self-walk before handoff** — click every FLOW end-to-end, open every SCR; fix drift before
    anyone else reads it.
 
@@ -117,7 +126,7 @@ Before handing off:
 - [ ] Every P1 story scenario has a flow
 - [ ] Placeholder data has honest shape (realistic fields and cardinality)
 - [ ] Design system tokens/components used where one exists; noted in README
-- [ ] Slice tags on every row where the spec is decomposed; out-of-slice screens greyed, reachable
+- [ ] FEAT tags on every row after the re-tag pass; out-of-selection screens greyed, reachable; rejected stories' screens greyed, marked, pointed at the recorded rejection
 - [ ] Serves with bun AND opens file:// with no server (degrade path)
 - [ ] No build step, no framework, no dependency install required to view
 - [ ] Stories, requirements, criteria untouched — the prototype renders them, never edits them
@@ -134,8 +143,10 @@ Before handing off:
   toolchain
 - "The flow works, I don't need to key it to a scenario" — an unkeyed flow is untraceable
   downstream; the key is the contract
-- "Skip the greyed screens, they're not in this slice" — dead-end navigation breaks the clickable
-  whole; coming-soon is cheap
+- "Skip the greyed screens, they're not in this selection" — dead-end navigation breaks the
+  clickable whole; coming-soon is cheap
+- "The story was rejected, delete its screens" — rejected screens stay, greyed and marked with
+  the rejection pointer; deletion erases the record of what was declined
 
 ## Common Rationalizations
 
@@ -153,4 +164,4 @@ Before handing off:
 - [`artifact-format.md`](../../templates/artifact-format.md) — the deliverable envelope (ID grammar, citation rules)
 - `mochiko:review-specifications` — grades the prototype with the spec (independent reviewer, never the author)
 - `mochiko:authoring-user-stories` — upstream: the stories and acceptance scenarios the flows render
-- `mochiko:authoring-slices` — the Delivery Slices section whose slice tags the manifest carries
+- `mochiko:authoring-feature-map` — the feature derivation whose FEAT tags the re-tag pass carries onto the manifest (single source of the map machinery)

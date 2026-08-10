@@ -14,6 +14,8 @@ The artifact this layer lands in (`spec.md`) follows the deliverable envelope in
 human-legible: one-line FR/SC/edge-case entries, ≤ 3-line overview prose, omit empty
 sections, no restated doctrine. Density is not a gap; a gap is missing substance.
 
+**Boundary — authored inside the product-manager's frame.** The PM owns *which* capabilities (features, the story filter, selection advice — map machinery: `mochiko:authoring-feature-map`); this craft owns *how well* the requirements are written. Neither edits the other's verdicts; a disagreement escalates to the user.
+
 ## When to Use
 
 - Starting a new feature specification

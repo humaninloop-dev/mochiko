@@ -5,6 +5,13 @@ Entry formats: `strips/README.md`. Wave context: [v0.27.0] entries — skill-suc
 [v0.22.0–v0.23.0] entries — workflow-token-reduction waves 1–2 (design:
 `.mochiko/brainstorms/workflow-token-reduction/record.md`, D6a + D4/wave-2 rulings).
 
+## [v0.58.0] Graduation-slice vocabulary re-keyed to feature
+- **Disposition:** superseded → "stories + feature rationale" in the Overview card-field list · the When-NOT-to-Use feature boundary line ("Deriving or scoping features — the feature is the pipeline unit, owned by `mochiko:authoring-feature-map`, upstream (its vocabulary table disambiguates feature vs cycle); a cycle is a within-one-feature increment") · "its rationale" in the Case-column paragraph
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-10 "Feature-map layer ruled (D1–D22)"; record `.mochiko/brainstorms/feature-map-layer/record.md`, D4 — graduation slices retire, `authoring-slices` superseded by `authoring-feature-map`)
+- **Content:** Overview "per card — stories + slice rationale, …" · When NOT to Use "**Grouping stories into graduation slices** — spec-level decomposition is `mochiko:authoring-slices`, upstream (that skill's vocabulary table disambiguates the two 'slices')" · Case paragraph "The story→cycle decision and its slice rationale live **on the card** (Stories line)"
+- **Kept deliberately:** every use of "vertical slice"/"slice" naming the implementation-level cycle unit (title, Core Principles, SLICE-IDENTIFICATION.md pointer, quick heuristics) — that vocabulary is this skill's own and survives D4; only graduation-slice (spec-level) references left. TEST-grammar ownership and the build-time-decomposition boundary untouched.
+- **Consumers assessed:** tasks-template (re-keyed same wave) · executing-tdd-cycle (consumes cards, wording unaffected — grep-verified no graduation-slice reference) · plan command (re-keyed same wave) · authoring-feature-map (wave 1, already points here as downstream cycle owner).
+
 ## [v0.49.0] Slimmed to cycle-card structuring — task-level content superseded
 - **Disposition:** superseded → build-time decomposition in `executing-tdd-cycle` (step 2 of its execution sequence); `references/CYCLE-STRUCTURE.md` deleted
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D2+D2.1)

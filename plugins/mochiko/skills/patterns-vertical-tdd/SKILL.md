@@ -9,7 +9,7 @@ description: This skill MUST be invoked when structuring a feature's implementat
 
 ## Overview
 
-Transform a plan's stories into **cycle cards** — vertical slices that each deliver observable, testable value. The output is `tasks.md` in the cycle-card shape ([`tasks-template.md`](../../templates/tasks-template.md) is the canonical skeleton): per card — stories + slice rationale, foundation/feature type, dependencies, acceptance criteria (by ID), the closing `**TEST:**` gate, and cycle-level brownfield exposure.
+Transform a plan's stories into **cycle cards** — vertical slices that each deliver observable, testable value. The output is `tasks.md` in the cycle-card shape ([`tasks-template.md`](../../templates/tasks-template.md) is the canonical skeleton): per card — stories + feature rationale, foundation/feature type, dependencies, acceptance criteria (by ID), the closing `**TEST:**` gate, and cycle-level brownfield exposure.
 
 This skill works at **design time**: it decides the slicing and states what each cycle must prove. It writes no task lists — the builder decomposes each card into concrete tasks, with file paths, at build time with the code in view (`mochiko:executing-tdd-cycle`, downstream). The card carries the *what and why*; the *how* is deliberately left to the build.
 
@@ -25,7 +25,7 @@ This skill works at **design time**: it decides the slicing and states what each
 - **Bug fixes** — single-change fixes don't need cycle structure
 - **Documentation-only or spike/research work** — no cycle discipline applies
 - **Decomposing a card into tasks** — build-time work, owned by `mochiko:executing-tdd-cycle`
-- **Grouping stories into graduation slices** — spec-level decomposition is `mochiko:authoring-slices`, upstream (that skill's vocabulary table disambiguates the two "slices")
+- **Deriving or scoping features** — the feature is the pipeline unit, owned by `mochiko:authoring-feature-map`, upstream (its vocabulary table disambiguates feature vs cycle); a cycle is a within-one-feature increment
 
 ## Core Principles
 
@@ -72,7 +72,7 @@ A good cycle:
 - **Split** — story > cycle: a too-large story splits across cards (record the why, one line).
 - **Merge** — stories < cycle: too-small stories share one card (record the why, one line).
 
-The story→cycle decision and its slice rationale live **on the card** (Stories line) — there is no separate mapping artifact. Size calibration is in [SLICE-IDENTIFICATION.md](references/SLICE-IDENTIFICATION.md).
+The story→cycle decision and its rationale live **on the card** (Stories line) — there is no separate mapping artifact. Size calibration is in [SLICE-IDENTIFICATION.md](references/SLICE-IDENTIFICATION.md).
 
 ## Brownfield exposure
 

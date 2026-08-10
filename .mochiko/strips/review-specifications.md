@@ -4,6 +4,41 @@ Entry formats: `strips/README.md`. Wave context: the specify cluster wave (v0.13
 Single-consumer primitive (the specify critique, mounted on `devils-advocate`) — strips
 ruled in-wave.
 
+## [v0.58.0] Delivery Slices grade superseded by the feature-layer grade (D16)
+- **Disposition:** superseded → the new "The feature layer" section (10-check table: derivation honesty, disposition completeness, dedup at the run-open git baseline, granularity, entry well-formedness, delta legality, SC re-homing, in-flight handling, selection-card deferred-SC honesty, specs-index agreement). Map machinery stays single-sourced in `mochiko:authoring-feature-map`; the table is the reviewer's mirror.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-10 "Feature-map layer ruled (D1–D22)", record `.mochiko/brainstorms/feature-map-layer/record.md`, D4 slices retire · D16 extended spec review · R13 git-baseline rule · D21 selection-card deferred-SC list · D8 delta legality).
+- **Content (verbatim, the superseded section):**
+  ```
+  ## The Delivery Slices section
+
+  The spec's Delivery Slices section is graded with the spec — same reviewer, same report. It is
+  either a decomposition or the single line "Single slice — whole spec."; both shapes get graded
+  (the one-liner via the depth second-guess). Vocabulary guard: a **graduation slice** groups
+  user stories at spec level; a **vertical slice (cycle)** is implementation-level, downstream —
+  a decomposition whose groups are shaped like implementation cycles is a wrong-altitude finding.
+
+  | # | Check | Question | Typical severity |
+  |---|-------|----------|------------------|
+  | 1 | Story coverage | Every spec story in some slice — no orphans, no invented stories? | Critical |
+  | 2 | Exactly one home | No story in two slices? | Critical |
+  | 3 | Dependency closure | Every slice designable/buildable from earlier slices only? | Critical |
+  | 4 | Foundation legitimacy | First slice establishes the shared design core AND delivers a testable journey (pure plumbing forbidden)? | Critical/Important |
+  | 5 | Ordering rationale | Dependency first, priority as tie-break — and the rationale recorded? | Important |
+  | 6 | Sizing | Within the soft 2–4 target, or explicitly justified? | Important |
+  | 7 | Journey coherence | Each slice a coherent user journey, not a grab-bag? | Critical |
+  | 8 | Cross-cutting visibility | Cross-cutting stories homed earliest-meaningful with extend obligations recorded on every touched slice? | Important |
+  | 9 | Feature-Done SC coverage | Every SC-# mapped to a verifying slice? | Critical |
+  | 10 | Feature-Done seams | Cross-slice seams named where slices interact? | Important |
+  | 11 | Depth second-guess | Both directions: a decomposition the intent/spec didn't warrant, or a "Single slice" line hiding real value seams? Grades the depth call itself against the Intent section's delivery ruling. | Important |
+  ```
+  Also superseded, same edit (verbatim):
+  - description clause: `grading its Delivery Slices section (story coverage, dependency closure, foundation legitimacy, Feature-Done, and the depth second-guess),` → the feature-layer clause;
+  - Screens & Flows check 7: `| 7 | Slice tags | Decomposed spec → every SCR/FLOW row slice-tagged; out-of-slice screens greyed but reachable? | Important |` → FEAT tags (R10);
+  - process step 5: `**Grade the Delivery Slices section** against the 11-check table above, reading the Intent section's delivery ruling first (the depth second-guess is graded against it)` → feature-layer grade at the run-open baseline;
+  - checklist row: `- [ ] Delivery Slices section graded (all 11 checks; the single-slice line via the depth second-guess)` → feature-layer row.
+- **Kept deliberately:** the slice invariants themselves survive re-keyed to features in `mochiko:authoring-feature-map` (D18/D22) — coverage/one-home/SC-coverage live on as feature-layer checks 1–3 and 7 (dependency closure survives only in `authoring-feature-map`, not in the reviewer's table — audit-corrected); foundation-legitimacy demoted to ordering guidance (D22) and so deliberately absent from the reviewer's table; the depth second-guess dies with the decomposition-vs-single-slice fork it graded (selection replaces it, and selection is the user's ruling, not a graded artifact). All other sections (story/FR/SC quality, Screens & Flows walk, severity, question format) untouched.
+- **Consumers assessed:** devils-advocate (mounts it; grades the new table with the same report shape) · specify (binds it; wave-2 rebuild lands the matching stage).
+
 ## [v0.53.0] Code-review punt line narrowed — minimalism-lens carve-out
 - **Disposition:** superseded → the same When-NOT-to-Use bullet with a parenthetical carve-out naming `mochiko:review-code-minimalism` (implement-side) as the one exception; general code review stays a different domain.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-05 "Ponytail code-minimalism ruled (PT-D1–D10)", record `.mochiko/brainstorms/ponytail-concepts-integration/record.md`, D2 — punt reversal narrow, lens-only).

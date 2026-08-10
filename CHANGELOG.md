@@ -5,6 +5,35 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.58.0] — 2026-08-10
+
+- Feature-map layer waves 2+3 — the slices→features conversion (ruling: `feature-map-layer`
+  record D1–D22). `specify.md` rebuilt: the feature map is an obligated intent-stage read
+  (missing map surfaced, never tolerated); after stories, the product-manager seat derives
+  features and runs the story filter (rejections recorded, never silent); a user-ruled
+  **Feature Selection** replaces the Delivery Slices section (deferred SCs visible at the
+  moment of choice); the spec workspace restructures (specs `index.md`, `stories/US-*.md`
+  files, map owns status); map writes land only at spec acceptance as one atomic batch;
+  migration stance: existing slice-form specs frozen valid, new runs new-form.
+  `spec-template.md`: Feature Selection section in, Delivery Slices out, stories section
+  becomes an index, header re-keyed to spec vocabulary (`{{spec_title}}`/`{{spec_id}}`).
+  `authoring-slices` skill deleted — supersession by ruling, full verbatim preservation,
+  per-invariant re-key mapping into `authoring-feature-map`. `plan.md` re-keyed: one run
+  per selected feature (FEAT-XXX) in dependency order; the Graduation contract re-keys
+  verbatim (shared artifacts extend-in-place at spec root, `[MODIFY]` breaking amendments,
+  cross-spec extend reach via owning-spec provenance); in-flight features are readable
+  inputs (three-fork resolution, no locks). `implement.md`: the acceptance landing absorbs
+  map bookkeeping (status→delivered, delta folds, index touches, in-flight pointer clear,
+  derived spec-close) — no separate feature-close stage; regression scope adds accumulated
+  delivered-feature gates + later-landing seam ownership; v0.56.0 bounds and snapshot
+  isolation preserved byte-identical (audit-verified). `review-specifications`: 10-check
+  feature-layer table replaces the Delivery-Slices grade. `authoring-prototype`: FEAT-tag
+  re-tag pass at derivation, rejected screens kept greyed. D15 boundary notes on
+  `authoring-user-stories`/`authoring-requirements`. Router + `artifact-format.md`
+  re-keyed. Strip notes `[v0.58.0]` ×10. Audits: skills PASS round 1 · plan/implement PASS
+  round 1 · specify cluster FAIL (unrecorded clause drop, two clobbered prior strip
+  headings, template header vocabulary) → fix → delta re-audit PASS.
+
 ## [0.57.0] — 2026-08-10
 
 - Feature-map layer wave 1 (pure additions; ruling: `feature-map-layer` record D1–D22,

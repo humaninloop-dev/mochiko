@@ -4,6 +4,13 @@ Entry formats: `strips/README.md`. Wave context: workflow-token-reduction wave 2
 `.mochiko/brainstorms/workflow-token-reduction/record.md` D4 + the wave-2 rulings R1–R4;
 ratified 2026-07-24).
 
+## [v0.58.0] Slice references re-keyed to FEAT
+- **Disposition:** superseded → title "[FEAT-XXX — FEATURE NAME]" · provenance line "Generated from the spec folder: spec.md, features/FEAT-XXX/plan.md, …" · sample Stories line "[why these stories share this cycle / what it establishes, ≤ 2 lines]"
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-10 "Feature-map layer ruled (D1–D22)"; record `.mochiko/brainstorms/feature-map-layer/record.md`, D4/D17/D18 — feature is the pipeline unit; per-feature artifacts under `features/FEAT-XXX/`)
+- **Content:** title "# Implementation Cycles: [FEATURE NAME]" · "> Generated from `.mochiko/specs/<feature>/`: spec.md, plan.md, requirements.md, …" · sample Stories bracket "[why these graduate together / what this cycle establishes, ≤ 2 lines]"
+- **Kept deliberately:** "Each card is one vertical slice" in Cycle Format — implementation-level cycle vocabulary owned by `patterns-vertical-tdd`, not graduation-slice language; the whole card shape, TEST-grammar pointer, and foundation/feature structure untouched.
+- **Consumers assessed:** patterns-vertical-tdd (fills it; re-keyed same wave) · executing-tdd-cycle (reads cards — unaffected) · review-plan-artifacts (grades it) · plan/implement commands (re-keyed same wave).
+
 ## [v0.49.0] Rewritten task list → cycle cards
 - **Disposition:** superseded → the cycle-card form in the same file (per card: heading checkbox · Stories+rationale · type · Depends on · Case · acceptance criteria by ID · brownfield exposure line · `**TEST:**` gate block)
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D2+D3)
