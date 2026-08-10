@@ -1,6 +1,6 @@
 ---
 name: review-brainstorm
-description: This skill MUST be invoked when serving as a cold END-STAGE REVIEWER of a collaborative thinking session's decision record (`record.md`) — spawned at convergence (one of a lens-briefed pair by default, or solo when the user sized the review down), never in the room during the session. Protocol — independent cold read FIRST; scenario stress per decision; the five hunt classes (unchallenged assumptions, missing dimensions, passive acceptances, steelman-able rejected alternatives, inconsistencies); reality-grounding of load-bearing claims via the record's fact-checker map (no map → the files directly); the standalone-record fitness checklist. Then CROSS-EXAMINE the counterpart per the one-shot protocol (`references/CROSS-EXAM.md` — owner-withdrawal only; fact disputes route to the fact-checker, never to argument) and return survivors severity-classified (Critical/Important/Minor) with a tally and a RECOMMENDED status (ready / needs-revision / critical-gaps) — the cross-set merge and clearing verdict are lead-owned. SHOULD also invoke for the verify pass over a record's folded resolutions, the fidelity sample of a requested synthesis, or a one-shot cold review of a decision record outside a live team. Run by an independent reviewer, never a session co-author; defaults to a FAIL posture — zero findings means hunt harder, and every finding needs a concrete failure scenario or cited contradiction.
+description: This skill MUST be invoked when serving as a cold END-STAGE REVIEWER of a collaborative thinking session's decision record (`record.md`) — spawned at convergence (one of a lens-briefed pair by default, or solo when the user sized the review down), never in the room during the session. Protocol — a blind angle map (topic alone) whose diff yields coverage findings for never-visited angles; then independent cold read; scenario stress per decision; the five hunt classes (unchallenged assumptions, missing dimensions, passive acceptances, steelman-able rejected alternatives, inconsistencies); reality-grounding of load-bearing claims via the record's fact-checker map (no map → the files directly); the standalone-record fitness checklist. Then CROSS-EXAMINE the counterpart per the one-shot protocol (`references/CROSS-EXAM.md` — owner-withdrawal only; fact disputes route to the fact-checker, never to argument) and return survivors severity-classified (Critical/Important/Minor) with a tally and a RECOMMENDED status (ready / needs-revision / critical-gaps) — the cross-set merge and clearing verdict are lead-owned. SHOULD also invoke for the verify pass over a record's folded resolutions, the fidelity sample of a requested synthesis, or a one-shot cold review of a decision record outside a live team. Run by an independent reviewer, never a session co-author; defaults to a FAIL posture — zero findings means hunt harder, and every finding needs a concrete failure scenario or cited contradiction.
 ---
 
 # End-Stage Review of a Live Thinking Session
@@ -9,9 +9,19 @@ description: This skill MUST be invoked when serving as a cold END-STAGE REVIEWE
 
 A live thinking session produces **one artifact as it goes** — `record.md`: each decision with its statement, rationale, and a confidence mark (`Confident / Assumed / Contested / Unsure / Deferred`). The session itself runs unchallenged — **you are the challenge.** At convergence the lead freezes the record and spawns the review the user sized: a **pair of reviewers** by default, one for a lean record. In a pair, your counterpart exists so your findings get the same treatment the record gets: attacked before anyone acts on them — only findings that survive the cross-examination reach the lead. Spawned solo, your findings go to the lead undebated; hold them to the same bar the debate would have applied.
 
-Your spawn brief may scope your hunt to a **lens** — *decision-quality* (scenario stress, hunt classes 1–4, rejected-road steelmans) or *record-integrity* (inconsistencies, record fitness, the map audit). The lens sets your depth, not your jurisdiction: work your lens hard, and still report anything real you trip over outside it — the lead owns the cross-set merge. Solo, the whole surface is yours.
+Your spawn brief may scope your hunt to a **lens** — *decision-quality* (scenario stress, hunt classes 1–4, rejected-road steelmans) or *record-integrity* (inconsistencies, record fitness, the map audit). The lens sets your depth, not your jurisdiction: work your lens hard, and still report anything real you trip over outside it — the lead owns the cross-set merge. Solo, the whole surface is yours. The Phase 0 blind map and its coverage diff sit outside the lens split — every reviewer builds and diffs, whatever the lens.
 
 Every reviewer recommends; the **lead owns every verdict**. You challenge and grade; you never author, revise, or complete the record.
+
+## Phase 0 — Blind angle map
+
+Before you open the record — before you know a single decision it reached — map the angles the **topic** should have covered. This is the anti-anchoring phase: a map built after the cold read inherits the record's frame and finds only gaps adjacent to what the record already discusses; built blind, it names the ground the session never stood on.
+
+You are dispatched for this phase with the **topic statement and goal line only** — no record path; the lead sends that after your map lands. Build the map from the topic plus **free repo grounding**: read anything in the repo — `CLAUDE.md`, `ROADMAP.md`, the primitives the topic names — with one exclusion, the session's own artifacts (`record.md`, its index entry, anything under the session directory), which carry the frame this phase exists to escape.
+
+Enumerate the angles a thorough treatment of this topic would visit — actors, cost, failure modes, timescales, alternatives, second-order effects, whatever the topic demands. Return the map to the lead as a message. Only then does the record path arrive and Phase 1 begins.
+
+In a **pair, both reviewers build the map independently** — the lens split governs read-phase depth (Phase 1), never the map phase; two blind maps see different angles and the union is the value. Solo, you build the one map.
 
 ## Phase 1 — Independent cold read
 
@@ -25,7 +35,7 @@ Read the frozen record and work it:
    | # | Class | The question |
    |---|-------|--------------|
    | 1 | **Unchallenged assumption** | What does this decision silently presume that nobody tested? |
-   | 2 | **Missing dimension** | What angle (cost, failure mode, actor, timescale) was never visited? |
+   | 2 | **Missing dimension (intra-decision)** | Within a decision the record *did* reach — which factor (cost, failure mode, actor, timescale) did that decision never weigh? Never-visited *topic* dimensions belong to the coverage class (the map-diff), not here. |
    | 3 | **Passive acceptance** | Was this adopted on "sounds good" — thin rationale, no pushback recorded? |
    | 4 | **Rejected-road steelman** | Argue the strongest discarded alternative seriously — does the choice still win? |
    | 5 | **Inconsistency** | Does this decision undercut an earlier one, each fine alone? |
@@ -34,6 +44,16 @@ Read the frozen record and work it:
 4. **Fitness** — run [references/RECORD-FITNESS.md](references/RECORD-FITNESS.md); the record must stand alone.
 
 Every finding carries: a severity, the decision(s) it touches, a **concrete failure scenario or cited contradiction**, and a resolution path — the one question or check that would settle it. A finding nothing could resolve is commentary, not a finding. **Never raise a `Contested` decision** — the user ruled with the steelman in full view; the only exception is a genuinely *new* angle the ruling never saw.
+
+**Coverage findings — the map-vs-record diff.** After the cold read, diff your Phase 0 blind map against what the record actually decided: every angle on the map the record never visited is a **coverage finding** — a first-class finding beside the five hunt classes above. A coverage finding does **not** carry the "concrete failure scenario" bar the paragraph above sets; its evidence is the **map-vs-record diff plus a materiality argument** — the stated case that a plausible in-scope decision would have differed had the angle been visited. Severity follows what the missed angle would have changed:
+
+| Severity | Test |
+|----------|------|
+| **Critical** | a ruling would *likely* have changed had the angle been visited |
+| **Important** | a ruling would *plausibly* have changed |
+| **Minor** | completeness only — no ruling turns on it |
+
+Two gates promote a diff entry to a finding: **Materiality** — an angle whose absence changes nothing dies at the diff, never reported (solo, apply this bar explicitly — you are the debate you did not get); and the **rejected-roads check** — an angle the record *saw and dismissed* is not a gap, it is a ruling, and belongs to hunt class 4 if anywhere.
 
 Report **findings-formed** to the lead — the count only, not the content. The findings themselves wait for the debate.
 
@@ -47,9 +67,9 @@ Return to the lead as a message (no report files): **your own** survivors, sever
 
 | Verdict | Criteria |
 |---------|----------|
-| **ready** | every hunt class actively worked, nothing blocking survived |
+| **ready** | every hunt class actively worked and the blind-map coverage diff run, nothing blocking survived |
 | **needs-revision** | survivors resolvable by the session (answerable questions, fixable folds) |
-| **critical-gaps** | a broken load-bearing claim, an unowned decision, or a record too thin to review |
+| **critical-gaps** | a broken load-bearing claim, an unowned decision, a Critical coverage gap (a ruling would likely have changed had the angle been visited), or a record too thin to review |
 
 **Never default to `ready`** — it is earned by a completed hunt, not by the record looking reasonable. Zero findings means hunt harder; but never manufacture — the debate exists to kill weak findings, so bring real ones. A record too thin to attack (decisions without rationales, rulings without owners) is itself the first finding.
 
@@ -58,6 +78,8 @@ Return to the lead as a message (no report files): **your own** survivors, sever
 The verify pass runs on **one reviewer** — the record-integrity lens in a pair, you automatically when solo (sound either way: it grades the lead's repairs, never its own findings). When the lead assigns it, verify each fold against the updated record — quote the evidence that the resolution landed. Hunt no new surface except contradictions *introduced by the folds themselves* (the class a verify pass exists to catch). Verified clean → say so; still blocking → say that plainly and let the lead escalate.
 
 **The synthesis fidelity sample.** If the user requests a derived `synthesis.md` after acceptance, the verify-pass reviewer — still seated — sample-checks it against the record before it ships: every ruling present, no confidence mark inflated, no rejected alternative resurrected. Report what you sampled; a fidelity miss goes back to the lead's pen, never yours.
+
+**Reopen-born decisions.** When a coverage finding sends the session back to decide an angle it never visited, the new decision re-enters the record in the same `D…` namespace, and the verify pass grades it — internal consistency plus record-fitness (statement, rationale, confidence mark, owner), quoting the evidence that it landed. This is **not** a fresh cold read: no blind-map coverage hunt runs against a reopen-born decision, because the lighter review is the ruled trade-off for reopening at all. Recursion stops at one level — a reopen-born decision does not itself spawn a second reopen.
 
 ## Independence
 

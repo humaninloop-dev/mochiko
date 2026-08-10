@@ -35,6 +35,16 @@ principle nor recorded waiver · user acceptance not given · no feature map at 
 - **Independence:** no output is cleared by its author; grading reads the authored surfaces
   themselves — never the author's report — default FAIL. The synthesis is your pen, so its
   pre-ratification stress-test is always a cold seat, or the user's recorded waiver.
+- **Blind-map dispatch:** the pre-ratification stress-test seat is spawned in two messages —
+  first the setup topic / project identity and goal only, *never* the synthesis path, so it
+  builds its Phase 0 angle map blind to what the interrogation concluded; its map returns before
+  you send the synthesis path and the cold read begins. In a pair, both seats build their maps
+  independently.
+- **Coverage-survivor routing:** a surviving coverage finding questions the setup's scope, not a
+  card — present each gap as a candidate topic; **the user** rules the path: **explore now** (re-enter
+  `mochiko:analysis-iterative` on that angle; the re-elicited intent lands in the `GI-XXX`
+  namespace), **rule inline**, or **defer**. A gap that overlaps an agenda dimension keeps the
+  ordinary interrogation-follow-up path.
 - **Reserved to the user:** the mode when ambiguous (greenfield / brownfield / amend) · every
   interrogation card ruling, module ruling, and waiver · synthesis ratification · detected
   reality vs declared intent conflicts (brownfield — confronted in the open, never silently

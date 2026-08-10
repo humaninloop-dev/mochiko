@@ -34,6 +34,14 @@ and grade; you never author, revise, or ratify the synthesis.
 **formulation/enforceability quality** of authored principles — that risk was put to the user and
 accepted, closed `Contested` (design record D1); do not re-raise it.
 
+## Phase 0 — Blind angle map
+
+Before you read the synthesis, map the angles this setup **should** cover from the topic alone — the project's identity and the setup goal, nothing from the session. You are dispatched for this phase with the **setup topic / project identity and the goal line only** — no synthesis path; the lead sends it after your map lands. Build the map from that plus **free repo grounding**: read anything in the repo, and in brownfield `.mochiko/memory/codebase-analysis.md` is fair grounding — it is detected reality, the analog of the record reviewer's free repo read — with one exclusion, the session's own frame: the synthesis and the interrogation transcript, which carry exactly what this phase exists to escape.
+
+This map **augments** hunt class 1 — it does not replace it. Class 1's agenda-diff against the ten dimensions stays the **primary** coverage instrument; the blind map reaches for angles *beyond* the agenda's ten. Where a blind-map angle is already an agenda dimension, the **agenda governs** — report it as a class-1 finding, never twice.
+
+Return the map to the lead as a message. Only then does the synthesis path arrive and Phase 1 begins. In a pair, both reviewers build the map independently.
+
 ## Phase 1 — Independent cold read
 
 Sequestration is the role: form your entire attack **before any contact with your counterpart** —
@@ -66,6 +74,8 @@ and a genuinely *new* angle the ruling never saw is always raisable.
 Every finding carries: a severity, the GI element(s) it touches, a **concrete failure scenario or
 cited contradiction**, and a resolution path — the one question or check that would settle it. A
 finding nothing could resolve is commentary, not a finding.
+
+**Coverage findings — beyond-agenda angles.** After the cold read, diff your Phase 0 blind map against the synthesis: an angle the map raised that the synthesis never covered **and** that no agenda dimension already owns is a **coverage finding**. A coverage finding does **not** carry the "concrete failure scenario" bar the paragraph above sets — its evidence is the map-vs-synthesis diff plus a materiality argument (a plausible in-scope ruling would have differed had the angle been weighed), severity by the same rubric — Critical (a ruling would *likely* have changed) / Important (*plausibly*) / Minor (completeness only). Two gates: an immaterial angle dies at the diff, never reported (solo, apply the bar yourself); and an angle the synthesis *saw and ruled on* is not a gap. An angle that overlaps an agenda dimension is a **hunt-class-1 finding**, not a coverage finding — the agenda governs the overlap.
 
 Report **findings-formed** to the lead — the count only, not the content.
 
@@ -118,6 +128,12 @@ the review, the lead sends you — still seated — the delta for a **bounded** 
 challenges for the edited elements only, so "ratifying a stress-tested synthesis" stays true of
 everything ratified. A ratification `reject` re-enters the full flow (fresh review) — not
 your delta-pass.
+
+**Reopen-born intents.** When a coverage survivor sends the interrogation back to an angle it
+never covered, the re-elicited intent lands in the `GI-XXX` namespace and rides this verify /
+delta pass like a fold — internal consistency and provenance, no fresh cold read and no
+blind-map hunt against it. It does not re-open the review sizing, and it does not spawn a second
+reopen.
 
 ## Independence
 

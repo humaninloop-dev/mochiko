@@ -10,6 +10,13 @@ restores the boundary clauses under the cap, and is strict-YAML-safe. Delivery v
 deferred: the in-session skill listing is a session-start snapshot (probe received pre-edit
 text), so the probe re-runs in a fresh session.
 
+## [v0.60.0] Hunt class 2 narrowed to intra-decision scope; topic-level coverage moves to the new coverage class
+- **Disposition:** superseded → the new "Coverage findings — the map-vs-record diff" class (topic-level never-visited dimensions) + a re-keyed class 2 (intra-decision missing factors)
+- **Tier failed:** n/a — supersession by ruling (record `.mochiko/brainstorms/cold-review-gap-challenge/record.md` D10; DECISIONS.md 2026-08-10 row)
+- **Content:** `| 2 | **Missing dimension** | What angle (cost, failure mode, actor, timescale) was never visited? |`
+- **Kept deliberately:** the intra-decision reading — a decision that never weighed cost/failure-mode/actor/timescale is a real miss the map-diff will not catch, so class 2 survives re-keyed rather than deleted (keep-both-unbounded and full-supersession both rejected in D10).
+- **Consumers assessed:** `review-governance-intent` keeps its own hunt class 1 (agenda-diff) — a different class, unaffected; the shared `CROSS-EXAM.md` is substrate-agnostic and carries no class text. No other consumer references class 2 text.
+
 ## [v0.52.0] CROSS-EXAM.md fact-dispute rule gains an external-claim carve-out
 - **Disposition:** superseded → `references/EXTERNAL-CLAIMS.md` (external-claim disputes only;
   every other fact dispute keeps routing to the session's fact authority exactly as shipped)
