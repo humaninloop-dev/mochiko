@@ -18,6 +18,21 @@ HIT logged (ROADMAP stamp vs CHANGELOG — user decision); all items within the 
 
 ---
 
+## PM requirements-stacking build
+
+Ruling: DECISIONS.md row 2026-08-10 (D1–D4 + D2a/D3a); record accepted post-review same day.
+
+- [ ] **PM requirements-stacking build** (2026-08-10; provenance:
+  `.mochiko/brainstorms/pm-requirements-stacking/record.md`, Build surface section) — edits on
+  the shipped v0.61.0 surface: `mochiko:authoring-feature-map` (across-round phase-semantics
+  line · derivation-may-mint-stubs amendment, anti-spec-bypass intent preserved ·
+  re-surfacing at the two D3a sites · per-parent completeness ledger on the selection card ·
+  dependency-escalation duty split by carrier, recommendations never PM-forced ·
+  phase-leaf-independently-useful bar) · `specify.md` one Harness-line ledger reference ·
+  `feature.md` stewardship-touch re-surfacing line · `plan.md` one line (architecture stage
+  asserts dependency relations with provenance). Strips owed on the skill's stub-minting
+  clause; author≠grader audits per ceremony.
+
 ## Feature-sizing & entry-points residuals
 
 Ruling: DECISIONS.md row 2026-08-10 (D1–D15 as amended); build delivered same day at v0.61.0 (trail).

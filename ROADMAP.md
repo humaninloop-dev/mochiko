@@ -13,6 +13,7 @@ frontend/mobile/desktop shelves are Tier-I roadmap work.**
 
 ## Now
 
+- **PM requirements-stacking build** — ruled 2026-08-10 (D1–D4 + D2a/D3a; across-round phasing on shipped nesting, stubs as remainder carrier, completeness ledger + dependency-only escalation, split dependency claims); small edit wave on the v0.61.0 surface → [BACKLOG](BACKLOG.md#pm-requirements-stacking-build)
 - **Feature-sizing & entry-points residuals** — build DELIVERED 2026-08-10 at v0.61.0 (map nesting, `/mochiko:feature`, plan/implement re-key spec→feature, two-altitude design surface with graded folds; breaking change; trail); remaining: the first-live-run watch + setup baseline-bootstrap hardening → [BACKLOG](BACKLOG.md#feature-sizing--entry-points-residuals)
 - **Cold-review gap-challenge residuals** — build DELIVERED 2026-08-10 at v0.60.0 (blind angle-map phase, coverage findings, reopen routing, both review clusters; trail); remaining: the first-live-run watch → [BACKLOG](BACKLOG.md#cold-review-gap-challenge-residuals)
 - **Feature-map layer residuals** — build DELIVERED 2026-08-10 at v0.57.0–v0.59.0 (slices retired, feature = pipeline unit, `product-manager` agent, FEATURES.md map; trail); remaining: the self-application governance amend (user-gated) + the first-live-run watch (note: first-live-run watch partially overtaken by the sizing/entry-points re-key — watch items re-scope at that build) → [BACKLOG](BACKLOG.md#feature-map-layer-residuals)
