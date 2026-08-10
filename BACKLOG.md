@@ -18,23 +18,23 @@ HIT logged (ROADMAP stamp vs CHANGELOG — user decision); all items within the 
 
 ---
 
-## Guardrails-vs-detail benchmark
+## Guardrails-vs-detail build
 
-Ruling: DECISIONS.md row 2026-08-10 (validator-scope-and-verbosity D1–D8 as amended); record
-accepted after solo cold review via blind-map dispatch (8/8 dispositioned, verify repairs folded).
+Ruling: DECISIONS.md rows 2026-08-10 (D1–D8 + benchmark verdict row); benchmark executed and
+resolved same day — verdict + curated evidence at `.mochiko/benchmarks/guardrails-vs-detail/`.
 
-- [ ] **Guardrails-vs-detail benchmark + cost gate** (2026-08-10; provenance:
-  `.mochiko/brainstorms/validator-scope-and-verbosity/record.md`, Build surface section) —
-  cold-runnable: three arms (11 body-guardrails skill variants per D4 cut line ·
-  slim-description variants + invocation-fire-rate check · agent-descriptions-sans-examples +
-  route check) · model-played principal card with planted vagueness (D3) · neutral outcome
-  rubric by a non-variant author, LLM-as-judge numeric scoring (D5) · 16+ stage runs
-  (4 variants × setup/specify × ≥2 replicates) · decision rule: 10% threshold, floors
-  absolute, diagnostic trace-back on loss (D6) · then cost gate: per-class char budgets
-  (winner +25%), char-count pre-assert in the author≠grader audit (D7) · supersession
-  annotation landed on the skill-succinctness-strip row (done at acceptance). Venue: starts
-  in the session worktree (`brainstorm-validator-scope`) per D8. Open threads riding: near-cap
-  skills outside substrate (M1) · audit-substrate shrink interaction (M2).
+- [ ] **Ship winning variants + D7 cost gate** (2026-08-10; provenance:
+  `.mochiko/brainstorms/validator-scope-and-verbosity/record.md`, Benchmark execution section +
+  `.mochiko/benchmarks/guardrails-vs-detail/report/final-verdict.md`) — build phase:
+  ship 11 guardrails skill bodies + 11 slim descriptions + 6 prose-only agent descriptions
+  from `.mochiko/benchmarks/guardrails-vs-detail/variants/` into `plugins/mochiko/`, each
+  through the primitive-edit ceremony (strips + author≠grader audits), one plugin.json bump ·
+  land the D7 cost gate: per-class char budgets (winning-variant weight +25%, chars never
+  bytes) as an audit pre-assert with justified-exemption path · candidate floor lines from
+  the cross-cutting finding (surface every elicited unknown · review leaves verdict +
+  dispositions in artifacts) in place of returning prose · watches at first live runs:
+  F-X1-class review-evidence omission (agents ruling b) · fire-rate on slim descriptions.
+  Open threads riding: near-cap skills outside substrate (M1) · audit-substrate shrink (M2).
 
 ## Feature-sizing & entry-points residuals
 
