@@ -6,6 +6,34 @@ Entry formats: `strips/README.md`. Wave context: [v0.28.0] entries — skill-suc
 `.mochiko/brainstorms/workflow-token-reduction/record.md` D4 + the wave-2 rulings R1–R4/T1;
 ratified 2026-07-24).
 
+## [v0.63.0] Guardrails body + slim description (guardrails-vs-detail benchmark verdict)
+- **Disposition:** superseded → benchmark-ruled guardrails body + slim description
+  (`.mochiko/benchmarks/guardrails-vs-detail/variants/body/authoring-user-stories/` and
+  `variants/descriptions/authoring-user-stories/`; the shipped file is the deterministic merge
+  of the two).
+- **Tier failed:** n/a — supersession by ruling (guardrails-vs-detail benchmark verdict,
+  `DECISIONS.md` 2026-08-10 benchmark-verdict row; record
+  `.mochiko/brainstorms/validator-scope-and-verbosity/record.md`, Benchmark execution;
+  `.mochiko/benchmarks/guardrails-vs-detail/report/final-verdict.md` — body arm formal D6 PASS,
+  descriptions arm 0 fire misses).
+- **Content (faithfully compressed):** body 5,684 → 5,361 chars (−6%); description 562 → 425
+  chars (−24%). Body cut: the **When to Use** section deleted whole (five bullets restating the
+  description's invocation conditions — transforming descriptions into requirements, breaking
+  down features, G/W/T structure, backlog items, defining "done"). Description cut: the SHOULD
+  clause's trailing enumeration compressed (the trigger-phrase list and MUST/SHOULD grading kept;
+  restated production detail dropped). Verbatim homes: git history of this file (pre-v0.63.0),
+  the before/after pair under `variants/`, and archive branch
+  `worktree-brainstorm-validator-scope`.
+- **Kept deliberately:** the guardrails keep-set — the story format block + scenario rules
+  (the [v0.23.0] T1-ruled form), Independent Test bullets, Quality Checklist, Common
+  Rationalizations table, the letter/spirit epigraph, and all `references/` pointers
+  (PRIORITY-DEFINITIONS, EXAMPLES). The [v0.28.0] kept-set below survives this cut in full —
+  no prior KEPT or protected line is touched.
+- **Consumers assessed:** 7 citing files per the wave-open enumeration below (requirements-analyst,
+  specify, authoring-requirements, spec-template, artifact-format, mochiko router; authoring-slices
+  retired v0.58.0); none links a section anchor; `scripts/validate-user-stories.py` checks the
+  authored artifact, not the removed teaching bullets. Contract intact.
+
 ## [v0.28.0] Reference restatements, excuse-column red flags, and homed mistake rows stripped (body 179 → 116, −35%, in-band)
 - **Disposition:** deduped → verified pre-existing homes, each Read before landing (nothing
   written to any reference this wave): the P1/P2/P3

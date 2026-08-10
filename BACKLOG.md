@@ -18,23 +18,38 @@ HIT logged (ROADMAP stamp vs CHANGELOG — user decision); all items within the 
 
 ---
 
-## Guardrails-vs-detail build
+## Guardrails-vs-detail residuals
 
-Ruling: DECISIONS.md rows 2026-08-10 (D1–D8 + benchmark verdict row); benchmark executed and
-resolved same day — verdict + curated evidence at `.mochiko/benchmarks/guardrails-vs-detail/`.
+Ruling: DECISIONS.md rows 2026-08-10 (D1–D8 + benchmark verdict) + build row 2026-08-11;
+Wave 1 delivered at v0.63.0 (trail).
 
-- [ ] **Ship winning variants + D7 cost gate** (2026-08-10; provenance:
+- [ ] **First-live-run watches on the v0.63.0 cuts** (2026-08-11; provenance:
   `.mochiko/brainstorms/validator-scope-and-verbosity/record.md`, Benchmark execution section +
-  `.mochiko/benchmarks/guardrails-vs-detail/report/final-verdict.md`) — build phase:
-  ship 11 guardrails skill bodies + 11 slim descriptions + 6 prose-only agent descriptions
-  from `.mochiko/benchmarks/guardrails-vs-detail/variants/` into `plugins/mochiko/`, each
-  through the primitive-edit ceremony (strips + author≠grader audits), one plugin.json bump ·
-  land the D7 cost gate: per-class char budgets (winning-variant weight +25%, chars never
-  bytes) as an audit pre-assert with justified-exemption path · candidate floor lines from
-  the cross-cutting finding (surface every elicited unknown · review leaves verdict +
-  dispositions in artifacts) in place of returning prose · watches at first live runs:
-  F-X1-class review-evidence omission (agents ruling b) · fire-rate on slim descriptions.
-  Open threads riding: near-cap skills outside substrate (M1) · audit-substrate shrink (M2).
+  `.mochiko/benchmarks/guardrails-vs-detail/report/final-verdict.md`) — watch the first live
+  setup/specify runs on the cut primitives: **F-X1 review-evidence** — does the independent
+  review leave verdict + dispositions in the artifacts (the new floor line's job)? Recurrence
+  re-opens agents ruling (b) (example blocks return to the 6 agent descriptions) · **slim-
+  description fire-rate** — do the 11 slim descriptions still fire at their moments, incl.
+  both sibling traps (analysis-iterative vs review-specifications; feature-map vs
+  user-stories)? · Open threads riding: **M1** near-cap untested description skills
+  (`patterns-system-design` 1,514 · `review-feasibility` 1,513 · `authoring-architecture`
+  1,511 · `review-brainstorm` 1,506 — outside the tested substrate, budgets deferred to
+  Wave 2) · **M2** audit-substrate shrink (terser bodies give the preserved-responsibilities
+  check less to grade; first datapoint — this wave's own audits — held: strip inventories
+  carried the substrate).
+- [ ] **`analysis-codebase` dangling-pointer repair** (2026-08-11; provenance: batch-A audit
+  ruling, strip `[v0.63.0]` note) — the ruled variant keeps "assess against it using the
+  indicators below" but the indicator subsections died; comprehension defect only, no lost
+  obligation. One-line reword through the ordinary edit ceremony at the next touch of this
+  skill.
+- [ ] **Wave 2: editorial extension of the cut lines** (2026-08-11; provenance: user two-wave
+  ruling 2026-08-10; sketch at
+  `.mochiko/benchmarks/guardrails-vs-detail/report/build-plan.md`, Wave 2 section) — apply the
+  D4 cut line editorially to the remaining 17 skills + 4 agents (commands stay excluded), each
+  through strips + author≠grader audits, budgets seeded from the cut results +25%, separate
+  bump; near-cap M1 skills get their descriptions slimmed first with a fire-rate spot-check.
+  Start after the first-live-run watches report clean. Wave 1's review-evidence floor line
+  consolidation (3 copies → shared home) rides as a candidate.
 
 ## Feature-sizing & entry-points residuals
 

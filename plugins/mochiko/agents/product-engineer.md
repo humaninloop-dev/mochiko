@@ -6,33 +6,6 @@ description: |
   walkable flows, honoring an existing design system, and keeping fidelity honest: structure
   and flows precise, pixels deliberately rough. Produces the prototype and its manifest; does
   not grade its own output.
-
-  <example>
-  Context: A feature's user stories are being drafted and the experience needs to be visible before design work starts.
-  user: "We're speccing the reporting dashboard — can we see what it would actually feel like to use?"
-  assistant: "I'll use the product-engineer to build a clickable low-fi prototype — a nav skeleton first, then each story's screens wired into walkable flows — so you can click through the experience while the stories are still being shaped."
-  <commentary>
-  Making a drafted experience clickable at low fidelity, story by story, is the product-engineer's core producer work.
-  </commentary>
-  </example>
-
-  <example>
-  Context: The project has an existing design system and the mock should read as part of the product.
-  user: "Mock the new settings pages, but they should look like they belong in our app."
-  assistant: "I'll use the product-engineer to discover the project's design tokens and components and build the low-fi screens from them — the product's family at rough fidelity, not a faithful reproduction."
-  <commentary>
-  Honoring an existing design system at low fidelity — without over-polishing into false precision — is the product-engineer's judgment.
-  </commentary>
-  </example>
-
-  <example>
-  Context: A reviewer found flows in the mock that no story scenario covers.
-  user: "Two of these click-paths don't trace to any acceptance scenario — fix the prototype."
-  assistant: "I'll use the product-engineer to reconcile the prototype against the stories — removing or re-keying the untraceable flows and surfacing any screen the stories genuinely need but don't yet cover as a finding, never silently inventing scope."
-  <commentary>
-  Keeping the prototype an honest rendering of the stories — surfacing gaps instead of inventing scope — is the product-engineer's discipline.
-  </commentary>
-  </example>
 model: opus
 color: green
 skills: authoring-prototype

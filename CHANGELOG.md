@@ -5,6 +5,37 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.63.0] — 2026-08-11
+
+- Guardrails-vs-detail build, Wave 1 (ruling: `validator-scope-and-verbosity` D1–D8 +
+  benchmark verdict, `DECISIONS.md` 2026-08-10;
+  `.mochiko/benchmarks/guardrails-vs-detail/report/final-verdict.md`). Shipped the benchmark's
+  winning variants across the setup+specify substrate: **11 skills** re-authored as guardrails
+  bodies + slim descriptions (`analysis-iterative`, `analysis-codebase`,
+  `authoring-constitution`, `authoring-feature-map`, `review-governance-intent`,
+  `validation-constitution`, `testing-governance-injection`, `authoring-requirements`,
+  `authoring-user-stories`, `authoring-prototype`, `review-specifications`) — body chars −6%
+  to −54%, every description cut to ≤500 chars (from up to 1,517); **6 agents** shipped
+  prose-only (`<example>` blocks removed from the frontmatter description:
+  `principal-architect`, `validator`, `devils-advocate`, `requirements-analyst`,
+  `product-manager`, `product-engineer` — descriptions 69–81% smaller, benchmark showed 0
+  route misses over 20+ staffings). **D7 cost gate** landed: per-class char budgets
+  (winning-variant chars +25%, parsed-value chars never `wc -c` bytes) as a deterministic
+  pre-assert in the primitive-edit ceremony (`.claude/rules/mochiko/primitive-edits.md` +
+  `.mochiko/memory/primitive-cost-budgets.md`), justified-exemption path, `references/`
+  exempt, untested primitives on hard-cap fallback only. **Four floor lines** replace returned
+  prose (cross-cutting finding 1): "surface every elicited unknown as an open question"
+  (`analysis-iterative`) and "independent review leaves verdict + dispositions in the
+  artifacts" (`review-specifications`, `review-governance-intent`, `validation-constitution` —
+  the F-X1 mitigation under agents ruling (b)). Ceremony: 17 supersession-by-ruling strips
+  (prior `KEPT:` content reconciled — every removal recorded, no silent drops) + independent
+  author≠grader audits by 4 fresh validator seats, 17/17 PASS. Known accepted defect:
+  `analysis-codebase` dangling "indicators below" pointer (comprehension-only, byte-faithful
+  to the ruled variant; follow-up edit in BACKLOG residuals). Commands and the remaining 17
+  skills / 4 agents deferred to Wave 2. Residual watches (F-X1 review-evidence,
+  slim-description fire-rate, M1 near-cap untested skills, M2 audit-substrate shrink) in
+  `BACKLOG.md`.
+
 ## [0.62.0] — 2026-08-10
 
 - PM requirements-stacking build (ruling: `pm-requirements-stacking` record D1–D4 + D2a/D3a

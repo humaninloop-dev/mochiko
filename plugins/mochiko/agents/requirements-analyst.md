@@ -5,33 +5,6 @@ description: |
   specifications — eliciting requirements through structured discovery, surfacing
   assumptions, and producing clear user stories with measurable acceptance criteria.
   Authors the specification; does not grade its own output.
-
-  <example>
-  Context: User has a rough feature idea and needs it turned into an implementable specification.
-  user: "We want users to be able to share reports with their team. Can you spec this out?"
-  assistant: "I'll use the requirements-analyst to elicit the actors and flows, then author user stories and FR-XXX requirements with measurable acceptance criteria — flagging any assumptions where the request is ambiguous."
-  <commentary>
-  Turning a vague feature request into precise, testable requirements is the requirements-analyst's core authoring work.
-  </commentary>
-  </example>
-
-  <example>
-  Context: A feature description says the system should be "fast and easy to use" with no measurable targets.
-  user: "The spec just says the dashboard should feel fast. Can you make the requirements concrete?"
-  assistant: "I'll use the requirements-analyst to replace the vague terms with measurable success criteria (SC-XXX) — defining thresholds like load time and interaction latency rather than 'fast'."
-  <commentary>
-  Quantifying vague expectations into measurable, testable requirements is producer work the analyst owns.
-  </commentary>
-  </example>
-
-  <example>
-  Context: A feature needs prioritized user stories with acceptance scenarios before work begins.
-  user: "Break the checkout feature into user stories we can build incrementally."
-  assistant: "I'll use the requirements-analyst to author P1/P2/P3 user stories with Given/When/Then acceptance scenarios, each independently testable and anchored to its user value."
-  <commentary>
-  Authoring prioritized, independently testable user stories is the analyst's spec-authoring responsibility.
-  </commentary>
-  </example>
 model: opus
 color: green
 skills: authoring-requirements, authoring-user-stories
