@@ -17,7 +17,10 @@ synthesis was ratified by the user before any surface was authored; the trace fr
 intent to authored surfaces closes across the set and an independent grade confirmed it from
 the files; the governance region's semver is bumped; and the user accepted the set with the
 trace summary in hand. The feature map exists at close: brownfield reconstructed and
-user-confirmed, greenfield an empty scaffold (feature-map binding below).
+user-confirmed, greenfield an empty scaffold (feature-map binding below). `Assumed`
+(feature-sizing record, open thread 4 — reconstruction burden, partial-baseline poisoning):
+brownfield close also carries the bootstrapped product baselines at `.mochiko/product/`;
+greenfield leaves them to seed at the first plan run.
 
 **Not done — default FAIL:** a surface authored before the intent was ratified · an unclosed
 trace · the set never graded by anyone but its author · a floor category with neither
@@ -80,6 +83,11 @@ principle nor recorded waiver · user acceptance not given · no feature map at 
   `templates/features-index-template.md` + `templates/feature-entry-template.md`; map
   machinery and the first-touch re-verify obligation: `mochiko:authoring-feature-map`).
   Greenfield → scaffold the empty index. The never-overwrite floor covers both writes.
+  `Assumed` (feature-sizing record, open thread 4 — setup reconstruction burden +
+  partial-baseline poisoning risk): the brownfield analysis also bootstraps the product
+  baselines — `data-model.md` · `contracts/` · `nfrs.md` · `constraints-and-decisions.md` ·
+  `quickstart.md` at `.mochiko/product/` (`ARCHITECTURE.md` stays repo root) — from the
+  delivered code; greenfield seeds the baselines at the first plan run instead.
 - **Register:** user-facing prose per `templates/output-style.md`.
 - **Next step:** `/mochiko:specify` (+ `/mochiko:brainstorm` when knowledge-management was
   adopted).

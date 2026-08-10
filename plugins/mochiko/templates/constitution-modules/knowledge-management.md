@@ -109,6 +109,9 @@ where those commands run):
 A landing that only adds is incomplete: subtraction is part of the same move, not a later
 groom's job.
 
+A `/mochiko:feature` lane acceptance is a landing event — same ritual, same moment, as a
+spec or implement acceptance.
+
 ### Invariants (run at command boundaries under fix-on-sight; project-pinned at scaffold)
 
 - **Bijection:** every directory under `.mochiko/brainstorms/` has an `index.md` entry;

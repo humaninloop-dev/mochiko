@@ -18,23 +18,25 @@ HIT logged (ROADMAP stamp vs CHANGELOG — user decision); all items within the 
 
 ---
 
-## Feature-sizing & entry-points build
+## Feature-sizing & entry-points residuals
 
-Ruling: DECISIONS.md row 2026-08-10 (D1–D15 as amended); record accepted after cold review
-(15/15 dispositioned, fold verify CLEAN).
+Ruling: DECISIONS.md row 2026-08-10 (D1–D15 as amended); build delivered same day at v0.61.0 (trail).
 
-- [ ] **Feature-sizing & entry-points build** (2026-08-10; provenance:
-  `.mochiko/brainstorms/feature-sizing-and-entry-points/record.md`, Build surface section) —
-  new `/mochiko:feature` command (steward + triage + delta card + dispatch, floor by
-  reference) · plan/implement entry re-key spec→feature, artifacts to
-  `.mochiko/features/FEAT-XXX/` incl. per-feature `requirements.md` · two-altitude design
-  surface (5 product baselines + appliable deltas, graded folds per D15) · map nesting in
-  `authoring-feature-map` + templates (two-level, sticky-delivered roll-up, `unrefined`
-  stubs, R5 invariant re-wording) · setup bootstrap extension (scope: open thread 4, D10
-  bootstrap clause `Assumed`) · supersessions owed: feature-map D10/D17/D18/D19/R5 clauses
-  via the primitive-edit ceremony · breaking change, no migration. Open threads riding: parent
-  selection semantics (user-reserved) · stub lifecycle · size signal at selection · D11
-  concurrent-fold watch.
+- [ ] **First live feature-surface run on the v0.61.0 re-key** (2026-08-10; provenance:
+  `.mochiko/brainstorms/feature-sizing-and-entry-points/record.md`, open threads 1/3/5/6) —
+  watch the first `/mochiko:feature` lane run and first re-keyed plan/implement run: stable-ground
+  triage keys honestly (D14, keying audited from the delta) · map-write test + abort-and-reroute
+  fire (D7) · graded three-way-diff fold holds at landing (D15) · delta-scope plan genuinely
+  collapses (D8). Open threads riding: parent selection semantics (user-reserved — build left
+  leaves-only selection, per-child pick on a named parent, no default encoded) · `unrefined`
+  stub lifecycle (no expiry rule; grooming surfaces, never auto-retires) · size signal at
+  selection · D11 concurrent-fold watch (`Assumed` — first real concurrent fold re-opens it).
+- [ ] **Setup baseline-bootstrap hardening** (2026-08-10; provenance: record open thread 4,
+  D10 bootstrap clause `Assumed`) — the shipped clause (brownfield reconstructs the five
+  product baselines at `.mochiko/product/` from code; greenfield seeds at first plan run) is
+  marked `Assumed` in `setup.md`; reconstruction-burden scope unruled; half-reconstructed
+  baselines poison extend-mode. Re-opens at the first brownfield setup run on the new surface
+  or on friction, whichever first.
 
 ## Cold-review gap-challenge residuals
 

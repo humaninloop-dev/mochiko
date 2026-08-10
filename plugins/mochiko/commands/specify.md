@@ -44,8 +44,12 @@ given.
   out-of-scope — with the **existing feature map an obligated read** per
   `mochiko:authoring-feature-map`'s intent-stage agenda: `FEATURES.md` plus the entries in
   the intent's territory. A missing map is surfaced — offer `/mochiko:setup`, whose
-  brownfield analysis reconstructs it — never silently tolerated. Probes, never a
-  questionnaire; close in a one-screen synthesis the user confirms; flag ratification streaks
+  brownfield analysis reconstructs it — never silently tolerated. Map entries marked
+  `unrefined` are unratified hypotheses, never extension anchors: derivation ignores stub
+  text and derives from the stories; a stub matching a derived feature is confirmation, a
+  stub matching nothing stays parked or is retired (procedure:
+  `mochiko:authoring-feature-map`). Probes, never a questionnaire; close in a one-screen
+  synthesis the user confirms; flag ratification streaks
   before treating adoptions as engagement. The confirmed synthesis governs the run and lands
   verbatim as the spec's Intent section.
 - **Lockstep prototyping (UX-bearing only).** Stories and their screens co-evolve as one

@@ -5,6 +5,35 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.61.0] — 2026-08-10
+
+- Feature-sizing & entry-points build — **breaking change, no migration** (ruling:
+  `feature-sizing-and-entry-points` record D1–D15 as amended; D10: the v0.57–v0.59
+  spec-folder layout is not read). Plan/implement re-key from spec to feature (D9): entry
+  gates on a feature entry carrying ratified scope (a spec's accepted Feature Selection or
+  a feature-command delta card); per-feature artifacts re-home to `.mochiko/features/FEAT-XXX/`
+  incl. per-feature `requirements.md`; two-altitude design surface — product baselines at
+  `.mochiko/product/` (`data-model.md` · `contracts/` · `nfrs.md` ·
+  `constraints-and-decisions.md` · `quickstart.md`, `ARCHITECTURE.md` at repo root) + appliable
+  before/after per-feature deltas, graded three-way-diff folds at the acceptance landing
+  checked by the existing verification seat (D15); cross-spec reach and extend-mode-at-spec-root
+  die; spec becomes a pure delivery-event record. New `/mochiko:feature` command (D5–D8 as
+  amended): map steward (view/query, `unrefined` stub parking per D12, retroactive promotion,
+  retire, integrity grooming) + stable-ground lane triage (D14: feature lane on delivered
+  entries, product lane single-flight for cross-cutting defects, in-flight findings file to
+  the owning run) + delta-card authoring + dispatch to the re-keyed pipeline — discipline
+  floor bound by reference, never restated; lane boundary is the map-write test with
+  abort-and-reroute (D7). Map gains two-level nesting (D2–D4): parent capability + leaf
+  deliverable, leaf = pipeline unit, hard two-level cap, sticky-delivered roll-up, parents
+  minted both directions + retroactive promotion; R5 invariant re-worded (open spec or live
+  lane run). Setup bootstraps product baselines (`Assumed`, open thread 4); router + KM
+  module updated (lane acceptance is a landing event, D13). Supersessions recorded in strips
+  ([v0.61.0]: plan · implement · authoring-feature-map · feature-entry-template ·
+  features-index-template · mochiko router), covering feature-map D10/D17/D18/D19/R5 clauses
+  + this record's D8 inline-harness architecture (never shipped, no strip owed). Author≠grader
+  audits: five commands PASS round 1; map cluster FAIL round 1 (one uncovered reword in the
+  skill's strip) → fix → bounded re-audit PASS.
+
 ## [0.60.0] — 2026-08-10
 
 - Cold-review gap-challenge build — blind angle map + coverage findings + reopen routing,

@@ -5,11 +5,11 @@ disable-model-invocation: true
 
 # Implement — Execute the Task Breakdown
 
-**Goal:** turn one feature's accepted `tasks.md` (cycle cards, under `features/FEAT-XXX/` in
-the spec folder) into working, verified code — TDD-built, foundation cycles before feature
-cycles, verified against real infrastructure. `$ARGUMENTS` = the feature ID (`FEAT-XXX`);
-empty → resolve the next planned undelivered feature from `.mochiko/specs/` and confirm with
-the user.
+**Goal:** turn one feature's accepted `tasks.md` (cycle cards, resolved from
+`.mochiko/features/FEAT-XXX/`) into working, verified code — TDD-built, foundation cycles
+before feature cycles, verified against real infrastructure. `$ARGUMENTS` = the feature ID
+(`FEAT-XXX`); empty → resolve the next planned undelivered feature from the map and confirm
+with the user.
 
 ## Goal
 
@@ -24,13 +24,14 @@ feature was exercised here, against the real delivered side; the code meets its 
 holds traceability to requirements, and aligns
 with the project's governance; where a structural delta was approved at plan time, a
 built-vs-approved diff report exists and any divergence it names was ruled by the user; the
-acceptance landing's map bookkeeping executed whole; and
-the user accepted the implementation.
+acceptance landing executed whole — map bookkeeping and every touched baseline's graded
+fold; and the user accepted the implementation.
 
 **Not done — default FAIL:** an unchecked cycle card · a failing quality gate · verification
 without real-infrastructure evidence · a regression in a previously delivered feature's
 gates · a surfaced architecture deviation neither built as
-approved nor consented as an amendment · user acceptance not given.
+approved nor consented as an amendment · a touched baseline accepted without its graded
+fold · user acceptance not given.
 
 ## Harness
 
@@ -65,12 +66,17 @@ approved nor consented as an amendment · user acceptance not given.
   the cycle and enters the checkpoint batch. A failed `**TEST:**` gate or quality gate is
   never severity-triaged — it fails the cycle per the Goal; `minimalism:` findings stay
   advisory at any severity, per Bindings.
-- **Entry:** the accepted package gates the run — the feature's `tasks.md` complete
-  alongside its `plan.md` and `architecture.md` under `features/FEAT-XXX/`; missing or
-  incomplete → block, point to `/mochiko:plan`. A selected feature ordered earlier and not
-  yet `delivered` blocks — one run per feature, in dependency order. A missing
-  governance region is surfaced, never auto-resolved; present → each code-touching brief
-  names the relevant `.claude/rules/mochiko/` files as an obligated read.
+- **Entry:** the run gates on a feature entry carrying ratified scope — the scope source is
+  a spec's accepted Feature Selection or a feature-command delta card. Neither → block: new
+  capability to `/mochiko:specify`, feature-keyed delta to `/mochiko:feature`. **Selection
+  scope** additionally gates on the accepted package — the feature's `tasks.md` complete
+  alongside its `plan.md` and `architecture.md` at `.mochiko/features/FEAT-XXX/`; missing or
+  incomplete → block, point to `/mochiko:plan`; a selected feature ordered earlier and not
+  yet `delivered` blocks — one run per feature, in dependency order. **Delta scope** gates
+  on the delta card confirmed by a delta-scope plan run; the card's acceptance criteria (a
+  bug's reproduction-failing-test, or 1–3 criteria on the delta) are the cycle's criteria. A
+  missing governance region is surfaced, never auto-resolved; present → each code-touching
+  brief names the relevant `.claude/rules/mochiko/` files as an obligated read.
 - Suggest commits; never run git mutations, never push — an ephemeral, self-removed
   verification snapshot is not a mutation of refs, index, tracked content, or history.
   User acceptance is plain blocking text, never a timed prompt.
@@ -90,14 +96,15 @@ approved nor consented as an amendment · user acceptance not given.
   never on trust); `minimalism:` findings are advisory to the checkpoint verdict, never a
   cycle-failing gate.
 - **Design inputs:** the feature's `plan.md` and `architecture.md` (the anchor for the
-  deviation check and the built-vs-approved diff) under `features/FEAT-XXX/`, the spec-root
-  `data-model.md`, `contracts/api.yaml`,
-  `constraints-and-decisions.md`, `requirements.md`, `nfrs.md` for the numeric quality
-  targets the built code must respect, and `spec.md` for the cards' cited
-  acceptance criteria.
-- **Reports** under `features/FEAT-XXX/` in the spec folder:
-  cycle reports, verification reports, the final-validation report, the built-vs-approved
-  diff report.
+  deviation check and the built-vs-approved diff) with the feature's other deltas at
+  `.mochiko/features/FEAT-XXX/`, plus its `requirements.md` there; the product baselines at
+  `.mochiko/product/` — `data-model.md`, `contracts/`, `constraints-and-decisions.md`,
+  `nfrs.md` for the numeric quality targets the built code must respect — and `spec.md` for
+  the cards' cited acceptance criteria.
+- **Reports** land in `.mochiko/features/FEAT-XXX/` (product-lane runs:
+  `.mochiko/product/lane-<slug>/`): cycle reports, verification reports, the
+  final-validation report, the built-vs-approved diff report. Repeat runs append (dated);
+  delta files overwrite only via the graded fold.
 - **Regression scope:** quality gates run the full repository suite; the final validation
   additionally executes the accumulated `**TEST:**` gates of previously delivered features
   in this feature's territory, and this feature's gates exercise any seam whose earlier side
@@ -111,11 +118,22 @@ approved nor consented as an amendment · user acceptance not given.
 - **KM landing:** where `.mochiko/memory/knowledge-management.md` exists, a built structural
   change folds into `ARCHITECTURE.md` — the fold is dual-target (the feature's
   `architecture.md` accumulates the approved delta) per `mochiko:authoring-architecture`.
-- **Acceptance landing — map bookkeeping:** at user acceptance, the same landing that folds
-  `ARCHITECTURE.md` executes the map's graduation batch per `mochiko:authoring-feature-map`:
-  the feature's status flips to `delivered` (dated) · this feature's marked deltas fold into
-  its extent lines · the `FEATURES.md` index line updates · the `ARCHITECTURE.md` In-flight
-  pointer is cleared · the specs-index row is touched — the spec reads closed exactly when
-  all its selected FEAT-IDs read `delivered` (derived, never asserted). No separate
-  feature-close stage exists.
+- **Baseline touches:** mid-fix discovery that the work touches a product baseline → the
+  dispatched run authors `baseline-delta.md` in its feature dir at discovery — a minimal
+  enumerated delta in appliable form. A product-lane run discovering it stands on an
+  in-flight feature's territory files the finding to that run and aborts — the lane never
+  widens in place.
+- **Acceptance landing:** at user acceptance, one landing executes whole, branched by scope
+  type. **Selection scope** — the same landing that folds `ARCHITECTURE.md` executes the
+  map's graduation batch per `mochiko:authoring-feature-map`: the feature's status flips to
+  `delivered` (dated) · this feature's marked deltas fold into its extent lines · the
+  `FEATURES.md` index line updates · the `ARCHITECTURE.md` In-flight pointer is cleared ·
+  the specs-index row is touched — the spec reads closed exactly when all its selected
+  FEAT-IDs read `delivered` (derived, never asserted). No separate feature-close stage
+  exists. **Delta scope** — the entry's marked delta folds per `mochiko:authoring-feature-map`'s
+  delta fold. **Both scopes:** every touched baseline folds via a graded fold — three-way
+  diff: pre-fold baseline + delta vs folded result; delta applied whole, nothing else
+  changed — checked by the landing verification seat, scope-extended; lane runs add the
+  map-delta boundary check (the accepted work made no map write beyond the marked delta) to
+  the same seat.
 - **Register:** user-facing prose per `templates/output-style.md`.
