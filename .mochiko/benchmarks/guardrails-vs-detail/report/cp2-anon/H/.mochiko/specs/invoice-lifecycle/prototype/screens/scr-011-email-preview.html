@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>SCR-011 · Email preview — Ledgerline</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <header class="appbar"><span class="brand">Ledgerline</span>
+    <nav><a href="scr-001-client-list.html">Clients</a><a href="scr-003-invoice-list.html">Invoices</a><a href="scr-009-status-dashboard.html">Status</a></nav>
+  </header>
+  <main>
+    <p class="feat-tag">SCR-011 · FEAT-003 (Invoice delivery) — preview before send (lockstep feedback)</p>
+    <h1>Preview email to client</h1>
+    <div class="card">
+      <p><strong>To:</strong> ap@northwind.example</p>
+      <p><strong>Subject:</strong> Invoice INV-1005 from Dana — $1,345.40 due 2026-08-25</p>
+      <div class="card">
+        <p>Hi Northwind Cafe,</p>
+        <p>Please find invoice <strong>INV-1005</strong> for <strong>$1,345.40</strong>, due 2026-08-25.</p>
+        <p>Memo: Thanks — net 15. Job at 123 Elm St.</p>
+        <p><a class="btn" href="scr-007-stripe-checkout.html">Pay this invoice</a> (secure Stripe checkout)</p>
+      </div>
+      <p>
+        <a class="btn" href="scr-006-send-confirmation.html">Looks good — send</a>
+        <a class="btn secondary" href="scr-005-invoice-detail.html">Back / edit</a>
+      </p>
+    </div>
+  </main>
+</body>
+</html>

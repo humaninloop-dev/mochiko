@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>SCR-003 · Invoices — Ledgerline</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <header class="appbar"><span class="brand">Ledgerline</span>
+    <nav><a href="scr-001-client-list.html">Clients</a><a href="scr-003-invoice-list.html">Invoices</a><a href="scr-009-status-dashboard.html">Status</a></nav>
+  </header>
+  <main>
+    <p class="feat-tag">SCR-003 · FEAT-002 (Invoice authoring — basic list to find/open invoices)</p>
+    <h1>Invoices</h1>
+    <p><a class="btn" href="scr-004-invoice-editor.html">+ New invoice</a></p>
+    <table>
+      <thead><tr><th>#</th><th>Client</th><th>Amount</th><th>Due</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td><a href="scr-005-invoice-detail.html">INV-1005</a></td><td>Northwind Cafe</td><td>$1,240.00</td><td>2026-08-20</td><td><span class="badge draft">draft</span></td></tr>
+        <tr><td><a href="scr-005-invoice-detail.html">INV-1004</a></td><td>Harbor Dental</td><td>$680.50</td><td>2026-08-18</td><td><span class="badge sent">sent</span></td></tr>
+        <tr><td><a href="scr-005-invoice-detail.html">INV-1003</a></td><td>Rivera Landscaping</td><td>$2,150.00</td><td>2026-08-01</td><td><span class="badge overdue">overdue</span></td></tr>
+        <tr><td><a href="scr-005-invoice-detail.html">INV-1002</a></td><td>Bright Kids Daycare</td><td>$450.00</td><td>2026-07-28</td><td><span class="badge paid">paid</span></td></tr>
+        <tr><td><a href="scr-005-invoice-detail.html">INV-1001</a></td><td>Coastal Print Co</td><td>$95.00</td><td>2026-07-15</td><td><span class="badge paid">paid</span></td></tr>
+      </tbody>
+    </table>
+    <p class="feat-tag coming-soon">Filtering by state &amp; the dedicated overdue dashboard are FEAT-007 (deferred) →
+       <a href="scr-009-status-dashboard.html">Status dashboard</a>.</p>
+    <p><a href="../index.html">← nav frame</a></p>
+  </main>
+</body>
+</html>

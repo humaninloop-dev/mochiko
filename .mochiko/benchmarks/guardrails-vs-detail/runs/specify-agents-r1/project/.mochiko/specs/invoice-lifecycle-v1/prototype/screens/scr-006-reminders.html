@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCR-006 — Overdue reminders</title>
+<link rel="stylesheet" href="../assets/lofi.css">
+</head>
+<body>
+<header class="app">
+  <span class="brand">Ledgerline</span>
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="scr-001-invoice-list.html">Invoices</a>
+    <a href="scr-002-invoice-form.html">New invoice</a>
+  </nav>
+</header>
+<main class="coming-soon">
+  <h1>Overdue reminders <span class="feat-tag">SCR-006 · FEAT-008</span></h1>
+  <div class="coming-soon-banner">FEAT-008 (overdue reminder emails, US-7) is <b>deferred to a
+  fast-follow</b> — not in this selection. Screen kept reachable and greyed; cadence (3/7/14 days)
+  and the per-invoice off toggle are ruled and ready to build next.</div>
+  <div class="card">
+    <h2>Cadence</h2>
+    <p>Reminders email the client automatically at <b>3, 7, and 14 days overdue</b>. They stop as
+    soon as the invoice is paid or voided (US-7).</p>
+    <div class="field">
+      <label>Reminders for INV-1004 (Ortiz Bathroom Co.)</label>
+      <select><option>On (default)</option><option>Off for this invoice</option></select>
+    </div>
+    <p class="muted">Per-invoice off toggle (US-7). Also reachable from the invoice detail.</p>
+  </div>
+  <div class="card">
+    <h2>Reminder activity (INV-1004, overdue)</h2>
+    <ul class="history">
+      <li>3 days overdue — reminder emailed to billing@ortizbath.example</li>
+      <li>7 days overdue — reminder emailed to billing@ortizbath.example</li>
+      <li class="muted">14 days overdue — scheduled</li>
+    </ul>
+  </div>
+</main>
+</body>
+</html>

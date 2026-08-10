@@ -1,0 +1,21 @@
+{
+  "run_id": "specify-body-r1",
+  "command": "plugins/mochiko/commands/specify.md",
+  "feature": "Invoice lifecycle v1 (persona card)",
+  "variant": "body",
+  "replicate": "r1",
+  "start": "2026-08-10T11:07:54Z",
+  "end": "2026-08-10T11:33:00Z",
+  "seed_project": "runs/_seed-project/ copied verbatim to runs/specify-body-r1/project/ (greenfield, empty feature map)",
+  "outcome": "spec accepted by principal; feature map committed (7 in-flight selected, 2 proposed deferred)",
+  "deviations": [
+    "Intent probes were batched into 2 principal spawns (framing + all 6 probes in spawn 1; synthesis confirmation in spawn 2) rather than one spawn per question. analysis-iterative prescribes one-question-at-a-time; batched for tractability without changing the agenda or the confirm-before-authoring gate.",
+    "Two review rounds run (round-1 needs-revision with findings G1-G7; round-2 ready after the clarification-gate revision). The command frames the stress-test as one pass with lead-owned clearing; the re-review was added as an honest re-grade of the revised files, still author != grader (produced from artifact text only).",
+    "Prototype walkability was verified by static href-resolution checking (11 SCR pages, 8 FLOWs, no broken links, no manifest<->HTML drift) instead of a live `bun serve` walk — no bun runtime was invoked in the sandbox. The degrade path (open index.html directly) is the honored viewing mode.",
+    "Scope event (not a protocol deviation): authentication (FEAT-009) was folded into the build by the principal's ruling at the selection gate; backing story US-8 and entry FEAT-009 were authored mid-run after derivation in response, and re-tagged onto the prototype (SCR-010) and manifest (FLOW-001)."
+  ],
+  "not_deviations": [
+    "Single-agent simulation (run-lead plays all seats) — protocol-specified.",
+    "Governing skill BODY loaded from variants/body/ before each seat; references/templates resolved against plugins/ — per the body-arm rule."
+  ]
+}

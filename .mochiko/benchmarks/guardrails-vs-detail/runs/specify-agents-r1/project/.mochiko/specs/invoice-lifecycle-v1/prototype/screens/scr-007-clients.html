@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCR-007 — Clients</title>
+<link rel="stylesheet" href="../assets/lofi.css">
+</head>
+<body>
+<header class="app">
+  <span class="brand">Ledgerline</span>
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="scr-001-invoice-list.html">Invoices</a>
+    <a href="scr-002-invoice-form.html">New invoice</a>
+    <a href="scr-007-clients.html">Clients</a>
+  </nav>
+</header>
+<main>
+  <h1>Clients <span class="feat-tag">SCR-007 · FEAT-007</span></h1>
+  <div class="card">
+    <h2>Add a client</h2>
+    <div class="field"><label>Name</label><input value=""></div>
+    <div class="field"><label>Email</label><input value=""></div>
+    <div class="field"><label>Mailing address (optional)</label><input value=""></div>
+    <p><a class="btn primary" href="scr-007-clients.html">Save client</a></p>
+    <p class="muted">Name + email required; mailing address optional (US-8). No phone/notes in v1.</p>
+  </div>
+  <div class="card">
+    <h2>Saved clients</h2>
+    <table>
+      <thead><tr><th>Name</th><th>Email</th><th></th></tr></thead>
+      <tbody>
+        <tr><td>Cedar Kitchen Remodel LLC</td><td>ap@cedarkitchen.example</td><td><a href="scr-002-invoice-form.html">New invoice</a></td></tr>
+        <tr><td>Ortiz Bathroom Co.</td><td>billing@ortizbath.example</td><td><a href="scr-002-invoice-form.html">New invoice</a></td></tr>
+        <tr><td>Bay Fence &amp; Deck</td><td>pay@bayfence.example</td><td><a href="scr-002-invoice-form.html">New invoice</a></td></tr>
+      </tbody>
+    </table>
+    <p class="muted">Tenant-scoped: only this contractor's clients (US-8).</p>
+  </div>
+</main>
+</body>
+</html>

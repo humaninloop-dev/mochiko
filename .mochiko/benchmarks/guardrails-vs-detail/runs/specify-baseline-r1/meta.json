@@ -1,0 +1,43 @@
+{
+  "run_id": "specify-baseline-r1",
+  "command": "plugins/mochiko/commands/specify.md",
+  "feature": "Ledgerline — Invoice lifecycle v1",
+  "variant": "baseline",
+  "replicate": "r1",
+  "checkpoint": "CP2",
+  "start": "2026-08-10T11:06:00Z",
+  "end": "2026-08-10T11:34:00Z",
+  "skill_body_source": "plugins/mochiko/skills/<name>/SKILL.md",
+  "skill_descriptions": "original",
+  "agent_descriptions": "original (plugins/mochiko/agents/)",
+  "seed": "runs/_seed-project/ copied verbatim to runs/specify-baseline-r1/project/ (Ledgerline post-setup, greenfield, production floor, empty FEATURES.md)",
+  "outcome": "spec accepted; feature map written (4 in-flight spine features + parent, 4 proposed deferred); KM landing complete",
+  "review_verdict_before_disposition": "needs-revision (1 Critical, 5 Important, 4 Minor); all findings ruled and resolved before acceptance",
+  "deviations": [
+    {
+      "type": "within-protocol clarification",
+      "detail": "Intent probes were batched (2-3 related questions per principal spawn) rather than strictly one-question-per-turn. The protocol explicitly permits 'a fresh principal subagent per question batch', so this is within protocol; recorded for transparency. 7 principal spawns total."
+    },
+    {
+      "type": "deviation",
+      "detail": "The adversarial review seat was dispatched as a FRESH independent subagent (mochiko:devils-advocate) that loaded review-specifications and graded strictly from the artifact files + a prototype walk, rather than the run-lead playing the seat itself from artifact text (the protocol's default single-agent mode). Rationale: a genuinely independent grader is a stronger author-not-grader fence than self-grading, which the protocol's independence requirement calls for. Net effect on judged artifacts: the review was more adversarial, not less."
+    },
+    {
+      "type": "housekeeping",
+      "detail": "The staged derivation output (.mochiko/specs/invoice-lifecycle/feature-map-delta/) was removed after the acceptance-time map write, because the live .mochiko/features/ entries are authoritative and the staged copies carried pre-acceptance ('will flip in-flight at acceptance') status lines that would otherwise read as status drift against the live map. The spec's Feature Selection section retains the full derivation record."
+    },
+    {
+      "type": "ordering clarification",
+      "detail": "The FR/SC/edge-case layer (authoring-requirements) was authored in the stories stage, before derivation, because derivation must map every SC-XXX to its verifying feature (per authoring-feature-map's SC re-homing) and therefore requires the SCs to exist. Not a deviation from the command; recorded to make the seat ordering explicit."
+    }
+  ],
+  "artifacts": {
+    "project_root": "runs/specify-baseline-r1/project/",
+    "spec": ".mochiko/specs/invoice-lifecycle/spec.md",
+    "stories": ".mochiko/specs/invoice-lifecycle/stories/US-1.md ... US-8.md",
+    "prototype": ".mochiko/specs/invoice-lifecycle/prototype/ (index.html + 9 screens + assets/lofi.css + README.md)",
+    "feature_map": "FEATURES.md + .mochiko/features/FEAT-001 ... FEAT-009 .md",
+    "specs_index": ".mochiko/specs/index.md",
+    "roadmap_touched": "ROADMAP.md"
+  }
+}

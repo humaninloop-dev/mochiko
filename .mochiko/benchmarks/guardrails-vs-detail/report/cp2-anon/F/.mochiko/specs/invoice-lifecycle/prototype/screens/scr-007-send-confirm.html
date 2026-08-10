@@ -1,0 +1,18 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<title>SCR-007 Send confirmation — Ledgerline</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body>
+<header><span class="brand">Ledgerline</span><nav>
+<a href="scr-002-dashboard.html">Dashboard</a><a href="../index.html">Prototype home</a></nav></header>
+<main>
+<h1>Send invoice #1006 <span class="feat">SCR-007 · US-4</span></h1>
+<div class="card">
+  <p>To: <strong>owner@cedarcafe.com</strong></p>
+  <p>Includes: invoice summary (client, line items, total, due date) + hosted Stripe payment link. No PDF attachment (out of scope).</p>
+  <p class="feat">Email is authenticated (SPF/DKIM/DMARC); a bounce marks the invoice not-delivered and notifies the contractor (US-4 sc3).</p>
+  <form action="scr-006-invoice-detail.html">
+    <p><button class="btn" type="submit">Confirm send</button>
+       <a class="btn secondary" href="scr-006-invoice-detail.html">Cancel</a></p>
+  </form>
+  <p>After sending, status becomes <span class="status st-sent">sent</span>.</p>
+</div>
+</main></body></html>

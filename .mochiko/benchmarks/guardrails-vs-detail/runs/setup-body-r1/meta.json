@@ -1,0 +1,61 @@
+{
+  "run_id": "setup-body-r1",
+  "command": "plugins/mochiko/commands/setup.md",
+  "variant": "body",
+  "replicate": "r1",
+  "mode_simulated": "greenfield /mochiko:setup for Ledgerline (production floor)",
+  "start": "2026-08-10",
+  "end": "2026-08-10",
+  "variant_config": {
+    "skill_bodies": "11 designated skills from variants/body/<name>/SKILL.md; all others from plugins/mochiko/skills/<name>/SKILL.md",
+    "body_skills_that_fired": ["analysis-iterative", "review-governance-intent", "authoring-constitution", "validation-constitution", "authoring-feature-map", "testing-governance-injection"],
+    "body_skills_not_fired": {
+      "analysis-codebase": "greenfield — no codebase to analyze",
+      "authoring-requirements": "specify-run skill, not a setup seat",
+      "authoring-user-stories": "specify-run skill",
+      "authoring-prototype": "specify-run skill",
+      "review-specifications": "specify-run skill"
+    },
+    "skill_descriptions": "original",
+    "agent_descriptions": "original",
+    "references": "always original plugin path"
+  },
+  "outcome": {
+    "governance_version": "1.0.0",
+    "ratified": true,
+    "accepted": true,
+    "validation": "FAIL (initial) -> fix round -> PASS (re-validate)",
+    "flagged_proposals": 0,
+    "waivers": 1,
+    "floor_categories_covered": "4/4 (SEC/TEST/ERR/OBS; TEST numeric-coverage gate waived-with-substitute)",
+    "compliance_modules_attached": 0,
+    "template_modules_adopted": ["knowledge-management (core + CHANGELOG)", "layer-rules", "release-gates"],
+    "feature_map": "greenfield empty scaffold (FEATURES.md)"
+  },
+  "deviations": [
+    {
+      "deviation": "Interrogation batched ~2 agenda dimensions per principal spawn (6 spawns total) instead of strict one-question-per-turn.",
+      "justification": "The single-agent simulation answers the principal only via fresh subagent spawns; the RUN-PROTOCOL explicitly spawns 'a fresh principal subagent per question batch'. Batching bounds spawn count while preserving adaptive coverage. All ten dimensions plus the full deck were worked.",
+      "impact": "None on artifact content; affects only dialogue granularity in transcript.md."
+    },
+    {
+      "deviation": "Cold intent review was performed by the run-lead itself (body loaded, blind angle map built from topic alone, findings produced strictly from the artifact text), not by a separately spawned reviewer; and the default review sizing was 'pair' but executed solo.",
+      "justification": "Per the RUN-PROTOCOL single-agent model, the run-lead plays every seat and honors author!=grader by producing grader output strictly from artifact text. The synthesis Review section records the pair->solo reduction as a simulation constraint. (The Tier-2 constitution validation WAS run as fresh independent subagents, since author!=grader is load-bearing there.)",
+      "impact": "Reduced adversarial independence on the intent review vs a real two-reviewer pair; noted so scoring can weigh it."
+    },
+    {
+      "deviation": "testing-governance-injection body was loaded and the invocation decided, but the empirical injection probe was NOT executed.",
+      "justification": "The probe requires the project to be the harness's active rules root; the benchmark sandbox (runs/setup-body-r1/project/) is not, so a real Write-then-Read injection probe would produce a false result. Deferred to BACKLOG as a re-runnable standalone finalize offer.",
+      "impact": "Empirical rules-delivery is unverified for this run (static validation PASSED); recorded, not silently skipped."
+    },
+    {
+      "deviation": "Plan-approval gate for producing seats was self-approved by the run-lead.",
+      "justification": "Single-agent simulation — the lead is the only actor and the command names the lead as plan approver for the run.",
+      "impact": "None on artifact content."
+    }
+  ],
+  "artifacts": {
+    "project_files": 22,
+    "capture_files": ["transcript.md", "invocations.json", "costs.json", "meta.json"]
+  }
+}

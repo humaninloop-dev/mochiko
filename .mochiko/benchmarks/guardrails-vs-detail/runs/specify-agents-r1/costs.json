@@ -1,0 +1,42 @@
+{
+  "run_id": "specify-agents-r1",
+  "principal_spawns": 9,
+  "principal_spawns_detail": {
+    "fresh_agent_spawns": 7,
+    "resume_continuations": 2,
+    "spawn_log": [
+      "intent Q1 (scope spine) — fresh",
+      "intent Q2 (overdue/partial arbitrate + UX-bearing) — resume of Q1 agent",
+      "intent Q3 (delivery/depth/constraints) — fresh",
+      "intent synthesis confirmation — fresh",
+      "prototype walk-through — fresh",
+      "prototype fold-back rulings (reminders cadence/clients/void/overdue) — resume of walk agent",
+      "feature selection ruling — fresh",
+      "review clarifications (link delivery/overdue-viewed/numbering/wrong-invoice) — fresh",
+      "spec acceptance — fresh"
+    ],
+    "note": "All principal answers came from fresh subagents (or resumes) reading fixture/persona-card.md; the run-lead never read the card (D3 contamination fence held)."
+  },
+  "non_principal_subagents": {
+    "devils-advocate_grader": 1,
+    "note": "One independent devils-advocate subagent produced the adversarial review from the artifact files only (author != grader independence)."
+  },
+  "approx_tokens_in_skills_loaded": 96803,
+  "skill_bytes_loaded_detail": {
+    "lead_loads_bytes": 83088,
+    "lead_loads": {
+      "analysis-iterative/SKILL.md": 12367,
+      "analysis-iterative/SPECIFICATION-INPUT.md": 4773,
+      "authoring-feature-map/SKILL.md": 28789,
+      "authoring-user-stories/SKILL.md": 6339,
+      "authoring-requirements/SKILL.md": 5702,
+      "authoring-prototype/SKILL.md": 11403,
+      "review-specifications/SKILL.md": 13715
+    },
+    "grader_subagent_loads_bytes": 13715,
+    "grader_subagent_loads": {"review-specifications/SKILL.md": 13715},
+    "total_bytes": 96803,
+    "note": "Agents variant: all skill bodies are the originals in plugins/mochiko/skills/. review-specifications was loaded twice (lead pre-read + independent grader subagent). Skill reference sub-files beyond SPECIFICATION-INPUT.md were not loaded. Templates and governance/rules files read by the lead are NOT counted here (skill bytes only, per protocol)."
+  },
+  "wall_notes": "Run executed synchronously by the run-lead. Principal spawns ~12-40s each; the independent devils-advocate review ~8min (20 tool uses, full spec + 8 stories + delta + prototype walk). One fix round after a critical-gaps verdict; no second full grader pass (lead-cleared per the command's lead-owned loop)."
+}

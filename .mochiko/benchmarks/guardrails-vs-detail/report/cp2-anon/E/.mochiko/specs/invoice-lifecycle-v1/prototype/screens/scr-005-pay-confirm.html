@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCR-005 — Payment confirmed</title>
+<link rel="stylesheet" href="../assets/lofi.css">
+</head>
+<body>
+<header class="app">
+  <span class="brand">Ledgerline</span>
+  <span class="muted" style="margin-left:auto">client view</span>
+</header>
+<main>
+  <h1>Payment received <span class="badge paid">paid</span> <span class="feat-tag">SCR-005 · FEAT-003</span></h1>
+  <div class="card">
+    <p>Thanks — your payment of <b>$3,751.88</b> for INV-1005 was received.</p>
+    <p class="muted">Behind the scenes: Stripe sends a signature-verified payment event; Ledgerline
+    reconciles the invoice to <b>paid</b> exactly once. A replayed event does not double-apply
+    (US-2). The contractor sees <b>paid</b> without re-checking Stripe.</p>
+    <p><a class="btn" href="scr-008-invoice-detail-paid.html">(Contractor) back to invoice detail — now paid</a></p>
+  </div>
+</main>
+</body>
+</html>

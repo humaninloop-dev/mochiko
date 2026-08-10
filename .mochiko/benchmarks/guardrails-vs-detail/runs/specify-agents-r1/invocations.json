@@ -1,0 +1,105 @@
+{
+  "run_id": "specify-agents-r1",
+  "variant": "agents",
+  "note": "Seats staffed from the SLIM (example-free) agent descriptions in variants/agents/ for the 6 varied roles; plugins/mochiko/agents/ descriptions for the rest. Skill bodies + skill descriptions all originals. from_description_only=true means the routing decision used only the agent frontmatter description (no body).",
+
+  "staffing_decisions": [
+    {
+      "seat_moment": "Intent stage — feature-map read agenda",
+      "agent_chosen": "product-manager",
+      "agents_considered": ["product-manager", "requirements-analyst", "principal-architect"],
+      "route_basis": "PM description: 'owns the product's capability layer … stewarding the living feature map as a source of truth'. The intent-stage map read is feature-map work; RA elicits, PA is governance — neither owns the map.",
+      "from_description_only": true
+    },
+    {
+      "seat_moment": "Intent stage — adaptive elicitation probes (scope/delivery/depth/UX-bearing/constraints/out-of-scope)",
+      "agent_chosen": "lead (run-lead)",
+      "agents_considered": ["requirements-analyst", "principal-architect", "lead"],
+      "route_basis": "The command frames the intent stage as lead-run ('run the adaptive-probe agenda via mochiko:analysis-iterative'); analysis-iterative is a general/shared skill not on any roster agent's skills list. requirements-analyst ('eliciting requirements through structured discovery') was the strongest agent candidate and is noted, but elicitation-facilitation stayed lead-owned per the harness.",
+      "from_description_only": true
+    },
+    {
+      "seat_moment": "Stories authoring (US-1..US-8)",
+      "agent_chosen": "requirements-analyst",
+      "agents_considered": ["requirements-analyst", "product-manager"],
+      "route_basis": "RA description: 'producing clear user stories with measurable acceptance criteria'. PM owns which capabilities, not how stories are written.",
+      "from_description_only": true
+    },
+    {
+      "seat_moment": "Prototype — screens & flows, lockstep",
+      "agent_chosen": "product-engineer",
+      "agents_considered": ["product-engineer", "requirements-analyst"],
+      "route_basis": "PE description: 'clickable low-fidelity prototypes that render user stories as screens and walkable flows, honoring an existing design system'. Exact match; unique fit.",
+      "from_description_only": true
+    },
+    {
+      "seat_moment": "Requirements layer (FR/SC/edge cases/entities) + spec.md assembly",
+      "agent_chosen": "requirements-analyst",
+      "agents_considered": ["requirements-analyst", "technical-analyst"],
+      "route_basis": "RA 'authors the specification'. technical-analyst is plan-time TR/data-model/contracts — business FR/SC belongs to RA at specify time.",
+      "from_description_only": true
+    },
+    {
+      "seat_moment": "Derivation + filter + selection card",
+      "agent_chosen": "product-manager",
+      "agents_considered": ["product-manager", "requirements-analyst"],
+      "route_basis": "PM description: 'deriving durable features from user stories … filtering stories that don't earn a place on the map … advising which capabilities align with the product need now. Recommends … selection is always the user's ruling'. Exact match.",
+      "from_description_only": true
+    },
+    {
+      "seat_moment": "Selection ruling",
+      "agent_chosen": "USER (principal)",
+      "agents_considered": [],
+      "route_basis": "Reserved to the user by the command ('the feature selection'). PM recommends, user rules.",
+      "from_description_only": false
+    },
+    {
+      "seat_moment": "Adversarial spec review (spec + stories + derivation + map delta + prototype walk)",
+      "agent_chosen": "devils-advocate",
+      "agents_considered": ["devils-advocate", "validator", "principal-architect"],
+      "route_basis": "DA description: 'stress-tests specifications by finding gaps … severity-ranked gap report … recommended verdict'. validator's only skill is validation-constitution (governance-scoped, not specs); principal-architect's review lane is cross-artifact feasibility of plan artifacts, not spec gaps. DA is the spec grader.",
+      "from_description_only": true
+    },
+    {
+      "seat_moment": "Disposition / clearing of the gap report",
+      "agent_chosen": "lead (run-lead)",
+      "agents_considered": ["lead", "principal-architect"],
+      "route_basis": "review-specifications states the clearing decision is the lead's; the command reserves the loop to the lead. principal-architect considered but its skills don't cover spec-review disposition; not staffed.",
+      "from_description_only": true
+    },
+    {
+      "seat_moment": "Spec acceptance (accept/amend/reject)",
+      "agent_chosen": "USER (principal)",
+      "agents_considered": [],
+      "route_basis": "Reserved to the user by the command; acceptance executes the map write.",
+      "from_description_only": false
+    },
+    {
+      "seat_moment": "Acceptance-time map write batch + KM landing",
+      "agent_chosen": "product-manager",
+      "agents_considered": ["product-manager"],
+      "route_basis": "PM owns authoring-feature-map; the write executes at acceptance per the skill's write rules. Spec-index stewardship rides the same skill.",
+      "from_description_only": true
+    }
+  ],
+
+  "roster_staffed": ["product-manager", "requirements-analyst", "product-engineer", "devils-advocate"],
+  "roster_not_staffed": {
+    "validator": "Its only skill is validation-constitution (governance-scoped). Spec grading is devils-advocate via review-specifications. Correct route, not a miss.",
+    "principal-architect": "Its skills (authoring-constitution, analysis-codebase, review-feasibility, authoring-architecture) are not exercised at specify time; disposition is lead-owned. Correct, not a miss.",
+    "technical-analyst / system-architect / staff-engineer / qa-engineer": "Plan-time and implement-time seats, not specify. Not applicable this command."
+  },
+  "route_misses": [],
+  "primary_measurement": "specify staffed 4 of the varied roster — requirements-analyst, product-manager, product-engineer, devils-advocate — the four named 'at minimum'. Setup (per the arm design) staffed principal-architect + validator + devils-advocate, i.e. of the varied set only devils-advocate. specify therefore staffs strictly MORE of the varied roster than setup (+requirements-analyst, +product-manager, +product-engineer). PASS.",
+
+  "skill_invocations": [
+    {"moment": "Intent stage — adaptive probes / spec-input enrichment", "skill_chosen": "analysis-iterative", "skills_considered": ["analysis-iterative", "review-specifications"], "from_description_only": true},
+    {"moment": "Intent stage — feature-map read agenda", "skill_chosen": "authoring-feature-map", "skills_considered": ["authoring-feature-map"], "from_description_only": true},
+    {"moment": "Stories authoring", "skill_chosen": "authoring-user-stories", "skills_considered": ["authoring-user-stories", "analysis-iterative"], "from_description_only": true},
+    {"moment": "Prototype screens & flows", "skill_chosen": "authoring-prototype", "skills_considered": ["authoring-prototype"], "from_description_only": true},
+    {"moment": "Requirements layer (FR/SC/edge/entities)", "skill_chosen": "authoring-requirements", "skills_considered": ["authoring-requirements", "authoring-technical-requirements"], "from_description_only": true},
+    {"moment": "Derivation + filter + selection card + acceptance-time write", "skill_chosen": "authoring-feature-map", "skills_considered": ["authoring-feature-map"], "from_description_only": true},
+    {"moment": "Adversarial spec review (independent devils-advocate subagent)", "skill_chosen": "review-specifications", "skills_considered": ["review-specifications", "review-plan-artifacts"], "from_description_only": true},
+    {"moment": "KM landing grooming check at command boundary", "skill_chosen": "grooming-operating-docs (invariant sweep; no cap tripped → no rewrite)", "skills_considered": ["grooming-operating-docs"], "from_description_only": true}
+  ]
+}

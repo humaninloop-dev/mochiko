@@ -1,0 +1,63 @@
+{
+  "run_id": "setup-baseline-r1",
+  "variant": "baseline",
+  "note": "from_description_only=true means the seat/skill routing decision was made from the skill roster descriptions (originals in the baseline arm), per the command. Considered-not-invoked decisions are logged so the descriptions/agents arms can be diffed against them.",
+  "invocations": [
+    {
+      "moment": "mode determination (empty workspace, no code)",
+      "skill_chosen": null,
+      "skills_considered": ["analysis-codebase"],
+      "from_description_only": true,
+      "outcome": "greenfield — analysis-codebase NOT invoked (brownfield-only; no codebase to detect)"
+    },
+    {
+      "moment": "pre-authoring interrogation session (ten agenda dimensions + asserted floor + arbitrated deck)",
+      "skill_chosen": "mochiko:analysis-iterative",
+      "skills_considered": ["mochiko:analysis-iterative", "mochiko:review-specifications"],
+      "from_description_only": true,
+      "outcome": "invoked; body loaded from plugins/mochiko/skills/analysis-iterative/SKILL.md. review-specifications rejected (post-draft spec review, not pre-spec input conditioning)"
+    },
+    {
+      "moment": "cold pre-ratification intent review of the frozen synthesis (blind-map dispatch, solo)",
+      "skill_chosen": "mochiko:review-governance-intent",
+      "skills_considered": ["mochiko:review-governance-intent", "mochiko:review-brainstorm"],
+      "from_description_only": true,
+      "outcome": "invoked; body loaded. review-brainstorm rejected (grades brainstorm decision records, not a setup governance synthesis)"
+    },
+    {
+      "moment": "author the governance surface set from the ratified synthesis (greenfield)",
+      "skill_chosen": "mochiko:authoring-constitution",
+      "skills_considered": ["mochiko:authoring-constitution"],
+      "from_description_only": true,
+      "outcome": "invoked; body loaded. Greenfield branch (no analysis-codebase input)"
+    },
+    {
+      "moment": "independent grade of the authored surface set (default FAIL)",
+      "skill_chosen": "mochiko:validation-constitution",
+      "skills_considered": ["mochiko:validation-constitution", "mochiko:review-governance-intent"],
+      "from_description_only": true,
+      "outcome": "invoked; body loaded. review-governance-intent rejected (grades the synthesis upstream, not the authored set). Round 1 FAIL (GI-028 missing three-part ledger entry) -> fix -> round 2 PASS"
+    },
+    {
+      "moment": "finalize: greenfield feature-map scaffold (empty index)",
+      "skill_chosen": "mochiko:authoring-feature-map",
+      "skills_considered": ["mochiko:authoring-feature-map"],
+      "from_description_only": true,
+      "outcome": "invoked; body loaded. Greenfield -> empty FEATURES.md index + .mochiko/features/ scaffolded; no derivation (no stories yet)"
+    },
+    {
+      "moment": "finalize: knowledge-management bundle scaffolding + invariants",
+      "skill_chosen": null,
+      "skills_considered": ["mochiko:grooming-operating-docs"],
+      "from_description_only": true,
+      "outcome": "KM scaffolding is lead-executed from the module template (not a skill invocation). grooming-operating-docs considered but NOT invoked — vacuous at zero sessions/items, no cap tripped"
+    },
+    {
+      "moment": "finalize: operating-docs rules-file injection verification",
+      "skill_chosen": null,
+      "skills_considered": ["mochiko:testing-governance-injection"],
+      "from_description_only": true,
+      "outcome": "considered but NOT executed — no live injection harness in the simulation sandbox (recorded as a deviation in meta.json)"
+    }
+  ]
+}

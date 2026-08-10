@@ -1,0 +1,28 @@
+{
+  "run_id": "specify-agents-r1",
+  "command": "plugins/mochiko/commands/specify.md",
+  "feature": "Invoice lifecycle v1 (from fixture/persona-card.md, elicited via principal spawns)",
+  "variant": "agents",
+  "replicate": "r1",
+  "output_dir": ".mochiko/benchmarks/guardrails-vs-detail/runs/specify-agents-r1/",
+  "project_root": ".mochiko/benchmarks/guardrails-vs-detail/runs/specify-agents-r1/project/",
+  "seeded_from": "runs/_seed-project/ (copied verbatim)",
+  "date": "2026-08-10",
+  "start": "2026-08-10 (run open — seed copy + governing-doc reads)",
+  "end": "2026-08-10 (spec accepted; map write + KM landing complete; captures written)",
+  "variant_config": {
+    "agent_descriptions": "variants/agents/ for the 6 varied roles (principal-architect, validator, devils-advocate, requirements-analyst, product-manager, product-engineer); plugins/mochiko/agents/ for the rest",
+    "skill_bodies": "all originals (plugins/mochiko/skills/)",
+    "skill_descriptions": "all originals",
+    "observation": "The variants/agents/ descriptions are the slim/example-free core paragraphs (the plugin originals carry <example> blocks); routing was decided from these slim descriptions alone."
+  },
+  "outcome": "Spec accepted by the principal. 8 features derived; 5 selected for v1 (FEAT-007/001/005/003/004, parent FEAT-002 in-flight), 2 deferred to fast-follow (FEAT-006 void, FEAT-008 reminders). Adversarial review returned critical-gaps (2 Critical, 6 Important, 2 Minor); all resolved in one fix round + 4 user clarifications; lead-cleared; accepted.",
+  "deviations": [
+    "Single-agent simulation (per RUN-PROTOCOL simulation shape): the run-lead played every producing/grading seat itself, loading the governing skill body from plugins/mochiko/skills/ before each seat. The adversarial review was dispatched to a genuinely independent devils-advocate subagent reading only the artifact files (stronger than required, to honor author != grader).",
+    "Lockstep prototype clicking compressed: rather than the user clicking each story's screens as each individual story lands, the principal walked a consolidated initial screen set once (FLOW-001/002/003) and then a fold-back round after scope-changing reactions. The lockstep DISCIPLINE (skeleton-first, screens authored with their story, walk-before-handoff) was followed; only the per-story user-click cadence was consolidated into two principal walk/fold spawns.",
+    "Adversarial review round-2: after the fix round, no second full grader subagent pass was run. The two Criticals and all Importants/Minors were verified closed by the lead against the fix list (mechanically re-walking the prototype and re-reading the edited artifacts) — a bounded-loop clearing decision the command explicitly assigns to the lead.",
+    "Principal reply delivery mechanics: the two resumed background principal subagents emitted their in-character replies via SendMessage addressed to 'run-spec-agents-r1'; the replies were captured from the subagent transcript files. No card contamination — the run-lead never read fixture/persona-card.md (D3 fence held).",
+    "Shared task list (#21-#30) is advanced concurrently by the other three specify run-leads; this run tracked its own progress via these capture artifacts rather than the shared tasks to avoid cross-run collisions."
+  ],
+  "capture_artifacts": ["project/", "transcript.md", "invocations.json", "costs.json", "meta.json"]
+}

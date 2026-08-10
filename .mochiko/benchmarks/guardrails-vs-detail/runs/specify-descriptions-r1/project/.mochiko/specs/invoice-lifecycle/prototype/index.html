@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ledgerline — Invoice lifecycle v1 (low-fi prototype)</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header>
+  <span class="brand">Ledgerline</span>
+  <nav aria-label="Prototype navigation">
+    <a href="screens/scr-002-dashboard.html">Dashboard</a>
+    <a href="screens/scr-003-clients.html">Clients</a>
+    <a href="screens/scr-005-invoice-editor.html">New invoice</a>
+    <a href="screens/scr-001-signin.html">Sign in</a>
+  </nav>
+</header>
+<main>
+  <h1>Invoice lifecycle v1 — clickable low-fi prototype</h1>
+  <p class="banner">Low-fidelity specification artifact. Grey boxes and placeholder data are
+  deliberate — <strong>flows and the data each screen shows are binding; pixels are advisory.</strong>
+  Serve with <code>bunx serve prototype/</code> or open this file directly (no server needed).</p>
+
+  <div class="card">
+    <h2>Screens (nav frame)</h2>
+    <ul>
+      <li><a href="screens/scr-001-signin.html">SCR-001 — Sign in / Sign up</a> (US-1)</li>
+      <li><a href="screens/scr-002-dashboard.html">SCR-002 — Invoice dashboard &amp; status view</a> (US-8)</li>
+      <li><a href="screens/scr-003-clients.html">SCR-003 — Clients list</a> (US-2)</li>
+      <li><a href="screens/scr-004-client-form.html">SCR-004 — Client form (new / edit)</a> (US-2)</li>
+      <li><a href="screens/scr-005-invoice-editor.html">SCR-005 — Invoice editor (draft)</a> (US-3)</li>
+      <li><a href="screens/scr-006-invoice-detail.html">SCR-006 — Invoice detail &amp; status timeline</a> (US-4/5/6)</li>
+      <li><a href="screens/scr-007-send-confirm.html">SCR-007 — Send invoice confirmation</a> (US-4)</li>
+      <li><a href="screens/scr-008-hosted-pay.html">SCR-008 — Hosted payment page (client-facing)</a> (US-5)</li>
+      <li><a href="screens/scr-009-reminder-settings.html">SCR-009 — Reminder settings</a> (US-7)</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Key flows (click through)</h2>
+    <ol>
+      <li>FLOW-001 Sign up → dashboard: <a href="screens/scr-001-signin.html">start</a></li>
+      <li>FLOW-004 Draft an invoice with a total: <a href="screens/scr-005-invoice-editor.html">start</a></li>
+      <li>FLOW-005 Send invoice with payment link: <a href="screens/scr-006-invoice-detail.html">start</a></li>
+      <li>FLOW-006 Client pays online → paid: <a href="screens/scr-008-hosted-pay.html">start</a></li>
+      <li>FLOW-007 Mark paid manually: <a href="screens/scr-006-invoice-detail.html">start</a></li>
+      <li>FLOW-008 Dashboard filter overdue: <a href="screens/scr-002-dashboard.html">start</a></li>
+    </ol>
+  </div>
+</main>
+</body>
+</html>

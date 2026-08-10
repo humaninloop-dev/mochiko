@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>SCR-007 · Payment (Stripe hosted) — Ledgerline</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <header class="appbar"><span class="brand">Ledgerline</span></header>
+  <main>
+    <p class="feat-tag">SCR-007 · FEAT-005 (Online payment) · EXTERNAL — Stripe-hosted, not our UI</p>
+    <h1>Pay invoice INV-1005</h1>
+    <div class="card external">
+      <p>This page is a stand-in for <strong>Stripe's hosted checkout</strong>. Ledgerline never renders
+         card fields or handles card data; the client reaches this from the email payment link.</p>
+      <p>Amount due: <strong>$1,345.40</strong> to Dana (Ledgerline)</p>
+      <label>Card number</label><input value="•••• •••• •••• 4242 (Stripe test)">
+      <p>
+        <a class="btn" href="scr-008-payment-confirmation.html">Pay $1,345.40</a>
+        <a class="btn secondary" href="scr-005-invoice-detail.html">Cancel (returns unpaid — US-4 scenario 3)</a>
+      </p>
+    </div>
+    <div class="banner">On success Stripe fires a signed webhook; the invoice flips to paid from that
+      confirmed event, not from this redirect (US-4 scenario 1). Duplicate events are idempotent (scenario 2).</div>
+  </main>
+</body>
+</html>

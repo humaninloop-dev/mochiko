@@ -1,0 +1,25 @@
+{
+  "run_id": "specify-descriptions-r1",
+  "variant": "descriptions",
+  "principal_spawns": 6,
+  "principal_spawns_detail": "1 fresh principal subagent (agentId ac7d369f61766fd9b) + 5 resumes via SendMessage (each carried the card + full dialogue in the subagent's own context). Batches: (1) discovery + Who/Problem/Value; (2) scope/delivery/rigor/UX/constraints/success; (3) intent-synthesis confirmation; (4) priority-screen prototype click-through; (5) disposition product rulings; (6) final acceptance. The run-lead never read the card (D3 fence intact).",
+  "reviewer_spawns": 2,
+  "reviewer_spawns_detail": "1 fresh mochiko:devils-advocate subagent (agentId afc567289252f4559) for the adversarial spec review + 1 resume for the delta re-review after revision.",
+  "approx_tokens_in_skills_loaded": 82495,
+  "skills_loaded_bytes_breakdown": {
+    "analysis-iterative/SKILL.md": 12033,
+    "analysis-iterative/SPECIFICATION-INPUT.md": 4773,
+    "analysis-iterative/ENRICHMENT.md": 2405,
+    "authoring-feature-map/SKILL.md": 27795,
+    "authoring-user-stories/SKILL.md": 6202,
+    "authoring-prototype/SKILL.md": 10890,
+    "authoring-requirements/SKILL.md": 5529,
+    "review-specifications/SKILL.md": 12868
+  },
+  "roster_description_bytes_read": 5533,
+  "roster_description_note": "11 cluster-skill slim frontmatter descriptions read once to build the roster (the arm's decision surface). Small relative to bodies — this is the point of the descriptions arm.",
+  "templates_loaded_bytes": 11077,
+  "templates_note": "spec-template.md, feature-entry-template.md, features-index-template.md — templates are not skill bodies; excluded from approx_tokens_in_skills_loaded, reported separately.",
+  "project_rules_read_note": "Also read (project context, not skill bodies): payment-integrity.md, accessibility.md, tenant-isolation.md, operating-docs.md, output-style.md as obligated author-brief reads; CLAUDE.md governance region, FEATURES.md, ROADMAP.md, DECISIONS.md, specs/index.md, BACKLOG.md, knowledge-management.md.",
+  "wall_notes": "Single-agent simulation. Sub-reference files (SPECIFICATION-INPUT.md, ENRICHMENT.md) not present in the variant dir (only SKILL.md is) — loaded from the original plugin path since bodies are byte-identical in this arm; counted in the byte total. authoring-feature-map is the heaviest body loaded (27,795 B) and was routed 3x (intent read, derivation, acceptance write) but counted once (single body load)."
+}

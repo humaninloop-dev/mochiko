@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ledgerline — Invoice Lifecycle (low-fi prototype)</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="appbar">
+    <span class="brand">Ledgerline</span>
+    <nav>
+      <a href="screens/scr-001-client-list.html">Clients</a>
+      <a href="screens/scr-003-invoice-list.html">Invoices</a>
+      <a href="screens/scr-009-status-dashboard.html">Status</a>
+    </nav>
+  </header>
+  <main>
+    <h1>Invoice Lifecycle — clickable low-fi prototype</h1>
+    <p>Low-fidelity, throwaway spec artifact. Flows and data shape are binding; pixels are advisory.
+       Serve with <code>bunx serve .</code> from this folder, or open this file directly (no server needed).</p>
+
+    <div class="card">
+      <h2>Nav frame — every screen is reachable from here</h2>
+      <ul>
+        <li><a href="screens/scr-010-login.html">SCR-010 · Login</a> — FEAT-009 (Authentication)</li>
+        <li><a href="screens/scr-001-client-list.html">SCR-001 · Client list</a> — FEAT-001</li>
+        <li><a href="screens/scr-002-client-form.html">SCR-002 · Client form</a> — FEAT-001</li>
+        <li><a href="screens/scr-003-invoice-list.html">SCR-003 · Invoice list</a> — FEAT-002</li>
+        <li><a href="screens/scr-004-invoice-editor.html">SCR-004 · Invoice editor</a> — FEAT-002</li>
+        <li><a href="screens/scr-005-invoice-detail.html">SCR-005 · Invoice detail / status</a> — FEAT-002 (+ send/mark-paid/reminder actions)</li>
+        <li><a href="screens/scr-011-email-preview.html">SCR-011 · Email preview (before send)</a> — FEAT-003</li>
+        <li><a href="screens/scr-006-send-confirmation.html">SCR-006 · Send confirmation</a> — FEAT-003</li>
+        <li><a href="screens/scr-007-stripe-checkout.html">SCR-007 · Stripe hosted checkout</a> — FEAT-005 (external)</li>
+        <li><a href="screens/scr-008-payment-confirmation.html">SCR-008 · Payment confirmation</a> — FEAT-005</li>
+        <li><a href="screens/scr-009-status-dashboard.html">SCR-009 · Status dashboard</a> — FEAT-007 (deferred, coming-soon)</li>
+      </ul>
+    </div>
+
+    <div class="banner">Deferred features (not in the first-build selection) are shown greyed &amp;
+      labelled <em>coming-soon</em> so navigation never dead-ends: SCR-009 (status dashboard, FEAT-007)
+      and the reminder indicator on SCR-005 (FEAT-008).</div>
+
+    <p><a class="btn" href="screens/scr-010-login.html">Start walkthrough →</a></p>
+  </main>
+  <footer>Ledgerline · invoice-lifecycle spec · prototype manifest: see spec.md § Screens &amp; Flows</footer>
+</body>
+</html>

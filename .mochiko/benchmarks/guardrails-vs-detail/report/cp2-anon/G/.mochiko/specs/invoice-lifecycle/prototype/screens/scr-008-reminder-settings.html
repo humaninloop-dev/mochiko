@@ -1,0 +1,26 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<title>SCR-008 Reminder settings</title><link rel="stylesheet" href="../assets/lofi.css"></head>
+<body>
+<header class="app"><strong>Ledgerline</strong><nav class="app" aria-label="Primary">
+<a href="scr-002-invoice-list.html">Invoices</a><a href="scr-003-clients.html">Clients</a>
+<a href="scr-008-reminder-settings.html">Reminders</a><a href="scr-001-signin.html">Sign out</a></nav></header>
+<main>
+<h1>Reminder cadence <span class="feat">[SCR-008 · FEAT-009]</span></h1>
+<div class="banner coming-soon">FEAT-009 (automated reminders) is deferred — this screen is
+  coming-soon until that feature is selected. Shown so the founder can react to concrete cadence
+  options before locking (intent stage explicitly flagged reminder cadence + overdue as the two
+  to see in the prototype).</div>
+<div class="card coming-soon">
+<form action="scr-002-invoice-list.html">
+  <label for="c1">First reminder</label>
+  <select id="c1" name="c1"><option>On due date</option><option>3 days after due</option><option>7 days after due</option></select>
+  <label for="c2">Repeat every</label>
+  <select id="c2" name="c2"><option>7 days</option><option>14 days</option><option>Do not repeat</option></select>
+  <label for="c3">Stop after</label>
+  <select id="c3" name="c3"><option>3 reminders</option><option>5 reminders</option><option>Until paid</option></select>
+  <button class="btn" type="submit">Save cadence</button>
+</form>
+<p class="feat">Reminders stop immediately on payment, online or manual (US-8 scenario 2).</p>
+</div>
+<p><a href="../index.html">← screen map</a></p>
+</main></body></html>

@@ -1,0 +1,43 @@
+{
+  "run_id": "setup-agents-r1",
+  "variant": "agents",
+  "principal_spawns": 9,
+  "principal_spawn_breakdown": [
+    "batch1 dimensions 1-3 (identity/facts/type)",
+    "batch2 dimensions 4-6 (risk/team/practices)",
+    "batch3 dimensions 7-8 (KM/deployment)",
+    "batch4 dimensions 9-10 (values/exclusions)",
+    "deck arbitration (BE-HEX/BE-SRP/BE-DEP)",
+    "cold-review survivor rulings (7 findings)",
+    "idempotency explore-now beat (GI-021)",
+    "synthesis ratification (edit-then-confirm)",
+    "final surface-set acceptance"
+  ],
+  "approx_tokens_in_skills_loaded": 157983,
+  "skills_loaded_bytes_detail": {
+    "skill_bodies_SKILL_md": {
+      "analysis-iterative": 12367,
+      "authoring-constitution": 21156,
+      "review-governance-intent": 15052,
+      "validation-constitution": 13615,
+      "authoring-feature-map": 28789,
+      "subtotal": 90979
+    },
+    "references_and_templates_loaded": {
+      "authoring-constitution/references/INTERROGATION-AGENDA.md": 10209,
+      "authoring-constitution/references/catalog/universal-floor.md": 3627,
+      "authoring-constitution/references/catalog/backend-service.md": 8246,
+      "authoring-constitution/references/catalog/README.md": 5059,
+      "authoring-constitution/references/DOMAIN-DEPENDENCIES.md": 4896,
+      "authoring-constitution/references/ESSENTIAL-FLOOR.md": 7375,
+      "templates/governance-surfaces-template.md": 10957,
+      "templates/constitution-modules/knowledge-management.md": 12683,
+      "templates/constitution-modules/release-gates.md": 1973,
+      "templates/features-index-template.md": 1979,
+      "subtotal": 67004
+    },
+    "total_bytes_loaded": 157983,
+    "note": "The token proxy is total bytes loaded (skill bodies + the references/templates a seat must read to do its work). Skill-body-only subtotal (90979) reported separately for the arm comparison. governance-intent-template.md (5223 bytes) was read to author the synthesis but is a run-machinery template, not a skill body; excluded from the skill-load proxy. The setup.md command text and the 10 agent frontmatter reads are variant-setup inputs, not skill bodies, and are excluded."
+  },
+  "wall_notes": "Single-agent simulation. 9 principal subagent spawns (each fresh, card + dialogue-so-far + new questions). Interrogation batched into 5 principal spawns (4 dimension batches + deck) rather than one-per-turn to bound spawn count; review/explore/ratify/accept were 4 more. Cold intent review sized solo (not the default pair), reducing one reviewer spawn."
+}

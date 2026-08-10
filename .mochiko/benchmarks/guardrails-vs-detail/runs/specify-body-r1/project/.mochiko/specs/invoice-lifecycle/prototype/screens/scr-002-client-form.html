@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>SCR-002 · New client — Ledgerline</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <header class="appbar"><span class="brand">Ledgerline</span>
+    <nav><a href="scr-001-client-list.html">Clients</a><a href="scr-003-invoice-list.html">Invoices</a><a href="scr-009-status-dashboard.html">Status</a></nav>
+  </header>
+  <main>
+    <p class="feat-tag">SCR-002 · FEAT-001 (Client management)</p>
+    <h1>New client</h1>
+    <div class="card">
+      <label>Name *</label><input value="">
+      <span class="field-error">Name is required (shown when submitted empty — US-1 scenario 2)</span>
+      <label>Email *</label><input value="">
+      <span class="field-error">Enter a valid email (shown on malformed input — US-1 scenario 2)</span>
+      <label>Business name (optional)</label><input value="">
+      <p>
+        <a class="btn" href="scr-001-client-list.html">Save client</a>
+        <a class="btn secondary" href="scr-001-client-list.html">Cancel</a>
+      </p>
+    </div>
+    <p><a href="scr-001-client-list.html">← back to clients</a></p>
+  </main>
+</body>
+</html>

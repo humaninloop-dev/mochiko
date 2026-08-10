@@ -1,0 +1,21 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<title>SCR-009 Hosted payment (client-facing)</title><link rel="stylesheet" href="../assets/lofi.css"></head>
+<body>
+<header class="app"><strong>Secure checkout</strong> <span class="feat">(processor-hosted — Ledgerline never sees card data)</span></header>
+<main>
+<h1>Pay invoice INV-1007 <span class="feat">[SCR-009 · FEAT-005]</span></h1>
+<div class="banner">This page stands in for the processor's hosted checkout. Ledgerline never
+  renders or receives a card number; the contractor is never in this flow. Shown only so the
+  end-to-end pay path is walkable.</div>
+<div class="card">
+  <div>Acme Reno owes <strong>$1,320.65</strong> to Dana (Ledgerline)</div>
+  <label for="card">Card number (on processor's page, not Ledgerline's)</label>
+  <input id="card" name="card" value="•••• •••• •••• 4242">
+  <form action="scr-006-invoice-detail.html">
+    <button class="btn" type="submit">Pay $1,320.65</button>
+  </form>
+  <p class="feat">On success the processor notifies Ledgerline; invoice flips to
+    <span class="status paid">paid</span> exactly once, verified + idempotent (US-5 scenarios 1–3).</p>
+</div>
+<p><a href="../index.html">← screen map</a></p>
+</main></body></html>

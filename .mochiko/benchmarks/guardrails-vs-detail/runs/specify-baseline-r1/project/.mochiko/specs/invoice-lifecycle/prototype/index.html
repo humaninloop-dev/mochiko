@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ledgerline — Invoice lifecycle v1 (low-fi prototype)</title>
+  <link rel="stylesheet" href="assets/lofi.css">
+</head>
+<body>
+  <header class="app">
+    <strong>Ledgerline</strong>
+    <nav class="app" aria-label="Primary">
+      <a href="screens/scr-002-invoice-list.html">Invoices</a>
+      <a href="screens/scr-003-clients.html">Clients</a>
+      <a href="screens/scr-008-reminder-settings.html">Reminders</a>
+      <a href="screens/scr-001-signin.html">Sign out</a>
+    </nav>
+  </header>
+  <main>
+    <h1>Invoice lifecycle v1 — clickable low-fi prototype</h1>
+    <div class="banner">Low-fidelity specification artifact. Flows and data shape are binding;
+      layout and styling are advisory and will change at build time. Serve with
+      <code>bunx serve .</code> or open this file directly (no server required).</div>
+
+    <div class="card">
+      <h2>Screen map</h2>
+      <ul>
+        <li><a href="screens/scr-001-signin.html">SCR-001 — Sign in / Register</a></li>
+        <li><a href="screens/scr-002-invoice-list.html">SCR-002 — Invoice list (dashboard)</a></li>
+        <li><a href="screens/scr-003-clients.html">SCR-003 — Clients list</a></li>
+        <li><a href="screens/scr-004-client-editor.html">SCR-004 — Client editor</a></li>
+        <li><a href="screens/scr-005-invoice-editor.html">SCR-005 — Invoice draft editor</a></li>
+        <li><a href="screens/scr-006-invoice-detail.html">SCR-006 — Invoice detail &amp; status</a></li>
+        <li><a href="screens/scr-007-send-confirm.html">SCR-007 — Send confirmation</a></li>
+        <li><a href="screens/scr-008-reminder-settings.html">SCR-008 — Reminder cadence settings</a></li>
+        <li><a href="screens/scr-009-hosted-payment.html">SCR-009 — Hosted payment page (client-facing)</a></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Primary path</h2>
+      <p>Sign in → add a client → draft an invoice → send → client pays → invoice flips to paid.</p>
+      <a class="btn" href="screens/scr-001-signin.html">Start at sign in</a>
+    </div>
+  </main>
+</body>
+</html>

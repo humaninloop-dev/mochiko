@@ -1,0 +1,14 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<title>SCR-008 Hosted payment — Ledgerline</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body>
+<header><span class="brand">Ledgerline</span> <span class="feat">client-facing — no account, Stripe hosted</span></header>
+<main>
+<h1>Pay invoice #1006 <span class="feat">SCR-008 · US-5</span></h1>
+<div class="card">
+  <p>Cedar Cafe — amount due: <span class="total">$800.00</span></p>
+  <p class="feat">Card entry happens on Stripe's hosted page (no raw card data touches Ledgerline).</p>
+  <p><a class="btn" href="scr-006-invoice-detail.html?paid=stripe">Pay $800.00 (Stripe test) → back to invoice, now paid</a></p>
+  <p class="feat">On payment, Stripe's signed webhook reconciles the invoice to <span class="status st-paid">paid</span>
+  exactly once; a replayed event changes nothing (US-5 sc1/sc2).</p>
+</div>
+</main></body></html>

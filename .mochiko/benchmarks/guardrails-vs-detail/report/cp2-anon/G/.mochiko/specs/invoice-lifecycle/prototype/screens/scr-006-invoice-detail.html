@@ -1,0 +1,27 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<title>SCR-006 Invoice detail</title><link rel="stylesheet" href="../assets/lofi.css"></head>
+<body>
+<header class="app"><strong>Ledgerline</strong><nav class="app" aria-label="Primary">
+<a href="scr-002-invoice-list.html">Invoices</a><a href="scr-003-clients.html">Clients</a>
+<a href="scr-008-reminder-settings.html">Reminders</a><a href="scr-001-signin.html">Sign out</a></nav></header>
+<main>
+<h1>INV-1007 — Acme Reno <span class="status sent">sent</span>
+  <span class="feat">[SCR-006 · FEAT-003 send · FEAT-005 online pay · FEAT-006 manual paid (deferred) · FEAT-008 status (deferred)]</span></h1>
+<div class="card">
+  <div>Total: <strong>$1,320.65</strong> · Due 2026-08-20</div>
+  <a class="btn" href="scr-007-send-confirm.html">Re-send</a>
+  <a class="btn" href="scr-009-hosted-payment.html">Open payment page (client view)</a>
+  <a class="btn secondary coming-soon" href="#">Mark paid manually (FEAT-006, deferred)</a>
+</div>
+<div class="card">
+<h2>History (append-only audit trail)</h2>
+<table>
+<thead><tr><th>When</th><th>Event</th><th>Actor</th></tr></thead>
+<tbody>
+<tr><td>2026-08-10 09:12</td><td>Draft created</td><td>Dana</td></tr>
+<tr><td>2026-08-10 09:20</td><td>Sent to ap@acmereno.com</td><td>Dana</td></tr>
+<tr><td class="coming-soon">2026-08-11 14:03</td><td class="coming-soon">Viewed by client (FEAT-008, deferred)</td><td class="coming-soon">system</td></tr>
+</tbody></table>
+</div>
+<p><a href="../index.html">← screen map</a></p>
+</main></body></html>

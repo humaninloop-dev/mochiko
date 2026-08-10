@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCR-002 — Create / edit invoice</title>
+<link rel="stylesheet" href="../assets/lofi.css">
+</head>
+<body>
+<header class="app">
+  <span class="brand">Ledgerline</span>
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="scr-001-invoice-list.html">Invoices</a>
+    <a href="scr-002-invoice-form.html">New invoice</a>
+  </nav>
+</header>
+<main>
+  <h1>New invoice <span class="feat-tag">SCR-002 · FEAT-001</span></h1>
+  <div class="card">
+    <div class="field">
+      <label>Client (choose a saved client — <a href="scr-007-clients.html">manage clients</a>)</label>
+      <select>
+        <option>Cedar Kitchen Remodel LLC — ap@cedarkitchen.example</option>
+        <option>Ortiz Bathroom Co. — billing@ortizbath.example</option>
+        <option>Bay Fence &amp; Deck — pay@bayfence.example</option>
+        <option>+ Add a new client…</option>
+      </select>
+    </div>
+    <p class="muted">Clients are saved records (US-8) — no retyping the AP email each invoice.</p>
+    <h2>Line items</h2>
+    <table>
+      <thead><tr><th>Description</th><th>Qty</th><th>Unit price</th><th>Amount</th></tr></thead>
+      <tbody>
+        <tr><td>Cabinet installation — labor</td><td>24 hrs</td><td>$95.00</td><td>$2,280.00</td></tr>
+        <tr><td>Countertop template &amp; fit</td><td>1</td><td>$1,170.00</td><td>$1,170.00</td></tr>
+      </tbody>
+    </table>
+    <p><a class="btn" href="#">+ Add line item</a></p>
+    <div class="field"><label>Due date</label><input value="2026-08-20"></div>
+    <div class="field"><label>Tax rate (%)</label><input value="8.75"></div>
+    <table style="max-width:340px">
+      <tr><td>Subtotal</td><td>$3,450.00</td></tr>
+      <tr><td>Tax (8.75%)</td><td>$301.88</td></tr>
+      <tr><th>Total</th><th>$3,751.88</th></tr>
+    </table>
+    <p class="muted">All money stored as Decimal cents; no floating point. Tax is computed into the
+    total (US-1).</p>
+    <p>
+      <a class="btn" href="scr-003-invoice-detail.html">Save draft</a>
+      <a class="btn primary" href="scr-003-invoice-detail.html">Save &amp; send</a>
+    </p>
+  </div>
+  <p class="muted">FLOW-001 — save a draft (stays editable) or send (status → sent, generates a
+  client payment link). US-1.</p>
+</main>
+</body>
+</html>

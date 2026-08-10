@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>SCR-004 · Invoice editor — Ledgerline</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <header class="appbar"><span class="brand">Ledgerline</span>
+    <nav><a href="scr-001-client-list.html">Clients</a><a href="scr-003-invoice-list.html">Invoices</a><a href="scr-009-status-dashboard.html">Status</a></nav>
+  </header>
+  <main>
+    <p class="feat-tag">SCR-004 · FEAT-002 (Invoice authoring)</p>
+    <h1>New invoice</h1>
+    <div class="card">
+      <label>Client</label>
+      <select><option>Northwind Cafe</option><option>Harbor Dental</option><option>Rivera Landscaping</option></select>
+      <a class="btn secondary" href="scr-002-client-form.html">+ Add new client (inline)</a>
+      <span class="feat-tag">FEAT-001 affordance surfaced in-editor (lockstep feedback)</span>
+      <label>Invoice number</label><input value="INV-1005">
+      <label>Due date</label><input value="2026-08-25">
+      <label>Memo / notes (optional)</label><input value="Thanks — net 15. Job at 123 Elm St.">
+      <h2>Line items</h2>
+      <table>
+        <thead><tr><th>Description</th><th>Qty</th><th>Unit price</th><th>Amount</th></tr></thead>
+        <tbody>
+          <tr><td>Site visit &amp; assessment</td><td>1</td><td>$150.00</td><td>$150.00</td></tr>
+          <tr><td>Labor (hrs)</td><td>8</td><td>$95.00</td><td>$760.00</td></tr>
+          <tr><td>Materials</td><td>1</td><td>$330.00</td><td>$330.00</td></tr>
+        </tbody>
+      </table>
+      <p><a class="btn secondary" href="scr-004-invoice-editor.html">+ Add line</a></p>
+      <span class="field-error">Quantity must be a positive number; price must be numeric (US-2 scenario 2)</span>
+      <label>Tax rate</label><input value="8.5%">
+      <div class="card">
+        <div>Subtotal: <strong>$1,240.00</strong></div>
+        <div>Tax (8.5%): <strong>$105.40</strong></div>
+        <div>Total: <strong>$1,345.40</strong> <span class="feat-tag">(computed exactly with Decimal — advisory display)</span></div>
+      </div>
+      <p>
+        <a class="btn" href="scr-005-invoice-detail.html">Save draft</a>
+        <a class="btn secondary" href="scr-003-invoice-list.html">Cancel</a>
+      </p>
+    </div>
+    <p><a href="scr-003-invoice-list.html">← back to invoices</a></p>
+  </main>
+</body>
+</html>

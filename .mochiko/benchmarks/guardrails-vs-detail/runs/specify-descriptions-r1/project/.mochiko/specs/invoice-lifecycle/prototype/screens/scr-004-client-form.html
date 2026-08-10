@@ -1,0 +1,18 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<title>SCR-004 Client form — Ledgerline</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body>
+<header><span class="brand">Ledgerline</span><nav>
+<a href="scr-002-dashboard.html">Dashboard</a><a href="scr-003-clients.html">Clients</a>
+<a href="../index.html">Prototype home</a></nav></header>
+<main>
+<h1>Add / edit client <span class="feat">SCR-004 · US-2</span></h1>
+<div class="card">
+<form action="scr-003-clients.html">
+  <label for="nm">Client name</label><input id="nm" type="text" value="Cedar Cafe">
+  <label for="cem">Email</label><input id="cem" type="email" value="owner@cedarcafe.com">
+  <p class="feat">Malformed email → save rejected with a field-level message (US-2 sc3).</p>
+  <p><button class="btn" type="submit">Save client</button>
+     <a class="btn secondary" href="scr-003-clients.html">Cancel</a></p>
+</form>
+</div>
+</main></body></html>

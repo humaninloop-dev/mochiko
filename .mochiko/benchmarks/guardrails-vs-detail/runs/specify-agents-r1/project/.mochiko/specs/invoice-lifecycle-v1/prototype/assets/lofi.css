@@ -1,0 +1,52 @@
+/* Low-fi prototype styles for Invoice lifecycle v1.
+   Deliberately rough: grey boxes, system fonts, no polish. Pixels are advisory;
+   flows and data shape are binding. No design system exists in the project yet
+   (greenfield, no frontend/ built), so these are neutral grey-box defaults. */
+
+* { box-sizing: border-box; }
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  margin: 0; color: #222; background: #f4f4f4; line-height: 1.4;
+}
+header.app {
+  background: #ddd; border-bottom: 2px solid #bbb; padding: 10px 16px;
+  display: flex; gap: 16px; align-items: center;
+}
+header.app .brand { font-weight: 700; }
+header.app nav a { margin-right: 12px; text-decoration: none; color: #114; }
+header.app nav a:hover { text-decoration: underline; }
+main { padding: 16px; max-width: 900px; margin: 0 auto; }
+h1, h2 { margin: 8px 0; }
+.card { background: #fff; border: 1px solid #ccc; padding: 12px; margin: 10px 0; }
+table { border-collapse: collapse; width: 100%; background: #fff; }
+th, td { border: 1px solid #ccc; padding: 6px 8px; text-align: left; font-size: 14px; }
+th { background: #eee; }
+a.row-link { text-decoration: none; color: #114; }
+.btn {
+  display: inline-block; background: #ccc; border: 1px solid #999;
+  padding: 6px 12px; margin: 4px 4px 4px 0; text-decoration: none; color: #111;
+  cursor: pointer; font-size: 14px;
+}
+.btn.primary { background: #b9c7e6; border-color: #6a7fb0; }
+.badge { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 12px; border: 1px solid #999; }
+.badge.draft { background: #eee; }
+.badge.sent { background: #e6eefc; }
+.badge.viewed { background: #e6f7ec; }
+.badge.paid { background: #cdefd6; }
+.badge.void { background: #eee; color: #888; text-decoration: line-through; }
+.badge.overdue { background: #fbe0e0; border-color: #c88; }
+.coming-soon {
+  opacity: 0.55; position: relative;
+}
+.coming-soon-banner {
+  background: #ffe9b3; border: 1px dashed #c0982a; padding: 4px 8px; font-size: 13px; margin: 6px 0;
+}
+.rejected-banner {
+  background: #f0d0d0; border: 1px dashed #a33; padding: 4px 8px; font-size: 13px; margin: 6px 0;
+}
+.feat-tag { font-size: 11px; color: #666; }
+.field { margin: 6px 0; }
+.field label { display: block; font-size: 13px; color: #444; }
+.field input, .field select { width: 100%; max-width: 340px; padding: 4px; border: 1px solid #bbb; }
+.muted { color: #777; font-size: 13px; }
+ul.history { font-size: 13px; }

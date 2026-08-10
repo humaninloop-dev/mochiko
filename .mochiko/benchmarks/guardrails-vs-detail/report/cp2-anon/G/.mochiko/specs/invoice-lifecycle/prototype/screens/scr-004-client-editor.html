@@ -1,0 +1,20 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<title>SCR-004 Client editor</title><link rel="stylesheet" href="../assets/lofi.css"></head>
+<body>
+<header class="app"><strong>Ledgerline</strong><nav class="app" aria-label="Primary">
+<a href="scr-002-invoice-list.html">Invoices</a><a href="scr-003-clients.html">Clients</a>
+<a href="scr-008-reminder-settings.html">Reminders</a><a href="scr-001-signin.html">Sign out</a></nav></header>
+<main>
+<h1>Edit client <span class="feat">[SCR-004 · FEAT-002]</span></h1>
+<div class="card">
+<form action="scr-003-clients.html">
+  <label for="cn">Name (required)</label><input id="cn" name="cn" value="Acme Reno">
+  <label for="ce">Email (required)</label><input id="ce" name="ce" type="email" value="ap@acmereno.com">
+  <label for="ca">Billing address</label><input id="ca" name="ca" value="12 Oak St, Austin, TX">
+  <button class="btn" type="submit">Save client</button>
+  <a class="btn secondary" href="scr-003-clients.html">Cancel</a>
+</form>
+<p class="feat">Blank required field → save refused with the missing field named (US-2 scenario 3).</p>
+</div>
+<p><a href="../index.html">← screen map</a></p>
+</main></body></html>

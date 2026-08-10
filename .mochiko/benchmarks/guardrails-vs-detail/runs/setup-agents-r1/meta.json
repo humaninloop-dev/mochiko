@@ -1,0 +1,48 @@
+{
+  "run_id": "setup-agents-r1",
+  "command": "plugins/mochiko/commands/setup.md",
+  "variant": "agents",
+  "replicate": "r1",
+  "mode_simulated": "greenfield",
+  "project": "Ledgerline (invoicing/payment SaaS for solo US contractors)",
+  "start": "2026-08-10",
+  "end": "2026-08-10",
+  "output_dir": ".mochiko/benchmarks/guardrails-vs-detail/runs/setup-agents-r1/",
+  "arm_config": {
+    "agent_descriptions": "variants/agents/ (example-free) for: principal-architect, validator, devils-advocate, requirements-analyst, product-manager, product-engineer; plugins/mochiko/agents/ (originals, example-carrying) for: qa-engineer, staff-engineer, system-architect, technical-analyst",
+    "skill_bodies": "plugins/mochiko/skills/ (all originals)",
+    "skill_descriptions": "originals",
+    "roster_built_from": "frontmatter description + skills: line ONLY, before any seat staffed"
+  },
+  "goal_conditions_met": {
+    "synthesis_ratified_before_authoring": true,
+    "trace_closes_across_set": true,
+    "independently_graded_from_files": true,
+    "region_semver_bumped": "v0.1.0",
+    "user_accepted_with_trace_summary": true,
+    "feature_map_at_close": "greenfield empty scaffold (FEATURES.md)",
+    "floor_categories_accounted": "4/4 principled (0 waived)"
+  },
+  "validation": {
+    "verdict_first_pass": "FAIL (1 issue: ledger Governance Floor header mixed template modules into the compliance-modules field; must mirror region stamp)",
+    "fix_round": "applied — header corrected to 'Modules (compliance): none'; template modules moved to note + module record",
+    "verdict_after_fix": "PASS"
+  },
+  "route_check": {
+    "seats_staffed": 5,
+    "route_misses": 0,
+    "seats_never_staffed": 0,
+    "detail": "All setup seats routed correctly from example-free descriptions; see invocations.json staffing_decisions."
+  },
+  "deviations": [
+    "Interrogation batched into grouped principal spawns (4 dimension batches + 1 deck-arbitration spawn) rather than one-question-per-turn per spawn. Protocol permits per-question-BATCH spawns; batching was used to bound spawn count. Adaptivity preserved across batches (each spawn received the full dialogue-so-far), but within a batch multiple questions were posed together, a minor departure from analysis-iterative's strict one-question-per-turn ideal.",
+    "Cold intent review sized down from the default first-ratification PAIR to a SOLO reviewer. This is within the command's lead-sizing latitude; the departure-trail rationale is recorded in the synthesis Review section (greenfield, small element count, zero floor waivers -> little coverage-lens blind surface; solo cold read retained for the two load-bearing intents). No cross-examination phase (solo).",
+    "Single-agent simulation (per RUN-PROTOCOL): the run-lead played every seat, including the cold reviewer whose Phase 0 blind map is, in a real run, built by a separately-spawned agent with no session exposure. Here the blind map was performed best-effort from topic-only reasoning by the same agent that authored the synthesis; this is the inherent independence limitation the protocol acknowledges for single-agent simulation, mitigated by grading grader outputs strictly from artifact text.",
+    "authoring-feature-map skill body (28789 bytes) was loaded and counted though the greenfield deliverable is a mechanical empty-index scaffold; a real run consults it, so it is counted honestly rather than skipped.",
+    "governance-intent-template.md (5223 bytes) was read to author the synthesis but excluded from the skill-load byte proxy (run-machinery template, not a skill body)."
+  ],
+  "artifacts_written": {
+    "project": "20 files under project/ (see costs.json / find output in transcript)",
+    "capture": ["transcript.md", "invocations.json", "costs.json", "meta.json"]
+  }
+}

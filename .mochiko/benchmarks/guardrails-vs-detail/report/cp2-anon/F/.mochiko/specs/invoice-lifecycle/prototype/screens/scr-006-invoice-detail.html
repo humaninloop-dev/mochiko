@@ -1,0 +1,29 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<title>SCR-006 Invoice detail — Ledgerline</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body>
+<header><span class="brand">Ledgerline</span><nav>
+<a href="scr-002-dashboard.html">Dashboard</a><a href="scr-003-clients.html">Clients</a>
+<a href="../index.html">Prototype home</a></nav></header>
+<main>
+<h1>Invoice #1006 — Cedar Cafe <span class="feat">SCR-006 · US-4/5/6 · priority screen</span></h1>
+<p>Status: <span class="status st-sent">sent</span> &nbsp; Amount: <span class="total">$800.00</span> &nbsp; Due: 2026-08-14</p>
+<p>Reminders: <strong>on</strong> — next reminder Aug 17 &nbsp;<a href="scr-009-reminder-settings.html">change</a> <span class="feat">reminder state on detail, not buried (US-7 folded reaction)</span></p>
+<div class="card">
+  <h2>Status timeline</h2>
+  <ul class="timeline">
+    <li>draft — 2026-08-02</li>
+    <li>sent — 2026-08-03 (emailed to owner@cedarcafe.com, payment link included)</li>
+    <li class="coming-soon">viewed — pending</li>
+    <li class="coming-soon">paid — pending</li>
+  </ul>
+</div>
+<div class="card">
+  <h2>Actions</h2>
+  <p><a class="btn" href="scr-007-send-confirm.html">Send / resend with payment link</a> <span class="feat">FLOW-005 · US-4</span></p>
+  <p><a class="btn" href="scr-008-hosted-pay.html">Open hosted payment page (as client)</a> <span class="feat">FLOW-006 · US-5</span></p>
+  <p><a class="btn secondary" href="scr-006-invoice-detail.html?paid=manual">Mark paid manually (check / cash)</a> <span class="feat">FLOW-007 · US-6</span></p>
+  <p><a class="btn secondary" href="scr-006-invoice-detail.html?void=1">Void invoice</a> <span class="feat">terminal, audit-logged; no editing after send (FR-016)</span></p>
+  <p><a href="scr-009-reminder-settings.html">Reminder settings</a> <span class="feat">US-7</span></p>
+  <p class="feat">Marking paid (manual or online) deactivates the live payment link so no second real payment is taken (FR-015). Manual mark-paid: enter date + method; already-paid blocks a duplicate; every state change writes an append-only audit row (US-6).</p>
+</div>
+</main></body></html>

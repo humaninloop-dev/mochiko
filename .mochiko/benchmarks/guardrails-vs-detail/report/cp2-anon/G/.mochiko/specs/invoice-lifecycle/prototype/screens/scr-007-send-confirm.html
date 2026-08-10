@@ -1,0 +1,20 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<title>SCR-007 Send confirmation</title><link rel="stylesheet" href="../assets/lofi.css"></head>
+<body>
+<header class="app"><strong>Ledgerline</strong><nav class="app" aria-label="Primary">
+<a href="scr-002-invoice-list.html">Invoices</a><a href="scr-003-clients.html">Clients</a>
+<a href="scr-008-reminder-settings.html">Reminders</a><a href="scr-001-signin.html">Sign out</a></nav></header>
+<main>
+<h1>Send invoice <span class="feat">[SCR-007 · FEAT-003]</span></h1>
+<div class="card">
+<form action="scr-006-invoice-detail.html">
+  <label for="to">To</label><input id="to" name="to" type="email" value="ap@acmereno.com">
+  <label for="subj">Subject</label><input id="subj" name="subj" value="Invoice INV-1007 from Ledgerline">
+  <p>Email includes the invoice and a hosted payment link. On send, status → <span class="status sent">sent</span>.</p>
+  <button class="btn" type="submit">Send now</button>
+  <a class="btn secondary" href="scr-005-invoice-editor.html">Back to draft</a>
+</form>
+<p class="feat">Hard bounce → contractor notified undelivered, invoice not shown paid (US-4 scenario 2).</p>
+</div>
+<p><a href="../index.html">← screen map</a></p>
+</main></body></html>

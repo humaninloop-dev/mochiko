@@ -1,0 +1,64 @@
+{
+  "run_id": "specify-body-r1",
+  "variant": "body",
+  "note": "Descriptions are ORIGINAL in the body arm; each invocation was decided from the original skill description, then the BODY was loaded from variants/body/<name>/SKILL.md. from_description_only reflects the DECISION-to-invoke step.",
+  "invocations": [
+    {
+      "moment": "Intent stage — enrich the sparse 'invoice lifecycle v1' description into scope/delivery/depth/UX-bearing/constraints/out-of-scope before authoring; run the map-read agenda",
+      "skill_chosen": "mochiko:analysis-iterative",
+      "skills_considered": ["mochiko:analysis-iterative", "mochiko:review-specifications", "mochiko:authoring-requirements"],
+      "from_description_only": true,
+      "body_loaded_from": "variants/body/analysis-iterative/SKILL.md",
+      "references_loaded": ["plugins/mochiko/skills/analysis-iterative/SPECIFICATION-INPUT.md", "plugins/mochiko/skills/analysis-iterative/ENRICHMENT.md"]
+    },
+    {
+      "moment": "Intent stage — feature-map read agenda (FEATURES.md + territory entries); greenfield empty scaffold confirmed, not a missing-map defect",
+      "skill_chosen": "mochiko:authoring-feature-map",
+      "skills_considered": ["mochiko:authoring-feature-map"],
+      "from_description_only": true,
+      "body_loaded_from": "variants/body/authoring-feature-map/SKILL.md"
+    },
+    {
+      "moment": "Author prioritized user stories (US-1..US-7 in lockstep; US-8 added post-selection) with Given/When/Then + independent tests",
+      "skill_chosen": "mochiko:authoring-user-stories",
+      "skills_considered": ["mochiko:authoring-user-stories", "mochiko:authoring-requirements"],
+      "from_description_only": true,
+      "body_loaded_from": "variants/body/authoring-user-stories/SKILL.md"
+    },
+    {
+      "moment": "Author clickable low-fi prototype + Screens & Flows manifest (skeleton frame, then screens in story lockstep; FEAT re-tag at derivation)",
+      "skill_chosen": "mochiko:authoring-prototype",
+      "skills_considered": ["mochiko:authoring-prototype"],
+      "from_description_only": true,
+      "body_loaded_from": "variants/body/authoring-prototype/SKILL.md"
+    },
+    {
+      "moment": "Derivation + filter (product-manager seat) — derive features from stories against the actual map, run the story filter, map SC-XXX to features, prepare the selection card, stage entries+deltas",
+      "skill_chosen": "mochiko:authoring-feature-map",
+      "skills_considered": ["mochiko:authoring-feature-map"],
+      "from_description_only": true,
+      "body_loaded_from": "variants/body/authoring-feature-map/SKILL.md"
+    },
+    {
+      "moment": "Author the functional-requirements layer (FR-001..FR-030), edge cases, measurable SC-001..SC-007, key entities, assumptions/open-questions",
+      "skill_chosen": "mochiko:authoring-requirements",
+      "skills_considered": ["mochiko:authoring-requirements", "mochiko:authoring-technical-requirements"],
+      "from_description_only": true,
+      "body_loaded_from": "variants/body/authoring-requirements/SKILL.md"
+    },
+    {
+      "moment": "Adversarial stress-test (devils-advocate seat) — grade spec + stories + derivation + map delta in one pass and walk the prototype; artifact text only, default FAIL",
+      "skill_chosen": "mochiko:review-specifications",
+      "skills_considered": ["mochiko:review-specifications", "mochiko:review-brainstorm"],
+      "from_description_only": true,
+      "body_loaded_from": "variants/body/review-specifications/SKILL.md"
+    },
+    {
+      "moment": "Acceptance-time feature-map write batch — flip selected entries to in-flight, write FEATURES.md + per-feature files + specs-index row as one atomic batch",
+      "skill_chosen": "mochiko:authoring-feature-map",
+      "skills_considered": ["mochiko:authoring-feature-map", "mochiko:grooming-operating-docs"],
+      "from_description_only": true,
+      "body_loaded_from": "variants/body/authoring-feature-map/SKILL.md"
+    }
+  ]
+}

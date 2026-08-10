@@ -1,0 +1,79 @@
+{
+  "run_id": "specify-descriptions-r1",
+  "variant": "descriptions",
+  "note": "Every routing decision was made from the SLIM frontmatter descriptions in variants/descriptions/ ALONE (roster built before any body read); the chosen body was then loaded from the variant path (byte-identical to original). from_description_only=true on every fire.",
+  "roster_built_from": "11 cluster-skill slim descriptions (variants/descriptions/*/SKILL.md frontmatter) + original descriptions for all other skills",
+  "invocations": [
+    {
+      "moment": "intent-stage: enrich sparse feature into Who/Problem/Value before spec",
+      "skill_chosen": "analysis-iterative",
+      "skills_considered": ["analysis-iterative", "authoring-feature-map", "analysis-codebase", "authoring-requirements", "review-specifications"],
+      "from_description_only": true,
+      "routing_note": "slim desc names 'enriching a sparse feature description ... before a specification is authored' and 'Distinct from review-specifications ... this skill conditions raw input BEFORE a spec exists' — clean disambiguation from review-specifications on the slim text alone. analysis-codebase rejected (brownfield /mochiko:setup only)."
+    },
+    {
+      "moment": "intent-stage: obligated feature-map read (FEATURES.md + territory entries)",
+      "skill_chosen": "authoring-feature-map",
+      "skills_considered": ["authoring-feature-map", "analysis-iterative", "authoring-user-stories"],
+      "from_description_only": true,
+      "routing_note": "slim desc: 'MUST be invoked when deriving or updating the repo-level feature map ... during a specify run'. Map empty (greenfield first specify) — read surfaced no existing capability."
+    },
+    {
+      "moment": "stories: transform feature into prioritized user stories (P1/P2/P3, G/W/T)",
+      "skill_chosen": "authoring-user-stories",
+      "skills_considered": ["authoring-user-stories", "authoring-requirements", "authoring-prototype", "authoring-feature-map"],
+      "from_description_only": true,
+      "routing_note": "slim desc maps exactly to 'prioritized user stories ... P1/P2/P3 ... Given/When/Then'. Boundary vs authoring-feature-map (map, not stories) and authoring-requirements (FR/SC, not stories) clear on slim text."
+    },
+    {
+      "moment": "lockstep prototyping (UX-bearing): clickable low-fi + Screens & Flows",
+      "skill_chosen": "authoring-prototype",
+      "skills_considered": ["authoring-prototype", "authoring-user-stories"],
+      "from_description_only": true,
+      "routing_note": "UX-bearing ruled yes at intent; slim desc: 'clickable low-fidelity UX prototype ... Screens & Flows section (SCR-XXX, FLOW-XXX)'. Boundary line in slim desc ('NOT the user stories it renders') kept it off story authoring."
+    },
+    {
+      "moment": "derivation + filter (product-manager seat): derive features from stories, run filter, stage entries + selection card",
+      "skill_chosen": "authoring-feature-map",
+      "skills_considered": ["authoring-feature-map", "authoring-user-stories", "review-specifications"],
+      "from_description_only": true,
+      "routing_note": "slim desc: 'propose features', 'feature derivation', 'map delta'. Same skill as the intent map-read; the slim desc's explicit non-boundary ('NOT selection') matched the command's PM-recommends-never-selects rule."
+    },
+    {
+      "moment": "spec authoring (requirements-analyst seat): FR-XXX, edge cases, SC-XXX",
+      "skill_chosen": "authoring-requirements",
+      "skills_considered": ["authoring-requirements", "authoring-user-stories", "authoring-feature-map"],
+      "from_description_only": true,
+      "routing_note": "slim desc: 'functional requirements in FR-XXX ... edge cases ... success criteria in SC-XXX'. Unambiguous on slim text."
+    },
+    {
+      "moment": "adversarial review (devils-advocate seat): independent stress-test of drafted spec + stories + derivation + prototype",
+      "skill_chosen": "review-specifications",
+      "skills_considered": ["review-specifications", "analysis-iterative", "review-feasibility", "review-plan-artifacts"],
+      "from_description_only": true,
+      "routing_note": "slim desc: 'reviewing an already-drafted specification for gaps ... including its feature layer and the Screens & Flows'. Disambiguated from analysis-iterative (pre-spec enrich) by the slim desc's explicit 'For enriching a sparse feature idea before a spec exists, use analysis-iterative'. review-feasibility/review-plan-artifacts rejected (plan-stage, per original descriptions)."
+    },
+    {
+      "moment": "spec acceptance: atomic map write batch (entries -> in-flight, FEATURES.md, specs index)",
+      "skill_chosen": "authoring-feature-map",
+      "skills_considered": ["authoring-feature-map", "grooming-operating-docs"],
+      "from_description_only": true,
+      "routing_note": "acceptance-time write rules carried by authoring-feature-map. grooming-operating-docs considered at the landing boundary but NOT fired: no KM cap/bound tripped (ROADMAP Now 2<=5, Next 1<=7, Later 3<=10; BACKLOG open items 2->4, within watch)."
+    }
+  ],
+  "considered_never_fired": {
+    "analysis-codebase": "brownfield /mochiko:setup only — slim desc scoped it out; greenfield specify never triggered it",
+    "authoring-constitution": "setup governance authoring — out of specify scope per slim desc",
+    "review-governance-intent": "setup intent review — out of scope",
+    "validation-constitution": "setup governance validation — out of scope",
+    "testing-governance-injection": "setup injection probe — out of scope",
+    "grooming-operating-docs": "attached at landing boundary but not fired (no cap/bound tripped)"
+  },
+  "fire_miss_check_vs_command_demands": {
+    "demanded_by_command": ["analysis-iterative", "authoring-feature-map", "authoring-user-stories", "authoring-prototype", "authoring-requirements", "review-specifications"],
+    "fired": ["analysis-iterative", "authoring-feature-map", "authoring-user-stories", "authoring-prototype", "authoring-requirements", "review-specifications"],
+    "misses": [],
+    "wrong_sibling_fires": [],
+    "summary": "Zero fire misses. Every skill the command demanded fired from the slim description alone, including the two deliberately-disjoint disambiguations (analysis-iterative vs review-specifications; authoring-feature-map vs authoring-user-stories). Slim-description routing held on specify's richer 11-skill surface."
+  }
+}

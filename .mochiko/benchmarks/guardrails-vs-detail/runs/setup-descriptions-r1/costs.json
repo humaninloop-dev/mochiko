@@ -1,0 +1,41 @@
+{
+  "run_id": "setup-descriptions-r1",
+  "variant": "descriptions",
+  "principal_spawns": 9,
+  "principal_spawn_breakdown": [
+    "batch1: dimensions 1-3 (identity, fact profile, type)",
+    "batch2: dimensions 4-6 (risk, team, existing practices)",
+    "batch3: dimensions 7-8 (knowledge management, deployment/release)",
+    "batch4: dimensions 9-10 (values, exclusions)",
+    "batch5: floor/deck arbitration (recommend-then-arbitrate) + mints + OBS waiver + module rulings",
+    "coverage-survivor routing (backup/restore; accessibility)",
+    "synthesis ratification",
+    "a11y fact confrontation (S4 fail-safe, post-review correction)",
+    "final acceptance"
+  ],
+  "approx_tokens_in_skills_loaded": 64413,
+  "skill_bytes_detail": {
+    "unit": "bytes of skill SKILL.md bodies loaded from the run's designated path (variants/descriptions/), summed — the protocol's token proxy",
+    "fully_loaded_bodies": {
+      "mochiko:analysis-iterative": 12033,
+      "mochiko:authoring-constitution": 20114,
+      "mochiko:review-governance-intent": 14032,
+      "mochiko:validation-constitution": 12965
+    },
+    "partially_loaded_bodies": {
+      "mochiko:authoring-feature-map": 5269
+    },
+    "sum_skill_bodies": 64413,
+    "roster_build_frontmatter_only": {
+      "note": "Additional bytes read during roster construction: the frontmatter description block of ALL 11 cluster skills (descriptions only, no bodies), to choose from descriptions alone.",
+      "bytes": 5533
+    },
+    "grand_total_skill_related_bytes": 69946
+  },
+  "command_designated_inputs_loaded_bytes": {
+    "note": "NOT skill bodies — the command file + references + templates + validator references the run had to load to execute the seats. Reported separately for transparency; not part of the skill-body token proxy.",
+    "total_bytes": 101077,
+    "includes": "setup.md, INTERROGATION-AGENDA.md, catalog (README+universal-floor+backend-service), ESSENTIAL-FLOOR.md, COMPLIANCE-MODULES.md, DOMAIN-DEPENDENCIES.md, governance-intent-template.md, governance-surfaces-template.md, features-index-template.md, constitution-modules (layer-rules, release-gates, knowledge-management), QUALITY-CHECKLIST.md, ANTI-PATTERNS.md"
+  },
+  "wall_notes": "Single-agent simulation. Skill-body load for the descriptions arm is low because slim descriptions route the choice cheaply; the run's real byte cost is dominated by command-designated references/templates (~101KB), which are identical across arms and independent of the description/body variant. The 4 fully-loaded bodies were byte-identical to originals (per protocol); authoring-feature-map only needed its head (greenfield empty scaffold). testing-governance-injection body was not loaded (sandbox deviation — see meta.json)."
+}

@@ -1,0 +1,27 @@
+{
+  "run_id": "specify-baseline-r1",
+  "principal_spawns": 7,
+  "approx_tokens_in_skills_loaded": 78315,
+  "skill_bytes_detail": {
+    "mochiko:analysis-iterative": 12367,
+    "mochiko:authoring-feature-map": 28789,
+    "mochiko:authoring-user-stories": 6339,
+    "mochiko:authoring-prototype": 11403,
+    "mochiko:authoring-requirements": 5702,
+    "mochiko:review-specifications": 13715
+  },
+  "skill_bytes_note": "Sum of the SKILL.md bodies loaded, each counted once even when invoked at two moments (authoring-feature-map at intent map-read + derivation; authoring-prototype at lockstep + re-tag). Sub-skill reference files (SYNTHESIS.md, SPECIFICATION-INPUT.md, EXAMPLES.md, etc.) were NOT loaded — the command's own agenda carried the intent probes and the SKILL.md bodies sufficed. Templates read (spec-template, feature-entry-template, features-index-template) and command text (specify.md) are not skill bodies and are excluded per the protocol's token proxy definition.",
+  "principal_spawns_detail": [
+    "batch 1 — feature framing + scope + delivery",
+    "batch 2 — depth/rigor + UX-bearing + constraints + out-of-scope",
+    "batch 3 — recommend-then-arbitrate on deferred items",
+    "intent synthesis confirmation",
+    "feature selection ruling",
+    "disposition of the 10 review findings",
+    "final spec acceptance"
+  ],
+  "other_seat_spawns": {
+    "devils-advocate_reviewer": 1
+  },
+  "wall_notes": "Single-agent simulation by the run-lead. The adversarial review was dispatched as a fresh independent subagent (mochiko:devils-advocate) that loaded review-specifications and read only the artifact files + walked the prototype — chosen for a stronger author-not-grader fence than the run-lead self-grading from artifact text. Principal answered only via fresh subagent spawns fed the frozen card; run-lead never read the card."
+}

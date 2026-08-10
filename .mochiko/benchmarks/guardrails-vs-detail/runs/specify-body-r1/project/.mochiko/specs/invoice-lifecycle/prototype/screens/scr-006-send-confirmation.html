@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>SCR-006 · Sent — Ledgerline</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <header class="appbar"><span class="brand">Ledgerline</span>
+    <nav><a href="scr-001-client-list.html">Clients</a><a href="scr-003-invoice-list.html">Invoices</a><a href="scr-009-status-dashboard.html">Status</a></nav>
+  </header>
+  <main>
+    <p class="feat-tag">SCR-006 · FEAT-003 (Invoice delivery)</p>
+    <h1>Invoice sent</h1>
+    <div class="card">
+      <p>INV-1005 emailed to <strong>ap@northwind.example</strong> with a payment link.</p>
+      <p>Invoice is now <span class="badge sent">sent</span>.</p>
+      <div class="banner">If the address bounces, delivery is reported as failed and the invoice is
+        not shown as delivered (US-3 scenario 2).</div>
+      <p><a class="btn" href="scr-005-invoice-detail.html">Back to invoice</a>
+         <a class="btn secondary" href="scr-007-stripe-checkout.html">Open payment link (as client) →</a></p>
+    </div>
+    <p><a href="scr-003-invoice-list.html">← back to invoices</a></p>
+  </main>
+</body>
+</html>

@@ -1,0 +1,27 @@
+/* Low-fi prototype styling — deliberately rough grey-box defaults.
+   No design system exists in the project (greenfield), so this uses neutral
+   system fonts and grey boxes per authoring-prototype invariant 6. Pixels are
+   ADVISORY; flows and data shown are BINDING. */
+* { box-sizing: border-box; }
+body { font-family: system-ui, sans-serif; margin: 0; color: #222; background: #f4f4f4; }
+header { background: #ddd; border-bottom: 2px solid #999; padding: 10px 16px; display: flex; gap: 16px; align-items: center; }
+header .brand { font-weight: bold; }
+nav a { margin-right: 14px; text-decoration: none; color: #333; }
+nav a:focus, main a:focus, button:focus { outline: 3px solid #4477aa; }
+main { padding: 16px; max-width: 900px; margin: 0 auto; }
+.card { background: #fff; border: 1px solid #bbb; padding: 14px; margin: 12px 0; }
+table { border-collapse: collapse; width: 100%; background: #fff; }
+th, td { border: 1px solid #bbb; padding: 6px 10px; text-align: left; }
+th { background: #eaeaea; }
+.status { font-size: 12px; padding: 2px 8px; border: 1px solid #888; border-radius: 10px; }
+.st-draft { background:#eee; } .st-sent { background:#dde7f7; } .st-viewed { background:#e7ddf7; }
+.st-paid { background:#ddf7e1; } .st-overdue { background:#f7dddd; }
+label { display:block; margin: 8px 0 2px; font-size: 13px; }
+input, select { padding: 5px; border: 1px solid #999; width: 100%; max-width: 320px; }
+.btn { display:inline-block; padding: 7px 14px; background:#4477aa; color:#fff; border:none; text-decoration:none; cursor:pointer; }
+.btn.secondary { background:#888; }
+.coming-soon { opacity: 0.45; }
+.banner { background:#fff6d6; border:1px solid #d9c26a; padding:6px 10px; font-size:13px; margin-bottom:10px; }
+.feat { font-size:11px; color:#666; }
+.total { font-weight:bold; }
+.timeline li { margin:3px 0; }

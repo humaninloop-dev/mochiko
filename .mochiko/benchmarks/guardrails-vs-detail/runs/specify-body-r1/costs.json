@@ -1,0 +1,29 @@
+{
+  "run_id": "specify-body-r1",
+  "principal_spawns": 6,
+  "principal_spawn_moments": [
+    "intent interview (framing + 6 intent probes)",
+    "intent synthesis confirmation",
+    "lockstep prototype click-through reactions",
+    "feature selection ruling",
+    "clarification-gate rulings (C1-C5 from review round 1)",
+    "final spec acceptance (accept/amend/reject)"
+  ],
+  "approx_tokens_in_skills_loaded": 52362,
+  "skill_bytes_breakdown": {
+    "note": "Variant token proxy = SKILL.md BODY bytes for the cluster skills, loaded from variants/body/. Each invoked once at decision time; authoring-feature-map was invoked at 3 moments (intent map-read, derivation, acceptance write) but its body is counted ONCE as bytes-of-distinct-body-loaded.",
+    "analysis-iterative": 4829,
+    "authoring-user-stories": 6016,
+    "authoring-prototype": 10080,
+    "authoring-feature-map": 13991,
+    "authoring-requirements": 4726,
+    "review-specifications": 12720,
+    "distinct_body_bytes_total": 52362
+  },
+  "references_and_templates_loaded_bytes": {
+    "note": "Resolved against plugins/ for ALL variants (not part of the variant delta); recorded for completeness, not counted in the variant token proxy.",
+    "analysis-iterative_references": 7178,
+    "templates": 19560
+  },
+  "wall_notes": "Single-agent simulation: run-lead played every seat (requirements-analyst, product-engineer, product-manager, devils-advocate) and loaded the governing body before each seat's work. 6 fresh principal subagent spawns answered from the frozen card (D3 fence: run-lead never read the card). Two review rounds executed (round-1 needs-revision -> user rulings folded -> round-2 ready). Prototype walkability verified by static href resolution (11 screens, 8 flows, zero broken links) rather than a live bun serve."
+}

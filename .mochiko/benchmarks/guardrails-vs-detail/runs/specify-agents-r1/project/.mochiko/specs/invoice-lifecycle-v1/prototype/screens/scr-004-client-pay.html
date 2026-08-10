@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCR-004 — Pay invoice (client)</title>
+<link rel="stylesheet" href="../assets/lofi.css">
+</head>
+<body>
+<header class="app">
+  <span class="brand">Ledgerline</span>
+  <span class="muted" style="margin-left:auto">client view — no account, no login</span>
+</header>
+<main>
+  <h1>Invoice INV-1005 from Priya's Contracting <span class="feat-tag">SCR-004 · FEAT-003</span></h1>
+  <div class="card">
+    <p><b>Amount due:</b> $3,751.88 <span class="muted">(incl. $301.88 tax)</span></p>
+    <p><b>Due date:</b> 2026-08-20</p>
+    <p class="muted">Opening this link marks the invoice <span class="badge viewed">viewed</span>
+    for the contractor (US-2).</p>
+    <p>
+      <a class="btn primary" href="scr-005-pay-confirm.html">Pay with card →</a>
+    </p>
+    <p class="muted">"Pay with card" hands off to <b>Stripe-hosted checkout</b>. The client never
+    creates a Ledgerline account and never authenticates — this pay-without-an-account path is the
+    happy path. Ledgerline never sees or stores raw card data.</p>
+  </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,67 @@
+{
+  "run_id": "specify-baseline-r1",
+  "variant": "baseline",
+  "note": "Skill descriptions used for the invocation decision are the ORIGINAL (baseline) descriptions; bodies loaded from plugins/mochiko/skills/. from_description_only=true means the seat/skill was selected from the roster description alone before its body was loaded.",
+  "invocations": [
+    {
+      "moment": "Intent stage — enrich the sparse feature description into confirmed scope/delivery/depth/UX/constraints/out-of-scope via adaptive probing",
+      "skill_chosen": "mochiko:analysis-iterative",
+      "skills_considered": ["mochiko:analysis-iterative", "mochiko:review-specifications"],
+      "from_description_only": true
+    },
+    {
+      "moment": "Intent stage — obligated existing feature-map read (FEATURES.md + territory entries) before story drafting",
+      "skill_chosen": "mochiko:authoring-feature-map",
+      "skills_considered": ["mochiko:authoring-feature-map"],
+      "from_description_only": true
+    },
+    {
+      "moment": "Story drafting — transform the feature into prioritized, independently testable user stories",
+      "skill_chosen": "mochiko:authoring-user-stories",
+      "skills_considered": ["mochiko:authoring-user-stories", "mochiko:analysis-iterative"],
+      "from_description_only": true
+    },
+    {
+      "moment": "Lockstep prototyping (UX-bearing ruled yes) — clickable low-fi prototype + Screens & Flows manifest",
+      "skill_chosen": "mochiko:authoring-prototype",
+      "skills_considered": ["mochiko:authoring-prototype"],
+      "from_description_only": true
+    },
+    {
+      "moment": "Requirements layer — FR-XXX, edge cases, SC-XXX, key entities (technology-agnostic)",
+      "skill_chosen": "mochiko:authoring-requirements",
+      "skills_considered": ["mochiko:authoring-requirements", "mochiko:authoring-technical-requirements"],
+      "from_description_only": true,
+      "sibling_disambiguation": "Chose authoring-requirements (business FR/SC, spec stage) over authoring-technical-requirements (TR/NFR/constraints, plan stage) — specify does not author the technical layer."
+    },
+    {
+      "moment": "Derivation + filter after stories — derive proposed features, run the story filter, SC re-homing, stage the map delta, prepare the selection card",
+      "skill_chosen": "mochiko:authoring-feature-map",
+      "skills_considered": ["mochiko:authoring-feature-map"],
+      "from_description_only": true,
+      "reload": "Same body already loaded at the intent-stage map read; not re-counted in costs."
+    },
+    {
+      "moment": "Prototype FEAT re-tag pass after derivation — tag SCR/FLOW rows, grey deferred screens coming-soon",
+      "skill_chosen": "mochiko:authoring-prototype",
+      "skills_considered": ["mochiko:authoring-prototype"],
+      "from_description_only": true,
+      "reload": "Same body already loaded at lockstep prototyping; not re-counted in costs."
+    },
+    {
+      "moment": "Adversarial review of the drafted spec — gaps, feature-layer grade (10 checks), Screens & Flows walk (8 checks), verdict",
+      "skill_chosen": "mochiko:review-specifications",
+      "skills_considered": ["mochiko:review-specifications", "mochiko:review-brainstorm"],
+      "from_description_only": true,
+      "sibling_disambiguation": "Chose review-specifications (post-draft spec gap review) over review-brainstorm (decision-record cold review) and analysis-iterative (pre-spec enrichment)."
+    }
+  ],
+  "seat_routing": [
+    {"seat": "intent conversation lead", "persona_dispatched": "run-lead (command-owned, no agent persona)", "expected_baseline": "run-lead"},
+    {"seat": "story authoring", "persona_dispatched": "mochiko:requirements-analyst", "expected_baseline": "mochiko:requirements-analyst"},
+    {"seat": "prototype authoring", "persona_dispatched": "mochiko:product-engineer", "expected_baseline": "mochiko:product-engineer"},
+    {"seat": "requirements authoring", "persona_dispatched": "mochiko:requirements-analyst", "expected_baseline": "mochiko:requirements-analyst"},
+    {"seat": "derivation + filter + selection card", "persona_dispatched": "mochiko:product-manager", "expected_baseline": "mochiko:product-manager"},
+    {"seat": "adversarial spec review", "persona_dispatched": "mochiko:devils-advocate", "expected_baseline": "mochiko:devils-advocate"}
+  ]
+}

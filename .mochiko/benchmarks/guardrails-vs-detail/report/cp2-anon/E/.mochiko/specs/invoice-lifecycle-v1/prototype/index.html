@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ledgerline — Invoice lifecycle v1 (low-fi prototype)</title>
+<link rel="stylesheet" href="assets/lofi.css">
+</head>
+<body>
+<header class="app">
+  <span class="brand">Ledgerline</span>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="screens/scr-001-invoice-list.html">Invoices</a>
+    <a href="screens/scr-002-invoice-form.html">New invoice</a>
+    <a href="screens/scr-007-clients.html">Clients</a>
+    <a href="screens/scr-006-reminders.html">Reminders</a>
+  </nav>
+  <span class="muted" style="margin-left:auto">contractor: priya@example.com</span>
+</header>
+<main>
+  <h1>Invoice lifecycle v1 — clickable low-fi prototype</h1>
+  <p class="muted">Nav skeleton + screens for the "Invoice lifecycle v1" spec. Flows and data
+  shape are binding; layout and styling are deliberately rough and advisory.</p>
+
+  <div class="card">
+    <h2>Screens (SCR)</h2>
+    <ul>
+      <li><a href="screens/scr-001-invoice-list.html">SCR-001 — Invoice list</a> <span class="feat-tag">FEAT-005</span></li>
+      <li><a href="screens/scr-002-invoice-form.html">SCR-002 — Create / edit invoice form</a> <span class="feat-tag">FEAT-001</span></li>
+      <li><a href="screens/scr-003-invoice-detail.html">SCR-003 — Invoice detail</a> <span class="feat-tag">FEAT-001 / FEAT-004 / FEAT-005 / FEAT-006</span></li>
+      <li><a href="screens/scr-004-client-pay.html">SCR-004 — Client payment landing (Stripe-hosted)</a> <span class="feat-tag">FEAT-003</span></li>
+      <li><a href="screens/scr-005-pay-confirm.html">SCR-005 — Payment confirmation</a> <span class="feat-tag">FEAT-003</span></li>
+      <li><a href="screens/scr-006-reminders.html">SCR-006 — Overdue reminders</a> <span class="feat-tag">FEAT-008 · US-7 · deferred (coming-soon)</span></li>
+      <li><a href="screens/scr-007-clients.html">SCR-007 — Clients</a> <span class="feat-tag">FEAT-007 · US-8</span></li>
+      <li><a href="screens/scr-008-invoice-detail-paid.html">SCR-008 — Invoice detail (paid state)</a> <span class="feat-tag">FEAT-005 / FEAT-003 / FEAT-004</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Flows (FLOW)</h2>
+    <ul>
+      <li><b>FLOW-001</b> Create &amp; send — SCR-007 (pick client) → SCR-002 → send → SCR-003 <span class="feat-tag">FEAT-001 · US-1</span></li>
+      <li><b>FLOW-002</b> Client pays via Stripe — SCR-004 (viewed) → Stripe checkout → SCR-005 (paid) → SCR-008 (paid detail) <span class="feat-tag">FEAT-003 · US-2</span></li>
+      <li><b>FLOW-003</b> Monitor status — SCR-001 → SCR-003 (detail + history) <span class="feat-tag">FEAT-005 · US-3</span></li>
+      <li><b>FLOW-004</b> Manual mark-as-paid — SCR-003 → mark paid → SCR-008 (paid detail) <span class="feat-tag">FEAT-004 · US-4</span></li>
+      <li><b>FLOW-005</b> Void invoice — SCR-003 → void → SCR-003 (void) <span class="feat-tag">FEAT-006 · US-5 · deferred (coming-soon)</span></li>
+      <li><b>FLOW-006</b> Overdue at a glance — SCR-001 (overdue badge) <span class="feat-tag">FEAT-005 · US-6</span></li>
+      <li><b>FLOW-007</b> Reminder cadence &amp; toggle — SCR-006 (3/7/14-day activity, per-invoice off) <span class="feat-tag">FEAT-008 · US-7 · deferred (coming-soon)</span></li>
+      <li><b>FLOW-008</b> Add &amp; select a client — SCR-007 (add) → SCR-002 (select) <span class="feat-tag">FEAT-007 · US-8</span></li>
+      <li><b>FLOW-009</b> Edit &amp; resend before payment — SCR-003 (sent, unpaid) → SCR-002 (recompute) → resend → SCR-003 <span class="feat-tag">FEAT-001 · US-1 sc.2</span></li>
+    </ul>
+  </div>
+
+  <p class="muted">Status legend:
+    <span class="badge draft">draft</span>
+    <span class="badge sent">sent</span>
+    <span class="badge viewed">viewed</span>
+    <span class="badge paid">paid</span>
+    <span class="badge overdue">overdue</span>
+    <span class="badge void">void</span>
+  </p>
+</main>
+</body>
+</html>

@@ -1,0 +1,60 @@
+{
+  "run_id": "setup-descriptions-r1",
+  "variant": "descriptions",
+  "note": "Every skill_chosen was decided from the slim frontmatter description alone (roster built first from variants/descriptions/*/SKILL.md frontmatter for the 11 cluster skills, originals for the rest); the body was loaded only AFTER the choice. from_description_only is true for every decision.",
+  "invocations": [
+    {
+      "moment": "Setup start — run the intent interrogation (adaptive one-question elicitation over the 10-dimension agenda, then the catalog deck recommend-then-arbitrate).",
+      "skill_chosen": "mochiko:analysis-iterative",
+      "skills_considered": ["mochiko:analysis-iterative", "mochiko:analysis-codebase", "mochiko:review-specifications"],
+      "from_description_only": true,
+      "rationale": "Slim description names 'collaborative think-through through adaptive, one-question-at-a-time discovery' — exact fit for the interrogation. analysis-codebase rejected (its description scopes it to a BROWNFIELD run; this is greenfield). review-specifications rejected (its description says it reviews an already-drafted spec; the same description explicitly redirects pre-spec conditioning to analysis-iterative).",
+      "interrogation_inputs_note": "The 10-dimension agenda + catalog deck were loaded from the command-designated path authoring-constitution/references/ (INTERROGATION-AGENDA.md, catalog/, DOMAIN-DEPENDENCIES.md) — command inputs, not a skill invocation."
+    },
+    {
+      "moment": "Cold intent review at the sizing gate — stress-test the frozen synthesis before ratification (blind-map dispatch: topic-only map first, then synthesis path).",
+      "skill_chosen": "mochiko:review-governance-intent",
+      "skills_considered": ["mochiko:review-governance-intent", "mochiko:review-brainstorm", "mochiko:review-specifications", "mochiko:validation-constitution"],
+      "from_description_only": true,
+      "rationale": "Slim description is an exact match: 'cold INTENT REVIEWER in a /mochiko:setup run — stress-testing the frozen interrogation synthesis BEFORE the user ratifies it, spawned at the sizing gate.' review-brainstorm rejected (a decision-record reviewer, not setup-scoped). review-specifications rejected (drafted-spec gaps). validation-constitution rejected (grades the AUTHORED surfaces, downstream — nothing authored yet)."
+    },
+    {
+      "moment": "Author the governance surface set from the ratified synthesis (greenfield mode).",
+      "skill_chosen": "mochiko:authoring-constitution",
+      "skills_considered": ["mochiko:authoring-constitution", "mochiko:analysis-codebase", "mochiko:validation-constitution"],
+      "from_description_only": true,
+      "rationale": "Slim description: 'authoring or amending a project's governance surface set from a ratified session synthesis ... the single governance-authoring skill for BOTH greenfield and brownfield.' analysis-codebase rejected (brownfield-only input; no codebase). validation-constitution rejected (it is the independent grader, never the author — its own description says so)."
+    },
+    {
+      "moment": "Validate the drafted surface set (setup loop validate step; default FAIL).",
+      "skill_chosen": "mochiko:validation-constitution",
+      "skills_considered": ["mochiko:validation-constitution", "mochiko:review-governance-intent", "mochiko:testing-governance-injection", "mochiko:review-specifications"],
+      "from_description_only": true,
+      "rationale": "Slim description: 'grade a DRAFTED governance surface set against the quality checklist ... the CLAUDE.md governance region, the .claude/rules/mochiko/ files, and the governance ledger.' review-governance-intent rejected (reviews the synthesis, upstream — a different artifact). testing-governance-injection rejected (empirical delivery, not static structure/trace grade — its own description draws that boundary). review-specifications rejected (spec).",
+      "result": "Round 1 FAIL (default posture): (1) release-gates rollback lacked a time expectation; (2) KM adopted but enforcement surfaces + core artifacts not yet scaffolded (project-pinned copy, ROADMAP/BACKLOG/DECISIONS/ARCHITECTURE/GLOSSARY, RUNBOOK elective, FEATURES, indexes, backlog-trail). Fix round applied; Round 2 PASS."
+    },
+    {
+      "moment": "Scaffold the feature map (greenfield → empty FEATURES.md index).",
+      "skill_chosen": "mochiko:authoring-feature-map",
+      "skills_considered": ["mochiko:authoring-feature-map", "mochiko:authoring-user-stories", "mochiko:review-specifications"],
+      "from_description_only": true,
+      "rationale": "Slim description: authors/maintains the MAP (FEATURES.md index + FEAT-XXX entries). Greenfield setup produces only the empty index — no derivation (no stories yet). authoring-user-stories rejected (authors stories, not the map). Only the head of the body was consulted (the greenfield empty scaffold is a command-lead action using the features-index-template)."
+    },
+    {
+      "moment": "Post-scaffold delivery check — confirm the governance surfaces actually inject.",
+      "skill_chosen": "mochiko:testing-governance-injection",
+      "skills_considered": ["mochiko:testing-governance-injection", "mochiko:validation-constitution"],
+      "from_description_only": true,
+      "rationale": "Slim description: 'empirically probing that an accepted governance surface set actually DELIVERS ... post-scaffold regression check.' Chosen for the post-scaffold moment, distinct from validation-constitution's static grade.",
+      "deviation": "Body NOT loaded and empirical probe NOT run: the simulation sandbox (a fake greenfield repo dir) does not live-load .claude/rules/mochiko/ or CLAUDE.md into spawned agents, so true injection probing is impossible here. Performed a STRUCTURAL delivery check instead (paths frontmatter valid vs. the intended dirs; region + domain-registry + output-style markers each exactly one pair). Recorded as a deviation in meta.json."
+    }
+  ],
+  "correct_non_fires": {
+    "note": "Cluster skills a baseline setup run would ALSO not fire — correct non-fires for a setup (not specify) run, on a greenfield (not brownfield) project. Listed so the fire-rate diff does not read these absences as misses.",
+    "mochiko:analysis-codebase": "brownfield-only (no codebase) — description-scoped out",
+    "mochiko:authoring-requirements": "spec-time (specify run), not setup",
+    "mochiko:authoring-user-stories": "spec-time (specify run), not setup",
+    "mochiko:authoring-prototype": "spec-time (specify run), not setup",
+    "mochiko:review-specifications": "spec-time (specify run), not setup"
+  }
+}

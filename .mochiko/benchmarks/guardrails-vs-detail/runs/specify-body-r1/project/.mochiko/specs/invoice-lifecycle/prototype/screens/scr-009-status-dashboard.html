@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>SCR-009 · Status dashboard (coming soon) — Ledgerline</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <header class="appbar"><span class="brand">Ledgerline</span>
+    <nav><a href="scr-001-client-list.html">Clients</a><a href="scr-003-invoice-list.html">Invoices</a><a href="scr-009-status-dashboard.html">Status</a></nav>
+  </header>
+  <main class="coming-soon">
+    <p class="feat-tag">SCR-009 · FEAT-007 (Invoice status tracking) — DEFERRED</p>
+    <div class="banner">Coming soon — FEAT-007 is not in the first-build selection. Shown greyed so
+      navigation never dead-ends. Renders US-6 (track status at a glance).</div>
+    <h1>Status dashboard</h1>
+    <div class="card">
+      <p>Filter: <select><option>All</option><option>Unpaid</option><option>Overdue</option><option>Paid</option></select></p>
+      <table>
+        <thead><tr><th>#</th><th>Client</th><th>Amount</th><th>Due</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>INV-1003</td><td>Rivera Landscaping</td><td>$2,150.00</td><td>2026-08-01</td><td><span class="badge overdue">overdue</span></td></tr>
+          <tr><td>INV-1004</td><td>Harbor Dental</td><td>$680.50</td><td>2026-08-18</td><td><span class="badge sent">sent</span></td></tr>
+          <tr><td>INV-1002</td><td>Bright Kids Daycare</td><td>$450.00</td><td>2026-07-28</td><td><span class="badge paid">paid</span></td></tr>
+        </tbody>
+      </table>
+      <p class="feat-tag">Overdue is derived from due date + unpaid (US-6 scenario 2).</p>
+    </div>
+    <p><a href="../index.html">← nav frame</a></p>
+  </main>
+</body>
+</html>

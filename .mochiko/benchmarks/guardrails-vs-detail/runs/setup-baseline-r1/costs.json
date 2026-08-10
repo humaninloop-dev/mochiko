@@ -1,0 +1,21 @@
+{
+  "run_id": "setup-baseline-r1",
+  "variant": "baseline",
+  "principal_spawns": 7,
+  "approx_tokens_in_skills_loaded": 90979,
+  "skill_bodies_loaded_bytes": {
+    "note": "SKILL.md bodies (the artifact the body/descriptions variants swap) loaded from plugins/mochiko/skills/<name>/SKILL.md; this sum is the comparable token proxy",
+    "analysis-iterative": 12367,
+    "authoring-constitution": 21156,
+    "review-governance-intent": 15052,
+    "validation-constitution": 13615,
+    "authoring-feature-map": 28789,
+    "total": 90979
+  },
+  "reference_and_template_bytes_loaded": {
+    "note": "setup command inputs loaded in addition to SKILL.md bodies — references under authoring-constitution/references/ and templates/. Not part of the headline proxy but recorded for transparency; identical across all setup arms except the body arm's SKILL.md swaps.",
+    "total": 91719
+  },
+  "grand_total_bytes_loaded": 182698,
+  "wall_notes": "Single-agent simulation; 7 principal subagent spawns (5 interrogation beats, 1 survivor-rulings+ratification, 1 final acceptance). One produce->validate FAIL->fix->PASS loop on the surface set (GI-028). grooming-operating-docs and testing-governance-injection bodies were NOT loaded (considered-not-invoked). analysis-codebase NOT loaded (greenfield)."
+}

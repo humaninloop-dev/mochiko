@@ -1,0 +1,21 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<title>SCR-002 Invoice list</title><link rel="stylesheet" href="../assets/lofi.css"></head>
+<body>
+<header class="app"><strong>Ledgerline</strong><nav class="app" aria-label="Primary">
+<a href="scr-002-invoice-list.html">Invoices</a><a href="scr-003-clients.html">Clients</a>
+<a href="scr-008-reminder-settings.html">Reminders</a><a href="scr-001-signin.html">Sign out</a></nav></header>
+<main>
+<h1>Invoices <span class="feat">[SCR-002 · FEAT-003 list &amp; status; viewed/overdue column FEAT-008 (deferred)]</span></h1>
+<a class="btn" href="scr-005-invoice-editor.html">+ New invoice</a>
+<table>
+<thead><tr><th>#</th><th>Client</th><th>Due</th><th>Total</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td><a href="scr-006-invoice-detail.html">INV-1007</a></td><td>Acme Reno</td><td>2026-08-20</td><td>$1,320.65</td><td><span class="status sent">sent</span></td></tr>
+<tr><td><a href="scr-006-invoice-detail.html">INV-1006</a></td><td>Bright Homes</td><td>2026-08-18</td><td>$540.00</td><td><span class="status viewed coming-soon">viewed</span></td></tr>
+<tr><td><a href="scr-006-invoice-detail.html">INV-1005</a></td><td>Cedar Decks</td><td>2026-08-01</td><td>$2,100.00</td><td><span class="status overdue coming-soon">overdue</span></td></tr>
+<tr><td><a href="scr-006-invoice-detail.html">INV-1004</a></td><td>Delta Tile</td><td>2026-07-28</td><td>$780.00</td><td><span class="status paid">paid</span></td></tr>
+<tr><td><a href="scr-005-invoice-editor.html">INV-1008</a></td><td>Acme Reno</td><td>—</td><td>$0.00</td><td><span class="status draft">draft</span></td></tr>
+</tbody></table>
+<p class="feat coming-soon">viewed / overdue statuses are FEAT-008 (deferred) — greyed until selected.</p>
+<p><a href="../index.html">← screen map</a></p>
+</main></body></html>

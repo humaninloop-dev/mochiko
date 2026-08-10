@@ -1,0 +1,31 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<title>SCR-005 Invoice editor — Ledgerline</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body>
+<header><span class="brand">Ledgerline</span><nav>
+<a href="scr-002-dashboard.html">Dashboard</a><a href="scr-003-clients.html">Clients</a>
+<a href="../index.html">Prototype home</a></nav></header>
+<main>
+<h1>Invoice editor — new draft <span class="feat">SCR-005 · US-3 · priority screen · number assigned when sent</span></h1>
+<div class="card">
+<form action="scr-006-invoice-detail.html">
+  <label for="cl">Client</label>
+  <select id="cl"><option>Riverside HOA</option><option>Cedar Cafe</option><option>J. Alvarez</option></select>
+  <a href="scr-004-client-form.html">+ New client</a> <span class="feat">jump to add-client without losing this draft (US-3 folded reaction)</span>
+  <p class="feat">Draft state: <strong>Unsaved changes</strong> — a draft is only safe once saved (US-3 folded reaction).</p>
+  <label for="due">Due date</label><input id="due" type="date" value="2026-08-30">
+  <h3>Line items</h3>
+  <table>
+    <thead><tr><th>Description</th><th>Qty</th><th>Unit price</th><th>Line total</th></tr></thead>
+    <tbody>
+      <tr><td>Gutter cleaning</td><td>1</td><td>$150.00</td><td>$150.00</td></tr>
+      <tr><td>Downspout repair</td><td>2</td><td>$125.00</td><td>$250.00</td></tr>
+    </tbody>
+  </table>
+  <p><a href="scr-005-invoice-editor.html">+ Add line item</a></p>
+  <label for="tax">Tax rate (%)</label><input id="tax" type="number" value="8.25">
+  <p>Subtotal: $400.00 &nbsp; Tax (8.25%): $33.00 &nbsp; <span class="total">Total: $433.00</span></p>
+  <p class="feat">Totals computed exactly to the cent (tax rounded half-up); invoice number assigned gap-free at send, not at draft (US-3).</p>
+  <p><button class="btn" type="submit">Save draft → invoice</button> <span class="feat">FLOW-004</span></p>
+</form>
+</div>
+</main></body></html>

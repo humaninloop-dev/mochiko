@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCR-003 — Invoice detail</title>
+<link rel="stylesheet" href="../assets/lofi.css">
+</head>
+<body>
+<header class="app">
+  <span class="brand">Ledgerline</span>
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="scr-001-invoice-list.html">Invoices</a>
+    <a href="scr-002-invoice-form.html">New invoice</a>
+  </nav>
+</header>
+<main>
+  <h1>INV-1005 <span class="badge sent">sent</span> <span class="feat-tag">SCR-003 · FEAT-001 / FEAT-005</span></h1>
+  <div class="card">
+    <p><b>Client:</b> Cedar Kitchen Remodel LLC &lt;ap@cedarkitchen.example&gt;</p>
+    <p><b>Due:</b> 2026-08-20</p>
+    <table>
+      <thead><tr><th>Description</th><th>Qty</th><th>Unit price</th><th>Amount</th></tr></thead>
+      <tbody>
+        <tr><td>Cabinet installation — labor</td><td>24 hrs</td><td>$95.00</td><td>$2,280.00</td></tr>
+        <tr><td>Countertop template &amp; fit</td><td>1</td><td>$1,170.00</td><td>$1,170.00</td></tr>
+      </tbody>
+    </table>
+    <table style="max-width:320px">
+      <tr><td>Subtotal</td><td>$3,450.00</td></tr>
+      <tr><td>Tax (8.75%)</td><td>$301.88</td></tr>
+      <tr><th>Total</th><th>$3,751.88</th></tr>
+    </table>
+    <p><b>Client payment link:</b> <a href="scr-004-client-pay.html">ledgerline.app/pay/INV-1005</a>
+    — emailed to the client on send (FR-018); copyable here as a fallback. (FLOW-002)</p>
+  </div>
+
+  <div class="card">
+    <h2>Actions</h2>
+    <a class="btn" href="scr-002-invoice-form.html">Edit (until paid)</a>
+    <a class="btn" href="scr-004-client-pay.html">Preview payment link</a>
+    <a class="btn" href="scr-008-invoice-detail-paid.html" title="FEAT-004 · FLOW-004">Mark as paid (cash/check)</a>
+    <span class="coming-soon"><a class="btn" href="#" title="FEAT-006 — deferred fast-follow">Void invoice</a></span>
+    <div class="coming-soon-banner">FLOW-005 (void, FEAT-006, US-5) is greyed — deferred to a
+    fast-follow (not in this selection). FLOW-004 (mark-as-paid, FEAT-004, US-4) is in the slice.
+    Both record who acted and when in the append-only audit trail; a paid invoice cannot be re-paid
+    or voided.</div>
+  </div>
+
+  <div class="card">
+    <h2>Status history <span class="feat-tag">FEAT-005 · US-3</span></h2>
+    <ul class="history">
+      <li>2026-08-05 14:22 — created as <b>draft</b> by priya@example.com</li>
+      <li>2026-08-05 14:31 — sent (payment link generated) by priya@example.com</li>
+      <li>2026-08-06 09:07 — <b>viewed</b> (client opened the payment link)</li>
+      <li class="muted">— awaiting client payment —</li>
+    </ul>
+    <p class="muted">Append-only audit trail: who changed what, when (payment state and void both
+    recorded; historical rows never mutated).</p>
+  </div>
+</main>
+</body>
+</html>

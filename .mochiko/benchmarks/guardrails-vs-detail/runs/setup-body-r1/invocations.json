@@ -1,0 +1,74 @@
+{
+  "run_id": "setup-body-r1",
+  "variant": "body",
+  "note": "Descriptions arm is original in the body variant, so every invocation decision was made from the original skill/agent descriptions (from_description_only: true); the body variant changes only which SKILL.md body loads AFTER the decision.",
+  "invocations": [
+    {
+      "moment": "Interrogation — ten-dimension agenda worked adaptively, then catalog deck arbitration",
+      "skill_chosen": "mochiko:analysis-iterative",
+      "skills_considered": ["mochiko:analysis-iterative", "mochiko:analysis-codebase"],
+      "not_chosen": {"mochiko:analysis-codebase": "greenfield — no code to analyze; dimension 6 collected as declared intended tooling"},
+      "from_description_only": true
+    },
+    {
+      "moment": "Synthesis authoring (governance-intent.md)",
+      "skill_chosen": null,
+      "skills_considered": [],
+      "note": "Lead's own pen per the command; used templates/governance-intent-template.md, not a model-invoked skill",
+      "from_description_only": true
+    },
+    {
+      "moment": "Pre-ratification cold intent review (blind-map dispatch)",
+      "skill_chosen": "mochiko:review-governance-intent",
+      "skills_considered": ["mochiko:review-governance-intent", "mochiko:review-brainstorm"],
+      "not_chosen": {"mochiko:review-brainstorm": "artifact under review is a governance synthesis, not a brainstorm record"},
+      "from_description_only": true
+    },
+    {
+      "moment": "Governance surface-set authoring",
+      "skill_chosen": "mochiko:authoring-constitution",
+      "skills_considered": ["mochiko:authoring-constitution", "mochiko:analysis-codebase"],
+      "not_chosen": {"mochiko:analysis-codebase": "greenfield mode — no brownfield codification"},
+      "from_description_only": true
+    },
+    {
+      "moment": "Independent validation of the surface set (initial grade)",
+      "skill_chosen": "mochiko:validation-constitution",
+      "skills_considered": ["mochiko:validation-constitution"],
+      "from_description_only": true,
+      "seat": "fresh validator subagent (author != grader); read files, default FAIL",
+      "result": "FAIL — release-gates detail thin; KM enforcement surfaces unscaffolded"
+    },
+    {
+      "moment": "Greenfield feature-map scaffold (finalize)",
+      "skill_chosen": "mochiko:authoring-feature-map",
+      "skills_considered": ["mochiko:authoring-feature-map"],
+      "from_description_only": true,
+      "note": "Greenfield — no user stories at setup, so an empty FEATURES.md index scaffold, no derivation"
+    },
+    {
+      "moment": "KM scaffolding at finalize",
+      "skill_chosen": null,
+      "skills_considered": ["mochiko:grooming-operating-docs"],
+      "not_chosen": {"mochiko:grooming-operating-docs": "no cap/bound tripped at greenfield scaffold — nothing to groom"},
+      "note": "KM module assembly is authoring-constitution module-assembly + templates/constitution-modules/knowledge-management.md (project-pinned copy)",
+      "from_description_only": true
+    },
+    {
+      "moment": "Re-validation after the fix round",
+      "skill_chosen": "mochiko:validation-constitution",
+      "skills_considered": ["mochiko:validation-constitution"],
+      "from_description_only": true,
+      "seat": "fresh validator subagent",
+      "result": "PASS — both blockers resolved, no regressions"
+    },
+    {
+      "moment": "Governance-injection probe (setup finalize offer)",
+      "skill_chosen": "mochiko:testing-governance-injection",
+      "skills_considered": ["mochiko:testing-governance-injection"],
+      "from_description_only": true,
+      "executed": false,
+      "note": "Body loaded and invocation decided, but the empirical probe cannot be truthfully run in the benchmark sandbox (the sandbox .claude/rules/ is not the harness's active rules root). Deferred to BACKLOG as a re-runnable standalone finalize offer."
+    }
+  ]
+}

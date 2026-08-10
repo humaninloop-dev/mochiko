@@ -1,0 +1,46 @@
+{
+  "run_id": "setup-body-r1",
+  "variant": "body",
+  "principal_spawns": 8,
+  "principal_spawn_breakdown": {
+    "interrogation_batches": 6,
+    "survivor_rulings_plus_ratification": 1,
+    "final_acceptance": 1
+  },
+  "grader_subagent_spawns": 2,
+  "grader_spawn_breakdown": {
+    "validation_constitution_initial": 1,
+    "validation_constitution_revalidate": 1
+  },
+  "approx_tokens_in_skills_loaded": 75038,
+  "skill_bytes_breakdown": {
+    "note": "Body-variant SKILL.md bodies, counted per load event. All six designated body skills that fired in a setup run were loaded; analysis-codebase (also a designated body skill) did NOT fire (greenfield). The 5 specify-only body skills (authoring-requirements, authoring-user-stories, authoring-prototype, review-specifications) did not fire in a setup run.",
+    "lead_context_loads": {
+      "analysis-iterative": 4829,
+      "review-governance-intent": 8707,
+      "authoring-constitution": 18962,
+      "validation-constitution": 7961,
+      "authoring-feature-map": 13991,
+      "testing-governance-injection": 4666,
+      "subtotal": 59116
+    },
+    "subagent_reloads": {
+      "validation-constitution (validator subagent, initial grade)": 7961,
+      "validation-constitution (validator subagent, re-validate)": 7961,
+      "subtotal": 15922
+    },
+    "total_skill_body_bytes": 75038
+  },
+  "reference_bytes_loaded_not_counted_as_skill_bodies": {
+    "note": "references/ files always resolve against the ORIGINAL plugin path in every variant, so they are identical across arms and are excluded from the skill-body proxy. Listed for transparency.",
+    "INTERROGATION-AGENDA.md": 10209,
+    "DOMAIN-DEPENDENCIES.md": 4896,
+    "catalog/README.md": 5059,
+    "catalog/universal-floor.md": 3627,
+    "catalog/backend-service.md": 8246,
+    "COMPLIANCE-MODULES.md": 4663,
+    "ESSENTIAL-FLOOR.md": 7375,
+    "QUALITY-CHECKLIST.md + ANTI-PATTERNS.md (read by validator subagents)": "read x2, sizes not tallied"
+  },
+  "wall_notes": "Single-agent simulation. Interrogation batched 2 dimensions per principal spawn (6 spawns) rather than strict one-question-per-turn — a per-batch spawn model the protocol permits ('per question batch'); recorded as a deviation in meta.json. One FAIL->fix->PASS validation loop. Cold intent review played by the lead (body loaded, findings produced strictly from artifact text), not a separate spawn, per the single-agent simulation model. testing-governance-injection body loaded but the empirical probe was not executable in the sandbox."
+}

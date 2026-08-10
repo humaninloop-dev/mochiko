@@ -1,0 +1,26 @@
+/* Low-fidelity prototype styling — deliberately rough grey-box defaults.
+   No design system exists in the seed project, so neutral primitives are used.
+   Flows and data shape are binding; pixels are advisory. */
+* { box-sizing: border-box; }
+body { font-family: system-ui, sans-serif; margin: 0; color: #222; background: #f4f4f4; }
+header.app { background: #ddd; padding: 10px 16px; border-bottom: 2px solid #bbb; display: flex; gap: 16px; align-items: center; }
+header.app strong { font-size: 15px; }
+nav.app a { margin-right: 12px; text-decoration: none; color: #234; }
+nav.app a:focus { outline: 3px solid #468; }
+main { padding: 16px; max-width: 900px; }
+h1 { font-size: 20px; }
+.card { background: #fff; border: 1px solid #ccc; padding: 12px; margin: 10px 0; }
+table { border-collapse: collapse; width: 100%; background: #fff; }
+th, td { border: 1px solid #ccc; padding: 6px 8px; text-align: left; font-size: 14px; }
+th { background: #eee; }
+label { display: block; margin: 8px 0 2px; font-size: 13px; font-weight: 600; }
+input, select { padding: 6px; border: 1px solid #aaa; width: 260px; font-size: 14px; }
+.btn { display: inline-block; padding: 8px 14px; background: #345; color: #fff; text-decoration: none; border: 0; margin: 8px 6px 0 0; cursor: pointer; }
+.btn.secondary { background: #999; }
+.status { font-size: 12px; padding: 2px 6px; border-radius: 3px; background: #eee; border: 1px solid #bbb; }
+.status.draft { background: #eee; } .status.sent { background: #dde7f0; }
+.status.viewed { background: #e7e0f0; } .status.paid { background: #dff0dd; }
+.status.overdue { background: #f0dede; }
+.coming-soon { opacity: 0.55; }
+.banner { background: #ffd; border: 1px solid #cc9; padding: 6px 10px; font-size: 13px; margin-bottom: 10px; }
+.feat { font-size: 11px; color: #666; }

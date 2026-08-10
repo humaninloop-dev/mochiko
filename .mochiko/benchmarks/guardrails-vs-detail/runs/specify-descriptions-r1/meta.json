@@ -1,0 +1,51 @@
+{
+  "run_id": "specify-descriptions-r1",
+  "command": "plugins/mochiko/commands/specify.md",
+  "variant": "descriptions",
+  "replicate": "r1",
+  "feature": "Invoice lifecycle v1 (Ledgerline)",
+  "start": "2026-08-10",
+  "end": "2026-08-10",
+  "seeded_from": "runs/_seed-project/ (copied verbatim to project/ before the run)",
+  "seed_state": "greenfield — governance region present, feature map empty, KM module active, no source code, no design system",
+  "primary_measurement": "Does slim-description routing hold on specify's richer 11-skill surface? Result: YES — 8 skill invocations across 7 moments, all routed from slim descriptions alone, zero fire misses, zero wrong-sibling fires. See invocations.json.",
+  "outcome_summary": {
+    "spec_accepted": true,
+    "features_written_to_map": 8,
+    "features_selected_for_v1": 7,
+    "stories": 9,
+    "functional_requirements": 22,
+    "success_criteria": 10,
+    "edge_cases": 6,
+    "prototype_screens": 9,
+    "prototype_flows": 9,
+    "adversarial_review": "needs-revision (1 Critical + 6 Important + 6 Minor) -> all resolved -> delta re-review clean (1 new drift caught + 3 minors -> fixed)"
+  },
+  "deviations": [
+    {
+      "deviation": "Principal answered via ONE fresh subagent spawn then 5 SendMessage RESUMES, not a fresh spawn per batch.",
+      "protocol_ref": "RUN-PROTOCOL.md 'spawns a fresh principal subagent per question batch'",
+      "rationale": "Resume delivers the identical contract the protocol requires (subagent has card + full dialogue + new question) more cheaply, and the D3 contamination fence is fully preserved: the run-lead never read fixture/persona-card.md; the card lived only inside the principal subagent's own context. No fidelity loss; token savings only.",
+      "impact": "none on principal fidelity; costs.json reports 6 principal batches / 1 distinct subagent."
+    },
+    {
+      "deviation": "analysis-iterative sub-reference files (SPECIFICATION-INPUT.md, ENRICHMENT.md) loaded from the original plugin path.",
+      "protocol_ref": "Task brief: 'load the chosen body from the SAME variants/descriptions/ path'",
+      "rationale": "The variant dir contains only SKILL.md; the sub-references are part of the skill body and are byte-identical to originals in the descriptions arm (only the SKILL.md description differs). Loading from origin is equivalent in this arm.",
+      "impact": "none — bytes counted in costs.json; content identical to what a real run would load."
+    },
+    {
+      "deviation": "Adversarial review run as a genuinely independent mochiko:devils-advocate subagent (reading files fresh) rather than the run-lead playing the seat in-context.",
+      "protocol_ref": "RUN-PROTOCOL.md 'the run-lead plays every seat itself'",
+      "rationale": "Strengthens the author-not-equal-grader independence the protocol also demands ('produce grader outputs strictly from the artifact text'); a fresh subagent that never saw the authoring is a stronger fence than self-grading. Skill routing decision (review-specifications) still made by the run-lead and logged.",
+      "impact": "higher-fidelity independence; no effect on the judged artifacts (judge reads project/ only)."
+    },
+    {
+      "deviation": "A void user story (US-9) was added after the adversarial review, from a principal ruling (disposition #3), making 9 stories total.",
+      "protocol_ref": "n/a — normal spec revision",
+      "rationale": "Reviewer finding I3 (no void/cancel path) was ruled in-scope by the principal; recorded as a traceable story rather than an untraced FR.",
+      "impact": "none — recorded for transparency."
+    }
+  ],
+  "capture_files": ["project/", "transcript.md", "invocations.json", "costs.json", "meta.json"]
+}

@@ -1,0 +1,92 @@
+/* Low-fidelity prototype styles for Ledgerline invoice-lifecycle spec.
+   Deliberately rough: grey boxes, system fonts, no polish. Pixels are advisory;
+   flows and data shape are binding. No design system exists in the greenfield
+   project yet, so these are neutral grey-box defaults (authoring-prototype inv. 6). */
+
+:root {
+  --ink: #222;
+  --muted: #666;
+  --line: #bbb;
+  --box: #eee;
+  --accent: #345;
+  --ok: #2a6;
+  --warn: #b60;
+  --bad: #b33;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: system-ui, sans-serif;
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.4;
+}
+
+header.appbar {
+  background: var(--accent);
+  color: #fff;
+  padding: 0.6rem 1rem;
+  display: flex;
+  gap: 1rem;
+  align-items: baseline;
+}
+header.appbar .brand { font-weight: bold; }
+header.appbar nav a { color: #fff; margin-right: 1rem; text-decoration: none; }
+header.appbar nav a:hover { text-decoration: underline; }
+
+main { padding: 1rem 1.5rem; max-width: 900px; }
+
+h1 { font-size: 1.3rem; }
+h2 { font-size: 1.05rem; color: var(--muted); }
+
+.card {
+  border: 1px solid var(--line);
+  background: #fafafa;
+  padding: 1rem;
+  margin: 0.8rem 0;
+  border-radius: 4px;
+}
+
+table { border-collapse: collapse; width: 100%; margin: 0.6rem 0; }
+th, td { border: 1px solid var(--line); padding: 0.4rem 0.6rem; text-align: left; font-size: 0.9rem; }
+th { background: var(--box); }
+
+.btn {
+  display: inline-block;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: #fff;
+  padding: 0.4rem 0.8rem;
+  text-decoration: none;
+  border-radius: 3px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.btn.secondary { background: #fff; color: var(--accent); }
+
+.badge { padding: 0.1rem 0.5rem; border-radius: 10px; font-size: 0.8rem; border: 1px solid var(--line); }
+.badge.draft { background: var(--box); color: var(--muted); }
+.badge.sent { background: #def; color: var(--accent); }
+.badge.paid { background: #dfd; color: var(--ok); }
+.badge.overdue { background: #fdd; color: var(--bad); }
+
+label { display: block; margin: 0.5rem 0 0.2rem; font-size: 0.9rem; }
+input, select { padding: 0.3rem; border: 1px solid var(--line); width: 100%; max-width: 320px; font-size: 0.9rem; }
+
+.field-error { color: var(--bad); font-size: 0.8rem; }
+
+/* Deferred / not-in-selection screens: visibly greyed coming-soon. */
+.coming-soon { opacity: 0.55; }
+.banner {
+  border: 1px dashed var(--warn);
+  background: #fff8ee;
+  color: var(--warn);
+  padding: 0.5rem 0.8rem;
+  margin: 0.6rem 0;
+  font-size: 0.85rem;
+}
+.banner.rejected { border-color: var(--bad); background: #fff0f0; color: var(--bad); }
+.feat-tag { font-size: 0.75rem; color: var(--muted); }
+.external { border-left: 4px solid var(--warn); }
+footer { color: var(--muted); font-size: 0.8rem; padding: 1rem 1.5rem; border-top: 1px solid var(--line); }

@@ -1,0 +1,33 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<title>SCR-005 Invoice editor</title><link rel="stylesheet" href="../assets/lofi.css"></head>
+<body>
+<header class="app"><strong>Ledgerline</strong><nav class="app" aria-label="Primary">
+<a href="scr-002-invoice-list.html">Invoices</a><a href="scr-003-clients.html">Clients</a>
+<a href="scr-008-reminder-settings.html">Reminders</a><a href="scr-001-signin.html">Sign out</a></nav></header>
+<main>
+<h1>Draft invoice <span class="feat">[SCR-005 · FEAT-003]</span></h1>
+<div class="card">
+<form action="scr-006-invoice-detail.html">
+  <label for="cl">Client</label>
+  <select id="cl" name="cl"><option>Acme Reno</option><option>Bright Homes</option><option>Cedar Decks</option></select>
+  <label for="due">Due date</label><input id="due" name="due" type="date" value="2026-08-25">
+  <table>
+  <thead><tr><th>Description</th><th>Qty</th><th>Unit price</th><th>Line total</th></tr></thead>
+  <tbody>
+  <tr><td>Deck framing labor</td><td>16</td><td>$65.00</td><td>$1,040.00</td></tr>
+  <tr><td>Materials — lumber</td><td>1</td><td>$180.00</td><td>$180.00</td></tr>
+  </tbody></table>
+  <a class="btn secondary" href="#">+ Add line item</a>
+  <label for="tax">Tax rate (%)</label><input id="tax" name="tax" value="8.25">
+  <div class="card">
+    <div>Subtotal: <strong>$1,220.00</strong></div>
+    <div>Tax (8.25%): <strong>$100.65</strong></div>
+    <div>Total: <strong>$1,320.65</strong></div>
+    <p class="feat">Totals computed with exact decimal arithmetic; recompute on any change (US-3 scenarios 1–2).</p>
+  </div>
+  <button class="btn" type="submit">Save draft</button>
+  <a class="btn" href="scr-007-send-confirm.html">Save &amp; send →</a>
+</form>
+</div>
+<p><a href="../index.html">← screen map</a></p>
+</main></body></html>

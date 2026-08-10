@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCR-001 — Invoice list</title>
+<link rel="stylesheet" href="../assets/lofi.css">
+</head>
+<body>
+<header class="app">
+  <span class="brand">Ledgerline</span>
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="scr-001-invoice-list.html">Invoices</a>
+    <a href="scr-002-invoice-form.html">New invoice</a>
+  </nav>
+</header>
+<main>
+  <h1>Invoices <span class="feat-tag">SCR-001 · FEAT-005</span></h1>
+  <p><a class="btn primary" href="scr-002-invoice-form.html">+ New invoice</a></p>
+  <table>
+    <thead>
+      <tr><th>#</th><th>Client</th><th>Amount</th><th>Due</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><a class="row-link" href="scr-003-invoice-detail.html">INV-1005</a></td><td>Cedar Kitchen Remodel LLC</td><td>$3,751.88</td><td>2026-08-20</td><td><span class="badge sent">sent</span></td></tr>
+      <tr><td><a class="row-link" href="scr-003-invoice-detail.html">INV-1004</a></td><td>Ortiz Bathroom Co.</td><td>$1,305.00</td><td>2026-08-01</td><td><span class="badge sent">sent</span> <span class="badge overdue" title="overdue is a computed badge — FEAT-005 extent">overdue</span></td></tr>
+      <tr><td><a class="row-link" href="scr-003-invoice-detail.html">INV-1003</a></td><td>Bay Fence &amp; Deck</td><td>$891.75</td><td>2026-07-28</td><td><span class="badge viewed">viewed</span> <span class="badge overdue" title="viewed + past-due + unpaid is overdue too (FR-013)">overdue</span></td></tr>
+      <tr><td><a class="row-link" href="scr-008-invoice-detail-paid.html">INV-1002</a></td><td>Marlow Painting</td><td>$3,235.94</td><td>2026-07-15</td><td><span class="badge paid">paid</span></td></tr>
+      <tr><td><a class="row-link" href="scr-003-invoice-detail.html">INV-1001</a></td><td>Hana Landscaping</td><td>$540.00</td><td>2026-07-10</td><td><span class="badge draft">draft</span></td></tr>
+    </tbody>
+  </table>
+  <p class="muted">FLOW-006 — the <b>overdue</b> badge (US-6, FEAT-005) is a computed read over a
+  sent, past-due, unpaid invoice; it changes no stored status. In the first slice.</p>
+  <p class="muted">Tenant-scoped: only this contractor's invoices appear (US-3).
+  <a href="scr-007-clients.html">Manage clients</a> (US-8).</p>
+</main>
+</body>
+</html>

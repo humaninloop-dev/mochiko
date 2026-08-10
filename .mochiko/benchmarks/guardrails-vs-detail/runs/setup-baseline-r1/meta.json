@@ -1,0 +1,50 @@
+{
+  "run_id": "setup-baseline-r1",
+  "command": "plugins/mochiko/commands/setup.md",
+  "variant": "baseline",
+  "replicate": "r1",
+  "mode": "greenfield",
+  "project": "Ledgerline",
+  "start": "2026-08-10T10:08:12Z",
+  "end": "2026-08-10T10:35:17Z",
+  "outcome": "complete \u2014 surface set authored, validated PASS (after one fix round), user-accepted",
+  "principal_spawns": 7,
+  "review_sizing": "solo (lead sized down from the default pair; departure-trail recorded in the synthesis Review section \u2014 a single greenfield synthesis, low reality-surface load, mostly-Confident marks)",
+  "deviations": [
+    "Stage 7 finalize scaffolding (KM bundle + greenfield feature map) was executed BEFORE Stage 6 independent validation, so the validator graded the complete set and the region's KM operating-docs pointer resolved (avoiding a spurious dead-pointer FAIL). Sensible sequencing; the command lists KM scaffolding at finalize but does not forbid running it before the grade.",
+    "testing-governance-injection was considered but NOT executed to probe-verify the operating-docs rules-file injection (the KM module expects probe verification): no live Claude Code injection harness exists in the simulation sandbox. Recorded, not silently absorbed.",
+    "Single-agent simulation per RUN-PROTOCOL: the run-lead played every seat (interrogation, cold reviewer, author, validator, feature-map). author!=grader independence honored by METHOD \u2014 grader outputs (the cold review and the validation) produced strictly from the frozen synthesis text / the authored files, not from the authoring rationale. The principal was answered only via fresh subagent spawns reading fixture/persona-card.md; the run-lead never read the card (D3 fence)."
+  ],
+  "interrogation_beats": 5,
+  "review_findings": {
+    "raised": 7,
+    "survived": 7,
+    "recommended_status": "needs-revision",
+    "folded": [
+      "S1",
+      "S2",
+      "S4",
+      "S5",
+      "S6",
+      "S7"
+    ],
+    "user_held": [
+      "S3"
+    ]
+  },
+  "validation": {
+    "round_1": "FAIL (GI-028 missing three-part ledger entry)",
+    "round_2": "PASS",
+    "version": "1.0.0"
+  },
+  "compliance_modules_attached": [
+    "a11y (WCAG, legal-mandate)"
+  ],
+  "template_modules_attached": [
+    "knowledge-management (+CHANGELOG +RUNBOOK)",
+    "release-gates",
+    "layer-rules"
+  ],
+  "waivers": 0,
+  "gi_elements": 30
+}
