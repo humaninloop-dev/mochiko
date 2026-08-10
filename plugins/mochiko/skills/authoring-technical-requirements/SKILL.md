@@ -1,6 +1,6 @@
 ---
 name: authoring-technical-requirements
-description: This skill MUST be invoked when authoring the technical-requirements layer of a feature specification — decomposing business functional requirements into technical requirements (TR-XXX), documenting hard constraints (C-XXX), defining measurable non-functional requirements (NFR-XXX) with numeric targets, and specifying infrastructure-provisioning requirements (IP-XXX), each traced to a business source. SHOULD also invoke when the work involves "TR-", "C-", "NFR-", "IP-", "technical requirements", "hard constraints", "non-functional requirements", "infrastructure provisioning", or authoring the constraints-and-decisions.md artifact and its C↔D / IP traceability. This skill owns the constraints-and-decisions.md artifact structure (the D-XXX field schema) and traceability — NOT the decision-evaluation technique (use mochiko:patterns-technical-decisions to evaluate alternatives and write ADRs). Produces requirements.md, constraints-and-decisions.md, and nfrs.md from a business specification.
+description: This skill MUST be invoked when authoring the technical-requirements layer of a feature spec — decomposing FRs into technical requirements (TR-XXX), hard constraints (C-XXX), measurable NFRs (NFR-XXX), and infrastructure-provisioning requirements (IP-XXX), traced to a business source. SHOULD also invoke on 'TR-', 'C-', 'NFR-', 'IP-', or 'technical requirements'. Owns the constraints-and-decisions.md structure (D-XXX schema) — NOT the decision technique (mochiko:patterns-technical-decisions).
 ---
 
 # Authoring Technical Requirements
@@ -17,15 +17,6 @@ artifact's head are its **ID index** (the reviewer coverage surface). Density is
 gap; a gap is missing substance.
 
 **Violating the letter of the rules is violating the spirit of the rules.**
-
-## When to Use
-
-- Translating functional requirements into technical requirements (TR-XXX)
-- Documenting hard technical constraints (C-XXX)
-- Defining measurable non-functional requirements (NFR-XXX)
-- Specifying infrastructure-provisioning requirements (IP-XXX)
-- Flagging which external systems the feature depends on, as an analysis concern (INT-XXX declaration — the per-endpoint boundary is authored in `mochiko:patterns-api-contracts`)
-- Flagging which data the feature treats as sensitive, as an analysis concern (DS-XXX declaration — the per-attribute classification is authored in `mochiko:patterns-entity-modeling`)
 
 ## When NOT to Use
 

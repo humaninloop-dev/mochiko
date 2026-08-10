@@ -1,6 +1,6 @@
 ---
 name: testing-governance-injection
-description: This skill MUST be invoked when empirically probing that an accepted governance surface set actually DELIVERS — verifying that `.claude/rules/mochiko/` files inject into agent context on the paths their `paths` frontmatter promises (and nowhere else), that the CLAUDE.md governance region reaches spawned agents, and that injected rules actually change behavior — via throwaway file stubs and disposable probe subagents, with unconditional stub cleanup. SHOULD also invoke when the work is a "governance injection probe", "injection smoke test", "verify rules injection", "probe rule delivery", building a rules-file "trigger matrix", or a post-scaffold regression check of rules delivery. Offered at a `/mochiko:setup` run's finalize; re-runnable standalone any time after (real files replace stubs as probe surfaces). Findings are observed harness behavior versioned to the run — input to an amend run, never auto-fixed. Empirical delivery testing only — static structure/trace grading is `validation-constitution`, not this skill.
+description: This skill MUST be invoked when empirically probing that an accepted governance surface set actually DELIVERS — that `.claude/rules/mochiko/` files inject on their promised paths, that the CLAUDE.md governance region reaches spawned agents, and that injected rules change behavior. SHOULD also invoke for a 'governance injection probe' or a post-scaffold regression check. Empirical delivery testing only — static structure/trace grading is `validation-constitution`, not this skill.
 ---
 
 # Testing Governance Injection — Empirical Probe of the Surface Set
@@ -18,16 +18,6 @@ Everything this skill observes is **versioned harness behavior, never doctrine**
 finding with the Claude Code version and date, and never promote an observation into a skill or
 template as a timeless fact.
 
-## When to Use
-
-- **After a setup run's acceptance** (the `/mochiko:setup` finalize offer) — verify the freshly
-  authored rules files deliver before real work relies on them.
-- **As a regression check** after real scaffolds land — real files replace stubs as probe
-  surfaces; re-run cheap.
-- **To settle an open empirical question** about rules delivery (e.g. comment stripping in rules
-  files, fresh-session loading — `BACKLOG.md` carries the current list); design the probe case to
-  answer exactly that question.
-
 ## When NOT to Use
 
 - **As a substitute for `validation-constitution`** — trace closure, structure, and placeholder
@@ -37,33 +27,6 @@ template as a timeless fact.
   boundary.
 - **Mid-authoring** — probe an accepted set; a draft's findings are noise the authoring loop will
   churn anyway.
-
-## Build the probe plan (before spawning anything)
-
-1. **Read every rules file's `paths` frontmatter** and build the expected-injection matrix: per
-   probe surface, exactly which rules files should fire.
-2. **Choose probe surfaces**: one representative path per distinct glob set, plus **one negative
-   control** — a plausible project path matched by NO rules file (expected injection: none).
-   Prefer real files where the project has them; otherwise create throwaway stubs, each marked
-   `Throwaway probe stub — governance-injection test. Delete after.`
-3. **State the cost and get the go-ahead** — default bounds: one introspection probe per distinct
-   glob set + the negative control + at most two behavioral probes. Introspection probes run on a
-   cheap model; behavioral probes need a capable one.
-
-## The two probe types
-
-Probes are **always subagents** — the lead's own context is contaminated (it read the rules files
-while building the plan; a main-loop "probe" proves nothing).
-
-- **Introspection probes** (cheap model, one per surface): touch exactly one probe surface —
-  where new-file behavior matters, **Write a new file first, report, then Read it back** — and
-  report raw data only: which rule documents are present in context after each step, and whether
-  the CLAUDE.md governance region (with its ratified stamp) is present. The brief carries zero
-  expectations — a probe told what should inject will find it.
-- **Behavioral probes** (capable model, ≤2): a realistic dev task that violates a specific
-  principle, with **zero mention that governance exists**. Expected: the agent refuses or
-  surfaces the conflict, citing the rule. A compliant completion — or a silent "compliant"
-  redesign — is a finding.
 
 ## The matrix and the findings
 

@@ -15,6 +15,41 @@ the decision row; nothing was removed or rewritten, and the existing *"A passing
 carries **no prose**"* rule was extended, never replaced. The one entry below records a line
 whose right to exist is contested in advance.
 
+## [v0.64.0] Guardrails body + slim description (guardrails-vs-detail Wave 2 editorial cut)
+- **Disposition:** superseded → Wave 2 editorial guardrails cut (D4 cut line).
+- **Tier failed:** n/a — supersession by ruling (guardrails-vs-detail Wave 2, `DECISIONS.md`
+  2026-08-11 build row Wave 2 residual + user rulings 2026-08-10/11; method warrant: benchmark
+  verdict `.mochiko/benchmarks/guardrails-vs-detail/report/final-verdict.md`).
+- **Content (faithfully compressed):** body 13,522 → 13,125 chars (−3%); description 790 → 500
+  chars (−37%). Body cut: the **When to Use** section deleted whole (seven bullets restating the
+  description's invocation conditions — `**TEST:**` tasks, CLI verification, filesystem-state
+  validation, real-process testing, GUI verification, end-to-end validation, quality-gate
+  execution; each obligation survives in Task Detection, the Execution Sequence, Task
+  Classification, and Quality Gate Execution). Description cut: the action-modifier enumeration
+  (`(background)`/`(timeout Ns)`/`(in path)`), the result-classification enumeration
+  (PASS/FAIL/PARTIAL/TIMEOUT/ERROR), and the "presenting a verification checkpoint" trigger
+  compressed; the MUST clause, core triggers (TEST: against real infra + quality gates), the
+  CLI/GUI/SUBJECTIVE classification, and the `patterns-vertical-tdd` grammar-owner + never-mocks
+  distinctions kept. Verbatim homes: git history of this file (pre-v0.64.0).
+- **Old description (verbatim):**
+  > This skill MUST be invoked when executing a `**TEST:**` verification task against real infrastructure — parsing its Setup/Action/Assert fields, running the actions (honoring `(background)` / `(timeout Ns)` / `(in path)` modifiers) with captured evidence, evaluating the asserts against that evidence, and classifying the task CLI/GUI/SUBJECTIVE to decide auto-approve versus human checkpoint. SHOULD also invoke when running quality gates (lint / build / test) as deterministic exit-code checks during verification, capturing execution evidence, classifying a verification result (PASS/FAIL/PARTIAL/TIMEOUT/ERROR), or presenting a verification checkpoint for human approval. Consumes the `**TEST:**` grammar owned by patterns-vertical-tdd; verifies against real infrastructure, never mocks.
+- **Kept deliberately:** the guardrails keep-set — the Overview + letter/spirit epigraph + the
+  grammar-ownership banner, When NOT to Use, the entire Core Process (Task Detection, the
+  Execution Sequence with the owned execution/evaluation semantics, Task Classification incl. the
+  browser-flow exception, Result Classification, Evidence Types), Quality Gates, Quality Gate
+  Execution, Red Flags, the Common Rationalizations table, the Common Mistakes table, and the
+  Reference Files pointers.
+- **MANDATORY KEPT reconciliation:** the [v0.44.0] KEPT entry protects the envelope's register +
+  prose-on-clean check, but that content lives in `references/REPORT-TEMPLATES.md`, NOT the SKILL
+  body — untouched by this body cut. The [v0.49.0] supersession KEPT the whole parsing algorithm,
+  field extraction, legacy-marker normalization, and the grammar-owner banner — all live in Task
+  Detection / Core Process / Reference Files, none in the deleted When-to-Use. No prior KEPT or
+  protected line is touched.
+- **Consumers assessed:** qa-engineer (mounts it) · implement (binds it) · executing-tdd-cycle
+  (cross-links; the `**TEST:**` gate is the verifier's) · patterns-vertical-tdd (grammar owner,
+  cross-references) · review-code-minimalism · mochiko router. None links the removed When-to-Use
+  bullets or a description clause. Contract intact.
+
 ## [v0.49.0] TEST-gate source re-keyed to cycle cards
 - **Disposition:** superseded → gate blocks at the foot of cycle cards; legacy task-line form kept parseable
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D2)

@@ -13,6 +13,41 @@ ruled" row) — the report repair: the format text that forced prose onto passin
 corrected, and the envelope's register and prose-on-clean check are bound where the report is
 actually authored.
 
+## [v0.64.0] Guardrails body + slim description (guardrails-vs-detail Wave 2 editorial cut)
+- **Disposition:** superseded → Wave 2 editorial guardrails cut (D4 cut line).
+- **Tier failed:** n/a — supersession by ruling (guardrails-vs-detail Wave 2, `DECISIONS.md`
+  2026-08-11 build row Wave 2 residual + user rulings 2026-08-10/11; method warrant: benchmark
+  verdict `.mochiko/benchmarks/guardrails-vs-detail/report/final-verdict.md`).
+- **Content (faithfully compressed):** body 10,151 → 9,676 chars (−5%); description 1,082 → 498
+  chars (−54%). Body cut: the **When to Use** section deleted whole (five bullets restating the
+  description's invocation conditions — executing a cycle card through decompose→r/g/r, reworking
+  failed tasks, fixing a reported failure, the brownfield-exposure co-fire, writing the
+  cycle-report; each obligation survives in the Overview, the Core Process sequence, the
+  Reworking / Fixing subsections, and the Green-Phase `brownfield-integration` co-fire steps).
+  Description cut: the parenthetical red/green/refactor step spell-out and several SHOULD trigger
+  phrases compressed; the MUST clause, core trigger, the decomposition-disclosed obligation, and
+  the `patterns-vertical-tdd` design-time/runtime sibling distinction kept. Verbatim homes: git
+  history of this file (pre-v0.64.0).
+- **Old description (verbatim):**
+  > This skill MUST be invoked when executing a cycle card at runtime — turning one card from `.mochiko/specs/<feature>/tasks.md` into working code by decomposing the card into concrete tasks (build-time, code in view), driving each task through the red→green→refactor execution sequence (write the failing test, run it, confirm it fails for the right reason, implement the minimum to pass, refactor only this cycle's code), flipping the card's checkbox, and writing the `cycle-report.md` with the decomposition disclosed. SHOULD also invoke when "execute cycle", "implement the cycle card", or "write the cycle report" is the work at hand; when reworking the specific tasks reported as failing (targeted, test-first rework); when reproducing a reported failure with a failing test before fixing it; or when the card's brownfield exposure names existing code. This is the runtime EXECUTION of cycles — decomposition included. Deciding WHAT the cycles are (the slicing, the cards, the TEST gates) is design-time work owned by `mochiko:patterns-vertical-tdd`, upstream and not this skill.
+- **Kept deliberately:** the guardrails keep-set — the Overview + letter/spirit epigraph, When
+  NOT to Use (the vertical-tdd / verifier / lead / loop-state boundaries), the entire Core
+  Process (Read → Decompose → Red → Green → Refactor → Flip → Write, incl. the pre-code-ladder
+  step), Progress Tracking, Reworking Specific Failed Tasks, Fixing a Reported Failure, Red
+  Flags, the Common Mistakes table, and the Reference Files pointers.
+- **MANDATORY KEPT reconciliation:** the [v0.44.0] KEPT entry protects the envelope's register +
+  prose-on-clean check, but that content lives in `references/CYCLE-REPORT-FORMAT.md`, NOT the
+  SKILL body — untouched by this body cut. The [v0.49.0] and [v0.53.0] supersessions KEPT the
+  cycle-boundary restriction, red/green/refactor strict order, rework-only-failed-tasks, fix-pass
+  scoping, the verifier boundary, and the report self-disclosure framing — all live in Core
+  Process / When-NOT-to-Use / Progress Tracking, none in the deleted When-to-Use. Progress
+  Tracking (the machine-first report obligation) was deliberately kept, not cut. No prior KEPT or
+  protected line is touched.
+- **Consumers assessed:** staff-engineer (mounts it) · implement (binds it) · qa-engineer /
+  review-code-minimalism (read the disclosed decomposition) · brownfield-integration (co-fires) ·
+  patterns-vertical-tdd, patterns-code-minimalism (cross-reference) · mochiko router. None links
+  the removed When-to-Use bullets or a description clause. Contract intact.
+
 ## [v0.53.0] Cycle-report consumer line: lead-only → lead + verification seat
 - **Disposition:** superseded → `references/CYCLE-REPORT-FORMAT.md`'s widened consumer line: the verification seat's code-minimalism lens (`mochiko:review-code-minimalism`) now reads the disclosed decomposition and its rung claims alongside the cycle's diff.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-05 "Ponytail code-minimalism ruled (PT-D1–D10)", record `.mochiko/brainstorms/ponytail-concepts-integration/record.md`, D8).

@@ -93,3 +93,34 @@ The concern is not the validator seat itself — it is that the system keeps **a
 
 1. **(M1)** The near-cap description skills (`patterns-system-design`, `authoring-architecture`, `review-brainstorm`, `review-feasibility`) sit in plan/implement/brainstorm stages — outside the setup+specify substrate. The verdict extends to them by the nature-coverage argument only; untested on the actual worst offenders. Candidate follow-up: a third stage run (plan) if the verdict is contested at build.
 2. **(M2)** Terser primitives shrink the substrate the author≠grader audit's preserved-responsibilities check grades against; D7 bolts a budget onto that same audit without addressing the interaction. Mitigated by true-reductions-only accounting surviving in D8; watch at first post-verdict audit.
+
+## Benchmark execution (2026-08-10, same day — post-acceptance addendum)
+
+The D1 benchmark ran per D8's venue ruling (session worktree). Execution rulings by the user
+during the run: **checkpointed stages** (CP1 setup ×4 arms ×r1 · CP2 specify ×4 ×r1 · CP3
+targeted replicates — body+agents only, descriptions closed on mechanism evidence, baseline
+unreplicated) and the **agents-arm disposition (b)**: all six agents ship prose-only, the
+F-X1 review-evidence violation attributed to run noise (C-2 confound acknowledged), watch
+item at first live runs.
+
+**Verdict (all three arms, `.mochiko/benchmarks/guardrails-vs-detail/report/final-verdict.md`):**
+- **body** — guardrails bodies SHIP: formal D6 PASS, replicate spread 0.0 both commands,
+  0 floor violations, −18–46% skill-bytes/run.
+- **descriptions** — slim descriptions SHIP: 0 fire misses over 12+ moments across both
+  commands incl. both sibling traps; 68% smaller.
+- **agents** — prose-only SHIPS (user ruling b): 0 route misses over 20+ staffing decisions;
+  example blocks (69–81% of every agent description) bought no measured routing accuracy.
+
+**Cross-cutting finding:** every score loss at every checkpoint — baseline's included — came
+from silently omitting a planted "I don't know" zone, never from floors, structure, or
+invented facts. Vague-zone surfacing is a run-lead discipline, not a skill-detail effect;
+the build should prefer one-line floor obligations (surface every elicited unknown; review
+leaves verdict + dispositions in artifacts) over any returning prose.
+
+**Caveats on record:** C-1 baseline n=1 (delta signs soft, 10% verdicts robust) · C-2 r2
+brief hardening confounds the F-X1 non-reproduction · C-3 single-agent simulation with a
+model-played principal · C-4 setup+specify substrate only (open thread 1 stands).
+
+**Evidence:** curated set + winning variants at `.mochiko/benchmarks/guardrails-vs-detail/`
+(this branch); full 12-run trail on the unmerged archive branch
+`worktree-brainstorm-validator-scope` (user ruling: leave as-is, no merge).

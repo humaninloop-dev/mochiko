@@ -6,6 +6,37 @@ Entry formats: `strips/README.md`. Wave context: [v0.28.0] entries — skill-suc
 `.mochiko/brainstorms/workflow-token-reduction/record.md` D4 + the wave-2 rulings R1–R4/T2;
 ratified 2026-07-24).
 
+## [v0.64.0] Guardrails body + slim description (guardrails-vs-detail Wave 2 editorial cut)
+- **Disposition:** superseded → Wave 2 editorial guardrails cut (D4 cut line).
+- **Tier failed:** n/a — supersession by ruling (guardrails-vs-detail Wave 2, `DECISIONS.md`
+  2026-08-11 build row Wave 2 residual + user rulings 2026-08-10/11; method warrant: benchmark
+  verdict `.mochiko/benchmarks/guardrails-vs-detail/report/final-verdict.md`).
+- **Content (faithfully compressed):** body 11,255 → 10,628 chars (−6%); description 1,001 → 496
+  chars (−50%). Body cut: the **When to Use** section deleted whole (six bullets restating the
+  description's invocation conditions — TR-XXX / C-XXX / NFR-XXX / IP-XXX authoring plus the
+  INT-XXX and DS-XXX analysis-declaration bullets; each obligation survives in §4 System
+  Integrations and §5 Data Sensitivity respectively, and in the three-artifact spine). Description
+  cut: the trigger-phrase enumeration trimmed and the trailing "Produces requirements.md,
+  constraints-and-decisions.md, and nfrs.md from a business specification" sentence dropped; the
+  MUST clause, core triggers, and the constraints-and-decisions.md-ownership +
+  `patterns-technical-decisions` sibling distinction kept. Verbatim homes: git history of this
+  file (pre-v0.64.0).
+- **Old description (verbatim):**
+  > This skill MUST be invoked when authoring the technical-requirements layer of a feature specification — decomposing business functional requirements into technical requirements (TR-XXX), documenting hard constraints (C-XXX), defining measurable non-functional requirements (NFR-XXX) with numeric targets, and specifying infrastructure-provisioning requirements (IP-XXX), each traced to a business source. SHOULD also invoke when the work involves "TR-", "C-", "NFR-", "IP-", "technical requirements", "hard constraints", "non-functional requirements", "infrastructure provisioning", or authoring the constraints-and-decisions.md artifact and its C↔D / IP traceability. This skill owns the constraints-and-decisions.md artifact structure (the D-XXX field schema) and traceability — NOT the decision-evaluation technique (use mochiko:patterns-technical-decisions to evaluate alternatives and write ADRs). Produces requirements.md, constraints-and-decisions.md, and nfrs.md from a business specification.
+- **Kept deliberately:** the guardrails keep-set — the three-artifact spine (§§1–5 incl. the
+  Structural Decisions subsection), the analysis-vs-downstream router blockquote, Traceability
+  Rules mandatory links, Technology-Agnostic Writing, the "'Fast' is not a requirement" /
+  "constraints are facts" / no-orphan / IP-coverage behavioral lines, the three no-exceptions
+  lines, the Common Rationalizations table, the Quality Checklist, the Red Flags STOP paragraph,
+  the letter/spirit epigraph, and all `references/` pointers (ARTIFACT-TEMPLATES,
+  TRACEABILITY-PATTERNS).
+- **KEPT reconciliation:** the [v0.28.0] and [v0.23.0] kept-sets below survive this cut in full —
+  the When-to-Use bullets are not in any prior KEPT/protected set, and no `DECISIONS.md`-traceable
+  line was removed. No prior KEPT or protected line is touched.
+- **Consumers assessed:** technical-analyst (mounts it) · patterns-entity-modeling,
+  patterns-technical-decisions (cross-reference the artifacts / D-XXX schema) · mochiko router.
+  None links the removed When-to-Use bullets or a description clause. Contract intact.
+
 ## [v0.28.0] Reference-copied field tables, homed mistake rows, and excuse-column red flags stripped (body 229 → 135, −41%, in-band)
 - **Disposition:** deduped → `references/ARTIFACT-TEMPLATES.md` (Read: every field appears in
   its Field Definitions with extra Format/Rules columns, plus document templates — and the SKILL

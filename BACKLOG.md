@@ -18,23 +18,37 @@ HIT logged (ROADMAP stamp vs CHANGELOG — user decision); all items within the 
 
 ---
 
-## Guardrails-vs-detail benchmark
+## Guardrails-vs-detail residuals
 
-Ruling: DECISIONS.md row 2026-08-10 (validator-scope-and-verbosity D1–D8 as amended); record
-accepted after solo cold review via blind-map dispatch (8/8 dispositioned, verify repairs folded).
+Ruling: DECISIONS.md rows 2026-08-10 (D1–D8 + benchmark verdict) + build row 2026-08-11;
+Wave 1 delivered at v0.63.0 (trail).
 
-- [ ] **Guardrails-vs-detail benchmark + cost gate** (2026-08-10; provenance:
-  `.mochiko/brainstorms/validator-scope-and-verbosity/record.md`, Build surface section) —
-  cold-runnable: three arms (11 body-guardrails skill variants per D4 cut line ·
-  slim-description variants + invocation-fire-rate check · agent-descriptions-sans-examples +
-  route check) · model-played principal card with planted vagueness (D3) · neutral outcome
-  rubric by a non-variant author, LLM-as-judge numeric scoring (D5) · 16+ stage runs
-  (4 variants × setup/specify × ≥2 replicates) · decision rule: 10% threshold, floors
-  absolute, diagnostic trace-back on loss (D6) · then cost gate: per-class char budgets
-  (winner +25%), char-count pre-assert in the author≠grader audit (D7) · supersession
-  annotation landed on the skill-succinctness-strip row (done at acceptance). Venue: starts
-  in the session worktree (`brainstorm-validator-scope`) per D8. Open threads riding: near-cap
-  skills outside substrate (M1) · audit-substrate shrink interaction (M2).
+- [ ] **First-live-run watches on the v0.63.0/v0.64.0 cuts** (2026-08-11; provenance:
+  `.mochiko/brainstorms/validator-scope-and-verbosity/record.md`, Benchmark execution section +
+  `.mochiko/benchmarks/guardrails-vs-detail/report/final-verdict.md`; extended to the Wave 2
+  substrate at v0.64.0) — watch the first live runs on the cut primitives: **F-X1
+  review-evidence** — does the independent review leave verdict + dispositions in the
+  artifacts (the floor line's job, now in 4 review/validation skills + the equivalent in
+  `review-code-minimalism`)? Recurrence re-opens agents ruling (b) (example blocks return to
+  the 10 prose-only agent descriptions) · **slim-description fire-rate** — do the 27 slim
+  descriptions still fire at their moments? Wave 1's 11 are benchmark-verified, Wave 2's 16
+  probe-verified (14/14 blind routing); a live miss on any lands as a probe-evidenced
+  RETURNED clause, not a description rewrite · **M2** audit-substrate shrink (terser bodies
+  give the preserved-responsibilities check less to grade; two datapoints held — both waves'
+  audits graded from strip inventories). M1 retired at v0.64.0 (all near-cap descriptions
+  slimmed + probe-verified). Advisory riding: dropped SHOULD-class trigger phrases inventoried
+  in the Wave 2 audit reports — restore individually on live-miss evidence only.
+- [ ] **`analysis-codebase` dangling-pointer repair** (2026-08-11; provenance: batch-A audit
+  ruling, strip `[v0.63.0]` note) — the ruled variant keeps "assess against it using the
+  indicators below" but the indicator subsections died; comprehension defect only, no lost
+  obligation. One-line reword through the ordinary edit ceremony at the next touch of this
+  skill.
+- [ ] **Review-evidence floor-line consolidation** (2026-08-11; provenance: Wave 1 user ruling
+  option note + Wave 2 spread) — the floor line now lives in 4 skills verbatim
+  (`review-specifications`, `review-governance-intent`, `validation-constitution`,
+  `review-brainstorm`, plus adapted copies in `review-feasibility`, `review-plan-artifacts`);
+  no shared review-contract home exists. Candidate: single-source it when a shared home
+  naturally appears — not worth minting a new primitive for.
 
 ## Feature-sizing & entry-points residuals
 

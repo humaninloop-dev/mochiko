@@ -17,6 +17,26 @@ Wave-1 body strip landed 2026-07-25 at v0.25.0 (batch-ratified): body 274 → 21
 23% — **under the 30–70 never-stripped band**; per R3 the under-band second pass generates the
 survivor-provenance (KEPT) entries below rather than forcing cuts.
 
+## [v0.63.0] Guardrails cut — body deletions + slim description (benchmark verdict)
+- **Disposition:** superseded → benchmark-ruled guardrails body + slim description (`.mochiko/benchmarks/guardrails-vs-detail/variants/`)
+- **Tier failed:** n/a — supersession by ruling (guardrails-vs-detail benchmark verdict — `DECISIONS.md` 2026-08-10 benchmark-verdict row; `.mochiko/brainstorms/validator-scope-and-verbosity/record.md` Benchmark execution; `.mochiko/benchmarks/guardrails-vs-detail/report/final-verdict.md`)
+- **Content (faithfully compressed).** Body 12,358 → 6,915 chars (−5,443, −44%; net of the +~181-char review-evidence floor line added as a pure addition). Description 1,131 → 481 chars. Sections removed:
+  - **## When to Use** (the six-bullet list) — removed; When NOT to Use kept.
+  - **### Step 2: Region and Surface Integrity (deterministic)** — the region-marker / index→home / paths-scope / scope-coverage / new-file-read-line checks.
+  - **### Step 3: Check Each Principle (three-part, in the ledger)** — the enforcement/testability/rationale/home table.
+  - **### Step 4: Trace Closure Cross-Check** — the both-ways manifest↔synthesis↔surface closure procedure and the semantic-fidelity advisory note.
+  - **### Step 5: Floor, Module, and Waiver Checks** — the floor-header / essential-category / waiver-format (D4.2) / module-match checks.
+  - **### Step 6: Scan for Anti-Patterns** — the standalone step (the references/ANTI-PATTERNS.md pointer survives in Quantification Requirements).
+  - **### Step 7: Verify No Placeholders** — the generic every-set-member placeholder-pattern sweep.
+  - Old description verbatim: "This skill MUST be invoked to grade a DRAFTED governance surface set against the quality checklist — there is NO constitution.md; the graded set is the CLAUDE.md governance region (between the mochiko:governance markers), the `paths`-scoped `.claude/rules/mochiko/` files, and the governance ledger (`.mochiko/memory/governance-ledger.md`), judged against the session synthesis and the producer's trace manifest. Checks include two-way trace closure, region-marker integrity, index→home existence, per-principle three-part structure (enforcement/testability/rationale), floor/module accounting and waiver-format checks (the D4 model), anti-pattern and placeholder scans, quantification enforcement, and semantic version-bump determination — emitting a binary PASS/FAIL verdict plus a fix list. SHOULD also invoke whenever the setup loop's validate step needs an independent grade of a surface set produced by mochiko:authoring-constitution, or when re-validating after a FAIL-loop revision. The validator-side skill of the governance producer↔validator pair; defaults to FAIL; run by an independent validator, never the author."
+  - Verbatim removed text survives in three places: (a) git history of the original `plugins/mochiko/skills/validation-constitution/SKILL.md`; (b) the before/after pair in this tree — `.mochiko/benchmarks/guardrails-vs-detail/variants/body/validation-constitution/SKILL.md` (after) and the pre-edit original (before, in git); (c) archive branch `worktree-brainstorm-validator-scope`.
+- **Kept deliberately (the guardrails keep-set):** goal/output contract (Overview "the graded artifact is a set" + the Step 9 VALIDATION RESULT block); the non-waivable floor ("Every set MUST pass — no exceptions", "Violating the letter … is violating the spirit"); Step 1's checklist load-and-assemble instruction with the `references/QUALITY-CHECKLIST.md` and `references/ANTI-PATTERNS.md` pointers; the anti-rationalization triad (Common Mistakes + Red Flags + Common Rationalizations); version-bump determination (Step 8); Related Skills. **Added (pure addition):** the review-evidence floor line in ## Overview.
+- **Protected-content reconciliation.**
+  - `[v0.25.0] KEPT: Red Flags + Common Rationalizations pair` — both survive the cut. Intact.
+  - `[v0.25.0] KEPT: Step-7 placeholder pattern list` — the guardrails cut REMOVES Step 7. Recorded here as superseded-by-this-ruling. Section-bound placeholder coverage remains in `references/QUALITY-CHECKLIST.md` ("## No Placeholders Rule": `[PLACEHOLDER]`, `[COMMAND]`, `GI-XXX`), assembled at Step 1 — but the v0.25.0-KEPT distinction, Step 7's *generic sweep over every set member* ruled "not derivable from" those section-bound items, is exactly what this benchmark ruling supersedes.
+  - The removed Steps 2–6 are procedure detail single-sourced to `references/QUALITY-CHECKLIST.md` (loaded at Step 1); none were separately KEPT-marked.
+- **Consumers assessed:** no command references this skill (grep `plugins/mochiko/commands/` clean). `agents/validator.md` declares it in `skills:`; the kept goal/floor/checklist-pointer leave that composition intact.
+
 ## [v0.25.0] "Testing Evidence" RED/GREEN build record (28 lines)
 - **Disposition:** deleted — full content in git history (removed at v0.25.0)
 - **Tier failed:** 2 (provenance, not procedure — precedent: `testing-end-user`'s TESTING-EVIDENCE.md archived-deleted at v0.22.0 on the same ground)

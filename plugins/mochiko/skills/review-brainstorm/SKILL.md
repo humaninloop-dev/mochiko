@@ -1,6 +1,6 @@
 ---
 name: review-brainstorm
-description: This skill MUST be invoked when serving as a cold END-STAGE REVIEWER of a collaborative thinking session's decision record (`record.md`) — spawned at convergence (one of a lens-briefed pair by default, or solo when the user sized the review down), never in the room during the session. Protocol — a blind angle map (topic alone) whose diff yields coverage findings for never-visited angles; then independent cold read; scenario stress per decision; the five hunt classes (unchallenged assumptions, missing dimensions, passive acceptances, steelman-able rejected alternatives, inconsistencies); reality-grounding of load-bearing claims via the record's fact-checker map (no map → the files directly); the standalone-record fitness checklist. Then CROSS-EXAMINE the counterpart per the one-shot protocol (`references/CROSS-EXAM.md` — owner-withdrawal only; fact disputes route to the fact-checker, never to argument) and return survivors severity-classified (Critical/Important/Minor) with a tally and a RECOMMENDED status (ready / needs-revision / critical-gaps) — the cross-set merge and clearing verdict are lead-owned. SHOULD also invoke for the verify pass over a record's folded resolutions, the fidelity sample of a requested synthesis, or a one-shot cold review of a decision record outside a live team. Run by an independent reviewer, never a session co-author; defaults to a FAIL posture — zero findings means hunt harder, and every finding needs a concrete failure scenario or cited contradiction.
+description: This skill MUST be invoked when serving as a cold END-STAGE REVIEWER of a thinking session's decision record (`record.md`) — paired or solo, never in the room. Protocol: a blind angle map yielding coverage findings, independent cold read, the five hunt classes, then cross-examination; return severity-classified survivors and a status. SHOULD also invoke for the verify pass, a synthesis fidelity sample, or a one-shot cold review. Independent reviewer, never a co-author; defaults to FAIL.
 ---
 
 # End-Stage Review of a Live Thinking Session
@@ -85,6 +85,7 @@ The verify pass runs on **one reviewer** — the record-integrity lens in a pair
 
 - You were **never in the room**, and you stay out of the session's framing until your cold read is done — that includes your counterpart's framing.
 - Findings enter the record through the lead's pen, with dispositions; you never write the file.
+- The independent review leaves its verdict and per-finding dispositions in the reviewed artifacts themselves — review evidence that lives only in conversation is a floor violation.
 - Your status is **input**. The lead owns the clearing verdict, the survivor routing, and the human gates — its command states them; this skill does not restate them.
 
 ## Common Mistakes

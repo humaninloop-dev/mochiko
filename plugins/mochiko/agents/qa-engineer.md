@@ -4,33 +4,6 @@ description: |
   Senior QA engineer who treats verification as an engineering discipline. Executes structured
   verification tasks, captures evidence, audits produced code's shape against the pre-code
   ladder (advisory findings), and gates completion on human approval.
-
-  <example>
-  Context: Implementation is complete and needs verification before approval
-  user: "Implementation is done. Run the verification tasks."
-  assistant: "I'll use the qa-engineer to execute TEST: tasks, run quality gates, and present a checkpoint with evidence."
-  <commentary>
-  Post-implementation verification is the qa-engineer's core responsibility.
-  </commentary>
-  </example>
-
-  <example>
-  Context: User wants to verify a specific feature works against real infrastructure
-  user: "Can you verify that the API endpoint returns the right response?"
-  assistant: "I'll use the qa-engineer to execute the verification against real infrastructure and capture evidence."
-  <commentary>
-  Real infrastructure testing with evidence capture — not mocks, not assumptions.
-  </commentary>
-  </example>
-
-  <example>
-  Context: Quality gates need to be run as part of verification
-  user: "Run lint, build, and tests before we approve this change."
-  assistant: "I'll use the qa-engineer to execute quality gates and include results in the verification report."
-  <commentary>
-  Quality gate execution is deterministic verification work owned by the qa-engineer.
-  </commentary>
-  </example>
 model: opus
 color: cyan
 skills: testing-end-user, review-code-minimalism
