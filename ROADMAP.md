@@ -13,7 +13,8 @@ frontend/mobile/desktop shelves are Tier-I roadmap work.**
 
 ## Now
 
-- **Feature-map layer residuals** — build DELIVERED 2026-08-10 at v0.57.0–v0.59.0 (slices retired, feature = pipeline unit, `product-manager` agent, FEATURES.md map; trail); remaining: the self-application governance amend (user-gated) + the first-live-run watch → [BACKLOG](BACKLOG.md#feature-map-layer-residuals)
+- **Feature-sizing & entry-points build** — ruled 2026-08-10 (D1–D15): map nesting (parent/leaf) · `/mochiko:feature` command (steward + lanes, dispatch architecture) · plan/implement re-key spec→feature · two-altitude design surface with graded folds · breaking change → [BACKLOG](BACKLOG.md#feature-sizing--entry-points-build)
+- **Feature-map layer residuals** — build DELIVERED 2026-08-10 at v0.57.0–v0.59.0 (slices retired, feature = pipeline unit, `product-manager` agent, FEATURES.md map; trail); remaining: the self-application governance amend (user-gated) + the first-live-run watch (note: first-live-run watch partially overtaken by the sizing/entry-points re-key — watch items re-scope at that build) → [BACKLOG](BACKLOG.md#feature-map-layer-residuals)
 - **KM-module redesign dogfood** — fresh-project scaffold + rules-injection probe of the rebuilt module (2026-07-25; partial credit 2026-08-06: in-repo brownfield setup ran dimension-7 core+electives, collision beat vacuous — fresh-scaffold half + injection probe remain) → [BACKLOG](BACKLOG.md#operating-docs--km-module)
 
 ## Next
@@ -56,8 +57,9 @@ accepted AND built same day at v0.55.0 — two native output styles + router sec
 PASS round 1, item straight to trail · 2026-08-07: implement bounds contract booked HIGH ×2
 from the mochiko-app S1 run evidence AND closed same day at v0.56.0 — Bounds + Escalation
 cadence bullets in `implement.md` Harness, audit FAIL→fix→PASS, both items straight to
-trail) — Now 1 · Next 6 · Later 9 · BACKLOG
-baseline 55 open items (per-item ≤15 lines;
+trail; 2026-08-10: feature-sizing & entry-points session accepted — D1–D15, Now row added) —
+Now 2 · Next 6 · Later 9 · BACKLOG
+baseline 56 open items (per-item ≤15 lines;
 figures on BACKLOG's stamp line). Plugin: 5 commands · 9 agents · 28 skills · 14 templates +
 modules · 2 output styles, v0.56.0 (marketplace synced). Per-bump build history: `CHANGELOG.md` (from 0.53.0) ·
 `DECISIONS.md` · the trail; pre-0.53.0 stamp-line narratives live in git history (this line,
