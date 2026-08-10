@@ -13,6 +13,7 @@ frontend/mobile/desktop shelves are Tier-I roadmap work.**
 
 ## Now
 
+- **Feature-map layer build** — slices retire, the feature becomes the pipeline unit; repo-root FEATURES.md capability map + `product-manager` agent (ruled 2026-08-10, D1–D22, cold-reviewed 15/15) → [BACKLOG](BACKLOG.md#feature-map-layer-build)
 - **KM-module redesign dogfood** — fresh-project scaffold + rules-injection probe of the rebuilt module (2026-07-25; partial credit 2026-08-06: in-repo brownfield setup ran dimension-7 core+electives, collision beat vacuous — fresh-scaffold half + injection probe remain) → [BACKLOG](BACKLOG.md#operating-docs--km-module)
 
 ## Next

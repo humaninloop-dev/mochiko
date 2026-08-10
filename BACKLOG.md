@@ -18,6 +18,26 @@ HIT logged (ROADMAP stamp vs CHANGELOG — user decision); all items within the 
 
 ---
 
+## Feature-map layer build
+
+Ruling: DECISIONS.md row 2026-08-10 (D1–D22); record cold-reviewed, 15/15 dispositioned.
+
+- [ ] **Feature-map layer build** (2026-08-10; provenance:
+  `.mochiko/brainstorms/feature-map-layer/record.md`, Build surface section as
+  review-amended) — the slices→features rebuild: `product-manager` agent (9→10) +
+  `authoring-feature-map` skill (derivation, D6 entry shape + obligations line + `retired`,
+  D8 delta grammar, D7 filter, intent map-read agenda, D12 re-verify carrier) ·
+  `authoring-slices` retires (recorded supersession; invariants re-key, D18/D22) · all five
+  commands touched (setup D12 bootstrap · specify D7/D10/D20 · plan D17/D18/D19 · implement
+  D13 landing · brainstorm verify-untouched) · templates: spec restructure (stories/ out,
+  selection section in, FEAT-tag re-key), FEATURES.md index + entry shapes, tasks re-key ·
+  `review-specifications` D16 extension · pipeline-core map-integrity invariants (incl.
+  in-flight-agreement R5) · KM: specs-index contract, top-level reservation (FEATURES.md),
+  R15 boundary line · self-application: dogfood repo's own `/mochiko:setup` amend (R12) ·
+  migration stance for slice-form specs (open thread 4) before ship. Supersedes at build:
+  Delivery-Slices machinery (v0.49.0), slice-scoped plan/implement bindings, SCR/FLOW
+  slice-tags. Open threads 1–6 ride the record.
+
 ## UX-prototype-stage watches
 
 Ruling: DECISIONS.md row 2026-08-02 (UX-D1–D9); built same day at v0.50.0.
