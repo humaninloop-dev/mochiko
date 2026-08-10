@@ -29,6 +29,19 @@ record's status.
   approved; grading and fact-finding seats are exempt.
 - **Independence:** no output is cleared by its author — the record is yours, so its review
   seat is always someone else, reading the frozen record cold from the file, default FAIL.
+- **Blind-map dispatch:** a review seat is spawned in two messages — first the topic statement
+  and goal line only, *never* the record path, so it builds its Phase 0 angle map with no
+  sight of what the session decided; its map returns before you send the record path and the
+  cold read begins. The anchoring fence is structural, not a trust ask. In a pair, both seats
+  build their maps independently.
+- **Coverage-survivor routing:** a surviving coverage finding is a candidate that questions the
+  topic itself, not a fold — present each gap as a candidate topic; **the user** rules the path: **explore now**
+  (re-enter `mochiko:analysis-iterative` on that angle; the resulting decision lands in the
+  record's same `D…` namespace), **rule inline**, or **defer**. Non-coverage survivors keep the
+  ordinary fold / repair / ruling path and may be dispositioned in batches.
+- **Reopen-born verify:** a decision born from a coverage-survivor reopen gets one bounded verify
+  round — internal consistency and record-fitness, no fresh cold read, no blind-map coverage
+  hunt against it, and no second reopen off it.
 - **Reserved to the user:** record acceptance · the disposition of any review survivor that
   challenges a user ruling · the waiver, if the review is to be skipped · any amendment to a
   user-ruled decision, and any new decision — their word, never yours.

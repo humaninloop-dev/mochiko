@@ -5,6 +5,29 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.60.0] — 2026-08-10
+
+- Cold-review gap-challenge build — blind angle map + coverage findings + reopen routing,
+  both review clusters (ruling: `cold-review-gap-challenge` record D1–D10, D2/D4 as amended,
+  D8 + I4 rider). `review-brainstorm`: new Phase 0 — the reviewer maps expected coverage
+  from the topic + free repo grounding (session artifacts excluded) before ever seeing the
+  record; map-vs-record diff mints coverage findings, first-class beside the hunt classes,
+  admitted by a materiality argument (exempt from the concrete-failure-scenario bar), severity
+  by plausibility of ruling change, rejected-roads-checked; hunt class 2 narrowed to
+  intra-decision scope (supersession strip `[v0.60.0]` in `.mochiko/strips/review-brainstorm.md`);
+  verify pass extends to reopen-born decisions (lighter-review trade-off ruled, one-level
+  recursion stop); verdict table admits Critical coverage gaps; description re-fitted at
+  1,531/1,536. `brainstorm.md`: two-message reviewer dispatch (topic-only spawn, map back,
+  then the record path — blindness lead-enforced), coverage survivors presented per gap with
+  the user ruling explore-now / rule-inline / defer (reopens re-enter `analysis-iterative`,
+  same D-namespace), reopen-born verify jurisdiction. `review-governance-intent` + `setup.md`:
+  same doctrine adapted — the ten-dimension agenda-diff stays primary, the blind map augments
+  beyond the agenda, agenda governs on overlap; re-elicited intents land in GI-XXX and ride
+  the verify/delta pass. Author≠grader audits: both clusters FAIL round 1 (evidence-bar
+  carve-out missing on the setup skill; description 9 over cap; lead-subject wording on the
+  reopen ruling in both commands) → fix round → both PASS. First-live-run watch on both
+  carriers in BACKLOG (D9).
+
 ## [0.59.0] — 2026-08-10
 
 - Feature-map layer wave 4 — brownfield bootstrap + KM wiring (ruling: `feature-map-layer`
