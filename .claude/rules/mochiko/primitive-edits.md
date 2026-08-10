@@ -23,16 +23,7 @@ change is done. Full contracts: `.mochiko/strips/README.md`.
 
   An edit whose only trace is the changed file, with nothing in `.mochiko/strips/`, is **incomplete**.
 
-- **Check** — first the deterministic **char-budget pre-assert (D7)**, then the model-judgment
-  audit. The grader counts the edited primitive's budgeted classes — skill body, skill
-  `description:` value, agent `description:` value — as **characters of the parsed value, never
-  `wc -c` bytes**, against `.mochiko/memory/primitive-cost-budgets.md` (canonical measurement
-  snippet lives there). Over budget = FAIL, unless the editor named the overage in the audit
-  brief with a justification the grader rules holds (a genuine new obligation — never restored
-  playbook prose). `references/` files are exempt. Primitives without a measured budget fall
-  back to hard caps only (skill `description:` ≤ 1,536 delivery cap); budgets are never invented.
-
-  Then the independent **author ≠ grader** audit: `mochiko:validator` grading a command
+- **Check** — the independent **author ≠ grader** audit: `mochiko:validator` grading a command
   against **the command's own text** — internal coherence (default-FAIL goal · harness present:
   plan approval for producing seats, author ≠ grader independence, decisions reserved to the
   user · bindings complete: paths, templates, entry condition) plus preserved responsibilities

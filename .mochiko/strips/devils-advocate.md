@@ -6,19 +6,6 @@ user-approved 2026-07-25; design: `.mochiko/brainstorms/skill-succinctness-strip
 This was the sole remaining agent instance — the other five agents' Skills-Available paragraphs
 were ruled in their command waves.
 
-## [v0.63.0] Frontmatter `description:` examples stripped → prose-only agent description
-- **Disposition:** superseded → prose-only agent description (variant at `.mochiko/benchmarks/guardrails-vs-detail/variants/agents/devils-advocate.md`); the `<example>` blocks were removed from the frontmatter `description:` block scalar, the prose framing (routing content) kept.
-- **Tier failed:** n/a — supersession by ruling (guardrails-vs-detail benchmark, agents-arm user ruling (b) 2026-08-10 — `DECISIONS.md` benchmark-verdict row 2026-08-10; `.mochiko/brainstorms/validator-scope-and-verbosity/record.md` Benchmark execution; `report/final-verdict.md`).
-- **Content:** faithfully compressed. **2 `<example>` blocks removed** from the `description:` value:
-  1. Context: a drafted feature specification needs an adversarial gap review — commentary claimed the example demonstrated that a spec-review request triggers adversarial review of requirements completeness with a verdict.
-  2. Context: a reviewer is needed to pressure-test requirements and produce an evidence-backed verdict — commentary claimed it demonstrated that a readiness question triggers a structured adversarial review that returns a verdict, never a rubber-stamp.
-
-  Description parsed-value char delta: **1,301 → 315** (chars of the parsed block-scalar value; regex/block-scalar parse, not `wc -c` bytes). Verbatim removed text survives in three homes: (a) git history of `plugins/mochiko/agents/devils-advocate.md`; (b) the pre-edit original state in this tree plus the after-state variant at `.mochiko/benchmarks/guardrails-vs-detail/variants/agents/devils-advocate.md`; (c) archive branch `worktree-brainstorm-validator-scope`.
-- **Kept deliberately:** the prose framing of the `description:` (the routing content that staffs the agent — "Adversarial reviewer who stress-tests specifications by finding gaps, challenging assumptions … returns a severity-ranked gap report with clarifying questions and a recommended verdict.") — and the entire agent body, byte-for-byte untouched.
-- **Consumers assessed:** grep of `plugins/mochiko/commands/` and `plugins/mochiko/skills/` for `devils-advocate`: `skills/*/SKILL.md` reference(s) only; no command references the agent by name. Routing/staffing contract intact — the agent name and the description's prose framing are unchanged; only the illustrative `<example>` blocks were removed (benchmark: 0 route misses over 20+ staffings).
-- **Standing watch:** an F-X1-class review-evidence omission at the first live runs re-opens ruling (b).
-- **Protected-content reconciliation:** the prior entries touch the `skills:` frontmatter list and body sections only — [v0.49.0] roster drop (frontmatter `skills:` + Skills-Available bullets), [v0.25.0] "Skills Available" paragraphs (body), [v0.25.0] "What You Hunt For" catalog bullets (body). None touches the frontmatter `description:` value or any `<example>` block. No overlap.
-
 ## [v0.49.0] Roster drops review-task-artifacts + review-slices
 - **Disposition:** superseded → the two absorbing skills already on the roster (review-plan-artifacts, review-specifications)
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D4+D9)

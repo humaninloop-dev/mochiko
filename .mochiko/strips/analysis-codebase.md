@@ -11,23 +11,6 @@ fixed same day — the audit trail is the wave's ROADMAP row). Consumers assesse
 `templates/artifact-format.md` — grep 2026-07-25: none reference any stripped section;
 `detect-stack.sh` references (setup.md, router) untouched.
 
-## [v0.63.0] Guardrails cut — detection/procedure prose removed, assessment contract kept; slim description
-
-- **Disposition:** superseded → benchmark-ruled guardrails body + slim description (`variants/body/analysis-codebase/`, `variants/descriptions/analysis-codebase/`), one merged edit.
-- **Tier failed:** n/a — supersession by ruling (guardrails-vs-detail benchmark verdict; `DECISIONS.md` 2026-08-10 benchmark-verdict row; `.mochiko/brainstorms/validator-scope-and-verbosity/record.md` Benchmark execution; `report/final-verdict.md`)
-- **Content (faithfully compressed — section-level inventory, body 8,962 → 6,509 chars, −27%):**
-  - **Removed whole:** `## When to Use` (trigger list — carried by the description) · the four Essential-Floor per-category indicator subsections `#### Security — status indicators`, `#### Testing — status indicators`, `#### Error Handling — status indicators`, `#### Observability — status indicators` (see reconciliation below).
-  - **Shortened:** `## Detection Script` (855 → 458 chars — the `detect-stack.sh` invocation and the determinism-boundary note kept; extra prose trimmed).
-  - **Kept intact:** `# Analyzing Codebase`, `## Overview`, `## When NOT to Use`, `## Common Mistakes`, `## Mode: Setup Brownfield (the wired path)`, `### Essential-Floor Status Assessment` (the assess-status contract and intent-blind/waiver-blind rule), `### Setup-Brownfield Quality Checklist`, `## Other modes (moved to other clusters — not wired this run)`, `## Related Skills`.
-  - Old description (new slim form is 349 chars; **old verbatim, 462 chars**): "This skill MUST be invoked when analyzing an existing codebase during a brownfield /mochiko:setup run — detecting the technology stack, extracting architecture and conventions, and assessing Essential-Floor status — to produce `.mochiko/memory/codebase-analysis.md`. SHOULD also invoke when a setup/constitution producer needs a deterministic stack baseline (`detect-stack.sh`) or a present/partial/absent read of an existing project before authoring governance."
-  - Verbatim removed text survives in: git history of the SKILL.md; the before/after pair in `variants/`; archive branch `worktree-brainstorm-validator-scope`.
-- **Kept deliberately (guardrails keep-set):** the goal/output contract (Overview + the `.mochiko/memory/codebase-analysis.md` deliverable), the assess-status-vs-require-floor boundary and the intent-blind/waiver-blind rule (`### Essential-Floor Status Assessment`), the anti-patterns (`## Common Mistakes`), the quality checklist, the determinism boundary, and the `references/CONTEXT-GATHERING.md` and template pointers.
-- **Protected-content reconciliation (MANDATORY):** the two prior `[v0.24.0] KEPT:` entries reconciled —
-  - **`[v0.24.0] KEPT: the four Essential-Floor check tables (what-to-assess criteria per category)`** — **superseded by this ruling.** The guardrails cut removes the four `#### … status indicators` subsections that carried the per-category assessment criteria (auth-at-boundaries, secrets-from-env, test-framework-configured, correlation-IDs, …). The canonical category definitions remain in `authoring-constitution/references/ESSENTIAL-FLOOR.md` (unchanged), which `### Essential-Floor Status Assessment` still points to as the source to assess against; the mochiko-side assess-hint tables are the superseded content. Verbatim in the three homes above. **DEVIATION FLAGGED (see build report):** the surviving sentence "assess against it using the indicators below" now has no indicators below it — the benchmark variant left a dangling internal pointer. Shipped byte-identical to the ruled variant (not the shipper's to rewrite); routed to the T4 audit.
-  - **`[v0.24.0] KEPT: Common Mistakes table`** — **survives intact** (`## Common Mistakes`, including the CODEOWNERS governance row). Not touched by this cut.
-- **Consumers assessed (1 consuming command):** `commands/setup.md` — dispatches the skill for the brownfield analysis artifact; relies on the `.mochiko/memory/codebase-analysis.md` output and the present/partial/absent status, not on any removed section anchor. Contract intact.
-
-
 ## [v0.24.0] "Scope (this run)" blockquote in Overview
 - **Disposition:** deleted — in-file triplication; single home is the "Other modes" section (compressed same wave, below)
 - **Tier failed:** 1 (restated in-file: same not-wired scope note appeared in Overview, a When-NOT-to-Use bullet, and the Other-modes section)

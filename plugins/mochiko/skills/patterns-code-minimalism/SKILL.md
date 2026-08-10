@@ -1,6 +1,6 @@
 ---
 name: patterns-code-minimalism
-description: This skill MUST be invoked at build-time card decomposition, BEFORE any red-phase test — running the pre-code ladder over each task (stop at the first applicable rung: exist at all · in codebase · stdlib · native platform · installed dep · one line · minimum), disclosed in the cycle report. SHOULD also invoke on 'should this code exist', 'reuse before build', 'stdlib first', 'over-engineering', 'YAGNI', or when slimming existing code that grew unneeded abstraction layers. Single source of the ladder; distinct from the green-phase 'minimum code to pass' rule.
+description: This skill MUST be invoked at build-time card decomposition, BEFORE any red-phase test is written — running the pre-code ladder over each prospective task: stop at the first rung that applies (does it need to exist at all · already in the codebase · standard library · native platform feature · installed dependency · one line · only then the minimum that works), with rung choices disclosed in the cycle report. SHOULD also invoke when the work involves "should this code exist", "reuse before build", "stdlib first", "over-engineering", "YAGNI", "smallest change", or when weighing writing new code against reusing, deleting, or skipping it. This is the single source of the ladder: producers apply it (mochiko:executing-tdd-cycle points here at the decompose step), and mochiko:review-code-minimalism grades against it. It governs the DECISION to write code — distinct from the green-phase "minimum code to pass" rule, which fires after that decision is made. No rung ever sacrifices a floor obligation or accessibility.
 ---
 
 # Code Minimalism — The Pre-Code Ladder
@@ -15,6 +15,12 @@ the **first rung that applies**. The ladder fires at card decomposition
 much code exists, not how the code that exists is written. The chosen rung per task is
 disclosed in the cycle report's decomposition, where the verification seat grades it against
 this file (`mochiko:review-code-minimalism`).
+
+## When to Use
+
+- Decomposing a cycle card into tasks — every prospective task gets a rung
+- Weighing write-new against reuse, stdlib, platform, or an installed dependency
+- Grading a diff's rung claims (the review skill cites this file as its standard)
 
 ## When NOT to Use
 

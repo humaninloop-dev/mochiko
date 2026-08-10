@@ -1,6 +1,6 @@
 ---
 name: executing-tdd-cycle
-description: This skill MUST be invoked when executing a cycle card at runtime — turning one card from `.mochiko/specs/<feature>/tasks.md` into working code: decomposing it into tasks, driving each through red→green→refactor, flipping the checkbox, and writing `cycle-report.md` with the decomposition disclosed. SHOULD also invoke on 'execute cycle' or when reworking failed tasks test-first. Deciding WHAT the cycles are (slicing, cards, TEST gates) is design-time work owned by mochiko:patterns-vertical-tdd.
+description: This skill MUST be invoked when executing a cycle card at runtime — turning one card from `.mochiko/specs/<feature>/tasks.md` into working code by decomposing the card into concrete tasks (build-time, code in view), driving each task through the red→green→refactor execution sequence (write the failing test, run it, confirm it fails for the right reason, implement the minimum to pass, refactor only this cycle's code), flipping the card's checkbox, and writing the `cycle-report.md` with the decomposition disclosed. SHOULD also invoke when "execute cycle", "implement the cycle card", or "write the cycle report" is the work at hand; when reworking the specific tasks reported as failing (targeted, test-first rework); when reproducing a reported failure with a failing test before fixing it; or when the card's brownfield exposure names existing code. This is the runtime EXECUTION of cycles — decomposition included. Deciding WHAT the cycles are (the slicing, the cards, the TEST gates) is design-time work owned by `mochiko:patterns-vertical-tdd`, upstream and not this skill.
 ---
 
 # Executing TDD Cycles
@@ -17,6 +17,14 @@ the code in view** — then write failing tests first, implement to pass, refact
 card's checkbox, and produce a structured `cycle-report.md` that disclosed the decomposition.
 This skill governs the runtime *execution* of a cycle and of any targeted rework — it does not
 decide what the cycles are or when they run.
+
+## When to Use
+
+- Executing a cycle card from `.mochiko/specs/<feature>/tasks.md` through decompose → red/green/refactor
+- Reworking the specific tasks reported as failing (targeted, test-first rework)
+- Fixing a reported failure against working code — reproduce it with a failing test, then green it
+- Any card whose brownfield exposure names existing code (invoke `brownfield-integration` alongside)
+- Writing the `cycle-report.md` after a cycle — or a rework — completes
 
 ## When NOT to Use
 

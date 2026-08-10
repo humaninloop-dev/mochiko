@@ -3,36 +3,6 @@
 Entry formats: `strips/README.md`. Shipped at v0.50.0 (ux-mocking-in-specify wave); first
 strip entries at v0.58.0 (feature-map-layer wave).
 
-## [v0.63.0] Guardrails body + slim description (guardrails-vs-detail benchmark verdict)
-- **Disposition:** superseded → benchmark-ruled guardrails body + slim description
-  (`.mochiko/benchmarks/guardrails-vs-detail/variants/body/authoring-prototype/` and
-  `variants/descriptions/authoring-prototype/`; the shipped file is the deterministic merge of
-  the two).
-- **Tier failed:** n/a — supersession by ruling (guardrails-vs-detail benchmark verdict,
-  `DECISIONS.md` 2026-08-10 benchmark-verdict row; record
-  `.mochiko/brainstorms/validator-scope-and-verbosity/record.md`, Benchmark execution;
-  `.mochiko/benchmarks/guardrails-vs-detail/report/final-verdict.md` — body arm formal D6 PASS,
-  descriptions arm 0 fire misses).
-- **Content (faithfully compressed):** body 10,203 → 8,898 chars (−13%); description 1,006 → 493
-  chars (−51%). Body cut: **When to Use** deleted whole (four bullets restating invocation
-  conditions incl. lockstep authoring, gap-list revision, the FEAT re-tag pass) and the
-  six-step **Process** walkthrough deleted whole (read intent ruling → discover design system →
-  build skeleton → per-story lockstep → FEAT re-tag → self-walk; each step's obligation
-  survives as an invariant or checklist row). Description cut: the SCR/FLOW shape detail,
-  trigger-phrase enumeration and boundary sentences compressed to the MUST clause + core
-  triggers. Verbatim homes: git history of this file (pre-v0.63.0), the before/after pair under
-  `variants/`, and archive branch `worktree-brainstorm-validator-scope`.
-- **Kept deliberately:** the guardrails keep-set — the two-deliverables Overview, When NOT to
-  Use, all eight invariants (skeleton-first, lockstep, scenario keying, manifest↔HTML agreement,
-  low-fi discipline, design system, FEAT tags carried with the re-tag pass, rejected-story
-  greying — the [v0.58.0] supersession's replacement grammar intact), the checklist, and red
-  flags. No prior KEPT or protected line is touched; the [v0.58.0] entry's kept-set survives in
-  full.
-- **Consumers assessed:** product-engineer (mounts it; invariants unchanged, so persona contract
-  intact) · specify (binds it; the deleted Process steps' obligations remain enforced by the
-  invariants + checklist the command reads) · review-specifications (its Screens & Flows table
-  grades the same manifest shape, untouched by this cut). Contract intact.
-
 ## [v0.58.0] Slice-tag grammar re-keyed to FEAT tags (R10)
 - **Disposition:** superseded → the same greying grammar re-keyed: invariant 7 becomes "FEAT tags carried — a re-tag pass at derivation" (tags cannot exist during lockstep authoring — derivation runs after stories, so FEAT tags land as a re-tag pass over the SCR/FLOW manifest); new invariant 8 keeps a filter-rejected story's screens greyed, marked rejected, pointed at the recorded rejection. Map machinery single-sourced in `mochiko:authoring-feature-map`.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-10 "Feature-map layer ruled (D1–D22)", record `.mochiko/brainstorms/feature-map-layer/record.md`, D4 slices retire · R10 filter-vs-lockstep build lines).

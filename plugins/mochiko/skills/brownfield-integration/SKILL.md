@@ -1,6 +1,6 @@
 ---
 name: brownfield-integration
-description: This skill MUST be invoked when implementing a task that touches existing code — safely making an `[EXTEND]` or `[MODIFY]` change to a file on disk: reading the whole file first, following its patterns, and preserving its interface. SHOULD also invoke when extending an existing file, modifying existing behavior, or following prior patterns. Consumes the extend/modify classification from the card's brownfield exposure — NOT the cycle execution that co-fires (mochiko:executing-tdd-cycle).
+description: This skill MUST be invoked when implementing a task that touches existing code — safely making an `[EXTEND]` or `[MODIFY]` change to a file already on disk: reading the whole file before writing, following its established patterns, preserving its interface, and detecting conflicts before adding code. SHOULD also invoke when extending an existing file, modifying existing behavior, integrating against an established interface, or following patterns set by prior work in the codebase. Consumes the extend/modify classification the builder assigns at decomposition time (from the cycle card's brownfield exposure, declared at design time by patterns-vertical-tdd); this is the implement-time, read-before-write craft of making that one modification safely — NOT the execution of the cycle the task belongs to (that is executing-tdd-cycle, which co-fires on the same brownfield task and drives red/green/refactor).
 ---
 
 # Brownfield Integration
@@ -13,6 +13,13 @@ Craft for implementing a task that touches existing code. Brownfield tasks arriv
 
 **Violating the letter of the rules is violating the spirit of the rules.** Every shortcut in
 read-before-write discipline is a broken consumer waiting to surface.
+
+## When to Use
+
+- A task carries an `[EXTEND]` marker — you are adding to a file that already exists
+- A task carries a `[MODIFY]` marker — you are changing behavior in a file that already exists
+- Any task that references a file already on disk
+- When following patterns established by prior work in the codebase
 
 ## When NOT to Use
 

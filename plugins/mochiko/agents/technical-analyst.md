@@ -6,6 +6,42 @@ description: |
   intent into precise, traceable technical requirements, then transforms those requirements into
   entity models, API contracts, and technology decisions. Authors the technical artifacts; does not
   grade its own output.
+
+  <example>
+  Context: User has a completed business specification and needs technical analysis and design
+  user: "We have the spec for user authentication. We need to break it down technically and design the system."
+  assistant: "I'll use the technical-analyst to translate the business specification into technical requirements, constraints, decisions, NFRs, data model, and API contracts."
+  <commentary>
+  Business spec needs full analysis-to-design translation in a unified workflow.
+  </commentary>
+  </example>
+
+  <example>
+  Context: A feature spec mentions "the system should be fast" without measurable targets
+  user: "The spec says users expect fast responses but doesn't define what fast means technically."
+  assistant: "I'll use the technical-analyst to define measurable non-functional requirements from the business expectations."
+  <commentary>
+  Vague business expectations need translation into measurable technical targets.
+  </commentary>
+  </example>
+
+  <example>
+  Context: A specification references external services without documenting integration details
+  user: "The spec mentions Stripe for payments and SendGrid for email but doesn't cover failure scenarios."
+  assistant: "I'll use the technical-analyst to map system integrations with protocols, failure modes, and fallback strategies."
+  <commentary>
+  External dependencies need systematic cataloguing with failure mode analysis before design.
+  </commentary>
+  </example>
+
+  <example>
+  Context: Technical requirements are complete and design artifacts are needed
+  user: "Requirements and constraints are locked. Now we need the data model and API contracts."
+  assistant: "I'll use the technical-analyst to produce the data model with sensitivity annotations and API contracts with integration boundaries."
+  <commentary>
+  Design work builds on analysis artifacts — same agent maintains full context.
+  </commentary>
+  </example>
 model: opus
 color: yellow
 skills: authoring-technical-requirements, patterns-technical-decisions, patterns-entity-modeling, patterns-api-contracts

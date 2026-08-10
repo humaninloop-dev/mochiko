@@ -5,20 +5,6 @@ Entry formats: `strips/README.md`. Wave context: the plan cluster wave (v0.15.0)
 ruled in-wave; the strip below is Tier-2-tested against both consumers (the `task-architect` precedent
 for the 2-consumer allowance).
 
-## [v0.63.0] Frontmatter `description:` examples stripped → prose-only agent description
-- **Disposition:** superseded → prose-only agent description (variant at `.mochiko/benchmarks/guardrails-vs-detail/variants/agents/principal-architect.md`); the `<example>` blocks were removed from the frontmatter `description:` block scalar, the prose framing (routing content) kept.
-- **Tier failed:** n/a — supersession by ruling (guardrails-vs-detail benchmark, agents-arm user ruling (b) 2026-08-10 — `DECISIONS.md` benchmark-verdict row 2026-08-10; `.mochiko/brainstorms/validator-scope-and-verbosity/record.md` Benchmark execution; `report/final-verdict.md`).
-- **Content:** faithfully compressed. **3 `<example>` blocks removed** from the `description:` value:
-  1. Context: starting a new project, governance principles must be established — commentary claimed the example demonstrated that greenfield governance establishment is the principal-architect's core responsibility.
-  2. Context: technical artifacts exist and must be verified buildable together — commentary claimed it demonstrated that cross-artifact feasibility review catches impossible combinations no single artifact reveals in isolation.
-  3. Context: an existing codebase's patterns must be codified into governance — commentary claimed it demonstrated that brownfield governance requires understanding existing patterns before imposing new standards (the brownfield path lives in authoring-constitution's brownfield branch).
-
-  Description parsed-value char delta: **2,353 → 737** (chars of the parsed block-scalar value; regex/block-scalar parse, not `wc -c` bytes). Verbatim removed text survives in three homes: (a) git history of `plugins/mochiko/agents/principal-architect.md`; (b) the pre-edit original state in this tree plus the after-state variant at `.mochiko/benchmarks/guardrails-vs-detail/variants/agents/principal-architect.md`; (c) archive branch `worktree-brainstorm-validator-scope`.
-- **Kept deliberately:** the prose framing of the `description:` (the routing content that staffs the agent — the governance-standards + cross-artifact-feasibility framing, greenfield/brownfield authoring, codebase analysis) — and the entire agent body, byte-for-byte untouched.
-- **Consumers assessed:** grep of `plugins/mochiko/commands/` and `plugins/mochiko/skills/` for `principal-architect`: `skills/*/SKILL.md` reference(s) only; no command references the agent by name. Routing/staffing contract intact — the agent name and the description's prose framing are unchanged; only the illustrative `<example>` blocks were removed (benchmark: 0 route misses over 20+ staffings).
-- **Standing watch:** an F-X1-class review-evidence omission at the first live runs re-opens ruling (b).
-- **Protected-content reconciliation:** the two prior [v0.15.0] entries touch the **body** only — the "Skills Available" scope duplication (relocated to the three skills' `description:` fields) and the `KEPT:` persona sections (Three-Part Rule + Essential Floor Knowledge). Neither touches the frontmatter `description:` value or its `<example>` blocks. The KEPT persona survivors and the agent body are untouched by this edit. No overlap.
-
 ## [v0.15.0] "Skills Available" scope duplication
 - **Disposition:** scope enumeration relocated → the three skills themselves
   (`mochiko:authoring-constitution`, `mochiko:analysis-codebase`, `mochiko:review-feasibility`), each

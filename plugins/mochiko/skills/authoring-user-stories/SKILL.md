@@ -1,6 +1,6 @@
 ---
 name: authoring-user-stories
-description: This skill MUST be invoked when transforming a feature description into prioritized user stories — assigning P1/P2/P3 priority levels, authoring Given/When/Then acceptance scenarios, and specifying an independent test for each story. SHOULD also invoke when the work involves a user story, story prioritization (P1/P2/P3), acceptance scenarios, or breaking a large feature into separate, independently testable user journeys.
+description: This skill MUST be invoked when transforming a feature description into prioritized user stories — assigning P1/P2/P3 priority levels, authoring Given/When/Then acceptance scenarios, and specifying an independent test for each story. SHOULD also invoke when the work involves a user story, story prioritization (P1/P2/P3), acceptance scenarios, a feature backlog of independently testable stories, or breaking a large feature into separate, independently testable user journeys. Produces prioritized user stories with independently testable acceptance scenarios.
 ---
 
 # Authoring User Stories
@@ -14,6 +14,14 @@ Transform feature descriptions into testable user stories with clear business va
 This is a discipline-enforcing skill. The structured format exists to ensure stories are unambiguous, testable, and properly prioritized. Shortcuts create ambiguous requirements that cause implementation failures.
 
 **Boundary — authored inside the product-manager's frame.** The PM owns *which* capabilities (features, the story filter, selection advice — map machinery: `mochiko:authoring-feature-map`); this craft owns *how well* the stories are written. Neither edits the other's verdicts; a disagreement escalates to the user.
+
+## When to Use
+
+- Transforming feature descriptions into testable requirements
+- Breaking down large features into prioritized, independent stories
+- When acceptance scenarios need Given/When/Then structure
+- Creating backlog items with clear verification criteria
+- When stakeholders need to understand what "done" means
 
 ## When NOT to Use
 

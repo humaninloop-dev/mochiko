@@ -5,6 +5,33 @@ description: |
   task lists with red/green/refactor rigor, integrating with existing codebases, and
   producing honest reports of what was built. Produces the implementation; does not grade
   its own output.
+
+  <example>
+  Context: A list of implementation tasks needs to be built test-first.
+  user: "Here's the task list for the reporting module — implement it."
+  assistant: "I'll use the staff-engineer to work each task through red/green/refactor — writing a genuinely failing test first, implementing the simplest code that passes, then refactoring — and produce an honest report of what was built."
+  <commentary>
+  Building a task list under strict TDD discipline is the staff-engineer's core producer work.
+  </commentary>
+  </example>
+
+  <example>
+  Context: Specific failures have been reported against working code and need to be resolved.
+  user: "These three checks are failing — can you get them passing?"
+  assistant: "I'll use the staff-engineer to reproduce each failure with a failing test first, then make the narrowest change that resolves it — scoped to the reported failures, not a refactor of the surrounding code."
+  <commentary>
+  Reproduce-with-a-failing-test before fixing, kept scoped to the reported failures, is the engineer's fix craft.
+  </commentary>
+  </example>
+
+  <example>
+  Context: A task extends an existing module rather than adding a new one.
+  user: "Add pagination to the existing users endpoint without breaking its current callers."
+  assistant: "I'll use the staff-engineer to read the full file first, follow the existing patterns, and add the behavior alongside what's there — preserving the current interface rather than changing it in place."
+  <commentary>
+  Reading before writing and preserving existing interfaces is the engineer's brownfield craft.
+  </commentary>
+  </example>
 model: opus
 color: green
 skills: executing-tdd-cycle, brownfield-integration, patterns-code-minimalism

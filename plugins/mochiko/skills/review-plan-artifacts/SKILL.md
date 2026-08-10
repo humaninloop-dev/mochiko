@@ -1,6 +1,6 @@
 ---
 name: review-plan-artifacts
-description: This skill MUST be invoked to grade plan artifacts against the completeness checklist — analysis, design, and cycle-card (`tasks.md`) sets — checking coverage, measurability, architecture coverage, cycle-card quality, and consistency. Emits a 3-state verdict (ready / needs-revision / critical-gaps). The completeness (mirror-checklist) half of the plan pair; does NOT cover feasibility/buildability (that is `review-feasibility`); defaults to FAIL; run by an independent validator, never the author.
+description: This skill MUST be invoked to grade a producer's plan artifacts against the completeness checklist — the analysis set (requirements, constraints-and-decisions, NFRs), the design set (data-model, API contracts, quickstart), and the cycle cards (tasks.md) — checking FR→TR coverage, orphan technical requirements, testable/measurable criteria, NFR measurability, entity and endpoint coverage, data-sensitivity annotations present, schema-model consistency, integration-boundary presence, architecture coverage (component-table↔diagram coverage, qualifying-flow sequence coverage keyed to ordering/failure not story priority, delta-summary D-XXX links), cycle-card quality (vertical integrity, TEST-gate presence and grammar, story traceability, sizing, dependency minimality, brownfield exposure), and cross-artifact consistency (does the design honor the decisions and conform to the approved architecture). Emits a severity-classified gap report (Critical/Important/Minor) and a 3-state verdict (ready / needs-revision / critical-gaps). SHOULD also invoke whenever a plan loop's completeness-review step needs an independent grade of the planning artifacts, or when re-reviewing after a FAIL-loop revision. The completeness (mirror-checklist) half of the plan producer↔validator pair; does NOT cover cross-artifact feasibility / buildability / contradiction (that is mochiko:review-feasibility); defaults to FAIL; run by an independent validator, never the author.
 ---
 
 # Reviewing Plan Artifacts
@@ -18,9 +18,6 @@ whether the design can be built (that is a separate review; see *Scope* below).
 failure this skill exists to prevent. (The review-specific red flags are at the foot of this
 file.)
 
-The independent review leaves its verdict and per-finding dispositions in the reviewed artifacts
-themselves — review evidence that lives only in conversation is a floor violation.
-
 ## Scope — what this skill grades, and what it hands off
 
 | Lens | Question | Owner |
@@ -33,6 +30,14 @@ coverage / measurability / presence / consistency; it deliberately does **not** 
 contradictions (TR↔constraint, NFR↔constraint), NFR-design feasibility, or constraint-design
 buildability — those hand off to `review-feasibility`. The full check-by-check seam is the
 boundary table in [ARTIFACT-CHECKLISTS.md](references/ARTIFACT-CHECKLISTS.md#scope-boundary--handoff-to-review-feasibility).
+
+## When to Use
+
+- Grading an **analysis artifact set** (e.g. requirements.md + constraints-and-decisions.md + nfrs.md) for completeness
+- Grading a **design artifact set** (e.g. data-model.md + contracts/api.yaml + quickstart.md) for completeness
+- Grading the **cycle cards** (tasks.md) for slicing quality and gate presence
+- Verifying **cross-artifact consistency** before the plan advances
+- Re-reviewing planning artifacts after a FAIL-loop revision
 
 ## When NOT to Use
 
@@ -67,6 +72,14 @@ issue-documentation formats, and the working report shape are single-sourced in
 
 ## Review Process
 
+### Step 1: Gather context
+
+Read and understand:
+- The artifact being reviewed
+- The spec / upstream requirements it should satisfy
+- Prior artifacts (for consistency checks)
+- Constitution principles (for compliance)
+
 ### Step 2: Run the deterministic pre-assert
 
 Before the model review, run the Tier-1 checker for the cheap, greppable slice (unresolved markers,
@@ -78,6 +91,22 @@ python scripts/check-artifacts.py .mochiko/specs/<feature>/<artifact>.md [<more-
 
 A `failed` count here is ground truth — fold it straight into the issue list before judging anything
 by hand. (See ARTIFACT-CHECKLISTS.md → Automated Validation.)
+
+### Step 3: Execute the checklist
+
+For each check in the applicable artifact-type checklist: ask the question, look for evidence in
+the artifact, classify any issue's severity, and document the issue with that evidence.
+
+### Step 4: Cross-reference
+
+Check traceability (requirement → artifact), consistency (artifacts agree with each other and
+honor the decisions), and completeness (nothing obviously missing).
+
+### Step 5: Emit the report
+
+In the `advocate-report-template.md` shape (machine-first — findings YAML): the verdict from the
+issue counts (mechanical — see *Verdict Criteria*), one finding entry per issue with its evidence
+anchor (`at:`) and an actionable one-line fix, and the one-line `strengths:` field filled.
 
 ## Incremental Review Mode
 

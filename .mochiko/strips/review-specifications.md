@@ -4,42 +4,6 @@ Entry formats: `strips/README.md`. Wave context: the specify cluster wave (v0.13
 Single-consumer primitive (the specify critique, mounted on `devils-advocate`) — strips
 ruled in-wave.
 
-## [v0.63.0] Guardrails body + slim description; review-evidence floor line added (guardrails-vs-detail benchmark verdict)
-- **Disposition:** superseded → benchmark-ruled guardrails body + slim description
-  (`.mochiko/benchmarks/guardrails-vs-detail/variants/body/review-specifications/` and
-  `variants/descriptions/review-specifications/`; the shipped file is the deterministic merge of
-  the two, plus one sanctioned floor-line addition — below).
-- **Tier failed:** n/a — supersession by ruling (guardrails-vs-detail benchmark verdict,
-  `DECISIONS.md` 2026-08-10 benchmark-verdict row; record
-  `.mochiko/brainstorms/validator-scope-and-verbosity/record.md`, Benchmark execution;
-  `.mochiko/benchmarks/guardrails-vs-detail/report/final-verdict.md` — body arm formal D6 PASS,
-  descriptions arm 0 fire misses).
-- **Content (faithfully compressed):** body 12,262 → 11,271 chars before the floor line
-  (11,452 after; net −7%); description 1,337 → 490 chars (−63%). Body cut: **When to Use**
-  deleted whole (four bullets restating invocation conditions) and the nine-step **Review
-  Process** walkthrough deleted (read full spec → check stories → verify criteria → edge cases →
-  feature-layer grade at baseline → Screens & Flows walk → classify → generate questions →
-  group gaps; the two grading steps' obligations survive as the Quality Checklist's
-  feature-layer and Screens & Flows rows, which carry the same all-checks + run-open-baseline +
-  served-prototype wording). Description cut: the long check-enumeration compressed; MUST
-  trigger, gap-finding-not-verdict boundary, and the analysis-iterative sibling distinction
-  kept. Verbatim homes: git history of this file (pre-v0.63.0), the before/after pair under
-  `variants/`, and archive branch `worktree-brainstorm-validator-scope`.
-- **Floor line added (cross-cutting finding 1, F-X1 mitigation — agents ruling (b)):** "The
-  independent review leaves its verdict and per-finding dispositions in the reviewed artifacts
-  themselves — review evidence that lives only in conversation is a floor violation." Placed in
-  Review Process. Pure addition riding the same decision row.
-- **Kept deliberately:** the guardrails keep-set — Overview, When NOT to Use, Core Principle
-  table, Question Format, Gap Categories (incl. the floor-class external-claim verify), the
-  feature-layer 10-check table, the Screens & Flows 8-check table, Severity Classification,
-  Output Format (advocate-report-template binding), the density-is-not-a-gap paragraph, Quality
-  Checklist, Common Mistakes, Related Skills. The [v0.26.0] KEPT survivors (severity table,
-  Core Principle table) and the [v0.58.0] feature-layer replacement survive in full — no prior
-  KEPT or protected line is touched.
-- **Consumers assessed:** devils-advocate (mounts it; same report shape, same tables) · specify
-  (binds it; the deleted process steps' graded obligations remain in the checklist rows the
-  reviewer must satisfy). Contract intact.
-
 ## [v0.58.0] Delivery Slices grade superseded by the feature-layer grade (D16)
 - **Disposition:** superseded → the new "The feature layer" section (10-check table: derivation honesty, disposition completeness, dedup at the run-open git baseline, granularity, entry well-formedness, delta legality, SC re-homing, in-flight handling, selection-card deferred-SC honesty, specs-index agreement). Map machinery stays single-sourced in `mochiko:authoring-feature-map`; the table is the reviewer's mirror.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-10 "Feature-map layer ruled (D1–D22)", record `.mochiko/brainstorms/feature-map-layer/record.md`, D4 slices retire · D16 extended spec review · R13 git-baseline rule · D21 selection-card deferred-SC list · D8 delta legality).

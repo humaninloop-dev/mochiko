@@ -1,6 +1,6 @@
 ---
 name: review-specifications
-description: This skill MUST be invoked when reviewing an already-drafted specification for gaps — missing requirements, ambiguities, unstated assumptions, and missing edge cases — including its feature layer and the Screens & Flows of a UX-bearing spec. Reach for it on 'review spec', 'find gaps', 'what's missing', or 'is the spec complete'. Produces gap-finding INPUT, not a clearing PASS/FAIL verdict. For enriching a sparse feature idea before a spec exists, use mochiko:analysis-iterative instead.
+description: This skill MUST be invoked when reviewing an already-drafted specification for gaps — finding missing requirements, ambiguities, unstated assumptions, and missing edge cases in an existing spec, grading its feature layer against the map (derivation honesty, filter rejections justified, dedup against the actual map at the run-open git baseline, granularity, entry well-formedness, delta legality, selection-card deferred-SC honesty, specs-index agreement), walking a UX-bearing spec's Screens & Flows manifest against its served prototype (every FLOW-XXX clickable, every SCR-XXX reachable, every P1 scenario pathed; manifest↔prototype drift blocking), and generating product-framed clarifying questions with concrete options and severity (Critical / Important / Minor). Reach for it on post-draft review work such as "review spec", "find gaps", "what's missing", "is the spec complete", or "clarify requirements" against a spec that already exists. SHOULD also invoke when checking spec.md for completeness or checking user stories for missing acceptance criteria before downstream design begins. This produces gap-finding INPUT (a severity-bucketed gap report plus clarifying questions), not a clearing PASS/FAIL verdict. For enriching a sparse or vague feature idea before any spec is drafted, use mochiko:analysis-iterative instead.
 ---
 
 # Reviewing Specifications
@@ -8,6 +8,13 @@ description: This skill MUST be invoked when reviewing an already-drafted specif
 ## Overview
 
 Find gaps in specifications and generate clarifying questions that a product owner or stakeholder can answer. Focus on WHAT is missing, not HOW to implement. This produces gap-finding input — the severity-bucketed gaps and clarifying questions feed a reviewer's judgment; the skill does not emit a clearing PASS/FAIL verdict of its own.
+
+## When to Use
+
+- Reviewing a drafted spec.md for gaps as an independent reviewer — the gap-review checkpoint before downstream planning and design begins
+- Validating requirements completeness after a spec is drafted
+- Generating questions for stakeholder clarification
+- Checking user stories for missing acceptance criteria
 
 ## When NOT to Use
 
@@ -129,13 +136,22 @@ report path, return the same structure inline.
 
 ## Review Process
 
+1. **Read the full specification** before identifying gaps
+2. **Check each user story** for completeness
+3. **Verify success criteria** are measurable
+4. **Identify missing edge cases** for each flow
+5. **Grade the feature layer** against the 10-check table above, reading the actual map
+   files at the run-open git baseline first (never the workspace copy)
+6. **Grade the Screens & Flows section** against the 8-check table above — serve the
+   prototype and walk it; read the Intent section's UX-bearing ruling first
+7. **Classify gaps** by severity
+8. **Generate questions** with concrete options
+9. **Group related gaps** to avoid overwhelming stakeholders
+
 The spec follows the deliverable envelope (`templates/artifact-format.md`): one-line
 scenarios (2-3 per story), one-line FR/SC/edge-case entries, compact entities. **Density
 is never itself a gap** — grade substance (a missing flow, an unmeasurable criterion, an
 unstated assumption), never prose volume.
-
-The independent review leaves its verdict and per-finding dispositions in the reviewed
-artifacts themselves — review evidence that lives only in conversation is a floor violation.
 
 ## Quality Checklist
 

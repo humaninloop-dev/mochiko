@@ -1,6 +1,6 @@
 ---
 name: authoring-constitution
-description: This skill MUST be invoked when authoring or amending a project's governance surface set from a ratified session synthesis (`.mochiko/memory/governance-intent.md`), landing principles on native Claude Code surfaces; there is NO constitution.md. SHOULD also invoke when the work concerns principle enforcement, compliance modules, floor waivers, or an Essential Floor. The single governance-authoring skill for BOTH greenfield and brownfield projects — no separate brownfield skill.
+description: This skill MUST be invoked when authoring or amending a project's governance surface set — formulating enforceable principles from a ratified session synthesis (`.mochiko/memory/governance-intent.md`) and landing them on native Claude Code surfaces; there is NO constitution.md. The set: a marked, setup-owned governance region in `CLAUDE.md` (ratified stamp, principle index, universal principles as short imperative lines, tech stack, quality-gates summary, module pointers), `paths`-scoped `.claude/rules/` files for scope-bound principles, skill pointers for procedure-shaped standards, and a governance ledger at `.mochiko/memory/governance-ledger.md` (Three-Part metadata keyed by GI-ID, waivers, amendment/version policy, exception registry) — plus the trace summary manifest. Handles BOTH modes in one place: greenfield (authoring from the synthesis's deck rulings and minted intents) and brownfield (the same, additionally codifying an existing codebase's patterns — Essential Floor assessed against the code plus an Emergent Ceiling, informed by `.mochiko/memory/codebase-analysis.md`). SHOULD also invoke when the authoring work concerns principle enforcement, testability, rationale, the Three-Part Rule, RFC 2119 keywords, trace stamps, the fact profile, compliance modules, floor waivers, surface routing, the governance region, module assembly, an Essential Floor, or an Emergent Ceiling. The single governance-authoring skill for both new and existing projects — there is no separate brownfield skill.
 ---
 
 # Authoring Constitution — Governance on Native Surfaces
@@ -122,6 +122,16 @@ Artifact shapes (region block, rules file, ledger):
 > GI-IDs are stable) and bump the region's semver. A `.mochiko/memory/constitution.md` on disk
 > is superseded — the lead deletes it; never author into it.
 
+## When to Use
+
+- Authoring the governance surface set from a ratified synthesis, for a **new** project
+  (greenfield mode).
+- Authoring for an **existing** codebase, codifying its conventions without disrupting working
+  code (brownfield mode).
+- Amending an existing surface set against a delta-updated synthesis: adding/redefining
+  principles, waivers, or attached modules, with a semver bump and an amendment-log entry.
+- Establishing enforcement mechanisms, testability criteria, and amendment/version policy.
+
 ## When NOT to Use
 
 - **Reviewing/grading an existing surface set** → that is the independent validator's job
@@ -143,6 +153,13 @@ principles in [references/ESSENTIAL-FLOOR.md](references/ESSENTIAL-FLOOR.md).
 ### 1. Enforcement
 
 How compliance is verified. Without enforcement, a principle is a suggestion.
+
+| Type | Examples | Strength |
+|------|----------|----------|
+| **CI Automated** | Linting, tests, coverage gates | Strongest—no human judgment needed |
+| **Code Review** | Architecture compliance, security review | Strong—explicit checklist item |
+| **Tooling** | Pre-commit hooks, IDE plugins | Medium—can be bypassed |
+| **Audit** | Quarterly review, compliance check | Weaker—periodic, not continuous |
 
 Enforcement MUST fit the team reality recorded in the synthesis — a solo project cannot lean on
 "code review MUST verify"; give it tooling and CI instead. (Native surfaces are context, not
@@ -236,6 +253,17 @@ routed content.
 No fixed default principle set: the synthesis's deck rulings and minted intents ARE the
 selection. The job is formulation + routing quality.
 
+1. **Floor principles** — for each floor card: formulate at the asserted level, fitted to the
+   declared project type per the synthesis's expression rulings; route (floor principles are
+   typically universal → region lines). Worked examples in ESSENTIAL-FLOOR.md are
+   backend-flavored; for other types, formulate from the category definition instead of copying
+   the example.
+2. **Type principles** — for each kept shelf card: formulate from the card's content, honoring
+   every recorded tighten/loosen ruling; these are typically scope-bound → rules files.
+3. **Minted principles** — for each minted intent: structure the elicited intent into a
+   three-part principle with real commands, routed by scope. Intent that resists enforceable
+   formulation goes back as a flagged proposal, never as an aspiration.
+
 # Brownfield branch (codify existing patterns)
 
 Codify the **Essential Floor + Emergent Ceiling**: existing codebases have implicit conventions
@@ -243,6 +271,12 @@ worth preserving (Emergent Ceiling) but may lack foundational governance (Essent
 Reuses the entire shared core above without restating it. Driven by **two** inputs: the ratified
 synthesis and `.mochiko/memory/codebase-analysis.md` — read it for **"Strengths to Preserve"**
 (ceiling candidates) and the **Essential-Floor status** (present / partial / absent per category).
+
+**Floor, assessed against the code, waiver-aware:** category present → the principle codifies the
+existing pattern with enforcement; absent → the principle states "MUST implement" and references
+a roadmap gap; waived → a ledger waiver record, not a pretend-principle and not a gap. The
+session already confronted detected-reality-vs-declared-intent conflicts — author the ruling the
+synthesis records, never re-litigate it.
 
 **Emergent Ceiling:** codify existing good patterns as principles with enforcement — see
 [references/EMERGENT-CEILING-PATTERNS.md](references/EMERGENT-CEILING-PATTERNS.md). Ceiling

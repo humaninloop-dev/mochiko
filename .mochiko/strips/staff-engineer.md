@@ -3,20 +3,6 @@
 Entry formats: `strips/README.md`. Wave context: the implement cluster wave (v0.17.0). Implement-only
 agent (the TDD producer, mounted on `implement`) — strips ruled in-wave (single consumer).
 
-## [v0.64.0] Frontmatter `description:` examples stripped → prose-only agent description
-- **Disposition:** superseded → prose-only agent description (Wave 2 editorial extension of the agents-arm ruling); the `<example>` blocks were removed from the frontmatter `description:` block scalar, the prose framing (routing content) kept verbatim.
-- **Tier failed:** n/a — supersession by ruling (guardrails-vs-detail agents-arm user ruling (b) 2026-08-10, extended to the untested agents by the Wave 2 user ruling; `DECISIONS.md` 2026-08-11 build row Wave 2 residual; `report/final-verdict.md` — 0 route misses over 20+ staffings).
-- **Content:** faithfully compressed. **3 `<example>` blocks removed** from the `description:` value:
-  1. Task list built test-first — red/green/refactor producer work.
-  2. Reported failures resolved — reproduce-with-a-failing-test, narrowest scoped fix.
-  3. Extend an existing module without breaking callers — read-before-write, interface preservation (brownfield).
-
-  Description parsed-value char delta: **1,852 → 273** (chars of the parsed block-scalar value; block-scalar parse, not `wc -c` bytes). Verbatim removed text survives in git history of `plugins/mochiko/agents/staff-engineer.md` (pre-v0.64.0).
-- **Kept deliberately:** the prose framing of the `description:` (the routing content that staffs the agent — "Staff Software Engineer who implements code through strict TDD discipline — executing task lists with red/green/refactor rigor, integrating with existing codebases, and producing honest reports of what was built. Produces the implementation; does not grade its own output.") — and the entire agent body, byte-for-byte untouched (verified against git HEAD).
-- **Consumers assessed:** grep of `plugins/mochiko/commands/` and `plugins/mochiko/skills/` for `staff-engineer`: referenced only by the router `plugins/mochiko/skills/mochiko/SKILL.md`; no command references the agent by name. Routing/staffing contract intact — the agent name and the description's prose framing are unchanged; only the illustrative `<example>` blocks were removed.
-- **Standing watch:** an F-X1-class route miss on the untested agents re-opens ruling (b).
-- **KEPT reconciliation:** the prior [v0.17.0] KEPT entry protects the "Quality Standards" persona *body* enumeration; the [v0.49.0] and [v0.17.0] strips touched persona *body* wording and a "Skills Available" *body* bullet. None touch the frontmatter `description:` value or any `<example>` block. No overlap with this edit.
-
 ## [v0.49.0] Card-form wording re-key
 - **Disposition:** superseded → cycle-card vocabulary (card checkbox flip; exposure-driven read-before-write)
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D2+D2.1)

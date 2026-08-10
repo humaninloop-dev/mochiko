@@ -1,6 +1,6 @@
 ---
 name: patterns-system-design
-description: This skill MUST be invoked when designing a feature's architecture at design time — authoring the per-feature `architecture.md`: a C4-container-level delta diagram, sequence diagrams for qualifying flows, a D-XXX-linked component table, and a conditional deployment view. SHOULD also invoke on 'architecture design', 'container diagram', 'C4', 'system topology', or 'architecture delta'. Seeds the current-state baseline before drafting the delta. Distinct from `authoring-architecture` (repo ARCHITECTURE.md); does not grade its own output.
+description: This skill MUST be invoked when designing a feature's architecture at design time — authoring the per-feature `architecture.md` that the detailed design then conforms to: a C4-container-level delta diagram (mermaid flowchart carrier — subgraph boundaries, technology-labelled nodes, arrows labelled protocol + purpose, new/modified/removed styled distinctly), sequence diagrams for qualifying flows (any flow crossing ≥2 components with non-trivial ordering or failure semantics — user journey or system flow), a container-level component table (name — responsibility — boundary — status new/modified/existing) with a delta summary linking each structural change to its D-XXX row, and a conditional deployment view keyed to IP-XXX. SHOULD also invoke on "architecture design", "container diagram", "C4", "system topology", "how the components interact", "architecture delta", or an early architecture sign-off before data-model / contracts. Seeds the current-state baseline from `ARCHITECTURE.md` (absent → reconstruct from code, mark reconstructed, confirm before drafting a delta); scopes the diagram to the delta neighborhood (changed components + direct collaborators; past a threshold the full view is linked). Distinct from `authoring-architecture` (the repo-level `ARCHITECTURE.md` operating doc, folded post-hoc at landing) and upstream of `patterns-entity-modeling` / `patterns-api-contracts` (which detail the approved shape). Authors the design-time architecture artifact; does not grade its own output.
 ---
 
 # Designing Feature Architecture
@@ -12,6 +12,13 @@ cut, how the pieces talk, and how the proposed system differs from the one that 
 artifact is `architecture.md` in the feature's spec dir — a **delta view** (current state + proposed
 target, the structural change made visible) that the detailed design artifacts then conform to. It
 is the design-time architecture surface, authored **before** `data-model.md` and `contracts/`.
+
+## When to Use
+
+- Authoring `architecture.md` — the container-level topology, interaction flows, and current→target delta for a feature
+- Deciding component boundaries, interaction style (sync/async, request/response vs event), or where a responsibility lives
+- Producing the visual the reader signs off on before the data model and API contracts are drawn
+- Reconstructing a current-state baseline from code when no `ARCHITECTURE.md` exists
 
 ## When NOT to Use
 

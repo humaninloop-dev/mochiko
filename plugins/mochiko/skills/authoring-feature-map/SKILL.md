@@ -1,6 +1,6 @@
 ---
 name: authoring-feature-map
-description: This skill MUST be invoked when deriving or updating the repo-level feature map — the living FEATURES.md index plus per-feature FEAT-XXX entry files — during a specify run or a /mochiko:feature stewardship touch. SHOULD also invoke on 'feature map', 'FEATURES.md', 'FEAT-XXX', 'propose features', 'feature derivation', or 'map delta'. Boundary: authors and maintains the MAP — NOT user stories (mochiko:authoring-user-stories), NOT architecture views, NOT selection. Never grades its own output.
+description: This skill MUST be invoked when deriving or updating the repo-level feature map — the living FEATURES.md index plus per-feature entry files at `.mochiko/features/FEAT-XXX-<slug>.md` — during a specify run or a /mochiko:feature stewardship touch: the intent-stage map-read agenda, deriving proposed features from drafted user stories (stories first, features derived), running the story filter, authoring or amending FEAT-XXX entries, nesting parent/leaf entries (leaf = pipeline unit, two-level hard cap, sticky-delivered roll-up), minting parents at derivation or by retroactive promotion, minting `unrefined` capability stubs, attaching marked deltas to delivered features, and staging map writes. SHOULD also invoke on "feature map", "FEATURES.md", "FEAT-XXX", "parent feature", "leaf feature", "promote to parent", "capability stub", "unrefined", "propose features", "feature derivation", "feature selection", "map delta", "in-flight feature", or verifying a reconstructed-from-code entry on first touch. Boundary: this skill authors and maintains the MAP — NOT user stories (mochiko:authoring-user-stories), NOT architecture views (links to ARCHITECTURE.md, never restated), NOT selection: which features build now is the user's ruling — this skill recommends. Capabilities and extent-growth ideas live on the map; defects, tooling, and process items stay in BACKLOG.md. Never grades its own output — graded with the spec by mochiko:review-specifications, an independent reviewer.
 ---
 
 # Authoring the Feature Map
@@ -24,6 +24,41 @@ Feature delivery and spec delivery are **independent axes**: one spec can surfac
 | **User story** | Spec | User value in user language; informs features, never defines them | `mochiko:authoring-user-stories` |
 | **Vertical slice (cycle)** | Implementation, within one leaf | A test-first increment delivering one observable behavior | `mochiko:patterns-vertical-tdd` (downstream) |
 
+A leaf too large to land in one breath of implement is cut into vertical-slice cycles downstream — never into pseudo-features minted for pipeline convenience. A leaf too large **at derivation** mints a parent instead (below).
+
+## Nesting — parent and leaf
+
+Feature entries nest, **two levels, hard cap**: a **parent** (the capability a product person names) over **leaf** children (the deliverable units). The **pipeline unit is the leaf** — plan/implement runs key to leaves only; a parent is navigation plus status roll-up and is never built directly. A capability that outgrows two levels splits the parent into two parents — no third level, no escape hatch.
+
+**Roll-up:** a parent is `in-flight` when any child is. A parent is `delivered` when all children were delivered at the time `delivered` was earned — and delivered is sticky: a delivered parent gaining a new in-flight child (retroactive promotion, new sibling) **keeps `delivered`** and carries the child as a marked delta on its own entry (`new child FEAT-YYY — in-flight, <spec-slug or lane-run>`), folding when the child delivers. Status never regresses. A parent whose status contradicts its children's roll-up is a map-integrity defect, fix-on-sight.
+
+**Minting, three ways:**
+
+1. **At derivation, as the oversize remedy** — a leaf failing the size bar (extent won't fit ~3 lines, or won't honestly fit one graduation pass) becomes a parent with leaves that each pass it.
+2. **At derivation, capability-first** — the deriver sees the capability naturally decomposing. Single-leaf parents are allowed: the parent is the leaf, collapsed, until a second child arrives.
+3. **Retroactive promotion** — a later spec, or `/mochiko:feature`, promotes an existing flat feature into a parent when new related work arrives: the original delivered extent becomes the first `delivered` child, new work lands as sibling children, under the marked-delta discipline above.
+
+**Two sizing bars:** the one-breath guidance polices the **parent's** name (and any flat entry's); the ~3-line extent bar polices the **leaf** — it bounds the deliverable.
+
+**Phasing an extensive feature — three forms, reuse the two already shipped.** An extensive requirement set is delivered in phases three ways, and only the third is new craft here: (1) **within one build run** — a leaf too large for one implement breath is cut into vertical-slice cycles at plan time (above; craft in `mochiko:patterns-vertical-tdd`), never re-invented as a second grammar; (2) **oversize at derivation** — an extent that won't fit the leaf bar mints a parent (above); (3) **across selection rounds** — an extensive feature's phases are its leaves under one parent, each selection round picking the next leaves while the parent's roll-up tracks delivered vs undelivered. A leaf cut as an across-round phase must be **independently useful** — a working increment on its own per the vertical discipline, never a horizontal layer that only pays off when a later phase lands.
+
+## Capability stubs — parking, never a bypass
+
+A `proposed` entry may be parked as a **capability stub**: name + one-breath hook, marked `unrefined`, no extent or relations. Two seats mint stubs: `/mochiko:feature` (idea-parking at a stewardship touch) and **specify's derivation**, which may park the genuinely uncertain remainder of an extensive requirement set as `unrefined` stub children under the parent — a derivation-minted stub carries its story-trace provenance. A stub is parking, never a spec-bypass — the `unrefined` mark keeps the gap auditable by the map-integrity review.
+
+**Selectability stays behind specify's derivation.** A stub becomes selectable for delivery only when a specify run's derivation fills its extent and relations from stories — the maturation path, and the only one. `/mochiko:feature` stewards stubs (park, groom, retire, re-surface) but never matures one and never dispatches unratified scope. Derivation treats stubs as **unratified hypotheses, never extension anchors**: it ignores stub text and derives from stories; a stub matching a derived feature is confirmation, a stub matching nothing stays parked or is retired. Minting a stub is the *output* of a spec run, not a bypass of one — extending minting to derivation does not touch the selectability gate.
+
+## When to Use
+
+- Shaping the lead's intent-stage conversation with the map-read agenda (below)
+- Deriving proposed features and deltas from drafted user stories, and running the filter
+- Authoring or amending FEAT-XXX entries and the FEATURES.md index lines
+- Minting a parent — derivation remedy, capability-first, or retroactive promotion of a flat entry
+- Minting or grooming `unrefined` capability stubs — at a `/mochiko:feature` stewardship touch, or parking uncertain remainder at derivation
+- Attaching a marked delta when a spec or lane run touches a `delivered` feature
+- Staging the acceptance-time map write for a specify run, including its specs-index row (spec-index stewardship rides this skill)
+- Re-verifying a reconstructed-from-code entry's extent on its first touch
+
 ## When NOT to Use
 
 - **Grading the derivation or map delta** — graded with the spec by `mochiko:review-specifications` (independent reviewer, never the author)
@@ -42,6 +77,71 @@ Feature delivery and spec delivery are **independent axes**: one spec can surfac
 6. **Delivery writes land at acceptance; stewardship writes are direct.** During a run, proposed entries and deltas live in the spec workspace; the map write is one atomic batch at spec acceptance, and a rejected spec never touched the map. `/mochiko:feature` stewardship writes — stub minting, retroactive promotion, retire, grooming fixes — land directly, outside spec acceptance. Delivery-status writes (in-flight flips, graduations, delta folds) land only at acceptance landings. Reads happen any time.
 7. **Map integrity — fix on sight.** No dangling FEAT-IDs; index lines and entry files agree on status; no orphaned deltas; every delta names its spec or lane run; every `in-flight` status or delta points at an open spec or a live lane run — live from dispatch until its acceptance landing; a delta whose lane run ended without folding is a defect, fix-on-sight. A closed spec still pointed at is a defect; a parent whose status contradicts its children's roll-up is a defect; a specs-index row contradicting the map is a defect.
 8. **Entries index, never rewrite.** Story trace and SC references cite IDs; the spec's own sections stay the single source of their text.
+
+## The intent-stage map-read agenda
+
+The existing map is an **obligated read at the intent stage** — capability context is input to story drafting even though map writes happen only after stories exist. Drafting stories blind to the map is the named failure mode: duplicate "new" features, ignored extension points. This skill carries the agenda that shapes the lead's intent conversation:
+
+1. **Read `FEATURES.md`**, then the full entries for every feature in or near the territory the intent claims — parents with their children.
+2. **Surface to the conversation:** delivered capabilities the intent may extend (extension point, not new feature) · `proposed` entries the intent may be picking up (inherit their story trace and obligations) · `unrefined` stubs in the territory (unratified hypotheses — noted, never anchored on) · relations that put ordering constraints on anything new.
+3. **In-flight territory:** an `in-flight` or delta-carrying entry obligates a read into the owning work's artifacts — its stories, plan, and architecture delta — so this run knows what the feature is *becoming*, not just that it is busy.
+4. **Reconstructed entries:** an entry carrying the reconstructed-from-code mark has never been verified by a spec run. The first spec that touches it **re-verifies its extent against the code before building on it**, and the acceptance-time write clears the mark.
+5. **Missing map:** on a repo where setup has run, a map exists. A missing map is surfaced like a missing governance region — offer `/mochiko:setup` (its brownfield analysis reconstructs the initial map) — never silently tolerated and never lazily grown mid-run.
+
+## Derivation and the filter — stories first, features derived
+
+After stories are drafted, derive the map delta. For each story, against the **actual map files** (never memory of them):
+
+- **Extends a delivered feature** → a marked delta on that entry (grammar below).
+- **Lands in in-flight territory** → resolve with information, not policy: need already covered by the in-flight planned extent → reference the relation, build against the planned contract, no entry write · need adjacent → a `proposed` delta marked "extends in-flight work, spec-N," sequenced behind that delivery by ordinary dependency ordering — never by a lock · need conflicting with the in-flight direction → a real product decision, escalated to the user. Silent contradiction is the only thing prohibited.
+- **Implies a genuinely new capability** → a `proposed` entry, deduplicated against the map by capability, not by name. A matching `unrefined` stub is confirmation — the derived entry fills it; a stub matching nothing stays parked or is retired.
+- **Earns no place on the map** → **rejected**. The filter is the pipeline's ability to say no: not every story becomes or joins a feature, and a rejection is recorded in the story file with the why. Without the filter, every story becomes a feature and the map inflates into a story list.
+
+**Granularity guide:** a feature is a capability a product person would name in one breath — bigger than a story, smaller than a product area; the one-breath bar polices a parent's (or flat entry's) name. An extent that cannot be stated in ~3 lines is not one leaf — split it into two features, or mint a parent whose leaves each pass the bar.
+
+**Confidence-keyed cut:** when an extensive requirement set only partly resolves into buildable leaves, cut leaves for the confident portion and park the genuinely uncertain remainder as `unrefined` stub children under the same parent (derivation stub-minting, above) — story-trace provenance attached, the remainder held under the re-surfacing obligation until it becomes a leaf or is killed. Speculative leaves that age badly are the failure this avoids; the parent's completeness ledger keeps the parked remainder countable.
+
+**SC re-homing:** at derivation, every SC-XXX maps to the feature(s) whose delivery verifies it. At selection the set splits visibly: SCs covered by selected features are this delivery's done-condition; SCs covered only by unselected features travel with the `proposed` entry's obligations line. The deferred-SC list appears on the selection card — choosing a subset is choosing which success criteria wait, shown at the moment of choice.
+
+**Completeness ledger on the selection card:** for every parent in the run's territory, the selection card carries a completeness ledger line — delivered leaves / undelivered leaves / parked `unrefined` stubs / kills — pure information, shown at the moment of choice. This is the re-surfacing obligation's first site: a specify run whose territory touches a parent surfaces that parent's parked stubs and undelivered leaves on its selection card (the intent-stage map-read agenda already obliges reading the territory's entries). It fires only on territory touch — an unrelated spec's card carries no foreign parent's remainder. The second site is any `/mochiko:feature` stewardship touch on the parent.
+
+**Dependency-triggered escalation, split by carrier.** The ledger is pure information; forced disposition fires on exactly one trigger — an undelivered leaf or parked stub **blocks another piece of work from entering delivery**. An **undelivered leaf** blocking incoming work escalates on a technically asserted map relation (`<leaf> blocks <feature>`, asserted by a technical seat — system-architect at plan time or technical-analyst at derivation — with provenance; the PM consumes the relation, never asserts it). A **parked `unrefined` stub** blocking incoming work has no shape to verify against and cannot carry a map relation; it escalates as PM judgment explicitly flagged *unverified* ("incoming work appears to need <stub> — parked, unshaped; specify it now or re-scope"). Both surface as a **recommendation for the user's ruling** — cut it into a leaf now, or re-scope the dependent work — never a PM-forced cut; the PM-recommends-never-selects invariant governs, and the forced element is only that a decision is put in front of the user.
+
+## Entry authoring
+
+Author entries in the [`feature-entry-template.md`](../../templates/feature-entry-template.md) shape: FEAT-XXX ID + name · parent pointer (on a leaf under a parent) or Children list (on a parent — roll-up plus navigation, never built directly) · capability statement (1–3 lines, the system's own language) · status · extent (what's in and notably not in) · relations (depends-on / extends / composes-with) · architecture link (which `ARCHITECTURE.md` components realize it, navigable both directions) · story trace (accumulating provenance, IDs only) · **obligations** (deferred SCs, deferred seams — "when built, verify seam against FEAT-XXX" — and cross-cutting extend obligations). The index line is the entry compressed to one breath: FEAT-ID · name · status · capability hook; leaf lines sit under their parent's line.
+
+**Delta grammar:** a delta on a `delivered` entry reads `extent grows by <X> — in-flight, <spec-slug or lane-run>` (on a parent carrying a late child: `new child FEAT-YYY — in-flight, <spec-slug or lane-run>`); it names its spec or lane run, lives under the entry's Deltas heading, and folds at the owning work's acceptance landing. A delta whose spec closed — or whose lane run ended — without folding is an integrity defect.
+
+**Seams:** when both sides of a cross-feature seam are selected, the later-landing feature owns its verification. When one side is unselected, the seam rides the `proposed` entry as an obligation.
+
+## Ordering and the foundation role
+
+Order selected features by dependency closure first; among independent features, product priority breaks ties. **Foundation is an ordering role**: the selection's first feature per dependency order. "Establishes the shared core and delivers a testable journey" is guidance for which feature goes first — not a hard invariant, because features are fixed capabilities and the map may contain none that is both. When the true shared core spans features, the first feature carries it only as far as its extent honestly reaches; plumbing lands in foundation cycles inside that feature's implement. Minting a pipeline-convenience pseudo-feature stays forbidden.
+
+## Write rules
+
+During the run, all derivation output — proposed entries, deltas, index-line drafts — lives in the spec workspace, where the extended spec review grades it. The reviewer's map-delta baseline is the **git state of the map at run open**. At **spec acceptance**, the write executes as one atomic bookkeeping batch: new entries land (`proposed`; the selected ones flip to `in-flight` with date and owning-spec pointer) · deltas attach to their entries · `FEATURES.md` index lines update · touched reconstructed-from-code marks clear · the specs index (`.mochiko/specs/index.md`) gains the spec's row — slug, status, FEAT-IDs touched with outcomes, one-line about. **Spec-index stewardship rides this skill:** the specs index follows the same open/close contract as the brainstorms index, and its rows must never contradict the map — a spec's closed status is derived state, true exactly when its selected FEAT-IDs read `delivered`. Later, implement's acceptance landing does the graduation half: status to `delivered` (parent roll-up re-checked), delta folds, in-flight pointer cleared, both index lines touched. A lane run's acceptance landing does the delta half the same way: the delta folds into extent, the lane pointer clears. `/mochiko:feature` stewardship writes land directly per invariant 6 — never a status flip, never a delta fold.
+
+## Quality checklist
+
+Before handing off:
+
+- [ ] Map read completed at intent; in-flight territory read into the owning work's artifacts (spec or lane run); reconstructed entries flagged for re-verify; stubs noted as hypotheses only
+- [ ] Every drafted story dispositioned: exactly one feature home, or a recorded rejection with the why
+- [ ] Every proposed entry deduplicated against the actual map files, by capability — matching stubs confirmed and filled, not duplicated
+- [ ] Nesting honest: two levels max; leaves the only pipeline units; every parent's status agrees with its children's roll-up (or carries the sticky-delivered delta); single-leaf parents deliberate
+- [ ] Every entry within the sizing bars — one-breath name at parent/flat, extent ≤ ~3 lines at leaf — or split / parent minted
+- [ ] Every SC-XXX mapped to a verifying feature; deferred SCs and one-sided seams on the owning entry's obligations line
+- [ ] Every delta carries the full grammar — what grows, in-flight mark, named spec or lane run
+- [ ] Relations dependency-closed for the recommended order; foundation designated as the first feature, guidance applied
+- [ ] Index lines agree with entry files on status and name; leaf lines under their parent; no dangling FEAT-IDs introduced
+- [ ] All delivery writes staged in the spec workspace — the live map untouched until acceptance (stewardship writes per invariant 6 excepted)
+- [ ] Acceptance batch includes the specs-index row (`.mochiko/specs/index.md`), agreeing with the map
+- [ ] Selection card prepared with recommendation, deferred-SC list, per-parent completeness ledger line (delivered/undelivered leaves · stubs · kills), and ordering — the ruling left to the user
+- [ ] Territory-touching parents' parked stubs and undelivered leaves re-surfaced on the selection card; any dependency-blocked leaf/stub escalated as a recommendation (leaf via asserted map relation, stub via flagged-unverified judgment), never a forced cut
+- [ ] Any leaf cut as an across-round phase is independently useful — a working increment, not a horizontal layer
+- [ ] Derivation-minted stubs carry story-trace provenance; no stub matured or made selectable outside specify's derivation
 
 ## Red Flags — STOP and re-derive
 
@@ -71,26 +171,6 @@ Feature delivery and spec delivery are **independent axes**: one spec can surfac
 | "First feature has no journey, so I'll mint a core feature" | A pseudo-feature poisons the map permanently to save one run's ordering. Carry the core as far as a real feature's extent honestly reaches. |
 | "A filled-out stub saves derivation time later" | A stub is name + hook only. Extent and relations are derivation's to fill — a pre-filled stub fakes ratification and anchors the deriver on unratified text. |
 | "Defects and refactors belong on the map — they're work on features" | The map states what the product does, not what needs fixing. Defects, tooling, and process live in `BACKLOG.md`; only extent-growth ideas ride the map. |
-
-## Quality checklist
-
-Before handing off:
-
-- [ ] Map read completed at intent; in-flight territory read into the owning work's artifacts (spec or lane run); reconstructed entries flagged for re-verify; stubs noted as hypotheses only
-- [ ] Every drafted story dispositioned: exactly one feature home, or a recorded rejection with the why
-- [ ] Every proposed entry deduplicated against the actual map files, by capability — matching stubs confirmed and filled, not duplicated
-- [ ] Nesting honest: two levels max; leaves the only pipeline units; every parent's status agrees with its children's roll-up (or carries the sticky-delivered delta); single-leaf parents deliberate
-- [ ] Every entry within the sizing bars — one-breath name at parent/flat, extent ≤ ~3 lines at leaf — or split / parent minted
-- [ ] Every SC-XXX mapped to a verifying feature; deferred SCs and one-sided seams on the owning entry's obligations line
-- [ ] Every delta carries the full grammar — what grows, in-flight mark, named spec or lane run
-- [ ] Relations dependency-closed for the recommended order; foundation designated as the first feature, guidance applied
-- [ ] Index lines agree with entry files on status and name; leaf lines under their parent; no dangling FEAT-IDs introduced
-- [ ] All delivery writes staged in the spec workspace — the live map untouched until acceptance (stewardship writes per invariant 6 excepted)
-- [ ] Acceptance batch includes the specs-index row (`.mochiko/specs/index.md`), agreeing with the map
-- [ ] Selection card prepared with recommendation, deferred-SC list, per-parent completeness ledger line (delivered/undelivered leaves · stubs · kills), and ordering — the ruling left to the user
-- [ ] Territory-touching parents' parked stubs and undelivered leaves re-surfaced on the selection card; any dependency-blocked leaf/stub escalated as a recommendation (leaf via asserted map relation, stub via flagged-unverified judgment), never a forced cut
-- [ ] Any leaf cut as an across-round phase is independently useful — a working increment, not a horizontal layer
-- [ ] Derivation-minted stubs carry story-trace provenance; no stub matured or made selectable outside specify's derivation
 
 ## Related
 

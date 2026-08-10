@@ -1,6 +1,6 @@
 ---
 name: patterns-entity-modeling
-description: This skill MUST be invoked when modeling a feature's domain data — extracting entities, defining attributes and conceptual types, mapping relationships (cardinality, delete behavior), documenting state machines, and classifying each attribute's data sensitivity (Public/Internal/Confidential/Restricted) — to author data-model.md. SHOULD also invoke on 'data model', 'domain model', 'model relationships', 'state machine', 'data sensitivity', or 'DS-XXX'. Conceptual entities, not OpenAPI schemas.
+description: This skill MUST be invoked when modeling a feature's domain data — extracting entities from requirements, defining attributes and conceptual types, mapping relationships (cardinality and delete behavior), documenting state machines, and classifying each attribute's data sensitivity (the 4-level Public/Internal/Confidential/Restricted taxonomy) — to author the canonical data-model.md. SHOULD also invoke when the design work involves "extract entities", "define data model", "domain model", "model relationships", "cardinality", "state machine", "data attributes", "classify data sensitivity", "DS-XXX", or per-attribute PII / encryption / retention classification. Authors the data model and its per-attribute sensitivity annotations — conceptual entities and their data, not REST/OpenAPI request/response schemas (those are patterns-api-contracts).
 ---
 
 # Modeling Domain Entities
@@ -8,6 +8,14 @@ description: This skill MUST be invoked when modeling a feature's domain data �
 ## Overview
 
 Extract and model domain entities from requirements using Domain-Driven Design principles. This skill covers entity identification, attribute definition, relationship modeling, state machine documentation, and per-attribute data-sensitivity classification. It is the single home for the `data-model.md` artifact and its sensitivity annotations.
+
+## When to Use
+
+- Creating data-model.md — extracting entities from requirements, user stories, and specifications
+- Defining attributes, types, and constraints for entities
+- Modeling relationships with cardinality, and state machines for stateful entities
+- Classifying the sensitivity of each attribute (Public / Internal / Confidential / Restricted) and its handling requirements
+- Brownfield analysis of existing data models
 
 ## When NOT to Use
 

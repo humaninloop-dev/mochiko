@@ -1,6 +1,6 @@
 ---
 name: analysis-codebase
-description: This skill MUST be invoked when analyzing an existing codebase during a brownfield /mochiko:setup run, to produce `.mochiko/memory/codebase-analysis.md`. SHOULD also invoke when a setup/constitution producer needs a deterministic stack baseline (`detect-stack.sh`) or a present/partial/absent read of an existing project before authoring governance.
+description: This skill MUST be invoked when analyzing an existing codebase during a brownfield /mochiko:setup run — detecting the technology stack, extracting architecture and conventions, and assessing Essential-Floor status — to produce `.mochiko/memory/codebase-analysis.md`. SHOULD also invoke when a setup/constitution producer needs a deterministic stack baseline (`detect-stack.sh`) or a present/partial/absent read of an existing project before authoring governance.
 ---
 
 # Analyzing Codebase
@@ -13,6 +13,13 @@ Systematically analyze an existing codebase to extract the structural informatio
 deliverable is `.mochiko/memory/codebase-analysis.md` — the producer's read of "what this codebase
 already is," consumed by the analysis checkpoint (the setup lead's human gate), the interrogation
 session's existing-practices dimension, and the constitution author.
+
+## When to Use
+
+- Running `/mochiko:setup` on a project that already has code (brownfield governance)
+- Establishing a deterministic tech-stack baseline before authoring a constitution
+- Understanding architecture, conventions, and domain entities before imposing standards
+- Producing the present/partial/absent Essential-Floor read the constitution should respond to
 
 ## When NOT to Use
 
@@ -75,6 +82,38 @@ belongs to the session and the constitution, never to this analysis. Do not soft
 `partial` because the project "is young", and do not mark a category "waived" — waivers are
 governance rulings, not codebase facts.
 
+#### Security — status indicators
+
+| Check | How to Detect | Status Values |
+|-------|---------------|---------------|
+| Auth at boundaries | Middleware patterns (`authenticate`, `authorize`, `requireAuth`) | present/partial/absent |
+| Secrets from env | `.env.example` exists, no hardcoded credentials in code | present/partial/absent |
+| Input validation | Schema validation libraries, input checking patterns | present/partial/absent |
+
+#### Testing — status indicators
+
+| Check | How to Detect | Status Values |
+|-------|---------------|---------------|
+| Test framework configured | Config files (`jest.config.*`, `pytest.ini`, `vitest.config.*`) | present/partial/absent |
+| Test files present | Files matching `*.test.*`, `*_test.*`, `test_*.*` | present/partial/absent |
+| CI runs tests | Test commands in workflow files | present/partial/absent |
+
+#### Error Handling — status indicators
+
+| Check | How to Detect | Status Values |
+|-------|---------------|---------------|
+| Explicit error types | Custom error classes/types defined | present/partial/absent |
+| Context preservation | Error messages include context, stack traces logged | present/partial/absent |
+| Appropriate status codes | API responses use correct HTTP status codes | present/partial/absent |
+
+#### Observability — status indicators
+
+| Check | How to Detect | Status Values |
+|-------|---------------|---------------|
+| Structured logging | Logger config (winston, pino, structlog, logrus) | present/partial/absent |
+| Correlation IDs | Request ID middleware, trace ID patterns | present/partial/absent |
+| No PII in logs | Log sanitization, no email/password in log statements | present/partial/absent |
+
 ### Setup-Brownfield Quality Checklist
 
 Before finalizing the analysis:
@@ -107,6 +146,24 @@ Run the automated detection script for fast, deterministic stack identification:
 ```bash
 bash scripts/detect-stack.sh /path/to/project
 ```
+
+**Output:**
+```json
+{
+  "project_type": "nodejs",
+  "package_manager": "npm",
+  "frameworks": ["express"],
+  "orms": ["prisma"],
+  "architecture": ["feature-based"],
+  "ci_cd": ["github-actions"],
+  "files_found": {...}
+}
+```
+
+**Usage pattern:**
+1. Run script first for deterministic baseline
+2. Use script output to guide deeper LLM analysis
+3. Script findings are ground truth; LLM adds nuance
 
 > **Determinism boundary.** `detect-stack.sh` is the deterministic layer (pure `bash` + `jq`,
 > reads project files, JSON to stdout — no kernel, no network). Framework/architecture inference

@@ -1,6 +1,6 @@
 ---
 name: patterns-technical-decisions
-description: This skill MUST be invoked when making and documenting a technology or architecture decision — evaluating two or more alternatives against weighted criteria, capturing trade-offs and consequences, scoring brownfield alignment, and recording the rationale as an ADR. SHOULD also invoke on 'evaluate alternatives', 'trade-offs', 'decision record', 'ADR', or 'NEEDS CLARIFICATION'. Owns the decision technique and ADR depth; decisions land in constraints-and-decisions.md.
+description: This skill MUST be invoked when making and documenting a technology or architecture decision — evaluating two or more alternatives against weighted criteria, capturing the trade-offs and consequences of the choice, scoring brownfield alignment with the existing stack, and recording the rationale as a decision record (ADR). SHOULD also invoke when the work involves evaluating alternatives, weighing trade-offs and consequences, a decision record or ADR, decision rationale ("why we chose"), brownfield-alignment scoring, or marking a decision NEEDS CLARIFICATION. Owns the decision-making technique and ADR record depth; the decisions it produces are recorded in the constraints-and-decisions.md artifact owned by mochiko:authoring-technical-requirements.
 ---
 
 # Making Technical Decisions
@@ -10,6 +10,15 @@ description: This skill MUST be invoked when making and documenting a technology
 Provide a complete framework for technology decisions: evaluate alternatives against consistent criteria, make informed choices, and document decisions so future maintainers understand WHY choices were made.
 
 This skill owns the decision-making **technique** — how to evaluate, decide, and document well. The `constraints-and-decisions.md` **artifact** the decisions land in is owned by `mochiko:authoring-technical-requirements`; this skill references that artifact rather than restating it (see *Where decisions are recorded* below).
+
+## When to Use
+
+- Choosing between technology options (libraries, frameworks, services)
+- When a decision is blocked on missing information and must be flagged **NEEDS CLARIFICATION**
+- Documenting architectural decisions for the team
+- When a technology choice needs a documented justification
+- Evaluating existing stack vs new dependencies
+- Any decision with long-term maintenance implications
 
 ## When NOT to Use
 
