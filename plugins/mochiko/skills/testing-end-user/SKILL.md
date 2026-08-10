@@ -1,6 +1,6 @@
 ---
 name: testing-end-user
-description: This skill MUST be invoked when executing a `**TEST:**` verification task against real infrastructure — parsing its Setup/Action/Assert fields, running the actions (honoring `(background)` / `(timeout Ns)` / `(in path)` modifiers) with captured evidence, evaluating the asserts against that evidence, and classifying the task CLI/GUI/SUBJECTIVE to decide auto-approve versus human checkpoint. SHOULD also invoke when running quality gates (lint / build / test) as deterministic exit-code checks during verification, capturing execution evidence, classifying a verification result (PASS/FAIL/PARTIAL/TIMEOUT/ERROR), or presenting a verification checkpoint for human approval. Consumes the `**TEST:**` grammar owned by patterns-vertical-tdd; verifies against real infrastructure, never mocks.
+description: This skill MUST be invoked when executing a `**TEST:**` verification task against real infrastructure — parsing its Setup/Action/Assert fields, running actions and capturing evidence, evaluating asserts, and classifying the task CLI/GUI/SUBJECTIVE to decide auto-approve vs human checkpoint. SHOULD also invoke when running quality gates (lint/build/test) as exit-code checks. Consumes the `**TEST:**` grammar owned by mochiko:patterns-vertical-tdd; verifies against real infrastructure, never mocks.
 ---
 
 # End-User Verification Testing
@@ -14,16 +14,6 @@ Execute verification tasks that validate real infrastructure behavior through st
 Verification testing exists to catch failures before they reach production. Every shortcut in this process is a potential production incident waiting to happen.
 
 **Grammar ownership (single source):** the `**TEST:**` construct — its legal marker set, field skeleton, action-modifier vocabulary, and assert-pattern vocabulary — is authored and owned by `patterns-vertical-tdd` in [`TEST-GRAMMAR.md`](../patterns-vertical-tdd/references/TEST-GRAMMAR.md). This skill **consumes** that grammar; it does not redefine it. What this skill owns is the **runtime**: how to detect, parse, execute, evaluate, capture, classify, report, and gate. Where the grammar and the execution meet below, the vocabulary is referenced and the *how* is retained.
-
-## When to Use
-
-- Tasks marked with `**TEST:**` (or a legacy marker in the same family — see the grammar owner)
-- CLI command verification with expected output
-- File system state validation
-- Real process behavior testing (not mocks)
-- GUI/UI verification requiring human judgment
-- End-to-end validation before release
-- Quality gate execution (lint, build, test suite) as part of verification
 
 ## When NOT to Use
 

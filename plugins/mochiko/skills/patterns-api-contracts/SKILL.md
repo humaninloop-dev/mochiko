@@ -1,6 +1,6 @@
 ---
 name: patterns-api-contracts
-description: This skill MUST be invoked when designing the API-contract layer of a feature — mapping user actions to REST endpoints (HTTP method, idempotency, resource naming), defining request/response schemas (mapping conceptual data-model types to OpenAPI types), designing error responses and list pagination, authoring per-endpoint integration boundaries for endpoints that wrap external systems, and assembling the OpenAPI specification at `contracts/api.yaml`. SHOULD also invoke when the design work involves an "endpoint", "API contract", "request/response schema", "OpenAPI spec", "REST API design", an "HTTP" method or status code, or an "integration boundary" / "x-integration". Produces a traceable OpenAPI contract with documented errors and external-system failure modes.
+description: This skill MUST be invoked when designing the API-contract layer of a feature — mapping user actions to REST endpoints, defining request/response schemas, error responses, and list pagination, authoring per-endpoint integration boundaries for endpoints wrapping external systems, and assembling the OpenAPI spec at `contracts/api.yaml`. SHOULD also invoke on 'endpoint', 'API contract', 'OpenAPI spec', 'REST API design', 'HTTP status code', or 'integration boundary' / 'x-integration'.
 ---
 
 # Designing API Contracts
@@ -8,14 +8,6 @@ description: This skill MUST be invoked when designing the API-contract layer of
 ## Overview
 
 Design RESTful API contracts that map user actions to endpoints with complete schema definitions and comprehensive error handling. Every user action becomes an endpoint; every endpoint has request/response schemas and error handling. Endpoints that wrap an external system additionally carry an integration boundary documenting how that dependency fails.
-
-## When to Use
-
-- Designing new API endpoints — mapping user actions to HTTP methods and paths
-- Creating OpenAPI specifications (`contracts/` artifacts) with request/response schemas
-- Documenting error responses for an API
-- Documenting integration boundaries for endpoints that wrap external systems
-- Integrating with existing API patterns (brownfield)
 
 ## When NOT to Use
 
@@ -80,12 +72,6 @@ See [ERROR-PATTERNS.md](references/ERROR-PATTERNS.md) for complete HTTP status c
 For endpoints returning collections, implement pagination, filtering, and sorting.
 
 See [PAGINATION-PATTERNS.md](references/PAGINATION-PATTERNS.md) for offset vs cursor pagination, filtering operators, and sorting patterns.
-
-### Quick Reference
-
-```
-GET /api/users?page=1&limit=20&role=admin&sort=-createdAt
-```
 
 ## Brownfield Considerations
 

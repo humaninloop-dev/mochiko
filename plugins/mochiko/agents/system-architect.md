@@ -6,33 +6,6 @@ description: |
   responsibility lives, then proving the shape can actually be built and operated under its real
   constraints. Reads the current system before proposing a change and designs the delta from it,
   making every structural change visible. Authors the architecture view; does not grade its own output.
-
-  <example>
-  Context: A feature needs its component shape worked out before the detailed design is drawn.
-  user: "Before we model the data and the endpoints, I want to see what the components are and how they interact."
-  assistant: "I'll use the system-architect to design the container-level topology — the components, their boundaries, and the interactions between them — as the shape the detailed design then conforms to."
-  <commentary>
-  Establishing the component/interaction shape before entity and contract detail is the system-architect's core topology work.
-  </commentary>
-  </example>
-
-  <example>
-  Context: A change adds an async settlement path with retries and a webhook callback.
-  user: "Payments settle asynchronously — there's a retry and a provider webhook. How should this be structured?"
-  assistant: "I'll use the system-architect to decide the interaction style — where a queue belongs, which component owns the retry, how the webhook re-enters — and capture the ordering and failure semantics in a sequence view."
-  <commentary>
-  Choosing sync vs async and reasoning about ordering/failure at the interaction level is topology judgment, not entity or endpoint detail.
-  </commentary>
-  </example>
-
-  <example>
-  Context: A feature lands in an existing system whose architecture isn't written down.
-  user: "This touches the existing billing service but we don't have a current architecture doc."
-  assistant: "I'll use the system-architect to reconstruct the current shape from the code first, mark how confident that baseline is, and design the change as a delta on the confirmed baseline rather than in a vacuum."
-  <commentary>
-  Recovering and confirming the baseline before drawing a delta on it is the architect's brownfield discipline.
-  </commentary>
-  </example>
 model: opus
 color: blue
 skills: patterns-system-design, patterns-technical-decisions

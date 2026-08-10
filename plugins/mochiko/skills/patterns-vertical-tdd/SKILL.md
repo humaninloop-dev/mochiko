@@ -1,6 +1,6 @@
 ---
 name: patterns-vertical-tdd
-description: This skill MUST be invoked when structuring a feature's implementation into vertical-slice cycle cards — mapping user stories to cycles (Simple / Split / Merge cases), classifying foundation versus feature cycles, and authoring `tasks.md` as cycle cards (stories + rationale, dependencies, acceptance criteria, the closing `**TEST:**` real-infrastructure gate, cycle-level brownfield exposure). SHOULD also invoke when the work involves "structure implementation", "define cycles", "cycle cards", "vertical slice", "story→cycle mapping", "testable increment", or "implementation cycles". Owns the `**TEST:**` grammar. Structures the cycles at design time — it does NOT write task lists: decomposing a card into concrete tasks with file paths happens at build time, owned by mochiko:executing-tdd-cycle, downstream.
+description: This skill MUST be invoked when structuring a feature's implementation into vertical-slice cycle cards — mapping user stories to cycles (Simple/Split/Merge), classifying foundation vs feature cycles, and authoring `tasks.md` as cycle cards with the closing `**TEST:**` real-infrastructure gate. SHOULD also invoke on 'define cycles', 'cycle cards', 'vertical slice', or 'story→cycle mapping'. Owns the `**TEST:**` grammar. Design-time — NOT build-time decomposition (mochiko:executing-tdd-cycle).
 ---
 
 # Vertical Slicing — Cycle Cards
@@ -12,13 +12,6 @@ description: This skill MUST be invoked when structuring a feature's implementat
 Transform a plan's stories into **cycle cards** — vertical slices that each deliver observable, testable value. The output is `tasks.md` in the cycle-card shape ([`tasks-template.md`](../../templates/tasks-template.md) is the canonical skeleton): per card — stories + feature rationale, foundation/feature type, dependencies, acceptance criteria (by ID), the closing `**TEST:**` gate, and cycle-level brownfield exposure.
 
 This skill works at **design time**: it decides the slicing and states what each cycle must prove. It writes no task lists — the builder decomposes each card into concrete tasks, with file paths, at build time with the code in view (`mochiko:executing-tdd-cycle`, downstream). The card carries the *what and why*; the *how* is deliberately left to the build.
-
-## When to Use
-
-- Structuring an accepted plan's stories into cycle cards (`tasks.md`)
-- Deciding Simple / Split / Merge story→cycle cases and recording the rationale
-- Classifying foundation vs feature cycles and their dependencies
-- Authoring a cycle's `**TEST:**` gate (this skill owns the grammar)
 
 ## When NOT to Use
 

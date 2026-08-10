@@ -3,21 +3,28 @@
 Provenance: `validator-scope-and-verbosity` D7 (record:
 `.mochiko/brainstorms/validator-scope-and-verbosity/record.md`), the guardrails-vs-detail
 benchmark verdict (`DECISIONS.md` 2026-08-10 benchmark-verdict row;
-`.mochiko/benchmarks/guardrails-vs-detail/report/final-verdict.md`), and the Wave 1 build
-(v0.63.0). Cited by the char-budget pre-assert in `.claude/rules/mochiko/primitive-edits.md`.
+`.mochiko/benchmarks/guardrails-vs-detail/report/final-verdict.md`), the Wave 1 build
+(v0.63.0), and the Wave 2 editorial extension (v0.64.0 — budgets seeded from the audited cut
+results per the Wave 2 sketch in `report/build-plan.md`). Cited by the char-budget pre-assert
+in `.claude/rules/mochiko/primitive-edits.md`.
 
 **The rule.** A budget is the measured winning-variant character count **+25% headroom**
 (rounded up). Budgets are always measured, never invented: a new budget enters this ledger only
 from a benchmark-measured winner or a ruled editorial cut shipped through the edit ceremony
-(Wave 2 seeds its budgets from its own cut results the same way). All counts are **characters
-of the parsed value — never `wc -c` bytes** (byte counts over-reject unicode-bearing text that
-is under the char cap; a v1 census defect was exactly this).
+(Wave 2 seeded its budgets from its own audited cut results this way at v0.64.0). All counts
+are **characters of the parsed value — never `wc -c` bytes** (byte counts over-reject
+unicode-bearing text that is under the char cap; a v1 census defect was exactly this).
 
 **Classes measured:** skill body (content after the closing frontmatter `---`) · skill
 frontmatter `description:` value · agent frontmatter `description:` value. `references/` files
 are exempt (on-demand data, never auto-loaded).
 
 ## Skill bodies
+
+Wave 1 rows (benchmark winners, v0.63.0) and Wave 2 rows (audited editorial-cut results,
+v0.64.0) share the same rule. `authoring-architecture` and `grooming-operating-docs` were
+audited Wave 2 body no-ops (nothing D4-cuttable); their budgets are their surviving bodies
++25%, same as every other row.
 
 | skill | winner chars | budget (+25%) |
 |---|---|---|
@@ -32,9 +39,26 @@ are exempt (on-demand data, never auto-loaded).
 | authoring-user-stories | 5,361 | 6,702 |
 | authoring-prototype | 8,898 | 11,123 |
 | review-specifications | 11,271 | 14,089 |
+| authoring-architecture | 5,250 | 6,563 |
+| authoring-technical-requirements | 10,628 | 13,285 |
+| brownfield-integration | 6,342 | 7,928 |
+| executing-tdd-cycle | 9,676 | 12,095 |
+| grooming-operating-docs | 2,666 | 3,333 |
+| testing-end-user | 13,125 | 16,407 |
+| patterns-api-contracts | 10,729 | 13,412 |
+| patterns-code-minimalism | 3,455 | 4,319 |
+| patterns-entity-modeling | 13,468 | 16,835 |
+| patterns-system-design | 8,837 | 11,047 |
+| patterns-technical-decisions | 4,626 | 5,783 |
+| patterns-vertical-tdd | 5,189 | 6,487 |
+| review-brainstorm | 11,508 | 14,385 |
+| review-feasibility | 15,246 | 19,058 |
+| review-plan-artifacts | 10,855 | 13,569 |
+| review-code-minimalism | 3,689 | 4,612 |
 
 The v0.63.0 floor-line additions (analysis-iterative, review-governance-intent,
-validation-constitution, review-specifications) ride inside these budgets — the +25% headroom
+validation-constitution, review-specifications) and the v0.64.0 ones (review-brainstorm,
+review-feasibility, review-plan-artifacts) ride inside these budgets — the +25% headroom
 absorbed them by design.
 
 ## Skill descriptions
@@ -55,6 +79,26 @@ cap).
 | authoring-user-stories | 425 | 532 |
 | authoring-prototype | 493 | 617 |
 | review-specifications | 490 | 613 |
+| authoring-architecture | 488 | 610 |
+| authoring-technical-requirements | 496 | 620 |
+| brownfield-integration | 491 | 614 |
+| executing-tdd-cycle | 498 | 623 |
+| grooming-operating-docs | 490 | 613 |
+| testing-end-user | 500 | 625 |
+| patterns-api-contracts | 486 | 608 |
+| patterns-code-minimalism | 564 | 705 |
+| patterns-entity-modeling | 497 | 622 |
+| patterns-system-design | 541 | 677 |
+| patterns-technical-decisions | 469 | 587 |
+| patterns-vertical-tdd | 496 | 620 |
+| review-brainstorm | 491 | 614 |
+| review-feasibility | 500 | 625 |
+| review-plan-artifacts | 500 | 625 |
+| review-code-minimalism | 492 | 615 |
+
+`patterns-system-design` (541) and `patterns-code-minimalism` (564) include the v0.64.0
+RETURNED clauses (fire-rate probe evidence, user-ruled — see their strips); their budgets
+derive from the restored values.
 
 ## Agent descriptions
 
@@ -66,16 +110,23 @@ cap).
 | requirements-analyst | 303 | 379 |
 | product-manager | 438 | 548 |
 | product-engineer | 392 | 490 |
+| qa-engineer | 251 | 314 |
+| staff-engineer | 274 | 343 |
+| system-architect | 482 | 603 |
+| technical-analyst | 402 | 503 |
 
-## Untested primitives
+Wave 2 agent rows (v0.64.0) use the audited measurements (auditor's reproducible canonical-snippet
+counts, +1 over the shipper's block-scalar parse — the audited number is authoritative).
 
-The remaining 17 skills, 4 agents, and all commands have **no per-primitive budget** until a
-measured winner exists (Wave 2, or a future benchmark). They are covered only by the standing
-hard cap (skill `description:` ≤ 1,536) plus the justified-exemption path. This is deliberate:
-it prevents the gate from force-failing the four near-cap untested description skills
-(`patterns-system-design` 1,514 · `review-feasibility` 1,513 · `authoring-architecture` 1,511 ·
-`review-brainstorm` 1,506 — all outside the tested setup+specify substrate, M1 watch) before
-they are measured, while the hard cap still catches over-cap growth everywhere.
+## Unbudgeted primitives
+
+The `mochiko` router skill (body deliberately unbudgeted — its 25k body IS the router index,
+the discoverability surface; its description is 206 chars) and all **commands** have no
+per-primitive budget: no measured winner or ruled cut exists for them (commands excluded from
+both waves by user ruling). They are covered only by the standing hard cap (skill
+`description:` ≤ 1,536) plus the justified-exemption path. The former M1 near-cap risk
+(four description skills within ~30 chars of the cap) was retired at v0.64.0 — all four are
+now budgeted rows above, slimmed to ≤500 and probe-verified (14/14 routing hits).
 
 ## How to measure
 

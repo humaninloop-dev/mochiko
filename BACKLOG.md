@@ -23,33 +23,32 @@ HIT logged (ROADMAP stamp vs CHANGELOG — user decision); all items within the 
 Ruling: DECISIONS.md rows 2026-08-10 (D1–D8 + benchmark verdict) + build row 2026-08-11;
 Wave 1 delivered at v0.63.0 (trail).
 
-- [ ] **First-live-run watches on the v0.63.0 cuts** (2026-08-11; provenance:
+- [ ] **First-live-run watches on the v0.63.0/v0.64.0 cuts** (2026-08-11; provenance:
   `.mochiko/brainstorms/validator-scope-and-verbosity/record.md`, Benchmark execution section +
-  `.mochiko/benchmarks/guardrails-vs-detail/report/final-verdict.md`) — watch the first live
-  setup/specify runs on the cut primitives: **F-X1 review-evidence** — does the independent
-  review leave verdict + dispositions in the artifacts (the new floor line's job)? Recurrence
-  re-opens agents ruling (b) (example blocks return to the 6 agent descriptions) · **slim-
-  description fire-rate** — do the 11 slim descriptions still fire at their moments, incl.
-  both sibling traps (analysis-iterative vs review-specifications; feature-map vs
-  user-stories)? · Open threads riding: **M1** near-cap untested description skills
-  (`patterns-system-design` 1,514 · `review-feasibility` 1,513 · `authoring-architecture`
-  1,511 · `review-brainstorm` 1,506 — outside the tested substrate, budgets deferred to
-  Wave 2) · **M2** audit-substrate shrink (terser bodies give the preserved-responsibilities
-  check less to grade; first datapoint — this wave's own audits — held: strip inventories
-  carried the substrate).
+  `.mochiko/benchmarks/guardrails-vs-detail/report/final-verdict.md`; extended to the Wave 2
+  substrate at v0.64.0) — watch the first live runs on the cut primitives: **F-X1
+  review-evidence** — does the independent review leave verdict + dispositions in the
+  artifacts (the floor line's job, now in 4 review/validation skills + the equivalent in
+  `review-code-minimalism`)? Recurrence re-opens agents ruling (b) (example blocks return to
+  the 10 prose-only agent descriptions) · **slim-description fire-rate** — do the 27 slim
+  descriptions still fire at their moments? Wave 1's 11 are benchmark-verified, Wave 2's 16
+  probe-verified (14/14 blind routing); a live miss on any lands as a probe-evidenced
+  RETURNED clause, not a description rewrite · **M2** audit-substrate shrink (terser bodies
+  give the preserved-responsibilities check less to grade; two datapoints held — both waves'
+  audits graded from strip inventories). M1 retired at v0.64.0 (all near-cap descriptions
+  slimmed + probe-verified). Advisory riding: dropped SHOULD-class trigger phrases inventoried
+  in the Wave 2 audit reports — restore individually on live-miss evidence only.
 - [ ] **`analysis-codebase` dangling-pointer repair** (2026-08-11; provenance: batch-A audit
   ruling, strip `[v0.63.0]` note) — the ruled variant keeps "assess against it using the
   indicators below" but the indicator subsections died; comprehension defect only, no lost
   obligation. One-line reword through the ordinary edit ceremony at the next touch of this
   skill.
-- [ ] **Wave 2: editorial extension of the cut lines** (2026-08-11; provenance: user two-wave
-  ruling 2026-08-10; sketch at
-  `.mochiko/benchmarks/guardrails-vs-detail/report/build-plan.md`, Wave 2 section) — apply the
-  D4 cut line editorially to the remaining 17 skills + 4 agents (commands stay excluded), each
-  through strips + author≠grader audits, budgets seeded from the cut results +25%, separate
-  bump; near-cap M1 skills get their descriptions slimmed first with a fire-rate spot-check.
-  Start after the first-live-run watches report clean. Wave 1's review-evidence floor line
-  consolidation (3 copies → shared home) rides as a candidate.
+- [ ] **Review-evidence floor-line consolidation** (2026-08-11; provenance: Wave 1 user ruling
+  option note + Wave 2 spread) — the floor line now lives in 4 skills verbatim
+  (`review-specifications`, `review-governance-intent`, `validation-constitution`,
+  `review-brainstorm`, plus adapted copies in `review-feasibility`, `review-plan-artifacts`);
+  no shared review-contract home exists. Candidate: single-source it when a shared home
+  naturally appears — not worth minting a new primitive for.
 
 ## Feature-sizing & entry-points residuals
 

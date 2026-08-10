@@ -5,6 +5,34 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.64.0] — 2026-08-11
+
+- Guardrails-vs-detail build, Wave 2 (user ruling 2026-08-10: two waves, commands excluded;
+  editorial extension of the D4 cut line to the untested primitives, warranted by the Wave 1
+  benchmark verdict — no per-primitive benchmark, deeper audit scrutiny instead). **16 skills**
+  cut editorially: every `description:` slimmed to ≤500 chars (from up to 1,514 — retiring the
+  M1 near-cap risk on `patterns-system-design`, `review-feasibility`, `authoring-architecture`,
+  `review-brainstorm`, `review-plan-artifacts`), bodies lose description-restating When-to-Use
+  sections and homed walkthrough steps (−3% to −10% where cuttable; `authoring-architecture`,
+  `grooming-operating-docs`, and `review-brainstorm` are audited body no-ops — all content
+  owned/protected); the `mochiko` router body deliberately excluded (the index IS the
+  contract). **4 agents** shipped prose-only (`qa-engineer`, `staff-engineer`,
+  `system-architect`, `technical-analyst` — 13 `<example>` blocks removed, descriptions
+  78–86% smaller). **Review-evidence floor line** added to `review-brainstorm`,
+  `review-feasibility`, `review-plan-artifacts` (skipped in `review-code-minimalism` —
+  audited equivalent obligation already present). **M1 fire-rate probe:** 14-scenario blind
+  routing spot-check on the slim descriptions — 14/14 hits incl. both sibling traps and the
+  non-fire control; its two findings landed as RETURNED clauses (probe-evidenced, user-ruled):
+  current-state-baseline cue restored to `patterns-system-design`, existing-code-slimming
+  trigger added to `patterns-code-minimalism` (a pre-existing gap, not cut content) — both
+  re-audited PASS. **Ledger seeded:** 18 skill-body + 18 skill-description + 4 agent budgets
+  added to `.mochiko/memory/primitive-cost-budgets.md` from the audited cut results +25%;
+  every skill and agent is now budgeted (only commands and the router body remain
+  hard-cap-only). Ceremony: 20 supersession-by-ruling strips (2 with RETURNED entries), full
+  prior-KEPT reconciliation (`review-brainstorm`'s v0.60.0 blind-map machinery survives whole);
+  independent author≠grader audits by 4 fresh validator seats + 1 bounded re-audit — 20/20
+  PASS round 1, zero fix rounds.
+
 ## [0.63.0] — 2026-08-11
 
 - Guardrails-vs-detail build, Wave 1 (ruling: `validator-scope-and-verbosity` D1–D8 +
