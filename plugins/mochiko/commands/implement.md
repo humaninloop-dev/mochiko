@@ -135,5 +135,7 @@ fold · user acceptance not given.
   diff: pre-fold baseline + delta vs folded result; delta applied whole, nothing else
   changed — checked by the landing verification seat, scope-extended; lane runs add the
   map-delta boundary check (the accepted work made no map write beyond the marked delta) to
-  the same seat.
+  the same seat. A delta whose baseline file is absent at fold time folds into a fresh
+  `.mochiko/product/` file (empty pre-fold side), the absence surfaced to the user as a
+  seeding gap.
 - **Register:** user-facing prose per `templates/output-style.md`.

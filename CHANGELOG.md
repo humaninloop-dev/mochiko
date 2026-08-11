@@ -5,6 +5,18 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.66.0] — 2026-08-12
+
+- Baseline-seed enforcement — dogfood defect close (ADR
+  `.mochiko/decisions/2026-08-11-plan-baseline-seed-enforced.md`): the first plan run never
+  seeded `.mochiko/product/` because the greenfield bootstrap obligation lived only in the
+  ruling record and `setup.md`, never in `plan.md`. `plan.md` gains the Goal seed sentence,
+  a **Baseline-seed** binding (no delivered code: empty scaffolds stating so; delivered
+  code: reconstructed and confirmed with the user), and the Not-done "absent at close"
+  clause; `implement.md`'s acceptance fold gains the empty-pre-fold clause with the absence
+  surfaced as a seeding gap. Pure additions (no strips owed), wording token-tightened at
+  landing by user ruling. Audits: two fresh author≠grader validator seats, 2/2 PASS round 1.
+
 ## [0.65.0] — 2026-08-11
 
 - Adaptive-depth floor build (ruling: `production-floor-adaptive-depth` D1–D8, accepted

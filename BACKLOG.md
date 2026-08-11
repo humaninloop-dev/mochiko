@@ -68,7 +68,11 @@ Ruling: DECISIONS.md row 2026-08-10 (D1–D15 as amended); build delivered same 
   product baselines at `.mochiko/product/` from code; greenfield seeds at first plan run) is
   marked `Assumed` in `setup.md`; reconstruction-burden scope unruled; half-reconstructed
   baselines poison extend-mode. Re-opens at the first brownfield setup run on the new surface
-  or on friction, whichever first.
+  or on friction, whichever first. 2026-08-11: the greenfield arm's enforcement half closed
+  at v0.66.0 (dogfood defect — first plan run never seeded; `plan.md` Baseline-seed binding +
+  `implement.md` empty-pre-fold clause, ADR
+  `2026-08-11-plan-baseline-seed-enforced`); the partial-baseline risk and the brownfield
+  reconstruction-burden scope stay open here.
 
 ## Cold-review gap-challenge residuals
 

@@ -70,7 +70,7 @@ row method-supersession annotated) —
 Now 5 · Next 6 · Later 9 · BACKLOG
 baseline 56 open items (per-item ≤15 lines;
 figures on BACKLOG's stamp line). Plugin: 6 commands · 10 agents · 28 skills · 14 templates +
-modules · 2 output styles, v0.65.0 (marketplace synced). Per-bump build history: `CHANGELOG.md` (from 0.53.0) ·
+modules · 2 output styles, v0.66.0 (marketplace synced). Per-bump build history: `CHANGELOG.md` (from 0.53.0) ·
 `DECISIONS.md` · the trail; pre-0.53.0 stamp-line narratives live in git history (this line,
 before this groom). Stamp compressed to contract shape this groom — expansion-watch hit
 logged in BACKLOG (Operating-docs / KM module section) for the user's report-writer re-open

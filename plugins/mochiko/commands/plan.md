@@ -18,7 +18,9 @@ The package exists. **Product baselines live at `.mochiko/product/`** — `data-
 `quickstart.md` when a real external-integration surface exists (its null path recorded in
 `plan.md`) — beside repo-root `ARCHITECTURE.md`: they describe what the product HAS, are read
 first as design input, and change only through the landing's graded fold — never edited in
-place by this run. **Per-feature artifacts land at `.mochiko/features/FEAT-XXX/`** — what the
+place by this run. Absent at run open, **this run seeds them before design input is read**
+(Baseline-seed binding).
+**Per-feature artifacts land at `.mochiko/features/FEAT-XXX/`** — what the
 feature CHANGES: `requirements.md` (FR→TR is per-feature analysis) · the design deltas against
 the baselines — `architecture.md`, `data-model.md`, `contracts/`, `nfrs.md`, each a delta
 mirroring its baseline's filename; deltas against prose baselines are in appliable form —
@@ -43,8 +45,8 @@ traced). The user accepted it whole. It is `/mochiko:implement`'s selection-scop
 condition.
 
 **Not done — default FAIL:** a missing artifact, or an unrecorded `quickstart.md` null path ·
-a product baseline edited in place, or a delta against a prose baseline not in appliable
-before/after form · an unsigned architecture, or a design element contradicting the signed-off
+a product baseline absent at close or edited in place, or a delta against a prose baseline
+not in appliable before/after form · an unsigned architecture, or a design element contradicting the signed-off
 target · an earlier delivered feature's design broken without its `[MODIFY]` amendment · a
 package never graded by anyone but its authors · user acceptance not given.
 
@@ -107,6 +109,11 @@ package never graded by anyone but its authors · user acceptance not given.
   reconstructed baseline is confirmed with the user before a delta is designed on it, and
   lands as the initial `ARCHITECTURE.md` where the KM copy
   (`.mochiko/memory/knowledge-management.md`) exists.
+- **Baseline-seed:** a baseline file absent at run open is seeded before design reads it —
+  no delivered code: empty scaffolds stating so; delivered code exists: reconstructed from
+  it and **confirmed with the user** like the `ARCHITECTURE.md` bootstrap above. The seed
+  is the baseline write; the feature's design still lands as deltas at acceptance — never
+  merged into the seed.
 - **In-flight pointer:** at architecture sign-off, add the feature's one-line pointer to
   repo `ARCHITECTURE.md`'s In-flight list per `mochiko:authoring-architecture`.
 - **Register:** user-facing prose per `templates/output-style.md`.
