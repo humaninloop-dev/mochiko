@@ -370,16 +370,22 @@ trail** (scope ADR `2026-07-30-po-narrowing-build-scope`). Tier-I depth items op
   ambiguity was ruled 2026-07-30 — waivable under D4; ADR `po-narrowing-build-scope`.) D7
   first datapoint (2026-07-31 mochiko-app amend): zero waivers, floor asserted clean —
   pointing away from the concern.
-- [ ] **Incremental production-hardening levels** (2026-08-04; provenance: capture session,
-  to-brainstorm; re-keyed here from To-triage at the 2026-08-06 groom) — setup hardening for
-  production, with levels of complexity applied incrementally. **Direct tension with PO-D1–D7**
-  (production-only, 2026-07-30): the ruling asserts *one* production floor, **no tier ladder**
-  (`production-only-focus/record.md`). An "incremental levels" proposal must engage that ruling
-  head-on — either it's a re-open of PO-D1 (needs a new founder ruling) or it's an
-  onboarding/adoption ramp *onto* the single floor (staged assertion, not staged standards)
-  that leaves the floor itself untiered. Also relate to the floor-waiver mechanism (D4/D7)
-  which already gives young teams a graduated path. Brainstorm must first classify which of
-  the two it is.
+- [ ] **Adaptive-depth floor build** (2026-08-11; rulings D1–D8, record
+  `.mochiko/brainstorms/production-floor-adaptive-depth/record.md` — solo-cold-reviewed via
+  blind-map dispatch, 11/11 dispositioned, verify CLEAN; PO-D2 amended, PO-D7 superseded
+  user-ruled) — build surface (record: "Build surface"): floor cards + asserted rows go
+  two-row `low`/`high` per check, authored to the retrofit-cost cut line (D5; identical rows
+  legitimate, high-only tags, old `internal` rows source material only) · governance-intent
+  level-declaration field + ledger level state/event · setup level elicitation
+  (recommend-then-arbitrate, greenfield-recommends-low) + high-mode rerun as the flip ceremony
+  surfacing the adherence delta; interim delta items ride D4 waivers (bounded transition
+  exception) · graders learn the two-row form; no level-vs-reality advisory (D6 no-watcher) ·
+  existing single-floor projects default **high** · ROADMAP/CLAUDE.md "no tier ladder"
+  identity sentence rewritten at landing · SD/OO Tier-I build items gain two-row-obligation
+  notes · arch-opinion cards + compliance modules + process-rigor sites untouched (D7/D8) ·
+  strips owed: supersession-by-ruling on every "single asserted production row" carrier.
+  Re-inflation cost accepted bounded (two rows not four; dimension-2 + pruning license stay
+  dead).
 
 ## Ergonomics: output, language & run-hygiene
 
