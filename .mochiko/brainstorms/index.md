@@ -8,6 +8,11 @@ One entry per session directory under `.mochiko/brainstorms/<topic-slug>/`, **ne
 
 ---
 
+## `feature-map-granularity-and-reparenting` — map granularity balance (narrow vs broad) + new-parent adoption of existing in-flight/delivered features
+- **When:** 2026-08-12 · **Status:** open
+- **Artifacts:** [record.md](feature-map-granularity-and-reparenting/record.md) (canonical)
+- **About:** two threads on the feature-map layer: no map-level balance guidance exists (per-entry sizing bars only), and re-parenting — minting a new parent over existing `in-flight`/`delivered` entries — is unruled (`feature.md` reserves "parent selection semantics — unruled; surfaced when it bites").
+
 ## `production-floor-adaptive-depth` — adaptive depth (low/high) for the production floor; greenfield constraint pain
 - **When:** 2026-08-11 · **Status:** accepted · record solo-cold-reviewed via blind-map dispatch (19-angle map, topic-only spawn; 11 raised — 0 Critical, 8 Important, 3 Minor → needs-revision → 11/11 dispositioned: 2 record-integrity lead-repaired pre-disposition, remainder the user batch "as recommended, progressive meant binary, flip. re-affirm" — 5 coverage gaps all ruled inline; verify CLEAN, 1 advisory (#10 waivers-as-depth-valve tension) reconciled by bounded-exception clause; PO-D7 supersession explicitly user-ruled at acceptance)
 - **Artifacts:** [record.md](production-floor-adaptive-depth/record.md) (canonical, incl. session trail Q1–Q10, amendment surface with evidence honesty marker, build surface)
