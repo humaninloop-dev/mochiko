@@ -336,7 +336,9 @@ trail** (scope ADR `2026-07-30-po-narrowing-build-scope`). Tier-I depth items op
   Bindings, shape-v5 audited). Fences: DAST/pentest · per-regime content · type-specific
   expressions (shelves) · runtime ops. Tooling-map relocation target named 2026-07-31 (OO-M4):
   `authoring-constitution/references/STACK-TOOLING.md` — whichever build lands first creates
-  it, the other joins.
+  it, the other joins. Two-row obligation (adaptive-depth 2026-08-11, #6 fold): every check
+  this build ships gets a low/high determination at build time under the D5 retrofit-cost cut
+  line; scoping record not reopened.
 - [ ] **Ops & observability build (Tier I)** (2026-07-31; rulings OO-D1–D7, record
   `.mochiko/brainstorms/ops-observability-hardening/record.md` — pair-reviewed 25→20 merged,
   20/20 dispositioned, verify CLEAN round 2) — build surface (record: "Build surface", M-folds
@@ -350,7 +352,10 @@ trail** (scope ADR `2026-07-30-po-narrowing-build-scope`). Tier-I depth items op
   row · vertical-tdd instrumentation TEST rule + task-artifacts dual-keyed row · known-gap
   validator check · clause-level waiver-key wording · bounded alert canary. Fences:
   release-process assertion · SLO achievement · incident machinery + error budgets (Tier-II
-  reliability) · per-kind shelf expressions · dormant IP rows stay dormant.
+  reliability) · per-kind shelf expressions · dormant IP rows stay dormant. Two-row obligation
+  (adaptive-depth 2026-08-11, #6 fold): every check this build ships gets a low/high
+  determination at build time under the D5 retrofit-cost cut line; scoping record not
+  reopened.
 - [ ] **Shelf builds — the translation tables (Tier I)** (2026-07-30, PO-D5) — order:
   frontend → mobile → desktop (map F30: only backend/service seeded; desktop net-new).
   Frontend (`catalog/frontend.md`; 2026-07-16 user-ruled in-scope): type principles +
@@ -370,22 +375,18 @@ trail** (scope ADR `2026-07-30-po-narrowing-build-scope`). Tier-I depth items op
   ambiguity was ruled 2026-07-30 — waivable under D4; ADR `po-narrowing-build-scope`.) D7
   first datapoint (2026-07-31 mochiko-app amend): zero waivers, floor asserted clean —
   pointing away from the concern.
-- [ ] **Adaptive-depth floor build** (2026-08-11; rulings D1–D8, record
-  `.mochiko/brainstorms/production-floor-adaptive-depth/record.md` — solo-cold-reviewed via
-  blind-map dispatch, 11/11 dispositioned, verify CLEAN; PO-D2 amended, PO-D7 superseded
-  user-ruled) — build surface (record: "Build surface"): floor cards + asserted rows go
-  two-row `low`/`high` per check, authored to the retrofit-cost cut line (D5; identical rows
-  legitimate, high-only tags, old `internal` rows source material only) · governance-intent
-  level-declaration field + ledger level state/event · setup level elicitation
-  (recommend-then-arbitrate, greenfield-recommends-low) + high-mode rerun as the flip ceremony
-  surfacing the adherence delta; interim delta items ride D4 waivers (bounded transition
-  exception) · graders learn the two-row form; no level-vs-reality advisory (D6 no-watcher) ·
-  existing single-floor projects default **high** · ROADMAP/CLAUDE.md "no tier ladder"
-  identity sentence rewritten at landing · SD/OO Tier-I build items gain two-row-obligation
-  notes · arch-opinion cards + compliance modules + process-rigor sites untouched (D7/D8) ·
-  strips owed: supersession-by-ruling on every "single asserted production row" carrier.
-  Re-inflation cost accepted bounded (two rows not four; dimension-2 + pruning license stay
-  dead).
+- [ ] **Adaptive-depth first-live-run watch** (2026-08-11; provenance:
+  `.mochiko/brainstorms/production-floor-adaptive-depth/record.md` + DECISIONS build row
+  2026-08-11; build DONE same day at v0.65.0 → trail) — watch the first live setup runs on
+  the two-row floor: greenfield run declares a level recommend-then-arbitrate (low
+  recommended, user rules, GI-row + ledger state minted) · a low-level run's floor cards
+  author the low rows (no high-row leakage, no watcher language surfacing) · the first flip
+  (high-mode rerun) surfaces the adherence delta and mints interim transition-delta waivers
+  that die at conformance · graders accept a fresh high declaration with open transition
+  waivers (not a defect) and FAIL a missing declaration. D6 silent-under-posture risk
+  (`Contested`, accepted): note any observed cruise-past-the-flip-moment as evidence for the
+  user's future revisit, never as a build change. This repo's own formal GI-row minting rides
+  the next amend run (ledger carries the legacy default-high note).
 
 ## Ergonomics: output, language & run-hygiene
 

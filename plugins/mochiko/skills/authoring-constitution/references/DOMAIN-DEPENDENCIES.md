@@ -60,7 +60,9 @@ A non-empty day-one registry is the point: an empty list reads as prohibition.
 
 ## Growth (implement time — the add-process authored into the policy)
 
-One universal gate at the asserted floor (the retired tier fork is gone — PO-D2):
+One universal gate, uniform at both depth levels (the retired tier fork is gone — PO-D2; the
+domain-registry checkpoint is level-blind per D8 — pipeline process rigor stays uniform whether
+the floor's depth dial is at `low` or `high`):
 
 - A proposed addition that meets both criteria surfaces to the human as an **explicit ruling
   BEFORE entering the registry**; the cycle checkpoint MUST NOT auto-approve while

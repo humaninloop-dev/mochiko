@@ -33,7 +33,7 @@ the ledger, module detail behind pointers.
 <!-- mochiko:governance:begin -->
 ## Governance
 
-**Ratified:** v[X.Y.Z] · [YYYY-MM-DD] · production floor · modules: [attached compliance modules, or "none"] <!-- GI-001 (fact profile) -->
+**Ratified:** v[X.Y.Z] · [YYYY-MM-DD] · production floor · depth: [low | high] · modules: [attached compliance modules, or "none"] <!-- GI-001 (fact profile) · GI-0XX (depth level) -->
 
 ### Principles
 
@@ -51,7 +51,7 @@ the ledger, module detail behind pointers.
 ### Quality gates
 
 - `[actual command]` MUST pass before merge <!-- GI-XXX -->
-- Coverage ≥ [asserted floor level, session-overridable]% on new code (`[actual command]`) <!-- GI-XXX -->
+- Coverage ≥ [floor card's coverage threshold, session-overridable]% on new code (`[actual command]`) <!-- GI-XXX -->
 
 ### Governance operations
 
@@ -99,7 +99,7 @@ Read by setup/amend runs and the validator only — never force-loaded into work
 ```markdown
 # Governance Ledger
 
-**Governance Floor:** production (asserted) · **Modules:** [attached compliance modules with strata, or "none"] · **Trace:** GI-001 (fact profile)
+**Governance Floor:** production (asserted) · **Depth level:** [low | high] (user-declared, one-way; `high` terminal) · **Modules:** [attached compliance modules with strata, or "none"] · **Trace:** GI-001 (fact profile) · GI-0XX (depth level)
 **Version:** [X.Y.Z] (must match the region stamp)
 
 ## Waivers
@@ -114,10 +114,12 @@ validator FAIL.
 
 ## Amendment policy
 
-- Route: `/mochiko:setup` amend mode; fact-profile changes (module attach/detach) and
-  un-waives are governance events.
-- Semver: MAJOR — principle removal / incompatible redefinition / floor-level change / module
-  attach or detach · MINOR — new principle or waiver change · PATCH — clarification.
+- Route: `/mochiko:setup` amend mode; fact-profile changes (module attach/detach), un-waives,
+  and the depth-level flip (a `high`-mode rerun) are governance events — the declaration and any
+  later flip are recorded as amendment-log rows, no new ledger structure.
+- Semver: MAJOR — principle removal / incompatible redefinition / floor-level change /
+  depth-level flip (`low`→`high`) / module attach or detach · MINOR — new principle or waiver
+  change · PATCH — clarification.
 - Approvers: [from the synthesis's team reality]
 
 ## Exception registry

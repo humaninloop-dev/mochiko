@@ -7,8 +7,9 @@ quality of the skill library — native agent teams and Workflows orchestrate, a
 the framework's primary external validator, present in every loop. Current bet: a small
 team-form command surface over a stripped, single-sourced primitive library, hardened by
 dogfood evidence rather than speculation. **Target: customer-facing product applications
-only — SaaS, web, mobile, desktop — under one asserted production floor, no tier ladder
-(production-only, PO-D1–D7, 2026-07-30); backend/service standards are seeded today,
+only — SaaS, web, mobile, desktop — under one production floor with a user-declared low/high
+depth level, breadth invariant at both, no tier ladder (production-only PO-D1–D7 2026-07-30,
+as amended by adaptive-depth D1–D8 2026-08-11); backend/service standards are seeded today,
 frontend/mobile/desktop shelves are Tier-I roadmap work.**
 
 ## Now
@@ -25,7 +26,7 @@ frontend/mobile/desktop shelves are Tier-I roadmap work.**
 - Token epic: the one-shot OTel probe (2026-07-23; D5 sizing half closed 2026-08-04 — superseded at v8; probe gains TC's three recorded-open questions) → [BACKLOG](BACKLOG.md#token-reduction-epic)
 - Defect probes: fresh-session description-delivery (2026-07-25) → [BACKLOG](BACKLOG.md#defects--empirical-checks)
 - Re-evaluate the deferred-kernel shortcut entry once the pipeline dogfoods complete (roadmap-v2's surviving next-step; its convention-extraction clause discharged at the 2026-07-25 migration) → [BACKLOG](BACKLOG.md#token-reduction-epic)
-- Adaptive-depth floor build (ruled 2026-08-11, D1–D8 — PO-D2 amended, PO-D7 superseded: two-row low/high floor, user-declared one-way level, identity-sentence rewrite rides the landing) → [BACKLOG](BACKLOG.md#production-only-narrowing)
+- Adaptive-depth residual — build DELIVERED 2026-08-11 at v0.65.0 (two-row low/high floor, user-declared one-way level, flip ceremony, graders re-keyed; 3/3 audits PASS round 1; trail); remaining: the first-live-run watch → [BACKLOG](BACKLOG.md#production-only-narrowing)
 - Tier-I builds queued: security-depth (scoped 2026-07-30, SD-D1–D6) · ops & observability (scoped 2026-07-31, OO-D1–D7) — both inherit the two-row obligation at build time; then shelf-build scoping → [BACKLOG](BACKLOG.md#production-only-narrowing)
 - Architecture-primitive dogfood — first merged-plan run with the architecture stage (built 2026-07-30 at v0.32.0); tie-back chain rides it (built 2026-08-04 at v0.51.0, AT-D1–D6) → [BACKLOG](BACKLOG.md#architecture-primitive-build-items)
 
@@ -69,7 +70,7 @@ row method-supersession annotated) —
 Now 5 · Next 6 · Later 9 · BACKLOG
 baseline 56 open items (per-item ≤15 lines;
 figures on BACKLOG's stamp line). Plugin: 6 commands · 10 agents · 28 skills · 14 templates +
-modules · 2 output styles, v0.62.0 (marketplace synced). Per-bump build history: `CHANGELOG.md` (from 0.53.0) ·
+modules · 2 output styles, v0.65.0 (marketplace synced). Per-bump build history: `CHANGELOG.md` (from 0.53.0) ·
 `DECISIONS.md` · the trail; pre-0.53.0 stamp-line narratives live in git history (this line,
 before this groom). Stamp compressed to contract shape this groom — expansion-watch hit
 logged in BACKLOG (Operating-docs / KM module section) for the user's report-writer re-open

@@ -1,14 +1,16 @@
 # Essential Floor
 
-> **Canonical home.** This file is the single source of truth for the four Essential Floor category **definitions**. Both modes of `authoring-constitution` (greenfield writes them at the asserted floor level; brownfield assesses the codebase against them) reference this definition, and the cross-cluster `analysis-codebase` skill references it for its present/partial/absent status assessment rather than re-defining the categories. Edit the four categories here, nowhere else.
+> **Canonical home.** This file is the single source of truth for the four Essential Floor category **definitions**. Both modes of `authoring-constitution` (greenfield writes them at the declared depth level's row; brownfield assesses the codebase against them) reference this definition, and the cross-cluster `analysis-codebase` skill references it for its present/partial/absent status assessment rather than re-defining the categories. Edit the four categories here, nowhere else.
 
 Every constitution MUST **account for** all four floor categories — with a principle or a
 **recorded waiver** (D4: justification in the governance ledger; permanent pending the D4.1
 revisit). The floor concept is invariant: no session emits a floor-less constitution, and absence
-is never silent. The floor's **level is single and asserted** — the production level on each
-floor card in [catalog/universal-floor.md](catalog/universal-floor.md); nothing can lower it, and
-a deviation is only ever a recorded waiver, never a loosened card. Audit-evidence variants live
-in [COMPLIANCE-MODULES.md](COMPLIANCE-MODULES.md) and attach via the fact profile.
+is never silent. The floor's **depth is a two-row dial** — a `low` and a `high` row on each floor
+card in [catalog/universal-floor.md](catalog/universal-floor.md), one project-wide level declared
+by the user and moved only one-way `low`→`high` (D1/D2); every category is present at both rows
+(breadth invariant), and a deviation is only ever a recorded waiver, never a loosened card.
+Audit-evidence variants live in [COMPLIANCE-MODULES.md](COMPLIANCE-MODULES.md) and attach via the
+fact profile.
 
 ## Detail Requirements
 
@@ -46,6 +48,14 @@ When writing Essential Floor principles, include these specifics:
 
 ## Example Principles
 
+> **Depth note:** these worked examples show the **`high`** row — the fully-asserted form. At the
+> `low` level, the addable rigor relaxes per each card's `low` row in
+> [catalog/universal-floor.md](catalog/universal-floor.md) (e.g. coverage measured but its
+> blocking threshold not yet enforced); the expensive-to-retrofit rules (auth at boundaries,
+> secrets out of the repo, no silent data corruption) hold identically at both levels. The
+> **(NON-NEGOTIABLE)** label marks the category's presence — the breadth invariant, every category
+> present at both levels — not a fixed depth; the dial sets the depth.
+
 ### I. Security by Default (NON-NEGOTIABLE)
 
 All code MUST follow security-first principles.
@@ -75,7 +85,7 @@ All code MUST follow security-first principles.
 All production code MUST have automated tests.
 
 - New functionality MUST have accompanying tests before merge
-- Test coverage MUST be ≥80% (warning) and ≥60% (blocking)
+- Test coverage MUST be ≥80% (warning) and ≥60% (blocking) *(the `high` row; at `low`, coverage is measured and ratcheted but the blocking threshold is not yet enforced — D5)*
 - Coverage baseline MUST NOT decrease (ratchet rule)
 - Test files MUST follow naming convention: `*_test.py` or `test_*.py`
 - Tests MUST mirror source structure in `tests/` directory

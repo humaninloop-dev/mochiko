@@ -82,7 +82,7 @@ Route each synthesis element by its scope; the routing IS part of formulation qu
 
 | Mode | Use when | Adds on top of the shared core |
 |------|----------|--------------------------------|
-| **greenfield** | A new project with no existing code to honor. | Principles formulated from the synthesis's deck rulings + minted intents; floor cards at the asserted production level. |
+| **greenfield** | A new project with no existing code to honor. | Principles formulated from the synthesis's deck rulings + minted intents; floor cards authored at the synthesis's declared depth level (the two-row `low`/`high` card form). |
 | **brownfield** | An existing codebase — *codify what is already there*. Requires `.mochiko/memory/codebase-analysis.md` (produced upstream by `analysis-codebase`). | Essential Floor *assessed against the code* (present/partial/absent) **+** an Emergent Ceiling codifying good existing patterns **+** the `evolution-notes` module. |
 
 **The shared core is authored once, identically, in both modes** — the Three-Part Principle Rule,
@@ -94,8 +94,9 @@ The content sources:
   and deck rulings name what was shaped, kept, and adjusted; the cards carry the principle
   material to formulate from.
 - **both → [references/ESSENTIAL-FLOOR.md](references/ESSENTIAL-FLOOR.md)** — the canonical
-  definition of the four floor categories. The asserted level and waiver posture per category
-  live on the floor cards in the catalog; audit-evidence variants live in
+  definition of the four floor categories. The two-row `low`/`high` depth form and the waiver
+  posture per category live on the floor cards in the catalog — author the row the synthesis's
+  declared depth level selects (adaptive-depth, 2026-08-11); audit-evidence variants live in
   [references/COMPLIANCE-MODULES.md](references/COMPLIANCE-MODULES.md) and attach via the
   synthesis's fact profile.
 - **brownfield → [references/EMERGENT-CEILING-PATTERNS.md](references/EMERGENT-CEILING-PATTERNS.md)**
@@ -176,16 +177,17 @@ exceptions exist) · MAY (optional). Detailed usage:
 Every governance set MUST include, per
 [`governance-surfaces-template.md`](../../templates/governance-surfaces-template.md):
 
-1. **Ratified stamp** (region, one line): version · ratified date · floor + attached modules;
-   semver per the template's amendment policy (Shape 3).
+1. **Ratified stamp** (region, one line): version · ratified date · floor · declared depth level ·
+   attached modules; semver per the template's amendment policy (Shape 3).
 2. **Principle index** (region): one line per principle — name, imperative gist, pointer to its
    home when the home is not the region itself.
 3. **Universal principles** (region): the short imperative lines, floor principles first.
-   Floor principles are marked `(NON-NEGOTIABLE)`.
+   Floor principles are marked `(NON-NEGOTIABLE)`. Author each floor principle at the row the
+   synthesis's declared depth level selects; a `high`-only check is absent at `low`.
 4. **Technology stack** (region): mandated choices — from the synthesis's real-commands and
    existing-practices elements; brownfield populates from the codebase analysis.
 5. **Quality-gates summary** (region): the blocking checks with **actual commands** (never
-   placeholder tokens); coverage pre-seeds from the FLOOR-TEST card's asserted level unless the
+   placeholder tokens); coverage pre-seeds from the FLOOR-TEST card's coverage threshold unless the
    session overrode them. Gates for waived categories are omitted; the waiver record covers the
    absence.
 6. **Scope-bound rules files**: per the routing — globs violation-coverage tested, the standing
@@ -205,7 +207,9 @@ Every governance set MUST include, per
 
 > Every governance set MUST **account for** all four Essential Floor categories
 > ([references/ESSENTIAL-FLOOR.md](references/ESSENTIAL-FLOOR.md)) — with a principle or a
-> recorded waiver (D4). A floor category with neither is a defect in either mode.
+> recorded waiver (D4). A floor category with neither is a defect in either mode. (A `high`-only
+> check absent at `low` is not a missing category — its category is still present through its
+> other rows.)
 
 There is **no CLAUDE.md-synchronization section**: governance lives ON CLAUDE.md — the
 sync-a-copy problem died with the dissolved artifact.

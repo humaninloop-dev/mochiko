@@ -5,6 +5,43 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.65.0] — 2026-08-11
+
+- Adaptive-depth floor build (ruling: `production-floor-adaptive-depth` D1–D8, accepted
+  2026-08-11; PO-D2 amended, PO-D7 superseded). The asserted production floor gains a
+  **user-declared low/high depth level** — breadth invariant at both levels, one-way ratchet
+  (high terminal), moved only by an explicit declaration recorded in the governance ledger,
+  never fact-derived, never watched. Three plan-approved producer clusters, three independent
+  author≠grader audits, **all three PASS round 1** (D7 char pre-asserts clean:
+  `authoring-constitution` 17,686/21,550 · `validation-constitution` 7,009/8,418 ·
+  `review-governance-intent` 7,592/8,862).
+  - **Catalog/floor doctrine:** all four FLOOR cards (`catalog/universal-floor.md`) converted
+    to two-row `| Level | Asserted level |` low/high tables under the D5 retrofit-cost cut
+    line (expensive-to-retrofit rules — secrets-out, input validation, auth boundaries,
+    no-silent-corruption, no-PII-in-logs — identical at both levels; merge-blocking gates and
+    threshold formalization are the high-row rigor); `catalog/README.md` doctrine rewritten
+    (two rows, never a revived tier ladder); `ESSENTIAL-FLOOR.md` light touch (worked examples
+    framed as the high row, NON-NEGOTIABLE = category presence); `COMPLIANCE-MODULES.md` gains
+    the D7 level-blind clause; `DOMAIN-DEPENDENCIES.md` carrier line level-blind per D8.
+    Arch-opinion cards (`backend-service.md`) untouched — outside the dial.
+  - **Setup/templates:** `governance-intent-template.md` Depth level declaration section +
+    interim transition-delta waiver case + legacy default-high clause;
+    `governance-surfaces-template.md` stamp/ledger depth state + MAJOR flip event;
+    `INTERROGATION-AGENDA.md` step 0 (declare the level, recommend-then-arbitrate, low for
+    greenfield) + the flip-ceremony section (high-mode rerun, adherence delta, no watcher) +
+    agenda-test/no-pruning guards (dimension-2 and the pruning license stay dead);
+    `authoring-constitution/SKILL.md` authors the declared level's row. "level" terminology
+    disambiguated — coverage senses renamed to "coverage threshold".
+  - **Graders:** `validation-constitution` accounting verifies declaration + declared-level
+    rows (flip = MAJOR); `review-governance-intent` mistake row flipped — the declaration's
+    process fidelity is reviewable, level-vs-reality is not (D6 no-watcher held under hostile
+    audit read); missing declaration = critical-gap; open transition waivers on a fresh high
+    declaration are not a defect.
+  - Ceremony: 17 supersession-by-ruling strips across 4 strip files (incl. the protected
+    `review-governance-intent` mistake-row lineage and two audit-advisory landing rewords);
+    repo ledger set `Depth level: high` (legacy default, #7 fold); ROADMAP/CLAUDE.md identity
+    sentences rewritten; SD/OO Tier-I build items carry the two-row obligation.
+
 ## [0.64.0] — 2026-08-11
 
 - Guardrails-vs-detail build, Wave 2 (user ruling 2026-08-10: two waves, commands excluded;

@@ -18,6 +18,206 @@ document contracts are the **user's** artifacts and are untouchable. A prefix-ba
 `.mochiko/` would gut the KM module and the brainstorm command; 101 of this tree's 146
 `.mochiko/` references were correctly left alone on that test.
 
+**Wave context (v0.65.0 — the production-floor two-row conversion).** The `catalog`/floor doctrine
+across the `references/` tree converts from a single asserted production level to a **two-row
+`low`/`high` depth dial** (one project-wide level, user-declared, one-way `low`→`high`). Ruling:
+`production-floor-adaptive-depth`, ratified 2026-08-11, D1–D8 — `.mochiko/brainstorms/production-floor-adaptive-depth/record.md`;
+`DECISIONS.md` 2026-08-11 adaptive-depth row. **PO-D2 amended** (one floor, now at two depth levels;
+the four-rung tier ladder stays retired), **PO-D7 superseded** (staged adoption is the `low` level,
+not a recorded waiver). D5 draws the `low` row on the retrofit-cost cut line: obligations expensive
+to retrofit hold identically at both levels; addable rigor (merge-blocking gates, coverage
+thresholds) may relax at `low`. All seven entries below are supersessions **by ruling**, not tier
+failures. `catalog/backend-service.md` was deliberately left untouched (its cards are arbitrated
+arch-opinion, outside the depth dial per PO-D3 S7 / review-fold #9). `COMPLIANCE-MODULES.md` and the
+`ESSENTIAL-FLOOR.md` worked-example framing gained **pure additions** (D7 level-blind clause; a
+depth note + coverage annotation) — additions ride the decision row and take no strip entry.
+
+## [v0.65.0] `catalog/universal-floor.md` — single-level shelf doctrine superseded (two-row dial)
+- **Disposition:** superseded → the shelf header in `references/catalog/universal-floor.md`; preserved verbatim here.
+- **Tier failed:** n/a — supersession by ruling (production-floor-adaptive-depth D1/D2/D5, ratified 2026-08-11; `DECISIONS.md` 2026-08-11 adaptive-depth row; PO-D2 amended).
+- **Content (verbatim):**
+```
+The floor *level* is the asserted
+production level below — single, non-negotiable in level (nothing can lower it); a deviation is
+only ever a **recorded waiver** (D4: justification in the governance ledger, permanent pending
+the D4.1 revisit), never a loosened card.
+```
+  Also superseded, the same paragraph's category-definition pointer clause: `cards here carry the asserted level, never a second definition` → now `cards here carry the two-row `low`/`high` depth`.
+- **Kept deliberately:** the floor-*concept* invariant (no session emits a floor-less constitution), "absence is always deliberate and auditable, never silent", the D4 recorded-waiver discipline (now framed as a per-check fit exception at both levels), and the audit-evidence-variants pointer to `COMPLIANCE-MODULES.md`. The breadth invariant (every category present at both rows) is the new companion to the surviving concept invariant.
+- **Consumers assessed:** `ESSENTIAL-FLOOR.md` (category definitions — its own single-level line superseded in a sibling entry below) and `catalog/README.md` (doctrine — superseded below); no consumer links a removed anchor.
+
+## [v0.65.0] `catalog/universal-floor.md` — four FLOOR cards' single `**Asserted level:**` lines superseded (two-row tables)
+- **Disposition:** superseded → the FLOOR-SEC / FLOOR-TEST / FLOOR-ERR / FLOOR-OBS cards in `references/catalog/universal-floor.md`; each single asserted-level line becomes a `low`/`high` two-row table. Preserved verbatim here.
+- **Tier failed:** n/a — supersession by ruling (production-floor-adaptive-depth D5 retrofit-cost cut line, ratified 2026-08-11; `DECISIONS.md` 2026-08-11 adaptive-depth row).
+- **Content (verbatim, the four superseded lines):**
+```
+FLOOR-SEC
+**Asserted level:** secrets out of the repo (env vars + `.gitignore`) · secret scanning in CI ·
+input validation at boundaries · auth enforced at all boundaries · dependency vulnerability
+scanning blocking merge.
+
+FLOOR-TEST
+**Asserted level:** coverage pre-seed (session-overridable): ≥80% warning, ≥60% blocking ·
+ratchet rule (baseline MUST NOT decrease) · a smoke test on the critical path exists from day
+one.
+
+FLOOR-ERR
+**Asserted level:** failures never silently corrupt data · consistent error surface in the form
+that fits the type (API error schema, UI error states, mobile/desktop failure surfaces) ·
+correlation IDs · no leaked stack traces.
+
+FLOOR-OBS
+**Asserted level:** structured logs · correlation IDs · health checks (in the form that fits the
+type) · no PII in logs.
+```
+- **Kept deliberately (D5's never-relax set holds at both levels — nothing lost, only redistributed):** the full obligation set survives, split across the two rows. Expensive-to-retrofit obligations are pinned to `low` (and therefore both rows): secrets-out-of-repo + input-validation + auth-at-boundaries (FLOOR-SEC), no-silent-data-corruption + no-leaked-stack-traces (FLOOR-ERR), no-PII-in-logs (FLOOR-OBS), ratchet + day-one smoke test (FLOOR-TEST). Addable rigor moves to `high`: merge-blocking scan gates (FLOOR-SEC — the scanners still *run* at `low`), coverage ≥80%/≥60% thresholds (FLOOR-TEST), error-schema + correlation IDs (FLOOR-ERR), structured logs + correlation IDs + health checks (FLOOR-OBS). Type-tags, Layer, and Content pointers untouched.
+- **Consumers assessed:** `ESSENTIAL-FLOOR.md` worked examples (now annotated as the `high` row); `catalog/README.md` card-format field (superseded below); graders in Cluster C re-key to the two-row table form. No removed obligation.
+
+## [v0.65.0] `catalog/universal-floor.md` — FLOOR waiver postures: staged-adoption-as-waiver superseded (PO-D7)
+- **Disposition:** superseded/amended → the `**Waiver posture:**` lines of FLOOR-TEST (superseded), FLOOR-SEC and FLOOR-OBS (extended with the both-levels clause); preserved verbatim here.
+- **Tier failed:** n/a — supersession by ruling (production-floor-adaptive-depth D4/PO-D7 superseded, ratified 2026-08-11; `DECISIONS.md` 2026-08-11 adaptive-depth row).
+- **Content (verbatim — the PO-D7 staged-adoption-as-waiver framing, now superseded because staged adoption is the `low` level):**
+```
+FLOOR-TEST
+**Waiver posture:** D4 — recorded justification in the ledger (the young-team on-ramp, PO-D7: a
+recorded waiver with the ratchet's starting point set from reality beats a silently ignored
+threshold).
+```
+  FLOOR-SEC and FLOOR-OBS waiver postures were **extended, not removed** — the "available at either level as a per-check *fit* exception" clause and a "staged adoption is the **low** level, not a waiver (PO-D7 superseded)" line were added; their original bodies (prefer-narrowing example on SEC; most-waived-on-immature-stacks parenthetical on OBS) survive verbatim in place.
+- **Kept deliberately:** the D4 recorded-justification-in-the-ledger discipline (both cards), FLOOR-SEC's prefer-narrowing example, FLOOR-OBS's honest-state parenthetical.
+- **Consumers assessed:** `catalog/README.md` Waivers bullet (its own PO-D7 sentence superseded below); the governance ledger's waiver home is unchanged.
+
+## [v0.65.0] `catalog/README.md` — "The asserted production floor" one-level doctrine section superseded
+- **Disposition:** superseded → the `## The asserted production floor` section body of `references/catalog/README.md` (renamed `## The two-row production floor`); preserved verbatim here.
+- **Tier failed:** n/a — supersession by ruling (production-floor-adaptive-depth D1/D2/D7, ratified 2026-08-11; `DECISIONS.md` 2026-08-11 adaptive-depth row; PO-D2 amended, PO-D7 superseded).
+- **Content (verbatim):**
+```
+There is exactly one standard level — the production floor (PO-D2). The retired
+`poc → internal → production → regulated` ladder is gone: no card carries per-tier defaults or
+strictness ladders, and no session negotiates the floor's level.
+```
+  And the Waivers bullet's PO-D7 sentence:
+```
+A waiver is never silent: recorded in the synthesis and the ledger, it is
+the honest staged-adoption on-ramp for early-stage teams (PO-D7). Accumulated waivers are the
+governance re-entry checklist as the team matures.
+```
+- **Kept deliberately:** the ladder-stays-retired fact (recast as "two rows, never a four-rung tier ladder"), the Expression bullet in full, the Modules bullet (extended with the D7 level-blind clause + legal-mandate-stratum note), the D4 waiver discipline and D4.2 legal-mandate carve-out, and "accumulated waivers remain the governance re-entry checklist as the team matures".
+- **Consumers assessed:** this file's own card-format section (superseded below); `COMPLIANCE-MODULES.md` (the level-blind clause now cross-stated there as a pure addition).
+
+## [v0.65.0] `catalog/README.md` — card-format field + two "asserted level" bullets superseded
+- **Disposition:** superseded → the card-format field and two doctrine bullets in `references/catalog/README.md`; preserved verbatim here.
+- **Tier failed:** n/a — supersession by ruling (production-floor-adaptive-depth D5, ratified 2026-08-11; `DECISIONS.md` 2026-08-11 adaptive-depth row).
+- **Content (verbatim):**
+```
+**Asserted level / Recommended form:** [the single production-level content — thresholds,
+             enforcement strength; floor-asserted cards state the asserted level, arbitrated
+             cards the recommended form]
+```
+```
+1. **Floor-asserted** — an Essential Floor card at the asserted production level, its expression
+   shaped by type facts during the session; deviations only ever through recorded waivers
+   (never a loosened card).
+```
+```
+- **floor-asserted** — enters every session at the asserted level; not arbitrated; expression
+  shaped by type; loosening only via recorded waiver.
+```
+- **Kept deliberately:** the field name (`**Asserted level / Recommended form:**` — retained as the field key; floor-asserted cards now populate it with a two-row `low`/`high` table, arbitrated cards still with the single recommended form), the arbitrated-card definition and arbitration-is-a-session-act paragraph, the Deck-kept and Minted source definitions, the graduation-seam section.
+- **Consumers assessed:** Cluster C graders re-key to the two-row table in the field; no removed anchor.
+
+## [v0.65.0] `ESSENTIAL-FLOOR.md` — single-and-asserted level doctrine line superseded
+- **Disposition:** superseded → the floor-accounting paragraph of `references/ESSENTIAL-FLOOR.md`; preserved verbatim here.
+- **Tier failed:** n/a — supersession by ruling (production-floor-adaptive-depth D1/D2, ratified 2026-08-11; `DECISIONS.md` 2026-08-11 adaptive-depth row).
+- **Content (verbatim):**
+```
+The floor's **level is single and asserted** — the production level on each
+floor card in [catalog/universal-floor.md](catalog/universal-floor.md); nothing can lower it, and
+a deviation is only ever a recorded waiver, never a loosened card.
+```
+- **Kept deliberately:** the file's canonical-home ownership header (single source for the four category *definitions*), the "account for all four floor categories with a principle or a recorded waiver" rule, the floor-concept invariant and never-silent absence, the four Detail-Requirements category checklists, and the four worked Example Principles (now carrying a depth note that frames them as the `high` row + a `low`-row coverage annotation — both pure additions). The NON-NEGOTIABLE labels are kept with a one-line clarifier (label = category presence / breadth invariant; depth = the dial).
+- **Consumers assessed:** `analysis-codebase` (present/partial/absent read against these definitions — definitions unchanged); `catalog/universal-floor.md` and `authoring-constitution` SKILL both point here for definitions — pointers intact.
+- **Landing reword (audit advisory F1, same ruling):** canonical-home blockquote phrase "greenfield writes them at the asserted floor level" → "greenfield writes them at the declared depth level's row" — disambiguation only ("level" reserved for the depth declaration per the Cluster-B terminology ruling), no responsibility moved.
+
+## [v0.65.0] `DOMAIN-DEPENDENCIES.md` — one-universal-gate carrier line superseded (level-acknowledging)
+- **Disposition:** superseded → the Growth-section carrier line of `references/DOMAIN-DEPENDENCIES.md`; preserved verbatim here.
+- **Tier failed:** n/a — supersession by ruling (production-floor-adaptive-depth D8 — pipeline process rigor uniform at both levels, ratified 2026-08-11; `DECISIONS.md` 2026-08-11 adaptive-depth row).
+- **Content (verbatim):**
+```
+One universal gate at the asserted floor (the retired tier fork is gone — PO-D2):
+```
+- **Kept deliberately:** the one-universal-gate model itself (uniform at both depth levels per D8; the retired tier fork stays gone), the explicit-ruling-before-registry-entry rule, the `domain_deps_added` non-empty auto-approve block, the visibility-floor disclosure, and the no-setup-re-run-for-additions rule — all untouched.
+- **Consumers assessed:** the domain-layer rules file the registry block lives in; no removed anchor. The line now names the depth level (level-blind per D8) rather than implying a single asserted floor.
+
+**Cluster B sub-wave (v0.65.0 — the setup/authoring-language half of the same ruling).** The seven
+entries above (producer-a) convert the `catalog`/floor doctrine; the five entries below convert the
+authoring skill body (`SKILL.md`) and the interrogation agenda (`references/INTERROGATION-AGENDA.md`)
+that drive it. Same ruling: `production-floor-adaptive-depth`, ratified 2026-08-11, D1–D8;
+`DECISIONS.md` 2026-08-11 adaptive-depth row. All five are supersessions **by ruling**. The pure
+additions on these two surfaces (the flip-ceremony section, the no-pruning-license guard paragraph,
+step 0 "Declare the depth level", and the depth annotations in the mandatory content inventory) ride
+the decision row and take no strip entry. `governance-intent-template.md` and
+`governance-surfaces-template.md` are separate primitives — their strips live in their own files.
+
+## [v0.65.0] `SKILL.md` — greenfield-mode "floor cards at the asserted production level" superseded
+- **Disposition:** superseded → the greenfield row of the "Two modes, one shared core" table in `skills/authoring-constitution/SKILL.md`; preserved verbatim here.
+- **Tier failed:** n/a — supersession by ruling (production-floor-adaptive-depth D1/D2/D5, ratified 2026-08-11; `DECISIONS.md` 2026-08-11 adaptive-depth row).
+- **Content (verbatim):**
+```
+floor cards at the asserted production level.
+```
+- **Kept deliberately:** the greenfield-mode definition and its "principles formulated from the synthesis's deck rulings + minted intents" clause, verbatim; the brownfield row untouched. The rewrite names the two-row `low`/`high` card form producer-a's `catalog/universal-floor.md` conversion authors.
+- **Consumers assessed:** `SKILL.md` body only (this table is cited nowhere else); no removed anchor.
+
+## [v0.65.0] `SKILL.md` — "the asserted level and waiver posture per category" ESSENTIAL-FLOOR bullet superseded
+- **Disposition:** superseded → the ESSENTIAL-FLOOR "both →" bullet in the shared-core content-sources list of `SKILL.md`; preserved verbatim here.
+- **Tier failed:** n/a — supersession by ruling (production-floor-adaptive-depth D1, ratified 2026-08-11; `DECISIONS.md` 2026-08-11 adaptive-depth row).
+- **Content (verbatim):**
+```
+The asserted level and waiver posture per category
+live on the floor cards in the catalog;
+```
+- **Also reworded for disambiguation (lead ruling #2, same citation):** the quality-gates inventory item 5 phrase `coverage pre-seeds from the FLOOR-TEST card's asserted level` → `coverage pre-seeds from the FLOOR-TEST card's coverage threshold`. "Asserted level" there named the coverage-threshold number, not the new depth level; reworded so "level" is reserved for the depth declaration.
+- **Kept deliberately:** the ESSENTIAL-FLOOR canonical-definition pointer, the audit-evidence-variants clause pointing at `COMPLIANCE-MODULES.md`, and the fact-profile attachment clause — all verbatim.
+- **Consumers assessed:** `SKILL.md` body only; `ESSENTIAL-FLOOR.md` itself has its single-level line superseded in producer-a's sibling entry above.
+
+## [v0.65.0] `INTERROGATION-AGENDA.md` — agenda-test "the floor's level is the library's, asserted" block superseded
+- **Disposition:** superseded → the **agenda test (PO-D3)** paragraph of `references/INTERROGATION-AGENDA.md`; preserved verbatim here.
+- **Tier failed:** n/a — supersession by ruling (production-floor-adaptive-depth D1/D2/D3, ratified 2026-08-11; `DECISIONS.md` 2026-08-11 adaptive-depth row).
+- **Content (verbatim):**
+```
+**The agenda test (PO-D3):** every question elicits a **fact** — no question negotiates a
+standard. The floor's level is the library's, asserted; the session sets its *shape* (product-kind
+facts translate each floor category into its correct expression), its *triggers* (fact-profile
+facts attach compliance modules mechanically), and its *path* (brownfield facts set the ratchet's
+starting point, never its target). The one deliberately arbitrated layer is the
+architecture-opinion card set (PO-D3's S7 carve-out).
+```
+- **Kept deliberately:** the agenda-test core (every question elicits a fact), the shape/triggers/path framing verbatim, and the S7 architecture-opinion carve-out. The rewrite ADDS the single depth-level declaration as the ONE arbitrated exception (D3's single dial), explicitly guarded against reviving a per-check tier ladder.
+- **Consumers assessed:** `INTERROGATION-AGENDA.md` body (the "No pruning license" and step-1 sections re-keyed elsewhere this wave); the setup command binds this agenda — its harness elicits facts, now plus the one level declaration.
+
+## [v0.65.0] `INTERROGATION-AGENDA.md` — dimension-2 "the floor's level is fixed" Feeds-cell tail superseded
+- **Disposition:** superseded → the Feeds cell of the dimension-2 (Fact profile) row in the ten-dimensions table; preserved verbatim here.
+- **Tier failed:** n/a — supersession by ruling (production-floor-adaptive-depth D1, ratified 2026-08-11; `DECISIONS.md` 2026-08-11 adaptive-depth row).
+- **Content (verbatim):**
+```
+The floor's level is fixed; facts shape its expression, never its strictness
+```
+- **Kept deliberately:** the dimension-2 module-trigger machinery and the consequence-stated-confirmation S4 fail-safe, verbatim. The tail is superseded because a depth level now exists — but it stays user-declared, not fact-derived (D1), so the "facts never set the level" spirit survives in the rewrite.
+- **Consumers assessed:** the table's other rows untouched; no consumer cites this cell.
+
+## [v0.65.0] `INTERROGATION-AGENDA.md` — step-1 "Assert the floor" opening (single production level) superseded
+- **Disposition:** superseded → the opening clause of step 1 in "After the dimensions"; preserved verbatim here. A new **step 0 (Declare the depth level)** is added ahead of it (pure addition, rides the decision row).
+- **Tier failed:** n/a — supersession by ruling (production-floor-adaptive-depth D1/D2/D3/D7, ratified 2026-08-11; `DECISIONS.md` 2026-08-11 adaptive-depth row).
+- **Content (verbatim, the superseded opening — before "Type facts shape..."):**
+```
+1. **Assert the floor** — the four floor cards enter at the production level
+   ([catalog/universal-floor.md](catalog/universal-floor.md)): presented, not negotiated.
+```
+- **Kept deliberately:** the rest of step 1 verbatim — presented-not-negotiated, type-facts-shape-expression, tightening-always-open, loosening-only-by-recorded-waiver, and the mechanical compliance-module attachment; steps 2–5 untouched. The rewrite ADDS the two-row `low`/`high` card selection (the declared level picks the low row or the high row of the card, per cluster A), the breadth invariant, and the D7 level-blind modules clause.
+- **Consumers assessed:** the section heading gained "the depth level," and step 0 references the synthesis GI element + ledger; the setup command drives these steps in order — the added step 0 precedes the floor assertion.
+- **Landing reword (audit advisory, same ruling):** the rewritten step-1 opening "the four floor cards enter at the production level" → "the four floor cards enter the session" ("level" reserved for the depth declaration), and the build-internal "(per cluster A)" tag dropped — the two-row form is stated in place, no external referent. Disambiguation/hygiene only, no responsibility moved.
+
 ## [v0.63.0] Guardrails cut — trigger + procedure prose removed, behavioral core kept; slim description
 
 - **Disposition:** superseded → benchmark-ruled guardrails body + slim description (`variants/body/authoring-constitution/`, `variants/descriptions/authoring-constitution/`), one merged edit.

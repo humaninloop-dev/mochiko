@@ -17,6 +17,25 @@ Wave-1 body strip landed 2026-07-25 at v0.25.0 (batch-ratified): body 274 → 21
 23% — **under the 30–70 never-stripped band**; per R3 the under-band second pass generates the
 survivor-provenance (KEPT) entries below rather than forcing cuts.
 
+## [v0.65.0] Adaptive-depth two-row form — floor accounting + threshold check learn the declared level
+- **Disposition:** superseded → two-row (low/high) floor accounting; graders verify the declared depth level's EXISTENCE and surface-agreement, never the level-vs-reality (D6 no-watcher)
+- **Tier failed:** n/a — supersession by ruling (production-floor-adaptive-depth, `DECISIONS.md` 2026-08-11 row; record `.mochiko/brainstorms/production-floor-adaptive-depth/record.md`, D1–D3 / D6 / D8; PO-D2 amended, PO-D7 superseded)
+- **Content (superseded lines, verbatim old → new).**
+  - SKILL.md ~:68 (Step 9 Floor/module accounting verdict line), a PO-D2 "single asserted production row" descendant:
+    - OLD: `Floor/module accounting: [floor asserted (region stamp = ledger) · modules matched to the fact profile · floor categories principled/waived, e.g. 3 principled + 1 waived]`
+    - NEW: `Floor/module accounting: [floor + declared level asserted (region stamp = ledger) · modules matched to the fact profile · floor categories principled at the declared level or waived, e.g. 3 principled + 1 waived]`
+  - references/QUALITY-CHECKLIST.md ~:40 (Floor & Module Accounting coverage-threshold check), same PO-D2 descendant:
+    - OLD: `- [ ] Coverage thresholds and gate strictness sit at the asserted floor level ([the floor cards](../../authoring-constitution/references/catalog/universal-floor.md)) or carry a session override recorded in the synthesis`
+    - NEW: `- [ ] Coverage thresholds and gate strictness sit at the declared level's row (the low row or the high row) of [the floor card](../../authoring-constitution/references/catalog/universal-floor.md) or carry a session override recorded in the synthesis`
+- **Added (pure additions — ride the decision row, no supersession):**
+  - SKILL.md ~:54 Step 8 MAJOR bump row gains the low→high depth-level flip event ("incl. a low→high depth-level flip"; example "declaring high").
+  - references/QUALITY-CHECKLIST.md ~:34 (Governance Floor check gains "+ declared depth level (low/high)"), ~:35 (Essential-category check gains "at the declared level's row of the floor card"), ~:46 (Ratified stamp check gains "+ declared depth level").
+- **D6 fence honored:** no level-vs-reality advisory added — every new or changed check verifies the declaration EXISTS, is recorded, and the surfaces AGREE with it; none compares the declared level against real users or deployment state. QUALITY-CHECKLIST.md ~:82 (Governance Quality "floor-level change = MAJOR") left as-is by ruling — the SKILL.md ~:54 parenthetical carries the explicit flip case.
+- **Terminology:** row references match Cluster A's pinned floor-card format ("the low row / the high row of the floor card").
+- **Body budget:** 6,915 → 7,009 chars (budget 8,418; references/QUALITY-CHECKLIST.md is budget-exempt). Description untouched (481).
+- **Kept deliberately:** the v0.63.0 guardrails keep-set intact; both superseded lines keep their full accounting/threshold role — extended to the declared level, never replaced.
+- **Consumers assessed:** no command references this skill (grep `plugins/mochiko/commands/` clean). `agents/validator.md` declares it in `skills:`; the extended accounting/threshold checks leave that composition intact.
+
 ## [v0.63.0] Guardrails cut — body deletions + slim description (benchmark verdict)
 - **Disposition:** superseded → benchmark-ruled guardrails body + slim description (`.mochiko/benchmarks/guardrails-vs-detail/variants/`)
 - **Tier failed:** n/a — supersession by ruling (guardrails-vs-detail benchmark verdict — `DECISIONS.md` 2026-08-10 benchmark-verdict row; `.mochiko/brainstorms/validator-scope-and-verbosity/record.md` Benchmark execution; `.mochiko/benchmarks/guardrails-vs-detail/report/final-verdict.md`)

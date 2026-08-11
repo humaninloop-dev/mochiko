@@ -7,7 +7,9 @@ asserted floor — never subtracts, never loosens. Attachment is **mechanical fr
 profile** (interrogation dimension 2): a confirmed fact matches a trigger → the module attaches
 and the ruling is recorded in the synthesis. No rigor negotiation occurs at attachment — the
 user rules the *facts*; a module's applicability follows from a confirmed fact, never from
-appetite.
+appetite. Modules are **level-blind** (D7): they attach at full strength whether the floor's depth
+dial is at `low` or `high`, and carry no `low`/`high` rows of their own — the two-row depth dial
+governs the floor cards only. The legal-mandate stratum sits above the dial.
 
 ## Trigger table (seed)
 

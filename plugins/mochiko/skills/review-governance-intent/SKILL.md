@@ -76,7 +76,7 @@ stay retrievable on ask) and a recommended status.
 |---------|----------|
 | **ready** | every hunt class actively worked, nothing blocking survived |
 | **needs-revision** | survivors resolvable by the session (an interrogation follow-up, a re-dealt card, a fixable fold) |
-| **critical-gaps** | a fact profile contradicted by its own risk declaration or detected reality, an unrecorded ruling, or a synthesis too thin to review |
+| **critical-gaps** | a fact profile contradicted by its own risk declaration or detected reality, an unrecorded ruling (a missing or unrecorded depth-level declaration among them), or a synthesis too thin to review |
 
 **Never default to `ready`** — it is earned by a completed hunt, not by the synthesis looking
 reasonable. A synthesis too thin to attack (rulings without rationale, marks without basis) is
@@ -100,7 +100,7 @@ itself the first finding.
 | Skipping a `Contested` element on its mark alone | The mark is honored only after its rationale audit — an unaudited `Contested` is a shield, and a shield is a finding. |
 | Trusting a `Confident` mark as evidence of engagement | Marks are self-reported by the lead under review. Echo-rationales and adoption streaks outrank the mark. |
 | Arguing a user-declared fact against the files | Team size, risk posture, and lifespan live in nobody's repo — route to the user as confirmation, via the lead. |
-| Re-litigating the floor's *level* | The level is the library's, asserted (PO-D2) — challenge expression, waivers, and fact consistency, never the level itself. |
+| Arguing the declared level is wrong for the project | The declared level is the user's recorded ruling (D1/D2) — challenge its expression, waivers, and fact consistency, and verify it exists in the ledger, was recommend-then-arbitrated, and greenfield got the low recommendation (D2). Never flag it against real users or deployment state (D6 no-watcher), and never grade a check stricter than the declared level sets. |
 | Reviewing the authored principles' formulation quality | Accepted risk, closed `Contested` (D1) — permanently out of jurisdiction. |
 | Grading against your own governance taste | The yardstick is the agenda, the asserted floor, and the synthesis's own internal consistency — not what you would have chosen. |
 | Attacks without resolution paths | Every finding names the interrogation follow-up or check that would settle it. |

@@ -51,7 +51,7 @@ fragments the synthesis did not select.
 
 | Bump | Trigger | Example |
 |------|---------|---------|
-| **MAJOR** | Principle removed or incompatibly redefined; floor-level change; module attach/detach | Removing "Test-First" principle; attaching `hipaa` |
+| **MAJOR** | Principle removed or incompatibly redefined; floor-level change (incl. a low→high depth-level flip); module attach/detach | Removing "Test-First" principle; declaring high; attaching `hipaa` |
 | **MINOR** | New principle added or significant expansion; waiver added/removed | Adding "Observability" principle; un-waiving Testing |
 | **PATCH** | Clarification or non-semantic change | Rewording for clarity; typo fixes; formatting |
 
@@ -65,7 +65,7 @@ VALIDATION RESULT: [PASS/FAIL]
 Checklist items: [X/Y passed] (core + [N] module fragments: [names])
 Surface integrity: [region markers OK · index→home resolution X/X · rules files paths-scoped Y/Y · scope coverage Z/Z · new-file read line present/absent/n-a · universal-in-rules violations: none/list]
 Trace closure: [manifest rows closed X/X (primary home + companions) · synthesis elements realized-or-flagged Y/Y · waivers matched · modules matched]
-Floor/module accounting: [floor asserted (region stamp = ledger) · modules matched to the fact profile · floor categories principled/waived, e.g. 3 principled + 1 waived]
+Floor/module accounting: [floor + declared level asserted (region stamp = ledger) · modules matched to the fact profile · floor categories principled at the declared level or waived, e.g. 3 principled + 1 waived]
 Anti-patterns found: [list or "none"]
 Version bump: [MAJOR/MINOR/PATCH] (if changes made)
 

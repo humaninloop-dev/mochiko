@@ -10,6 +10,19 @@ triggers, restores the tail under the cap, and is strict-YAML-safe. Delivery ver
 deferred: the in-session skill listing is a session-start snapshot (probe received pre-edit
 text), so the probe re-runs in a fresh session.
 
+## [v0.65.0] Adaptive-depth two-row form — level DECLARATION becomes reviewable; missing declaration is a critical gap
+- **Disposition:** superseded → the Common-Mistakes row flips from "never review the level" to "review the level DECLARATION (exists / recorded / recommend-then-arbitrated / greenfield-got-low), never the level-vs-reality" (D6 no-watcher); strictness-beyond-the-declared-level stays non-negotiable
+- **Tier failed:** n/a — supersession by ruling (production-floor-adaptive-depth, `DECISIONS.md` 2026-08-11 row; record `.mochiko/brainstorms/production-floor-adaptive-depth/record.md`, D1 / D2 / D6; PO-D2 amended, PO-D7 superseded)
+- **Content (superseded line, verbatim old → new).** SKILL.md ~:103, Common Mistakes table. Protected lineage: descends from the `[v0.26.0] KEPT` "tier-consistency vs tier-choice" survivor row (PO-D2-reworded to "the floor's *level*"), and sits inside the `[v0.63.0]` guardrails Common-Mistakes keep-set:
+  - OLD: `| Re-litigating the floor's *level* | The level is the library's, asserted (PO-D2) — challenge expression, waivers, and fact consistency, never the level itself. |`
+  - NEW: `| Arguing the declared level is wrong for the project | The declared level is the user's recorded ruling (D1/D2) — challenge its expression, waivers, and fact consistency, and verify it exists in the ledger, was recommend-then-arbitrated, and greenfield got the low recommendation (D2). Never flag it against real users or deployment state (D6 no-watcher), and never grade a check stricter than the declared level sets. |`
+- **Added (pure addition — rides the decision row, no supersession):** SKILL.md ~:79 critical-gaps verdict criterion gains the missing/unrecorded depth-level declaration case ("(a missing or unrecorded depth-level declaration among them)").
+- **D6 fence honored:** the new row makes the DECLARATION reviewable — its existence, its ledger record, recommend-then-arbitrate protocol fidelity, and greenfield low-recommendation fidelity (all `/mochiko:setup` process facts, per ruling keyed to greenfield/brownfield mode) — while explicitly forbidding any level-vs-reality flag ("(D6 no-watcher)") and preserving per-check strictness as non-negotiable ("never grade a check stricter than the declared level sets"). No watcher of any kind added.
+- **Rationale (PO-D2 → D2).** Under PO-D2 the level was the library's single asserted row, hence off-limits to challenge; under D1/D2 the level is a user-declared, ledger-recorded ruling elicited by a recommend-then-arbitrate protocol, so the DECLARATION's existence and protocol fidelity become reviewable — its correctness for the project does not.
+- **Body budget:** 7,273 → 7,592 chars (budget 8,862). Description untouched (483).
+- **Kept deliberately:** the v0.63.0 guardrails keep-set intact, incl. the rest of the Common Mistakes table; the row's positive jurisdiction (expression, waivers, fact consistency) is preserved and extended, never dropped.
+- **Consumers assessed:** no command references this skill (grep `plugins/mochiko/commands/` clean). `agents/devils-advocate.md` declares it in `skills:`; the extended row leaves that composition intact.
+
 ## [v0.63.0] Guardrails cut — body deletions + slim description (benchmark verdict)
 - **Disposition:** superseded → benchmark-ruled guardrails body + slim description (`.mochiko/benchmarks/guardrails-vs-detail/variants/`)
 - **Tier failed:** n/a — supersession by ruling (guardrails-vs-detail benchmark verdict — `DECISIONS.md` 2026-08-10 benchmark-verdict row; `.mochiko/brainstorms/validator-scope-and-verbosity/record.md` Benchmark execution; `.mochiko/benchmarks/guardrails-vs-detail/report/final-verdict.md`)

@@ -21,7 +21,9 @@ renumbered), new elements take fresh IDs, untouched elements keep their IDs, and
 Log records each delta. The traceability cross-check always runs against this persisted,
 updated file. LEGACY MIGRATION: an amend run meeting a tier declaration (the retired axis)
 supersedes it — never renumbered — elicits the fact profile once, and re-records existing
-waivers under the D4 model.
+waivers under the D4 model. An existing single-floor synthesis that carries NO depth-level
+declaration defaults to `high` on its next amend (adaptive-depth 2026-08-11, review fold #7) —
+recorded as the declared level without a flip ceremony, since it never operated at `low`.
 
 GI-ID rule: sequential GI-001, GI-002, … — unique forever within this file; never reuse a
 retired ID.
@@ -65,6 +67,21 @@ confirmation — negatives are recorded facts too (the S4 fail-safe, per
 - **Risk surface:** [what failure costs — honest context for the floor's expression]
 - **Team reality:** [solo/team, review culture — what enforcement can lean on]
 
+## Depth level declaration
+
+The floor's single depth dial (adaptive-depth, 2026-08-11) — **one project-wide declaration, not
+a per-check negotiation**. Breadth is invariant: every floor category is present at both levels;
+the level tunes only how strictly the asserted *code* standards are authored (process rigor is
+uniform — D8), and compliance modules are level-blind (full strength at either level — D7). The
+level is the user's declaration alone — never fact-derived (D1); setup recommends, the user rules.
+
+- **GI-0XX — Declared level:** [low | high] · **Declared:** [YYYY-MM-DD] by [user] ·
+  **Mark:** [Confident | Assumed | Contested | Unsure | Deferred]
+- **Rationale:** [why this level — setup recommends `low` for greenfield, `high` where reality
+  warrants it; the user's ruling, recorded]
+- **Ratchet:** one-way — `high` is terminal; a later `low`→`high` move happens only through a
+  flip ceremony (a conscious `/mochiko:setup` rerun in high mode), never silently, never reversed.
+
 ## Convergence skips
 
 [Named skips only — a dimension left unasked because an earlier answer settled it ("dimension 5
@@ -106,11 +123,19 @@ One element per minted intent — traced to the elicited answer, never to prompt
 
 Any asserted standard may be waived with a recorded justification (D4) — **except legal-mandate
 module obligations (D4.2)**. Waivers are permanent pending the D4.1 revisit; a revisit trigger
-is the user's option, never a default. Every waiver is auditable:
+is the user's option, never a default.
+
+**Interim transition delta (D6).** After a `low`→`high` flip, a category the project does not yet
+meet at the high level rides a waiver as a **bounded transition exception** — transition-scoped,
+naming its delta item, and dying when that item conforms. It is a staged-adoption record, never a
+depth valve: it does not lower the declared level, and the level stays `high`.
+
+Every waiver is auditable:
 
 | GI-ID | Standard (floor category / card / non-legal module obligation) | Justification | Revisit trigger (optional) | Mark |
 |-------|---------------------------------------------------------------|---------------|---------------------------|------|
 | GI-0XX | [e.g. FLOOR-TEST coverage gate] | [recorded reason] | [or "permanent (D4.1 pending)"] | [Confident] |
+| GI-0XX | [e.g. FLOOR-OBS SLO formalization] | interim transition delta (high declared [date]) | transition — dies when the item conforms | [Confident] |
 
 ## Module selections
 

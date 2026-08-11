@@ -31,19 +31,19 @@ the selected modules.
 
 ## Floor & Module Accounting (all modes)
 
-- [ ] Governance Floor section present in the ledger: production floor asserted · attached compliance modules with strata (or "none") · fact-profile trace (GI-001)
-- [ ] Every Essential Floor category (Security, Testing, Error Handling, Observability) has a principle **or a recorded waiver** — neither is a FAIL
+- [ ] Governance Floor section present in the ledger: production floor + declared depth level (low/high) asserted · attached compliance modules with strata (or "none") · fact-profile trace (GI-001)
+- [ ] Every Essential Floor category (Security, Testing, Error Handling, Observability) has a principle at the declared level's row of the floor card **or a recorded waiver** — neither is a FAIL
 - [ ] Every waiver record carries: standard, justification, revisit trigger or "permanent (D4.1 pending)", trace
 - [ ] **No waiver names a legal-mandate module obligation** (D4.2 — strata per [COMPLIANCE-MODULES.md](../../authoring-constitution/references/COMPLIANCE-MODULES.md)); one that does is a FAIL
 - [ ] Attached compliance modules match the synthesis's fact profile one-for-one — every triggered module attached, none attached without a recorded trigger fact
 - [ ] Module obligations are additive over the floor — no attached-module content loosens a floor principle
-- [ ] Coverage thresholds and gate strictness sit at the asserted floor level ([the floor cards](../../authoring-constitution/references/catalog/universal-floor.md)) or carry a session override recorded in the synthesis
+- [ ] Coverage thresholds and gate strictness sit at the declared level's row (the low row or the high row) of [the floor card](../../authoring-constitution/references/catalog/universal-floor.md) or carry a session override recorded in the synthesis
 - [ ] No Quality-Gate row for a waived category (the waiver record covers the absence)
 
 ## Structure Quality — universal core (the surface set)
 
 - [ ] CLAUDE.md governance region present between `<!-- mochiko:governance:begin -->` / `<!-- mochiko:governance:end -->`; no setup-owned content outside the markers
-- [ ] Ratified stamp line: version · ratified date · production floor · attached modules (or "none")
+- [ ] Ratified stamp line: version · ratified date · production floor + declared depth level · attached modules (or "none")
 - [ ] Principle index: one line per principle; index → home → ledger closes both ways
 - [ ] Universal principles as short imperative RFC 2119 lines, floor principles first, marked `(NON-NEGOTIABLE)`
 - [ ] Technology-stack lines with actual mandated choices

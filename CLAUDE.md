@@ -39,7 +39,7 @@ articles, fragments OK · `ultra` = one word when one word enough, state each fa
 
 Mochiko is the v3 successor to [human-in-loop](human-in-loop/). The core bet: engineering discipline lives in the quality of the skill library, not in a deterministic kernel. Native Claude Code agent teams and Workflows handle orchestration. Skills and agents are the primary building block — orchestration is the layer on top, not the enforcer.
 
-**Target (production-only, PO-D1–D7, 2026-07-30):** customer-facing product applications only — SaaS, web, mobile, desktop — under one asserted production floor, no tier ladder; backend/service standards are seeded today, frontend/mobile/desktop shelves are Tier-I roadmap work. Rationale: [`.mochiko/brainstorms/production-only-focus/record.md`](.mochiko/brainstorms/production-only-focus/record.md).
+**Target (production-only PO-D1–D7 2026-07-30, as amended by adaptive-depth D1–D8 2026-08-11):** customer-facing product applications only — SaaS, web, mobile, desktop — under one production floor with a user-declared low/high depth level (breadth invariant at both, one-way ratchet), no tier ladder; backend/service standards are seeded today, frontend/mobile/desktop shelves are Tier-I roadmap work. Rationale: [`.mochiko/brainstorms/production-only-focus/record.md`](.mochiko/brainstorms/production-only-focus/record.md).
 
 Read [`ROADMAP.md`](ROADMAP.md) for the thesis, current work, and standing bets.
 Read [`DECISIONS.md`](DECISIONS.md) for the ruled-decision index (rationale lives in session records and `.mochiko/decisions/`).

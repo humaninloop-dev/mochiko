@@ -5,9 +5,9 @@ interrogation session deals, arbitrates, and adapts. It is a starting position, 
 one — **the interrogation leads, the deck follows.** Principle content comes from three sources,
 all recorded in the session synthesis (`.mochiko/memory/governance-intent.md`):
 
-1. **Floor-asserted** — an Essential Floor card at the asserted production level, its expression
-   shaped by type facts during the session; deviations only ever through recorded waivers
-   (never a loosened card).
+1. **Floor-asserted** — an Essential Floor card at the project's declared depth level (the `low`
+   or `high` row), its expression shaped by type facts during the session; deviations only ever
+   through recorded waivers (never a loosened card).
 2. **Deck-kept** — an arbitrated catalog card the user kept (possibly tightened) during
    arbitration.
 3. **Minted** — a principle written fresh from the user's elicited intent (values dimension).
@@ -35,22 +35,28 @@ qualification): only backend/service has seeded type content today. When a shelf
 absent for the declared type, the session leans on minting and on adapting the universal floor's
 category requirements to the type — never on copying misfitting examples.
 
-## The asserted production floor
+## The two-row production floor
 
-There is exactly one standard level — the production floor (PO-D2). The retired
-`poc → internal → production → regulated` ladder is gone: no card carries per-tier defaults or
-strictness ladders, and no session negotiates the floor's level. What varies per project:
+The floor is one production standard at **two depth levels — `low` and `high`** (PO-D2, as amended
+by D1–D8 2026-08-11). It is one project-wide dial, declared by the user at setup and moved only by
+an explicit user re-declaration, one-way `low`→`high` (D1/D2) — nothing derives or auto-advances
+it, and no watcher flips it. The retired `poc → internal → production → regulated` ladder stays
+gone: two rows, never a four-rung tier ladder. Each floor card carries both rows; the `low` row is
+drawn on the retrofit-cost cut line (D5 — obligations expensive to retrofit hold at both levels,
+addable rigor may relax at `low`). What else varies per project:
 
 - **Expression** — type facts translate each floor category into its correct form (an API error
   schema vs UI error states; a web health check vs a desktop crash reporter).
 - **Modules** — compliance obligations attach additively from the fact profile per
-  [../COMPLIANCE-MODULES.md](../COMPLIANCE-MODULES.md) (the retired `regulated` rows live there
-  as seed content).
+  [../COMPLIANCE-MODULES.md](../COMPLIANCE-MODULES.md); modules are **level-blind** — they attach
+  at full strength at either depth level (D7) and carry no low/high rows. The legal-mandate
+  stratum sits above the dial. (The retired `regulated` rows live there as seed content.)
 - **Waivers** — any asserted standard can be waived with a recorded, auditable justification in
-  the governance ledger (D4; permanent pending the D4.1 revisit) — except legal-mandate module
-  obligations (D4.2). A waiver is never silent: recorded in the synthesis and the ledger, it is
-  the honest staged-adoption on-ramp for early-stage teams (PO-D7). Accumulated waivers are the
-  governance re-entry checklist as the team matures.
+  the governance ledger (D4; a per-check *fit* exception, available at both levels, permanent
+  pending the D4.1 revisit) — except legal-mandate module obligations (D4.2). A waiver is never
+  silent: recorded in the synthesis and the ledger. Staged adoption is the `low` level, not a
+  waiver (PO-D7 superseded); accumulated waivers remain the governance re-entry checklist as the
+  team matures.
 
 ## Card format
 
@@ -60,15 +66,16 @@ Every card carries:
 ### CARD-ID — Card Name
 **Type tags:** [which project types this card fits]
 **Layer:** [floor-asserted | arbitrated]
-**Asserted level / Recommended form:** [the single production-level content — thresholds,
-             enforcement strength; floor-asserted cards state the asserted level, arbitrated
-             cards the recommended form]
+**Asserted level / Recommended form:** [floor-asserted cards state a two-row `low`/`high` depth
+             table (the addable rigor relaxing at `low` per D5); arbitrated cards state the single
+             recommended form — thresholds, enforcement strength]
 **Content:** [the principle material — statement skeleton, enforcement/testability/rationale
              source, or a pointer to the canonical definition]
 ```
 
-- **floor-asserted** — enters every session at the asserted level; not arbitrated; expression
-  shaped by type; loosening only via recorded waiver.
+- **floor-asserted** — enters every session at both depth rows (the project's declared level
+  selects which applies); not arbitrated; expression shaped by type; loosening only via recorded
+  waiver.
 - **arbitrated** — dealt recommend-then-arbitrate (the S7 carve-out layer: architecture-opinion
   and other per-project-judgment cards); the user keeps / tightens / drops / re-ranks.
 

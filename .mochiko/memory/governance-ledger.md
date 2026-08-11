@@ -1,6 +1,6 @@
 # Governance Ledger
 
-**Governance Floor:** production (asserted) · **Modules:** compliance: none (GI-001 negatives confirmed, incl. no-UI) · template: knowledge-management (core + CHANGELOG elective) · release-gates · **Trace:** GI-001 (fact profile)
+**Governance Floor:** production (asserted) · **Depth level:** high (legacy default — set up under the single floor pre-adaptive-depth, already conformed to full depth; #7 fold, 2026-08-11; formal GI-row minting rides the next amend run) · **Modules:** compliance: none (GI-001 negatives confirmed, incl. no-UI) · template: knowledge-management (core + CHANGELOG elective) · release-gates · **Trace:** GI-001 (fact profile)
 **Version:** 1.0.0 (must match the region stamp)
 
 ## Waivers

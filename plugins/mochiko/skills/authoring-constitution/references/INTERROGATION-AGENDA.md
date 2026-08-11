@@ -11,11 +11,14 @@ session synthesis at `.mochiko/memory/governance-intent.md` (see
 select and filter the deck (fact profile, type) are elicited. Minted principles trace to elicited
 intent, never to shallow prompting.
 
-**The agenda test (PO-D3):** every question elicits a **fact** — no question negotiates a
-standard. The floor's level is the library's, asserted; the session sets its *shape* (product-kind
-facts translate each floor category into its correct expression), its *triggers* (fact-profile
-facts attach compliance modules mechanically), and its *path* (brownfield facts set the ratchet's
-starting point, never its target). The one deliberately arbitrated layer is the
+**The agenda test (PO-D3, adaptive-depth 2026-08-11):** every question elicits a **fact** — no
+question negotiates a per-check standard. The **one** exception is a single project-wide **depth
+level** declaration (`low` | `high`), offered recommend-then-arbitrate; it is the ONE strictness
+declaration in the agenda, never a revived per-check tier ladder and never per-check haggling. The
+session sets the floor's *depth level* (the single dial), its *shape* (product-kind facts
+translate each floor category into its correct expression), its *triggers* (fact-profile facts
+attach compliance modules mechanically), and its *path* (brownfield facts set the ratchet's
+starting point, never its target). The one deliberately arbitrated card layer is the
 architecture-opinion card set (PO-D3's S7 carve-out).
 
 ## The ten dimensions (in order, adaptively)
@@ -26,7 +29,7 @@ answer has already settled, probing deeper where answers are vague.
 | # | Dimension | What it elicits | Feeds |
 |---|-----------|-----------------|-------|
 | 1 | **Project identity & intent** | What's being built, for whom, expected lifespan | Framing for everything |
-| 2 | **Fact profile** | Industry · data classes · jurisdictions/markets · contractual commitments | Module triggers per [COMPLIANCE-MODULES.md](COMPLIANCE-MODULES.md) — each module-driving fact gets a consequence-stated confirmation (the S4 fail-safe). The floor's level is fixed; facts shape its expression, never its strictness |
+| 2 | **Fact profile** | Industry · data classes · jurisdictions/markets · contractual commitments | Module triggers per [COMPLIANCE-MODULES.md](COMPLIANCE-MODULES.md) — each module-driving fact gets a consequence-stated confirmation (the S4 fail-safe). The depth level is the user's single declaration (D1), never fact-derived; facts shape each category's expression, never the level |
 | 3 | **Project type & shape** | frontend / backend / fullstack / service / mobile / desktop | Shelf selection |
 | 4 | **Risk surface** | What failure costs: data loss, money, reputation, compliance, user trust | Honest context for the floor's expression and the arbitrated card layer |
 | 5 | **Team reality** | Solo vs team, experience mix, review culture | Enforcement must fit who's enforcing |
@@ -67,6 +70,12 @@ deployment reality in particular is always interrogated. Adaptive convergence st
 skip what an answer has already settled, and say so — but a convergence skip is bookkeeping,
 never a scope ruling.
 
+The depth-level declaration (below) does **not** revive that license: it is one project-wide
+dial, not a per-dimension prune. Facts are fully elicited at both `low` and `high` — the level
+changes how strictly the asserted code standards are authored, never which dimensions are asked
+or which floor categories are present. A misfit standard still leaves only by recorded waiver,
+at either level.
+
 ## Depth per mode
 
 The interrogation runs in **all three modes** — it covers only what the mode leaves unknown:
@@ -87,12 +96,39 @@ The interrogation runs in **all three modes** — it covers only what the mode l
   ruling on — the answer is recorded either way, and a recorded decline is never re-asked
   (permanent until the user reopens it). **Legacy migration:** an amend run meeting a synthesis
   that still carries a tier declaration (the retired axis) supersedes it — never renumbered —
-  elicits the fact profile once, and re-records existing waivers under the D4 model.
+  elicits the fact profile once, and re-records existing waivers under the D4 model. A
+  **depth-level flip** (`low`→`high`) is itself a governance-event amend — the flip ceremony
+  below; a legacy synthesis carrying no depth declaration defaults to `high` at this amend
+  (review fold #7), recorded without a ceremony since it never ran at `low`.
 
-## After the dimensions: the asserted floor, deck arbitration, then waiver rulings
+## The depth-level flip ceremony (D6)
 
-1. **Assert the floor** — the four floor cards enter at the production level
-   ([catalog/universal-floor.md](catalog/universal-floor.md)): presented, not negotiated. Type
+Raising the level is a **conscious act, never automatic** — there is no watcher of any kind (D6).
+A project moves `low`→`high` only by a deliberate `/mochiko:setup` rerun **in high mode**, which:
+
+- re-deals the floor cards at the **high row** of each card, surfacing the **adherence delta** —
+  the checks the project does not yet meet at the high level — for the user to see and rule on;
+- records the flip as a governance event (a MAJOR semver bump; an amendment-log row), the declared
+  level moving to `high` in the ledger;
+- files each not-yet-met high check as an **interim transition-delta waiver** (D4) — a bounded
+  transition exception, transition-scoped, naming its delta item, dying when that item conforms;
+- is **one-way**: `high` is terminal and never returns to `low`.
+
+The flip surfaces the gap and lets the user stage adoption through waivers; it never silently
+tightens live checks under the team.
+
+## After the dimensions: the depth level, the asserted floor, deck arbitration, then waiver rulings
+
+0. **Declare the depth level** — offer the single project-wide depth level
+   (`low` | `high`) recommend-then-arbitrate: recommend `low` for greenfield, `high` where reality
+   warrants it (D2); the user rules. This is the ONE strictness declaration in the agenda — never
+   a per-check negotiation, never a revived tier ladder. Record it in the synthesis (its GI
+   element) and the ledger; the level is one-way (`high` terminal, D1/D2).
+1. **Assert the floor** — the four floor cards enter the session
+   ([catalog/universal-floor.md](catalog/universal-floor.md)): presented, not negotiated. Each
+   card carries a two-row `low`/`high` form; the declared depth level selects which row is
+   authored — the **low row** or the **high row** of the floor card. Breadth is invariant —
+   every category is present at both levels — and compliance modules are level-blind (D7). Type
    facts shape each category's *expression* (translation, not waiver); tightening is always
    open; the only loosening route is a recorded waiver (step 5). Compliance modules attach
    mechanically from the fact profile per [COMPLIANCE-MODULES.md](COMPLIANCE-MODULES.md), each
