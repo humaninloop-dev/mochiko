@@ -26,8 +26,8 @@ frontend/mobile/desktop shelves are Tier-I roadmap work.**
 - Token epic: the one-shot OTel probe (2026-07-23; D5 sizing half closed 2026-08-04 — superseded at v8; probe gains TC's three recorded-open questions) → [BACKLOG](BACKLOG.md#token-reduction-epic)
 - Defect probes: fresh-session description-delivery (2026-07-25) → [BACKLOG](BACKLOG.md#defects--empirical-checks)
 - Re-evaluate the deferred-kernel shortcut entry once the pipeline dogfoods complete (roadmap-v2's surviving next-step; its convention-extraction clause discharged at the 2026-07-25 migration) → [BACKLOG](BACKLOG.md#token-reduction-epic)
-- Adaptive-depth residual — build DELIVERED 2026-08-11 at v0.65.0 (two-row low/high floor, user-declared one-way level, flip ceremony, graders re-keyed; 3/3 audits PASS round 1; trail); remaining: the first-live-run watch → [BACKLOG](BACKLOG.md#production-only-narrowing)
-- Tier-I builds queued: security-depth (scoped 2026-07-30, SD-D1–D6) · ops & observability (scoped 2026-07-31, OO-D1–D7) — both inherit the two-row obligation at build time; then shelf-build scoping → [BACKLOG](BACKLOG.md#production-only-narrowing)
+- Production-only narrowing: adaptive-depth build DELIVERED 2026-08-11 at v0.65.0 (first-live-run watch remains) · Tier-I builds queued — security-depth (SD-D1–D6) + ops & observability (OO-D1–D7), both inheriting the two-row obligation; then shelf-build scoping → [BACKLOG](BACKLOG.md#production-only-narrowing)
+- Plan-structure YAGNI build — session accepted 2026-08-12 (D1–D7: delivery-manager re-key · plan-the-plan gate · simplest-execution ladder · blocking conformance grade · FEAT-002 re-derivation probe); cold-buildable → [BACKLOG](BACKLOG.md#plan-structure-yagni-build)
 - Architecture-primitive dogfood — first merged-plan run with the architecture stage (built 2026-07-30 at v0.32.0); tie-back chain rides it (built 2026-08-04 at v0.51.0, AT-D1–D6) → [BACKLOG](BACKLOG.md#architecture-primitive-build-items)
 
 ## Later *(non-committed)*
@@ -66,8 +66,10 @@ trail; 2026-08-10: feature-sizing & entry-points session accepted — D1–D15, 
 D1–D4 + D2a/D3a, skill supersession + three command additions, audit PASS round 1 all four
 surfaces, item straight to trail · 2026-08-10: validator-scope-and-verbosity session
 accepted — D1–D8, guardrails-vs-detail benchmark Now row added, skill-succinctness-strip
-row method-supersession annotated) —
-Now 5 · Next 6 · Later 9 · BACKLOG
+row method-supersession annotated · 2026-08-12: plan-structure-yagni session accepted —
+D1–D7, Next row added; the two production-only-narrowing Next rows merged to hold the ≤7 cap,
+stamp figure corrected from the stale 6) —
+Now 5 · Next 7 · Later 9 · BACKLOG
 baseline 56 open items (per-item ≤15 lines;
 figures on BACKLOG's stamp line). Plugin: 6 commands · 10 agents · 28 skills · 14 templates +
 modules · 2 output styles, v0.66.0 (marketplace synced). Per-bump build history: `CHANGELOG.md` (from 0.53.0) ·

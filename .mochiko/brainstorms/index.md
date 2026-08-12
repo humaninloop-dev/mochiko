@@ -8,6 +8,12 @@ One entry per session directory under `.mochiko/brainstorms/<topic-slug>/`, **ne
 
 ---
 
+## `plan-structure-yagni` — does the plan surface force overthinking? (kinako FEAT-002 dogfood evidence)
+- **When:** 2026-08-12 · **Status:** accepted · record solo-cold-reviewed via blind-map dispatch (25-angle map, topic-only spawn; 12 raised — 0 Critical, 6 Important, 6 Minor → needs-revision → 12/12 dispositioned: 3 record-integrity lead-repaired pre-disposition (entity count 13→12, C×106→×95 SC-contamination, duplicate section), 9 user-ruled in one batch "as recommended" — 6 amendments + 3 coverage gaps ruled inline; verify CLEAN, 3 non-blocking hygiene items lead-repaired same round)
+- **Artifacts:** [record.md](plan-structure-yagni/record.md) (canonical, incl. ground facts F1–F9 as corrected, review + verify trail, build surface)
+- **About:** the kinako FEAT-002 "preflight verification" plan run produced ~3,057 lines across 8 files (12 conceptual entities, 20 TRs, ID plumbing TR×231/C×95/NFR×51) for a launch-check feature; the user read this as plan structure forcing overthinking, not the solution failing YAGNI. Ruled (D1–D7 as amended): plan's lead = **delivery manager of the goal**, artifacts demote to risk-scaled guidance (D1) · floor = **plan-the-plan gate**, selection-scope only — proposal rung-justified, user-approved, approved proposal = the run's default-FAIL floor (D2) · instrument = **simplest-execution ladder** grading the solution the plan commits the build to; plan = guidance for implement (D3) · five rungs, rung 1 strict + floor carve-out, read obligation on 2/3, rung scoping, kind-aware rung 2 (D4) · carrier `patterns-plan-minimalism`; teeth at TWO blocking points — proposal approval + blocking conformance grade in `review-plan-artifacts`; rung-honesty advisory (D5) · architecture conditional-but-reserved with quiet tie-back; v0.66.0 baseline seeding untouched (D6) · success probe = FEAT-002 re-derivation, directional ~3–4 entities / ~600–900 lines vs 12/3,057 (D7).
+- **Landed:** DECISIONS.md row (2026-08-12) · BACKLOG "Plan-structure YAGNI build" item (cold-buildable) · ROADMAP Next row (two production-only-narrowing rows merged to stay at cap). Build not started.
+
 ## `feature-map-granularity-and-reparenting` — map granularity balance (narrow vs broad) + new-parent adoption of existing in-flight/delivered features
 - **When:** 2026-08-12 · **Status:** open
 - **Artifacts:** [record.md](feature-map-granularity-and-reparenting/record.md) (canonical)
