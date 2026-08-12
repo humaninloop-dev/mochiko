@@ -18,6 +18,7 @@ is the design-time architecture surface, authored **before** `data-model.md` and
 - **Repo-level `ARCHITECTURE.md`** — that living, current-state operating doc is `mochiko:authoring-architecture`, folded post-hoc at a landing. This skill is the design-time, feature-scope, delta artifact — distinct file, distinct moment.
 - **Entity / data-model design** — `mochiko:patterns-entity-modeling` details the approved shape's data downstream; it does not decide topology.
 - **API-contract design** — `mochiko:patterns-api-contracts` details the approved shape's endpoints downstream.
+- **Whether the structure is paid for at all** — the design-time weight ladder (is this component or layer earned by a requirement?) lives in `mochiko:patterns-plan-minimalism`; this skill governs the *altitude* of what you draw (container level, not lower), that one governs the *amount*.
 - **Evaluating a structural fork's alternatives** — the decision *technique* (≥2 alternatives, ADR depth) is `mochiko:patterns-technical-decisions`; this skill records the resulting shape and links its D-XXX rows.
 
 ## Seed the baseline before you design on it
@@ -54,10 +55,13 @@ show ordering or what happens when a step fails; the sequence view is where that
 ### 3. Component table + delta summary
 
 A **container-level register** — one line per deployable/runnable piece, mirroring `ARCHITECTURE.md`'s
-form: `name — responsibility — boundary — status (new / modified / existing)`. ("Component" here is
-the container-level register sense, not C4-level-3.) Below it, a **delta summary** (prose) linking
-each structural change to the **D-XXX** row that ruled it — link, never restate the decision. Every
-box in the diagram appears in the table and vice versa.
+form: `name — responsibility — boundary — status (new / modified / existing)`. **Altitude check —
+every row is a container, not a C4-level-3 construct:** each row must be a separately deployable or
+independently runnable piece (a service, worker, store, queue, external system). A code-level layer
+*inside* one process — an application or domain layer, a module, a port or a trait — is **not** a
+container and does not earn a row; it belongs in the detailed design, not here. Below it, a **delta
+summary** (prose) linking each structural change to the **D-XXX** row that ruled it — link, never
+restate the decision. Every box in the diagram appears in the table and vice versa.
 
 ### 4. Deployment view — conditional
 
@@ -69,9 +73,11 @@ and record the omission in one line rather than shipping an empty section.
 
 The container diagram scopes to the **delta neighborhood** — the changed components plus their
 **direct collaborators**, not the whole system. Past a size threshold — **default: ~12 rendered
-nodes** (boxes), overridable per project — the full system view is **linked, never inlined**; the
-artifact shows the neighborhood and points to the wider map. This keeps a 2-node delta from rendering
-a 50-box wall.
+nodes** (boxes) — the full system view is **linked, never inlined**; the artifact shows the
+neighborhood and points to the wider map. This keeps a 2-node delta from rendering a 50-box wall.
+The count is overridable per project, but an override must **assert the altitude** — that every
+extra node is a genuine container (per the altitude check above), not merely cite a larger count. A
+high node count that is really sub-container detail is drift, not a legitimate override.
 
 ## The no-delta form
 
@@ -136,6 +142,7 @@ Before handing the architecture off, verify:
 
 - [ ] The current-state baseline is seeded from `ARCHITECTURE.md`, or reconstructed **and confirmed** (confidence noted), or greenfield-empty
 - [ ] Every box in the container diagram appears in the component table, and vice versa
+- [ ] Every register row is a deployable/runnable **container** — no application/domain layer, module, port, or trait (C4-level-3 detail) inside a single process
 - [ ] Every arrow carries protocol + purpose; every node names its technology; boundaries are subgraphs
 - [ ] The delta is visually marked (new/modified styled, removed struck)
 - [ ] Every qualifying flow (≥2 components, non-trivial ordering/failure) has a sequence diagram
@@ -157,3 +164,4 @@ Before handing the architecture off, verify:
 | Sequence cap by priority | only P1 journeys get sequences | every qualifying flow does — P1 is the floor, not the cap |
 | Whole-system wall | 50 boxes for a 2-node change | the delta neighborhood inlined, the rest linked |
 | Restated decisions | the rationale re-typed under the diagram | the delta summary links the D-XXX row |
+| Sub-container register rows | rows like `Preflight domain (Rust · no I/O)`, `Engine port trait` inside one process | one row per deployable/runnable container; code-level layers live in the detailed design |

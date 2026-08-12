@@ -10,6 +10,16 @@ restores the boundary clauses under the cap, and is strict-YAML-safe. Delivery v
 deferred: the in-session skill listing is a session-start snapshot (probe received pre-edit
 text), so the probe re-runs in a fresh session.
 
+## [v0.67.0] Sixth hunt class (excess machinery / unpaid decision) added — three "five hunt classes" counts re-keyed
+- **Disposition:** superseded → the excess posture from the architect-role ruling: a sixth, remove-shaped hunt class is added, so the three "five hunt classes" counts become "six".
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/architect-role-pushback-and-abstraction/record.md`, D3 as amended by its F3 calibration clause; DECISIONS.md combined-wave build row).
+- **Content (superseded, verbatim — count reconciliations):**
+  - Phase 1 item 2 — OLD: "2. **The five hunt classes**, per decision:" → "2. **The six hunt classes**, per decision:".
+  - Coverage-findings paragraph — OLD: "a first-class finding beside the five hunt classes above." → "...beside the six hunt classes above.".
+  - Description — OLD: "independent cold read, the five hunt classes, then cross-examination" → "...the six hunt classes...".
+- **Kept deliberately:** hunt classes 1–5 (Unchallenged assumption, Missing dimension, Passive acceptance, Rejected-road steelman, Inconsistency) untouched; the coverage-findings class and the Phase 0 blind-map machinery untouched. Pure addition riding the decision row (no strip): the class-6 table row carrying the calibration clause in one breath.
+- **Consumers assessed:** no reference file or command carries the "five hunt classes" count (grep confirmed the three sites are all inside this SKILL.md). Description stays under the 1,536 delivery cap (490 chars) and within budget (614).
+
 ## [v0.64.0] Guardrails Wave 2 — slim description + review-evidence floor line (no body deletions)
 - **Disposition:** superseded → the guardrails-vs-detail Wave 2 editorial cut (D4 cut line). Description slimmed; body carries no deletion — only the sanctioned floor-line pure addition below.
 - **Tier failed:** n/a — supersession by ruling (guardrails-vs-detail Wave 2, `DECISIONS.md` 2026-08-11 build row [its Wave 2 residual authorization] + user rulings 2026-08-10/11; method warrant: benchmark verdict `.mochiko/benchmarks/guardrails-vs-detail/report/final-verdict.md` — guardrails held across all four skill natures).

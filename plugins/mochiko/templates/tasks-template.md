@@ -7,7 +7,7 @@
 
 # Implementation Cycles: [FEAT-XXX — FEATURE NAME]
 
-> Generated from the spec folder: spec.md, features/FEAT-XXX/plan.md, requirements.md, constraints-and-decisions.md, nfrs.md, data-model.md, contracts/
+> Generated from the spec folder and the feature's produced design artifacts: spec.md, features/FEAT-XXX/plan.md, and whichever of requirements.md, constraints-and-decisions.md, nfrs.md, data-model.md, contracts/ the approved proposal included
 > Structure: `mochiko:patterns-vertical-tdd` (cycle-card shape, slicing judgment)
 
 ## Overview

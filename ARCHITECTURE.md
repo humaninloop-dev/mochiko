@@ -23,7 +23,7 @@ flowchart LR
   subgraph plugin ["plugins/mochiko/"]
     commands["commands/ — 5 supervisors"]
     agents["agents/ — 10 personas"]
-    skills["skills/ — 28 skills"]
+    skills["skills/ — 29 skills"]
     templates["templates/ — artifact + report schemas, doctrine homes"]
     commands -->|"spawn seats, each dispatch self-briefed"| agents
     agents -->|"carry procedure from"| skills
@@ -52,8 +52,8 @@ pinned in [`CLAUDE.md`](CLAUDE.md#skill-library-conventions-five-axes).
 | Layer | Home | Count | Role |
 |---|---|---|---|
 | **Commands** | [`plugins/mochiko/commands/`](plugins/mochiko/commands/) | 5 | User-invoked goal+harness contracts (`disable-model-invocation: true`). Each file states its Goal (default FAIL), Harness (plan approval for producing seats · author ≠ grader independence · decisions reserved to the user), and Bindings (v8 rebuild, v0.48.0; task layer de-granularized + slice absorbed into specify, v0.49.0). The lead plans and orchestrates the run — teammates or subagents per seat is its call. |
-| **Agents** | [`plugins/mochiko/agents/`](plugins/mochiko/agents/) | 9 | Personas (all `model: opus`) that carry judgment and declare `skills:`. A persona contains no trace of any workflow — decoupling by absence; caller-side context rides the dispatch brief. |
-| **Skills** | [`plugins/mochiko/skills/`](plugins/mochiko/skills/) | 28 | Procedure. One user-invoked router ([`skills/mochiko/`](plugins/mochiko/skills/mochiko/SKILL.md)) indexes the other 27, which are model-invoked with graded MUST/SHOULD triggers in their descriptions. Deterministic sub-checks ride as `scripts/` inside skills (e.g. `analysis-codebase`'s `detect-stack.sh`); depth rides as `references/`. |
+| **Agents** | [`plugins/mochiko/agents/`](plugins/mochiko/agents/) | 10 | Personas (all `model: opus`) that carry judgment and declare `skills:`. A persona contains no trace of any workflow — decoupling by absence; caller-side context rides the dispatch brief. |
+| **Skills** | [`plugins/mochiko/skills/`](plugins/mochiko/skills/) | 29 | Procedure. One user-invoked router ([`skills/mochiko/`](plugins/mochiko/skills/mochiko/SKILL.md)) indexes the other 28, which are model-invoked with graded MUST/SHOULD triggers in their descriptions. Deterministic sub-checks ride as `scripts/` inside skills (e.g. `analysis-codebase`'s `detect-stack.sh`); depth rides as `references/`. |
 | **Templates** | [`plugins/mochiko/templates/`](plugins/mochiko/templates/) | 14 + `constitution-modules/` | Two kinds: **artifact schemas** (spec — Intent + Delivery Slices sections included, plan, tasks as cycle cards, governance-intent, …) over the shared `artifact-format.md` envelope; **report schemas** (per-seat reports) over the shared `report-format.md` envelope. The former doctrine homes (`workflow-contract.md`, `agent-dispatch.md`, `sized-end-stage-review.md`) were deleted at the doctrine purge (v0.46.0–v0.47.0) — their mechanics live inline in each command. `constitution-modules/` is setup's module library (knowledge-management, layer-rules, release-gates, evolution-notes). |
 
 The plugin manifest, [`.claude-plugin/plugin.json`](plugins/mochiko/.claude-plugin/plugin.json),
@@ -103,7 +103,7 @@ authors and grades the governance surface set — there is no `constitution.md`.
 
 | Seat | Wiring |
 |---|---|
-| producer | `principal-architect` × `analysis-codebase` (brownfield), `authoring-constitution` |
+| producer | `tech-lead` × `analysis-codebase` (brownfield), `authoring-constitution` |
 | intent reviewer(s) | `devils-advocate` × `review-governance-intent` — sized pair / single / waiver |
 | validator | `validator` × `validation-constitution` — binary PASS/FAIL from the files |
 
@@ -112,7 +112,7 @@ flowchart LR
   lead["lead: /mochiko:setup"]
   user(("User"))
   reviewers["devils-advocate ×<br/>review-governance-intent"]
-  producer["principal-architect ×<br/>authoring-constitution"]
+  producer["tech-lead ×<br/>authoring-constitution"]
   validator["validator ×<br/>validation-constitution"]
   lead -->|"interrogation, inline"| synthesis[("governance-intent.md")]
   synthesis --> reviewers -->|"survivors + tally"| lead
@@ -202,9 +202,9 @@ anything is designed against it.
 | Seat | Wiring |
 |---|---|
 | producer | `technical-analyst` × `authoring-technical-requirements`, `patterns-technical-decisions`, `patterns-entity-modeling`, `patterns-api-contracts` |
-| system-architect | `system-architect` × `patterns-system-design` — authors `architecture.md` + structural D-XXX rows (the persona also declares `patterns-technical-decisions`) |
+| architect | `principal-architect` × `patterns-system-design` — authors `architecture.md` + structural D-XXX rows when the proposal includes architecture; also files the proposal contest brief (the persona also declares `patterns-technical-decisions`) |
 | cycle-card producer | `patterns-vertical-tdd` on a seat of the lead's choosing — `tasks.md` as cycle cards (no fixed persona) |
-| feasibility | `principal-architect` × `review-feasibility` — analysis, then the architecture pass |
+| feasibility | `tech-lead` × `review-feasibility` — analysis, the class-7 excess/altitude hunt, then the architecture pass |
 | completeness | `devils-advocate` × `review-plan-artifacts` (cycle cards included) |
 | architecture scribe | `principal-architect` × `authoring-architecture` — disposable, at finalize; records the initial `ARCHITECTURE.md` baseline when the target repo has none |
 
@@ -216,9 +216,9 @@ system map (the class of doc this file is), folded at landings by the scribe sea
 flowchart LR
   lead["lead: /mochiko:plan"]
   ta["technical-analyst<br/>analysis + detailed design"]
-  sa["system-architect<br/>architecture.md"]
+  sa["principal-architect<br/>architecture.md"]
   cards["cycle cards ×<br/>patterns-vertical-tdd<br/>(lead-chosen seat)"]
-  feas["principal-architect ×<br/>review-feasibility"]
+  feas["tech-lead ×<br/>review-feasibility"]
   comp["devils-advocate ×<br/>review-plan-artifacts"]
   lead --> ta & sa & cards
   ta & sa & cards --> pkg[("specs/&lt;feature&gt;/: requirements ·<br/>constraints-and-decisions · nfrs ·<br/>architecture · data-model ·<br/>contracts/api.yaml ·<br/>tasks (cycle cards) · plan.md")]
@@ -269,8 +269,9 @@ finalize) run outside the cycle loop and are omitted from the diagram.
 ### Shared seats
 
 Three personas serve multiple clusters — the reuse axis of the agent layer: `devils-advocate`
-reviews in four (specify, plan, brainstorm, setup); `principal-architect` authors in
-setup, reviews feasibility in plan, and scribes/diffs architecture in plan and implement;
+reviews in four (specify, plan, brainstorm, setup); `tech-lead` authors governance in setup
+and reviews feasibility in plan; `principal-architect` authors the architecture (and its
+contest brief) in plan and scribes/diffs `ARCHITECTURE.md` at plan and implement landings;
 `validator` grades setup's surfaces (and any artifact handed to it with an explicit
 checklist). The slicing and cycle-card crafts (`authoring-slices`, `patterns-vertical-tdd`)
 are seatless — lead-dispatched to whichever producer seat fits the run.

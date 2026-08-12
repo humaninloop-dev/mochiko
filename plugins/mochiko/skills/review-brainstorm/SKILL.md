@@ -1,6 +1,6 @@
 ---
 name: review-brainstorm
-description: This skill MUST be invoked when serving as a cold END-STAGE REVIEWER of a thinking session's decision record (`record.md`) — paired or solo, never in the room. Protocol: a blind angle map yielding coverage findings, independent cold read, the five hunt classes, then cross-examination; return severity-classified survivors and a status. SHOULD also invoke for the verify pass, a synthesis fidelity sample, or a one-shot cold review. Independent reviewer, never a co-author; defaults to FAIL.
+description: This skill MUST be invoked when serving as a cold END-STAGE REVIEWER of a thinking session's decision record (`record.md`) — paired or solo, never in the room. Protocol: a blind angle map yielding coverage findings, independent cold read, the six hunt classes, then cross-examination; return severity-classified survivors and a status. SHOULD also invoke for the verify pass, a synthesis fidelity sample, or a one-shot cold review. Independent reviewer, never a co-author; defaults to FAIL.
 ---
 
 # End-Stage Review of a Live Thinking Session
@@ -30,7 +30,7 @@ Sequestration is the role: form your entire attack **before any contact with you
 Read the frozen record and work it:
 
 1. **Scenario stress** — what input, actor, failure, scale, or sequence breaks each conclusion?
-2. **The five hunt classes**, per decision:
+2. **The six hunt classes**, per decision:
 
    | # | Class | The question |
    |---|-------|--------------|
@@ -39,13 +39,14 @@ Read the frozen record and work it:
    | 3 | **Passive acceptance** | Was this adopted on "sounds good" — thin rationale, no pushback recorded? |
    | 4 | **Rejected-road steelman** | Argue the strongest discarded alternative seriously — does the choice still win? |
    | 5 | **Inconsistency** | Does this decision undercut an earlier one, each fine alone? |
+   | 6 | **Excess machinery / unpaid decision** | Which decision — or record apparatus it mandates — pays for no session driver? Admissible only naming the cheaper shape or the unpaid driver; a floor / compliance / NFR obligation is never excess. |
 
 3. **Reality-grounding** — when the record carries the fact-checker's map (a checker-authored section, landed verbatim), it is your fact substrate: check the record's load-bearing claims against it instead of re-deriving the file tree. On the record-integrity lens, also **sample-audit the map itself** — verify a sample of its entries against the actual files, citing what you checked; an entry that fails its sample is a finding against everyone's substrate. A claim the map does not cover — or any claim, when no map exists — you verify against the files yourself. An unverifiable claim is a finding, not a benefit of the doubt. An **outside-repo claim** (web, registry, standard — anything the files cannot contradict) is not merely "unverifiable": verify it per [references/EXTERNAL-CLAIMS.md](references/EXTERNAL-CLAIMS.md) — this skill owns that file as the single source of the load-bearing trigger, floor classes, and inline-check mechanics.
 4. **Fitness** — run [references/RECORD-FITNESS.md](references/RECORD-FITNESS.md); the record must stand alone.
 
 Every finding carries: a severity, the decision(s) it touches, a **concrete failure scenario or cited contradiction**, and a resolution path — the one question or check that would settle it. A finding nothing could resolve is commentary, not a finding. **Never raise a `Contested` decision** — the user ruled with the steelman in full view; the only exception is a genuinely *new* angle the ruling never saw.
 
-**Coverage findings — the map-vs-record diff.** After the cold read, diff your Phase 0 blind map against what the record actually decided: every angle on the map the record never visited is a **coverage finding** — a first-class finding beside the five hunt classes above. A coverage finding does **not** carry the "concrete failure scenario" bar the paragraph above sets; its evidence is the **map-vs-record diff plus a materiality argument** — the stated case that a plausible in-scope decision would have differed had the angle been visited. Severity follows what the missed angle would have changed:
+**Coverage findings — the map-vs-record diff.** After the cold read, diff your Phase 0 blind map against what the record actually decided: every angle on the map the record never visited is a **coverage finding** — a first-class finding beside the six hunt classes above. A coverage finding does **not** carry the "concrete failure scenario" bar the paragraph above sets; its evidence is the **map-vs-record diff plus a materiality argument** — the stated case that a plausible in-scope decision would have differed had the angle been visited. Severity follows what the missed angle would have changed:
 
 | Severity | Test |
 |----------|------|

@@ -23,7 +23,7 @@ close.
   out of scope; this lens grades ladder discipline only
 - **Executing `**TEST:**` gates or quality gates** — `mochiko:testing-end-user`, the same
   seat's other craft
-- **Design-time artifact review** — plan/spec reviewers own those surfaces
+- **Design-time artifact review** — plan/spec reviewers own those surfaces; the plan-time sibling of this lens is the rung-honesty grade in `mochiko:review-plan-artifacts` against `mochiko:patterns-plan-minimalism` (same posture, design-time altitude)
 
 ## Inputs
 

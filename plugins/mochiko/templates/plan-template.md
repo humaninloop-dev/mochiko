@@ -13,6 +13,8 @@
 
 ## Architecture
 
+*Present only when the approved proposal included `architecture.md`; otherwise omit this section.*
+
 The system view — components, boundaries, interactions, and the delta this feature introduces —
 was designed first among the design work and **signed off** at the architecture gate. It lives in
 `architecture.md`; see it for the container diagram, the key-flow sequence diagrams, and the
@@ -59,12 +61,16 @@ See `contracts/api.yaml` for full OpenAPI specification.
 
 ## Artifacts
 
+The artifacts this run's **approved proposal** produced — each complete and graded. An artifact
+the proposal did not include is omitted here, not listed incomplete; the rows below are the
+menu to prune to the proposal.
+
 | Artifact | Status |
 |----------|--------|
 | `requirements.md` | ✅ Complete |
 | `constraints-and-decisions.md` | ✅ Complete |
 | `nfrs.md` | ✅ Complete |
-| `architecture.md` | ✅ Complete — signed off |
+| `architecture.md` | ✅ Complete — signed off *(only when the proposal included architecture)* |
 | `data-model.md` | ✅ Complete |
 | `contracts/api.yaml` | ✅ Complete |
 | `quickstart.md` | ✅ Complete — *or* "not applicable — no external integration surface" (conditional; see `patterns-api-contracts`) |

@@ -1,6 +1,6 @@
-# System Architect Report Template
+# Architect Report Template
 
-The system-architect's self-disclosure report — authored alongside `architecture.md` and the
+The architecture producer's (principal-architect) self-disclosure report — authored alongside `architecture.md` and the
 structural-decision rows on each architecture round; read by the lead and the reviewer(s) to
 follow what the delta proposes and what changed. Envelope + shared rules (machine-first, no
 self-verdict, conditional prose): `templates/report-format.md` — this file carries only the
@@ -55,7 +55,7 @@ handoff: "{{what to grade (topology feasibility, coverage) + known soft spots, o
 7. **`handoff`** is a *pointer*, not a claim — what to grade and where the soft spots are;
    **not** a "ready" assertion. The rendered-diagram presentation and any "presented un-rendered"
    record are the lead's, set at the sign-off gate, not disclosed here.
-8. **Output location** — `.mochiko/specs/<feature>/sysarchitect-report.md`, seeded and collected
+8. **Output location** — `.mochiko/specs/<feature>/architect-report.md`, seeded and collected
    by the lead, alongside `architecture.md`.
-9. **This is a reference template** — the system-architect fills in actual content following this
+9. **This is a reference template** — the architecture producer (principal-architect) fills in actual content following this
    structure.

@@ -27,7 +27,7 @@ frontend/mobile/desktop shelves are Tier-I roadmap work.**
 - Defect probes: fresh-session description-delivery (2026-07-25) → [BACKLOG](BACKLOG.md#defects--empirical-checks)
 - Re-evaluate the deferred-kernel shortcut entry once the pipeline dogfoods complete (roadmap-v2's surviving next-step; its convention-extraction clause discharged at the 2026-07-25 migration) → [BACKLOG](BACKLOG.md#token-reduction-epic)
 - Production-only narrowing: adaptive-depth build DELIVERED 2026-08-11 at v0.65.0 (first-live-run watch remains) · Tier-I builds queued — security-depth (SD-D1–D6) + ops & observability (OO-D1–D7), both inheriting the two-row obligation; then shelf-build scoping → [BACKLOG](BACKLOG.md#production-only-narrowing)
-- Plan-structure YAGNI build — session accepted 2026-08-12 (D1–D7: delivery-manager re-key · plan-the-plan gate · simplest-execution ladder · blocking conformance grade · FEAT-002 re-derivation probe); cold-buildable → [BACKLOG](BACKLOG.md#plan-structure-yagni-build)
+- Combined build wave DELIVERED 2026-08-13 at v0.67.0 (plan-the-plan gate + simplest-execution ladder + architect rotation + library-wide remove-shaped review classes); first-live-run watch with dual FEAT-002 probes (weight + level) remains → [BACKLOG](BACKLOG.md#plan-structure-yagni-build)
 - Architecture-primitive dogfood — first merged-plan run with the architecture stage (built 2026-07-30 at v0.32.0); tie-back chain rides it (built 2026-08-04 at v0.51.0, AT-D1–D6) → [BACKLOG](BACKLOG.md#architecture-primitive-build-items)
 
 ## Later *(non-committed)*
@@ -68,11 +68,14 @@ surfaces, item straight to trail · 2026-08-10: validator-scope-and-verbosity se
 accepted — D1–D8, guardrails-vs-detail benchmark Now row added, skill-succinctness-strip
 row method-supersession annotated · 2026-08-12: plan-structure-yagni session accepted —
 D1–D7, Next row added; the two production-only-narrowing Next rows merged to hold the ≤7 cap,
-stamp figure corrected from the stale 6) —
+stamp figure corrected from the stale 6 · 2026-08-13: architect-role-pushback-and-abstraction
+session accepted — D1–D7, sibling Next row + BACKLOG item amended into the combined build wave ·
+2026-08-13: combined wave BUILT at v0.67.0 — 4 producer clusters + 4 auditor seats + audited lead
+ripple, agents cluster FAIL→fix→delta-PASS, item → trail, dual-probe watch stays) —
 Now 5 · Next 7 · Later 9 · BACKLOG
 baseline 56 open items (per-item ≤15 lines;
-figures on BACKLOG's stamp line). Plugin: 6 commands · 10 agents · 28 skills · 14 templates +
-modules · 2 output styles, v0.66.0 (marketplace synced). Per-bump build history: `CHANGELOG.md` (from 0.53.0) ·
+figures on BACKLOG's stamp line). Plugin: 6 commands · 10 agents · 29 skills · 14 templates +
+modules · 2 output styles, v0.67.0 (marketplace synced). Per-bump build history: `CHANGELOG.md` (from 0.53.0) ·
 `DECISIONS.md` · the trail; pre-0.53.0 stamp-line narratives live in git history (this line,
 before this groom). Stamp compressed to contract shape this groom — expansion-watch hit
 logged in BACKLOG (Operating-docs / KM module section) for the user's report-writer re-open

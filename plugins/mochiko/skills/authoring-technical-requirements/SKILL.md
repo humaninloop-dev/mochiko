@@ -16,6 +16,8 @@ one line each, upstream text cited by ID and never re-quoted, the summary tables
 artifact's head are its **ID index** (the reviewer coverage surface). Density is not a
 gap; a gap is missing substance.
 
+> **Every element — TRs included — answers the plan ladder** (`mochiko:patterns-plan-minimalism`) before it enters the package; the simplest-execution stops are disclosed in the plan proposal, never re-derived here.
+
 **Violating the letter of the rules is violating the spirit of the rules.**
 
 ## When NOT to Use

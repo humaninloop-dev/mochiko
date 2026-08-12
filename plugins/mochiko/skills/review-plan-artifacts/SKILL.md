@@ -1,17 +1,29 @@
 ---
 name: review-plan-artifacts
-description: This skill MUST be invoked to grade plan artifacts against the completeness checklist — analysis, design, and cycle-card (`tasks.md`) sets — checking coverage, measurability, architecture coverage, cycle-card quality, and consistency. Emits a 3-state verdict (ready / needs-revision / critical-gaps). The completeness (mirror-checklist) half of the plan pair; does NOT cover feasibility/buildability (that is `review-feasibility`); defaults to FAIL; run by an independent validator, never the author.
+description: This skill MUST be invoked to grade a plan package against the approved artifact proposal — conformance (every proposed artifact present, nothing materially past approved depth; material divergence auto-FAILs — BLOCKING) and honesty of disclosed rung claims against `mochiko:patterns-plan-minimalism` (advisory), plus completeness (coverage, measurability, cycle-card quality, consistency) within scope. Emits a 3-state verdict (ready / needs-revision / critical-gaps). Does NOT cover feasibility (`review-feasibility`); defaults to FAIL; run by an independent validator, never the author.
 ---
 
 # Reviewing Plan Artifacts
 
 ## Overview
 
-Find gaps in planning artifacts and emit issues that must be resolved before the plan proceeds. This
-is a **mirror checklist**: a fixed set of named checks, each with a fixed question and a severity,
-producing a verdict derived mechanically from the issue counts. Focus on design completeness,
-coverage, measurability, and cross-artifact consistency — not implementation details, and not
-whether the design can be built (that is a separate review; see *Scope* below).
+Grade a plan package before it proceeds. The run's floor is **the approved artifact proposal** — the
+lead's rung-justified proposal the user approved at the plan-the-plan gate, not a fixed, mandated
+artifact set. Three lenses:
+
+- **Conformance to the approved proposal** — BLOCKING: every proposed artifact is present and within
+  its approved depth; **material divergence** (an unproposed artifact, or an element class materially
+  past its approved depth) auto-FAILs the package.
+- **Rung-claim honesty** — advisory: the ladder stops each producing seat disclosed are graded for
+  honesty against `mochiko:patterns-plan-minimalism` (the standard, never restated here). This is a
+  disclosure grade; the independent excess/altitude *hunt* over the package is
+  `mochiko:review-feasibility`'s hunt class 7 — a different seat and grade.
+- **Completeness within scope** — the mirror checklist below, applied to the proposed artifacts: a
+  fixed set of named checks, each with a fixed question and a severity, over coverage, measurability,
+  and cross-artifact consistency.
+
+Not implementation details, and not whether the design can be built (that is `review-feasibility`;
+see *Scope* below).
 
 **Violating the letter of the rules is violating the spirit of the rules.** Running the checklist
 "in spirit" while skipping checks, or downgrading a severity to avoid a hard finding, is the exact
@@ -25,7 +37,7 @@ themselves — review evidence that lives only in conversation is a floor violat
 
 | Lens | Question | Owner |
 |------|----------|-------|
-| **Completeness** | Is everything present, traceable, measurable, and internally consistent with the decisions that were made? | **this skill** |
+| **Completeness** | Is everything the approved proposal specified present, within approved depth, traceable, measurable, and internally consistent with the decisions that were made? | **this skill** |
 | **Feasibility** | Can these artifacts be built together, or do they contradict / overreach? | `mochiko:review-feasibility` |
 
 These are the two halves of plan review, run by two independent reviewers. This skill keeps
@@ -129,14 +141,20 @@ consistency_checks:   # pass/fail per check; a fail also lands as a finding
 
 ## Verdict Criteria
 
-Derived mechanically from the issue counts — the mapping itself carries no judgment; it is
-single-sourced in [ISSUE-TEMPLATES.md → Verdict Criteria](references/ISSUE-TEMPLATES.md#verdict-criteria).
+Derived mechanically from the issue counts (single-sourced in [ISSUE-TEMPLATES.md → Verdict
+Criteria](references/ISSUE-TEMPLATES.md#verdict-criteria)), **with one override that takes
+precedence**: material divergence from the approved proposal — an unproposed artifact, or an element
+class materially past its approved depth — is a package auto-FAIL (critical-gaps), independent of the
+count mapping. Rung-honesty findings are advisory and never drive the verdict.
 
 ## Quality Checklist
 
 Before finalizing the review, verify:
 
 - [ ] The deterministic pre-assert was run and its failures folded in
+- [ ] Graded against the approved proposal, not a fixed artifact set
+- [ ] Conformance checked — no unproposed artifact, nothing materially past approved depth (material divergence = auto-FAIL)
+- [ ] Disclosed rung claims graded for honesty against `mochiko:patterns-plan-minimalism` (advisory)
 - [ ] All applicable artifact-type checks executed
 - [ ] Issues properly classified by severity
 - [ ] Evidence cited for each issue
@@ -183,4 +201,5 @@ If you notice yourself thinking any of these, STOP immediately:
 ## Related
 
 - `mochiko:review-feasibility` — the feasibility / buildability / contradiction half of plan review; the boundary with this skill is the table in ARTIFACT-CHECKLISTS.md
+- `mochiko:patterns-plan-minimalism` — the plan-time ladder; this skill grades the rung stops it disclosed (honesty advisory) and package conformance to the approved proposal (blocking)
 - `mochiko:advocate-report-template` — the deliverable report shape the lead reads

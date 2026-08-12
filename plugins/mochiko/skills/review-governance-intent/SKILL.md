@@ -48,6 +48,8 @@ Every finding carries: a severity, the GI element(s) it touches, a **concrete fa
 cited contradiction**, and a resolution path — the one question or check that would settle it. A
 finding nothing could resolve is commentary, not a finding.
 
+**Over-governance is in-jurisdiction — the remove-shaped hunt.** A minted principle or intent that no elicited fact justifies — no risk declaration, no reality-surface finding, no user-declared value paying for it — is a finding like any absence. Admissible only when it names the fact the intent fails to trace to (the bar breached) or the lighter surface that would carry the real need; a floor-, compliance-module-, or NFR-derived obligation is never excess. This does not reach principle *formulation* quality — permanently out of jurisdiction (above).
+
 ## Cross-examination
 
 Pair only — spawned solo, skip to the survivor report. After the lead introduces your

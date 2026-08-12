@@ -9,6 +9,8 @@ description: This skill MUST be invoked when modeling a feature's domain data â€
 
 Extract and model domain entities from requirements using Domain-Driven Design principles. This skill covers entity identification, attribute definition, relationship modeling, state machine documentation, and per-attribute data-sensitivity classification. It is the single home for the `data-model.md` artifact and its sensitivity annotations.
 
+> **Entity necessity and shape answer the plan ladder** (`mochiko:patterns-plan-minimalism`) before an entity enters the model â€” the simplest-execution stops are disclosed in the plan proposal; this skill models the entities that survive it.
+
 ## When NOT to Use
 
 - **API contract design** - Use `mochiko:patterns-api-contracts` instead (it consumes this skill's data-model.md; schemas trace to entities)
