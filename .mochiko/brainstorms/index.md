@@ -8,6 +8,11 @@ One entry per session directory under `.mochiko/brainstorms/<topic-slug>/`, **ne
 
 ---
 
+## `architect-role-pushback-and-abstraction` — principal-architect role scope/impact; are architect roles pushing back enough and holding the right abstraction level
+- **When:** 2026-08-12 · **Status:** open
+- **Artifacts:** [record.md](architect-role-pushback-and-abstraction/record.md) (canonical)
+- **About:** the user's felt problem — `principal-architect` is not doing what a principal architect should; deep analysis of the scope and impact of changing the role, with a wider lens on architect roles in general: pushback sufficiency and abstraction-level assurance. Session runs in worktree `principal-architect-role`.
+
 ## `feature-map-granularity-and-reparenting` — map granularity balance (narrow vs broad) + new-parent adoption of existing in-flight/delivered features
 - **When:** 2026-08-12 · **Status:** open
 - **Artifacts:** [record.md](feature-map-granularity-and-reparenting/record.md) (canonical)
