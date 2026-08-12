@@ -14,7 +14,9 @@ the **first rung that applies**. The ladder fires at card decomposition
 (`mochiko:executing-tdd-cycle`, step 2), before the red phase — it governs whether and how
 much code exists, not how the code that exists is written. The chosen rung per task is
 disclosed in the cycle report's decomposition, where the verification seat grades it against
-this file (`mochiko:review-code-minimalism`).
+this file (`mochiko:review-code-minimalism`). Its plan-time sibling
+`mochiko:patterns-plan-minimalism` runs the same discipline over the plan's design elements
+upstream; this ladder is the build-time continuation.
 
 ## When NOT to Use
 

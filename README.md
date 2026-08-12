@@ -81,7 +81,7 @@ Four rules, no exceptions: a done-condition declared before the loop runs (defau
 | `/mochiko:setup` | Governance surface set (CLAUDE.md region, rules files, ledger) | interrogation → ratified intent → author ↔ independent grade |
 | `/mochiko:brainstorm` | `record.md` decision record | you + lead think; cold review at convergence |
 | `/mochiko:specify` | `spec.md` (intent · stories · Screens & Flows · Delivery Slices) + `prototype/` | intent stage → requirements-analyst + product-engineer ↔ devils-advocate |
-| `/mochiko:plan` | Implementation package (analysis · signed architecture · design · `tasks.md` cycle cards) | technical-analyst + system-architect ↔ completeness + feasibility reviewers |
+| `/mochiko:plan` | Implementation package per the approved proposal (analysis · architecture when proposed, signed · design · `tasks.md` cycle cards) | technical-analyst + principal-architect ↔ completeness + feasibility reviewers |
 | `/mochiko:implement` | Working, verified code | staff-engineer ↔ qa-engineer, cycle by cycle |
 
 ## Going deeper

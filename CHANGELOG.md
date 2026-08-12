@@ -5,6 +5,38 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.67.0] — 2026-08-13
+
+Combined build wave — two accepted records landed together (one strip ceremony per file, one
+audit round): `plan-structure-yagni` (D1–D7) + `architect-role-pushback-and-abstraction` (D1–D7).
+
+- **Plan re-keyed to the plan-the-plan proposal** (`plan.md`): the lead is a delivery manager
+  of the goal; the artifact set demotes from fixed goal-conditions to the approved proposal's
+  call (proposed-missing = FAIL, unproposed-absent = correct); architecture
+  conditional-but-reserved with the quiet tie-back; baseline seeding untouched. `implement.md`
+  entry + design inputs proposal-conditional; both templates re-keyed off the fixed set.
+- **New skill `patterns-plan-minimalism`** — the five-rung simplest-execution ladder (single
+  source), firing at the proposal, each producing seat's plan, and the proposal contest;
+  pointer lines in entity-modeling / api-contracts / technical-requirements /
+  patterns-system-design; cross-pointers with `patterns-code-minimalism`.
+- **`review-plan-artifacts` re-keyed**: conformance to the approved proposal BLOCKING
+  (material divergence auto-FAILs), rung-honesty advisory, completeness within scope.
+- **Architect rotation**: `system-architect` retired (strips carry AD-D7 + SD-D1 lineage;
+  its report template re-keyed and renamed `architect-report-template.md`);
+  `principal-architect` rechartered as the architecture + altitude seat
+  (topology craft + `authoring-architecture` + altitude judgment, keystone-clean); new
+  `tech-lead` persona (governance authoring, codebase analysis, feasibility review).
+- **Remove-shaped review posture library-wide**: `review-feasibility` hunt class 7
+  (unjustified structure / wrong altitude — blocking-capable, calibration clause,
+  interrogatory round) + tailored excess classes in `review-specifications`,
+  `review-brainstorm`, `review-governance-intent`, `validation-constitution` (each with the
+  calibration clause); `patterns-system-design` altitude bar hardened (container vs
+  C4-level-3 check, override must assert altitude).
+- Ceremony: 15 supersession strip entries across 13 strip files; author≠grader audits 4/4
+  clusters PASS (agents cluster FAIL→fix→delta-PASS on the orphaned report template); char
+  pre-asserts all inside budgets; ledger rotated (tech-lead seeded, principal-architect
+  re-measured, system-architect retired); router re-indexed; marketplace synced.
+
 ## [0.66.0] — 2026-08-12
 
 - Baseline-seed enforcement — dogfood defect close (ADR

@@ -104,7 +104,7 @@ derive from the restored values.
 
 | agent | winner chars | budget (+25%) |
 |---|---|---|
-| principal-architect | 738 | 923 |
+| principal-architect | 756 | 945 |
 | validator | 269 | 337 |
 | devils-advocate | 316 | 395 |
 | requirements-analyst | 303 | 379 |
@@ -112,11 +112,19 @@ derive from the restored values.
 | product-engineer | 392 | 490 |
 | qa-engineer | 251 | 314 |
 | staff-engineer | 274 | 343 |
-| system-architect | 482 | 603 |
+| tech-lead | 719 | 899 |
 | technical-analyst | 402 | 503 |
 
 Wave 2 agent rows (v0.64.0) use the audited measurements (auditor's reproducible canonical-snippet
 counts, +1 over the shipper's block-scalar parse — the audited number is authoritative).
+
+v0.67.0 rotation (architect-role restructure, audit-measured per the Wave-2 seeding precedent):
+`system-architect` row retired with the persona (was 482/603 — strip: `.mochiko/strips/system-architect.md`);
+`tech-lead` seeded from its audited description (719); `principal-architect` re-measured at its
+rewritten description (756 — the rotation was a ruled edit shipped through the ceremony, audit PASS).
+`patterns-plan-minimalism` (new skill, v0.67.0) deliberately unbudgeted — ships hard-cap-only
+(desc ≤1,536); audited at body 4,079 / desc 499; a body budget may seed from a future ruled cut
+or benchmark, never invented.
 
 ## Unbudgeted primitives
 

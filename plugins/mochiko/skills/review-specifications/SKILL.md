@@ -50,8 +50,8 @@ Focus on these user-facing gaps:
 | **Success/failure states** | "What happens if the user...?" |
 | **Permissions** | "Who can do X? Who cannot?" |
 
-The five requirement-defect classes those questions hunt (the canonical hunt taxonomy — the
-`devils-advocate` persona names these classes and leans on this section for the detail):
+The requirement-defect classes — the canonical hunt taxonomy the `devils-advocate` persona
+leans on this section for the detail. The first five are what the product questions above surface; the sixth is the remove-shaped excess class:
 
 | Class | What it looks like |
 |-------|--------------------|
@@ -60,6 +60,7 @@ The five requirement-defect classes those questions hunt (the canonical hunt tax
 | **Edge cases** | empty states; cancelled mid-flow; missing permissions; unstated limits (max items, max size) |
 | **Assumption gaps** | assumptions that should be requirements (and the reverse); hidden dependencies |
 | **Contradictions** | requirements that conflict; inconsistent terminology; mutually exclusive acceptance criteria |
+| **Excess / unpaid scope** | a story, requirement, or screen no user need or ratified driver pays for — admissible only naming the driver it fails to trace to or the cheaper shape; a floor / compliance-module / NFR-derived obligation is never excess |
 
 **External and regulatory claims.** A spec asserting a regulatory obligation, compliance limit,
 or other product-legal fact carries a floor-class external claim: verify it per

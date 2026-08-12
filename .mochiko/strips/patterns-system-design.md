@@ -7,6 +7,17 @@ primitives; design: `.mochiko/brainstorms/validator-scope-and-verbosity/record.m
 **M1 near-cap description** — its description was 1,514 chars, within ~22 of the 1,536 delivery
 cap; the slim form is the highest-value part of this cut.
 
+## [v0.67.0] Altitude bar hardened — container-level check made explicit; node-count override must assert altitude
+- **Disposition:** superseded → the reworded lines in-place (the altitude check + the override rule); additive companions (checklist bullet, anti-pattern row, ladder pointer) ride the decision row.
+- **Tier failed:** n/a — supersession by ruling (record `.mochiko/brainstorms/architect-role-pushback-and-abstraction/record.md` build-surface **item 4**; `DECISIONS.md` 2026-08-13 row L13 — the FEAT-002/F8 drift class: application-layer/domain/port-trait rows inside one process are C4-level-3, not containers).
+- **Superseded lines (A1 + A2):**
+  - **A1** — §3 Component table parenthetical `("Component" here is the container-level register sense, not C4-level-3.)` → promoted to an explicit **"Altitude check — every row is a container, not a C4-level-3 construct"** paragraph (each row separately deployable/runnable; an application or domain layer, a module, a port or a trait inside one process is not a container and earns no row — it belongs in the detailed design).
+  - **A2** — §Scope the diagram, `**default: ~12 rendered nodes** (boxes), overridable per project` → the override now **must assert the altitude** (every extra node a genuine container per the altitude check), not merely cite a larger count; a high count that is really sub-container detail is drift, not a legitimate override. (The ~12-node default itself is unchanged.)
+- **Additive (ride the decision row, no supersession):** a Quality-Checklist bullet ("Every register row is a deployable/runnable **container** — no application/domain layer, module, port, or trait … inside a single process"); a Common-Mistakes row ("Sub-container register rows" — `Preflight domain`, `Engine port trait`); one §When-NOT-to-Use pointer to `mochiko:patterns-plan-minimalism` (the design-time weight ladder governs the *amount* of structure; this skill governs *altitude*; no rung restated).
+- **Body:** 8,837 → 10,082 chars (budget 11,047, OK). Description unchanged (541 chars, budget 677).
+- **Kept deliberately:** the container-level register contract, the ~12-node default bound, the four pieces, the seed-the-baseline rules, the no-delta form, the canonical template, the DIAGRAM-CONVENTIONS pointer — untouched. The v0.64.0 RETURNED description clause and the v0.64.0 guardrails keep-set below stand.
+- **Consumers assessed:** `commands/plan.md`, `agents/principal-architect.md` (now the consuming seat — `system-architect` retired this wave), `skills/authoring-architecture`, `skills/authoring-technical-requirements`, `skills/review-feasibility`, `skills/review-plan-artifacts/references`, `skills/patterns-code-minimalism`, router `skills/mochiko/SKILL.md` — all reference the skill by name; none links a removed section anchor (no section removed; edits are in-place rewords + additions). The four-pieces contract `review-feasibility` / `review-plan-artifacts` grade against is intact and strengthened.
+
 ## [v0.64.0] RETURNED: current-state-baseline clause in the description
 - **Evidence:** the Wave 2 M1 fire-rate probe (14-scenario blind routing spot-check, lead
   dispatch 2026-08-11) hit S1 with a hesitation pulling toward `authoring-architecture` —

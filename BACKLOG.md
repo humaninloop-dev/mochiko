@@ -20,19 +20,21 @@ HIT logged (ROADMAP stamp vs CHANGELOG — user decision); all items within the 
 
 ## Plan-structure YAGNI build
 
-- [ ] **Plan delivery-manager re-key + simplest-execution ladder** (2026-08-12) — build the
-  accepted `plan-structure-yagni` surface: `plan.md` Goal re-key (proposal-gated artifact set,
-  delivery-manager identity, conditional architecture with quiet tie-back, selection-scope-only
-  gate clause; supersession strips owed on the fixed-set clauses, the unconditional missing-artifact
-  FAIL line, always-on architecture) · new `patterns-plan-minimalism` skill (five D4 rungs as
-  amended: floor carve-out · rungs-2/3 read obligation · rung scoping · kind line; disclosure
-  grammar; sibling cross-pointers with `patterns-code-minimalism`) · `review-plan-artifacts`
-  re-key (BLOCKING conformance-to-approved-proposal, advisory rung-honesty; strip owed) ·
-  pointer lines ×4 (entity-modeling · api-contracts · technical-requirements · system-design) ·
-  `implement.md` entry wording · templates check · ripple (router · plugin.json · ARCHITECTURE.md ·
-  CHANGELOG · char budgets for the new skill) · author≠grader audits per ceremony. First-live-run
-  watch keyed to the D7 probe: FEAT-002 re-derivation in kinako, directional ~3–4 entities /
-  ~600–900 lines vs 12/3,057. Provenance: [record](.mochiko/brainstorms/plan-structure-yagni/record.md) (build surface, cold-buildable).
+Build DELIVERED 2026-08-13 at v0.67.0 as the combined wave with the architect-role restructure
+(trail). Open residual:
+
+- [ ] **First-live-run watch: rebuilt plan + architect rotation, dual FEAT-002 probes**
+  (2026-08-13) — next kinako plan run (FEAT-002 re-derivation preferred) watches BOTH probes:
+  **weight** (sibling D7: directional ~3–4 entities / ~600–900 package lines vs 12/3,057) and
+  **level** (architect-role D6: container-only register rows — no application-layer/domain/
+  port-trait rows inside one process — plus the principal-architect contest brief fired and on
+  record at the proposal gate). Data-model altitude drift surviving the wave trips the
+  technical-analyst re-entry trigger (architect-role D7 — recharter becomes a candidate
+  session). Also first live fire of: the plan-the-plan gate + conformance-BLOCKING grade,
+  class 7 + interrogatory round on the tech-lead seat, and the excess classes in the four
+  other review skills. Provenance:
+  [sibling record](.mochiko/brainstorms/plan-structure-yagni/record.md) ·
+  [architect-role record](.mochiko/brainstorms/architect-role-pushback-and-abstraction/record.md).
 
 ## Guardrails-vs-detail residuals
 

@@ -4,6 +4,13 @@ Entry formats: `strips/README.md`. Wave context: the specify cluster wave (v0.13
 Single-consumer primitive (the specify critique, mounted on `devils-advocate`) — strips
 ruled in-wave.
 
+## [v0.67.0] Excess / unpaid-scope class added — defect-class lead-in re-keyed
+- **Disposition:** superseded → the excess posture from the architect-role ruling: the defect-class table gains a remove-shaped sixth class, so the "five ... those questions hunt" lead-in was rewritten.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/architect-role-pushback-and-abstraction/record.md`, D3 as amended by its F3 calibration clause; DECISIONS.md combined-wave build row).
+- **Content (superseded, verbatim):** OLD lead-in — "The five requirement-defect classes those questions hunt (the canonical hunt taxonomy — the `devils-advocate` persona names these classes and leans on this section for the detail):" → NEW — "The requirement-defect classes — the canonical hunt taxonomy the `devils-advocate` persona leans on this section for the detail. The first five are what the product questions above surface; the sixth is the remove-shaped excess class:".
+- **Kept deliberately:** the five absence/conflict classes (Missing requirements, Ambiguities, Edge cases, Assumption gaps, Contradictions) untouched; the pointer relationship to the `devils-advocate` persona preserved — the dropped "names these classes and" is inert, since the persona points here without a class count (grep-verified), so no ripple. Pure addition riding the decision row (no strip): the "Excess / unpaid scope" table row carrying the calibration clause in one breath.
+- **Consumers assessed:** `devils-advocate` persona (`plugins/mochiko/agents/devils-advocate.md`) points at this skill for "the canonical gap taxonomy" with no hard count — unchanged. No command references the class count.
+
 ## [v0.63.0] Guardrails body + slim description; review-evidence floor line added (guardrails-vs-detail benchmark verdict)
 - **Disposition:** superseded → benchmark-ruled guardrails body + slim description
   (`.mochiko/benchmarks/guardrails-vs-detail/variants/body/review-specifications/` and

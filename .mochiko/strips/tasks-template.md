@@ -4,6 +4,13 @@ Entry formats: `strips/README.md`. Wave context: workflow-token-reduction wave 2
 `.mochiko/brainstorms/workflow-token-reduction/record.md` D4 + the wave-2 rulings R1–R4;
 ratified 2026-07-24).
 
+## [v0.67.0] Fixed design-input enumeration re-keyed to the proposal-produced set
+- **Disposition:** superseded → the re-keyed provenance line: "Generated from the spec folder and the feature's produced design artifacts: spec.md, features/FEAT-XXX/plan.md, and whichever of requirements.md, constraints-and-decisions.md, nfrs.md, data-model.md, contracts/ **the approved proposal included**"
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/plan-structure-yagni/record.md` D1/D2 — artifacts are the approved proposal's, not a fixed set; combined wave `.mochiko/brainstorms/architect-role-pushback-and-abstraction/record.md` D5)
+- **Content:** "> Generated from the spec folder: spec.md, features/FEAT-XXX/plan.md, requirements.md, constraints-and-decisions.md, nfrs.md, data-model.md, contracts/"
+- **Kept deliberately:** the cycle-card shape, the `**TEST:**` grammar pointer, the sample cards, the Overview/Cycle-Format structure — untouched.
+- **Consumers assessed:** patterns-vertical-tdd (fills it) · executing-tdd-cycle (reads cards) · review-plan-artifacts (grades it) · plan/plan-template (fixed-set re-key, same wave).
+
 ## [v0.58.0] Slice references re-keyed to FEAT
 - **Disposition:** superseded → title "[FEAT-XXX — FEATURE NAME]" · provenance line "Generated from the spec folder: spec.md, features/FEAT-XXX/plan.md, …" · sample Stories line "[why these stories share this cycle / what it establishes, ≤ 2 lines]"
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-10 "Feature-map layer ruled (D1–D22)"; record `.mochiko/brainstorms/feature-map-layer/record.md`, D4/D17/D18 — feature is the pipeline unit; per-feature artifacts under `features/FEAT-XXX/`)

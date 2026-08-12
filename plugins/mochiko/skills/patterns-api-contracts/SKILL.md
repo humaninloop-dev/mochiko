@@ -9,6 +9,8 @@ description: This skill MUST be invoked when designing the API-contract layer of
 
 Design RESTful API contracts that map user actions to endpoints with complete schema definitions and comprehensive error handling. Every user action becomes an endpoint; every endpoint has request/response schemas and error handling. Endpoints that wrap an external system additionally carry an integration boundary documenting how that dependency fails.
 
+> **Endpoint and contract necessity answer the plan ladder** (`mochiko:patterns-plan-minimalism`) before they enter the plan — the simplest-execution stops are disclosed in the proposal; this skill designs the contracts that survive it.
+
 ## When NOT to Use
 
 - **GraphQL API design** - Different paradigm, not RESTful

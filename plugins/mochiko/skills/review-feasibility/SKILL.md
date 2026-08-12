@@ -1,6 +1,6 @@
 ---
 name: review-feasibility
-description: This skill MUST be invoked to grade plan analysis/design artifacts for cross-artifact FEASIBILITY — hunting contradictions, impossibilities, buildability conflicts; plus the architecture pass when `architecture.md` is in scope. Emits a 3-state `feasible / needs-revision / infeasible` verdict. The adversarial half of the plan pair; its sibling `review-plan-artifacts` grades coverage/measurability/presence, this grades contradiction/buildability. Never defaults to `feasible`; not the constitution.
+description: This skill MUST be invoked to grade plan analysis/design artifacts for cross-artifact FEASIBILITY — hunting contradictions, impossibilities, buildability conflicts, plus unjustified structure / wrong altitude; plus the architecture pass when `architecture.md` is in scope. Emits a 3-state `feasible / needs-revision / infeasible` verdict. The adversarial half of the plan pair; its sibling `review-plan-artifacts` grades coverage/measurability/presence, this grades contradiction/buildability. Never defaults to `feasible`; not the constitution.
 ---
 
 # Reviewing Feasibility
@@ -22,9 +22,9 @@ This is the **feasibility** half of a two-form cross-artifact review. The other 
 - **Authoring or revising the artifacts** — you review someone else's work; you never write or fix the artifacts you grade. (Independence.)
 - **Single-artifact internal review** — an NFR that is vague, a requirement that is incomplete *on its own* is not feasibility. Feasibility is strictly **cross-artifact**: it lives between two artifacts.
 
-## What you hunt — the six classes
+## What you hunt — the six classes + class 7 (excess / altitude)
 
-Cross-artifact contradictions / impossibilities / buildability only. Each class is a *lens* onto a seam between artifacts where an impossibility hides — not a checkbox. Hunting heuristics and worked examples for each are in [references/FEASIBILITY-LENS.md](references/FEASIBILITY-LENS.md).
+Classes 1–6 hunt cross-artifact contradiction / impossibility / buildability — each a *lens* onto a seam between artifacts where an impossibility hides, not a checkbox. Class 7 is the one **remove-shaped** class (excess / wrong altitude), added beyond the six; its rules sit in the paragraph under the table. Hunting heuristics and worked examples for classes 1–6 are in [references/FEASIBILITY-LENS.md](references/FEASIBILITY-LENS.md).
 
 | # | Class | The question | Artifacts in tension |
 |---|-------|--------------|----------------------|
@@ -34,6 +34,9 @@ Cross-artifact contradictions / impossibilities / buildability only. Each class 
 | 4 | **Decision ↔ decision conflict** | Are two technology choices mutually incompatible? | decisions ↔ decisions |
 | 5 | **NFR ↔ design feasibility** | Can the design *as specified* meet the NFR targets? | NFRs ↔ data-model / contracts |
 | 6 | **Constraint ↔ design buildability** | Are the design artifacts buildable/deployable given the constraints and captured infrastructure? | constraints / infrastructure ↔ data-model / contracts |
+| 7 | **Unjustified structure / wrong altitude** | Does an element exist that no ratified requirement or asserted floor obligation pays for, or is an artifact drawn below its declared altitude (C4 level-3 detail inside a container-level artifact)? | requirements / floor ↔ design artifact |
+
+**Class 7 is remove-shaped — the one class that can fire from a single artifact.** Where classes 1–6 need two artifacts in tension, class 7 asks whether a produced element earns its place at all. Its *necessity* test is the simplest-execution ladder's rung 1 — does any ratified requirement or floor obligation pay for this? — owned by `mochiko:patterns-plan-minimalism` (the ladder itself, never restated here); its *altitude* test is the artifact's own declared level (a container register carrying application-layer, domain, or port-trait rows is drawn below its bar). Class 7 is **blocking-capable**: a survivor blocks `feasible` and lands the verdict at `needs-revision`, but never alone at `infeasible` — excess is resolvable by cutting or re-leveling, not a business-level impossibility. **Calibration:** a class-7 finding is admissible only when it names the cheaper alternative *or* the specific bar breached; a floor-, compliance-module-, or NFR-derived obligation is never excess, however heavy it looks. **Interrogatory round:** before ruling you may put questions to the producer ("which requirement pays for this element?"), and their answers land on record beside the finding — the exchange informs you, the verdict stays yours alone.
 
 **External premises behind a verdict.** A feasibility call resting on an outside-repo claim is
 itself a load-bearing external claim: verify it per
@@ -93,7 +96,7 @@ Where the two brush — e.g. an NFR that is *both* unmeasurable *and* impossible
 
 ### Step 2: Hunt each contradiction class
 
-Load [references/FEASIBILITY-LENS.md](references/FEASIBILITY-LENS.md) and look through each of the six lenses in turn, across the artifact pairs it names. Do not stop at the first clean lens — try to break every combination. The goal is to *prove the system can't be built*; only when you genuinely cannot do you call it feasible.
+Load [references/FEASIBILITY-LENS.md](references/FEASIBILITY-LENS.md) and look through each of the six lenses in turn, across the artifact pairs it names. Do not stop at the first clean lens — try to break every combination. The goal is to *prove the system can't be built*; only when you genuinely cannot do you call it feasible. **Then run class 7** (excess / wrong altitude) per *What you hunt* — a single-artifact necessity/altitude check, not one of the lens-reference pairs.
 
 ### Step 3: Capture each finding as gate fuel
 
@@ -111,8 +114,8 @@ A finding is either a **resolvable** contradiction (a revision closes it) or a *
 
 | Verdict | When | What it means downstream |
 |---------|------|--------------------------|
-| **`feasible`** | every lens hunted, zero cross-artifact contradictions | the artifacts can be built together as specified; the work proceeds |
-| **`needs-revision`** | ≥1 contradiction, all **resolvable** | a routine revision round closes them; specify each conflict + its suggested resolution |
+| **`feasible`** | every lens hunted, zero cross-artifact contradictions, no surviving class-7 finding | the artifacts can be built together as specified; the work proceeds |
+| **`needs-revision`** | ≥1 contradiction or class-7 finding, all **resolvable** | a routine revision round closes them; specify each conflict + its suggested resolution |
 | **`infeasible`** | ≥1 **fundamental** conflict requiring a business-level decision | this is **not** a routine revision — it **escalates** to the human gate with a clear explanation |
 
 **Preserve `infeasible` as a distinct state.** It is a business-level escalation, not a louder `needs-revision`. Collapsing a fundamental conflict into `needs-revision` to keep the loop moving silently drops the most important signal this review produces — the one that says "no amount of revision fixes this; a human must decide." Never flatten it.

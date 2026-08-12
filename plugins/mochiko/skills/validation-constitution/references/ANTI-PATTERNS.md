@@ -13,6 +13,7 @@ Common mistakes when writing constitutions and how to fix them.
 | **Placeholder syndrome** | `[COMMAND]` instead of actual tool | Use detected tools or industry defaults |
 | **Generic thresholds** | "Coverage MUST be measured" | Specify numeric values: "≥80% warning, ≥60% blocking" |
 | **Missing secret management** | "Secrets from env" only | Specify secret managers, scanning tools, .gitignore rules |
+| **Excess governance** | Principle restates a constraint homed elsewhere (GI-017), or has no eliciting fact | Point at the existing home; drop principles no fact justifies (floor/compliance-module/NFR obligations exempt) |
 
 ## Detailed Examples
 

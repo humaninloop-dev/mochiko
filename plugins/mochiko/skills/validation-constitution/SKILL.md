@@ -81,6 +81,8 @@ Vague language MUST be replaced with measurable criteria — the patterns and qu
 live in [references/ANTI-PATTERNS.md](references/ANTI-PATTERNS.md) (*Vague Principle*, *Generic
 Thresholds*, *Missing Enforcement*).
 
+**Excess governance is an anti-pattern too.** Flag as FAIL-eligible a principle that restates a constraint already homed elsewhere (a **GI-017** violation — governance surfaces point at constraint homes, never restate them) or a principle with no eliciting fact in the synthesis. Admissible only when the finding names the constraint's existing home (the cheaper alternative — point, don't restate) or the missing fact (the bar breached); a principle mandated by the asserted floor, an attached compliance module, or an NFR is never excess. These land in the VALIDATION RESULT `Anti-patterns found` line like any other.
+
 ## Common Mistakes
 
 | Mistake | Why It Happens | Fix |

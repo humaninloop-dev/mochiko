@@ -69,8 +69,9 @@ fold · user acceptance not given.
 - **Entry:** the run gates on a feature entry carrying ratified scope — the scope source is
   a spec's accepted Feature Selection or a feature-command delta card. Neither → block: new
   capability to `/mochiko:specify`, feature-keyed delta to `/mochiko:feature`. **Selection
-  scope** additionally gates on the accepted package — the feature's `tasks.md` complete
-  alongside its `plan.md` and `architecture.md` at `.mochiko/features/FEAT-XXX/`; missing or
+  scope** additionally gates on the accepted package the plan run produced — the feature's
+  `tasks.md` complete alongside its `plan.md`, and its `architecture.md` where the proposal
+  included one, at `.mochiko/features/FEAT-XXX/`; missing or
   incomplete → block, point to `/mochiko:plan`; a selected feature ordered earlier and not
   yet `delivered` blocks — one run per feature, in dependency order. **Delta scope** gates
   on the delta card confirmed by a delta-scope plan run; the card's acceptance criteria (a
@@ -95,8 +96,9 @@ fold · user acceptance not given.
   the cycle's diff, `cycle-report.md`, and the codebase around the diff (reuse claims
   never on trust); `minimalism:` findings are advisory to the checkpoint verdict, never a
   cycle-failing gate.
-- **Design inputs:** the feature's `plan.md` and `architecture.md` (the anchor for the
-  deviation check and the built-vs-approved diff) with the feature's other deltas at
+- **Design inputs:** the feature's `plan.md` and — where the proposal produced one —
+  `architecture.md` (the anchor for the deviation check and the built-vs-approved diff) with
+  the feature's other deltas at
   `.mochiko/features/FEAT-XXX/`, plus its `requirements.md` there; the product baselines at
   `.mochiko/product/` — `data-model.md`, `contracts/`, `constraints-and-decisions.md`,
   `nfrs.md` for the numeric quality targets the built code must respect — and `spec.md` for
