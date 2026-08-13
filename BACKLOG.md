@@ -6,13 +6,32 @@ surface is [`ROADMAP.md`](ROADMAP.md). Closing an item = the KM landing ritual
 (`.mochiko/memory/knowledge-management.md`): decision row + move here → the trail
 (`.mochiko/archive/backlog-trail.md`) + touch ROADMAP.md. No `[x]` lives here.
 
-*Last groomed: 2026-08-13 (cap-trip groom at the charter-ritual-balance acceptance landing) —
-baseline: **67 open items** (+1 sound-loop build item this landing; +11 since the 2026-08-06
-baseline 56 — growth is recent session landings, none suspected stale; **delivery sweep not
-run this groom — offered to the user** per the count-watch delta; all items within the
-≤15-line bound). Prior groom narrative: git history (this line, before this groom).*
+*Last groomed: 2026-08-14 (landing groom at the teammate-message-races acceptance) —
+baseline: **67 open items** (net 0 this landing: +1 transport-floor build item, −1 working-tree
+ownership gap closed → trail; +11 since the 2026-08-06 baseline 56 — growth is recent session
+landings, none suspected stale; **delivery sweep still not run — offered to the user** per the
+count-watch delta; all items within the ≤15-line bound). Prior groom narrative: git history
+(this line, before this groom).*
 
 ---
+
+## Teammate-transport floor build
+
+- [ ] **Teammate-transport floor build** (2026-08-14; provenance:
+  [teammate-message-races](.mochiko/brainstorms/teammate-message-races/record.md) D1–D7 + build
+  surface) — cold-buildable: new kind-keyed floor skill (`patterns-*`, name at build;
+  `patterns-sound-loop`'s transport sibling) carrying the **split trigger** (message legs
+  3/4/6/7 on any multi-seat run with cross-seat or lead-relayed messaging; topology legs 1/2/5
+  on shared write surfaces; non-waivable per-trigger) and the **seven legs**: composition steer
+  (D4 binding: concurrent writers on one surface → worktree-isolated writers or a single
+  pen-holder) · single writer per surface · mesh hold · content-pinned supersession · quiesce
+  before cold grade · no-resend · fan-in confirmation — plus the D6 **version floor ≥v2.1.224**
+  with the agent-teams ownership-split line as doc anchor. Pointer lines: six commands
+  (per-command judgment, sound-loop precedent) + the review clusters (CROSS-EXAM's paired
+  exchange is message-leg territory). `patterns-sound-loop`'s "Transport stays neutral" line
+  amended by supersession strip; DECISIONS realignment-D5 row annotated (choice neutral *except
+  where writes collide*). Full ceremony (strips · author≠grader audits · char pre-asserts ·
+  gates 4+5). Residual at build: first-live-run watch (D7 scope: floor-fired-and-followed).
 
 ## Charter ritual-floor build
 
@@ -448,14 +467,6 @@ Raw captures (2026-08-01) — to triage/brainstorm; grooming may re-key into fin
   behavior at the first non-npm composed-in run (F71; kinako/Flutter the live candidate) ·
   (F66 discharged 2026-08-01: the v0.43.0 wave converted implement, first-conversion
   ceiling terms landed.)
-- [ ] **Working-tree ownership gap** (2026-08-01; provenance:
-  `validator-worktree-isolation` record, Open thread 6; doctrine home dissolved 2026-08-04
-  note) — no shipped text governs seats sharing one working tree (independence is defined
-  context-scoped, F19) while three real authoring-side collisions are on record (F48: the
-  implement/specify/setup strip notes, all recovered by falling back to HEAD as baseline).
-  Original home (`command-shape.md` Layer 2) deleted at v0.46.0 — a fix now lands as
-  per-command Harness lines or a memory rule. Scope tree ownership / write discipline per
-  seat; kept out of the validator-isolation session's validator-only scope by ruling (D1).
 - [ ] **Output-style post-build remainders** (2026-08-01; build DONE at v0.44.0 → trail;
   provenance: `verbosity-caveman-ops-separation` record + DECISIONS build row) — was three
   riders; **rider (1), the D6 trio move, closed 2026-08-02 by supersession**: probe re-run
@@ -505,7 +516,11 @@ Raw captures (2026-08-01) — to triage/brainstorm; grooming may re-key into fin
   of calling `SendMessage`), whether a structural nudge or gate can force tool-call dispatch at
   hand-off boundaries, and detection (a hand-off round that produced no `SendMessage` tool call).
   (Its former companions — residual A + the substrate decision — closed 2026-08-04, superseded
-  by transport-neutral D5; this defect is now the sole open teammate-messaging thread.)
+  by transport-neutral D5.) Related 2026-08-14 (`teammate-message-races` record, CV3): the
+  transport floor's **leg 7 fan-in confirmation is this defect's detector** — a hand-off round
+  whose expected deliverable never arrives fails the fan-in confirm regardless of cause
+  (narrated-not-dispatched, silent drop, died seat); the brainstorm scope here (root cause +
+  structural nudge at hand-off boundaries) stays open.
 - [ ] **Fresh-session description-delivery probe** (2026-07-25, succinctness R1; re-scoped
   2026-08-01; set shrunk 2026-08-04 groom) — total-budget hypothesis dead: no description
   exceeds 1,536 chars (max 1,517), the two repaired descriptions deliver complete, yet skills
@@ -531,7 +546,12 @@ Raw captures (2026-08-01) — to triage/brainstorm; grooming may re-key into fin
   discharged clean: the addressability discriminator rotted, probe rebuilt on the documented
   team-config roster check (v0.38.0) — the worked precedent for the next firing. (The roster
   probe itself died with the team mandate at the v8 rebuild, 2026-08-02 D5; the watch
-  survives — commands still name spawn/messaging capabilities.)
+  survives — commands still name spawn/messaging capabilities.) Rider (2026-08-14,
+  `teammate-message-races` D6): this watch carries the transport floor's **version-floor
+  re-verify** — agent-teams ≥v2.1.224 (below it, sends report success on failed mailbox
+  writes) — plus the per-transport semantics the floor cites (teammate delivery
+  documented-automatic, ordering undocumented); re-verify both at the next firing, no
+  parallel watch.
 - [ ] **Two-level "slice" vocabulary watch** (2026-07-02) — graduation slice (spec-level) vs
   vertical slice (cycle-level); if dogfooding shows conflation, sharpen triggers or rename one
   level.
