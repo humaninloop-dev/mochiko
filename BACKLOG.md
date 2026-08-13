@@ -6,17 +6,28 @@ surface is [`ROADMAP.md`](ROADMAP.md). Closing an item = the KM landing ritual
 (`.mochiko/memory/knowledge-management.md`): decision row + move here → the trail
 (`.mochiko/archive/backlog-trail.md`) + touch ROADMAP.md. No `[x]` lives here.
 
-*Last groomed: 2026-08-06 (backlog groom) — baseline: 55 open items (57 at the groom — prior
-49 at the 2026-08-05 delivery sweep; +7 since: 3 to-triage captures 2026-08-04 · 2
-governance-v1.0.0 items · +1 rider absorbed · +1 expansion-watch hit logged at the groom;
-−2 same day: specify.md KM-landing defect closed at v0.54.0 → trail · kinako waves-1–2
-investigation retired by user ruling → trail, ADR `2026-08-06-kinako-waves-retired`). Groom
-notes: To-triage
-section dissolved — its 3 captures re-keyed into Production-only narrowing (hardening levels)
-and Deferred tracks & shelves (design/UX skills · deepeval QC); expansion-heavy-surface watch
-HIT logged (ROADMAP stamp vs CHANGELOG — user decision); all items within the ≤15-line bound.*
+*Last groomed: 2026-08-13 (cap-trip groom at the charter-ritual-balance acceptance landing) —
+baseline: **67 open items** (+1 sound-loop build item this landing; +11 since the 2026-08-06
+baseline 56 — growth is recent session landings, none suspected stale; **delivery sweep not
+run this groom — offered to the user** per the count-watch delta; all items within the
+≤15-line bound). Prior groom narrative: git history (this line, before this groom).*
 
 ---
+
+## Charter ritual-floor build
+
+- [ ] **Sound-loop floor build** (2026-08-13; provenance:
+  [charter-ritual-balance](.mochiko/brainstorms/charter-ritual-balance/record.md) D1–D7,
+  cold-buildable from the record's Build surface) — new discipline skill `patterns-sound-loop`
+  (kind-keyed trigger: judgment-authored × governing surface · three legs incl. producer ≠ lead ·
+  exemptions · delta-card review-leg rule, no exemption · role-claim honesty · seat-wiring
+  defaults + close-report disclosure); charter Boundaries pointer lines (`feature`/`plan`/
+  `implement`) · `feature.md` grooming-door ceiling + import-rituals adaptation (D6) +
+  staffing-freedom clause narrowed (strip owed) · router row · `primitive-edits.md` audit re-key
+  extension. Build obligations: I3 spec-less desk-review procedure (build FAILs if unresolvable) ·
+  I5 per-surface regime table before the list pins. **Carries D5's deferral:** the path-injected
+  rules-file leg (`sound-loop.md`, setup-scaffolded) stays unbuilt; the first observed floor miss
+  in live use builds it immediately (`Contested`, first-miss trigger on record).
 
 ## PM-role & capability-map rebuild
 

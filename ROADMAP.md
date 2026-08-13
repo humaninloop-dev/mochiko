@@ -22,10 +22,10 @@ frontend/mobile/desktop shelves are Tier-I roadmap work.**
 
 ## Next
 
+- Charter ritual-floor build — `patterns-sound-loop` skill + charter pointer lines + grooming-door ceiling + audit re-key (ruled 2026-08-13, cold-buildable; rules-file leg deferred on the first-miss trigger) → [BACKLOG](BACKLOG.md#charter-ritual-floor-build)
 - Cluster-2 oversight-trace ratification wave (2026-07-24) → [BACKLOG](BACKLOG.md#kinako-follow-up-run)
 - Token epic: the one-shot OTel probe (2026-07-23; D5 sizing half closed 2026-08-04 — superseded at v8; probe gains TC's three recorded-open questions) → [BACKLOG](BACKLOG.md#token-reduction-epic)
 - Defect probes: fresh-session description-delivery (2026-07-25) → [BACKLOG](BACKLOG.md#defects--empirical-checks)
-- Re-evaluate the deferred-kernel shortcut entry once the pipeline dogfoods complete (roadmap-v2's surviving next-step; its convention-extraction clause discharged at the 2026-07-25 migration) → [BACKLOG](BACKLOG.md#token-reduction-epic)
 - Production-only narrowing: adaptive-depth build DELIVERED 2026-08-11 at v0.65.0 (first-live-run watch remains) · Tier-I builds queued — security-depth (SD-D1–D6) + ops & observability (OO-D1–D7), both inheriting the two-row obligation; then shelf-build scoping → [BACKLOG](BACKLOG.md#production-only-narrowing)
 - Combined build wave DELIVERED 2026-08-13 at v0.67.0 (plan-the-plan gate + simplest-execution ladder + architect rotation + library-wide remove-shaped review classes); first-live-run watch with dual FEAT-002 probes (weight + level) remains → [BACKLOG](BACKLOG.md#plan-structure-yagni-build)
 - Architecture-primitive dogfood — first merged-plan run with the architecture stage (built 2026-07-30 at v0.32.0); tie-back chain rides it (built 2026-08-04 at v0.51.0, AT-D1–D6) → [BACKLOG](BACKLOG.md#architecture-primitive-build-items)
@@ -41,6 +41,7 @@ frontend/mobile/desktop shelves are Tier-I roadmap work.**
 - Seat-tiering brainstorm (reliability-gated; untouched by the PO reframe — model-seat sense)
 - Token wave-3 candidates (governance/memory layer · brainstorm records)
 - Plain-language sweep (internal-jargon leak, e.g. "Layer -2") — the rule's home ruled into the style home 2026-08-01 (D3); the sweep work itself remains — the output-verbosity half graduated to the Now build row
+- Re-evaluate the deferred-kernel shortcut entry once the pipeline dogfoods complete (demoted from Next at the 2026-08-13 cap-trip groom — condition-gated re-evaluation, Later's species; roadmap-v2's surviving next-step) → [BACKLOG](BACKLOG.md#token-reduction-epic)
 
 ## Standing bets & revisit conditions
 
@@ -53,41 +54,12 @@ frontend/mobile/desktop shelves are Tier-I roadmap work.**
 - ~~**KM pin adopts partial core**~~ (recorded deviation, 2026-07-25) — **discharged 2026-08-06**: the first in-repo setup run ratified the pin into the ruled core (governance v1.0.0, GI-009); residual deviations (GLOSSARY deferral · specify.md landing step) carried in the pin with their own triggers.
 
 ---
-*Last groomed: 2026-08-06 (backlog groom; same-day touches: specify.md KM-landing defect
-closed at v0.54.0 — audit PASS, pin deviation struck, gates 4+5 executed first time,
-marketplace synced · kinako waves-1–2 investigation retired by user ruling, its *Now* row
-dropped, ADR `2026-08-06-kinako-waves-retired` · 2026-08-07: plugin output-styles session
-accepted AND built same day at v0.55.0 — two native output styles + router section, audit
-PASS round 1, item straight to trail · 2026-08-07: implement bounds contract booked HIGH ×2
-from the mochiko-app S1 run evidence AND closed same day at v0.56.0 — Bounds + Escalation
-cadence bullets in `implement.md` Harness, audit FAIL→fix→PASS, both items straight to
-trail; 2026-08-10: feature-sizing & entry-points session accepted — D1–D15, Now row added ·
-2026-08-10: pm-requirements-stacking session accepted AND built same day at v0.62.0 —
-D1–D4 + D2a/D3a, skill supersession + three command additions, audit PASS round 1 all four
-surfaces, item straight to trail · 2026-08-10: validator-scope-and-verbosity session
-accepted — D1–D8, guardrails-vs-detail benchmark Now row added, skill-succinctness-strip
-row method-supersession annotated · 2026-08-12: plan-structure-yagni session accepted —
-D1–D7, Next row added; the two production-only-narrowing Next rows merged to hold the ≤7 cap,
-stamp figure corrected from the stale 6 · 2026-08-13: architect-role-pushback-and-abstraction
-session accepted — D1–D7, sibling Next row + BACKLOG item amended into the combined build wave ·
-2026-08-13: combined wave BUILT at v0.67.0 — 4 producer clusters + 4 auditor seats + audited lead
-ripple, agents cluster FAIL→fix→delta-PASS, item → trail, dual-probe watch stays ·
-2026-08-13: pm-role-and-feature-derivation session accepted — D1–D12, feature-sizing residuals
-Now row absorbed into the rebuild row (Now holds 5), sibling granularity session superseded,
-DECISIONS supersession annotations ×3, BACKLOG rebuild section +2 items ·
-2026-08-13: capability-map rebuild BUILT at v0.68.0 — DM-charter-form wave (4 producer
-clusters + 4 auditors + audited ripple + delta confirms; desk provenance FAIL → D8 rider
-user-ratified → PASS; 27 strips across 9 files), build item → trail, D11 probe watch +
-ARCHITECTURE-staleness defect stay · 2026-08-13: charter anatomy extended to plan+implement
-BUILT at v0.69.0 — ADR-ruled direct build, no session (`2026-08-13-charter-plan-implement`):
-both pipeline commands re-formatted six-section charter behavior-preserving, router 4-site
-re-word, ARCHITECTURE two-anatomy fold, D10 this-command-only clause superseded, 3 audits
-PASS round 1, trail line direct) —
-Now 5 · Next 7 · Later 9 · BACKLOG
-baseline 56 open items (per-item ≤15 lines;
-figures on BACKLOG's stamp line). Plugin: 6 commands · 10 agents · 30 skills · 14 templates +
-modules · 2 output styles, v0.69.0 (marketplace synced). Per-bump build history: `CHANGELOG.md` (from 0.53.0) ·
-`DECISIONS.md` · the trail; pre-0.53.0 stamp-line narratives live in git history (this line,
-before this groom). Stamp compressed to contract shape this groom — expansion-watch hit
-logged in BACKLOG (Operating-docs / KM module section) for the user's report-writer re-open
-call.*
+*Last groomed: 2026-08-13 (cap-trip groom at the charter-ritual-balance acceptance landing:
+session accepted — D1–D7, DECISIONS row + BACKLOG build section + Next row; Next tripped 8/7 —
+the deferred-kernel re-evaluation row demoted to Later as its condition-gated species; prior
+stamp narrative: git history, this line before this groom) —
+Now 5 · Next 7 · Later 10 (at cap) · BACKLOG baseline 67 open items (+11 since the 2026-08-06
+baseline 56 — growth is recent session landings; **delivery sweep not run this groom, offered
+to the user**; per-item ≤15 lines, figures on BACKLOG's stamp line). Plugin: 6 commands ·
+10 agents · 30 skills · 14 templates + modules · 2 output styles, v0.69.0 (marketplace
+synced). Per-bump build history: `CHANGELOG.md` (from 0.53.0) · `DECISIONS.md` · the trail.*
