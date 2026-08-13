@@ -125,6 +125,12 @@ rewritten description (756 — the rotation was a ruled edit shipped through the
 `patterns-plan-minimalism` (new skill, v0.67.0) deliberately unbudgeted — ships hard-cap-only
 (desc ≤1,536); audited at body 4,079 / desc 499; a body budget may seed from a future ruled cut
 or benchmark, never invented.
+`patterns-map-minimalism` (new skill, v0.68.0) likewise unbudgeted — hard-cap-only (desc
+≤1,536); audited at body 4,662 / desc 499 (five-guardrail carrier, disclosed size class above
+its two siblings — justification ruled HOLDS at audit); a body budget may seed from a future
+ruled cut or benchmark, never invented. Standing caution from the same wave's audit:
+`authoring-feature-map` body now measures 15,390 against its 15,413 budget — 23 chars of
+headroom — and its description 598 against 619 (21 chars); re-measure both before any addition.
 
 ## Unbudgeted primitives
 

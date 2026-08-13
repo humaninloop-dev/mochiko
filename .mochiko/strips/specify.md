@@ -9,6 +9,50 @@ the shape is now **v5** (2026-07-30) — see the v0.35.0 section below. **Also s
 
 ---
 
+<!-- Wave context: pm-role-and-feature-derivation build wave (v0.68.0) — pipeline-commands cluster.
+The map re-types to durable capabilities + transient pending/live work rows (2026-08-13 ruling);
+specify gains the PM capability-frame touchpoint at intent and re-keys derivation + selection.
+Command stays v8. -->
+
+## [v0.68.0] Stories-first derivation superseded by frame-first hypothesis + post-stories confirm
+- **Disposition:** superseded → the reworded Harness block "**Confirm frame, cut work rows, filter (after stories)**" (the PM confirms/adjusts the intent-stage capability frame — stories win conflicts — then cuts work rows grouped per capability per the extend-vs-mint tests), the new pure-addition "**Capability frame at intent (before stories)**" bullet (D5.1 — frame as nouns+verbs hypothesis, stories win, greenfield sources), and the intent-stage stub clause reworded to derive frame-first.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-13 "PM role & feature derivation ruled (D1–D12)"; record `.mochiko/brainstorms/pm-role-and-feature-derivation/record.md`, D5 + the D6 per-clause inventory: "specify.md — derive-after-stories clause *amended* (frame-first + confirm, D5)"; feature-map-layer D7 stories-first *amended* to frame-first-hypothesis per the same inventory)
+- **Content (superseded, verbatim):**
+  - Harness block: "**Derivation + filter after stories.** The `product-manager` seat, via `mochiko:authoring-feature-map`, derives proposed features and deltas from the drafted stories against the actual map files, maps every SC-XXX to its verifying feature, and runs the filter — a story that earns no place on the map is rejected with the why recorded in its story file, never silently dropped."
+  - Intent-stage stub clause: "derivation ignores stub text and derives from the stories; a stub matching a derived feature is confirmation"
+- **Kept deliberately:** the stub-parking logic (`unrefined` = unratified hypotheses, never extension anchors; a stub matching nothing stays parked or is retired), the staging rule (derivation output stages in the workspace; live map untouched until acceptance), the load-bearing-rejection escalation. The frame bullet and the `mochiko:patterns-map-minimalism` reference are pure additions riding the decision row.
+- **Consumers assessed:** none — commands are entry points, nothing mounts them. Co-edited this wave: `plan.md` / `implement.md` (capability-batch re-key, own strips); `authoring-feature-map` + new `patterns-map-minimalism` carry the frame/capability-test vocabulary (builder-map/builder-skill this wave); `review-specifications` grades the frame (sibling seat).
+
+---
+
+## [v0.68.0] Leaf/feature selection superseded by work rows grouped per capability
+- **Disposition:** superseded → the reworded "**Selection.**" block (the user picks work rows, grouped per capability, row-level dependency order, the per-capability completeness view of pending rows), the Goal's "**Feature Selection**" description (the confirmed frame + derived work rows grouped per capability + per-capability completeness view), and the reserved-to-user item "**the selection** (which work rows build now)".
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-13 "PM role & feature derivation ruled (D1–D12)"; record `.mochiko/brainstorms/pm-role-and-feature-derivation/record.md`, D2 (durable capabilities + transient pending/live work rows; completeness view) / D5.2 (selection re-key) / D7 (selection picks work rows, row-level ordering) + the D6 inventory "leaf selection *amended* (rows grouped per capability, D7)")
+- **Content (superseded, verbatim):**
+  - Selection block: "**Selection.** The user picks which derived features build now, from the PM's selection card — recommendation, dependency order, the deferred-SC list, and, per parent capability in the spec's territory, the completeness ledger (delivered/undelivered leaves, parked stubs, kills), visible at the moment of choice."
+  - Goal: "a **Feature Selection** section (derived features, filter verdicts with reasons, the user's selection with its deferred-SC list)"
+  - Reserved-to-user: "**the feature selection**"
+- **Kept deliberately:** the section name "Feature Selection" (no template rename — `spec-template.md` out of this cluster's scope), "The PM recommends, never selects", the deferred-SC list, the filter-verdicts content, the acceptance-executes-the-batch semantics.
+- **Consumers assessed:** none mount commands. `spec-template.md`'s Feature Selection section shape is the templates seat's (this wave); `authoring-feature-map` carries the completeness-view/pending-row machinery (builder-map).
+
+---
+
+## [v0.68.0] Acceptance-batch map-write, story-homing, and derivation vocabulary re-keyed to capabilities + work rows
+- **Disposition:** superseded → the re-keyed Goal / Not-done / Independence / Next-step / craft lines: capabilities land or extend and work rows attach (pending; selected rows flip `live`, the capability `in-flight` while live rows exist); a story homes to exactly one work row under a capability; the stress-test grades capability/row derivation; next step is one run per capability-batch in the rows' dependency order.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-13 "PM role & feature derivation ruled (D1–D12)"; record `.mochiko/brainstorms/pm-role-and-feature-derivation/record.md`, D2 (map object model; pending/live rows) + D6 (parent/leaf superseded as re-typing + transience) + D7 (capability-batch, row-level ordering))
+- **Content (superseded, verbatim):**
+  - Goal map-write: "entries land (`proposed`; selected ones flip `in-flight`), deltas attach"
+  - Goal stress-test: "spec + stories + derivation + map delta in one pass"
+  - Goal story mapping: "FEAT-ID mapping"
+  - Not-done: "a drafted story neither homed to exactly one feature nor rejected with a recorded why"
+  - Independence: "the staged entries and deltas" · "feature derivation" · "entries well-formed"
+  - Next step: "one run per selected feature, in the map's dependency order"
+  - Feature-map craft: "entry authoring"
+- **Kept deliberately:** the one-atomic-batch machinery and its `FEATURES.md` + `.mochiko/specs/index.md` touches, the templates (`feature-entry-template.md`, `features-index-template.md`), spec-index stewardship, the map-git-state baseline, the `mochiko:authoring-feature-map` reference (acceptance-time write rules). Pure additions riding the decision row: the `mochiko:patterns-map-minimalism` reference in the craft binding; the Goal's "plus the agreed capability frame" in the Intent section.
+- **Consumers assessed:** none mount commands. Status vocabulary (pending/live rows; `in-flight` = capability status) aligned with `authoring-feature-map`'s invariant re-key (builder-map this wave, per the Delivery Manager's ruling #C2).
+
+---
+
 ## [v0.58.0] Delivery Slices machinery out — feature derivation, selection, and the map write in
 - **Disposition:** superseded → the feature-map-layer rebuild of this command: the Intent stage gains the obligated map-read (D7 rider, D12); a derivation + filter stage (`product-manager` seat via `mochiko:authoring-feature-map`) follows stories; **Selection replaces Delivery Slices** (user-ruled, deferred-SC list on the card per D21); the workspace restructures per D10 (`stories/US-*.md`, specs `index.md`); the map write batch executes at spec acceptance per D20; next step is per-feature `/mochiko:plan` per D17.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-10 "Feature-map layer ruled (D1–D22)"; record `.mochiko/brainstorms/feature-map-layer/record.md` — D4 retires graduation slices, D18/D22 re-key the invariants onto features inside `authoring-feature-map`)

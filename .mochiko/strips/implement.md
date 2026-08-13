@@ -14,6 +14,44 @@ entries below. **Also stale:** the shape is **v5** as of the v0.35.0 wave below,
 
 ---
 
+<!-- Wave context: pm-role-and-feature-derivation build wave (v0.68.0) — pipeline-commands cluster.
+The map re-types to durable capabilities + transient pending/live work rows (2026-08-13 ruling);
+implement's run unit re-keys to the capability-batch and its selection-scope landing gains the
+row folds (delivered rows fold into the capability's extent and vanish; pending rows persist),
+alongside the unchanged baseline-delta folds. Command stays v8. -->
+
+## [v0.68.0] Feature (leaf) run-unit superseded by the capability-batch + row-level dependency ordering
+- **Disposition:** superseded → the re-keyed Goal / Entry: the run unit is the capability-batch (the capability's selected work rows), `$ARGUMENTS` the capability ID; a capability-batch whose selected rows depend on rows not yet `delivered` blocks, batches running in the rows' dependency order.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-13 "PM role & feature derivation ruled (D1–D12)"; record `.mochiko/brainstorms/pm-role-and-feature-derivation/record.md`, D7 + the D6 inventory "plan.md / implement.md — leaf keying *superseded* (capability-batch, D7)")
+- **Content (superseded, verbatim):**
+  - Goal: "turn one feature's accepted `tasks.md` (cycle cards, resolved from `.mochiko/features/FEAT-XXX/`)" · "`$ARGUMENTS` = the feature ID (`FEAT-XXX`); empty → resolve the next planned undelivered feature from the map"
+  - Entry: "the feature's `tasks.md` complete alongside its `plan.md`" · "a selected feature ordered earlier and not yet `delivered` blocks — one run per feature, in dependency order."
+- **Kept deliberately:** the package-gate machinery (`tasks.md` + `plan.md` + conditional `architecture.md` at `.mochiko/features/FEAT-XXX/`), the point-to-plan block, the `.mochiko/features/FEAT-XXX/` path (unchanged; the capability's dir per D7 fold), all TDD / verification / bounds machinery, regression scope, and the delta-scope gate.
+- **Consumers assessed:** none — entry points. Ripple: `plan.md` (same re-key, own strip), `specify.md` (Next-step re-key, own strip), `authoring-feature-map` (capability-batch vocabulary, builder-map).
+
+---
+
+## [v0.68.0] Two-source scope enumeration superseded by the growth-rows-selection / bug-delta-scope split
+- **Disposition:** superseded → the Entry re-word: scope source = a spec's accepted selection or a feature-command card — growth rows as selection scope, a bug/improvement delta as delta scope.
+- **Tier failed:** n/a — supersession by ruling (record `.mochiko/brainstorms/pm-role-and-feature-derivation/record.md`, **D8 "Build-time rider" (user-ratified 2026-08-13, at the v0.68.0 build)**: a growth-door dispatch enters selection scope, a bug/improvement delta card stays delta scope — the split's recorded home, minted because the desk-cluster audit flagged it as a lead coordination call with no recorded home (GI-006); also annotated on the `DECISIONS.md` 2026-08-13 "PM role & feature derivation ruled" pm-role row as the "Build rider". Carried verbatim in `feature.md` (Tools + Boundaries) and `plan.md` / `implement.md` (Entry).)
+- **Content (superseded, verbatim):**
+  - Entry: "the scope source is a spec's accepted Feature Selection or a feature-command delta card"
+- **Kept deliberately:** the neither-source routing (new capability → `/mochiko:specify`; feature-keyed delta → `/mochiko:feature`), and the delta-scope gate mechanics (the delta card confirmed by a delta-scope plan run; the card's acceptance criteria are the cycle's criteria).
+- **Consumers assessed:** none mount commands. `plan.md`'s Entry + Feature-scope binding carried the same line (own strip, same stamp); `feature.md` (Tools + Boundaries) carries the same split verbatim per the D8 Build-time rider — all three scope-split strips (desk + these two) cite that one recorded home.
+
+---
+
+## [v0.68.0] Acceptance-landing selection-scope map-bookkeeping extended to row folds
+- **Disposition:** superseded → the re-keyed Selection-scope landing: this run's delivered work rows fold into the capability's extent lines and the rows vanish (pending rows persist); the capability's status is set `delivered` (dated), never regressing; the spec reads closed when all its selected work rows have folded.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-13 "PM role & feature derivation ruled (D1–D12)"; record `.mochiko/brainstorms/pm-role-and-feature-derivation/record.md`, D2 (the fold moment — a work row's content folds into the capability's extent and the row disappears; sticky-delivered survives as "capability `delivered`, live rows visible, no status regression") / D7 (implement's landing folds the delivered rows) + the D6 inventory "implement's landing fold *extended* to execute row folds; baseline-delta folds *unchanged*")
+- **Content (superseded, verbatim):**
+  - "the feature's status flips to `delivered` (dated) · this feature's marked deltas fold into its extent lines"
+  - "the spec reads closed exactly when all its selected FEAT-IDs read `delivered` (derived, never asserted)"
+- **Kept deliberately:** the `FEATURES.md` index touch, the `ARCHITECTURE.md` In-flight pointer clear, the specs-index touch, "No separate feature-close stage exists", the **Delta scope** branch, and the **Both scopes** baseline graded-fold (three-way diff) — the baseline-delta folds are unchanged. The sticky-delivered delta-carry is re-typed onto the row fold (D6: "invariant 5 sticky-delivered delta-carry *re-typed* (pending/live rows; stickiness survives as no-status-regression)").
+- **Consumers assessed:** none mount commands. `authoring-feature-map` carries the graduation-batch / row-fold grammar (builder-map this wave).
+
+---
+
 ## [v0.67.0] Always-on architecture.md in the selection-scope entry gate + design inputs made proposal-conditional
 - **Disposition:** superseded → the entry + design-inputs re-key in the same file: selection scope gates on the accepted package the plan run produced — `tasks.md` + `plan.md`, and `architecture.md` **only where the proposal included one**; the deviation check and built-vs-approved diff were already conditional on an approved structural delta and are untouched.
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/plan-structure-yagni/record.md` D6a as amended HF-4 — architecture conditional-but-reserved, quiet tie-back; combined wave `.mochiko/brainstorms/architect-role-pushback-and-abstraction/record.md` D5)

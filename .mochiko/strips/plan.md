@@ -11,6 +11,35 @@ conversion at the top of this note.
 
 ---
 
+<!-- Wave context: pm-role-and-feature-derivation build wave (v0.68.0) — pipeline-commands cluster.
+The map re-types to durable capabilities + transient pending/live work rows (2026-08-13 ruling);
+plan's run unit re-keys from the feature (leaf) to the capability-batch. Baselines untouched.
+Command stays v8. -->
+
+## [v0.68.0] Feature (leaf) run-unit superseded by the capability-batch + row-level dependency ordering
+- **Disposition:** superseded → the re-keyed description / Goal / Entry: the run unit is the capability-batch (a capability plus the work rows selected for this run), `$ARGUMENTS` the capability ID with the run covering its selected rows, one run per capability-batch ordered by the selected rows' dependency closure; per-capability artifacts.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-13 "PM role & feature derivation ruled (D1–D12)"; record `.mochiko/brainstorms/pm-role-and-feature-derivation/record.md`, D7 (pipeline keys to the capability-batch; run size preserved; two-altitude baselines scoped-in untouched; row-level cross-capability ordering) + the D6 inventory "plan.md / implement.md — leaf keying *superseded* (capability-batch, D7)"; feature-map-layer D17 one-plan-run-per-feature *superseded* + D4/D22 the-feature-is-the-pipeline-unit *superseded at the leaf tier* per the same inventory)
+- **Content (superseded, verbatim):**
+  - description: "Turn one feature carrying ratified scope into its accepted implementation package — its artifact set scaled to the feature"
+  - Goal: "turn one feature carrying ratified scope on its map entry into its accepted implementation package — the artifacts its approved proposal names, scaled to the feature. One run per feature, in the map's dependency order. `$ARGUMENTS` = the feature ID (`FEAT-XXX`); empty → resolve the next undelivered feature carrying ratified scope from the map"
+  - Goal artifacts head: "**Per-feature artifacts land at `.mochiko/features/FEAT-XXX/`**"
+  - Entry: "a selected feature ordered earlier and not yet `delivered` blocks — one run per feature, strictly sequential."
+- **Kept deliberately:** the whole `.mochiko/product/` two-altitude baseline block + Baseline-seed binding (D7 fold: baselines scoped-in, untouched), the map-hardening Goal clause, both grading lenses, the Screens & Flows trace, the delta-scope collapse, the In-flight-inputs / In-flight-pointer bindings, the Repeat-runs append rule, the `.mochiko/features/FEAT-XXX/` path (FEAT-XXX = the capability; D7 fold re-keys the dir per-capability, path unchanged). Run size unchanged, so plan-the-plan + `patterns-plan-minimalism` machinery apply as-is.
+- **Consumers assessed:** none — commands are entry points. Ripple this wave: `specify.md` (Next-step re-key, own strip), `implement.md` (same re-key, own strip), `authoring-feature-map` (capability-batch vocabulary, builder-map).
+
+---
+
+## [v0.68.0] Two-source scope enumeration superseded by the growth-rows-selection / bug-delta-scope split
+- **Disposition:** superseded → the Entry + Feature-scope binding re-word: the scope source is a spec's accepted selection or a feature-command card — growth rows enter as selection scope, a bug/improvement delta as delta scope.
+- **Tier failed:** n/a — supersession by ruling (record `.mochiko/brainstorms/pm-role-and-feature-derivation/record.md`, **D8 "Build-time rider" (user-ratified 2026-08-13, at the v0.68.0 build)**: a growth-door dispatch enters selection scope, a bug/improvement delta card stays delta scope — the split's recorded home, minted because the desk-cluster audit flagged it as a lead coordination call with no recorded home (GI-006); also annotated on the `DECISIONS.md` 2026-08-13 "PM role & feature derivation ruled" pm-role row as the "Build rider". Carried verbatim in `feature.md` (Tools + Boundaries) and `plan.md` / `implement.md` (Entry).)
+- **Content (superseded, verbatim):**
+  - Entry: "the scope source is a spec's accepted Feature Selection or a feature-command delta card"
+  - Feature-scope binding: "the feature's map entry governs scope and order — its ratified scope sourced from the spec's accepted Feature Selection (selection scope) or the feature-command delta card (delta scope)"
+- **Kept deliberately:** the neither-source routing (new capability → `/mochiko:specify`; feature-keyed delta → `/mochiko:feature`), the delta-scope collapse mechanics, the map-machinery reference (entry shape, delta grammar, the in-flight fork per `mochiko:authoring-feature-map`).
+- **Consumers assessed:** none mount commands. `implement.md`'s Entry carried the identical two-source line — re-keyed same stamp (own strip). `feature.md` (Tools + Boundaries) carries the same split verbatim per the D8 Build-time rider — all three scope-split strips (desk + these two) cite that one recorded home.
+
+---
+
 <!-- Wave context: the combined plan-surface wave — `.mochiko/brainstorms/plan-structure-yagni/record.md`
 (D1–D7, plan overthinking) and `.mochiko/brainstorms/architect-role-pushback-and-abstraction/record.md`
 (D1–D7, architect role), landed in one wave per architect-role D5. -->

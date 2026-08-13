@@ -20,24 +20,9 @@ HIT logged (ROADMAP stamp vs CHANGELOG — user decision); all items within the 
 
 ## PM-role & capability-map rebuild
 
-Ruling: DECISIONS.md row 2026-08-13 (D1–D12 as amended at review); record solo-cold-reviewed
-via blind-map dispatch, 14/14 dispositioned, verify clean after 3 hygiene repairs (trail in the
-record).
+Build DELIVERED 2026-08-13 at v0.68.0 (same-day as the ruling; DM-charter-form wave; trail).
+Open residuals:
 
-- [ ] **Capability-map rebuild (cold-buildable)** (2026-08-13; provenance:
-  [record](.mochiko/brainstorms/pm-role-and-feature-derivation/record.md), Build surface +
-  D6's exhaustive per-clause inventory) — one wave over: new `patterns-map-minimalism` (ranked
-  capability tests · extend-beats-mint · soft cap ~9 · D12 merge mechanics · dormant domain
-  paragraph) · `authoring-feature-map` re-type (capability/work-row vocabulary, frame-first
-  derivation, pending/live rows, fold-at-landing) · both feature templates · `specify.md` (PM
-  frame-as-hypothesis at intent, rows-grouped-per-capability selection) · `feature.md` **charter
-  rewrite** (Delivery-Manager lead, adaptive goals converging to done conditions,
-  floor-as-responsibility, advisory front door + health desk, growth door + capability-write
-  test; audit criteria re-key: floor + per-visit goal contract) · `plan.md`/`implement.md`
-  capability-batch re-key + row folds (`.mochiko/product/` baselines untouched) ·
-  `product-manager.md` posture line. Strips per D6's inventory (DECISIONS annotations already
-  landed at the ruling); `principal-architect.md` untouched (domains dormant). Breaking change,
-  no migration — kinako's map restates on its next touch.
 - [ ] **D11 probe + first-fold watch** (2026-08-13; provenance: record D11) — post-build
   validation gate: kinako map re-derivation probe (directional ~3–4 capabilities + work rows vs
   the current 10 entries; also discriminates D1's undiscriminated causal ranking) + the first
@@ -480,6 +465,20 @@ Raw captures (2026-08-01) — to triage/brainstorm; grooming may re-key into fin
   work itself** — term hunting across runtime prose, worked examples for the ban's list.
 
 ## Defects & empirical checks
+
+- [ ] **ARCHITECTURE.md staleness residue (pre-v0.68.0 debt)** (2026-08-13; provenance: the
+  v0.68.0 ripple audit's fix #1 — precise inventory) — line-3 header still stamps
+  "(v0.48.0…)" (20 versions stale) · System-overview pipeline line reads "governance → spec →
+  slices → plan" and the pipeline mermaid keeps the "per slice when the spec's Delivery
+  Slices section decomposes" edge (slices died v0.49.0/v0.57.0) · the Plan section's "Four
+  producer stages … architecture is the first design artifact" predates the v0.67.0
+  plan-the-plan proposal gate (artifact set is proposal-scaled, architecture conditional) ·
+  the Templates row still says "spec — Intent + Delivery Slices sections included" · the
+  Commands layer-table row describes all 6 as "goal+harness contracts … Bindings (v8
+  rebuild)" — true for 5/6; `feature.md` is the charter exception the same doc's Feature
+  section records (ripple delta-confirm note). Counts were already fixed at the v0.68.0
+  landing (6 commands / 30 skills, delta-confirmed). One grooming pass owns the rest; craft
+  home `mochiko:authoring-architecture`.
 
 - [ ] **Teammate hand-off narrated as text, never dispatched via `SendMessage`** (2026-08-04;
   provenance: capture-session observation, to-brainstorm; title line reconstructed at the

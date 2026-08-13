@@ -21,9 +21,9 @@ flowchart LR
   user(("User"))
   user -->|"/mochiko:* + gate rulings"| commands
   subgraph plugin ["plugins/mochiko/"]
-    commands["commands/ — 5 supervisors"]
+    commands["commands/ — 6 supervisors"]
     agents["agents/ — 10 personas"]
-    skills["skills/ — 29 skills"]
+    skills["skills/ — 30 skills"]
     templates["templates/ — artifact + report schemas, doctrine homes"]
     commands -->|"spawn seats, each dispatch self-briefed"| agents
     agents -->|"carry procedure from"| skills
@@ -51,9 +51,9 @@ pinned in [`CLAUDE.md`](CLAUDE.md#skill-library-conventions-five-axes).
 
 | Layer | Home | Count | Role |
 |---|---|---|---|
-| **Commands** | [`plugins/mochiko/commands/`](plugins/mochiko/commands/) | 5 | User-invoked goal+harness contracts (`disable-model-invocation: true`). Each file states its Goal (default FAIL), Harness (plan approval for producing seats · author ≠ grader independence · decisions reserved to the user), and Bindings (v8 rebuild, v0.48.0; task layer de-granularized + slice absorbed into specify, v0.49.0). The lead plans and orchestrates the run — teammates or subagents per seat is its call. |
+| **Commands** | [`plugins/mochiko/commands/`](plugins/mochiko/commands/) | 6 | User-invoked goal+harness contracts (`disable-model-invocation: true`). Each file states its Goal (default FAIL), Harness (plan approval for producing seats · author ≠ grader independence · decisions reserved to the user), and Bindings (v8 rebuild, v0.48.0; task layer de-granularized + slice absorbed into specify, v0.49.0). The lead plans and orchestrates the run — teammates or subagents per seat is its call. |
 | **Agents** | [`plugins/mochiko/agents/`](plugins/mochiko/agents/) | 10 | Personas (all `model: opus`) that carry judgment and declare `skills:`. A persona contains no trace of any workflow — decoupling by absence; caller-side context rides the dispatch brief. |
-| **Skills** | [`plugins/mochiko/skills/`](plugins/mochiko/skills/) | 29 | Procedure. One user-invoked router ([`skills/mochiko/`](plugins/mochiko/skills/mochiko/SKILL.md)) indexes the other 28, which are model-invoked with graded MUST/SHOULD triggers in their descriptions. Deterministic sub-checks ride as `scripts/` inside skills (e.g. `analysis-codebase`'s `detect-stack.sh`); depth rides as `references/`. |
+| **Skills** | [`plugins/mochiko/skills/`](plugins/mochiko/skills/) | 30 | Procedure. One user-invoked router ([`skills/mochiko/`](plugins/mochiko/skills/mochiko/SKILL.md)) indexes the other 29, which are model-invoked with graded MUST/SHOULD triggers in their descriptions. Deterministic sub-checks ride as `scripts/` inside skills (e.g. `analysis-codebase`'s `detect-stack.sh`); depth rides as `references/`. |
 | **Templates** | [`plugins/mochiko/templates/`](plugins/mochiko/templates/) | 14 + `constitution-modules/` | Two kinds: **artifact schemas** (spec — Intent + Delivery Slices sections included, plan, tasks as cycle cards, governance-intent, …) over the shared `artifact-format.md` envelope; **report schemas** (per-seat reports) over the shared `report-format.md` envelope. The former doctrine homes (`workflow-contract.md`, `agent-dispatch.md`, `sized-end-stage-review.md`) were deleted at the doctrine purge (v0.46.0–v0.47.0) — their mechanics live inline in each command. `constitution-modules/` is setup's module library (knowledge-management, layer-rules, release-gates, evolution-notes). |
 
 The plugin manifest, [`.claude-plugin/plugin.json`](plugins/mochiko/.claude-plugin/plugin.json),
@@ -157,39 +157,46 @@ is an offer, never a default.
 
 [`commands/specify.md`](plugins/mochiko/commands/specify.md). An **intent stage** opens the
 run — an adaptive-probe agenda (`analysis-iterative`: scope · delivery · depth-rigor ·
-UX-bearing · constraints · out-of-scope) closing in a one-screen synthesis the user confirms,
-which governs the authoring brief, the Screens & Flows obligation, the slicing shape, and the
-stress-test's rigor and lands as the spec's Intent section. Then a standing author and a cold
-critic iterate across bounded rounds until the user accepts. A UX-bearing spec carries a
-**Screens & Flows** section — the SCR/FLOW manifest plus a clickable low-fi prototype under
-`prototype/` (`product-engineer` × `authoring-prototype`), authored in story lockstep, the
-user clicking each story's slice as it lands; not UX-bearing takes the waiver line. The spec
-also carries a **Delivery Slices** section — a graduation-slice decomposition
-(`authoring-slices`, lead-dispatched) or the single-slice line — co-accepted with the spec;
-its Graduation contract is the single home for how slice-scoped plan/implement runs consume
-it.
+UX-bearing · constraints · out-of-scope) with the capability map an obligated read, closing
+in a one-screen synthesis the user confirms; within it the `product-manager` seat states the
+**capability frame** — which capabilities the territory touches, extend-vs-mint — as a
+nouns-and-verbs hypothesis that never enumerates stories. Stories are then authored inside
+that frame (a hypothesis, not an anchor: stories win any conflict, resolved at the
+post-stories confirm step). After stories the PM confirms or adjusts the frame, **cuts the
+work rows** grouped per capability, and runs the story filter (rejections recorded, never
+silent); the user rules the **selection** — which work rows build now — with the
+per-capability completeness view (pending rows · stubs · kills) visible at the moment of
+choice. The staged map delta executes as one atomic batch at spec acceptance. A UX-bearing
+spec carries a **Screens & Flows** section — the SCR/FLOW manifest plus a clickable low-fi
+prototype under `prototype/` (`product-engineer` × `authoring-prototype`), authored in story
+lockstep, the user clicking each story's screens as they land; not UX-bearing takes the
+waiver line.
 
 | Seat | Wiring |
 |---|---|
-| producer | `requirements-analyst` × `authoring-requirements`, `authoring-user-stories` (+ `authoring-slices` for the Delivery Slices section, or a seat of the lead's choosing) |
+| producer | `requirements-analyst` × `authoring-requirements`, `authoring-user-stories` — stories and FR/SC authored inside the PM's frame |
+| product manager | `product-manager` × `authoring-feature-map` (+ `patterns-map-minimalism` discipline) — capability frame at intent · confirm + work-row cutting + filter after stories · selection card |
 | prototype producer (UX-bearing) | `product-engineer` × `authoring-prototype` (Screens & Flows manifest + `prototype/` app, story lockstep with the analyst) |
-| critic | `devils-advocate` × `review-specifications` (Delivery Slices grade + Screens & Flows prototype walk included) |
+| critic | `devils-advocate` × `review-specifications` (capability/work-row derivation + map-delta grade, Screens & Flows prototype walk included) |
 
 ```mermaid
 flowchart LR
   user(("User"))
   lead["lead: /mochiko:specify"]
-  producer["requirements-analyst ×<br/>authoring-requirements +<br/>authoring-user-stories +<br/>authoring-slices"]
+  pm["product-manager ×<br/>authoring-feature-map +<br/>patterns-map-minimalism"]
+  producer["requirements-analyst ×<br/>authoring-requirements +<br/>authoring-user-stories"]
   proto["product-engineer ×<br/>authoring-prototype"]
   critic["devils-advocate ×<br/>review-specifications"]
-  user <-->|"intent probes → confirmed synthesis"| lead
+  user <-->|"intent probes → confirmed synthesis<br/>(capability frame included)"| lead
+  lead -->|"frame brief · derivation brief"| pm
   lead -->|"seeded template + intent-keyed brief"| producer
   lead -->|"UX-bearing: story-lockstep briefs"| proto
-  producer --> spec[("specs/&lt;feature&gt;/spec.md<br/>(Intent · stories/FR/SC ·<br/>Screens &amp; Flows · Delivery Slices)")]
+  pm --> spec[(".mochiko/specs/&lt;spec&gt;/:<br/>spec.md (Intent · FR/SC · Screens &amp; Flows ·<br/>Feature Selection) · stories/US-*.md ·<br/>staged map delta")]
+  producer --> spec
   proto --> spec
   user <-->|"clicks each story's screens"| proto
-  spec -->|"graded from the file, prototype walked"| critic -->|"advocate-report.md"| lead
-  lead -->|"spec acceptance (whole)"| user
+  spec -->|"graded from the files, prototype walked"| critic -->|"advocate-report.md"| lead
+  lead -->|"selection + spec acceptance (whole)"| user
 ```
 
 ### Plan — implementation package, architecture first
@@ -208,8 +215,8 @@ anything is designed against it.
 | completeness | `devils-advocate` × `review-plan-artifacts` (cycle cards included) |
 | architecture scribe | `principal-architect` × `authoring-architecture` — disposable, at finalize; records the initial `ARCHITECTURE.md` baseline when the target repo has none |
 
-Case distinguishes two artifacts here: lowercase `architecture.md` is the per-feature design
-artifact under `.mochiko/specs/<feature>/`; uppercase `ARCHITECTURE.md` is a repo's living
+Case distinguishes two artifacts here: lowercase `architecture.md` is the per-capability design
+artifact under `.mochiko/features/FEAT-XXX/`; uppercase `ARCHITECTURE.md` is a repo's living
 system map (the class of doc this file is), folded at landings by the scribe seats.
 
 ```mermaid
@@ -221,16 +228,17 @@ flowchart LR
   feas["tech-lead ×<br/>review-feasibility"]
   comp["devils-advocate ×<br/>review-plan-artifacts"]
   lead --> ta & sa & cards
-  ta & sa & cards --> pkg[("specs/&lt;feature&gt;/: requirements ·<br/>constraints-and-decisions · nfrs ·<br/>architecture · data-model ·<br/>contracts/api.yaml ·<br/>tasks (cycle cards) · plan.md")]
+  ta & sa & cards --> pkg[(".mochiko/features/FEAT-XXX/:<br/>requirements · nfrs · architecture ·<br/>data-model + contract deltas vs<br/>.mochiko/product/ baselines ·<br/>tasks (cycle cards) · plan.md")]
   pkg --> feas & comp
   feas & comp -->|"reports"| lead
   lead -->|"architecture sign-off ·<br/>package acceptance"| user(("User"))
 ```
 
 The architecture scribe runs at finalize, outside the round loop, and is omitted from the
-diagram. Slice-scoped when the spec's Delivery Slices section decomposes: shared artifacts at
-the feature root, per-slice artifacts under `slices/<slice>/`, per the spec's Graduation
-contract.
+diagram. The run unit is the **capability-batch** — one capability plus exactly its selected
+work rows (a `/mochiko:feature` delta card collapses the run to confirming the card); batches
+order by the rows' dependency closure, and design deltas land against the `.mochiko/product/`
+baselines.
 
 ### Implement — execute the cycle cards
 
@@ -264,17 +272,41 @@ flowchart LR
 The approved `architecture.md` is briefed input, guarded twice: the producer's diagram-anchored
 deviation self-check at cycle open/close, and the arch-diff seat's built-vs-approved report at
 final validation. The two disposable seats (arch-diff at final validation, arch-scribe at
-finalize) run outside the cycle loop and are omitted from the diagram.
+finalize) run outside the cycle loop and are omitted from the diagram. The acceptance landing
+executes the graduation whole: delivered work rows fold into the capability's extent (pending
+rows persist), every touched product baseline takes its graded delta fold, and the map
+bookkeeping (index line · In-flight pointer · specs-index row) lands in the same moment — no
+separate feature-close stage exists.
+
+### Feature — the product desk
+
+[`commands/feature.md`](plugins/mochiko/commands/feature.md). The library's one
+**charter-form** command — six sections (Identity & Mission · Adaptive Goal Protocol · Roles &
+Responsibilities · Tools · Ways of Working · Boundaries); the v8 Goal · Harness · Bindings
+anatomy is superseded for this command only, and its audit re-keys to *floor present +
+per-visit goal contract present*. The lead is chartered **Delivery Manager of the product
+desk**: the advisory front door to the capability map. A visit opens with the map-health
+report (stale stubs · unfolded deltas · cap pressure · a what-next line), converges to a
+one-line goal with an explicit done condition, then routes the demand by the
+**capability-write test** — capability writes (mint · merge · retire · status) are sacred to
+`/mochiko:specify` or a user grooming ruling; work rows are delivery bookkeeping the desk may
+cut through the **growth door** (extend-verdict only; several rows, a new UX surface, or
+cross-capability reach route to specify regardless). Growth rows dispatch in selection scope,
+bug/improvement delta cards in delta scope; the desk runs no delivery harness. The
+`product-manager` seat carries extend-vs-mint and cap-trip grooming proposals;
+`principal-architect` co-signs domains, dormant until the first cap-trip.
 
 ### Shared seats
 
-Three personas serve multiple clusters — the reuse axis of the agent layer: `devils-advocate`
-reviews in four (specify, plan, brainstorm, setup); `tech-lead` authors governance in setup
-and reviews feasibility in plan; `principal-architect` authors the architecture (and its
-contest brief) in plan and scribes/diffs `ARCHITECTURE.md` at plan and implement landings;
+Several personas serve multiple clusters — the reuse axis of the agent layer:
+`devils-advocate` reviews in four (specify, plan, brainstorm, setup); `tech-lead` authors
+governance in setup and reviews feasibility in plan; `principal-architect` authors the
+architecture (and its contest brief) in plan, scribes/diffs `ARCHITECTURE.md` at plan and
+implement landings, and co-signs domains at the desk (dormant until the first cap-trip);
+`product-manager` frames and derives in specify and carries the desk's grooming proposals;
 `validator` grades setup's surfaces (and any artifact handed to it with an explicit
-checklist). The slicing and cycle-card crafts (`authoring-slices`, `patterns-vertical-tdd`)
-are seatless — lead-dispatched to whichever producer seat fits the run.
+checklist). The cycle-card craft (`patterns-vertical-tdd`) is seatless — lead-dispatched to
+whichever producer seat fits the run.
 
 ## Cross-cutting doctrine
 
@@ -294,9 +326,14 @@ the **target project's** workspace:
 - **`.mochiko/memory/`** — `governance-intent.md`, `governance-ledger.md`,
   `codebase-analysis.md` (brownfield), and the project-pinned `knowledge-management.md` every
   command resolves at runtime for its KM landing.
-- **`.mochiko/specs/<feature>/`** — the pipeline artifacts: `spec.md` (Intent + Delivery
-  Slices included), the plan package, `tasks.md` (cycle cards), per-seat reports;
-  `slices/<slice>/` when slice-scoped.
+- **`FEATURES.md` + `.mochiko/features/`** — the capability map: the index, per-capability
+  entry files (work rows riding the entries, pending|live), and per-capability run dirs
+  (`FEAT-XXX/`: the plan package, `tasks.md` cycle cards, per-seat reports).
+- **`.mochiko/product/`** — the five product baselines (`data-model.md` · `contracts/` ·
+  `nfrs.md` · `constraints-and-decisions.md` · `quickstart.md`) that per-capability deltas
+  fold into at acceptance landings.
+- **`.mochiko/specs/<spec>/`** — the delivery-event record: `spec.md` (Intent + Feature
+  Selection), `stories/US-*.md`, the staged map delta until acceptance.
 - **`.mochiko/brainstorms/<slug>/`** — `record.md` (+ optional `synthesis.md`) and the session
   index.
 - **The working tree** — implement's deliverable is the code itself; `tasks.md`'s per-card

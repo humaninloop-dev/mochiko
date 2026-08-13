@@ -5,6 +5,47 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.68.0] — 2026-08-13
+
+Capability-map rebuild — the accepted `pm-role-and-feature-derivation` record (D1–D12 as
+amended at review, plus the user-ratified D8 build rider) landed as one four-cluster wave;
+four fresh author≠grader audits + an audited lead ripple.
+
+- **The map re-types** (`authoring-feature-map` + both feature templates): durable
+  **capabilities** + transient **work rows** (pending|live) replace parent/leaf nesting —
+  "feature" is reserved for capabilities; delivered rows fold into the capability's extent at
+  acceptance landings and vanish, pending rows persist as the completeness view; invariants
+  re-keyed (row-level dependency closure · capability status vs row state ·
+  delivered-with-live-rows stickiness · capability-write sacredness · work-row integrity);
+  retired entries may carry a merged-into pointer. 14 supersession strips.
+- **New skill `patterns-map-minimalism`** — the map-minimalism discipline (third sibling):
+  ranked capability tests (system's-language · durability · new-kind govern; noun+verbs a
+  heuristic), extend-beats-mint, the ~9 soft cap with grooming trigger, capability-merge
+  mechanics, and the dormant-domain paragraph (cap-trip only; PM proposes + architect
+  co-signs — machinery deferred to the first real cap-trip).
+- **PM moves to specify's front** (`specify.md`): the intent stage carries the PM's
+  **capability frame** — a nouns-and-verbs hypothesis stories may overturn; after stories the
+  PM confirms the frame, cuts work rows grouped per capability, and runs the filter; selection
+  re-keys to work rows with the per-capability completeness view. `product-manager.md` gains
+  the framing-first posture (persona stays workflow-trace-free).
+- **`feature.md` becomes the product desk — the library's one charter-form command** (v8
+  anatomy superseded for this command only; audit re-keyed to floor + per-visit goal
+  contract, `.claude/rules/mochiko/primitive-edits.md`): Delivery-Manager lead, health report
+  first, each visit converging to a done condition; advisory front door; the **growth door**
+  cuts extend-verdict work rows under the capability-write test (mint/merge/retire/status stay
+  sacred to specify or a user grooming ruling). Growth rows dispatch in selection scope,
+  bug/improvement delta cards in delta scope (the D8 build rider).
+- **Pipeline re-keys to the capability-batch** (`plan.md` / `implement.md`): one plan run per
+  capability's selected rows, ordered by row dependency closure; implement's landing executes
+  the row folds; the `.mochiko/product/` baseline machinery is byte-untouched (verified at
+  audit).
+- Ripple: router rows re-keyed + `patterns-map-minimalism` row (strips), `ARCHITECTURE.md`
+  specify/plan/implement/data-flow sections re-keyed + a new Feature-desk section, cost-budget
+  ledger notes (new skill unbudgeted; `authoring-feature-map` 23-char headroom caution).
+- Audits: map cluster 3/3 PASS · new skill PASS · commands 3/3 PASS (baseline blocks verified
+  byte-identical) · desk cluster PASS after one blocking provenance fix — the scope-split
+  rider had no recorded home; user-ratified onto record D8, strips repointed.
+
 ## [0.67.0] — 2026-08-13
 
 Combined build wave — two accepted records landed together (one strip ceremony per file, one

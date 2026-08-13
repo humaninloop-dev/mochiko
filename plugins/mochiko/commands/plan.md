@@ -1,14 +1,16 @@
 ---
-description: Turn one feature carrying ratified scope into its accepted implementation package — its artifact set scaled to the feature by an approved plan-the-plan proposal (architecture user-signed when the proposal includes it); a delta-scope run collapses to confirming the delta card.
+description: Turn one capability-batch (a capability's selected work rows) carrying ratified scope into its accepted implementation package — its artifact set scaled to the batch by an approved plan-the-plan proposal (architecture user-signed when the proposal includes it); a delta-scope run collapses to confirming the delta card.
 disable-model-invocation: true
 ---
 
 # Plan — Implementation Package
 
-**Goal:** turn one feature carrying ratified scope on its map entry into its accepted
-implementation package — the artifacts its approved proposal names, scaled to the feature. One
-run per feature, in the map's dependency order. `$ARGUMENTS` = the feature ID (`FEAT-XXX`);
-empty → resolve the next undelivered feature carrying ratified scope from the map and confirm
+**Goal:** turn one capability-batch — a capability plus the work rows selected for this run —
+carrying ratified scope on its capability's map entry into its accepted
+implementation package — the artifacts its approved proposal names, scaled to the batch. One
+run per capability-batch, ordered by the selected rows' dependency closure. `$ARGUMENTS` = the
+capability ID (`FEAT-XXX`), the run covering its selected work rows;
+empty → resolve the next capability with selected rows carrying ratified scope from the map and confirm
 with the user.
 
 ## Goal
@@ -20,7 +22,7 @@ The package exists. **Product baselines live at `.mochiko/product/`** — `data-
 first as design input, and change only through the landing's graded fold — never edited in
 place by this run. Absent at run open, **this run seeds them before design input is read**
 (Baseline-seed binding).
-**Per-feature artifacts land at `.mochiko/features/FEAT-XXX/`** — what the
+**Per-capability artifacts land at `.mochiko/features/FEAT-XXX/`** — what the
 feature CHANGES; **which land is the approved proposal's call**: `requirements.md` (FR→TR is
 per-feature analysis) · the design deltas against
 the baselines — `architecture.md`, `data-model.md`, `contracts/`, `nfrs.md`, each a delta
@@ -79,11 +81,13 @@ package never graded by anyone but its authors · user acceptance not given.
   constitution · an infeasible grade — escalated as a business-level scope decision · a need
   conflicting with an in-flight feature's direction — amend the owning spec or lane run, or
   override · package acceptance (done / amend / reject).
-- **Entry:** the run gates on a feature entry carrying ratified scope — the scope source is a
-  spec's accepted Feature Selection or a feature-command delta card. Neither → block: new
+- **Entry:** the run gates on a capability entry with selected work rows carrying ratified
+  scope — the scope source is a
+  spec's accepted selection, or a feature-command card: growth rows enter as selection scope,
+  a bug/improvement delta as delta scope. Neither → block: new
   capability to `/mochiko:specify`, feature-keyed delta to `/mochiko:feature`. **Selection
-  scope** (landing is the graduation batch): a selected feature ordered earlier and not yet
-  `delivered` blocks — one run per feature, strictly sequential. **Delta scope** (landing is
+  scope** (landing is the graduation batch): a capability-batch whose selected rows depend on
+  rows not yet `delivered` blocks — batches run in the rows' dependency closure order. **Delta scope** (landing is
   the delta fold): the run collapses to confirming the delta card against the entry — no
   package authoring where no design surface changes. A missing governance region is surfaced
   (offer `/mochiko:setup`), never auto-resolved; on a brownfield codebase a missing or stale
@@ -99,9 +103,10 @@ package never graded by anyone but its authors · user acceptance not given.
   `architecture.md`'s structure and scope bound are `mochiko:patterns-system-design`'s; the
   structural D-XXX rows land as delta rows against `constraints-and-decisions.md`'s
   designated section.
-- **Feature scope:** the feature's map entry governs scope and order — its ratified scope
-  sourced from the spec's accepted Feature Selection (selection scope) or the feature-command
-  delta card (delta scope); map machinery — entry shape, delta grammar, the in-flight fork —
+- **Feature scope:** the capability entry governs scope and order — its ratified scope
+  sourced from a spec's accepted selection (selection scope) or a feature-command card (growth
+  rows as selection scope, a bug/improvement delta as delta scope); map machinery — entry
+  shape, delta grammar, the in-flight fork —
   per `mochiko:authoring-feature-map`, never restated.
 - **Repeat runs:** cards and reports append (dated); delta files overwrite only via the
   graded fold.

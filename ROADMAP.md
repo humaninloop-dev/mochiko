@@ -15,7 +15,7 @@ frontend/mobile/desktop shelves are Tier-I roadmap work.**
 ## Now
 
 - **Guardrails-vs-detail residuals** — Waves 1+2 DELIVERED 2026-08-11 at v0.63.0/v0.64.0 (27 skills guardrails-cut + slim-described, 10 agents prose-only, D7 cost gate live with FULL ledger coverage — every skill + agent budgeted, M1 retired via 14/14 fire-rate probe, 37/37 audits PASS round 1; trail ×2); remaining: first-live-run watches (F-X1 review-evidence · fire-rate · M2) + the `analysis-codebase` dangling-pointer repair + floor-line consolidation candidate → [BACKLOG](BACKLOG.md#guardrails-vs-detail-residuals)
-- **PM-role & capability-map rebuild** — session accepted 2026-08-13 (D1–D12: map re-types to durable capabilities + transient work rows, PM to specify's front, `/mochiko:feature` becomes the product-desk **charter** with growth door + advisory front door, pipeline re-keys to capability-batch; parent/leaf nesting superseded per D6's exhaustive inventory; sibling granularity session superseded); build cold-buildable + D11 kinako re-derivation probe → [BACKLOG](BACKLOG.md#pm-role--capability-map-rebuild). Absorbs the feature-sizing residuals row — its v0.61.0 first-live-run watch re-scoped into the rebuild; setup baseline-bootstrap hardening stays open → [BACKLOG](BACKLOG.md#feature-sizing--entry-points-residuals)
+- **PM-role & capability-map rebuild residuals** — build DELIVERED 2026-08-13 at v0.68.0, same day as the ruling, in D10's own DM-charter form (capabilities + transient work rows · PM at specify's front · `feature.md` = the charter product desk · capability-batch pipeline re-key · `patterns-map-minimalism`; D8 scope rider user-ratified mid-build after the desk audit caught the unrecorded ruling; 27 strips, all audits PASS; trail); remaining: the D11 kinako re-derivation probe + first-fold watch and the ARCHITECTURE-staleness defect → [BACKLOG](BACKLOG.md#pm-role--capability-map-rebuild) · setup baseline-bootstrap hardening rides its old section → [BACKLOG](BACKLOG.md#feature-sizing--entry-points-residuals)
 - **Cold-review gap-challenge residuals** — build DELIVERED 2026-08-10 at v0.60.0 (blind angle-map phase, coverage findings, reopen routing, both review clusters; trail); remaining: the first-live-run watch → [BACKLOG](BACKLOG.md#cold-review-gap-challenge-residuals)
 - **Feature-map layer residuals** — build DELIVERED 2026-08-10 at v0.57.0–v0.59.0 (slices retired, feature = pipeline unit, `product-manager` agent, FEATURES.md map; trail); remaining: the self-application governance amend (user-gated) + the first-live-run watch (note: first-live-run watch partially overtaken by the sizing/entry-points re-key — watch items re-scope at that build) → [BACKLOG](BACKLOG.md#feature-map-layer-residuals)
 - **KM-module redesign dogfood** — fresh-project scaffold + rules-injection probe of the rebuilt module (2026-07-25; partial credit 2026-08-06: in-repo brownfield setup ran dimension-7 core+electives, collision beat vacuous — fresh-scaffold half + injection probe remain) → [BACKLOG](BACKLOG.md#operating-docs--km-module)
@@ -74,11 +74,15 @@ session accepted — D1–D7, sibling Next row + BACKLOG item amended into the c
 ripple, agents cluster FAIL→fix→delta-PASS, item → trail, dual-probe watch stays ·
 2026-08-13: pm-role-and-feature-derivation session accepted — D1–D12, feature-sizing residuals
 Now row absorbed into the rebuild row (Now holds 5), sibling granularity session superseded,
-DECISIONS supersession annotations ×3, BACKLOG rebuild section +2 items) —
+DECISIONS supersession annotations ×3, BACKLOG rebuild section +2 items ·
+2026-08-13: capability-map rebuild BUILT at v0.68.0 — DM-charter-form wave (4 producer
+clusters + 4 auditors + audited ripple + delta confirms; desk provenance FAIL → D8 rider
+user-ratified → PASS; 27 strips across 9 files), build item → trail, D11 probe watch +
+ARCHITECTURE-staleness defect stay) —
 Now 5 · Next 7 · Later 9 · BACKLOG
 baseline 56 open items (per-item ≤15 lines;
-figures on BACKLOG's stamp line). Plugin: 6 commands · 10 agents · 29 skills · 14 templates +
-modules · 2 output styles, v0.67.0 (marketplace synced). Per-bump build history: `CHANGELOG.md` (from 0.53.0) ·
+figures on BACKLOG's stamp line). Plugin: 6 commands · 10 agents · 30 skills · 14 templates +
+modules · 2 output styles, v0.68.0 (marketplace synced). Per-bump build history: `CHANGELOG.md` (from 0.53.0) ·
 `DECISIONS.md` · the trail; pre-0.53.0 stamp-line narratives live in git history (this line,
 before this groom). Stamp compressed to contract shape this groom — expansion-watch hit
 logged in BACKLOG (Operating-docs / KM module section) for the user's report-writer re-open

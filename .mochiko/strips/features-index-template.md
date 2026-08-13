@@ -7,6 +7,37 @@ dir-beside-entry layout note); one comment line was superseded.
 
 ---
 
+## [v0.68.0] Re-type: capability lines + transient work-row sublines; leaf/parent nesting removed (wave context)
+
+Wave context: the PM-role & feature-derivation build wave (record:
+`.mochiko/brainstorms/pm-role-and-feature-derivation/record.md`; `DECISIONS.md` row 2026-08-13).
+The index re-types — one line per durable **capability**, with **work rows as transient sublines**
+(pending/live) rather than nested leaf features; parent/leaf nesting dies; **domain headers** are
+noted as dormant, appearing only at the soft cap (~9 capabilities, `mochiko:patterns-map-minimalism`).
+Per the record's D6 exhaustive per-clause inventory. Pure `feature`→`capability` swaps ride the
+decision row.
+
+## [v0.68.0] Nesting subline rule superseded → work-row sublines + dormant domain headers
+- **Disposition:** superseded → the one-line comment re-typed: work rows show as transient `live`/`pending` sublines under their capability (delivery increments, not features; a delivered row folds and leaves the index); NO parent/leaf nesting; domain headers dormant until the soft cap; the example table re-shaped to a capability row + work-row subline + stub
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-13 pm-role-and-feature-derivation; record D2 work rows + fold, D4b domains-at-cap, D6 — nesting dies, D7 capability-batch)
+- **Content (verbatim — superseded lines):**
+  - Comment (newlines collapsed): `Nesting: a leaf's row sits directly under its parent's row, name prefixed "↳ " (two levels max — parent then leaves; a parent's status is its roll-up).`
+  - Comment (re-keyed "delta-carrying" → "row-carrying"): `Ordering: newest-relevant first — in-flight and delta-carrying entries at the top`
+  - Table rows: "| ID | Feature | Status | Capability |" · "| [FEAT-001](.mochiko/features/FEAT-001-{{slug}}.md) | {{parent_name}} | {{status}} | {{one_breath_hook}} |" · "| [FEAT-002](.mochiko/features/FEAT-002-{{slug}}.md) | ↳ {{leaf_name}} | {{status}} | {{one_breath_hook}} |" · "| [FEAT-003](.mochiko/features/FEAT-003-{{slug}}.md) | {{stub_name}} | proposed (unrefined) | {{one_breath_hook}} |"
+- **Protected-content reconciliation:** the nesting-row rule (leaf under parent, "↳" prefix, two-level cap, parent-status-is-roll-up) was the feature-sizing D2/D3 ruling (v0.61.0 header entry's "pure additions", carried as index shape) — superseded now by pm-role D6 (nesting dies) and D2 (sublines are transient rows, not sub-features). Not a silent drop.
+- **Kept deliberately:** the "↳ " prefix survives, re-purposed for transient work-row sublines; ordering-newest-relevant-first survives (re-keyed to row-carrying); the `unrefined` mark convention and the dir-beside-entry layout note survive verbatim.
+- **Consumers assessed:** `authoring-feature-map` (dropped the leaf-lines-under-parent checklist line same wave — its strip) · the feature command writes index lines in this shape (parallel seat).
+
+## [v0.68.0] Header write-timing re-keyed — folds at landings; promotion dropped
+- **Disposition:** superseded → the re-typed header comment (one line per **capability**; delivery writes at acceptance landings "where delivered work rows fold"; stewardship writes — stub minting, retire, grooming — land directly)
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-13 pm-role-and-feature-derivation; record D2 fold, D6 — retroactive promotion superseded by the growth door)
+- **Content (verbatim — superseded clauses):**
+  - "one line per feature, full entries live in per-feature files the index points at"
+  - "/mochiko:feature stewardship writes (stub minting, promotion, retire, grooming) land directly"
+- **Protected-content reconciliation:** the write-timing comment was last ruled at v0.61.0 (feature-sizing G4, "Kept deliberately") — its landing points survive; `promotion` drops from the stewardship list (D6/D8: the growth door replaces retroactive promotion) and the fold is named at the acceptance landings.
+- **Kept deliberately:** succinct-index-never-a-monolith, delivery-writes-at-spec-acceptance-and-acceptance-landings, never-mid-run, stewardship-direct — all survive re-worded; both original landing points survive.
+- **Consumers assessed:** `authoring-feature-map` invariant 6 superseded in lockstep (its strip) · the feature command writes index lines (parallel seat).
+
 ## [v0.61.0] Header write-timing comment superseded — lane landings and stewardship writes added
 - **Disposition:** superseded → "delivery writes land at spec acceptance and at acceptance landings (implement or lane run), never mid-run; /mochiko:feature stewardship writes (stub minting, promotion, retire, grooming) land directly."
 - **Tier failed:** n/a — supersession by ruling (lead ruling G4, citing record D6/D12; D7/D14 lane-run landings)

@@ -5,10 +5,11 @@ disable-model-invocation: true
 
 # Implement — Execute the Task Breakdown
 
-**Goal:** turn one feature's accepted `tasks.md` (cycle cards, resolved from
+**Goal:** turn one capability-batch's accepted `tasks.md` (cycle cards for the capability's
+selected work rows, resolved from
 `.mochiko/features/FEAT-XXX/`) into working, verified code — TDD-built, foundation cycles
-before feature cycles, verified against real infrastructure. `$ARGUMENTS` = the feature ID
-(`FEAT-XXX`); empty → resolve the next planned undelivered feature from the map and confirm
+before feature cycles, verified against real infrastructure. `$ARGUMENTS` = the capability ID
+(`FEAT-XXX`); empty → resolve the next capability-batch with a planned package from the map and confirm
 with the user.
 
 ## Goal
@@ -66,14 +67,16 @@ fold · user acceptance not given.
   the cycle and enters the checkpoint batch. A failed `**TEST:**` gate or quality gate is
   never severity-triaged — it fails the cycle per the Goal; `minimalism:` findings stay
   advisory at any severity, per Bindings.
-- **Entry:** the run gates on a feature entry carrying ratified scope — the scope source is
-  a spec's accepted Feature Selection or a feature-command delta card. Neither → block: new
+- **Entry:** the run gates on a capability entry with selected work rows carrying ratified
+  scope — the scope source is
+  a spec's accepted selection, or a feature-command card: growth rows enter as selection
+  scope, a bug/improvement delta as delta scope. Neither → block: new
   capability to `/mochiko:specify`, feature-keyed delta to `/mochiko:feature`. **Selection
-  scope** additionally gates on the accepted package the plan run produced — the feature's
+  scope** additionally gates on the accepted package the plan run produced — the batch's
   `tasks.md` complete alongside its `plan.md`, and its `architecture.md` where the proposal
   included one, at `.mochiko/features/FEAT-XXX/`; missing or
-  incomplete → block, point to `/mochiko:plan`; a selected feature ordered earlier and not
-  yet `delivered` blocks — one run per feature, in dependency order. **Delta scope** gates
+  incomplete → block, point to `/mochiko:plan`; a capability-batch whose selected rows depend
+  on rows not yet `delivered` blocks — batches run in the rows' dependency order. **Delta scope** gates
   on the delta card confirmed by a delta-scope plan run; the card's acceptance criteria (a
   bug's reproduction-failing-test, or 1–3 criteria on the delta) are the cycle's criteria. A
   missing governance region is surfaced, never auto-resolved; present → each code-touching
@@ -127,11 +130,12 @@ fold · user acceptance not given.
   widens in place.
 - **Acceptance landing:** at user acceptance, one landing executes whole, branched by scope
   type. **Selection scope** — the same landing that folds `ARCHITECTURE.md` executes the
-  map's graduation batch per `mochiko:authoring-feature-map`: the feature's status flips to
-  `delivered` (dated) · this feature's marked deltas fold into its extent lines · the
+  map's graduation batch per `mochiko:authoring-feature-map`: this run's delivered work rows
+  fold into the capability's extent lines and the rows vanish (pending rows persist) · the
+  capability's status is set `delivered` (dated), never regressing · the
   `FEATURES.md` index line updates · the `ARCHITECTURE.md` In-flight pointer is cleared ·
   the specs-index row is touched — the spec reads closed exactly when all its selected
-  FEAT-IDs read `delivered` (derived, never asserted). No separate feature-close stage
+  work rows have folded (derived, never asserted). No separate feature-close stage
   exists. **Delta scope** — the entry's marked delta folds per `mochiko:authoring-feature-map`'s
   delta fold. **Both scopes:** every touched baseline folds via a graded fold — three-way
   diff: pre-fold baseline + delta vs folded result; delta applied whole, nothing else

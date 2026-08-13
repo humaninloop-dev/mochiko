@@ -40,6 +40,13 @@ change is done. Full contracts: `.mochiko/strips/README.md`.
   skill at v0.45.0) — the matching `validation-*` / `review-*` skill otherwise. The editor never
   grades their own edit — dispatch a separate validator.
 
+  **Exception — `feature.md` (charter form, D10 v0.68.0):** the desk command is graded against
+  *floor present + per-visit goal contract present* — the Boundaries floor + the DM's
+  bare-minimum responsibilities, and the Adaptive Goal Protocol's converge-to-done-condition
+  contract — in place of the default-FAIL-goal / Harness / Bindings checks. Everything else
+  (independence, preserved responsibilities, strips, budgets) applies unchanged. Ruling:
+  `.mochiko/brainstorms/pm-role-and-feature-derivation/record.md` D10.
+
 **Protected content leaves ONLY by ruling.** A line in a record's protected set, marked `KEPT:`, or
 traceable to a `DECISIONS.md` row may be removed only as a recorded supersession-by-ruling. A silent
 deletion is exactly what the audit's preserved-responsibilities check reads as a regression — and it

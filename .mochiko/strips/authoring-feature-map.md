@@ -9,6 +9,105 @@ the same wave superseded.
 
 ---
 
+## [v0.68.0] Re-type: parent/leaf feature model → durable capabilities + transient work rows (wave context)
+
+Wave context: the PM-role & feature-derivation build wave (record:
+`.mochiko/brainstorms/pm-role-and-feature-derivation/record.md`; `DECISIONS.md` row 2026-08-13
+"PM role & feature derivation ruled (D1–D12 as amended at review)"). The map re-types — "feature"
+now reserved for durable **capabilities**; the old "leaf" becomes a transient **work row** that
+folds into its capability's extent at delivery and vanishes; parent/leaf nesting dies (re-typing +
+transience, per the record's D6 exhaustive per-clause inventory). The v0.68.0 entries below record
+every clause that ruling superseded in this skill. Pure `feature`→`capability` / `leaf`→`work row`
+vocabulary swaps that preserve a rule verbatim-in-meaning ride the decision row and are not
+separately stripped; every clause whose meaning, structure, or membership changed is entered below.
+
+Several superseded clauses were themselves feature-sizing & entry-points survivors (`DECISIONS.md`
+2026-08-10; the v0.61.0/v0.63.0 entries further down) marked "Kept deliberately" — the nesting,
+parent-roll-up, and sizing-bar rulings. Superseding them now is the recorded ruling D6 requires;
+each entry names the prior-survivor lineage so the preserved-responsibilities audit reads a ruling,
+not a silent drop.
+
+## [v0.68.0] Overview reframed — feature-is-built-thing + four-touchpoint "graduates" superseded
+- **Disposition:** superseded → the capability/work-row Overview (two-row-type model; frame-first derivation; fold-at-landing; the `mochiko:patterns-map-minimalism` discipline reference; the map-side-vs-product-baseline altitude line)
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-13 pm-role-and-feature-derivation; record D1 published-surface reframe, D2 two-row-type model, D5 frame-first, D6 re-type inventory)
+- **Content (verbatim — the superseded Overview clauses):**
+  - "A **feature is the built thing**: a capability of the system described in the system's own language — not a cluster or regrouping of user stories. Stories inform *which* features get built and sharpen their extents; they never define them."
+  - "The map has four touchpoints: **specify proposes** (this skill's core work), **plan confirms and hardens** alongside architecture, **implement's acceptance landing graduates** — status flips, delta folds, and index touches are bookkeeping edits inside that landing, never a separate close stage — and **`/mochiko:feature` stewards**: stub minting, retroactive promotion, retire, integrity grooming, plus lane intake for small feature-keyed work."
+  - "This skill is the map judgment plus the entry authoring — the map-read agenda at intent, the derivation and filter after stories, entry and delta authoring, and the write rules."
+- **Kept deliberately:** the `FEATURES.md`-index / one-living-map / per-entry-file framing; the peer-of-`ARCHITECTURE.md` framing; independent-delivery-axes; the density envelope — all survive re-worded. `plan confirms and hardens` and the never-a-separate-close-stage clause survive; `retroactive promotion` is dropped from stewardship (superseded — the D8 growth door cuts work rows in its place).
+- **Consumers assessed (shared skill — 5 consuming commands):** setup/specify/plan/implement/feature dispatch by name and rely on the invariants + derivation behavior, not on Overview anchors; the re-type lands across their seats in the same wave.
+
+## [v0.68.0] Vocabulary table parent/leaf rows superseded → Capability + Work row
+- **Disposition:** superseded → two rows — **Capability** (durable, the only "feature") and **Work row** (transient increment; `pending`/`live`; folds into extent at landing) — plus the capability-batch pipeline-unit note replacing "leaf = pipeline unit"
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-13 pm-role-and-feature-derivation; record D2, D6, D7 capability-batch)
+- **Content (verbatim — superseded rows):**
+  - "| **Feature — parent** | Product | The capability a product person names in one breath; navigation + status roll-up over its leaves, never built directly | **this skill** (map entry) |"
+  - "| **Feature — leaf** | Pipeline unit | A deliverable built capability; graduates through plan/implement as its own unit (a flat entry is a leaf) | **this skill** (map entry) |"
+  - vertical-slice row cell "Implementation, within one leaf" (re-keyed → "within one capability-batch run")
+- **Protected-content reconciliation:** these two rows were the "Kept deliberately" survivors of the v0.63.0 guardrails cut and trace to feature-sizing D2 (nested entries) / D3 (two-level cap) — superseded now by pm-role D6 (nesting dies as re-typing + transience). Not a silent drop.
+- **Kept deliberately:** the user-story row unchanged; the vertical-slice row survives, re-keyed leaf→capability-batch run.
+- **Consumers assessed:** `mochiko:patterns-vertical-tdd` (Related line re-keyed same edit — cuts one capability-batch run now) · plan/implement re-key to capability-batch in parallel seats.
+
+## [v0.68.0] Invariant 5 sticky-delivered parent-roll-up clause superseded → capability stickiness + fold
+- **Disposition:** superseded → "**Delivered is sticky; delivered rows fold.**" — a `live` row folds into extent at landing and vanishes; a `pending` row persists as open obligation; a `delivered` capability keeps status while carrying live rows, the change riding on the row until its fold; status never regresses
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-13 pm-role-and-feature-derivation; record D2 fold + pending/live, D6 — parent-roll-up superseded by the fold)
+- **Content (verbatim):** "5. **Delivered is sticky.** A later spec or lane run touching a `delivered` feature never regresses its status; the change rides as a marked delta until that work's landing folds it. Roll-up yields to stickiness: a delivered parent gaining an in-flight child keeps `delivered`, the child riding as a delta. `retired` is terminal: entry kept, dated, provenance intact — never deleted."
+- **Protected-content reconciliation:** the parent-roll-up sentence ("a delivered parent gaining an in-flight child keeps `delivered`") was a feature-sizing D2 survivor (v0.61.0 delta-grammar entry, "Kept deliberately"); superseded now — the fold replaces roll-up (D6). The delta-carry re-types onto the work row.
+- **Kept deliberately:** no-status-regression survives (now capability-level); `retired`-terminal survives verbatim; sticky-delivered itself survives as the capability + live-rows rule.
+- **Consumers assessed:** review-specifications carries map-integrity by reference; implement's landing seat executes the fold (parallel seat, same wave).
+
+## [v0.68.0] Invariant 6 write-timing re-keyed + capability-write sacredness added; retroactive promotion dropped
+- **Disposition:** superseded → "**Capability writes are sacred; delivery writes land at acceptance; stewardship writes are direct.**" — capability mint/merge/retire/status is the sacred layer (specify or a user grooming ruling only); cutting work rows is desk bookkeeping; proposed entries + cut rows stage in the workspace, the delivery-status write (in-flight flips, row folds) batches at the acceptance landing; stewardship writes (stub minting, retire, grooming) land directly
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-13 pm-role-and-feature-derivation; record D8 capability-write test, D6 — retroactive promotion superseded by the growth door)
+- **Content (verbatim):** "6. **Delivery writes land at acceptance; stewardship writes are direct.** During a run, proposed entries and deltas live in the spec workspace; the map write is one atomic batch at spec acceptance, and a rejected spec never touched the map. `/mochiko:feature` stewardship writes — stub minting, retroactive promotion, retire, grooming fixes — land directly, outside spec acceptance. Delivery-status writes (in-flight flips, graduations, delta folds) land only at acceptance landings. Reads happen any time."
+- **Protected-content reconciliation:** this invariant was itself the v0.61.0 split-write ruling (feature-sizing G4, "Kept deliberately"); its clauses survive re-worded, with two ruled changes — `retroactive promotion` removed from the stewardship list (D6/D8: the growth door cutting work rows replaces it) and `graduations, delta folds` → `row folds`. Capability-write sacredness (D8) is the new obligation added.
+- **Kept deliberately:** workspace staging, the atomic acceptance batch, rejected-spec-never-touched, reads-any-time, stewardship-direct — all survive; checklist "stewardship writes per invariant 6 excepted" still holds.
+- **Consumers assessed:** `/mochiko:feature` (the sacred-layer boundary re-keys to the capability-write test in its own charter rewrite, parallel seat) · review-specifications grades delivery writes against the workspace baseline.
+
+## [v0.68.0] Invariant 7 integrity re-keyed — parent-roll-up-defect + orphaned-delta clauses superseded
+- **Disposition:** superseded → the work-row integrity form: every work row names its run; every `live` row / `in-flight` status points at an open run; a row whose run ended without folding is a defect; closed-spec-pointed-at and specs-index-contradiction defects survive
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-13 pm-role-and-feature-derivation; record D6 — the fold removes parent roll-up; delta re-types to work row)
+- **Content (verbatim):** "7. **Map integrity — fix on sight.** No dangling FEAT-IDs; index lines and entry files agree on status; no orphaned deltas; every delta names its spec or lane run; every `in-flight` status or delta points at an open spec or a live lane run — live from dispatch until its acceptance landing; a delta whose lane run ended without folding is a defect, fix-on-sight. A closed spec still pointed at is a defect; a parent whose status contradicts its children's roll-up is a defect; a specs-index row contradicting the map is a defect."
+- **Protected-content reconciliation:** the "parent whose status contradicts its children's roll-up is a defect" clause was a feature-sizing D2 survivor (v0.61.0 invariant-7 entry, "Kept deliberately") — superseded now (no parents; the fold replaces roll-up). The delta-integrity clauses re-type to work rows verbatim-in-meaning.
+- **Kept deliberately:** dangling-FEAT-ID, index/entry agreement, closed-spec-defect, specs-index-contradiction — all survive; the delta-names-its-run and live-until-landing rules survive re-typed onto work rows.
+- **Consumers assessed:** review-specifications (pipeline-core map-integrity invariants by reference) · the lane run's verification seat (parallel seat).
+
+## [v0.68.0] Invariants 3–4 re-keyed to the work-row unit
+- **Disposition:** superseded → dependency closure runs at the **row** level (a row depending on another capability's row orders the two capability-batch runs); the status invariant scopes to **capability** status + **work-row state** (`pending`/`live`)
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-13 pm-role-and-feature-derivation; record D7 + M12 row-level ordering, D2 pending/live states)
+- **Content (verbatim):**
+  - "3. **Dependency closure.** A selected feature must be buildable given only the features ordered before it, per the map's relations. No forward dependencies."
+  - "4. **The map owns status.** `proposed / in-flight / delivered / retired` — one home, no copies. Story files derive status by following their FEAT-ID; the only story-native status is `rejected`."
+- **Kept deliberately:** no-forward-dependencies, one-home-no-copies, story-derives-status-via-FEAT-ID, story-native-`rejected` — all verbatim; the closure and status rules are extended to the row unit, not weakened.
+- **Consumers assessed:** review-specifications carries closure + status invariants by reference; plan/implement honor row-level ordering in parallel seats.
+
+## [v0.68.0] Red-flags + checklist nesting/sizing/per-parent cluster superseded (section-level inventory)
+- **Disposition:** superseded → the capability/work-row red flags and checklist (flat capabilities · domains-at-cap only · oversize = two capabilities or work rows · frame-as-hypothesis · fold-and-vanish · per-capability completeness · row-level closure · work-row sublines)
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-13 pm-role-and-feature-derivation; record D2/D4/D5/D6/D7)
+- **Content (verbatim — superseded lines):**
+  - Red flag: `"This capability wants a third level" — it doesn't get one; split the parent into two parents`
+  - Red flag: `"The parent should go back to in-flight now that a new child arrived" — delivered is sticky; the child rides as a marked delta and folds when it delivers`
+  - Red flag (remedy re-keyed): `"This entry needs eight extent lines to be honest" — then it is not one leaf; split it, or mint a parent`
+  - Red flag (re-keyed leaf→row): `"This leaf is just a phase, a thin layer is fine" — a phase-leaf must stand alone as a working increment, never a horizontal layer`
+  - Red flag (re-keyed feature→capability): `"Every story maps to its own new feature" — the filter never fired; features are capabilities, not story mirrors`
+  - Rationalization cell (re-keyed delta→row): `| "The delta will obviously fold, no need to name the spec" | An unnamed delta is unauditable; a delta whose spec or lane run died is invisible rot. The grammar exists to make both checkable. |`
+  - Checklist: "Nesting honest: two levels max; leaves the only pipeline units; every parent's status agrees with its children's roll-up (or carries the sticky-delivered delta); single-leaf parents deliberate"
+  - Checklist: "Every entry within the sizing bars — one-breath name at parent/flat, extent ≤ ~3 lines at leaf — or split / parent minted"
+  - Checklist: "Index lines agree with entry files on status and name; leaf lines under their parent; no dangling FEAT-IDs introduced"
+  - Checklist: "Selection card prepared with recommendation, deferred-SC list, per-parent completeness ledger line (delivered/undelivered leaves · stubs · kills), and ordering — the ruling left to the user"
+  - Checklist: "Territory-touching parents' parked stubs and undelivered leaves re-surfaced on the selection card; any dependency-blocked leaf/stub escalated as a recommendation (leaf via asserted map relation, stub via flagged-unverified judgment), never a forced cut"
+  - Checklist: "Any leaf cut as an across-round phase is independently useful — a working increment, not a horizontal layer"
+- **Protected-content reconciliation:** the nesting red flags, the two-level/sizing-bar checklist lines, and the per-parent completeness-ledger line were feature-sizing D1–D4 survivors ("Kept deliberately" across the v0.61.0/v0.63.0 entries) — superseded now by pm-role D6 (no nesting) / D2 (fold + pending rows) / D7 (capability-batch). The escalation-never-forced-cut, re-verify, phase-stands-alone, and story-mirror-ban rules survive re-keyed, not dropped.
+- **Kept deliberately:** the extend-beats-mint mirror ban (re-keyed to capability), the phase-stands-alone rule (re-keyed to work row), escalation-is-recommendation-never-forced-cut, first-touch-re-verify, stub-is-hypothesis, selectability-specify-only, pseudo-capability ban — all survive; per-parent completeness re-homes as per-capability completeness (pending rows · folded rows · deferred SCs).
+- **Consumers assessed:** product-manager agent applies this skill's guardrails at derivation — no restatement in its persona (decoupling holds); review-specifications grades the derivation output.
+
+## [v0.68.0] Description frontmatter re-keyed for the capability/work-row model
+- **Disposition:** superseded → the rewritten `description:` (names durable capabilities + transient work rows; adds triggers 'capability', 'work row', 'extend beats mint'; adds the `mochiko:patterns-map-minimalism` discipline boundary; measured 598 chars, under the 619 budget and the 1,536 delivery cap)
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-13 pm-role-and-feature-derivation; record D2/D4c/D5)
+- **Content (verbatim old, 495 chars):** "This skill MUST be invoked when deriving or updating the repo-level feature map — the living FEATURES.md index plus per-feature FEAT-XXX entry files — during a specify run or a /mochiko:feature stewardship touch. SHOULD also invoke on 'feature map', 'FEATURES.md', 'FEAT-XXX', 'propose features', 'feature derivation', or 'map delta'. Boundary: authors and maintains the MAP — NOT user stories (mochiko:authoring-user-stories), NOT architecture views, NOT selection. Never grades its own output."
+- **Kept deliberately:** the MUST/SHOULD grading, the FEATURES.md/FEAT-XXX/'feature map'/'feature derivation'/'map delta' triggers ('map delta' retained by ruling — old muscle memory fires, the skill teaches the new vocabulary), the three NOT-boundaries, and the author≠grader closing survive; 'propose features' dropped to hold the budget.
+- **Consumers assessed:** description is the model-invocation surface only; no primitive quotes it.
+
 ## [v0.63.0] Guardrails cut — procedure/walkthrough sections removed, invariants + red-flags + checklist kept; slim description
 
 - **Disposition:** superseded → benchmark-ruled guardrails body + slim description (`variants/body/authoring-feature-map/`, `variants/descriptions/authoring-feature-map/`), one merged edit.
