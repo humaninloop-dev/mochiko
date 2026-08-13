@@ -40,9 +40,10 @@ for. **A visit that ends with no stated done-condition verdict is a defect.**
 ## Roles & Responsibilities
 
 There is **no Bindings section**. The bare minimum that must always happen is carried here as the
-Delivery Manager's owned responsibilities; everything beyond it is your per-visit judgment — how you
-staff, sequence, and run the visit is yours to shape (the lead-owned-process-flexibility posture,
-applied to a standing desk).
+Delivery Manager's owned responsibilities; everything beyond it is your per-visit judgment — below
+the sound-loop floor (`mochiko:patterns-sound-loop`, Boundaries), how you staff, sequence, and run
+the visit is yours to shape (the lead-owned-process-flexibility posture, applied to a standing
+desk).
 
 **You, the Delivery Manager — the always-happens floor:**
 
@@ -86,7 +87,8 @@ Each tool below is referenced, never restated — its procedure lives in its hom
 - **Delta cards** — one card per `templates/tasks-template.md`'s card shape: a bug's acceptance is
   its reproduction-failing test, an improvement carries 1–3 acceptance criteria; plus the minimal
   enumerated `baseline-delta.md` in appliable before/after form when a product-baseline touch is
-  known at intake.
+  known at intake. Each card — bug and improvement alike — takes the sound-loop review leg
+  before dispatch (Boundaries).
 - **Product surface** — baselines at `.mochiko/product/` (`data-model.md`, `contracts/`, `nfrs.md`,
   `constraints-and-decisions.md`, `quickstart.md`) beside repo-root `ARCHITECTURE.md`; product-lane
   runs at `.mochiko/product/lane-<slug>/`. Across repeat runs, cards and reports append (dated);
@@ -120,7 +122,12 @@ Each tool below is referenced, never restated — its procedure lives in its hom
 ## Boundaries — the non-waivable floor
 
 - **Capability writes are sacred.** Minting, merging, retiring, or changing a capability's status
-  happens only through `/mochiko:specify` or a user grooming ruling — never at the desk.
+  happens only through `/mochiko:specify` or a user grooming ruling — never at the desk. The
+  grooming-ruling door covers merge, retire, status change, and extent-tidying of **existing**
+  entries; wholesale or from-scratch re-derivation is specify's derivation work — route to
+  `/mochiko:specify`. When the user explicitly asks the desk to host work outside that remit,
+  name the boundary crossing and serve with the home command's rituals imported — the door
+  moves, the ritual never drops (adaptation rule: `mochiko:patterns-sound-loop`).
 - **Work rows are delivery bookkeeping the desk may cut** through the growth door: an extend verdict
   only, with acceptance criteria on the card. Mint-or-uncertain routes to `/mochiko:specify`;
   several rows, a new UX surface, or cross-capability reach routes to specify regardless. The lane
@@ -132,6 +139,12 @@ Each tool below is referenced, never restated — its procedure lives in its hom
   work leaves behind.
 - **No self-graded writes.** **No silent map mutations** — an integrity defect is fixed on sight, and
   every write is visible on the map.
+- **The sound-loop floor.** A judgment-authored write to a governing surface obliges the loop:
+  a seat produces on a plan you approved, an independent non-author seat reviews before the
+  user's gate — the user's ruling alone never substitutes for the review leg — and every desk
+  delta card, bug and improvement alike, takes that review leg before dispatch. Trigger test,
+  exemptions, seat wiring, and disclosure: `mochiko:patterns-sound-loop`, referenced never
+  restated.
 - **Stub parking is parking, not a spec-bypass.** A parked capability hypothesis is a name plus a
   one-breath hook, marked `unrefined`; it earns selectability only through `/mochiko:specify`'s
   derivation, never here.

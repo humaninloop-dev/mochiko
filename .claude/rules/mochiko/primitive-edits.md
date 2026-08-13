@@ -42,8 +42,9 @@ change is done. Full contracts: `.mochiko/strips/README.md`.
 
   **Exception — charter-form commands (`feature.md` D10 v0.68.0; `plan.md` / `implement.md`
   ADR 2026-08-13-charter-plan-implement v0.69.0):** a charter command is graded against
-  *floor present + goal contract present* — the Boundaries floor + the DM's bare-minimum
-  responsibilities, and the Adaptive Goal Protocol's contract — in place of the
+  *floor present + goal contract present* — the Boundaries floor (including the sound-loop
+  floor pointer `mochiko:patterns-sound-loop`, present in all three charters) + the DM's
+  bare-minimum responsibilities, and the Adaptive Goal Protocol's contract — in place of the
   default-FAIL-goal / Harness / Bindings checks. For `feature.md` (the standing desk) the
   contract is **per-visit**: converge-to-done-condition. For `plan.md` / `implement.md`
   (pipeline runs) the contract is **per-run**: (i) a protocol step literally labeled
@@ -58,7 +59,8 @@ change is done. Full contracts: `.mochiko/strips/README.md`.
   (independence, decisions reserved to the user, preserved responsibilities, strips,
   budgets) applies unchanged. Rulings:
   `.mochiko/brainstorms/pm-role-and-feature-derivation/record.md` D10 ·
-  `.mochiko/decisions/2026-08-13-charter-plan-implement.md`.
+  `.mochiko/decisions/2026-08-13-charter-plan-implement.md` ·
+  `.mochiko/brainstorms/charter-ritual-balance/record.md` D3 (`DECISIONS.md` 2026-08-13).
 
 **Protected content leaves ONLY by ruling.** A line in a record's protected set, marked `KEPT:`, or
 traceable to a `DECISIONS.md` row may be removed only as a recorded supersession-by-ruling. A silent

@@ -175,3 +175,8 @@ Each tool below is referenced, never restated — its procedure lives in its hom
   feature's map entry.
 - **Feature work never overrules the constitution.** A governance conflict conforms, or is
   amended/waived through `governance-ledger.md` — the user's ruling.
+- **The sound-loop floor.** A judgment-authored write to a governing surface obliges the loop:
+  a seat produces on a plan you approved, an independent non-author seat reviews before the
+  user's gate, the user rules — this run's shape (proposal gate, producing seats, independent
+  grades, package acceptance) already carries it. Trigger test, exemptions, seat wiring, and
+  disclosure: `mochiko:patterns-sound-loop`, referenced never restated.

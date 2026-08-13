@@ -4,6 +4,66 @@ Entry formats: `strips/README.md`. Ruling for every [v0.68.0] entry below:
 `DECISIONS.md` 2026-08-13 "PM role & feature derivation" row →
 `.mochiko/brainstorms/pm-role-and-feature-derivation/record.md` (D6/D7/D8/D9/D10).
 
+## [v0.70.0] Unbounded "user grooming ruling" door → D6 ceiling (Boundaries, capability writes)
+- **Disposition:** superseded → the same bullet, extended in place: the grooming-ruling door now
+  covers merge, retire, status change, and extent-tidying of **existing** entries; wholesale or
+  from-scratch re-derivation routes to `/mochiko:specify`; explicit-user out-of-remit hosting
+  names the boundary crossing and imports the home command's rituals (adaptation rule carried by
+  `mochiko:patterns-sound-loop`).
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-13 "Charter ritual
+  balance ruled" row, D6; record `.mochiko/brainstorms/charter-ritual-balance/record.md` D6 —
+  driver F4: the kinako whole-map re-derivation passed through this door legally, the sole check
+  one user "adopt", no review leg beneath it).
+- **Content:** the v0.68.0 bullet, verbatim:
+
+  ```
+  - **Capability writes are sacred.** Minting, merging, retiring, or changing a capability's status
+    happens only through `/mochiko:specify` or a user grooming ruling — never at the desk.
+  ```
+
+  What dies is the unbounded reading — any capability write, at any scale, legal through a single
+  user grooming ruling. Mint never enters the enumerated door (the ceiling's list is D6.1's,
+  existing entries only).
+- **Kept deliberately:** the first sentence survives verbatim as the bullet's opening —
+  capability writes stay sacred, the two doors (specify · user grooming ruling) stay the only
+  doors; the kinako route is recorded out-of-bounds under the ceiling but its adopted outcome
+  stands ratified — nothing rolls back (D6.2).
+- **Consumers assessed:** grep of `plugins/mochiko/` for the door's phrasing — the router's
+  `/mochiko:feature` row (stewardship: view/query, park, retire, integrity grooming, cap-trip
+  merge/retire proposals) stays true under the ceiling, no re-derivation claim to repair;
+  `specify.md`'s reciprocal front-door wording gains scope (re-derivation routes to it) with no
+  text change owed; `plan.md`/`implement.md` never reference the grooming door.
+
+## [v0.70.0] Unscoped staffing freedom → "below the sound-loop floor" narrowing (Roles & Responsibilities)
+- **Disposition:** superseded → the same sentence, narrowed in place: per-visit
+  staffing/sequencing/run freedom now scoped "below the sound-loop floor"
+  (`mochiko:patterns-sound-loop`, pointed at from Boundaries); when the floor's trigger fires,
+  the lead-absorbs-the-seat reading dies — a seat produces on an approved plan, an independent
+  non-author seat reviews, the user rules.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-13 "Charter ritual
+  balance ruled" row, D1/D3; record `.mochiko/brainstorms/charter-ritual-balance/record.md` D1 —
+  "the *lead-absorbs-the-seat* reading of 'how you staff … is yours to shape' dies when the D2
+  trigger fires; that clause takes a recorded narrowing at build").
+- **Content:** the v0.68.0 paragraph, verbatim:
+
+  ```
+  There is **no Bindings section**. The bare minimum that must always happen is carried here as the
+  Delivery Manager's owned responsibilities; everything beyond it is your per-visit judgment — how you
+  staff, sequence, and run the visit is yours to shape (the lead-owned-process-flexibility posture,
+  applied to a standing desk).
+  ```
+
+- **Kept deliberately:** everything but the scoping — the no-Bindings rule stands (D4: no
+  Bindings section returns), the DM floor stands, and the lead-owned-process-flexibility posture
+  itself stays chartered below the floor (D1: "when the trigger does not fire, the lead's inline
+  freedom stands as chartered"); transport neutrality (teammate vs subagent per seat) untouched
+  at the transport level (F6, `command-architecture-realignment` D5).
+- **Consumers assessed:** the sibling staffing clauses in `plan.md` ("how you staff, sequence,
+  and run the seats is yours to shape") and `implement.md` ("…run the cycles…") are deliberately
+  NOT narrowed this wave — the record's build surface gives those charters pointer lines only
+  ("their run shapes already satisfy the floor; the pointer makes it doctrine, not habit"); the
+  router's lead-orchestration line stays true at the transport level.
+
 ## [v0.68.0] v8 Goal · Harness · Bindings anatomy → six-section charter (the product desk)
 - **Disposition:** superseded → the six-section charter that now IS `commands/feature.md`
   (Identity & Mission · Adaptive Goal Protocol · Roles & Responsibilities · Tools · Ways of Working

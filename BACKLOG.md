@@ -16,18 +16,19 @@ run this groom — offered to the user** per the count-watch delta; all items wi
 
 ## Charter ritual-floor build
 
-- [ ] **Sound-loop floor build** (2026-08-13; provenance:
-  [charter-ritual-balance](.mochiko/brainstorms/charter-ritual-balance/record.md) D1–D7,
-  cold-buildable from the record's Build surface) — new discipline skill `patterns-sound-loop`
-  (kind-keyed trigger: judgment-authored × governing surface · three legs incl. producer ≠ lead ·
-  exemptions · delta-card review-leg rule, no exemption · role-claim honesty · seat-wiring
-  defaults + close-report disclosure); charter Boundaries pointer lines (`feature`/`plan`/
-  `implement`) · `feature.md` grooming-door ceiling + import-rituals adaptation (D6) +
-  staffing-freedom clause narrowed (strip owed) · router row · `primitive-edits.md` audit re-key
-  extension. Build obligations: I3 spec-less desk-review procedure (build FAILs if unresolvable) ·
-  I5 per-surface regime table before the list pins. **Carries D5's deferral:** the path-injected
-  rules-file leg (`sound-loop.md`, setup-scaffolded) stays unbuilt; the first observed floor miss
-  in live use builds it immediately (`Contested`, first-miss trigger on record).
+Build DELIVERED 2026-08-13 at v0.70.0 (same-day as the ruling; the wave ran under the floor it
+ships — 2 plan-approved producer seats + 2 fresh author≠grader validator seats, 2/2 PASS round 1;
+trail). Open residual:
+
+- [ ] **D5 rules-file leg (first-miss trigger) + first-live-run watch** (2026-08-13; provenance:
+  [charter-ritual-balance](.mochiko/brainstorms/charter-ritual-balance/record.md) D5 `Contested` +
+  D7) — the path-injected `.claude/rules/mochiko/sound-loop.md` leg (setup-scaffolded, path-scoped
+  to the governing surfaces) stays deliberately unbuilt; **the first observed floor miss in live
+  use — a judgment-authored governing-surface write that runs without the loop — builds it
+  immediately, no new session** (trigger on record). Watch the floor's first live trips (a desk
+  visit with a qualifying write · the first ad-hoc governing-surface write): disclosure line
+  present, named seats real, review leg run. D7 declined a session probe; this watch is standard
+  build hygiene only.
 
 ## PM-role & capability-map rebuild
 

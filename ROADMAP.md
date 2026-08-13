@@ -22,7 +22,7 @@ frontend/mobile/desktop shelves are Tier-I roadmap work.**
 
 ## Next
 
-- Charter ritual-floor build — `patterns-sound-loop` skill + charter pointer lines + grooming-door ceiling + audit re-key (ruled 2026-08-13, cold-buildable; rules-file leg deferred on the first-miss trigger) → [BACKLOG](BACKLOG.md#charter-ritual-floor-build)
+- Charter ritual-floor build DELIVERED 2026-08-13 at v0.70.0 (same-day as the ruling; the wave ran under the floor it ships — 2 plan-approved producer seats + 2 fresh auditor seats, 2/2 PASS round 1, 2 supersession strips; trail); remaining: the D5 rules-file leg on its first-miss trigger + the first-live-run watch → [BACKLOG](BACKLOG.md#charter-ritual-floor-build)
 - Cluster-2 oversight-trace ratification wave (2026-07-24) → [BACKLOG](BACKLOG.md#kinako-follow-up-run)
 - Token epic: the one-shot OTel probe (2026-07-23; D5 sizing half closed 2026-08-04 — superseded at v8; probe gains TC's three recorded-open questions) → [BACKLOG](BACKLOG.md#token-reduction-epic)
 - Defect probes: fresh-session description-delivery (2026-07-25) → [BACKLOG](BACKLOG.md#defects--empirical-checks)
@@ -61,5 +61,6 @@ stamp narrative: git history, this line before this groom) —
 Now 5 · Next 7 · Later 10 (at cap) · BACKLOG baseline 67 open items (+11 since the 2026-08-06
 baseline 56 — growth is recent session landings; **delivery sweep not run this groom, offered
 to the user**; per-item ≤15 lines, figures on BACKLOG's stamp line). Plugin: 6 commands ·
-10 agents · 30 skills · 14 templates + modules · 2 output styles, v0.69.0 (marketplace
-synced). Per-bump build history: `CHANGELOG.md` (from 0.53.0) · `DECISIONS.md` · the trail.*
+10 agents · 31 skills · 14 templates + modules · 2 output styles, v0.70.0 (marketplace
+synced; sound-loop floor build same day — Next row annotated DELIVERED in place). Per-bump
+build history: `CHANGELOG.md` (from 0.53.0) · `DECISIONS.md` · the trail.*

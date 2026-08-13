@@ -181,3 +181,8 @@ Each tool below is referenced, never restated — its procedure lives in its hom
   (Tools).
 - **The lane never widens in place.** A product-lane run discovering it stands on an
   in-flight feature's territory files the finding to that run and aborts.
+- **The sound-loop floor.** A judgment-authored write to a governing surface obliges the loop:
+  a seat produces on a plan you approved, an independent non-author seat reviews before the
+  user's gate, the user rules — this run's shape (builders on approved plans, verification
+  seats never the implementer, final acceptance) already carries it. Trigger test, exemptions,
+  seat wiring, and disclosure: `mochiko:patterns-sound-loop`, referenced never restated.

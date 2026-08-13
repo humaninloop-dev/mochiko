@@ -5,6 +5,39 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.70.0] — 2026-08-13
+
+Sound-loop floor build — the accepted `charter-ritual-balance` record (D1–D7 as amended at
+review) landed as one wave; the wave itself ran under the floor it ships: two producer seats
+on lead-approved plans, two fresh author≠grader validator seats, the user's word opening and
+closing it.
+
+- **New skill `patterns-sound-loop`** — fourth discipline sibling: the kind-keyed trigger
+  (judgment-authored × governing surface, no size threshold), the per-member regime table
+  (four surfaces satisfied by construction; net-new bite: capability map · product baselines ·
+  `ARCHITECTURE.md` folds outside landings), the three legs (a seat produces on a lead-approved
+  plan, never the lead · independent non-author review — the user's ruling alone never
+  substitutes · user gate), three exemptions (mechanical execution · transcription ·
+  fix-on-sight) with the explicit no-delta-card-exemption rule (review leg before dispatch),
+  the import-rituals adaptation for out-of-remit hosting, role-claim honesty, the default
+  seat-wiring table (map: `product-manager` × `devils-advocate` with the spec-less desk
+  procedure · architecture/baseline: `principal-architect` × `tech-lead` · desk delta cards:
+  `devils-advocate`), and the pinned disclosure grammar (`floor: tripped|clear · seats: …`).
+  Desc 500 / body 5,729, unbudgeted at birth (ledger note).
+- **`feature.md`** — Boundaries sound-loop floor bullet · Tools delta-cards review-leg rider ·
+  the capability-writes bullet gains the D6 grooming-door ceiling (merge · retire · status ·
+  extent-tidy of **existing** entries; wholesale re-derivation routes to specify; explicit-user
+  out-of-remit hosting names the crossing and imports the home rituals; mint enumerated out of
+  the door) · staffing freedom narrowed "below the sound-loop floor". 2 supersession strips.
+- **`plan.md` / `implement.md`** — one Boundaries floor pointer bullet each; their run shapes
+  already satisfy the floor — the pointer makes it doctrine, not habit. Pure additions.
+- **Ripple**: router row (Specify cluster, beside `patterns-map-minimalism`) · charter audit
+  re-key extended in `primitive-edits.md` (sound-loop pointer a graded floor check, all three
+  charters; rulings list cites the record) · cost-budgets ledger note.
+- **Deferred by ruling (D5, `Contested`)**: the path-injected rules-file leg stays unbuilt —
+  the first observed floor miss in live use builds it immediately (BACKLOG carries the trigger).
+- Audits: 2 fresh author≠grader validator seats (skill · 6-file cluster), 2/2 PASS round 1.
+
 ## [0.69.0] — 2026-08-13
 
 Charter anatomy extended to the pipeline pair — ADR `2026-08-13-charter-plan-implement`
