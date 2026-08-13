@@ -40,12 +40,25 @@ change is done. Full contracts: `.mochiko/strips/README.md`.
   skill at v0.45.0) — the matching `validation-*` / `review-*` skill otherwise. The editor never
   grades their own edit — dispatch a separate validator.
 
-  **Exception — `feature.md` (charter form, D10 v0.68.0):** the desk command is graded against
-  *floor present + per-visit goal contract present* — the Boundaries floor + the DM's
-  bare-minimum responsibilities, and the Adaptive Goal Protocol's converge-to-done-condition
-  contract — in place of the default-FAIL-goal / Harness / Bindings checks. Everything else
-  (independence, preserved responsibilities, strips, budgets) applies unchanged. Ruling:
-  `.mochiko/brainstorms/pm-role-and-feature-derivation/record.md` D10.
+  **Exception — charter-form commands (`feature.md` D10 v0.68.0; `plan.md` / `implement.md`
+  ADR 2026-08-13-charter-plan-implement v0.69.0):** a charter command is graded against
+  *floor present + goal contract present* — the Boundaries floor + the DM's bare-minimum
+  responsibilities, and the Adaptive Goal Protocol's contract — in place of the
+  default-FAIL-goal / Harness / Bindings checks. For `feature.md` (the standing desk) the
+  contract is **per-visit**: converge-to-done-condition. For `plan.md` / `implement.md`
+  (pipeline runs) the contract is **per-run**: (i) a protocol step literally labeled
+  **Entry** carrying the neither-source routing; (ii) convergence at a named EXISTING user
+  gate — plan: proposal approval, the approved list = the run's done condition and
+  default-FAIL floor, delta scope collapsing; implement: run-open confirmation naming batch,
+  scope type, attempt bound (redeclarable there and only there), and the fixed done
+  condition; (iii) a fixed done condition closing at the existing acceptance gate; (iv) the
+  `**Not done — default FAIL**` list present with every prior FAIL clause surviving. The
+  check must NOT demand a per-run negotiated goal (that is the desk's per-visit form, not
+  the pipeline's) and must not demand Goal / Harness / Bindings sections. Everything else
+  (independence, decisions reserved to the user, preserved responsibilities, strips,
+  budgets) applies unchanged. Rulings:
+  `.mochiko/brainstorms/pm-role-and-feature-derivation/record.md` D10 ·
+  `.mochiko/decisions/2026-08-13-charter-plan-implement.md`.
 
 **Protected content leaves ONLY by ruling.** A line in a record's protected set, marked `KEPT:`, or
 traceable to a `DECISIONS.md` row may be removed only as a recorded supersession-by-ruling. A silent

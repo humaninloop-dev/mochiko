@@ -78,11 +78,15 @@ DECISIONS supersession annotations ×3, BACKLOG rebuild section +2 items ·
 2026-08-13: capability-map rebuild BUILT at v0.68.0 — DM-charter-form wave (4 producer
 clusters + 4 auditors + audited ripple + delta confirms; desk provenance FAIL → D8 rider
 user-ratified → PASS; 27 strips across 9 files), build item → trail, D11 probe watch +
-ARCHITECTURE-staleness defect stay) —
+ARCHITECTURE-staleness defect stay · 2026-08-13: charter anatomy extended to plan+implement
+BUILT at v0.69.0 — ADR-ruled direct build, no session (`2026-08-13-charter-plan-implement`):
+both pipeline commands re-formatted six-section charter behavior-preserving, router 4-site
+re-word, ARCHITECTURE two-anatomy fold, D10 this-command-only clause superseded, 3 audits
+PASS round 1, trail line direct) —
 Now 5 · Next 7 · Later 9 · BACKLOG
 baseline 56 open items (per-item ≤15 lines;
 figures on BACKLOG's stamp line). Plugin: 6 commands · 10 agents · 30 skills · 14 templates +
-modules · 2 output styles, v0.68.0 (marketplace synced). Per-bump build history: `CHANGELOG.md` (from 0.53.0) ·
+modules · 2 output styles, v0.69.0 (marketplace synced). Per-bump build history: `CHANGELOG.md` (from 0.53.0) ·
 `DECISIONS.md` · the trail; pre-0.53.0 stamp-line narratives live in git history (this line,
 before this groom). Stamp compressed to contract shape this groom — expansion-watch hit
 logged in BACKLOG (Operating-docs / KM module section) for the user's report-writer re-open

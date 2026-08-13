@@ -12,15 +12,19 @@ disable-model-invocation: true
 
 ## What mochiko is
 
-The kernel-free successor to human-in-loop. Discipline lives in the skill library; the lead plans and orchestrates natively (teammates or subagents, its call). Every command is **goal + harness**: a verifiable done-condition (default FAIL) plus the non-waivable frame — plan approval for producing seats, author ≠ grader independence, the decisions reserved to the user, and the bindings the lead cannot invent. See `ROADMAP.md` for the thesis.
+The kernel-free successor to human-in-loop. Discipline lives in the skill library; the lead plans and orchestrates natively (teammates or subagents, its call). Every command states a verifiable done-condition (default FAIL) plus the non-waivable frame — plan approval for producing seats, author ≠ grader independence, the decisions reserved to the user, and the homes the lead cannot invent. See `ROADMAP.md` for the thesis.
 
 ## How the library composes
 
-Each command below states its Goal, Harness, and Bindings — the whole contract — and the
-lead composes the run toward it. Any run, command or not, is sound only when its
-done-condition was written before it ran and defaults to FAIL, no output is cleared by its
-author (the grade reads the artifact itself), and the decisions the command reserves to the
-user are ruled by the user.
+Each command below states its whole contract in one of two anatomies — `setup`, `specify`,
+and `brainstorm` as v8 **Goal · Harness · Bindings**; `feature`, `plan`, and `implement` as
+six-section **charters** (Identity & Mission · Adaptive Goal Protocol · Roles &
+Responsibilities · Tools · Ways of Working · Boundaries), whose Boundaries floor,
+Delivery-Manager responsibilities, and goal contract carry the same teeth — and the lead
+composes the run toward it. Any run, command or not, is sound only when its done-condition
+was written before it ran and defaults to FAIL, no output is cleared by its author (the
+grade reads the artifact itself), and the decisions the command reserves to the user are
+ruled by the user.
 
 **The two review-skill families** (the `validation-*`/`review-*` split, 2026-07-18): the prefix encodes **who owns the
 clearing**. `validation-*` = the skill **issues the authoritative grade** — a binary PASS/FAIL
@@ -101,7 +105,7 @@ human adjudicates; the reviewer's verdict never clears anything by itself.
 |---------|------------|
 | `/mochiko:setup` | you want to create, amend, or brownfield-derive the project's governance (lands on native surfaces — no constitution.md). The lead interrogates your intent, you ratify the synthesis before anything is authored, an independent grade confirms the trace from the files, and you accept the surface set |
 | `/mochiko:specify` | you want to spec **new-shape capability** work — an intent stage you confirm first (the capability map an obligated read; the PM states a capability frame as a nouns-and-verbs hypothesis: scope · delivery · depth · UX-bearing), stories authored inside the frame (stories win conflicts), work rows cut from them with the story filter (rejections recorded, never silent), a **Screens & Flows** section (clickable low-fi prototype you click story-by-story, or the waiver line) and a **Feature Selection** you rule on (work rows grouped per capability, the completeness view + deferred SCs shown at the moment of choice), independently stress-tested from the file — prototype walked, map delta graded — with the map write landing only at your acceptance |
-| `/mochiko:feature` | you want the **product desk** — the library's one charter command (Delivery-Manager lead; each visit opens with a map-health report and converges to a one-line goal with an explicit done condition): stewardship (view/query, park a capability stub `unrefined`, retire, integrity grooming, cap-trip merge/retire proposals), the **growth door** (extend-verdict work rows cut and dispatched in selection scope), and bug/improvement lanes (delta cards, delta scope). Advisory front door — default entry when unsure, the only door for growth/bug/improvement intake. NOT new-shape capability work — that's `/mochiko:specify` |
+| `/mochiko:feature` | you want the **product desk** — a charter command (Delivery-Manager lead; each visit opens with a map-health report and converges to a one-line goal with an explicit done condition): stewardship (view/query, park a capability stub `unrefined`, retire, integrity grooming, cap-trip merge/retire proposals), the **growth door** (extend-verdict work rows cut and dispatched in selection scope), and bug/improvement lanes (delta cards, delta scope). Advisory front door — default entry when unsure, the only door for growth/bug/improvement intake. NOT new-shape capability work — that's `/mochiko:specify` |
 | `/mochiko:plan` | you want to turn ratified scope into an accepted implementation **package** — entry is a **capability-batch** (FEAT-XXX plus its selected work rows), the scope a spec's accepted selection or a feature-command card; the run opens with the **plan-the-plan proposal** you approve (artifact list + depth, rung-justified, independently contested — the approved list is the run's floor), then the proposed artifacts: the architecture delta when proposed (signed off on a rendered diagram before detailed design builds on it), detailed design, and the **cycle cards** (`tasks.md`) — independently graded for conformance, feasibility, and completeness; one run per capability-batch ordered by the rows' dependency closure, artifacts at `.mochiko/features/FEAT-XXX/`, deltas against the product baselines; delta scope collapses plan to confirming the card; next step `/mochiko:implement` |
 | `/mochiko:implement` | you want to turn accepted cycle cards into working, verified code — entry keyed to the capability-batch (FEAT-XXX, artifacts at `.mochiko/features/FEAT-XXX/`); each card decomposed by its builder at build time, TDD-built, independently verified against real infrastructure with captured evidence, closing on your acceptance — the landing folds delivered work rows into the capability's extent (pending rows persist) and the touched product baselines take their graded delta folds (selection scope graduates the batch; delta scope folds the delta) |
 | `/mochiko:brainstorm` | you want to think a problem through one question at a time; the deliverable is a cold-reviewed `record.md` you accept, pipeline entry offered, never defaulted |
@@ -130,7 +134,7 @@ main conversation only and never alter workflow reports or artifacts
 ## Operating rules (context hygiene)
 
 - **Always cross the producer↔validator boundary.** The author never grades its own output; the lead dispatches an independent validator that Reads the artifact itself. Never mount producer and validator skills on one agent.
-- **The lead is the command, not an agent.** Verdict ownership and the decisions reserved to the user live in the workflow's `commands/<name>.md` goal+harness contract, not in any persona.
+- **The lead is the command, not an agent.** Verdict ownership and the decisions reserved to the user live in the workflow's `commands/<name>.md` contract, not in any persona.
 - **Keep a producer↔validator round in one unbroken context** so the validator reasons across the whole artifact at once — a fresh context loses the picture.
 
 ## Adding to the library

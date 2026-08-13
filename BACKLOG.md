@@ -473,12 +473,11 @@ Raw captures (2026-08-01) — to triage/brainstorm; grooming may re-key into fin
   Slices section decomposes" edge (slices died v0.49.0/v0.57.0) · the Plan section's "Four
   producer stages … architecture is the first design artifact" predates the v0.67.0
   plan-the-plan proposal gate (artifact set is proposal-scaled, architecture conditional) ·
-  the Templates row still says "spec — Intent + Delivery Slices sections included" · the
-  Commands layer-table row describes all 6 as "goal+harness contracts … Bindings (v8
-  rebuild)" — true for 5/6; `feature.md` is the charter exception the same doc's Feature
-  section records (ripple delta-confirm note). Counts were already fixed at the v0.68.0
-  landing (6 commands / 30 skills, delta-confirmed). One grooming pass owns the rest; craft
-  home `mochiko:authoring-architecture`.
+  the Templates row still says "spec — Intent + Delivery Slices sections included". Counts
+  were already fixed at the v0.68.0 landing (6 commands / 30 skills, delta-confirmed); the
+  Commands-row / Command-form / Feature-section anatomy claims were re-worded to the
+  two-anatomy reality at the v0.69.0 charter-extension landing. One grooming pass owns the
+  rest; craft home `mochiko:authoring-architecture`.
 
 - [ ] **Teammate hand-off narrated as text, never dispatched via `SendMessage`** (2026-08-04;
   provenance: capture-session observation, to-brainstorm; title line reconstructed at the

@@ -13,8 +13,9 @@ data flow.
 Mochiko is a kernel-free Claude Code plugin: a product-delivery pipeline (governance → spec →
 slices → plan → implementation) run entirely through native primitives — markdown command
 supervisors, agent-team personas, and skills. There is no orchestration engine: each command
-*is* the orchestrator for its workflow, and every command is a goal + harness contract the lead
-composes a run toward, with named decisions reserved to the user.
+*is* the orchestrator for its workflow, and every command is a contract the lead composes a run
+toward — a verifiable done-condition plus a non-waivable frame, in one of two anatomies (see
+Command form) — with named decisions reserved to the user.
 
 ```mermaid
 flowchart LR
@@ -51,7 +52,7 @@ pinned in [`CLAUDE.md`](CLAUDE.md#skill-library-conventions-five-axes).
 
 | Layer | Home | Count | Role |
 |---|---|---|---|
-| **Commands** | [`plugins/mochiko/commands/`](plugins/mochiko/commands/) | 6 | User-invoked goal+harness contracts (`disable-model-invocation: true`). Each file states its Goal (default FAIL), Harness (plan approval for producing seats · author ≠ grader independence · decisions reserved to the user), and Bindings (v8 rebuild, v0.48.0; task layer de-granularized + slice absorbed into specify, v0.49.0). The lead plans and orchestrates the run — teammates or subagents per seat is its call. |
+| **Commands** | [`plugins/mochiko/commands/`](plugins/mochiko/commands/) | 6 | User-invoked contracts (`disable-model-invocation: true`) in two anatomies: `setup` / `specify` / `brainstorm` state Goal (default FAIL) · Harness (plan approval for producing seats · author ≠ grader independence · decisions reserved to the user) · Bindings (v8 rebuild, v0.48.0); `feature` / `plan` / `implement` are six-section **charters** — Delivery-Manager lead, the always-happens floor as owned responsibilities, the non-waivable floor in Boundaries (desk v0.68.0; pipeline pair v0.69.0). The lead plans and orchestrates the run — teammates or subagents per seat is its call. |
 | **Agents** | [`plugins/mochiko/agents/`](plugins/mochiko/agents/) | 10 | Personas (all `model: opus`) that carry judgment and declare `skills:`. A persona contains no trace of any workflow — decoupling by absence; caller-side context rides the dispatch brief. |
 | **Skills** | [`plugins/mochiko/skills/`](plugins/mochiko/skills/) | 30 | Procedure. One user-invoked router ([`skills/mochiko/`](plugins/mochiko/skills/mochiko/SKILL.md)) indexes the other 29, which are model-invoked with graded MUST/SHOULD triggers in their descriptions. Deterministic sub-checks ride as `scripts/` inside skills (e.g. `analysis-codebase`'s `detect-stack.sh`); depth rides as `references/`. |
 | **Templates** | [`plugins/mochiko/templates/`](plugins/mochiko/templates/) | 14 + `constitution-modules/` | Two kinds: **artifact schemas** (spec — Intent + Delivery Slices sections included, plan, tasks as cycle cards, governance-intent, …) over the shared `artifact-format.md` envelope; **report schemas** (per-seat reports) over the shared `report-format.md` envelope. The former doctrine homes (`workflow-contract.md`, `agent-dispatch.md`, `sized-end-stage-review.md`) were deleted at the doctrine purge (v0.46.0–v0.47.0) — their mechanics live inline in each command. `constitution-modules/` is setup's module library (knowledge-management, layer-rules, release-gates, evolution-notes). |
@@ -78,14 +79,21 @@ outside the four layers (templates is referenced by commands and skills, not reg
   cluster's contract live in exactly one file; commands and skills reference them at altitude
   (pointer depth, never restated).
 
-### Command form (goal + harness)
+### Command form (two anatomies)
 
-Every command is a goal + harness contract (v8 rebuild, v0.48.0; task layer de-granularized + slice absorbed into specify, v0.49.0): a verifiable done-condition
-that defaults to FAIL, a harness — plan approval before any producing seat works, author ≠
-grader independence, the decisions reserved to the user — and the bindings the lead cannot
-invent (paths, templates, entry conditions). The lead plans and orchestrates the run within
-that frame; teammates vs subagents is its per-seat call. There is no run registry and no
-daemon; commands evolve independently.
+Every command states a verifiable done-condition that defaults to FAIL, a frame — plan
+approval before any producing seat works, author ≠ grader independence, the decisions
+reserved to the user — and the homes the lead cannot invent (paths, templates, entry
+conditions). Three commands (`setup`, `specify`, `brainstorm`) carry it as the v8 **goal +
+harness** anatomy — Goal · Harness · Bindings (v8 rebuild, v0.48.0; task layer
+de-granularized + slice absorbed into specify, v0.49.0). Three (`feature`, `plan`,
+`implement`) carry it as six-section **charters** — Identity & Mission · Adaptive Goal
+Protocol · Roles & Responsibilities · Tools · Ways of Working · Boundaries — with the
+always-happens floor as the Delivery Manager's owned responsibilities and the non-waivable
+floor in Boundaries (the desk at v0.68.0, D10; the pipeline pair at v0.69.0, ADR
+`2026-08-13-charter-plan-implement`). The lead plans and orchestrates the run within that
+frame; teammates vs subagents is its per-seat call. There is no run registry and no daemon;
+commands evolve independently.
 
 ## Cluster map
 
@@ -280,11 +288,11 @@ separate feature-close stage exists.
 
 ### Feature — the product desk
 
-[`commands/feature.md`](plugins/mochiko/commands/feature.md). The library's one
-**charter-form** command — six sections (Identity & Mission · Adaptive Goal Protocol · Roles &
-Responsibilities · Tools · Ways of Working · Boundaries); the v8 Goal · Harness · Bindings
-anatomy is superseded for this command only, and its audit re-keys to *floor present +
-per-visit goal contract present*. The lead is chartered **Delivery Manager of the product
+[`commands/feature.md`](plugins/mochiko/commands/feature.md). The first of the library's three
+**charter-form** commands (`plan.md` and `implement.md` joined at v0.69.0) — six sections
+(Identity & Mission · Adaptive Goal Protocol · Roles & Responsibilities · Tools · Ways of
+Working · Boundaries); its audit re-keys to *floor present + per-visit goal contract
+present*. The lead is chartered **Delivery Manager of the product
 desk**: the advisory front door to the capability map. A visit opens with the map-health
 report (stale stubs · unfolded deltas · cap pressure · a what-next line), converges to a
 one-line goal with an explicit done condition, then routes the demand by the

@@ -14,6 +14,225 @@ entries below. **Also stale:** the shape is **v5** as of the v0.35.0 wave below,
 
 ---
 
+<!-- Wave context: charter conversion wave (v0.69.0) — ADR
+`.mochiko/decisions/2026-08-13-charter-plan-implement.md`: the D10 charter anatomy extends from
+the desk to the two pipeline commands; behavior-preserving re-format, no obligation added or
+dropped; supersedes D10's "this command only" clause. -->
+
+## [v0.69.0] v8 Goal · Harness · Bindings anatomy → six-section charter (the build run)
+- **Disposition:** superseded → the six-section charter that now IS `commands/implement.md`
+  (Identity & Mission · Adaptive Goal Protocol · Roles & Responsibilities · Tools · Ways of
+  Working · Boundaries). The v8 default-FAIL-goal anatomy is replaced whole; the audit re-keys
+  to grade *floor present + run goal contract present* in place of *default-FAIL goal present*
+  (`.claude/rules/mochiko/primitive-edits.md`, charter exception as broadened this wave).
+- **Tier failed:** n/a — supersession by ruling (ADR
+  `.mochiko/decisions/2026-08-13-charter-plan-implement.md` + `DECISIONS.md` row 2026-08-13 —
+  charter extended to the two pipeline commands, D10's this-command-only clause superseded;
+  behavior-preserving by the same ruling, so this entry records a shape supersession only.
+  One named delta: the run-open contract statement (protocol step 2) states at open what v8
+  carried as the `$ARGUMENTS`-empty confirm plus Bounds' "redeclarable at run open" point —
+  composed, not invented; sanctioned by the ruling's own wording).
+- **Content:** the entire pre-charter `commands/implement.md`, verbatim:
+
+```
+---
+description: Execute an accepted task breakdown into working code, TDD-built and independently verified against real infrastructure.
+disable-model-invocation: true
+---
+
+# Implement — Execute the Task Breakdown
+
+**Goal:** turn one capability-batch's accepted `tasks.md` (cycle cards for the capability's
+selected work rows, resolved from
+`.mochiko/features/FEAT-XXX/`) into working, verified code — TDD-built, foundation cycles
+before feature cycles, verified against real infrastructure. `$ARGUMENTS` = the capability ID
+(`FEAT-XXX`); empty → resolve the next capability-batch with a planned package from the map and confirm
+with the user.
+
+## Goal
+
+Every `tasks.md` cycle card is `[x]`; each card was decomposed into concrete tasks by its
+builder at build time — the decomposition disclosed in the cycle report, never pre-written —
+and the built code was implemented test-first (red/green/refactor) and independently
+verified — executed `**TEST:**` gates, quality gates
+with exit codes, captured real-infrastructure evidence — per cycle and once for the whole
+implementation; the feature's verification also ran the **accumulated TEST gates of
+previously delivered features in its territory**, and any seam against an earlier-delivered
+feature was exercised here, against the real delivered side; the code meets its criteria,
+holds traceability to requirements, and aligns
+with the project's governance; where a structural delta was approved at plan time, a
+built-vs-approved diff report exists and any divergence it names was ruled by the user; the
+acceptance landing executed whole — map bookkeeping and every touched baseline's graded
+fold; and the user accepted the implementation.
+
+**Not done — default FAIL:** an unchecked cycle card · a failing quality gate · verification
+without real-infrastructure evidence · a regression in a previously delivered feature's
+gates · a surfaced architecture deviation neither built as
+approved nor consented as an amendment · a touched baseline accepted without its graded
+fold · user acceptance not given.
+
+## Harness
+
+- **You are the lead.** Plan the run and orchestrate it toward the Goal; teammates or
+  subagents per seat is your call.
+- **Plan approval:** any seat that writes code or artifacts plans first and works only on a
+  plan you approved; grading, verification, and fact-finding seats are exempt.
+- **Independence:** no output is cleared by its author — implementation and verification are
+  never the same seat; verification executes against real infrastructure and reads the code
+  and its evidence, default FAIL.
+- **Bounds:** a cycle consumes an **attempt** every time a verification seat grades it —
+  whatever the round is called (rework, completion, targeted fix, re-grade); default 3
+  attempts per cycle, redeclarable at run open. Exempting a round from the count is reserved
+  to the user, never lead discretion. Two consecutive rounds with unchanged findings is a
+  no-progress stop: halt the cycle, present state. Re-verification is scoped to the delta —
+  a test-only or records-only change gets a delta-grade of the changed surface, never a full
+  gate re-sweep; a delta round re-runs no quality gates, the prior gate evidence standing
+  while the graded head is unmoved — and the graded object is the code tree (`git rev-parse
+  HEAD:<code-dir>`), so a records-only commit does not move the graded head. Rounds consumed
+  and seats spawned are surfaced to the user at each checkpoint.
+- **Reserved to the user:** architecture-deviation consent — a cycle that adds or removes a
+  box, adds, removes, or redirects an arrow, or moves a responsibility across a boundary on
+  the approved diagram stops and is presented: build as approved, or amend `architecture.md`
+  first · requirement ambiguity or a judgment call a producer flags — answered by the user,
+  investigable gaps excepted · scope escalation (work bigger than the run was framed; the
+  run stays FAIL unless the user explicitly accepts) · exempting a grading round from the
+  attempt count (Bounds) · final acceptance (accept / amend / reject).
+- **Escalation cadence:** reserved-to-user questions accumulate and land as one batch at the
+  cycle checkpoint; only a question the build cannot proceed without interrupts mid-cycle.
+  Advisory verifier findings ride the same rule — a Minor advisory finding defaults to a
+  `BACKLOG.md` booking, never an in-cycle fix; an Important-or-above advisory finding blocks
+  the cycle and enters the checkpoint batch. A failed `**TEST:**` gate or quality gate is
+  never severity-triaged — it fails the cycle per the Goal; `minimalism:` findings stay
+  advisory at any severity, per Bindings.
+- **Entry:** the run gates on a capability entry with selected work rows carrying ratified
+  scope — the scope source is
+  a spec's accepted selection, or a feature-command card: growth rows enter as selection
+  scope, a bug/improvement delta as delta scope. Neither → block: new
+  capability to `/mochiko:specify`, feature-keyed delta to `/mochiko:feature`. **Selection
+  scope** additionally gates on the accepted package the plan run produced — the batch's
+  `tasks.md` complete alongside its `plan.md`, and its `architecture.md` where the proposal
+  included one, at `.mochiko/features/FEAT-XXX/`; missing or
+  incomplete → block, point to `/mochiko:plan`; a capability-batch whose selected rows depend
+  on rows not yet `delivered` blocks — batches run in the rows' dependency order. **Delta scope** gates
+  on the delta card confirmed by a delta-scope plan run; the card's acceptance criteria (a
+  bug's reproduction-failing-test, or 1–3 criteria on the delta) are the cycle's criteria. A
+  missing governance region is surfaced, never auto-resolved; present → each code-touching
+  brief names the relevant `.claude/rules/mochiko/` files as an obligated read.
+- Suggest commits; never run git mutations, never push — an ephemeral, self-removed
+  verification snapshot is not a mutation of refs, index, tracked content, or history.
+  User acceptance is plain blocking text, never a timed prompt.
+
+## Bindings
+
+- **Deliverable:** the working code; `tasks.md`'s per-card checkboxes are the progress
+  surface, flipped as cycles complete.
+- **Craft skills:** card decomposition + TDD via `mochiko:executing-tdd-cycle` (its
+  `cycle-report.md` format — the disclosed decomposition, honest difficulties, deviations,
+  `domain_deps_added` — is the uncertainty carrier; brownfield touches ride
+  `mochiko:brownfield-integration`; the pre-code ladder rides
+  `mochiko:patterns-code-minimalism` at decomposition, rungs disclosed) · verification via
+  `mochiko:testing-end-user` — evidence captured, never assumed — plus the per-cycle
+  code-minimalism lens via `mochiko:review-code-minimalism`: the verification seat reads
+  the cycle's diff, `cycle-report.md`, and the codebase around the diff (reuse claims
+  never on trust); `minimalism:` findings are advisory to the checkpoint verdict, never a
+  cycle-failing gate.
+- **Design inputs:** the feature's `plan.md` and — where the proposal produced one —
+  `architecture.md` (the anchor for the deviation check and the built-vs-approved diff) with
+  the feature's other deltas at
+  `.mochiko/features/FEAT-XXX/`, plus its `requirements.md` there; the product baselines at
+  `.mochiko/product/` — `data-model.md`, `contracts/`, `constraints-and-decisions.md`,
+  `nfrs.md` for the numeric quality targets the built code must respect — and `spec.md` for
+  the cards' cited acceptance criteria.
+- **Reports** land in `.mochiko/features/FEAT-XXX/` (product-lane runs:
+  `.mochiko/product/lane-<slug>/`): cycle reports, verification reports, the
+  final-validation report, the built-vs-approved diff report. Repeat runs append (dated);
+  delta files overwrite only via the graded fold.
+- **Regression scope:** quality gates run the full repository suite; the final validation
+  additionally executes the accumulated `**TEST:**` gates of previously delivered features
+  in this feature's territory, and this feature's gates exercise any seam whose earlier side
+  is already delivered — seam ownership sits with the later-landing feature, per
+  `mochiko:authoring-feature-map`.
+- **Cold verification:** the final validation builds and runs the quality gates from a
+  dependency-cold snapshot of the uncommitted working state
+  (`git ls-files -co --exclude-standard :!.claude/worktrees` copied to
+  `.claude/worktrees/mochiko-<purpose>/`), its results part of the acceptance evidence;
+  ensure the `/.claude/worktrees` ignore entry exists first.
+- **KM landing:** where `.mochiko/memory/knowledge-management.md` exists, a built structural
+  change folds into `ARCHITECTURE.md` — the fold is dual-target (the feature's
+  `architecture.md` accumulates the approved delta) per `mochiko:authoring-architecture`.
+- **Baseline touches:** mid-fix discovery that the work touches a product baseline → the
+  dispatched run authors `baseline-delta.md` in its feature dir at discovery — a minimal
+  enumerated delta in appliable form. A product-lane run discovering it stands on an
+  in-flight feature's territory files the finding to that run and aborts — the lane never
+  widens in place.
+- **Acceptance landing:** at user acceptance, one landing executes whole, branched by scope
+  type. **Selection scope** — the same landing that folds `ARCHITECTURE.md` executes the
+  map's graduation batch per `mochiko:authoring-feature-map`: this run's delivered work rows
+  fold into the capability's extent lines and the rows vanish (pending rows persist) · the
+  capability's status is set `delivered` (dated), never regressing · the
+  `FEATURES.md` index line updates · the `ARCHITECTURE.md` In-flight pointer is cleared ·
+  the specs-index row is touched — the spec reads closed exactly when all its selected
+  work rows have folded (derived, never asserted). No separate feature-close stage
+  exists. **Delta scope** — the entry's marked delta folds per `mochiko:authoring-feature-map`'s
+  delta fold. **Both scopes:** every touched baseline folds via a graded fold — three-way
+  diff: pre-fold baseline + delta vs folded result; delta applied whole, nothing else
+  changed — checked by the landing verification seat, scope-extended; lane runs add the
+  map-delta boundary check (the accepted work made no map write beyond the marked delta) to
+  the same seat. A delta whose baseline file is absent at fold time folds into a fresh
+  `.mochiko/product/` file (empty pre-fold side), the absence surfaced to the user as a
+  seeding gap.
+- **Register:** user-facing prose per `templates/output-style.md`.
+```
+
+- **Kept deliberately:** everything the v8 body carried survives, re-homed:
+  - frontmatter `description:` + `disable-model-invocation` and the `# Implement — Execute
+    the Task Breakdown` title — unchanged, verbatim.
+  - `**Goal:**` preamble → the mission sentence → **Identity & Mission** (joined by the
+    Deliverable binding's "the working code"); the `$ARGUMENTS` resolution → the **Adaptive
+    Goal Protocol** tail, verbatim.
+  - Harness **Entry** bullet → protocol step 1, **literally labeled Entry** — `feature.md`'s
+    "the same split … name at their Entry" and the D8 build rider's recorded wording stay
+    true, `feature.md` untouched; the delta-card-criteria clause and the
+    `.claude/rules/mochiko/` obligated read ride inside it.
+  - The whole `## Goal` paragraph → protocol step 3, the fixed done condition, carried whole;
+    the reserved "final acceptance (accept / amend / reject)" is its close.
+  - `**Not done — default FAIL:**` → protocol tail, all seven clauses verbatim.
+  - Bounds → split three ways by kind: the attempt economy (definition · default 3 ·
+    user-only exemption · no-progress stop) → **Boundaries**, with "redeclarable at run open"
+    tightened to its existing single point (protocol step 2 names it; "only" was implicit in
+    v8's one named point); the delta re-verification method (delta-grade · no gate re-runs ·
+    graded object = code tree) → **Ways of Working / Delta re-verification**; the
+    rounds-and-seats transparency sentence → the DM floor.
+  - Lead bullet: "Plan the run and orchestrate it toward the Goal" → **Identity & Mission**;
+    "teammates or subagents per seat is your call" → Roles & Responsibilities preamble.
+  - Plan approval + Independence bullets → **Ways of Working / Author ≠ grader**, merged; the
+    implementation-vs-verification split restated at the verification seat (Other seats).
+  - Escalation cadence → split: checkpoint batching + advisory-finding routing → **Ways of
+    Working / Escalation cadence**; "a failed gate is never severity-triaged" +
+    `minimalism:`-advisory-at-any-severity → **Boundaries**.
+  - Reserved list → the user seat, complete: architecture-deviation consent with its
+    box/arrow/responsibility trigger whole · ambiguity/judgment calls (investigable gaps
+    excepted) · scope escalation · attempt-round exemption (pointing at Boundaries) · final
+    acceptance (compressed; protocol carries it).
+  - Bindings → **Tools**, entry-for-entry: Deliverable (split: code → Identity & Mission,
+    checkboxes → Progress surface) · Craft skills · Design inputs · Reports · Regression
+    scope · Cold verification (recipe verbatim) · KM landing · Baseline touches (authoring
+    half; the lane-abort half → **Boundaries / The lane never widens in place**) · Acceptance
+    landing (whole; the landing seat's scope-extension + lane map-delta boundary check
+    restated at the verification seat) · Register — each whole.
+- **Consumers assessed:** `feature.md:97`'s "the same split `/mochiko:plan` and
+  `/mochiko:implement` name at their Entry" stays true by the labeled Entry step —
+  `feature.md` untouched. The router's universal-anatomy lines re-worded same wave
+  (`.mochiko/strips/mochiko.md` [v0.69.0]); `.claude/rules/mochiko/primitive-edits.md`
+  exception broadened (rules file, not a shipped primitive). The v0.67.0 DECISIONS
+  validator-isolation row's "v8 implement carries the dependency-cold snapshot as a
+  **Bindings** line" reads historically (the snapshot machinery survives in Tools/Cold
+  verification). Skills and templates reference `plan.md`/`tasks.md` the artifacts, never
+  this command's sections (grep-verified this wave). `plan.md` converted same wave (own
+  strip).
+
+---
+
 <!-- Wave context: pm-role-and-feature-derivation build wave (v0.68.0) — pipeline-commands cluster.
 The map re-types to durable capabilities + transient pending/live work rows (2026-08-13 ruling);
 implement's run unit re-keys to the capability-batch and its selection-scope landing gains the

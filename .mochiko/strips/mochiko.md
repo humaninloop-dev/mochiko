@@ -6,6 +6,35 @@ Entry formats: `strips/README.md`. Wave context: skill-succinctness wave 1 (desi
 single physical lines, so the R2 line denominator undercounts this skill; dual accounting
 recorded here and flagged on the wave's ROADMAP row.
 
+## [v0.69.0] Universal v8-anatomy claims → two-anatomy reality (charters × 3)
+- **Disposition:** superseded → rewritten in place at four sites: the *What mochiko is*
+  anatomy sentence · the *How the library composes* opening paragraph (now names both
+  anatomies: `setup`/`specify`/`brainstorm` v8, `feature`/`plan`/`implement` charters) · the
+  `/mochiko:feature` row's "the library's one charter command" clause ("a charter command") ·
+  the operating rules' "goal+harness contract" phrase ("contract").
+- **Tier failed:** n/a — supersession by ruling (ADR
+  `.mochiko/decisions/2026-08-13-charter-plan-implement.md` + `DECISIONS.md` row 2026-08-13 —
+  charter extended to `plan.md`/`implement.md`, D10's this-command-only clause superseded).
+  Repair rider: the "Every command is goal + harness" / "Each command below states its Goal,
+  Harness, and Bindings" universal lines had been stale for 1/6 since the v0.68.0 charter
+  landed without re-qualifying them; this wave's re-word repairs that alongside the
+  extension.
+- **Content (superseded, verbatim):**
+  - `Every command is **goal + harness**: a verifiable done-condition (default FAIL) plus the non-waivable frame — plan approval for producing seats, author ≠ grader independence, the decisions reserved to the user, and the bindings the lead cannot invent.`
+  - `Each command below states its Goal, Harness, and Bindings — the whole contract — and the` / `lead composes the run toward it.`
+  - `/mochiko:feature` row clause: `the library's one charter command`
+  - Operating rule clause: `live in the workflow's \`commands/<name>.md\` goal+harness contract, not in any persona.`
+- **Kept deliberately:** the done-condition/default-FAIL, plan-approval, author≠grader, and
+  reserved-decisions substance in both rewritten paragraphs — carried verbatim into the new
+  text ("the homes the lead cannot invent" replacing "the bindings…" since three commands no
+  longer have a Bindings section) · the sound-loop sentence untouched · the `/mochiko:plan`
+  and `/mochiko:implement` entry rows (behavioral, already anatomy-free at v0.68.0) · every
+  other row.
+- **Consumers assessed:** the router is itself the discoverability surface; the four
+  superseded strings appear nowhere else in the shipped tree (grep-verified); rows verified
+  against the wave's shipped charter files (`plan.md`, `implement.md` on disk, audited this
+  wave).
+
 ## [v0.68.0] Capability-map re-type — map/pipeline/desk rows re-keyed; `patterns-map-minimalism` row added
 - **Disposition:** superseded → rewritten in place: the `authoring-feature-map` skill row (stories-first feature derivation → capability map, PM frame, work-row cutting pending|live) · the Specify-cluster consumption note (feature-keyed gating → capability-batch gating with the growth/delta scope split; folds extended to work rows) · the `/mochiko:specify` row (features-derived-from-stories → frame-first + work rows + completeness view) · the `/mochiko:feature` row (map-stewardship/lane wording incl. "promote a flat entry to parent" → the product-desk charter identity; promotion died) · the `/mochiko:plan` row (one-run-per-feature → capability-batch + row dependency closure) · the `/mochiko:implement` row (feature keying + delta folds → capability-batch + row folds with pending-rows-persist) · the `product-manager` agent row (feature derivation from stories → frame at intent + work-row cutting + desk grooming). The `patterns-map-minimalism` skill row is a pure addition (rides the decision row).
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-13 "PM role & feature derivation ruled (D1–D12)" incl. its build rider; record `.mochiko/brainstorms/pm-role-and-feature-derivation/record.md` D2/D5/D6/D7/D8 + D8's build-time rider + D9/D10/D12 and the D6 exhaustive inventory)

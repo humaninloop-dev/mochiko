@@ -5,6 +5,41 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.69.0] — 2026-08-13
+
+Charter anatomy extended to the pipeline pair — ADR `2026-08-13-charter-plan-implement`
+(direct ruling, no session): `plan.md` and `implement.md` join `feature.md` as six-section
+charters; D10's "this command only" clause superseded; setup/specify/brainstorm stay v8, door
+open for each on its own ruling. Behavior-preserving throughout — every prior obligation
+re-homed, nothing added or dropped.
+
+- **`plan.md` re-formats**: chartered **Delivery Manager of the goal** (Identity & Mission);
+  the Adaptive Goal Protocol maps the existing gates — a literal **Entry** step, proposal
+  approval as the convergence (the approved list = the run's done condition + default-FAIL
+  floor; delta scope keeps its collapse), the done condition closing at package acceptance
+  with the prior FAIL list verbatim; Bindings dissolve into Tools (referenced, never
+  restated); the non-waivable floor (baselines never edited in place · architecture before
+  detail · `[MODIFY]`-only breaks of delivered features · constitution never overruled)
+  lands in Boundaries. Full prior text + re-home map in the strip.
+- **`implement.md` re-formats**: same anatomy; run-open confirmation as the convergence
+  (batch, scope type, attempt bound at its one redeclaration point, fixed done condition —
+  no negotiation exchange); the v8 Bounds bullet splits by kind — attempt economy →
+  Boundaries, delta re-verification method → Ways of Working, rounds/seats transparency →
+  the DM floor; gates-never-severity-triaged and the-lane-never-widens land in Boundaries.
+  Full prior text + re-home map in the strip.
+- **Audit re-key broadened** (`.claude/rules/mochiko/primitive-edits.md`): the charter
+  exception now covers both forms — per-visit goal contract (the desk) and per-run goal
+  contract (the pipeline pair; four-point definition incl. the labeled Entry step and the
+  surviving default-FAIL list). Both charters keep the literal **Entry** step so
+  `feature.md`'s "name at their Entry" cross-reference holds with `feature.md` untouched.
+- Ripple: router universal-anatomy lines re-worded to the two-anatomy reality (4 sites, own
+  strip; repairs the v0.68.0-stale "Every command is goal + harness" claim) ·
+  `ARCHITECTURE.md` Commands row / Command form / Feature section re-worded · the BACKLOG
+  ARCHITECTURE-staleness item's command-anatomy clause resolved.
+- Audits: 3 fresh author≠grader validator seats (plan · implement · router), 3/3 PASS round
+  1; the implement strip fence byte-verified identical to the prior text; commands carry no
+  char budget (hard-cap fallback), router `description:` unchanged.
+
 ## [0.68.0] — 2026-08-13
 
 Capability-map rebuild — the accepted `pm-role-and-feature-derivation` record (D1–D12 as
