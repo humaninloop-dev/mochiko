@@ -18,6 +18,32 @@ HIT logged (ROADMAP stamp vs CHANGELOG — user decision); all items within the 
 
 ---
 
+## PM-role & capability-map rebuild
+
+Ruling: DECISIONS.md row 2026-08-13 (D1–D12 as amended at review); record solo-cold-reviewed
+via blind-map dispatch, 14/14 dispositioned, verify clean after 3 hygiene repairs (trail in the
+record).
+
+- [ ] **Capability-map rebuild (cold-buildable)** (2026-08-13; provenance:
+  [record](.mochiko/brainstorms/pm-role-and-feature-derivation/record.md), Build surface +
+  D6's exhaustive per-clause inventory) — one wave over: new `patterns-map-minimalism` (ranked
+  capability tests · extend-beats-mint · soft cap ~9 · D12 merge mechanics · dormant domain
+  paragraph) · `authoring-feature-map` re-type (capability/work-row vocabulary, frame-first
+  derivation, pending/live rows, fold-at-landing) · both feature templates · `specify.md` (PM
+  frame-as-hypothesis at intent, rows-grouped-per-capability selection) · `feature.md` **charter
+  rewrite** (Delivery-Manager lead, adaptive goals converging to done conditions,
+  floor-as-responsibility, advisory front door + health desk, growth door + capability-write
+  test; audit criteria re-key: floor + per-visit goal contract) · `plan.md`/`implement.md`
+  capability-batch re-key + row folds (`.mochiko/product/` baselines untouched) ·
+  `product-manager.md` posture line. Strips per D6's inventory (DECISIONS annotations already
+  landed at the ruling); `principal-architect.md` untouched (domains dormant). Breaking change,
+  no migration — kinako's map restates on its next touch.
+- [ ] **D11 probe + first-fold watch** (2026-08-13; provenance: record D11) — post-build
+  validation gate: kinako map re-derivation probe (directional ~3–4 capabilities + work rows vs
+  the current 10 entries; also discriminates D1's undiscriminated causal ranking) + the first
+  implement landing that executes a row fold (fold mechanics + the convergence claim's first
+  real data). A probe failure re-opens the D1/D2 structural bet, not just the build.
+
 ## Plan-structure YAGNI build
 
 Build DELIVERED 2026-08-13 at v0.67.0 as the combined wave with the architect-role restructure
@@ -81,6 +107,9 @@ Ruling: DECISIONS.md row 2026-08-10 (D1–D15 as amended); build delivered same 
   leaves-only selection, per-child pick on a named parent, no default encoded) · `unrefined`
   stub lifecycle (no expiry rule; grooming surfaces, never auto-retires) · size signal at
   selection · D11 concurrent-fold watch (`Assumed` — first real concurrent fold re-opens it).
+  2026-08-13: **re-scoped** — the v0.61.0 surface this watches is superseded by the
+  capability-map rebuild (pm-role-and-feature-derivation D6); the watch transfers to the
+  rebuilt surface and rides that section's D11 probe + first-fold item from its build on.
 - [ ] **Setup baseline-bootstrap hardening** (2026-08-10; provenance: record open thread 4,
   D10 bootstrap clause `Assumed`) — the shipped clause (brownfield reconstructs the five
   product baselines at `.mochiko/product/` from code; greenfield seeds at first plan run) is

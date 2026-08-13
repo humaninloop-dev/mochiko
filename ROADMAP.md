@@ -15,7 +15,7 @@ frontend/mobile/desktop shelves are Tier-I roadmap work.**
 ## Now
 
 - **Guardrails-vs-detail residuals** — Waves 1+2 DELIVERED 2026-08-11 at v0.63.0/v0.64.0 (27 skills guardrails-cut + slim-described, 10 agents prose-only, D7 cost gate live with FULL ledger coverage — every skill + agent budgeted, M1 retired via 14/14 fire-rate probe, 37/37 audits PASS round 1; trail ×2); remaining: first-live-run watches (F-X1 review-evidence · fire-rate · M2) + the `analysis-codebase` dangling-pointer repair + floor-line consolidation candidate → [BACKLOG](BACKLOG.md#guardrails-vs-detail-residuals)
-- **Feature-sizing & entry-points residuals** — build DELIVERED 2026-08-10 at v0.61.0 (map nesting, `/mochiko:feature`, plan/implement re-key spec→feature, two-altitude design surface with graded folds; breaking change; trail); remaining: the first-live-run watch + setup baseline-bootstrap hardening → [BACKLOG](BACKLOG.md#feature-sizing--entry-points-residuals)
+- **PM-role & capability-map rebuild** — session accepted 2026-08-13 (D1–D12: map re-types to durable capabilities + transient work rows, PM to specify's front, `/mochiko:feature` becomes the product-desk **charter** with growth door + advisory front door, pipeline re-keys to capability-batch; parent/leaf nesting superseded per D6's exhaustive inventory; sibling granularity session superseded); build cold-buildable + D11 kinako re-derivation probe → [BACKLOG](BACKLOG.md#pm-role--capability-map-rebuild). Absorbs the feature-sizing residuals row — its v0.61.0 first-live-run watch re-scoped into the rebuild; setup baseline-bootstrap hardening stays open → [BACKLOG](BACKLOG.md#feature-sizing--entry-points-residuals)
 - **Cold-review gap-challenge residuals** — build DELIVERED 2026-08-10 at v0.60.0 (blind angle-map phase, coverage findings, reopen routing, both review clusters; trail); remaining: the first-live-run watch → [BACKLOG](BACKLOG.md#cold-review-gap-challenge-residuals)
 - **Feature-map layer residuals** — build DELIVERED 2026-08-10 at v0.57.0–v0.59.0 (slices retired, feature = pipeline unit, `product-manager` agent, FEATURES.md map; trail); remaining: the self-application governance amend (user-gated) + the first-live-run watch (note: first-live-run watch partially overtaken by the sizing/entry-points re-key — watch items re-scope at that build) → [BACKLOG](BACKLOG.md#feature-map-layer-residuals)
 - **KM-module redesign dogfood** — fresh-project scaffold + rules-injection probe of the rebuilt module (2026-07-25; partial credit 2026-08-06: in-repo brownfield setup ran dimension-7 core+electives, collision beat vacuous — fresh-scaffold half + injection probe remain) → [BACKLOG](BACKLOG.md#operating-docs--km-module)
@@ -71,7 +71,10 @@ D1–D7, Next row added; the two production-only-narrowing Next rows merged to h
 stamp figure corrected from the stale 6 · 2026-08-13: architect-role-pushback-and-abstraction
 session accepted — D1–D7, sibling Next row + BACKLOG item amended into the combined build wave ·
 2026-08-13: combined wave BUILT at v0.67.0 — 4 producer clusters + 4 auditor seats + audited lead
-ripple, agents cluster FAIL→fix→delta-PASS, item → trail, dual-probe watch stays) —
+ripple, agents cluster FAIL→fix→delta-PASS, item → trail, dual-probe watch stays ·
+2026-08-13: pm-role-and-feature-derivation session accepted — D1–D12, feature-sizing residuals
+Now row absorbed into the rebuild row (Now holds 5), sibling granularity session superseded,
+DECISIONS supersession annotations ×3, BACKLOG rebuild section +2 items) —
 Now 5 · Next 7 · Later 9 · BACKLOG
 baseline 56 open items (per-item ≤15 lines;
 figures on BACKLOG's stamp line). Plugin: 6 commands · 10 agents · 29 skills · 14 templates +

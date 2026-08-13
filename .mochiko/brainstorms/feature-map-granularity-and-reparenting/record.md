@@ -1,6 +1,6 @@
 # Feature-map granularity & re-parenting — Decision Record
 
-> **Status:** open
+> **Status:** superseded (2026-08-13, user-ruled at the `pm-role-and-feature-derivation` acceptance) — both threads answered there: granularity balance → D3 (extend-beats-mint + soft cap ~9) and D4 (capability tests); re-parenting → D4b (domain-header moves are navigation-only) and D12 (capability-merge mechanics). See that record.
 > **When:** 2026-08-12
 > **Topic:** two threads on the feature-map layer: (1) balancing map granularity — not too many
 > narrow features vs not too many broad ones; (2) what happens when a new feature is better
