@@ -132,8 +132,12 @@ ruled cut or benchmark, never invented. Standing caution from the same wave's au
 `authoring-feature-map` body now measures 15,390 against its 15,413 budget — 23 chars of
 headroom — and its description 598 against 619 (21 chars); re-measure both before any addition.
 `patterns-sound-loop` (new skill, v0.70.0) likewise unbudgeted — hard-cap-only (desc ≤1,536);
-audited at body 5,729 / desc 500; a body budget may seed from a future ruled cut or benchmark,
-never invented.
+audited at body 5,729 / desc 500; re-measured body 5,849 at the v0.71.0 neutrality-line
+amendment (ruled edit, strip + audit PASS); a body budget may seed from a future ruled cut or
+benchmark, never invented.
+`patterns-transport-floor` (new skill, v0.71.0) likewise unbudgeted — hard-cap-only (desc
+≤1,536); audited at body 5,398 / desc 450; a body budget may seed from a future ruled cut or
+benchmark, never invented.
 
 ## Unbudgeted primitives
 

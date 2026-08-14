@@ -145,6 +145,11 @@ Each tool below is referenced, never restated — its procedure lives in its hom
   delta card, bug and improvement alike, takes that review leg before dispatch. Trigger test,
   exemptions, seat wiring, and disclosure: `mochiko:patterns-sound-loop`, referenced never
   restated.
+- **The transport floor.** A visit that composes more than one seat gains a floor on its
+  composition and messaging: a split trigger — message legs on any multi-seat messaging,
+  topology legs on shared writes — non-waivable once triggered. Trigger test, floor legs,
+  composition-safe shapes, and disclosure: `mochiko:patterns-transport-floor`, referenced
+  never restated.
 - **Stub parking is parking, not a spec-bypass.** A parked capability hypothesis is a name plus a
   one-breath hook, marked `unrefined`; it earns selectability only through `/mochiko:specify`'s
   derivation, never here.

@@ -5,6 +5,41 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.71.0] — 2026-08-14
+
+Teammate-transport floor build — the accepted `teammate-message-races` record (D1–D7 as
+amended at review) landed as one wave run under the floor it ships: two producer seats on
+lead-approved plans with disjoint file ownership (no shared write surface by construction),
+mesh-hold approvals, fan-in confirmation on every deliverable, two fresh author≠grader
+validator seats on the quiesced tree.
+
+- **New skill `patterns-transport-floor`** — `patterns-sound-loop`'s sibling on the transport
+  axis: the split trigger (message legs 3/4/6/7 on any multi-seat run with cross-seat or
+  lead-relayed messaging, shared writes or not; topology legs 1/2/5 on a shared write
+  surface; each lane non-waivable once fired), the seven legs (composition steer — binding
+  per D4: worktree-isolated writers or a single pen-holder · single writer per surface ·
+  mesh hold · content-pinned supersession · quiesce before cold grade · no ritual
+  sends/never re-send · fan-in confirmation), and the platform floor (agent-teams
+  ≥ v2.1.224 — below it, sends reported success on failed mailbox writes; teammate delivery
+  documented-automatic, ordering undocumented; the official ownership-split line as doc
+  anchor). Desc 450 / body 5,398, unbudgeted at birth (ledger note).
+- **`patterns-sound-loop`** — the Overview neutrality line narrowed: transport *choice* stays
+  neutral (realignment D5), transport *use* now carries its own floor. 1 supersession strip
+  (new strip file, the replaced sentence verbatim).
+- **Commands** — one transport-floor pointer each, pure additions: v8 Harness bullet in
+  `specify.md` / `brainstorm.md` / `setup.md`; charter Boundaries bullet beside the
+  sound-loop pointer in `feature.md` / `plan.md` / `implement.md`.
+- **Review clusters** — `review-brainstorm/references/CROSS-EXAM.md` gains the message-legs
+  note on the paired exchange (references/, budget-exempt; SKILL.md untouched at 2,630 chars
+  of body headroom).
+- **Ripple**: router row · cost-budgets ledger notes (transport-floor at birth; sound-loop
+  re-measured 5,849) · DECISIONS realignment-D5 row annotated (choice neutral *except where
+  writes collide*).
+- Driver on record: the kinako FEAT-006 specify run's five race classes; the session
+  self-demonstrated the class four times live while ruling on it.
+- Audits: 2 fresh author≠grader validator seats (skills cluster · 7-file commands cluster),
+  2/2 PASS round 1, zero fix rounds.
+
 ## [0.70.0] — 2026-08-13
 
 Sound-loop floor build — the accepted `charter-ritual-balance` record (D1–D7 as amended at

@@ -124,3 +124,35 @@ Dropped at materiality (reviewer's kill pass): lead-turn-boundary · human-gate-
 - Verify round 1: NOT CLEAN — 2 stale-pre-fold-text defects (split trigger un-propagated to the authoritative legs block + D3 echo, blocking; F7 bottom line still conflated, non-blocking). Lead-repaired same round, propagation-only. Bounded round 2 on the three edit sites: CLEAN.
 - Live race instances DURING this session (the class under repair, self-demonstrating): (1) research seat's idle ping without deliverable → pulled; (2) reviewer's verdict behind a bare idle ping → pulled; (3) reviewer's re-send of the already-dispositioned report crossing the verify order → deduplicated by content, duplicate voided by name; (4) reviewer's round-2 message void-named its own stale NOT-CLEAN before re-asserting — leg 4 practiced both directions.
 - **Accepted 2026-08-14.** Landing executed in the same moment: DECISIONS.md row · BACKLOG "Teammate-transport floor build" section (cold-buildable) + the three CV3 reconciliations (working-tree ownership gap closed → trail · narrated-not-dispatched related, leg 7 its detector · churn watch carries the D6 version-floor re-verify) · ROADMAP Next touched — sound-loop row and the new transport-floor row merged into one floor-builds row to hold the cap at 7/7 (merge precedent: the 2026-08-12 production-only-narrowing merge) · index entry updated to accepted.
+
+## Build (2026-08-14, v0.71.0 — same day as acceptance)
+
+The wave ran under the floor it ships. Composition: two producer seats with **disjoint file
+ownership** (skills cluster: new skill + sound-loop amendment + router + strip file; commands
+cluster: six command pointer bullets + CROSS-EXAM.md) — no shared write surface existed, so
+the topology legs were satisfied by construction. Message legs practiced: plan-first with
+lead approval before any write (mesh hold) · lead-pinned skill name relayed to both seats
+content-pinned (`patterns-transport-floor`) · one stale idle ping correctly held without
+re-send (leg 6) · fan-in confirmation on both plans, both completion reports, and both audit
+verdicts (leg 7) · auditors dispatched only after both producers confirmed done and held pens
+(leg 5 quiesce).
+
+- **Producer catches worth the record:** the commands seat chose CROSS-EXAM.md (references/,
+  budget-exempt) over SKILL.md despite 2,630 chars of disclosed headroom — the pointer covers
+  both review skills at the shared pair-protocol home; the skills seat self-reverted an
+  unapproved body addition mid-write (leg-4 discipline — approved text only), and the lead's
+  one plan amendment (the description's MUST clause under-covered the topology lane) landed
+  at 450 chars.
+- **Audits:** two fresh author≠grader validator seats on the quiesced tree. Skills cluster:
+  budget pre-asserts clean (450/5,398 new · 500/5,849 sound-loop post-amend · router 206) ·
+  ruling fidelity including the C3 per-transport correction verified against the record ·
+  strip entry complete with the replaced sentence verbatim, both citations resolving.
+  Commands cluster: +31/−0 pure additions proven per-file · GI-017 pointer discipline held ·
+  charter-form exception applied to feature/plan/implement · CROSS-EXAM note correctly
+  message-legs-only. **2/2 PASS round 1, zero fix rounds.**
+- **Ripple (lead, mechanical):** cost-budgets ledger notes (transport-floor at birth;
+  sound-loop re-measured) · DECISIONS 2026-08-14 row → ruled + built · realignment-D5 row
+  annotated (choice neutral *except where writes collide*, with the unpriced-race-cost
+  provenance) · plugin.json + marketplace 0.71.0 · CHANGELOG entry · BACKLOG build item →
+  trail, replaced by the first-live-run watch (D7 scope on its face) · ROADMAP floor-builds
+  row annotated DELIVERED, stamp to 32 skills / v0.71.0 · index Built note.

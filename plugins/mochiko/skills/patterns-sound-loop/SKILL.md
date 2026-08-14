@@ -13,8 +13,10 @@ The floor is kind-keyed and library-wide: whenever a judgment-authored artifact 
 land on a governing surface — any session, any command, whatever door the work entered
 through — three rituals become non-waivable: a seat produces it on a lead-approved plan, a
 non-author seat reviews it, and the user rules. When the trigger does not fire, the lead's
-inline freedom stands as chartered. Transport stays neutral — a seat may be a teammate or a
-subagent, the lead's per-seat call; what dies above the floor is the lead absorbing the seat.
+inline freedom stands as chartered. Transport *choice* stays neutral — a seat may be a
+teammate or a subagent, the lead's per-seat call; what dies above the floor is the lead
+absorbing the seat — but transport *use* carries its own floor
+(`mochiko:patterns-transport-floor`, teammate-message-races D3–D5).
 
 ## When NOT to Use
 

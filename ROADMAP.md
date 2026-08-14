@@ -22,7 +22,7 @@ frontend/mobile/desktop shelves are Tier-I roadmap work.**
 
 ## Next
 
-- Floor builds — sound-loop DELIVERED 2026-08-13 at v0.70.0 (remaining: the D5 rules-file leg on its first-miss trigger + the first-live-run watch → [BACKLOG](BACKLOG.md#charter-ritual-floor-build)) · **teammate-transport floor ruled 2026-08-14**, cold-buildable (`teammate-message-races` D1–D7: split-trigger seven-leg floor, sound-loop's transport sibling — mesh hold · content-pinned supersession · fan-in confirmation · binding composition steer · version floor ≥v2.1.224) → [BACKLOG](BACKLOG.md#teammate-transport-floor-build)
+- Floor builds — sound-loop DELIVERED 2026-08-13 at v0.70.0 (remaining: the D5 rules-file leg on its first-miss trigger + the first-live-run watch → [BACKLOG](BACKLOG.md#charter-ritual-floor-build)) · transport floor DELIVERED 2026-08-14 at v0.71.0, same day as its ruling (`teammate-message-races` D1–D7: split-trigger seven-leg floor, sound-loop's transport sibling; the build wave ran under it; trail); remaining: the first-live-run watch → [BACKLOG](BACKLOG.md#teammate-transport-floor-build)
 - Cluster-2 oversight-trace ratification wave (2026-07-24) → [BACKLOG](BACKLOG.md#kinako-follow-up-run)
 - Token epic: the one-shot OTel probe (2026-07-23; D5 sizing half closed 2026-08-04 — superseded at v8; probe gains TC's three recorded-open questions) → [BACKLOG](BACKLOG.md#token-reduction-epic)
 - Defect probes: fresh-session description-delivery (2026-07-25) → [BACKLOG](BACKLOG.md#defects--empirical-checks)
@@ -65,6 +65,6 @@ Now 5 · Next 7 · Later 10 (at cap) · BACKLOG baseline 67 open items (net 0 th
 +1 transport-floor build, −1 working-tree closure; +11 since the 2026-08-06 baseline 56 —
 growth is recent session landings; **delivery sweep still not run, offered to the user**;
 per-item ≤15 lines, figures on BACKLOG's stamp line). Plugin: 6 commands · 10 agents ·
-31 skills · 14 templates + modules · 2 output styles, v0.70.0 (marketplace synced; the
-transport-floor build is queued, not yet shipped). Per-bump build history: `CHANGELOG.md`
-(from 0.53.0) · `DECISIONS.md` · the trail.*
+32 skills · 14 templates + modules · 2 output styles, v0.71.0 (marketplace synced;
+transport-floor build same day — Next floor-builds row annotated DELIVERED in place).
+Per-bump build history: `CHANGELOG.md` (from 0.53.0) · `DECISIONS.md` · the trail.*

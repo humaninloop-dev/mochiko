@@ -17,21 +17,20 @@ count-watch delta; all items within the ≤15-line bound). Prior groom narrative
 
 ## Teammate-transport floor build
 
-- [ ] **Teammate-transport floor build** (2026-08-14; provenance:
-  [teammate-message-races](.mochiko/brainstorms/teammate-message-races/record.md) D1–D7 + build
-  surface) — cold-buildable: new kind-keyed floor skill (`patterns-*`, name at build;
-  `patterns-sound-loop`'s transport sibling) carrying the **split trigger** (message legs
-  3/4/6/7 on any multi-seat run with cross-seat or lead-relayed messaging; topology legs 1/2/5
-  on shared write surfaces; non-waivable per-trigger) and the **seven legs**: composition steer
-  (D4 binding: concurrent writers on one surface → worktree-isolated writers or a single
-  pen-holder) · single writer per surface · mesh hold · content-pinned supersession · quiesce
-  before cold grade · no-resend · fan-in confirmation — plus the D6 **version floor ≥v2.1.224**
-  with the agent-teams ownership-split line as doc anchor. Pointer lines: six commands
-  (per-command judgment, sound-loop precedent) + the review clusters (CROSS-EXAM's paired
-  exchange is message-leg territory). `patterns-sound-loop`'s "Transport stays neutral" line
-  amended by supersession strip; DECISIONS realignment-D5 row annotated (choice neutral *except
-  where writes collide*). Full ceremony (strips · author≠grader audits · char pre-asserts ·
-  gates 4+5). Residual at build: first-live-run watch (D7 scope: floor-fired-and-followed).
+Build DELIVERED 2026-08-14 at v0.71.0 (same-day as the ruling; the wave ran under the floor it
+ships — 2 plan-approved producer seats with disjoint file ownership + 2 fresh author≠grader
+validator seats, 2/2 PASS round 1, zero fix rounds; trail). Open residual:
+
+- [ ] **Transport-floor first-live-run watch** (2026-08-14; provenance:
+  [teammate-message-races](.mochiko/brainstorms/teammate-message-races/record.md) D7 `Assumed`
+  + CV4 limitation) — watch the floor's first live multi-seat run (any command composing >1
+  seat): trigger lanes fire as split-keyed (message legs on messaging alone, topology legs on
+  shared writes) · composition steer consulted at composition time · fan-in confirmation held
+  at every convergence · disclosure honest. Scope named on D7's face: the watch verifies the
+  floor **fired and was followed** — one clean run is weak evidence for a nondeterministic
+  class, absence-of-race is not proven. Revisit trigger: a race despite the floor → reopen at
+  the record. The narrated-not-dispatched defect (Defects section) shares leg 7 as detector —
+  cross-note there. Version-floor re-verify rides the Experimental-API churn watch, not here.
 
 ## Charter ritual-floor build
 

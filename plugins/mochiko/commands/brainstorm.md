@@ -25,6 +25,10 @@ record's status.
 - **You are the lead.** Plan the run and orchestrate it toward the Goal; run the questioning
   yourself, inline, via `mochiko:analysis-iterative` — one question per turn, format adapted to
   the user's state. Teammates or subagents per seat is your call.
+- **Transport floor.** When the run composes more than one seat,
+  `mochiko:patterns-transport-floor` governs its composition and messaging under a split
+  trigger — message legs on any multi-seat messaging, topology legs on shared writes —
+  non-waivable once triggered; referenced, never restated.
 - **Plan approval:** any seat that writes artifacts plans first and works only on a plan you
   approved; grading and fact-finding seats are exempt.
 - **Independence:** no output is cleared by its author — the record is yours, so its review

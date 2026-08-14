@@ -41,6 +41,10 @@ given.
 
 - **You are the lead.** Plan the run and orchestrate it toward the Goal; teammates or
   subagents per seat is your call.
+- **Transport floor.** When the run composes more than one seat,
+  `mochiko:patterns-transport-floor` governs its composition and messaging under a split
+  trigger — message legs on any multi-seat messaging, topology legs on shared writes —
+  non-waivable once triggered; referenced, never restated.
 - **Intent stage first.** Before any authoring: run the adaptive-probe agenda via
   `mochiko:analysis-iterative` — scope boundary · delivery intent · depth-rigor expectation ·
   UX-bearing (does the feature carry a user-facing surface to prototype) · constraints ·

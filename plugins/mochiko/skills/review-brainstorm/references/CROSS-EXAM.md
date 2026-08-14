@@ -24,6 +24,10 @@ independence the pair exists for.
 Four messages, then done. **Do not iterate toward consensus** — an unresolved disagreement
 survives as its owner's finding with the counterpart's objection attached; the lead sees both.
 
+> **Transport floor.** This four-message exchange is cross-seat messaging, so
+> `mochiko:patterns-transport-floor`'s message legs bind it — non-waivable once the reviewers
+> message across seats. Trigger, legs, and disclosure live there; referenced, never restated.
+
 ## Attack and defense standards
 
 - For each of the counterpart's findings, **try to refute it**: a wrong fact, a misread of the

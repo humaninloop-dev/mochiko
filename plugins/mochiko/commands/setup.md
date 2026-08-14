@@ -33,6 +33,10 @@ principle nor recorded waiver · user acceptance not given · no feature map at 
   subagents per seat is your call. Run the interrogation yourself, inline — the agenda's
   dimensions worked adaptively via `mochiko:analysis-iterative`, then the catalog deck,
   card by card, recommend-then-arbitrate.
+- **Transport floor.** When the run composes more than one seat,
+  `mochiko:patterns-transport-floor` governs its composition and messaging under a split
+  trigger — message legs on any multi-seat messaging, topology legs on shared writes —
+  non-waivable once triggered; referenced, never restated.
 - **Plan approval:** any seat that writes artifacts plans first and works only on a plan you
   approved; grading and fact-finding seats are exempt.
 - **Independence:** no output is cleared by its author; grading reads the authored surfaces

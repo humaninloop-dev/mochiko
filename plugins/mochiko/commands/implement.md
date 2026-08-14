@@ -186,3 +186,8 @@ Each tool below is referenced, never restated — its procedure lives in its hom
   user's gate, the user rules — this run's shape (builders on approved plans, verification
   seats never the implementer, final acceptance) already carries it. Trigger test, exemptions,
   seat wiring, and disclosure: `mochiko:patterns-sound-loop`, referenced never restated.
+- **The transport floor.** A run that composes more than one seat gains a floor on its
+  composition and messaging: a split trigger — message legs on any multi-seat messaging,
+  topology legs on shared writes — non-waivable once triggered. Trigger test, floor legs,
+  composition-safe shapes, and disclosure: `mochiko:patterns-transport-floor`, referenced
+  never restated.
