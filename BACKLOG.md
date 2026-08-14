@@ -6,14 +6,35 @@ surface is [`ROADMAP.md`](ROADMAP.md). Closing an item = the KM landing ritual
 (`.mochiko/memory/knowledge-management.md`): decision row + move here → the trail
 (`.mochiko/archive/backlog-trail.md`) + touch ROADMAP.md. No `[x]` lives here.
 
-*Last groomed: 2026-08-14 (landing groom at the teammate-message-races acceptance) —
-baseline: **67 open items** (net 0 this landing: +1 transport-floor build item, −1 working-tree
-ownership gap closed → trail; +11 since the 2026-08-06 baseline 56 — growth is recent session
-landings, none suspected stale; **delivery sweep still not run — offered to the user** per the
-count-watch delta; all items within the ≤15-line bound). Prior groom narrative: git history
-(this line, before this groom).*
+*Last groomed: 2026-08-14 (landing groom at the multi-feature-plan-implement acceptance) —
+baseline: **69 open items** (+2 this landing: epic build item + epic first-live-run watch;
++13 since the 2026-08-06 baseline 56 — growth is recent session landings, none suspected
+stale; **delivery sweep still not run — offered to the user** per the count-watch delta; all
+items within the ≤15-line bound). Prior groom narrative: git history (this line, before this
+groom).*
 
 ---
+
+## Epic build
+
+Ruled 2026-08-14 (`multi-feature-plan-implement` D1–D13, accepted; solo cold review
+critical-gaps → 6/6 dispositioned, verify CLEAN). Open items:
+
+- [ ] **Epic build (cold-buildable)** (2026-08-14; provenance:
+  [multi-feature-plan-implement](.mochiko/brainstorms/multi-feature-plan-implement/record.md)
+  D9 + folds D10–D13) — new `mochiko:authoring-epic` skill: manifest + spine shape (incl. the
+  D10 shared-baseline joint delta and the transport-steer disclosure), mint/overlap guard
+  (D4), close semantics (D7/D8) · command touches: `plan.md` (epic entry, D6 one-unit gates,
+  in-epic dependency unblocking) · `implement.md` (D7 whole: merged sequence, union
+  regression, N-graduation landing + epic close) · `feature.md` (desk stewardship) ·
+  `specify.md` (selection proposal) · `authoring-feature-map` (`[EPIC-XXX]` row marker +
+  fold-vanish + D13 seam-owner grammar) · router row · **supersessions owed:** `plan.md`
+  "One run per capability-batch" line + `pm-role-and-feature-derivation` D7 pipeline-key
+  clause — strips + DECISIONS.md annotation per the primitive-edit ceremony.
+- [ ] **Epic first-live-run watch** (2026-08-14; provenance: record D9 n=0 honesty) — after
+  build: watch the first live epic end-to-end (mint → contest → plan → implement → landing);
+  every ruling is design-reasoned, no live evidence. D12 rider: an epic dogfood is a likely
+  tripper of the "sequential-cycle-too-slow" revisit bet — surface it if felt.
 
 ## Teammate-transport floor build
 
