@@ -28,7 +28,7 @@ frontend/mobile/desktop shelves are Tier-I roadmap work.**
 - Defect probes: fresh-session description-delivery (2026-07-25) → [BACKLOG](BACKLOG.md#defects--empirical-checks)
 - Production-only narrowing: adaptive-depth build DELIVERED 2026-08-11 at v0.65.0 (first-live-run watch remains) · Tier-I builds queued — security-depth (SD-D1–D6) + ops & observability (OO-D1–D7), both inheriting the two-row obligation; then shelf-build scoping → [BACKLOG](BACKLOG.md#production-only-narrowing)
 - Plan-surface builds — combined wave DELIVERED 2026-08-13 at v0.67.0 (plan-the-plan gate + simplest-execution ladder + architect rotation + library-wide remove-shaped review classes; first-live-run watch with dual FEAT-002 probes (weight + level) remains → [BACKLOG](BACKLOG.md#plan-structure-yagni-build)) · architecture-primitive dogfood — first merged-plan run with the architecture stage (built 2026-07-30 at v0.32.0; tie-back chain rides it, built 2026-08-04 at v0.51.0, AT-D1–D6) → [BACKLOG](BACKLOG.md#architecture-primitive-build-items)
-- Epic build — multi-feature plan/implement unit ruled 2026-08-14 (`multi-feature-plan-implement` D1–D13: `EPIC-XXX` transient first-class unit, spine + per-feature deltas, one-unit gates, selection-scope-only, transport-steer on shared writes; supersessions owed on plan.md's one-run line + pm-role D7); cold-buildable → [BACKLOG](BACKLOG.md#epic-build)
+- Epic build — ruled AND DELIVERED 2026-08-14 at v0.72.0, same day (`multi-feature-plan-implement` D1–D13: `EPIC-XXX` transient first-class unit, spine + per-feature deltas, one-unit gates, selection-scope-only, transport-steer on shared writes; new `authoring-epic` + five command touches + plan.md supersession strip + pm-role D7 DECISIONS annotation; 8/8 audits PASS round 1; trail); remaining: the first-live-run watch → [BACKLOG](BACKLOG.md#epic-build)
 
 ## Later *(non-committed)*
 
@@ -61,10 +61,11 @@ merging the two delivered plan-surface rows (combined wave v0.67.0 + architectur
 dogfood) into one plan-surface-builds row, both BACKLOG links kept — merge precedent: the
 2026-08-14 floor-builds and 2026-08-12 production-only-narrowing merges; prior stamp
 narrative: git history, this line before this groom) —
-Now 5 · Next 7 · Later 10 (at cap) · BACKLOG baseline 69 open items (+2 this landing: epic
-build + epic first-live-run watch; +13 since the 2026-08-06 baseline 56 — growth is recent
-session landings; **delivery sweep still not run, offered to the user**;
+Now 5 · Next 7 · Later 10 (at cap) · BACKLOG baseline 68 open items (net +1 this landing:
++2 epic items at the ruling, −1 build item closed → trail at the same-day v0.72.0 build;
++12 since the 2026-08-06 baseline 56 — growth is recent session landings; **delivery sweep
+still not run, offered to the user**;
 per-item ≤15 lines, figures on BACKLOG's stamp line). Plugin: 6 commands · 10 agents ·
-32 skills · 14 templates + modules · 2 output styles, v0.71.0 (marketplace synced; the epic
-build is ruled, not built — no bump this landing).
+33 skills · 14 templates + modules · 2 output styles, v0.72.0 (marketplace synced; epic
+build same day — Next epic row annotated DELIVERED in place).
 Per-bump build history: `CHANGELOG.md` (from 0.53.0) · `DECISIONS.md` · the trail.*

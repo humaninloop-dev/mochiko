@@ -11,8 +11,10 @@ You are chartered **Delivery Manager of the goal** — the same charter `/mochik
 holds, carried from accepted package to accepted implementation: this run turns one
 capability-batch's accepted `tasks.md` (cycle cards for the capability's selected work rows,
 resolved from `.mochiko/features/FEAT-XXX/`) into working, verified code — TDD-built,
-foundation cycles before feature cycles, verified against real infrastructure. The working
-code is the deliverable. Plan the run and orchestrate it toward the done condition.
+foundation cycles before feature cycles, verified against real infrastructure. An **epic**
+(`EPIC-XXX`) run turns the accepted packages of its member features into one merged, verified
+build — one run over the whole epic (`mochiko:authoring-epic`). The working code is the
+deliverable. Plan the run and orchestrate it toward the done condition.
 
 ## Adaptive Goal Protocol
 
@@ -29,10 +31,17 @@ Every run has a goal and its explicit done condition; a run is never goal-less.
    `delivered` blocks — batches run in the rows' dependency order. **Delta scope** gates on
    the delta card confirmed by a delta-scope plan run; the card's acceptance criteria (a
    bug's reproduction-failing-test, or 1–3 criteria on the delta) are the cycle's criteria.
-   A missing governance region is surfaced, never auto-resolved; present → each code-touching
+   **Epic entry:** `$ARGUMENTS` naming an `EPIC-XXX` gates on that epic's **accepted package** —
+   every member's `tasks.md` (and its `architecture.md` where the proposal produced one)
+   complete at `.mochiko/features/FEAT-XXX/`, the joint spine accepted at
+   `.mochiko/epics/EPIC-XXX/` (`mochiko:authoring-epic`); any member incomplete → block, point
+   to `/mochiko:plan`. Every member is selection scope (delta-scope cards never join an epic);
+   an in-epic dependency does not block, an outside-epic dependency at a non-`delivered` row
+   still blocks. A missing governance region is surfaced, never auto-resolved; present → each code-touching
    brief names the relevant `.claude/rules/mochiko/` files as an obligated read.
 2. **Open the run with its contract stated.** Run-open confirmation is the convergence — no
-   negotiation exchange exists: name the batch and its scope type, restate the attempt bound
+   negotiation exchange exists: name the batch and its scope type — **for an epic, the epic, its
+   members, and the scope type** — restate the attempt bound
    (default 3 per cycle; this is its one redeclaration point — Boundaries), and state the
    done condition below. The done condition is fixed; only the attempt bound is redeclarable.
 3. **Run to the done condition.** Every `tasks.md` cycle card is `[x]`; each card was
@@ -47,7 +56,13 @@ Every run has a goal and its explicit done condition; a run is never goal-less.
    governance; where a structural delta was approved at plan time, a built-vs-approved diff
    report exists and any divergence it names was ruled by the user; and the acceptance
    landing executed whole — map bookkeeping and every touched baseline's graded fold. The
-   run closes at final acceptance (accept / amend / reject).
+   run closes at final acceptance (accept / amend / reject). **Over an epic:** one merged
+   **sequential** cycle sequence from the joint plan — shared foundation cycles first, then
+   in-epic dependency order — with feature-tagged cards whose reports land in each member's
+   `.mochiko/features/FEAT-XXX/`; one final validation from one cold snapshot covering all
+   members, the accumulated territory `**TEST:**` gates running once over the **union** of
+   member territories; one acceptance landing executes each member's graduation batch plus the
+   epic close (`mochiko:authoring-epic`).
 
 `$ARGUMENTS` = the capability ID (`FEAT-XXX`); empty → resolve the next capability-batch with
 a planned package from the map and confirm with the user.
@@ -90,7 +105,9 @@ is your call.
   first · requirement ambiguity or a judgment call a producer flags — answered by the user,
   investigable gaps excepted · scope escalation (work bigger than the run was framed; the
   run stays FAIL unless the user explicitly accepts) · exempting a grading round from the
-  attempt count (Boundaries) · final acceptance (accept / amend / reject).
+  attempt count (Boundaries) · an epic member's attempt-exhaustion disposition — carve the
+  member out or hold the whole run (Boundaries; never the lead's) · final acceptance (accept /
+  amend / reject).
 
 ## Tools
 
@@ -122,12 +139,14 @@ Each tool below is referenced, never restated — its procedure lives in its hom
   additionally executes the accumulated `**TEST:**` gates of previously delivered features
   in this feature's territory, and this feature's gates exercise any seam whose earlier side
   is already delivered — seam ownership sits with the later-landing feature, per
-  `mochiko:authoring-feature-map`.
+  `mochiko:authoring-feature-map`. Over an epic, the accumulated `**TEST:**` gates run once
+  over the **union** of the members' territories.
 - **Cold verification** — the final validation builds and runs the quality gates from a
   dependency-cold snapshot of the uncommitted working state
   (`git ls-files -co --exclude-standard :!.claude/worktrees` copied to
   `.claude/worktrees/mochiko-<purpose>/`), its results part of the acceptance evidence;
-  ensure the `/.claude/worktrees` ignore entry exists first.
+  ensure the `/.claude/worktrees` ignore entry exists first. Over an epic, one cold snapshot
+  covers all members.
 - **KM landing** — where `.mochiko/memory/knowledge-management.md` exists, a built structural
   change folds into `ARCHITECTURE.md` — the fold is dual-target (the feature's
   `architecture.md` accumulates the approved delta) per `mochiko:authoring-architecture`.
@@ -142,7 +161,14 @@ Each tool below is referenced, never restated — its procedure lives in its hom
   `FEATURES.md` index line updates · the `ARCHITECTURE.md` In-flight pointer is cleared ·
   the specs-index row is touched — the spec reads closed exactly when all its selected
   work rows have folded (derived, never asserted). No separate feature-close stage
-  exists. **Delta scope** — the entry's marked delta folds per `mochiko:authoring-feature-map`'s
+  exists. **Epic** — one landing executes **each member's** graduation batch (as above) plus
+  the **epic close** per `mochiko:authoring-epic`: the `[EPIC-XXX]` row markers vanish, the
+  manifest is stamped delivered (dated), the spine directory persists as record; every touched
+  baseline still folds exactly once — a **shared-baseline delta folds once from the spine**, a
+  single-member baseline from its feature delta — each via the graded three-way diff below.
+  Multi-spec closure is compositional: each spec reads closed exactly when all **its own**
+  selected work rows have folded, however many specs one epic landing touches.
+  **Delta scope** — the entry's marked delta folds per `mochiko:authoring-feature-map`'s
   delta fold. **Both scopes:** every touched baseline folds via a graded fold — three-way
   diff: pre-fold baseline + delta vs folded result; delta applied whole, nothing else
   changed — checked by the landing verification seat (Roles & Responsibilities). A delta
@@ -175,7 +201,11 @@ Each tool below is referenced, never restated — its procedure lives in its hom
   grades it — whatever the round is called (rework, completion, targeted fix, re-grade);
   default 3 attempts per cycle, redeclarable only at run open. Exempting a round from the
   count is reserved to the user, never lead discretion. Two consecutive rounds with
-  unchanged findings is a no-progress stop: halt the cycle, present state.
+  unchanged findings is a no-progress stop: halt the cycle, present state. **In an epic**, a
+  member that exhausts its attempt bound or hits the no-progress stop halts **member-scoped**;
+  the disposition — carve the member out (its rows return to pending, the epic continues) or
+  hold the whole run — is **reserved to the user** (never lead discretion), because carve-out
+  breaks the one-unit promise.
 - **Gates are never severity-triaged.** A failed `**TEST:**` gate or quality gate fails the
   cycle per the done condition; `minimalism:` findings stay advisory at any severity
   (Tools).

@@ -5,6 +5,49 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.72.0] — 2026-08-14
+
+Epic build — the accepted `multi-feature-plan-implement` record (D1–D13 as amended at review)
+landed as one wave under the sound-loop and transport floors it inherits: two producer seats
+on lead-approved plans with disjoint file ownership (skills vs commands), mesh-hold
+approvals, fan-in confirmation on every deliverable, two fresh author≠grader validator seats
+on the quiesced tree — 8/8 artifacts PASS round 1, zero fix rounds.
+
+- **New skill `authoring-epic`** — single source for the epic, the transient first-class
+  multi-feature delivery unit (`EPIC-XXX`): manifest + spine shape at
+  `.mochiko/epics/EPIC-XXX/` (joint proposal · joint architecture/seam design with
+  design-time cross-member seam owners · ordering · shared-baseline joint deltas authored
+  once under a single pen-holder, transport-steer disclosure), the mint-once/overlap guard
+  (desk mints · plan may mint inline via declare-and-contest · specify proposes, never
+  mints · one open epic per feature's pending rows), selection-scope-only membership, and
+  close semantics (each member's graduation batch + epic close; markers vanish, manifest
+  stamped, dir persists as record). Desc 497 / body 7,503, unbudgeted at birth (ledger note).
+- **`authoring-feature-map`** — two ruling-mandated additions: the `[EPIC-XXX]` row-marker
+  grammar (vanishes with the row at its graduation fold) and the within-epic design-time
+  seam-owner rule. Body 15,661 vs its 15,413 budget — the 248-char overage was declared and
+  ruled HOLDS at audit (genuine new obligation, record D8/D13); ledger caution updated.
+- **`plan.md`** — epic entry (`EPIC-XXX` lookup, or bare multi-feature list minting inline
+  through declare-and-contest with the overlap guard), one-unit gates (one proposal · one
+  contest · one joint architecture sign-off with per-seam owners · whole-package acceptance,
+  per-feature verdicts as in-run amendment only, no partial planned exit + FAIL clause),
+  in-epic dependency unblocking, Epic-spine Tools bullet (shared-baseline delta once under a
+  single pen-holder). **1 supersession strip:** the "One run per capability-batch" charter
+  line amended to admit epic composition — single-capability runs unchanged.
+- **`implement.md`** — the epic run whole: entry gates on the accepted package + spine; one
+  merged sequential cycle sequence with feature-tagged cards and per-feature reports; one
+  cold-snapshot final validation with union-territory gates; one landing = each member's
+  graduation batch + epic close, shared baselines folding once from the spine; member-scoped
+  halts with the carve-out/hold disposition reserved to the user; multi-spec compositional
+  closure. Pure additions.
+- **`feature.md`** — desk epic stewardship (mint, membership, status, close; mint-once,
+  overlap-guarded) beside — never inside — the sacred capability writes. Pure additions.
+- **`specify.md`** — selection-stage epic proposal: the PM seat may propose, never mint.
+  Pure addition.
+- **Router** — one `authoring-epic` discoverability row.
+- Ripple: `pm-role-and-feature-derivation` D7's capability-batch pipeline-key clause
+  annotated amended on its `DECISIONS.md` row; budget-ledger notes updated; `ARCHITECTURE.md`
+  skill counts corrected to 33.
+
 ## [0.71.0] — 2026-08-14
 
 Teammate-transport floor build — the accepted `teammate-message-races` record (D1–D7 as

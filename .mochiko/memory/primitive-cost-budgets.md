@@ -128,9 +128,12 @@ or benchmark, never invented.
 `patterns-map-minimalism` (new skill, v0.68.0) likewise unbudgeted — hard-cap-only (desc
 ≤1,536); audited at body 4,662 / desc 499 (five-guardrail carrier, disclosed size class above
 its two siblings — justification ruled HOLDS at audit); a body budget may seed from a future
-ruled cut or benchmark, never invented. Standing caution from the same wave's audit:
-`authoring-feature-map` body now measures 15,390 against its 15,413 budget — 23 chars of
-headroom — and its description 598 against 619 (21 chars); re-measure both before any addition.
+ruled cut or benchmark, never invented. Standing caution from the same wave's audit, updated at
+v0.72.0: `authoring-feature-map` body now measures 15,661 against its 15,413 budget — a
+248-char overage declared and ruled HOLDS at the v0.72.0 audit (genuine new obligation: the
+epic `[EPIC-XXX]` marker grammar + within-epic seam-owner rule, multi-feature-plan-implement
+D8/D13); its description 598 against 619 (21 chars). Any further body addition must
+re-justify its own overage or cut — the budget itself is unchanged.
 `patterns-sound-loop` (new skill, v0.70.0) likewise unbudgeted — hard-cap-only (desc ≤1,536);
 audited at body 5,729 / desc 500; re-measured body 5,849 at the v0.71.0 neutrality-line
 amendment (ruled edit, strip + audit PASS); a body budget may seed from a future ruled cut or
@@ -138,6 +141,10 @@ benchmark, never invented.
 `patterns-transport-floor` (new skill, v0.71.0) likewise unbudgeted — hard-cap-only (desc
 ≤1,536); audited at body 5,398 / desc 450; a body budget may seed from a future ruled cut or
 benchmark, never invented.
+`authoring-epic` (new skill, v0.72.0) likewise unbudgeted — hard-cap-only (desc ≤1,536);
+audited at body 7,503 / desc 497 (single-sources a whole delivery object across eight
+D-rulings, disclosed above its floor siblings — justification ruled HOLDS at audit); a body
+budget may seed from a future ruled cut or benchmark, never invented.
 
 ## Unbudgeted primitives
 

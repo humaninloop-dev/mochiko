@@ -90,6 +90,11 @@ given.
   deferred-SC list, and, per capability in the spec's territory, the completeness view
   (pending work rows — cut but undelivered — plus parked stubs and kills), visible at the
   moment of choice. The PM recommends, never selects.
+- **Epic proposal (optional).** When one derivation spans capabilities such that its work rows
+  want one coordinated multi-feature run, the `product-manager` seat **may propose an epic** as
+  part of the selection card — a proposal only, never a mint; the user takes it to
+  `/mochiko:feature`'s desk or `/mochiko:plan` to form. Specify never mints an epic
+  (`mochiko:authoring-epic`).
 - **Plan approval:** any seat that writes artifacts plans first and works only on a plan you
   approved; grading and fact-finding seats are exempt.
 - **Independence:** no output is cleared by its author; grading reads the files themselves —

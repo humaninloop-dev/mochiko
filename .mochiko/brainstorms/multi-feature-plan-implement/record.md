@@ -208,7 +208,14 @@
   C6 → confirmation note: multi-spec closure derivation is compositional and unaffected — each spec closes exactly when all its own selected rows have folded, regardless of how many specs one epic landing touches.
 - **Duplicate delivery noted** — the reviewer re-sent the identical findings after the lead's nudge; content matched, no supersession.
 - **Verify round 1: CLEAN.** All 6 folds verified faithful and internally consistent, record fit; bounded scope honored (no fresh cold read, no coverage hunt on D10–D13, no second reopen). One non-blocking hygiene note — D2/D8 spine enumerations missing the D10 shared-baseline-delta class — lead-repaired same round (pointers added to both lists).
-- **Acceptance (2026-08-14):** user accepted the record ("ceept"), covering the adoption streak (deliberate delegation), the 6/6 disposition batch, and the D4 flip. Landing executed: index updated · `DECISIONS.md` row · `BACKLOG.md` "Epic build" section (build item + first-live-run watch) · `ROADMAP.md` Next row.
+- **Acceptance (2026-08-14):** user accepted the record ("ceept"), covering the adoption streak (deliberate delegation), the 6/6 disposition batch, and the D4 flip. Landing executed: index updated · `DECISIONS.md` row · `BACKLOG.md` "Epic build" section (build item + first-live-run watch) · `ROADMAP.md` Next row (Next cap trip 8/7 groomed by merging the two delivered plan-surface rows).
+
+## Build trail
+
+- **Built same day (2026-08-14) at v0.72.0**, user-directed ("start build"). Wave under the sound-loop + transport floors: two producer seats on lead-approved plans, disjoint file ownership (skills cluster: `authoring-epic` new + `authoring-feature-map` + router · commands cluster: plan/implement/feature/specify + strip); mesh-hold approvals (one plan correction: the D13 cross-ref self-reference fixed to `mochiko:authoring-epic`; one lead ruling: declared-overage over offset-trim); fan-in confirmation on every deliverable; two fresh author≠grader validator seats on the quiesced tree.
+- **Audits: 8/8 PASS round 1, zero fix rounds.** Skills validator ruled the `authoring-feature-map` 248-char body overage HOLDS (genuine new obligation, D8/D13). Commands validator confirmed the charter contracts intact (every pre-wave FAIL clause survives), the supersession strip complete with the verbatim line, and internal coherence across the four commands.
+- **Supersessions executed:** `plan.md` "One run per capability-batch" line — strip `[v0.72.0]` in `.mochiko/strips/plan.md`; `pm-role-and-feature-derivation` D7 pipeline-key clause — annotated amended on its `DECISIONS.md` row (epic composes capability-batches; single-capability runs + dependency closure stand).
+- **Ripple (lead, audited):** plugin.json 0.72.0 · CHANGELOG entry · marketplace synced · budget-ledger notes (`authoring-epic` unbudgeted at birth; feature-map caution updated to 15,661 with the ruled overage) · ARCHITECTURE.md skill counts 33 · build item → trail, watch stays · index/ROADMAP/BACKLOG stamps updated.
 
 ## Open threads
 

@@ -11,6 +11,37 @@ conversion at the top of this note.
 
 ---
 
+<!-- Wave context: multi-feature-plan-implement build wave (v0.72.0) — DECISIONS.md 2026-08-14
+"Multi-feature plan & implement ruled (D1–D13)"; record
+.mochiko/brainstorms/multi-feature-plan-implement/record.md. plan/implement/feature/specify gain the
+epic — a transient first-class multi-feature run unit; carrier skill mochiko:authoring-epic. The
+one-run-per-capability-batch invariant is amended (not deleted) to admit epic composition. -->
+
+## [v0.72.0] One-run-per-capability-batch invariant amended for the epic run unit
+- **Disposition:** superseded → the re-worded Identity & Mission mission line: one run covers one
+  capability-batch (single-capability runs unchanged), and an epic (`EPIC-XXX`) run composes the
+  capability-batches of its member features into one unit — one plan over the whole package, shape and
+  spine per `mochiko:authoring-epic`.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-14 "Multi-feature plan &
+  implement ruled (D1–D13)" row; record `.mochiko/brainstorms/multi-feature-plan-implement/record.md`
+  D6 (plan run over an epic: one unit, one plan) + D9 (supersessions owed at build: plan.md's "One run
+  per capability-batch" line — amended, not deleted))
+- **Content (superseded, verbatim):** "One run per capability-batch, ordered by the selected rows'
+  dependency closure."
+- **Kept deliberately:** the single-capability run is unchanged — one run still covers one
+  capability-batch in the selected rows' dependency-closure order; only the invariant reading (never
+  more than one batch per run) is retired. The Entry step's selection-scope blocking rule survives for
+  non-epic runs and for outside-epic dependencies — an in-epic dependency no longer blocks, a pure
+  addition riding D6, not a strip.
+- **Consumers assessed:** none mount commands — entry points. Ripple this wave, all pure additions
+  riding the same ruling (no strip owed): plan.md epic Entry / gates / spine / D10 · implement.md epic
+  run whole (D7) · feature.md epic stewardship (D4) · specify.md epic proposal (D4) · the new
+  `mochiko:authoring-epic` carrier + the `authoring-feature-map` row-marker/seam-owner touch
+  (producer-skills seat, own strips). pm-role-and-feature-derivation D7's pipeline-key clause is
+  annotated on its DECISIONS.md row at the landing (record layer, not a command strip).
+
+---
+
 <!-- Wave context: charter conversion wave (v0.69.0) — ADR
 `.mochiko/decisions/2026-08-13-charter-plan-implement.md`: the D10 charter anatomy extends from
 the desk to the two pipeline commands; behavior-preserving re-format, no obligation added or
