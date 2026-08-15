@@ -32,6 +32,8 @@ For each decision point, consider 2-3 alternatives minimum, evaluated against th
 
 See [EVALUATION-MATRIX.md](references/EVALUATION-MATRIX.md) for the detailed criteria table, scoring, and technology category comparisons.
 
+In a **commodity category**, the alternative set names at least one real off-the-shelf candidate or carries an explicit "no shelf candidate exists" line, and custom wins only over that named candidate — in the written rationale, not silently in the table. The trigger test, the candidate-naming disclosure, and the retrofit-cost gate are `mochiko:patterns-adopt-first`'s.
+
 ### Phase 2: Decide
 
 Score options against weighted criteria. Document:
@@ -72,6 +74,7 @@ Before finalizing:
 
 **Evaluation:**
 - [ ] At least 2-3 alternatives considered
+- [ ] Commodity-category decisions name a shelf candidate (or "no shelf candidate exists"), and the rationale beats it
 - [ ] Criteria weighted by project context
 - [ ] Each option has pros/cons
 - [ ] Brownfield alignment assessed

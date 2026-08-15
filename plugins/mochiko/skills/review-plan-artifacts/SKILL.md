@@ -14,6 +14,10 @@ artifact set. Three lenses:
 - **Conformance to the approved proposal** — BLOCKING: every proposed artifact is present and within
   its approved depth; **material divergence** (an unproposed artifact, or an element class materially
   past its approved depth) auto-FAILs the package.
+- **Adopt-first disclosure** — BLOCKING, a named sibling check at conformance strength (the approved
+  proposal does not scope it): a commodity-category decision naming neither a real shelf candidate nor
+  "no shelf candidate exists" is a finding. Trigger and floor: `mochiko:patterns-adopt-first`.
+  Whether the rationale actually beats the named candidate is advisory — it rides the lane below.
 - **Rung-claim honesty** — advisory: the ladder stops each producing seat disclosed are graded for
   honesty against `mochiko:patterns-plan-minimalism` (the standard, never restated here). This is a
   disclosure grade; the independent excess/altitude *hunt* over the package is
@@ -154,6 +158,7 @@ Before finalizing the review, verify:
 - [ ] The deterministic pre-assert was run and its failures folded in
 - [ ] Graded against the approved proposal, not a fixed artifact set
 - [ ] Conformance checked — no unproposed artifact, nothing materially past approved depth (material divergence = auto-FAIL)
+- [ ] Adopt-first disclosure present on every commodity-category decision (blocking)
 - [ ] Disclosed rung claims graded for honesty against `mochiko:patterns-plan-minimalism` (advisory)
 - [ ] All applicable artifact-type checks executed
 - [ ] Issues properly classified by severity

@@ -27,8 +27,8 @@ frontend/mobile/desktop shelves are Tier-I roadmap work.**
 - Token epic: the one-shot OTel probe (2026-07-23; D5 sizing half closed 2026-08-04 — superseded at v8; probe gains TC's three recorded-open questions) → [BACKLOG](BACKLOG.md#token-reduction-epic)
 - Defect probes: fresh-session description-delivery (2026-07-25) → [BACKLOG](BACKLOG.md#defects--empirical-checks)
 - Production-only narrowing: adaptive-depth build DELIVERED 2026-08-11 at v0.65.0 (first-live-run watch remains) · Tier-I builds queued — security-depth (SD-D1–D6) + ops & observability (OO-D1–D7), both inheriting the two-row obligation; then shelf-build scoping → [BACKLOG](BACKLOG.md#production-only-narrowing)
-- Plan-surface builds — combined wave DELIVERED 2026-08-13 at v0.67.0 (plan-the-plan gate + simplest-execution ladder + architect rotation + library-wide remove-shaped review classes; first-live-run watch with dual FEAT-002 probes (weight + level) remains → [BACKLOG](BACKLOG.md#plan-structure-yagni-build)) · architecture-primitive dogfood — first merged-plan run with the architecture stage (built 2026-07-30 at v0.32.0; tie-back chain rides it, built 2026-08-04 at v0.51.0, AT-D1–D6) → [BACKLOG](BACKLOG.md#architecture-primitive-build-items)
-- Epic build — ruled AND DELIVERED 2026-08-14 at v0.72.0, same day (`multi-feature-plan-implement` D1–D13: `EPIC-XXX` transient first-class unit, spine + per-feature deltas, one-unit gates, selection-scope-only, transport-steer on shared writes; new `authoring-epic` + five command touches + plan.md supersession strip + pm-role D7 DECISIONS annotation; 8/8 audits PASS round 1; trail); remaining: the first-live-run watch → [BACKLOG](BACKLOG.md#epic-build)
+- Plan-surface builds — combined wave DELIVERED 2026-08-13 at v0.67.0 (plan-the-plan gate + simplest-execution ladder + architect rotation + library-wide remove-shaped review classes; first-live-run watch with dual FEAT-002 probes (weight + level) remains → [BACKLOG](BACKLOG.md#plan-structure-yagni-build)) · architecture-primitive dogfood — first merged-plan run with the architecture stage (built 2026-07-30 at v0.32.0; tie-back chain rides it, built 2026-08-04 at v0.51.0, AT-D1–D6) → [BACKLOG](BACKLOG.md#architecture-primitive-build-items) · epic build — ruled AND DELIVERED 2026-08-14 at v0.72.0, same day (`multi-feature-plan-implement` D1–D13: `EPIC-XXX` transient first-class unit, spine + per-feature deltas, one-unit gates; 8/8 audits PASS round 1; trail); remaining: the first-live-run watch → [BACKLOG](BACKLOG.md#epic-build)
+- Adopt-first build — ruled AND DELIVERED 2026-08-15, same day, at v0.73.0 (`build-vs-off-the-shelf` D1–D6 as amended at review: disclosure floor + rationale bite on every commodity-category decision · constraint-collision route-back to the user · retrofit-cost pricing gate · new `patterns-adopt-first` sibling skill + nine pointer touches incl. both ladders, both plan graders, both personas, and the plan-minimalism rung-3 supersession strip; 13/13 audits PASS round 1, zero fix rounds; trail); remaining: the kinako FEAT-006 re-plan probe watch (+ the audit-added rung-3 read-obligation watch riding it) → [BACKLOG](BACKLOG.md#adopt-first-build)
 
 ## Later *(non-committed)*
 
@@ -54,18 +54,18 @@ frontend/mobile/desktop shelves are Tier-I roadmap work.**
 - ~~**KM pin adopts partial core**~~ (recorded deviation, 2026-07-25) — **discharged 2026-08-06**: the first in-repo setup run ratified the pin into the ruled core (governance v1.0.0, GI-009); residual deviations (GLOSSARY deferral · specify.md landing step) carried in the pin with their own triggers.
 
 ---
-*Last groomed: 2026-08-14 (landing groom at the multi-feature-plan-implement acceptance:
-session accepted — D1–D13 as review-amended, DECISIONS row + BACKLOG "Epic build" section
-(build item + first-live-run watch); the new epic-build row tripped Next 8/7 — restored by
-merging the two delivered plan-surface rows (combined wave v0.67.0 + architecture-primitive
-dogfood) into one plan-surface-builds row, both BACKLOG links kept — merge precedent: the
-2026-08-14 floor-builds and 2026-08-12 production-only-narrowing merges; prior stamp
-narrative: git history, this line before this groom) —
-Now 5 · Next 7 · Later 10 (at cap) · BACKLOG baseline 68 open items (net +1 this landing:
-+2 epic items at the ruling, −1 build item closed → trail at the same-day v0.72.0 build;
-+12 since the 2026-08-06 baseline 56 — growth is recent session landings; **delivery sweep
-still not run, offered to the user**;
+*Last groomed: 2026-08-15 (landing groom at the build-vs-off-the-shelf acceptance,
+updated at its same-day v0.73.0 build: session accepted — D1–D6 as review-amended,
+DECISIONS row + BACKLOG "Adopt-first build" section; the new adopt-first row tripped Next
+8/7 — restored by merging the delivered epic-build row into the plan-surface-builds row,
+its BACKLOG link kept — merge precedent: the 2026-08-14 plan-surface, 2026-08-14
+floor-builds and 2026-08-12 production-only-narrowing merges; prior stamp narrative: git
+history, this line before this groom) —
+Now 5 · Next 7 · Later 10 (at cap) · BACKLOG baseline 69 open items (net +1 this landing:
++2 adopt-first items at the ruling, −1 build item closed → trail at the same-day v0.73.0
+build; +13 since the 2026-08-06 baseline 56 — growth is recent session landings;
+**delivery sweep still not run, offered to the user**;
 per-item ≤15 lines, figures on BACKLOG's stamp line). Plugin: 6 commands · 10 agents ·
-33 skills · 14 templates + modules · 2 output styles, v0.72.0 (marketplace synced; epic
-build same day — Next epic row annotated DELIVERED in place).
+34 skills · 14 templates + modules · 2 output styles, v0.73.0 (marketplace synced;
+adopt-first build same day — Next row annotated DELIVERED in place).
 Per-bump build history: `CHANGELOG.md` (from 0.53.0) · `DECISIONS.md` · the trail.*

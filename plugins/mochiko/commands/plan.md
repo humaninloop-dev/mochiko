@@ -205,6 +205,11 @@ Each tool below is referenced, never restated — its procedure lives in its hom
   feature's map entry.
 - **Feature work never overrules the constitution.** A governance conflict conforms, or is
   amended/waived through `governance-ledger.md` — the user's ruling.
+- **A ratified constraint is never silently overridden.** A shelf check colliding with one files a
+  constraint-challenge finding — the constraint's text · the real requirement it plausibly restates
+  · the candidate it excludes — reserved to the user like any governance conflict; only the
+  colliding decision pauses, the plan proceeds elsewhere. Shape and trigger:
+  `mochiko:patterns-adopt-first`.
 - **The sound-loop floor.** A judgment-authored write to a governing surface obliges the loop:
   a seat produces on a plan you approved, an independent non-author seat reviews before the
   user's gate, the user rules — this run's shape (proposal gate, producing seats, independent

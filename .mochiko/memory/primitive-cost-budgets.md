@@ -145,6 +145,13 @@ benchmark, never invented.
 audited at body 7,503 / desc 497 (single-sources a whole delivery object across eight
 D-rulings, disclosed above its floor siblings — justification ruled HOLDS at audit); a body
 budget may seed from a future ruled cut or benchmark, never invented.
+`patterns-adopt-first` (new skill, v0.73.0) likewise unbudgeted — hard-cap-only (desc ≤1,536);
+authored to a plan-set build cap of body ≤6,500 / desc ≤500 and measured at birth at body 6,493
+/ desc 497 (single-sources three rulings of the build-vs-off-the-shelf discipline — D2's
+two-part obligation with its two-sided limb and external-claim binding, D3's constraint-challenge
+route-back, D4's retrofit-cost gate — so it sits above its floor siblings and inside the build
+cap); the build cap is a plan-time bound, not a budget: a body budget may seed from a future
+ruled cut or benchmark, never invented.
 
 ## Unbudgeted primitives
 

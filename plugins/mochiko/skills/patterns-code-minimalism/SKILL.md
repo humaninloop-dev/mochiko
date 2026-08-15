@@ -48,7 +48,9 @@ not apply — and be able to say why, in one line, when it doesn't.
    use it.
 5. **Installed dependency covers it?** A dependency already in the manifest does this —
    use it. (Adding a NEW dependency is not a rung — it rides the domain-registry ruling
-   where `references/DOMAIN-DEPENDENCIES.md` applies, and is never auto-approved.)
+   where `references/DOMAIN-DEPENDENCIES.md` applies, and is never auto-approved.) A
+   plan-committed adopt-first choice reaches these cards as a binding constraint, not a rung
+   to re-open — the plan-time discipline is `mochiko:patterns-adopt-first`.
 6. **Fits in one line?** Write the one line.
 7. **Only then:** write the minimum that works.
 

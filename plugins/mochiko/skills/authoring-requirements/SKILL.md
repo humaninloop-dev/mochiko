@@ -9,6 +9,8 @@ description: This skill MUST be invoked when authoring the functional-requiremen
 
 Write technology-agnostic functional requirements, identify edge cases, and define measurable success criteria. Focus on WHAT the system does and WHY, never HOW it's implemented.
 
+**A constraint states a capability, never a posture.** "The corpus is files on disk" is a storage posture wearing constraint clothes when the real requirement is "retrieval is locally computable" — it names no product and passes the leakage check, yet freezes a plan-time choice downstream seats then read as ratified.
+
 The artifact this layer lands in (`spec.md`) follows the deliverable envelope in
 [`artifact-format.md`](../../templates/artifact-format.md) — dense by construction,
 human-legible: one-line FR/SC/edge-case entries, ≤ 3-line overview prose, omit empty

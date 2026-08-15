@@ -62,6 +62,11 @@ leans on this section for the detail. The first five are what the product questi
 | **Contradictions** | requirements that conflict; inconsistent terminology; mutually exclusive acceptance criteria |
 | **Excess / unpaid scope** | a story, requirement, or screen no user need or ratified driver pays for — admissible only naming the driver it fails to trace to or the cheaper shape; a floor / compliance-module / NFR-derived obligation is never excess |
 
+**Implementation posture smuggled into a constraint is a gap** — an assumption-gap finding. A
+constraint naming a storage or implementation posture ("files on disk") where the real requirement
+is a capability ("locally computable") passes any banned-terms check and still freezes a plan-time
+choice the stakeholders never ratified.
+
 **External and regulatory claims.** A spec asserting a regulatory obligation, compliance limit,
 or other product-legal fact carries a floor-class external claim: verify it per
 [../review-brainstorm/references/EXTERNAL-CLAIMS.md](../review-brainstorm/references/EXTERNAL-CLAIMS.md)

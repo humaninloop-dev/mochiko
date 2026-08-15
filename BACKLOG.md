@@ -6,14 +6,37 @@ surface is [`ROADMAP.md`](ROADMAP.md). Closing an item = the KM landing ritual
 (`.mochiko/memory/knowledge-management.md`): decision row + move here → the trail
 (`.mochiko/archive/backlog-trail.md`) + touch ROADMAP.md. No `[x]` lives here.
 
-*Last groomed: 2026-08-14 (landing groom at the multi-feature-plan-implement acceptance,
-updated at its same-day v0.72.0 build) — baseline: **68 open items** (net +1: +2 epic items
-at the ruling, −1 build item closed → trail at the build; +12 since the 2026-08-06 baseline
+*Last groomed: 2026-08-15 (landing groom at the build-vs-off-the-shelf acceptance, updated
+at its same-day v0.73.0 build) — baseline: **69 open items** (net +1: +2 adopt-first items
+at the ruling, −1 build item closed → trail at the build; +13 since the 2026-08-06 baseline
 56 — growth is recent session landings, none suspected stale; **delivery sweep still not
 run — offered to the user** per the count-watch delta; all items within the ≤15-line bound).
 Prior groom narrative: git history (this line, before this groom).*
 
 ---
+
+## Adopt-first build
+
+Ruled AND built 2026-08-15, same day, at v0.73.0 (`build-vs-off-the-shelf` D1–D6 as amended
+at review; wave: 2 producer seats on lead-approved plans with disjoint file ownership + 2
+fresh author≠grader validator seats, 13/13 PASS round 1, zero fix rounds; trail). C4
+cross-pointer note stands for the queued Tier-I builds: `patterns-adopt-first` shipped first,
+so the STACK-TOOLING builds owe the pointer back when they land. Open residual:
+
+- [ ] **Adopt-first first-live-run probe** (2026-08-15; provenance: record D6, n=1 marker) —
+  the kinako FEAT-006 re-plan runs under the discipline once built; never blocked on it (if
+  the re-plan runs first, the watch moves to the next plan run). Directional expectation:
+  superseding D-rows name shelf candidates in alternative sets AND rationale · the D4 gate
+  fires on the storage decisions · the D3 valve is exercised against the amended constraint
+  line. Failure criterion (C13): a post-build plan run hand-rolling solved-category
+  infrastructure without the disclosure firing = the discipline failed, instrument revisited;
+  ceremony-only disclosure lines (restating an already-ruled choice) are also a defect
+  signal. Side-flag to kinako at the re-plan: their transition record's registry-scope
+  overread (record F5). Audit-added watch (v0.73.0 validator, advisory): plan-minimalism's
+  "Read before you claim" line stays repo-bounded while widened rung 3 admits outside-repo
+  claims — verification is covered via `patterns-adopt-first`'s external-claims binding, but
+  check at this probe whether any rung-3 adopt claim ships without its disclosure line; only
+  then amend the read-obligation line.
 
 ## Epic build
 

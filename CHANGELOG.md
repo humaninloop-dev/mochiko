@@ -5,6 +5,44 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.73.0] — 2026-08-15
+
+Adopt-first build — the accepted `build-vs-off-the-shelf` record (D1–D6 as amended at review)
+landed as one wave under the sound-loop and transport floors: two producer seats on
+lead-approved plans with disjoint file ownership (new skill + router + ledger vs the nine
+pointer touches + strip), mesh-hold briefs, fan-in confirmation on every deliverable, two
+fresh author≠grader validator seats on the quiesced tree — 13/13 artifacts PASS round 1, zero
+fix rounds (two advisory alignments producer-applied post-audit).
+
+- **New skill `patterns-adopt-first`** — single source for the build-vs-off-the-shelf
+  discipline, born from the kinako FEAT-006 SQLite miss: every commodity-category decision
+  ("is this problem older than this product?" — storage, locking, serialization, queueing,
+  caching, auth, search; author framing never gates the check) names at least one real
+  off-the-shelf candidate or an explicit "no shelf candidate exists" line (absence itself a
+  review finding), and custom wins only over the named candidate in the written rationale.
+  Two-sided (a named candidate may lose on merits; BE-DEP's <100-lines red flag a legitimate
+  custom-wins rationale below the gate) · named candidates are external claims
+  (`verified:`/`memory-asserted`, verified at review) · retrofit-cost gate — custom-over-shelf
+  is user-ruled when expensive to walk back (persisted formats, storage engines,
+  locking/concurrency, migration-bearing shapes) · constraint-challenge route-back — a shelf
+  check colliding with a ratified constraint files a three-part finding routed to the user,
+  only the colliding decision pauses · scope bound: in-process/self-hostable only, SaaS buy
+  routes to IP-XXX + PM/user. Desc 497 / body 6,493, unbudgeted at birth (ledger note).
+- **`patterns-plan-minimalism`** — rung 3 widened: "a baseline, the current system, an
+  installed dependency, or an adoptable proven component (per `mochiko:patterns-adopt-first`)
+  carries it: extend, reference, or adopt — never re-design" (supersession strip, new strip
+  file).
+- **Eight pure-addition pointer touches** — `patterns-technical-decisions` (alternative-set
+  obligation + checklist line) · `patterns-code-minimalism` (rung-5 plan-commitment line) ·
+  `review-feasibility` (class 7 also fires on needed-but-should-have-been-adopted) ·
+  `review-plan-artifacts` (blocking adopt-first disclosure check as a named sibling lane at
+  conformance strength + checklist line) · `authoring-requirements` / `review-specifications`
+  (constraints state capabilities, never storage/implementation postures) ·
+  `principal-architect` / `tech-lead` (cheaper-boxes persona lens, keystone test held) ·
+  `plan.md` (Boundaries route-back bullet).
+- Router row (Plan cluster) · budgets-ledger birth note · audit-added BACKLOG watch on the
+  rung-3 read-obligation seam (checked at the kinako re-plan probe).
+
 ## [0.72.0] — 2026-08-14
 
 Epic build — the accepted `multi-feature-plan-implement` record (D1–D13 as amended at review)

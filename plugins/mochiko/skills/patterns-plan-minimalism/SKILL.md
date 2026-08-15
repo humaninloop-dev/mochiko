@@ -41,8 +41,9 @@ holds, and say why in one line when it doesn't.
 2. **Simpler shape?** — a design with fewer parts meeting the same requirement wins; no new
    abstraction, the boring choice; no rich-domain modeling for operational or mechanical
    features.
-3. **Already exists?** — a baseline, the current system, or an installed dependency carries
-   it: extend or reference, never re-design.
+3. **Already exists?** — a baseline, the current system, an installed dependency, or an
+   adoptable proven component (per `mochiko:patterns-adopt-first`) carries it: extend,
+   reference, or adopt — never re-design.
 4. **Minimum now** — sized to the requirement as ratified; future-proof only where the
    retrofit is expensive.
 5. **Builder's room** — the plan states WHAT plus its binding constraints; HOW stays open,
