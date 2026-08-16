@@ -11,7 +11,7 @@ fixed same day — the audit trail is the wave's ROADMAP row). Consumers assesse
 `templates/artifact-format.md` — grep 2026-07-25: none reference any stripped section;
 `detect-stack.sh` references (setup.md, router) untouched.
 
-## [v0.74.0] `codebase-analysis-template.md` read-pointers → `codebase-analysis` schema (two-arm) — schema-based-template-guidance D1/D8
+## [v0.76.0] `codebase-analysis-template.md` read-pointers → `codebase-analysis` schema (two-arm) — schema-based-template-guidance D1/D8
 - **Disposition:** superseded → `mochiko-cli template codebase-analysis`, or Read `plugins/mochiko/schemas/codebase-analysis.yaml` raw (D8-first-class). Two sites: `SKILL.md` Output pointer + `references/CONTEXT-GATHERING.md` scope-note mention.
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/schema-based-template-guidance/record.md` D1/D3/D8; `DECISIONS.md` "Template-schema CLI ruled").
 - **Content (superseded, verbatim):**

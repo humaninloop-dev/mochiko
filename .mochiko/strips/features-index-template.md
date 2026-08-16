@@ -7,7 +7,7 @@ dir-beside-entry layout note); one comment line was superseded.
 
 ---
 
-## [v0.74.0] Template retired — superseded by schema-based template guidance (D1/D3/D8)
+## [v0.76.0] Template retired — superseded by schema-based template guidance (D1/D3/D8)
 - **Disposition:** superseded → plugins/mochiko/schemas/features-index.yaml + mochiko-cli template features-index
 - **Tier failed:** n/a — supersession by ruling (schema-based-template-guidance D1/D3/D8; record `.mochiko/brainstorms/schema-based-template-guidance/record.md`; `DECISIONS.md` "Template-schema CLI ruled")
 - **Content (superseded template, full verbatim below):**

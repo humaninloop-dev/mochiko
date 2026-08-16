@@ -17,7 +17,7 @@ groom narrative: git history (this line, before this groom).*
 
 ## Template-schema CLI build
 
-Ruled AND built 2026-08-16, same day, at v0.74.0 (`schema-based-template-guidance` D1–D11 as
+Ruled AND built 2026-08-16, same day, at v0.76.0 (`schema-based-template-guidance` D1–D11 as
 amended at review). One wave under the sound-loop + transport floors — 6 producer seats with
 strictly disjoint file ownership (schemas · crate + CI · template deletions + strips · command
 re-points · skill re-points + D7 re-key) + 3 fresh author≠grader validator seats: Rust crate

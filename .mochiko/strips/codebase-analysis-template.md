@@ -4,7 +4,7 @@ Entry formats: `strips/README.md`. Wave context: workflow-token-reduction wave 2
 `.mochiko/brainstorms/workflow-token-reduction/record.md` + the wave-2 rulings R1/T4 —
 analysis outputs in scope, slimmed but legible; ratified 2026-07-24).
 
-## [v0.74.0] Template retired — superseded by schema-based template guidance (D1/D3/D8)
+## [v0.76.0] Template retired — superseded by schema-based template guidance (D1/D3/D8)
 - **Disposition:** superseded → plugins/mochiko/schemas/codebase-analysis.yaml + mochiko-cli template codebase-analysis
 - **Tier failed:** n/a — supersession by ruling (schema-based-template-guidance D1/D3/D8; record `.mochiko/brainstorms/schema-based-template-guidance/record.md`; `DECISIONS.md` "Template-schema CLI ruled")
 - **Content (superseded template, full verbatim below):**

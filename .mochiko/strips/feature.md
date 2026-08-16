@@ -4,7 +4,7 @@ Entry formats: `strips/README.md`. Ruling for every [v0.68.0] entry below:
 `DECISIONS.md` 2026-08-13 "PM role & feature derivation" row →
 `.mochiko/brainstorms/pm-role-and-feature-derivation/record.md` (D6/D7/D8/D9/D10).
 
-## [v0.74.0] Static tasks-template read-pointer re-pointed to the CLI-render / raw-schema two-arm home
+## [v0.76.0] Static tasks-template read-pointer re-pointed to the CLI-render / raw-schema two-arm home
 - **Disposition:** superseded → the Tools/Delta-cards `templates/tasks-template.md` read-pointer now
   names the two-arm guidance home: `mochiko-cli template tasks` when the binary is present, else the
   shipped schema `plugins/mochiko/schemas/tasks.yaml` Read raw — the raw Read is the D8-first-class

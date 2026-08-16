@@ -5,7 +5,7 @@ Entry formats: `strips/README.md`. Wave context: the combined plan-surface wave 
 `.mochiko/brainstorms/architect-role-pushback-and-abstraction/record.md` (D1–D7, architect
 role), landed in one wave per architect-role D5.
 
-## [v0.74.0] Template retired — superseded by schema-based template guidance (D1/D3/D8)
+## [v0.76.0] Template retired — superseded by schema-based template guidance (D1/D3/D8)
 - **Disposition:** superseded → plugins/mochiko/schemas/plan.yaml + mochiko-cli template plan
 - **Tier failed:** n/a — supersession by ruling (schema-based-template-guidance D1/D3/D8; record `.mochiko/brainstorms/schema-based-template-guidance/record.md`; `DECISIONS.md` "Template-schema CLI ruled")
 - **Content (superseded template, full verbatim below):**

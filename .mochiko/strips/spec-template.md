@@ -4,7 +4,7 @@ Entry formats: `strips/README.md`. First entry v0.58.0 — earlier spec-template
 their wave's command entries (`strips/specify.md`), predating the one-file-per-primitive
 convention's application here.
 
-## [v0.74.0] Template retired — superseded by schema-based template guidance (D1/D3/D8)
+## [v0.76.0] Template retired — superseded by schema-based template guidance (D1/D3/D8)
 - **Disposition:** superseded → plugins/mochiko/schemas/spec.yaml + mochiko-cli template spec
 - **Tier failed:** n/a — supersession by ruling (schema-based-template-guidance D1/D3/D8; record `.mochiko/brainstorms/schema-based-template-guidance/record.md`; `DECISIONS.md` "Template-schema CLI ruled")
 - **Content (superseded template, full verbatim below):**

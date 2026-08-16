@@ -6,7 +6,7 @@ Entry formats: `strips/README.md`. Wave context: skill-succinctness wave 1 (desi
 single physical lines, so the R2 line denominator undercounts this skill; dual accounting
 recorded here and flagged on the wave's ROADMAP row.
 
-## [v0.74.0] Router rows re-typed: `spec`/`tasks`/`plan` template files → CLI/schema-delivered (schema-based-template-guidance D1/D8)
+## [v0.76.0] Router rows re-typed: `spec`/`tasks`/`plan` template files → CLI/schema-delivered (schema-based-template-guidance D1/D8)
 - **Disposition:** superseded → `plugins/mochiko/schemas/{spec,tasks,plan}.yaml` + `mochiko-cli template <name>` (raw Read of the `.yaml` is the D8-first-class degraded path). The three router-index rows are re-described as CLI/schema-delivered primitives; the `(template)` designation is ruled to `(schema)` — the shape is no longer a `templates/<t>-template.md` file. The sibling report/format rows (`analyst-report-template`, `advocate-report-template`, `report-format`, `artifact-format`, `output-style`, `techanalyst-report-template`, `feasibility-report-template`) keep `(template)` because they remain markdown template files (D3 leaves them `.md`). Discoverability preserved: each re-typed row keeps its full role description.
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/schema-based-template-guidance/record.md` D1 one plugin CLI · D3 the 8 pipeline templates · D8 schemas ship as data files, raw Read first-class; `DECISIONS.md` "Template-schema CLI ruled" row).
 - **Content (superseded, verbatim):**

@@ -15,7 +15,7 @@ document contracts are the **user's** artifacts and are untouchable. A prefix-ba
 `.mochiko/` would gut the KM module and the brainstorm command; 101 of this tree's 146
 `.mochiko/` references were correctly left alone on that test.
 
-## [v0.74.0] `governance-surfaces-template.md` contextual mentions → `governance-surfaces` schema — schema-based-template-guidance D1/D8
+## [v0.76.0] `governance-surfaces-template.md` contextual mentions → `governance-surfaces` schema — schema-based-template-guidance D1/D8
 - **Disposition:** superseded → the `governance-surfaces` schema (`mochiko-cli template governance-surfaces`, or Read `plugins/mochiko/schemas/governance-surfaces.yaml` raw). Three contextual mentions reworded so no pointer dangles when the template file is deleted; the two-arm form is deliberately NOT forced here — these are "the surface that carries the switch line / Shape 5" citations, not read-instructions (plan §5 output-style row).
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/schema-based-template-guidance/record.md` D1/D3/D8; `DECISIONS.md` "Template-schema CLI ruled").
 - **Content (superseded, verbatim):**

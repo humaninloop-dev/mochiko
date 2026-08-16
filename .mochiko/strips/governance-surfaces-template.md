@@ -13,7 +13,7 @@ template's depth work is **pure addition** and takes no strip entry: the semver 
 the `low`→`high` flip event, and the amendment-policy Route line gains the flip as a governance
 event recorded via amendment-log rows (no new ledger structure).
 
-## [v0.74.0] Template retired — superseded by schema-based template guidance (D1/D3/D8)
+## [v0.76.0] Template retired — superseded by schema-based template guidance (D1/D3/D8)
 - **Disposition:** superseded → plugins/mochiko/schemas/governance-surfaces.yaml + mochiko-cli template governance-surfaces
 - **Tier failed:** n/a — supersession by ruling (schema-based-template-guidance D1/D3/D8; record `.mochiko/brainstorms/schema-based-template-guidance/record.md`; `DECISIONS.md` "Template-schema CLI ruled")
 - **Content (superseded template, full verbatim below):**

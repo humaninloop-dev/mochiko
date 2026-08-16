@@ -11,12 +11,12 @@ conversion at the top of this note.
 
 ---
 
-<!-- Wave context: schema-based-template-guidance build wave (v0.74.0) — command re-points seat.
+<!-- Wave context: schema-based-template-guidance build wave (v0.76.0) — command re-points seat.
 Pipeline artifact templates move from static `.md` exemplars to CLI-rendered / raw-schema guidance
 (DECISIONS.md 2026-08-16 "Template-schema CLI ruled" D1 + D8); re-point only, no responsibility
 changed. Schema data files authored by the parallel schemas seat; paths are fixed contract. -->
 
-## [v0.74.0] Static template read-pointers re-pointed to the CLI-render / raw-schema two-arm home
+## [v0.76.0] Static template read-pointers re-pointed to the CLI-render / raw-schema two-arm home
 - **Disposition:** superseded → each `templates/<t>-template.md` read-pointer in the Tools/Package-
   artifacts binding now names the two-arm guidance home: `mochiko-cli template <name>` when the
   binary is present, else the shipped schema `plugins/mochiko/schemas/<name>.yaml` Read raw — the

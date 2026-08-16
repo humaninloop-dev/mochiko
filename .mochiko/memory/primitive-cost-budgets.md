@@ -129,13 +129,13 @@ or benchmark, never invented.
 ≤1,536); audited at body 4,662 / desc 499 (five-guardrail carrier, disclosed size class above
 its two siblings — justification ruled HOLDS at audit); a body budget may seed from a future
 ruled cut or benchmark, never invented. Standing caution from the same wave's audit, updated at
-v0.74.0: `authoring-feature-map` body now measures 15,863 against its 15,413 budget — a
-**+450-char total overage** declared and ruled HOLDS at the v0.74.0 V3 audit (the mandated
+v0.76.0: `authoring-feature-map` body now measures 15,863 against its 15,413 budget — a
+**+450-char total overage** declared and ruled HOLDS at the v0.76.0 V3 audit (the mandated
 two-arm schema re-point per schema-based-template-guidance §5 — the feature-entry/features-index
 read-pointers swap to the `invoke mochiko-cli template <name>; if absent, Read
 plugins/mochiko/schemas/<name>.yaml` form; no restored prose). Overage history: +248 at v0.72.0
 (the epic `[EPIC-XXX]` marker grammar + within-epic seam-owner rule, multi-feature-plan-implement
-D8/D13) + 202 more at v0.74.0 (the two-arm re-point). Its description 598 against 619 (21 chars,
+D8/D13) + 202 more at v0.76.0 (the two-arm re-point). Its description 598 against 619 (21 chars,
 unchanged). Any further body addition must re-justify its own overage or cut — the budget itself
 is unchanged.
 `patterns-sound-loop` (new skill, v0.70.0) likewise unbudgeted — hard-cap-only (desc ≤1,536);

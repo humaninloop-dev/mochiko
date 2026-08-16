@@ -5,7 +5,7 @@ Entry formats: `strips/README.md`. Wave context: [v0.27.0] entries — skill-suc
 [v0.22.0–v0.23.0] entries — workflow-token-reduction waves 1–2 (design:
 `.mochiko/brainstorms/workflow-token-reduction/record.md`, D6a + D4/wave-2 rulings).
 
-## [v0.74.0] `tasks-template.md` read-pointer → `tasks` schema (two-arm) — schema-based-template-guidance D1/D8
+## [v0.76.0] `tasks-template.md` read-pointer → `tasks` schema (two-arm) — schema-based-template-guidance D1/D8
 - **Disposition:** superseded → `mochiko-cli template tasks`, or Read `plugins/mochiko/schemas/tasks.yaml` raw (D8-first-class). One site: the Overview cycle-card-shape pointer.
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/schema-based-template-guidance/record.md` D1/D3/D8; `DECISIONS.md` "Template-schema CLI ruled").
 - **Content (superseded, verbatim):**

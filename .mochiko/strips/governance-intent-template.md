@@ -9,7 +9,7 @@ command consumer.
 **No version footer.** Unlike `command-shape.md` and `sized-end-stage-review.md`, this template
 carries no version line (checked at this edit), so no footer stamp was owed and none was invented.
 
-## [v0.74.0] Template retired — superseded by schema-based template guidance (D1/D3/D8)
+## [v0.76.0] Template retired — superseded by schema-based template guidance (D1/D3/D8)
 - **Disposition:** superseded → plugins/mochiko/schemas/governance-intent.yaml + mochiko-cli template governance-intent
 - **Tier failed:** n/a — supersession by ruling (schema-based-template-guidance D1/D3/D8; record `.mochiko/brainstorms/schema-based-template-guidance/record.md`; `DECISIONS.md` "Template-schema CLI ruled")
 - **Content (superseded template, full verbatim below):**

@@ -77,7 +77,7 @@ mochiko/
 |---------|------------|---------|
 | Skill dirs | kebab-case, verb-noun class prefixes (`authoring-`, `review-`, `patterns-`, `validation-`, `testing-`, `analysis-`, `grooming-`) | `plugins/mochiko/skills/authoring-constitution/` |
 | Skill files | `SKILL.md` + `references/` (SCREAMING-KEBAB refs) + optional `scripts/` | `analysis-codebase/references/CONTEXT-GATHERING.md` |
-| Agents/commands/templates | kebab-case `.md`, role or artifact names (pipeline artifact templates now ship as `.yaml` schemas under `schemas/`, v0.74.0) | `agents/principal-architect.md`, `plugins/mochiko/schemas/spec.yaml` |
+| Agents/commands/templates | kebab-case `.md`, role or artifact names (pipeline artifact templates now ship as `.yaml` schemas under `schemas/`, v0.76.0) | `agents/principal-architect.md`, `plugins/mochiko/schemas/spec.yaml` |
 | Decision records | `YYYY-MM-DD-slug.md` | `.mochiko/decisions/2026-07-18-transformer-cluster-retired.md` |
 | Brainstorm sessions | `.mochiko/brainstorms/<topic-slug>/record.md` | `agent-decoupling/` |
 | Commit messages | Imperative summary + version stamp / decision IDs in parens | `Build code-minimalism ladder + review lens (v0.53.0)` |

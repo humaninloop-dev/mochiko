@@ -9,7 +9,7 @@ the same wave superseded.
 
 ---
 
-## [v0.74.0] `features-index-template.md` / `feature-entry-template.md` read-pointers → schemas (two-arm) — schema-based-template-guidance D1/D8
+## [v0.76.0] `features-index-template.md` / `feature-entry-template.md` read-pointers → schemas (two-arm) — schema-based-template-guidance D1/D8
 - **Disposition:** superseded → `mochiko-cli template features-index` / `template feature-entry`, or Read `plugins/mochiko/schemas/features-index.yaml` / `plugins/mochiko/schemas/feature-entry.yaml` raw (D8-first-class). Three sites (four pointer instances): the Overview one-living-map sentence (both templates) + the two Related-section pointers.
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/schema-based-template-guidance/record.md` D1/D3/D8; `DECISIONS.md` "Template-schema CLI ruled").
 - **Content (superseded, verbatim):**

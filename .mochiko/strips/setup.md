@@ -9,7 +9,7 @@ it carries the `<!-- shape-form: v7 -->` marker and binds P18–P20.
 
 ---
 
-## [v0.74.0] Static template read-pointers re-pointed to the CLI-render / raw-schema two-arm home
+## [v0.76.0] Static template read-pointers re-pointed to the CLI-render / raw-schema two-arm home
 - **Disposition:** superseded → each `templates/<t>-template.md` read-pointer now names the two-arm
   guidance home: `mochiko-cli template <name>` when the binary is present, else the shipped schema
   `plugins/mochiko/schemas/<name>.yaml` Read raw — the raw Read is the D8-first-class path, not an

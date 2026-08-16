@@ -13,7 +13,7 @@ Editing a shipped primitive is a **landing, not an ad-hoc edit**. Any change tha
 SUPERSEDES content — even one line, even an "obvious" cleanup — obliges both moves before the
 change is done. Full contracts: `.mochiko/strips/README.md`.
 
-**Schema data files** (`plugins/mochiko/schemas/*.yaml`) are shipped primitives from v0.74.0
+**Schema data files** (`plugins/mochiko/schemas/*.yaml`) are shipped primitives from v0.76.0
 (schema-based-template-guidance D8 — data = source of truth, the binary renders over them). An
 edit to one takes the same strip + author≠grader ceremony as any command / skill / agent /
 template edit; the path scope above covers them so this reminder injects on a schema Read.

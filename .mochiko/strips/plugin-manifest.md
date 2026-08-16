@@ -1,11 +1,11 @@
 # Strip notes — the plugin manifests (`plugins/mochiko/.claude-plugin/plugin.json` + `.claude-plugin/marketplace.json`)
 
-Entry formats: `strips/README.md`. First entry for the manifest pair (new file, created v0.74.0 —
+Entry formats: `strips/README.md`. First entry for the manifest pair (new file, created v0.76.0 —
 the manifests had no prior recorded removal because they carry metadata, not primitive prose;
 this is the first identity phrase retired by ruling). One file covers both manifests: they are
 edited as a pair and the superseded phrase lived identically in both.
 
-## [v0.74.0] "Kernel-free" identity phrase superseded — the manifests now lead "Skills-first"
+## [v0.76.0] "Kernel-free" identity phrase superseded — the manifests now lead "Skills-first"
 
 - **Disposition:** superseded → the D11-amended identity. The manifest description/keyword identity
   phrase re-worded to the "skills-first" frame that CLAUDE.md's core-bet sentence and
@@ -72,7 +72,7 @@ edited as a pair and the superseded phrase lived identically in both.
 
   The ruling's ground: at governance v2.0.0 (AM-1) the no-kernel non-negotiable was softened —
   kernel-class tooling is admissible by recorded ruling (GI-019), and the first admitted instance,
-  the template-schema Rust CLI, landed at v0.74.0. "Kernel-free" as the plugin's leading identity
+  the template-schema Rust CLI, landed at v0.76.0. "Kernel-free" as the plugin's leading identity
   claim was then factually stale: the plugin ships a Rust crate. "Skills-first" states the surviving
   bet (skills and agents are the primary quality surface) without the now-false absolute. The AM-1
   identity rewording had reached the ROADMAP thesis + CLAUDE.md prose but not the manifests; this
@@ -83,7 +83,7 @@ edited as a pair and the superseded phrase lived identically in both.
   `metadata.description` uses an em-dash separator while `plugin.json` and `marketplace.json`
   `plugins[0].description` use a colon. Only the "Kernel-free agent-skill framework" → "Skills-first
   agent framework" phrase moved; convergence of the divergent tails was explicitly out of scope for
-  this rider. Version (0.74.0), owner/author blocks, `agent-skills`/`workflow`/`human-in-loop`
+  this rider. Version (0.76.0), owner/author blocks, `agent-skills`/`workflow`/`human-in-loop`
   keywords, and all structural fields untouched.
 - **Consumers assessed:** the manifests are read by the Claude Code plugin loader / marketplace,
   not quoted by any shipped primitive — `grep` across `plugins/mochiko/` finds no skill, command,

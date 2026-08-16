@@ -5,7 +5,7 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
-## [0.74.0] — 2026-08-16
+## [0.76.0] — 2026-08-16
 
 Template-schema CLI build — the accepted `schema-based-template-guidance` record (D1–D11 as
 amended at review) landed as one wave under the sound-loop and transport floors: six producer
