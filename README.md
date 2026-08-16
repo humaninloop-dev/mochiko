@@ -17,11 +17,13 @@ Once per project, establish governance with `/mochiko:setup` — it interrogates
 
 The install above is complete on its own — the plugin is markdown-only, with **no build step and no binary dependency**. A small Rust CLI, `mochiko-cli`, additionally renders authoring guidance for the eight pipeline artifact templates from the schema data files shipped at `plugins/mochiko/schemas/*.yaml`. When the binary is absent, agents Read those YAML files raw — the schemas are the source of truth either way, so nothing degrades but formatting.
 
-Build it once with Cargo (Rust toolchain required):
+Install it once with Cargo (Rust toolchain required; no prebuilt binaries are published yet). As a plugin user — the plugin install does not ship the crate — install straight from GitHub:
 
 ```
-cargo install --path crates/mochiko-cli
+cargo install --git https://github.com/humaninloop-dev/mochiko mochiko-cli
 ```
+
+From a checkout of this repo, `cargo install --path crates/mochiko-cli` works too.
 
 Usage:
 
