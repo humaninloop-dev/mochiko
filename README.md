@@ -13,6 +13,25 @@ Mochiko is the successor to human-in-loop. The bet: engineering discipline lives
 
 Once per project, establish governance with `/mochiko:setup` — it interrogates your intent (type, risk, values), you ratify a synthesis, then it lands enforceable principles on the surfaces Claude Code natively loads (a CLAUDE.md governance region, path-scoped rules files, a governance ledger). Everything downstream inherits it automatically.
 
+### The template-schema CLI (optional)
+
+The install above is complete on its own — the plugin is markdown-only, with **no build step and no binary dependency**. A small Rust CLI, `mochiko-cli`, additionally renders authoring guidance for the eight pipeline artifact templates from the schema data files shipped at `plugins/mochiko/schemas/*.yaml`. When the binary is absent, agents Read those YAML files raw — the schemas are the source of truth either way, so nothing degrades but formatting.
+
+Build it once with Cargo (Rust toolchain required):
+
+```
+cargo install --path crates/mochiko-cli
+```
+
+Usage:
+
+```
+mochiko-cli template <name>            # producer view: schema + example + good/bad guidance
+mochiko-cli template <name> --check    # checklist view: one check line per section
+```
+
+`<name>` is one of `spec`, `plan`, `tasks`, `feature-entry`, `features-index`, `codebase-analysis`, `governance-intent`, `governance-surfaces`. Schema source resolves `--schemas-dir <path>` → `./plugins/mochiko/schemas/` → the compile-time embedded copy. The `--check` view is a guidance view, never a linter — it takes no artifact input and always exits 0 on success.
+
 ## The capability map
 
 The product's capability layer lives in a repo-level map: `FEATURES.md` plus one FEAT-XXX entry per capability. Capabilities are durable — what the product *does*; **work rows** are transient — what it is currently building, attached to a capability and folded into its extent when delivered. A `product-manager` seat stewards the map and recommends; capability writes (mint, merge, retire) happen only inside `/mochiko:specify` or by your grooming ruling, and selection — which rows build now — is always yours.
