@@ -106,7 +106,7 @@ Session artifacts (`record.md`, `synthesis.md`) live in `.mochiko/brainstorms/<t
 <!-- mochiko:governance:begin -->
 ## Governance
 
-**Ratified:** v2.0.0 · 2026-08-16 (AM-1) · production floor · depth: high · modules: compliance none · knowledge-management (core + CHANGELOG) · release-gates <!-- GI-001 (fact profile) · GI-021 (depth level) -->
+**Ratified:** v2.0.1 · 2026-08-16 (AM-1) · production floor · depth: high · modules: compliance none · knowledge-management (core + CHANGELOG) · release-gates <!-- GI-001 (fact profile) · GI-021 (depth level) -->
 
 ### Principles
 
@@ -120,17 +120,17 @@ Session artifacts (`record.md`, `synthesis.md`) live in `.mochiko/brainstorms/<t
 
 ### Technology stack
 
-- Markdown primitive library (Claude Code plugin, `plugins/mochiko/`, semver in `plugin.json`) · no runtime, no build, no test/lint commands — quality is procedural (audits · strips · landing ritual). Dormant re-expression: when the Rust crate lands the stack gains a compiled binary and this line re-expresses (GI-012 activation, ledger) <!-- GI-002 -->
+- Markdown primitive library (Claude Code plugin, `plugins/mochiko/`, semver in `plugin.json`) **plus a Rust crate `crates/mochiko-cli`** (landed v0.76.0, the `schema-based-template-guidance` foundation seed) — a compiled binary built and tested with `cargo test`/`fmt`/`clippy`/`audit` under CI (`.github/workflows/ci.yml`, the repo's first executable gate); the crate is additive maintainer-side tooling, plugin install stays markdown-only (GI-020). Markdown-primitive quality stays procedural (audits · strips · landing ritual); the crate carries the executable `cargo test` gate (GI-012 activated v0.76.0, ledger) <!-- GI-002 -->
 
 ### Quality gates
 
-- No executable gates exist today (no CI/lint/test — detected, not waived); the blocking checks are procedural: audit PASS · strip entries · landing ritual complete. A `cargo test` gate is dormant, activating when the Rust crate lands (GI-012, ledger) — detail per principle in the ledger <!-- GI-004, GI-005 -->
-- Release gates: a `plugin.json` bump MUST NOT land without audits PASS · strips recorded · landing complete · `CHANGELOG.md` entry · `marketplace.json` synced; a dormant clause activates when the Rust crate lands (adds cargo test PASS and schema/binary consistency) — detail in the ledger <!-- GI-012 -->
+- The markdown-primitive blocking checks are procedural: audit PASS · strip entries · landing ritual complete. With the Rust crate landed (v0.76.0), an executable `cargo test` gate is now active for `crates/**` (plus `fmt`/`clippy`/`audit` and a secret-scan under CI); markdown primitives stay procedurally gated (GI-012 activated, ledger) — detail per principle in the ledger <!-- GI-004, GI-005 -->
+- Release gates: a `plugin.json` bump MUST NOT land without audits PASS · strips recorded · landing complete · `CHANGELOG.md` entry · `marketplace.json` synced · **`cargo test` PASS (gate 6)** · **schema-data/binary consistency (on the marketplace-sync gate)** — the crate-landing clause activated at v0.76.0; detail in the ledger <!-- GI-012 -->
 
 ### Governance operations
 
 - Ledger (waivers · amendment policy · exceptions · Three-Part metadata): `.mochiko/memory/governance-ledger.md`
-- Amend via `/mochiko:setup` (fact-profile changes — module attach/detach — and un-waives are governance events); standing amend triggers: public-product transition · CI arrival · GLOSSARY.md content
+- Amend via `/mochiko:setup` (fact-profile changes — module attach/detach — and un-waives are governance events); standing amend triggers: public-product transition · GLOSSARY.md content (the CI-arrival trigger fired and discharged at v0.76.0 — v2.0.1 activation, ledger)
 <!-- mochiko:output-style:begin -->
 - Writing style — conversation: `full` · reports: `ultra` *(internal agent hand-offs)* · documents: `full`. Terse and plain-English by default. Set any of the three to `off`, `lite`, `full`, or `ultra` and your choice is kept when this section is regenerated; "normal mode" turns it off for one session.
 <!-- mochiko:output-style:end -->

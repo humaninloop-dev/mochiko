@@ -9,6 +9,43 @@ the shape is now **v5** (2026-07-30) — see the v0.35.0 section below. **Also s
 
 ---
 
+<!-- Wave context: schema-based-template-guidance build wave (v0.76.0) — command re-points seat.
+Pipeline artifact templates move from static `.md` exemplars to CLI-rendered / raw-schema guidance
+(DECISIONS.md 2026-08-16 "Template-schema CLI ruled" D1 + D8); re-point only, no responsibility
+changed. Schema data files authored by the parallel schemas seat; paths are fixed contract. -->
+
+## [v0.76.0] Static template read-pointers re-pointed to the CLI-render / raw-schema two-arm home
+- **Disposition:** superseded → each `templates/<t>-template.md` read-pointer now names the two-arm
+  guidance home: `mochiko-cli template <name>` when the binary is present, else the shipped schema
+  `plugins/mochiko/schemas/<name>.yaml` Read raw — the raw Read is the D8-first-class path, not an
+  error state. Templates re-pointed in this command: **spec** (Goal + Deliverable bindings),
+  **feature-entry** and **features-index** (Feature-map craft binding).
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-16 "Template-schema CLI
+  ruled (D1–D11 as amended at review)" row; record
+  `.mochiko/brainstorms/schema-based-template-guidance/record.md`, **D1** (a single plugin CLI is
+  the guidance authority, static `.md` exemplars retired) + **D8** (schemas ship as structured data
+  files, the binary renders over them, raw Read is the first-class fallback); build plan §5 re-point
+  inventory)
+- **Content (superseded, verbatim — the read-pointers that left):**
+  - Goal: "`spec.md` conforming to `templates/spec-template.md`"
+  - Deliverable: "`spec.md` from `templates/spec-template.md`"
+  - Feature-map craft: "capability and work-row authoring (`templates/feature-entry-template.md`),
+    index lines (`templates/features-index-template.md`)"
+- **Kept deliberately:** every surrounding responsibility of each binding — the Deliverable's
+  `stories/US-*.md` + kebab-slug + Assumptions/Open-Questions clauses; the Feature-map craft
+  binding's derivation, filter, delta-grammar, SC-re-homing and index-stewardship content and its
+  `mochiko:authoring-feature-map` + `mochiko:patterns-map-minimalism` references — all untouched.
+  Only the template-source token changed. `templates/output-style.md` (Register) is out of the
+  8-template set and unchanged.
+- **Consumers assessed:** none — commands are entry points, nothing mounts them. Co-edited this wave
+  under the same ruling: the 8 `plugins/mochiko/templates/<t>.md` deletions + their supersession
+  strips (P3); the sibling command re-points `plan.md` / `feature.md` / `setup.md` (own strips); the
+  skill/reference re-points + D7 re-key (P5, own strips). The named `plugins/mochiko/schemas/*.yaml`
+  files are authored by the schemas seat (P1) this wave — the path is fixed contract per the
+  approved build plan, not created here.
+
+---
+
 <!-- Wave context: pm-role-and-feature-derivation build wave (v0.68.0) — pipeline-commands cluster.
 The map re-types to durable capabilities + transient pending/live work rows (2026-08-13 ruling);
 specify gains the PM capability-frame touchpoint at intent and re-keys derivation + selection.

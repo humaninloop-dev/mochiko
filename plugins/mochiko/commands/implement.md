@@ -186,6 +186,11 @@ Each tool below is referenced, never restated — its procedure lives in its hom
   Advisory verifier findings ride the same rule — a Minor advisory finding defaults to a
   `BACKLOG.md` booking, never an in-cycle fix; an Important-or-above advisory finding blocks
   the cycle and enters the checkpoint batch.
+- **Model tiering** — exploration and fact-finding dispatches ride the class-keyed tiering
+  floor: locate/enumerate reads go to the cheap explorer seat (`mochiko:explorer`),
+  interpretive or absence-driven reads stay session tier, and every seat brief carries the
+  routing rule. Class key, dispatch ladder, and brief obligation:
+  `mochiko:patterns-model-tiering`, referenced never restated.
 - **Delta re-verification** — re-verification is scoped to the delta: a test-only or
   records-only change gets a delta-grade of the changed surface, never a full gate re-sweep;
   a delta round re-runs no quality gates, the prior gate evidence standing while the graded

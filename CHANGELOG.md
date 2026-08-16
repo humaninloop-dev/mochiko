@@ -5,6 +5,122 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.77.0] — 2026-08-16
+
+Model-tiering dispatch floor — the deferred `model-tiered-seats` D4 build, executed and
+retargeted (the July record's ~10 "native Explore" dispatch sites were refactored away at the
+v8 command rebuild; the retarget is command-level floor lines plus a brief-injection
+obligation, ADR `2026-08-16-model-tiering-build`). Rostered personas stay `model: opus` (D5
+untouched); cheap-tier work moves to a scoped disposable seat. Mechanism confirmed empirically
+this session: an opus-pinned persona spawning a subagent with a haiku override ran
+`claude-haiku-4-5-20251001` and returned a correct targeted read. Pure additions — no strips;
+author≠grader audit per the edit ceremony.
+
+- **New agent `mochiko:explorer`** (`agents/explorer.md`, `model: haiku` pinned in
+  frontmatter) — disposable-per-gap cheap-tier fact-finder: locate / enumerate /
+  targeted-read / deterministic checks; terse spot-checkable returns with file:line
+  provenance, method-scoped absence reporting, never interprets, never writes. Registered in
+  `plugin.json` and the router agent table.
+- **New skill `mochiko:patterns-model-tiering`** — single source of the class-keyed dispatch
+  floor: locate/enumerate/targeted-read gaps ride `mochiko:explorer`; interpretive gaps,
+  decision-driving absences, and completeness-sensitive enumerations stay session tier (the
+  D4 class key + F2 guide-line); the dispatch ladder (direct tool call → cheap explorer →
+  session-tier read), disposable-per-gap lifecycle (F5), the weak-negative watch, and the
+  brief obligation — every seat brief carries the routing rule, the only channel that reaches
+  spawned teammates (they never load `skills:` frontmatter). Third sibling of the sound-loop
+  and transport floors.
+- **Six command floor lines** — `plan.md`, `implement.md`, `feature.md` (Ways of Working) and
+  `specify.md`, `setup.md`, `brainstorm.md` (Harness) each gain one model-tiering line
+  referencing the skill, never restating it.
+- **Ten persona standing sections** — every rostered agent body gains a uniform
+  `## Delegating Cheap Reads` section (explorer excluded): spawn a disposable
+  `mochiko:explorer` subagent for locate/enumerate/targeted-read/deterministic-check gaps,
+  one gap per spawn; interpretive, absence-driven, and completeness-sensitive reads stay the
+  seat's own. Persona body is the one channel reaching seats on both transports (teammates
+  drop `skills:` frontmatter but load the persona); names no command or pipeline stage, so
+  decoupling-by-absence holds. Platform basis: teammates and subagents may spawn nested
+  subagents (depth cap 3; teammates foreground-only).
+- **Router updates** — `patterns-model-tiering` skill row + `explorer` agent row in
+  `skills/mochiko/SKILL.md`.
+
+## [0.76.0] — 2026-08-16
+
+Template-schema CLI build — the accepted `schema-based-template-guidance` record (D1–D11 as
+amended at review) landed as one wave under the sound-loop and transport floors: six producer
+seats with strictly disjoint file ownership (schemas · crate + CI · template deletions + strips ·
+command re-points · skill re-points + D7 re-key) and three fresh author≠grader validator seats.
+Pipeline artifact template guidance moves from static `.md` exemplars to schema data files
+rendered by mochiko's first Rust crate; the plugin still installs and functions markdown-only
+(GI-020), reading the schema data raw when the binary is absent (D8). Audit tally: V1 crate PASS
+plus delta-confirm, V2 8/8 schema fidelity plus 8/8 strips, V3 13/13 re-points, the
+`authoring-feature-map` +450-char budget overage ruled HOLDS; one fix round (CI `cargo audit`
+raised to `--deny warnings`).
+
+- **First Rust crate `crates/mochiko-cli`** — mochiko's first non-markdown code and the owned
+  foundation seed for future native tooling (D6, Tauri-bound). Two dependencies (`serde` derive,
+  `serde_norway` for YAML — `serde_yml` void per RUSTSEC-2025-0068), no `clap`/`anyhow`. Surface:
+  `mochiko-cli template <name>` (producer view: schema + example + good/bad guidance) and
+  `mochiko-cli template <name> --check` (checklist view — a view, not a linter; takes no artifact
+  input and stays provably advisory under the D11 bright line). Runtime schema resolution reads
+  the shipped `plugins/mochiko/schemas/*.yaml` as the source of truth, falling back to the
+  compile-time embedded copy only for run-from-anywhere. 11 tests. CI at
+  `.github/workflows/ci.yml` (the repo's first executable gate) runs `cargo test`, `cargo fmt
+  --check`, `cargo clippy -- -D warnings`, `cargo audit --deny warnings`, and a secret-scan step,
+  on push/PR touching `crates/**` or `plugins/mochiko/schemas/**`.
+- **Eight schema data files at `plugins/mochiko/schemas/`** (D8: data = source of truth, binary =
+  renderer, raw Read the first-class degraded path) — `spec.yaml`, `plan.yaml`, `tasks.yaml`,
+  `feature-entry.yaml`, `features-index.yaml`, `codebase-analysis.yaml`, `governance-intent.yaml`,
+  `governance-surfaces.yaml`. YAML chosen for raw-Read legibility on prose-heavy templates. One
+  source renders both the producer view and the `--check` checklist view; the per-section `check`
+  lines are net-new authored guidance under D7's authority, graded by V2/V3.
+- **Eight template supersessions with byte-exact strips** — the eight pipeline artifact templates
+  (`spec-template.md`, `plan-template.md`, `tasks-template.md`, `feature-entry-template.md`,
+  `features-index-template.md`, `codebase-analysis-template.md`, `governance-intent-template.md`,
+  `governance-surfaces-template.md`) are superseded-by-ruling into their schema equivalents, each
+  with a verbatim strip entry (`.mochiko/strips/<template>.md`). The two doctrine-dense schemas
+  (`governance-intent`, `governance-surfaces`) preserve every operative line verbatim, audited by
+  `validation-constitution`.
+- **Fourteen primitive surfaces re-pointed** — every read-pointer to an in-scope template swaps to
+  the two-arm form (`invoke mochiko-cli template <name>; if absent, Read
+  plugins/mochiko/schemas/<name>.yaml` — the fallback is D8-first-class). Thirteen are two-arm
+  re-points across `commands/{specify,plan,feature,setup}.md` and the skill/reference surfaces
+  (`authoring-prototype`, `authoring-feature-map`, `analysis-codebase` + `CONTEXT-GATHERING.md`,
+  `patterns-vertical-tdd`, `authoring-constitution` + `INTERROGATION-AGENDA.md`,
+  `validation-constitution/references/QUALITY-CHECKLIST.md`, `templates/output-style.md`), each
+  with a supersession-by-ruling strip entry. The `mochiko/SKILL.md` router rows (spec/tasks/plan)
+  are re-typed `(schema)` rather than swapped, keeping discoverability intact (I4 carve-out).
+- **Thin D7 re-key** — only the in-scope-template checklists cite the `--check` view: the
+  tasks cycle-card criteria (`review-plan-artifacts`) and the governance-surfaces structure
+  (`validation-constitution/references/QUALITY-CHECKLIST.md`). Out-of-scope artifact checklists
+  are left untouched (D3 boundary).
+- **Governance activation, PATCH 2.0.0 → 2.0.1** — pre-authorized at AM-1, activating the dormant
+  crate-gate clauses now that the crate has landed (no fresh `/mochiko:setup` amend): GI-012 gains
+  `cargo test` PASS as release gate 6 and schema-data/binary consistency on the marketplace-sync
+  gate; GI-002 tech-stack line re-expressed (Rust crate, compiled binary, CI present); GI-003
+  un-narrowed (CI secret-scan now exists); GI-004/GI-007 re-expressed (the crate carries a real
+  `cargo test` suite coexisting with the prose audit ratchet). One amendment-log activation row in
+  the ledger; the `.claude/rules/mochiko/primitive-edits.md` path scope now covers
+  `plugins/mochiko/schemas/**` (schema files are shipped primitives).
+
+### Changed
+
+- Plugin identity reworded from "Kernel-free agent-skill framework" to "Skills-first agent
+  framework" (`plugin.json` + `marketplace.json` descriptions; the `kernel-free` keyword →
+  `skills-first`) — the "kernel-free" claim went stale when the D11 softening admitted the Rust
+  crate (governance v2.0.0, GI-019); user-ruled rider at this landing. Pre-existing manifest
+  description divergences left as-is. Strip: `.mochiko/strips/plugin-manifest.md`.
+
+### Removed
+
+- `plugins/mochiko/templates/spec-template.md` — superseded by `plugins/mochiko/schemas/spec.yaml` + `mochiko-cli`
+- `plugins/mochiko/templates/plan-template.md` — superseded by `plugins/mochiko/schemas/plan.yaml` + `mochiko-cli`
+- `plugins/mochiko/templates/tasks-template.md` — superseded by `plugins/mochiko/schemas/tasks.yaml` + `mochiko-cli`
+- `plugins/mochiko/templates/feature-entry-template.md` — superseded by `plugins/mochiko/schemas/feature-entry.yaml` + `mochiko-cli`
+- `plugins/mochiko/templates/features-index-template.md` — superseded by `plugins/mochiko/schemas/features-index.yaml` + `mochiko-cli`
+- `plugins/mochiko/templates/codebase-analysis-template.md` — superseded by `plugins/mochiko/schemas/codebase-analysis.yaml` + `mochiko-cli`
+- `plugins/mochiko/templates/governance-intent-template.md` — superseded by `plugins/mochiko/schemas/governance-intent.yaml` + `mochiko-cli`
+- `plugins/mochiko/templates/governance-surfaces-template.md` — superseded by `plugins/mochiko/schemas/governance-surfaces.yaml` + `mochiko-cli`
+
 ## [0.75.0] — 2026-08-16
 
 Vertical-TDD test-case-anchor build — the accepted `vertical-tdd-complexity-and-qa-role`

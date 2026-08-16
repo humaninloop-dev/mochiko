@@ -10,6 +10,14 @@ bullet like the one stripped from `review-specifications`). One contested keep (
 is a library-wide consistency ruling, not a cluster call (see the wave return); note L16 already carries
 the `loop-discipline` reference the strip disposition would add.
 
+## [v0.76.0] Cycle-card Review Focus row cites the `tasks --check` view (D7 re-key, thin) — schema-based-template-guidance D7/D8
+- **Disposition:** superseded → the Cycle cards row's Key-checks cell now cites `mochiko-cli template tasks --check` (or Read `plugins/mochiko/schemas/tasks.yaml` raw) as the source its cycle-card criteria mirror. THIN scope (contest-accepted per plan §5): only the tasks in-scope-template checklist is re-keyed; `references/ARTIFACT-CHECKLISTS.md` and all out-of-scope artifact checklists (requirements / constraints / nfrs / data-model / contracts / quickstart / architecture — their templates are in-skill refs, D3 leaves them `.md`) are left untouched.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/schema-based-template-guidance/record.md` D7 (`--check` grading view, checklists re-key)/D8; `DECISIONS.md` "Template-schema CLI ruled").
+- **Content (superseded, verbatim):** the Cycle cards row previously ended without a checklist-source citation —
+  - `… brownfield exposure stated (\`none\` counts), **no task lists or file paths** (pre-written decomposition is a finding — the builder decomposes at build time) |`
+- **Kept deliberately:** every existing cycle-card criterion (vertical integrity · `**TEST:**` gate · story traceability · sizing · dependency minimality · brownfield exposure · no-task-lists) — the `--check` citation is additive; `references/ARTIFACT-CHECKLISTS.md` untouched (out-of-scope per D3).
+- **Consumers assessed:** n/a (single-writer skill; the ARTIFACT-CHECKLISTS reference deliberately not re-keyed).
+
 ## [v0.75.0] Cycle-cards Review-Focus row re-keyed to the vertical-TDD cycle anchor (D1) + foundation-type kill (D3); oracle-semantics check added (D2, pure addition)
 - **Disposition:** superseded → the Cycle cards row's time-based **sizing** check and its **foundation-sequenced** ordering token are retired; the row now grades test-case-bundle cycles (no time anchor) and dependency minimality without the foundation word. The `references/ARTIFACT-CHECKLISTS.md` cycle-card summary line was aligned in the same edit (dropped `sizing`, added the oracle-semantics token). The **oracle-semantics** check itself and the matching Quality-Checklist item are pure additions (D2), riding this ruling row — not strips.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-16 "Vertical-TDD cycle anchor + QA test-case authorship (D1–D4 as review-amended)" row; record `.mochiko/brainstorms/vertical-tdd-complexity-and-qa-role/record.md` D1 [the test-case-bundle anchor supersedes the time-based sizing tables] + D3 [foundation/feature card type dies; the skeleton absorbs sequencing]).

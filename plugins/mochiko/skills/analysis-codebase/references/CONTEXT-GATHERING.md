@@ -5,8 +5,10 @@ project's tech stack, conventions, CI gates, team signals, and existing governan
 `codebase-analysis.md` you produce reflects what the codebase already is.
 
 > **Scope note (mochiko).** This is the *extraction sub-procedure* the Setup-Brownfield mode
-> consumes — its findings flow into `.mochiko/memory/codebase-analysis.md` (per
-> `codebase-analysis-template.md`). The **standalone Project Context Report** mode (a separate
+> consumes — its findings flow into `.mochiko/memory/codebase-analysis.md` (shaped by the
+> `codebase-analysis` schema — `mochiko-cli template codebase-analysis`, or
+> `plugins/mochiko/schemas/codebase-analysis.yaml` read raw). The **standalone Project Context
+> Report** mode (a separate
 > human-facing report for constitution authoring) lives in the **constitution-context cluster**
 > and is not wired this run. The `## Output Format: Project Context Report` block below is kept
 > only as a reference for *what context to extract*; in Setup-Brownfield the same findings land

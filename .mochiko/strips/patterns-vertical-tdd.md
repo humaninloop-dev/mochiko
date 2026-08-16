@@ -5,6 +5,14 @@ Entry formats: `strips/README.md`. Wave context: [v0.27.0] entries — skill-suc
 [v0.22.0–v0.23.0] entries — workflow-token-reduction waves 1–2 (design:
 `.mochiko/brainstorms/workflow-token-reduction/record.md`, D6a + D4/wave-2 rulings).
 
+## [v0.76.0] `tasks-template.md` read-pointer → `tasks` schema (two-arm) — schema-based-template-guidance D1/D8
+- **Disposition:** superseded → `mochiko-cli template tasks`, or Read `plugins/mochiko/schemas/tasks.yaml` raw (D8-first-class). One site: the Overview cycle-card-shape pointer.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/schema-based-template-guidance/record.md` D1/D3/D8; `DECISIONS.md` "Template-schema CLI ruled").
+- **Content (superseded, verbatim):**
+  - `in the cycle-card shape ([\`tasks-template.md\`](../../templates/tasks-template.md) is the canonical skeleton):`
+- **Kept deliberately:** the `**TEST:**`-grammar ownership and all descriptive text; the in-skill reference pointers to `TEST-GRAMMAR.md` / `SLICE-IDENTIFICATION.md` (untouched — not in-scope templates).
+- **Consumers assessed:** n/a (single-writer skill).
+
 ## [v0.75.0] Cycle anchor re-keyed to test-case bundles; foundation/feature classification + time-based sizing superseded (SKILL.md + SLICE-IDENTIFICATION.md)
 
 - **Disposition:** superseded → the test-case-bundle anchor + walking-skeleton first-cycle rule in SKILL.md (Overview + Core Principles 1–3, Quick heuristics, Case column, Quality Checklist) and the bundle-identification re-key of `references/SLICE-IDENTIFICATION.md`.

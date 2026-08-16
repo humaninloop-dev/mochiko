@@ -4,8 +4,9 @@ The agenda for the pre-authoring interrogation session that `/mochiko:setup` run
 constitution is authored**. The session is conducted inline by the setup lead using the
 `mochiko:analysis-iterative` questioning engine (one question per turn, format adapted to the
 user's state) — this file supplies the *agenda*, the engine supplies the *craft*. Its output is the
-session synthesis at `.mochiko/memory/governance-intent.md` (see
-`templates/governance-intent-template.md`).
+session synthesis at `.mochiko/memory/governance-intent.md` (shaped by the `governance-intent`
+schema — `mochiko-cli template governance-intent`, or
+`plugins/mochiko/schemas/governance-intent.yaml` read raw).
 
 **The interrogation leads, the deck follows.** No catalog card is dealt until the dimensions that
 select and filter the deck (fact profile, type) are elicited. Minted principles trace to elicited

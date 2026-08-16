@@ -18,8 +18,9 @@ two coupled artifacts:
    inline JS for navigation only), servable with `bun` (e.g. `bunx serve prototype/`) and — the
    degrade path — openable directly from the filesystem with no server at all. No build step, no
    framework, no install *required* to view (serving is convenience, never a prerequisite).
-2. **The Screens & Flows section of `spec.md`** — the manifest, in the shape
-   [`spec-template.md`](../../templates/spec-template.md) defines: `SCR-XXX` rows (screen, purpose,
+2. **The Screens & Flows section of `spec.md`** — the manifest, in the shape the `spec` schema
+   defines (invoke `mochiko-cli template spec` when the binary is available; otherwise Read
+   `plugins/mochiko/schemas/spec.yaml` raw): `SCR-XXX` rows (screen, purpose,
    data shown, FEAT tag) and `FLOW-XXX` rows (click-path steps, the story acceptance scenario each
    keys to, FEAT tag). The manifest is the contract surface downstream stages trace to; the HTML is
    its clickable rendering. IDs per the deliverable envelope
@@ -136,7 +137,7 @@ Before handing off:
 
 ## Related
 
-- [`spec-template.md`](../../templates/spec-template.md) — owns the Screens & Flows section shape this skill fills
+- `spec` schema — owns the Screens & Flows section shape this skill fills; invoke `mochiko-cli template spec` when the binary is available, otherwise Read `plugins/mochiko/schemas/spec.yaml` raw
 - [`artifact-format.md`](../../templates/artifact-format.md) — the deliverable envelope (ID grammar, citation rules)
 - `mochiko:review-specifications` — grades the prototype with the spec (independent reviewer, never the author)
 - `mochiko:authoring-user-stories` — upstream: the stories and acceptance scenarios the flows render

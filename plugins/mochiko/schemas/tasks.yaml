@@ -1,0 +1,155 @@
+# Schema data file for the `tasks` pipeline artifact template.
+# Source of truth for `mochiko-cli template tasks` and `--check`. Read raw when the binary is absent (D8).
+template: tasks
+title: Implementation Cycles (cycle cards)
+form: artifact-format.md
+register: full   # per artifact-format.md rule 11; TEST-gate commands, file paths, identifiers are never-compress items
+overview: |
+  This file is CYCLE CARDS, not a task list. Each card is a coherent bundle of named test cases
+  (the card's content); the builder decomposes each card into concrete tasks at build time, with
+  the code in view — the decomposition is disclosed in the cycle report, never pre-written here.
+  Cite spec/plan content by ID (US-#, FR-#, SC-#, C-#) — never re-quote it; each test case cites
+  the ID(s) it covers. Structure and slicing judgment come from mochiko:patterns-vertical-tdd (the
+  cycle-card shape). The card's checkbox is the progress surface, flipped when the cycle's named
+  cases show green against real infrastructure.
+
+sections:
+  - name: Header
+    required: true
+    contract: |
+      Title "# Implementation Cycles: [FEAT-XXX — FEATURE NAME]" plus two generated-from
+      pointers: (1) the spec folder and the feature's produced design artifacts — spec.md,
+      features/FEAT-XXX/plan.md, and whichever of requirements.md, constraints-and-decisions.md,
+      nfrs.md, data-model.md, contracts/ the approved proposal included; (2) Structure:
+      mochiko:patterns-vertical-tdd (cycle-card shape, slicing judgment).
+    check: "Is the header present with the FEAT-XXX title and both provenance pointers (source artifacts and the patterns-vertical-tdd structure note)?"
+
+  - name: Overview
+    required: true
+    contract: |
+      Metric table (Metric | Value): Cycles = [N]; Stories covered = [US-# list — every P1/P2
+      story on at least one card]. There is no foundation/feature split in the count.
+    check: "Does the Overview table report the cycle count and the covered US-# list, with every P1/P2 story on at least one card?"
+
+  - name: Cycle Format
+    required: true
+    contract: |
+      Each card is one vertical slice: a coherent bundle of named test cases (expected behaviour,
+      in the `**TEST:**` grammar — see patterns-vertical-tdd/references/TEST-GRAMMAR.md for the
+      canonical Setup/Action/Assert/Capture grammar) that demonstrate together. The builder
+      implements the card test-first (red/green/refactor per mochiko:executing-tdd-cycle,
+      decomposition at build time), and the cycle is done when its named cases show green against
+      real infrastructure. The card's checkbox is the progress surface, flipped when the bundle's
+      cases pass. Where the work opens a new end-to-end path (greenfield / new path), the first
+      cycle is a walking skeleton; growth on an already-standing path skips it. There is no
+      foundation/feature card type — `[P]` parallel eligibility derives from a card's
+      dependencies, not from a type column. Each named test case cites the spec/plan ID(s) it
+      covers.
+    check: "Does the Cycle Format explain the card as a bundle of named test cases, the test-first flow, cycle-done when named cases pass on real infrastructure, the checkbox-as-progress rule, the walking-skeleton first cycle where a new end-to-end path opens, no foundation/feature type with `[P]` derived from dependencies, and per-case ID citation?"
+
+  - name: Cycle Cards
+    required: true
+    contract: |
+      Cards are listed directly, not grouped by foundation/feature type. Each card carries:
+      checkbox + title; Stories (US-# — why these stories/cases form one demonstrable bundle,
+      <= 2 lines); Depends on; Case (Simple | Split — why, one line | Merge — why, one line);
+      Brownfield exposure (none | extends `path` | modifies `path` — cycle-level surfaces only);
+      and the closing `**TEST:**` bundle — one or more named test cases, each opening with
+      `**Covers**: <spec/plan IDs>` (the acceptance-ID citation lives per-case, never a standalone
+      Acceptance-criteria field) then Setup/Action/Assert/Capture fields per TEST-GRAMMAR.md.
+      Where a new end-to-end path opens, the first card is a walking skeleton (thinnest path, one
+      trivial case green). `[P]` marks parallel-eligible cards, derived from dependencies.
+    good: |
+      SAMPLE (illustration only — replace with actual cycles; DO NOT keep the samples in the generated tasks.md):
+
+      ### - [ ] Cycle 1: Walking skeleton — [thinnest end-to-end path]
+      - **Stories:** US-1 — thinnest end-to-end path through all layers, one trivial case green; establishes the production-shaped stack [<= 2 lines]
+      - **Depends on:** —
+      - **Case:** Simple
+      - **Brownfield exposure:** none
+
+      **TEST:** [entity] round-trips through the full stack
+      - **Covers**: US-1 / SC-1
+      - **Action**: `curl -X POST localhost:3000/api/[entity] -d '{"name":"Test"}'`
+      - **Assert**: Response status: 201
+      - **Assert**: Console contains "[entity]_id"
+      - **Capture**: console
+
+      ### - [ ] Cycle 2: [Feature bundle title] `[P]`
+      - **Stories:** US-2 — [why these stories/cases form one demonstrable bundle, <= 2 lines]
+      - **Depends on:** C1
+      - **Case:** [Simple | Split — why | Merge — why]
+      - **Brownfield exposure:** extends `src/models/[entity].py`
+
+      **TEST:** [behavior] works end to end via API
+      - **Covers**: US-2 / SC-2 scenario 1
+      - **Setup**: Seed prerequisite [entity] data
+      - **Action**: `curl -X POST localhost:3000/api/[endpoint] -d '{"[field]":"value"}'`
+      - **Assert**: Response status: 200
+      - **Assert**: Console contains "[expected field]"
+      - **Capture**: console
+
+      **TEST:** [behavior] rejects [invalid case]
+      - **Covers**: US-2 / SC-2 scenario 2
+      - **Setup**: Seed prerequisite [entity] data
+      - **Action**: `curl -X POST localhost:3000/api/[endpoint] -d '{"[field]":"invalid"}'`
+      - **Assert**: Response status: 400
+      - **Capture**: console
+    check: "Are cards listed directly (no foundation/feature grouping), each a bundle of named `**TEST:**` cases with per-case `**Covers**:` IDs (never a standalone acceptance-criteria field), carrying Stories/Depends-on/Case/Brownfield-exposure; is the first cycle a walking skeleton where a new end-to-end path opens; is `[P]` used only where dependencies allow; and is no illustrative sample or pre-written task list / file path left in?"
+
+skeleton: |
+  # Implementation Cycles: [FEAT-XXX — FEATURE NAME]
+
+  > Generated from the spec folder and the feature's produced design artifacts: spec.md, features/FEAT-XXX/plan.md, and whichever of requirements.md, constraints-and-decisions.md, nfrs.md, data-model.md, contracts/ the approved proposal included
+  > Structure: `mochiko:patterns-vertical-tdd` (cycle-card shape, slicing judgment)
+
+  ## Overview
+
+  | Metric | Value |
+  |--------|-------|
+  | Cycles | [N] |
+  | Stories covered | [US-# list — every P1/P2 story on at least one card] |
+
+  ## Cycle Format
+
+  Each card is one vertical slice: a coherent bundle of **named test cases** (expected behaviour,
+  in the `**TEST:**` grammar — see [`TEST-GRAMMAR.md`](../skills/patterns-vertical-tdd/references/TEST-GRAMMAR.md)
+  for the canonical Setup/Action/Assert/Capture grammar) that demonstrate together. The builder
+  implements the card test-first (red/green/refactor per `mochiko:executing-tdd-cycle`,
+  decomposition at build time), and the cycle is done when its named cases show green against real
+  infrastructure. **The card's checkbox is the progress surface**, flipped when the bundle's cases
+  pass. Where the work opens a new end-to-end path (greenfield / new path), the **first cycle is a
+  walking skeleton**; growth on an already-standing path skips it. There is no foundation/feature
+  card type — `[P]` parallel eligibility derives from a card's dependencies, not from a type
+  column. Each named test case cites the spec/plan ID(s) it covers.
+
+  ---
+
+  ### - [ ] Cycle 1: Walking skeleton — [thinnest end-to-end path]
+
+  - **Stories:** US-# — [thinnest end-to-end path through all layers; establishes the production-shaped stack, <= 2 lines]
+  - **Depends on:** —
+  - **Case:** Simple
+  - **Brownfield exposure:** none
+
+  **TEST:** [behavior] round-trips through the full stack
+  - **Covers**: US-# / SC-#
+  - **Action**: `[command]`
+  - **Assert**: [expected]
+  - **Capture**: console
+
+  ---
+
+  ### - [ ] Cycle N: [Feature bundle title] `[P]`
+
+  - **Stories:** US-# — [why these stories/cases form one demonstrable bundle, <= 2 lines]
+  - **Depends on:** [cycle refs]
+  - **Case:** [Simple | Split | Merge]
+  - **Brownfield exposure:** [none | extends `path` | modifies `path`]
+
+  **TEST:** [behavior] works end to end via real infrastructure
+  - **Covers**: US-# / SC-#
+  - **Setup**: [preconditions]
+  - **Action**: `[command]`
+  - **Assert**: [expected]
+  - **Capture**: console

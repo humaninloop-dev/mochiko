@@ -76,7 +76,7 @@ The fourth of those is the general guardrail, binding on every surface at every 
 The persistent home is the project's `CLAUDE.md` governance region — one line carrying a value
 per surface (`off` / `lite` / `full` / `ultra` for chat · reports · artifacts), so a user can
 run chat at `lite` without forfeiting the report savings. Setup writes it default-on; the user
-edits it in place; it survives every regeneration (`governance-surfaces-template.md`). No
+edits it in place; it survives every regeneration (the `governance-surfaces` schema). No
 governance region yet, and the defaults above govern.
 
 In-session, "stop caveman" or "normal mode" turns the style off for the rest of that session,
@@ -84,7 +84,7 @@ on top of whatever the line says; the line governs again next session.
 
 Two delivery legs, and the difference matters: the region line is **always loaded**, so it is what
 reaches a producer creating a file from scratch; the `paths`-scoped rules file setup also writes
-(`governance-surfaces-template.md` Shape 5) injects on **Read, not Write**, so it reinforces at
+(the `governance-surfaces` schema, Shape 5) injects on **Read, not Write**, so it reinforces at
 edit time and is never the only carrier.
 
 ## Adoption boundary
@@ -109,6 +109,6 @@ stylistic:
 
 **Style version:** v1 (2026-08-01) · **Bound by:** each command's ground rules (chat) ·
 `report-format.md` (reports) · `artifact-format.md` with the artifact templates and authoring
-references (artifacts) · `governance-surfaces-template.md` + `setup.md` +
+references (artifacts) · the `governance-surfaces` schema + `setup.md` +
 `authoring-constitution` (Shape 1's switch line, the always-loaded carrier · Shape 5's
 `paths`-scoped rules file, edit-time reinforcement).

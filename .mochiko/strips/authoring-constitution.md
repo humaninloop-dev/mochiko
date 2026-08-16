@@ -32,6 +32,16 @@ arch-opinion, outside the depth dial per PO-D3 S7 / review-fold #9). `COMPLIANCE
 `ESSENTIAL-FLOOR.md` worked-example framing gained **pure additions** (D7 level-blind clause; a
 depth note + coverage annotation) — additions ride the decision row and take no strip entry.
 
+## [v0.76.0] `governance-surfaces-template.md` + `governance-intent-template.md` read-pointers → schemas (two-arm) — schema-based-template-guidance D1/D8
+- **Disposition:** superseded → `mochiko-cli template governance-surfaces` / `template governance-intent`, or Read `plugins/mochiko/schemas/governance-surfaces.yaml` / `plugins/mochiko/schemas/governance-intent.yaml` raw (D8-first-class). Three sites: `SKILL.md` "Artifact shapes" pointer + "Every governance set MUST include, per" pointer (both → governance-surfaces); `references/INTERROGATION-AGENDA.md` synthesis-shape mention (→ governance-intent).
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/schema-based-template-guidance/record.md` D1/D3/D8; `DECISIONS.md` "Template-schema CLI ruled").
+- **Content (superseded, verbatim):**
+  - `Artifact shapes (region block, rules file, ledger):` / `[\`governance-surfaces-template.md\`](../../templates/governance-surfaces-template.md).` — `SKILL.md`
+  - `Every governance set MUST include, per` / `[\`governance-surfaces-template.md\`](../../templates/governance-surfaces-template.md):` — `SKILL.md`
+  - `session synthesis at \`.mochiko/memory/governance-intent.md\` (see` / `\`templates/governance-intent-template.md\`).` — `references/INTERROGATION-AGENDA.md`
+- **Kept deliberately:** all in-body "the template's Shape N" contextual references (no file path — they resolve through the re-pointed shapes, which the governance-surfaces schema carries as shape-blocks per the record's §3 verbatim-preservation ruling); the `templates/constitution-modules/` pointer (`SKILL.md` line 219) and the `knowledge-management.md` module pointer (`references/INTERROGATION-AGENDA.md` line 45) — not in-scope templates, stay `.md`.
+- **Consumers assessed:** n/a (single-writer skill + its reference). Doctrine-dense governance-surfaces / governance-intent schema fidelity (verbatim preservation) is V2's audit, not this re-point.
+
 ## [v0.65.0] `catalog/universal-floor.md` — single-level shelf doctrine superseded (two-row dial)
 - **Disposition:** superseded → the shelf header in `references/catalog/universal-floor.md`; preserved verbatim here.
 - **Tier failed:** n/a — supersession by ruling (production-floor-adaptive-depth D1/D2/D5, ratified 2026-08-11; `DECISIONS.md` 2026-08-11 adaptive-depth row; PO-D2 amended).

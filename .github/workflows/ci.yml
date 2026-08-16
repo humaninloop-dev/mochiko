@@ -1,0 +1,67 @@
+# mochiko CI — the repo's first executable gate (M6 → GI-012).
+# Scope: the Rust crate and the schema data files it renders. Actions are pinned to release tags;
+# SHA-pinning is a recorded hardening follow-up.
+name: ci
+
+on:
+  push:
+    paths:
+      - "crates/**"
+      - "plugins/mochiko/schemas/**"
+      - "Cargo.toml"
+      - "Cargo.lock"
+      - ".github/workflows/ci.yml"
+  pull_request:
+    paths:
+      - "crates/**"
+      - "plugins/mochiko/schemas/**"
+      - "Cargo.toml"
+      - "Cargo.lock"
+      - ".github/workflows/ci.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  crate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust toolchain (stable + rustfmt + clippy)
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+
+      - name: Format check
+        run: cargo fmt --all --check
+
+      - name: Clippy (warnings are errors)
+        run: cargo clippy --all-targets -- -D warnings
+
+      - name: Test
+        run: cargo test --all
+
+      - name: Install cargo-audit
+        uses: taiki-e/install-action@v2
+        with:
+          tool: cargo-audit
+
+      - name: Audit dependencies (advisory-flagged deps fail the build)
+        # --deny warnings promotes informational advisories (unsound/unmaintained/yanked, the
+        # RUSTSEC-2025-0068 class) from exit-0 warnings to build failures; plain `cargo audit`
+        # only fails on vulnerability advisories.
+        run: cargo audit --deny warnings
+
+      # GI-003: secrets stay out of the repo. Plain grep over tracked files for high-signal
+      # secret token formats — no third-party scanner action. This workflow file is excluded so
+      # its own pattern definitions cannot self-match.
+      - name: Secret scan
+        run: |
+          set -euo pipefail
+          pattern='AKIA[0-9A-Z]{16}|-----BEGIN [A-Z ]*PRIVATE KEY-----|ghp_[A-Za-z0-9]{36}|github_pat_[A-Za-z0-9_]{22,}|xox[baprs]-[A-Za-z0-9-]{10,}|AIza[0-9A-Za-z_-]{35}'
+          if git grep -EnI "$pattern" -- ':(exclude).github/workflows/ci.yml'; then
+            echo '::error::potential secret detected in tracked files (GI-003)'
+            exit 1
+          fi
+          echo 'secret scan clean'

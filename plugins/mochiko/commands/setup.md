@@ -37,6 +37,10 @@ principle nor recorded waiver · user acceptance not given · no feature map at 
   `mochiko:patterns-transport-floor` governs its composition and messaging under a split
   trigger — message legs on any multi-seat messaging, topology legs on shared writes —
   non-waivable once triggered; referenced, never restated.
+- **Model tiering.** Exploration and fact-finding dispatches ride
+  `mochiko:patterns-model-tiering`'s class key — locate/enumerate reads to the cheap
+  explorer seat (`mochiko:explorer`), interpretive or absence-driven reads on the session
+  tier — and every seat brief carries the routing rule; referenced, never restated.
 - **Plan approval:** any seat that writes artifacts plans first and works only on a plan you
   approved; grading and fact-finding seats are exempt.
 - **Independence:** no output is cleared by its author; grading reads the authored surfaces
@@ -66,9 +70,11 @@ principle nor recorded waiver · user acceptance not given · no feature map at 
   (`<!-- mochiko:governance:begin/end -->`) · `paths`-scoped `.claude/rules/mochiko/*.md` ·
   skill pointers · `.mochiko/memory/governance-ledger.md` · the trace summary. Composition
   and read scope: `mochiko:authoring-constitution`.
-- **The synthesis:** `.mochiko/memory/governance-intent.md`, `GI-XXX` namespace, from
-  `templates/governance-intent-template.md` — durable amend baseline; never offer to delete
-  it or the ledger.
+- **The synthesis:** `.mochiko/memory/governance-intent.md`, `GI-XXX` namespace, from the
+  governance-intent template (rendered by `mochiko-cli template governance-intent`, or its schema
+  `plugins/mochiko/schemas/governance-intent.yaml` Read raw when the binary is absent — the
+  shipped schema is the first-class source of truth) — durable amend baseline; never offer to
+  delete it or the ledger.
 - **Interrogation inputs:** `${CLAUDE_PLUGIN_ROOT}/skills/authoring-constitution/references/`
   — `INTERROGATION-AGENDA.md`, the `catalog/` deck, `DOMAIN-DEPENDENCIES.md`; brownfield
   analysis via `mochiko:analysis-codebase` into `.mochiko/memory/codebase-analysis.md`.
@@ -83,9 +89,13 @@ principle nor recorded waiver · user acceptance not given · no feature map at 
 - **Feature map:** brownfield → the analysis extends into a feature-map reconstruction —
   delivered capabilities derived from the code (routes, UI surfaces, services), confirmed
   with the user, landing as the initial `FEATURES.md` + `.mochiko/features/` entries with
-  `delivered` status and the reconstructed-from-code mark (shape:
-  `templates/features-index-template.md` + `templates/feature-entry-template.md`; map
-  machinery and the first-touch re-verify obligation: `mochiko:authoring-feature-map`).
+  `delivered` status and the reconstructed-from-code mark (shape: the features-index and
+  feature-entry templates — `mochiko-cli template features-index` and
+  `mochiko-cli template feature-entry`, or their schemas
+  `plugins/mochiko/schemas/features-index.yaml` and
+  `plugins/mochiko/schemas/feature-entry.yaml` Read raw when the binary is absent, the shipped
+  schemas being the first-class source of truth; map machinery and the first-touch re-verify
+  obligation: `mochiko:authoring-feature-map`).
   Greenfield → scaffold the empty index. The never-overwrite floor covers both writes.
   `Assumed` (feature-sizing record, open thread 4 — setup reconstruction burden +
   partial-baseline poisoning risk): the brownfield analysis also bootstraps the product

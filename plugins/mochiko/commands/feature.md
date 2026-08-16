@@ -95,7 +95,10 @@ Each tool below is referenced, never restated — its procedure lives in its hom
   single owning capability `delivered` → the delta lane, card on the entry · a single owning
   capability `in-flight` → not lane work, the finding files to the owning run · no single owner →
   the product lane, single-flight.
-- **Delta cards** — one card per `templates/tasks-template.md`'s card shape: a bug's acceptance is
+- **Delta cards** — one card per the tasks template's card shape (rendered by
+  `mochiko-cli template tasks`, or its schema `plugins/mochiko/schemas/tasks.yaml` Read raw when
+  the binary is absent — the shipped schema is the first-class source of truth): a bug's
+  acceptance is
   its reproduction-failing test, an improvement carries 1–3 acceptance criteria; plus the minimal
   enumerated `baseline-delta.md` in appliable before/after form when a product-baseline touch is
   known at intake. Each card — bug and improvement alike — takes the sound-loop review leg
@@ -126,6 +129,11 @@ Each tool below is referenced, never restated — its procedure lives in its hom
 - **Advisory front door** — `/mochiko:specify` stays directly invocable; the desk is the **default
   entry when the user is unsure** and the **only door for growth, bug, and improvement intake**. It
   is a routing service you can always use, never a gate you must pass.
+- **Model tiering** — exploration and fact-finding dispatches (map sweeps, territory reads)
+  ride the class-keyed tiering floor: locate/enumerate reads go to the cheap explorer seat
+  (`mochiko:explorer`), interpretive or absence-driven reads stay session tier, and every
+  seat brief carries the routing rule. Class key, dispatch ladder, and brief obligation:
+  `mochiko:patterns-model-tiering`, referenced never restated.
 - **Single-flight product lane** — one live product-lane run at a time.
 - **Commits and rulings** — suggest commits; never run git mutations, never push. User rulings are
   plain blocking text, never a timed prompt.

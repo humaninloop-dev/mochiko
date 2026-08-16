@@ -9,6 +9,16 @@ the same wave superseded.
 
 ---
 
+## [v0.76.0] `features-index-template.md` / `feature-entry-template.md` read-pointers → schemas (two-arm) — schema-based-template-guidance D1/D8
+- **Disposition:** superseded → `mochiko-cli template features-index` / `template feature-entry`, or Read `plugins/mochiko/schemas/features-index.yaml` / `plugins/mochiko/schemas/feature-entry.yaml` raw (D8-first-class). Three sites (four pointer instances): the Overview one-living-map sentence (both templates) + the two Related-section pointers.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/schema-based-template-guidance/record.md` D1/D3/D8; `DECISIONS.md` "Template-schema CLI ruled").
+- **Content (superseded, verbatim):**
+  - `a succinct repo-root [\`FEATURES.md\`](../../templates/features-index-template.md) index (one line per capability, work rows as sublines) over per-capability entry files (\`.mochiko/features/FEAT-XXX-<slug>.md\`, shaped by [\`feature-entry-template.md\`](../../templates/feature-entry-template.md)).`
+  - `- [\`features-index-template.md\`](../../templates/features-index-template.md) — owns the repo-root \`FEATURES.md\` index shape`
+  - `- [\`feature-entry-template.md\`](../../templates/feature-entry-template.md) — owns the per-capability entry shape this skill fills`
+- **Kept deliberately:** the `artifact-format.md` pointer (line 16) — not in-scope, stays `.md`; all descriptive text. **Body-budget note:** the two-arm re-point adds ~202 chars over the pre-existing v0.72.0 overage (15,661 → 15,863 vs the 15,413 budget). The overage is D1/D8-mandated — the schema two-arm (CLI invoke + first-class raw-Read fallback) is structurally longer than the deleted markdown link, and no mandatory arm is cuttable — and is declared to the author≠grader audit for a HOLDS ruling.
+- **Consumers assessed:** n/a (single-writer skill).
+
 ## [v0.68.0] Re-type: parent/leaf feature model → durable capabilities + transient work rows (wave context)
 
 Wave context: the PM-role & feature-derivation build wave (record:

@@ -1,0 +1,11 @@
+[package]
+name = "mochiko-cli"
+version = "0.1.0"
+edition = "2021"
+description = "Template-schema guidance renderer for the mochiko plugin (foundation seed CLI)."
+license = "MIT OR Apache-2.0"
+publish = false
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_norway = "0.9"

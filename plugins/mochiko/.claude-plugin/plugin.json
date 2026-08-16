@@ -1,7 +1,7 @@
 {
   "name": "mochiko",
-  "version": "0.75.0",
-  "description": "Kernel-free agent-skill framework: self-contained command supervisors built from native agent teams and skills",
+  "version": "0.77.0",
+  "description": "Skills-first agent framework: self-contained command supervisors built from native agent teams and skills",
   "author": {
     "name": "HumanInLoop",
     "url": "https://humaninloop.dev"
@@ -10,7 +10,7 @@
   "keywords": [
     "agent-skills",
     "workflow",
-    "kernel-free",
+    "skills-first",
     "human-in-loop"
   ],
   "commands": "./commands/",
@@ -25,6 +25,7 @@
     "./agents/tech-lead.md",
     "./agents/technical-analyst.md",
     "./agents/staff-engineer.md",
-    "./agents/qa-engineer.md"
+    "./agents/qa-engineer.md",
+    "./agents/explorer.md"
   ]
 }

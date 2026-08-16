@@ -102,8 +102,9 @@ The content sources:
 - **brownfield → [references/EMERGENT-CEILING-PATTERNS.md](references/EMERGENT-CEILING-PATTERNS.md)**
   for the existing-pattern library.
 
-Artifact shapes (region block, rules file, ledger):
-[`governance-surfaces-template.md`](../../templates/governance-surfaces-template.md).
+Artifact shapes (region block, rules file, ledger): the `governance-surfaces` schema — invoke
+`mochiko-cli template governance-surfaces` when the binary is available; otherwise Read
+`plugins/mochiko/schemas/governance-surfaces.yaml` raw.
 
 > **Mode prerequisites (lead-owned).** Authoring consumes a **ratified** synthesis. Brownfield
 > additionally consumes `.mochiko/memory/codebase-analysis.md`. If the synthesis is missing, say
@@ -174,8 +175,9 @@ exceptions exist) · MAY (optional). Detailed usage:
 
 ## Mandatory content inventory
 
-Every governance set MUST include, per
-[`governance-surfaces-template.md`](../../templates/governance-surfaces-template.md):
+Every governance set MUST include, per the `governance-surfaces` schema (invoke
+`mochiko-cli template governance-surfaces` when the binary is available; otherwise Read
+`plugins/mochiko/schemas/governance-surfaces.yaml` raw):
 
 1. **Ratified stamp** (region, one line): version · ratified date · floor · declared depth level ·
    attached modules; semver per the template's amendment policy (Shape 3).

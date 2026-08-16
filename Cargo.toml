@@ -1,0 +1,3 @@
+[workspace]
+members = ["crates/mochiko-cli"]
+resolver = "2"

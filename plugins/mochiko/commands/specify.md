@@ -10,7 +10,9 @@ ask the user for the description.
 
 ## Goal
 
-`.mochiko/specs/<spec>/` exists: `spec.md` conforming to `templates/spec-template.md` with
+`.mochiko/specs/<spec>/` exists: `spec.md` conforming to the spec template (rendered by
+`mochiko-cli template spec`, or its schema `plugins/mochiko/schemas/spec.yaml` Read raw when
+the binary is absent — the shipped schema is the first-class source of truth) with
 no placeholder tokens — a confirmed **Intent** section (the elicited scope / delivery /
 depth-rigor / UX-bearing / constraints / out-of-scope rulings, plus the agreed capability
 frame), FR-XXX requirements,
@@ -45,6 +47,10 @@ given.
   `mochiko:patterns-transport-floor` governs its composition and messaging under a split
   trigger — message legs on any multi-seat messaging, topology legs on shared writes —
   non-waivable once triggered; referenced, never restated.
+- **Model tiering.** Exploration and fact-finding dispatches ride
+  `mochiko:patterns-model-tiering`'s class key — locate/enumerate reads to the cheap
+  explorer seat (`mochiko:explorer`), interpretive or absence-driven reads on the session
+  tier — and every seat brief carries the routing rule; referenced, never restated.
 - **Intent stage first.** Before any authoring: run the adaptive-probe agenda via
   `mochiko:analysis-iterative` — scope boundary · delivery intent · depth-rigor expectation ·
   UX-bearing (does the feature carry a user-facing surface to prototype) · constraints ·
@@ -118,13 +124,19 @@ given.
 
 ## Bindings
 
-- **Deliverable:** `.mochiko/specs/<spec>/` — `spec.md` from `templates/spec-template.md`
+- **Deliverable:** `.mochiko/specs/<spec>/` — `spec.md` from the spec template (rendered by
+  `mochiko-cli template spec`, or its schema `plugins/mochiko/schemas/spec.yaml` Read raw when
+  the binary is absent — the shipped schema is the first-class source of truth)
   plus the `stories/US-*.md` files; `<spec>` a kebab-case slug derived from the
   description; never offer to delete it. Uncertainty lives in `spec.md`'s Assumptions and
   Open Questions sections.
 - **Feature-map craft:** derivation, the filter, capability and work-row authoring
-  (`templates/feature-entry-template.md`), index lines
-  (`templates/features-index-template.md`), delta grammar, SC re-homing, and the
+  (the feature-entry template — `mochiko-cli template feature-entry`, or its schema
+  `plugins/mochiko/schemas/feature-entry.yaml` Read raw when the binary is absent, the shipped
+  schema being the first-class source of truth), index lines (the features-index template —
+  `mochiko-cli template features-index`, or its schema
+  `plugins/mochiko/schemas/features-index.yaml` Read raw when the binary is absent, likewise the
+  first-class source), delta grammar, SC re-homing, and the
   acceptance-time write rules — the `.mochiko/specs/index.md` row included; spec-index
   stewardship rides the skill — all per `mochiko:authoring-feature-map`; the capability
   tests, extend-vs-mint, and the frame discipline per `mochiko:patterns-map-minimalism`.

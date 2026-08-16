@@ -136,11 +136,15 @@ Each tool below is referenced, never restated — its procedure lives in its hom
   analysis) · the design deltas against the baselines — `architecture.md`, `data-model.md`,
   `contracts/`, `nfrs.md`, each a delta mirroring its baseline's filename; deltas against
   prose baselines are in appliable form — exact before/after text · `tasks.md` as **cycle
-  cards** from `templates/tasks-template.md` per `mochiko:patterns-vertical-tdd` — per card:
+  cards** from the tasks template (rendered by `mochiko-cli template tasks`, or its schema
+  `plugins/mochiko/schemas/tasks.yaml` Read raw when the binary is absent — the shipped schema
+  is the first-class source of truth) per `mochiko:patterns-vertical-tdd` — per card:
   stories + feature rationale, dependencies, acceptance criteria by
   ID, a `**TEST:**` real-infrastructure gate, cycle-level brownfield exposure; no task lists,
-  no file paths — the builder decomposes at build time · `plan.md` from
-  `templates/plan-template.md`, a summary over the validated artifacts, never new design.
+  no file paths — the builder decomposes at build time · `plan.md` from the plan template
+  (rendered by `mochiko-cli template plan`, or its schema `plugins/mochiko/schemas/plan.yaml`
+  Read raw when the binary is absent — the shipped schema is the first-class source of truth),
+  a summary over the validated artifacts, never new design.
   `architecture.md`'s structure and scope bound are `mochiko:patterns-system-design`'s; the
   structural D-XXX rows land as delta rows against `constraints-and-decisions.md`'s
   designated section.
@@ -194,6 +198,11 @@ Each tool below is referenced, never restated — its procedure lives in its hom
 - **Author ≠ grader** — no output is cleared by its author; grading reads the artifacts
   themselves — never the author's report — default FAIL. Any seat that writes artifacts plans
   first and works only on a plan you approved; grading and fact-finding seats are exempt.
+- **Model tiering** — exploration and fact-finding dispatches ride the class-keyed tiering
+  floor: locate/enumerate reads go to the cheap explorer seat (`mochiko:explorer`),
+  interpretive or absence-driven reads stay session tier, and every seat brief carries the
+  routing rule. Class key, dispatch ladder, and brief obligation:
+  `mochiko:patterns-model-tiering`, referenced never restated.
 - **Commits and acceptance** — suggest commits; never run git mutations, never push. User
   acceptance is plain blocking text, never a timed prompt.
 
