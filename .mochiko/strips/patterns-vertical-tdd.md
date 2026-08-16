@@ -5,6 +5,14 @@ Entry formats: `strips/README.md`. Wave context: [v0.27.0] entries — skill-suc
 [v0.22.0–v0.23.0] entries — workflow-token-reduction waves 1–2 (design:
 `.mochiko/brainstorms/workflow-token-reduction/record.md`, D6a + D4/wave-2 rulings).
 
+## [v0.74.0] `tasks-template.md` read-pointer → `tasks` schema (two-arm) — schema-based-template-guidance D1/D8
+- **Disposition:** superseded → `mochiko-cli template tasks`, or Read `plugins/mochiko/schemas/tasks.yaml` raw (D8-first-class). One site: the Overview cycle-card-shape pointer.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/schema-based-template-guidance/record.md` D1/D3/D8; `DECISIONS.md` "Template-schema CLI ruled").
+- **Content (superseded, verbatim):**
+  - `in the cycle-card shape ([\`tasks-template.md\`](../../templates/tasks-template.md) is the canonical skeleton):`
+- **Kept deliberately:** the `**TEST:**`-grammar ownership and all descriptive text; the in-skill reference pointers to `TEST-GRAMMAR.md` / `SLICE-IDENTIFICATION.md` (untouched — not in-scope templates).
+- **Consumers assessed:** n/a (single-writer skill).
+
 ## [v0.64.0] Guardrails cut — When-to-Use removed, principles/TEST-gate/checklist kept; slim description
 
 - **Disposition:** superseded → Wave 2 editorial guardrails cut (D4 cut line — When-to-Use bullets restate the description).

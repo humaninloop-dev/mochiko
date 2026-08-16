@@ -130,11 +130,15 @@ Each tool below is referenced, never restated — its procedure lives in its hom
   analysis) · the design deltas against the baselines — `architecture.md`, `data-model.md`,
   `contracts/`, `nfrs.md`, each a delta mirroring its baseline's filename; deltas against
   prose baselines are in appliable form — exact before/after text · `tasks.md` as **cycle
-  cards** from `templates/tasks-template.md` per `mochiko:patterns-vertical-tdd` — per card:
+  cards** from the tasks template (rendered by `mochiko-cli template tasks`, or its schema
+  `plugins/mochiko/schemas/tasks.yaml` Read raw when the binary is absent — the shipped schema
+  is the first-class source of truth) per `mochiko:patterns-vertical-tdd` — per card:
   stories + feature rationale, foundation/feature type, dependencies, acceptance criteria by
   ID, a `**TEST:**` real-infrastructure gate, cycle-level brownfield exposure; no task lists,
-  no file paths — the builder decomposes at build time · `plan.md` from
-  `templates/plan-template.md`, a summary over the validated artifacts, never new design.
+  no file paths — the builder decomposes at build time · `plan.md` from the plan template
+  (rendered by `mochiko-cli template plan`, or its schema `plugins/mochiko/schemas/plan.yaml`
+  Read raw when the binary is absent — the shipped schema is the first-class source of truth),
+  a summary over the validated artifacts, never new design.
   `architecture.md`'s structure and scope bound are `mochiko:patterns-system-design`'s; the
   structural D-XXX rows land as delta rows against `constraints-and-decisions.md`'s
   designated section.

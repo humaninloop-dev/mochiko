@@ -1,0 +1,155 @@
+# Schema data file for the `tasks` pipeline artifact template.
+# Source of truth for `mochiko-cli template tasks` and `--check`. Read raw when the binary is absent (D8).
+template: tasks
+title: Implementation Cycles (cycle cards)
+form: artifact-format.md
+register: full   # per artifact-format.md rule 11; TEST-gate commands, file paths, identifiers are never-compress items
+overview: |
+  This file is CYCLE CARDS, not a task list. The builder decomposes each card into concrete
+  tasks at build time, with the code in view — the decomposition is disclosed in the cycle
+  report, never pre-written here. Cite spec/plan content by ID (US-#, FR-#, SC-#, C-#) — never
+  re-quote it. Structure and slicing judgment come from mochiko:patterns-vertical-tdd (the
+  cycle-card shape). The card's checkbox is the progress surface, flipped when the cycle's
+  TEST gate passes.
+
+sections:
+  - name: Header
+    required: true
+    contract: |
+      Title "# Implementation Cycles: [FEAT-XXX — FEATURE NAME]" plus two generated-from
+      pointers: (1) the spec folder and the feature's produced design artifacts — spec.md,
+      features/FEAT-XXX/plan.md, and whichever of requirements.md, constraints-and-decisions.md,
+      nfrs.md, data-model.md, contracts/ the approved proposal included; (2) Structure:
+      mochiko:patterns-vertical-tdd (cycle-card shape, slicing judgment).
+    check: "Is the header present with the FEAT-XXX title and both provenance pointers (source artifacts and the patterns-vertical-tdd structure note)?"
+
+  - name: Overview
+    required: true
+    contract: |
+      Metric table (Metric | Value): Cycles = [N] ([N] foundation + [N] feature); Stories
+      covered = [US-# list — every P1/P2 story on at least one card].
+    check: "Does the Overview table report the cycle count (foundation + feature split) and the covered US-# list, with every P1/P2 story on at least one card?"
+
+  - name: Cycle Format
+    required: true
+    contract: |
+      Each card is one vertical slice: an observable, end-to-end behavior. The builder
+      implements the card test-first (red/green/refactor per mochiko:executing-tdd-cycle,
+      decomposition at build time) and the closing `**TEST:**` gate verifies it against real
+      infrastructure — see patterns-vertical-tdd/references/TEST-GRAMMAR.md for the canonical
+      Setup/Action/Assert/Capture grammar. The card's checkbox is the progress surface, flipped
+      when the cycle's gate passes. Foundation cycles run sequentially, first; feature cycles
+      are parallel-eligible `[P]` unless dependent on another feature cycle.
+    check: "Does the Cycle Format explain the vertical-slice card, the test-first flow, the closing TEST gate against real infrastructure, the checkbox-as-progress rule, and foundation-sequential vs feature-parallel ordering?"
+
+  - name: Foundation Cycles
+    required: true
+    contract: |
+      Sequential; establish what every feature cycle depends on. All complete before feature
+      cycles begin. Each card carries: checkbox + title; Stories (US-# — why these stories share
+      this cycle / what it establishes, <= 2 lines); Depends on; Case (Simple | Split — why, one
+      line | Merge — why, one line); Acceptance criteria (spec/plan IDs this cycle must satisfy —
+      cite, never quote); Brownfield exposure (none | extends `path` | modifies `path` —
+      cycle-level surfaces only); and the closing `**TEST:**` gate with Setup/Action/Assert/
+      Capture fields.
+    good: |
+      SAMPLE (illustration only — replace with actual cycles; DO NOT keep the sample in the generated tasks.md):
+
+      ### - [ ] Cycle 1: Core entity and basic CRUD
+      - **Stories:** US-1 — [why these stories share this cycle / what it establishes, <= 2 lines]
+      - **Depends on:** —
+      - **Case:** Simple
+      - **Acceptance criteria:** [spec/plan IDs this cycle must satisfy — cite, never quote]
+      - **Brownfield exposure:** none
+
+      **TEST:** CRUD operations work via API
+      - **Action**: `curl -X POST localhost:3000/api/[entity] -d '{"name":"Test"}'`
+      - **Assert**: Response status: 201
+      - **Assert**: Console contains "[entity]_id"
+      - **Capture**: console
+    check: "Are foundation cycles present, sequential, each a card with Stories/Depends-on/Case/Acceptance-criteria/Brownfield-exposure and a closing TEST gate, acceptance cited by ID (never re-quoted), and no illustrative sample left in?"
+
+  - name: Feature Cycles
+    required: true
+    contract: |
+      Parallel-eligible once foundation is complete. Same card shape as foundation cycles;
+      parallel-eligible cards are tagged `[P]` unless dependent on another feature cycle.
+    good: |
+      SAMPLE (illustration only — replace; DO NOT keep):
+
+      ### - [ ] Cycle 2: [Feature title] `[P]`
+      - **Stories:** US-2 — [rationale <= 2 lines]
+      - **Depends on:** C1
+      - **Case:** [Simple | Split | Merge]
+      - **Acceptance criteria:** [IDs]
+      - **Brownfield exposure:** extends `src/models/[entity].py`
+
+      **TEST:** [behavior] works end to end via API
+      - **Setup**: Seed prerequisite [entity] data
+      - **Action**: `curl -X POST localhost:3000/api/[endpoint] -d '{"[field]":"value"}'`
+      - **Assert**: Response status: 200
+      - **Assert**: Console contains "[expected field]"
+      - **Capture**: console
+    check: "Are feature cycles present with the same card shape, `[P]` tagging where parallel-eligible, dependencies on foundation/other cycles noted, and no sample left in?"
+
+skeleton: |
+  # Implementation Cycles: [FEAT-XXX — FEATURE NAME]
+
+  > Generated from the spec folder and the feature's produced design artifacts: spec.md, features/FEAT-XXX/plan.md, and whichever of requirements.md, constraints-and-decisions.md, nfrs.md, data-model.md, contracts/ the approved proposal included
+  > Structure: `mochiko:patterns-vertical-tdd` (cycle-card shape, slicing judgment)
+
+  ## Overview
+
+  | Metric | Value |
+  |--------|-------|
+  | Cycles | [N] ([N] foundation + [N] feature) |
+  | Stories covered | [US-# list — every P1/P2 story on at least one card] |
+
+  ## Cycle Format
+
+  Each card is one vertical slice: an observable, end-to-end behavior. The builder implements
+  the card test-first (red/green/refactor per `mochiko:executing-tdd-cycle`, decomposition at
+  build time) and the closing `**TEST:**` gate verifies it against real infrastructure —
+  see [`TEST-GRAMMAR.md`](../skills/patterns-vertical-tdd/references/TEST-GRAMMAR.md) for the
+  canonical Setup/Action/Assert/Capture grammar. **The card's checkbox is the progress
+  surface**, flipped when the cycle's gate passes. Foundation cycles run sequentially, first;
+  feature cycles are parallel-eligible `[P]` unless dependent on another feature cycle.
+
+  ---
+
+  ## Foundation Cycles
+
+  > Sequential; establish what every feature cycle depends on. All complete before feature cycles begin.
+
+  ### - [ ] Cycle 1: [title]
+
+  - **Stories:** US-# — [why these stories share this cycle / what it establishes, <= 2 lines]
+  - **Depends on:** —
+  - **Case:** Simple
+  - **Acceptance criteria:** [spec/plan IDs — cite, never quote]
+  - **Brownfield exposure:** none
+
+  **TEST:** [behavior] works via real infrastructure
+  - **Action**: `[command]`
+  - **Assert**: [expected]
+  - **Capture**: console
+
+  ---
+
+  ## Feature Cycles
+
+  > Parallel-eligible once foundation is complete.
+
+  ### - [ ] Cycle N: [Feature title] `[P]`
+
+  - **Stories:** US-# — [rationale <= 2 lines]
+  - **Depends on:** [cycle refs]
+  - **Case:** [Simple | Split | Merge]
+  - **Acceptance criteria:** [IDs]
+  - **Brownfield exposure:** [none | extends `path` | modifies `path`]
+
+  **TEST:** [behavior] works end to end via real infrastructure
+  - **Setup**: [preconditions]
+  - **Action**: `[command]`
+  - **Assert**: [expected]
+  - **Capture**: console

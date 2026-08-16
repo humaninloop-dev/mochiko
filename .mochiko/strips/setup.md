@@ -9,6 +9,39 @@ it carries the `<!-- shape-form: v7 -->` marker and binds P18–P20.
 
 ---
 
+## [v0.74.0] Static template read-pointers re-pointed to the CLI-render / raw-schema two-arm home
+- **Disposition:** superseded → each `templates/<t>-template.md` read-pointer now names the two-arm
+  guidance home: `mochiko-cli template <name>` when the binary is present, else the shipped schema
+  `plugins/mochiko/schemas/<name>.yaml` Read raw — the raw Read is the D8-first-class path, not an
+  error state. Templates re-pointed in this command: **governance-intent** (The synthesis binding),
+  **features-index** and **feature-entry** (Feature-map binding, brownfield reconstruction shape).
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-16 "Template-schema CLI
+  ruled (D1–D11 as amended at review)" row; record
+  `.mochiko/brainstorms/schema-based-template-guidance/record.md`, **D1** (a single plugin CLI is
+  the guidance authority, static `.md` exemplars retired) + **D8** (schemas ship as structured data
+  files, the binary renders over them, raw Read is the first-class fallback); build plan §5 re-point
+  inventory)
+- **Content (superseded, verbatim — the read-pointers that left):**
+  - The synthesis: "from `templates/governance-intent-template.md`"
+  - Feature map: "(shape: `templates/features-index-template.md` + `templates/feature-entry-template.md`;"
+- **Kept deliberately:** every surrounding responsibility — the synthesis binding's `GI-XXX`
+  namespace, durable-amend-baseline and never-offer-to-delete clauses; the Feature-map binding's
+  brownfield-derivation, `delivered`-status + reconstructed-from-code mark, and its map-machinery /
+  first-touch re-verify `mochiko:authoring-feature-map` reference — all untouched. Only the
+  template-source token changed. Out of the 8-template set and unchanged:
+  `templates/constitution-modules/knowledge-management.md` (KM module binding) and
+  `templates/output-style.md` (Register).
+- **Consumers assessed:** none — commands are entry points, nothing mounts them. Co-edited this wave
+  under the same ruling: the 8 `plugins/mochiko/templates/<t>.md` deletions + their supersession
+  strips (P3); the sibling command re-points `specify.md` / `plan.md` / `feature.md` (own strips);
+  the skill/reference re-points + D7 re-key (P5, own strips) — including this command's own
+  `${CLAUDE_PLUGIN_ROOT}/skills/authoring-constitution/references/INTERROGATION-AGENDA.md` reference,
+  whose `governance-intent` pointer is re-pointed by the P5 skills seat, not here. The named
+  `plugins/mochiko/schemas/*.yaml` files are authored by the schemas seat (P1) this wave — the path
+  is fixed contract per the approved build plan, not created here.
+
+---
+
 ## [v0.48.0] Shape v8 goal+harness rewrite — choreography dies in place
 - **Disposition:** superseded → the v8 goal+harness rewrite of this command (whole-file)
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/command-architecture-realignment/record.md` D1–D6; DECISIONS.md 2026-08-02 command-architecture row)

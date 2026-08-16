@@ -1,0 +1,158 @@
+# Schema data file for the `plan` pipeline artifact template.
+# Source of truth for `mochiko-cli template plan` and `--check`. Read raw when the binary is absent (D8).
+template: plan
+title: Implementation Plan
+form: artifact-format.md
+register: full   # per artifact-format.md rule 11
+overview: |
+  The implementation-plan deliverable (plan.md). A SUMMARY over the validated artifacts —
+  tables + "See X" pointers, never restated content. Each row is a menu to prune to the
+  approved proposal; an artifact the proposal did not include is omitted, not listed
+  incomplete.
+
+sections:
+  - name: Header
+    required: true
+    contract: |
+      Title line "# Implementation Plan: [FEATURE]" plus the metadata line:
+      **Feature** `[feature-slug]` | **Date** [DATE] | **Spec** [link], and
+      **Input**: Feature specification from `.mochiko/specs/<feature>/spec.md`.
+    check: "Is the header present with feature slug, date, spec link, and the input pointer to spec.md?"
+
+  - name: Summary
+    required: true
+    contract: |
+      Extracted from the feature spec: the primary requirement + the technical approach from
+      decisions. One compact paragraph.
+    check: "Does the Summary state the primary requirement and the technical approach, drawn from the spec and decisions?"
+
+  - name: Architecture
+    required: false
+    contract: |
+      Present ONLY when the approved proposal included `architecture.md`; otherwise omit this
+      section entirely. The system view — components, boundaries, interactions, and the delta
+      this feature introduces — was designed first and signed off at the architecture gate. It
+      lives in `architecture.md`; see it for the container diagram, key-flow sequence diagrams,
+      and component register (never restated here — pointers only). Carries a one-line Delta
+      summary (what this feature changes structurally, or "no structural change") and a pointer
+      table: container diagram / sequence diagrams / component register -> architecture.md;
+      structural decisions (D-XXX) -> constraints-and-decisions.md.
+    check: "If (and only if) the approved proposal included architecture.md, is the Architecture section present as pointers-only with a delta summary? If the proposal omitted architecture, is the section absent?"
+
+  - name: Key Decisions
+    required: true
+    contract: |
+      Table (Decision | Choice | Shaped By | Rationale) rolling up the D-XXX decisions, with the
+      full records in constraints-and-decisions.md (pointer, never restated).
+    check: "Is the Key Decisions table present, each row citing its D-XXX and pointing to constraints-and-decisions.md rather than restating it?"
+
+  - name: Infrastructure Requirements
+    required: true
+    contract: |
+      Table (ID | Type | Source | Priority) of IP-XXX items; full definitions live in
+      constraints-and-decisions.md Part 3 (pointer).
+    check: "Is the Infrastructure Requirements table present with IP-XXX rows and their sources/priorities, pointing to constraints-and-decisions.md?"
+
+  - name: Entities
+    required: true
+    contract: |
+      Table (Entity | Status NEW/EXTENDS/REUSES | Attributes count | Relationships count |
+      Sensitivity) summarizing data-model.md; full entity definitions with sensitivity
+      annotations live in data-model.md (pointer).
+    check: "Is the Entities table present with status, counts, and highest sensitivity per entity, pointing to data-model.md?"
+
+  - name: Endpoints
+    required: true
+    contract: |
+      Table (Method | Path | Description | Integration) summarizing the API; full OpenAPI spec
+      lives in contracts/api.yaml (pointer).
+    check: "Is the Endpoints table present summarizing method/path/description/integration, pointing to contracts/api.yaml?"
+
+  - name: Artifacts
+    required: true
+    contract: |
+      The artifacts this run's APPROVED proposal produced — each complete and graded. The rows
+      are the menu to prune to the proposal; an artifact the proposal did not include is omitted
+      here, not listed incomplete. Table (Artifact | Status): requirements.md,
+      constraints-and-decisions.md, nfrs.md, architecture.md (only when the proposal included
+      architecture — signed off), data-model.md, contracts/api.yaml, quickstart.md (conditional
+      — or "not applicable — no external integration surface"), tasks.md (cycle cards).
+    check: "Does the Artifacts table list exactly the artifacts the approved proposal produced, each marked complete, with conditional artifacts (architecture, quickstart) handled per their rules?"
+
+  - name: Next Steps
+    required: true
+    contract: |
+      Run `/mochiko:implement` to execute this package — the accepted design, architecture, and
+      cycle cards are its entry condition.
+    check: "Does Next Steps point to /mochiko:implement as the execution step with the package as its entry condition?"
+
+skeleton: |
+  # Implementation Plan: [FEATURE]
+
+  **Feature**: `[feature-slug]` | **Date**: [DATE] | **Spec**: [link]
+  **Input**: Feature specification from `.mochiko/specs/<feature>/spec.md`
+
+  ## Summary
+
+  [Extract from feature spec: primary requirement + technical approach from decisions]
+
+  ## Architecture
+
+  *Present only when the approved proposal included `architecture.md`; otherwise omit this section.*
+
+  **Delta summary**: [one line — what this feature changes structurally, or "no structural change"].
+
+  | Aspect | Where |
+  |--------|-------|
+  | Container diagram (delta-marked) · key-flow sequence diagrams · component register | `architecture.md` |
+  | Structural decisions (D-XXX) | `constraints-and-decisions.md` — structural-decisions section |
+
+  ## Key Decisions
+
+  | Decision | Choice | Shaped By | Rationale |
+  |----------|--------|-----------|-----------|
+  | [D-001 title] | [chosen option] | [C-XXX references] | [brief why] |
+
+  See `constraints-and-decisions.md` for full decision records.
+
+  ## Infrastructure Requirements
+
+  | ID | Type | Source | Priority |
+  |----|------|--------|----------|
+  | [IP-001] | [type] | [C-XXX/NFR-XXX] | [MUST/SHOULD] |
+
+  See `constraints-and-decisions.md` Part 3 for full infrastructure requirement definitions.
+
+  ## Entities
+
+  | Entity | Status | Attributes | Relationships | Sensitivity |
+  |--------|--------|-----------|--------------|-------------|
+  | [Entity name] | [NEW/EXTENDS/REUSES] | [count] | [count] | [highest classification] |
+
+  See `data-model.md` for full entity definitions with sensitivity annotations.
+
+  ## Endpoints
+
+  | Method | Path | Description | Integration |
+  |--------|------|-------------|-------------|
+  | [HTTP method] | [path] | [description] | [external system if any] |
+
+  See `contracts/api.yaml` for full OpenAPI specification.
+
+  ## Artifacts
+
+  | Artifact | Status |
+  |----------|--------|
+  | `requirements.md` | ✅ Complete |
+  | `constraints-and-decisions.md` | ✅ Complete |
+  | `nfrs.md` | ✅ Complete |
+  | `architecture.md` | ✅ Complete — signed off *(only when the proposal included architecture)* |
+  | `data-model.md` | ✅ Complete |
+  | `contracts/api.yaml` | ✅ Complete |
+  | `quickstart.md` | ✅ Complete — *or* "not applicable — no external integration surface" (conditional; see `patterns-api-contracts`) |
+  | `tasks.md` (cycle cards) | ✅ Complete |
+
+  ## Next Steps
+
+  Run `/mochiko:implement` to execute this package — the accepted design, architecture, and
+  cycle cards are its entry condition.

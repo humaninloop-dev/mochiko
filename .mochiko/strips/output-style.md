@@ -15,6 +15,16 @@ document contracts are the **user's** artifacts and are untouchable. A prefix-ba
 `.mochiko/` would gut the KM module and the brainstorm command; 101 of this tree's 146
 `.mochiko/` references were correctly left alone on that test.
 
+## [v0.74.0] `governance-surfaces-template.md` contextual mentions → `governance-surfaces` schema — schema-based-template-guidance D1/D8
+- **Disposition:** superseded → the `governance-surfaces` schema (`mochiko-cli template governance-surfaces`, or Read `plugins/mochiko/schemas/governance-surfaces.yaml` raw). Three contextual mentions reworded so no pointer dangles when the template file is deleted; the two-arm form is deliberately NOT forced here — these are "the surface that carries the switch line / Shape 5" citations, not read-instructions (plan §5 output-style row).
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/schema-based-template-guidance/record.md` D1/D3/D8; `DECISIONS.md` "Template-schema CLI ruled").
+- **Content (superseded, verbatim):**
+  - `edits it in place; it survives every regeneration (\`governance-surfaces-template.md\`). No` — The switch
+  - `(\`governance-surfaces-template.md\` Shape 5) injects on **Read, not Write**, so it reinforces at` — Two delivery legs
+  - `references (artifacts) · \`governance-surfaces-template.md\` + \`setup.md\` +` — Bound by
+- **Kept deliberately:** the `report-format.md` / `artifact-format.md` mentions (not in-scope templates); the `setup.md` + `authoring-constitution` bindings; the Shape 1 / Shape 5 references (resolve through the schema).
+- **Consumers assessed:** `output-style.md` is a shared template; this edit re-points only its own contextual mentions. P3 owns the 8 in-scope-template deletions; P5 owns only `output-style.md` (plan §6, disjoint from P3).
+
 ## [v0.46.0] Chat-surface binding re-pointed
 - **Disposition:** superseded → each command's ground rules (the chat register's binding site after the shape's deletion)
 - **Tier failed:** n/a — supersession by ruling (ADR `.mochiko/decisions/2026-08-02-doctrine-purge-wave-1.md`; DECISIONS.md 2026-08-02 "Doctrine purge wave 1" row)

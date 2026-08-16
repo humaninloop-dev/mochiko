@@ -6,37 +6,40 @@ surface is [`ROADMAP.md`](ROADMAP.md). Closing an item = the KM landing ritual
 (`.mochiko/memory/knowledge-management.md`): decision row + move here → the trail
 (`.mochiko/archive/backlog-trail.md`) + touch ROADMAP.md. No `[x]` lives here.
 
-*Last groomed: 2026-08-16 (landing groom at the schema-based-template-guidance acceptance) —
-baseline: **70 open items** (net +1: +1 template-schema CLI build item; +14 since the
-2026-08-06 baseline 56 — growth is recent session landings, none suspected stale;
-**delivery sweep still not run — offered to the user** per the count-watch delta; all items
-within the ≤15-line bound). Prior groom narrative: git history (this line, before this
-groom).*
+*Last groomed: 2026-08-16 (landing groom at the schema-based-template-guidance **build**) —
+baseline: **70 open items** (net 0 this landing: −1 template-schema CLI build item closed →
+trail, +1 template-schema first-live-run watch minted; +14 since the 2026-08-06 baseline 56 —
+growth is recent session landings, none suspected stale; **delivery sweep still not run —
+offered to the user** per the count-watch delta; all items within the ≤15-line bound). Prior
+groom narrative: git history (this line, before this groom).*
 
 ---
 
 ## Template-schema CLI build
 
-Ruled 2026-08-16 (`schema-based-template-guidance` D1–D11 as amended at review; solo cold
-review via blind-map dispatch: critical-gaps → 7/7 dispositioned, spine user-ruled "own the
-real driver" → D11 no-kernel softening; verify CLEAN). Open item:
+Ruled AND built 2026-08-16, same day, at v0.74.0 (`schema-based-template-guidance` D1–D11 as
+amended at review). One wave under the sound-loop + transport floors — 6 producer seats with
+strictly disjoint file ownership (schemas · crate + CI · template deletions + strips · command
+re-points · skill re-points + D7 re-key) + 3 fresh author≠grader validator seats: Rust crate
+`crates/mochiko-cli` (mochiko's first non-markdown code) + 8 schema data files + 8 template
+supersessions (byte-exact strips) + 14-surface re-points + thin D7 re-key + governance PATCH
+2.0.1 activating the AM-1 dormant crate gates; audits V1 crate PASS + delta-confirm, V2 8/8
+fidelity + 8/8 strips, V3 13/13 re-points, `authoring-feature-map` budget overage HOLDS, one
+fix round (CI `cargo audit --deny`); trail. Open residual:
 
-- [ ] **Template-schema CLI build** (2026-08-16; provenance:
-  [record](.mochiko/brainstorms/schema-based-template-guidance/record.md) build surface) —
-  one wave (D10 `Contested`): Rust crate, mochiko's first non-markdown code (M6 gate: test
-  suite + independent non-author code review; layout builder's room) · 8 schema data files
-  (D8: data = source, binary = renderer, raw Read fallback) · 8 pipeline template
-  supersessions with strips + author≠grader audits · skill/command re-points ·
-  `ARTIFACT-CHECKLISTS.md` re-key to the `--check` view (D7) · ~~CLAUDE.md no-kernel
-  rewording + core-bet sentence per D11 (governance amendment path)~~ **delivered early
-  2026-08-16 at the AM-1 setup amend (governance v2.0.0, GI-019/020/021; dormant crate
-  gates pre-worded — the build's remaining governance duty is activating them, not a
-  fresh amend)** · CI arrival trips the
-  standing governance amend trigger — consequence set pre-worded at AM-1 · M7 rollback
-  statement honored (revert = strips-reconstructible; crate may survive under the
-  foundation ruling) · release gates (plugin.json bump · CHANGELOG · marketplace).
-  First-live-run watch owed after build (n=0; the D11 null-road concession on record —
-  binary distribution mechanism must keep the raw-Read fallback honest).
+- [ ] **Template-schema first-live-run watch** (2026-08-16; provenance:
+  [record](.mochiko/brainstorms/schema-based-template-guidance/record.md) evidence-honesty
+  thread — n=0, the D11 null-road concession on record) — no run yet demonstrates CLI/schema-
+  delivered guidance outperforms the old `.md` exemplars. Watch the first live authoring runs on
+  the 8 converted templates (specify/plan/feature/setup + the skills that read them): does the
+  producer view (schema + example + good/bad) and the `--check` checklist view guide artifact
+  quality at least as well as the `.md` baseline, and does the raw-Read fallback stay honest when
+  the binary is absent (D8/GI-020)? **M7 rollback trigger:** CLI-delivered guidance
+  underperforming the `.md` baseline on artifact quality reverts the 8 supersessions
+  (reconstructible from strips, GI-006) and re-points skills back; the crate may survive under
+  D11's foundation ruling. **D5 reopen condition:** if a real per-project depth need emerges (the
+  governance depth dial and template guidance visibly diverge), the baked-in-norms ruling reopens
+  by explicit user ruling only.
 
 ## Adopt-first build
 
@@ -469,7 +472,8 @@ trail** (scope ADR `2026-07-30-po-narrowing-build-scope`). Tier-I depth items op
   20/20 dispositioned, verify CLEAN round 2) — build surface (record: "Build surface", M-folds
   incorporated): fifth floor category **Operations** + FLOOR-OPS card across the nine-file
   enumeration ripple (incl. `principal-architect.md` keystone-checked · both QUALITY-CHECKLIST
-  lines · `codebase-analysis-template.md:118` rollup) · FLOOR-OBS established-tooling line ·
+  lines · the `plugins/mochiko/schemas/codebase-analysis.yaml` Part 2 Essential Floor Status
+  category rollup, ex-`codebase-analysis-template.md:118`) · FLOOR-OBS established-tooling line ·
   dimension-8 SLO beats → region one-liner + `paths`-scoped SLO rules file over
   `.mochiko/specs/**` · RUNBOOK contract in KM + dual-key `implement.md` landing fold (the one
   command edit, shape-v5 audited) · release-gates reference line · `STACK-TOOLING.md` universal

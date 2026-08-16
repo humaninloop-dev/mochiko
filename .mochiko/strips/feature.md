@@ -4,6 +4,33 @@ Entry formats: `strips/README.md`. Ruling for every [v0.68.0] entry below:
 `DECISIONS.md` 2026-08-13 "PM role & feature derivation" row →
 `.mochiko/brainstorms/pm-role-and-feature-derivation/record.md` (D6/D7/D8/D9/D10).
 
+## [v0.74.0] Static tasks-template read-pointer re-pointed to the CLI-render / raw-schema two-arm home
+- **Disposition:** superseded → the Tools/Delta-cards `templates/tasks-template.md` read-pointer now
+  names the two-arm guidance home: `mochiko-cli template tasks` when the binary is present, else the
+  shipped schema `plugins/mochiko/schemas/tasks.yaml` Read raw — the raw Read is the D8-first-class
+  path, not an error state. One template re-pointed: **tasks** (the delta card's card shape).
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-16 "Template-schema CLI
+  ruled (D1–D11 as amended at review)" row; record
+  `.mochiko/brainstorms/schema-based-template-guidance/record.md`, **D1** (a single plugin CLI is
+  the guidance authority, static `.md` exemplars retired) + **D8** (schemas ship as structured data
+  files, the binary renders over them, raw Read is the first-class fallback); build plan §5 re-point
+  inventory)
+- **Content (superseded, verbatim — the read-pointer that left):**
+  - Delta cards: "one card per `templates/tasks-template.md`'s card shape"
+- **Kept deliberately:** the whole Delta-cards responsibility — a bug's reproduction-failing-test
+  acceptance, an improvement's 1–3 acceptance criteria, the minimal enumerated `baseline-delta.md`
+  in appliable before/after form, and the per-card sound-loop review leg — all untouched. Only the
+  template-source token changed. `templates/output-style.md` (Register) is out of the 8-template set
+  and unchanged; the `templates/tasks-template.md` / `templates/feature-entry-template.md` references
+  inside this file's frozen v0.68.0 verbatim-superseded-file archive are history, not live pointers,
+  and are not touched.
+- **Consumers assessed:** none — commands are entry points, nothing mounts them. Co-edited this wave
+  under the same ruling: the 8 `plugins/mochiko/templates/<t>.md` deletions + their supersession
+  strips (P3); the sibling command re-points `specify.md` / `plan.md` / `setup.md` (own strips); the
+  skill/reference re-points + D7 re-key (P5, own strips). The named `plugins/mochiko/schemas/tasks.yaml`
+  file is authored by the schemas seat (P1) this wave — the path is fixed contract per the approved
+  build plan, not created here.
+
 ## [v0.70.0] Unbounded "user grooming ruling" door → D6 ceiling (Boundaries, capability writes)
 - **Disposition:** superseded → the same bullet, extended in place: the grooming-ruling door now
   covers merge, retire, status change, and extent-tidying of **existing** entries; wholesale or

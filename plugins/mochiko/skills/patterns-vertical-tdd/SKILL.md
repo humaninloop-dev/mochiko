@@ -9,7 +9,7 @@ description: This skill MUST be invoked when structuring a feature's implementat
 
 ## Overview
 
-Transform a plan's stories into **cycle cards** — vertical slices that each deliver observable, testable value. The output is `tasks.md` in the cycle-card shape ([`tasks-template.md`](../../templates/tasks-template.md) is the canonical skeleton): per card — stories + feature rationale, foundation/feature type, dependencies, acceptance criteria (by ID), the closing `**TEST:**` gate, and cycle-level brownfield exposure.
+Transform a plan's stories into **cycle cards** — vertical slices that each deliver observable, testable value. The output is `tasks.md` in the cycle-card shape (the `tasks` schema is the canonical skeleton — invoke `mochiko-cli template tasks` when the binary is available; otherwise Read `plugins/mochiko/schemas/tasks.yaml` raw): per card — stories + feature rationale, foundation/feature type, dependencies, acceptance criteria (by ID), the closing `**TEST:**` gate, and cycle-level brownfield exposure.
 
 This skill works at **design time**: it decides the slicing and states what each cycle must prove. It writes no task lists — the builder decomposes each card into concrete tasks, with file paths, at build time with the code in view (`mochiko:executing-tdd-cycle`, downstream). The card carries the *what and why*; the *how* is deliberately left to the build.
 

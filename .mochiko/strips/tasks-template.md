@@ -4,6 +4,90 @@ Entry formats: `strips/README.md`. Wave context: workflow-token-reduction wave 2
 `.mochiko/brainstorms/workflow-token-reduction/record.md` D4 + the wave-2 rulings R1–R4;
 ratified 2026-07-24).
 
+## [v0.74.0] Template retired — superseded by schema-based template guidance (D1/D3/D8)
+- **Disposition:** superseded → plugins/mochiko/schemas/tasks.yaml + mochiko-cli template tasks
+- **Tier failed:** n/a — supersession by ruling (schema-based-template-guidance D1/D3/D8; record `.mochiko/brainstorms/schema-based-template-guidance/record.md`; `DECISIONS.md` "Template-schema CLI ruled")
+- **Content (superseded template, full verbatim below):**
+
+````markdown
+<!-- Form: templates/artifact-format.md (the deliverable envelope) — dense by construction,
+     human-legible. This file is CYCLE CARDS, not a task list: the builder decomposes each
+     card into concrete tasks at build time, with the code in view (the decomposition is
+     disclosed in the cycle report, never pre-written here). Cite spec/plan content by ID
+     (US-#, FR-#, SC-#, C-#) — never re-quote it. Register: `full` per artifact-format.md
+     rule 11; TEST-gate commands, file paths, and identifiers are never-compress items. -->
+
+# Implementation Cycles: [FEAT-XXX — FEATURE NAME]
+
+> Generated from the spec folder and the feature's produced design artifacts: spec.md, features/FEAT-XXX/plan.md, and whichever of requirements.md, constraints-and-decisions.md, nfrs.md, data-model.md, contracts/ the approved proposal included
+> Structure: `mochiko:patterns-vertical-tdd` (cycle-card shape, slicing judgment)
+
+## Overview
+
+| Metric | Value |
+|--------|-------|
+| Cycles | [N] ([N] foundation + [N] feature) |
+| Stories covered | [US-# list — every P1/P2 story on at least one card] |
+
+## Cycle Format
+
+Each card is one vertical slice: an observable, end-to-end behavior. The builder implements
+the card test-first (red/green/refactor per `mochiko:executing-tdd-cycle`, decomposition at
+build time) and the closing `**TEST:**` gate verifies it against real infrastructure —
+see [`TEST-GRAMMAR.md`](../skills/patterns-vertical-tdd/references/TEST-GRAMMAR.md) for the
+canonical Setup/Action/Assert/Capture grammar. **The card's checkbox is the progress
+surface**, flipped when the cycle's gate passes. Foundation cycles run sequentially, first;
+feature cycles are parallel-eligible `[P]` unless dependent on another feature cycle.
+
+---
+
+<!--
+  The two cards below are SAMPLES for illustration — replace them with actual cycles from
+  the feature's spec + plan artifacts. DO NOT keep them in the generated tasks.md.
+-->
+
+## Foundation Cycles
+
+> Sequential; establish what every feature cycle depends on. All complete before feature cycles begin.
+
+### - [ ] Cycle 1: Core entity and basic CRUD
+
+- **Stories:** US-1 — [why these stories share this cycle / what it establishes, ≤ 2 lines]
+- **Depends on:** —
+- **Case:** Simple <!-- Simple | Split — why, one line | Merge — why, one line -->
+- **Acceptance criteria:** [spec/plan IDs this cycle must satisfy — cite, never quote]
+- **Brownfield exposure:** none <!-- none | extends `path` | modifies `path` — cycle-level surfaces only -->
+
+**TEST:** CRUD operations work via API
+- **Action**: `curl -X POST localhost:3000/api/[entity] -d '{"name":"Test"}'`
+- **Assert**: Response status: 201
+- **Assert**: Console contains "[entity]_id"
+- **Capture**: console
+
+---
+
+## Feature Cycles
+
+> Parallel-eligible once foundation is complete.
+
+### - [ ] Cycle 2: [Feature title] `[P]`
+
+- **Stories:** US-2 — [rationale ≤ 2 lines]
+- **Depends on:** C1
+- **Case:** [Simple | Split | Merge]
+- **Acceptance criteria:** [IDs]
+- **Brownfield exposure:** extends `src/models/[entity].py`
+
+**TEST:** [behavior] works end to end via API
+- **Setup**: Seed prerequisite [entity] data
+- **Action**: `curl -X POST localhost:3000/api/[endpoint] -d '{"[field]":"value"}'`
+- **Assert**: Response status: 200
+- **Assert**: Console contains "[expected field]"
+- **Capture**: console
+````
+- **Kept deliberately:** Every line of guidance preserved — lifted into `plugins/mochiko/schemas/tasks.yaml` (skeleton / contract / overview / register / density) and rendered by `mochiko-cli template tasks`; the `.yaml` ships in the plugin as the raw-Read first-class degraded path (D8, GI-020, no install regression). Net-new per-section `check` lines were authored under D7 (disclosed, not lifted). Nothing dropped.
+- **Consumers assessed:** `commands/plan.md` (re-pointed by P4) · `commands/feature.md` (re-pointed by P4) · `skills/mochiko/SKILL.md` router row (re-described by P5) · `skills/patterns-vertical-tdd/SKILL.md` (re-pointed by P5) · `skills/review-plan-artifacts/SKILL.md` (D7 re-key — tasks cycle-card criteria cite the `--check` view, re-pointed by P5). V2 fidelity PASS 2026-08-16 (schema graded 8/8 at the M3 gate).
+
 ## [v0.67.0] Fixed design-input enumeration re-keyed to the proposal-produced set
 - **Disposition:** superseded → the re-keyed provenance line: "Generated from the spec folder and the feature's produced design artifacts: spec.md, features/FEAT-XXX/plan.md, and whichever of requirements.md, constraints-and-decisions.md, nfrs.md, data-model.md, contracts/ **the approved proposal included**"
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/plan-structure-yagni/record.md` D1/D2 — artifacts are the approved proposal's, not a fixed set; combined wave `.mochiko/brainstorms/architect-role-pushback-and-abstraction/record.md` D5)

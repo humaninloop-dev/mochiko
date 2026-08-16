@@ -4,6 +4,7 @@ paths:
   - "plugins/mochiko/skills/**"
   - "plugins/mochiko/agents/**"
   - "plugins/mochiko/templates/**"
+  - "plugins/mochiko/schemas/**"
 ---
 
 # Primitive-edit ceremony (strip / supersede → record → check)
@@ -11,6 +12,11 @@ paths:
 Editing a shipped primitive is a **landing, not an ad-hoc edit**. Any change that REMOVES or
 SUPERSEDES content — even one line, even an "obvious" cleanup — obliges both moves before the
 change is done. Full contracts: `.mochiko/strips/README.md`.
+
+**Schema data files** (`plugins/mochiko/schemas/*.yaml`) are shipped primitives from v0.74.0
+(schema-based-template-guidance D8 — data = source of truth, the binary renders over them). An
+edit to one takes the same strip + author≠grader ceremony as any command / skill / agent /
+template edit; the path scope above covers them so this reminder injects on a schema Read.
 
 - **Record** — a version-stamped entry in `.mochiko/strips/<primitive>.md` (one file per primitive,
   newest-first; stamp = the `plugin.json` version that made it):

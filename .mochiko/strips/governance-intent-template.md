@@ -9,6 +9,218 @@ command consumer.
 **No version footer.** Unlike `command-shape.md` and `sized-end-stage-review.md`, this template
 carries no version line (checked at this edit), so no footer stamp was owed and none was invented.
 
+## [v0.74.0] Template retired — superseded by schema-based template guidance (D1/D3/D8)
+- **Disposition:** superseded → plugins/mochiko/schemas/governance-intent.yaml + mochiko-cli template governance-intent
+- **Tier failed:** n/a — supersession by ruling (schema-based-template-guidance D1/D3/D8; record `.mochiko/brainstorms/schema-based-template-guidance/record.md`; `DECISIONS.md` "Template-schema CLI ruled")
+- **Content (superseded template, full verbatim below):**
+
+````markdown
+<!--
+GOVERNANCE INTENT — the session synthesis (fill target)
+========================================================
+Written by the /mochiko:setup lead at the close of the interrogation session and ratified at the
+synthesis-confirmation checkpoint BEFORE any authoring. Lives durably at
+`.mochiko/memory/governance-intent.md`, beside the governance ledger of the surface set it
+governs (there is no constitution.md — governance lands on native surfaces).
+
+This artifact is a TRACEABLE CONTRACT on the surface-set producer, not a brief:
+- Every principle in the authored surface set MUST trace to exactly one element here
+  (its GI-ID), and every principle-bearing element here MUST be realized on a surface
+  or surfaced as a flagged proposal at the acceptance gate.
+- Producer latitude is confined to FORMULATION (wording, enforcement mechanics, three-part
+  structure with real commands) — never SELECTION.
+- The validator string-matches trace-IDs both ways (deterministic). Semantic fidelity of a
+  stamped trace is judgment-grade residual risk, mitigated by the synthesis-confirmation
+  checkpoint and the acceptance gate's trace summary.
+
+AMEND RUNS UPDATE THIS FILE DELTA-WISE: touched elements are edited or superseded (never
+renumbered), new elements take fresh IDs, untouched elements keep their IDs, and the Amendment
+Log records each delta. The traceability cross-check always runs against this persisted,
+updated file. LEGACY MIGRATION: an amend run meeting a tier declaration (the retired axis)
+supersedes it — never renumbered — elicits the fact profile once, and re-records existing
+waivers under the D4 model. An existing single-floor synthesis that carries NO depth-level
+declaration defaults to `high` on its next amend (adaptive-depth 2026-08-11, review fold #7) —
+recorded as the declared level without a flip ceremony, since it never operated at `low`.
+
+GI-ID rule: sequential GI-001, GI-002, … — unique forever within this file; never reuse a
+retired ID.
+
+CONFIDENCE MARKS: every GI element carries a mark from
+`Confident / Assumed / Contested / Unsure / Deferred`, assigned by the lead at assembly from the
+session's own indicators — updated DELTA-WISE on amend (untouched elements keep their marks).
+The marks are the G3 intent review's prioritization substrate; they are lead-self-reported, so
+the review audits them rather than trusting them. `Contested` = the user overruled a recorded
+challenge with the steelman in view — the recorded basis is required, or the mark is a defect.
+
+THE REVIEW SECTION is this file's durable record of the sized pre-G3 review (or its waiver) —
+recovery keys off its state. The reviewers produce lead-adjudicated input; the Tier-2 validator
+downstream issues the authoritative grade on the authored surface set (both still human-gated).
+-->
+
+# Governance Intent — [PROJECT_NAME]
+
+**Session date:** [YYYY-MM-DD] · **Mode:** [greenfield | brownfield | amend]
+**Confirmed at synthesis checkpoint:** [YYYY-MM-DD] by [user]
+**Governs:** the governance surface set v[X.Y.Z] (CLAUDE.md governance region · `.claude/rules/mochiko/` · `.mochiko/memory/governance-ledger.md`)
+
+## Fact profile
+
+The module-driving facts (interrogation dimension 2), each with its consequence-stated
+confirmation — negatives are recorded facts too (the S4 fail-safe, per
+`authoring-constitution/references/COMPLIANCE-MODULES.md`):
+
+- **GI-001 — Facts:** industry: [x] · data classes: [x] · jurisdictions/markets: [x] ·
+  contractual commitments: [x] · **Mark:** [Confident | Assumed | Contested | Unsure | Deferred]
+- **Modules triggered (mechanical):** [module list with trigger fact each, or "none — negatives
+  confirmed: (each negative + its stated consequence)"]
+- **Brownfield cross-check:** [declared facts vs `codebase-analysis.md` / DS-XXX / detected
+  integrations — "consistent" or the confrontation's ruling] *(brownfield only)*
+
+## Project identity & type
+
+- **GI-002 — Type:** [frontend | backend | fullstack | service | mobile | desktop] → shelves
+  dealt: [list] · **Mark:** [Confident | Assumed | Contested | Unsure | Deferred]
+- **Identity:** [what's being built, for whom, lifespan — 2-3 sentences]
+- **Risk surface:** [what failure costs — honest context for the floor's expression]
+- **Team reality:** [solo/team, review culture — what enforcement can lean on]
+
+## Depth level declaration
+
+The floor's single depth dial (adaptive-depth, 2026-08-11) — **one project-wide declaration, not
+a per-check negotiation**. Breadth is invariant: every floor category is present at both levels;
+the level tunes only how strictly the asserted *code* standards are authored (process rigor is
+uniform — D8), and compliance modules are level-blind (full strength at either level — D7). The
+level is the user's declaration alone — never fact-derived (D1); setup recommends, the user rules.
+
+- **GI-0XX — Declared level:** [low | high] · **Declared:** [YYYY-MM-DD] by [user] ·
+  **Mark:** [Confident | Assumed | Contested | Unsure | Deferred]
+- **Rationale:** [why this level — setup recommends `low` for greenfield, `high` where reality
+  warrants it; the user's ruling, recorded]
+- **Ratchet:** one-way — `high` is terminal; a later `low`→`high` move happens only through a
+  flip ceremony (a conscious `/mochiko:setup` rerun in high mode), never silently, never reversed.
+
+## Convergence skips
+
+[Named skips only — a dimension left unasked because an earlier answer settled it ("dimension 5
+settled by dimension 1: solo founder"). A skip is convergence bookkeeping, never a scope ruling
+— there is no pruning license. Or "none".]
+
+## Real commands (dimension 6/8 → the validator's placeholder bar)
+
+| Purpose | Command | Source |
+|---------|---------|--------|
+| Lint | `[actual command]` | [detected / declared] |
+| Test | `[actual command]` | [detected / declared] |
+| [etc.] | | |
+
+## Floor expression & deck rulings
+
+Floor cards enter asserted — their rows record *expression* (type translation), never a level
+ruling; arbitrated cards (architecture-opinion and kin) record the user's ruling. **Dropped
+arbitrated cards are rulings too:**
+
+| GI-ID | Card | Layer | Ruling / Expression | Mark |
+|-------|------|-------|---------------------|------|
+| GI-0XX | FLOOR-SEC | floor-asserted | [expression shaped how, or "at floor level"] | [Confident] |
+| GI-0XX | BE-HEX | arbitrated | [kept/tightened/dropped + user's stated reason] | [Confident] |
+| … | | | | |
+
+*(On a fact-profile or un-waive amend, affected rulings are re-dealt on the event's agenda
+slice or force-re-marked — a stale `Confident` never carries an unexamined ruling forward.)*
+
+## Minted principle intents
+
+One element per minted intent — traced to the elicited answer, never to prompting:
+
+- **GI-0XX — [Intent name]:** [what to enforce, how strictly — the user's words distilled]
+  · **Mark:** [Confident | Assumed | Contested | Unsure | Deferred]
+  *Elicited from:* [dimension 9 answer, quoted or closely paraphrased]
+
+## Waivers
+
+Any asserted standard may be waived with a recorded justification (D4) — **except legal-mandate
+module obligations (D4.2)**. Waivers are permanent pending the D4.1 revisit; a revisit trigger
+is the user's option, never a default.
+
+**Interim transition delta (D6).** After a `low`→`high` flip, a category the project does not yet
+meet at the high level rides a waiver as a **bounded transition exception** — transition-scoped,
+naming its delta item, and dying when that item conforms. It is a staged-adoption record, never a
+depth valve: it does not lower the declared level, and the level stays `high`.
+
+Every waiver is auditable:
+
+| GI-ID | Standard (floor category / card / non-legal module obligation) | Justification | Revisit trigger (optional) | Mark |
+|-------|---------------------------------------------------------------|---------------|---------------------------|------|
+| GI-0XX | [e.g. FLOOR-TEST coverage gate] | [recorded reason] | [or "permanent (D4.1 pending)"] | [Confident] |
+| GI-0XX | [e.g. FLOOR-OBS SLO formalization] | interim transition delta (high declared [date]) | transition — dies when the item conforms | [Confident] |
+
+## Module selections
+
+**Template modules** (the operating-docs layer — knowledge-management, layer-rules,
+release-gates), ruled in session; *compliance modules attach mechanically in the Fact profile
+above, never here.* **Declines are rulings too** (recorded, durable: amend runs offer only
+modules with *no* recorded ruling here; a recorded decline is never re-asked until the user
+reopens it). The validator checks core + exactly the adopted modules:
+
+| GI-ID | Module | Ruling | Because | Mark |
+|-------|--------|--------|---------|------|
+| GI-0XX | [layer-rules] | adopted | [BE-HEX kept \| layered intent minted] | [Confident] |
+| GI-0XX | [knowledge-management] | [adopted \| declined] | [offered default-on at dimension 7; a decline also memorializes in dimension 10] | [Confident] |
+| … | | | | |
+
+## Domain-dependency seeds (only when `layer-rules` is adopted)
+
+Session-arbitrated registry seeds per `authoring-constitution/references/DOMAIN-DEPENDENCIES.md`
+— domain-relevance filtered, trust-ranked, each level-cited; rejected seeds are rulings too:
+
+| GI-ID | Dependency | Signal level | Ruling | Mark |
+|-------|------------|--------------|--------|------|
+| GI-0XX | [equatable] | [1 — Flutter Favorites, live-verified] | [kept \| dropped] | [Confident] |
+| … | | | | |
+
+## Deliberate exclusions (dimension 10)
+
+- **GI-0XX:** [what governance will not cover + why — never a floor category (the floor leaves
+  only by recorded waiver, above)]
+  · **Mark:** [Confident | Assumed | Contested | Unsure | Deferred]
+
+## Review
+
+<!-- The durable record of the sized pre-G3 intent review — one block per run (amend runs append
+a new block, event-scaled). Recovery keys off this section's state: no sizing ruling → open the
+gate; sized but survivors undispositioned → respawn/continue the review; folded but unverified →
+verify pass; waived or verified → G3. -->
+
+**[YYYY-MM-DD] — [first ratification | amend]**
+
+- **Sizing:** lead stated weight [element count · mark mix · reality-surface load]; the default
+  [pair on first ratification | event-scaled on amend: governance event → pair · lighter
+  substantive delta → single · wording-level → none-with-recorded-waiver]; **lead sized:**
+  [pair | single | none], the sizing composed by the lead in its run plan — below the default
+  also takes a departure-trail line.
+- *(if none)* **Waiver:** this record is lead-penned, so `none` is not the lead's to take —
+  waived by [user] as an explicit reserved ruling, [stated reason]. The synthesis proceeds to
+  G3 unreviewed; this record is the audit trail.
+- *(otherwise)* **Review:** reviewer(s) [coverage / coherence lenses | solo]; **tally** [N raised
+  → M merged survivors]; recommended status [ready | needs-revision | critical-gaps]
+- **Survivor dispositions** (every survivor carries one):
+
+  | # | Sev | GI element(s) | Finding | Disposition |
+  |---|-----|---------------|---------|-------------|
+  | S1 | [Critical] | [GI-0XX] | [one line] | [resolved / user-ruled / recorded-open — overruled → element marked `Contested`] |
+
+- **Verify pass:** [PASS — folds confirmed by the coherence-lens/sole reviewer | pending]
+- *(if any)* **G3-edit delta-pass:** [edited elements + the still-seated reviewer's outcome]
+
+## Amendment Log
+
+[Empty on first ratification. Amend runs append one entry per delta:]
+- [YYYY-MM-DD] — [GI-IDs added/edited/superseded] — [one-line rationale] — re-confirmed at
+  synthesis checkpoint [date]
+````
+- **Kept deliberately:** Doctrine-dense, multi-shape canonical reference — every operative line is protected / `DECISIONS.md`-traceable governance doctrine. All of it was carried **verbatim** into `plugins/mochiko/schemas/governance-intent.yaml` (shape-blocks preserved over uniform per-section fields, per plan §3 I3) and renders through `mochiko-cli template governance-intent`; the `.yaml` ships in the plugin as the raw-Read first-class degraded path (D8, GI-020, no install regression). Net-new per-section `check` lines were authored under D7 (disclosed, not lifted). V2 confirmed **no doctrine dropped** — nothing removed.
+- **Consumers assessed:** `commands/setup.md` (re-pointed by P4) · `skills/authoring-constitution/references/INTERROGATION-AGENDA.md` (re-pointed by P5). V2 fidelity PASS 2026-08-16 (schema graded 8/8 at the M3 gate).
+
 ## [v0.53.0] Review-block sizing/waiver re-keyed off the deleted weight card
 - **Disposition:** superseded → the same two Review-section lines re-keyed to the v8 reality: sizing "composed by the lead in its run plan"; the `none` waiver "waived by [user] as an explicit reserved ruling".
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 command-architecture-realignment D2 — the weight card was deleted at the v8 rebuild, v0.48.0; this template's lines 157/160 were the stale remainder, logged as a BACKLOG defect at the 2026-08-04 groom and closed in the v0.53.0 wave).

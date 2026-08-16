@@ -1,0 +1,63 @@
+# Schema data file for the `features-index` pipeline artifact template.
+# Source of truth for `mochiko-cli template features-index` and `--check`. Read raw when the binary is absent (D8).
+template: features-index
+title: Features Index (FEATURES.md)
+form: artifact-format.md
+register: full   # per artifact-format.md rule 11
+overview: |
+  FEATURES.md is a succinct index, never a monolith: one line per capability, full entries live
+  in per-capability files the index points at. Authored and maintained per
+  mochiko:authoring-feature-map; delivery writes land at spec acceptance and at acceptance
+  landings (implement or lane run) — where delivered work rows fold — never mid-run;
+  /mochiko:feature stewardship writes (stub minting, retire, grooming) land directly. It is the
+  capability peer of ARCHITECTURE.md.
+
+sections:
+  - name: Header
+    required: true
+    contract: |
+      Title "# Features" plus the three orienting lines:
+      > The system as capabilities — the capability peer of `ARCHITECTURE.md`.
+      > Entries: `.mochiko/features/FEAT-XXX-<slug>.md` (linked per line).
+      > Statuses: `proposed` · `in-flight` · `delivered` · `retired`.
+    check: "Is the header present with the capability-peer framing, the entry-file pointer convention, and the four-status legend?"
+
+  - name: Index
+    required: true
+    density: "one line per capability; hook = one breath"
+    contract: |
+      One line per capability: ID (linked to its entry file) · name · status · one-breath
+      capability hook. Ordering: newest-relevant first — in-flight and row-carrying entries at
+      the top, then delivered, then proposed, then retired. Keep the hook to one breath; the
+      entry file carries everything else.
+      Work rows: a capability's live/pending work rows show as transient sublines directly under
+      its row, name prefixed "↳ ", tagged `live` or `pending` — these are delivery increments,
+      not features, and a delivered row folds into the capability's extent and leaves the index.
+      There is NO parent/leaf feature nesting.
+      Domains: when the soft cap (~9 capabilities) trips, capabilities may be grouped under
+      domain headers (mochiko:patterns-map-minimalism) — dormant below the cap; a small map
+      stays flat, no headers.
+      `unrefined` capability stubs show the mark after the status: `proposed (unrefined)`.
+      Layout note: a capability's artifact directory `.mochiko/features/FEAT-XXX/` sits BESIDE
+      its entry file `FEAT-XXX-<slug>.md` in the same directory — the entry file is not inside
+      the artifact directory.
+    good: |
+      | ID | Capability | Status | Hook |
+      |----|------------|--------|------|
+      | [FEAT-001](.mochiko/features/FEAT-001-{{slug}}.md) | {{capability_name}} | {{status}} | {{one_breath_hook}} |
+      |  | ↳ `live` {{work_row}} | in {{spec-slug}} | {{increment_hook}} |
+      | [FEAT-002](.mochiko/features/FEAT-002-{{slug}}.md) | {{stub_name}} | proposed (unrefined) | {{one_breath_hook}} |
+    check: "Is the index one linked line per capability (ID · name · status · one-breath hook), ordered newest-relevant first, with work rows as `↳` sublines, `unrefined` stubs marked `proposed (unrefined)`, and no parent/leaf nesting or premature domain headers below the ~9 cap?"
+
+skeleton: |
+  # Features
+
+  > The system as capabilities — the capability peer of `ARCHITECTURE.md`.
+  > Entries: `.mochiko/features/FEAT-XXX-<slug>.md` (linked per line).
+  > Statuses: `proposed` · `in-flight` · `delivered` · `retired`.
+
+  | ID | Capability | Status | Hook |
+  |----|------------|--------|------|
+  | [FEAT-001](.mochiko/features/FEAT-001-{{slug}}.md) | {{capability_name}} | {{status}} | {{one_breath_hook}} |
+  |  | ↳ `live` {{work_row}} | in {{spec-slug}} | {{increment_hook}} |
+  | [FEAT-002](.mochiko/features/FEAT-002-{{slug}}.md) | {{stub_name}} | proposed (unrefined) | {{one_breath_hook}} |

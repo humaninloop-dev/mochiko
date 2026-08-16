@@ -6,6 +6,16 @@ Entry formats: `strips/README.md`. Wave context: skill-succinctness wave 1 (desi
 single physical lines, so the R2 line denominator undercounts this skill; dual accounting
 recorded here and flagged on the wave's ROADMAP row.
 
+## [v0.74.0] Router rows re-typed: `spec`/`tasks`/`plan` template files → CLI/schema-delivered (schema-based-template-guidance D1/D8)
+- **Disposition:** superseded → `plugins/mochiko/schemas/{spec,tasks,plan}.yaml` + `mochiko-cli template <name>` (raw Read of the `.yaml` is the D8-first-class degraded path). The three router-index rows are re-described as CLI/schema-delivered primitives; the `(template)` designation is ruled to `(schema)` — the shape is no longer a `templates/<t>-template.md` file. The sibling report/format rows (`analyst-report-template`, `advocate-report-template`, `report-format`, `artifact-format`, `output-style`, `techanalyst-report-template`, `feasibility-report-template`) keep `(template)` because they remain markdown template files (D3 leaves them `.md`). Discoverability preserved: each re-typed row keeps its full role description.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/schema-based-template-guidance/record.md` D1 one plugin CLI · D3 the 8 pipeline templates · D8 schemas ship as data files, raw Read first-class; `DECISIONS.md` "Template-schema CLI ruled" row).
+- **Content (superseded, verbatim):**
+  - `| \`spec-template\` (template) | the \`spec.md\` the analyst authors and the loop converges on — lead-seeded; header \`status\` carries the loop's done-condition |`
+  - `| \`tasks-template\` (template) | the \`tasks.md\` deliverable — the cycle-card skeleton (per-card checkbox as the progress surface, Stories+rationale, type, dependencies, acceptance criteria by ID, \`**TEST:**\` gate, brownfield exposure) |`
+  - `| \`plan-template\` (template) | the \`plan.md\` deliverable the lead assembles at Phase 4 — rolling up Key Decisions · Infrastructure/IP-XXX (constraints-and-decisions) · Entities+Sensitivity (data-model) · Endpoints+Integration (contracts/api.yaml); the lead's fill-target |`
+- **Kept deliberately:** the `(template)` designation on the seven non-in-scope report/format rows (they stay `.md`); every re-typed row's role description.
+- **Consumers assessed:** router is the single index; the three re-typed rows are the only in-scope-template rows here. Sibling re-points of the same 8 templates land in the same wave (P3 template deletions · P4 command re-points · P5 skill re-points).
+
 ## [v0.69.0] Universal v8-anatomy claims → two-anatomy reality (charters × 3)
 - **Disposition:** superseded → rewritten in place at four sites: the *What mochiko is*
   anatomy sentence · the *How the library composes* opening paragraph (now names both

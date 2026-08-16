@@ -48,8 +48,9 @@ sub-procedure with domain-entity extraction and an Essential-Floor status assess
 - Essential-Floor **status** assessment (present / partial / absent — see below)
 - Inconsistencies and strengths to preserve
 
-**Output**: `.mochiko/memory/codebase-analysis.md`, following
-[`codebase-analysis-template.md`](../../templates/codebase-analysis-template.md). The
+**Output**: `.mochiko/memory/codebase-analysis.md`, following the `codebase-analysis` schema
+(invoke `mochiko-cli template codebase-analysis` when the binary is available; otherwise Read
+`plugins/mochiko/schemas/codebase-analysis.yaml` raw). The
 artifact follows the deliverable envelope ([`artifact-format.md`](../../templates/artifact-format.md))
 **slimmed but legible**: findings in tables with file-cited evidence, one line per check;
 the judgment prose (strengths, recommendations) stays prose — the G2 gate reader needs it.

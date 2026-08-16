@@ -3,6 +3,15 @@
 Entry formats: `strips/README.md`. Shipped at v0.50.0 (ux-mocking-in-specify wave); first
 strip entries at v0.58.0 (feature-map-layer wave).
 
+## [v0.74.0] `spec-template.md` read-pointers → `spec` schema (two-arm CLI / raw Read) — schema-based-template-guidance D1/D8
+- **Disposition:** superseded → `mochiko-cli template spec`, or Read `plugins/mochiko/schemas/spec.yaml` raw (D8-first-class). Two sites re-pointed: the Overview "in the shape … defines" pointer and the Related-section pointer.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/schema-based-template-guidance/record.md` D1/D3/D8; `DECISIONS.md` "Template-schema CLI ruled").
+- **Content (superseded, verbatim):**
+  - `in the shape` / `[\`spec-template.md\`](../../templates/spec-template.md) defines:` — Overview item 2
+  - `- [\`spec-template.md\`](../../templates/spec-template.md) — owns the Screens & Flows section shape this skill fills` — Related
+- **Kept deliberately:** the `artifact-format.md` pointer (lines 26, 140) — not an in-scope template, stays `.md`; all surrounding descriptive text.
+- **Consumers assessed:** n/a (single-writer skill; no shared-primitive fan-out).
+
 ## [v0.63.0] Guardrails body + slim description (guardrails-vs-detail benchmark verdict)
 - **Disposition:** superseded → benchmark-ruled guardrails body + slim description
   (`.mochiko/benchmarks/guardrails-vs-detail/variants/body/authoring-prototype/` and

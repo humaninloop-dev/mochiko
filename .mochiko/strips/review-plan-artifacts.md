@@ -10,6 +10,14 @@ bullet like the one stripped from `review-specifications`). One contested keep (
 is a library-wide consistency ruling, not a cluster call (see the wave return); note L16 already carries
 the `loop-discipline` reference the strip disposition would add.
 
+## [v0.74.0] Cycle-card Review Focus row cites the `tasks --check` view (D7 re-key, thin) — schema-based-template-guidance D7/D8
+- **Disposition:** superseded → the Cycle cards row's Key-checks cell now cites `mochiko-cli template tasks --check` (or Read `plugins/mochiko/schemas/tasks.yaml` raw) as the source its cycle-card criteria mirror. THIN scope (contest-accepted per plan §5): only the tasks in-scope-template checklist is re-keyed; `references/ARTIFACT-CHECKLISTS.md` and all out-of-scope artifact checklists (requirements / constraints / nfrs / data-model / contracts / quickstart / architecture — their templates are in-skill refs, D3 leaves them `.md`) are left untouched.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/schema-based-template-guidance/record.md` D7 (`--check` grading view, checklists re-key)/D8; `DECISIONS.md` "Template-schema CLI ruled").
+- **Content (superseded, verbatim):** the Cycle cards row previously ended without a checklist-source citation —
+  - `… brownfield exposure stated (\`none\` counts), **no task lists or file paths** (pre-written decomposition is a finding — the builder decomposes at build time) |`
+- **Kept deliberately:** every existing cycle-card criterion (vertical integrity · `**TEST:**` gate · story traceability · sizing · dependency minimality · brownfield exposure · no-task-lists) — the `--check` citation is additive; `references/ARTIFACT-CHECKLISTS.md` untouched (out-of-scope per D3).
+- **Consumers assessed:** n/a (single-writer skill; the ARTIFACT-CHECKLISTS reference deliberately not re-keyed).
+
 ## [v0.67.0] Re-keyed from fixed-checklist completeness to approved-proposal conformance (blocking) + rung-honesty (advisory)
 - **Disposition:** superseded → the three-lens Overview (conformance BLOCKING · rung-honesty advisory · completeness-within-scope), the re-keyed Scope Completeness question, the Verdict-Criteria precedence override, and the re-keyed description — plan re-identified as delivery of a package per the *approved artifact proposal*, not a fixed mandated artifact set.
 - **Tier failed:** n/a — supersession by ruling (`plan-structure-yagni` record D5 as amended HF-2 [with D1/D2 artifact-set demotion], `.mochiko/brainstorms/plan-structure-yagni/record.md`; combined-wave landing `architect-role-pushback-and-abstraction` D3/D5, `.mochiko/brainstorms/architect-role-pushback-and-abstraction/record.md`; DECISIONS.md combined-wave row).
