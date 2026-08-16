@@ -6,14 +6,34 @@ surface is [`ROADMAP.md`](ROADMAP.md). Closing an item = the KM landing ritual
 (`.mochiko/memory/knowledge-management.md`): decision row + move here → the trail
 (`.mochiko/archive/backlog-trail.md`) + touch ROADMAP.md. No `[x]` lives here.
 
-*Last groomed: 2026-08-15 (landing groom at the build-vs-off-the-shelf acceptance, updated
-at its same-day v0.73.0 build) — baseline: **69 open items** (net +1: +2 adopt-first items
-at the ruling, −1 build item closed → trail at the build; +13 since the 2026-08-06 baseline
-56 — growth is recent session landings, none suspected stale; **delivery sweep still not
-run — offered to the user** per the count-watch delta; all items within the ≤15-line bound).
-Prior groom narrative: git history (this line, before this groom).*
+*Last groomed: 2026-08-16 (landing groom at the schema-based-template-guidance acceptance) —
+baseline: **70 open items** (net +1: +1 template-schema CLI build item; +14 since the
+2026-08-06 baseline 56 — growth is recent session landings, none suspected stale;
+**delivery sweep still not run — offered to the user** per the count-watch delta; all items
+within the ≤15-line bound). Prior groom narrative: git history (this line, before this
+groom).*
 
 ---
+
+## Template-schema CLI build
+
+Ruled 2026-08-16 (`schema-based-template-guidance` D1–D11 as amended at review; solo cold
+review via blind-map dispatch: critical-gaps → 7/7 dispositioned, spine user-ruled "own the
+real driver" → D11 no-kernel softening; verify CLEAN). Open item:
+
+- [ ] **Template-schema CLI build** (2026-08-16; provenance:
+  [record](.mochiko/brainstorms/schema-based-template-guidance/record.md) build surface) —
+  one wave (D10 `Contested`): Rust crate, mochiko's first non-markdown code (M6 gate: test
+  suite + independent non-author code review; layout builder's room) · 8 schema data files
+  (D8: data = source, binary = renderer, raw Read fallback) · 8 pipeline template
+  supersessions with strips + author≠grader audits · skill/command re-points ·
+  `ARTIFACT-CHECKLISTS.md` re-key to the `--check` view (D7) · CLAUDE.md no-kernel
+  rewording + core-bet sentence per D11 (governance amendment path) · CI arrival trips the
+  standing governance amend trigger — setup amend due at the same landing · M7 rollback
+  statement honored (revert = strips-reconstructible; crate may survive under the
+  foundation ruling) · release gates (plugin.json bump · CHANGELOG · marketplace).
+  First-live-run watch owed after build (n=0; the D11 null-road concession on record —
+  binary distribution mechanism must keep the raw-Read fallback honest).
 
 ## Adopt-first build
 
