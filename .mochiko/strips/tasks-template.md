@@ -4,6 +4,20 @@ Entry formats: `strips/README.md`. Wave context: workflow-token-reduction wave 2
 `.mochiko/brainstorms/workflow-token-reduction/record.md` D4 + the wave-2 rulings R1–R4;
 ratified 2026-07-24).
 
+## [v0.75.0] Foundation/feature grouping + type + standalone acceptance-criteria field superseded; skeleton-first sample, per-case citation
+
+- **Disposition:** superseded → the test-case-bundle card shape in the same file: Overview `Cycles | [N]` (no foundation/feature split); a Cycle Format re-keyed to skeleton-first + `[P]`-from-dependencies + the bundle-as-card-content rule; a walking-skeleton sample card (Cycle 1) and a feature-bundle sample (Cycle 2) carrying named `**TEST:**` cases each with a `**Covers**:` citation line.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-16 "Vertical-TDD cycle anchor + QA test-case authorship (D1–D4)"; record `.mochiko/brainstorms/vertical-tdd-complexity-and-qa-role/record.md`, D1/D3 + the D2 acceptance-ID-relocation amendment).
+- **Content:**
+  - Overview table row "`| Cycles | [N] ([N] foundation + [N] feature) |`" → "`| Cycles | [N] |`".
+  - Cycle Format sentence "Foundation cycles run sequentially, first; feature cycles are parallel-eligible `[P]` unless dependent on another feature cycle." → skeleton-first-where-a-new-path-opens + "There is no foundation/feature card type — `[P]` parallel eligibility derives from a card's dependencies, not from a type column." + "the cycle is done when its named cases show green against real infrastructure" + "Each named test case cites the spec/plan ID(s) it covers."
+  - Section headers "`## Foundation Cycles`" (blockquote "Sequential; establish what every feature cycle depends on. All complete before feature cycles begin.") and "`## Feature Cycles`" (blockquote "Parallel-eligible once foundation is complete.") deleted — cards are no longer grouped by type.
+  - Sample card heading "### - [ ] Cycle 1: Core entity and basic CRUD" → "### - [ ] Cycle 1: Walking skeleton — [thinnest end-to-end path]".
+  - Standalone card field "`- **Acceptance criteria:** [spec/plan IDs this cycle must satisfy — cite, never quote]`" removed from every card → the per-case `- **Covers**: <IDs>` line inside each `**TEST:**` block carries the citation (D2: relocated, not dropped — each Assert graded against the scenario it cites).
+  - Full prior text: git history at v0.74.x.
+- **Kept deliberately:** the cycle-card shape and the `**TEST:**` grammar pointer to `TEST-GRAMMAR.md` (D4 — grammar unchanged), the checkbox-as-progress-surface rule, the Stories / Depends on / Case / Brownfield-exposure fields, the "SAMPLES — replace them" guard comment, the `full` register + never-compress note, the artifact-format.md envelope. The `**TEST:**` Setup/Action/Assert/Capture fields untouched — `**Covers**` is a card-level trace line, not a new executable verification field.
+- **Consumers assessed:** `skills/patterns-vertical-tdd/SKILL.md` (fills it — re-keyed same wave) · `skills/executing-tdd-cycle/SKILL.md` + `references/TASK-PARSING.md` (reads cards — re-keyed same wave: type field dropped, `**TEST:**`-blocks + `Covers` extraction added) · `skills/testing-end-user/SKILL.md` (runs the `**TEST:**` cases — grammar unchanged, ignores `Covers`) · `review-plan-artifacts` (grades cards — the acceptance-ID cross-artifact clause survives via the per-case citation, P2's re-key) · `plan.md` (invokes the fill).
+
 ## [v0.67.0] Fixed design-input enumeration re-keyed to the proposal-produced set
 - **Disposition:** superseded → the re-keyed provenance line: "Generated from the spec folder and the feature's produced design artifacts: spec.md, features/FEAT-XXX/plan.md, and whichever of requirements.md, constraints-and-decisions.md, nfrs.md, data-model.md, contracts/ **the approved proposal included**"
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/plan-structure-yagni/record.md` D1/D2 — artifacts are the approved proposal's, not a fixed set; combined wave `.mochiko/brainstorms/architect-role-pushback-and-abstraction/record.md` D5)

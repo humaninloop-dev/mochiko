@@ -103,6 +103,12 @@ is your call.
 
 - **Producing seats** — author the package artifacts; each plans first and works only on a
   plan you approved (Ways of Working).
+- **QA seat — design-time test-case authoring** — a producing seat that authors the cycle
+  cards' acceptance test-case content: the expected-behaviour cases in the executable
+  `**TEST:**` grammar the qa-engineer later runs. The slicing judgment — which test-case
+  bundles exist, the Simple/Split/Merge and walking-skeleton calls, inter-card dependencies —
+  stays with the design seat authoring the cards per `mochiko:patterns-vertical-tdd`; QA writes
+  the cases within that structure. Plans first, works only on a plan you approved.
 - **Grading and fact-finding seats** — the feasibility and completeness grades; never the
   authors; exempt from plan approval.
 - **Contest seat (selection scope only)** — an independent seat — not the proposing lead —
@@ -131,7 +137,7 @@ Each tool below is referenced, never restated — its procedure lives in its hom
   `contracts/`, `nfrs.md`, each a delta mirroring its baseline's filename; deltas against
   prose baselines are in appliable form — exact before/after text · `tasks.md` as **cycle
   cards** from `templates/tasks-template.md` per `mochiko:patterns-vertical-tdd` — per card:
-  stories + feature rationale, foundation/feature type, dependencies, acceptance criteria by
+  stories + feature rationale, dependencies, acceptance criteria by
   ID, a `**TEST:**` real-infrastructure gate, cycle-level brownfield exposure; no task lists,
   no file paths — the builder decomposes at build time · `plan.md` from
   `templates/plan-template.md`, a summary over the validated artifacts, never new design.

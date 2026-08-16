@@ -16,8 +16,9 @@ coverage against the ID index; **density is never itself a finding** — a gap i
 or unverifiable substance, not missing prose.
 
 > **Cycle cards (`tasks.md`)** are graded from the Review Focus row in SKILL.md — vertical
-> integrity, TEST-gate presence/grammar, story traceability + Simple/Split/Merge rationale,
-> sizing, dependency minimality, brownfield exposure, no pre-written task lists. This file
+> integrity, TEST-gate presence/grammar, oracle semantics (Asserts capture the right expected
+> behaviour against their cited acceptance scenario), story traceability + Simple/Split/Merge
+> rationale, dependency minimality, brownfield exposure, no pre-written task lists. This file
 > carries no separate cycle-card checklist; the SKILL.md row is the complete check set.
 
 ## Scope of these checklists

@@ -6,14 +6,32 @@ surface is [`ROADMAP.md`](ROADMAP.md). Closing an item = the KM landing ritual
 (`.mochiko/memory/knowledge-management.md`): decision row + move here → the trail
 (`.mochiko/archive/backlog-trail.md`) + touch ROADMAP.md. No `[x]` lives here.
 
-*Last groomed: 2026-08-16 (landing groom at the schema-based-template-guidance acceptance) —
-baseline: **70 open items** (net +1: +1 template-schema CLI build item; +14 since the
-2026-08-06 baseline 56 — growth is recent session landings, none suspected stale;
-**delivery sweep still not run — offered to the user** per the count-watch delta; all items
-within the ≤15-line bound). Prior groom narrative: git history (this line, before this
-groom).*
+*Last groomed: 2026-08-16 (landing groom at the vertical-TDD test-case-anchor build
+delivery, v0.75.0, same day as its ruling) — baseline: **71 open items** (net 0 this
+landing: build item → trail, its first-live-run watch + merge-reconciliation item stays;
++15 since the 2026-08-06 baseline 56 — growth is recent session landings, none suspected
+stale; **delivery sweep still not run — offered to the user** per the count-watch delta;
+all items within the ≤15-line bound). Prior groom narrative: git history (this line,
+before this groom).*
 
 ---
+
+## Vertical-TDD test-case-anchor residuals
+
+Build DELIVERED 2026-08-16 at v0.75.0, same day as the ruling, in the
+`vertical-tdd-brainstorm` worktree (12/12 audits PASS round 1; trail). Open item:
+
+- [ ] **Test-case-anchor first-live-run watch** (2026-08-16; provenance:
+  [record](.mochiko/brainstorms/vertical-tdd-complexity-and-qa-role/record.md) open
+  questions) — n=0: watch the first plan+implement run under the bundle anchor.
+  Directional expectation: kinako-s1-shaped work lands well under 12 cycles. Bundle-grain
+  guardrail is the revisit if bundles balloon or re-fragment; `Covers` card-level trace
+  convention (D4-adjacent, not a TEST-GRAMMAR field) re-examined if parsing friction
+  appears; oracle-semantics clause's first grades checked for bite. **Merge reconciliation
+  owed**: four files overlap the template-schema CLI wave (v0.74.0, `mochiko-cli`) —
+  `patterns-vertical-tdd/SKILL.md`, `review-plan-artifacts/SKILL.md`, `plan.md`,
+  card-shape surface (`tasks-template.md` vs `schemas/tasks.yaml`); whoever merges second
+  reconciles, per the record's coordination note.
 
 ## Template-schema CLI build
 
