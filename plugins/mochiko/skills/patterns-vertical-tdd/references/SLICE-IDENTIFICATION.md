@@ -1,6 +1,7 @@
 # Slice Identification Heuristics
 
-This reference file provides detailed guidance on identifying good vertical slices from requirements.
+This reference file provides detailed guidance on identifying good vertical slices — coherent
+bundles of named test cases that demonstrate together — from requirements.
 
 ## The Value Stream Test
 
@@ -8,10 +9,10 @@ For each potential slice, ask: "Can a user observe or use this independently?"
 
 | Answer | Action |
 |--------|--------|
-| Yes, directly | Good slice candidate |
+| Yes, directly | Good bundle candidate |
 | Yes, but needs other slices first | Check if it's a dependency or can be deferred |
-| No, it's infrastructure | Foundation cycle |
-| No, it's internal refactoring | Not a slice; attach to a feature cycle |
+| No, it's infrastructure | Home it inside the first bundle that needs it (skeleton-path infra → the skeleton cycle) |
+| No, it's internal refactoring | Not a slice; attach to a bundle |
 
 ## Extraction from User Stories
 
@@ -26,70 +27,68 @@ US-4 (P2): As a user, I can filter tasks by status
 US-5 (P3): As a user, I can export tasks to CSV
 ```
 
-### Step 2: Identify Foundation Needs
+### Step 2: Identify the Walking Skeleton
 
-Ask: "What must exist before ANY of these stories can work **in production**?"
+Where the work opens a **new end-to-end path** — a greenfield feature or a genuinely new path
+through the system — the first cycle is a **walking skeleton**: the thinnest end-to-end path
+through all layers with one trivial case green. It is the foundation, by construction; the
+infrastructure the skeleton path needs (including platform provisioning, IP-XXX from
+constraints-and-decisions.md) lands **in the skeleton cycle**, because the skeleton deploys
+production-shaped.
 
-**Application foundation:**
-- Data model for core entities
-- Authentication/authorization
-- API routing infrastructure
-- Database schema setup
-- Error handling framework
-
-**Platform foundation** (from constraints-and-decisions.md Part 3 — IP-XXX items):
-- Compute provisioning (containers, serverless, VMs)
-- CI/CD pipeline setup
-- Monitoring and observability infrastructure
-- Environment configuration and secrets management
-- Database/storage provisioning (distinct from schema setup)
-- Networking configuration (DNS, load balancers, firewall rules)
+Growth or delta work on an **already-standing path skips the skeleton** — the path already
+exists. All remaining infrastructure lands inside the first bundle that needs it (YAGNI at cycle
+grain). **Infra-only cycles are never minted.**
 
 ### Step 3: Map Stories to Cycles
 
+Each cycle is a bundle of named test cases. C1 is the walking skeleton where one is warranted.
+
 | Story | Cycle | Rationale |
 |-------|-------|-----------|
-| US-1 | C1 (Foundation) | Creates the core Task entity; everything depends on this |
-| US-2 | C2 (Feature) | Adds status field and completion logic |
-| US-3 | C3 (Feature) | Adds priority field and assignment |
-| US-4 | C4 (Feature) | Query/filter logic; independent of US-3 |
-| US-5 | C5 (Feature) | Export logic; can parallelize with others |
+| US-1 | C1 (walking skeleton) | Thinnest end-to-end path; one trivial case green establishes the stack |
+| US-2 | C2 | Completion behaviour — its own demonstrable bundle |
+| US-3 | C3 | Priority behaviour; independent of US-2 |
+| US-4 | C4 | Query/filter behaviour; independent of US-3 |
+| US-5 | C5 | Export behaviour; can parallelize with others |
 
-Record these decisions and their rationale on the cycle cards themselves — each card's Stories line carries its story set and slice rationale; the Case field records Simple/Split/Merge with its one-line why.
+Record these decisions and their rationale on the cycle cards themselves — each card's Stories
+line carries its story set and slice rationale; the Case field records Simple/Split/Merge with
+its one-line why.
 
 ### Step 4: Identify Parallelization
 
-After foundation:
-- C2, C3, C4, C5 can all proceed in parallel
+After the skeleton, parallel eligibility derives from dependencies (never from a card type):
+- C2, C3, C4, C5 have no inter-dependencies → all proceed in parallel
 - Mark each with [P]
 
-## Size Calibration
+## Bundle Grain
 
-### Too Small
+A cycle is a bundle of test cases **worth demonstrating together** — a demo the user would want
+to watch pass. Grain is judged by demonstrability, not clock time.
 
-Signs a slice is too small:
-- Single function or method
-- No testable behavior
-- Takes < 30 minutes to implement
+### Too thin
 
-**Fix**: Merge with related slices.
+Signs a bundle is too thin:
+- No coherent behaviour a user or operator could watch demonstrated
+- A single case that means nothing on its own
 
-### Too Large
+**Fix**: Merge with the related cases until the bundle is worth demonstrating.
 
-Signs a slice is too large:
-- Multiple distinct user actions
-- Would take > 1 day to implement
-- Has internal phases ("first this, then that")
+### Too broad
 
-**Fix**: Split into smaller slices.
+Signs a bundle is too broad:
+- Its cases span more than one distinct demonstration
+- Internal phases ("first this whole demo, then that whole demo")
 
-### Just Right
+**Fix**: Split into separate bundles, each a demonstration of its own.
 
-A well-sized slice:
-- One coherent user action
-- 1-3 hours to implement
-- Clear test scenario
-- Obvious when it's "done"
+### Just right
+
+A well-grained bundle:
+- Its cases demonstrate one coherent behaviour together
+- Passes or fails as a unit the user would want to watch
+- Obvious when it's "done" — the named cases show green on real infrastructure
 
 ## Dependency Analysis
 
@@ -97,17 +96,17 @@ A well-sized slice:
 
 | Type | Description | Handling |
 |------|-------------|----------|
-| Data | Cycle B needs entity from Cycle A | A is foundation for B |
-| API | Cycle B calls endpoint from Cycle A | A is foundation for B |
-| UI | Cycle B shows component from Cycle A | A is foundation for B |
-| Infrastructure | Cycle B needs platform resource from IP-XXX | Foundation cycle (platform) |
+| Data | Cycle B needs entity from Cycle A | B depends on A |
+| API | Cycle B calls endpoint from Cycle A | B depends on A |
+| UI | Cycle B shows component from Cycle A | B depends on A |
+| Infrastructure | Cycle B needs a platform resource (IP-XXX) | Home it in the first bundle that needs it; skeleton-path infra in the skeleton |
 | None | Cycles are independent | Both can be [P] |
 
 ### Minimizing Dependencies
 
-1. **Extract shared infrastructure to foundation**
-   - Don't make feature cycles depend on each other
-   - Move shared needs to foundation
+1. **Home shared infrastructure where it is first needed**
+   - Don't make bundles depend on each other for infra
+   - The first bundle that needs a resource carries it; the skeleton carries the skeleton-path infra
 
 2. **Accept some duplication**
    - If extracting creates complexity, duplicate
@@ -116,52 +115,19 @@ A well-sized slice:
 3. **Order by priority when dependencies exist**
    - If C4 depends on C3, and C3 is P2 while C4 is P3, natural order works
 
-4. **Separate platform from application foundation**
-   - Platform provisioning (IP-XXX) goes in its own foundation cycle(s)
-   - Application foundation depends on platform foundation
-
-## Examples by Domain
-
-### CRUD Feature
+## Worked Example — Skeleton First, Then Bundles
 
 ```
-Foundation:
-  C1: Basic entity creation
+C1: Walking skeleton — create-and-read a task round-trips through the full stack,
+    one trivial case green (model + service + endpoint + storage, production-shaped)
 
-Features:
-  C2: [P] Read/list entities
-  C3: [P] Update entity
-  C4: [P] Delete entity
+C2: [P] Completion — mark a task complete; its cases demonstrate the status transition
+C3: [P] Priority — set and read task priority
+C4: [P] Filtering — filter tasks by status
 ```
 
-### Search Feature
-
-```
-Foundation:
-  C1: Data model with searchable fields
-  C2: Search infrastructure
-
-Features:
-  C3: [P] Basic text search
-  C4: [P] Filter by field
-  C5: [P] Sort results
-  C6: Pagination (depends on C3-C5)
-```
-
-### Authentication Feature
-
-```
-Foundation:
-  C1: User model and storage
-  C2: Password hashing and validation
-  C3: Session/token management
-
-Features:
-  C4: [P] Login flow
-  C5: [P] Logout flow
-  C6: [P] Password reset
-  C7: OAuth integration (if applicable)
-```
+The skeleton is the foundation by construction — no separate "all models" or "all services"
+cycle. Each later cycle is a bundle of cases demonstrable on its own.
 
 ## Anti-Patterns
 
@@ -175,7 +141,7 @@ Cycle 3: All API endpoints
 Cycle 4: All tests
 ```
 
-**Problem**: Nothing is testable until Cycle 4 completes.
+**Problem**: Nothing is demonstrable until Cycle 4 completes.
 
 ### Big Bang Integration
 
@@ -186,7 +152,8 @@ Cycle 2: Build entire frontend
 Cycle 3: Integrate
 ```
 
-**Problem**: Integration issues discovered too late.
+**Problem**: Integration issues discovered too late — the walking skeleton exists precisely to
+prove the end-to-end path first.
 
 ### Premature Generalization
 
@@ -204,8 +171,7 @@ When unsure how to slice, use this matrix:
 
 | Question | If Yes | If No |
 |----------|--------|-------|
-| Is this user-facing? | Feature cycle | May be foundation |
-| Does it need other features? | Consider dependency ordering | Can be [P] |
-| Is it > 1 day of work? | Split it | Good size |
-| Is it < 30 min of work? | Merge it | Good size |
-| Can it be tested in isolation? | Good slice | Reconsider boundaries |
+| Do its cases demonstrate on their own? | Good bundle | Merge until they do |
+| Does it need other cycles first? | Order by dependency | Can be [P] |
+| Do its cases span more than one distinct demonstration? | Split it | Good bundle |
+| Can its cases run against real infrastructure? | Good bundle | Reconsider boundaries |

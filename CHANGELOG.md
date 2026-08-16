@@ -83,6 +83,44 @@ raised to `--deny warnings`).
 - `plugins/mochiko/templates/governance-intent-template.md` — superseded by `plugins/mochiko/schemas/governance-intent.yaml` + `mochiko-cli`
 - `plugins/mochiko/templates/governance-surfaces-template.md` — superseded by `plugins/mochiko/schemas/governance-surfaces.yaml` + `mochiko-cli`
 
+## [0.75.0] — 2026-08-16
+
+Vertical-TDD test-case-anchor build — the accepted `vertical-tdd-complexity-and-qa-role`
+record (D1–D4 as amended at review) landed as one wave under the sound-loop and transport
+floors: two producer seats on lead-approved plans with disjoint file ownership (TDD-skill
+surfaces vs roles/wiring), all messaging through the lead, two fresh author≠grader validator
+seats cross-grading the quiesced tree — 12/12 surfaces PASS round 1, zero fix rounds.
+Version 0.74.0 is reserved by the concurrent template-schema CLI wave on `mochiko-cli`;
+this build stamps 0.75.0 to avoid strip renumbering at merge (four files overlap — reconcile
+there, per the record's coordination note).
+
+- **`patterns-vertical-tdd` re-keyed to the test-case-bundle anchor (D1)** — a cycle is a
+  coherent bundle of named test cases (expected behaviour, in the `**TEST:**` grammar)
+  demonstrated green to the user on real infrastructure; walking-skeleton standing
+  first-cycle rule with the greenfield/new-path carve; time-based sizing (1–3 sessions /
+  1–3 hours / <30-min merge bar) superseded by "worth demonstrating"; the proliferating
+  worked examples (CRUD=4 / Search=6 / Auth=7 foundation stacks) replaced by one
+  skeleton-first example.
+- **Foundation/feature card type dies (D3)** — the skeleton absorbs sequencing; IP-XXX
+  platform infrastructure homes in the skeleton cycle (skeleton-path) or the first bundle
+  needing it; infra-only cards never minted; `[P]` derives from dependencies, not a type
+  column. `tasks-template.md` and `TASK-PARSING.md` re-keyed to match; acceptance-ID trace
+  relocated into each test case as a card-level `**Covers**:` line (`TEST-GRAMMAR.md`
+  untouched per D4 — `Covers` is a trace convention, not a grammar field).
+- **qa-engineer gains its design-time seat (D2)** — the persona authors the cycle cards'
+  acceptance test-case content in the grammar it later executes; the slicing judgment
+  (bundles, Simple/Split/Merge, walking-skeleton, dependencies) stays with the design seat
+  (I7 split); `plan.md` wires the QA producing seat; no `skills:` change — persona judgment
+  plus `testing-end-user`'s grammar carriage resolve the record's seat-mechanics open
+  question minimally.
+- **`review-plan-artifacts` re-keyed (D1/D2/D3)** — sizing and foundation-sequenced clauses
+  retired; new oracle-semantics check: each card's Asserts graded semantically against the
+  acceptance scenario/criteria they cite, not merely for presence and grammar;
+  `ARTIFACT-CHECKLISTS.md` aligned.
+- 6 supersession strips across 5 strip files, all v0.75.0-stamped, protected
+  foundation/feature lineage reconciled in the owner strip. First-live-run watch owed (n=0;
+  directional expectation: kinako-s1-shaped work well under 12 cycles).
+
 ## [0.73.0] — 2026-08-15
 
 Adopt-first build — the accepted `build-vs-off-the-shelf` record (D1–D6 as amended at review)

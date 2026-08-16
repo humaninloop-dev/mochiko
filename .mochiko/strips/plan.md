@@ -48,6 +48,18 @@ changed. Schema data files authored by the parallel schemas seat; paths are fixe
 
 ---
 
+<!-- Wave context: vertical-TDD cycle-anchor build wave (v0.75.0) — DECISIONS.md 2026-08-16
+"Vertical-TDD cycle anchor + QA test-case authorship (D1–D4 as review-amended)"; record
+.mochiko/brainstorms/vertical-tdd-complexity-and-qa-role/record.md. qa-engineer gains a
+design-time test-case-authoring seat in the plan run; the foundation/feature card type dies. -->
+
+## [v0.75.0] "foundation/feature type" struck from the per-card field list (D3)
+- **Disposition:** superseded → the Tools → Package artifacts `tasks.md` cycle-card description drops the `foundation/feature type` field from its per-card list; the field dies as a card type (the walking skeleton absorbs the sequencing role it existed for).
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-16 "Vertical-TDD cycle anchor + QA test-case authorship (D1–D4 as review-amended)" row; record `.mochiko/brainstorms/vertical-tdd-complexity-and-qa-role/record.md` D3 — foundation/feature classification dies as a card type).
+- **Content (verbatim, superseded):** "foundation/feature type" — from "per card: stories + feature rationale, foundation/feature type, dependencies, acceptance criteria by ID, a `**TEST:**` real-infrastructure gate, cycle-level brownfield exposure".
+- **Kept deliberately:** the rest of the per-card field list is untouched — stories + feature rationale, dependencies, acceptance criteria by ID, the `**TEST:**` real-infrastructure gate, cycle-level brownfield exposure, no task lists / no file paths. The card's re-shaping to test-case-bundle form (D1) is P1's `tasks-template.md` / `patterns-vertical-tdd` work, not restated in this charter.
+- **Consumers assessed:** none mount commands (entry points). The QA design-time seat wiring added to Roles & Responsibilities in this same edit is a pure addition (rides the D2 clause, no strip). The field-kill co-lands in P1's `tasks-template.md` (same ruling, different file — no collision); this strike removes the charter's reference to the same dead field so the two stay consistent.
+
 <!-- Wave context: multi-feature-plan-implement build wave (v0.72.0) — DECISIONS.md 2026-08-14
 "Multi-feature plan & implement ruled (D1–D13)"; record
 .mochiko/brainstorms/multi-feature-plan-implement/record.md. plan/implement/feature/specify gain the

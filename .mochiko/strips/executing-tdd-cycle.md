@@ -13,6 +13,18 @@ ruled" row) — the report repair: the format text that forced prose onto passin
 corrected, and the envelope's register and prose-on-clean check are bound where the report is
 actually authored.
 
+## [v0.75.0] TASK-PARSING.md — foundation/feature card-type field superseded; test-case-bundle + Covers extraction added
+
+- **Disposition:** superseded → the re-keyed `references/TASK-PARSING.md` Card Pattern and Fields-to-Extract: no card-type annotation, `[P]` derived from dependencies, the card's `**TEST:**` blocks parsed as the named test-case bundle (each with a `Covers` citation line). Execution discipline unchanged.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-16 "Vertical-TDD cycle anchor + QA test-case authorship (D1–D4)"; record `.mochiko/brainstorms/vertical-tdd-complexity-and-qa-role/record.md`, D1/D3 + the D2 acceptance-ID-relocation amendment). Scope is the reference only — the `executing-tdd-cycle` SKILL.md body is untouched.
+- **Content:**
+  - Card Pattern heading "`### - [ ] Cycle {N}: {title} *({Foundation|Feature})* ` `[P]`?`" → "`### - [ ] Cycle {N}: {title} ` `[P]`?`" (the `*({Foundation|Feature})*` type annotation removed); the pattern gains a `- **Covers**: spec/plan IDs this case covers` line inside the `**TEST:**` block and a note that a card may carry more than one `**TEST:**` block (the bundle) with Cycle 1 of a new path a walking skeleton.
+  - Fields-to-Extract row "`Type + [P] | Foundation cards run sequentially, first; [P] marks parallel-eligible feature cards`" → "`[P] | Marks a parallel-eligible card — derived from dependencies, not a card type`".
+  - Fields-to-Extract row "`Acceptance criteria | Cited IDs — resolve against the spec/plan artifacts; these bound the decomposition`" removed → merged into a re-keyed "`**TEST:** blocks`" row: "The card's named test-case bundle — the expected behaviour the cycle must ultimately demonstrate green; these bound the decomposition. Each block's `Covers` line cites the spec/plan IDs it verifies. Parse only to know what the cycle must prove; running the cases is `testing-end-user`'s work".
+  - Full prior text: git history at v0.74.x.
+- **Kept deliberately:** the **Current-Cycle Identification** rule (first unchecked card in file order, all `Depends on` checked; flip at step 6) and the **Quality Gates Pattern** section — execution discipline untouched (D4: the skill consumes the cards, does not re-decide slicing). The Checkbox / Stories / Depends on / Brownfield-exposure extraction rows kept, re-keyed only where they named the type.
+- **Consumers assessed:** this reference is loaded by `executing-tdd-cycle/SKILL.md` only (build-time card reader). Upstream owner `patterns-vertical-tdd` re-keyed same wave (card shape); `tasks-template.md` re-keyed same wave (the card shape parsed here); `testing-end-user` runs the `**TEST:**` cases (grammar unchanged, ignores `Covers`). No other consumer reads this file.
+
 ## [v0.64.0] Guardrails body + slim description (guardrails-vs-detail Wave 2 editorial cut)
 - **Disposition:** superseded → Wave 2 editorial guardrails cut (D4 cut line).
 - **Tier failed:** n/a — supersession by ruling (guardrails-vs-detail Wave 2, `DECISIONS.md`

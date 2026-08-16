@@ -28,7 +28,7 @@ frontend/mobile/desktop shelves are Tier-I roadmap work.**
 - Token epic: the one-shot OTel probe (2026-07-23; D5 sizing half closed 2026-08-04 — superseded at v8; probe gains TC's three recorded-open questions) → [BACKLOG](BACKLOG.md#token-reduction-epic)
 - Defect probes: fresh-session description-delivery (2026-07-25) → [BACKLOG](BACKLOG.md#defects--empirical-checks)
 - Production-only narrowing: adaptive-depth build DELIVERED 2026-08-11 at v0.65.0 (first-live-run watch remains) · Tier-I builds queued — security-depth (SD-D1–D6) + ops & observability (OO-D1–D7), both inheriting the two-row obligation; then shelf-build scoping → [BACKLOG](BACKLOG.md#production-only-narrowing)
-- Plan-surface builds — combined wave DELIVERED 2026-08-13 at v0.67.0 (plan-the-plan gate + simplest-execution ladder + architect rotation + library-wide remove-shaped review classes; first-live-run watch with dual FEAT-002 probes (weight + level) remains → [BACKLOG](BACKLOG.md#plan-structure-yagni-build)) · architecture-primitive dogfood — first merged-plan run with the architecture stage (built 2026-07-30 at v0.32.0; tie-back chain rides it, built 2026-08-04 at v0.51.0, AT-D1–D6) → [BACKLOG](BACKLOG.md#architecture-primitive-build-items) · epic build — ruled AND DELIVERED 2026-08-14 at v0.72.0, same day (`multi-feature-plan-implement` D1–D13: `EPIC-XXX` transient first-class unit, spine + per-feature deltas, one-unit gates; 8/8 audits PASS round 1; trail); remaining: the first-live-run watch → [BACKLOG](BACKLOG.md#epic-build) · adopt-first build — ruled AND DELIVERED 2026-08-15, same day, at v0.73.0 (`build-vs-off-the-shelf` D1–D6 as amended: disclosure floor + rationale bite + `patterns-adopt-first` sibling skill + nine pointer touches; 13/13 audits PASS round 1; trail); remaining: the kinako FEAT-006 re-plan probe watch (+ the rung-3 read-obligation watch riding it) → [BACKLOG](BACKLOG.md#adopt-first-build)
+- Plan-surface builds — combined wave DELIVERED 2026-08-13 at v0.67.0 (plan-the-plan gate + simplest-execution ladder + architect rotation + library-wide remove-shaped review classes; first-live-run watch with dual FEAT-002 probes (weight + level) remains → [BACKLOG](BACKLOG.md#plan-structure-yagni-build)) · architecture-primitive dogfood — first merged-plan run with the architecture stage (built 2026-07-30 at v0.32.0; tie-back chain rides it, built 2026-08-04 at v0.51.0, AT-D1–D6) → [BACKLOG](BACKLOG.md#architecture-primitive-build-items) · epic build — ruled AND DELIVERED 2026-08-14 at v0.72.0, same day (`multi-feature-plan-implement` D1–D13: `EPIC-XXX` transient first-class unit, spine + per-feature deltas, one-unit gates; 8/8 audits PASS round 1; trail); remaining: the first-live-run watch → [BACKLOG](BACKLOG.md#epic-build) · adopt-first build — ruled AND DELIVERED 2026-08-15, same day, at v0.73.0 (`build-vs-off-the-shelf` D1–D6 as amended: disclosure floor + rationale bite + `patterns-adopt-first` sibling skill + nine pointer touches; 13/13 audits PASS round 1; trail); remaining: the kinako FEAT-006 re-plan probe watch (+ the rung-3 read-obligation watch riding it) → [BACKLOG](BACKLOG.md#adopt-first-build) · vertical-TDD test-case-anchor build — ruled AND DELIVERED 2026-08-16, same day, at v0.75.0 in the `vertical-tdd-brainstorm` worktree (`vertical-tdd-complexity-and-qa-role` D1–D4 as amended: test-case-bundle anchor + walking-skeleton first · qa-engineer design-time authoring seat, design seat keeps slicing, oracle-semantics review clause · foundation/feature type dead; 12/12 audits PASS round 1; trail); remaining: the first-live-run watch + the four-file merge reconciliation with the template-schema CLI wave → [BACKLOG](BACKLOG.md#vertical-tdd-test-case-anchor-residuals)
 - Template-schema CLI build — ruled AND DELIVERED 2026-08-16, same day, at v0.76.0 (`schema-based-template-guidance` D1–D11 as amended: single **Rust** plugin CLI `crates/mochiko-cli` + 8 schema data files delivering schema + example + good/bad guidance for the 8 pipeline artifact templates, binary = renderer / raw Read fallback, agent never selects depth · 8 template supersessions · 14-surface two-arm re-points · thin D7 `--check` re-key · **no-kernel non-negotiable softened per D11**, CLI owned as the Rust/Tauri foundation seed · governance PATCH 2.0.1 activating the AM-1 dormant crate gates on CI arrival; 6 producer / 3 validator seats, audits PASS, one fix round); remaining: the first-live-run watch (n=0, CLI guidance vs `.md` baseline) → [BACKLOG](BACKLOG.md#template-schema-cli-build)
 
 ## Later *(non-committed)*
@@ -47,7 +47,7 @@ frontend/mobile/desktop shelves are Tier-I roadmap work.**
 ## Standing bets & revisit conditions
 
 - ~~**Hard-require agent teams, no fallback**~~ (`Contested`, 2026-07-04) — **superseded 2026-08-02** by transport-neutral commands (command-architecture-realignment D5): teammates vs subagents is the lead's per-seat call.
-- **Code-free until dogfooding** (2026-06-27) — revisit: sequential cycle execution proves too slow on a dependency-rich feature.
+- **Code-free until dogfooding** (2026-06-27) — revisit: sequential cycle execution proves too slow on a dependency-rich feature. *Advanced 2026-08-16 on the cycle-count dimension (`vertical-tdd-complexity-and-qa-role` F9/Q1: pain confirmed as count, not serial latency; ruled remedy = test-case-bundle anchor); the latency half of the condition stays open.*
 - **In-loop mesh as Layer-2 default** (`Contested`, 2026-07-25) — revisit: first dogfood of the rewritten Layer 2.
 - **Plan absorbs tasks — start-small surface** (`Contested`, 2026-07-25) — revisit: merged-command dogfood.
 - **Scribe/report-writer closed** (2026-07-24/25) — reopen: a genuinely expansion-heavy doc surface (groom-pass watch, CHANGELOG first).
@@ -56,18 +56,20 @@ frontend/mobile/desktop shelves are Tier-I roadmap work.**
 
 ---
 *Last groomed: 2026-08-16 (landing groom at the schema-based-template-guidance **build**:
-ruled AND built same day at v0.76.0 — the Next row updated ruled → DELIVERED in place, no new
-row, Next stays 7; the ruling groom earlier the same day had tripped Next 8/7, restored then by
-merging the delivered adopt-first row into the plan-surface-builds row; the thesis's
-"kernel-free" identity sentence + the CLAUDE.md amendment landed at the AM-1 setup amend
-(governance v2.0.0, GI-019/020/021), and governance moved v2.0.0 → **v2.0.1** at this build —
-the AM-1 dormant crate gates activated on the crate's arrival, no fresh amend; prior stamp
-narrative: git history, this line before this groom) — Now 5 · Next 7 · Later 10 (at cap) ·
-BACKLOG baseline 70 open items (net 0 this landing: −1 CLI build item closed → trail, +1
-first-live-run watch minted; +14 since the 2026-08-06 baseline 56 — growth is recent session
-landings; **delivery sweep still not run, offered to the user**; per-item ≤15 lines, figures on
-BACKLOG's stamp line). Plugin: 6 commands · 10 agents · 34 skills · 6 templates + modules · 8
-schema data files (`plugins/mochiko/schemas/`, the 8 pipeline templates converted at v0.76.0) ·
-2 output styles · Rust crate `crates/mochiko-cli` (mochiko's first non-markdown code), v0.76.0
-(marketplace synced). Per-bump build history: `CHANGELOG.md` (from 0.53.0) · `DECISIONS.md` ·
-the trail.*
+ruled AND built same day at v0.76.0, merged with the vertical-TDD test-case-anchor build
+landed the same day on `main` at v0.75.0 — the Next row carries both as DELIVERED, no new
+row, Next stays 7 (the plan-surface-builds row absorbs the vertical-TDD sub-entry from
+`main`; the template-schema CLI row lands delivered); the thesis's "kernel-free" identity
+sentence + the CLAUDE.md amendment landed at the AM-1 setup amend (governance v2.0.0,
+GI-019/020/021), and governance moved v2.0.0 → **v2.0.1** at this build — the AM-1
+dormant crate gates activated on the crate's arrival, no fresh amend; prior stamp narrative:
+git history, this line before this groom) — Now 5 · Next 7 · Later 10 (at cap) ·
+BACKLOG baseline 71 open items (each build net 0 at its own landing — both closed a build
+item → trail and minted one first-live-run watch, template-schema CLI + vertical-TDD
+test-case-anchor; +15 since the 2026-08-06 baseline 56 — growth is recent session landings;
+**delivery sweep still not run, offered to the user**; per-item ≤15 lines, figures on
+BACKLOG's stamp line). Plugin: 6 commands · 10 agents · 34 skills · 6 templates + modules ·
+8 schema data files (`plugins/mochiko/schemas/`, the 8 pipeline templates converted at
+v0.76.0) · 2 output styles · Rust crate `crates/mochiko-cli` (mochiko's first non-markdown
+code), v0.76.0 (marketplace synced). Per-bump build history: `CHANGELOG.md` (from 0.53.0) ·
+`DECISIONS.md` · the trail.*

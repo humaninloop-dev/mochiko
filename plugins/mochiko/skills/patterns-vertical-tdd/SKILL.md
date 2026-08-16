@@ -1,6 +1,6 @@
 ---
 name: patterns-vertical-tdd
-description: This skill MUST be invoked when structuring a feature's implementation into vertical-slice cycle cards — mapping user stories to cycles (Simple/Split/Merge), classifying foundation vs feature cycles, and authoring `tasks.md` as cycle cards with the closing `**TEST:**` real-infrastructure gate. SHOULD also invoke on 'define cycles', 'cycle cards', 'vertical slice', or 'story→cycle mapping'. Owns the `**TEST:**` grammar. Design-time — NOT build-time decomposition (mochiko:executing-tdd-cycle).
+description: This skill MUST be invoked when structuring a feature's implementation into vertical-slice cycle cards — mapping user stories to cycles as demonstrable test-case bundles (Simple/Split/Merge, walking skeleton first), and authoring `tasks.md` as cycle cards with the closing `**TEST:**` real-infrastructure gate. SHOULD also invoke on 'define cycles', 'cycle cards', 'vertical slice', or 'story→cycle mapping'. Owns the `**TEST:**` grammar. Design-time — NOT build-time decomposition (mochiko:executing-tdd-cycle).
 ---
 
 # Vertical Slicing — Cycle Cards
@@ -9,9 +9,11 @@ description: This skill MUST be invoked when structuring a feature's implementat
 
 ## Overview
 
-Transform a plan's stories into **cycle cards** — vertical slices that each deliver observable, testable value. The output is `tasks.md` in the cycle-card shape (the `tasks` schema is the canonical skeleton — invoke `mochiko-cli template tasks` when the binary is available; otherwise Read `plugins/mochiko/schemas/tasks.yaml` raw): per card — stories + feature rationale, foundation/feature type, dependencies, acceptance criteria (by ID), the closing `**TEST:**` gate, and cycle-level brownfield exposure.
+Transform a plan's stories into **cycle cards** — vertical slices that each deliver observable, testable value. A cycle is a coherent bundle of **named test cases** (expected behaviour, Given/When/Then grain, executable Setup/Action/Assert form) that demonstrate together to the user; the cycle is done when those cases show green against real infrastructure. The output is `tasks.md` in the cycle-card shape (the `tasks` schema is the canonical skeleton — invoke `mochiko-cli template tasks` when the binary is available; otherwise Read `plugins/mochiko/schemas/tasks.yaml` raw): per card — stories + rationale, dependencies, the named test-case list (the card's content), cycle-level brownfield exposure, and the Simple/Split/Merge case.
 
 This skill works at **design time**: it decides the slicing and states what each cycle must prove. It writes no task lists — the builder decomposes each card into concrete tasks, with file paths, at build time with the code in view (`mochiko:executing-tdd-cycle`, downstream). The card carries the *what and why*; the *how* is deliberately left to the build.
+
+**Two authors, one card:** the design seat running this skill owns the **slicing judgment** — which bundles exist, Simple/Split/Merge, dependencies, the walking-skeleton call; the `qa-engineer` authors the **test-case content** (expected behaviour) in the grammar it later executes.
 
 ## When NOT to Use
 
@@ -35,37 +37,37 @@ Cycle 1: User creation (model + service + endpoint, end to end)
 Cycle 2: User authentication (model + service + endpoint, end to end)
 ```
 
-A card that cannot be demonstrated on its own is not a slice.
+A card whose test cases cannot be demonstrated on their own is not a slice.
 
-### 2. Foundation + Parallel
+### 2. Walking Skeleton First, Infrastructure Homed by Need
 
-Foundation cycles run sequentially and establish what every feature depends on — platform infrastructure (IP-XXX items from constraints-and-decisions.md), data models, auth, API framework, error handling. **Identification:** ask "Could ANY user story work **in production** without this?" If no, it's foundation.
+Where the work opens a **new end-to-end path** — a greenfield feature or a genuinely new path through the system — the **first cycle is a walking skeleton**: the thinnest end-to-end path through all layers with one trivial case green. It is the foundation, by construction. Growth or delta work on an already-standing path **skips the skeleton**.
 
-Feature cycles deliver user value incrementally — mapping directly to user stories, independently completable, parallel-eligible `[P]` once foundation is complete unless dependent on another feature cycle. **Identification:** ask "Does this deliver value a user could observe?" If yes, it's a feature.
+There is **no foundation/feature card type**. All cycles are test-case bundles. Infrastructure a bundle needs emerges **inside the first bundle that needs it** (YAGNI at cycle grain); platform provisioning (IP-XXX) for the skeleton path lands **in the skeleton cycle**, the rest inside the first bundle that needs it. **Infra-only cards are never minted.** Inter-card dependencies stay explicit; `[P]` parallel eligibility derives from dependencies, not from a type column.
 
 ### 3. Verified against reality
 
-Every card closes with a **`**TEST:**` gate** — a real-infrastructure verification of the cycle's acceptance criteria, never a re-run of the automated tests. This gate is what makes a vertical slice actually vertical; a cycle that stops at the mock boundary has proven nothing. The grammar (fields, action modifiers, assert patterns, classification) lives in [TEST-GRAMMAR.md](references/TEST-GRAMMAR.md) — this skill owns it; downstream parsers consume it.
+Every card closes with a **`**TEST:**` gate** — the cycle's named test cases run against real infrastructure, never a re-run of the automated tests. This gate is the demonstration the cycle is anchored on; a cycle that stops at the mock boundary has proven nothing. Expected behaviour is the Assert fields; actual behaviour is the captured evidence. The grammar (fields, action modifiers, assert patterns, classification) lives in [TEST-GRAMMAR.md](references/TEST-GRAMMAR.md) — this skill owns it; downstream parsers consume it.
 
 ## Identifying Cycles
 
-See [SLICE-IDENTIFICATION.md](references/SLICE-IDENTIFICATION.md) for detailed heuristics — the value-stream test, extraction from user stories, size calibration, dependency analysis, worked domain examples, and anti-patterns.
+See [SLICE-IDENTIFICATION.md](references/SLICE-IDENTIFICATION.md) for detailed heuristics — the value-stream test, the walking skeleton, bundle identification, dependency analysis, and anti-patterns.
 
 ### Quick heuristics
 
 A good cycle:
 1. **Delivers user value** — something a user or operator could observe
 2. **Touches all layers** — model, service, API, UI (as applicable)
-3. **Is independently testable** — its gate can pass without later cycles
-4. **Is sized appropriately** — completable in 1–3 implementation sessions
+3. **Is independently testable** — its cases can pass without later cycles
+4. **Is worth demonstrating** — a bundle the user would want to watch pass; merge until it is
 
 ### Case column: Simple / Split / Merge
 
-- **Simple** — story = cycle: a well-scoped story becomes one card.
-- **Split** — story > cycle: a too-large story splits across cards (record the why, one line).
-- **Merge** — stories < cycle: too-small stories share one card (record the why, one line).
+- **Simple** — story's cases = one bundle: a well-scoped story's test cases form one card.
+- **Split** — story > bundle: a story whose cases span more than one demonstrable bundle splits across cards (record the why, one line).
+- **Merge** — stories < bundle: stories too thin to demonstrate alone share one bundle (record the why, one line).
 
-The story→cycle decision and its rationale live **on the card** (Stories line) — there is no separate mapping artifact. Size calibration is in [SLICE-IDENTIFICATION.md](references/SLICE-IDENTIFICATION.md).
+The story→cycle decision and its rationale live **on the card** (Stories line) — there is no separate mapping artifact. Bundle identification is in [SLICE-IDENTIFICATION.md](references/SLICE-IDENTIFICATION.md).
 
 ## Brownfield exposure
 
@@ -77,10 +79,12 @@ Before finalizing the cycle cards:
 
 - [ ] Every P1/P2 story appears on at least one card
 - [ ] Cards are vertical slices (not horizontal layers)
-- [ ] Foundation cycles identified and sequenced; feature cycles marked `[P]` where independent
-- [ ] Each card's acceptance criteria cite spec/plan IDs — never re-quoted content
-- [ ] Each card ends with a `**TEST:**` gate (real-infrastructure, in the grammar)
+- [ ] Where a new end-to-end path exists (greenfield / new path), the first cycle is a walking skeleton; growth on a standing path skips it
+- [ ] No infra-only cards — infrastructure is homed inside the first bundle that needs it (skeleton-path infra in the skeleton)
+- [ ] Each card carries its named test-case list (expected behaviour, in the `**TEST:**` grammar)
+- [ ] Each named test case cites the spec/plan ID(s) it covers — never re-quoted content
+- [ ] Each card's `**TEST:**` gate is real-infrastructure (never a re-run of the automated tests)
 - [ ] Story→cycle case (Simple/Split/Merge) and rationale recorded on each card
 - [ ] Brownfield exposure stated per card (`none` counts)
-- [ ] Dependencies minimal and explicit
+- [ ] Dependencies minimal and explicit; `[P]` derives from dependencies, not a type column
 - [ ] No task lists, no file paths — the card states what the cycle proves, not how it's built
