@@ -27,9 +27,12 @@ real driver" → D11 no-kernel softening; verify CLEAN). Open item:
   suite + independent non-author code review; layout builder's room) · 8 schema data files
   (D8: data = source, binary = renderer, raw Read fallback) · 8 pipeline template
   supersessions with strips + author≠grader audits · skill/command re-points ·
-  `ARTIFACT-CHECKLISTS.md` re-key to the `--check` view (D7) · CLAUDE.md no-kernel
-  rewording + core-bet sentence per D11 (governance amendment path) · CI arrival trips the
-  standing governance amend trigger — setup amend due at the same landing · M7 rollback
+  `ARTIFACT-CHECKLISTS.md` re-key to the `--check` view (D7) · ~~CLAUDE.md no-kernel
+  rewording + core-bet sentence per D11 (governance amendment path)~~ **delivered early
+  2026-08-16 at the AM-1 setup amend (governance v2.0.0, GI-019/020/021; dormant crate
+  gates pre-worded — the build's remaining governance duty is activating them, not a
+  fresh amend)** · CI arrival trips the
+  standing governance amend trigger — consequence set pre-worded at AM-1 · M7 rollback
   statement honored (revert = strips-reconstructible; crate may survive under the
   foundation ruling) · release gates (plugin.json bump · CHANGELOG · marketplace).
   First-live-run watch owed after build (n=0; the D11 null-road concession on record —

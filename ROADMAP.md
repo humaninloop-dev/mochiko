@@ -2,8 +2,9 @@
 
 ## Thesis
 
-Mochiko is the kernel-free successor to human-in-loop: engineering discipline lives in the
-quality of the skill library — native agent teams and Workflows orchestrate, and the human is
+Mochiko is the successor to human-in-loop: engineering discipline lives first in the
+quality of the skill library — kernel-class tooling admissible only by recorded ruling
+(GI-019, governance v2.0.0) — native agent teams and Workflows orchestrate, and the human is
 the framework's primary external validator, present in every loop. Current bet: a small
 team-form command surface over a stripped, single-sourced primitive library, hardened by
 dogfood evidence rather than speculation. **Target: customer-facing product applications
@@ -59,9 +60,10 @@ session accepted — D1–D11 as review-amended incl. the D11 no-kernel softenin
 DECISIONS row + BACKLOG "Template-schema CLI build" section; the new row tripped Next
 8/7 — restored by merging the delivered adopt-first row into the plan-surface-builds row,
 its BACKLOG link kept — merge precedent: the 2026-08-15 epic-into-plan-surface,
-2026-08-14 plan-surface and floor-builds merges; **the thesis's "kernel-free" identity
-sentence is owed its D11 rewording at the build landing, with the CLAUDE.md amendment**;
-prior stamp narrative: git history, this line before this groom) —
+2026-08-14 plan-surface and floor-builds merges; the thesis's "kernel-free" identity
+sentence and the CLAUDE.md amendment both landed same day at the AM-1 setup amend —
+governance v2.0.0, GI-019/020/021, validator PASS round 1 — ahead of the build, per the
+user's timing ruling; prior stamp narrative: git history, this line before this groom) —
 Now 5 · Next 7 · Later 10 (at cap) · BACKLOG baseline 70 open items (net +1 this landing:
 +1 template-schema CLI build item; +14 since the 2026-08-06 baseline 56 — growth is recent
 session landings; **delivery sweep still not run, offered to the user**;

@@ -37,7 +37,7 @@ articles, fragments OK · `ultra` = one word when one word enough, state each fa
 
 ## What this is
 
-Mochiko is the v3 successor to [human-in-loop](human-in-loop/). The core bet: engineering discipline lives in the quality of the skill library, not in a deterministic kernel. Native Claude Code agent teams and Workflows handle orchestration. Skills and agents are the primary building block — orchestration is the layer on top, not the enforcer.
+Mochiko is the v3 successor to [human-in-loop](human-in-loop/). The core bet: engineering discipline lives first in the quality of the skill library; kernel-class tooling is admissible, but only by recorded ruling (see **Non-negotiable constraints**). Native Claude Code agent teams and Workflows handle orchestration. Skills and agents are the primary building block — orchestration is the layer on top, not the enforcer.
 
 **Target (production-only PO-D1–D7 2026-07-30, as amended by adaptive-depth D1–D8 2026-08-11):** customer-facing product applications only — SaaS, web, mobile, desktop — under one production floor with a user-declared low/high depth level (breadth invariant at both, one-way ratchet), no tier ladder; backend/service standards are seeded today, frontend/mobile/desktop shelves are Tier-I roadmap work. Rationale: [`.mochiko/brainstorms/production-only-focus/record.md`](.mochiko/brainstorms/production-only-focus/record.md).
 
@@ -67,9 +67,11 @@ These were read-only reference sources:
 
 ## Non-negotiable constraints
 
-**No kernel infrastructure.** Never introduce Python/MCP brain code, capability catalogs, or DAG-mediated orchestration. If a workflow needs structure, use native Claude Code Workflows and agent teams.
+**Skills and agents are the primary quality surface.** Engineering discipline is injected through how skills are written and how agents are composed — not through plumbing. Default posture, not an absolute: a primitive that leans on a brain to hold judgment skills should own gets redesigned, not carried forward. If a workflow needs structure, use native Claude Code Workflows and agent teams.
 
-**Skills and agents are the quality surface.** Discipline is injected through how skills are written and how agents are composed — not through plumbing. A primitive that only works with a brain behind it gets redesigned, not carried forward.
+**Kernel-class tooling is admissible only by recorded ruling** (softened per the `schema-based-template-guidance` D11 ruling; governance trace GI-019). *Kernel-class* = executable tooling whose output primitives depend on (source-of-truth delivery, composition, or any standing infrastructure role). It is admitted only where a recorded ruling justifies it, and even then never gates pipeline progress, never dispatches or sequences agents, and never holds judgment that skills own — the standing bright line. This licenses no general kernel and no orchestration/brain code — Python/MCP brains, capability catalogs, DAG-mediated orchestration, the old ban's named species, stay banned; advisory post-hoc checkers used as optional exit-code signals are not kernel-class. First admitted instance: the template-schema Rust CLI (`.mochiko/brainstorms/schema-based-template-guidance/record.md` D11).
+
+**Plugin install stays additive** (governance trace GI-020). The plugin MUST install and function as a markdown-only plugin — no install-time build step, no binary dependency, no submodule-class fetch burden. Any admitted binary is strictly additive: its schema data files are Read raw as the first-class degraded path when the binary is absent. A distribution mechanism that makes install heavier violates this.
 
 ## How to work in this repo
 
@@ -104,7 +106,7 @@ Session artifacts (`record.md`, `synthesis.md`) live in `.mochiko/brainstorms/<t
 <!-- mochiko:governance:begin -->
 ## Governance
 
-**Ratified:** v1.0.0 · 2026-08-06 · production floor · modules: compliance none · knowledge-management (core + CHANGELOG) · release-gates <!-- GI-001 (fact profile) -->
+**Ratified:** v2.0.0 · 2026-08-16 (AM-1) · production floor · depth: high · modules: compliance none · knowledge-management (core + CHANGELOG) · release-gates <!-- GI-001 (fact profile) · GI-021 (depth level) -->
 
 ### Principles
 
@@ -113,15 +115,17 @@ Session artifacts (`record.md`, `synthesis.md`) live in `.mochiko/brainstorms/<t
 - The record layer MUST NOT silently corrupt: protected content leaves only by recorded ruling; dead pointers are defects — invariants: `.mochiko/memory/knowledge-management.md` (NON-NEGOTIABLE) <!-- GI-005 -->
 - Every primitive edit MUST be reconstructible from strips + `DECISIONS.md` + version stamps (NON-NEGOTIABLE) <!-- GI-006 -->
 - Governance surfaces point at existing constraint homes; they MUST NOT restate them <!-- GI-017 -->
+- Kernel-class tooling admission — see `## Non-negotiable constraints` (detail: ledger GI-019) <!-- GI-019 -->
+- Additive plugin install — see `## Non-negotiable constraints` (detail: ledger GI-020) <!-- GI-020 -->
 
 ### Technology stack
 
-- Markdown primitive library (Claude Code plugin, `plugins/mochiko/`, semver in `plugin.json`) · no runtime, no build, no test/lint commands — quality is procedural (audits · strips · landing ritual) <!-- GI-002 -->
+- Markdown primitive library (Claude Code plugin, `plugins/mochiko/`, semver in `plugin.json`) · no runtime, no build, no test/lint commands — quality is procedural (audits · strips · landing ritual). Dormant re-expression: when the Rust crate lands the stack gains a compiled binary and this line re-expresses (GI-012 activation, ledger) <!-- GI-002 -->
 
 ### Quality gates
 
-- No executable gates exist (no CI/lint/test — detected, not waived); the blocking checks are procedural: audit PASS · strip entries · landing ritual complete — detail per principle in the ledger <!-- GI-004, GI-005 -->
-- Release gates: a `plugin.json` bump MUST NOT land without audits PASS · strips recorded · landing complete · `CHANGELOG.md` entry · `marketplace.json` synced — detail in the ledger <!-- GI-012 -->
+- No executable gates exist today (no CI/lint/test — detected, not waived); the blocking checks are procedural: audit PASS · strip entries · landing ritual complete. A `cargo test` gate is dormant, activating when the Rust crate lands (GI-012, ledger) — detail per principle in the ledger <!-- GI-004, GI-005 -->
+- Release gates: a `plugin.json` bump MUST NOT land without audits PASS · strips recorded · landing complete · `CHANGELOG.md` entry · `marketplace.json` synced; a dormant clause activates when the Rust crate lands (adds cargo test PASS and schema/binary consistency) — detail in the ledger <!-- GI-012 -->
 
 ### Governance operations
 
@@ -130,7 +134,7 @@ Session artifacts (`record.md`, `synthesis.md`) live in `.mochiko/brainstorms/<t
 <!-- mochiko:output-style:begin -->
 - Writing style — conversation: `full` · reports: `ultra` *(internal agent hand-offs)* · documents: `full`. Terse and plain-English by default. Set any of the three to `off`, `lite`, `full`, or `ultra` and your choice is kept when this section is regenerated; "normal mode" turns it off for one session.
 <!-- mochiko:output-style:end -->
-- Path-scoped rules inject on **Read**, not Write (observed behavior, kinako dogfood 2026-07-19) — before creating a new file under `.mochiko/specs/`, `plugins/mochiko/`, or the operating docs, read the matching `.claude/rules/mochiko/` file or read back the file you created
+- Path-scoped rules inject on **Read**, not Write (observed behavior, kinako dogfood 2026-07-19) — before creating a new file under `.mochiko/specs/`, `plugins/mochiko/`, `crates/mochiko-cli/`, or the operating docs, read the matching `.claude/rules/mochiko/` file or read back the file you created
 - Operating docs (knowledge-management module): sessions in `.mochiko/brainstorms/` + `index.md`; rulings land in `DECISIONS.md`; open threads in `BACKLOG.md`; direction in `ROADMAP.md`; landing ritual + invariants at `.mochiko/memory/knowledge-management.md`; groom: `mochiko:grooming-operating-docs` <!-- GI-009 -->
 <!-- mochiko:governance:end -->
 
