@@ -68,7 +68,7 @@ Detailed checklists are in [ARTIFACT-CHECKLISTS.md](references/ARTIFACT-CHECKLIS
 | **Analysis artifacts** | requirements, constraints/decisions, NFRs | FR→TR coverage, orphan TRs, testable criteria, sourced constraints, ≥2 alternatives + rationale, NFR measurability, IP coverage |
 | **Architecture** | architecture.md (design-time topology + delta) | component-table↔diagram coverage, qualifying-flow sequence coverage, delta-summary D-XXX links, component status annotations |
 | **Design artifacts** | data-model, API contracts, quickstart | entity coverage, relationships, sensitivity annotations present, endpoint coverage, schemas, error handling, integration-boundary presence |
-| **Cycle cards** | tasks.md | vertical integrity (each card an observable end-to-end behavior, never a horizontal layer), `**TEST:**` gate present and in the grammar (real infrastructure, never a test-suite re-run), story traceability (every P1/P2 story on ≥1 card; Simple/Split/Merge case + rationale recorded), sizing (1–3 sessions or justified), dependency minimality/explicitness (foundation sequenced, `[P]` only where truly independent), brownfield exposure stated (`none` counts), **no task lists or file paths** (pre-written decomposition is a finding — the builder decomposes at build time) |
+| **Cycle cards** | tasks.md | vertical integrity (each card an observable end-to-end behavior, never a horizontal layer), `**TEST:**` gate present and in the grammar (real infrastructure, never a test-suite re-run), **oracle semantics** (each card's Asserts graded semantically against the acceptance scenario / criteria they cite — does the Assert capture the *right* expected behaviour, not merely present and in-grammar), story traceability (every P1/P2 story on ≥1 card; Simple/Split/Merge case + rationale recorded), dependency minimality/explicitness (`[P]` only where truly independent), brownfield exposure stated (`none` counts), **no task lists or file paths** (pre-written decomposition is a finding — the builder decomposes at build time) |
 | **Cross-artifact** | the sets together | alignment, consistency (design honors the decisions *and the approved architecture*; cards' acceptance criteria cite real spec/plan IDs), traceability |
 
 > Brownfield codebase-discovery review is **out of scope** for plan-core completeness — it belongs to
@@ -161,6 +161,7 @@ Before finalizing the review, verify:
 - [ ] Adopt-first disclosure present on every commodity-category decision (blocking)
 - [ ] Disclosed rung claims graded for honesty against `mochiko:patterns-plan-minimalism` (advisory)
 - [ ] All applicable artifact-type checks executed
+- [ ] Cycle-card Asserts graded semantically against their cited acceptance scenarios (oracle semantics), not merely for presence/grammar
 - [ ] Issues properly classified by severity
 - [ ] Evidence cited for each issue
 - [ ] Suggested fixes are actionable
