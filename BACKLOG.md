@@ -6,14 +6,34 @@ surface is [`ROADMAP.md`](ROADMAP.md). Closing an item = the KM landing ritual
 (`.mochiko/memory/knowledge-management.md`): decision row + move here → the trail
 (`.mochiko/archive/backlog-trail.md`) + touch ROADMAP.md. No `[x]` lives here.
 
-*Last groomed: 2026-08-16 (landing groom at the schema-based-template-guidance acceptance) —
-baseline: **70 open items** (net +1: +1 template-schema CLI build item; +14 since the
-2026-08-06 baseline 56 — growth is recent session landings, none suspected stale;
-**delivery sweep still not run — offered to the user** per the count-watch delta; all items
-within the ≤15-line bound). Prior groom narrative: git history (this line, before this
-groom).*
+*Last groomed: 2026-08-16 (landing groom at the vertical-tdd-complexity-and-qa-role
+acceptance) — baseline: **71 open items** (net +1: +1 vertical-TDD test-case-anchor build
+item; +15 since the 2026-08-06 baseline 56 — growth is recent session landings, none
+suspected stale; **delivery sweep still not run — offered to the user** per the count-watch
+delta; all items within the ≤15-line bound). Prior groom narrative: git history (this line,
+before this groom).*
 
 ---
+
+## Vertical-TDD test-case-anchor build
+
+Ruled 2026-08-16 (`vertical-tdd-complexity-and-qa-role` D1–D4 as amended at review; solo cold
+review via blind-map dispatch: needs-revision → 11/11 dispositioned "as recommended"; verify
+round 2 CLEAN). Open items:
+
+- [ ] **Vertical-TDD test-case-anchor build** (2026-08-16; provenance:
+  [record](.mochiko/brainstorms/vertical-tdd-complexity-and-qa-role/record.md) build surface) —
+  `patterns-vertical-tdd` re-key (test-case-bundle anchor, walking-skeleton rule with
+  greenfield/new-path carve, sizing tables + foundation/feature type + worked examples
+  superseded with strips) · `SLICE-IDENTIFICATION.md` largely superseded · card shape re-key
+  (**must reconcile with the in-flight template-schema CLI wave** — shared `tasks` schema
+  surface; never land independently) · qa-engineer design-time seat + `plan.md` seat wiring
+  (QA authors test-case content; design seat keeps slicing per the I7 split) ·
+  `review-plan-artifacts` re-key (sizing/foundation clauses die; oracle-semantics clause
+  added) · `TASK-PARSING.md` touch · primitive-edit ceremony throughout (strips +
+  author≠grader audits). First-live-run watch owed after build (n=0; directional
+  expectation: kinako-s1-shaped work well under 12 cycles; bundle-grain guardrail is the
+  revisit if bundles balloon or re-fragment).
 
 ## Template-schema CLI build
 
