@@ -5,6 +5,44 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.77.0] — 2026-08-16
+
+Model-tiering dispatch floor — the deferred `model-tiered-seats` D4 build, executed and
+retargeted (the July record's ~10 "native Explore" dispatch sites were refactored away at the
+v8 command rebuild; the retarget is command-level floor lines plus a brief-injection
+obligation, ADR `2026-08-16-model-tiering-build`). Rostered personas stay `model: opus` (D5
+untouched); cheap-tier work moves to a scoped disposable seat. Mechanism confirmed empirically
+this session: an opus-pinned persona spawning a subagent with a haiku override ran
+`claude-haiku-4-5-20251001` and returned a correct targeted read. Pure additions — no strips;
+author≠grader audit per the edit ceremony.
+
+- **New agent `mochiko:explorer`** (`agents/explorer.md`, `model: haiku` pinned in
+  frontmatter) — disposable-per-gap cheap-tier fact-finder: locate / enumerate /
+  targeted-read / deterministic checks; terse spot-checkable returns with file:line
+  provenance, method-scoped absence reporting, never interprets, never writes. Registered in
+  `plugin.json` and the router agent table.
+- **New skill `mochiko:patterns-model-tiering`** — single source of the class-keyed dispatch
+  floor: locate/enumerate/targeted-read gaps ride `mochiko:explorer`; interpretive gaps,
+  decision-driving absences, and completeness-sensitive enumerations stay session tier (the
+  D4 class key + F2 guide-line); the dispatch ladder (direct tool call → cheap explorer →
+  session-tier read), disposable-per-gap lifecycle (F5), the weak-negative watch, and the
+  brief obligation — every seat brief carries the routing rule, the only channel that reaches
+  spawned teammates (they never load `skills:` frontmatter). Third sibling of the sound-loop
+  and transport floors.
+- **Six command floor lines** — `plan.md`, `implement.md`, `feature.md` (Ways of Working) and
+  `specify.md`, `setup.md`, `brainstorm.md` (Harness) each gain one model-tiering line
+  referencing the skill, never restating it.
+- **Ten persona standing sections** — every rostered agent body gains a uniform
+  `## Delegating Cheap Reads` section (explorer excluded): spawn a disposable
+  `mochiko:explorer` subagent for locate/enumerate/targeted-read/deterministic-check gaps,
+  one gap per spawn; interpretive, absence-driven, and completeness-sensitive reads stay the
+  seat's own. Persona body is the one channel reaching seats on both transports (teammates
+  drop `skills:` frontmatter but load the persona); names no command or pipeline stage, so
+  decoupling-by-absence holds. Platform basis: teammates and subagents may spawn nested
+  subagents (depth cap 3; teammates foreground-only).
+- **Router updates** — `patterns-model-tiering` skill row + `explorer` agent row in
+  `skills/mochiko/SKILL.md`.
+
 ## [0.76.0] — 2026-08-16
 
 Template-schema CLI build — the accepted `schema-based-template-guidance` record (D1–D11 as

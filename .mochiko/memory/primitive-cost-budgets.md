@@ -110,13 +110,18 @@ derive from the restored values.
 | requirements-analyst | 303 | 379 |
 | product-manager | 438 | 548 |
 | product-engineer | 392 | 490 |
-| qa-engineer | 251 | 314 |
+| qa-engineer | 299 | 374 |
 | staff-engineer | 274 | 343 |
 | tech-lead | 719 | 899 |
 | technical-analyst | 402 | 503 |
 
 Wave 2 agent rows (v0.64.0) use the audited measurements (auditor's reproducible canonical-snippet
 counts, +1 over the shipper's block-scalar parse — the audited number is authoritative).
+
+`qa-engineer` re-seeded 251→299 at the v0.77.0 audit's drift catch: the v0.75.0 vertical-TDD
+build's ruled description rewrite (design-time test-case authoring added) shipped without its
+ledger re-measure; 299 is the canonical-snippet count at both the v0.75.0 and v0.77.0 trees,
+budget re-derived (+25% → 374). Bookkeeping correction, not a fresh cut.
 
 v0.67.0 rotation (architect-role restructure, audit-measured per the Wave-2 seeding precedent):
 `system-architect` row retired with the persona (was 482/603 — strip: `.mochiko/strips/system-architect.md`);
@@ -156,6 +161,13 @@ two-part obligation with its two-sided limb and external-claim binding, D3's con
 route-back, D4's retrofit-cost gate — so it sits above its floor siblings and inside the build
 cap); the build cap is a plan-time bound, not a budget: a body budget may seed from a future
 ruled cut or benchmark, never invented.
+
+`patterns-model-tiering` (new skill, v0.77.0) likewise unbudgeted — hard-cap-only (desc
+≤1,536); measured at birth at body 4,160 / desc 643 (the description carries the class key's
+both tiers plus the D5 boundary — above the ~500 norm, disclosed for the audit's ruling); a
+body budget may seed from a future ruled cut or benchmark, never invented. The `explorer`
+agent (new, v0.77.0) description measured at birth at 425; no budget until a ruled cut or
+benchmark seeds one.
 
 ## Unbudgeted primitives
 

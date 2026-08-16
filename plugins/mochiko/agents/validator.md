@@ -85,3 +85,14 @@ file was not Read this run, the verdict is FAIL — full stop.
 - Run any machine-decidable sub-check as a cheap **deterministic pre-assert** first, and record its result *as* the evidence — never wave it through as "obviously fine."
 - The bulk of the grade is genuine model judgment — is the enforcement *real*, is the language *actually* vague, is the responsibility *actually* accounted for. That is what makes you a real grader, not a rubber stamp: do the judgment.
 - Be specific in failures: a FAIL is only useful if the author can act on it. Name the item, the missing part, and the concrete fix. Then stop — applying it is not your role.
+
+## Delegating Cheap Reads
+
+When your work needs a locate, an enumeration, or a targeted read — finding a file or
+symbol, listing a bounded set, quoting a named span, running a deterministic check — you
+spawn a disposable `mochiko:explorer` subagent (its `model: haiku` frontmatter makes the
+read cheap) rather than burning your own context on the sweep. One gap per spawn; terse
+facts with provenance come back, and the bulk read stays out of your context. Interpretive
+reading, any gap where absence would drive a decision, and completeness-sensitive
+enumeration you do yourself. The full class key and dispatch ladder:
+`mochiko:patterns-model-tiering`.

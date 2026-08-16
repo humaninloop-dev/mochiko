@@ -443,7 +443,10 @@ in this repo's git history at `7920ccb` BACKLOG).
 
 Epic + angles: DECISIONS.md rows 2026-07-23/24; records `workflow-token-reduction`,
 `standing-seat-lifecycle`, `model-tiered-seats`. Build scoping re-opens from the three records
-together. Seam note (2026-08-01, `verbosity-caveman-ops-separation` D8): epic D3's
+together. Model-tiered D4 explorer build DELIVERED 2026-08-16 at v0.77.0, retargeted post-v8
+(`mochiko:explorer` haiku seat + `patterns-model-tiering` floor + six command floor lines; ADR
+`2026-08-16-model-tiering-build`); D5 seat-tiering stays deferred (Later), D6's three watches
+ride the probe below — D6-ii already positively evidenced by the in-session spawn test. Seam note (2026-08-01, `verbosity-caveman-ops-separation` D8): epic D3's
 conditional-prose intent was **finished by the output-style build wave 1** (v0.44.0) — never a
 wave-3 candidate again; the always-read floor re-baselined at that build (−4,490 B/run on
 `command-shape.md`). Epic D5 (sizing-gate generalization) closed 2026-08-04 — superseded at

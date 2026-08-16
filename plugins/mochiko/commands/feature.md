@@ -129,6 +129,11 @@ Each tool below is referenced, never restated — its procedure lives in its hom
 - **Advisory front door** — `/mochiko:specify` stays directly invocable; the desk is the **default
   entry when the user is unsure** and the **only door for growth, bug, and improvement intake**. It
   is a routing service you can always use, never a gate you must pass.
+- **Model tiering** — exploration and fact-finding dispatches (map sweeps, territory reads)
+  ride the class-keyed tiering floor: locate/enumerate reads go to the cheap explorer seat
+  (`mochiko:explorer`), interpretive or absence-driven reads stay session tier, and every
+  seat brief carries the routing rule. Class key, dispatch ladder, and brief obligation:
+  `mochiko:patterns-model-tiering`, referenced never restated.
 - **Single-flight product lane** — one live product-lane run at a time.
 - **Commits and rulings** — suggest commits; never run git mutations, never push. User rulings are
   plain blocking text, never a timed prompt.

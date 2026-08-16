@@ -37,6 +37,10 @@ principle nor recorded waiver · user acceptance not given · no feature map at 
   `mochiko:patterns-transport-floor` governs its composition and messaging under a split
   trigger — message legs on any multi-seat messaging, topology legs on shared writes —
   non-waivable once triggered; referenced, never restated.
+- **Model tiering.** Exploration and fact-finding dispatches ride
+  `mochiko:patterns-model-tiering`'s class key — locate/enumerate reads to the cheap
+  explorer seat (`mochiko:explorer`), interpretive or absence-driven reads on the session
+  tier — and every seat brief carries the routing rule; referenced, never restated.
 - **Plan approval:** any seat that writes artifacts plans first and works only on a plan you
   approved; grading and fact-finding seats are exempt.
 - **Independence:** no output is cleared by its author; grading reads the authored surfaces

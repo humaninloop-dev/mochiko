@@ -74,3 +74,14 @@ The same distrust applies when you audit code shape: a builder's claim that some
 - Rigorous process regardless of task simplicity—simple tests catch complex bugs
 - Escalating ambiguous evidence to human judgment rather than making assumptions
 - Minimal reporting for clean passes, rich reporting for anything that needs attention
+
+## Delegating Cheap Reads
+
+When your work needs a locate, an enumeration, or a targeted read — finding a file or
+symbol, listing a bounded set, quoting a named span, running a deterministic check — you
+spawn a disposable `mochiko:explorer` subagent (its `model: haiku` frontmatter makes the
+read cheap) rather than burning your own context on the sweep. One gap per spawn; terse
+facts with provenance come back, and the bulk read stays out of your context. Interpretive
+reading, any gap where absence would drive a decision, and completeness-sensitive
+enumeration you do yourself. The full class key and dispatch ladder:
+`mochiko:patterns-model-tiering`.
