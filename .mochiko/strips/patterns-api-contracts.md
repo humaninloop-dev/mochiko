@@ -6,6 +6,39 @@ Entry formats: `strips/README.md`. Wave context: [v0.27.0] entries — skill-suc
 `.mochiko/brainstorms/workflow-token-reduction/record.md` + the wave-2 rulings R1–R4/T3;
 ratified 2026-07-24).
 
+## [v0.77.0] `The Quickstart` guidance sourced into a schema with an AUTHORED skeleton (D3 later-ratchet; I1)
+- **Disposition:** superseded → `plugins/mochiko/schemas/quickstart.yaml` + `mochiko-cli`
+- **Tier failed:** n/a — supersession by ruling (schema-based-template-guidance **D3 later-ratchet** + user ruling 2026-08-16 (recorded at the v0.76.0 landing); record `.mochiko/brainstorms/schema-based-template-guidance/record.md` D3; `DECISIONS.md` "Template-schema ratchet" row (landed at v0.77.0))
+- **Content (superseded, verbatim — the `## The Quickstart` guidance, SKILL.md before the phase-2 body edit):**
+
+````markdown
+## The Quickstart (`quickstart.md`) — conditional, capped
+
+`quickstart.md` is the human-facing integration guide over the finished contract — and it
+is **conditional**: author it **only when the feature has a real integration surface**
+(external consumers of the API, an external system wrapped via `x-integration`, or a
+non-trivial auth sequence a caller must follow). A feature whose endpoints only serve its
+own UI over standard auth does not need one — record the null path as one line in
+`plan.md`'s artifact table ("not applicable — no external integration surface"), never a
+stub file.
+
+When authored, it is **capped and dense** (deliverable envelope,
+`templates/artifact-format.md`): target ≤ 150 lines —
+
+- **Common flows** — one runnable example per primary flow (request + expected response,
+  trimmed to the fields that matter); cite endpoint + schema by name, never re-document
+  what `api.yaml` already defines.
+- **Auth sequence** — the steps a caller actually performs, compact.
+- **Error handling** — the pattern and the top recoverable cases as a table; cite
+  ERROR-PATTERNS conventions, don't restate them.
+- **External-system overview** — one line per `x-integration` system: name, criticality,
+  what the caller observes when it degrades.
+````
+- **Authored, not lifted (DISCLOSED — I1, under D4/D7):** the source is **prose guidance with no fenced template**, so `quickstart.yaml`'s `skeleton` and its per-section field shape (`Common Flows` / `Auth Sequence` / `Error Handling` / `External-System Overview`, with example fragments) are **NET-NEW authored** under D4/D7 authority — graded by the fidelity validator, not lifted. What IS lifted from the guidance into `overview` / `contract`: the conditional-authoring rule (real integration surface only; null path recorded in `plan.md`, never a stub file), the ≤ 150-line cap, the four content areas, and cite-by-name-never-re-document-`api.yaml`.
+- **Kept deliberately:** every rule of the guidance survives (conditional trigger · cap · four content areas · cite-don't-restate). `contracts-api` is **NOT** converted this wave (I1 — its true source `references/OPENAPI-TEMPLATE.yaml` is already raw-readable YAML, does not fit the schema struct); no pointer touches to it. Net-new per-section `check` lines authored under D7. Nothing from the guidance dropped.
+- **Phase note:** schema authored at PHASE 1; the atomic SKILL-body edit (add the two-arm pointer at `## The Quickstart`) is the PHASE 2 edit (same P2 seat), gated on V1 fidelity PASS. `contracts-api`: no touch.
+- **Consumers assessed:** `patterns-api-contracts/SKILL.md` (owns quickstart — body edit phase 2) · `review-plan-artifacts/references/ARTIFACT-CHECKLISTS.md` Quickstart checklist (additive structure-presence re-key phase 2) · `x-integration` / `api.yaml` references unchanged (contracts-api excluded, I1).
+
 ## [v0.64.0] Guardrails cut — When-to-Use + Quick-Reference example removed, tables/contract kept; slim description
 
 - **Disposition:** superseded → Wave 2 editorial guardrails cut (D4 cut line — When-to-Use bullets restate the description; the pagination Quick-Reference is a worked example whose rule lives in the reference).

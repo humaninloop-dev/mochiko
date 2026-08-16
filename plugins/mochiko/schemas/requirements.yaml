@@ -1,0 +1,99 @@
+# Schema data file for the `requirements` pipeline artifact template.
+# Source of truth for `mochiko-cli template requirements` (producer view) and `--check` (checklist view).
+# Read this file raw when the binary is absent (D8 degraded path is first-class).
+template: requirements
+title: Technical Requirements
+form: artifact-format.md
+register: full   # per artifact-format.md rule 11 — every ID, numeric target, and constraint clause is a never-compress item
+overview: |
+  Technical decomposition of business functional requirements into technology-agnostic technical
+  requirements (TR-XXX). Follows the deliverable envelope (artifact-format.md): the statement
+  carries the content (no separate Description paragraph), entries are one line each, upstream text
+  is cited by ID and never re-quoted, and the Traceability Summary is the artifact's ID index — the
+  coverage surface reviewers verify against.
+  ID numbering (all analysis artifacts): three-digit padded (TR-001, not TR-1); sequential, no gaps;
+  the prefix identifies the type (TR- / C- / D- / NFR- / IP-); cross-references use the full ID
+  ("See TR-001", not "See requirement 1"); group related items sequentially where possible.
+
+sections:
+  - name: Traceability Summary
+    required: true
+    density: "one row per source FR"
+    contract: |
+      The ID index: one row per source functional requirement, mapping it to the technical
+      requirements that cover it, with a coverage marker. Every business FR appears here.
+      Columns: Source FR | Technical Requirements | Coverage (Full / Partial).
+    good: |
+      | Source FR | Technical Requirements | Coverage |
+      |-----------|----------------------|----------|
+      | FR-001 | TR-001, TR-002, TR-003 | Full |
+      | FR-002 | TR-004, TR-005 | Full |
+    check: "Is the Traceability Summary present as the ID index, mapping every source FR-XXX to its covering TR-XXX list with a coverage marker?"
+
+  - name: Technical Requirements
+    required: true
+    density: "statement one-to-two lines; criteria one line each"
+    contract: |
+      One record per technical requirement. Each TR addresses a distinct technical concern the
+      business FR implies but does not state. Record shape: a title heading; a statement line
+      carrying the FR source and the RFC 2119 priority (MUST / SHOULD / MAY), stated
+      technology-agnostically (WHAT, not HOW — the statement is the description, no separate
+      Description paragraph); a Criteria bullet list, each item independently testable (pass/fail)
+      covering success, failure, and edge cases; and an optional Deps line citing C-XXX / NFR-XXX /
+      TR-XXX by ID.
+
+      Field definitions:
+
+      | Field | Required | Format | Rules |
+      |-------|----------|--------|-------|
+      | ID | Yes | TR-XXX | Sequential, three-digit padded, no gaps |
+      | Title | Yes | Free text | Descriptive, concise |
+      | Source | Yes | FR-XXX reference(s) | On the statement line; must reference existing FR(s) |
+      | Priority | Yes | MUST / SHOULD / MAY | RFC 2119 keyword, on the statement line |
+      | Statement | Yes | One-to-two lines | Technology-agnostic; WHAT, not HOW — no separate Description paragraph |
+      | Criteria | Yes | Bullet list, one line each | Each item independently testable |
+      | Deps | No | ID references | C-XXX, NFR-XXX, other TR-XXX — cited by ID, never re-quoted |
+
+      Decomposition: one business FR yields several TRs, each a distinct technical concern. E.g.
+      FR-001 "Users must be able to sign in" decomposes into TR-001 Authentication Flow (credential
+      validation, error handling), TR-002 Session Management (token issuance, expiration, refresh),
+      TR-003 Account Lockout (brute-force protection, lockout thresholds), TR-004 Authentication
+      Audit (login attempt logging, anomaly flags).
+    good: |
+      ## TR-001: Authentication Flow
+
+      **FR-001 · MUST** — System MUST validate credentials and establish an authenticated session.
+
+      **Criteria:**
+      - Valid credentials result in an authenticated session
+      - Invalid credentials return a generic error (no credential-type leakage)
+      - Expired accounts cannot authenticate
+      - Authentication completes within the NFR-001 latency target
+      - All attempts logged per TR-004
+    check: "Does each TR-XXX carry a technology-agnostic statement line citing its FR source and an RFC 2119 keyword, independently-testable one-line Criteria covering success/failure/edge, and Deps by ID where present — with no separate Description paragraph?"
+
+skeleton: |
+  # Technical Requirements: {feature_id}
+
+  > Technical decomposition of business functional requirements.
+
+  ## Traceability Summary  *(the ID index)*
+
+  | Source FR | Technical Requirements | Coverage |
+  |-----------|----------------------|----------|
+  | FR-001 | TR-001, TR-002, TR-003 | Full |
+  | FR-002 | TR-004, TR-005 | Full |
+
+  ---
+
+  ## TR-001: [Descriptive Title]
+
+  **FR-001 · MUST** — System MUST [technical capability in technology-agnostic terms; the statement is the description].
+
+  **Criteria:**
+  - [Testable condition, one line]
+  - [Testable condition, one line]
+
+  **Deps:** C-001 · NFR-002  *(omit if none)*
+
+  ---

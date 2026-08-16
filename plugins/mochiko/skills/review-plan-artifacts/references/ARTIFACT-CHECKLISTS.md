@@ -51,6 +51,12 @@ Grade these when reviewing the analysis output set (e.g. `requirements.md`,
 | Priority assignment | Are TR priorities consistent with source FR priorities? | Important |
 | RFC 2119 language | Do requirements use MUST/SHOULD/MAY consistently? | Minor |
 
+> **Structure-presence** for `requirements.md` is single-sourced in the `requirements` schema's
+> `--check` view (`mochiko-cli template requirements --check`, or Read
+> `plugins/mochiko/schemas/requirements.yaml` raw when the binary is absent) — one line per section.
+> The coverage / traceability / consistency criteria in the table above are this reviewer's own and
+> are graded here.
+
 ### Checklist — Constraints and Decisions (`constraints-and-decisions.md`)
 
 | Check | Question | Severity |
@@ -69,6 +75,12 @@ Grade these when reviewing the analysis output set (e.g. `requirements.md`,
 > `mochiko:review-feasibility`. This checklist grades only that the constraints/decisions are
 > sourced, justified, and complete.
 
+> **Structure-presence** for `constraints-and-decisions.md` is single-sourced in the
+> `constraints-and-decisions` schema's `--check` view (`mochiko-cli template constraints-and-decisions
+> --check`, or Read `plugins/mochiko/schemas/constraints-and-decisions.yaml` raw when the binary is
+> absent) — one line per section. The sourcing / alternative-analysis / rationale / coverage criteria
+> in the table above are this reviewer's own and are graded here.
+
 ### Checklist — NFRs (`nfrs.md`)
 
 | Check | Question | Severity |
@@ -82,6 +94,11 @@ Grade these when reviewing the analysis output set (e.g. `requirements.md`,
 > constraints or with each other, are feasibility concerns → `mochiko:review-feasibility`.
 > This checklist grades only that targets are present, measurable, and have a defined measurement
 > method.
+
+> **Structure-presence** for `nfrs.md` is single-sourced in the `nfrs` schema's `--check` view
+> (`mochiko-cli template nfrs --check`, or Read `plugins/mochiko/schemas/nfrs.yaml` raw when the
+> binary is absent) — one line per section. The measurability / measurement-method / source-tracing /
+> category criteria in the table above are this reviewer's own and are graded here.
 
 ### Key Questions — Analysis
 
@@ -156,6 +173,12 @@ Grade these when reviewing the design output set (e.g. `data-model.md`, `contrac
 | Standard fields | Do all entities have id, createdAt, updatedAt? | Important |
 | Traceability | Can we trace entities to requirements? | Important |
 
+> **Structure-presence** for `data-model.md` is single-sourced in the `data-model` schema's
+> `--check` view (`mochiko-cli template data-model --check`, or Read
+> `plugins/mochiko/schemas/data-model.yaml` raw when the binary is absent) — one line per section.
+> The entity / attribute / relationship / sensitivity / compliance criteria in the table above are
+> this reviewer's own and are graded here.
+
 ### Checklist — API Contracts (`contracts/api.yaml`)
 
 | Check | Question | Severity |
@@ -187,6 +210,12 @@ external-integration surface — see `patterns-api-contracts`). First check the 
 | Auth documentation | Is the authentication sequence clear? | Important |
 | Error documentation | Are error handling patterns explained (conventions cited, top cases tabulated)? | Important |
 | External integrations | Is the external system boundary overview present (one line per `x-integration` system)? | Important |
+
+> **Structure-presence** for `quickstart.md` is single-sourced in the `quickstart` schema's
+> `--check` view (`mochiko-cli template quickstart --check`, or Read
+> `plugins/mochiko/schemas/quickstart.yaml` raw when the binary is absent) — one line per section.
+> The conditionality / flow / auth / error / external-integration criteria in the table above are
+> this reviewer's own and are graded here.
 
 ### Key Questions — Design
 

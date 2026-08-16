@@ -1,0 +1,172 @@
+# Schema data file for the verification report FILE artifact template.
+# Covers the two file-persisted verification reports — the per-cycle `report: verification` and the
+# whole-implementation `report: final-validation`. The in-memory checkpoint presentation
+# (AskUserQuestion blocks) is NOT part of this schema — it stays prose in the testing-end-user skill.
+# Source of truth for `mochiko-cli template verification-report` (producer view) and `--check` (checklist view).
+# Read this file raw when the binary is absent (D8 degraded path is first-class).
+template: verification-report
+title: Verification Report
+form: report-format.md
+register: ultra   # reports write ultra (report-format.md rule 8); the `## Failures` section writes full (below)
+overview: |
+  The verification report file — persisted per verification run (per-cycle and final-validation in the
+  implement workflow, at the path the caller names). Machine-first: the frontmatter is the report,
+  prose only on failure. Reports are adaptive — minimal for success, rich for failures: a passing
+  verification is frontmatter-only, and debug value concentrates in failures, which keep full detail.
+  Follows the report envelope (report-format.md): this schema carries only the verification payloads.
+  Conditional prose sanctioned set: `## Failures` (the failure narrative) + `## Notes of note` + a
+  null-exit block where a workflow defines one — nothing else; a `## Findings`, `## Judgment-call
+  grades`, or `## Checkpoint recommendation` section is OUTSIDE the set (a blocking finding is a
+  `## Failures` row, and the recommendation is the `recommendation:` field). Prose on a clean report
+  (`status: pass` with a body section outside that set) is a defect — read mechanically (status +
+  section headings, never prose quality) — that fails the clearing conditions and returns to the lead.
+  Storage: the report file is persisted at the caller-named path (in implement: per-cycle and
+  final-validation reports in the feature/slice directory) — it is what the lead Reads for the verdict
+  and what a resumed run finds as workspace evidence; captured evidence (full console output,
+  screenshots, logs) lives OUTSIDE the report (`/tmp/claude/…` or the caller's scratch), referenced by
+  path from the `evidence:` fields and truncation pointers. The in-memory checkpoint presentation is a
+  separate surface, out of scope for this schema.
+
+sections:
+  - name: Identity
+    required: true
+    contract: |
+      `report:` is `verification` for a per-cycle run or `final-validation` for the whole-implementation
+      run. `cycle:` / `attempt:` are per-cycle ONLY (omitted on final-validation); `attempt:` pairs with
+      the cycle-report attempt this run verifies. `feature`/`slice` follow report-format.md (`slice:`
+      only when slice-scoped).
+    check: "Does the report carry `report:` (verification | final-validation), and — on a per-cycle run — `cycle:` and `attempt:` (both omitted on final-validation)?"
+
+  - name: Verification results
+    required: true
+    contract: |
+      `status:` is the aggregate result: `pass` ONLY when every assert passed and every gate is green;
+      `partial` for mixed; `timeout`/`error` per the result classification. `test_tasks:` is one row per
+      `**TEST:**` gate executed (id = the owning cycle's gate): `id`, `classification` (CLI / GUI /
+      SUBJECTIVE — drives auto-approve vs human checkpoint), `status`, `asserts` (passed/total),
+      `duration`, and `evidence` (path) where captured.
+    check: "Is `status:` the aggregate result (pass only when every assert passed and every gate green) and `test_tasks:` one row per `**TEST:**` gate with id / classification / status / asserts / duration (evidence path where captured)?"
+    good: |
+      Passing per-cycle report (complete file):
+
+      ```markdown
+      ---
+      report: verification
+      feature: user-auth
+      cycle: 3
+      attempt: 1
+      status: pass
+      test_tasks:
+        - {id: C3-gate, classification: CLI, status: pass, asserts: "4/4", duration: 3.2s}
+      quality_gates:
+        lint:  {status: pass, command: "pnpm lint"}
+        build: {status: pass, command: "pnpm build"}
+        tests: {status: pass, command: "pnpm test", passed: 47, failed: 0, skipped: 2}
+      recommendation: approve
+      ---
+      ```
+
+  - name: Quality gates
+    required: true
+    contract: |
+      `quality_gates:` is one entry per gate run — `status` from the exit code (`0` = pass —
+      deterministic, never a judgment), `command`, and pass/fail/skip counts for test suites (e.g.
+      `{status: pass, command: "pnpm test", passed: 47, failed: 0, skipped: 2}`).
+    check: "Does `quality_gates:` carry one entry per gate with `status` from the exit code (0 = pass), the `command`, and pass/fail/skip counts for test suites?"
+
+  - name: Minimalism & recommendation
+    required: true
+    contract: |
+      `minimalism:` is per-cycle ONLY — the code-minimalism lens findings
+      (mochiko:review-code-minimalism): `{task, claimed, observed, evidence}` per finding, evidence one
+      line (grep hit / stdlib call / manifest entry). ADVISORY — findings ride to the lead's checkpoint
+      verdict and never fail a cycle the way a `**TEST:**` gate does; a builder-vs-reviewer rung dispute
+      escalates to the user only at the checkpoint. `[]` when clean. `recommendation:` is the verifier's
+      recommendation to the gate (`approve` | `reject` | `retry` | `needs-human`) — input to the lead's
+      verdict, never the verdict.
+    check: "Is `minimalism:` (`[]` or advisory `{task, claimed, observed, evidence}` findings, per-cycle only) and a `recommendation:` (approve/reject/retry/needs-human — an input, not the verdict) present?"
+
+  - name: Failures
+    required: false
+    contract: |
+      Mandatory when `status` is NOT `pass`. Per failed/partial/timed-out/errored task, full detail
+      under one `## Failures` section: an assert table (# / Assert / Expected / Actual / Status), a
+      bounded output excerpt, the actions run, an analysis (one short paragraph), plus `Phase` (ERROR
+      only: setup | action | assert) and `Limit` (TIMEOUT only: elapsed of limit). Failed quality gates
+      likewise — the gate's failing output excerpt under `## Failures`. This IS the failure narrative;
+      register `full` (the lead scopes its retry from it). Evidence is bounded, full evidence surviving
+      in a pointed-to log: output excerpts over 50 lines show first 25 / last 25 with `[{N} lines
+      truncated]` and the full-log path; assert tables over 10 asserts show the failing rows plus the
+      first passing rows to 10 total, with a count note.
+    check: "When `status` is not `pass`, is `## Failures` present with a per-task assert table, a bounded output excerpt (truncation pointer where over 50 lines), the actions run, and an analysis — and no out-of-set section (Findings / Judgment-call grades / Checkpoint recommendation)?"
+    good: |
+      Failing per-cycle report:
+
+      ```markdown
+      ---
+      report: verification
+      feature: user-auth
+      cycle: 4
+      attempt: 2
+      status: fail
+      test_tasks:
+        - {id: C4-gate, classification: CLI, status: fail, asserts: "1/2", duration: 5.1s}
+      quality_gates:
+        lint:  {status: pass, command: "pnpm lint"}
+        build: {status: pass, command: "pnpm build"}
+        tests: {status: fail, command: "pnpm test", passed: 46, failed: 1, skipped: 2}
+      recommendation: reject
+      ---
+
+      ## Failures
+
+      ### C4 gate — FAIL
+
+      | # | Assert | Expected | Actual | Status |
+      |---|--------|----------|--------|--------|
+      | 1 | Console contains "FileWatchEvent: created" | Match | No match | FAIL |
+      | 2 | File exists: /tmp/watcher-test/test.jsonl | Exists | Exists | PASS |
+
+      **Output:**
+      ```
+      Starting file watcher...
+      Watching directory: /tmp/watcher-test
+      Error: Permission denied for inotify
+      ```
+
+      **Actions run:** `dart run bin/watcher.dart /tmp/watcher-test` (bg) · `touch /tmp/watcher-test/test.jsonl` (0.1s, exit 0)
+      **Analysis:** The watcher failed to start (inotify permissions); the touch succeeded but no
+      event was detected. Same failure as the gate's `watcher_test.dart` red.
+      ```
+
+  - name: Notes of note
+    required: false
+    contract: |
+      The sole prose a passing report may carry: a NON-BLOCKING finding on an otherwise clean run —
+      `## Notes of note`, one ID-cited line. The no-prose rule still bans evidence tables and narration
+      here. Register `ultra`. Omitted when there is nothing non-blocking to note.
+    check: "Is a non-blocking finding on a clean run carried as a single ID-cited `## Notes of note` line (and omitted when none, with no evidence tables or narration)?"
+
+skeleton: |
+  ---
+  report: verification        # or final-validation for the whole-implementation run
+  feature: user-auth
+  cycle: 3                    # omitted on final-validation
+  attempt: 1                  # pairs with the cycle-report attempt this run verifies
+  status: pass | fail | partial | timeout | error
+  test_tasks:                 # one row per **TEST:** gate executed (id = the owning cycle's gate)
+    - {id: C3-gate, classification: CLI, status: pass, asserts: "4/4", duration: 3.2s}
+    - {id: C3-gate-2, classification: GUI, status: pass, asserts: "2/2", duration: 8.1s,
+       evidence: "/tmp/claude/verify-C3-gate-2-shot.png"}
+  quality_gates:
+    lint:  {status: pass, command: "pnpm lint"}
+    build: {status: pass, command: "pnpm build"}
+    tests: {status: pass, command: "pnpm test", passed: 47, failed: 0, skipped: 2}
+  minimalism: []              # Code-minimalism lens findings (per-cycle only; [] if none)
+    # - {task: T3.2, claimed: 7, observed: 2, evidence: "duplicates src/lib/session.ts:helper"}
+  recommendation: approve | reject | retry | needs-human
+  ---
+
+  ## Failures   <!-- mandatory when status is not pass: per-task assert table, bounded output, actions, analysis -->
+
+  ## Notes of note   <!-- only a single ID-cited line, for a non-blocking finding on an otherwise clean run -->

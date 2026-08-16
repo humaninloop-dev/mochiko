@@ -5,6 +5,55 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.77.0] — 2026-08-16
+
+Template-schema **D3 later-ratchet** (user-ruled 2026-08-16 against the DM's leaner-first
+recommendation, the first-live-run watch still n=0 — honesty flag on record): 15 more
+templates convert to schema delivery, TEMPLATE_NAMES 8 → 23.
+
+### Added
+- 15 schema data files at `plugins/mochiko/schemas/`: `advocate-report`, `analyst-report`,
+  `architect-report`, `feasibility-report`, `techanalyst-report`, `cycle-report`,
+  `verification-report`, `requirements`, `constraints-and-decisions`, `nfrs`, `data-model`,
+  `quickstart` (skeleton net-new authored under D4/D7, disclosed), `evolution-notes`,
+  `layer-rules`, `release-gates` (modules verbatim, fragment-line-driven sections).
+- CLI: `TEMPLATE_NAMES` 8 → 23, one embedded arm per schema, one new test assertion (the
+  `bad:` render path via `nfrs`). Additive only; resolution mechanics unchanged.
+- `ARTIFACT-CHECKLISTS.md`: additive `--check` structure-presence citations on the five
+  schema-backed checklists (29 insertions, 0 deletions — every rich grading criterion kept).
+- The release-gates cross-module fragment line relocated verbatim to
+  `validation-constitution/references/QUALITY-CHECKLIST.md` (static home before the module
+  file's deletion).
+- Checkpoint Presentation relocated verbatim from `REPORT-TEMPLATES.md` into
+  `testing-end-user/SKILL.md` (no loss at deletion).
+
+### Changed
+- 11 primitives re-pointed to the two-arm invoke-else-raw-Read form; router rows re-typed
+  `(schema)`; module pointers mixed-source (3 schemas + `knowledge-management.md` raw).
+- `report-format.md` Consumed-by line re-pointed to the report schemas.
+
+### Removed (superseded by schemas; strips byte-exact, GI-006)
+- `plugins/mochiko/templates/advocate-report-template.md`, `analyst-report-template.md`,
+  `architect-report-template.md`, `feasibility-report-template.md`,
+  `techanalyst-report-template.md`
+- `plugins/mochiko/templates/constitution-modules/evolution-notes.md`, `layer-rules.md`,
+  `release-gates.md` (`knowledge-management.md` stays — settled excluded)
+- `plugins/mochiko/skills/executing-tdd-cycle/references/CYCLE-REPORT-FORMAT.md`,
+  `plugins/mochiko/skills/testing-end-user/references/REPORT-TEMPLATES.md`,
+  `plugins/mochiko/skills/authoring-technical-requirements/references/ARTIFACT-TEMPLATES.md`
+- Skill-body template sections: `patterns-entity-modeling` data-model Structure,
+  `patterns-api-contracts` quickstart fill-in role (WHEN doctrine retained in both).
+
+Settled exclusions (conversion-unfit, user-accepted): `knowledge-management.md` (pinned
+doctrine) · `contracts-api` (`OPENAPI-TEMPLATE.yaml` already raw YAML) · `DECISION-RECORD.md`
+· `ISSUE-TEMPLATES.md` · `EVALUATION-MATRIX.md` · format/register guidance.
+
+Audits: V1 fidelity 12 schemas (11 PASS round 1, `constraints-and-decisions` FAIL → fix →
+delta PASS) · V2 modules 3/3 PASS verbatim-proven · V3 re-points 11/11 PASS, budgets all
+within · V4 CLI diff PASS additive-only · phase-2 delta re-audit 4/4 CONFIRMED. One fix
+round (two dropped constraint-vs-preference rows restored). One DM ownership overlap
+(B2 body pointers double-assigned) caught by V3 before collision, superseded cleanly.
+
 ## [0.76.0] — 2026-08-16
 
 Template-schema CLI build — the accepted `schema-based-template-guidance` record (D1–D11 as

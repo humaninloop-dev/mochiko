@@ -57,13 +57,19 @@ the selected modules.
 
 ## Structure Quality — selected modules
 
-For **each template module the synthesis selects**, run the validator checklist fragment embedded
-at the bottom of that module's file in `templates/constitution-modules/`:
+For **each template module the synthesis selects**, run the validator checklist fragment — for
+`evolution-notes` / `layer-rules` / `release-gates`, from `mochiko-cli template <module> --check`
+(or Read `plugins/mochiko/schemas/<module>.yaml` raw when the binary is absent); for
+`knowledge-management`, embedded at the bottom of `templates/constitution-modules/knowledge-management.md`:
 
 - [ ] `layer-rules` fragment (if selected)
 - [ ] `release-gates` fragment (if selected)
 - [ ] `evolution-notes` fragment (if selected — always selected in brownfield mode)
 - [ ] `knowledge-management` fragment (if selected — adopted whole; never check it against a synthesis that records a decline)
+
+**Cross-module check** (no single-module producer home — its truth depends on the *other* attached compliance modules, not on any one module's content; relocated verbatim from the `release-gates` module fragment 4 at the v0.77.0 template-schema ratchet, since it is not encoded in `release-gates.yaml` and the source `release-gates.md` retires):
+
+- [ ] Gates consistent with the attached compliance modules (an attached module names its audit-evidence gate)
 
 ## Rules-File Scope & Delivery (when any rules file exists)
 

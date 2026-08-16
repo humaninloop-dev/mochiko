@@ -1,0 +1,250 @@
+# Schema data file for the `constraints-and-decisions` pipeline artifact template.
+# Source of truth for `mochiko-cli template constraints-and-decisions` (producer view) and `--check`.
+# Read this file raw when the binary is absent (D8 degraded path is first-class).
+template: constraints-and-decisions
+title: Constraints and Decisions
+form: artifact-format.md
+register: full   # per artifact-format.md rule 11 — every ID and constraint clause is a never-compress item
+overview: |
+  The hard boundaries and technology choices that shape the implementation: C-XXX hard constraints,
+  D-XXX technology and structural decisions (one shared D-XXX sequence across both origins), and
+  IP-XXX infrastructure requirements. Follows the deliverable envelope (artifact-format.md): the
+  statement carries the content (no separate Description paragraph), entries are one line each,
+  upstream text cited by ID and never re-quoted, and each Part's summary table is its ID index.
+  Decision TECHNIQUE is owned by mochiko:patterns-technical-decisions (how to evaluate alternatives,
+  score trade-offs, set ADR depth); this schema is the artifact slot the result lands in — fill the
+  fields with the result, do not restate the evaluation method.
+  ID numbering (all analysis artifacts): three-digit padded, sequential no gaps; the prefix
+  identifies the type (C- / D- / IP-); cross-references use the full ID.
+
+sections:
+  - name: "Part 1: Hard Constraints"
+    required: true
+    contract: |
+      Real, non-negotiable boundaries stated as fact (not preference). A Constraint Summary ID
+      index (ID | Type | Source | Severity) then one C-XXX record each: a statement line carrying
+      Type · Severity · source, then Impact (what it eliminates or forces, references to affected
+      TR-XXX and shaped D-XXX) and an optional Verify line.
+
+      Field definitions — Constraints:
+
+      | Field | Required | Format | Rules |
+      |-------|----------|--------|-------|
+      | ID | Yes | C-XXX | Sequential, three-digit padded, no gaps |
+      | Title | Yes | Free text | Descriptive, concise |
+      | Type | Yes | infrastructure / compatibility / regulatory / migration / organizational | On the statement line; exactly one type |
+      | Source | Yes | Free text | On the statement line; traceable origin — system, regulation, contract, team |
+      | Severity | Yes | blocking / significant / minor | On the statement line |
+      | Statement | Yes | One-to-two lines | States the boundary as fact — no separate Description paragraph |
+      | Impact | Yes | One line, `·`-separated (or a short bullet list) | What this eliminates or forces; references to affected TR-XXX and shaped D-XXX |
+      | Verify | No | One line | How to confirm the constraint still applies |
+
+      Constraint types:
+
+      | Type | Definition | Examples |
+      |------|------------|---------|
+      | infrastructure | Existing systems, platforms, or environments that cannot change | "Production database is PostgreSQL 15 on AWS RDS" |
+      | compatibility | Existing consumers, APIs, or interfaces that must continue working | "Mobile app v2.x expects REST API v1 responses" |
+      | regulatory | Laws, regulations, or compliance mandates | "GDPR requires right-to-erasure within 30 days" |
+      | migration | Deployment, transition, or coexistence requirements | "Zero-downtime migration required; both schemas must coexist" |
+      | organizational | Team, process, or business constraints | "Maximum 3-person team for initial implementation" |
+
+      Distinguishing constraints from preferences:
+
+      | Statement | Constraint? | Why |
+      |-----------|-------------|-----|
+      | "Must use PostgreSQL" | Maybe | Only if existing production infrastructure mandates it |
+      | "Must use React" | Probably not | Unless existing codebase and team skills make alternatives infeasible |
+      | "Must support IE11" | Yes | If contractual obligation exists |
+      | "Must deploy to AWS" | Yes | If organization has AWS-only policy |
+      | "Should use TypeScript" | No | Preference, not hard boundary |
+
+      Test: "If we violated this, what concrete thing would break or what rule would we violate?" If
+      the answer is vague, it is a preference, not a constraint.
+    good: |
+      ### C-001: [Descriptive Title]
+
+      **infrastructure · blocking · source:** [where it originates] — [the boundary stated as a one-to-two-line fact, not a preference].
+
+      **Impact:** eliminates [design choice A] · requires [consideration B] · affects TR-001, TR-003 · shapes D-001
+      **Verify:** [how to confirm it still applies — one line]  *(omit if self-evident)*
+    check: "Does Part 1 carry the Constraint Summary ID index and one C-XXX record each — a fact-stated statement line with exactly one type, a traceable source and a severity, an Impact line naming affected TR-XXX / shaped D-XXX, and a Verify line where not self-evident (never a disguised preference)?"
+
+  - name: "Part 2: Technology Decisions"
+    required: true
+    contract: |
+      Technology and topology choices, one shared D-XXX sequence across both origins. A Decision
+      Summary ID index (ID | Decision | Choice | Shaped By | Origin) then one D-XXX record each:
+      Context + Shaped-by line, an Options table (minimum two alternatives with pros/cons), a Choice
+      with a Rationale (<= 3 lines, WHY not WHAT), a Consequences line, and an optional Governance
+      alignment line. The decision technique (evaluating alternatives, scoring trade-offs, ADR depth)
+      is owned by mochiko:patterns-technical-decisions — fill the result here, do not restate it.
+
+      Field definitions — Decisions:
+
+      | Field | Required | Format | Rules |
+      |-------|----------|--------|-------|
+      | ID | Yes | D-XXX | Sequential, three-digit padded, no gaps — one shared sequence across both origins |
+      | Origin | Yes | analysis / structural | Which stage authored the row: `analysis` (this author — technology decisions) or `structural` (the architecture seat via mochiko:patterns-system-design — topology, in the Structural Decisions subsection) |
+      | Title | Yes | Free text | Descriptive, concise |
+      | Context | Yes | One-to-two lines | The problem that needed solving |
+      | Shaped By | Yes | C-XXX / NFR-XXX references | On the context line; constraints and NFRs that narrowed options |
+      | Options | Yes | Table, one line per option | Minimum 2 alternatives with pros/cons |
+      | Choice | Yes | Free text | Selected option |
+      | Rationale | Yes | <= 3 lines | WHY, not just WHAT |
+      | Consequences | Yes | One line, `·`-separated (or a short bullet list) | Trade-offs accepted, future considerations |
+      | Governance alignment | No | One line | Only when a project principle applies — omit otherwise |
+
+      Structural Decisions subsection (architecture-time): topology D-XXX rows (component boundaries,
+      interaction style, responsibility placement) are decided at the architecture stage and authored
+      by mochiko:patterns-system-design — the analysis-time author PRESERVES this subsection, never
+      fills it. Same D-XXX record format, same ADR discipline, continuing the shared D-XXX sequence;
+      the architecture delta summary links each structural change to its row. Omit the subsection when
+      the feature makes no structural decisions.
+    good: |
+      ### D-001: [Decision Title]
+
+      **Context** ([one-to-two lines: the problem needing a decision]) · **Shaped by:** C-001 · NFR-001
+
+      | Option | Pros | Cons |
+      |--------|------|------|
+      | [Option A] | [one line] | [one line] |
+      | [Option B] | [one line] | [one line] |
+
+      **Choice:** [selected option] — **Rationale** (<= 3 lines): [WHY this choice — the reasoning, not a restatement].
+      **Consequences:** [trade-off 1 accepted] · [trade-off 2] · [future consideration]
+      **Governance alignment:** [one line — only when a project principle applies; omit otherwise]
+    check: "Does Part 2 carry the Decision Summary ID index and one D-XXX record each — Context + Shaped-by, an Options table with >= 2 alternatives, a Choice with a <= 3-line WHY rationale, a Consequences line — with each row tagged Origin analysis/structural and the Structural Decisions subsection preserved (never filled by the analysis author)?"
+
+  - name: "Part 3: Infrastructure Requirements"
+    required: true
+    contract: |
+      What must be provisioned for the feature to run — IP-XXX. An Infrastructure Summary ID index
+      (ID | Type | Source Constraint | Priority) then one IP-XXX record each: a statement line
+      carrying Type · Priority · source (the C-XXX / NFR-XXX that necessitate it), a Criteria bullet
+      list (independently verifiable), and an optional Deps line. WHAT to provision, not HOW.
+
+      Field definitions — Infrastructure Requirements:
+
+      | Field | Required | Format | Rules |
+      |-------|----------|--------|-------|
+      | ID | Yes | IP-XXX | Sequential, three-digit padded |
+      | Title | Yes | Free text | Descriptive, concise |
+      | Type | Yes | compute / networking / storage / ci-cd / monitoring / security / environment-config | On the statement line; exactly one |
+      | Source | Yes | C-XXX / NFR-XXX refs | On the statement line; constraints/NFRs that necessitate this |
+      | Priority | Yes | MUST / SHOULD / MAY | RFC 2119, on the statement line |
+      | Statement | Yes | One-to-two lines | WHAT to provision, not HOW — no separate Description paragraph |
+      | Criteria | Yes | Bullet list, one line each | Independently verifiable |
+      | Deps | No | IP-XXX refs | Other infra items this depends on |
+
+      Infrastructure types:
+
+      | Type | Scope |
+      |------|-------|
+      | compute | Containers, serverless, VMs, orchestration |
+      | networking | DNS, load balancers, VPN, firewall rules |
+      | storage | Databases, object storage, caches (provisioning, not schema) |
+      | ci-cd | Build pipelines, deployment automation, environments |
+      | monitoring | APM, logging, alerting, health checks |
+      | security | IAM, certificates, secrets management |
+      | environment-config | Environment variables, feature flags, config management |
+    good: |
+      ### IP-001: [Descriptive Title]
+
+      **compute · MUST · source:** C-001, NFR-003 — [what must be provisioned, one-to-two lines; WHAT, not HOW].
+
+      **Criteria:**
+      - [Verifiable condition, one line]
+
+      **Deps:** IP-002  *(omit if none)*
+    check: "Does Part 3 carry the Infrastructure Summary ID index and one IP-XXX record each — a statement line with exactly one type, an RFC 2119 priority, a source citing the C-XXX/NFR-XXX that necessitate it, and independently-verifiable Criteria (WHAT to provision, not HOW)?"
+
+skeleton: |
+  # Constraints and Decisions: {feature_id}
+
+  > Hard boundaries and technology choices that shape the implementation.
+
+  ## Part 1: Hard Constraints
+
+  ### Constraint Summary  *(the ID index)*
+
+  | ID | Type | Source | Severity |
+  |----|------|--------|----------|
+  | C-001 | infrastructure | Existing production environment | blocking |
+  | C-002 | regulatory | GDPR Article 17 | blocking |
+
+  ---
+
+  ### C-001: [Descriptive Title]
+
+  **infrastructure · blocking · source:** [where it originates] — [the boundary stated as a one-to-two-line fact, not a preference].
+
+  **Impact:** eliminates [design choice A] · requires [consideration B] · affects TR-001, TR-003 · shapes D-001
+  **Verify:** [how to confirm it still applies — one line]  *(omit if self-evident)*
+
+  ---
+
+  ## Part 2: Technology Decisions
+
+  ### Decision Summary  *(the ID index — all D-XXX, both origins)*
+
+  | ID | Decision | Choice | Shaped By | Origin |
+  |----|----------|--------|-----------|--------|
+  | D-001 | Primary database | PostgreSQL 15 | C-001 | analysis |
+  | D-004 | Avatar processing placement | async worker off a queue | NFR-002 | structural |
+
+  ---
+
+  ### D-001: [Decision Title]
+
+  **Context** ([one-to-two lines: the problem needing a decision]) · **Shaped by:** C-001 · NFR-001
+
+  | Option | Pros | Cons |
+  |--------|------|------|
+  | [Option A] | [one line] | [one line] |
+  | [Option B] | [one line] | [one line] |
+
+  **Choice:** [selected option] — **Rationale** (<= 3 lines): [WHY this choice — the reasoning, not a restatement of the choice].
+  **Consequences:** [trade-off 1 accepted] · [trade-off 2] · [future consideration]
+  **Governance alignment:** [one line — only when a project principle applies; omit otherwise]
+
+  ---
+
+  ### Structural Decisions  *(architecture-time — authored by the architecture seat, not the analysis author)*
+
+  ### D-004: [Structural Decision Title]
+
+  **Context** ([the topology choice needing a decision]) · **Shaped by:** NFR-002 · C-003
+
+  | Option | Pros | Cons |
+  |--------|------|------|
+  | [Option A] | [one line] | [one line] |
+  | [Option B] | [one line] | [one line] |
+
+  **Choice:** [selected shape] — **Rationale** (<= 3 lines): [WHY this topology].
+  **Consequences:** [trade-off accepted] · [future consideration]
+  **Governance alignment:** [one line — the layer/dependency principle the shape respects; omit if none]
+
+  ---
+
+  ## Part 3: Infrastructure Requirements
+
+  ### Infrastructure Summary  *(the ID index)*
+
+  | ID | Type | Source Constraint | Priority |
+  |----|------|-------------------|----------|
+  | IP-001 | compute | C-001 | MUST |
+  | IP-002 | ci-cd | C-004, NFR-002 | MUST |
+
+  ---
+
+  ### IP-001: [Descriptive Title]
+
+  **compute · MUST · source:** C-001, NFR-003 — [what must be provisioned, one-to-two lines; WHAT, not HOW].
+
+  **Criteria:**
+  - [Verifiable condition, one line]
+
+  **Deps:** IP-002  *(omit if none)*
+
+  ---

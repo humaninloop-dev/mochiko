@@ -41,8 +41,10 @@ a superseded artifact the lead should have deleted — flag it in the fix list.
 
 Read [references/QUALITY-CHECKLIST.md](references/QUALITY-CHECKLIST.md). The structure checks are
 **module-parameterized**: read the synthesis's module selections, then assemble the working
-checklist as universal core + the checklist fragment embedded in each selected module's file
-(`templates/constitution-modules/*.md`), applied to the module's **routed** content (region
+checklist as universal core + the checklist fragment for each selected module — for `evolution-notes` / `layer-rules` /
+`release-gates`, from `mochiko-cli template <module> --check` (or Read
+`plugins/mochiko/schemas/<module>.yaml` raw when the binary is absent); for `knowledge-management`,
+embedded in `templates/constitution-modules/knowledge-management.md` — applied to the module's **routed** content (region
 pointer / rules files / ledger section — per the authoring skill's routing table). Verify every
 item. Do not skip items because they "seem obvious" or "clearly pass" — and do not check module
 fragments the synthesis did not select.

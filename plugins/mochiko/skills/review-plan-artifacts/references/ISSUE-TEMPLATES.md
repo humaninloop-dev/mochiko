@@ -2,7 +2,9 @@
 
 Issue-documentation formats, severity classification rules, and the working report shape for plan
 artifact reviews. These are the reviewer's working formats; the **assembled deliverable** the lead
-reads is the `mochiko:advocate-report-template` (see [Assembled report](#assembled-report) below) —
+reads is the `advocate-report` schema (`mochiko-cli template advocate-report`, or Read
+`plugins/mochiko/schemas/advocate-report.yaml` raw when the binary is absent; see
+[Assembled report](#assembled-report) below) —
 do not restate that template here.
 
 ## Severity Levels
@@ -81,7 +83,8 @@ MINOR if:
 ## Working Report Shape
 
 While executing the review, organize findings with this working shape. The final report handed to
-the lead is assembled with the `advocate-report-template` — see below.
+the lead is assembled with the `advocate-report` schema (`mochiko-cli template advocate-report`,
+or Read `plugins/mochiko/schemas/advocate-report.yaml` raw when the binary is absent) — see below.
 
 ```markdown
 ## Plan Artifact Review: {artifact set reviewed}
@@ -129,8 +132,8 @@ the lead is assembled with the `advocate-report-template` — see below.
 
 ### Assembled report
 
-The deliverable report the lead reads is structured with `mochiko:advocate-report-template`
-(the shared reviewer shape, machine-first: verdict + basis, severity-classified `findings:` YAML,
+The deliverable report the lead reads is structured with the `advocate-report` schema (`mochiko-cli template advocate-report`, or Read
+`plugins/mochiko/schemas/advocate-report.yaml` raw when the binary is absent — the shared reviewer shape, machine-first: verdict + basis, severity-classified `findings:` YAML,
 clarifying questions, the one-line `strengths:` field). The one plan-specific addition is the
 incremental-mode `consistency_checks:` frontmatter block (SKILL.md → Incremental Review Mode),
 which is this skill's, not the template's. Reference the template for everything else rather than

@@ -83,6 +83,8 @@ fields are not.
 
 ---
 
-**Format version:** v2 (2026-08-01) · **Consumed by:** the report templates in this
-directory, `executing-tdd-cycle/references/CYCLE-REPORT-FORMAT.md`,
-`testing-end-user/references/REPORT-TEMPLATES.md`.
+**Format version:** v2 (2026-08-01) · **Consumed by:** the report schemas in
+`plugins/mochiko/schemas/` — `advocate-report`, `analyst-report`, `architect-report`,
+`feasibility-report`, `techanalyst-report`, `cycle-report`, `verification-report` (via
+`mochiko-cli template <name>`, or Read `plugins/mochiko/schemas/<name>.yaml` raw when the
+binary is absent) — each carrying only its own payload schema over this envelope.

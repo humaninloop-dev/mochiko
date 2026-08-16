@@ -6,6 +6,21 @@ Entry formats: `strips/README.md`. Wave context: skill-succinctness wave 1 (desi
 single physical lines, so the R2 line denominator undercounts this skill; dual accounting
 recorded here and flagged on the wave's ROADMAP row.
 
+## [v0.77.0] Report router rows re-typed: `analyst`/`advocate`/`techanalyst`/`feasibility`-report template files → schema-delivered (D3 later-ratchet)
+- **Disposition:** superseded → `plugins/mochiko/schemas/{analyst,advocate,techanalyst,feasibility}-report.yaml` + `mochiko-cli template <name>` (raw Read of the `.yaml` is the D8 first-class degraded path). The four report router rows are re-described as CLI/schema-delivered primitives, `(template)` → `(schema)`, `-template` dropped from the name; each keeps its full role description (I4 carve-out — discoverability preserved, re-described not mechanically swapped). The advocate reuse note below the plan cluster is reworded (template → schema). `report-format` (row :65), `artifact-format`, and `output-style` keep `(template)` — excluded from the ratchet, untouched.
+- **Tier failed:** n/a — supersession by ruling (schema-based-template-guidance **D3 later-ratchet** + user ruling 2026-08-16 (recorded at the v0.76.0 landing); record `.mochiko/brainstorms/schema-based-template-guidance/record.md` D3; `DECISIONS.md` "Template-schema ratchet" row (landed at v0.77.0))
+- **Content (superseded, verbatim):**
+
+```text
+:63  | `analyst-report-template` (template) | structuring the producer's per-round disclosure (assumptions, what-changed-this-round) the lead reads directly |
+:64  | `advocate-report-template` (template) | **shared (specify + plan + slice)** — structures every pipeline reviewer's grounded review, machine-first (severity-classified `findings:` YAML, clarifying questions, recommended verdict, one-line `strengths:`) the lead reads to own the verdict |
+:86  | `techanalyst-report-template` (template) | the technical-analyst producer's per-round self-disclosure (what was produced, what changed this round) — filled alongside the analysis/design artifacts, read directly by the lead + reviewers; carries no verdict |
+:87  | `feasibility-report-template` (template) | the feasibility reviewer's cross-artifact critique — the contradiction taxonomies, the 3-state feasibility verdict, and the 4-field per-issue gate fuel the human gate reads |
+:89  > The plan **completeness** reviewer reuses the shared `advocate-report-template` (registered under Specify, above) as-is — there is no plan-specific completeness report template.
+```
+- **Kept deliberately:** each row's full role text (only the name token, the type tag, and — for the reuse note — the template→schema wording changed). The `report-format` / `artifact-format` / `output-style` template rows (excluded from the ratchet) untouched.
+- **Consumers assessed:** the report-template file deletions themselves are P1 scope (new strip files); no other consumer of these router rows exists. Cold re-grep confirms zero remaining `*-report-template` references in `plugins/`.
+
 ## [v0.76.0] Router rows re-typed: `spec`/`tasks`/`plan` template files → CLI/schema-delivered (schema-based-template-guidance D1/D8)
 - **Disposition:** superseded → `plugins/mochiko/schemas/{spec,tasks,plan}.yaml` + `mochiko-cli template <name>` (raw Read of the `.yaml` is the D8-first-class degraded path). The three router-index rows are re-described as CLI/schema-delivered primitives; the `(template)` designation is ruled to `(schema)` — the shape is no longer a `templates/<t>-template.md` file. The sibling report/format rows (`analyst-report-template`, `advocate-report-template`, `report-format`, `artifact-format`, `output-style`, `techanalyst-report-template`, `feasibility-report-template`) keep `(template)` because they remain markdown template files (D3 leaves them `.md`). Discoverability preserved: each re-typed row keeps its full role description.
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/schema-based-template-guidance/record.md` D1 one plugin CLI · D3 the 8 pipeline templates · D8 schemas ship as data files, raw Read first-class; `DECISIONS.md` "Template-schema CLI ruled" row).

@@ -32,7 +32,7 @@ The analysis artifacts feed the design layer; this reference covers the analysis
 
 Every technical requirement MUST trace to at least one business functional requirement.
 
-**Pattern** (the source rides the statement line — see ARTIFACT-TEMPLATES.md):
+**Pattern** (the source rides the statement line — see the `requirements` schema: `mochiko-cli template requirements`, or Read `plugins/mochiko/schemas/requirements.yaml` raw when the binary is absent):
 ```markdown
 ## TR-001: Authentication Flow
 

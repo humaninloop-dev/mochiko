@@ -1,0 +1,112 @@
+# Schema data file for the `evolution-notes` constitution module (brownfield-only).
+# DOCTRINE-DENSE governance module: every operative line preserved verbatim; sections are
+# FRAGMENT-LINE-DRIVEN — one producer section per Validator-checklist-fragment line, 1:1
+# (section count = fragment-line count). The `--check` view serves validation-constitution (the
+# module's checklist fragment, checked only when this brownfield module is attached).
+# Source of truth for `mochiko-cli template evolution-notes` and `--check`. Read raw when the binary is absent (D8).
+template: evolution-notes
+title: Evolution Notes — constitution module (brownfield)
+form: artifact-format.md
+register: full   # governance document — full register (documents: full)
+overview: |
+  MODULE: evolution-notes
+  =======================
+  Attach when: mode is brownfield (always) — the constitution documents its brownfield context and
+  the Essential-Floor gap status so future maintainers can tell codified-existing-capability from
+  aspirational MUST-implement targets. Trace: the GI module-selection element that names
+  `evolution-notes`.
+
+sections:
+  - name: Essential Floor Status
+    required: true
+    contract: |
+      The module's core content: the brownfield-context line and the Essential Floor Status table.
+      Assess all four floor categories (Security, Testing, Error Handling, Observability) against
+      the codebase; a waived category carries its waiver record in the ledger's Waivers section,
+      not a gap. Fill:
+
+      ```markdown
+      ## Evolution Notes
+
+      This constitution was created from brownfield analysis (`.mochiko/memory/codebase-analysis.md`,
+      [DATE]).
+
+      **Essential Floor Status** (assessed against the codebase; waived categories carry their waiver
+      record in the ledger's Waivers section, not a gap):
+
+      | Category | Status | Response |
+      |----------|--------|----------|
+      | Security | [present / partial / absent] | [codified existing pattern / MUST-implement → GAP-XXX / waived (see Waivers)] |
+      | Testing | [status] | [response] |
+      | Error Handling | [status] | [response] |
+      | Observability | [status] | [response] |
+      ```
+    check: "Essential Floor status table present, all four categories assessed"
+
+  - name: Gap responses
+    required: true
+    contract: |
+      Every category assessed "absent" or "partial" MUST carry a response in the table's Response
+      column (see Essential Floor Status): a codified existing pattern, a GAP reference
+      (`MUST-implement → GAP-XXX`), or a waiver record in the ledger's Waivers section. A waived
+      category is recorded as a waiver, not a gap.
+    check: "Every \"absent\"/\"partial\" category has a response: codified pattern, GAP reference, or a waiver record in the ledger's Waivers section"
+
+  - name: Status cross-check with codebase analysis
+    required: true
+    contract: |
+      The Status column values MUST match the findings in `.mochiko/memory/codebase-analysis.md` —
+      a cross-check, not an independent judgment. The statuses are assessed against the codebase in
+      Essential Floor Status; this section confirms they agree with the recorded analysis.
+    check: "Statuses match codebase-analysis.md (cross-check)"
+
+  - name: Technology stack alignment
+    required: true
+    contract: |
+      A cross-check applied when this brownfield module is attached: the core constitution's
+      Technology stack MUST match the technology recorded in the codebase analysis. The stack lives
+      in the CLAUDE.md governance region, not in this module; this section is the alignment check
+      the module adds.
+    check: "Technology stack matches codebase analysis"
+
+  - name: Quality gates current and target
+    required: true
+    contract: |
+      A cross-check applied when this brownfield module is attached: the constitution's Quality
+      gates MUST reflect both the current state and the target state (a brownfield gate may name a
+      gap it closes over time). The gates live in the CLAUDE.md governance region and the ledger;
+      this section is the current-and-target check the module adds.
+    check: "Quality gates reflect current + target state"
+
+  - name: Confrontations resolved in session
+    required: true
+    contract: |
+      Record the detected-reality-vs-floor conflicts and their session rulings, then the roadmap
+      pointer. Fill:
+
+      ```markdown
+      **Confrontations resolved in session:** [detected-reality-vs-floor conflicts and their
+      rulings, from the synthesis — e.g. "the floor requires tests and the codebase has none: ruled
+      MUST-implement, GAP-002." Or "none."]
+
+      See `.mochiko/memory/evolution-roadmap.md` for the improvement plan.
+      <!-- Roadmap stub (moved-to-other-cluster): producing evolution-roadmap.md is the roadmap
+      cluster's job, not ported yet. Write the gap-status table now; the linked roadmap is filled in
+      when that cluster lands. -->
+      ```
+    check: "Session confrontations recorded (or \"none\")"
+
+skeleton: |
+  evolution-notes is the brownfield constitution module: a `## Evolution Notes` section plus the
+  validator cross-checks it triggers. Author it from the codebase analysis and the session
+  synthesis:
+    1. Fill the brownfield-context line and the Essential Floor Status table (Essential Floor
+       Status) — all four categories assessed, each "absent"/"partial" carrying a response (Gap
+       responses), statuses matching `.mochiko/memory/codebase-analysis.md` (Status cross-check with
+       codebase analysis).
+    2. Confirm the core constitution's technology stack (Technology stack alignment) and quality
+       gates (Quality gates current and target) align with the codebase analysis and carry current
+       + target state.
+    3. Record the session confrontations and the evolution-roadmap pointer (Confrontations resolved
+       in session).
+  The fillable markdown for each authored surface is the fenced block inside its section's contract.

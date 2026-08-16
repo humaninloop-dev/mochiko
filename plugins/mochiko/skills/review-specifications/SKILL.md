@@ -35,8 +35,10 @@ and performance targets are valid concerns — they belong in later design work,
 ## Question Format
 
 Every question must be framed as a decision the stakeholder can make: 2-3 concrete options with
-what each means for users, plus why it matters. The exact shape is the Clarifications block of
-`templates/advocate-report-template.md` — fill that structure, don't invent a variant.
+what each means for users, plus why it matters. The exact shape is the Clarifications block of the
+`advocate-report` schema (`mochiko-cli template advocate-report`, or Read
+`plugins/mochiko/schemas/advocate-report.yaml` raw when the binary is absent) — fill that
+structure, don't invent a variant.
 
 ## Gap Categories
 
@@ -129,8 +131,9 @@ advisory — a cosmetic finding against a low-fi prototype is a wrong-altitude f
 
 The report structure — the findings list (type + severity, machine-first YAML),
 clarifications with concrete options and impact, the recommended verdict, and the one-line
-`strengths:` field — is single-sourced at `templates/advocate-report-template.md`; fill
-that structure rather than inventing one. When invoked outside a workflow that names a
+`strengths:` field — is single-sourced in the `advocate-report` schema (`mochiko-cli template
+advocate-report`, or Read `plugins/mochiko/schemas/advocate-report.yaml` raw when the binary is
+absent); fill that structure rather than inventing one. When invoked outside a workflow that names a
 report path, return the same structure inline.
 
 ## Review Process

@@ -1,0 +1,106 @@
+# Schema data file for the `quickstart` pipeline artifact template.
+# Source of truth for `mochiko-cli template quickstart` (producer view) and `--check` (checklist view).
+# Read this file raw when the binary is absent (D8 degraded path is first-class).
+# NOTE (v0.77.0 ratchet): the skeleton and per-section shape are NET-NEW AUTHORED under D4/D7 —
+# the source (patterns-api-contracts/SKILL.md "The Quickstart") is prose guidance with no fenced
+# template. Disclosed in .mochiko/strips/patterns-api-contracts.md; graded by the fidelity validator.
+template: quickstart
+title: Integration Quickstart
+form: artifact-format.md
+register: full   # per artifact-format.md rule 11 — endpoint names, commands, and identifiers are never-compress items
+overview: |
+  The human-facing integration guide over the finished API contract. CONDITIONAL: author it only
+  when the feature has a real integration surface — external consumers of the API, an external system
+  wrapped via x-integration, or a non-trivial auth sequence a caller must follow. A feature whose
+  endpoints only serve its own UI over standard auth does NOT need one — record the null path as one
+  line in plan.md's artifact table ("not applicable — no external integration surface"), never a stub
+  file. When authored it is capped and dense (deliverable envelope, artifact-format.md): target
+  <= 150 lines. It cites endpoints and schemas by name and never re-documents what contracts/api.yaml
+  already defines.
+
+sections:
+  - name: Common Flows
+    required: true
+    contract: |
+      One runnable example per primary flow: the request plus the expected response, trimmed to the
+      fields that matter. Cite the endpoint and schema by name; never re-document what api.yaml
+      already defines.
+    good: |
+      ### Create a session
+
+      `POST /sessions` (see `Session` schema in api.yaml)
+
+      Request (fields that matter):
+      ```json
+      { "email": "user@example.com", "password": "..." }
+      ```
+      Response `201` — `{ "token": "...", "expiresAt": "..." }`
+    check: "Does each primary flow have one runnable example (request + expected response, trimmed to the fields that matter), citing the endpoint and schema by name rather than re-documenting api.yaml?"
+
+  - name: Auth Sequence
+    required: true
+    contract: |
+      The steps a caller actually performs to authenticate, compact — the ordered sequence, not a
+      restatement of the security scheme in api.yaml.
+    check: "Is the auth sequence given as the compact ordered steps a caller performs (not a restatement of the api.yaml security scheme)?"
+
+  - name: Error Handling
+    required: true
+    contract: |
+      The error pattern and the top recoverable cases as a table; cite the conventions in
+      patterns-api-contracts/references/ERROR-PATTERNS.md, do not restate them.
+    good: |
+      | Status | Meaning | Caller action |
+      |--------|---------|---------------|
+      | 401 | Token missing/expired | Re-run the auth sequence, retry once |
+      | 429 | Rate limited | Back off per `Retry-After`, then retry |
+    check: "Is error handling given as the pattern plus the top recoverable cases in a table, citing ERROR-PATTERNS conventions rather than restating them?"
+
+  - name: External-System Overview
+    required: false
+    contract: |
+      One line per x-integration system: its name, criticality, and what the caller observes when it
+      degrades. Omit when the feature wraps no external system.
+    check: "Where the feature wraps external systems, is there one line per x-integration system (name, criticality, observed behavior on degradation), or the section omitted when none?"
+
+skeleton: |
+  # Integration Quickstart: {feature_id}
+
+  > Human-facing integration guide over `contracts/api.yaml`. Cite endpoints/schemas by name;
+  > never re-document the contract. Target <= 150 lines.
+
+  ## Common Flows
+
+  ### [Flow name]
+
+  `[METHOD] /[endpoint]` (see `[Schema]` in api.yaml)
+
+  Request (fields that matter):
+  ```json
+  { "[field]": "[value]" }
+  ```
+  Response `[status]` — `{ "[field]": "[value]" }`
+
+  ---
+
+  ## Auth Sequence
+
+  1. [step the caller performs]
+  2. [step]
+  3. [step]
+
+  ---
+
+  ## Error Handling
+
+  Pattern: [one line — the shared error shape; see ERROR-PATTERNS.md].
+
+  | Status | Meaning | Caller action |
+  |--------|---------|---------------|
+  | [4xx] | [recoverable case] | [what the caller does] |
+
+  ---
+
+  ## External-System Overview  *(omit when no external system is wrapped)*
+
+  - **[system]** — [criticality] — [what the caller observes when it degrades]

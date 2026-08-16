@@ -17,6 +17,21 @@ Wave-1 body strip landed 2026-07-25 at v0.25.0 (batch-ratified): body 274 → 21
 23% — **under the 30–70 never-stripped band**; per R3 the under-band second pass generates the
 survivor-provenance (KEPT) entries below rather than forcing cuts.
 
+## [v0.77.0] Module checklist-fragment pointers → mixed source (3 modules schema/`--check`, KM raw `.md`) — D3 later-ratchet
+- **Disposition:** superseded → for `evolution-notes` / `layer-rules` / `release-gates`, `mochiko-cli template <module> --check` (or Read `plugins/mochiko/schemas/<module>.yaml` raw when the binary is absent); `knowledge-management` stays raw (`templates/constitution-modules/knowledge-management.md`, pinned doctrine). SKILL.md Step-1 assembly pointer and `references/QUALITY-CHECKLIST.md` selected-modules pointer re-pointed to the mixed-source form.
+- **Tier failed:** n/a — supersession by ruling (schema-based-template-guidance **D3 later-ratchet** + user ruling 2026-08-16 (recorded at the v0.76.0 landing); record `.mochiko/brainstorms/schema-based-template-guidance/record.md` D3; `DECISIONS.md` "Template-schema ratchet" row (landed at v0.77.0))
+- **Content (superseded, verbatim):**
+
+```text
+SKILL.md:44-45  the checklist fragment embedded in each selected module's file
+                (`templates/constitution-modules/*.md`), applied to the module's **routed** content (region
+references/QUALITY-CHECKLIST.md:60-61  For **each template module the synthesis selects**, run the validator checklist fragment embedded
+                at the bottom of that module's file in `templates/constitution-modules/`:
+```
+- **Kept deliberately:** the module-parameterized checklist logic, the four per-module fragment checkboxes (`layer-rules` / `release-gates` / `evolution-notes` / `knowledge-management`), the routed-content clause, and the cross-module "gates consistent with attached compliance modules" fragment line (no single-module producer home — now homed statically in QUALITY-CHECKLIST per plan I2; see the Relocated note below).
+- **Relocated (v0.77.0 — DM amendment 2026-08-16, from P3's `release-gates-module.md` hand-off flag):** the cross-module check `Gates consistent with the attached compliance modules (an attached module names its audit-evidence gate)` was, on disk, present ONLY in the retiring `templates/constitution-modules/release-gates.md` fragment (fragment 4) — deliberately not encoded in `release-gates.yaml` (cross-module, no single-module producer home). To make the "stays in QUALITY-CHECKLIST" ruling true *before* `release-gates.md` deletes at phase 2, the line was added **verbatim** to `references/QUALITY-CHECKLIST.md` (§ Structure Quality — selected modules) with a one-line provenance note. Supersedes nothing — this is the destination-side relocation record; the source-side strip is P3's `release-gates-module.md`.
+- **Consumers assessed:** the three module `.md` files' conversion to schemas + their deletion is P3 scope (its own strips). `knowledge-management.md` intentionally unconverted (pinned doctrine, §1 C). Cold re-grep confirms the only surviving `constitution-modules` references are the KM-specific ones (`setup.md`, `INTERROGATION-AGENDA.md`, and these two re-points).
+
 ## [v0.76.0] QUALITY-CHECKLIST governance-surfaces pointer → schema + `--check` view (D7 re-key) — schema-based-template-guidance D1/D7/D8
 - **Disposition:** superseded → `mochiko-cli template governance-surfaces` for the shapes, `mochiko-cli template governance-surfaces --check` for the mirror-checklist view, or Read `plugins/mochiko/schemas/governance-surfaces.yaml` raw (D8-first-class). One site: `references/QUALITY-CHECKLIST.md` header "verify … against the shapes in …". D7 re-key: the governance-surfaces structure checklist now cites the `--check` view.
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/schema-based-template-guidance/record.md` D1/D3/D7 (`--check` grading view, checklists re-key)/D8; `DECISIONS.md` "Template-schema CLI ruled").

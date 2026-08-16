@@ -1,0 +1,96 @@
+# Schema data file for the architect producer-disclosure report artifact template.
+# The principal-architect's per-round self-disclosure, authored alongside architecture.md and the
+# structural-decision rows.
+# Source of truth for `mochiko-cli template architect-report` (producer view) and `--check` (checklist view).
+# Read this file raw when the binary is absent (D8 degraded path is first-class).
+template: architect-report
+title: Architect Report
+form: report-format.md
+register: ultra   # reports write ultra (report-format.md rule 8); a routine round is frontmatter-only
+overview: |
+  The architecture producer's (principal-architect) self-disclosure report — authored alongside
+  architecture.md and the structural-decision rows on each architecture round; read by the lead and
+  the reviewer(s) to follow what the delta proposes and what changed. Follows the report envelope
+  (report-format.md): this is a `disclosure` report, so it carries NO done-state, NO PASS/FAIL, and
+  deliberately NO "signed-off"/"approved" field — the producer must not self-assert a state the lead
+  and the user own (the sign-off is the lead's gate, the approval the user's); the clearing verdict
+  lives in the reviewer reports. Machine-first: the map lives in the deliverable — architecture.md is
+  where the diagram, sequence diagrams, and component register live and where the reviewer grades
+  them; never restate the topology here, cite component names and D-/NFR- IDs. Output location:
+  `.mochiko/specs/<feature>/architect-report.md`, seeded and collected by the lead alongside
+  architecture.md. The architecture producer fills in actual content following this structure.
+
+sections:
+  - name: Production
+    required: true
+    contract: |
+      What this round produced and what changed. `produced:` lists the artifacts authored
+      (`[architecture.md, constraints-and-decisions.md#structural-decisions]`).
+      `changed_this_round:` is `[initial]` on the first round; on later rounds it names the specific
+      reviewer gaps addressed by ID, so the lead can see progress and detect a stalled, no-change
+      round. Cite component names and D-/NFR- IDs; never restate the topology.
+    check: "Does the report list what was `produced:` (architecture.md + the structural-decisions section) and a `changed_this_round:` of `[initial]` or the reviewer gap IDs addressed, citing IDs rather than restating topology?"
+
+  - name: Baseline
+    required: true
+    contract: |
+      `baseline:` discloses the current-state seed and, when reconstructed (no ARCHITECTURE.md), its
+      confidence (high | medium | low) — the input to the baseline-confirmation gate. A reconstructed
+      baseline is confirmed by the user before any delta is designed on it. Values:
+      `seeded-from-ARCHITECTURE.md` | `reconstructed (confidence: …)` | `greenfield-empty`.
+    check: "Does `baseline:` disclose the current-state seed and, when reconstructed, its confidence — the input to the baseline-confirmation gate?"
+
+  - name: Delta & scope
+    required: true
+    contract: |
+      The proposed structural change and its scoping. `delta:` is the change, one line each; a
+      no-delta feature discloses `["no structural change"]`, still shown for sign-off, never silently
+      asserted. `scope:` carries the size-bound scoping — `full-system` or `delta-neighborhood (N
+      components)` with the full view linked, not inlined. `structural_decisions:` lists the D-XXX IDs
+      written into the structural-decisions section this round.
+    check: "Are the `delta:` (one line each, or `[\"no structural change\"]`), the `scope:` (full-system or delta-neighborhood), and the `structural_decisions:` D-XXX IDs disclosed?"
+
+  - name: Governance alignment
+    required: true
+    contract: |
+      `governance_alignment:` discloses conformance to the CLAUDE.md governance region and its
+      `.claude/rules/mochiko/` files, or the conflict and its chosen exit (redesign | ledger
+      amendment), in one line.
+    check: "Does `governance_alignment:` state conformance to the governance region and its rules, or the conflict and its chosen exit, in one line?"
+
+  - name: Uncertainty
+    required: true
+    contract: |
+      The producer-authored uncertainty carrier (the dispatching command's producer-authored branch).
+      `assumptions:` records assumptions made this round, one line each with the rationale compressed
+      in. `open_questions:` lists producer-surfaced unknowns feeding the clarification loop / gap
+      routing. Both are `[]` when empty.
+    check: "Are assumptions (one line each, rationale compressed in) and open_questions surfaced (each `[]` when none)?"
+
+  - name: Handoff
+    required: true
+    contract: |
+      `handoff:` is a pointer, not a claim — what to grade (topology feasibility, coverage) and where
+      the soft spots are, one line; NOT a "ready" assertion. The rendered-diagram presentation and any
+      "presented un-rendered" record are the lead's, set at the sign-off gate, not disclosed here.
+    check: "Is `handoff:` a one-line pointer to what to grade (topology feasibility, coverage) plus known soft spots, not a ready/sign-off assertion?"
+
+skeleton: |
+  ---
+  report: disclosure
+  feature: {{feature_id}}
+  round: {{round}}
+  produced: [architecture.md, constraints-and-decisions.md#structural-decisions]
+  baseline: "{{seeded-from-ARCHITECTURE.md | reconstructed (confidence: high|medium|low) | greenfield-empty}}"
+  delta:                         # the proposed structural change, one line each; ["no structural change"] for a no-delta feature
+    - "{{+ worker: settlement-processor (new box), request/response arrow from api}}"
+  scope: "{{full-system | delta-neighborhood (N components) — full view linked, not inlined}}"
+  structural_decisions: []       # the D-XXX IDs written into the structural-decisions section this round
+  changed_this_round:            # round 1: [initial]; later: the reviewer gap IDs addressed
+    - "{{coverage: added sequence diagram for the async settlement flow}}"
+  governance_alignment: "{{respects BE-HEX layering per GI-XXX | the conflict + its chosen exit (redesign | ledger amendment), one line}}"
+  assumptions: []                # assumptions made this round, one line each with the rationale compressed in
+  open_questions:                # producer-surfaced unknowns feeding the clarification loop / gap routing
+    - "{{the unknown, one line}}"
+  handoff: "{{what to grade (topology feasibility, coverage) + known soft spots, one line}}"
+  ---

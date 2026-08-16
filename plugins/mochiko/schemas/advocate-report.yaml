@@ -1,0 +1,85 @@
+# Schema data file for the advocate (reviewer) report artifact template.
+# The shared emit shape for the specify / plan / tasks / slice review seats.
+# Source of truth for `mochiko-cli template advocate-report` (producer view) and `--check` (checklist view).
+# Read this file raw when the binary is absent (D8 degraded path is first-class).
+template: advocate-report
+title: Advocate Report
+form: report-format.md
+register: ultra   # reports write ultra (report-format.md rule 8); this payload carries no failure narrative
+overview: |
+  The reviewer's adversarial critique of an artifact under review — gaps found, clarifications
+  needed, and a recommended verdict. The shared emit shape for the specify / plan / tasks / slice
+  review seats. Follows the report envelope (report-format.md): the machine-first frontmatter, the
+  shared findings schema, the conditional-prose rule, and the reviewer-verdict rules live there —
+  this schema carries only the review payload. The findings list is the relay payload the lead
+  carries to the producer verbatim as the gap list. A zero-findings `ready` report is
+  frontmatter-only — still filling verdict_basis and strengths — never empty.
+
+sections:
+  - name: Scope
+    required: true
+    contract: |
+      The review's delta-scope disclosure. `incremental:` is `false` for a full-artifact-set
+      review; set it `true` on a round that reviews only a delta (e.g. plan's Phase-2 incremental
+      mode) and name the reviewed slice in `scope:`, so the verdict's coverage is honest about what
+      it did and did not cover. The envelope identity fields (report, feature, round) follow
+      report-format.md.
+    check: "On a delta round, is `incremental: true` set with the reviewed scope named in `scope:`, so the verdict's coverage is honest?"
+
+  - name: Verdict
+    required: true
+    contract: |
+      The reviewer's RECOMMENDED verdict — the clearing decision is the lead's, never asserted
+      here as a done-state. Values:
+      - `ready` — no blocking gaps; complete and internally consistent.
+      - `needs-revision` — addressable gaps remain in an otherwise sound artifact.
+      - `critical-gaps` — fundamental problems with the foundation, not just fixable gaps.
+      `verdict_basis:` is the one line that drives the verdict. `strengths:` is a single line,
+      comma-brief — the reviewer's evidence of engaging with what works, never a prose section.
+      A zero-findings `ready` report still fills verdict_basis and strengths (a clean report is
+      frontmatter-only, never empty).
+    check: "Is the verdict one of ready / needs-revision / critical-gaps, with a one-line verdict_basis and a one-line comma-brief strengths (both filled even on a clean ready report)?"
+
+  - name: Findings
+    required: true
+    contract: |
+      The relay payload — the lead carries this list to the producer verbatim as the gap list.
+      Every finding cites its location by ID/section anchor (`at:`), never by re-quoting artifact
+      text. Over the shared finding shape (report-format.md), each entry carries the review
+      taxonomy `type` (Missing | Ambiguous | EdgeCase | Assumption | Contradiction), a `sev`
+      (Critical | Important | Minor), the one-line `gap`, and the one-line proposed `fix`.
+    check: "Does each finding carry a review-taxonomy type (Missing/Ambiguous/EdgeCase/Assumption/Contradiction), a severity, an `at:` anchor (not re-quoted artifact text), a one-line gap, and a one-line fix?"
+
+  - name: Clarifications needed
+    required: false
+    contract: |
+      Gate fuel — present only when a gap needs a user ruling; omit the section when nothing needs
+      the user. Frame each clarification as a product question with concrete numbered options and a
+      why-it-matters, tagged with its originating gap ID — the lead renders these at the
+      clarification gate.
+    check: "When a gap needs a user ruling, is each clarification a product question with concrete options and a why-it-matters (and is the section omitted when nothing needs the user)?"
+
+skeleton: |
+  ---
+  report: review
+  feature: {{feature_id}}
+  round: {{round}}
+  incremental: false            # true when this round reviews only a delta (e.g. plan Phase-2 incremental mode) — name the scope in `scope:`
+  verdict: ready | needs-revision | critical-gaps
+  verdict_basis: "{{one line — what drives the verdict}}"
+  strengths: "{{one line, comma-brief — what genuinely works}}"
+  findings:
+    - {id: G1, type: Missing | Ambiguous | EdgeCase | Assumption | Contradiction,
+       sev: Critical | Important | Minor,
+       at: "{{artifact + ID/section anchor}}",
+       gap: "{{the defect, one line}}",
+       fix: "{{proposed resolution, one line}}"}
+  ---
+
+  ## Clarifications needed   <!-- only when user input is required; omit otherwise -->
+
+  ### C1: {{question_title}}   ({{gap_id}})
+
+  **Question**: {{question}}
+  **Options**: 1. {{option_1}} · 2. {{option_2}} · 3. {{option_3}}
+  **Why it matters**: {{impact}}

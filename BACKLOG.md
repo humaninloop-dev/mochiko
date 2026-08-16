@@ -49,8 +49,12 @@ fix round (CI `cargo audit --deny`); trail. Open residual:
 - [ ] **Template-schema first-live-run watch** (2026-08-16; provenance:
   [record](.mochiko/brainstorms/schema-based-template-guidance/record.md) evidence-honesty
   thread — n=0, the D11 null-road concession on record) — no run yet demonstrates CLI/schema-
-  delivered guidance outperforms the old `.md` exemplars. Watch the first live authoring runs on
-  the 8 converted templates (specify/plan/feature/setup + the skills that read them): does the
+  delivered guidance outperforms the old `.md` exemplars. **Scope widened at the v0.77.0 D3
+  ratchet (user-ruled 2026-08-16, still n=0):** the watch now covers all 23 schemas — the 8
+  pipeline templates plus the ratchet's 15 (5 seat reports · requirements/constraints-and-
+  decisions/nfrs · cycle/verification reports · data-model/quickstart · 3 constitution
+  modules). Watch the first live authoring runs on the converted templates
+  (specify/plan/feature/setup + the skills that read them): does the
   producer view (schema + example + good/bad) and the `--check` checklist view guide artifact
   quality at least as well as the `.md` baseline, and does the raw-Read fallback stay honest when
   the binary is absent (D8/GI-020)? **M7 rollback trigger:** CLI-delivered guidance

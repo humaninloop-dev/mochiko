@@ -8,11 +8,17 @@ use serde::Deserialize;
 use std::fs;
 use std::path::Path;
 
-/// The eight in-scope pipeline artifact templates (D3). This is the authoritative known-name set:
-/// a `template <name>` for a name outside this list is an unknown template (exit 2). Every name
-/// here has an embedded compile-time copy via [`embedded`], so the embedded fallback can never
-/// miss a known name.
-pub const TEMPLATE_NAMES: [&str; 8] = [
+/// The in-scope schema-backed templates. This is the authoritative known-name set: a
+/// `template <name>` for a name outside this list is an unknown template (exit 2). Every name here
+/// has an embedded compile-time copy via [`embedded`], so the embedded fallback can never miss a
+/// known name.
+///
+/// The first eight are the original pipeline artifact templates (D3). The remaining fifteen were
+/// added by the D3 later-ratchet (user ruling 2026-08-16): five seat report templates, five
+/// analysis/design body templates (requirements, constraints-and-decisions, nfrs, data-model,
+/// quickstart), the two file-report formats (cycle-report, verification-report), and three
+/// constitution modules (evolution-notes, layer-rules, release-gates).
+pub const TEMPLATE_NAMES: [&str; 23] = [
     "spec",
     "plan",
     "tasks",
@@ -21,6 +27,21 @@ pub const TEMPLATE_NAMES: [&str; 8] = [
     "codebase-analysis",
     "governance-intent",
     "governance-surfaces",
+    "advocate-report",
+    "analyst-report",
+    "architect-report",
+    "feasibility-report",
+    "techanalyst-report",
+    "cycle-report",
+    "verification-report",
+    "requirements",
+    "constraints-and-decisions",
+    "nfrs",
+    "data-model",
+    "quickstart",
+    "evolution-notes",
+    "layer-rules",
+    "release-gates",
 ];
 
 /// One pipeline artifact template. Core fields are always present; the four `Option` fields are
@@ -38,8 +59,8 @@ pub struct Template {
 }
 
 /// One section of a template. `name`/`required`/`contract`/`check` are always present; the rest
-/// appear only where the source carries them. `bad` and `severity` are currently unused by every
-/// shipped schema but must still deserialize if a future schema adds them.
+/// appear only where the source carries them. `severity` is currently unused by every shipped
+/// schema but must still deserialize if a future schema adds it.
 #[derive(Debug, Deserialize)]
 pub struct Section {
     pub name: String,
@@ -109,6 +130,66 @@ fn embedded(name: &str) -> Option<&'static str> {
         "governance-surfaces" => include_str!(concat!(
             env!("CARGO_MANIFEST_DIR"),
             "/../../plugins/mochiko/schemas/governance-surfaces.yaml"
+        )),
+        "advocate-report" => include_str!(concat!(
+            env!("CARGO_MANIFEST_DIR"),
+            "/../../plugins/mochiko/schemas/advocate-report.yaml"
+        )),
+        "analyst-report" => include_str!(concat!(
+            env!("CARGO_MANIFEST_DIR"),
+            "/../../plugins/mochiko/schemas/analyst-report.yaml"
+        )),
+        "architect-report" => include_str!(concat!(
+            env!("CARGO_MANIFEST_DIR"),
+            "/../../plugins/mochiko/schemas/architect-report.yaml"
+        )),
+        "feasibility-report" => include_str!(concat!(
+            env!("CARGO_MANIFEST_DIR"),
+            "/../../plugins/mochiko/schemas/feasibility-report.yaml"
+        )),
+        "techanalyst-report" => include_str!(concat!(
+            env!("CARGO_MANIFEST_DIR"),
+            "/../../plugins/mochiko/schemas/techanalyst-report.yaml"
+        )),
+        "cycle-report" => include_str!(concat!(
+            env!("CARGO_MANIFEST_DIR"),
+            "/../../plugins/mochiko/schemas/cycle-report.yaml"
+        )),
+        "verification-report" => include_str!(concat!(
+            env!("CARGO_MANIFEST_DIR"),
+            "/../../plugins/mochiko/schemas/verification-report.yaml"
+        )),
+        "requirements" => include_str!(concat!(
+            env!("CARGO_MANIFEST_DIR"),
+            "/../../plugins/mochiko/schemas/requirements.yaml"
+        )),
+        "constraints-and-decisions" => include_str!(concat!(
+            env!("CARGO_MANIFEST_DIR"),
+            "/../../plugins/mochiko/schemas/constraints-and-decisions.yaml"
+        )),
+        "nfrs" => include_str!(concat!(
+            env!("CARGO_MANIFEST_DIR"),
+            "/../../plugins/mochiko/schemas/nfrs.yaml"
+        )),
+        "data-model" => include_str!(concat!(
+            env!("CARGO_MANIFEST_DIR"),
+            "/../../plugins/mochiko/schemas/data-model.yaml"
+        )),
+        "quickstart" => include_str!(concat!(
+            env!("CARGO_MANIFEST_DIR"),
+            "/../../plugins/mochiko/schemas/quickstart.yaml"
+        )),
+        "evolution-notes" => include_str!(concat!(
+            env!("CARGO_MANIFEST_DIR"),
+            "/../../plugins/mochiko/schemas/evolution-notes.yaml"
+        )),
+        "layer-rules" => include_str!(concat!(
+            env!("CARGO_MANIFEST_DIR"),
+            "/../../plugins/mochiko/schemas/layer-rules.yaml"
+        )),
+        "release-gates" => include_str!(concat!(
+            env!("CARGO_MANIFEST_DIR"),
+            "/../../plugins/mochiko/schemas/release-gates.yaml"
         )),
         _ => return None,
     };

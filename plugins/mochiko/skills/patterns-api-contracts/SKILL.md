@@ -160,16 +160,12 @@ own UI over standard auth does not need one — record the null path as one line
 stub file.
 
 When authored, it is **capped and dense** (deliverable envelope,
-`templates/artifact-format.md`): target ≤ 150 lines —
-
-- **Common flows** — one runnable example per primary flow (request + expected response,
-  trimmed to the fields that matter); cite endpoint + schema by name, never re-document
-  what `api.yaml` already defines.
-- **Auth sequence** — the steps a caller actually performs, compact.
-- **Error handling** — the pattern and the top recoverable cases as a table; cite
-  ERROR-PATTERNS conventions, don't restate them.
-- **External-system overview** — one line per `x-integration` system: name, criticality,
-  what the caller observes when it degrades.
+`templates/artifact-format.md`): target ≤ 150 lines, citing endpoints and schemas by name
+and never re-documenting what `api.yaml` already defines. The section shape (Common Flows ·
+Auth Sequence · Error Handling · External-System Overview) and a fill-in skeleton are
+delivered by the `quickstart` schema: run `mochiko-cli template quickstart` for the producer
+view, or Read `plugins/mochiko/schemas/quickstart.yaml` raw when the binary is absent (D8
+first-class).
 
 ## Validation
 

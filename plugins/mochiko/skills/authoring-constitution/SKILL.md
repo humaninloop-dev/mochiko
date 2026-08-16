@@ -218,7 +218,9 @@ sync-a-copy problem died with the dissolved artifact.
 
 ## Module assembly
 
-Modules from [`templates/constitution-modules/`](../../templates/constitution-modules/) attach
+Modules — `evolution-notes` / `layer-rules` / `release-gates` from `mochiko-cli template <module>`
+(or Read `plugins/mochiko/schemas/<module>.yaml` raw when the binary is absent) and
+`knowledge-management` from [`templates/constitution-modules/`](../../templates/constitution-modules/) — attach
 per the synthesis's module selections — but **module content routes by surface, like everything
 else** (any in-file attach instructions that predate the dissolution are superseded by this
 table):

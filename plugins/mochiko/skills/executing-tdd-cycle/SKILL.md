@@ -88,7 +88,7 @@ self-report, verified independently.)
 
 **7. Write Cycle Report**
 
-Produce `cycle-report.md` following the format in [references/CYCLE-REPORT-FORMAT.md](references/CYCLE-REPORT-FORMAT.md) — the decomposition (task list with file paths and ordering) is part of the report's structured fields.
+Produce `cycle-report.md` following the `cycle-report` schema (`mochiko-cli template cycle-report`, or Read `plugins/mochiko/schemas/cycle-report.yaml` raw when the binary is absent) — the decomposition (task list with file paths and ordering) is part of the report's structured fields.
 
 ### Progress Tracking
 
@@ -155,6 +155,6 @@ See [references/TDD-ANTI-RATIONALIZATION.md](references/TDD-ANTI-RATIONALIZATION
 
 ## Reference Files
 
-- [references/CYCLE-REPORT-FORMAT.md](references/CYCLE-REPORT-FORMAT.md) — Structured YAML frontmatter schema (incl. the decomposition fields) and the conditional prose rules
+- `cycle-report` schema (`mochiko-cli template cycle-report`, or Read `plugins/mochiko/schemas/cycle-report.yaml` raw when the binary is absent) — Structured YAML frontmatter schema (incl. the decomposition fields) and the conditional prose rules
 - [references/TASK-PARSING.md](references/TASK-PARSING.md) — Cycle-card fields and how to read them
 - [references/TDD-ANTI-RATIONALIZATION.md](references/TDD-ANTI-RATIONALIZATION.md) — Common shortcuts and why they fail

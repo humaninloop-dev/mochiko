@@ -1,0 +1,81 @@
+# Schema data file for the technical-analyst producer-disclosure report artifact template.
+# The technical-analyst's per-round self-disclosure, authored alongside the analysis/design artifacts.
+# Source of truth for `mochiko-cli template techanalyst-report` (producer view) and `--check` (checklist view).
+# Read this file raw when the binary is absent (D8 degraded path is first-class).
+template: techanalyst-report
+title: Technical Analyst Report
+form: report-format.md
+register: ultra   # reports write ultra (report-format.md rule 8); a routine round is frontmatter-only
+overview: |
+  The technical-analyst's self-disclosure report — authored alongside the analysis/design artifacts
+  on each round; read by the lead and the reviewer(s) to follow what was produced and what changed.
+  Follows the report envelope (report-format.md): this is a `disclosure` report, so it carries NO
+  done-state, NO PASS/FAIL, and deliberately NO "Completion"/"ready" field — the producer must not
+  self-assert a state the lead owns; the clearing verdict lives in the reviewer report(s) and the lead
+  owns the loop decision. Machine-first: the lead and reviewer(s) read the fields, a routine round is
+  frontmatter-only, and the artifacts themselves are what the reviewer(s) grade — never restate their
+  content here, cite TR-/C-/NFR-/D- IDs. Output location:
+  `.mochiko/specs/<feature>/techanalyst-report.md`, seeded and collected by the lead alongside the
+  analysis/design artifacts. The technical-analyst fills in actual content following this structure.
+
+sections:
+  - name: Phase & production
+    required: true
+    contract: |
+      `phase:` discloses which phase this round produced (`analysis` or `design`) — it discloses,
+      never drives the sequence; the lead owns the two-phase sequence. `produced:` lists the artifacts
+      authored this round (analysis: requirements.md, constraints-and-decisions.md, nfrs.md; design:
+      data-model.md, contracts/api.yaml, quickstart.md). `changed_this_round:` is `[initial]` on the
+      first round of a phase; on later rounds it names the specific reviewer gaps addressed by ID, so
+      the lead can see progress and detect a stalled, no-change round.
+    check: "Does the report disclose the `phase:` (analysis | design), the artifacts `produced:`, and a `changed_this_round:` of `[initial]` or the reviewer gap IDs addressed?"
+
+  - name: Governance alignment
+    required: true
+    contract: |
+      `governance_alignment:` discloses alignment to the CLAUDE.md governance region and its
+      `.claude/rules/mochiko/` files — `aligned`, or the rules/GI IDs touched and any exception, in
+      one line.
+    check: "Does `governance_alignment:` state alignment to the governance region and its rules (or the IDs touched and any exception) in one line?"
+
+  - name: Uncertainty
+    required: true
+    contract: |
+      The producer-authored uncertainty carrier (the dispatching command's producer-authored branch).
+      `assumptions:` records what was assumed and why, one line each with the rationale compressed in.
+      `open_questions:` lists producer-surfaced unknowns feeding the clarification loop / gap routing,
+      where the reviewer stress-tests them. Both are `[]` when empty.
+    check: "Are assumptions (one line each, rationale compressed in) and open_questions surfaced (each `[]` when none)?"
+
+  - name: Handoff
+    required: true
+    contract: |
+      `handoff:` is a pointer, not a claim — which artifacts to grade and where the soft spots are,
+      one line; NOT a "ready" assertion.
+    check: "Is `handoff:` a one-line pointer to which artifacts to grade plus known soft spots, not a ready assertion?"
+
+  - name: Notes of note
+    required: false
+    contract: |
+      The one sanctioned prose block (report-format.md conditional-prose rule). Add `## Notes of note`
+      ONLY for genuine difficulties or non-obvious calls the fields cannot carry; a routine round is
+      frontmatter-only. Register `ultra`.
+    check: "Is a `## Notes of note` block present only for genuine difficulties or non-obvious calls (omitted on a routine round)?"
+
+skeleton: |
+  ---
+  report: disclosure
+  feature: {{feature_id}}
+  phase: analysis | design       # which phase this round produced — discloses, never drives the sequence
+  round: {{round}}
+  produced: [requirements.md, constraints-and-decisions.md, nfrs.md]   # design rounds: [data-model.md, contracts/api.yaml, quickstart.md]
+  changed_this_round:            # round 1 of a phase: [initial]; later: the reviewer gap IDs addressed
+    - "{{G2: NFR-003 given a numeric latency target}}"
+  governance_alignment: "{{aligned | the rules/GI IDs touched and any exception, one line}}"
+  assumptions: []                # assumptions made this round, one line each with the rationale compressed in
+  open_questions:                # producer-surfaced unknowns feeding the clarification loop / gap routing
+    - "{{the unknown, one line}}"
+  handoff: "{{which artifacts to grade + known soft spots, one line}}"
+  ---
+
+  ## Notes of note   <!-- only when non-empty: genuine difficulties or non-obvious calls -->

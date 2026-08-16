@@ -15,6 +15,18 @@ document contracts are the **user's** artifacts and are untouchable. A prefix-ba
 `.mochiko/` would gut the KM module and the brainstorm command; 101 of this tree's 146
 `.mochiko/` references were correctly left alone on that test.
 
+## [v0.77.0] `Consumed by:` routing re-pointed — deleted report templates + the two report-format references → the seven report schemas
+- **Disposition:** superseded → the `**Consumed by:**` line now names the seven report schemas in `plugins/mochiko/schemas/` (two-arm framing), replacing "the report templates in this directory" plus the two named references (`executing-tdd-cycle/references/CYCLE-REPORT-FORMAT.md`, `testing-end-user/references/REPORT-TEMPLATES.md`) — all seven deleted by this ratchet.
+- **Tier failed:** n/a — supersession by ruling (schema-based-template-guidance D3 later-ratchet + user ruling 2026-08-16; `DECISIONS.md` "Template-schema ratchet" row) — P5 drift finding: the routing named the two reference files this wave deletes.
+- **Content (verbatim, the superseded routing):**
+~~~
+**Format version:** v2 (2026-08-01) · **Consumed by:** the report templates in this
+directory, `executing-tdd-cycle/references/CYCLE-REPORT-FORMAT.md`,
+`testing-end-user/references/REPORT-TEMPLATES.md`.
+~~~
+- **Kept deliberately:** the format version number + date stay (a consumer still learns which revision it reads); the envelope body and all shared rules are untouched — only the documentation of *who consumes it* was corrected.
+- **Consumers assessed:** the seven report schemas each still carry `form: report-format.md` — the envelope they consume is unchanged. `templates/artifact-format.md` + `templates/output-style.md` cross-reference this envelope (as twin/register, not payload-carriers) — untouched; they were never in the `Consumed by:` list.
+
 ## [v0.49.0] Deliverable list drops slices.md
 - **Disposition:** superseded → slicing is a spec.md section, covered by the existing spec.md list entry
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D6)

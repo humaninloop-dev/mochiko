@@ -1,0 +1,84 @@
+# Schema data file for the `release-gates` constitution module.
+# DOCTRINE-DENSE governance module: every operative line preserved verbatim; sections are
+# FRAGMENT-LINE-DRIVEN — one producer section per Validator-checklist-fragment line, 1:1. One
+# cross-module fragment line ("gates consistent with the attached compliance modules") has no
+# single-module home and is NOT encoded here — it stays in validation-constitution's
+# QUALITY-CHECKLIST.md. The `--check` view serves validation-constitution (checked only when this
+# module is attached).
+# Source of truth for `mochiko-cli template release-gates` and `--check`. Read raw when the binary is absent (D8).
+template: release-gates
+title: Release Gates — constitution module
+form: artifact-format.md
+register: full   # governance document — full register (documents: full)
+overview: |
+  MODULE: release-gates
+  =====================
+  Attach when: always offered for the target class — customer-facing software the team deploys
+  and operates has a real release process by definition (PO-D1), and the deployment-and-release
+  dimension (always interrogated — no pruning license) supplies its content: environments,
+  cadence, release-blocking criteria, rollback expectations. Trace: the GI module-selection
+  element that names `release-gates`.
+
+sections:
+  - name: Environments and cadence
+    required: true
+    contract: |
+      State the release environments and the release cadence, using the project's real environment
+      names. Fill (the INSTRUCTION comment is carried verbatim):
+
+      ```markdown
+      ## Release Gates
+
+      <!--
+      INSTRUCTION: What blocks a release — beyond the per-merge Quality Gates. Source from the
+      synthesis's deployment-reality element. Use the project's actual environment names and real
+      verification commands.
+      -->
+
+      **Environments:** [e.g. dev → staging → production, with promotion rules]
+      **Cadence:** [e.g. on-merge continuous / weekly cut / manual]
+      ```
+    check: "Environments and cadence stated with the project's real environment names"
+
+  - name: Release-gate table
+    required: true
+    contract: |
+      The release-gate table — what blocks a release beyond the per-merge Quality Gates. Every gate
+      MUST carry a concrete verification (a command or dashboard), no placeholders. Fill:
+
+      ```markdown
+      | Gate | Requirement | Verified by | Blocks |
+      |------|-------------|-------------|--------|
+      | [e.g. Staging soak] | [e.g. 24h error rate < baseline] | [dashboard/command] | promotion to production |
+      | [e.g. Migration check] | [e.g. reversible migration verified] | [command] | deploy |
+      | [e.g. Changelog] | [entry present for user-facing change] | PR check | release cut |
+      ```
+    check: "Release-gate table present; every gate has a concrete verification (command/dashboard), no placeholders"
+
+  - name: Rollback
+    required: true
+    contract: |
+      Document the rollback procedure with a time expectation. Fill:
+
+      ```markdown
+      ### Rollback
+
+      - Rollback procedure MUST be documented and executable by [role]: [pointer or inline steps]
+      - [Rollback time expectation, e.g. "restore previous version in ≤15 minutes"]
+      - Releases that cannot be rolled back (e.g. destructive migrations) MUST be flagged in the PR and
+        approved explicitly
+      ```
+    check: "Rollback procedure documented with a time expectation"
+
+skeleton: |
+  release-gates is the deployment/release constitution module: a `## Release Gates` section stating
+  what blocks a release beyond the per-merge quality gates. Author it from the synthesis's
+  deployment-reality element with the project's real environment names and verification commands:
+    1. State environments and cadence (Environments and cadence).
+    2. Fill the release-gate table — every gate a concrete command/dashboard verification, no
+       placeholders (Release-gate table).
+    3. Document the rollback procedure with a time expectation (Rollback).
+  The fillable markdown for each surface is the fenced block inside its section's contract. One
+  cross-module checklist line ("Gates consistent with the attached compliance modules — an attached
+  module names its audit-evidence gate") is NOT a section here — it has no single-module home and
+  stays in validation-constitution's QUALITY-CHECKLIST.md.

@@ -125,7 +125,9 @@ are the prior set** — this skill does not decide that (it has no view of the w
 
 ### Report shape (incremental mode)
 
-The same `advocate-report-template.md` shape, with the incremental fields set and this
+The same `advocate-report` shape (`mochiko-cli template advocate-report`, or Read
+`plugins/mochiko/schemas/advocate-report.yaml` raw when the binary is absent), with the
+incremental fields set and this
 skill's consistency-check results as an extra frontmatter block (permitted per the
 envelope):
 
@@ -208,4 +210,4 @@ If you notice yourself thinking any of these, STOP immediately:
 
 - `mochiko:review-feasibility` — the feasibility / buildability / contradiction half of plan review; the boundary with this skill is the table in ARTIFACT-CHECKLISTS.md
 - `mochiko:patterns-plan-minimalism` — the plan-time ladder; this skill grades the rung stops it disclosed (honesty advisory) and package conformance to the approved proposal (blocking)
-- `mochiko:advocate-report-template` — the deliverable report shape the lead reads
+- `advocate-report` schema — the deliverable report shape the lead reads (`mochiko-cli template advocate-report`, or Read `plugins/mochiko/schemas/advocate-report.yaml` raw when the binary is absent)

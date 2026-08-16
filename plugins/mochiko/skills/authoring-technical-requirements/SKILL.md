@@ -38,11 +38,11 @@ Each artifact uses a distinct ID prefix and traces to business sources: requirem
 >
 > Declare the requirement here; author the boundary and the classification there.
 
-See [ARTIFACT-TEMPLATES.md](references/ARTIFACT-TEMPLATES.md) for complete field definitions and examples.
+See the `requirements`, `constraints-and-decisions`, and `nfrs` schemas for complete field definitions and examples — each via `mochiko-cli template <name>`, or Read `plugins/mochiko/schemas/<name>.yaml` raw when the binary is absent.
 
 ### 1. Technical Requirements (requirements.md) -- TR-XXX
 
-Map every business FR to one or more TRs, each addressing a distinct technical concern the FR implies but does not state (worked decomposition + field definitions: ARTIFACT-TEMPLATES.md).
+Map every business FR to one or more TRs, each addressing a distinct technical concern the FR implies but does not state (worked decomposition + field definitions: the `requirements` schema).
 
 **No orphan TRs.** Every TR maps to at least one FR. **No unmapped FRs.** Every FR has at least one TR.
 
@@ -52,7 +52,7 @@ Map every business FR to one or more TRs, each addressing a distinct technical c
 
 Document hard boundaries (constraints) and the technology decisions shaped by them, in a single unified artifact.
 
-**Section 1: Hard Constraints (C-XXX)** and **Section 2: Technology Decisions (D-XXX)** — field schemas in ARTIFACT-TEMPLATES.md.
+**Section 1: Hard Constraints (C-XXX)** and **Section 2: Technology Decisions (D-XXX)** — field schemas in the `constraints-and-decisions` schema.
 
 **Constraints are facts, not preferences.** Each decision record MUST reference the constraints that shaped the choice. Each constraint impact field SHOULD reference decisions it influences.
 
@@ -68,15 +68,15 @@ decided during the architecture stage. These rows are authored by the **architec
 technology-decision D-XXX rows and **preserves** this section rather than filling it. Both origins
 share one D-XXX field schema, the same ADR discipline (`mochiko:patterns-technical-decisions`), and
 one continuous D-XXX sequence; the architecture delta summary links each structural change to its row
-here. (Template + the `Origin` marker: ARTIFACT-TEMPLATES.md.)
+here. (Template + the `Origin` marker: the `constraints-and-decisions` schema.)
 
-**Section 3: Infrastructure Requirements (IP-XXX)** — field schema in ARTIFACT-TEMPLATES.md.
+**Section 3: Infrastructure Requirements (IP-XXX)** — field schema in the `constraints-and-decisions` schema.
 
 **Every constraint that implies platform work gets an IP-XXX item.** Constraints document boundaries; IP-XXX items document what those boundaries require operationally.
 
 ### 3. Non-Functional Requirements (nfrs.md) -- NFR-XXX
 
-Define measurable quality attributes. Every NFR has a numeric target. Field schema in ARTIFACT-TEMPLATES.md.
+Define measurable quality attributes. Every NFR has a numeric target. Field schema in the `nfrs` schema.
 
 **"Fast" is not a requirement.** "p95 response time < 200ms under 1000 concurrent users, measured by APM" is.
 

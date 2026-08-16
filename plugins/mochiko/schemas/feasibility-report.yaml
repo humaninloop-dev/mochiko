@@ -1,0 +1,78 @@
+# Schema data file for the feasibility-review report artifact template.
+# The feasibility reviewer's cross-artifact critique of a feature's analysis and design artifacts.
+# Source of truth for `mochiko-cli template feasibility-report` (producer view) and `--check` (checklist view).
+# Read this file raw when the binary is absent (D8 degraded path is first-class).
+template: feasibility-report
+title: Feasibility Review Report
+form: report-format.md
+register: ultra   # reports write ultra (report-format.md rule 8); a clean review is frontmatter-only
+overview: |
+  The feasibility reviewer's cross-artifact critique of a feature's analysis and design artifacts —
+  the conflicts no single artifact reveals in isolation, a three-state verdict, and the per-issue
+  resolution fuel the human gate reads. Follows the report envelope (report-format.md): this schema
+  carries only the feasibility payload. This report is cross-artifact FEASIBILITY (can the reviewed
+  artifacts be built together); intra-artifact COMPLETENESS is the completeness reviewer's territory.
+  Routing and the write location belong to the command lead, not this artifact — what happens on each
+  verdict (proceed / revise / escalate) lives in the lead's loop, and the filled report is seeded,
+  written, and collected by the lead; this schema stays path-agnostic. A clean review
+  (`verdict: feasible`, `findings: []`) is frontmatter-only, with verdict_basis and strengths still
+  filled.
+
+sections:
+  - name: Scope
+    required: true
+    contract: |
+      `artifacts_reviewed:` names the artifacts in scope this round — requirements.md,
+      constraints-and-decisions.md, nfrs.md on an analysis review, plus data-model.md and
+      contracts/api.yaml on a design review. The envelope identity fields (report, feature, round)
+      follow report-format.md.
+    check: "Does `artifacts_reviewed:` name the analysis/design artifacts in scope this round?"
+
+  - name: Verdict
+    required: true
+    contract: |
+      Whether the reviewed artifacts can be built *together* — a three-state verdict, each with a
+      distinct consequence:
+      - `feasible` — no blocking cross-artifact conflicts.
+      - `needs-revision` — addressable conflicts; the producer revises and the review re-runs (a
+        routine revision cycle).
+      - `infeasible` — a fundamental conflict routine revision cannot resolve; it requires a
+        business-level decision / escalation (relax a hard constraint, change a technology decision,
+        or rescope). Do NOT collapse `infeasible` into `needs-revision`, into `feasible`, or into a
+        generic FAIL — the escalation branch is the entire reason the third state exists.
+      `verdict_basis:` is the one line that drives the verdict. `strengths:` is one line, comma-brief.
+      A clean review (`feasible`, `findings: []`) still fills verdict_basis and strengths.
+    check: "Is the verdict one of feasible / needs-revision / infeasible (infeasible NOT collapsed into needs-revision or feasible), with a one-line verdict_basis and a one-line comma-brief strengths?"
+
+  - name: Findings
+    required: true
+    contract: |
+      Each finding keeps its `taxonomy:` — the three stay distinct, each surfacing a class of conflict
+      invisible inside any single artifact: `cross-artifact` (impossible combinations spanning two
+      artifacts) · `constraint-decision` (a technology decision violating a stated hard constraint) ·
+      `nfr-impossibility` (a quality target unachievable given the constraints or chosen
+      technologies). Four gate-fuel fields the human gate renders by name are ALL mandatory: `gap`
+      (the concern) · `at` (the evidence — the conflicting pair as `A ↔ B` with IDs, e.g. C-003 ↔
+      D-007) · `impact` (the design consequence, distinct from `sev`) · `fix` (the proposed resolution
+      or escalation). Dropping any one starves the gate. `sev` triages which surface first: `Critical`
+      (cannot be built until resolved) | `Important` (real, not strictly blocking).
+    check: "Does each finding carry a distinct `taxonomy` (cross-artifact / constraint-decision / nfr-impossibility), a `sev`, and all four gate-fuel fields — `gap`, `at` (the conflicting pair as `A ↔ B` with IDs), `impact`, and `fix`?"
+
+skeleton: |
+  ---
+  report: feasibility
+  feature: {{feature_id}}
+  round: {{round}}
+  artifacts_reviewed: [requirements.md, constraints-and-decisions.md, nfrs.md]   # + data-model.md, contracts/api.yaml on a design review
+  verdict: feasible | needs-revision | infeasible
+  verdict_basis: "{{one line — what drives the verdict}}"
+  strengths: "{{one line, comma-brief}}"
+  findings:
+    - {id: F1,
+       taxonomy: cross-artifact | constraint-decision | nfr-impossibility,
+       sev: Critical | Important,
+       at: "{{the conflicting pair, shown as A ↔ B with IDs (e.g. C-003 ↔ D-007)}}",
+       gap: "{{the conflict, one line}}",
+       impact: "{{the design consequence, one line}}",
+       fix: "{{proposed resolution or escalation, one line}}"}
+  ---

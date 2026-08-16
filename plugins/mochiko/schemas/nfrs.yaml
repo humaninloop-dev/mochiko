@@ -1,0 +1,104 @@
+# Schema data file for the `nfrs` pipeline artifact template.
+# Source of truth for `mochiko-cli template nfrs` (producer view) and `--check` (checklist view).
+# Read this file raw when the binary is absent (D8 degraded path is first-class).
+template: nfrs
+title: Non-Functional Requirements
+form: artifact-format.md
+register: full   # per artifact-format.md rule 11 — every ID and numeric target is a never-compress item
+overview: |
+  Measurable quality attributes with specific numeric targets (NFR-XXX). Follows the deliverable
+  envelope (artifact-format.md): the statement carries the content (no separate Description
+  paragraph), entries are one line each, upstream text cited by ID and never re-quoted, and the NFR
+  Summary is the artifact's ID index. Every NFR has a numeric target and a measurement method — a
+  vague quality attribute ("must be fast") is not an NFR.
+  ID numbering (all analysis artifacts): three-digit padded (NFR-001), sequential no gaps; the prefix
+  identifies the type; cross-references use the full ID.
+
+sections:
+  - name: NFR Summary
+    required: true
+    density: "one row per NFR"
+    contract: |
+      The ID index: one row per NFR — ID | Category | Target | Source. The Target column carries the
+      measurable threshold; the Source column carries the business requirement, SLA, or stakeholder
+      justifying it.
+    good: |
+      | ID | Category | Target | Source |
+      |----|----------|--------|--------|
+      | NFR-001 | performance | p95 < 200ms | FR-001 (user expects instant feedback) |
+      | NFR-002 | availability | 99.9% monthly | Business SLA commitment |
+    check: "Is the NFR Summary present as the ID index, one row per NFR with a category, a numeric target, and a source?"
+
+  - name: Non-Functional Requirements
+    required: true
+    density: "one measurable target per NFR"
+    contract: |
+      One record per NFR: a statement line carrying the Category and the source, then a numeric
+      Target, a Measured line (tool + conditions + frequency), and an optional Applies-to line
+      citing the TR-XXX it constrains. The statement IS the description. Every target is a specific
+      measurable threshold — never a vague adjective.
+
+      Field definitions:
+
+      | Field | Required | Format | Rules |
+      |-------|----------|--------|-------|
+      | ID | Yes | NFR-XXX | Sequential, three-digit padded, no gaps |
+      | Title | Yes | Free text | Descriptive, concise |
+      | Category | Yes | performance / availability / scalability / security / usability / maintainability | On the statement line; exactly one category |
+      | Source | Yes | Free text | On the statement line; business requirement, SLA, or stakeholder justifying the target |
+      | Requirement | Yes | One line | The quality attribute — the statement IS the description |
+      | Target | Yes | Numeric | Specific, measurable threshold |
+      | Measured | Yes | Compact line or short list | Tool, conditions, frequency of measurement |
+      | Applies to | No | TR-XXX references | Which technical requirements this NFR constrains |
+
+      Category examples (vague vs measurable):
+
+      | Category | Bad (Vague) | Good (Measurable) |
+      |----------|-------------|-------------------|
+      | performance | "System must be fast" | "p95 response time < 200ms under 1000 concurrent users, measured by APM" |
+      | availability | "System must be reliable" | "99.9% uptime measured monthly, excluding scheduled maintenance" |
+      | scalability | "Must handle growth" | "Must support 10,000 concurrent users with linear resource scaling to 50,000" |
+      | security | "Must be secure" | "Zero plaintext PII in logs; all data classified confidential+ encrypted AES-256-equivalent at rest" |
+      | usability | "Must be easy to use" | "New users complete primary workflow within 3 minutes without documentation" |
+      | maintainability | "Must be maintainable" | "Mean time to deploy hotfix < 2 hours from commit to production" |
+
+      Writing measurement methods: every target's Measured line names what tool, under what
+      conditions, and how frequently.
+    good: |
+      ## NFR-001: API Response Latency
+
+      **performance · source:** FR-001 (real-time interaction expectation) — API responses feel instantaneous under production load.
+
+      **Target:** p95 < 200ms, p99 < 500ms
+      **Measured:** APM, rolling 24h windows, continuous — at 1,000 concurrent users (70% read / 20% write / 10% search); excludes maintenance windows and bulk imports
+      **Applies to:** TR-001 · TR-005
+    bad: |
+      ## NFR-001: Performance
+
+      **performance** — System must be fast.
+      (No numeric target, no measurement method — a preference, not an NFR.)
+    check: "Does each NFR-XXX carry a statement line with exactly one category and a source, a specific numeric Target, a Measured line naming tool + conditions + frequency, and an Applies-to where not global — with no vague adjective standing in for a target?"
+
+skeleton: |
+  # Non-Functional Requirements: {feature_id}
+
+  > Measurable quality attributes with specific targets.
+
+  ## NFR Summary  *(the ID index)*
+
+  | ID | Category | Target | Source |
+  |----|----------|--------|--------|
+  | NFR-001 | performance | p95 < 200ms | FR-001 (user expects instant feedback) |
+  | NFR-002 | availability | 99.9% monthly | Business SLA commitment |
+
+  ---
+
+  ## NFR-001: [Descriptive Title]
+
+  **performance · source:** [business requirement or stakeholder justifying the target] — [the quality attribute, one line].
+
+  **Target:** [specific, measurable numeric threshold]
+  **Measured:** [tool + conditions + frequency — compact; a multi-condition method uses a short bullet list]
+  **Applies to:** TR-001 · TR-005  *(omit if it applies globally)*
+
+  ---

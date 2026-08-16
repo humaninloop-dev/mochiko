@@ -1,0 +1,69 @@
+# Schema data file for the analyst producer-disclosure report artifact template.
+# The requirements-analyst's per-round self-disclosure, authored alongside spec.md.
+# Source of truth for `mochiko-cli template analyst-report` (producer view) and `--check` (checklist view).
+# Read this file raw when the binary is absent (D8 degraded path is first-class).
+template: analyst-report
+title: Analyst Report
+form: report-format.md
+register: ultra   # reports write ultra (report-format.md rule 8); a routine round is frontmatter-only
+overview: |
+  The producer's self-disclosure report — authored alongside spec.md on each round; the lead
+  reads it to follow what was produced and what changed. Follows the report envelope
+  (report-format.md): this is a `disclosure` report, so it carries NO done-state and NO PASS/FAIL
+  (the no-self-verdict rule) — never read it as a gate; the clearing verdict lives in the critic's
+  review and the lead owns the loop decision. Machine-first: the lead is the reader, the
+  frontmatter is the report, and a round with nothing unusual needs no prose. `round` is the lead's
+  bounded-loop counter (round 1 is the first draft; later rounds are revisions following a critic
+  review). Output location: `.mochiko/specs/<feature>/analyst-report.md`, seeded and collected by
+  the lead. The producer fills in actual content following this structure.
+
+sections:
+  - name: Production
+    required: true
+    contract: |
+      What this round produced and what changed. `produced:` lists the artifacts authored
+      (`[spec.md]`). `changed_this_round:` is `[initial]` on round 1; on later rounds it names the
+      specific gaps addressed by the critic's gap IDs, so the lead can see progress and detect a
+      stalled, no-change round. Cite IDs; never restate spec text (the spec is the artifact the
+      critic and lead read directly).
+    check: "Does the report list what was `produced:` and a `changed_this_round:` of `[initial]` (round 1) or the critic gap IDs addressed (later rounds), citing IDs rather than restating spec text?"
+
+  - name: Uncertainty
+    required: true
+    contract: |
+      The producer-authored uncertainty carrier. `assumptions:` records what was assumed, one
+      entry each as `{id, assumption, why}` with the rationale compressed in. `open_questions:`
+      lists producer-surfaced unknowns feeding the clarification loop. Both are `[]` when empty
+      (omit-empty, never "None" prose).
+    check: "Are assumptions recorded as `{id, assumption, why}` and open_questions surfaced (each `[]` when none)?"
+
+  - name: Handoff
+    required: true
+    contract: |
+      `handoff:` is a one-line pointer to what the critic should grade plus any known soft spots —
+      a pointer, not a "ready" claim (the disclosure carries no done-state).
+    check: "Is `handoff:` a one-line pointer to what the critic should grade plus known soft spots (not a ready/done claim)?"
+
+  - name: Notes of note
+    required: false
+    contract: |
+      The one sanctioned prose block (report-format.md conditional-prose rule). Add
+      `## Notes of note` ONLY for genuine difficulties or non-obvious calls the fields cannot
+      carry; a routine round is frontmatter-only. Register `ultra`.
+    check: "Is a `## Notes of note` block present only for genuine difficulties or non-obvious calls (omitted on a routine round)?"
+
+skeleton: |
+  ---
+  report: disclosure
+  feature: {{feature_id}}
+  round: {{round}}
+  produced: [spec.md]
+  changed_this_round:            # round 1: [initial]; later rounds: the gap IDs / changes addressed
+    - "{{G3: added expiry edge case to US2}}"
+  assumptions:                   # one line each, with the rationale compressed in
+    - {id: A1, assumption: "{{assumption}}", why: "{{rationale, one line}}"}
+  open_questions: []             # producer-surfaced unknowns feeding the clarification loop
+  handoff: "{{what the critic should grade + any known soft spots, one line}}"
+  ---
+
+  ## Notes of note   <!-- only when non-empty: genuine difficulties or non-obvious calls -->

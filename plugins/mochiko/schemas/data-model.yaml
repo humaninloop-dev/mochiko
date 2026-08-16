@@ -1,0 +1,204 @@
+# Schema data file for the `data-model` pipeline artifact template.
+# Source of truth for `mochiko-cli template data-model` (producer view) and `--check` (checklist view).
+# Read this file raw when the binary is absent (D8 degraded path is first-class).
+template: data-model
+title: Data Model
+form: artifact-format.md
+register: full   # per artifact-format.md rule 11 — identifiers and classifications are never-compress items
+overview: |
+  The single canonical data-model.md deliverable: domain entities with relationships, per-attribute
+  sensitivity annotations, and state machines. Follows the deliverable envelope (artifact-format.md).
+  Every attribute carries a sensitivity classification; the handling-by-level defaults appear ONCE
+  per document; every Confidential or Restricted attribute is one Sensitivity Details row (specifics
+  and deviations only — format in patterns-entity-modeling/references/DATA-SENSITIVITY.md). Density is
+  not a gap; a gap is a missing entity, classification, or relationship. Conceptual entities, not an
+  OpenAPI schema (contracts trace to these entities, owned by mochiko:patterns-api-contracts).
+
+sections:
+  - name: Data Sensitivity Summary
+    required: true
+    contract: |
+      The coverage index for sensitivity: one row per classified attribute (Entity | Attribute |
+      Classification | Compliance), followed by the Handling defaults table stated ONCE per document
+      (Aspect | Confidential | Restricted — encryption at rest/in transit, audit logging, masking).
+      Per-attribute rows elsewhere then record only specifics and deviations from these defaults.
+    good: |
+      | Entity | Attribute | Classification | Compliance |
+      |--------|-----------|---------------|------------|
+      | User | email | Confidential | GDPR Art. 6 |
+      | User | passwordHash | Restricted | NIST 800-63 |
+
+      **Handling defaults (once per document — per-attribute rows record only specifics and deviations):**
+
+      | Aspect | Confidential | Restricted |
+      |--------|-------------|------------|
+      | Encryption at rest / in transit | Required (AES-256 / TLS 1.3+) | Required, strong (AES-256 / TLS 1.3+) |
+      | Audit logging | All access logged | All access logged + real-time anomaly alerts |
+      | Masking in logs/UIs | Required | Never displayed, never logged |
+    check: "Is the Data Sensitivity Summary present as the coverage index (one row per classified attribute with classification + compliance), with the handling-by-level defaults stated exactly once per document?"
+
+  - name: Entity Summary
+    required: true
+    contract: |
+      The entity index: one row per entity — Entity | Attributes (count) | Relationships (count) |
+      Status ([NEW] | [EXTENDS EXISTING]).
+    good: |
+      | Entity | Attributes | Relationships | Status |
+      |--------|------------|---------------|--------|
+      | User | 8 | 3 | [EXTENDS EXISTING] |
+      | Session | 5 | 1 | [NEW] |
+    check: "Is the Entity Summary present as an index, one row per entity with attribute and relationship counts and a NEW / EXTENDS EXISTING status?"
+
+  - name: Entities
+    required: true
+    contract: |
+      One record per entity, with its Traceability (FR-XXX, US#). An Attributes table (Attribute |
+      Type | Required | Default | Sensitivity | Description). On a brownfield [EXTENDS EXISTING]
+      entity, an Existing Attributes (Not Modified) table lists the untouched fields. A Sensitivity
+      Details table carries one row per Confidential+ attribute (Level | Retention | Access |
+      Deviations | Compliance) — specifics and deviations from the level default only. Relationships
+      for the entity where present (Relationship | Cardinality | Target | Delete Behavior | Description).
+    good: |
+      ## Entity: Session [NEW]
+
+      User authentication session. **Traceability:** FR-003, US#2
+
+      ### Attributes
+
+      | Attribute | Type | Required | Default | Sensitivity | Description |
+      |-----------|------|----------|---------|-------------|-------------|
+      | id | UUID | Yes | auto | Internal | Session identifier |
+      | token | Text(255) | Yes | - | Restricted | Session token |
+      | expiresAt | Timestamp | Yes | - | Internal | Expiration time |
+
+      ### Relationships
+
+      | Relationship | Cardinality | Target | Delete Behavior | Description |
+      |--------------|-------------|--------|-----------------|-------------|
+      | user | N:1 | User | Cascade | Session belongs to user |
+
+      ### Sensitivity Details
+
+      | Attribute | Level | Retention | Access | Deviations | Compliance |
+      |-----------|-------|-----------|--------|------------|------------|
+      | token | Restricted | Purge on session expiry | System-only | Audit: issued/revoked events only | — |
+    check: "Does each entity record carry Traceability, an Attributes table with a Sensitivity column, an Existing-Attributes table where it extends an existing entity, a Sensitivity Details row for every Confidential+ attribute, and its relationships?"
+
+  - name: Relationships
+    required: true
+    contract: |
+      Cross-entity relationship documentation — cardinality, delete behavior, and description per
+      relationship, per patterns-entity-modeling/references/RELATIONSHIP-PATTERNS.md.
+    check: "Are cross-entity relationships documented with cardinality and delete behavior?"
+
+  - name: State Machines
+    required: false
+    contract: |
+      State machine documentation — ONLY when stateful entities exist; omit otherwise. Per
+      patterns-entity-modeling/references/STATE-MACHINES.md.
+    check: "Where stateful entities exist, are their state machines documented (or the section omitted when none)?"
+
+  - name: Validation Rules
+    required: true
+    contract: |
+      Entity constraints and business rules, per
+      patterns-entity-modeling/references/VALIDATION-RULES.md.
+    check: "Are entity constraints and business rules documented?"
+
+skeleton: |
+  # Data Model: {feature_id}
+
+  > Entity definitions with relationships, per-attribute sensitivity annotations, and state machines.
+
+  ## Data Sensitivity Summary  *(the coverage index)*
+
+  | Entity | Attribute | Classification | Compliance |
+  |--------|-----------|---------------|------------|
+  | User | email | Confidential | GDPR Art. 6 |
+  | User | passwordHash | Restricted | NIST 800-63 |
+
+  **Handling defaults (once per document — per-attribute rows record only specifics and deviations):**
+
+  | Aspect | Confidential | Restricted |
+  |--------|-------------|------------|
+  | Encryption at rest / in transit | Required (AES-256 / TLS 1.3+) | Required, strong (AES-256 / TLS 1.3+) |
+  | Audit logging | All access logged | All access logged + real-time anomaly alerts |
+  | Masking in logs/UIs | Required | Never displayed, never logged |
+
+  ---
+
+  ## Entity Summary
+
+  | Entity | Attributes | Relationships | Status |
+  |--------|------------|---------------|--------|
+  | User | 8 | 3 | [EXTENDS EXISTING] |
+  | Session | 5 | 1 | [NEW] |
+
+  ---
+
+  ## Entity: User [EXTENDS EXISTING]
+
+  Existing entity extended with authentication fields. **Traceability:** FR-001, FR-002, US#1
+
+  ### Attributes
+
+  | Attribute | Type | Required | Default | Sensitivity | Description |
+  |-----------|------|----------|---------|-------------|-------------|
+  | passwordHash | Text | Yes | - | Restricted | Hashed password |
+  | lastLoginAt | Timestamp | No | null | Internal | Last login time |
+
+  ### Existing Attributes (Not Modified)
+
+  | Attribute | Type | Sensitivity | Description |
+  |-----------|------|-------------|-------------|
+  | id | UUID | Internal | Existing primary key |
+  | email | Email | Confidential | Existing email field |
+
+  ### Sensitivity Details  *(one row per Confidential+ attribute — specifics + deviations from the level default)*
+
+  | Attribute | Level | Retention | Access | Deviations | Compliance |
+  |-----------|-------|-----------|--------|------------|------------|
+  | passwordHash | Restricted | Until account deletion; purge on delete | System-only; no user/admin read | — | NIST 800-63 (DS-001) |
+  | email | Confidential | Delete <= 30d after account closure | Users read own; admins read all | Log masking: j***@example.com | GDPR Art. 6, Art. 17 |
+
+  ---
+
+  ## Entity: Session [NEW]
+
+  User authentication session. **Traceability:** FR-003, US#2
+
+  ### Attributes
+
+  | Attribute | Type | Required | Default | Sensitivity | Description |
+  |-----------|------|----------|---------|-------------|-------------|
+  | id | UUID | Yes | auto | Internal | Session identifier |
+  | userId | Reference(User) | Yes | - | Internal | Owning user |
+  | token | Text(255) | Yes | - | Restricted | Session token |
+  | expiresAt | Timestamp | Yes | - | Internal | Expiration time |
+  | createdAt | Timestamp | Yes | auto | Internal | Creation time |
+
+  ### Relationships
+
+  | Relationship | Cardinality | Target | Delete Behavior | Description |
+  |--------------|-------------|--------|-----------------|-------------|
+  | user | N:1 | User | Cascade | Session belongs to user |
+
+  ### Sensitivity Details
+
+  | Attribute | Level | Retention | Access | Deviations | Compliance |
+  |-----------|-------|-----------|--------|------------|------------|
+  | token | Restricted | Purge on session expiry | System-only | Audit: issued/revoked events only | — |
+
+  ---
+
+  ## Relationships
+
+  [Cross-entity relationship documentation — see RELATIONSHIP-PATTERNS.md]
+
+  ## State Machines
+
+  [State machine documentation — only when stateful entities exist; omit otherwise — see STATE-MACHINES.md]
+
+  ## Validation Rules
+
+  [Entity constraints and business rules — see VALIDATION-RULES.md]

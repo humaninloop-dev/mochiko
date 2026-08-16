@@ -136,6 +136,15 @@ fn optional_section_fields_render_when_present() {
         entry_view.contains("_Density:_"),
         "feature-entry producer view should render density notes"
     );
+
+    // nfrs's NFR statement-format section carries a `bad` counter-example — the only shipped
+    // schema that does, so this is the one place the `bad` render path is exercised.
+    let nfrs = schema::parse(&resolve_embedded("nfrs").yaml).unwrap();
+    let nfrs_view = nfrs.producer_view("schemas: embedded");
+    assert!(
+        nfrs_view.contains("Bad example:"),
+        "nfrs producer view should render the bad example"
+    );
 }
 
 // --- dispatch / exit codes ---

@@ -32,6 +32,18 @@ arch-opinion, outside the depth dial per PO-D3 S7 / review-fold #9). `COMPLIANCE
 `ESSENTIAL-FLOOR.md` worked-example framing gained **pure additions** (D7 level-blind clause; a
 depth note + coverage annotation) — additions ride the decision row and take no strip entry.
 
+## [v0.77.0] Module-assembly pointer → mixed source (3 modules schema, KM raw `.md`) — D3 later-ratchet
+- **Disposition:** superseded → `evolution-notes` / `layer-rules` / `release-gates` from `mochiko-cli template <module>` (or Read `plugins/mochiko/schemas/<module>.yaml` raw when the binary is absent); `knowledge-management` from `templates/constitution-modules/` (survives as raw `.md`). The Module assembly lead-in re-pointed; the routing table below and the `templates/constitution-modules/` dir link (now scoped to KM) unchanged.
+- **Tier failed:** n/a — supersession by ruling (schema-based-template-guidance **D3 later-ratchet** + user ruling 2026-08-16 (recorded at the v0.76.0 landing); record `.mochiko/brainstorms/schema-based-template-guidance/record.md` D3; `DECISIONS.md` "Template-schema ratchet" row (landed at v0.77.0))
+- **Content (superseded, verbatim):**
+
+```text
+SKILL.md:221-222  Modules from [`templates/constitution-modules/`](../../templates/constitution-modules/) attach
+                  per the synthesis's module selections — but **module content routes by surface, like everything
+```
+- **Kept deliberately:** the routes-by-surface clause, the superseded-in-file-attach note, and the full Module | Attach when | Routes to table. `references/INTERROGATION-AGENDA.md:46` (KM adoption pointer) untouched per plan.
+- **Consumers assessed:** the module `.md` → schema conversion + deletion is P3 scope (its own strips). Cold re-grep confirms no dangling module-glob/dir pointers remain (surviving `constitution-modules` references are KM-specific).
+
 ## [v0.76.0] `governance-surfaces-template.md` + `governance-intent-template.md` read-pointers → schemas (two-arm) — schema-based-template-guidance D1/D8
 - **Disposition:** superseded → `mochiko-cli template governance-surfaces` / `template governance-intent`, or Read `plugins/mochiko/schemas/governance-surfaces.yaml` / `plugins/mochiko/schemas/governance-intent.yaml` raw (D8-first-class). Three sites: `SKILL.md` "Artifact shapes" pointer + "Every governance set MUST include, per" pointer (both → governance-surfaces); `references/INTERROGATION-AGENDA.md` synthesis-shape mention (→ governance-intent).
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/schema-based-template-guidance/record.md` D1/D3/D8; `DECISIONS.md` "Template-schema CLI ruled").

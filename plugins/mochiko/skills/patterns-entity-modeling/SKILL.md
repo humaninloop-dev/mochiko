@@ -156,111 +156,15 @@ See [VALIDATION-RULES.md](references/VALIDATION-RULES.md) for constraint pattern
 
 ## data-model.md Structure
 
-This is the **single canonical `data-model.md` template**, following the deliverable
-envelope in [`artifact-format.md`](../../templates/artifact-format.md). Every attribute
-carries a sensitivity classification; the handling-by-level defaults appear **once per
-document**; every Confidential or Restricted attribute is one **Sensitivity Details row**
-(specifics + deviations only — format in [DATA-SENSITIVITY.md](references/DATA-SENSITIVITY.md)).
-Density is not a gap; a gap is a missing entity, classification, or relationship.
-
-```markdown
-# Data Model: {feature_id}
-
-> Entity definitions with relationships, per-attribute sensitivity annotations, and state machines.
-
-## Data Sensitivity Summary  *(the coverage index)*
-
-| Entity | Attribute | Classification | Compliance |
-|--------|-----------|---------------|------------|
-| User | email | Confidential | GDPR Art. 6 |
-| User | passwordHash | Restricted | NIST 800-63 |
-
-**Handling defaults (once per document — per-attribute rows record only specifics and deviations):**
-
-| Aspect | Confidential | Restricted |
-|--------|-------------|------------|
-| Encryption at rest / in transit | Required (AES-256 / TLS 1.3+) | Required, strong (AES-256 / TLS 1.3+) |
-| Audit logging | All access logged | All access logged + real-time anomaly alerts |
-| Masking in logs/UIs | Required | Never displayed, never logged |
-
----
-
-## Entity Summary
-
-| Entity | Attributes | Relationships | Status |
-|--------|------------|---------------|--------|
-| User | 8 | 3 | [EXTENDS EXISTING] |
-| Session | 5 | 1 | [NEW] |
-
----
-
-## Entity: User [EXTENDS EXISTING]
-
-Existing entity extended with authentication fields. **Traceability:** FR-001, FR-002, US#1
-
-### Attributes
-
-| Attribute | Type | Required | Default | Sensitivity | Description |
-|-----------|------|----------|---------|-------------|-------------|
-| passwordHash | Text | Yes | - | Restricted | Hashed password |
-| lastLoginAt | Timestamp | No | null | Internal | Last login time |
-
-### Existing Attributes (Not Modified)
-
-| Attribute | Type | Sensitivity | Description |
-|-----------|------|-------------|-------------|
-| id | UUID | Internal | Existing primary key |
-| email | Email | Confidential | Existing email field |
-
-### Sensitivity Details  *(one row per Confidential+ attribute — specifics + deviations from the level default)*
-
-| Attribute | Level | Retention | Access | Deviations | Compliance |
-|-----------|-------|-----------|--------|------------|------------|
-| passwordHash | Restricted | Until account deletion; purge on delete | System-only; no user/admin read | — | NIST 800-63 (DS-001) |
-| email | Confidential | Delete ≤ 30d after account closure | Users read own; admins read all | Log masking: j***@example.com | GDPR Art. 6, Art. 17 |
-
----
-
-## Entity: Session [NEW]
-
-User authentication session. **Traceability:** FR-003, US#2
-
-### Attributes
-
-| Attribute | Type | Required | Default | Sensitivity | Description |
-|-----------|------|----------|---------|-------------|-------------|
-| id | UUID | Yes | auto | Internal | Session identifier |
-| userId | Reference(User) | Yes | - | Internal | Owning user |
-| token | Text(255) | Yes | - | Restricted | Session token |
-| expiresAt | Timestamp | Yes | - | Internal | Expiration time |
-| createdAt | Timestamp | Yes | auto | Internal | Creation time |
-
-### Relationships
-
-| Relationship | Cardinality | Target | Delete Behavior | Description |
-|--------------|-------------|--------|-----------------|-------------|
-| user | N:1 | User | Cascade | Session belongs to user |
-
-### Sensitivity Details
-
-| Attribute | Level | Retention | Access | Deviations | Compliance |
-|-----------|-------|-----------|--------|------------|------------|
-| token | Restricted | Purge on session expiry | System-only | Audit: issued/revoked events only | — |
-
----
-
-## Relationships
-
-[Cross-entity relationship documentation — see RELATIONSHIP-PATTERNS.md]
-
-## State Machines
-
-[State machine documentation — only when stateful entities exist; omit otherwise — see STATE-MACHINES.md]
-
-## Validation Rules
-
-[Entity constraints and business rules — see VALIDATION-RULES.md]
-```
+The canonical `data-model.md` template — its structure, the per-attribute sensitivity shape, and a
+worked example — is delivered by the `data-model` schema: run `mochiko-cli template data-model` for
+the producer view, or Read `plugins/mochiko/schemas/data-model.yaml` raw when the binary is absent
+(the shipped schema is the first-class source of truth, D8). This skill owns the `data-model.md`
+artifact and its data-sensitivity taxonomy; the schema carries the fill-in shape. Every attribute
+carries a sensitivity classification; the handling-by-level defaults appear **once per document**;
+every Confidential or Restricted attribute is one Sensitivity Details row (specifics and deviations
+only — format in [DATA-SENSITIVITY.md](references/DATA-SENSITIVITY.md)). Density is not a gap; a gap
+is a missing entity, classification, or relationship.
 
 ## Validation Script
 

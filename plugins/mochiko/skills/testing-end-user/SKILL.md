@@ -73,7 +73,8 @@ Each assert MUST receive an explicit pass/fail evaluation. **No default to PASS*
 
 **5. Generate Report**
 
-Machine-first, per [references/REPORT-TEMPLATES.md](references/REPORT-TEMPLATES.md): the
+Machine-first, per the `verification-report` schema (`mochiko-cli template verification-report`, or
+Read `plugins/mochiko/schemas/verification-report.yaml` raw when the binary is absent): the
 persisted verification-report file is YAML frontmatter (per-task results, quality gates,
 classification, recommendation) — **all PASS** → frontmatter only; **any FAIL / PARTIAL /
 TIMEOUT / ERROR** → a `## Failures` section with the evidence tables and bounded output
@@ -81,7 +82,58 @@ excerpts for the failing items. Truncation rules there.
 
 **6. Present Checkpoint**
 
-Ask the human to approve, reject, or retry. The human decision gates completion — no proceeding without explicit human approval.
+Ask the human to approve, reject, or retry. The human decision gates completion — no proceeding without explicit human approval. Present the checkpoint in-memory — never persisted; regenerate full evidence on "View Details".
+
+**All Pass**
+
+```
+AskUserQuestion(
+  questions: [{
+    question: "Verification C{N} gate passed.\n\nAll {count} assertions passed in {time}s.\n\nRecommendation: Approve",
+    header: "Checkpoint",
+    options: [
+      {label: "Approve", description: "Proceed to next task"},
+      {label: "View Details", description: "Show full evidence"},
+      {label: "Retry", description: "Re-run verification"}
+    ],
+    multiSelect: false
+  }]
+)
+```
+
+**Any Failure**
+
+```
+AskUserQuestion(
+  questions: [{
+    question: "Verification C{N} gate needs review.\n\n{pass}/{total} assertions passed.\nFailed: {failed_assert_summary}\n\nRecommendation: {recommendation}",
+    header: "Checkpoint",
+    options: [
+      {label: "Approve", description: "Accept despite failures"},
+      {label: "Reject", description: "Block completion"},
+      {label: "Retry", description: "Re-run with adjustments"}
+    ],
+    multiSelect: false
+  }]
+)
+```
+
+**If Retry Selected**
+
+```
+AskUserQuestion(
+  questions: [{
+    question: "What adjustments should be made?",
+    header: "Retry",
+    options: [
+      {label: "Increase timeout", description: "Add more time for slow operations"},
+      {label: "Retry as-is", description: "Run again without changes"},
+      {label: "Skip assertion", description: "Remove problematic assertion"}
+    ],
+    multiSelect: false
+  }]
+)
+```
 
 ### Task Classification
 
@@ -146,8 +198,9 @@ When a verification run includes quality gates, execute them alongside `**TEST:*
 ### Quality Gate Report Format
 
 Record each gate in the verification-report's `quality_gates` frontmatter section — the format
-(status from exit code, command, pass/fail/skip counts for suites) is defined in
-[references/REPORT-TEMPLATES.md](references/REPORT-TEMPLATES.md).
+(status from exit code, command, pass/fail/skip counts for suites) is defined in the
+`verification-report` schema (`mochiko-cli template verification-report`, or Read
+`plugins/mochiko/schemas/verification-report.yaml` raw when the binary is absent).
 
 ### Quality Gate Auto-Resolution
 
@@ -200,7 +253,7 @@ If any of these thoughts arise, STOP immediately:
 |---------|-----------------|-----|
 | Skipping setup validation | Actions fail mysteriously on assumed-complete setup | Run setup, capture its output, fail explicitly |
 | Missing background cleanup | Stale processes interfere with the next test | Track all PIDs; kill after pass or fail; verify cleanup |
-| Truncating evidence prematurely | Critical failure information cut from the report | Follow REPORT-TEMPLATES.md truncation rules; include log-file locations |
+| Truncating evidence prematurely | Critical failure information cut from the report | Follow the `verification-report` schema's truncation rules; include log-file locations |
 | PASS without assert verification | PASS claimed on unevaluated asserts | Every assert gets an explicit pass/fail; unevaluated = failure |
 | Proceeding after rejection | Execution continues past an explicit human reject | Rejection gates completion; retry or abort |
 | Skipping checkpoint presentation | Human never sees results — no audit trail, no gate | Every test ends with a checkpoint; no silent completion |
@@ -209,5 +262,5 @@ If any of these thoughts arise, STOP immediately:
 
 - [references/TASK-PARSING.md](references/TASK-PARSING.md) — detection boundaries, field-extraction algorithm, and legacy-marker normalization (parse semantics; grammar vocabulary is referenced from the owner)
 - [references/EVIDENCE-CAPTURE.md](references/EVIDENCE-CAPTURE.md) — console capture, background-process PID tracking, timeout handling, cleanup
-- [references/REPORT-TEMPLATES.md](references/REPORT-TEMPLATES.md) — the verification-report file format (frontmatter + failure-only prose), checkpoint presentation, truncation
+- `verification-report` schema (`mochiko-cli template verification-report`, or Read `plugins/mochiko/schemas/verification-report.yaml` raw when the binary is absent) — the verification-report file format (frontmatter + failure-only prose), truncation; checkpoint presentation lives in-body at step 6, not in the schema
 - **Grammar owner:** [`../patterns-vertical-tdd/references/TEST-GRAMMAR.md`](../patterns-vertical-tdd/references/TEST-GRAMMAR.md) — the canonical `**TEST:**` marker set, field skeleton, action-modifier vocabulary, and assert-pattern vocabulary this skill consumes (§ *Unified TEST: Format*, § *Field Definitions*, § *Action Modifiers*, § *Assert Patterns*, § *Legacy Format Support*)

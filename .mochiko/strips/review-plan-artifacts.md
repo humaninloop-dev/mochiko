@@ -10,6 +10,21 @@ bullet like the one stripped from `review-specifications`). One contested keep (
 is a library-wide consistency ruling, not a cluster call (see the wave return); note L16 already carries
 the `loop-discipline` reference the strip disposition would add.
 
+## [v0.77.0] `advocate-report-template` consumer pointers → the `advocate-report` schema (two-arm) — D3 later-ratchet
+- **Disposition:** superseded → the `advocate-report` schema (`mochiko-cli template advocate-report`, or Read `plugins/mochiko/schemas/advocate-report.yaml` raw when the binary is absent). Five consumer pointers re-pointed: `SKILL.md` Incremental-mode report-shape line + the Related bullet; `references/ISSUE-TEMPLATES.md` assembled-deliverable line, working-report-shape line, and the Assembled report paragraph.
+- **Tier failed:** n/a — supersession by ruling (schema-based-template-guidance **D3 later-ratchet** + user ruling 2026-08-16 (recorded at the v0.76.0 landing); record `.mochiko/brainstorms/schema-based-template-guidance/record.md` D3; `DECISIONS.md` "Template-schema ratchet" row (landed at v0.77.0))
+- **Content (superseded, verbatim):**
+
+```text
+SKILL.md:128  The same `advocate-report-template.md` shape, with the incremental fields set and this
+SKILL.md:211  - `mochiko:advocate-report-template` — the deliverable report shape the lead reads
+references/ISSUE-TEMPLATES.md:5   reads is the `mochiko:advocate-report-template` (see [Assembled report](#assembled-report) below) —
+references/ISSUE-TEMPLATES.md:84  the lead is assembled with the `advocate-report-template` — see below.
+references/ISSUE-TEMPLATES.md:132 The deliverable report the lead reads is structured with `mochiko:advocate-report-template`
+```
+- **Kept deliberately:** all surrounding prose (the incremental `consistency_checks:` block, the working-report shape, the Assembled report body) — only the template-file token was superseded.
+- **Consumers assessed:** the `advocate-report-template.md` template deletion + schema authoring is P1 scope; the router row for the schema is re-typed in `strips/mochiko.md` (P5). The plan-review ARTIFACT-CHECKLISTS `--check` re-key is a **separate P2 edit to this same primitive** — its companion strip entry (if present) is P2's; this strip file is a shared write surface (flagged in the P5 report). Cold re-grep confirms zero remaining `advocate-report-template` references in `plugins/`.
+
 ## [v0.76.0] Cycle-card Review Focus row cites the `tasks --check` view (D7 re-key, thin) — schema-based-template-guidance D7/D8
 - **Disposition:** superseded → the Cycle cards row's Key-checks cell now cites `mochiko-cli template tasks --check` (or Read `plugins/mochiko/schemas/tasks.yaml` raw) as the source its cycle-card criteria mirror. THIN scope (contest-accepted per plan §5): only the tasks in-scope-template checklist is re-keyed; `references/ARTIFACT-CHECKLISTS.md` and all out-of-scope artifact checklists (requirements / constraints / nfrs / data-model / contracts / quickstart / architecture — their templates are in-skill refs, D3 leaves them `.md`) are left untouched.
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/schema-based-template-guidance/record.md` D7 (`--check` grading view, checklists re-key)/D8; `DECISIONS.md` "Template-schema CLI ruled").

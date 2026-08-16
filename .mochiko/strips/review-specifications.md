@@ -4,6 +4,20 @@ Entry formats: `strips/README.md`. Wave context: the specify cluster wave (v0.13
 Single-consumer primitive (the specify critique, mounted on `devils-advocate`) — strips
 ruled in-wave.
 
+## [v0.77.0] `templates/advocate-report-template.md` pointers → the `advocate-report` schema (two-arm) — D3 later-ratchet
+- **Disposition:** superseded → the `advocate-report` schema (`mochiko-cli template advocate-report`, or Read `plugins/mochiko/schemas/advocate-report.yaml` raw when the binary is absent). Two consumer pointers re-pointed: the Question Format Clarifications-block pointer and the Output Format single-source pointer.
+- **Tier failed:** n/a — supersession by ruling (schema-based-template-guidance **D3 later-ratchet** + user ruling 2026-08-16 (recorded at the v0.76.0 landing); record `.mochiko/brainstorms/schema-based-template-guidance/record.md` D3; `DECISIONS.md` "Template-schema ratchet" row (landed at v0.77.0))
+- **Content (superseded, verbatim):**
+
+```text
+SKILL.md:38-39   The exact shape is the Clarifications block of
+                 `templates/advocate-report-template.md` — fill that structure, don't invent a variant.
+SKILL.md:131-132 `strengths:` field — is single-sourced at `templates/advocate-report-template.md`; fill
+                 that structure rather than inventing one.
+```
+- **Kept deliberately:** the surrounding Question Format and Output Format prose (the 2-3-options rule, the machine-first findings list, the inline-return clause) — only the template-file token was superseded.
+- **Consumers assessed:** the template deletion + schema authoring is P1 scope. Cold re-grep confirms zero remaining `advocate-report-template` references in `plugins/`.
+
 ## [v0.67.0] Excess / unpaid-scope class added — defect-class lead-in re-keyed
 - **Disposition:** superseded → the excess posture from the architect-role ruling: the defect-class table gains a remove-shaped sixth class, so the "five ... those questions hunt" lead-in was rewritten.
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/architect-role-pushback-and-abstraction/record.md`, D3 as amended by its F3 calibration clause; DECISIONS.md combined-wave build row).

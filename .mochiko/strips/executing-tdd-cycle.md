@@ -13,6 +13,195 @@ ruled" row) — the report repair: the format text that forced prose onto passin
 corrected, and the envelope's register and prose-on-clean check are bound where the report is
 actually authored.
 
+## [v0.77.0] Reference `references/CYCLE-REPORT-FORMAT.md` DELETED at the phase-2 gate (companion to the entries below)
+- **Disposition:** deleted — the reference's content was superseded into `schemas/cycle-report.yaml` (the reference-supersession entry below, P1 phase 1) and its two SKILL.md consumer pointers were re-pointed to the two-arm `cycle-report` form (the consumer-pointer entry below, authored by the P5 re-point seat, which explicitly anticipated this companion deletion entry). This entry records the file deletion landing after the V1 fidelity audit PASSED.
+- **Tier failed:** n/a — supersession by ruling (schema-based-template-guidance D3 later-ratchet + user ruling 2026-08-16; `DECISIONS.md` "Template-schema ratchet" row).
+- **Content:** the whole `references/CYCLE-REPORT-FORMAT.md` is embedded verbatim in the reference-supersession entry below — not duplicated here (GI-006 reconstruction is satisfied there).
+- **Consumers assessed:** cold re-grep after the phase-2 landing confirms NO `CYCLE-REPORT-FORMAT` reference remains anywhere in `plugins/`. No router row added for `cycle-report` (plan-minimalism ruling — matches architect-report). Shared-write-surface note: the re-point seat (P5) and P1 both wrote this strip; the three v0.77.0 entries are disjoint (re-points · reference→schema supersession · this deletion).
+## [v0.77.0] Reference `references/CYCLE-REPORT-FORMAT.md` superseded by schema — `schemas/cycle-report.yaml` + `mochiko-cli template cycle-report`
+- **Disposition:** superseded → `schemas/cycle-report.yaml` + `mochiko-cli template cycle-report` (D8 raw-Read fallback when the binary is absent). Scope is the reference file ONLY — the `executing-tdd-cycle` SKILL.md body is untouched by this seat.
+- **Tier failed:** n/a — supersession by ruling (schema-based-template-guidance D3 later-ratchet + user ruling 2026-08-16; `DECISIONS.md` "Template-schema ratchet" row; record `.mochiko/brainstorms/schema-based-template-guidance/record.md`)
+- **Ratchet context:** the D3 later-ratchet exercised over the Class B2 report-format skill references per the user ruling 2026-08-16 (against DM scope-breadth caution + the open n=0 first-live-run watch). Same mechanism as the v0.76.0 first wave: the schema data file is the source of truth and the binary renders the producer + `--check` views over it. **Source-file deletion is PHASE-2-gated** — the source file remains on disk until the fidelity audit (V1) PASSES; this entry records the supersession now so the record is complete before deletion.
+- **Schema mapping (M1):** `sections` = the payload frontmatter field-clusters (Identity, Decomposition, File & dependency changes, Deviations & self-assessment) + the two sanctioned conditional-prose blocks as optional sections (Notes of note, Failure narrative); the Field Definitions table folds into the per-section `contract:`; the two worked Examples ride as section `good:` values (the passing cycle on Decomposition, the failed attempt on Failure narrative); `skeleton:` = the annotated frontmatter schema block + the two prose-block stubs. The cycle-specific sanctioned-set doctrine (exactly two H2, a third is a defect; prose-on-clean is a defect) rides `overview:`; the SHARED report doctrine stays `form: report-format.md`, pointer only. `--check` lines authored NET-NEW (no checklist consumer; disclosed).
+- **Content (VERBATIM — the superseded source, reproduced for GI-006 reconstruction before the phase-2 deletion):**
+~~~markdown
+# Cycle Report Format
+
+The implementer produces a `cycle-report.md` after each cycle execution (and after each
+rework). Envelope + shared rules: `templates/report-format.md` (machine-first, conditional
+prose, no restatement) — this file carries only the cycle payload. The report is a truthful
+self-disclosure of what happened — not a verdict on whether the result passes; the lead
+owns that verdict and the verifier grades independently. Consumers: the lead's checkpoint
+verdict (the frontmatter) · the verification seat's code-minimalism lens
+(`mochiko:review-code-minimalism` reads the disclosed decomposition and its rung claims
+alongside the cycle's diff) · and, on failure, the debugging trail (the failure narrative).
+
+## Frontmatter Schema
+
+```yaml
+---
+report: cycle
+feature: user-auth
+cycle: 3                    # Cycle number (integer) or "fix" for fix passes
+attempt: 1                  # Attempt number within this cycle (1 = first attempt)
+status: pass | fail | blocked   # Execution outcome self-report (not the checkpoint verdict)
+decomposition:              # The build-time task breakdown of the card (this run's, disclosed)
+  - {id: T3.1, task: "failing test for POST /api/session", path: src/routes/session.test.ts, rung: 7}
+  - {id: T3.2, task: "session route handler", path: src/routes/session.ts, rung: 7}
+tasks_total: 4              # Total tasks in the decomposition above
+tasks_completed: 4          # Decomposition tasks completed
+failed_tasks: []            # Task IDs not completed / failing, with a one-line reason each
+files_created:              # New files created during this cycle
+  - src/routes/api.ts
+  - src/routes/api.test.ts
+files_modified:             # Existing files modified during this cycle
+  - src/models/user.ts
+brownfield_tasks: 1         # Count of decomposition tasks classified extend/modify
+domain_deps_added: []       # Domain-layer registry additions this cycle (package names; [] if none)
+deviations: []              # One-line, ID-cited departures from the task descriptions ([] if none)
+checkpoint_criteria_met: true  # The implementer's self-assessment (the lead verifies independently)
+---
+```
+
+### Field Definitions
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `report` / `feature` / `slice` | envelope | yes | Per `templates/report-format.md` (`slice:` only when slice-scoped) |
+| `cycle` | integer or `"fix"` | yes | Cycle number from tasks.md, or `"fix"` for fix passes |
+| `attempt` | integer | yes | 1 for first attempt, increments on retry |
+| `decomposition` | list | yes | The build-time task breakdown of the card — `{id, task, path, rung}` per task, IDs local to this report (`T{cycle}.{n}`). `rung` is the pre-code ladder choice per `mochiko:patterns-code-minimalism` (1–7; a rung-1 skip is a decomposition entry with no path, its why one line in `task:`). The disclosure surface for the decomposition (the card in `tasks.md` stays undecomposed); rework and failure reports cite these IDs; the verification seat grades the rung claims |
+| `status` | enum | yes | `pass` (all tasks done, tests green) / `fail` (tasks failing) / `blocked` (could not proceed). A self-report of execution outcome, not the checkpoint verdict |
+| `tasks_total` | integer | yes | Number of tasks in the decomposition |
+| `tasks_completed` | integer | yes | Decomposition tasks completed |
+| `failed_tasks` | list | yes | `[]` if none; else `- {id: T3.2, why: "<one line>"}` per failed/incomplete task |
+| `files_created` | list of strings | yes | Paths of new files created (empty list if none) |
+| `files_modified` | list of strings | yes | Paths of existing files modified (empty list if none) |
+| `brownfield_tasks` | integer | yes | Count of decomposition tasks classified extend/modify (per the card's brownfield exposure) |
+| `domain_deps_added` | list of strings | yes | Domain-layer dependency registry additions made this cycle (empty list if none). The visibility floor for registry growth: additions are disclosed here and surfaced at the checkpoint; a non-empty list always forces a human checkpoint — never auto-approved |
+| `deviations` | list of strings | yes | Departures from the task descriptions, one line each, citing the task ID (e.g. `"T3.4: argon2 over bcrypt (C-012 allows)"`). `[]` if none |
+| `checkpoint_criteria_met` | boolean | yes | The implementer's assessment of whether the cycle's checkpoint criteria are satisfied; a self-report, not the verdict — the lead verifies independently and decides |
+
+## Conditional Prose
+
+Prose sections per the conditional-prose rule (`report-format.md`) — a clean passing cycle
+is frontmatter-only. This file's sanctioned set is **exactly the two sections below**; a
+third H2 is a defect. Register per envelope rule 8: `## Notes of note` writes `ultra`, the
+failure narrative `full`. And, restated here because this is where the report is authored —
+**prose on a clean report is a defect** (envelope rule 9): `status: pass` with any body
+section beyond those two is not a clean report; it fails the clearing conditions and returns
+to the lead.
+
+### Notes of note *(only when non-empty)*
+
+```markdown
+## Notes of note
+```
+
+The producer-authored uncertainty carrier: non-obvious decisions (pattern choices where
+multiple valid approaches existed, technology choices within a task's scope — one line
+each, ID-cited), genuine difficulties, and flagged blockers the lead should weigh at the
+checkpoint. Not a narration of what the tasks already describe; cite IDs, never restate
+task text.
+
+### Failure narrative *(mandatory when `status` is `fail` or `blocked`, or a task failed in execution)*
+
+```markdown
+## Failure narrative
+```
+
+Debug value concentrates here — full detail: what failed (per failed task), why (the
+failing test/output evidence), what was tried, and the state things were left in. A failed
+cycle keeps the fuller narrative; the slim format above is the passing-cycle format.
+
+**A task you were never meant to run is not an execution failure.** A verifier-owned
+`**TEST:**` gate the producer must not execute belongs in `failed_tasks:` with that one-line
+reason, and it triggers no narrative: a cycle whose only incomplete task is one of those,
+everything else green, is a clean passing cycle and stays frontmatter-only.
+
+## Examples
+
+Passing cycle (complete report):
+
+```markdown
+---
+report: cycle
+feature: user-auth
+cycle: 3
+attempt: 1
+status: pass
+decomposition:
+  - {id: T3.1, task: "failing E2E test for profile update", path: src/routes/api.test.ts, rung: 7}
+  - {id: T3.2, task: "profile update route handler", path: src/routes/api.ts, rung: 7}
+  - {id: T3.3, task: "wire route into router", path: src/routes/api.ts, rung: 6}
+  - {id: T3.4, task: "[EXTEND] lastLogin field on User", path: src/models/user.ts, rung: 2}
+tasks_total: 4
+tasks_completed: 4
+failed_tasks: []
+files_created:
+  - src/routes/api.ts
+  - src/routes/api.test.ts
+files_modified:
+  - src/models/user.ts
+brownfield_tasks: 1
+domain_deps_added: []
+deviations:
+  - "T3.4: followed existing Sequelize patterns for the [EXTEND] on User"
+checkpoint_criteria_met: true
+---
+```
+
+Failed attempt:
+
+```markdown
+---
+report: cycle
+feature: user-auth
+cycle: 4
+attempt: 2
+status: fail
+decomposition:
+  - {id: T4.1, task: "failing test for token refresh", path: src/middleware/auth.refresh.test.ts, rung: 7}
+  - {id: T4.2, task: "refresh contract test", path: src/middleware/auth.contract.test.ts, rung: 7}
+  - {id: T4.3, task: "refresh handling in auth middleware", path: src/middleware/auth.ts, rung: 2}
+tasks_total: 3
+tasks_completed: 2
+failed_tasks:
+  - {id: T4.3, why: "auth middleware test red — token refresh race"}
+files_created: []
+files_modified:
+  - src/middleware/auth.ts
+brownfield_tasks: 0
+domain_deps_added: []
+deviations: []
+checkpoint_criteria_met: false
+---
+
+## Failure narrative
+
+T4.3's refresh test (`auth.refresh.test.ts:41`) fails intermittently: the refresh handler
+reads `user.lastLogin` before C3's write commits. Tried serializing on the session row
+(still races under the test's parallel logins) and moving the read behind the commit hook
+(breaks the T4.2 contract test). The middleware currently guards with a retry, which the
+test's timing still beats about 1 run in 5. Left red; needs a decision between a
+transaction boundary change (touches C3 code) and relaxing the timing assertion.
+```
+~~~
+- **Kept deliberately:** nothing dropped — every frontmatter field, every Field-Definitions row, both conditional-prose sections, the "a task you were never meant to run is not an execution failure" rule, and both Examples have a home in the schema. The `executing-tdd-cycle` SKILL.md body and its execution discipline are untouched.
+- **Consumers assessed:** consumers per the reference's own header — the lead's checkpoint verdict (the frontmatter), the verification seat's code-minimalism lens (`mochiko:review-code-minimalism`), and the failure-narrative debugging trail. The skill-body pointers `executing-tdd-cycle/SKILL.md:91` and `:158` reference `references/CYCLE-REPORT-FORMAT.md` by path. **FLAG:** the plan's re-point inventory (§4) does NOT list these two B2 skill-body pointers, nor a router row for cycle-report — their re-point ownership is unassigned. Flagged to the delivery manager; NOT actioned by this seat (schemas + strips only).
+
+## [v0.77.0] `references/CYCLE-REPORT-FORMAT.md` consumer pointers → the `cycle-report` schema (two-arm) — D3 later-ratchet
+- **Disposition:** superseded → the `cycle-report` schema (`mochiko-cli template cycle-report`, or Read `plugins/mochiko/schemas/cycle-report.yaml` raw when the binary is absent). Two SKILL.md pointers re-pointed: the Write Cycle Report step and the Reference Files entry.
+- **Tier failed:** n/a — supersession by ruling (schema-based-template-guidance **D3 later-ratchet** + user ruling 2026-08-16 (recorded at the v0.76.0 landing); record `.mochiko/brainstorms/schema-based-template-guidance/record.md` D3; `DECISIONS.md` "Template-schema ratchet" row (landed at v0.77.0))
+- **Content (superseded, verbatim):**
+
+```text
+SKILL.md:91   Produce `cycle-report.md` following the format in [references/CYCLE-REPORT-FORMAT.md](references/CYCLE-REPORT-FORMAT.md) — the decomposition (task list with file paths and ordering) is part of the report's structured fields.
+SKILL.md:158  - [references/CYCLE-REPORT-FORMAT.md](references/CYCLE-REPORT-FORMAT.md) — Structured YAML frontmatter schema (incl. the decomposition fields) and the conditional prose rules
+```
+- **Kept deliberately:** the cycle-report production step and the decomposition-fields note — only the reference-file token was superseded.
+- **Consumers assessed:** the `references/CYCLE-REPORT-FORMAT.md` → `cycle-report.yaml` conversion + file deletion is P1 (B2) scope; if P1 records that deletion in this same strip file it is a companion entry — **this strip file is a shared write surface** (flagged in the P5 report). Cold re-grep confirms no `CYCLE-REPORT-FORMAT` references remain outside the FORBIDDEN `templates/report-format.md` "Consumed by" line (flagged as out-of-scope drift).
+
 ## [v0.75.0] TASK-PARSING.md — foundation/feature card-type field superseded; test-case-bundle + Covers extraction added
 
 - **Disposition:** superseded → the re-keyed `references/TASK-PARSING.md` Card Pattern and Fields-to-Extract: no card-type annotation, `[P]` derived from dependencies, the card's `**TEST:**` blocks parsed as the named test-case bundle (each with a `Covers` citation line). Execution discipline unchanged.
