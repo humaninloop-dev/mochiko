@@ -17,6 +17,31 @@ git history (this line, before this groom).*
 
 ---
 
+## Product-architecture store build
+
+Ruled 2026-08-19, pair-cold-reviewed + verify CLEAN, accepted (`product-architecture-schema`
+D1–D16). Build pending, two stages per D15.
+
+- [ ] **Stage 1 — store + backend shelf + pipeline re-key** (2026-08-19; provenance:
+  [record](.mochiko/brainstorms/product-architecture-schema/record.md) Build surface —
+  cold-buildable). One wave: desk command (name TBD at build) · `authoring-architecture-store`
+  + `patterns-architecture-shelves` skills · store schema data file(s) + backend shelf data
+  (Appendix A verbatim) · store instance at `.mochiko/product/architecture/`, repo-root
+  `ARCHITECTURE.md` derived index · `patterns-system-design` transform · architect/tech-lead
+  recharters · D12 absorb migration (`nfrs.md` dies, NFR-XXX ids re-home; structural D-XXX;
+  archive to `.mochiko/archive/product-baselines/<date>/`) · full 26-file re-key per F8 ·
+  supersessions: AT-D6-C (project-pinned — landing) · `plan.md:75,211` floor clause ·
+  no-delta line relocation · `authoring-architecture` retirement (strips, router ×6,
+  manifest, budget rows). Sound-loop + transport floors govern the wave.
+- [ ] **Stage 2 — frontend/mobile/desktop shelf authoring** (2026-08-19; provenance: record
+  D15). Pure data authoring, no pipeline coupling, each shelf shippable alone; frontend
+  sample in-record is indicative only.
+- [ ] **Product-architecture first-live-run watch** (2026-08-19; provenance: record
+  Evidence-honesty falsifier). Two-branch falsifier — (a) baseline shelf walk unbearably
+  heavy at greenfield, (b) a real plan run proceeds without consulting the store — plus the
+  verify-round-2 rider: landing-time `As-built:`/`Drift:` grading cost priced nowhere; watch
+  whether it bites. Reopens the store design on trip.
+
 ## QA gap-finding residuals
 
 Ruled AND built 2026-08-19, same day, at v0.79.0 (`qa-gap-finding-verification` D1–D10 as
