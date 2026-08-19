@@ -51,16 +51,16 @@ not fire it. **No structural change → no update.**
 4. Keep it one read: a component earns a line, not a chapter; depth lives in the feature
    artifacts.
 
-**Slice-scoped landing → two targets, each on its own trigger.** The feature-root
-`architecture.md` (`.mochiko/specs/<feature>/architecture.md`) accumulates the slice's
+**Feature-scoped landing → two targets, each on its own trigger.** The feature-root
+`architecture.md` (`.mochiko/features/FEAT-XXX/architecture.md`) accumulates the feature's
 **approved** delta — firing on **approved-delta-existed** (Duty 1's trigger shape),
 independent of whether structure was built: it is the **accumulated feature target**, not
-built state, so a descoped or partially built slice's approved delta still lands, and later
-slices' deltas seed from it (never per-slice from scratch). Repo `ARCHITECTURE.md` keeps
+built state, so a descoped or partially built feature's approved delta still lands, and
+later landings' deltas seed from it (never from scratch). Repo `ARCHITECTURE.md` keeps
 Duty 2's **built-change** trigger and takes only the built change, staying
 current-shipped-state per branch. Same in-place-update discipline for both; the
 "no structural change → no update" rule above scopes to repo `ARCHITECTURE.md` only. A
-non-slice-scoped landing folds into repo `ARCHITECTURE.md` alone.
+non-feature-scoped landing folds into repo `ARCHITECTURE.md` alone.
 
 ## The In-flight pointer list
 
@@ -69,7 +69,7 @@ visible from the current branch without duplicating topology — one line per ac
 
 ```markdown
 ## In flight
-- <feature> → .mochiko/specs/<feature>/architecture.md
+- FEAT-XXX → .mochiko/features/FEAT-XXX/architecture.md
 ```
 
 - **Added** when plan's architecture sign-off lands (the feature-root target now exists).
@@ -82,7 +82,7 @@ visible from the current branch without duplicating topology — one line per ac
 ## Quality checks
 
 - **Diff (Duty 1):** every approved add / remove / redirect / boundary-move is accounted for as built or diverged; nothing structural was built unreported. The diff ran because an approved delta existed, not because structure was built.
-- **Dual-target (slice-scoped):** the feature-root `architecture.md` accumulated the approved delta (fires on approved-delta-existed, even when nothing was built); repo `ARCHITECTURE.md` took the built change only where structure was built.
+- **Dual-target (feature-scoped):** the feature-root `architecture.md` accumulated the approved delta (fires on approved-delta-existed, even when nothing was built); repo `ARCHITECTURE.md` took the built change only where structure was built.
 - **In-flight list:** every pointer targets an open feature and resolves; the feature's sign-off added its line, its close removed it; no topology in the list.
 - Every named component exists in the code; every pointer resolves.
 - No past-tense narration; no rationale restated from the decisions layer.

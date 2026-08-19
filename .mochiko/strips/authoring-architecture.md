@@ -3,6 +3,66 @@
 Entry formats: `strips/README.md`. Shipped at v0.55.0 (architecture-doc-layer wave); first strip
 entry at v0.64.0 (guardrails-vs-detail Wave 2).
 
+## [v0.80.0] Dual-target paragraph re-worded feature-scoped; stale feature-artifact path corrected — slice-vocabulary purge
+
+- **Disposition:** superseded → the same paragraph, checklist line, and In-flight pointer
+  example, re-worded on the feature as the scoping unit and re-pointed at the current
+  per-feature artifact home `.mochiko/features/FEAT-XXX/`.
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/decisions/2026-08-19-slice-vocabulary-purge.md`).
+- **Content (verbatim, the three superseded spans):**
+
+  ```
+  **Slice-scoped landing → two targets, each on its own trigger.** The feature-root
+  `architecture.md` (`.mochiko/specs/<feature>/architecture.md`) accumulates the slice's
+  **approved** delta — firing on **approved-delta-existed** (Duty 1's trigger shape),
+  independent of whether structure was built: it is the **accumulated feature target**, not
+  built state, so a descoped or partially built slice's approved delta still lands, and later
+  slices' deltas seed from it (never per-slice from scratch). Repo `ARCHITECTURE.md` keeps
+  Duty 2's **built-change** trigger and takes only the built change, staying
+  current-shipped-state per branch. Same in-place-update discipline for both; the
+  "no structural change → no update" rule above scopes to repo `ARCHITECTURE.md` only. A
+  non-slice-scoped landing folds into repo `ARCHITECTURE.md` alone.
+  ```
+
+  ```
+  - <feature> → .mochiko/specs/<feature>/architecture.md
+  ```
+
+  ```
+  - **Dual-target (slice-scoped):** the feature-root
+  ```
+
+  Replaced by, respectively: the same paragraph with "Feature-scoped landing", "the feature's
+  approved delta", "a descoped or partially built feature's approved delta", "later landings'
+  deltas seed from it (never from scratch)", "A non-feature-scoped landing folds into repo
+  `ARCHITECTURE.md` alone", and the corrected path; the pointer example
+  `- FEAT-XXX → .mochiko/features/FEAT-XXX/architecture.md`; and
+  `- **Dual-target (feature-scoped):** the feature-root`.
+
+- **Kept deliberately:** every mechanic the paragraph carries. Both triggers survive intact —
+  the feature-root target fires on **approved-delta-existed** (Duty 1's shape) and the repo
+  doc on **built-change** (Duty 2's); so do the accumulated-feature-target framing, the
+  descoped/partially-built case, the seed-from-the-accumulated-target rule, the
+  current-shipped-state-per-branch clause, the shared in-place-update discipline, and the
+  scoping of "no structural change → no update" to repo `ARCHITECTURE.md` alone. The checklist
+  line keeps its full assertion (feature-root accumulated the approved delta even when nothing
+  was built; repo doc took the built change only where structure was built). The In-flight
+  section's four rules are untouched; only its example line's path and label changed.
+- **Path evidence:** `.mochiko/specs/<feature>/architecture.md` appeared only here — the
+  repo-wide grep for that path form returns this file's two occurrences and nothing else.
+  `commands/plan.md` is the authority and states package artifacts "land at
+  `.mochiko/features/FEAT-XXX/`", naming `architecture.md` first among them; the router's
+  pipeline note and `skills/mochiko/SKILL.md` agree ("each capability's deltas and run
+  artifacts live at `.mochiko/features/FEAT-XXX/`"). `patterns-system-design` says only "the
+  feature's spec dir" — vague, contradicting no literal path. Evidence is one-sided, so the
+  path was corrected rather than flagged.
+- **Consumers assessed:** the paragraph is authoring guidance with no downstream reader. The
+  In-flight pointer example is the shape written into repo `ARCHITECTURE.md`; existing pointers
+  in a consuming project keep resolving — this corrects the shape future writes follow.
+- **Char budget:** body 5,250 → 5,255 (+5) against the 6,563 budget — 1,308 chars of headroom
+  remain. Description unchanged at 488 against its 610 budget.
+
 ## [v0.64.0] Slim description (guardrails-vs-detail Wave 2 editorial cut) — body no-op
 - **Disposition:** superseded → Wave 2 editorial guardrails cut (D4 cut line). Description only;
   the body carries no D4-class content and is unchanged.

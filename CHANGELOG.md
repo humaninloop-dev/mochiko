@@ -5,6 +5,27 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.80.0] — 2026-08-19
+
+Slice-vocabulary purge (ADR `.mochiko/decisions/2026-08-19-slice-vocabulary-purge.md`;
+`DECISIONS.md` 2026-08-19 row). A post-v0.75.0 dogfood run reified "slice" as a unit noun
+beside cycles; the unit died at v0.57.0 and the noun outlived it. "Slice" now leaves every
+surface where it names a pipeline/TDD unit — replacement language "vertical increment" /
+"bundle" / "cycle" — while generic-English and gerund uses ("slicing judgment") and the
+`'vertical slice'` routing trigger stay. `patterns-vertical-tdd`:
+`references/SLICE-IDENTIFICATION.md` renamed `BUNDLE-IDENTIFICATION.md` (heuristics intact),
+description and body re-worded, `TEST-GRAMMAR.md` anti-pattern line re-worded
+(vocabulary-only, grammar ownership unchanged per v0.75.0 D4). `schemas/tasks.yaml`: "one
+vertical slice" → "one vertical increment" (contract + skeleton). The dead `slice: <s#>`
+report-envelope field deleted (`templates/report-format.md` + both reference echoes). Stale
+riders retired in the same wave: the router's foundation-vs-feature clause (dead since
+v0.75.0 D3), devils-advocate's Delivery-Slices clause (section removed at v0.58.0), the
+advocate-template's tasks/slice seat list (seats folded at v0.49.0), and
+`authoring-architecture`'s pre-v0.61.0 `.mochiko/specs/<feature>/` paths (now
+`.mochiko/features/FEAT-XXX/`). 12 primitives, 10 strip files, 2 producer seats + 2
+cross-grading validators; declared +12 body overage ruled HOLDS and the v0.76.0 +86 silent
+drift ledgered retroactively; `cargo test` 11/11.
+
 ## [0.79.0] — 2026-08-19
 
 QA gap-finding build (`qa-gap-finding-verification` D1–D10 as amended; `DECISIONS.md`

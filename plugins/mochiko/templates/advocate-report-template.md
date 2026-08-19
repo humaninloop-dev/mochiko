@@ -1,8 +1,8 @@
 # Advocate Report Template
 
 The reviewer's adversarial critique of an artifact under review — gaps found, clarifications
-needed, and a recommended verdict. The shared emit shape for the specify / plan / tasks /
-slice review seats. Envelope + shared rules (machine-first, findings schema, conditional
+needed, and a recommended verdict. The shared emit shape for the specify and plan review
+seats. Envelope + shared rules (machine-first, findings schema, conditional
 prose): `templates/report-format.md` — this file carries only the review payload.
 
 ---

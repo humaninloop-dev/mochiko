@@ -4,6 +4,18 @@ Entry formats: `strips/README.md`. Wave context: workflow-token-reduction wave 2
 `.mochiko/brainstorms/workflow-token-reduction/record.md` D4 + the wave-2 rulings R1–R4;
 ratified 2026-07-24).
 
+## [v0.80.0] `schemas/tasks.yaml` — "one vertical slice" re-worded "one vertical increment" (both sites)
+
+- **Disposition:** superseded → "Each card is one vertical increment", the replacement unit language the ruling fixes. Recorded here because this file carries the tasks artifact's whole lineage: `templates/tasks-template.md` was retired into `plugins/mochiko/schemas/tasks.yaml` at v0.76.0 (entry below), and the schema is a shipped primitive under the same edit ceremony (schema-based-template-guidance D8). `.mochiko/strips/tasks.md` is a different primitive — the retired `commands/tasks.md` — and correctly takes nothing from this wave.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/decisions/2026-08-19-slice-vocabulary-purge.md`, "Slice vocabulary purged from shipped primitives", ruled 2026-08-19; `DECISIONS.md` row of the same date, which names `schemas/tasks.yaml` explicitly).
+- **Content (superseded, verbatim — both sites, old → new):**
+  - `:37`, the `Cycle Format` section `contract:` block — `Each card is one vertical slice: a coherent bundle of named test cases (expected behaviour,` → `Each card is one vertical increment: a coherent bundle of named test cases (expected behaviour,`
+  - `:115`, the rendered `Cycle Format` prose — `Each card is one vertical slice: a coherent bundle of **named test cases** (expected behaviour,` → `Each card is one vertical increment: a coherent bundle of **named test cases** (expected behaviour,`
+  - The two sites are the contract and its rendered echo and MUST agree; both moved together.
+- **Kept deliberately:** the schema's three *gerund* uses — `Structure and slicing judgment come from mochiko:patterns-vertical-tdd` (`:12`), the same clause in the overview contract (`:24`), and the rendered `> Structure: \`mochiko:patterns-vertical-tdd\` (cycle-card shape, slicing judgment)` (`:104`). "Slicing judgment" names the design activity the skill owns, not a unit of work; the ruling purges the unit noun only, and a total word ban was considered and rejected. Everything else in the schema — skeleton, contracts, per-section `check` lines, register and density rules, sample cards — is untouched.
+- **Measurements:** schema data files are not a budgeted class (the D7 ledger measures skill bodies, skill descriptions, and agent descriptions); no budget applies. The edit adds 4 chars per site and no lines; no `check` line, field name, or renderer-visible key changed, so `mochiko-cli template tasks` output shifts by the same two words and nothing else.
+- **Consumers assessed:** `mochiko-cli template tasks` renders this schema (prose-only change, no key or structure touched — `cargo test` unaffected); `skills/patterns-vertical-tdd/SKILL.md` points at the schema as the canonical cycle-card skeleton and is re-worded to the same vocabulary in this wave (its own strip entry), so skill and schema stay in agreement; `skills/executing-tdd-cycle` and `skills/review-plan-artifacts` consume cycle-card structure and criteria, neither of which changed. The D8 raw-Read degraded path reads the same re-worded text — no divergence between the binary-rendered and raw-Read arms.
+
 ## [v0.76.0] Template retired — superseded by schema-based template guidance (D1/D3/D8)
 - **Disposition:** superseded → plugins/mochiko/schemas/tasks.yaml + mochiko-cli template tasks
 - **Tier failed:** n/a — supersession by ruling (schema-based-template-guidance D1/D3/D8; record `.mochiko/brainstorms/schema-based-template-guidance/record.md`; `DECISIONS.md` "Template-schema CLI ruled")

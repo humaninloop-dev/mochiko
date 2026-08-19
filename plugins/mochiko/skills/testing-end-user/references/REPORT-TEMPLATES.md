@@ -41,7 +41,7 @@ recommendation: approve | reject | retry | needs-human
 
 | Field | Required | Description |
 |-------|----------|-------------|
-| `report` / `feature` / `slice` | yes | Per the envelope (`slice:` only when slice-scoped); `final-validation` for the whole-implementation run |
+| `report` / `feature` | yes | Per the envelope; `final-validation` for the whole-implementation run |
 | `cycle` / `attempt` | per-cycle only | The cycle and attempt this verification pairs with |
 | `status` | yes | Aggregate result: `pass` only when every assert passed and every gate is green; `partial` for mixed; `timeout`/`error` per the result classification |
 | `test_tasks` | yes | One row per `**TEST:**` task: `id`, `classification` (CLI / GUI / SUBJECTIVE — drives auto-approve vs human checkpoint), `status`, `asserts` (passed/total), `duration`, `evidence` (path) where captured |
@@ -219,7 +219,7 @@ report points to:
 ## Storage
 
 - **The verification report file** is persisted at the path the caller names (in implement:
-  per-cycle and final-validation reports in the feature/slice directory) — it is what the
+  per-cycle and final-validation reports in the feature directory) — it is what the
   lead Reads for the verdict and what a resumed run finds as workspace evidence.
 - **The checkpoint presentation** is generated in memory, shown at the gate, and discarded
   after the human decision.

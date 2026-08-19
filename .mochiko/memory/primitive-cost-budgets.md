@@ -142,7 +142,17 @@ plugins/mochiko/schemas/<name>.yaml` form; no restored prose). Overage history: 
 (the epic `[EPIC-XXX]` marker grammar + within-epic seam-owner rule, multi-feature-plan-implement
 D8/D13) + 202 more at v0.76.0 (the two-arm re-point). Its description 598 against 619 (21 chars,
 unchanged). Any further body addition must re-justify its own overage or cut — the budget itself
-is unchanged.
+is unchanged. Same-wave correction at v0.80.0: the slice-vocabulary purge SHRANK the body to
+15,846 (overage narrows +450 → +433).
+`patterns-vertical-tdd` body overage, recorded at v0.80.0 (the slice-vocabulary-purge audit):
+measures 6,555 against its 6,487 budget (**+68**). History: 6,457 (inside budget) at v0.75.0;
+**+86 silent drift at the v0.76.0 mochiko-cli merge's two-arm schema re-point, never ledgered**
+— the same re-point whose `authoring-feature-map` +450 WAS declared and ruled HOLDS; this file's
+share was missed and is recorded here retroactively. +12 at v0.80.0, declared and ruled HOLDS
+at audit (arithmetically forced by the purge's replacement words: "increments" +8 across two
+sites, "BUNDLE-" +4 across four link sites; no prose added or restored; description
+simultaneously shrank 512 → 497). Budget unchanged — any further body addition must re-justify
+its own overage or cut.
 `patterns-sound-loop` (new skill, v0.70.0) likewise unbudgeted — hard-cap-only (desc ≤1,536);
 audited at body 5,729 / desc 500; re-measured body 5,849 at the v0.71.0 neutrality-line
 amendment (ruled edit, strip + audit PASS); a body budget may seed from a future ruled cut or

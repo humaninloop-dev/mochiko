@@ -58,7 +58,14 @@ Build DELIVERED 2026-08-16 at v0.75.0, same day as the ruling, in the
   done** (2026-08-16, mochiko-cli←main merge, v0.76.0): the four overlapping files —
   `patterns-vertical-tdd/SKILL.md`, `review-plan-artifacts/SKILL.md`, `plan.md`, and the
   card-shape surface (`tasks-template.md` folded into `schemas/tasks.yaml`) — carry both
-  waves; audited PASS at the merge.
+  waves; audited PASS at the merge. **First observation logged** (2026-08-19, user dogfood,
+  external project): the run generated cycles AND reified "slice" as a unit noun beside
+  them — read as vocabulary leakage from doctrine residue, fixed same day by the
+  slice-vocabulary purge (v0.80.0, ADR
+  `.mochiko/decisions/2026-08-19-slice-vocabulary-purge.md`). Watch stays open for the
+  cycle-count/bundle-grain dimensions. Residual from that wave's audit:
+  `patterns-system-design/SKILL.md` still says "in the feature's spec dir" (no literal
+  path; the home is `.mochiko/features/FEAT-XXX/`) — fix at that skill's next touch.
 
 ## Template-schema CLI build
 

@@ -15,6 +15,34 @@ document contracts are the **user's** artifacts and are untouchable. A prefix-ba
 `.mochiko/` would gut the KM module and the brainstorm command; 101 of this tree's 146
 `.mochiko/` references were correctly left alone on that test.
 
+## [v0.80.0] Envelope `slice:` field deleted — slice-vocabulary purge
+
+- **Disposition:** superseded → nothing; the field is deleted outright. No replacement key: a
+  slice-scoped run has been impossible since v0.57.0 (`feature-map-layer` D4/D22 — "slices die,
+  the feature is the pipeline unit"), so the envelope's scoping keys are `feature:` plus the
+  per-report `cycle:`/`round:` counters.
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/decisions/2026-08-19-slice-vocabulary-purge.md`).
+- **Content (verbatim, the deleted envelope line):**
+
+  ```yaml
+  slice: <s#>            # only when the run is slice-scoped
+  ```
+
+- **Kept deliberately:** the rest of the envelope block unchanged — `report:`, `feature:`, and
+  `round:` with its cycle-report parenthetical. The `**Format version:** v2 (2026-08-01)` stamp
+  is left as-is: this edit removes a dead field rather than changing the format contract, and
+  the two consumer references in the same footer are re-pointed in place (below).
+- **Consumers assessed:** the two files the footer names, both edited in the same wave —
+  `skills/executing-tdd-cycle/references/CYCLE-REPORT-FORMAT.md` (field-definition row) and
+  `skills/testing-end-user/references/REPORT-TEMPLATES.md` (field-definition row + the storage
+  paragraph's `feature/slice directory`). No other primitive referenced the field, and after
+  this wave no primitive instructs writing a `slice:` frontmatter key. A repo-wide grep for the
+  literal string `slice:` in `plugins/mochiko/` returns exactly one remaining hit —
+  `skills/authoring-constitution/SKILL.md:68`, "governs work on a path-identifiable slice:
+  layers, API surface, tests" — which is generic English prose (a colon after the noun, not a
+  YAML key) and is on the ruling's Kept list.
+
 ## [v0.49.0] Deliverable list drops slices.md
 - **Disposition:** superseded → slicing is a spec.md section, covered by the existing spec.md list entry
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D6)

@@ -15,6 +15,41 @@ the decision row; nothing was removed or rewritten, and the existing *"A passing
 carries **no prose**"* rule was extended, never replaced. The one entry below records a line
 whose right to exist is contested in advance.
 
+## [v0.80.0] REPORT-TEMPLATES.md — envelope row drops the `slice` key; storage path drops `feature/slice` — slice-vocabulary purge
+
+- **Disposition:** superseded → the same field-definition row carrying `report` / `feature` only,
+  and the same storage bullet naming the feature directory (the envelope field itself was deleted
+  in the same wave — `.mochiko/strips/report-format.md`).
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/decisions/2026-08-19-slice-vocabulary-purge.md`).
+- **Content (verbatim, the two superseded lines):**
+
+  ```
+  | `report` / `feature` / `slice` | yes | Per the envelope (`slice:` only when slice-scoped); `final-validation` for the whole-implementation run |
+  ```
+
+  ```
+    per-cycle and final-validation reports in the feature/slice directory) — it is what the
+  ```
+
+  Replaced by:
+
+  ```
+  | `report` / `feature` | yes | Per the envelope; `final-validation` for the whole-implementation run |
+  ```
+
+  ```
+    per-cycle and final-validation reports in the feature directory) — it is what the
+  ```
+
+- **Kept deliberately:** the `final-validation` wording in the envelope row — the whole-
+  implementation run is a live report kind and the row is its only statement of that. The
+  storage bullet keeps everything else: the caller-names-the-path rule, the lead-Reads-it-for-
+  the-verdict clause, and the resumed-run workspace-evidence clause.
+- **Consumers assessed:** reference file, not a loaded surface. Its sibling envelope row in
+  `skills/executing-tdd-cycle/references/CYCLE-REPORT-FORMAT.md` carries the same shape and was
+  edited in the same wave; the envelope itself is `templates/report-format.md`, also edited.
+
 ## [v0.64.0] Guardrails body + slim description (guardrails-vs-detail Wave 2 editorial cut)
 - **Disposition:** superseded → Wave 2 editorial guardrails cut (D4 cut line).
 - **Tier failed:** n/a — supersession by ruling (guardrails-vs-detail Wave 2, `DECISIONS.md`

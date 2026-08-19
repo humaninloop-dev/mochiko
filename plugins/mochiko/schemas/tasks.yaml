@@ -34,7 +34,7 @@ sections:
   - name: Cycle Format
     required: true
     contract: |
-      Each card is one vertical slice: a coherent bundle of named test cases (expected behaviour,
+      Each card is one vertical increment: a coherent bundle of named test cases (expected behaviour,
       in the `**TEST:**` grammar — see patterns-vertical-tdd/references/TEST-GRAMMAR.md for the
       canonical Setup/Action/Assert/Capture grammar) that demonstrate together. The builder
       implements the card test-first (red/green/refactor per mochiko:executing-tdd-cycle,
@@ -112,7 +112,7 @@ skeleton: |
 
   ## Cycle Format
 
-  Each card is one vertical slice: a coherent bundle of **named test cases** (expected behaviour,
+  Each card is one vertical increment: a coherent bundle of **named test cases** (expected behaviour,
   in the `**TEST:**` grammar — see [`TEST-GRAMMAR.md`](../skills/patterns-vertical-tdd/references/TEST-GRAMMAR.md)
   for the canonical Setup/Action/Assert/Capture grammar) that demonstrate together. The builder
   implements the card test-first (red/green/refactor per `mochiko:executing-tdd-cycle`,

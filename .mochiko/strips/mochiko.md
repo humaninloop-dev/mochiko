@@ -6,6 +6,57 @@ Entry formats: `strips/README.md`. Wave context: skill-succinctness wave 1 (desi
 single physical lines, so the R2 line denominator undercounts this skill; dual accounting
 recorded here and flagged on the wave's ROADMAP row.
 
+## [v0.80.0] Two router rows re-keyed — advocate seat list, `patterns-vertical-tdd` anchor — slice-vocabulary purge
+
+- **Disposition:** superseded → the same two rows, re-keyed: the `advocate-report-template` row
+  to the two live seats, and the `patterns-vertical-tdd` row to the skill's current
+  bundle-identification anchor.
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/decisions/2026-08-19-slice-vocabulary-purge.md`; the retired seats and the retired
+  card types carry their own prior rulings — `DECISIONS.md` 2026-08-02 for the seat folds,
+  `vertical-tdd-complexity-and-qa-role` D3 at v0.75.0 for foundation-vs-feature).
+- **Content (verbatim, the two superseded fragments):**
+
+  ```
+  | `advocate-report-template` (template) | **shared (specify + plan + slice)** — structures
+  ```
+
+  ```
+  (`tasks.md`) — vertical-slice identification (foundation vs feature), Simple/Split/Merge
+  ```
+
+  Replaced by:
+
+  ```
+  | `advocate-report-template` (template) | **shared (specify + plan)** — structures
+  ```
+
+  ```
+  (`tasks.md`) — bundle identification (walking skeleton first), Simple/Split/Merge
+  ```
+
+- **Kept deliberately:** the remainder of both rows verbatim — the advocate row's machine-first
+  description (severity-classified `findings:` YAML, clarifying questions, recommended verdict,
+  one-line `strengths:`, the lead owns the verdict) and the vertical-TDD row's whole tail
+  (Simple/Split/Merge with on-card rationale, acceptance-criteria citation, the `**TEST:**`
+  gate-grammar ownership, cycle-level brownfield exposure, no task lists / no file paths,
+  lead-dispatched no-fixed-seat). Both rows keep their full role descriptions, so
+  discoverability is unchanged. The prose note below the plan cluster — "The plan
+  **completeness** reviewer reuses the shared `advocate-report-template` … as-is" — is left
+  standing: it names no dead seat and independently confirms the plan half of the corrected
+  seat list.
+- **Consumers assessed:** the router is the discoverability index; no primitive reads its rows
+  programmatically. Both re-keyed rows were checked against their targets. Seat list: grep for
+  `advocate-report-template` across `plugins/mochiko/` returns exactly `review-specifications`
+  and `review-plan-artifacts` as binders, and `plugins/mochiko/skills/` contains neither
+  `review-slices` nor `review-task-artifacts`. New anchor: `patterns-vertical-tdd`'s own
+  description reads "mapping user stories to cycles as demonstrable test-case bundles
+  (Simple/Split/Merge, walking skeleton first)", and its reference file was renamed
+  `BUNDLE-IDENTIFICATION.md` in the same wave by the seat that owns that skill — the row now
+  matches both. The v0.78.0 note that remaining slice-vocabulary router rows were "other seats'
+  territory this build, converging by wave 4" is discharged: this file now grep-clean for
+  `slice`.
+
 ## [v0.78.0] Router rows retargeted — `explorer` agent row deleted; tiering skill row reworded to native `Explore` + override
 
 - **Disposition:** superseded → the reworded `patterns-model-tiering` skill row (native

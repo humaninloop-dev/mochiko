@@ -143,7 +143,7 @@ Mocked tests verify that code does what the tests say. Real verification ensures
 
 - All tests can pass while the feature doesn't work
 - Integration issues between real components go undetected
-- The "vertical slice" isn't actually vertical—it stops at the mock boundary
+- The increment isn't actually vertical—it stops at the mock boundary
 
 ## Legacy Format Support
 

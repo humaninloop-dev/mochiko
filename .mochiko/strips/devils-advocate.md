@@ -6,6 +6,41 @@ user-approved 2026-07-25; design: `.mochiko/brainstorms/skill-succinctness-strip
 This was the sole remaining agent instance — the other five agents' Skills-Available paragraphs
 were ruled in their command waves.
 
+## [v0.80.0] Skills-Available row drops the stale "Delivery Slices section" clause — slice-vocabulary purge
+
+- **Disposition:** superseded → the same bullet ending at the artifact it names; the review's
+  actual scope stays where the persona already says it lives — in
+  `mochiko:review-specifications`, whose description carries the feature layer and the Screens
+  & Flows of a UX-bearing spec.
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/decisions/2026-08-19-slice-vocabulary-purge.md`).
+- **Content (verbatim, the superseded bullet):**
+
+  ```
+  - **`mochiko:review-specifications`** — gap review of a drafted spec (`spec.md`), its Delivery Slices section included.
+  ```
+
+  Replaced by:
+
+  ```
+  - **`mochiko:review-specifications`** — gap review of a drafted spec (`spec.md`).
+  ```
+
+- **Kept deliberately:** the bullet itself and the four sibling skill bullets — the
+  Skills-Available list is the persona's routing surface. The clause was dropped rather than
+  re-keyed to `Screens & Flows` (the current UX section per `schemas/spec.yaml`) because the
+  section's own preamble states the rule: "its scope lives in the skill, not a copy here." A
+  replacement clause would re-create exactly the copy that went stale.
+- **Consumers assessed:** persona file, no downstream reader. The clause named a spec section
+  created at v0.49.0 (the task-de-granularization build, `DECISIONS.md` 2026-08-02 — `slices.md`
+  became a co-accepted spec Delivery-Slices section) and **removed at v0.58.0** under
+  `feature-map-layer` D4, "graduation slices retire — the feature is the pipeline unit"
+  (`DECISIONS.md` 2026-08-10). Verified by grep against the current schema: `schemas/spec.yaml`
+  carries `Screens & Flows` as its UX section and no `Delivery Slices` section exists. The
+  router's own `devils-advocate` row (`skills/mochiko/SKILL.md`) describes the seat as
+  "spec-gap critic (feature-layer grade included)" and never named Delivery Slices, so it
+  needed no matching edit.
+
 ## [v0.79.0] Never-zero calibration scoped to document review
 
 - **Disposition:** superseded → the same calibration bullet, scoped: "**Never approve a

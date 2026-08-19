@@ -22,7 +22,6 @@ Every report is a `.md` file opening with YAML frontmatter:
 ---
 report: cycle | verification | final-validation | review | feasibility | disclosure
 feature: <feature-id>
-slice: <s#>            # only when the run is slice-scoped
 round: <n>             # the lead's round counter (cycle reports carry cycle: + attempt: instead)
 ---
 ```

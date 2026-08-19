@@ -1,18 +1,18 @@
-# Slice Identification Heuristics
+# Bundle Identification Heuristics
 
-This reference file provides detailed guidance on identifying good vertical slices — coherent
+This reference file provides detailed guidance on identifying good bundles — coherent
 bundles of named test cases that demonstrate together — from requirements.
 
 ## The Value Stream Test
 
-For each potential slice, ask: "Can a user observe or use this independently?"
+For each potential bundle, ask: "Can a user observe or use this independently?"
 
 | Answer | Action |
 |--------|--------|
 | Yes, directly | Good bundle candidate |
-| Yes, but needs other slices first | Check if it's a dependency or can be deferred |
+| Yes, but needs other bundles first | Check if it's a dependency or can be deferred |
 | No, it's infrastructure | Home it inside the first bundle that needs it (skeleton-path infra → the skeleton cycle) |
-| No, it's internal refactoring | Not a slice; attach to a bundle |
+| No, it's internal refactoring | Not a bundle on its own; attach to one |
 
 ## Extraction from User Stories
 
@@ -53,7 +53,7 @@ Each cycle is a bundle of named test cases. C1 is the walking skeleton where one
 | US-5 | C5 | Export behaviour; can parallelize with others |
 
 Record these decisions and their rationale on the cycle cards themselves — each card's Stories
-line carries its story set and slice rationale; the Case field records Simple/Split/Merge with
+line carries its story set and bundle rationale; the Case field records Simple/Split/Merge with
 its one-line why.
 
 ### Step 4: Identify Parallelization
@@ -167,7 +167,7 @@ Cycle 2: Apply to all entities
 
 ## Decision Matrix
 
-When unsure how to slice, use this matrix:
+When unsure how to bundle, use this matrix:
 
 | Question | If Yes | If No |
 |----------|--------|-------|

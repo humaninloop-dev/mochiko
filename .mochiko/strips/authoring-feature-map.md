@@ -9,6 +9,36 @@ the same wave superseded.
 
 ---
 
+## [v0.80.0] Vocabulary-table term "Vertical slice (cycle)" → "Cycle" — slice-vocabulary purge
+
+- **Disposition:** superseded → the same table row keyed on the unit's live name.
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/decisions/2026-08-19-slice-vocabulary-purge.md`).
+- **Content (verbatim, the superseded cell):**
+
+  ```
+  | **Vertical slice (cycle)** | Implementation, within one capability-batch run |
+  ```
+
+  Replaced by:
+
+  ```
+  | **Cycle** | Implementation, within one capability-batch run |
+  ```
+
+- **Kept deliberately:** the row's three other cells verbatim — the level ("Implementation,
+  within one capability-batch run"), the definition ("A test-first increment delivering one
+  observable behavior"), and the owner pointer (`mochiko:patterns-vertical-tdd` (downstream)).
+  The row exists to mark the boundary between the map's units and the implementation unit
+  below them, and that job is unchanged; only the term is corrected. The three sibling rows
+  (Capability, Work row, User story) are untouched.
+- **Consumers assessed:** vocabulary table, read by the map author. The owner it points at,
+  `patterns-vertical-tdd`, was re-worded off the slice unit noun in the same wave by the seat
+  that owns it, so the pointer stays accurate. No other surface cites this term.
+- **Char budget:** body 15,863 → 15,846 (−17). The pre-existing +450 overage against the
+  15,413 budget — declared and ruled HOLDS at the v0.76.0 V3 audit — narrows to +433. This edit
+  shrinks the body; it adds no obligation and needs no fresh overage justification.
+
 ## [v0.76.0] `features-index-template.md` / `feature-entry-template.md` read-pointers → schemas (two-arm) — schema-based-template-guidance D1/D8
 - **Disposition:** superseded → `mochiko-cli template features-index` / `template feature-entry`, or Read `plugins/mochiko/schemas/features-index.yaml` / `plugins/mochiko/schemas/feature-entry.yaml` raw (D8-first-class). Three sites (four pointer instances): the Overview one-living-map sentence (both templates) + the two Related-section pointers.
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/schema-based-template-guidance/record.md` D1/D3/D8; `DECISIONS.md` "Template-schema CLI ruled").

@@ -40,7 +40,7 @@ checkpoint_criteria_met: true  # The implementer's self-assessment (the lead ver
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| `report` / `feature` / `slice` | envelope | yes | Per `templates/report-format.md` (`slice:` only when slice-scoped) |
+| `report` / `feature` | envelope | yes | Per `templates/report-format.md` |
 | `cycle` | integer or `"fix"` | yes | Cycle number from tasks.md, or `"fix"` for fix passes |
 | `attempt` | integer | yes | 1 for first attempt, increments on retry |
 | `decomposition` | list | yes | The build-time task breakdown of the card — `{id, task, path, rung}` per task, IDs local to this report (`T{cycle}.{n}`). `rung` is the pre-code ladder choice per `mochiko:patterns-code-minimalism` (1–7; a rung-1 skip is a decomposition entry with no path, its why one line in `task:`). The disclosure surface for the decomposition (the card in `tasks.md` stays undecomposed); rework and failure reports cite these IDs; the verification seat grades the rung claims |

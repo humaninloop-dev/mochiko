@@ -13,6 +13,34 @@ ruled" row) — the report repair: the format text that forced prose onto passin
 corrected, and the envelope's register and prose-on-clean check are bound where the report is
 actually authored.
 
+## [v0.80.0] CYCLE-REPORT-FORMAT.md — envelope row drops the `slice` key — slice-vocabulary purge
+
+- **Disposition:** superseded → the same field-definition row carrying `report` / `feature` only,
+  pointing at `templates/report-format.md` without the slice-scoped clause (the envelope field
+  itself was deleted in the same wave — `.mochiko/strips/report-format.md`).
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/decisions/2026-08-19-slice-vocabulary-purge.md`).
+- **Content (verbatim, the superseded table row):**
+
+  ```
+  | `report` / `feature` / `slice` | envelope | yes | Per `templates/report-format.md` (`slice:` only when slice-scoped) |
+  ```
+
+  Replaced by:
+
+  ```
+  | `report` / `feature` | envelope | yes | Per `templates/report-format.md` |
+  ```
+
+- **Kept deliberately:** the row itself and its envelope pointer — the cycle payload still
+  defers to `report-format.md` for the envelope, and the row is what states that. Only the dead
+  key and its conditional clause left. Every other row in the field-definition table, and the
+  whole conditional-prose section, are untouched.
+- **Consumers assessed:** reference file, not a loaded surface — no primitive reads this row
+  other than the cycle-report author. Its sibling row in
+  `skills/testing-end-user/references/REPORT-TEMPLATES.md` carries the same shape and was edited
+  in the same wave.
+
 ## [v0.75.0] TASK-PARSING.md — foundation/feature card-type field superseded; test-case-bundle + Covers extraction added
 
 - **Disposition:** superseded → the re-keyed `references/TASK-PARSING.md` Card Pattern and Fields-to-Extract: no card-type annotation, `[P]` derived from dependencies, the card's `**TEST:**` blocks parsed as the named test-case bundle (each with a `Covers` citation line). Execution discipline unchanged.

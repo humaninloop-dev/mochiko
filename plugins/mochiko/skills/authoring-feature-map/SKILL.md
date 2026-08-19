@@ -22,7 +22,7 @@ Capability delivery and spec delivery are **independent axes**: one spec can sur
 | **Capability** (a *feature*) | Product | The durable thing the product does, in its own language; permanent, honest extents; the only entry called a feature | **this skill** (map entry) |
 | **Work row** | Delivery increment | A transient row under a capability — one built increment, story-shaped allowed; `pending` (cut, undelivered) or `live` (in a run); folds into the capability's extent at its landing and vanishes | **this skill** (map entry) |
 | **User story** | Spec | User value in user language; informs capabilities, never defines them | `mochiko:authoring-user-stories` |
-| **Vertical slice (cycle)** | Implementation, within one capability-batch run | A test-first increment delivering one observable behavior | `mochiko:patterns-vertical-tdd` (downstream) |
+| **Cycle** | Implementation, within one capability-batch run | A test-first increment delivering one observable behavior | `mochiko:patterns-vertical-tdd` (downstream) |
 
 A **capability-batch** is the pipeline unit: each capability with selected work rows gets one plan/implement run covering exactly those rows.
 
