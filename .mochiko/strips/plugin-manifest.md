@@ -1,6 +1,20 @@
 # Strip notes — the plugin manifests (`plugins/mochiko/.claude-plugin/plugin.json` + `.claude-plugin/marketplace.json`)
 
 Entry formats: `strips/README.md`. First entry for the manifest pair (new file, created v0.76.0 —
+## [v0.78.0] `plugin.json` explorer agent entry deleted — cheap rung retargeted to native `Explore`
+
+- **Disposition:** superseded → no plugin-scoped cheap seat; the cheap rung is native
+  `Explore` + explicit `model: haiku` override per the reworked `patterns-model-tiering`.
+  Version bumped 0.77.0 → 0.78.0 in both manifests.
+- **Tier failed:** n/a — supersession by ruling (ADR
+  `.mochiko/decisions/2026-08-19-explorer-retarget-native.md`; `DECISIONS.md` 2026-08-19
+  row).
+- **Content:** the `agents` array entry `"./agents/explorer.md"` (deleted with the agent
+  file — `strips/explorer.md`).
+- **Kept deliberately:** every other agent entry and all manifest metadata untouched.
+- **Consumers assessed:** the manifest pair only registers; the deleted agent's dispatch
+  sites are covered by the per-primitive strip entries of the same wave.
+
 the manifests had no prior recorded removal because they carry metadata, not primitive prose;
 this is the first identity phrase retired by ruling). One file covers both manifests: they are
 edited as a pair and the superseded phrase lived identically in both.

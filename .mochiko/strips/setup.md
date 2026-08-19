@@ -1,6 +1,22 @@
 # Strip notes — `commands/setup.md`
 
 Entry formats: `strips/README.md`. Wave context: the D4 codification pre-shrink — the
+## [v0.78.0] Model-tiering floor line retargeted — `mochiko:explorer` superseded by native `Explore` + `model: haiku` override
+
+- **Disposition:** superseded → the reworded floor line: locate/enumerate reads go to "a
+  native `Explore` subagent spawned `model: haiku`".
+- **Tier failed:** n/a — supersession by ruling (ADR
+  `.mochiko/decisions/2026-08-19-explorer-retarget-native.md`; `DECISIONS.md` 2026-08-19
+  row). Dogfood failure: agent-team teammates cannot spawn plugin-scoped agents.
+- **Content:** verbatim superseded phrase: "the cheap explorer seat (`mochiko:explorer`)"
+  (line wrap varies per command; only this phrase changed).
+- **Kept deliberately:** the rest of the floor line byte-for-byte — the class-key summary,
+  session-tier carve-outs, the every-seat-brief obligation, and the closing
+  `mochiko:patterns-model-tiering` referenced-never-restated pointer.
+- **Consumers assessed:** the same phrase edited in all six commands in the same v0.78.0
+  wave (entry mirrored per command strip file); the pointed-at skill reworded in the same
+  wave (`strips/patterns-model-tiering.md`).
+
 shared team-form prose relocated into `templates/command-shape.md` (design:
 `.mochiko/brainstorms/pattern-codification-and-minimalism/record.md`, D3/D4/D9).
 **Stale as a standing claim:** the shape is now **v5** — see the v0.35.0 section below.

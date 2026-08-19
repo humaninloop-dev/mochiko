@@ -5,6 +5,29 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.78.0] — 2026-08-19
+
+Explorer retarget — the v0.77.0 cheap rung superseded by recorded ruling (ADR
+`2026-08-19-explorer-retarget-native`; `DECISIONS.md` 2026-08-19 row). Dogfood failure:
+agent-team teammates cannot spawn plugin-scoped agents, so the `mochiko:explorer` dispatch
+the persona delegation channel prescribed failed on exactly the transport it was built for.
+The cheap rung is now the **native `Explore` agent spawned with an explicit `model: haiku`
+override** — the override is the pin; a bare spawn inherits the session model and fails the
+floor. The class key, dispatch ladder, brief obligation, weak-negative watch, D1 economics,
+and D5 (rostered seats stay `model: opus`) all stand unchanged.
+
+- **`mochiko:explorer` deleted** — agent file, `plugin.json` agents entry, and the router
+  agent-table row. Its fact-finder constraints (terse `file:line`-provenanced facts,
+  verbatim quotes, method-scoped absence, no interpretation) move into the dispatch brief
+  via `patterns-model-tiering`'s new "Fact-finder brief" clause.
+- **`patterns-model-tiering` reworked** — description and body retargeted to native
+  `Explore` + override; "The frontmatter is the pin" superseded by "The override is the
+  pin".
+- **Six command floor lines + ten persona `## Delegating Cheap Reads` sections reworded**
+  to the native dispatch; router skill row reworded.
+- 20 supersessions recorded in `.mochiko/strips/` (new files: `patterns-model-tiering.md`,
+  `explorer.md`, `tech-lead.md`); author≠grader audit per the edit ceremony.
+
 ## [0.77.0] — 2026-08-16
 
 Model-tiering dispatch floor — the deferred `model-tiered-seats` D4 build, executed and

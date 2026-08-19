@@ -1,6 +1,22 @@
 # Strip notes — `commands/specify.md`
 
 Entry formats: `strips/README.md`. Wave context: the specify cluster wave (the first of
+## [v0.78.0] Model-tiering floor line retargeted — `mochiko:explorer` superseded by native `Explore` + `model: haiku` override
+
+- **Disposition:** superseded → the reworded floor line: locate/enumerate reads go to "a
+  native `Explore` subagent spawned `model: haiku`".
+- **Tier failed:** n/a — supersession by ruling (ADR
+  `.mochiko/decisions/2026-08-19-explorer-retarget-native.md`; `DECISIONS.md` 2026-08-19
+  row). Dogfood failure: agent-team teammates cannot spawn plugin-scoped agents.
+- **Content:** verbatim superseded phrase: "the cheap explorer seat (`mochiko:explorer`)"
+  (line wrap varies per command; only this phrase changed).
+- **Kept deliberately:** the rest of the floor line byte-for-byte — the class-key summary,
+  session-tier carve-outs, the every-seat-brief obligation, and the closing
+  `mochiko:patterns-model-tiering` referenced-never-restated pointer.
+- **Consumers assessed:** the same phrase edited in all six commands in the same v0.78.0
+  wave (entry mirrored per command strip file); the pointed-at skill reworded in the same
+  wave (`strips/patterns-model-tiering.md`).
+
 the five one-shot-command waves; BACKLOG item 7 of the pattern-codification build). The
 wave also ran the **D2 conversion assessment** and the **S8 home-revision checkpoint**
 (shape v1 → v2 — see the REGISTRY `command-shape.md` row). **Stale as a standing claim:**
