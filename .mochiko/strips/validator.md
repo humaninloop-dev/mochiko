@@ -2,6 +2,27 @@
 
 Entry formats: `strips/README.md`.
 
+## [v0.78.0] Delegating Cheap Reads retargeted — `mochiko:explorer` dispatch superseded by native `Explore` + `model: haiku` override
+
+- **Disposition:** superseded → the reworded `## Delegating Cheap Reads` sentence: "spawn a
+  disposable native `Explore` subagent with an explicit `model: haiku` override (the
+  override makes the read cheap; a bare spawn inherits the session tier)".
+- **Tier failed:** n/a — supersession by ruling (ADR
+  `.mochiko/decisions/2026-08-19-explorer-retarget-native.md`; `DECISIONS.md` 2026-08-19
+  row). Dogfood failure: agent-team teammates cannot spawn plugin-scoped agents, so the
+  `mochiko:explorer` dispatch this section prescribed failed on exactly the transport the
+  section was built for.
+- **Content:** verbatim superseded span (identical across all ten personas): "spawn a
+  disposable `mochiko:explorer` subagent (its `model: haiku` frontmatter makes the read
+  cheap)".
+- **Kept deliberately:** the rest of the `## Delegating Cheap Reads` section byte-for-byte —
+  the class-key summary (locate/enumerate/targeted-read cheap; interpretive, absence-driven,
+  completeness-sensitive kept), one-gap-per-spawn, the bulk-read-stays-out rule, and the
+  closing pointer to `mochiko:patterns-model-tiering`.
+- **Consumers assessed:** the section wording is shared across the ten personas; all ten
+  edited in the same v0.78.0 wave (this entry mirrored in each persona's strip file). No
+  command or skill names the section.
+
 ## [v0.63.0] Frontmatter `description:` examples stripped → prose-only agent description
 - **Disposition:** superseded → prose-only agent description (variant at `.mochiko/benchmarks/guardrails-vs-detail/variants/agents/validator.md`); the `<example>` blocks were removed from the frontmatter `description:` block scalar, the prose framing (routing content) kept.
 - **Tier failed:** n/a — supersession by ruling (guardrails-vs-detail benchmark, agents-arm user ruling (b) 2026-08-10 — `DECISIONS.md` benchmark-verdict row 2026-08-10; `.mochiko/brainstorms/validator-scope-and-verbosity/record.md` Benchmark execution; `report/final-verdict.md`).

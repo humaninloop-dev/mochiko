@@ -199,7 +199,7 @@ Each tool below is referenced, never restated — its procedure lives in its hom
   themselves — never the author's report — default FAIL. Any seat that writes artifacts plans
   first and works only on a plan you approved; grading and fact-finding seats are exempt.
 - **Model tiering** — exploration and fact-finding dispatches ride the class-keyed tiering
-  floor: locate/enumerate reads go to the cheap explorer seat (`mochiko:explorer`),
+  floor: locate/enumerate reads go to a native `Explore` subagent spawned `model: haiku`,
   interpretive or absence-driven reads stay session tier, and every seat brief carries the
   routing rule. Class key, dispatch ladder, and brief obligation:
   `mochiko:patterns-model-tiering`, referenced never restated.

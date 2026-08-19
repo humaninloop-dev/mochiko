@@ -1,6 +1,6 @@
 ---
 name: patterns-model-tiering
-description: This skill MUST be invoked when dispatching exploration or fact-finding work in any mochiko run — routing each read by the class key. locate/enumerate/targeted-read gaps go to the cheap explorer seat (`mochiko:explorer`, model-pinned haiku); interpretive reads, decision-driving absences, and completeness-sensitive enumerations stay on the session tier. SHOULD also invoke on 'model tiering', 'cheap explorer', 'which model', 'explore the code', 'targeted read', or 'fact-find dispatch'. Governs dispatch tier only — rostered seats never change model (model-tiered-seats D5); third sibling of patterns-sound-loop and patterns-transport-floor.
+description: This skill MUST be invoked when dispatching exploration or fact-finding work in any mochiko run — routing each read by the class key. locate/enumerate/targeted-read gaps go to a native `Explore` subagent spawned with an explicit `model: haiku` override; interpretive reads, decision-driving absences, and completeness-sensitive enumerations stay on the session tier. SHOULD also invoke on 'model tiering', 'cheap explorer', 'which model', 'explore the code', 'targeted read', or 'fact-find dispatch'. Governs dispatch tier only — rostered seats never change model (model-tiered-seats D5); third sibling of patterns-sound-loop and patterns-transport-floor.
 ---
 
 # Model Tiering — The Class-Keyed Dispatch Floor
@@ -13,13 +13,15 @@ Rostered mochiko personas run on the strong tier and stay there; this floor gove
 *reads they and the lead dispatch along the way*. The economics are documented, not assumed:
 Haiku is ~5× cheaper than Opus and ~10× cheaper than Fable per token both directions, and on
 subscription seats cheap-model work preserves Opus-cap headroom (model-tiered-seats D1).
-Since Claude Code v2.1.198 the native `Explore` agent inherits the session model
-(Opus-capped), so "just use Explore" is no longer cheap — the cheap rung is the plugin's own
-scoped seat: **`mochiko:explorer`**, its `model: haiku` pinned in frontmatter (D4).
+The native `Explore` agent inherits the session model when spawned bare, so a bare spawn is
+not cheap — the cheap rung is native `Explore` **with an explicit `model: haiku` override on
+the Agent tool call** (D4 as amended by the 2026-08-19 retarget ruling: a plugin-scoped
+seat cannot be spawned from agent-team teammates, so the native agent is the only rung that
+resolves from every dispatcher).
 
 ## The class key
 
-**Cheap tier — dispatch `mochiko:explorer`, disposable per gap:**
+**Cheap tier — dispatch native `Explore` with `model: haiku`, disposable per gap:**
 
 - locate a file, symbol, config key, or line
 - enumerate a bounded, **spot-checkable** set (files, frontmatter values, pattern matches)
@@ -38,18 +40,24 @@ scoped seat: **`mochiko:explorer`**, its `model: haiku` pinned in frontmatter (D
 
 ## The dispatch ladder
 
-Direct tool call → cheap explorer → session-tier read. Each gap sits on the lowest rung
-where the answer can be trusted: a one-file read the dispatcher already knows the path of is
-a direct tool call, not a spawn; a sweep across many files is the explorer; a judgment read
-is session tier. A spawn that costs more than the read it saves has failed the ladder.
+Direct tool call → cheap `Explore` (haiku) → session-tier read. Each gap sits on the lowest
+rung where the answer can be trusted: a one-file read the dispatcher already knows the path
+of is a direct tool call, not a spawn; a sweep across many files is the cheap `Explore`; a
+judgment read is session tier. A spawn that costs more than the read it saves has failed
+the ladder.
 
 ## Dispatch shape
 
-- **Disposable per gap** — spawn `mochiko:explorer` via the Agent tool, one gap per
+- **Disposable per gap** — spawn the native `Explore` agent via the Agent tool, one gap per
   dispatch, discard after. Never a standing "librarian" seat: a standing seat re-pays its
   transcript across gate pauses (D4/F5).
-- **The frontmatter is the pin** — dispatching the scoped seat by name is what makes the
-  read cheap; no per-spawn model parameter is needed or relied on.
+- **The override is the pin** — every cheap dispatch MUST pass `model: haiku` explicitly on
+  the Agent tool call; a spawn without the override inherits the session tier and has
+  failed this floor.
+- **Fact-finder brief** — the dispatch brief states the one gap and constrains the return:
+  terse spot-checkable facts with `file:line` provenance, verbatim quotes never paraphrase,
+  absence reported method-scoped, no interpretation. The brief carries this because the
+  native agent has no persona pinning it.
 - **Terse return, provenance attached** — the explorer returns the smallest decisive facts
   with `file:line` provenance; the bulk read stays inside the disposable context
   (the context-health test, D1).
@@ -60,9 +68,10 @@ is session tier. A spawn that costs more than the read it saves has failed the l
 ## The brief obligation
 
 The lead MUST carry this rule into **every seat brief**: one line directing the seat to
-route its own locate/enumerate reads to `mochiko:explorer` per this skill. Spawned teammates
-never load `skills:` frontmatter, so the brief line is the only channel that reaches them —
-a run whose seat briefs omit it has not applied this floor.
+route its own locate/enumerate reads to a native `Explore` subagent spawned `model: haiku`
+per this skill. Spawned teammates never load `skills:` frontmatter, so the brief line is
+the only channel that reaches them — a run whose seat briefs omit it has not applied this
+floor.
 
 ## When NOT to Use
 
@@ -76,7 +85,8 @@ a run whose seat briefs omit it has not applied this floor.
 ## Quality Checklist
 
 - [ ] Every exploration/fact-finding dispatch classified against the class key before spawn
-- [ ] Locate/enumerate/targeted-read gaps dispatched to `mochiko:explorer`, one gap per spawn
+- [ ] Locate/enumerate/targeted-read gaps dispatched to native `Explore` with the
+      `model: haiku` override passed explicitly, one gap per spawn
 - [ ] Interpretive, absence-driven, and completeness-sensitive reads kept session-tier
 - [ ] Every seat brief carries the one-line routing rule
 - [ ] No standing cheap seat; explorers discarded after their gap

@@ -1,6 +1,29 @@
 # Strip notes — `skills/mochiko/` (the router)
 
 Entry formats: `strips/README.md`. Wave context: skill-succinctness wave 1 (design:
+## [v0.78.0] Router rows retargeted — `explorer` agent row deleted; tiering skill row reworded to native `Explore` + override
+
+- **Disposition:** superseded → the reworded `patterns-model-tiering` skill row (native
+  `Explore` + explicit `model: haiku` override, override-is-the-pin, dispatch ladder
+  "direct tool call → cheap `Explore` (haiku) → session-tier read"); the agent-table
+  `explorer` row deleted with its agent.
+- **Tier failed:** n/a — supersession by ruling (ADR
+  `.mochiko/decisions/2026-08-19-explorer-retarget-native.md`; `DECISIONS.md` 2026-08-19
+  row).
+- **Content:** (1) skill-row superseded phrases: "ride the disposable cheap explorer seat
+  (`mochiko:explorer`, `model: haiku` pinned in frontmatter)" and the ladder's "cheap
+  explorer" rung; (2) the whole `explorer` agent row: "**cross-workflow cheap-tier
+  fact-finder** — disposable-per-gap locate/enumerate/targeted-read seat, `model: haiku`
+  pinned in frontmatter (model-tiered-seats D4); returns terse spot-checkable facts with
+  file:line provenance, reports absence method-scoped, never interprets, never writes,
+  never grades; dispatched by the lead or any seat under `mochiko:patterns-model-tiering`'s
+  class key (no skills mounted — the dispatch brief carries the gap)".
+- **Kept deliberately:** the rest of the tiering skill row — class key, session-tier
+  carve-outs, brief obligation, weak-negative watch, D5 rostered-seats clause, sibling
+  framing.
+- **Consumers assessed:** router rows describe, never dispatch; the described primitives
+  reworded/deleted in the same v0.78.0 wave.
+
 `.mochiko/brainstorms/skill-succinctness-strip/record.md`, batch-ratified 2026-07-25): body
 149 → 143 lines (4%) but **28,040 → 22,720 bytes = 19%** — the router's fat table rows are
 single physical lines, so the R2 line denominator undercounts this skill; dual accounting
