@@ -17,6 +17,28 @@ git history (this line, before this groom).*
 
 ---
 
+## QA gap-finding build
+
+Ruled 2026-08-19 (`qa-gap-finding-verification` D1–D10 as amended at review; solo cold review
+24 raised → 18 survived → 18/18 dispositioned; verify round 2 CLEAN). Open item:
+
+- [ ] **QA gap-finding build** (2026-08-19; provenance:
+  [record](.mochiko/brainstorms/qa-gap-finding-verification/record.md) build surface) —
+  cold-buildable: (1) **first task** — mint `.mochiko/features/FEAT-XXX/gates.md` as the
+  durable per-feature gate-set artifact + re-point `implement.md`'s "accumulated territory
+  `**TEST:**` gates" references to it (strips where clauses change) · (2) new skill
+  `testing-gap-finding` (D3 fence inclusion list + two-message blind dispatch · D5a probe kit
+  incl. D9 security/abuse + runtime-NFR + observability probes · D5b mutation lens priced
+  diff-scope/timebox/high-depth-only with tool-absent + flaky-suite skip clauses · D6
+  finding-kind split + lead adjudication · D8 done condition · D7 fold-back) · (3)
+  `devils-advocate.md` `skills:` line + exploratory-runtime persona line (316/395 budget
+  chars, 79 headroom pre-assert) · (4) `qa-engineer.md` fold-back duty note (299/374, 75
+  headroom) · (5) `implement.md` final-validation wiring (scope carve + skip disclosure ·
+  gap-rework bound 2/run · epic union · out-of-territory routing · fold-back at the
+  acceptance landing · model-tiering brief lines) · (6) router row. At landing: mint the
+  first-live-run watch (n=0 — probe-kit yield, mutation noise, devils-advocate runtime fit,
+  fence hold all unmeasured).
+
 ## Vertical-TDD test-case-anchor residuals
 
 Build DELIVERED 2026-08-16 at v0.75.0, same day as the ruling, in the
@@ -656,7 +678,12 @@ Raw captures (2026-08-01) — to triage/brainstorm; grooming may re-key into fin
   Rider (2026-08-05, ADR `2026-08-05-orphan-plan-artifacts`): runtime NFR verification —
   p95/availability targets from `nfrs.md` re-checked against the built system — joins the
   feature-close verification scope when audit is scoped (no TEST-grammar NFR assert exists;
-  implement got the minimal Design-inputs wire only).
+  implement got the minimal Design-inputs wire only). **NFR rider discharged 2026-08-19**
+  (`qa-gap-finding-verification` D9): runtime NFR verification now runs inside the
+  gap-finding pass at implement's final validation; it migrates with the pass. **Rider
+  (2026-08-19, same record D2/I8):** the gap-finding pass itself homes in implement's final
+  validation now and **migrates here if audit takes feature-close** — same clause as the
+  cold-checkout step; the journey-gate class stays with this track, unabsorbed by the pass.
 - [ ] **Feature-close verification has no owning workflow** (2026-07-02) — until audit owns
   it, the section is executable by hand; implement surfaces "declared, not verified" after the
   last slice.
@@ -679,7 +706,9 @@ Raw captures (2026-08-01) — to triage/brainstorm; grooming may re-key into fin
   how it composes with the existing producer↔validator pairing (five-axis #5) and the
   qa-engineer / testing-* skills, and whether it's a kernel-shaped dependency (constraint
   check — no Python/MCP brain code; must live as skill/agent or native CC). Brainstorm the
-  fit before adopting any external harness.
+  fit before adopting any external harness. (2026-08-19: mutation-tool adoption ruled not
+  kernel-class — `qa-gap-finding-verification` D10, GI-019 recorded; that adoption is not
+  this item's eval-harness brainstorm; item stays open.)
 - [ ] **Multi-stack / monorepo registries** (2026-07-21) — per-stack registries, paths scopes,
   seeding. **Revisit: first multi-stack setup run.**
 - [ ] **`codebase-inventory-schema.json` port** (2026-06-27; provenance:
@@ -691,8 +720,6 @@ Raw captures (2026-08-01) — to triage/brainstorm; grooming may re-key into fin
 - [ ] **Phase-A0 codebase-discovery reclaim** (2026-07-01) — `review-plan-artifacts`' parked
   discovery review (documented in its ARTIFACT-CHECKLISTS); the brownfield/discovery track must
   reclaim it.
-- [ ] **`qa-engineer` audit affinity** (2026-07-01) — when audit is scoped, confirm the agent
-  (or its verification skill) serves it without a produce+grade leak.
 - [ ] **`/mochiko:graduate` wrapper** (2026-07-02) — thin per-slice sequencer over existing
   commands; build only on demonstrated shepherding pain, never a re-implementation of their
   loops.
