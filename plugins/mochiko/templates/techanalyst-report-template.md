@@ -13,7 +13,7 @@ report: disclosure
 feature: {{feature_id}}
 phase: analysis | design       # which phase this round produced — discloses, never drives the sequence
 round: {{round}}
-produced: [requirements.md, constraints-and-decisions.md, nfrs.md]   # design rounds: [data-model.md, contracts/api.yaml, quickstart.md]
+produced: [requirements.md, constraints-and-decisions.md]   # + store-delta NFR rows when touched; design rounds: [data-model.md, contracts/api.yaml, quickstart.md]
 changed_this_round:            # round 1 of a phase: [initial]; later: the reviewer gap IDs addressed
   - "{{G2: NFR-003 given a numeric latency target}}"
 governance_alignment: "{{aligned | the rules/GI IDs touched and any exception, one line}}"

@@ -12,6 +12,121 @@ no template revision and no cross-command re-audit). **Stale as a standing claim
 entries below. **Also stale:** the shape is **v5** as of the v0.35.0 wave below, and the
 "standing producer / standing verifier" claim is superseded by that wave's seat-recycling binding.
 
+<!-- Wave context: the product-architecture-schema Stage-1 build wave (v0.81.0) — one schema-backed
+architecture store replaces the five-surface architecture split, and the whole pipeline re-keys in
+one wave (D15). Ruling for every [v0.81.0] entry below:
+`.mochiko/brainstorms/product-architecture-schema/record.md` (D3 · D10 + its S6 fold · D11 as
+narrowed · D12) → `DECISIONS.md` 2026-08-19 product-architecture row. -->
+
+## [v0.81.0] The KM landing's `ARCHITECTURE.md` dual-target fold — replaced by the store landing (D10/D11)
+
+- **Disposition:** superseded → the **Store landing** tool bullet: status flips + cleared
+  `FEAT-XXX` keys (transcription, riding this run's landing audit), graded `As-built:`/`Drift:`
+  writes (judgment), and the orphan check — all per
+  `mochiko:authoring-architecture-store`, which regenerates the derived root `ARCHITECTURE.md`.
+- **Tier failed:** n/a — supersession by ruling (record D3/D10/D11-as-narrowed; `DECISIONS.md`
+  2026-08-19 row). `mochiko:authoring-architecture` is retired this wave, so its pointer could
+  not survive.
+- **Content:** verbatim — "- **KM landing** — where `.mochiko/memory/knowledge-management.md`
+  exists, a built structural change folds into `ARCHITECTURE.md` — the fold is dual-target (the
+  feature's `architecture.md` accumulates the approved delta) per
+  `mochiko:authoring-architecture`."
+- **Kept deliberately:** the KM conditionality survives as the bullet's closing sentence — where
+  `.mochiko/memory/knowledge-management.md` exists, the same landing carries its KM obligations.
+  What the dual target cost is what D3 bought: intent and built-state now live on one surface, so
+  there is one fold, not two. The fold's *graded* character not only survives but widens — under
+  D11 as narrowed, `As-built:` and `Drift:` are judgment writes and take the review leg; only
+  status flips and orphan cleanup are transcription.
+- **Consumers assessed:** `plan.md`'s In-flight pointer bullet deleted in the same wave (its own
+  strip entry); the acceptance-landing clear below; `mochiko:authoring-architecture` retired by
+  P1's cluster; the pinned KM In-flight invariant (AT-D6-C) re-keyed by the wave's landing.
+
+## [v0.81.0] The acceptance landing's In-flight-pointer clear — deleted (D10 orphan rule)
+
+- **Disposition:** superseded → the store landing's status flips and orphan check; the landing's
+  opening clause re-points from "the same landing that folds `ARCHITECTURE.md`" to "the same
+  landing that executes the store landing above".
+- **Tier failed:** n/a — supersession by ruling (record D10; `DECISIONS.md` 2026-08-19 row).
+- **Content:** verbatim — "the `ARCHITECTURE.md` In-flight pointer is cleared ·" (selection-scope
+  branch of the Acceptance landing bullet).
+- **Kept deliberately:** every other member of the graduation batch survives byte-for-byte — the
+  delivered work rows folding into extent with pending rows persisting, the dated non-regressing
+  `delivered` status, the `FEATURES.md` index line, the specs-index touch and its
+  derived-never-asserted closure rule, the whole epic branch including the
+  fold-each-baseline-exactly-once rule and the shared-baseline-folds-once-from-the-spine rule,
+  the delta-scope branch, the graded three-way diff, the absent-baseline seeding-gap surface, and
+  the gap-finding fold-back into `gates.md`.
+- **Consumers assessed:** `mochiko:authoring-feature-map`'s graduation batch (P4's file, same
+  wave) — the batch loses one member and gains none.
+
+## [v0.81.0] Deviation gate, entry gates, and design inputs re-targeted to the store (D3)
+
+- **Disposition:** superseded → the signed store delta as the deviation anchor and the entry
+  gate's object; the built-vs-approved diff renamed built-vs-signed.
+- **Tier failed:** n/a — supersession by ruling (record D3; `DECISIONS.md` 2026-08-19 row).
+- **Content:** verbatim, four sites — (1) entry, selection scope: "and its `architecture.md`
+  where the proposal included one"; (2) entry, epic: "(and its `architecture.md` where the
+  proposal produced one)"; (3) user bullet: "on the approved diagram stops and is presented —
+  build as approved, or amend `architecture.md` first"; (4) design inputs: "`architecture.md`
+  (the anchor for the deviation check and the built-vs-approved diff)".
+- **Kept deliberately:** the deviation gate's **test** is untouched — a cycle that adds or
+  removes a box, adds, removes, or redirects an arrow, or moves a responsibility across a
+  boundary still stops and is presented, and the two dispositions are still build-as-approved or
+  amend-first (the amendment now being the user's ruling on the store delta). The block-and-point
+  behaviour of both entry gates survives unchanged.
+- **Consumers assessed:** `plan.md`'s sign-off site (own strip entry, same wave);
+  `mochiko:patterns-system-design` (P1's, transformed to serve store deltas).
+
+## [v0.81.0] Built-vs-approved diff — now owed on the approved-delta-existed trigger alone (D10/S6)
+
+- **Disposition:** superseded → the diff runs whenever an approved delta existed, **even when
+  nothing was built**, catching a descoped feature at its landing rather than weeks later by the
+  orphan sweep.
+- **Tier failed:** n/a — supersession by ruling (record D10's S6 review fold; `DECISIONS.md`
+  2026-08-19 row).
+- **Content:** verbatim — "where a structural delta was approved at plan time, a built-vs-approved
+  diff report exists and any divergence it names was ruled by the user" (protocol step 3).
+- **Kept deliberately:** the user-rules-every-divergence half survives byte-for-byte. This entry
+  is a **widening, not a relaxation**: the old wording could be read as satisfied by a run that
+  built nothing having nothing to diff.
+- **Consumers assessed:** the Duty-1 landing-diff trigger it inherits from moves to
+  `mochiko:authoring-architecture-store` (P1's cluster); the diff report stays in the run's
+  Reports list, unchanged.
+
+## [v0.81.0] `nfrs.md` reads re-pointed to store concern rows (D12)
+
+- **Disposition:** superseded → the store's concern rows, which carry the `NFR-XXX` targets; the
+  ids themselves are unchanged.
+- **Tier failed:** n/a — supersession by ruling (record D12; `DECISIONS.md` 2026-08-19 row).
+- **Content:** verbatim, two sites — (1) design inputs: "`nfrs.md` for the numeric quality
+  targets the built code must respect"; (2) the gap-finding pass's blind dispatch fence: "plus
+  the product baselines `data-model.md`, `contracts/`, and `nfrs.md`".
+- **Kept deliberately:** the blind fence's exclusion list is byte-for-byte intact — the seat
+  still never receives the code, `tasks.md`, the `**TEST:**` cases, the cycle reports, or the
+  verification reports, and its delegated reads stay inside the same fence. Only the NFR read's
+  *path* moved; the seat still gets the numeric targets it derives expectations from, so the
+  pass's discovery power is unchanged.
+- **Consumers assessed:** `testing-gap-finding`'s runtime-NFR re-point is P4's this wave;
+  `plan.md`'s product-surface list (own strip entry).
+
+## [v0.81.0] FAIL clause re-keyed to the store, plus a new landing-integrity clause
+
+- **Disposition:** superseded → "a surfaced store deviation neither built as approved nor
+  consented as an amendment", with a **new** clause added beside it: an approved-delta landing
+  without its built-vs-signed diff, or leaving an in-flight-class element neither flipped `built`
+  nor keyed to an open feature.
+- **Tier failed:** n/a — supersession by ruling (record D3/D10; `DECISIONS.md` 2026-08-19 row).
+- **Content:** verbatim — "a surfaced architecture deviation neither built as approved nor
+  consented as an amendment".
+- **Kept deliberately:** every other clause of the `**Not done — default FAIL**` list survives
+  byte-for-byte — unchecked cycle card, failing quality gate, verification without
+  real-infrastructure evidence, regression in a delivered feature's gates, touched baseline
+  without its graded fold, the gap-finding pass clause and its stated-skip counterpart, the
+  unresolved spec-violation gap finding, and user acceptance. The added clause is net-new
+  obligation from D10's orphan rule, not a restatement.
+- **Consumers assessed:** the charter-form audit reads this list for surviving FAIL clauses
+  (`.claude/rules/mochiko/primitive-edits.md`, charter exception leg iv).
+
 ## [v0.79.0] Accumulated territory `**TEST:**` gates re-pointed to their named home (`gates.md`)
 
 - **Disposition:** superseded → the same Regression-scope clause, now naming the read source:

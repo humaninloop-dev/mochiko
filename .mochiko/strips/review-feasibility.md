@@ -5,6 +5,91 @@ batch-2 ratified 2026-07-25; design: `.mochiko/brainstorms/skill-succinctness-st
 First strip assessment of this skill (never-stripped band 30–70): body 141 → 136 lines = **3.5%**,
 deeply under-band — whole-skill survivor ruling below.
 
+## [v0.81.0] Architecture pass re-keyed to the store delta; NFR↔topology reads both sides in the store — product-architecture-schema D3/D10/D12/D14
+
+- **Disposition:** superseded → the same architecture pass, keyed on the plan package's **drafted
+  store delta** (topology + `AX-XXX` concern-row changes against the standing store at
+  `.mochiko/product/architecture/`) instead of the per-feature `architecture.md`, which D3 kills.
+  The `description:` re-key travels with it because the pass's trigger is a model-invocation
+  routing condition.
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/brainstorms/product-architecture-schema/record.md` D3 · D10 (sign-off is the write
+  gate, so the pass grades a draft) · D12 (`nfrs.md` absorbed — NFR targets ride concern rows) ·
+  D14 (floor precedence); `DECISIONS.md` 2026-08-19).
+- **Content (superseded, verbatim — five fragments):**
+
+  ```
+  plus unjustified structure / wrong altitude; plus the architecture pass when `architecture.md` is in scope.
+  ```
+
+  ```
+  ## The architecture pass *(when `architecture.md` is in scope)*
+
+  When the design-time architecture artifact (`architecture.md`, owned by
+  `mochiko:patterns-system-design`) is under review, the hunt gains an **architecture pass** on top of
+  the six classes — two lens groups, both cross-artifact, both adversarial.
+  ```
+
+  ```
+  | **NFR ↔ topology** | … | NFRs ↔ architecture |
+  | **Constraint ↔ topology** | … | constraints / IP ↔ architecture |
+  ```
+  *(the two Artifacts-in-tension cells only; both Question cells survive verbatim)*
+
+  ```
+  **On the architecture artifact,** the same line is drawn one level up: you own **topology feasibility + governance conformance** (the architecture pass); the sibling owns **component-table↔diagram coverage, qualifying-flow sequence coverage, and whether `data-model.md` / contracts conform to the approved shape**. "Can this topology be built and does it honor governance?" is yours; "are the architecture's own pieces present and covered?" is the sibling's.
+  ```
+
+  ```
+  Fires when `architecture.md` (the design-time topology, owned by `mochiko:patterns-system-design`) is
+  under review.
+  ```
+  *(plus, in the same reference file: lens 7's seam line, lens 8's seam line and worked-example
+  first clause, the "What this lens is NOT" architecture bullet, and the closing one-line scope
+  statement — each re-keyed from `architecture.md` to the store delta, no check dropped)*
+- **Kept deliberately:** all six contradiction classes untouched; class 7 (excess / altitude) and
+  its calibration clause untouched; the three-state verdict and the never-default-to-`feasible`
+  floor untouched; lens 9's **two exits** (redesign to conform, or a user-ruled amendment/waiver
+  through `governance-ledger.md`) and the never-silent-approval routing untouched — the
+  AD-D7-protected architecture pass survives whole, only its subject moved.
+- **Additions riding the decision row (no strip):** the **floor-asserted obligations actually
+  met** bullet in group B (D14 leg 1, landing on lens 9's existing verified-not-asserted
+  machinery) with its worked example; the **element-not-file** clarification of the
+  single-artifact exclusion (see the separate note below).
+- **Consumers assessed:** `mochiko:review-plan-artifacts` mirrors this boundary in its Scope
+  table and its ARTIFACT-CHECKLISTS boundary table — both re-keyed in the same edit set by this
+  seat, and the floor limb is split across them deliberately (vocabulary legality = the sibling's
+  mechanical check; whether the shape honors the obligation = this skill's). `plan.md` (P2)
+  dispatches the pass by name. Router row re-keyed (this seat).
+  **`templates/feasibility-report-template.md:15`** — its `artifacts_reviewed:` example listed
+  `nfrs.md`; re-keyed at the V4 delta pass (B2) to
+  `[requirements.md, constraints-and-decisions.md]` with the store delta named as the structural-run
+  addition. Missed on the first pass: the sweep covered skills and the router but not the report
+  template this skill fills, which is exactly the kind of downstream carrier a consumer check is
+  supposed to catch.
+
+## [v0.81.0] Single-artifact exclusion narrowed — the seam is between elements, not files
+
+- **Disposition:** superseded → the same exclusion with its unit named. D12 puts `NFR-XXX`
+  targets and the topology spine on **one** surface (the architecture store), so a literal
+  reading of "feasibility lives between two artifacts" would have disqualified the NFR↔topology
+  lens the same ruling keeps. The rule now keys on elements.
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/brainstorms/product-architecture-schema/record.md` D12 — the absorb whose stated
+  consequence is "`review-feasibility` NFR↔topology lens (simpler after — both sides one
+  artifact)"; `DECISIONS.md` 2026-08-19).
+- **Content (superseded, verbatim — the bullet's closing sentence):**
+
+  ```
+  Feasibility is strictly **cross-artifact**: it lives between two artifacts.
+  ```
+- **Kept deliberately:** the exclusion itself and both its examples ("an NFR that is vague, a
+  requirement that is incomplete *on its own* is not feasibility") verbatim — the narrowing adds
+  the unit, it does not open the door to single-element findings. The Common Mistake "Reviewing
+  one artifact in isolation" and the Red Flag list are untouched and stay literally true.
+- **Consumers assessed:** n/a — internal to this skill's scope statement; no primitive restates
+  it (grep clean).
+
 ## [v0.67.0] Class 7 (unjustified structure / wrong altitude) added — section scope + verdict cells re-keyed
 - **Disposition:** superseded → the excess/altitude posture from the architect-role ruling: the hunt gains a seventh, **remove-shaped** class, so the "contradictions only" section scope and the contradiction-scoped verdict cells no longer hold and were rewritten to admit class-7 findings.
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/architect-role-pushback-and-abstraction/record.md`, D3 as amended by its F3 calibration clause; DECISIONS.md combined-wave build row [architect-role-pushback-and-abstraction + plan-structure-yagni]).

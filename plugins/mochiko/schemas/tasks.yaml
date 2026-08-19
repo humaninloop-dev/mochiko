@@ -20,7 +20,7 @@ sections:
       Title "# Implementation Cycles: [FEAT-XXX — FEATURE NAME]" plus two generated-from
       pointers: (1) the spec folder and the feature's produced design artifacts — spec.md,
       features/FEAT-XXX/plan.md, and whichever of requirements.md, constraints-and-decisions.md,
-      nfrs.md, data-model.md, contracts/ the approved proposal included; (2) Structure:
+      data-model.md, contracts/ the approved proposal included; (2) Structure:
       mochiko:patterns-vertical-tdd (cycle-card shape, slicing judgment).
     check: "Is the header present with the FEAT-XXX title and both provenance pointers (source artifacts and the patterns-vertical-tdd structure note)?"
 
@@ -100,7 +100,7 @@ sections:
 skeleton: |
   # Implementation Cycles: [FEAT-XXX — FEATURE NAME]
 
-  > Generated from the spec folder and the feature's produced design artifacts: spec.md, features/FEAT-XXX/plan.md, and whichever of requirements.md, constraints-and-decisions.md, nfrs.md, data-model.md, contracts/ the approved proposal included
+  > Generated from the spec folder and the feature's produced design artifacts: spec.md, features/FEAT-XXX/plan.md, and whichever of requirements.md, constraints-and-decisions.md, data-model.md, contracts/ the approved proposal included
   > Structure: `mochiko:patterns-vertical-tdd` (cycle-card shape, slicing judgment)
 
   ## Overview

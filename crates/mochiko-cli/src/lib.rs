@@ -21,7 +21,7 @@ OPTIONS:
 
 TEMPLATES:
     spec  plan  tasks  feature-entry  features-index  codebase-analysis
-    governance-intent  governance-surfaces
+    governance-intent  governance-surfaces  architecture-store
 
 Schema source resolves in order: --schemas-dir, then ./plugins/mochiko/schemas/, then the
 embedded copy. The --check view is a guidance VIEW, never a linter: it takes no artifact input

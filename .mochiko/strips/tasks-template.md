@@ -4,6 +4,35 @@ Entry formats: `strips/README.md`. Wave context: workflow-token-reduction wave 2
 `.mochiko/brainstorms/workflow-token-reduction/record.md` D4 + the wave-2 rulings R1–R4;
 ratified 2026-07-24).
 
+## [v0.81.0] `schemas/tasks.yaml` — `nfrs.md` dropped from the generated-from pointer (both sites) — product-architecture-schema D12
+
+- **Disposition:** deleted from the enumeration. The header's provenance pointer listed the design
+  artifacts a `tasks.md` may be generated from; `nfrs.md` is no longer one of them (D12 absorbs it
+  into the architecture store's concern rows). Nothing replaces it in the list: cycle cards are
+  generated from the spec folder and the produced design artifacts, and the store is neither.
+  NFR-XXX ids are unaffected — cards still cite them wherever a card's acceptance criteria do.
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/brainstorms/product-architecture-schema/record.md` D12; `DECISIONS.md` 2026-08-19).
+- **Content (superseded, verbatim — the same list at both sites):**
+
+  ```
+      features/FEAT-XXX/plan.md, and whichever of requirements.md, constraints-and-decisions.md,
+      nfrs.md, data-model.md, contracts/ the approved proposal included; (2) Structure:
+  ```
+
+  ```
+    > Generated from the spec folder and the feature's produced design artifacts: spec.md, features/FEAT-XXX/plan.md, and whichever of requirements.md, constraints-and-decisions.md, nfrs.md, data-model.md, contracts/ the approved proposal included
+  ```
+- **Kept deliberately:** every other artifact in the pointer (`spec.md` · `plan.md` ·
+  `requirements.md` · `constraints-and-decisions.md` · `data-model.md` · `contracts/`), the
+  whichever-the-approved-proposal-included conditionality, and the second provenance pointer to
+  `mochiko:patterns-vertical-tdd`. The `check:` string still demands both provenance pointers —
+  only one item left the list it checks.
+- **Consumers assessed:** the two sites are the schema's `check:` string and its rendered example
+  and must agree — both edited together. `mochiko:patterns-vertical-tdd` authors against this
+  schema and names no artifact list of its own (grep clean). Routed to P4 at the V4 delta pass as
+  an unowned ripple (B2-extension); disjointness held — no other seat holds this file.
+
 ## [v0.80.0] `schemas/tasks.yaml` — "one vertical slice" re-worded "one vertical increment" (both sites)
 
 - **Disposition:** superseded → "Each card is one vertical increment", the replacement unit language the ruling fixes. Recorded here because this file carries the tasks artifact's whole lineage: `templates/tasks-template.md` was retired into `plugins/mochiko/schemas/tasks.yaml` at v0.76.0 (entry below), and the schema is a shipped primitive under the same edit ceremony (schema-based-template-guidance D8). `.mochiko/strips/tasks.md` is a different primitive — the retired `commands/tasks.md` — and correctly takes nothing from this wave.

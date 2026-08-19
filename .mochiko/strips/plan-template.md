@@ -5,6 +5,68 @@ Entry formats: `strips/README.md`. Wave context: the combined plan-surface wave 
 `.mochiko/brainstorms/architect-role-pushback-and-abstraction/record.md` (D1–D7, architect
 role), landed in one wave per architect-role D5.
 
+<!-- Lineage note: from v0.76.0 this primitive IS `plugins/mochiko/schemas/plan.yaml` — the
+template retired into it (entry below) and this file continues as the schema's strip home, one
+file per primitive, one continuous history. Wave context for [v0.81.0]: the
+product-architecture-schema Stage-1 build wave. Ruling:
+`.mochiko/brainstorms/product-architecture-schema/record.md` (D3 · D10 + its S8/S13 folds · D12)
+→ `DECISIONS.md` 2026-08-19 product-architecture row. -->
+
+## [v0.81.0] The Architecture section's omit-conditional dies — consult is mandatory (D3/D10)
+
+- **Disposition:** superseded → `required: true` and a two-part contract: a **mandatory consult
+  record** (surfaces read, the trip check's outcome and disposition, and — absent a delta — the
+  one-line no-delta claim) plus **conditional delta pointers** where the user signed a store
+  delta.
+- **Tier failed:** n/a — supersession by ruling (record D3/D10 and its S8 consult-metering and
+  S13 no-delta-claim folds; `DECISIONS.md` 2026-08-19 row).
+- **Content:** verbatim, three sites.
+  (1) The section's `required:` value — `false`.
+  (2) The contract's opening: "Present ONLY when the approved proposal included
+  `architecture.md`; otherwise omit this section entirely. The system view — components,
+  boundaries, interactions, and the delta this feature introduces — was designed first and
+  signed off at the architecture gate. It lives in `architecture.md`; see it for the container
+  diagram, key-flow sequence diagrams, and component register (never restated here — pointers
+  only). Carries a one-line Delta summary (what this feature changes structurally, or "no
+  structural change") and a pointer table: container diagram / sequence diagrams / component
+  register -> architecture.md; structural decisions (D-XXX) -> constraints-and-decisions.md."
+  (3) The `check` string at `plan.yaml:40`, verbatim: "If (and only if) the approved proposal
+  included architecture.md, is the Architecture section present as pointers-only with a delta
+  summary? If the proposal omitted architecture, is the section absent?"
+  (4) The matching skeleton block, whose conditional line read: "*Present only when the approved
+  proposal included `architecture.md`; otherwise omit this section.*"
+- **Kept deliberately:** the **pointers-only discipline** survives whole — the section still
+  never restates the delta, and its table still points rather than reproduces. The
+  one-line Delta summary survives, and its "or no structural change" alternative is not merely
+  kept but promoted: under D10's S13 fold the no-delta claim is a required, gate-shown judgment
+  line, where the old wording let it read as an optional phrasing choice.
+- **Consumers assessed:** `review-plan-artifacts`'s Architecture checklist (ARTIFACT-CHECKLISTS
+  L100-133) is P4's this wave and re-writes to this grammar; `commands/plan.md`'s consult
+  contract (its own strip entries) is the authoring side of the same ruling; `mochiko-cli
+  template plan` renders from this data file and needs no code change (schema data is the source
+  of truth, D8).
+
+## [v0.81.0] Artifacts table — `nfrs.md` and conditional `architecture.md` rows retired (D3/D12)
+
+- **Disposition:** superseded → the store-delta row ("only where the run authored one —
+  user-signed"); `nfrs.md` has no row because the file dies (D12), its `NFR-XXX` targets living
+  on store concern rows.
+- **Tier failed:** n/a — supersession by ruling (record D3/D12; `DECISIONS.md` 2026-08-19 row).
+- **Content:** verbatim, three sites. (1) Contract fragment: "requirements.md,
+  constraints-and-decisions.md, nfrs.md, architecture.md (only when the proposal included
+  architecture — signed off), data-model.md, contracts/api.yaml, quickstart.md (conditional — or
+  "not applicable — no external integration surface"), tasks.md (cycle cards)." (2) The `check`
+  string's parenthetical: "with conditional artifacts (architecture, quickstart) handled per
+  their rules". (3) Two skeleton rows: "| `nfrs.md` | ✅ Complete |" and "| `architecture.md` |
+  ✅ Complete — signed off *(only when the proposal included architecture)* |".
+- **Kept deliberately:** the **menu-to-prune** rule is untouched — the rows remain a menu pruned
+  to the approved proposal, and an artifact the proposal did not include is still omitted rather
+  than listed incomplete. `quickstart.md` keeps its conditional row and its "not applicable — no
+  external integration surface" null form verbatim (D12 ruled quickstart kept, user-probed). The
+  store delta stays conditional, on a different condition: the run authored one.
+- **Consumers assessed:** `commands/plan.md`'s Package-artifacts list (own strip entry, same
+  wave); `review-plan-artifacts`'s conformance rows (P4's, same wave).
+
 ## [v0.76.0] Template retired — superseded by schema-based template guidance (D1/D3/D8)
 - **Disposition:** superseded → plugins/mochiko/schemas/plan.yaml + mochiko-cli template plan
 - **Tier failed:** n/a — supersession by ruling (schema-based-template-guidance D1/D3/D8; record `.mochiko/brainstorms/schema-based-template-guidance/record.md`; `DECISIONS.md` "Template-schema CLI ruled")

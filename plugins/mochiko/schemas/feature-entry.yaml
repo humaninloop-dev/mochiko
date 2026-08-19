@@ -75,10 +75,12 @@ sections:
   - name: Architecture
     required: false
     contract: |
-      Which ARCHITECTURE.md components realize this capability — pointers only, navigable both
-      directions; never restate the component view. (Domain -> components mapping is dormant: it
-      lands only at the soft cap, per mochiko:patterns-map-minimalism.)
-    check: "Does Architecture point at the realizing ARCHITECTURE.md components (pointers only, no restated component view)?"
+      Which architecture-store elements realize this capability, named by id: SPN-XXX spine
+      elements — any kind (container | boundary | flow) — and/or AX-XXX concern rows, at
+      .mochiko/product/architecture/. Pointers only, navigable both directions; never restate
+      the element. (Domain -> element mapping is dormant: it lands only at the soft cap, per
+      mochiko:patterns-map-minimalism.)
+    check: "Does Architecture point at the realizing store elements by id — SPN-XXX spine elements of any kind (container/boundary/flow) and/or AX-XXX concern rows (pointers only, no restated element content)?"
 
   - name: Story trace
     required: false
@@ -123,7 +125,7 @@ skeleton: |
 
   ## Architecture
 
-  - {{component_name}} (`ARCHITECTURE.md` § {{section}})
+  - {{SPN-XXX | AX-XXX}} — {{element_name}} (`.mochiko/product/architecture/`)
 
   ## Story trace
 

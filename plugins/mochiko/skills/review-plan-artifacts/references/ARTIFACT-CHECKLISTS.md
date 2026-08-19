@@ -38,7 +38,8 @@ do not re-import those checks here.
 ## Analysis Artifacts
 
 Grade these when reviewing the analysis output set (e.g. `requirements.md`,
-`constraints-and-decisions.md`, `nfrs.md`).
+`constraints-and-decisions.md`). NFR-XXX rows are **not** graded here — their home is the
+architecture store's concern rows, graded in the store-delta section below.
 
 ### Checklist — Technical Requirements (`requirements.md`)
 
@@ -69,20 +70,6 @@ Grade these when reviewing the analysis output set (e.g. `requirements.md`,
 > `mochiko:review-feasibility`. This checklist grades only that the constraints/decisions are
 > sourced, justified, and complete.
 
-### Checklist — NFRs (`nfrs.md`)
-
-| Check | Question | Severity |
-|-------|----------|----------|
-| NFR measurability | Does every NFR have a specific, measurable target? | Critical |
-| NFR measurement method | Is the measurement approach defined? | Critical |
-| NFR source tracing | Do NFR sources trace to valid TRs or business requirements? | Important |
-| Category coverage | Are all relevant quality categories addressed? | Important |
-
-> Whether the design can **meet** an NFR target, and whether NFR targets **conflict** with
-> constraints or with each other, are feasibility concerns → `mochiko:review-feasibility`.
-> This checklist grades only that targets are present, measurable, and have a defined measurement
-> method.
-
 ### Key Questions — Analysis
 
 - Which functional requirements have NO corresponding technical requirement?
@@ -92,28 +79,39 @@ Grade these when reviewing the analysis output set (e.g. `requirements.md`,
 - Are any decisions made without considering alternatives?
 - Is the rationale convincing, or just restating the choice?
 - Are there constraints implying deployment/CI/CD/environment work without corresponding IP-XXX items?
-- Do NFR availability/scalability targets require platform infrastructure not captured as IP-XXX items?
-- Can each NFR target actually be measured with available tooling?
+- Do the store's NFR availability/scalability targets require platform infrastructure not captured as IP-XXX items?
 
 ---
 
-## Architecture Artifact
+## Architecture Store Delta
 
-Grade this when reviewing the design-time architecture (`architecture.md`) — the container-level
-topology + current→target delta the detailed design conforms to (authored by
-`mochiko:patterns-system-design`, upstream of the design set).
+Grade this when the plan package carries a **store delta** — the drafted topology + `AX-XXX`
+concern-row changes the user signs off on, from a rendered diagram, before detailed design builds
+on them (authored by `mochiko:patterns-system-design` against the standing store at
+`.mochiko/product/architecture/`). The store itself is **not written until sign-off**: what you
+grade is the draft in the package, not the store.
 
-### Checklist — Architecture (`architecture.md`)
+### Checklist — Store delta (drafted)
 
 | Check | Question | Severity |
 |-------|----------|----------|
-| Component-diagram coverage | Does every component-table entry appear in the container diagram, and every diagram box in the table? | Critical |
+| Delta-diagram coverage | Does every `SPN-XXX` element the delta names (container / boundary / flow) appear in the rendered diagram, and every diagram box/arrow in the delta's element list? | Critical |
 | Qualifying-flow coverage | Does every **qualifying flow** — any flow crossing ≥2 components with non-trivial ordering or failure semantics (user journey *or* system flow) — have a sequence diagram? | Critical |
-| Delta-summary links | Does the delta summary link each structural change to a `D-XXX` row (link, not restatement)? | Important |
-| Status annotation | Is every component marked new / modified / existing? | Important |
-| Baseline present | Is the current-state baseline present — seeded from `ARCHITECTURE.md`, or reconstructed-and-confirmed with a confidence note, or greenfield-empty? | Important |
-| No-delta form | If the feature is no-delta, does it still present the reseeded diagram + the one-line no-structural-change claim? | Important |
+| Lifecycle status correctness | Is every delta element — `SPN-XXX` and `AX-XXX` alike — marked `in-flight` / `modifying` / `removing` and keyed to this feature's `FEAT-XXX`? | Critical |
+| AX-row change legality | Does every changed concern row carry a legal stance — `decided` / `not-now` (+ revisit trigger) / `n-a` (+ reason axis; a handled-elsewhere row carries its pointer) / `open`? | Critical |
+| Floor-precedence legality | On a floor-asserted category, is `n-a — genuinely never` absent — the legal moves being a stance within the obligation, `n-a — handled elsewhere` with its pointer, or narrowing — with a true drop routed to the governance-ledger waiver? | Critical |
+| NFR targets on touched rows | Does every `NFR-XXX` the delta adds or changes carry a numeric target, a measurement method, and a **source** on its concern row? The `TR-XXX → NFR-XXX` chain survives D12 — only the path moved, so an NFR with no traceable source is the same finding it always was. | Critical |
+| Ruling carried | Does every structural change carry its ruling and rationale in the delta itself? (The store ruling **is** the decision record — no `D-XXX` back-link is owed.) | Important |
+| Consult record | Does the package record the store consult — root index + full AX summary table always, the spine deep view on the structural-change trigger, and the touched concern files named? | Important |
+| Trip disposition | Is every trip the consult raised — a touched `open` / `not-now` row, a fired upgrade trigger — recorded with its disposition, batched at the run's front? | Important |
+| Baseline present | Is the standing store the delta is drawn from present — read, or reconstructed-and-confirmed with a confidence note, or bootstrap-empty where the store carries no ruled content (scaffold-only or absent)? | Important |
 | Deployment-view conditionality | If `IP-XXX` rows exist, is the deployment view present? If none, is its absence recorded (not a stub)? | Minor |
+
+Ids are store-wide unique: `SPN-XXX` for spine elements (kind: container | boundary | flow),
+`AX-XXX` for concern rows. Row shape — required core fields, legal status values, id uniqueness — is owned by the store
+schema (`mochiko-cli template architecture-store --check`, or Read
+`plugins/mochiko/schemas/architecture-store.yaml` raw when the binary is absent). Grade the
+checks above against that shape; never invent field names here.
 
 > **Qualifying-flow coverage is keyed to ordering/failure complexity, NOT story priority.** A check
 > that reads "every P1 journey has a sequence diagram" under-enforces exactly the ordering-critical
@@ -125,12 +123,24 @@ topology + current→target delta the detailed design conforms to (authored by
 > `mochiko:review-feasibility` (its architecture pass). This checklist grades that the pieces are
 > **present, covered, and internally consistent**.
 
-### Key Questions — Architecture
+### No-delta runs
 
-- Is there a component in the table with no box in the diagram, or a box with no table row?
+A plan run that judges the feature non-structural authors **no delta**. Grade the claim:
+
+| Check | Question | Severity |
+|-------|----------|----------|
+| No-delta claim present | Does the package carry the one-line no-structural-change claim, shown at the gates rather than left silent? | Important |
+| Consult still recorded | Does the package still record the consult (root index + AX summary table)? A delta-scope run stops at the index — it never skips it. | Important |
+
+### Key Questions — Store delta
+
+- Is there an `SPN-XXX` element with no box in the diagram, or a box with no delta element?
 - Is there a multi-component flow with real ordering or failure semantics and no sequence diagram?
-- Does every structural change in the delta summary point at a `D-XXX` row?
-- Was the baseline actually seeded or confirmed, or silently assumed?
+- Is any in-flight-class element keyed to a different feature, or to no feature at all?
+- Does any changed row take a stance the floor forbids on its category?
+- Does any added or changed `NFR-XXX` target lack a number, a measurement method, or a source?
+- Was the standing store actually read or confirmed, or silently assumed?
+- Was a trip raised at the consult and then left without a disposition?
 
 ---
 
@@ -216,7 +226,7 @@ consistency checklist that previously lived as a standalone template.
 | Requirements-decisions alignment | Do decisions serve the requirements they reference? | Critical |
 | Decisions-model consistency | Are model choices consistent with technology decisions? | Critical |
 | Model-contract consistency | Do schemas reflect the data model exactly? | Critical |
-| Architecture conformance | Do `data-model.md` and contracts conform to the approved architecture — no entity or endpoint implying a component the architecture does not declare? | Critical |
+| Architecture conformance | Do `data-model.md` and contracts conform to the **signed store delta** over the standing store spine — no entity or endpoint implying a component neither declares? | Critical |
 | Sensitivity-contract alignment | Do API responses respect data classification (no Restricted data in responses)? | Critical |
 | Integration-contract alignment | Do contract integration boundaries match the systems implied by requirements? | Critical |
 | Requirement traceability | Can we trace from FR to TR to entity to endpoint? | Important |
@@ -252,10 +262,10 @@ Use these as the spot-check lens when running the consistency pass quickly:
 - The original rationale still applies.
 
 **Architecture Conformance**
-- Every entity's owning component and every endpoint's serving component is one the approved
-  `architecture.md` declares — a `data-model.md` entity or a contract endpoint that implies a
-  component the architecture never drew is a Critical consistency failure here (the design
-  introduced structure the approved shape did not carry).
+- Every entity's owning component and every endpoint's serving component is an `SPN-XXX` element
+  the standing store spine — as the **signed store delta** amends it — declares; a `data-model.md` entity or a
+  contract endpoint implying a component neither carries is a Critical consistency failure here
+  (the design introduced structure the signed shape did not carry).
 - No new cross-component interaction in the design that the container diagram does not show.
 - Whether the *topology itself* can meet the NFRs / is buildable under the constraints is
   feasibility's, not this — see the boundary table.
@@ -341,7 +351,7 @@ exactly. **This skill keeps the left column; `mochiko:review-feasibility` owns t
 | Consistency (does the design honor the decisions?) | requirements-decisions alignment; decisions-model consistency; model-contract / schema-model consistency; sensitivity-contract alignment; integration-contract alignment; constraint-decision cross-refs; constitution compliance; decision-honored-by-design | — |
 | **Contradiction** (do artifacts conflict?) | — | **TR ↔ constraint contradictions; NFR ↔ constraint conflicts; NFR ↔ NFR impossibilities** |
 | **Buildability** (can it be built / met?) | — | **NFR-design feasibility (can the design meet the NFR targets?); constraint-design buildability (can the design satisfy the constraints?); integration failure modes realistic vs aspirational** |
-| **Architecture** (topology artifact) | component-table↔diagram coverage; qualifying-flow sequence coverage; delta-summary D-XXX links; component status; **data-model / contracts conform to the approved architecture** | **topology feasibility (can the proposed topology meet the NFRs / be built under the constraints?); governance conformance (layer rules honored, dependencies within the allowlist, GI-linked principles satisfiable by the topology)** — its **architecture pass** |
+| **Architecture** (the store delta) | delta↔diagram coverage; qualifying-flow sequence coverage; ruling carried per structural change; lifecycle statuses keyed to `FEAT-XXX`; AX-row stance + floor-precedence legality; NFR target/method present on touched rows; consult record + trip dispositions; the no-delta claim; **data-model / contracts conform to the signed store delta** | **topology feasibility (can the proposed topology meet the NFRs / be built under the constraints?); governance conformance (layer rules honored, dependencies within the allowlist, GI-linked principles satisfiable by the topology, floor-asserted obligations actually met by the shape a row claims)** — its **architecture pass** |
 
 **The one-line test:** *"is it here, traceable, measurable, and does it honor the decisions?"* →
 this skill. *"can these pieces be built together without contradiction or overreach?"* →

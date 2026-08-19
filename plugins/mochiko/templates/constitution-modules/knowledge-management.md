@@ -42,10 +42,10 @@ fit in active use. **Admission rule:** a doc enters this module only with a name
 | `.mochiko/archive/backlog-trail.md` | resume-cold on a reopened item + provenance lookup | item close (append-only) · landing ritual |
 | `ROADMAP.md` (repo root) | the one-glance view of current work + future direction — the sole **curated** scan surface | landings + groom · horizon caps |
 | `DECISIONS.md` (repo root) + `.mochiko/decisions/` | which decisions rule, which are superseded, where each rationale lives | ruling landed · landing ritual |
-| `ARCHITECTURE.md` (repo root) | the living system view — components, boundaries, data flow; decisions record *changes*, this records the *resulting system* | plan/implement landings on structural change · `mochiko:authoring-architecture` |
+| `ARCHITECTURE.md` (repo root) | the living system view — the **derived index** over the architecture store (`.mochiko/product/architecture/`): spine thumbnail · `AX-XXX` summary table · health view · links. A rendered projection of the store, never a second store, and never hand-maintained | regenerated on every store write (single writer) · `mochiko:authoring-architecture-store` |
 | `GLOSSARY.md` (repo root) | the project's domain language | spec landing when new terms mint · the term format below |
 
-`FEATURES.md` (repo root) — the system as capabilities, `ARCHITECTURE.md`'s capability peer —
+`FEATURES.md` (repo root) — the system as capabilities, the architecture store's capability peer —
 joins this top-level living-doc set when the pipeline runs. It is **pipeline-core**, never
 scaffolded or declined with this module: its carriers and integrity invariants live in the
 touching commands + `mochiko:authoring-feature-map`. This module contributes only the
@@ -130,9 +130,16 @@ spec or implement acceptance.
   against the last-groomed baseline (the baseline figures live on the stamp line).
 - **Dead-pointer scan:** every `ROADMAP.md` / `DECISIONS.md` / `BACKLOG.md` pointer
   resolves, or carries the `provenance: unrecoverable` terminal stamp.
-- **In-flight agreement:** every `ARCHITECTURE.md` In-flight pointer targets an open
-  feature and resolves; a closed feature still pointed at, or a pointer to a missing
-  file, is a defect.
+- **Orphan rule:** every in-flight-class element in the architecture store — `in-flight` /
+  `modifying` / `removing (FEAT-XXX)` — keys an open feature and resolves; an element
+  keying a closed or missing feature is an **orphan**, surfaced by the derived index's
+  health view and cleaned at the next desk visit.
+- **Index agreement:** the derived index agrees with the store it renders; a disagreement
+  is a defect, fixed by re-rendering, never by editing the index. Both this and the orphan
+  rule **bind once the store carries ruled content** — where the store carries no ruled content
+  (scaffold-only or absent), `ARCHITECTURE.md` stays hand-maintained until the first
+  `/mochiko:architecture` visit reconstructs the store and converts it (D16); before that
+  bootstrap both invariants are vacuous.
 - **Presence:** all core artifacts exist (electives only when adopted).
 - Vacuously satisfied at zero sessions / items / pointers — adopting the module never
   obligates running sessions.
@@ -172,7 +179,7 @@ GI-XXX]
 - [ ] Core artifacts named with read-job, writer moment, and carrier (the admission rule holds for every scaffolded doc); electives present only when adopted, declines recorded
 - [ ] All three enforcement surfaces present (project-pinned copy at `.mochiko/memory/knowledge-management.md` · `paths`-scoped rules file · CLAUDE.md pointers) and the five carrying commands' landing steps reference the PROJECT copy, not this template
 - [ ] Landing ritual stated as one three-part move covering closing AND supersession
-- [ ] Invariants stated mechanically (bijection · specs-index agreement (open/close contract, rows never contradict the feature map) · status-agreement · open-only BACKLOG · horizon caps Now ≤5 / Next ≤7 / Later ≤10 · item bounds + count watch · dead-pointer scan with the `provenance: unrecoverable` terminal state · in-flight agreement (`ARCHITECTURE.md` pointers target open features and resolve) · presence) with the vacuous-at-zero note
+- [ ] Invariants stated mechanically (bijection · specs-index agreement (open/close contract, rows never contradict the feature map) · status-agreement · open-only BACKLOG · horizon caps Now ≤5 / Next ≤7 / Later ≤10 · item bounds + count watch · dead-pointer scan with the `provenance: unrecoverable` terminal state · orphan rule (every in-flight-class store element keys an open feature and resolves) · index agreement (derived index matches the store) · presence) with the vacuous-at-zero note
 - [ ] Decision-record schema + glossary term format present; superseded rows compress one line per decision, status preserved
 - [ ] Disambiguation present (`ROADMAP.md` = the thin forward view, never a decision archive; `DECISIONS.md` = the thin index over records; `evolution-roadmap.md` unrelated)
 - [ ] Never-overwrite floor stated; collision rulings recorded (or "none — clean names") and matching the synthesis

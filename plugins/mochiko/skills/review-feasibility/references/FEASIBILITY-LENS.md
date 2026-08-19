@@ -80,14 +80,18 @@ Throughout: feasibility findings are **cross-artifact**. A flaw inside a single 
 
 ## Architecture pass {#architecture-pass}
 
-Fires when `architecture.md` (the design-time topology, owned by `mochiko:patterns-system-design`) is
-under review. Two lens groups — **topology feasibility** (7–8) and **governance conformance** (9) —
+Fires when the plan package carries a **store delta** — the drafted topology + `AX-XXX` concern-row
+changes authored by `mochiko:patterns-system-design` against the standing store at
+`.mochiko/product/architecture/`, graded before the user's sign-off writes it. Two lens groups —
+**topology feasibility** (7–8) and **governance conformance** (9) —
 both cross-artifact, both adversarial. Same discipline as the six classes: you are trying to prove the
 topology cannot be built or cannot conform, not ticking a box.
 
 ### 7. NFR ↔ Topology feasibility
 
-**Seam:** non-functional targets ↔ the proposed topology (components + interaction styles).
+**Seam:** non-functional targets (`NFR-XXX`, on the store's `AX-XXX` concern rows) ↔ the proposed
+topology (the `SPN-XXX` spine elements as the delta amends them). Both sides live in one store —
+the seam is between two *elements*, and reading it is no less cross-artifact for that.
 **Question:** can the *component shape and the way the pieces talk* meet the NFR targets — before any data-model or contract detail exists?
 
 **Worked example.** `NFR-004: p95 end-to-end < 120 ms.` The container diagram routes a single user request synchronously through four services in series, each with its own network hop and datastore call. The serial hop budget alone exceeds the target. The topology cannot meet the NFR as drawn.
@@ -98,12 +102,13 @@ topology cannot be built or cannot conform, not ticking a box.
 
 ### 8. Constraint ↔ Topology buildability
 
-**Seam:** constraints / captured infrastructure (`IP-XXX`) ↔ the proposed topology.
+**Seam:** constraints / captured infrastructure (`C-XXX` / `IP-XXX`, still in
+`constraints-and-decisions.md`) ↔ the topology the delta proposes.
 **Question:** is the topology buildable and deployable *given* the constraints and the infrastructure actually provisioned?
 
-**Worked example.** The container diagram introduces a managed message queue as a new component, but `C-006` forbids new managed infrastructure and no `IP-XXX` row provisions a queue. The topology names a component the constraints do not allow to exist. Not buildable as drawn.
+**Worked example.** The delta introduces a managed message queue as a new `in-flight` component, but `C-006` forbids new managed infrastructure and no `IP-XXX` row provisions a queue. The topology names a component the constraints do not allow to exist. Not buildable as drawn.
 
-**Evidence:** the topology element needing the capability, the `C-XXX`/`IP-XXX` that withholds it, and the buildability gap.
+**Evidence:** the `SPN-XXX` element needing the capability, the `C-XXX`/`IP-XXX` that withholds it, and the buildability gap.
 **Resolvable vs fundamental:** adding the missing `IP-XXX` (if the constraint permits) or re-shaping to an allowed mechanism is *resolvable*; a categorical forbiddance of the only infrastructure the shape needs is *fundamental*. This is class 6 (constraint↔design) lifted one level up.
 
 ### 9. Topology ↔ Governance conformance
@@ -113,7 +118,9 @@ topology cannot be built or cannot conform, not ticking a box.
 
 **Worked example.** The governance region carries a BE-HEX layer rule: `domain MUST NOT import infrastructure`. The container diagram draws the domain service calling the datastore adapter directly, crossing the forbidden boundary. Or: the architecture asserts `respects BE-HEX layering per GI-007`, but a drawn dependency violates exactly that principle. Non-conforming.
 
-**Evidence:** the governance surface (the layer rule / allowlist entry / `GI-XXX`), the topology element that breaks it, and the specific violation. "Cites the principle" is not "satisfies the principle" — verify, don't take the assertion.
+**Worked example — the floor-asserted limb.** `AX-001 Identity & auth` reads `decided`, but the delta's topology routes an internal admin surface around the boundary the FLOOR-SEC card asserts ("auth enforced at all boundaries"). The stance is legal vocabulary; the shape does not honor it. Non-conforming — and note the split: *whether the stance word is legal* on a floor-asserted category is the completeness sibling's mechanical check, *whether the shape honors it* is yours.
+
+**Evidence:** the governance surface (the layer rule / allowlist entry / `GI-XXX` / the floor card), the topology element that breaks it, and the specific violation. "Cites the principle" is not "satisfies the principle" — verify, don't take the assertion.
 **The two exits (never a silent pass):** a non-conforming topology surfaces with exactly two exits — **redesign to conform**, or a **user-ruled amendment/waiver** through `governance-ledger.md`. The feature-level review never overrules the constitution. A conflict with a conforming redesign available is *resolvable* (`needs-revision`); one where the governance and the required shape are mutually exclusive is *fundamental* (`infeasible`, escalates for the amendment/waiver decision).
 **Boundary watch:** you grade the *topology's conformance* to governance (a plan artifact against an input), never whether the governance itself is well-formed — that is `validation-constitution`, a different domain.
 
@@ -155,7 +162,7 @@ This is the **output contract** of the review — what each finding must carry s
 
 - Not a coverage checklist — "is every FR mapped?" is the completeness sibling's.
 - Not measurability-in-isolation — "does this NFR have a measurement method?" is the sibling's.
-- Not consistency / traceability / presence — "do the entity names match the requirement references?" is the sibling's. On the architecture artifact, "does every table component appear in the diagram?" and "do data-model/contracts conform to the approved shape?" are the sibling's too.
+- Not consistency / traceability / presence — "do the entity names match the requirement references?" is the sibling's. On the store delta, "does every delta element appear in the diagram?", "is this stance one of the four legal words?", "is every element keyed to this feature?", and "do data-model/contracts conform to the signed store delta?" are the sibling's too.
 - Not constitution grading — you never judge whether the constitution *itself* is well-formed (G1, `validation-constitution`'s domain). The architecture pass's governance-conformance lens reads the governance surface only **as an input**, to grade the *topology's* conformance to it.
 
-Cross-artifact contradiction, impossibility, and buildability — plus, when `architecture.md` is in scope, topology feasibility and governance conformance (the architecture pass). Nothing else.
+Cross-artifact contradiction, impossibility, and buildability — plus, when the package carries a store delta, topology feasibility and governance conformance (the architecture pass). Nothing else.

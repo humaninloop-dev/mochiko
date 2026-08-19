@@ -75,7 +75,8 @@ Re-parenting under a domain header is navigation-only — no status semantics.
 Domains are the grouping tier: parts of the product's world owning their own nouns and rules
 (Sessions, Knowledge). Every capability lives in **exactly one** domain, minted **only at
 cap-trip** — a small map stays flat; the **PM proposes** names and the **principal-architect
-co-signs** — a disagreement is an early design conversation, not a defect. **The `ARCHITECTURE.md` domain-to-components mapping line and the principal-architect's
+co-signs** — a disagreement is an early design conversation, not a defect. **The store's
+domain-to-spine mapping line and the principal-architect's
 co-sign duty are deferred to the first real cap-trip — neither is built until a live map actually
 approaches the cap.**
 
@@ -91,4 +92,4 @@ same discipline at their altitudes.
 - [ ] Every mint argued against extending an existing capability
 - [ ] Past the soft cap ~9, grooming proposed as recommendations; the user rules merge/retire
 - [ ] A merge preserved every mechanic above — ID survives, merged entry retired never deleted, honest union, traces/SCs + rows/deltas carried
-- [ ] Domains flat below cap-trip; no ARCHITECTURE.md mapping line or co-sign machinery before first cap-trip
+- [ ] Domains flat below cap-trip; no domain-to-spine mapping line or co-sign machinery before first cap-trip

@@ -2,6 +2,33 @@
 
 Entry formats: `strips/README.md`.
 
+## [v0.81.0] Pipeline artifact chain drops `nfrs.md` — product-architecture-schema D12
+
+- **Disposition:** deleted from the enumeration. The envelope's opening line lists the
+  deliverables that follow it; `nfrs.md` is no longer a deliverable (D12 homes NFR-XXX on the
+  architecture store's concern rows). The store is **not** added to the chain: it is a standing
+  baseline governed by its own schema and the desk's loop, not a per-run pipeline deliverable
+  following this envelope.
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/brainstorms/product-architecture-schema/record.md` D12; `DECISIONS.md` 2026-08-19).
+- **Content (superseded, verbatim):**
+
+  ```
+  pipeline artifact chain (`spec.md` · `requirements.md` · `constraints-and-decisions.md` ·
+  `nfrs.md` · `data-model.md` · `contracts/api.yaml` · `quickstart.md` · `plan.md` ·
+  `tasks.md`) and setup's `codebase-analysis.md`.
+  ```
+- **Kept deliberately:** every other artifact in the chain — `quickstart.md` included, user-ruled
+  keep at D12 — plus `codebase-analysis.md` and the reports/records/governance carve-outs. All
+  the envelope's rules (dense by construction, statement-carries-the-content, per-artifact ID
+  index, density-is-not-a-gap) are untouched and still govern every surviving artifact.
+- **Consumers assessed:** shared envelope, referenced by every artifact template and authoring
+  skill. Its consumers cite the envelope's *rules*, not its chain enumeration, so no downstream
+  restatement changed — verified by grep across `plugins/`. The one file that also enumerated the
+  chain, `schemas/tasks.yaml`'s generated-from pointer, was re-keyed in the same pass (logged in
+  `strips/tasks-template.md`). Found at the V4 delta pass (B2) — the first pass swept skills and
+  the router but not the shared envelopes.
+
 **Wave context (v0.44.0 — the D7 leakage scrub).** `verbosity-caveman-ops-separation` D7 as
 folded at review (S4): **full scrub** of ops leakage from the shipped tree, with no
 changelog-worthy detail lost — every removed block is preserved verbatim below. Ruling:

@@ -1,6 +1,6 @@
 ---
 name: review-feasibility
-description: This skill MUST be invoked to grade plan analysis/design artifacts for cross-artifact FEASIBILITY — hunting contradictions, impossibilities, buildability conflicts, plus unjustified structure / wrong altitude; plus the architecture pass when `architecture.md` is in scope. Emits a 3-state `feasible / needs-revision / infeasible` verdict. The adversarial half of the plan pair; its sibling `review-plan-artifacts` grades coverage/measurability/presence, this grades contradiction/buildability. Never defaults to `feasible`; not the constitution.
+description: This skill MUST be invoked to grade plan analysis/design artifacts for cross-artifact FEASIBILITY — hunting contradictions, impossibilities, buildability conflicts, plus unjustified structure / wrong altitude; plus the architecture pass when the plan package carries an architecture-store delta. Emits a 3-state `feasible / needs-revision / infeasible` verdict. The adversarial half of the plan pair; its sibling `review-plan-artifacts` grades coverage/measurability/presence, this grades contradiction/buildability. Never defaults to `feasible`; not the constitution.
 ---
 
 # Reviewing Feasibility
@@ -20,7 +20,7 @@ This is the **feasibility** half of a two-form cross-artifact review. The other 
 - **Completeness, coverage, measurability, presence, or traceability review** — that is the mirror-checklist sibling (`mochiko:review-plan-artifacts`), a different form on a different reviewer. See *The boundary*.
 - **Grading a constitution** — that is `mochiko:validation-constitution`, a different artifact domain. This skill operates over plan analysis/design artifacts only. (Guardrail G1.) The **architecture pass** below is not an exception: it reads the governance surface **as an input** and grades whether the proposed *topology* conforms to it — a conformance check on a plan artifact, never a grade of whether the constitution itself is well-formed.
 - **Authoring or revising the artifacts** — you review someone else's work; you never write or fix the artifacts you grade. (Independence.)
-- **Single-artifact internal review** — an NFR that is vague, a requirement that is incomplete *on its own* is not feasibility. Feasibility is strictly **cross-artifact**: it lives between two artifacts.
+- **Single-artifact internal review** — an NFR that is vague, a requirement that is incomplete *on its own* is not feasibility. Feasibility is strictly **cross-artifact**: it lives between two artifacts. The seam is between two *elements*, never between two files — the architecture store holds `NFR-XXX` targets and the topology spine on one surface, and the seam between them is as much a feasibility seam as any that crosses a file boundary.
 
 ## What you hunt — the six classes + class 7 (excess / altitude)
 
@@ -47,19 +47,21 @@ itself a load-bearing external claim: verify it per
 restated here. Carry the claim's disclosure line in the finding's evidence; an undisclosed
 external claim is a finding of its own.
 
-## The architecture pass *(when `architecture.md` is in scope)*
+## The architecture pass *(when the package carries a store delta)*
 
-When the design-time architecture artifact (`architecture.md`, owned by
-`mochiko:patterns-system-design`) is under review, the hunt gains an **architecture pass** on top of
-the six classes — two lens groups, both cross-artifact, both adversarial. Hunting heuristics and
+When the plan package's **drafted store delta** — the topology + `AX-XXX` concern-row changes
+authored by `mochiko:patterns-system-design` against the standing store at
+`.mochiko/product/architecture/` — is under review, the hunt gains an **architecture pass** on top of
+the six classes — two lens groups, both cross-artifact, both adversarial. You grade the draft
+*before* the user's sign-off writes it to the store. Hunting heuristics and
 worked examples are in [references/FEASIBILITY-LENS.md](references/FEASIBILITY-LENS.md#architecture-pass).
 
-**A. Topology feasibility** — classes 5–6 lifted to the container level, upstream of the detailed design:
+**A. Topology feasibility** — classes 5–6 lifted to the container level, upstream of the detailed design. Both sides of the first lens now sit in one store (`NFR-XXX` targets ride the concern rows); read them as the two elements they are, not as one artifact:
 
 | Lens | The question | Artifacts in tension |
 |------|--------------|----------------------|
-| **NFR ↔ topology** | Can the *proposed component shape and interaction styles* hit the NFR targets? (a sync call-chain across four services vs a p95 target; single-region topology vs a global-latency NFR) | NFRs ↔ architecture |
-| **Constraint ↔ topology** | Is the topology buildable/deployable under the constraints and captured `IP-XXX`? (a shape needing a managed queue the constraints forbid and no `IP-XXX` provisions) | constraints / IP ↔ architecture |
+| **NFR ↔ topology** | Can the *proposed component shape and interaction styles* hit the NFR targets? (a sync call-chain across four services vs a p95 target; single-region topology vs a global-latency NFR) | `NFR-XXX` targets on the store's concern rows ↔ the spine as the delta amends it |
+| **Constraint ↔ topology** | Is the topology buildable/deployable under the constraints and captured `IP-XXX`? (a shape needing a managed queue the constraints forbid and no `IP-XXX` provisions) | constraints / IP (`constraints-and-decisions.md`) ↔ the delta's topology |
 
 **B. Governance conformance** — does the proposed topology conform to the constitution's
 *architectural surface*? Read the governance region + relevant rules files (layer-rules, the
@@ -68,6 +70,7 @@ domain-dependency registry when attached) **as input**, and grade:
 - **Layer rules honored** — the topology's dependencies respect the layer-import rules; no boundary the layer governance forbids.
 - **Dependency allowlist** — cross-component / cross-domain dependencies stay within the declared allowlist.
 - **GI-linked principles satisfiable** — the principles the architecture cites as binding it (`respects BE-HEX layering per GI-XXX`) are actually satisfied by the topology, not merely asserted.
+- **Floor-asserted obligations actually met** — where a floor card asserts a category (auth, observability, the security baseline), the *topology* satisfies the obligation the row claims: a row reading `decided` over a shape that leaves a boundary unenforced is the same verified-not-asserted failure as a cited-but-violated principle. Whether the row's **stance vocabulary** is legal (`n-a — genuinely never` unavailable on a floor-asserted category, a handled-elsewhere row carrying its pointer) is the sibling's mechanical check, not yours; a stance the shape cannot honor is yours.
 
 Conformance is **verified, not asserted** — a topology that *cites* a principle but *violates* it is a governance-conformance finding, not a pass.
 
@@ -92,7 +95,7 @@ This skill and the completeness sibling split the cross-artifact surface on a cl
 
 Where the two brush — e.g. an NFR that is *both* unmeasurable *and* impossible to meet — you take the **impossibility**; the sibling takes the **measurability**. You do **not** review whether every FR is mapped to a requirement, whether alternatives were considered, whether an NFR is individually measurable, or whether the formatting is right. Those are the sibling's. Reaching into them is boundary creep — a Common Mistake below.
 
-**On the architecture artifact,** the same line is drawn one level up: you own **topology feasibility + governance conformance** (the architecture pass); the sibling owns **component-table↔diagram coverage, qualifying-flow sequence coverage, and whether `data-model.md` / contracts conform to the approved shape**. "Can this topology be built and does it honor governance?" is yours; "are the architecture's own pieces present and covered?" is the sibling's.
+**On the store delta,** the same line is drawn one level up: you own **topology feasibility + governance conformance** (the architecture pass); the sibling owns **delta↔diagram coverage, qualifying-flow sequence coverage, AX-row stance legality, lifecycle statuses, the consult record, and whether `data-model.md` / contracts conform to the signed store delta**. "Can this topology be built and does it honor governance?" is yours; "are the delta's own pieces present and covered?" is the sibling's.
 
 ## Core Process
 

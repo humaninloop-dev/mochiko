@@ -9,6 +9,42 @@ the same wave superseded.
 
 ---
 
+## [v0.81.0] Three architecture pointers re-keyed to the store — product-architecture-schema D3/D4/D7
+
+- **Disposition:** superseded → the architecture store and its spine. The map's peer view is no
+  longer a prose `ARCHITECTURE.md` but the store (`.mochiko/product/architecture/`), of which the
+  root doc is a derived index; the retired `authoring-architecture` skill is replaced by
+  `authoring-architecture-store` in the Related list.
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/brainstorms/product-architecture-schema/record.md` D3/D4 (one store, derived index) ·
+  D7 (crew — `authoring-architecture` retired); `DECISIONS.md` 2026-08-19).
+- **Content (superseded, verbatim — three fragments):**
+
+  ```
+  the primary capability lens on the product, the way `ARCHITECTURE.md` is the system viewed as components; together the two are the central source of truth.
+  ```
+
+  ```
+  - **Authoring architecture** — the entry links to `ARCHITECTURE.md` components; it never restates the component view
+  ```
+
+  ```
+  - `mochiko:authoring-architecture` — the peer view: components that realize capabilities; the entry's architecture link points there
+  ```
+- **Kept deliberately:** the peer-view relationship itself — map and architecture as the two
+  central sources of truth, the entry linking out and never restating the component view. Only
+  the peer's name and home moved.
+- **Budget note (declared for the audit):** body 15,846 → 15,855 (**+9**) against the 15,413
+  budget, widening the standing, already-ruled overage from +433 to +442. The delta is
+  arithmetically forced by the longer skill slug (`authoring-architecture` →
+  `authoring-architecture-store`, +6) plus the re-keyed peer-view phrasing (+3); **no prose was
+  added or restored**, and two of the three fragments shrank. No offsetting trim was taken —
+  cutting unrelated protected content to fund a rename would be the worse move.
+- **Consumers assessed:** shared-vocabulary file. `mochiko:patterns-map-minimalism` carries the
+  matching domain-mapping pointer, re-keyed in the same edit set by this seat;
+  `mochiko:review-specifications` grades the map delta but names no architecture surface (grep
+  clean); the `feature-entry` schema's component pointers are P1's in this wave.
+
 ## [v0.80.0] Vocabulary-table term "Vertical slice (cycle)" → "Cycle" — slice-vocabulary purge
 
 - **Disposition:** superseded → the same table row keyed on the unit's live name.

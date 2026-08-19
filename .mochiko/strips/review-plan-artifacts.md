@@ -10,6 +10,197 @@ bullet like the one stripped from `review-specifications`). One contested keep (
 is a library-wide consistency ruling, not a cluster call (see the wave return); note L16 already carries
 the `loop-discipline` reference the strip disposition would add.
 
+## [v0.81.0] Architecture checklist re-written to store-delta grammar — product-architecture-schema D3/D10/D12/D14
+
+- **Disposition:** superseded → the `## Architecture Store Delta` section of
+  `references/ARTIFACT-CHECKLISTS.md`, which grades the plan package's **drafted store delta**
+  (topology + `AX-XXX` concern-row changes) against the standing store at
+  `.mochiko/product/architecture/`. The per-feature `architecture.md` artifact this section
+  graded no longer exists (D3).
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/brainstorms/product-architecture-schema/record.md` D3 (per-feature artifact dies) ·
+  D10 (consult contract, delta lifecycle, S13 no-delta claim) · D12 (`nfrs.md` absorbed,
+  structural `D-XXX` die into store deltas) · D14 (floor precedence); `DECISIONS.md` 2026-08-19).
+- **Content (superseded, verbatim — the whole `## Architecture Artifact` section):**
+
+  ```
+  ## Architecture Artifact
+
+  Grade this when reviewing the design-time architecture (`architecture.md`) — the container-level
+  topology + current→target delta the detailed design conforms to (authored by
+  `mochiko:patterns-system-design`, upstream of the design set).
+
+  ### Checklist — Architecture (`architecture.md`)
+
+  | Check | Question | Severity |
+  |-------|----------|----------|
+  | Component-diagram coverage | Does every component-table entry appear in the container diagram, and every diagram box in the table? | Critical |
+  | Qualifying-flow coverage | Does every **qualifying flow** — any flow crossing ≥2 components with non-trivial ordering or failure semantics (user journey *or* system flow) — have a sequence diagram? | Critical |
+  | Delta-summary links | Does the delta summary link each structural change to a `D-XXX` row (link, not restatement)? | Important |
+  | Status annotation | Is every component marked new / modified / existing? | Important |
+  | Baseline present | Is the current-state baseline present — seeded from `ARCHITECTURE.md`, or reconstructed-and-confirmed with a confidence note, or greenfield-empty? | Important |
+  | No-delta form | If the feature is no-delta, does it still present the reseeded diagram + the one-line no-structural-change claim? | Important |
+  | Deployment-view conditionality | If `IP-XXX` rows exist, is the deployment view present? If none, is its absence recorded (not a stub)? | Minor |
+
+  ### Key Questions — Architecture
+
+  - Is there a component in the table with no box in the diagram, or a box with no table row?
+  - Is there a multi-component flow with real ordering or failure semantics and no sequence diagram?
+  - Does every structural change in the delta summary point at a `D-XXX` row?
+  - Was the baseline actually seeded or confirmed, or silently assumed?
+  ```
+
+  Per-check disposition: *Component-diagram coverage* → **Delta-diagram coverage** (same
+  bidirectional test, keyed to the delta's element list). *Delta-summary links* → **Ruling
+  carried** — D12 sends structural `D-XXX` into the store delta, so the store ruling **is** the
+  decision record and no back-link is owed. *Status annotation* (new / modified / existing) →
+  **Lifecycle status correctness**, keyed to the D10 vocabulary (`in-flight` / `modifying` /
+  `removing (FEAT-XXX)`). *Baseline present* re-keyed from `ARCHITECTURE.md` seeding to the
+  standing store, gaining the D16 bootstrap-empty arm. *No-delta form* → the **No-delta runs**
+  sub-block, which keeps the claim and drops the reseeded-diagram limb (a no-delta run authors
+  no diagram; the store carries the standing one).
+- **Kept deliberately:** the **qualifying-flow coverage** check verbatim, together with its
+  keyed-to-ordering-not-P1 guard note ("a P1 journey is the **floor, never the cap**") — the
+  protected line the check exists for; **deployment-view conditionality** verbatim; the
+  feasibility-handoff note verbatim (topology feasibility + governance conformance stay
+  `review-feasibility`'s architecture pass).
+- **Consumers assessed:** `mochiko:review-feasibility` — its architecture pass and the mirrored
+  boundary table re-key in the same wave (P4, this seat); the two halves are re-stated in
+  lockstep. `mochiko:patterns-system-design` (P3) authors the graded artifact — its transform
+  lands the same wave. `plan.md` (P2) dispatches this review. No other consumer names the
+  Architecture checklist (grep clean).
+
+## [v0.81.0] NFR checklist retired from the analysis set — nfrs.md absorbed into the store (D12)
+
+- **Disposition:** superseded → relocated into the **Architecture Store Delta** checklist as the
+  *NFR targets on touched rows* check (Critical). `nfrs.md` dies as a file; `NFR-XXX` ids survive
+  homed on the store's concern rows, so the target / method / **source** grade travels with the
+  row that carries them and fires as part of the store-delta grade instead of a standalone
+  artifact pass.
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/brainstorms/product-architecture-schema/record.md` D12, `Contested` — user ruled
+  absorb against the lead's coexist recommendation; `DECISIONS.md` 2026-08-19).
+- **Content (superseded, verbatim):**
+
+  ```
+  ### Checklist — NFRs (`nfrs.md`)
+
+  | Check | Question | Severity |
+  |-------|----------|----------|
+  | NFR measurability | Does every NFR have a specific, measurable target? | Critical |
+  | NFR measurement method | Is the measurement approach defined? | Critical |
+  | NFR source tracing | Do NFR sources trace to valid TRs or business requirements? | Important |
+  | Category coverage | Are all relevant quality categories addressed? | Important |
+
+  > Whether the design can **meet** an NFR target, and whether NFR targets **conflict** with
+  > constraints or with each other, are feasibility concerns → `mochiko:review-feasibility`.
+  > This checklist grades only that targets are present, measurable, and have a defined measurement
+  > method.
+  ```
+
+  Also superseded in the same edit: the Analysis-Artifacts scope line's `nfrs.md` mention (now
+  pointing at the store section); the Key-Questions-Analysis bullet "Can each NFR target actually
+  be measured with available tooling?" (folded into the relocated check); and the
+  incremental-mode `consistency_only` list in SKILL.md, whose third element was `nfrs.md`.
+- **Kept deliberately:** the measurability + measurement-method + source grade itself (relocated,
+  not dropped) and the feasibility boundary it carried — "can the design **meet** the target" stays
+  `review-feasibility`'s. `IP-NFR coverage` stays in the constraints checklist: `IP-XXX` rows
+  remain in `constraints-and-decisions.md` (D12 reduces that artifact, it does not kill it).
+  **NFR source tracing is kept and relocated** into the store-delta check ("a numeric target, a
+  measurement method, and a **source**"): D12 moves the path, not the `TR-XXX → NFR-XXX` chain,
+  so an NFR with no traceable source is the same finding it always was. *Category coverage* is
+  the one check genuinely not restated here — the breadth guarantee is the shelf walk's (D5
+  breadth invariant: every dimension walked, never silently skipped), which is stronger than a
+  reviewer's after-the-fact category sweep.
+- **CORRECTION (v0.81.0 V4 audit, B5 — ruled).** This entry originally justified dropping *NFR
+  source tracing* by claiming it "rides the store row's own required-core shape
+  (`plugins/mochiko/schemas/architecture-store.yaml`)". **That claim was false and is retracted.**
+  The schema's `Targets` field holds "NFR-XXX ids and their measurable targets" and requires no
+  source; its `--check` view grades the skeleton only and never the free-form body. The claim was
+  asserted without reading the schema — the exact failure the preserved-responsibilities check
+  exists to catch, and it would have silently dropped a Critical traceability grade. The check is
+  restored to the store-delta checklist and to its Key Question, and the false justification is
+  deleted above rather than left standing beside the correction.
+- **Consumers assessed:** `mochiko:authoring-technical-requirements` (NFR grammar home, re-keyed
+  the same wave, this seat) · `mochiko:testing-gap-finding` (runtime-NFR probes re-pointed, this
+  seat) · `mochiko:review-feasibility` (NFR↔topology lens reads both sides in the store, this
+  seat) · router design-surface paragraph (this seat). `plan.md` / `implement.md` baseline lists
+  are P2's in the same wave.
+
+## [v0.81.0] Dead `nfrs.md` entry deleted from the Tier-1 checker's REQUIRED_SECTIONS — product-architecture-schema D12
+
+- **Disposition:** deleted. `scripts/check-artifacts.py` keyed a required-sections rule to a file
+  D12 abolished. The map is keyed by filename, so with no `nfrs.md` on disk the entry could never
+  match and produced no false failure — it was dead config a reader would nonetheless trust.
+  Nothing replaces it: the NFR grade moved to the store-delta checklist (see the NFR-checklist
+  entry above), and the store is not a `.md` artifact this checker reads.
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/brainstorms/product-architecture-schema/record.md` D12; `DECISIONS.md` 2026-08-19).
+- **Content (superseded, verbatim):**
+
+  ```python
+      'nfrs.md': [
+          '## Non-Functional Requirements',
+      ],
+  ```
+- **Kept deliberately:** every other `REQUIRED_SECTIONS` key —
+  `constraints-and-decisions.md` (D12 reduces that artifact, it does not kill it),
+  `requirements.md`, and `data-model.md` — plus all four checks (`unresolved_markers` ·
+  `required_sections` · `traceability` · `pii_markers`), the entity-consistency cross-check, and
+  the exit-code contract. The checker's role as the Tier-1 pre-assert whose `failed` count is
+  ground truth is untouched.
+- **Verified after the edit:** the module parses (`ast.parse`) and a smoke run against a
+  `requirements.md` fixture returns `3 passed / 0 failed`, exit 0 — behavior unchanged for every
+  surviving key.
+- **Consumers assessed:** the invocation is documented in this skill's SKILL.md Step 2 and three
+  times in `references/ARTIFACT-CHECKLISTS.md` → Automated Validation; none of the four enumerates
+  `nfrs.md` in a command line (all use `<artifact>.md` or a glob), so no call site changed. The
+  Automated-check-coverage table lists checks, not filenames — unaffected. No other primitive
+  invokes this script (grep clean).
+
+## [v0.81.0] Review-Focus rows, conformance rows, and boundary row re-keyed to the store
+
+- **Disposition:** superseded → the same rows, keyed on the signed store delta.
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/brainstorms/product-architecture-schema/record.md` D3/D10/D12; `DECISIONS.md`
+  2026-08-19).
+- **Content (superseded, verbatim — four fragments):**
+
+  ```
+  | **Analysis artifacts** | requirements, constraints/decisions, NFRs | FR→TR coverage, orphan TRs, testable criteria, sourced constraints, ≥2 alternatives + rationale, NFR measurability, IP coverage |
+  | **Architecture** | architecture.md (design-time topology + delta) | component-table↔diagram coverage, qualifying-flow sequence coverage, delta-summary D-XXX links, component status annotations |
+  ```
+
+  ```
+    architecture_conformance: pass   # data-model/contracts conform to the approved architecture
+  ```
+
+  ```
+  | Architecture conformance | Do `data-model.md` and contracts conform to the approved architecture — no entity or endpoint implying a component the architecture does not declare? | Critical |
+  ```
+
+  ```
+  **Architecture Conformance**
+  - Every entity's owning component and every endpoint's serving component is one the approved
+    `architecture.md` declares — a `data-model.md` entity or a contract endpoint that implies a
+    component the architecture never drew is a Critical consistency failure here (the design
+    introduced structure the approved shape did not carry).
+  ```
+
+  ```
+  | **Architecture** (topology artifact) | component-table↔diagram coverage; qualifying-flow sequence coverage; delta-summary D-XXX links; component status; **data-model / contracts conform to the approved architecture** | **topology feasibility (can the proposed topology meet the NFRs / be built under the constraints?); governance conformance (layer rules honored, dependencies within the allowlist, GI-linked principles satisfiable by the topology)** — its **architecture pass** |
+  ```
+- **Kept deliberately:** the conformance test's substance — a design element implying a component
+  the approved shape never carried is still a Critical consistency failure; only the approved
+  shape's name and home moved (`architecture.md` → the signed store delta over the standing
+  spine). The named-consistency-group's second and third bullets (no new cross-component
+  interaction; topology feasibility is `review-feasibility`'s) are untouched. The boundary
+  table's right column keeps every feasibility item and **gains** the floor-precedence limb
+  (D14 leg 1) as a pure addition.
+- **Consumers assessed:** the boundary table is mirrored verbatim-in-substance by
+  `mochiko:review-feasibility`'s *The boundary* section — both sides re-keyed in this same edit
+  set by this seat, so the mirror holds. No command restates these rows (grep clean).
+
 ## [v0.76.0] Cycle-card Review Focus row cites the `tasks --check` view (D7 re-key, thin) — schema-based-template-guidance D7/D8
 - **Disposition:** superseded → the Cycle cards row's Key-checks cell now cites `mochiko-cli template tasks --check` (or Read `plugins/mochiko/schemas/tasks.yaml` raw) as the source its cycle-card criteria mirror. THIN scope (contest-accepted per plan §5): only the tasks in-scope-template checklist is re-keyed; `references/ARTIFACT-CHECKLISTS.md` and all out-of-scope artifact checklists (requirements / constraints / nfrs / data-model / contracts / quickstart / architecture — their templates are in-skill refs, D3 leaves them `.md`) are left untouched.
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/schema-based-template-guidance/record.md` D7 (`--check` grading view, checklists re-key)/D8; `DECISIONS.md` "Template-schema CLI ruled").

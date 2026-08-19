@@ -46,9 +46,6 @@ REQUIRED_SECTIONS = {
     'requirements.md': [
         '## Technical Requirements',
     ],
-    'nfrs.md': [
-        '## Non-Functional Requirements',
-    ],
     'data-model.md': [
         '## Entities',
         '## Relationships',

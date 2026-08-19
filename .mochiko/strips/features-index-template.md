@@ -7,6 +7,35 @@ dir-beside-entry layout note); one comment line was superseded.
 
 ---
 
+<!-- Lineage note: from v0.76.0 this primitive IS `plugins/mochiko/schemas/features-index.yaml` —
+the template retired into it (entry below) and this file continues as the schema's strip home,
+one file per primitive, one continuous history. Wave context for [v0.81.0]: the
+product-architecture-schema Stage-1 build wave. Ruling:
+`.mochiko/brainstorms/product-architecture-schema/record.md` (D3 · D4) → `DECISIONS.md`
+2026-08-19 product-architecture row. -->
+
+## [v0.81.0] Capability-peer framing re-pointed from `ARCHITECTURE.md` to the store (D3/D4)
+
+- **Disposition:** superseded → the capability peer of the **architecture store**
+  (`.mochiko/product/architecture/`), whose derived index is repo-root `ARCHITECTURE.md`.
+- **Tier failed:** n/a — supersession by ruling (record D3 — one store — and D4, which makes the
+  root file a derived projection rather than the architecture surface itself; `DECISIONS.md`
+  2026-08-19 row).
+- **Content:** verbatim, four sites. (1) Overview: "It is the capability peer of
+  ARCHITECTURE.md." (2) Header contract line: "> The system as capabilities — the capability
+  peer of `ARCHITECTURE.md`." (3) The same line in the skeleton. (4) The Header `check`
+  fragment: "Is the header present with the capability-peer framing, …".
+- **Kept deliberately:** the **peer relation itself** — the whole point of the line — is not
+  weakened but sharpened: `FEATURES.md` is a peer of a real, ruled, single-source surface rather
+  than of a prose document. Everything else in the overview and header survives byte-for-byte:
+  the succinct-index-never-a-monolith rule, the write-timing rule (spec acceptance and acceptance
+  landings, never mid-run, with `/mochiko:feature` stewardship writes landing directly), the
+  entry-file pointer convention, and the four-status legend.
+- **Consumers assessed:** `feature-entry.yaml`'s Architecture section re-pointed in the same wave
+  (own strip entry); `mochiko:authoring-feature-map` and `patterns-map-minimalism` peer-of lines
+  are P4's this wave; `mochiko-cli template features-index` renders from this data file and needs
+  no code change.
+
 ## [v0.76.0] Template retired — superseded by schema-based template guidance (D1/D3/D8)
 - **Disposition:** superseded → plugins/mochiko/schemas/features-index.yaml + mochiko-cli template features-index
 - **Tier failed:** n/a — supersession by ruling (schema-based-template-guidance D1/D3/D8; record `.mochiko/brainstorms/schema-based-template-guidance/record.md`; `DECISIONS.md` "Template-schema CLI ruled")

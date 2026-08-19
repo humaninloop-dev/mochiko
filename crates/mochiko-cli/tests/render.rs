@@ -68,6 +68,44 @@ fn every_shipped_schema_parses() {
     }
 }
 
+/// Gate-5 schema-data/binary consistency across the whole shipped directory, not just the names
+/// the binary renders. Every shipped `.yaml` must stay readable as YAML — that is the raw-Read
+/// degraded path (GI-020), and it is the only check covering data files the binary never renders
+/// (the `architecture-shelf-*` shelves, dealt by a skill reading them raw).
+#[test]
+fn every_shipped_schema_file_is_readable_yaml_and_every_known_name_has_one() {
+    let entries = std::fs::read_dir(SHIPPED_SCHEMAS_DIR).expect("shipped schema dir should exist");
+
+    let mut seen = Vec::new();
+    for entry in entries {
+        let path = entry.expect("readable dir entry").path();
+        if path.extension().and_then(|e| e.to_str()) != Some("yaml") {
+            continue;
+        }
+        let yaml = std::fs::read_to_string(&path)
+            .unwrap_or_else(|e| panic!("{} could not be read: {e}", path.display()));
+        serde_norway::from_str::<serde_norway::Value>(&yaml)
+            .unwrap_or_else(|e| panic!("{} is not readable as YAML: {e}", path.display()));
+        seen.push(
+            path.file_stem()
+                .expect("yaml file has a stem")
+                .to_string_lossy()
+                .into_owned(),
+        );
+    }
+
+    assert!(
+        seen.iter().any(|name| name == "architecture-shelf-backend"),
+        "the backend shelf data file should ship alongside the rendered schemas"
+    );
+    for name in TEMPLATE_NAMES {
+        assert!(
+            seen.iter().any(|shipped| shipped == name),
+            "{name} is a known template name with no shipped schema file"
+        );
+    }
+}
+
 #[test]
 fn producer_view_carries_every_section_name_and_the_skeleton() {
     for name in TEMPLATE_NAMES {

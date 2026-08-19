@@ -5,7 +5,7 @@ Current-state map of the shipped plugin at [`plugins/mochiko/`](plugins/mochiko/
 repo-side knowledge plane (`.mochiko/`, the operating docs) is covered by
 [`CLAUDE.md`](CLAUDE.md). Rationale for every boundary here lives in the decisions layer
 ([`DECISIONS.md`](DECISIONS.md)); this doc records the resulting system. Maintained per
-`mochiko:authoring-architecture`: updated at landings that change components, boundaries, or
+`mochiko:authoring-architecture-store` (its predecessor `mochiko:authoring-architecture` retired v0.81.0): updated at landings that change components, boundaries, or
 data flow.
 
 ## System overview
@@ -221,7 +221,7 @@ anything is designed against it.
 | cycle-card producer | `patterns-vertical-tdd` on a seat of the lead's choosing — `tasks.md` as cycle cards (no fixed persona) |
 | feasibility | `tech-lead` × `review-feasibility` — analysis, the class-7 excess/altitude hunt, then the architecture pass |
 | completeness | `devils-advocate` × `review-plan-artifacts` (cycle cards included) |
-| architecture scribe | `principal-architect` × `authoring-architecture` — disposable, at finalize; records the initial `ARCHITECTURE.md` baseline when the target repo has none |
+| architecture scribe | `principal-architect` × `authoring-architecture-store` — disposable, at finalize; records the initial `ARCHITECTURE.md` baseline when the target repo has none |
 
 Case distinguishes two artifacts here: lowercase `architecture.md` is the per-capability design
 artifact under `.mochiko/features/FEAT-XXX/`; uppercase `ARCHITECTURE.md` is a repo's living
@@ -262,8 +262,8 @@ evidence without a lead read — anything else fires the human-adjudicated check
 |---|---|
 | producer | `staff-engineer` × `executing-tdd-cycle`, `brownfield-integration`, `patterns-code-minimalism` (the pre-code ladder at decomposition, rungs disclosed) |
 | verifier | `qa-engineer` × `testing-end-user`, `review-code-minimalism` (advisory `minimalism:` findings; reads diff + cycle report + codebase) — never mounted on the producer |
-| arch-diff | `principal-architect` × `authoring-architecture` — disposable, built-vs-approved at final validation |
-| arch-scribe | `principal-architect` × `authoring-architecture` — disposable, folds built structure into `ARCHITECTURE.md` |
+| arch-diff | `principal-architect` × `authoring-architecture-store` — disposable, built-vs-approved at final validation |
+| arch-scribe | `principal-architect` × `authoring-architecture-store` — disposable, folds built structure into `ARCHITECTURE.md` |
 
 ```mermaid
 flowchart LR

@@ -1,6 +1,6 @@
 # Diagram Conventions
 
-Copy-ready mermaid patterns for the `architecture.md` pieces. Two rules run through all of them:
+Copy-ready mermaid patterns for the architecture delta's pieces. Two rules run through all of them:
 **C4-as-method, flowchart-as-carrier** (mermaid's dedicated C4 syntax is experimental — use standard
 `flowchart` / `sequenceDiagram` and apply C4 discipline by hand), and **the delta is visible**
 (new/modified/removed read differently from unchanged at a glance).
@@ -86,14 +86,14 @@ sequenceDiagram
 ```
 
 Use `alt` / `opt` / `Note` to make ordering and failure explicit. Participants are the same
-components named in the container diagram and the component table — keep the names identical across
+components named in the container diagram and the delta register — keep the names identical across
 all three pieces.
 
 ---
 
 ## Deployment view — conditional
 
-Author **only when the feature carries `IP-XXX` provisioning rows** (it changes deployment reality).
+Author **only when the change carries `IP-XXX` provisioning rows** (it changes deployment reality).
 A flowchart with runtime/infra boundaries as subgraphs:
 
 ```mermaid
@@ -119,6 +119,6 @@ No `IP-XXX` rows → omit the section and record the omission in one line
 
 When the delta neighborhood (changed components + direct collaborators) exceeds the box threshold
 (**default ~12 rendered nodes**, overridable per project), do not inline the full system. Inline the
-neighborhood; add one line linking the wider map
-(`ARCHITECTURE.md`, or the prior feature's architecture) for everything unchanged. A no-delta feature
-on a large system shows the touched neighborhood, not the whole estate.
+neighborhood; add one line linking the wider map — the store's topology spine — for everything
+unchanged. On a large system the spine is the estate; the delta is only ever the neighborhood the
+change touches.

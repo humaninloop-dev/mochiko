@@ -27,17 +27,22 @@ sections:
     check: "Does the Summary state the primary requirement and the technical approach, drawn from the spec and decisions?"
 
   - name: Architecture
-    required: false
+    required: true
     contract: |
-      Present ONLY when the approved proposal included `architecture.md`; otherwise omit this
-      section entirely. The system view — components, boundaries, interactions, and the delta
-      this feature introduces — was designed first and signed off at the architecture gate. It
-      lives in `architecture.md`; see it for the container diagram, key-flow sequence diagrams,
-      and component register (never restated here — pointers only). Carries a one-line Delta
-      summary (what this feature changes structurally, or "no structural change") and a pointer
-      table: container diagram / sequence diagrams / component register -> architecture.md;
-      structural decisions (D-XXX) -> constraints-and-decisions.md.
-    check: "If (and only if) the approved proposal included architecture.md, is the Architecture section present as pointers-only with a delta summary? If the proposal omitted architecture, is the section absent?"
+      ALWAYS present — every plan run consults the architecture store, so this section is never
+      omitted. Two parts, the second conditional.
+      (1) The consult record, always: which store surfaces were read (the derived root index +
+      the full AX-XXX summary table always; spine.md only when the structural-change trigger
+      fired; the touched concern files by name), the trip check's outcome — each AX-XXX row this
+      feature touches that stands `open` or `not-now`, with the user's disposition (ruled, or
+      deferred on the record) — and, when no delta was authored, the ONE-LINE no-delta claim:
+      the judgment that this feature changes no structure, stated, never left silent.
+      (2) The delta pointers, only when the run authored a store delta and the user signed it:
+      a one-line Delta summary (what this feature changes structurally) plus a pointer table —
+      rendered diagram / changed spine elements -> the signed delta in the package; changed
+      concern rows -> their AX-XXX ids and the new element statuses (in-flight / modifying /
+      removing, keyed FEAT-XXX). Pointers only, never the delta restated.
+    check: "Is the Architecture section present with its consult record — surfaces read, trip-check outcome and disposition, and (absent a delta) the one-line no-delta claim — plus, only where a signed store delta exists, a delta summary and pointer table naming the changed AX-XXX rows and element statuses?"
 
   - name: Key Decisions
     required: true
@@ -74,10 +79,11 @@ sections:
       The artifacts this run's APPROVED proposal produced — each complete and graded. The rows
       are the menu to prune to the proposal; an artifact the proposal did not include is omitted
       here, not listed incomplete. Table (Artifact | Status): requirements.md,
-      constraints-and-decisions.md, nfrs.md, architecture.md (only when the proposal included
-      architecture — signed off), data-model.md, contracts/api.yaml, quickstart.md (conditional
-      — or "not applicable — no external integration surface"), tasks.md (cycle cards).
-    check: "Does the Artifacts table list exactly the artifacts the approved proposal produced, each marked complete, with conditional artifacts (architecture, quickstart) handled per their rules?"
+      constraints-and-decisions.md, the signed store delta (only where the run authored one —
+      user-signed), data-model.md, contracts/api.yaml, quickstart.md (conditional — or "not
+      applicable — no external integration surface"), tasks.md (cycle cards). NFR targets are
+      not an artifact row: they live on the store's concern rows.
+    check: "Does the Artifacts table list exactly the artifacts the approved proposal produced, each marked complete, with conditional artifacts (the store delta, quickstart) handled per their rules?"
 
   - name: Next Steps
     required: true
@@ -98,14 +104,18 @@ skeleton: |
 
   ## Architecture
 
-  *Present only when the approved proposal included `architecture.md`; otherwise omit this section.*
+  **Store consulted**: derived index + AX summary table · [spine.md — only if the structural-change trigger fired] · touched concern files: [AX-XXX, AX-XXX]
 
-  **Delta summary**: [one line — what this feature changes structurally, or "no structural change"].
+  **Trips**: [AX-XXX (`open`/`not-now`) — ruled: [the ruling] | deferred on the record] — *or* "none — no touched row stands `open` or `not-now`".
+
+  **Delta**: [one line — what this feature changes structurally] — *or* the no-delta claim: "no structural change — [the one-line judgment]".
+
+  *The table below is present only where the user signed a store delta; omit it otherwise.*
 
   | Aspect | Where |
   |--------|-------|
-  | Container diagram (delta-marked) · key-flow sequence diagrams · component register | `architecture.md` |
-  | Structural decisions (D-XXX) | `constraints-and-decisions.md` — structural-decisions section |
+  | Rendered diagram · changed spine elements | [the signed delta in this package] |
+  | Changed concern rows | [AX-XXX → `in-flight (FEAT-XXX)` / `modifying (FEAT-XXX)` / `removing (FEAT-XXX)`] |
 
   ## Key Decisions
 
@@ -145,8 +155,7 @@ skeleton: |
   |----------|--------|
   | `requirements.md` | ✅ Complete |
   | `constraints-and-decisions.md` | ✅ Complete |
-  | `nfrs.md` | ✅ Complete |
-  | `architecture.md` | ✅ Complete — signed off *(only when the proposal included architecture)* |
+  | Store delta | ✅ Complete — user-signed *(only where the run authored one)* |
   | `data-model.md` | ✅ Complete |
   | `contracts/api.yaml` | ✅ Complete |
   | `quickstart.md` | ✅ Complete — *or* "not applicable — no external integration surface" (conditional; see `patterns-api-contracts`) |

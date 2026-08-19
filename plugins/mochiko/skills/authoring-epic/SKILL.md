@@ -50,13 +50,15 @@ Home `.mochiko/epics/EPIC-XXX/`. **No separate epics index — the directory is 
 - **Status** — `open` / `delivered` / `closed-partial`.
 - **Why-together line** — the relatedness stated at the declare-and-contest that opened it.
 
-**Spine files** beside it — the tech view plan and implement consume:
+**Spine files** beside it — the tech view plan and implement consume. (*Spine* here is the
+epic's, never the architecture store's topology spine; where both appear, name which.)
 
 - **Joint plan-the-plan proposal** — one proposal over all members (spine artifacts + each
   member's artifact list).
-- **Joint architecture + seam design** — one rendered delta; **each cross-member seam names its
-  owner explicitly** (members land simultaneously, so no later-lander default applies). The
-  assignment lives here; the map writes it at close.
+- **Joint architecture + seam design** — **one signed store delta** for the whole epic, rendered
+  once and signed off once; **each cross-member seam names its owner explicitly** (members land
+  simultaneously, so no later-lander default applies). The assignment lives here; the map writes
+  it at close.
 - **Ordering** — shared-foundation first, then in-epic dependency order.
 - **Shared-baseline deltas** — see below.
 
@@ -95,7 +97,8 @@ epic**; the graduation-shaped close (below) is thereby correct by constraint, no
 ## Close semantics
 
 One acceptance landing executes **each member's graduation batch** (extent fold, status
-`delivered`, In-flight pointer clear) **plus the epic close**: the `[EPIC-XXX]` markers vanish
+`delivered`, the store's in-flight-class elements flipped `built` and their `FEAT-XXX` keys
+cleared) **plus the epic close**: the `[EPIC-XXX]` markers vanish
 with the folded rows, the manifest is **stamped `delivered` + dated**, and the **directory
 stays in place as record** — no move, no trail file.
 

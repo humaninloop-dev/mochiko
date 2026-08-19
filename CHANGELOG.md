@@ -5,6 +5,34 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.81.0] — 2026-08-19
+
+Product-architecture store, Stage 1 (`product-architecture-schema` D1–D16, `DECISIONS.md`
+2026-08-19 row; Stage 2 — frontend/mobile/desktop shelves — remains queued per D15).
+Architecture becomes a first-class living-desk workflow over one schema-backed store at
+`.mochiko/product/architecture/` (spine + AX-XXX concern catalog, element lifecycle
+`ruled` → in-flight-class → `built`), with repo-root `ARCHITECTURE.md` re-chartered as the
+store's derived index. New: `/mochiko:architecture` desk command (charter form) ·
+`authoring-architecture-store` + `patterns-architecture-shelves` skills ·
+`architecture-store.yaml` (ninth rendered schema) + `architecture-shelf-backend.yaml`
+(13 memory-asserted dimensions + 3 topology-spine opinions, floor-bound rows 1/5/13).
+Transformed: `patterns-system-design` (altitude + diagram craft now serves store deltas;
+protected no-delta and altitude lines carried). Retired: `authoring-architecture` (Duty 1
+landing diff inherited by the store skill on the approved-delta-existed trigger, both
+directions) and the orphaned `architect-report-template.md`. Re-keyed: plan (omit-architecture
+escape dead; metered consult contract; sign-off = the store write gate) · implement (deviation
+gate + landing flips + graded `As-built:`/`Drift:`) · setup (unconditional store scaffold with
+`Scope:` stub) · feature (growth-door intake) · plan/feature-entry/features-index schemas ·
+both plan review skills · router ×10+ rows · `patterns-sound-loop` governing surface ·
+`authoring-technical-requirements` (structural D-XXX die into store deltas; `nfrs.md` retired
+as an artifact class, NFR-XXX ids re-homed on concern rows) · KM module + pinned invariant
+(AT-D6-C In-flight agreement superseded by the orphan rule, store-less carve keyed to ruled
+content). 4 plan-approved producer seats (disjoint ownership) + 4 fresh author≠grader
+validators under the sound-loop + transport floors; all four clusters FAIL round 1 → fix
+rounds → 4/4 unconditional PASS; ~45 supersession strips across 20+ strip files, all quoted
+spans byte-verified; ledger swept at the gate (15 measured / 14 matched / 1 drift corrected);
+sole budget overage `authoring-feature-map` +434, declared and ruled HOLDS; `cargo test` 12/12.
+
 ## [0.80.0] — 2026-08-19
 
 Slice-vocabulary purge (ADR `.mochiko/decisions/2026-08-19-slice-vocabulary-purge.md`;

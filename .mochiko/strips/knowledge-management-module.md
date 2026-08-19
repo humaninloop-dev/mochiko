@@ -13,6 +13,57 @@ document contracts are the **user's** artifacts and are untouchable. A prefix-ba
 `.mochiko/` would gut the KM module and the brainstorm command; 101 of this tree's 146
 `.mochiko/` references were correctly left alone on that test.
 
+## [v0.81.0] `ARCHITECTURE.md` doc-role re-worded to the derived index; In-flight agreement → orphan rule — product-architecture-schema D4/D10
+
+- **Disposition:** superseded → the derived-index role and the orphan rule. `ARCHITECTURE.md`
+  stays a repo-root core doc with the same read-job, but it is now a **rendered projection** of
+  the architecture store (`.mochiko/product/architecture/`) that its owning skill regenerates on
+  every store write — so its writer moment changes from a landing-time hand fold to a
+  single-writer regeneration, and the In-flight-pointer invariant it carried is replaced by the
+  store's own orphan rule.
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/brainstorms/product-architecture-schema/record.md` D4 (derived index, single writer,
+  index-vs-ledger disagreement is a defect) · D10 (the six-step delta lifecycle whose orphan rule
+  explicitly supersedes the pinned AT-D6-C invariant); `DECISIONS.md` 2026-08-19).
+- **Content (superseded, verbatim — three fragments):**
+
+  ```
+  | `ARCHITECTURE.md` (repo root) | the living system view — components, boundaries, data flow; decisions record *changes*, this records the *resulting system* | plan/implement landings on structural change · `mochiko:authoring-architecture` |
+  ```
+
+  ```
+  - **In-flight agreement:** every `ARCHITECTURE.md` In-flight pointer targets an open
+    feature and resolves; a closed feature still pointed at, or a pointer to a missing
+    file, is a defect.
+  ```
+
+  ```
+  - [ ] Invariants stated mechanically (… · in-flight agreement (`ARCHITECTURE.md` pointers target open features and resolve) · presence) with the vacuous-at-zero note
+  ```
+  *(validator-fragment line, elided at the unchanged middle; also re-worded: the `FEATURES.md`
+  paragraph's "`ARCHITECTURE.md`'s capability peer" → "the architecture store's capability peer")*
+- **Kept deliberately:** `ARCHITECTURE.md` **stays at the repo root** as a core KM artifact with
+  its read-job intact — D4 is explicit that the top-level operating-doc reservation and the KM
+  home are untouched. The admission rule (read-job · writer moment · carrier) still holds for the
+  row, which is why the writer moment and carrier were re-stated rather than dropped. Every other
+  invariant, the landing ritual, the never-overwrite floor, and the electives are untouched.
+- **Addition riding the decision row (no strip):** the **index agreement** invariant (the derived
+  index matches the store; a disagreement is fixed by re-rendering, never by editing the index) —
+  D4's review fold S12 makes this the mechanism that closes the stale-index-misses-a-trip failure
+  mode, and an invariant list that dropped the old pointer check without adding it would have
+  left the new surface unguarded.
+- **Open seam flagged to the wave landing (not ruled here):** this template ships to adopting
+  projects, and the row now names a store that a KM-adopting, pipeline-less project will not
+  have. The coupling is pre-existing in kind (the row already named a mochiko skill as its
+  carrier) and was re-pointed, not widened; whether the KM module should carry an
+  architecture-store-free degrade path is an open thread for the wave landing.
+- **Consumers assessed:** the **project-pinned copy** at `.mochiko/memory/knowledge-management.md`
+  carries the same invariant and is amended in the same edit set by this seat, direct by ruling
+  (not as an amend offer) — the two must agree or the runtime source contradicts its template.
+  `.claude/rules/mochiko/operating-docs.md` gains the derived/never-hand-edit line (this seat).
+  `mochiko:grooming-operating-docs` resolves invariants from the project copy, never this
+  template — unaffected by construction.
+
 ## [v0.44.0] Redesign record citation
 - **Disposition:** superseded → deleted from the shipped file; preserved verbatim here.
 - **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row above)

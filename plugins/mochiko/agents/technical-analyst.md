@@ -20,7 +20,9 @@ the single source of truth for its artifact, so reach for the one whose artifact
 you; its scope lives in the skill, not a copy here:
 
 - **`mochiko:authoring-technical-requirements`** — the analysis artifacts (`requirements.md`,
-  `constraints-and-decisions.md`, `nfrs.md`) and their TR/C/NFR/IP traceability.
+  `constraints-and-decisions.md`) and their TR/C/NFR/IP traceability. NFR-XXX rows are homed on
+  the architecture store's concern rows, not a `nfrs.md` file — the ids and the grammar are that
+  skill's, the row is the store's.
 - **`mochiko:patterns-technical-decisions`** — evaluating alternatives and recording the decision
   in ADR format.
 - **`mochiko:patterns-entity-modeling`** — the data model (`data-model.md`) and per-attribute data

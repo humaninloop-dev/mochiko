@@ -25,14 +25,14 @@ Every run has a goal and its explicit done condition; a run is never goal-less.
    rows enter as selection scope, a bug/improvement delta as delta scope. Neither → block:
    new capability to `/mochiko:specify`, feature-keyed delta to `/mochiko:feature`.
    **Selection scope** additionally gates on the accepted package the plan run produced — the
-   batch's `tasks.md` complete alongside its `plan.md`, and its `architecture.md` where the
-   proposal included one, at `.mochiko/features/FEAT-XXX/`; missing or incomplete → block,
+   batch's `tasks.md` complete alongside its `plan.md`, and its **signed store delta** where
+   the plan run authored one, at `.mochiko/features/FEAT-XXX/`; missing or incomplete → block,
    point to `/mochiko:plan`; a capability-batch whose selected rows depend on rows not yet
    `delivered` blocks — batches run in the rows' dependency order. **Delta scope** gates on
    the delta card confirmed by a delta-scope plan run; the card's acceptance criteria (a
    bug's reproduction-failing-test, or 1–3 criteria on the delta) are the cycle's criteria.
    **Epic entry:** `$ARGUMENTS` naming an `EPIC-XXX` gates on that epic's **accepted package** —
-   every member's `tasks.md` (and its `architecture.md` where the proposal produced one)
+   every member's `tasks.md` (and its signed store delta where the proposal produced one)
    complete at `.mochiko/features/FEAT-XXX/`, the joint spine accepted at
    `.mochiko/epics/EPIC-XXX/` (`mochiko:authoring-epic`); any member incomplete → block, point
    to `/mochiko:plan`. Every member is selection scope (delta-scope cards never join an epic);
@@ -59,9 +59,12 @@ Every run has a goal and its explicit done condition; a run is never goal-less.
    (Tools), a delta-scope or product-lane run stating that skip explicitly in its
    final-validation report; the code
    meets its criteria, holds traceability to requirements, and aligns with the project's
-   governance; where a structural delta was approved at plan time, a built-vs-approved diff
-   report exists and any divergence it names was ruled by the user; and the acceptance
-   landing executed whole — map bookkeeping and every touched baseline's graded fold. The
+   governance; where a store delta was approved at plan time, a built-vs-signed diff
+   report exists — owed on the **approved-delta-existed trigger alone**, so a feature descoped
+   to nothing is caught at its landing rather than weeks later by the orphan sweep — and any
+   divergence it names was ruled by the user; and the acceptance
+   landing executed whole — map bookkeeping, the store landing, and every touched baseline's
+   graded fold. The
    run closes at final acceptance (accept / amend / reject). **Over an epic:** one merged
    **sequential** cycle sequence from the joint plan — shared foundation cycles first, then
    in-epic dependency order — with feature-tagged cards whose reports land in each member's
@@ -75,8 +78,10 @@ a planned package from the map and confirm with the user.
 
 **Not done — default FAIL:** an unchecked cycle card · a failing quality gate · verification
 without real-infrastructure evidence · a regression in a previously delivered feature's
-gates · a surfaced architecture deviation neither built as
-approved nor consented as an amendment · a touched baseline accepted without its graded
+gates · a surfaced store deviation neither built as
+approved nor consented as an amendment · an approved-delta landing without its built-vs-signed
+diff, or leaving an in-flight-class element neither flipped `built` nor keyed to an open
+feature · a touched baseline accepted without its graded
 fold · a selection-scope or epic run without its gap-finding pass · a delta-scope or lane run
 whose report does not state the skip · an unresolved spec-violation gap finding · user
 acceptance not given.
@@ -112,9 +117,9 @@ is your call.
   It hunts what the builder and the test author both missed (Tools); the mutation lens rides
   the existing verification seat, which already holds code sight.
 - **The user** — architecture-deviation consent: a cycle that adds or removes a box, adds,
-  removes, or redirects an arrow, or moves a responsibility across a boundary on the
-  approved diagram stops and is presented — build as approved, or amend `architecture.md`
-  first · requirement ambiguity or a judgment call a producer flags — answered by the user,
+  removes, or redirects an arrow, or moves a responsibility across a boundary of the signed
+  store delta stops and is presented — build as approved, or amend the delta by the user's
+  ruling first · requirement ambiguity or a judgment call a producer flags — answered by the user,
   investigable gaps excepted · scope escalation (work bigger than the run was framed; the
   run stays FAIL unless the user explicitly accepts) · exempting a grading round from the
   attempt count (Boundaries) · an epic member's attempt-exhaustion disposition — carve the
@@ -138,12 +143,13 @@ Each tool below is referenced, never restated — its procedure lives in its hom
   the cycle's diff, `cycle-report.md`, and the codebase around the diff (reuse claims
   never on trust); `minimalism:` findings are advisory to the checkpoint verdict, never a
   cycle-failing gate.
-- **Design inputs** — the feature's `plan.md` and — where the proposal produced one —
-  `architecture.md` (the anchor for the deviation check and the built-vs-approved diff) with
+- **Design inputs** — the feature's `plan.md` and — where the plan run authored one — its
+  **signed store delta** (the anchor for the deviation check and the built-vs-signed diff) with
   the feature's other deltas at
   `.mochiko/features/FEAT-XXX/`, plus its `requirements.md` there; the product baselines at
-  `.mochiko/product/` — `data-model.md`, `contracts/`, `constraints-and-decisions.md`,
-  `nfrs.md` for the numeric quality targets the built code must respect — and `spec.md` for
+  `.mochiko/product/` — `data-model.md`, `contracts/`, `constraints-and-decisions.md`, and the
+  architecture store, whose concern rows carry the `NFR-XXX` numeric quality targets the built
+  code must respect — and `spec.md` for
   the cards' cited acceptance criteria.
 - **Progress surface** — `tasks.md`'s per-card checkboxes, flipped as cycles complete.
 - **Reports** — land in `.mochiko/features/FEAT-XXX/` (product-lane runs:
@@ -171,7 +177,8 @@ Each tool below is referenced, never restated — its procedure lives in its hom
   union of member territories. **Dispatch is two-message and blind:** the first message to the
   fresh gap-finding seat (Roles & Responsibilities) carries only the feature's `spec.md`,
   `requirements.md`, and Screens & Flows, plus the product baselines `data-model.md`,
-  `contracts/`, and `nfrs.md` — never the code, `tasks.md`, the `**TEST:**` cases, the cycle
+  `contracts/`, and the store's concern rows carrying the `NFR-XXX` targets — never the code,
+  `tasks.md`, the `**TEST:**` cases, the cycle
   reports, or the verification reports; the seat states its derived expectations, and only then
   does probing begin. The seat's brief carries the model-tiering routing rule (Ways of Working),
   and its delegated reads stay inside that same fence. Alongside it, the **mutation lens** runs
@@ -183,18 +190,24 @@ Each tool below is referenced, never restated — its procedure lives in its hom
   defaults advisory and the dispute goes to the user (Roles & Responsibilities) — the finder
   never gates alone. A gap surfaced in a previously delivered feature's territory is not this
   run's rework: it routes to a `/mochiko:feature` delta card, cited in the report.
-- **KM landing** — where `.mochiko/memory/knowledge-management.md` exists, a built structural
-  change folds into `ARCHITECTURE.md` — the fold is dual-target (the feature's
-  `architecture.md` accumulates the approved delta) per `mochiko:authoring-architecture`.
+- **Store landing** — a built structural change folds into the architecture store per
+  `mochiko:authoring-architecture-store`, in three parts: the delta's elements **flip
+  `built`** and their `FEAT-XXX` keys clear (transcription — it rides this run's landing
+  audit); the touched rows' `As-built:` and `Drift:` fields are **written as judgment and
+  independently graded** like any other governing-surface write (Ways of Working); and the
+  **orphan check** runs — an in-flight-class element keying no open feature is flagged, never
+  left. The store skill regenerates the derived root `ARCHITECTURE.md` from the result; the
+  index is never hand-edited here. Where `.mochiko/memory/knowledge-management.md` exists, the
+  same landing carries its KM obligations.
 - **Baseline touches** — mid-fix discovery that the work touches a product baseline → the
   dispatched run authors `baseline-delta.md` in its feature dir at discovery — a minimal
   enumerated delta in appliable form.
 - **Acceptance landing** — at user acceptance, one landing executes whole, branched by scope
-  type. **Selection scope** — the same landing that folds `ARCHITECTURE.md` executes the
-  map's graduation batch per `mochiko:authoring-feature-map`: this run's delivered work rows
+  type. **Selection scope** — the same landing that executes the store landing above executes
+  the map's graduation batch per `mochiko:authoring-feature-map`: this run's delivered work rows
   fold into the capability's extent lines and the rows vanish (pending rows persist) · the
   capability's status is set `delivered` (dated), never regressing · the
-  `FEATURES.md` index line updates · the `ARCHITECTURE.md` In-flight pointer is cleared ·
+  `FEATURES.md` index line updates ·
   the specs-index row is touched — the spec reads closed exactly when all its selected
   work rows have folded (derived, never asserted). No separate feature-close stage
   exists. **Epic** — one landing executes **each member's** graduation batch (as above) plus
@@ -207,7 +220,10 @@ Each tool below is referenced, never restated — its procedure lives in its hom
   **Delta scope** — the entry's marked delta folds per `mochiko:authoring-feature-map`'s
   delta fold. **Both scopes:** every touched baseline folds via a graded fold — three-way
   diff: pre-fold baseline + delta vs folded result; delta applied whole, nothing else
-  changed — checked by the landing verification seat (Roles & Responsibilities). A delta
+  changed — checked by the landing verification seat (Roles & Responsibilities). **One carve:
+  the store's fold IS the Store landing above** — status flips, graded `As-built:`/`Drift:`
+  writes, and the orphan check, not a three-way diff; it is folded exactly once, like any
+  other touched baseline. A delta
   whose baseline file is absent at fold time folds into a fresh `.mochiko/product/` file
   (empty pre-fold side), the absence surfaced to the user as a seeding gap. The same landing
   folds back the gap findings the user ruled fix-now or backlog: each is authored — QA craft,

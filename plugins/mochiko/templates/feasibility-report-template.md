@@ -12,7 +12,7 @@ and the per-issue resolution fuel the human gate reads. Envelope + shared rules:
 report: feasibility
 feature: {{feature_id}}
 round: {{round}}
-artifacts_reviewed: [requirements.md, constraints-and-decisions.md, nfrs.md]   # + data-model.md, contracts/api.yaml on a design review
+artifacts_reviewed: [requirements.md, constraints-and-decisions.md]   # + the store delta on a structural run; + data-model.md, contracts/api.yaml on a design review
 verdict: feasible | needs-revision | infeasible
 verdict_basis: "{{one line — what drives the verdict}}"
 strengths: "{{one line, comma-brief}}"

@@ -6,6 +6,79 @@ Entry formats: `strips/README.md`. Wave context: skill-succinctness wave 1 (desi
 single physical lines, so the R2 line denominator undercounts this skill; dual accounting
 recorded here and flagged on the wave's ROADMAP row.
 
+## [v0.81.0] Architecture rows re-keyed to the store; `authoring-architecture` row retired — product-architecture-schema D1/D3/D4/D7/D10/D12
+
+- **Disposition:** superseded → a new **Architecture desk cluster** section (the store skill, the
+  shelves skill, and the two new schema rows) plus re-keyed rows across the Plan cluster, the
+  Agents table, and the Entry-point table. The `authoring-architecture` row is **retired with its
+  skill** (D7 — the store skill inherits its Duty-1 landing-diff trigger); the row left the Setup
+  cluster because the store's home is the desk command, not a one-time ceremony (D1/Q3).
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/brainstorms/product-architecture-schema/record.md` D1 (living desk) · D3
+  (single store, per-feature artifact dies) · D4 (derived index) · D7 (crew) · D10 (consult
+  always, sign-off as write gate) · D12 (`nfrs.md` absorbed, store homed at
+  `.mochiko/product/architecture/`); `DECISIONS.md` 2026-08-19).
+- **Content (superseded, verbatim — the retired row and the seven re-keyed fragments):**
+
+  ```
+  | `authoring-architecture` | authoring/updating `ARCHITECTURE.md` (the KM module's living system view) at a plan/implement landing on structural change — current state only; rationale links to the decisions layer, never restated |
+  ```
+
+  ```
+  | `patterns-system-design` | designing a feature's architecture at design time — the container-level topology + current→target delta (`architecture.md`): a C4-container delta diagram (mermaid flowchart carrier — subgraph boundaries, protocol+purpose arrows, delta styled), sequence diagrams for qualifying flows (≥2 components, non-trivial ordering/failure), a container-level component table + `D-XXX`-linked delta summary, and a conditional deployment view; seeds/bootstraps the current-state baseline, scopes to the delta neighborhood; authored **before** `data-model.md`/`contracts` (which conform to the approved shape) — distinct from `authoring-architecture` (the repo-level `ARCHITECTURE.md` operating doc, folded post-hoc at landing) |
+  ```
+
+  ```
+  | `principal-architect` | plan-cluster PRODUCER + altitude voice — authors the design-time architecture artifact (`architecture.md`: container-level topology + current→target delta, sequence diagrams, component register) and the repo `ARCHITECTURE.md` fold at landings; weighs whether structure is paid for and names the cheaper shape — the seat for the plan proposal **contest brief**; never grades its own output (skills: patterns-system-design, patterns-technical-decisions, authoring-architecture) |
+  ```
+
+  ```
+  The design surface is two-altitude: product baselines (`data-model.md` · `contracts/` · `nfrs.md` · `constraints-and-decisions.md` · `quickstart.md`) live at `.mochiko/product/` beside `ARCHITECTURE.md` (repo root);
+  ```
+
+  ```
+  … a governing surface (capability map · product baselines · specs · `ARCHITECTURE.md` · governance surfaces · plugin primitives · product code) …
+  ```
+
+  ```
+  … + **completeness within scope** (coverage / measurability / consistency, the architecture artifact when proposed, the cycle cards) …
+  ```
+
+  ```
+  … and the **architecture pass** (topology feasibility + governance conformance) when `architecture.md` is in scope …
+  ```
+
+  ```
+  … a structural input fence (`spec.md` · `requirements.md` · Screens & Flows · `data-model.md` · `contracts/` · `nfrs.md` — never code, cards, `**TEST:**` cases, or reports) …
+  ```
+
+  ```
+  … then the proposed artifacts: the architecture delta when proposed (signed off on a rendered diagram before detailed design builds on it), detailed design, …
+  ```
+
+  ```
+  … the landing folds delivered work rows into the capability's extent (pending rows persist) and the touched product baselines take their graded delta folds …
+  ```
+- **Kept deliberately:** the `patterns-system-design` row's whole diagram craft — C4-container
+  altitude, the mermaid carrier with subgraph boundaries and protocol+purpose arrows, sequence
+  diagrams for qualifying flows, the conditional deployment view, and the authored-before-
+  `data-model.md`/`contracts` ordering — all survive verbatim in the re-keyed row; only the
+  artifact they serve changed. The plan row's proposal gate, rung-justification, and independent
+  contest are untouched. The `tech-lead` row's existing setup-author and feasibility-reviewer
+  halves are untouched (the store-grading duty is appended, D11-as-narrowed).
+- **Additions riding the decision row (no strip):** the Architecture desk cluster section and its
+  four rows; the `/mochiko:architecture` entry-point row; the store-consult and no-omit-escape
+  clauses on the plan row; the store status-flip clause on the implement row.
+- **Consumers assessed:** every re-keyed row's owning primitive is edited in the same wave —
+  `patterns-system-design` + `principal-architect` (P3), the two new skills + schemas (P1),
+  `plan.md` / `implement.md` / `setup.md` / `feature.md` (P2), the two review skills +
+  `patterns-sound-loop` + `testing-gap-finding` (P4, this seat). Router discoverability holds:
+  every new primitive in the wave has a row here, and the retired skill's row is gone.
+  **Dependency note (both resolved before hand-off):** the `principal-architect` skills list is
+  written from the lead's ruled P3 values; the spine element-id grammar landed as `SPN-XXX`
+  (kind: container | boundary | flow, store-wide unique alongside `AX-XXX`) per P1's completion
+  and is now stated concretely in the store row and in both review skills' checklists.
+
 ## [v0.80.0] Two router rows re-keyed — advocate seat list, `patterns-vertical-tdd` anchor — slice-vocabulary purge
 
 - **Disposition:** superseded → the same two rows, re-keyed: the `advocate-report-template` row

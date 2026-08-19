@@ -9,6 +9,179 @@ shape is now **v4** (2026-07-30) — see the v0.31.0 entry below. **Stale again:
 **v5** at the v0.34.0 pilot below and **v7** at v0.40.0; plan is **v7-form** as of the v0.43.0
 conversion at the top of this note.
 
+<!-- Wave context: the product-architecture-schema Stage-1 build wave (v0.81.0) — one schema-backed
+architecture store replaces the five-surface architecture split, and the whole pipeline re-keys in
+one wave (D15). Ruling for every [v0.81.0] entry below:
+`.mochiko/brainstorms/product-architecture-schema/record.md` (D3 · D10 + its S6/S8/S9/S13 folds ·
+D12 · D16) → `DECISIONS.md` 2026-08-19 product-architecture row. -->
+
+## [v0.81.0] The In-flight pointer tool bullet — deleted whole (D10 orphan rule)
+
+- **Disposition:** superseded → the D10 orphan rule, carried by
+  `mochiko:authoring-architecture-store` and checked at implement's store landing: every
+  in-flight-class element keys an open feature; orphans are flagged by the health view and
+  cleaned at desk visits.
+- **Tier failed:** n/a — supersession by ruling (record D3/D10; `DECISIONS.md` 2026-08-19 row).
+  This also discharges the record's owed supersession of the project-pinned In-flight
+  agreement invariant (AT-D6-C) on plan's side.
+- **Content:** verbatim — "- **In-flight pointer** — at architecture sign-off, add the
+  feature's one-line pointer to repo `ARCHITECTURE.md`'s In-flight list per
+  `mochiko:authoring-architecture`. An omit-architecture proposal → no sign-off, no pointer, no
+  close-diff owed."
+- **Kept deliberately:** nothing of this bullet survives in plan — but its second sentence's
+  *close-diff* obligation is not dropped, it inverts: under D10's S6 fold the landing diff is
+  owed on the approved-delta-existed trigger and now runs even when nothing was built. It lives
+  at `commands/implement.md` (protocol step 3), not here.
+- **Consumers assessed:** the paired clear in `commands/implement.md` (its own strip entry, same
+  wave); `mochiko:authoring-architecture` is retired this wave (P1's cluster); the pinned KM
+  invariant re-keyed by the wave's landing.
+
+## [v0.81.0] "Baselines are never edited in place" — AMENDED, one carve for the store (D12)
+
+- **Disposition:** superseded → the same floor sentence plus a single named carve: a store write
+  at user sign-off is legal, and only as in-flight-class delta elements.
+- **Tier failed:** n/a — supersession by ruling (record D12; `DECISIONS.md` 2026-08-19 row).
+- **Content:** verbatim — "- **Baselines are never edited in place.** Product baselines change
+  only through the landing's graded fold — never by this run."
+- **Kept deliberately:** the floor sentence itself, unsoftened and unqualified for every
+  non-store baseline — `data-model.md`, `contracts/`, `constraints-and-decisions.md`,
+  `quickstart.md` still change only through the landing's graded fold, never by a plan run. The
+  carve is additive and store-only, and even inside it ruled store truth is never edited in
+  place: the signed delta stands beside it and the landing folds it. The mirroring
+  **Not done — default FAIL** clause took the same parenthetical carve (next entry).
+- **Consumers assessed:** the FAIL clause below; `plan.yaml`'s Architecture + Artifacts sections
+  (own strip entries, `strips/plan-template.md`); implement's fold machinery (own file).
+
+## [v0.81.0] FAIL clauses re-keyed to the store — architecture sign-off and the baseline carve
+
+- **Disposition:** superseded → store-keyed FAIL clauses: a structural change with no recorded
+  store consult **or with no drafted delta** · a drafted delta left unsigned · a design element
+  contradicting the signed store delta; and the baseline clause's carve parenthetical. The
+  no-drafted-delta limb closes the gap between consulting and authoring — a run could otherwise
+  record a consult, judge a structural change, and still draft nothing.
+- **Tier failed:** n/a — supersession by ruling (record D3/D10/D12; `DECISIONS.md` 2026-08-19
+  row).
+- **Content:** verbatim, two sites — (1) "a proposed architecture left unsigned, or a design
+  element contradicting the signed-off target"; (2) "a product baseline absent at close or
+  edited in place, or a delta against a prose baseline not in appliable before/after form"
+  (site 2 unchanged except the inserted carve "(the store's signed in-flight delta excepted —
+  Boundaries)").
+- **Kept deliberately:** every other clause of the `**Not done — default FAIL**` list survives
+  byte-for-byte — the missing-proposed-artifact clause and its unproposed-absent carve, the
+  `quickstart.md` null-path clause, the appliable before/after form, the `[MODIFY]` amendment
+  clause, the never-graded-by-its-authors clause, the epic no-partial-planned-exit clause, and
+  user acceptance. The re-key **widens** the architecture obligation rather than narrowing it:
+  the old clause could not fail a run that proposed no architecture at all, the new one fails a
+  structural change carrying no consult record.
+- **Consumers assessed:** the charter-form audit reads this list for surviving FAIL clauses
+  (`.claude/rules/mochiko/primitive-edits.md`, charter exception leg iv); `review-plan-artifacts`
+  grades against it (P4's file, same wave).
+
+## [v0.81.0] Done-condition clause re-keyed — grading conforms to the signed store delta (D3/D10)
+
+- **Disposition:** superseded → "conforms to the signed store delta where the run authored one".
+- **Tier failed:** n/a — supersession by ruling (record D3/D10; `DECISIONS.md` 2026-08-19 row).
+- **Content:** verbatim — "conforms to the signed-off architecture where the proposal produced
+  one" (protocol step 3, the independently-graded done condition).
+- **Kept deliberately:** the rest of step 3 byte-for-byte — the feasibility-and-completeness
+  grade, the requirements-through-to-task-breakdown trace, the no-cross-artifact-contradiction
+  clause, the whole Screens & Flows tracing obligation with its advisory-pixels carve, and the
+  epic whole-package acceptance rule.
+- **Consumers assessed:** `review-plan-artifacts` and `review-feasibility` grade against this
+  clause — both P4's files, same wave.
+
+## [v0.81.0] Architecture-before-detail — the proposal conditional dies (D3/D10)
+
+- **Disposition:** superseded → the same ordering floor keyed to the store delta and its
+  structural-change trigger.
+- **Tier failed:** n/a — supersession by ruling (record D3/D10; `DECISIONS.md` 2026-08-19 row).
+- **Content:** verbatim — "- **Architecture before detail.** The architecture, when the proposal
+  includes it, is designed and signed off by the user — on a rendered diagram — **before**
+  detailed design builds on it; a later contradiction with the signed-off target returns to the
+  user for a consented amendment, never designed around silently."
+- **Kept deliberately:** the whole ordering discipline — design-and-sign before detailed design,
+  and a later contradiction returning to the user for a consented amendment rather than being
+  designed around silently. Only the gating condition moved: from "the proposal includes it" to
+  "the structural-change trigger fires", and the sign-off object gained its named `AX-XXX` row
+  changes beside the rendered diagram.
+- **Consumers assessed:** the user-bullet sign-off site (next entry); `implement.md`'s deviation
+  gate (own file); `review-feasibility`'s architecture pass (P4's file, same wave).
+
+## [v0.81.0] Architecture sign-off re-targeted to the store delta — the write gate (D10)
+
+- **Disposition:** superseded → sign-off on a rendered diagram **plus the named `AX-XXX` row
+  changes**, explicitly labelled the write gate; a store trip disposition added beside it.
+- **Tier failed:** n/a — supersession by ruling (record D10; `DECISIONS.md` 2026-08-19 row).
+- **Content:** verbatim — "architecture sign-off when the proposal includes architecture,
+  presented on a rendered diagram (no render surface → present source + component table and
+  record it)".
+- **Kept deliberately:** the no-render-surface fallback survives, re-pointed (source + the
+  changed-element table, recorded); the epic clause immediately following — one sign-off on one
+  joint diagram, members' deltas plus the seams between them, each cross-member seam's owner
+  named at design time — survives byte-for-byte, per D10's "Epic: one joint sign-off survives".
+- **Consumers assessed:** `mochiko:authoring-epic` (unchanged — the joint sign-off shape holds);
+  `plan.yaml` Architecture section (`strips/plan-template.md`, same wave).
+
+## [v0.81.0] The Baseline bullet — deleted whole; the store is the current-state source (D3/D16)
+
+- **Disposition:** superseded → the Architecture store tool bullet (current-state source, metered
+  consult) plus the Entry routing: a store-less repo is offered the `/mochiko:architecture`
+  bootstrap and the run does not fail for the absence.
+- **Tier failed:** n/a — supersession by ruling (record D3/D4/D16; `DECISIONS.md` 2026-08-19
+  row).
+- **Content:** verbatim — "- **Baseline** — repo-root `ARCHITECTURE.md` is the current-state
+  seed; absent → the reconstructed baseline is confirmed with the user before a delta is
+  designed on it, and lands as the initial `ARCHITECTURE.md` where the KM copy
+  (`.mochiko/memory/knowledge-management.md`) exists."
+- **Kept deliberately:** the *reconstruct-and-confirm-with-the-user* obligation is not dropped —
+  it moves to the desk under D16, where the first `/mochiko:architecture` visit reconstructs the
+  store from what exists, confirms it, and archives the absorbed sources. What dies is a plan run
+  doing it. The Baseline-seed bullet below it survives with one repair (its "like the
+  `ARCHITECTURE.md` bootstrap above" back-reference, now dangling, reworded to "before design
+  reads it") and one addition (the store is never seeded here).
+- **Consumers assessed:** `commands/setup.md`'s bootstrap line (own strip entry, same wave);
+  `commands/architecture.md` now carries the reconstruction (new this wave, no strip owed).
+
+## [v0.81.0] `architecture.md` and `nfrs.md` leave the package + product-surface lists (D3/D12)
+
+- **Disposition:** superseded → the per-feature `architecture.md` dies as an artifact (D3),
+  replaced by the plan-package store delta; `nfrs.md` dies as a file (D12), its `NFR-XXX` ids
+  surviving on store concern rows.
+- **Tier failed:** n/a — supersession by ruling (record D3/D12; `DECISIONS.md` 2026-08-19 row).
+- **Content:** verbatim, three sites — (1) "the design deltas against the baselines —
+  `architecture.md`, `data-model.md`, `contracts/`, `nfrs.md`, each a delta mirroring its
+  baseline's filename"; (2) "`architecture.md`'s structure and scope bound are
+  `mochiko:patterns-system-design`'s; the structural D-XXX rows land as delta rows against
+  `constraints-and-decisions.md`'s designated section."; (3) "baselines at `.mochiko/product/` —
+  `data-model.md` · `contracts/` · `nfrs.md` · `constraints-and-decisions.md` (C-XXX / D-XXX /
+  IP-XXX) · `quickstart.md` when a real external-integration surface exists (its null path
+  recorded in `plan.md`) — beside repo-root `ARCHITECTURE.md`: they describe what the product
+  HAS and are read first as design input. Across repeat runs, cards and reports append (dated);
+  delta files overwrite only via the graded fold."
+- **Kept deliberately:** `mochiko:patterns-system-design` keeps the structure-and-scope bound —
+  it now governs the store delta rather than a per-feature file, exactly the transformed role
+  D7 ruled. `constraints-and-decisions.md` survives reduced and is named as such: the
+  analysis-origin `D-XXX` trail, the `C-XXX` hard constraints, and the `IP-XXX` rows all stay;
+  only structural-origin `D-XXX` die into store deltas. `NFR-XXX` ids survive unchanged —
+  trace chains (`TR-XXX` → `NFR-XXX`) are untouched, only the path moved. `quickstart.md` is
+  kept whole (D12, user-ruled).
+- **Consumers assessed:** `authoring-technical-requirements` (NFR grammar home) and
+  `review-feasibility`'s NFR↔topology lens are P4's this wave; `implement.md`'s design-input and
+  blind-fence NFR reads re-pointed in its own file; `plan.yaml`'s Artifacts row dropped
+  (`strips/plan-template.md`).
+
+## [v0.81.0] Frontmatter `description:` — architecture conditionality re-worded (D3/D10)
+
+- **Disposition:** superseded → "(the architecture store consulted every run; a structural delta
+  user-signed into it)".
+- **Tier failed:** n/a — supersession by ruling (record D3/D10; `DECISIONS.md` 2026-08-19 row).
+- **Content:** verbatim superseded phrase — "(architecture user-signed when the proposal
+  includes it)".
+- **Kept deliberately:** the rest of the `description:` byte-for-byte, including the
+  delta-scope collapse clause.
+- **Consumers assessed:** none — `disable-model-invocation: true`, so this string is a human-read
+  router surface only; the router row itself is P4's pen this wave.
+
 ## [v0.78.0] Model-tiering floor line retargeted — `mochiko:explorer` superseded by native `Explore` + `model: haiku` override
 
 - **Disposition:** superseded → the reworded floor line: locate/enumerate reads go to "a

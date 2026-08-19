@@ -7,7 +7,7 @@ description: This skill MUST be invoked when authoring the technical-requirement
 
 ## Overview
 
-Translate business specifications into three traceable analysis artifacts: requirements, constraints-and-decisions, and NFRs. Every artifact traces to a business source. Every target is measurable. Every constraint accounts for its design impact.
+Translate business specifications into three traceable analysis layers: requirements, constraints-and-decisions, and the NFR rows the architecture store carries. Every element traces to a business source. Every target is measurable. Every constraint accounts for its design impact.
 
 All three artifacts follow the deliverable envelope in
 [`artifact-format.md`](../../templates/artifact-format.md): dense by construction — **the
@@ -28,9 +28,9 @@ gap; a gap is missing substance.
 - **Choosing technologies** -- Constraints document real boundaries, not preferences
 - **Implementation planning** -- Use planning skills after technical requirements exist
 
-## The Three Analysis Artifacts
+## The Three Analysis Layers
 
-Each artifact uses a distinct ID prefix and traces to business sources: requirements.md (TR-XXX), constraints-and-decisions.md (C-XXX / D-XXX / IP-XXX), and nfrs.md (NFR-XXX).
+Each layer uses a distinct ID prefix and traces to business sources: requirements.md (TR-XXX), constraints-and-decisions.md (C-XXX / D-XXX / IP-XXX), and the architecture store's concern rows (NFR-XXX — the ids are this skill's grammar, the row is the store's home).
 
 > **Analysis declarations vs. downstream authoring.** This skill *declares* integration points and sensitive data as analysis-level requirements (a thin INT-XXX / DS-XXX declaration — *which* external systems the feature depends on, and *which* data it treats as sensitive). It does **not** author their downstream structure:
 > - The per-endpoint integration boundary — the `x-integration` OpenAPI extension (system, protocol, criticality, failure modes, authentication) — is authored on the wrapping operation in `mochiko:patterns-api-contracts`.
@@ -60,23 +60,27 @@ Document hard boundaries (constraints) and the technology decisions shaped by th
 
 > **The decision *technique* lives in `mochiko:patterns-technical-decisions`** — reach it to evaluate alternatives, and record its result in the D-XXX slots. This skill owns only the field schema and the C↔D traceability.
 
-**Structural Decisions section (architecture-time D-XXX rows).** `constraints-and-decisions.md`
-carries a designated **Structural Decisions** subsection inside Section 2, grouping the D-XXX rows
-that record *topology* choices — component boundaries, interaction style, responsibility placement —
-decided during the architecture stage. These rows are authored by the **architecture seat**
-(`mochiko:patterns-system-design`), **not** this skill's analysis-time author, who keeps its own
-technology-decision D-XXX rows and **preserves** this section rather than filling it. Both origins
-share one D-XXX field schema, the same ADR discipline (`mochiko:patterns-technical-decisions`), and
-one continuous D-XXX sequence; the architecture delta summary links each structural change to its row
-here. (Template + the `Origin` marker: ARTIFACT-TEMPLATES.md.)
+**Structural decisions are not this artifact's.** A *topology* choice — component boundaries,
+interaction style, responsibility placement — is recorded in the architecture store's delta, whose
+ruling **is** its decision record; it never becomes a D-XXX row here. The D-XXX rows in this
+artifact are technology decisions with one origin: this skill's analysis-time author. Where a
+technology decision and a topology choice are genuinely entangled, record the technology decision
+here and let the store's delta carry the shape, cross-citing by ID.
 
 **Section 3: Infrastructure Requirements (IP-XXX)** — field schema in ARTIFACT-TEMPLATES.md.
 
 **Every constraint that implies platform work gets an IP-XXX item.** Constraints document boundaries; IP-XXX items document what those boundaries require operationally.
 
-### 3. Non-Functional Requirements (nfrs.md) -- NFR-XXX
+### 3. Non-Functional Requirements -- NFR-XXX (homed in the architecture store)
 
-Define measurable quality attributes. Every NFR has a numeric target. Field schema in ARTIFACT-TEMPLATES.md.
+Define measurable quality attributes. Every NFR has a numeric target. **There is no `nfrs.md`:** an
+NFR-XXX row lives as fields on its architecture-store concern row, so one concern has one home —
+stance, pattern, targets, as-built, drift together. The **ids and the grammar are this skill's**
+(numeric target · measurement method · source · category), the **row shape is the store's**
+(`plugins/mochiko/schemas/architecture-store.yaml`); trace chains are unchanged — TR-XXX → NFR-XXX
+still resolves, only the path moved. At plan time a new or changed target reaches the store the
+way every other store write does: drafted in the package, written at the user's sign-off. Grammar
+and field definitions in ARTIFACT-TEMPLATES.md.
 
 **"Fast" is not a requirement.** "p95 response time < 200ms under 1000 concurrent users, measured by APM" is.
 
@@ -120,8 +124,8 @@ Before finalizing, verify:
 - [ ] Every TR has testable acceptance criteria
 - [ ] Every constraint has a source, type, and severity classification
 - [ ] Every decision references the constraints that shaped it (C-XXX ↔ D-XXX)
-- [ ] Architecture-time topology decisions live as D-XXX rows in the **Structural Decisions** section (authored by the architecture seat; the analysis-time author preserves it, never fills it)
-- [ ] Every NFR has a numeric target AND measurement method
+- [ ] No topology choice recorded as a D-XXX row here — structural rulings live in the architecture store's delta
+- [ ] Every NFR has a numeric target AND measurement method, on its store concern row (never a standalone `nfrs.md`)
 - [ ] Every constraint implying platform provisioning has a corresponding IP-XXX
 - [ ] Cross-references between artifacts are consistent
 - [ ] Language is technology-agnostic (except real infrastructure constraints)

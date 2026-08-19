@@ -68,7 +68,8 @@ desk).
 - **PM seat** — the extend-vs-mint verdict, grooming proposals when the soft cap trips (merge
   lookalikes, retire dead entries), and the what-next line. Recommends with reasons; never rules.
 - **Principal-architect** — domain co-sign, **dormant until the first cap-trip**; no live duty on
-  today's maps.
+  today's maps. The seat is not idle elsewhere: its standing home is `/mochiko:architecture`,
+  where it stewards the architecture store — the dormancy is this desk's, not the seat's.
 - **Dispatched runs** — all delivery. Plan and implement own their bounds, verification seats, and
   evidence rules; the desk runs none of it.
 - **The user** — retire and merge rulings, route overrides, and every selection.
@@ -103,10 +104,16 @@ Each tool below is referenced, never restated — its procedure lives in its hom
   enumerated `baseline-delta.md` in appliable before/after form when a product-baseline touch is
   known at intake. Each card — bug and improvement alike — takes the sound-loop review leg
   before dispatch (Boundaries).
-- **Product surface** — baselines at `.mochiko/product/` (`data-model.md`, `contracts/`, `nfrs.md`,
-  `constraints-and-decisions.md`, `quickstart.md`) beside repo-root `ARCHITECTURE.md`; product-lane
+- **Product surface** — baselines at `.mochiko/product/` (`data-model.md`, `contracts/`,
+  `constraints-and-decisions.md`, `quickstart.md`, and `architecture/` — the architecture store,
+  whose derived index is repo-root `ARCHITECTURE.md`); product-lane
   runs at `.mochiko/product/lane-<slug>/`. Across repeat runs, cards and reports append (dated);
   delta files overwrite only via the graded fold.
+- **Architecture-desk intake** — a **fired upgrade trigger** arrives here from
+  `/mochiko:architecture` as a candidate capability or work row and is routed like any other
+  demand: the capability-write test decides the door, extend-beats-mint applies, and **the user
+  rules the mint**. No new door and no auto-mint — the architecture lens proposes, the map
+  machinery disposes.
 - **Dispatch targets** — `/mochiko:plan` for a dispatched capability-batch that scales itself, in
   the scope its door sets: **growth-door rows enter selection scope** (the batch covers the cut
   rows; its landing folds them into the capability's extent), a **bug/improvement delta card stays
@@ -148,7 +155,8 @@ Each tool below is referenced, never restated — its procedure lives in its hom
   name the boundary crossing and serve with the home command's rituals imported — the door
   moves, the ritual never drops (adaptation rule: `mochiko:patterns-sound-loop`).
 - **Work rows are delivery bookkeeping the desk may cut** through the growth door: an extend verdict
-  only, with acceptance criteria on the card. Mint-or-uncertain routes to `/mochiko:specify`;
+  only, with acceptance criteria on the card. A fired architecture upgrade trigger enters by this
+  same door and takes the same tests (Tools). Mint-or-uncertain routes to `/mochiko:specify`;
   several rows, a new UX surface, or cross-capability reach routes to specify regardless. The lane
   never widens in place — a mid-run outgrowth aborts and re-routes, and a report that lands on an
   `in-flight` capability's territory files to that run instead.

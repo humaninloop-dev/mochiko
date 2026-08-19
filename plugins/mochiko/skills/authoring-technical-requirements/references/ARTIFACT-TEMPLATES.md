@@ -1,6 +1,6 @@
 # Artifact Templates
 
-Templates and field definitions for the **three analysis artifacts this skill authors**: `requirements.md` (TR-XXX), `constraints-and-decisions.md` (C-XXX / D-XXX / IP-XXX), and `nfrs.md` (NFR-XXX). All three follow the deliverable envelope in [`artifact-format.md`](../../../templates/artifact-format.md): the statement carries the content (no separate Description paragraph), entries are one line each, upstream text is cited by ID and never re-quoted, and each artifact's summary table is its **ID index** — the coverage surface reviewers verify against. Register: `full` per that envelope's rule 11 — with every ID, numeric target and constraint clause a never-compress item, and compression stopping wherever it would make a requirement ambiguous.
+Templates and field definitions for the **three analysis layers this skill authors**: `requirements.md` (TR-XXX), `constraints-and-decisions.md` (C-XXX / D-XXX / IP-XXX), and the NFR-XXX grammar whose rows are homed on the architecture store's concern rows (§3 — no `nfrs.md` file exists). All three follow the deliverable envelope in [`artifact-format.md`](../../../templates/artifact-format.md): the statement carries the content (no separate Description paragraph), entries are one line each, upstream text is cited by ID and never re-quoted, and each artifact's summary table is its **ID index** — the coverage surface reviewers verify against. Register: `full` per that envelope's rule 11 — with every ID, numeric target and constraint clause a never-compress item, and compression stopping wherever it would make a requirement ambiguous.
 
 > **Design-artifact templates live with their canonical owners.** The `data-model.md` template (entities + per-attribute data-sensitivity taxonomy) is owned by `mochiko:patterns-entity-modeling`; the `contracts/api.yaml` template (endpoints, schemas, and the `x-integration` boundary extension) and the integration `quickstart.md` are owned by `mochiko:patterns-api-contracts`. This bundle declares the analysis requirements those design artifacts build on — it does not restate their templates.
 
@@ -112,13 +112,12 @@ Good criteria are independently testable (pass/fail), technology-agnostic, and c
 
 > **Decision *technique* is owned by `mochiko:patterns-technical-decisions`.** The field schema below is the artifact slot a decision lands in; how to evaluate alternatives, score trade-offs, and set ADR depth lives in that skill. Fill these fields with the result; do not restate the evaluation method here.
 
-### Decision Summary  *(the ID index — all D-XXX, both origins)*
+### Decision Summary  *(the ID index)*
 
-| ID | Decision | Choice | Shaped By | Origin |
-|----|----------|--------|-----------|--------|
-| D-001 | Primary database | PostgreSQL 15 | C-001 | analysis |
-| D-002 | Auth mechanism | JWT with refresh tokens | C-003 | analysis |
-| D-004 | Avatar processing placement | async worker off a queue | NFR-002 | structural |
+| ID | Decision | Choice | Shaped By |
+|----|----------|--------|-----------|
+| D-001 | Primary database | PostgreSQL 15 | C-001 |
+| D-002 | Auth mechanism | JWT with refresh tokens | C-003 |
 
 ---
 
@@ -137,27 +136,10 @@ Good criteria are independently testable (pass/fail), technology-agnostic, and c
 
 ---
 
-### Structural Decisions  *(architecture-time — authored by the architecture seat, not the analysis author)*
-
-> Topology D-XXX rows (component boundaries, interaction style, responsibility placement) decided at
-> the architecture stage and authored by `mochiko:patterns-system-design` — the analysis-time author
-> **preserves** this subsection, never fills it. Same D-XXX record format as above, same ADR
-> discipline (`mochiko:patterns-technical-decisions`), continuing the shared D-XXX sequence. The
-> architecture delta summary links each structural change to its row here. Omit the subsection when
-> the feature makes no structural decisions.
-
-### D-004: [Structural Decision Title]
-
-**Context** ([the topology choice needing a decision]) · **Shaped by:** NFR-002 · C-003
-
-| Option | Pros | Cons |
-|--------|------|------|
-| [Option A] | [one line] | [one line] |
-| [Option B] | [one line] | [one line] |
-
-**Choice:** [selected shape] — **Rationale** (≤ 3 lines): [WHY this topology].
-**Consequences:** [trade-off accepted] · [future consideration]
-**Governance alignment:** [one line — the layer/dependency principle the shape respects; omit if none]
+> **No structural-decision subsection.** Topology choices — component boundaries, interaction
+> style, responsibility placement — are recorded in the architecture store's delta, whose ruling
+> is its own decision record. They never appear as D-XXX rows here. Every D-XXX in this artifact
+> has one origin: the analysis-time author.
 
 ---
 
@@ -201,8 +183,7 @@ Good criteria are independently testable (pass/fail), technology-agnostic, and c
 
 | Field | Required | Format | Rules |
 |-------|----------|--------|-------|
-| ID | Yes | D-XXX | Sequential, three-digit padded, no gaps — one shared sequence across both origins |
-| Origin | Yes | analysis / structural | Which stage authored the row: `analysis` (this skill's author — technology decisions) or `structural` (the architecture seat via `mochiko:patterns-system-design` — topology decisions, grouped in the Structural Decisions subsection) |
+| ID | Yes | D-XXX | Sequential, three-digit padded, no gaps |
 | Title | Yes | Free text | Descriptive, concise |
 | Context | Yes | One-to-two lines | The problem that needed solving |
 | Shaped By | Yes | C-XXX / NFR-XXX references | On the context line; constraints and NFRs that narrowed options |
@@ -261,34 +242,18 @@ Good criteria are independently testable (pass/fail), technology-agnostic, and c
 
 ---
 
-## 3. Non-Functional Requirements (nfrs.md)
+## 3. Non-Functional Requirements (NFR-XXX — homed on architecture-store concern rows)
 
-### Document Template
+**There is no `nfrs.md` document template here.** An NFR-XXX lives as fields on its concern row in
+the architecture store, so a concern has one home — stance, pattern, targets, as-built, drift
+together. The **row shape** is the store's (`mochiko-cli template architecture-store`, or Read
+`plugins/mochiko/schemas/architecture-store.yaml` raw when the binary is absent); what follows is
+the **grammar** this skill owns and the store row carries: the required fields, the categories,
+and what a measurement method must name. A new or changed target reaches the store as part of a
+plan-time store delta, written at the user's sign-off — never edited into ruled truth in place.
 
-```markdown
-# Non-Functional Requirements: {feature_id}
-
-> Measurable quality attributes with specific targets.
-
-## NFR Summary  *(the ID index)*
-
-| ID | Category | Target | Source |
-|----|----------|--------|--------|
-| NFR-001 | performance | p95 < 200ms | FR-001 (user expects instant feedback) |
-| NFR-002 | availability | 99.9% monthly | Business SLA commitment |
-
----
-
-## NFR-001: [Descriptive Title]
-
-**performance · source:** [business requirement or stakeholder justifying the target] — [the quality attribute, one line].
-
-**Target:** [specific, measurable numeric threshold]
-**Measured:** [tool + conditions + frequency — compact; a multi-condition method uses a short bullet list]
-**Applies to:** TR-001 · TR-005  *(omit if it applies globally)*
-
----
-```
+Trace chains are unchanged: `TR-XXX → NFR-XXX` still resolves, and `Applies to:` still cites
+TR-XXX. Only the path moved.
 
 ### Field Definitions
 
@@ -316,10 +281,10 @@ Good criteria are independently testable (pass/fail), technology-agnostic, and c
 
 ### Writing Measurement Methods
 
-Every target's `Measured:` line names **what tool**, **under what conditions**, and **how frequently**. Compact example:
+Every target's `Measured:` line names **what tool**, **under what conditions**, and **how frequently**. Compact example — the fields as they ride a concern row, not as a document section:
 
 ```markdown
-## NFR-001: API Response Latency
+NFR-001 — API Response Latency
 
 **performance · source:** FR-001 (real-time interaction expectation) — API responses feel instantaneous under production load.
 

@@ -20,19 +20,8 @@ git history (this line, before this groom).*
 ## Product-architecture store build
 
 Ruled 2026-08-19, pair-cold-reviewed + verify CLEAN, accepted (`product-architecture-schema`
-D1–D16). Build pending, two stages per D15.
+D1–D16). **Stage 1 BUILT same day at v0.81.0** (item → trail); Stage 2 + watch remain.
 
-- [ ] **Stage 1 — store + backend shelf + pipeline re-key** (2026-08-19; provenance:
-  [record](.mochiko/brainstorms/product-architecture-schema/record.md) Build surface —
-  cold-buildable). One wave: desk command (name TBD at build) · `authoring-architecture-store`
-  + `patterns-architecture-shelves` skills · store schema data file(s) + backend shelf data
-  (Appendix A verbatim) · store instance at `.mochiko/product/architecture/`, repo-root
-  `ARCHITECTURE.md` derived index · `patterns-system-design` transform · architect/tech-lead
-  recharters · D12 absorb migration (`nfrs.md` dies, NFR-XXX ids re-home; structural D-XXX;
-  archive to `.mochiko/archive/product-baselines/<date>/`) · full 26-file re-key per F8 ·
-  supersessions: AT-D6-C (project-pinned — landing) · `plan.md:75,211` floor clause ·
-  no-delta line relocation · `authoring-architecture` retirement (strips, router ×6,
-  manifest, budget rows). Sound-loop + transport floors govern the wave.
 - [ ] **Stage 2 — frontend/mobile/desktop shelf authoring** (2026-08-19; provenance: record
   D15). Pure data authoring, no pipeline coupling, each shelf shippable alone; frontend
   sample in-record is indicative only.
@@ -88,9 +77,9 @@ Build DELIVERED 2026-08-16 at v0.75.0, same day as the ruling, in the
   them — read as vocabulary leakage from doctrine residue, fixed same day by the
   slice-vocabulary purge (v0.80.0, ADR
   `.mochiko/decisions/2026-08-19-slice-vocabulary-purge.md`). Watch stays open for the
-  cycle-count/bundle-grain dimensions. Residual from that wave's audit:
-  `patterns-system-design/SKILL.md` still says "in the feature's spec dir" (no literal
-  path; the home is `.mochiko/features/FEAT-XXX/`) — fix at that skill's next touch.
+  cycle-count/bundle-grain dimensions. *(The "spec dir" residual from that wave's audit was
+  discharged by subtraction at v0.81.0 — the phrase died in the `patterns-system-design`
+  transform, closing the third F5 limb; strip Entry B records it.)*
 
 ## Template-schema CLI build
 
@@ -645,7 +634,7 @@ Raw captures (2026-08-01) — to triage/brainstorm; grooming may re-key into fin
   were already fixed at the v0.68.0 landing (6 commands / 30 skills, delta-confirmed); the
   Commands-row / Command-form / Feature-section anatomy claims were re-worded to the
   two-anatomy reality at the v0.69.0 charter-extension landing. One grooming pass owns the
-  rest; craft home `mochiko:authoring-architecture`.
+  rest; craft home `mochiko:authoring-architecture-store` (predecessor retired v0.81.0).
 
 - [ ] **Teammate hand-off narrated as text, never dispatched via `SendMessage`** (2026-08-04;
   provenance: capture-session observation, to-brainstorm; title line reconstructed at the

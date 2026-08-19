@@ -20,7 +20,9 @@ trace summary in hand. The feature map exists at close: brownfield reconstructed
 user-confirmed, greenfield an empty scaffold (feature-map binding below). `Assumed`
 (feature-sizing record, open thread 4 — reconstruction burden, partial-baseline poisoning):
 brownfield close also carries the bootstrapped product baselines at `.mochiko/product/`;
-greenfield leaves them to seed at the first plan run.
+greenfield leaves **the baselines** to seed at the first plan run. The architecture store's
+`spine.md` stub and its `Scope:` line are outside that split — written on **both** paths
+(feature-map binding below).
 
 **Not done — default FAIL:** a surface authored before the intent was ratified · an unclosed
 trace · the set never graded by anyone but its author · a floor category with neither
@@ -99,9 +101,27 @@ principle nor recorded waiver · user acceptance not given · no feature map at 
   Greenfield → scaffold the empty index. The never-overwrite floor covers both writes.
   `Assumed` (feature-sizing record, open thread 4 — setup reconstruction burden +
   partial-baseline poisoning risk): the brownfield analysis also bootstraps the product
-  baselines — `data-model.md` · `contracts/` · `nfrs.md` · `constraints-and-decisions.md` ·
-  `quickstart.md` at `.mochiko/product/` (`ARCHITECTURE.md` stays repo root) — from the
-  delivered code; greenfield seeds the baselines at the first plan run instead.
+  baselines — `data-model.md` · `contracts/` · `constraints-and-decisions.md` ·
+  `quickstart.md` — at
+  `.mochiko/product/` (`ARCHITECTURE.md` stays repo root, now as the store's derived index) —
+  from the delivered code; greenfield seeds **those baselines** at the first plan run instead.
+  **The architecture store's scaffold is unconditional** — on both paths, `architecture/` is
+  created with a `spine.md` stub whose header carries the `Scope:` line (below) and an empty
+  `concerns.md` beside it, so the store's layout is complete from birth; greenfield's
+  stub is simply a header with no topology under it. The store's **ruled content is never
+  authored here** on either path: a file holding only a `Scope:` header is scaffold, not ruled
+  content, and the first `/mochiko:architecture` visit is what elicits it (greenfield) or
+  reconstructs it from what exists and confirms it with the user (brownfield).
+- **Architecture scope handoff:** the run reads which surface types the product carries —
+  `backend-service` · `frontend-web` · `mobile` · `desktop`, composed for a full-stack or
+  monorepo product — and declares them on the **`Scope:` line in the header of
+  `.mochiko/product/architecture/spine.md`**, written as a stub by the unconditional store
+  scaffolding above — so **every** setup run, greenfield or brownfield, leaves the scope
+  declared; the derived index renders it. The store carries the scope — setup does not hold it. It
+  is a handoff, not a ruling: the desk deals the shelves that scope selects, and the user may
+  **override it at the desk** by an ordinary store write to that same line. No architecture
+  stance is taken here.
 - **Register:** user-facing prose per `templates/output-style.md`.
-- **Next step:** `/mochiko:specify` (+ `/mochiko:brainstorm` when knowledge-management was
-  adopted).
+- **Next step:** `/mochiko:specify` for the first feature, and `/mochiko:architecture` for the
+  product's architecture baseline — peer doors, neither ahead of the other (+
+  `/mochiko:brainstorm` when knowledge-management was adopted).

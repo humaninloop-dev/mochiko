@@ -1,6 +1,6 @@
 ---
 name: patterns-sound-loop
-description: This skill MUST be invoked before a judgment-authored write to a governing surface — capability map, product baselines, specs, `ARCHITECTURE.md`, governance, plugin primitives, product code — running the floor: a seat produces on a lead-approved plan (never the lead), a non-author seat reviews, the user rules. No size gate; desk delta cards take the review leg. SHOULD also invoke on 'sound loop', 'ritual floor', or 'seat wiring'. Single source of the floor; fourth sibling of the minimalism trio.
+description: This skill MUST be invoked before a judgment-authored write to a governing surface — capability map, product baselines, the architecture store, specs, governance, plugin primitives, product code — running the floor: a seat produces on a lead-approved plan (never the lead), a non-author seat reviews, the user rules. No size gate; desk delta cards take the review leg. SHOULD also invoke on 'sound loop', 'ritual floor', or 'seat wiring'. Single source of the floor; fourth sibling of the minimalism trio.
 ---
 
 # Sound Loop — The Ritual Floor
@@ -49,8 +49,8 @@ floor as surely as a 10-file rewrite — magnitude never gates it.
 | Specs (`.mochiko/specs/`) | `/mochiko:specify` loop | none — by construction |
 | Governance surfaces | `/mochiko:setup` loop | none — by construction |
 | Capability map (`FEATURES.md` + entries) | specify-side derivation graded; desk-side writes carried no loop | full floor — net-new bite |
-| Product baselines (`.mochiko/product/`) | no loop outside pipeline runs | full floor — net-new bite |
-| `ARCHITECTURE.md` folds outside landings | landing-time diff only (`mochiko:authoring-architecture`) | full floor — net-new bite |
+| Product baselines (the rest of `.mochiko/product/`) | no loop outside pipeline runs | full floor — net-new bite |
+| Architecture store (`.mochiko/product/architecture/`) | desk judgment writes take the tech-lead review leg; plan-time deltas graded by the plan review pair beneath the user's sign-off (`mochiko:authoring-architecture-store`) | full floor — satisfied by the desk's own loop where it runs; the bite is any store write outside it |
 
 ## The three legs
 
@@ -66,6 +66,11 @@ floor as surely as a 10-file rewrite — magnitude never gates it.
 Only three kinds of write never trip: **mechanical execution of an existing ruling** ·
 **transcription of user decisions** · **fix-on-sight integrity repairs** (typos, status
 agreement, dead pointers).
+
+On the architecture store the carve runs exactly down the middle of a landing: **status flips
+and orphan cleanup are transcription** and never trip, while the **`As-built:` and `Drift:`
+writes are judgment and are graded** — the natural mistake is to wave the whole landing through
+as bookkeeping.
 
 **There is no delta-card exemption.** Every desk-authored delta card — bug and improvement
 alike — takes the review leg at the desk before dispatch. The review leg only: card

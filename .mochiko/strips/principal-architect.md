@@ -5,6 +5,137 @@ Entry formats: `strips/README.md`. Wave context: the plan cluster wave (v0.15.0)
 ruled in-wave; the strip below is Tier-2-tested against both consumers (the `task-architect` precedent
 for the 2-consumer allowance).
 
+## [v0.81.0] RECHARTERED as desk lead / store steward — architecture-store duties in, dead-artifact and dead-doc duties out
+
+- **Disposition:** superseded → the rechartered persona in place. The seat is unchanged in kind (it
+  is still the architecture producer and the altitude voice); what it produces re-keys from a
+  per-feature artifact + a hand-kept prose doc to the product architecture store's baseline, its
+  deltas, and its derived index.
+- **Tier failed:** n/a — supersession by ruling (record
+  `.mochiko/brainstorms/product-architecture-schema/record.md` — **D7** "`principal-architect`
+  recharters as desk lead / store steward (shelf walks, plan-time contest from the store baseline,
+  delta authoring); **drift becomes an empirical duty** — desk visits spawn a codebase probe grading
+  `As-built:` claims against actual code" · **D3/D4** the artifact dies and the root doc becomes a
+  derived projection · **D5** shelves dealt recommend-then-arbitrate, breadth invariant · **D6**
+  stance vocabulary · **D7 folds S7/S10** retrofit-cost walk ordering and the scoped drift probe ·
+  **D13** fired triggers route out through the growth door; `DECISIONS.md` 2026-08-19).
+- **Content (verbatim — the four superseded spans):**
+
+  1. Frontmatter `skills:` line:
+     ```
+     skills: patterns-system-design, patterns-technical-decisions, authoring-architecture
+     ```
+     → `skills: patterns-system-design, patterns-technical-decisions, authoring-architecture-store, patterns-architecture-shelves`.
+     `authoring-architecture` is retired this wave (`.mochiko/strips/authoring-architecture.md`);
+     `patterns-architecture-shelves` is new per D7.
+
+  2. Skills-Available bullet 1:
+     ```
+     - **`mochiko:patterns-system-design`** — the feature's architecture view: the container-level
+       topology, the interaction flows, and the delta from the current system to the proposed shape.
+     ```
+     → re-pointed at the delta and the altitude/diagram craft, matching that skill's own D7
+     transformation ("the architecture delta: its container-level topology, its interaction flows,
+     and the altitude and diagram craft the change is drawn at").
+
+  3. Skills-Available bullet 3:
+     ```
+     - **`mochiko:authoring-architecture`** — the living repo architecture view (`ARCHITECTURE.md`),
+       updated at plan/implement landings on structural change.
+     ```
+     → replaced by the store bullet (`mochiko:authoring-architecture-store` — grammar, element
+     lifecycle, what a landing flips, health view). A **fourth** bullet is added for
+     `mochiko:patterns-architecture-shelves` (pure addition, rides the D7 row).
+
+  4. The whole `## What You Produce` paragraph:
+     ```
+     The **architecture view** of a feature — the container-level topology (services, workers, stores,
+     queues, external systems and how they connect), the interaction flows for the parts whose ordering
+     or failure semantics matter, and the **delta**: the current system, the proposed target, and every
+     structural change between them made visible. You produce the shape the detailed design is built to
+     fit — not the entity model or the endpoint contract, which are drawn to conform to it. You also
+     keep the repo's living architecture view current when a landing changes structure. The concrete
+     artifact structure, diagram conventions, and delta rules live in your skills; consult them there
+     rather than a copy here.
+     ```
+     Re-keyed to the store baseline (topology spine + per-row stances) + the deltas + the derived
+     index. **"You also keep the repo's living architecture view current when a landing changes
+     structure"** is the clause D3/D4 kills outright — the root doc is now derived and regenerated,
+     never kept current by hand. **Kept verbatim inside the rewrite:** the container-list gloss
+     "(services, workers, stores, queues, external systems and how they connect)", "the interaction
+     flows for the parts whose ordering or failure semantics matter", "every structural change
+     between them made visible", "You produce the shape the detailed design is built to fit — not the
+     entity model or the endpoint contract, which are drawn to conform to it", and the
+     consult-the-skills-not-a-copy closing (axis-4 decoupling).
+
+  5. The `description:` value, whole rewrite. Old value verbatim:
+     > Senior architect whose craft is system topology and the altitude of the design itself — deciding what the components are, where the boundaries cut (including where trust levels differ), how the pieces talk (sync vs async, request/response vs event), and where each responsibility lives, then proving the shape can be built and operated under its real constraints. Reads the current system before proposing a change and designs the delta from it, making every structural change visible. Weighs whether each piece of structure is paid for by a real need, names the cheaper shape when it is not, and challenges over-structure in a design put in front of it. Authors the feature architecture view and the repo architecture doc; does not grade its own output.
+
+     Only the final sentence's producing clause is superseded — "Authors the feature architecture
+     view and the repo architecture doc" (both artifacts dead) → the store-steward clause. **Every
+     preceding sentence is byte-for-byte identical**, deliberately: the description's topology /
+     boundary / trust-level / sync-vs-async / responsibility-placement / buildability / delta /
+     anti-over-structure framing is the routing content, and none of it is touched by this wave.
+
+- **Kept deliberately — the anti-default contest posture is INTACT.** Ground fact **F3** records
+  this persona as "explicitly anti-default", and D7's whole resolution is that opinions live in
+  **shelf data** so the persona's contest posture survives uncorrupted. Verified byte-for-byte
+  unchanged by this edit:
+  - **All seven `## Core Identity` war-stories**, including the v0.67.0 ruled seventh ("three layers
+    of abstraction for a problem that needed one…").
+  - **Every `## Your Judgment` bullet** — Boundaries (with the SD-D1 trust-level clause) ·
+    Interaction style · Responsibility placement · Buildability · **Altitude and necessity** ·
+    **Cheaper boxes, not only fewer** · Delta over greenfield fantasy.
+  - **All nine original `## What You Reject` bullets** and **all five `## What You Embrace`
+    bullets**.
+  - **All four `## Brownfield Awareness` bullets**, including the confirmed-baseline and
+    extension-over-invention rules.
+  - **`## Delegating Cheap Reads` whole**, including the v0.78.0 native-`Explore` retarget below —
+    the new drift duty deliberately reuses this existing dispatch section rather than introducing
+    parallel dispatch machinery.
+  - The v0.67.0 relocation entry's protected survivors (Three-Part Rule, Essential Floor Knowledge)
+    are **not touched** — they live in `tech-lead`, which this wave edits only additively.
+- **Additive (rides the D7 decision row, no supersession):**
+  - A new **`## Store Stewardship`** section, five bullets, placed between `## What You Embrace` and
+    `## Brownfield Awareness` (grouped with the other situational cluster). Written
+    **judgment-shaped, not procedural**, per skill-library axis 4 (persona carries judgment, skill
+    carries procedure; a persona contains no trace of any workflow): opinions dealt never asserted
+    (D5/PO-D3 S7) · breadth first and expensive rows first (D5 breadth invariant + D7 fold S7
+    retrofit-cost ordering) · a deferral is a decision with a fuse (D6 `not-now` + upgrade triggers,
+    D13's fired-trigger surfacing) · claims about the built system are evidence not memory (D7's
+    empirical drift duty) · the store's health is yours to surface (the D10 orphan rule + health
+    view). **No workflow trace:** the section names no step order, no artifact path, no dispatch
+    choreography, no command — grep-checkable, matching the v0.67.0 D4-as-amended precedent that
+    kept the contest *craft* in the persona and the contest *choreography* in `plan.md`.
+  - One `## What You Reject` bullet: "A stance recorded as settled that the user never ruled — your
+    recommendation written down as though it were their decision." This is the anti-default posture
+    extended to the store surface — the failure mode D5's deal-never-assert rule exists to prevent.
+- **Char budget:** description **756 → 936** against the **945** budget (9 chars of headroom; hard
+  caps do not otherwise apply to agent descriptions). A first draft measured **971 (+26 over)**; it
+  was **tightened rather than declared** — "walks the opinion shelves at the desk" → "walks the
+  opinion shelves", "grades its as-built claims against real code" → "…against code", "Carries deep
+  defaults and argues them" → "Argues its defaults" — no duty dropped, no ruled content cut. Agent
+  **bodies are not a budgeted class** (ledger: skill body · skill `description:` · agent
+  `description:`), so the additive section carries no budget exposure; body measures 11,358 for the
+  record. Ledger re-assert is **P4's** edit.
+- **Consumers assessed** (live tree; `.claude/worktrees/` excluded): `plugin.json` lists the agent
+  (path unchanged, **no manifest edit needed** — the agents array is unchanged this wave, nothing
+  added or removed) · router `skills/mochiko/SKILL.md:129` carries the seat row naming the old
+  skills triple and the dead artifacts — **P4's** re-key · `skills/patterns-sound-loop/SKILL.md`
+  (seat-wiring row — P4; the record notes the seat wiring already matches) ·
+  `skills/patterns-plan-minimalism/SKILL.md` and `skills/patterns-map-minimalism/SKILL.md` name the
+  seat for the contest/co-sign — **P4**. No command names the agent (v0.67.0 F4 finding, re-verified
+  this wave: `grep -rn "principal-architect" plugins/mochiko/commands/` returns nothing). The two
+  skills this persona mounts that P3 does not own — `authoring-architecture-store` and
+  `patterns-architecture-shelves` — are **P1's**, and the `skills:` line above is written against
+  those exact names; a name change on P1's side breaks this mount.
+- **Protected-content reconciliation:** the protected survivors touched by prior entries in this
+  file are the v0.15.0 `KEPT:` pair (Three-Part Rule, Essential Floor Knowledge — relocated to
+  `tech-lead` at v0.67.0) and the v0.63.0 kept `description:` prose framing (superseded at v0.67.0).
+  This edit touches **neither**: the KEPT pair does not live in this file any more, and the v0.67.0
+  description that replaced the v0.63.0 framing is preserved sentence-for-sentence except its final
+  producing clause, superseded above with the ruling cited. Nothing silently deleted.
+
 ## [v0.78.0] Delegating Cheap Reads retargeted — `mochiko:explorer` dispatch superseded by native `Explore` + `model: haiku` override
 
 - **Disposition:** superseded → the reworded `## Delegating Cheap Reads` sentence: "spawn a

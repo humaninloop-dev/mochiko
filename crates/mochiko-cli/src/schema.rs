@@ -8,11 +8,15 @@ use serde::Deserialize;
 use std::fs;
 use std::path::Path;
 
-/// The eight in-scope pipeline artifact templates (D3). This is the authoritative known-name set:
-/// a `template <name>` for a name outside this list is an unknown template (exit 2). Every name
-/// here has an embedded compile-time copy via [`embedded`], so the embedded fallback can never
-/// miss a known name.
-pub const TEMPLATE_NAMES: [&str; 8] = [
+/// The schema-backed artifact families the binary renders: the eight in-scope pipeline artifact
+/// templates (D3) plus the product architecture store (the ninth family, product-architecture-schema
+/// D8). This is the authoritative known-name set: a `template <name>` for a name outside this list
+/// is an unknown template (exit 2). Every name here has an embedded compile-time copy via
+/// [`embedded`], so the embedded fallback can never miss a known name.
+///
+/// Shelf data files (`architecture-shelf-*.yaml`) are deliberately absent: they are dealt by a
+/// skill reading them raw, never rendered here.
+pub const TEMPLATE_NAMES: [&str; 9] = [
     "spec",
     "plan",
     "tasks",
@@ -21,6 +25,7 @@ pub const TEMPLATE_NAMES: [&str; 8] = [
     "codebase-analysis",
     "governance-intent",
     "governance-surfaces",
+    "architecture-store",
 ];
 
 /// One pipeline artifact template. Core fields are always present; the four `Option` fields are
@@ -109,6 +114,10 @@ fn embedded(name: &str) -> Option<&'static str> {
         "governance-surfaces" => include_str!(concat!(
             env!("CARGO_MANIFEST_DIR"),
             "/../../plugins/mochiko/schemas/governance-surfaces.yaml"
+        )),
+        "architecture-store" => include_str!(concat!(
+            env!("CARGO_MANIFEST_DIR"),
+            "/../../plugins/mochiko/schemas/architecture-store.yaml"
         )),
         _ => return None,
     };

@@ -4,6 +4,61 @@ Entry formats: `strips/README.md`. Ruling for every [v0.68.0] entry below:
 `DECISIONS.md` 2026-08-13 "PM role & feature derivation" row →
 `.mochiko/brainstorms/pm-role-and-feature-derivation/record.md` (D6/D7/D8/D9/D10).
 
+<!-- Wave context: the product-architecture-schema Stage-1 build wave (v0.81.0). Ruling for every
+[v0.81.0] entry below: `.mochiko/brainstorms/product-architecture-schema/record.md` (D7 · D12 ·
+D13) → `DECISIONS.md` 2026-08-19 product-architecture row. -->
+
+## [v0.81.0] Product-surface baseline list re-keyed — `nfrs.md` out, the store in (D12)
+
+- **Disposition:** superseded → the list drops `nfrs.md` (dies whole under D12) and gains
+  `architecture/`, the architecture store, with repo-root `ARCHITECTURE.md` named as its derived
+  index rather than a standalone peer.
+- **Tier failed:** n/a — supersession by ruling (record D12/D4; `DECISIONS.md` 2026-08-19 row).
+- **Content:** verbatim — "**Product surface** — baselines at `.mochiko/product/`
+  (`data-model.md`, `contracts/`, `nfrs.md`, `constraints-and-decisions.md`, `quickstart.md`)
+  beside repo-root `ARCHITECTURE.md`".
+- **Kept deliberately:** the product-lane home, the dated-append rule for cards and reports, and
+  the overwrite-only-via-the-graded-fold rule for delta files all survive byte-for-byte.
+- **Consumers assessed:** the same list re-keyed in `plan.md` (own strip entry, same wave); the
+  desk's `baseline-delta.md` intake is unchanged — a store touch known at intake now names a
+  store element, which the delta card's existing appliable before/after form already carries.
+
+## [v0.81.0] Principal-architect dormancy line — cross-link added (D7); nothing removed
+
+- **Disposition:** n/a — this entry records an **addition**, logged here only because the line
+  it extends is a seat-duty claim an auditor would expect to find ruled. One sentence was
+  appended naming the seat's standing home: "The seat is not idle elsewhere: its standing home
+  is `/mochiko:architecture`, where it stewards the architecture store — the dormancy is this
+  desk's, not the seat's."
+- **Tier failed:** n/a — supersession by ruling (record D7 — the recharter of
+  `principal-architect` as desk lead and store steward; `DECISIONS.md` 2026-08-19 row).
+- **Content:** nothing removed. The original bullet survives byte-for-byte — "-
+  **Principal-architect** — domain co-sign, **dormant until the first cap-trip**; no live duty
+  on today's maps." — and the new sentence follows it.
+- **Kept deliberately:** the dormancy itself, the cap-trip trigger, and the cap-trip co-sign
+  duty — all unchanged, and the "no live duty on today's maps" absolute is untouched because it
+  remains true *of this desk*. The addition exists so the sentence is not misread after this
+  wave as a claim about a seat that now runs a desk of its own.
+- **Consumers assessed:** `mochiko:patterns-map-minimalism`'s cap-trip co-sign (P4's file, same
+  wave) — the co-sign duty is unmoved; the `principal-architect` recharter is P1's cluster.
+
+## [v0.81.0] D13 growth-door intake — pure addition (no content left)
+
+- **Disposition:** n/a — this entry records an **addition**, logged here only because auditors
+  reading the desk's routing surface should find the ruling that put it there. A fired upgrade
+  trigger from `/mochiko:architecture` arrives as a candidate capability or work row, is routed by
+  the capability-write test, takes extend-beats-mint, and **the user rules the mint** — no new
+  door, no auto-mint.
+- **Tier failed:** n/a — supersession by ruling (record D13; `DECISIONS.md` 2026-08-19 row).
+- **Content:** nothing removed. Two sites added: the **Architecture-desk intake** tool bullet, and
+  one sentence in the growth-door Boundaries bullet cross-linking it.
+- **Kept deliberately:** the growth door's existing tests are untouched and explicitly govern the
+  new intake — extend verdict only, acceptance criteria on the card, mint-or-uncertain routing to
+  `/mochiko:specify`, and the several-rows / new-UX-surface / cross-capability-reach routing.
+  Capability writes stay sacred: D13 routes a *proposal* here, never a write.
+- **Consumers assessed:** `commands/architecture.md` (new this wave) carries the dispatch half;
+  `mochiko:patterns-map-minimalism` and `authoring-feature-map` are P4's this wave.
+
 ## [v0.78.0] Model-tiering floor line retargeted — `mochiko:explorer` superseded by native `Explore` + `model: haiku` override
 
 - **Disposition:** superseded → the reworded floor line: locate/enumerate reads go to "a

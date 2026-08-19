@@ -6,6 +6,93 @@ Entry formats: `strips/README.md`. Wave context: [v0.28.0] entries — skill-suc
 `.mochiko/brainstorms/workflow-token-reduction/record.md` D4 + the wave-2 rulings R1–R4/T2;
 ratified 2026-07-24).
 
+## [v0.81.0] `nfrs.md` dies as a file; the Structural Decisions subsection dies whole — product-architecture-schema D12
+
+- **Disposition:** superseded → the architecture store. Two independent absorbs land in one edit:
+  (a) **NFR-XXX** loses its `nfrs.md` document home and becomes fields on the store's concern
+  rows — the **ids and the grammar stay this skill's**, the row shape is the store schema's;
+  (b) the **Structural Decisions** subsection dies whole — structural-origin D-XXX are replaced by
+  the store delta, whose ruling **is** the decision record, so the `Origin` axis has nothing left
+  to distinguish and goes with it.
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/brainstorms/product-architecture-schema/record.md` D12, `Contested` — user ruled
+  absorb against the lead's coexist recommendation, blast radius priced and accepted;
+  `DECISIONS.md` 2026-08-19).
+- **Content (superseded, verbatim — SKILL.md):**
+
+  ```
+  **Structural Decisions section (architecture-time D-XXX rows).** `constraints-and-decisions.md`
+  carries a designated **Structural Decisions** subsection inside Section 2, grouping the D-XXX rows
+  that record *topology* choices — component boundaries, interaction style, responsibility placement —
+  decided during the architecture stage. These rows are authored by the **architecture seat**
+  (`mochiko:patterns-system-design`), **not** this skill's analysis-time author, who keeps its own
+  technology-decision D-XXX rows and **preserves** this section rather than filling it. Both origins
+  share one D-XXX field schema, the same ADR discipline (`mochiko:patterns-technical-decisions`), and
+  one continuous D-XXX sequence; the architecture delta summary links each structural change to its row
+  here. (Template + the `Origin` marker: ARTIFACT-TEMPLATES.md.)
+  ```
+
+  ```
+  ### 3. Non-Functional Requirements (nfrs.md) -- NFR-XXX
+
+  Define measurable quality attributes. Every NFR has a numeric target. Field schema in ARTIFACT-TEMPLATES.md.
+  ```
+
+  ```
+  - [ ] Architecture-time topology decisions live as D-XXX rows in the **Structural Decisions** section (authored by the architecture seat; the analysis-time author preserves it, never fills it)
+  ```
+
+  Plus the Overview's "three traceable analysis artifacts" line and the layer-enumeration line
+  naming `nfrs.md (NFR-XXX)`.
+- **Content (superseded, verbatim — references/ARTIFACT-TEMPLATES.md):** the whole
+  `### Structural Decisions` block (its explanatory blockquote + the `### D-004: [Structural
+  Decision Title]` record template with Context / Options / Choice / Consequences / Governance
+  alignment); the `Origin` column and its `| D-004 | Avatar processing placement | async worker
+  off a queue | NFR-002 | structural |` example row in the Decision Summary index; the `Origin`
+  field-definition row and the "one shared sequence across both origins" clause on the `ID` row;
+  and the `nfrs.md` **document template** (the `# Non-Functional Requirements: {feature_id}`
+  header, the NFR Summary ID-index table, and the `## NFR-001` record skeleton).
+- **Kept deliberately:** the **entire NFR grammar** — the field definitions table (ID · Title ·
+  Category · Source · Requirement · Target · Measured · Applies to), the six categories with
+  their bad-vs-measurable examples, the "Writing Measurement Methods" guidance and its worked
+  example (reframed from a document section to a row's fields), and the `"Fast" is not a
+  requirement` floor with its no-exceptions clause. **Trace chains preserved**: `TR-XXX →
+  NFR-XXX` resolves unchanged, `Applies to:` still cites TR-XXX — D12 moves the path, never the
+  ids. **C-XXX hard constraints and IP-XXX rows stay** in `constraints-and-decisions.md` (D12
+  reduces that artifact, it does not kill it), as does the whole technology-decision D-XXX record
+  format, the ADR-technique pointer to `mochiko:patterns-technical-decisions`, and the C↔D / IP
+  traceability rules. `quickstart.md` is untouched — user-ruled keep.
+- **Replacement guidance added (rides the decision row):** a short "structural decisions are not
+  this artifact's" paragraph replacing the deleted subsection, naming where topology rulings go
+  and how to handle a technology decision entangled with one (record the technology decision
+  here, let the delta carry the shape, cross-cite by ID) — the deletion would otherwise leave the
+  author with no route for the entangled case.
+- **Consumers assessed:** `mochiko:review-plan-artifacts` graded `nfrs.md` with a standalone
+  checklist and graded the structural-D-XXX links in its Architecture checklist — both re-keyed
+  in the same edit set by this seat. `mochiko:review-feasibility`'s classes 1–5 cite C-XXX /
+  D-XXX / NFR-XXX by id only, and stay correct (its architecture-pass seam re-keyed by this
+  seat). `mochiko:testing-gap-finding` runtime-NFR probes re-pointed by this seat.
+  `mochiko:patterns-technical-decisions` owns the decision *technique* and names no origin axis —
+  verified unedited. `mochiko:patterns-system-design` (P3) no longer authors rows into this
+  artifact. `plan.md` / `implement.md` baseline lists and the `feature-sizing` D9/D15
+  baseline-set clauses are P2's this wave.
+- **Consumers assessed — second pass (V4 delta, B2 + B2-extension).** The first pass swept skills
+  and the router but missed the artifact-chain carriers that name this skill's outputs by
+  filename. Five further `nfrs.md` sites re-keyed, all listing-class (an enumeration of produced
+  or reviewed artifacts, no behavior stated):
+  `templates/artifact-format.md:5` (the deliverable envelope's pipeline artifact chain) ·
+  `templates/feasibility-report-template.md:15` (also logged under `strips/review-feasibility.md`) ·
+  `templates/techanalyst-report-template.md:16` (`produced:` example, gains "+ store-delta NFR rows
+  when touched") · `agents/technical-analyst.md:23` (the skill's own pointer, which now states the
+  store home explicitly rather than merely dropping the filename) ·
+  `schemas/tasks.yaml:23,103` (the generated-from provenance pointer, stated twice — the `check:`
+  string and the rendered example; logged in `strips/tasks-template.md`, that schema's strip
+  lineage). Router `technical-analyst` row re-keyed the same pass (drops the NFRs limb, "approved
+  architecture" → signed store delta). **Post-fix sweep:** no `nfrs.md` reference survives in
+  `plugins/` except deliberate negative statements ("there is no `nfrs.md`") and the D16
+  migration-source lists in `commands/architecture.md` and `authoring-architecture-store`, which
+  must name the absorbed file to reconstruct from it.
+
 ## [v0.64.0] Guardrails body + slim description (guardrails-vs-detail Wave 2 editorial cut)
 - **Disposition:** superseded → Wave 2 editorial guardrails cut (D4 cut line).
 - **Tier failed:** n/a — supersession by ruling (guardrails-vs-detail Wave 2, `DECISIONS.md`

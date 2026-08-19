@@ -47,7 +47,11 @@ The explorer is blind to code and cards. Admissible inputs are an **explicit inc
 not a layer label: `spec.md` (FR-XXX, SC-XXX, stories, declared edge cases) · the feature's
 `requirements.md` · Screens & Flows (SCR-XXX, FLOW-XXX) · `data-model.md` (entities, state
 machines, DS-XXX sensitivity) · `contracts/` (`api.yaml` and any sibling contract documents) ·
-`nfrs.md`. All define externally-observable promised behavior, so the pass stays black-box.
+the architecture store's **concern rows only** — their `NFR-XXX` targets
+(`.mochiko/product/architecture/concerns.md` plus any graduated `concerns/AX-XXX-<slug>.md`).
+All define externally-observable promised behavior, so the pass stays black-box. **The store's
+spine deep view stays outside the fence** — it is design structure, not promised behavior, and
+admitting it would widen the fence no ruling widened.
 
 **Excluded, structurally:** the code · the cycle cards (`tasks.md`) · the `**TEST:**` cases ·
 cycle reports · the builder's tests.
@@ -80,8 +84,8 @@ done condition's count auditable. Five families:
 3. **Abuse** — authz bypass (cross-user resource reach), privilege escalation, injection-class
    inputs, session and replay misuse. Derived from the spec's roles plus the DS-XXX classes:
    Confidential and Restricted attributes name what must not leak.
-4. **Runtime NFR** — each `nfrs.md` numeric target (p95, availability, limits) as a measurable
-   expectation against the built system.
+4. **Runtime NFR** — each `NFR-XXX` numeric target on the store's concern rows (p95,
+   availability, limits) as a measurable expectation against the built system.
 5. **Observability** — key flows leave logs and metrics; error paths produce actionable
    diagnostics. **Advisory-only findings, always**: by construction no clause exists to cite.
 
@@ -121,8 +125,8 @@ progress, never dispatches agents, never holds judgment this skill owns.
 ## Findings — split by kind, never by severity
 
 - **Spec-violation — blocking, final validation fails.** Spec-required behavior demonstrably
-  broken, with **evidence captured** and the **spec clause cited**. A broken `nfrs.md` numeric
-  target qualifies.
+  broken, with **evidence captured** and the **spec clause cited**. A broken `NFR-XXX` numeric
+  target on a store concern row qualifies.
 - **Beyond-spec — advisory to the final checkpoint.** Robustness gap, undeclared edge behavior,
   surviving mutant, observability hole. The user rules fix-now / backlog / accept.
 

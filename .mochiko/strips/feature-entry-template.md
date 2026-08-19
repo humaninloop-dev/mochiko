@@ -7,6 +7,39 @@ the feature-command proposed origin; the entries below record the superseded com
 
 ---
 
+<!-- Lineage note: from v0.76.0 this primitive IS `plugins/mochiko/schemas/feature-entry.yaml` —
+the template retired into it (entry below) and this file continues as the schema's strip home,
+one file per primitive, one continuous history. Wave context for [v0.81.0]: the
+product-architecture-schema Stage-1 build wave. Ruling:
+`.mochiko/brainstorms/product-architecture-schema/record.md` (D3 · D4) → `DECISIONS.md`
+2026-08-19 product-architecture row. -->
+
+## [v0.81.0] Architecture section re-pointed from `ARCHITECTURE.md` components to store elements (D3/D4)
+
+- **Disposition:** superseded → the realizing **store elements, named by id** — `SPN-XXX` spine
+  elements of any kind (container | boundary | flow) and/or `AX-XXX` concern rows at
+  `.mochiko/product/architecture/`. Ids, not kind nouns: pointing at "components" would have
+  silently narrowed the spine to containers and dropped boundaries and flows.
+- **Tier failed:** n/a — supersession by ruling (record D3 — one store, the per-feature
+  architecture artifact dies — and D4, which makes repo-root `ARCHITECTURE.md` a derived index
+  rather than a component register; `DECISIONS.md` 2026-08-19 row).
+- **Content:** verbatim, three sites. (1) Contract: "Which ARCHITECTURE.md components realize
+  this capability — pointers only, navigable both directions; never restate the component view.
+  (Domain -> components mapping is dormant: it lands only at the soft cap, per
+  mochiko:patterns-map-minimalism.)" (2) The `check` string: "Does Architecture point at the
+  realizing ARCHITECTURE.md components (pointers only, no restated component view)?" (3) The
+  skeleton line: "- {{component_name}} (`ARCHITECTURE.md` § {{section}})".
+- **Kept deliberately:** three load-bearing properties survive intact — the **pointers-only**
+  rule, the **navigable-both-directions** property (the store's `Work:` field is the return leg,
+  per the D13 routing this wave lands), and the **dormant domain mapping** with its soft-cap
+  trigger and its `mochiko:patterns-map-minimalism` pointer. The section stays `required: false`.
+  Pointing at the store rather than its derived index is what makes the back-link durable: under
+  D4 the index is regenerated on every store write, so a pointer into it would have been a
+  pointer at a rendered projection.
+- **Consumers assessed:** `mochiko:authoring-feature-map` owns the entry's authoring and is P4's
+  this wave; `features-index.yaml`'s peer-of lines re-worded in the same wave (own strip entry);
+  `mochiko-cli template feature-entry` renders from this data file and needs no code change.
+
 ## [v0.76.0] Template retired — superseded by schema-based template guidance (D1/D3/D8)
 - **Disposition:** superseded → plugins/mochiko/schemas/feature-entry.yaml + mochiko-cli template feature-entry
 - **Tier failed:** n/a — supersession by ruling (schema-based-template-guidance D1/D3/D8; record `.mochiko/brainstorms/schema-based-template-guidance/record.md`; `DECISIONS.md` "Template-schema CLI ruled")

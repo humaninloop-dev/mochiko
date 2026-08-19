@@ -3,6 +3,33 @@
 Entry formats: `strips/README.md`. Wave context: the plan cluster wave (v0.15.0). Plan-cluster-only
 agent (the analysis+design producer, mounted on `plan`) — strips ruled in-wave (single consumer).
 
+## [v0.81.0] Skill-pointer artifact list: `nfrs.md` → the store's concern rows — product-architecture-schema D12
+
+- **Disposition:** superseded → the architecture store. The persona's pointer to
+  `mochiko:authoring-technical-requirements` named the three analysis artifacts by filename; D12
+  kills `nfrs.md` as a file and homes NFR-XXX on the store's concern rows. Rather than deleting
+  the filename and leaving a silent gap, the line now **states the new home**, so an analyst
+  reading the persona learns where an NFR goes rather than merely not being told.
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/brainstorms/product-architecture-schema/record.md` D12; `DECISIONS.md` 2026-08-19).
+- **Content (superseded, verbatim):**
+
+  ```
+  - **`mochiko:authoring-technical-requirements`** — the analysis artifacts (`requirements.md`,
+    `constraints-and-decisions.md`, `nfrs.md`) and their TR/C/NFR/IP traceability.
+  ```
+- **Kept deliberately:** the persona's whole shape — the reach-for-the-skill-whose-artifact-is-in-
+  front-of-you framing, the scope-lives-in-the-skill rule, all four skill pointers, and the
+  **TR/C/NFR/IP traceability** clause: D12 moves the NFR's path, never the trace chain, so the
+  traceability obligation is unchanged. The persona's other NFR mentions (the load-testing
+  motivation at :36, the constraint-to-infrastructure tracing at :99) are home-agnostic and were
+  verified correct as written, not edited.
+- **Consumers assessed:** the router's `technical-analyst` row carried the same NFRs limb and was
+  re-keyed in the same pass (P4). The agent's `description:` names artifacts generically
+  ("entity models, API contracts, technology decisions") and needed no edit — verified, and its
+  char count is unchanged, so no ledger movement. `plan.md` (P2) dispatches this seat.
+  Routed to P4 at the V4 delta pass as an unowned ripple (B2-extension).
+
 ## [v0.78.0] Delegating Cheap Reads retargeted — `mochiko:explorer` dispatch superseded by native `Explore` + `model: haiku` override
 
 - **Disposition:** superseded → the reworded `## Delegating Cheap Reads` sentence: "spawn a

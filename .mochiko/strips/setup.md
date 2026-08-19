@@ -7,6 +7,76 @@ shared team-form prose relocated into `templates/command-shape.md` (design:
 **Also stale:** the shape is **v7** as of the v0.43.0 conversion below, and setup is **v7-form** —
 it carries the `<!-- shape-form: v7 -->` marker and binds P18–P20.
 
+<!-- Wave context: the product-architecture-schema Stage-1 build wave (v0.81.0). Ruling for the
+[v0.81.0] entry below: `.mochiko/brainstorms/product-architecture-schema/record.md` (D5 · D12 ·
+D16) → `DECISIONS.md` 2026-08-19 product-architecture row. -->
+
+## [v0.81.0] Greenfield's defer-to-first-plan-run clauses narrowed — the store scaffold is unconditional
+
+- **Disposition:** superseded → both clauses now defer **the baselines only**; the architecture
+  store's `architecture/` directory and its `spine.md` stub carrying the `Scope:` line are
+  written on **both** paths, greenfield included.
+- **Tier failed:** n/a — supersession by ruling (record D5 — shelf scope declared at setup,
+  overridable at the desk — read with D16's store-less-repo posture; `DECISIONS.md` 2026-08-19
+  product-architecture row. Raised as V2 audit finding N1, the greenfield `Scope:` hole: with the
+  scaffold conditional on brownfield, a greenfield project reached its first desk visit with no
+  declared scope and nowhere for setup's surface read to land).
+- **Content:** verbatim, two sites — (1) Goal: "brownfield close also carries the bootstrapped
+  product baselines at `.mochiko/product/`; greenfield leaves them to seed at the first plan
+  run."; (2) the feature-map binding's tail: "greenfield seeds the baselines at the first plan
+  run instead."
+- **Kept deliberately:** the greenfield/brownfield split itself survives for **the baselines** —
+  `data-model.md`, `contracts/`, `constraints-and-decisions.md`, and `quickstart.md` are still
+  bootstrapped from delivered code on brownfield and still deferred to the first plan run on
+  greenfield, and the `Assumed` mark with its partial-baseline poisoning risk is untouched. Two
+  standing claims survive **because a `Scope:`-header-only file is scaffold, not ruled content**:
+  setup's own "the store's ruled content is never authored here" (now stated explicitly of both
+  paths), and `commands/plan.md`'s "**The store is never seeded here**" — seeding means ruled
+  content, which the stub is not. No architecture stance is taken in a setup run on either path.
+- **Consumers assessed:** `commands/plan.md`'s Baseline-seed bullet (its own strip entry, same
+  wave) — unaffected, per the seeding/scaffold distinction above;
+  `commands/architecture.md`'s shelves bullet reads the same `Scope:` line and needed no change,
+  since it never assumed the brownfield path; P1's store layout and schema need no change either
+  — "written by setup's scaffold" is now true as written on both paths.
+- **Follow-on within the same wave (V2 advisory A5), no separate entry owed:** making the
+  scaffold unconditional created a **scaffold-only** store state that the wave's own
+  bootstrap/elicit routing did not yet name — it said "store-less", which a scaffold-only store
+  is not. Four spans were re-worded in place to "a store with no ruled content (scaffold-only or
+  absent)": `commands/plan.md` Entry, its Architecture-store bullet, its Baseline-seed bullet
+  (this fourth site was not in the advisory — same phrase class, found on sweep), and
+  `commands/architecture.md`'s baseline-authoring floor. The setup scaffold additionally lays an
+  empty `concerns.md` beside the `spine.md` stub so the store's layout is complete from birth.
+  **No strip entry is owed for these:** every re-worded span is v0.81.0-authored text being
+  refined before the version ships (`plugin.json` still reads 0.80.0 at the time of the edit) —
+  the ceremony governs content that shipped, and none of this has. Logged here so the
+  scaffold-only vocabulary traces back to the ruling that created the state.
+
+## [v0.81.0] `nfrs.md` leaves the brownfield bootstrap list; the store scaffold joins it (D12/D16)
+
+- **Disposition:** superseded → the bootstrap list drops `nfrs.md` (the file dies whole under
+  D12; its `NFR-XXX` ids survive on store concern rows) and gains the architecture store's
+  scaffold at `.mochiko/product/architecture/`. *(Read with the entry above: the store scaffold
+  ended up **unconditional**, not a member of the brownfield-only list this entry describes —
+  same wave, one round later.)*
+- **Tier failed:** n/a — supersession by ruling (record D12/D16; `DECISIONS.md` 2026-08-19 row).
+- **Content:** verbatim — "the brownfield analysis also bootstraps the product baselines —
+  `data-model.md` · `contracts/` · `nfrs.md` · `constraints-and-decisions.md` · `quickstart.md`
+  at `.mochiko/product/` (`ARCHITECTURE.md` stays repo root) — from the delivered code;
+  greenfield seeds the baselines at the first plan run instead."
+- **Kept deliberately:** three things, deliberately. (1) The `Assumed` mark and its named
+  partial-baseline poisoning risk survive verbatim — D16 explicitly makes the brownfield derive
+  *inherit* that caveat, so weakening it here would have contradicted the ruling. (2) The
+  parenthetical "(`ARCHITECTURE.md` stays repo root)" survives — still true, and now doubly so:
+  the root file is the store's derived index, per D4's "at the repo root, never inside the store
+  directory". (3) The greenfield/brownfield split and the first-plan-run seeding fallback are
+  unchanged. **Added, not superseded:** setup lays the store *scaffold* only — the ruled content
+  is the desk's reconstruct-and-confirm work at the first `/mochiko:architecture` visit (D16), so
+  no architecture stance is ever taken in a setup run.
+- **Consumers assessed:** the never-overwrite floor covering these writes is untouched;
+  `plan.md`'s Baseline-seed bullet (own strip entry, same wave) states the matching
+  store-is-never-seeded-here rule; the new **Architecture scope handoff** binding and the
+  `/mochiko:architecture` addition to Next step are pure additions and ride the decision row.
+
 ## [v0.78.0] Model-tiering floor line retargeted — `mochiko:explorer` superseded by native `Explore` + `model: haiku` override
 
 - **Disposition:** superseded → the reworded floor line: locate/enumerate reads go to "a
