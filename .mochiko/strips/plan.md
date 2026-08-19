@@ -1,6 +1,14 @@
 # Strip notes — `commands/plan.md`
 
 Entry formats: `strips/README.md`. Wave context: the plan cluster wave (BACKLOG item 7, the third
+one-shot-command wave after specify's v0.13.0 and slice's v0.14.0). The wave also ran the **D2
+conversion assessment** (one-shot → team-form) and re-checked the **S8 home-revision checkpoint**
+against plan's needs (a standing producer spanning two phases + two reviewer seats, one of them
+fire-once — no new shape gap at that wave, when the shape was v2). **Stale as a standing claim:** the
+shape is now **v4** (2026-07-30) — see the v0.31.0 entry below. **Stale again:** the shape reached
+**v5** at the v0.34.0 pilot below and **v7** at v0.40.0; plan is **v7-form** as of the v0.43.0
+conversion at the top of this note.
+
 ## [v0.78.0] Model-tiering floor line retargeted — `mochiko:explorer` superseded by native `Explore` + `model: haiku` override
 
 - **Disposition:** superseded → the reworded floor line: locate/enumerate reads go to "a
@@ -16,14 +24,6 @@ Entry formats: `strips/README.md`. Wave context: the plan cluster wave (BACKLOG 
 - **Consumers assessed:** the same phrase edited in all six commands in the same v0.78.0
   wave (entry mirrored per command strip file); the pointed-at skill reworded in the same
   wave (`strips/patterns-model-tiering.md`).
-
-one-shot-command wave after specify's v0.13.0 and slice's v0.14.0). The wave also ran the **D2
-conversion assessment** (one-shot → team-form) and re-checked the **S8 home-revision checkpoint**
-against plan's needs (a standing producer spanning two phases + two reviewer seats, one of them
-fire-once — no new shape gap at that wave, when the shape was v2). **Stale as a standing claim:** the
-shape is now **v4** (2026-07-30) — see the v0.31.0 entry below. **Stale again:** the shape reached
-**v5** at the v0.34.0 pilot below and **v7** at v0.40.0; plan is **v7-form** as of the v0.43.0
-conversion at the top of this note.
 
 ---
 

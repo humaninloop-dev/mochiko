@@ -1,6 +1,12 @@
 # Strip notes — `commands/setup.md`
 
 Entry formats: `strips/README.md`. Wave context: the D4 codification pre-shrink — the
+shared team-form prose relocated into `templates/command-shape.md` (design:
+`.mochiko/brainstorms/pattern-codification-and-minimalism/record.md`, D3/D4/D9).
+**Stale as a standing claim:** the shape is now **v5** — see the v0.35.0 section below.
+**Also stale:** the shape is **v7** as of the v0.43.0 conversion below, and setup is **v7-form** —
+it carries the `<!-- shape-form: v7 -->` marker and binds P18–P20.
+
 ## [v0.78.0] Model-tiering floor line retargeted — `mochiko:explorer` superseded by native `Explore` + `model: haiku` override
 
 - **Disposition:** superseded → the reworded floor line: locate/enumerate reads go to "a
@@ -16,12 +22,6 @@ Entry formats: `strips/README.md`. Wave context: the D4 codification pre-shrink 
 - **Consumers assessed:** the same phrase edited in all six commands in the same v0.78.0
   wave (entry mirrored per command strip file); the pointed-at skill reworded in the same
   wave (`strips/patterns-model-tiering.md`).
-
-shared team-form prose relocated into `templates/command-shape.md` (design:
-`.mochiko/brainstorms/pattern-codification-and-minimalism/record.md`, D3/D4/D9).
-**Stale as a standing claim:** the shape is now **v5** — see the v0.35.0 section below.
-**Also stale:** the shape is **v7** as of the v0.43.0 conversion below, and setup is **v7-form** —
-it carries the `<!-- shape-form: v7 -->` marker and binds P18–P20.
 
 ---
 

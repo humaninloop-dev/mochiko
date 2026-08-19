@@ -5,6 +5,45 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.79.0] — 2026-08-19
+
+QA gap-finding build (`qa-gap-finding-verification` D1–D10 as amended; `DECISIONS.md`
+2026-08-19 row). The QA verification lifecycle gains its discovery layer: the deterministic
+floor (TEST-gate re-execution + exit-code quality gates) stays, and final validation gains a
+**blind, spec-derived gap-finding pass** — selection-scope and epic runs only, delta/lane
+runs disclose the skip.
+
+- **New skill `testing-gap-finding`** — the blindness fence (explicit inclusion list:
+  `spec.md`, `requirements.md`, Screens & Flows, `data-model.md`, `contracts/`, `nfrs.md`;
+  code/cards/`**TEST:**` cases structurally excluded, delegated reads inherit the list),
+  two-message blind dispatch, expectation derivation, seven-family probe kit (adversarial ·
+  state walks · contract · concurrency · security/abuse · runtime NFR · observability),
+  diff-scoped high-depth-only mutation lens (tool-absent/flaky-suite skips disclosed;
+  non-kernel per GI-019), finding-kind split with lead adjudication, done condition
+  (expectations probed, counts disclosed, zero findings = clean), and the fold-back into
+  the new durable gate-set artifact `.mochiko/features/FEAT-XXX/gates.md`.
+- **`implement.md`** — final-validation wiring: scope carve + skip disclosure, blind
+  dispatch contract, gap-rework whole-run bound (default 2, redeclarable only at run open),
+  checkpoint adjudication, out-of-territory routing to `/mochiko:feature`, fold-back at the
+  acceptance landing, two new default-FAIL clauses; the "accumulated territory `**TEST:**`
+  gates" read re-pointed to its now-named home (union of territory `gates.md` + cards'
+  cases). 2 supersession strips (`.mochiko/strips/implement.md` [v0.79.0]).
+- **`devils-advocate`** — sits the exploratory seat (D4 reseat): `skills:` +
+  `testing-gap-finding`, new runtime-hunting persona section; both never-zero
+  finding-count lines scoped to document review (2 supersession strips,
+  `.mochiko/strips/devils-advocate.md` [v0.79.0]).
+- **`qa-engineer`** — fold-back authoring duty (gates.md cases at the acceptance landing);
+  explicitly not the exploratory seat.
+- Router row + agent-row sync; ledger birth rows (skill body 10,559 / desc 709, ruled
+  HOLDS).
+- Audits: 2 producer seats on lead-approved plans (disjoint ownership) + 2 fresh
+  author≠grader validators; V1 PASS + 5 advisories producer-applied + seven-span confirm;
+  V2 cluster FAIL (F1 second never-zero carrier · F2 fence delegation guard) → fix round →
+  CONFIRMED-PASS. Gates: cargo test 11/11, no schema files touched.
+- Housekeeping: the v0.78.0 wave's strip-file intro splits repaired across 12
+  `.mochiko/strips/` files (pure relocation, line-multiset-verified); stale explorer
+  ledger row annotated historical.
+
 ## [0.78.0] — 2026-08-19
 
 Explorer retarget — the v0.77.0 cheap rung superseded by recorded ruling (ADR

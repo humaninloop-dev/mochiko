@@ -1,6 +1,10 @@
 # Strip notes — `agents/principal-architect`
 
 Entry formats: `strips/README.md`. Wave context: the plan cluster wave (v0.15.0). Shared agent,
+**2 consumers** (`setup` producer + `plan` feasibility reviewer) — under the D9 3-consumer threshold,
+ruled in-wave; the strip below is Tier-2-tested against both consumers (the `task-architect` precedent
+for the 2-consumer allowance).
+
 ## [v0.78.0] Delegating Cheap Reads retargeted — `mochiko:explorer` dispatch superseded by native `Explore` + `model: haiku` override
 
 - **Disposition:** superseded → the reworded `## Delegating Cheap Reads` sentence: "spawn a
@@ -21,10 +25,6 @@ Entry formats: `strips/README.md`. Wave context: the plan cluster wave (v0.15.0)
 - **Consumers assessed:** the section wording is shared across the ten personas; all ten
   edited in the same v0.78.0 wave (this entry mirrored in each persona's strip file). No
   command or skill names the section.
-
-**2 consumers** (`setup` producer + `plan` feasibility reviewer) — under the D9 3-consumer threshold,
-ruled in-wave; the strip below is Tier-2-tested against both consumers (the `task-architect` precedent
-for the 2-consumer allowance).
 
 ## [v0.67.0] REWRITTEN as the architecture seat — governance + feasibility duties relocated to `tech-lead`
 - **Disposition:** superseded → the governance/codebase/feasibility persona relocates to the new `agents/tech-lead`; this file is rewritten as the architecture + altitude seat (topology craft arrives from the retired `system-architect`).

@@ -1,6 +1,8 @@
 # Strip notes — `agents/staff-engineer`
 
 Entry formats: `strips/README.md`. Wave context: the implement cluster wave (v0.17.0). Implement-only
+agent (the TDD producer, mounted on `implement`) — strips ruled in-wave (single consumer).
+
 ## [v0.78.0] Delegating Cheap Reads retargeted — `mochiko:explorer` dispatch superseded by native `Explore` + `model: haiku` override
 
 - **Disposition:** superseded → the reworded `## Delegating Cheap Reads` sentence: "spawn a
@@ -21,8 +23,6 @@ Entry formats: `strips/README.md`. Wave context: the implement cluster wave (v0.
 - **Consumers assessed:** the section wording is shared across the ten personas; all ten
   edited in the same v0.78.0 wave (this entry mirrored in each persona's strip file). No
   command or skill names the section.
-
-agent (the TDD producer, mounted on `implement`) — strips ruled in-wave (single consumer).
 
 ## [v0.64.0] Frontmatter `description:` examples stripped → prose-only agent description
 - **Disposition:** superseded → prose-only agent description (Wave 2 editorial extension of the agents-arm ruling); the `<example>` blocks were removed from the frontmatter `description:` block scalar, the prose framing (routing content) kept verbatim.

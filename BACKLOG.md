@@ -17,27 +17,31 @@ git history (this line, before this groom).*
 
 ---
 
-## QA gap-finding build
+## QA gap-finding residuals
 
-Ruled 2026-08-19 (`qa-gap-finding-verification` D1–D10 as amended at review; solo cold review
-24 raised → 18 survived → 18/18 dispositioned; verify round 2 CLEAN). Open item:
+Ruled AND built 2026-08-19, same day, at v0.79.0 (`qa-gap-finding-verification` D1–D10 as
+amended at review). One wave under the sound-loop + transport floors — 2 producer seats on
+lead-approved plans with strictly disjoint file ownership (new skill vs
+implement/agents/router/strips) + 2 fresh author≠grader validator seats: new
+`testing-gap-finding` skill (10,559/709, unbudgeted at birth, desc ruled HOLDS) ·
+implement.md final-validation wiring (2 strips) · devils-advocate reseat with both
+never-zero lines scoped (2 strips) · qa-engineer fold-back duty · router row; V1 PASS +
+producer-applied advisories, V2 FAIL (second never-zero carrier + fence delegation guard) →
+fix round → CONFIRMED-PASS; cargo test 11/11; the v0.78.0 strip-intro split repaired
+wave-wide (12 files, pure relocation); trail. Open residual:
 
-- [ ] **QA gap-finding build** (2026-08-19; provenance:
-  [record](.mochiko/brainstorms/qa-gap-finding-verification/record.md) build surface) —
-  cold-buildable: (1) **first task** — mint `.mochiko/features/FEAT-XXX/gates.md` as the
-  durable per-feature gate-set artifact + re-point `implement.md`'s "accumulated territory
-  `**TEST:**` gates" references to it (strips where clauses change) · (2) new skill
-  `testing-gap-finding` (D3 fence inclusion list + two-message blind dispatch · D5a probe kit
-  incl. D9 security/abuse + runtime-NFR + observability probes · D5b mutation lens priced
-  diff-scope/timebox/high-depth-only with tool-absent + flaky-suite skip clauses · D6
-  finding-kind split + lead adjudication · D8 done condition · D7 fold-back) · (3)
-  `devils-advocate.md` `skills:` line + exploratory-runtime persona line (316/395 budget
-  chars, 79 headroom pre-assert) · (4) `qa-engineer.md` fold-back duty note (299/374, 75
-  headroom) · (5) `implement.md` final-validation wiring (scope carve + skip disclosure ·
-  gap-rework bound 2/run · epic union · out-of-territory routing · fold-back at the
-  acceptance landing · model-tiering brief lines) · (6) router row. At landing: mint the
-  first-live-run watch (n=0 — probe-kit yield, mutation noise, devils-advocate runtime fit,
-  fence hold all unmeasured).
+- [ ] **QA gap-finding first-live-run watch** (2026-08-19; provenance:
+  [record](.mochiko/brainstorms/qa-gap-finding-verification/record.md) evidence-honesty
+  section — n=0) — watch the first selection-scope or epic implement run at v0.79.0+: the
+  blind dispatch fires two-message with the fence held (no code/card/TEST path leaks,
+  delegated reads inside the inclusion list) · probe-kit yield (does the pass find real gaps
+  the deterministic layer missed, or noise?) · mutation-lens noise level and skip honesty ·
+  devils-advocate's runtime-probing fit (the D4 reseat is design-reasoned, unmeasured) ·
+  finding-kind adjudication and the gap-rework bound in live use · the first `gates.md`
+  fold and its later territory re-execution. A pass that yields only noise or breaks the
+  fence reopens at the record. F6 note: the skill's plan-time `gates.md` mint parenthetical
+  has no plan-side wiring — deliberate; implement mints on the fold if absent; wire at
+  plan's next touch only if a real run wants it.
 
 ## Vertical-TDD test-case-anchor residuals
 

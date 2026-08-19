@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Skills-first agent framework \u2014 sound-loop workflows built from native agent teams and skills",
-    "version": "0.78.0"
+    "version": "0.79.0"
   },
   "plugins": [
     {

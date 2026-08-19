@@ -1,6 +1,9 @@
 # Strip notes — `commands/feature.md`
 
 Entry formats: `strips/README.md`. Ruling for every [v0.68.0] entry below:
+`DECISIONS.md` 2026-08-13 "PM role & feature derivation" row →
+`.mochiko/brainstorms/pm-role-and-feature-derivation/record.md` (D6/D7/D8/D9/D10).
+
 ## [v0.78.0] Model-tiering floor line retargeted — `mochiko:explorer` superseded by native `Explore` + `model: haiku` override
 
 - **Disposition:** superseded → the reworded floor line: locate/enumerate reads go to "a
@@ -16,9 +19,6 @@ Entry formats: `strips/README.md`. Ruling for every [v0.68.0] entry below:
 - **Consumers assessed:** the same phrase edited in all six commands in the same v0.78.0
   wave (entry mirrored per command strip file); the pointed-at skill reworded in the same
   wave (`strips/patterns-model-tiering.md`).
-
-`DECISIONS.md` 2026-08-13 "PM role & feature derivation" row →
-`.mochiko/brainstorms/pm-role-and-feature-derivation/record.md` (D6/D7/D8/D9/D10).
 
 ## [v0.76.0] Static tasks-template read-pointer re-pointed to the CLI-render / raw-schema two-arm home
 - **Disposition:** superseded → the Tools/Delta-cards `templates/tasks-template.md` read-pointer now

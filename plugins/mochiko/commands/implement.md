@@ -42,8 +42,11 @@ Every run has a goal and its explicit done condition; a run is never goal-less.
 2. **Open the run with its contract stated.** Run-open confirmation is the convergence — no
    negotiation exchange exists: name the batch and its scope type — **for an epic, the epic, its
    members, and the scope type** — restate the attempt bound
-   (default 3 per cycle; this is its one redeclaration point — Boundaries), and state the
-   done condition below. The done condition is fixed; only the attempt bound is redeclarable.
+   (default 3 per cycle; this is its one redeclaration point — Boundaries) and the
+   final-validation gap-rework bound (default 2 rounds for the whole run; same one
+   redeclaration point — Boundaries), and state the
+   done condition below. The done condition is fixed; the attempt bounds — the per-cycle bound
+   and the final-validation gap-rework bound — are the only redeclarable terms.
 3. **Run to the done condition.** Every `tasks.md` cycle card is `[x]`; each card was
    decomposed into concrete tasks by its builder at build time — the decomposition disclosed
    in the cycle report, never pre-written — and the built code was implemented test-first
@@ -51,7 +54,10 @@ Every run has a goal and its explicit done condition; a run is never goal-less.
    gates with exit codes, captured real-infrastructure evidence — per cycle and once for the
    whole implementation; the feature's verification also ran the **accumulated TEST gates of
    previously delivered features in its territory**, and any seam against an
-   earlier-delivered feature was exercised here, against the real delivered side; the code
+   earlier-delivered feature was exercised here, against the real delivered side; on a
+   selection-scope or epic run the final validation also ran the **blind gap-finding pass**
+   (Tools), a delta-scope or product-lane run stating that skip explicitly in its
+   final-validation report; the code
    meets its criteria, holds traceability to requirements, and aligns with the project's
    governance; where a structural delta was approved at plan time, a built-vs-approved diff
    report exists and any divergence it names was ruled by the user; and the acceptance
@@ -71,7 +77,9 @@ a planned package from the map and confirm with the user.
 without real-infrastructure evidence · a regression in a previously delivered feature's
 gates · a surfaced architecture deviation neither built as
 approved nor consented as an amendment · a touched baseline accepted without its graded
-fold · user acceptance not given.
+fold · a selection-scope or epic run without its gap-finding pass · a delta-scope or lane run
+whose report does not state the skip · an unresolved spec-violation gap finding · user
+acceptance not given.
 
 ## Roles & Responsibilities
 
@@ -99,6 +107,10 @@ is your call.
   per-cycle code-minimalism lens (Tools). The landing verification seat is scope-extended to
   the graded folds; lane runs add the map-delta boundary check (the accepted work made no
   map write beyond the marked delta) to the same seat.
+- **The gap-finding seat** — a fresh `devils-advocate`, dispatched blind per run: never the
+  seat that built these cycles, and never one that saw this feature's design-time test cases.
+  It hunts what the builder and the test author both missed (Tools); the mutation lens rides
+  the existing verification seat, which already holds code sight.
 - **The user** — architecture-deviation consent: a cycle that adds or removes a box, adds,
   removes, or redirects an arrow, or moves a responsibility across a boundary on the
   approved diagram stops and is presented — build as approved, or amend `architecture.md`
@@ -106,7 +118,10 @@ is your call.
   investigable gaps excepted · scope escalation (work bigger than the run was framed; the
   run stays FAIL unless the user explicitly accepts) · exempting a grading round from the
   attempt count (Boundaries) · an epic member's attempt-exhaustion disposition — carve the
-  member out or hold the whole run (Boundaries; never the lead's) · final acceptance (accept /
+  member out or hold the whole run (Boundaries; never the lead's) · a disputed gap-finding
+  kind, and each beyond-spec gap finding's disposition — fix now, book to `BACKLOG.md`, or
+  accept as designed (Tools) · gap-rework bound exhaustion or a no-progress gap-rework round
+  (Boundaries) · final acceptance (accept /
   amend / reject).
 
 ## Tools
@@ -137,7 +152,9 @@ Each tool below is referenced, never restated — its procedure lives in its hom
   delta files overwrite only via the graded fold.
 - **Regression scope** — quality gates run the full repository suite; the final validation
   additionally executes the accumulated `**TEST:**` gates of previously delivered features
-  in this feature's territory, and this feature's gates exercise any seam whose earlier side
+  in this feature's territory — the union of those features' durable gate sets at
+  `.mochiko/features/FEAT-XXX/gates.md` and the cases on their cards — and this feature's
+  gates exercise any seam whose earlier side
   is already delivered — seam ownership sits with the later-landing feature, per
   `mochiko:authoring-feature-map`. Over an epic, the accumulated `**TEST:**` gates run once
   over the **union** of the members' territories.
@@ -147,6 +164,25 @@ Each tool below is referenced, never restated — its procedure lives in its hom
   `.claude/worktrees/mochiko-<purpose>/`), its results part of the acceptance evidence;
   ensure the `/.claude/worktrees` ignore entry exists first. Over an epic, one cold snapshot
   covers all members.
+- **Gap-finding pass** — the final validation's discovery layer, procedure in
+  `mochiko:testing-gap-finding`, referenced never restated. It runs on **selection-scope and
+  epic runs only**; a delta-scope or product-lane run skips it and the final-validation report
+  **states the skip explicitly**, never a silent no-op. Over an epic it runs once, over the
+  union of member territories. **Dispatch is two-message and blind:** the first message to the
+  fresh gap-finding seat (Roles & Responsibilities) carries only the feature's `spec.md`,
+  `requirements.md`, and Screens & Flows, plus the product baselines `data-model.md`,
+  `contracts/`, and `nfrs.md` — never the code, `tasks.md`, the `**TEST:**` cases, the cycle
+  reports, or the verification reports; the seat states its derived expectations, and only then
+  does probing begin. The seat's brief carries the model-tiering routing rule (Ways of Working),
+  and its delegated reads stay inside that same fence. Alongside it, the **mutation lens** runs
+  on the verification seat, at **high depth only**; its skips are disclosed per the skill, so a
+  run at high depth owes either mutation results or a stated skip. **Findings split by kind:** a
+  finding demonstrating spec-required behavior broken — evidence captured, the spec clause cited
+  — fails the final validation; a beyond-spec finding is advisory to the checkpoint. You confirm
+  each finding's kind at the checkpoint verdict against the cited clause; a disputed kind
+  defaults advisory and the dispute goes to the user (Roles & Responsibilities) — the finder
+  never gates alone. A gap surfaced in a previously delivered feature's territory is not this
+  run's rework: it routes to a `/mochiko:feature` delta card, cited in the report.
 - **KM landing** — where `.mochiko/memory/knowledge-management.md` exists, a built structural
   change folds into `ARCHITECTURE.md` — the fold is dual-target (the feature's
   `architecture.md` accumulates the approved delta) per `mochiko:authoring-architecture`.
@@ -173,7 +209,12 @@ Each tool below is referenced, never restated — its procedure lives in its hom
   diff: pre-fold baseline + delta vs folded result; delta applied whole, nothing else
   changed — checked by the landing verification seat (Roles & Responsibilities). A delta
   whose baseline file is absent at fold time folds into a fresh `.mochiko/product/` file
-  (empty pre-fold side), the absence surfaced to the user as a seeding gap.
+  (empty pre-fold side), the absence surfaced to the user as a seeding gap. The same landing
+  folds back the gap findings the user ruled fix-now or backlog: each is authored — QA craft,
+  in the `**TEST:**` grammar it already owns — into `.mochiko/features/FEAT-XXX/gates.md`,
+  minted there if absent, so it rides the territory accumulation at every later final
+  validation (`mochiko:testing-gap-finding`). Findings the user accepted as designed do not
+  fold.
 - **Register** — user-facing prose per `templates/output-style.md`.
 
 ## Ways of Working
@@ -211,6 +252,12 @@ Each tool below is referenced, never restated — its procedure lives in its hom
   the disposition — carve the member out (its rows return to pending, the epic continues) or
   hold the whole run — is **reserved to the user** (never lead discretion), because carve-out
   breaks the one-unit promise.
+  **Gap-rework at final validation** is the same economy's analogue at the whole-run scale:
+  rework driven by the gap-finding pass carries a **whole-run bound, default 2 rounds**,
+  redeclarable only at run open (protocol). A finding that localizes to one cycle's territory
+  charges that cycle's remaining attempts instead. Bound exhaustion, or a round whose findings
+  are unchanged, halts the run and presents state — the disposition is **reserved to the
+  user**.
 - **Gates are never severity-triaged.** A failed `**TEST:**` gate or quality gate fails the
   cycle per the done condition; `minimalism:` findings stay advisory at any severity
   (Tools).

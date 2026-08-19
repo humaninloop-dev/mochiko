@@ -1,6 +1,12 @@
 # Strip notes — `commands/specify.md`
 
 Entry formats: `strips/README.md`. Wave context: the specify cluster wave (the first of
+the five one-shot-command waves; BACKLOG item 7 of the pattern-codification build). The
+wave also ran the **D2 conversion assessment** and the **S8 home-revision checkpoint**
+(shape v1 → v2 — see the REGISTRY `command-shape.md` row). **Stale as a standing claim:**
+the shape is now **v5** (2026-07-30) — see the v0.35.0 section below. **Also stale:** the shape is
+**v7**, and specify converted to v7 form at v0.43.0 — see the section immediately below.
+
 ## [v0.78.0] Model-tiering floor line retargeted — `mochiko:explorer` superseded by native `Explore` + `model: haiku` override
 
 - **Disposition:** superseded → the reworded floor line: locate/enumerate reads go to "a
@@ -16,12 +22,6 @@ Entry formats: `strips/README.md`. Wave context: the specify cluster wave (the f
 - **Consumers assessed:** the same phrase edited in all six commands in the same v0.78.0
   wave (entry mirrored per command strip file); the pointed-at skill reworded in the same
   wave (`strips/patterns-model-tiering.md`).
-
-the five one-shot-command waves; BACKLOG item 7 of the pattern-codification build). The
-wave also ran the **D2 conversion assessment** and the **S8 home-revision checkpoint**
-(shape v1 → v2 — see the REGISTRY `command-shape.md` row). **Stale as a standing claim:**
-the shape is now **v5** (2026-07-30) — see the v0.35.0 section below. **Also stale:** the shape is
-**v7**, and specify converted to v7 form at v0.43.0 — see the section immediately below.
 
 ---
 

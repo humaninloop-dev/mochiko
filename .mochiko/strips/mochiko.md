@@ -1,6 +1,11 @@
 # Strip notes — `skills/mochiko/` (the router)
 
 Entry formats: `strips/README.md`. Wave context: skill-succinctness wave 1 (design:
+`.mochiko/brainstorms/skill-succinctness-strip/record.md`, batch-ratified 2026-07-25): body
+149 → 143 lines (4%) but **28,040 → 22,720 bytes = 19%** — the router's fat table rows are
+single physical lines, so the R2 line denominator undercounts this skill; dual accounting
+recorded here and flagged on the wave's ROADMAP row.
+
 ## [v0.78.0] Router rows retargeted — `explorer` agent row deleted; tiering skill row reworded to native `Explore` + override
 
 - **Disposition:** superseded → the reworded `patterns-model-tiering` skill row (native
@@ -23,11 +28,6 @@ Entry formats: `strips/README.md`. Wave context: skill-succinctness wave 1 (desi
   framing.
 - **Consumers assessed:** router rows describe, never dispatch; the described primitives
   reworded/deleted in the same v0.78.0 wave.
-
-`.mochiko/brainstorms/skill-succinctness-strip/record.md`, batch-ratified 2026-07-25): body
-149 → 143 lines (4%) but **28,040 → 22,720 bytes = 19%** — the router's fat table rows are
-single physical lines, so the R2 line denominator undercounts this skill; dual accounting
-recorded here and flagged on the wave's ROADMAP row.
 
 ## [v0.76.0] Router rows re-typed: `spec`/`tasks`/`plan` template files → CLI/schema-delivered (schema-based-template-guidance D1/D8)
 - **Disposition:** superseded → `plugins/mochiko/schemas/{spec,tasks,plan}.yaml` + `mochiko-cli template <name>` (raw Read of the `.yaml` is the D8-first-class degraded path). The three router-index rows are re-described as CLI/schema-delivered primitives; the `(template)` designation is ruled to `(schema)` — the shape is no longer a `templates/<t>-template.md` file. The sibling report/format rows (`analyst-report-template`, `advocate-report-template`, `report-format`, `artifact-format`, `output-style`, `techanalyst-report-template`, `feasibility-report-template`) keep `(template)` because they remain markdown template files (D3 leaves them `.md`). Discoverability preserved: each re-typed row keeps its full role description.

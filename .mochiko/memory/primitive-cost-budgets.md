@@ -167,7 +167,17 @@ ruled cut or benchmark, never invented.
 both tiers plus the D5 boundary — above the ~500 norm, disclosed for the audit's ruling); a
 body budget may seed from a future ruled cut or benchmark, never invented. The `explorer`
 agent (new, v0.77.0) description measured at birth at 425; no budget until a ruled cut or
-benchmark seeds one.
+benchmark seeds one. (Row historical: the agent was deleted at the v0.78.0 explorer
+retarget — strip `.mochiko/strips/explorer.md`; no live budget obligation remains.)
+
+`testing-gap-finding` (new skill, v0.79.0, QA gap-finding build) likewise unbudgeted —
+hard-cap-only (desc ≤1,536); measured at birth at body 10,559 / desc 709. The 709
+description is the library's largest (prior high `patterns-model-tiering` 643) — ruled
+HOLDS at the v0.79.0 audit (V2/F5): ownership set + scope carve + the six-item fence
+inclusion list + the `testing-end-user`/`patterns-vertical-tdd` boundary, all
+routing-load-bearing, no playbook prose. Body trail on the audit record: 9,938 at the V1
+grade → +219 advisory alignments → +270 F2 fence guard → +132 final alignments + reflow. A
+body budget may seed from a future ruled cut or benchmark, never invented.
 
 ## Unbudgeted primitives
 

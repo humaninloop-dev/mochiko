@@ -1,6 +1,60 @@
 # Strip notes — `commands/implement.md`
 
 Entry formats: `strips/README.md`. Wave context: the implement cluster wave (BACKLOG item 7, the
+**fifth and final** one-shot-command wave after specify's v0.13.0, slice's v0.14.0, plan's v0.15.0,
+and tasks' v0.16.0). The wave also ran the **D2 conversion assessment** (one-shot → team-form) and
+re-checked the **S8 home-revision checkpoint** against implement's needs (a standing producer spanning
+the whole cycle sequence + the fix-pass loop, a standing verifier fired once per cycle + a
+whole-implementation final validation, and a per-cycle confidence gate that auto-approves
+deterministic-CLI-pass cycles — **no new shape gap at that wave, when the shape was v2**, so it made
+no template revision and no cross-command re-audit). **Stale as a standing claim:** the shape is now
+**v4** (2026-07-30), and its D3 devolution changed exactly that confidence gate — see the v0.31.0
+entries below. **Also stale:** the shape is **v5** as of the v0.35.0 wave below, and the
+"standing producer / standing verifier" claim is superseded by that wave's seat-recycling binding.
+
+## [v0.79.0] Accumulated territory `**TEST:**` gates re-pointed to their named home (`gates.md`)
+
+- **Disposition:** superseded → the same Regression-scope clause, now naming the read source:
+  the union of the territory features' durable gate sets at
+  `.mochiko/features/FEAT-XXX/gates.md` and the cases on their cards.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-19 QA gap-finding row;
+  record `.mochiko/brainstorms/qa-gap-finding-verification/record.md` D7 as amended at review
+  by I5 — the fold-back had no target artifact, and implement.md's accumulated-gates reads had
+  no named home).
+- **Content:** verbatim superseded text (Tools → Regression scope): "the final validation
+  additionally executes the accumulated `**TEST:**` gates of previously delivered features
+  in this feature's territory, and this feature's gates exercise any seam whose earlier side
+  is already delivered"
+- **Kept deliberately:** the seam clause and its `mochiko:authoring-feature-map` seam-ownership
+  pointer, and the epic-union sentence closing the same bullet — all byte-for-byte; only the
+  read source was named. Deliberately NOT re-pointed: the three other accumulated-gates reads
+  (Adaptive Goal Protocol step 3, the step-3 epic clause, and the Regression-scope epic
+  sentence). Their wording stays correct and now resolves through this one definitional home;
+  restating the path at four sites is what the plan ladder's minimum-now rung refuses. A later
+  wave finding those reads unhomed should read this line before "fixing" them.
+- **Consumers assessed:** `plan.md` confirmed NOT a consumer at review (reviewer kill list,
+  same record); `patterns-vertical-tdd` owns the `**TEST:**` grammar, not the accumulation
+  read — untouched; `mochiko:authoring-feature-map` owns graduation, and `gates.md` survives
+  graduation by the D7/I5 ruling — no map-side change.
+
+## [v0.79.0] Run-open redeclarable set widened from one bound to two
+
+- **Disposition:** superseded → "The done condition is fixed; the attempt bounds — the
+  per-cycle bound and the final-validation gap-rework bound — are the only redeclarable terms."
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-19 QA gap-finding row;
+  record D6 as amended at review by I3 — gap-rework at final validation carries a whole-run
+  bound, default 2 rounds, redeclarable only at run open).
+- **Content:** verbatim superseded text (Adaptive Goal Protocol step 2): "The done condition is
+  fixed; only the attempt bound is redeclarable."
+- **Kept deliberately:** the fixed done condition, the per-cycle default of 3, and run open as
+  the single redeclaration point for every bound — the widening adds a second bound, never a
+  second point.
+- **Consumers assessed:** the charter-command audit exception in
+  `.claude/rules/mochiko/primitive-edits.md` requires run-open confirmation to name the
+  "attempt bound (redeclarable there and only there)" — still satisfied, the set widened and
+  the point did not move; `plan.md`'s run open carries no attempt bound, so it is not a
+  consumer.
+
 ## [v0.78.0] Model-tiering floor line retargeted — `mochiko:explorer` superseded by native `Explore` + `model: haiku` override
 
 - **Disposition:** superseded → the reworded floor line: locate/enumerate reads go to "a
@@ -16,17 +70,6 @@ Entry formats: `strips/README.md`. Wave context: the implement cluster wave (BAC
 - **Consumers assessed:** the same phrase edited in all six commands in the same v0.78.0
   wave (entry mirrored per command strip file); the pointed-at skill reworded in the same
   wave (`strips/patterns-model-tiering.md`).
-
-**fifth and final** one-shot-command wave after specify's v0.13.0, slice's v0.14.0, plan's v0.15.0,
-and tasks' v0.16.0). The wave also ran the **D2 conversion assessment** (one-shot → team-form) and
-re-checked the **S8 home-revision checkpoint** against implement's needs (a standing producer spanning
-the whole cycle sequence + the fix-pass loop, a standing verifier fired once per cycle + a
-whole-implementation final validation, and a per-cycle confidence gate that auto-approves
-deterministic-CLI-pass cycles — **no new shape gap at that wave, when the shape was v2**, so it made
-no template revision and no cross-command re-audit). **Stale as a standing claim:** the shape is now
-**v4** (2026-07-30), and its D3 devolution changed exactly that confidence gate — see the v0.31.0
-entries below. **Also stale:** the shape is **v5** as of the v0.35.0 wave below, and the
-"standing producer / standing verifier" claim is superseded by that wave's seat-recycling binding.
 
 ---
 

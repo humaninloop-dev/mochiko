@@ -1,6 +1,10 @@
 # Strip notes — the plugin manifests (`plugins/mochiko/.claude-plugin/plugin.json` + `.claude-plugin/marketplace.json`)
 
 Entry formats: `strips/README.md`. First entry for the manifest pair (new file, created v0.76.0 —
+the manifests had no prior recorded removal because they carry metadata, not primitive prose;
+this is the first identity phrase retired by ruling). One file covers both manifests: they are
+edited as a pair and the superseded phrase lived identically in both.
+
 ## [v0.78.0] `plugin.json` explorer agent entry deleted — cheap rung retargeted to native `Explore`
 
 - **Disposition:** superseded → no plugin-scoped cheap seat; the cheap rung is native
@@ -14,10 +18,6 @@ Entry formats: `strips/README.md`. First entry for the manifest pair (new file, 
 - **Kept deliberately:** every other agent entry and all manifest metadata untouched.
 - **Consumers assessed:** the manifest pair only registers; the deleted agent's dispatch
   sites are covered by the per-primitive strip entries of the same wave.
-
-the manifests had no prior recorded removal because they carry metadata, not primitive prose;
-this is the first identity phrase retired by ruling). One file covers both manifests: they are
-edited as a pair and the superseded phrase lived identically in both.
 
 ## [v0.76.0] "Kernel-free" identity phrase superseded — the manifests now lead "Skills-first"
 
