@@ -8,6 +8,9 @@ One entry per session directory under `.mochiko/brainstorms/<topic-slug>/`, **ne
 
 ---
 
+## `primitive-eval-harness` — evaluation harness (deepeval or alternative) for CI/CD of skill and skill+agent changes
+- **When:** 2026-08-19 · **Status:** open
+
 ## `product-architecture-schema` — product-level architecture as schema: opinionated SaaS/PLG patterns, product-vs-feature lens push/pull, adaptive depth
 - **When:** 2026-08-19 · **Status:** accepted · record pair-cold-reviewed via blind-map two-message dispatch, lens-split decision-quality + record-integrity (38-angle maps each; one negligible fence leak disclosed and accepted; cross-exam both directions, zero kills, reduction by merge only — pre-adjudication union 5 Critical / 13 Important / 10 Minor, post-adjudication 5/12/11 after the 7th-command demotion on seat A's fact-kill → both verdicts critical-gaps → 28/28 dispositioned: bucket 3 one user-ruled batch "as recommended", buckets 1–2 explored individually — S1 baselines reconciliation user-ruled **absorb** against the lead's coexist recommendation (D12 `Contested`), S14 → D13 growth-door routing, S2 floor-precedence → D14 + F7 corrected (FLOOR-SEC/FLOOR-OBS falsified the no-defaults claim), S4 → D5/D7/D10/D11 re-marked `Assumed` + falsifier, S5 staging → D15 two stages, S11 → D16 migration; verify round 1 NOT CLEAN — 2 blocking fold-propagation + 8 non-blocking, all ten lead-repaired same round → bounded round 2 CLEAN; acceptance followed)
 - **Artifacts:** [record.md](product-architecture-schema/record.md) (canonical — ground facts F1–F8 as corrected, D1–D16, session trail Q1–Q19, review + disposition + verify trail, Appendix A backend shelf, cold-buildable build surface)
