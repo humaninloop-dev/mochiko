@@ -1,0 +1,494 @@
+[
+  {
+    "id": "R-001",
+    "rule": "Every domain noun named or clearly implied by the feature description is accounted for in the produced data-model.md — modeled as an entity, or carried as an attribute or relationship of one. No named domain concept is silently absent.",
+    "class": "floor",
+    "source": "SKILL.md:Entity Extraction / Quality Checklist"
+  },
+  {
+    "id": "R-002",
+    "rule": "No modeled entity is a single-value concept. Every entity in the document has its own lifecycle and carries more than one meaningful attribute beyond identity/audit fields; concepts holding exactly one value appear as attributes of another entity instead.",
+    "class": "must",
+    "source": "SKILL.md:Entity vs. Attribute Decision"
+  },
+  {
+    "id": "R-003",
+    "rule": "A concept that connects two entities appears as a documented relationship (or a join entity), never as a loose attribute on one side with no relationship entry.",
+    "class": "must",
+    "source": "SKILL.md:Entity vs. Attribute Decision"
+  },
+  {
+    "id": "R-004",
+    "rule": "Every entity carries a brownfield status marker drawn from exactly this set: [NEW], [EXTENDS EXISTING], [REUSES EXISTING], [RENAMED].",
+    "class": "format",
+    "source": "SKILL.md:Brownfield Entity Status / Quality Checklist"
+  },
+  {
+    "id": "R-005",
+    "rule": "Any entity marked [RENAMED] states both the new name and the reason for the rename.",
+    "class": "format",
+    "source": "SKILL.md:Brownfield Entity Status"
+  },
+  {
+    "id": "R-006",
+    "rule": "Every entity's attribute set includes id, createdAt, and updatedAt.",
+    "class": "must",
+    "source": "SKILL.md:Standard Attributes / Quality Checklist"
+  },
+  {
+    "id": "R-007",
+    "rule": "Where the document states or implies soft delete for an entity, that entity carries a deletedAt timestamp attribute marked not-required.",
+    "class": "should",
+    "source": "SKILL.md:Standard Attributes; VALIDATION-RULES.md:Soft Delete Considerations"
+  },
+  {
+    "id": "R-008",
+    "rule": "Every attribute type is a conceptual type, not a database-specific one. The document contains no SQL/DDL types (VARCHAR, INT, SERIAL, BIGINT, TEXT NOT NULL, NUMERIC, TIMESTAMPTZ), no CREATE TABLE, and no index/migration syntax.",
+    "class": "floor",
+    "source": "SKILL.md:Conceptual Types / When NOT to Use"
+  },
+  {
+    "id": "R-009",
+    "rule": "Every entity has an Attributes table whose columns are Attribute, Type, Required, Default, Sensitivity, Description — and every row fills Type, Required, Sensitivity, and Description.",
+    "class": "floor",
+    "source": "SKILL.md:data-model.md Structure / Quality Checklist"
+  },
+  {
+    "id": "R-010",
+    "rule": "Every attribute row states an explicit required flag (Yes/No), never blank.",
+    "class": "must",
+    "source": "SKILL.md:data-model.md Structure; VALIDATION-RULES.md:Validation Checklist"
+  },
+  {
+    "id": "R-011",
+    "rule": "Enumerated attributes spell their value set inline in the type as Enum[value,value,...], not as a bare 'Enum' or 'String'.",
+    "class": "format",
+    "source": "SKILL.md:Conceptual Types"
+  },
+  {
+    "id": "R-012",
+    "rule": "Cross-entity reference attributes carry the type Reference(<EntityName>), naming the target entity.",
+    "class": "format",
+    "source": "SKILL.md:Conceptual Types"
+  },
+  {
+    "id": "R-013",
+    "rule": "Every attribute of every entity carries exactly one sensitivity classification, and that classification is one of the four words Public, Internal, Confidential, Restricted — no fifth level, no blank cell, no two levels on one attribute.",
+    "class": "floor",
+    "source": "SKILL.md:Classification Levels"
+  },
+  {
+    "id": "R-014",
+    "rule": "Highly sensitive data — credentials or password hashes, government identifiers (SSN/national id), payment card numbers, and health records — is classified Restricted, never Confidential or lower.",
+    "class": "floor",
+    "source": "SKILL.md:Classification Levels / Classification Decision Tree"
+  },
+  {
+    "id": "R-015",
+    "rule": "Standard PII — email address, phone number, postal address, personal name, date of birth — is classified Confidential (or Restricted), never Internal or Public.",
+    "class": "must",
+    "source": "SKILL.md:Classification Levels (PII mapping paragraph)"
+  },
+  {
+    "id": "R-016",
+    "rule": "PII is expressed through the sensitivity classification only. The document carries no parallel PII axis — no separate PII column, no 'PII: yes' tag, no PII marker alongside the classification.",
+    "class": "must",
+    "source": "SKILL.md:Classification Levels (PII mapping paragraph); DATA-SENSITIVITY.md:Validation Checklist"
+  },
+  {
+    "id": "R-017",
+    "rule": "Data intended for public sharing is classified Public, and internal operational data carrying no PII (internal ids, status codes, counters, timestamps) is classified Internal — not uniformly escalated to Confidential.",
+    "class": "must",
+    "source": "SKILL.md:Classification Decision Tree"
+  },
+  {
+    "id": "R-018",
+    "rule": "Where an attribute's sensitivity is genuinely ambiguous, it is classified up to Confidential rather than down to Internal or Public.",
+    "class": "must",
+    "source": "SKILL.md:Classification Decision Tree; DATA-SENSITIVITY.md:Validation Checklist"
+  },
+  {
+    "id": "R-019",
+    "rule": "Every entity's Attributes table contains a Sensitivity column (the classification lives in the attribute table, not only in a separate list).",
+    "class": "format",
+    "source": "SKILL.md:Annotating Sensitivity step 1"
+  },
+  {
+    "id": "R-020",
+    "rule": "The handling-by-level defaults matrix (encryption at rest/in transit, audit logging, masking) appears exactly once in the whole document, placed under the sensitivity summary — never repeated per entity or per attribute.",
+    "class": "floor",
+    "source": "SKILL.md:Annotating Sensitivity step 2; DATA-SENSITIVITY.md:Density"
+  },
+  {
+    "id": "R-021",
+    "rule": "Every attribute classified Confidential or Restricted has exactly one corresponding row in its own entity's Sensitivity Details table. No Confidential+ attribute is missing a row; no attribute has two rows.",
+    "class": "floor",
+    "source": "SKILL.md:Annotating Sensitivity step 3; DATA-SENSITIVITY.md:Sensitivity Details Row Format"
+  },
+  {
+    "id": "R-022",
+    "rule": "The Sensitivity Details table columns are Attribute, Level, Retention, Access, Deviations, Compliance — in that order.",
+    "class": "format",
+    "source": "DATA-SENSITIVITY.md:Sensitivity Details Row Format"
+  },
+  {
+    "id": "R-023",
+    "rule": "Sensitivity Details rows record only per-attribute specifics and deviations. Encryption, audit, and masking defaults already carried by the level matrix are not restated per attribute.",
+    "class": "must",
+    "source": "SKILL.md:Annotating Sensitivity step 3; DATA-SENSITIVITY.md:Sensitivity Annotation — Field Definitions"
+  },
+  {
+    "id": "R-024",
+    "rule": "Every Confidential+ attribute's row states a retention period AND what happens at expiry (delete, purge, anonymize) — a duration alone is incomplete.",
+    "class": "must",
+    "source": "DATA-SENSITIVITY.md:Sensitivity Annotation — Field Definitions / Validation Checklist"
+  },
+  {
+    "id": "R-025",
+    "rule": "Every Confidential+ attribute's row states access control in role terms — who may read, write, or delete it.",
+    "class": "must",
+    "source": "DATA-SENSITIVITY.md:Sensitivity Annotation — Field Definitions / Validation Checklist"
+  },
+  {
+    "id": "R-026",
+    "rule": "The Deviations cell reads em-dash when the attribute's handling is exactly its level default; any departure from the level default (weaker or stronger encryption, audit, or masking) is spelled out in that cell, never left silent.",
+    "class": "must",
+    "source": "DATA-SENSITIVITY.md:Sensitivity Details Row Format / Validation Checklist"
+  },
+  {
+    "id": "R-027",
+    "rule": "Where a Confidential+ attribute appears in logs or UIs, its attribute-specific masking format is named concretely (e.g. a masked example), not left to the level default.",
+    "class": "should",
+    "source": "DATA-SENSITIVITY.md:Sensitivity Annotation — Field Definitions / Validation Checklist"
+  },
+  {
+    "id": "R-028",
+    "rule": "The document opens with a Data Sensitivity Summary table with columns Entity, Attribute, Classification, Compliance, and that table lists every Confidential and Restricted attribute in the document — it is the artifact's coverage index.",
+    "class": "floor",
+    "source": "SKILL.md:Annotating Sensitivity step 4; DATA-SENSITIVITY.md:Data Sensitivity Summary"
+  },
+  {
+    "id": "R-029",
+    "rule": "Where a regulation plainly applies to an attribute (GDPR for EU personal data, HIPAA for health data, PCI-DSS for card data, NIST 800-63 for credentials, SOC 2 for customer data), the compliance cell names the regulation, not a blank.",
+    "class": "must",
+    "source": "DATA-SENSITIVITY.md:Compliance Mapping Examples / Validation Checklist"
+  },
+  {
+    "id": "R-030",
+    "rule": "No per-attribute aspect table exists anywhere in the document — sensitivity handling is carried by rows in the Sensitivity Details table (plus at most a one-line footnote), never by a dedicated multi-row table per attribute.",
+    "class": "must",
+    "source": "DATA-SENSITIVITY.md:Density / Sensitivity Details Row Format"
+  },
+  {
+    "id": "R-031",
+    "rule": "Every relationship in the document states both its cardinality (1:1, 1:N, or N:M) and its delete behavior. A relationship missing either is a lost rule.",
+    "class": "floor",
+    "source": "SKILL.md:Relationship Modeling / Quality Checklist; RELATIONSHIP-PATTERNS.md:Validation Checklist"
+  },
+  {
+    "id": "R-032",
+    "rule": "Every attribute typed Reference(...) has a matching documented relationship entry naming the same target entity.",
+    "class": "must",
+    "source": "RELATIONSHIP-PATTERNS.md:Validation Checklist"
+  },
+  {
+    "id": "R-033",
+    "rule": "Each relationship names where the foreign key lives (which entity holds the reference field, e.g. task.userId).",
+    "class": "must",
+    "source": "RELATIONSHIP-PATTERNS.md:Documentation Format / Validation Checklist"
+  },
+  {
+    "id": "R-034",
+    "rule": "Delete behavior is drawn from the named set: Cascade, Set Null, Restrict, or No Action — not free-form prose such as 'handled by the app'.",
+    "class": "format",
+    "source": "RELATIONSHIP-PATTERNS.md:Delete Behavior"
+  },
+  {
+    "id": "R-035",
+    "rule": "Per-entity relationship tables carry the columns Relationship, Cardinality (or Type), Target, Delete Behavior, Description.",
+    "class": "format",
+    "source": "SKILL.md:data-model.md Structure; RELATIONSHIP-PATTERNS.md:Relationship Attributes Table"
+  },
+  {
+    "id": "R-036",
+    "rule": "Every Many-to-Many (N:M) relationship is realized through a named join entity that is itself fully defined in the document with its own attributes table.",
+    "class": "must",
+    "source": "RELATIONSHIP-PATTERNS.md:Many-to-Many (N:M) Pattern / Validation Checklist"
+  },
+  {
+    "id": "R-037",
+    "rule": "Each join entity carries a compound-unique constraint over its two foreign keys (the pair can be joined only once) plus whatever additional fields the relationship needs.",
+    "class": "must",
+    "source": "RELATIONSHIP-PATTERNS.md:Join Entity Definition"
+  },
+  {
+    "id": "R-038",
+    "rule": "Each relationship makes direction explicit — which side is the one and which is the many (e.g. N:1 to User, or From/To rows) — not a bare 'related to'.",
+    "class": "must",
+    "source": "SKILL.md:Quality Checklist; RELATIONSHIP-PATTERNS.md:Documentation Format"
+  },
+  {
+    "id": "R-039",
+    "rule": "Any relationship where an entity references itself is explicitly marked as self-referential (tree or graph).",
+    "class": "should",
+    "source": "RELATIONSHIP-PATTERNS.md:Self-Referential Relationships / Validation Checklist"
+  },
+  {
+    "id": "R-040",
+    "rule": "A text relationship diagram is present and every edge it draws corresponds to a relationship documented in a table (and vice versa) — the diagram matches the documentation.",
+    "class": "should",
+    "source": "RELATIONSHIP-PATTERNS.md:Relationship Diagram Notation / Validation Checklist"
+  },
+  {
+    "id": "R-041",
+    "rule": "Every entity carrying a status or state attribute has a documented state machine in the State Machines section.",
+    "class": "must",
+    "source": "SKILL.md:State Machine Modeling; STATE-MACHINES.md:When to Model State"
+  },
+  {
+    "id": "R-042",
+    "rule": "Each state machine has a States table with columns State, Description, Entry Condition, and state values written in backticks.",
+    "class": "format",
+    "source": "STATE-MACHINES.md:State Machine Format / State Documentation Components"
+  },
+  {
+    "id": "R-043",
+    "rule": "Each state machine has a Transitions table with columns From, To, Trigger, Guard, Side Effects.",
+    "class": "format",
+    "source": "STATE-MACHINES.md:State Machine Format / State Documentation Components"
+  },
+  {
+    "id": "R-044",
+    "rule": "The initial state is identifiable (marked as initial, or the only state whose entry condition is creation), and every state listed in the States table is reachable via at least one documented transition.",
+    "class": "must",
+    "source": "STATE-MACHINES.md:Validation Checklist"
+  },
+  {
+    "id": "R-045",
+    "rule": "Terminal states — states with no outgoing transition — are identified as terminal where they exist.",
+    "class": "must",
+    "source": "STATE-MACHINES.md:Validation Checklist"
+  },
+  {
+    "id": "R-046",
+    "rule": "Guards name the actor or condition permitting the transition (e.g. 'User is owner', 'Is admin', 'Has payment'), or read em-dash when unguarded — never left blank.",
+    "class": "should",
+    "source": "STATE-MACHINES.md:Guards and Side Effects / Validation Checklist"
+  },
+  {
+    "id": "R-047",
+    "rule": "Transitions that change other data list their side effects (timestamp set, notification sent, audit record written, related entity updated).",
+    "class": "should",
+    "source": "STATE-MACHINES.md:Guards and Side Effects / Validation Checklist"
+  },
+  {
+    "id": "R-048",
+    "rule": "Each state machine carries a diagram, and every arrow in the diagram corresponds to a row in its Transitions table.",
+    "class": "should",
+    "source": "STATE-MACHINES.md:State Machine Format / Validation Checklist"
+  },
+  {
+    "id": "R-049",
+    "rule": "The State Machines section is omitted entirely when the model has no stateful entity — it never appears as an empty heading or a 'None / N/A' placeholder.",
+    "class": "format",
+    "source": "SKILL.md:data-model.md Structure (State Machines placeholder)"
+  },
+  {
+    "id": "R-050",
+    "rule": "Transitions are enumerated as a closed set, so that any From-To pair absent from the table reads as forbidden; the document does not leave transition legality open-ended with phrases like 'and other transitions as needed'.",
+    "class": "must",
+    "source": "STATE-MACHINES.md:Transitions Table"
+  },
+  {
+    "id": "R-051",
+    "rule": "Uniqueness constraints are documented for every attribute that must be unique, and scoped uniqueness is written with its scope (e.g. Unique(projectId)) rather than as bare 'Unique'.",
+    "class": "must",
+    "source": "VALIDATION-RULES.md:Validation Column Patterns / Compound Unique Constraints"
+  },
+  {
+    "id": "R-052",
+    "rule": "Format-typed attributes (email, url, phone, slug, uuid, iso8601 dates) carry an explicit format or pattern validation.",
+    "class": "must",
+    "source": "VALIDATION-RULES.md:Format Validation Patterns / Validation Checklist"
+  },
+  {
+    "id": "R-053",
+    "rule": "Bounded values carry their bounds: numeric range/min/max for quantities, amounts and counts; length bounds for free-text fields.",
+    "class": "should",
+    "source": "VALIDATION-RULES.md:Validation Column Patterns / Validation Checklist"
+  },
+  {
+    "id": "R-054",
+    "rule": "Cross-field business rules are documented with the fields involved, the condition, and the error message (e.g. endDate >= startDate).",
+    "class": "must",
+    "source": "VALIDATION-RULES.md:Business Rule Validation / Validation Checklist"
+  },
+  {
+    "id": "R-055",
+    "rule": "Foreign key constraints are listed with their on-delete behavior, consistent with the delete behavior stated on the corresponding relationship.",
+    "class": "must",
+    "source": "VALIDATION-RULES.md:Referential Integrity / Validation Checklist"
+  },
+  {
+    "id": "R-056",
+    "rule": "Validation that applies only in certain states is recorded as conditional validation naming the state (e.g. reviewerId required when status is submitted).",
+    "class": "should",
+    "source": "VALIDATION-RULES.md:State-Dependent Rules / Validation Checklist"
+  },
+  {
+    "id": "R-057",
+    "rule": "Entity-level constraints appear in a table with columns Name, Type, Fields, Rule, using the uk_ / chk_ / fk_ naming convention for constraint names.",
+    "class": "format",
+    "source": "VALIDATION-RULES.md:Entity-Level Constraints"
+  },
+  {
+    "id": "R-058",
+    "rule": "The document title is 'Data Model: <feature identifier>' as a single level-1 heading.",
+    "class": "format",
+    "source": "SKILL.md:data-model.md Structure"
+  },
+  {
+    "id": "R-059",
+    "rule": "A one-line purpose blockquote sits directly under the title, naming what the document carries (entity definitions with relationships, sensitivity annotations, state machines).",
+    "class": "format",
+    "source": "SKILL.md:data-model.md Structure"
+  },
+  {
+    "id": "R-060",
+    "rule": "Sections appear in this order: Data Sensitivity Summary (with handling defaults), Entity Summary, per-entity sections, Relationships, State Machines, Validation Rules.",
+    "class": "format",
+    "source": "SKILL.md:data-model.md Structure"
+  },
+  {
+    "id": "R-061",
+    "rule": "An Entity Summary table is present with columns Entity, Attributes, Relationships, Status, and it lists every entity defined in the document.",
+    "class": "format",
+    "source": "SKILL.md:data-model.md Structure"
+  },
+  {
+    "id": "R-062",
+    "rule": "Each entity gets its own section headed 'Entity: <Name> [STATUS]', and the entity names used in that heading match the names used in the Entity Summary, the Data Sensitivity Summary, and the relationship tables — identical spelling throughout.",
+    "class": "format",
+    "source": "SKILL.md:data-model.md Structure"
+  },
+  {
+    "id": "R-063",
+    "rule": "An entity marked [EXTENDS EXISTING] separates new attributes from a distinct 'Existing Attributes (Not Modified)' table rather than mixing them into one list.",
+    "class": "format",
+    "source": "SKILL.md:data-model.md Structure"
+  },
+  {
+    "id": "R-064",
+    "rule": "Each entity section carries a traceability line citing the upstream requirement or story identifiers it serves.",
+    "class": "must",
+    "source": "SKILL.md:data-model.md Structure / Quality Checklist"
+  },
+  {
+    "id": "R-065",
+    "rule": "Upstream requirements are cited by identifier, never re-quoted at length — a traceability citation is the ID link, not a restatement of the requirement text.",
+    "class": "must",
+    "source": "templates/artifact-format.md:Shared rules 1 (envelope, cited by SKILL.md:data-model.md Structure)"
+  },
+  {
+    "id": "R-066",
+    "rule": "Enumerable content (attributes, relationships, states, transitions, constraints) is carried in tables; prose is reserved for judgment and rationale.",
+    "class": "must",
+    "source": "templates/artifact-format.md:Shared rules 5 (envelope)"
+  },
+  {
+    "id": "R-067",
+    "rule": "Sections with nothing to say are omitted, never written as 'None' or 'N/A' scaffolding.",
+    "class": "must",
+    "source": "templates/artifact-format.md:Shared rules 6 (envelope)"
+  },
+  {
+    "id": "R-068",
+    "rule": "The artifact does not restate method or doctrine — no explanation of the classification taxonomy, no decision tree, no modeling-technique lecture. The single exception is the handling-by-level defaults matrix, which the self-containment floor requires once.",
+    "class": "must",
+    "source": "templates/artifact-format.md:Shared rules 7 and 9 (envelope)"
+  },
+  {
+    "id": "R-069",
+    "rule": "No anemic entity: no entity is defined with only an id (plus audit fields) and no attributes describing its purpose.",
+    "class": "must",
+    "source": "SKILL.md:Common Mistakes"
+  },
+  {
+    "id": "R-070",
+    "rule": "No orphan entity: every entity participates in at least one documented relationship, or is explicitly stated to be standalone.",
+    "class": "must",
+    "source": "SKILL.md:Common Mistakes"
+  },
+  {
+    "id": "R-071",
+    "rule": "The document contains no API contract content — no HTTP endpoints, methods, status codes, OpenAPI/Swagger YAML, or request/response schema definitions.",
+    "class": "must",
+    "source": "SKILL.md:When NOT to Use / Overview"
+  },
+  {
+    "id": "R-072",
+    "rule": "The document contains no database-implementation content — no migration scripts, index definitions, storage engines, partitioning, or physical schema.",
+    "class": "must",
+    "source": "SKILL.md:When NOT to Use"
+  },
+  {
+    "id": "R-073",
+    "rule": "The document contains no technology or architecture decision content — no framework, datastore-product, or library choice, no ADR-style alternatives evaluation.",
+    "class": "must",
+    "source": "SKILL.md:When NOT to Use"
+  },
+  {
+    "id": "R-074",
+    "rule": "CONSUMER (mochiko:patterns-api-contracts, Type Mapping from Data Model): attribute types use the vocabulary that skill maps from — UUID, Text, Text(N), Email, URL, Integer, Decimal, Decimal(P,S), Boolean, Timestamp, Date, Enum[...], JSON, Reference(Entity), Identifier. A paraphrased type name (String, Number, DateTime, FK) breaks that mapping table.",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/skills/patterns-api-contracts/SKILL.md:Type Mapping from Data Model"
+  },
+  {
+    "id": "R-075",
+    "rule": "CONSUMER (mochiko:review-plan-artifacts ARTIFACT-CHECKLISTS 'Confidential+'; mochiko:testing-gap-finding 'Confidential and Restricted attributes name what must not leak'): the four classification words appear verbatim as Public, Internal, Confidential, Restricted. Synonyms (Sensitive, Private, Secret, PII, High) break both consumers.",
+    "class": "vocab",
+    "source": "consumer: skills/review-plan-artifacts/references/ARTIFACT-CHECKLISTS.md; skills/testing-gap-finding/SKILL.md"
+  },
+  {
+    "id": "R-076",
+    "rule": "CONSUMER (mochiko:review-plan-artifacts, checklist row 'Sensitivity details'): the per-entity table is headed with the exact phrase 'Sensitivity Details'. A renamed heading defeats that reviewer check.",
+    "class": "vocab",
+    "source": "consumer: skills/review-plan-artifacts/references/ARTIFACT-CHECKLISTS.md:Checklist — Data Model"
+  },
+  {
+    "id": "R-077",
+    "rule": "CONSUMER (mochiko:review-plan-artifacts coverage grading; DATA-SENSITIVITY.md rollup): the top table is headed with the exact phrase 'Data Sensitivity Summary'.",
+    "class": "vocab",
+    "source": "consumer: skills/review-plan-artifacts/references/ARTIFACT-CHECKLISTS.md; DATA-SENSITIVITY.md:Data Sensitivity Summary"
+  },
+  {
+    "id": "R-078",
+    "rule": "CONSUMER (mochiko:authoring-technical-requirements DS-XXX declarations; mochiko:testing-gap-finding 'data-model.md ... DS-XXX sensitivity'): where an attribute realizes a declared DS-XXX requirement, the compliance cell cites that DS-XXX identifier in that exact form. (Vacuous when the task supplies no upstream DS-XXX; judge marks not-applicable rather than failed.)",
+    "class": "vocab",
+    "source": "consumer: skills/authoring-technical-requirements/SKILL.md:Data Sensitivity -- DS-XXX; skills/testing-gap-finding/SKILL.md"
+  },
+  {
+    "id": "R-079",
+    "rule": "CONSUMER (mochiko:review-plan-artifacts scripts/check-artifacts.py REQUIRED_SECTIONS for data-model.md): the document carries top-level headings spelled exactly '## Relationships' and '## Validation Rules'.",
+    "class": "vocab",
+    "source": "consumer: skills/review-plan-artifacts/scripts/check-artifacts.py:REQUIRED_SECTIONS"
+  },
+  {
+    "id": "R-080",
+    "rule": "CONSUMER (mochiko:review-plan-artifacts ARTIFACT-CHECKLISTS: 'The artifact uses the same entity names as data-model.md'; 'No new entities introduced that aren't in data-model.md'): entity names are stable, CapitalizedSingular tokens used identically in every table and heading, so a downstream contract can be matched against them name-for-name.",
+    "class": "vocab",
+    "source": "consumer: skills/review-plan-artifacts/references/ARTIFACT-CHECKLISTS.md:Cross-artifact"
+  },
+  {
+    "id": "R-081",
+    "rule": "CONSUMER (mochiko:testing-gap-finding, probe kit row 'Illegal state-transition walks | transitions the data-model.md state machines forbid'): the state machines are stated so that forbidden transitions are derivable — a named states list plus an exhaustive transitions table, from which any unlisted From-To pair is illegal.",
+    "class": "vocab",
+    "source": "consumer: skills/testing-gap-finding/SKILL.md:probe kit"
+  },
+  {
+    "id": "R-082",
+    "rule": "CONSUMER (mochiko:review-plan-artifacts checklist 'Are all connections documented with cardinality and delete behavior?'; mochiko:technical-analyst agent contract): the terms 'cardinality' and 'delete behavior' (or their explicit column headers) are discoverable in the document, not merely implied by notation.",
+    "class": "vocab",
+    "source": "consumer: skills/review-plan-artifacts/references/ARTIFACT-CHECKLISTS.md; agents/technical-analyst.md"
+  }
+]

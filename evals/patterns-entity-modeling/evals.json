@@ -1,0 +1,56 @@
+[
+  {
+    "id": "G1",
+    "prompt": "Feature: appointment scheduling for VetLoop, a group of veterinary clinics.\n\nPet owners register an account and add each of their animals (species, breed, date of birth, microchip number, any chronic conditions and current medications). An owner books an appointment at one of the group's clinics by picking a service (wellness exam, vaccination, dental, surgery consult), a date and time, and optionally a preferred veterinarian; each service has a duration and a base price. Veterinarians work at one or more clinics and each holds a licence number issued by a state board. Reception confirms the booking, the owner checks in on arrival, the vet takes the animal in, and afterwards the vet writes a visit record: findings, diagnosis, treatments given, medications prescribed, and follow-up instructions. Owners who do not show up are recorded as such, and either side can cancel before the visit starts. Owners supply a phone number, an email address, a home address and a payment card kept on file for no-show fees.\n\nModel the domain data for this feature and write it to `data-model.md` in the current directory. Cover the entities and their attributes, how the entities relate to one another, the lifecycle an appointment moves through, the constraints that keep the data valid, and how each piece of data should be handled given that some of it is regulated health and personal information. This is a design document, not code: do not write application code, ORM models, or database migrations.",
+    "assertions": [
+      {"type": "file_exists", "path": "data-model.md"},
+      {"type": "contains", "path": "data-model.md", "pattern": "(?m)^#\\s+Data Model"},
+      {"type": "contains", "path": "data-model.md", "pattern": "Data Sensitivity Summary"},
+      {"type": "contains", "path": "data-model.md", "pattern": "Sensitivity Details"},
+      {"type": "contains", "path": "data-model.md", "pattern": "\\bRestricted\\b"},
+      {"type": "contains", "path": "data-model.md", "pattern": "\\bConfidential\\b"},
+      {"type": "contains", "path": "data-model.md", "pattern": "(?m)^#{2,3}\\s+Relationships"},
+      {"type": "contains", "path": "data-model.md", "pattern": "(?m)^#{2,3}\\s+State Machine"},
+      {"type": "contains", "path": "data-model.md", "pattern": "(?m)^#{2,3}\\s+Validation Rules"},
+      {"type": "contains", "path": "data-model.md", "pattern": "\\b(1:1|1:N|N:1|N:M)\\b"},
+      {"type": "contains", "path": "data-model.md", "pattern": "\\b(Cascade|Set Null|Restrict|No Action)\\b"},
+      {"type": "not_contains", "path": "data-model.md", "pattern": "(?i)CREATE TABLE"}
+    ]
+  },
+  {
+    "id": "G2",
+    "prompt": "Feature: shipment tracking for Portway, a cross-border freight forwarder.\n\nA business customer books a shipment: origin and destination addresses, the consignee's name, phone number and email, a declared customs value, and the goods description. Cross-border shipments also require the consignee's national identification number for customs clearance. A shipment carries one or more packages, each with weight, dimensions and its own barcode. Portway does not own trucks: it assigns each shipment to one or more carriers, one per leg of the journey, and a carrier can be handling many shipments at once — each leg records the carrier, the pickup and drop-off hubs, and the agreed rate. Scanning devices at hubs emit tracking events (timestamp, hub, scan type, and the handler's employee code) which move the shipment forward: booked, picked up, in transit, held at customs, out for delivery, delivered. A shipment that fails delivery goes to exception and can either be re-attempted or returned to sender; a delivered shipment is final. Customers see the event history but never the carrier rates.\n\nModel the domain data for this feature and write it to `data-model.md` in the current directory. Cover the entities and their attributes, how the entities relate to one another, the lifecycle a shipment moves through, the constraints that keep the data valid, and how each piece of data should be handled given that some of it is personal or commercially sensitive. This is a design document, not code: do not write application code, ORM models, or database migrations.",
+    "assertions": [
+      {"type": "file_exists", "path": "data-model.md"},
+      {"type": "contains", "path": "data-model.md", "pattern": "(?m)^#\\s+Data Model"},
+      {"type": "contains", "path": "data-model.md", "pattern": "Data Sensitivity Summary"},
+      {"type": "contains", "path": "data-model.md", "pattern": "Sensitivity Details"},
+      {"type": "contains", "path": "data-model.md", "pattern": "\\bRestricted\\b"},
+      {"type": "contains", "path": "data-model.md", "pattern": "\\bConfidential\\b"},
+      {"type": "contains", "path": "data-model.md", "pattern": "(?m)^#{2,3}\\s+Relationships"},
+      {"type": "contains", "path": "data-model.md", "pattern": "(?m)^#{2,3}\\s+State Machine"},
+      {"type": "contains", "path": "data-model.md", "pattern": "(?m)^#{2,3}\\s+Validation Rules"},
+      {"type": "contains", "path": "data-model.md", "pattern": "\\b(1:1|1:N|N:1|N:M)\\b"},
+      {"type": "contains", "path": "data-model.md", "pattern": "\\b(Cascade|Set Null|Restrict|No Action)\\b"},
+      {"type": "not_contains", "path": "data-model.md", "pattern": "(?i)CREATE TABLE"}
+    ]
+  },
+  {
+    "id": "G3",
+    "prompt": "Feature: expense reimbursement for Ledgerly, an internal finance tool.\n\nAn employee creates an expense report for a trip or a period, then adds line items to it: date, merchant, amount, currency, category (meals, lodging, airfare, ground transport, supplies), the cost centre to charge, and an attached receipt image. Spending policy is defined per category as a per-item cap and a receipt-required threshold; a line item breaching policy must carry a written justification. The employee submits the report; it then goes through an approval chain — the employee's manager first, then finance for anything above a company threshold — and each approver either approves, rejects, or sends it back for changes, which returns it to the employee to edit and resubmit. An approved report is paid out to the employee's bank account (account number and routing number held on file) and marked reimbursed; a rejected report is closed. Employees have a home address and a corporate card number on file. Finance staff can see every report; an employee sees only their own and those they approve.\n\nModel the domain data for this feature and write it to `data-model.md` in the current directory. Cover the entities and their attributes, how the entities relate to one another, the lifecycle an expense report moves through, the constraints that keep the data valid, and how each piece of data should be handled given that some of it is personal or financial. This is a design document, not code: do not write application code, ORM models, or database migrations.",
+    "assertions": [
+      {"type": "file_exists", "path": "data-model.md"},
+      {"type": "contains", "path": "data-model.md", "pattern": "(?m)^#\\s+Data Model"},
+      {"type": "contains", "path": "data-model.md", "pattern": "Data Sensitivity Summary"},
+      {"type": "contains", "path": "data-model.md", "pattern": "Sensitivity Details"},
+      {"type": "contains", "path": "data-model.md", "pattern": "\\bRestricted\\b"},
+      {"type": "contains", "path": "data-model.md", "pattern": "\\bConfidential\\b"},
+      {"type": "contains", "path": "data-model.md", "pattern": "(?m)^#{2,3}\\s+Relationships"},
+      {"type": "contains", "path": "data-model.md", "pattern": "(?m)^#{2,3}\\s+State Machine"},
+      {"type": "contains", "path": "data-model.md", "pattern": "(?m)^#{2,3}\\s+Validation Rules"},
+      {"type": "contains", "path": "data-model.md", "pattern": "\\b(1:1|1:N|N:1|N:M)\\b"},
+      {"type": "contains", "path": "data-model.md", "pattern": "\\b(Cascade|Set Null|Restrict|No Action)\\b"},
+      {"type": "not_contains", "path": "data-model.md", "pattern": "(?i)CREATE TABLE"}
+    ]
+  }
+]

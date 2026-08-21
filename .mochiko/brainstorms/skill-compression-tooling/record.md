@@ -46,8 +46,10 @@ F8 corrected (R16) — remainder citation-verified by the cold reviewer and hold
   amended): `skill-succinctness-strip`'s calibration bands are dead for future passes; what
   survives is **measure-first** and **true-reductions-only**. The governing law became
   **measure-then-gate** (D1): benchmark first, cost gate second.
-- **F3 — a cut line already exists.** `validator-scope-and-verbosity` D4: keep goal / floor /
-  anti-patterns / reference-data; drop procedure / examples / restatement. Edge-case playbooks
+- **F3 — a cut line already exists.** `validator-scope-and-verbosity` D4: keep goal + output
+  contract / non-waivable floor / anti-patterns and rejections / hard reference-data; drop
+  procedure / examples / restatement. *("output contract" restored 2026-08-22 — the original
+  paraphrase dropped it; caught by the build audit, B1.)* Edge-case playbooks
   were the benchmark's cargo.
 - **F4 — the benchmark method already exists, and so does its failure mode.**
   `validator-scope-and-verbosity` D2/D3/D5/D6: substrate = full setup+specify skill clusters
@@ -111,8 +113,9 @@ F8 corrected (R16) — remainder citation-verified by the cold reviewer and hold
   running baseline would give a lot of learning"). **Arm A = lossless densification** — headings,
   rules, MUST/SHOULD grading, and example count all preserved; only restatement, hedging,
   throat-clearing, and prose duplicating an adjacent table are removed; zero information leaves.
-  **Arm B = the inherited cut line** (F3): keep goal / floor / anti-patterns / reference-data,
-  drop procedure / examples / restatement — whole sections may vanish, information loss is by
+  **Arm B = the inherited cut line** (F3): keep goal + output contract / non-waivable floor /
+  anti-patterns and rejections / hard reference-data, drop procedure / examples / restatement
+  *("output contract" restored 2026-08-22 with F3 — audit B1 marker)* — whole sections may vanish, information loss is by
   design and is precisely what the eval prices. The compressor emits both variants per skill;
   the eval scores **baseline vs A vs B** so the knee is attributable rather than blended into one
   number. Rationale: F2 (measure-then-gate is the governing law — the bands are dead, the
