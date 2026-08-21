@@ -206,7 +206,10 @@ WebSearch blocked for the seat — no blog-survey layer, disclosed)
 
 *(elicited unknowns surface here — non-waivable floor)*
 
-- Which skill is the pilot (D5) — user to pick on resume.
+- Which skill is the pilot (D5) — user to pick on resume. *(2026-08-22: the accepted
+  `skill-compression-tooling` session fills this slot — pilot `patterns-entity-modeling`
+  end-to-end, then `mochiko` router + `review-feasibility`; this record stays open on its
+  own terms and still owes its cold review.)*
 - Baseline mechanics — committed baseline file regenerated as a deliberate landing act
   (F16 pattern) — proposed, not yet ruled.
 - Admissibility trace — lead's read: the harness is not kernel-class (primitives do not

@@ -8,6 +8,31 @@ One entry per session directory under `.mochiko/brainstorms/<topic-slug>/`, **ne
 
 ---
 
+## `skill-compression-tooling` — repo-level compressor skill + before/after LLM-judge degradation eval
+- **When:** 2026-08-22 · **Status:** accepted · solo cold review via blind-map dispatch
+  (36-angle map, topic-only spawn): critical-gaps, 26 raised → 23 survived (3 Critical ·
+  12 Important · 8 Minor) → 23/23 dispositioned in one user-ruled batch ("as recommended,
+  re-affirm D4–D8, take your three calls too" — streak doctrine honored); folds R1–R16 applied
+  (headline C1: the "waves never ran" premise was false — F1 rewritten; C2: pilots carry `KEPT:`
+  survivor rulings → mandatory pre-arm reconciliation; C3: no-skill control arm added)
+- **Artifacts:** [record.md](skill-compression-tooling/record.md) (canonical)
+- **About:** a non-shipped repo-level skill that shrinks mochiko's plugin skills while preserving
+  their structure, plus an independent before/after eval scored by an LLM judge. Dependent
+  session (D1): inherits the cut line/accounting from `validator-scope-and-verbosity` /
+  `skill-succinctness-strip` and the harness design from the open `primitive-eval-harness`.
+  Ruled (D1–D8 as amended): two arms — lossless densify (A) / cut-line strip (B) — vs baseline
+  AND a no-skill control (D2/R3) · single-skill substrate, cluster runs out of scope (D3) ·
+  rule-coverage checklist primary + pairwise secondary, binary + quoted evidence, judges
+  advisory (D4) · topology fenced (D5) · descriptions out of scope (D6) · pilots
+  `patterns-entity-modeling` + `mochiko` (Arm A only) + `review-feasibility`, with mandatory
+  `KEPT:` reconciliation (D7 as amended) · 3 goldens × 4 arms × 3 replicates = 36 runs/skill
+  ≈ $60 total Sonnet, pass^k, Sonnet under test, Haiku/Sonnet judges, pre-registered ship bar,
+  budget re-seed at landing, compressor home `.claude/skills/compressing-skills/` (D8 as
+  amended).
+- **Landed:** DECISIONS.md row 2026-08-22; BACKLOG "Skill-compression eval-primitive build";
+  ROADMAP Token-reduction-epic Next row touch; fills `primitive-eval-harness` D5's deferred
+  pilot slot (that session stays open on its own terms)
+
 ## `primitive-eval-harness` — evaluation harness (deepeval or alternative) for CI/CD of skill and skill+agent changes
 - **When:** 2026-08-19 · **Status:** open
 
@@ -257,7 +282,9 @@ One entry per session directory under `.mochiko/brainstorms/<topic-slug>/`, **ne
   re-affirmed post-review (R7).
 - **Landed:** ROADMAP Key Decisions (skill-succinctness row, 2026-07-25); BACKLOG
   "Skill-succinctness strip pass" section (pilot `analysis-codebase` → R1 measurement pass →
-  ≥3-consumer queue ruling at wave-1 open → four waves); execution deferred to later sessions
+  ≥3-consumer queue ruling at wave-1 open → four waves); executed v0.24.0–v0.28.0 (27 skills,
+  −23.7%; see DECISIONS.md row 2026-07-25 + backlog trail) — stale "execution deferred" wording
+  fixed on sight 2026-08-22 (defect found by skill-compression-tooling cold review, M8)
   per D5.
 
 ## `model-tiered-seats` — Haiku scribe + explorer seats: model tiering as token-epic angle 2

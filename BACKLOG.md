@@ -17,6 +17,23 @@ git history (this line, before this groom).*
 
 ---
 
+## Skill-compression eval-primitive build
+
+*(ruled 2026-08-22, `skill-compression-tooling` D1–D8 as amended; provenance:
+`.mochiko/brainstorms/skill-compression-tooling/record.md` — build surface + folds R1–R16)*
+
+- [ ] **`.claude/skills/compressing-skills/SKILL.md`** — repo-level compressor (never shipped):
+  rule inventory (non-author-reviewed, consumer-side check R10) → pre-arm `KEPT:`/protected
+  reconciliation (R2) → Arm A densify → Arm B cut-line → eval dispatch → report → user
+  ratification → landing hand-off (strips + audit + budget re-seed R11). Description minimal;
+  voluntary author≠grader audit (R16).
+- [ ] **`evals/` runner** (top-level, never shipped) — probe run first (R5: `stream-json` for
+  `plugin_errors`, write allow rules); minimal per-run plugin dir (R4); 4 arms incl. no-skill
+  control (R3); pre-registered ship bar + delivered-chars arithmetic before the grid (R6/R9).
+- [ ] **Pilot grid** — `patterns-entity-modeling` end-to-end first (fills `primitive-eval-harness`
+  D5's deferred pilot slot), then `mochiko` router (Arm A only) + `review-feasibility` (AR-D3
+  seeded-defect method is the follow-on if its checklist proves insensitive, R13).
+
 ## Product-architecture store build
 
 Ruled 2026-08-19, pair-cold-reviewed + verify CLEAN, accepted (`product-architecture-schema`
@@ -733,7 +750,9 @@ Raw captures (2026-08-01) — to triage/brainstorm; grooming may re-key into fin
   check — no Python/MCP brain code; must live as skill/agent or native CC). Brainstorm the
   fit before adopting any external harness. (2026-08-19: mutation-tool adoption ruled not
   kernel-class — `qa-gap-finding-verification` D10, GI-019 recorded; that adoption is not
-  this item's eval-harness brainstorm; item stays open.)
+  this item's eval-harness brainstorm; item stays open.) (2026-08-22: `skill-compression-tooling`
+  accepted — rules the lowest-level per-skill eval primitive and fills `primitive-eval-harness`
+  D5's pilot slot; this item still owns the wider produced-artifact QC question.)
 - [ ] **Multi-stack / monorepo registries** (2026-07-21) — per-stack registries, paths scopes,
   seeding. **Revisit: first multi-stack setup run.**
 - [ ] **`codebase-inventory-schema.json` port** (2026-06-27; provenance:
