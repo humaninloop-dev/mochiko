@@ -72,16 +72,25 @@ fields are not.
    failed, why, what was tried, and the state things were left in survive whole, never
    thinned to `ultra`. Levels, the clause manifest, the ambiguity guardrail and the switch:
    `templates/output-style.md`.
-9. **Prose on a clean report is a defect.** `status: pass` plus body content outside rule
-   2's set is **not a clean report**: it fails the deterministic-and-clean clearing
-   conditions (the dispatching command's devolved-branch terms — `commands/implement.md`'s
-   cycle checkpoint) and returns to the lead instead of devolving.
+9. **Prose on a clean report is a defect — and every collecting lead enforces it.**
+   `status: pass` plus body content outside rule 2's set is **not a clean report**: it
+   fails the deterministic-and-clean clearing conditions (the dispatching command's
+   devolved-branch terms — `commands/implement.md`'s cycle checkpoint) and returns to the
+   lead instead of devolving. The check is not the cycle checkpoint's alone: **any lead
+   collecting any report class** (feasibility, review, disclosure included) reads it
+   mechanically — a report whose body carries unsanctioned sections bounces to its seat
+   for re-issue in envelope form before the lead consumes it. For classes outside rule
+   2's closed set, "unsanctioned" reads against that class's own payload home (rule 2's
+   last sentence), not the cycle/verification set.
    Read mechanically — status and section headings, never prose quality. This is the
    report layer's twin of `artifact-format.md` rule 8: on a report, prose the envelope
    does not sanction *is* a finding.
 
 ---
 
-**Format version:** v2 (2026-08-01) · **Consumed by:** the report templates in this
-directory, `executing-tdd-cycle/references/CYCLE-REPORT-FORMAT.md`,
-`testing-end-user/references/REPORT-TEMPLATES.md`.
+**Format version:** v3 (2026-08-22 — rule 9's mechanical bounce widened to every
+lead-collected report class. ADR:
+`.mochiko/decisions/2026-08-22-verbosity-envelope-enforcement.md`) · **Consumed by:** the
+report templates in this directory, `executing-tdd-cycle/references/CYCLE-REPORT-FORMAT.md`,
+`testing-end-user/references/REPORT-TEMPLATES.md`, `commands/plan.md`'s report-envelope
+binding.

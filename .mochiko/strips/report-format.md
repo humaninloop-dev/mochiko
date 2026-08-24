@@ -2,6 +2,36 @@
 
 Entry formats: `strips/README.md`.
 
+## [v0.82.0] Rule 9's mechanical bounce widened to every lead-collected report (format v3)
+
+- **Disposition:** superseded → the widened rule 9: the prose-on-a-clean-report defect check was
+  enforceable only at `commands/implement.md`'s cycle checkpoint (cycle/verification reports),
+  leaving plan-run reviewer reports (feasibility, review, disclosure) with no mechanical
+  enforcement hook — the kinako EPIC-001 run's 86KB feasibility review is the evidence. Any
+  lead collecting any report class now reads it mechanically and bounces an envelope-breaking
+  report to its seat for re-issue.
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/decisions/2026-08-22-verbosity-envelope-enforcement.md`; `DECISIONS.md`
+  2026-08-22 row).
+- **Content (superseded — the enforcement scoping, faithfully compressed):** rule 9 previously
+  grounded the defect only in "the deterministic-and-clean clearing conditions (the dispatching
+  command's devolved-branch terms — `commands/implement.md`'s cycle checkpoint)", with no
+  obligation on any other collecting lead.
+- **Kept deliberately:** rule 2's closed prose set for cycle and verification reports —
+  unchanged; the read-mechanically instruction (status and section headings, never prose
+  quality) — unchanged; the artifact-format rule-8 twin cross-reference — unchanged. The
+  Consumed-by addition (`commands/plan.md`'s report-envelope binding) rides the decision row.
+- **Consumers assessed** (re-run at the audit fix round — the first pass asserted "templates
+  unchanged" without asking whether the newly-bound classes' templates could carry their
+  mandated content, audit finding 4): `commands/implement.md`'s cycle checkpoint reads
+  unchanged (its devolved-branch terms still cite this rule); `commands/plan.md` gains its
+  binding in the same landing; `templates/feasibility-report-template.md` **gains the
+  `hunt_coverage` field in the same landing** so the widened bounce and `review-feasibility`'s
+  disclosure floor are jointly satisfiable (strip:
+  `.mochiko/strips/feasibility-report-template.md` [v0.82.0]); rule 9 also gains the
+  clarifying clause that "unsanctioned" reads against each class's own payload home for
+  classes outside rule 2's closed set.
+
 **Wave context (v0.44.0 — the D7 leakage scrub).** `verbosity-caveman-ops-separation` D7 as
 folded at review (S4): **full scrub** of ops leakage from the shipped tree, with no
 changelog-worthy detail lost — every removed block is preserved verbatim below. Ruling:

@@ -93,17 +93,18 @@ A project already mid-feature adopts at the **next feature boundary**. An in-fli
 finishes in the register it started, so no artifact that accumulates across a feature ever
 carries two registers.
 
-## Not a grading dimension
+## Style is not a grading dimension; undisclosed excess is
 
-Verbosity is never a review finding on a deliverable: `artifact-format.md` rule 8 stands and no
-reviewer gains a prose-volume dimension. Two deliberate exceptions, both structural rather than
-stylistic:
+Prose *style* is never a review finding on a deliverable, and brevity never is:
+`artifact-format.md` rule 8's substance-only core stands. Volume is graded in one narrow,
+structural way (the v3 amendment):
 
 - **Reports** — `report-format.md` rule 9's mechanical check (prose on a clean report), which
-  grades presence, never quality.
-- **Artifacts** — the size-guidance signal is **reported, not graded**: a producing seat whose
-  artifact exceeds `artifact-format.md` rule 4's guidance carries one line in its report naming
-  the delta (e.g. "overview 9 lines vs ≤ 3 default"). The lead reads it; no reviewer scores it.
+  grades presence, never quality — enforced by every collecting lead.
+- **Artifacts** — overage past `artifact-format.md` rule 4's defaults obliges the producing
+  seat's one-line disclosure naming the delta and its reason; **undisclosed or unjustified
+  overage is an advisory finding** a reviewer names under rule 8 — advisory means it never
+  alone blocks a verdict; the lead weighs it at the gate.
 
 ---
 

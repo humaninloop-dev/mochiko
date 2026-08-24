@@ -63,7 +63,7 @@ audited Wave 2 body no-ops (nothing D4-cuttable); their budgets are their surviv
 | patterns-technical-decisions | 4,626 | 5,783 |
 | patterns-vertical-tdd | 5,189 | 6,487 |
 | review-brainstorm | 11,508 | 14,385 |
-| review-feasibility | 15,246 | 19,058 |
+| review-feasibility | 1,893 (re-seeded v0.82.0 — user-ruled 90% cut) | 2,367 |
 | review-plan-artifacts | 10,855 | 13,569 |
 | review-code-minimalism | 3,689 | 4,612 |
 
@@ -71,6 +71,14 @@ The v0.63.0 floor-line additions (analysis-iterative, review-governance-intent,
 validation-constitution, review-specifications) and the v0.64.0 ones (review-brainstorm,
 review-feasibility, review-plan-artifacts) ride inside these budgets — the +25% headroom
 absorbed them by design.
+
+`review-feasibility` re-seeded at v0.82.0 per the compression rule (R11 — headroom does not
+survive a cut): the user-ruled 90% body cut with breakup into `references/` landed the body at
+1,893 (was 18,959 against 19,058); budget 1,893 × 1.25 = 2,367. Ruling + disposition map:
+`.mochiko/strips/review-feasibility.md` [v0.82.0] and
+`.mochiko/decisions/2026-08-22-verbosity-envelope-enforcement.md`. The skill-compression eval
+pilot for this skill is re-purposed as a post-cut regression check (cut-vs-baseline rule
+coverage); a lost load-bearing rule re-adds via the strips re-add path.
 
 ## Skill descriptions
 

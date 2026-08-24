@@ -31,8 +31,12 @@ git history (this line, before this groom).*
   `plugin_errors`, write allow rules); minimal per-run plugin dir (R4); 4 arms incl. no-skill
   control (R3); pre-registered ship bar + delivered-chars arithmetic before the grid (R6/R9).
 - [ ] **Pilot grid** — `patterns-entity-modeling` end-to-end first (fills `primitive-eval-harness`
-  D5's deferred pilot slot), then `mochiko` router (Arm A only) + `review-feasibility` (AR-D3
-  seeded-defect method is the follow-on if its checklist proves insensitive, R13).
+  D5's deferred pilot slot), then `mochiko` router (Arm A only) + `review-feasibility` —
+  **pilot re-purposed 2026-08-22**: the skill took a user-ruled 90% direct cut at v0.82.0
+  ("cut now, eval validates later", verbosity-envelope ADR), so its slot runs as a **post-cut
+  regression check** (cut-vs-v0.81.0-baseline rule coverage; a lost load-bearing rule re-adds
+  via the strips re-add path) — (AR-D3 seeded-defect method is the follow-on if its checklist
+  proves insensitive, R13).
 
 ## Product-architecture store build
 

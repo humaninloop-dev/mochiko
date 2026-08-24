@@ -1,6 +1,34 @@
 # Strip notes — `commands/plan.md`
 
-Entry formats: `strips/README.md`. Wave context: the plan cluster wave (BACKLOG item 7, the third
+Entry formats: `strips/README.md`.
+
+## [v0.82.0] Register line widened — seat briefs carry the register binding
+
+- **Disposition:** superseded → the widened Register tool line. The old line bound only
+  user-facing prose to `templates/output-style.md`, so the reports-write-`ultra` register never
+  reached producing/grading seats (kinako EPIC-001 evidence: every review ignored it). The line
+  now also obliges every seat brief to carry its output's register binding — reports `ultra`,
+  deliverables `full`.
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/decisions/2026-08-22-verbosity-envelope-enforcement.md`; `DECISIONS.md`
+  2026-08-22 row).
+- **Content (superseded, verbatim):**
+
+  ```
+  - **Register** — user-facing prose per `templates/output-style.md`.
+  ```
+- **Kept deliberately:** the user-facing-prose binding itself, verbatim inside the widened
+  line. **Additions riding the decision row (no strip):** the **Report envelope** Tools bullet
+  (grading-seat outputs are reports under `templates/report-format.md`; feasibility fills
+  `templates/feasibility-report-template.md`; a baseline-reconstruction review is a report,
+  never a freehand essay; the lead bounces envelope-breaking reports per its rule 9); the
+  **Proposal & contest shape** Tools bullet (the `patterns-plan-minimalism` disclosure grammar
+  as the prescribed compact form — no narrative, no lineage); the epic-spine sentence binding
+  spine artifacts to `templates/artifact-format.md`.
+- **Consumers assessed:** charter-form command — the Adaptive Goal Protocol, Entry routing,
+  done condition, and `**Not done — default FAIL**` list are untouched; `mochiko:authoring-epic`
+  (spine shape owner) unchanged — the envelope binding governs form, not shape;
+  `templates/output-style.md` unchanged (its surface table already defines both registers). Wave context: the plan cluster wave (BACKLOG item 7, the third
 one-shot-command wave after specify's v0.13.0 and slice's v0.14.0). The wave also ran the **D2
 conversion assessment** (one-shot → team-form) and re-checked the **S8 home-revision checkpoint**
 against plan's needs (a standing producer spanning two phases + two reviewer seats, one of them

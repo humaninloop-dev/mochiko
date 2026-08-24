@@ -2,6 +2,37 @@
 
 Entry formats: `strips/README.md`.
 
+## [v0.82.0] "Not a grading dimension" rewritten to the artifact-format v3 position
+
+- **Disposition:** superseded → "Style is not a grading dimension; undisclosed excess is". The
+  section asserted "no reviewer gains a prose-volume dimension" and "the size-guidance signal
+  is **reported, not graded** … no reviewer scores it", citing `artifact-format.md` rule 8 as
+  authority — both claims false against the v3 rules 4/8 (undisclosed/unjustified overage is
+  now an advisory reviewer finding). Caught by the v0.82.0 audit (finding 2): the landing's
+  first pass amended the envelope but not this restating surface, which `commands/plan.md`'s
+  new Register bullet puts on the live seat path.
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/decisions/2026-08-22-verbosity-envelope-enforcement.md`; `DECISIONS.md`
+  2026-08-22 row).
+- **Content (superseded, verbatim):**
+
+  ```
+  Verbosity is never a review finding on a deliverable: `artifact-format.md` rule 8 stands and no
+  reviewer gains a prose-volume dimension.
+  ```
+
+  ```
+  - **Artifacts** — the size-guidance signal is **reported, not graded**: a producing seat whose
+    artifact exceeds `artifact-format.md` rule 4's guidance carries one line in its report naming
+    the delta (e.g. "overview 9 lines vs ≤ 3 default"). The lead reads it; no reviewer scores it.
+  ```
+- **Kept deliberately:** style-never-graded and brevity-never-a-finding (the section's core,
+  now stated as such); the Reports bullet (rule 9's mechanical check) — widened to name
+  every collecting lead, matching report-format v3.
+- **Consumers assessed:** `report-format.md` rule 8 and `artifact-format.md` rule 11 point
+  here for levels/switch only — unaffected; `commands/plan.md`'s Register bullet cites the
+  surface table — unaffected; governance setup surfaces cite the switch line — unaffected.
+
 **Wave context (v0.44.0 — the D7 leakage scrub).** `verbosity-caveman-ops-separation` D7 as
 folded at review (S4): **full scrub** of ops leakage from the shipped tree, with no
 changelog-worthy detail lost — every removed block is preserved verbatim below. Ruling:

@@ -5,6 +5,33 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.82.0] — 2026-08-22
+
+Verbosity-envelope enforcement (ADR
+`.mochiko/decisions/2026-08-22-verbosity-envelope-enforcement.md`; `DECISIONS.md` 2026-08-22
+row). Driver: the kinako EPIC-001 dogfood run wrote ~906KB of design-phase markdown in one
+day — the fattest artifact classes had no format home, the strict templates were never
+delivered to seats, and reviewers were doctrine-forbidden from grading bloat.
+`artifact-format.md` → v3: scope widened to command-minted deliverables (epic proposal,
+contest brief, architecture delta, specify's `derivation.md` — envelope-by-default);
+undisclosed/unjustified overage past the size defaults now a gradeable **advisory** finding
+(brevity stays never-a-finding); new rule 13 — no process self-narration, provenance is one
+header line. `report-format.md` → v3: rule 9's mechanical prose-bounce widened to every
+lead-collected report class, with the per-class payload-home reading. `plan.md`: new Report
+envelope + Proposal & contest shape Tools bullets (pathed template bindings; a
+baseline-reconstruction review is a report, never a freehand essay), epic-spine artifacts
+bound to the deliverable envelope, seat briefs carry the register.
+`feasibility-report-template.md`: `hunt_coverage` frontmatter field — the bounded
+proof-of-hunt home. `output-style.md` + `review-specifications`: aligned to the v3 position.
+**`review-feasibility` user-ruled 90% cut with breakup** ("cut now, eval validates later"):
+body 18,959 → 1,893 chars (−90.0%), floors + a mandatory-load dispatch line;
+unique content relocated into `references/FEASIBILITY-LENS.md` (Class 7 section, architecture
+pass renumbered A1–A3, gate-fuel fields repaired to `gap/at/impact/fix`, merged reviewer
+guardrails); body budget re-seeded 19,058 → 2,367 (R11); the skill-compression eval pilot for
+this skill re-purposed as a post-cut regression check. Audit: independent `mochiko:validator`,
+FAIL round 1 (4 blocking — headline: the disclosure floor had no envelope-legal home) → fix
+round → PASS; 8 strip files touched, KEPT/AD-D7 reconciliation verified; `cargo test` 12/12.
+
 ## [0.81.0] — 2026-08-19
 
 Product-architecture store, Stage 1 (`product-architecture-schema` D1–D16, `DECISIONS.md`

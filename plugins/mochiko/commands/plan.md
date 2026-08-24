@@ -175,6 +175,20 @@ Each tool below is referenced, never restated — its procedure lives in its hom
   per-feature delta); per-member design deltas stay in each `.mochiko/features/FEAT-XXX/`. Every
   epic shared-write surface — spine files, shared-baseline deltas — is governed by the transport
   floor's composition steer (Boundaries). Shape, mint, and close per `mochiko:authoring-epic`.
+  Every spine artifact is a deliverable under `templates/artifact-format.md` — the envelope,
+  its size defaults, and its no-self-narration rule bind them all.
+- **Report envelope** — every grading- and fact-finding-seat output this run collects is a
+  **report** under `templates/report-format.md` (machine-first frontmatter, `ultra` register,
+  clean = frontmatter-only; you bounce an envelope-breaking report per its rule 9): the
+  feasibility grade fills `templates/feasibility-report-template.md`; the completeness grade
+  and any baseline-reconstruction review take the same envelope — a reconstruction review is
+  a report, never a freehand essay. Each such seat's brief names the envelope path and, for
+  feasibility, the template path.
+- **Proposal & contest shape** — the plan-the-plan proposal is the artifact table plus
+  one-line rung stops per `mochiko:patterns-plan-minimalism`'s disclosure grammar (per member
+  over an epic) and a depth note per artifact; the contest brief is that same table contested
+  — a one-line verdict per element plus its amendment list. Neither carries narrative,
+  process lineage, or restated rationale (`templates/artifact-format.md` rules 4/8/13).
 - **`mochiko:patterns-plan-minimalism`** — the simplest-execution ladder and the proposal's
   rung-justification grammar.
 - **Map machinery** — the capability entry governs scope and order — its ratified scope
@@ -216,7 +230,9 @@ Each tool below is referenced, never restated — its procedure lives in its hom
   is the baseline write; the feature's design still lands as deltas at acceptance — never
   merged into the seed. **The store is never seeded here** — a store carrying no ruled content,
   whether scaffold-only or absent, is the desk's work, offered at Entry.
-- **Register** — user-facing prose per `templates/output-style.md`.
+- **Register** — user-facing prose per `templates/output-style.md`; every seat brief you
+  issue carries its output's register binding — reports `ultra`, deliverables `full` — per
+  that file's surface table.
 - **Next step** — `/mochiko:implement`; the accepted package is its selection-scope entry
   condition.
 

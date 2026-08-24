@@ -2,6 +2,51 @@
 
 Entry formats: `strips/README.md`.
 
+## [v0.82.0] Verbosity-envelope enforcement — scope widened, rules 4/8 amended, rule 13 added (format v3)
+
+- **Disposition:** superseded → the v3 envelope, per the verbosity-envelope-enforcement ruling.
+  Three surfaces changed: (1) the opening scope enumeration was a closed list, so command-minted
+  deliverables (epic proposal, contest brief, architecture delta, specify's `derivation.md`)
+  escaped the envelope entirely; it is now envelope-by-default — escaping requires a named
+  format home. (2) Rule 4's "reported, never graded" and rule 8's "never prose volume" together
+  made overage un-gradeable in either direction; undisclosed/unjustified overage past the
+  rule-4 defaults is now a gradeable **advisory** finding. (3) New rule 13: no process
+  self-narration — provenance is one header line; lineage lives in the run record.
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/decisions/2026-08-22-verbosity-envelope-enforcement.md`; `DECISIONS.md`
+  2026-08-22 row). Driver: kinako EPIC-001 dogfood — ~906KB/55 files in one design-phase day;
+  the envelope-less classes were the fattest files and 30+-line lineage preambles were endemic.
+- **Content (superseded, verbatim):**
+
+  ```
+  Exceeding the guidance is **reported, never graded**: the producing seat carries one
+  line in its report naming the delta (e.g. "overview 9 lines vs ≤ 3 default"), which
+  gives the lead the signal without handing any reviewer a prose-volume dimension
+  (rule 8).
+  ```
+
+  ```
+  **Density is not a gap (the review rule).** Reviewers grade substance — coverage
+  against the ID index, measurability, traceability, consistency — never prose volume.
+  Brevity is never itself a finding; a gap is missing or unverifiable substance.
+  ```
+- **Kept deliberately:** "brevity is never itself a finding" survives verbatim in the new rule
+  8 — the amendment adds the excess direction, it never licenses grading style or punishing
+  density; the producer's one-line disclosure obligation survives strengthened (disclosure now
+  carries the reason); rules 1–3, 5–7, 9–12 untouched. Rule 13 and the scope widening are
+  additions riding the decision row.
+- **Consumers assessed** (re-run at the audit fix round — the first pass missed two carriers,
+  audit finding 4): every authoring skill citing the envelope (rule numbers 1–12 unchanged —
+  no renumber, rule 13 appended); `report-format.md` rule 9's "twin" cross-reference still
+  resolves (rule 8 keeps its number and its substance-not-style core);
+  `patterns-system-design`'s Density section says only "Density is not a gap" — survives;
+  `commands/plan.md` gains the binding in the same landing; **`templates/output-style.md`
+  § "Not a grading dimension" restated the superseded rules — rewritten in the same landing
+  (strip: `.mochiko/strips/output-style.md` [v0.82.0])**;
+  **`review-specifications` § Review Process carried "never prose volume" — amended in the
+  same landing (strip: `.mochiko/strips/review-specifications.md` [v0.82.0])**; the remaining
+  review skills grade against their own checklists and carry no restatement (grep swept).
+
 ## [v0.81.0] Pipeline artifact chain drops `nfrs.md` — product-architecture-schema D12
 
 - **Disposition:** deleted from the enumeration. The envelope's opening line lists the

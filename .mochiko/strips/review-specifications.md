@@ -4,6 +4,20 @@ Entry formats: `strips/README.md`. Wave context: the specify cluster wave (v0.13
 Single-consumer primitive (the specify critique, mounted on `devils-advocate`) — strips
 ruled in-wave.
 
+## [v0.82.0] Envelope-citation aligned to artifact-format v3 (audit fix 3)
+
+- **Disposition:** superseded → the Review Process density sentence now reads "never prose
+  *style*; undisclosed overage past the envelope's size defaults is an advisory finding per
+  its rule 8". The old "never prose volume" restated the pre-v3 rule 8 this skill cites, made
+  false by the verbosity-envelope-enforcement ruling.
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/decisions/2026-08-22-verbosity-envelope-enforcement.md`; `DECISIONS.md`
+  2026-08-22 row).
+- **Content (superseded, verbatim):** `unstated assumption), never prose volume.`
+- **Kept deliberately:** "Density is never itself a gap" — the brevity half survives verbatim.
+- **Consumers assessed:** body 12,184 vs budget 14,089 after the edit — inside; the skill's
+  gap-report structure and reviewer independence untouched.
+
 ## [v0.67.0] Excess / unpaid-scope class added — defect-class lead-in re-keyed
 - **Disposition:** superseded → the excess posture from the architect-role ruling: the defect-class table gains a remove-shaped sixth class, so the "five ... those questions hunt" lead-in was rewritten.
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/architect-role-pushback-and-abstraction/record.md`, D3 as amended by its F3 calibration clause; DECISIONS.md combined-wave build row).

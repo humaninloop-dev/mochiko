@@ -5,6 +5,91 @@ batch-2 ratified 2026-07-25; design: `.mochiko/brainstorms/skill-succinctness-st
 First strip assessment of this skill (never-stripped band 30–70): body 141 → 136 lines = **3.5%**,
 deeply under-band — whole-skill survivor ruling below.
 
+## [v0.82.0] User-ruled 90% body cut with breakup into references — body 18,959 → 1,893 chars (−90.0%)
+
+- **Disposition:** superseded → a floors-and-dispatch body plus a widened
+  `references/FEASIBILITY-LENS.md`. The user ruled the cut directly ("breakup + trim ≥90%",
+  2026-08-22, "cut now, eval validates later" — the skill-compression eval pilot for this skill
+  is thereby superseded as a pre-cut instrument and re-purposed as a post-cut regression check).
+  The reference file already twinned most body content, so the cut is predominantly honest
+  dedup; genuinely unique body content was **relocated**, not deleted. `description:` untouched.
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/decisions/2026-08-22-verbosity-envelope-enforcement.md` + the in-session user
+  ruling recorded there; `DECISIONS.md` 2026-08-22 row).
+- **Disposition map (per section of the old body):**
+  - *Overview (4 paragraphs)* — compressed into the body's opening: intersection-hunting,
+    adversarial-not-checklist, and looking-buildable≠being-buildable each survive as a clause.
+  - *When NOT to Use (4 bullets)* — deleted as restatement: completeness→sibling (body line +
+    lens "What this lens is NOT"), constitution G1 (body floor + lens A3 boundary watch),
+    never-author-what-you-grade (body), single-artifact exclusion with the v0.81.0
+    element-not-file narrowing (lens intro, now carrying the class-7 exception explicitly).
+  - *What you hunt — classes 1–6 table* — deleted as restatement: the lens carries every
+    class's seam + question + worked example.
+  - *Class 7 full rules + calibration + interrogatory round + adopt-first limb* —
+    **relocated → lens "Class 7 — unjustified structure / wrong altitude" section**,
+    faithful text: necessity = ladder rung 1 (`patterns-plan-minimalism`, never restated),
+    altitude test, blocking-capable / never-alone-`infeasible`, calibration clause, the
+    interrogatory round, the adopt-first limb with its `patterns-adopt-first` pointer.
+  - *External premises* — compressed into a body floor bullet; the
+    `EXTERNAL-CLAIMS.md` binding survives by path.
+  - *Architecture pass (AD-D7 PROTECTED)* — body restatement deleted; the pass survives
+    whole in lens sections A1–A3 (which already carried the full text), renumbered from
+    7/8/9 to clear the class-7 numbering collision; the group-B conformance surface (layer
+    rules · dependency allowlist · GI-linked principles · floor-asserted obligations) maps to
+    A3's question + both worked examples; the two-exit routing survives in A3 **and** as a
+    body floor.
+  - *The boundary section + mirror table* — deleted as restatement of the lens boundary
+    watches + "What this lens is NOT" (store-delta split included). Uncarried residue: the
+    sibling's verdict vocabulary (`ready / needs-revision / critical-gaps`) — lives in the
+    sibling's own skill and the router; assessed as safe.
+  - *Core Process steps 2–5* — deleted as restatement: hunt-each-class (body load line +
+    lens), gate fuel (lens four-field contract), resolvable-vs-fundamental (lens verdict
+    recap, new classification line), the 3-state verdict table (lens verdict recap + body
+    verdict line); the never-default-`feasible` and `infeasible`-never-flattened floors moved
+    to body floors verbatim-faithful.
+  - *Independence (stated by role)* — compressed into body floors: the v0.64.0
+    evidence-in-artifacts floor line survives ("review evidence living only in conversation is
+    a floor violation"), verdict-is-input survives, G1 survives, author≠grader survives.
+  - *Common Mistakes / Red Flags / Common Rationalizations (three tables)* — **relocated +
+    merged → lens "Reviewer guardrails" table**: nine rows preserving every distinct failure
+    mode; overlapping tells (trust-the-summary ×2, default-feasible ×3, flatten ×2, boundary
+    creep ×2) deduped into single rows.
+  - *Related* — deleted; the sibling is named in the body, the template binding is now pathed
+    in a body floor.
+- **Additions riding the ruling (no strip):** the hunt-coverage disclosure floor (one line per
+  class in the report, never a narrative — the bounded proof-of-hunt from the same ADR); the
+  **pathed** report bindings (`templates/feasibility-report-template.md` under
+  `templates/report-format.md` — previously pathless, the kinako delivery failure); the lens
+  gate-fuel field names repaired to the template's canonical `gap / at / impact / fix` (the
+  reference still carried the pre-v0.26.0 prose names the body had already abandoned).
+- **MANDATORY KEPT reconciliation:**
+  - **[v0.26.0] KEPT: entire remaining body (whole-skill survivor).** Superseded by this
+    user ruling as a body-residency claim; every named core survives in the skill: the
+    six-class content and boundary content in the lens, the `infeasible`-never-flattened and
+    never-default-`feasible` floors in the body, the Mistakes/Rationalizations failure modes
+    in the lens guardrails.
+  - **AD-D7 architecture pass** (`DECISIONS.md` 2026-07-30) — verified fully present after
+    the edit: lens A1–A3 carry topology feasibility, governance conformance, the
+    floor-asserted limb, and the two-exit routing; the body carries the
+    never-silently-approved floor.
+  - **[v0.64.0] floor line** (evidence in the artifacts) — survives in a body floor,
+    verbatim-faithful.
+  - **[v0.67.0] class 7** — survives as a lens section + the verdict-recap cells
+    ("no surviving class-7 finding" / "or class-7 findings" / "never alone earns it").
+  - **[v0.81.0] element-not-file narrowing + D14 floor-asserted bullet** — survive in the
+    lens intro and A1/A3.
+- **Consumers assessed:** `review-plan-artifacts:24`, `patterns-adopt-first:101`, and the
+  router rows cite "hunt class 7" — the name survives (lens section title + body).
+  `tech-lead.md:94` ("the step-by-step procedure … lives in review-feasibility") — still true;
+  the skill is body + references. The router's `review-feasibility` row content claims (class
+  7, calibration, interrogatory round, architecture pass, floor-asserted limb, 3-state
+  verdict) — all survive in the skill. `templates/feasibility-report-template.md` gains the
+  `hunt_coverage` frontmatter field at the audit fix round so the disclosure floor has a
+  bounded home (audit finding 1; strip:
+  `.mochiko/strips/feasibility-report-template.md` [v0.82.0]).
+  Body budget re-seeded downward in `.mochiko/memory/primitive-cost-budgets.md` (R11):
+  1,893 measured → budget 2,367.
+
 ## [v0.81.0] Architecture pass re-keyed to the store delta; NFR↔topology reads both sides in the store — product-architecture-schema D3/D10/D12/D14
 
 - **Disposition:** superseded → the same architecture pass, keyed on the plan package's **drafted

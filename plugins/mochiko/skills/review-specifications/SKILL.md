@@ -138,7 +138,8 @@ report path, return the same structure inline.
 The spec follows the deliverable envelope (`templates/artifact-format.md`): one-line
 scenarios (2-3 per story), one-line FR/SC/edge-case entries, compact entities. **Density
 is never itself a gap** — grade substance (a missing flow, an unmeasurable criterion, an
-unstated assumption), never prose volume.
+unstated assumption), never prose style; undisclosed overage past the envelope's size
+defaults is an advisory finding per its rule 8.
 
 The independent review leaves its verdict and per-finding dispositions in the reviewed
 artifacts themselves — review evidence that lives only in conversation is a floor violation.

@@ -16,6 +16,10 @@ artifacts_reviewed: [requirements.md, constraints-and-decisions.md]   # + the st
 verdict: feasible | needs-revision | infeasible
 verdict_basis: "{{one line — what drives the verdict}}"
 strengths: "{{one line, comma-brief}}"
+hunt_coverage:                     # one line per class — mandatory, every class present
+  c1: "{{clean — what was hunted | the finding IDs it produced}}"
+  # … c2–c6 likewise; c7 always; a1–a3 present iff the package carries a store delta
+  c7: "{{clean — … | F-ids}}"
 findings:
   - {id: F1,
      taxonomy: cross-artifact | constraint-decision | nfr-impossibility,
@@ -57,4 +61,10 @@ findings:
    filled report is seeded, written, and collected by the lead. This template stays
    path-agnostic.
 5. **A clean review** (`verdict: feasible`, `findings: []`) is frontmatter-only —
-   `verdict_basis` and `strengths` still filled.
+   `verdict_basis`, `strengths`, and `hunt_coverage` still filled.
+6. **`hunt_coverage` is the bounded proof-of-hunt** (`review-feasibility`'s one-line-per-class
+   disclosure floor): one line per class — `c1`–`c7` always, `a1`–`a3` exactly when the package
+   carries a store delta — each either `clean — <what was hunted>` or the finding IDs the class
+   produced. A missing class line means the hunt was not completed there: `feasible` cannot be
+   awarded, and the collecting lead bounces the report. Narrative coverage sections stay
+   forbidden — this field is the only home the proof has.
