@@ -5,6 +5,24 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.84.0] — 2026-08-26
+
+`validator` persona re-indexed to the router (ADR
+`.mochiko/decisions/2026-08-26-validator-router-indexed-checklists.md`; `DECISIONS.md`
+2026-08-26 row; strip `.mochiko/strips/validator.md` [v0.84.0]). The `## Skills you lean on`
+inline one-item checklist list — stale "drafted constitution" wording, restated
+`validation-constitution` internals, shape read as scope by the maintainer — superseded by a
+three-step selection order: the dispatch brief's named bar wins · otherwise Read the `mochiko`
+router (`skills/mochiko/SKILL.md`) for the domain-matching checklist (`validation-*` natively
+the validator's; a `review-*` bar lent checklist-only, verdict stays binary, clearing stays
+with the dispatching contract) · no fit falls back to the generic method against the handed
+bar. `skills: validation-constitution` mount kept, framed delivery-not-scope; new checklist
+skills now register in the router only — no persona edit per checklist. `description:` (269
+chars, budget 337, unchanged), Iron Law, verdict form, and all other sections byte-for-byte;
+v0.45.0/v0.63.0 protected sets reconciled in the ADR. Author≠grader audit PASS round 1 (5/5
+items; two non-blocking advisories: ADR lacks labeled Rationale/Alternatives sections; the
+repo-relative router path form is a pre-existing library-wide convention question).
+
 ## [0.82.0] — 2026-08-22
 
 Verbosity-envelope enforcement (ADR

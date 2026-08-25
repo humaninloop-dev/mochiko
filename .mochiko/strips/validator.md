@@ -2,6 +2,40 @@
 
 Entry formats: `strips/README.md`.
 
+## [v0.84.0] "Skills you lean on" re-indexed to the router — inline checklist bullet superseded
+
+- **Disposition:** superseded → the rewritten `## Skills you lean on` section: a three-step
+  selection order (brief wins · Read the router `skills/mochiko/SKILL.md` and reach for the
+  domain-matching checklist, `validation-*` natively the validator's, a `review-*` bar lent
+  checklist-only · generic-method fallback), closing with "New checklist skills register in
+  the router when they are authored; the router read — not this file — is what keeps you
+  current. The frontmatter `skills:` mount is delivery for the common case, never your scope."
+- **Tier failed:** n/a — supersession by ruling (user ruling 2026-08-26, in-session; ADR
+  `.mochiko/decisions/2026-08-26-validator-router-indexed-checklists.md`; `DECISIONS.md`
+  2026-08-26 row). Drivers: the one-item list read as scope (confused the maintainer this
+  ruling came from); the bullet was stale ("drafted constitution" — no constitution.md
+  exists) and restated `validation-constitution`'s single-sourced checklist internals
+  (altitude); an inline list obliges a persona landing per new checklist skill, where the
+  router already owns discoverability.
+- **Content:** verbatim superseded spans — the intro sentence "You carry graded checklists.
+  Reach for the one whose domain matches the artifact in front of you:"; the bullet
+  "**`mochiko:validation-constitution`**: for grading a drafted constitution — Three-Part Rule
+  (enforcement / testability / rationale per principle) plus trace stamps, the deterministic
+  trace-ID cross-check against the governing intent record, tier / waiver / floor-accounting
+  checks, module-parameterized section checks, anti-pattern scan, placeholder scan,
+  quantification, semantic version-bump."; the framing sentence "When the artifact fits one
+  cleanly, that checklist is your strongest asset — use it."
+- **Kept deliberately:** the frontmatter `skills: validation-constitution` mount and the
+  generic-grader method — the v0.45.0 `Kept deliberately` set: the Iron Law untouched, the
+  fallback clause "fall back on your own method and grade the artifact against the bar you
+  were given, check by deliberate check. The rigor is the same either way." surviving
+  near-verbatim as selection-order step 3. The `description:` value (v0.63.0 protected prose
+  framing) and every other section byte-for-byte.
+- **Consumers assessed:** router agents-table row + two-family paragraph remain true (no
+  router edit) · `.claude/rules/mochiko/primitive-edits.md` audit-dispatch clause aligned,
+  not contradicted · setup grading seat unaffected (mount survives) · no command names the
+  agent. Full assessment: the ADR.
+
 ## [v0.78.0] Delegating Cheap Reads retargeted — `mochiko:explorer` dispatch superseded by native `Explore` + `model: haiku` override
 
 - **Disposition:** superseded → the reworded `## Delegating Cheap Reads` sentence: "spawn a
