@@ -2,6 +2,25 @@
 
 Entry formats: `strips/README.md`.
 
+## [v0.85.0] Router-registration sentence stripped from the v0.84.0 closing paragraph
+
+- **Disposition:** deleted (the doctrine home already carries it: the router's own "Adding to
+  the library" section owns registration-on-authoring; the maintainer rationale — the router
+  read, not the persona, keeps the checklist set current — lives in the v0.84.0 ADR, now with
+  a 2026-08-26 addendum)
+- **Tier failed:** 1 (altitude — restated router doctrine inside a runtime persona; rationale
+  aimed at the future maintainer, whose home is the ADR/strip layer, not the prompt). User
+  ruling 2026-08-26, in-session, on the maintainer's own "why does this line exist" challenge.
+- **Content:** verbatim — "New checklist skills register in the router when they are authored;
+  the router read — not this file — is what keeps you current."
+- **Kept deliberately:** the paragraph's second sentence, now a standalone closing line — "The
+  frontmatter `skills:` mount is delivery for the common case, never your scope." — the
+  load-bearing half: it prevents the mount-read-as-scope misread that triggered the v0.84.0
+  redesign, at runtime and at maintenance.
+- **Consumers assessed:** nothing cites the removed sentence — the v0.84.0 CHANGELOG entry and
+  ADR describe the selection order and the delivery-not-scope framing, both intact; the router
+  is untouched; no command names the agent.
+
 ## [v0.84.0] "Skills you lean on" re-indexed to the router — inline checklist bullet superseded
 
 - **Disposition:** superseded → the rewritten `## Skills you lean on` section: a three-step

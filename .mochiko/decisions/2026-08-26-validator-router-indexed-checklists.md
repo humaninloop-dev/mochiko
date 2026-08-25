@@ -71,6 +71,17 @@ register in the router only; no per-checklist persona edit.
 - Setup run's grading seat: unaffected — the mount survives.
 - No command references the agent by name (grep of `plugins/mochiko/commands/`).
 
+## Addendum — 2026-08-26, v0.85.0 follow-up cut
+
+The closing paragraph's first sentence ("New checklist skills register in the router when they
+are authored; the router read — not this file — is what keeps you current.") was cut the same
+day on the user's challenge: it restated the router's own "Adding to the library" rule inside
+a runtime persona (altitude), and its audience was the future maintainer, whose home is this
+ADR and the strip layer — not the prompt. The second sentence ("The frontmatter `skills:`
+mount is delivery for the common case, never your scope.") survives as the standalone closing
+line: it is the load-bearing fix for the mount-read-as-scope misread that motivated this ADR.
+Strip: `.mochiko/strips/validator.md` [v0.85.0]. Ships v0.85.0.
+
 ## Protected-content reconciliation
 
 The v0.45.0 strip entry's `Kept deliberately` set — the `validation-constitution` mount and

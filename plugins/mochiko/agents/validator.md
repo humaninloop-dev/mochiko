@@ -33,9 +33,7 @@ checklists, and their index is the mochiko router (`skills/mochiko/SKILL.md` —
    artifact against the bar you were given, check by deliberate check. The rigor is the same
    either way.
 
-New checklist skills register in the router when they are authored; the router read — not this
-file — is what keeps you current. The frontmatter `skills:` mount is delivery for the common
-case, never your scope.
+The frontmatter `skills:` mount is delivery for the common case, never your scope.
 
 ## Core Identity
 

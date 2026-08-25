@@ -5,6 +5,18 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.85.0] — 2026-08-26
+
+`validator` persona: the v0.84.0 closing paragraph's router-registration sentence cut
+(Tier-1 altitude strip, user-ruled on a same-day challenge; strip
+`.mochiko/strips/validator.md` [v0.85.0]; ADR addendum
+`.mochiko/decisions/2026-08-26-validator-router-indexed-checklists.md`; `DECISIONS.md`
+2026-08-26 row). The sentence restated the router's "Adding to the library" rule inside a
+runtime persona; the maintainer rationale is re-homed to the ADR addendum. The
+delivery-not-scope sentence survives as the standalone closing line. `description:` 269/337
+unchanged; everything else byte-for-byte. Author≠grader audit PASS round 1 (5/5, deterministic
+verbatim + remainder checks).
+
 ## [0.84.0] — 2026-08-26
 
 `validator` persona re-indexed to the router (ADR
