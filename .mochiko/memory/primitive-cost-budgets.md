@@ -125,7 +125,7 @@ derive from the restored values.
 |---|---|---|
 | principal-architect | 936 (re-asserted v0.81.0) | 945 |
 | validator | 269 | 337 |
-| devils-advocate | 316 | 395 |
+| devils-advocate | 316 (re-measured 384 at v0.86.0 — remit-coverage description fix, `.mochiko/strips/devils-advocate.md`; budget unchanged) | 395 |
 | requirements-analyst | 303 | 379 |
 | product-manager | 438 | 548 |
 | product-engineer | 392 | 490 |

@@ -6,6 +6,43 @@ user-approved 2026-07-25; design: `.mochiko/brainstorms/skill-succinctness-strip
 This was the sole remaining agent instance — the other five agents' Skills-Available paragraphs
 were ruled in their command waves.
 
+## [v0.86.0] Frontmatter `description:` re-aimed at the full remit — spec-only wording superseded
+
+- **Disposition:** superseded → the rewritten `description:` value: "Adversarial reviewer who
+  stress-tests finished artifacts — specifications, plan packages, brainstorm records,
+  governance intent — and probes built systems in the blind gap-finding pass. Asks the hard
+  "what if" questions that surface costly problems while they are still cheap to fix, and
+  returns severity-ranked document findings with clarifying questions and a recommended
+  verdict." (The `document` qualifier scopes the output-shape tail to document reviews — the
+  runtime gap-finding pass splits findings by kind, never by severity, per
+  `testing-gap-finding`; audit fix round 1.)
+- **Tier failed:** n/a — supersession by ruling (user ruling 2026-08-26, persona hygiene
+  pass; ADR `.mochiko/decisions/2026-08-26-persona-hygiene-pass.md`; `DECISIONS.md`
+  2026-08-26 row). The old wording was made wrong by remit growth: the description named
+  only specifications while the seat's mounts grew to five review targets
+  (`review-brainstorm`, `review-governance-intent`, `testing-gap-finding` all arrived after
+  it was written); the description is the routing/staffing surface and lagged the router's
+  own cross-workflow row.
+- **Content:** verbatim superseded value — "Adversarial reviewer who stress-tests
+  specifications by finding gaps, challenging assumptions, and identifying edge cases. Asks
+  the hard "what if" questions that surface costly problems while they are still cheap to
+  fix, and returns a severity-ranked gap report with clarifying questions and a recommended
+  verdict."
+- **Kept deliberately:** the description's core framing — adversarial posture, the what-if
+  sentence near-verbatim, severity-ranked output, clarifying questions, recommended verdict —
+  so the v0.63.0 benchmark's routing result is widened, not re-aimed. The entire agent body
+  byte-for-byte. This entry supersedes, by ruling, the description-prose portion of the
+  [v0.63.0] entry's `Kept deliberately` set.
+- **Consumers assessed:** `plugins/mochiko/commands/implement.md:115` names the agent (the
+  gap-finding seat: "a fresh `devils-advocate`, dispatched blind per run") — it names the
+  agent, never quotes the description, so the staffing contract is untouched and the new
+  description now covers exactly that duty; no other command names it. Router agents-table
+  row describes the cross-workflow remit (the gap-finding duty detailed at the
+  implement-cluster `testing-gap-finding` row); the description now agrees instead of
+  lagging. Parsed value 384 chars against the 395 budget — a re-measurement, budget
+  unchanged, ledger row annotated.
+
+
 ## [v0.80.0] Skills-Available row drops the stale "Delivery Slices section" clause — slice-vocabulary purge
 
 - **Disposition:** superseded → the same bullet ending at the artifact it names; the review's

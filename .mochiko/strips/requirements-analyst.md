@@ -2,6 +2,32 @@
 
 Entry formats: `strips/README.md`.
 
+## [v0.86.0] Skills Available section rewritten to the ruled precedent form
+
+- **Disposition:** relocated → each mounted skill's own `description:`/body (the declared
+  single source); the section now carries the precedent form (single-source framing + one
+  routing line per mount) established at the devils-advocate [v0.25.0] Tier-1 strip and used
+  by every other persona.
+- **Tier failed:** 1 (altitude — the bullets restated the mounted skills' internals; the same
+  file's Quality Standards section already pointed at the same templates with a correct
+  consult-there line, so the content existed twice, once at the wrong altitude). User ruling
+  2026-08-26, persona hygiene pass (ADR
+  `.mochiko/decisions/2026-08-26-persona-hygiene-pass.md`; `DECISIONS.md` 2026-08-26 row).
+- **Content:** verbatim superseded spans — the intro "You have access to specialized skills
+  that provide detailed guidance:"; the bullets "**`mochiko:authoring-requirements`**: Write
+  FR-XXX format requirements with RFC 2119 keywords (MUST, SHOULD, MAY), measurable success
+  criteria (SC-XXX), and edge-case identification." and "**`mochiko:authoring-user-stories`**:
+  Write user stories with P1/P2/P3 priorities, Given/When/Then acceptance scenarios, and
+  independent tests."; the closing "Use the Skill tool to invoke these when you need detailed
+  formatting guidance for your output artifacts."
+- **Kept deliberately:** both mounts (frontmatter and bullets — only their annotations
+  thinned); the Quality Standards consult-there paragraph, byte-for-byte; the `description:`
+  (v0.63.0 protected prose, 303 chars against the 379 budget) and every other section
+  untouched.
+- **Consumers assessed:** no command names the agent; the router's agents-table row is
+  body-agnostic; the mounted skills' own descriptions carry the relocated detail (verified
+  present in both `SKILL.md` descriptions).
+
 ## [v0.78.0] Delegating Cheap Reads retargeted — `mochiko:explorer` dispatch superseded by native `Explore` + `model: haiku` override
 
 - **Disposition:** superseded → the reworded `## Delegating Cheap Reads` sentence: "spawn a

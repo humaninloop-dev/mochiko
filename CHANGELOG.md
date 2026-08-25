@@ -5,6 +5,24 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.86.0] — 2026-08-26
+
+Persona hygiene pass — two primitives, one wave (ADR
+`.mochiko/decisions/2026-08-26-persona-hygiene-pass.md`; `DECISIONS.md` 2026-08-26 row).
+Driver: the post-v0.84.0 sweep of the other nine personas for validator-class defects.
+`requirements-analyst`: the `## Skills Available` section rewritten to the ruled precedent
+form (single-source framing + one routing line per mount, the devils-advocate v0.25.0
+Tier-1 precedent) — its bullets restated FR/SC and story-format internals the mounted
+skills single-source; strip `.mochiko/strips/requirements-analyst.md` [v0.86.0]; audit PASS
+round 1. `devils-advocate`: the frontmatter `description:` re-aimed at the full remit
+(spec-only wording lagged five mounted review targets); the output tail scoped
+"severity-ranked document findings" at the audit fix round (the runtime gap-finding pass
+splits findings by kind, never severity); 316 → 384 chars against the unchanged 395 budget;
+supersedes the v0.63.0 kept description prose by ruling; strip
+`.mochiko/strips/devils-advocate.md` [v0.86.0]; audit FAIL round 1 (2 blocking: over-scoped
+output tail · a missed `implement.md:115` consumer in the records) → fix rounds → delta
+PASS. `tech-lead` Three-Part-Rule finding declined as carried judgment; six personas clean.
+
 ## [0.85.0] — 2026-08-26
 
 `validator` persona: the v0.84.0 closing paragraph's router-registration sentence cut
