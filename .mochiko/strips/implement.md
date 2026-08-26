@@ -12,6 +12,771 @@ no template revision and no cross-command re-audit). **Stale as a standing claim
 entries below. **Also stale:** the shape is **v5** as of the v0.35.0 wave below, and the
 "standing producer / standing verifier" claim is superseded by that wave's seat-recycling binding.
 
+<!-- Wave context: the command-content-schema build wave (v0.92.0) — `commands/implement.md`
+splits into a narrative `.md` (Identity & Mission · the obligated schema read · Adaptive Goal
+Protocol) and `plugins/mochiko/schemas/implement.yaml` (mint-once rules at D12 grain;
+labels from `command-labels.yaml`); source text = the approved simplified rewrite,
+`.mochiko/brainstorms/command-content-schema/implement-rewrite.md` (build step 0). Ruling for
+every [v0.92.0] entry below: `.mochiko/brainstorms/command-content-schema/record.md` (D2 · D6 ·
+D7 · D9 · D12 · build item 4's M4 verbatim rule) → `DECISIONS.md` 2026-08-26
+command-content-schema row. Every Content field quotes the SHIPPED v0.91.0 text — what actually
+left the file (the GI-006 referent); the rewrite's replacement wording lives at the named new
+homes, never restated here. -->
+
+<!-- Wave context: the D14 section-nesting amendment (v0.93.0) — `implement.yaml`'s flat
+`rules:` list reflows into six first-class `sections:` nodes ({id, title, intent, rules}),
+all 104 rule IDs and texts carried unchanged (pure relocation, D11 continuity trivial; checker
+stats identical pre/post: rules 104 · floor 34 · must 69 · advisory 1 · fail-condition 15).
+Ruling for every [v0.93.0] entry: record D14 (post-build amendment, user-ruled 2026-08-26) →
+`DECISIONS.md` 2026-08-26 command-content-schema row. -->
+
+<!-- Wave context: the D15 referential-closure amendment (v0.94.0) — rule texts must be
+self-contained (every reference resolves within the block or the schema's addressable
+namespace); the checker gains a curated deixis lint (warning-class). One live instance
+reworded, ID kept per D11. Ruling: record D15 (post-build amendment 2, user-directed
+2026-08-26) → `DECISIONS.md` 2026-08-26 command-content-schema row. -->
+
+## [v0.94.0] `impl.staffing-latitude` text — deixis reworded, document-shape remark dropped (D15)
+
+- **Disposition:** superseded → the same rule block, ID kept (D11 reword): "Beyond this
+  schema's `class: floor` rules, everything is your per-run judgment: how you staff, sequence,
+  and run the cycles; teammates or subagents per seat is your call."
+- **Tier failed:** n/a — supersession by ruling (record D15; `DECISIONS.md` 2026-08-26 row).
+- **Content:** verbatim, the v0.93.0 shipped text — "There is no Bindings section. Beyond the
+  floor these rules state, everything is your per-run judgment: how you staff, sequence, and
+  run the cycles; teammates or subagents per seat is your call."
+- **Kept deliberately:** the obligation survives whole — floor-bounded per-run latitude over
+  staffing, sequencing, and cycle execution; "the floor these rules state" becomes the
+  addressable "this schema's `class: floor` rules". The dropped sentence "There is no Bindings
+  section." dies without relocation: a document-shape remark, not an obligation — the schema's
+  existence states it, and D15 classes such remarks as deixis.
+- **Consumers assessed:** no other rule, the `.md`, or any strip cites the old wording; the
+  charter audit keys on the label set, ID continuity, and floor survival — all unaffected (ID
+  kept, class unchanged, labels unchanged). The checker's D15 lint verified firing on the old
+  text and silent on the new.
+
+## [v0.93.0] Schema flat grammar — `rules:` key, grammar header line, six comment dividers (D14)
+
+- **Disposition:** superseded → the `sections:` grammar: the top-level `rules:` key becomes six
+  `sections:` nodes (`impl.sec.roles` · `impl.sec.reserved` · `impl.sec.tools` ·
+  `impl.sec.ways-of-working` · `impl.sec.boundaries` · `impl.sec.fail-conditions`); each
+  divider's wording survives verbatim as its section's `title:` (the two-line FAIL divider's
+  parenthetical as the `intent:` line); the grammar header line is reworded "as amended by D14".
+- **Tier failed:** n/a — supersession by ruling (record D14; `DECISIONS.md` 2026-08-26 row).
+- **Content:** verbatim, what left the file —
+  the grammar header line: "# Grammar (D6): rule blocks {id, labels, class, text, ruling?,
+  pointer?} under vars:." · the top-level key: "rules:" · the six dividers:
+  "# ── Roles & Responsibilities — seat wiring ──" · "# ── Reserved to the user — never the
+  run's ──" · "# ── Tools bindings ──" · "# ── Ways of Working ──" · "# ── Boundaries — the
+  non-waivable floor ──" · "# ── Not done — default FAIL (the fail-condition set; any one
+  standing fails / the run; the .md Not-done line hard-codes this set's count) ──" (rule
+  padding of ─ characters elided; no other content in the lines).
+- **Kept deliberately:** every rule block byte-identical under its section (+4-space indent
+  only — block scalars are indentation-relative, parsed texts unchanged); all 104 IDs, labels,
+  classes, rulings, pointers untouched; the remaining grammar-header lines (id/labels/class/
+  text/ruling/pointer) survive with a section-id clause added.
+- **Consumers assessed:** the checker reworked the same wave (section grammar asserted,
+  per-section stats, flat `rules:` now a finding); the `.md` Rules section re-pointed at the
+  six section IDs (own entry below); the charter-audit criteria in
+  `.claude/rules/mochiko/primitive-edits.md` key on the `fail-condition` label set and
+  `impl.*` ID continuity — both unaffected by relocation; D11 extends to `impl.sec.*` IDs.
+
+## [v0.93.0] `.md` Rules-section source-of-truth sentence — re-pointed at section IDs (D14)
+
+- **Disposition:** superseded → the same paragraph in `commands/implement.md`, now enumerating
+  the six `impl.sec.*` section IDs as the rule map; the Not-done line gains the address
+  "(section `impl.sec.fail-conditions`)", its label-keyed count unchanged.
+- **Tier failed:** n/a — supersession by ruling (record D14; `DECISIONS.md` 2026-08-26 row).
+- **Content:** verbatim — "It is the source of truth for this
+  run's binding rules — seat wiring and independence, decisions reserved to the user, ways of
+  working, tool bindings, and the non-waivable Boundaries floor."
+- **Kept deliberately:** every named responsibility survives as a section gloss in the new
+  enumeration; the surrounding obligations (first-action raw Read, `${var}` substitution,
+  pointer binding, read-whole gate) untouched.
+- **Consumers assessed:** the charter audit's Not-done count guard reads the same label-keyed
+  sentence, still present; checker's `NOT_DONE_RE` verified matching post-edit (PASS run).
+
+## [v0.92.0] Command `description:` — reworded by the approved rewrite (D7)
+
+- **Disposition:** superseded → the referent's description: same output claims (working,
+  verified code, TDD-built, independently verified against real infrastructure), the batch now
+  "one selected capability-batch", the run named by its three stages (sufficiency check at
+  entry · design phase for any gaps it finds · TDD cycle cards).
+- **Tier failed:** n/a — supersession by ruling (record D7 — source text is the approved
+  simplified rewrite; `DECISIONS.md` 2026-08-26 row). Not in the referent's own deletion
+  ledger; recorded on the build lead's plan-approval ruling (flag 1).
+- **Content:** verbatim — "Turn one capability-batch carrying ratified scope into working code —
+  a sufficiency check at entry, a design phase where it finds gaps, then cycle cards built TDD
+  and independently verified against real infrastructure."
+- **Kept deliberately:** every substantive term survives reworded — the entry sufficiency
+  check, the conditional design phase, the TDD build, independent real-infrastructure
+  verification; "ratified scope" moves from the description into the Entry step's own gate
+  wording.
+- **Consumers assessed:** commands carry no per-primitive character budget (user ruling, both
+  budget waves), so the char-budget pre-assert does not fire; `disable-model-invocation: true`
+  is unchanged, the description maintainer- and router-facing only. Cross-file re-points (the
+  router's command row) ride the wave lead's re-point set, not this entry.
+
+## [v0.92.0] `## Roles & Responsibilities` — the whole section moves to the schema (D2/D7)
+
+- **Disposition:** superseded → `plugins/mochiko/schemas/implement.yaml`: the DM floor and seat
+  wiring as the seat-wiring rules (`impl.staffing-latitude` … `impl.seat-gap-finder-blind`)
+  and the user's reserved set as the reserved-to-user rules (`impl.gate-design-checkpoint` ·
+  `impl.gate-card-confirm` · `impl.gate-final-acceptance` · `impl.user-runopen-rulings` ·
+  `impl.infeasible-card-escalation` · `impl.adopt-first-user-call` ·
+  `impl.ambiguity-escalation` · `impl.scope-escalation-fail`), text per the referent's R&R
+  section at D12 grain.
+- **Tier failed:** n/a — supersession by ruling (record D2 — rules move to the schema,
+  narrative stays; D7 — R&R seat wiring + reserved-to-user items are stage-1 scope;
+  `DECISIONS.md` 2026-08-26 row).
+- **Content:** the whole shipped section, verbatim:
+
+```
+## Roles & Responsibilities
+
+There is **no Bindings section**. The bare minimum that must always happen is carried here as
+the Delivery Manager's owned responsibilities; everything beyond it is your per-run judgment —
+how you staff, sequence, and run the cycles is yours to shape; teammates or subagents per seat
+is your call.
+
+**You, the Delivery Manager — the always-happens floor:**
+
+- Gate entry honestly, run the sufficiency check through a non-author seat, and open the run
+  with its contract stated (protocol).
+- Fire the design phase on any gap — and again mid-run, scoped to the discovery, when a builder
+  hits undesigned structure (Tools).
+- Surface rounds consumed and seats spawned to the user at each checkpoint.
+- Batch reserved-to-user questions to the cycle checkpoint (Ways of Working); never sit on a
+  build-blocking one.
+- Execute the acceptance landing whole at user acceptance (Tools).
+- Close the run with a verdict against the done condition.
+
+**Other seats:**
+
+- **The sufficiency seat** — grades the entry check: a seat that authored none of the spec, the
+  architecture store, or the product baselines it grades from, and never a seat that will design
+  or build this batch. Exempt from plan approval like any grading seat.
+- **Design seats (producing, when the phase fires)** — staffing is your call:
+  `technical-analyst` for the design deltas, `principal-architect` for a store delta,
+  `qa-engineer` for the `**TEST:**` cases; `staff-engineer` stays the builder and never designs
+  its own gaps. They author exactly the gaps the check named and nothing else (Tools). Each
+  plans first and works only on a plan you approved.
+- **The card-authoring seat** — a technical-analyst-class design seat, never the builder who
+  will execute the cards; QA authors the `**TEST:**` cases within the slicing that seat sets.
+- **Builders (producing seats)** — decompose each card into concrete tasks at build time, the
+  decomposition disclosed in the cycle report, and build test-first; craft in Tools.
+- **Verification seats** — never the implementer: implementation and verification are never
+  the same seat. Verification executes against real infrastructure and reads the code and
+  its evidence — per-cycle grading, the whole-implementation final validation, and the
+  per-cycle code-minimalism lens (Tools). The same independence covers this run's design-time
+  grades: the cycle-card review before the card confirm — its grade covering buildability, and
+  an infeasible judgment escalating to the user as a business-level scope decision — and the
+  judgment content of any build-time `baseline-delta.md` entry before the user's acceptance
+  (Tools). The landing verification seat is scope-extended to
+  the graded folds; lane runs add the map-delta boundary check (the accepted work made no
+  map write beyond the marked delta) to the same seat.
+- **The gap-finding seat** — a fresh `devils-advocate`, dispatched blind per run: never the
+  seat that built these cycles, and never one that saw this feature's design-time test cases.
+  It hunts what the builder and the test author both missed (Tools); the mutation lens rides
+  the existing verification seat, which already holds code sight.
+- **The user** — the sufficiency verdict's routing at run-open: each store trip the check raised
+  (ruled here, or deferred on the record), each in-flight conflict it raised, and any disputed
+  clause the grader could not clear · the **design checkpoint** — the design and its store delta
+  signed, blocking, before the first cycle · the **card confirm** — the slicing ruled, blocking,
+  before build · an infeasible card judgment, escalated as a business-level scope decision · a
+  commodity-category adopt-first ruling or an `IP-XXX` provisioning call halted out of a cycle
+  (Tools) · architecture-deviation consent: a cycle that adds or removes a box, adds,
+  removes, or redirects an arrow, or moves a responsibility across a boundary of the store delta
+  signed this run stops and is presented — build as approved, or amend the delta by the user's
+  ruling first · requirement ambiguity or a judgment call a producer flags — answered by the user,
+  investigable gaps excepted · scope escalation (work bigger than the run was framed; the
+  run stays FAIL unless the user explicitly accepts) · exempting a grading round from the
+  attempt count (Boundaries) · an epic member's attempt-exhaustion disposition — carve the
+  member out or hold the whole run (Boundaries; never the lead's) · a disputed gap-finding
+  kind, and each beyond-spec gap finding's disposition — fix now, book to `BACKLOG.md`, or
+  accept as designed (Tools) · gap-rework bound exhaustion or a no-progress gap-rework round
+  (Boundaries) · final acceptance (accept /
+  amend / reject).
+```
+
+- **Kept deliberately:** nothing of the section remains in the `.md` — the schema carries it
+  whole; the `.md`'s Rules section names "seat wiring and independence, decisions reserved to
+  the user" as schema territory, and the obligated raw Read delivers it. Two in-section cuts
+  the rewrite made before the move have their own entries below (the deviation-gate grammar
+  single-homing; the Tools-side restatement pointers). One further referent compression — the
+  gap-finding seat's "hunts what the builder and the test author both missed" — takes no
+  entry: the shipped wording is preserved verbatim in this entry's Content block above.
+- **Consumers assessed:** the charter-form audit re-keys to the `.md` + schema pair in the same
+  wave (`.claude/rules/mochiko/primitive-edits.md` — pair grading, D9); no skill or template
+  addresses this command's section headings (the [v0.69.0] entry's grep finding, unchanged
+  since).
+
+## [v0.92.0] `## Tools` — the whole section moves to the schema (D2/D7)
+
+- **Disposition:** superseded → the tool-binding rules in
+  `plugins/mochiko/schemas/implement.yaml` (`impl.tools-referenced-never-restated` through
+  `impl.register`), text per the referent's Tools section at D12 grain; skill-owned floors ride
+  as `pointer:` rules.
+- **Tier failed:** n/a — supersession by ruling (record D2/D7 — Tools bindings are stage-1
+  scope; `DECISIONS.md` 2026-08-26 row).
+- **Content:** the whole shipped section, verbatim:
+
+```
+## Tools
+
+Each tool below is referenced, never restated — its procedure lives in its home.
+
+- **Sufficiency check** — the entry instrument, procedure in `mochiko:review-sufficiency`: it
+  owns the clause set, the per-row / per-card scope split, the gap forms, the absent-baseline
+  branch, and the trip-versus-gap distinction. What binds here: the grading seat authored none
+  of the sources (Roles & Responsibilities); the verdict is, per row, *sufficient* or a gap
+  list; any gap fires the design phase over exactly those gaps and nothing else; a disputed
+  clause defaults to gap and the dispute goes to the user — the grader never clears alone. The
+  verdict lands as **`sufficiency-report.md`** in the feature dir (Reports) and is the run's
+  durable assessment record: it carries the store-consult result and any no-delta claim, the
+  trips for the user's disposition at run-open, the `quickstart.md` null path where no real
+  external-integration surface exists, and any `[MODIFY]` amendment the check named against a
+  delivered feature.
+- **Design phase** (conditional — fires on any gap) — design seats author **only the named
+  gaps**, rung-justified per `mochiko:patterns-plan-minimalism`; outputs land at
+  `.mochiko/features/FEAT-XXX/` as deltas mirroring their baselines (`data-model.md`,
+  `contracts/`; a delta against a prose baseline in appliable before/after form), plus the
+  **store delta** where the structural trigger fired — its structure and scope bound
+  `mochiko:patterns-system-design`'s, its grammar and lifecycle
+  `mochiko:authoring-architecture-store`'s. A non-author seat grades the output —
+  `mochiko:review-plan-artifacts` for conformance to the gap list and card quality (blocking),
+  `mochiko:review-feasibility` for buildability and cross-artifact contradiction — and then the
+  **design checkpoint** follows: plain blocking text where the user signs the design and the
+  store delta before the first cycle starts (Boundaries). The user may stop there and resume the
+  build later.
+  **Absent baselines:** where the check graded a baseline absent, the phase's first duty is the
+  seed — empty scaffolds stating so where no code is delivered; reconstructed from delivered
+  code and **confirmed with the user at the design checkpoint** where it exists. The seed is the
+  baseline write; this feature's design still lands as deltas, never merged into the seed.
+  **Map-entry hardening:** the phase asserts the design-implied dependency relations and the
+  sharpened extent onto the capability's map entry with provenance, and fills the entry-side
+  architecture link when a store delta is produced (`mochiko:authoring-feature-map`); status
+  stays as the scope source set it, and intended-vs-designed drift surfaces to the user at the
+  checkpoint. **Where the check's delivered-feature clause fired**, the same phase writes the
+  `[MODIFY]` marked delta on the **affected delivered feature's** map entry — the amendment the
+  sufficiency report named, in that skill's delta grammar — so the entry carrying the break is
+  the entry that records it.
+  **Mid-run re-fire:** a builder hitting undesigned structure mid-cycle halts that cycle and the
+  phase re-fires **scoped to the discovery** — same grade, same checkpoint; the
+  architecture-deviation gate anchors to the signed delta once one exists.
+  **Over an epic the phase always fires**, for the joint spine at `.mochiko/epics/EPIC-XXX/` —
+  the joint design plan, the joint architecture and seam design with every cross-member seam
+  owner **named at design time** (no later-lander default inside an epic), batch ordering, and
+  any **shared-baseline delta** authored once in the spine under a single pen-holder (a
+  single-member baseline keeps its per-feature delta); every spine artifact is a deliverable
+  under `templates/artifact-format.md`, and every epic shared-write surface is governed by the
+  transport floor (Boundaries). Shape, mint, and close: `mochiko:authoring-epic`.
+- **Card authoring + the card confirm** — after the design phase, or directly on a zero-gap
+  verdict. `tasks.md` holds **cycle cards** from the tasks template (rendered by
+  `mochiko-cli template tasks`, or its schema `plugins/mochiko/schemas/tasks.yaml` Read raw when
+  the binary is absent — the shipped schema is the first-class source of truth) per
+  `mochiko:patterns-vertical-tdd`, which owns the slicing judgment and the `**TEST:**` grammar:
+  per card, stories + feature rationale, dependencies, acceptance criteria by ID, a `**TEST:**`
+  real-infrastructure gate, cycle-level brownfield exposure — no task lists, no file paths, the
+  builder decomposes at build time. Where the spec carries a Screens & Flows manifest, each
+  UX-bearing card's `**TEST:**` gate names the FLOW-XXX paths it verifies. The authoring seat is
+  never the executing builder, and QA authors the cases within its slicing (Roles &
+  Responsibilities). **On the zero-gap path** the card-authoring seat also performs the
+  map-entry dependency and extent assertion the design phase would have made, surfacing
+  intended-vs-designed drift at the confirm. The verification seat then reviews the cards — card
+  quality per `mochiko:review-plan-artifacts`, buildability its own judgment — and the **card
+  confirm** follows: its own blocking checkpoint where the user rules the slicing before build.
+- **Craft skills** — card decomposition + TDD via `mochiko:executing-tdd-cycle` (its
+  `cycle-report.md` format — the disclosed decomposition, honest difficulties, deviations,
+  `domain_deps_added` — is the uncertainty carrier; brownfield touches ride
+  `mochiko:brownfield-integration`; the pre-code ladder rides
+  `mochiko:patterns-code-minimalism` at decomposition, rungs disclosed) · verification via
+  `mochiko:testing-end-user` — evidence captured, never assumed — plus the per-cycle
+  code-minimalism lens via `mochiko:review-code-minimalism`: the verification seat reads
+  the cycle's diff, `cycle-report.md`, and the codebase around the diff (reuse claims
+  never on trust); `minimalism:` findings are advisory to the checkpoint verdict, never a
+  cycle-failing gate.
+- **Design inputs** — **`sufficiency-report.md`** and, where the design phase ran, its deltas —
+  including the **signed store delta**, the anchor for the deviation check and the
+  built-vs-signed diff — at `.mochiko/features/FEAT-XXX/`; the product baselines at
+  `.mochiko/product/` — `data-model.md`, `contracts/`, `constraints-and-decisions.md`, and the
+  architecture store, whose concern rows carry the `NFR-XXX` numeric quality targets the built
+  code must respect — and `spec.md` for
+  the cards' cited acceptance criteria.
+- **Progress surface** — `tasks.md`'s per-card checkboxes, flipped as cycles complete.
+- **Reports** — land in `.mochiko/features/FEAT-XXX/` (product-lane runs:
+  `.mochiko/product/lane-<slug>/`): `sufficiency-report.md`, cycle reports, verification reports,
+  the final-validation report, the built-vs-signed diff report. Every one is a **report** under
+  `templates/report-format.md` (machine-first frontmatter, `ultra` register, clean =
+  frontmatter-only; you bounce an envelope-breaking report per its rule 9), and each producing
+  seat's brief names the envelope path. Repeat runs append (dated);
+  delta files overwrite only via the graded fold.
+- **Regression scope** — quality gates run the full repository suite; the final validation
+  additionally executes the accumulated `**TEST:**` gates of previously delivered features
+  in this feature's territory — the union of those features' durable gate sets at
+  `.mochiko/features/FEAT-XXX/gates.md` and the cases on their cards — and this feature's
+  gates exercise any seam whose earlier side
+  is already delivered — seam ownership sits with the later-landing feature, per
+  `mochiko:authoring-feature-map`. Over an epic, the accumulated `**TEST:**` gates run once
+  over the **union** of the members' territories. **This sweep's reach explicitly covers a delta
+  fix that breaks a *different* delivered feature without being structural** — the territory
+  gates are what catch it, and a failure there fails the run like any other delivered-feature
+  regression.
+- **Cold verification** — the final validation builds and runs the quality gates from a
+  dependency-cold snapshot of the uncommitted working state
+  (`git ls-files -co --exclude-standard :!.claude/worktrees` copied to
+  `.claude/worktrees/mochiko-<purpose>/`), its results part of the acceptance evidence;
+  ensure the `/.claude/worktrees` ignore entry exists first. Over an epic, one cold snapshot
+  covers all members.
+- **Gap-finding pass** — the final validation's discovery layer, procedure in
+  `mochiko:testing-gap-finding`, referenced never restated. It runs on **selection-scope and
+  epic runs only**; a delta-scope or product-lane run skips it and the final-validation report
+  **states the skip explicitly**, never a silent no-op. Over an epic it runs once, over the
+  union of member territories. **Dispatch is two-message and blind:** the first message to the
+  fresh gap-finding seat (Roles & Responsibilities) carries only the feature's `spec.md`,
+  **`sufficiency-report.md` and the design-phase deltas** where they exist, and Screens & Flows, plus
+  the product baselines `data-model.md`,
+  `contracts/`, and the store's concern rows carrying the `NFR-XXX` targets — never the code,
+  `tasks.md`, the `**TEST:**` cases, the cycle
+  reports, or the verification reports; the seat states its derived expectations, and only then
+  does probing begin. The seat's brief carries the model-tiering routing rule (Ways of Working),
+  and its delegated reads stay inside that same fence. Alongside it, the **mutation lens** runs
+  on the verification seat, at **high depth only**; its skips are disclosed per the skill, so a
+  run at high depth owes either mutation results or a stated skip. **Findings split by kind:** a
+  finding demonstrating spec-required behavior broken — evidence captured, the spec clause cited
+  — fails the final validation; a beyond-spec finding is advisory to the checkpoint. You confirm
+  each finding's kind at the checkpoint verdict against the cited clause; a disputed kind
+  defaults advisory and the dispute goes to the user (Roles & Responsibilities) — the finder
+  never gates alone. A gap surfaced in a previously delivered feature's territory is not this
+  run's rework: it routes to a `/mochiko:feature` delta card, cited in the report.
+- **Store landing** — a built structural change folds into the architecture store per
+  `mochiko:authoring-architecture-store`, in three parts: the delta's elements **flip
+  `built`** and their `FEAT-XXX` keys clear (transcription — it rides this run's landing
+  audit); the touched rows' `As-built:` and `Drift:` fields are **written as judgment and
+  independently graded** like any other governing-surface write (Ways of Working); and the
+  **orphan check** runs — an in-flight-class element keying no open feature is flagged, never
+  left. The store skill regenerates the derived root `ARCHITECTURE.md` from the result; the
+  index is never hand-edited here. Where `.mochiko/memory/knowledge-management.md` exists, the
+  same landing carries its KM obligations.
+- **Baseline touches** — mid-fix discovery that the work touches a product baseline → the
+  dispatched run authors `baseline-delta.md` in its feature dir at discovery — a minimal
+  enumerated delta in appliable form. **A build-time technical decision is written the same way
+  and never in place:** a `D-XXX`, `C-XXX`, or `IP-XXX` row discovered at decomposition is
+  authored as a `baseline-delta.md` entry against `constraints-and-decisions.md`, and its
+  judgment content is graded **as judgment** by the landing verification seat — an independent
+  non-author grade before the user's acceptance, the `As-built:`/`Drift:` pattern — while the
+  landing's three-way diff stays the transcription check of faithful application only. **Two
+  calls are never the builder's:** a commodity-category adopt-first ruling and an `IP-XXX`
+  provisioning call each halt the cycle to the user's checkpoint, where
+  `mochiko:patterns-adopt-first`'s constraint-challenge keeps its firing site (Boundaries).
+- **Acceptance landing** — at user acceptance, one landing executes whole, branched by scope
+  type. **Selection scope** — the same landing that executes the store landing above executes
+  the map's graduation batch per `mochiko:authoring-feature-map`: this run's delivered work rows
+  fold into the capability's extent lines and the rows vanish (pending rows persist) · the
+  capability's status is set `delivered` (dated), never regressing · the
+  `FEATURES.md` index line updates ·
+  the specs-index row is touched — the spec reads closed exactly when all its selected
+  work rows have folded (derived, never asserted). No separate feature-close stage
+  exists. **Epic** — one landing executes **each member's** graduation batch (as above) plus
+  the **epic close** per `mochiko:authoring-epic`: the `[EPIC-XXX]` row markers vanish, the
+  manifest is stamped delivered (dated), the spine directory persists as record; every touched
+  baseline still folds exactly once — a **shared-baseline delta folds once from the spine**, a
+  single-member baseline from its feature delta — each via the graded three-way diff below.
+  Multi-spec closure is compositional: each spec reads closed exactly when all **its own**
+  selected work rows have folded, however many specs one epic landing touches.
+  **Delta scope** — the entry's marked delta folds per `mochiko:authoring-feature-map`'s
+  delta fold. **Both scopes:** every touched baseline folds via a graded fold — three-way
+  diff: pre-fold baseline + delta vs folded result; delta applied whole, nothing else
+  changed — checked by the landing verification seat (Roles & Responsibilities). **One carve:
+  the store's fold IS the Store landing above** — status flips, graded `As-built:`/`Drift:`
+  writes, and the orphan check, not a three-way diff; it is folded exactly once, like any
+  other touched baseline. A delta
+  whose baseline file is absent at fold time folds into a fresh `.mochiko/product/` file
+  (empty pre-fold side), the absence surfaced to the user as a seeding gap. The same landing
+  folds back the gap findings the user ruled fix-now or backlog: each is authored — QA craft,
+  in the `**TEST:**` grammar it already owns — into `.mochiko/features/FEAT-XXX/gates.md`,
+  minted there if absent, so it rides the territory accumulation at every later final
+  validation (`mochiko:testing-gap-finding`). Findings the user accepted as designed do not
+  fold.
+- **Register** — user-facing prose per `templates/output-style.md`.
+```
+
+- **Kept deliberately:** nothing of the section remains in the `.md` beyond the Rules section's
+  "tool bindings" naming; the referenced-never-restated posture survives as the opener rule
+  `impl.tools-referenced-never-restated`. In-section cuts the rewrite made before the move
+  (restatement pointers, the territory-accumulation rationale clause, the repeated
+  referenced-never-restated tags) have their own entries below. Three further referent
+  compressions take no separate entries — the sufficiency bullet's "the entry instrument" /
+  "durable assessment record" phrasings, preserved verbatim in this entry's Content block;
+  and the design checkpoint's "plain blocking text" form plus the epic seam-owner "(no
+  later-lander default inside an epic)" parenthetical, restored schema-side at
+  `impl.acceptance-plain-text` and `impl.epic-seam-owners` respectively.
+- **Consumers assessed:** every pointed-at skill and template is untouched — the section
+  referenced, never restated, so its move re-homes pointers without changing any procedure's
+  owner; the tasks-template render path (`mochiko-cli template tasks` / `tasks.yaml` raw Read)
+  is carried into the schema unchanged.
+
+## [v0.92.0] `## Ways of Working` — the whole section moves to the schema (D2/D7)
+
+- **Disposition:** superseded → the ways-of-working rules in
+  `plugins/mochiko/schemas/implement.yaml` (`impl.author-grader-default-fail` …
+  `impl.acceptance-plain-text`), text per the referent's Ways of Working section at D12 grain.
+- **Tier failed:** n/a — supersession by ruling (record D2/D7 — Ways of Working is stage-1
+  scope; `DECISIONS.md` 2026-08-26 row).
+- **Content:** the whole shipped section, verbatim:
+
+```
+## Ways of Working
+
+- **Author ≠ grader** — no output is cleared by its author, default FAIL. Any seat that
+  writes code or artifacts plans first and works only on a plan you approved; grading,
+  verification, and fact-finding seats are exempt.
+- **Escalation cadence** — reserved-to-user questions accumulate and land as one batch at the
+  cycle checkpoint; only a question the build cannot proceed without interrupts mid-cycle.
+  Advisory verifier findings ride the same rule — a Minor advisory finding defaults to a
+  `BACKLOG.md` booking, never an in-cycle fix; an Important-or-above advisory finding blocks
+  the cycle and enters the checkpoint batch.
+- **Model tiering** — exploration and fact-finding dispatches ride the class-keyed tiering
+  floor: locate/enumerate reads go to a native `Explore` subagent spawned `model: haiku`,
+  interpretive or absence-driven reads stay session tier, and every seat brief carries the
+  routing rule. Class key, dispatch ladder, and brief obligation:
+  `mochiko:patterns-model-tiering`, referenced never restated.
+- **Delta re-verification** — re-verification is scoped to the delta: a test-only or
+  records-only change gets a delta-grade of the changed surface, never a full gate re-sweep;
+  a delta round re-runs no quality gates, the prior gate evidence standing while the graded
+  head is unmoved — and the graded object is the code tree (`git rev-parse
+  HEAD:<code-dir>`), so a records-only commit does not move the graded head.
+- **Commits and acceptance** — suggest commits; never run git mutations, never push — an
+  ephemeral, self-removed verification snapshot is not a mutation of refs, index, tracked
+  content, or history. User acceptance is plain blocking text, never a timed prompt.
+```
+
+- **Kept deliberately:** all five bullets survive as rules — none dropped; only the model-tiering
+  bullet's trailing "referenced never restated" tag dies (its own entry below).
+- **Consumers assessed:** `mochiko:patterns-model-tiering` and `mochiko:patterns-sound-loop`
+  untouched; the [v0.79.0] redeclarable-set entry below reads the run-open point, which stays
+  in the `.md` protocol — unaffected.
+
+## [v0.92.0] `## Boundaries — the non-waivable floor` — the whole section moves to the schema (D2/D7)
+
+- **Disposition:** superseded → the floor rules in `plugins/mochiko/schemas/implement.yaml`
+  (`impl.baselines-never-in-place` … `impl.transport-floor`), each `class: floor` —
+  must-survive under the re-keyed charter audit (M3), skill-owned floors as `pointer:` rules;
+  text per the referent's Boundaries section at D12 grain (the attempt-economy bullet alone
+  yields five blocks, the record's D12 worked example). Second landing site: the "Architecture
+  before detail" bullet's sign-half — no code before the user signs — lands at
+  `impl.gate-design-checkpoint`, outside the Boundaries floor range.
+- **Tier failed:** n/a — supersession by ruling (record D2/D7 — Boundaries is stage-1 scope;
+  D6/M3 — `class: floor` gains its audit consumer; `DECISIONS.md` 2026-08-26 row).
+- **Content:** the whole shipped section, verbatim:
+
+```
+## Boundaries — the non-waivable floor
+
+- **Baselines are never edited in place.** Product baselines change only through the landing's
+  graded fold — never mid-run. The design phase writes **deltas beside them**, and a build-time
+  technical decision takes the same delta path (Tools). **One carve, and only one:** a store
+  write at the design checkpoint's user sign-off is legal, and only as in-flight-class delta
+  elements. Ruled truth in the store is never edited in place either — the signed delta stands
+  beside it and the landing folds it.
+- **Architecture before detail.** Where the sufficiency check named gaps, no code is written
+  before the user has signed the design phase's output — the store delta especially, signed on
+  a rendered diagram plus its named `AX-XXX` row changes (no render surface → present source
+  plus the changed-element table, and record it). A later contradiction with the signed delta
+  returns to the user for a consented amendment, never designed around silently.
+- **Feature work never overrules the constitution.** A governance conflict conforms, or is
+  amended/waived through `governance-ledger.md` — the user's ruling.
+- **A ratified constraint is never silently overridden.** A commodity-category check colliding
+  with one files a constraint-challenge finding — the constraint's text · the real requirement
+  it plausibly restates · the candidate it excludes — reserved to the user like any governance
+  conflict; only the colliding decision pauses, the run proceeds elsewhere. Shape and trigger:
+  `mochiko:patterns-adopt-first`.
+- **The attempt economy.** A cycle consumes an **attempt** every time a verification seat
+  grades it — whatever the round is called (rework, completion, targeted fix, re-grade);
+  default 3 attempts per cycle, redeclarable only at run open. Exempting a round from the
+  count is reserved to the user, never lead discretion. Two consecutive rounds with
+  unchanged findings is a no-progress stop: halt the cycle, present state. **In an epic**, a
+  member that exhausts its attempt bound or hits the no-progress stop halts **member-scoped**;
+  the disposition — carve the member out (its rows return to pending, the epic continues) or
+  hold the whole run — is **reserved to the user** (never lead discretion), because carve-out
+  breaks the one-unit promise.
+  **Gap-rework at final validation** is the same economy's analogue at the whole-run scale:
+  rework driven by the gap-finding pass carries a **whole-run bound, default 2 rounds**,
+  redeclarable only at run open (protocol). A finding that localizes to one cycle's territory
+  charges that cycle's remaining attempts instead. Bound exhaustion, or a round whose findings
+  are unchanged, halts the run and presents state — the disposition is **reserved to the
+  user**.
+- **Gates are never severity-triaged.** A failed `**TEST:**` gate or quality gate fails the
+  cycle per the done condition; `minimalism:` findings stay advisory at any severity
+  (Tools).
+- **The lane never widens in place.** A product-lane run discovering it stands on an
+  in-flight feature's territory files the finding to that run and aborts.
+- **The sound-loop floor.** A judgment-authored write to a governing surface obliges the loop:
+  a seat produces on a plan you approved, an independent non-author seat reviews before the
+  user's gate, the user rules — this run's shape (the sufficiency grade by a non-author seat,
+  design seats on approved plans graded by a non-author before the design checkpoint, card
+  authoring split from building and ruled at the card confirm, builders on approved plans,
+  verification seats never the implementer, final acceptance) already carries it. Trigger test,
+  exemptions, seat wiring, and disclosure: `mochiko:patterns-sound-loop`, referenced never
+  restated.
+- **The transport floor.** A run that composes more than one seat gains a floor on its
+  composition and messaging: a split trigger — message legs on any multi-seat messaging,
+  topology legs on shared writes — non-waivable once triggered. Trigger test, floor legs,
+  composition-safe shapes, and disclosure: `mochiko:patterns-transport-floor`, referenced
+  never restated.
+```
+
+- **Kept deliberately:** every floor survives as a `class: floor` rule — the attempt-economy
+  defaults (3 per cycle, 2 gap-rework rounds) now valued from the schema's `vars:` block, the
+  `.md` run-open line de-literalized to match (build lead's flag-1 ruling, this wave). Three
+  in-section cuts the rewrite made before the move have their own entries below (the carve-out
+  rationale clause; the sound-loop seat re-list; the repeated referenced-never-restated tags).
+  One further referent compression — the attempt definition's "(rework, completion, targeted
+  fix, re-grade)" round-name list — takes no entry: the shipped wording is preserved verbatim
+  in this entry's Content block above.
+- **Consumers assessed:** `mochiko:patterns-sound-loop`, `mochiko:patterns-transport-floor`,
+  and `mochiko:patterns-adopt-first` untouched — each floor keeps its pointer at the new home;
+  the re-keyed charter audit (primitive-edits.md, same wave) grades floor presence across the
+  pair.
+
+## [v0.92.0] The `**Not done — default FAIL**` list — 15 clauses become the `fail-condition` rule set (D7)
+
+- **Disposition:** superseded → the 15 `impl.fail.*` rules labeled `fail-condition` in
+  `plugins/mochiko/schemas/implement.yaml`, in the referent's order
+  (`impl.fail.sufficiency-unrecorded` … `impl.fail.no-acceptance`); the `.md`'s Not-done line
+  re-keys to the count pointer — "the 15 rules labeled `fail-condition` in
+  `plugins/mochiko/schemas/implement.yaml`" — N=15 pinned (record N6), the C2 guard, the count
+  match checker-verified (D13).
+- **Tier failed:** n/a — supersession by ruling (record D7 — the FAIL clauses move labeled
+  `fail-condition`, the Not-done line re-keys to the label set; C2 hardening — risk accepted
+  eyes-open by the user; `DECISIONS.md` 2026-08-26 row).
+- **Content:** verbatim —
+
+```
+**Not done — default FAIL:** an unrecorded sufficiency verdict · gaps present but the design
+phase skipped, or its design and store delta unsigned · a cycle card built by the seat that
+authored it, or built before the card confirm · an unchecked cycle card · a failing quality
+gate · verification without real-infrastructure evidence · a regression in a previously
+delivered feature's gates · a build-time baseline write made in place rather than as a
+judgment-graded `baseline-delta.md` entry · a surfaced store deviation neither built as
+approved nor consented as an amendment · a signed-delta landing without its built-vs-signed
+diff, or leaving an in-flight-class element neither flipped `built` nor keyed to an open
+feature · a touched baseline accepted without its graded
+fold · a selection-scope or epic run without its gap-finding pass · a delta-scope or lane run
+whose report does not state the skip · an unresolved spec-violation gap finding · user
+acceptance not given.
+```
+
+- **Kept deliberately:** all fifteen clauses survive one-for-one as rules — none dropped, none
+  merged; the default-FAIL posture survives on the `.md` line itself ("any one standing fails
+  the run") plus its out-of-sync halt sentence.
+- **Consumers assessed:** the charter-form audit's FAIL-survival criterion (leg iv) re-keys
+  from this list's literal text to the `fail-condition` label set in the same wave
+  (`.claude/rules/mochiko/primitive-edits.md`); the D13 checker binds the `.md` count to the
+  schema set deterministically.
+
+## [v0.92.0] Protocol step 3 — the done-condition detail paragraph compresses to the fixed close (D2/D7)
+
+- **Disposition:** superseded → the `.md`'s compressed `### 3. Done condition — fixed` plus
+  the schema rules now carrying the detail: `impl.regression-sweep` (accumulated territory
+  gates + seam exercise), `impl.graded-fold`, the landing rules (`impl.landing-verifier-folds` ·
+  `impl.landing-selection` · `impl.landing-epic` · `impl.landing-delta`), the diff/orphan
+  obligations at `impl.fail.store-landing-incomplete`, and the sufficiency/design/card/gap
+  obligations at their `impl.fail.*` counterparts.
+- **Tier failed:** n/a — supersession by ruling (record D2/D7; `DECISIONS.md` 2026-08-26 row).
+- **Content:** verbatim (the paragraph's closing epic sentence is the relocation entry below):
+
+```
+3. **Run to the done condition.** The sufficiency verdict is recorded as a report; where it
+   named gaps, the design phase ran over exactly those gaps and the user signed its design and
+   store delta at the **design checkpoint** before the first cycle; the cycle cards were
+   authored by a seat that did not build them and ruled by the user at the **card confirm**.
+   Every `tasks.md` cycle card is `[x]`; each card was
+   decomposed into concrete tasks by its builder at build time — the decomposition disclosed
+   in the cycle report, never pre-written — and the built code was implemented test-first
+   (red/green/refactor) and independently verified — executed `**TEST:**` gates, quality
+   gates with exit codes, captured real-infrastructure evidence — per cycle and once for the
+   whole implementation; the feature's verification also ran the **accumulated TEST gates of
+   previously delivered features in its territory**, and any seam against an
+   earlier-delivered feature was exercised here, against the real delivered side; on a
+   selection-scope or epic run the final validation also ran the **blind gap-finding pass**
+   (Tools), a delta-scope or product-lane run stating that skip explicitly in its
+   final-validation report; the code
+   meets its criteria, holds traceability to requirements, and aligns with the project's
+   governance; where a store delta was **signed this run — whenever signed**, at the design
+   checkpoint or at a mid-run re-fire — a built-vs-signed diff
+   report exists — owed on the **signed-delta-existed trigger alone**, so a feature descoped
+   to nothing is caught at its landing rather than weeks later by the orphan sweep — and any
+   divergence it names was ruled by the user; and the acceptance
+   landing executed whole — map bookkeeping, the store landing, and every touched baseline's
+   graded fold. The
+   run closes at final acceptance (accept / amend / reject).
+```
+
+- **Kept deliberately:** the compressed step 3 keeps the paragraph's spine — every card `[x]`,
+  test-first build, independent real-infrastructure verification per cycle and whole, criteria
+  met, traceability, governance alignment, the acceptance landing executed whole, the close at
+  final acceptance (accept / amend / reject), and "And nothing below stands." binding the
+  fail-condition set. The descoped-feature rationale clause inside this paragraph leaves with
+  no home — its own supersession entry below.
+- **Consumers assessed:** the charter audit's fixed-done-condition leg (iii) still reads the
+  `.md`; the detail obligations it used to read here are graded through the pair from this
+  wave (legs iv–vi, primitive-edits.md).
+
+## [v0.92.0] The descoped-feature rationale clause — deleted, no home (protected-trail survivor leaves by ruling)
+
+- **Disposition:** superseded → deleted; no home carries it. The trigger it explained survives
+  whole — the built-vs-signed diff owed on the signed-delta-existed trigger alone, at the
+  landing rules and `impl.fail.store-landing-incomplete`.
+- **Tier failed:** n/a — supersession by ruling (record D7 — the approved rewrite's deletion
+  ledger names this cut; `DECISIONS.md` 2026-08-26 row). Recorded as a supersession, never a
+  Tier-1 strip, because the clause is carried verbatim in the [v0.91.0] plan-time store-delta
+  anchor entry's **Kept deliberately** field below — protected-trail content leaves only by
+  recorded ruling; classing confirmed by the build lead at plan approval (flag 3).
+- **Content:** verbatim — "so a feature descoped
+  to nothing is caught at its landing rather than weeks later by the orphan sweep".
+- **Kept deliberately:** the trigger's character — the diff owed on the delta's existence
+  alone, not on the work having stayed in scope — survives as rule text; only the explanatory
+  clause dies.
+- **Consumers assessed:** none — explanatory prose local to this command; the [v0.91.0] entry
+  that carried it reads historically.
+
+## [v0.92.0] Entry's absent-surface handling — relocated to the sufficiency rule's tail
+
+- **Disposition:** relocated → the sufficiency tool rule's absent-surfaces tail in
+  `plugins/mochiko/schemas/implement.yaml` (per the referent's Tools sufficiency bullet); the
+  `.md` Entry keeps the one-line summary ("Absent surfaces are surfaced to the user, never
+  auto-resolved, never run-failing").
+- **Tier failed:** 1 (altitude — the Entry step carried tool-level procedure the sufficiency
+  bullet owns)
+- **Content:** verbatim — "A missing governance region is surfaced, never auto-resolved;
+  present → each code-touching brief names the relevant `.claude/rules/mochiko/` files as an
+  obligated read. On a brownfield codebase a missing or stale
+  `.mochiko/memory/codebase-analysis.md` is surfaced the same way — offer `/mochiko:setup`, or
+  proceed greenfield with the warning logged; **a store with no ruled content — scaffold-only
+  or absent** — is surfaced the same way too: offer the `/mochiko:architecture` bootstrap,
+  never fail the run for it. The check still runs in every case: rows touching an absent
+  surface grade per its absent-baseline branch."
+- **Consumers assessed:** `mochiko:review-sufficiency` owns the absent-baseline branch itself
+  and is untouched — the relocation moves the command-side handling only.
+
+## [v0.92.0] Step 3's epic build shape — relocated beside the mechanisms it restated
+
+- **Disposition:** relocated → the card-authoring rule's epic line plus the epic clauses of
+  the cold-verification, regression-scope, and acceptance-landing rules in
+  `plugins/mochiko/schemas/implement.yaml` (per the referent's Tools bullets — each member of
+  the shape lands beside the mechanism it restated).
+- **Tier failed:** 1 (altitude — the done condition restated build mechanics the tool bullets
+  own)
+- **Content:** verbatim (protocol step 3's closing sentence) — "**Over an epic:** one merged
+  **sequential** cycle sequence from the joint design — shared foundation cycles first, then
+  in-epic dependency order — with feature-tagged cards whose reports land in each member's
+  `.mochiko/features/FEAT-XXX/`; one final validation from one cold snapshot covering all
+  members, the accumulated territory `**TEST:**` gates running once over the **union** of
+  member territories; one acceptance landing executes each member's graduation batch plus the
+  epic close (`mochiko:authoring-epic`)."
+- **Consumers assessed:** none — the epic shape's authoritative homes
+  (`mochiko:authoring-epic`, the map skill's graduation batch) are untouched; this was the
+  command's own restatement.
+
+## [v0.92.0] Epic entry-rule detail — relocated to `mochiko:authoring-epic`, pointer stays
+
+- **Disposition:** relocated → `mochiko:authoring-epic` (the skill owns epic mint and entry
+  semantics); the `.md` Entry keeps the compressed rule list + pointer ("Epic entry rules —
+  delta cards never join, in-epic dependencies don't block, outside-epic ones do:
+  `mochiko:authoring-epic`").
+- **Tier failed:** 1 (altitude — entry-rule detail the epic skill owns)
+- **Content:** verbatim — "**Epic entry:** `$ARGUMENTS` naming an `EPIC-XXX` resolves to its
+  members by lookup — minting is the desk's (`/mochiko:feature`), never declared here. Every
+  member gates on ratified selection as selection scope (delta-scope cards never join an
+  epic); an in-epic dependency does not block, an outside-epic dependency at a non-`delivered`
+  row still blocks."
+- **Consumers assessed:** `mochiko:authoring-epic` — flagged to the wave's skill-ripple check
+  to confirm the skill states the desk-only mint and the three membership/dependency rules;
+  the `.md`'s compressed list still names each rule meanwhile, so no rule is context-lost if
+  the skill lags.
+
+## [v0.92.0] Deviation-gate grammar — single-homed at the floor rule
+
+- **Disposition:** relocated → single-homed at the floor rule `impl.deviation-gate` in
+  `plugins/mochiko/schemas/implement.yaml`; the reserved-to-user rule keeps the consent
+  decision and its two dispositions as a pointer (per the referent — R&R points at Boundaries,
+  the grammar stated once).
+- **Tier failed:** 2 (duplication — the grammar's second site named no behavior beyond the
+  floor rule's)
+- **Content:** verbatim (the R&R user bullet's site) — "architecture-deviation consent: a
+  cycle that adds or removes a box, adds,
+  removes, or redirects an arrow, or moves a responsibility across a boundary of the store delta
+  signed this run stops and is presented — build as approved, or amend the delta by the user's
+  ruling first"
+- **Consumers assessed:** the gate's anchor history rides the [v0.91.0]/[v0.81.0] entries
+  below, unaffected; the grammar itself survives byte-equivalent at `impl.deviation-gate`.
+
+## [v0.92.0] R&R restatements inside Tools — reduced to pointers
+
+- **Disposition:** relocated → the seat-wiring rules (`impl.staffing-latitude` …
+  `impl.seat-gap-finder-blind`); each tool rule carries a pointer in place of the restatement.
+- **Tier failed:** 2 (duplication — restated seat rules Roles & Responsibilities already
+  carried)
+- **Content:** verbatim, two sites — (i) card authoring: "The authoring seat is
+  never the executing builder, and QA authors the cases within its slicing (Roles &
+  Responsibilities)."; (ii) gap-finding dispatch: "the first message to the
+  fresh gap-finding seat (Roles & Responsibilities) carries only".
+- **Consumers assessed:** none — command-local pointers; the seat definitions themselves moved
+  whole in the R&R supersession above.
+
+## [v0.92.0] Epic carve-out rationale clause — deleted
+
+- **Disposition:** deleted
+- **Tier failed:** 1 (altitude — rationale; the user-reserved disposition it explained
+  survives whole in the schema's attempt-economy floor rules)
+- **Content:** verbatim (Boundaries, the attempt economy's epic member-halt disposition) —
+  ", because carve-out
+  breaks the one-unit promise"
+- **Consumers assessed:** none — command-local rationale.
+
+## [v0.92.0] Territory-accumulation rationale clause — deleted
+
+- **Disposition:** deleted
+- **Tier failed:** 1 (altitude — rationale; the gates fold-back rule and the accumulation
+  mechanism survive whole)
+- **Content:** verbatim (the Acceptance landing's gap-finding fold-back sentence) — ", so it
+  rides the territory accumulation at every later final
+  validation"
+- **Consumers assessed:** none — the accumulation's homes (`mochiko:testing-gap-finding`, the
+  regression-scope rule) are untouched.
+
+## [v0.92.0] Sound-loop bullet's six-item seat re-list — deleted
+
+- **Disposition:** deleted — the schema's `impl.sound-loop-floor` rule points at the
+  seat-wiring and independence rules instead of re-listing them (per the referent: "This run's
+  seat wiring (Roles & Responsibilities) already carries it end to end").
+- **Tier failed:** 2 (duplication — each of the six items restates a seat rule Roles &
+  Responsibilities carries)
+- **Content:** verbatim — "— this run's shape (the sufficiency grade by a non-author seat,
+  design seats on approved plans graded by a non-author before the design checkpoint, card
+  authoring split from building and ruled at the card confirm, builders on approved plans,
+  verification seats never the implementer, final acceptance) already carries it."
+- **Consumers assessed:** `mochiko:patterns-sound-loop` owns the floor and is untouched; each
+  of the six seat facts survives as its own seat-wiring/independence rule.
+
+## [v0.92.0] Repeated "referenced never restated" tags — deleted, stated once
+
+- **Disposition:** deleted — the posture is stated once, at the rule
+  `impl.tools-referenced-never-restated` (the shipped Tools opener's successor); the three
+  trailing tags were repeats.
+- **Tier failed:** 2 (duplication)
+- **Content:** verbatim, three sites — the closing tag of (i) Ways of Working / Model tiering:
+  "Class key, dispatch ladder, and brief obligation:
+  `mochiko:patterns-model-tiering`, referenced never restated."; (ii) Boundaries / the
+  sound-loop floor: "Trigger test,
+  exemptions, seat wiring, and disclosure: `mochiko:patterns-sound-loop`, referenced never
+  restated."; (iii) Boundaries / the transport floor: "Trigger test, floor legs,
+  composition-safe shapes, and disclosure: `mochiko:patterns-transport-floor`, referenced
+  never restated." — each pointer sentence survives; only the ", referenced never restated"
+  tag died.
+- **Consumers assessed:** none — the pointed-at skills are untouched.
+
 <!-- Wave context: the plan-stage-retirement build wave (v0.91.0) — `/mochiko:plan` retires as a
 command and `/mochiko:implement` becomes the pipeline's single downstream run behind an entry
 sufficiency check with a conditional in-run design phase. Ruling for every [v0.91.0] entry below:

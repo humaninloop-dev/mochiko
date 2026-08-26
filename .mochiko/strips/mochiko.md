@@ -6,6 +6,24 @@ Entry formats: `strips/README.md`. Wave context: skill-succinctness wave 1 (desi
 single physical lines, so the R2 line denominator undercounts this skill; dual accounting
 recorded here and flagged on the wave's ROADMAP row.
 
+## [v0.92.0] Composes paragraph — the six-section enumeration re-keyed to implement's `.md` + schema pair
+
+- **Disposition:** superseded → charters named without the section enumeration; `implement`
+  described as a `.md` + schema pair (Identity & Mission + Adaptive Goal Protocol + the
+  obligated schema read of `plugins/mochiko/schemas/implement.yaml`, labels registry
+  `command-labels.yaml`). `feature` and `architecture` keep the charter form unchanged.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26
+  command-content-schema row → `.mochiko/brainstorms/command-content-schema/record.md`
+  D2/D7/D9).
+- **Content:** verbatim — "as six-section **charters** (Identity & Mission · Adaptive Goal
+  Protocol · Roles & Responsibilities · Tools · Ways of Working · Boundaries)".
+- **Kept deliberately:** `feature` and `architecture` keep the six-section charter form; the
+  anatomy's authoritative home is `.claude/rules/mochiko/primitive-edits.md`'s charter-form
+  exception paragraph — the router pointed at it, never owned it.
+- **Consumers assessed:** nothing else keyed on the enumeration — zero references to
+  implement's retired section headings anywhere under `plugins/` or `.claude/rules/`
+  (V2 round-1 verification).
+
 ## [v0.91.0] Fix round — four router surfaces the main pass missed (V2 B2/B3 + V1 + V2 advisory)
 
 - **Disposition:** superseded → a cluster cross-reference corrected, the artifact-chain row

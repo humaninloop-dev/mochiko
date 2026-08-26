@@ -51,22 +51,37 @@ template edit; the path scope above covers them so this reminder injects on a sc
   *floor present + goal contract present* — the Boundaries floor (including the sound-loop
   floor pointer `mochiko:patterns-sound-loop`, present in all three charters) + the DM's
   bare-minimum responsibilities, and the Adaptive Goal Protocol's contract — in place of the
-  default-FAIL-goal / Harness / Bindings checks. For `feature.md` (the standing desk) the
+  default-FAIL-goal / Harness / Bindings checks. For `implement.md` from v0.92.0 these criteria
+  grade the **`.md` + `plugins/mochiko/schemas/implement.yaml` pair** (command-content-schema
+  D9): the narrative `.md` carries Identity & Mission, the protocol, and the obligated schema
+  read; the schema carries the R&R / Tools / Ways-of-Working / Boundaries rule blocks — floor
+  present + goal contract present are judged across both surfaces, the sound-loop floor pointer
+  counted on whichever surface carries it. For `feature.md` (the standing desk) the
   contract is **per-visit**: converge-to-done-condition. For `plan.md` / `implement.md`
   (pipeline runs) the contract is **per-run**: (i) a protocol step literally labeled
   **Entry** carrying the neither-source routing; (ii) convergence at a named EXISTING user
   gate — plan: proposal approval, the approved list = the run's done condition and
   default-FAIL floor, delta scope collapsing; implement: run-open confirmation naming batch,
-  scope type, attempt bound (redeclarable there and only there), and the fixed done
-  condition; (iii) a fixed done condition closing at the existing acceptance gate; (iv) the
-  `**Not done — default FAIL**` list present with every prior FAIL clause surviving. The
-  check must NOT demand a per-run negotiated goal (that is the desk's per-visit form, not
+  scope type, attempt bounds (redeclarable there and only there), and the fixed done
+  condition; (iii) a fixed done condition closing at the existing acceptance gate; (iv) FAIL
+  survival — for implement, keyed to the **`fail-condition` label set**: every rule labeled
+  `fail-condition` in `implement.yaml` surviving (a reword keeps its ID), and the `.md`
+  Not-done line's hard-coded count matching the schema's; for plan (retired v0.91.0,
+  historical audits) the `**Not done — default FAIL**` list present with every prior FAIL
+  clause surviving; (v) for implement, **ID continuity (D11):** no `impl.*` ID — rule or
+  `impl.sec.*` section (D14, v0.93.0) — vanished without a tombstone — a reword keeps its ID,
+  a split mints children recording the parent, a merge tombstones the losers; (vi) for implement, **`class: floor` = must-survive (M3):** a `floor`-class rule
+  leaves only by recorded supersession-by-ruling; an `advisory`-class rule may change without
+  supersession ceremony. The D13 advisory checker's output is cited in the audit brief as a
+  deterministic pre-pass, beside the char-budget pre-assert.
+  The check must NOT demand a per-run negotiated goal (that is the desk's per-visit form, not
   the pipeline's) and must not demand Goal / Harness / Bindings sections. Everything else
   (independence, decisions reserved to the user, preserved responsibilities, strips,
   budgets) applies unchanged. Rulings:
   `.mochiko/brainstorms/pm-role-and-feature-derivation/record.md` D10 ·
   `.mochiko/decisions/2026-08-13-charter-plan-implement.md` ·
-  `.mochiko/brainstorms/charter-ritual-balance/record.md` D3 (`DECISIONS.md` 2026-08-13).
+  `.mochiko/brainstorms/charter-ritual-balance/record.md` D3 (`DECISIONS.md` 2026-08-13) ·
+  `.mochiko/brainstorms/command-content-schema/record.md` D9 · D11 · D14 (`DECISIONS.md` 2026-08-26).
 
 **Protected content leaves ONLY by ruling.** A line in a record's protected set, marked `KEPT:`, or
 traceable to a `DECISIONS.md` row may be removed only as a recorded supersession-by-ruling. A silent

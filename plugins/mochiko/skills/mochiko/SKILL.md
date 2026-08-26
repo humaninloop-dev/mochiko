@@ -18,10 +18,11 @@ The kernel-free successor to human-in-loop. Discipline lives in the skill librar
 
 Each command below states its whole contract in one of two anatomies — `setup`, `specify`,
 and `brainstorm` as v8 **Goal · Harness · Bindings**; `feature`, `architecture`, and `implement`
-as six-section **charters** (Identity & Mission · Adaptive Goal Protocol · Roles &
-Responsibilities · Tools · Ways of Working · Boundaries), whose Boundaries floor,
-Delivery-Manager responsibilities, and goal contract carry the same teeth — and the lead
-composes the run toward it. Any run, command or not, is sound only when its done-condition
+as **charters**, whose Boundaries floor, Delivery-Manager responsibilities, and goal contract
+carry the same teeth — `implement`'s as a **`.md` + schema pair**: Identity & Mission +
+Adaptive Goal Protocol in the `.md`, plus an obligated schema read of
+`plugins/mochiko/schemas/implement.yaml` (labels registry `command-labels.yaml`)
+carrying the rule set — and the lead composes the run toward it. Any run, command or not, is sound only when its done-condition
 was written before it ran and defaults to FAIL, no output is cleared by its author (the
 grade reads the artifact itself), and the decisions the command reserves to the user are
 ruled by the user.

@@ -5,6 +5,62 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.93.0] — 2026-08-26
+
+`implement.yaml` gains **first-class section nesting** — the D14 post-build amendment (record
+`.mochiko/brainstorms/command-content-schema/record.md` D14, user-ruled same day;
+`DECISIONS.md` 2026-08-26 row). The flat top-level `rules:` list and its six `#` comment
+dividers are superseded by a `sections:` grammar: six nodes `{id, title, intent, rules}` —
+`impl.sec.roles` · `impl.sec.reserved` · `impl.sec.tools` · `impl.sec.ways-of-working` ·
+`impl.sec.boundaries` · `impl.sec.fail-conditions` — section IDs minted once under the D11
+lifecycle, titles verbatim from the divider wording, intents one navigation line each
+(sections never grow a second prose surface). **Pure relocation:** all 104 rule IDs and texts
+unchanged (+4-space indent only; checker stats identical pre/post — rules 104 · floor 34 ·
+must 69 · advisory 1 · fail-condition 15). `commands/implement.md`'s Rules section now
+enumerates the six section IDs as the rule map; the Not-done line gains the
+`impl.sec.fail-conditions` address, its label-keyed N=15 unchanged. Checker reworked: section
+grammar asserted (`<cmd>.sec.<slug>` format, id/title/intent/rules shape, mint-once
+uniqueness shared with rule IDs), per-section stats emitted, a surviving flat `rules:` key
+now a finding. Charter audit's ID-continuity criterion extended to `impl.sec.*`
+(`.claude/rules/mochiko/primitive-edits.md`). Strips: 2 supersession entries `[v0.93.0]` in
+`.mochiko/strips/implement.md` (grammar header line + `rules:` key + six dividers; the `.md`
+source-of-truth sentence). Author≠grader audit **PASS** (0 Critical / 0 Major / 3 Minor —
+intent glosses trimmed on the fix round; the no-git-pre-image provenance note stands until
+the wave commits); checker PASS 0 findings; gates 4/5/6 (this entry, marketplace 0.93.0,
+`cargo test` 12/12).
+
+## [0.92.0] — 2026-08-26
+
+`/mochiko:implement` becomes a **`.md` + schema pair** — the first command-content schema
+(record `.mochiko/brainstorms/command-content-schema/record.md` D1–D13 as review-amended;
+`DECISIONS.md` 2026-08-26 row; the simplified-rewrite referent + strip ledger at the session's
+`implement-rewrite.md`). The command's rule-shaped content — Roles & Responsibilities, Tools
+bindings, Ways of Working, Boundaries, and the 15 FAIL clauses — moves to
+`plugins/mochiko/schemas/implement.yaml`: **104 mint-once rules** (34 floor · 69 must · 1
+advisory) under the D6 grammar `{id, labels, class, text, ruling?, pointer?}`, dotted-slug IDs
+(`impl.<kebab-name>`, FAIL clauses as `impl.fail.*`), a 13-value `vars:` block with `${var}`
+substitution, 34 `ruling:` protection anchors, and skill-owned floors carried as `pointer:`
+rules. `commands/implement.md` slims 429 → 87 lines: frontmatter + Identity & Mission + the
+Adaptive Goal Protocol, an **obligated first-action raw Read** of the schema, and the Not-done
+line re-keyed to the count-pinned `fail-condition` set (N=15, out-of-sync halt). New
+`plugins/mochiko/schemas/command-labels.yaml` — the ten-label controlled vocabulary all
+command-schema rules draw from. New **advisory deterministic checker**
+`scripts/check-command-schema.py` (D13, GI-019 advisory carve-out; exit-code signal, never a
+gate): ID uniqueness/format, registry labels, `${var}` closure, `ruling:` anchor resolution,
+the N=15 pair guard, `kind:` discriminator, tombstone integrity — PASS 0 findings on the
+shipped pair, ten-probe negative matrix verified. Charter audit re-keyed in
+`.claude/rules/mochiko/primitive-edits.md`: implement graded as the pair from v0.92.0 —
+label-keyed FAIL survival, D11 ID continuity, `class: floor` = must-survive, checker output as
+deterministic pre-pass. Strips: 17 entries `[v0.92.0]` in `.mochiko/strips/implement.md` (8
+supersessions incl. the five whole sections byte-exact, 9 rewrite strips; M4 rule —
+shipped-v0.91.0 verbatim throughout, machine-verified) + 1 router supersession in
+`.mochiko/strips/mochiko.md`; router and `report-format.md` re-pointed. Wave: 2 plan-approved
+producer seats (disjoint ownership schemas+checker vs command+strips+re-key), 2 fresh
+author≠grader validators — **both PASS round 1**, Minor-only fix rounds (incl. the
+`impl.gates-never-triaged` floor split and the strike-all-block-counts systemic ruling) →
+2/2 CONFIRMED-PASS; gates 4/5/6 (this entry, marketplace 0.92.0, `cargo test` 12/12). The
+D10 first-live-run watch (delivery probes + benefit observations) stands in `BACKLOG.md`.
+
 ## [0.91.0] — 2026-08-26
 
 `/mochiko:plan` retired; `/mochiko:implement` becomes the pipeline's single downstream run

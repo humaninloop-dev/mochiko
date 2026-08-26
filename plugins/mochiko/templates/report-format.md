@@ -75,7 +75,8 @@ fields are not.
 9. **Prose on a clean report is a defect — and every collecting lead enforces it.**
    `status: pass` plus body content outside rule 2's set is **not a clean report**: it
    fails the deterministic-and-clean clearing conditions (the dispatching command's
-   devolved-branch terms — `commands/implement.md`'s cycle checkpoint) and returns to the
+   devolved-branch terms — `plugins/mochiko/schemas/implement.yaml`'s `impl.escalation-batching` /
+   `impl.finding-severity-routing` rules) and returns to the
    lead instead of devolving. The check is not the cycle checkpoint's alone: **any lead
    collecting any report class** (feasibility, review, disclosure included) reads it
    mechanically — a report whose body carries unsanctioned sections bounces to its seat
@@ -92,5 +93,5 @@ fields are not.
 lead-collected report class. ADR:
 `.mochiko/decisions/2026-08-22-verbosity-envelope-enforcement.md`) · **Consumed by:** the
 report templates in this directory, `executing-tdd-cycle/references/CYCLE-REPORT-FORMAT.md`,
-`testing-end-user/references/REPORT-TEMPLATES.md`, `commands/implement.md`'s report-envelope
-binding.
+`testing-end-user/references/REPORT-TEMPLATES.md`, `implement.yaml`'s `impl.reports-envelope`
+rule.

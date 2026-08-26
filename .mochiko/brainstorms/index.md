@@ -9,7 +9,47 @@ One entry per session directory under `.mochiko/brainstorms/<topic-slug>/`, **ne
 ---
 
 ## `command-content-schema` — YAML schema for command content: block IDs, altitude clusters, variable injection; implement first, then rollout
-- **When:** 2026-08-26 · **Status:** open
+- **When:** 2026-08-26 · **Status:** accepted · solo cold review via blind-map two-message
+  dispatch (30-angle map, topic-only spawn): verdict critical-gaps — 4 Critical / 6 Important /
+  5 Minor survived, 14 reviewer-killed → dispositioned: C1 explored with the user (problem
+  statement redrafted on the user's own driver set — deterministic checks · label queries ·
+  deviation checking · atomic-rules-vs-prose separation — plus "ship the checker" ruled) · C2
+  door-A ruled, risk accepted eyes-open with the checker named compensator · I1 rejected-road
+  recorded on three principled reasons · remainder one user-ruled batch "as recommended" +
+  post-review dotted-slug ID amendment; verify round 1 NOT CLEAN (3 blocking — incl. the
+  approval over-claim on the floor text — + 7 nits, all lead-repaired same round) → round 2
+  CLEAN; acceptance followed · **D14 post-build amendment same day (v0.93.0):** flat `rules:`
+  grammar superseded by nested `sections:` nodes (six `impl.sec.*` IDs), pure relocation —
+  104 rule IDs/texts unchanged, checker stats identical pre/post · **D15 amendment same day
+  (v0.94.0):** referential closure — rule texts self-contained, deixis a defect with a
+  curated checker lint; one live instance reworded, ID kept
+- **Artifacts:** [record.md](command-content-schema/record.md) (canonical — Problem, ground
+  facts F1–F5 as corrected, D1–D13, session trail, review + disposition + verify trail, build
+  surface) · [implement-rewrite.md](command-content-schema/implement-rewrite.md) (step-0
+  durable referent — the simplified rewrite + its strip ledger)
+- **About:** push the simplified-implement work further — a command's rule-shaped content
+  becomes a model-interpreted YAML schema. Ruled (D1–D13 as amended): `implement.yaml` is the
+  source of truth, the model interprets at runtime, no build-time render (D1 `Assumed`, n=0) ·
+  stage-1 split rules-move/narrative-stays with a benefit-keyed absorption trigger AND a
+  user-reserved retreat branch (D2) · no shared rule library — per-command rules + a common
+  ten-label vocabulary registry `command-labels.yaml` as the cross-command link (D3
+  `Contested`) · labels navigation-first, edit-time drift-check ceremony hook on benefit-keyed
+  graduation (D4) · `vars:` + `${var}` injection (D5, sigil review-amended off the skeleton
+  collision) · rule grammar `{id, labels, class, text, ruling?, pointer?}`, dotted-slug IDs
+  `impl.<kebab-name>` (D6 as amended) · all rule-shaped content moves incl. the 15 FAIL
+  clauses as `impl.fail.*`, N pinned in the `.md` (D7, C2-hardened) · no new kernel admission,
+  pair-graded charter audit (D9) · rollout per-command by its own ruling (D10) · ID lifecycle
+  mint-once + tombstones incl. namespace-level retreat (D11) · grain = one independently-
+  citable obligation per block (D12) · advisory deterministic checker ships stage 1 under the
+  GI-019 carve-out (D13, ship `Confident` / efficacy `Assumed`).
+- **Landed:** DECISIONS.md row (2026-08-26) · BACKLOG "Command-content schema build" section
+  (cold-buildable build item + first-live-run watch) · ROADMAP: merged into the
+  plan-surface-builds Next row (cap held). **Built same day at v0.92.0** — B3 confirmation at
+  wave open; 2 plan-approved producers + 2 fresh author≠grader validators, both PASS round 1,
+  Minor-only fix rounds (`impl.gates-never-triaged` floor split → 104 rules ·
+  strike-all-block-counts systemic ruling) → 2/2 CONFIRMED-PASS; checker PASS 0 findings;
+  17+1 strips M4 machine-verified; gates 4/5/6 (CHANGELOG, marketplace 0.92.0, cargo test
+  12/12). Build item → trail; the D10 first-live-run watch stays in BACKLOG.
 
 ## `plan-stage-utility` — why plan as a distinct stage; can specify + architecture carry enough guidance for implement; sufficiency assessment
 - **When:** 2026-08-26 · **Status:** accepted · pair cold review via blind-map two-message
