@@ -1,0 +1,416 @@
+[
+  {
+    "id": "R-001",
+    "rule": "THE GRADED ARTIFACT IS A SET, NOT A FILE: the CLAUDE.md governance region, the rules files, and the ledger are ONE DELIVERABLE and are graded TOGETHER; grading only the region is PARTIAL VALIDATION, WHICH IS NOT VALIDATION. There is NO constitution.md. Evidence: the validation run reads and grades all three members and states its verdict over the set, never over the region alone.",
+    "class": "floor",
+    "source": "SKILL.md:Overview (**The graded artifact is a set, not a file** — the CLAUDE.md governance region, the rules files, and the ledger are one deliverable and are graded together; grading only the region is partial validation, which is not validation)"
+  },
+  {
+    "id": "R-002",
+    "rule": "EVERY SET MUST PASS — no exceptions for \"simple projects\" or \"tight deadlines.\" A simple project earns no reduced bar: simple projects become complex and governance debt compounds. Evidence: the run applies the same full bar regardless of project size or schedule pressure, and no item is relaxed on a size/deadline ground.",
+    "class": "floor",
+    "source": "SKILL.md:Overview (Every set MUST pass — no exceptions for \"simple projects\" or \"tight deadlines.\"); SKILL.md:Common Rationalizations (\"Too detailed for simple project\" | Simple projects become complex. Governance debt compounds.); SKILL.md:Red Flags (\"The checklist is too detailed for this simple project\")"
+  },
+  {
+    "id": "R-003",
+    "rule": "PURPOSE / GRADED PROPERTIES: governance validation ensures the surface set is ENFORCEABLE, TESTABLE, TRACE-CLOSED, and FREE OF ANTI-PATTERNS — and runs BEFORE FINALIZATION. Evidence: the run's checks map onto these four properties and it is performed on a drafted set prior to finalization/acceptance.",
+    "class": "must",
+    "source": "SKILL.md:Overview (Governance validation ensures the surface set is enforceable, testable, trace-closed, and free of anti-patterns before finalization)"
+  },
+  {
+    "id": "R-004",
+    "rule": "LETTER IS SPIRIT: **Violating the letter of the rules is violating the spirit of the rules.** Evidence: no item is waived on a \"we honored the intent\" ground; a literal miss is graded as a miss.",
+    "class": "floor",
+    "source": "SKILL.md:Overview (**Violating the letter of the rules is violating the spirit of the rules.**)"
+  },
+  {
+    "id": "R-005",
+    "rule": "SKIPPING VALIDATION BECAUSE IT \"LOOKS FINE\" IS ABANDONING QUALITY ASSURANCE, not following its spirit — \"the constitution looks fine\", \"it's mostly complete\", \"looks complete enough\" are all disqualified grounds; LOOKING COMPLETE ≠ BEING COMPLETE, so run the checklist. Evidence: the run is performed in full even when the set appears complete on inspection, and no completeness impression substitutes for a checklist pass.",
+    "class": "must",
+    "source": "SKILL.md:Overview (Skipping validation because \"the constitution looks fine\" or \"it's mostly complete\" is not following the spirit of quality assurance—it is abandoning it); SKILL.md:Red Flags (\"The constitution looks complete enough\"); SKILL.md:Common Rationalizations (\"Constitution looks complete\" | Looking complete ≠ being complete. Run the checklist.)"
+  },
+  {
+    "id": "R-006",
+    "rule": "REVIEW EVIDENCE IN ARTIFACTS (floor): the independent review leaves its VERDICT and PER-FINDING DISPOSITIONS in the REVIEWED ARTIFACTS THEMSELVES — review evidence that lives only in conversation is a FLOOR VIOLATION. Evidence: the verdict and each finding's disposition exist as durable written output against the artifacts, not solely as chat text.",
+    "class": "floor",
+    "source": "SKILL.md:Overview (The independent review leaves its verdict and per-finding dispositions in the reviewed artifacts themselves — review evidence that lives only in conversation is a floor violation)"
+  },
+  {
+    "id": "R-007",
+    "rule": "WHEN NOT TO USE — NOT DURING INITIAL DRAFTING: validate AFTER drafting, not during; draft first, validate second, separate phases (the \"interrupts creative flow\" objection is not a ground to interleave). Evidence: the run is invoked against a drafted set, not mid-authoring.",
+    "class": "must",
+    "source": "SKILL.md:When NOT to Use (During initial constitution drafting (validate AFTER drafting, not during)); SKILL.md:Common Mistakes (Validating during drafting | Interrupts creative flow | Draft first, validate second. Separate phases.)"
+  },
+  {
+    "id": "R-008",
+    "rule": "WHEN NOT TO USE — NOT FOR DOCUMENTS THAT ARE NOT CONSTITUTIONS: specs, plans, and code are out of scope and route elsewhere. Evidence: the skill is not run against a spec, plan, or code artifact.",
+    "class": "must",
+    "source": "SKILL.md:When NOT to Use (For documents that are not constitutions (specs, plans, code))"
+  },
+  {
+    "id": "R-009",
+    "rule": "WHEN NOT TO USE — NOT WHEN THE USER ONLY WANTS TO READ a constitution without validation. Evidence: a read-only request is answered without invoking the grading run.",
+    "class": "must",
+    "source": "SKILL.md:When NOT to Use (When user only wants to READ a constitution without validation)"
+  },
+  {
+    "id": "R-010",
+    "rule": "WHEN NOT TO USE — NOT FOR INFORMAL PROJECT NOTES OR TEMPORARY GOVERNANCE SKETCHES. Evidence: an informal note or throwaway sketch is not put through the run.",
+    "class": "must",
+    "source": "SKILL.md:When NOT to Use (For informal project notes or temporary governance sketches)"
+  },
+  {
+    "id": "R-011",
+    "rule": "INPUTS ARE ALL READ FROM FILE, NEVER FROM THE AUTHOR'S REPORT. Evidence: the run names the files it Read for every input, and no check is discharged from the producer's summary, report, or say-so.",
+    "class": "floor",
+    "source": "SKILL.md:Core Process (The inputs, all read from file, never from the author's report)"
+  },
+  {
+    "id": "R-012",
+    "rule": "INPUT — THE SURFACE SET, with exact locations: the CLAUDE.md governance region BETWEEN `<!-- mochiko:governance:begin -->` / `<!-- mochiko:governance:end -->`, EVERY rules file under `.claude/rules/mochiko/`, and the ledger at `.mochiko/memory/governance-ledger.md`. Evidence: the run reads the region delimited by those literal markers, enumerates every rules file under that directory, and reads the ledger at that path.",
+    "class": "must",
+    "source": "SKILL.md:Core Process (the **surface set** — the CLAUDE.md governance region (between `<!-- mochiko:governance:begin -->` / `<!-- mochiko:governance:end -->`), every rules file under `.claude/rules/mochiko/`, and the ledger (`.mochiko/memory/governance-ledger.md`))"
+  },
+  {
+    "id": "R-013",
+    "rule": "INPUT — THE SESSION SYNTHESIS `.mochiko/memory/governance-intent.md`, read as THE TRACEABLE CONTRACT (not a brief): it is what the set is graded against for trace closure and module/waiver selection. Evidence: the run reads that file and grades the set against it.",
+    "class": "must",
+    "source": "SKILL.md:Core Process (plus the session synthesis (`.mochiko/memory/governance-intent.md`, the traceable contract))"
+  },
+  {
+    "id": "R-014",
+    "rule": "INPUT — THE PRODUCER'S TRACE SUMMARY MANIFEST is an input to the run. Evidence: the run reads the manifest and closes its rows in the Trace closure line.",
+    "class": "must",
+    "source": "SKILL.md:Core Process (and the producer's **trace summary manifest**)"
+  },
+  {
+    "id": "R-015",
+    "rule": "MISSING SYNTHESIS WHEN THE SET CARRIES TRACE KEYS IS ITSELF A FAIL. Evidence: where the set carries GI trace keys and `governance-intent.md` is absent, the run returns FAIL on that ground rather than grading around it.",
+    "class": "floor",
+    "source": "SKILL.md:Core Process (A missing synthesis when the set carries trace keys ... each is itself a FAIL)"
+  },
+  {
+    "id": "R-016",
+    "rule": "A MISSING TRACE SUMMARY MANIFEST IS ITSELF A FAIL. Evidence: where the manifest is absent, the run returns FAIL on that ground rather than reconstructing or excusing it.",
+    "class": "floor",
+    "source": "SKILL.md:Core Process (a missing manifest ... each is itself a FAIL)"
+  },
+  {
+    "id": "R-017",
+    "rule": "A MISSING MEMBER OF THE SET IS ITSELF A FAIL. Evidence: where the region, a rules file the set implies, or the ledger is absent, the run returns FAIL on that ground rather than grading the surviving members alone.",
+    "class": "floor",
+    "source": "SKILL.md:Core Process (or a missing member of the set — each is itself a FAIL)"
+  },
+  {
+    "id": "R-018",
+    "rule": "STALE `.mochiko/memory/constitution.md` ON DISK IS A SUPERSEDED ARTIFACT THE LEAD SHOULD HAVE DELETED — FLAG IT IN THE FIX LIST. Evidence: the run checks that path and, when the file exists, names it in the Issues-requiring-fix list as a superseded artifact for deletion.",
+    "class": "must",
+    "source": "SKILL.md:Core Process (A `.mochiko/memory/constitution.md` on disk is a superseded artifact the lead should have deleted — flag it in the fix list)"
+  },
+  {
+    "id": "R-019",
+    "rule": "POINTER: the quality checklist is `references/QUALITY-CHECKLIST.md` — Read it as Step 1; its items are the graded surface and are NOT restated in the body. Evidence: the run cites that reference as the checklist it ran.",
+    "class": "format",
+    "source": "SKILL.md:Step 1 (Read [references/QUALITY-CHECKLIST.md](references/QUALITY-CHECKLIST.md))"
+  },
+  {
+    "id": "R-020",
+    "rule": "CHECKLIST ASSEMBLY IS MODULE-PARAMETERIZED: read the SYNTHESIS'S MODULE SELECTIONS first, then assemble the working checklist as UNIVERSAL CORE + THE CHECKLIST FRAGMENT EMBEDDED IN EACH SELECTED MODULE'S FILE (`templates/constitution-modules/*.md`). Evidence: the run states which modules the synthesis selected and reports its checklist as core plus exactly those modules' embedded fragments.",
+    "class": "must",
+    "source": "SKILL.md:Step 1 (The structure checks are **module-parameterized**: read the synthesis's module selections, then assemble the working checklist as universal core + the checklist fragment embedded in each selected module's file (`templates/constitution-modules/*.md`))"
+  },
+  {
+    "id": "R-021",
+    "rule": "EACH MODULE FRAGMENT IS APPLIED TO THE MODULE'S **ROUTED** CONTENT — region pointer / rules files / ledger section — PER THE AUTHORING SKILL'S ROUTING TABLE. Evidence: the run grades each selected module's fragment against the surface the routing table assigns that module, not against the region by default.",
+    "class": "must",
+    "source": "SKILL.md:Step 1 (applied to the module's **routed** content (region pointer / rules files / ledger section — per the authoring skill's routing table))"
+  },
+  {
+    "id": "R-022",
+    "rule": "VERIFY EVERY ITEM — do NOT skip items because they \"seem obvious\" or \"clearly pass\"; obvious failures happen. Evidence: the run accounts for every assembled checklist item with a per-item result, with no item silently dropped as self-evident.",
+    "class": "must",
+    "source": "SKILL.md:Step 1 (Verify every item. Do not skip items because they \"seem obvious\" or \"clearly pass\"); SKILL.md:Common Mistakes (Skipping checklist items | \"Obviously passes\" | Run every item. Obvious failures happen.)"
+  },
+  {
+    "id": "R-023",
+    "rule": "DO NOT CHECK MODULE FRAGMENTS THE SYNTHESIS DID NOT SELECT. Evidence: no unselected module's fragment appears in the run's checklist or produces a finding.",
+    "class": "must",
+    "source": "SKILL.md:Step 1 (and do not check module fragments the synthesis did not select)"
+  },
+  {
+    "id": "R-024",
+    "rule": "VERSION BUMP — **MAJOR** triggers: a principle REMOVED or INCOMPATIBLY REDEFINED; a FLOOR-LEVEL CHANGE **including a low→high DEPTH-LEVEL FLIP**; MODULE ATTACH/DETACH (examples: removing \"Test-First\"; declaring high; attaching `hipaa`). Evidence: the run classifies such a change as MAJOR, and the depth-flip and module attach/detach triggers are applied as MAJOR rather than MINOR.",
+    "class": "must",
+    "source": "SKILL.md:Step 8 (version-bump table, MAJOR row)"
+  },
+  {
+    "id": "R-025",
+    "rule": "VERSION BUMP — **MINOR** triggers: a NEW PRINCIPLE ADDED or SIGNIFICANT EXPANSION; a WAIVER ADDED OR REMOVED (examples: adding \"Observability\"; un-waiving Testing). Evidence: the run classifies such a change as MINOR, including waiver removal/un-waive as MINOR.",
+    "class": "must",
+    "source": "SKILL.md:Step 8 (version-bump table, MINOR row)"
+  },
+  {
+    "id": "R-026",
+    "rule": "VERSION BUMP — **PATCH** triggers: CLARIFICATION or NON-SEMANTIC CHANGE (examples: rewording for clarity; typo fixes; formatting). Evidence: the run classifies such a change as PATCH.",
+    "class": "must",
+    "source": "SKILL.md:Step 8 (version-bump table, PATCH row)"
+  },
+  {
+    "id": "R-027",
+    "rule": "EVERY CHANGE NEEDS A VERSION-BUMP DETERMINATION — \"small change\" is not a ground to omit one. Evidence: the run emits a bump determination whenever changes were made, never leaving it unstated for a small edit.",
+    "class": "must",
+    "source": "SKILL.md:Common Mistakes (Missing version bump | \"Small change\" | Every change needs version bump determination.); SKILL.md:Step 9 (Version bump: [MAJOR/MINOR/PATCH] (if changes made))"
+  },
+  {
+    "id": "R-028",
+    "rule": "OUTPUT — PRODUCE AN EXPLICIT VALIDATION VERDICT in the `VALIDATION RESULT` block shape given in the body (the fenced template), not a prose summary. Evidence: the run's output carries the template's field lines in that structure.",
+    "class": "format",
+    "source": "SKILL.md:Step 9 (Produce explicit validation verdict: ```VALIDATION RESULT: ...```)"
+  },
+  {
+    "id": "R-029",
+    "rule": "OUTPUT FIELD — `VALIDATION RESULT: [PASS/FAIL]` — the header verdict line, one of the two words. Evidence: the output opens with that line carrying PASS or FAIL.",
+    "class": "format",
+    "source": "SKILL.md:Step 9 (VALIDATION RESULT: [PASS/FAIL])"
+  },
+  {
+    "id": "R-030",
+    "rule": "OUTPUT FIELD — `Checklist items: [X/Y passed] (core + [N] module fragments: [names])` — the count AND the module-fragment accounting with the fragment NAMES. Evidence: the output states X/Y passed and names the N module fragments run.",
+    "class": "format",
+    "source": "SKILL.md:Step 9 (Checklist items: [X/Y passed] (core + [N] module fragments: [names]))"
+  },
+  {
+    "id": "R-031",
+    "rule": "OUTPUT FIELD — `Surface integrity:` with ALL SIX sub-items: region markers OK · index→home resolution X/X · rules files paths-scoped Y/Y · scope coverage Z/Z · new-file read line present/absent/n-a · universal-in-rules violations: none/list. Evidence: the output carries the Surface integrity line with each of the six sub-items reported.",
+    "class": "format",
+    "source": "SKILL.md:Step 9 (Surface integrity: [region markers OK · index→home resolution X/X · rules files paths-scoped Y/Y · scope coverage Z/Z · new-file read line present/absent/n-a · universal-in-rules violations: none/list])"
+  },
+  {
+    "id": "R-032",
+    "rule": "OUTPUT FIELD — `Trace closure:` with ALL FOUR sub-items: manifest rows closed X/X (PRIMARY HOME + COMPANIONS) · synthesis elements realized-or-flagged Y/Y · waivers matched · modules matched. Evidence: the output carries the Trace closure line with each sub-item reported, including the primary-home-plus-companions qualifier on manifest rows.",
+    "class": "format",
+    "source": "SKILL.md:Step 9 (Trace closure: [manifest rows closed X/X (primary home + companions) · synthesis elements realized-or-flagged Y/Y · waivers matched · modules matched])"
+  },
+  {
+    "id": "R-033",
+    "rule": "OUTPUT FIELD — `Floor/module accounting:` with ALL THREE sub-items: floor + declared level asserted (REGION STAMP = LEDGER) · modules matched to the fact profile · floor categories principled at the declared level or waived (e.g. 3 principled + 1 waived). Evidence: the output carries the Floor/module accounting line with each sub-item reported, including the region-stamp-equals-ledger equality check.",
+    "class": "format",
+    "source": "SKILL.md:Step 9 (Floor/module accounting: [floor + declared level asserted (region stamp = ledger) · modules matched to the fact profile · floor categories principled at the declared level or waived, e.g. 3 principled + 1 waived])"
+  },
+  {
+    "id": "R-034",
+    "rule": "OUTPUT FIELD — `Anti-patterns found: [list or \"none\"]`. Evidence: the output carries the line, listing each anti-pattern found or the literal \"none\".",
+    "class": "format",
+    "source": "SKILL.md:Step 9 (Anti-patterns found: [list or \"none\"])"
+  },
+  {
+    "id": "R-035",
+    "rule": "OUTPUT FIELD — `Version bump: [MAJOR/MINOR/PATCH] (if changes made)`. Evidence: the output carries the bump line when changes were made.",
+    "class": "format",
+    "source": "SKILL.md:Step 9 (Version bump: [MAJOR/MINOR/PATCH] (if changes made))"
+  },
+  {
+    "id": "R-036",
+    "rule": "OUTPUT FIELD — `Issues requiring fix:` listing EACH FAILURE. Evidence: the output carries the section and enumerates every failed item, not a summary count.",
+    "class": "format",
+    "source": "SKILL.md:Step 9 (Issues requiring fix: - [list each failure])"
+  },
+  {
+    "id": "R-037",
+    "rule": "OUTPUT FIELD — `Advisory (judgment-grade, non-blocking):` carrying SUSPECTED TRACE-FIDELITY MISMATCHES, or \"none\" — advisory means it never blocks the verdict, keeping judgment-grade fidelity findings separate from the deterministic PASS/FAIL surface. Evidence: the output carries the advisory line, and no advisory item is the sole cause of a FAIL.",
+    "class": "format",
+    "source": "SKILL.md:Step 9 (Advisory (judgment-grade, non-blocking): - [suspected trace-fidelity mismatches, or \"none\"])"
+  },
+  {
+    "id": "R-038",
+    "rule": "QUANTIFICATION: VAGUE LANGUAGE MUST BE REPLACED WITH MEASURABLE CRITERIA — a set carrying unquantified language fails this bar. Evidence: the run flags vague/unquantified principle language and names the measurable criterion it lacks.",
+    "class": "must",
+    "source": "SKILL.md:Quantification Requirements (Vague language MUST be replaced with measurable criteria)"
+  },
+  {
+    "id": "R-039",
+    "rule": "POINTER: the quantification PATTERNS and QUANTIFIED EXAMPLES are SINGLE-SOURCED in `references/ANTI-PATTERNS.md` — named there as *Vague Principle*, *Generic Thresholds*, *Missing Enforcement* — and are NOT restated in the body. Evidence: the body cites that reference and those three pattern names rather than reproducing their examples.",
+    "class": "format",
+    "source": "SKILL.md:Quantification Requirements (the patterns and quantified examples live in [references/ANTI-PATTERNS.md](references/ANTI-PATTERNS.md) (*Vague Principle*, *Generic Thresholds*, *Missing Enforcement*))"
+  },
+  {
+    "id": "R-040",
+    "rule": "EXCESS GOVERNANCE IS AN ANTI-PATTERN TOO — FAIL-ELIGIBLE on either of two triggers: (a) a principle that RESTATES A CONSTRAINT ALREADY HOMED ELSEWHERE (a **GI-017** violation — governance surfaces point at constraint homes, never restate them), or (b) a principle with NO ELICITING FACT IN THE SYNTHESIS. Evidence: the run hunts both triggers and files such a principle as FAIL-eligible, citing GI-017 for the restatement case.",
+    "class": "must",
+    "source": "SKILL.md:Quantification Requirements (**Excess governance is an anti-pattern too.** Flag as FAIL-eligible a principle that restates a constraint already homed elsewhere (a **GI-017** violation ...) or a principle with no eliciting fact in the synthesis)"
+  },
+  {
+    "id": "R-041",
+    "rule": "EXCESS ADMISSIBILITY CLAUSE: an excess finding is ADMISSIBLE ONLY when it NAMES either the constraint's EXISTING HOME (the cheaper alternative — point, don't restate) or the MISSING FACT (the bar breached). Evidence: every excess finding in the run names the existing home or the missing fact; a bare \"this feels excessive\" is not filed.",
+    "class": "must",
+    "source": "SKILL.md:Quantification Requirements (Admissible only when the finding names the constraint's existing home (the cheaper alternative — point, don't restate) or the missing fact (the bar breached))"
+  },
+  {
+    "id": "R-042",
+    "rule": "NEVER-EXCESS CARVE-OUT: a principle MANDATED BY THE ASSERTED FLOOR, AN ATTACHED COMPLIANCE MODULE, OR AN NFR IS NEVER EXCESS. Evidence: no floor-mandated, compliance-module-mandated, or NFR-mandated principle is filed as excess governance.",
+    "class": "must",
+    "source": "SKILL.md:Quantification Requirements (a principle mandated by the asserted floor, an attached compliance module, or an NFR is never excess)"
+  },
+  {
+    "id": "R-043",
+    "rule": "EXCESS FINDINGS LAND IN THE VALIDATION RESULT `Anti-patterns found` LINE LIKE ANY OTHER — they are not routed to a separate section or to the advisory line. Evidence: excess-governance findings appear in the Anti-patterns found field of the output.",
+    "class": "format",
+    "source": "SKILL.md:Quantification Requirements (These land in the VALIDATION RESULT `Anti-patterns found` line like any other)"
+  },
+  {
+    "id": "R-044",
+    "rule": "PLACEHOLDERS = INCOMPLETE = RETURN FOR COMPLETION — \"user will fill it in later\" is not a ground to accept one. Evidence: any surviving placeholder is graded as incomplete and the set is returned rather than passed.",
+    "class": "must",
+    "source": "SKILL.md:Common Mistakes (Accepting placeholders | \"User will fill in later\" | Placeholders = incomplete. Return for completion.)"
+  },
+  {
+    "id": "R-045",
+    "rule": "BINARY VERDICT — PASS OR FAIL, NO MIDDLE GROUND, NO SOFT VALIDATION LANGUAGE (\"mostly looks good\" is the defect). Evidence: the run's verdict is exactly PASS or FAIL, with no hedged or partial-pass wording anywhere in the output.",
+    "class": "must",
+    "source": "SKILL.md:Common Mistakes (Soft validation language | \"Mostly looks good\" | Binary verdict: PASS or FAIL. No middle ground.)"
+  },
+  {
+    "id": "R-046",
+    "rule": "VERIFY THE DOCUMENT **IS** A CONSTITUTION / GOVERNANCE SET BEFORE VALIDATING — the skill can be triggered by similar keywords, so confirm the artifact class first. Evidence: the run states what it confirmed the artifact to be before grading, and declines rather than grading a non-governance artifact.",
+    "class": "must",
+    "source": "SKILL.md:Common Mistakes (Validating non-constitutions | Skill triggered by similar keywords | Verify document IS a constitution before validating.)"
+  },
+  {
+    "id": "R-047",
+    "rule": "RED-FLAG STOP RULE: noticing ANY of the listed rationalizing thoughts means YOU ARE RATIONALIZING — STOP IMMEDIATELY AND RESTART VALIDATION FROM STEP 1. Evidence: on any such thought the run restarts from Step 1 rather than proceeding with a reduced pass.",
+    "class": "must",
+    "source": "SKILL.md:Red Flags - STOP and Restart Properly (If you notice yourself thinking any of these, STOP immediately ... **All of these mean:** You are rationalizing. Restart validation from Step 1.)"
+  },
+  {
+    "id": "R-048",
+    "rule": "\"JUST A MINOR UPDATE\" IS NOT A GROUND FOR REDUCED VALIDATION — MINOR UPDATES CAN INTRODUCE MAJOR ANTI-PATTERNS; run full validation. Evidence: an amend or small edit gets the same full checklist run as a fresh set.",
+    "class": "must",
+    "source": "SKILL.md:Red Flags (\"This is just a minor update, doesn't need full validation\"); SKILL.md:Common Rationalizations (\"Just a minor update\" | Minor updates can introduce major anti-patterns. Full validation.)"
+  },
+  {
+    "id": "R-049",
+    "rule": "AUTHORING MODE ≠ VALIDATION MODE: \"I already reviewed it while writing\" does not discharge validation — a FRESH REVIEW CATCHES BLIND SPOTS the authoring pass cannot. Evidence: the grading pass is run as a distinct, fresh read regardless of review done during authoring.",
+    "class": "must",
+    "source": "SKILL.md:Red Flags (\"I already reviewed it while writing\"); SKILL.md:Common Rationalizations (\"Already reviewed while writing\" | Authoring mode ≠ validation mode. Fresh review catches blind spots.)"
+  },
+  {
+    "id": "R-050",
+    "rule": "USER SATISFACTION VERIFIES NOTHING: \"user seems happy/satisfied\" does not verify that ENFORCEMENT MECHANISMS EXIST. Evidence: no item is passed on the strength of user approval; enforcement is confirmed from the artifact.",
+    "class": "must",
+    "source": "SKILL.md:Red Flags (\"User seems happy with it\"); SKILL.md:Common Rationalizations (\"User seems satisfied\" | User satisfaction doesn't verify enforcement mechanisms exist.)"
+  },
+  {
+    "id": "R-051",
+    "rule": "\"THESE ANTI-PATTERNS DON'T APPLY TO THIS CASE\" IS ITSELF THE RATIONALIZATION — EVERY RATIONALIZATION CLAIMS UNIQUENESS; THEY APPLY. Evidence: the anti-pattern scan is run in full, with no category excused as inapplicable to this project.",
+    "class": "must",
+    "source": "SKILL.md:Red Flags (\"These anti-patterns don't apply to this case\"); SKILL.md:Common Rationalizations (\"Anti-patterns don't apply here\" | Every rationalization claims uniqueness. They apply.)"
+  },
+  {
+    "id": "R-052",
+    "rule": "NEVER SKIP THE PLACEHOLDER CHECK ON THE GROUND THAT \"I DIDN'T USE ANY\" — the scan is run against the artifact regardless of what the reader believes was authored. Evidence: the placeholder scan is reported as run, not assumed clean.",
+    "class": "must",
+    "source": "SKILL.md:Red Flags (\"I can skip the placeholder check—I didn't use any\")"
+  },
+  {
+    "id": "R-053",
+    "rule": "\"VALIDATION WOULD BE REDUNDANT SINCE I WROTE IT CAREFULLY\" IS A RED FLAG — care in authoring never substitutes for the independent grade. Evidence: the run happens on its own terms, and authoring care is never cited as discharging a check.",
+    "class": "must",
+    "source": "SKILL.md:Red Flags (\"Validation would be redundant since I wrote it carefully\")"
+  },
+  {
+    "id": "R-054",
+    "rule": "THE PRAGMATISM EXCUSE IS INVERTED: PRAGMATIC = FOLLOWING THE VALIDATION PROCESS; SKIPPING IS NOT PRAGMATIC. Evidence: no check is dropped on a \"being pragmatic\" ground.",
+    "class": "must",
+    "source": "SKILL.md:Common Rationalizations (\"I'm being pragmatic\" | Pragmatic = following validation process. Skipping is not pragmatic.)"
+  },
+  {
+    "id": "R-055",
+    "rule": "\"CAN VALIDATE MORE THOROUGHLY LATER\" IS REFUSED: \"LATER\" RARELY COMES — VALIDATE NOW OR SHIP BROKEN GOVERNANCE. Evidence: the full grade is run at this gate, with no check deferred to a promised later pass.",
+    "class": "must",
+    "source": "SKILL.md:Common Rationalizations (\"Can validate more thoroughly later\" | \"Later\" rarely comes. Validate now or ship broken governance.)"
+  },
+  {
+    "id": "R-056",
+    "rule": "USER-ASKED-TO-SKIP HANDLING: USER REQUESTS DO NOT OVERRIDE PROCESS — if the user insists, DOCUMENT THAT VALIDATION WAS SKIPPED AGAINST RECOMMENDATION, and NEVER CLAIM A VALIDATED SET WHEN VALIDATION WAS SKIPPED. Evidence: on a user skip request the run records the skip-against-recommendation and emits no validated/PASS claim.",
+    "class": "must",
+    "source": "SKILL.md:Common Rationalizations (\"User asked to skip validation\" | User requests do not override process. If the user insists, document that validation was skipped against recommendation — never claim a validated set when validation was skipped.)"
+  },
+  {
+    "id": "R-057",
+    "rule": "MISSING PARTS = FAIL: \"I'll add the missing parts later\" is refused — RETURN TO AUTHORING; NEVER SIGN OFF INCOMPLETE GOVERNANCE. Evidence: an incomplete set gets a FAIL with the missing parts named, never a conditional or provisional sign-off.",
+    "class": "must",
+    "source": "SKILL.md:Common Rationalizations (\"I'll add the missing parts later\" | Missing parts = FAIL. Return to authoring; never sign off incomplete governance.)"
+  },
+  {
+    "id": "R-058",
+    "rule": "POINTER: Related Skills names **OPTIONAL:** `mochiko:authoring-constitution` as the core authoring skill — greenfield mode for new projects, brownfield mode for existing codebases (the producer half of the pair this skill validates). Evidence: the body carries the Related Skills pointer to the authoring skill with its two modes.",
+    "class": "format",
+    "source": "SKILL.md:Related Skills (**OPTIONAL:** mochiko:authoring-constitution - Core authoring for constitutions; greenfield mode for new projects, brownfield mode for existing codebases)"
+  },
+  {
+    "id": "R-059",
+    "rule": "AUTHOR ≠ GRADER (floor): the run is performed by an INDEPENDENT VALIDATOR — A DIFFERENT AGENT THAN THE AUTHOR, NEVER THE AUTHOR of the surface set, and the skill is NEVER CO-MOUNTED with `authoring-constitution` on one agent. The validator authors nothing and never edits the set it grades. Evidence: the grading seat authored no part of the set, mounts no producer skill, and hands back a fix list rather than fixes.",
+    "class": "floor",
+    "source": "SKILL.md:Overview (The independent review ...); consumer: plugins/mochiko/skills/authoring-constitution/SKILL.md:34,130; plugins/mochiko/skills/analysis-codebase/SKILL.md:121; plugins/mochiko/skills/mochiko/SKILL.md:43,150"
+  },
+  {
+    "id": "R-060",
+    "rule": "CONSUMER (agents/validator.md:9 `skills: validation-constitution` and :28 \"The `validation-*` family is natively yours — it issues your authoritative binary grade (today: `mochiko:validation-constitution`, the mounted member, for a drafted governance surface set)\"): this skill remains the VALIDATOR PERSONA'S MOUNTED MEMBER and issues that persona's AUTHORITATIVE BINARY GRADE over a DRAFTED GOVERNANCE SURFACE SET. A body that stops issuing an authoritative binary grade, or re-scopes off the drafted surface set, makes the agent's frontmatter mount and its selection ladder false.",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/agents/validator.md:9,28; SKILL.md:Overview; SKILL.md:Step 9"
+  },
+  {
+    "id": "R-061",
+    "rule": "CONSUMER (skills/mochiko/SKILL.md:31 \"`validation-*` = the skill **issues the authoritative grade** — a binary PASS/FAIL checklist grade, default FAIL, on the `validator` persona (today: `validation-constitution`; a PASS is still human-gated downstream)\"): the router-cited terms survive as this skill's identity vocabulary — `issues the authoritative grade`, `binary PASS/FAIL checklist grade`, `default FAIL`, `on the validator persona`, `a PASS is still human-gated downstream`. A paraphrase that turns this seat into lead-adjudicated input (the `review-*` form), drops the default-FAIL posture, or claims the PASS clears the gate outright breaks the family split the router defines.",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/skills/mochiko/SKILL.md:31; SKILL.md:Overview; SKILL.md:Common Mistakes (binary verdict)"
+  },
+  {
+    "id": "R-062",
+    "rule": "CONSUMER (skills/mochiko/SKILL.md:43 router row): the scope stays with ALL router-cited names intact — `independently grading a drafted governance surface set`, `against the synthesis + trace manifest`, `trace closure`, `surface integrity`, `three-part structure`, `floor/module/waiver accounting`, `anti-pattern + placeholder scans`, `version bump`, `binary PASS/FAIL + fix list`, `never the author`. Dropping any name (notably the three-part structure grade or the placeholder scan) makes the router's description of this seat false.",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/skills/mochiko/SKILL.md:43; SKILL.md:Step 9; SKILL.md:Core Process"
+  },
+  {
+    "id": "R-063",
+    "rule": "CONSUMER (skills/mochiko/SKILL.md:146 \"`validator` | one generic independent grader for any cluster — grades a finished artifact against a checklist, defaults to FAIL, authors nothing (skills: validation-constitution)\"): this skill stays a CHECKLIST-SHAPED grade of a FINISHED artifact that AUTHORS NOTHING. A body that adds authoring/fixing duties, or abandons the checklist form, contradicts the persona row that mounts it.",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/skills/mochiko/SKILL.md:146; SKILL.md:Step 1; SKILL.md:Step 9"
+  },
+  {
+    "id": "R-064",
+    "rule": "CONSUMER (skills/authoring-constitution/SKILL.md:34 \"Its quality is graded by an **independent validator** (a separate agent running `validation-constitution` — never co-mounted with this skill)\" and :130 \"Reviewing/grading an existing surface set → that is the independent validator's job (`validation-constitution`), run by a different agent\"): this skill is the VALIDATOR HALF of the governance PRODUCER↔VALIDATOR PAIR, and GRADING AN EXISTING SURFACE SET IS ITS JOB — the authoring skill routes that work here. A body that stops covering the grade of an existing/amended set orphans the producer's When-NOT-to-Use route.",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/skills/authoring-constitution/SKILL.md:34,130; SKILL.md:Overview"
+  },
+  {
+    "id": "R-065",
+    "rule": "CONSUMER (skills/testing-governance-injection/SKILL.md:23 \"As a substitute for `validation-constitution` — trace closure, structure, and placeholder grading are the validator's; this skill only tests delivery\", plus its `description:` \"static structure/trace grading is `validation-constitution`, not this skill\"): TRACE-CLOSURE, STRUCTURE, and PLACEHOLDER grading remain THIS SKILL'S, and the injection probe holds only empirical delivery. Dropping any of the three from this body leaves the probe's boundary clause pointing at a home that no longer holds them.",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/skills/testing-governance-injection/SKILL.md:3,23; SKILL.md:Step 9 (Trace closure · Surface integrity); SKILL.md:Common Mistakes (placeholders)"
+  },
+  {
+    "id": "R-066",
+    "rule": "CONSUMER (skills/review-governance-intent/SKILL.md:33 \"Out of your jurisdiction, permanently: the authored surface set and its Tier-2 grading (`mochiko:validation-constitution`, downstream — a different artifact, a different family), and **formulation/enforceability quality** of authored principles\"): this skill is the DOWNSTREAM TIER-2 grade over the AUTHORED SURFACE SET — a DIFFERENT ARTIFACT and a DIFFERENT FAMILY from the pre-ratification intent review — and FORMULATION/ENFORCEABILITY QUALITY of authored principles is graded here, not upstream. A body that narrows to intent review, or drops enforceability from its bar, leaves that jurisdiction line orphaned in both directions.",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/skills/review-governance-intent/SKILL.md:33; SKILL.md:Overview (enforceable, testable)"
+  },
+  {
+    "id": "R-067",
+    "rule": "CONSUMER (skills/analysis-codebase/SKILL.md:121 \"**For validation**: **OPTIONAL:** `mochiko:validation-constitution` grades the constitution (run by an independent validator — a different agent than the author)\"): the OPTIONAL validation pointer stays true — this skill grades the governance output of a brownfield/greenfield setup, run by a different agent than the author.",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/skills/analysis-codebase/SKILL.md:121; SKILL.md:Overview"
+  },
+  {
+    "id": "R-068",
+    "rule": "CONSUMER (skills/review-feasibility/references/FEASIBILITY-LENS.md:140 \"you grade the *topology's* conformance to governance ... never whether the governance itself is well-formed — that is `validation-constitution`, a different domain\" and :183; skills/review-plan-artifacts/SKILL.md:8 \"Not for: ... constitution (`validation-constitution`)\"): WHETHER THE GOVERNANCE ITSELF IS WELL-FORMED IS THIS SKILL'S DOMAIN — the plan-review pair routes such findings here and never grades them. Narrowing this body's domain leaves both plan-side boundary clauses pointing at a home that no longer covers it.",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/skills/review-feasibility/references/FEASIBILITY-LENS.md:140,183; plugins/mochiko/skills/review-plan-artifacts/SKILL.md:8; SKILL.md:Overview"
+  },
+  {
+    "id": "R-069",
+    "rule": "CONSUMER (schemas/governance-surfaces.yaml:14 \"Governance is a SET, authored by `authoring-constitution` and graded as one deliverable by `validation-constitution`\", :20 \"The trace summary manifest (the validator's grading surface)\", :4 \"The `--check` view must serve validation-constitution/references/QUALITY-CHECKLIST.md (the Structure Quality items)\"): the schema data file binds THREE facts to this skill — the set is graded AS ONE DELIVERABLE, the TRACE SUMMARY MANIFEST IS THE VALIDATOR'S GRADING SURFACE, and the schema's `--check` view exists to serve this skill's checklist. Dropping the set-as-one-deliverable rule or the manifest input contradicts the shipped schema.",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/schemas/governance-surfaces.yaml:4,13-20; SKILL.md:Overview; SKILL.md:Core Process"
+  }
+]

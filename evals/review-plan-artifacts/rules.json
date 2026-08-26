@@ -1,0 +1,680 @@
+[
+  {
+    "id": "R-001",
+    "rule": "The run's floor is the approved artifact proposal — the lead's rung-justified proposal the user approved at the plan-the-plan gate — and the package is graded against it, never against a fixed, mandated artifact set. Evidence: the produced review names the approved proposal as the standard it graded against, and does not fault the package for omitting an artifact the proposal never included.",
+    "class": "floor",
+    "source": "SKILL.md:Overview; SKILL.md:Quality Checklist (Graded against the approved proposal, not a fixed artifact set)"
+  },
+  {
+    "id": "R-002",
+    "rule": "Conformance to the approved proposal is graded and is BLOCKING: every proposed artifact is present, and each is within its approved depth. Evidence: the review states, per proposed artifact, that it is present and within approved depth, and treats a conformance failure as blocking rather than advisory.",
+    "class": "floor",
+    "source": "SKILL.md:Overview (Conformance to the approved proposal — BLOCKING); SKILL.md:Quality Checklist"
+  },
+  {
+    "id": "R-003",
+    "rule": "Material divergence is defined as EITHER an unproposed artifact OR an element class materially past its approved depth, and either one auto-FAILs the package. Evidence: the review uses both limbs of that definition when checking conformance, and where one is found it fails the package rather than filing it as an ordinary finding.",
+    "class": "floor",
+    "source": "SKILL.md:Overview (material divergence auto-FAILs); SKILL.md:Verdict Criteria; SKILL.md:Quality Checklist"
+  },
+  {
+    "id": "R-004",
+    "rule": "The adopt-first disclosure check is run as a named sibling check at conformance strength and is BLOCKING, even though the approved proposal does not scope it: a commodity-category decision naming neither a real off-the-shelf candidate nor 'no shelf candidate exists' is a finding. Evidence: the review checks every commodity-category decision for a named shelf candidate or the explicit no-candidate statement, cites `mochiko:patterns-adopt-first` as the trigger and floor, and treats an absent disclosure as blocking.",
+    "class": "floor",
+    "source": "SKILL.md:Overview (Adopt-first disclosure — BLOCKING); SKILL.md:Quality Checklist (Adopt-first disclosure present on every commodity-category decision (blocking))"
+  },
+  {
+    "id": "R-005",
+    "rule": "Whether the rationale actually beats the named shelf candidate is ADVISORY, graded on the rung-honesty lane, never at conformance strength. Evidence: where the review disputes a custom-wins rationale, it marks that finding advisory rather than blocking the package on it.",
+    "class": "must",
+    "source": "SKILL.md:Overview (Whether the rationale actually beats the named candidate is advisory — it rides the lane below)"
+  },
+  {
+    "id": "R-006",
+    "rule": "The ladder stops each producing seat disclosed are graded for honesty against `mochiko:patterns-plan-minimalism`, and this grade is ADVISORY. Evidence: the review names the disclosed rung claims it examined, states whether each is honest, and marks the resulting findings advisory.",
+    "class": "must",
+    "source": "SKILL.md:Overview (Rung-claim honesty — advisory); SKILL.md:Quality Checklist (Disclosed rung claims graded for honesty ... (advisory)); SKILL.md:Related"
+  },
+  {
+    "id": "R-007",
+    "rule": "The plan-minimalism ladder itself is never restated in this skill — it is cited as the standard held elsewhere. Evidence: the review (and the skill body) points at `mochiko:patterns-plan-minimalism` rather than reproducing the rung list.",
+    "class": "format",
+    "source": "SKILL.md:Overview (the standard, never restated here)"
+  },
+  {
+    "id": "R-008",
+    "rule": "The rung grade here is a DISCLOSURE grade only; the independent excess/altitude hunt over the package belongs to `mochiko:review-feasibility` hunt class 7 — a different seat and a different grade. Evidence: the review grades what was disclosed and does not mount its own excess/over-structure hunt, routing that concern to review-feasibility.",
+    "class": "must",
+    "source": "SKILL.md:Overview (This is a disclosure grade; the independent excess/altitude hunt ... is review-feasibility's hunt class 7)"
+  },
+  {
+    "id": "R-009",
+    "rule": "Completeness within scope is graded as a MIRROR CHECKLIST — a fixed set of named checks, each with a fixed question and a fixed severity, applied to the proposed artifacts over coverage, measurability, and cross-artifact consistency — not as open-ended hunting. Evidence: the review's findings are traceable to named checks with their fixed severities, rather than free-form observations.",
+    "class": "must",
+    "source": "SKILL.md:Overview (Completeness within scope — the mirror checklist below); ARTIFACT-CHECKLISTS.md:preamble (this is a mirror checklist, not open-ended hunting)"
+  },
+  {
+    "id": "R-010",
+    "rule": "The verdict and the per-finding dispositions are left in the reviewed artifacts themselves — review evidence that lives only in conversation is a floor violation. Evidence: the produced review exists as durable written output against the artifacts, not solely as chat text.",
+    "class": "floor",
+    "source": "SKILL.md:Overview (The independent review leaves its verdict and per-finding dispositions in the reviewed artifacts themselves)"
+  },
+  {
+    "id": "R-011",
+    "rule": "Violating the letter of the rules is violating the spirit: no applicable check is skipped, and the checklist is never run 'in spirit'. Feature scale, time pressure, and 'this case is different' are not grounds to reduce coverage — every artifact gets every applicable check. Evidence: the review reports every applicable check as executed (or N/A with justification), with no coverage reduced on grounds of size or urgency.",
+    "class": "floor",
+    "source": "SKILL.md:Overview (Violating the letter of the rules is violating the spirit of the rules); SKILL.md:Red Flags (This case is different because…; I'm following the spirit, not the letter); SKILL.md:Common Rationalizations (This is a minor feature, full review is overkill)"
+  },
+  {
+    "id": "R-012",
+    "rule": "A severity is never downgraded to avoid a hard finding; where the reviewer is rationalizing a severity DOWN, the higher level is taken. Evidence: no finding in the review is argued down from Critical/Important to a lower band on convenience grounds.",
+    "class": "floor",
+    "source": "SKILL.md:Overview (downgrading a severity to avoid a hard finding ... the exact failure this skill exists to prevent); SKILL.md:Red Flags (This severity is only Minor, not Important)"
+  },
+  {
+    "id": "R-013",
+    "rule": "Feasibility is NOT graded here and hands off to `mochiko:review-feasibility`: specifically cross-artifact contradictions (TR↔constraint, NFR↔constraint), NFR-design feasibility, and constraint-design buildability. Evidence: where the review notices such a concern it records it as a cross-artifact concern handed to review-feasibility, and does not block the package on it as its own gate.",
+    "class": "must",
+    "source": "SKILL.md:Scope; SKILL.md:When NOT to Use; SKILL.md:Quality Checklist (Feasibility/buildability findings handed to review-feasibility, not graded here); SKILL.md:Common Mistakes (Grading feasibility here)"
+  },
+  {
+    "id": "R-014",
+    "rule": "Implementation details are not reviewed — no comments on code patterns, variable names, or framework choices; the lens is design completeness, traceability, and consistency. Evidence: no finding in the review targets code-level style or implementation choice.",
+    "class": "must",
+    "source": "SKILL.md:When NOT to Use (Implementation code review); SKILL.md:Common Mistakes (Reviewing implementation details)"
+  },
+  {
+    "id": "R-015",
+    "rule": "The one narrow implementation-side carve-out is named: the code-minimalism lens on PRODUCED code is `mochiko:review-code-minimalism`, implement-side, not this skill. Evidence: the carve-out is stated (or honored) rather than this skill grading produced code's minimalism.",
+    "class": "format",
+    "source": "SKILL.md:When NOT to Use (one narrow carve-out exists ... mochiko:review-code-minimalism, implement-side — not this skill)"
+  },
+  {
+    "id": "R-016",
+    "rule": "Off-lane artifact types are routed, not graded here: a drafted specification goes to `mochiko:review-specifications`, a governance surface set goes to `mochiko:validation-constitution`. Evidence: the review does not grade a spec or a governance set under its own checklist. (Low reachability on a plan-package golden — a judge may mark not-applicable where neither artifact type is present.)",
+    "class": "format",
+    "source": "SKILL.md:When NOT to Use (Specification review; Constitution review)"
+  },
+  {
+    "id": "R-017",
+    "rule": "Review does not run during active drafting — it waits for artifact completion. Evidence: the review is run against a completed artifact set, and an in-progress draft is returned rather than graded.",
+    "class": "must",
+    "source": "SKILL.md:When NOT to Use (During active drafting — wait for artifact completion before review)"
+  },
+  {
+    "id": "R-018",
+    "rule": "The CALLER supplies which artifacts are in scope; this skill grades whichever sets are handed to it and does not select the scope itself. Evidence: the review grades the handed set and does not expand into, or fault the absence of, artifact sets the caller did not hand it.",
+    "class": "must",
+    "source": "SKILL.md:Review Focus by Artifact Type (The caller supplies which artifacts are in scope)"
+  },
+  {
+    "id": "R-019",
+    "rule": "The detailed per-artifact-type checklists are single-sourced in `references/ARTIFACT-CHECKLISTS.md` and reached by pointer rather than restated in the body. Evidence: the body cites ARTIFACT-CHECKLISTS.md for the detailed checks; the review's checks trace to that file.",
+    "class": "format",
+    "source": "SKILL.md:Review Focus by Artifact Type (Detailed checklists are in ARTIFACT-CHECKLISTS.md); SKILL.md:Incremental Review Mode"
+  },
+  {
+    "id": "R-020",
+    "rule": "Analysis artifacts — FR→TR coverage: every functional requirement from the spec maps to at least one technical requirement. Evidence: the review states the FR→TR coverage result, naming the uncovered FRs where any exist.",
+    "class": "must",
+    "source": "SKILL.md:Review Focus by Artifact Type (Analysis artifacts row: FR→TR coverage)"
+  },
+  {
+    "id": "R-021",
+    "rule": "Analysis artifacts — orphan TRs: a technical requirement with no business source is a finding. Evidence: the review states whether any TR lacks a traceable business source, naming the orphans.",
+    "class": "must",
+    "source": "SKILL.md:Review Focus by Artifact Type (Analysis artifacts row: orphan TRs)"
+  },
+  {
+    "id": "R-022",
+    "rule": "Analysis artifacts — testable criteria: every TR carries measurable acceptance criteria. Evidence: the review states whether each TR's acceptance criteria are measurable/verifiable in a test, naming the unmeasurable ones.",
+    "class": "must",
+    "source": "SKILL.md:Review Focus by Artifact Type (Analysis artifacts row: testable criteria)"
+  },
+  {
+    "id": "R-023",
+    "rule": "Analysis artifacts — sourced constraints: every constraint traces to a real limitation, not a disguised technology preference. Evidence: the review states the sourcing result per constraint and names any constraint that is a preference in constraint clothing.",
+    "class": "must",
+    "source": "SKILL.md:Review Focus by Artifact Type (Analysis artifacts row: sourced constraints)"
+  },
+  {
+    "id": "R-024",
+    "rule": "Analysis artifacts — alternatives and rationale: every decision considered 2+ alternatives and explains WHY, not just WHAT. Evidence: the review states, per decision, whether ≥2 alternatives were weighed and whether the rationale is more than a restatement of the choice.",
+    "class": "must",
+    "source": "SKILL.md:Review Focus by Artifact Type (Analysis artifacts row: ≥2 alternatives + rationale)"
+  },
+  {
+    "id": "R-025",
+    "rule": "Analysis artifacts — IP coverage: constraints and NFRs implying platform provisioning have corresponding `IP-XXX` items. Evidence: the review states the IP coverage result and names provisioning-implying constraints/NFRs lacking an IP row.",
+    "class": "must",
+    "source": "SKILL.md:Review Focus by Artifact Type (Analysis artifacts row: IP coverage)"
+  },
+  {
+    "id": "R-026",
+    "rule": "The store-delta checks are CONDITIONAL: they run when the package carries a drafted architecture-store delta, and the no-delta claim is checked when it does not. Evidence: the review states which branch applied and runs the matching check set — never skipping both, never running the delta checks against a no-delta package.",
+    "class": "must",
+    "source": "SKILL.md:Review Focus by Artifact Type (Architecture store delta row); SKILL.md:Quality Checklist (Store-delta checks run when the package carries a delta; the no-delta claim checked when it does not)"
+  },
+  {
+    "id": "R-027",
+    "rule": "Store delta — delta↔diagram coverage: every element the delta names appears in the rendered diagram, and every diagram box/arrow appears in the delta's element list. Evidence: the review states the two-way coverage result and names any element or box without its counterpart.",
+    "class": "must",
+    "source": "SKILL.md:Review Focus by Artifact Type (Architecture store delta row: delta↔diagram coverage)"
+  },
+  {
+    "id": "R-028",
+    "rule": "Store delta — qualifying-flow sequences: every qualifying flow has a sequence diagram. Evidence: the review states the qualifying-flow coverage result and names any multi-component flow with real ordering/failure semantics lacking a sequence diagram.",
+    "class": "must",
+    "source": "SKILL.md:Review Focus by Artifact Type (Architecture store delta row: qualifying-flow sequences)"
+  },
+  {
+    "id": "R-029",
+    "rule": "Store delta — AX-row change legality (stance): every changed concern row carries a legal stance. Evidence: the review states the stance legality result per changed `AX-XXX` row.",
+    "class": "must",
+    "source": "SKILL.md:Review Focus by Artifact Type (Architecture store delta row: AX-row change legality (stance ...))"
+  },
+  {
+    "id": "R-030",
+    "rule": "Store delta — floor precedence: on a floor-asserted category the stance must respect floor precedence (a true drop routes to a governance-ledger waiver, not to a row-level stance). Evidence: the review states the floor-precedence result on floor-asserted categories.",
+    "class": "must",
+    "source": "SKILL.md:Review Focus by Artifact Type (Architecture store delta row: ... + floor precedence)"
+  },
+  {
+    "id": "R-031",
+    "rule": "Store delta — NFR targets on touched rows: every `NFR-XXX` the delta adds or changes carries its target on its concern row. Evidence: the review states, per touched NFR row, whether the target is present, and names those without one.",
+    "class": "must",
+    "source": "SKILL.md:Review Focus by Artifact Type (Architecture store delta row: NFR targets on touched rows)"
+  },
+  {
+    "id": "R-032",
+    "rule": "Store delta — lifecycle statuses keyed to `FEAT-XXX`: every delta element carries a lifecycle status keyed to this feature's FEAT-XXX. Evidence: the review states the lifecycle-status result and names any element keyed to a different feature or to none.",
+    "class": "must",
+    "source": "SKILL.md:Review Focus by Artifact Type (Architecture store delta row: lifecycle statuses keyed to FEAT-XXX)"
+  },
+  {
+    "id": "R-033",
+    "rule": "Store delta — consult record: the package records the store consult. Evidence: the review states whether the consult record is present and what it covers.",
+    "class": "must",
+    "source": "SKILL.md:Review Focus by Artifact Type (Architecture store delta row: consult record)"
+  },
+  {
+    "id": "R-034",
+    "rule": "No-delta runs — the one-line no-structural-change claim is itself graded when the package carries no delta; a silent absence is a finding. Evidence: on a non-structural package the review states whether the no-delta claim is present and shown at the gates.",
+    "class": "must",
+    "source": "SKILL.md:Review Focus by Artifact Type (Architecture store delta row: no-delta claim when non-structural); SKILL.md:Quality Checklist"
+  },
+  {
+    "id": "R-035",
+    "rule": "Design artifacts — entity coverage: every noun/entity the requirements imply is modeled in `data-model.md`. Evidence: the review states the entity-coverage result and names missing entities against their requirement source.",
+    "class": "must",
+    "source": "SKILL.md:Review Focus by Artifact Type (Design artifacts row: entity coverage)"
+  },
+  {
+    "id": "R-036",
+    "rule": "Design artifacts — relationships: entity connections are documented (cardinality and delete behavior). Evidence: the review states the relationship-completeness result and names undocumented connections.",
+    "class": "must",
+    "source": "SKILL.md:Review Focus by Artifact Type (Design artifacts row: relationships)"
+  },
+  {
+    "id": "R-037",
+    "rule": "Design artifacts — sensitivity annotations present: sensitive/PII attributes carry their classification annotation. Evidence: the review states the sensitivity-annotation result and names unannotated sensitive fields.",
+    "class": "must",
+    "source": "SKILL.md:Review Focus by Artifact Type (Design artifacts row: sensitivity annotations present)"
+  },
+  {
+    "id": "R-038",
+    "rule": "Design artifacts — endpoint coverage: every user action has an endpoint in the contracts. Evidence: the review states the endpoint-coverage result and names actions with no endpoint.",
+    "class": "must",
+    "source": "SKILL.md:Review Focus by Artifact Type (Design artifacts row: endpoint coverage)"
+  },
+  {
+    "id": "R-039",
+    "rule": "Design artifacts — schemas: request/response schemas are defined and match the data-model entities. Evidence: the review states the schema-completeness and schema-model-consistency result.",
+    "class": "must",
+    "source": "SKILL.md:Review Focus by Artifact Type (Design artifacts row: schemas)"
+  },
+  {
+    "id": "R-040",
+    "rule": "Design artifacts — error handling: failure modes are documented with specific status codes. Evidence: the review states the error-handling result and names endpoints with undocumented failure modes.",
+    "class": "must",
+    "source": "SKILL.md:Review Focus by Artifact Type (Design artifacts row: error handling)"
+  },
+  {
+    "id": "R-041",
+    "rule": "Design artifacts — integration-boundary presence: endpoints wrapping external systems carry their integration-boundary documentation. Evidence: the review states the integration-boundary presence result and names external-system endpoints lacking it.",
+    "class": "must",
+    "source": "SKILL.md:Review Focus by Artifact Type (Design artifacts row: integration-boundary presence)"
+  },
+  {
+    "id": "R-042",
+    "rule": "Cycle cards — vertical integrity: each card is an observable end-to-end behavior, never a horizontal layer. Evidence: the review states, per card, whether it is a vertical slice, and names any layer-shaped card (e.g. 'build the data layer').",
+    "class": "must",
+    "source": "SKILL.md:Review Focus by Artifact Type (Cycle cards row: vertical integrity)"
+  },
+  {
+    "id": "R-043",
+    "rule": "Cycle cards — `**TEST:**` gate present and in the grammar: every card closes with a TEST gate written in the owned grammar. Evidence: the review states, per card, that the TEST gate is present and grammatical, naming cards missing it or malformed.",
+    "class": "must",
+    "source": "SKILL.md:Review Focus by Artifact Type (Cycle cards row: **TEST:** gate present and in the grammar)"
+  },
+  {
+    "id": "R-044",
+    "rule": "Cycle cards — the TEST gate is a REAL-INFRASTRUCTURE gate, never a test-suite re-run. Evidence: the review flags any TEST gate whose action is 'run the test suite' / 'run pytest' rather than an action against real infrastructure.",
+    "class": "must",
+    "source": "SKILL.md:Review Focus by Artifact Type (Cycle cards row: real infrastructure, never a test-suite re-run)"
+  },
+  {
+    "id": "R-045",
+    "rule": "Cycle cards — ORACLE SEMANTICS: each card's Asserts are graded SEMANTICALLY against the acceptance scenario / criteria they cite — does the Assert capture the RIGHT expected behaviour, not merely that it is present and in-grammar. Evidence: the review compares at least one card's Assert against its cited acceptance scenario and rules on whether it asserts the right thing (e.g. flags an Assert that checks a 200 status where the scenario promises a specific state change).",
+    "class": "must",
+    "source": "SKILL.md:Review Focus by Artifact Type (Cycle cards row: oracle semantics); SKILL.md:Quality Checklist (Cycle-card Asserts graded semantically ... not merely for presence/grammar)"
+  },
+  {
+    "id": "R-046",
+    "rule": "Cycle cards — story traceability: every P1 and P2 story appears on at least one card. Evidence: the review states the story→card coverage result and names any P1/P2 story on no card.",
+    "class": "must",
+    "source": "SKILL.md:Review Focus by Artifact Type (Cycle cards row: story traceability — every P1/P2 story on ≥1 card)"
+  },
+  {
+    "id": "R-047",
+    "rule": "Cycle cards — the Simple/Split/Merge case and its rationale are recorded for the story→cycle mapping. Evidence: the review states whether each mapping records its case and rationale, and names mappings that record neither.",
+    "class": "must",
+    "source": "SKILL.md:Review Focus by Artifact Type (Cycle cards row: Simple/Split/Merge case + rationale recorded)"
+  },
+  {
+    "id": "R-048",
+    "rule": "Cycle cards — dependency minimality and explicitness: `[P]` appears only where cards are truly independent, and dependencies are stated. Evidence: the review states the dependency result and names any `[P]` marking on cards that in fact depend on each other, or an unstated dependency.",
+    "class": "must",
+    "source": "SKILL.md:Review Focus by Artifact Type (Cycle cards row: dependency minimality/explicitness ([P] only where truly independent))"
+  },
+  {
+    "id": "R-049",
+    "rule": "Cycle cards — brownfield exposure is stated per card, and an explicit `none` counts as stated. Evidence: the review states the brownfield-exposure result per card and does NOT fault a card that explicitly declares `none`; it faults only cards that state nothing.",
+    "class": "must",
+    "source": "SKILL.md:Review Focus by Artifact Type (Cycle cards row: brownfield exposure stated (`none` counts))"
+  },
+  {
+    "id": "R-050",
+    "rule": "Cycle cards — NO task lists and NO file paths: pre-written decomposition is a finding, because the builder decomposes at build time. Evidence: the review flags any card carrying a sub-task list or naming implementation file paths.",
+    "class": "must",
+    "source": "SKILL.md:Review Focus by Artifact Type (Cycle cards row: no task lists or file paths (pre-written decomposition is a finding))"
+  },
+  {
+    "id": "R-051",
+    "rule": "The cycle-card criteria mirror the `tasks` `--check` view, reached as `mochiko-cli template tasks --check` — or by Reading `plugins/mochiko/schemas/tasks.yaml` raw when the binary is absent (the degraded path is named, not assumed). Evidence: the review's cycle-card checks trace to that view/schema, and the raw-Read fallback survives as the stated alternative.",
+    "class": "format",
+    "source": "SKILL.md:Review Focus by Artifact Type (Cycle cards row: these criteria mirror the `tasks` `--check` view)"
+  },
+  {
+    "id": "R-052",
+    "rule": "Cross-artifact — the design honors the DECISIONS that were made: a design contradicting a decided approach is a consistency failure graded here. Evidence: the review states the decisions-honored result, citing the decision ID and the artifact that departs from it.",
+    "class": "must",
+    "source": "SKILL.md:Review Focus by Artifact Type (Cross-artifact row: design honors the decisions); SKILL.md:Scope"
+  },
+  {
+    "id": "R-053",
+    "rule": "Cross-artifact — the design honors the SIGNED STORE DELTA: `data-model.md` and contracts conform to the signed delta over the standing store spine. Evidence: the review states the architecture-conformance result and names any entity or endpoint implying a component the signed shape does not carry.",
+    "class": "must",
+    "source": "SKILL.md:Review Focus by Artifact Type (Cross-artifact row: design honors the decisions *and the signed store delta*)"
+  },
+  {
+    "id": "R-054",
+    "rule": "Cross-artifact — the cards' acceptance criteria cite REAL spec/plan IDs. Evidence: the review checks the cited IDs resolve to existing spec/plan items and names invented or dangling citations.",
+    "class": "must",
+    "source": "SKILL.md:Review Focus by Artifact Type (Cross-artifact row: cards' acceptance criteria cite real spec/plan IDs)"
+  },
+  {
+    "id": "R-055",
+    "rule": "Cross-artifact — traceability is graded across the sets together (requirement through artifact through card). Evidence: the review states the end-to-end traceability result rather than grading each artifact only in isolation.",
+    "class": "must",
+    "source": "SKILL.md:Review Focus by Artifact Type (Cross-artifact row: alignment, consistency, traceability)"
+  },
+  {
+    "id": "R-056",
+    "rule": "Brownfield codebase-discovery review is OUT OF SCOPE for plan-core completeness — it belongs to the discovery track and is graded there. Evidence: the review does not grade directory-scan coverage, entity/endpoint detection completeness, or collision-risk assessment. (Vacuous where no discovery artifact is in the package — the judge marks not-applicable rather than failed.)",
+    "class": "must",
+    "source": "SKILL.md:Review Focus by Artifact Type (blockquote: Brownfield codebase-discovery review is out of scope)"
+  },
+  {
+    "id": "R-057",
+    "rule": "Sequencing — which artifact set is reviewed when — is the LEAD's call, not this skill's. Evidence: the review does not assert a phase order or instruct the lead on review sequence.",
+    "class": "must",
+    "source": "SKILL.md:Review Focus by Artifact Type (blockquote: Sequencing of which set is reviewed when is the lead's call, not this skill's)"
+  },
+  {
+    "id": "R-058",
+    "rule": "CONSUMER (agents/devils-advocate.md Adversarial Calibration; the shared severity trio with review-specifications and review-feasibility; ISSUE-TEMPLATES.md severity table): every issue is classified into exactly one of the three words Critical / Important / Minor. A different scale (High/Medium/Low, P0/P1/P2, blocker/nit) breaks the shared calibration and the sibling reviewers' shared vocabulary.",
+    "class": "vocab",
+    "source": "SKILL.md:Issue Classification (Three severities — Critical / Important / Minor); consumer: plugins/mochiko/agents/devils-advocate.md:Adversarial Calibration"
+  },
+  {
+    "id": "R-059",
+    "rule": "POINTER: the severity table, the classification rules, the issue-documentation formats, and the working report shape are SINGLE-SOURCED in `references/ISSUE-TEMPLATES.md` and are not restated in the body. Evidence: the body cites ISSUE-TEMPLATES.md for all four rather than reproducing them.",
+    "class": "format",
+    "source": "SKILL.md:Issue Classification (single-sourced in ISSUE-TEMPLATES.md)"
+  },
+  {
+    "id": "R-060",
+    "rule": "The deterministic Tier-1 pre-assert is run BEFORE the model review — a non-waivable floor. Evidence: the review reports that the checker was run, ahead of any hand judgment.",
+    "class": "floor",
+    "source": "SKILL.md:Review Process Step 2 (Before the model review, run the Tier-1 checker); SKILL.md:Quality Checklist (The deterministic pre-assert was run and its failures folded in)"
+  },
+  {
+    "id": "R-061",
+    "rule": "The pre-assert invocation survives verbatim as `python scripts/check-artifacts.py .mochiko/specs/<feature>/<artifact>.md [<more-artifacts>.md ...]`. Evidence: the review (or the skill body) names that command, not a paraphrase or an invented script name.",
+    "class": "format",
+    "source": "SKILL.md:Review Process Step 2 (the bash block); ARTIFACT-CHECKLISTS.md:Automated Validation"
+  },
+  {
+    "id": "R-062",
+    "rule": "The pre-assert's cheap, greppable slice is named: unresolved markers, required sections, traceability presence, PII annotations, entity consistency. Evidence: the review's pre-assert report covers those five check families rather than an unnamed 'automated check'.",
+    "class": "format",
+    "source": "SKILL.md:Review Process Step 2 (unresolved markers, required sections, traceability presence, PII annotations, entity consistency)"
+  },
+  {
+    "id": "R-063",
+    "rule": "A `failed` count from the pre-assert is GROUND TRUTH and is folded straight into the issue list before anything is judged by hand — never re-litigated or waved through. Evidence: every pre-assert failure appears as an issue in the review's issue list.",
+    "class": "floor",
+    "source": "SKILL.md:Review Process Step 2 (A `failed` count here is ground truth — fold it straight into the issue list)"
+  },
+  {
+    "id": "R-064",
+    "rule": "Incremental review mode applies when a review covers a fresh artifact set alongside a previously-reviewed one — reviewing incrementally to save time without losing rigor. Evidence: on a mixed round the review declares itself incremental rather than either re-reviewing everything in full or dropping the prior set.",
+    "class": "must",
+    "source": "SKILL.md:Incremental Review Mode (preamble)"
+  },
+  {
+    "id": "R-065",
+    "rule": "The CALLER supplies which artifacts are the {new} set and which are the {prior} set — this skill does not decide that, having no view of the workflow's sequence. Evidence: the review takes the new/prior split as given and does not infer or assert it.",
+    "class": "must",
+    "source": "SKILL.md:Incremental Review Mode (The caller supplies which artifacts are the new set and which are the prior set)"
+  },
+  {
+    "id": "R-066",
+    "rule": "The {new} set gets a FULL review: ALL applicable checks from ARTIFACT-CHECKLISTS.md are executed, with no shortcuts — this is the primary focus. Evidence: the review reports the new set's checks as fully executed.",
+    "class": "must",
+    "source": "SKILL.md:Incremental Review Mode (Full review — the {new} set)"
+  },
+  {
+    "id": "R-067",
+    "rule": "The {prior} set gets the Cross-Artifact Consistency checklist specifically — not an arbitrary subset. Evidence: the review names the Cross-Artifact Consistency checklist as the lens applied to the prior artifacts.",
+    "class": "must",
+    "source": "SKILL.md:Incremental Review Mode (Consistency check — the {prior} set: Use the Cross-Artifact Consistency checklist)"
+  },
+  {
+    "id": "R-068",
+    "rule": "The prior artifacts are NOT re-read in full. Evidence: the review's prior-set pass is a spot-check, and it does not report a full re-read of prior artifacts (absent the escalation trigger).",
+    "class": "must",
+    "source": "SKILL.md:Incremental Review Mode (Do NOT re-read the prior artifacts in full)"
+  },
+  {
+    "id": "R-069",
+    "rule": "The prior-set spot-check targets are named: entity names, requirement IDs, decision references, constraint alignment. Evidence: the review's consistency pass covers those four targets.",
+    "class": "format",
+    "source": "SKILL.md:Incremental Review Mode (Spot-check: entity names, requirement IDs, decision references, constraint alignment)"
+  },
+  {
+    "id": "R-070",
+    "rule": "In the prior-set pass, ONLY inconsistencies BETWEEN artifacts are flagged — not fresh internal findings against an already-reviewed artifact. Evidence: the prior-set findings are all cross-artifact inconsistencies.",
+    "class": "must",
+    "source": "SKILL.md:Incremental Review Mode (Flag only inconsistencies between artifacts)"
+  },
+  {
+    "id": "R-071",
+    "rule": "The prior-set consistency pass carries a time budget of 1–2 minutes per prior artifact. Evidence: the stated budget survives as the pass's bound.",
+    "class": "format",
+    "source": "SKILL.md:Incremental Review Mode (Time budget: 1–2 minutes per prior artifact)"
+  },
+  {
+    "id": "R-072",
+    "rule": "Escalation trigger — 2+ consistency issues found in ONE prior artifact escalates to re-reading THAT SPECIFIC artifact in full (not the whole prior set). Evidence: where a prior artifact accumulates two consistency issues, the review reports re-reading it in full.",
+    "class": "must",
+    "source": "SKILL.md:Incremental Review Mode (When to escalate: If 2+ consistency issues are found in one prior artifact)"
+  },
+  {
+    "id": "R-073",
+    "rule": "Escalation trigger — a detected contradiction is REPORTED as an issue and the LEAD routes it; the reviewer does not resolve or reassign it unilaterally. Evidence: a contradiction appears as a reported issue with the routing left to the lead.",
+    "class": "must",
+    "source": "SKILL.md:Incremental Review Mode (If a contradiction is detected → report it as an issue; the lead routes it)"
+  },
+  {
+    "id": "R-074",
+    "rule": "The contradiction split holds: a DESIGN-vs-DECIDED contradiction is a Critical consistency issue HERE; a contradiction BETWEEN requirements/constraints belongs to `review-feasibility`. Evidence: the review classifies a design-vs-decided contradiction Critical and routes a requirement↔constraint contradiction out.",
+    "class": "must",
+    "source": "SKILL.md:Incremental Review Mode (a design-vs-decided contradiction is a Critical consistency issue here; a contradiction between requirements/constraints is review-feasibility's)"
+  },
+  {
+    "id": "R-075",
+    "rule": "Escalation trigger — where the reviewer is unsure, the uncertainty is NOTED and a targeted review is recommended, rather than guessed either way. Evidence: any uncertain call in the review is stated as uncertain with a targeted-review recommendation.",
+    "class": "must",
+    "source": "SKILL.md:Incremental Review Mode (If unsure → note the uncertainty and recommend a targeted review)"
+  },
+  {
+    "id": "R-076",
+    "rule": "The incremental report uses the SAME `advocate-report-template.md` shape with the incremental fields set — no separate incremental report format is invented. Evidence: the incremental report is the advocate-report-template with `incremental:` and `scope:` populated.",
+    "class": "format",
+    "source": "SKILL.md:Incremental Review Mode (Report shape (incremental mode)); consumer: plugins/mochiko/templates/advocate-report-template.md:15"
+  },
+  {
+    "id": "R-077",
+    "rule": "The incremental frontmatter carries `scope:` split into `full_review:` and `consistency_only:` lists naming the actual files/paths. Evidence: the report's scope block names which artifacts got which pass.",
+    "class": "format",
+    "source": "SKILL.md:Incremental Review Mode (the YAML block: scope: full_review / consistency_only)"
+  },
+  {
+    "id": "R-078",
+    "rule": "The plan-specific `consistency_checks:` frontmatter block is emitted as an EXTRA block permitted by the envelope, carrying pass/fail per check across the six named keys: `entity_names`, `schemas`, `decisions_honored`, `architecture_conformance`, `sensitivity_annotations`, `integration_boundaries`. Evidence: the incremental report carries that block with those key names.",
+    "class": "format",
+    "source": "SKILL.md:Incremental Review Mode (consistency_checks block); ISSUE-TEMPLATES.md:Assembled report (the one plan-specific addition)"
+  },
+  {
+    "id": "R-079",
+    "rule": "A FAILED consistency check also lands as a finding — the pass/fail block is not a substitute for filing the issue. Evidence: every `fail` in `consistency_checks:` has a matching entry in the report's findings.",
+    "class": "must",
+    "source": "SKILL.md:Incremental Review Mode (# pass/fail per check; a fail also lands as a finding)"
+  },
+  {
+    "id": "R-080",
+    "rule": "The verdict is derived MECHANICALLY from the issue counts — no judgment in the mapping itself. Evidence: the review's verdict follows the count mapping, and the report's basis cites the counts rather than an impression.",
+    "class": "must",
+    "source": "SKILL.md:Verdict Criteria (Derived mechanically from the issue counts); SKILL.md:Quality Checklist (Verdict matches the issue counts)"
+  },
+  {
+    "id": "R-081",
+    "rule": "POINTER: the count-to-verdict mapping is single-sourced at `ISSUE-TEMPLATES.md → Verdict Criteria` and is not restated inline. Evidence: the body cites that anchor rather than reproducing the thresholds.",
+    "class": "format",
+    "source": "SKILL.md:Verdict Criteria (single-sourced in ISSUE-TEMPLATES.md#verdict-criteria)"
+  },
+  {
+    "id": "R-082",
+    "rule": "The verdict carries ONE OVERRIDE THAT TAKES PRECEDENCE over the mechanical count mapping: material divergence from the approved proposal — an unproposed artifact, or an element class materially past its approved depth — is a package auto-FAIL (`critical-gaps`) independent of the counts. Evidence: a package with material divergence but zero Critical issues still returns `critical-gaps`.",
+    "class": "floor",
+    "source": "SKILL.md:Verdict Criteria (with one override that takes precedence)"
+  },
+  {
+    "id": "R-083",
+    "rule": "Rung-honesty findings are ADVISORY and NEVER drive the verdict. Evidence: the review's verdict basis does not rest on a rung-honesty finding, and a package with only rung-honesty findings is not failed on them.",
+    "class": "must",
+    "source": "SKILL.md:Verdict Criteria (Rung-honesty findings are advisory and never drive the verdict); SKILL.md:Overview"
+  },
+  {
+    "id": "R-084",
+    "rule": "CONSUMER (skills/mochiko/SKILL.md:89 router row '3-state ready / needs-revision / critical-gaps'; templates/advocate-report-template.md `verdict:` field; agents/devils-advocate.md review verdicts): the verdict is exactly one value from the trio `ready` / `needs-revision` / `critical-gaps`, verbatim. A synonym or re-spelling (approved, revise, blocked, PASS/FAIL, 'critical gaps' as a fourth state) breaks the report template and the router's promise.",
+    "class": "vocab",
+    "source": "SKILL.md:Verdict Criteria; consumer: plugins/mochiko/skills/mochiko/SKILL.md:89; plugins/mochiko/templates/advocate-report-template.md:16"
+  },
+  {
+    "id": "R-085",
+    "rule": "The Quality Checklist is run as a pre-finalization self-check — the review is not finalized until each item is verified. Evidence: the produced review shows the checklist items discharged (explicitly or by carrying their required content).",
+    "class": "must",
+    "source": "SKILL.md:Quality Checklist (Before finalizing the review, verify:)"
+  },
+  {
+    "id": "R-086",
+    "rule": "EVERY issue cites its evidence — the specific artifact plus the requirement/element ID that shows the gap, never a bare assertion ('the data model is incomplete'). Evidence: each finding names its artifact and an ID/anchor.",
+    "class": "must",
+    "source": "SKILL.md:Quality Checklist (Evidence cited for each issue); SKILL.md:Common Mistakes (Missing evidence)"
+  },
+  {
+    "id": "R-087",
+    "rule": "EVERY issue carries an ACTIONABLE suggested fix naming the concrete change ('add the error-response schema for the 404 case in GET /users/{id}'), never a directive ('fix the contracts'). Evidence: each finding's fix names what to change and where.",
+    "class": "must",
+    "source": "SKILL.md:Quality Checklist (Suggested fixes are actionable); SKILL.md:Common Mistakes (Vague suggestions)"
+  },
+  {
+    "id": "R-088",
+    "rule": "Cross-artifact concerns are noted in the report as their own class — including feasibility-shaped observations handed off rather than graded. Evidence: the report carries the cross-artifact concerns it found, distinguishable from the per-artifact findings.",
+    "class": "must",
+    "source": "SKILL.md:Quality Checklist (Cross-artifact concerns noted); SKILL.md:Common Mistakes (Grading feasibility here → note it as a cross-artifact concern)"
+  },
+  {
+    "id": "R-089",
+    "rule": "The one-line `strengths:` field is filled — a single comma-brief line, not a section and not omitted. Evidence: the report frontmatter carries a populated one-line `strengths:`.",
+    "class": "format",
+    "source": "SKILL.md:Quality Checklist (The one-line strengths: field filled); consumer: plugins/mochiko/templates/advocate-report-template.md:18"
+  },
+  {
+    "id": "R-090",
+    "rule": "Severity is not INFLATED either: Critical is reserved for issues that genuinely block progress, and a style issue is not marked Critical. Evidence: no Critical finding in the review is a polish or style item.",
+    "class": "must",
+    "source": "SKILL.md:Common Mistakes (Over-classified severity); ISSUE-TEMPLATES.md:Anti-Patterns (Severity inflation)"
+  },
+  {
+    "id": "R-091",
+    "rule": "The new artifact is NEVER reviewed in isolation — consistency with the prior artifact set is always verified, regardless of how thorough a previous review was or how much time pressure exists. Evidence: the review reports a consistency pass against the prior set even when the new set looks self-consistent.",
+    "class": "must",
+    "source": "SKILL.md:Common Mistakes (Skipping cross-artifact checks); SKILL.md:Red Flags (I'll skip the consistency check, the previous review was thorough); SKILL.md:Common Rationalizations (Time pressure means we should skip cross-artifact checks)"
+  },
+  {
+    "id": "R-092",
+    "rule": "An issue meeting Critical or Important criteria BLOCKS — it is never filed as 'noted but not blocking'. Evidence: no Critical or Important finding in the review is accompanied by a decision to let the package proceed on it.",
+    "class": "must",
+    "source": "SKILL.md:Red Flags (I'll note it but not block on it — If it meets Critical or Important criteria, it blocks. Period.)"
+  },
+  {
+    "id": "R-093",
+    "rule": "`ready` is not awarded on the artifacts LOOKING good enough — good enough is not ready; the outcome is evidence or rejection. Evidence: a `ready` verdict is backed by discharged checks with cited evidence, never by an impression of quality.",
+    "class": "floor",
+    "source": "SKILL.md:Red Flags (The artifacts look good enough — Good enough is not ready. Evidence or rejection.)"
+  },
+  {
+    "id": "R-094",
+    "rule": "Vagueness in the SPEC is a gap to FLAG, not permission for the artifact to be vague. Evidence: where an artifact is vague because its spec source was vague, the review still files the finding rather than excusing it.",
+    "class": "must",
+    "source": "SKILL.md:Common Rationalizations (The spec was vague, so the artifact can be vague)"
+  },
+  {
+    "id": "R-095",
+    "rule": "Producer seniority is IRRELEVANT — the review is evidence-based only and never softens on who authored the artifact. Evidence: no finding is withheld or downgraded on grounds of the producer's standing.",
+    "class": "must",
+    "source": "SKILL.md:Common Rationalizations (The producer is senior, they know what they're doing)"
+  },
+  {
+    "id": "R-096",
+    "rule": "Finding issues is NOT a quota — the review does not stop early having found 'enough'; every check is run and every finding documented. Evidence: the review's check coverage is complete regardless of how many issues had already accumulated.",
+    "class": "must",
+    "source": "SKILL.md:Common Rationalizations (I already found enough issues)"
+  },
+  {
+    "id": "R-097",
+    "rule": "A check in the applicable checklist APPLIES — 'this feature type is different' is not an exemption; N/A is permitted only when flagged WITH a justification. Evidence: any check marked N/A in the review carries a stated justification.",
+    "class": "must",
+    "source": "SKILL.md:Common Rationalizations (This check doesn't apply to this type of feature — Flag N/A with justification if genuinely inapplicable)"
+  },
+  {
+    "id": "R-098",
+    "rule": "An 'obvious' constraint still needs documenting — obviousness is not an exemption, and undocumented-because-obvious is still a finding. Evidence: the review does not accept an undocumented constraint on the grounds that it is self-evident.",
+    "class": "must",
+    "source": "SKILL.md:Common Rationalizations (The constraint is obvious, it doesn't need documentation)"
+  },
+  {
+    "id": "R-099",
+    "rule": "The deliverable the lead reads is assembled with `mochiko:advocate-report-template` — the shared reviewer shape, not an invented variant. Evidence: the produced report fills that template's structure.",
+    "class": "format",
+    "source": "SKILL.md:Related (mochiko:advocate-report-template — the deliverable report shape the lead reads); ISSUE-TEMPLATES.md:Assembled report"
+  },
+  {
+    "id": "R-100",
+    "rule": "CONSUMER (skills/mochiko/SKILL.md:89 router row: 'grading the plan package against the **approved proposal** — conformance ... material divergence auto-FAILs — BLOCKING'): the terms `approved proposal`, `material divergence`, `auto-FAIL`, and `BLOCKING` survive verbatim as this skill's conformance vocabulary. A paraphrase (e.g. 'the agreed artifact list', 'significant deviation', 'hard fail') breaks the router's stated promise about this seat and the `plan.md` charter's matching phrase 'no seat writes an artifact the approved proposal does not name'.",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/skills/mochiko/SKILL.md:89; plugins/mochiko/commands/plan.md:61,102,145; plugins/mochiko/schemas/plan.yaml:10,86"
+  },
+  {
+    "id": "R-101",
+    "rule": "CONSUMER (skills/mochiko/SKILL.md:89 '+ honesty of disclosed rung claims (advisory)'; skills/patterns-plan-minimalism/SKILL.md:19 'review-plan-artifacts grades them at review — rung-honesty advisory, proposal conformance blocking'): the two-lane split survives with its exact strengths — rung honesty ADVISORY, proposal conformance BLOCKING. Collapsing them to one strength, or flipping either, breaks both consumers.",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/skills/mochiko/SKILL.md:89; plugins/mochiko/skills/patterns-plan-minimalism/SKILL.md:19"
+  },
+  {
+    "id": "R-102",
+    "rule": "CONSUMER (skills/mochiko/SKILL.md:89 '**completeness within scope** (coverage / measurability / consistency, the store delta when the feature is structural — or the no-delta claim when it is not — and the cycle cards)'): the completeness scope keeps all three limbs nameable — the store delta / the no-delta claim conditional pair, and the cycle cards. Dropping any limb makes the router's description of this seat false.",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/skills/mochiko/SKILL.md:89"
+  },
+  {
+    "id": "R-103",
+    "rule": "CONSUMER (skills/mochiko/SKILL.md:89 'the mirror-checklist half of the plan-review pair'): this skill is identified as the MIRROR-CHECKLIST form — fixed named checks with fixed questions and severities — as distinct from its adversarial-critique sibling. A review that presents itself as open-ended hunting contradicts the router and the five-axes producer↔validator pairing convention.",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/skills/mochiko/SKILL.md:89; CLAUDE.md:Skill-library conventions axis 5"
+  },
+  {
+    "id": "R-104",
+    "rule": "CONSUMER (skills/mochiko/SKILL.md:89 'an independent reviewer, never the author'): the reviewer's identity is stated as independent and never the author of the graded package. A review that authors, patches, or completes the artifacts it grades contradicts the router's promise and the repo's author≠grader floor.",
+    "class": "vocab",
+    "source": "SKILL.md:Scope (run by two independent reviewers); SKILL.md:Overview (The independent review); consumer: plugins/mochiko/skills/mochiko/SKILL.md:89"
+  },
+  {
+    "id": "R-105",
+    "rule": "CONSUMER (skills/patterns-adopt-first/SKILL.md:99 'Disclosure line — mochiko:review-plan-artifacts: **BLOCKING**, a named sibling check at conformance strength'; skills/mochiko/SKILL.md:83 'graded by review-plan-artifacts (disclosure, blocking)'): the adopt-first disclosure check remains named HERE, at BLOCKING/conformance strength. Demoting it to advisory, or relocating it to review-feasibility, breaks the adopt-first skill's who-grades-what table and the router row.",
+    "class": "vocab",
+    "source": "SKILL.md:Overview; consumer: plugins/mochiko/skills/patterns-adopt-first/SKILL.md:99; plugins/mochiko/skills/mochiko/SKILL.md:83"
+  },
+  {
+    "id": "R-106",
+    "rule": "CONSUMER (skills/review-code-minimalism/SKILL.md:26 'the plan-time sibling of this lens is the rung-honesty grade in mochiko:review-plan-artifacts against mochiko:patterns-plan-minimalism (same posture, design-time altitude)'): the rung-honesty grade stays owned by this skill at DESIGN-TIME altitude, graded against `mochiko:patterns-plan-minimalism`. Removing it, or re-pointing it at the code ladder, breaks the code-minimalism skill's stated boundary.",
+    "class": "vocab",
+    "source": "SKILL.md:Overview; consumer: plugins/mochiko/skills/review-code-minimalism/SKILL.md:26"
+  },
+  {
+    "id": "R-107",
+    "rule": "CONSUMER (skills/review-feasibility/SKILL.md description + line 11: 'mochiko:review-plan-artifacts owns coverage / measurability / consistency / presence; you own contradiction / impossibility / buildability'): the four owned families — COVERAGE, MEASURABILITY, CONSISTENCY, PRESENCE — stay named as this skill's, and contradiction/buildability stay named as the sibling's. Re-cutting the seam silently re-scopes the sibling reviewer.",
+    "class": "vocab",
+    "source": "SKILL.md:Scope; consumer: plugins/mochiko/skills/review-feasibility/SKILL.md:3,11; references/ARTIFACT-CHECKLISTS.md:Scope boundary table"
+  },
+  {
+    "id": "R-108",
+    "rule": "CONSUMER (skills/review-feasibility/SKILL.md and references/FEASIBILITY-LENS.md name their own 'hunt class 7' for excess / wrong altitude): the excess/altitude hunt is referred to as review-feasibility's HUNT CLASS 7, by that number. Renaming or renumbering it here desynchronizes the sibling's own class numbering.",
+    "class": "vocab",
+    "source": "SKILL.md:Overview (review-feasibility's hunt class 7); consumer: plugins/mochiko/skills/review-feasibility/SKILL.md:12; plugins/mochiko/skills/mochiko/SKILL.md:83"
+  },
+  {
+    "id": "R-109",
+    "rule": "CONSUMER (agents/devils-advocate.md:20 'completeness review of the plan analysis/design sets and the cycle cards (`tasks.md`)'): the graded scope explicitly includes THE CYCLE CARDS (`tasks.md`) alongside the analysis and design sets. A body that drops cycle cards from scope makes the persona's skill roster description false.",
+    "class": "vocab",
+    "source": "SKILL.md:Review Focus by Artifact Type (Cycle cards row); consumer: plugins/mochiko/agents/devils-advocate.md:20"
+  },
+  {
+    "id": "R-110",
+    "rule": "CONSUMER (skills/authoring-technical-requirements/references/TRACEABILITY-PATTERNS.md:27, 209, 236: 'the cross-artifact consistency between the two layers is graded by the independent plan reviewer (mochiko:review-plan-artifacts), not self-asserted here' / 'the cross-artifact consistency *grade* is owned by mochiko:review-plan-artifacts (a different agent)'): the cross-artifact consistency GRADE remains owned by this skill and is not devolved to producer self-checks. Dropping it leaves the producer skill pointing at an owner that no longer grades it.",
+    "class": "vocab",
+    "source": "SKILL.md:Scope; SKILL.md:Review Focus by Artifact Type (Cross-artifact row); consumer: plugins/mochiko/skills/authoring-technical-requirements/references/TRACEABILITY-PATTERNS.md:27,209,236"
+  },
+  {
+    "id": "R-111",
+    "rule": "CONSUMER (skills/review-brainstorm/references/EXTERNAL-CLAIMS.md:94 lists `review-plan-artifacts` among the skills that consume the disclosure-line check): this skill remains a CONSUMER of the external-claim disclosure grammar (`verified: <source>` / `memory-asserted`), checking presence of the disclosure line while deep verification stays with `review-feasibility`. Evidence: the review flags a floor-class external claim carried without its disclosure line. (Reached in this skill via the ARTIFACT-CHECKLISTS.md cross-artifact 'Disclosure presence' row, not the body — see borderline note.)",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/skills/review-brainstorm/references/EXTERNAL-CLAIMS.md:94; references/ARTIFACT-CHECKLISTS.md:Cross-Artifact Consistency (Disclosure presence)"
+  },
+  {
+    "id": "R-112",
+    "rule": "CONSUMER (skills/mochiko/SKILL.md:97 'The plan **completeness** reviewer reuses the shared `advocate-report-template` (registered under Specify, above) as-is — there is no plan-specific completeness report template'): the report shape stays the SHARED advocate-report-template used as-is; the only plan-specific addition is the incremental-mode `consistency_checks:` block. Inventing a plan-specific report template contradicts the router's explicit note.",
+    "class": "vocab",
+    "source": "SKILL.md:Related; consumer: plugins/mochiko/skills/mochiko/SKILL.md:97; ISSUE-TEMPLATES.md:Assembled report"
+  },
+  {
+    "id": "R-113",
+    "rule": "CONSUMER (templates/advocate-report-template.md:15 `incremental: false # true when this round reviews only a delta (e.g. plan Phase-2 incremental mode) — name the scope in `scope:`` and usage note 5): the INCREMENTAL MODE stays a named mode of this skill with the template's `incremental:` / `scope:` fields as its carrier. Removing the mode orphans the template's field and its named example.",
+    "class": "vocab",
+    "source": "SKILL.md:Incremental Review Mode; consumer: plugins/mochiko/templates/advocate-report-template.md:15,53-55"
+  }
+]

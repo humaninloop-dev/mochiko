@@ -4,6 +4,95 @@ Entry formats: `strips/README.md`. Wave context: the specify cluster wave (v0.13
 Single-consumer primitive (the specify critique, mounted on `devils-advocate`) — strips
 ruled in-wave.
 
+## [v0.88.0] User-ruled true-deletion body cut — body 12,184 → 6,187 chars (−49.2%)
+
+- **Disposition:** superseded → a single-file six-paragraph body (identity+routing · Method ·
+  Feature layer · Screens & Flows · Severity+output · Floors) — true deletion, no relocation,
+  no new file; the `description:` (490 chars) untouched. This skill has no `references/`
+  directory, so every surviving rule survives in the body (or as an explicit pointer to
+  another primitive's single source). Every behavioral rule of the baseline body survives as
+  a compressed clause; all worked-example tables (the Core Principle wrong/right rows, the
+  gap-category example questions, the Common-Mistakes ❌/✅ rows), the section forms
+  (Quality Checklist, Common Mistakes, Review Process), and rationale prose are deleted. The
+  user ruled **ship the rule-complete cut** at the ratification gate — the shallowest of the
+  four compression passes (−49.2% vs −90.0%/−78.8%/−63.8%), because the 18 ruled checks and
+  the six-class taxonomy are body-only with zero reference offload and the body was already
+  twice-compressed (v0.26.0, v0.63.0). Deeper cuts declined with the deaths named: ~−70%
+  degrades the 18 check clauses to bare labels and deletes the coverage clause + 4 Floors
+  rules; −90% deletes the feature-layer and S&F check sets wholesale, breaking the router
+  row's "including the feature-layer grade" citation and `devils-advocate`'s canonical-home
+  anchor.
+- **Tier failed:** n/a — supersession by ruling (in-session user ruling 2026-08-26 at the
+  `compressing-skills` ratification gate, on the v0.82.0/v0.83.0/v0.87.0 "cut now, eval
+  validates later" precedent; ADR
+  `.mochiko/decisions/2026-08-26-review-specifications-true-deletion-cut.md`; `DECISIONS.md`
+  2026-08-26 row). Evidence carried per the ceremony: the 81-entry rule inventory
+  `evals/review-specifications/rules.json` (non-compressor-authored; 5 inventory-driven
+  clause restorations pre-gate: R-012 no-mechanism-presupposition, R-015 specific-not-vague,
+  R-064 every-story, R-065 every-SC-measurable, R-066 edge-cases-per-flow) and the
+  span-by-span disposition map in `evals/review-specifications/pass-report.md`.
+- **Disposition map (baseline body section → new home; verbatim home for all removed text:
+  git history of this SKILL.md, pre-v0.88.0):**
+  - *Overview* — compressed into the opening line (gap-finding input, never a clearing
+    PASS/FAIL of its own; WHAT-not-HOW; independent, never the author).
+  - *When NOT to Use (6 bullets)* — the "Not for:" line; all six routes survive, incl. the
+    v0.53.0 `review-code-minimalism` carve-out and the `analysis-iterative`
+    disjoint-triggers boundary.
+  - *Core Principle + wrong/right table* — the product-not-implementation rule and its
+    altitude sentence survive in Method; the four worked-example rows die.
+  - *Question Format* — Method clause: 2–3 concrete options · what each means for users ·
+    why it matters · specific-never-vague · never presupposing a mechanism · the
+    Clarifications shape of `templates/advocate-report-template.md`, never a variant.
+  - *Gap Categories (2 tables + 2 paragraphs)* — Method: the five category names survive;
+    the six defect classes survive with compact descriptors, class 6 keeping its full
+    v0.67.0 calibration clause; the canonical-home clause ("the canonical hunt taxonomy
+    `devils-advocate` leans on") survives; the posture-smuggled-constraint rule survives
+    with its defining example; the EXTERNAL-CLAIMS.md floor-class verify pointer survives.
+  - *The feature layer* — survives compressed, complete: same-reviewer-same-report, the R13
+    git-baseline rule, the `authoring-feature-map` single-source pointer, and all 10 checks
+    with severities (grouped Critical then Important).
+  - *Screens & Flows* — survives compressed, complete: same-reviewer-same-report, both
+    legal shapes incl. the waiver line, the serve-and-click obligation, the authority
+    split, and all 8 checks with severities.
+  - *Severity Classification table* — one line, spec-specific wording intact ("cannot
+    build without this answer" / "will cause rework" / "polish, log and defer" + actions).
+  - *Output Format* — the Severity+output paragraph (advocate-report-template single
+    source + inline fallback).
+  - *Review Process (2 paragraphs)* — Floors: the v0.82.0 envelope wording (density never
+    a gap · substance never prose style · undisclosed overage advisory per rule 8) and the
+    v0.63.0 review-evidence floor line, both substance-intact with wording compressed.
+  - *Quality Checklist (11 items)* — each item's rule survives in Method (all-stories /
+    SC-measurability / edge-cases-per-flow / product-focus / options / why-it-matters) or
+    the check paragraphs (feature-layer all-10, S&F all-8 + served-and-walked) or Floors
+    (severity classification, grouping); the checklist-as-section form dies.
+  - *Common Mistakes (8 rows)* — distinct rules survive in Floors (5–7 Critical/Important
+    gaps per round · scope creep is not a gap · check existing patterns and decisions
+    first) and Method (specific-not-vague, options, why-it-matters, no implementation
+    bias); the table form dies.
+  - *Related Skills (3 bullets)* — inline pointers: `authoring-requirements` and
+    `analysis-iterative` in the Not-for line, `authoring-feature-map` in the Feature-layer
+    paragraph.
+- **MANDATORY KEPT reconciliation:** [v0.26.0] KEPT severity table + Core Principle table —
+  substance survives compressed; the KEPT status of both *table forms* ends by this ruling.
+  [v0.25.0] RETURNED five-class canonical-home table — all five classes + the canonical-home
+  relationship survive compressed; the home stays honest. [v0.67.0] class-6 row — survives
+  with its calibration clause. [v0.63.0] guardrails keep-set — every member's obligation
+  survives per the map above; the floor line's wording superseded, substance intact.
+  [v0.58.0] feature-layer table — all 10 checks + baseline rule survive. [v0.50.0] S&F
+  section — all 8 checks + walk rules survive. [v0.53.0] carve-out — survives. [v0.82.0]
+  envelope wording — survives.
+- **Consumers assessed:** `agents/devils-advocate.md:52` (canonical gap taxonomy · severity
+  rubric · structured output format — all three anchors survive) and `:19` · router
+  `skills/mochiko/SKILL.md:60` (severity buckets, feature-layer grade, S&F walked-prototype
+  grade — all survive) · `authoring-prototype` (graded-with-the-spec pointer — survives) ·
+  `authoring-feature-map` (derivation + map delta graded here — survives) ·
+  `analysis-iterative` (disjoint-trigger boundary — survives) ·
+  `review-brainstorm/references/EXTERNAL-CLAIMS.md:94` (consumer listing — the verify
+  pointer survives) · `templates/advocate-report-template.md` (findings-type vocabulary fed
+  by the class names — all six survive). This skill has no references directory, so no
+  reference-to-body pointers exist to go stale (the v0.87.0 sibling-pass defect class is
+  structurally absent). No dead pointers created.
+
 ## [v0.82.0] Envelope-citation aligned to artifact-format v3 (audit fix 3)
 
 - **Disposition:** superseded → the Review Process density sentence now reads "never prose

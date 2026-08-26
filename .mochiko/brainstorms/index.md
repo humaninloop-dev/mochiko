@@ -8,6 +8,9 @@ One entry per session directory under `.mochiko/brainstorms/<topic-slug>/`, **ne
 
 ---
 
+## `author-grader-value-tiering` — question author≠grader wholesale; pragmatic split: independent verification for high-value, author self-verification for low-value
+- **When:** 2026-08-26 · **Status:** open
+
 ## `skill-compression-tooling` — repo-level compressor skill + before/after LLM-judge degradation eval
 - **When:** 2026-08-22 · **Status:** accepted · solo cold review via blind-map dispatch
   (36-angle map, topic-only spawn): critical-gaps, 26 raised → 23 survived (3 Critical ·

@@ -36,7 +36,22 @@ git history (this line, before this groom).*
   ("cut now, eval validates later", verbosity-envelope ADR), so its slot runs as a **post-cut
   regression check** (cut-vs-v0.81.0-baseline rule coverage; a lost load-bearing rule re-adds
   via the strips re-add path) — (AR-D3 seeded-defect method is the follow-on if its checklist
-  proves insensitive, R13).
+  proves insensitive, R13). **`review-brainstorm` joined the post-cut set 2026-08-26** (user-ruled
+  true-deletion cut at v0.83.0, rules from the v0.82.0 baseline; ADR
+  `.mochiko/decisions/2026-08-26-review-brainstorm-true-deletion-cut.md`).
+  **`review-plan-artifacts` joined the post-cut set 2026-08-26** (user-ruled true-deletion
+  cut at v0.87.0; its 113-entry `rules.json` already non-compressor-authored from the
+  pre-cut baseline; ADR
+  `.mochiko/decisions/2026-08-26-review-plan-artifacts-true-deletion-cut.md`).
+  **`review-specifications` joined the post-cut set 2026-08-26** (user-ruled true-deletion
+  cut at v0.88.0, 81-entry `rules.json` non-compressor-authored; ADR
+  `.mochiko/decisions/2026-08-26-review-specifications-true-deletion-cut.md`).
+  **`review-governance-intent` (v0.89.0, 70 rules) and `validation-constitution` (v0.90.0,
+  69 rules) joined the post-cut set 2026-08-26** — series close-out: every
+  `review-*`/`validation-*` skill is now ruled-cut; further reduction routes to the
+  eval-graded pilot path (ADRs
+  `.mochiko/decisions/2026-08-26-review-governance-intent-true-deletion-cut.md`,
+  `.mochiko/decisions/2026-08-26-validation-constitution-true-deletion-cut.md`).
 
 ## Product-architecture store build
 

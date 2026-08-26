@@ -1,0 +1,422 @@
+[
+  {
+    "id": "R-001",
+    "rule": "TIMING (floor): the review runs BEFORE the user ratifies the synthesis — spawned into a `/mochiko:setup` run and closing while ratification is still ahead. The cost asymmetry is the stated reason: a gap caught here costs one interrogation follow-up; the same gap post-authoring costs re-ratification plus a produce→validate round. Evidence: the reviewer's survivors reach the lead ahead of the ratification checkpoint, never after any governance surface has been authored.",
+    "class": "floor",
+    "source": "SKILL.md:Overview (you run *before* ratification: a gap you catch costs one interrogation follow-up; the same gap post-authoring costs re-ratification plus a produce→validate round)"
+  },
+  {
+    "id": "R-002",
+    "rule": "FROZEN WINDOW (floor): the synthesis is FROZEN from the reviewer's spawn until dispositions land. Evidence: the reviewer grades the version present at spawn, no edit to `governance-intent.md` lands inside that window, and the window closes only once dispositions are folded — not at the reviewer's report.",
+    "class": "floor",
+    "source": "SKILL.md:Overview (The synthesis is **frozen** from your spawn until dispositions land)"
+  },
+  {
+    "id": "R-003",
+    "rule": "ARTIFACT DEFINITION: the reviewed artifact is `.mochiko/memory/governance-intent.md` — the ONE artifact a `/mochiko:setup` interrogation closes on — carrying the fact profile, floor-expression and deck rulings, minted intents, waivers, module selections, and exclusions. Evidence: the review's coverage accounts for all six element families, and nothing outside that artifact is graded.",
+    "class": "must",
+    "source": "SKILL.md:Overview (closes on one artifact — `governance-intent.md`: the fact profile, floor-expression and deck rulings, minted intents, waivers, module selections, and exclusions)"
+  },
+  {
+    "id": "R-004",
+    "rule": "ARTIFACT DEFINITION (elements): every synthesis element carries a GI-ID and a confidence mark drawn from the CLOSED FIVE-VALUE SET `Confident / Assumed / Contested / Unsure / Deferred`, which THE LEAD assigned at assembly. Evidence: findings cite the GI-ID(s) they touch, mark handling uses exactly those five words verbatim, and the marks are treated as lead-assigned rather than as the artifact's own property.",
+    "class": "must",
+    "source": "SKILL.md:Overview (each element carrying a GI-ID and a confidence mark (`Confident / Assumed / Contested / Unsure / Deferred`) the lead assigned at assembly)"
+  },
+  {
+    "id": "R-005",
+    "rule": "THE REVIEWER IS THE CHALLENGE: the synthesis is a TRACEABLE CONTRACT on the surface-set producer, and the session that produced it ran unchallenged — its card arbitration is recommend-then-arbitrate, the pipeline's HIGHEST PASSIVE-ACCEPTANCE-RISK stretch. The reviewer supplies the missing challenge. Evidence: the review actively attacks elements the session accepted without pushback rather than confirming the session's own conclusions.",
+    "class": "must",
+    "source": "SKILL.md:Overview (a **traceable contract** on the surface-set producer ... The session itself runs unchallenged — the card arbitration is recommend-then-arbitrate, the pipeline's highest passive-acceptance-risk stretch — **you are the challenge**)"
+  },
+  {
+    "id": "R-006",
+    "rule": "LENS — COVERAGE, its scope: the agenda surface — missed dimensions, convergence-skip audits, and the card-acceptance and waiver/module sweeps. Evidence: a coverage-briefed reviewer's findings work those four families, and the report states the lens it was briefed on.",
+    "class": "must",
+    "source": "SKILL.md:Overview (*coverage* (the agenda surface: missed dimensions, convergence-skip audits, the card-acceptance and waiver/module sweeps))"
+  },
+  {
+    "id": "R-007",
+    "rule": "LENS — COHERENCE, its scope: internal consistency — fact↔risk↔ruling alignment, the mark/echo-rationale audit, reality-conflict resolutions checked against the analysis, and cross-element contradictions. Evidence: a coherence-briefed reviewer's findings work those four families, and the report states the lens it was briefed on.",
+    "class": "must",
+    "source": "SKILL.md:Overview (*coherence* (internal consistency: fact↔risk↔ruling alignment, the mark/echo-rationale audit, reality-conflict resolutions against the analysis, cross-element contradictions))"
+  },
+  {
+    "id": "R-008",
+    "rule": "THE LENS SETS DEPTH, NEVER JURISDICTION (floor): work the assigned lens hard AND still report anything real tripped over outside it — the LEAD owns the cross-set merge, not the reviewer. Evidence: real out-of-lens findings appear in the report rather than being suppressed as off-brief, and the reviewer never merges its set with the counterpart's.",
+    "class": "floor",
+    "source": "SKILL.md:Overview (The lens sets your depth, not your jurisdiction: work your lens hard, and still report anything real you trip over outside it — the lead owns the cross-set merge)"
+  },
+  {
+    "id": "R-009",
+    "rule": "SOLO SCOPE: spawned solo, the WHOLE SURFACE is the reviewer's — both lens scopes, not one. Evidence: a solo run's findings span coverage and coherence families rather than one lens's.",
+    "class": "must",
+    "source": "SKILL.md:Overview (Solo, the whole surface is yours)"
+  },
+  {
+    "id": "R-010",
+    "rule": "VERIFY-PASS ASSIGNMENT: in a PAIR the verify pass belongs to the COHERENCE lens (it grades the lead's folds — a consistency job); SOLO it falls to the reviewer AUTOMATICALLY. Evidence: in a pair the coverage seat does not run the verify pass and the coherence seat does; solo, the same reviewer runs it without a separate assignment.",
+    "class": "must",
+    "source": "SKILL.md:Overview (**The verify pass belongs to the coherence lens** in a pair (it grades the lead's folds — a consistency job), and to you automatically when solo)"
+  },
+  {
+    "id": "R-011",
+    "rule": "RECOMMEND-ONLY (floor): every reviewer RECOMMENDS — the LEAD owns every verdict and the USER owns ratification. Evidence: the report frames its status as a recommendation feeding the lead's decision, never as a clearing or blocking act of its own.",
+    "class": "floor",
+    "source": "SKILL.md:Overview (Every reviewer recommends; the **lead owns every verdict, and the user owns ratification**)"
+  },
+  {
+    "id": "R-012",
+    "rule": "NEVER AUTHOR, REVISE, OR RATIFY (floor): the reviewer challenges and grades the synthesis; it never authors it, never revises it, and never ratifies it. Evidence: no edit to the synthesis originates from the reviewer, and the reviewer proposes no ratification.",
+    "class": "floor",
+    "source": "SKILL.md:Overview (You challenge and grade; you never author, revise, or ratify the synthesis)"
+  },
+  {
+    "id": "R-013",
+    "rule": "PERMANENTLY OUT OF JURISDICTION #1 — the AUTHORED SURFACE SET and its Tier-2 grading (`mochiko:validation-constitution`, DOWNSTREAM: a different artifact, a different family). Evidence: no finding grades the authored governance surfaces, the CLAUDE.md region, the rules files, or the ledger's authored form; those are routed downstream instead.",
+    "class": "must",
+    "source": "SKILL.md:Overview (**Out of your jurisdiction, permanently:** the authored surface set and its Tier-2 grading (`mochiko:validation-constitution`, downstream — a different artifact, a different family))"
+  },
+  {
+    "id": "R-014",
+    "rule": "PERMANENTLY OUT OF JURISDICTION #2 — FORMULATION / ENFORCEABILITY QUALITY of authored principles: that risk was put to the user and ACCEPTED, closed `Contested` (design record D1); it is NEVER re-raised. Evidence: no finding faults how a principle is worded or how enforceable it is, and the exclusion is honored without re-litigation.",
+    "class": "must",
+    "source": "SKILL.md:Overview (**formulation/enforceability quality** of authored principles — that risk was put to the user and accepted, closed `Contested` (design record D1); do not re-raise it); SKILL.md:Common Mistakes (Reviewing the authored principles' formulation quality → Accepted risk, closed `Contested` (D1) — permanently out of jurisdiction)"
+  },
+  {
+    "id": "R-015",
+    "rule": "SEQUESTRATION (floor): form the ENTIRE attack BEFORE ANY CONTACT with the counterpart — the LEAD WITHHOLDS THE COUNTERPART'S NAME until the findings are formed. Evidence: the reviewer's finding set is complete before it learns who the counterpart is, and no counterpart material entered the cold read.",
+    "class": "floor",
+    "source": "SKILL.md:Independent cold read (Sequestration is the role: form your entire attack **before any contact with your counterpart** — the lead withholds their name until your findings are formed)"
+  },
+  {
+    "id": "R-016",
+    "rule": "THE READS: the frozen synthesis, the interrogation agenda, and — IN BROWNFIELD — `.mochiko/memory/codebase-analysis.md`. Evidence: the review reports reading all three (the third conditional on brownfield), not the synthesis alone.",
+    "class": "must",
+    "source": "SKILL.md:Independent cold read (Read the frozen synthesis, the interrogation agenda ... and, in brownfield, `.mochiko/memory/codebase-analysis.md`)"
+  },
+  {
+    "id": "R-017",
+    "rule": "POINTER: `../authoring-constitution/references/INTERROGATION-AGENDA.md` — its TEN DIMENSIONS are the COVERAGE YARDSTICK. The agenda's content is owned there and is not restated in this skill. Evidence: the body cites that path as the coverage yardstick rather than reproducing dimension content, and coverage findings are measured against those ten dimensions.",
+    "class": "format",
+    "source": "SKILL.md:Independent cold read (the interrogation agenda ([../authoring-constitution/references/INTERROGATION-AGENDA.md](...) — its ten dimensions are your coverage yardstick))"
+  },
+  {
+    "id": "R-018",
+    "rule": "FINDING CONTRACT: every finding carries FOUR elements — a SEVERITY, the GI ELEMENT(S) it touches, a CONCRETE FAILURE SCENARIO OR CITED CONTRADICTION, and a RESOLUTION PATH (the one question or check that would settle it). Evidence: each finding in the report carries all four; a finding missing the scenario/contradiction or the resolution path is malformed.",
+    "class": "must",
+    "source": "SKILL.md:Independent cold read (Every finding carries: a severity, the GI element(s) it touches, a **concrete failure scenario or cited contradiction**, and a resolution path — the one question or check that would settle it)"
+  },
+  {
+    "id": "R-019",
+    "rule": "UNRESOLVABLE = COMMENTARY: a finding NOTHING COULD RESOLVE is commentary, not a finding. Evidence: observations with no settling question or check are reported as commentary (or dropped), never counted or filed as findings.",
+    "class": "must",
+    "source": "SKILL.md:Independent cold read (A finding nothing could resolve is commentary, not a finding)"
+  },
+  {
+    "id": "R-020",
+    "rule": "OVER-GOVERNANCE HUNT — the REMOVE-SHAPED class is IN JURISDICTION: a minted principle or intent that NO ELICITED FACT justifies — no risk declaration, no reality-surface finding, no user-declared value paying for it — is a finding LIKE ANY ABSENCE. Evidence: the review actively hunts unpaid-for governance and files it at the same standing as a gap, not as a lesser observation.",
+    "class": "must",
+    "source": "SKILL.md:Independent cold read (**Over-governance is in-jurisdiction — the remove-shaped hunt.** A minted principle or intent that no elicited fact justifies — no risk declaration, no reality-surface finding, no user-declared value paying for it — is a finding like any absence)"
+  },
+  {
+    "id": "R-021",
+    "rule": "OVER-GOVERNANCE CALIBRATION CLAUSE: such a finding is ADMISSIBLE ONLY when it names EITHER the fact the intent fails to trace to (the bar breached) OR the LIGHTER SURFACE that would carry the real need. Evidence: every over-governance finding names one of the two; one naming neither is inadmissible.",
+    "class": "must",
+    "source": "SKILL.md:Independent cold read (Admissible only when it names the fact the intent fails to trace to (the bar breached) or the lighter surface that would carry the real need)"
+  },
+  {
+    "id": "R-022",
+    "rule": "OVER-GOVERNANCE EXEMPTION: a FLOOR-derived, COMPLIANCE-MODULE-derived, or NFR-derived obligation is NEVER EXCESS. Evidence: no finding files an obligation from those three origins as over-governance.",
+    "class": "must",
+    "source": "SKILL.md:Independent cold read (a floor-, compliance-module-, or NFR-derived obligation is never excess)"
+  },
+  {
+    "id": "R-023",
+    "rule": "OVER-GOVERNANCE BOUNDARY: the remove-shaped hunt DOES NOT REACH principle FORMULATION quality — that stays permanently out of jurisdiction. Evidence: an over-governance finding attacks whether the intent is paid for, never how it is worded.",
+    "class": "must",
+    "source": "SKILL.md:Independent cold read (This does not reach principle *formulation* quality — permanently out of jurisdiction (above))"
+  },
+  {
+    "id": "R-024",
+    "rule": "CROSS-EXAM IS PAIR-ONLY: spawned SOLO, the reviewer SKIPS cross-examination entirely and goes straight to the survivor report. Evidence: a solo run reports undebated, with no cross-exam messages sent.",
+    "class": "must",
+    "source": "SKILL.md:Cross-examination (Pair only — spawned solo, skip to the survivor report)"
+  },
+  {
+    "id": "R-025",
+    "rule": "CROSS-EXAM GATING AND SHAPE: the exchange runs ONLY AFTER THE LEAD INTRODUCES the counterpart, and it is the ONE-SHOT FOUR-MESSAGE exchange run exactly as specified in the shared protocol. Evidence: no reviewer-to-counterpart contact precedes the lead's introduction, and the exchange terminates at four messages without iterating toward consensus.",
+    "class": "must",
+    "source": "SKILL.md:Cross-examination (After the lead introduces your counterpart, run the **one-shot four-message exchange** exactly as specified in [../review-brainstorm/references/CROSS-EXAM.md](...))"
+  },
+  {
+    "id": "R-026",
+    "rule": "POINTER: `../review-brainstorm/references/CROSS-EXAM.md` is the SINGLE SOURCE of the pair protocol, SHARED WITH `mochiko:review-brainstorm`, and it is NOT RESTATED here. Evidence: the body cites the path and states the single-source/not-restated relation rather than reproducing the exchange table, attack/defense standards, or withdrawal rules.",
+    "class": "format",
+    "source": "SKILL.md:Cross-examination (the single source of the pair protocol, shared with `mochiko:review-brainstorm`; it is not restated here)"
+  },
+  {
+    "id": "R-027",
+    "rule": "SUBSTRATE BINDING #1 — *the artifact under review* is THE FROZEN SYNTHESIS. Evidence: cross-exam attacks that cite \"the artifact\" cite `governance-intent.md` as frozen at spawn.",
+    "class": "must",
+    "source": "SKILL.md:Cross-examination (This skill's substrate bindings for it: *the artifact under review* is the frozen synthesis)"
+  },
+  {
+    "id": "R-028",
+    "rule": "SUBSTRATE BINDING #2 — *the fact substrate* is `codebase-analysis.md` PLUS THE DETECT-STACK BASELINE in brownfield; THE REPO'S FILES otherwise. Evidence: fact checks cite the analysis plus the detect-stack baseline on a brownfield run, and the repo's files on a greenfield one.",
+    "class": "must",
+    "source": "SKILL.md:Cross-examination (*the fact substrate* is `codebase-analysis.md` plus the detect-stack baseline (brownfield; the repo's files otherwise))"
+  },
+  {
+    "id": "R-029",
+    "rule": "FACT ROUTE 1 — REALITY-SURFACE FACT (what the code, CI, or docs actually contain): CHECKED against the analysis or the files, NEVER ARGUED. Evidence: a disputed reality-surface fact is settled by a citation to the analysis or a file read, never by exchange of assertions.",
+    "class": "must",
+    "source": "SKILL.md:Cross-examination (a **reality-surface fact** (what the code, CI, or docs actually contain) is checked against the analysis or the files — never argued)"
+  },
+  {
+    "id": "R-030",
+    "rule": "FACT ROUTE 2 — USER-DECLARED FACT (team size, risk posture, lifespan, values): CHECKABLE AGAINST NOTHING ON DISK — FLAG IT FOR THE LEAD TO ROUTE **TO THE USER AS CONFIRMATION**, never to argument. Evidence: a disputed user-declared fact leaves the review as a flagged confirmation request routed via the lead, with no reviewer-side adjudication.",
+    "class": "must",
+    "source": "SKILL.md:Cross-examination (a **user-declared fact** (team size, risk posture, lifespan, values) is checkable against nothing on disk — flag it for the lead to route **to the user as confirmation**, never to argument)"
+  },
+  {
+    "id": "R-031",
+    "rule": "FACT ROUTE 3 — EXTERNAL-SOURCED FACT (a FLOOR-CLASS claim fed from OUTSIDE THE REPO: vendor capability, regulatory content, a benchmark number): checked per `EXTERNAL-CLAIMS.md`, NEVER ARGUED, per its SOURCE RE-READ CLAUSE. Evidence: an external-sourced claim is live-checked with a cited source and, where it grounds a surviving finding, an independent re-read is run before the finding stands.",
+    "class": "must",
+    "source": "SKILL.md:Cross-examination (A third fact type gets a third route: an **external-sourced fact** (a floor-class claim fed from outside the repo — vendor capability, regulatory content, a benchmark number) is checked per [EXTERNAL-CLAIMS.md](...) ... never argued, per its source re-read clause)"
+  },
+  {
+    "id": "R-032",
+    "rule": "POINTER: `../review-brainstorm/references/EXTERNAL-CLAIMS.md` is the SINGLE SOURCE of external-claim mechanics and is NOT RESTATED here. Evidence: the body cites the path for the mechanics rather than reproducing the trigger, floor classes, inline-check mechanics, or disclosure grammar.",
+    "class": "format",
+    "source": "SKILL.md:Cross-examination (the single source of that mechanics, not restated here)"
+  },
+  {
+    "id": "R-033",
+    "rule": "REPORT AS A MESSAGE: the survivor report returns TO THE LEAD AS A MESSAGE — NO REPORT FILES. Evidence: the reviewer writes no report file anywhere; the survivors arrive as a message.",
+    "class": "must",
+    "source": "SKILL.md:Survivor report (Return to the lead as a message (no report files))"
+  },
+  {
+    "id": "R-034",
+    "rule": "REPORT CONTENT: **YOUR OWN** survivors only, SEVERITY-CLASSIFIED, each carrying (a) its failure scenario, (b) its resolution path, (c) any UNRESOLVED COUNTERPART OBJECTION, and (d) any FLAGGED DUPLICATE of a counterpart finding. Evidence: the report contains no counterpart-owned findings, every survivor carries all four attachments where applicable, and suspected duplicates are flagged by name rather than merged.",
+    "class": "must",
+    "source": "SKILL.md:Survivor report (**your own** survivors, severity-classified, each with its failure scenario, resolution path, any unresolved counterpart objection, and any flagged duplicate of a counterpart finding)"
+  },
+  {
+    "id": "R-035",
+    "rule": "TALLY: the report carries a tally in the form \"N raised, M survived\", and THE FALLEN STAY RETRIEVABLE ON ASK. Evidence: the report states both counts, and the withdrawn/killed findings are still available when the lead asks for them.",
+    "class": "must",
+    "source": "SKILL.md:Survivor report (plus a **tally** (\"N raised, M survived\"; the fallen stay retrievable on ask))"
+  },
+  {
+    "id": "R-036",
+    "rule": "RECOMMENDED STATUS: the report closes with a RECOMMENDED STATUS drawn from the three-verdict set. Evidence: the message names exactly one of `ready` / `needs-revision` / `critical-gaps` as its recommendation.",
+    "class": "must",
+    "source": "SKILL.md:Survivor report (and a recommended status); SKILL.md:Survivor report (verdict table)"
+  },
+  {
+    "id": "R-037",
+    "rule": "VERDICT CRITERION — `ready`: EVERY HUNT CLASS ACTIVELY WORKED **and** NOTHING BLOCKING SURVIVED. Evidence: a `ready` recommendation is justified by both limbs — a completed hunt across the classes and an empty blocking-survivor set.",
+    "class": "must",
+    "source": "SKILL.md:Survivor report (verdict table, **ready** row: every hunt class actively worked, nothing blocking survived)"
+  },
+  {
+    "id": "R-038",
+    "rule": "VERDICT CRITERION — `needs-revision`: survivors are RESOLVABLE BY THE SESSION — an interrogation follow-up, a re-dealt card, or a fixable fold. Evidence: a `needs-revision` recommendation names survivors of those three kinds.",
+    "class": "must",
+    "source": "SKILL.md:Survivor report (verdict table, **needs-revision** row: survivors resolvable by the session (an interrogation follow-up, a re-dealt card, a fixable fold))"
+  },
+  {
+    "id": "R-039",
+    "rule": "VERDICT CRITERION — `critical-gaps`: a FACT PROFILE CONTRADICTED by its own risk declaration or by detected reality · an UNRECORDED RULING (**a missing or unrecorded depth-level declaration among them**) · or a SYNTHESIS TOO THIN TO REVIEW. Evidence: a `critical-gaps` recommendation cites one of the three, and a missing/unrecorded depth-level declaration reaches this verdict rather than a lesser one.",
+    "class": "must",
+    "source": "SKILL.md:Survivor report (verdict table, **critical-gaps** row: a fact profile contradicted by its own risk declaration or detected reality, an unrecorded ruling (a missing or unrecorded depth-level declaration among them), or a synthesis too thin to review)"
+  },
+  {
+    "id": "R-040",
+    "rule": "NEVER DEFAULT TO `ready` (floor): `ready` is EARNED BY A COMPLETED HUNT, not by the synthesis looking reasonable. Evidence: the review's posture is default-FAIL — a clean read with no worked hunt does not yield `ready`.",
+    "class": "floor",
+    "source": "SKILL.md:Survivor report (**Never default to `ready`** — it is earned by a completed hunt, not by the synthesis looking reasonable)"
+  },
+  {
+    "id": "R-041",
+    "rule": "TOO THIN IS THE FIRST FINDING: a synthesis TOO THIN TO ATTACK (rulings without rationale, marks without basis) is ITSELF THE FIRST FINDING. Evidence: faced with a thin synthesis the reviewer files the thinness as finding one rather than reporting nothing to attack.",
+    "class": "must",
+    "source": "SKILL.md:Survivor report (A synthesis too thin to attack (rulings without rationale, marks without basis) is itself the first finding)"
+  },
+  {
+    "id": "R-042",
+    "rule": "INDEPENDENCE — NEVER IN THE SESSION (floor): the reviewer was never in the interrogation session and STAYS OUT OF ITS FRAMING until the cold read is done — INCLUDING THE COUNTERPART'S FRAMING. Evidence: no session framing and no counterpart framing entered the reviewer's context before its findings were formed.",
+    "class": "floor",
+    "source": "SKILL.md:Independence (You were **never in the session**, and you stay out of its framing until your cold read is done — that includes your counterpart's framing)"
+  },
+  {
+    "id": "R-043",
+    "rule": "INDEPENDENCE — THE LEAD'S PEN (floor): findings enter the synthesis THROUGH THE LEAD'S PEN, with dispositions in ITS REVIEW SECTION; the reviewer NEVER WRITES THE FILE. Evidence: the synthesis file's Review section is written by the lead, and no reviewer-authored edit appears in `governance-intent.md`.",
+    "class": "floor",
+    "source": "SKILL.md:Independence (Findings enter the synthesis through the lead's pen, with dispositions in its Review section; you never write the file)"
+  },
+  {
+    "id": "R-044",
+    "rule": "INDEPENDENCE — REVIEW EVIDENCE IN THE ARTIFACTS (floor): the independent review leaves its VERDICT and PER-FINDING DISPOSITIONS in the REVIEWED ARTIFACTS THEMSELVES — review evidence that lives ONLY IN CONVERSATION is a FLOOR VIOLATION. Evidence: the verdict and every finding's disposition are durably recorded against the artifact (by the lead's pen, per R-043), not left in chat alone.",
+    "class": "floor",
+    "source": "SKILL.md:Independence (The independent review leaves its verdict and per-finding dispositions in the reviewed artifacts themselves — review evidence that lives only in conversation is a floor violation)"
+  },
+  {
+    "id": "R-045",
+    "rule": "STATUS IS INPUT: the reviewer's status is INPUT — the LEAD owns the CLEARING VERDICT and the SURVIVOR ROUTING; the USER owns RATIFICATION. Evidence: the reviewer neither clears nor routes; it hands the status up.",
+    "class": "must",
+    "source": "SKILL.md:Independence (Your status is **input**. The lead owns the clearing verdict and the survivor routing; the user owns ratification)"
+  },
+  {
+    "id": "R-046",
+    "rule": "POINTER: the clearing/routing/ratification ownership is stated by THIS SKILL'S COMMAND (`/mochiko:setup`); the SKILL DOES NOT RESTATE the loop discipline. Evidence: the body defers to the command for those mechanics rather than reproducing them.",
+    "class": "format",
+    "source": "SKILL.md:Independence (its command states them; this skill does not restate them)"
+  },
+  {
+    "id": "R-047",
+    "rule": "MISTAKE ROW — CONTESTED IS NOT A SHIELD: a `Contested` element is NOT skipped on its mark alone; the mark is HONORED ONLY AFTER ITS RATIONALE AUDIT — an UNAUDITED `Contested` IS A SHIELD, AND A SHIELD IS A FINDING. Evidence: every `Contested` element the review passed over carries a completed rationale audit, and unaudited ones are filed as findings.",
+    "class": "must",
+    "source": "SKILL.md:Common Mistakes (Skipping a `Contested` element on its mark alone → The mark is honored only after its rationale audit — an unaudited `Contested` is a shield, and a shield is a finding)"
+  },
+  {
+    "id": "R-048",
+    "rule": "MISTAKE ROW — MARKS ARE SELF-REPORTED: a `Confident` mark is NEVER evidence of engagement; the marks are SELF-REPORTED BY THE LEAD UNDER REVIEW, and ECHO-RATIONALES AND ADOPTION STREAKS OUTRANK THE MARK. Evidence: the review treats confidence marks as claims to be tested, and where an echo-rationale or an adoption streak conflicts with a mark, the evidence wins.",
+    "class": "must",
+    "source": "SKILL.md:Common Mistakes (Trusting a `Confident` mark as evidence of engagement → Marks are self-reported by the lead under review. Echo-rationales and adoption streaks outrank the mark)"
+  },
+  {
+    "id": "R-049",
+    "rule": "MISTAKE ROW — USER-DECLARED FACTS ARE NEVER ARGUED AGAINST THE FILES: team size, risk posture, and lifespan LIVE IN NOBODY'S REPO — route them to the USER AS CONFIRMATION, VIA THE LEAD. Evidence: no finding attacks a user-declared fact by citing the repo, and each such dispute leaves as a lead-relayed confirmation request.",
+    "class": "must",
+    "source": "SKILL.md:Common Mistakes (Arguing a user-declared fact against the files → Team size, risk posture, and lifespan live in nobody's repo — route to the user as confirmation, via the lead)"
+  },
+  {
+    "id": "R-050",
+    "rule": "DECLARED LEVEL — NEVER ARGUE IT IS WRONG FOR THE PROJECT: the declared depth level is THE USER'S RECORDED RULING (D1/D2). The CHALLENGEABLE surface is its EXPRESSION, its WAIVERS, and its FACT CONSISTENCY. Evidence: no finding argues low-should-be-high or high-should-be-low; findings against the level attack only expression, waivers, or consistency with elicited facts.",
+    "class": "must",
+    "source": "SKILL.md:Common Mistakes (Arguing the declared level is wrong for the project → The declared level is the user's recorded ruling (D1/D2) — challenge its expression, waivers, and fact consistency)"
+  },
+  {
+    "id": "R-051",
+    "rule": "DECLARED LEVEL — THE DECLARATION IS VERIFIED, THREE WAYS: it EXISTS IN THE LEDGER, it was RECOMMEND-THEN-ARBITRATED, and GREENFIELD GOT THE LOW RECOMMENDATION (D2). Evidence: the review states all three verification results; a missing or unrecorded declaration escalates to `critical-gaps` (R-039).",
+    "class": "must",
+    "source": "SKILL.md:Common Mistakes (verify it exists in the ledger, was recommend-then-arbitrated, and greenfield got the low recommendation (D2)); SKILL.md:Survivor report (critical-gaps row)"
+  },
+  {
+    "id": "R-052",
+    "rule": "DECLARED LEVEL — D6 NO-WATCHER: NEVER flag the declared level against REAL USERS or DEPLOYMENT STATE. Evidence: no finding cites the project's actual users, traffic, or deployment posture as grounds against the declared level.",
+    "class": "must",
+    "source": "SKILL.md:Common Mistakes (Never flag it against real users or deployment state (D6 no-watcher))"
+  },
+  {
+    "id": "R-053",
+    "rule": "DECLARED LEVEL — NEVER GRADE STRICTER: no check is graded STRICTER THAN THE DECLARED LEVEL SETS. Evidence: every graded check is applied at the declared level's rigor, with no high-level expectations imposed on a `low` declaration.",
+    "class": "must",
+    "source": "SKILL.md:Common Mistakes (never grade a check stricter than the declared level sets)"
+  },
+  {
+    "id": "R-054",
+    "rule": "MISTAKE ROW — THE YARDSTICK IS NOT YOUR TASTE: grading runs against THREE named yardsticks — (1) THE AGENDA, (2) THE ASSERTED FLOOR, (3) THE SYNTHESIS'S OWN INTERNAL CONSISTENCY — NEVER what the reviewer would have chosen. Evidence: every finding traces to one of the three; none rests on the reviewer's governance preference.",
+    "class": "must",
+    "source": "SKILL.md:Common Mistakes (Grading against your own governance taste → The yardstick is the agenda, the asserted floor, and the synthesis's own internal consistency — not what you would have chosen)"
+  },
+  {
+    "id": "R-055",
+    "rule": "MISTAKE ROW — NO ATTACKS WITHOUT RESOLUTION PATHS: every finding NAMES THE INTERROGATION FOLLOW-UP OR CHECK that would settle it. Evidence: each finding's resolution path is a concrete follow-up question or a concrete check, not a restatement of the complaint.",
+    "class": "must",
+    "source": "SKILL.md:Common Mistakes (Attacks without resolution paths → Every finding names the interrogation follow-up or check that would settle it)"
+  },
+  {
+    "id": "R-056",
+    "rule": "MISTAKE ROW — NO SOFTENING ON \"THE USER ALREADY CONFIRMED IT IN SESSION\": a SESSION CONFIRMING ITS OWN SYNTHESIS is THE GAP THIS REVIEW EXISTS TO CLOSE; the reviewer was spawned cold precisely so it IS NOT THE ROOM. Evidence: no finding is dropped or downgraded because the session already agreed on the point.",
+    "class": "must",
+    "source": "SKILL.md:Common Mistakes (Softening because the user \"already confirmed it in session\" → A session confirming its own synthesis is the gap this review exists to close. You were spawned cold precisely so you are not the room)"
+  },
+  {
+    "id": "R-057",
+    "rule": "AUTHOR ≠ GRADER (floor): NEVER REVIEW A SESSION YOU HELPED RUN — if you were in the session, you are not a reviewer. Evidence: the reviewing seat participated in none of the interrogation, and a seat that did declines the review rather than running it.",
+    "class": "floor",
+    "source": "SKILL.md:Common Mistakes (Reviewing a session you helped run → If you were in the session, you are not a reviewer)"
+  },
+  {
+    "id": "R-058",
+    "rule": "CONSUMER (agents/devils-advocate.md:7 `skills: review-specifications, review-plan-artifacts, review-brainstorm, review-governance-intent, testing-gap-finding`; :22 '**`mochiko:review-governance-intent`** — cold pre-ratification review of the setup synthesis (`governance-intent.md`)'): this skill's scope stays COLD, PRE-RATIFICATION review of THE SETUP SYNTHESIS, target file `governance-intent.md`. A body that re-scopes to the authored surfaces, to post-ratification work, or away from `governance-intent.md` makes the persona's skill-roster line false.",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/agents/devils-advocate.md:7,22; SKILL.md:Overview"
+  },
+  {
+    "id": "R-059",
+    "rule": "CONSUMER (agents/devils-advocate.md:14-17 'each is the single source of truth for its review target (criteria, severity classification, output format) ... its scope lives in the skill, not a copy here'): ALL THREE LIMBS stay resident in this skill — the CRITERIA (the lens scopes, the over-governance hunt, the yardsticks, the verdict-criteria rows), the SEVERITY CLASSIFICATION (survivors are severity-classified), and the OUTPUT FORMAT (message-not-files, own survivors + attachments + tally + recommended status). Dropping or thinning any limb leaves the persona pointing at a home that no longer holds it, with no copy in the persona to fall back on.",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/agents/devils-advocate.md:14-17; SKILL.md:Overview; SKILL.md:Survivor report"
+  },
+  {
+    "id": "R-060",
+    "rule": "CONSUMER (router skills/mochiko/SKILL.md:44 'serving as a **cold intent reviewer** in a **setup run** — **stress-testing** the **frozen**, **confidence-marked synthesis** *before the user ratifies it*'): the identity vocabulary survives verbatim in substance — `cold intent reviewer`, `setup run`, `stress-testing`, `frozen`, `confidence-marked synthesis`, `before the user ratifies it`. Losing the frozen window, the confidence marks, or the before-ratification timing makes the router row false.",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/skills/mochiko/SKILL.md:44; SKILL.md:Overview"
+  },
+  {
+    "id": "R-061",
+    "rule": "CONSUMER (router skills/mochiko/SKILL.md:44 '(coverage/coherence pair or solo)'): BOTH LENS NAMES — `coverage` and `coherence` — and BOTH SIZINGS — `pair` and `solo` — stay in the body. Collapsing the lens split, renaming a lens, or dropping the solo path breaks the router's stated shape of this seat.",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/skills/mochiko/SKILL.md:44; SKILL.md:Overview (lens paragraph); SKILL.md:Cross-examination (Pair only — spawned solo, skip to the survivor report)"
+  },
+  {
+    "id": "R-062",
+    "rule": "CONSUMER (router skills/mochiko/SKILL.md:44 '→ **survivors + tally + recommended status** (never a session participant; **clearing is the lead's, ratification the user's**)'): the three OUTPUT terms — `survivors`, `tally`, `recommended status` — and the two OWNERSHIP clauses — clearing is the lead's, ratification the user's — plus `never a session participant`, all survive. A body that emits a verdict of its own, drops the tally, or omits the never-a-participant fence breaks the router's promise.",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/skills/mochiko/SKILL.md:44; SKILL.md:Survivor report; SKILL.md:Independence"
+  },
+  {
+    "id": "R-063",
+    "rule": "CONSUMER (router skills/mochiko/SKILL.md:141 devils-advocate row: 'setup G3 intent (**sized**); ... spawn prompts name **skill + role + lens**, since teammates ignore `skills:` frontmatter; recommends verdicts that feed the lead's clearing decision, **never the gate**'): the seat is SIZED (pair or solo), is LENS-BRIEFED VIA THE SPAWN PROMPT (so the body must read its lens from the spawn brief, not from frontmatter), and NEVER GATES. Evidence: the body keeps 'Your spawn brief may scope your hunt to a lens' and the recommend-only floor.",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/skills/mochiko/SKILL.md:141; SKILL.md:Overview (Your spawn brief may scope your hunt to a **lens**); SKILL.md:Overview (Every reviewer recommends)"
+  },
+  {
+    "id": "R-064",
+    "rule": "CONSUMER (review-brainstorm/references/CROSS-EXAM.md:3-7 'This file is the one home of the reviewer-pair cross-examination protocol. `mochiko:review-brainstorm` and `mochiko:review-governance-intent` both run it BY REFERENCE — each skill supplies ITS OWN SUBSTRATE BINDINGS (what \"the artifact\" and \"the fact substrate\" are, and where fact disputes route); the protocol itself is never duplicated'): this skill must keep BOTH SIDES of that contract — the by-reference pointer AND its own three substrate bindings (artifact = frozen synthesis; fact substrate = codebase-analysis + detect-stack baseline / repo files; fact disputes route by the three fact types). Dropping the bindings leaves the shared protocol unbound; restating the protocol duplicates a single source.",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/skills/review-brainstorm/references/CROSS-EXAM.md:3-7; SKILL.md:Cross-examination"
+  },
+  {
+    "id": "R-065",
+    "rule": "CONSUMER (review-brainstorm/references/CROSS-EXAM.md:38-41 'A fact dispute is checked, never argued — route it to the session's fact authority (**the invoking skill names it**)'): the shared protocol REQUIRES the invoking skill to NAME THE FACT AUTHORITY. This skill discharges that obligation with its THREE fact types and THEIR THREE ROUTES (reality-surface → analysis/files; user-declared → the user via the lead; external-sourced → EXTERNAL-CLAIMS.md). Dropping any of the three leaves CROSS-EXAM.md's routing rule with no destination on this substrate.",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/skills/review-brainstorm/references/CROSS-EXAM.md:38-47; SKILL.md:Cross-examination"
+  },
+  {
+    "id": "R-066",
+    "rule": "CONSUMER (review-brainstorm/references/EXTERNAL-CLAIMS.md:94 lists `review-governance-intent` among the consuming skills WITHOUT the '(disclosure-presence check only)' qualifier that narrows `review-plan-artifacts`): this skill remains a FULL consumer of the floor-class external-claim VERIFY — it live-checks a floor-class outside-repo claim per that file's trigger and mechanics, not merely the presence of a disclosure line. The file's edit-time guard ('a change here is assessed against all consumers') is orphaned if the pointer is dropped.",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/skills/review-brainstorm/references/EXTERNAL-CLAIMS.md:93-99; SKILL.md:Cross-examination (external-sourced fact)"
+  },
+  {
+    "id": "R-067",
+    "rule": "CONSUMER (commands/setup.md:48-50 Harness/Independence: 'no output is cleared by its author ... default FAIL. The synthesis is your pen, so its **pre-ratification stress-test** is always a COLD SEAT, or the user's recorded waiver'): the command relies by name on this seat being the PRE-RATIFICATION STRESS-TEST, always COLD, and on THE SYNTHESIS BEING THE LEAD'S PEN. The body's never-in-the-session fence (R-042) and lead's-pen rule (R-043) are what make that command clause true; either loss makes setup.md's Independence bullet unenforceable.",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/commands/setup.md:48-50; SKILL.md:Independence"
+  },
+  {
+    "id": "R-068",
+    "rule": "CONSUMER (commands/setup.md:51-55 'Blind-map dispatch: the pre-ratification stress-test seat is spawned in TWO MESSAGES — first the setup topic / project identity and goal only, *never* the synthesis path, so it builds its Phase 0 angle map blind to what the interrogation concluded; its map returns before you send the synthesis path and the cold read begins. In a pair, both seats build their maps independently'): the BLIND-MAP DISPATCH IS COMMAND-SIDE ORCHESTRATION (body prose superseded at v0.63.0 — 'orchestration stays command-side', strip file). The skill body must stay COMPATIBLE with it — a cold read that begins only when the synthesis path arrives, and sequestration from the counterpart — and must NOT re-home the dispatch mechanics.",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/commands/setup.md:51-55; .mochiko/strips/review-governance-intent.md ([v0.63.0], blind angle map removed); SKILL.md:Independent cold read"
+  },
+  {
+    "id": "R-069",
+    "rule": "CONSUMER (commands/setup.md:56-60 'Coverage-survivor routing: a surviving **coverage** finding questions the setup's SCOPE, not a card — present each gap as a candidate topic; **the user** rules the path: explore now / rule inline / defer. A gap that overlaps an agenda dimension keeps the ordinary interrogation-follow-up path'): the command's routing branch consumes DISTINGUISHABLE COVERAGE FINDINGS and their AGENDA-DIMENSION OVERLAP. The body must keep the coverage lens named and keep the agenda as the coverage yardstick (R-006, R-017), or the command has no input to route.",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/commands/setup.md:56-60; SKILL.md:Overview (coverage lens); SKILL.md:Independent cold read (ten-dimension yardstick)"
+  },
+  {
+    "id": "R-070",
+    "rule": "CONSUMER (commands/setup.md:16-18 Goal 'the intent synthesis was RATIFIED BY THE USER BEFORE ANY SURFACE WAS AUTHORED ... an independent grade confirmed it from the files'; :27-30 'Not done — default FAIL: a surface authored before the intent was ratified · the set NEVER GRADED BY ANYONE BUT ITS AUTHOR'): the command's default-FAIL list depends on this seat completing BEFORE ratification (R-001) and on its AUTHOR ≠ GRADER independence (R-057). Re-scoping the skill to run after ratification, or letting a session participant run it, makes setup.md's Goal unreachable.",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/commands/setup.md:16-18,27-30; SKILL.md:Overview; SKILL.md:Common Mistakes"
+  }
+]

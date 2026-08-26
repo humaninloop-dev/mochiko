@@ -43,13 +43,13 @@ audited Wave 2 body no-ops (nothing D4-cuttable); their budgets are their surviv
 | analysis-codebase | 6,509 | 8,137 |
 | authoring-constitution | 17,240 | 21,550 |
 | authoring-feature-map | 12,330 | 15,413 |
-| review-governance-intent | 7,089 | 8,862 |
-| validation-constitution | 6,734 | 8,418 |
+| review-governance-intent | 5,562 (re-seeded v0.89.0 — user-ruled true-deletion cut) | 6,953 |
+| validation-constitution | 5,103 (re-seeded v0.90.0 — user-ruled true-deletion cut) | 6,379 |
 | testing-governance-injection | 3,540 | 4,425 |
 | authoring-requirements | 4,101 | 5,127 |
 | authoring-user-stories | 5,361 | 6,702 |
 | authoring-prototype | 8,898 | 11,123 |
-| review-specifications | 11,271 | 14,089 |
+| review-specifications | 6,187 (re-seeded v0.88.0 — user-ruled true-deletion cut) | 7,734 |
 | ~~authoring-architecture~~ | 5,250 | 6,563 |
 | authoring-technical-requirements | 10,628 | 13,285 |
 | brownfield-integration | 6,342 | 7,928 |
@@ -62,15 +62,38 @@ audited Wave 2 body no-ops (nothing D4-cuttable); their budgets are their surviv
 | patterns-system-design | 9,304 (re-asserted v0.81.0) | 11,047 |
 | patterns-technical-decisions | 4,626 | 5,783 |
 | patterns-vertical-tdd | 5,189 | 6,487 |
-| review-brainstorm | 11,508 | 14,385 |
+| review-brainstorm | 2,497 (re-seeded v0.83.0 — user-ruled true-deletion cut) | 3,122 |
 | review-feasibility | 1,893 (re-seeded v0.82.0 — user-ruled 90% cut) | 2,367 |
-| review-plan-artifacts | 10,855 | 13,569 |
+| review-plan-artifacts | 4,901 (re-seeded v0.87.0 — user-ruled true-deletion cut) | 6,127 |
 | review-code-minimalism | 3,689 | 4,612 |
 
 The v0.63.0 floor-line additions (analysis-iterative, review-governance-intent,
 validation-constitution, review-specifications) and the v0.64.0 ones (review-brainstorm,
 review-feasibility, review-plan-artifacts) ride inside these budgets — the +25% headroom
 absorbed them by design.
+
+`review-governance-intent` re-seeded at v0.89.0 and `validation-constitution` at v0.90.0
+per the compression rule (R11): user-ruled true-deletion cuts landed the bodies at 5,562
+(was 8,150 against 8,862; budget 6,953) and 5,103 (was 7,630 against 8,418; budget 6,379).
+Both floors shallow by structure — the v0.63.0 benchmark wave had already strip-cut both
+(−46%/−44%), so these passes compressed keep-sets. Rulings + disposition maps: the
+[v0.89.0]/[v0.90.0] strip entries and the two 2026-08-26 ADRs. Both eval slots run as
+post-cut regression checks; inventories non-compressor-authored under `evals/`.
+
+`review-specifications` re-seeded at v0.88.0 per the compression rule (R11): the user-ruled
+true-deletion cut landed the body at 6,187 (was 12,184 against 14,089); budget 6,187 × 1.25 =
+7,734 (rounded up). Ruling + disposition map: `.mochiko/strips/review-specifications.md`
+[v0.88.0] and `.mochiko/decisions/2026-08-26-review-specifications-true-deletion-cut.md`.
+Its compression-eval slot runs as a post-cut regression check; the 81-entry rule inventory is
+non-compressor-authored at `evals/review-specifications/rules.json`.
+
+`review-plan-artifacts` re-seeded at v0.87.0 per the compression rule (R11): the user-ruled
+true-deletion cut landed the body at 4,901 (was 13,521 against 13,569); budget 4,901 × 1.25 =
+6,127 (rounded up). Ruling + disposition map: `.mochiko/strips/review-plan-artifacts.md`
+[v0.87.0] and `.mochiko/decisions/2026-08-26-review-plan-artifacts-true-deletion-cut.md`.
+Its compression-eval slot runs as a post-cut regression check (the standing v0.82.0 pattern);
+the 113-entry rule inventory is already non-compressor-authored at
+`evals/review-plan-artifacts/rules.json`.
 
 `review-feasibility` re-seeded at v0.82.0 per the compression rule (R11 — headroom does not
 survive a cut): the user-ruled 90% body cut with breakup into `references/` landed the body at

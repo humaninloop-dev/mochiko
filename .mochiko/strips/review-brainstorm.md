@@ -10,6 +10,93 @@ restores the boundary clauses under the cap, and is strict-YAML-safe. Delivery v
 deferred: the in-session skill listing is a session-start snapshot (probe received pre-edit
 text), so the probe re-runs in a fresh session.
 
+## [v0.83.0] User-ruled true-deletion body cut — body 11,754 → 2,497 chars (−78.8%)
+
+- **Disposition:** superseded → a single-file floors-and-dispatch body (true deletion — no
+  relocation, no new reference file; a drafted breakup into a `references/REVIEW-PROTOCOL.md`
+  was rejected by the user mid-pass as verbosity-shifting, not verbosity-reduction). Every
+  behavioral rule of the old body survives as a compressed line; all rationale prose, worked
+  framing, and the two tables' long-form text are deleted. The user targeted −90% and ruled
+  −83.3% at the ratification gate with the trade named: the last ~800 chars to −90.0% required
+  deleting ruled machinery outright (reopen-born verify grading, synthesis fidelity sample,
+  class-6 calibration clause, coverage materiality gate, blind-map grounding fence, cross-exam
+  substrate binding) — declined; every one of those rules is kept in compressed form.
+  Post-gate repairs kept the every-rule-survives claim honest: the integrity-lens sample-audit
+  clause restored first (+71 chars), then the author≠grader audit (FAIL round 1, 7 blocking)
+  forced back the lens taxonomy definitions, the coverage-severity test clause, the full
+  cross-exam substrate binding (fact authority), the decision(s)-touched contract field, the
+  fidelity-sample criteria, and the v0.46.0 its-command-states-them clause (+461 chars).
+  Ratified draft 1,965 → landed 2,497.
+  `description:` untouched (490 chars). All three `references/` files untouched.
+- **Tier failed:** n/a — supersession by ruling (in-session user ruling 2026-08-26 at the
+  `compressing-skills` ratification gate, on the `review-feasibility` v0.82.0 "cut now, eval
+  validates later" precedent; ADR
+  `.mochiko/decisions/2026-08-26-review-brainstorm-true-deletion-cut.md`; `DECISIONS.md`
+  2026-08-26 row). Pass artifacts: `evals/review-brainstorm/pass-report.md`.
+- **Disposition map (old body section → new home; verbatim home for all removed text: git
+  history of this SKILL.md, pre-v0.83.0):**
+  - *Overview ¶1 (record/confidence marks, pair-vs-solo sizing, counterpart purpose, solo
+    bar)* — deleted; the cold/paired-or-solo/never-in-the-room identity survives in the
+    opening line, the solo-bar and sizing detail dies (the dispatching command sizes the
+    review).
+  - *Overview ¶2 (lens split)* — compressed: the two lens definitions (*decision-quality* /
+    *record-integrity*) and depth-never-jurisdiction survive as one parenthetical clause
+    (taxonomy audit-restored after the ratified draft deleted it while both gate uses
+    remained).
+  - *Overview ¶3 (lead owns verdicts)* — compressed to the opening line + a Floors clause.
+  - *Phase 0 — blind angle map (v0.60.0 PROTECTED)* — compressed to the Protocol chain's first
+    leg: blind map from the topic only, before record contact, free repo grounding, session
+    artifacts excluded. Anti-anchoring rationale and pair-both-build prose deleted (the
+    dispatching command's two-message blind-map dispatch carries the mechanics).
+  - *Phase 1 — sequestration, scenario stress, six-class table (v0.67.0 class-6 row)* —
+    compressed to the second leg: cold-read-before-counterpart-contact + the six class names,
+    class 2 keeping its intra-decision qualifier and class 6 keeping its calibration clause
+    ("name the cheaper shape; floor/compliance/NFR never excess"). Long-form class questions
+    deleted.
+  - *Phase 1 — reality-grounding + EXTERNAL-CLAIMS ownership* — compressed: fact-checker-map
+    substrate, files fallback, the integrity-lens sample-audit rule, and the ownership claim
+    ("owned here") all survive as clauses; the failed-sample-is-a-finding-against-everyone's-
+    substrate consequence dies as prose.
+  - *Phase 1 — finding contract, `Contested` rule, coverage findings + severity table + two
+    gates + findings-formed (v0.60.0 PROTECTED)* — compressed: contract fields, `Contested`
+    new-angle exception, diff + materiality, dismissed-angle-is-a-ruling, and
+    findings-formed-count-only all survive as clauses; the Critical/Important/Minor severity
+    test table survives compressed to one clause (severity by whether a ruling would likely /
+    plausibly / not have changed — audit-restored after the ratified draft dropped it).
+  - *Phase 2 — cross-exam binding* — compressed to one leg: `references/CROSS-EXAM.md`, pair
+    only, fact substrate and fact authority named.
+  - *Phase 3 — survivor report + verdict table + never-default-`ready`* — compressed: message
+    form, per-survivor fields, tally, the three status words, and the never-default-`ready` /
+    hunt-harder / never-manufacture floor all survive.
+  - *The verify pass + synthesis fidelity sample + reopen-born decisions (v0.60.0
+    PROTECTED)* — compressed to the Verify-pass paragraph: fold-grading with quoted evidence,
+    fold-introduced-contradictions-only, fidelity sample, reopen-born-never-a-fresh-cold-read.
+    The one-level recursion stop dies as prose (implied by never-a-fresh-cold-read).
+  - *Independence (4 bullets incl. the v0.64.0 floor line)* — compressed into Floors; the
+    v0.64.0 line's verbatim form is superseded by its compressed form ("verdict and
+    dispositions left in the reviewed artifacts themselves, never only in conversation") —
+    substance intact, wording superseded by this same ruling.
+  - *Common Mistakes (5 rows)* — deleted; each row's rule already lives in the Protocol chain
+    or Floors (resolution paths, map-checking, `Contested`, cold-spawn independence,
+    never-grade-own-session via never-in-the-room).
+- **MANDATORY KEPT reconciliation:** [v0.26.0] KEPT (entire remaining body) — **superseded by
+  this ruling**, the whole-body survivor status ends here. [v0.60.0] protected machinery —
+  survives compressed (blind map · coverage diff/materiality/dismissed-angle · reopen-born
+  verify), no rule deleted. [v0.67.0] class-6 row — survives compressed with its calibration
+  clause. [v0.64.0] floor line — survives compressed (wording superseded, substance intact).
+  [v0.52.0] carve-out — untouched (`CROSS-EXAM.md`/`EXTERNAL-CLAIMS.md` not edited).
+  [v0.46.0] its-command-states-them pointer clause — survives compressed in the Floors close
+  ("— its command states them"; audit-restored after the ratified draft dropped it).
+- **Consumers assessed:** `agents/devils-advocate.md` (declares the skill; description
+  untouched, routing intact) · `agents/validator.md` (points at
+  `references/EXTERNAL-CLAIMS.md` — untouched) · `review-governance-intent` (shares
+  `CROSS-EXAM.md` — untouched; its own protocol unaffected) · `commands/brainstorm.md`
+  ("Phase 0 angle map" wording: the body no longer numbers phases, but "blind angle map"
+  survives verbatim and the two-message dispatch mechanics live in the command itself;
+  "coverage-survivor" / "reopen-born verify" vocabulary survives in the body) ·
+  grep for body-vocabulary quotes elsewhere: all external "hunt class" hits are
+  `review-feasibility`'s class 7. No dead pointers created.
+
 ## [v0.67.0] Sixth hunt class (excess machinery / unpaid decision) added — three "five hunt classes" counts re-keyed
 - **Disposition:** superseded → the excess posture from the architect-role ruling: a sixth, remove-shaped hunt class is added, so the three "five hunt classes" counts become "six".
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/architect-role-pushback-and-abstraction/record.md`, D3 as amended by its F3 calibration clause; DECISIONS.md combined-wave build row).

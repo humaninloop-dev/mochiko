@@ -1,0 +1,404 @@
+[
+  {
+    "id": "R-001",
+    "rule": "A blind angle map is produced as its own deliverable, separate from the finding report, and it maps the angles the TOPIC should have covered rather than the angles the record happened to reach. Evidence: an angle-map deliverable exists in the produced output whose entries are topic-level angles, not a restatement of the record's decision list.",
+    "class": "floor",
+    "source": "SKILL.md:Phase 0 — Blind angle map"
+  },
+  {
+    "id": "R-002",
+    "rule": "The reviewer never authors, revises, or completes the record. The produced file set contains no `record.md` — no rewritten, corrected, or 'here is the fixed version' copy of the record, and no patch to it. Findings are proposed for the lead to land, never applied.",
+    "class": "floor",
+    "source": "SKILL.md:Overview; SKILL.md:Independence; SKILL.md:Common Mistakes"
+  },
+  {
+    "id": "R-003",
+    "rule": "The reviewer writes from outside the session. The output carries no co-author voice (no 'we decided', 'as we discussed', 'our reasoning was') and never softens a finding on the grounds that the participants clearly thought about it or that the record looks considered.",
+    "class": "floor",
+    "source": "SKILL.md:Independence; SKILL.md:Common Mistakes (captured-by-the-room tell)"
+  },
+  {
+    "id": "R-004",
+    "rule": "No finding is raised against a decision the record marks `Contested`, unless that finding explicitly states that its angle is genuinely new to the ruling — the record shows the steelman was heard and overruled in the open. Re-arguing the recorded counter-argument is the failure.",
+    "class": "floor",
+    "source": "SKILL.md:Phase 1 (Never raise a Contested decision); SKILL.md:Common Mistakes"
+  },
+  {
+    "id": "R-005",
+    "rule": "`ready` is never the default. Where blocking survivors exist, the recommended status is `needs-revision` or `critical-gaps`; where `ready` is recommended at all, the output states that every hunt class was actively worked and the blind-map coverage diff was run.",
+    "class": "floor",
+    "source": "SKILL.md:Phase 3 (Never default to `ready`); description (defaults to FAIL)"
+  },
+  {
+    "id": "R-006",
+    "rule": "A load-bearing claim the reviewer cannot verify is reported as a finding, not extended the benefit of the doubt. At least one claim the record asserts and the reviewer could not confirm is raised as a finding (or reported as verified-false), never accepted silently.",
+    "class": "floor",
+    "source": "SKILL.md:Phase 1 step 3 (An unverifiable claim is a finding)"
+  },
+  {
+    "id": "R-007",
+    "rule": "Spawned solo, findings are held to the bar the cross-examination would have applied — each survivor would withstand an attempt to refute it, and weak or speculative findings are dropped rather than shipped undebated.",
+    "class": "must",
+    "source": "SKILL.md:Overview (Spawned solo, your findings go to the lead undebated)"
+  },
+  {
+    "id": "R-008",
+    "rule": "A briefed lens sets depth, not jurisdiction: the reviewer works the briefed lens hard and still reports anything real found outside it, leaving the cross-set merge to the lead. (Vacuous when the dispatch briefs no lens — the judge marks not-applicable rather than failed.)",
+    "class": "should",
+    "source": "SKILL.md:Overview (lens paragraph)"
+  },
+  {
+    "id": "R-009",
+    "rule": "The Phase 0 map and its coverage diff are run whatever the lens — they sit outside the lens split, so no lens brief excuses skipping either.",
+    "class": "must",
+    "source": "SKILL.md:Overview (The Phase 0 blind map and its coverage diff sit outside the lens split)"
+  },
+  {
+    "id": "R-010",
+    "rule": "The angle map names at least one angle the record never visits — ground the session never stood on — demonstrating it was built from the topic rather than inherited from the record's frame.",
+    "class": "must",
+    "source": "SKILL.md:Phase 0 (built blind, it names the ground the session never stood on)"
+  },
+  {
+    "id": "R-011",
+    "rule": "The angle map enumerates angles across kinds a thorough treatment of the topic would visit — actors, cost, failure modes, timescales, alternatives, second-order effects, or whatever the topic demands — rather than a single-dimension list.",
+    "class": "format",
+    "source": "SKILL.md:Phase 0 (Enumerate the angles ... actors, cost, failure modes, timescales, alternatives, second-order effects)"
+  },
+  {
+    "id": "R-012",
+    "rule": "The map's grounding excludes the session's own artifacts: it cites the topic statement, the goal line, and free repo grounding, never the record, its index entry, or anything under the session directory.",
+    "class": "must",
+    "source": "SKILL.md:Phase 0 (free repo grounding, with one exclusion)"
+  },
+  {
+    "id": "R-013",
+    "rule": "Scenario stress is run against the record's conclusions: at least one finding names the concrete input, actor, failure, scale, or sequence under which a stated conclusion breaks.",
+    "class": "must",
+    "source": "SKILL.md:Phase 1 step 1 (Scenario stress)"
+  },
+  {
+    "id": "R-014",
+    "rule": "Hunt class 1 — unchallenged assumption — is worked: at least one finding names something a decision silently presumes that nobody in the session tested.",
+    "class": "must",
+    "source": "SKILL.md:Phase 1, hunt-class table row 1"
+  },
+  {
+    "id": "R-015",
+    "rule": "Hunt class 2 — missing dimension (intra-decision) — is worked: at least one finding names a factor (cost, failure mode, actor, timescale) that a decision the record DID reach never weighed.",
+    "class": "must",
+    "source": "SKILL.md:Phase 1, hunt-class table row 2"
+  },
+  {
+    "id": "R-016",
+    "rule": "The class-2 boundary holds: a topic dimension the session never visited at all is classified as a coverage finding (from the map diff), not as a class-2 missing dimension. Class 2 stays inside decisions the record actually reached.",
+    "class": "must",
+    "source": "SKILL.md:Phase 1, hunt-class table row 2 (Never-visited topic dimensions belong to the coverage class)"
+  },
+  {
+    "id": "R-017",
+    "rule": "Hunt class 3 — passive acceptance — is worked: at least one finding names a decision adopted on thin rationale with no pushback recorded (the 'sounds good' adoption).",
+    "class": "must",
+    "source": "SKILL.md:Phase 1, hunt-class table row 3"
+  },
+  {
+    "id": "R-018",
+    "rule": "Hunt class 4 — rejected-road steelman — is worked: a discarded alternative is argued seriously in its strongest form, and the output states whether the chosen road still wins against it.",
+    "class": "must",
+    "source": "SKILL.md:Phase 1, hunt-class table row 4"
+  },
+  {
+    "id": "R-019",
+    "rule": "Hunt class 5 — inconsistency — is worked: at least one finding names two decisions that undercut each other, each defensible alone, and states how they collide.",
+    "class": "must",
+    "source": "SKILL.md:Phase 1, hunt-class table row 5"
+  },
+  {
+    "id": "R-020",
+    "rule": "Hunt class 6 — excess machinery / unpaid decision — is worked: at least one finding names a decision, or record apparatus it mandates, that pays for no session driver.",
+    "class": "must",
+    "source": "SKILL.md:Phase 1, hunt-class table row 6"
+  },
+  {
+    "id": "R-021",
+    "rule": "The class-6 calibration clause holds: an excess-machinery finding is admissible only where it names the cheaper shape or the unpaid driver, and a floor, compliance, or NFR obligation is never called excess.",
+    "class": "must",
+    "source": "SKILL.md:Phase 1, hunt-class table row 6 (Admissible only naming the cheaper shape or the unpaid driver)"
+  },
+  {
+    "id": "R-022",
+    "rule": "The hunt classes are run per decision across the record, not against one or two convenient decisions — the output's findings and coverage statements reach the record's decisions broadly.",
+    "class": "must",
+    "source": "SKILL.md:Phase 1 step 2 (The six hunt classes, per decision)"
+  },
+  {
+    "id": "R-023",
+    "rule": "Reality-grounding is run and disclosed: the output states which load-bearing claims it checked and against what substrate (the record's fact-checker map when one exists, the files otherwise), rather than silently trusting the record's assertions about the world.",
+    "class": "must",
+    "source": "SKILL.md:Phase 1 step 3 (Reality-grounding); SKILL.md:Common Mistakes (Trusting the session's claims about code)"
+  },
+  {
+    "id": "R-024",
+    "rule": "An outside-repo claim (web, registry, standard, vendor documentation, regulatory content, benchmark figure — anything the repo's files cannot contradict) is handled as its own class, not lumped with in-repo verification: the output identifies it as external and load-bearing, and either cites fetched quotable text or states plainly that it stands unverified.",
+    "class": "must",
+    "source": "SKILL.md:Phase 1 step 3 (outside-repo claim); references/EXTERNAL-CLAIMS.md:The trigger / Floor classes / Inline-check mechanics"
+  },
+  {
+    "id": "R-025",
+    "rule": "An external claim carried without its disclosure line is itself reported as a finding — the omission is named, not silently absorbed into whatever verification the reviewer did or did not manage.",
+    "class": "must",
+    "source": "references/EXTERNAL-CLAIMS.md:Disclosure-line grammar (An undisclosed external claim is itself a finding)"
+  },
+  {
+    "id": "R-026",
+    "rule": "The standalone-record fitness checklist is run as a checklist, with evidence cited from the record for each item; an item without cited evidence is treated as unchecked, and any unchecked item blocks a `ready` recommendation.",
+    "class": "must",
+    "source": "SKILL.md:Phase 1 step 4 (Fitness); references/RECORD-FITNESS.md:preamble"
+  },
+  {
+    "id": "R-027",
+    "rule": "Fitness — self-contained: the output judges whether a cold reader could reconstruct what was decided, why, and what was rejected from the record file alone, without the conversation.",
+    "class": "must",
+    "source": "references/RECORD-FITNESS.md:Self-contained"
+  },
+  {
+    "id": "R-028",
+    "rule": "Fitness — decisions attackable: the output judges whether every decision carries a rationale concrete enough to argue with, and names the bare assertions where it does not.",
+    "class": "must",
+    "source": "references/RECORD-FITNESS.md:Decisions attackable"
+  },
+  {
+    "id": "R-029",
+    "rule": "Fitness — decision trail present: the output judges whether each decision shows how it was tested (in-session rulings and reversals where they occurred, review survivors with dispositions), so an untouched decision is visibly untouched rather than silently blessed.",
+    "class": "must",
+    "source": "references/RECORD-FITNESS.md:Decision trail present"
+  },
+  {
+    "id": "R-030",
+    "rule": "Fitness — confidence marks honest: the output judges whether the marks match reality (`Contested` on overruled challenges, `Assumed` on recommendation-led adoptions never explicitly confirmed, `Deferred`/`Unsure` where true) and flags silent upgrades to `Confident`.",
+    "class": "must",
+    "source": "references/RECORD-FITNESS.md:Confidence marks honest"
+  },
+  {
+    "id": "R-031",
+    "rule": "Fitness — rejected roads recorded: the output judges whether the alternatives considered are named with why they lost, and flags their absence where a future reader would have to re-derive them.",
+    "class": "must",
+    "source": "references/RECORD-FITNESS.md:Rejected roads recorded"
+  },
+  {
+    "id": "R-032",
+    "rule": "Fitness — honest about the open: the output judges whether undecided threads, provisional rulings, and revisit triggers are listed as open rather than absorbed into settled prose.",
+    "class": "must",
+    "source": "references/RECORD-FITNESS.md:Honest about the open"
+  },
+  {
+    "id": "R-033",
+    "rule": "Fitness — provenance stated: the output judges whether the record states who or what produced and reviewed it, and when, so a consumer can tell what review it survived; a missing provenance line is flagged.",
+    "class": "must",
+    "source": "references/RECORD-FITNESS.md:Provenance stated"
+  },
+  {
+    "id": "R-034",
+    "rule": "Every reported finding carries all four fields: a severity, the decision or decisions it touches, a concrete failure scenario or a cited contradiction, and a resolution path — the one question or check that would settle it. A finding missing any of the four is a lost rule.",
+    "class": "format",
+    "source": "SKILL.md:Phase 1 (Every finding carries); SKILL.md:Common Mistakes (Attacks without resolution paths)"
+  },
+  {
+    "id": "R-035",
+    "rule": "A finding nothing could resolve is treated as commentary and not reported as a finding — every survivor names something a question, check, or decision could settle.",
+    "class": "must",
+    "source": "SKILL.md:Phase 1 (A finding nothing could resolve is commentary, not a finding)"
+  },
+  {
+    "id": "R-036",
+    "rule": "The map-vs-record diff is actually run after the cold read and its results reported: angles on the blind map that the record never visited are surfaced as coverage findings, first-class beside the six hunt classes rather than an appendix or an afterthought.",
+    "class": "must",
+    "source": "SKILL.md:Phase 1 (Coverage findings — the map-vs-record diff)"
+  },
+  {
+    "id": "R-037",
+    "rule": "A coverage finding is evidenced by the map-vs-record diff plus a materiality argument — the stated case that a plausible in-scope decision would have differed had the angle been visited. It is NOT held to the concrete-failure-scenario bar the other findings carry, and is not discarded for lacking one.",
+    "class": "must",
+    "source": "SKILL.md:Phase 1 (A coverage finding does not carry the 'concrete failure scenario' bar)"
+  },
+  {
+    "id": "R-038",
+    "rule": "Coverage-finding severity follows the stated test and uses the three labels: Critical where a ruling would LIKELY have changed had the angle been visited, Important where a ruling would PLAUSIBLY have changed, Minor where it is completeness only and no ruling turns on it.",
+    "class": "format",
+    "source": "SKILL.md:Phase 1 (coverage severity table)"
+  },
+  {
+    "id": "R-039",
+    "rule": "The materiality gate is applied: an angle whose absence changes nothing dies at the diff and is never reported. Solo, the output applies that bar explicitly rather than shipping the raw diff as findings.",
+    "class": "must",
+    "source": "SKILL.md:Phase 1 (Materiality — solo, apply this bar explicitly)"
+  },
+  {
+    "id": "R-040",
+    "rule": "The rejected-roads check is applied to the diff: an angle the record saw and dismissed is treated as a ruling, not a coverage gap, and routed to hunt class 4 if anywhere.",
+    "class": "must",
+    "source": "SKILL.md:Phase 1 (the rejected-roads check)"
+  },
+  {
+    "id": "R-041",
+    "rule": "Findings-formed is reported as a count only — the number of findings formed, never their content, at the point the count is handed up.",
+    "class": "format",
+    "source": "SKILL.md:Phase 1 (Report findings-formed to the lead — the count only, not the content)"
+  },
+  {
+    "id": "R-042",
+    "rule": "Spawned solo, the cross-examination is skipped rather than simulated: the output stages no four-message exchange, invents no counterpart reviewer, and attributes no objection to a reviewer who does not exist.",
+    "class": "must",
+    "source": "SKILL.md:Phase 2 (Pair only — spawned solo, skip to the survivor report); references/CROSS-EXAM.md:preamble"
+  },
+  {
+    "id": "R-043",
+    "rule": "The survivor report carries the reviewer's own survivors, each severity-classified, each with its failure scenario (or, for coverage findings, its diff plus materiality) and its resolution path.",
+    "class": "must",
+    "source": "SKILL.md:Phase 3 — Survivor report"
+  },
+  {
+    "id": "R-044",
+    "rule": "The report carries a tally of the form 'N raised, M survived' — both numbers stated — and notes that the fallen findings stay retrievable on ask rather than discarding them.",
+    "class": "format",
+    "source": "SKILL.md:Phase 3 (a tally — 'N raised, M survived'; the fallen stay retrievable on ask)"
+  },
+  {
+    "id": "R-045",
+    "rule": "The tally is scoped to this reviewer's own findings; the cross-set merge and any combined count are left to the lead and not asserted by the reviewer.",
+    "class": "must",
+    "source": "SKILL.md:Phase 3 (The tally covers your findings alone)"
+  },
+  {
+    "id": "R-046",
+    "rule": "The recommended status is exactly one value drawn from the trio `ready` / `needs-revision` / `critical-gaps` — no fourth state, no invented label, no PASS/FAIL substitute, no two statuses at once.",
+    "class": "format",
+    "source": "SKILL.md:Phase 3 (verdict table)"
+  },
+  {
+    "id": "R-047",
+    "rule": "`ready` is defined and applied as: every hunt class actively worked AND the blind-map coverage diff run AND nothing blocking survived. It is not awarded on the record merely looking reasonable.",
+    "class": "must",
+    "source": "SKILL.md:Phase 3 (verdict table, ready row)"
+  },
+  {
+    "id": "R-048",
+    "rule": "`needs-revision` is defined and applied as: survivors the session itself can resolve — answerable questions, fixable folds.",
+    "class": "must",
+    "source": "SKILL.md:Phase 3 (verdict table, needs-revision row)"
+  },
+  {
+    "id": "R-049",
+    "rule": "`critical-gaps` is defined and applied as: a broken load-bearing claim, an unowned decision, a Critical coverage gap (a ruling would likely have changed had the angle been visited), or a record too thin to review — and is not collapsed into `needs-revision`.",
+    "class": "must",
+    "source": "SKILL.md:Phase 3 (verdict table, critical-gaps row)"
+  },
+  {
+    "id": "R-050",
+    "rule": "The review returns at least one real finding, each anchored to cited record evidence. Zero findings is treated as a signal to hunt harder, and no finding is manufactured to fill the report.",
+    "class": "must",
+    "source": "SKILL.md:Phase 3 (Zero findings means hunt harder; but never manufacture)"
+  },
+  {
+    "id": "R-051",
+    "rule": "A record too thin to attack — decisions without rationales, rulings without owners — is itself reported as the first finding rather than reviewed as if it were reviewable. (Vacuous where the record under review is not thin — the judge marks not-applicable rather than failed.)",
+    "class": "should",
+    "source": "SKILL.md:Phase 3 (A record too thin to attack is itself the first finding)"
+  },
+  {
+    "id": "R-052",
+    "rule": "Findings are routed to enter the record through the lead's pen, each with a disposition to be recorded — the reviewer hands up proposals and never writes the file itself.",
+    "class": "must",
+    "source": "SKILL.md:Independence (Findings enter the record through the lead's pen, with dispositions)"
+  },
+  {
+    "id": "R-053",
+    "rule": "The review's verdict and per-finding dispositions are produced in durable form for the reviewed artifacts — review evidence that would live only in conversation is treated as a floor violation, not an acceptable outcome.",
+    "class": "must",
+    "source": "SKILL.md:Independence (review evidence that lives only in conversation is a floor violation)"
+  },
+  {
+    "id": "R-054",
+    "rule": "The status is framed as input, not a clearing decision: the output states or plainly reflects that the lead owns the clearing verdict, the survivor routing, and the human gates, and it does not restate or invent those gates.",
+    "class": "must",
+    "source": "SKILL.md:Independence (Your status is input ... its command states them; this skill does not restate them)"
+  },
+  {
+    "id": "R-055",
+    "rule": "No finding is softened, downgraded, or withheld because the participants evidently thought about the decision, because the record reads as considered, or because raising it would be awkward.",
+    "class": "must",
+    "source": "SKILL.md:Common Mistakes (Softening because the participants 'clearly thought about it')"
+  },
+  {
+    "id": "R-056",
+    "rule": "CONSUMER (agents/devils-advocate.md 'Review verdicts — ready / needs-revision / critical-gaps'; templates/advocate-report-template.md `verdict:` field; skills/mochiko/SKILL.md router row): the three status words appear verbatim as `ready`, `needs-revision`, `critical-gaps`. A synonym or a re-spelling (approved, revise, blocked, PASS/FAIL, 'critical gaps' as a fourth state) breaks the report template and the router's promise.",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/agents/devils-advocate.md:38; plugins/mochiko/templates/advocate-report-template.md:16; plugins/mochiko/skills/mochiko/SKILL.md:112"
+  },
+  {
+    "id": "R-057",
+    "rule": "CONSUMER (agents/devils-advocate.md 'Calibrated severity — Critical means will break in production'; the shared severity trio in review-specifications and review-plan-artifacts): findings are labelled with the three words Critical, Important, Minor. A different scale (High/Medium/Low, P0/P1/P2, blocker/nit) breaks the shared calibration the persona and its sibling reviewers work from.",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/agents/devils-advocate.md:Adversarial Calibration; plugins/mochiko/skills/review-plan-artifacts/SKILL.md:80"
+  },
+  {
+    "id": "R-058",
+    "rule": "CONSUMER (commands/brainstorm.md 'Coverage-survivor routing: a surviving coverage finding is a candidate that questions the topic itself, not a fold'; commands/setup.md:56 the same routing): the map-diff findings are named as coverage findings and are distinguishable as a kind from ordinary hunt-class findings, so the command can route them onto their separate path. Findings merged into one undifferentiated list defeat that routing.",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/commands/brainstorm.md:45; plugins/mochiko/commands/setup.md:56"
+  },
+  {
+    "id": "R-059",
+    "rule": "CONSUMER (commands/brainstorm.md 'Blind-map dispatch ... so it builds its Phase 0 angle map with no sight of what the session decided'; commands/setup.md:51 the same dispatch): the topic-level map deliverable is named as the angle map (blind angle map / Phase 0 angle map) so the command's two-message dispatch has a named thing to wait for before it sends the record path.",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/commands/brainstorm.md:40; plugins/mochiko/commands/setup.md:51"
+  },
+  {
+    "id": "R-060",
+    "rule": "CONSUMER (skills/mochiko/SKILL.md router rows for `review-brainstorm` and `review-governance-intent`: 'survivors + tally + recommended status'; skills/review-governance-intent/SKILL.md:74 carries the identical tally clause): the count is delivered as a tally naming raised and survived counts. Dropping the tally, or replacing it with a bare finding list, breaks the router's stated return shape and the sibling skill's parallel form.",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/skills/mochiko/SKILL.md:112; plugins/mochiko/skills/review-governance-intent/SKILL.md:74"
+  },
+  {
+    "id": "R-061",
+    "rule": "CONSUMER (commands/brainstorm.md Goal: 'each decision carrying statement + rationale + confidence mark (`Confident` / `Assumed` / `Contested` / `Unsure` / `Deferred`)'): where the review refers to a decision's confidence mark, it uses those five words verbatim. A paraphrase (tentative, firm, disputed, TBD) breaks the command's goal contract and the fitness check that grades the marks.",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/commands/brainstorm.md:14; references/RECORD-FITNESS.md:Confidence marks honest"
+  },
+  {
+    "id": "R-062",
+    "rule": "CONSUMER (agents/validator.md:84 evidence-hierarchy rung pointing at this skill's `references/EXTERNAL-CLAIMS.md`; templates/artifact-format.md:82; patterns-technical-decisions/references/DECISION-RECORD.md; review-specifications, review-feasibility, patterns-adopt-first, review-plan-artifacts): the external-claim disclosure grammar is preserved in the exact two forms `verified: <source>` and `memory-asserted`, and this skill remains the named owner of that doctrine. Re-inventing the grammar or relocating ownership breaks eight named consumers.",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/agents/validator.md:84; plugins/mochiko/templates/artifact-format.md:82; references/EXTERNAL-CLAIMS.md:Consumed by"
+  },
+  {
+    "id": "R-063",
+    "rule": "CONSUMER (skills/review-feasibility/SKILL.md and references/FEASIBILITY-LENS.md name their own extra class 'hunt class 7', a numbering that only holds if this skill's classes remain 1–6): the hunt classes stay a numbered set of six. Adding, dropping, or re-keying a class silently re-numbers the sibling skill's class 7.",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/skills/review-feasibility/SKILL.md:hunt class 7; .mochiko/strips/review-brainstorm.md:[v0.67.0] re-keyed counts"
+  },
+  {
+    "id": "R-064",
+    "rule": "CONSUMER (skills/mochiko/SKILL.md router row: 'never a session co-author; verdicts lead-owned'; agents/devils-advocate.md 'Authoring or fixing the spec yourself — you surface the gaps and hand them back'): the reviewer's identity is stated as cold and never-in-the-room, and the verdict is stated as the lead's. A review that presents itself as a co-author or as the deciding authority contradicts the router's promise about this seat.",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/skills/mochiko/SKILL.md:112; plugins/mochiko/agents/devils-advocate.md:What You Reject"
+  },
+  {
+    "id": "R-065",
+    "rule": "CONSUMER (references/CROSS-EXAM.md:10 'after both reviewers have reported findings-formed (count only)'): the count-only handshake is named findings-formed, so the pair protocol has a named precondition to wait on. (Partially reachable solo — the handshake has no counterpart to run against; the judge marks the term's presence, or not-applicable.)",
+    "class": "vocab",
+    "source": "consumer: references/CROSS-EXAM.md:The exchange (preconditions)"
+  },
+  {
+    "id": "R-066",
+    "rule": "CONSUMER (commands/brainstorm.md:50 'Reopen-born verify: a decision born from a coverage-survivor reopen gets one bounded verify round — internal consistency and record-fitness, no fresh cold read, no blind-map coverage hunt against it, and no second reopen off it'): the reopen-born decision class and its lighter grade survive in this skill. (NOT reachable by these three goldens — no verify pass is dispatched and no record carries a reopen-born decision; the judge marks not-applicable rather than failed.)",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/commands/brainstorm.md:50-52"
+  },
+  {
+    "id": "R-067",
+    "rule": "CONSUMER (skills/review-governance-intent/SKILL.md:57 binds to `../review-brainstorm/references/CROSS-EXAM.md` as 'the single source of the pair protocol, shared with mochiko:review-brainstorm'): the pair protocol stays a pointer to that shared file and is never restated inline, and solo runs state that it is skipped. (Partially reachable solo — only the skip is observable; the judge marks not-applicable where the run is solo and no restatement appears.)",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/skills/review-governance-intent/SKILL.md:57-58; references/CROSS-EXAM.md:Single source"
+  }
+]

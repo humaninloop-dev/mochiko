@@ -10,6 +10,69 @@ triggers, restores the tail under the cap, and is strict-YAML-safe. Delivery ver
 deferred: the in-session skill listing is a session-start snapshot (probe received pre-edit
 text), so the probe re-runs in a fresh session.
 
+## [v0.89.0] User-ruled true-deletion body cut — body 8,150 → 5,562 chars (−31.8%)
+
+- **Disposition:** superseded → a single-file five-paragraph body (identity+contract ·
+  Lens+jurisdiction · Protocol · Survivor report · Floors) — true deletion, no relocation,
+  no new file; the `description:` (483 chars) and the three shared reference pointers
+  (INTERROGATION-AGENDA.md · CROSS-EXAM.md · EXTERNAL-CLAIMS.md) untouched. Every
+  behavioral rule of the baseline body survives as a compressed clause. The floor is
+  shallow by structure, disclosed at the gate: the v0.63.0 benchmark wave already
+  strip-cut this skill −46%, so the baseline IS the keep-set plus the v0.65.0
+  adaptive-depth ruling — this pass deletes the remaining rationale prose (Overview
+  essays, the cost-asymmetry framing) and the section/table forms. The user ruled **ship
+  the rule-complete cut**; deeper (~−55%) declined with the deaths named (verdict-criteria,
+  fact-route, and declared-level rules degrade to labels; four mistake-row floors die).
+- **Tier failed:** n/a — supersession by ruling (in-session user ruling 2026-08-26 at the
+  `compressing-skills` ratification gate, on the v0.82.0–v0.88.0 "cut now, eval validates
+  later" precedent; ADR
+  `.mochiko/decisions/2026-08-26-review-governance-intent-true-deletion-cut.md`;
+  `DECISIONS.md` 2026-08-26 row). Evidence per the ceremony: the 70-entry rule inventory
+  `evals/review-governance-intent/rules.json` (non-compressor-authored; 3 restorations
+  pre-gate: R-005 traceable-contract, R-025 lead-introduces + four-message, R-031
+  floor-class qualifier) and the disposition map in
+  `evals/review-governance-intent/pass-report.md`.
+- **Disposition map (baseline section → new home; verbatim home: git history pre-v0.89.0):**
+  - *Overview ¶1–3* → the opening paragraph: artifact definition (GI-IDs, the five
+    lead-assigned marks, traceable contract), before-ratification timing, sizing-gate
+    spawn, never-a-participant, you-are-the-challenge, frozen window, recommend-only
+    (lead owns verdicts, user owns ratification, never author/revise/ratify). The
+    gap-cost-asymmetry rationale dies.
+  - *Overview lens ¶ + jurisdiction ¶* → Lens + jurisdiction: both lens scopes verbatim-in-
+    substance, depth-never-jurisdiction, out-of-lens reporting, solo whole-surface,
+    verify-pass assignment, both permanent exclusions (surface set + Tier-2 downstream;
+    formulation quality D1).
+  - *Independent cold read* → Protocol legs 1–3: sequestration with the withheld name, the
+    three reads with the ten-dimension yardstick pointer, the four-element finding contract
+    + unresolvable-is-commentary, the over-governance hunt with its full calibration.
+  - *Cross-examination* → Protocol leg 4: pair-only/solo-skips, after-the-lead-introduces,
+    one-shot four-message, CROSS-EXAM.md single-source pointer, the three substrate
+    bindings, the three fact routes with their three dispositions.
+  - *Survivor report + verdict table* → the Survivor report paragraph: message-no-files,
+    report fields, tally + fallen-retrievable, all three verdict criteria (incl. the
+    v0.65.0 missing-declaration critical-gaps arm), never-default-ready,
+    too-thin-is-the-first-finding.
+  - *Independence (4 bullets) + Common Mistakes (9 rows)* → Floors: never-in-session/
+    own-session-disqualifies, lead's-pen + review-evidence floor line (wording superseded,
+    substance intact), Contested-shield rationale audit, marks-self-reported +
+    echo-rationales/streaks-outrank, the full declared-level row (D1/D2 · three-way
+    verification · D6 no-watcher · never-grade-stricter), yardstick-never-taste,
+    session-confirms-itself, status-is-input + its-command-states-them (v0.46.0 clause).
+    Rows restating protocol content (user-declared route, resolution paths) ride those
+    clauses.
+- **MANDATORY KEPT reconciliation:** [v0.26.0] KEPT whole-body — its two elements
+  surviving the v0.63.0 ruling (pair-protocol-by-reference with substrate bindings; D1
+  exclusion) survive here compressed, no rule deleted. [v0.63.0] guardrails keep-set —
+  every member's obligation survives per the map; forms end by this ruling. [v0.65.0]
+  declared-level row + critical-gaps arm — survive complete. [v0.46.0]
+  its-command-states-them — survives.
+- **Consumers assessed:** `agents/devils-advocate.md` (mount — intact) · router `:44`
+  (cold intent reviewer / frozen synthesis / coverage-coherence pair or solo / survivors +
+  tally + recommended status — all survive) and `:141` · `commands/setup.md` (dispatch
+  mechanics live in the command; coverage-survivor and ratified-before-authoring
+  vocabulary survives body-side) · `CROSS-EXAM.md:4` + `EXTERNAL-CLAIMS.md:94` (shared
+  single sources — pointers survive, files untouched). No dead pointers created.
+
 ## [v0.65.0] Adaptive-depth two-row form — level DECLARATION becomes reviewable; missing declaration is a critical gap
 - **Disposition:** superseded → the Common-Mistakes row flips from "never review the level" to "review the level DECLARATION (exists / recorded / recommend-then-arbitrated / greenfield-got-low), never the level-vs-reality" (D6 no-watcher); strictness-beyond-the-declared-level stays non-negotiable
 - **Tier failed:** n/a — supersession by ruling (production-floor-adaptive-depth, `DECISIONS.md` 2026-08-11 row; record `.mochiko/brainstorms/production-floor-adaptive-depth/record.md`, D1 / D2 / D6; PO-D2 amended, PO-D7 superseded)

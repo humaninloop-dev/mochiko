@@ -5,6 +5,70 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.90.0] — 2026-08-26
+
+`validation-constitution` user-ruled true-deletion body cut (ADR
+`.mochiko/decisions/2026-08-26-validation-constitution-true-deletion-cut.md`; `DECISIONS.md`
+2026-08-26 row; strip `.mochiko/strips/validation-constitution.md` [v0.90.0]). Body 7,630 →
+5,103 chars (−33.1%), five paragraphs; shallow by structure (v0.63.0 benchmark already cut
+−44%): yield = the three anti-rationalization table forms into Floors clauses + the
+VALIDATION RESULT fenced block compressed field-complete. Every rule survives (69-entry
+inventory, 1 restoration); `description:` + both references untouched. Audit PASS round 1,
+69/69 homed, VALIDATION RESULT verified field-by-field, reference-to-body pointer sweep
+clean (`evals/validation-constitution/audit-v0.90.0.md`). Budget re-seeded 5,103/6,379
+(R11). **Compression-series close-out: every `review-*`/`validation-*` skill is now
+ruled-cut; further reduction routes to the eval-graded pilot path.** `cargo test` 12/12.
+
+## [0.89.0] — 2026-08-26
+
+`review-governance-intent` user-ruled true-deletion body cut (ADR
+`.mochiko/decisions/2026-08-26-review-governance-intent-true-deletion-cut.md`;
+`DECISIONS.md` 2026-08-26 row; strip `.mochiko/strips/review-governance-intent.md`
+[v0.89.0]). Body 8,150 → 5,562 chars (−31.8%), five paragraphs; shallow by structure (the
+v0.63.0 benchmark wave already stripped −46% — the baseline was the keep-set + the v0.65.0
+adaptive-depth ruling). Every rule survives (70-entry inventory, 3 restorations:
+traceable-contract, lead-introduces + four-message, floor-class qualifier); `description:` +
+the three shared reference pointers untouched. Audit PASS round 1, 70/70 homed, CROSS-EXAM
+substrate-binding contract verified, stale-pointer sweep clean
+(`evals/review-governance-intent/audit-v0.89.0.md`; advisory: the description's delta-pass
+clause has had no body home since v0.63.0 — pre-existing, flagged for a future ruling).
+Budget re-seeded 5,562/6,953 (R11). `cargo test` 12/12.
+
+## [0.88.0] — 2026-08-26
+
+`review-specifications` user-ruled true-deletion body cut (ADR
+`.mochiko/decisions/2026-08-26-review-specifications-true-deletion-cut.md`; `DECISIONS.md`
+2026-08-26 row; strip `.mochiko/strips/review-specifications.md` [v0.88.0]). Body 12,184 →
+6,187 chars (−49.2%), single file, six paragraphs — the compression series' shallowest
+floor, recorded as the boundary case: zero reference files (all 18 ruled checks + the
+six-class canonical taxonomy body-only) and twice-compressed already; future candidates
+sized by prose-over-rules ratio, not raw chars. Every rule survives as a compressed clause
+or behind an explicit single-source pointer; `description:` untouched. Deeper cuts declined
+at the gate with the rule deaths named. 81-entry rule inventory non-compressor-authored
+pre-gate, 5 clause restorations (R-012/R-015/R-064/R-065/R-066). Author≠grader audit PASS
+round 1, no blocking findings, 81/81 rules homed
+(`evals/review-specifications/audit-v0.88.0.md`). Budget re-seeded 6,187/7,734 (R11); eval
+slot joins the post-cut regression set. `cargo test` 12/12; schemas untouched.
+
+## [0.87.0] — 2026-08-26
+
+`review-plan-artifacts` user-ruled true-deletion body cut (ADR
+`.mochiko/decisions/2026-08-26-review-plan-artifacts-true-deletion-cut.md`; `DECISIONS.md`
+2026-08-26 row; strip `.mochiko/strips/review-plan-artifacts.md` [v0.87.0]). Body 13,521 →
+4,901 chars (−63.8%), single file, six paragraphs: every behavioral rule survives as a
+compressed clause or in its untouched single-source reference; `description:`, both
+`references/` files (five pointer re-labels only), and the Tier-1 checker untouched. The
+user targeted −90% on the `review-brainstorm` v0.83.0 precedent and ruled ship the
+rule-complete cut at the ratification gate — deeper cuts declined with the rule deaths
+named (−82%: Incremental Mode doubly-KEPT + cycle-card qualifiers + severity floors;
+−90%: also the body-only cycle-card set and the consumer-cited adopt-first lens). 113-entry
+rule inventory non-compressor-authored pre-gate (`evals/review-plan-artifacts/rules.json`);
+author≠grader audit FAIL round 1 (4 blocking — three stale reference→body pointer labels +
+the false no-dead-pointers claim) → fix round → delta-verify PASS
+(`evals/review-plan-artifacts/audit-v0.87.0.md`; 113/113 rules homed, none lost). Budget
+re-seeded 4,901/6,127 (R11); eval slot joins the post-cut regression set. `cargo test`
+12/12; schemas untouched.
+
 ## [0.86.0] — 2026-08-26
 
 Persona hygiene pass — two primitives, one wave (ADR
@@ -52,6 +116,22 @@ chars, budget 337, unchanged), Iron Law, verdict form, and all other sections by
 v0.45.0/v0.63.0 protected sets reconciled in the ADR. Author≠grader audit PASS round 1 (5/5
 items; two non-blocking advisories: ADR lacks labeled Rationale/Alternatives sections; the
 repo-relative router path form is a pre-existing library-wide convention question).
+
+## [0.83.0] — 2026-08-26
+
+`review-brainstorm` user-ruled true-deletion body cut (ADR
+`.mochiko/decisions/2026-08-26-review-brainstorm-true-deletion-cut.md`; `DECISIONS.md`
+2026-08-26 row). Body 11,754 → 2,497 chars (−78.8%), single file: every behavioral rule
+survives as a compressed clause, all rationale prose and long-form tables deleted; no
+relocation — a breakup into a new `references/REVIEW-PROTOCOL.md` was drafted and rejected by
+the user mid-pass as verbosity-shifting. `description:` and all three `references/` files
+untouched. Strict −90% declined at the ratification gate with six ruled-rule deaths named.
+Supersedes the v0.26.0 whole-body `KEPT:` ruling and the v0.64.0 floor line's verbatim wording
+(substance intact); v0.60.0/v0.67.0 protected machinery survives compressed. Author≠grader
+audit FAIL round 1 (7 blocking — headline: the lens taxonomy deleted while both gate uses
+remained) → fix round → delta PASS. Body budget re-seeded 2,497/3,122. The skill joins the
+post-cut regression-check set beside `review-feasibility` ("cut now, eval validates later");
+pass artifacts at `evals/review-brainstorm/`.
 
 ## [0.82.0] — 2026-08-22
 

@@ -6,7 +6,7 @@ which artifacts are in scope for a given review; this reference does not encode 
 (sequencing is the lead's, not the checklist's).
 
 Each check carries a fixed question and a severity (Critical / Important / Minor). The verdict is
-derived **mechanically** from the issue counts (see SKILL.md → Verdict Criteria) — this is a
+derived **mechanically** from the issue counts (see ISSUE-TEMPLATES.md → Verdict Criteria) — this is a
 mirror checklist, not open-ended hunting.
 
 The graded artifacts follow the deliverable envelope (`templates/artifact-format.md`):
@@ -15,11 +15,11 @@ instead of re-quoted text, each artifact's summary table as its **ID index**. Ve
 coverage against the ID index; **density is never itself a finding** — a gap is missing
 or unverifiable substance, not missing prose.
 
-> **Cycle cards (`tasks.md`)** are graded from the Review Focus row in SKILL.md — vertical
+> **Cycle cards (`tasks.md`)** are graded from the Cycle cards check set in SKILL.md — vertical
 > integrity, TEST-gate presence/grammar, oracle semantics (Asserts capture the right expected
 > behaviour against their cited acceptance scenario), story traceability + Simple/Split/Merge
 > rationale, dependency minimality, brownfield exposure, no pre-written task lists. This file
-> carries no separate cycle-card checklist; the SKILL.md row is the complete check set.
+> carries no separate cycle-card checklist; the SKILL.md paragraph is the complete check set.
 
 ## Scope of these checklists
 
@@ -216,7 +216,7 @@ external-integration surface — see `patterns-api-contracts`). First check the 
 
 The single source for verifying that the artifacts agree with **each other** and honor the
 decisions that were made. Run this both for a full review and for the lightweight consistency pass
-of an incremental review (SKILL.md → Incremental Review Mode). It folds in the cross-artifact
+of an incremental review (SKILL.md → Incremental mode). It folds in the cross-artifact
 consistency checklist that previously lived as a standalone template.
 
 ### Consistency checklist

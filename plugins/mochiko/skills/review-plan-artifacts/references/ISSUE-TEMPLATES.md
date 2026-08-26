@@ -132,7 +132,7 @@ the lead is assembled with the `advocate-report-template` — see below.
 The deliverable report the lead reads is structured with `mochiko:advocate-report-template`
 (the shared reviewer shape, machine-first: verdict + basis, severity-classified `findings:` YAML,
 clarifying questions, the one-line `strengths:` field). The one plan-specific addition is the
-incremental-mode `consistency_checks:` frontmatter block (SKILL.md → Incremental Review Mode),
+incremental-mode `consistency_checks:` frontmatter block (SKILL.md → Incremental mode),
 which is this skill's, not the template's. Reference the template for everything else rather than
 restating its structure.
 

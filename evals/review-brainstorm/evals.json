@@ -1,0 +1,140 @@
+[
+  {
+    "id": "G1",
+    "prompt": "You are seated as the cold end-stage reviewer of a thinking session that has just converged. You were never in the room. The lead has frozen the record and is handing it to you now.\n\nYou are spawned solo \u2014 there is no counterpart reviewer in this session and no cross-examination round will run. No lens is briefed: the whole surface is yours.\n\nTopic: Palisade (incident-management SaaS) \u2014 how we deliver incident notifications to on-call responders.\nGoal line: Leave one decision record covering the delivery mechanism, the escalation policy, and what we owe a customer when a page fails to land.\n\nWorking conditions, stated up front so you are not guessing: this workspace holds no repository and no source files, and the record carries no fact-checker claim map. Verify what the record itself lets you verify, and treat the rest as what it is.\n\nTransport for this session: your lead is not reachable by message here. Write the exact message you would send the lead into `review.md` in the current directory \u2014 that file IS your message to the lead, not a report artifact. If your protocol has you deliver anything to the lead BEFORE that message, write that to its own file first, named for what it is. Beyond those, write no other files, and never write, revise, or complete `record.md`.\n\nEverything below the line is the frozen record, verbatim. If your protocol requires you to produce anything before you read a record, produce it first.\n\n---------------------------- FROZEN record.md ----------------------------\n\n# Decision Record \u2014 Incident notification delivery\n\nSession: Palisade \u2014 how we deliver incident notifications to on-call responders.\nStatus: frozen for end-stage review.\n\n## Decisions\n\n### D1 \u2014 Push notification is the primary delivery channel; SMS is not\n**Statement:** Incident pages go to the Palisade mobile app as a push notification. SMS is not a primary channel.\n**Rationale:** Push costs us nothing per message and SMS is billed per segment. At our paging volume SMS would become the third-largest line item in infrastructure spend, and the margin on the Team plan cannot absorb it.\n**Confidence:** Confident\n\n### D2 \u2014 SMS fallback fires after five minutes without acknowledgement\n**Statement:** If a push page is not acknowledged within five minutes, the same responder is sent the page again over SMS.\n**Rationale:** Covers the phone-off and app-force-quit cases without paying for SMS on the happy path.\n**Confidence:** Confident\n\n### D3 \u2014 Per-notification delivery status, retained thirty days\n**Statement:** We store one delivery-status row per notification (queued, sent, delivered, acknowledged, failed) and keep it for thirty days.\n**Rationale:** Sounds about right for support to work \"I never got paged\" tickets.\n**Confidence:** Assumed\n\n### D4 \u2014 Firebase Cloud Messaging for push on both platforms\n**Statement:** Push is delivered through Firebase Cloud Messaging on Android and iOS.\n**Rationale:** FCM guarantees delivery inside five seconds, and its high-priority messages wake a backgrounded iOS app without us holding a separate APNs entitlement \u2014 so one integration covers both platforms, and the five-minute fallback in D2 is generous against that guarantee.\n**Confidence:** Confident\n\n### D5 \u2014 Notification payload carries title and severity only\n**Statement:** The push payload carries incident title, severity and incident ID. It never carries the incident description or any customer data.\n**Rationale:** Lock-screen previews are readable by anyone holding the phone. Titles and severities are already low-sensitivity; descriptions frequently are not.\n**Confidence:** Confident\n\n### D6 \u2014 Escalation moves to the next responder after three minutes\n**Statement:** A page unacknowledged for three minutes escalates to the next responder in the rotation. After two hops it pages the incident commander.\n**Rationale:** Matches the rotation model already in the product, and three minutes is the interval the on-call leads asked for.\n**Confidence:** Confident\n\n### D7 \u2014 No notification-preference UI in v1\n**Statement:** v1 ships with no per-responder channel preferences. Every responder receives every channel the policy fires.\n**Rationale:** The argument against was that responders who cannot tune their channels will mute the app wholesale, which is worse for us than a noisy page. We heard it and ruled ship-first: we revisit once we hold a quarter of real paging data.\n**Confidence:** Contested\n\n### D8 \u2014 In-house delivery-audit service reconciling nightly\n**Statement:** We build a delivery-audit service that ingests provider webhooks, re-derives delivery state independently, and reconciles it nightly against the D3 status rows, alerting on divergence.\n**Rationale:** We want a second source of truth on whether pages actually landed.\n**Confidence:** Assumed\n\n## Open threads\n\nNone recorded.\n",
+    "expected_output": "A blind topic-level angle map produced before the record is worked, then a solo survivor report as the message to the lead: severity-classified findings, each naming the decisions it touches, a concrete failure scenario or cited contradiction, and a resolution path; coverage findings from the map-vs-record diff carried as their own kind with a materiality argument rather than a failure scenario; a tally of raised versus survived; and one recommended status from ready / needs-revision / critical-gaps. The record under review contains a load-bearing vendor claim asserted without verification, a pair of decisions that undercut each other on timing, a decision adopted on thin rationale, machinery no session driver pays for, and topic angles the session never visited. One decision is marked Contested and its counter-argument is recorded as heard and overruled.",
+    "assertions": [
+      {
+        "type": "file_exists",
+        "path": "review.md"
+      },
+      {
+        "type": "contains",
+        "path": "review.md",
+        "pattern": "(?i)(needs[- ]revision|critical[- ]gaps|\\bready\\b)"
+      },
+      {
+        "type": "contains",
+        "path": "review.md",
+        "pattern": "(?i)(critical|important|minor)"
+      },
+      {
+        "type": "contains",
+        "path": "review.md",
+        "pattern": "(?i)(tally|raised|surviv)"
+      },
+      {
+        "type": "contains",
+        "path": "review.md",
+        "pattern": "\\bD[1-9]\\b"
+      },
+      {
+        "type": "contains",
+        "path": "review.md",
+        "pattern": "(?i)(resolution|would settle|to settle|next check)"
+      },
+      {
+        "type": "contains",
+        "path": "review.md",
+        "pattern": "(?i)(coverage|angle)"
+      },
+      {
+        "type": "not_contains",
+        "path": "review.md",
+        "pattern": "(?i)(here is the (revised|updated|corrected|fixed) record|rewritten record)"
+      }
+    ]
+  },
+  {
+    "id": "G2",
+    "prompt": "You are seated as the cold end-stage reviewer of a thinking session that has just converged. You were never in the room. The lead has frozen the record and is handing it to you now.\n\nYou are spawned solo \u2014 there is no counterpart reviewer in this session and no cross-examination round will run. No lens is briefed: the whole surface is yours.\n\nTopic: Kettle (field-inspection mobile app) \u2014 how inspections captured offline get synced.\nGoal line: Leave one decision record covering the sync model, conflict handling, and what an inspector sees when a sync does not go through.\n\nWorking conditions, stated up front so you are not guessing: this workspace holds no repository and no source files, and the record carries no fact-checker claim map. Verify what the record itself lets you verify, and treat the rest as what it is.\n\nTransport for this session: your lead is not reachable by message here. Write the exact message you would send the lead into `review.md` in the current directory \u2014 that file IS your message to the lead, not a report artifact. If your protocol has you deliver anything to the lead BEFORE that message, write that to its own file first, named for what it is. Beyond those, write no other files, and never write, revise, or complete `record.md`.\n\nEverything below the line is the frozen record, verbatim. If your protocol requires you to produce anything before you read a record, produce it first.\n\n---------------------------- FROZEN record.md ----------------------------\n\n# Decision Record \u2014 Offline inspection sync\n\nSession: Kettle \u2014 how field inspections captured offline get synced.\nStatus: frozen for end-stage review.\n\n## Decisions\n\n### D1 \u2014 Last-write-wins, resolved by device clock\n**Statement:** When the same inspection is edited on more than one device, the version with the later device-clock timestamp wins and is written to the server.\n**Rationale:** Simplest thing that works. Inspections are single-author in practice \u2014 one inspector owns a site visit end to end \u2014 so the resolution path is rarely exercised.\n**Confidence:** Confident\n\n### D2 \u2014 Opportunistic batched sync every sixty seconds\n**Statement:** The device drains its sync queue whenever it has connectivity, batching uploads on a sixty-second timer.\n**Rationale:** Keeps the server current without keeping the radio hot, which is what drained batteries on the pilot build.\n**Confidence:** Confident\n\n### D3 \u2014 Photos upload out of band; sync completes without them\n**Statement:** Photos attached to an inspection upload on a separate queue. An inspection is marked `synced` as soon as its JSON body lands on the server.\n**Rationale:** Photo sets run to tens of megabytes on a bad connection. Blocking the queue on them would stall every later inspection behind one slow upload.\n**Confidence:** Confident\n\n### D4 \u2014 SQLite through the platform bindings, no ORM\n**Statement:** The local store is SQLite accessed through the platform's own bindings. No ORM layer.\n**Rationale:** Fine.\n**Confidence:** Assumed\n\n### D5 \u2014 Local copy purged seven days after a successful sync\n**Statement:** Once an inspection has synced, its local copy is deleted seven days later.\n**Rationale:** Inspector devices ship with 32 GB and are shared between shifts; an unbounded local store fills them inside a season.\n**Confidence:** Confident\n\n### D6 \u2014 Supervisors sign off from the dashboard the moment an inspection shows as synced\n**Statement:** An inspection appears on the supervisor dashboard as soon as it is marked `synced`, and the supervisor can sign it off from there.\n**Rationale:** Supervisors are the bottleneck. We want them working the queue as inspections land rather than in a Monday batch.\n**Confidence:** Confident\n\n### D7 \u2014 No per-field conflict-merge UI in v1\n**Statement:** v1 ships no merge interface. When last-write-wins discards a version, the losing version is dropped.\n**Rationale:** The argument against was that discarding an inspector's work with no trace is both unrecoverable and invisible to the person who lost it. We heard it and ruled that conflicts are rare enough under single-author practice to accept for v1; we revisit if the conflict counter says otherwise.\n**Confidence:** Contested\n\n### D8 \u2014 SQLite in WAL mode\n**Statement:** The local database runs in write-ahead-logging mode.\n**Rationale:** Per the SQLite documentation, WAL gives one writer with concurrent readers, and a WAL database is guaranteed to survive the app being force-killed mid-transaction on both iOS and Android \u2014 so an interrupted sync can never leave a half-written inspection on the device.\n**Confidence:** Confident\n\n### D9 \u2014 Real-time sync-telemetry pipeline with a per-device dashboard\n**Statement:** Every queue state transition streams to the analytics warehouse in real time, behind a per-device dashboard for the operations team.\n**Rationale:** We will want the data.\n**Confidence:** Assumed\n\n## Open threads\n\nNone recorded.\n",
+    "expected_output": "A blind topic-level angle map produced before the record is worked, then a solo survivor report as the message to the lead: severity-classified findings, each naming the decisions it touches, a concrete failure scenario or cited contradiction, and a resolution path; coverage findings from the map-vs-record diff carried as their own kind with a materiality argument rather than a failure scenario; a tally of raised versus survived; and one recommended status from ready / needs-revision / critical-gaps. The record under review contains a load-bearing documentation claim asserted without verification, a pair of decisions that undercut each other on what 'synced' means, a decision adopted on thin rationale, machinery no session driver pays for, and topic angles the session never visited. One decision is marked Contested and its counter-argument is recorded as heard and overruled.",
+    "assertions": [
+      {
+        "type": "file_exists",
+        "path": "review.md"
+      },
+      {
+        "type": "contains",
+        "path": "review.md",
+        "pattern": "(?i)(needs[- ]revision|critical[- ]gaps|\\bready\\b)"
+      },
+      {
+        "type": "contains",
+        "path": "review.md",
+        "pattern": "(?i)(critical|important|minor)"
+      },
+      {
+        "type": "contains",
+        "path": "review.md",
+        "pattern": "(?i)(tally|raised|surviv)"
+      },
+      {
+        "type": "contains",
+        "path": "review.md",
+        "pattern": "\\bD[1-9]\\b"
+      },
+      {
+        "type": "contains",
+        "path": "review.md",
+        "pattern": "(?i)(resolution|would settle|to settle|next check)"
+      },
+      {
+        "type": "contains",
+        "path": "review.md",
+        "pattern": "(?i)(coverage|angle)"
+      },
+      {
+        "type": "not_contains",
+        "path": "review.md",
+        "pattern": "(?i)(here is the (revised|updated|corrected|fixed) record|rewritten record)"
+      }
+    ]
+  },
+  {
+    "id": "G3",
+    "prompt": "You are seated as the cold end-stage reviewer of a thinking session that has just converged. You were never in the room. The lead has frozen the record and is handing it to you now.\n\nYou are spawned solo \u2014 there is no counterpart reviewer in this session and no cross-examination round will run. No lens is briefed: the whole surface is yours.\n\nTopic: Threadline (team chat product) \u2014 moving 4,000 teams from invoiced annual contracts onto self-serve card billing.\nGoal line: Leave one decision record covering the migration path, price continuity, and what happens to a team that does not act.\n\nWorking conditions, stated up front so you are not guessing: this workspace holds no repository and no source files, and the record carries no fact-checker claim map. Verify what the record itself lets you verify, and treat the rest as what it is.\n\nTransport for this session: your lead is not reachable by message here. Write the exact message you would send the lead into `review.md` in the current directory \u2014 that file IS your message to the lead, not a report artifact. If your protocol has you deliver anything to the lead BEFORE that message, write that to its own file first, named for what it is. Beyond those, write no other files, and never write, revise, or complete `record.md`.\n\nEverything below the line is the frozen record, verbatim. If your protocol requires you to produce anything before you read a record, produce it first.\n\n---------------------------- FROZEN record.md ----------------------------\n\n# Decision Record \u2014 Self-serve billing migration\n\nSession: Threadline \u2014 moving 4,000 teams from invoiced annual contracts onto self-serve card billing.\nStatus: frozen for end-stage review.\n\n## Decisions\n\n### D1 \u2014 Migrate in waves by renewal date, not on a cutover date\n**Statement:** A team moves to card billing at its next contract renewal. There is no global cutover date.\n**Rationale:** Nobody pays twice and no contract is broken mid-term; support load spreads across the year instead of landing in one week.\n**Confidence:** Confident\n\n### D2 \u2014 Price held at the team's current per-seat rate for twelve months\n**Statement:** After migration a team keeps its current per-seat rate for twelve months, then moves to list price.\n**Rationale:** A price rise landing at the same moment as a billing-method change is two shocks at once, and the second one is the one they remember.\n**Confidence:** Confident\n\n### D3 \u2014 No card by renewal means read-only for thirty days, then suspension\n**Statement:** A team with no card on file at its renewal date moves to a read-only grace state for thirty days, then is suspended.\n**Rationale:** Suspending on the renewal date loses accounts we could have saved; thirty days is long enough for a finance approval to come through.\n**Confidence:** Confident\n\n### D4 \u2014 Stripe Billing; we do not build invoicing ourselves\n**Statement:** Subscription state, card capture, and dunning run on Stripe Billing.\n**Rationale:** Obvious.\n**Confidence:** Assumed\n\n### D5 \u2014 Nightly seat reconciliation, charged monthly in arrears\n**Statement:** Seat counts reconcile nightly. Seats added mid-cycle are charged on the following monthly invoice rather than prorated at the moment of addition.\n**Rationale:** Teams add and remove seats constantly; prorating each change at the moment it happens generates a stream of micro-charges that reads as billing noise.\n**Confidence:** Confident\n\n### D6 \u2014 Migration email at 30, 14 and 3 days before renewal, and nothing after\n**Statement:** Admins receive migration email at 30, 14 and 3 days before renewal, plus an in-app banner from 14 days out. After the renewal date we stop emailing.\n**Rationale:** Three touches plus a banner is enough warning, and we do not want to nag a customer who has chosen to leave.\n**Confidence:** Confident\n\n### D7 \u2014 No self-serve downgrade path in v1\n**Statement:** A team that wants a smaller plan contacts support. There is no self-serve downgrade.\n**Rationale:** The argument against was that forcing a support conversation in order to spend less money is a dark pattern, and that it will show up in churn-survey free text. We heard it and ruled that v1 self-serve volume is low enough for support to absorb; we revisit at 500 self-serve teams.\n**Confidence:** Contested\n\n### D8 \u2014 Stripe Tax carries the whole US filing obligation\n**Statement:** We enable Stripe Tax alongside Stripe Billing and treat US sales-tax compliance as handled.\n**Rationale:** Stripe Tax registers us and files returns automatically in every US state once revenue crosses that state's economic-nexus threshold, so we carry no filing obligation of our own and need no tax counsel for the migration.\n**Confidence:** Confident\n\n### D9 \u2014 Internal migration console with an operator state override\n**Statement:** We build an internal console showing per-team migration state, including an operator override that can force any team into any billing state.\n**Rationale:** Support will want it.\n**Confidence:** Assumed\n\n## Open threads\n\nNone recorded.\n",
+    "expected_output": "A blind topic-level angle map produced before the record is worked, then a solo survivor report as the message to the lead: severity-classified findings, each naming the decisions it touches, a concrete failure scenario or cited contradiction, and a resolution path; coverage findings from the map-vs-record diff carried as their own kind with a materiality argument rather than a failure scenario; a tally of raised versus survived; and one recommended status from ready / needs-revision / critical-gaps. The record under review contains a load-bearing regulatory claim asserted without verification, a pair of decisions that undercut each other on customer contact during the grace window, a decision adopted on thin rationale, machinery no session driver pays for, and topic angles the session never visited. One decision is marked Contested and its counter-argument is recorded as heard and overruled.",
+    "assertions": [
+      {
+        "type": "file_exists",
+        "path": "review.md"
+      },
+      {
+        "type": "contains",
+        "path": "review.md",
+        "pattern": "(?i)(needs[- ]revision|critical[- ]gaps|\\bready\\b)"
+      },
+      {
+        "type": "contains",
+        "path": "review.md",
+        "pattern": "(?i)(critical|important|minor)"
+      },
+      {
+        "type": "contains",
+        "path": "review.md",
+        "pattern": "(?i)(tally|raised|surviv)"
+      },
+      {
+        "type": "contains",
+        "path": "review.md",
+        "pattern": "\\bD[1-9]\\b"
+      },
+      {
+        "type": "contains",
+        "path": "review.md",
+        "pattern": "(?i)(resolution|would settle|to settle|next check)"
+      },
+      {
+        "type": "contains",
+        "path": "review.md",
+        "pattern": "(?i)(coverage|angle)"
+      },
+      {
+        "type": "not_contains",
+        "path": "review.md",
+        "pattern": "(?i)(here is the (revised|updated|corrected|fixed) record|rewritten record)"
+      }
+    ]
+  }
+]

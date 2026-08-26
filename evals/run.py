@@ -355,10 +355,13 @@ def cmd_grid(skill: str, replicates: int, arms: list, out: str | None = None) ->
         print(f"appending to {stamp}: kept {len(results)} prior runs "
               f"({sorted({e['arm'] for e in results})})")
 
-    for arm in arms:
-        plug = stage_plugin(skill, arm)
-        try:
-            for g in goldens:
+    # Case-major order: for each golden, run every arm before moving on, so per-case
+    # comparisons complete early instead of waiting for whole-arm sweeps.
+    plugs = {arm: stage_plugin(skill, arm) for arm in arms}
+    try:
+        for g in goldens:
+            for arm in arms:
+                plug = plugs[arm]
                 for rep in range(1, replicates + 1):
                     label = f"{arm}/{g['id']}/r{rep}"
                     print(f"run {label} ...", flush=True)
@@ -383,7 +386,8 @@ def cmd_grid(skill: str, replicates: int, arms: list, out: str | None = None) ->
                     results.append(entry)
                     if ws:
                         shutil.rmtree(ws, ignore_errors=True)
-        finally:
+    finally:
+        for plug in plugs.values():
             shutil.rmtree(plug.parent, ignore_errors=True)
 
     all_arms = [a for a in ARMS if any(e["arm"] == a for e in results)]

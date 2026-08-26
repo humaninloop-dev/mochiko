@@ -10,6 +10,104 @@ bullet like the one stripped from `review-specifications`). One contested keep (
 is a library-wide consistency ruling, not a cluster call (see the wave return); note L16 already carries
 the `loop-discipline` reference the strip disposition would add.
 
+## [v0.87.0] User-ruled true-deletion body cut — body 13,521 → 4,901 chars (−63.8%)
+
+- **Disposition:** superseded → a single-file six-paragraph body (identity+boundary · Lenses ·
+  Protocol · Cycle cards · Incremental mode · Floors) — true deletion, no relocation, no new
+  reference file; both `references/` files, `scripts/check-artifacts.py`, and the
+  `description:` (589 chars) untouched. Every behavioral rule of the baseline body survives
+  as a compressed clause, or was deleted only where its single source already lives in an
+  untouched `references/` file (the mirror-checklist tables). The user targeted −90% (the
+  `review-brainstorm` v0.83.0 precedent) and ruled **ship the rule-complete cut** at the
+  ratification gate with the trade named: −82% required deleting Incremental Review Mode
+  (doubly KEPT), the cycle-card qualifiers, and the Floors' severity-discipline rules
+  (~25 rules); strict −90% (≤1,352) additionally deletes the cycle-card set (leaving a dead
+  pointer in ARTIFACT-CHECKLISTS.md, which punts to that body row) and the adopt-first lens
+  (consumer-cited BLOCKING by `patterns-adopt-first`) — declined.
+- **Tier failed:** n/a — supersession by ruling (in-session user ruling 2026-08-26 at the
+  `compressing-skills` ratification gate, on the v0.82.0/v0.83.0 "cut now, eval validates
+  later" precedent; ADR
+  `.mochiko/decisions/2026-08-26-review-plan-artifacts-true-deletion-cut.md`; `DECISIONS.md`
+  2026-08-26 row). Evidence carried per the ceremony: the 113-entry rule inventory
+  `evals/review-plan-artifacts/rules.json` (non-compressor-authored) and the span-by-span
+  disposition map in `evals/review-plan-artifacts/pass-report.md`.
+- **Disposition map (baseline body section → new home; verbatim home for all removed text:
+  git history of this SKILL.md, pre-v0.87.0):**
+  - *Overview (three-lens prose, letter/spirit paragraph, review-evidence floor line)* —
+    compressed into the opening paragraph, Lenses, and Floors (the L16 aphorism and the
+    v0.64.0 floor line survive compressed — wording superseded, substance intact).
+  - *Scope table* — compressed to the sibling-boundary sentence + the ARTIFACT-CHECKLISTS
+    boundary-table pointer (the check-by-check seam's single source, untouched).
+  - *When NOT to Use (5 bullets)* — compressed to the "Not for:" line; all four route
+    targets and the wait-for-completion condition survive, incl. the v0.53.0 carve-out.
+  - *Review Focus by Artifact Type table* — the analysis / store-delta / design /
+    cross-artifact rows supersede to their single-source checklists in
+    `references/ARTIFACT-CHECKLISTS.md` (every Key-checks token verified present there —
+    pass-report map); the **cycle-cards row survives in the body, complete** (the reference
+    explicitly punts to it), with the v0.75.0 oracle-semantics wording and the v0.76.0
+    two-arm `--check` citation intact; the brownfield-discovery out-of-scope note stays
+    single-sourced in the reference; sequencing-is-the-lead's survives as "over whichever
+    sets the caller supplies".
+  - *Issue Classification + Verdict Criteria sections* — compressed into Protocol: the
+    ISSUE-TEMPLATES pointers, mechanical count-derived verdict, the material-divergence
+    precedence override, and rung-honesty-never-drives-the-verdict all survive as clauses.
+  - *Review Process / Step 2 pre-assert* — survives as Protocol leg 1: verbatim command
+    line, failed-count-is-ground-truth, fold-in-before-judging.
+  - *Incremental Review Mode (3 subsections + report-shape yaml)* — compressed to one
+    paragraph: caller-names-the-sets, full-vs-consistency-only split, spot-check targets,
+    flag-only-between-artifacts, no-full-re-read, the 1–2-minute budget, all three
+    escalation rules (2+ issues → full re-read; contradiction → lead routes with the
+    design-vs-decided / requirements-constraints split; unsure → targeted review), and the
+    report-shape fields (`incremental:`, `full_review:`/`consistency_only:`, the six
+    `consistency_checks:` fields, fail-also-lands-as-finding).
+  - *Quality Checklist (15 items)* — each item's rule survives in Lenses / Protocol /
+    Floors (itemized in the pass-report map); the checklist-as-section form dies.
+  - *Common Mistakes (6 rows) + Red Flags (6 bullets) + Common Rationalizations (7 rows)* —
+    compressed into Floors (default-FAIL / good-enough-is-never-ready, letter-IS-the-spirit,
+    never-skip / N/A-with-justification, severity-down rationalization,
+    noted-but-not-blocking, size/seniority/time-pressure/found-enough,
+    vague-spec propagation, obvious-never-exempts-documentation); rows whose single source
+    pre-exists in ISSUE-TEMPLATES (severity inflation, implementation focus, missing
+    evidence, vague suggestions) ride that untouched home.
+  - *Related (3 bullets)* — inline pointers: `review-feasibility` (opening),
+    `patterns-plan-minimalism` (Lenses), `advocate-report-template` (Protocol).
+- **MANDATORY KEPT reconciliation:** [v0.15.0] KEPT report-shape block — survives
+  compressed (fields as clauses; the yaml example's form superseded by this ruling).
+  [v0.26.0] KEPT Red Flags / Common Rationalizations / Incremental Review Mode — survive
+  compressed into Floors and the Incremental paragraph; the KEPT status of their *long
+  form* ends by this ruling. [v0.64.0] guardrails keep-set — every member's obligation
+  survives per the map above; the review-evidence floor line's verbatim wording superseded,
+  substance intact. [v0.67.0] three-lens machinery + precedence override + hunt-class-7
+  seam — survives compressed. [v0.53.0] carve-out — survives. [v0.75.0] oracle semantics —
+  survives with ruled wording; no time anchor or foundation word reintroduced. [v0.76.0]
+  `--check` citation — survives, both arms. [v0.81.0] store-delta re-key — survives via
+  the completeness lens (delta-when-carried / no-delta claim); detailed checks stay
+  single-sourced in the untouched reference; the kept-verbatim qualifying-flow guard and
+  deployment-view rows live there, untouched.
+- **Consumers assessed:** router `skills/mochiko/SKILL.md:89` (conformance / material
+  divergence auto-FAIL / rung honesty advisory / completeness within scope / store delta /
+  no-delta / cycle cards / 3-state verdict / mirror-checklist half / independent — every
+  cited term survives) · `agents/devils-advocate.md` (mounts the skill; plan sets +
+  cycle-cards role intact) · `patterns-adopt-first` (BLOCKING sibling check survives) ·
+  `review-code-minimalism` (rung-honesty sibling pointer survives) · `review-feasibility`
+  (boundary vocabulary survives; its side untouched) ·
+  `authoring-technical-requirements/references/TRACEABILITY-PATTERNS.md` (cross-artifact
+  consistency grade owned here — survives) · `review-brainstorm/references/EXTERNAL-CLAIMS.md`
+  (disclosure-line check lives in the untouched ARTIFACT-CHECKLISTS consistency checklist) ·
+  `templates/advocate-report-template.md` (incremental fields — survive). `commands/plan.md`
+  names neither the skill nor its section anchors.
+- **Reference-to-body pointer re-labels (audit round 1, blocking — ride this same ruling):**
+  the cut initially left three stale reference→body pointers, and this entry falsely claimed
+  "No dead pointers created" — corrected here. Repaired in the same landing, in the
+  reference files' label text only (no check content touched):
+  `ARTIFACT-CHECKLISTS.md:9` "(see SKILL.md → Verdict Criteria)" → "(see ISSUE-TEMPLATES.md
+  → Verdict Criteria)" (the actual single source); `:18`/`:22` "the Review Focus row in
+  SKILL.md" / "the SKILL.md row is the complete check set" → "the Cycle cards check set in
+  SKILL.md" / "the SKILL.md paragraph is the complete check set" (the table died, the check
+  set survives as a paragraph); `:219` and `ISSUE-TEMPLATES.md:135` "SKILL.md → Incremental
+  Review Mode" → "SKILL.md → Incremental mode" (the section's new name). After these
+  re-labels: no dead pointers.
+
 ## [v0.81.0] Architecture checklist re-written to store-delta grammar — product-architecture-schema D3/D10/D12/D14
 
 - **Disposition:** superseded → the `## Architecture Store Delta` section of

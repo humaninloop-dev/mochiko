@@ -1,0 +1,488 @@
+[
+  {
+    "id": "R-001",
+    "rule": "The skill produces gap-finding INPUT, never a clearing verdict of its own: the severity-bucketed gaps and clarifying questions feed a reviewer's/lead's judgment, and the skill does not emit a clearing PASS/FAIL verdict. The `verdict:` the report carries is the shared template's RECOMMENDED verdict, not a clearing decision. Evidence: the produced review hands up gaps plus questions and states its verdict as a recommendation feeding the lead's decision, never as its own pass/fail clearance of the spec.",
+    "class": "floor",
+    "source": "SKILL.md:Overview (This produces gap-finding input ... the skill does not emit a clearing PASS/FAIL verdict of its own)"
+  },
+  {
+    "id": "R-002",
+    "rule": "The deliverable is gaps in the specification plus clarifying questions a PRODUCT OWNER OR STAKEHOLDER can answer, and the lens is WHAT is missing, not HOW to implement. Evidence: every finding names something absent/unclear in the spec and every question is answerable by a non-engineer stakeholder without an implementation decision.",
+    "class": "must",
+    "source": "SKILL.md:Overview (Find gaps in specifications and generate clarifying questions that a product owner or stakeholder can answer. Focus on WHAT is missing, not HOW to implement)"
+  },
+  {
+    "id": "R-003",
+    "rule": "Technical architecture review is OUT OF SCOPE — routed to design review tools, not graded here. Evidence: the review carries no architecture-review findings, or routes such an observation out rather than grading it.",
+    "class": "must",
+    "source": "SKILL.md:When NOT to Use (Technical architecture review - Use design review tools instead)"
+  },
+  {
+    "id": "R-004",
+    "rule": "Code review is OUT OF SCOPE — a different skill domain entirely. Evidence: no finding in the review targets produced code, code patterns, or implementation-level style.",
+    "class": "must",
+    "source": "SKILL.md:When NOT to Use (Code review - Different skill domain entirely)"
+  },
+  {
+    "id": "R-005",
+    "rule": "POINTER: the one narrow exception to the code-review exclusion is named — the code-minimalism lens on produced code is `mochiko:review-code-minimalism`, implement-side. Evidence: the carve-out is stated (or honored) rather than this skill grading produced code's minimalism.",
+    "class": "format",
+    "source": "SKILL.md:When NOT to Use (the one narrow exception, the code-minimalism lens on produced code, is `mochiko:review-code-minimalism`, implement-side)"
+  },
+  {
+    "id": "R-006",
+    "rule": "Implementation planning is OUT OF SCOPE — that work focuses on design, not spec gaps. Evidence: the review does not produce plan/design sequencing findings.",
+    "class": "must",
+    "source": "SKILL.md:When NOT to Use (Implementation planning - Focus on design, not spec gaps)"
+  },
+  {
+    "id": "R-007",
+    "rule": "Performance specifications are OUT OF SCOPE — a technical concern, not a product one. Evidence: the review files no performance-target finding as a spec gap.",
+    "class": "must",
+    "source": "SKILL.md:When NOT to Use (Performance specifications - Technical concern, not product)"
+  },
+  {
+    "id": "R-008",
+    "rule": "When the spec does not exist yet, route to `mochiko:authoring-requirements` first — it drafts the requirements this skill reviews and runs BEFORE this skill. Evidence: this skill is not run against an absent spec; the authoring skill is named as the prior step.",
+    "class": "must",
+    "source": "SKILL.md:When NOT to Use (When spec doesn't exist yet - Use `mochiko:authoring-requirements` first); SKILL.md:Related Skills"
+  },
+  {
+    "id": "R-009",
+    "rule": "Enriching a sparse or vague feature idea BEFORE a spec is drafted is pre-spec input enrichment and routes to `mochiko:analysis-iterative`; this skill is the post-draft, reviewer-side counterpart and the two triggers are DELIBERATELY DISJOINT (enrich an idea vs. review a draft for gaps). Evidence: the review is run against an already-drafted spec, and a sparse pre-spec idea is routed out rather than reviewed.",
+    "class": "must",
+    "source": "SKILL.md:When NOT to Use (Enriching a sparse or vague feature idea before a spec is drafted ... use `mochiko:analysis-iterative`); SKILL.md:Related Skills (their triggers are deliberately disjoint)"
+  },
+  {
+    "id": "R-010",
+    "rule": "CORE PRINCIPLE: ask PRODUCT questions, not IMPLEMENTATION questions — a question about what users should see/do/be allowed, never about databases, locking strategies, retry policies, or HTTP status codes. Evidence: every question in the review is phrased in user/business terms (e.g. 'What should users see if the system is temporarily unavailable?' rather than 'What happens if the database connection fails?'), and no question contains an implementation detail.",
+    "class": "must",
+    "source": "SKILL.md:Core Principle (Ask product questions, not implementation questions + the wrong/right table); SKILL.md:Quality Checklist (All questions are product-focused (not technical); No implementation details in questions); SKILL.md:Common Mistakes (Technical instead of product questions)"
+  },
+  {
+    "id": "R-011",
+    "rule": "Implementation details (databases, APIs, protocols), technical edge cases, architecture decisions, and performance targets are VALID concerns DEFERRED to later design work — they are not dismissed as invalid, they are out of altitude for spec review. Evidence: where the review encounters such a concern it treats it as belonging to later design work rather than declaring it a non-issue.",
+    "class": "must",
+    "source": "SKILL.md:Core Principle (Implementation details ... are valid concerns — they belong in later design work, not spec review)"
+  },
+  {
+    "id": "R-012",
+    "rule": "IMPLEMENTATION BIAS: a question must not presuppose a mechanism — 'Should we cache this data?' assumes caching; the right form asks the user-facing property instead ('How quickly should users see updated data?'). Evidence: no question in the review embeds a technical solution in its premise.",
+    "class": "must",
+    "source": "SKILL.md:Common Mistakes (Implementation bias)"
+  },
+  {
+    "id": "R-013",
+    "rule": "QUESTION FORMAT: every question is framed as a decision the stakeholder can make — 2-3 concrete options, WHAT EACH MEANS FOR USERS, plus WHY IT MATTERS (the user or business impact). Evidence: each clarification in the review carries 2-3 named options and an explicit why-it-matters explaining user/business impact.",
+    "class": "must",
+    "source": "SKILL.md:Question Format; SKILL.md:Quality Checklist (Each question has 2-3 concrete options; \"Why this matters\" explains user/business impact); SKILL.md:Common Mistakes (Open-ended without options; Missing \"why this matters\")"
+  },
+  {
+    "id": "R-014",
+    "rule": "POINTER: the exact question shape is the Clarifications block of `templates/advocate-report-template.md` — fill that structure, never invent a variant. Evidence: the review's clarifications use the template's `### C<n>: {{title}} ({{gap_id}})` / **Question** / **Options** / **Why it matters** shape rather than an invented one.",
+    "class": "format",
+    "source": "SKILL.md:Question Format (The exact shape is the Clarifications block of `templates/advocate-report-template.md` — fill that structure, don't invent a variant)"
+  },
+  {
+    "id": "R-015",
+    "rule": "Questions are SPECIFIC, not vague — 'What about errors?' is a defect; 'What message should users see when payment fails?' is the form. Evidence: no question in the review is a bare topic gesture without a named situation.",
+    "class": "must",
+    "source": "SKILL.md:Common Mistakes (Vague questions)"
+  },
+  {
+    "id": "R-016",
+    "rule": "The five USER-FACING GAP CATEGORIES are the hunt focus and stay named: **User expectations** ('What should users see when...?'), **Business rules** ('Is X allowed? Under what conditions?'), **Scope boundaries** ('Is Y in scope for this feature?'), **Success/failure states** ('What happens if the user...?'), **Permissions** ('Who can do X? Who cannot?'). Evidence: the review's questions map to these categories, and none of the five is dropped from the hunt.",
+    "class": "must",
+    "source": "SKILL.md:Gap Categories"
+  },
+  {
+    "id": "R-017",
+    "rule": "POINTER/HOME: this section is the CANONICAL HOME of the requirement-defect classes — the hunt taxonomy the `devils-advocate` persona leans on rather than carrying a copy — and the taxonomy's internal relation is stated: the first five are what the product questions above surface, the sixth is the REMOVE-SHAPED excess class. Evidence: the body carries the taxonomy detail (the persona does not) and the add-shaped/remove-shaped split survives.",
+    "class": "format",
+    "source": "SKILL.md:Gap Categories (The requirement-defect classes — the canonical hunt taxonomy the `devils-advocate` persona leans on this section for the detail ... the sixth is the remove-shaped excess class)"
+  },
+  {
+    "id": "R-018",
+    "rule": "DEFECT CLASS 1 — **Missing requirements**: features mentioned but not specified; implicit expectations; dependencies on undefined behavior. Evidence: the review hunts and can file findings of this class, citing the mention-without-specification, the implicit expectation, or the undefined dependency.",
+    "class": "must",
+    "source": "SKILL.md:Gap Categories (requirement-defect class table, Missing requirements row)"
+  },
+  {
+    "id": "R-019",
+    "rule": "DEFECT CLASS 2 — **Ambiguities**: vague terms without quantification; requirements open to interpretation; unclear boundaries and limits. Evidence: the review flags unquantified terms and interpretation-open requirements as ambiguity findings.",
+    "class": "must",
+    "source": "SKILL.md:Gap Categories (requirement-defect class table, Ambiguities row)"
+  },
+  {
+    "id": "R-020",
+    "rule": "DEFECT CLASS 3 — **Edge cases**: empty states; cancelled mid-flow; missing permissions; unstated limits (max items, max size). Evidence: the review probes each main flow for these four families and files what is unstated.",
+    "class": "must",
+    "source": "SKILL.md:Gap Categories (requirement-defect class table, Edge cases row)"
+  },
+  {
+    "id": "R-021",
+    "rule": "DEFECT CLASS 4 — **Assumption gaps**: assumptions that should be requirements AND THE REVERSE (requirements that are really assumptions); hidden dependencies. Evidence: the review files assumption-gap findings in both directions, not only the assumption→requirement direction.",
+    "class": "must",
+    "source": "SKILL.md:Gap Categories (requirement-defect class table, Assumption gaps row)"
+  },
+  {
+    "id": "R-022",
+    "rule": "DEFECT CLASS 5 — **Contradictions**: requirements that conflict; inconsistent terminology; mutually exclusive acceptance criteria. Evidence: the review names the conflicting pair (requirement↔requirement, term↔term, or criterion↔criterion) when filing a contradiction.",
+    "class": "must",
+    "source": "SKILL.md:Gap Categories (requirement-defect class table, Contradictions row)"
+  },
+  {
+    "id": "R-023",
+    "rule": "DEFECT CLASS 6 — **Excess / unpaid scope**: a story, requirement, or screen no user need or ratified driver pays for. Evidence: the review can file a remove-shaped finding naming spec content that traces to no user need or ratified driver.",
+    "class": "must",
+    "source": "SKILL.md:Gap Categories (requirement-defect class table, Excess / unpaid scope row)"
+  },
+  {
+    "id": "R-024",
+    "rule": "EXCESS CALIBRATION CLAUSE: an excess finding is ADMISSIBLE ONLY when it names either the driver the content fails to trace to or the cheaper shape; and a floor-derived, compliance-module-derived, or NFR-derived obligation is NEVER excess. Evidence: every excess finding in the review names the untraceable driver or the cheaper shape, and no floor/compliance/NFR obligation is filed as excess.",
+    "class": "must",
+    "source": "SKILL.md:Gap Categories (Excess / unpaid scope row: admissible only naming the driver it fails to trace to or the cheaper shape; a floor / compliance-module / NFR-derived obligation is never excess)"
+  },
+  {
+    "id": "R-025",
+    "rule": "IMPLEMENTATION POSTURE SMUGGLED INTO A CONSTRAINT is a gap — filed as an ASSUMPTION-GAP finding. A constraint naming a storage or implementation posture ('files on disk') where the real requirement is a capability ('locally computable') passes any banned-terms check and still freezes a plan-time choice the stakeholders never ratified. Evidence: the review inspects constraints for smuggled posture and files such a constraint as an assumption gap, naming the capability the constraint should have stated.",
+    "class": "must",
+    "source": "SKILL.md:Gap Categories (Implementation posture smuggled into a constraint is a gap — an assumption-gap finding)"
+  },
+  {
+    "id": "R-026",
+    "rule": "EXTERNAL AND REGULATORY CLAIMS: a spec asserting a regulatory obligation, compliance limit, or other product-legal fact carries a FLOOR-CLASS external claim that must be VERIFIED per `../review-brainstorm/references/EXTERNAL-CLAIMS.md`; an undisclosed external claim is a gap like any other. Evidence: the review identifies floor-class external claims in the spec, reports the verification run against them, and files an undisclosed one as a gap.",
+    "class": "floor",
+    "source": "SKILL.md:Gap Categories (External and regulatory claims ... carries a floor-class external claim: verify it per EXTERNAL-CLAIMS.md ... An undisclosed external claim is a gap like any other)"
+  },
+  {
+    "id": "R-027",
+    "rule": "POINTER: `../review-brainstorm/references/EXTERNAL-CLAIMS.md` is the SINGLE SOURCE of the external-claim trigger and mechanics and is NOT restated here. Evidence: the body cites that path for the trigger and mechanics rather than reproducing them.",
+    "class": "format",
+    "source": "SKILL.md:Gap Categories (the single source of the trigger and mechanics, not restated here)"
+  },
+  {
+    "id": "R-028",
+    "rule": "FEATURE LAYER — the spec's feature derivation and staged map delta are graded WITH the spec: SAME REVIEWER, SAME REPORT, because the reviewer who reads the stories is the only one who can see derivation dishonesty. Evidence: the feature-layer findings appear in the same report as the spec findings, produced by the same reviewer, not split to a second seat or a second round.",
+    "class": "must",
+    "source": "SKILL.md:The feature layer (graded with the spec — same reviewer, same report: the reviewer who reads the stories is the only one who can see derivation dishonesty)"
+  },
+  {
+    "id": "R-029",
+    "rule": "POINTER: the map MACHINERY (derivation method, entry shape, delta grammar, write rules) is single-sourced in `mochiko:authoring-feature-map` and its templates — the feature-layer check table is the REVIEWER'S MIRROR, not a second home. Evidence: the review grades against the checks while citing authoring-feature-map as the standard, and the body does not restate the machinery.",
+    "class": "format",
+    "source": "SKILL.md:The feature layer (single-sourced in `mochiko:authoring-feature-map` and its templates — this table is the reviewer's mirror, not a second home); SKILL.md:Related Skills"
+  },
+  {
+    "id": "R-030",
+    "rule": "FEATURE-LAYER BASELINE RULE: the map-delta baseline is the **git state of the map at run open** — staged writes are graded against the actual map files at that baseline, NEVER against a workspace copy of the map. Evidence: the review states it read the map at the run-open git baseline and graded the delta against those files.",
+    "class": "floor",
+    "source": "SKILL.md:The feature layer (**Baseline rule:** the map-delta baseline is the **git state of the map at run open** ... never against a workspace copy of the map); SKILL.md:Quality Checklist (delta baseline = git state of the map at run open)"
+  },
+  {
+    "id": "R-031",
+    "rule": "FEATURE-LAYER CHECK 1 — **Derivation honesty** (typical severity CRITICAL): every proposed feature is traceable to the stories that inform it — no feature that no story supports. Evidence: the review states the derivation-traceability result per proposed feature and names any feature with no supporting story, at Critical.",
+    "class": "must",
+    "source": "SKILL.md:The feature layer (check 1)"
+  },
+  {
+    "id": "R-032",
+    "rule": "FEATURE-LAYER CHECK 2 — **Disposition completeness** (typical severity CRITICAL): every drafted story is homed to EXACTLY ONE feature, or rejected by the filter WITH THE WHY RECORDED IN THE STORY FILE. Evidence: the review states the disposition result per story and names stories homed to zero features, homed to more than one, or rejected without a recorded why.",
+    "class": "must",
+    "source": "SKILL.md:The feature layer (check 2)"
+  },
+  {
+    "id": "R-033",
+    "rule": "FEATURE-LAYER CHECK 3 — **Dedup against the map** (typical severity CRITICAL): every proposed entry is deduplicated BY CAPABILITY against the actual map files at the run-open baseline. Evidence: the review states the dedup result per proposed entry against the baseline map files and names any duplicate capability.",
+    "class": "must",
+    "source": "SKILL.md:The feature layer (check 3)"
+  },
+  {
+    "id": "R-034",
+    "rule": "FEATURE-LAYER CHECK 4 — **Granularity** (typical severity IMPORTANT): each entry is within the granularity guide — a one-breath capability, extent ≤ ~3 lines — or is split. Evidence: the review states the granularity result per entry and names entries needing a split.",
+    "class": "must",
+    "source": "SKILL.md:The feature layer (check 4)"
+  },
+  {
+    "id": "R-035",
+    "rule": "FEATURE-LAYER CHECK 5 — **Entry well-formedness** (typical severity IMPORTANT): every proposed entry is in the entry-template shape with ALL FIELDS CARRIED. Evidence: the review states the well-formedness result per entry and names missing fields.",
+    "class": "must",
+    "source": "SKILL.md:The feature layer (check 5)"
+  },
+  {
+    "id": "R-036",
+    "rule": "FEATURE-LAYER CHECK 6 — **Delta legality** (typical severity CRITICAL): every delta is in the full grammar — what grows, the in-flight mark, the named spec — and NO `delivered` status is regressed. Evidence: the review states the delta-legality result and names any ungrammatical delta or regressed `delivered` status.",
+    "class": "must",
+    "source": "SKILL.md:The feature layer (check 6)"
+  },
+  {
+    "id": "R-037",
+    "rule": "FEATURE-LAYER CHECK 7 — **SC re-homing** (typical severity CRITICAL): every SC-XXX is mapped to a verifying feature, and deferred SCs plus one-sided seams sit on the owning entry's obligations line. Evidence: the review states the SC re-homing result and names unmapped SCs or deferred SCs/one-sided seams missing from the obligations line.",
+    "class": "must",
+    "source": "SKILL.md:The feature layer (check 7)"
+  },
+  {
+    "id": "R-038",
+    "rule": "FEATURE-LAYER CHECK 8 — **In-flight handling** (typical severity CRITICAL): touches to in-flight territory are read into the owning spec and resolved by reference, by sequenced delta, or by escalation — NEVER by silent contradiction. Evidence: the review states the in-flight result and names any silent contradiction with in-flight territory.",
+    "class": "must",
+    "source": "SKILL.md:The feature layer (check 8)"
+  },
+  {
+    "id": "R-039",
+    "rule": "FEATURE-LAYER CHECK 9 — **Selection-card honesty** (typical severity IMPORTANT): the deferred-SC list is visible on the selection card and AGREES with the SC split. Evidence: the review states the selection-card result and names any disagreement between the card's deferred-SC list and the SC split.",
+    "class": "must",
+    "source": "SKILL.md:The feature layer (check 9)"
+  },
+  {
+    "id": "R-040",
+    "rule": "FEATURE-LAYER CHECK 10 — **Specs-index agreement** (typical severity IMPORTANT): the staged specs-index row agrees with the staged map writes on slug, FEAT-IDs, and outcomes. Evidence: the review states the specs-index agreement result and names each disagreeing field.",
+    "class": "must",
+    "source": "SKILL.md:The feature layer (check 10)"
+  },
+  {
+    "id": "R-041",
+    "rule": "SCREENS & FLOWS — the Screens & Flows section of a UX-bearing spec is graded WITH the spec: SAME REVIEWER, SAME REPORT. Evidence: the Screens & Flows findings appear in the same report as the spec findings, produced by the same reviewer.",
+    "class": "must",
+    "source": "SKILL.md:The Screens & Flows section (Graded with the spec — same reviewer, same report)"
+  },
+  {
+    "id": "R-042",
+    "rule": "SCREENS & FLOWS — TWO LEGAL SHAPES, and BOTH get graded: either a SCR/FLOW manifest with its `prototype/` app, or the waiver line \"No UX surface — prototype waived at intent.\" The waiver shape is graded via check 8, against the Intent section's UX-bearing ruling. Evidence: the review declares which shape the spec carries and grades it — never skipping the section because the waiver line is present.",
+    "class": "must",
+    "source": "SKILL.md:The Screens & Flows section (Either a SCR/FLOW manifest with its `prototype/` app, or the waiver line ... Both shapes get graded (the waiver via check 8, against the Intent section's UX-bearing ruling)); SKILL.md:Quality Checklist"
+  },
+  {
+    "id": "R-043",
+    "rule": "SERVE-AND-CLICK OBLIGATION: the Screens & Flows walk is ADVERSARIAL, NOT CEREMONIAL — the reviewer SERVES THE PROTOTYPE AND CLICKS IT (bun, or opening `prototype/index.html` directly), because a skeptic walking the app finds the gap a text read cannot. A manifest-only text read does not discharge the walk. Evidence: the review reports actually serving/opening the prototype and walking flows in it, naming what was clicked.",
+    "class": "floor",
+    "source": "SKILL.md:The Screens & Flows section (The walk is adversarial, not ceremonial: **serve the prototype and click it** (bun, or open `prototype/index.html` directly)); SKILL.md:Quality Checklist (the prototype actually served and walked)"
+  },
+  {
+    "id": "R-044",
+    "rule": "AUTHORITY SPLIT GUARD: flows, screens, and the data shown are BINDING; layout and styling are ADVISORY — a cosmetic finding against a low-fi prototype is a WRONG-ALTITUDE finding. Evidence: no finding in the review faults the prototype's visual polish, spacing, or styling as a defect.",
+    "class": "must",
+    "source": "SKILL.md:The Screens & Flows section (Authority split guard: flows, screens, and data shown are binding; layout and styling are advisory — a cosmetic finding against a low-fi prototype is a wrong-altitude finding)"
+  },
+  {
+    "id": "R-045",
+    "rule": "SCREENS & FLOWS CHECK 1 — **Screen reachability** (typical severity CRITICAL): every SCR-XXX row renders a reachable page in the SERVED app. Evidence: the review states, per SCR row, that its page was reached in the served prototype, naming unreachable rows.",
+    "class": "must",
+    "source": "SKILL.md:The Screens & Flows section (check 1)"
+  },
+  {
+    "id": "R-046",
+    "rule": "SCREENS & FLOWS CHECK 2 — **Flow walkability** (typical severity CRITICAL): every FLOW-XXX is clickable END-TO-END with no dead ends. Evidence: the review states, per FLOW row, that it was walked end-to-end, naming dead ends.",
+    "class": "must",
+    "source": "SKILL.md:The Screens & Flows section (check 2)"
+  },
+  {
+    "id": "R-047",
+    "rule": "SCREENS & FLOWS CHECK 3 — **Scenario coverage** (typical severity CRITICAL): every P1 story acceptance scenario carries a FLOW click path. Evidence: the review states the P1-scenario→FLOW coverage result and names P1 scenarios with no click path.",
+    "class": "must",
+    "source": "SKILL.md:The Screens & Flows section (check 3)"
+  },
+  {
+    "id": "R-048",
+    "rule": "SCREENS & FLOWS CHECK 4 — **Flow traceability** (typical severity CRITICAL): every FLOW-XXX is keyed to a REAL story scenario — no scope invention. Evidence: the review states the FLOW→scenario traceability result and names invented flows.",
+    "class": "must",
+    "source": "SKILL.md:The Screens & Flows section (check 4)"
+  },
+  {
+    "id": "R-049",
+    "rule": "SCREENS & FLOWS CHECK 5 — **Drift, BOTH DIRECTIONS** (typical severity CRITICAL): no page without a SCR row, and no manifest row without its page. Evidence: the review states both drift directions, naming orphan pages and orphan manifest rows separately.",
+    "class": "must",
+    "source": "SKILL.md:The Screens & Flows section (check 5)"
+  },
+  {
+    "id": "R-050",
+    "rule": "SCREENS & FLOWS CHECK 6 — **Data-shape honesty** (typical severity IMPORTANT): screens show an honest data shape (realistic fields and cardinality), enough to expose layout and flow problems. Evidence: the review states the data-shape result and names screens whose placeholder data hides a layout or flow problem.",
+    "class": "must",
+    "source": "SKILL.md:The Screens & Flows section (check 6)"
+  },
+  {
+    "id": "R-051",
+    "rule": "SCREENS & FLOWS CHECK 7 — **FEAT tags** (typical severity IMPORTANT): post-derivation, every SCR/FLOW row is FEAT-tagged; out-of-selection and filter-rejected screens are GREYED BUT REACHABLE, and rejected ones are marked with the rejection pointer. Evidence: the review states the FEAT-tag result and names untagged rows, unreachable greyed screens, or rejected screens missing the rejection pointer.",
+    "class": "must",
+    "source": "SKILL.md:The Screens & Flows section (check 7)"
+  },
+  {
+    "id": "R-052",
+    "rule": "SCREENS & FLOWS CHECK 8 — **Waiver second-guess** (typical severity IMPORTANT): the waiver line on a spec whose stories imply user-facing screens — or a prototype the intent ruled out — is challenged; the check grades the UX-bearing call AGAINST THE INTENT SECTION. Evidence: the review states whether the UX-bearing ruling matches what the stories imply, citing the Intent section.",
+    "class": "must",
+    "source": "SKILL.md:The Screens & Flows section (check 8)"
+  },
+  {
+    "id": "R-053",
+    "rule": "SEVERITY **Critical** — definition: 'Cannot build without this answer'; action: MUST ASK NOW. Evidence: every Critical finding in the review is one that blocks building until answered, and is surfaced as a must-ask-now clarification.",
+    "class": "must",
+    "source": "SKILL.md:Severity Classification (Critical row)"
+  },
+  {
+    "id": "R-054",
+    "rule": "SEVERITY **Important** — definition: 'Will cause rework if not clarified'; action: SHOULD ASK NOW. Evidence: every Important finding is justified by rework risk and is surfaced as a should-ask-now clarification.",
+    "class": "must",
+    "source": "SKILL.md:Severity Classification (Important row)"
+  },
+  {
+    "id": "R-055",
+    "rule": "SEVERITY **Minor** — definition: 'Polish issue, can defer'; action: LOG AND CONTINUE. Evidence: Minor findings are logged in the report and do not escalate into clarifications the stakeholder must answer now.",
+    "class": "must",
+    "source": "SKILL.md:Severity Classification (Minor row)"
+  },
+  {
+    "id": "R-056",
+    "rule": "CONSUMER (agents/devils-advocate.md:52 'the severity rubric ... live in mochiko:review-specifications' and its Adversarial Calibration; skills/mochiko/SKILL.md:60 'severity-bucketed gap-finding'; templates/advocate-report-template.md `sev: Critical | Important | Minor`): every gap is classified into EXACTLY ONE of the three words **Critical / Important / Minor**, verbatim. A different scale (High/Medium/Low, P0/P1/P2, blocker/nit) breaks the persona's calibration, the router's promise, and the shared report template's enum.",
+    "class": "vocab",
+    "source": "SKILL.md:Severity Classification; SKILL.md:Quality Checklist (Gaps classified by severity (Critical/Important/Minor)); consumer: plugins/mochiko/agents/devils-advocate.md:52; plugins/mochiko/skills/mochiko/SKILL.md:60; plugins/mochiko/templates/advocate-report-template.md:20"
+  },
+  {
+    "id": "R-057",
+    "rule": "OUTPUT FORMAT POINTER: the report structure is SINGLE-SOURCED at `templates/advocate-report-template.md` and filled rather than invented — specifically the FINDINGS LIST (type + severity, machine-first YAML), the CLARIFICATIONS with concrete options and impact, the RECOMMENDED VERDICT, and the ONE-LINE `strengths:` FIELD. Evidence: the produced report carries all four elements in the template's shape, with `strengths:` present as one comma-brief line rather than a section.",
+    "class": "format",
+    "source": "SKILL.md:Output Format"
+  },
+  {
+    "id": "R-058",
+    "rule": "INLINE FALLBACK: when invoked outside a workflow that names a report path, the SAME structure is returned INLINE. Evidence: a path-less invocation still produces the full template structure in the response rather than a loose prose review or a written file at a guessed path.",
+    "class": "format",
+    "source": "SKILL.md:Output Format (When invoked outside a workflow that names a report path, return the same structure inline)"
+  },
+  {
+    "id": "R-059",
+    "rule": "The spec being graded follows the DELIVERABLE ENVELOPE (`templates/artifact-format.md`) — one-line scenarios (2-3 per story), one-line FR/SC/edge-case entries, compact entities — and the reviewer holds it to that envelope rather than to a fuller-prose expectation. Evidence: the review treats the envelope's shapes as the norm and does not fault the spec for conforming to them.",
+    "class": "format",
+    "source": "SKILL.md:Review Process (The spec follows the deliverable envelope (`templates/artifact-format.md`): one-line scenarios (2-3 per story), one-line FR/SC/edge-case entries, compact entities)"
+  },
+  {
+    "id": "R-060",
+    "rule": "DENSITY IS NEVER ITSELF A GAP — the review grades SUBSTANCE (a missing flow, an unmeasurable criterion, an unstated assumption), NEVER prose style; brevity is never a finding. Evidence: no finding in the review faults the spec's terseness, wording, or writing style rather than a missing or unverifiable fact.",
+    "class": "floor",
+    "source": "SKILL.md:Review Process (**Density is never itself a gap** — grade substance ... never prose style); templates/artifact-format.md:54 (rule 8)"
+  },
+  {
+    "id": "R-061",
+    "rule": "The OTHER direction is in scope: UNDISCLOSED OVERAGE past the envelope's size defaults is an ADVISORY finding per `templates/artifact-format.md` rule 8 — advisory means it never alone blocks a verdict. Evidence: where the spec runs long past the size defaults with no disclosed justification, the review names it (section + delta) and marks it advisory.",
+    "class": "must",
+    "source": "SKILL.md:Review Process (undisclosed overage past the envelope's size defaults is an advisory finding per its rule 8); templates/artifact-format.md:54"
+  },
+  {
+    "id": "R-062",
+    "rule": "REVIEW EVIDENCE IN ARTIFACTS (floor): the independent review leaves its verdict and PER-FINDING DISPOSITIONS in the REVIEWED ARTIFACTS THEMSELVES — review evidence that lives only in conversation is a FLOOR VIOLATION. Evidence: the review exists as durable written output against the artifacts, not solely as chat text.",
+    "class": "floor",
+    "source": "SKILL.md:Review Process (The independent review leaves its verdict and per-finding dispositions in the reviewed artifacts themselves — review evidence that lives only in conversation is a floor violation)"
+  },
+  {
+    "id": "R-063",
+    "rule": "The QUALITY CHECKLIST is run as a pre-finalization self-check — the review is not finalized until each item is verified. Evidence: the produced review shows the checklist items discharged, explicitly or by carrying their required content.",
+    "class": "must",
+    "source": "SKILL.md:Quality Checklist (Before finalizing the review, verify:)"
+  },
+  {
+    "id": "R-064",
+    "rule": "ALL USER STORIES are reviewed for completeness — no story is skipped. Evidence: the review's coverage accounts for every story in the spec.",
+    "class": "must",
+    "source": "SKILL.md:Quality Checklist (All user stories reviewed for completeness)"
+  },
+  {
+    "id": "R-065",
+    "rule": "SUCCESS CRITERIA are checked for MEASURABILITY. Evidence: the review states, per success criterion, whether it is measurable, and names unmeasurable ones.",
+    "class": "must",
+    "source": "SKILL.md:Quality Checklist (Success criteria checked for measurability)"
+  },
+  {
+    "id": "R-066",
+    "rule": "EDGE CASES are identified FOR EACH MAIN FLOW — the edge-case hunt is run per flow, not sampled. Evidence: the review's edge-case findings are organized against the spec's main flows, with every main flow probed.",
+    "class": "must",
+    "source": "SKILL.md:Quality Checklist (Edge cases identified for each main flow)"
+  },
+  {
+    "id": "R-067",
+    "rule": "RELATED GAPS ARE GROUPED TOGETHER in the report rather than scattered. Evidence: findings touching the same requirement/flow/decision are presented together.",
+    "class": "must",
+    "source": "SKILL.md:Quality Checklist (Related gaps grouped together); SKILL.md:Common Mistakes"
+  },
+  {
+    "id": "R-068",
+    "rule": "GAP-VOLUME LIMIT: no more than 5-7 Critical/Important gaps are presented per review round — 20+ gaps at once is the defect. Evidence: the review's Critical+Important count per round stays within 5-7, with the remainder deferred to a later round rather than dumped.",
+    "class": "should",
+    "source": "SKILL.md:Common Mistakes (Too many gaps at once → Limit to 5-7 critical/important gaps per review round)"
+  },
+  {
+    "id": "R-069",
+    "rule": "SCOPE CREEP DISGUISED AS GAPS is forbidden: new features are never added as 'missing requirements' — the review ONLY CLARIFIES THE SCOPE OF EXISTING FEATURES. Evidence: every missing-requirement finding attaches to a feature the spec already carries, never proposing a new one.",
+    "class": "must",
+    "source": "SKILL.md:Common Mistakes (Scope creep disguised as gaps → Only clarify scope of existing features)"
+  },
+  {
+    "id": "R-070",
+    "rule": "EXISTING CONTEXT IS CONSULTED FIRST: existing patterns and decisions are referenced BEFORE asking, so the review does not ask questions already answered elsewhere. Evidence: no clarification in the review restates a question the spec, prior decisions, or established patterns already answer.",
+    "class": "must",
+    "source": "SKILL.md:Common Mistakes (Ignoring existing context → Reference existing patterns and decisions before asking)"
+  },
+  {
+    "id": "R-071",
+    "rule": "AUTHOR ≠ GRADER: the review is run by an INDEPENDENT REVIEWER, NEVER THE AUTHOR of the spec, stories, derivation, map delta, or prototype it grades. Evidence: the reviewer did not author any graded artifact, and the review does not patch, complete, or rewrite what it grades.",
+    "class": "floor",
+    "source": "SKILL.md:Related Skills (produces the derivation and staged map delta this skill grades (independent reviewer, never the author)); SKILL.md:Review Process (The independent review)"
+  },
+  {
+    "id": "R-072",
+    "rule": "CONSUMER (agents/devils-advocate.md:52 'The canonical gap taxonomy, severity rubric, and structured output format live in **mochiko:review-specifications** — lean on it for the detailed version rather than working from a copy here, so there is one source of truth'): ALL THREE limbs stay resident in this skill — the gap TAXONOMY (the six defect classes), the SEVERITY RUBRIC (Critical/Important/Minor with their spec-specific definitions), and the STRUCTURED OUTPUT FORMAT binding. Dropping or thinning any limb leaves the persona pointing at a home that no longer holds it, with no copy anywhere to fall back on.",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/agents/devils-advocate.md:52; SKILL.md:Gap Categories; SKILL.md:Severity Classification; SKILL.md:Output Format"
+  },
+  {
+    "id": "R-073",
+    "rule": "CONSUMER (agents/devils-advocate.md:19 '**mochiko:review-specifications** — gap review of a drafted spec (`spec.md`)'): this skill's scope is stated as GAP REVIEW OF A DRAFTED SPEC, its target file `spec.md`. A body that re-scopes to pre-draft enrichment, to plan artifacts, or away from `spec.md` makes the persona's skill-roster line false.",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/agents/devils-advocate.md:19; SKILL.md:Overview; SKILL.md:When NOT to Use"
+  },
+  {
+    "id": "R-074",
+    "rule": "CONSUMER (skills/mochiko/SKILL.md:60 router row 'finding gaps in a drafted `spec.md` — **severity-bucketed gap-finding + clarifying questions** ... feeding the lead's verdict (the critic's skill; owns no clearing verdict)'; SKILL.md:141 devils-advocate row 'recommends verdicts that feed the lead's clearing decision, never the gate'): the terms `severity-bucketed gap-finding`, `clarifying questions`, `feeding the lead's verdict`, and `owns no clearing verdict` survive as this skill's identity vocabulary. A paraphrase that turns this seat into a pass/fail gate, or drops clarifying questions from the deliverable, breaks the router's stated promise.",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/skills/mochiko/SKILL.md:60,141; SKILL.md:Overview"
+  },
+  {
+    "id": "R-075",
+    "rule": "CONSUMER (skills/mochiko/SKILL.md:60 '**including the feature-layer grade** (derivation honesty, filter rejections justified, dedup against the actual map at the run-open git baseline, entry well-formedness, delta legality, SC re-homing, selection-card deferred-SC honesty, specs-index agreement)'): the FEATURE-LAYER GRADE stays in scope with all eight router-cited names intact — `derivation honesty`, `filter rejections justified`, `dedup against the actual map at the run-open git baseline`, `entry well-formedness`, `delta legality`, `SC re-homing`, `selection-card deferred-SC honesty`, `specs-index agreement`. Dropping any name, or the run-open git baseline qualifier, makes the router's description of this seat false.",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/skills/mochiko/SKILL.md:60; SKILL.md:The feature layer"
+  },
+  {
+    "id": "R-076",
+    "rule": "CONSUMER (skills/mochiko/SKILL.md:60 '**and the Screens & Flows grade** (the served prototype walked: FLOW walkability, SCR reachability, P1 scenario coverage, drift, the waiver second-guess)'): the SCREENS & FLOWS GRADE stays in scope with `the served prototype walked` and all five router-cited check names intact — `FLOW walkability`, `SCR reachability`, `P1 scenario coverage`, `drift`, `the waiver second-guess`. Reducing the walk to a text read, or dropping a named check, breaks the router row.",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/skills/mochiko/SKILL.md:60; SKILL.md:The Screens & Flows section"
+  },
+  {
+    "id": "R-077",
+    "rule": "CONSUMER (skills/authoring-prototype/SKILL.md:41 'Grading the prototype — graded with the spec by mochiko:review-specifications, run by an independent reviewer, never the author'; :142 'grades the prototype with the spec (independent reviewer, never the author)'): the PROTOTYPE stays graded BY THIS SKILL, WITH THE SPEC, by an INDEPENDENT REVIEWER, NEVER THE AUTHOR. Dropping the prototype from scope leaves the producer skill pointing at a grader that no longer grades it.",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/skills/authoring-prototype/SKILL.md:41,142; SKILL.md:The Screens & Flows section"
+  },
+  {
+    "id": "R-078",
+    "rule": "CONSUMER (skills/authoring-feature-map/SKILL.md:31 'Grading the derivation or map delta — graded with the spec by mochiko:review-specifications (independent reviewer, never the author)'; :106 'grades spec + stories + feature derivation + map delta in one pass (independent reviewer, never the author)'): the DERIVATION and the MAP DELTA stay graded by this skill, WITH the spec and stories, IN ONE PASS, by an independent non-author reviewer. Splitting the feature layer to a separate seat or pass contradicts the producer skill's stated grader.",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/skills/authoring-feature-map/SKILL.md:31,106; SKILL.md:The feature layer"
+  },
+  {
+    "id": "R-079",
+    "rule": "CONSUMER (skills/analysis-iterative/SKILL.md:16 'reviewing an already-drafted spec for gaps is post-draft work; use mochiko:review-specifications instead (this skill conditions raw input *before* a spec exists)' and its `description:` 'Distinct from review-specifications, which reviews an already-drafted spec for gaps'): the POST-DRAFT / PRE-SPEC seam stays exactly where the sibling states it — this skill reviews an ALREADY-DRAFTED spec for gaps; analysis-iterative conditions raw input BEFORE a spec exists. Blurring the seam (e.g. this skill absorbing enrichment) makes the sibling's routing sentence and its description false in both directions.",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/skills/analysis-iterative/SKILL.md:3,16; SKILL.md:When NOT to Use; SKILL.md:Related Skills"
+  },
+  {
+    "id": "R-080",
+    "rule": "CONSUMER (skills/review-brainstorm/references/EXTERNAL-CLAIMS.md:94 lists `review-specifications` among the consuming skills, WITHOUT the 'disclosure-presence check only' qualifier that narrows `review-plan-artifacts`): this skill remains a full consumer of the FLOOR-CLASS EXTERNAL-CLAIM VERIFY — it verifies a stated regulatory/compliance/product-legal claim per that file's trigger and mechanics, not merely the presence of a disclosure line. Dropping the pointer orphans a listed consumer and the file's edit-time guard ('a change here is assessed against all consumers').",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/skills/review-brainstorm/references/EXTERNAL-CLAIMS.md:94; SKILL.md:Gap Categories (External and regulatory claims)"
+  },
+  {
+    "id": "R-081",
+    "rule": "CONSUMER (templates/advocate-report-template.md findings schema `type: Missing | Ambiguous | EdgeCase | Assumption | Contradiction`): the FIRST FIVE defect classes bind to the report template's `type:` enum — Missing requirements→`Missing`, Ambiguities→`Ambiguous`, Edge cases→`EdgeCase`, Assumption gaps→`Assumption`, Contradictions→`Contradiction`. Renaming or dropping one of the five leaves a template enum value with no taxonomy behind it (the sixth class, Excess / unpaid scope, has no template token and rides the nearest type — a known asymmetry, see borderline note).",
+    "class": "vocab",
+    "source": "consumer: plugins/mochiko/templates/advocate-report-template.md:18-23; SKILL.md:Gap Categories (requirement-defect class table)"
+  }
+]
