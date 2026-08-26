@@ -6,7 +6,7 @@
 # Protocol prose) stays in plugins/mochiko/commands/feature.md.
 #
 # Grammar (D6, as amended by D14): sections: list, each {id, title, intent, rules};
-# rule blocks {id, labels, class, text, ruling?, pointer?} nest under their section.
+# rule blocks {id, labels, class, text, pointer?} nest under their section.
 #   section id  feat.sec.<slug> — minted once like rule IDs (D11); title verbatim from
 #           the charter group it carries; intent one line, navigation only — sections
 #           never grow a second prose surface (narrative stays in the .md).
@@ -19,13 +19,14 @@
 #           must = binding obligation · advisory = may change without supersession ceremony.
 #   text    carries ${var} placeholders substituted from vars: at read (D5). Verbatim
 #           command strings carry no placeholders.
-#   ruling  "YYYY-MM-DD <session-slug> [D#]" — protected content, anchored to a live
-#           DECISIONS.md row. Leaves only by recorded supersession-by-ruling.
+#   provenance  decision anchors live in .mochiko/provenance.yaml (D16, repo-side —
+#           not shipped), keyed by rule ID; never read by the run; an anchored
+#           rule still leaves only by recorded supersession-by-ruling.
 #   pointer the skill that owns the floor or procedure — the rule holds the pointer,
 #           never the procedure. Multi-skill bindings name every skill in text.
 # Referential closure (D15): a rule's text is self-contained — every reference resolves
 #   within the block or the schema's addressable namespace (${var} · feat.* IDs ·
-#   feat.sec.* · class: values · labels · pointer: skills · ruling: anchors · file paths).
+#   feat.sec.* · class: values · labels · pointer: skills · file paths).
 #   Deixis ("these rules", "this section", "above"/"below", document-shape remarks) is a
 #   defect — quoted alone, the reference dangles. The checker lints a curated marker list
 #   (warning-class). "this schema", "the desk", and "the visit" are legal self-reference —
@@ -60,7 +61,6 @@ sections:
           below the sound-loop floor (feat.sound-loop-floor), how you staff, sequence,
           and run the visit is yours to shape (the lead-owned-process-flexibility
           posture, applied to a standing desk).
-        ruling: "2026-08-13 charter-ritual-balance"
 
       - id: feat.dm-health-first
         labels: [reporting]
@@ -131,7 +131,6 @@ sections:
           live duty on today's maps. The seat is not idle elsewhere: its standing home is
           /mochiko:architecture, where it stewards the architecture store — the dormancy
           is this desk's, not the seat's.
-        ruling: "2026-08-19 product-architecture-schema"
 
       - id: feat.dispatched-runs-own-delivery
         labels: [seats]
@@ -208,7 +207,6 @@ sections:
           The capability-write test is the routing instrument: does the work touch a
           capability (mint, merge, retire, capability-status) or only its work rows?
           Capabilities route out; rows the desk may cut.
-        ruling: "2026-08-13 pm-role-and-feature-derivation"
 
       - id: feat.stable-ground-triage
         labels: [scope-entry]
@@ -241,7 +239,6 @@ sections:
           architecture store, whose derived index is repo-root ARCHITECTURE.md);
           product-lane runs at ${product_dir}/lane-<slug>/. Across repeat runs, cards and
           reports append (dated); delta files overwrite only via the graded fold.
-        ruling: "2026-08-19 product-architecture-schema"
 
       - id: feat.architecture-intake
         labels: [scope-entry, user-gate]
@@ -252,7 +249,6 @@ sections:
           capability-write test (feat.capability-write-test) decides the door,
           extend-beats-mint applies, and the user rules the mint. No new door and no
           auto-mint — the architecture lens proposes, the map machinery disposes.
-        ruling: "2026-08-19 product-architecture-schema"
 
       - id: feat.dispatch-scope-split
         labels: [scope-entry, landing]
@@ -264,7 +260,6 @@ sections:
           capability's extent), a bug/improvement delta card stays delta scope (the
           desk-confirmed card is implement's delta entry; its landing is the delta fold)
           — the same split /mochiko:implement names at its Entry.
-        ruling: "2026-08-26 plan-stage-utility"
 
       - id: feat.dispatch-specify
         labels: [scope-entry]
@@ -333,7 +328,6 @@ sections:
           stay on the session tier; every seat brief carries the routing rule. Class key,
           dispatch ladder, and brief obligation live in the pointer skill, referenced
           never restated.
-        ruling: "2026-08-16 model-tiered-seats"
         pointer: "mochiko:patterns-model-tiering"
 
       - id: feat.single-flight-lane
@@ -367,7 +361,6 @@ sections:
           Capability writes are sacred: minting, merging, retiring, or changing a
           capability's status happens only through /mochiko:specify or a user grooming
           ruling — never at the desk.
-        ruling: "2026-08-13 pm-role-and-feature-derivation"
 
       - id: feat.grooming-door-ceiling
         labels: [user-gate, stewardship]
@@ -376,7 +369,6 @@ sections:
           The grooming-ruling door covers merge, retire, status change, and
           extent-tidying of existing entries; wholesale or from-scratch re-derivation is
           specify's derivation work — route to /mochiko:specify.
-        ruling: "2026-08-13 charter-ritual-balance"
 
       - id: feat.out-of-remit-hosting
         labels: [user-gate]
@@ -386,7 +378,6 @@ sections:
           grooming-ruling door's remit (feat.grooming-door-ceiling), name the boundary
           crossing and serve with the home command's rituals imported — the door moves,
           the ritual never drops (adaptation rule: mochiko:patterns-sound-loop).
-        ruling: "2026-08-13 charter-ritual-balance"
         pointer: "mochiko:patterns-sound-loop"
 
       - id: feat.growth-door
@@ -397,7 +388,6 @@ sections:
           extend verdict only, with acceptance criteria on the card. A fired architecture
           upgrade trigger enters by this same door and takes the same tests
           (feat.architecture-intake, feat.capability-write-test).
-        ruling: "2026-08-13 pm-role-and-feature-derivation"
 
       - id: feat.growth-routes-to-specify
         labels: [scope-entry]
@@ -422,7 +412,6 @@ sections:
           as a /mochiko:implement capability-batch — growth-door rows in selection scope,
           a bug/improvement delta card in delta scope; the run owns the delivery, and the
           boundary is audited from the map delta the work leaves behind.
-        ruling: "2026-08-26 plan-stage-utility"
 
       - id: feat.no-self-graded-writes
         labels: [independence]
@@ -447,7 +436,6 @@ sections:
           — and every desk delta card, bug and improvement alike, takes that review leg
           before dispatch. Trigger test, exemptions, seat wiring, and disclosure:
           mochiko:patterns-sound-loop, referenced never restated.
-        ruling: "2026-08-13 charter-ritual-balance"
         pointer: "mochiko:patterns-sound-loop"
 
       - id: feat.transport-floor
@@ -468,7 +456,6 @@ sections:
           Stub parking is parking, not a spec-bypass: a parked capability hypothesis is a
           name plus a one-breath hook, marked `unrefined`; it earns selectability only
           through /mochiko:specify's derivation, never at the desk.
-        ruling: "2026-08-13 pm-role-and-feature-derivation"
 
   - id: feat.sec.fail-conditions
     title: Not done — default FAIL
@@ -482,4 +469,3 @@ sections:
         class: floor
         text: >-
           A visit ended with no stated done-condition verdict.
-        ruling: "2026-08-13 pm-role-and-feature-derivation"

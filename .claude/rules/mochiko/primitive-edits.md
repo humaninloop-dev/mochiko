@@ -5,6 +5,7 @@ paths:
   - "plugins/mochiko/agents/**"
   - "plugins/mochiko/templates/**"
   - "plugins/mochiko/schemas/**"
+  - ".mochiko/provenance.yaml"
 ---
 
 # Primitive-edit ceremony (strip / supersede → record → check)
@@ -56,7 +57,9 @@ template edit; the path scope above covers them so this reminder injects on a sc
   rule or `<cmd>.sec.*` section — vanishes without a tombstone; **`class: floor` =
   must-survive (M3)**, `advisory` may change without supersession ceremony; the D13 checker's
   output (explicit `--schema`/`--md` flags for the pair) is cited in the audit brief as the
-  deterministic pre-pass.
+  deterministic pre-pass. Decision anchors live in **`.mochiko/provenance.yaml`** (D16),
+  keyed by rule ID — repo-side, never in the schemas, never shipped; an anchored rule still
+  leaves only by recorded supersession-by-ruling, and the checker resolves every anchor.
 
   **Exception — charter-form commands (`feature.md` D10 v0.68.0; `plan.md` / `implement.md`
   ADR 2026-08-13-charter-plan-implement v0.69.0):** a charter command is graded against

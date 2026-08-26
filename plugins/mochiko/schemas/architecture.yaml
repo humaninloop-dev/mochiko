@@ -6,7 +6,7 @@
 # plugins/mochiko/commands/architecture.md.
 #
 # Grammar (D6, as amended by D14): sections: list, each {id, title, intent, rules};
-# rule blocks {id, labels, class, text, ruling?, pointer?} nest under their section.
+# rule blocks {id, labels, class, text, pointer?} nest under their section.
 #   section id  <cmd>.sec.<slug> — minted once like rule IDs (D11); title verbatim from
 #           the command group it carries; intent one line, navigation only — sections
 #           never grow a second prose surface (narrative stays in the .md).
@@ -19,13 +19,14 @@
 #           must = binding obligation · advisory = may change without supersession ceremony.
 #   text    carries ${var} placeholders substituted from vars: at read (D5). Verbatim
 #           command strings carry no placeholders.
-#   ruling  "YYYY-MM-DD <session-slug> [D#]" — protected content, anchored to a live
-#           DECISIONS.md row. Leaves only by recorded supersession-by-ruling.
+#   provenance  decision anchors live in .mochiko/provenance.yaml (D16, repo-side —
+#           not shipped), keyed by rule ID; never read by the run; an anchored
+#           rule still leaves only by recorded supersession-by-ruling.
 #   pointer the skill that owns the floor or procedure — the rule holds the pointer,
 #           never the procedure. Multi-skill bindings name every skill in text.
 # Referential closure (D15): a rule's text is self-contained — every reference resolves
 #   within the block or the schema's addressable namespace (${var} · arch.* IDs ·
-#   arch.sec.* · class: values · labels · pointer: skills · ruling: anchors · file paths).
+#   arch.sec.* · class: values · labels · pointer: skills · file paths).
 #   Deixis ("these rules", "this section", "above"/"below", document-shape remarks) is a
 #   defect — quoted alone, the reference dangles. The checker lints a curated marker list
 #   (warning-class). "this schema", "the desk", and "the visit" are legal self-reference.
@@ -136,7 +137,6 @@ sections:
           ${grader_seat} is the independent grader of the architect's judgment writes,
           before the user's ratification. Status flips and orphan cleanup are
           transcription and ride the landing audit instead.
-        ruling: "2026-08-19 product-architecture-schema D11"
 
       - id: arch.seat-drift-probe-empirical
         labels: [seats, independence, evidence]
@@ -154,7 +154,6 @@ sections:
           capability mint at /mochiko:feature's growth door
           (arch.dispatch-feature-growth-door), and the governance-ledger waiver a true
           floor drop needs.
-        ruling: "2026-08-19 product-architecture-schema"
 
   - id: arch.sec.tools
     title: Tools
@@ -238,7 +237,6 @@ sections:
           absorbed sources to .mochiko/archive/product-baselines/<date>/. The derivation
           inherits the setup-bootstrap `Assumed` caveat and its partial-baseline poisoning
           risk: say so when you present it.
-        ruling: "2026-08-19 product-architecture-schema D16"
 
       - id: arch.tools-drift-probe-scope
         labels: [evidence, user-gate, stewardship]
@@ -256,7 +254,6 @@ sections:
           at the growth door as a candidate under the capability-write test;
           extend-beats-mint applies and the user rules the mint — the architecture lens
           proposes, the map machinery disposes.
-        ruling: "2026-08-19 product-architecture-schema D13"
 
       - id: arch.dispatch-setup-waiver
         labels: [user-gate]
@@ -270,7 +267,6 @@ sections:
         class: must
         text: >-
           /mochiko:implement owns all delivery; the desk runs none of it.
-        ruling: "2026-08-26 plan-stage-utility"
 
       - id: arch.register
         labels: [reporting, binding]
@@ -315,7 +311,6 @@ sections:
           Recommend, then arbitrate — a shelf row is dealt with its suggested default and
           the reasoning behind it, and the user forms the stance. A default is never
           applied by silence.
-        ruling: "2026-08-19 product-architecture-schema D5"
 
       - id: arch.model-tiering
         labels: [seats, floor-pointer]
@@ -328,7 +323,6 @@ sections:
           stays session tier and sends only its locate/enumerate legs down. Every seat
           brief carries the routing rule. Class key, dispatch ladder, and brief
           obligation: mochiko:patterns-model-tiering, referenced never restated.
-        ruling: "2026-08-16 model-tiered-seats"
         pointer: "mochiko:patterns-model-tiering"
 
       - id: arch.single-writer-store
@@ -365,7 +359,6 @@ sections:
           records; a stance, a baseline, or an amendment lands only on the user's word. A
           row left unruled stays `open` and shows in the health view — it never acquires a
           stance by default, by silence, or by the desk's own judgment.
-        ruling: "2026-08-19 product-architecture-schema D5"
 
       - id: arch.breadth-invariant
         labels: [evidence, floor-pointer]
@@ -376,7 +369,6 @@ sections:
           walk order is by retrofit cost: tenancy, auth, and data partitioning before
           flags and experimentation. A shelf scope narrowed at the desk is the user's
           explicit override, recorded as one.
-        ruling: "2026-08-19 product-architecture-schema D5"
         pointer: "mochiko:patterns-architecture-shelves"
 
       - id: arch.floor-precedence
@@ -390,7 +382,6 @@ sections:
           /mochiko:setup — never granted at the shelf. An arbitrated constitution card
           binds code-layer structure and a shelf row binds product topology; a genuine
           conflict between them is the user's.
-        ruling: "2026-08-19 product-architecture-schema D14"
 
       - id: arch.na-handled-elsewhere-pointer
         labels: [evidence]
@@ -408,7 +399,6 @@ sections:
           root `ARCHITECTURE.md` is regenerated from it by the store skill
           mochiko:authoring-architecture-store on every write. An index-vs-ledger
           disagreement is a defect fixed on sight, never reconciled by editing the index.
-        ruling: "2026-08-19 product-architecture-schema"
         pointer: "mochiko:authoring-architecture-store"
 
       - id: arch.drift-empirical
@@ -427,7 +417,6 @@ sections:
           per-row stances are its only adaptiveness, and `not-now` is the per-dimension
           depth valve. The governance dial governs a floor row's rigor; the desk governs
           its stance — two instruments, two axes.
-        ruling: "2026-08-19 product-architecture-schema D9"
 
       - id: arch.no-delivery-harness
         labels: [scope-entry]
@@ -458,7 +447,6 @@ sections:
           Status flips and orphan cleanup are transcription and ride the landing audit.
           Trigger test, exemptions, seat wiring, and disclosure:
           mochiko:patterns-sound-loop, referenced never restated.
-        ruling: "2026-08-13 charter-ritual-balance"
         pointer: "mochiko:patterns-sound-loop"
 
       - id: arch.transport-floor

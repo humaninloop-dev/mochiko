@@ -49,9 +49,12 @@ must never move under `plugins/`.
 6. **Labels from the registry only** (D8). Every `labels:` value comes from
    `command-labels.yaml`. A needed new label is a registry amendment by ruling, first, under
    the normal ceremony — never an ad-hoc addition.
-7. **Anchor protected content.** `ruling:` anchors ("YYYY-MM-DD <session-slug> [D#]",
-   resolving against a live `DECISIONS.md` row) on protected content; `pointer:` on
-   skill-owned floors — the rule holds the pointer, never the procedure.
+7. **Anchor protected content — in the sidecar, never inline** (D16). Schemas carry
+   runtime content only: decision anchors ("YYYY-MM-DD <session-slug> [D#]", resolving
+   against a live `DECISIONS.md` row) land in `.mochiko/provenance.yaml`, keyed by rule ID
+   — repo-side, never delivered with the plugin. An inline `ruling:` field is a checker
+   finding. `pointer:` stays inline on skill-owned floors — the rule holds the pointer,
+   never the procedure.
 8. **Author the thin `.md`** (D7). Frontmatter and Identity & Mission; an obligated
    first-action raw Read of the schema, naming its section IDs; the protocol narrative; a
    Not-done line pinning the fail-condition count in the literal phrase form the checker greps

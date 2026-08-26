@@ -5,7 +5,7 @@
 # Adaptive Goal Protocol prose) stays in plugins/mochiko/commands/implement.md.
 #
 # Grammar (D6, as amended by D14): sections: list, each {id, title, intent, rules};
-# rule blocks {id, labels, class, text, ruling?, pointer?} nest under their section.
+# rule blocks {id, labels, class, text, pointer?} nest under their section.
 #   section id  <cmd>.sec.<slug> — minted once like rule IDs (D11); title verbatim from
 #           the charter group it carries; intent one line, navigation only — sections
 #           never grow a second prose surface (narrative stays in the .md).
@@ -18,13 +18,14 @@
 #           must = binding obligation · advisory = may change without supersession ceremony.
 #   text    carries ${var} placeholders substituted from vars: at read (D5). Verbatim
 #           command strings carry no placeholders.
-#   ruling  "YYYY-MM-DD <session-slug> [D#]" — protected content, anchored to a live
-#           DECISIONS.md row. Leaves only by recorded supersession-by-ruling.
+#   provenance  decision anchors live in .mochiko/provenance.yaml (D16, repo-side —
+#           not shipped), keyed by rule ID; never read by the run; an anchored
+#           rule still leaves only by recorded supersession-by-ruling.
 #   pointer the skill that owns the floor or procedure — the rule holds the pointer,
 #           never the procedure. Multi-skill bindings name every skill in text.
 # Referential closure (D15): a rule's text is self-contained — every reference resolves
 #   within the block or the schema's addressable namespace (${var} · impl.* IDs ·
-#   impl.sec.* · class: values · labels · pointer: skills · ruling: anchors · file paths).
+#   impl.sec.* · class: values · labels · pointer: skills · file paths).
 #   Deixis ("these rules", "this section", "above"/"below", document-shape remarks) is a
 #   defect — quoted alone, the reference dangles. The checker lints a curated marker list
 #   (warning-class). "this schema" and "the run" are legal self-reference.
@@ -78,7 +79,6 @@ sections:
         text: >-
           Fire the design phase on any gap the sufficiency check names — before any code is
           written.
-        ruling: "2026-08-26 plan-stage-utility"
 
       - id: impl.dm-surface-rounds
         labels: [reporting, attempt-economy]
@@ -187,7 +187,6 @@ sections:
           rendered diagram plus its named AX-XXX row changes (no render surface: present the
           source plus the changed-element table, and record it). The user may stop at the
           checkpoint and resume the build later.
-        ruling: "2026-08-26 plan-stage-utility"
 
       - id: impl.gate-card-confirm
         labels: [user-gate]
@@ -195,14 +194,12 @@ sections:
         text: >-
           The card confirm is the user's: a blocking checkpoint where the user rules the
           slicing before build.
-        ruling: "2026-08-26 plan-stage-utility"
 
       - id: impl.gate-final-acceptance
         labels: [user-gate]
         class: floor
         text: >-
           Final acceptance is the user's: accept / amend / reject closes the run.
-        ruling: "2026-08-13 charter-plan-implement"
 
       - id: impl.user-runopen-rulings
         labels: [user-gate, scope-entry]
@@ -261,7 +258,6 @@ sections:
           verdict is binding: per row, sufficient or a gap list; gaps fire the design phase
           over exactly those gaps and nothing else. The pointer skill owns the clause set,
           the gap forms, the absent-baseline branch, and the trip-vs-gap distinction.
-        ruling: "2026-08-26 plan-stage-utility"
         pointer: "mochiko:review-sufficiency"
 
       - id: impl.sufficiency-disputed-clause
@@ -344,7 +340,6 @@ sections:
           A builder hitting undesigned structure halts that cycle; the design phase re-fires
           scoped to the discovery — same grade, same checkpoint. The deviation gate anchors
           to the signed delta once one exists.
-        ruling: "2026-08-26 plan-stage-utility"
 
       - id: impl.epic-design-always-fires
         labels: [scope-entry, seats]
@@ -494,7 +489,6 @@ sections:
           The gap-finding pass runs on selection-scope and epic runs only (an epic: once,
           over the union of member territories); a delta-scope or lane run skips it, and its
           final-validation report states the skip — never a silent no-op.
-        ruling: "2026-08-19 qa-gap-finding-verification"
 
       - id: impl.gap-finding-blind-dispatch
         labels: [independence]
@@ -506,7 +500,6 @@ sections:
           rows — never the code, tasks.md, the **TEST:** cases, or any report. The seat
           states its derived expectations; only then does probing begin. Its brief carries
           the model-tiering rule, and its delegated reads stay inside the same fence.
-        ruling: "2026-08-19 qa-gap-finding-verification"
         pointer: "mochiko:testing-gap-finding"
 
       - id: impl.mutation-lens
@@ -516,7 +509,6 @@ sections:
           The mutation lens runs on the verification seat, which already holds code sight —
           at high depth only, skips disclosed: a high-depth run owes mutation results or a
           stated skip.
-        ruling: "2026-08-19 qa-gap-finding-verification"
 
       - id: impl.finding-kinds
         labels: [evidence]
@@ -524,7 +516,6 @@ sections:
         text: >-
           Findings split by kind: spec-required behavior broken — evidence captured, clause
           cited — fails the final validation; a beyond-spec finding is advisory.
-        ruling: "2026-08-19 qa-gap-finding-verification"
 
       - id: impl.finding-kind-disputed
         labels: [user-gate]
@@ -533,7 +524,6 @@ sections:
           Each finding's kind is confirmed at the checkpoint against the cited clause; a
           disputed kind defaults advisory and goes to the user — the finder never gates
           alone.
-        ruling: "2026-08-19 qa-gap-finding-verification"
 
       - id: impl.delivered-territory-routing
         labels: [landing]
@@ -541,7 +531,6 @@ sections:
         text: >-
           A gap in a previously delivered feature's territory is not this run's rework: it
           routes to a /mochiko:feature delta card, cited in the report.
-        ruling: "2026-08-19 qa-gap-finding-verification"
 
       - id: impl.beyond-spec-disposition
         labels: [user-gate]
@@ -549,7 +538,6 @@ sections:
         text: >-
           Each beyond-spec finding's disposition is the user's: fix now, book to BACKLOG.md,
           or accept as designed.
-        ruling: "2026-08-19 qa-gap-finding-verification"
 
       - id: impl.store-landing
         labels: [landing]
@@ -679,7 +667,6 @@ sections:
           Locate/enumerate reads go to a native Explore subagent spawned
           model: ${explore_model}; interpretive or absence-driven reads stay on the session
           tier; every seat brief carries the routing rule.
-        ruling: "2026-08-16 model-tiered-seats"
         pointer: "mochiko:patterns-model-tiering"
 
       - id: impl.delta-reverification
@@ -757,14 +744,12 @@ sections:
           A cycle consumes an attempt every time a verification seat grades it, whatever the
           round is called. Default ${attempt_bound_cycle} per cycle, redeclarable only at
           run-open.
-        ruling: "2026-08-26 command-content-schema D12"
 
       - id: impl.attempt-exemption-user-only
         labels: [attempt-economy, user-gate]
         class: floor
         text: >-
           Exempting a round from the attempt count is the user's call, never yours.
-        ruling: "2026-08-26 command-content-schema D12"
 
       - id: impl.no-progress-stop
         labels: [attempt-economy]
@@ -772,7 +757,6 @@ sections:
         text: >-
           Two consecutive rounds with unchanged findings is a no-progress stop: halt the
           cycle, present state.
-        ruling: "2026-08-26 command-content-schema D12"
 
       - id: impl.epic-member-halt
         labels: [attempt-economy, user-gate]
@@ -781,7 +765,6 @@ sections:
           In an epic, exhaustion or no-progress halts member-scoped; the disposition — carve
           the member out (its rows return to pending, the epic continues) or hold the whole
           run — is the user's.
-        ruling: "2026-08-26 command-content-schema D12"
 
       - id: impl.gap-rework-bound
         labels: [attempt-economy, user-gate]
@@ -792,7 +775,6 @@ sections:
           to one cycle's territory charges that cycle's remaining attempts instead. Bound
           exhaustion, or a round with unchanged findings, halts the run and presents state —
           the disposition is the user's.
-        ruling: "2026-08-26 command-content-schema D12"
 
       - id: impl.gates-never-triaged
         labels: [evidence]
@@ -842,7 +824,6 @@ sections:
         class: floor
         text: >-
           The sufficiency verdict was never recorded as a report.
-        ruling: "2026-08-26 command-content-schema D7"
 
       - id: impl.fail.design-skipped
         labels: [fail-condition, user-gate]
@@ -850,42 +831,36 @@ sections:
         text: >-
           Gaps were found but the design phase was skipped, or its design and store delta
           were never signed by the user.
-        ruling: "2026-08-26 command-content-schema D7"
 
       - id: impl.fail.card-independence
         labels: [fail-condition, independence]
         class: floor
         text: >-
           A cycle card built by the seat that authored it, or built before the card confirm.
-        ruling: "2026-08-26 command-content-schema D7"
 
       - id: impl.fail.card-unchecked
         labels: [fail-condition, evidence]
         class: floor
         text: >-
           A cycle card left unchecked.
-        ruling: "2026-08-26 command-content-schema D7"
 
       - id: impl.fail.quality-gate
         labels: [fail-condition, evidence]
         class: floor
         text: >-
           A failing quality gate.
-        ruling: "2026-08-26 command-content-schema D7"
 
       - id: impl.fail.no-evidence
         labels: [fail-condition, evidence]
         class: floor
         text: >-
           Verification claimed without real-infrastructure evidence.
-        ruling: "2026-08-26 command-content-schema D7"
 
       - id: impl.fail.regression
         labels: [fail-condition, evidence]
         class: floor
         text: >-
           A regression in a previously delivered feature's gates.
-        ruling: "2026-08-26 command-content-schema D7"
 
       - id: impl.fail.baseline-in-place
         labels: [fail-condition, landing]
@@ -893,7 +868,6 @@ sections:
         text: >-
           A product baseline edited in place at build time, instead of through a graded
           baseline-delta.md entry.
-        ruling: "2026-08-26 command-content-schema D7"
 
       - id: impl.fail.deviation-unresolved
         labels: [fail-condition, user-gate]
@@ -901,7 +875,6 @@ sections:
         text: >-
           An architecture deviation neither built as approved nor amended with the user's
           consent.
-        ruling: "2026-08-26 command-content-schema D7"
 
       - id: impl.fail.store-landing-incomplete
         labels: [fail-condition, landing]
@@ -909,39 +882,33 @@ sections:
         text: >-
           A signed store delta landed without its built-vs-signed diff, or an in-flight
           element left neither flipped built nor keyed to an open feature.
-        ruling: "2026-08-26 command-content-schema D7"
 
       - id: impl.fail.ungraded-fold
         labels: [fail-condition, landing]
         class: floor
         text: >-
           A touched baseline accepted without its graded fold.
-        ruling: "2026-08-26 command-content-schema D7"
 
       - id: impl.fail.gap-finding-missing
         labels: [fail-condition, evidence]
         class: floor
         text: >-
           A selection-scope or epic run without its gap-finding pass.
-        ruling: "2026-08-26 command-content-schema D7"
 
       - id: impl.fail.skip-unstated
         labels: [fail-condition, reporting]
         class: floor
         text: >-
           A delta-scope or lane run whose final-validation report does not state that skip.
-        ruling: "2026-08-26 command-content-schema D7"
 
       - id: impl.fail.spec-gap-unresolved
         labels: [fail-condition, evidence]
         class: floor
         text: >-
           A gap finding showing spec-required behavior broken, left unresolved.
-        ruling: "2026-08-26 command-content-schema D7"
 
       - id: impl.fail.no-acceptance
         labels: [fail-condition, user-gate]
         class: floor
         text: >-
           User acceptance not given.
-        ruling: "2026-08-26 command-content-schema D7"

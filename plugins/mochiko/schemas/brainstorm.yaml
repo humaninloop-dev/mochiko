@@ -6,7 +6,7 @@
 # and the Goal section's done condition) stays in plugins/mochiko/commands/brainstorm.md.
 #
 # Grammar (D6, as amended by D14): sections: list, each {id, title, intent, rules};
-# rule blocks {id, labels, class, text, ruling?, pointer?} nest under their section.
+# rule blocks {id, labels, class, text, pointer?} nest under their section.
 #   section id  <cmd>.sec.<slug> — minted once like rule IDs (D11); title verbatim from
 #           the command group it carries; intent one line, navigation only — sections
 #           never grow a second prose surface (narrative stays in the .md).
@@ -19,13 +19,14 @@
 #           must = binding obligation · advisory = may change without supersession ceremony.
 #   text    carries ${var} placeholders substituted from vars: at read (D5). Verbatim
 #           command strings carry no placeholders.
-#   ruling  "YYYY-MM-DD <session-slug> [D#]" — protected content, anchored to a live
-#           DECISIONS.md row. Leaves only by recorded supersession-by-ruling.
+#   provenance  decision anchors live in .mochiko/provenance.yaml (D16, repo-side —
+#           not shipped), keyed by rule ID; never read by the run; an anchored
+#           rule still leaves only by recorded supersession-by-ruling.
 #   pointer the skill that owns the floor or procedure — the rule holds the pointer,
 #           never the procedure. Multi-skill bindings name every skill in text.
 # Referential closure (D15): a rule's text is self-contained — every reference resolves
 #   within the block or the schema's addressable namespace (${var} · brainstorm.* IDs ·
-#   brainstorm.sec.* · class: values · labels · pointer: skills · ruling: anchors · file
+#   brainstorm.sec.* · class: values · labels · pointer: skills · file
 #   paths). Deixis ("these rules", "this section", "above"/"below", document-shape
 #   remarks) is a defect — quoted alone, the reference dangles. The checker lints a
 #   curated marker list (warning-class). "this schema" and "the run" are legal
@@ -83,7 +84,6 @@ sections:
           class key — locate/enumerate reads to a native `Explore` subagent spawned
           model: ${explore_model}, interpretive or absence-driven reads on the session
           tier — and every seat brief carries the routing rule; referenced, never restated.
-        ruling: "2026-08-16 model-tiered-seats"
         pointer: "mochiko:patterns-model-tiering"
 
       - id: brainstorm.plan-approval-producers
@@ -114,14 +114,12 @@ sections:
           line only, never ${record_path}, so it builds its Phase 0 angle map with no sight
           of what the session decided; its map returns before you send ${record_path} and
           the cold read begins. The anchoring fence is structural, not a trust ask.
-        ruling: "2026-08-10 cold-review-gap-challenge D6"
 
       - id: brainstorm.pair-maps-independent
         labels: [independence, seats]
         class: must
         text: >-
           In a review pair, both seats build their Phase 0 angle maps independently.
-        ruling: "2026-08-10 cold-review-gap-challenge D5"
 
       - id: brainstorm.coverage-survivor-routing
         labels: [user-gate]
@@ -131,7 +129,6 @@ sections:
           a fold — present each gap as a candidate topic; the user rules the path: explore
           now (re-enter mochiko:analysis-iterative on that angle; the resulting decision
           lands in ${record_path}'s same `D…` namespace), rule inline, or defer.
-        ruling: "2026-08-10 cold-review-gap-challenge D3"
 
       - id: brainstorm.non-coverage-survivors
         labels: [user-gate]
@@ -147,7 +144,6 @@ sections:
           A decision born from a coverage-survivor reopen gets one bounded verify round —
           internal consistency and record-fitness, no fresh cold read, no blind-map
           coverage hunt against it, and no second reopen off it.
-        ruling: "2026-08-10 cold-review-gap-challenge D4"
 
       - id: brainstorm.user-record-acceptance
         labels: [user-gate]
@@ -252,25 +248,21 @@ sections:
         class: floor
         text: >-
           An unaccepted record.
-        ruling: "2026-08-26 command-content-schema D10"
 
       - id: brainstorm.fail.unreviewed-no-waiver
         labels: [fail-condition, independence]
         class: floor
         text: >-
           An unreviewed record with no recorded waiver.
-        ruling: "2026-08-26 command-content-schema D10"
 
       - id: brainstorm.fail.survivor-undispositioned
         labels: [fail-condition, user-gate]
         class: floor
         text: >-
           An undispositioned review survivor.
-        ruling: "2026-08-26 command-content-schema D10"
 
       - id: brainstorm.fail.index-mismatch
         labels: [fail-condition, landing]
         class: floor
         text: >-
           An index entry in ${index_path} missing or contradicting the record's status.
-        ruling: "2026-08-26 command-content-schema D10"

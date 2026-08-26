@@ -21,7 +21,13 @@ Checks, all deterministic:
       rules", "this section", "above"/"below", …) is flagged: a reference whose
       referent lives outside the block dangles when the rule is quoted alone.
       Heuristic, warning-class only; curated list, grown on observed recurrence
-  6. every ruling: anchor resolves against DECISIONS.md (D6)
+  6. provenance sidecar (D16): schemas carry runtime content only — an inline
+     `ruling:` field is a finding (grammar superseded by D16). Anchors live
+     repo-side in .mochiko/provenance.yaml (never shipped with the plugin),
+     keyed by rule ID; every entry whose key matches this schema's prefix must
+     name an existing rule ID (dangling = finding), be well-formed, and
+     resolve against DECISIONS.md (D6 semantics unchanged). Sidecar absent =
+     warning only (plugin-standalone checkout)
   7. the command .md's Not-done line hard-codes a count equal to the number of
      rules labeled `fail-condition` (D7, C2 guard)
   7b. the .md's "nested in N sections" phrase (optional) matches the schema's
@@ -91,6 +97,7 @@ def main() -> int:
     p = argparse.ArgumentParser(description="Advisory checker for command content schemas (D13)")
     p.add_argument("--schema", type=Path, default=root / "plugins/mochiko/schemas/implement.yaml")
     p.add_argument("--labels", type=Path, default=root / "plugins/mochiko/schemas/command-labels.yaml")
+    p.add_argument("--provenance", type=Path, default=root / ".mochiko/provenance.yaml")
     p.add_argument("--md", type=Path, default=root / "plugins/mochiko/commands/implement.md")
     p.add_argument("--decisions", type=Path, default=root / "DECISIONS.md")
     a = p.parse_args()
@@ -212,18 +219,9 @@ def main() -> int:
                 f"name it via the addressable namespace (D15)"
             )
 
-        # 6. ruling: anchors
-        ruling = r.get("ruling")
-        if ruling is not None:
-            m = RULING_RE.match(str(ruling).strip())
-            if not m:
-                findings.append(f"{rid}: ruling anchor {ruling!r} malformed — want 'YYYY-MM-DD <session-slug> [D#]'")
-            else:
-                date, slug = m.group(1), m.group(2)
-                if not resolve_anchor(a.decisions, date, slug):
-                    findings.append(
-                        f"{rid}: ruling anchor '{date} {slug}' resolves to no DECISIONS.md row (D6)"
-                    )
+        # 6. runtime-only schemas (D16): inline ruling: is superseded grammar
+        if "ruling" in r:
+            findings.append(f"{rid}: inline `ruling:` — provenance lives in provenance.yaml (D16)")
 
     for v in vars_block:
         if v not in used_vars:
@@ -231,6 +229,39 @@ def main() -> int:
     for lab, n in label_use.items():
         if n == 0:
             warnings.append(f"label {lab!r}: zero members in {a.schema.name} (registry-legal; watch at rollout)")
+
+    # 6. provenance sidecar (D16) — anchors keyed by rule ID, repo-side
+    anchor_count = 0
+    prefixes = {rid.split(".")[0] for rid in seen if "." in rid}
+    if not a.provenance.exists():
+        warnings.append(f"{a.provenance}: provenance sidecar absent — anchor checks skipped (plugin-standalone?)")
+    else:
+        prov = load_yaml(a.provenance, findings)
+        if prov is not None:
+            if prov.get("kind") != "command-provenance":
+                findings.append(f"{a.provenance.name}: `kind: command-provenance` missing (got {prov.get('kind')!r})")
+            p_anchors = prov.get("anchors") or {}
+            if not isinstance(p_anchors, dict):
+                findings.append(f"{a.provenance.name}: `anchors:` mapping missing")
+                p_anchors = {}
+            skipped_prefixes = set()
+            for key, anchor in p_anchors.items():
+                if key.split(".")[0] not in prefixes:
+                    skipped_prefixes.add(key.split(".")[0])
+                    continue  # another command's entry — validated on its own run
+                anchor_count += 1
+                if key not in seen:
+                    findings.append(f"{a.provenance.name}: dangling entry {key!r} — no such rule in {a.schema.name} (D16)")
+                m = RULING_RE.match(str(anchor).strip())
+                if not m:
+                    findings.append(f"{key}: anchor {anchor!r} malformed — want 'YYYY-MM-DD <session-slug> [D#]'")
+                elif not resolve_anchor(a.decisions, m.group(1), m.group(2)):
+                    findings.append(f"{key}: anchor '{m.group(1)} {m.group(2)}' resolves to no DECISIONS.md row (D6)")
+            if skipped_prefixes:
+                warnings.append(
+                    "provenance entries with foreign prefixes skipped (validated on their own runs): "
+                    + ", ".join(sorted(skipped_prefixes))
+                )
 
     # 7. .md Not-done count vs fail-condition set (C2 guard)
     try:
@@ -284,6 +315,7 @@ def main() -> int:
         "fail-condition": fail_count,
         "vars": len(vars_block),
         "labels": len(reg_labels),
+        "anchors": anchor_count,
     }
     return report(findings, warnings, stats, sec_stats)
 

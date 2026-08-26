@@ -6,7 +6,7 @@
 # condition) stays in plugins/mochiko/commands/setup.md.
 #
 # Grammar (D6, as amended by D14): sections: list, each {id, title, intent, rules};
-# rule blocks {id, labels, class, text, ruling?, pointer?} nest under their section.
+# rule blocks {id, labels, class, text, pointer?} nest under their section.
 #   section id  setup.sec.<slug> — minted once like rule IDs (D11); title verbatim from
 #           the command group it carries; intent one line, navigation only — sections
 #           never grow a second prose surface (narrative stays in the .md).
@@ -19,13 +19,14 @@
 #           must = binding obligation · advisory = may change without supersession ceremony.
 #   text    carries ${var} placeholders substituted from vars: at read (D5). Verbatim
 #           command strings carry no placeholders.
-#   ruling  "YYYY-MM-DD <session-slug> [D#]" — protected content, anchored to a live
-#           DECISIONS.md row. Leaves only by recorded supersession-by-ruling.
+#   provenance  decision anchors live in .mochiko/provenance.yaml (D16, repo-side —
+#           not shipped), keyed by rule ID; never read by the run; an anchored
+#           rule still leaves only by recorded supersession-by-ruling.
 #   pointer the skill that owns the floor or procedure — the rule holds the pointer,
 #           never the procedure. Multi-skill bindings name every skill in text.
 # Referential closure (D15): a rule's text is self-contained — every reference resolves
 #   within the block or the schema's addressable namespace (${var} · setup.* IDs ·
-#   setup.sec.* · class: values · labels · pointer: skills · ruling: anchors · file
+#   setup.sec.* · class: values · labels · pointer: skills · file
 #   paths). Deixis ("these rules", "this section", "above"/"below", document-shape
 #   remarks) is a defect — quoted alone, the reference dangles. The checker lints a
 #   curated marker list (warning-class). "this schema" and "the run" are legal
@@ -86,7 +87,6 @@ sections:
           Explore subagent spawned model: ${explore_model}, interpretive or
           absence-driven reads on the session tier — and every seat brief carries the
           routing rule; referenced, never restated.
-        ruling: "2026-08-16 model-tiered-seats"
         pointer: "mochiko:patterns-model-tiering"
 
       - id: setup.plan-approval-producers
@@ -307,7 +307,6 @@ sections:
           (ARCHITECTURE.md stays repo root, now as the store's derived index) — from the
           delivered code; greenfield seeds those baselines at the first implement run's
           design phase instead.
-        ruling: "2026-08-26 plan-stage-utility"
 
       - id: setup.store-scaffold-unconditional
         labels: [binding]
@@ -319,7 +318,6 @@ sections:
           (setup.architecture-scope-handoff) and an empty concerns.md beside it, so the
           store's layout is complete from birth; greenfield's stub is simply a header
           with no topology under it.
-        ruling: "2026-08-19 product-architecture-schema"
 
       - id: setup.store-ruled-content-never-here
         labels: [binding, stewardship]
@@ -329,7 +327,6 @@ sections:
           holding only a `Scope:` header is scaffold, not ruled content, and the first
           /mochiko:architecture visit is what elicits it (greenfield) or reconstructs it
           from what exists and confirms it with the user (brownfield).
-        ruling: "2026-08-19 product-architecture-schema"
 
       - id: setup.architecture-scope-handoff
         labels: [binding]
@@ -346,7 +343,6 @@ sections:
           desk deals the shelves that scope selects, and the user may override it at the
           desk by an ordinary store write to that same line. No architecture stance is
           taken in the run.
-        ruling: "2026-08-19 product-architecture-schema"
 
       - id: setup.register
         labels: [reporting]
@@ -373,28 +369,24 @@ sections:
         class: floor
         text: >-
           A surface authored before the intent was ratified.
-        ruling: "2026-08-26 command-content-schema D7"
 
       - id: setup.fail.unclosed-trace
         labels: [fail-condition, evidence]
         class: floor
         text: >-
           An unclosed trace from ratified intent to authored surfaces.
-        ruling: "2026-08-26 command-content-schema D7"
 
       - id: setup.fail.author-graded
         labels: [fail-condition, independence]
         class: floor
         text: >-
           The governance surface set never graded by anyone but its author.
-        ruling: "2026-08-26 command-content-schema D7"
 
       - id: setup.fail.floor-category-uncovered
         labels: [fail-condition, user-gate]
         class: floor
         text: >-
           A floor category with neither principle nor recorded waiver.
-        ruling: "2026-08-26 command-content-schema D7"
         pointer: "mochiko:authoring-constitution"
 
       - id: setup.fail.no-acceptance
@@ -402,7 +394,6 @@ sections:
         class: floor
         text: >-
           User acceptance not given.
-        ruling: "2026-08-26 command-content-schema D7"
 
       - id: setup.fail.no-feature-map
         labels: [fail-condition, landing]
@@ -410,4 +401,3 @@ sections:
         text: >-
           No feature map at close — brownfield reconstruction unconfirmed, or greenfield
           index unscaffolded.
-        ruling: "2026-08-26 command-content-schema D7"

@@ -5,6 +5,30 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.96.0] — 2026-08-26
+
+**Runtime-only schemas — the D16 amendment** (record
+`.mochiko/brainstorms/command-content-schema/record.md` D16, user-ruled same day;
+`DECISIONS.md` 2026-08-26 row). A command schema now carries only what the run consumes:
+the inline `ruling:` field leaves the grammar (rule tuple now
+`{id, labels, class, text, pointer?}`); all **107 decision anchors** relocate verbatim —
+machine-verified lossless, zero value mismatches, every schema body identical after the
+strip — to the repo-side sidecar **`.mochiko/provenance.yaml`**
+(`kind: command-provenance`, keyed by mint-once rule ID), which is deliberately NOT under
+`plugins/` and never ships with the plugin (per-command counts: impl 34 · spec 25 ·
+feat 15 · arch 13 · setup 11 · brainstorm 9). Protection semantics unchanged: an anchored
+rule still leaves only by recorded supersession-by-ruling; the sidecar joins the
+primitive-edits path scope so its own edits take the ceremony. Checker reworked (check 6):
+inline `ruling:` is now a finding, a sidecar key naming no rule is a dangling-entry
+finding, anchors still format-checked and resolved against live `DECISIONS.md` rows, a
+missing sidecar degrades to a warning (plugin-standalone checkouts), foreign-prefix
+entries are named in a warning, and stats gain `anchors N` — all negative-tested (inline
+reinjection, dangling key, absent file, bad date/slug/format/kind). Grammar headers
+updated in all six schemas; conversion-skill step 7 re-pointed; six `[v0.96.0]`
+relocation strips. Author≠grader audit **PASS** (0 Critical / 0 Major / 4 Minor — all
+repaired or accepted on record). Gates: six checker-PASS runs 0 findings · this entry ·
+marketplace 0.96.0 · `cargo test` 12/12.
+
 ## [0.95.0] — 2026-08-26
 
 **The D10 rollout: every mochiko command is now a `.md` + schema pair.** User-directed

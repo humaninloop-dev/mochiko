@@ -327,6 +327,29 @@ cause: extraction from `.md` prose preserved wording whose referents were the su
 document; atomization moved the referents outside the block. One instance in 104 rules at
 audit (the lint's first catch); the law prevents the class at D10 rollout.
 
+### D16 — Runtime-only schemas: provenance moves to a sidecar — `Confident` *(post-rollout amendment, 2026-08-26, user-ruled)*
+
+**Statement:** amends D6. A command schema carries **only what the run consumes**: `text`,
+`class` (floor waivability), `labels` (the `fail-condition` set is operative; the rest are
+query-usable in-run), `pointer:` (binds procedure), `vars:`, and the section grammar. The
+`ruling:` field leaves the schemas: every id → anchor pair relocates verbatim to one
+maintainer-side sidecar, **`.mochiko/provenance.yaml`** (`kind: command-provenance`), keyed
+by the mint-once rule ID — the addressability the ID namespace exists to provide. The
+sidecar lives repo-side, NOT under `plugins/` — the user's refinement mid-execution:
+maintainer metadata is never delivered with the plugin (the GI-020 posture applied to
+data). A plugin-standalone checkout simply lacks it; the checker degrades to a warning. Protection semantics unchanged: an anchored rule still leaves only by
+recorded supersession-by-ruling; the checker still validates every anchor (format + live
+`DECISIONS.md` resolution) and now also flags any inline `ruling:` as superseded grammar and
+any sidecar key naming a nonexistent rule ID as dangling. Edit-time visibility is carried by
+the path-scoped ceremony reminder on schema Read plus the mandatory pre-bump audit (GI-004),
+not by inline placement.
+
+**Rationale:** the user, reading the shipped anchors: a session "need[s not] know the trace
+of what decision made the change, it is information that is decorative, rather than helping
+… runtime is the only thing that matters; for traces of change, we have strips." The run
+never acts on provenance — 107 anchor lines across the library were pure read-time overhead.
+Placement was wrong, not existence.
+
 ## Session trail
 
 - **Q1 — source of truth** (structured fork A/B/C): user rejected the framing and clarified —
@@ -417,6 +440,22 @@ audit (the lint's first catch); the law prevents the class at D10 rollout.
   checker-PASS runs 0 findings. The conversion skill
   (`.claude/skills/converting-command-to-schema/SKILL.md`) validated to CONFIRMED-PASS in
   its own three rounds before the wave used it.
+- **Post-rollout amendment (2026-08-26, v0.96.0):** user, probing the shipped `ruling:`
+  field — "why a session need to know the trace of what decision made the change, it is
+  information that is decorative" — then ruled: "runtime is the only thing that matters, for
+  traces of change we have strips. make the change." → D16 (provenance sidecar); all
+  anchors extracted from the six schemas, lossless (107 anchors: impl 34 · spec 25 ·
+  feat 15 · arch 13 · setup 11 · brainstorm 9), checker-reworked with negative-tested
+  inline-ruling and dangling-key findings. Mid-execution refinement, user-ruled: "can we
+  not put it somewhere that is not delivered by plugin?" — sidecar home moved from
+  `plugins/mochiko/schemas/` to **`.mochiko/provenance.yaml`**, beside the strips. Audit
+  PASS (0 Critical / 0 Major / 4 Minor — count corrected to 107; the sidecar added to the
+  primitive-edits path scope; the checker warns on skipped foreign-prefix entries). Two
+  bounds accepted eyes-open on the audit's naming: schema→sidecar coverage is
+  one-directional (an anchor removed from the sidecar is caught by the sidecar's own
+  ceremony — it now sits in the primitive-edits path scope — not by a checker finding), and
+  the schemas' three-line header pointer at the repo-side path stays (edit-time visibility
+  worth three comment lines; the header states "not shipped").
 
 ## Review + disposition trail
 

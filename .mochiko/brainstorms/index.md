@@ -25,7 +25,10 @@ One entry per session directory under `.mochiko/brainstorms/<topic-slug>/`, **ne
   curated checker lint; one live instance reworded, ID kept · **D10 rollout same day
   (v0.95.0), user-directed:** all five remaining commands converted to pairs via the
   validated repo-level conversion skill — 5 producers + 5 validators, all CONFIRMED-PASS;
-  registry ten → twelve (`binding` · `stewardship`); library = six pairs, 320 rules
+  registry ten → twelve (`binding` · `stewardship`); library = six pairs, 320 rules ·
+  **D16 amendment same day (v0.96.0):** runtime-only schemas — all 107 `ruling:` anchors
+  relocate lossless to the repo-side sidecar `.mochiko/provenance.yaml` (never shipped);
+  checker reworked, audit PASS
 - **Artifacts:** [record.md](command-content-schema/record.md) (canonical — Problem, ground
   facts F1–F5 as corrected, D1–D13, session trail, review + disposition + verify trail, build
   surface) · [implement-rewrite.md](command-content-schema/implement-rewrite.md) (step-0

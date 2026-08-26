@@ -5,6 +5,34 @@ shared team-form prose relocated into `templates/command-shape.md` (design:
 `.mochiko/brainstorms/pattern-codification-and-minimalism/record.md`, D3/D4/D9). **Stale as a standing claim:**
 the shape is now **v5** (2026-07-30) — see the v0.35.0 section below.
 
+<!-- Wave context: the D16 provenance-sidecar amendment (v0.96.0) — schemas carry runtime
+content only; decision anchors move to `.mochiko/provenance.yaml`, keyed by rule ID. Ruling:
+record D16 (post-rollout amendment, user-ruled 2026-08-26, incl. the repo-side-home
+refinement) → `DECISIONS.md` 2026-08-26 command-content-schema row. -->
+
+## [v0.96.0] `ruling:` fields and the grammar-header ruling description — extracted to the provenance sidecar (D16)
+
+- **Disposition:** relocated → `.mochiko/provenance.yaml` — every `ruling:` field in
+  `plugins/mochiko/schemas/brainstorm.yaml` carried verbatim as an `anchors:` entry keyed by its
+  rule's mint-once ID (checker-verified: the pair's run reports `anchors 9`, each entry
+  format-checked, non-dangling, and resolved against a live `DECISIONS.md` row); the
+  grammar-header ruling description superseded by the provenance note.
+- **Tier failed:** n/a — supersession by ruling (record D16; `DECISIONS.md` 2026-08-26 row).
+- **Content:** verbatim, the header lines that left —
+  '#   ruling  "YYYY-MM-DD <session-slug> [D#]" — protected content, anchored to a live' /
+  '#           DECISIONS.md row. Leaves only by recorded supersession-by-ruling.' — plus
+  `ruling?` in the grammar tuple and " · ruling: anchors" in the D15 namespace list. The
+  per-rule anchor VALUES left the file unchanged (relocation, not deletion — the sidecar is
+  the verbatim home).
+- **Kept deliberately:** every rule's text, class, labels, pointer untouched; protection
+  semantics unchanged — an anchored rule still leaves only by recorded
+  supersession-by-ruling, the anchor now joined by ID from the sidecar.
+- **Consumers assessed:** checker reworked the same wave (inline `ruling:` now a finding,
+  dangling sidecar keys a finding, both negative-tested; sidecar absent degrades to a
+  warning for plugin-standalone checkouts); the conversion skill's step 7 re-pointed; the
+  pair-form audit criteria in `.claude/rules/mochiko/primitive-edits.md` gained the sidecar
+  home. The sidecar is repo-side and never shipped — plugin install unchanged (GI-020).
+
 ## [v0.95.0] `## Harness` — the whole section moves to the schema (D2, exercised by the D10 rollout ruling)
 
 - **Disposition:** superseded → `plugins/mochiko/schemas/brainstorm.yaml`, section
