@@ -10,6 +10,20 @@ restores the boundary clauses under the cap, and is strict-YAML-safe. Delivery v
 deferred: the in-session skill listing is a session-start snapshot (probe received pre-edit
 text), so the probe re-runs in a fresh session.
 
+## [v0.88.0] RETURNED: blind map as its own deliverable (floor) + the commentary clause — eval-demanded re-adds, body 2,497 → 2,599 (−77.9% vs pre-cut)
+- **Evidence:** the post-cut regression grid `evals/review-brainstorm/runs/20260826-110222/`
+  (27 runs, 3 arms; verdict in `evals/review-brainstorm/pass-report.md`). The cut arm failed
+  the ratified bar on one root cause: 5 of 9 cut runs produced **no blind-map artifact**
+  (pre-cut produced `phase0-blind-map.md` in 9/9) — "Return the map to the lead as a message"
+  had been deleted as prose but was a behavioral floor (R-001), taking three map-quality
+  rules (R-010/R-011/R-012) and the "Phase 0 angle map" consumer vocabulary (R-059/R-060)
+  with it. R-035 (a finding nothing could resolve is commentary, not a finding) was lost
+  independently. Re-added: the Protocol first leg now reads "Phase 0 blind angle map from
+  the topic only, produced as its own deliverable before record contact"; the survivor-report
+  leg gains the commentary sentence. User ruled "re-add + verify" 2026-08-26; the cut arm
+  re-ran clean before ship (see pass report). Per D7 the version bump carrying these re-adds
+  triggers the validator audit on this primitive.
+
 ## [v0.83.0] User-ruled true-deletion body cut — body 11,754 → 2,497 chars (−78.8%)
 
 - **Disposition:** superseded → a single-file floors-and-dispatch body (true deletion — no

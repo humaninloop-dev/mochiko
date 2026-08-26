@@ -8,6 +8,9 @@ One entry per session directory under `.mochiko/brainstorms/<topic-slug>/`, **ne
 
 ---
 
+## `command-content-schema` — YAML schema for command content: block IDs, altitude clusters, variable injection; implement first, then rollout
+- **When:** 2026-08-26 · **Status:** open
+
 ## `plan-stage-utility` — why plan as a distinct stage; can specify + architecture carry enough guidance for implement; sufficiency assessment
 - **When:** 2026-08-26 · **Status:** accepted · pair cold review via blind-map two-message
   dispatch, lens-split decision-quality (devils-advocate, 22-angle map) + record-integrity
