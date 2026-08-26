@@ -5,6 +5,111 @@ batch-2 ratified 2026-07-25; design: `.mochiko/brainstorms/skill-succinctness-st
 First strip assessment of this skill (never-stripped band 30–70): body 141 → 136 lines = **3.5%**,
 deeply under-band — whole-skill survivor ruling below.
 
+## [v0.91.0] Fix round 3 — the architecture pass's boundary watch (V2 N4)
+
+- **Disposition:** superseded → "(a **design-phase artifact** against an input)".
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D5). Raised as **V2 N4** on the
+  audit's **untruncated** re-sweep — a round-1 truncation miss on the auditor's side, not a
+  regression introduced here: the phrase sits deep in `FEASIBILITY-LENS.md` past the point the
+  first pass read.
+- **Content (superseded fragment, verbatim):**
+
+  ```
+  **Boundary watch:** you grade the *topology's conformance* to governance (a plan artifact against an input), never whether the governance itself is well-formed
+  ```
+
+- **Kept deliberately:** the boundary watch entire — you grade the topology's **conformance**,
+  never whether the governance itself is well-formed, and that domain stays
+  `validation-constitution`'s. The two-exits rule beside it (redesign to conform, or a user-ruled
+  amendment/waiver through `governance-ledger.md`) and the resolvable-vs-fundamental split are
+  untouched, as is the "cites the principle is not satisfies the principle" evidence rule.
+- **Budget:** `references/` files are budget-exempt.
+- **Consumers assessed:** this reference's three earlier v0.91.0 sites (hunt class 3, the
+  architecture-pass trigger, the guardrails row) were re-keyed in the main pass and the first fix
+  round; with this one the file carries no plan-stage vocabulary. The skill body's own G1 floor
+  was re-keyed in the main pass.
+
+## [v0.91.0] `references/FEASIBILITY-LENS.md`: hunt class 3 re-keyed off TR-XXX; plan-package wording — plan-stage retirement D3/D5
+
+- **Disposition:** superseded → hunt class 3's seam is now requirements (FR-XXX / SC-XXX) ↔
+  constraints, with a re-keyed worked example; two plan-run phrases re-keyed to the design phase.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D3 (the TR-XXX layer retires) and D5
+  (this grader re-scopes to the design-phase output)). Reference-file scope was opened by the
+  wave lead's extension ruling of 2026-08-26.
+- **Content (superseded fragments, verbatim — three sites):**
+
+  1. Hunt class 3, seam + worked example + evidence:
+
+     ```
+     **Seam:** technical requirements (TR-XXX) ↔ constraints.
+     **Question:** does any requirement assume a capability not available under the stated constraints?
+
+     **Worked example.** `TR-009: deliver real-time push notifications to mobile clients.` `C-007: no persistent connections permitted; polling only.` The requirement assumes a capability the constraint removes. Contradiction.
+
+     **Evidence:** the `TR-XXX`, the `C-XXX`, and the missing capability the requirement depends on.
+     ```
+  2. Architecture pass: `Fires when the plan package carries a **store delta**`
+  3. Guardrails table: `| Reviewing the constitution | G1: plan artifacts only. The constitution has its own validator. |`
+
+- **Kept deliberately:** hunt class 3 **survives whole as a class** — the contradiction it hunts
+  (a requirement assuming a capability its constraints remove) is unaffected by which id class
+  states the requirement; only the seam's upper side moved from TR-XXX to the spec's own FR-XXX
+  / SC-XXX, and the worked example was re-numbered `FR-009` rather than deleted so the class
+  keeps its teaching case. The resolvable-vs-fundamental split, the architecture pass A1–A3, and
+  every other guardrail row are untouched.
+- **Budget:** `references/` files are budget-exempt.
+- **Consumers assessed:** the skill's own `description:` and G1 body line were re-keyed in the
+  same wave (entries below); `mochiko:review-plan-artifacts`'s boundary table points at this
+  lens by section anchor, which is unchanged.
+
+## [v0.91.0] `description:` re-scoped from the plan package to the design-phase package — plan-stage retirement D5
+
+- **Disposition:** superseded → the same description grading design-phase analysis/design
+  artifacts, as the adversarial half of the design-phase review pair.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D5: "`review-plan-artifacts` and
+  `review-feasibility` re-scope at build time to grade the design-phase output and the
+  sufficiency check's own honesty").
+- **Content (superseded fragments, verbatim — three phrases in one field):**
+
+  1. `to grade plan analysis/design artifacts for cross-artifact FEASIBILITY`
+  2. `plus the architecture pass when the plan package carries an architecture-store delta`
+  3. `The adversarial half of the plan pair; its sibling`
+
+- **Budget:** description-class edit, canonical snippet: **568 → 599 chars** against the
+  recorded budget of **625**. Inside budget; no justification owed.
+- **Kept deliberately:** the hunt's whole subject (contradictions, impossibilities, buildability
+  conflicts, unjustified structure / wrong altitude), the architecture pass and its trigger
+  condition, the 3-state verdict, the sibling split with `review-plan-artifacts`, the
+  never-defaults-to-`feasible` posture, and the not-the-constitution carve-out.
+- **Consumers assessed:** the router row (re-keyed same wave), `mochiko:patterns-adopt-first`'s
+  Who-grades-what table (names hunt class 7 as blocking-capable — class numbering untouched, so
+  the pointer holds), `mochiko:review-plan-artifacts`'s boundary-table pointer (unchanged).
+
+## [v0.91.0] G1 floor re-keyed — "plan artifacts only" → design-phase artifacts only — plan-stage retirement D5
+
+- **Disposition:** superseded → the same G1 floor scoping the reviewer to design-phase artifacts.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D5).
+- **Content (superseded text, verbatim):**
+
+  ```
+  - **Your verdict is input** — the lead owns clearing, loops, and the human gate; G1: plan
+    artifacts only, never the constitution.
+  ```
+
+- **Budget:** body 1,893 → 1,901 chars against the recorded budget of **2,367**. Inside budget.
+  This skill was 90%-cut at v0.82.0; nothing from that keep-set was touched.
+- **Kept deliberately:** the verdict-is-input rule, the lead's ownership of clearing and the
+  human gate, and the never-the-constitution carve-out — G1's substance is unchanged; only the
+  name of the artifact class moved.
+- **Consumers assessed:** `references/FEASIBILITY-LENS.md` still carries plan-run wording and a
+  worked contradiction example built on a TR-XXX (`TR-009`), which D3 retires — **out of this
+  seat's writable scope, reported to the wave lead as an open ripple**. `implement.md` (P1's
+  rewrite dispatches this grade in the design phase).
+
 ## [v0.82.0] User-ruled 90% body cut with breakup into references — body 18,959 → 1,893 chars (−90.0%)
 
 - **Disposition:** superseded → a floors-and-dispatch body plus a widened

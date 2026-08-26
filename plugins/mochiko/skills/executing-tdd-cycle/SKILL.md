@@ -35,7 +35,7 @@ Execute in strict order. No skipping steps. No reordering.
 **1. Read the Cycle Card**
 
 Extract the current card from the feature's `tasks.md` (under `.mochiko/specs/<feature>/`):
-its stories, acceptance criteria (resolve the cited IDs against the spec/plan artifacts),
+its stories, acceptance criteria (resolve the cited IDs against the spec/design artifacts),
 dependencies, brownfield exposure, and `**TEST:**` gate. See
 [references/TASK-PARSING.md](references/TASK-PARSING.md) for the card fields. The current
 cycle is the first card in order whose checkbox is unchecked.

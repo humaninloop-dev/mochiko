@@ -20,8 +20,8 @@ This is a discipline-enforcing skill. The structured format exists to ensure sto
 - **Technical implementation tasks** - Use task decomposition instead
 - **Bug reports** - Use issue templates with reproduction steps
 - **When requirements are already in user story format** - Don't duplicate work
-- **Architecture decisions** - Capture technical-decision rationale in the design/plan track instead; this skill authors user stories, not technical choices
-- **API contract design** - Define endpoints and schemas in the design/plan track instead; this skill authors user stories, not interface contracts
+- **Architecture decisions** - Capture technical-decision rationale in the design track instead; this skill authors user stories, not technical choices
+- **API contract design** - Define endpoints and schemas in the design track instead; this skill authors user stories, not interface contracts
 
 ## User Story Format
 

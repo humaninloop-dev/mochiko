@@ -6,6 +6,53 @@ Entry formats: `strips/README.md`. Wave context: [v0.28.0] entries — skill-suc
 `.mochiko/brainstorms/workflow-token-reduction/record.md` D4 + the wave-2 rulings R1–R4;
 ratified 2026-07-24).
 
+## [v0.91.0] Fix round — two When-NOT-to-Use carve-outs: "the design/plan track" → "the design track" (advisory)
+
+- **Disposition:** superseded → "the design track" at both sites.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1). Raised as an **advisory** by the
+  v0.91.0 wave audit: with the plan stage retired there is one downstream track, so the
+  "design/plan" pair named a distinction that no longer exists.
+- **Content (superseded fragments, verbatim — two sites):**
+
+  1. `- **API endpoint specifications** - These belong to the design/plan track, not business requirements; keep concrete endpoint contracts out of FRs`
+  2. `- **Data model design** - This belongs to the design/plan track; describe entities only conceptually here (see Key Entities), not as schemas`
+
+- **Kept deliberately:** both carve-outs entire — concrete endpoint contracts stay **out of
+  FRs**, and entities are described **only conceptually** here (Key Entities), never as schemas.
+  The boundary this skill draws between business requirements and downstream design is unchanged;
+  only the downstream track's name lost its retired half.
+- **Budget:** body 4,423 → **4,413** (the shorter name shrinks it) against the 5,127 budget;
+  description unchanged at 379 against 474. Both inside.
+- **Consumers assessed:** `mochiko:authoring-user-stories` carried the identical "design/plan
+  track" phrasing at two sites and was re-keyed in the same round;
+  `mochiko:patterns-entity-modeling` and `mochiko:patterns-api-contracts` are the downstream
+  homes these carve-outs point at — both untouched by this edit and still correctly named.
+
+## [v0.91.0] Constraint-vs-posture rule: "a plan-time choice" → "a design-time choice" — plan-stage retirement D1
+
+- **Disposition:** superseded → the same rule, naming a design-time choice.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1; wording ruled by the wave lead
+  2026-08-26). The lowest-stakes site of the wave's residue batch — "plan-time" reads as ordinary
+  English here rather than as a stage pointer — re-keyed for vocabulary consistency across the
+  library on the lead's ruling, with the stakes noted honestly rather than overstated.
+- **Content (superseded fragment, verbatim):**
+
+  ```
+  it names no product and passes the leakage check, yet freezes a plan-time choice downstream seats then read as ratified.
+  ```
+
+- **Kept deliberately:** the rule entire — **a constraint states a capability, never a posture**,
+  its worked example ("The corpus is files on disk" vs "retrieval is locally computable"), the
+  names-no-product/passes-the-leakage-check observation that makes the example bite, and the
+  downstream-seats-read-it-as-ratified consequence.
+- **Budget:** body 4,421 → **4,423** against the 5,127 budget; description unchanged at 379
+  against 474. Both inside.
+- **Consumers assessed:** none — this is a self-contained authoring rule in the spec layer with
+  no cross-skill pointer. Specify's FR/SC layer is untouched by D3, which explicitly declined to
+  move the technical layer into specify.
+
 ## [v0.63.0] Guardrails cut — body deletions + slim description (benchmark verdict)
 - **Disposition:** superseded → benchmark-ruled guardrails body + slim description (`.mochiko/benchmarks/guardrails-vs-detail/variants/`)
 - **Tier failed:** n/a — supersession by ruling (guardrails-vs-detail benchmark verdict — `DECISIONS.md` 2026-08-10 benchmark-verdict row; `.mochiko/brainstorms/validator-scope-and-verbosity/record.md` Benchmark execution; `.mochiko/benchmarks/guardrails-vs-detail/report/final-verdict.md`)

@@ -8,7 +8,7 @@ overview: |
   This file is CYCLE CARDS, not a task list. Each card is a coherent bundle of named test cases
   (the card's content); the builder decomposes each card into concrete tasks at build time, with
   the code in view — the decomposition is disclosed in the cycle report, never pre-written here.
-  Cite spec/plan content by ID (US-#, FR-#, SC-#, C-#) — never re-quote it; each test case cites
+  Cite spec/design content by ID (US-#, FR-#, SC-#, C-#) — never re-quote it; each test case cites
   the ID(s) it covers. Structure and slicing judgment come from mochiko:patterns-vertical-tdd (the
   cycle-card shape). The card's checkbox is the progress surface, flipped when the cycle's named
   cases show green against real infrastructure.
@@ -18,9 +18,11 @@ sections:
     required: true
     contract: |
       Title "# Implementation Cycles: [FEAT-XXX — FEATURE NAME]" plus two generated-from
-      pointers: (1) the spec folder and the feature's produced design artifacts — spec.md,
-      features/FEAT-XXX/plan.md, and whichever of requirements.md, constraints-and-decisions.md,
-      data-model.md, contracts/ the approved proposal included; (2) Structure:
+      pointers: (1) the spec folder and the design inputs the cards were authored from —
+      spec.md, features/FEAT-XXX/sufficiency-report.md, and whichever of
+      constraints-and-decisions.md, data-model.md, contracts/ and the signed store delta the
+      design phase produced (on a zero-gap verdict no design phase ran, so the cards are
+      authored from spec.md, the report, and the product baselines); (2) Structure:
       mochiko:patterns-vertical-tdd (cycle-card shape, slicing judgment).
     check: "Is the header present with the FEAT-XXX title and both provenance pointers (source artifacts and the patterns-vertical-tdd structure note)?"
 
@@ -43,7 +45,7 @@ sections:
       cases pass. Where the work opens a new end-to-end path (greenfield / new path), the first
       cycle is a walking skeleton; growth on an already-standing path skips it. There is no
       foundation/feature card type — `[P]` parallel eligibility derives from a card's
-      dependencies, not from a type column. Each named test case cites the spec/plan ID(s) it
+      dependencies, not from a type column. Each named test case cites the spec/design ID(s) it
       covers.
     check: "Does the Cycle Format explain the card as a bundle of named test cases, the test-first flow, cycle-done when named cases pass on real infrastructure, the checkbox-as-progress rule, the walking-skeleton first cycle where a new end-to-end path opens, no foundation/feature type with `[P]` derived from dependencies, and per-case ID citation?"
 
@@ -55,7 +57,7 @@ sections:
       <= 2 lines); Depends on; Case (Simple | Split — why, one line | Merge — why, one line);
       Brownfield exposure (none | extends `path` | modifies `path` — cycle-level surfaces only);
       and the closing `**TEST:**` bundle — one or more named test cases, each opening with
-      `**Covers**: <spec/plan IDs>` (the acceptance-ID citation lives per-case, never a standalone
+      `**Covers**: <spec/design IDs>` (the acceptance-ID citation lives per-case, never a standalone
       Acceptance-criteria field) then Setup/Action/Assert/Capture fields per TEST-GRAMMAR.md.
       Where a new end-to-end path opens, the first card is a walking skeleton (thinnest path, one
       trivial case green). `[P]` marks parallel-eligible cards, derived from dependencies.
@@ -100,7 +102,7 @@ sections:
 skeleton: |
   # Implementation Cycles: [FEAT-XXX — FEATURE NAME]
 
-  > Generated from the spec folder and the feature's produced design artifacts: spec.md, features/FEAT-XXX/plan.md, and whichever of requirements.md, constraints-and-decisions.md, data-model.md, contracts/ the approved proposal included
+  > Generated from the spec folder and the design inputs the cards were authored from: spec.md, features/FEAT-XXX/sufficiency-report.md, and whichever of constraints-and-decisions.md, data-model.md, contracts/ and the signed store delta the design phase produced
   > Structure: `mochiko:patterns-vertical-tdd` (cycle-card shape, slicing judgment)
 
   ## Overview
@@ -121,7 +123,7 @@ skeleton: |
   pass. Where the work opens a new end-to-end path (greenfield / new path), the **first cycle is a
   walking skeleton**; growth on an already-standing path skips it. There is no foundation/feature
   card type — `[P]` parallel eligibility derives from a card's dependencies, not from a type
-  column. Each named test case cites the spec/plan ID(s) it covers.
+  column. Each named test case cites the spec/design ID(s) it covers.
 
   ---
 

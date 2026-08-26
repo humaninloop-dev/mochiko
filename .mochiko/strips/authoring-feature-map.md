@@ -9,6 +9,42 @@ the same wave superseded.
 
 ---
 
+## [v0.91.0] Touchpoint line, baseline-surface pointer, and capability-batch line re-keyed — plan-stage retirement D1 (e) — V2 B1
+
+- **Disposition:** superseded → the design phase confirms and hardens (with the zero-gap branch
+  naming the card-authoring seat); "implement's surface"; "one implement run".
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1 mechanic **(e)**, the map-entry
+  hardening mechanic: "the design phase, when it runs, asserts the design-implied dependency
+  relations and sharpened extent onto the feature's map entry with provenance … on the zero-gap
+  path the card-authoring seat performs the dependency/extent assertion at card authoring").
+  Raised by the v0.91.0 wave audit as **V2 B1**; wording ruled by the wave lead 2026-08-26.
+- **Content (superseded fragments, verbatim — three sites):**
+
+  1. Four-touchpoints line: `**plan confirms and hardens** alongside architecture`
+  2. Baseline-altitude line: `(the appliable before/after form) are a different altitude — plan and implement's surface, untouched here.`
+  3. Capability-batch line: `A **capability-batch** is the pipeline unit: each capability with selected work rows gets one plan/implement run covering exactly those rows.`
+
+- **Kept deliberately:** all four touchpoints as four (specify proposes · the design phase
+  confirms and hardens · implement's acceptance landing folds · `/mochiko:feature` stewards) —
+  the touchpoint *count* and each one's duty are unchanged; the frame-first derivation rule and
+  the story-wins conflict rule; the one-living-map / no-per-spec-copy invariant; the
+  bookkeeping-inside-the-landing-never-a-separate-close-stage clause; and the capability-batch
+  definition itself (a capability plus its selected rows, one run, exactly those rows).
+- **Budget — OVERAGE DECLARED, widened.** Body **15,975 against the 15,413 budget (+562)** —
+  **+128 this wave**, on top of the +434 standing since v0.81.0. Description unchanged at 598
+  against 619. The +128 is mechanic (e)'s **zero-gap branch** and nothing else: without it the
+  zero-gap path leaves the map-entry hardening duty unowned, which is precisely the defect the
+  record's verify round 1 caught as V1 and repaired — so dropping the clause to save chars would
+  re-open a closed defect. Two same-line simplifications partly offset it (−12 and −9). No prose
+  added or restored. Recorded in `.mochiko/memory/primitive-cost-budgets.md` for the audit, and
+  **ruled HOLDS by the v0.91.0 wave audit (V2)** — byte-reconciled to the ruled obligation
+  exactly.
+- **Consumers assessed:** `mochiko:patterns-vertical-tdd` carries the card-authoring seat this
+  entry's zero-gap branch names (re-keyed earlier this wave); `implement.md` (P1's rewrite) owns
+  the design phase and the card-confirm checkpoint; the router's `authoring-feature-map` row
+  describes the map's own grammar and never named the plan stage — no re-key owed there.
+
 ## [v0.81.0] Three architecture pointers re-keyed to the store — product-architecture-schema D3/D4/D7
 
 - **Disposition:** superseded → the architecture store and its spine. The map's peer view is no

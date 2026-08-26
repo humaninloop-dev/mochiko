@@ -13,6 +13,31 @@ document contracts are the **user's** artifacts and are untouchable. A prefix-ba
 `.mochiko/` would gut the KM module and the brainstorm command; 101 of this tree's 146
 `.mochiko/` references were correctly left alone on that test.
 
+## [v0.91.0] Landing-ritual command list drops `plan` — the command no longer exists
+
+- **Disposition:** superseded → the two surviving pipeline landings. The landing ritual's
+  where-it-fires list named "specify/plan/implement landings where those commands run"; `/mochiko:plan`
+  was retired this wave, so the list named a command that cannot run. The ritual itself is
+  unchanged — the same three-part move fires at the same moments, one of which no longer exists.
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/brainstorms/plan-stage-utility/record.md` D1 — `/mochiko:plan` retires and
+  `/mochiko:implement` becomes the single downstream run; `DECISIONS.md` 2026-08-26 row.)
+- **Content (superseded, verbatim, one site):** "at the command landing step (brainstorm close ·
+  setup/amend · specify/plan/implement landings where those commands run)". Now:
+  "… specify/implement landings where those commands run".
+- **Kept deliberately:** the whole ritual — the one-move framing, all three numbered parts, the
+  invariants, the `GLOSSARY.md` term format above it, and the "where those commands run"
+  qualifier that keeps the list honest for projects not running every command. The brainstorm-close
+  and setup/amend landing sites are untouched. The plan run's landing obligations did not vanish
+  with the command: they fire at implement's landing, which is now the single downstream run.
+- **Consumers assessed:** this is a **project-pinned constitution module** — it ships as the
+  template every consuming project's knowledge-management module is written from, so a stale
+  command name here propagates outward into projects that adopt it, which is why it was worth
+  fixing rather than leaving as cosmetic drift. Mochiko's own pinned copy at
+  `.mochiko/memory/knowledge-management.md` is a separate file and another seat's surface — it is
+  NOT edited here; flagged to the wave lead for routing. `CLAUDE.md`'s landing-ritual paragraph
+  cites that pinned copy, not this template.
+
 ## [v0.81.0] `ARCHITECTURE.md` doc-role re-worded to the derived index; In-flight agreement → orphan rule — product-architecture-schema D4/D10
 
 - **Disposition:** superseded → the derived-index role and the orphan rule. `ARCHITECTURE.md`

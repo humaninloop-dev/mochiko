@@ -4,6 +4,52 @@ Entry formats: `strips/README.md`. Wave context: workflow-token-reduction wave 2
 `.mochiko/brainstorms/workflow-token-reduction/record.md` D4 + the wave-2 rulings R1–R4;
 ratified 2026-07-24).
 
+## [v0.91.0] `schemas/tasks.yaml` — the generated-from pointer re-keyed off the dead plan package (both sites)
+
+- **Disposition:** superseded → the design-phase inputs. The header's provenance pointer named
+  two surfaces the plan-stage retirement killed — `features/FEAT-XXX/plan.md` (the summary
+  artifact, dead outright) and `requirements.md` (dead as a mandatory artifact) — and gated the
+  rest on "the approved proposal", a gate that no longer exists. The pointer now names the design
+  inputs the cards were actually authored from, and carries the zero-gap branch explicitly, since
+  a run that passes the sufficiency check authors cards with no design phase having run at all.
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/brainstorms/plan-stage-utility/record.md` D4 — `plan.md` dies, no restatement
+  artifact, and the proposal gate is a dead gate; D3 — `requirements.md` dies as a mandatory
+  artifact; D1 — the conditional design phase and its zero-gap path; `DECISIONS.md` 2026-08-26
+  row.)
+- **Content (superseded, verbatim, two sites — the Header section's `contract` and the matching
+  `skeleton` block):** "the spec folder and the feature's produced design artifacts — spec.md,
+  features/FEAT-XXX/plan.md, and whichever of requirements.md, constraints-and-decisions.md,
+  data-model.md, contracts/ the approved proposal included". Now: "the spec folder and the design
+  inputs the cards were authored from — spec.md, features/FEAT-XXX/sufficiency-report.md, and
+  whichever of constraints-and-decisions.md, data-model.md, contracts/ and the signed store delta
+  the design phase produced", with the contract site adding the zero-gap branch.
+- **Second site set, same ruling (added at the V2 advisory fix round):** the schema's four
+  `spec/plan` citation phrases re-key to `spec/design`, matching the grammar
+  `mochiko:patterns-vertical-tdd` was itself re-keyed to this wave (its checklist now reads "Each
+  named test case cites the spec/design ID(s) it covers"). Verbatim, four sites: the `overview`
+  block's "Cite spec/plan content by ID (US-#, FR-#, SC-#, C-#)" · the Cycle Format `contract`'s
+  and the matching `skeleton` prose's "Each named test case cites the spec/plan ID(s) it covers" ·
+  the Cycle Cards `contract`'s per-case citation form "`**Covers**: <spec/plan IDs>`". Each now
+  reads `spec/design`. The cited **id classes are unchanged** — `US-#`, `FR-#`, `SC-#`, `C-#` all
+  survive the retirement; only the phrase naming where the second half of them comes from moved,
+  since the design half is now authored inside implement rather than by a plan run. The schema and
+  the skill that owns the card grammar therefore state the citation rule identically, which is the
+  point of the re-key.
+- **Kept deliberately:** the two-pointer structure and the `mochiko:patterns-vertical-tdd`
+  structure pointer are untouched, as is the section's `check` line — it asks for "both provenance
+  pointers (source artifacts and the patterns-vertical-tdd structure note)" without enumerating
+  filenames, so it needed no edit. The `check` line for Cycle Cards likewise needed no edit: it
+  requires per-case `**Covers**:` IDs without naming their source surfaces. The surviving three design deltas keep their names and their
+  `.mochiko/features/FEAT-XXX/` home (record D4). Nothing about the cycle-card grammar, the
+  `**TEST:**` bundle, the walking-skeleton rule, or `[P]` derivation changed.
+- **Consumers assessed:** `crates/mochiko-cli` renders this schema — re-ran `cargo test --all`
+  after the edit, all suites green, so the YAML stays parseable and the raw-Read degraded path
+  (GI-020) stays honest. `mochiko:patterns-vertical-tdd` owns the card shape, not the provenance
+  pointer, so it is unaffected. The `sufficiency-report.md` filename is not yet ruled anywhere —
+  flagged to the wave lead (see the note in the P2 report); if it is renamed, both sites here and
+  `templates/feasibility-report-template.md`'s `artifacts_reviewed` example move together.
+
 ## [v0.81.0] `schemas/tasks.yaml` — `nfrs.md` dropped from the generated-from pointer (both sites) — product-architecture-schema D12
 
 - **Disposition:** deleted from the enumeration. The header's provenance pointer listed the design

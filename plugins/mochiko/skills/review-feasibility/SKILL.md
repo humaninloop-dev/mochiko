@@ -1,6 +1,6 @@
 ---
 name: review-feasibility
-description: This skill MUST be invoked to grade plan analysis/design artifacts for cross-artifact FEASIBILITY — hunting contradictions, impossibilities, buildability conflicts, plus unjustified structure / wrong altitude; plus the architecture pass when the plan package carries an architecture-store delta. Emits a 3-state `feasible / needs-revision / infeasible` verdict. The adversarial half of the plan pair; its sibling `review-plan-artifacts` grades coverage/measurability/presence, this grades contradiction/buildability. Never defaults to `feasible`; not the constitution.
+description: This skill MUST be invoked to grade design-phase analysis/design artifacts for cross-artifact FEASIBILITY — hunting contradictions, impossibilities, buildability conflicts, plus unjustified structure / wrong altitude; plus the architecture pass when the design-phase package carries an architecture-store delta. Emits a 3-state `feasible / needs-revision / infeasible` verdict. The adversarial half of the design-phase review pair; its sibling `review-plan-artifacts` grades coverage/measurability/presence, this grades contradiction/buildability. Never defaults to `feasible`; not the constitution.
 ---
 
 # Reviewing Feasibility
@@ -29,7 +29,7 @@ Floors — non-waivable:
   evidence living only in conversation is a floor violation.
 - **Findings cite the IDs in tension** (`C-003 ↔ D-007`) with the four gate-fuel fields;
   external premises verify per `../review-brainstorm/references/EXTERNAL-CLAIMS.md`.
-- **Your verdict is input** — the lead owns clearing, loops, and the human gate; G1: plan
-  artifacts only, never the constitution.
+- **Your verdict is input** — the lead owns clearing, loops, and the human gate; G1:
+  design-phase artifacts only, never the constitution.
 
 Verdict: `feasible` · `needs-revision` (resolvable) · `infeasible` (fundamental).

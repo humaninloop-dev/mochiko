@@ -3,6 +3,67 @@
 Entry formats: `strips/README.md`. Wave context: workflow-token-reduction wave 1 (rulings
 ratified 2026-07-23: producer disclosures machine-first).
 
+## [v0.91.0] Usage Note 2's ID list drops the dead `TR-` class (second site, same ruling)
+
+- **Disposition:** superseded → the surviving id classes. Usage Note 2 told the producer to cite
+  IDs rather than restate artifact content, and named `TR-` first among the classes to cite. The
+  same ruling that removed `requirements.md` from this template's `produced:` field (the entry
+  below, same version) killed the artifact that defines `TR-XXX`, so the instruction pointed a
+  producer at an id class nothing in the pipeline mints. A second site of one ruling, found after
+  the first was written — recorded as its own entry rather than folded into the earlier one, so
+  the sweep history stays honest about what was caught when.
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/brainstorms/plan-stage-utility/record.md` D3 — the FR→TR layer dies as a mandatory
+  artifact and the real technical decisions land as `D-XXX`, `C-XXX`, and `IP-XXX` rows in
+  `constraints-and-decisions.md` plus the store's `NFR-XXX` concern rows; `DECISIONS.md`
+  2026-08-26 row.)
+- **Content (superseded, verbatim, one site — Usage Note 2's closing parenthetical):** "(cite
+  TR-/C-/NFR-/D- IDs)". Now: "(cite C-/D-/IP-/NFR- IDs)".
+- **Kept deliberately:** the note's whole substance — machine-first framing, the
+  frontmatter-only routine round, `## Notes of note` for genuine difficulties, and the
+  cite-never-restate rule itself — is untouched; only the class list changed. `IP-` was added
+  rather than the list merely shortened, because D3 routes infrastructure-provisioning decisions
+  to the same surviving home as `D-`/`C-`, and this template's `produced:` comment (the entry
+  below) already names all three; leaving `IP-` out would have made the two fields disagree.
+- **Consumers assessed:** the `mochiko:technical-analyst` persona fills this template; the id
+  classes named here are minted by `mochiko:authoring-technical-requirements`, whose subject D3
+  partly kills and whose retire-or-re-scope ruling is another seat's build-wave call — this edit
+  neither pre-empts nor blocks it, since it only stops pointing at a class no artifact defines.
+  Sweep note for the audit: this site survived my earlier cluster sweep because that grep matched
+  `TR-0` (the digit form, as in the `TR-012` example fixed in `artifact-format.md`) and this
+  occurrence is the bare slash form `TR-/`. Re-swept with a bare `TR-` pattern across all of
+  `plugins/mochiko/templates/` and `plugins/mochiko/schemas/`: this was the only remaining hit.
+
+## [v0.91.0] `produced:` example drops `requirements.md` — the FR→TR artifact dies with the plan stage
+
+- **Disposition:** superseded → `constraints-and-decisions.md` alone, with the row classes named.
+  The frontmatter's `produced:` example headed its analysis-round list with `requirements.md`,
+  which is no longer authored: D3 kills the per-feature FR→TR layer as a mandatory artifact and
+  routes the real technical decisions to the rows this field's surviving member already carries.
+  The comment now names those row classes, so a producer disclosing an analysis round still has a
+  precise thing to list rather than an artifact that no longer exists.
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/brainstorms/plan-stage-utility/record.md` D3 — "the FR→TR layer dies as a mandatory
+  artifact … Real technical decisions (D-XXX, C-XXX, IP-XXX) land where they already live —
+  `constraints-and-decisions.md` and the store"; `DECISIONS.md` 2026-08-26 row.)
+- **Content (superseded, verbatim, one site):** `produced: [requirements.md,
+  constraints-and-decisions.md]   # + store-delta NFR rows when touched; design rounds:
+  [data-model.md, contracts/api.yaml, quickstart.md]`. Now: `produced:
+  [constraints-and-decisions.md]   # the D-XXX/C-XXX/IP-XXX rows this round wrote; + store-delta
+  NFR rows when touched; design rounds: [data-model.md, contracts/api.yaml, quickstart.md]`.
+- **Kept deliberately:** the store-delta NFR arm added at v0.81.0 survives verbatim — the reason
+  it was added (an NFR-touching round would otherwise be invisible in the disclosure) is
+  untouched by this ruling. The design-round list is unchanged: all three of its members survive
+  the retirement with their homes intact (record D4). Every other field, all eight usage notes,
+  the no-self-verdict rule, and the output location are untouched.
+- **Consumers assessed:** the `mochiko:technical-analyst` persona fills this template, and the
+  dispatching command seeds and collects it; the plan run that used to be one such dispatcher is
+  deleted this wave, while specify's use (output location `.mochiko/specs/<feature>/`) is
+  unaffected — its rounds never produced `requirements.md`. Note for the audit round, not repaired
+  here: the `phase: analysis | design` field still frames a two-phase producer sequence, which is
+  a shape question for the `implement.md` rewrite rather than a dead-artifact reference, so it is
+  left for a ruling rather than changed unilaterally.
+
 ## [v0.81.0] `produced:` example drops `nfrs.md`, gains the store-delta NFR arm — product-architecture-schema D12
 
 - **Disposition:** superseded → the same field with the store named. The frontmatter's

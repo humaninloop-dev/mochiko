@@ -2,6 +2,32 @@
 
 Entry formats: `strips/README.md`.
 
+## [v0.91.0] Seat-wiring table: "plan-time deltas / the plan review pair" re-keyed to the design phase — plan-stage retirement D1/D5
+
+- **Disposition:** superseded → "design-phase deltas graded by the design review pair beneath the
+  user's sign-off".
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1 (the design phase absorbs plan's
+  design work) and D5 (`review-plan-artifacts` / `review-feasibility` re-scope to grade the
+  design-phase output); wording ruled by the wave lead 2026-08-26).
+- **Content (superseded fragment, verbatim — the architecture-store row's middle column):**
+
+  ```
+  desk judgment writes take the tech-lead review leg; plan-time deltas graded by the plan review pair beneath the user's sign-off
+  ```
+
+- **Kept deliberately:** the row's full floor obligation — the tech-lead review leg on desk
+  judgment writes, the beneath-the-user's-sign-off placement, the `authoring-architecture-store`
+  pointer, and the third column's "full floor — satisfied by the desk's own loop where it runs;
+  the bite is any store write outside it". The review **pair** survives as a pair; only its name
+  moved with the stage.
+- **Budget:** unbudgeted (hard-cap-only). Body 6,358 → **6,363**; description unchanged at 505,
+  inside the 1,536 delivery cap.
+- **Consumers assessed:** the pair's two skills were re-scoped earlier in this wave
+  (`review-plan-artifacts` to the sufficiency gap list, `review-feasibility` to design-phase
+  artifacts), so this row's naming now matches both. The three charter commands reference this
+  floor without restating it — unaffected.
+
 ## [v0.81.0] Governing-surface row re-keyed: `ARCHITECTURE.md` folds → the architecture store — product-architecture-schema D3/D4/D11/D12
 
 - **Disposition:** superseded → a row keyed on the **architecture store**

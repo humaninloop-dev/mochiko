@@ -1,7 +1,7 @@
 # Issue Templates and Classification
 
-Issue-documentation formats, severity classification rules, and the working report shape for plan
-artifact reviews. These are the reviewer's working formats; the **assembled deliverable** the lead
+Issue-documentation formats, severity classification rules, and the working report shape for
+design-phase artifact reviews. These are the reviewer's working formats; the **assembled deliverable** the lead
 reads is the `mochiko:advocate-report-template` (see [Assembled report](#assembled-report) below) —
 do not restate that template here.
 
@@ -84,7 +84,7 @@ While executing the review, organize findings with this working shape. The final
 the lead is assembled with the `advocate-report-template` — see below.
 
 ```markdown
-## Plan Artifact Review: {artifact set reviewed}
+## Design-Phase Artifact Review: {artifact set reviewed}
 
 **Artifacts Reviewed**: {file paths}
 

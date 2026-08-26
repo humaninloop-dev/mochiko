@@ -9,7 +9,7 @@ description: This skill MUST be invoked when designing the API-contract layer of
 
 Design RESTful API contracts that map user actions to endpoints with complete schema definitions and comprehensive error handling. Every user action becomes an endpoint; every endpoint has request/response schemas and error handling. Endpoints that wrap an external system additionally carry an integration boundary documenting how that dependency fails.
 
-> **Endpoint and contract necessity answer the plan ladder** (`mochiko:patterns-plan-minimalism`) before they enter the plan — the simplest-execution stops are disclosed in the proposal; this skill designs the contracts that survive it.
+> **Endpoint and contract necessity answer the design ladder** (`mochiko:patterns-plan-minimalism`) before they enter the design-phase package — the simplest-execution stops are disclosed by the design phase as it authors; this skill designs the contracts that survive it.
 
 ## When NOT to Use
 
@@ -155,8 +155,8 @@ coverage surface reviewers verify against, per `templates/artifact-format.md`):
 is **conditional**: author it **only when the feature has a real integration surface**
 (external consumers of the API, an external system wrapped via `x-integration`, or a
 non-trivial auth sequence a caller must follow). A feature whose endpoints only serve its
-own UI over standard auth does not need one — record the null path as one line in
-`plan.md`'s artifact table ("not applicable — no external integration surface"), never a
+own UI over standard auth does not need one — record the null path as one line in the run's
+**sufficiency report** ("not applicable — no external integration surface"), never a
 stub file.
 
 When authored, it is **capped and dense** (deliverable envelope,
@@ -179,7 +179,7 @@ Validate OpenAPI specifications using the validation script:
 python scripts/validate-openapi.py .mochiko/specs/<feature>/contracts/api.yaml
 ```
 
-Checks: OpenAPI syntax, REST conventions, error responses, request bodies, operation IDs, security schemes, examples, descriptions, and `x-integration` well-formedness (format only, when present). This is a deterministic format/convention self-check — it does **not** judge whether the endpoints, schemas, or failure modes are the *right* ones; that substantive review belongs to the independent plan reviewer, not this script.
+Checks: OpenAPI syntax, REST conventions, error responses, request bodies, operation IDs, security schemes, examples, descriptions, and `x-integration` well-formedness (format only, when present). This is a deterministic format/convention self-check — it does **not** judge whether the endpoints, schemas, or failure modes are the *right* ones; that substantive review belongs to the independent design-phase reviewer, not this script.
 
 ## Quality Checklist
 
@@ -195,7 +195,7 @@ Before finalizing API contracts:
 - [ ] Brownfield patterns matched (if applicable)
 - [ ] OpenAPI spec is valid
 - [ ] Traceability to requirements complete (the endpoint↔FR/US table — the contract's ID index)
-- [ ] Quickstart authored iff a real integration surface exists (≤ 150 lines, cites the contract, never re-documents it); otherwise its null path recorded in `plan.md`
+- [ ] Quickstart authored iff a real integration surface exists (≤ 150 lines, cites the contract, never re-documents it); otherwise its null path recorded in the run's sufficiency report
 
 ## Common Mistakes
 

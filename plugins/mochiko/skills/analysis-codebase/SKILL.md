@@ -21,7 +21,7 @@ session's existing-practices dimension, and the constitution author.
 - **Documentation-only review**: use standard file reading instead
 - **Before the project directory exists**: nothing to analyze yet
 - **When the user already provided complete context**: skip analysis if the tech stack and patterns are already documented
-- **Collision detection / JSON inventory**: that is the spec/plan-cluster Brownfield mode (not wired this run)
+- **Collision detection / JSON inventory**: that is the spec/design-cluster Brownfield mode (not wired this run)
 
 ## Common Mistakes
 
@@ -44,7 +44,7 @@ sub-procedure with domain-entity extraction and an Essential-Floor status assess
   see [references/CONTEXT-GATHERING.md](references/CONTEXT-GATHERING.md))
 - Domain entities and relationships (locate where entities live — models/, schema files, ORM
   annotations; document what is found — the deeper collision-risk inventory is the
-  spec/plan-cluster Brownfield mode, not produced here)
+  spec/design-cluster Brownfield mode, not produced here)
 - Essential-Floor **status** assessment (present / partial / absent — see below)
 - Inconsistencies and strengths to preserve
 
@@ -96,7 +96,7 @@ Before finalizing the analysis:
 ## Other modes (moved to other clusters — not wired this run)
 
 Only **Setup-Brownfield** is wired here. **Brownfield / collision mode** (entity + endpoint
-extraction → JSON collision inventory against a proposed spec) lives in the **spec/plan
+extraction → JSON collision inventory against a proposed spec) lives in the **spec/design
 cluster**; **standalone Context-report mode** (a human-facing Project Context Report) lives in
 the **constitution-context cluster** — its extraction *sub-procedure* is kept here
 (`references/CONTEXT-GATHERING.md`), folded into Setup-Brownfield.

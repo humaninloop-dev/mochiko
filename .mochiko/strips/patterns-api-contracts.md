@@ -6,6 +6,97 @@ Entry formats: `strips/README.md`. Wave context: [v0.27.0] entries — skill-suc
 `.mochiko/brainstorms/workflow-token-reduction/record.md` + the wave-2 rulings R1–R4/T3;
 ratified 2026-07-24).
 
+## [v0.91.0] Ladder blockquote and two "independent plan reviewer" pointers re-keyed to the design phase — plan-stage retirement D1/D5
+
+- **Disposition:** superseded → the design ladder / design-phase package / design-phase proposal
+  in the blockquote; "the independent design-phase reviewer" in both self-check disclaimers.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1 carry-over (the ladder governs
+  what the design phase authors) and D5 (the two graders re-scope to the design-phase output)).
+  Wording follows the wave lead's 2026-08-26 rulings for the parallel sites — "the plan proposal"
+  → "the design-phase proposal" (ruled for `patterns-entity-modeling:12`, whose blockquote is
+  this one's twin) and the design-phase re-scope of the review pair.
+- **Found by sweep, in an already-allocated file:** the lead's item-6 allocation named :159/:198
+  of this file. These three surfaced on the exhaustive final sweep — same file, same ruling
+  cluster. Fixed here on the precedent the lead approved for the `authoring-architecture-store`
+  in-file finds, rather than left to contradict the sites already re-keyed.
+- **Content (superseded fragments, verbatim — three sites):**
+
+  1. Overview blockquote:
+
+     ```
+     > **Endpoint and contract necessity answer the plan ladder** (`mochiko:patterns-plan-minimalism`) before they enter the plan — the simplest-execution stops are disclosed in the proposal; this skill designs the contracts that survive it.
+     ```
+  2. Self-check section: `that substantive review belongs to the independent plan reviewer, not this script.`
+  3. `scripts/validate-openapi.py` module docstring: `substantive review is model judgment, owned by the independent plan reviewer.`
+
+- **Kept deliberately:** the ladder obligation (necessity answered **before** entry, stops
+  disclosed not re-derived here, this skill designs only the survivors) and — load-bearing — the
+  whole deterministic-vs-substantive split: the script checks format and convention and
+  explicitly does **not** judge whether the endpoints, schemas, or failure modes are the *right*
+  ones. That boundary is what keeps the script advisory rather than kernel-class; only the name
+  of the seat holding the substantive judgment changed.
+- **Verification:** `python3 -m py_compile` on the edited script passes (docstring-only change).
+- **Budget:** body **11,031** against the 13,412 budget; description unchanged at 486 against
+  608. Both inside. (This supersedes the 10,992 figure recorded in the entry below — that was
+  the count after the quickstart re-key and before these three sites.) `scripts/` files are
+  budget-exempt.
+- **Consumers assessed:** `mochiko:patterns-entity-modeling`'s twin blockquote was re-keyed
+  identically in this wave; `mochiko:review-plan-artifacts` (the "independent reviewer" these
+  pointers name) was re-scoped to the design-phase package earlier in the wave, so the pointers
+  now match their target's own description.
+- **Blockquote re-keyed again at the fix round (V1 ripple):** the wording this entry landed —
+  `the simplest-execution stops are disclosed in the design-phase proposal` — named an artifact
+  the fix round's V1 ruling then retired (D4 lists plan's proposal approval among the dead
+  gates). Now reads "disclosed by the design phase as it authors", matching the ladder skill's
+  surviving grammar and its twin in `patterns-entity-modeling`. Body 11,031 → **11,036** against
+  the 13,412 budget; description unchanged at 486. The ladder obligation is untouched in both
+  passes.
+
+## [v0.91.0] Quickstart null-path home re-pointed from `plan.md` to the sufficiency report — plan-stage retirement D4
+
+- **Disposition:** superseded → the null path is recorded in **the run's sufficiency report**,
+  the durable assessment record that replaces `plan.md` as the run's summary surface. (Landed
+  wording is the wave lead's, ruled 2026-08-26; an earlier pass of this edit read "the
+  sufficiency report" without the possessive and was aligned to the ruling before the audit.)
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` **D4**: "`plan.md` (the summary
+  artifact) dies — no restatement artifact; the sufficiency verdict lands as a report under
+  `templates/report-format.md` in the feature dir and is the durable assessment record — it
+  additionally carries the `quickstart.md` null-path record"). Scope for this file was opened by
+  the wave lead's second extension ruling of 2026-08-26.
+- **Why this could not be left:** `plan.md` was deleted from the tree in this same wave, so both
+  sites pointed at a file that no longer exists — and the matching check in
+  `review-plan-artifacts/references/ARTIFACT-CHECKLISTS.md` had already been re-pointed to the
+  sufficiency report, leaving producer and grader contradicting each other about where the null
+  path lives.
+- **Content (superseded fragments, verbatim — two sites):**
+
+  1. The Quickstart section:
+
+     ```
+     own UI over standard auth does not need one — record the null path as one line in
+     `plan.md`'s artifact table ("not applicable — no external integration surface"), never a
+     stub file.
+     ```
+  2. Quality Checklist:
+
+     ```
+     - [ ] Quickstart authored iff a real integration surface exists (≤ 150 lines, cites the contract, never re-documents it); otherwise its null path recorded in `plan.md`
+     ```
+
+- **Kept deliberately:** the whole conditionality rule — quickstart authored **only** on a real
+  integration surface (external consumers, an `x-integration`-wrapped system, or a non-trivial
+  auth sequence), the never-a-stub-file rule, the exact null-path wording ("not applicable — no
+  external integration surface"), and the ≤150-line cap. Only the artifact that holds the record
+  changed.
+- **Budget:** body **10,992** against the 13,412 budget; description untouched at 486 against
+  608. Both inside. (Figure taken after the ruled-wording alignment, not before it.)
+- **Consumers assessed:** `review-plan-artifacts/references/ARTIFACT-CHECKLISTS.md`'s
+  Conditionality-honored check was re-pointed to the sufficiency report earlier in this same
+  wave — producer and grader now agree again. `implement.md` (P1's rewrite) owns the sufficiency
+  report's contents.
+
 ## [v0.64.0] Guardrails cut — When-to-Use + Quick-Reference example removed, tables/contract kept; slim description
 
 - **Disposition:** superseded → Wave 2 editorial guardrails cut (D4 cut line — When-to-Use bullets restate the description; the pagination Quick-Reference is a worked example whose rule lives in the reference).

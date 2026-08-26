@@ -351,7 +351,10 @@ conflict routing, folded same round). Verify pass complete.
 
 ## Build surface
 
-*(sketch — the build wave plans in detail; this is the session's scope statement)*
+*(sketch — the build wave plans in detail; this is the session's scope statement.
+**Discharged: built 2026-08-26 at v0.91.0** — see the DECISIONS.md row's build stamp and
+`CHANGELOG.md` [0.91.0]; the pre-wave dry-run ran first and its instrument findings landed
+as the Addendum below; the D5 falsifier watch survives in BACKLOG.)*
 
 - `implement.md` rewrite: entry re-gates on ratified selection (no accepted-package
   precondition); sufficiency check at entry (D2, D6); conditional design phase with its
@@ -408,3 +411,30 @@ conflict routing, folded same round). Verify pass complete.
   projects wanting a laxer check.
 - **Design-checkpoint attention:** rubber-stamp risk named in D1's cost paragraph; watched
   under the D5 first-live-run watch.
+
+## Addendum — pre-wave dry-run + D2 refinement batch (2026-08-26, post-acceptance, user-ruled)
+
+The V8 pre-wave dry-run ran against kinako row R1-2 (FEAT-001, hook capture / spool / sweep —
+the widest-surface selected row). **Result: the check discriminated** — 3 clauses sufficient
+(1, 7, 10, on real baseline material) / 6 GAP (2, 3, 5, 6, 8, 9, four distinct causes) / 1
+sufficient-only-under-confound (4 — the store already carried the signed EPIC-001 delta).
+Neither falsifier arm tripped. Strongest signal: baseline *precision* converts "unknown" into
+decidable verdicts (the closed 33-command set and fixed-arity schema made clauses 2/8 provable
+gaps). Confound held as expected: the sufficient verdicts are an upper bound — kinako's
+baselines were plan-run-enriched (reconstructed during the EPIC-001 plan run).
+
+**Six instrument defects surfaced; refinement batch user-ruled "as recommended", amending
+D2's clause text at the skill build:**
+- **A1 (clauses 2/3):** "new = gap" was near-unfalsifiable — the all-fail arm's mechanism.
+  Split: *named-and-locatable* (baseline publishes continuation points) = no gap;
+  *named-and-unattachable* (no seam exists to attach it) = gap.
+- **A2 (clauses 9/10):** collided on a capability `delivered` with live rows — both keys move
+  to the **row's** status, never the capability's.
+- **A3 (clause 5):** unlicensed middle state (identifiable concern rows, empty targets) —
+  gap condition rewritten to *targets absent = gap*.
+- **A4 (clause 4):** self-satisfying on planned rows — spine elements whose `Derived from`
+  cites the row's own feature/epic delta are excluded from the no-delta evidence.
+- **A5 (clause 6):** "resolved" defined — a stated mechanism with no weighed alternatives is
+  not resolved.
+- **A6 (fence):** map entries live at `.mochiko/features/FEAT-XXX-<slug>.md`; the
+  `FEAT-XXX/` directory is run output, out of fence.

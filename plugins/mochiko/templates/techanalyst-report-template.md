@@ -13,7 +13,7 @@ report: disclosure
 feature: {{feature_id}}
 phase: analysis | design       # which phase this round produced — discloses, never drives the sequence
 round: {{round}}
-produced: [requirements.md, constraints-and-decisions.md]   # + store-delta NFR rows when touched; design rounds: [data-model.md, contracts/api.yaml, quickstart.md]
+produced: [constraints-and-decisions.md]   # the D-XXX/C-XXX/IP-XXX rows this round wrote; + store-delta NFR rows when touched; design rounds: [data-model.md, contracts/api.yaml, quickstart.md]
 changed_this_round:            # round 1 of a phase: [initial]; later: the reviewer gap IDs addressed
   - "{{G2: NFR-003 given a numeric latency target}}"
 governance_alignment: "{{aligned | the rules/GI IDs touched and any exception, one line}}"
@@ -35,7 +35,7 @@ handoff: "{{which artifacts to grade + known soft spots, one line}}"
 2. **Machine-first; the lead and reviewer(s) read the fields.** A routine round is
    frontmatter-only. Add `## Notes of note` only for genuine difficulties or non-obvious
    calls. The artifacts themselves are what the reviewer(s) grade — never restate their
-   content here (cite TR-/C-/NFR-/D- IDs).
+   content here (cite C-/D-/IP-/NFR- IDs).
 3. **`phase`** discloses which phase this round produced (`analysis` or `design`); the lead
    owns the two-phase sequence.
 4. **`changed_this_round`** — first round of a phase: `[initial]`. Later rounds: the

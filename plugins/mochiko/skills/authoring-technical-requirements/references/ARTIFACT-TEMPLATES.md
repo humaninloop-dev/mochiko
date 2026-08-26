@@ -1,85 +1,10 @@
 # Artifact Templates
 
-Templates and field definitions for the **three analysis layers this skill authors**: `requirements.md` (TR-XXX), `constraints-and-decisions.md` (C-XXX / D-XXX / IP-XXX), and the NFR-XXX grammar whose rows are homed on the architecture store's concern rows (§3 — no `nfrs.md` file exists). All three follow the deliverable envelope in [`artifact-format.md`](../../../templates/artifact-format.md): the statement carries the content (no separate Description paragraph), entries are one line each, upstream text is cited by ID and never re-quoted, and each artifact's summary table is its **ID index** — the coverage surface reviewers verify against. Register: `full` per that envelope's rule 11 — with every ID, numeric target and constraint clause a never-compress item, and compression stopping wherever it would make a requirement ambiguous.
+Templates and field definitions for the **two constraint-layer surfaces this skill authors**: `constraints-and-decisions.md` (C-XXX / D-XXX / IP-XXX plus the thin INT-XXX / DS-XXX declarations), and the NFR-XXX grammar whose rows are homed on the architecture store's concern rows (§2 — no `nfrs.md` file exists). Both follow the deliverable envelope in [`artifact-format.md`](../../../templates/artifact-format.md): the statement carries the content (no separate Description paragraph), entries are one line each, upstream text is cited by ID and never re-quoted, and each artifact's summary table is its **ID index** — the coverage surface reviewers verify against. Register: `full` per that envelope's rule 11 — with every ID, numeric target and constraint clause a never-compress item, and compression stopping wherever it would make a requirement ambiguous.
 
 > **Design-artifact templates live with their canonical owners.** The `data-model.md` template (entities + per-attribute data-sensitivity taxonomy) is owned by `mochiko:patterns-entity-modeling`; the `contracts/api.yaml` template (endpoints, schemas, and the `x-integration` boundary extension) and the integration `quickstart.md` are owned by `mochiko:patterns-api-contracts`. This bundle declares the analysis requirements those design artifacts build on — it does not restate their templates.
 
-## 1. Technical Requirements (requirements.md)
-
-### Document Template
-
-```markdown
-# Technical Requirements: {feature_id}
-
-> Technical decomposition of business functional requirements.
-
-## Traceability Summary  *(the ID index)*
-
-| Source FR | Technical Requirements | Coverage |
-|-----------|----------------------|----------|
-| FR-001 | TR-001, TR-002, TR-003 | Full |
-| FR-002 | TR-004, TR-005 | Full |
-
----
-
-## TR-001: [Descriptive Title]
-
-**FR-001 · MUST** — System MUST [technical capability in technology-agnostic terms; the statement is the description].
-
-**Criteria:**
-- [Testable condition, one line]
-- [Testable condition, one line]
-
-**Deps:** C-001 · NFR-002  *(omit if none)*
-
----
-```
-
-### Field Definitions
-
-| Field | Required | Format | Rules |
-|-------|----------|--------|-------|
-| ID | Yes | TR-XXX | Sequential, three-digit padded, no gaps |
-| Title | Yes | Free text | Descriptive, concise |
-| Source | Yes | FR-XXX reference(s) | On the statement line; must reference existing FR(s) |
-| Priority | Yes | MUST / SHOULD / MAY | RFC 2119 keyword, on the statement line |
-| Statement | Yes | One-to-two lines | Technology-agnostic; WHAT, not HOW — no separate Description paragraph |
-| Criteria | Yes | Bullet list, one line each | Each item independently testable |
-| Deps | No | ID references | C-XXX, NFR-XXX, other TR-XXX — cited by ID, never re-quoted |
-
-### Decomposition Examples
-
-**Business FR:** "Users must be able to sign in to their account" (FR-001)
-
-| TR | Title | Aspect |
-|----|-------|--------|
-| TR-001 | Authentication Flow | Credential validation, error handling |
-| TR-002 | Session Management | Token issuance, expiration, refresh |
-| TR-003 | Account Lockout | Brute-force protection, lockout thresholds |
-| TR-004 | Authentication Audit | Login attempt logging, anomaly flags |
-
-Each TR addresses a distinct technical concern the single business FR implies but does not state.
-
-### Writing Criteria
-
-Good criteria are independently testable (pass/fail), technology-agnostic, and cover success, failure, and edge cases — one line each:
-
-```markdown
-## TR-001: Authentication Flow
-
-**FR-001 · MUST** — System MUST validate credentials and establish an authenticated session.
-
-**Criteria:**
-- Valid credentials result in an authenticated session
-- Invalid credentials return a generic error (no credential-type leakage)
-- Expired accounts cannot authenticate
-- Authentication completes within the NFR-001 latency target
-- All attempts logged per TR-004
-```
-
----
-
-## 2. Constraints and Decisions (constraints-and-decisions.md)
+## 1. Constraints and Decisions (constraints-and-decisions.md)
 
 ### Document Template
 
@@ -103,7 +28,7 @@ Good criteria are independently testable (pass/fail), technology-agnostic, and c
 
 **infrastructure · blocking · source:** [where it originates] — [the boundary stated as a one-to-two-line fact, not a preference].
 
-**Impact:** eliminates [design choice A] · requires [consideration B] · affects TR-001, TR-003 · shapes D-001
+**Impact:** eliminates [design choice A] · requires [consideration B] · shapes D-001
 **Verify:** [how to confirm it still applies — one line]  *(omit if self-evident)*
 
 ---
@@ -139,7 +64,8 @@ Good criteria are independently testable (pass/fail), technology-agnostic, and c
 > **No structural-decision subsection.** Topology choices — component boundaries, interaction
 > style, responsibility placement — are recorded in the architecture store's delta, whose ruling
 > is its own decision record. They never appear as D-XXX rows here. Every D-XXX in this artifact
-> has one origin: the analysis-time author.
+> has one origin: the design-phase author (or, for a build-time decision, the gated
+> `baseline-delta.md` path).
 
 ---
 
@@ -164,6 +90,33 @@ Good criteria are independently testable (pass/fail), technology-agnostic, and c
 **Deps:** IP-002  *(omit if none)*
 
 ---
+
+## Part 4: Declarations (INT-XXX / DS-XXX)
+
+### Declaration Summary  *(the ID index)*
+
+| ID | Kind | Source | Downstream home |
+|----|------|--------|-----------------|
+| INT-001 | integration | FR-001 | POST /auth/token (`x-integration`) |
+| DS-001 | sensitivity | FR-004 | User.email (Confidential) |
+
+---
+
+### INT-001: [External System]
+
+**integration · criticality: hard · source:** FR-001 — the feature MUST integrate with [system]; its unavailability is [criticality].
+
+**Authored downstream:** [endpoint carrying the `x-integration` boundary] (`mochiko:patterns-api-contracts`)
+
+---
+
+### DS-001: [Data Class]
+
+**sensitivity · source:** FR-004 — the feature handles [data], which is sensitive and MUST be classified and protected.
+
+**Authored downstream:** [entity.attribute] (`mochiko:patterns-entity-modeling`)
+
+---
 ```
 
 ### Field Definitions — Constraints
@@ -176,7 +129,7 @@ Good criteria are independently testable (pass/fail), technology-agnostic, and c
 | Source | Yes | Free text | On the statement line; traceable origin — system, regulation, contract, team |
 | Severity | Yes | blocking / significant / minor | On the statement line |
 | Statement | Yes | One-to-two lines | States the boundary as fact — no separate Description paragraph |
-| Impact | Yes | One line, `·`-separated (or a short bullet list) | What this eliminates or forces; references to affected TR-XXX and shaped D-XXX |
+| Impact | Yes | One line, `·`-separated (or a short bullet list) | What this eliminates or forces; references to the D-XXX it shapes |
 | Verify | No | One line | How to confirm the constraint still applies |
 
 ### Field Definitions — Decisions
@@ -205,6 +158,17 @@ Good criteria are independently testable (pass/fail), technology-agnostic, and c
 | Statement | Yes | One-to-two lines | WHAT to provision, not HOW — no separate Description paragraph |
 | Criteria | Yes | Bullet list, one line each | Independently verifiable |
 | Deps | No | IP-XXX refs | Other infra items this depends on |
+
+### Field Definitions — Declarations
+
+| Field | Required | Format | Rules |
+|-------|----------|--------|-------|
+| ID | Yes | INT-XXX / DS-XXX | Sequential per prefix, three-digit padded, no gaps |
+| Kind | Yes | integration / sensitivity | On the statement line |
+| Source | Yes | FR-XXX / SC-XXX reference | On the statement line; the business promise the declaration serves |
+| Criticality | INT only | hard / degraded / optional | How the feature behaves when the external system is unavailable |
+| Statement | Yes | One line | *That* the concern exists — never its downstream structure |
+| Authored downstream | Yes | Artifact + owning skill | Where the boundary or classification is built out; a declaration with no named home is incomplete |
 
 ### Infrastructure Types
 
@@ -242,7 +206,7 @@ Good criteria are independently testable (pass/fail), technology-agnostic, and c
 
 ---
 
-## 3. Non-Functional Requirements (NFR-XXX — homed on architecture-store concern rows)
+## 2. Non-Functional Requirements (NFR-XXX — homed on architecture-store concern rows)
 
 **There is no `nfrs.md` document template here.** An NFR-XXX lives as fields on its concern row in
 the architecture store, so a concern has one home — stance, pattern, targets, as-built, drift
@@ -250,10 +214,10 @@ together. The **row shape** is the store's (`mochiko-cli template architecture-s
 `plugins/mochiko/schemas/architecture-store.yaml` raw when the binary is absent); what follows is
 the **grammar** this skill owns and the store row carries: the required fields, the categories,
 and what a measurement method must name. A new or changed target reaches the store as part of a
-plan-time store delta, written at the user's sign-off — never edited into ruled truth in place.
+design-time store delta, written at the user's sign-off — never edited into ruled truth in place.
 
-Trace chains are unchanged: `TR-XXX → NFR-XXX` still resolves, and `Applies to:` still cites
-TR-XXX. Only the path moved.
+The trace chain resolves to the business source: `FR-XXX / SC-XXX → NFR-XXX`, and `Applies to:`
+cites the C-XXX or IP-XXX the target constrains.
 
 ### Field Definitions
 
@@ -262,11 +226,11 @@ TR-XXX. Only the path moved.
 | ID | Yes | NFR-XXX | Sequential, three-digit padded, no gaps |
 | Title | Yes | Free text | Descriptive, concise |
 | Category | Yes | performance / availability / scalability / security / usability / maintainability | On the statement line; exactly one category |
-| Source | Yes | Free text | On the statement line; business requirement, SLA, or stakeholder justifying the target |
+| Source | Yes | FR-XXX / SC-XXX reference | On the statement line; the business promise the target serves — an SLA or stakeholder gloss may ride alongside, never instead |
 | Requirement | Yes | One line | The quality attribute — the statement IS the description |
 | Target | Yes | Numeric | Specific, measurable threshold |
 | Measured | Yes | Compact line or short list | Tool, conditions, frequency of measurement |
-| Applies to | No | TR-XXX references | Which technical requirements this NFR constrains |
+| Applies to | No | C-XXX / IP-XXX references | Which constraints or provisioning items this NFR constrains |
 
 ### NFR Categories with Examples
 
@@ -290,7 +254,7 @@ NFR-001 — API Response Latency
 
 **Target:** p95 < 200ms, p99 < 500ms
 **Measured:** APM, rolling 24h windows, continuous — at 1,000 concurrent users (70% read / 20% write / 10% search); excludes maintenance windows and bulk imports
-**Applies to:** TR-001 · TR-005
+**Applies to:** C-001 · IP-002
 ```
 
 ---
@@ -299,8 +263,8 @@ NFR-001 — API Response Latency
 
 All artifact types follow the same numbering conventions:
 
-1. **Three-digit padding:** TR-001, not TR-1
-2. **Sequential, no gaps:** TR-001, TR-002, TR-003 (never TR-001, TR-003)
-3. **Prefix identifies type:** TR- / C- / D- / NFR- / IP-
-4. **Cross-references use full ID:** "See TR-001" not "See requirement 1"
+1. **Three-digit padding:** C-001, not C-1
+2. **Sequential, no gaps:** C-001, C-002, C-003 (never C-001, C-003)
+3. **Prefix identifies type:** C- / D- / NFR- / IP- / INT- / DS-
+4. **Cross-references use full ID:** "See C-001" not "See constraint 1"
 5. **Grouping by concern:** Related items should be sequential where possible

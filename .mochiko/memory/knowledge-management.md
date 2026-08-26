@@ -39,7 +39,7 @@ line per term.
 ## Landing ritual (subtractive)
 
 Closing **or superseding** work is ONE move with three parts, in the same moment at the command
-landing step (brainstorm close · setup/amend · specify/plan/implement landings):
+landing step (brainstorm close · setup/amend · specify/implement landings):
 
 1. append the decision row (and any per-decision record);
 2. move the closed `BACKLOG.md` item to the trail as its one-line DONE + pointer;

@@ -2,7 +2,7 @@
 
 Kernel-free agent-skill framework for Claude Code: sound-loop workflows built from native agents and skills.
 
-Mochiko is the successor to human-in-loop. The bet: engineering discipline lives in the quality of the skill library, not in a deterministic kernel. Every command states its whole contract up front — `setup`, `specify`, and `brainstorm` as **goal + harness** (a verifiable done-condition, default FAIL, plus a non-waivable frame), `feature`, `plan`, and `implement` as **Delivery-Manager charters** (an identity, an adaptive goal protocol that names the finish line before work starts, and a non-waivable Boundaries floor) — and the lead plans and orchestrates the run natively, choosing teammates or subagents per seat. Every workflow is a **sound loop**: a producer authors, an independent reviewer grades (never the author), and **you** are the final validator at named human gates.
+Mochiko is the successor to human-in-loop. The bet: engineering discipline lives in the quality of the skill library, not in a deterministic kernel. Every command states its whole contract up front — `setup`, `specify`, and `brainstorm` as **goal + harness** (a verifiable done-condition, default FAIL, plus a non-waivable frame), `feature`, `architecture`, and `implement` as **Delivery-Manager charters** (an identity, an adaptive goal protocol that names the finish line before work starts, and a non-waivable Boundaries floor) — and the lead plans and orchestrates the run natively, choosing teammates or subagents per seat. Every workflow is a **sound loop**: a producer authors, an independent reviewer grades (never the author), and **you** are the final validator at named human gates.
 
 ## Install
 
@@ -15,7 +15,7 @@ Once per project, establish governance with `/mochiko:setup` — it interrogates
 
 ### The template-schema CLI (optional)
 
-The install above is complete on its own — the plugin is markdown-only, with **no build step and no binary dependency**. A small Rust CLI, `mochiko-cli`, additionally renders authoring guidance for the eight pipeline artifact templates from the schema data files shipped at `plugins/mochiko/schemas/*.yaml`. When the binary is absent, agents Read those YAML files raw — the schemas are the source of truth either way, so nothing degrades but formatting.
+The install above is complete on its own — the plugin is markdown-only, with **no build step and no binary dependency**. A small Rust CLI, `mochiko-cli`, additionally renders authoring guidance for the seven pipeline artifact templates from the schema data files shipped at `plugins/mochiko/schemas/*.yaml`. When the binary is absent, agents Read those YAML files raw — the schemas are the source of truth either way, so nothing degrades but formatting.
 
 Install it once with Cargo (Rust toolchain required; no prebuilt binaries are published yet). As a plugin user — the plugin install does not ship the crate — install straight from GitHub:
 
@@ -32,7 +32,7 @@ mochiko-cli template <name>            # producer view: schema + example + good/
 mochiko-cli template <name> --check    # checklist view: one check line per section
 ```
 
-`<name>` is one of `spec`, `plan`, `tasks`, `feature-entry`, `features-index`, `codebase-analysis`, `governance-intent`, `governance-surfaces`. Schema source resolves `--schemas-dir <path>` → `./plugins/mochiko/schemas/` → the compile-time embedded copy. The `--check` view is a guidance view, never a linter — it takes no artifact input and always exits 0 on success.
+`<name>` is one of `spec`, `tasks`, `feature-entry`, `features-index`, `codebase-analysis`, `governance-intent`, `governance-surfaces`. Schema source resolves `--schemas-dir <path>` → `./plugins/mochiko/schemas/` → the compile-time embedded copy. The `--check` view is a guidance view, never a linter — it takes no artifact input and always exits 0 on success.
 
 ## The capability map
 
@@ -50,16 +50,15 @@ flowchart TD
     gate -->|"small, well-understood,<br/>cheap to revert"| direct["implement directly<br/>(plain session, record in hand)"]
     gate -->|"a new capability"| spec["/mochiko:specify → spec.md<br/>intent · stories · prototype · selection"]
     desk -->|"new-shape work"| spec
-    desk -->|"work rows / delta cards"| plan
-    spec --> plan["/mochiko:plan → implementation package"]
-    plan --> impl["/mochiko:implement → working code"]
+    spec --> impl["/mochiko:implement → working code<br/>(sufficiency check → design if needed → build)"]
+    desk -->|"work rows / delta cards"| impl
 ```
 
 | Path | Take it when | Example |
 |---|---|---|
 | **Brainstorm → implement** (bypass the pipeline) | One decision surface; you could hold the whole diff in your head; a wrong call is cheap to revert; the accepted record already reads like an implementation brief | Choosing a caching strategy and applying it; adding a CLI flag; a contained refactor |
 | **Product desk** (`/mochiko:feature`) | A bug, an improvement, or growth of a capability the map already carries — or you're not sure where a demand belongs. Each visit opens with a map-health report, converges to a one-line goal with an explicit done condition, and routes the demand; growth work rows and bug/improvement delta cards dispatch straight to the pipeline | Fixing a pagination bug; adding an export format to an existing reporting capability |
-| **Pipeline** (`/mochiko:specify` onward) | New-shape capability work: several requirements, unknowns worth adversarial review, brownfield risk. Specify cuts the work into rows grouped per capability; you select what builds now; plan and implement then run once per capability | A new API endpoint set with a data-model change |
+| **Pipeline** (`/mochiko:specify` onward) | New-shape capability work: several requirements, unknowns worth adversarial review, brownfield risk. Specify cuts the work into rows grouped per capability; you select what builds now; implement then runs once per capability | A new API endpoint set with a data-model change |
 
 Tie-breaker: if the accepted record reads like a feature description, run `/mochiko:specify` with it. If it names a capability the map already carries, take it to `/mochiko:feature`. If it reads like a to-do list, just build it.
 
@@ -69,15 +68,14 @@ Tie-breaker: if the accepted record reads like a feature description, run `/moch
 2. Implement in a plain session with the record as the brief: *"implement D1–D4 from `.mochiko/brainstorms/<slug>/record.md`"*. The record is built to stand alone — standalone fitness is part of what the reviewer grades.
 3. Guardrail: if implementation starts sprouting requirements questions mid-flight, you bypassed too far — stop and run `/mochiko:specify` with the record as input. Nothing is lost; the record is exactly what specify wants.
 
-## The pipeline: specify → plan → implement
+## The pipeline: specify → implement
 
 Each stage is its own command, converges on reviewed artifacts, and ends at a human acceptance gate. Stop at any stage — the artifact is the interface.
 
 ```mermaid
 flowchart LR
     R["record.md /<br/>feature description"] -- "/mochiko:specify" --> S["spec.md + prototype/<br/>+ capability-map delta"]
-    S -- "/mochiko:plan<br/>(per capability)" --> P["implementation package<br/>(.mochiko/features/FEAT-XXX/)"]
-    P -- "/mochiko:implement" --> C["working, verified code;<br/>delivered rows fold into the map"]
+    S -- "/mochiko:implement<br/>(per capability)" --> C["working, verified code;<br/>delivered rows fold into the map"]
 ```
 
 **`/mochiko:specify`** opens with an intent stage — scope, delivery, depth, constraints, out-of-scope, the capability map an obligated read — where the product-manager seat states a **capability frame**: which capabilities the work touches, extend vs mint, as a hypothesis the stories may overturn. You confirm the synthesis before anything is authored. The spec that lands carries prioritized user stories, testable requirements, measurable success criteria, and two sections:
@@ -85,9 +83,13 @@ flowchart LR
 - **Screens & Flows** — when the feature has a user-facing surface, a clickable low-fi HTML prototype is built *with* the stories: you click each story's screens while the story is still being shaped. Flows are binding on the design; pixels stay deliberately rough.
 - **Feature Selection** — after stories, the PM confirms the frame, cuts **work rows** grouped per capability, and runs the story filter (rejections recorded, never silent). You rule the selection — which rows build now — with each capability's completeness view in front of you. The map delta lands as one atomic batch at spec acceptance.
 
-**`/mochiko:plan`** runs once per capability and its selected work rows. It opens with a **plan-the-plan proposal** you approve — the artifact list and depth, rung-justified against a simplest-execution ladder and independently contested; the approved list is the run's floor. Then the proposed artifacts land: technical requirements, constraints and decisions, NFRs, an architecture delta **you sign off on a rendered diagram before detailed design builds on it** (when proposed), data-model and API-contract deltas against the shared `.mochiko/product/` baselines, and `tasks.md` as cycle cards — stories, dependencies, acceptance criteria, and a real-infrastructure `TEST:` gate per card. Artifacts live at `.mochiko/features/FEAT-XXX/`; a desk delta card collapses the run to confirming the card.
+**`/mochiko:implement`** runs once per capability and its selected work rows. It opens with a **sufficiency check**: an independent seat grades, work row by work row, whether the spec, the architecture store, and the product baselines already carry enough for a builder to build it — testable criteria, named contract and data surfaces, structural triggers, NFR targets, commodity decisions, dependency order, the screen-to-contract trace, and any collision with delivered or in-flight work. The verdict is binding and lands as a durable report; a disputed clause defaults to a gap and comes to you.
 
-**`/mochiko:implement`** executes the cycle cards test-first (red/green/refactor), foundation cycles before feature cycles. The builder decomposes each card into concrete tasks at build time. Implementation and verification are never the same seat; verification runs against real infrastructure with captured evidence, and the final validation runs from a dependency-cold snapshot. Any deviation from the signed-off architecture stops and comes back to you. Your acceptance is the landing: delivered work rows fold into the capability's extent and touched baselines take their delta folds — no separate feature-close stage.
+What happens next depends on that verdict. **Zero gaps** goes straight to card authoring and build. **Any gap** fires an **in-run design phase scoped to exactly those gaps and nothing else** — data-model and API-contract deltas against the shared `.mochiko/product/` baselines, and an architecture-store delta **you sign at a blocking checkpoint before any code is written**. A seat that did not author the design grades it. Then `tasks.md` lands as cycle cards — stories, dependencies, acceptance criteria, and a real-infrastructure `TEST:` gate per card — authored by a design seat, never by the builder who will execute them, and confirmed by you at their own checkpoint.
+
+Build then executes the cards test-first (red/green/refactor), foundation cycles before feature cycles. The builder decomposes each card into concrete tasks at build time. Implementation and verification are never the same seat; verification runs against real infrastructure with captured evidence, and the final validation runs from a dependency-cold snapshot. A builder who hits undesigned structure mid-cycle stops, and the design phase re-fires for exactly that discovery. Any deviation from the signed store delta stops and comes back to you. Your acceptance is the landing: delivered work rows fold into the capability's extent and touched baselines take their delta folds — no separate feature-close stage.
+
+> `/mochiko:plan` was retired at v0.91.0. Planning was not deprecated — it moved inside implement, behind the sufficiency check, so design work happens when a batch actually needs it instead of as a fixed stage. Rationale: [`.mochiko/brainstorms/plan-stage-utility/record.md`](.mochiko/brainstorms/plan-stage-utility/record.md).
 
 ## Every workflow is a sound loop
 
@@ -110,8 +112,8 @@ Four rules, no exceptions: a done-condition declared before the loop runs (defau
 | `/mochiko:brainstorm` | `record.md` decision record | you + lead think; cold review at convergence |
 | `/mochiko:feature` | Map-health report, routed demands, work rows / delta cards dispatched to the pipeline | Delivery-Manager desk; every visit converges to an explicit done condition |
 | `/mochiko:specify` | `spec.md` (intent · stories · Screens & Flows · Feature Selection) + `prototype/` + the capability-map delta | intent stage → product-manager frames, requirements-analyst + product-engineer author ↔ devils-advocate |
-| `/mochiko:plan` | Implementation package per the approved proposal at `.mochiko/features/FEAT-XXX/` (analysis · architecture when proposed, signed · design deltas · `tasks.md` cycle cards) | plan-the-plan proposal → technical-analyst + principal-architect ↔ completeness + feasibility reviewers |
-| `/mochiko:implement` | Working, verified code; the acceptance landing folds delivered rows into the map | staff-engineer ↔ qa-engineer, cycle by cycle |
+| `/mochiko:architecture` | The product architecture store at `.mochiko/product/architecture/` — baseline, per-row stances, amendments, drift dispositions | health view → one-line visit goal → principal-architect authors ↔ tech-lead grades ↔ you rule every stance |
+| `/mochiko:implement` | Working, verified code; design artifacts at `.mochiko/features/FEAT-XXX/` where the batch needed them; the acceptance landing folds delivered rows into the map | sufficiency check → conditional design phase (author ↔ independent grade ↔ your sign-off) → card confirm → staff-engineer ↔ qa-engineer, cycle by cycle |
 
 ## Going deeper
 

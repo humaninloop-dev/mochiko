@@ -1,7 +1,7 @@
 # Advocate Report Template
 
 The reviewer's adversarial critique of an artifact under review — gaps found, clarifications
-needed, and a recommended verdict. The shared emit shape for the specify and plan review
+needed, and a recommended verdict. The shared emit shape for the specify and implement review
 seats. Envelope + shared rules (machine-first, findings schema, conditional
 prose): `templates/report-format.md` — this file carries only the review payload.
 
@@ -12,7 +12,7 @@ prose): `templates/report-format.md` — this file carries only the review paylo
 report: review
 feature: {{feature_id}}
 round: {{round}}
-incremental: false            # true when this round reviews only a delta (e.g. plan Phase-2 incremental mode) — name the scope in `scope:`
+incremental: false            # true when this round reviews only a delta (e.g. a re-review of the design-phase output after a fix round) — name the scope in `scope:`
 verdict: ready | needs-revision | critical-gaps
 verdict_basis: "{{one line — what drives the verdict}}"
 strengths: "{{one line, comma-brief — what genuinely works}}"
@@ -51,7 +51,7 @@ findings:
 4. **`strengths:` is one line, not a section** — evidence the review engaged with what
    works, kept comma-brief.
 5. **`incremental:`/`scope:`** — set on rounds that review a delta rather than the full
-   artifact set (e.g. plan's Phase-2 incremental mode), so the verdict's coverage is
-   honest.
+   artifact set (e.g. a re-review of the design-phase output after a fix round), so the
+   verdict's coverage is honest.
 6. **Zero findings with a `ready` verdict** still requires `verdict_basis` and
    `strengths` — a clean report is frontmatter-only, never empty.

@@ -2,6 +2,41 @@
 
 Entry formats: `strips/README.md`.
 
+## [v0.91.0] Dead `commands/plan.md` pointer re-homed; `plan.md` struck from the not-a-report list
+
+- **Disposition:** superseded → `commands/implement.md`. Two sites named surfaces the plan-stage
+  retirement killed. The footer site was the material one: `commands/plan.md` was deleted this
+  same wave, so the Consumed-by line had become a **dead pointer** — a GI-005 defect, not a
+  cosmetic staleness. The report-envelope binding it recorded did not disappear with the command;
+  it moved to implement's Reports tool, which now names this file and the `sufficiency-report.md`
+  that rides the envelope, so the pointer re-homes rather than being dropped.
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/brainstorms/plan-stage-utility/record.md` D1 — implement becomes the single
+  downstream run; D4 and the Build surface — the sufficiency verdict lands as a report under
+  `templates/report-format.md` and implement's Reports tool gains the envelope binding; `plan.md`
+  the summary artifact dies with no restatement artifact; `DECISIONS.md` 2026-08-26 row.)
+- **Content (superseded, verbatim, two sites):**
+  (1) The opening not-a-report carve: "(Deliverables — spec.md, plan.md, tasks.md, the working
+  code — are not reports and are not governed here.)" Now: "(Deliverables — spec.md, tasks.md,
+  the design-phase deltas, the working code — are not reports and are not governed here.)"
+  (2) The Consumed-by footer's closing member: "`commands/plan.md`'s report-envelope binding."
+  Now: "`commands/implement.md`'s report-envelope binding."
+- **Kept deliberately:** all nine shared rules, the envelope block, the `report:` type enumeration
+  (including `feasibility` and `disclosure`, whose producing surfaces survive re-scoped), the
+  machine-first doctrine, and the "Who reads a report" section are untouched — this is a pointer
+  and example edit only, and the format version stays v3. Rule 9's *other* reference to
+  `commands/implement.md` (the cycle checkpoint's devolved-branch terms) was already live and is
+  unchanged; only the footer pointer moved. The carve's purpose — marking the deliverable/report
+  boundary — is unchanged; the boundary itself did not move, only two of the examples naming it.
+- **Consumers assessed:** the re-pointed target was verified live before the edit rather than
+  assumed — `commands/implement.md` carries the Reports tool binding this file by path, listing
+  `sufficiency-report.md` alongside the cycle, verification, final-validation, and built-vs-signed
+  diff reports, so the new pointer resolves. The three other Consumed-by members
+  (`executing-tdd-cycle/references/CYCLE-REPORT-FORMAT.md`,
+  `testing-end-user/references/REPORT-TEMPLATES.md`, and the report templates in this directory)
+  are unaffected. `templates/artifact-format.md` is the sibling envelope governing the deliverable
+  side of the carve; it was re-keyed in the same wave and the two lists now agree.
+
 ## [v0.82.0] Rule 9's mechanical bounce widened to every lead-collected report (format v3)
 
 - **Disposition:** superseded → the widened rule 9: the prose-on-a-clean-report defect check was

@@ -1,7 +1,7 @@
 ---
 name: devils-advocate
 description: |
-  Adversarial reviewer who stress-tests finished artifacts — specifications, plan packages, brainstorm records, governance intent — and probes built systems in the blind gap-finding pass. Asks the hard "what if" questions that surface costly problems while they are still cheap to fix, and returns severity-ranked document findings with clarifying questions and a recommended verdict.
+  Adversarial reviewer who stress-tests finished artifacts — specifications, design packages, brainstorm records, governance intent — and probes built systems in the blind gap-finding pass. Asks the hard "what if" questions that surface costly problems while they are still cheap to fix, and returns severity-ranked document findings with clarifying questions and a recommended verdict.
 model: opus
 color: red
 skills: review-specifications, review-plan-artifacts, review-brainstorm, review-governance-intent, testing-gap-finding
@@ -17,7 +17,7 @@ reach for the one whose artifact is in front of you; its scope lives in the skil
 here:
 
 - **`mochiko:review-specifications`** — gap review of a drafted spec (`spec.md`).
-- **`mochiko:review-plan-artifacts`** — completeness review of the plan analysis/design sets and the cycle cards (`tasks.md`).
+- **`mochiko:review-plan-artifacts`** — completeness review of the design output sets and the cycle cards (`tasks.md`).
 - **`mochiko:review-brainstorm`** — cold end-stage review of a thinking session's `record.md`.
 - **`mochiko:review-governance-intent`** — cold pre-ratification review of the setup synthesis (`governance-intent.md`).
 - **`mochiko:testing-gap-finding`** — the final-validation blind gap-finding pass against a built system: expectation derivation behind the input fence, the probe kit and mutation lens, the finding kinds, and the fold-back.

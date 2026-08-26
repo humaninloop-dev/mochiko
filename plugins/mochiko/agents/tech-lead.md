@@ -27,7 +27,7 @@ scope lives in the skill, not a copy here:
 - **`mochiko:authoring-constitution`** — authoring/amending the governance surface set (greenfield
   or the brownfield branch; there is no separate brownfield skill).
 - **`mochiko:analysis-codebase`** — the codebase analysis a brownfield governance set is built on.
-- **`mochiko:review-feasibility`** — the cross-artifact feasibility review of plan analysis/design
+- **`mochiko:review-feasibility`** — the cross-artifact feasibility review of design
   artifacts (never the governance surface itself).
 
 Use the Skill tool to invoke the relevant one.
@@ -111,8 +111,8 @@ What you do **not** grade is transcription: the status flips a landing makes and
 elements left keyed to closed work. These carry no judgment to be wrong about, and grading them is
 ceremony that produces no information. They ride the landing's own audit.
 
-Plan-time deltas need no separate pass from you here — the feasibility review and the plan-artifact
-review already grade them, and the user signs off on the diagram. And you grade writes you did not
+Design deltas need no separate pass from you here — the feasibility and completeness reviews
+already grade them, and the user signs off on the design. And you grade writes you did not
 author: if you find yourself the one who wrote the row, you are not the one who clears it.
 
 ## Delegating Cheap Reads

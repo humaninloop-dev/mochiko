@@ -53,37 +53,23 @@ git history (this line, before this groom).*
   `.mochiko/decisions/2026-08-26-review-governance-intent-true-deletion-cut.md`,
   `.mochiko/decisions/2026-08-26-validation-constitution-true-deletion-cut.md`).
 
-## Plan-retirement build
+## Plan-retirement residuals
 
-Ruled 2026-08-26, pair-cold-reviewed (zero outright kills) + verify CLEAN round 3, accepted
-(`plan-stage-utility` D1–D7; D1 `Contested`, D2 `Assumed`). Cold-buildable; its landing
-closed the plan-structure-yagni watch superseded (→ trail).
+Ruled 2026-08-26 (`plan-stage-utility` D1–D7; D1 `Contested`, D2 `Assumed`), pair-cold-reviewed
+(zero outright kills) + verify CLEAN round 3, accepted. **Built same day at v0.91.0** (build
+item + discharged dry-run → trail). Open residual:
 
-- [ ] **Build item** (2026-08-26; provenance:
-  [record](.mochiko/brainstorms/plan-stage-utility/record.md) Build surface) —
-  `implement.md` rewrite (sufficiency check at entry per D2's ten clauses + D6 delta branch ·
-  conditional design phase with blocking checkpoint + mid-run re-fire · card authoring +
-  card-confirm checkpoint · epic spine always-fired · build-time decision gating ·
-  map-entry hardening incl. architecture link · report-envelope binding · R4
-  regression-sweep reach note) · `plan.md` retirement (charter-protected supersession
-  strips — every obligation rehomed by D1–D7 or superseded on the record; author≠grader
-  audit) · sufficiency-check carrier skill (D2 = content spec) · ~20 re-points (specify
-  next-step · feature growth-row routing · authoring-epic joint-proposal re-key ·
-  patterns-plan-minimalism re-scope · patterns-vertical-tdd · review-plan-artifacts /
-  review-feasibility re-scope · architecture.md delivery line · ARCHITECTURE.md / README ·
-  authoring-technical-requirements retirement-or-re-scope · patterns-adopt-first
-  description-class edit · testing-gap-finding fence re-key · router · plan.yaml
-  disposition · feasibility-report-template · CHANGELOG / marketplace / plugin.json).
-- [ ] **Pre-wave dry-run — owed BEFORE the build wave** (2026-08-26; provenance: record
-  verify V8) — run the D2 check against one existing kinako work row; confound on record
-  (kinako's specs were authored under a plan-following pipeline); first discrimination
-  datapoint, seeds the falsifier watch below.
 - [ ] **Sufficiency-check first-live-run watch, bidirectional falsifier** (2026-08-26;
-  provenance: record D5 + Open questions) — all-pass (no discrimination) or all-fail (the
-  design phase fires almost always — plan reborn inside implement) weakens D1: revisit at
-  the record. Also watched: design-checkpoint attention (rubber-stamp risk) ·
-  landing-time design surprises on the zero-gap path · gap-finding fence adequacy after
-  `requirements.md` dies (D3 re-key).
+  provenance: record D5 + Open questions + Addendum) — all-pass (no discrimination) or
+  all-fail (the design phase fires almost always — plan reborn inside implement) weakens D1:
+  revisit at the record. The pre-wave kinako dry-run (R1-2: 3 sufficient / 6 gap, four
+  distinct causes, neither arm tripped) is the first datapoint; live runs are the real test.
+  Also watched: design-checkpoint attention (rubber-stamp risk) · landing-time design
+  surprises on the zero-gap path · gap-finding fence adequacy after `requirements.md` died
+  (D3 re-key) · the V1-A1 audit note — `quickstart.md` has no seeding path (D2's sources
+  never grade it absent; the null-path record survives on the sufficiency report, but nothing
+  seeds the file when a real external-integration surface exists — repair rides the first
+  live run that feels it, never invented earlier).
 
 ## Product-architecture store build
 

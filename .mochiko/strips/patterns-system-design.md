@@ -7,6 +7,47 @@ primitives; design: `.mochiko/brainstorms/validator-scope-and-verbosity/record.m
 **M1 near-cap description** — its description was 1,514 chars, within ~22 of the 1,536 delivery
 cap; the slim form is the highest-value part of this cut.
 
+## [v0.91.0] No-delta claim's home re-keyed: "the plan package" → "the design-phase package" — plan-stage retirement D1
+
+- **Disposition:** superseded → the same one-line no-delta claim, recorded in the design-phase
+  package.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1: `/mochiko:plan` retires and its
+  design work moves into `/mochiko:implement`'s design phase; wording ruled by the wave lead
+  2026-08-26).
+- **Content (superseded fragment, verbatim):**
+
+  ```
+  changes nothing structurally" — recorded in the plan package and shown at the gate.
+  ```
+
+- **Kept deliberately:** the whole no-delta rule, including the **protected line** relocated
+  into this skill at v0.81.0 — the one-line claim itself, "**The no-delta judgment is always
+  shown, never made silently**", and the no-diagram/store-untouched consequence. Only the name
+  of the package holding the claim changed.
+- **Budget:** body 9,304 → **9,312** against the 11,047 budget; description unchanged at 649
+  against 677. Both inside.
+- **Consumers assessed:** this skill's router row was re-keyed to "design-phase package" earlier
+  in this wave — **the two now agree again**, closing a self-contradiction this seat created and
+  reported when it re-keyed the row. `mochiko:review-plan-artifacts`'s no-delta-claim check
+  (re-keyed same wave) grades this claim.
+
+**Extended at the v0.91.0 fix round (V2 B4) — same ruling, one further site in this file.** The
+audit found the protected altitude line at the skill's head still carrying the retired stage:
+
+  ```
+  **altitude and the diagram craft** of the **delta** drawn against it — the delta drafted in the plan
+  ```
+
+  re-worded to "the delta drafted in the design phase". This is **protected content** — the
+  altitude line relocated into this skill at v0.81.0 — so it is recorded here as a supersession
+  by ruling rather than a strip, and folded into this entry per the wave lead's instruction that
+  the existing [v0.91.0] supersession be extended rather than duplicated. **Kept deliberately:**
+  the altitude claim itself and the drawn-against-the-store framing, byte-for-byte apart from the
+  stage name; the store-is-untouched-until-sign-off rule; and the read-the-spine-never-re-derive-it
+  boundary. Body re-measured after the extension: **9,320** against the 11,047 budget (was 9,312);
+  description unchanged at 649 against 677. Both inside.
+
 ## [v0.81.0] Transformed to serve store deltas — the no-delta protected line RELOCATED; the per-feature `architecture.md` artifact superseded
 
 Wave context: the product-architecture-store Stage-1 build

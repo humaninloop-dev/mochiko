@@ -12,6 +12,230 @@ no template revision and no cross-command re-audit). **Stale as a standing claim
 entries below. **Also stale:** the shape is **v5** as of the v0.35.0 wave below, and the
 "standing producer / standing verifier" claim is superseded by that wave's seat-recycling binding.
 
+<!-- Wave context: the plan-stage-retirement build wave (v0.91.0) — `/mochiko:plan` retires as a
+command and `/mochiko:implement` becomes the pipeline's single downstream run behind an entry
+sufficiency check with a conditional in-run design phase. Ruling for every [v0.91.0] entry below:
+`.mochiko/brainstorms/plan-stage-utility/record.md` (D1 with mechanics a–e · D2 as amended by the
+Addendum's A1–A6 · D3 · D4 · D6 · D7) → `DECISIONS.md` 2026-08-26 plan-stage-retirement row. -->
+
+## [v0.91.0] Gap-finding dispatch fence — the `requirements.md` inclusion-list slot (D3)
+
+- **Disposition:** superseded → the same slot re-keyed to **`sufficiency-report.md` and the
+  design-phase deltas** where they exist; both are spec-layer artifacts, never code, so the
+  blindness fence is unchanged in kind.
+- **Tier failed:** n/a — supersession by ruling (record D3's fence consequence; `DECISIONS.md`
+  2026-08-26 row). `requirements.md` ceases to exist as an artifact under D3, so its slot could
+  not survive.
+- **Content:** verbatim — "the first message to the fresh gap-finding seat (Roles &
+  Responsibilities) carries only the feature's `spec.md`, `requirements.md`, and Screens & Flows,
+  plus the product baselines `data-model.md`, `contracts/`, and the store's concern rows carrying
+  the `NFR-XXX` targets".
+- **Kept deliberately:** the whole rest of the fence is byte-for-byte intact — the two-message
+  dispatch, the exclusion list (never the code, `tasks.md`, the `**TEST:**` cases, the cycle
+  reports, or the verification reports), the expectations-stated-before-probing rule, the
+  model-tiering brief obligation and the delegated-reads-inside-the-fence clause, the
+  selection-scope-and-epic-only firing rule with its stated-skip obligation, the epic
+  once-over-the-union rule, the high-depth mutation lens, the findings-split-by-kind rule with
+  its disputed-kind-defaults-advisory routing, and the delivered-territory routing to a
+  `/mochiko:feature` delta card.
+- **Consumers assessed:** `mochiko:testing-gap-finding` owns the canonical inclusion list and
+  takes the same re-key in this wave, including the Addendum A6 path correction (map entries live
+  at `.mochiko/features/FEAT-XXX-<slug>.md`; the `FEAT-XXX/` directory is run output, out of
+  fence) — ruled to live in that skill only, not restated here. The record's Open questions carry
+  the adequacy watch: whether the new slot carries for expectation derivation what
+  `requirements.md` carried.
+
+## [v0.91.0] Design inputs — `plan.md`, `requirements.md`, and the plan-run store-delta anchor (D3, D4)
+
+- **Disposition:** superseded → the bullet re-keyed to **`sufficiency-report.md`**, the
+  **design-phase deltas** (including the signed store delta) at `.mochiko/features/FEAT-XXX/`,
+  the product baselines, and `spec.md`.
+- **Tier failed:** n/a — supersession by ruling (record D3 — the FR→TR layer dies as a mandatory
+  artifact, no per-feature `requirements.md`; record D4 — `plan.md` the summary artifact dies, no
+  restatement artifact; `DECISIONS.md` 2026-08-26 row).
+- **Content:** verbatim — "- **Design inputs** — the feature's `plan.md` and — where the plan run
+  authored one — its **signed store delta** (the anchor for the deviation check and the
+  built-vs-signed diff) with the feature's other deltas at `.mochiko/features/FEAT-XXX/`, plus its
+  `requirements.md` there;".
+- **Kept deliberately:** the signed store delta survives as an input and keeps both of its stated
+  roles (the anchor for the deviation check and the built-vs-signed diff) — only its provenance
+  moves from the plan run to this run's design phase. The rest of the bullet is byte-for-byte
+  intact: the product baselines at `.mochiko/product/` — `data-model.md`, `contracts/`,
+  `constraints-and-decisions.md`, and the architecture store with the `NFR-XXX` numeric quality
+  targets its concern rows carry — and `spec.md` for the cards' cited acceptance criteria.
+- **Consumers assessed:** `commands/plan.md` is retired whole in this wave, so no producer of
+  either artifact remains. The real technical decisions `requirements.md` used to carry land where
+  they already lived — `constraints-and-decisions.md` and the store — authored by the design phase
+  (Tools) or, at build time, through the judgment-graded `baseline-delta.md` path (record D1
+  mechanic d). `mochiko:authoring-technical-requirements`, whose subject dies with D3, takes its
+  build-wave disposition in the same wave's re-point set.
+
+## [v0.91.0] `$ARGUMENTS` empty-resolution keyed to a planned package (D1)
+
+- **Disposition:** superseded → "empty → resolve the next capability with selected rows carrying
+  ratified scope from the map and confirm with the user".
+- **Tier failed:** n/a — supersession by ruling (record D1 — implement becomes the single
+  downstream run, entry re-gating on ratified selection; `DECISIONS.md` 2026-08-26 row).
+- **Content:** verbatim — "empty → resolve the next capability-batch with a planned package from
+  the map and confirm with the user."
+- **Kept deliberately:** the resolution itself and its confirm-with-the-user close survive
+  unchanged; only the selector moves from "has a planned package" to "carries ratified scope",
+  which is exactly the Entry gate the same edit installs.
+- **Consumers assessed:** none outside this command — the `$ARGUMENTS` line is command-local.
+
+## [v0.91.0] The plan-time store-delta anchor cluster (D1 mechanic a)
+
+- **Disposition:** superseded → every anchor re-keyed to **the delta signed this run, whenever
+  signed** — at the design checkpoint or at a mid-run re-fire.
+- **Tier failed:** n/a — supersession by ruling (record D1 mechanic a — the deviation gate anchors
+  to the signed delta once one exists, and the built-vs-signed diff trigger fires on any delta
+  signed this run, whenever signed; `DECISIONS.md` 2026-08-26 row).
+- **Content:** verbatim, three sites —
+  (i) done condition: "where a store delta was approved at plan time, a built-vs-signed diff
+  report exists — owed on the **approved-delta-existed trigger alone**";
+  (ii) Not-done list: "an approved-delta landing without its built-vs-signed diff";
+  (iii) Roles & Responsibilities, the user's architecture-deviation consent: "moves a
+  responsibility across a boundary of the signed store delta";
+  and the Reports bullet's artifact name "the built-vs-approved diff report", renamed to
+  built-vs-signed for consistency with the done condition's own term.
+- **Kept deliberately:** the trigger's *character* is what the ruling protects and it survives
+  whole — the diff is owed on the delta's existence alone, not on the work having stayed in
+  scope, so a feature descoped to nothing is still caught at its landing rather than weeks later
+  by the orphan sweep; that rationale clause is carried verbatim. The deviation gate's own test
+  (a box added or removed, an arrow added, removed, or redirected, a responsibility moved across
+  a boundary) and its two dispositions (build as approved, or amend the delta by the user's
+  ruling first) survive byte-for-byte, as does the orphan half of the Not-done clause.
+- **Consumers assessed:** the Store landing tool bullet and the acceptance landing's one-carve
+  rule read the delta's lifecycle, not its provenance, and are untouched;
+  `mochiko:authoring-architecture-store` keys in-flight-class elements to `FEAT-XXX`, not to a
+  producing command, so it needs no edit for this anchor move.
+
+## [v0.91.0] Epic entry — the accepted-package precondition and the joint-plan reference (D1, D1 b)
+
+- **Disposition:** superseded → members gate on **ratified selection** like any selection-scope
+  batch, and the epic's design phase **always fires** for the joint spine (the joint design plan
+  replacing the joint plan-the-plan proposal as the spine's planning artifact).
+- **Tier failed:** n/a — supersession by ruling (record D1 — implement is the single downstream
+  run, no accepted-package precondition; D1 mechanic b — the epic run always fires the design
+  phase for the joint spine, the joint-proposal spine artifact re-keying to the joint
+  design-phase plan; D4 — plan's inline epic mint door dies, minting is desk-only;
+  `DECISIONS.md` 2026-08-26 row).
+- **Content:** verbatim, two sites —
+  (i) Entry: "**Epic entry:** `$ARGUMENTS` naming an `EPIC-XXX` gates on that epic's **accepted
+  package** — every member's `tasks.md` (and its signed store delta where the proposal produced
+  one) complete at `.mochiko/features/FEAT-XXX/`, the joint spine accepted at
+  `.mochiko/epics/EPIC-XXX/` (`mochiko:authoring-epic`); any member incomplete → block, point
+  to `/mochiko:plan`.";
+  (ii) done condition, epic branch: "one merged **sequential** cycle sequence from the joint
+  plan".
+- **Kept deliberately:** every other epic rule survives byte-for-byte — the `EPIC-XXX` lookup
+  resolution, every member entering as selection scope with delta-scope cards never joining an
+  epic, the in-epic dependency not blocking while an outside-epic dependency at a
+  non-`delivered` row still blocks, the merged sequential cycle sequence itself with shared
+  foundation cycles first then in-epic dependency order, feature-tagged cards reporting into
+  each member's `.mochiko/features/FEAT-XXX/`, one final validation from one cold snapshot over
+  the union of member territories, the member-scoped attempt-exhaustion halt with its
+  user-reserved carve-out disposition, and the one acceptance landing executing each member's
+  graduation batch plus the epic close. The `mochiko:authoring-epic` pointer survives at every
+  site it stood.
+- **Consumers assessed:** `mochiko:authoring-epic` re-keys in the same wave — epic runs now enter
+  implement directly and the joint-proposal spine artifact becomes the joint design-phase plan;
+  the spine's shared-baseline single-pen-holder rule, the cross-member seam-owner-named-at-design-
+  time rule, and the spine artifacts' `templates/artifact-format.md` deliverable binding are
+  carried into this command's Design phase tool bullet rather than dropped with `plan.md`.
+  `commands/plan.md` and its inline declare-and-contest mint door retire whole in this wave; epic
+  minting survives at the desk (`/mochiko:feature`), per the record's partial-kill disposition.
+
+## [v0.91.0] Delta-scope entry gated on a plan-run-confirmed card (D6)
+
+- **Disposition:** superseded → the run gates on the **desk-confirmed delta card** directly
+  (`/mochiko:feature` mints it and its existing review leg covers it); run-open absorbs the
+  card-vs-entry confirmation the delta-scope plan run used to perform.
+- **Tier failed:** n/a — supersession by ruling (record D6; `DECISIONS.md` 2026-08-26 row).
+- **Content:** verbatim — "**Delta scope** gates on the delta card confirmed by a delta-scope plan
+  run; the card's acceptance criteria (a bug's reproduction-failing-test, or 1–3 criteria on the
+  delta) are the cycle's criteria."
+- **Kept deliberately:** the card's acceptance criteria remain the cycle's criteria, in the same
+  two forms (a bug's reproduction-failing-test, or 1–3 criteria on the delta) — only the
+  confirming authority moves from a plan run to the desk plus this run's run-open. Delta scope
+  keeps every other property it had: the sufficiency check runs per-card rather than per-row
+  (D6), the gap-finding pass is skipped with the skip stated explicitly in the final-validation
+  report, and the landing is the marked delta's fold.
+- **Consumers assessed:** `commands/feature.md` already mints and reviews the delta card and needs
+  no new obligation; its routing line re-points to implement in this wave. Product-lane runs are
+  declared **inherited-as-is** by D6 — their absence from Entry's scope branches predates this
+  session and is neither worsened nor repaired here; the record's Open questions carry it.
+
+## [v0.91.0] Selection-scope entry gated on the accepted plan package (D1)
+
+- **Disposition:** superseded → entry re-gates on the capability entry's **ratified selection**
+  alone; the sufficiency check at entry (`mochiko:review-sufficiency`) replaces the
+  accepted-package precondition as the measure of whether there is enough design to build.
+- **Tier failed:** n/a — supersession by ruling (record D1 — `/mochiko:plan` retires and implement
+  becomes the single downstream run; the record's Build surface names this precondition's removal
+  explicitly; `DECISIONS.md` 2026-08-26 row).
+- **Content:** verbatim — "**Selection scope** additionally gates on the accepted package the plan
+  run produced — the batch's `tasks.md` complete alongside its `plan.md`, and its **signed store
+  delta** where the plan run authored one, at `.mochiko/features/FEAT-XXX/`; missing or incomplete
+  → block, point to `/mochiko:plan`;".
+- **Kept deliberately:** the dependency-order gate that closed the same sentence survives verbatim
+  — "a capability-batch whose selected rows depend on rows not yet `delivered` blocks — batches
+  run in the rows' dependency order". So does everything the precondition used to guarantee, now
+  produced in-run rather than gated on: `tasks.md` (Card authoring, whose seat is never the
+  executing builder) and a signed store delta where the structural trigger fires (Design phase,
+  signed by the user at the design checkpoint before the first cycle). Existing accepted packages
+  remain valid frozen history — a feature holding one enters with the check trivially satisfied
+  (record, Migration).
+- **Consumers assessed:** `commands/plan.md` retires whole in this wave, so the block-and-point
+  routing had no target left. `commands/specify.md`'s next-step line and `commands/feature.md`'s
+  growth-row routing re-point from `/mochiko:plan` to `/mochiko:implement` in the same wave.
+
+## [v0.91.0] Identity & Mission — the accepted-package charter framing, and the command heading (D1)
+
+- **Disposition:** superseded → implement chartered as the pipeline's **single downstream run**:
+  ratified selection in, a sufficiency check at entry, a conditional design phase the user signs,
+  cards, then working verified code out. Heading re-titled to match.
+- **Tier failed:** n/a — supersession by ruling (record D1; `DECISIONS.md` 2026-08-26 row).
+- **Content:** verbatim, two sites —
+  (i) heading: "# Implement — Execute the Task Breakdown";
+  (ii) mission: "You are chartered **Delivery Manager of the goal** — the same charter
+  `/mochiko:plan`'s lead holds, carried from accepted package to accepted implementation: this run
+  turns one capability-batch's accepted `tasks.md` (cycle cards for the capability's selected work
+  rows, resolved from `.mochiko/features/FEAT-XXX/`) into working, verified code — TDD-built,
+  foundation cycles before feature cycles, verified against real infrastructure. An **epic**
+  (`EPIC-XXX`) run turns the accepted packages of its member features into one merged, verified
+  build — one run over the whole epic (`mochiko:authoring-epic`)."
+- **Kept deliberately:** the **Delivery Manager of the goal** charter itself survives verbatim —
+  D1 retires the plan command, not the posture the two commands shared, and the charter-form
+  contract (`.mochiko/decisions/2026-08-13-charter-plan-implement.md`) binds this file unchanged.
+  So do the mission's substantive terms: the capability-batch as the unit, TDD-built, foundation
+  cycles before feature cycles, verified against real infrastructure, the epic as one merged
+  verified build over the whole epic with its `mochiko:authoring-epic` pointer, "The working code
+  is the deliverable", and "Plan the run and orchestrate it toward the done condition."
+- **Consumers assessed:** `commands/feature.md`'s recorded wording — "the same split
+  `/mochiko:plan` and `/mochiko:implement` name at their Entry" — re-points in this wave; the
+  charter ADR's requirement that this command keep a protocol step **literally labeled Entry** is
+  honored, and the audit's floor-present + run-goal-contract-present criteria are unaffected by
+  the mission rewrite.
+
+## [v0.91.0] Command `description:` — the accepted-breakdown precondition (D1)
+
+- **Disposition:** superseded → a description naming ratified scope in, the entry sufficiency
+  check, the conditional design phase, and the TDD build with independent real-infrastructure
+  verification.
+- **Tier failed:** n/a — supersession by ruling (record D1; `DECISIONS.md` 2026-08-26 row).
+- **Content:** verbatim — "Execute an accepted task breakdown into working code, TDD-built and
+  independently verified against real infrastructure."
+- **Kept deliberately:** the description's back half survives in substance — working code as the
+  output, TDD-built, independently verified against real infrastructure. Only the "accepted task
+  breakdown" precondition dies, because the breakdown is now authored inside this run.
+- **Consumers assessed:** commands carry no per-primitive character budget
+  (`.mochiko/memory/primitive-cost-budgets.md` — commands were excluded from both budget waves by
+  user ruling), so the D7 char-budget pre-assert does not fire on this edit; the hard caps are the
+  only bound and are not approached. `disable-model-invocation: true` is unchanged, so the
+  description is maintainer- and router-facing only. The `mochiko` router's command row re-points
+  in this wave.
+
 <!-- Wave context: the product-architecture-schema Stage-1 build wave (v0.81.0) — one schema-backed
 architecture store replaces the five-surface architecture split, and the whole pipeline re-keys in
 one wave (D15). Ruling for every [v0.81.0] entry below:

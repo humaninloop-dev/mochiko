@@ -199,6 +199,32 @@ at audit (arithmetically forced by the purge's replacement words: "increments" +
 sites, "BUNDLE-" +4 across four link sites; no prose added or restored; description
 simultaneously shrank 512 → 497). Budget unchanged — any further body addition must re-justify
 its own overage or cut.
+**v0.91.0 (plan-stage retirement): 6,781 against the 6,487 budget — +294 total, of which +226 is
+this wave's.** Declared at the edit and **ruled HOLDS by the v0.91.0 wave audit (V2)**. The
+growth is D1 mechanic (c), a ruled new obligation with no other home — this skill single-sources
+card authorship, so the rule lives here or nowhere: naming the card-authoring home (~+128 — cards
+are authored inside the `/mochiko:implement` run, after the design phase or directly on a
+zero-gap sufficiency verdict, never a separate plan run) and the card-author-is-never-the-
+executing-builder rule (~+82), plus ~+7 across three vocabulary re-keys. No playbook prose was
+restored; a rationale clause drafted alongside the mechanic-(c) rule was cut before landing
+precisely because it was prose rather than obligation, which is what brought the figure down from
++390. Description unchanged at 497. Budget unchanged — any further body addition must re-justify
+its own overage or cut. Ruling + disposition map: `.mochiko/strips/patterns-vertical-tdd.md`
+[v0.91.0] and the `DECISIONS.md` 2026-08-26 plan-stage-retirement row.
+
+`authoring-feature-map` body overage widens again at **v0.91.0: 15,975 against the 15,413 budget
+(+562)** — **+128 this wave**, on top of the +434 standing at v0.81.0. Declared at the edit for
+the wave audit. The growth is D1 mechanic (e)'s **zero-gap branch**, a ruled new obligation: the
+map's four-touchpoint line previously read "plan confirms and hardens", and mechanic (e) splits
+that duty in two — the design phase asserts the design-implied dependency relations and sharpened
+extent when it runs, and **on the zero-gap path, where no design phase runs at all, the
+card-authoring seat performs the assertion instead**. Without the second clause the zero-gap path
+would leave the map-entry hardening duty unowned, which is the exact defect the record's verify
+round 1 caught as V1 and repaired. Two same-line simplifications partly offset it ("plan and
+implement's surface" → "implement's surface", −12; "one plan/implement run" → "one implement
+run", −9); no prose added or restored. Description unchanged at 598 against its 619 budget.
+**Ruled HOLDS by the v0.91.0 wave audit (V2), byte-reconciled to the ruled obligation exactly.**
+Budget unchanged — any further body addition must re-justify its own overage or cut.
 `patterns-sound-loop` (new skill, v0.70.0) likewise unbudgeted — hard-cap-only (desc ≤1,536);
 audited at body 5,729 / desc 500; re-measured body 5,849 at the v0.71.0 neutrality-line
 amendment (ruled edit, strip + audit PASS); a body budget may seed from a future ruled cut or
@@ -280,6 +306,31 @@ grade → +219 advisory alignments → +270 F2 fence guard → +132 final alignm
 body budget may seed from a future ruled cut or benchmark, never invented. **Re-measured 10,929
 at v0.81.0** (+370 — the D12 runtime-NFR re-point to store concern rows plus its spine-exclusion
 fence guard); still unbudgeted, still hard-cap-only, description unchanged at 709.
+
+`review-sufficiency` (new skill, v0.91.0, the plan-retirement wave — the sufficiency check's
+single source, `plan-stage-utility` D2 as amended by verify V5/V7 and the Addendum A1–A6)
+likewise **unbudgeted at birth** — hard-cap-only (desc ≤1,536); measured at birth at body
+6,652 / desc 686 — the landed figures, taken after the V3 fix round. Body trail, recorded so a
+later auditor reads the spread as process rather than drift: 6,254 at first draft → **+108**
+naming `sufficiency-report.md` and its path explicitly (the vocabulary pin, aligning with
+`implement.md`) → 6,362 at the V3 grade → **+290** the V3 B1 repair (the fence's flat
+`FEAT-XXX/` exclusion contradicted clause 10's obligation to read an in-flight feature's
+deltas; scoped to the batch's own run-output directory plus an explicit bounded carve).
+Description 681 → **686** across the same round, net of two opposing edits: the "Consumes spec
++ store + baselines only" clause was inaccurate once the fence admitted map entries (A6) and
+the clause-10 carve, and was replaced by the operative exclusion alone (−35); the delta-scope
+parenthetical then gained the three-clause form, which the prior wording left readable as ten
+clauses per card (+40). Both figures sit above the review-family norm and are disclosed rather than
+trimmed: the body carries ten clauses each with its own explicit gap form, plus the
+delta-scope collapse, the absent-baseline and trips branches, and the report contents — no
+rationale prose (the record is the rationale home), no `references/`, no `scripts/`. Size band
+for a single-source carrier of this class: `patterns-adopt-first` 6,493 · `authoring-epic`
+7,503 · `testing-gap-finding` 10,559. The 686 description carries the entry site, the grading
+unit with its delta-scope collapse, the three sources, four SHOULD triggers, the fence's
+operative exclusion, and the default-FAIL and independence lines; precedent for a description
+above the ~500 norm is `testing-gap-finding`
+709 and `patterns-model-tiering` 643. A body budget may seed from a future ruled cut or
+benchmark, never invented.
 
 ## Unbudgeted primitives
 

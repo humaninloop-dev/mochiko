@@ -1,6 +1,6 @@
 ---
 name: authoring-epic
-description: This skill MUST be invoked when authoring or updating an epic — the transient unit for a multi-feature batch: the manifest + spine at `.mochiko/epics/EPIC-XXX/`, mint-once/overlap guard, close semantics. SHOULD also invoke on 'epic', 'EPIC-XXX', 'mint an epic', 'epic manifest', 'epic spine', or 'multi-feature batch'. Boundary: owns the epic OBJECT — NOT its map marker/seam grammar (mochiko:authoring-feature-map), NOT plan/implement mechanics. Selection-scope only; never grades its own output.
+description: This skill MUST be invoked when authoring or updating an epic — the transient unit for a multi-feature batch: the manifest + spine at `.mochiko/epics/EPIC-XXX/`, mint-once/overlap guard, close semantics. SHOULD also invoke on 'epic', 'EPIC-XXX', 'mint an epic', 'epic manifest', 'epic spine', or 'multi-feature batch'. Boundary: owns the epic OBJECT — NOT its map marker/seam grammar (mochiko:authoring-feature-map), NOT implement-run mechanics. Selection-scope only; never grades its own output.
 ---
 
 # Authoring the Epic — Manifest and Spine
@@ -10,15 +10,15 @@ description: This skill MUST be invoked when authoring or updating an epic — t
 ## Overview
 
 An **epic** is the transient first-class delivery unit that runs a **closely related
-multi-feature batch** — members planned and built as one unit through `/mochiko:plan` and
-`/mochiko:implement`. It has identity (`EPIC-XXX`, sequential, same family as `FEAT-XXX`), a
+multi-feature batch** — members designed and built as one unit through `/mochiko:implement`.
+It has identity (`EPIC-XXX`, sequential, same family as `FEAT-XXX`), a
 home directory, a **manifest**, and a **spine**. This skill single-sources the epic's
 **shape** — the manifest and spine files, the mint/overlap guard, and close semantics. The
-commands that consume it (`plan`, `implement`, `feature`, `specify`) **reference this skill;
+commands that consume it (`implement`, `feature`, `specify`) **reference this skill;
 they never restate it.**
 
 One epic type, two faces (no product/tech split): the **manifest is the product view**, the
-**spine is the tech view** — plan and implement consume the spine sections. The epic's **role
+**spine is the tech view** — the implement run consumes the spine sections. The epic's **role
 is transient**: while in flight it is the active unit and member features' pending work rows
 carry an inline `[EPIC-XXX]` marker on the map; at delivery the rows fold into their
 capabilities' extents, the markers vanish, and the epic closes. **The directory persists as
@@ -27,13 +27,13 @@ readable record — never as a living map layer.** The map stays two-typed (dura
 
 ## When NOT to Use
 
-- **Grading the epic** — the plan/implement outputs are graded by their cluster reviewers; this
-  skill authors the epic object and never grades its own output.
+- **Grading the epic** — the design-phase and implement outputs are graded by their cluster
+  reviewers; this skill authors the epic object and never grades its own output.
 - **The map marker or seam grammar** — the `[EPIC-XXX]` row marker and within-epic seam-owner
   bookkeeping are `mochiko:authoring-feature-map`'s; this skill *names* the seam owner in the
   spine, the map writes it.
-- **Plan / implement run mechanics** — gate shapes, cycle sequencing, and landing steps live in
-  `plan.md` / `implement.md`; this skill single-sources only the epic object they consume.
+- **Implement run mechanics** — gate shapes, cycle sequencing, and landing steps live in
+  `implement.md`; this skill single-sources only the epic object it consumes.
 - **Transport composition** — worktree isolation vs single pen-holder is
   `mochiko:patterns-transport-floor`; referenced, never restated.
 - **Batching delta-scope cards or non-feature product-lane work** — parked open threads; not
@@ -48,13 +48,14 @@ Home `.mochiko/epics/EPIC-XXX/`. **No separate epics index — the directory is 
 
 - **Members** — each `FEAT-XXX`, linked to its `.mochiko/features/FEAT-XXX/` dir.
 - **Status** — `open` / `delivered` / `closed-partial`.
-- **Why-together line** — the relatedness stated at the declare-and-contest that opened it.
+- **Why-together line** — the relatedness stated at the desk mint that opened it.
 
-**Spine files** beside it — the tech view plan and implement consume. (*Spine* here is the
+**Spine files** beside it — the tech view the implement run consumes. (*Spine* here is the
 epic's, never the architecture store's topology spine; where both appear, name which.)
 
-- **Joint plan-the-plan proposal** — one proposal over all members (spine artifacts + each
-  member's artifact list).
+- **Joint design-phase plan** — one plan over all members (spine artifacts + each member's
+  artifact list), authored in the epic implement run's design phase. An epic run **always
+  fires the design phase** for this joint spine, whatever the sufficiency verdict said.
 - **Joint architecture + seam design** — **one signed store delta** for the whole epic, rendered
   once and signed off once; **each cross-member seam names its owner explicitly** (members land
   simultaneously, so no later-lander default applies). The assignment lives here; the map writes
@@ -78,15 +79,16 @@ worktree isolation or a single pen-holder, disclosed at run open.
 ## Minting and the overlap guard
 
 **Mint-once.** Every workflow resolves `EPIC-XXX` by **lookup**; re-minting does not exist. A
-feature's pending rows belong to **at most one open epic at a time**. Three doors:
+feature's pending rows belong to **at most one open epic at a time**. Two doors:
 
 - **`/mochiko:feature` desk** owns the epic's life — mint, membership change, status view, close.
-- **`/mochiko:plan`** invoked with a bare feature list **may mint inline** through the
-  declare-and-contest — but only after resolving against open epics: any **membership overlap
-  with an existing epic surfaces to the user** (join it / rule on the overlap), never a silent
-  duplicate.
+  A mint resolves against open epics first: any **membership overlap with an existing epic
+  surfaces to the user** (join it / rule on the overlap), never a silent duplicate.
 - **`/mochiko:specify`** selection may **propose** an epic (when one derivation spans
   capabilities), **never mint** one.
+
+**The desk is the only mint door.** An implement run resolves its `EPIC-XXX` by lookup and
+mints nothing.
 
 ## Selection-scope only
 
@@ -113,7 +115,7 @@ the user**, never the lead's: carve-out breaks the one-unit promise.
 - "This feature is already in another epic — I'll add it here too" — one open epic per feature's
   pending rows; surface the overlap to the user, never a silent second home
 - "Specify found a multi-capability derivation — I'll mint the epic now" — specify **proposes**,
-  never mints; the desk or a plan invocation mints
+  never mints; the desk is the only mint door
 - "A member failed — I'll carve it out to keep the run moving" — carve-out is the user's ruling,
   never the lead's
 
@@ -122,7 +124,7 @@ the user**, never the lead's: carve-out breaks the one-unit promise.
 - `mochiko:authoring-feature-map` — owns the `[EPIC-XXX]` map marker + within-epic seam-owner
   grammar; this skill names the owner in the spine, the map writes it
 - `mochiko:patterns-transport-floor` — the composition steer for epic shared-write surfaces
-- `plan.md` / `implement.md` — consume the spine; reference this skill, never restate it
+- `implement.md` — consumes the spine; references this skill, never restates it
 - `/mochiko:feature` — the desk stewarding the epic's life (mint, membership, status, close)
 
 ## Quality Checklist

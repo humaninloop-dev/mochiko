@@ -2,6 +2,57 @@
 
 Entry formats: `strips/README.md`.
 
+## [v0.91.0] Dead plan-stage surfaces struck from the envelope's scope, ID example, and null-path rule
+
+- **Disposition:** superseded → the plan-less pipeline's surfaces. Four sites named artifacts or
+  gates the plan-stage retirement killed. This is a scope-and-example edit only: no envelope rule
+  changed meaning, and the format version stays v3.
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/brainstorms/plan-stage-utility/record.md` D4 — `plan.md` and the plan-the-plan
+  proposal gate die, and the sufficiency report becomes the durable assessment record carrying the
+  `quickstart.md` null path; D3 — `requirements.md` dies as a mandatory artifact, taking the
+  `TR-XXX` id class's defining artifact with it; D1 mechanic (b) — the epic's joint plan-the-plan
+  proposal spine artifact re-keys to the joint design-phase plan, which is the naming that site
+  (2)'s surviving member follows and the whole of what mechanic (b) licenses; `DECISIONS.md`
+  2026-08-26 row.)
+- **Content (superseded, verbatim, four sites):**
+  (1) The pipeline artifact chain: "`spec.md` · `requirements.md` · `constraints-and-decisions.md`
+  · `data-model.md` · `contracts/api.yaml` · `quickstart.md` · `plan.md` · `tasks.md`". Two members
+  struck; the remaining six are unchanged and in the same order.
+  (2) The command-minted enumeration's opening pair: "the plan-the-plan proposal, the contest
+  brief". Now: "implement's design-phase plan" — **one member survives, one dies.** The proposal
+  re-keys to the design-phase plan per D1 mechanic (b) (the epic joint design-phase plan is that
+  same member, and is additionally covered by the enumeration's closing "any epic-spine artifact").
+  The **contest brief dies outright**: it existed only to contest the plan-the-plan proposal, and
+  D4 kills that gate — see `.mochiko/strips/plan.md` [v0.91.0], whose rehome map row 3 records the
+  proposal, its approval gate, and the contest seat together as *Died*.
+  *(Corrected at the V1 audit's B1 finding — the first draft of this entry wrote "implement's
+  design-phase plan and its contest brief" and claimed below that neither artifact left the
+  envelope. That was wrong twice over: it kept a dead artifact alive in the envelope's scope
+  enumeration, and it stretched D1 mechanic (b) — which licenses only the epic joint plan re-key —
+  to cover a contest brief mechanic (b) never mentions. The lead ruled the record-faithful
+  direction: the contest brief died at D4, and the `plan.md` rehome map's "Died" row stands as
+  written.)*
+  (3) Rule 1's ID example list: `TR-012`. Now `D-012` — a surviving id class whose home,
+  `constraints-and-decisions.md`, is where D3 puts the real technical decisions.
+  (4) Rule 10's null-path example: "a one-line 'not applicable — no external integration surface'
+  in `plan.md`'s artifact table". Now: "in the run's sufficiency report".
+- **Kept deliberately:** all thirteen shared rules keep their substance, numbering, and wording
+  outside the two example strings above — rule 1's reference-by-ID discipline, rule 10's
+  null-path *obligation* (only the example location moved), and the v3 amendments from v0.82.0
+  (envelope-by-default scope, gradeable-advisory overage, rule 13) are untouched. The
+  "Who reads a deliverable" section, the reports-are-not-deliverables carve, and the Consumed-by
+  footer are unchanged. Site (2) is half re-key, half deletion: the design-phase plan stays in the
+  envelope under its new name, while the contest brief leaves the enumeration because the artifact
+  itself no longer exists — not because it escaped the envelope. Nothing that still gets minted
+  lost its envelope coverage in this edit.
+- **Consumers assessed:** every artifact template in `plugins/mochiko/templates/` and the nine
+  artifact-authoring skills named in the Consumed-by footer bind this file for the shared rules
+  and carry only their own section schema — none of them restates the scope enumeration, the ID
+  example, or rule 10's example, so none needs a matching edit. `templates/report-format.md` is
+  the sibling envelope and is untouched. `schemas/tasks.yaml` and every other schema names this
+  file through its `form:` field, which is unchanged.
+
 ## [v0.82.0] Verbosity-envelope enforcement — scope widened, rules 4/8 amended, rule 13 added (format v3)
 
 - **Disposition:** superseded → the v3 envelope, per the verbosity-envelope-enforcement ruling.

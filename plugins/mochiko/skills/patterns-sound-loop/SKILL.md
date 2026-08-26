@@ -50,7 +50,7 @@ floor as surely as a 10-file rewrite — magnitude never gates it.
 | Governance surfaces | `/mochiko:setup` loop | none — by construction |
 | Capability map (`FEATURES.md` + entries) | specify-side derivation graded; desk-side writes carried no loop | full floor — net-new bite |
 | Product baselines (the rest of `.mochiko/product/`) | no loop outside pipeline runs | full floor — net-new bite |
-| Architecture store (`.mochiko/product/architecture/`) | desk judgment writes take the tech-lead review leg; plan-time deltas graded by the plan review pair beneath the user's sign-off (`mochiko:authoring-architecture-store`) | full floor — satisfied by the desk's own loop where it runs; the bite is any store write outside it |
+| Architecture store (`.mochiko/product/architecture/`) | desk judgment writes take the tech-lead review leg; design-phase deltas graded by the design review pair beneath the user's sign-off (`mochiko:authoring-architecture-store`) | full floor — satisfied by the desk's own loop where it runs; the bite is any store write outside it |
 
 ## The three legs
 

@@ -11,6 +11,52 @@ fixed same day — the audit trail is the wave's ROADMAP row). Consumers assesse
 `templates/artifact-format.md` — grep 2026-07-25: none reference any stripped section;
 `detect-stack.sh` references (setup.md, router) untouched.
 
+## [v0.91.0] Parked Brownfield-mode carve-out re-keyed: "spec/plan-cluster" → "spec/design-cluster" — plan-stage retirement D1
+
+- **Disposition:** superseded → "the spec/design-cluster Brownfield mode (not wired this run)",
+  at both sites.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1; wording ruled by the wave lead
+  2026-08-26 as a **vocabulary re-key only**).
+- **Scope of the change, stated because this seat flagged it as not-obviously-mechanical:** the
+  phrase names a mode that has never been wired, so the risk was re-keying a label whose referent
+  had itself changed. The lead ruled it a vocabulary re-key: **the mode stays parked and the
+  meaning of the BACKLOG reclaim item that owns it is preserved.** Nothing about the mode's
+  status, scope, or wiring moved — only the cluster name it points at, which is the same cluster
+  under its new name.
+- **Content (superseded fragments, verbatim — two sites):**
+
+  1. When-NOT-to-Use:
+
+     ```
+     - **Collision detection / JSON inventory**: that is the spec/plan-cluster Brownfield mode (not wired this run)
+     ```
+  2. Output-scope bullet:
+
+     ```
+       annotations; document what is found — the deeper collision-risk inventory is the
+       spec/plan-cluster Brownfield mode, not produced here)
+     ```
+
+- **Kept deliberately:** both carve-outs entire — collision detection and the JSON inventory stay
+  **out of this skill's scope**, the deeper collision-risk inventory is still explicitly not
+  produced here, and the "(not wired this run)" / "not produced here" qualifiers both survive
+  verbatim. The skill's own remit (deterministic stack detection, architecture and convention
+  extraction, the intent-blind Essential-Floor status read) is untouched.
+- **Budget:** body 6,607 → **6,611** against the 8,137 budget; description unchanged at 349
+  against 437. Both inside.
+- **Third site, caught on the fix round's re-sweep:** the mode-inventory paragraph (:99) named
+  the same parked mode a third time — `extraction → JSON collision inventory against a proposed
+  spec) lives in the **spec/plan cluster**;` — re-keyed to "**spec/design cluster**" on the same
+  ruling. The earlier sweeps' term list matched "plan-cluster" but not "spec/plan", which is why
+  two passes missed it. Body 6,611 → **6,613** against the 8,137 budget; description unchanged at
+  349. The standalone Context-report mode and the constitution-context cluster pointer beside it
+  are untouched.
+- **Consumers assessed:** the router's `analysis-codebase` row describes the skill's produced
+  output and never named the parked mode — no re-key owed there. The BACKLOG item that owns the
+  unwired mode is operating-doc content, outside `plugins/`, and its meaning is preserved per the
+  ruling above.
+
 ## [v0.76.0] `codebase-analysis-template.md` read-pointers → `codebase-analysis` schema (two-arm) — schema-based-template-guidance D1/D8
 - **Disposition:** superseded → `mochiko-cli template codebase-analysis`, or Read `plugins/mochiko/schemas/codebase-analysis.yaml` raw (D8-first-class). Two sites: `SKILL.md` Output pointer + `references/CONTEXT-GATHERING.md` scope-note mention.
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/schema-based-template-guidance/record.md` D1/D3/D8; `DECISIONS.md` "Template-schema CLI ruled").

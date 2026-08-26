@@ -10,7 +10,215 @@ template retired into it (entry below) and this file continues as the schema's s
 file per primitive, one continuous history. Wave context for [v0.81.0]: the
 product-architecture-schema Stage-1 build wave. Ruling:
 `.mochiko/brainstorms/product-architecture-schema/record.md` (D3 · D10 + its S8/S13 folds · D12)
-→ `DECISIONS.md` 2026-08-19 product-architecture row. -->
+→ `DECISIONS.md` 2026-08-19 product-architecture row. The history CLOSES at v0.91.0: the
+`plan.md` artifact was ruled dead outright by the plan-stage retirement, so `plan.yaml` is
+deleted and no successor primitive exists. The command half of the same retirement is logged at
+`.mochiko/strips/plan.md` [v0.91.0]. -->
+
+## [v0.91.0] Schema deleted — the `plan.md` artifact dies with its command
+
+- **Disposition:** superseded → nothing. The `plan.md` summary artifact this schema governed is
+  ruled dead outright: no restatement artifact survives the plan-stage retirement. The file
+  `plugins/mochiko/schemas/plan.yaml` is deleted, the `plan` name leaves `mochiko-cli`'s known-name
+  set, and its compile-time embedded copy leaves the binary. This closes the primitive's history —
+  template (to v0.76.0) then schema (v0.76.0 to v0.91.0).
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/plan-stage-utility/record.md`
+  D4, which names `plan.md` among the dead artifacts — "`plan.md` (the summary artifact) dies — no
+  restatement artifact" — and D1, which retires the command that produced it; `DECISIONS.md`
+  2026-08-26 "Plan-stage retirement" row. The command-side ledger is
+  `.mochiko/strips/plan.md` [v0.91.0].)
+- **Content (superseded schema, full verbatim below):**
+
+````yaml
+# Schema data file for the `plan` pipeline artifact template.
+# Source of truth for `mochiko-cli template plan` and `--check`. Read raw when the binary is absent (D8).
+template: plan
+title: Implementation Plan
+form: artifact-format.md
+register: full   # per artifact-format.md rule 11
+overview: |
+  The implementation-plan deliverable (plan.md). A SUMMARY over the validated artifacts —
+  tables + "See X" pointers, never restated content. Each row is a menu to prune to the
+  approved proposal; an artifact the proposal did not include is omitted, not listed
+  incomplete.
+
+sections:
+  - name: Header
+    required: true
+    contract: |
+      Title line "# Implementation Plan: [FEATURE]" plus the metadata line:
+      **Feature** `[feature-slug]` | **Date** [DATE] | **Spec** [link], and
+      **Input**: Feature specification from `.mochiko/specs/<feature>/spec.md`.
+    check: "Is the header present with feature slug, date, spec link, and the input pointer to spec.md?"
+
+  - name: Summary
+    required: true
+    contract: |
+      Extracted from the feature spec: the primary requirement + the technical approach from
+      decisions. One compact paragraph.
+    check: "Does the Summary state the primary requirement and the technical approach, drawn from the spec and decisions?"
+
+  - name: Architecture
+    required: true
+    contract: |
+      ALWAYS present — every plan run consults the architecture store, so this section is never
+      omitted. Two parts, the second conditional.
+      (1) The consult record, always: which store surfaces were read (the derived root index +
+      the full AX-XXX summary table always; spine.md only when the structural-change trigger
+      fired; the touched concern files by name), the trip check's outcome — each AX-XXX row this
+      feature touches that stands `open` or `not-now`, with the user's disposition (ruled, or
+      deferred on the record) — and, when no delta was authored, the ONE-LINE no-delta claim:
+      the judgment that this feature changes no structure, stated, never left silent.
+      (2) The delta pointers, only when the run authored a store delta and the user signed it:
+      a one-line Delta summary (what this feature changes structurally) plus a pointer table —
+      rendered diagram / changed spine elements -> the signed delta in the package; changed
+      concern rows -> their AX-XXX ids and the new element statuses (in-flight / modifying /
+      removing, keyed FEAT-XXX). Pointers only, never the delta restated.
+    check: "Is the Architecture section present with its consult record — surfaces read, trip-check outcome and disposition, and (absent a delta) the one-line no-delta claim — plus, only where a signed store delta exists, a delta summary and pointer table naming the changed AX-XXX rows and element statuses?"
+
+  - name: Key Decisions
+    required: true
+    contract: |
+      Table (Decision | Choice | Shaped By | Rationale) rolling up the D-XXX decisions, with the
+      full records in constraints-and-decisions.md (pointer, never restated).
+    check: "Is the Key Decisions table present, each row citing its D-XXX and pointing to constraints-and-decisions.md rather than restating it?"
+
+  - name: Infrastructure Requirements
+    required: true
+    contract: |
+      Table (ID | Type | Source | Priority) of IP-XXX items; full definitions live in
+      constraints-and-decisions.md Part 3 (pointer).
+    check: "Is the Infrastructure Requirements table present with IP-XXX rows and their sources/priorities, pointing to constraints-and-decisions.md?"
+
+  - name: Entities
+    required: true
+    contract: |
+      Table (Entity | Status NEW/EXTENDS/REUSES | Attributes count | Relationships count |
+      Sensitivity) summarizing data-model.md; full entity definitions with sensitivity
+      annotations live in data-model.md (pointer).
+    check: "Is the Entities table present with status, counts, and highest sensitivity per entity, pointing to data-model.md?"
+
+  - name: Endpoints
+    required: true
+    contract: |
+      Table (Method | Path | Description | Integration) summarizing the API; full OpenAPI spec
+      lives in contracts/api.yaml (pointer).
+    check: "Is the Endpoints table present summarizing method/path/description/integration, pointing to contracts/api.yaml?"
+
+  - name: Artifacts
+    required: true
+    contract: |
+      The artifacts this run's APPROVED proposal produced — each complete and graded. The rows
+      are the menu to prune to the proposal; an artifact the proposal did not include is omitted
+      here, not listed incomplete. Table (Artifact | Status): requirements.md,
+      constraints-and-decisions.md, the signed store delta (only where the run authored one —
+      user-signed), data-model.md, contracts/api.yaml, quickstart.md (conditional — or "not
+      applicable — no external integration surface"), tasks.md (cycle cards). NFR targets are
+      not an artifact row: they live on the store's concern rows.
+    check: "Does the Artifacts table list exactly the artifacts the approved proposal produced, each marked complete, with conditional artifacts (the store delta, quickstart) handled per their rules?"
+
+  - name: Next Steps
+    required: true
+    contract: |
+      Run `/mochiko:implement` to execute this package — the accepted design, architecture, and
+      cycle cards are its entry condition.
+    check: "Does Next Steps point to /mochiko:implement as the execution step with the package as its entry condition?"
+
+skeleton: |
+  # Implementation Plan: [FEATURE]
+
+  **Feature**: `[feature-slug]` | **Date**: [DATE] | **Spec**: [link]
+  **Input**: Feature specification from `.mochiko/specs/<feature>/spec.md`
+
+  ## Summary
+
+  [Extract from feature spec: primary requirement + technical approach from decisions]
+
+  ## Architecture
+
+  **Store consulted**: derived index + AX summary table · [spine.md — only if the structural-change trigger fired] · touched concern files: [AX-XXX, AX-XXX]
+
+  **Trips**: [AX-XXX (`open`/`not-now`) — ruled: [the ruling] | deferred on the record] — *or* "none — no touched row stands `open` or `not-now`".
+
+  **Delta**: [one line — what this feature changes structurally] — *or* the no-delta claim: "no structural change — [the one-line judgment]".
+
+  *The table below is present only where the user signed a store delta; omit it otherwise.*
+
+  | Aspect | Where |
+  |--------|-------|
+  | Rendered diagram · changed spine elements | [the signed delta in this package] |
+  | Changed concern rows | [AX-XXX → `in-flight (FEAT-XXX)` / `modifying (FEAT-XXX)` / `removing (FEAT-XXX)`] |
+
+  ## Key Decisions
+
+  | Decision | Choice | Shaped By | Rationale |
+  |----------|--------|-----------|-----------|
+  | [D-001 title] | [chosen option] | [C-XXX references] | [brief why] |
+
+  See `constraints-and-decisions.md` for full decision records.
+
+  ## Infrastructure Requirements
+
+  | ID | Type | Source | Priority |
+  |----|------|--------|----------|
+  | [IP-001] | [type] | [C-XXX/NFR-XXX] | [MUST/SHOULD] |
+
+  See `constraints-and-decisions.md` Part 3 for full infrastructure requirement definitions.
+
+  ## Entities
+
+  | Entity | Status | Attributes | Relationships | Sensitivity |
+  |--------|--------|-----------|--------------|-------------|
+  | [Entity name] | [NEW/EXTENDS/REUSES] | [count] | [count] | [highest classification] |
+
+  See `data-model.md` for full entity definitions with sensitivity annotations.
+
+  ## Endpoints
+
+  | Method | Path | Description | Integration |
+  |--------|------|-------------|-------------|
+  | [HTTP method] | [path] | [description] | [external system if any] |
+
+  See `contracts/api.yaml` for full OpenAPI specification.
+
+  ## Artifacts
+
+  | Artifact | Status |
+  |----------|--------|
+  | `requirements.md` | ✅ Complete |
+  | `constraints-and-decisions.md` | ✅ Complete |
+  | Store delta | ✅ Complete — user-signed *(only where the run authored one)* |
+  | `data-model.md` | ✅ Complete |
+  | `contracts/api.yaml` | ✅ Complete |
+  | `quickstart.md` | ✅ Complete — *or* "not applicable — no external integration surface" (conditional; see `patterns-api-contracts`) |
+  | `tasks.md` (cycle cards) | ✅ Complete |
+
+  ## Next Steps
+
+  Run `/mochiko:implement` to execute this package — the accepted design, architecture, and
+  cycle cards are its entry condition.
+````
+
+- **Kept deliberately:** the Architecture section's two-part contract — the mandatory consult
+  record (surfaces read, trip-check outcome and disposition, the one-line no-delta claim) — is not
+  lost with the file: it survives as sufficiency-check clause 4, which requires the store
+  consulted, the trip check run, and the no-delta claim recordable, with trips dispositioned by the
+  user at run-open (record D2 clause 4 and its "Trips are not gaps" paragraph; addendum A4
+  sharpens the no-delta evidence). The Entities and Endpoints summary tables die with the
+  restatement artifact, but their subjects survive in the baselines they pointed at —
+  `data-model.md` and `contracts/api.yaml`, whose homes are unchanged (D4). The `quickstart.md`
+  null-path record, carried on the Artifacts row's conditional, rehomes to the sufficiency verdict
+  report (D4). The Next Steps section — "Run `/mochiko:implement` to execute this package — the
+  accepted design, architecture, and cycle cards are its entry condition" — dies whole: implement
+  no longer has an accepted-package entry condition (D1, D4 dead gates).
+- **Consumers assessed:** `crates/mochiko-cli` — `TEMPLATE_NAMES` drops `plan` (9 → 8) and the
+  `include_str!` arm embedding this file is removed, in this same wave; leaving the arm would break
+  the build, since the embed is compile-time. `commands/plan.md`'s Package-artifacts bullet named
+  the schema by path in its two-arm render/raw-Read form — that command is deleted in the same
+  wave. `skills/mochiko/SKILL.md`'s schema pointer and `evals/review-plan-artifacts/rules.json`
+  are other seats' surfaces in this wave. The raw-Read degraded path (GI-020) stays honest: the
+  remaining eight schemas are unchanged and still readable without the binary, and
+  `every_shipped_schema_file_is_readable_yaml_and_every_known_name_has_one` still covers them.
 
 ## [v0.81.0] The Architecture section's omit-conditional dies — consult is mandatory (D3/D10)
 

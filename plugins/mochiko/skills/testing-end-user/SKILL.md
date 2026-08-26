@@ -137,7 +137,7 @@ When a verification run includes quality gates, execute them alongside `**TEST:*
 
 ### Quality Gate Sequence
 
-1. **Identify quality gate commands** from the `## Quality Gates` section of `tasks.md` and/or the build configuration in `plan.md`.
+1. **Identify quality gate commands** from the `## Quality Gates` section of `tasks.md` and the project's own build configuration.
 2. **Execute each command** sequentially (lint, build, tests).
 3. **Record results** with exit code, stdout, and stderr.
 4. **Classify**: exit `0` = pass, non-zero = fail.

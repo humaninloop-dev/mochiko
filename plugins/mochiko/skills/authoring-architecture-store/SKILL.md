@@ -57,8 +57,8 @@ scope's durable home: the shelf walk reads it rather than re-asking.
 skeleton, never the voice.
 
 `NFR-XXX` targets live **on the concern row they belong to** — one home per concern, stance and
-pattern and target and as-built together. The ids survive unchanged; only the path moved, so
-`TR-XXX → NFR-XXX` trace chains keep resolving.
+pattern and target and as-built together. The ids survive unchanged, and each target names its
+business source, so `FR-XXX / SC-XXX → NFR-XXX` trace chains keep resolving.
 
 `Work:` holds pointers only (`FEAT-XXX`, `EPIC-XXX`). The work itself lives on the feature map.
 
@@ -81,8 +81,8 @@ ruled → in-flight (FEAT-XXX) | modifying (FEAT-XXX) | removing (FEAT-XXX) → 
   that owns the change.
 - **`built`** — the change shipped; `As-built:` says what actually exists.
 
-**Ruled truth is never edited in place by a plan run.** A plan-time write is legal only as an
-in-flight-class delta, and only after the user's sign-off on the rendered diagram plus the named
+**Ruled truth is never edited in place by a delivery run.** A design-time write is legal only as
+an in-flight-class delta, and only after the user's sign-off on the rendered diagram plus the named
 row changes — the sign-off IS the write gate. No sign-off, no store write.
 
 ## The derived index and the health view
@@ -91,8 +91,8 @@ The root `ARCHITECTURE.md` is a **projection of the store, not a second store**.
 **every** store write — this skill is its single writer. It is never hand-maintained, and
 index-vs-store disagreement is a defect fixed by regenerating, never by editing the index.
 
-It carries the spine thumbnail, the **full** AX summary table (every row — plan runs read the
-trip check here, so a missing row is an invisible row), and **Health**. The health view is a
+It carries the spine thumbnail, the **full** AX summary table (every row — the sufficiency check
+and the design phase read the trip check here, so a missing row is an invisible row), and **Health**. The health view is a
 section of this index and **no separate artifact exists**. Five counts, each naming its rows:
 
 1. **Open rows** — walked, no stance formed.
@@ -181,7 +181,7 @@ landing audit. Do not relabel judgment as mechanical to skip the leg.
 - [ ] Every element carries its required core: id, kind/name, status — and a stance on concern rows
 - [ ] Ids unique store-wide; every `Work:`, NFR, and handled-elsewhere pointer resolves
 - [ ] Every in-flight-class element names its FEAT-XXX; `ruled`/`built` carry no key
-- [ ] No store write without its user sign-off; ruled truth never edited in place by a plan run
+- [ ] No store write without its user sign-off; ruled truth never edited in place by a delivery run
 - [ ] Index regenerated on this write — it agrees with the store, and the AX table is complete
 - [ ] Landing diff ran because an approved delta existed, not because structure was built
 - [ ] Diff ran both directions — every signed change accounted for, and nothing structural was built unreported

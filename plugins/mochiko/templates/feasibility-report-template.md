@@ -1,8 +1,8 @@
 # Feasibility Review Report Template
 
-The feasibility reviewer's cross-artifact critique of a feature's analysis and design
-artifacts — the conflicts no single artifact reveals in isolation, a three-state verdict,
-and the per-issue resolution fuel the human gate reads. Envelope + shared rules:
+The feasibility reviewer's cross-artifact critique of a feature's design-phase output — the
+conflicts no single artifact reveals in isolation, a three-state verdict, and the per-issue
+resolution fuel the human gate reads. Envelope + shared rules:
 `templates/report-format.md` — this file carries only the feasibility payload.
 
 ---
@@ -12,13 +12,13 @@ and the per-issue resolution fuel the human gate reads. Envelope + shared rules:
 report: feasibility
 feature: {{feature_id}}
 round: {{round}}
-artifacts_reviewed: [requirements.md, constraints-and-decisions.md]   # + the store delta on a structural run; + data-model.md, contracts/api.yaml on a design review
+artifacts_reviewed: [sufficiency-report.md, constraints-and-decisions.md]   # + the store delta on a structural run; + data-model.md, contracts/api.yaml on a design review
 verdict: feasible | needs-revision | infeasible
 verdict_basis: "{{one line — what drives the verdict}}"
 strengths: "{{one line, comma-brief}}"
 hunt_coverage:                     # one line per class — mandatory, every class present
   c1: "{{clean — what was hunted | the finding IDs it produced}}"
-  # … c2–c6 likewise; c7 always; a1–a3 present iff the package carries a store delta
+  # … c2–c6 likewise; c7 always; a1–a3 present iff the design phase produced a store delta
   c7: "{{clean — … | F-ids}}"
 findings:
   - {id: F1,
@@ -63,8 +63,8 @@ findings:
 5. **A clean review** (`verdict: feasible`, `findings: []`) is frontmatter-only —
    `verdict_basis`, `strengths`, and `hunt_coverage` still filled.
 6. **`hunt_coverage` is the bounded proof-of-hunt** (`review-feasibility`'s one-line-per-class
-   disclosure floor): one line per class — `c1`–`c7` always, `a1`–`a3` exactly when the package
-   carries a store delta — each either `clean — <what was hunted>` or the finding IDs the class
+   disclosure floor): one line per class — `c1`–`c7` always, `a1`–`a3` exactly when the design
+   phase produced a store delta — each either `clean — <what was hunted>` or the finding IDs the class
    produced. A missing class line means the hunt was not completed there: `feasible` cannot be
    awarded, and the collecting lead bounces the report. Narrative coverage sections stay
    forbidden — this field is the only home the proof has.

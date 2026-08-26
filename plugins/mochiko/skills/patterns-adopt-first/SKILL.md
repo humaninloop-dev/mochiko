@@ -1,9 +1,9 @@
 ---
 name: patterns-adopt-first
-description: This skill MUST be invoked at a plan decision in a commodity category (storage, locking, serialization, queueing, caching, auth, search) — the alternatives name a real off-the-shelf candidate or state none exists; custom wins only in writing against it. SHOULD also invoke on 'build vs buy', 'off-the-shelf', 'should we build this ourselves', 'shelf candidate', 'hand-rolled'. In-process/self-hostable only; SaaS buy is an IP-XXX call. Governs CHANGING the stack; `analysis-codebase` describes it.
+description: This skill MUST be invoked at a design-phase decision or a build-time decomposition decision in a commodity category (storage, locking, serialization, queueing, caching, auth, search) — the alternatives name a real off-the-shelf candidate or state none exists; custom wins only in writing against it, and a build-time ruling halts to the user, never builder-decided. SHOULD also invoke on 'build vs buy', 'off-the-shelf', 'should we build this ourselves', 'shelf candidate', 'hand-rolled'. In-process/self-hostable only; SaaS buy is an IP-XXX call. Governs CHANGING the stack; `analysis-codebase` describes it.
 ---
 
-# Adopt First — Build vs Off-the-Shelf at Plan Time
+# Adopt First — Build vs Off-the-Shelf at Design and Build Time
 
 **A problem older than the product has probably already been solved.**
 
@@ -11,14 +11,15 @@ description: This skill MUST be invoked at a plan decision in a commodity catego
 
 The minimalism ladders ask whether a piece of the system should exist and how small it can be.
 This discipline asks a different question of the pieces that survive: **must we build this one
-ourselves?** It fires at plan time, where whole mechanisms are still on the table, and it binds
-the D-XXX decision: name a real off-the-shelf candidate, and beat it in writing before
-choosing custom.
+ourselves?** It fires in the **design phase**, where whole mechanisms are still on the table,
+and again at **build-time decomposition** when a commodity need surfaces that the design phase
+never ruled. It binds the D-XXX decision: name a real off-the-shelf candidate, and beat it in
+writing before choosing custom.
 
 The discipline is **weigh and disclose**, never adopt-always: the named candidate may lose on
 merits. What may not happen is that it was never named at all.
 
-**Scope bound.** Plan seats own **in-process libraries and self-hostable components**. Buying a
+**Scope bound.** Design seats own **in-process libraries and self-hostable components**. Buying a
 **managed service, a SaaS product, or a whole capability** is a business call: it routes to an
 IP-XXX provisioning requirement and the PM/user, never here.
 
@@ -27,10 +28,12 @@ IP-XXX provisioning requirement and the PM/user, never here.
 - **The product's differentiating domain** — what the product exists to do is presumptively
   not a commodity; the test is for the infrastructure underneath.
 - **Managed-service / SaaS / whole-capability buy** — out of scope per the bound above.
-- **Build time** — cards already carry the plan's commitment; the code ladder
-  (`mochiko:patterns-code-minimalism`) shapes code, it does not reopen the mechanism.
+- **Re-opening a mechanism the design phase already ruled** — the card carries that
+  commitment; the code ladder (`mochiko:patterns-code-minimalism`) shapes code, it does not
+  reopen the mechanism. A commodity need the design phase never ruled is the opposite case —
+  see the build-time gate below.
 - **Project tooling defaults** — "established, never hand-rolled" for linters, CI, and build
-  tooling is governance-floor doctrine, not a plan decision (see Siblings).
+  tooling is governance-floor doctrine, not a design- or build-time decision (see Siblings).
 
 ## The trigger — the commodity-category test
 
@@ -80,9 +83,18 @@ engines, locking/concurrency primitives, migration-bearing shapes. **Seat-decida
 disclosure** below that line. The split criterion is retrofit cost, deliberately the same
 principle the adaptive-depth ruling ratified.
 
+## The build-time gate — never builder-decided
+
+A commodity-category ruling or an IP-XXX provisioning call that first surfaces at **build-time
+decomposition** is never the builder's to make. The builder **halts the cycle** and takes it to
+the user's checkpoint, where this discipline's obligations — the disclosure floor, the
+rationale bite, and the constraint-challenge route-back below — fire exactly as they do in the
+design phase. The resulting D-XXX / C-XXX / IP-XXX write lands as a `baseline-delta.md` entry
+graded as judgment before the user accepts it, never an in-place edit of a ruled baseline.
+
 ## Collision with a ratified constraint — route back, never override
 
-A plan seat never silently overrides a ratified upstream constraint. When the shelf check
+A design or build seat never silently overrides a ratified upstream constraint. When the shelf check
 collides with one — a spec constraint that excludes the candidate — the seat MUST file a
 **constraint-challenge finding** carrying three parts:
 
@@ -91,7 +103,7 @@ collides with one — a spec constraint that excludes the candidate — the seat
 3. the **shelf candidate** it excludes.
 
 The collision routes to the **user**, who rules: amend the spec, or sustain the constraint.
-Only the colliding decision pauses — the plan proceeds elsewhere. These are expensive
+Only the colliding decision pauses — the run proceeds elsewhere. These are expensive
 decisions; a human rules them.
 
 ## Who grades what
@@ -110,8 +122,8 @@ exists), `mochiko:patterns-code-minimalism`, `mochiko:patterns-map-minimalism` �
 size the artifact; this discipline asks who should have built it. The governance floor's
 "established, never hand-rolled" tooling doctrine (home queued at
 `authoring-constitution/references/STACK-TOOLING.md`) is the governance-axis sibling: that
-home carries tooling defaults, this skill the plan-time decision — no merge, cross-pointers
-only.
+home carries tooling defaults, this skill the design- and build-time decision — no merge,
+cross-pointers only.
 
 ## Quality Checklist
 

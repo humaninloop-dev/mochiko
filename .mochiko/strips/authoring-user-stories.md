@@ -6,6 +6,30 @@ Entry formats: `strips/README.md`. Wave context: [v0.28.0] entries — skill-suc
 `.mochiko/brainstorms/workflow-token-reduction/record.md` D4 + the wave-2 rulings R1–R4/T1;
 ratified 2026-07-24).
 
+## [v0.91.0] Two When-NOT-to-Use carve-outs: "the design/plan track" → "the design track" (advisory)
+
+- **Disposition:** superseded → "the design track" at both sites.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1). Raised as an **advisory** by the
+  v0.91.0 wave audit; this skill entered the wave's scope at the fix round, having carried no
+  plan-stage vocabulary the earlier sweeps' terms matched — the pair reads as ordinary prose, so
+  only the wider fix-round sweep surfaced it.
+- **Content (superseded fragments, verbatim — two sites):**
+
+  1. `- **Architecture decisions** - Capture technical-decision rationale in the design/plan track instead; this skill authors user stories, not technical choices`
+  2. `- **API contract design** - Define endpoints and schemas in the design/plan track instead; this skill authors user stories, not interface contracts`
+
+- **Kept deliberately:** both carve-outs entire — this skill authors **user stories, not
+  technical choices** and **not interface contracts**; technical-decision rationale and
+  endpoint/schema design both belong downstream. Only the downstream track's name lost its
+  retired half.
+- **Budget:** body **5,351** against the 6,702 budget; description unchanged at 425 against 532.
+  Both inside.
+- **Consumers assessed:** `mochiko:authoring-requirements` carried the identical phrasing at two
+  sites and was re-keyed in the same round — the two spec-layer authoring skills stay
+  vocabulary-aligned. Specify's FR/SC and story layers are otherwise untouched by this wave: D3
+  explicitly declined to move the technical layer into specify.
+
 ## [v0.63.0] Guardrails body + slim description (guardrails-vs-detail benchmark verdict)
 - **Disposition:** superseded → benchmark-ruled guardrails body + slim description
   (`.mochiko/benchmarks/guardrails-vs-detail/variants/body/authoring-user-stories/` and

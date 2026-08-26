@@ -116,8 +116,7 @@ Each tool below is referenced, never restated — its procedure lives in its hom
   growth door as a candidate under the capability-write test; extend-beats-mint applies and the
   user rules the mint — the architecture lens proposes, the map machinery disposes) ·
   `/mochiko:setup` for a governance-ledger waiver when a floor-asserted obligation must truly
-  drop (Boundaries) · `/mochiko:plan` and `/mochiko:implement` own all delivery; the desk runs
-  none of it.
+  drop (Boundaries) · `/mochiko:implement` owns all delivery; the desk runs none of it.
 - **Register** — user-facing prose per `templates/output-style.md`.
 
 ## Ways of Working

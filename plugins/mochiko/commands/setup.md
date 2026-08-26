@@ -20,7 +20,7 @@ trace summary in hand. The feature map exists at close: brownfield reconstructed
 user-confirmed, greenfield an empty scaffold (feature-map binding below). `Assumed`
 (feature-sizing record, open thread 4 — reconstruction burden, partial-baseline poisoning):
 brownfield close also carries the bootstrapped product baselines at `.mochiko/product/`;
-greenfield leaves **the baselines** to seed at the first plan run. The architecture store's
+greenfield leaves **the baselines** to seed at the first implement run's design phase. The architecture store's
 `spine.md` stub and its `Scope:` line are outside that split — written on **both** paths
 (feature-map binding below).
 
@@ -104,7 +104,7 @@ principle nor recorded waiver · user acceptance not given · no feature map at 
   baselines — `data-model.md` · `contracts/` · `constraints-and-decisions.md` ·
   `quickstart.md` — at
   `.mochiko/product/` (`ARCHITECTURE.md` stays repo root, now as the store's derived index) —
-  from the delivered code; greenfield seeds **those baselines** at the first plan run instead.
+  from the delivered code; greenfield seeds **those baselines** at the first implement run's design phase instead.
   **The architecture store's scaffold is unconditional** — on both paths, `architecture/` is
   created with a `spine.md` stub whose header carries the `Scope:` line (below) and an empty
   `concerns.md` beside it, so the store's layout is complete from birth; greenfield's

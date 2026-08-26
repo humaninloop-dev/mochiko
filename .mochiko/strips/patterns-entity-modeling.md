@@ -6,6 +6,36 @@ Entry formats: `strips/README.md`. Wave context: [v0.27.0] entries — skill-suc
 `.mochiko/brainstorms/workflow-token-reduction/record.md` D4 + the wave-2 rulings R1–R4;
 ratified 2026-07-24).
 
+## [v0.91.0] Ladder blockquote re-keyed: "the plan ladder" / "the plan proposal" → design — plan-stage retirement D1
+
+- **Disposition:** superseded → the same blockquote naming the design ladder and the
+  design-phase proposal.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1 carry-over: "plan-minimalism
+  ladder governs what the design phase authors"; wording ruled by the wave lead 2026-08-26).
+- **Content (superseded text, verbatim):**
+
+  ```
+  > **Entity necessity and shape answer the plan ladder** (`mochiko:patterns-plan-minimalism`) before an entity enters the model — the simplest-execution stops are disclosed in the plan proposal; this skill models the entities that survive it.
+  ```
+
+- **Kept deliberately:** the obligation itself — entity necessity and shape answer the ladder
+  **before** an entity enters the model, the stops are disclosed rather than re-derived here, and
+  this skill models only the survivors. The `mochiko:patterns-plan-minimalism` slug is unchanged
+  (the skill kept its name through its own re-scope this wave), so the pointer still resolves.
+- **Budget:** body 13,711 → **13,721** against the 16,835 budget; description unchanged at 497
+  against 622. Both inside.
+- **Consumers assessed:** `mochiko:patterns-plan-minimalism` was re-scoped to the design phase
+  earlier in this wave and now uses the same vocabulary; `mochiko:authoring-technical-requirements`
+  carried a parallel ladder blockquote, re-keyed identically in the same wave.
+- **Re-keyed again at the fix round (V1 ripple):** the wording this entry landed —
+  `the simplest-execution stops are disclosed in the design-phase proposal` — named an artifact
+  the fix round's V1 ruling then retired (D4 lists plan's proposal approval among the dead gates;
+  the design-phase authoring proposal does not survive in any form). Now reads "disclosed by the
+  design phase as it authors", matching the ladder skill's surviving disclosure grammar. Body
+  13,721 → **13,726** against the 16,835 budget; description unchanged at 497. The obligation is
+  untouched in both passes — only the named disclosure site moved, twice.
+
 ## [v0.64.0] Guardrails cut — When-to-Use removed, canonical template + taxonomy kept; slim description
 
 - **Disposition:** superseded → Wave 2 editorial guardrails cut (D4 cut line — When-to-Use bullets restate the description).

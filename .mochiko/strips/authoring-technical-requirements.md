@@ -6,6 +6,193 @@ Entry formats: `strips/README.md`. Wave context: [v0.28.0] entries — skill-suc
 `.mochiko/brainstorms/workflow-token-reduction/record.md` D4 + the wave-2 rulings R1–R4/T2;
 ratified 2026-07-24).
 
+## [v0.91.0] Fix round — the ladder blockquote's dead "authoring proposal" re-keyed (V1 ripple)
+
+- **Disposition:** superseded → "the simplest-execution stops are disclosed by the design phase
+  as it authors, never re-derived here".
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` **D4**, which lists plan's proposal
+  approval among the dead gates). Ripple of the fix round's **V1** ruling: the design-phase
+  authoring proposal does not survive in any form — the sufficiency gap list is the scope
+  contract, the design checkpoint the user gate.
+- **Content (superseded fragment, verbatim — main-pass v0.91.0 text):**
+
+  ```
+  the simplest-execution stops are disclosed in the design phase's authoring proposal, never re-derived here.
+  ```
+
+- **Kept deliberately:** the obligation entire — every element answers the design ladder
+  **before** it enters the package, and the stops are disclosed rather than **re-derived here**.
+  Only the named disclosure site moved, to match the ladder skill's own surviving grammar.
+- **Budget:** body 10,507 → **10,500** against the 13,285 budget (the replacement is shorter);
+  description unchanged at 598 against 620. Both inside.
+- **Consumers assessed:** three skills carried the same blockquote pattern —
+  `mochiko:patterns-entity-modeling` and `mochiko:patterns-api-contracts` were re-keyed to the
+  identical wording in this round, and `mochiko:patterns-plan-minimalism` is the ladder that
+  owns the grammar. All four now agree; nothing in the library names the dead proposal.
+
+## [v0.91.0] The mandatory FR→TR layer dies — `requirements.md` and TR-XXX retired whole — plan-stage retirement D3
+
+- **Disposition:** superseded → deleted with no replacement artifact. The skill re-scopes to the
+  `constraints-and-decisions.md` layer it already owned.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` **D3**: "The FR→TR layer dies as a
+  mandatory artifact; it does not move to specify. No per-feature `requirements.md`. Real
+  technical decisions (D-XXX, C-XXX, IP-XXX) land where they already live —
+  `constraints-and-decisions.md` and the store". Rationale on the record: moving TR into specify
+  "would make every spec technical, kill the deliberate business/technical layer split, and
+  re-fatten specify with the same restatement this session is cutting").
+- **Content (superseded text, verbatim — SKILL.md §1 whole):**
+
+  ```
+  ### 1. Technical Requirements (requirements.md) -- TR-XXX
+
+  Map every business FR to one or more TRs, each addressing a distinct technical concern the FR implies but does not state (worked decomposition + field definitions: ARTIFACT-TEMPLATES.md).
+
+  **No orphan TRs.** Every TR maps to at least one FR. **No unmapped FRs.** Every FR has at least one TR.
+
+  **No exceptions:** Not for "simple" systems. Not for "obvious" mappings. Not even when the FR appears to map 1:1 — decompose anyway.
+  ```
+
+  Plus, in the same file: the Traceability mandatory link `- TR -> FR (every technical
+  requirement traces to business source)`; three Quality Checklist items (`- [ ] Every FR has at
+  least one TR (no unmapped business requirements)`, `- [ ] Every TR maps to at least one FR (no
+  orphan technical requirements)`, `- [ ] Every TR has testable acceptance criteria`); the ID
+  sequence line's TR terms; and the Common Rationalizations row `| "Requirements are
+  straightforward, TRs would just duplicate FRs" | Straightforward FRs hide technical complexity.
+  Decompose anyway -- translation is the job, not transcription. |`.
+
+  In `references/ARTIFACT-TEMPLATES.md`: §1 whole (the `requirements.md` document template, the
+  TR field-definition table, the four-row decomposition example, and the Writing Criteria worked
+  example). In `references/TRACEABILITY-PATTERNS.md`: the TR box of the traceability web, the
+  TR→FR / TR→C / TR→NFR cross-reference sections with their patterns and validation rules, both
+  dependency chains' TR links, the Forward (FR→TR) and Backward (TR→FR) completeness procedures
+  with the coverage-table output format, the TR examples in consistency rules 1–3, and the TRs
+  column of the traceability matrix.
+- **Kept deliberately:** the C-XXX / D-XXX / IP-XXX layer in full (field schemas, C↔D
+  traceability, the structural-decisions carve-out to the architecture store's delta, the
+  constraint-vs-preference test, constraint and infrastructure type tables); the NFR-XXX grammar
+  and its store-row home; the technology-agnostic writing rule and its infrastructure-fact
+  exception; the whole deliverable-envelope framing; and every non-TR Rationalizations row and
+  Checklist item. **INT-XXX and DS-XXX survive** — see the next entry.
+- **Budget:** body **11,285 → 10,507 chars** against the budget of **13,285** — a net shrink of
+  778, comfortably inside. Description 496 → 598 against its 620 budget (see the description
+  entry below). `references/` files are budget-exempt.
+- **Consumers assessed (the ones inside this seat's scope were fixed; the rest are reported):**
+  the router's skill row (re-keyed same wave); `mochiko:patterns-plan-minimalism`'s element list
+  and rung-scope line, which named TRs explicitly (re-keyed same wave);
+  `mochiko:testing-gap-finding`'s fence, whose `requirements.md` member re-keys under the same
+  ruling (done same wave). **Out of scope, reported to the wave lead as open ripples:**
+  `agents/technical-analyst.md` names `requirements.md` as an artifact it authors;
+  `schemas/tasks.yaml`, `templates/techanalyst-report-template.md`,
+  `templates/feasibility-report-template.md`, and `templates/artifact-format.md` all still name
+  `requirements.md` or use `TR-012` as an ID example;
+  `skills/review-feasibility/references/FEASIBILITY-LENS.md` carries a worked contradiction
+  example built on `TR-009`.
+
+## [v0.91.0] NFR source re-keyed from TR-XXX to the business source (FR-XXX / SC-XXX) — plan-stage retirement D3, ripple
+
+- **Disposition:** superseded → an NFR's source is the FR-XXX or SC-XXX whose promise the target
+  serves; the trace chain resolves `FR-XXX / SC-XXX → NFR-XXX`.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D3). The record is **silent** on this
+  consequence; it was surfaced by this seat during the build and **ruled by the wave lead (R4)**
+  before the edit, because D3 kills the upper link of a chain this skill asserts still resolves.
+- **Content (superseded text, verbatim):**
+
+  ```
+  (numeric target · measurement method · source · category), the **row shape is the store's**
+  (`plugins/mochiko/schemas/architecture-store.yaml`); trace chains are unchanged — TR-XXX → NFR-XXX
+  still resolves, only the path moved.
+  ```
+
+  And in `references/ARTIFACT-TEMPLATES.md`: `Trace chains are unchanged: `TR-XXX → NFR-XXX`
+  still resolves, and `Applies to:` still cites TR-XXX. Only the path moved.`; the Source field
+  rule `On the statement line; business requirement, SLA, or stakeholder justifying the target`;
+  the `Applies to` field rule `| Applies to | No | TR-XXX references | Which technical
+  requirements this NFR constrains |`; and the worked example line `**Applies to:** TR-001 ·
+  TR-005`.
+- **Kept deliberately:** every-NFR-has-a-numeric-target, the measurement-method obligation and
+  what it must name (tool, conditions, frequency), the six categories with their vague-vs-
+  measurable examples, the no-`nfrs.md` rule and the store-row home, and the "'Fast' is not a
+  requirement" floor. `Applies to:` survives as a field — it now cites the C-XXX or IP-XXX the
+  target constrains rather than a dead TR.
+- **Consumers assessed — TWO LIVE DEAD LINKS REMAIN, both outside this seat's writable scope and
+  both reported to the wave lead:** `skills/authoring-architecture-store/SKILL.md` asserts
+  "`TR-XXX → NFR-XXX` trace chains keep resolving", and
+  `schemas/architecture-store.yaml` defines an NFR row's source as "the TR-XXX that demanded it"
+  with a worked example reading "NFR-014 (from TR-021)". Both need the same re-key; neither is
+  fixed here.
+
+## [v0.91.0] INT-XXX / DS-XXX re-homed onto `constraints-and-decisions.md` — plan-stage retirement D3 as extended by the wave lead (R1)
+
+- **Disposition:** superseded → the two declarations survive as thin rows on
+  `constraints-and-decisions.md`, alongside IP-XXX, with their downstream authoring pointers
+  unchanged.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D3, **as extended by the wave lead's
+  R1 ruling of 2026-08-26**). Recorded honestly: **D3 itself is silent on INT-XXX and DS-XXX** —
+  it names only D-XXX, C-XXX and IP-XXX as landing in `constraints-and-decisions.md`. Both
+  declarations lived in the dying `requirements.md`, so D3 would have deleted them by side
+  effect. This seat surfaced the gap rather than dropping them; the wave lead ruled the re-home
+  and undertook to disclose the D3 extension in the wave report for the user's acceptance.
+- **Content (superseded text, verbatim):**
+
+  ```
+  ### 4. System Integrations -- INT-XXX (thin analysis declaration)
+
+  At the analysis layer, flag **which** external systems the feature depends on and **how critical** each is — an INT-XXX declaration that becomes a technical requirement ("the feature MUST integrate with `<system>`; its unavailability is `<criticality>`").
+  ```
+
+  ```
+  ### 5. Data Sensitivity -- DS-XXX (thin analysis declaration)
+
+  At the analysis layer, flag **which** data the feature treats as sensitive — a DS-XXX declaration that becomes a technical requirement ("the feature handles `<data>`, which is sensitive and MUST be classified and protected").
+  ```
+
+  Both re-keyed from "an analysis-layer declaration that becomes a technical requirement" to "a
+  row on `constraints-and-decisions.md`". The declaration text itself is otherwise unchanged.
+- **Kept deliberately — this is the point of the re-home:** both load-bearing obligations
+  survive intact. INT-XXX still carries "every external dependency fails eventually — so every
+  INT-XXX declaration MUST carry through to documented failure modes and a fallback when its
+  boundary is authored"; DS-XXX still carries the requirement that sensitive data is present and
+  must be governed. Both downstream homes are untouched: the per-endpoint `x-integration`
+  boundary in `mochiko:patterns-api-contracts`, the per-attribute classification in
+  `mochiko:patterns-entity-modeling`. The declare-here-author-there split is unchanged.
+- **Additions riding this ruling (no strip owed, recorded for the auditor):** a Part 4 document
+  template and a Declarations field-definition table in `references/ARTIFACT-TEMPLATES.md`, an
+  INT/DS declaration-closure cross-reference section and completeness procedure in
+  `references/TRACEABILITY-PATTERNS.md`, and one Quality Checklist item — the new rows needed a
+  shape, and the closure check is what keeps a declaration from being written and then orphaned.
+- **Consumers assessed:** the router row (re-keyed same wave, and it names the INT/DS
+  declarations explicitly); `mochiko:patterns-entity-modeling` and
+  `mochiko:patterns-api-contracts` (canonical downstream homes — both unchanged and still
+  correctly pointed at).
+
+## [v0.91.0] `description:` re-scoped to the constraint layer — plan-stage retirement D3
+
+- **Disposition:** superseded → the same description naming `constraints-and-decisions.md` as
+  the authored artifact and the design phase as the firing site.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D3).
+- **Content (superseded text, verbatim):**
+
+  ```
+  This skill MUST be invoked when authoring the technical-requirements layer of a feature spec — decomposing FRs into technical requirements (TR-XXX), hard constraints (C-XXX), measurable NFRs (NFR-XXX), and infrastructure-provisioning requirements (IP-XXX), traced to a business source. SHOULD also invoke on 'TR-', 'C-', 'NFR-', 'IP-', or 'technical requirements'. Owns the constraints-and-decisions.md structure (D-XXX schema) — NOT the decision technique (mochiko:patterns-technical-decisions).
+  ```
+
+- **Budget:** description-class edit, canonical snippet: **496 → 598 chars** against the
+  recorded budget of **620**. Inside budget; no justification owed.
+- **Kept deliberately:** the traced-to-a-business-source obligation, the artifact-structure
+  ownership, the NOT-the-decision-technique boundary to `mochiko:patterns-technical-decisions`,
+  and the `'C-'`/`'NFR-'`/`'IP-'` trigger phrases. The `'TR-'` trigger and the 'technical
+  requirements' phrase were dropped — they name a retired artifact, so keeping them would route
+  work to a skill that no longer authors it; `'D-'` and 'technical constraints' were added in
+  their place.
+- **Consumers assessed:** the router row (re-keyed same wave); `agents/technical-analyst.md`
+  mounts this skill and describes its artifacts as including `requirements.md` — **out of this
+  seat's writable scope, reported to the wave lead**.
+
 ## [v0.81.0] `nfrs.md` dies as a file; the Structural Decisions subsection dies whole — product-architecture-schema D12
 
 - **Disposition:** superseded → the architecture store. Two independent absorbs land in one edit:

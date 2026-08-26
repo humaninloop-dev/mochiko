@@ -9,11 +9,11 @@ description: This skill MUST be invoked when structuring a feature's implementat
 
 ## Overview
 
-Transform a plan's stories into **cycle cards** — vertical increments that each deliver observable, testable value. A cycle is a coherent bundle of **named test cases** (expected behaviour, Given/When/Then grain, executable Setup/Action/Assert form) that demonstrate together to the user; the cycle is done when those cases show green against real infrastructure. The output is `tasks.md` in the cycle-card shape (the `tasks` schema is the canonical skeleton — invoke `mochiko-cli template tasks` when the binary is available; otherwise Read `plugins/mochiko/schemas/tasks.yaml` raw): per card — stories + rationale, dependencies, the named test-case list (the card's content), cycle-level brownfield exposure, and the Simple/Split/Merge case.
+Transform a feature's stories into **cycle cards** — vertical increments that each deliver observable, testable value. A cycle is a coherent bundle of **named test cases** (expected behaviour, Given/When/Then grain, executable Setup/Action/Assert form) that demonstrate together to the user; the cycle is done when those cases show green against real infrastructure. The output is `tasks.md` in the cycle-card shape (the `tasks` schema is the canonical skeleton — invoke `mochiko-cli template tasks` when the binary is available; otherwise Read `plugins/mochiko/schemas/tasks.yaml` raw): per card — stories + rationale, dependencies, the named test-case list (the card's content), cycle-level brownfield exposure, and the Simple/Split/Merge case.
 
-This skill works at **design time**: it decides the slicing and states what each cycle must prove. It writes no task lists — the builder decomposes each card into concrete tasks, with file paths, at build time with the code in view (`mochiko:executing-tdd-cycle`, downstream). The card carries the *what and why*; the *how* is deliberately left to the build.
+This skill works at **design time inside the `/mochiko:implement` run** — after the design phase, or directly on a zero-gap sufficiency verdict; never a separate plan run. It decides the slicing and states what each cycle must prove. It writes no task lists — the builder decomposes each card into concrete tasks, with file paths, at build time with the code in view (`mochiko:executing-tdd-cycle`, downstream). The card carries the *what and why*; the *how* is deliberately left to the build.
 
-**Two authors, one card:** the design seat running this skill owns the **slicing judgment** — which bundles exist, Simple/Split/Merge, dependencies, the walking-skeleton call; the `qa-engineer` authors the **test-case content** (expected behaviour) in the grammar it later executes.
+**Two authors, one card:** the design seat running this skill owns the **slicing judgment** — which bundles exist, Simple/Split/Merge, dependencies, the walking-skeleton call; the `qa-engineer` authors the **test-case content** (expected behaviour) in the grammar it later executes. The slicing seat is a **design seat, never the builder who will execute the card.**
 
 ## When NOT to Use
 
@@ -71,7 +71,7 @@ The story→cycle decision and its rationale live **on the card** (Stories line)
 
 ## Brownfield exposure
 
-Each card carries a cycle-level exposure line: `none`, or the existing surfaces it extends/modifies. This is the design-time disclosure — the builder's per-task `[EXTEND]`/`[MODIFY]` handling happens at decomposition, downstream (`mochiko:brownfield-integration`). Plan-artifact brownfield markers (e.g. a data-model entity flagged as extending existing code) translate into the exposure line, so the classification survives design into the build.
+Each card carries a cycle-level exposure line: `none`, or the existing surfaces it extends/modifies. This is the design-time disclosure — the builder's per-task `[EXTEND]`/`[MODIFY]` handling happens at decomposition, downstream (`mochiko:brownfield-integration`). Design-artifact brownfield markers (e.g. a data-model entity flagged as extending existing code) translate into the exposure line, so the classification survives design into the build.
 
 ## Quality Checklist
 
@@ -82,7 +82,7 @@ Before finalizing the cycle cards:
 - [ ] Where a new end-to-end path exists (greenfield / new path), the first cycle is a walking skeleton; growth on a standing path skips it
 - [ ] No infra-only cards — infrastructure is homed inside the first bundle that needs it (skeleton-path infra in the skeleton)
 - [ ] Each card carries its named test-case list (expected behaviour, in the `**TEST:**` grammar)
-- [ ] Each named test case cites the spec/plan ID(s) it covers — never re-quoted content
+- [ ] Each named test case cites the spec/design ID(s) it covers — never re-quoted content
 - [ ] Each card's `**TEST:**` gate is real-infrastructure (never a re-run of the automated tests)
 - [ ] Story→cycle case (Simple/Split/Merge) and rationale recorded on each card
 - [ ] Brownfield exposure stated per card (`none` counts)

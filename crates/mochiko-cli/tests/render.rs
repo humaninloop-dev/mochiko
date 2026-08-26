@@ -215,7 +215,7 @@ fn schemas_dir_override_exits_0() {
     assert_eq!(
         mochiko_cli::run(&args(&[
             "template",
-            "plan",
+            "tasks",
             "--schemas-dir",
             SHIPPED_SCHEMAS_DIR
         ])),

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Plan Artifact Validation Script (Tier-1 deterministic pre-assert)
+Design-Phase Artifact Validation Script (Tier-1 deterministic pre-assert)
 
 Runs cheap, greppable presence/consistency checks before the model review,
 so the reviewer never spends judgment on something a grep can settle:
@@ -42,9 +42,6 @@ REQUIRED_SECTIONS = {
     'constraints-and-decisions.md': [
         '## Constraints',
         '## Decisions',
-    ],
-    'requirements.md': [
-        '## Technical Requirements',
     ],
     'data-model.md': [
         '## Entities',

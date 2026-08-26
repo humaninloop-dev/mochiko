@@ -44,8 +44,10 @@ never mocks.
 ## The blindness fence
 
 The explorer is blind to code and cards. Admissible inputs are an **explicit inclusion list**,
-not a layer label: `spec.md` (FR-XXX, SC-XXX, stories, declared edge cases) · the feature's
-`requirements.md` · Screens & Flows (SCR-XXX, FLOW-XXX) · `data-model.md` (entities, state
+not a layer label: `spec.md` (FR-XXX, SC-XXX, stories, declared edge cases) · the run's
+**sufficiency report** and the feature's **design-phase deltas** — those two artifacts only,
+never the `FEAT-XXX/` run-output directory at large · Screens & Flows (SCR-XXX, FLOW-XXX) ·
+`data-model.md` (entities, state
 machines, DS-XXX sensitivity) · `contracts/` (`api.yaml` and any sibling contract documents) ·
 the architecture store's **concern rows only** — their `NFR-XXX` targets
 (`.mochiko/product/architecture/concerns.md` plus any graduated `concerns/AX-XXX-<slug>.md`).
@@ -160,8 +162,8 @@ grammar owned by `mochiko:patterns-vertical-tdd`, into the feature's durable gat
 Authored by the QA craft (`mochiko:qa-engineer`), never the exploratory seat. Findings
 accepted **as-designed do not fold**.
 
-**The artifact:** `.mochiko/features/FEAT-XXX/gates.md` — minted at first fold (or at plan
-time, when the cards are authored) and **surviving graduation**: work rows vanish, `gates.md`
+**The artifact:** `.mochiko/features/FEAT-XXX/gates.md` — minted at first fold (or at card
+authoring inside the implement run) and **surviving graduation**: work rows vanish, `gates.md`
 persists. It is the named read source of the "accumulated territory `**TEST:**` gates"; at a
 later final validation that read is the **union of the territory features' `gates.md` plus
 their cards' cases**.

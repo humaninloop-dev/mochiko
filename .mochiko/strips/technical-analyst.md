@@ -3,6 +3,42 @@
 Entry formats: `strips/README.md`. Wave context: the plan cluster wave (v0.15.0). Plan-cluster-only
 agent (the analysis+design producer, mounted on `plan`) — strips ruled in-wave (single consumer).
 
+<!-- Lineage note: this persona's original mount was `commands/plan.md`, RETIRED at v0.91.0.
+The seat survives whole — it is now a design-phase producer inside `/mochiko:implement`
+(`.mochiko/brainstorms/plan-stage-utility/record.md` D1), and also authors cycle cards there
+(D1 mechanic c). The "mounted on `plan`" phrasing in the header above is frozen wave context
+from v0.15.0, not a live pointer. -->
+
+## [v0.91.0] Skill-pointer artifact list: `requirements.md` + TR-XXX dropped — plan-stage retirement D3
+
+- **Disposition:** superseded → the re-keyed pointer naming the skill's re-scoped artifact set:
+  "the constraint layer (`constraints-and-decisions.md`: C-XXX / D-XXX / IP-XXX, plus the thin
+  INT-XXX / DS-XXX declarations) and its traceability to a business source."
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/brainstorms/plan-stage-utility/record.md` D3 — the FR→TR layer dies as a mandatory
+  artifact and does **not** move to specify; no per-feature `requirements.md` exists, and real
+  technical decisions land where they already live, on `constraints-and-decisions.md` and the
+  architecture store; `DECISIONS.md` 2026-08-26 row).
+- **Content (superseded, verbatim):**
+
+  > the analysis artifacts (`requirements.md`,
+  > `constraints-and-decisions.md`) and their TR/C/NFR/IP traceability.
+
+  Both halves went wrong at D3, not merely stale: `requirements.md` names an artifact the ruling
+  deletes, and the "TR" of "TR/C/NFR/IP" names an ID class that no longer has an authoring home.
+  A persona pointing a producer at a dead artifact is worse than a silent one — it invites the
+  seat to author it.
+- **Kept deliberately:** the sentence's second half — "NFR-XXX rows are homed on the architecture
+  store's concern rows, not a `nfrs.md` file — the ids and the grammar are that skill's, the row
+  is the store's" — is the v0.81.0 D12 supersession recorded in the entry immediately below, and
+  survives byte-for-byte. It is protected content from a prior ruling; this edit does not touch
+  it. The `## Skills Available` section's single-source framing and its other three bullets are
+  likewise untouched.
+- **Consumers assessed:** persona body, one bullet. The pointer's target skill
+  `mochiko:authoring-technical-requirements` keeps its slug through the same wave's re-scope
+  (P3), so the mount and the `skills:` frontmatter stay valid; the re-key mirrors that skill's
+  own re-scoped `description:` rather than restating its internals.
+
 ## [v0.81.0] Skill-pointer artifact list: `nfrs.md` → the store's concern rows — product-architecture-schema D12
 
 - **Disposition:** superseded → the architecture store. The persona's pointer to

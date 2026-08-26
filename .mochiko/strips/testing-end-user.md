@@ -15,6 +15,40 @@ the decision row; nothing was removed or rewritten, and the existing *"A passing
 carries **no prose**"* rule was extended, never replaced. The one entry below records a line
 whose right to exist is contested in advance.
 
+## [v0.91.0] Quality-gate command source: the `plan.md` build-configuration read dies — plan-stage retirement D4
+
+- **Disposition:** superseded → quality-gate commands come from `tasks.md`'s `## Quality Gates`
+  section **and the project's own build configuration**.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` **D4**: "`plan.md` (the summary
+  artifact) dies — no restatement artifact"). Scope for this file was opened by the wave lead's
+  second extension ruling of 2026-08-26.
+- **Content (superseded text, verbatim):**
+
+  ```
+  1. **Identify quality gate commands** from the `## Quality Gates` section of `tasks.md` and/or the build configuration in `plan.md`.
+  ```
+
+- **Disposition judgment, raised by this seat and then ruled:** D4 rehomes the `quickstart.md`
+  null path and the sufficiency verdict explicitly, but says nothing about where build
+  configuration lives. The sufficiency report is a *verdict* artifact, so pointing a gate-command
+  read at it would have been inventing a home. This seat flagged the gap rather than guessing;
+  the **wave lead ruled the replacement wording on 2026-08-26** — "`tasks.md` and the project's
+  own build configuration", dropping the dead `plan.md` half, the line already naming `tasks.md`.
+  The reading behind it: build configuration was never really `plan.md`'s to hold — it belongs to
+  the project.
+- **Kept deliberately:** `tasks.md`'s `## Quality Gates` section as the first source, the
+  always-auto-resolve rule for quality gates (deterministic ground truth, never judgment), the
+  execute/record/classify sequence, exit-code classification, and the `quality_gates` frontmatter
+  reporting slot — all untouched.
+- **Budget:** body **13,123** against the 16,407 budget; description untouched at 500 against
+  625. Both inside. The ruled wording is terser than the text it replaced, so the body ends 2
+  chars *below* the ledger's recorded 13,125 rather than above it. (Figure taken after the
+  ruled-wording alignment, not before it.)
+- **Consumers assessed:** `mochiko:patterns-vertical-tdd` owns the `**TEST:**` grammar this
+  skill consumes (untouched); `implement.md` (P1's rewrite) dispatches the verification seat.
+  No other site named `plan.md` as a build-configuration source.
+
 ## [v0.80.0] REPORT-TEMPLATES.md — envelope row drops the `slice` key; storage path drops `feature/slice` — slice-vocabulary purge
 
 - **Disposition:** superseded → the same field-definition row carrying `report` / `feature` only,

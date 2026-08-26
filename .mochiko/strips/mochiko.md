@@ -6,6 +6,158 @@ Entry formats: `strips/README.md`. Wave context: skill-succinctness wave 1 (desi
 single physical lines, so the R2 line denominator undercounts this skill; dual accounting
 recorded here and flagged on the wave's ROADMAP row.
 
+## [v0.91.0] Fix round — four router surfaces the main pass missed (V2 B2/B3 + V1 + V2 advisory)
+
+- **Disposition:** superseded → a cluster cross-reference corrected, the artifact-chain row
+  synced to the landed template, the principal-architect row's dead contest-brief clause replaced
+  by its surviving seats, and one "feature plans" phrase re-keyed.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1/D3/D4). Raised by the v0.91.0 wave
+  audit — **V2 B2** (:102), **V2 B3** (:74), **V1 B1** (:136), **V2 advisory** (:122). The lead's
+  ruling behind the V1 item, recorded because it reverses part of this seat's own main-pass
+  wording: **the design-phase authoring proposal and the principal-architect's contest brief DIED
+  at D4** — the sufficiency gap list is the scope contract and the design checkpoint is the user
+  gate, so there is no proposal for a contest to attack.
+- **Content (superseded fragments, verbatim — four sites):**
+
+  1. `executing-tdd-cycle` row cross-reference: `deciding what the cycles *are* is `patterns-vertical-tdd` (Plan, above)`
+  2. `artifact-format` row's chain list: `(spec — Intent + Feature Selection included, requirements, constraints-and-decisions, nfrs, data-model, contracts, quickstart, plan, tasks, codebase-analysis)`
+  3. `principal-architect` agent row: `the seat for the design-phase authoring proposal's **contest brief**`
+  4. `/mochiko:architecture` entry-point row: `Feature plans contest against this baseline`
+
+- **Notes on two of these:** site 2 was **stale in both directions** — it still listed
+  `requirements` and `plan` (both retired this wave) and `nfrs` (retired at v0.81.0, when the
+  landed `artifact-format.md` dropped it but this row was not synced). The row now mirrors the
+  template's actual chain. Site 3 is the one place the main pass carried the dead proposal
+  forward; it now names the seat's surviving homes — the architecture desk / store stewardship,
+  and the design phase's architecture seat.
+- **Kept deliberately:** the principal-architect's whole remit apart from the contest brief — desk
+  lead, store steward, the design-time store delta, contesting features against the standing
+  store, the landing folds, and drift as an empirical duty with its scoped codebase probe. The
+  `executing-tdd-cycle` row's runtime-vs-design-time boundary is unchanged; only the cluster it
+  points at is renamed.
+- **Fifth site, caught on this round's own re-sweep:** the `patterns-plan-minimalism` row (:83)
+  still described the ladder as firing "at the design phase's authoring proposal, each producing
+  seat's plan, and the proposal contest" — the same dead pair site 3 removed from the agent row.
+  Re-keyed to the three surviving sites: what the design phase authors (scoped to the sufficiency
+  gap list), each producing seat's plan, and the epic joint design-phase plan. Row and skill now
+  state the same three.
+- **Budget:** the router body is deliberately unbudgeted (it IS the discoverability surface);
+  **39,909** chars after this round. Description unchanged at 206.
+- **Consumers assessed:** `templates/artifact-format.md` is the source site 2 now mirrors —
+  verified against the landed file rather than assumed. `mochiko:patterns-plan-minimalism` lost
+  the same proposal/contest sites in this fix round (its own [v0.91.0] entries), so router and
+  skill agree on the dead-proposal ruling.
+
+## [v0.91.0] `/mochiko:plan` entry-point row and the `plan` schema row retired — plan-stage retirement D1/D4
+
+- **Disposition:** deleted. The command retires (D1) and the `plan.md` summary artifact dies
+  with it (D4), so both rows lose their subjects. A row for a command that no longer ships is
+  worse than no row: the router is the discoverability surface, and a dead entry sends the user
+  at a slash command that does not resolve.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1 (`/mochiko:plan` retires as a
+  command) and D4 ("`plan.md` (the summary artifact) dies — no restatement artifact")).
+- **Content (deleted rows, verbatim):**
+
+  ```
+  | `/mochiko:plan` | you want to turn ratified scope into an accepted implementation **package** — entry is a **capability-batch** (FEAT-XXX plus its selected work rows), the scope a spec's accepted selection or a feature-command card; the run opens with the **plan-the-plan proposal** you approve (artifact list + depth, rung-justified, independently contested — the approved list is the run's floor), then the proposed artifacts: **every run consults the architecture store** (there is no omit-architecture escape) and a **store delta** is drafted only when the feature changes structure — you sign off on a rendered diagram plus the named `AX-XXX` row changes, and that signature is what writes the store; detailed design, and the **cycle cards** (`tasks.md`) — independently graded for conformance, feasibility, and completeness; one run per capability-batch ordered by the rows' dependency closure, artifacts at `.mochiko/features/FEAT-XXX/`, deltas against the product baselines; delta scope collapses plan to confirming the card; next step `/mochiko:implement` |
+  ```
+
+  ```
+  | `plan` (schema) | the `plan.md` shape — delivered by `mochiko-cli template plan`, or Read `plugins/mochiko/schemas/plan.yaml` raw when the binary is absent; the `plan.md` the lead assembles at Phase 4 — rolling up Key Decisions · Infrastructure/IP-XXX (constraints-and-decisions) · Entities+Sensitivity (data-model) · Endpoints+Integration (contracts/api.yaml); the lead's fill-target |
+  ```
+
+- **Kept deliberately:** every obligation the plan row described survives in the rewritten
+  `/mochiko:implement` row — the capability-batch entry keying, the two scope sources, the
+  unconditional architecture-store consult, the sign-off-is-the-write-gate rule, the cycle
+  cards, the independent grading, and the artifact homes. What died is the separate run and its
+  two gates, replaced by the sufficiency check and the design/card checkpoints.
+- **Consumers assessed:** `plugins/mochiko/schemas/plan.yaml` is deleted by P2 in this same wave
+  (confirmed by the wave lead as ruling R3 before this row was removed), so the schema row's
+  target genuinely no longer exists. `specify.md`, `feature.md`, and `architecture.md` all had
+  their `/mochiko:plan` pointers re-keyed in the same wave.
+
+## [v0.91.0] "Plan cluster" renamed to the design-phase cluster; every plan-run row re-keyed — plan-stage retirement D1–D5
+
+- **Disposition:** superseded → a **Design-phase cluster** section auto-reached during
+  `/mochiko:implement`'s design phase, with its member rows and the surrounding pipeline prose
+  re-keyed to the design phase.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1 (implement absorbs a conditional
+  design phase), D3 (the TR layer dies), D4 (homes and gates), D5 (the two graders re-scope)).
+- **Content (superseded fragments, verbatim):**
+
+  1. Section header:
+     `### Plan cluster (model-invoked — auto-reached during a `/mochiko:plan` run)`
+  2. "How the library composes": `` and `brainstorm` as v8 **Goal · Harness · Bindings**; `feature`, `plan`, and `implement` as ``
+     `six-section **charters**`
+  3. Pipeline-consumption blockquote opening:
+     `` > Pipeline consumption is keyed to the **capability-batch**: `/mochiko:plan` and `/mochiko:implement` gate on a capability entry with selected work rows carrying ratified scope ``
+  4. Closing blockquote: `` > The plan **completeness** reviewer reuses the shared `advocate-report-template` (registered under Specify, above) as-is — there is no plan-specific completeness report template. ``
+  5. `advocate-report-template` row tag: `**shared (specify + plan)**`
+  6. `patterns-plan-minimalism` row: `the **simplest-execution ladder** at plan time` … `run over every package element` … `fires at the lead's plan-the-plan proposal, each producing seat's plan, and the proposal contest` … `the single source of the plan ladder`
+  7. `patterns-adopt-first` row: `the **adopt-first (build-vs-off-the-shelf) discipline** at plan time`
+  8. `authoring-technical-requirements` row: `authoring the technical-requirements layer — TR-XXX decomposition, C-XXX hard constraints, NFR-XXX (numeric target + measurement method), IP-XXX provisioning, and the `constraints-and-decisions.md` artifact + C↔D / IP traceability; declares DS-XXX / INT-XXX as **analysis concerns only**`
+  9. `patterns-system-design` row: `drafted **in the plan package with the store untouched**`
+  10. `review-plan-artifacts` row: `independently grading the plan package against the **approved proposal** — conformance (every proposed artifact present, nothing materially past approved depth …)` … `the mirror-checklist half of the plan-review pair`
+  11. `review-feasibility` row: `adversarially grading the producer's plan artifacts for cross-artifact **feasibility**` … `the adversarial-critique half of the plan-review pair`
+  12. `patterns-vertical-tdd` row: `structuring the accepted design into **cycle cards** (`tasks.md`) — bundle identification (walking skeleton first)` … `the builder decomposes at build time; lead-dispatched, no fixed seat`
+  13. `authoring-epic` row: `joint plan-the-plan proposal` … `the mint-once/overlap guard (desk mints · plan may mint inline via declare-and-contest · specify proposes never mints …)` … `consumed by plan/implement, referenced never restated`
+  14. `testing-gap-finding` row, the fence list: `` a structural input fence (`spec.md` · `requirements.md` · Screens & Flows · `data-model.md` · `contracts/` · the store's concern rows …) ``
+  15. Agent rows — `principal-architect`: `plan-cluster PRODUCER and altitude voice`, `drafts the plan-time store delta`, `the seat for the plan proposal **contest brief**` · `devils-advocate`: `plan completeness (cycle cards included)` · `tech-lead`: `plan-cluster **feasibility reviewer** (grades the plan artifacts …)` · `technical-analyst`: `plan-cluster PRODUCER — authors the analysis+design artifacts (requirements · constraints-and-decisions · …)`
+
+- **Kept deliberately:** every row's substantive content — the five rungs, the commodity
+  categories and the two-part obligation, the store-delta diagram craft and its sign-off gate,
+  both graders' lenses and verdict shapes, the cycle-card craft, the epic's manifest/spine
+  shape and close semantics, the gap-finding fence's other members and its two-message dispatch.
+  Fragment 2 additionally **corrected a stale omission**: the charter list named `plan` but not
+  `architecture`, which has been a six-section charter since v0.81.0; dropping `plan` and adding
+  `architecture` leaves the list accurate rather than merely shorter.
+- **Consumers assessed:** each re-keyed row's own skill was edited in the same wave and its
+  strip records the matching change, so row and skill agree. The four agent rows were re-keyed
+  here but **the agent persona files themselves are outside this seat's writable scope** —
+  `agents/principal-architect.md`, `agents/devils-advocate.md`, `agents/tech-lead.md`, and
+  `agents/technical-analyst.md` still carry plan-cluster role language, reported to the wave
+  lead as an open ripple.
+
+## [v0.91.0] `/mochiko:implement` entry-point row rewritten around the sufficiency check and three checkpoints — plan-stage retirement D1/D2/D4
+
+- **Disposition:** superseded → a row describing implement as the single downstream run: the
+  sufficiency check at entry, the conditional design phase, card authoring by a non-builder
+  design seat, and the three user gates.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1 (the run's new spine), D2 (the
+  check: per-row, non-author graded, binding, disputed clause defaults gap-to-user), D4 (homes
+  and the three surviving gates — run-open routing, design sign-off, card confirm)).
+- **Content (superseded row, verbatim):**
+
+  ```
+  | `/mochiko:implement` | you want to turn accepted cycle cards into working, verified code — entry keyed to the capability-batch (FEAT-XXX, artifacts at `.mochiko/features/FEAT-XXX/`); each card decomposed by its builder at build time, TDD-built, independently verified against real infrastructure with captured evidence, closing on your acceptance — the landing folds delivered work rows into the capability's extent (pending rows persist), flips the store's in-flight-class elements to `built` with graded `As-built:`/`Drift:` writes and the built-vs-signed diff, and the touched product baselines take their graded delta folds (selection scope graduates the batch; delta scope folds the delta) |
+  ```
+
+- **Kept deliberately:** the entire landing paragraph verbatim in substance — extent fold with
+  pending rows persisting, the store's in-flight-class flip to `built` with graded
+  `As-built:`/`Drift:` writes and the built-vs-signed diff, the graded baseline delta folds, and
+  the selection-vs-delta scope split. The build half (build-time decomposition, TDD, independent
+  verification against real infrastructure with captured evidence, closing on user acceptance)
+  is likewise unchanged. What the rewrite **adds** is the front half the retirement created: the
+  entry gate, the conditional design phase, and the card-confirm checkpoint.
+- **Consumers assessed:** this row describes `commands/implement.md`, which **P1 rewrote in the
+  same wave and which this seat does not own**. The row was authored from the record's D1/D2/D4
+  rather than from P1's landed text; the wave lead has taken the row-vs-command diff as an
+  explicit fan-in check before the audit.
+
+## [v0.91.0] `review-sufficiency` row added to the design-phase cluster — pure addition (no content left)
+
+- **Disposition:** addition — recorded here only because the router is the discoverability
+  surface and a new skill that is not indexed is, by construction, undiscoverable. No strip is
+  owed for an addition; this note exists so the wave's router changes read as one set.
+- **Ruling:** `DECISIONS.md` 2026-08-26 plan-stage-retirement row →
+  `.mochiko/brainstorms/plan-stage-utility/record.md` D2 (the check's content spec) and the
+  Build surface's "Sufficiency-check carrier: likely a new skill". The skill itself is authored
+  by another seat in this wave; this seat added only its index row.
+
 ## [v0.81.0] Architecture rows re-keyed to the store; `authoring-architecture` row retired — product-architecture-schema D1/D3/D4/D7/D10/D12
 
 - **Disposition:** superseded → a new **Architecture desk cluster** section (the store skill, the

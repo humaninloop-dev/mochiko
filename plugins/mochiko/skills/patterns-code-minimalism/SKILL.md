@@ -14,8 +14,8 @@ the **first rung that applies**. The ladder fires at card decomposition
 (`mochiko:executing-tdd-cycle`, step 2), before the red phase — it governs whether and how
 much code exists, not how the code that exists is written. The chosen rung per task is
 disclosed in the cycle report's decomposition, where the verification seat grades it against
-this file (`mochiko:review-code-minimalism`). Its plan-time sibling
-`mochiko:patterns-plan-minimalism` runs the same discipline over the plan's design elements
+this file (`mochiko:review-code-minimalism`). Its design-time sibling
+`mochiko:patterns-plan-minimalism` runs the same discipline over the design's elements
 upstream; this ladder is the build-time continuation.
 
 ## When NOT to Use
@@ -49,8 +49,8 @@ not apply — and be able to say why, in one line, when it doesn't.
 5. **Installed dependency covers it?** A dependency already in the manifest does this —
    use it. (Adding a NEW dependency is not a rung — it rides the domain-registry ruling
    where `references/DOMAIN-DEPENDENCIES.md` applies, and is never auto-approved.) A
-   plan-committed adopt-first choice reaches these cards as a binding constraint, not a rung
-   to re-open — the plan-time discipline is `mochiko:patterns-adopt-first`.
+   design-committed adopt-first choice reaches these cards as a binding constraint, not a rung
+   to re-open — the design-time discipline is `mochiko:patterns-adopt-first`.
 6. **Fits in one line?** Write the one line.
 7. **Only then:** write the minimum that works.
 

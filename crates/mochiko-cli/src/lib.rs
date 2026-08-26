@@ -20,7 +20,7 @@ OPTIONS:
     -h, --help             Show this help
 
 TEMPLATES:
-    spec  plan  tasks  feature-entry  features-index  codebase-analysis
+    spec  tasks  feature-entry  features-index  codebase-analysis
     governance-intent  governance-surfaces  architecture-store
 
 Schema source resolves in order: --schemas-dir, then ./plugins/mochiko/schemas/, then the

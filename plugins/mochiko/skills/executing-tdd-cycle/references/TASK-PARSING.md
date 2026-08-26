@@ -15,7 +15,7 @@ decompose at build time (SKILL.md step 2) — nothing task-level is parsed from 
 - **Brownfield exposure:** none | extends `path` | modifies `path`
 
 **TEST:** {case title}
-- **Covers**: spec/plan IDs this case covers
+- **Covers**: spec/design IDs this case covers
 - **Setup**: ...
 - **Action**: ...
 - **Assert**: ...
@@ -34,7 +34,7 @@ growth on an already-standing path has no skeleton cycle.
 | Stories | The `US-#` set this card serves — resolve against `spec.md` for the independent tests |
 | Depends on | Cards that must be complete before this one starts |
 | Brownfield exposure | The existing surfaces the decomposition must classify extend/modify (read those files first; `brownfield-integration` alongside) |
-| `**TEST:**` blocks | The card's named test-case bundle — the expected behaviour the cycle must ultimately demonstrate green; these bound the decomposition. Each block's `Covers` line cites the spec/plan IDs it verifies. Parse only to know what the cycle must prove; running the cases is `testing-end-user`'s work |
+| `**TEST:**` blocks | The card's named test-case bundle — the expected behaviour the cycle must ultimately demonstrate green; these bound the decomposition. Each block's `Covers` line cites the spec/design IDs it verifies. Parse only to know what the cycle must prove; running the cases is `testing-end-user`'s work |
 
 ## Current-Cycle Identification
 

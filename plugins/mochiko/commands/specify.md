@@ -99,7 +99,7 @@ given.
 - **Epic proposal (optional).** When one derivation spans capabilities such that its work rows
   want one coordinated multi-feature run, the `product-manager` seat **may propose an epic** as
   part of the selection card — a proposal only, never a mint; the user takes it to
-  `/mochiko:feature`'s desk or `/mochiko:plan` to form. Specify never mints an epic
+  `/mochiko:feature`'s desk to form, the only door that mints. Specify never mints an epic
   (`mochiko:authoring-epic`).
 - **Plan approval:** any seat that writes artifacts plans first and works only on a plan you
   approved; grading and fact-finding seats are exempt.
@@ -155,5 +155,6 @@ given.
 - **Migration:** existing slice-form specs are valid frozen history; only new runs use this
   surface.
 - **Register:** user-facing prose per `templates/output-style.md`.
-- **Next step:** `/mochiko:plan` — one run per capability-batch (a capability's selected
-  work rows), in the rows' dependency order.
+- **Next step:** `/mochiko:implement` — one run per capability-batch (a capability's selected
+  work rows), in the rows' dependency order; the run opens with a sufficiency check at its
+  entry.

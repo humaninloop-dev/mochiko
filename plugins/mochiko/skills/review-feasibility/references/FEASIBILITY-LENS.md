@@ -32,12 +32,12 @@ Throughout: feasibility findings are **cross-artifact** — the seam is between 
 
 ## 3. Requirement ↔ Constraint contradiction
 
-**Seam:** technical requirements (TR-XXX) ↔ constraints.
+**Seam:** requirements (FR-XXX / SC-XXX) ↔ constraints.
 **Question:** does any requirement assume a capability not available under the stated constraints?
 
-**Worked example.** `TR-009: deliver real-time push notifications to mobile clients.` `C-007: no persistent connections permitted; polling only.` The requirement assumes a capability the constraint removes. Contradiction.
+**Worked example.** `FR-009: deliver real-time push notifications to mobile clients.` `C-007: no persistent connections permitted; polling only.` The requirement assumes a capability the constraint removes. Contradiction.
 
-**Evidence:** the `TR-XXX`, the `C-XXX`, and the missing capability the requirement depends on.
+**Evidence:** the `FR-XXX` / `SC-XXX`, the `C-XXX`, and the missing capability the requirement depends on.
 **Resolvable vs fundamental:** if a constraint-compatible mechanism exists (e.g. scheduled polling that meets the intent), *resolvable*; if the requirement's core value cannot survive the constraint, *fundamental*.
 
 ---
@@ -95,7 +95,7 @@ Its *necessity* test is the simplest-execution ladder's rung 1 — does any rati
 
 ## Architecture pass {#architecture-pass}
 
-Fires when the plan package carries a **store delta** — the drafted topology + `AX-XXX` concern-row
+Fires when the design-phase package carries a **store delta** — the drafted topology + `AX-XXX` concern-row
 changes authored by `mochiko:patterns-system-design` against the standing store at
 `.mochiko/product/architecture/`, graded before the user's sign-off writes it. Two lens groups —
 **topology feasibility** (A1–A2) and **governance conformance** (A3) —
@@ -137,7 +137,7 @@ the seam is between two *elements*, and reading it is no less cross-artifact for
 
 **Evidence:** the governance surface (the layer rule / allowlist entry / `GI-XXX` / the floor card), the topology element that breaks it, and the specific violation. "Cites the principle" is not "satisfies the principle" — verify, don't take the assertion.
 **The two exits (never a silent pass):** a non-conforming topology surfaces with exactly two exits — **redesign to conform**, or a **user-ruled amendment/waiver** through `governance-ledger.md`. The feature-level review never overrules the constitution. A conflict with a conforming redesign available is *resolvable* (`needs-revision`); one where the governance and the required shape are mutually exclusive is *fundamental* (`infeasible`, escalates for the amendment/waiver decision).
-**Boundary watch:** you grade the *topology's conformance* to governance (a plan artifact against an input), never whether the governance itself is well-formed — that is `validation-constitution`, a different domain.
+**Boundary watch:** you grade the *topology's conformance* to governance (a design-phase artifact against an input), never whether the governance itself is well-formed — that is `validation-constitution`, a different domain.
 
 ---
 
@@ -199,5 +199,5 @@ Catch yourself at any of these and restart the hunt at the class where you cut t
 | "I can tell from the summary" / "I'll trust the analyst's report" | Independence means grading the artifacts themselves, never the author's account of them. |
 | Reviewing one artifact in isolation | Feasibility lives *between* elements; a single-artifact gap is the sibling's — class 7 the sole exception. |
 | Vague evidence ("these seem to conflict") | Not a finding. Cite the IDs in tension (`C-XXX` ↔ `D-XXX`). |
-| Reviewing the constitution | G1: plan artifacts only. The constitution has its own validator. |
+| Reviewing the constitution | G1: design-phase artifacts only. The constitution has its own validator. |
 | Restating the loop / round cap / human-gate mechanics | Those are the lead's — its command states them. Reference, never restate. |

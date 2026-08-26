@@ -8,6 +8,46 @@ Entry formats: `strips/README.md`. Ruling for every [v0.68.0] entry below:
 [v0.81.0] entry below: `.mochiko/brainstorms/product-architecture-schema/record.md` (D7 · D12 ·
 D13) → `DECISIONS.md` 2026-08-19 product-architecture row. -->
 
+## [v0.91.0] Every `/mochiko:plan` dispatch site re-keyed to `/mochiko:implement` — plan-stage retirement D1/D6
+
+- **Disposition:** superseded → the same six lines naming `/mochiko:implement`, the single
+  downstream run after plan's retirement.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1 (plan retires; implement is the
+  single downstream run) and D6 (implement's delta-scope entry gates on the desk-confirmed card
+  directly; run-open absorbs the card-vs-entry confirmation the delta-scope plan run performed)).
+- **Content (superseded fragments, verbatim — six sites):**
+
+  1. Identity & Mission, the symmetry parenthetical:
+     `` `/mochiko:plan`'s lead is already delivery manager of the goal ``
+  2. Roles & Responsibilities, Other seats:
+     `- **Dispatched runs** — all delivery. Plan and implement own their bounds, verification seats, and`
+  3. Tools, the `mochiko:authoring-epic` entry:
+     `` close) through it. A multi-feature epic dispatches to `/mochiko:plan` as one run over its ``
+  4. Tools, Dispatch targets (two sites in one block):
+
+     ```
+     - **Dispatch targets** — `/mochiko:plan` for a dispatched capability-batch that scales itself, in
+       the scope its door sets: **growth-door rows enter selection scope** (the batch covers the cut
+       rows; its landing folds them into the capability's extent), a **bug/improvement delta card stays
+       delta scope** (its landing is the delta fold) — the same split `/mochiko:plan` and
+       `/mochiko:implement` name at their Entry.
+     ```
+  5. Ways of Working, Reference-never-restate:
+     `` live in `/mochiko:plan` and `/mochiko:implement` and the skills they bind; the desk points at them ``
+  6. Boundaries, no-delivery-harness:
+     `` `/mochiko:plan` capability-batch — growth-door rows in selection scope, a bug/improvement delta ``
+
+- **Kept deliberately:** the whole growth-vs-delta scope split (growth-door rows enter selection
+  scope, bug/improvement delta cards stay delta scope), the landing semantics of each, the
+  capability-write test, and the audited-from-the-map-delta boundary — D1 changes the dispatch
+  target only. Site 4 gained the D6 clause naming the desk-confirmed card as implement's delta
+  entry; site 4's "the same split … name at their Entry" narrowed to the singular "names at its
+  Entry" because only one command now has an Entry.
+- **Consumers assessed:** `implement.md` Entry (P1's rewrite carries both scope branches),
+  `specify.md`'s next-step line and the router's entry-point + pipeline-consumption surfaces
+  (all re-keyed same wave).
+
 ## [v0.81.0] Product-surface baseline list re-keyed — `nfrs.md` out, the store in (D12)
 
 - **Disposition:** superseded → the list drops `nfrs.md` (dies whole under D12) and gains

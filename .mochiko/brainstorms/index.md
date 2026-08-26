@@ -34,10 +34,21 @@ One entry per session directory under `.mochiko/brainstorms/<topic-slug>/`, **ne
   mechanics a–e carry the rehoming ledger (mid-run structural re-fire · epic spine
   always-fires · card author never the builder · build-time decisions gated · map-entry
   hardening incl. architecture link).
-- **Landed:** DECISIONS.md row (2026-08-26) · BACKLOG "Plan-retirement build" section (build
-  item + pre-wave kinako dry-run + bidirectional falsifier watch); plan-structure-yagni watch
-  closed superseded → trail · ROADMAP: plan-surface-builds Next row touch + "Plan absorbs
-  tasks" standing bet superseded
+- **Landed:** DECISIONS.md row (2026-08-26) · BACKLOG "Plan-retirement build" section;
+  plan-structure-yagni watch closed superseded → trail · ROADMAP: plan-surface-builds Next
+  row touch + "Plan absorbs tasks" standing bet superseded. **Built same day at v0.91.0** —
+  pre-wave kinako dry-run first (R1-2: check discriminated 3 sufficient / 6 gap, neither
+  falsifier arm tripped; six instrument defects user-ruled into D2 as the A1–A6 addendum),
+  then one wave under the sound-loop + transport floors (4 plan-approved producers, strictly
+  disjoint ownership; 3 fresh author≠grader validators, ALL THREE FAIL round 1 — headline:
+  V1's record-fidelity catch that the design-phase authoring proposal + contest brief died at
+  D4 yet rode three surfaces — → batched fix rounds → 3/3 CONFIRMED-PASS): `/mochiko:plan` +
+  `plan.yaml` deleted (SHA-verified whole-primitive strips, 28-row rehome map) ·
+  `implement.md` rewritten as the single downstream run · new `mochiko:review-sufficiency`
+  (6,652/686) · 34+-file re-point sweep · ATR re-scoped (TR dies, C/D/IP + INT/DS survive) ·
+  five persona edits · crate re-keyed to 7 schemas; two overages ruled HOLDS; 83 strips
+  across 40 files; gates 4/5/6 (CHANGELOG, marketplace 0.91.0, cargo test 12/12). Build item
+  + dry-run → trail; the bidirectional falsifier watch stays in BACKLOG.
 
 ## `author-grader-value-tiering` — question author≠grader wholesale; pragmatic split: independent verification for high-value, author self-verification for low-value
 - **When:** 2026-08-26 · **Status:** open

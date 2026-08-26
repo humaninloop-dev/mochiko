@@ -98,7 +98,7 @@ line per term.
 ### Landing ritual (subtractive — enforced floor, with the invariants)
 
 Closing **or superseding** work is ONE move with three parts, executed in the same moment at
-the command landing step (brainstorm close · setup/amend · specify/plan/implement landings
+the command landing step (brainstorm close · setup/amend · specify/implement landings
 where those commands run):
 
 1. append the decision row (and any per-decision record);

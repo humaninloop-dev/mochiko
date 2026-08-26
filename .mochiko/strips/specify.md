@@ -7,6 +7,49 @@ wave also ran the **D2 conversion assessment** and the **S8 home-revision checkp
 the shape is now **v5** (2026-07-30) — see the v0.35.0 section below. **Also stale:** the shape is
 **v7**, and specify converted to v7 form at v0.43.0 — see the section immediately below.
 
+## [v0.91.0] Next-step line re-keyed from `/mochiko:plan` to `/mochiko:implement` — plan-stage retirement D1
+
+- **Disposition:** superseded → the same Bindings line pointing at `/mochiko:implement`, which
+  is now the single downstream run and carries the sufficiency check at its entry.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1: `/mochiko:plan` retires as a
+  command; implement absorbs a conditional design phase behind a sufficiency check).
+- **Content (superseded text, verbatim):**
+
+  ```
+  - **Next step:** `/mochiko:plan` — one run per capability-batch (a capability's selected
+    work rows), in the rows' dependency order.
+  ```
+
+  Replaced by the same line naming `/mochiko:implement` and adding "the run opens with a
+  sufficiency check at its entry".
+- **Kept deliberately:** the one-run-per-capability-batch keying and the dependency-order
+  clause — D1 changes which command receives the batch, not how batches are sized or ordered.
+- **Consumers assessed:** the router's entry-point table (re-keyed same wave), `feature.md`'s
+  dispatch targets (re-keyed same wave), `implement.md` Entry (P1's rewrite).
+
+## [v0.91.0] Epic-proposal line's `/mochiko:plan` mint door removed — plan-stage retirement D4
+
+- **Disposition:** superseded → the same Harness line naming `/mochiko:feature`'s desk as the
+  only door that mints an epic.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D4: "Plan's inline epic mint door
+  (declare-and-contest from a bare feature list) dies with it — epic minting is desk-only
+  (`/mochiko:feature`), recorded supersession").
+- **Content (superseded text, verbatim):**
+
+  ```
+    part of the selection card — a proposal only, never a mint; the user takes it to
+    `/mochiko:feature`'s desk or `/mochiko:plan` to form. Specify never mints an epic
+    (`mochiko:authoring-epic`).
+  ```
+
+  Replaced by "the user takes it to `/mochiko:feature`'s desk to form, the only door that mints."
+- **Kept deliberately:** specify's proposes-never-mints rule and the `mochiko:authoring-epic`
+  pointer — D4 removes one of the two mint doors, and leaves specify's posture untouched.
+- **Consumers assessed:** `mochiko:authoring-epic`'s Minting section (three doors → two, same
+  wave), its Red Flags line, and the router's `authoring-epic` row (all re-keyed same wave).
+
 ## [v0.78.0] Model-tiering floor line retargeted — `mochiko:explorer` superseded by native `Explore` + `model: haiku` override
 
 - **Disposition:** superseded → the reworded floor line: locate/enumerate reads go to "a

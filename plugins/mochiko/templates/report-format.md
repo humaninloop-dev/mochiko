@@ -3,8 +3,8 @@
 The single authoritative home of the shape every mochiko workflow **report** follows —
 cycle reports, verification reports, reviewer reports, and producer disclosures. Report
 templates and report-producing skills reference this file for the envelope and the shared
-rules; each carries only its own payload schema. (Deliverables — spec.md, plan.md,
-tasks.md, the working code — are not reports and are not governed here.)
+rules; each carries only its own payload schema. (Deliverables — spec.md, tasks.md,
+the design-phase deltas, the working code — are not reports and are not governed here.)
 
 ## Who reads a report
 
@@ -92,5 +92,5 @@ fields are not.
 lead-collected report class. ADR:
 `.mochiko/decisions/2026-08-22-verbosity-envelope-enforcement.md`) · **Consumed by:** the
 report templates in this directory, `executing-tdd-cycle/references/CYCLE-REPORT-FORMAT.md`,
-`testing-end-user/references/REPORT-TEMPLATES.md`, `commands/plan.md`'s report-envelope
+`testing-end-user/references/REPORT-TEMPLATES.md`, `commands/implement.md`'s report-envelope
 binding.

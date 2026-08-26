@@ -9,7 +9,7 @@ description: This skill MUST be invoked when authoring the functional-requiremen
 
 Write technology-agnostic functional requirements, identify edge cases, and define measurable success criteria. Focus on WHAT the system does and WHY, never HOW it's implemented.
 
-**A constraint states a capability, never a posture.** "The corpus is files on disk" is a storage posture wearing constraint clothes when the real requirement is "retrieval is locally computable" — it names no product and passes the leakage check, yet freezes a plan-time choice downstream seats then read as ratified.
+**A constraint states a capability, never a posture.** "The corpus is files on disk" is a storage posture wearing constraint clothes when the real requirement is "retrieval is locally computable" — it names no product and passes the leakage check, yet freezes a design-time choice downstream seats then read as ratified.
 
 The artifact this layer lands in (`spec.md`) follows the deliverable envelope in
 [`artifact-format.md`](../../templates/artifact-format.md) — dense by construction,
@@ -23,8 +23,8 @@ sections, no restated doctrine. Density is not a gap; a gap is missing substance
 - **Implementation planning** - Use design docs or architecture decisions instead
 - **Technical architecture decisions** - Use ADRs or technical design documents
 - **When requirements already exist and are validated** - Don't duplicate work
-- **API endpoint specifications** - These belong to the design/plan track, not business requirements; keep concrete endpoint contracts out of FRs
-- **Data model design** - This belongs to the design/plan track; describe entities only conceptually here (see Key Entities), not as schemas
+- **API endpoint specifications** - These belong to the design track, not business requirements; keep concrete endpoint contracts out of FRs
+- **Data model design** - This belongs to the design track; describe entities only conceptually here (see Key Entities), not as schemas
 - **User story authoring** - Use `mochiko:authoring-user-stories` instead (this skill focuses on the underlying requirements)
 
 ## Functional Requirements Format

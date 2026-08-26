@@ -10,6 +10,250 @@ bullet like the one stripped from `review-specifications`). One contested keep (
 is a library-wide consistency ruling, not a cluster call (see the wave return); note L16 already carries
 the `loop-discipline` reference the strip disposition would add.
 
+## [v0.91.0] Fix round 4 — the four sibling "Plan Artifact" sites re-titled with the H1; slug still retained — plan-stage retirement D1/D5
+
+- **Disposition:** superseded in four places across the skill's reference and script files, closing
+  the family the entry below left open:
+  - `references/ARTIFACT-CHECKLISTS.md` H1 → `# Design-Phase Artifact Review Checklists`
+  - `references/ISSUE-TEMPLATES.md` intro prose → "the working report shape for design-phase
+    artifact reviews"
+  - `references/ISSUE-TEMPLATES.md` emitted report-block header →
+    `## Design-Phase Artifact Review: {artifact set reviewed}`
+  - `scripts/check-artifacts.py` module docstring → `Design-Phase Artifact Validation Script
+    (Tier-1 deterministic pre-assert)`
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1/D5). Raised by this seat as a
+  five-site expansion of the H1 question rather than edited unilaterally; **ruled by the wave lead
+  2026-08-26** — "take ALL FIVE, slug untouched", one strip entry covering the family, with the
+  report-block header called out as the point of the ruling.
+- **Content (superseded text, verbatim):**
+
+  ```
+  # Plan Artifact Review Checklists
+
+  Issue-documentation formats, severity classification rules, and the working report shape for plan
+  artifact reviews.
+
+  ## Plan Artifact Review: {artifact set reviewed}
+
+  Plan Artifact Validation Script (Tier-1 deterministic pre-assert)
+  ```
+
+- **Why the report-block header carried the ruling:** the other three name the artifact set in
+  maintainer-facing prose, but this one is written into the reviewer's own emitted report. Left
+  alone, the retired stage name would surface in user-visible output on every design-phase review
+  the skill grades — a dead stage announcing itself to the reader who is furthest from this repo.
+- **Sixth site, self-ruled under the wave brief and declared to the lead:**
+  `references/ARTIFACT-CHECKLISTS.md`'s scope paragraph read "The caller (the plan lead) supplies
+  which artifacts are in scope for a given review" → "The caller (the implement run's lead)". Not
+  in the lead's five; caught by this round's whitespace-collapsing sweep of the whole skill
+  directory and re-keyed as the same class of stage-vocabulary residue the wave exists to retire.
+  The reviewer's scope now comes from the run that dispatches it, and no plan lead survives to
+  supply anything.
+- **Kept deliberately:** the slug `review-plan-artifacts` (the reasoning is in the entry below and
+  is unchanged — the mounts and index rows that address this skill by path all still resolve); the
+  checklists themselves, the severity table, the Tier-1 protocol, and the `advocate-report-template`
+  hand-off, which remains the assembled deliverable this file must not restate.
+- **Consumers assessed:** `plugins/mochiko/agents/devils-advocate.md` mounts the skill by slug —
+  unaffected. No primitive, template, or script quotes the four superseded strings; the report-block
+  header is produced by the reviewer at runtime and read by a human, never parsed. `check-artifacts.py`
+  re-verified with `python3 -m py_compile` after the docstring edit (PASS; the generated
+  `__pycache__/` was removed).
+- **Budget:** `SKILL.md` untouched this round — body stays **4,938** against 6,127, description
+  **598** against 625. Reference and script files are budget-exempt per D7.
+
+## [v0.91.0] Fix round 3 — H1 re-titled "Reviewing Design-Phase Artifacts"; slug retained — plan-stage retirement D1/D5
+
+- **Disposition:** superseded → `# Reviewing Design-Phase Artifacts`. The directory slug
+  `review-plan-artifacts` is **deliberately retained**.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1/D5). Raised by this seat as an
+  explicit judgment call rather than edited unilaterally; **ruled by the wave lead 2026-08-26**,
+  who directed the re-title and named the `authoring-technical-requirements` precedent as
+  governing — that skill likewise kept its slug this wave while its H1 was re-titled to state the
+  new scope.
+- **Content (superseded text, verbatim):**
+
+  ```
+  # Reviewing Plan Artifacts
+  ```
+
+- **Why the slug stays:** renaming the directory would break the `devils-advocate` persona's
+  `skills:` mount, the router's index row, `mochiko:review-feasibility`'s sibling-boundary
+  pointer, `mochiko:patterns-plan-minimalism`'s grading pointer, and
+  `mochiko:patterns-adopt-first`'s Who-grades-what row. The H1 states the scope; the slug is an
+  address, and addresses that resolve are worth more than addresses that read well.
+- **Kept deliberately:** everything else in the skill — the design-phase output package as the
+  graded object, the sufficiency gap list as the run's floor, the four lenses with conformance
+  BLOCKING, the Tier-1 protocol, the cycle-card check set, Incremental mode, and every Floors
+  clause.
+- **Budget:** body **4,938** against the 6,127 budget; description unchanged at 598 against 625.
+  Both inside. (Canonical-snippet count taken after the edit.)
+- **Four sibling sites were left standing at this entry and reported to the wave lead** — the same
+  retired stage name in `references/ARTIFACT-CHECKLISTS.md`'s H1, twice in
+  `references/ISSUE-TEMPLATES.md` (its intro line and the emitted report-block header), and in
+  `scripts/check-artifacts.py`'s docstring. **Ruled and closed the same day:** the lead took all
+  five, slug untouched — see the Fix round 4 entry above, which supersedes this bullet. Their
+  survival across this entry was pending a ruling, never an oversight.
+
+## [v0.91.0] Fix round — cycle-card check set: "cited spec/plan IDs real" → "spec/design IDs" (advisory)
+
+- **Disposition:** superseded → "cited spec/design IDs real" in the story-traceability check.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1). Caught on the fix round's own
+  re-sweep: earlier passes matched "plan artifacts" and "plan package" but not the compact
+  "spec/plan" form, so this and three sibling sites survived two sweeps.
+- **Content (superseded fragment, verbatim):**
+
+  ```
+  story traceability (every P1/P2 story on ≥1 card; Simple/Split/Merge case + rationale; cited spec/plan IDs real) ·
+  ```
+
+- **Kept deliberately:** the story-traceability check entire — every P1/P2 story on at least one
+  card, the Simple/Split/Merge case with its rationale, and the requirement that cited IDs
+  actually **resolve**. Only the artifact class the IDs are resolved against is renamed.
+- **Budget:** body 4,928 → **4,930** against the 6,127 budget; description unchanged at 598
+  against 625. Both inside.
+- **Consumers assessed:** `mochiko:patterns-vertical-tdd` authors the cards this check grades and
+  carries the matching "spec/design ID(s)" checklist line (main pass);
+  `mochiko:executing-tdd-cycle` and its `references/TASK-PARSING.md` parse the same `Covers`
+  lines and were re-keyed in this round — author, parser, and grader now agree.
+
+## [v0.91.0] `references/ARTIFACT-CHECKLISTS.md` + `scripts/check-artifacts.py`: the `requirements.md` checklist and its Tier-1 rule die — plan-stage retirement D3/D4
+
+- **Disposition:** the Technical Requirements checklist is **deleted** (its artifact no longer
+  exists); the Tier-1 checker's `requirements.md` required-sections rule is **deleted**; four
+  further sites superseded by re-key.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` **D3** ("No per-feature
+  `requirements.md`") and **D4** ("`plan.md` (the summary artifact) dies"; the `quickstart.md`
+  null-path record moves to the sufficiency report)). Reference and script scope was opened by
+  the wave lead's extension ruling of 2026-08-26.
+- **Scope note, recorded because it exceeds the two lines the extension named:** the lead's
+  extension named `:88`/`:128` (design-phase wording). The rest below is the same TR-death and
+  `plan.md`-death cluster in the same primitive, and leaving it would have been worse than
+  cosmetic — the checker would have **demanded a deleted artifact** at Tier-1 pre-assert, and
+  the completeness lens would have sent a reviewer to grade a file that cannot exist. Reported
+  to the lead with the finished work.
+- **Content (superseded/deleted, verbatim):**
+
+  1. Analysis Artifacts lead-in + the whole Technical Requirements checklist:
+
+     ```
+     Grade these when reviewing the analysis output set (e.g. `requirements.md`,
+     `constraints-and-decisions.md`). NFR-XXX rows are **not** graded here — their home is the
+     architecture store's concern rows, graded in the store-delta section below.
+
+     ### Checklist — Technical Requirements (`requirements.md`)
+
+     | Check | Question | Severity |
+     |-------|----------|----------|
+     | FR coverage | Is every functional requirement from the spec mapped to at least one TR? | Critical |
+     | Orphan TRs | Are there technical requirements with no business source? | Critical |
+     | Testable criteria | Does every TR have measurable acceptance criteria? | Critical |
+     | Dependency references | Do TRs reference relevant constraints and NFRs? | Important |
+     | Priority assignment | Are TR priorities consistent with source FR priorities? | Important |
+     | RFC 2119 language | Do requirements use MUST/SHOULD/MAY consistently? | Minor |
+     ```
+  2. Store-delta section lead-in: `Grade this when the plan package carries a **store delta**`
+  3. NFR-targets check: `The `TR-XXX → NFR-XXX` chain survives D12 — only the path moved, so an NFR with no traceable source is the same finding it always was.`
+  4. No-delta runs: `A plan run that judges the feature non-structural authors **no delta**. Grade the claim:`
+  5. Quickstart conditionality check: `If none exists, is its null path recorded in `plan.md` (no stub file)?`
+  6. Tier-1 usage example: `python scripts/check-artifacts.py .mochiko/specs/<feature>/requirements.md .mochiko/specs/<feature>/data-model.md` and the `# All plan artifacts` comment
+  7. `scripts/check-artifacts.py`, the `REQUIRED_SECTIONS` map:
+
+     ```python
+         'requirements.md': [
+             '## Technical Requirements',
+         ],
+     ```
+  8. Added on the exhaustive final sweep, same file and same ruling — the scope-boundary
+     section's seam line: `This is the explicit seam between the two plan reviewers, so the
+     feasibility side can mirror it` → "the two design-phase reviewers". The seam itself (this
+     skill keeps the left column, `mochiko:review-feasibility` owns the right) is untouched;
+     both halves were re-scoped to the design phase earlier in this wave, so the seam's naming
+     now matches both sides.
+
+- **Kept deliberately:** the **Constraints and Decisions checklist entire** — every one of its
+  ten checks survives, including sourced-constraints, alternative-analysis, rationale-quality,
+  the C↔D cross-refs, and both IP-coverage checks. The NFR-targets check survives with its
+  Critical severity and its no-traceable-source finding intact; only the chain's upper id moved
+  (per ruling R4). The no-delta claim check, the quickstart conditionality check, and the whole
+  cross-artifact and cycle-card sets are untouched. Where the deleted TR checklist carried a
+  real obligation with a surviving owner, the replacement text **names that owner** rather than
+  dropping it silently: testable-criteria coverage is now graded upstream at the sufficiency
+  check's clause 1, and a line in the file says so.
+- **Verification:** `python3 -m py_compile` on the edited checker passes; the two residual
+  "requirements" hits in the script are a generic section-name word list and the surviving
+  FR-XXX id pattern, neither affected.
+- **Budget:** `references/` and `scripts/` files are both budget-exempt
+  (`.mochiko/memory/primitive-cost-budgets.md`).
+- **Consumers assessed:** the skill body's completeness lens names the checklist set ("analysis ·
+  store delta … · design · cross-artifact") — the *analysis* set now holds one checklist rather
+  than two, which the lens's wording already accommodates without an edit. The Tier-1 protocol
+  line in the skill body names the script generically, so it needed no change.
+
+## [v0.91.0] `description:` re-scoped — the graded object is the design-phase package, the floor is the sufficiency gap list — plan-stage retirement D1/D5
+
+- **Disposition:** superseded → the same description grading the design-phase output package
+  against the sufficiency report's gap list.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D5: "`review-plan-artifacts` and
+  `review-feasibility` re-scope at build time to grade the design-phase output"; D4 records the
+  death of plan's proposal-approval gate, which was this skill's former floor).
+- **Content (superseded text, verbatim):**
+
+  ```
+  This skill MUST be invoked to grade a plan package against the approved artifact proposal — conformance (every proposed artifact present, nothing materially past approved depth; material divergence auto-FAILs — BLOCKING) and honesty of disclosed rung claims
+  ```
+
+- **Budget:** description-class edit, canonical snippet: **589 → 598 chars** against the
+  recorded budget of **625**. Inside budget; no justification owed.
+- **Kept deliberately:** conformance stays **BLOCKING** with the material-divergence auto-FAIL
+  intact, the rung-honesty lane stays advisory, the completeness scope (coverage, measurability,
+  cycle-card quality, consistency) is untouched, the 3-state verdict is unchanged, and the
+  feasibility carve-out, default-FAIL posture, and independent-validator rule all survive
+  verbatim.
+- **Consumers assessed:** the router row (re-keyed same wave), `mochiko:patterns-plan-minimalism`
+  (names this skill as its review grader — re-keyed same wave to "gap-list conformance
+  blocking"), `mochiko:patterns-adopt-first`'s Who-grades-what table (names this skill for the
+  disclosure line at conformance strength — that strength is unchanged, so the pointer holds),
+  `mochiko:review-feasibility`'s sibling-boundary line (unchanged).
+
+## [v0.91.0] Body floor moved from the approved artifact proposal to the sufficiency gap list — plan-stage retirement D4/D5
+
+- **Disposition:** superseded → the sufficiency report's gap list as the run's floor.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D4: "Dead gates: plan's
+  plan-the-plan proposal approval and package acceptance"; D2: "Any gap → the design phase
+  authors exactly those gaps, nothing else").
+- **Content (superseded fragments, verbatim):**
+
+  1. Opening paragraph:
+
+     ```
+     Independent completeness grader of a plan package — the mirror-checklist half of the plan-review pair, never the author. The run's floor is **the approved artifact proposal** (the lead's rung-justified, user-approved proposal), never a fixed artifact set.
+     ```
+  2. Lenses, the conformance lens:
+
+     ```
+     **Lenses:** *conformance* — BLOCKING: every proposed artifact present, within approved depth; **material divergence** (an unproposed artifact, or an element class materially past approved depth) auto-FAILs the package (critical-gaps), overriding the count mapping
+     ```
+
+- **Budget:** body 4,901 → 4,928 chars against the recorded budget of **6,127**. Inside budget.
+- **Kept deliberately:** the never-a-fixed-artifact-set principle (the floor is still a
+  run-specific list, only its source moved from the approved proposal to the gap list), the
+  BLOCKING strength and the auto-FAIL override of the count mapping, the adopt-first disclosure
+  lens, the rung-claim-honesty lens, the completeness-within-scope lens and its mirror
+  checklists, the Tier-1 pre-assert protocol, the whole cycle-card check set, Incremental mode
+  in full, and every Floors clause. This skill was true-deletion cut at v0.87.0; nothing from
+  that keep-set was touched here.
+- **Consumers assessed:** `references/ARTIFACT-CHECKLISTS.md` still carries plan-run wording at
+  two sites ("the plan package carries a store delta", "A plan run that judges the feature
+  non-structural") — **out of this seat's writable scope, reported to the wave lead as an open
+  ripple**, not silently left. `implement.md` (P1's rewrite dispatches this grade after the
+  design phase).
+
 ## [v0.87.0] User-ruled true-deletion body cut — body 13,521 → 4,901 chars (−63.8%)
 
 - **Disposition:** superseded → a single-file six-paragraph body (identity+boundary · Lenses ·

@@ -1,10 +1,10 @@
 # Artifact Format — the mochiko deliverable envelope
 
 The single authoritative home of the form every mochiko **deliverable** follows — the
-pipeline artifact chain (`spec.md` · `requirements.md` · `constraints-and-decisions.md` ·
-`data-model.md` · `contracts/api.yaml` · `quickstart.md` · `plan.md` ·
+pipeline artifact chain (`spec.md` · `constraints-and-decisions.md` ·
+`data-model.md` · `contracts/api.yaml` · `quickstart.md` ·
 `tasks.md`), setup's `codebase-analysis.md`, **and every command-minted deliverable a run
-writes without a named template** — the plan-the-plan proposal, the contest brief, the
+writes without a named template** — implement's design-phase plan, the
 architecture/store delta, specify's `derivation.md`, and any epic-spine artifact. A
 deliverable a command mints is in this envelope by default; escaping it requires a named
 format home of its own. Artifact
@@ -24,7 +24,7 @@ frontmatter, but no sentence that a field, a table row, or an ID citation could 
 ## Shared rules
 
 1. **Reference by ID — never restate.** Downstream artifacts cite upstream IDs (`FR-003`,
-   `TR-012`, `C-001`, `NFR-002`, `US-4`, `SC-005`, `SCR-004`, `FLOW-002`) without re-quoting their text. A
+   `D-012`, `C-001`, `NFR-002`, `US-4`, `SC-005`, `SCR-004`, `FLOW-002`) without re-quoting their text. A
    one-line gloss is allowed only where a bare ID would be unreadable at the point of
    use. Traceability is the ID link, not the quoted text.
 2. **The ID index.** Every ID-bearing artifact opens with (or designates) a compact
@@ -66,7 +66,7 @@ frontmatter, but no sentence that a field, a table row, or an ID citation could 
 10. **Conditional deliverables record their null path.** A deliverable that is
     conditionally authored (e.g. `quickstart.md`) records its absence where a consumer
     would look for it (e.g. a one-line "not applicable — no external integration
-    surface" in `plan.md`'s artifact table), so absence is a decision, never an
+    surface" in the run's sufficiency report), so absence is a decision, never an
     oversight.
 11. **Register.** Deliverables write `full` — dense, articles droppable, fragments fine —
     under the never-compress list and the ambiguity guardrail: IDs, identifiers, commands,

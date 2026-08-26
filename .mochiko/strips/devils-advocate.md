@@ -6,6 +6,56 @@ user-approved 2026-07-25; design: `.mochiko/brainstorms/skill-succinctness-strip
 This was the sole remaining agent instance — the other five agents' Skills-Available paragraphs
 were ruled in their command waves.
 
+## [v0.91.0] Frontmatter `description:` review-target list: "plan packages" → "design packages" — plan-stage retirement D1
+
+- **Disposition:** superseded → the two-word re-key inside the same `description:` value:
+  "specifications, **design packages**, brainstorm records, governance intent".
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/brainstorms/plan-stage-utility/record.md` D1 — `/mochiko:plan` retired; the
+  package this seat reviews is now the in-run design phase's output, per D5's re-scope of
+  `review-plan-artifacts`; `DECISIONS.md` 2026-08-26 row).
+- **Content (superseded, verbatim):** `plan packages`
+- **Kept deliberately:** every other clause of the v0.86.0 description — the remit list's other
+  three members, the blind gap-finding clause, the "what if" sentence, and the audit-round-scoped
+  "severity-ranked document findings" tail — is byte-for-byte unchanged. This edit touches two
+  words inside one list.
+- **Budget:** description-class edit, pre-asserted against `.mochiko/memory/primitive-cost-budgets.md`.
+  384 → **386** chars against the unchanged **395** budget (9 chars of headroom remain). No
+  overage, so no justification is owed.
+- **Wording note (deviation from the build brief, flagged for ruling):** the brief specified
+  "design-phase packages" (392/395, also legal). "design packages" was written instead because
+  `CLAUDE.md`'s keystone test — *a persona contains no trace of any workflow, decoupling by
+  absence* — reads "design-phase" as naming a phase inside `/mochiko:implement`, which is exactly
+  the workflow trace the axis forbids in a persona. The neutral form satisfies the ruling's intent
+  (the review target is the design output, not a plan package), keeps the persona workflow-free,
+  and leaves 3 more chars of budget headroom. Overrule and re-key to "design-phase packages" if
+  the brief's literal wording is preferred; it fits the budget either way.
+- **Consumers assessed:** frontmatter `description:` only — the delivery-time routing surface.
+  No primitive quotes this string. The mounted `skills:` line is untouched, and
+  `review-plan-artifacts` keeps its slug through its P3 re-scope, so the mount stays valid.
+
+## [v0.91.0] Skills-Available bullet: "the plan analysis/design sets" → "the design output sets" — plan-stage retirement D1/D5
+
+- **Disposition:** superseded → the re-keyed bullet: "**`mochiko:review-plan-artifacts`** —
+  completeness review of the design output sets and the cycle cards (`tasks.md`)."
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/brainstorms/plan-stage-utility/record.md` D1 + D5 — the plan package ceases to
+  exist and `review-plan-artifacts` re-scopes onto the in-run design phase's output;
+  `DECISIONS.md` 2026-08-26 row).
+- **Content (superseded, verbatim):** `completeness review of the plan analysis/design sets and the cycle cards (`tasks.md`).`
+- **Kept deliberately:** the `skills:` frontmatter mount `review-plan-artifacts` is **unchanged**
+  — the skill keeps its slug through its P3 re-scope, so the mount stays valid and re-keying it
+  here would break it. The section's single-source framing line and the other four bullets are
+  byte-for-byte untouched.
+- **Found-not-assigned note:** this instance was **not** in the build brief's three assigned
+  persona lines; it surfaced on a sweep of the same file after the `description:` edit and is
+  the same defect from the same ruling. Left unfixed it would have put the persona's own
+  Skills-Available bullet in contradiction with the `description:` corrected one entry above.
+  Recorded here rather than fixed silently.
+- **Consumers assessed:** persona body, one bullet; no primitive quotes it. Body-class edit —
+  agent *bodies* carry no budget row in `.mochiko/memory/primitive-cost-budgets.md` (descriptions
+  only), so no budget pre-assert applies; the change is net −4 chars regardless.
+
 ## [v0.86.0] Frontmatter `description:` re-aimed at the full remit — spec-only wording superseded
 
 - **Disposition:** superseded → the rewritten `description:` value: "Adversarial reviewer who

@@ -19,8 +19,9 @@ You have access to specialized skills that carry the procedures your artifacts f
 the single source of truth for its artifact, so reach for the one whose artifact is in front of
 you; its scope lives in the skill, not a copy here:
 
-- **`mochiko:authoring-technical-requirements`** — the analysis artifacts (`requirements.md`,
-  `constraints-and-decisions.md`) and their TR/C/NFR/IP traceability. NFR-XXX rows are homed on
+- **`mochiko:authoring-technical-requirements`** — the constraint layer
+  (`constraints-and-decisions.md`: C-XXX / D-XXX / IP-XXX, plus the thin INT-XXX / DS-XXX
+  declarations) and its traceability to a business source. NFR-XXX rows are homed on
   the architecture store's concern rows, not a `nfrs.md` file — the ids and the grammar are that
   skill's, the row is the store's.
 - **`mochiko:patterns-technical-decisions`** — evaluating alternatives and recording the decision

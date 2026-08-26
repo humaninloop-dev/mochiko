@@ -5,6 +5,46 @@ Entry formats: `strips/README.md`. Wave context: [v0.27.0] entries — skill-suc
 [v0.22.0–v0.23.0] entries — workflow-token-reduction waves 1–2 (design:
 `.mochiko/brainstorms/workflow-token-reduction/record.md`, D6a + D4/wave-2 rulings).
 
+## [v0.91.0] Design-time card authoring re-homed inside the implement run; card author is never the executing builder — plan-stage retirement D1 (c)
+
+- **Disposition:** superseded → the same design-time paragraph, now naming its home: inside the
+  `/mochiko:implement` run, after the design phase or directly on a zero-gap sufficiency
+  verdict, never a separate plan run.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1 mechanic (c): "cards are authored
+  by a technical-analyst-class design seat, never the builder who will execute them"; and D1's
+  spine: "cycle cards + TEST cases are authored after the design phase (or directly on a
+  zero-gap verdict), then build proceeds").
+- **Content (superseded fragments, verbatim):**
+
+  1. Overview, first line: `Transform a plan's stories into **cycle cards** — vertical increments`
+  2. Overview, design-time paragraph opening:
+     `This skill works at **design time**: it decides the slicing and states what each cycle must prove.`
+  3. Brownfield exposure: `Plan-artifact brownfield markers (e.g. a data-model entity flagged as extending existing code)`
+  4. Quality Checklist: `- [ ] Each named test case cites the spec/plan ID(s) it covers — never re-quoted content`
+
+- **Budget — OVERAGE DECLARED.** Body measured with the canonical snippet: **6,555 → 6,781
+  chars** against the recorded budget of **6,487** — a **+294 total overage**, of which +68 was
+  already on the ledger from v0.80.0 and **+226 is this wave's**. Description unchanged at 497
+  (budget 620). The growth is two ruled obligations from D1 mechanic (c) and nothing else:
+  naming the card-authoring home (~+128) and the card-author-is-never-the-executing-builder rule
+  (~+82), plus ~+7 across three vocabulary re-keys. No playbook prose was restored; a rationale
+  clause drafted alongside the mechanic-(c) rule ("an executing builder authoring its own cards
+  collapses the two altitudes this skill separates") was cut before landing precisely because it
+  was prose rather than obligation. Justification offered to the audit: mechanic (c) is a new
+  ruled obligation with no other home — this skill single-sources card authorship, so the rule
+  either lives here or nowhere.
+- **Kept deliberately:** the whole slicing craft — vertical-over-horizontal, walking-skeleton-
+  first with its growth-work skip, the no-infra-only-cards rule, the `**TEST:**` real-
+  infrastructure gate and its grammar ownership, Simple/Split/Merge with on-card rationale, the
+  brownfield exposure line, and every Quality Checklist item. The two-authors split (design seat
+  owns slicing, `qa-engineer` owns test-case content) survives intact and gained the mechanic-(c)
+  qualifier rather than being rewritten.
+- **Consumers assessed:** `mochiko:review-plan-artifacts`'s cycle-card check set (unchanged — it
+  already forbids pre-written decomposition), `mochiko:testing-gap-finding` (consumes the
+  `**TEST:**` grammar, untouched), `implement.md` (P1's rewrite carries the card-confirm
+  checkpoint), the router's row (re-keyed same wave).
+
 ## [v0.80.0] Slice-as-unit vocabulary purged; `SLICE-IDENTIFICATION.md` renamed `BUNDLE-IDENTIFICATION.md`
 
 - **Disposition:** superseded → "vertical increment" / "bundle" / "cycle" as the unit nouns, per the replacement language the ruling fixes. The reference file is renamed (`git mv`, history preserved), not deleted; every heuristic in it survives.

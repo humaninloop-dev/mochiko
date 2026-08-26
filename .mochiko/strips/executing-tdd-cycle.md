@@ -13,6 +13,51 @@ ruled" row) — the report repair: the format text that forced prose onto passin
 corrected, and the envelope's register and prose-on-clean check are bound where the report is
 actually authored.
 
+## [v0.91.0] Fix round — `references/TASK-PARSING.md` "spec/plan IDs" → "spec/design IDs" (advisory)
+
+- **Disposition:** superseded → "spec/design IDs" at both sites in the reference.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1). Raised as an **advisory** by the
+  v0.91.0 wave audit: the main pass re-keyed the SKILL.md body's "spec/plan artifacts" but left
+  the reference file that defines the `Covers` field still saying "spec/plan IDs" — producer and
+  parser would have described the same field in two vocabularies.
+- **Content (superseded fragments, verbatim — two sites):**
+
+  1. `Covers` field definition: `- **Covers**: spec/plan IDs this case covers`
+  2. `**TEST:**` blocks row: `Each block's `Covers` line cites the spec/plan IDs it verifies.`
+
+- **Kept deliberately:** the `Covers` field itself and its cite-never-re-quote contract; the
+  parse-only-to-know-what-the-cycle-must-prove boundary and its hand-off to `testing-end-user`
+  for actually running the cases.
+- **Budget:** `references/` files are budget-exempt. The SKILL.md body is unchanged by this
+  round (9,678 against its 12,095 budget, from the entry below).
+- **Consumers assessed:** `mochiko:patterns-vertical-tdd` authors the `Covers` lines this
+  reference parses and had its own checklist line re-keyed to "spec/design ID(s)" in the main
+  pass — author, parser, and this reference now agree.
+
+## [v0.91.0] Card-extraction ID resolution re-keyed: "spec/plan artifacts" → "spec/design artifacts" — plan-stage retirement D1
+
+- **Disposition:** superseded → cited IDs resolve against the spec and the design artifacts.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1; wording ruled by the wave lead
+  2026-08-26).
+- **Content (superseded fragment, verbatim):**
+
+  ```
+  its stories, acceptance criteria (resolve the cited IDs against the spec/plan artifacts),
+  ```
+
+- **Kept deliberately:** the whole card-extraction step — stories, acceptance criteria, the
+  resolve-the-cited-IDs obligation (IDs are cited on the card and resolved upstream, never
+  re-quoted onto it), dependencies, brownfield exposure, and the `**TEST:**` gate.
+- **Budget:** body 9,676 → **9,678** against the 12,095 budget; description unchanged at 498
+  against 623. Both inside.
+- **Consumers assessed:** `mochiko:patterns-vertical-tdd` authors the cards this step reads and
+  had its own "spec/plan ID(s)" checklist line re-keyed to "spec/design ID(s)" earlier in this
+  wave — card author and card executor now use the same vocabulary. Nothing in this skill's
+  build-time decomposition duty changed; the D1 mechanic (d) build-time gate lands on
+  `mochiko:patterns-adopt-first`, not here.
+
 ## [v0.80.0] CYCLE-REPORT-FORMAT.md — envelope row drops the `slice` key — slice-vocabulary purge
 
 - **Disposition:** superseded → the same field-definition row carrying `report` / `feature` only,

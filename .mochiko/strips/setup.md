@@ -11,6 +11,39 @@ it carries the `<!-- shape-form: v7 -->` marker and binds P18–P20.
 [v0.81.0] entry below: `.mochiko/brainstorms/product-architecture-schema/record.md` (D5 · D12 ·
 D16) → `DECISIONS.md` 2026-08-19 product-architecture row. -->
 
+## [v0.91.0] Greenfield baseline-seed deferral re-keyed: "the first plan run" → "the first implement run's design phase" — plan-stage retirement D1/D2
+
+- **Disposition:** superseded → both clauses defer the greenfield baseline seed to the first
+  implement run's design phase.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1 (implement is the single
+  downstream run) and D2's absent-baseline greenfield branch, which rehomes the v0.66.0
+  baseline-seed obligation into the design phase: "an absent baseline file grades its touched
+  surfaces 'new (gap)'; the design phase's first duty is the seed — empty scaffolds where no code
+  is delivered, reconstruct-and-confirm with the user at the design checkpoint where delivered
+  code exists"; wording ruled by the wave lead 2026-08-26).
+- **Content (superseded fragments, verbatim — two sites):**
+
+  1. ```
+     greenfield leaves **the baselines** to seed at the first plan run. The architecture store's
+     ```
+  2. ```
+       from the delivered code; greenfield seeds **those baselines** at the first plan run instead.
+     ```
+
+- **Kept deliberately:** the brownfield/greenfield split whole — brownfield close still carries
+  the bootstrapped product baselines and still reconstructs them from delivered code; the
+  greenfield deferral is still a deferral, only its destination is renamed. The v0.81.0 narrowing
+  that made **the architecture store's scaffold unconditional on both paths** (its `spine.md`
+  stub and `Scope:` line written either way) is untouched and still sits outside this split.
+- **Budget:** commands carry no per-primitive budget; the hard cap and the justified-exemption
+  path are the only bar, and neither is engaged by a two-phrase re-key.
+- **Consumers assessed:** `implement.md` (P1's rewrite owns the design phase that now performs
+  the seed); the v0.66.0 baseline-seed defect close
+  (`.mochiko/decisions/2026-08-11-plan-baseline-seed-enforced.md`) was homed in the retired
+  `plan.md` and is rehomed by D2 — recorded here because this line is the last surviving
+  pointer to that obligation from the setup side.
+
 ## [v0.81.0] Greenfield's defer-to-first-plan-run clauses narrowed — the store scaffold is unconditional
 
 - **Disposition:** superseded → both clauses now defer **the baselines only**; the architecture

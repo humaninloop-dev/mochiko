@@ -96,8 +96,8 @@ sections:
       Conventional free-form fields, present where they carry something: `Ruling` (+ ruled date),
       `Rationale`, `Upgrade trigger`, `Owned by` (the handled-elsewhere pointer's home — required
       on an `n-a — handled elsewhere` row, absent otherwise), `Targets` (NFR-XXX ids with their
-      measurable target, measurement method, and source — the TR-XXX that demanded it — live
-      HERE, one home per concern), `As-built`, `Drift`, `Work` (FEAT-XXX / EPIC-XXX pointers;
+      measurable target, measurement method, and source — the FR-XXX / SC-XXX whose promise the
+      target serves — live HERE, one home per concern), `As-built`, `Drift`, `Work` (FEAT-XXX / EPIC-XXX pointers;
       the work itself lives on the feature map, never here).
 
       Every `Work:`, NFR-XXX, and `handled elsewhere` pointer MUST resolve. A dangling pointer is
@@ -127,7 +127,7 @@ sections:
         1. Spine thumbnail — the container view at a glance, plus a link to `spine.md`.
         2. AX summary table — one line per concern row (`AX-XXX` · concern · stance · status ·
            one-line summary · link). This is the full row set, not a selection: it is the surface
-           a plan run reads, so a missing row is an invisible row.
+           the sufficiency check and the design phase read, so a missing row is an invisible row.
         3. Health — the health view, a SECTION OF THIS INDEX and not a separate artifact. Five
            counts, each naming its rows: open rows · stale `not-now` triggers · fired triggers
            awaiting routing · orphan elements (an in-flight-class element whose FEAT-XXX is not
@@ -173,7 +173,7 @@ skeleton: |
   - **Ruling**: pooled multi-tenant, `tenant_id` row-level scoping (ruled [DATE])
   - **Rationale**: [why this, and what it costs]
   - **Upgrade trigger**: first enterprise deal requiring silo OR >[N] tenants
-  - **Targets**: NFR-014 (from TR-021) — tenant-scoped read p95 < 200ms, measured at the API gateway histogram
+  - **Targets**: NFR-014 (from SC-007) — tenant-scoped read p95 < 200ms, measured at the API gateway histogram
   - **As-built**: pooled; `tenant_id` on 14 tables
   - **Drift**: none
   - **Work**: FEAT-012, EPIC-004

@@ -3,6 +3,41 @@
 Entry formats: `strips/README.md`. Wave context: workflow-token-reduction wave 1 (rulings
 ratified 2026-07-23: machine-first YAML, strengths → one-line field).
 
+## [v0.91.0] Plan-package wording re-scoped to the design phase; `requirements.md` leaves the reviewed set
+
+- **Disposition:** superseded → the design-phase framing. `/mochiko:plan` and its accepted
+  package no longer exist, so every clause keying the report to "the package" named a dead
+  surface; `requirements.md` is dead as a mandatory artifact and could no longer head the
+  `artifacts_reviewed` example. Four sites re-worded, nothing else touched.
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/brainstorms/plan-stage-utility/record.md` D1 (plan retires; the design phase is the
+  producing home), D3 (`requirements.md` dies as a mandatory artifact — its gap-finding-fence slot
+  re-keys to the sufficiency report plus the design-phase deltas), D4 (dead gates, and the
+  sufficiency report as the durable assessment record), and D5 (`review-feasibility` re-scopes at
+  build time to grade the design-phase output); `DECISIONS.md` 2026-08-26 row.)
+- **Content (superseded, verbatim, four sites):**
+  (1) The opening line: "The feasibility reviewer's cross-artifact critique of a feature's
+  analysis and design artifacts". Now: "of a feature's design-phase output".
+  (2) The `artifacts_reviewed` frontmatter example: `[requirements.md,
+  constraints-and-decisions.md]`. Now: `[sufficiency-report.md, constraints-and-decisions.md]`.
+  (3) The `hunt_coverage` inline comment's condition: "a1–a3 present iff the package carries a
+  store delta". Now: "iff the design phase produced a store delta".
+  (4) Usage Note 6's matching condition: "`a1`–`a3` exactly when the package carries a store
+  delta". Now: "exactly when the design phase produced a store delta".
+- **Kept deliberately:** everything else — the machine-first envelope, frontmatter-only clean
+  reviews, the three-state verdict and its escalation branch, the four mandatory gate-fuel fields,
+  the three distinct taxonomies, the `hunt_coverage` proof-of-hunt floor and its bounce rule, and
+  Note 4's path-agnostic stance. The re-scope changed *which run's artifacts* are reviewed, never
+  the report's shape or the reviewer's bar. The store-delta conditional itself survives — only the
+  surface it names moved from the package to the design phase.
+- **Consumers assessed:** `mochiko:review-feasibility` fills this template and is re-scoped in the
+  same wave (record D5) — the sites re-worded here are the ones its brief and its disclosure floor
+  reference. The `commands/plan.md` Report-envelope bullet that bound this template by path is
+  deleted in this same wave; the binding re-appears in the `implement.md` rewrite's Reports tool
+  (record D4, Build surface). `templates/report-format.md` is untouched: these are frontmatter and
+  usage-note edits, no prose section added or removed.
+
+
 ## [v0.82.0] `hunt_coverage` field added; Usage Note 5 clean-review set widened (audit fix 1)
 
 - **Disposition:** superseded (Note 5) + addition riding the decision row (the field, Note 6).

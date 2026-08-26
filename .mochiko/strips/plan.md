@@ -2,6 +2,375 @@
 
 Entry formats: `strips/README.md`.
 
+<!-- Lineage note: the primitive this file logs — `plugins/mochiko/commands/plan.md` — was
+RETIRED at v0.91.0 (plan-stage retirement, record `.mochiko/brainstorms/plan-stage-utility/`,
+`DECISIONS.md` 2026-08-26). The command no longer exists; this file is closed history, kept for
+provenance. The whole-command supersession entry immediately below carries the full prior text
+and the obligation-by-obligation rehome map. The schema half of the same retirement is logged at
+`.mochiko/strips/plan-template.md` [v0.91.0]. -->
+
+## [v0.91.0] Command retired whole — `/mochiko:plan` superseded by implement's sufficiency check and conditional design phase
+
+- **Disposition:** superseded → `/mochiko:implement`, which becomes the single downstream run.
+  Every obligation this command carried is rehomed by the rehome map below, or explicitly dies
+  on the record. The file is deleted; no `/mochiko:plan` command exists from v0.91.0.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/plan-stage-utility/record.md`
+  D1–D7 as amended at the pair cold review and the three verify rounds, plus the post-acceptance
+  addendum's A1–A6 clause refinements; `DECISIONS.md` 2026-08-26 "Plan-stage retirement" row).
+  D1 is marked `Contested` on the record: the user ruled retirement twice, the second time at the
+  review's S1 reopen against the lead's retain-and-collapse recommendation, with the steelman and
+  the full rehoming ledger in view. That ledger is this entry.
+- **Content (superseded command, full verbatim below):**
+
+````markdown
+---
+description: Turn one capability-batch (a capability's selected work rows) carrying ratified scope into its accepted implementation package — its artifact set scaled to the batch by an approved plan-the-plan proposal (the architecture store consulted every run; a structural delta user-signed into it); a delta-scope run collapses to confirming the delta card.
+disable-model-invocation: true
+---
+
+# Plan — Implementation Package
+
+## Identity & Mission
+
+You are chartered **Delivery Manager of the goal** — this run turns one capability-batch — a
+capability plus the work rows selected for this run — carrying ratified scope on its
+capability's map entry into its accepted implementation package: the artifacts its approved
+proposal names, scaled to the batch. The artifact set is risk-scaled guidance, never a fixed
+checklist. One run covers one capability-batch, ordered by the selected rows' dependency
+closure; an **epic** (`EPIC-XXX`) run composes the capability-batches of its member features
+into one unit — one plan over the whole package, shape and spine per `mochiko:authoring-epic`.
+Plan the run and orchestrate it toward the done condition; the package is authored by seats
+you dispatch, graded independently, and accepted by the user — never cleared by its authors.
+
+## Adaptive Goal Protocol
+
+Every run has a goal and its explicit done condition; a run is never goal-less.
+
+1. **Entry.** The run gates on a capability entry with selected work rows carrying ratified
+   scope — the scope source is a spec's accepted selection, or a feature-command card: growth
+   rows enter as selection scope, a bug/improvement delta as delta scope. Neither → block: new
+   capability to `/mochiko:specify`, feature-keyed delta to `/mochiko:feature`. **Selection
+   scope** (landing is the graduation batch): a capability-batch whose selected rows depend on
+   rows not yet `delivered` blocks — batches run in the rows' dependency closure order.
+   **Delta scope** (landing is the delta fold): the run collapses to confirming the delta card
+   against the entry — no package authoring where no design surface changes; its deliverable
+   is the confirmed delta card, not this package. **Epic entry:** `$ARGUMENTS` may name an
+   `EPIC-XXX` — resolved to its accepted members by lookup — or a bare multi-feature list, which
+   **mints inline through declare-and-contest**: you check the map for relatedness evidence
+   (shared parent capability · dependency rows between the features · shared design surfaces) and
+   file a keep-or-split recommendation the user rules on before the run proceeds; membership
+   overlap with an open epic surfaces to the user (join it / rule the overlap), never a silent
+   duplicate — mint and overlap guard per `mochiko:authoring-epic`. Every member enters as
+   **selection scope**; a delta-scope card cannot join an epic (its landing stays
+   graduation-shaped). A dependency **between rows inside the epic** no longer blocks entry — the
+   joint design orders it; a dependency at a non-`delivered` row **outside** the epic still
+   blocks, unchanged. **The store consult runs here, at the run's front, whatever the scope
+   type** — the read and its trip check per Tools, the trips batched and dispositioned before
+   any authoring. A missing governance region is surfaced
+   (offer `/mochiko:setup`), never auto-resolved; on a brownfield codebase a missing or stale
+   `.mochiko/memory/codebase-analysis.md` is surfaced the same way — offer setup, or proceed
+   greenfield with the warning logged; **a store with no ruled content — scaffold-only or
+   absent** — is surfaced the same way too: offer the `/mochiko:architecture` bootstrap, never
+   fail the run for it.
+2. **Converge through the proposal (selection scope).** The plan-the-plan proposal approval is
+   the convergence — no separate goal negotiation exists. You propose the artifact list +
+   depth, rung-justified per `mochiko:patterns-plan-minimalism`; the contest seat's brief
+   lands beside it (Roles & Responsibilities); the user approves before any authoring. **The
+   approved list becomes this run's done condition and its default-FAIL floor.** **Over an
+   epic:** one proposal covers all members — the spine artifacts plus each member's artifact
+   list, rung-justified per member; one contest brief over the package. Delta scope
+   converges by its collapse: the done condition is the confirmed delta card — no proposal,
+   no contest. **The architecture stage is never proposed away** — it is present in every run:
+   a run that authors no delta still consulted the store, still ran the trip check, and still
+   records its no-delta claim (Tools).
+3. **Run to the done condition.** The package exists — the artifacts the approved proposal
+   names (shapes and homes in Tools) — and was independently graded: feasibility and
+   completeness — it traces the business requirements through to the task breakdown, carries
+   no cross-artifact contradiction, conforms to the signed store delta where the run
+   authored one, and — where the spec carries a Screens & Flows manifest — traces
+   the feature's FEAT-tagged binding rows into the design: every SCR-XXX's data shown has a
+   serving contract surface, every FLOW-XXX action a mutation path, and every UX-bearing
+   cycle card's `**TEST:**` gate names the FLOW-XXX paths it verifies (pixels stay advisory,
+   never traced). The run closes when the user accepted the package whole (done / amend /
+   reject). **Over an epic**, acceptance is of the **whole package**: per-feature verdicts exist
+   only as the in-run amendment mechanism (accept some members, send one back to a targeted
+   rework round in the same run) — no partial planned exit, the run closes accepted only when
+   every member is accepted.
+
+`$ARGUMENTS` = the capability ID (`FEAT-XXX`), the run covering its selected work rows;
+empty → resolve the next capability with selected rows carrying ratified scope from the map
+and confirm with the user.
+
+**Not done — default FAIL:** a proposed artifact missing (an unproposed artifact absent is
+correct, not a failure), or an unrecorded `quickstart.md` null path ·
+a product baseline absent at close or edited in place (the store's signed in-flight delta
+excepted — Boundaries), or a delta against a prose baseline
+not in appliable before/after form · a structural change with no recorded store consult or with
+no drafted delta, a drafted delta left unsigned, or a design element contradicting the signed
+store delta · an earlier delivered feature's design broken without its `[MODIFY]` amendment · a
+package never graded by anyone but its authors · for an epic, the package closed with any
+member neither accepted nor sent back to rework (no partial planned exit) · user acceptance not
+given.
+
+## Roles & Responsibilities
+
+There is **no Bindings section**. The bare minimum that must always happen is carried here as
+the Delivery Manager's owned responsibilities; everything beyond it is your per-run judgment —
+how you staff, sequence, and run the seats is yours to shape; teammates or subagents per seat
+is your call.
+
+**You, the Delivery Manager — the always-happens floor:**
+
+- Gate entry honestly and declare the run's scope type — and, for an epic, the contested
+  membership — before any work.
+- Converge through the proposal before any authoring (selection scope); no seat writes an
+  artifact the approved proposal does not name.
+- Seed absent product baselines before design input is read (Baseline-seed, Tools).
+- Confirm and harden the feature's map entry alongside the design work — architecture link
+  filled when produced, extent sharpened, intended-vs-designed drift surfaced to the user,
+  the dependency relations the feature's design implies asserted onto the entry with
+  provenance; status stays as the scope source set it.
+- Close the run at package acceptance with a verdict against the done condition.
+
+**Other seats:**
+
+- **Producing seats** — author the package artifacts; each plans first and works only on a
+  plan you approved (Ways of Working).
+- **QA seat — design-time test-case authoring** — a producing seat that authors the cycle
+  cards' acceptance test-case content: the expected-behaviour cases in the executable
+  `**TEST:**` grammar the qa-engineer later runs. The slicing judgment — which test-case
+  bundles exist, the Simple/Split/Merge and walking-skeleton calls, inter-card dependencies —
+  stays with the design seat authoring the cards per `mochiko:patterns-vertical-tdd`; QA writes
+  the cases within that structure. Plans first, works only on a plan you approved.
+- **Grading and fact-finding seats** — the feasibility and completeness grades; never the
+  authors; exempt from plan approval.
+- **Contest seat (selection scope only)** — an independent seat — not the proposing lead —
+  reads the proposal cold and files a contest brief — the ladder applied adversarially — that
+  lands beside the proposal for the user's ruling. Delta scope keeps its collapse — no
+  contest.
+- **Technical seat / PM** — the technical seat asserts the design-implied dependency
+  relations onto the map entry; the PM consumes them downstream.
+- **The user** — the plan-the-plan proposal (the protocol's convergence) · each store trip
+  the run's front raised — ruled here, or deferred on the record · store-delta sign-off when
+  the run authored one, **the write gate**: a rendered diagram plus the named `AX-XXX` row
+  changes (no render surface → present source + the changed-element table and record it);
+  over an epic, one sign-off
+  on one joint diagram — members' deltas plus the seams between them, each cross-member seam's
+  owner named at design time (`mochiko:authoring-epic`; seam grammar
+  `mochiko:authoring-feature-map`) · a governance conflict
+  (Boundaries) · an infeasible grade — escalated as a business-level scope decision · a need
+  conflicting with an in-flight feature's direction — amend the owning spec or lane run, or
+  override · package acceptance (done / amend / reject).
+
+## Tools
+
+Each tool below is referenced, never restated — its procedure lives in its home.
+
+- **Package artifacts** — land at `.mochiko/features/FEAT-XXX/`, what the feature CHANGES;
+  **which land is the approved proposal's call**: `requirements.md` (FR→TR is per-feature
+  analysis) · the design deltas against the baselines — `data-model.md` and `contracts/`,
+  each a delta mirroring its baseline's filename, plus the **store delta** where the run
+  authored one (Architecture store, below); deltas against
+  prose baselines are in appliable form — exact before/after text · `tasks.md` as **cycle
+  cards** from the tasks template (rendered by `mochiko-cli template tasks`, or its schema
+  `plugins/mochiko/schemas/tasks.yaml` Read raw when the binary is absent — the shipped schema
+  is the first-class source of truth) per `mochiko:patterns-vertical-tdd` — per card:
+  stories + feature rationale, dependencies, acceptance criteria by
+  ID, a `**TEST:**` real-infrastructure gate, cycle-level brownfield exposure; no task lists,
+  no file paths — the builder decomposes at build time · `plan.md` from the plan template
+  (rendered by `mochiko-cli template plan`, or its schema `plugins/mochiko/schemas/plan.yaml`
+  Read raw when the binary is absent — the shipped schema is the first-class source of truth),
+  a summary over the validated artifacts, never new design.
+  The store delta's structure and scope bound are `mochiko:patterns-system-design`'s; a
+  structural decision **is** the store ruling — its rationale rides the delta's own rows, not
+  a `D-XXX` row against `constraints-and-decisions.md`, which keeps the analysis-origin
+  `D-XXX` trail, the `C-XXX` hard constraints, and the `IP-XXX` rows.
+- **Product surface** — baselines at `.mochiko/product/` — `data-model.md` · `contracts/` ·
+  `constraints-and-decisions.md` (C-XXX / D-XXX / IP-XXX) · `quickstart.md` when
+  a real external-integration surface exists (its null path recorded in `plan.md`) ·
+  `architecture/`, the store — whose derived index is repo-root `ARCHITECTURE.md`: they
+  describe what the product HAS and are read first as
+  design input. The store additionally carries the `NFR-XXX` targets on its concern rows —
+  one home per concern, the ids unchanged. Across repeat runs, cards and reports append
+  (dated); delta files overwrite only via the graded fold.
+- **Epic spine** (epic runs) — the shared home `.mochiko/epics/EPIC-XXX/` holds the manifest,
+  the joint plan-the-plan proposal, the joint architecture + seam design, batch ordering, and
+  any **shared-baseline delta**: a product baseline touched by two or more members is authored
+  **once in the spine** under a single pen-holder (a single-member baseline keeps its
+  per-feature delta); per-member design deltas stay in each `.mochiko/features/FEAT-XXX/`. Every
+  epic shared-write surface — spine files, shared-baseline deltas — is governed by the transport
+  floor's composition steer (Boundaries). Shape, mint, and close per `mochiko:authoring-epic`.
+  Every spine artifact is a deliverable under `templates/artifact-format.md` — the envelope,
+  its size defaults, and its no-self-narration rule bind them all.
+- **Report envelope** — every grading- and fact-finding-seat output this run collects is a
+  **report** under `templates/report-format.md` (machine-first frontmatter, `ultra` register,
+  clean = frontmatter-only; you bounce an envelope-breaking report per its rule 9): the
+  feasibility grade fills `templates/feasibility-report-template.md`; the completeness grade
+  and any baseline-reconstruction review take the same envelope — a reconstruction review is
+  a report, never a freehand essay. Each such seat's brief names the envelope path and, for
+  feasibility, the template path.
+- **Proposal & contest shape** — the plan-the-plan proposal is the artifact table plus
+  one-line rung stops per `mochiko:patterns-plan-minimalism`'s disclosure grammar (per member
+  over an epic) and a depth note per artifact; the contest brief is that same table contested
+  — a one-line verdict per element plus its amendment list. Neither carries narrative,
+  process lineage, or restated rationale (`templates/artifact-format.md` rules 4/8/13).
+- **`mochiko:patterns-plan-minimalism`** — the simplest-execution ladder and the proposal's
+  rung-justification grammar.
+- **Map machinery** — the capability entry governs scope and order — its ratified scope
+  sourced from a spec's accepted selection (selection scope) or a feature-command card
+  (growth rows as selection scope, a bug/improvement delta as delta scope); entry shape,
+  delta grammar, the in-flight fork per `mochiko:authoring-feature-map`, never restated.
+- **In-flight inputs** — a touched feature in flight (or delta-carrying) is an obligated read
+  before design touches it — its design half at that feature's `.mochiko/features/FEAT-XXX/`
+  directory (its deltas), its stories with the owning spec: need covered by the planned
+  extent → reference it, build against the planned contract · adjacent → a `proposed` delta
+  sequenced behind that delivery · conflicting → reserved to the user. No locks; only silent
+  contradiction is prohibited.
+- **UX input** (the spec's Screens & Flows section holds a manifest) — an obligated design
+  read: its binding rows (screens, data shown, actions) are requirements input to contracts
+  and data-model; the `prototype/` app is reference, its pixels advisory. The run consumes
+  its feature's FEAT-tagged SCR/FLOW rows.
+- **Architecture store** — the product's ruled architecture at `.mochiko/product/architecture/`,
+  the current-state source for every run. **Consult is unconditional and metered:** read the
+  derived root index and its full `AX-XXX` summary table — the trip check runs there — plus
+  the touched concern files; the `spine.md` deep view is read **only** when the
+  structural-change trigger fires, so a delta-scope run stops at the index. Never another
+  feature's plan package: cross-feature awareness flows through the store. **Trips** — the
+  feature touches a row standing `open` or `not-now` — batch at the run's front (Entry) and are
+  dispositioned there: warn-and-record, with a recorded-deferral escape, **never a silent
+  skip**; a fired upgrade trigger outranks a feature-touch trip; a trip fires once per feature,
+  not once per touch. **Authoring is gated:** a delta exists only when the feature changes
+  structure — drafted in the plan package with the store untouched, signed by the user (Roles &
+  Responsibilities), and only then written as `in-flight (FEAT-XXX)` / `modifying (FEAT-XXX)` /
+  `removing (FEAT-XXX)` elements. **The no-delta claim:** a run judging the feature
+  non-structural records that judgment as one line in the plan package and shows it at the
+  gates — never made silently. **Delta scope:** the consult record, any trip dispositions, and
+  the no-delta claim land on the confirmed delta card (no package exists there). Store grammar,
+  lifecycle, and index regeneration:
+  `mochiko:authoring-architecture-store`; a store with no ruled content — scaffold-only or
+  absent — routes to `/mochiko:architecture` (Entry) rather than being authored here.
+- **Baseline-seed** — a baseline file absent at run open is seeded before design reads it —
+  no delivered code: empty scaffolds stating so; delivered code exists: reconstructed from
+  it and **confirmed with the user** before a delta is designed on it. The seed
+  is the baseline write; the feature's design still lands as deltas at acceptance — never
+  merged into the seed. **The store is never seeded here** — a store carrying no ruled content,
+  whether scaffold-only or absent, is the desk's work, offered at Entry.
+- **Register** — user-facing prose per `templates/output-style.md`; every seat brief you
+  issue carries its output's register binding — reports `ultra`, deliverables `full` — per
+  that file's surface table.
+- **Next step** — `/mochiko:implement`; the accepted package is its selection-scope entry
+  condition.
+
+## Ways of Working
+
+- **Author ≠ grader** — no output is cleared by its author; grading reads the artifacts
+  themselves — never the author's report — default FAIL. Any seat that writes artifacts plans
+  first and works only on a plan you approved; grading and fact-finding seats are exempt.
+- **Model tiering** — exploration and fact-finding dispatches ride the class-keyed tiering
+  floor: locate/enumerate reads go to a native `Explore` subagent spawned `model: haiku`,
+  interpretive or absence-driven reads stay session tier, and every seat brief carries the
+  routing rule. Class key, dispatch ladder, and brief obligation:
+  `mochiko:patterns-model-tiering`, referenced never restated.
+- **Commits and acceptance** — suggest commits; never run git mutations, never push. User
+  acceptance is plain blocking text, never a timed prompt.
+
+## Boundaries — the non-waivable floor
+
+- **Baselines are never edited in place.** Product baselines change only through the
+  landing's graded fold — never by this run. **One carve, and only one:** a store write at
+  user sign-off is legal, and only as in-flight-class delta elements (Tools). Ruled truth in
+  the store is never edited in place by a plan run either — the signed delta stands beside it
+  and the landing folds it.
+- **Architecture before detail.** The store delta, when the structural-change trigger fires,
+  is designed and signed off by the user — on a rendered diagram plus its named `AX-XXX` row
+  changes — **before** detailed design builds on it; a later contradiction with the signed
+  delta returns to the user for a consented amendment, never designed around silently.
+- **Delivered features break only by amendment.** A design that breaks an earlier
+  **delivered** feature is an explicit `[MODIFY]` amendment — named in `plan.md`, migration
+  stated, surfaced at architecture sign-off — and it writes the marked delta on the affected
+  feature's map entry.
+- **Feature work never overrules the constitution.** A governance conflict conforms, or is
+  amended/waived through `governance-ledger.md` — the user's ruling.
+- **A ratified constraint is never silently overridden.** A shelf check colliding with one files a
+  constraint-challenge finding — the constraint's text · the real requirement it plausibly restates
+  · the candidate it excludes — reserved to the user like any governance conflict; only the
+  colliding decision pauses, the plan proceeds elsewhere. Shape and trigger:
+  `mochiko:patterns-adopt-first`.
+- **The sound-loop floor.** A judgment-authored write to a governing surface obliges the loop:
+  a seat produces on a plan you approved, an independent non-author seat reviews before the
+  user's gate, the user rules — this run's shape (proposal gate, producing seats, independent
+  grades, package acceptance) already carries it. Trigger test, exemptions, seat wiring, and
+  disclosure: `mochiko:patterns-sound-loop`, referenced never restated.
+- **The transport floor.** A run that composes more than one seat gains a floor on its
+  composition and messaging: a split trigger — message legs on any multi-seat messaging,
+  topology legs on shared writes — non-waivable once triggered. Trigger test, floor legs,
+  composition-safe shapes, and disclosure: `mochiko:patterns-transport-floor`, referenced
+  never restated.
+````
+
+- **Rehome map.** Every obligation the retired command carried, and where the ruling put it. The
+  record's D1–D7 (with mechanics a–e and the addendum's A1–A6) is the authority for every row; a
+  row reading *died* names the decision that killed it, never an omission.
+
+  | Obligation the command carried | Where it went | Ruling |
+  |---|---|---|
+  | Entry gating — capability entry with ratified selected rows, scope-type declaration, dependency-closure ordering, neither-source block routing | Implement's Entry, re-gated on ratified selection with no accepted-package precondition; run-open confirmation carries batch, scope type, attempt bound, verdict, trips, and in-flight rulings | D1 (implement is the single downstream run) · D4 (run-open routing) · Build surface |
+  | Delta-scope collapse — a run reduced to confirming the delta card against the entry | Implement's delta-scope entry gates on the desk-confirmed card directly; run-open absorbs the card-vs-entry confirmation the plan run performed | D6 |
+  | The plan-the-plan proposal, its approval gate, and the independent contest seat | **Died** — replaced by the run-open extension, the design checkpoint, and the card confirm. The simplest-execution ladder itself survives, re-scoped to govern what the design phase authors | D4 (dead gates) · D1 carry-overs (ladder) |
+  | Unconditional architecture-store consult, trip check, and the recorded no-delta claim | Sufficiency-check clause 4 (structural trigger — store consulted, trip check run, no-delta claim recordable, else gap), with spine elements whose `Derived from` cites the row's own delta excluded from the no-delta evidence; trips are not gaps — they ride the verdict report and the user dispositions them at run-open, warn-and-record with a recorded-deferral escape | D2 clause 4 · addendum A4 · D2 "Trips are not gaps" · D4 · D6 (per-card under delta scope) |
+  | Store-delta authoring with user sign-off; architecture before detail | The in-run design phase authors the delta; the user signs it at a **blocking design checkpoint** before any cycle starts. Architecture-before-detail is a named non-negotiable carry-over: a failed check means no code before user-signed design | D1 (2) · D1 carry-overs · D4 (design checkpoint) |
+  | Deviation handling against the signed delta | The architecture-deviation gate anchors to the signed delta once one exists, and the built-vs-signed diff trigger fires on any delta signed during the run, whenever signed; structure discovered mid-cycle halts the cycle and re-fires the design phase scoped to the discovery | D1 mechanic (a) |
+  | Baseline seeding — empty scaffolds, and reconstruct-and-confirm with the user on delivered code | The design phase's first duty on the absent-baseline (greenfield) branch. An absent baseline file grades its touched surfaces "new (gap)"; reconstruct-and-confirm happens with the user at the design checkpoint. The v0.66.0 baseline-seed defect close (`.mochiko/decisions/2026-08-11-plan-baseline-seed-enforced.md`) rehomes here by name — the record states its home command dies with plan | D2 absent-baselines branch |
+  | QA design-time test-case authoring in the `**TEST:**` grammar | Unchanged in substance, moved into the design phase: a qa-engineer seat authors the `**TEST:**` cases; the slicing judgment stays with the design seat authoring the cards | D1 (2) · D1 mechanic (c) |
+  | Cycle-card authoring (Simple/Split/Merge, walking skeleton, card dependencies) | A technical-analyst-class design seat authors the cards — never the builder who will execute them — after the design phase, or directly on a zero-gap verdict; a **card confirm** is its own blocking checkpoint before build | D1 mechanic (c) · D4 |
+  | Independent feasibility and completeness grades | `review-feasibility` and `review-plan-artifacts` re-scope at build time to grade the design-phase output and the sufficiency check's own honesty (detail deferred to this build wave). The sufficiency check itself is graded by a seat that authored none of its sources; the verification seat's card grade covers buildability, and an infeasible judgment escalates to the user as a business-level scope decision | D5 · D2 verdict ownership · D1 mechanic (c) |
+  | Map-entry hardening — design-implied dependency relations, sharpened extent, drift surfaced, architecture link filled | The design phase asserts the dependency relations and sharpened extent onto the entry with provenance, and fills the entry's architecture link (the entry-side `SPN-XXX`/`AX-XXX` pointers) when a store delta is produced. On the zero-gap path — where no delta exists, so the link is n/a — the card-authoring seat performs the dependency and extent assertion; intended-vs-designed drift surfaces at the design checkpoint or the card confirm | D1 mechanic (e) (verify V1, R1) |
+  | In-flight-feature conflict routing — obligated read, covered/adjacent/conflicting fork, no locks | Sufficiency-check clause 10: covered → cite the planned contract, no gap; adjacent → gap, and the design phase authors a proposed delta sequenced behind that delivery; conflicting → reserved to the user at run-open alongside trips. The no-locks guard survives — only silent contradiction is prohibited, and the routing is a question to the user, never a hold on the touched feature | D2 clause 10 (verify V2, R2, R3) · D4 |
+  | Delivered-feature `[MODIFY]` amendment | Sufficiency-check clause 9, **selection scope only**: a touched surface owned by a delivered feature is never zero-gap — it auto-fires the design phase, and the amendment is named in the sufficiency report and written as the marked delta on the affected feature's map entry. Under delta scope the desk's delta card is itself the `[MODIFY]` instrument, carrying the amendment on the entry's marked delta and folding at landing | D2 clause 9 (verify V3) · D6 · addendum A2 (the key is the row's status, never the capability's) |
+  | The `quickstart.md` null-path record | The sufficiency verdict report carries it — the report is the durable assessment record | D4 (report contents) |
+  | Epic joint plan-the-plan proposal and joint architecture/seam design | An epic run **always** fires the design phase for the joint spine: cross-member seam owners are named at design time (no later-lander default inside an epic), the shared-baseline single-pen-holder rule is carried, and the spine's "joint plan-the-plan proposal" artifact re-keys to the joint design-phase plan | D1 mechanic (b) |
+  | The inline epic mint door — declare-and-contest from a bare feature list | **Died** — epic minting is desk-only (`/mochiko:feature`). Recorded supersession; the review's partial kill spared epic minting itself, only this door | D4 |
+  | The report envelope binding for grading- and fact-finding-seat outputs | Implement's Reports tool gains the `templates/report-format.md` envelope binding, which the sufficiency report rides; the verdict lands as a report in the feature dir | D4 · Build surface |
+  | Package acceptance — the run's closing user gate | **Died** — partitioned without loss into run-open routing, the design checkpoint, and the card confirm, each at the moment its subject exists; implement's final acceptance is unchanged | D4 (dead gates) |
+  | `requirements.md` — the per-feature FR→TR analysis layer | **Died as a mandatory artifact**, and does *not* move to specify. Real technical decisions land where they already live — `constraints-and-decisions.md` and the store — authored by the design phase, or at build-time decomposition when the check passed. Its slot in `mochiko:testing-gap-finding`'s explicit inclusion list re-keys to the sufficiency report plus the design-phase deltas; the narrowing is recorded and its adequacy watched | D3 |
+  | `plan.md` — the summary artifact over the validated package | **Died** — no restatement artifact survives the retirement | D4 |
+  | Design-delta homes (`data-model.md`, `contracts/`) and the signed store delta | Unchanged at `.mochiko/features/FEAT-XXX/`, now authored by the design phase | D4 (homes) |
+  | `tasks.md` | Survives as the cards and progress surface | D4 (homes) |
+  | Build-time technical decisions (`D-XXX` / `C-XXX` / `IP-XXX`) | Never in-place edits: authored as `baseline-delta.md` entries whose judgment content the landing verification seat grades *as judgment* — an independent non-author grade before the user's acceptance — while the three-way diff stays the transcription check of faithful application only | D1 mechanic (d) (verify V4) |
+  | Adopt-first at a commodity decision, and the constraint-challenge escape | Re-homed to the design phase and to build-time decomposition, gated: a commodity-category adopt-first ruling or an `IP-XXX` provisioning call is never builder-decided — it halts the cycle to the user's checkpoint, where `mochiko:patterns-adopt-first`'s constraint-challenge mechanism keeps its firing site. Commodity exposure is also sufficiency-check clause 6, where "resolved" means a stated mechanism *with* weighed alternatives | D1 carry-overs · D1 mechanic (d) · D2 clause 6 · addendum A5 |
+  | The UX obligation — Screens & Flows as design input, and FLOW-XXX traced into cycle cards | Rehomes **whole**, nothing of it dies: sufficiency-check clause 8 requires every FEAT-tagged `SCR-XXX`'s data shown to have a nameable serving contract surface and every `FLOW-XXX` action a mutation path (existing = cited, new = gap); UX-bearing cards' `**TEST:**` gates name their FLOW-XXX paths, enforced at card authoring | D7 |
+  | The accepted package as implement's entry condition | Existing accepted packages are valid frozen history; a feature holding one enters implement with the sufficiency check trivially satisfied | Build surface (migration) |
+  | Entry's brownfield branch — a missing or stale `.mochiko/memory/codebase-analysis.md` surfaced with the setup offer, and a store carrying no ruled content (scaffold-only or absent) routed to the `/mochiko:architecture` bootstrap rather than failing the run | Rehomed → `implement.md` Entry, which today carries only the governance-region half of that surfacing | Lead-ruled at the build wave (P1) — see the note below |
+  | Boundaries' "Feature work never overrules the constitution" — a governance conflict conforms, or is amended/waived through `governance-ledger.md` on the user's ruling | Rehomed → `implement.md` Boundaries | Lead-ruled at the build wave (P1) — see the note below |
+
+- **Two obligations D1–D7 do not disposition.** The record's rehoming ledger is silent on the last
+  two rows above, and neither obligation existed in `implement.md` when this strip was written.
+  They are not orphans and they are not silent drops: the build-wave lead ruled both **rehomed to
+  the `implement.md` rewrite of this same wave** — the Entry brownfield branch to implement's
+  Entry, the constitution floor to implement's Boundaries. The ruling is a wave-level lead call,
+  not a clause of D1–D7, and is recorded as such so a later auditor can tell the two apart.
+- **Kept deliberately:** the standing floors this command shared with `implement.md` are not lost
+  with it — the sound-loop floor, the transport floor, the model-tiering dispatch floor, the
+  register binding, and the suggest-commits-never-mutate rule are already present in
+  `implement.md` and are untouched by this retirement. The `.mochiko/features/FEAT-XXX/` home,
+  `tasks.md`, and the product-baseline surface all survive; so does the plan-minimalism ladder,
+  re-scoped rather than retired.
+- **Consumers assessed:** `commands/implement.md` — the accepted-package entry precondition and
+  the `/mochiko:plan` block-routing pointer die with this command (rewritten in this wave) ·
+  `commands/specify.md` next-step line · `commands/feature.md` growth-row routing ·
+  `commands/architecture.md` (its "plan and implement own all delivery" line) ·
+  `skills/mochiko/SKILL.md` router rows and the `plan.yaml` pointer ·
+  `mochiko:authoring-epic` (epic runs enter implement directly; the joint-proposal spine artifact
+  re-keys) · `mochiko:patterns-plan-minimalism` (re-scoped to the design phase) ·
+  `mochiko:patterns-vertical-tdd` (design-time card authoring now inside implement) ·
+  `mochiko:patterns-adopt-first` (its "at a plan decision" trigger sits in the budgeted
+  `description:` field) · `mochiko:testing-gap-finding` (fence inclusion list) ·
+  `mochiko:authoring-technical-requirements` (its subject dies with D3) ·
+  `mochiko:review-plan-artifacts` and `mochiko:review-feasibility` (re-scope) ·
+  `templates/feasibility-report-template.md` (re-scoped in this wave) ·
+  `evals/review-plan-artifacts/rules.json` · `ARCHITECTURE.md` and `README.md` pipeline
+  references · index counts. Each is another seat's surface in this same wave; none is edited here.
+
 ## [v0.82.0] Register line widened — seat briefs carry the register binding
 
 - **Disposition:** superseded → the widened Register tool line. The old line bound only

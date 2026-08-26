@@ -16,7 +16,7 @@ the epic** — the transient multi-feature delivery unit (`mochiko:authoring-epi
 membership change, status view, and close, mint-once with a membership-overlap guard. An epic
 coordinates delivery and is not capability truth, so this stewardship sits beside — never inside
 — the sacred capability writes. (Symmetry:
-`/mochiko:plan`'s lead is already delivery manager of the goal; the posture here extends to a
+`/mochiko:implement`'s lead is already delivery manager of the goal; the posture here extends to a
 standing surface, not a single run.) The map stays honest and converging across every visit:
 capabilities are what the product does, work rows are what it is currently building, and nothing
 rots unseen on your watch.
@@ -70,7 +70,7 @@ desk).
 - **Principal-architect** — domain co-sign, **dormant until the first cap-trip**; no live duty on
   today's maps. The seat is not idle elsewhere: its standing home is `/mochiko:architecture`,
   where it stewards the architecture store — the dormancy is this desk's, not the seat's.
-- **Dispatched runs** — all delivery. Plan and implement own their bounds, verification seats, and
+- **Dispatched runs** — all delivery. Implement owns its bounds, verification seats, and
   evidence rules; the desk runs none of it.
 - **The user** — retire and merge rulings, route overrides, and every selection.
 
@@ -88,7 +88,7 @@ Each tool below is referenced, never restated — its procedure lives in its hom
   (its home), and the fold-at-landing rules.
 - **`mochiko:authoring-epic`** — the epic's manifest + spine shape, the mint / membership-overlap
   guard, and close semantics; the desk stewards the epic (mint, membership change, status view,
-  close) through it. A multi-feature epic dispatches to `/mochiko:plan` as one run over its
+  close) through it. A multi-feature epic dispatches to `/mochiko:implement` as one run over its
   members; delivery and its bounds stay the run's, never the desk's.
 - **Capability-write test** — the routing instrument: does the work touch a capability (mint, merge,
   retire, capability-status) or only its work rows? Capabilities route out; rows the desk may cut.
@@ -114,12 +114,12 @@ Each tool below is referenced, never restated — its procedure lives in its hom
   demand: the capability-write test decides the door, extend-beats-mint applies, and **the user
   rules the mint**. No new door and no auto-mint — the architecture lens proposes, the map
   machinery disposes.
-- **Dispatch targets** — `/mochiko:plan` for a dispatched capability-batch that scales itself, in
-  the scope its door sets: **growth-door rows enter selection scope** (the batch covers the cut
+- **Dispatch targets** — `/mochiko:implement` for a dispatched capability-batch that scales itself,
+  in the scope its door sets: **growth-door rows enter selection scope** (the batch covers the cut
   rows; its landing folds them into the capability's extent), a **bug/improvement delta card stays
-  delta scope** (its landing is the delta fold) — the same split `/mochiko:plan` and
-  `/mochiko:implement` name at their Entry. `/mochiko:specify` for anything the capability-write test
-  routes out. Where KM exists, `BACKLOG.md` is the defect queue and lane acceptance is a landing
+  delta scope** (the desk-confirmed card is implement's delta entry; its landing is the delta fold)
+  — the same split `/mochiko:implement` names at its Entry. `/mochiko:specify` for anything the
+  capability-write test routes out. Where KM exists, `BACKLOG.md` is the defect queue and lane acceptance is a landing
   event; without KM, lane runs accept direct requests — the stated degrade path, never silently
   assumed.
 - **Register** — user-facing prose per `templates/output-style.md`.
@@ -128,8 +128,7 @@ Each tool below is referenced, never restated — its procedure lives in its hom
 
 - **Proactive report first** — health before the ask, every visit.
 - **Reference, never restate** — the dispatched run's bounds, verification seats, and evidence rules
-  live in `/mochiko:plan` and `/mochiko:implement` and the skills they bind; the desk points at them
-  and adds nothing.
+  live in `/mochiko:implement` and the skills it binds; the desk points at them and adds nothing.
 - **Author ≠ grader** — wherever a seat produces (delta card, `baseline-delta.md`, grooming
   proposal), no output is cleared by its author; a producing seat plans first and works only on a
   plan you approved.
@@ -161,9 +160,9 @@ Each tool below is referenced, never restated — its procedure lives in its hom
   never widens in place — a mid-run outgrowth aborts and re-routes, and a report that lands on an
   `in-flight` capability's territory files to that run instead.
 - **No delivery harness at the desk — dispatch only.** Every admitted demand leaves as a
-  `/mochiko:plan` capability-batch — growth-door rows in selection scope, a bug/improvement delta
-  card in delta scope; the run owns the delivery, and the boundary is audited from the map delta the
-  work leaves behind.
+  `/mochiko:implement` capability-batch — growth-door rows in selection scope, a bug/improvement
+  delta card in delta scope; the run owns the delivery, and the boundary is audited from the map
+  delta the work leaves behind.
 - **No self-graded writes.** **No silent map mutations** — an integrity defect is fixed on sight, and
   every write is visible on the map.
 - **The sound-loop floor.** A judgment-authored write to a governing surface obliges the loop:

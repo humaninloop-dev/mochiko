@@ -5,6 +5,69 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.91.0] — 2026-08-26
+
+`/mochiko:plan` retired; `/mochiko:implement` becomes the pipeline's single downstream run
+(record `.mochiko/brainstorms/plan-stage-utility/record.md` D1–D7, as amended at the pair cold
+review, three verify rounds, and the post-acceptance A1–A6 addendum; `DECISIONS.md` 2026-08-26
+row; strip `.mochiko/strips/plan.md` [v0.91.0], carrying the superseded command verbatim plus
+an obligation-by-obligation rehome map). Implement's entry now runs a **sufficiency check** —
+ten clauses per selected work row, collapsing to a three-clause form per delta card under delta
+scope, graded from the spec, the architecture store, and the product baselines by a seat that
+authored none of them; binding, with a disputed clause defaulting to gap and routing to the
+user. Zero gaps goes straight to card authoring and build; any gap fires an **in-run design
+phase scoped to exactly the named gaps**, independently graded and user-signed at a blocking
+checkpoint before the first cycle, with card authoring and its own confirm checkpoint
+following. Plan's plan-the-plan proposal and package-acceptance gates are replaced by run-open
+routing · design sign-off · card confirm. The `plan.md` summary artifact, the mandatory FR→TR
+layer, and plan's inline epic mint door die with the command; epic minting survives at
+`/mochiko:feature`.
+
+New skill **`mochiko:review-sufficiency`** — the check's single source, D2 as amended being its
+content spec. Ten clauses each carrying an explicit gap form (the A1 locatable/unattachable
+split on clauses 2–3, the A4 self-satisfaction exclusion on 4, A3's targets-absent rule on 5,
+A5's weighed-alternatives definition on 6, A2's row-keyed status on 9–10), plus the D6
+delta-scope collapse, the absent-baseline greenfield seed branch, trips-ride-the-report, and
+the report contents. Its fence admits the spec, the store, the baselines, and map entries, and
+excludes the code, `tasks.md`, `**TEST:**` cases, cycle reports, and the batch's own
+`FEAT-XXX/` run-output directory — with one bounded carve, added at the V3 fix round, for the
+in-flight collision clause 10 obliges. Body 6,652 / description 686, unbudgeted at birth,
+hard-cap-only (`.mochiko/memory/primitive-cost-budgets.md`).
+
+Retirement mechanics and re-points: `commands/plan.md` and `schemas/plan.yaml` deleted, seven
+primitives re-pointed and three crate files re-keyed to the seven remaining pipeline schemas.
+P3's library sweep re-pointed 34+ files, including the `review-plan-artifacts` title family
+across six sites (slug retained, so every mount stays valid), `authoring-user-stories`,
+`authoring-feature-map`, `authoring-architecture-store`, and `architecture-store.yaml`;
+`authoring-technical-requirements` re-scopes rather than retires (the TR mandate dies, the
+C/D/IP grammar survives), and `testing-gap-finding`'s fence inclusion list re-keys
+`requirements.md` to the sufficiency report plus the design-phase deltas. Five persona lines
+across three agents shed dead plan-run vocabulary (`tech-lead`, `devils-advocate`,
+`technical-analyst`); the pinned KM twin's landing-ritual command list drops `plan/`
+(`.mochiko/memory/knowledge-management.md:42`). Root docs `ARCHITECTURE.md` and `README.md`
+were re-drawn for the plan-less pipeline and, in the same pass, corrected for pre-existing
+v0.81.0 staleness: version stamp v0.48.0 → v0.91.0, skills 34 → 38, templates 14 → 7 +
+`constitution-modules/` recording the artifact schemas' v0.76.0 re-home to `schemas/*.yaml`,
+the `/mochiko:architecture` desk added to the cluster map and the command table (absent from
+both docs since it shipped), `nfrs.md` dropped from the product-baseline list, and `PLAN_STOP`
+removed from the kill-switch set.
+
+Pre-wave dry-run (the V8 obligation, run before the build): the check went against kinako work
+row R1-2 and **discriminated** — 3 clauses sufficient, 6 gap across four distinct causes, 1
+sufficient only under a named confound; neither falsifier arm tripped. Six instrument defects
+surfaced and were user-ruled into the clause text as the A1–A6 addendum. This is the first
+discrimination datapoint for the D5 watch.
+
+Author≠grader audits: three independent validator seats, **all three FAIL at round 1** (V1 1
+blocking · V2 5 blocking + 2 gate gaps · V3 3 blocking) → batched fix rounds across four
+producers → **V1, V2, V3 all CONFIRMED-PASS**. V1's B1 was a record-fidelity catch: the
+design-phase authoring proposal and the architect's contest brief died at D4 and had been
+carried forward regardless (B2/B3 one-liners). V2 closed N1–N4 plus the title family; V3's B1
+found the sufficiency fence contradicting its own clause 10. Two declared budget overages both
+ruled **HOLDS**: `patterns-vertical-tdd` +294 (D1 mechanic c) and `authoring-feature-map` +562
+total / +128 this wave (mechanic e, byte-reconciled). 83 strip entries across 40 strip files,
+68 fragments validator-verified. `cargo test` 12/12.
+
 ## [0.90.0] — 2026-08-26
 
 `validation-constitution` user-ruled true-deletion body cut (ADR

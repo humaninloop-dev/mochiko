@@ -8,17 +8,20 @@ use serde::Deserialize;
 use std::fs;
 use std::path::Path;
 
-/// The schema-backed artifact families the binary renders: the eight in-scope pipeline artifact
-/// templates (D3) plus the product architecture store (the ninth family, product-architecture-schema
-/// D8). This is the authoritative known-name set: a `template <name>` for a name outside this list
-/// is an unknown template (exit 2). Every name here has an embedded compile-time copy via
-/// [`embedded`], so the embedded fallback can never miss a known name.
+/// The schema-backed artifact families the binary renders: the in-scope pipeline artifact
+/// templates (D3) plus the product architecture store (product-architecture-schema D8). This is the
+/// authoritative known-name set: a `template <name>` for a name outside this list is an unknown
+/// template (exit 2). Every name here has an embedded compile-time copy via [`embedded`], so the
+/// embedded fallback can never miss a known name.
+///
+/// `plan` left the set at v0.91.0: the plan-stage retirement ruled the `plan.md` artifact dead
+/// outright, so its schema was deleted rather than superseded
+/// (`.mochiko/brainstorms/plan-stage-utility/record.md` D1/D4).
 ///
 /// Shelf data files (`architecture-shelf-*.yaml`) are deliberately absent: they are dealt by a
 /// skill reading them raw, never rendered here.
-pub const TEMPLATE_NAMES: [&str; 9] = [
+pub const TEMPLATE_NAMES: [&str; 8] = [
     "spec",
-    "plan",
     "tasks",
     "feature-entry",
     "features-index",
@@ -86,10 +89,6 @@ fn embedded(name: &str) -> Option<&'static str> {
         "spec" => include_str!(concat!(
             env!("CARGO_MANIFEST_DIR"),
             "/../../plugins/mochiko/schemas/spec.yaml"
-        )),
-        "plan" => include_str!(concat!(
-            env!("CARGO_MANIFEST_DIR"),
-            "/../../plugins/mochiko/schemas/plan.yaml"
         )),
         "tasks" => include_str!(concat!(
             env!("CARGO_MANIFEST_DIR"),

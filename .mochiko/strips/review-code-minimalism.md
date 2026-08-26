@@ -6,6 +6,31 @@ recently and terse (the Ponytail code-minimalism build, PT-D1–D10); the honest
 its body is almost entirely non-waivable floors + output contract + the `patterns-code-minimalism`
 standard binding, none of which the cut line removes.
 
+## [v0.91.0] When-NOT-to-Use carve-out re-keyed: "plan/spec reviewers", "the plan-time sibling" → design — plan-stage retirement D1/D5
+
+- **Disposition:** superseded → "the design-phase and spec reviewers own those surfaces; the
+  design-time sibling of this lens…".
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1 and D5; wording ruled by the wave
+  lead 2026-08-26).
+- **Content (superseded text, verbatim):**
+
+  ```
+  - **Design-time artifact review** — plan/spec reviewers own those surfaces; the plan-time sibling of this lens is the rung-honesty grade in `mochiko:review-plan-artifacts` against `mochiko:patterns-plan-minimalism` (same posture, design-time altitude)
+  ```
+
+- **Kept deliberately:** the carve-out's whole point — this lens does **not** review design-time
+  artifacts, those surfaces belong to their own reviewers, and the sibling relationship runs to
+  the rung-honesty grade in `mochiko:review-plan-artifacts`. Both skill slugs are unchanged, so
+  both pointers still resolve. Note the bullet's own label was already "**Design-time artifact
+  review**" and its closing parenthetical already read "same posture, design-time altitude" — the
+  ruled wording brings the body of the bullet into line with a heading that was correct all along.
+- **Budget:** body 3,866 → **3,884** against the 4,612 budget; description unchanged at 492
+  against 615. Both inside.
+- **Consumers assessed:** `mochiko:patterns-code-minimalism` carried the parallel sibling line,
+  re-keyed identically in the same wave; `mochiko:review-plan-artifacts` was re-scoped to the
+  design-phase package this wave, so the pointer's target now matches its description.
+
 ## [v0.64.0] Guardrails Wave 2 — slim description + "When to Use" deleted (floor line skipped — equivalent present)
 - **Disposition:** superseded → the guardrails-vs-detail Wave 2 editorial cut (D4 cut line): the "When to Use" list restating the description is deleted; description slimmed. No other body change.
 - **Tier failed:** n/a — supersession by ruling (guardrails-vs-detail Wave 2, `DECISIONS.md` 2026-08-11 build row [its Wave 2 residual authorization] + user rulings 2026-08-10/11; method warrant: benchmark verdict `.mochiko/benchmarks/guardrails-vs-detail/report/final-verdict.md` — guardrails held across all four skill natures).

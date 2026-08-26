@@ -10,7 +10,7 @@ description: This skill MUST be invoked when designing an architecture delta —
 Design the **shape** of a structural change before its detail: what the components are, where the
 boundaries cut, how the pieces talk, and how the proposed system differs from the one the product
 architecture store already describes. The store is the standing topology; this skill governs the
-**altitude and the diagram craft** of the **delta** drawn against it — the delta drafted in the plan
+**altitude and the diagram craft** of the **delta** drawn against it — the delta drafted in the design phase
 package, and that same delta as it lands into the store at sign-off. The delta is drawn **before**
 `data-model.md` and `contracts/`, which conform to the approved shape.
 
@@ -93,7 +93,7 @@ override.
 ## The no-delta judgment
 
 A run whose work changes nothing structurally still says so: a **one-line claim** — "this feature
-changes nothing structurally" — recorded in the plan package and shown at the gate. **The no-delta
+changes nothing structurally" — recorded in the design-phase package and shown at the gate. **The no-delta
 judgment is always shown, never made silently.** No diagram is drawn and the store is untouched: the
 standing spine already carries the unchanged picture, and redrawing it would assert a delta where
 none exists.

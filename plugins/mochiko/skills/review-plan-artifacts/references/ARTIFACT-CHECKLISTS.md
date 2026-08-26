@@ -1,7 +1,7 @@
-# Plan Artifact Review Checklists
+# Design-Phase Artifact Review Checklists
 
 Detailed completeness checklists, organized **by artifact type** — analysis artifacts,
-design artifacts, and the cross-artifact consistency pass. The caller (the plan lead) supplies
+design artifacts, and the cross-artifact consistency pass. The caller (the implement run's lead) supplies
 which artifacts are in scope for a given review; this reference does not encode a phase order
 (sequencing is the lead's, not the checklist's).
 
@@ -37,20 +37,11 @@ do not re-import those checks here.
 
 ## Analysis Artifacts
 
-Grade these when reviewing the analysis output set (e.g. `requirements.md`,
-`constraints-and-decisions.md`). NFR-XXX rows are **not** graded here — their home is the
-architecture store's concern rows, graded in the store-delta section below.
-
-### Checklist — Technical Requirements (`requirements.md`)
-
-| Check | Question | Severity |
-|-------|----------|----------|
-| FR coverage | Is every functional requirement from the spec mapped to at least one TR? | Critical |
-| Orphan TRs | Are there technical requirements with no business source? | Critical |
-| Testable criteria | Does every TR have measurable acceptance criteria? | Critical |
-| Dependency references | Do TRs reference relevant constraints and NFRs? | Important |
-| Priority assignment | Are TR priorities consistent with source FR priorities? | Important |
-| RFC 2119 language | Do requirements use MUST/SHOULD/MAY consistently? | Minor |
+Grade these when reviewing the analysis output set (`constraints-and-decisions.md`). NFR-XXX
+rows are **not** graded here — their home is the architecture store's concern rows, graded in
+the store-delta section below. There is **no `requirements.md` checklist**: the mandatory FR→TR
+layer was retired with the plan stage, so no such artifact exists to grade. Testable-criteria
+coverage is now graded upstream, at the sufficiency check's clause 1.
 
 ### Checklist — Constraints and Decisions (`constraints-and-decisions.md`)
 
@@ -85,7 +76,7 @@ architecture store's concern rows, graded in the store-delta section below.
 
 ## Architecture Store Delta
 
-Grade this when the plan package carries a **store delta** — the drafted topology + `AX-XXX`
+Grade this when the design-phase package carries a **store delta** — the drafted topology + `AX-XXX`
 concern-row changes the user signs off on, from a rendered diagram, before detailed design builds
 on them (authored by `mochiko:patterns-system-design` against the standing store at
 `.mochiko/product/architecture/`). The store itself is **not written until sign-off**: what you
@@ -100,7 +91,7 @@ grade is the draft in the package, not the store.
 | Lifecycle status correctness | Is every delta element — `SPN-XXX` and `AX-XXX` alike — marked `in-flight` / `modifying` / `removing` and keyed to this feature's `FEAT-XXX`? | Critical |
 | AX-row change legality | Does every changed concern row carry a legal stance — `decided` / `not-now` (+ revisit trigger) / `n-a` (+ reason axis; a handled-elsewhere row carries its pointer) / `open`? | Critical |
 | Floor-precedence legality | On a floor-asserted category, is `n-a — genuinely never` absent — the legal moves being a stance within the obligation, `n-a — handled elsewhere` with its pointer, or narrowing — with a true drop routed to the governance-ledger waiver? | Critical |
-| NFR targets on touched rows | Does every `NFR-XXX` the delta adds or changes carry a numeric target, a measurement method, and a **source** on its concern row? The `TR-XXX → NFR-XXX` chain survives D12 — only the path moved, so an NFR with no traceable source is the same finding it always was. | Critical |
+| NFR targets on touched rows | Does every `NFR-XXX` the delta adds or changes carry a numeric target, a measurement method, and a **source** on its concern row? The chain now resolves `FR-XXX / SC-XXX → NFR-XXX` — the TR link died with the plan stage, so an NFR with no traceable business source is the same finding it always was. | Critical |
 | Ruling carried | Does every structural change carry its ruling and rationale in the delta itself? (The store ruling **is** the decision record — no `D-XXX` back-link is owed.) | Important |
 | Consult record | Does the package record the store consult — root index + full AX summary table always, the spine deep view on the structural-change trigger, and the touched concern files named? | Important |
 | Trip disposition | Is every trip the consult raised — a touched `open` / `not-now` row, a fired upgrade trigger — recorded with its disposition, batched at the run's front? | Important |
@@ -125,7 +116,7 @@ checks above against that shape; never invent field names here.
 
 ### No-delta runs
 
-A plan run that judges the feature non-structural authors **no delta**. Grade the claim:
+A design phase that judges the feature non-structural authors **no delta**. Grade the claim:
 
 | Check | Question | Severity |
 |-------|----------|----------|
@@ -192,7 +183,7 @@ external-integration surface — see `patterns-api-contracts`). First check the 
 
 | Check | Question | Severity |
 |-------|----------|----------|
-| Conditionality honored | If an integration surface exists (external API consumers, `x-integration` systems, non-trivial auth), is `quickstart.md` present? If none exists, is its null path recorded in `plan.md` (no stub file)? | Important |
+| Conditionality honored | If an integration surface exists (external API consumers, `x-integration` systems, non-trivial auth), is `quickstart.md` present? If none exists, is its null path recorded in the sufficiency report (no stub file)? | Important |
 | Flow coverage | Are common user flows documented with runnable examples (citing the contract, not re-documenting it)? | Important |
 | Auth documentation | Is the authentication sequence clear? | Important |
 | Error documentation | Are error handling patterns explained (conventions cited, top cases tabulated)? | Important |
@@ -303,9 +294,9 @@ everything it cannot settle.
 python scripts/check-artifacts.py .mochiko/specs/<feature>/data-model.md
 
 # Multiple files (enables the entity-consistency cross-check)
-python scripts/check-artifacts.py .mochiko/specs/<feature>/requirements.md .mochiko/specs/<feature>/data-model.md
+python scripts/check-artifacts.py .mochiko/specs/<feature>/constraints-and-decisions.md .mochiko/specs/<feature>/data-model.md
 
-# All plan artifacts
+# All design-phase artifacts
 python scripts/check-artifacts.py .mochiko/specs/<feature>/*.md
 ```
 
@@ -340,7 +331,7 @@ moved (not dropped); rebind by reference when that track ports.
 
 ## Scope boundary — handoff to `review-feasibility` {#scope-boundary--handoff-to-review-feasibility}
 
-This is the explicit seam between the two plan reviewers, so the feasibility side can mirror it
+This is the explicit seam between the two design-phase reviewers, so the feasibility side can mirror it
 exactly. **This skill keeps the left column; `mochiko:review-feasibility` owns the right.**
 
 | Family | THIS skill keeps (completeness lens) | `review-feasibility` owns (buildability lens) |

@@ -12,7 +12,7 @@ Checks:
 
 This is a deterministic format/convention self-check. It does NOT judge whether
 the endpoints, schemas, or integration failure modes are the *right* ones — that
-substantive review is model judgment, owned by the independent plan reviewer.
+substantive review is model judgment, owned by the independent design-phase reviewer.
 
 Usage:
     python validate-openapi.py .mochiko/specs/<feature>/contracts/api.yaml
