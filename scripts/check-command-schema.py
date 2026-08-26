@@ -24,6 +24,8 @@ Checks, all deterministic:
   6. every ruling: anchor resolves against DECISIONS.md (D6)
   7. the command .md's Not-done line hard-codes a count equal to the number of
      rules labeled `fail-condition` (D7, C2 guard)
+  7b. the .md's "nested in N sections" phrase (optional) matches the schema's
+      section count (D14 guard — closes the last unchecked hard-coded count)
   8. tombstone integrity (D11) — vacuous while the schema carries no
      tombstones: key (first mint)
 
@@ -66,6 +68,10 @@ DEIXIS_RE = re.compile(
 )
 RULING_RE = re.compile(r"^(\d{4}-\d{2}-\d{2})\s+(\S+)(?:\s+D\d+.*)?$")
 NOT_DONE_RE = re.compile(r"the (\d+) rules labeled `fail-condition`")
+# .md "nested in N sections" phrase — optional, but when present must match len(sections)
+SECTION_COUNT_RE = re.compile(r"nested in ([a-z]+|\d+) sections")
+WORD_NUMS = {w: i for i, w in enumerate(
+    "zero one two three four five six seven eight nine ten eleven twelve".split())}
 CLASSES = {"floor", "must", "advisory"}
 
 
@@ -237,6 +243,17 @@ def main() -> int:
                 f"pair out of sync: {a.md.name} pins {m.group(1)} fail-condition rules, "
                 f"schema carries {fail_count} (D7 C2 guard)"
             )
+        # 7b. "nested in N sections" phrase, when present, must match the section count
+        sm = SECTION_COUNT_RE.search(md_text)
+        if sm:
+            claimed = WORD_NUMS.get(sm.group(1), None)
+            if claimed is None and sm.group(1).isdigit():
+                claimed = int(sm.group(1))
+            if claimed is not None and claimed != len(sections):
+                findings.append(
+                    f"pair out of sync: {a.md.name} says 'nested in {sm.group(1)} sections', "
+                    f"schema carries {len(sections)} (D14 section-count guard)"
+                )
     except FileNotFoundError:
         findings.append(f"{a.md}: file not found — cannot run the C2 count guard")
 

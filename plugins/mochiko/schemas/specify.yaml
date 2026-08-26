@@ -1,0 +1,507 @@
+# Command content schema for /mochiko:specify — SOURCE OF TRUTH for the command's
+# rule-shaped content (command-content-schema D1, rolled out to specify by the D10
+# per-command ruling, DECISIONS.md 2026-08-26). The command .md instructs a raw, full Read
+# of this file at command fire; the model interprets it live — no build step, no binary on
+# the read path (GI-020). Narrative (the Goal statement and goal-state prose) stays in
+# plugins/mochiko/commands/specify.md.
+#
+# Grammar (D6, as amended by D14): sections: list, each {id, title, intent, rules};
+# rule blocks {id, labels, class, text, ruling?, pointer?} nest under their section.
+#   section id  <cmd>.sec.<slug> — minted once like rule IDs (D11); title verbatim from
+#           the command group it carries; intent one line, navigation only — sections
+#           never grow a second prose surface (narrative stays in the .md).
+#   id      dotted slug — a NAME, never a summary; minted once, frozen (D11). A reword
+#           keeps its ID; a split mints children recording the parent; a merge retires
+#           the losers under a top-level tombstones: key. First mint — no tombstones yet.
+#           FAIL clauses live under the spec.fail.* segment.
+#   labels  values from plugins/mochiko/schemas/command-labels.yaml (D8).
+#   class   floor = non-waivable, must-survive under the pair audit (M3) ·
+#           must = binding obligation · advisory = may change without supersession ceremony.
+#   text    carries ${var} placeholders substituted from vars: at read (D5). Verbatim
+#           command strings carry no placeholders.
+#   ruling  "YYYY-MM-DD <session-slug> [D#]" — protected content, anchored to a live
+#           DECISIONS.md row. Leaves only by recorded supersession-by-ruling.
+#   pointer the skill that owns the floor or procedure — the rule holds the pointer,
+#           never the procedure. Multi-skill bindings name every skill in text.
+# Referential closure (D15): a rule's text is self-contained — every reference resolves
+#   within the block or the schema's addressable namespace (${var} · spec.* IDs ·
+#   spec.sec.* · class: values · labels · pointer: skills · ruling: anchors · file paths).
+#   Deixis ("these rules", "this section", "above"/"below", document-shape remarks) is a
+#   defect — quoted alone, the reference dangles. The checker lints a curated marker list
+#   (warning-class). "this schema" and "the run" are legal self-reference.
+#
+# Rule grain (D12): one block per independently-citable obligation.
+# Advisory checker: scripts/check-command-schema.py (D13) — exit-code signal only.
+kind: command
+command: specify
+
+vars:
+  pm_seat: product-manager
+  explore_model: haiku
+  specs_dir: .mochiko/specs
+  spec_schema: plugins/mochiko/schemas/spec.yaml
+  feature_entry_schema: plugins/mochiko/schemas/feature-entry.yaml
+  features_index_schema: plugins/mochiko/schemas/features-index.yaml
+  rules_dir: .claude/rules/mochiko
+
+sections:
+  - id: spec.sec.harness
+    title: Harness
+    intent: >-
+      The lead's harness — seat wiring, the intent stage, the capability frame,
+      prototyping, derivation, selection, independence, and reserved-to-user decisions.
+    rules:
+
+      - id: spec.lead-latitude
+        labels: [seats]
+        class: must
+        text: >-
+          You are the lead: plan the run and orchestrate it toward the Goal state in
+          plugins/mochiko/commands/specify.md; teammates or subagents per seat is your
+          call.
+
+      - id: spec.transport-floor
+        labels: [floor-pointer, seats]
+        class: floor
+        text: >-
+          When the run composes more than one seat, mochiko:patterns-transport-floor
+          governs its composition and messaging under a split trigger — message legs on
+          any multi-seat messaging, topology legs on shared writes — non-waivable once
+          triggered; referenced, never restated.
+        pointer: "mochiko:patterns-transport-floor"
+
+      - id: spec.model-tiering
+        labels: [seats, floor-pointer]
+        class: must
+        text: >-
+          Exploration and fact-finding dispatches ride mochiko:patterns-model-tiering's
+          class key — locate/enumerate reads to a native Explore subagent spawned
+          model: ${explore_model}, interpretive or absence-driven reads on the session
+          tier — and every seat brief carries the routing rule; referenced, never
+          restated.
+        ruling: "2026-08-16 model-tiered-seats"
+        pointer: "mochiko:patterns-model-tiering"
+
+      - id: spec.intent-stage-first
+        labels: [scope-entry]
+        class: must
+        text: >-
+          The intent stage runs before any authoring: the adaptive-probe agenda via
+          mochiko:analysis-iterative — scope boundary · delivery intent · depth-rigor
+          expectation · UX-bearing (does the feature carry a user-facing surface to
+          prototype) · constraints · out-of-scope.
+        pointer: "mochiko:analysis-iterative"
+
+      - id: spec.map-obligated-read
+        labels: [scope-entry, evidence]
+        class: must
+        text: >-
+          The existing feature map is an obligated read at the intent stage, per
+          mochiko:authoring-feature-map's intent-stage agenda: FEATURES.md plus the
+          entries in the intent's territory.
+        pointer: "mochiko:authoring-feature-map"
+
+      - id: spec.missing-map-surfaced
+        labels: [scope-entry, user-gate]
+        class: must
+        text: >-
+          A missing feature map is surfaced — offer /mochiko:setup, whose brownfield
+          analysis reconstructs it — never silently tolerated.
+
+      - id: spec.unrefined-stubs
+        labels: [scope-entry]
+        class: must
+        text: >-
+          Map entries marked unrefined are unratified hypotheses, never extension
+          anchors: derivation ignores stub text, deriving frame-first with stories
+          informing; a stub matching a framed or derived capability is confirmation, a
+          stub matching nothing stays parked or is retired (procedure:
+          mochiko:authoring-feature-map).
+        pointer: "mochiko:authoring-feature-map"
+
+      - id: spec.intent-probe-discipline
+        labels: [user-gate]
+        class: must
+        text: >-
+          Intent runs as probes, never a questionnaire; it closes in a one-screen
+          synthesis the user confirms; flag ratification streaks before treating
+          adoptions as engagement.
+
+      - id: spec.intent-synthesis-governs
+        labels: [scope-entry, reporting]
+        class: must
+        text: >-
+          The confirmed intent synthesis governs the run and lands verbatim as the
+          spec's Intent section.
+
+      - id: spec.capability-frame-at-intent
+        labels: [seats, scope-entry]
+        class: must
+        text: >-
+          Within the intent stage, once the map and intent are read, the ${pm_seat} seat
+          states the capability frame — which capabilities the territory touches and an
+          extend-vs-mint hypothesis per the capability tests
+          (mochiko:patterns-map-minimalism) — as nouns + verbs only, never enumerating
+          stories, agreed with the user. The agreed frame lands in the confirmed Intent
+          section.
+        ruling: "2026-08-13 pm-role-and-feature-derivation D5"
+        pointer: "mochiko:patterns-map-minimalism"
+
+      - id: spec.frame-hypothesis-not-anchor
+        labels: [scope-entry]
+        class: must
+        text: >-
+          The capability frame is a hypothesis, not an anchor: it dictates neither story
+          boundaries nor journeys (stories stay journey-driven), and stories win any
+          conflict with it, resolved at the post-stories confirm step
+          (spec.confirm-frame-post-stories).
+        ruling: "2026-08-13 pm-role-and-feature-derivation D5"
+
+      - id: spec.frame-greenfield-inputs
+        labels: [scope-entry]
+        class: advisory
+        text: >-
+          On a thin greenfield intent the capability frame draws on the intent
+          conversation, the product description's domain nouns, and the capability tests
+          (mochiko:patterns-map-minimalism).
+        pointer: "mochiko:patterns-map-minimalism"
+
+      - id: spec.lockstep-prototyping
+        labels: [user-gate, evidence]
+        class: must
+        text: >-
+          UX-bearing only: stories and their screens co-evolve as one unit — skeleton
+          nav frame first, then each story's screens and flows land while that story is
+          under discussion; the user clicks through while the story is wet, never a
+          batch render after the text settles.
+        ruling: "2026-08-02 ux-mocking-in-specify D2"
+
+      - id: spec.whole-feature-prototype
+        labels: [evidence]
+        class: must
+        text: >-
+          The whole feature is prototyped at specify time; FEAT-tags land at derivation
+          as a re-tag pass over the SCR/FLOW manifest — unselected features' screens
+          greyed coming-soon, a filter-rejected story's screens kept greyed and marked
+          rejected.
+        ruling: "2026-08-02 ux-mocking-in-specify D8"
+
+      - id: spec.confirm-frame-post-stories
+        labels: [seats, scope-entry]
+        class: must
+        text: >-
+          After stories, the ${pm_seat} seat — via mochiko:authoring-feature-map and
+          mochiko:patterns-map-minimalism — first confirms or adjusts the intent-stage
+          capability frame against what the stories revealed; stories win any conflict.
+        ruling: "2026-08-13 pm-role-and-feature-derivation D5"
+        pointer: "mochiko:authoring-feature-map"
+
+      - id: spec.cut-work-rows
+        labels: [seats, scope-entry]
+        class: must
+        text: >-
+          After the frame confirm (spec.confirm-frame-post-stories), the ${pm_seat} seat
+          cuts the work rows (story-shaped is fine) grouped under their capabilities,
+          extending an existing capability's extent or minting a new one per the
+          extend-vs-mint tests, and maps every SC-XXX to its verifying capability or
+          row.
+        pointer: "mochiko:patterns-map-minimalism"
+
+      - id: spec.filter-rejections-recorded
+        labels: [evidence, reporting]
+        class: must
+        text: >-
+          The ${pm_seat} seat runs the filter: a story that earns no place on the map is
+          rejected with the why recorded in its story file, never silently dropped.
+
+      - id: spec.staged-derivation
+        labels: [landing]
+        class: floor
+        text: >-
+          All derivation output stages in the spec workspace; the live map stays
+          untouched until acceptance.
+        ruling: "2026-08-10 feature-map-layer D5"
+
+      - id: spec.filter-disagreement-escalates
+        labels: [user-gate]
+        class: must
+        text: >-
+          A producer disagreement — a rejected story held load-bearing — escalates to
+          the user.
+
+      - id: spec.selection-card
+        labels: [user-gate, reporting]
+        class: must
+        text: >-
+          The user picks which work rows build now, from the ${pm_seat} seat's selection
+          card — the rows grouped per capability, recommendation, row-level dependency
+          order, the deferred-SC list, and, per capability in the spec's territory, the
+          completeness view (pending work rows — cut but undelivered — plus parked stubs
+          and kills), visible at the moment of choice.
+        ruling: "2026-08-13 pm-role-and-feature-derivation D5"
+
+      - id: spec.pm-recommends-never-selects
+        labels: [user-gate, independence]
+        class: floor
+        text: >-
+          The ${pm_seat} seat recommends, never selects.
+        ruling: "2026-08-13 pm-role-and-feature-derivation D5"
+
+      - id: spec.epic-proposal-optional
+        labels: [seats]
+        class: must
+        text: >-
+          When one derivation spans capabilities such that its work rows want one
+          coordinated multi-feature run, the ${pm_seat} seat may propose an epic as part
+          of the selection card — a proposal only, never a mint.
+        ruling: "2026-08-14 multi-feature-plan-implement D4"
+
+      - id: spec.epic-mint-desk-only
+        labels: [user-gate]
+        class: floor
+        text: >-
+          The user takes an epic proposal to /mochiko:feature's desk to form, the only
+          door that mints; the run never mints an epic (mochiko:authoring-epic).
+        ruling: "2026-08-26 plan-stage-utility D4"
+        pointer: "mochiko:authoring-epic"
+
+      - id: spec.plan-approval
+        labels: [seats, independence]
+        class: must
+        text: >-
+          Any seat that writes artifacts plans first and works only on a plan you
+          approved; grading and fact-finding seats are exempt.
+
+      - id: spec.author-grader-default-fail
+        labels: [independence]
+        class: floor
+        text: >-
+          No output is cleared by its author; grading reads the files themselves —
+          spec.md, the story files, the staged capabilities and work rows — never a
+          report; default FAIL.
+
+      - id: spec.stress-test-one-pass
+        labels: [independence, evidence]
+        class: must
+        text: >-
+          The stress-test grades spec + stories + capability/row derivation + map delta
+          in one pass — derivation honesty, filter rejections justified, dedup against
+          the actual map, granularity respected, capabilities and rows well-formed — its
+          map-delta baseline the map's git state at run open.
+
+      - id: spec.stress-test-prototype-walk
+        labels: [independence, evidence]
+        class: must
+        text: >-
+          On a UX-bearing spec the stress-test also walks the prototype (served, or
+          opened directly via the no-server degrade path): every FLOW-XXX clickable
+          end-to-end, every SCR-XXX reachable, every P1 acceptance scenario carrying a
+          click path; manifest↔prototype drift is a blocking gap.
+        ruling: "2026-08-02 ux-mocking-in-specify D7"
+
+      - id: spec.reserved-to-user
+        labels: [user-gate]
+        class: must
+        text: >-
+          Reserved to the user: the feature framing when `$ARGUMENTS` is empty · intent
+          confirmation (the capability frame included) · clarification answers only they
+          can settle · clicking each story's prototype screens as they land (their
+          reactions fold back into story and screen together) · ruling on an escalated
+          filter disagreement.
+
+      - id: spec.gate-selection
+        labels: [user-gate]
+        class: floor
+        text: >-
+          The selection — which work rows build now — is the user's.
+        ruling: "2026-08-13 pm-role-and-feature-derivation D5"
+
+      - id: spec.gate-acceptance
+        labels: [user-gate, landing]
+        class: floor
+        text: >-
+          Spec acceptance (accept / amend / reject) is the user's, covering intent,
+          requirements, experience, derivation, and selection whole — acceptance is what
+          executes the map write batch; a rejected spec never touched the map.
+        ruling: "2026-08-10 feature-map-layer D5"
+
+      - id: spec.governance-region-absent
+        labels: [scope-entry]
+        class: must
+        text: >-
+          A missing CLAUDE.md governance region is surfaced (offer /mochiko:setup),
+          never auto-resolved.
+
+      - id: spec.no-git-mutations
+        labels: [user-gate]
+        class: must
+        text: >-
+          Suggest commits; never run git mutations, never push.
+
+      - id: spec.acceptance-plain-text
+        labels: [user-gate]
+        class: must
+        text: >-
+          User acceptance is plain blocking text, never a timed prompt.
+
+  - id: spec.sec.bindings
+    title: Bindings
+    intent: >-
+      Paths, templates, and skills the run binds to.
+    rules:
+
+      - id: spec.deliverable
+        labels: [binding]
+        class: must
+        text: >-
+          The deliverable is ${specs_dir}/<spec>/ — spec.md from the spec template
+          (rendered by `mochiko-cli template spec`, or its schema ${spec_schema} Read
+          raw when the binary is absent — the shipped schema is the first-class source
+          of truth) plus the stories/US-*.md files; <spec> a kebab-case slug derived
+          from the feature description; never offer to delete it. Uncertainty lives in
+          spec.md's Assumptions and Open Questions sections.
+
+      - id: spec.feature-map-craft
+        labels: [floor-pointer, binding]
+        class: must
+        text: >-
+          Feature-map craft — derivation, the filter, capability and work-row authoring
+          (the feature-entry template — `mochiko-cli template feature-entry`, or its
+          schema ${feature_entry_schema} Read raw when the binary is absent, the shipped
+          schema being the first-class source of truth), index lines (the features-index
+          template — `mochiko-cli template features-index`, or its schema
+          ${features_index_schema} Read raw when the binary is absent, likewise the
+          first-class source), delta grammar, SC re-homing, and the acceptance-time
+          write rules — the ${specs_dir}/index.md row included; spec-index stewardship
+          rides the skill — all per mochiko:authoring-feature-map.
+        pointer: "mochiko:authoring-feature-map"
+
+      - id: spec.map-minimalism-binding
+        labels: [floor-pointer]
+        class: must
+        text: >-
+          The capability tests, extend-vs-mint, and the frame discipline bind per
+          mochiko:patterns-map-minimalism.
+        pointer: "mochiko:patterns-map-minimalism"
+
+      - id: spec.prototype-craft
+        labels: [floor-pointer, binding]
+        class: must
+        text: >-
+          The Screens & Flows section and prototype/ app per
+          mochiko:authoring-prototype — SCR-XXX/FLOW-XXX manifest grammar, low-fi
+          discipline (binding flows, advisory pixels), bun-servable static HTML with the
+          no-server degrade path, design system honored where one exists; not UX-bearing
+          takes the waiver line "No UX surface — prototype waived at intent." instead.
+        ruling: "2026-08-02 ux-mocking-in-specify D1"
+        pointer: "mochiko:authoring-prototype"
+
+      - id: spec.governance-briefs
+        labels: [seats, scope-entry]
+        class: must
+        text: >-
+          Where the CLAUDE.md governance region is present, name the relevant
+          ${rules_dir}/ files as an obligated read in each author's brief —
+          `paths`-scoped rules do not fire for from-scratch authoring.
+
+      - id: spec.km-landing
+        labels: [landing]
+        class: must
+        text: >-
+          Where .mochiko/memory/knowledge-management.md exists, spec acceptance is a
+          landing — run its landing ritual (close/move any BACKLOG item the spec
+          discharges, touch ROADMAP.md) and its command-boundary invariants
+          fix-on-sight; the acceptance-time map write batch lands in the same moment.
+
+      - id: spec.migration-frozen-specs
+        labels: [binding]
+        class: must
+        text: >-
+          Existing slice-form specs are valid frozen history; only new runs take the
+          ${specs_dir}/<spec>/ workspace form.
+
+      - id: spec.register
+        labels: [reporting]
+        class: must
+        text: >-
+          User-facing prose follows templates/output-style.md.
+
+      - id: spec.next-step
+        labels: [scope-entry]
+        class: must
+        text: >-
+          Next step: /mochiko:implement — one run per capability-batch (a capability's
+          selected work rows), in the rows' dependency order; that run opens with a
+          sufficiency check at its entry.
+        ruling: "2026-08-26 plan-stage-utility D1"
+
+  - id: spec.sec.fail-conditions
+    title: Not done — default FAIL
+    intent: >-
+      The fail-condition set — any one standing fails the run; the .md Not-done line hard-codes this set's count.
+    rules:
+
+      - id: spec.fail.blocking-gap
+        labels: [fail-condition, evidence]
+        class: floor
+        text: >-
+          A blocking gap open.
+        ruling: "2026-08-26 command-content-schema D10"
+
+      - id: spec.fail.intent-unconfirmed
+        labels: [fail-condition, user-gate]
+        class: floor
+        text: >-
+          An Intent section never confirmed by the user before authoring.
+        ruling: "2026-08-26 command-content-schema D10"
+
+      - id: spec.fail.map-unread
+        labels: [fail-condition, scope-entry]
+        class: floor
+        text: >-
+          The feature map not read at intent, or a missing map silently tolerated.
+        ruling: "2026-08-26 command-content-schema D10"
+
+      - id: spec.fail.story-unhomed
+        labels: [fail-condition, evidence]
+        class: floor
+        text: >-
+          A drafted story neither homed to exactly one work row nor rejected with a
+          recorded why.
+        ruling: "2026-08-26 command-content-schema D10"
+
+      - id: spec.fail.screens-flows
+        labels: [fail-condition, evidence]
+        class: floor
+        text: >-
+          A Screens & Flows section absent (the waiver line counts), or ruled UX-bearing
+          with no clickable prototype, or manifest↔prototype drift unresolved.
+        ruling: "2026-08-26 command-content-schema D10"
+
+      - id: spec.fail.selection-unruled
+        labels: [fail-condition, user-gate]
+        class: floor
+        text: >-
+          A Feature Selection section absent, or the selection not ruled by the user.
+        ruling: "2026-08-26 command-content-schema D10"
+
+      - id: spec.fail.premature-map-write
+        labels: [fail-condition, landing]
+        class: floor
+        text: >-
+          The live map written before acceptance.
+        ruling: "2026-08-26 command-content-schema D10"
+
+      - id: spec.fail.self-graded
+        labels: [fail-condition, independence]
+        class: floor
+        text: >-
+          The spec never graded by anyone but its authors.
+        ruling: "2026-08-26 command-content-schema D10"
+
+      - id: spec.fail.no-acceptance
+        labels: [fail-condition, user-gate]
+        class: floor
+        text: >-
+          User acceptance not given.
+        ruling: "2026-08-26 command-content-schema D10"

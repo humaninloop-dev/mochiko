@@ -20,15 +20,16 @@ git history (this line, before this groom).*
 ## Command-content schema build
 
 *(ruled + accepted 2026-08-26, `command-content-schema` D1–D13 as review-amended; provenance:
-`.mochiko/brainstorms/command-content-schema/record.md`. Build DELIVERED same day at v0.92.0 —
-B3 Ways-of-Working+Boundaries confirmation taken at the wave gate; build item → trail)*
+`.mochiko/brainstorms/command-content-schema/record.md`. Build DELIVERED same day at v0.92.0;
+D10 rollout DELIVERED same day at v0.95.0 — all six commands now `.md`+schema pairs)*
 
-- [ ] **First-live-run watch: schema-carried rule delivery** (D10) — delivery probes (schema
-  read? read fully? before first action?) · benefit observations (an `impl.*` ID cited by a
-  strip/audit/DECISIONS row · a `vars:` change replacing a multi-site edit · the checker
-  catching a real defect) · D4 edit observations (implement-touching edits without label
-  churn). One watch item, three consumers: D2 absorption, D2 retreat, D4 ceremony
-  graduation.
+- [ ] **First-live-run watch: schema-carried rule delivery** (D10) — now spanning all six
+  pairs (implement · feature · specify · architecture · setup · brainstorm): delivery probes
+  (schema read? read fully? before first action?) · benefit observations (a schema rule ID
+  cited by a strip/audit/DECISIONS row · a `vars:` change replacing a multi-site edit · the
+  checker catching a real defect · a cross-command label query answering a real question) ·
+  D4 edit observations (pair-touching edits without label churn). One watch item, three
+  consumers: D2 absorption, D2 retreat, D4 ceremony graduation.
 
 ## Skill-compression eval-primitive build
 

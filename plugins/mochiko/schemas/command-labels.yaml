@@ -20,3 +20,5 @@ labels:
   seats: Seat wiring — who is staffed, spawned, briefed, or bounded, and with what.
   floor-pointer: A binding that points at a skill-owned floor or procedure — the pointer, never the restated procedure.
   reporting: Where reports land, what they state, and the register they use.
+  binding: A path, schema, workspace, or surface the command binds to — where its artifacts live and what shapes them.
+  stewardship: Living-artifact care — map and store hygiene, integrity, lifecycle bookkeeping at a standing desk.

@@ -5,6 +5,58 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.95.0] — 2026-08-26
+
+**The D10 rollout: every mochiko command is now a `.md` + schema pair.** User-directed
+same-day wave (record `.mochiko/brainstorms/command-content-schema/record.md`, Session
+trail "D10 rollout ruling"; `DECISIONS.md` 2026-08-26 row): the five remaining commands
+convert structure-only from their frozen v0.94.0 referents — `architecture.yaml` (prefix
+`arch`, 47 rules) · `brainstorm.yaml` (29) · `feature.yaml` (`feat`, 49) · `setup.yaml`
+(40) · `specify.yaml` (`spec`, 51) — joining `implement.yaml` (104) for a six-pair library
+of **320 rules** under the D6/D14/D15 grammar. Conversion ran on the new repo-level skill
+`.claude/skills/converting-command-to-schema/SKILL.md` (itself author≠grader validated to
+CONFIRMED-PASS in three rounds before use; repo tooling, never shipped — GI-020 intact).
+Wave: 5 producers + 5 fresh validators, each pair graded on the three-audit set (pair
+coherence · schema fidelity vs the frozen step-0 referent · strip verification) with the
+D13 checker as deterministic pre-pass — feature and architecture and brainstorm PASS round
+1, specify and setup FAIL round 1 and repaired (headline catches: setup's carve-outs floor
+rule had erased the real `governance-surfaces.yaml` referent and narrowed its scope to the
+CLAUDE.md region — restored with both carve-out homes named and
+`pointer: mochiko:authoring-constitution` adopted on evidence; specify carried one
+undisclosed added phrase — struck), all five **CONFIRMED-PASS**. Label registry
+`command-labels.yaml` **ten → twelve** by delegated ruling (`binding` · `stewardship`),
+swept across the five new schemas. Checker gained the **D14 section-count guard** (the
+`.md` "nested in N sections" phrase must match the schema; negative-tested) beside the D15
+deixis lint. Pair-form audit criteria generalized in
+`.claude/rules/mochiko/primitive-edits.md` (charter-form exception for charter commands,
+default coherence block otherwise, both across the pair). Strips: 20 `[v0.95.0]`
+supersession entries across five per-command strip files, Content fields machine-verified
+verbatim against the referents. Referents frozen under the session's `referents/`. The D10
+first-live-run watch in `BACKLOG.md` now spans all six pairs. Gates: six checker-PASS runs
+0 findings · CHANGELOG (this entry) · marketplace 0.95.0 · `cargo test` 12/12.
+
+## [0.94.0] — 2026-08-26
+
+Command schemas gain the **referential-closure law** — the D15 post-build amendment (record
+`.mochiko/brainstorms/command-content-schema/record.md` D15, user-directed same day;
+`DECISIONS.md` 2026-08-26 row). A rule's `text` must be self-contained: every reference
+resolves within the block or the schema's addressable namespace (`${var}` · `impl.*` IDs ·
+`impl.sec.*` · `class:` values · registry labels · `pointer:` skills · `ruling:` anchors ·
+file paths). Deixis — "these rules", "this section", "above"/"below", document-shape
+remarks — is a defect: quoted alone, the reference dangles, breaking D12's
+independently-citable promise. "this schema" and "the run" stay legal self-reference. The
+law is general to every `kind: command` schema; `scripts/check-command-schema.py` carries a
+curated **deixis lint** (check 5b, warning-class — heuristic detection never blocks the
+advisory pre-pass), verified firing on the defect text and silent on the corpus. The one
+live instance in 104 rules reworded: `impl.staffing-latitude` — "the floor these rules
+state" becomes "this schema's `class: floor` rules"; the document-shape remark "There is no
+Bindings section." dropped without relocation (the schema's existence states it). ID, class,
+labels, section unchanged (D11 reword). Grammar header gains the closure block. Strip: 1
+supersession entry `[v0.94.0]` in `.mochiko/strips/implement.md`. Author≠grader audit
+**PASS** (0 Critical / 0 Major / 2 Minor — gates-owed ordering note; one conforming
+wording-tighten candidate deferred to its next touch); checker PASS 0 findings 0 warnings;
+gates 4/5/6 (this entry, marketplace 0.94.0, `cargo test` 12/12).
+
 ## [0.93.0] — 2026-08-26
 
 `implement.yaml` gains **first-class section nesting** — the D14 post-build amendment (record

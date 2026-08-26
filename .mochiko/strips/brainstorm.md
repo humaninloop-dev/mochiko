@@ -5,6 +5,158 @@ shared team-form prose relocated into `templates/command-shape.md` (design:
 `.mochiko/brainstorms/pattern-codification-and-minimalism/record.md`, D3/D4/D9). **Stale as a standing claim:**
 the shape is now **v5** (2026-07-30) — see the v0.35.0 section below.
 
+## [v0.95.0] `## Harness` — the whole section moves to the schema (D2, exercised by the D10 rollout ruling)
+
+- **Disposition:** superseded → `plugins/mochiko/schemas/brainstorm.yaml`, section
+  `brainstorm.sec.harness` — the ten bullets at D12 grain as eighteen rules, in the shipped
+  order: `brainstorm.lead-inline-questioning` · `brainstorm.staffing-latitude` ·
+  `brainstorm.transport-floor` · `brainstorm.model-tiering` ·
+  `brainstorm.plan-approval-producers` · `brainstorm.author-grader-default-fail` ·
+  `brainstorm.record-review-independence` · `brainstorm.blind-map-dispatch` ·
+  `brainstorm.pair-maps-independent` · `brainstorm.coverage-survivor-routing` ·
+  `brainstorm.non-coverage-survivors` · `brainstorm.reopen-born-verify` ·
+  `brainstorm.user-record-acceptance` · `brainstorm.user-survivor-challenge` ·
+  `brainstorm.user-review-waiver` · `brainstorm.user-pen-boundary` ·
+  `brainstorm.no-git-mutations` · `brainstorm.acceptance-plain-text`. Skill-owned floors ride
+  as `pointer:` rules (`mochiko:analysis-iterative` · `mochiko:patterns-transport-floor` ·
+  `mochiko:patterns-model-tiering`); the blind-map / coverage-routing / reopen-verify trio
+  carries `ruling:` anchors to the 2026-08-10 cold-review-gap-challenge row, the model-tiering
+  rule to the 2026-08-16 model-tiered-seats row.
+- **Tier failed:** n/a — supersession by ruling (command-content-schema D2 — rules move to the
+  schema, narrative stays — as exercised for this command by the D10 rollout ruling
+  2026-08-26, record Session trail, structure-only extraction against the frozen referent
+  `.mochiko/brainstorms/command-content-schema/referents/brainstorm-shipped-v0.94.0.md`;
+  `DECISIONS.md` 2026-08-26 command-content-schema row).
+- **Content:** the whole shipped section, verbatim:
+
+```
+## Harness
+
+- **You are the lead.** Plan the run and orchestrate it toward the Goal; run the questioning
+  yourself, inline, via `mochiko:analysis-iterative` — one question per turn, format adapted to
+  the user's state. Teammates or subagents per seat is your call.
+- **Transport floor.** When the run composes more than one seat,
+  `mochiko:patterns-transport-floor` governs its composition and messaging under a split
+  trigger — message legs on any multi-seat messaging, topology legs on shared writes —
+  non-waivable once triggered; referenced, never restated.
+- **Model tiering.** Exploration and fact-finding dispatches ride
+  `mochiko:patterns-model-tiering`'s class key — locate/enumerate reads to a native
+  `Explore` subagent spawned `model: haiku`, interpretive or absence-driven reads on the session
+  tier — and every seat brief carries the routing rule; referenced, never restated.
+- **Plan approval:** any seat that writes artifacts plans first and works only on a plan you
+  approved; grading and fact-finding seats are exempt.
+- **Independence:** no output is cleared by its author — the record is yours, so its review
+  seat is always someone else, reading the frozen record cold from the file, default FAIL.
+- **Blind-map dispatch:** a review seat is spawned in two messages — first the topic statement
+  and goal line only, *never* the record path, so it builds its Phase 0 angle map with no
+  sight of what the session decided; its map returns before you send the record path and the
+  cold read begins. The anchoring fence is structural, not a trust ask. In a pair, both seats
+  build their maps independently.
+- **Coverage-survivor routing:** a surviving coverage finding is a candidate that questions the
+  topic itself, not a fold — present each gap as a candidate topic; **the user** rules the path: **explore now**
+  (re-enter `mochiko:analysis-iterative` on that angle; the resulting decision lands in the
+  record's same `D…` namespace), **rule inline**, or **defer**. Non-coverage survivors keep the
+  ordinary fold / repair / ruling path and may be dispositioned in batches.
+- **Reopen-born verify:** a decision born from a coverage-survivor reopen gets one bounded verify
+  round — internal consistency and record-fitness, no fresh cold read, no blind-map coverage
+  hunt against it, and no second reopen off it.
+- **Reserved to the user:** record acceptance · the disposition of any review survivor that
+  challenges a user ruling · the waiver, if the review is to be skipped · any amendment to a
+  user-ruled decision, and any new decision — their word, never yours.
+- Suggest commits; never run git mutations, never push. User acceptance is plain blocking
+  text, never a timed prompt.
+```
+
+- **Kept deliberately:** every obligation survives one-for-one as rule text — none dropped,
+  none merged; "the record is yours … default FAIL" splits at D12 grain into the general floor
+  (`brainstorm.author-grader-default-fail`) and the record-specific consequence
+  (`brainstorm.record-review-independence`); the reserved-to-user list splits into its four
+  items, "their word, never yours" carried on the acceptance and pen-boundary rules. Rewrite
+  delta, recorded separately from the verbatim Content above (D15 referential closure only,
+  no other rewording): "toward the Goal" → "toward the run's goal" · "the record is yours" →
+  "The record at ${record_path} is yours" · "the record path" → "${record_path}" (twice, in
+  the blind-map rule) · "In a pair, both seats build their maps independently" → "In a review
+  pair, both seats build their Phase 0 angle maps independently" · "the record's same `D…`
+  namespace" → "${record_path}'s same `D…` namespace" · `model: haiku` →
+  "model: ${explore_model}" (var-injected, D5). Additionally: bullet-label fragments
+  normalized to standalone sentences (subject inserted); inline emphasis/backticks dropped for
+  block-scalar safety; no obligation altered.
+- **Consumers assessed:** commands are entry points, nothing mounts them; the pair-form audit
+  block in `.claude/rules/mochiko/primitive-edits.md` (lead-owned, same wave) grades the
+  `.md` + schema pair from v0.95.0; the pointed-at skills are untouched.
+
+## [v0.95.0] `## Bindings` — the whole section moves to the schema (D2, exercised by the D10 rollout ruling)
+
+- **Disposition:** superseded → `plugins/mochiko/schemas/brainstorm.yaml`, section
+  `brainstorm.sec.bindings` — the five bullets at D12 grain as seven rules, in the shipped
+  order: `brainstorm.deliverable-record` · `brainstorm.record-as-you-go` ·
+  `brainstorm.index-bookkeeping` · `brainstorm.km-close-ritual` ·
+  `brainstorm.synthesis-on-request` · `brainstorm.register` · `brainstorm.next-step-offer`.
+  The repeated paths declare once in `vars:` (`record_path` · `index_path` · `km_path`, D5).
+- **Tier failed:** n/a — supersession by ruling (command-content-schema D2 as exercised by the
+  D10 rollout ruling 2026-08-26, record Session trail, against the frozen referent
+  `.mochiko/brainstorms/command-content-schema/referents/brainstorm-shipped-v0.94.0.md`;
+  `DECISIONS.md` 2026-08-26 command-content-schema row).
+- **Content:** the whole shipped section, verbatim:
+
+```
+## Bindings
+
+- **Deliverable:** `.mochiko/brainstorms/<slug>/record.md` — kebab-case `<slug>` derived at the
+  start, decisions in one `D1…` namespace, written as the session progresses, never
+  reconstructed at the end.
+- **Index:** `.mochiko/brainstorms/index.md` — read before opening; enter the session on open
+  (status: open); update at acceptance or supersession with where the outcome landed. Where
+  `.mochiko/memory/knowledge-management.md` exists, run its close ritual.
+- **Synthesis:** on request only, after acceptance — beside the record, stamped
+  *derived — record canonical*; under a review waiver, stamped *derived, unchecked*.
+- **Register:** user-facing prose per `templates/output-style.md`.
+- **Next step:** pipeline entry (e.g. `/mochiko:specify` when the record is honestly a
+  feature description) is an offer after acceptance, never a default.
+```
+
+- **Kept deliberately:** all five bindings survive whole — the Deliverable bullet splits at
+  D12 grain into the artifact binding and the written-as-you-go obligation; the Index bullet
+  into the index bookkeeping and the KM close ritual; both synthesis stamps (*derived — record
+  canonical* and the waiver's *derived, unchecked*) survive verbatim in
+  `brainstorm.synthesis-on-request`. Rewrite delta, recorded separately (D15/D5 only): the
+  literal paths substitute as `${record_path}` / `${index_path}` / `${km_path}`; "beside the
+  record" → "beside ${record_path}". Additionally: bullet-label fragments normalized to
+  standalone sentences (subject inserted); inline emphasis/backticks dropped for block-scalar
+  safety; no obligation altered.
+- **Consumers assessed:** none — bindings local to this command; `templates/output-style.md`
+  and the KM module are referenced, not edited.
+
+## [v0.95.0] The `**Not done — default FAIL**` list — 4 clauses become the `fail-condition` rule set (D7 form, exercised by the D10 rollout ruling)
+
+- **Disposition:** superseded → the 4 `brainstorm.fail.*` rules labeled `fail-condition` in
+  `plugins/mochiko/schemas/brainstorm.yaml` (section `brainstorm.sec.fail-conditions`), in the
+  shipped order: `brainstorm.fail.record-unaccepted` · `brainstorm.fail.unreviewed-no-waiver` ·
+  `brainstorm.fail.survivor-undispositioned` · `brainstorm.fail.index-mismatch`; the `.md`'s
+  Not-done line re-keys to the count pointer — "the 4 rules labeled `fail-condition` in
+  `plugins/mochiko/schemas/brainstorm.yaml`" — N=4 pinned, the C2 guard, the count match
+  checker-verified (D13).
+- **Tier failed:** n/a — supersession by ruling (command-content-schema D7's fail-condition
+  form as exercised for this command by the D10 rollout ruling 2026-08-26, record Session
+  trail; `DECISIONS.md` 2026-08-26 command-content-schema row).
+- **Content:** verbatim —
+
+```
+**Not done — default FAIL:** an unaccepted record · an unreviewed record with no recorded
+waiver · an undispositioned review survivor · an index entry missing or contradicting the
+record's status.
+```
+
+- **Kept deliberately:** all four clauses survive one-for-one as rules — none dropped, none
+  merged; the default-FAIL posture survives on the `.md` line itself ("any one standing fails
+  the run") plus its out-of-sync halt sentence. Rewrite delta, recorded separately (D15 only):
+  "an index entry" → "An index entry in ${index_path}".
+- **Consumers assessed:** the pair-form audit's FAIL-survival criterion keys to the
+  `fail-condition` label set (`.claude/rules/mochiko/primitive-edits.md`, lead-owned, same
+  wave); the D13 checker binds the `.md` count to the schema set deterministically.
+
+---
+
 ## [v0.78.0] Model-tiering floor line retargeted — `mochiko:explorer` superseded by native `Explore` + `model: haiku` override
 
 - **Disposition:** superseded → the reworded floor line: locate/enumerate reads go to "a

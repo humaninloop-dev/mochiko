@@ -46,6 +46,18 @@ template edit; the path scope above covers them so this reminder injects on a sc
   skill at v0.45.0) — the matching `validation-*` / `review-*` skill otherwise. The editor never
   grades their own edit — dispatch a separate validator.
 
+  **Pair-form commands (command-content-schema D9; implement from v0.92.0, the D10
+  five-command rollout — `architecture` · `brainstorm` · `feature` · `setup` · `specify` —
+  from v0.95.0):** a command shipped as `.md` + `plugins/mochiko/schemas/<cmd>.yaml` is graded
+  across **both surfaces**, whichever criteria block applies — the charter-form exception for
+  a charter command, this default block otherwise. On any pair: FAIL survival keys to the
+  **`fail-condition` label set** (every so-labeled rule surviving, the `.md` Not-done line's
+  hard-coded count matching the schema's); **ID continuity (D11/D14):** no `<cmd>.*` ID —
+  rule or `<cmd>.sec.*` section — vanishes without a tombstone; **`class: floor` =
+  must-survive (M3)**, `advisory` may change without supersession ceremony; the D13 checker's
+  output (explicit `--schema`/`--md` flags for the pair) is cited in the audit brief as the
+  deterministic pre-pass.
+
   **Exception — charter-form commands (`feature.md` D10 v0.68.0; `plan.md` / `implement.md`
   ADR 2026-08-13-charter-plan-implement v0.69.0):** a charter command is graded against
   *floor present + goal contract present* — the Boundaries floor (including the sound-loop

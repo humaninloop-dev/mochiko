@@ -371,6 +371,52 @@ audit (the lint's first catch); the law prevents the class at D10 rollout.
   directing the general form: "think at a higher level, build a way that be implemented
   generally." → D15 (referential closure + checker deixis lint); the one live instance
   reworded, ID kept.
+- **D10 rollout ruling (2026-08-26, user-directed):** conversion tooling first — the user
+  directed a reusable repo-level skill ("launch another subagent to build a skill that i can
+  reuse to convert other commands … at the repo level, not to be distributed") →
+  `.claude/skills/converting-command-to-schema/SKILL.md`, producer-authored on the lead's
+  approved outline, author≠grader validated (round 1 FAIL 3 Major/3 Minor → fix round →
+  round 2 one residual Major + Minor + nit, lead-repaired → round 3 confirm). Then the
+  rollout itself: "have multiple separate agent teammates convert the remaining commands into
+  the format. have validation too for each" — the D10 per-command ruling exercised in one
+  wave over the five remaining commands: `architecture.md` (prefix `arch`) · `brainstorm.md`
+  (prefix `brainstorm`) · `feature.md` (prefix `feat`) · `setup.md` (prefix `setup`) ·
+  `specify.md` (prefix `spec`). Scope: structure-only extraction — the shipped v0.94.0 text
+  is each command's step-0 referent (frozen under this session's `referents/`), meaning
+  survives, no simplification pass. One producer + one validator per command, disjoint file
+  ownership; registry, checker, `primitive-edits.md`, and operating docs stay lead-owned.
+  Mid-wave user delegation: "i am happy for labels to expand based on your judgement" — D8's
+  amendment-by-ruling is delegated to the lead for this wave; additions admitted only as
+  genuinely cross-command concepts, recorded here at collection. **Collection ruling:** two
+  labels admitted — `binding` (paths/schemas/workspaces/surfaces; gap flagged independently by
+  the architecture and specify producers, and every non-charter command carries a Bindings
+  group) and `stewardship` (living-artifact care at the standing desks; feature map +
+  architecture store). Declined: a sequencing label (one rule, one command — below the
+  cross-command bar; nearest fit stands). Registry ten → twelve. `implement.yaml` keeps its
+  labels as-is; a `binding` sweep of `impl.sec.tools` is a next-touch candidate, not owed now.
+  Two follow-on label rulings at collection: `brainstorm.synthesis-on-request` carries
+  `binding` alone (the obligation is the artifact's surface, not the reporting register —
+  conscious ruling on the brainstorm validator's observation); the three feature label swaps
+  the confirm round flagged as narrowed links were restored to dual labels lead-side
+  (`feat.dm-epic-stewardship` +`landing` · `feat.delta-cards` +`evidence` ·
+  `feat.no-silent-map-mutations` +`evidence`), checker re-run PASS.
+- **D10 rollout outcome (2026-08-26, v0.95.0):** all five conversions DELIVERED — five
+  producers + five fresh author≠grader validators, each pair graded on the three-audit set
+  (pair coherence · schema fidelity vs the frozen step-0 referent · strip verification) with
+  the checker as deterministic pre-pass. Verdicts: brainstorm PASS round 1 (2 Minor) ·
+  feature PASS round 1 (zero findings) · architecture PASS round 1 (3 Minor) · specify FAIL
+  round 1 (1 Major: an undisclosed added phrase — struck by ruling) · setup FAIL round 1
+  (1 Critical: the carve-outs reword had erased the real `governance-surfaces.yaml` referent
+  and narrowed a floor rule's scope to the CLAUDE.md region — restored with both carve-out
+  homes named, `pointer: mochiko:authoring-constitution` adopted on evidence, the strip's
+  false rationale rewritten; 1 Major: registry reconciliation) — all five **CONFIRMED-PASS**
+  on fix/confirm rounds. Checker grew two guards mid-wave (lead-side): the D14 section-count
+  guard ("nested in N sections" phrase vs schema, negative-tested) beside the D15 deixis
+  lint. Library state at v0.95.0: six `.md`+schema pairs, 320 rules
+  (impl 104 · feat 49 · spec 51 · arch 47 · setup 40 · brainstorm 29), twelve labels, six
+  checker-PASS runs 0 findings. The conversion skill
+  (`.claude/skills/converting-command-to-schema/SKILL.md`) validated to CONFIRMED-PASS in
+  its own three rounds before the wave used it.
 
 ## Review + disposition trail
 

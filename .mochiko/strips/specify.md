@@ -7,6 +7,227 @@ wave also ran the **D2 conversion assessment** and the **S8 home-revision checkp
 the shape is now **v5** (2026-07-30) — see the v0.35.0 section below. **Also stale:** the shape is
 **v7**, and specify converted to v7 form at v0.43.0 — see the section immediately below.
 
+<!-- Wave context: the command-content-schema D10 rollout wave (v0.95.0) —
+`commands/specify.md` splits into a narrative `.md` (frontmatter · Goal statement and
+goal-state prose · the obligated schema read · the label-keyed Not-done line) and
+`plugins/mochiko/schemas/specify.yaml` (mint-once `spec.*` rules at D12 grain under three
+`spec.sec.*` sections; labels from `command-labels.yaml`). Structure-only extraction: the
+step-0 referent is the shipped v0.94.0 text, frozen at
+`.mochiko/brainstorms/command-content-schema/referents/specify-shipped-v0.94.0.md`; meaning
+survives whole, no simplification pass. Ruling for every [v0.95.0] entry below:
+`.mochiko/brainstorms/command-content-schema/record.md` (D2 · D6 as amended by D14/D15 ·
+D10's per-command rollout ruling, Session trail "D10 rollout ruling 2026-08-26" · D12 ·
+build item 4's M4 verbatim rule) → `DECISIONS.md` 2026-08-26 command-content-schema row.
+Every Content field quotes the SHIPPED v0.94.0 text — what actually left the file (the
+GI-006 referent); the schema's wording lives in `specify.yaml`, never restated here. -->
+
+## [v0.95.0] `## Harness` — the whole section moves to the schema (D2/D10)
+
+- **Disposition:** superseded → `plugins/mochiko/schemas/specify.yaml`, section
+  `spec.sec.harness` (the whole section's rules, `spec.lead-latitude` …
+  `spec.acceptance-plain-text`), text
+  per the referent at D12 grain. Wording changes are limited to atomization and D15
+  referential closure: "toward the Goal" names its referent
+  (`plugins/mochiko/commands/specify.md`) · the deictic "— below" in the unrefined-stubs
+  bullet is dropped and "the post-stories confirm step" gains its rule ID
+  (`spec.confirm-frame-post-stories`) · "Specify never mints an epic" becomes the legal
+  self-reference "the run never mints an epic" · seat, model, and path values ride the
+  `vars:` block (`${pm_seat}` · `${explore_model}` · `${rules_dir}`).
+- **Tier failed:** n/a — supersession by ruling (record D2 — rules move to the schema,
+  narrative stays; D10 — per-command rollout, exercised for specify at the Session trail's
+  "D10 rollout ruling 2026-08-26"; `DECISIONS.md` 2026-08-26 command-content-schema row).
+- **Content:** the whole shipped section, verbatim:
+
+```
+## Harness
+
+- **You are the lead.** Plan the run and orchestrate it toward the Goal; teammates or
+  subagents per seat is your call.
+- **Transport floor.** When the run composes more than one seat,
+  `mochiko:patterns-transport-floor` governs its composition and messaging under a split
+  trigger — message legs on any multi-seat messaging, topology legs on shared writes —
+  non-waivable once triggered; referenced, never restated.
+- **Model tiering.** Exploration and fact-finding dispatches ride
+  `mochiko:patterns-model-tiering`'s class key — locate/enumerate reads to a native
+  `Explore` subagent spawned `model: haiku`, interpretive or absence-driven reads on the session
+  tier — and every seat brief carries the routing rule; referenced, never restated.
+- **Intent stage first.** Before any authoring: run the adaptive-probe agenda via
+  `mochiko:analysis-iterative` — scope boundary · delivery intent · depth-rigor expectation ·
+  UX-bearing (does the feature carry a user-facing surface to prototype) · constraints ·
+  out-of-scope — with the **existing feature map an obligated read** per
+  `mochiko:authoring-feature-map`'s intent-stage agenda: `FEATURES.md` plus the entries in
+  the intent's territory. A missing map is surfaced — offer `/mochiko:setup`, whose
+  brownfield analysis reconstructs it — never silently tolerated. Map entries marked
+  `unrefined` are unratified hypotheses, never extension anchors: derivation ignores stub
+  text (deriving frame-first, stories informing — below); a stub matching a framed or
+  derived capability is confirmation, a
+  stub matching nothing stays parked or is retired (procedure:
+  `mochiko:authoring-feature-map`). Probes, never a questionnaire; close in a one-screen
+  synthesis the user confirms; flag ratification streaks
+  before treating adoptions as engagement. The confirmed synthesis governs the run and lands
+  verbatim as the spec's Intent section.
+- **Capability frame at intent (before stories).** Within the intent stage, once the map
+  and intent are read, the `product-manager` seat states the capability frame — which
+  capabilities the territory touches and an extend-vs-mint hypothesis per the capability
+  tests (`mochiko:patterns-map-minimalism`) — as **nouns + verbs only, never enumerating
+  stories**, agreed with the user. The frame is a hypothesis, not an anchor: it dictates
+  neither story boundaries nor journeys (stories stay journey-driven), and stories win any
+  conflict with it, resolved at the post-stories confirm step. On a thin greenfield intent
+  the frame draws on the intent conversation, the product description's domain nouns, and the
+  capability tests. The agreed frame lands in the confirmed Intent section.
+- **Lockstep prototyping (UX-bearing only).** Stories and their screens co-evolve as one
+  unit: skeleton nav frame first, then each story's screens and flows land while that story
+  is under discussion — the user clicks through while the story is wet, never a batch render
+  after the text settles. The whole feature is prototyped at specify time; FEAT-tags land at
+  derivation as a re-tag pass over the SCR/FLOW manifest — unselected features' screens
+  greyed coming-soon, a filter-rejected story's screens kept greyed and marked rejected.
+- **Confirm frame, cut work rows, filter (after stories).** The `product-manager` seat, via
+  `mochiko:authoring-feature-map` and `mochiko:patterns-map-minimalism`, first confirms or
+  adjusts the intent-stage capability frame against what the stories revealed — stories win
+  any conflict — then cuts the work rows (story-shaped is fine) grouped under their
+  capabilities, extending an existing capability's extent or minting a new one per the
+  extend-vs-mint tests, maps every SC-XXX to its verifying capability or row, and runs
+  the filter — a story that earns no place on the map is rejected with the why recorded in
+  its story file, never silently dropped. All derivation output stages in the spec workspace;
+  the live map stays untouched until acceptance. A producer disagreement (a rejected story
+  held load-bearing) escalates to the user.
+- **Selection.** The user picks which work rows build now, from the PM's selection
+  card — the rows grouped per capability, recommendation, row-level dependency order, the
+  deferred-SC list, and, per capability in the spec's territory, the completeness view
+  (pending work rows — cut but undelivered — plus parked stubs and kills), visible at the
+  moment of choice. The PM recommends, never selects.
+- **Epic proposal (optional).** When one derivation spans capabilities such that its work rows
+  want one coordinated multi-feature run, the `product-manager` seat **may propose an epic** as
+  part of the selection card — a proposal only, never a mint; the user takes it to
+  `/mochiko:feature`'s desk to form, the only door that mints. Specify never mints an epic
+  (`mochiko:authoring-epic`).
+- **Plan approval:** any seat that writes artifacts plans first and works only on a plan you
+  approved; grading and fact-finding seats are exempt.
+- **Independence:** no output is cleared by its author; grading reads the files themselves —
+  `spec.md`, the story files, the staged capabilities and work rows — never a report; default FAIL.
+  The stress-test grades spec + stories + capability/row derivation + map delta in one pass
+  (derivation honesty, filter rejections justified, dedup against the actual map, granularity
+  respected, capabilities and rows well-formed), its map-delta baseline the map's git state at run open. On
+  a UX-bearing spec it also walks the prototype (served, or opened directly via the no-server
+  degrade path): every FLOW-XXX clickable end-to-end, every SCR-XXX reachable, every P1
+  acceptance scenario carrying a click path; manifest↔prototype drift is a blocking gap.
+- **Reserved to the user:** the feature framing when `$ARGUMENTS` is empty · intent
+  confirmation (the capability frame included) · clarification answers only they can settle · clicking each story's
+  prototype screens as they land (their reactions fold back into story and screen together) ·
+  ruling on an escalated filter disagreement · **the selection** (which work rows build now) · spec acceptance
+  (accept / amend / reject), covering intent, requirements, experience, derivation, and
+  selection whole — acceptance is what executes the map write batch; a rejected spec never
+  touched the map.
+- A missing `CLAUDE.md` governance region is surfaced (offer `/mochiko:setup`), never
+  auto-resolved. Suggest commits; never run git mutations, never push. User acceptance is
+  plain blocking text, never a timed prompt.
+```
+
+- **Kept deliberately:** nothing of the section remains in the `.md` — the schema carries it
+  whole; every obligation survives as a `spec.*` rule (the reserved-to-user list split at D12
+  grain into `spec.reserved-to-user` · `spec.gate-selection` · `spec.gate-acceptance`; the
+  closing hygiene bullet into `spec.governance-region-absent` · `spec.no-git-mutations` ·
+  `spec.acceptance-plain-text`). The `.md`'s Rules section names `spec.sec.harness` as schema
+  territory, and the obligated raw Read delivers it.
+- **Consumers assessed:** the pair audit re-keys to the `.md` + schema pair in
+  `.claude/rules/mochiko/primitive-edits.md` (lead-owned, same wave); the router and sibling
+  commands cite `/mochiko:specify` by name, never this section's text; the D13 checker run on
+  the new pair: PASS, 0 findings.
+
+## [v0.95.0] `## Bindings` — the whole section moves to the schema (D2/D10)
+
+- **Disposition:** superseded → `plugins/mochiko/schemas/specify.yaml`, section
+  `spec.sec.bindings` (the whole section's rules, `spec.deliverable` … `spec.next-step`).
+  Wording changes are
+  limited to atomization and D15 referential closure: "only new runs use this surface" names
+  its referent ("only new runs take the `${specs_dir}/<spec>/` workspace form") · "takes the
+  waiver line instead" quotes the line ("No UX surface — prototype waived at intent.") ·
+  "the run opens with a sufficiency check" becomes "that run opens" (the implement run,
+  named in-block) · template-schema paths ride the `vars:` block (`${spec_schema}` ·
+  `${feature_entry_schema}` · `${features_index_schema}` · `${specs_dir}`).
+- **Tier failed:** n/a — supersession by ruling (record D2; D10 rollout exercised for
+  specify; `DECISIONS.md` 2026-08-26 command-content-schema row).
+- **Content:** the whole shipped section, verbatim:
+
+```
+## Bindings
+
+- **Deliverable:** `.mochiko/specs/<spec>/` — `spec.md` from the spec template (rendered by
+  `mochiko-cli template spec`, or its schema `plugins/mochiko/schemas/spec.yaml` Read raw when
+  the binary is absent — the shipped schema is the first-class source of truth)
+  plus the `stories/US-*.md` files; `<spec>` a kebab-case slug derived from the
+  description; never offer to delete it. Uncertainty lives in `spec.md`'s Assumptions and
+  Open Questions sections.
+- **Feature-map craft:** derivation, the filter, capability and work-row authoring
+  (the feature-entry template — `mochiko-cli template feature-entry`, or its schema
+  `plugins/mochiko/schemas/feature-entry.yaml` Read raw when the binary is absent, the shipped
+  schema being the first-class source of truth), index lines (the features-index template —
+  `mochiko-cli template features-index`, or its schema
+  `plugins/mochiko/schemas/features-index.yaml` Read raw when the binary is absent, likewise the
+  first-class source), delta grammar, SC re-homing, and the
+  acceptance-time write rules — the `.mochiko/specs/index.md` row included; spec-index
+  stewardship rides the skill — all per `mochiko:authoring-feature-map`; the capability
+  tests, extend-vs-mint, and the frame discipline per `mochiko:patterns-map-minimalism`.
+- **Prototype craft:** the Screens & Flows section and `prototype/` app per
+  `mochiko:authoring-prototype` — SCR-XXX/FLOW-XXX manifest grammar, low-fi discipline
+  (binding flows, advisory pixels), bun-servable static HTML with the no-server degrade
+  path, design system honored where one exists; not UX-bearing takes the waiver line
+  instead.
+- **Governance input:** where the region is present, name the relevant
+  `.claude/rules/mochiko/` files as an obligated read in each author's brief — `paths`-scoped
+  rules do not fire for from-scratch authoring.
+- **KM landing:** where `.mochiko/memory/knowledge-management.md` exists, spec acceptance is
+  a landing — run its landing ritual (close/move any BACKLOG item the spec discharges, touch
+  `ROADMAP.md`) and its command-boundary invariants fix-on-sight; the acceptance-time map
+  write batch lands in the same moment.
+- **Migration:** existing slice-form specs are valid frozen history; only new runs use this
+  surface.
+- **Register:** user-facing prose per `templates/output-style.md`.
+- **Next step:** `/mochiko:implement` — one run per capability-batch (a capability's selected
+  work rows), in the rows' dependency order; the run opens with a sufficiency check at its
+  entry.
+```
+
+- **Kept deliberately:** nothing of the section remains in the `.md`; every binding survives
+  as a `spec.*` rule with its skill fence intact (`pointer:` on `mochiko:authoring-feature-map`
+  · `mochiko:patterns-map-minimalism` · `mochiko:authoring-prototype` — the pointer, never the
+  procedure). The `.md`'s Goal prose still names the spec-template render path verbatim — the
+  goal-state description stays narrative, per D2.
+- **Consumers assessed:** as the Harness entry above — pair audit re-key lead-owned same wave;
+  no sibling primitive quotes this section's text; checker PASS on the pair.
+
+## [v0.95.0] Goal's `**Not done — default FAIL:**` list — re-keyed to the label-keyed count line (D7 form via D10)
+
+- **Disposition:** superseded → `plugins/mochiko/schemas/specify.yaml`, section
+  `spec.sec.fail-conditions`: nine `spec.fail.*` rules, each labeled `fail-condition`,
+  `class: floor`, anchored `ruling: "2026-08-26 command-content-schema D10"`. The `.md` keeps
+  the Not-done line in the checker-grepped phrase form — "the 9 rules labeled
+  `fail-condition`" — with the out-of-sync halt clause (D7's C2 count guard).
+- **Tier failed:** n/a — supersession by ruling (record D7's FAIL-list-moves form, applied to
+  specify by the D10 rollout ruling; `DECISIONS.md` 2026-08-26 command-content-schema row).
+- **Content:** verbatim, what left the file:
+
+```
+**Not done — default FAIL:** a blocking gap open · an Intent section never confirmed by the
+user before authoring · the feature map not read at intent, or a missing map silently
+tolerated · a drafted story neither homed to exactly one work row nor rejected with a
+recorded why · a Screens & Flows section absent (the waiver line counts), or ruled
+UX-bearing with no clickable prototype, or manifest↔prototype drift unresolved · a Feature
+Selection section absent, or the selection not ruled by the user · the live map written
+before acceptance · the spec never graded by anyone but its authors · user acceptance not
+given.
+```
+
+- **Kept deliberately:** all nine clauses survive verbatim as rule texts
+  (`spec.fail.blocking-gap` · `spec.fail.intent-unconfirmed` · `spec.fail.map-unread` ·
+  `spec.fail.story-unhomed` · `spec.fail.screens-flows` · `spec.fail.selection-unruled` ·
+  `spec.fail.premature-map-write` · `spec.fail.self-graded` · `spec.fail.no-acceptance`);
+  the default-FAIL posture survives on both surfaces — the schema's `class: floor` set and
+  the `.md`'s Not-done line.
+- **Consumers assessed:** the pair audit's FAIL-survival criterion keys to the
+  `fail-condition` label set (`primitive-edits.md`, lead-owned same wave); the checker's C2
+  count guard verified the `.md` pin against the schema: N=9, PASS.
+
 ## [v0.91.0] Next-step line re-keyed from `/mochiko:plan` to `/mochiko:implement` — plan-stage retirement D1
 
 - **Disposition:** superseded → the same Bindings line pointing at `/mochiko:implement`, which

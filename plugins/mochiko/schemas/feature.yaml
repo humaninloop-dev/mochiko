@@ -1,0 +1,485 @@
+# Command content schema for /mochiko:feature — SOURCE OF TRUTH for the product desk's
+# rule-shaped content (command-content-schema D1/D7; the D10 per-command rollout ruling
+# 2026-08-26, record Session trail; DECISIONS.md 2026-08-26). The command .md instructs a
+# raw, full Read of this file at command fire; the model interprets it live — no build
+# step, no binary on the read path (GI-020). Narrative (Identity & Mission, Adaptive Goal
+# Protocol prose) stays in plugins/mochiko/commands/feature.md.
+#
+# Grammar (D6, as amended by D14): sections: list, each {id, title, intent, rules};
+# rule blocks {id, labels, class, text, ruling?, pointer?} nest under their section.
+#   section id  feat.sec.<slug> — minted once like rule IDs (D11); title verbatim from
+#           the charter group it carries; intent one line, navigation only — sections
+#           never grow a second prose surface (narrative stays in the .md).
+#   id      dotted slug — a NAME, never a summary; minted once, frozen (D11). A reword
+#           keeps its ID; a split mints children recording the parent; a merge retires
+#           the losers under a top-level tombstones: key. First mint — no tombstones yet.
+#           FAIL clauses live under the feat.fail.* segment.
+#   labels  values from plugins/mochiko/schemas/command-labels.yaml (D8).
+#   class   floor = non-waivable, must-survive under the charter audit (M3) ·
+#           must = binding obligation · advisory = may change without supersession ceremony.
+#   text    carries ${var} placeholders substituted from vars: at read (D5). Verbatim
+#           command strings carry no placeholders.
+#   ruling  "YYYY-MM-DD <session-slug> [D#]" — protected content, anchored to a live
+#           DECISIONS.md row. Leaves only by recorded supersession-by-ruling.
+#   pointer the skill that owns the floor or procedure — the rule holds the pointer,
+#           never the procedure. Multi-skill bindings name every skill in text.
+# Referential closure (D15): a rule's text is self-contained — every reference resolves
+#   within the block or the schema's addressable namespace (${var} · feat.* IDs ·
+#   feat.sec.* · class: values · labels · pointer: skills · ruling: anchors · file paths).
+#   Deixis ("these rules", "this section", "above"/"below", document-shape remarks) is a
+#   defect — quoted alone, the reference dangles. The checker lints a curated marker list
+#   (warning-class). "this schema", "the desk", and "the visit" are legal self-reference —
+#   the standing desk's analogue of implement's "the run".
+#
+# Rule grain (D12): one block per independently-citable obligation.
+# Advisory checker: scripts/check-command-schema.py (D13) — exit-code signal only.
+kind: command
+command: feature
+
+vars:
+  architect_seat: principal-architect
+  explore_model: haiku
+  features_dir: .mochiko/features
+  product_dir: .mochiko/product
+  tasks_schema: plugins/mochiko/schemas/tasks.yaml
+
+sections:
+  - id: feat.sec.roles
+    title: Roles & Responsibilities
+    intent: >-
+      Desk seat wiring — the Delivery Manager's always-happens floor, the other seats,
+      and what stays the user's.
+    rules:
+
+      - id: feat.staffing-latitude
+        labels: [seats]
+        class: must
+        text: >-
+          The bare minimum that must always happen is carried as the Delivery Manager
+          rules in feat.sec.roles; everything beyond it is your per-visit judgment —
+          below the sound-loop floor (feat.sound-loop-floor), how you staff, sequence,
+          and run the visit is yours to shape (the lead-owned-process-flexibility
+          posture, applied to a standing desk).
+        ruling: "2026-08-13 charter-ritual-balance"
+
+      - id: feat.dm-health-first
+        labels: [reporting]
+        class: must
+        text: >-
+          Surface map health before the ask.
+
+      - id: feat.dm-converge-goal
+        labels: [scope-entry]
+        class: must
+        text: >-
+          Converge every visit to a one-line goal and its done condition.
+
+      - id: feat.dm-map-integrity
+        labels: [stewardship, landing]
+        class: must
+        text: >-
+          Keep map integrity intact at close — no dangling entries, no orphaned deltas,
+          statuses agreeing.
+
+      - id: feat.dm-route-honestly
+        labels: [scope-entry, evidence]
+        class: must
+        text: >-
+          Route honestly by the capability-write test (feat.capability-write-test);
+          keying a raw report to its surface is triage judgment, audited from the
+          resulting map delta, never claimed mechanical.
+
+      - id: feat.dm-complete-card
+        labels: [scope-entry]
+        class: must
+        text: >-
+          Hand every dispatched run a complete card.
+
+      - id: feat.dm-epic-stewardship
+        labels: [stewardship, landing]
+        class: must
+        text: >-
+          Steward open epics across visits — mint (mint-once, overlap-guarded),
+          membership change, status, and close.
+
+      - id: feat.dm-km-landing
+        labels: [landing]
+        class: must
+        text: >-
+          Execute the KM landing for desk-side writes where
+          .mochiko/memory/knowledge-management.md exists.
+
+      - id: feat.dm-close-verdict
+        labels: [reporting, landing]
+        class: must
+        text: >-
+          Close the visit with a verdict against its done condition.
+
+      - id: feat.pm-seat
+        labels: [seats]
+        class: must
+        text: >-
+          The PM seat owns the extend-vs-mint verdict, grooming proposals when the soft
+          cap trips (merge lookalikes, retire dead entries), and the what-next line. It
+          recommends with reasons; it never rules.
+
+      - id: feat.architect-dormancy
+        labels: [seats]
+        class: must
+        text: >-
+          ${architect_seat} holds domain co-sign, dormant until the first cap-trip; no
+          live duty on today's maps. The seat is not idle elsewhere: its standing home is
+          /mochiko:architecture, where it stewards the architecture store — the dormancy
+          is this desk's, not the seat's.
+        ruling: "2026-08-19 product-architecture-schema"
+
+      - id: feat.dispatched-runs-own-delivery
+        labels: [seats]
+        class: must
+        text: >-
+          Dispatched runs own all delivery. /mochiko:implement owns its bounds,
+          verification seats, and evidence rules; the desk runs none of it.
+
+      - id: feat.user-reserved
+        labels: [user-gate]
+        class: must
+        text: >-
+          The user holds retire and merge rulings, route overrides, and every selection.
+
+  - id: feat.sec.tools
+    title: Tools
+    intent: >-
+      Map, product, and dispatch bindings the desk points at.
+    rules:
+
+      - id: feat.tools-referenced-never-restated
+        labels: [floor-pointer]
+        class: must
+        text: >-
+          Every tool binding is referenced, never restated — its procedure lives in its
+          home.
+
+      - id: feat.map-files
+        labels: [binding, evidence]
+        class: must
+        text: >-
+          The map files are the repo-root FEATURES.md index and the per-capability entry
+          files at ${features_dir}/FEAT-XXX-<slug>.md; per-capability run artifacts live
+          at ${features_dir}/FEAT-XXX/. A map query is answered from the actual files in
+          the territory asked about, never from memory of them.
+
+      - id: feat.map-minimalism-binding
+        labels: [floor-pointer]
+        class: must
+        text: >-
+          mochiko:patterns-map-minimalism owns the capability tests, extend-vs-mint, the
+          soft cap and its grooming trigger, merge mechanics, and the `unrefined` stub
+          mark.
+        pointer: "mochiko:patterns-map-minimalism"
+
+      - id: feat.feature-map-binding
+        labels: [floor-pointer]
+        class: must
+        text: >-
+          mochiko:authoring-feature-map owns the entry shape, delta grammar, the
+          lane-liveness invariant (its home), and the fold-at-landing rules.
+        pointer: "mochiko:authoring-feature-map"
+
+      - id: feat.epic-binding
+        labels: [floor-pointer]
+        class: must
+        text: >-
+          mochiko:authoring-epic owns the epic's manifest + spine shape, the mint /
+          membership-overlap guard, and close semantics; the desk stewards the epic
+          (mint, membership change, status view, close) through it.
+        pointer: "mochiko:authoring-epic"
+
+      - id: feat.epic-dispatch
+        labels: [scope-entry]
+        class: must
+        text: >-
+          A multi-feature epic dispatches to /mochiko:implement as one run over its
+          members; delivery and its bounds stay the run's, never the desk's.
+
+      - id: feat.capability-write-test
+        labels: [scope-entry]
+        class: must
+        text: >-
+          The capability-write test is the routing instrument: does the work touch a
+          capability (mint, merge, retire, capability-status) or only its work rows?
+          Capabilities route out; rows the desk may cut.
+        ruling: "2026-08-13 pm-role-and-feature-derivation"
+
+      - id: feat.stable-ground-triage
+        labels: [scope-entry]
+        class: must
+        text: >-
+          Stable-ground triage keys a report to its surface, then checks the ground from
+          the files: a single owning capability `delivered` → the delta lane, card on the
+          entry · a single owning capability `in-flight` → not lane work, the finding
+          files to the owning run · no single owner → the product lane, single-flight.
+
+      - id: feat.delta-cards
+        labels: [binding, scope-entry, evidence]
+        class: must
+        text: >-
+          One delta card per the tasks template's card shape (rendered by
+          `mochiko-cli template tasks`, or its schema ${tasks_schema} Read raw when the
+          binary is absent — the shipped schema is the first-class source of truth): a
+          bug's acceptance is its reproduction-failing test, an improvement carries 1–3
+          acceptance criteria; plus the minimal enumerated baseline-delta.md in appliable
+          before/after form when a product-baseline touch is known at intake. Each card —
+          bug and improvement alike — takes the sound-loop review leg
+          (feat.sound-loop-floor) before dispatch.
+
+      - id: feat.product-surface
+        labels: [binding, reporting, landing]
+        class: must
+        text: >-
+          Product baselines live at ${product_dir}/ (data-model.md, contracts/,
+          constraints-and-decisions.md, quickstart.md, and architecture/ — the
+          architecture store, whose derived index is repo-root ARCHITECTURE.md);
+          product-lane runs at ${product_dir}/lane-<slug>/. Across repeat runs, cards and
+          reports append (dated); delta files overwrite only via the graded fold.
+        ruling: "2026-08-19 product-architecture-schema"
+
+      - id: feat.architecture-intake
+        labels: [scope-entry, user-gate]
+        class: must
+        text: >-
+          A fired upgrade trigger arrives at the desk from /mochiko:architecture as a
+          candidate capability or work row and is routed like any other demand: the
+          capability-write test (feat.capability-write-test) decides the door,
+          extend-beats-mint applies, and the user rules the mint. No new door and no
+          auto-mint — the architecture lens proposes, the map machinery disposes.
+        ruling: "2026-08-19 product-architecture-schema"
+
+      - id: feat.dispatch-scope-split
+        labels: [scope-entry, landing]
+        class: must
+        text: >-
+          /mochiko:implement is the dispatch target for a dispatched capability-batch
+          that scales itself, in the scope its door sets: growth-door rows enter
+          selection scope (the batch covers the cut rows; its landing folds them into the
+          capability's extent), a bug/improvement delta card stays delta scope (the
+          desk-confirmed card is implement's delta entry; its landing is the delta fold)
+          — the same split /mochiko:implement names at its Entry.
+        ruling: "2026-08-26 plan-stage-utility"
+
+      - id: feat.dispatch-specify
+        labels: [scope-entry]
+        class: must
+        text: >-
+          /mochiko:specify is the dispatch target for anything the capability-write test
+          (feat.capability-write-test) routes out.
+
+      - id: feat.km-relation
+        labels: [binding, landing]
+        class: must
+        text: >-
+          Where .mochiko/memory/knowledge-management.md exists, BACKLOG.md is the defect
+          queue and lane acceptance is a landing event; without it, lane runs accept
+          direct requests — the stated degrade path, never silently assumed.
+
+      - id: feat.register
+        labels: [binding, reporting]
+        class: must
+        text: >-
+          User-facing prose follows templates/output-style.md.
+
+  - id: feat.sec.ways-of-working
+    title: Ways of Working
+    intent: >-
+      How the desk reports, reviews, routes, and tiers its dispatches.
+    rules:
+
+      - id: feat.proactive-report
+        labels: [reporting]
+        class: must
+        text: >-
+          Proactive report first — health before the ask, every visit.
+
+      - id: feat.reference-never-restate
+        labels: [floor-pointer]
+        class: must
+        text: >-
+          Reference, never restate — the dispatched run's bounds, verification seats,
+          and evidence rules live in /mochiko:implement and the skills it binds; the desk
+          points at them and adds nothing.
+
+      - id: feat.author-grader
+        labels: [independence, seats]
+        class: must
+        text: >-
+          Wherever a seat produces (delta card, baseline-delta.md, grooming proposal),
+          no output is cleared by its author; a producing seat plans first and works only
+          on a plan you approved.
+
+      - id: feat.advisory-front-door
+        labels: [scope-entry]
+        class: must
+        text: >-
+          /mochiko:specify stays directly invocable; the desk is the default entry when
+          the user is unsure and the only door for growth, bug, and improvement intake.
+          It is a routing service you can always use, never a gate you must pass.
+
+      - id: feat.model-tiering
+        labels: [seats, floor-pointer]
+        class: must
+        text: >-
+          Exploration and fact-finding dispatches (map sweeps, territory reads) ride the
+          class-keyed tiering floor: locate/enumerate reads go to a native Explore
+          subagent spawned model: ${explore_model}; interpretive or absence-driven reads
+          stay on the session tier; every seat brief carries the routing rule. Class key,
+          dispatch ladder, and brief obligation live in the pointer skill, referenced
+          never restated.
+        ruling: "2026-08-16 model-tiered-seats"
+        pointer: "mochiko:patterns-model-tiering"
+
+      - id: feat.single-flight-lane
+        labels: [scope-entry]
+        class: must
+        text: >-
+          The product lane is single-flight: one live product-lane run at a time.
+
+      - id: feat.no-git-mutations
+        labels: [user-gate]
+        class: must
+        text: >-
+          Suggest commits; never run git mutations, never push.
+
+      - id: feat.rulings-plain-text
+        labels: [user-gate]
+        class: must
+        text: >-
+          User rulings are plain blocking text, never a timed prompt.
+
+  - id: feat.sec.boundaries
+    title: Boundaries — the non-waivable floor
+    intent: >-
+      Floor obligations no visit and no seat can waive.
+    rules:
+
+      - id: feat.capability-writes-sacred
+        labels: [user-gate, scope-entry, stewardship]
+        class: floor
+        text: >-
+          Capability writes are sacred: minting, merging, retiring, or changing a
+          capability's status happens only through /mochiko:specify or a user grooming
+          ruling — never at the desk.
+        ruling: "2026-08-13 pm-role-and-feature-derivation"
+
+      - id: feat.grooming-door-ceiling
+        labels: [user-gate, stewardship]
+        class: floor
+        text: >-
+          The grooming-ruling door covers merge, retire, status change, and
+          extent-tidying of existing entries; wholesale or from-scratch re-derivation is
+          specify's derivation work — route to /mochiko:specify.
+        ruling: "2026-08-13 charter-ritual-balance"
+
+      - id: feat.out-of-remit-hosting
+        labels: [user-gate]
+        class: floor
+        text: >-
+          When the user explicitly asks the desk to host work outside the
+          grooming-ruling door's remit (feat.grooming-door-ceiling), name the boundary
+          crossing and serve with the home command's rituals imported — the door moves,
+          the ritual never drops (adaptation rule: mochiko:patterns-sound-loop).
+        ruling: "2026-08-13 charter-ritual-balance"
+        pointer: "mochiko:patterns-sound-loop"
+
+      - id: feat.growth-door
+        labels: [scope-entry]
+        class: floor
+        text: >-
+          Work rows are delivery bookkeeping the desk may cut through the growth door: an
+          extend verdict only, with acceptance criteria on the card. A fired architecture
+          upgrade trigger enters by this same door and takes the same tests
+          (feat.architecture-intake, feat.capability-write-test).
+        ruling: "2026-08-13 pm-role-and-feature-derivation"
+
+      - id: feat.growth-routes-to-specify
+        labels: [scope-entry]
+        class: floor
+        text: >-
+          Mint-or-uncertain routes to /mochiko:specify; several rows, a new UX surface,
+          or cross-capability reach routes to specify regardless.
+
+      - id: feat.lane-never-widens
+        labels: [scope-entry]
+        class: floor
+        text: >-
+          The lane never widens in place — a mid-run outgrowth aborts and re-routes, and
+          a report that lands on an `in-flight` capability's territory files to that run
+          instead.
+
+      - id: feat.no-delivery-harness
+        labels: [scope-entry, evidence]
+        class: floor
+        text: >-
+          No delivery harness at the desk — dispatch only. Every admitted demand leaves
+          as a /mochiko:implement capability-batch — growth-door rows in selection scope,
+          a bug/improvement delta card in delta scope; the run owns the delivery, and the
+          boundary is audited from the map delta the work leaves behind.
+        ruling: "2026-08-26 plan-stage-utility"
+
+      - id: feat.no-self-graded-writes
+        labels: [independence]
+        class: floor
+        text: >-
+          No self-graded writes.
+
+      - id: feat.no-silent-map-mutations
+        labels: [stewardship, evidence]
+        class: floor
+        text: >-
+          No silent map mutations — an integrity defect is fixed on sight, and every
+          write is visible on the map.
+
+      - id: feat.sound-loop-floor
+        labels: [floor-pointer, independence]
+        class: floor
+        text: >-
+          A judgment-authored write to a governing surface obliges the loop: a seat
+          produces on a plan you approved, an independent non-author seat reviews before
+          the user's gate — the user's ruling alone never substitutes for the review leg
+          — and every desk delta card, bug and improvement alike, takes that review leg
+          before dispatch. Trigger test, exemptions, seat wiring, and disclosure:
+          mochiko:patterns-sound-loop, referenced never restated.
+        ruling: "2026-08-13 charter-ritual-balance"
+        pointer: "mochiko:patterns-sound-loop"
+
+      - id: feat.transport-floor
+        labels: [floor-pointer, seats]
+        class: floor
+        text: >-
+          A visit that composes more than one seat gains a floor on its composition and
+          messaging: a split trigger — message legs on any multi-seat messaging, topology
+          legs on shared writes — non-waivable once triggered. Trigger test, floor legs,
+          composition-safe shapes, and disclosure: mochiko:patterns-transport-floor,
+          referenced never restated.
+        pointer: "mochiko:patterns-transport-floor"
+
+      - id: feat.stub-parking
+        labels: [scope-entry, stewardship]
+        class: floor
+        text: >-
+          Stub parking is parking, not a spec-bypass: a parked capability hypothesis is a
+          name plus a one-breath hook, marked `unrefined`; it earns selectability only
+          through /mochiko:specify's derivation, never at the desk.
+        ruling: "2026-08-13 pm-role-and-feature-derivation"
+
+  - id: feat.sec.fail-conditions
+    title: Not done — default FAIL
+    intent: >-
+      The fail-condition set — any one standing fails the visit; the .md Not-done line
+      hard-codes this set's count.
+    rules:
+
+      - id: feat.fail.no-verdict
+        labels: [fail-condition, reporting]
+        class: floor
+        text: >-
+          A visit ended with no stated done-condition verdict.
+        ruling: "2026-08-13 pm-role-and-feature-derivation"

@@ -6,6 +6,225 @@ shared team-form prose relocated into `templates/command-shape.md` (design:
 **Stale as a standing claim:** the shape is now **v5** — see the v0.35.0 section below.
 **Also stale:** the shape is **v7** as of the v0.43.0 conversion below, and setup is **v7-form** —
 it carries the `<!-- shape-form: v7 -->` marker and binds P18–P20.
+**Also stale:** setup is a **`.md` + schema pair** as of the v0.95.0 conversion below — the
+v7-form claim describes the pre-pair shape only.
+
+<!-- Wave context: the command-content-schema D10 rollout wave (v0.95.0) — `commands/setup.md`
+splits into a narrative `.md` (Goal intro + lead line · the obligated schema read · the Goal's
+done condition + label-keyed Not-done line) and `plugins/mochiko/schemas/setup.yaml` (mint-once
+rules at D12 grain in three sections `setup.sec.harness` · `setup.sec.bindings` ·
+`setup.sec.fail-conditions`; labels from `command-labels.yaml`); source text = the frozen step-0
+referent `.mochiko/brainstorms/command-content-schema/referents/setup-shipped-v0.94.0.md`
+(shipped v0.94.0, structure-only extraction — no simplification pass). Ruling for every
+[v0.95.0] entry below: `.mochiko/brainstorms/command-content-schema/record.md` (D2 · D6 · D7 ·
+D10 rollout ruling 2026-08-26 · D12 · D14 · D15 · build item 4's M4 verbatim rule) →
+`DECISIONS.md` 2026-08-26 command-content-schema row. Every Content field quotes the SHIPPED
+v0.94.0 text — what actually left the file (the GI-006 referent); the schema's rule wording
+lives at the named new homes, never restated here. -->
+
+## [v0.95.0] `## Harness` — the whole section moves to the schema (D2/D7, D10 rollout)
+
+- **Disposition:** superseded → `plugins/mochiko/schemas/setup.yaml`, section
+  `setup.sec.harness` (17 rules, IDs `setup.staffing-latitude` · `setup.interrogation-inline` ·
+  `setup.transport-floor` · `setup.model-tiering` · `setup.plan-approval-producers` ·
+  `setup.author-grader-default-fail` · `setup.stress-test-cold-seat` ·
+  `setup.blind-map-dispatch` · `setup.coverage-survivor-routing` · `setup.user-mode-ruling` ·
+  `setup.user-card-rulings` · `setup.gate-synthesis-ratification` ·
+  `setup.user-conflict-rulings` · `setup.user-map-confirmation` ·
+  `setup.gate-final-acceptance` · `setup.no-git-mutations` · `setup.acceptance-plain-text`).
+- **Tier failed:** n/a — supersession by ruling (record D2/D7 + the D10 rollout ruling
+  2026-08-26; `DECISIONS.md` 2026-08-26 command-content-schema row).
+- **Content:** verbatim, the shipped v0.94.0 section —
+
+  ````markdown
+  ## Harness
+
+  - **You are the lead.** Plan the run and orchestrate it toward the Goal; teammates or
+    subagents per seat is your call. Run the interrogation yourself, inline — the agenda's
+    dimensions worked adaptively via `mochiko:analysis-iterative`, then the catalog deck,
+    card by card, recommend-then-arbitrate.
+  - **Transport floor.** When the run composes more than one seat,
+    `mochiko:patterns-transport-floor` governs its composition and messaging under a split
+    trigger — message legs on any multi-seat messaging, topology legs on shared writes —
+    non-waivable once triggered; referenced, never restated.
+  - **Model tiering.** Exploration and fact-finding dispatches ride
+    `mochiko:patterns-model-tiering`'s class key — locate/enumerate reads to a native
+    `Explore` subagent spawned `model: haiku`, interpretive or absence-driven reads on the session
+    tier — and every seat brief carries the routing rule; referenced, never restated.
+  - **Plan approval:** any seat that writes artifacts plans first and works only on a plan you
+    approved; grading and fact-finding seats are exempt.
+  - **Independence:** no output is cleared by its author; grading reads the authored surfaces
+    themselves — never the author's report — default FAIL. The synthesis is your pen, so its
+    pre-ratification stress-test is always a cold seat, or the user's recorded waiver.
+  - **Blind-map dispatch:** the pre-ratification stress-test seat is spawned in two messages —
+    first the setup topic / project identity and goal only, *never* the synthesis path, so it
+    builds its Phase 0 angle map blind to what the interrogation concluded; its map returns before
+    you send the synthesis path and the cold read begins. In a pair, both seats build their maps
+    independently.
+  - **Coverage-survivor routing:** a surviving coverage finding questions the setup's scope, not a
+    card — present each gap as a candidate topic; **the user** rules the path: **explore now** (re-enter
+    `mochiko:analysis-iterative` on that angle; the re-elicited intent lands in the `GI-XXX`
+    namespace), **rule inline**, or **defer**. A gap that overlaps an agenda dimension keeps the
+    ordinary interrogation-follow-up path.
+  - **Reserved to the user:** the mode when ambiguous (greenfield / brownfield / amend) · every
+    interrogation card ruling, module ruling, and waiver · synthesis ratification · detected
+    reality vs declared intent conflicts (brownfield — confronted in the open, never silently
+    resolved) · confirmation of the reconstructed feature map, entry by entry (brownfield) ·
+    final acceptance of the surface set, flagged proposal by flagged proposal.
+  - Suggest commits; never run git mutations, never push. User acceptance is plain blocking
+    text, never a timed prompt.
+  ````
+
+- **Kept deliberately:** the first bullet's identity sentences — "**You are the lead.** Plan
+  the run and orchestrate it toward the Goal." — stay in the `.md` as the mission line
+  (narrative, per the D2 partition); only the staffing-latitude and interrogation clauses moved.
+  Every obligation survives whole at D12 grain; the "Reserved to the user" bullet atomizes into
+  six rules, one per reserved decision. D15 closure deltas (referents named, no meaning
+  change): the interrogation rule points at `setup.interrogation-inputs` for the agenda/deck
+  paths; "The synthesis" and "the synthesis path" gain the literal
+  `.mochiko/memory/governance-intent.md` path (via `${memory_dir}`); "a surviving coverage
+  finding" names the stress-test it survives (`setup.blind-map-dispatch`).
+- **Consumers assessed:** none — commands are entry points, nothing mounts them. The pair
+  audit re-key in `.claude/rules/mochiko/primitive-edits.md` is lead-owned this wave, not this
+  entry's.
+
+## [v0.95.0] `## Bindings` — the whole section moves to the schema (D2/D7, D10 rollout)
+
+- **Disposition:** superseded → `plugins/mochiko/schemas/setup.yaml`, section
+  `setup.sec.bindings` (17 rules, IDs `setup.surface-set` · `setup.synthesis-artifact` ·
+  `setup.durables-never-deleted` · `setup.interrogation-inputs` ·
+  `setup.governance-region-ownership` · `setup.carve-outs-preserved` ·
+  `setup.constitution-superseded` · `setup.km-module-scaffold` ·
+  `setup.feature-map-brownfield` · `setup.feature-map-greenfield` ·
+  `setup.map-never-overwrite` · `setup.baselines-bootstrap` ·
+  `setup.store-scaffold-unconditional` · `setup.store-ruled-content-never-here` ·
+  `setup.architecture-scope-handoff` · `setup.register` · `setup.next-step`).
+- **Tier failed:** n/a — supersession by ruling (record D2/D7 + the D10 rollout ruling
+  2026-08-26; `DECISIONS.md` 2026-08-26 command-content-schema row).
+- **Content:** verbatim, the shipped v0.94.0 section —
+
+  ````markdown
+  ## Bindings
+
+  - **The surface set:** the marked governance region in `CLAUDE.md`
+    (`<!-- mochiko:governance:begin/end -->`) · `paths`-scoped `.claude/rules/mochiko/*.md` ·
+    skill pointers · `.mochiko/memory/governance-ledger.md` · the trace summary. Composition
+    and read scope: `mochiko:authoring-constitution`.
+  - **The synthesis:** `.mochiko/memory/governance-intent.md`, `GI-XXX` namespace, from the
+    governance-intent template (rendered by `mochiko-cli template governance-intent`, or its schema
+    `plugins/mochiko/schemas/governance-intent.yaml` Read raw when the binary is absent — the
+    shipped schema is the first-class source of truth) — durable amend baseline; never offer to
+    delete it or the ledger.
+  - **Interrogation inputs:** `${CLAUDE_PLUGIN_ROOT}/skills/authoring-constitution/references/`
+    — `INTERROGATION-AGENDA.md`, the `catalog/` deck, `DOMAIN-DEPENDENCIES.md`; brownfield
+    analysis via `mochiko:analysis-codebase` into `.mochiko/memory/codebase-analysis.md`.
+  - **Ownership boundary:** the governance region is setup-owned and idempotently regenerated;
+    everything outside the markers is user content, never touched. The template's marked
+    carve-outs (domain registry, output-style pair) are preserved verbatim, never regenerated
+    over the user's values. A `.mochiko/memory/constitution.md` on disk is superseded —
+    delete on sight, say so in one line.
+  - **KM module:** adopted → scaffold per
+    `templates/constitution-modules/knowledge-management.md`, including the project-pinned
+    copy at `.mochiko/memory/knowledge-management.md`; its never-overwrite floor holds.
+  - **Feature map:** brownfield → the analysis extends into a feature-map reconstruction —
+    delivered capabilities derived from the code (routes, UI surfaces, services), confirmed
+    with the user, landing as the initial `FEATURES.md` + `.mochiko/features/` entries with
+    `delivered` status and the reconstructed-from-code mark (shape: the features-index and
+    feature-entry templates — `mochiko-cli template features-index` and
+    `mochiko-cli template feature-entry`, or their schemas
+    `plugins/mochiko/schemas/features-index.yaml` and
+    `plugins/mochiko/schemas/feature-entry.yaml` Read raw when the binary is absent, the shipped
+    schemas being the first-class source of truth; map machinery and the first-touch re-verify
+    obligation: `mochiko:authoring-feature-map`).
+    Greenfield → scaffold the empty index. The never-overwrite floor covers both writes.
+    `Assumed` (feature-sizing record, open thread 4 — setup reconstruction burden +
+    partial-baseline poisoning risk): the brownfield analysis also bootstraps the product
+    baselines — `data-model.md` · `contracts/` · `constraints-and-decisions.md` ·
+    `quickstart.md` — at
+    `.mochiko/product/` (`ARCHITECTURE.md` stays repo root, now as the store's derived index) —
+    from the delivered code; greenfield seeds **those baselines** at the first implement run's design phase instead.
+    **The architecture store's scaffold is unconditional** — on both paths, `architecture/` is
+    created with a `spine.md` stub whose header carries the `Scope:` line (below) and an empty
+    `concerns.md` beside it, so the store's layout is complete from birth; greenfield's
+    stub is simply a header with no topology under it. The store's **ruled content is never
+    authored here** on either path: a file holding only a `Scope:` header is scaffold, not ruled
+    content, and the first `/mochiko:architecture` visit is what elicits it (greenfield) or
+    reconstructs it from what exists and confirms it with the user (brownfield).
+  - **Architecture scope handoff:** the run reads which surface types the product carries —
+    `backend-service` · `frontend-web` · `mobile` · `desktop`, composed for a full-stack or
+    monorepo product — and declares them on the **`Scope:` line in the header of
+    `.mochiko/product/architecture/spine.md`**, written as a stub by the unconditional store
+    scaffolding above — so **every** setup run, greenfield or brownfield, leaves the scope
+    declared; the derived index renders it. The store carries the scope — setup does not hold it. It
+    is a handoff, not a ruling: the desk deals the shelves that scope selects, and the user may
+    **override it at the desk** by an ordinary store write to that same line. No architecture
+    stance is taken here.
+  - **Register:** user-facing prose per `templates/output-style.md`.
+  - **Next step:** `/mochiko:specify` for the first feature, and `/mochiko:architecture` for the
+    product's architecture baseline — peer doors, neither ahead of the other (+
+    `/mochiko:brainstorm` when knowledge-management was adopted).
+  ````
+
+- **Kept deliberately:** every obligation survives whole at D12 grain — the synthesis bullet
+  splits its never-offer-to-delete tail into the floor `setup.durables-never-deleted`; the
+  Ownership-boundary bullet splits three ways (region ownership · carve-outs · superseded
+  `constitution.md`); the Feature-map bullet splits six ways (brownfield · greenfield ·
+  never-overwrite floor · baselines bootstrap with its `Assumed` mark verbatim · unconditional
+  store scaffold · ruled-content-never-here). D15 closure deltas (referents named, no meaning
+  change): "the template's marked carve-outs" resolves to the governance-surfaces template,
+  shipped as `plugins/mochiko/schemas/governance-surfaces.yaml` (its overview's Ownership/D8
+  block names both carve-outs) — the v0.95.0 rule names the template and both carve-out homes
+  explicitly: the `mochiko:domain-registry` block in the domain-layer rules file under
+  `.claude/rules/mochiko/`, and the `mochiko:output-style` pair (the switch line in the
+  CLAUDE.md governance region plus `.claude/rules/mochiko/output-style.md`) — the scope spans
+  the region AND the rules files, per the template; a fix-round repair of the v0.95.0 first
+  draft, which had mis-resolved the referent to the region alone;
+  "the `Scope:` line (below)" and "the unconditional store scaffolding above" become rule-ID
+  references; "the empty index" names `FEATURES.md`; "the derived index" names repo-root
+  `ARCHITECTURE.md`; "never authored here" / "taken here" become "in the run" (legal
+  self-reference); `${CLAUDE_PLUGIN_ROOT}` is carried through the `vars:` block as
+  `plugin_root` so rule text stays placeholder-closed (D5). `ruling:` anchors added where the
+  content is `DECISIONS.md`-traceable: `2026-08-19 product-architecture-schema` on the three
+  store rules, `2026-08-26 plan-stage-utility` on the baselines-bootstrap greenfield
+  destination, `2026-08-16 model-tiered-seats` on the harness model-tiering rule.
+- **Consumers assessed:** none — commands are entry points, nothing mounts them.
+
+## [v0.95.0] Goal's Not-done list — six clauses move to `setup.fail.*` (D7)
+
+- **Disposition:** superseded → `plugins/mochiko/schemas/setup.yaml`, section
+  `setup.sec.fail-conditions` (`setup.fail.pre-ratification-authoring` ·
+  `setup.fail.unclosed-trace` · `setup.fail.author-graded` ·
+  `setup.fail.floor-category-uncovered` · `setup.fail.no-acceptance` ·
+  `setup.fail.no-feature-map` — all `class: floor`, labeled `fail-condition`); the `.md`
+  Not-done line becomes the label-keyed count ("the 6 rules labeled `fail-condition`") plus
+  the out-of-sync halt clause, per the C2 guard.
+- **Tier failed:** n/a — supersession by ruling (record D7 + the D10 rollout ruling
+  2026-08-26; `DECISIONS.md` 2026-08-26 command-content-schema row).
+- **Content:** verbatim — "**Not done — default FAIL:** a surface authored before the intent
+  was ratified · an unclosed trace · the set never graded by anyone but its author · a floor
+  category with neither principle nor recorded waiver · user acceptance not given · no feature
+  map at close (brownfield reconstruction unconfirmed, or greenfield index unscaffolded)."
+- **Kept deliberately:** all six clauses survive one-to-one; D15 closure rewords only — "an
+  unclosed trace" names its endpoints ("from ratified intent to authored surfaces"), "the set"
+  becomes "the governance surface set", and the floor-category clause gains
+  `pointer: mochiko:authoring-constitution` as the floor's owner.
+- **Consumers assessed:** the pair audit's FAIL-survival criterion now keys to the
+  `fail-condition` label set (`.claude/rules/mochiko/primitive-edits.md`, lead-owned re-key
+  this wave); the checker's `NOT_DONE_RE` verified matching post-edit (PASS run, 0 findings).
+
+## [v0.95.0] Goal's "(feature-map binding below)" pointers — re-pointed at the schema section (D15)
+
+- **Disposition:** superseded → the same Goal paragraph in `commands/setup.md`, its two
+  in-file pointers now reading "(feature-map rules: `setup.sec.bindings`)" and "(store rules:
+  `setup.sec.bindings`)" — the Bindings section the parentheticals pointed at no longer lives
+  in the `.md`.
+- **Tier failed:** n/a — supersession by ruling (record D14/D15 + the D10 rollout ruling
+  2026-08-26; `DECISIONS.md` 2026-08-26 command-content-schema row).
+- **Content:** verbatim, the two fragments — "(feature-map binding below)" (both sites).
+- **Kept deliberately:** the whole Goal done-condition otherwise, byte-for-byte — including
+  the `Assumed` mark and its provenance, the brownfield/greenfield split, and the
+  both-paths `Scope:` clause.
+- **Consumers assessed:** none — the pointers were intra-file navigation.
 
 <!-- Wave context: the product-architecture-schema Stage-1 build wave (v0.81.0). Ruling for the
 [v0.81.0] entry below: `.mochiko/brainstorms/product-architecture-schema/record.md` (D5 · D12 ·

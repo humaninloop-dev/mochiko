@@ -8,6 +8,275 @@ Entry formats: `strips/README.md`. Ruling for every [v0.68.0] entry below:
 [v0.81.0] entry below: `.mochiko/brainstorms/product-architecture-schema/record.md` (D7 · D12 ·
 D13) → `DECISIONS.md` 2026-08-19 product-architecture row. -->
 
+<!-- Ruling for every [v0.95.0] entry below: the command-content-schema D10 per-command rollout
+ruling, 2026-08-26 (`.mochiko/brainstorms/command-content-schema/record.md`, Session trail —
+"D10 rollout ruling (2026-08-26, user-directed)"; `DECISIONS.md` 2026-08-26 command-content-schema
+row, D2/D7/D10/D14/D15). Step-0 referent, frozen:
+`.mochiko/brainstorms/command-content-schema/referents/feature-shipped-v0.94.0.md`. Scope:
+structure-only extraction — meaning survives whole; rewording only where D15 referential closure
+required it, each recast named in its entry. -->
+
+## [v0.95.0] Charter converts to the `.md` + schema pair — Roles & Responsibilities moves to `feature.yaml` `feat.sec.roles`
+
+- **Disposition:** superseded → `plugins/mochiko/schemas/feature.yaml` section `feat.sec.roles`,
+  rules `feat.staffing-latitude` · `feat.dm-health-first` · `feat.dm-converge-goal` ·
+  `feat.dm-map-integrity` · `feat.dm-route-honestly` · `feat.dm-complete-card` ·
+  `feat.dm-epic-stewardship` · `feat.dm-km-landing` · `feat.dm-close-verdict` · `feat.pm-seat` ·
+  `feat.architect-dormancy` · `feat.dispatched-runs-own-delivery` · `feat.user-reserved`.
+- **Tier failed:** n/a — supersession by ruling (command-content-schema D2/D7 + the D10 rollout
+  ruling 2026-08-26; section grammar D14; `DECISIONS.md` 2026-08-26 command-content-schema row).
+- **Content:** the shipped v0.94.0 section, verbatim:
+
+  ```
+  ## Roles & Responsibilities
+
+  There is **no Bindings section**. The bare minimum that must always happen is carried here as the
+  Delivery Manager's owned responsibilities; everything beyond it is your per-visit judgment — below
+  the sound-loop floor (`mochiko:patterns-sound-loop`, Boundaries), how you staff, sequence, and run
+  the visit is yours to shape (the lead-owned-process-flexibility posture, applied to a standing
+  desk).
+
+  **You, the Delivery Manager — the always-happens floor:**
+
+  - Surface health before the ask.
+  - Converge every visit to a one-line goal and its done condition.
+  - Keep map integrity intact at close — no dangling entries, no orphaned deltas, statuses agreeing.
+  - Route honestly by the capability-write test; keying a raw report to its surface is triage
+    judgment, audited from the resulting map delta, never claimed mechanical.
+  - Hand every dispatched run a complete card.
+  - Steward open epics across visits — mint (mint-once, overlap-guarded), membership change,
+    status, and close.
+  - Execute the KM landing for desk-side writes where knowledge-management exists.
+  - Close the visit with a verdict against its done condition.
+
+  **Other seats:**
+
+  - **PM seat** — the extend-vs-mint verdict, grooming proposals when the soft cap trips (merge
+    lookalikes, retire dead entries), and the what-next line. Recommends with reasons; never rules.
+  - **Principal-architect** — domain co-sign, **dormant until the first cap-trip**; no live duty on
+    today's maps. The seat is not idle elsewhere: its standing home is `/mochiko:architecture`,
+    where it stewards the architecture store — the dormancy is this desk's, not the seat's.
+  - **Dispatched runs** — all delivery. Implement owns its bounds, verification seats, and
+    evidence rules; the desk runs none of it.
+  - **The user** — retire and merge rulings, route overrides, and every selection.
+  ```
+
+- **Kept deliberately:** every obligation survives at D12 grain in `feat.sec.roles`; the v0.70.0
+  "below the sound-loop floor" narrowing (charter-ritual-balance D1/D3) survives inside
+  `feat.staffing-latitude` with a `ruling:` anchor; the v0.81.0 principal-architect standing-home
+  sentence (product-architecture-schema D7) survives verbatim inside `feat.architect-dormancy`
+  with its anchor. D15 recasts, meaning unchanged: the document-shape opener "There is **no
+  Bindings section**. The bare minimum … carried here" becomes "The bare minimum that must always
+  happen is carried as the Delivery Manager rules in feat.sec.roles" (the checker's own deixis
+  lint names "there is no X section" a defect); the `(mochiko:patterns-sound-loop, Boundaries)`
+  cross-section parenthetical becomes the rule ID `feat.sound-loop-floor`; "where
+  knowledge-management exists" names the file `.mochiko/memory/knowledge-management.md`;
+  "Implement owns its bounds" names `/mochiko:implement`.
+- **Consumers assessed:** commands are entry points, nothing mounts them. The pair audit re-key
+  (`.claude/rules/mochiko/primitive-edits.md` pair-form block, v0.95.0) is lead-owned this wave.
+
+## [v0.95.0] Tools moves to `feature.yaml` `feat.sec.tools`
+
+- **Disposition:** superseded → `plugins/mochiko/schemas/feature.yaml` section `feat.sec.tools`,
+  rules `feat.tools-referenced-never-restated` · `feat.map-files` ·
+  `feat.map-minimalism-binding` · `feat.feature-map-binding` · `feat.epic-binding` ·
+  `feat.epic-dispatch` · `feat.capability-write-test` · `feat.stable-ground-triage` ·
+  `feat.delta-cards` · `feat.product-surface` · `feat.architecture-intake` ·
+  `feat.dispatch-scope-split` · `feat.dispatch-specify` · `feat.km-relation` · `feat.register`.
+- **Tier failed:** n/a — supersession by ruling (command-content-schema D2/D7 + the D10 rollout
+  ruling 2026-08-26; D14; `DECISIONS.md` 2026-08-26 command-content-schema row).
+- **Content:** the shipped v0.94.0 section, verbatim:
+
+  ```
+  ## Tools
+
+  Each tool below is referenced, never restated — its procedure lives in its home.
+
+  - **Map files** — the repo-root `FEATURES.md` index and the per-capability entry files at
+    `.mochiko/features/FEAT-XXX-<slug>.md`; per-capability run artifacts at
+    `.mochiko/features/FEAT-XXX/`. A map query is answered from the actual files in the territory
+    asked about, never from memory of them.
+  - **`mochiko:patterns-map-minimalism`** — the capability tests, extend-vs-mint, the soft cap and its
+    grooming trigger, merge mechanics, and the `unrefined` stub mark.
+  - **`mochiko:authoring-feature-map`** — the entry shape, delta grammar, the lane-liveness invariant
+    (its home), and the fold-at-landing rules.
+  - **`mochiko:authoring-epic`** — the epic's manifest + spine shape, the mint / membership-overlap
+    guard, and close semantics; the desk stewards the epic (mint, membership change, status view,
+    close) through it. A multi-feature epic dispatches to `/mochiko:implement` as one run over its
+    members; delivery and its bounds stay the run's, never the desk's.
+  - **Capability-write test** — the routing instrument: does the work touch a capability (mint, merge,
+    retire, capability-status) or only its work rows? Capabilities route out; rows the desk may cut.
+  - **Stable-ground triage** — key a report to its surface, then check the ground from the files: a
+    single owning capability `delivered` → the delta lane, card on the entry · a single owning
+    capability `in-flight` → not lane work, the finding files to the owning run · no single owner →
+    the product lane, single-flight.
+  - **Delta cards** — one card per the tasks template's card shape (rendered by
+    `mochiko-cli template tasks`, or its schema `plugins/mochiko/schemas/tasks.yaml` Read raw when
+    the binary is absent — the shipped schema is the first-class source of truth): a bug's
+    acceptance is
+    its reproduction-failing test, an improvement carries 1–3 acceptance criteria; plus the minimal
+    enumerated `baseline-delta.md` in appliable before/after form when a product-baseline touch is
+    known at intake. Each card — bug and improvement alike — takes the sound-loop review leg
+    before dispatch (Boundaries).
+  - **Product surface** — baselines at `.mochiko/product/` (`data-model.md`, `contracts/`,
+    `constraints-and-decisions.md`, `quickstart.md`, and `architecture/` — the architecture store,
+    whose derived index is repo-root `ARCHITECTURE.md`); product-lane
+    runs at `.mochiko/product/lane-<slug>/`. Across repeat runs, cards and reports append (dated);
+    delta files overwrite only via the graded fold.
+  - **Architecture-desk intake** — a **fired upgrade trigger** arrives here from
+    `/mochiko:architecture` as a candidate capability or work row and is routed like any other
+    demand: the capability-write test decides the door, extend-beats-mint applies, and **the user
+    rules the mint**. No new door and no auto-mint — the architecture lens proposes, the map
+    machinery disposes.
+  - **Dispatch targets** — `/mochiko:implement` for a dispatched capability-batch that scales itself,
+    in the scope its door sets: **growth-door rows enter selection scope** (the batch covers the cut
+    rows; its landing folds them into the capability's extent), a **bug/improvement delta card stays
+    delta scope** (the desk-confirmed card is implement's delta entry; its landing is the delta fold)
+    — the same split `/mochiko:implement` names at its Entry. `/mochiko:specify` for anything the
+    capability-write test routes out. Where KM exists, `BACKLOG.md` is the defect queue and lane acceptance is a landing
+    event; without KM, lane runs accept direct requests — the stated degrade path, never silently
+    assumed.
+  - **Register** — user-facing prose per `templates/output-style.md`.
+  ```
+
+- **Kept deliberately:** every binding survives; paths move to `vars:`
+  (`${features_dir}` · `${product_dir}` · `${tasks_schema}`); skill bindings gain `pointer:`
+  fields; the v0.81.0 product-surface list (product-architecture-schema D12) and the v0.91.0
+  dispatch re-key with the D6 desk-confirmed-card clause (plan-stage-utility) survive with
+  `ruling:` anchors. The epic bullet splits at D12 grain into `feat.epic-binding` +
+  `feat.epic-dispatch`; the dispatch-targets bullet splits into `feat.dispatch-scope-split` +
+  `feat.dispatch-specify` + `feat.km-relation` (splits, not drops). D15 recasts, meaning
+  unchanged: "Each tool below" becomes "Every tool binding"; "takes the sound-loop review leg
+  before dispatch (Boundaries)" names the rule ID `feat.sound-loop-floor`; "arrives here"
+  becomes "arrives at the desk"; "Where KM exists" names
+  `.mochiko/memory/knowledge-management.md`.
+- **Consumers assessed:** commands are entry points, nothing mounts them; the named
+  `plugins/mochiko/schemas/tasks.yaml` pointer is unchanged in meaning.
+
+## [v0.95.0] Ways of Working moves to `feature.yaml` `feat.sec.ways-of-working`
+
+- **Disposition:** superseded → `plugins/mochiko/schemas/feature.yaml` section
+  `feat.sec.ways-of-working`, rules `feat.proactive-report` · `feat.reference-never-restate` ·
+  `feat.author-grader` · `feat.advisory-front-door` · `feat.model-tiering` ·
+  `feat.single-flight-lane` · `feat.no-git-mutations` · `feat.rulings-plain-text`.
+- **Tier failed:** n/a — supersession by ruling (command-content-schema D2/D7 + the D10 rollout
+  ruling 2026-08-26; D14; `DECISIONS.md` 2026-08-26 command-content-schema row).
+- **Content:** the shipped v0.94.0 section, verbatim:
+
+  ```
+  ## Ways of Working
+
+  - **Proactive report first** — health before the ask, every visit.
+  - **Reference, never restate** — the dispatched run's bounds, verification seats, and evidence rules
+    live in `/mochiko:implement` and the skills it binds; the desk points at them and adds nothing.
+  - **Author ≠ grader** — wherever a seat produces (delta card, `baseline-delta.md`, grooming
+    proposal), no output is cleared by its author; a producing seat plans first and works only on a
+    plan you approved.
+  - **Advisory front door** — `/mochiko:specify` stays directly invocable; the desk is the **default
+    entry when the user is unsure** and the **only door for growth, bug, and improvement intake**. It
+    is a routing service you can always use, never a gate you must pass.
+  - **Model tiering** — exploration and fact-finding dispatches (map sweeps, territory reads)
+    ride the class-keyed tiering floor: locate/enumerate reads go to a native `Explore`
+    subagent spawned `model: haiku`, interpretive or absence-driven reads stay session tier, and every
+    seat brief carries the routing rule. Class key, dispatch ladder, and brief obligation:
+    `mochiko:patterns-model-tiering`, referenced never restated.
+  - **Single-flight product lane** — one live product-lane run at a time.
+  - **Commits and rulings** — suggest commits; never run git mutations, never push. User rulings are
+    plain blocking text, never a timed prompt.
+  ```
+
+- **Kept deliberately:** all eight obligations survive; the model-tiering floor (v0.78.0 native
+  `Explore` retarget wording) survives whole in `feat.model-tiering` with its `ruling:` anchor
+  and `pointer:`; `model: haiku` moves to `vars:` as `${explore_model}`. The commits-and-rulings
+  bullet splits at D12 grain into `feat.no-git-mutations` + `feat.rulings-plain-text` (a split,
+  not a drop). No D15 recast was needed in this section.
+- **Consumers assessed:** commands are entry points, nothing mounts them.
+
+## [v0.95.0] Boundaries floor moves to `feature.yaml` `feat.sec.boundaries`
+
+- **Disposition:** superseded → `plugins/mochiko/schemas/feature.yaml` section
+  `feat.sec.boundaries`, rules `feat.capability-writes-sacred` · `feat.grooming-door-ceiling` ·
+  `feat.out-of-remit-hosting` · `feat.growth-door` · `feat.growth-routes-to-specify` ·
+  `feat.lane-never-widens` · `feat.no-delivery-harness` · `feat.no-self-graded-writes` ·
+  `feat.no-silent-map-mutations` · `feat.sound-loop-floor` · `feat.transport-floor` ·
+  `feat.stub-parking` — all `class: floor`.
+- **Tier failed:** n/a — supersession by ruling (command-content-schema D2/D7 + the D10 rollout
+  ruling 2026-08-26; D14; `DECISIONS.md` 2026-08-26 command-content-schema row).
+- **Content:** the shipped v0.94.0 section, verbatim:
+
+  ```
+  ## Boundaries — the non-waivable floor
+
+  - **Capability writes are sacred.** Minting, merging, retiring, or changing a capability's status
+    happens only through `/mochiko:specify` or a user grooming ruling — never at the desk. The
+    grooming-ruling door covers merge, retire, status change, and extent-tidying of **existing**
+    entries; wholesale or from-scratch re-derivation is specify's derivation work — route to
+    `/mochiko:specify`. When the user explicitly asks the desk to host work outside that remit,
+    name the boundary crossing and serve with the home command's rituals imported — the door
+    moves, the ritual never drops (adaptation rule: `mochiko:patterns-sound-loop`).
+  - **Work rows are delivery bookkeeping the desk may cut** through the growth door: an extend verdict
+    only, with acceptance criteria on the card. A fired architecture upgrade trigger enters by this
+    same door and takes the same tests (Tools). Mint-or-uncertain routes to `/mochiko:specify`;
+    several rows, a new UX surface, or cross-capability reach routes to specify regardless. The lane
+    never widens in place — a mid-run outgrowth aborts and re-routes, and a report that lands on an
+    `in-flight` capability's territory files to that run instead.
+  - **No delivery harness at the desk — dispatch only.** Every admitted demand leaves as a
+    `/mochiko:implement` capability-batch — growth-door rows in selection scope, a bug/improvement
+    delta card in delta scope; the run owns the delivery, and the boundary is audited from the map
+    delta the work leaves behind.
+  - **No self-graded writes.** **No silent map mutations** — an integrity defect is fixed on sight, and
+    every write is visible on the map.
+  - **The sound-loop floor.** A judgment-authored write to a governing surface obliges the loop:
+    a seat produces on a plan you approved, an independent non-author seat reviews before the
+    user's gate — the user's ruling alone never substitutes for the review leg — and every desk
+    delta card, bug and improvement alike, takes that review leg before dispatch. Trigger test,
+    exemptions, seat wiring, and disclosure: `mochiko:patterns-sound-loop`, referenced never
+    restated.
+  - **The transport floor.** A visit that composes more than one seat gains a floor on its
+    composition and messaging: a split trigger — message legs on any multi-seat messaging,
+    topology legs on shared writes — non-waivable once triggered. Trigger test, floor legs,
+    composition-safe shapes, and disclosure: `mochiko:patterns-transport-floor`, referenced
+    never restated.
+  - **Stub parking is parking, not a spec-bypass.** A parked capability hypothesis is a name plus a
+    one-breath hook, marked `unrefined`; it earns selectability only through `/mochiko:specify`'s
+    derivation, never here.
+  ```
+
+- **Kept deliberately:** every floor survives as a `class: floor` rule (must-survive under the
+  pair audit, M3); the v0.70.0 grooming-door ceiling and out-of-remit adaptation
+  (charter-ritual-balance D6), the sound-loop floor (charter-ritual-balance D1/D3), the growth
+  door (pm-role-and-feature-derivation D8), and the v0.91.0 `/mochiko:implement` re-key
+  (plan-stage-utility D1) survive with `ruling:` anchors. The first bullet splits at D12 grain
+  into `feat.capability-writes-sacred` + `feat.grooming-door-ceiling` +
+  `feat.out-of-remit-hosting`; the second into `feat.growth-door` +
+  `feat.growth-routes-to-specify` + `feat.lane-never-widens`; the fourth into
+  `feat.no-self-graded-writes` + `feat.no-silent-map-mutations` (splits, not drops). D15
+  recasts, meaning unchanged: "outside that remit" names `feat.grooming-door-ceiling`; "takes
+  the same tests (Tools)" names `feat.architecture-intake` + `feat.capability-write-test`;
+  "never here" becomes "never at the desk".
+- **Consumers assessed:** commands are entry points, nothing mounts them; the pointed-at skills
+  (`mochiko:patterns-sound-loop`, `mochiko:patterns-transport-floor`) are untouched.
+
+## [v0.95.0] Protocol defect line becomes `feat.fail.no-verdict` + the checker-guarded Not-done line
+
+- **Disposition:** superseded → `plugins/mochiko/schemas/feature.yaml` rule
+  `feat.fail.no-verdict` (section `feat.sec.fail-conditions`, labels `fail-condition`,
+  `class: floor`), plus the `.md`'s new Not-done line in the checker-grepped phrase form —
+  "the 1 rules labeled `fail-condition`" — with the out-of-sync halt clause (D7 C2 guard).
+- **Tier failed:** n/a — supersession by ruling (command-content-schema D7 + the D10 rollout
+  ruling 2026-08-26; `DECISIONS.md` 2026-08-26 command-content-schema row).
+- **Content:** the shipped v0.94.0 line, verbatim: "**A visit that ends with no stated
+  done-condition verdict is a defect.**" (the Adaptive Goal Protocol's closing line, after the
+  `$ARGUMENTS` sentence).
+- **Kept deliberately:** the rest of the Adaptive Goal Protocol — the three steps, the
+  convergence contract, and the `$ARGUMENTS` line — stays in the `.md` verbatim (the per-visit
+  charter contract, never recast as a per-run pipeline contract); Identity & Mission and the
+  frontmatter stay verbatim. The `.md` gains the "## Rules — load the schema first" section
+  naming the five `feat.sec.*` IDs — an addition riding the same ruling, no content displaced.
+- **Consumers assessed:** commands are entry points, nothing mounts them; the pair audit's FAIL
+  survival now keys to the `fail-condition` label set per
+  `.claude/rules/mochiko/primitive-edits.md` (lead-owned this wave).
+
 ## [v0.91.0] Every `/mochiko:plan` dispatch site re-keyed to `/mochiko:implement` — plan-stage retirement D1/D6
 
 - **Disposition:** superseded → the same six lines naming `/mochiko:implement`, the single
