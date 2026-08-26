@@ -53,6 +53,38 @@ git history (this line, before this groom).*
   `.mochiko/decisions/2026-08-26-review-governance-intent-true-deletion-cut.md`,
   `.mochiko/decisions/2026-08-26-validation-constitution-true-deletion-cut.md`).
 
+## Plan-retirement build
+
+Ruled 2026-08-26, pair-cold-reviewed (zero outright kills) + verify CLEAN round 3, accepted
+(`plan-stage-utility` D1–D7; D1 `Contested`, D2 `Assumed`). Cold-buildable; its landing
+closed the plan-structure-yagni watch superseded (→ trail).
+
+- [ ] **Build item** (2026-08-26; provenance:
+  [record](.mochiko/brainstorms/plan-stage-utility/record.md) Build surface) —
+  `implement.md` rewrite (sufficiency check at entry per D2's ten clauses + D6 delta branch ·
+  conditional design phase with blocking checkpoint + mid-run re-fire · card authoring +
+  card-confirm checkpoint · epic spine always-fired · build-time decision gating ·
+  map-entry hardening incl. architecture link · report-envelope binding · R4
+  regression-sweep reach note) · `plan.md` retirement (charter-protected supersession
+  strips — every obligation rehomed by D1–D7 or superseded on the record; author≠grader
+  audit) · sufficiency-check carrier skill (D2 = content spec) · ~20 re-points (specify
+  next-step · feature growth-row routing · authoring-epic joint-proposal re-key ·
+  patterns-plan-minimalism re-scope · patterns-vertical-tdd · review-plan-artifacts /
+  review-feasibility re-scope · architecture.md delivery line · ARCHITECTURE.md / README ·
+  authoring-technical-requirements retirement-or-re-scope · patterns-adopt-first
+  description-class edit · testing-gap-finding fence re-key · router · plan.yaml
+  disposition · feasibility-report-template · CHANGELOG / marketplace / plugin.json).
+- [ ] **Pre-wave dry-run — owed BEFORE the build wave** (2026-08-26; provenance: record
+  verify V8) — run the D2 check against one existing kinako work row; confound on record
+  (kinako's specs were authored under a plan-following pipeline); first discrimination
+  datapoint, seeds the falsifier watch below.
+- [ ] **Sufficiency-check first-live-run watch, bidirectional falsifier** (2026-08-26;
+  provenance: record D5 + Open questions) — all-pass (no discrimination) or all-fail (the
+  design phase fires almost always — plan reborn inside implement) weakens D1: revisit at
+  the record. Also watched: design-checkpoint attention (rubber-stamp risk) ·
+  landing-time design surprises on the zero-gap path · gap-finding fence adequacy after
+  `requirements.md` dies (D3 re-key).
+
 ## Product-architecture store build
 
 Ruled 2026-08-19, pair-cold-reviewed + verify CLEAN, accepted (`product-architecture-schema`
@@ -222,24 +254,6 @@ Open residuals:
   the current 10 entries; also discriminates D1's undiscriminated causal ranking) + the first
   implement landing that executes a row fold (fold mechanics + the convergence claim's first
   real data). A probe failure re-opens the D1/D2 structural bet, not just the build.
-
-## Plan-structure YAGNI build
-
-Build DELIVERED 2026-08-13 at v0.67.0 as the combined wave with the architect-role restructure
-(trail). Open residual:
-
-- [ ] **First-live-run watch: rebuilt plan + architect rotation, dual FEAT-002 probes**
-  (2026-08-13) — next kinako plan run (FEAT-002 re-derivation preferred) watches BOTH probes:
-  **weight** (sibling D7: directional ~3–4 entities / ~600–900 package lines vs 12/3,057) and
-  **level** (architect-role D6: container-only register rows — no application-layer/domain/
-  port-trait rows inside one process — plus the principal-architect contest brief fired and on
-  record at the proposal gate). Data-model altitude drift surviving the wave trips the
-  technical-analyst re-entry trigger (architect-role D7 — recharter becomes a candidate
-  session). Also first live fire of: the plan-the-plan gate + conformance-BLOCKING grade,
-  class 7 + interrogatory round on the tech-lead seat, and the excess classes in the four
-  other review skills. Provenance:
-  [sibling record](.mochiko/brainstorms/plan-structure-yagni/record.md) ·
-  [architect-role record](.mochiko/brainstorms/architect-role-pushback-and-abstraction/record.md).
 
 ## Guardrails-vs-detail residuals
 

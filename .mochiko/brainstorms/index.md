@@ -8,6 +8,37 @@ One entry per session directory under `.mochiko/brainstorms/<topic-slug>/`, **ne
 
 ---
 
+## `plan-stage-utility` — why plan as a distinct stage; can specify + architecture carry enough guidance for implement; sufficiency assessment
+- **When:** 2026-08-26 · **Status:** accepted · pair cold review via blind-map two-message
+  dispatch, lens-split decision-quality (devils-advocate, 22-angle map) + record-integrity
+  (validator, 28-angle map): both critical-gaps, 29 raised + 1 cross-exam-born, cross-exam
+  **zero outright kills** (1 partial: epic mint survives at the desk) → merged 8 Critical /
+  10 Important / 6 Minor → dispositioned: S1 (retain-and-collapse steelman never surfaced)
+  user-ruled **explore now** → Q10 → D1 re-affirmed **`Contested`** against the lead's
+  contrary recommendation; S2/S3 ruled inline → D6/D7; remainder one user-ruled batch "as
+  recommended"; verify round 1 NOT CLEAN (4 blocking + 4 non-blocking, all eight user-ruled
+  "as proposed", repaired same round) → round 2 NOT CLEAN (2 blocking ripple, repaired +
+  no-locks fold) → round 3 CLEAN; acceptance followed
+- **Artifacts:** [record.md](plan-stage-utility/record.md) (canonical — ground facts F1–F5
+  as corrected, D1–D7, session trail Q1–Q10, review + disposition + verify trail, build
+  surface, open questions)
+- **About:** the drivers — redundancy suspicion (spec + store restate what plan authors) +
+  sufficiency anxiety (no instrument measures whether implement had enough guidance); felt
+  cost their symptom. Ruled (D1–D7): **`/mochiko:plan` retires as a command** — implement
+  becomes the single downstream run behind a **ten-clause sufficiency check** at entry
+  (per-row, spec + store + baselines, non-author graded, binding; gaps → in-run design phase
+  scoped to exactly the named gaps, user-signed blocking checkpoint before any cycle; zero
+  gaps → cards + build direct) · FR→TR dies rather than moves, gap-finding fence re-keys
+  (D3) · three checkpoints replace plan's two dead gates (D4) · n=0 honesty + bidirectional
+  falsifier (D5) · delta-scope branch, lanes inherited-as-is (D6) · UX trace clause (D7) ·
+  mechanics a–e carry the rehoming ledger (mid-run structural re-fire · epic spine
+  always-fires · card author never the builder · build-time decisions gated · map-entry
+  hardening incl. architecture link).
+- **Landed:** DECISIONS.md row (2026-08-26) · BACKLOG "Plan-retirement build" section (build
+  item + pre-wave kinako dry-run + bidirectional falsifier watch); plan-structure-yagni watch
+  closed superseded → trail · ROADMAP: plan-surface-builds Next row touch + "Plan absorbs
+  tasks" standing bet superseded
+
 ## `author-grader-value-tiering` — question author≠grader wholesale; pragmatic split: independent verification for high-value, author self-verification for low-value
 - **When:** 2026-08-26 · **Status:** open
 
