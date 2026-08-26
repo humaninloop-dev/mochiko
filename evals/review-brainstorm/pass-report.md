@@ -66,9 +66,37 @@ fate — full detail in the [v0.83.0] strip entry:
 map" / coverage / reopen-born vocabulary survives in the body). Grep confirmed no external
 consumer quotes a deleted body line.
 
-## Eval status (deferred)
+## Eval status
 
-Post-cut regression check pending: non-compressor seat authors `rules.json` (from the
-**v0.82.0 baseline body**, via git history) + 3 goldens; probe before any priced grid;
-`preregistration.md` before the grid. A lost load-bearing rule re-adds via the strips re-add
+Deferred at the cut, then **run 2026-08-26** before commit at the user's direction: a
+non-compressor seat authored `rules.json` (67 rules from the pre-cut baseline) + 3 goldens +
+the preregistration (user-ratified: 6-rule floor set, ≤5/61 non-floor, 0 vocab, ≤1 must);
+probe clean; results in the Verify round section below. Losses re-added via the strips re-add
 path, never by silent edit.
+
+## Verify round (2026-08-26, grid `runs/20260826-110222`)
+
+27 runs (noskill · armA pre-cut · armB cut), case-major order, ~$10.7 est. Sonnet under test,
+pass^k over 9 runs per arm-rule.
+
+**Round 1 (cut as shipped at v0.83.0 + audit fixes):** BAR BREACHED — floor R-001 lost: 5 of 9
+cut runs produced no blind-map artifact (pre-cut 9/9 wrote `phase0-blind-map.md`); the map
+cluster (R-010/R-011/R-012, vocab R-059/R-060) fell with it, plus R-035. Root cause: "Return
+the map to the lead as a message" was deleted as prose but was behavioral. The pre-cut arm's
+apparent R-004 floor loss was a judge false positive (silence about `Contested` scored as
+unverifiable; the rule is a prohibition — silence complies).
+
+**Re-adds (user-ruled "re-add + verify"):** map-as-own-deliverable + "Phase 0" vocab; the
+commentary clause.
+
+**Round 2 (cut arm re-run, 9 fresh sessions):** floor CLEAN — 9/9 map deliverables. Residual:
+R-060 tally form (6/9 — survivor counts without "N raised, M survived"), R-049 critical-gaps
+criteria, R-035 1-of-9 replicate miss. R-060/R-049 re-added (+148 chars, ship unverified);
+final body 2,747 chars (−76.6% vs pre-cut 11,754). Bar after round 2, before the micro
+re-adds: non-floor 3/≤5 (in), vocab 1/0 (breach — the re-added tally form addresses it),
+must 2/≤1 (breach — R-049 re-added; R-035 flake-adjacent, already present in the body).
+
+Judge health: round-1 parse failures 15 (one armA/G3/r1 chunk), round-2 total 22 (adds one
+armB/G3/r2 chunk); parse failures score as not-held and were hand-checked not to drive the
+named losses. The runner's own "rules lost" line is against the absent `baseline` arm and is
+ignored per the preregistration; the figures above are the hand-computed diff over `held`.

@@ -10,7 +10,7 @@ restores the boundary clauses under the cap, and is strict-YAML-safe. Delivery v
 deferred: the in-session skill listing is a session-start snapshot (probe received pre-edit
 text), so the probe re-runs in a fresh session.
 
-## [v0.88.0] RETURNED: blind map as its own deliverable (floor) + the commentary clause — eval-demanded re-adds, body 2,497 → 2,599 (−77.9% vs pre-cut)
+## [v0.88.0] RETURNED: blind map as its own deliverable (floor) + the commentary clause — eval-demanded re-adds, body 2,497 → 2,599; verify round added the tally form + critical-gaps criteria, final body 2,747 (−76.6% vs pre-cut)
 - **Evidence:** the post-cut regression grid `evals/review-brainstorm/runs/20260826-110222/`
   (27 runs, 3 arms; verdict in `evals/review-brainstorm/pass-report.md`). The cut arm failed
   the ratified bar on one root cause: 5 of 9 cut runs produced **no blind-map artifact**
@@ -20,9 +20,22 @@ text), so the probe re-runs in a fresh session.
   with it. R-035 (a finding nothing could resolve is commentary, not a finding) was lost
   independently. Re-added: the Protocol first leg now reads "Phase 0 blind angle map from
   the topic only, produced as its own deliverable before record contact"; the survivor-report
-  leg gains the commentary sentence. User ruled "re-add + verify" 2026-08-26; the cut arm
-  re-ran clean before ship (see pass report). Per D7 the version bump carrying these re-adds
-  triggers the validator audit on this primitive.
+  leg gains the commentary sentence. User ruled "re-add + verify" 2026-08-26; the verify
+  re-run (9 fresh cut-arm sessions appended to the same grid) came back **floor-clean: 9/9
+  runs produced the blind-map deliverable** (was 4/9) and the R-001 map cluster fully
+  recovered. Three residual losses surfaced: the tally's "N raised, M survived" two-number
+  form (R-060 consumer vocab, real — cut runs reported survivor counts only), the
+  `critical-gaps` criteria (R-049 — died with the verdict table, dispositioned at
+  ratification but consumer-graded), and a 1-of-9 replicate miss on the freshly re-added
+  commentary clause (R-035, pass^k single-replicate kill, flake-adjacent). The first two
+  were re-added under the same eval-demanded ruling pattern (+148 chars: tally `"N raised,
+  M survived"`; `critical-gaps` = broken load-bearing claim · unowned decision · Critical
+  coverage gap · record too thin) — **these two micro re-adds ship unverified** (no third
+  arm-run; the resume command is the standing lever). Budget: 2,747 rides inside the seeded
+  3,122 cap — headroom absorbs re-adds by design, no re-seed. Per D7 the version bump
+  carrying these re-adds triggers the validator audit on this primitive; version
+  roll-forward is owned by the parallel landing session holding the counter (tree at
+  0.93.0 mid-flight when this shipped).
 
 ## [v0.83.0] User-ruled true-deletion body cut — body 11,754 → 2,497 chars (−78.8%)
 
