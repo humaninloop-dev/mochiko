@@ -1,0 +1,44 @@
+openapi: 3.0.3
+info:
+  title: notely API
+  version: 0.1.0
+paths:
+  /notes:
+    post:
+      summary: Create a note
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [text]
+              properties:
+                text: {type: string, minLength: 1}
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema: {$ref: "#/components/schemas/Note"}
+        "400": {description: Empty or missing text}
+  /notes/{id}:
+    get:
+      summary: Fetch a note by id
+      parameters:
+        - {name: id, in: path, required: true, schema: {type: string, format: uuid}}
+      responses:
+        "200":
+          description: The note
+          content:
+            application/json:
+              schema: {$ref: "#/components/schemas/Note"}
+        "404": {description: No such note}
+components:
+  schemas:
+    Note:
+      type: object
+      properties:
+        id: {type: string, format: uuid}
+        text: {type: string}
+        created_at: {type: string, format: date-time}

@@ -1,0 +1,40 @@
+[
+  {
+    "id": "s1-zero-gap",
+    "fixture": "s1-zero-gap",
+    "args": "FEAT-001",
+    "control_prompt": "Read this workspace's repository state, then produce the detailed action plan you would follow to implement the selected work for capability FEAT-001 (note capture) as working, verified code.",
+    "expected_output": "Zero-gap branch: sufficiency clears every clause (spec, contracts, data model, store all cover W1/W2), so the plan routes direct to cycle cards and build — no design phase. Must show: run-open confirmation describing batch, scope type (selection), both attempt bounds, sufficiency verdict; card authoring by a non-builder seat with QA authoring TEST cases and the zero-gap map-entry assertion; card review then card-confirm gate; test-first build with per-cycle independent verification; final validation with cold snapshot, full gates, gap-finding pass (selection scope), FEAT-001 has no prior delivered features to regression-sweep; acceptance gate; selection landing (row fold, status delivered, graded folds).",
+    "assertions": [
+      "plan contains no design phase (zero gaps)",
+      "run-open confirmation described with attempt bounds",
+      "card confirm and final acceptance described as user gates with branches",
+      "gap-finding pass present (selection scope)"
+    ]
+  },
+  {
+    "id": "s2-two-gaps",
+    "fixture": "s2-two-gaps",
+    "args": "FEAT-002",
+    "control_prompt": "Read this workspace's repository state, then produce the detailed action plan you would follow to implement the selected work for capability FEAT-002 (note search) as working, verified code.",
+    "expected_output": "Gap branch: sufficiency names exactly two gaps — (1) contracts/api.yaml has no /notes/search endpoint though FR-101/FR-102 require it; (2) FR-103's background index worker collides with the store spine's 'no background workers' — a structural change needing a store delta (new element + flow). Plan must show a design phase scoped to exactly those two gaps (delta beside contracts baseline + store delta with diagram), the design-review pair, the user design checkpoint before any code, then cards/build/verification, final validation including FEAT-001's durable gates (regression sweep) and the built-vs-signed diff, and a landing whose store fold flips the new element built.",
+    "assertions": [
+      "design phase scoped to exactly the two planted gaps, nothing more",
+      "store delta + signed-diagram checkpoint described",
+      "FEAT-001 gates.md named in the regression sweep",
+      "no code before the design checkpoint"
+    ]
+  },
+  {
+    "id": "s3-empty-args",
+    "fixture": "s3-empty-args",
+    "args": "",
+    "control_prompt": "Read this workspace's repository state, then produce the detailed action plan you would follow to select and implement the next ready capability as working, verified code.",
+    "expected_output": "Empty-arguments entry branch: the plan proposes the next ready capability from the map — FEAT-002, the only non-delivered capability with selected rows — and describes the user confirmation of that proposal before the run opens; from there identical shape to s2-two-gaps (same fixture content, same two gaps).",
+    "assertions": [
+      "plan proposes FEAT-002 from the map and describes the confirm gate",
+      "does not silently assume a capability without the confirmation",
+      "gap branch then matches s2 (two gaps, design checkpoint)"
+    ]
+  }
+]

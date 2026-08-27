@@ -1,0 +1,132 @@
+# D8 partition — /mochiko:implement rule set, plan-observable vs out-of-instrument.
+# Ruling: command-plan-only-eval D8 (accepted 2026-08-27, review fold C1).
+# The `observable` list IS the D2 rubric; `out_of_instrument` rules are declared here,
+# never silently absent at coverage 0. Validated by `run.py check-rubric implement`:
+# every schema rule ID appears in exactly one list.
+#
+# Out-of-instrument reason vocabulary:
+#   contingency  — fires only on a run-time event no forward plan contains
+#   conditional  — observable only under a fixture condition no current scenario plants
+#                  (activating it = planting the condition, a scenario-design act)
+#   epic         — epic-scope rule; no epic scenario exists yet
+#   latitude     — grants freedom; nothing falsifiable in a plan
+#   register     — prose-register meta-rule; not plan content
+command: implement
+
+observable:
+  # roles
+  - {id: impl.dm-entry-gate, why: plan shows run-open gating on the selected batch}
+  - {id: impl.design-phase-fires-on-gap, why: gap-vs-zero-gap branch visible (s1 vs s2)}
+  - {id: impl.dm-surface-rounds, why: checkpoints described surfacing rounds and seats}
+  - {id: impl.dm-landing-whole, why: landing phase enumerated whole}
+  - {id: impl.dm-close-verdict, why: close step states a verdict against the done condition}
+  - {id: impl.seat-sufficiency-independence, why: sufficiency seat named independent of authors}
+  - {id: impl.design-seats-staffing, why: design-seat choices named (advisory)}
+  - {id: impl.design-gaps-only, why: design phase scoped to exactly the named gaps}
+  - {id: impl.builder-never-designs, why: roster separates builder from design seats}
+  - {id: impl.seat-card-author-independence, why: card author design-class with QA on TEST cases}
+  - {id: impl.builder-decompose-disclose, why: build phase shows decomposition disclosed + test-first + plan approval}
+  - {id: impl.seat-verification-independence, why: verification seats never the implementer, real infrastructure}
+  - {id: impl.verification-design-time-grades, why: card review + build-time delta grading named}
+  - {id: impl.landing-verifier-folds, why: landing verification step checks the graded folds}
+  - {id: impl.seat-gap-finder-blind, why: fresh devils-advocate dispatched blind}
+  # reserved
+  - {id: impl.gate-design-checkpoint, why: gate described with sign-off content and branches (s2)}
+  - {id: impl.gate-card-confirm, why: blocking card confirm described}
+  - {id: impl.gate-final-acceptance, why: accept/amend/reject close described}
+  - {id: impl.user-runopen-rulings, why: run-open lists the reserved rulings}
+  # tools
+  - {id: impl.tools-referenced-never-restated, why: plan references pointer skills, never restates their procedure}
+  - {id: impl.sufficiency-binding-verdict, why: entry shows per-row check with binding verdict routing}
+  - {id: impl.sufficiency-report, why: sufficiency-report.md path and content planned}
+  - {id: impl.design-outputs-home, why: deltas beside baselines at the feature dir (s2)}
+  - {id: impl.design-review-pair, why: both review skills graded before the checkpoint (s2)}
+  - {id: impl.design-map-assertion, why: design phase asserts dependencies/extent onto the entry (s2)}
+  - {id: impl.cards-template, why: tasks.md from the tasks template/schema binding}
+  - {id: impl.card-contents, why: card content fields incl TEST gate described, no task lists}
+  - {id: impl.zero-gap-map-assertion, why: zero-gap path carries the map assertion (s1)}
+  - {id: impl.card-review-before-confirm, why: verification seat reviews cards before the confirm}
+  - {id: impl.craft-build-bindings, why: build binds the executing/brownfield/minimalism skills}
+  - {id: impl.craft-verify-bindings, why: verify binds testing-end-user + code-minimalism lens}
+  - {id: impl.design-inputs, why: inputs enumerated - reports, deltas, baselines, spec}
+  - {id: impl.progress-surface, why: per-card checkboxes flipped as progress}
+  - {id: impl.reports-envelope, why: report paths + envelope format named}
+  - {id: impl.gates-full-suite, why: quality gates run the full suite}
+  - {id: impl.regression-sweep, why: accumulated delivered gates re-run (s2 - FEAT-001 gates.md)}
+  - {id: impl.cold-verification, why: dependency-cold snapshot step planned}
+  - {id: impl.gap-finding-scope, why: pass present on selection scope, skip stated otherwise}
+  - {id: impl.gap-finding-blind-dispatch, why: two-message blind dispatch with the fence list}
+  - {id: impl.finding-kinds, why: finding split spec-required vs beyond-spec described}
+  - {id: impl.store-landing, why: three-part store fold planned where a delta exists (s2)}
+  - {id: impl.landing-selection, why: graduation batch - row fold, status, index, specs-index}
+  - {id: impl.graded-fold, why: three-way-diff fold per touched baseline}
+  - {id: impl.gates-fold, why: ruled findings fold into gates.md in TEST grammar}
+  # ways-of-working
+  - {id: impl.author-grader-default-fail, why: no output cleared by its author across the roster}
+  - {id: impl.plan-approval-producers, why: producing seats plan first, graders exempt}
+  - {id: impl.escalation-batching, why: reserved questions batched at checkpoints}
+  - {id: impl.finding-severity-routing, why: Minor to BACKLOG, Important blocks - routing described}
+  - {id: impl.model-tiering, why: explore reads routed to haiku Explore, briefs carry the rule}
+  - {id: impl.no-git-mutations, why: plan suggests commits, never runs git}
+  - {id: impl.acceptance-plain-text, why: gates as plain blocking text, never timed}
+  # boundaries
+  - {id: impl.baselines-never-in-place, why: deltas-beside-baselines pattern throughout}
+  - {id: impl.attempt-per-grade, why: attempt bounds declared at run-open, charged per grade}
+  - {id: impl.gap-rework-bound, why: run-scale bound restated at run-open}
+  - {id: impl.gates-never-triaged, why: failed gate fails the cycle, no triage}
+  - {id: impl.minimalism-advisory, why: minimalism findings stay advisory in verification}
+  - {id: impl.sound-loop-floor, why: produce/review/user-rule wiring visible end to end}
+  - {id: impl.transport-floor, why: multi-seat composition names the transport floor}
+
+out_of_instrument:
+  # latitude / register
+  - {id: impl.staffing-latitude, why: latitude}
+  - {id: impl.register, why: register}
+  # contingency (C1's class - run-time events)
+  - {id: impl.infeasible-card-escalation, why: contingency - a card proves infeasible}
+  - {id: impl.adopt-first-user-call, why: contingency - commodity/IP call arises at build}
+  - {id: impl.ambiguity-escalation, why: contingency - ambiguity surfaces mid-run}
+  - {id: impl.scope-escalation-fail, why: contingency - work outgrows the framing}
+  - {id: impl.sufficiency-disputed-clause, why: contingency - grader dispute event}
+  - {id: impl.midrun-refire, why: contingency - undesigned structure discovered mid-build}
+  - {id: impl.finding-kind-disputed, why: contingency - disputed finding kind}
+  - {id: impl.delivered-territory-routing, why: contingency - gap lands in delivered territory}
+  - {id: impl.beyond-spec-disposition, why: contingency - beyond-spec findings exist}
+  - {id: impl.baseline-delta-grammar, why: contingency - build-time baseline discovery}
+  - {id: impl.delta-reverification, why: contingency - delta re-grade round}
+  - {id: impl.deviation-gate, why: contingency - a cycle deviates from the signed delta}
+  - {id: impl.constitution-supremacy, why: contingency - governance conflict arises}
+  - {id: impl.constraint-challenge, why: contingency - constraint collision arises}
+  - {id: impl.attempt-exemption-user-only, why: contingency - exemption question arises}
+  - {id: impl.no-progress-stop, why: contingency - two unchanged rounds}
+  # conditional (fixture condition not planted; activating = scenario design)
+  - {id: impl.absent-surfaces, why: conditional - all surfaces present in the fixtures}
+  - {id: impl.briefs-name-rules-files, why: conditional - no governance region planted}
+  - {id: impl.design-absent-baseline-seed, why: conditional - baselines present}
+  - {id: impl.mutation-lens, why: conditional - depth-conditional, no governance planted}
+  - {id: impl.km-landing, why: conditional - no knowledge-management.md planted}
+  - {id: impl.lane-never-widens, why: conditional - no product-lane scenario}
+  - {id: impl.landing-delta, why: conditional - no delta-scope scenario}
+  # epic
+  - {id: impl.epic-design-always-fires, why: epic}
+  - {id: impl.epic-seam-owners, why: epic}
+  - {id: impl.epic-shared-baseline-single-pen, why: epic}
+  - {id: impl.epic-card-sequence, why: epic}
+  - {id: impl.landing-epic, why: epic}
+  - {id: impl.epic-member-halt, why: epic + contingency}
+  # fail-conditions (all 15 - end-state failures, not forward-plan content; C1)
+  - {id: impl.fail.sufficiency-unrecorded, why: fail-condition}
+  - {id: impl.fail.design-skipped, why: fail-condition}
+  - {id: impl.fail.card-independence, why: fail-condition}
+  - {id: impl.fail.card-unchecked, why: fail-condition}
+  - {id: impl.fail.quality-gate, why: fail-condition}
+  - {id: impl.fail.no-evidence, why: fail-condition}
+  - {id: impl.fail.regression, why: fail-condition}
+  - {id: impl.fail.baseline-in-place, why: fail-condition}
+  - {id: impl.fail.deviation-unresolved, why: fail-condition}
+  - {id: impl.fail.store-landing-incomplete, why: fail-condition}
+  - {id: impl.fail.ungraded-fold, why: fail-condition}
+  - {id: impl.fail.gap-finding-missing, why: fail-condition}
+  - {id: impl.fail.skip-unstated, why: fail-condition}
+  - {id: impl.fail.spec-gap-unresolved, why: fail-condition}
+  - {id: impl.fail.no-acceptance, why: fail-condition}

@@ -66,14 +66,17 @@ Command-content schema section's watch item)*
   assert · fence holds as permission fence, roster not stripped · absent-user contract PASS ·
   $0.65/107s at the turn cap; build amendments: drop `--bare` (kills stored auth) · wrapper
   register line "no rule-ID citations" · max-turns headroom ~40 + cap-hit warning · fixture
-  internal-consistency check) — then the runner extension under `evals/` (blocking load gate
-  + `--setting-sources ""`, no `--bare`) ·
-  preregistration gate (read rule + the F2 noise guard verbatim) · partition scripts (four
-  ID-keyed rubric buckets + the D8 observable-vs-contingency split) · 3 `implement` fixtures
-  by a non-editor seat · judges (Haiku rule-coverage over the observable subset + stub axis,
-  Sonnet pairwise; advisory) · within-grid pre/post-edit arms + a one-time no-command control
-  arm · committed pinned baselines. Pilot `implement`; the other five commands only after the
-  loop proves once.
+  internal-consistency check) — **items 1–8 BUILT 2026-08-27** (`evals/commands/`: `run.py`
+  runner with partition/check-rubric/check-fixtures/plan-run/grid/judge/report, pinned
+  `wrapper.md`, 3 self-contained `implement` fixtures + goldens (planted: missing search
+  contract · store-colliding background worker · empty-args entry), `observable.yaml` D8
+  partition 58 rubric / 46 declared out — validates 104/104, `preregistration.md` read rule +
+  F2 noise guard; live smoke PASS: load gate true at 0.97.0, under turn cap, fence denied an
+  attempted Bash call and recorded it, $0.65; smoke finding: sessions cite rule IDs despite
+  the wrapper — runner scrubs all known IDs pre-judge so only embodiment is gradeable).
+  **Remaining:** pilot baseline grid + judged round on a real edit (metered, ~$15–30 + judges,
+  maintainer-fired) · D10 one-real-run correlation check at pilot close · other five commands
+  after the loop proves once.
 - [ ] **Substrate watches (n=0)** — noise falsifier: replicate spread vs effect gap at the
   first grid (F2's failure mode revisits the premise) · D10 proxy falsifier: one full real
   `implement` run at pilot close, plan coverage vs run behavior · Goodhart watch: instrument
