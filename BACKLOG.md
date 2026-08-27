@@ -54,6 +54,28 @@ Command-content schema section's watch item)*
   Provenance: `.mochiko/brainstorms/command-md-scaffold-standardization/record.md` (M5, V1 F1
   in the build trail).
 
+## Command plan-only eval build
+
+*(ruled + accepted 2026-08-27, `command-plan-only-eval` D1–D11 as review-amended; provenance:
+`.mochiko/brainstorms/command-plan-only-eval/record.md` — build surface 0–9)*
+
+- [ ] **Build the plan-only command regression eval** (cold-buildable from the record's build
+  surface): probe first on `brainstorm` (item 0 — invocability under
+  `disable-model-invocation: true`, ephemeral-workdir provisioning, plugin shadowing,
+  allow-list fence `Read,Grep,Glob`, absent-user contract, real cost via `total_cost_usd`),
+  then the runner extension under `evals/` (blocking load gate + `--setting-sources ""`) ·
+  preregistration gate (read rule + the F2 noise guard verbatim) · partition scripts (four
+  ID-keyed rubric buckets + the D8 observable-vs-contingency split) · 3 `implement` fixtures
+  by a non-editor seat · judges (Haiku rule-coverage over the observable subset + stub axis,
+  Sonnet pairwise; advisory) · within-grid pre/post-edit arms + a one-time no-command control
+  arm · committed pinned baselines. Pilot `implement`; the other five commands only after the
+  loop proves once.
+- [ ] **Substrate watches (n=0)** — noise falsifier: replicate spread vs effect gap at the
+  first grid (F2's failure mode revisits the premise) · D10 proxy falsifier: one full real
+  `implement` run at pilot close, plan coverage vs run behavior · Goodhart watch: instrument
+  pressure toward verbose command prose against the live compression program, D3's
+  anti-recitation register the standing mitigation.
+
 ## Skill-compression eval-primitive build
 
 *(ruled 2026-08-22, `skill-compression-tooling` D1–D8 as amended; provenance:
@@ -809,6 +831,8 @@ Raw captures (2026-08-01) — to triage/brainstorm; grooming may re-key into fin
   this item's eval-harness brainstorm; item stays open.) (2026-08-22: `skill-compression-tooling`
   accepted — rules the lowest-level per-skill eval primitive and fills `primitive-eval-harness`
   D5's pilot slot; this item still owns the wider produced-artifact QC question.)
+  (2026-08-27: `command-plan-only-eval` accepted — rules the command-surface eval on a
+  plan-only substrate; this item still owns produced-artifact QC.)
 - [ ] **Multi-stack / monorepo registries** (2026-07-21) — per-stack registries, paths scopes,
   seeding. **Revisit: first multi-stack setup run.**
 - [ ] **`codebase-inventory-schema.json` port** (2026-06-27; provenance:

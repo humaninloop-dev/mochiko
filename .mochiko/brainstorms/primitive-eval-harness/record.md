@@ -216,7 +216,10 @@ WebSearch blocked for the seat — no blog-survey layer, disclosed)
   depend on it; it is maintainer-side advisory tooling, D10 precedent), but the reasoning
   deserves a recorded ruling on resume.
 - Phase 2 (skill+agent cluster runs via `--forward-subagent-text`) — shape sketched in
-  F13, not yet a decision.
+  F13, not yet a decision. *(2026-08-27: the accepted `command-plan-only-eval` session
+  extends the eval question to the command surface on a plan-only substrate — a regression
+  instrument for command edits composing with this record's D2/D3/D4; its build is queued.
+  This record stays open on its own terms and still owes its cold review.)*
 - Judge model choice (Haiku vs Sonnet for assertions/judging) — detail, unruled.
 - Session status: **paused mid-questioning 2026-08-19; record not yet cold-reviewed, not
   accepted.**

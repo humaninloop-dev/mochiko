@@ -8,6 +8,42 @@ One entry per session directory under `.mochiko/brainstorms/<topic-slug>/`, **ne
 
 ---
 
+## `command-plan-only-eval` — eval commands via plan-only runs (no nested skill/seat execution); LLM judge grades the generated action plan
+- **When:** 2026-08-27 · **Status:** accepted · solo cold review via blind-map two-message
+  dispatch (`mochiko:devils-advocate` seat running `mochiko:review-brainstorm`; 47-angle
+  map, topic-only spawn; one disclosed negligible fence leak accepted; every load-bearing
+  fact verified exact — zero broken claims): verdict critical-gaps — 4 Critical /
+  8 Important / 5 Minor, 17/17 survived → dispositioned: batch "as recommended"
+  (C1→D8 observable-vs-contingency partition · C2→D9 absent-user contract · C3→within-grid
+  arms + pins · C4→ephemeral-workdir provisioning · I1 load gate · I2 allow-list fence ·
+  I3+M4 preregistration gate · I4→D10 proxy-`Assumed` + Goodhart watch · I5 control arm ·
+  I6 stub axis · I8 probe item 0 · M1 name-resolution asserts · M3 rejected roads ·
+  M5 cost honesty); I7 user-ruled `Assumed` re-marks on D1/D2/D6; M2 as recommended —
+  pilot stands, probe on `brainstorm`; verify round 1 NOT CLEAN (5 blocking + 8 nits, all
+  13 lead-repaired same round) → round 2 CLEAN; D11 ruled at acceptance; acceptance
+  followed
+- **Artifacts:** [record.md](command-plan-only-eval/record.md) (canonical — Topic + prior-
+  session relations, ground facts F1–F5, D1–D11 as amended, session trail Q1–Q9,
+  elicitation mechanics, rejected roads, cost line, build surface 0–9, review + disposition
+  + two-round verify trail, open questions)
+- **About:** the user's driver — planned modifications to the command `.md` structure and
+  rules with no instrument to see their impact. Ruled (D1–D11): a **plan-only regression
+  eval** — the command runs headless in a single session, generates its interpreted action
+  plan (never a rule recitation, D3) without dispatching seats or skills (allow-list fence
+  `Read,Grep,Glob`, D7; user gates described, never awaited, D9), against minimal
+  branch-forcing synthetic fixtures in ephemeral workdirs (D4); an advisory LLM judge
+  grades rule-coverage over the plan-observable subset of the command's own schema rules
+  (D2/D8) with a stub-detection axis; regression reads as a within-grid pre/post-edit diff
+  over four ID-keyed rubric buckets (D6); elicitation is form-only — all content from the
+  pair under test (D11); plan-as-proxy is the named `Assumed` bet with a one-real-run
+  falsifier (D10); probe on `brainstorm`, pilot `implement` (D5). Dependent session:
+  composes with `primitive-eval-harness` D2/D3/D4 (open) and the `skill-compression-tooling`
+  judge protocol.
+- **Landed:** DECISIONS.md row (2026-08-27) · BACKLOG "Command plan-only eval build"
+  section (cold-buildable build item + substrate watches) + the deepeval QC item annotated ·
+  ROADMAP: merged into the Token-epic Next row (cap held) · `primitive-eval-harness` record
+  annotated (scope extended to commands; that session stays open on its own terms)
+
 ## `command-md-scaffold-standardization` — canonical pattern for the `.md` scaffold around the command schemas; six pairs today vary by history
 - **When:** 2026-08-27 · **Status:** accepted · solo cold review via blind-map two-message
   dispatch (40-angle map, topic-only spawn; reviewer self-verified all load-bearing ground
