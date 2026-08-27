@@ -5,6 +5,48 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.98.0] — 2026-08-28
+
+**The command schemas gain a typed node grammar — the ontology wave** (record
+`.mochiko/brainstorms/command-schema-ontology/record.md` D1–D11 as review-amended, solo
+cold review verdict critical-gaps → 18/18 dispositioned → verify CLEAN → user-accepted;
+`DECISIONS.md` 2026-08-27 row; built next day as one wave). Every rule block may now carry
+**`kind:`** from a nine-kind closed set — `constraint` (the omitted default) · `duty` ·
+`gate` · `reservation` · `binding` · `bound` · `routing` · `fail` · `latitude` — a tag
+only, per-kind structured fields deferred benefit-keyed (D1/D2). Run-shape branches become
+data: each schema declares its **`conditions:`** (dimension · closed value set · resolution
+point) and rules gain **`when:`** — conjunction-only, single-homed out of the text (MOVE),
+with a DECLARE carve where the condition rides the rule's subject noun (D3 as amended);
+**a `class: floor` rule is always read and always delivered — `when:` gates application,
+never delivery** (C4). Each schema declares its **`moments:`** anchor vocabulary,
+deliberately unordered; the `at:` field does not ship (deferred to the graduation set,
+I5). Every `kind: fail` node carries **`enforces:`** — its gate/floor contrapositive
+links, empty only with a stated reason under the `D6 empty-with-reason:` marker (D6 under
+an argued D16 carve). **`extends: common.<slug>`** enters the grammar narrowly — a
+recorded supersession amending command-content-schema D3 (`Contested`): `common.yaml`
+ships with exactly four exact-duplicate blocks (`register` · `no-git-mutations` ·
+`acceptance-plain-text` · guard-stripped `transport-floor`; 16 stubs across the six
+schemas), a stub inheriting `text`/`labels`/`pointer` only with `class:` always local
+(C2/C3). The `fail-condition` label retires from the registry — `kind: fail` is the
+selector, the six Not-done pins re-keyed. The D9 coverage holes closed at the wave's user
+gate: `impl.landing-lane` minted (a product-lane landing adds no map work) and the
+eight-site setup amend-mode posture landed (an amend run owns the governance surface set
+and nothing else — never-overwrite floors restated instances-not-extent, create/write-if-
+absent made explicit, `setup.fail.no-feature-map` gains the surfacing third arm). The F8
+provenance citation leaves both setup sites (the `Assumed` hedge stays). The advisory
+checker learns the whole grammar (kind vocabulary · `when:`/`moments:` resolution ·
+per-dimension coverage reports · in-text ID-citation resolution over all six prefixes ·
+`enforces:` + reverse-coverage · `extends:` C3 asserts) with a negative-test matrix grown
+79 → 133; `converting-command-to-schema` and the pair-audit criteria re-keyed (new
+criterion 11). Build: inventory referent (`conversion-inventory.md`, 320 rules classified,
+37 `when:` moves) · 5+4 producer seats · 4 fresh author≠grader validators — six pairs and
+three infra units PASS, two infra FAILs fixed same round to CONFIRMED-PASS; checker PASS
+0 findings on all six pairs. Evidence: plan-only eval grids on implement (24 plans, noise-
+dominated per its own preregistered guard — no stable regression attributable to the edit)
+and setup (18 plans — zero regressions in brownfield/amend, coverage up where the wave
+changed content); the kind+`when:` partition derivation recovers 82% of the hand-authored
+eval rubric. Strips across nine files; `.mochiko/provenance.yaml` untouched.
+
 ## [0.97.0] — 2026-08-27
 
 **One canonical command scaffold — the form split is superseded** (record

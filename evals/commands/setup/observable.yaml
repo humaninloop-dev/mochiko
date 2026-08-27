@@ -1,0 +1,82 @@
+# D8 partition — /mochiko:setup rule set, plan-observable vs out-of-instrument.
+# Ruling: command-plan-only-eval D8 (accepted 2026-08-27, review fold C1).
+# The `observable` list IS the D2 rubric; `out_of_instrument` rules are declared here,
+# never silently absent at coverage 0. Validated by `run.py check-rubric setup`:
+# every schema rule ID appears in exactly one list.
+#
+# Out-of-instrument reason vocabulary (implement's, minus `epic` — setup has no epic
+# scope):
+#   contingency    — fires only on a run-time event no forward plan contains
+#   conditional    — observable only under a fixture condition no current scenario plants
+#                    (activating it = planting the condition, a scenario-design act)
+#   latitude       — grants freedom; nothing falsifiable in a plan
+#   register       — prose-register meta-rule; not plan content
+#   fail-condition — end-state failure, not forward-plan content
+#
+# Mode gating: the three scenarios plant all three values of the `mode` dimension
+# (s1-greenfield · s2-brownfield · s3-amend), so every mode-gated rule is observable in
+# the scenario that plants its mode. The `seats` dimension resolves to multi in every
+# scenario, because the pre-ratification stress-test is always a second seat.
+command: setup
+
+observable:
+  # roles
+  - {id: setup.interrogation-inline, why: lead runs the interrogation itself — agenda adaptively then the catalog deck card by card}
+  - {id: setup.stress-test-cold-seat, why: the pre-ratification stress-test is staffed by a cold seat or a recorded waiver}
+  - {id: setup.blind-map-dispatch, why: that seat is dispatched in two messages with the angle map returning before the synthesis path}
+  # reserved
+  - {id: setup.coverage-survivor-routing, why: surviving coverage findings presented as candidate topics with the user ruling the path}
+  - {id: setup.user-mode-ruling, why: mode proposed from what the workspace shows and ruled by the user when ambiguous (all three modes planted)}
+  - {id: setup.user-card-rulings, why: every card ruling / module ruling / waiver described as the user's}
+  - {id: setup.gate-synthesis-ratification, why: ratification gate described with both onward branches before any authoring}
+  - {id: setup.user-conflict-rulings, why: s2 plants three reality-versus-README conflicts to confront in the open}
+  - {id: setup.user-map-confirmation, why: s2 reconstructed map confirmed entry by entry}
+  - {id: setup.gate-final-acceptance, why: acceptance gate described flagged proposal by flagged proposal}
+  # tools
+  - {id: setup.surface-set, why: the authored set named — region · scoped rules files · pointers · ledger · trace summary}
+  - {id: setup.synthesis-artifact, why: synthesis path and its template-or-schema source named}
+  - {id: setup.interrogation-inputs, why: agenda and catalog deck read from the plugin references (s2 adds the codebase analysis)}
+  - {id: setup.constitution-superseded, why: s3 plants a stale constitution file to delete on sight in one line}
+  - {id: setup.km-module-scaffold, why: the knowledge-management adoption branch described with its scaffold and pinned copy}
+  - {id: setup.feature-map-brownfield, why: s2 reconstructs delivered capabilities from routes and modules}
+  - {id: setup.feature-map-greenfield, why: s1 scaffolds the empty index}
+  - {id: setup.baselines-bootstrap, why: s2 bootstraps the product baselines from delivered code while s1 defers them}
+  - {id: setup.store-scaffold-unconditional, why: store scaffolded on every path — s3 creates only the missing concerns file}
+  - {id: setup.architecture-scope-handoff, why: surface types declared on the spine header in s1 and s2 and the existing line left alone in s3}
+  - {id: setup.next-step, why: close names the next doors}
+  # ways-of-working
+  - {id: setup.model-tiering, why: locate/enumerate reads routed to a cheap Explore subagent and every brief carries the routing rule}
+  - {id: setup.plan-approval-producers, why: producing seats plan first and work only on an approved plan — graders exempt}
+  - {id: setup.author-grader-default-fail, why: grading reads the authored surfaces themselves and defaults to FAIL}
+  - {id: setup.no-git-mutations, why: plan suggests commits and never runs a git mutation}
+  - {id: setup.acceptance-plain-text, why: gates described as plain blocking text and never a timed prompt}
+  # boundaries
+  - {id: setup.transport-floor, why: the cold seat makes every run multi-seat so the floor binds and is referenced never restated}
+  - {id: setup.durables-never-deleted, why: s3 carries both durables — the amend extends them and never offers deletion}
+  - {id: setup.governance-region-ownership, why: region regenerated between the markers with user content outside them untouched (planted in s1 and s3)}
+  - {id: setup.carve-outs-preserved, why: s3 plants the output-style pair carrying a user-set value plus a user-added line}
+  - {id: setup.map-never-overwrite, why: s1 scaffold and s2 reconstruction never overwrite and the s3 amend makes no map write}
+  - {id: setup.store-ruled-content-never-here, why: no architecture stance taken in the run on any path}
+
+out_of_instrument:
+  # latitude / register
+  - {id: setup.staffing-latitude, why: latitude}
+  - {id: setup.register, why: register}
+  # fail-conditions (all 6 — end-state failures, not forward-plan content; C1)
+  - {id: setup.fail.pre-ratification-authoring, why: fail-condition}
+  - {id: setup.fail.unclosed-trace, why: fail-condition}
+  - {id: setup.fail.author-graded, why: fail-condition}
+  - {id: setup.fail.floor-category-uncovered, why: fail-condition}
+  - {id: setup.fail.no-acceptance, why: fail-condition}
+  - {id: setup.fail.no-feature-map, why: fail-condition}
+
+# Declared unplanted branches (fixture-design record, not a partition class): three
+# rule facets are observable through one half of their subject only, because no scenario
+# plants the other half. Each is a plant candidate if a later grid wants it graded whole.
+#   setup.carve-outs-preserved — the mochiko:domain-registry half needs the layer-rules
+#     module attached and a domain-layer rules file; only the output-style pair is planted.
+#   setup.fail.no-feature-map — its amend clause (a missing map surfaced and offered) needs
+#     an amend fixture WITHOUT FEATURES.md; s3 plants the map-present side instead. The rule
+#     is out-of-instrument regardless, as a fail-condition.
+#   setup.km-module-scaffold — no fixture plants an adopted knowledge-management module, so
+#     the rule is graded on the described adoption branch, never on a never-overwrite read.

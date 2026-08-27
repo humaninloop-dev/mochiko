@@ -1,0 +1,28 @@
+{
+ "golden": "s1-zero-gap",
+ "arm": "post",
+ "pins": {
+  "plugin_version": "0.97.0",
+  "cli": "2.1.231 (Claude Code)",
+  "session_model": "sonnet",
+  "wrapper_sha256": "33fb96d64054b599"
+ },
+ "asserts": {
+  "load_gate": true,
+  "loaded_plugins": [
+   [
+    "mochiko",
+    "0.97.0"
+   ]
+  ],
+  "cap_hit": false,
+  "fence_breach": [
+   "Bash"
+  ],
+  "name_resolution": [],
+  "auth_failure": false
+ },
+ "cost_usd": 0.6247287,
+ "num_turns": 20,
+ "duration_ms": 179735
+}

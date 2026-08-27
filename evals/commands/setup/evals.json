@@ -1,0 +1,45 @@
+[
+  {
+    "id": "s1-greenfield",
+    "fixture": "s1-greenfield",
+    "args": "",
+    "control_prompt": "Read this workspace's repository state, then produce the detailed action plan you would follow to establish this project's engineering governance — the standards the project will be held to — so that it reflects the maintainers' declared intent and lands where Claude Code loads it automatically.",
+    "expected_output": "Greenfield branch: the workspace holds a product README and a user-written CLAUDE.md with no governance markers, no .mochiko/ and no source, so the mode proposed from what the workspace shows is greenfield (the user rules it where ambiguous). Plan must show: the interrogation run inline by the lead (agenda dimensions adaptively, then the catalog deck card by card, recommend-then-arbitrate) with every card and module ruling the user's; the synthesis written to .mochiko/memory/governance-intent.md and stress-tested by a cold seat dispatched blind in two messages before the user's ratification gate; only then the surface set authored (CLAUDE.md governance region inside fresh markers with the existing user notes untouched, scoped rules files, the ledger, the trace summary); an independent grade of the authored files; the user's acceptance flagged proposal by flagged proposal; and at close an empty FEATURES.md index scaffolded plus the architecture store created with a spine.md stub carrying its Scope: line, with no architecture stance taken and the product baselines left to the first implement run.",
+    "assertions": [
+      "mode proposed as greenfield from the workspace, with the user's ruling described",
+      "synthesis ratification gate described before any surface is authored",
+      "empty FEATURES.md scaffolded; product baselines explicitly deferred",
+      "architecture store scaffolded with a Scope: line and no ruled architecture content",
+      "the user's CLAUDE.md notes outside the governance markers are never touched"
+    ]
+  },
+  {
+    "id": "s2-brownfield",
+    "fixture": "s2-brownfield",
+    "args": "",
+    "control_prompt": "Read this workspace's repository state, then produce the detailed action plan you would follow to establish engineering governance for this existing codebase — the standards it will be held to — so that it reflects the maintainers' declared intent, accounts for how the code actually behaves today, and lands where Claude Code loads it automatically.",
+    "expected_output": "Brownfield branch: a running Express + SQLite service with no .mochiko/, no .claude/ and no CLAUDE.md, so the mode proposed is brownfield. Plan must show the codebase analysis into .mochiko/memory/codebase-analysis.md feeding the interrogation, and must confront the three planted reality-versus-declared conflicts as the user's rulings, never resolved silently: (1) README says every route is covered by a test, but DELETE /links/:id has none; (2) README says secrets never appear in logs, but the request log line prints the x-api-key header value; (3) README says the service runs no background jobs, but src/db.js starts a nightly setInterval purge inside the web process. From the same analysis the plan must reconstruct the feature map — capabilities derived from the routes and modules (link capture, listing/filtering, deletion, API-key access control) — confirmed with the user entry by entry and landed as FEATURES.md plus .mochiko/features/ entries marked delivered and reconstructed from code, and must bootstrap the product baselines (data model, contracts, constraints and decisions, quickstart) under .mochiko/product/ from the delivered code. Same spine as s1 for the synthesis, cold stress-test, ratification, authoring, independent grade, acceptance; store scaffolded with its Scope: line declared backend-service.",
+    "assertions": [
+      "mode proposed as brownfield; codebase analysis feeds the interrogation",
+      "all three planted conflicts surfaced as the user's rulings, none silently resolved",
+      "feature map reconstructed from the code and confirmed entry by entry",
+      "product baselines bootstrapped from the delivered code",
+      "no surface authored before the synthesis is ratified"
+    ]
+  },
+  {
+    "id": "s3-amend",
+    "fixture": "s3-amend",
+    "args": "add a principle covering how long we keep customer data, and tighten the pre-release checks",
+    "control_prompt": "Read this workspace's repository state, then produce the detailed action plan you would follow to update this project's existing engineering governance so that it adds a principle covering how long customer data is kept and tightens the pre-release checks, keeping everything already agreed intact.",
+    "expected_output": "Amend branch: the workspace already carries a governance surface set (CLAUDE.md region between the mochiko:governance markers, two scoped rules files, the ledger at v1.2.0, the synthesis with GI-001..GI-007), so the mode proposed is amend and the request in $ARGUMENTS scopes it. Plan must show the delta worked against the existing synthesis — the synthesis extended with new GI elements and its amendment log appended, never replaced, and neither durable ever offered for deletion — re-ratified by the user before any surface is regenerated, then the region regenerated between its markers with the user's Peartree notes and contributor section outside them untouched, and both carve-outs preserved verbatim: the mochiko:output-style switch line keeping the user's conversation: lite value, and the output-style rules file keeping its user-added Wren Studio line. The stale .mochiko/memory/constitution.md is superseded — deleted on sight with a one-line note. The store scaffold creates only what is missing: concerns.md is absent so it is created, while spine.md and its existing Scope: line are left alone. No feature-map write at all on an amend — FEATURES.md and FEAT-001 exist and are not touched. Semver bump on the region and the ledger, trace summary, independent grade, acceptance flagged proposal by flagged proposal.",
+    "assertions": [
+      "mode proposed as amend from the existing surface set, not brownfield",
+      "synthesis extended delta-wise and re-ratified before any regeneration",
+      "both carve-outs preserved verbatim, including the user's conversation: lite value",
+      "stale constitution.md deleted on sight with a one-line note",
+      "concerns.md created because missing; spine.md and its Scope: line left alone",
+      "no feature-map write on the amend path"
+    ]
+  }
+]

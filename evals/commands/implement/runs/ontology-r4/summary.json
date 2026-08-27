@@ -1,0 +1,300 @@
+{
+ "command": "implement",
+ "old_ref": "HEAD",
+ "replicates": 1,
+ "arms": [
+  "pre",
+  "post"
+ ],
+ "total_cost_usd": 4.3811,
+ "partition": {
+  "unchanged": [
+   "impl.absent-surfaces",
+   "impl.acceptance-plain-text",
+   "impl.adopt-first-user-call",
+   "impl.ambiguity-escalation",
+   "impl.attempt-exemption-user-only",
+   "impl.attempt-per-grade",
+   "impl.author-grader-default-fail",
+   "impl.baseline-delta-grammar",
+   "impl.baselines-never-in-place",
+   "impl.beyond-spec-disposition",
+   "impl.builder-decompose-disclose",
+   "impl.builder-never-designs",
+   "impl.card-contents",
+   "impl.card-review-before-confirm",
+   "impl.cards-template",
+   "impl.cold-verification",
+   "impl.constitution-supremacy",
+   "impl.constraint-challenge",
+   "impl.craft-build-bindings",
+   "impl.craft-verify-bindings",
+   "impl.delivered-territory-routing",
+   "impl.delta-reverification",
+   "impl.design-gaps-only",
+   "impl.design-inputs",
+   "impl.design-map-assertion",
+   "impl.design-outputs-home",
+   "impl.design-phase-fires-on-gap",
+   "impl.design-review-pair",
+   "impl.design-seats-staffing",
+   "impl.deviation-gate",
+   "impl.dm-close-verdict",
+   "impl.dm-entry-gate",
+   "impl.dm-landing-whole",
+   "impl.dm-surface-rounds",
+   "impl.epic-shared-baseline-single-pen",
+   "impl.escalation-batching",
+   "impl.fail.baseline-in-place",
+   "impl.fail.card-independence",
+   "impl.fail.card-unchecked",
+   "impl.fail.design-skipped",
+   "impl.fail.deviation-unresolved",
+   "impl.fail.no-acceptance",
+   "impl.fail.no-evidence",
+   "impl.fail.quality-gate",
+   "impl.fail.regression",
+   "impl.fail.spec-gap-unresolved",
+   "impl.fail.store-landing-incomplete",
+   "impl.fail.sufficiency-unrecorded",
+   "impl.fail.ungraded-fold",
+   "impl.finding-kind-disputed",
+   "impl.finding-kinds",
+   "impl.finding-severity-routing",
+   "impl.gap-finding-blind-dispatch",
+   "impl.gap-finding-scope",
+   "impl.gap-rework-bound",
+   "impl.gate-card-confirm",
+   "impl.gate-design-checkpoint",
+   "impl.gate-final-acceptance",
+   "impl.gates-fold",
+   "impl.gates-full-suite",
+   "impl.gates-never-triaged",
+   "impl.graded-fold",
+   "impl.infeasible-card-escalation",
+   "impl.landing-verifier-folds",
+   "impl.lane-never-widens",
+   "impl.midrun-refire",
+   "impl.minimalism-advisory",
+   "impl.model-tiering",
+   "impl.no-git-mutations",
+   "impl.no-progress-stop",
+   "impl.plan-approval-producers",
+   "impl.progress-surface",
+   "impl.register",
+   "impl.regression-sweep",
+   "impl.reports-envelope",
+   "impl.scope-escalation-fail",
+   "impl.seat-card-author-independence",
+   "impl.seat-gap-finder-blind",
+   "impl.seat-sufficiency-independence",
+   "impl.seat-verification-independence",
+   "impl.sound-loop-floor",
+   "impl.staffing-latitude",
+   "impl.store-landing",
+   "impl.sufficiency-binding-verdict",
+   "impl.sufficiency-disputed-clause",
+   "impl.sufficiency-report",
+   "impl.tools-referenced-never-restated",
+   "impl.user-runopen-rulings",
+   "impl.verification-design-time-grades",
+   "impl.zero-gap-map-assertion"
+  ],
+  "changed": [
+   "impl.briefs-name-rules-files",
+   "impl.design-absent-baseline-seed",
+   "impl.epic-card-sequence",
+   "impl.epic-design-always-fires",
+   "impl.epic-member-halt",
+   "impl.epic-seam-owners",
+   "impl.fail.gap-finding-missing",
+   "impl.fail.skip-unstated",
+   "impl.km-landing",
+   "impl.landing-delta",
+   "impl.landing-epic",
+   "impl.landing-selection",
+   "impl.mutation-lens",
+   "impl.transport-floor"
+  ],
+  "removed": [],
+  "added": [
+   "impl.landing-lane"
+  ]
+ },
+ "runs": [
+  {
+   "golden": "s1-zero-gap",
+   "arm": "pre",
+   "pins": {
+    "plugin_version": "0.97.0",
+    "cli": "2.1.231 (Claude Code)",
+    "session_model": "sonnet",
+    "wrapper_sha256": "33fb96d64054b599"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.97.0"
+     ]
+    ],
+    "cap_hit": false,
+    "fence_breach": [
+     "Bash"
+    ],
+    "name_resolution": [],
+    "auth_failure": false
+   },
+   "cost_usd": 0.6627407999999999,
+   "num_turns": 23,
+   "duration_ms": 204076,
+   "replicate": 1
+  },
+  {
+   "golden": "s1-zero-gap",
+   "arm": "post",
+   "pins": {
+    "plugin_version": "0.97.0",
+    "cli": "2.1.231 (Claude Code)",
+    "session_model": "sonnet",
+    "wrapper_sha256": "33fb96d64054b599"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.97.0"
+     ]
+    ],
+    "cap_hit": false,
+    "fence_breach": [
+     "Bash"
+    ],
+    "name_resolution": [],
+    "auth_failure": false
+   },
+   "cost_usd": 0.6359201999999999,
+   "num_turns": 20,
+   "duration_ms": 181761,
+   "replicate": 1
+  },
+  {
+   "golden": "s2-two-gaps",
+   "arm": "pre",
+   "pins": {
+    "plugin_version": "0.97.0",
+    "cli": "2.1.231 (Claude Code)",
+    "session_model": "sonnet",
+    "wrapper_sha256": "33fb96d64054b599"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.97.0"
+     ]
+    ],
+    "cap_hit": false,
+    "fence_breach": [
+     "Bash"
+    ],
+    "name_resolution": [],
+    "auth_failure": false
+   },
+   "cost_usd": 0.7588973999999999,
+   "num_turns": 26,
+   "duration_ms": 181300,
+   "replicate": 1
+  },
+  {
+   "golden": "s2-two-gaps",
+   "arm": "post",
+   "pins": {
+    "plugin_version": "0.97.0",
+    "cli": "2.1.231 (Claude Code)",
+    "session_model": "sonnet",
+    "wrapper_sha256": "33fb96d64054b599"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.97.0"
+     ]
+    ],
+    "cap_hit": false,
+    "fence_breach": [
+     "Bash"
+    ],
+    "name_resolution": [],
+    "auth_failure": false
+   },
+   "cost_usd": 0.7296762000000001,
+   "num_turns": 21,
+   "duration_ms": 178729,
+   "replicate": 1
+  },
+  {
+   "golden": "s3-empty-args",
+   "arm": "pre",
+   "pins": {
+    "plugin_version": "0.97.0",
+    "cli": "2.1.231 (Claude Code)",
+    "session_model": "sonnet",
+    "wrapper_sha256": "33fb96d64054b599"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.97.0"
+     ]
+    ],
+    "cap_hit": false,
+    "fence_breach": [
+     "Bash"
+    ],
+    "name_resolution": [],
+    "auth_failure": false
+   },
+   "cost_usd": 0.8279445,
+   "num_turns": 15,
+   "duration_ms": 271896,
+   "replicate": 1
+  },
+  {
+   "golden": "s3-empty-args",
+   "arm": "post",
+   "pins": {
+    "plugin_version": "0.97.0",
+    "cli": "2.1.231 (Claude Code)",
+    "session_model": "sonnet",
+    "wrapper_sha256": "33fb96d64054b599"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.97.0"
+     ]
+    ],
+    "cap_hit": false,
+    "fence_breach": [
+     "Bash"
+    ],
+    "name_resolution": [],
+    "auth_failure": false
+   },
+   "cost_usd": 0.7659087,
+   "num_turns": 26,
+   "duration_ms": 230545,
+   "replicate": 1
+  }
+ ]
+}

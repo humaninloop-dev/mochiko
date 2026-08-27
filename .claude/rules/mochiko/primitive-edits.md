@@ -71,9 +71,11 @@ template edit; the path scope above covers them so this reminder injects on a sc
      every schema, a section with no rules carrying its explicit empty marker (D4/D5).
      Every `<cmd>.sec.*` token anywhere in the `.md`, inside the Rules block or outside
      it, resolves to a live node.
-  3. **FAIL survival** keys to the **`fail-condition` label set**: every so-labeled rule
-     survives (a reword keeps its ID), and the `.md` Not-done line's hard-coded count
-     matches the schema's.
+  3. **FAIL survival** keys to **`kind: fail`** (ontology D1, build item 4): every
+     `kind: fail` rule survives (a reword keeps its ID), the `.md` Not-done line's
+     hard-coded count matches the schema's `kind: fail` count, and the correspondence
+     between the `<cmd>.fail.*` ID segment and `kind: fail` holds in both directions —
+     `kind:` is never defaulted on a `.fail.*` ID.
   4. **ID continuity (D11/D14).** No `<cmd>.*` ID — rule **or** `<cmd>.sec.*` section —
      vanishes without a tombstone. A reword keeps its ID, a split mints children recording
      the parent, a merge tombstones the losers; no surviving rule text references a
@@ -116,6 +118,23 @@ template edit; the path scope above covers them so this reminder injects on a sc
       **`.mochiko/provenance.yaml`**, keyed by rule ID — repo-side, never in the schemas,
       never shipped; an anchored rule still leaves only by recorded
       supersession-by-ruling, and the checker resolves every anchor.
+  11. **Ontology-grammar conformance (D1–D8).** Across the pair: every `kind:` value comes
+      from the nine-kind closed set — `constraint` · `duty` · `gate` · `reservation` ·
+      `binding` · `bound` · `routing` · `fail` · `latitude` — with `constraint` the omitted
+      default (an absent `kind:` reads `constraint` and is never written) · the schema
+      declares the `conditions:` and `moments:` blocks its own rules use, and every `when:`
+      term and every moment-resolved resolution point resolves against them · a rule-level
+      activation guard is single-homed in `when:` and has left the `text` (MOVE), except
+      where the condition rides the rule's subject noun and extraction would falsify the
+      text or strand a referent, where `when:` is added and the text stands unchanged
+      (DECLARE) · a `class: floor` rule is always read and always delivered whatever its
+      `when:` — `when:` gates when the obligation applies, never whether it is delivered ·
+      every `kind: fail` node carries `enforces:`, each listed ID resolving to a live local
+      rule, an empty list legal only with its one-line reason · an `extends: common.<slug>`
+      stub inherits `text` / `labels` / `pointer` only, declares `class:` locally (C3), and
+      binds only where the command's own text is an exact duplicate of the block — and
+      where any stub binds, the `.md`'s first action Reads
+      `plugins/mochiko/schemas/common.yaml` raw beside the schema.
 
   Rulings: `.mochiko/brainstorms/command-md-scaffold-standardization/record.md`
   D1–D7 (`DECISIONS.md` 2026-08-27 — the canonical scaffold; supersedes the charter-form /
@@ -124,7 +143,9 @@ template edit; the path scope above covers them so this reminder injects on a sc
   D10 · `.mochiko/decisions/2026-08-13-charter-plan-implement.md` ·
   `.mochiko/brainstorms/charter-ritual-balance/record.md` D3 (`DECISIONS.md` 2026-08-13) ·
   `.mochiko/brainstorms/command-content-schema/record.md` D9 · D11 · D14 · D16
-  (`DECISIONS.md` 2026-08-26).
+  (`DECISIONS.md` 2026-08-26) ·
+  `.mochiko/brainstorms/command-schema-ontology/record.md` D1–D11 (`DECISIONS.md`
+  2026-08-27 — the run-shape grammar; amends command-content-schema D6, and D3 narrowly).
 
 **Protected content leaves ONLY by ruling.** A line in a record's protected set, marked `KEPT:`, or
 traceable to a `DECISIONS.md` row may be removed only as a recorded supersession-by-ruling. A silent

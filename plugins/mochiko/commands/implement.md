@@ -40,8 +40,18 @@ sequences, verifies, and reports) · `impl.sec.boundaries` (the non-waivable flo
 `impl.sec.fail-conditions` (the Not-done set). The raw Read is the first-class read: no
 binary, no render step. Interpret it live: substitute every `${var}` from its `vars:` block
 at read time; a `pointer:` rule binds you to that skill's procedure, referenced never
-restated; labels come from `plugins/mochiko/schemas/command-labels.yaml`. A rule you have
-not read is not thereby waived — this run is not open until the schema is read whole.
+restated; labels come from `plugins/mochiko/schemas/command-labels.yaml`. Read the rule
+grammar along with the rules: a rule's `kind:` names what it is, and an absent `kind:` reads
+`constraint`; a rule carrying `when:` binds only where its terms hold against the schema's
+declared `conditions:`, except that a `class: floor` rule is always read and always
+delivered — `when:` gates when its obligation applies, never whether it reaches you; the
+`moments:` block names this run's anchor points, unordered; and every `kind: fail` node's
+`enforces:` names the rules it is the end-state contrapositive of. Where a rule carries
+`extends: common.<slug>`, **Read `plugins/mochiko/schemas/common.yaml` raw, in full, in the
+same first action**; a stub inherits text/labels/pointer only — `class` and every
+absence-meaningful field are local — and the stub's `impl.*` ID stays the citable ID. A rule
+you have not read is not thereby waived — this run is not open until the schema is read
+whole.
 
 ## Adaptive Goal Protocol
 
@@ -76,7 +86,7 @@ Every run has a goal and an explicit done condition; a run is never goal-less.
    independently verified against real infrastructure (per cycle and whole); the code meets its
    criteria, traces to requirements, aligns with governance; the acceptance landing executed
    whole; the run closes at final acceptance (accept / amend / reject). And nothing below stands.
-3. **Not done — default FAIL:** the 15 rules labeled `fail-condition` in
+3. **Not done — default FAIL:** the 15 rules of `kind: fail` in
    `plugins/mochiko/schemas/implement.yaml` (section `impl.sec.fail-conditions`) — any one
-   standing fails the run. If the schema's `fail-condition` count is not 15, the pair is out of
+   standing fails the run. If the schema's `kind: fail` count is not 15, the pair is out of
    sync: halt and surface it before closing.

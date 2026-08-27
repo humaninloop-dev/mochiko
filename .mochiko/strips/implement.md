@@ -12,6 +12,254 @@ no template revision and no cross-command re-audit). **Stale as a standing claim
 entries below. **Also stale:** the shape is **v5** as of the v0.35.0 wave below, and the
 "standing producer / standing verifier" claim is superseded by that wave's seat-recycling binding.
 
+<!-- Wave context: the command-schema ontology wave (v0.98.0) — the rule grammar gains
+`kind:`, a declared `conditions:` block with a rule-level `when:`, a declared `moments:`
+block, `enforces:` on fail nodes, and `extends: common.<slug>` (D1–D8). Ruling for every
+[v0.98.0] entry below: `.mochiko/brainstorms/command-schema-ontology/record.md` D1–D11 as
+amended → `DECISIONS.md` 2026-08-27 row. Clause inventory and audit referent:
+`.mochiko/brainstorms/command-schema-ontology/conversion-inventory.md` — sections A.1
+(kinds), B.1 (the `when:` extraction), C.1 / D.1 (the declared blocks), E.1 (`enforces:`),
+F (bindings), G (the canonical header), H (the Not-done re-key).
+
+Riding the decision row, no strip owed: every `kind:` line (a pure addition, `constraint`
+staying the omitted default) · the `conditions:` and `moments:` blocks · `enforces:` on the
+fifteen fail nodes · the two DECLARE `when:` additions whose text stands unchanged —
+`impl.lane-never-widens` and `impl.epic-shared-baseline-single-pen`, where the condition
+rides the subject noun and extraction would strand the referent (D3 as amended at the
+inventory's J-1) · the C4 semantics comment on the five floors that gained a `when:` · the
+`.md` Rules-block sentences naming the new grammar. Also no strip owed:
+`impl.author-grader-default-fail` and `impl.model-tiering` revert from the uncommitted
+six-block `extends:` prototype to full per-command rules, restored byte-identical to
+v0.97.0 — the prototype was never committed, so neither rule ever shipped in stub form and
+no tombstone is due (C2's re-screen; inventory F.3 and J-14). -->
+
+## [v0.98.0] Fourteen rule-level activation guards single-homed out of `text:` into `when:` (D3)
+
+- **Disposition:** superseded → the `when:` field on each rule, resolving against the new
+  top-level `conditions:` block; every ID kept, every reword tabled in the inventory's
+  section B.1.
+- **Tier failed:** n/a — supersession by ruling (`command-schema-ontology` D3, single-homing:
+  "rule-level activation conditions live in `when:` alone and leave the `text`";
+  `DECISIONS.md` 2026-08-27. Two of the fourteen are also D9 declarations — the conditionally
+  active Not-done members.)
+- **Content:** the fourteen texts as they stood at v0.97.0, verbatim (block scalars quoted in
+  their folded, single-line form — the text a run sees), each with the guard that left:
+
+  1. `impl.epic-design-always-fires` — guard "An epic's" → `when: {scope: [epic]}`:
+     "An epic's design phase always fires, for the joint spine at `${epics_dir}/EPIC-XXX/`:
+     the joint design plan, the joint architecture and seam design, and batch ordering. Spine
+     artifacts follow templates/artifact-format.md."
+  2. `impl.epic-seam-owners` — guard "inside an epic" → `when: {scope: [epic]}`:
+     "Every cross-member seam owner is named at design time (no later-lander default inside
+     an epic)."
+  3. `impl.epic-card-sequence` — guard "An epic" → `when: {scope: [epic]}`:
+     "An epic builds one merged sequential card sequence from the joint design — shared
+     foundation cycles first, then in-epic dependency order — with feature-tagged cards whose
+     reports land in each member's `${features_dir}/FEAT-XXX/`."
+  4. `impl.epic-member-halt` (`class: floor`) — guard "In an epic" → `when: {scope: [epic]}`:
+     "In an epic, exhaustion or no-progress halts member-scoped; the disposition — carve the
+     member out (its rows return to pending, the epic continues) or hold the whole run — is
+     the user's."
+  5. `impl.landing-selection` — guard "Selection scope" → `when: {scope: [selection]}`:
+     "Selection scope lands the store landing plus the map's graduation batch: this run's
+     delivered work rows fold into the capability's extent lines and vanish (pending rows
+     persist) · status set delivered, dated, never regressing · the FEATURES.md index line
+     updates · the specs-index row is touched — a spec reads closed exactly when all its
+     selected rows have folded (derived, never asserted). No separate feature-close stage
+     exists."
+  6. `impl.landing-epic` — guard "An epic" → `when: {scope: [epic]}`:
+     "An epic lands each member's graduation batch, plus the epic close: the [EPIC-XXX] row
+     markers vanish, the manifest is stamped delivered (dated), the spine directory persists
+     as record. Multi-spec closure is compositional: each spec closes on its own rows, however
+     many specs one landing touches."
+  7. `impl.landing-delta` — guard "Delta scope" → `when: {scope: [delta]}`:
+     "Delta scope lands the entry's marked delta fold."
+  8. `impl.fail.gap-finding-missing` (`class: floor`, the first D9 declaration) — guard
+     "A selection-scope or epic run" → `when: {scope: [selection, epic]}`:
+     "A selection-scope or epic run without its gap-finding pass."
+  9. `impl.fail.skip-unstated` (`class: floor`, the second D9 declaration) — guard
+     "A delta-scope or lane run" → `when: {scope: [delta, lane]}`:
+     "A delta-scope or lane run whose final-validation report does not state that skip."
+  10. `impl.mutation-lens` — guard "at high depth only" → `when: {depth: [high]}`:
+      "The mutation lens runs on the verification seat, which already holds code sight — at
+      high depth only, skips disclosed: a high-depth run owes mutation results or a stated
+      skip."
+  11. `impl.km-landing` — guard "Where .mochiko/memory/knowledge-management.md exists" →
+      `when: {km_file: present}`:
+      "Where .mochiko/memory/knowledge-management.md exists, the same landing carries its KM
+      obligations."
+  12. `impl.briefs-name-rules-files` — guard "When a governance region is present" →
+      `when: {governance_region: present}`:
+      "When a governance region is present, every code-touching brief names the relevant
+      `${rules_dir}/` files as an obligated read."
+  13. `impl.design-absent-baseline-seed` — guard "On an absent baseline" →
+      `when: {baseline: absent}`:
+      "On an absent baseline the phase's first duty is the seed — an empty scaffold stating so
+      where no code is delivered; reconstructed from delivered code, and confirmed with the
+      user at the checkpoint, where it exists. The seed is the baseline write; this feature's
+      design still lands as deltas, never merged into the seed."
+  14. `impl.transport-floor` (`class: floor`) — guard "A run composing more than one seat" →
+      `when: {seats: multi}`:
+      "A run composing more than one seat gains the transport floor: message legs on any
+      multi-seat messaging, topology legs on shared writes — non-waivable once triggered."
+
+- **Kept deliberately:** every obligation survives whole — only the activation guard moved,
+  and the ID, `class:`, `labels:`, and `pointer:` of all fourteen are untouched. Where a
+  reword needed a new antecedent, the inventory's ruled text supplies it rather than dropping
+  meaning: `impl.fail.skip-unstated` names the skip outright ("its skipped gap-finding pass")
+  because "that skip" loses its antecedent once the guard leaves (D15), and
+  `impl.transport-floor` picks up the split-trigger framing and the "referenced, never
+  restated" tail its five siblings already carried. The five floors that gained a `when:`
+  stay floors and are still always read and always delivered — `when:` gates when the
+  obligation applies, never whether it reaches the run (C4), stated on each block as a
+  comment. Guards that are NOT rule-level activation stayed in prose untouched, per the
+  inventory's stays-prose table: `impl.gap-finding-scope`'s four-scope arms,
+  `impl.absent-surfaces`'s per-surface table, `impl.landing-verifier-folds`'s lane limb,
+  `impl.regression-sweep` and `impl.cold-verification`'s epic carves,
+  `impl.sufficiency-binding-verdict`'s delta arm, and every render-degrade carve.
+- **Consumers assessed:** `plugins/mochiko/commands/implement.md` (the Rules block gains the
+  `when:` interpretation sentence the same wave) · `scripts/check-command-schema.py` (the
+  `when:`-resolution and per-dimension coverage checks land the same wave) ·
+  `.claude/rules/mochiko/primitive-edits.md` criterion 11 (re-keyed the same wave; entry in
+  `.mochiko/strips/primitive-edits.md`) · `.claude/skills/converting-command-to-schema/SKILL.md`
+  (amended the same wave) · `.mochiko/provenance.yaml` (anchors are keyed by rule ID and every
+  ID is kept, so no anchor moves).
+- **Coverage finding F6-1, raised and closed in this wave:** with entries 5–7 declared, the
+  per-dimension coverage report showed `scope: lane` reaching no landing rule — the first F6
+  hole, made deterministic by the declarations above rather than found by hand audit. Its
+  content was D9 user-gate work (build item 5), never the producer's: the build drafted a
+  proposed rule and the user ruled it adopted as drafted, landing `impl.landing-lane` in
+  `impl.sec.tools` beside the family. That rule is a **pure addition riding the decision row**
+  — no strip of its own, no fail node, no `.md` change; the Not-done count-pin stays 15.
+  `impl.landing-verifier-folds` was left untouched by the same ruling.
+
+## [v0.98.0] The `fail-condition` label removed from all fifteen fail nodes — `kind: fail` is the selector (D1)
+
+- **Disposition:** superseded → `kind: fail` on each of the fifteen nodes in
+  `plugins/mochiko/schemas/implement.yaml`, section `impl.sec.fail-conditions`.
+- **Tier failed:** n/a — supersession by ruling (`command-schema-ontology` D1 and
+  build-surface item 4, "`kind: fail` replaces the `fail-condition` label as the operative
+  selector"; `DECISIONS.md` 2026-08-27. The label is retired from the registry the same wave —
+  entry in `.mochiko/strips/command-labels.md`.)
+- **Content:** the `fail-condition` label value, verbatim, as the first entry of the
+  `labels:` list on each of: `impl.fail.sufficiency-unrecorded` · `design-skipped` ·
+  `card-independence` · `card-unchecked` · `quality-gate` · `no-evidence` · `regression` ·
+  `baseline-in-place` · `deviation-unresolved` · `store-landing-incomplete` · `ungraded-fold` ·
+  `gap-finding-missing` · `skip-unstated` · `spec-gap-unresolved` · `no-acceptance`.
+
+  The section's `intent:` line named the retired key too, and is re-keyed with them —
+  verbatim as it stood at v0.97.0:
+
+  > The fail-condition set — any one standing fails the run; the .md Not-done line hard-codes this set's count.
+
+- **Kept deliberately:** every node's second label (`reporting` · `user-gate` ·
+  `independence` · `evidence` · `landing`) survives, so the topic clusters are unchanged;
+  the `intent:` line keeps both of its clauses — the any-one-standing semantics and the
+  count-pin note — with only "The fail-condition set" becoming "The kind: fail set";
+  the `impl.sec.fail-conditions` section ID and the `impl.fail.*` ID segment are untouched —
+  both are ID grammar, not the retired label; `class: floor` on all fifteen is untouched; the
+  count stays 15, so the `.md` count-pin does not move.
+- **Consumers assessed:** `plugins/mochiko/schemas/command-labels.yaml` (registry line removed
+  the same wave) · the `.md` Not-done line (re-keyed the same wave — next entry) ·
+  `.claude/rules/mochiko/primitive-edits.md` criterion 3 (re-keyed the same wave) ·
+  `scripts/check-command-schema.py` (the count check and the bidirectional
+  `.fail.`-segment ↔ `kind: fail` cross-check re-key the same wave).
+
+## [v0.98.0] The `.md` Not-done line's `fail-condition` key superseded by `kind: fail`
+
+- **Disposition:** superseded → the re-keyed line in
+  `plugins/mochiko/commands/implement.md`, Adaptive Goal Protocol step 3.
+- **Tier failed:** n/a — supersession by ruling (`command-schema-ontology` build-surface
+  item 4; `DECISIONS.md` 2026-08-27. Reworded line tabled in the inventory's section H.)
+- **Content:** step 3 as it stood at v0.97.0, verbatim —
+
+  > 3. **Not done — default FAIL:** the 15 rules labeled `fail-condition` in
+  >    `plugins/mochiko/schemas/implement.yaml` (section `impl.sec.fail-conditions`) — any one
+  >    standing fails the run. If the schema's `fail-condition` count is not 15, the pair is out of
+  >    sync: halt and surface it before closing.
+
+- **Kept deliberately:** the whole guard the old key carried — the hard-coded count 15, the
+  section citation, the any-one-standing clause, and the out-of-sync halt clause — survives
+  verbatim on the new key; only the two `fail-condition` tokens become `kind: fail`. The count
+  does not move: this wave adds and removes no fail node.
+- **Consumers assessed:** `scripts/check-command-schema.py` greps this literal phrase for the
+  count guard (re-keyed the same wave) · `.claude/rules/mochiko/primitive-edits.md`
+  criterion 3 · `.claude/skills/converting-command-to-schema/SKILL.md` (both re-keyed the same
+  wave, with their own entries).
+
+## [v0.98.0] `impl.register`'s `labels:` and `text:` extracted into `common.register` (D8)
+
+- **Disposition:** superseded → the shared block `common.register` in
+  `plugins/mochiko/schemas/common.yaml`, bound by the stub `impl.register` carrying
+  `extends: common.register` plus a local `class:` and `kind:`.
+- **Tier failed:** n/a — supersession by ruling (`command-schema-ontology` D8 as narrowed at
+  C2 and given its precedence clause at C3 — itself a recorded supersession-by-ruling of
+  command-content-schema D3, amended not reversed; `DECISIONS.md` 2026-08-27. The
+  3-or-more-exact-duplicate bar and the bind/no-bind table: inventory F.0/F.1.)
+- **Content:** the two fields as they stood at v0.97.0, verbatim —
+
+  ```yaml
+        labels: [reporting]
+        text: >-
+          User-facing prose follows templates/output-style.md.
+  ```
+
+- **Kept deliberately:** `impl.register` keeps its ID — the stub's `impl.*` ID stays the
+  citable ID — and keeps `class: must` **locally**, per C3's precedence clause: `class:` and
+  every absence-meaningful field are never inherited, so a rule's bindingness stays readable
+  from its own file. The resolved text and labels are byte-identical to what was removed;
+  nothing about the rule's meaning changes. `impl.register` is implement's **only** binding
+  stub — the other five prototype stubs either revert (`author-grader-default-fail`,
+  `model-tiering`, whose blocks failed the 3+ bar) or carry implement-specific text that is
+  not an exact duplicate and so does not bind: `impl.no-git-mutations` (the ephemeral-snapshot
+  carve), `impl.acceptance-plain-text` (it enumerates implement's three gates), and
+  `impl.transport-floor` (its residue differs from the block even after guard-stripping).
+- **Consumers assessed:** `plugins/mochiko/commands/implement.md` (its first action now Reads
+  `common.yaml` raw beside the schema — added the same wave) ·
+  `plugins/mochiko/schemas/common.yaml` (new shipped primitive, same wave) ·
+  `scripts/check-command-schema.py` (`extends:` target resolution, orphan-block detection, and
+  the C3 local-`class:` assert land the same wave) · `.mochiko/provenance.yaml` (keyed by rule
+  ID; `impl.register` is unanchored, so nothing moves).
+
+## [v0.98.0] The schema header's D6 grammar block superseded by the canonical ontology header (G)
+
+- **Disposition:** superseded → the canonical header comment at the top of
+  `plugins/mochiko/schemas/implement.yaml` (inventory section G, `<cmd>`/`<prefix>`
+  substituted), which keeps every surviving D6/D11/D12/D14/D15/D16 line and adds the D1–D8
+  grammar. `at:` is deliberately absent (D4 as amended at I5 — deferred to graduation).
+- **Tier failed:** n/a — supersession by ruling (`command-schema-ontology` D1–D8 amend
+  command-content-schema D6's rule-block grammar; `DECISIONS.md` 2026-08-27. The
+  "charter audit" wording is the inventory's J-13: the scaffold standardization made all six
+  commands pair-form, so "pair audit" is correct everywhere and implement was one of two
+  stragglers — normalized here inside a recorded scope rather than silently.)
+- **Content:** the superseded header lines as they stood at v0.97.0, verbatim —
+
+  ```
+  # rule-shaped content (command-content-schema D1/D7, DECISIONS.md 2026-08-26). The command
+  # Grammar (D6, as amended by D14): sections: list, each {id, title, intent, rules};
+  # rule blocks {id, labels, class, text, pointer?} nest under their section.
+  #   section id  <cmd>.sec.<slug> — minted once like rule IDs (D11); title verbatim from
+  #           the charter group it carries; intent one line, navigation only — sections
+  #           never grow a second prose surface (narrative stays in the .md).
+  #           the losers under a top-level tombstones: key. First mint — no tombstones yet.
+  #   class   floor = non-waivable, must-survive under the charter audit (M3) ·
+  #   impl.sec.* · class: values · labels · pointer: skills · file paths).
+  ```
+
+- **Kept deliberately:** every grammar line the amendment does not touch survives verbatim —
+  the ID mint-once/reword/split/merge rules, the `impl.fail.*` segment line, the labels
+  registry line, the `class:` value definitions, the `text:`/`${var}` line, the D16 provenance
+  sidecar line, the `pointer:` line, the deixis ban and its curated-marker note, the legal
+  self-reference pair ("this schema" and "the run" — implement is a run command, so the desks'
+  third term is correctly absent), the D12 grain line, and the D13 advisory-checker line. The
+  "First mint — no tombstones yet." clause is dropped as stale fact rather than doctrine:
+  the canonical header carries the tombstone grammar without the mint-state claim.
+- **Consumers assessed:** the other five command schemas take the same canonical header the
+  same wave (architecture is the second J-13 straggler) ·
+  `.claude/skills/converting-command-to-schema/SKILL.md` restates this header for new
+  conversions (amended the same wave, with its own entry) ·
+  `scripts/check-command-schema.py` (grammar checks extended the same wave).
+
 <!-- Wave context: the command-`.md`-scaffold standardization wave (v0.97.0) — one canonical
 `.md` scaffold for all six pair commands (D1/D2). `implement.yaml` untouched — it is the
 six-set donor vocabulary (D4). Ruling for the [v0.97.0] entry below:

@@ -1,10 +1,17 @@
 # Label registry for command content schemas — the cross-command vocabulary
-# (command-content-schema D3/D8, DECISIONS.md 2026-08-26). Rules live per-command
-# (no shared rule library); the SAME LABEL on rules in different command schemas is
-# the cross-command link. Every `labels:` value in a `kind: command` schema MUST
+# (command-content-schema D3/D8, DECISIONS.md 2026-08-26). Rules live per-command by
+# default, and the SAME LABEL on rules in different command schemas is the cross-command
+# link; the one exception is `plugins/mochiko/schemas/common.yaml`, the shared library for
+# text that is an exact duplicate across three or more command schemas
+# (command-schema-ontology D8 as amended by C2, DECISIONS.md 2026-08-27 — a recorded
+# supersession of command-content-schema D3, narrowed and not reversed).
+# Every `labels:` value in a `kind: command` schema MUST
 # come from this registry; a new label enters by registry edit FIRST, under the
 # normal shipped-primitive ceremony. One line of meaning per label — a label is a
 # cluster name, never a summary.
+# Retired: `fail-condition`, removed at 0.98.0 — `kind: fail` is the selector for the
+# Not-done set; ruling: command-schema-ontology D1, build item 4
+# (`.mochiko/brainstorms/command-schema-ontology/record.md`, `DECISIONS.md` 2026-08-27).
 # Stage 1 job: query/navigation only. Goal state: the edit-time drift check (D4,
 # benefit-keyed graduation on record).
 # Advisory checker: scripts/check-command-schema.py (D13).
@@ -12,7 +19,6 @@ kind: command-labels
 labels:
   independence: Who is never whom — author/grader separation, non-author seats, blind dispatch.
   user-gate: A decision or checkpoint reserved to the user — never the run's own call.
-  fail-condition: A Not-done clause — any one standing fails the run; the command .md's hard-coded count keys to exactly this set.
   attempt-economy: Attempt bounds, no-progress stops, exhaustion dispositions, and their redeclaration points.
   landing: What executes at acceptance — folds, graduations, store landing, close semantics.
   evidence: What must be captured, run, or shown — real-infrastructure proof, sweeps, disclosed claims.

@@ -4,6 +4,176 @@ Entry formats: `strips/README.md`. Ruling for every [v0.68.0] entry below:
 `DECISIONS.md` 2026-08-13 "PM role & feature derivation" row →
 `.mochiko/brainstorms/pm-role-and-feature-derivation/record.md` (D6/D7/D8/D9/D10).
 
+<!-- Wave context: the command-schema ontology wave (v0.98.0) — the D1–D8 grammar amendment
+over the `.md` + schema pair: a closed `kind:` set with `constraint` as the omitted default
+(D1), a per-schema `conditions:` block plus a rule-level `when:` guard with the condition
+single-homed out of `text` (D3), a per-schema `moments:` block (D4), `enforces:` on every
+`kind: fail` node (D6), and `extends: common.<slug>` binding the shared blocks in
+`plugins/mochiko/schemas/common.yaml` (D8 — a narrow supersession of command-content-schema
+D3). Ruling for every [v0.98.0] entry below:
+`.mochiko/brainstorms/command-schema-ontology/record.md` D1–D11 as amended → `DECISIONS.md`
+2026-08-27 command-schema-ontology row. Clause inventory (the audit referent): that session's
+`conversion-inventory.md`. Pure additions ride the decision row and are not entered here —
+the `kind:` lines, the `conditions:` and `moments:` blocks, the C4 floor-semantics comments,
+and the `.md` Rules-block grammar breath. -->
+
+## [v0.98.0] The schema header's D6/D14 grammar comment — superseded by the canonical D1–D8 header (build item 1)
+
+- **Disposition:** superseded → the canonical header comment block at the top of
+  `plugins/mochiko/schemas/feature.yaml`, per the inventory's section G, which states the
+  same grammar plus the `kind:` / `when:` / `conditions:` / `moments:` / `enforces:` /
+  `extends:` fields.
+- **Tier failed:** n/a — supersession by ruling (record D1–D8, build-surface item 1: "amend
+  the six schemas' header grammar comments to the D1–D8 grammar"; `DECISIONS.md`
+  2026-08-27).
+- **Content:** the superseded lines as shipped at v0.97.0, verbatim —
+
+  ```
+  # Command content schema for /mochiko:feature — SOURCE OF TRUTH for the product desk's
+  # rule-shaped content (command-content-schema D1/D7; the D10 per-command rollout ruling
+  # 2026-08-26, record Session trail; DECISIONS.md 2026-08-26). The command .md instructs a
+  # raw, full Read of this file at command fire; the model interprets it live — no build
+  # step, no binary on the read path (GI-020). Narrative (Identity & Mission, Adaptive Goal
+  # Protocol prose) stays in plugins/mochiko/commands/feature.md.
+  # Grammar (D6, as amended by D14): sections: list, each {id, title, intent, rules};
+  # rule blocks {id, labels, class, text, pointer?} nest under their section.
+  #           the charter group it carries; intent one line, navigation only — sections
+  #           never grow a second prose surface (narrative stays in the .md).
+  #           the losers under a top-level tombstones: key. First mint — no tombstones yet.
+  #   class   floor = non-waivable, must-survive under the charter audit (M3) ·
+  #   feat.sec.* · class: values · labels · pointer: skills · file paths).
+  ```
+
+- **Kept deliberately:** every surviving D6/D11/D12/D14/D15/D16 grammar line is carried into
+  the new block verbatim or near-verbatim — the section-ID mint rule, the ID-frozen /
+  reword-keeps-its-ID / split / merge rules, the `feat.fail.*` segment line, the label
+  registry pointer, the three-value `class` vocabulary, the `${var}` substitution line, the
+  provenance-sidecar line, the `pointer:` line, the D15 referential-closure paragraph with
+  this desk's own legal self-reference set ("this schema", "the desk", "the visit"), the D12
+  grain line, and the D13 advisory-checker line. Two changes inside the kept material are
+  deliberate and recorded here rather than silently: `charter audit` → **`pair audit`**
+  (the scaffold standardization made all six commands pair-form — inventory J-13, which
+  named two stragglers where the corpus in fact held three: `feature.yaml`,
+  `architecture.yaml`, `implement.yaml`), and the dropped "First mint — no tombstones yet"
+  clause, which the D14 six-set relocation had already falsified for the schemas that gained
+  tombstones and which the canonical header does not carry for any of the six.
+- **Consumers assessed:** `scripts/check-command-schema.py` parses the YAML, never this
+  comment (it gains its own D1–D8 checks in the same wave); no other primitive reads it.
+
+## [v0.98.0] `feat.dm-km-landing` and `feat.transport-floor` — activation guards single-homed into `when:` (D3)
+
+- **Disposition:** superseded → the `when:` field on each rule, with the rule's `text`
+  reworded to carry the obligation alone. Both keep their IDs (a reword, D11).
+- **Tier failed:** n/a — supersession by ruling (record D3, single-homing: "rule-level
+  activation conditions live in `when:` alone and leave the `text`"; `DECISIONS.md`
+  2026-08-27. Clause inventory: `conversion-inventory.md` section B.2, the two feature
+  MOVEs).
+- **Content:** the guard-carrying texts as shipped at v0.97.0, verbatim —
+
+  ```
+  feat.dm-km-landing:
+          Execute the KM landing for desk-side writes where
+          .mochiko/memory/knowledge-management.md exists.
+
+  feat.transport-floor:
+          A visit that composes more than one seat gains a floor on its composition and
+          messaging: a split trigger — message legs on any multi-seat messaging, topology
+          legs on shared writes — non-waivable once triggered. Trigger test, floor legs,
+          composition-safe shapes, and disclosure: mochiko:patterns-transport-floor,
+          referenced never restated.
+  ```
+
+- **Kept deliberately:** every obligation survives whole. `feat.dm-km-landing` keeps its
+  `class: must`, its `kind: duty`, and the knowledge-management path — now named as the
+  ritual's home rather than as a presence test — under `when: {km_file: present}`.
+  `feat.transport-floor` keeps `class: floor`, both floor legs, the non-waivable-once-
+  triggered clause, the four-part pointer tail, and its `pointer:`; its seat-count guard
+  becomes `when: {seats: multi}` and it carries the C4 comment verbatim — a floor is always
+  read and always delivered, `when:` gating when the obligation applies, never whether it is
+  delivered, and re-evaluated whenever a seat is added mid-visit.
+- **Consumers assessed:** the desk's `.md` half names neither rule by ID; no other primitive
+  cites them. `mochiko:patterns-transport-floor` holds the procedure and is untouched.
+
+## [v0.98.0] `feat.register` and `feat.no-git-mutations` local texts — superseded by `extends: common.*` (D8)
+
+- **Disposition:** superseded → `extends: common.register` and
+  `extends: common.no-git-mutations`, which inherit the identical text from
+  `plugins/mochiko/schemas/common.yaml`; both stubs keep their `feat.*` IDs as the citable
+  IDs.
+- **Tier failed:** n/a — supersession by ruling (record D8 as amended by C2 and C3 — a
+  narrow supersession-by-ruling of command-content-schema D3, legal only for text that is an
+  exact duplicate across three or more command schemas; `DECISIONS.md` 2026-08-27. Both
+  blocks cleared the bar at five members each — inventory section F.0/F.1).
+- **Content:** the local rule bodies as shipped at v0.97.0, verbatim —
+
+  ```yaml
+        - id: feat.register
+          labels: [binding, reporting]
+          class: must
+          text: >-
+            User-facing prose follows templates/output-style.md.
+
+        - id: feat.no-git-mutations
+          labels: [user-gate]
+          class: must
+          text: >-
+            Suggest commits; never run git mutations, never push.
+  ```
+
+- **Kept deliberately:** the resolved text of both rules is byte-identical to what shipped —
+  `extends:` was admitted only on exact duplicates, so nothing was reworded to make either
+  bindable. Per the C3 precedence clause every absence-meaningful field stays local and is
+  re-declared on the stub: `class: must` on both, `kind: binding` on `feat.register`.
+  `feat.register`'s `labels: [binding, reporting]` are **re-declared locally** because the
+  common block carries `[reporting]` alone, and inheriting would have silently narrowed a
+  shipped rule's labels (inventory F.5). `feat.no-git-mutations` inherits `[user-gate]`
+  unchanged, which is what it shipped with.
+- **Consumers assessed:** `plugins/mochiko/schemas/common.yaml` is the new home and ships in
+  the same wave under full ceremony; `plugins/mochiko/commands/feature.md` gains the
+  `extends:` reading instruction and the obligated raw Read of `common.yaml` in its first
+  action; `scripts/check-command-schema.py` gains `extends:` target resolution and the C3
+  local-`class:` assert in the same wave. No other command binds a block through this
+  command's stubs — each binds its own.
+
+## [v0.98.0] The `fail-condition` label as the Not-done selector — re-keyed to `kind: fail` (build item 4)
+
+- **Disposition:** superseded → `kind: fail` on `feat.fail.no-verdict`, which is now the
+  operative selector for the Not-done set across both halves of the pair: the label leaves
+  the rule, the `feat.sec.fail-conditions` intent line names the new key, and the `.md`
+  Not-done line counts `kind: fail`.
+- **Tier failed:** n/a — supersession by ruling (record D1 and build-surface item 4,
+  "`kind: fail` replaces the `fail-condition` label as the operative selector … the six `.md`
+  Not-done lines re-worded"; `DECISIONS.md` 2026-08-27. Line-by-line: inventory section H).
+- **Content:** the three superseded sites as shipped at v0.97.0, verbatim —
+
+  ```
+  plugins/mochiko/schemas/feature.yaml, feat.fail.no-verdict:
+          labels: [fail-condition, reporting]
+
+  plugins/mochiko/schemas/feature.yaml, feat.sec.fail-conditions intent:
+        The fail-condition set — any one standing fails the visit; the .md Not-done line
+        hard-codes this set's count.
+
+  plugins/mochiko/commands/feature.md, Adaptive Goal Protocol step 3:
+  3. **Not done — default FAIL:** the 1 rule labeled `fail-condition` in
+     `plugins/mochiko/schemas/feature.yaml` (section `feat.sec.fail-conditions`) — any one standing
+     fails the visit. If the schema's `fail-condition` count is not 1, the pair is out of sync: halt
+     and surface it before closing.
+  ```
+
+- **Kept deliberately:** the whole count-pin mechanism survives, re-keyed. The count stays
+  **1**, the out-of-sync halt clause is carried verbatim, the section pointer and the
+  any-one-standing sentence are unchanged, and `feat.fail.no-verdict` keeps its ID, its
+  `class: floor`, its `reporting` label, and its text. The rule additionally gains
+  `enforces: [feat.dm-converge-goal, feat.dm-close-verdict]` (D6) — a pure addition riding
+  the decision row.
+- **Consumers assessed:** `plugins/mochiko/schemas/command-labels.yaml` retires the label in
+  the same wave (its own strip entry at `.mochiko/strips/command-labels.md`) ·
+  `.claude/rules/mochiko/primitive-edits.md` criterion 3 re-keys to `kind: fail` in the same
+  wave · `scripts/check-command-schema.py` re-keys its count assert and keeps the
+  bidirectional `feat.fail.*`-segment ↔ `kind: fail` cross-check (I4) · the other five
+  command pairs re-key on the same ruling.
+
 <!-- Wave context: the command-`.md`-scaffold standardization wave (v0.97.0) — one canonical
 `.md` scaffold for all six pair commands (D1/D2: Identity & Mission · Rules block · Adaptive
 Goal Protocol with Entry / Goal / count-pinned Not-done last) and the schema six-set

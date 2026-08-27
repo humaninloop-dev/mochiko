@@ -1,21 +1,44 @@
 # Command content schema for /mochiko:implement — SOURCE OF TRUTH for the command's
-# rule-shaped content (command-content-schema D1/D7, DECISIONS.md 2026-08-26). The command
-# .md instructs a raw, full Read of this file at command fire; the model interprets it
-# live — no build step, no binary on the read path (GI-020). Narrative (Identity & Mission,
+# rule-shaped content (command-content-schema D1/D7, DECISIONS.md 2026-08-26; grammar
+# amended by command-schema-ontology D1–D8, DECISIONS.md 2026-08-27). The command .md
+# instructs a raw, full Read of this file at command fire; the model interprets it live —
+# no build step, no binary on the read path (GI-020). Narrative (Identity & Mission,
 # Adaptive Goal Protocol prose) stays in plugins/mochiko/commands/implement.md.
 #
-# Grammar (D6, as amended by D14): sections: list, each {id, title, intent, rules};
-# rule blocks {id, labels, class, text, pointer?} nest under their section.
-#   section id  <cmd>.sec.<slug> — minted once like rule IDs (D11); title verbatim from
-#           the charter group it carries; intent one line, navigation only — sections
-#           never grow a second prose surface (narrative stays in the .md).
+# Grammar (D6, as amended by D14 and by command-schema-ontology D1–D8):
+# sections: list, each {id, title, intent, rules}; rule blocks
+# {id, labels, class, kind?, when?, enforces?, extends?, text, pointer?} nest under their section.
+#   section id  impl.sec.<slug> — minted once like rule IDs (D11); title verbatim from
+#           the group it carries; intent one line, navigation only — sections never grow a
+#           second prose surface (narrative stays in the .md).
 #   id      dotted slug — a NAME, never a summary; minted once, frozen (D11). A reword
 #           keeps its ID; a split mints children recording the parent; a merge retires
-#           the losers under a top-level tombstones: key. First mint — no tombstones yet.
+#           the losers under a top-level tombstones: key.
 #           FAIL clauses live under the impl.fail.* segment.
 #   labels  values from plugins/mochiko/schemas/command-labels.yaml (D8).
-#   class   floor = non-waivable, must-survive under the charter audit (M3) ·
+#   class   floor = non-waivable, must-survive under the pair audit (M3) ·
 #           must = binding obligation · advisory = may change without supersession ceremony.
+#   kind    one of constraint · duty · gate · reservation · binding · bound · routing ·
+#           fail · latitude. CONSTRAINT IS THE DEFAULT — an absent kind: reads constraint
+#           and is never written. kind crosscuts sections; it does not re-group them.
+#           kind: fail is the operative selector for the Not-done set (never defaulted on
+#           an impl.fail.* ID), and the .md Not-done line counts exactly that set.
+#   when    a conjunction of dimension: value terms from this schema's conditions: block —
+#           declared vocabulary only, no boolean algebra, no negation beyond a declared
+#           value, no free-form strings. It carries WHETHER the rule binds, never the
+#           rule's internal logic: a rule-level activation guard lives in when: alone and
+#           leaves the text (single-homing), while intra-rule branches, exceptions, and
+#           carve-outs stay prose. On a class: floor rule, when: gates when the obligation
+#           APPLIES — a floor is always read and always delivered, whatever its when:.
+#   enforces  on kind: fail nodes only — the local rule IDs this end-state predicate is the
+#           contrapositive of. An empty list is legal ONLY with a one-line reason (the
+#           obligation lives in a pointer skill), so absence is a statement, never an omission.
+#   extends  common.<slug> — inherits text, labels, and pointer ONLY from that block in
+#           plugins/mochiko/schemas/common.yaml, which the .md instructs Read raw in the
+#           same first action. class, kind, when, and enforces are ALWAYS local; a locally
+#           declared text/labels/pointer replaces the inherited one; ${var} placeholders in
+#           inherited text substitute from THIS schema's vars:; the stub's impl.* ID
+#           stays the citable ID.
 #   text    carries ${var} placeholders substituted from vars: at read (D5). Verbatim
 #           command strings carry no placeholders.
 #   provenance  decision anchors live in .mochiko/provenance.yaml (D16, repo-side —
@@ -23,12 +46,23 @@
 #           rule still leaves only by recorded supersession-by-ruling.
 #   pointer the skill that owns the floor or procedure — the rule holds the pointer,
 #           never the procedure. Multi-skill bindings name every skill in text.
+# Top-level conditions: declares every run-shape dimension this schema's rules use — the
+#   name, its closed value set (or presence), and its resolution point: entry-derived ·
+#   surface-presence · moment-resolved(<moment>) · user-ruled · standing-trigger. A
+#   moment-resolved dimension is resolved at the named moment; rules gated on it are
+#   inapplicable until it resolves.
+# Top-level moments: declares the named anchor points this schema's rules reference, each
+#   with one navigation line. The list is UNORDERED — relative sequence stays the .md
+#   protocol's narrative and the lead's latitude, and no precedence between moments is
+#   claimed or checkable.
 # Referential closure (D15): a rule's text is self-contained — every reference resolves
 #   within the block or the schema's addressable namespace (${var} · impl.* IDs ·
-#   impl.sec.* · class: values · labels · pointer: skills · file paths).
-#   Deixis ("these rules", "this section", "above"/"below", document-shape remarks) is a
-#   defect — quoted alone, the reference dangles. The checker lints a curated marker list
-#   (warning-class). "this schema" and "the run" are legal self-reference.
+#   impl.sec.* · common.* blocks · class:/kind: values · conditions:/moments: names ·
+#   labels · pointer: skills · file paths). A parenthetical impl.<slug> citation is the
+#   dependency idiom and must resolve to a live node or a tombstone (D5). Deixis ("these
+#   rules", "this section", "above"/"below", document-shape remarks) is a defect — quoted
+#   alone, the reference dangles. The checker lints a curated marker list (warning-class).
+#   "this schema" and "the run" are legal self-reference.
 #
 # Rule grain (D12): one block per independently-citable obligation.
 # Advisory checker: scripts/check-command-schema.py (D13) — exit-code signal only.
@@ -50,6 +84,42 @@ vars:
   rules_dir: .claude/rules/mochiko
   tasks_schema: plugins/mochiko/schemas/tasks.yaml
 
+conditions:
+  scope:
+    values: [selection, delta, epic, lane]
+    resolution: entry-derived
+    note: the batch's scope type, fixed at the run-open confirmation.
+  depth:
+    values: [low, high]
+    resolution: entry-derived
+    note: the governance depth level, read from the governance region at entry.
+  km_file:
+    values: presence
+    resolution: surface-presence
+    note: .mochiko/memory/knowledge-management.md.
+  governance_region:
+    values: presence
+    resolution: surface-presence
+    note: the marked governance region in CLAUDE.md.
+  baseline:
+    values: presence
+    resolution: surface-presence
+    note: the product baseline a design gap targets; checked at the entry sufficiency check.
+  seats:
+    values: [single, multi]
+    resolution: standing-trigger
+    note: fires the moment the run composes more than one seat, and re-fires on a seat added mid-run.
+
+moments:
+  run-open: The confirmation that closes entry — batch, scope type, attempt bounds, done condition.
+  entry: The gating and the sufficiency check, before the run-open confirmation.
+  design-checkpoint: The user's sign-off on the design phase's output and the store delta.
+  card-confirm: The user's ruling on the cycle slicing, before any card is built.
+  cycle-checkpoint: The per-cycle grading point where escalations and findings land as one batch.
+  final-validation: The whole-build verification pass — regression sweep, cold verification, gap finding.
+  landing: The acceptance-time execution of folds, graduations, and the store landing.
+  acceptance: The user's accept / amend / reject that closes the run.
+
 sections:
   - id: impl.sec.roles
     title: Roles & Responsibilities — seat wiring
@@ -60,6 +130,7 @@ sections:
       - id: impl.staffing-latitude
         labels: [seats]
         class: must
+        kind: latitude
         text: >-
           Beyond this schema's `class: floor` rules, everything is your per-run judgment:
           how you staff, sequence, and run the cycles; teammates or subagents per seat is
@@ -68,6 +139,7 @@ sections:
       - id: impl.dm-entry-gate
         labels: [scope-entry]
         class: must
+        kind: duty
         text: >-
           Gate entry honestly: the run gates on a capability entry with selected work rows
           carrying ratified scope, and opens with its contract stated at the run-open
@@ -76,6 +148,7 @@ sections:
       - id: impl.design-phase-fires-on-gap
         labels: [scope-entry]
         class: must
+        kind: duty
         text: >-
           Fire the design phase on any gap the sufficiency check names — before any code is
           written.
@@ -83,18 +156,21 @@ sections:
       - id: impl.dm-surface-rounds
         labels: [reporting, attempt-economy]
         class: must
+        kind: duty
         text: >-
           Surface rounds consumed and seats spawned at each checkpoint.
 
       - id: impl.dm-landing-whole
         labels: [landing]
         class: must
+        kind: duty
         text: >-
           Execute the acceptance landing whole at user acceptance.
 
       - id: impl.dm-close-verdict
         labels: [reporting, landing]
         class: must
+        kind: duty
         text: >-
           Close the run with a verdict against the done condition.
 
@@ -109,6 +185,7 @@ sections:
       - id: impl.design-seats-staffing
         labels: [seats]
         class: advisory
+        kind: latitude
         text: >-
           Design-seat staffing is your call: typically ${design_seat} for design deltas,
           ${architect_seat} for a store delta, ${qa_seat} for the **TEST:** cases.
@@ -181,6 +258,7 @@ sections:
       - id: impl.gate-design-checkpoint
         labels: [user-gate, landing]
         class: floor
+        kind: gate
         text: >-
           The design checkpoint is the user's. Where the check named gaps, no code is written
           before the user signs the design and the store delta — the store delta signed on a
@@ -191,6 +269,7 @@ sections:
       - id: impl.gate-card-confirm
         labels: [user-gate]
         class: floor
+        kind: gate
         text: >-
           The card confirm is the user's: a blocking checkpoint where the user rules the
           slicing before build.
@@ -198,12 +277,14 @@ sections:
       - id: impl.gate-final-acceptance
         labels: [user-gate]
         class: floor
+        kind: gate
         text: >-
           Final acceptance is the user's: accept / amend / reject closes the run.
 
       - id: impl.user-runopen-rulings
         labels: [user-gate, scope-entry]
         class: must
+        kind: reservation
         text: >-
           Reserved to the user at run-open: each store trip (ruled there, or deferred on the
           record) · each in-flight conflict · any sufficiency clause the grader could not
@@ -212,12 +293,14 @@ sections:
       - id: impl.infeasible-card-escalation
         labels: [user-gate]
         class: must
+        kind: routing
         text: >-
           An infeasible card is escalated to the user as a business-level scope decision.
 
       - id: impl.adopt-first-user-call
         labels: [user-gate]
         class: must
+        kind: reservation
         text: >-
           Two calls are never the builder's: a commodity-category adopt-first ruling and an
           IP-XXX provisioning call each halt the cycle to the user's checkpoint.
@@ -226,6 +309,7 @@ sections:
       - id: impl.ambiguity-escalation
         labels: [user-gate]
         class: must
+        kind: routing
         text: >-
           Requirement ambiguity, or a judgment call a producer flags, goes to the user —
           investigable gaps excepted.
@@ -233,6 +317,7 @@ sections:
       - id: impl.scope-escalation-fail
         labels: [user-gate]
         class: must
+        kind: reservation
         text: >-
           Scope escalation is the user's: work bigger than the run was framed stays FAIL
           unless the user accepts it.
@@ -253,6 +338,7 @@ sections:
       - id: impl.sufficiency-binding-verdict
         labels: [scope-entry]
         class: must
+        kind: gate
         text: >-
           The sufficiency check runs at entry — per row, per card under delta scope. The
           verdict is binding: per row, sufficient or a gap list; gaps fire the design phase
@@ -263,6 +349,7 @@ sections:
       - id: impl.sufficiency-disputed-clause
         labels: [user-gate]
         class: must
+        kind: routing
         text: >-
           A disputed sufficiency clause defaults to gap and goes to the user — the grader
           never clears alone.
@@ -270,6 +357,7 @@ sections:
       - id: impl.sufficiency-report
         labels: [evidence, reporting]
         class: must
+        kind: binding
         text: >-
           The verdict lands as sufficiency-report.md in the feature dir: the store-consult
           result and any no-delta claim, the trips for the user at run-open, the
@@ -279,6 +367,7 @@ sections:
       - id: impl.absent-surfaces
         labels: [scope-entry]
         class: must
+        kind: routing
         text: >-
           Absent surfaces are surfaced to the user, never auto-resolved, and never fail the
           run: a missing governance region is surfaced. A missing or stale
@@ -290,13 +379,15 @@ sections:
       - id: impl.briefs-name-rules-files
         labels: [scope-entry, seats]
         class: must
+        when: {governance_region: present}
         text: >-
-          When a governance region is present, every code-touching brief names the relevant
-          ${rules_dir}/ files as an obligated read.
+          Every code-touching brief names the relevant ${rules_dir}/ files as an obligated
+          read.
 
       - id: impl.design-outputs-home
         labels: [landing]
         class: must
+        kind: binding
         text: >-
           Design outputs land at ${features_dir}/FEAT-XXX/ as deltas beside their baselines
           (data-model.md, contracts/; a prose baseline's delta in appliable before/after
@@ -315,12 +406,12 @@ sections:
       - id: impl.design-absent-baseline-seed
         labels: [scope-entry]
         class: must
+        when: {baseline: absent}
         text: >-
-          On an absent baseline the phase's first duty is the seed — an empty scaffold
-          stating so where no code is delivered; reconstructed from delivered code, and
-          confirmed with the user at the checkpoint, where it exists. The seed is the
-          baseline write; this feature's design still lands as deltas, never merged into the
-          seed.
+          The phase's first duty is the seed — an empty scaffold stating so where no code is
+          delivered; reconstructed from delivered code, and confirmed with the user at the
+          checkpoint, where it exists. The seed is the baseline write; this feature's design
+          still lands as deltas, never merged into the seed.
 
       - id: impl.design-map-assertion
         labels: [landing]
@@ -336,6 +427,7 @@ sections:
       - id: impl.midrun-refire
         labels: [scope-entry]
         class: must
+        kind: routing
         text: >-
           A builder hitting undesigned structure halts that cycle; the design phase re-fires
           scoped to the discovery — same grade, same checkpoint. The deviation gate anchors
@@ -344,22 +436,24 @@ sections:
       - id: impl.epic-design-always-fires
         labels: [scope-entry, seats]
         class: must
+        when: {scope: [epic]}
         text: >-
-          An epic's design phase always fires, for the joint spine at ${epics_dir}/EPIC-XXX/:
-          the joint design plan, the joint architecture and seam design, and batch ordering.
+          The design phase always fires, for the joint spine at ${epics_dir}/EPIC-XXX/: the
+          joint design plan, the joint architecture and seam design, and batch ordering.
           Spine artifacts follow templates/artifact-format.md.
         pointer: "mochiko:authoring-epic"
 
       - id: impl.epic-seam-owners
         labels: [seats]
         class: must
+        when: {scope: [epic]}
         text: >-
-          Every cross-member seam owner is named at design time (no later-lander default
-          inside an epic).
+          Every cross-member seam owner is named at design time — no later-lander default.
 
       - id: impl.epic-shared-baseline-single-pen
         labels: [seats, landing]
         class: must
+        when: {scope: [epic]}
         text: >-
           A shared-baseline delta is authored once, under a single pen-holder; every
           shared-write surface rides the transport floor.
@@ -367,6 +461,7 @@ sections:
       - id: impl.cards-template
         labels: [floor-pointer]
         class: must
+        kind: binding
         text: >-
           tasks.md holds cycle cards from the tasks template — rendered by
           mochiko-cli template tasks; when the binary is absent, its schema ${tasks_schema}
@@ -377,6 +472,7 @@ sections:
       - id: impl.card-contents
         labels: [evidence]
         class: must
+        kind: binding
         text: >-
           Per card: stories and feature rationale, dependencies, acceptance criteria by ID, a
           **TEST:** real-infrastructure gate, and the cycle's brownfield exposure — no task
@@ -400,14 +496,16 @@ sections:
       - id: impl.epic-card-sequence
         labels: [seats]
         class: must
+        when: {scope: [epic]}
         text: >-
-          An epic builds one merged sequential card sequence from the joint design — shared
+          The run builds one merged sequential card sequence from the joint design — shared
           foundation cycles first, then in-epic dependency order — with feature-tagged cards
           whose reports land in each member's ${features_dir}/FEAT-XXX/.
 
       - id: impl.craft-build-bindings
         labels: [floor-pointer]
         class: must
+        kind: binding
         text: >-
           Build binds mochiko:executing-tdd-cycle — its cycle-report.md (disclosed
           decomposition, honest difficulties, deviations, domain_deps_added) is the run's
@@ -417,6 +515,7 @@ sections:
       - id: impl.craft-verify-bindings
         labels: [floor-pointer, evidence]
         class: must
+        kind: binding
         text: >-
           Verify binds mochiko:testing-end-user — evidence captured, never assumed — plus the
           per-cycle lens mochiko:review-code-minimalism: the verification seat reads the
@@ -426,6 +525,7 @@ sections:
       - id: impl.design-inputs
         labels: [scope-entry]
         class: must
+        kind: binding
         text: >-
           Design inputs are sufficiency-report.md and the design-phase deltas where they
           exist — including the signed store delta, the anchor for the deviation check and
@@ -437,6 +537,7 @@ sections:
       - id: impl.progress-surface
         labels: [evidence, reporting]
         class: must
+        kind: binding
         text: >-
           tasks.md's per-card checkboxes are the progress surface, flipped as cycles
           complete.
@@ -444,6 +545,7 @@ sections:
       - id: impl.reports-envelope
         labels: [reporting]
         class: must
+        kind: binding
         text: >-
           All reports land in ${features_dir}/FEAT-XXX/ (a product-lane run:
           ${product_dir}/lane-<slug>/): the sufficiency report, cycle reports, verification
@@ -505,14 +607,15 @@ sections:
       - id: impl.mutation-lens
         labels: [evidence, seats]
         class: must
+        when: {depth: [high]}
         text: >-
-          The mutation lens runs on the verification seat, which already holds code sight —
-          at high depth only, skips disclosed: a high-depth run owes mutation results or a
-          stated skip.
+          The mutation lens runs on the verification seat, which already holds code sight;
+          skips are disclosed — the run owes mutation results or a stated skip.
 
       - id: impl.finding-kinds
         labels: [evidence]
         class: must
+        kind: routing
         text: >-
           Findings split by kind: spec-required behavior broken — evidence captured, clause
           cited — fails the final validation; a beyond-spec finding is advisory.
@@ -520,6 +623,7 @@ sections:
       - id: impl.finding-kind-disputed
         labels: [user-gate]
         class: must
+        kind: routing
         text: >-
           Each finding's kind is confirmed at the checkpoint against the cited clause; a
           disputed kind defaults advisory and goes to the user — the finder never gates
@@ -528,6 +632,7 @@ sections:
       - id: impl.delivered-territory-routing
         labels: [landing]
         class: must
+        kind: routing
         text: >-
           A gap in a previously delivered feature's territory is not this run's rework: it
           routes to a /mochiko:feature delta card, cited in the report.
@@ -535,6 +640,7 @@ sections:
       - id: impl.beyond-spec-disposition
         labels: [user-gate]
         class: must
+        kind: reservation
         text: >-
           Each beyond-spec finding's disposition is the user's: fix now, book to BACKLOG.md,
           or accept as designed.
@@ -554,13 +660,15 @@ sections:
       - id: impl.km-landing
         labels: [landing]
         class: must
+        when: {km_file: present}
         text: >-
-          Where .mochiko/memory/knowledge-management.md exists, the same landing carries its
-          KM obligations.
+          The same landing carries the knowledge-management obligations of
+          .mochiko/memory/knowledge-management.md.
 
       - id: impl.baseline-delta-grammar
         labels: [landing, evidence]
         class: must
+        kind: binding
         text: >-
           Work discovered to touch a product baseline authors baseline-delta.md in the
           feature dir at discovery: a minimal, enumerated, appliable delta. A build-time
@@ -572,8 +680,9 @@ sections:
       - id: impl.landing-selection
         labels: [landing]
         class: must
+        when: {scope: [selection]}
         text: >-
-          Selection scope lands the store landing plus the map's graduation batch: this run's
+          The landing executes the store landing plus the map's graduation batch: this run's
           delivered work rows fold into the capability's extent lines and vanish (pending
           rows persist) · status set delivered, dated, never regressing · the FEATURES.md
           index line updates · the specs-index row is touched — a spec reads closed exactly
@@ -584,18 +693,32 @@ sections:
       - id: impl.landing-epic
         labels: [landing]
         class: must
+        when: {scope: [epic]}
         text: >-
-          An epic lands each member's graduation batch, plus the epic close: the [EPIC-XXX]
-          row markers vanish, the manifest is stamped delivered (dated), the spine directory
-          persists as record. Multi-spec closure is compositional: each spec closes on its
-          own rows, however many specs one landing touches.
+          The landing executes each member's graduation batch, plus the epic close: the
+          [EPIC-XXX] row markers vanish, the manifest is stamped delivered (dated), the spine
+          directory persists as record. Multi-spec closure is compositional: each spec closes
+          on its own rows, however many specs one landing touches.
         pointer: "mochiko:authoring-epic"
 
       - id: impl.landing-delta
         labels: [landing]
         class: must
+        when: {scope: [delta]}
         text: >-
-          Delta scope lands the entry's marked delta fold.
+          The landing executes the entry's marked delta fold.
+        pointer: "mochiko:authoring-feature-map"
+
+      - id: impl.landing-lane
+        labels: [landing]
+        class: must
+        when: {scope: [lane]}
+        text: >-
+          The landing adds no map work to the store landing and the graded folds: a product
+          lane owns no capability entry, so the map takes no write — no graduation batch, no
+          status flip, no extent-line fold — and the map-delta boundary check of
+          impl.landing-verifier-folds reads as zero writes. The lane directory at
+          ${product_dir}/lane-<slug>/ persists as record.
         pointer: "mochiko:authoring-feature-map"
 
       - id: impl.graded-fold
@@ -620,10 +743,9 @@ sections:
           the **TEST:** grammar; findings the user accepted as designed do not fold.
 
       - id: impl.register
-        labels: [reporting]
+        extends: common.register
         class: must
-        text: >-
-          User-facing prose follows templates/output-style.md.
+        kind: binding
 
   - id: impl.sec.ways-of-working
     title: Ways of Working
@@ -647,6 +769,7 @@ sections:
       - id: impl.escalation-batching
         labels: [user-gate, reporting]
         class: must
+        kind: routing
         text: >-
           Reserved-to-user questions accumulate and land as one batch at the cycle
           checkpoint; only a question the build cannot proceed without interrupts mid-cycle.
@@ -655,6 +778,7 @@ sections:
       - id: impl.finding-severity-routing
         labels: [reporting]
         class: must
+        kind: routing
         text: >-
           Advisory verifier findings ride the escalation cadence: a Minor finding defaults to
           a BACKLOG.md booking, never an in-cycle fix; an Important-or-above finding blocks
@@ -663,6 +787,7 @@ sections:
       - id: impl.model-tiering
         labels: [seats, floor-pointer]
         class: must
+        kind: routing
         text: >-
           Locate/enumerate reads go to a native Explore subagent spawned
           model: ${explore_model}; interpretive or absence-driven reads stay on the session
@@ -714,6 +839,7 @@ sections:
       - id: impl.deviation-gate
         labels: [user-gate]
         class: floor
+        kind: gate
         text: >-
           A cycle that adds or removes a box, adds, removes, or redirects an arrow, or moves
           a responsibility across a boundary of the signed delta stops and is presented —
@@ -740,6 +866,7 @@ sections:
       - id: impl.attempt-per-grade
         labels: [attempt-economy]
         class: floor
+        kind: bound
         text: >-
           A cycle consumes an attempt every time a verification seat grades it, whatever the
           round is called. Default ${attempt_bound_cycle} per cycle, redeclarable only at
@@ -748,12 +875,14 @@ sections:
       - id: impl.attempt-exemption-user-only
         labels: [attempt-economy, user-gate]
         class: floor
+        kind: reservation
         text: >-
           Exempting a round from the attempt count is the user's call, never yours.
 
       - id: impl.no-progress-stop
         labels: [attempt-economy]
         class: floor
+        kind: bound
         text: >-
           Two consecutive rounds with unchanged findings is a no-progress stop: halt the
           cycle, present state.
@@ -761,14 +890,20 @@ sections:
       - id: impl.epic-member-halt
         labels: [attempt-economy, user-gate]
         class: floor
+        kind: bound
+        when: {scope: [epic]}
+        # C4: floor — always read, always delivered. `when:` gates when the
+        # obligation APPLIES, never whether it is delivered. Re-evaluated
+        # whenever the run's shape changes (a seat added mid-run re-activates it).
         text: >-
-          In an epic, exhaustion or no-progress halts member-scoped; the disposition — carve
-          the member out (its rows return to pending, the epic continues) or hold the whole
-          run — is the user's.
+          Exhaustion or no-progress halts member-scoped; the disposition — carve the member
+          out (its rows return to pending, the run continues) or hold the whole run — is the
+          user's.
 
       - id: impl.gap-rework-bound
         labels: [attempt-economy, user-gate]
         class: floor
+        kind: bound
         text: >-
           Gap-rework at final validation is the attempt economy at run scale: default
           ${gap_rework_bound} rounds, redeclarable only at run-open; a finding that localizes
@@ -792,6 +927,10 @@ sections:
       - id: impl.lane-never-widens
         labels: [scope-entry]
         class: floor
+        when: {scope: [lane]}
+        # C4: floor — always read, always delivered. `when:` gates when the
+        # obligation APPLIES, never whether it is delivered. Re-evaluated
+        # whenever the run's shape changes (a seat added mid-run re-activates it).
         text: >-
           The lane never widens in place. A product-lane run discovering it stands on an
           in-flight feature's territory files the finding to that run and aborts.
@@ -808,107 +947,150 @@ sections:
       - id: impl.transport-floor
         labels: [floor-pointer, seats]
         class: floor
+        when: {seats: multi}
+        # C4: floor — always read, always delivered. `when:` gates when the
+        # obligation APPLIES, never whether it is delivered. Re-evaluated
+        # whenever the run's shape changes (a seat added mid-run re-activates it).
         text: >-
-          A run composing more than one seat gains the transport floor: message legs on any
-          multi-seat messaging, topology legs on shared writes — non-waivable once triggered.
+          The transport floor governs the run's composition and messaging under a split
+          trigger — message legs on any multi-seat messaging, topology legs on shared
+          writes — non-waivable once triggered; referenced, never restated.
         pointer: "mochiko:patterns-transport-floor"
 
   - id: impl.sec.fail-conditions
     title: Not done — default FAIL
     intent: >-
-      The fail-condition set — any one standing fails the run; the .md Not-done line hard-codes this set's count.
+      The kind: fail set — any one standing fails the run; the .md Not-done line hard-codes this set's count.
     rules:
 
       - id: impl.fail.sufficiency-unrecorded
-        labels: [fail-condition, reporting]
+        labels: [reporting]
         class: floor
+        kind: fail
+        enforces: [impl.sufficiency-report]
         text: >-
           The sufficiency verdict was never recorded as a report.
 
       - id: impl.fail.design-skipped
-        labels: [fail-condition, user-gate]
+        labels: [user-gate]
         class: floor
+        kind: fail
+        enforces: [impl.design-phase-fires-on-gap, impl.gate-design-checkpoint]
         text: >-
           Gaps were found but the design phase was skipped, or its design and store delta
           were never signed by the user.
 
       - id: impl.fail.card-independence
-        labels: [fail-condition, independence]
+        labels: [independence]
         class: floor
+        kind: fail
+        enforces: [impl.seat-card-author-independence, impl.gate-card-confirm]
         text: >-
           A cycle card built by the seat that authored it, or built before the card confirm.
 
       - id: impl.fail.card-unchecked
-        labels: [fail-condition, evidence]
+        labels: [evidence]
         class: floor
+        kind: fail
+        enforces: [impl.progress-surface]
         text: >-
           A cycle card left unchecked.
 
       - id: impl.fail.quality-gate
-        labels: [fail-condition, evidence]
+        labels: [evidence]
         class: floor
+        kind: fail
+        enforces: [impl.gates-full-suite, impl.gates-never-triaged]
         text: >-
           A failing quality gate.
 
       - id: impl.fail.no-evidence
-        labels: [fail-condition, evidence]
+        labels: [evidence]
         class: floor
+        kind: fail
+        enforces: [impl.craft-verify-bindings]
         text: >-
           Verification claimed without real-infrastructure evidence.
 
       - id: impl.fail.regression
-        labels: [fail-condition, evidence]
+        labels: [evidence]
         class: floor
+        kind: fail
+        enforces: [impl.regression-sweep]
         text: >-
           A regression in a previously delivered feature's gates.
 
       - id: impl.fail.baseline-in-place
-        labels: [fail-condition, landing]
+        labels: [landing]
         class: floor
+        kind: fail
+        enforces: [impl.baselines-never-in-place, impl.baseline-delta-grammar]
         text: >-
           A product baseline edited in place at build time, instead of through a graded
           baseline-delta.md entry.
 
       - id: impl.fail.deviation-unresolved
-        labels: [fail-condition, user-gate]
+        labels: [user-gate]
         class: floor
+        kind: fail
+        enforces: [impl.deviation-gate]
         text: >-
           An architecture deviation neither built as approved nor amended with the user's
           consent.
 
       - id: impl.fail.store-landing-incomplete
-        labels: [fail-condition, landing]
+        labels: [landing]
         class: floor
+        kind: fail
+        enforces: [impl.store-landing]
         text: >-
           A signed store delta landed without its built-vs-signed diff, or an in-flight
           element left neither flipped built nor keyed to an open feature.
 
       - id: impl.fail.ungraded-fold
-        labels: [fail-condition, landing]
+        labels: [landing]
         class: floor
+        kind: fail
+        enforces: [impl.graded-fold]
         text: >-
           A touched baseline accepted without its graded fold.
 
       - id: impl.fail.gap-finding-missing
-        labels: [fail-condition, evidence]
+        labels: [evidence]
         class: floor
+        kind: fail
+        when: {scope: [selection, epic]}
+        # C4: floor — always read, always delivered. `when:` gates when the
+        # obligation APPLIES, never whether it is delivered. Re-evaluated
+        # whenever the run's shape changes (a seat added mid-run re-activates it).
+        enforces: [impl.gap-finding-scope]
         text: >-
-          A selection-scope or epic run without its gap-finding pass.
+          A run without its gap-finding pass.
 
       - id: impl.fail.skip-unstated
-        labels: [fail-condition, reporting]
+        labels: [reporting]
         class: floor
+        kind: fail
+        when: {scope: [delta, lane]}
+        # C4: floor — always read, always delivered. `when:` gates when the
+        # obligation APPLIES, never whether it is delivered. Re-evaluated
+        # whenever the run's shape changes (a seat added mid-run re-activates it).
+        enforces: [impl.gap-finding-scope]
         text: >-
-          A delta-scope or lane run whose final-validation report does not state that skip.
+          A run whose final-validation report does not state its skipped gap-finding pass.
 
       - id: impl.fail.spec-gap-unresolved
-        labels: [fail-condition, evidence]
+        labels: [evidence]
         class: floor
+        kind: fail
+        enforces: [impl.finding-kinds]
         text: >-
           A gap finding showing spec-required behavior broken, left unresolved.
 
       - id: impl.fail.no-acceptance
-        labels: [fail-condition, user-gate]
+        labels: [user-gate]
         class: floor
+        kind: fail
+        enforces: [impl.gate-final-acceptance]
         text: >-
           User acceptance not given.

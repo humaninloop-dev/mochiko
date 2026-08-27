@@ -1,22 +1,44 @@
-# Command content schema for /mochiko:architecture — SOURCE OF TRUTH for the desk's
-# rule-shaped content (command-content-schema D1/D7 + this command's D10 rollout ruling,
-# DECISIONS.md 2026-08-26). The command .md instructs a raw, full Read of this file at
-# command fire; the model interprets it live — no build step, no binary on the read path
-# (GI-020). Narrative (Identity & Mission, Adaptive Goal Protocol prose) stays in
-# plugins/mochiko/commands/architecture.md.
+# Command content schema for /mochiko:architecture — SOURCE OF TRUTH for the command's
+# rule-shaped content (command-content-schema D1/D7, DECISIONS.md 2026-08-26; grammar
+# amended by command-schema-ontology D1–D8, DECISIONS.md 2026-08-27). The command .md
+# instructs a raw, full Read of this file at command fire; the model interprets it live —
+# no build step, no binary on the read path (GI-020). Narrative (Identity & Mission,
+# Adaptive Goal Protocol prose) stays in plugins/mochiko/commands/architecture.md.
 #
-# Grammar (D6, as amended by D14): sections: list, each {id, title, intent, rules};
-# rule blocks {id, labels, class, text, pointer?} nest under their section.
-#   section id  <cmd>.sec.<slug> — minted once like rule IDs (D11); title verbatim from
-#           the command group it carries; intent one line, navigation only — sections
-#           never grow a second prose surface (narrative stays in the .md).
+# Grammar (D6, as amended by D14 and by command-schema-ontology D1–D8):
+# sections: list, each {id, title, intent, rules}; rule blocks
+# {id, labels, class, kind?, when?, enforces?, extends?, text, pointer?} nest under their section.
+#   section id  arch.sec.<slug> — minted once like rule IDs (D11); title verbatim from
+#           the group it carries; intent one line, navigation only — sections never grow a
+#           second prose surface (narrative stays in the .md).
 #   id      dotted slug — a NAME, never a summary; minted once, frozen (D11). A reword
 #           keeps its ID; a split mints children recording the parent; a merge retires
-#           the losers under a top-level tombstones: key. First mint — no tombstones yet.
+#           the losers under a top-level tombstones: key.
 #           FAIL clauses live under the arch.fail.* segment.
 #   labels  values from plugins/mochiko/schemas/command-labels.yaml (D8).
-#   class   floor = non-waivable, must-survive under the charter audit (M3) ·
+#   class   floor = non-waivable, must-survive under the pair audit (M3) ·
 #           must = binding obligation · advisory = may change without supersession ceremony.
+#   kind    one of constraint · duty · gate · reservation · binding · bound · routing ·
+#           fail · latitude. CONSTRAINT IS THE DEFAULT — an absent kind: reads constraint
+#           and is never written. kind crosscuts sections; it does not re-group them.
+#           kind: fail is the operative selector for the Not-done set (never defaulted on
+#           an arch.fail.* ID), and the .md Not-done line counts exactly that set.
+#   when    a conjunction of dimension: value terms from this schema's conditions: block —
+#           declared vocabulary only, no boolean algebra, no negation beyond a declared
+#           value, no free-form strings. It carries WHETHER the rule binds, never the
+#           rule's internal logic: a rule-level activation guard lives in when: alone and
+#           leaves the text (single-homing), while intra-rule branches, exceptions, and
+#           carve-outs stay prose. On a class: floor rule, when: gates when the obligation
+#           APPLIES — a floor is always read and always delivered, whatever its when:.
+#   enforces  on kind: fail nodes only — the local rule IDs this end-state predicate is the
+#           contrapositive of. An empty list is legal ONLY with a one-line reason (the
+#           obligation lives in a pointer skill), so absence is a statement, never an omission.
+#   extends  common.<slug> — inherits text, labels, and pointer ONLY from that block in
+#           plugins/mochiko/schemas/common.yaml, which the .md instructs Read raw in the
+#           same first action. class, kind, when, and enforces are ALWAYS local; a locally
+#           declared text/labels/pointer replaces the inherited one; ${var} placeholders in
+#           inherited text substitute from THIS schema's vars:; the stub's arch.* ID
+#           stays the citable ID.
 #   text    carries ${var} placeholders substituted from vars: at read (D5). Verbatim
 #           command strings carry no placeholders.
 #   provenance  decision anchors live in .mochiko/provenance.yaml (D16, repo-side —
@@ -24,9 +46,20 @@
 #           rule still leaves only by recorded supersession-by-ruling.
 #   pointer the skill that owns the floor or procedure — the rule holds the pointer,
 #           never the procedure. Multi-skill bindings name every skill in text.
+# Top-level conditions: declares every run-shape dimension this schema's rules use — the
+#   name, its closed value set (or presence), and its resolution point: entry-derived ·
+#   surface-presence · moment-resolved(<moment>) · user-ruled · standing-trigger. A
+#   moment-resolved dimension is resolved at the named moment; rules gated on it are
+#   inapplicable until it resolves.
+# Top-level moments: declares the named anchor points this schema's rules reference, each
+#   with one navigation line. The list is UNORDERED — relative sequence stays the .md
+#   protocol's narrative and the lead's latitude, and no precedence between moments is
+#   claimed or checkable.
 # Referential closure (D15): a rule's text is self-contained — every reference resolves
 #   within the block or the schema's addressable namespace (${var} · arch.* IDs ·
-#   arch.sec.* · class: values · labels · pointer: skills · file paths).
+#   arch.sec.* · common.* blocks · class:/kind: values · conditions:/moments: names ·
+#   labels · pointer: skills · file paths). A parenthetical arch.<slug> citation is the
+#   dependency idiom and must resolve to a live node or a tombstone (D5).
 #   Deixis ("these rules", "this section", "above"/"below", document-shape remarks) is a
 #   defect — quoted alone, the reference dangles. The checker lints a curated marker list
 #   (warning-class). "this schema", "the desk", and "the visit" are legal self-reference.
@@ -44,6 +77,26 @@ vars:
   store_schema: plugins/mochiko/schemas/architecture-store.yaml
   shelf_schema: plugins/mochiko/schemas/architecture-shelf-backend.yaml
 
+conditions:
+  store_ruled_content:
+    values: presence
+    resolution: surface-presence
+    note: >-
+      absent covers both forms — no store, and scaffold-only (a spine.md holding
+      just its Scope: header).
+  km_file:
+    values: presence
+    resolution: surface-presence
+    note: .mochiko/memory/knowledge-management.md.
+  seats:
+    values: [single, multi]
+    resolution: standing-trigger
+    note: fires the moment the visit composes more than one seat, and re-fires on a seat added mid-visit.
+
+moments:
+  visit-open: Store health surfaced from the derived index before the ask, every visit.
+  close: The verdict against the visit's done condition, with store integrity intact.
+
 sections:
   - id: arch.sec.roles
     title: Roles & Responsibilities
@@ -54,6 +107,7 @@ sections:
       - id: arch.staffing-latitude
         labels: [seats]
         class: must
+        kind: latitude
         text: >-
           Beyond this schema's `class: floor` rules — the sound-loop floor
           arch.sound-loop-floor among them — everything is your per-visit judgment: how
@@ -62,28 +116,34 @@ sections:
       - id: arch.dm-health-first
         labels: [reporting, stewardship]
         class: floor
+        kind: duty
         text: >-
           Surface health before the ask.
 
       - id: arch.dm-converge-goal
         labels: [scope-entry]
         class: floor
+        kind: duty
         text: >-
           Converge every visit to a one-line goal and its done condition.
 
       - id: arch.dm-author-baseline
         labels: [scope-entry]
         class: floor
+        kind: duty
+        when: {store_ruled_content: absent}
+        # C4: floor — always read, always delivered. `when:` gates when the
+        # obligation APPLIES, never whether it is delivered. Re-evaluated
+        # whenever the run's shape changes (a seat added mid-run re-activates it).
         text: >-
-          Author the baseline wherever the store carries no ruled content — scaffold-only
-          (a `spine.md` holding just its `Scope:` header) or absent: greenfield elicits
-          it; brownfield reconstructs and confirms it per
-          arch.tools-brownfield-reconstruction — nothing absorbed is ever silently
-          discarded.
+          Author the baseline — greenfield elicits it; brownfield reconstructs and
+          confirms it per arch.tools-brownfield-reconstruction — nothing absorbed is ever
+          silently discarded.
 
       - id: arch.dm-shelf-walk
         labels: [evidence]
         class: floor
+        kind: duty
         text: >-
           Walk shelf rows under the breadth invariant (arch.breadth-invariant), ordered by
           retrofit cost, dealt recommend-then-arbitrate
@@ -92,12 +152,14 @@ sections:
       - id: arch.dm-drift-dispatch
         labels: [evidence, user-gate, stewardship]
         class: floor
+        kind: duty
         text: >-
           Dispatch the scoped drift probe and take each finding to a user disposition.
 
       - id: arch.dm-route-triggers
         labels: [reporting, user-gate, stewardship]
         class: floor
+        kind: duty
         text: >-
           Route every fired upgrade trigger to /mochiko:feature's growth door — flagged in
           the health view until it is routed or the user rules it closed.
@@ -105,6 +167,7 @@ sections:
       - id: arch.dm-store-integrity-close
         labels: [landing, stewardship]
         class: floor
+        kind: duty
         text: >-
           Keep store integrity intact at close — the derived index regenerated, orphans
           flagged, statuses agreeing across index and ledger.
@@ -112,12 +175,19 @@ sections:
       - id: arch.dm-km-landing
         labels: [landing, stewardship]
         class: floor
+        kind: duty
+        when: {km_file: present}
+        # C4: floor — always read, always delivered. `when:` gates when the
+        # obligation APPLIES, never whether it is delivered. Re-evaluated
+        # whenever the run's shape changes (a seat added mid-run re-activates it).
         text: >-
-          Execute the KM landing for desk-side writes where knowledge-management exists.
+          Execute the KM landing for desk-side writes, per
+          .mochiko/memory/knowledge-management.md.
 
       - id: arch.dm-close-verdict
         labels: [reporting, landing]
         class: floor
+        kind: duty
         text: >-
           Close the visit with a verdict against its done condition.
 
@@ -153,6 +223,7 @@ sections:
       - id: arch.user-reserved-rulings
         labels: [user-gate]
         class: must
+        kind: reservation
         text: >-
           Reserved to the user: every row stance, the baseline confirmation, every
           amendment, each drift finding's disposition, the shelf-scope override, the
@@ -177,6 +248,7 @@ sections:
       - id: arch.tools-store
         labels: [binding]
         class: must
+        kind: binding
         text: >-
           The store lives at ${store_dir}/: `spine.md` (the topology deep view —
           containers, boundaries, communication styles) and the `concerns.md` ledger of
@@ -189,6 +261,7 @@ sections:
       - id: arch.tools-store-skill
         labels: [floor-pointer]
         class: must
+        kind: binding
         text: >-
           mochiko:authoring-architecture-store is the store's owner: AX and spine grammar,
           the element lifecycle (`ruled` → `in-flight (FEAT-XXX)` /
@@ -200,6 +273,7 @@ sections:
       - id: arch.tools-shelves-skill
         labels: [floor-pointer]
         class: must
+        kind: binding
         text: >-
           mochiko:patterns-architecture-shelves is the opinion carrier: the per-surface
           shelves as data, their suggested defaults and upgrade-trigger patterns, and the
@@ -209,6 +283,7 @@ sections:
       - id: arch.shelf-scope-source
         labels: [binding, user-gate]
         class: must
+        kind: binding
         text: >-
           Shelf scope is read from the `Scope:` line in `spine.md`'s header — declared
           there by /mochiko:setup and overridable at the desk by an ordinary store write
@@ -218,6 +293,7 @@ sections:
       - id: arch.tools-system-design
         labels: [floor-pointer]
         class: must
+        kind: binding
         text: >-
           mochiko:patterns-system-design carries altitude and diagram craft for the spine
           and for the deltas features draft against it.
@@ -226,6 +302,7 @@ sections:
       - id: arch.tools-store-schema
         labels: [binding]
         class: must
+        kind: binding
         text: >-
           The store shape is ${store_schema}, the shelf data ${shelf_schema} (rendered by
           mochiko-cli, or Read raw when the binary is absent — the shipped schema is the
@@ -254,6 +331,7 @@ sections:
       - id: arch.dispatch-feature-growth-door
         labels: [user-gate]
         class: must
+        kind: routing
         text: >-
           /mochiko:feature is the dispatch target for a fired upgrade trigger: it arrives
           at the growth door as a candidate under the capability-write test;
@@ -263,6 +341,7 @@ sections:
       - id: arch.dispatch-setup-waiver
         labels: [user-gate]
         class: must
+        kind: routing
         text: >-
           /mochiko:setup is the dispatch target for a governance-ledger waiver when a
           floor-asserted obligation must truly drop (arch.floor-precedence).
@@ -270,14 +349,15 @@ sections:
       - id: arch.dispatch-implement-delivery
         labels: [scope-entry]
         class: must
+        kind: routing
         text: >-
           /mochiko:implement owns all delivery; the desk runs none of it.
 
       - id: arch.register
+        extends: common.register
         labels: [reporting, binding]
         class: must
-        text: >-
-          User-facing prose follows templates/output-style.md.
+        kind: binding
 
   - id: arch.sec.ways-of-working
     title: Ways of Working
@@ -289,6 +369,7 @@ sections:
       - id: arch.proactive-report-first
         labels: [reporting, stewardship]
         class: must
+        kind: duty
         text: >-
           Proactive report first — health before the ask, every visit.
 
@@ -320,6 +401,7 @@ sections:
       - id: arch.model-tiering
         labels: [seats, floor-pointer]
         class: must
+        kind: routing
         text: >-
           Exploration and fact-finding dispatches ride the class-keyed tiering floor:
           locate/enumerate reads go to a native Explore subagent spawned
@@ -339,10 +421,8 @@ sections:
           store write, never hand-edited alongside it.
 
       - id: arch.no-git-mutations
-        labels: [user-gate]
+        extends: common.no-git-mutations
         class: must
-        text: >-
-          Suggest commits; never run git mutations, never push.
 
       - id: arch.rulings-plain-text
         labels: [user-gate]
@@ -359,6 +439,7 @@ sections:
       - id: arch.truth-user-ruling
         labels: [user-gate]
         class: floor
+        kind: reservation
         text: >-
           Architecture truth is the user's ruling. The desk elicits, recommends, and
           records; a stance, a baseline, or an amendment lands only on the user's word. A
@@ -457,22 +538,27 @@ sections:
       - id: arch.transport-floor
         labels: [floor-pointer, seats]
         class: floor
+        when: {seats: multi}
+        # C4: floor — always read, always delivered. `when:` gates when the
+        # obligation APPLIES, never whether it is delivered. Re-evaluated
+        # whenever the run's shape changes (a seat added mid-run re-activates it).
         text: >-
-          A visit that composes more than one seat gains a floor on its composition and
-          messaging: a split trigger — message legs on any multi-seat messaging, topology
-          legs on shared writes — non-waivable once triggered. Trigger test, floor legs,
-          composition-safe shapes, and disclosure: mochiko:patterns-transport-floor,
-          referenced never restated.
+          The visit gains a floor on its composition and messaging: a split trigger —
+          message legs on any multi-seat messaging, topology legs on shared writes —
+          non-waivable once triggered. Trigger test, floor legs, composition-safe shapes,
+          and disclosure: mochiko:patterns-transport-floor, referenced never restated.
         pointer: "mochiko:patterns-transport-floor"
 
   - id: arch.sec.fail-conditions
     title: Not done — default FAIL
     intent: >-
-      The fail-condition set — any one standing fails the visit; the .md Not-done line hard-codes this set's count.
+      The kind: fail set — any one standing fails the visit; the .md Not-done line hard-codes this set's count.
     rules:
 
       - id: arch.fail.no-verdict
-        labels: [fail-condition, reporting]
+        labels: [reporting]
         class: floor
+        kind: fail
+        enforces: [arch.dm-converge-goal, arch.dm-close-verdict]
         text: >-
           A visit that ends with no stated done-condition verdict.

@@ -1,0 +1,273 @@
+{
+ "command": "implement",
+ "old_ref": null,
+ "replicates": 3,
+ "arms": [
+  "post"
+ ],
+ "total_cost_usd": 7.0904,
+ "partition": null,
+ "runs": [
+  {
+   "golden": "s1-zero-gap",
+   "arm": "post",
+   "pins": {
+    "plugin_version": "0.97.0",
+    "cli": "2.1.231 (Claude Code)",
+    "session_model": "sonnet",
+    "wrapper_sha256": "33fb96d64054b599"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.97.0"
+     ]
+    ],
+    "cap_hit": false,
+    "fence_breach": [
+     "Bash"
+    ],
+    "name_resolution": [],
+    "auth_failure": false
+   },
+   "cost_usd": 0.8058135,
+   "num_turns": 24,
+   "duration_ms": 191814,
+   "replicate": 1
+  },
+  {
+   "golden": "s1-zero-gap",
+   "arm": "post",
+   "pins": {
+    "plugin_version": "0.97.0",
+    "cli": "2.1.231 (Claude Code)",
+    "session_model": "sonnet",
+    "wrapper_sha256": "33fb96d64054b599"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.97.0"
+     ]
+    ],
+    "cap_hit": false,
+    "fence_breach": [
+     "Bash"
+    ],
+    "name_resolution": [],
+    "auth_failure": false
+   },
+   "cost_usd": 0.6873288,
+   "num_turns": 29,
+   "duration_ms": 174227,
+   "replicate": 2
+  },
+  {
+   "golden": "s1-zero-gap",
+   "arm": "post",
+   "pins": {
+    "plugin_version": "0.97.0",
+    "cli": "2.1.231 (Claude Code)",
+    "session_model": "sonnet",
+    "wrapper_sha256": "33fb96d64054b599"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.97.0"
+     ]
+    ],
+    "cap_hit": false,
+    "fence_breach": [
+     "Bash"
+    ],
+    "name_resolution": [],
+    "auth_failure": false
+   },
+   "cost_usd": 0.7055844,
+   "num_turns": 25,
+   "duration_ms": 177751,
+   "replicate": 3
+  },
+  {
+   "golden": "s2-two-gaps",
+   "arm": "post",
+   "pins": {
+    "plugin_version": "0.97.0",
+    "cli": "2.1.231 (Claude Code)",
+    "session_model": "sonnet",
+    "wrapper_sha256": "33fb96d64054b599"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.97.0"
+     ]
+    ],
+    "cap_hit": false,
+    "fence_breach": [
+     "Bash"
+    ],
+    "name_resolution": [],
+    "auth_failure": false
+   },
+   "cost_usd": 0.8619818999999999,
+   "num_turns": 30,
+   "duration_ms": 244005,
+   "replicate": 1
+  },
+  {
+   "golden": "s2-two-gaps",
+   "arm": "post",
+   "pins": {
+    "plugin_version": "0.97.0",
+    "cli": "2.1.231 (Claude Code)",
+    "session_model": "sonnet",
+    "wrapper_sha256": "33fb96d64054b599"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.97.0"
+     ]
+    ],
+    "cap_hit": false,
+    "fence_breach": [
+     "Bash"
+    ],
+    "name_resolution": [],
+    "auth_failure": false
+   },
+   "cost_usd": 1.0073322,
+   "num_turns": 18,
+   "duration_ms": 299916,
+   "replicate": 2
+  },
+  {
+   "golden": "s2-two-gaps",
+   "arm": "post",
+   "pins": {
+    "plugin_version": "0.97.0",
+    "cli": "2.1.231 (Claude Code)",
+    "session_model": "sonnet",
+    "wrapper_sha256": "33fb96d64054b599"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.97.0"
+     ]
+    ],
+    "cap_hit": false,
+    "fence_breach": [
+     "Bash"
+    ],
+    "name_resolution": [],
+    "auth_failure": false
+   },
+   "cost_usd": 0.6291714,
+   "num_turns": 15,
+   "duration_ms": 178917,
+   "replicate": 3
+  },
+  {
+   "golden": "s3-empty-args",
+   "arm": "post",
+   "pins": {
+    "plugin_version": "0.97.0",
+    "cli": "2.1.231 (Claude Code)",
+    "session_model": "sonnet",
+    "wrapper_sha256": "33fb96d64054b599"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.97.0"
+     ]
+    ],
+    "cap_hit": false,
+    "fence_breach": [
+     "Bash"
+    ],
+    "name_resolution": [],
+    "auth_failure": false
+   },
+   "cost_usd": 0.7403604000000001,
+   "num_turns": 25,
+   "duration_ms": 232538,
+   "replicate": 1
+  },
+  {
+   "golden": "s3-empty-args",
+   "arm": "post",
+   "pins": {
+    "plugin_version": "0.97.0",
+    "cli": "2.1.231 (Claude Code)",
+    "session_model": "sonnet",
+    "wrapper_sha256": "33fb96d64054b599"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.97.0"
+     ]
+    ],
+    "cap_hit": false,
+    "fence_breach": [
+     "Bash"
+    ],
+    "name_resolution": [],
+    "auth_failure": false
+   },
+   "cost_usd": 0.8181086999999998,
+   "num_turns": 27,
+   "duration_ms": 226411,
+   "replicate": 2
+  },
+  {
+   "golden": "s3-empty-args",
+   "arm": "post",
+   "pins": {
+    "plugin_version": "0.97.0",
+    "cli": "2.1.231 (Claude Code)",
+    "session_model": "sonnet",
+    "wrapper_sha256": "33fb96d64054b599"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.97.0"
+     ]
+    ],
+    "cap_hit": false,
+    "fence_breach": [
+     "Bash"
+    ],
+    "name_resolution": [],
+    "auth_failure": false
+   },
+   "cost_usd": 0.8347467,
+   "num_turns": 29,
+   "duration_ms": 214296,
+   "replicate": 3
+  }
+ ]
+}

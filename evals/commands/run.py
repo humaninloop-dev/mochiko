@@ -82,13 +82,45 @@ def schema_text(cmd: str, old_ref: str | None = None) -> str:
     return proc.stdout
 
 
+def common_blocks(old_ref: str | None = None) -> dict:
+    """{common.<slug>: block} from schemas/common.yaml, or {} where the file does not
+    exist (pre-extends refs). Same resolution semantics as the command .md instructs:
+    a stub inherits every field; a locally declared field replaces the inherited one."""
+    rel = "plugins/mochiko/schemas/common.yaml"
+    if old_ref is None:
+        path = REPO / rel
+        if not path.is_file():
+            return {}
+        raw = path.read_text()
+    else:
+        proc = subprocess.run(["git", "-C", str(REPO), "show", f"{old_ref}:{rel}"],
+                              capture_output=True, text=True)
+        if proc.returncode != 0:
+            return {}
+        raw = proc.stdout
+    doc = yaml.safe_load(raw)
+    return {b["id"]: b for b in doc.get("rules") or []}
+
+
 def extract_rules(cmd: str, old_ref: str | None = None) -> dict:
-    """{id: {text(resolved), class, labels, section}} from a command schema."""
+    """{id: {text(resolved), class, labels, section}} from a command schema.
+    Resolves `extends: common.<slug>` stubs against schemas/common.yaml; ${var}
+    substitution runs on the resolved text from the COMMAND's vars block."""
     doc = yaml.safe_load(schema_text(cmd, old_ref))
     variables = doc.get("vars") or {}
+    commons = None
     out = {}
     for sec in doc.get("sections") or []:
         for r in sec.get("rules") or []:
+            if r.get("extends"):
+                if commons is None:
+                    commons = common_blocks(old_ref)
+                base = commons.get(r["extends"])
+                if base is None:
+                    die(f"{r['id']} extends unknown block {r['extends']}")
+                r = {**base, **r}
+            if "text" not in r:
+                die(f"{r['id']} has no text and no resolvable extends")
             text = r["text"]
             for k, v in variables.items():
                 text = text.replace("${%s}" % k, str(v))
@@ -323,10 +355,12 @@ def scrub_rule_ids(plan: str, rule_ids) -> str:
     and must grade embodiment (D3). Mechanical and content-neutral."""
     for rid in sorted(rule_ids, key=len, reverse=True):
         plan = plan.replace(rid, "[rule]")
+    # extends stubs: sessions may cite the common.<slug> source ID instead
+    plan = re.sub(r"\bcommon\.[a-z][a-z0-9.-]*\b", "[rule]", plan)
     return plan
 
 
-def judge_coverage(rule_items: list, plan: str) -> list:
+def judge_coverage(rule_items: list, plan: str, model: str = CHECKLIST_MODEL) -> list:
     """One binary per observable rule: does the PLAN's content EMBODY the rule —
     reflected in its actions, absent, or contradicted (D2/D3). Quoted plan-line
     evidence. Chunked + one retry (skill-harness staged-001 finding)."""
@@ -345,7 +379,7 @@ def judge_coverage(rule_items: list, plan: str) -> list:
             + "\n\nPLAN:\n" + plan[:120_000])
         byid = {}
         for _ in range(2):
-            verdicts = extract_json(judge_session(prompt, CHECKLIST_MODEL))
+            verdicts = extract_json(judge_session(prompt, model))
             if isinstance(verdicts, list):
                 for v in verdicts:
                     if isinstance(v, dict) and v.get("id") and v.get("verdict"):
@@ -357,7 +391,7 @@ def judge_coverage(rule_items: list, plan: str) -> list:
     return out
 
 
-def judge_stub(plan: str) -> list:
+def judge_stub(plan: str, model: str = CHECKLIST_MODEL) -> list:
     """D2 as amended (I6): per numbered phase, substantive vs nominal stub."""
     prompt = (
         "The artifact below is an action plan with numbered phases. For EACH numbered "
@@ -366,11 +400,11 @@ def judge_stub(plan: str) -> list:
         "substantive means the phase carries concrete scenario-specific content; a "
         "one-line generic stub is false. Output ONLY the JSON array.\n\nPLAN:\n"
         + plan[:120_000])
-    verdicts = extract_json(judge_session(prompt, CHECKLIST_MODEL))
+    verdicts = extract_json(judge_session(prompt, model))
     return verdicts if isinstance(verdicts, list) else []
 
 
-def judge_pairwise(text_a: str, text_b: str) -> dict:
+def judge_pairwise(text_a: str, text_b: str, model: str = PAIRWISE_MODEL) -> dict:
     """Blind A/B with position swap (skill-harness pattern, verbatim mechanics)."""
     def ask(first, second):
         prompt = ("Two action plans answer the same command invocation. Which is the "
@@ -378,7 +412,7 @@ def judge_pairwise(text_a: str, text_b: str) -> dict:
                   "Reply ONLY JSON {\"winner\": \"1\"|\"2\"|\"tie\", \"reason\": "
                   "\"<one sentence>\"}.\n\nPLAN 1:\n" + first[:60_000]
                   + "\n\nPLAN 2:\n" + second[:60_000])
-        return extract_json(judge_session(prompt, PAIRWISE_MODEL)) or {}
+        return extract_json(judge_session(prompt, model)) or {}
     v1, v2 = ask(text_a, text_b), ask(text_b, text_a)
     w1, w2 = v1.get("winner"), v2.get("winner")
     agree = (w1 == "1" and w2 == "2") or (w1 == "2" and w2 == "1") or (w1 == w2 == "tie")
@@ -427,20 +461,23 @@ def cmd_grid(cmd: str, replicates: int, old_ref: str | None, control: bool,
     print(f"grid done: {rd}  (${total:.2f})")
 
 
-def cmd_judge(cmd: str, name: str) -> None:
+def cmd_judge(cmd: str, name: str, judge_model: str = CHECKLIST_MODEL,
+              pairwise_model: str = PAIRWISE_MODEL) -> None:
     rd = rundir(cmd, name)
     meta = json.loads((rd / "summary.json").read_text())
     rub = load_rubric(cmd)
     items = [{"id": i, "text": rub["rules"][i]["text"]}
              for i in sorted(rub["observable"])]
+    meta["judge_models"] = {"coverage": judge_model, "stub": judge_model,
+                            "pairwise": pairwise_model}
     plans = {}
     for e in meta["runs"]:
         key = (e["golden"], e["arm"], e["replicate"])
         plans[key] = (rd / f"{e['golden']}-{e['arm']}-r{e['replicate']}.plan.md").read_text()
         print(f"judge {key} ...", flush=True)
         scrubbed = scrub_rule_ids(plans[key], rub["rules"].keys())
-        e["coverage"] = judge_coverage(items, scrubbed)
-        e["stub"] = judge_stub(scrubbed)
+        e["coverage"] = judge_coverage(items, scrubbed, judge_model)
+        e["stub"] = judge_stub(scrubbed, judge_model)
     meta["pairwise"] = []
     if "pre" in meta["arms"]:
         for g in {e["golden"] for e in meta["runs"]}:
@@ -449,7 +486,8 @@ def cmd_judge(cmd: str, name: str) -> None:
                 if a and b:
                     print(f"pairwise {g}/r{r} ...", flush=True)
                     meta["pairwise"].append(
-                        {"golden": g, "replicate": r, **judge_pairwise(a, b)})
+                        {"golden": g, "replicate": r,
+                         **judge_pairwise(a, b, pairwise_model)})
     (rd / "summary.json").write_text(json.dumps(meta, indent=1))
     print(f"judged: {rd / 'summary.json'}")
 
@@ -559,6 +597,11 @@ def main() -> None:
             p.add_argument("--out")
         if name in ("judge", "report"):
             p.add_argument("run_name")
+        if name == "judge":
+            p.add_argument("--judge-model", default=CHECKLIST_MODEL,
+                           help="coverage+stub judge (ruled default: haiku)")
+            p.add_argument("--pairwise-model", default=PAIRWISE_MODEL,
+                           help="pairwise judge (ruled default: sonnet)")
     a = ap.parse_args()
     if a.cmd == "partition":
         print(json.dumps(partition(a.command, a.old_ref), indent=1))
@@ -586,7 +629,7 @@ def main() -> None:
     elif a.cmd == "grid":
         cmd_grid(a.command, a.replicates, a.old_ref, a.control, a.out)
     elif a.cmd == "judge":
-        cmd_judge(a.command, a.run_name)
+        cmd_judge(a.command, a.run_name, a.judge_model, a.pairwise_model)
     elif a.cmd == "report":
         cmd_report(a.command, a.run_name)
 

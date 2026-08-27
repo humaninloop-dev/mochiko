@@ -8,6 +8,42 @@ One entry per session directory under `.mochiko/brainstorms/<topic-slug>/`, **ne
 
 ---
 
+## `command-schema-ontology` — node kinds beyond `rule`, declared conditions, and dependency grammar for the command content schemas
+- **When:** 2026-08-27 · **Status:** accepted · solo cold review via blind-map two-message
+  dispatch (46-angle map, topic-only spawn; one disclosed index-entry fence leak accepted as
+  negligible — agenda visible, rulings not): verdict critical-gaps — 4 Critical /
+  10 Important / 4 Minor, 18/18 survived → dispositioned: C1–C4 individually user-ruled all
+  "as recommended" (C1 stale F7 — the optionA grid had already run · C2 narrow-D8: render-
+  degrade struck, 4 blocks survive the re-screen · C3 extends precedence clause · C4 floors
+  never shed); I9 ruled inline → D11 stage-orthogonal framing; I/M one batch "as
+  recommended" (headline folds: I2 ship/efficacy mark splits at n=0 · I5 `at:` deferred +
+  D10 governance envelope · I10 ninth kind `latitude`); verify round 1 NOT CLEAN (2 blocking
+  + 9 nits, all 11 lead-repaired same round) → reviewer delta-check CLEAN; count correction
+  ran both ways (lead corrected the reviewer's render-degrade census 6/4 → 7/5/8; reviewer
+  withdrew C2's count limb); acceptance followed
+- **Artifacts:** [record.md](command-schema-ontology/record.md) (canonical — topic +
+  prior-session relations, ground facts F1–F8 as corrected, D1–D11 as amended, session
+  trail Q1–Q9 + sizing gate + dispositions, cost line with measured figures, cold-buildable
+  build surface 0–11, review + disposition + verify trail)
+- **About:** the user's driver — every schema content block is one `rule` shape. Ruled
+  (D1–D11): a typed node grammar for the six command schemas — nine-kind closed `kind:`
+  field (`constraint` default · duty · gate · reservation · binding · bound · routing ·
+  fail · latitude), tag-only with benefit-keyed field graduation; declared `conditions:` +
+  `when:` (single-homed, floors never shed); declared `moments:`, `at:` deferred; checked
+  in-text ID citations, no `requires:`; `enforces:` fail mirrors under an argued D16 carve;
+  `extends: common.*` adopted narrowly — a recorded supersession amending
+  `command-content-schema` D3 (`Contested`) to 3+-command exact-duplicate boilerplate, four
+  blocks; optionA-grid pre-arm reused with per-edit post-arm attribution; grammar-axis,
+  stage-orthogonal framing.
+- **Landed:** DECISIONS.md row (2026-08-27) · BACKLOG "Command-schema ontology wave"
+  section · ROADMAP: merged into the plan-surface/schema Next row · **wave BUILT
+  2026-08-28 at v0.98.0** — six pairs converted off the I8 inventory (14 anomalies, 4
+  user-ruled pre-conversion), D9 holes ruled at the gate (`impl.landing-lane` + the
+  eight-site setup amend posture), checker matrix 79→133, 4 validators to
+  CONFIRMED-PASS, eval grids on implement + setup (no stable regression attributable;
+  noise falsifier fired instrument-side, booked to the eval watches); build item →
+  trail, graduation candidates remain open
+
 ## `command-plan-only-eval` — eval commands via plan-only runs (no nested skill/seat execution); LLM judge grades the generated action plan
 - **When:** 2026-08-27 · **Status:** accepted · solo cold review via blind-map two-message
   dispatch (`mochiko:devils-advocate` seat running `mochiko:review-brainstorm`; 47-angle

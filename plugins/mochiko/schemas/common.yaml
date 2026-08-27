@@ -1,0 +1,65 @@
+# Shared rule library for the command content schemas (command-schema-ontology D8, as
+# amended by C2 and C3 — `.mochiko/brainstorms/command-schema-ontology/record.md`,
+# `DECISIONS.md` 2026-08-27). D8 is a recorded supersession-by-ruling of
+# command-content-schema D3 — amended, not reversed: per-command rules remain the default
+# and the label registry remains the cross-command link.
+#
+# Extraction bar: a block lives here ONLY where the same text is an EXACT duplicate across
+# three or more command schemas. Anything below that bar stays a per-command rule. A common
+# block is boilerplate by definition, never command-specific judgment.
+#
+# Common blocks are never binding on their own: a command binds one by carrying a rule stub
+# with `extends: common.<slug>` in its own schema, and the stub's `<cmd>.*` ID stays the
+# citable ID.
+#
+# Resolution rule (interpreted live at command fire, no build step — GI-020):
+#   INHERITED — `text`, `labels`, and `pointer`, and those three only. Any one of them
+#     declared locally on the stub REPLACES the inherited value.
+#   ALWAYS LOCAL — `class:` and every absence-meaningful field (`kind:`, `when:`,
+#     `enforces:`). A stub MUST declare `class:` explicitly, so a floor's bindingness stays
+#     readable from the stub's own file; the absence defaults (an absent `kind:` reads
+#     `constraint`; an absent `when:` binds unconditionally) apply after resolution. No
+#     block below carries any of these fields — one here would be inherited but always
+#     overridden, which is dead weight and a trap for a reader who assumes it applies.
+#   `${var}` placeholders in inherited text substitute from the BINDING command schema's
+#     `vars:` block, never from this file.
+#
+# A command `.md` whose schema uses `extends` instructs a raw, full Read of this file
+# alongside its own schema, in the same first action. IDs here are minted once, like rule
+# IDs (D11): a reword keeps its ID, a split mints children recording the parent, a merge
+# retires the losers.
+#
+# History: this file opened as the six-block prototype of the rule-similarity dive
+# (Option A, 2026-08-27), re-screened at D8/C2 against the 3+-exact-duplicate bar. Four
+# blocks passed and ship. `common.author-grader-default-fail` (2 members) and
+# `common.model-tiering` (2) failed the bar and were removed; both revert to per-command
+# rules. Neither ever shipped — the prototype was never committed — so no tombstone is
+# owed. `common.transport-floor` carries guard-stripped text: its seat-count guard is
+# single-homed into each binding stub's `when:` (D3), so the shared block carries less
+# than the prototype's version appeared to.
+kind: command-common
+
+rules:
+
+  - id: common.register
+    labels: [reporting]
+    text: >-
+      User-facing prose follows templates/output-style.md.
+
+  - id: common.no-git-mutations
+    labels: [user-gate]
+    text: >-
+      Suggest commits; never run git mutations, never push.
+
+  - id: common.acceptance-plain-text
+    labels: [user-gate]
+    text: >-
+      User acceptance is plain blocking text, never a timed prompt.
+
+  - id: common.transport-floor
+    labels: [floor-pointer, seats]
+    text: >-
+      mochiko:patterns-transport-floor governs composition and messaging under a
+      split trigger — message legs on any multi-seat messaging, topology legs on
+      shared writes — non-waivable once triggered; referenced, never restated.
+    pointer: "mochiko:patterns-transport-floor"

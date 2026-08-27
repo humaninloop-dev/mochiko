@@ -9,6 +9,484 @@ it carries the `<!-- shape-form: v7 -->` marker and binds P18–P20.
 **Also stale:** setup is a **`.md` + schema pair** as of the v0.95.0 conversion below — the
 v7-form claim describes the pre-pair shape only.
 
+<!-- Wave context: the command-schema ontology wave's D9 HOLE GATE (v0.98.0), landed after the
+conversion entries below and stamped at the same version. The wave declared `mode:` with all
+three of its values, which made the amend-mode coverage hole a deterministic finding: six
+setup rules phrased themselves as exhaustive over greenfield and brownfield alone, and a
+seventh (`setup.store-ruled-content-never-here`) plus the `.md` Goal step carried the same
+shape. Per D9 the hole's CONTENT is the user's pen, never the builder's — it was drafted at
+the build and ruled at the wave's user gate on 2026-08-27, adopted whole. The ruling in one
+line: **an amend run owns the governance surface set and nothing else; it never re-derives a
+product surface that exists, and where one is missing it surfaces and offers rather than
+scaffolding silently.** Ruling for every [v0.98.0] D9-gate entry below:
+`.mochiko/brainstorms/command-schema-ontology/record.md` D9 as amended at build anomaly J-7
+(the gate widened from two rules to six) → `DECISIONS.md` 2026-08-27 command-schema-ontology
+row. Every reword keeps its ID (D11); the `kind: fail` count is unchanged at 6, so the
+Not-done pin does not move. -->
+
+## [v0.98.0] `setup.fail.no-feature-map` — a third arm for amend (D9 gate)
+
+- **Disposition:** superseded → the reworded text on the same rule, which adds the amend arm.
+  ID, `class: floor`, `kind: fail`, `labels`, and `enforces:` are all unchanged.
+- **Tier failed:** n/a — supersession by ruling (record D9, the amend-mode hole content ruled
+  at the wave's user gate 2026-08-27; `DECISIONS.md` 2026-08-27).
+- **Content:** the text as shipped at v0.97.0 and as converted earlier in this wave, verbatim —
+
+  ```
+          No feature map at close — brownfield reconstruction unconfirmed, or greenfield
+          index unscaffolded.
+  ```
+
+- **Kept deliberately:** both original arms survive word for word; the amend arm is added
+  after them, not in place of either. The node keeps no `when:` — deliberately, and this is
+  the point of the ruling: both shipped arms were mode-specific, so the node would have gone
+  silent at amend and a run could have closed on a project with no feature map at all. The
+  new arm makes amend's obligation the **surfacing**, matching the posture
+  `spec.missing-map-surfaced` already takes in `plugins/mochiko/schemas/specify.yaml` ("A
+  missing feature map is surfaced — offer /mochiko:setup … never silently tolerated"), so the
+  ruling introduces no new doctrine. The three arms are intra-rule branches and stay prose per
+  D3's single-homing clause, the same disposition `setup.baselines-bootstrap` takes.
+- **Consumers assessed:** `plugins/mochiko/commands/setup.md`'s Goal step states the matching
+  done condition and gains the same amend arm in this ruling (its own entry below) · the
+  `.md` Not-done count-pin is unaffected — no fail node was added or removed, the count stays
+  **6** · `enforces:` still resolves to the same three live rules.
+
+## [v0.98.0] `setup.store-scaffold-unconditional` — "on both the greenfield and brownfield paths" → "on every path" (D9 gate)
+
+- **Disposition:** superseded → the reworded text on the same rule: the two-path enumeration
+  becomes "on every path", and the create-if-absent semantics the obligation always relied on
+  are made explicit so an amend run never writes over a live store.
+- **Tier failed:** n/a — supersession by ruling (record D9 as amended at J-7; `DECISIONS.md`
+  2026-08-27).
+- **Content:** the text as shipped at v0.97.0, verbatim —
+
+  ```
+          The architecture store's scaffold is unconditional — on both the greenfield
+          and brownfield paths, ${product_dir}/architecture/ is created with a spine.md
+          stub whose header carries the `Scope:` line
+          (setup.architecture-scope-handoff) and an empty concerns.md beside it, so the
+          store's layout is complete from birth; greenfield's stub is simply a header
+          with no topology under it.
+  ```
+
+- **Kept deliberately:** every clause of the obligation survives — the store path, the
+  `spine.md` stub, the `Scope:`-line carry with its citation of
+  `setup.architecture-scope-handoff`, the empty `concerns.md`, the complete-from-birth
+  rationale, and the greenfield's-stub-is-just-a-header clause. The rule's own name
+  ("unconditional") and `class: must` are unchanged. The mode enumeration was descriptive of
+  the two modes that existed when it was written, never a limit on the obligation — this
+  reword says what the rule already meant, and the added create-if-absent clause is what makes
+  it safe to mean it at amend.
+- **Consumers assessed:** `setup.architecture-scope-handoff` cites this rule by ID and still
+  resolves · `setup.store-ruled-content-never-here` draws the scaffold-vs-ruled-content line
+  this rule depends on and is reworded in the same ruling · `plugins/mochiko/commands/setup.md`
+  states the matching done condition and is aligned in the same ruling.
+
+## [v0.98.0] `setup.architecture-scope-handoff` — "every setup run, greenfield or brownfield" → "every setup run", declaration made write-if-absent (D9 gate)
+
+- **Disposition:** superseded → the reworded text on the same rule: the mode enumeration
+  leaves the every-run guarantee, and the declaration's write-if-absent semantics are stated
+  so an amend run never re-declares a `Scope:` line that already exists.
+- **Tier failed:** n/a — supersession by ruling (record D9 as amended at J-7; `DECISIONS.md`
+  2026-08-27).
+- **Content:** the superseded clause as shipped at v0.97.0, verbatim —
+
+  ```
+          store scaffold (setup.store-scaffold-unconditional) — so every setup run,
+          greenfield or brownfield, leaves the scope declared; the derived index
+          (repo-root ARCHITECTURE.md) renders it. The store carries the scope — setup
+          does not hold it.
+  ```
+
+- **Kept deliberately:** the whole rule around the reworded clause is untouched — the four
+  surface types and their full-stack/monorepo composition, the `spine.md` header home, the
+  citation of `setup.store-scaffold-unconditional`, the derived-index render, the store-carries-
+  the-scope line, the handoff-not-a-ruling framing with the `/mochiko:architecture` desk's
+  shelf dealing, the user's desk-side override, and the no-architecture-stance close. The
+  **every-run guarantee is strengthened, not weakened**: it now covers all three modes where
+  it named two. Write-if-absent is the clause that makes that safe, and it is required by
+  `arch.shelf-scope-source` in `plugins/mochiko/schemas/architecture.yaml`, which gives the
+  user a desk-side override of this very line — re-declaring at amend would silently overwrite
+  a ruling the desk took.
+- **Consumers assessed:** `arch.shelf-scope-source` reads the `Scope:` line this rule writes
+  and its desk override is now explicitly honored · `setup.store-scaffold-unconditional`
+  writes the stub this rule declares onto and is reworded in the same ruling ·
+  `plugins/mochiko/commands/setup.md` is aligned in the same ruling.
+
+## [v0.98.0] `setup.map-never-overwrite` (`class: floor`) — the two named writes restated as instances, not the floor's extent (D9 gate)
+
+- **Disposition:** superseded → the reworded text on the same rule, which states the floor
+  over every feature-map write the run makes and demotes the two named writes to instances,
+  closing with the amend case explicitly.
+- **Tier failed:** n/a — supersession by ruling (record D9 as amended at J-7; `DECISIONS.md`
+  2026-08-27). **This is a `class: floor` rule** — protected content, leaving only by a
+  recorded supersession-by-ruling, which this entry is.
+- **Content:** the text as shipped at v0.97.0, verbatim —
+
+  ```
+          The never-overwrite floor covers both feature-map writes — the brownfield
+          reconstruction (setup.feature-map-brownfield) and the greenfield scaffold
+          (setup.feature-map-greenfield).
+  ```
+
+- **Kept deliberately:** the floor itself is unchanged in force and **widened in reach, never
+  narrowed** — `class: floor` stands, both rule citations survive by ID and still resolve, and
+  nothing it protected before is unprotected now. The reword exists because a never-overwrite
+  floor that enumerates two paths reads as though a third escapes it, which is the worst
+  possible shape for a floor; stating the two as instances rather than as the extent removes
+  that reading. The closing "and an amend run makes none" is a statement of fact under the
+  same gate ruling, not a carve-out: an amend run performs no feature-map write, so the floor
+  has nothing to bite on there.
+- **Consumers assessed:** `setup.feature-map-brownfield` and `setup.feature-map-greenfield`
+  are cited by ID, both survive under their own IDs with their `when:` narrowings intact ·
+  `setup.fail.no-feature-map` mirrors the same pair and is reworded in the same ruling ·
+  `mochiko:authoring-feature-map` owns the map machinery and is untouched.
+
+## [v0.98.0] `setup.store-ruled-content-never-here` (`class: floor`) — "on either path" → "on any path", the two paths restated as instances of the floor's reach (D9 gate)
+
+- **Disposition:** superseded → the reworded text on the same rule, taking the same
+  instances-not-extent treatment as `setup.map-never-overwrite`. The closing clause reads
+  "those two **paths** are instances of **its reach**, not its extent" — naming the
+  greenfield and brownfield *paths* the sentence opens on, and the *floor's* reach. An
+  earlier draft of this reword closed "those two are instances of the prohibition, not its
+  extent", whose antecedent landed on the two `/mochiko:architecture` **visits** named
+  immediately before it — and those visits are the prohibition's remedy, the place ruled
+  content legitimately gets authored, never instances of the prohibition itself. Caught at
+  the pair audit (V3 M1) and repaired in the same version; the draft never shipped.
+- **Tier failed:** n/a — supersession by ruling (record D9 as amended at J-7 — this rule sits
+  just outside J-7's list of six but carries the identical two-of-three-values phrasing, and
+  the user's gate ruling adopted the draft whole including this absorbed site; `DECISIONS.md`
+  2026-08-27). **`class: floor`** — protected content, leaving only by recorded
+  supersession-by-ruling.
+- **Content:** the text as shipped at v0.97.0, verbatim —
+
+  ```
+          The store's ruled content is never authored in the run, on either path: a file
+          holding only a `Scope:` header is scaffold, not ruled content, and the first
+          /mochiko:architecture visit is what elicits it (greenfield) or reconstructs it
+          from what exists and confirms it with the user (brownfield).
+  ```
+
+- **Kept deliberately:** the prohibition is unchanged in force and **widened in reach, never
+  narrowed** — `class: floor` stands, the scaffold-vs-ruled-content line (a file holding only
+  a `Scope:` header is scaffold) survives verbatim, and both `/mochiko:architecture`
+  first-visit paths survive verbatim with their greenfield/brownfield tags — and they stay
+  the prohibition's remedy, which is exactly what the repaired closing clause preserves. Only
+  the exhaustive-sounding "on either path" and the implication that the two named paths bound
+  the floor are gone.
+- **Consumers assessed:** `setup.store-scaffold-unconditional` depends on this rule's
+  scaffold-vs-ruled-content line and is reworded in the same ruling ·
+  `arch.dm-author-baseline` and `arch.tools-brownfield-reconstruction` in
+  `plugins/mochiko/schemas/architecture.yaml` are the desk-side counterparts that author what
+  this rule forbids the run to author; both are untouched and still agree with it.
+
+## [v0.98.0] `setup.md` Goal step — the done condition aligned to the every-path posture (D9 gate)
+
+- **Disposition:** superseded → the reworded Goal-step sentences in
+  `plugins/mochiko/commands/setup.md`, which carry the same amend arm as
+  `setup.fail.no-feature-map` and the same every-path posture as
+  `setup.store-scaffold-unconditional`.
+- **Tier failed:** n/a — supersession by ruling (record D9 as amended at J-7; `DECISIONS.md`
+  2026-08-27). The `.md` half states the run's fixed done condition, so a schema-only landing
+  would have left the pair disagreeing with itself on what an amend run owes at close — the
+  exact inconsistency the gate ruling closes.
+- **Content:** the two superseded clauses as shipped at v0.97.0, verbatim (the `Assumed`
+  sentence between them is unchanged by this ruling; its own citation-only edit is recorded in
+  the F8 entry below) —
+
+  ```
+     The feature map exists at close:
+     brownfield reconstructed and user-confirmed, greenfield an empty scaffold (feature-map rules:
+     `setup.sec.tools`).
+
+     The architecture store's `spine.md` stub and its `Scope:` line are
+     outside that split — written on **both** paths (store rules: `setup.sec.tools`).
+  ```
+
+- **Kept deliberately:** the whole done condition around the two reworded clauses is
+  untouched — the ratified-before-authored ordering, the trace closure and independent grade,
+  the semver bump, the user's acceptance with the trace summary, both `setup.sec.tools`
+  pointers, the `Assumed` mark and its baselines sentence, and the outside-that-split framing
+  for the store. The count-pinned Not-done step is untouched and still reads **6**.
+- **Consumers assessed:** `plugins/mochiko/schemas/setup.yaml` carries the matching rules,
+  all reworded under the same ruling in the entries above · the pair audit reads the `.md`
+  half first, which is why this site is landed in the same move rather than deferred.
+
+<!-- Wave context: the command-schema ontology wave (v0.98.0) — the D1–D8 grammar amendment
+over the `.md` + schema pair: a closed `kind:` set with `constraint` as the omitted default
+(D1), a per-schema `conditions:` block plus a rule-level `when:` guard with the condition
+single-homed out of `text` (D3), a per-schema `moments:` block (D4), `enforces:` on every
+`kind: fail` node (D6), `extends: common.<slug>` binding the shared blocks in
+`plugins/mochiko/schemas/common.yaml` (D8 — a narrow supersession of command-content-schema
+D3), and the F8 provenance fix (D9 as amended at build anomaly J-10 — citation-only).
+Ruling for every [v0.98.0] entry below:
+`.mochiko/brainstorms/command-schema-ontology/record.md` D1–D11 as amended → `DECISIONS.md`
+2026-08-27 command-schema-ontology row. Clause inventory (the audit referent): that session's
+`conversion-inventory.md`. Pure additions ride the decision row and are not entered here —
+the `kind:` lines, the `conditions:` and `moments:` blocks, the C4 floor-semantics comment,
+the two D6 empty-`enforces:` reason comments, and the `.md` Rules-block grammar breath. -->
+
+## [v0.98.0] The schema header's D6/D14 grammar comment — superseded by the canonical D1–D8 header (build item 1)
+
+- **Disposition:** superseded → the canonical header comment block at the top of
+  `plugins/mochiko/schemas/setup.yaml`, per the inventory's section G, which states the same
+  grammar plus the `kind:` / `when:` / `conditions:` / `moments:` / `enforces:` / `extends:`
+  fields.
+- **Tier failed:** n/a — supersession by ruling (record D1–D8, build-surface item 1;
+  `DECISIONS.md` 2026-08-27).
+- **Content:** the superseded lines as shipped at v0.97.0, verbatim —
+
+  ```
+  # rule-shaped content (command-content-schema D1/D7; setup converted under the D10
+  # per-command rollout ruling, DECISIONS.md 2026-08-26). The command .md instructs a raw,
+  # full Read of this file at command fire; the model interprets it live — no build step,
+  # no binary on the read path (GI-020). Narrative (Identity & Mission, Adaptive Goal
+  # Protocol prose) stays in plugins/mochiko/commands/setup.md.
+  # Grammar (D6, as amended by D14): sections: list, each {id, title, intent, rules};
+  # rule blocks {id, labels, class, text, pointer?} nest under their section.
+  #           the command group it carries; intent one line, navigation only — sections
+  #           never grow a second prose surface (narrative stays in the .md).
+  #   setup.sec.* · class: values · labels · pointer: skills · file
+  #   paths). Deixis ("these rules", "this section", "above"/"below", document-shape
+  #   remarks) is a defect — quoted alone, the reference dangles. The checker lints a
+  #   curated marker list (warning-class). "this schema" and "the run" are legal
+  #   self-reference.
+  ```
+
+- **Kept deliberately:** every surviving D6/D11/D12/D14/D15/D16 grammar line is carried into
+  the new block verbatim or near-verbatim — the section-ID mint rule, the ID-frozen /
+  reword-keeps-its-ID / split / merge rules, the `setup.fail.*` segment line, the label
+  registry pointer, the three-value `class` vocabulary, the `${var}` substitution line, the
+  provenance-sidecar line, the `pointer:` line, the D12 grain line, and the D13
+  advisory-checker line. The whole D15 deixis paragraph is carried across including this
+  run's legal self-reference set, **"this schema" and "the run"** — reproduced word for word,
+  so nothing about referential closure loosened. Setup's `vars:` comment on `plugin_root` is
+  untouched.
+- **Consumers assessed:** `scripts/check-command-schema.py` parses the YAML, never this
+  comment (it gains its own D1–D8 checks in the same wave); no other primitive reads it.
+
+## [v0.98.0] Five activation guards single-homed into `when:` (D3)
+
+- **Disposition:** superseded → the `when:` field on each of `setup.feature-map-brownfield`
+  · `setup.feature-map-greenfield` · `setup.user-conflict-rulings` ·
+  `setup.user-map-confirmation` · `setup.transport-floor`, with each rule's `text` reworded
+  to carry the obligation alone. All five keep their IDs (a reword, D11). The `mode`
+  dimension they now key on is declared in this schema's `conditions:` block with its
+  resolution point `user-ruled`, naming `setup.user-mode-ruling` as the rule that resolves
+  it.
+- **Tier failed:** n/a — supersession by ruling (record D3, single-homing: "rule-level
+  activation conditions live in `when:` alone and leave the `text`", as amended at C4 for
+  floors; `DECISIONS.md` 2026-08-27. Clause inventory: `conversion-inventory.md` section
+  B.5, the five setup MOVEs).
+- **Content:** the guard-carrying texts as shipped at v0.97.0, verbatim —
+
+  ```
+  setup.feature-map-brownfield:
+            Brownfield → the analysis (setup.interrogation-inputs) extends into a
+            feature-map reconstruction — delivered capabilities derived from the code
+            (routes, UI surfaces, services), confirmed with the user, landing as the
+            initial FEATURES.md + .mochiko/features/ entries with `delivered` status and
+            the reconstructed-from-code mark (shape: the features-index and feature-entry
+            templates — mochiko-cli template features-index and
+            mochiko-cli template feature-entry, or their schemas
+            plugins/mochiko/schemas/features-index.yaml and
+            plugins/mochiko/schemas/feature-entry.yaml Read raw when the binary is absent,
+            the shipped schemas being the first-class source of truth; map machinery and
+            the first-touch re-verify obligation: mochiko:authoring-feature-map).
+
+  setup.feature-map-greenfield:
+            Greenfield → scaffold the empty FEATURES.md index.
+
+  setup.user-conflict-rulings:
+            Detected reality vs declared intent conflicts (brownfield) are the user's —
+            confronted in the open, never silently resolved.
+
+  setup.user-map-confirmation:
+            Confirmation of the reconstructed feature map, entry by entry (brownfield), is
+            the user's.
+
+  setup.transport-floor:
+            When the run composes more than one seat, mochiko:patterns-transport-floor
+            governs its composition and messaging under a split trigger — message legs on
+            any multi-seat messaging, topology legs on shared writes — non-waivable once
+            triggered; referenced, never restated.
+  ```
+
+- **Kept deliberately:** every obligation survives whole; only the mode arrow or the
+  parenthetical mode tag moved, and each rule keeps its `class`, its labels, its `kind:`
+  where it carries one, and its `pointer:` where it had one.
+  `setup.feature-map-brownfield` keeps its entire reconstruction obligation — the code-derived
+  capabilities, the user confirmation, the `delivered` status and reconstructed-from-code
+  mark, both template bindings with their full render-or-Read-raw degrade formula, and the
+  first-touch re-verify pointer — under `when: {mode: [brownfield]}`. The two reserved
+  rulings keep their user ownership and their never-silently-resolved and entry-by-entry
+  clauses. `setup.transport-floor` keeps `class: floor` and carries the C4 comment verbatim —
+  a floor is always read and always delivered, `when:` gating when the obligation applies,
+  never whether it is delivered, and re-evaluated whenever a seat is added mid-run; its
+  guard-stripped residue is an exact duplicate of the shared block, so it also binds
+  `common.transport-floor` (next entry).
+- **Consumers assessed:** `setup.fail.no-feature-map` mirrors the two feature-map rules and
+  now names them in its `enforces:`; `setup.map-never-overwrite` cites both by ID and both
+  survive under their own IDs, so the citations still resolve. The run's `.md` half names
+  none of the five by ID; it points at `setup.sec.tools` as the feature-map rules' home,
+  which is unchanged. **Standing hole, not closed here:** `mode: amend` reaches no
+  feature-map rule, and six setup rules phrase themselves as exhaustive over greenfield and
+  brownfield alone (inventory J-7). That is D9 user-gate content, deliberately left for the
+  wave's gate — declaring the dimension is what makes the hole a deterministic coverage
+  finding.
+
+## [v0.98.0] Three local rule texts — superseded by `extends: common.*` (D8)
+
+- **Disposition:** superseded → `extends: common.no-git-mutations` ·
+  `extends: common.acceptance-plain-text` · `extends: common.transport-floor`, each
+  inheriting the identical text from `plugins/mochiko/schemas/common.yaml`; all three stubs
+  keep their `setup.*` IDs as the citable IDs.
+- **Tier failed:** n/a — supersession by ruling (record D8 as amended by C2 and C3 — a
+  narrow supersession-by-ruling of command-content-schema D3, legal only for text that is an
+  exact duplicate across three or more command schemas; `DECISIONS.md` 2026-08-27. Member
+  counts at the bar: `no-git-mutations` 5 · `acceptance-plain-text` 3 · `transport-floor` 3
+  — inventory section F.0/F.1).
+- **Content:** the local rule bodies as shipped at v0.97.0, verbatim
+  (`setup.transport-floor`'s text is quoted in the preceding entry, which records its guard
+  as well) —
+
+  ```yaml
+        - id: setup.no-git-mutations
+          labels: [user-gate]
+          class: floor
+          text: >-
+            Suggest commits; never run git mutations, never push.
+
+        - id: setup.acceptance-plain-text
+          labels: [user-gate]
+          class: floor
+          text: >-
+            User acceptance is plain blocking text, never a timed prompt.
+
+        - id: setup.transport-floor
+          labels: [floor-pointer, seats]
+          class: floor
+          pointer: "mochiko:patterns-transport-floor"
+  ```
+
+- **Kept deliberately:** the resolved text of all three rules is byte-identical to what
+  shipped — `extends:` was admitted only on exact duplicates, so nothing was reworded to
+  make a rule bindable. Per the C3 precedence clause every absence-meaningful field stays
+  local and is re-declared on each stub, and setup is the case that clause exists for:
+  `setup.no-git-mutations` and `setup.acceptance-plain-text` are **`class: floor` here where
+  the shared blocks are bound at `must` elsewhere**, so both re-declare `class: floor`
+  locally and this command's floor bindingness stays readable from its own file. All three
+  stubs inherit their labels unchanged, each one's shipped labels matching its block's
+  exactly (inventory F.5). **`setup.register` deliberately does not bind** `common.register`:
+  its shipped text reads "User-facing prose **per** templates/output-style.md" against the
+  block's "**follows**", and rewording a shipped rule to make it bindable is content churn
+  this wave was not authorized to take (inventory F.2, J-9). It stays a full per-command
+  rule, unchanged.
+- **Consumers assessed:** `plugins/mochiko/schemas/common.yaml` is the new home and ships in
+  the same wave under full ceremony; `plugins/mochiko/commands/setup.md` gains the
+  `extends:` reading instruction and the obligated raw Read of `common.yaml` in its first
+  action; `scripts/check-command-schema.py` gains `extends:` target resolution and the C3
+  local-`class:` assert in the same wave. `setup.model-tiering` and
+  `setup.author-grader-default-fail` stay per-command rules: their would-be blocks measured
+  two members each and failed the 3+ bar, so they were struck from `common.yaml` (C2).
+
+## [v0.98.0] The F8 provenance leak — the record citation removed from both pair sites, the `Assumed` mark kept (D9 as amended at J-10)
+
+- **Disposition:** superseded → nothing; the record citation is **deleted** from the two
+  sites that carried it, its provenance carried by this entry. The fix is
+  **citation-only**: the `` `Assumed` `` confidence mark stays as prose in both sites.
+- **Tier failed:** n/a — supersession by ruling (record D9 as amended at build anomaly J-10,
+  user-ruled: "the fix is citation-only, not the D9 statement's sidecar move — the record
+  CITATION leaves both setup sites … the `Assumed` word STAYS as prose in both";
+  `DECISIONS.md` 2026-08-27. Inventory: section I plus J-10).
+- **Content:** the deleted citations as shipped at v0.97.0, verbatim, each in the sentence
+  that carried it —
+
+  ```
+  plugins/mochiko/schemas/setup.yaml, setup.baselines-bootstrap:
+            `Assumed` (feature-sizing record, open thread 4 — setup reconstruction burden
+            + partial-baseline poisoning risk): the brownfield analysis also bootstraps the
+            product baselines — …
+
+  plugins/mochiko/commands/setup.md, Adaptive Goal Protocol step 2:
+     `Assumed` (feature-sizing record, open thread 4 — reconstruction burden,
+     partial-baseline poisoning): brownfield close also carries the bootstrapped product baselines
+     at `.mochiko/product/`; …
+  ```
+
+  The provenance the citations carried, recorded here so it is not lost: the source is the
+  **feature-sizing-and-entry-points** session record, open thread 4 — setup reconstruction
+  burden and partial-baseline poisoning risk (`DECISIONS.md` row dated 2026-08-10).
+- **Kept deliberately:** the `` `Assumed` `` mark itself **stays in both sites**, and both
+  obligations are otherwise carried verbatim — the four named baselines, the `${product_dir}/`
+  home, the ARCHITECTURE.md-stays-repo-root parenthetical, and the greenfield-seeds-at-the-
+  first-implement-design-phase arm in the schema; the brownfield-close and greenfield-leaves
+  arms in the `.md`. The mark survives because it is a runtime-relevant hedge on a shipped
+  obligation, and because `arch.tools-brownfield-reconstruction` in
+  `plugins/mochiko/schemas/architecture.yaml` **references it by name** — "inherits the
+  setup-bootstrap `Assumed` caveat and its partial-baseline poisoning risk" — so a full move
+  would have dangled that reference and broken D15 referential closure in a third schema
+  (inventory I.3). `setup.baselines-bootstrap` keeps its ID, `class: must`, and `landing`
+  label; no `when:` is added, because the rule states both mode arms in one obligation.
+- **Consumers assessed:** `plugins/mochiko/schemas/architecture.yaml`
+  (`arch.tools-brownfield-reconstruction`) references the caveat by name and still resolves,
+  since the mark stayed · `.mochiko/provenance.yaml` is **untouched**: the sidecar's anchor
+  grammar is one string per key and this rule already holds
+  `"2026-08-26 plan-stage-utility"`, so adding a second anchor would need a list-valued form
+  and a checker change that no ruling authorized (inventory I.2, J-10) — the citation's
+  provenance lives in this strip entry instead · no other primitive cites the feature-sizing
+  thread from a shipped surface.
+
+## [v0.98.0] The `fail-condition` label as the Not-done selector — re-keyed to `kind: fail` (build item 4)
+
+- **Disposition:** superseded → `kind: fail` on all six `setup.fail.*` nodes, which is now
+  the operative selector for the Not-done set across both halves of the pair: the label
+  leaves every node, the `setup.sec.fail-conditions` intent line names the new key, and the
+  `.md` Not-done line counts `kind: fail`.
+- **Tier failed:** n/a — supersession by ruling (record D1 and build-surface item 4,
+  "`kind: fail` replaces the `fail-condition` label as the operative selector … the six `.md`
+  Not-done lines re-worded"; `DECISIONS.md` 2026-08-27. Line-by-line: inventory section H).
+- **Content:** the superseded sites as shipped at v0.97.0, verbatim —
+
+  ```
+  plugins/mochiko/schemas/setup.yaml, the six fail nodes' labels, in file order —
+  setup.fail.pre-ratification-authoring · unclosed-trace · author-graded ·
+  floor-category-uncovered · no-acceptance · no-feature-map:
+          labels: [fail-condition, user-gate]
+          labels: [fail-condition, evidence]
+          labels: [fail-condition, independence]
+          labels: [fail-condition, user-gate]
+          labels: [fail-condition, user-gate]
+          labels: [fail-condition, landing]
+
+  plugins/mochiko/schemas/setup.yaml, setup.sec.fail-conditions intent:
+        The fail-condition set — any one standing fails the run; the .md Not-done line hard-codes this set's count.
+
+  plugins/mochiko/commands/setup.md, Adaptive Goal Protocol step 3:
+  3. **Not done — default FAIL:** the 6 rules labeled `fail-condition` in
+     `plugins/mochiko/schemas/setup.yaml` (section `setup.sec.fail-conditions`) — any one
+     standing fails the run. If the schema's `fail-condition` count is not 6, the pair is out of
+     sync: halt and surface it before closing.
+  ```
+
+- **Kept deliberately:** the whole count-pin mechanism survives, re-keyed. The count stays
+  **6**, the out-of-sync halt clause is carried verbatim, the section pointer and the
+  any-one-standing sentence are unchanged, and every node keeps its ID, its `class: floor`,
+  its text, its second label, and — on `setup.fail.floor-category-uncovered` — its
+  `pointer:`. Each node additionally gains its `enforces:` mirror (D6), including the two
+  legal empty lists that carry their one-line reason:
+  `setup.fail.unclosed-trace` (the trace obligation is owned by
+  `mochiko:authoring-constitution`, bound at `setup.surface-set`) and
+  `setup.fail.floor-category-uncovered` (the Essential Floor category set is owned by the
+  same skill, carried on that node's own `pointer:`). Those are pure additions riding the
+  decision row.
+- **Consumers assessed:** `plugins/mochiko/schemas/command-labels.yaml` retires the label in
+  the same wave (its own strip entry at `.mochiko/strips/command-labels.md`) ·
+  `.claude/rules/mochiko/primitive-edits.md` criterion 3 re-keys to `kind: fail` in the same
+  wave · `scripts/check-command-schema.py` re-keys its count assert and keeps the
+  bidirectional `setup.fail.*`-segment ↔ `kind: fail` cross-check (I4) · the other five
+  command pairs re-key on the same ruling.
+
 <!-- Wave context: the command-`.md`-scaffold standardization wave (v0.97.0) — one canonical
 `.md` scaffold for all six pair commands (D1/D2: Identity & Mission · Rules block · Adaptive
 Goal Protocol with Entry / Goal / count-pinned Not-done last) and the schema six-set

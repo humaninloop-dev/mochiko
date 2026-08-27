@@ -7,6 +7,227 @@ wave also ran the **D2 conversion assessment** and the **S8 home-revision checkp
 the shape is now **v5** (2026-07-30) — see the v0.35.0 section below. **Also stale:** the shape is
 **v7**, and specify converted to v7 form at v0.43.0 — see the section immediately below.
 
+<!-- Wave context: the command-schema ontology wave (v0.98.0) — the D1–D8 grammar amendment
+over the `.md` + schema pair: a closed `kind:` set with `constraint` as the omitted default
+(D1), a per-schema `conditions:` block plus a rule-level `when:` guard with the condition
+single-homed out of `text` (D3), a per-schema `moments:` block (D4), `enforces:` on every
+`kind: fail` node (D6), and `extends: common.<slug>` binding the shared blocks in
+`plugins/mochiko/schemas/common.yaml` (D8 — a narrow supersession of command-content-schema
+D3). Ruling for every [v0.98.0] entry below:
+`.mochiko/brainstorms/command-schema-ontology/record.md` D1–D11 as amended → `DECISIONS.md`
+2026-08-27 command-schema-ontology row. Clause inventory (the audit referent): that session's
+`conversion-inventory.md`. Pure additions ride the decision row and are not entered here —
+the `kind:` lines, the `conditions:` and `moments:` blocks, the C4 floor-semantics comment,
+the `.md` Rules-block grammar breath, and the four **DECLARE**-disposition `when:` fields
+(D3 as amended at build anomaly J-1: `spec.map-obligated-read` · `spec.missing-map-surfaced`
+· `spec.governance-region-absent` · `spec.whole-feature-prototype`, each shape-gated by its
+own subject noun, so `when:` is added and the text is unchanged — nothing left, nothing to
+record). -->
+
+## [v0.98.0] The schema header's D6/D14 grammar comment — superseded by the canonical D1–D8 header (build item 1)
+
+- **Disposition:** superseded → the canonical header comment block at the top of
+  `plugins/mochiko/schemas/specify.yaml`, per the inventory's section G, which states the
+  same grammar plus the `kind:` / `when:` / `conditions:` / `moments:` / `enforces:` /
+  `extends:` fields.
+- **Tier failed:** n/a — supersession by ruling (record D1–D8, build-surface item 1;
+  `DECISIONS.md` 2026-08-27).
+- **Content:** the superseded lines as shipped at v0.97.0, verbatim —
+
+  ```
+  # rule-shaped content (command-content-schema D1, rolled out to specify by the D10
+  # per-command ruling, DECISIONS.md 2026-08-26). The command .md instructs a raw, full Read
+  # of this file at command fire; the model interprets it live — no build step, no binary on
+  # the read path (GI-020). Narrative (Identity & Mission, Adaptive Goal Protocol prose)
+  # stays in plugins/mochiko/commands/specify.md.
+  # Grammar (D6, as amended by D14): sections: list, each {id, title, intent, rules};
+  # rule blocks {id, labels, class, text, pointer?} nest under their section.
+  #   section id  <cmd>.sec.<slug> — minted once like rule IDs (D11); title verbatim from
+  #           the command group it carries; intent one line, navigation only — sections
+  #           never grow a second prose surface (narrative stays in the .md).
+  #   spec.sec.* · class: values · labels · pointer: skills · file paths).
+  #   Deixis ("these rules", "this section", "above"/"below", document-shape remarks) is a
+  #   defect — quoted alone, the reference dangles. The checker lints a curated marker list
+  #   (warning-class). "this schema" and "the run" are legal self-reference.
+  ```
+
+- **Kept deliberately:** every surviving D6/D11/D12/D14/D15/D16 grammar line is carried into
+  the new block verbatim or near-verbatim — the section-ID mint rule, the ID-frozen /
+  reword-keeps-its-ID / split / merge rules, the `spec.fail.*` segment line, the label
+  registry pointer, the three-value `class` vocabulary, the `${var}` substitution line, the
+  provenance-sidecar line, the `pointer:` line, the D12 grain line, and the D13
+  advisory-checker line. The whole D15 deixis paragraph is carried across including this
+  run's legal self-reference set, **"this schema" and "the run"** — reproduced word for word
+  in the new block, so nothing about referential closure loosened. The section-ID line's
+  placeholder is resolved from `<cmd>.sec.<slug>` to the concrete `spec.sec.<slug>`.
+- **Consumers assessed:** `scripts/check-command-schema.py` parses the YAML, never this
+  comment (it gains its own D1–D8 checks in the same wave); no other primitive reads it.
+
+## [v0.98.0] Five activation guards single-homed into `when:` (D3)
+
+- **Disposition:** superseded → the `when:` field on each of `spec.stress-test-prototype-walk`
+  · `spec.governance-briefs` · `spec.km-landing` · `spec.lockstep-prototyping` ·
+  `spec.transport-floor`, with each rule's `text` reworded to carry the obligation alone.
+  All five keep their IDs (a reword, D11).
+- **Tier failed:** n/a — supersession by ruling (record D3, single-homing: "rule-level
+  activation conditions live in `when:` alone and leave the `text`", as amended at C4 for
+  floors; `DECISIONS.md` 2026-08-27. Clause inventory: `conversion-inventory.md` section
+  B.3, the five specify MOVEs).
+- **Content:** the guard-carrying texts as shipped at v0.97.0, verbatim —
+
+  ```
+  spec.stress-test-prototype-walk:
+            On a UX-bearing spec the stress-test also walks the prototype (served, or
+            opened directly via the no-server degrade path): every FLOW-XXX clickable
+            end-to-end, every SCR-XXX reachable, every P1 acceptance scenario carrying a
+            click path; manifest↔prototype drift is a blocking gap.
+
+  spec.governance-briefs:
+            Where the CLAUDE.md governance region is present, name the relevant
+            ${rules_dir}/ files as an obligated read in each author's brief —
+            `paths`-scoped rules do not fire for from-scratch authoring.
+
+  spec.km-landing:
+            Where .mochiko/memory/knowledge-management.md exists, spec acceptance is a
+            landing — run its landing ritual (close/move any BACKLOG item the spec
+            discharges, touch ROADMAP.md) and its command-boundary invariants
+            fix-on-sight; the acceptance-time map write batch lands in the same moment.
+
+  spec.lockstep-prototyping:
+            UX-bearing only: stories and their screens co-evolve as one unit — skeleton
+            nav frame first, then each story's screens and flows land while that story is
+            under discussion; the user clicks through while the story is wet, never a
+            batch render after the text settles.
+
+  spec.transport-floor:
+            When the run composes more than one seat, mochiko:patterns-transport-floor
+            governs its composition and messaging under a split trigger — message legs on
+            any multi-seat messaging, topology legs on shared writes — non-waivable once
+            triggered; referenced, never restated.
+  ```
+
+- **Kept deliberately:** every obligation survives whole; only the guard clause moved, and
+  each rule keeps its `class`, its labels, and its `pointer:` where it had one. The two
+  UX-bearing rules land under `when: {ux_bearing: "yes"}` (the value is quoted so YAML reads
+  a string, not a boolean) and keep every clause of their craft — the served-or-degraded
+  walk, the three per-artifact obligations, the drift-is-a-blocking-gap close, the skeleton
+  nav frame, the story-is-wet clause. `spec.governance-briefs` keeps the `paths`-scoped
+  carve that explains why the brief must name the files. `spec.km-landing` keeps its whole
+  ritual enumeration and now names the knowledge-management file by path in the obligation
+  itself. `spec.transport-floor` keeps `class: floor` and carries the C4 comment verbatim —
+  a floor is always read and always delivered, `when:` gating when the obligation applies,
+  never whether it is delivered, and re-evaluated whenever a seat is added mid-run; its
+  guard-stripped residue is an exact duplicate of the shared block, so it also binds
+  `common.transport-floor` (next entry).
+- **Consumers assessed:** the run's `.md` half names none of the five by ID.
+  `mochiko:patterns-transport-floor`, `mochiko:authoring-prototype`, and
+  `.mochiko/memory/knowledge-management.md` hold the procedures these rules point at and are
+  untouched.
+
+## [v0.98.0] Four local rule texts — superseded by `extends: common.*` (D8)
+
+- **Disposition:** superseded → `extends: common.register` ·
+  `extends: common.no-git-mutations` · `extends: common.acceptance-plain-text` ·
+  `extends: common.transport-floor`, each inheriting the identical text from
+  `plugins/mochiko/schemas/common.yaml`; all four stubs keep their `spec.*` IDs as the
+  citable IDs. Specify is the only command binding all four blocks.
+- **Tier failed:** n/a — supersession by ruling (record D8 as amended by C2 and C3 — a
+  narrow supersession-by-ruling of command-content-schema D3, legal only for text that is an
+  exact duplicate across three or more command schemas; `DECISIONS.md` 2026-08-27. Member
+  counts at the bar: `register` 5 · `no-git-mutations` 5 · `acceptance-plain-text` 3 ·
+  `transport-floor` 3 — inventory section F.0/F.1).
+- **Content:** the local rule bodies as shipped at v0.97.0, verbatim (`spec.transport-floor`'s
+  text is quoted in the preceding entry, which records its guard as well) —
+
+  ```yaml
+        - id: spec.register
+          labels: [reporting]
+          class: must
+          text: >-
+            User-facing prose follows templates/output-style.md.
+
+        - id: spec.no-git-mutations
+          labels: [user-gate]
+          class: must
+          text: >-
+            Suggest commits; never run git mutations, never push.
+
+        - id: spec.acceptance-plain-text
+          labels: [user-gate]
+          class: must
+          text: >-
+            User acceptance is plain blocking text, never a timed prompt.
+
+        - id: spec.transport-floor
+          labels: [floor-pointer, seats]
+          class: floor
+          pointer: "mochiko:patterns-transport-floor"
+  ```
+
+- **Kept deliberately:** the resolved text of all four rules is byte-identical to what
+  shipped — `extends:` was admitted only on exact duplicates, so nothing was reworded to
+  make a rule bindable. Per the C3 precedence clause every absence-meaningful field stays
+  local and is re-declared on each stub: `class: must` on three, `class: floor` on
+  `spec.transport-floor`, `kind: binding` on `spec.register`, and `when: {seats: multi}`
+  plus the C4 comment on `spec.transport-floor`. All four stubs inherit their labels
+  unchanged, because each one's shipped labels match its block's exactly (inventory F.5) —
+  including `spec.transport-floor`'s `[floor-pointer, seats]` and its `pointer:`.
+- **Consumers assessed:** `plugins/mochiko/schemas/common.yaml` is the new home and ships in
+  the same wave under full ceremony; `plugins/mochiko/commands/specify.md` gains the
+  `extends:` reading instruction and the obligated raw Read of `common.yaml` in its first
+  action; `scripts/check-command-schema.py` gains `extends:` target resolution and the C3
+  local-`class:` assert in the same wave. `spec.model-tiering` and
+  `spec.author-grader-default-fail` stay per-command rules: their would-be blocks measured
+  two members each and failed the 3+ bar, so they were struck from `common.yaml` (C2).
+
+## [v0.98.0] The `fail-condition` label as the Not-done selector — re-keyed to `kind: fail` (build item 4)
+
+- **Disposition:** superseded → `kind: fail` on all nine `spec.fail.*` nodes, which is now
+  the operative selector for the Not-done set across both halves of the pair: the label
+  leaves every node, the `spec.sec.fail-conditions` intent line names the new key, and the
+  `.md` Not-done line counts `kind: fail`.
+- **Tier failed:** n/a — supersession by ruling (record D1 and build-surface item 4,
+  "`kind: fail` replaces the `fail-condition` label as the operative selector … the six `.md`
+  Not-done lines re-worded"; `DECISIONS.md` 2026-08-27. Line-by-line: inventory section H).
+- **Content:** the superseded sites as shipped at v0.97.0, verbatim —
+
+  ```
+  plugins/mochiko/schemas/specify.yaml, the nine fail nodes' labels, in file order —
+  spec.fail.blocking-gap · intent-unconfirmed · map-unread · story-unhomed · screens-flows ·
+  selection-unruled · premature-map-write · self-graded · no-acceptance:
+          labels: [fail-condition, evidence]
+          labels: [fail-condition, user-gate]
+          labels: [fail-condition, scope-entry]
+          labels: [fail-condition, evidence]
+          labels: [fail-condition, evidence]
+          labels: [fail-condition, user-gate]
+          labels: [fail-condition, landing]
+          labels: [fail-condition, independence]
+          labels: [fail-condition, user-gate]
+
+  plugins/mochiko/schemas/specify.yaml, spec.sec.fail-conditions intent:
+        The fail-condition set — any one standing fails the run; the .md Not-done line hard-codes this set's count.
+
+  plugins/mochiko/commands/specify.md, Adaptive Goal Protocol step 3:
+  3. **Not done — default FAIL:** the 9 rules labeled `fail-condition` in
+     `plugins/mochiko/schemas/specify.yaml` (section `spec.sec.fail-conditions`) — any one
+     standing fails the run. If the schema's `fail-condition` count is not 9, the pair is out of
+     sync: halt and surface it before closing.
+  ```
+
+- **Kept deliberately:** the whole count-pin mechanism survives, re-keyed. The count stays
+  **9**, the out-of-sync halt clause is carried verbatim, the section pointer and the
+  any-one-standing sentence are unchanged, and every node keeps its ID, its `class: floor`,
+  its text, and its second label — only the retired `fail-condition` token left each list.
+  Each node additionally gains its `enforces:` mirror (D6) — a pure addition riding the
+  decision row.
+- **Consumers assessed:** `plugins/mochiko/schemas/command-labels.yaml` retires the label in
+  the same wave (its own strip entry at `.mochiko/strips/command-labels.md`) ·
+  `.claude/rules/mochiko/primitive-edits.md` criterion 3 re-keys to `kind: fail` in the same
+  wave · `scripts/check-command-schema.py` re-keys its count assert and keeps the
+  bidirectional `spec.fail.*`-segment ↔ `kind: fail` cross-check (I4) · the other five
+  command pairs re-key on the same ruling.
+
 <!-- Wave context: the command-`.md`-scaffold standardization wave (v0.97.0) — one canonical
 `.md` scaffold for all six pair commands (D1/D2: Identity & Mission · Rules block · Adaptive
 Goal Protocol with Entry / Goal / count-pinned Not-done last) and the schema six-set

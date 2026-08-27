@@ -30,8 +30,21 @@ non-waivable floor — the transport floor, staged derivation, epic minting) ·
 `spec.sec.fail-conditions` (the Not-done set). The raw Read is the first-class read: no binary,
 no render step. Interpret it live: substitute every `${var}` from its `vars:` block at read
 time; a `pointer:` rule binds you to that skill's procedure, referenced never restated; labels
-come from `plugins/mochiko/schemas/command-labels.yaml`. A rule you have not read is not
-thereby waived — this run is not open until the schema is read whole.
+come from `plugins/mochiko/schemas/command-labels.yaml`. `kind:` names what a rule is —
+`constraint` (the default, never written) · `duty` · `gate` · `reservation` · `binding` ·
+`bound` · `routing` · `fail` · `latitude`; `when:` gates a rule on the dimensions declared in
+the top-level `conditions:` block and binds it only when its terms hold — except on a
+`class: floor` rule, which is always read and always delivered, its `when:` gating when the
+obligation applies and never whether it reaches you; the top-level `moments:` block names the
+run's anchor points and is unordered, never a sequence; and `enforces:` on a `kind: fail` node
+lists the local rules it is the end-state contrapositive of, an empty list carrying its
+reason. A rule carrying `extends: common.<slug>` binds a shared block in
+`plugins/mochiko/schemas/common.yaml` — **Read that file raw, in full, in the same first
+action**: a stub inherits `text`, `labels`, and `pointer` only, `class:` and every
+absence-meaningful field (`kind:`, `when:`, `enforces:`) are local, a locally declared field
+replaces the inherited one, `${var}` placeholders in inherited text substitute from this
+schema's own `vars:` block, and the stub's `spec.*` ID stays the citable ID. A rule you have
+not read is not thereby waived — this run is not open until the schema is read whole.
 
 ## Adaptive Goal Protocol
 
@@ -58,7 +71,7 @@ Every run has a goal and an explicit done condition; a run is never goal-less.
    spec + stories + capability/row derivation + map delta in one pass, the served prototype
    walked when UX-bearing — with no blocking gap left open; and the user accepted the whole —
    intent, requirements, experience, derivation, and selection together.
-3. **Not done — default FAIL:** the 9 rules labeled `fail-condition` in
+3. **Not done — default FAIL:** the 9 rules of `kind: fail` in
    `plugins/mochiko/schemas/specify.yaml` (section `spec.sec.fail-conditions`) — any one
-   standing fails the run. If the schema's `fail-condition` count is not 9, the pair is out of
+   standing fails the run. If the schema's `kind: fail` count is not 9, the pair is out of
    sync: halt and surface it before closing.

@@ -3,6 +3,56 @@
 Entry formats: `strips/README.md`. First entry at v0.97.0 — no prior strip file existed for
 this `.claude/rules/` surface; earlier edits rode their decision rows.
 
+<!-- Wave context: the command-schema ontology wave (v0.98.0). Ruling:
+`.mochiko/brainstorms/command-schema-ontology/record.md` D1–D11 as amended →
+`DECISIONS.md` 2026-08-27. Clause inventory:
+`.mochiko/brainstorms/command-schema-ontology/conversion-inventory.md` (section H carries
+the re-keyed form and names this file as a downstream consumer). -->
+
+## [v0.98.0] Criterion 3's FAIL survival re-keyed from the `fail-condition` label set to `kind: fail`
+
+- **Disposition:** superseded → criterion 3 of the same canonical-scaffold criteria block in
+  `.claude/rules/mochiko/primitive-edits.md`, re-keyed to `kind: fail` and carrying the
+  bidirectional `<cmd>.fail.*`-segment cross-check.
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/brainstorms/command-schema-ontology/record.md` D1 and build-surface item 9,
+  "criterion 3 re-keys from the label set to `kind: fail`"; `DECISIONS.md` 2026-08-27.
+  Inventory: that session's `conversion-inventory.md` section H.)
+- **Content:** criterion 3 as shipped at v0.97.0, verbatim —
+
+  > 3. **FAIL survival** keys to the **`fail-condition` label set**: every so-labeled rule
+  >    survives (a reword keeps its ID), and the `.md` Not-done line's hard-coded count
+  >    matches the schema's.
+
+- **Kept deliberately:** both guards the label-keyed clause carried survive on the new key —
+  every fail rule must survive, a reword keeping its ID, and the `.md` Not-done line's
+  hard-coded count must match the schema's. Nothing else in the criteria block was re-keyed:
+  criterion 2's `<cmd>.sec.fail-conditions` section ID and the `<cmd>.fail.*` ID segment are
+  ID grammar, not the retired label, and stand untouched. Added, not removed — the `.fail.*`
+  segment ↔ `kind: fail` bidirectional correspondence, with `kind:` never defaulted on a
+  `.fail.*` ID (I4): the checker already asserted it, the shipped criterion never stated it.
+- **Consumers assessed:** `plugins/mochiko/schemas/command-labels.yaml` — the registry line
+  retiring the label, removed the same wave (entry in `.mochiko/strips/command-labels.md`) ·
+  `.claude/skills/converting-command-to-schema/SKILL.md` step 14's criteria summary, which
+  cites this criterion by name and was re-keyed the same wave (entry in
+  `.mochiko/strips/converting-command-to-schema.md`) · the six command `.md` Not-done lines
+  and their schemas' fail nodes, re-keyed the same wave · `scripts/check-command-schema.py`,
+  whose Not-done count check and segment cross-check move to the new key in the same wave ·
+  `CLAUDE.md`'s two audit-ceremony sites, which name "FAIL survival" without keying it to a
+  label — unchanged by this edit, and verified so.
+
+<!-- Pure additions in the same edit, riding the decision row (no strip owed, per this file's
+governing rule that additions carry no strip note): criterion 11, "Ontology-grammar
+conformance (D1–D8)", and the `command-schema-ontology` D1–D11 entry appended to the block's
+closing Rulings list (whose only other change is the sentence-final period becoming a list
+separator). Criterion 11 was APPENDED rather than inserted beside the schema-structure
+criteria, deliberately: criteria 3, 6, 7, and 8 are cited by number from the accepted
+`.mochiko/brainstorms/command-md-scaffold-standardization/record.md` and from the v0.98.0
+entries in `.mochiko/strips/command-labels.md` and
+`.mochiko/strips/converting-command-to-schema.md`, so renumbering would falsify records
+already landed. `converting-command-to-schema/SKILL.md` step 14 lists the criteria by name
+rather than by number, so its summary order differing from the block's costs nothing. -->
+
 <!-- Wave context: the command-`.md`-scaffold standardization wave (v0.97.0). Ruling:
 `.mochiko/brainstorms/command-md-scaffold-standardization/record.md` D1, D6-R2 as amended →
 `DECISIONS.md` 2026-08-27 row. Clause inventory: that record's Appendix A. -->

@@ -4,6 +4,189 @@ Entry formats: `strips/README.md`. Command born at v0.81.0 (the product-architec
 Stage-1 wave, D1 — the standing architecture desk); this file opens with the first edit that
 superseded any of its shipped text.
 
+<!-- Wave context: the command-schema ontology wave (v0.98.0) — the D1–D8 grammar amendment
+over the `.md` + schema pair: a closed `kind:` set with `constraint` as the omitted default
+(D1), a per-schema `conditions:` block plus a rule-level `when:` guard with the condition
+single-homed out of `text` (D3), a per-schema `moments:` block (D4), `enforces:` on every
+`kind: fail` node (D6), and `extends: common.<slug>` binding the shared blocks in
+`plugins/mochiko/schemas/common.yaml` (D8 — a narrow supersession of command-content-schema
+D3). Ruling for every [v0.98.0] entry below:
+`.mochiko/brainstorms/command-schema-ontology/record.md` D1–D11 as amended → `DECISIONS.md`
+2026-08-27 command-schema-ontology row. Clause inventory (the audit referent): that session's
+`conversion-inventory.md`. Pure additions ride the decision row and are not entered here —
+the `kind:` lines, the `conditions:` and `moments:` blocks, the C4 floor-semantics comments,
+and the `.md` Rules-block grammar breath. -->
+
+## [v0.98.0] The schema header's D6/D14 grammar comment — superseded by the canonical D1–D8 header (build item 1)
+
+- **Disposition:** superseded → the canonical header comment block at the top of
+  `plugins/mochiko/schemas/architecture.yaml`, per the inventory's section G, which states
+  the same grammar plus the `kind:` / `when:` / `conditions:` / `moments:` / `enforces:` /
+  `extends:` fields.
+- **Tier failed:** n/a — supersession by ruling (record D1–D8, build-surface item 1;
+  `DECISIONS.md` 2026-08-27).
+- **Content:** the superseded lines as shipped at v0.97.0, verbatim —
+
+  ```
+  # Command content schema for /mochiko:architecture — SOURCE OF TRUTH for the desk's
+  # rule-shaped content (command-content-schema D1/D7 + this command's D10 rollout ruling,
+  # DECISIONS.md 2026-08-26). The command .md instructs a raw, full Read of this file at
+  # command fire; the model interprets it live — no build step, no binary on the read path
+  # (GI-020). Narrative (Identity & Mission, Adaptive Goal Protocol prose) stays in
+  # plugins/mochiko/commands/architecture.md.
+  # Grammar (D6, as amended by D14): sections: list, each {id, title, intent, rules};
+  # rule blocks {id, labels, class, text, pointer?} nest under their section.
+  #   section id  <cmd>.sec.<slug> — minted once like rule IDs (D11); title verbatim from
+  #           the command group it carries; intent one line, navigation only — sections
+  #           never grow a second prose surface (narrative stays in the .md).
+  #           the losers under a top-level tombstones: key. First mint — no tombstones yet.
+  #   class   floor = non-waivable, must-survive under the charter audit (M3) ·
+  #   arch.sec.* · class: values · labels · pointer: skills · file paths).
+  ```
+
+- **Kept deliberately:** every surviving D6/D11/D12/D14/D15/D16 grammar line is carried into
+  the new block verbatim or near-verbatim — the section-ID mint rule, the ID-frozen /
+  reword-keeps-its-ID / split / merge rules, the `arch.fail.*` segment line, the label
+  registry pointer, the three-value `class` vocabulary, the `${var}` substitution line, the
+  provenance-sidecar line, the `pointer:` line, the D15 referential-closure paragraph with
+  this desk's own legal self-reference set ("this schema", "the desk", "the visit"), the D12
+  grain line, and the D13 advisory-checker line. Two changes inside the kept material are
+  deliberate and recorded here rather than silently: `charter audit` → **`pair audit`**
+  (inventory J-13; the corpus in fact held three stragglers, not the two J-13 named —
+  `architecture.yaml`, `feature.yaml`, `implement.yaml`), and the dropped "First mint — no
+  tombstones yet" clause, which the canonical header does not carry for any of the six. The
+  section-ID line's placeholder is also resolved from `<cmd>.sec.<slug>` to the concrete
+  `arch.sec.<slug>`, matching how the other five schemas already wrote it.
+- **Consumers assessed:** `scripts/check-command-schema.py` parses the YAML, never this
+  comment (it gains its own D1–D8 checks in the same wave); no other primitive reads it.
+
+## [v0.98.0] `arch.dm-author-baseline`, `arch.dm-km-landing`, `arch.transport-floor` — activation guards single-homed into `when:` (D3)
+
+- **Disposition:** superseded → the `when:` field on each rule, with the rule's `text`
+  reworded to carry the obligation alone; for `arch.dm-author-baseline` the guard's
+  two-form **definition** relocates to the `store_ruled_content` note in this schema's
+  `conditions:` block, which is where single-homing puts it. All three keep their IDs (a
+  reword, D11); all three are `class: floor`.
+- **Tier failed:** n/a — supersession by ruling (record D3, single-homing, as amended at C4
+  for floors; `DECISIONS.md` 2026-08-27. Clause inventory: `conversion-inventory.md`
+  section B.4, the three architecture MOVEs).
+- **Content:** the guard-carrying texts as shipped at v0.97.0, verbatim —
+
+  ```
+  arch.dm-author-baseline:
+          Author the baseline wherever the store carries no ruled content — scaffold-only
+          (a `spine.md` holding just its `Scope:` header) or absent: greenfield elicits
+          it; brownfield reconstructs and confirms it per
+          arch.tools-brownfield-reconstruction — nothing absorbed is ever silently
+          discarded.
+
+  arch.dm-km-landing:
+          Execute the KM landing for desk-side writes where knowledge-management exists.
+
+  arch.transport-floor:
+          A visit that composes more than one seat gains a floor on its composition and
+          messaging: a split trigger — message legs on any multi-seat messaging, topology
+          legs on shared writes — non-waivable once triggered. Trigger test, floor legs,
+          composition-safe shapes, and disclosure: mochiko:patterns-transport-floor,
+          referenced never restated.
+  ```
+
+- **Kept deliberately:** every obligation survives whole, and all three keep `class: floor`
+  with the C4 comment carried verbatim — a floor is always read and always delivered, its
+  `when:` gating when the obligation applies, never whether it is delivered.
+  `arch.dm-author-baseline` keeps both mode arms in prose (greenfield elicits, brownfield
+  reconstructs-and-confirms), keeps its citation of `arch.tools-brownfield-reconstruction`,
+  and keeps the nothing-absorbed-is-ever-silently-discarded clause; the scaffold-only /
+  absent definition it used to carry inline survives verbatim in the
+  `store_ruled_content` note. `arch.dm-km-landing` keeps its `kind: duty` and now names the
+  knowledge-management file by path, closing a D15 gap in the shipped text, which said
+  "knowledge-management" with no path. `arch.transport-floor` keeps both floor legs, the
+  non-waivable-once-triggered clause, the four-part pointer tail, and its `pointer:`.
+- **Consumers assessed:** the desk's `.md` half names none of the three by ID.
+  `arch.tools-brownfield-reconstruction` is cited by `arch.dm-author-baseline` and survives
+  unchanged in this schema, so the citation still resolves.
+  `mochiko:patterns-transport-floor` holds the transport procedure and is untouched.
+
+## [v0.98.0] `arch.register` and `arch.no-git-mutations` local texts — superseded by `extends: common.*` (D8)
+
+- **Disposition:** superseded → `extends: common.register` and
+  `extends: common.no-git-mutations`, which inherit the identical text from
+  `plugins/mochiko/schemas/common.yaml`; both stubs keep their `arch.*` IDs as the citable
+  IDs.
+- **Tier failed:** n/a — supersession by ruling (record D8 as amended by C2 and C3 — a
+  narrow supersession-by-ruling of command-content-schema D3, legal only for text that is an
+  exact duplicate across three or more command schemas; `DECISIONS.md` 2026-08-27. Both
+  blocks cleared the bar at five members each — inventory section F.0/F.1).
+- **Content:** the local rule bodies as shipped at v0.97.0, verbatim —
+
+  ```yaml
+        - id: arch.register
+          labels: [reporting, binding]
+          class: must
+          text: >-
+            User-facing prose follows templates/output-style.md.
+
+        - id: arch.no-git-mutations
+          labels: [user-gate]
+          class: must
+          text: >-
+            Suggest commits; never run git mutations, never push.
+  ```
+
+- **Kept deliberately:** the resolved text of both rules is byte-identical to what shipped —
+  `extends:` was admitted only on exact duplicates, so nothing was reworded to make either
+  bindable. Per the C3 precedence clause every absence-meaningful field stays local and is
+  re-declared on the stub: `class: must` on both, `kind: binding` on `arch.register`.
+  `arch.register`'s `labels: [reporting, binding]` are **re-declared locally** because the
+  common block carries `[reporting]` alone, and inheriting would have silently narrowed a
+  shipped rule's labels (inventory F.5). `arch.no-git-mutations` inherits `[user-gate]`
+  unchanged, which is what it shipped with.
+- **Consumers assessed:** `plugins/mochiko/schemas/common.yaml` is the new home and ships in
+  the same wave under full ceremony; `plugins/mochiko/commands/architecture.md` gains the
+  `extends:` reading instruction and the obligated raw Read of `common.yaml` in its first
+  action; `scripts/check-command-schema.py` gains `extends:` target resolution and the C3
+  local-`class:` assert in the same wave. This desk's two other candidate boilerplate rules
+  stay per-command by measurement: `arch.rulings-plain-text` is differently named and
+  differently worded from `common.acceptance-plain-text`, and `arch.transport-floor` is not
+  an exact duplicate of `common.transport-floor` even after guard-stripping (inventory F.2).
+
+## [v0.98.0] The `fail-condition` label as the Not-done selector — re-keyed to `kind: fail` (build item 4)
+
+- **Disposition:** superseded → `kind: fail` on `arch.fail.no-verdict`, which is now the
+  operative selector for the Not-done set across both halves of the pair: the label leaves
+  the rule, the `arch.sec.fail-conditions` intent line names the new key, and the `.md`
+  Not-done line counts `kind: fail`.
+- **Tier failed:** n/a — supersession by ruling (record D1 and build-surface item 4;
+  `DECISIONS.md` 2026-08-27. Line-by-line: inventory section H).
+- **Content:** the three superseded sites as shipped at v0.97.0, verbatim —
+
+  ```
+  plugins/mochiko/schemas/architecture.yaml, arch.fail.no-verdict:
+          labels: [fail-condition, reporting]
+
+  plugins/mochiko/schemas/architecture.yaml, arch.sec.fail-conditions intent:
+        The fail-condition set — any one standing fails the visit; the .md Not-done line hard-codes this set's count.
+
+  plugins/mochiko/commands/architecture.md, Adaptive Goal Protocol step 3:
+  3. **Not done — default FAIL:** the 1 rule labeled `fail-condition` in
+     `plugins/mochiko/schemas/architecture.yaml` (section `arch.sec.fail-conditions`) — any one
+     standing fails the visit. If the schema's `fail-condition` count is not 1, the pair is out of
+     sync: halt and surface it before closing.
+  ```
+
+- **Kept deliberately:** the whole count-pin mechanism survives, re-keyed. The count stays
+  **1**, the out-of-sync halt clause is carried verbatim, the section pointer and the
+  any-one-standing sentence are unchanged, and `arch.fail.no-verdict` keeps its ID, its
+  `class: floor`, its `reporting` label, and its text. The rule additionally gains
+  `enforces: [arch.dm-converge-goal, arch.dm-close-verdict]` (D6) — a pure addition riding
+  the decision row.
+- **Consumers assessed:** `plugins/mochiko/schemas/command-labels.yaml` retires the label in
+  the same wave (its own strip entry at `.mochiko/strips/command-labels.md`) ·
+  `.claude/rules/mochiko/primitive-edits.md` criterion 3 re-keys to `kind: fail` in the same
+  wave · `scripts/check-command-schema.py` re-keys its count assert and keeps the
+  bidirectional `arch.fail.*`-segment ↔ `kind: fail` cross-check (I4) · the other five
+  command pairs re-key on the same ruling.
+
 <!-- Wave context: the command-`.md`-scaffold standardization wave (v0.97.0) — one canonical
 `.md` scaffold for all six pair commands (D1/D2: Identity & Mission · Rules block · Adaptive
 Goal Protocol with Entry / Goal / count-pinned Not-done last) and the schema six-set

@@ -5,6 +5,224 @@ shared team-form prose relocated into `templates/command-shape.md` (design:
 `.mochiko/brainstorms/pattern-codification-and-minimalism/record.md`, D3/D4/D9). **Stale as a standing claim:**
 the shape is now **v5** (2026-07-30) — see the v0.35.0 section below.
 
+<!-- Wave context: the command-schema ontology wave (v0.98.0) — the rule grammar gains
+`kind:`, a declared `conditions:` block with a rule-level `when:`, a declared `moments:`
+block, `enforces:` on fail nodes, and `extends: common.<slug>` (D1–D8). Ruling for every
+[v0.98.0] entry below: `.mochiko/brainstorms/command-schema-ontology/record.md` D1–D11 as
+amended → `DECISIONS.md` 2026-08-27 row. Clause inventory and audit referent:
+`.mochiko/brainstorms/command-schema-ontology/conversion-inventory.md` — sections A.6
+(kinds), B.6 (the `when:` extraction), C.6 / D.6 (the declared blocks), E.6 (`enforces:`),
+F (bindings), G (the canonical header), H (the Not-done re-key).
+
+Riding the decision row, no strip owed: every `kind:` line (a pure addition, `constraint`
+staying the omitted default) · the `conditions:` and `moments:` blocks · `enforces:` on the
+four fail nodes · the C4 semantics comment on the one floor that gained a `when:` · the
+`.md` Rules-block sentences naming the new grammar and instructing the `common.yaml` Read.
+Brainstorm has no DECLARE case — both of its shape-gated rules took the MOVE disposition. -->
+
+## [v0.98.0] Two rule-level activation guards single-homed out of `text:` into `when:` (D3)
+
+- **Disposition:** superseded → the `when:` field on each rule, resolving against the new
+  top-level `conditions:` block; both IDs kept, both rewords tabled in the inventory's
+  section B.6.
+- **Tier failed:** n/a — supersession by ruling (`command-schema-ontology` D3, single-homing:
+  "rule-level activation conditions live in `when:` alone and leave the `text`";
+  `DECISIONS.md` 2026-08-27.)
+- **Content:** the two texts as they stood at v0.97.0, verbatim (block scalars quoted in their
+  folded, single-line form — the text a run sees), each with the guard that left:
+
+  1. `brainstorm.km-close-ritual` — guard "Where `${km_path}` exists" →
+     `when: {km_file: present}`:
+     "Where `${km_path}` exists, run its close ritual."
+  2. `brainstorm.transport-floor` (`class: floor`) — guard "When the run composes more than
+     one seat" → `when: {seats: multi}`:
+     "When the run composes more than one seat, mochiko:patterns-transport-floor governs its
+     composition and messaging under a split trigger — message legs on any multi-seat
+     messaging, topology legs on shared writes — non-waivable once triggered; referenced,
+     never restated."
+
+- **Kept deliberately:** both obligations survive whole — only the activation guard moved, and
+  both IDs are untouched. `brainstorm.km-close-ritual` keeps the `${km_path}` reference in its
+  reworded text ("Run the close ritual of `${km_path}`"), so the run still learns *which*
+  file's ritual it owes; the `when:` term carries only whether the rule binds.
+  `brainstorm.transport-floor` stays `class: floor` and is still always read and always
+  delivered — `when:` gates when the obligation applies, never whether it reaches the run
+  (C4), stated on the block as a comment; the guard-stripped remainder is what
+  `common.transport-floor` now carries (next entry but one). Guards that are NOT rule-level
+  activation stayed in prose untouched, per the inventory's stays-prose table:
+  `brainstorm.pair-maps-independent`'s "In a review pair" (a genuine composition branch with
+  no declared dimension — the inventory's J-2 recommends prose this wave),
+  `brainstorm.reopen-born-verify`'s subject-carried trigger,
+  `brainstorm.index-bookkeeping`'s "where the outcome landed",
+  `brainstorm.next-step-offer`, `brainstorm.user-review-waiver`, and
+  `brainstorm.synthesis-on-request`'s mid-sentence carves.
+- **Consumers assessed:** `plugins/mochiko/commands/brainstorm.md` (the Rules block gains the
+  `when:` interpretation sentence the same wave) · `scripts/check-command-schema.py` (the
+  `when:`-resolution and per-dimension coverage checks land the same wave) ·
+  `.claude/rules/mochiko/primitive-edits.md` criterion 11 and
+  `.claude/skills/converting-command-to-schema/SKILL.md` (both amended the same wave, with
+  their own entries) · `.mochiko/provenance.yaml` (anchors are keyed by rule ID and both IDs
+  are kept, so no anchor moves).
+
+## [v0.98.0] The `fail-condition` label removed from all four fail nodes — `kind: fail` is the selector (D1)
+
+- **Disposition:** superseded → `kind: fail` on each of the four nodes in
+  `plugins/mochiko/schemas/brainstorm.yaml`, section `brainstorm.sec.fail-conditions`.
+- **Tier failed:** n/a — supersession by ruling (`command-schema-ontology` D1 and
+  build-surface item 4, "`kind: fail` replaces the `fail-condition` label as the operative
+  selector"; `DECISIONS.md` 2026-08-27. The label is retired from the registry the same wave —
+  entry in `.mochiko/strips/command-labels.md`.)
+- **Content:** the `fail-condition` label value, verbatim, as the first entry of the
+  `labels:` list on each of: `brainstorm.fail.record-unaccepted` ·
+  `brainstorm.fail.unreviewed-no-waiver` · `brainstorm.fail.survivor-undispositioned` ·
+  `brainstorm.fail.index-mismatch`.
+
+  The section's `intent:` line named the retired key too, and is re-keyed with them —
+  verbatim as it stood at v0.97.0:
+
+  > The fail-condition set — any one standing fails the run; the .md Not-done line hard-codes this set's count.
+
+- **Kept deliberately:** every node's second label (`user-gate` · `independence` ·
+  `user-gate` · `landing`) survives, so the topic clusters are unchanged; the `intent:` line
+  keeps both of its clauses — the any-one-standing semantics and the count-pin note — with
+  only "The fail-condition set" becoming "The kind: fail set"; the
+  `brainstorm.sec.fail-conditions` section ID and the `brainstorm.fail.*` ID segment are
+  untouched — both are ID grammar, not the retired label; `class: floor` on all four is
+  untouched; the count stays 4, so the `.md` count-pin does not move.
+- **Consumers assessed:** `plugins/mochiko/schemas/command-labels.yaml` (registry line removed
+  the same wave) · the `.md` Not-done line (re-keyed the same wave — next entry) ·
+  `.claude/rules/mochiko/primitive-edits.md` criterion 3 (re-keyed the same wave) ·
+  `scripts/check-command-schema.py` (the count check and the bidirectional
+  `.fail.`-segment ↔ `kind: fail` cross-check re-key the same wave).
+
+## [v0.98.0] The `.md` Not-done line's `fail-condition` key superseded by `kind: fail`
+
+- **Disposition:** superseded → the re-keyed line in
+  `plugins/mochiko/commands/brainstorm.md`, Adaptive Goal Protocol step 3.
+- **Tier failed:** n/a — supersession by ruling (`command-schema-ontology` build-surface
+  item 4; `DECISIONS.md` 2026-08-27. Reworded line tabled in the inventory's section H.)
+- **Content:** step 3 as it stood at v0.97.0, verbatim —
+
+  > 3. **Not done — default FAIL:** the 4 rules labeled `fail-condition` in
+  >    `plugins/mochiko/schemas/brainstorm.yaml` (section `brainstorm.sec.fail-conditions`) — any one
+  >    standing fails the run. If the schema's `fail-condition` count is not 4, the pair is out of
+  >    sync: halt and surface it before closing.
+
+- **Kept deliberately:** the whole guard the old key carried — the hard-coded count 4, the
+  section citation, the any-one-standing clause, and the out-of-sync halt clause — survives
+  verbatim on the new key; only the two `fail-condition` tokens become `kind: fail`. The count
+  does not move: this wave adds and removes no fail node.
+- **Consumers assessed:** `scripts/check-command-schema.py` greps this literal phrase for the
+  count guard (re-keyed the same wave) · `.claude/rules/mochiko/primitive-edits.md`
+  criterion 3 · `.claude/skills/converting-command-to-schema/SKILL.md` (both re-keyed the same
+  wave, with their own entries).
+
+## [v0.98.0] Four rules' `labels:`, `text:`, and `pointer:` extracted into `common.yaml` blocks (D8)
+
+- **Disposition:** superseded → the shared blocks `common.register` ·
+  `common.no-git-mutations` · `common.acceptance-plain-text` · `common.transport-floor` in
+  `plugins/mochiko/schemas/common.yaml`, each bound by a stub carrying
+  `extends: common.<slug>` plus its local `class:` (and, where they apply, local `kind:`,
+  `when:`, and `labels:`).
+- **Tier failed:** n/a — supersession by ruling (`command-schema-ontology` D8 as narrowed at
+  C2 and given its precedence clause at C3 — itself a recorded supersession-by-ruling of
+  command-content-schema D3, amended not reversed; `DECISIONS.md` 2026-08-27. The
+  3-or-more-exact-duplicate bar and the bind/no-bind table: inventory F.0/F.1. Brainstorm is
+  the only command that binds all four surviving blocks.)
+- **Content:** the fields as they stood at v0.97.0, verbatim —
+
+  ```yaml
+        - id: brainstorm.register
+          labels: [binding, reporting]
+          text: >-
+            User-facing prose follows templates/output-style.md.
+
+        - id: brainstorm.no-git-mutations
+          labels: [user-gate]
+          text: >-
+            Suggest commits; never run git mutations, never push.
+
+        - id: brainstorm.acceptance-plain-text
+          labels: [user-gate]
+          text: >-
+            User acceptance is plain blocking text, never a timed prompt.
+
+        - id: brainstorm.transport-floor
+          labels: [floor-pointer, seats]
+          text: >-
+            When the run composes more than one seat, mochiko:patterns-transport-floor
+            governs its composition and messaging under a split trigger — message legs on any
+            multi-seat messaging, topology legs on shared writes — non-waivable once
+            triggered; referenced, never restated.
+          pointer: "mochiko:patterns-transport-floor"
+  ```
+
+  (`brainstorm.transport-floor`'s guard clause is recorded twice by design: it leaves the text
+  once, and the first entry above records the single-homing that put it in `when:` — this
+  entry records the guard-stripped remainder moving to the shared block.)
+- **Kept deliberately:** all four keep their IDs — a stub's `brainstorm.*` ID stays the
+  citable ID — and all four declare `class:` **locally**, per C3's precedence clause:
+  `class:` and every absence-meaningful field are never inherited, so a floor's bindingness
+  stays readable from its own file. `brainstorm.register` re-declares
+  `labels: [binding, reporting]` locally, because the block carries `[reporting]` alone and
+  inheriting it would silently narrow a shipped rule's labels; the other three match their
+  blocks and inherit. `brainstorm.transport-floor` keeps `class: floor` and its
+  `when: {seats: multi}` locally, and the block carries no `class:` at all — a class there
+  would be inherited but always overridden. Each resolved text is byte-identical to what was
+  removed except `transport-floor`'s single-homed guard, so no rule's meaning changes.
+  `brainstorm.model-tiering` was a prototype stub and does **not** bind: its block failed the
+  3+ bar (two members) and, per the inventory's J-9, brainstorm's text differs from the block
+  by two backticks around `Explore` — it stays a full per-command rule, restored
+  byte-identical to v0.97.0, and the prototype was never committed so nothing shipped in stub
+  form and no tombstone is due.
+- **Consumers assessed:** `plugins/mochiko/commands/brainstorm.md` (its first action now Reads
+  `common.yaml` raw beside the schema — added the same wave; brainstorm had no such
+  instruction before, so this is the load-bearing half of the edit) ·
+  `plugins/mochiko/schemas/common.yaml` (new shipped primitive, same wave) ·
+  `scripts/check-command-schema.py` (`extends:` target resolution, orphan-block detection, and
+  the C3 local-`class:` assert land the same wave) · `.mochiko/provenance.yaml` (keyed by rule
+  ID; all four IDs are kept, so no anchor moves) · the other four commands binding the same
+  blocks (specify 4 · setup 3 · feature 2 · architecture 2 · implement 1 — a text change to a
+  block now reaches every binder, which is the drift-protection the extraction buys and the
+  cost it carries).
+
+## [v0.98.0] The schema header's D6 grammar block superseded by the canonical ontology header (G)
+
+- **Disposition:** superseded → the canonical header comment at the top of
+  `plugins/mochiko/schemas/brainstorm.yaml` (inventory section G, `<cmd>`/`<prefix>`
+  substituted), which keeps every surviving D6/D11/D12/D14/D15/D16 line and adds the D1–D8
+  grammar. `at:` is deliberately absent (D4 as amended at I5 — deferred to graduation).
+- **Tier failed:** n/a — supersession by ruling (`command-schema-ontology` D1–D8 amend
+  command-content-schema D6's rule-block grammar; `DECISIONS.md` 2026-08-27.)
+- **Content:** the superseded header lines as they stood at v0.97.0, verbatim —
+
+  ```
+  # rule-shaped content (command-content-schema D1/D2, rolled out to this command by the D10
+  # rollout ruling 2026-08-26 — record Session trail; DECISIONS.md 2026-08-26). The command
+  # Grammar (D6, as amended by D14): sections: list, each {id, title, intent, rules};
+  # rule blocks {id, labels, class, text, pointer?} nest under their section.
+  #   section id  <cmd>.sec.<slug> — minted once like rule IDs (D11); title verbatim from
+  #           the command group it carries; intent one line, navigation only — sections
+  #           never grow a second prose surface (narrative stays in the .md).
+  #   brainstorm.sec.* · class: values · labels · pointer: skills · file
+  #   paths). Deixis ("these rules", "this section", "above"/"below", document-shape
+  ```
+
+- **Kept deliberately:** every grammar line the amendment does not touch survives verbatim —
+  the ID mint-once/reword/split/merge rules, the `brainstorm.fail.*` segment line, the labels
+  registry line, the `class:` value definitions (already reading "pair audit", so brainstorm
+  was not one of the inventory's two J-13 stragglers), the `text:`/`${var}` line, the D16
+  provenance sidecar line, the `pointer:` line, the deixis ban and its curated-marker note,
+  the legal self-reference pair ("this schema" and "the run" — brainstorm is a run command, so
+  the desks' third term is correctly absent), the D12 grain line, and the D13
+  advisory-checker line. The command-content-schema D10 rollout citation is superseded by the
+  canonical header's D1/D7 citation, which every schema now shares; the rollout fact survives
+  in that record's Session trail, which the old line itself pointed at.
+- **Consumers assessed:** the other five command schemas take the same canonical header the
+  same wave · `.claude/skills/converting-command-to-schema/SKILL.md` restates this header for
+  new conversions (amended the same wave, with its own entry) ·
+  `scripts/check-command-schema.py` (grammar checks extended the same wave).
+
 <!-- Wave context: the command-`.md`-scaffold standardization wave (v0.97.0) — one canonical
 `.md` scaffold for all six pair commands (D1/D2: Identity & Mission · Rules block · Adaptive
 Goal Protocol with Entry / Goal / count-pinned Not-done last) and the schema six-set

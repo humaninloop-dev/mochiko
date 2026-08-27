@@ -106,6 +106,7 @@ out_of_instrument:
   - {id: impl.mutation-lens, why: conditional - depth-conditional, no governance planted}
   - {id: impl.km-landing, why: conditional - no knowledge-management.md planted}
   - {id: impl.lane-never-widens, why: conditional - no product-lane scenario}
+  - {id: impl.landing-lane, why: conditional - no product-lane scenario (minted at the ontology wave's D9 gate, 2026-08-27)}
   - {id: impl.landing-delta, why: conditional - no delta-scope scenario}
   # epic
   - {id: impl.epic-design-always-fires, why: epic}

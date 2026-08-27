@@ -17,6 +17,17 @@ git history (this line, before this groom).*
 
 ---
 
+## Command-schema ontology wave
+
+*(ruled + accepted 2026-08-27, `command-schema-ontology` D1–D11 as review-amended;
+provenance: `.mochiko/brainstorms/command-schema-ontology/record.md`)*
+
+- [ ] **Graduation candidates (benefit-keyed, D2/D4/D5)** — per-kind structured fields
+  (gate `holder:` · bound `value:/redeclare:/exhausted:` · routing branches · binding
+  structure) · the `at:` field (I5) · `requires:` — each lands only on a demonstrated
+  consumer (a written checker assert or a plan-eval rubric use), as an ordinary build
+  citing the record.
+
 ## Command-content schema build
 
 *(ruled + accepted 2026-08-26, `command-content-schema` D1–D13 as review-amended; provenance:
@@ -74,14 +85,23 @@ Command-content schema section's watch item)*
   F2 noise guard; live smoke PASS: load gate true at 0.97.0, under turn cap, fence denied an
   attempted Bash call and recorded it, $0.65; smoke finding: sessions cite rule IDs despite
   the wrapper — runner scrubs all known IDs pre-judge so only embodiment is gradeable).
-  **Remaining:** pilot baseline grid + judged round on a real edit (metered, ~$15–30 + judges,
-  maintainer-fired) · D10 one-real-run correlation check at pilot close · other five commands
-  after the loop proves once.
-- [ ] **Substrate watches (n=0)** — noise falsifier: replicate spread vs effect gap at the
-  first grid (F2's failure mode revisits the premise) · D10 proxy falsifier: one full real
-  `implement` run at pilot close, plan coverage vs run behavior · Goodhart watch: instrument
-  pressure toward verbose command prose against the live compression program, D3's
-  anti-recitation register the standing mitigation.
+  **Remaining (updated 2026-08-28 — the ontology wave DISCHARGED the pilot):** the pilot
+  grid + judged rounds ran on a real edit — implement (optionA pre/post + ontology post +
+  a noise-guard r4 pair, 24 plans, $18.31) and a user-picked second command, setup (fresh
+  mode-keyed substrate, 18 plans, $10.56), opus judges — see the ontology record's eval
+  entry. Still open: D10 one-real-run correlation check · the other four commands · a
+  name-resolution marker allowlist (the assert false-positives on the three governance
+  comment-marker names in every setup run, both arms).
+- [ ] **Substrate watches** — **noise falsifier FIRED at the first grids (2026-08-28,
+  n=2):** implement was noise-dominated at k=3 AND k=4 (s2 flaky share ~21% breaches the
+  preregistered 20% bound; every flagged regression replicate-flaky) — per the prereg this
+  revisits the substrate premise: the instrument cannot resolve small diffs at this k, and
+  the eval session's open question 3 now has its evidence; setup's grid was cleaner
+  (directional +4/+2 with zero regressions in two scenarios). Disposition owed at the eval
+  session's own desk, not here. · D10 proxy falsifier: still open · Goodhart watch: still
+  open, D3's anti-recitation register the standing mitigation · opus pairwise showed
+  position bias in a majority of implement pairs — pairwise informativeness joins the
+  watch.
 
 ## Skill-compression eval-primitive build
 
