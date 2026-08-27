@@ -29,7 +29,29 @@ D10 rollout DELIVERED same day at v0.95.0 — all six commands now `.md`+schema 
   cited by a strip/audit/DECISIONS row · a `vars:` change replacing a multi-site edit · the
   checker catching a real defect · a cross-command label query answering a real question) ·
   D4 edit observations (pair-touching edits without label churn). One watch item, three
-  consumers: D2 absorption, D2 retreat, D4 ceremony graduation.
+  consumers: D2 absorption, D2 retreat, D4 ceremony graduation. *Extended 2026-08-27
+  (`command-md-scaffold-standardization` C3/D2/D4/D5): probes also measure the canonical
+  scaffold — Read executed fully before first action from position 3, behind identity prose ·
+  empty-section runtime cost · one concrete six-set addressing benefit. Baseline perturbation
+  accepted eyes-open: the pre-rewrite pair form never fires live.*
+
+## Command `.md` scaffold build
+
+*(ruled + accepted 2026-08-27, `command-md-scaffold-standardization` D1–D7; provenance:
+`.mochiko/brainstorms/command-md-scaffold-standardization/record.md`)*
+
+- [ ] **Build (cold-buildable):** one wave per the record's 8-item build surface — six `.md`
+  rewrites to the canonical scaffold (3 new capped Identity & Mission sections = sound-loop
+  judgment writes · `argument-hint` added · goal-form opener content into protocol steps 1–2) ·
+  six schema unifications to the six-set (tombstone `{brainstorm,setup,spec}.sec.{harness,bindings}`,
+  mint `sec.reserved` where absent, rules relocate IDs/texts unchanged with the I8
+  no-dangling-reference check, explicit empty markers) · checker lint widening (set-wise IDs ·
+  all-token resolution incl. `setup.md:35`/`:40` · tombstone-ref · negative tests) · ceremony
+  re-key to one class-branching criteria block with the full carrier clause inventory (incl.
+  purge-ADR decision 4; no-clause-superseded carve for contract-only carriers) · ripple:
+  `README.md:5` + `ARCHITECTURE.md` charter sites + conversion skill · strips + per-pair
+  author≠grader audits · gates 4/5/6. Open at build: empty-marker grammar; desks' one-clause
+  FAIL-set re-inventory (M5 — a found under-extraction is a separate ruled addition).
 
 ## Skill-compression eval-primitive build
 

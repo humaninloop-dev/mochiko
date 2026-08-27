@@ -8,6 +8,35 @@ One entry per session directory under `.mochiko/brainstorms/<topic-slug>/`, **ne
 
 ---
 
+## `command-md-scaffold-standardization` — canonical pattern for the `.md` scaffold around the command schemas; six pairs today vary by history
+- **When:** 2026-08-27 · **Status:** accepted · solo cold review via blind-map two-message
+  dispatch (40-angle map, topic-only spawn; reviewer self-verified all load-bearing ground
+  facts): verdict critical-gaps — 4 Critical / 9 Important / 6 Minor survived, 13
+  reviewer-killed → dispositioned: C1–C4 individually user-ruled all "as recommended"
+  (C1 purge-ADR decision 4 superseded by name with re-argument · C2 D1 narrowed to
+  layout-and-vocabulary, contracts survive in one class-branching criteria block · C3 proceed
+  with `Assumed` re-marks + extended watch, baseline perturbation eyes-open · C4 → new D7
+  stage-1.5 tidy), I/M one user-ruled batch "as recommended" (I9 keep-order + identity cap);
+  verify round 1 **verified-not-blocking** — 19/19 folds confirmed landed, 6 nits (incl. the
+  N1 content restore + N6 D6 mark split per the record's own C3 rule) lead-repaired same
+  round; acceptance followed
+- **Artifacts:** [record.md](command-md-scaffold-standardization/record.md) (canonical —
+  ground facts F1–F8, D1–D7 as amended, cost line, session trail Q1–Q6 + sizing gate,
+  review + disposition + verify trail, 8-item build surface, open questions)
+- **About:** the schema side of the six command pairs follows one pattern; the `.md` scaffold
+  around it varied by history — a ruled two-form split (charter vs goal-form) plus unruled
+  drift. Ruled (D1–D7): **one canonical superset scaffold** — title + `argument-hint` · capped
+  Identity & Mission · Rules block · Adaptive Goal Protocol (Entry / Goal / count-pinned
+  Not-done) — with the form split superseded **layout-and-vocabulary only**, done-condition
+  contracts surviving (D1 `Contested`) · schema section sets unify same build to implement's
+  six-set, `reserved` first-class, prefixes frozen + forward derivation rule (D3 `Contested` ·
+  D4) · breadth invariant, empty explicit (D5) · checker `.md` lints (efficacy `Assumed` n=0) +
+  single branching audit criteria block + one-wave build + ripple (D6) · stage-1.5 tidy, not
+  the stage-2 on-ramp (D7).
+- **Landed:** DECISIONS.md row (2026-08-27) · BACKLOG "Command `.md` scaffold build" section
+  (cold-buildable) + the shared first-live-run watch extended · ROADMAP: merged into the
+  plan-surface-builds Next row (cap held). Build queued.
+
 ## `command-content-schema` — YAML schema for command content: block IDs, altitude clusters, variable injection; implement first, then rollout
 - **When:** 2026-08-26 · **Status:** accepted · solo cold review via blind-map two-message
   dispatch (30-angle map, topic-only spawn): verdict critical-gaps — 4 Critical / 6 Important /
