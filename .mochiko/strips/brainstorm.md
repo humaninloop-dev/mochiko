@@ -5,6 +5,64 @@ shared team-form prose relocated into `templates/command-shape.md` (design:
 `.mochiko/brainstorms/pattern-codification-and-minimalism/record.md`, D3/D4/D9). **Stale as a standing claim:**
 the shape is now **v5** (2026-07-30) — see the v0.35.0 section below.
 
+<!-- Wave context: the near-dup convergence wave (v0.99.0) — three brainstorm rules
+converge to `extends: common.<slug>` stubs under strongest-wording-wins. Ruling for every
+[v0.99.0] entry below: `.mochiko/decisions/2026-08-28-near-dup-convergence.md` R1–R6 +
+wave flags → `DECISIONS.md` 2026-08-28 row. Every ID survives as a stub (R3 — no
+tombstones); `class`, `kind`, `when:`, and `enforces:` stay local per ontology C3. Floor
+entries are supersessions per R4. -->
+
+## [v0.99.0] `brainstorm.model-tiering` — text single-homed into `common.model-tiering`
+
+- **Disposition:** superseded → `extends: common.model-tiering`; brainstorm's wording is
+  the block text except one formatting mote — its `Explore` carried backticks, the block's
+  does not (matching arch/feat/impl/setup/spec, all bare).
+- **Tier failed:** n/a — supersession by ruling (near-dup ADR R1/R2).
+- **Content:** verbatim —
+
+  ```
+          Exploration and fact-finding dispatches ride mochiko:patterns-model-tiering's
+          class key — locate/enumerate reads to a native `Explore` subagent spawned
+          model: ${explore_model}, interpretive or absence-driven reads on the session
+          tier — and every seat brief carries the routing rule; referenced, never restated.
+  ```
+
+- **Kept deliberately:** `class`/`kind: routing` local; labels + pointer inherited, same
+  values.
+- **Consumers assessed:** none — per-command rule.
+
+## [v0.99.0] `brainstorm.plan-approval-producers` — text single-homed into `common.plan-approval-producers`
+
+- **Disposition:** superseded → `extends: common.plan-approval-producers`; brainstorm's
+  wording IS the block text (exact triple with setup/specify — the D8 exact bar already
+  licensed it), resolved text unchanged.
+- **Tier failed:** n/a — supersession by ruling (near-dup ADR R1; D8 exact bar).
+- **Content:** verbatim —
+
+  ```
+          Any seat that writes artifacts plans first and works only on a plan you approved;
+          grading and fact-finding seats are exempt.
+  ```
+
+- **Kept deliberately:** `class: must` local; labels inherited, same values.
+- **Consumers assessed:** none — per-command rule.
+
+## [v0.99.0] `brainstorm.author-grader-default-fail` (floor) — short text superseded by the stronger block wording
+
+- **Disposition:** superseded → `extends: common.author-grader-default-fail`; resolved text
+  UPGRADES to setup's strongest wording, gaining "grading reads the authored surfaces
+  themselves — never the author's report".
+- **Tier failed:** n/a — supersession by ruling (near-dup ADR R1/R2/R4 — floor).
+- **Content:** verbatim —
+
+  ```
+          No output is cleared by its author — default FAIL.
+  ```
+
+- **Kept deliberately:** the whole obligation survives inside the stronger block text;
+  `class: floor` local on the stub (C3).
+- **Consumers assessed:** none — per-command rule.
+
 <!-- Wave context: the command-schema ontology wave (v0.98.0) — the rule grammar gains
 `kind:`, a declared `conditions:` block with a rule-level `when:`, a declared `moments:`
 block, `enforces:` on fail nodes, and `extends: common.<slug>` (D1–D8). Ruling for every

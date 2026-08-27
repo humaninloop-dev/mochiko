@@ -1,0 +1,251 @@
+{
+ "command": "setup",
+ "old_ref": "HEAD",
+ "replicates": 1,
+ "arms": [
+  "pre",
+  "post"
+ ],
+ "total_cost_usd": 4.2889,
+ "partition": {
+  "unchanged": [
+   "setup.architecture-scope-handoff",
+   "setup.author-grader-default-fail",
+   "setup.baselines-bootstrap",
+   "setup.blind-map-dispatch",
+   "setup.carve-outs-preserved",
+   "setup.constitution-superseded",
+   "setup.coverage-survivor-routing",
+   "setup.durables-never-deleted",
+   "setup.fail.author-graded",
+   "setup.fail.floor-category-uncovered",
+   "setup.fail.no-acceptance",
+   "setup.fail.no-feature-map",
+   "setup.fail.pre-ratification-authoring",
+   "setup.fail.unclosed-trace",
+   "setup.feature-map-brownfield",
+   "setup.feature-map-greenfield",
+   "setup.gate-final-acceptance",
+   "setup.gate-synthesis-ratification",
+   "setup.governance-region-ownership",
+   "setup.interrogation-inline",
+   "setup.interrogation-inputs",
+   "setup.km-module-scaffold",
+   "setup.map-never-overwrite",
+   "setup.model-tiering",
+   "setup.next-step",
+   "setup.no-git-mutations",
+   "setup.plan-approval-producers",
+   "setup.staffing-latitude",
+   "setup.store-ruled-content-never-here",
+   "setup.store-scaffold-unconditional",
+   "setup.stress-test-cold-seat",
+   "setup.surface-set",
+   "setup.synthesis-artifact",
+   "setup.user-card-rulings",
+   "setup.user-conflict-rulings",
+   "setup.user-map-confirmation",
+   "setup.user-mode-ruling"
+  ],
+  "changed": [
+   "setup.acceptance-plain-text",
+   "setup.register",
+   "setup.transport-floor"
+  ],
+  "removed": [],
+  "added": []
+ },
+ "runs": [
+  {
+   "golden": "s1-greenfield",
+   "arm": "pre",
+   "pins": {
+    "plugin_version": "0.98.0",
+    "cli": "2.1.231 (Claude Code)",
+    "session_model": "sonnet",
+    "wrapper_sha256": "33fb96d64054b599"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.98.0"
+     ]
+    ],
+    "cap_hit": false,
+    "fence_breach": [
+     "Bash"
+    ],
+    "name_resolution": [
+     "mochiko:domain-registry",
+     "mochiko:governance",
+     "mochiko:output-style"
+    ],
+    "auth_failure": false
+   },
+   "cost_usd": 0.5742045,
+   "num_turns": 15,
+   "duration_ms": 128423,
+   "replicate": 1
+  },
+  {
+   "golden": "s1-greenfield",
+   "arm": "post",
+   "pins": {
+    "plugin_version": "0.98.0",
+    "cli": "2.1.231 (Claude Code)",
+    "session_model": "sonnet",
+    "wrapper_sha256": "33fb96d64054b599"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.98.0"
+     ]
+    ],
+    "cap_hit": false,
+    "fence_breach": [
+     "Bash"
+    ],
+    "name_resolution": [
+     "mochiko:domain-registry",
+     "mochiko:governance",
+     "mochiko:output-style"
+    ],
+    "auth_failure": false
+   },
+   "cost_usd": 0.6796263,
+   "num_turns": 22,
+   "duration_ms": 152664,
+   "replicate": 1
+  },
+  {
+   "golden": "s2-brownfield",
+   "arm": "pre",
+   "pins": {
+    "plugin_version": "0.98.0",
+    "cli": "2.1.231 (Claude Code)",
+    "session_model": "sonnet",
+    "wrapper_sha256": "33fb96d64054b599"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.98.0"
+     ]
+    ],
+    "cap_hit": false,
+    "fence_breach": [
+     "Bash"
+    ],
+    "name_resolution": [
+     "mochiko:domain-registry",
+     "mochiko:governance",
+     "mochiko:output-style"
+    ],
+    "auth_failure": false
+   },
+   "cost_usd": 0.7457096999999999,
+   "num_turns": 18,
+   "duration_ms": 198931,
+   "replicate": 1
+  },
+  {
+   "golden": "s2-brownfield",
+   "arm": "post",
+   "pins": {
+    "plugin_version": "0.98.0",
+    "cli": "2.1.231 (Claude Code)",
+    "session_model": "sonnet",
+    "wrapper_sha256": "33fb96d64054b599"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.98.0"
+     ]
+    ],
+    "cap_hit": false,
+    "fence_breach": [
+     "Bash"
+    ],
+    "name_resolution": [
+     "mochiko:governance"
+    ],
+    "auth_failure": false
+   },
+   "cost_usd": 0.4676466,
+   "num_turns": 12,
+   "duration_ms": 113754,
+   "replicate": 1
+  },
+  {
+   "golden": "s3-amend",
+   "arm": "pre",
+   "pins": {
+    "plugin_version": "0.98.0",
+    "cli": "2.1.231 (Claude Code)",
+    "session_model": "sonnet",
+    "wrapper_sha256": "33fb96d64054b599"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.98.0"
+     ]
+    ],
+    "cap_hit": false,
+    "fence_breach": [
+     "Bash"
+    ],
+    "name_resolution": [
+     "mochiko:domain-registry",
+     "mochiko:output-style"
+    ],
+    "auth_failure": false
+   },
+   "cost_usd": 1.0123428,
+   "num_turns": 25,
+   "duration_ms": 237097,
+   "replicate": 1
+  },
+  {
+   "golden": "s3-amend",
+   "arm": "post",
+   "pins": {
+    "plugin_version": "0.98.0",
+    "cli": "2.1.231 (Claude Code)",
+    "session_model": "sonnet",
+    "wrapper_sha256": "33fb96d64054b599"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.98.0"
+     ]
+    ],
+    "cap_hit": false,
+    "fence_breach": [
+     "Bash"
+    ],
+    "name_resolution": [],
+    "auth_failure": false
+   },
+   "cost_usd": 0.8094165,
+   "num_turns": 24,
+   "duration_ms": 176914,
+   "replicate": 1
+  }
+ ]
+}

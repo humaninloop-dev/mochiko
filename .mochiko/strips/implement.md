@@ -33,6 +33,106 @@ six-block `extends:` prototype to full per-command rules, restored byte-identica
 v0.97.0 — the prototype was never committed, so neither rule ever shipped in stub form and
 no tombstone is due (C2's re-screen; inventory F.3 and J-14). -->
 
+<!-- Wave context: the near-dup convergence wave (v0.99.0) — five implement rules converge
+to `extends: common.<slug>` stubs under strongest-wording-wins. Ruling for every [v0.99.0]
+entry below: `.mochiko/decisions/2026-08-28-near-dup-convergence.md` R1–R6 + wave flags →
+`DECISIONS.md` 2026-08-28 row. Every ID survives as a stub (R3 — no tombstones); `class`,
+`kind`, `when:`, and `enforces:` stay local per ontology C3. Floor entries are supersessions
+per R4. The `kind: fail` count is unchanged — the Not-done pin does not move. Two of
+implement's rules were the strongest members (`tools-referenced-never-restated` became the
+block text verbatim; `fail.no-acceptance` was word-identical across three commands); the
+other three UPGRADE to stronger block wordings. Implement also KEEPS two locals the
+detector paired: `impl.acceptance-plain-text` (flag D — its three named gates do real
+binding work) and `impl.plan-approval-producers` (flag E — "code" and "verification seats"
+are real implement content); both edges are recorded in
+scripts/similar-rules-allowlist.yaml. -->
+
+## [v0.99.0] `impl.tools-referenced-never-restated` — text single-homed into `common.tools-referenced-never-restated`
+
+- **Disposition:** superseded → `extends: common.tools-referenced-never-restated`; impl's
+  wording IS the block text (strongest member — "skill or template" survives; arch/feat
+  upgrade to it), resolved text unchanged.
+- **Tier failed:** n/a — supersession by ruling (near-dup ADR R1/R2).
+- **Content:** verbatim —
+
+  ```
+          Every tool binding is referenced, never restated — its procedure lives in its home
+          skill or template.
+  ```
+
+- **Kept deliberately:** `class: must` local; labels `[floor-pointer]` inherited, same value.
+- **Consumers assessed:** none — per-command rule.
+
+## [v0.99.0] `impl.author-grader-default-fail` (floor) — short text superseded by the stronger block wording
+
+- **Disposition:** superseded → `extends: common.author-grader-default-fail`; resolved text
+  UPGRADES to setup's strongest wording, gaining "grading reads the authored surfaces
+  themselves — never the author's report".
+- **Tier failed:** n/a — supersession by ruling (near-dup ADR R1/R2/R4 — floor).
+- **Content:** verbatim —
+
+  ```
+          No output is cleared by its author — default FAIL.
+  ```
+
+- **Kept deliberately:** the whole obligation survives inside the stronger block text;
+  `class: floor` local on the stub (C3).
+- **Consumers assessed:** none — per-command rule.
+
+## [v0.99.0] `impl.model-tiering` — trimmed text superseded by the full block wording
+
+- **Disposition:** superseded → `extends: common.model-tiering`; resolved text UPGRADES to
+  the family's full wording (gains the "Exploration and fact-finding dispatches ride
+  mochiko:patterns-model-tiering's class key" lead-in and the "referenced, never restated"
+  tail the v0.98.0 trim had dropped).
+- **Tier failed:** n/a — supersession by ruling (near-dup ADR R1/R2).
+- **Content:** verbatim —
+
+  ```
+          Locate/enumerate reads go to a native Explore subagent spawned
+          model: ${explore_model}; interpretive or absence-driven reads stay on the session
+          tier; every seat brief carries the routing rule.
+  ```
+
+- **Kept deliberately:** every clause survives inside the block text; `class`/`kind:
+  routing` local; pointer inherited, same value.
+- **Consumers assessed:** none — per-command rule.
+
+## [v0.99.0] `impl.transport-floor` (floor) — own text superseded by the widened block
+
+- **Disposition:** superseded → `extends: common.transport-floor` (the block widened at
+  this wave under flag A with arch/feat's enumeration — "Trigger test, floor legs,
+  composition-safe shapes, and disclosure live there"). The unit noun "the run's" drops;
+  the block states the floor unit-neutrally.
+- **Tier failed:** n/a — supersession by ruling (near-dup ADR R1/R2/R4 — floor; flag A).
+- **Content:** verbatim —
+
+  ```
+          The transport floor governs the run's composition and messaging under a split
+          trigger — message legs on any multi-seat messaging, topology legs on shared
+          writes — non-waivable once triggered; referenced, never restated.
+  ```
+
+- **Kept deliberately:** the split trigger, both legs, non-waivability, and
+  referenced-never-restated all survive in the block; `when: {seats: multi}` and its C4
+  comment stay local on the stub.
+- **Consumers assessed:** none — per-command rule.
+
+## [v0.99.0] `impl.fail.no-acceptance` (floor) — text single-homed into `common.no-acceptance`
+
+- **Disposition:** superseded → `extends: common.no-acceptance`; word-identical across
+  impl/setup/spec (D8 exact bar), resolved text unchanged.
+- **Tier failed:** n/a — supersession by ruling (near-dup ADR R1/R4 — floor; D8 exact bar).
+- **Content:** verbatim —
+
+  ```
+          User acceptance not given.
+  ```
+
+- **Kept deliberately:** `class: floor`, `kind: fail`,
+  `enforces: [impl.gate-final-acceptance]` all local (C3); Not-done count untouched.
+- **Consumers assessed:** none — per-command rule.
+
 ## [v0.98.0] Fourteen rule-level activation guards single-homed out of `text:` into `when:` (D3)
 
 - **Disposition:** superseded → the `when:` field on each rule, resolving against the new

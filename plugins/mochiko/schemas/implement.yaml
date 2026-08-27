@@ -329,11 +329,8 @@ sections:
     rules:
 
       - id: impl.tools-referenced-never-restated
-        labels: [floor-pointer]
+        extends: common.tools-referenced-never-restated
         class: must
-        text: >-
-          Every tool binding is referenced, never restated — its procedure lives in its home
-          skill or template.
 
       - id: impl.sufficiency-binding-verdict
         labels: [scope-entry]
@@ -754,10 +751,8 @@ sections:
     rules:
 
       - id: impl.author-grader-default-fail
-        labels: [independence]
+        extends: common.author-grader-default-fail
         class: floor
-        text: >-
-          No output is cleared by its author — default FAIL.
 
       - id: impl.plan-approval-producers
         labels: [seats, independence]
@@ -785,14 +780,9 @@ sections:
           the cycle and joins the checkpoint batch.
 
       - id: impl.model-tiering
-        labels: [seats, floor-pointer]
+        extends: common.model-tiering
         class: must
         kind: routing
-        text: >-
-          Locate/enumerate reads go to a native Explore subagent spawned
-          model: ${explore_model}; interpretive or absence-driven reads stay on the session
-          tier; every seat brief carries the routing rule.
-        pointer: "mochiko:patterns-model-tiering"
 
       - id: impl.delta-reverification
         labels: [evidence]
@@ -945,17 +935,12 @@ sections:
         pointer: "mochiko:patterns-sound-loop"
 
       - id: impl.transport-floor
-        labels: [floor-pointer, seats]
+        extends: common.transport-floor
         class: floor
         when: {seats: multi}
         # C4: floor — always read, always delivered. `when:` gates when the
         # obligation APPLIES, never whether it is delivered. Re-evaluated
         # whenever the run's shape changes (a seat added mid-run re-activates it).
-        text: >-
-          The transport floor governs the run's composition and messaging under a split
-          trigger — message legs on any multi-seat messaging, topology legs on shared
-          writes — non-waivable once triggered; referenced, never restated.
-        pointer: "mochiko:patterns-transport-floor"
 
   - id: impl.sec.fail-conditions
     title: Not done — default FAIL
@@ -1088,9 +1073,7 @@ sections:
           A gap finding showing spec-required behavior broken, left unresolved.
 
       - id: impl.fail.no-acceptance
-        labels: [user-gate]
+        extends: common.no-acceptance
         class: floor
         kind: fail
         enforces: [impl.gate-final-acceptance]
-        text: >-
-          User acceptance not given.

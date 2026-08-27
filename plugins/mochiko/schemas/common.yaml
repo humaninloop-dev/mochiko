@@ -4,9 +4,15 @@
 # command-content-schema D3 — amended, not reversed: per-command rules remain the default
 # and the label registry remains the cross-command link.
 #
-# Extraction bar: a block lives here ONLY where the same text is an EXACT duplicate across
-# three or more command schemas. Anything below that bar stays a per-command rule. A common
-# block is boilerplate by definition, never command-specific judgment.
+# Extraction bar (as amended by the near-dup convergence ruling,
+# .mochiko/decisions/2026-08-28-near-dup-convergence.md R1/R2, DECISIONS.md 2026-08-28):
+# a block lives here where the same responsibility appears across three or more command
+# schemas in exact or NEAR-identical wording — near-identical meaning differences confined
+# to phrasing, illustration, or unit nouns. Convergence takes the strongest member wording,
+# never an average; a member whose extra content is command-specific keeps its local text
+# (the edge allowlisted in scripts/similar-rules-allowlist.yaml). Anything below that bar
+# stays a per-command rule. A common block is boilerplate by definition, never
+# command-specific judgment.
 #
 # Common blocks are never binding on their own: a command binds one by carrying a rule stub
 # with `extends: common.<slug>` in its own schema, and the stub's `<cmd>.*` ID stays the
@@ -37,6 +43,13 @@
 # owed. `common.transport-floor` carries guard-stripped text: its seat-count guard is
 # single-homed into each binding stub's `when:` (D3), so the shared block carries less
 # than the prototype's version appeared to.
+# 2026-08-28 (v0.99.0, near-dup convergence wave): the detector census found both removed
+# prototype blocks at 4+ members under the widened bar — `author-grader-default-fail` and
+# `model-tiering` are re-minted below (fresh mint, no tombstone was owed), joined by
+# `no-acceptance` and `plan-approval-producers` (exact triples the original bar already
+# licensed) and `tools-referenced-never-restated`; `transport-floor` and
+# `acceptance-plain-text` texts widened under strongest-wording-wins (flags A / plan move 7
+# of the ADR).
 kind: command-common
 
 rules:
@@ -54,12 +67,47 @@ rules:
   - id: common.acceptance-plain-text
     labels: [user-gate]
     text: >-
-      User acceptance is plain blocking text, never a timed prompt.
+      User rulings and acceptance are plain blocking text, never a timed prompt.
 
   - id: common.transport-floor
     labels: [floor-pointer, seats]
     text: >-
       mochiko:patterns-transport-floor governs composition and messaging under a
       split trigger — message legs on any multi-seat messaging, topology legs on
-      shared writes — non-waivable once triggered; referenced, never restated.
+      shared writes — non-waivable once triggered. Trigger test, floor legs,
+      composition-safe shapes, and disclosure live there — referenced, never
+      restated.
     pointer: "mochiko:patterns-transport-floor"
+
+  - id: common.no-acceptance
+    labels: [user-gate]
+    text: >-
+      User acceptance not given.
+
+  - id: common.model-tiering
+    labels: [seats, floor-pointer]
+    text: >-
+      Exploration and fact-finding dispatches ride mochiko:patterns-model-tiering's
+      class key — locate/enumerate reads to a native Explore subagent spawned
+      model: ${explore_model}, interpretive or absence-driven reads on the session
+      tier — and every seat brief carries the routing rule; referenced, never
+      restated.
+    pointer: "mochiko:patterns-model-tiering"
+
+  - id: common.author-grader-default-fail
+    labels: [independence]
+    text: >-
+      No output is cleared by its author; grading reads the authored surfaces
+      themselves — never the author's report — default FAIL.
+
+  - id: common.tools-referenced-never-restated
+    labels: [floor-pointer]
+    text: >-
+      Every tool binding is referenced, never restated — its procedure lives in
+      its home skill or template.
+
+  - id: common.plan-approval-producers
+    labels: [seats, independence]
+    text: >-
+      Any seat that writes artifacts plans first and works only on a plan you
+      approved; grading and fact-finding seats are exempt.

@@ -4,6 +4,91 @@ Entry formats: `strips/README.md`. Ruling for every [v0.68.0] entry below:
 `DECISIONS.md` 2026-08-13 "PM role & feature derivation" row →
 `.mochiko/brainstorms/pm-role-and-feature-derivation/record.md` (D6/D7/D8/D9/D10).
 
+<!-- Wave context: the near-dup convergence wave (v0.99.0) — four feature rules converge to
+`extends: common.<slug>` stubs under strongest-wording-wins. Ruling for every [v0.99.0]
+entry below: `.mochiko/decisions/2026-08-28-near-dup-convergence.md` R1–R6 + wave flags →
+`DECISIONS.md` 2026-08-28 row. Every ID survives as a stub (R3 — no tombstones); `class`,
+`kind`, `when:`, and `enforces:` stay local per ontology C3. Floor entries are supersessions
+per R4. -->
+
+## [v0.99.0] `feat.tools-referenced-never-restated` — text superseded by the fuller block wording
+
+- **Disposition:** superseded → `extends: common.tools-referenced-never-restated`; resolved
+  text UPGRADES to implement's wording — "its home" becomes "its home skill or template".
+- **Tier failed:** n/a — supersession by ruling (near-dup ADR R1/R2).
+- **Content:** verbatim —
+
+  ```
+          Every tool binding is referenced, never restated — its procedure lives in its
+          home.
+  ```
+
+- **Kept deliberately:** the whole obligation survives; `class: must` local; labels
+  inherited, same value.
+- **Consumers assessed:** none — per-command rule.
+
+## [v0.99.0] `feat.model-tiering` — text superseded by the block wording; parenthetical dropped (flag B)
+
+- **Disposition:** superseded → `extends: common.model-tiering`; resolved text becomes the
+  family wording. The "(map sweeps, territory reads)" parenthetical drops — ruled
+  illustrative at wave flag B; the "live in the pointer skill" tail variant becomes the
+  block's "referenced, never restated".
+- **Tier failed:** n/a — supersession by ruling (near-dup ADR R1/R2; flag B).
+- **Content:** verbatim —
+
+  ```
+          Exploration and fact-finding dispatches (map sweeps, territory reads) ride the
+          class-keyed tiering floor: locate/enumerate reads go to a native Explore
+          subagent spawned model: ${explore_model}; interpretive or absence-driven reads
+          stay on the session tier; every seat brief carries the routing rule. Class key,
+          dispatch ladder, and brief obligation live in the pointer skill, referenced
+          never restated.
+  ```
+
+- **Kept deliberately:** every obligation clause survives in the block text; the
+  illustrative example pair leaves, and the pointer-tail enumeration ("Class key, dispatch
+  ladder, and brief obligation live in the pointer skill") compresses to the named skill —
+  "dispatch ladder" survives as skill content behind the pointer (V2 audit note N1).
+  `class`/`kind: routing` local; pointer inherited, same value.
+- **Consumers assessed:** none — per-command rule.
+
+## [v0.99.0] `feat.rulings-plain-text` — text superseded by the widened `common.acceptance-plain-text`
+
+- **Disposition:** superseded → `extends: common.acceptance-plain-text` (the block widened
+  at this wave to "User rulings and acceptance…", so the desk's "rulings" vocabulary is
+  carried, not lost). The stub keeps its minted ID `feat.rulings-plain-text` (R3).
+- **Tier failed:** n/a — supersession by ruling (near-dup ADR R1/R2; wave move 7).
+- **Content:** verbatim —
+
+  ```
+          User rulings are plain blocking text, never a timed prompt.
+  ```
+
+- **Kept deliberately:** "rulings" survives in the widened block text; `class: must` local;
+  labels inherited, same value.
+- **Consumers assessed:** none — per-command rule.
+
+## [v0.99.0] `feat.transport-floor` (floor) — own text superseded by the widened block it co-seeded
+
+- **Disposition:** superseded → `extends: common.transport-floor`. Feat's text was
+  word-identical with arch's; their enumeration ("Trigger test, floor legs, composition-safe
+  shapes, and disclosure") moved INTO the block at this wave (flag A) — the "The visit gains
+  a floor" opener drops for the block's unit-neutral statement.
+- **Tier failed:** n/a — supersession by ruling (near-dup ADR R1/R2/R4 — floor; flag A).
+- **Content:** verbatim —
+
+  ```
+          The visit gains a floor on its composition and messaging: a split trigger —
+          message legs on any multi-seat messaging, topology legs on shared writes —
+          non-waivable once triggered. Trigger test, floor legs, composition-safe shapes,
+          and disclosure: mochiko:patterns-transport-floor, referenced never restated.
+  ```
+
+- **Kept deliberately:** the split trigger, both legs, non-waivability, and the full
+  enumeration all survive in the widened block; `when: {seats: multi}` and its C4 comment
+  stay local on the stub.
+- **Consumers assessed:** none — per-command rule.
+
 <!-- Wave context: the command-schema ontology wave (v0.98.0) — the D1–D8 grammar amendment
 over the `.md` + schema pair: a closed `kind:` set with `constraint` as the omitted default
 (D1), a per-schema `conditions:` block plus a rule-level `when:` guard with the condition

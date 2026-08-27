@@ -5,6 +5,42 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.99.0] — 2026-08-28
+
+**Near-dup convergence — the similar-rule reduction wave** (ruling
+`.mochiko/decisions/2026-08-28-near-dup-convergence.md` R1–R6 + wave flags A–E, all as
+recommended; `DECISIONS.md` 2026-08-28 row; ruled and delivered the same day). A new
+**similar-rule detector** (`scripts/find-similar-rules.py` + 34-case test matrix, GI-019
+advisory) scanned the six pairs — 321 rules, 12,203 in-kind pairs, 36 clusters, 11
+spanning 3+ commands — and the extraction bar widened narrowly: a **3+-command
+near-identical family may converge to one `common.<slug>` block under
+strongest-wording-wins** (ontology D8's exact-only limb amended; per-command default and
+stub-carried binding unchanged). Every ID survives as an `extends:` stub — no tombstones,
+Not-done pins unmoved. `common.yaml` grows 4 → 9 blocks: new `no-acceptance` +
+`plan-approval-producers` (exact triples the D8 bar already licensed) · `model-tiering` ·
+`author-grader-default-fail` · `tools-referenced-never-restated` (strongest-member
+texts); `transport-floor` widened with the desks' four-part enumeration (flag A) and
+`acceptance-plain-text` widened to "rulings and acceptance". 24 stubs land across all six
+schemas (~24 full texts single-homed); three commands upgrade to stronger wordings;
+command-specific content stays local by ruling (arch's drift-probe routing, implement's
+named gates and code/verification clauses — flags B/D/E). Keep-distinct survivors are
+adjudicated into `scripts/similar-rules-allowlist.yaml` (60 edges with reasons; the
+detector now runs silent and re-fires only on new similarity). Ceremony: strips across 8
+files incl. new `strips/common.md` (13 floor supersessions) · 3 author≠grader validators,
+6/6 pairs PASS (one strip consumers-list omission caught by V3, repaired, CONFIRMED
+discharged) · checker 0 findings ×6, all 9 blocks bound · negative matrix 133/133 · cargo
+12/12 · pair-audit criterion 11 re-keyed to the widened bar. Evidence: the extends-aware
+partition proves only 3 resolved texts changed per instrumented command (all ruled
+upgrades), and pre/post plan-only grids on implement + setup (ontology-grid post arm
+reused as pre per the D7 precedent; opus judges; prereg noise guard fired → r4 pairs
+added both grids) read **no regression attributable to the wave** — every dipped rule
+flaky within its own arm, post never trailing at aggregate (implement s1 52/52 tie · s2
+post +2 · s3 50/50 tie; setup s2-brownfield clean 31/32 ≥ pre), both widened texts and
+all three upgrades graded present against their new wording. Instrument notes for the
+eval desk: several opus judge calls returned unparseable arrays (healed by re-judge —
+retry belongs in the runner), and the noise falsifier's instrument-side standing is
+re-confirmed at k=4 on both grids.
+
 ## [0.98.0] — 2026-08-28
 
 **The command schemas gain a typed node grammar — the ontology wave** (record

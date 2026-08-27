@@ -239,11 +239,8 @@ sections:
     rules:
 
       - id: arch.tools-referenced-never-restated
-        labels: [floor-pointer]
+        extends: common.tools-referenced-never-restated
         class: must
-        text: >-
-          Every tool binding is referenced, never restated — its procedure lives in its
-          home.
 
       - id: arch.tools-store
         labels: [binding]
@@ -425,10 +422,8 @@ sections:
         class: must
 
       - id: arch.rulings-plain-text
-        labels: [user-gate]
+        extends: common.acceptance-plain-text
         class: must
-        text: >-
-          User rulings are plain blocking text, never a timed prompt.
 
   - id: arch.sec.boundaries
     title: Boundaries — the non-waivable floor
@@ -536,18 +531,12 @@ sections:
         pointer: "mochiko:patterns-sound-loop"
 
       - id: arch.transport-floor
-        labels: [floor-pointer, seats]
+        extends: common.transport-floor
         class: floor
         when: {seats: multi}
         # C4: floor — always read, always delivered. `when:` gates when the
         # obligation APPLIES, never whether it is delivered. Re-evaluated
         # whenever the run's shape changes (a seat added mid-run re-activates it).
-        text: >-
-          The visit gains a floor on its composition and messaging: a split trigger —
-          message legs on any multi-seat messaging, topology legs on shared writes —
-          non-waivable once triggered. Trigger test, floor legs, composition-safe shapes,
-          and disclosure: mochiko:patterns-transport-floor, referenced never restated.
-        pointer: "mochiko:patterns-transport-floor"
 
   - id: arch.sec.fail-conditions
     title: Not done — default FAIL

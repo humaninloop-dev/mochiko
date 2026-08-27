@@ -7,6 +7,84 @@ wave also ran the **D2 conversion assessment** and the **S8 home-revision checkp
 the shape is now **v5** (2026-07-30) — see the v0.35.0 section below. **Also stale:** the shape is
 **v7**, and specify converted to v7 form at v0.43.0 — see the section immediately below.
 
+<!-- Wave context: the near-dup convergence wave (v0.99.0) — four specify rules converge to
+`extends: common.<slug>` stubs under strongest-wording-wins. Ruling for every [v0.99.0]
+entry below: `.mochiko/decisions/2026-08-28-near-dup-convergence.md` R1–R6 + wave flags →
+`DECISIONS.md` 2026-08-28 row. Every ID survives as a stub (R3 — no tombstones); `class`,
+`kind`, `when:`, and `enforces:` stay local per ontology C3. Floor entries are supersessions
+per R4. The `kind: fail` count is unchanged — the Not-done pin does not move. -->
+
+## [v0.99.0] `spec.model-tiering` — text single-homed into `common.model-tiering`
+
+- **Disposition:** superseded → `extends: common.model-tiering`; specify's wording IS the
+  block text (word-identical with brainstorm/setup), resolved text unchanged.
+- **Tier failed:** n/a — supersession by ruling (near-dup ADR R1/R2).
+- **Content:** verbatim —
+
+  ```
+          Exploration and fact-finding dispatches ride mochiko:patterns-model-tiering's
+          class key — locate/enumerate reads to a native Explore subagent spawned
+          model: ${explore_model}, interpretive or absence-driven reads on the session
+          tier — and every seat brief carries the routing rule; referenced, never
+          restated.
+  ```
+
+- **Kept deliberately:** `class`/`kind: routing` local; labels + pointer inherited, same
+  values.
+- **Consumers assessed:** none — per-command rule.
+
+## [v0.99.0] `spec.plan-approval` — text single-homed into `common.plan-approval-producers`
+
+- **Disposition:** superseded → `extends: common.plan-approval-producers`; specify's
+  wording IS the block text (exact triple with brainstorm/setup — the D8 exact bar already
+  licensed it). The stub keeps its minted ID `spec.plan-approval` (R3 — IDs never re-slug).
+- **Tier failed:** n/a — supersession by ruling (near-dup ADR R1; D8 exact bar).
+- **Content:** verbatim —
+
+  ```
+          Any seat that writes artifacts plans first and works only on a plan you
+          approved; grading and fact-finding seats are exempt.
+  ```
+
+- **Kept deliberately:** `class: must` local; labels inherited, same values.
+- **Consumers assessed:** none — per-command rule.
+
+## [v0.99.0] `spec.author-grader-default-fail` (floor) — file enumeration dropped as illustrative (flag C)
+
+- **Disposition:** superseded → `extends: common.author-grader-default-fail`; resolved text
+  becomes setup's strongest generic wording. The spec-specific file list ("spec.md, the
+  story files, the staged capabilities and work rows") drops — ruled illustrative at wave
+  flag C: the obligation is identical and "grading reads the authored surfaces themselves"
+  covers the enumerated files.
+- **Tier failed:** n/a — supersession by ruling (near-dup ADR R1/R2/R4 — floor; flag C).
+- **Content:** verbatim —
+
+  ```
+          No output is cleared by its author; grading reads the files themselves —
+          spec.md, the story files, the staged capabilities and work rows — never a
+          report; default FAIL.
+  ```
+
+- **Kept deliberately:** the obligation, the reads-the-surfaces clause, and default FAIL
+  all survive in the block; only the illustrative file list leaves. `class: floor` local
+  (C3).
+- **Consumers assessed:** none — per-command rule.
+
+## [v0.99.0] `spec.fail.no-acceptance` (floor) — text single-homed into `common.no-acceptance`
+
+- **Disposition:** superseded → `extends: common.no-acceptance`; word-identical across
+  impl/setup/spec (D8 exact bar), resolved text unchanged.
+- **Tier failed:** n/a — supersession by ruling (near-dup ADR R1/R4 — floor; D8 exact bar).
+- **Content:** verbatim —
+
+  ```
+          User acceptance not given.
+  ```
+
+- **Kept deliberately:** `class: floor`, `kind: fail`, `enforces: [spec.gate-acceptance]`
+  all local (C3); Not-done count untouched.
+- **Consumers assessed:** none — per-command rule.
+
 <!-- Wave context: the command-schema ontology wave (v0.98.0) — the D1–D8 grammar amendment
 over the `.md` + schema pair: a closed `kind:` set with `constraint` as the omitted default
 (D1), a per-schema `conditions:` block plus a rule-level `when:` guard with the condition

@@ -429,16 +429,9 @@ sections:
     rules:
 
       - id: spec.model-tiering
-        labels: [seats, floor-pointer]
+        extends: common.model-tiering
         class: must
         kind: routing
-        text: >-
-          Exploration and fact-finding dispatches ride mochiko:patterns-model-tiering's
-          class key — locate/enumerate reads to a native Explore subagent spawned
-          model: ${explore_model}, interpretive or absence-driven reads on the session
-          tier — and every seat brief carries the routing rule; referenced, never
-          restated.
-        pointer: "mochiko:patterns-model-tiering"
 
       - id: spec.intent-probe-discipline
         labels: [user-gate]
@@ -468,19 +461,12 @@ sections:
           text settles.
 
       - id: spec.plan-approval
-        labels: [seats, independence]
+        extends: common.plan-approval-producers
         class: must
-        text: >-
-          Any seat that writes artifacts plans first and works only on a plan you
-          approved; grading and fact-finding seats are exempt.
 
       - id: spec.author-grader-default-fail
-        labels: [independence]
+        extends: common.author-grader-default-fail
         class: floor
-        text: >-
-          No output is cleared by its author; grading reads the files themselves —
-          spec.md, the story files, the staged capabilities and work rows — never a
-          report; default FAIL.
 
       - id: spec.no-git-mutations
         extends: common.no-git-mutations
@@ -593,12 +579,10 @@ sections:
           The spec never graded by anyone but its authors.
 
       - id: spec.fail.no-acceptance
-        labels: [user-gate]
+        extends: common.no-acceptance
         class: floor
         kind: fail
         enforces: [spec.gate-acceptance]
-        text: >-
-          User acceptance not given.
 
 tombstones:
   - id: spec.sec.harness

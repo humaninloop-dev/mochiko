@@ -249,28 +249,17 @@ sections:
     rules:
 
       - id: brainstorm.model-tiering
-        labels: [seats, floor-pointer]
+        extends: common.model-tiering
         class: must
         kind: routing
-        text: >-
-          Exploration and fact-finding dispatches ride mochiko:patterns-model-tiering's
-          class key — locate/enumerate reads to a native `Explore` subagent spawned
-          model: ${explore_model}, interpretive or absence-driven reads on the session
-          tier — and every seat brief carries the routing rule; referenced, never restated.
-        pointer: "mochiko:patterns-model-tiering"
 
       - id: brainstorm.plan-approval-producers
-        labels: [seats, independence]
+        extends: common.plan-approval-producers
         class: must
-        text: >-
-          Any seat that writes artifacts plans first and works only on a plan you approved;
-          grading and fact-finding seats are exempt.
 
       - id: brainstorm.author-grader-default-fail
-        labels: [independence]
+        extends: common.author-grader-default-fail
         class: floor
-        text: >-
-          No output is cleared by its author — default FAIL.
 
       - id: brainstorm.non-coverage-survivors
         labels: [user-gate]

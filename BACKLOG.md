@@ -101,7 +101,14 @@ Command-content schema section's watch item)*
   session's own desk, not here. · D10 proxy falsifier: still open · Goodhart watch: still
   open, D3's anti-recitation register the standing mitigation · opus pairwise showed
   position bias in a majority of implement pairs — pairwise informativeness joins the
-  watch.
+  watch. · **Second live use (near-dup convergence wave, 2026-08-28, v0.99.0 —
+  `neardup-grid` both substrates, k=4):** the D7-style pre-arm reuse worked (ontology-grid
+  post arm re-judged as pre); noise-domination re-confirmed at k=4 on BOTH grids (every
+  flagged regression replicate-flaky, no attributable regression); new instrument defect —
+  **opus coverage-judge calls intermittently return unparseable arrays** (runner stores
+  all-`None` verdicts, silently zeroing that replicate's pass^k; healed by targeted
+  re-judge this wave) — a judge-retry loop belongs in `evals/commands/run.py`, joins the
+  desk's work list.
 
 ## Skill-compression eval-primitive build
 

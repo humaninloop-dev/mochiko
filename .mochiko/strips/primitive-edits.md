@@ -9,6 +9,29 @@ this `.claude/rules/` surface; earlier edits rode their decision rows.
 `.mochiko/brainstorms/command-schema-ontology/conversion-inventory.md` (section H carries
 the re-keyed form and names this file as a downstream consumer). -->
 
+<!-- Wave context: the near-dup convergence wave (v0.99.0). Ruling:
+`.mochiko/decisions/2026-08-28-near-dup-convergence.md` R1–R6 → `DECISIONS.md` 2026-08-28. -->
+
+## [v0.99.0] Criterion 11's `extends:` clause — the exact-duplicate-only bar superseded by the widened extraction bar
+
+- **Disposition:** superseded → the widened clause: a stub "binds only where the block
+  carries the command's responsibility under the extraction bar — exact duplicate across 3+
+  commands (ontology D8), or a 3+-command near-identical family converged under
+  strongest-wording-wins (near-dup convergence ruling R1/R2 …)", with the keep-local /
+  allowlist limb added. The rulings list at the block's foot gains the ADR.
+- **Tier failed:** n/a — supersession by ruling (near-dup ADR R1).
+- **Content:** the clause as shipped at v0.98.0, verbatim —
+
+  ```
+  binds only where the command's own text is an exact duplicate of the block
+  ```
+
+- **Kept deliberately:** every other limb of criterion 11 — the nine-kind set, the
+  conditions/moments resolution, MOVE/DECLARE, floors-never-shed, `enforces:`, the C3
+  inheritance rule, and the `.md` first-action common Read — survives word for word.
+- **Consumers assessed:** the audit briefs that cite this criteria block (validators read it
+  at grade time); no other primitive restates the clause.
+
 ## [v0.98.0] Criterion 3's FAIL survival re-keyed from the `fail-condition` label set to `kind: fail`
 
 - **Disposition:** superseded → criterion 3 of the same canonical-scaffold criteria block in

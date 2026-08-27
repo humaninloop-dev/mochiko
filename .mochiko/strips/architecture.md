@@ -4,6 +4,69 @@ Entry formats: `strips/README.md`. Command born at v0.81.0 (the product-architec
 Stage-1 wave, D1 — the standing architecture desk); this file opens with the first edit that
 superseded any of its shipped text.
 
+<!-- Wave context: the near-dup convergence wave (v0.99.0) — three architecture rules
+converge to `extends: common.<slug>` stubs under strongest-wording-wins. Ruling for every
+[v0.99.0] entry below: `.mochiko/decisions/2026-08-28-near-dup-convergence.md` R1–R6 +
+wave flags → `DECISIONS.md` 2026-08-28 row. Every ID survives as a stub (R3 — no
+tombstones); `class`, `kind`, `when:`, and `enforces:` stay local per ontology C3. Floor
+entries are supersessions per R4. `arch.model-tiering` deliberately KEEPS its local text
+(wave flag B — its drift-probe routing clause is arch-specific, not illustrative); the
+adjudication is recorded in scripts/similar-rules-allowlist.yaml. -->
+
+## [v0.99.0] `arch.tools-referenced-never-restated` — text superseded by the fuller block wording
+
+- **Disposition:** superseded → `extends: common.tools-referenced-never-restated`; resolved
+  text UPGRADES to implement's wording — "its home" becomes "its home skill or template".
+- **Tier failed:** n/a — supersession by ruling (near-dup ADR R1/R2).
+- **Content:** verbatim —
+
+  ```
+          Every tool binding is referenced, never restated — its procedure lives in its
+          home.
+  ```
+
+- **Kept deliberately:** the whole obligation survives; `class: must` local; labels
+  inherited, same value.
+- **Consumers assessed:** none — per-command rule.
+
+## [v0.99.0] `arch.rulings-plain-text` — text superseded by the widened `common.acceptance-plain-text`
+
+- **Disposition:** superseded → `extends: common.acceptance-plain-text` (the block widened
+  at this wave to "User rulings and acceptance are plain blocking text, never a timed
+  prompt", so the desk's "rulings" vocabulary is carried, not lost). The stub keeps its
+  minted ID `arch.rulings-plain-text` (R3 — IDs never re-slug).
+- **Tier failed:** n/a — supersession by ruling (near-dup ADR R1/R2; wave move 7).
+- **Content:** verbatim —
+
+  ```
+          User rulings are plain blocking text, never a timed prompt.
+  ```
+
+- **Kept deliberately:** "rulings" survives in the widened block text; `class: must` local;
+  labels inherited, same value.
+- **Consumers assessed:** none — per-command rule.
+
+## [v0.99.0] `arch.transport-floor` (floor) — own text superseded by the widened block it seeded
+
+- **Disposition:** superseded → `extends: common.transport-floor`. Arch's enumeration
+  ("Trigger test, floor legs, composition-safe shapes, and disclosure") was the strongest
+  wording and moved INTO the block at this wave (flag A) — the desk's "The visit gains a
+  floor" opener drops for the block's unit-neutral statement.
+- **Tier failed:** n/a — supersession by ruling (near-dup ADR R1/R2/R4 — floor; flag A).
+- **Content:** verbatim —
+
+  ```
+          The visit gains a floor on its composition and messaging: a split trigger —
+          message legs on any multi-seat messaging, topology legs on shared writes —
+          non-waivable once triggered. Trigger test, floor legs, composition-safe shapes,
+          and disclosure: mochiko:patterns-transport-floor, referenced never restated.
+  ```
+
+- **Kept deliberately:** the split trigger, both legs, non-waivability, and the full
+  enumeration all survive in the widened block; `when: {seats: multi}` and its C4 comment
+  stay local on the stub.
+- **Consumers assessed:** none — per-command rule.
+
 <!-- Wave context: the command-schema ontology wave (v0.98.0) — the D1–D8 grammar amendment
 over the `.md` + schema pair: a closed `kind:` set with `constraint` as the omitted default
 (D1), a per-schema `conditions:` block plus a rule-level `when:` guard with the condition

@@ -327,11 +327,9 @@ sections:
           taken in the run.
 
       - id: setup.register
-        labels: [reporting]
+        extends: common.register
         class: must
         kind: binding
-        text: >-
-          User-facing prose per templates/output-style.md.
 
       - id: setup.next-step
         labels: [reporting]
@@ -349,30 +347,17 @@ sections:
     rules:
 
       - id: setup.model-tiering
-        labels: [seats, floor-pointer]
+        extends: common.model-tiering
         class: must
         kind: routing
-        text: >-
-          Exploration and fact-finding dispatches ride
-          mochiko:patterns-model-tiering's class key — locate/enumerate reads to a native
-          Explore subagent spawned model: ${explore_model}, interpretive or
-          absence-driven reads on the session tier — and every seat brief carries the
-          routing rule; referenced, never restated.
-        pointer: "mochiko:patterns-model-tiering"
 
       - id: setup.plan-approval-producers
-        labels: [seats, independence]
+        extends: common.plan-approval-producers
         class: must
-        text: >-
-          Any seat that writes artifacts plans first and works only on a plan you
-          approved; grading and fact-finding seats are exempt.
 
       - id: setup.author-grader-default-fail
-        labels: [independence]
+        extends: common.author-grader-default-fail
         class: floor
-        text: >-
-          No output is cleared by its author; grading reads the authored surfaces
-          themselves — never the author's report — default FAIL.
 
       - id: setup.no-git-mutations
         extends: common.no-git-mutations
@@ -487,12 +472,10 @@ sections:
         pointer: "mochiko:authoring-constitution"
 
       - id: setup.fail.no-acceptance
-        labels: [user-gate]
+        extends: common.no-acceptance
         class: floor
         kind: fail
         enforces: [setup.gate-final-acceptance]
-        text: >-
-          User acceptance not given.
 
       - id: setup.fail.no-feature-map
         labels: [landing]

@@ -9,6 +9,102 @@ it carries the `<!-- shape-form: v7 -->` marker and binds P18–P20.
 **Also stale:** setup is a **`.md` + schema pair** as of the v0.95.0 conversion below — the
 v7-form claim describes the pre-pair shape only.
 
+<!-- Wave context: the near-dup convergence wave (v0.99.0) — five setup rules converge to
+`extends: common.<slug>` stubs under strongest-wording-wins. Ruling for every [v0.99.0]
+entry below: `.mochiko/decisions/2026-08-28-near-dup-convergence.md` R1–R6 + wave flags →
+`DECISIONS.md` 2026-08-28 row. Every ID survives as a stub (R3 — no tombstones); `class`,
+`kind`, `when:`, and `enforces:` stay local per ontology C3. Floor entries are
+supersessions per R4. The `kind: fail` count is unchanged at 6 — the Not-done pin does not
+move. Setup's own wordings of `model-tiering`, `plan-approval-producers`, and
+`author-grader-default-fail` were the strongest members and became the block texts, so
+those three moves change no resolved text. -->
+
+## [v0.99.0] `setup.register` — own text superseded by the `common.register` stub it should have been
+
+- **Disposition:** superseded → `extends: common.register` (the block reads "follows", setup
+  read "per" — the one-word drift that kept it off the v0.98.0 stub; detector find [4],
+  EXTEND-GAP).
+- **Tier failed:** n/a — supersession by ruling (near-dup ADR R1/R2).
+- **Content:** verbatim —
+
+  ```
+          User-facing prose per templates/output-style.md.
+  ```
+
+- **Kept deliberately:** `class: must` and `kind: binding` local on the stub; labels
+  `[reporting]` now inherited from the block, same value.
+- **Consumers assessed:** none — per-command rule.
+
+## [v0.99.0] `setup.model-tiering` — text single-homed into `common.model-tiering`
+
+- **Disposition:** superseded → `extends: common.model-tiering`; setup's wording IS the
+  block text (strongest member, word-identical with brainstorm/specify), so resolved text
+  is unchanged.
+- **Tier failed:** n/a — supersession by ruling (near-dup ADR R1/R2).
+- **Content:** verbatim —
+
+  ```
+          Exploration and fact-finding dispatches ride
+          mochiko:patterns-model-tiering's class key — locate/enumerate reads to a native
+          Explore subagent spawned model: ${explore_model}, interpretive or
+          absence-driven reads on the session tier — and every seat brief carries the
+          routing rule; referenced, never restated.
+  ```
+
+- **Kept deliberately:** `class`/`kind: routing` local; labels + pointer inherited, same
+  values; `${explore_model}` substitutes from setup's own `vars:` (C3).
+- **Consumers assessed:** none — per-command rule.
+
+## [v0.99.0] `setup.plan-approval-producers` — text single-homed into `common.plan-approval-producers`
+
+- **Disposition:** superseded → `extends: common.plan-approval-producers`; setup's wording
+  IS the block text (exact triple with brainstorm/specify — the ontology D8 exact bar
+  already licensed this one; the v0.98.0 wave missed it).
+- **Tier failed:** n/a — supersession by ruling (near-dup ADR R1; D8 exact bar).
+- **Content:** verbatim —
+
+  ```
+          Any seat that writes artifacts plans first and works only on a plan you
+          approved; grading and fact-finding seats are exempt.
+  ```
+
+- **Kept deliberately:** `class: must` local; labels inherited, same values.
+- **Consumers assessed:** none — per-command rule.
+
+## [v0.99.0] `setup.author-grader-default-fail` (floor) — text single-homed into `common.author-grader-default-fail`
+
+- **Disposition:** superseded → `extends: common.author-grader-default-fail`; setup's
+  wording IS the block text (strongest member — the other three commands upgrade to it),
+  so resolved text is unchanged.
+- **Tier failed:** n/a — supersession by ruling (near-dup ADR R1/R2/R4 — floor).
+- **Content:** verbatim —
+
+  ```
+          No output is cleared by its author; grading reads the authored surfaces
+          themselves — never the author's report — default FAIL.
+  ```
+
+- **Kept deliberately:** `class: floor` local on the stub — bindingness stays readable from
+  setup's own file (C3).
+- **Consumers assessed:** none — per-command rule.
+
+## [v0.99.0] `setup.fail.no-acceptance` (floor) — text single-homed into `common.no-acceptance`
+
+- **Disposition:** superseded → `extends: common.no-acceptance`; word-identical across
+  impl/setup/spec (detector find [8] — the D8 exact bar licensed it), resolved text
+  unchanged.
+- **Tier failed:** n/a — supersession by ruling (near-dup ADR R1/R4 — floor; D8 exact bar).
+- **Content:** verbatim —
+
+  ```
+          User acceptance not given.
+  ```
+
+- **Kept deliberately:** `class: floor`, `kind: fail`, and
+  `enforces: [setup.gate-final-acceptance]` all local (C3); the Not-done count is
+  untouched.
+- **Consumers assessed:** none — per-command rule.
+
 <!-- Wave context: the command-schema ontology wave's D9 HOLE GATE (v0.98.0), landed after the
 conversion entries below and stamped at the same version. The wave declared `mode:` with all
 three of its values, which made the amend-mode coverage hole a deterministic finding: six

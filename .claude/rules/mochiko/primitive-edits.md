@@ -132,9 +132,13 @@ template edit; the path scope above covers them so this reminder injects on a sc
       every `kind: fail` node carries `enforces:`, each listed ID resolving to a live local
       rule, an empty list legal only with its one-line reason · an `extends: common.<slug>`
       stub inherits `text` / `labels` / `pointer` only, declares `class:` locally (C3), and
-      binds only where the command's own text is an exact duplicate of the block — and
-      where any stub binds, the `.md`'s first action Reads
-      `plugins/mochiko/schemas/common.yaml` raw beside the schema.
+      binds only where the block carries the command's responsibility under the extraction
+      bar — exact duplicate across 3+ commands (ontology D8), or a 3+-command near-identical
+      family converged under strongest-wording-wins (near-dup convergence ruling R1/R2,
+      `.mochiko/decisions/2026-08-28-near-dup-convergence.md`; a member whose extra content
+      is command-specific keeps local text, the edge recorded in
+      `scripts/similar-rules-allowlist.yaml`) — and where any stub binds, the `.md`'s first
+      action Reads `plugins/mochiko/schemas/common.yaml` raw beside the schema.
 
   Rulings: `.mochiko/brainstorms/command-md-scaffold-standardization/record.md`
   D1–D7 (`DECISIONS.md` 2026-08-27 — the canonical scaffold; supersedes the charter-form /
@@ -145,7 +149,10 @@ template edit; the path scope above covers them so this reminder injects on a sc
   `.mochiko/brainstorms/command-content-schema/record.md` D9 · D11 · D14 · D16
   (`DECISIONS.md` 2026-08-26) ·
   `.mochiko/brainstorms/command-schema-ontology/record.md` D1–D11 (`DECISIONS.md`
-  2026-08-27 — the run-shape grammar; amends command-content-schema D6, and D3 narrowly).
+  2026-08-27 — the run-shape grammar; amends command-content-schema D6, and D3 narrowly) ·
+  `.mochiko/decisions/2026-08-28-near-dup-convergence.md` R1–R6 (`DECISIONS.md` 2026-08-28 —
+  widens the D8 extraction bar to 3+-command near-identical families,
+  strongest-wording-wins).
 
 **Protected content leaves ONLY by ruling.** A line in a record's protected set, marked `KEPT:`, or
 traceable to a `DECISIONS.md` row may be removed only as a recorded supersession-by-ruling. A silent

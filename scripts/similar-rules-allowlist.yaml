@@ -1,0 +1,140 @@
+# Keep-distinct adjudications for scripts/find-similar-rules.py (near-dup convergence
+# ruling R6, .mochiko/decisions/2026-08-28-near-dup-convergence.md, DECISIONS.md
+# 2026-08-28). Every suppressed edge was adjudicated at the v0.99.0 convergence wave:
+# the pair reads as similar to the detector but was ruled (or assessed) distinct, with
+# the reason recorded here. Suppression is per-edge — a third command joining a
+# two-member family forms NEW edges and re-fires the detector, so the tripwire stands.
+suppressions:
+  # --- Ruled keep-local edges (wave flags B/D/E) -------------------------------------
+  - ids: [brainstorm.plan-approval-producers, impl.plan-approval-producers]
+    reason: flag E — impl keeps local text ("code", "verification seats" are real implement content)
+  - ids: [impl.plan-approval-producers, setup.plan-approval-producers]
+    reason: flag E — impl keeps local text
+  - ids: [impl.plan-approval-producers, spec.plan-approval]
+    reason: flag E — impl keeps local text
+  - ids: [arch.rulings-plain-text, impl.acceptance-plain-text]
+    reason: flag D — impl keeps local text (its three named gates do real binding work)
+  - ids: [brainstorm.acceptance-plain-text, impl.acceptance-plain-text]
+    reason: flag D — impl keeps local text
+  - ids: [feat.rulings-plain-text, impl.acceptance-plain-text]
+    reason: flag D — impl keeps local text
+  - ids: [impl.acceptance-plain-text, setup.acceptance-plain-text]
+    reason: flag D — impl keeps local text
+  - ids: [impl.acceptance-plain-text, spec.acceptance-plain-text]
+    reason: flag D — impl keeps local text
+  # arch.model-tiering (flag B) no longer edges the converged family — its drift-probe
+  # clause pushes it under threshold; recorded here as prose so the adjudication is findable.
+
+  # --- Author≠grader composites (cluster residue around the plan-approval family) ----
+  - ids: [arch.author-grader-separation, feat.author-grader]
+    reason: command-specific composites — each folds author≠grader + plan-first over its own artifact list; parenthetical enumerations are per-command
+  - ids: [arch.seat-architect-producer, arch.author-grader-separation]
+    reason: role card vs floor — the seat card names the producing seat, the floor states the separation; different responsibilities
+  - ids: [arch.seat-architect-producer, feat.author-grader]
+    reason: role card vs another command's floor — vocabulary overlap only
+  - ids: [arch.author-grader-separation, impl.plan-approval-producers]
+    reason: arch composite vs impl plan-first rule — shared clause, different scope
+  - ids: [feat.author-grader, impl.plan-approval-producers]
+    reason: feat composite vs impl plan-first rule — shared clause, different scope
+
+  # --- R5 one-liner families (unit-noun variance, ruled keep-distinct) ---------------
+  - ids: [arch.dm-converge-goal, feat.dm-converge-goal]
+    reason: R5 — one-liner desk duty, two commands, below bar; converge only if family grows
+  - ids: [arch.dm-close-verdict, feat.dm-close-verdict]
+    reason: R5 — one-liner duty, unit-noun family ruled keep-distinct
+  - ids: [arch.dm-close-verdict, impl.dm-close-verdict]
+    reason: R5 — "visit" vs "run" unit-noun variance; net-reduction test fails for one-liners
+  - ids: [feat.dm-close-verdict, impl.dm-close-verdict]
+    reason: R5 — unit-noun variance, ruled keep-distinct
+  - ids: [arch.dm-close-verdict, feat.dm-converge-goal]
+    reason: different duties (close vs converge) sharing the done-condition tail
+  - ids: [arch.dm-converge-goal, arch.dm-close-verdict]
+    reason: different duties in one command — converge the goal vs close with the verdict
+  - ids: [arch.dm-converge-goal, feat.dm-close-verdict]
+    reason: different duties sharing the done-condition tail
+  - ids: [feat.dm-converge-goal, feat.dm-close-verdict]
+    reason: different duties in one command
+  - ids: [arch.staffing-latitude, impl.staffing-latitude]
+    reason: R5 — staffing-latitude family ruled keep-distinct; scopes differ (visit vs cycles)
+  - ids: [impl.staffing-latitude, spec.lead-latitude]
+    reason: R5 — spec's combines lead-role statement with the staffing call; different composition
+  - ids: [brainstorm.staffing-latitude, setup.staffing-latitude]
+    reason: R5 — exact one-liner pair, two commands, below bar; watch for a third member
+
+  # --- Fail predicates: same theme, command-specific artifacts (never genericized) ---
+  - ids: [setup.fail.author-graded, spec.fail.self-graded]
+    reason: fail predicates name command-specific artifacts; a generic block would vague-up the Not-done gates
+  - ids: [setup.fail.pre-ratification-authoring, setup.fail.unclosed-trace]
+    reason: distinct setup end-states sharing sentence frame
+  - ids: [spec.fail.intent-unconfirmed, spec.fail.self-graded]
+    reason: distinct spec end-states sharing sentence frame
+  - ids: [setup.fail.pre-ratification-authoring, spec.fail.intent-unconfirmed]
+    reason: different commands' gate-skipped predicates — parallel form, different gates
+  - ids: [impl.fail.card-independence, spec.fail.intent-unconfirmed]
+    reason: different predicates sharing independence vocabulary
+  - ids: [setup.fail.author-graded, spec.fail.intent-unconfirmed]
+    reason: different predicates sharing frame
+
+  # --- Two-command pairs below the 3+ bar (premature coupling; tripwire stands) ------
+  - ids: [arch.dm-health-first, feat.dm-health-first]
+    reason: below bar (2 commands); desk-pair vocabulary — converge only when a third desk exists
+  - ids: [arch.proactive-report-first, feat.proactive-report]
+    reason: below bar (2 commands)
+  - ids: [arch.proactive-report-first, feat.dm-health-first]
+    reason: different duties (reporting vs health-first) sharing desk vocabulary
+  - ids: [feat.dm-health-first, feat.proactive-report]
+    reason: different duties in one command
+  - ids: [arch.dm-km-landing, feat.dm-km-landing]
+    reason: below bar (2 commands); desk-pair KM duty
+  - ids: [arch.fail.no-verdict, feat.fail.no-verdict]
+    reason: below bar (2 commands); fail predicates stay per-command regardless
+  - ids: [feat.lane-never-widens, impl.lane-never-widens]
+    reason: below bar (2 commands); lane semantics differ (map lane vs landing lane)
+  - ids: [feat.map-minimalism-binding, spec.map-minimalism-binding]
+    reason: below bar (2 commands); same pointer, command-specific binding text
+  - ids: [arch.dm-store-integrity-close, feat.dm-map-integrity]
+    reason: parallel integrity duties over different artifacts (store vs map)
+  - ids: [arch.sound-loop-floor, feat.sound-loop-floor]
+    reason: below bar (2 commands); sound-loop pointer floor is per-command by charter (D3 scope)
+  - ids: [impl.briefs-name-rules-files, spec.governance-briefs]
+    reason: parallel brief obligations over different rule surfaces
+  - ids: [arch.dispatch-feature-growth-door, feat.architecture-intake]
+    reason: two ends of the same hand-off — deliberately mirrored, not duplicated
+  - ids: [brainstorm.record-review-independence, setup.stress-test-cold-seat]
+    reason: parallel cold-seat independence rules over different artifacts
+  - ids: [arch.reference-never-restate, feat.reference-never-restate]
+    reason: below bar (2 commands); watch for a third member
+  - ids: [feat.dispatched-runs-own-delivery, feat.reference-never-restate]
+    reason: different responsibilities sharing reference vocabulary
+  - ids: [arch.no-silent-store-mutations, feat.no-silent-map-mutations]
+    reason: parallel no-silent-mutation floors over different artifacts (store vs map)
+  - ids: [feat.user-reserved, setup.user-card-rulings]
+    reason: different reserved-to-user scopes
+  - ids: [spec.missing-map-surfaced, spec.governance-region-absent]
+    reason: distinct absence-handling rules in one command
+  - ids: [feat.epic-dispatch, spec.missing-map-surfaced]
+    reason: vocabulary overlap only
+  - ids: [impl.gate-final-acceptance, setup.gate-final-acceptance]
+    reason: below bar (2 commands); gates name command-specific close conditions
+  - ids: [setup.gate-synthesis-ratification, spec.gate-selection]
+    reason: different gates sharing gate frame
+  - ids: [impl.infeasible-card-escalation, spec.filter-disagreement-escalates]
+    reason: parallel escalation rules over different disputes
+
+  # --- Intra-schema: distinct responsibilities sharing vocabulary --------------------
+  - ids: [impl.design-review-pair, impl.card-review-before-confirm]
+    reason: two review obligations at different moments (design vs card confirm)
+  - ids: [brainstorm.user-survivor-challenge, brainstorm.user-review-waiver]
+    reason: distinct user-reserved powers sharing frame
+  - ids: [brainstorm.user-survivor-challenge, brainstorm.user-pen-boundary]
+    reason: distinct user-reserved powers sharing frame
+  - ids: [impl.sufficiency-disputed-clause, impl.finding-kind-disputed]
+    reason: two dispute-resolution rules over different dispute kinds
+  - ids: [spec.capability-frame-at-intent, spec.frame-greenfield-inputs]
+    reason: frame-timing rule vs frame-inputs rule — different responsibilities
+  - ids: [spec.cut-work-rows, spec.frame-greenfield-inputs]
+    reason: vocabulary overlap only
+  - ids: [impl.seat-card-author-independence, impl.seat-gap-finder-blind]
+    reason: two independence rules for different seats
+  - ids: [arch.seat-drift-probe-empirical, arch.drift-empirical]
+    reason: role card vs floor for the same discipline — deliberately paired, not duplicated
