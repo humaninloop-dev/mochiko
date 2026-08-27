@@ -60,10 +60,14 @@ Command-content schema section's watch item)*
 `.mochiko/brainstorms/command-plan-only-eval/record.md` — build surface 0–9)*
 
 - [ ] **Build the plan-only command regression eval** (cold-buildable from the record's build
-  surface): probe first on `brainstorm` (item 0 — invocability under
-  `disable-model-invocation: true`, ephemeral-workdir provisioning, plugin shadowing,
-  allow-list fence `Read,Grep,Glob`, absent-user contract, real cost via `total_cost_usd`),
-  then the runner extension under `evals/` (blocking load gate + `--setting-sources ""`) ·
+  surface): probe first on `brainstorm` — **item 0 DONE 2026-08-27, all seven probe
+  questions answered, substrate bet stands** (`evals/commands/brainstorm-probe/`:
+  invocability PASS · workdir provisioning PASS · shadowing closed via init-event version
+  assert · fence holds as permission fence, roster not stripped · absent-user contract PASS ·
+  $0.65/107s at the turn cap; build amendments: drop `--bare` (kills stored auth) · wrapper
+  register line "no rule-ID citations" · max-turns headroom ~40 + cap-hit warning · fixture
+  internal-consistency check) — then the runner extension under `evals/` (blocking load gate
+  + `--setting-sources ""`, no `--bare`) ·
   preregistration gate (read rule + the F2 noise guard verbatim) · partition scripts (four
   ID-keyed rubric buckets + the D8 observable-vs-contingency split) · 3 `implement` fixtures
   by a non-editor seat · judges (Haiku rule-coverage over the observable subset + stub axis,
