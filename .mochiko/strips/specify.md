@@ -7,6 +7,115 @@ wave also ran the **D2 conversion assessment** and the **S8 home-revision checkp
 the shape is now **v5** (2026-07-30) — see the v0.35.0 section below. **Also stale:** the shape is
 **v7**, and specify converted to v7 form at v0.43.0 — see the section immediately below.
 
+<!-- Wave context: the command-`.md`-scaffold standardization wave (v0.97.0) — one canonical
+`.md` scaffold for all six pair commands (D1/D2: Identity & Mission · Rules block · Adaptive
+Goal Protocol with Entry / Goal / count-pinned Not-done last) and the schema six-set
+unification (D3/D4/D5; rule IDs and texts carried unchanged — pure relocation, the D14
+precedent). Ruling for every [v0.97.0] entry below:
+`.mochiko/brainstorms/command-md-scaffold-standardization/record.md` D1–D7 as review-amended
+→ `DECISIONS.md` 2026-08-27 command-md-scaffold-standardization row.
+Assessed-and-kept (I8, lead-ruled): `spec.lead-latitude` kept byte-identical — its reference
+"the Goal state in plugins/mochiko/commands/specify.md" resolves post-rewrite to the Adaptive
+Goal Protocol's step 2, labeled "**Goal — the done condition, fixed.**", verified in the tree.
+Assessed, ruled resolvable, kept; nothing left the rule, so no entry is owed. -->
+
+## [v0.97.0] The bold `**Goal:**` opener, the `## Goal` section, and the Goal-before-Rules order — the goal-form scaffold superseded (D1/D2, F4)
+
+- **Disposition:** superseded → `plugins/mochiko/commands/specify.md`: the opener's
+  `$ARGUMENTS` handling into `## Adaptive Goal Protocol` step 1 (Entry, N1), the `## Goal`
+  body verbatim into step 2; the file's section order re-laid to the canonical D2 order.
+- **Tier failed:** n/a — supersession by ruling (`command-md-scaffold-standardization` D1 as
+  narrowed at review C2, D2, N1; the F4 order drift; `DECISIONS.md` 2026-08-27 row).
+- **Content:** verbatim — "**Goal:** turn `$ARGUMENTS` (the feature description) into an
+  accepted spec workspace. Empty → ask the user for the description." · the heading
+  "## Goal" · and the shipped section order, `## Goal` ahead of `## Rules — load the schema
+  first` with the Not-done line mid-file between them.
+- **Kept deliberately:** the whole `## Goal` body verbatim in step 2 — spec-template
+  rendering and its binary-absent degraded path, the no-placeholder-tokens clause, the
+  Intent / Screens & Flows / Feature Selection sections with their full enumerations, the
+  stories clause, the atomic map-delta batch, the independent stress test, and the user's
+  whole-acceptance clause; the fixed done-condition contract untouched (D1 C2); the 9-count
+  Not-done line verbatim, moved to its canonical last position. (No strip owed for the new
+  `## Identity & Mission` — pure addition riding D2 step 2, knowingly strip-fodder if the D7
+  absorption trigger later fires.)
+- **Consumers assessed:** as brainstorm's; specify was the only file whose Goal preceded
+  Rules, so no other primitive depended on that order.
+
+## [v0.97.0] The Rules-block three-section enumeration (`spec.sec.harness` · `spec.sec.bindings`) — superseded by the unified six-set (D3/D4/D5)
+
+- **Disposition:** superseded → the six-section enumeration in
+  `plugins/mochiko/commands/specify.md`; the harness gloss words redistribute across four
+  sections rather than carrying whole to one — "seat wiring" and "independence" to
+  `spec.sec.roles` (which also gains the capability-frame duties, the cut and filter calls,
+  and the stress-test seat), "the intent stage" to `spec.sec.tools` (beside the deliverable,
+  the map's obligated read, templates, register, and next step), "lockstep prototyping" to
+  `spec.sec.ways-of-working` (beside frame precedence and intent-probe discipline),
+  "derivation" to `spec.sec.boundaries` as the staged-derivation floor, and "decisions
+  reserved to the user" to `spec.sec.reserved`; "selection" splits — the recommendation duty
+  to `roles`, the selection gate to `reserved`. The bindings gloss "paths, templates, and
+  skill bindings" carries whole onto `spec.sec.tools`.
+- **Tier failed:** n/a — supersession by ruling (`command-md-scaffold-standardization` D3,
+  D4, D5; `DECISIONS.md` 2026-08-27 row).
+- **Content:** verbatim — "run's binding rules, nested in three sections, each addressable by
+  its section ID: `spec.sec.harness` (seat wiring, the intent stage and capability frame,
+  lockstep prototyping, derivation and selection, independence, decisions reserved to the
+  user) · `spec.sec.bindings` (paths, templates, and skill bindings) ·
+  `spec.sec.fail-conditions` (the Not-done set)."
+- **Kept deliberately:** every gloss word carried across per the redistribution above;
+  surrounding boilerplate verbatim (anchor phrase "before the intent stage, before any seat
+  is spawned", raw-Read clause, interpretation clause, not-open-until-read close). Prefix
+  stays `spec.*` per D4's frozen-prefix policy (M4) — the known `spec.yaml` /
+  `.mochiko/specs/` collision accepted as-is. The new-section glosses were retuned once
+  in-wave to the schema producer's actual per-section contents (lead-arbitrated: schema is
+  source of truth, gloss follows content).
+- **Consumers assessed:** `plugins/mochiko/schemas/specify.yaml` tombstones both nodes the
+  same wave; checker lints re-keyed the same wave.
+
+## [v0.97.0] `spec.sec.harness` and `spec.sec.bindings` — tombstoned; their 42 rules redistributed across the six-set (D3/D4/D5)
+
+- **Disposition:** superseded → the six minted section nodes in
+  `plugins/mochiko/schemas/specify.yaml` (`spec.sec.roles` · `reserved` · `tools` ·
+  `ways-of-working` · `boundaries`, plus the pre-existing `spec.sec.fail-conditions`). Both
+  retired IDs are recorded under the schema's top-level `tombstones:` key per D11. All 42
+  rules relocate with ID, text, labels, class and pointer byte-identical.
+- **Tier failed:** n/a — supersession by ruling (record D3 · D4 · D5; `DECISIONS.md`
+  2026-08-27 row).
+- **Content:** verbatim, the two section nodes' `title:` and `intent:` lines that left —
+  `spec.sec.harness`, title "Harness", intent "The lead's harness — seat wiring, the intent
+  stage, the capability frame, prototyping, derivation, selection, independence, and
+  reserved-to-user decisions." · `spec.sec.bindings`, title "Bindings", intent "Paths,
+  templates, and skills the run binds to." No rule content left the file. Plus, from the
+  same schema's grammar header, the sentence the new `tombstones:` key made false —
+  verbatim: "First mint — no tombstones yet." (the surrounding line, "a merge retires the
+  losers under a top-level tombstones: key.", survives unchanged).
+- **Kept deliberately:** every one of the 51 rules survives — 42 relocated, the 9
+  `fail-condition` rules untouched. Counts identical pre/post (51 / 9). The retired harness
+  intent enumerated seven concerns; each survives as a rule under one of the six new nodes,
+  the enumeration itself dying as document-shape prose the six intents now carry. The
+  grammar header's tombstone clause itself survives — only its no-tombstones-yet claim
+  leaves, superseded by the two section tombstones this same edit mints.
+- **Consumers assessed:** provenance rule-ID-keyed (25 `spec.*` anchors, no `sec.` keys) — no
+  re-keys. No surviving rule text references either retired node; the intra-schema citations
+  (`spec.frame-hypothesis-not-anchor` → `spec.confirm-frame-post-stories`,
+  `spec.cut-work-rows` → `spec.confirm-frame-post-stories`) name RULE IDs and survive.
+  `specify.md`'s enumeration and "nested in three sections" phrase are re-keyed to six by the
+  same wave's `.md` rewrite.
+
+## [v0.97.0] Schema grammar-header narrative description — re-worded to the post-D2 scaffold (D2)
+
+- **Disposition:** superseded → the canonical post-D2 wording carried by all six schemas:
+  "Narrative (Identity & Mission, Adaptive Goal Protocol prose) stays in
+  plugins/mochiko/commands/specify.md."
+- **Tier failed:** n/a — supersession by ruling (record D2; `DECISIONS.md` 2026-08-27 row).
+- **Content:** verbatim, the sentence that left — "Narrative (the Goal statement and
+  goal-state prose) stays in plugins/mochiko/commands/specify.md."
+- **Kept deliberately:** the clause's whole job survives — naming which surface holds the
+  narrative and which holds the rules. Only its enumeration of the retired goal-form
+  sections leaves. No rule content touched.
+- **Consumers assessed:** header comment only — never parsed, never read by a run; the
+  checker is unaffected (re-run: 0 findings). All six schemas now carry this sentence
+  byte-identical but for the filename.
+
 <!-- Wave context: the D16 provenance-sidecar amendment (v0.96.0) — schemas carry runtime
 content only; decision anchors move to `.mochiko/provenance.yaml`, keyed by rule ID. Ruling:
 record D16 (post-rollout amendment, user-ruled 2026-08-26, incl. the repo-side-home

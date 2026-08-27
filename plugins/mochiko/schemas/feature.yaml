@@ -48,8 +48,8 @@ sections:
   - id: feat.sec.roles
     title: Roles & Responsibilities
     intent: >-
-      Desk seat wiring — the Delivery Manager's always-happens floor, the other seats,
-      and what stays the user's.
+      Desk seat wiring — the Delivery Manager's always-happens floor and the other
+      seats.
     rules:
 
       - id: feat.staffing-latitude
@@ -138,6 +138,12 @@ sections:
         text: >-
           Dispatched runs own all delivery. /mochiko:implement owns its bounds,
           verification seats, and evidence rules; the desk runs none of it.
+
+  - id: feat.sec.reserved
+    title: Reserved to the user — never the desk's
+    intent: >-
+      Decisions held by the user: gates, rulings, and escalations no seat may take.
+    rules:
 
       - id: feat.user-reserved
         labels: [user-gate]

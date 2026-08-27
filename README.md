@@ -2,7 +2,7 @@
 
 Kernel-free agent-skill framework for Claude Code: sound-loop workflows built from native agents and skills.
 
-Mochiko is the successor to human-in-loop. The bet: engineering discipline lives in the quality of the skill library, not in a deterministic kernel. Every command states its whole contract up front — `setup`, `specify`, and `brainstorm` as **goal + harness** (a verifiable done-condition, default FAIL, plus a non-waivable frame), `feature`, `architecture`, and `implement` as **Delivery-Manager charters** (an identity, an adaptive goal protocol that names the finish line before work starts, and a non-waivable Boundaries floor) — and the lead plans and orchestrates the run natively, choosing teammates or subagents per seat. Every workflow is a **sound loop**: a producer authors, an independent reviewer grades (never the author), and **you** are the final validator at named human gates.
+Mochiko is the successor to human-in-loop. The bet: engineering discipline lives in the quality of the skill library, not in a deterministic kernel. Every command states its whole contract up front, and all six — `architecture`, `brainstorm`, `feature`, `implement`, `setup`, `specify` — follow **one canonical scaffold**: an identity and mission, an obligated first read of the command's own rule schema, and an adaptive goal protocol that names the finish line before work starts and defaults to FAIL until it is met, over a non-waivable floor. The lead plans and orchestrates the run natively, choosing teammates or subagents per seat. Every workflow is a **sound loop**: a producer authors, an independent reviewer grades (never the author), and **you** are the final validator at named human gates.
 
 ## Install
 

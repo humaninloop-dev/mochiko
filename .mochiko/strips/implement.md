@@ -12,6 +12,34 @@ no template revision and no cross-command re-audit). **Stale as a standing claim
 entries below. **Also stale:** the shape is **v5** as of the v0.35.0 wave below, and the
 "standing producer / standing verifier" claim is superseded by that wave's seat-recycling binding.
 
+<!-- Wave context: the command-`.md`-scaffold standardization wave (v0.97.0) — one canonical
+`.md` scaffold for all six pair commands (D1/D2). `implement.yaml` untouched — it is the
+six-set donor vocabulary (D4). Ruling for the [v0.97.0] entry below:
+`.mochiko/brainstorms/command-md-scaffold-standardization/record.md` D1–D7 as review-amended
+→ `DECISIONS.md` 2026-08-27 command-md-scaffold-standardization row. -->
+
+## [v0.97.0] The `###`-numbered protocol subsections — superseded by the canonical bold numbered steps (D1/D2)
+
+- **Disposition:** superseded → `## Adaptive Goal Protocol` steps 1–3 in
+  `plugins/mochiko/commands/implement.md`; the three `###` headings become bold inline
+  labels, `### 2. Run-open confirmation` folding under step 1 (Entry) as its gate.
+- **Tier failed:** n/a — supersession by ruling (`command-md-scaffold-standardization` D2 —
+  the F4 idiom variance; `DECISIONS.md` 2026-08-27 row).
+- **Content:** verbatim, the headings that left — "### 1. Entry" · "### 2. Run-open
+  confirmation" · "### 3. Done condition — fixed".
+- **Kept deliberately:** every sentence under all three headings, verbatim and in order —
+  entry gating and the two scope sources, the neither→route clause, dependency blocking, the
+  Epic paragraph, the `$ARGUMENTS`/empty clause, the sufficiency-check paragraph, the
+  run-open confirmation's four clauses incl. the **only redeclaration point** for both
+  attempt bounds, and the fixed done condition; the heading words survive as inline bold
+  ("**Run-open confirmation — the entry gate.**", "**Goal — the done condition, fixed.**");
+  the per-run fixed done-condition contract (D1 C2 narrowing); `## Identity & Mission`, the
+  whole Rules block, and the 15-count Not-done line untouched.
+- **Consumers assessed:** `.claude/rules/mochiko/primitive-edits.md` criteria cite the
+  protocol's literally-labeled **Entry** step and the run-open confirmation by name — both
+  survive under those names; re-keyed the same wave (D6-R2). `implement.yaml` untouched by
+  this edit.
+
 <!-- Wave context: the D16 provenance-sidecar amendment (v0.96.0) — schemas carry runtime
 content only; decision anchors move to `.mochiko/provenance.yaml`, keyed by rule ID. Ruling:
 record D16 (post-rollout amendment, user-ruled 2026-08-26, incl. the repo-side-home

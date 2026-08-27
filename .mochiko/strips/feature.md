@@ -4,6 +4,94 @@ Entry formats: `strips/README.md`. Ruling for every [v0.68.0] entry below:
 `DECISIONS.md` 2026-08-13 "PM role & feature derivation" row →
 `.mochiko/brainstorms/pm-role-and-feature-derivation/record.md` (D6/D7/D8/D9/D10).
 
+<!-- Wave context: the command-`.md`-scaffold standardization wave (v0.97.0) — one canonical
+`.md` scaffold for all six pair commands (D1/D2: Identity & Mission · Rules block · Adaptive
+Goal Protocol with Entry / Goal / count-pinned Not-done last) and the schema six-set
+unification (D3/D4/D5: `<prefix>.sec.roles` · `reserved` · `tools` · `ways-of-working` ·
+`boundaries` · `fail-conditions`; rule IDs and texts carried unchanged — pure relocation, the
+D14 precedent). Ruling for every [v0.97.0] entry below:
+`.mochiko/brainstorms/command-md-scaffold-standardization/record.md` D1–D7 as review-amended
+→ `DECISIONS.md` 2026-08-27 command-md-scaffold-standardization row. -->
+
+## [v0.97.0] The Rules-block five-section enumeration — superseded by the unified six-set (D3/D4)
+
+- **Disposition:** superseded → the six-section enumeration in
+  `plugins/mochiko/commands/feature.md`, `## Rules — load the schema first`; the newly minted
+  `feat.sec.reserved` enumerated with a new gloss (pure addition — the shipped roles gloss
+  named no reserved clause to split).
+- **Tier failed:** n/a — supersession by ruling (`command-md-scaffold-standardization` D3 +
+  D4; `DECISIONS.md` 2026-08-27 row).
+- **Content:** verbatim — "desk's binding rules, nested in five sections, each addressable by
+  its section ID: `feat.sec.roles` (seat wiring and the Delivery Manager's always-happens
+  floor) · `feat.sec.tools` (tool bindings) · `feat.sec.ways-of-working` ·
+  `feat.sec.boundaries` (the non-waivable floor) · `feat.sec.fail-conditions` (the Not-done
+  set)."
+- **Kept deliberately:** the whole boilerplate around the enumeration — anchor phrase
+  ("before the health report, before any seat is spawned"), the raw-Read first-class clause,
+  the `${var}` / `pointer:` / labels interpretation clause, the not-open-until-read close —
+  verbatim; every surviving gloss word carried across.
+- **Consumers assessed:** `plugins/mochiko/schemas/feature.yaml` unified the same wave;
+  `scripts/check-command-schema.py` D14 section-count guard re-keyed the same wave; no other
+  primitive enumerates this command's sections.
+
+## [v0.97.0] The desk protocol's own three step labels — superseded by the canonical Entry / Goal / Not-done steps (D1/D2)
+
+- **Disposition:** superseded → `## Adaptive Goal Protocol` steps 1–3 in
+  `plugins/mochiko/commands/feature.md`; every sentence relocated, the step labels folded to
+  inline bold inside the canonical steps.
+- **Tier failed:** n/a — supersession by ruling (`command-md-scaffold-standardization` D1 as
+  narrowed at review C2, D2; `DECISIONS.md` 2026-08-27 row).
+- **Content:** verbatim, the labels and the free-standing `$ARGUMENTS` line that left their
+  positions — "1. **Health first, then the ask.**" · "2. **Converge to a goal and its done
+  condition.**" · "3. **Run to the done condition.**" · "`$ARGUMENTS` = the incoming demand
+  or map query; empty → surface health, then ask what the visit is for."
+- **Kept deliberately:** the per-visit done-condition contract, explicitly preserved by D1's
+  C2 narrowing — step 2 reads "**Goal — the done condition, converged per visit**" and
+  carries the micro-brainstorm / one-line-visit-goal / crisp-demand / never-imposes-ceremony
+  prose and the run-to-the-done-condition close verbatim; the preamble "Every visit has a
+  goal; a visit is never goal-less."; the whole map-health enumeration (parked capability
+  hypotheses, unfolded deltas, open epics and member status, capability-count pressure ~9,
+  the what-next line) relocated intact under Entry; `## Identity & Mission` untouched.
+- **Consumers assessed:** `.claude/rules/mochiko/primitive-edits.md` criteria re-keyed the
+  same wave (D6-R2); `README.md:5` + `ARCHITECTURE.md` charter-form sites ripple the same
+  wave (build item 6).
+
+## [v0.97.0] "the 1 rules labeled" — the Not-done line's number-agreement defect (D6-R4)
+
+- **Disposition:** superseded → "the 1 rule labeled `fail-condition`" in the canonical
+  Not-done line.
+- **Tier failed:** n/a — supersession by ruling (`command-md-scaffold-standardization` D6-R4
+  hygiene rider; `DECISIONS.md` 2026-08-27 row).
+- **Content:** verbatim — "**Not done — default FAIL:** the 1 rules labeled `fail-condition`
+  in".
+- **Kept deliberately:** the count-pin (1) and the out-of-sync halt clause verbatim; only the
+  agreement defect died.
+- **Consumers assessed:** `scripts/check-command-schema.py` `NOT_DONE_RE` hard-coded plural
+  `rules` and no longer matched — re-keyed to `rules?` with both-way negative tests in the
+  same wave's checker rework.
+
+## [v0.97.0] `feat.sec.roles` intent line and the reserved-rulings home — split into a first-class `feat.sec.reserved` (D4)
+
+- **Disposition:** superseded → `plugins/mochiko/schemas/feature.yaml` gains a minted section
+  node `feat.sec.reserved` (title "Reserved to the user — never the desk's"; intent
+  "Decisions held by the user: gates, rulings, and escalations no seat may take."), carrying
+  `feat.user-reserved` relocated whole — ID, text, labels, class byte-identical. The
+  `feat.sec.roles` intent line is reworded to drop the clause the extraction made false.
+- **Tier failed:** n/a — supersession by ruling (record D4; `DECISIONS.md` 2026-08-27 row).
+- **Content:** verbatim, the `feat.sec.roles` intent line that left — "Desk seat wiring — the
+  Delivery Manager's always-happens floor, the other seats, and what stays the user's."
+- **Kept deliberately:** every rule text, ID, label, class and pointer untouched;
+  `feat.user-reserved` moves node-to-node with nothing rewritten. `feat.staffing-latitude`
+  cites `feat.sec.roles` by section ID — that node survives and still carries the DM rules the
+  citation names, so the reference stays true and the rule text is not touched (D15 closure
+  re-checked, holds). `feat.sec.roles` is NOT tombstoned — 12 of its 13 rules stay.
+- **Consumers assessed:** provenance rule-ID-keyed, no re-keys. Pair audit keys on the
+  `fail-condition` label set (1, unchanged) and `feat.*` ID continuity (nothing vanished). The
+  checker's D14 section-count guard FAILed this pair mid-wave — a transient state after the
+  same wave's `.md` rewrite landed "nested in six sections" and before this schema edit (at
+  HEAD the `.md` said five); the mint clears it. `feature.md`'s enumeration is re-keyed by
+  the same wave's `.md` rewrite.
+
 <!-- Wave context: the D16 provenance-sidecar amendment (v0.96.0) — schemas carry runtime
 content only; decision anchors move to `.mochiko/provenance.yaml`, keyed by rule ID. Ruling:
 record D16 (post-rollout amendment, user-ruled 2026-08-26, incl. the repo-side-home

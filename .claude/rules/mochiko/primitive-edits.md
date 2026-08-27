@@ -39,64 +39,92 @@ template edit; the path scope above covers them so this reminder injects on a sc
   playbook prose). `references/` files are exempt. Primitives without a measured budget fall
   back to hard caps only (skill `description:` ≤ 1,536 delivery cap); budgets are never invented.
 
-  Then the independent **author ≠ grader** audit: `mochiko:validator` grading a command
-  against **the command's own text** — internal coherence (default-FAIL goal · harness present:
-  plan approval for producing seats, author ≠ grader independence, decisions reserved to the
-  user · bindings complete: paths, templates, entry condition) plus preserved responsibilities
-  (`templates/command-shape.md` was deleted at v0.46.0; the dedicated `validation-command-shape`
-  skill at v0.45.0) — the matching `validation-*` / `review-*` skill otherwise. The editor never
-  grades their own edit — dispatch a separate validator.
+  Then the independent **author ≠ grader** audit. For a **command**, the graded unit is the
+  command's own **pair** — `plugins/mochiko/commands/<cmd>.md` +
+  `plugins/mochiko/schemas/<cmd>.yaml` — held against the canonical-scaffold criteria below.
+  (This supersedes the "the command's own text" bar of ADR
+  `2026-08-02-doctrine-purge-wave-1` decision 4; ruling:
+  `command-md-scaffold-standardization` D1, C1 fold.) For every other primitive the matching
+  `validation-*` / `review-*` skill applies, graded on internal coherence plus preserved
+  responsibilities (`templates/command-shape.md` was deleted at v0.46.0; the dedicated
+  `validation-command-shape` skill at v0.45.0). The editor never grades their own edit —
+  dispatch a separate validator.
 
-  **Pair-form commands (command-content-schema D9; implement from v0.92.0, the D10
-  five-command rollout — `architecture` · `brainstorm` · `feature` · `setup` · `specify` —
-  from v0.95.0):** a command shipped as `.md` + `plugins/mochiko/schemas/<cmd>.yaml` is graded
-  across **both surfaces**, whichever criteria block applies — the charter-form exception for
-  a charter command, this default block otherwise. On any pair: FAIL survival keys to the
-  **`fail-condition` label set** (every so-labeled rule surviving, the `.md` Not-done line's
-  hard-coded count matching the schema's); **ID continuity (D11/D14):** no `<cmd>.*` ID —
-  rule or `<cmd>.sec.*` section — vanishes without a tombstone; **`class: floor` =
-  must-survive (M3)**, `advisory` may change without supersession ceremony; the D13 checker's
-  output (explicit `--schema`/`--md` flags for the pair) is cited in the audit brief as the
-  deterministic pre-pass. Decision anchors live in **`.mochiko/provenance.yaml`** (D16),
-  keyed by rule ID — repo-side, never in the schemas, never shipped; an anchored rule still
-  leaves only by recorded supersession-by-ruling, and the checker resolves every anchor.
+  **Canonical-scaffold criteria — every pair-form command, all six commands.** A command ships as
+  `.md` + `plugins/mochiko/schemas/<cmd>.yaml` and is graded across **both surfaces** on one
+  criteria set. There is no second block and no per-form exception: the library has one
+  scaffold (`command-md-scaffold-standardization` D1/D2), and the only branch is the
+  done-condition class at the end of this list.
 
-  **Exception — charter-form commands (`feature.md` D10 v0.68.0; `plan.md` / `implement.md`
-  ADR 2026-08-13-charter-plan-implement v0.69.0):** a charter command is graded against
-  *floor present + goal contract present* — the Boundaries floor (including the sound-loop
-  floor pointer `mochiko:patterns-sound-loop`, present in all three charters) + the DM's
-  bare-minimum responsibilities, and the Adaptive Goal Protocol's contract — in place of the
-  default-FAIL-goal / Harness / Bindings checks. For `implement.md` from v0.92.0 these criteria
-  grade the **`.md` + `plugins/mochiko/schemas/implement.yaml` pair** (command-content-schema
-  D9): the narrative `.md` carries Identity & Mission, the protocol, and the obligated schema
-  read; the schema carries the R&R / Tools / Ways-of-Working / Boundaries rule blocks — floor
-  present + goal contract present are judged across both surfaces, the sound-loop floor pointer
-  counted on whichever surface carries it. For `feature.md` (the standing desk) the
-  contract is **per-visit**: converge-to-done-condition. For `plan.md` / `implement.md`
-  (pipeline runs) the contract is **per-run**: (i) a protocol step literally labeled
-  **Entry** carrying the neither-source routing; (ii) convergence at a named EXISTING user
-  gate — plan: proposal approval, the approved list = the run's done condition and
-  default-FAIL floor, delta scope collapsing; implement: run-open confirmation naming batch,
-  scope type, attempt bounds (redeclarable there and only there), and the fixed done
-  condition; (iii) a fixed done condition closing at the existing acceptance gate; (iv) FAIL
-  survival — for implement, keyed to the **`fail-condition` label set**: every rule labeled
-  `fail-condition` in `implement.yaml` surviving (a reword keeps its ID), and the `.md`
-  Not-done line's hard-coded count matching the schema's; for plan (retired v0.91.0,
-  historical audits) the `**Not done — default FAIL**` list present with every prior FAIL
-  clause surviving; (v) for implement, **ID continuity (D11):** no `impl.*` ID — rule or
-  `impl.sec.*` section (D14, v0.93.0) — vanished without a tombstone — a reword keeps its ID,
-  a split mints children recording the parent, a merge tombstones the losers; (vi) for implement, **`class: floor` = must-survive (M3):** a `floor`-class rule
-  leaves only by recorded supersession-by-ruling; an `advisory`-class rule may change without
-  supersession ceremony. The D13 advisory checker's output is cited in the audit brief as a
-  deterministic pre-pass, beside the char-budget pre-assert.
-  The check must NOT demand a per-run negotiated goal (that is the desk's per-visit form, not
-  the pipeline's) and must not demand Goal / Harness / Bindings sections. Everything else
-  (independence, decisions reserved to the user, preserved responsibilities, strips,
-  budgets) applies unchanged. Rulings:
-  `.mochiko/brainstorms/pm-role-and-feature-derivation/record.md` D10 ·
-  `.mochiko/decisions/2026-08-13-charter-plan-implement.md` ·
+  1. **Scaffold conformance.** The `.md` carries the canonical headings in the canonical
+     order — frontmatter (`description` · `argument-hint` ·
+     `disable-model-invocation: true` — a required key set; YAML key order is not graded,
+     though all six ship in this order) · `# <Name> — <epithet>` · `## Identity & Mission` (one tight
+     section, never materially delaying the Rules block) · `## Rules — load the schema
+     first` · `## Adaptive Goal Protocol` with its three steps **Entry** → **Goal** →
+     **Not done — default FAIL** (last). `$ARGUMENTS` is handled in Entry; the Not-done
+     line is the count-pin. No `**Goal:**` opener line, no `Harness` / `Bindings`
+     sections, no per-command extra top-level section.
+  2. **Rules-block enumeration.** The section IDs enumerated in the Rules block match the
+     schema's section IDs **set-wise** — the six-set `<cmd>.sec.roles` · `reserved` ·
+     `tools` · `ways-of-working` · `boundaries` · `fail-conditions`, all six present in
+     every schema, a section with no rules carrying its explicit empty marker (D4/D5).
+     Every `<cmd>.sec.*` token anywhere in the `.md`, inside the Rules block or outside
+     it, resolves to a live node.
+  3. **FAIL survival** keys to the **`fail-condition` label set**: every so-labeled rule
+     survives (a reword keeps its ID), and the `.md` Not-done line's hard-coded count
+     matches the schema's.
+  4. **ID continuity (D11/D14).** No `<cmd>.*` ID — rule **or** `<cmd>.sec.*` section —
+     vanishes without a tombstone. A reword keeps its ID, a split mints children recording
+     the parent, a merge tombstones the losers; no surviving rule text references a
+     tombstoned or re-homed node.
+  5. **`class: floor` = must-survive (M3).** A `floor`-class rule leaves only by recorded
+     supersession-by-ruling; an `advisory`-class rule may change without the ceremony.
+  6. **Substance across the pair.** Plan approval before any producing seat works ·
+     author ≠ grader independence (no self-grading seat row) · decisions reserved to the
+     user, carried in `<cmd>.sec.reserved` · bindings complete — paths, templates, entry
+     condition — in `<cmd>.sec.tools` and the Entry step · the non-waivable floor in
+     `<cmd>.sec.boundaries`. The floor includes the sound-loop pointer line
+     `mochiko:patterns-sound-loop` on the three DM-chartered commands — `architecture` ·
+     `feature` · `implement` (`charter-ritual-balance` D3) — counted on whichever surface
+     carries it; the scaffold does not extend that pointer to `brainstorm` · `setup` ·
+     `specify`, and an audit must not demand it there. Where the command is DM-chartered,
+     the DM's bare-minimum responsibilities are present as owned responsibilities.
+  7. **Done-condition class — grade the branch that matches the command, and only that
+     branch.**
+     - **Desk commands — `architecture` · `feature` — per-visit contract.** The protocol
+       converges *each visit*, with the user, to a one-line goal **and its explicit done
+       condition**, then runs to it and closes with a verdict against it. A visit ending
+       with no stated done-condition verdict is a defect. Do **not** demand a fixed done
+       condition here.
+     - **Run commands — `brainstorm` · `implement` · `setup` · `specify` — fixed
+       contract.** The **Entry** step carries the entry gating and, where the command
+       routes, the neither-source routing; the **Goal** step states a **fixed** done
+       condition; **Not done** defaults it to FAIL and is count-pinned. Do **not** demand
+       a negotiated per-run goal — that is the desk's form, not the run's.
+     - **`implement` additionally** (ADR `2026-08-13-charter-plan-implement` ruling 3):
+       convergence at a named EXISTING user gate — run-open confirmation naming batch,
+       scope type, attempt bounds (redeclarable there and only there), and the fixed done
+       condition stated — closing at the existing acceptance gate. No new ceremony: the
+       gate must already exist in the run.
+  8. **Preserved responsibilities**, as for any primitive: protected content leaves only
+     by recorded supersession-by-ruling, and strips + budgets apply unchanged.
+  9. **Deterministic pre-pass.** The D13 advisory checker's output (explicit
+     `--schema` / `--md` flags for the pair) is cited in the audit brief, beside the
+     char-budget pre-assert.
+  10. **Provenance sidecar unchanged (D16).** Decision anchors live in
+      **`.mochiko/provenance.yaml`**, keyed by rule ID — repo-side, never in the schemas,
+      never shipped; an anchored rule still leaves only by recorded
+      supersession-by-ruling, and the checker resolves every anchor.
+
+  Rulings: `.mochiko/brainstorms/command-md-scaffold-standardization/record.md`
+  D1–D7 (`DECISIONS.md` 2026-08-27 — the canonical scaffold; supersedes the charter-form /
+  goal-form split and this block's former dual-block shape, clause inventory in that
+  record's Appendix A) · `.mochiko/brainstorms/pm-role-and-feature-derivation/record.md`
+  D10 · `.mochiko/decisions/2026-08-13-charter-plan-implement.md` ·
   `.mochiko/brainstorms/charter-ritual-balance/record.md` D3 (`DECISIONS.md` 2026-08-13) ·
-  `.mochiko/brainstorms/command-content-schema/record.md` D9 · D11 · D14 (`DECISIONS.md` 2026-08-26).
+  `.mochiko/brainstorms/command-content-schema/record.md` D9 · D11 · D14 · D16
+  (`DECISIONS.md` 2026-08-26).
 
 **Protected content leaves ONLY by ruling.** A line in a record's protected set, marked `KEPT:`, or
 traceable to a `DECISIONS.md` row may be removed only as a recorded supersession-by-ruling. A silent

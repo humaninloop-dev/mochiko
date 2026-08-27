@@ -2,8 +2,8 @@
 # rule-shaped content (command-content-schema D1/D2, rolled out to this command by the D10
 # rollout ruling 2026-08-26 — record Session trail; DECISIONS.md 2026-08-26). The command
 # .md instructs a raw, full Read of this file at command fire; the model interprets it
-# live — no build step, no binary on the read path (GI-020). Narrative (the goal statement
-# and the Goal section's done condition) stays in plugins/mochiko/commands/brainstorm.md.
+# live — no build step, no binary on the read path (GI-020). Narrative (Identity & Mission,
+# Adaptive Goal Protocol prose) stays in plugins/mochiko/commands/brainstorm.md.
 #
 # Grammar (D6, as amended by D14): sections: list, each {id, title, intent, rules};
 # rule blocks {id, labels, class, text, pointer?} nest under their section.
@@ -12,7 +12,7 @@
 #           never grow a second prose surface (narrative stays in the .md).
 #   id      dotted slug — a NAME, never a summary; minted once, frozen (D11). A reword
 #           keeps its ID; a split mints children recording the parent; a merge retires
-#           the losers under a top-level tombstones: key. First mint — no tombstones yet.
+#           the losers under a top-level tombstones: key.
 #           FAIL clauses live under the brainstorm.fail.* segment.
 #   labels  values from plugins/mochiko/schemas/command-labels.yaml (D8).
 #   class   floor = non-waivable, must-survive under the pair audit (M3) ·
@@ -44,11 +44,10 @@ vars:
   explore_model: haiku
 
 sections:
-  - id: brainstorm.sec.harness
-    title: Harness
+  - id: brainstorm.sec.roles
+    title: Roles & Responsibilities — seat wiring
     intent: >-
-      How the session is led, staffed, reviewed, and bounded, and the decisions reserved
-      to the user.
+      Lead role, seat staffing, and the review independence the session's seats carry.
     rules:
 
       - id: brainstorm.lead-inline-questioning
@@ -65,39 +64,6 @@ sections:
         class: must
         text: >-
           Teammates or subagents per seat is your call.
-
-      - id: brainstorm.transport-floor
-        labels: [floor-pointer, seats]
-        class: floor
-        text: >-
-          When the run composes more than one seat, mochiko:patterns-transport-floor
-          governs its composition and messaging under a split trigger — message legs on any
-          multi-seat messaging, topology legs on shared writes — non-waivable once
-          triggered; referenced, never restated.
-        pointer: "mochiko:patterns-transport-floor"
-
-      - id: brainstorm.model-tiering
-        labels: [seats, floor-pointer]
-        class: must
-        text: >-
-          Exploration and fact-finding dispatches ride mochiko:patterns-model-tiering's
-          class key — locate/enumerate reads to a native `Explore` subagent spawned
-          model: ${explore_model}, interpretive or absence-driven reads on the session
-          tier — and every seat brief carries the routing rule; referenced, never restated.
-        pointer: "mochiko:patterns-model-tiering"
-
-      - id: brainstorm.plan-approval-producers
-        labels: [seats, independence]
-        class: must
-        text: >-
-          Any seat that writes artifacts plans first and works only on a plan you approved;
-          grading and fact-finding seats are exempt.
-
-      - id: brainstorm.author-grader-default-fail
-        labels: [independence]
-        class: floor
-        text: >-
-          No output is cleared by its author — default FAIL.
 
       - id: brainstorm.record-review-independence
         labels: [independence, seats]
@@ -121,6 +87,12 @@ sections:
         text: >-
           In a review pair, both seats build their Phase 0 angle maps independently.
 
+  - id: brainstorm.sec.reserved
+    title: Reserved to the user — never the run's
+    intent: >-
+      Decisions held by the user: acceptance, waivers, and the rulings no seat may take.
+    rules:
+
       - id: brainstorm.coverage-survivor-routing
         labels: [user-gate]
         class: must
@@ -129,21 +101,6 @@ sections:
           a fold — present each gap as a candidate topic; the user rules the path: explore
           now (re-enter mochiko:analysis-iterative on that angle; the resulting decision
           lands in ${record_path}'s same `D…` namespace), rule inline, or defer.
-
-      - id: brainstorm.non-coverage-survivors
-        labels: [user-gate]
-        class: must
-        text: >-
-          Non-coverage survivors keep the ordinary fold / repair / ruling path and may be
-          dispositioned in batches.
-
-      - id: brainstorm.reopen-born-verify
-        labels: [attempt-economy]
-        class: must
-        text: >-
-          A decision born from a coverage-survivor reopen gets one bounded verify round —
-          internal consistency and record-fitness, no fresh cold read, no blind-map
-          coverage hunt against it, and no second reopen off it.
 
       - id: brainstorm.user-record-acceptance
         labels: [user-gate]
@@ -171,22 +128,10 @@ sections:
           Any amendment to a user-ruled decision, and any new decision, is reserved to the
           user — their word, never yours.
 
-      - id: brainstorm.no-git-mutations
-        labels: [user-gate]
-        class: must
-        text: >-
-          Suggest commits; never run git mutations, never push.
-
-      - id: brainstorm.acceptance-plain-text
-        labels: [user-gate]
-        class: must
-        text: >-
-          User acceptance is plain blocking text, never a timed prompt.
-
-  - id: brainstorm.sec.bindings
-    title: Bindings
+  - id: brainstorm.sec.tools
+    title: Tools bindings
     intent: >-
-      Deliverable, index, synthesis, register, and next-step bindings the session lands on.
+      Paths, templates, and skills the session binds to.
     rules:
 
       - id: brainstorm.deliverable-record
@@ -237,6 +182,79 @@ sections:
           Pipeline entry (e.g. /mochiko:specify when the record is honestly a feature
           description) is an offer after acceptance, never a default.
 
+  - id: brainstorm.sec.ways-of-working
+    title: Ways of Working
+    intent: >-
+      How the session questions, reviews cold, bounds its rounds, and reports; model
+      routing for its seats.
+    rules:
+
+      - id: brainstorm.model-tiering
+        labels: [seats, floor-pointer]
+        class: must
+        text: >-
+          Exploration and fact-finding dispatches ride mochiko:patterns-model-tiering's
+          class key — locate/enumerate reads to a native `Explore` subagent spawned
+          model: ${explore_model}, interpretive or absence-driven reads on the session
+          tier — and every seat brief carries the routing rule; referenced, never restated.
+        pointer: "mochiko:patterns-model-tiering"
+
+      - id: brainstorm.plan-approval-producers
+        labels: [seats, independence]
+        class: must
+        text: >-
+          Any seat that writes artifacts plans first and works only on a plan you approved;
+          grading and fact-finding seats are exempt.
+
+      - id: brainstorm.author-grader-default-fail
+        labels: [independence]
+        class: floor
+        text: >-
+          No output is cleared by its author — default FAIL.
+
+      - id: brainstorm.non-coverage-survivors
+        labels: [user-gate]
+        class: must
+        text: >-
+          Non-coverage survivors keep the ordinary fold / repair / ruling path and may be
+          dispositioned in batches.
+
+      - id: brainstorm.reopen-born-verify
+        labels: [attempt-economy]
+        class: must
+        text: >-
+          A decision born from a coverage-survivor reopen gets one bounded verify round —
+          internal consistency and record-fitness, no fresh cold read, no blind-map
+          coverage hunt against it, and no second reopen off it.
+
+      - id: brainstorm.no-git-mutations
+        labels: [user-gate]
+        class: must
+        text: >-
+          Suggest commits; never run git mutations, never push.
+
+      - id: brainstorm.acceptance-plain-text
+        labels: [user-gate]
+        class: must
+        text: >-
+          User acceptance is plain blocking text, never a timed prompt.
+
+  - id: brainstorm.sec.boundaries
+    title: Boundaries — the non-waivable floor
+    intent: >-
+      Floor obligations no seat and no in-run ruling can waive.
+    rules:
+
+      - id: brainstorm.transport-floor
+        labels: [floor-pointer, seats]
+        class: floor
+        text: >-
+          When the run composes more than one seat, mochiko:patterns-transport-floor
+          governs its composition and messaging under a split trigger — message legs on any
+          multi-seat messaging, topology legs on shared writes — non-waivable once
+          triggered; referenced, never restated.
+        pointer: "mochiko:patterns-transport-floor"
+
   - id: brainstorm.sec.fail-conditions
     title: Not done — default FAIL
     intent: >-
@@ -266,3 +284,9 @@ sections:
         class: floor
         text: >-
           An index entry in ${index_path} missing or contradicting the record's status.
+
+tombstones:
+  - id: brainstorm.sec.harness
+    disposition: "superseded → rules redistributed across the D4 six-set (command-md-scaffold-standardization D3/D4/D5)"
+  - id: brainstorm.sec.bindings
+    disposition: "superseded → rules redistributed across the D4 six-set (command-md-scaffold-standardization D3/D4/D5)"

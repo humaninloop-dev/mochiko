@@ -34,8 +34,17 @@ One entry per session directory under `.mochiko/brainstorms/<topic-slug>/`, **ne
   single branching audit criteria block + one-wave build + ripple (D6) · stage-1.5 tidy, not
   the stage-2 on-ramp (D7).
 - **Landed:** DECISIONS.md row (2026-08-27) · BACKLOG "Command `.md` scaffold build" section
-  (cold-buildable) + the shared first-live-run watch extended · ROADMAP: merged into the
-  plan-surface-builds Next row (cap held). Build queued.
+  + the shared first-live-run watch extended · ROADMAP: merged into the plan-surface-builds
+  Next row (cap held). **Built same day at v0.97.0** — 4 plan-approved producers (disjoint
+  ownership: six `.md` rewrites · five schema unifications, 320 rules byte-identical to HEAD
+  proven three ways, 6 tombstones · checker five-family `.md` lint + persisted 30-probe
+  matrix · ceremony one-block re-key + 59-clause Appendix A inventory + ripple incl. the
+  shipped router) + 3 fresh author≠grader validators — V1/V2 PASS round 1, V3 4/5 →
+  CHANGELOG fix → delta-confirm 5/5; V1 discharged M5 (desks under-extracted on FAIL,
+  user-deferred → "Desk FAIL-set widening" BACKLOG item); V1 F6 title-drift closed
+  not-a-defect on the producer's census; strips across 8 files incl. new
+  `strips/primitive-edits.md`; gates 4/5/6 (CHANGELOG, marketplace 0.97.0, cargo test
+  12/12). Build item → trail; extended watch + Desk FAIL-set widening stay in BACKLOG.
 
 ## `command-content-schema` — YAML schema for command content: block IDs, altitude clusters, variable injection; implement first, then rollout
 - **When:** 2026-08-26 · **Status:** accepted · solo cold review via blind-map two-message

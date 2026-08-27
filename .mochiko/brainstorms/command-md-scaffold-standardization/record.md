@@ -1,6 +1,6 @@
 # Command `.md` scaffold standardization — decision record
 
-**Status:** accepted (2026-08-27) — solo cold review (verdict critical-gaps), 19/19 survivors dispositioned and folded, verify round 1 verified-not-blocking with 6 nits lead-repaired same round; user accepted
+**Status:** accepted (2026-08-27) — solo cold review (verdict critical-gaps), 19/19 survivors dispositioned and folded, verify round 1 verified-not-blocking with 6 nits lead-repaired same round; user accepted. **Built same day at v0.97.0** — 4 plan-approved producers + 3 fresh author≠grader validators, V1/V2 PASS round 1, V3 4/5 → fix round → 5/5; M5 discharged (desks under-extracted, user-deferred to BACKLOG); gates 4/5/6 green (checker 6/6 PASS · CHANGELOG · marketplace 0.97.0 · cargo test 12/12)
 **Opened:** 2026-08-27 · **Lead:** session lead (inline questioning via `mochiko:analysis-iterative`)
 
 **Topic:** after the command-content-schema rollout (six `.md` + schema pairs, v0.96.0), the schema side follows one pattern — nested section nodes, dotted-slug IDs, labels, `vars:`, a `fail-conditions` section, a deterministic checker. The `.md` scaffold around those schemas does not: the six files vary in section set, order, and idiom. The user wants the `.md` scaffold governed by a pattern of similar strength.
@@ -118,5 +118,221 @@ Priced and accepted: **build** — 6 producer-class `.md` rewrites (3 containing
 
 ## Open questions
 
-- **Empty-marker grammar (D5):** exact YAML form (`rules: []` + `note:` vs a marker rule block) — build-time detail; the checker must recognize it.
-- **Desks' one-clause FAIL sets (M5):** architecture and feature each carry a single `fail-condition` rule — possibly under-extracted at the D10 rollout. Trigger: the build's per-pair audit re-inventories FAIL-shaped content in both desks' schemas; a found under-extraction is a separate ruled addition, not a silent widening.
+- **Empty-marker grammar (D5):** ruled at build — section-level `rules: []` + one-line `note:`; the checker recognizes it and negative-tests both directions. **Still unexercised at v0.97.0** (V1 F3): all six schemas report `empty-sections 0`, so the grammar has no live instance anywhere in the library — proven by fence, not by use.
+- **Desks' one-clause FAIL sets (M5) — DISCHARGED at build (2026-08-27):** the V1 per-pair audit ran the re-inventory and confirmed under-extraction (architecture 1 fail-condition vs 21 other floor rules; feature 1 vs 12; siblings 4–15), with candidate rules carrying FAIL mirrors in sibling commands. **User ruled: deferred to BACKLOG** ("Desk FAIL-set widening") as its own ruled pass — never a silent widening, per this question's own routing.
+
+## Appendix A — form-split carrier clause inventory (build, v0.97.0)
+
+Owed by D1 and D6-R2: before any supersession-by-ruling entry lands, every clause of the F3
+form-split carriers is enumerated and dispositioned. House precedent: the pm-role D6 exhaustive
+inventory. Each verdict below is written to stand alone — a strip entry may quote its row without
+carrying the surrounding argument.
+
+Marks: **superseded-by-D1** (the clause dies with the form split — layout, section vocabulary, or
+the two-block audit shape) · **survives** (the clause is contract, delivery, or substance; the C2
+narrowing leaves it standing, sometimes with its home or vocabulary re-keyed) ·
+**no-clause-superseded** (rationale, spent process clause, or historical note — nothing operative
+for D1 to reach).
+
+**Wave totals: 59 clauses enumerated across five carriers — 15 superseded-by-D1 · 28 survives ·
+16 no-clause-superseded. Four carriers carry at least one superseded clause; one
+(`charter-ritual-balance` D3) returns no-clause-superseded in full — the N4 carve fires.**
+
+### A.1 — `pm-role-and-feature-derivation` D10 (v0.68.0) — 14 clauses: 5 superseded · 7 survives · 2 no-clause
+
+1. **Anatomy** — "abandons the v8 Goal · Harness · Bindings anatomy … for a six-section
+   **charter**" — **superseded-by-D1.** One scaffold replaces both anatomies; the charter is no
+   longer a form a command can be in.
+2. **Scope** — "(recorded supersession, **this command only** — the other five stay v8)" —
+   **superseded-by-D1.** Already once superseded by the 2026-08-13 ADR's first consequence; D1
+   retires the residue by making the scaffold library-wide.
+3. **Section 1, Identity & Mission** — the lead chartered Delivery Manager of the product desk;
+   owns routing, pace, follow-through; writes no capability truth alone — **survives.** Content
+   unchanged, same position in the canonical scaffold (D2 step 2).
+4. **Section 2, the per-visit goal contract** — health report + ask; a micro-brainstorm converges
+   to a one-line visit goal *and its explicit done condition*; goal-per-visit; a visit ending with
+   no stated done-condition verdict is a defect — **survives.** This is precisely what the C2
+   narrowing protects; it is the desk branch of the single criteria block.
+5. **Section 3, the negative clause** — "**no Bindings section exists**" — **superseded-by-D1** as
+   a per-command layout clause. No content is lost: the canonical scaffold defines no Bindings
+   section for any of the six, so the clause's effect is now universal rather than bespoke.
+6. **Section 3, substance** — the always-happens floor carried as the DM's seven owned
+   responsibilities, plus the other-roles list (PM seat · principal-architect · dispatched runs ·
+   the user) — **survives.** Lives in `feat.sec.roles`, rule IDs and texts unchanged (D3/D4).
+7. **Section 3, vocabulary** — user-reserved rulings carried inside the roles group —
+   **superseded-by-D1.** D4 makes `reserved` a first-class section in all six schemas; the desks
+   extract their reserved rulings out of `roles`, IDs and texts unchanged.
+8. **Section 4, Tools** — map files, patterns skills, capability-write test, stable-ground triage,
+   delta cards, dispatch targets; referenced never restated; absorbs the old Bindings' paths and
+   templates as tools-with-homes — **survives.** `feat.sec.tools` is unchanged in the six-set.
+9. **Section 5, Ways of Working** — proactive report first · reference-never-restate ·
+   author ≠ grader wherever a seat produces · suggest commits never push · single-flight product
+   lane — **survives.** `feat.sec.ways-of-working` unchanged.
+10. **Section 6, Boundaries** — capability writes sacred · no delivery harness at the desk ·
+    no self-graded writes · no silent map mutations — **survives.** `feat.sec.boundaries`
+    unchanged.
+11. **Audit re-key, substance** — "grades this command against *floor present + per-visit goal
+    contract present*" — **survives.** Carried whole into criteria 6 and 7 (desk branch) of the
+    canonical block.
+12. **Audit re-key, delivery** — "instead of 'default-FAIL goal present'; criteria adaptation
+    lands with the build" — **superseded-by-D1** (via D6-R2). The two criteria sets become one
+    block with an internal branch; the default-FAIL criterion is not displaced but re-homed to
+    the run branch, where it grades four commands.
+13. **Confidence line** — **no-clause-superseded.** Metadata.
+14. **Review fold I7** — costs on record; the one-command uniformity break priced; the
+    charter-within-v8 steelman weighed and rejected — **no-clause-superseded.** Rationale, not a
+    clause. Noted: the uniformity cost this fold priced is the cost D1 spends to close.
+
+### A.2 — ADR `2026-08-13-charter-plan-implement` (v0.69.0) — 16 clauses: 5 superseded · 6 survives · 5 no-clause
+
+1. **Decision head** — "`commands/plan.md` and `commands/implement.md` re-format to the
+   six-section charter" — **superseded-by-D1.** Layout. `plan.md` retired at v0.91.0, so the live
+   effect is `implement.md` only.
+2. **Ruling 1, ruling home** — this ADR + a `DECISIONS.md` row, no brainstorm session —
+   **no-clause-superseded.** Spent process clause.
+3. **Ruling 2, behavior-preserving** — every current obligation survives, re-homed; strips record
+   shape supersession only; the audit checks preserved responsibilities against the prior text —
+   **survives.** This is the precedent the present wave runs on, unchanged.
+4. **Ruling 3, head** — "Goal protocol maps existing gates — no new ceremony." — **survives.**
+   Carried into the run branch's closing clause: the gate must already exist in the run.
+5. **Ruling 3, plan leg** — proposal approval IS the convergence; the approved artifact list is
+   the run's done condition and default-FAIL floor; delta scope keeps its collapse —
+   **no-clause-superseded.** `plan.md` retired at v0.91.0; the leg governs historical audits only
+   and D1 does not reach it.
+6. **Ruling 3, implement leg** — run-open confirmation (batch, scope type, attempt bound at its
+   one redeclaration point, done condition stated); the done condition is fixed — **survives.**
+   Carried verbatim as the `implement`-additionally clause of the run branch.
+7. **Ruling 4, door open** — "`specify`, `brainstorm`, and `setup` stay v8; each converts later on
+   its own ruling if wanted." — **superseded-by-D1.** They convert now, by this ruling. The
+   schema half was already overtaken by `command-content-schema` D10 at v0.95.0.
+8. **Ruling 4, split acceptance** — "The 3-charter + 3-v8 split is accepted, not a defect." —
+   **superseded-by-D1.** The split is the variance D1 exists to close; F4 is the recorded evidence
+   the acceptance did not hold.
+9. **Consequence a** — "D10's 'v8 shape superseded **this command only**' clause is superseded —
+   the charter now covers the three delivery-facing commands" — **superseded-by-D1.** Three
+   becomes six.
+10. **Consequence a, tail** — "the uniformity cost D10's I7 fold priced is re-priced at this
+    ruling" — **no-clause-superseded.** Pricing note; D1's cost line re-prices again.
+11. **Consequence b, substance** — audit criteria re-key to *floor present + run goal contract
+    present*, "the run-shaped analog of feature.md's per-visit contract"; the definition lives in
+    `.claude/rules/mochiko/primitive-edits.md` — **survives.** The run branch, in the same home;
+    the file does not move.
+12. **Consequence b, scoping** — "the audit criteria **for the two commands**" —
+    **superseded-by-D1.** The run branch now covers four commands, not two.
+13. **Consequence b, negatives** — "must not demand a per-run negotiated goal … and must not
+    demand Goal/Harness/Bindings sections" — **survives.** Both carried into the block; the second
+    is now structural, since the canonical scaffold defines no such sections anywhere.
+14. **Consequence c, the Entry label** — "Both charters keep a protocol step literally labeled
+    **Entry**" — **survives, widened.** D2 makes Entry canonical on all six; the clause's
+    requirement is preserved, not superseded, and `feature.md`'s recorded wording stays true.
+15. **Consequence d, watch home** — the first-live-run watch rides the existing
+    `plan-structure-yagni` dual-probe BACKLOG item; no new watch item —
+    **no-clause-superseded.** Build item 8 extends the existing watch; no parallel item is minted.
+16. **Rationale + the four Alternatives considered** — **no-clause-superseded.** No operative
+    clauses. Noted on record: the rejected alternative "Convert all six commands now — rejected:
+    the other three have no felt pain" is the option D1 adopts, on the F4 drift evidence the ADR
+    did not have.
+
+### A.3 — `charter-ritual-balance` D3 — 6 clauses: 0 superseded · 6 survives · **carrier verdict: no-clause-superseded (the N4 carve)**
+
+D3's clauses are carrier, content, and delivery — none of them layout or section vocabulary. The
+C2 narrowing leaves every one standing. Two carry a vocabulary re-key only, which is not a
+supersession: the obligation and its scope are unchanged.
+
+1. **Carrier** — the floor lands as the model-invoked discipline skill `patterns-sound-loop`,
+   fourth sibling to the three minimalism skills — **survives.** Untouched.
+2. **Content** — the D2 two-part test and governing-surface list · D1's three ritual legs · the
+   exemptions (mechanical execution, transcription, fix-on-sight) · the delta-card review-leg rule
+   · the role-claim honesty rule — **survives.** Untouched.
+3. **Delivery** — "each charter's Boundaries gains **one pointer line**" — **survives.** Scope
+   unchanged: the pointer sits on `architecture` · `feature` · `implement` and the canonical
+   scaffold does **not** extend it to `brainstorm` · `setup` · `specify`. Vocabulary re-key only —
+   "charter" now names those three commands' DM identity, not a `.md` form; "Boundaries" is the
+   `<cmd>.sec.boundaries` section, which the six-set keeps under the same name. Widening the
+   pointer to all six would be a new obligation, not a consequence of D1; criterion 6 of the
+   re-keyed block says so explicitly.
+4. **Router** — "the router gains a row" — **survives.** Untouched.
+5. **Audit** — "the charter audit re-key (`.claude/rules/mochiko/primitive-edits.md`) extends to
+   check the pointer's presence" — **survives, home re-keyed.** The criterion moves from the
+   charter-form exception block into criterion 6 of the single canonical block. A block merge
+   changes where a criterion is written, not whether it binds.
+6. **"No restatement anywhere."** — **survives.** Untouched.
+
+### A.4 — `command-content-schema` D9 (M3 carrier) — 9 clauses: 1 superseded · 7 survives · 1 no-clause
+
+1. **Kernel envelope** — model-interpreted command schemas need no new kernel-class admission; the
+   schema is data, the interpreter is the model; GI-019 untouched — **survives.**
+2. **Future-CLI note** — a future `mochiko-cli` render/`--check` over command schemas would extend
+   the admitted CLI and takes its own ruling note at that time — **survives.** D6-R1 widens the
+   existing advisory Python checker; no CLI extension, so no note is owed by this wave.
+3. **Shipped-primitive status** — `implement.yaml` and `command-labels.yaml` are shipped
+   primitives under the full strip + author ≠ grader ceremony — **survives**, extended to all six
+   schemas at v0.95.0.
+4. **Pair grading** — the audit grades the **`.md` + schema pair**, across both surfaces —
+   **survives.** The head of the canonical block.
+5. **Floor + goal contract** — "floor present + goal contract present" — **survives**, as criteria
+   6 and 7.
+6. **FAIL keying** — the FAIL-clause-survival criterion keyed to the `fail-condition` label set —
+   **survives**, as criterion 3.
+7. **Block identity** — "**The charter audit** re-keys to grade the pair" — **superseded-by-D1.**
+   This is the M3 reason D9 is a carrier: there is no charter audit to re-key. One canonical block
+   grades all six commands and branches internally on done-condition class.
+8. **Delivery** — "via a `primitive-edits.md` edit riding the build wave" —
+   **no-clause-superseded.** Spent; this wave repeats the same move in the same file.
+9. **GI-020** — install ships markdown + data files, nothing heavier — **survives.**
+
+### A.5 — ADR `2026-08-02-doctrine-purge-wave-1` (C1 carrier, superseded by name) — 14 clauses: 4 superseded · 2 survives · 8 no-clause
+
+1. **Decision 1, deletion** — delete `loop-discipline` and `templates/command-shape.md`, verbatim
+   content preserved in strips, stamp v0.46.0 — **no-clause-superseded.** The deletion stands and
+   is honored in form: D6-R2 mints no replacement template file. The canonical scaffold's durable
+   home is the existing criteria block in `.claude/rules/mochiko/primitive-edits.md`.
+2. **Decision 2, self-containment** — each command absorbs, in its own phrasing, the mechanics it
+   previously got only by obligated reads — **no-clause-superseded.** The canonical scaffold
+   governs layout; every mechanic still lives in the command's own pair, never in a shared home.
+3. **Decision 3, obligated reads dropped** — the `mochiko:loop-discipline` and `command-shape.md`
+   reads leave every command preamble; the v5/v7 non-conformance clause and the read-drop deferral
+   are superseded — **no-clause-superseded.** Named on record, eyes open: the pair form does
+   oblige a first-action Read, but of the command's **own** schema, not a shared doctrine home —
+   ruled at `command-content-schema` D7/D9 and not reopened here.
+4. **Decision 4, the bar** — "`mochiko:validator` grades a command edit against **the command's
+   own text**" — **superseded-by-D1, by name (C1).** The bar becomes: the command's own **pair**,
+   graded against the canonical scaffold.
+5. **Decision 4, the coherence list** — "default-FAIL goal, counted bounds, named floor gates, no
+   self-grading seat row, workspace-evidence recovery" — **superseded-by-D1 as a list, with no
+   criterion lost.** Default-FAIL goal is criterion 3 plus the run branch; no self-grading seat row
+   is criterion 6 (author ≠ grader independence); counted bounds, named floor gates, and
+   workspace-evidence recovery are ordinary schema rules under `<cmd>.sec.*`, graded by criteria
+   3–5 like any other rule. (The list had already been reworded in `primitive-edits.md` to
+   "default-FAIL goal · harness present · bindings complete"; that live wording is what criterion
+   6 relocates.)
+6. **Decision 4, preserved responsibilities** — "plus preserved responsibilities" — **survives**,
+   as criterion 8.
+7. **Decision 4, homes** — "`CLAUDE.md` and `.claude/rules/mochiko/primitive-edits.md` re-keyed
+   accordingly" — **survives.** Both re-key again in this build:
+   `.claude/rules/mochiko/primitive-edits.md` collapses its dual criteria blocks into the single
+   canonical-scaffold block, and `CLAUDE.md`'s two sites — the how-to-work author ≠ grader line
+   and the landing-ritual check clause — move from "the command's own text" to the command's own
+   `.md` + schema pair held to that block, each now naming it as the criteria home.
+8. **Decision 4, parenthetical** — "(supersedes the v0.45.0 re-key onto `command-shape.md` as
+   checklist)" — **no-clause-superseded.** Historical.
+9. **Decision 5** — the gap-routing taxonomy dropped entirely; commands reword to plain escalation
+   language — **no-clause-superseded.** Untouched.
+10. **Decision 6** — surviving doctrine templates reworded not purged; the queued `loop-discipline`
+    split-gate edit moot — **no-clause-superseded.** Untouched.
+11. **Rationale, the independence premise** — "a command whose loop rules live in its own file can
+    evolve them without a shape-version ceremony rippling across six files" —
+    **superseded-by-D1** as a governing premise. D1's re-argument, on record: the benefit was
+    real, and its observed cost is F4 — six files that drifted in section set, order, idiom, and
+    `$ARGUMENTS` home. The schema rollout had already made the shared-artifact move deliberately
+    and by ruling (label registry, rule grammar, checker, audit branch); D1 ratifies that partial
+    reversal and extends it to the `.md`.
+12. **Rationale, bullets 1 and 3** — an obligated cross-cutting read is plumbing by another name ·
+    nothing behavioral is lost, only authoring/conformance doctrine dies —
+    **no-clause-superseded.**
+13. **Alternative** — "Mint a thin replacement checklist for audits — rejected: recreates a shared
+    artifact, against the purge intent." — **superseded-by-D1**, with the form honored: no
+    artifact is minted. The scaffold's home is the audit criteria block that already existed
+    (build item 4).
+14. **Alternatives 1, 2, 4** — purge all five in one wave · drop the mechanics instead of inlining
+    · keep the skill and drop only the obligated read — **no-clause-superseded.** Untouched.

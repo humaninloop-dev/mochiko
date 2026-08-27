@@ -6,6 +6,41 @@ Entry formats: `strips/README.md`. Wave context: skill-succinctness wave 1 (desi
 single physical lines, so the R2 line denominator undercounts this skill; dual accounting
 recorded here and flagged on the wave's ROADMAP row.
 
+<!-- Wave context: the command-`.md`-scaffold standardization wave (v0.97.0). Ruling:
+`.mochiko/brainstorms/command-md-scaffold-standardization/record.md` D1 (`DECISIONS.md`
+2026-08-27 row); the implement-only-pair staleness half by
+`.mochiko/brainstorms/command-content-schema/record.md` D10 (`DECISIONS.md` 2026-08-26). -->
+
+## [v0.97.0] Router's two-anatomy composition paragraph and charter-as-form row
+
+- **Disposition:** superseded → the canonical-scaffold paragraph in the same section of
+  `plugins/mochiko/skills/mochiko/SKILL.md`
+- **Tier failed:** n/a — supersession by ruling. TWO rulings, one edit:
+  the two-anatomy claim by `.mochiko/brainstorms/command-md-scaffold-standardization/record.md`
+  D1 (`DECISIONS.md` 2026-08-27); the implement-only-pair claim by
+  `.mochiko/brainstorms/command-content-schema/record.md` D10 (`DECISIONS.md` 2026-08-26),
+  which made all six commands pairs at v0.95.0 — that half was already stale on arrival here
+  and is a pre-existing defect this wave repairs, not a change D1 caused.
+- **Content:** "Each command below states its whole contract in one of two anatomies —
+  `setup`, `specify`, and `brainstorm` as v8 **Goal · Harness · Bindings**; `feature`,
+  `architecture`, and `implement` as **charters**, whose Boundaries floor, Delivery-Manager
+  responsibilities, and goal contract carry the same teeth — `implement`'s as a **`.md` +
+  schema pair**: Identity & Mission + Adaptive Goal Protocol in the `.md`, plus an obligated
+  schema read of `plugins/mochiko/schemas/implement.yaml` (labels registry
+  `command-labels.yaml`) carrying the rule set — and the lead composes the run toward it."
+  Plus, from the `/mochiko:feature` row: "a charter command (Delivery-Manager lead; …)".
+  Verbatim source: `git show HEAD:plugins/mochiko/skills/mochiko/SKILL.md`, lines 19-25 and 122
+  (HEAD-relative; the lines 67-68 cite under Kept deliberately is live-file-relative — HEAD 64-65).
+- **Kept deliberately:** the sound-loop sentence that closed the paragraph (done-condition
+  written first and defaulting to FAIL · no output cleared by its author · decisions reserved
+  to the user) — untouched. The Boundaries floor and the Delivery-Manager responsibilities —
+  re-homed in the replacement as the named `boundaries` and `roles` schema sections, not
+  dropped. Lines 67-68's "the charters' Boundaries" — left standing; `charter-ritual-balance`
+  D3 returned no-clause-superseded (record Appendix A.3) and the pointer's three-command
+  scope is unchanged.
+- **Consumers assessed:** router body is the only surface carrying this text; `README.md`,
+  `ARCHITECTURE.md`, `CLAUDE.md`, and the conversion skill were re-keyed in the same wave.
+
 ## [v0.92.0] Composes paragraph — the six-section enumeration re-keyed to implement's `.md` + schema pair
 
 - **Disposition:** superseded → charters named without the section enumeration; `implement`

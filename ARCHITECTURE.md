@@ -14,8 +14,8 @@ Mochiko is a kernel-free Claude Code plugin: a product-delivery pipeline (govern
 implementation) run entirely through native primitives — markdown command supervisors,
 agent-team personas, and skills. There is no orchestration engine: each command
 *is* the orchestrator for its workflow, and every command is a contract the lead composes a run
-toward — a verifiable done-condition plus a non-waivable frame, in one of two anatomies (see
-Command form) — with named decisions reserved to the user.
+toward — a verifiable done-condition plus a non-waivable frame, all six on one canonical
+scaffold (see Command form) — with named decisions reserved to the user.
 
 ```mermaid
 flowchart LR
@@ -56,7 +56,7 @@ pinned in [`CLAUDE.md`](CLAUDE.md#skill-library-conventions-five-axes).
 
 | Layer | Home | Count | Role |
 |---|---|---|---|
-| **Commands** | [`plugins/mochiko/commands/`](plugins/mochiko/commands/) | 6 | User-invoked contracts (`disable-model-invocation: true`) in two anatomies: `setup` / `specify` / `brainstorm` state Goal (default FAIL) · Harness (plan approval for producing seats · author ≠ grader independence · decisions reserved to the user) · Bindings (v8 rebuild, v0.48.0); `feature` / `architecture` / `implement` are six-section **charters** — Delivery-Manager lead, the always-happens floor as owned responsibilities, the non-waivable floor in Boundaries (feature desk v0.68.0; the pipeline pair v0.69.0; the architecture desk v0.81.0). `plan` retired at v0.91.0. The lead plans and orchestrates the run — teammates or subagents per seat is its call. |
+| **Commands** | [`plugins/mochiko/commands/`](plugins/mochiko/commands/) | 6 | User-invoked contracts (`disable-model-invocation: true`), all six on **one canonical scaffold** (v0.97.0): Identity & Mission · the obligated first read of the command's own schema · Adaptive Goal Protocol (Entry · Goal · the count-pinned `Not done — default FAIL` line, last). Each ships as a `.md` + `plugins/mochiko/schemas/<cmd>.yaml` pair; the rule content — roles · reserved · tools · ways-of-working · boundaries · fail-conditions — lives in the schema, all six sections always present. The desks (`feature`, `architecture`) converge a done condition per visit; the runs (`brainstorm`, `implement`, `setup`, `specify`) carry a fixed one. `plan` retired at v0.91.0. The lead plans and orchestrates the run — teammates or subagents per seat is its call. |
 | **Agents** | [`plugins/mochiko/agents/`](plugins/mochiko/agents/) | 10 | Personas (all `model: opus`) that carry judgment and declare `skills:`. A persona contains no trace of any workflow — decoupling by absence; caller-side context rides the dispatch brief. |
 | **Skills** | [`plugins/mochiko/skills/`](plugins/mochiko/skills/) | 38 | Procedure. One user-invoked router ([`skills/mochiko/`](plugins/mochiko/skills/mochiko/SKILL.md)) indexes the other 37, which are model-invoked with graded MUST/SHOULD triggers in their descriptions. Deterministic sub-checks ride as `scripts/` inside skills (e.g. `analysis-codebase`'s `detect-stack.sh`); depth rides as `references/`. |
 | **Templates** | [`plugins/mochiko/templates/`](plugins/mochiko/templates/) | 7 + `constitution-modules/` | **Report schemas** (per-seat reports) over the shared `report-format.md` envelope, plus that envelope and its deliverable-side twin `artifact-format.md`, and `output-style.md`. The **artifact schemas** re-homed to [`plugins/mochiko/schemas/`](plugins/mochiko/schemas/) as YAML data at v0.76.0 — the source of truth the `mochiko-cli` binary renders over and agents Read raw when it is absent (7 pipeline schemas after `plan.yaml` retired at v0.91.0, plus the two architecture-store schemas). The former doctrine homes (`workflow-contract.md`, `agent-dispatch.md`, `sized-end-stage-review.md`) were deleted at the doctrine purge (v0.46.0–v0.47.0) — their mechanics live inline in each command. `constitution-modules/` is setup's module library (knowledge-management, layer-rules, release-gates, evolution-notes). |
@@ -84,23 +84,32 @@ not registered; `schemas/` is data the Templates row above accounts for).
   cluster's contract live in exactly one file; commands and skills reference them at altitude
   (pointer depth, never restated).
 
-### Command form (two anatomies)
+### Command form (one canonical scaffold)
 
 Every command states a verifiable done-condition that defaults to FAIL, a frame — plan
 approval before any producing seat works, author ≠ grader independence, the decisions
 reserved to the user — and the homes the lead cannot invent (paths, templates, entry
-conditions). Three commands (`setup`, `specify`, `brainstorm`) carry it as the v8 **goal +
-harness** anatomy — Goal · Harness · Bindings (v8 rebuild, v0.48.0; task layer
-de-granularized + slice absorbed into specify, v0.49.0). Three (`feature`, `architecture`,
-`implement`) carry it as six-section **charters** — Identity & Mission · Adaptive Goal
-Protocol · Roles & Responsibilities · Tools · Ways of Working · Boundaries — with the
-always-happens floor as the Delivery Manager's owned responsibilities and the non-waivable
-floor in Boundaries (the feature desk at v0.68.0, D10; the pipeline pair at v0.69.0, ADR
-`2026-08-13-charter-plan-implement`; the architecture desk at v0.81.0 — `plan` retired at
-v0.91.0, leaving `implement` the pipeline's only charter). The two desks carry a **per-visit**
-goal contract (converge to a done condition); `implement` carries a **per-run** one. The lead
-plans and orchestrates the run within that frame; teammates vs subagents is its per-seat call.
-There is no run registry and no daemon; commands evolve independently.
+conditions). All six carry it in **one canonical scaffold** (v0.97.0,
+`command-md-scaffold-standardization` D1/D2): `# <Name> — <epithet>` title ·
+`## Identity & Mission` · `## Rules — load the schema first` · `## Adaptive Goal Protocol`,
+whose three steps are Entry (`$ARGUMENTS` and gating) · Goal (the done condition) ·
+`Not done — default FAIL` (count-pinned, always last). The rule-shaped content sits on the
+pair's other surface, `plugins/mochiko/schemas/<cmd>.yaml`, in the six sections every schema
+carries — roles · reserved · tools · ways-of-working · boundaries · fail-conditions, an
+unpopulated one marked deliberately empty rather than omitted (D4/D5).
+
+The scaffold superseded an earlier two-anatomy split — the v8 **goal + harness** form for
+`setup` / `specify` / `brainstorm` (Goal · Harness · Bindings; v8 rebuild v0.48.0, task layer
+de-granularized + slice absorbed into specify v0.49.0) and the six-section Delivery-Manager
+**charter** for `feature` / `architecture` / `implement` (the feature desk at v0.68.0, D10;
+the pipeline pair at v0.69.0, ADR `2026-08-13-charter-plan-implement`; the architecture desk
+at v0.81.0 — `plan` retired at v0.91.0). The supersession is layout and vocabulary only: the
+done-condition contracts survive it, and so does the Delivery-Manager identity on the three
+commands that hold it. The two desks (`feature`, `architecture`) carry a **per-visit** goal
+contract (converge to a done condition with the user); the four runs (`brainstorm`,
+`implement`, `setup`, `specify`) carry a **fixed** one. The lead plans and orchestrates the
+run within that frame; teammates vs subagents is its per-seat call. There is no run registry
+and no daemon; commands evolve independently within the shared scaffold.
 
 ## Cluster map
 
@@ -290,12 +299,12 @@ pointer · specs-index row) lands in the same moment — no separate feature-clo
 
 ### Feature — the product desk
 
-[`commands/feature.md`](plugins/mochiko/commands/feature.md). The first of the library's
-**charter-form** commands (`plan.md` and `implement.md` joined at v0.69.0,
-`architecture.md` at v0.81.0; `plan.md` retired at v0.91.0) — six sections
-(Identity & Mission · Adaptive Goal Protocol · Roles & Responsibilities · Tools · Ways of
-Working · Boundaries); its audit re-keys to *floor present + per-visit goal contract
-present*. The lead is chartered **Delivery Manager of the product
+[`commands/feature.md`](plugins/mochiko/commands/feature.md). The command that first carried the
+**Delivery-Manager charter** (v0.68.0, D10; `plan.md` and `implement.md` joined at v0.69.0,
+`architecture.md` at v0.81.0; `plan.md` retired at v0.91.0), on the canonical scaffold with
+every other command since v0.97.0 — its rule content in the six schema sections, its audit
+graded on the canonical criteria under the **desk branch**: floor present + per-visit goal
+contract present. The lead is chartered **Delivery Manager of the product
 desk**: the advisory front door to the capability map. A visit opens with the map-health
 report (stale stubs · unfolded deltas · cap pressure · a what-next line), converges to a
 one-line goal with an explicit done condition, then routes the demand by the
@@ -309,8 +318,8 @@ bug/improvement delta cards in delta scope; the desk runs no delivery harness. T
 
 ### Architecture — the architecture desk
 
-[`commands/architecture.md`](plugins/mochiko/commands/architecture.md), charter-form since
-v0.81.0. The peer of the product desk over the **product architecture store** at
+[`commands/architecture.md`](plugins/mochiko/commands/architecture.md), a Delivery-Manager
+desk since v0.81.0 and on the canonical scaffold since v0.97.0. The peer of the product desk over the **product architecture store** at
 `.mochiko/product/architecture/` — capabilities are what the product does, the store is how it
 is built, and neither desk writes the other's truth. A visit opens with the health view read
 from the derived index (`open` rows carrying no stance · stale `not-now` revisit triggers ·

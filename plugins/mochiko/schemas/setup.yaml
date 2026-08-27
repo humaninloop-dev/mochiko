@@ -2,8 +2,8 @@
 # rule-shaped content (command-content-schema D1/D7; setup converted under the D10
 # per-command rollout ruling, DECISIONS.md 2026-08-26). The command .md instructs a raw,
 # full Read of this file at command fire; the model interprets it live — no build step,
-# no binary on the read path (GI-020). Narrative (the Goal's mission line and done
-# condition) stays in plugins/mochiko/commands/setup.md.
+# no binary on the read path (GI-020). Narrative (Identity & Mission, Adaptive Goal
+# Protocol prose) stays in plugins/mochiko/commands/setup.md.
 #
 # Grammar (D6, as amended by D14): sections: list, each {id, title, intent, rules};
 # rule blocks {id, labels, class, text, pointer?} nest under their section.
@@ -12,7 +12,7 @@
 #           never grow a second prose surface (narrative stays in the .md).
 #   id      dotted slug — a NAME, never a summary; minted once, frozen (D11). A reword
 #           keeps its ID; a split mints children recording the parent; a merge retires
-#           the losers under a top-level tombstones: key. First mint — no tombstones yet.
+#           the losers under a top-level tombstones: key.
 #           FAIL clauses live under the setup.fail.* segment.
 #   labels  values from plugins/mochiko/schemas/command-labels.yaml (D8).
 #   class   floor = non-waivable, must-survive under the pair audit (M3) ·
@@ -47,10 +47,10 @@ vars:
   plugin_root: "${CLAUDE_PLUGIN_ROOT}"
 
 sections:
-  - id: setup.sec.harness
-    title: Harness
+  - id: setup.sec.roles
+    title: Roles & Responsibilities — seat wiring
     intent: >-
-      How the run is led, staffed, and graded, and the decisions reserved to the user.
+      How the run is led and staffed, and the independence its grading seats carry.
     rules:
 
       - id: setup.staffing-latitude
@@ -67,41 +67,6 @@ sections:
           adaptively via mochiko:analysis-iterative, then the catalog deck, card by card,
           recommend-then-arbitrate (agenda and deck named in setup.interrogation-inputs).
         pointer: "mochiko:analysis-iterative"
-
-      - id: setup.transport-floor
-        labels: [floor-pointer, seats]
-        class: floor
-        text: >-
-          When the run composes more than one seat, mochiko:patterns-transport-floor
-          governs its composition and messaging under a split trigger — message legs on
-          any multi-seat messaging, topology legs on shared writes — non-waivable once
-          triggered; referenced, never restated.
-        pointer: "mochiko:patterns-transport-floor"
-
-      - id: setup.model-tiering
-        labels: [seats, floor-pointer]
-        class: must
-        text: >-
-          Exploration and fact-finding dispatches ride
-          mochiko:patterns-model-tiering's class key — locate/enumerate reads to a native
-          Explore subagent spawned model: ${explore_model}, interpretive or
-          absence-driven reads on the session tier — and every seat brief carries the
-          routing rule; referenced, never restated.
-        pointer: "mochiko:patterns-model-tiering"
-
-      - id: setup.plan-approval-producers
-        labels: [seats, independence]
-        class: must
-        text: >-
-          Any seat that writes artifacts plans first and works only on a plan you
-          approved; grading and fact-finding seats are exempt.
-
-      - id: setup.author-grader-default-fail
-        labels: [independence]
-        class: floor
-        text: >-
-          No output is cleared by its author; grading reads the authored surfaces
-          themselves — never the author's report — default FAIL.
 
       - id: setup.stress-test-cold-seat
         labels: [independence, user-gate]
@@ -121,6 +86,12 @@ sections:
           to what the interrogation concluded; its map returns before you send the
           synthesis path and the cold read begins. In a pair, both seats build their maps
           independently.
+
+  - id: setup.sec.reserved
+    title: Reserved to the user — never the run's
+    intent: >-
+      Decisions held by the user: gates, rulings, and escalations no seat may take.
+    rules:
 
       - id: setup.coverage-survivor-routing
         labels: [user-gate]
@@ -173,20 +144,8 @@ sections:
           Final acceptance of the surface set is the user's, flagged proposal by flagged
           proposal.
 
-      - id: setup.no-git-mutations
-        labels: [user-gate]
-        class: floor
-        text: >-
-          Suggest commits; never run git mutations, never push.
-
-      - id: setup.acceptance-plain-text
-        labels: [user-gate]
-        class: floor
-        text: >-
-          User acceptance is plain blocking text, never a timed prompt.
-
-  - id: setup.sec.bindings
-    title: Bindings
+  - id: setup.sec.tools
+    title: Tools bindings
     intent: >-
       Surfaces, inputs, templates, and hand-offs the run binds to.
     rules:
@@ -212,13 +171,6 @@ sections:
           binary is absent — the shipped schema is the first-class source of truth) — the
           durable amend baseline.
 
-      - id: setup.durables-never-deleted
-        labels: [binding, stewardship]
-        class: floor
-        text: >-
-          Never offer to delete the synthesis ${memory_dir}/governance-intent.md or the
-          ledger ${memory_dir}/governance-ledger.md.
-
       - id: setup.interrogation-inputs
         labels: [binding, scope-entry]
         class: must
@@ -229,25 +181,6 @@ sections:
           analysis via mochiko:analysis-codebase into
           ${memory_dir}/codebase-analysis.md.
         pointer: "mochiko:analysis-codebase"
-
-      - id: setup.governance-region-ownership
-        labels: [binding]
-        class: floor
-        text: >-
-          The governance region in CLAUDE.md (`<!-- mochiko:governance:begin/end -->`)
-          is setup-owned and idempotently regenerated; everything outside those markers
-          is user content, never touched.
-
-      - id: setup.carve-outs-preserved
-        labels: [binding]
-        class: floor
-        text: >-
-          The governance-surfaces template's marked carve-outs are preserved verbatim,
-          never regenerated over the user's values: the `mochiko:domain-registry` block
-          in the domain-layer rules file under .claude/rules/mochiko/, and the
-          `mochiko:output-style` pair — the switch line in the CLAUDE.md governance
-          region plus .claude/rules/mochiko/output-style.md.
-        pointer: "mochiko:authoring-constitution"
 
       - id: setup.constitution-superseded
         labels: [binding]
@@ -288,14 +221,6 @@ sections:
         text: >-
           Greenfield → scaffold the empty FEATURES.md index.
 
-      - id: setup.map-never-overwrite
-        labels: [landing]
-        class: floor
-        text: >-
-          The never-overwrite floor covers both feature-map writes — the brownfield
-          reconstruction (setup.feature-map-brownfield) and the greenfield scaffold
-          (setup.feature-map-greenfield).
-
       - id: setup.baselines-bootstrap
         labels: [landing]
         class: must
@@ -318,15 +243,6 @@ sections:
           (setup.architecture-scope-handoff) and an empty concerns.md beside it, so the
           store's layout is complete from birth; greenfield's stub is simply a header
           with no topology under it.
-
-      - id: setup.store-ruled-content-never-here
-        labels: [binding, stewardship]
-        class: floor
-        text: >-
-          The store's ruled content is never authored in the run, on either path: a file
-          holding only a `Scope:` header is scaffold, not ruled content, and the first
-          /mochiko:architecture visit is what elicits it (greenfield) or reconstructs it
-          from what exists and confirms it with the user (brownfield).
 
       - id: setup.architecture-scope-handoff
         labels: [binding]
@@ -357,6 +273,108 @@ sections:
           Next step: /mochiko:specify for the first feature, and /mochiko:architecture
           for the product's architecture baseline — peer doors, neither ahead of the
           other (+ /mochiko:brainstorm when knowledge-management was adopted).
+
+  - id: setup.sec.ways-of-working
+    title: Ways of Working
+    intent: >-
+      How the run plans, grades, and reports; model routing for its seats.
+    rules:
+
+      - id: setup.model-tiering
+        labels: [seats, floor-pointer]
+        class: must
+        text: >-
+          Exploration and fact-finding dispatches ride
+          mochiko:patterns-model-tiering's class key — locate/enumerate reads to a native
+          Explore subagent spawned model: ${explore_model}, interpretive or
+          absence-driven reads on the session tier — and every seat brief carries the
+          routing rule; referenced, never restated.
+        pointer: "mochiko:patterns-model-tiering"
+
+      - id: setup.plan-approval-producers
+        labels: [seats, independence]
+        class: must
+        text: >-
+          Any seat that writes artifacts plans first and works only on a plan you
+          approved; grading and fact-finding seats are exempt.
+
+      - id: setup.author-grader-default-fail
+        labels: [independence]
+        class: floor
+        text: >-
+          No output is cleared by its author; grading reads the authored surfaces
+          themselves — never the author's report — default FAIL.
+
+      - id: setup.no-git-mutations
+        labels: [user-gate]
+        class: floor
+        text: >-
+          Suggest commits; never run git mutations, never push.
+
+      - id: setup.acceptance-plain-text
+        labels: [user-gate]
+        class: floor
+        text: >-
+          User acceptance is plain blocking text, never a timed prompt.
+
+  - id: setup.sec.boundaries
+    title: Boundaries — the non-waivable floor
+    intent: >-
+      Floor obligations no seat and no in-run ruling can waive.
+    rules:
+
+      - id: setup.transport-floor
+        labels: [floor-pointer, seats]
+        class: floor
+        text: >-
+          When the run composes more than one seat, mochiko:patterns-transport-floor
+          governs its composition and messaging under a split trigger — message legs on
+          any multi-seat messaging, topology legs on shared writes — non-waivable once
+          triggered; referenced, never restated.
+        pointer: "mochiko:patterns-transport-floor"
+
+      - id: setup.durables-never-deleted
+        labels: [binding, stewardship]
+        class: floor
+        text: >-
+          Never offer to delete the synthesis ${memory_dir}/governance-intent.md or the
+          ledger ${memory_dir}/governance-ledger.md.
+
+      - id: setup.governance-region-ownership
+        labels: [binding]
+        class: floor
+        text: >-
+          The governance region in CLAUDE.md (`<!-- mochiko:governance:begin/end -->`)
+          is setup-owned and idempotently regenerated; everything outside those markers
+          is user content, never touched.
+
+      - id: setup.carve-outs-preserved
+        labels: [binding]
+        class: floor
+        text: >-
+          The governance-surfaces template's marked carve-outs are preserved verbatim,
+          never regenerated over the user's values: the `mochiko:domain-registry` block
+          in the domain-layer rules file under .claude/rules/mochiko/, and the
+          `mochiko:output-style` pair — the switch line in the CLAUDE.md governance
+          region plus .claude/rules/mochiko/output-style.md.
+        pointer: "mochiko:authoring-constitution"
+
+      - id: setup.map-never-overwrite
+        labels: [landing]
+        class: floor
+        text: >-
+          The never-overwrite floor covers both feature-map writes — the brownfield
+          reconstruction (setup.feature-map-brownfield) and the greenfield scaffold
+          (setup.feature-map-greenfield).
+
+      - id: setup.store-ruled-content-never-here
+        labels: [binding, stewardship]
+        class: floor
+        text: >-
+          The store's ruled content is never authored in the run, on either path: a file
+          holding only a `Scope:` header is scaffold, not ruled content, and the first
+          /mochiko:architecture visit is what elicits it (greenfield) or reconstructs it
+          from what exists and confirms it with the user (brownfield).
 
   - id: setup.sec.fail-conditions
     title: Not done — default FAIL
@@ -401,3 +419,9 @@ sections:
         text: >-
           No feature map at close — brownfield reconstruction unconfirmed, or greenfield
           index unscaffolded.
+
+tombstones:
+  - id: setup.sec.harness
+    disposition: "superseded → rules redistributed across the D4 six-set (command-md-scaffold-standardization D3/D4/D5)"
+  - id: setup.sec.bindings
+    disposition: "superseded → rules redistributed across the D4 six-set (command-md-scaffold-standardization D3/D4/D5)"

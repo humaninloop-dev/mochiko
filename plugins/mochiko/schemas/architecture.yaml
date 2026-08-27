@@ -48,8 +48,7 @@ sections:
   - id: arch.sec.roles
     title: Roles & Responsibilities
     intent: >-
-      The Delivery Manager's always-happens floor, the other seats' wiring, and the
-      rulings reserved to the user.
+      The Delivery Manager's always-happens floor and the other seats' wiring.
     rules:
 
       - id: arch.staffing-latitude
@@ -144,6 +143,12 @@ sections:
         text: >-
           The drift-probe seat is an empirical read of the codebase grading the store's
           `As-built:` claims. Never the seat that wrote the claim; evidence, never memory.
+
+  - id: arch.sec.reserved
+    title: Reserved to the user — never the desk's
+    intent: >-
+      Decisions held by the user: gates, rulings, and escalations no seat may take.
+    rules:
 
       - id: arch.user-reserved-rulings
         labels: [user-gate]

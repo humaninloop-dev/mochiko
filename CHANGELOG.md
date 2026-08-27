@@ -5,6 +5,94 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.97.0] — 2026-08-27
+
+**One canonical command scaffold — the form split is superseded** (record
+`.mochiko/brainstorms/command-md-scaffold-standardization/record.md` D1–D7, solo cold
+review then user-accepted same day; `DECISIONS.md` 2026-08-27 row). The six command `.md`
+files stop varying: all of them now carry **one scaffold** — frontmatter (`description` ·
+`disable-model-invocation: true` · **`argument-hint`, newly canonical on all six**) ·
+`# <Name> — <epithet>` · a capped `## Identity & Mission` · `## Rules — load the schema
+first` · `## Adaptive Goal Protocol` whose three steps are **Entry** (the single home of
+`$ARGUMENTS`) · **Goal** · the count-pinned **Not done — default FAIL**, always last. The
+ruled charter-form / goal-form split (three commands each) is **superseded — layout and
+section vocabulary only**: the per-visit (desk) vs fixed (run) done-condition contracts
+survive intact inside the one scaffold (D1 as narrowed at review, C2). `brainstorm`,
+`setup`, and `specify` gain newly-authored Identity & Mission sections and lose the bold
+`**Goal:**` opener, whose content relocates into protocol steps Entry and Goal; `setup`'s
+stray `**You are the lead.**` line absorbs into its identity section. ADR
+`2026-08-02-doctrine-purge-wave-1` **decision 4 is superseded by name** (C1) — the command
+audit bar moves from "the command's own text" to the command's own **pair**, graded
+against the canonical scaffold — with the re-argument recorded: the purge bought cheap
+per-command evolution, and the observed price was the drift this wave closes.
+
+**Schema vocabularies unify in the same wave** (D3 `Contested` · D4 · D5). All six schemas
+adopt implement's six-set — `<cmd>.sec.roles` · `reserved` · `tools` · `ways-of-working` ·
+`boundaries` · `fail-conditions` — with `reserved` first-class everywhere (the desks
+extract their user-reserved rulings out of `roles`; the goal-form commands redistribute
+`harness` / `bindings`, whose nodes tombstone per D11/D14). Rule IDs and texts are
+unchanged and rule-ID-keyed provenance in `.mochiko/provenance.yaml` is untouched;
+existing ID prefixes (`impl` · `feat` · `arch` · `spec` · `setup` · `brainstorm`) are
+**frozen**, with a recorded derivation rule for future commands (prefix = the command
+filename stem, abbreviated only on a recorded collision). **Breadth invariant:** every
+schema carries all six sections always, an unpopulated one marked deliberately empty
+rather than omitted — which is what makes the `.md` Rules-block enumeration identical in
+shape across the library.
+
+**Checker and ceremony.** The D13 advisory checker gains a `.md` scaffold lint — canonical
+headings present and in order · the Rules-block enumeration asserted **set-wise** against
+the schema's section IDs (a count-vs-count check goes vacuous under the breadth
+invariant) · **every** `<cmd>.sec.*` token anywhere in the `.md` resolving to a live node,
+not only those inside the Rules block · no surviving rule text referencing a tombstoned or
+re-homed node · the Not-done count-pin matching the schema's `fail-condition` count — each
+new assertion negative-tested, advisory exit-code only, GI-019 untouched. The audit
+ceremony in `.claude/rules/mochiko/primitive-edits.md` collapses its **dual criteria blocks
+into one canonical-scaffold block** that branches internally on done-condition class —
+desks (`architecture` · `feature`) on the per-visit convergence contract, runs
+(`brainstorm` · `implement` · `setup` · `specify`) on the fixed one, `implement` keeping
+its entry gating, run-open confirmation, and attempt bounds — with every criterion the two
+old blocks graded relocated, none dropped. The exhaustive clause inventory owed before any
+supersession entry lands as **Appendix A** of the record: 59 clauses across the five
+carriers — 15 superseded-by-D1 · 28 survive · 16 carrying no clause for D1 to reach; four
+carriers superseded at least one clause and `charter-ritual-balance` D3 returned
+**no-clause-superseded** in full, the first live instance of the record's N4 carve.
+
+**Ripple and framing.** The shipped router `plugins/mochiko/skills/mochiko/SKILL.md` — whose
+composition paragraph still stated the two-anatomy split, and still called `implement` the
+library's only `.md` + schema pair, stale since the v0.95.0 rollout — re-keys to the
+canonical scaffold and takes its own supersession strip citing both rulings. `CLAUDE.md`
+(two sites: the author ≠ grader line and the landing-ritual check clause), `README.md`,
+`ARCHITECTURE.md` (six sites, hand-maintained legacy per the operating-docs rule), and the
+repo-level conversion skill `.claude/skills/converting-command-to-schema/SKILL.md` re-key
+with it, so a seventh command cannot reintroduce the superseded pattern. The
+"the 1 rules labeled" grammar defect dies in the canonical Not-done line. Framing ruled
+(D7): this is a **stage-1.5 tidy** of what stays prose under command-content-schema D2
+stage 1 — it neither advances nor retards the absorption trigger, and the three new
+identity sections are knowingly strip candidates if that trigger later fires. Delivery
+legs stay `Assumed` at n=0: the open first-live-run watch extends to the new scaffold
+(schema Read executed fully before first action from position 3 · empty-section runtime
+cost · one concrete six-set addressing benefit), with the baseline perturbation named
+eyes-open. **Build and audits:** 4 plan-approved producers under the sound-loop + transport
+floors (strictly disjoint ownership: six `.md` rewrites · five schema unifications · checker
+rework · ceremony + ripple), 3 fresh author≠grader validators — V1 (architecture ·
+brainstorm · feature pairs) **PASS round 1**, minors only (a reflow, a strip-clause
+clarification; its title-drift finding closed not-a-defect on the producer's six-schema
+census); V2 (implement · setup · specify pairs) **PASS round 1**, advisory-only; V3
+(checker · ceremony · inventory · ripple) 4/5 round 1 with this entry the one FAIL (a
+shipped-surface omission) → fix round → delta-confirm **5/5 PASS**, all 59 inventory
+clauses verified against their carriers. Rule conservation proven three ways independently
+(producer rebuilder, V1/V2 HEAD-compare, checker): **320 rules byte-identical to HEAD**,
+zero ID changes, 6/6 section tombstones, 107 provenance anchors resolve. V1 also discharged
+the record's M5 re-inventory — both desks confirmed **under-extracted on `fail-condition`**
+(architecture 1 vs 21 other floor rules, feature 1 vs 12), user-ruled deferred to BACKLOG
+("Desk FAIL-set widening") as its own ruled pass. Checker: **PASS 0 findings on all six
+pairs** (`--all` exit 0); negative matrix **30/30**, mutation-tested for teeth (each
+disabled assertion family isolated exactly its own probes); the persisted harness
+`scripts/test-check-command-schema.py` is a ruled departure from the prior ephemeral
+pattern. Strips landed across eight files including the new
+`.mochiko/strips/primitive-edits.md`. Gates 4/5/6: this entry · marketplace 0.97.0 ·
+`cargo test` 12/12.
+
 ## [0.96.0] — 2026-08-26
 
 **Runtime-only schemas — the D16 amendment** (record

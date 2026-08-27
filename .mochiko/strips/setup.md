@@ -9,6 +9,127 @@ it carries the `<!-- shape-form: v7 -->` marker and binds P18–P20.
 **Also stale:** setup is a **`.md` + schema pair** as of the v0.95.0 conversion below — the
 v7-form claim describes the pre-pair shape only.
 
+<!-- Wave context: the command-`.md`-scaffold standardization wave (v0.97.0) — one canonical
+`.md` scaffold for all six pair commands (D1/D2: Identity & Mission · Rules block · Adaptive
+Goal Protocol with Entry / Goal / count-pinned Not-done last) and the schema six-set
+unification (D3/D4/D5; rule IDs and texts carried unchanged — pure relocation, the D14
+precedent). Ruling for every [v0.97.0] entry below:
+`.mochiko/brainstorms/command-md-scaffold-standardization/record.md` D1–D7 as review-amended
+→ `DECISIONS.md` 2026-08-27 command-md-scaffold-standardization row. -->
+
+## [v0.97.0] The bold `**Goal:**` opener, the `**You are the lead.**` line, and the `## Goal` section — the goal-form scaffold superseded (D1/D2)
+
+- **Disposition:** superseded → `plugins/mochiko/commands/setup.md`: the opener's mission
+  clauses and the `**You are the lead.**` line absorb into the new `## Identity & Mission`
+  (D2 step 2, explicit); the `$ARGUMENTS` clause into `## Adaptive Goal Protocol` step 1
+  (Entry, N1); the `## Goal` body verbatim into step 2.
+- **Tier failed:** n/a — supersession by ruling (`command-md-scaffold-standardization` D1 as
+  narrowed at review C2, D2, N1; `DECISIONS.md` 2026-08-27 row).
+- **Content:** verbatim — "**Goal:** establish or update the project's governance so it
+  follows the user's declared intent — never a fixed baseline — and lives where Claude Code
+  natively loads it. There is no `constitution.md`. `$ARGUMENTS` = optional setup request;
+  empty is fine — propose the mode from what the workspace shows." · "**You are the lead.**
+  Plan the run and orchestrate it toward the Goal." · the heading "## Goal".
+- **Kept deliberately:** every clause of the opener survives in the identity section word for
+  word (establish-or-update · declared intent · never a fixed baseline · natively loads it ·
+  no `constitution.md`), and the lead line's second sentence survives as "Plan the run and
+  orchestrate it toward the goal fixed below" — retargeted only because `## Goal` is now
+  protocol step 2. The whole `## Goal` body relocated verbatim; the fixed done-condition
+  contract untouched (D1 C2); the 6-count Not-done line verbatim.
+- **Consumers assessed:** as brainstorm's, plus the two in-Goal section references (next
+  entry).
+
+## [v0.97.0] The Rules-block three-section enumeration (`setup.sec.harness` · `setup.sec.bindings`) — superseded by the unified six-set (D3/D4/D5)
+
+- **Disposition:** superseded → the six-section enumeration; the harness gloss splits across
+  `setup.sec.roles` ("how the run is led, staffed, and graded") and `setup.sec.reserved`
+  ("the decisions reserved to the user"), the bindings gloss carries onto `setup.sec.tools`,
+  `ways-of-working` / `boundaries` newly enumerated under D5.
+- **Tier failed:** n/a — supersession by ruling (`command-md-scaffold-standardization` D3,
+  D4, D5; `DECISIONS.md` 2026-08-27 row).
+- **Content:** verbatim — "run's binding rules, nested in three sections, each addressable by
+  its section ID: `setup.sec.harness` (how the run is led, staffed, and graded, and the
+  decisions reserved to the user) · `setup.sec.bindings` (surfaces, inputs, and hand-offs) ·
+  `setup.sec.fail-conditions` (the Not-done set)."
+- **Kept deliberately:** every gloss word carried across — the tools gloss widened purely
+  additively in-wave to name the feature-map and store landings ("surfaces, inputs, … and
+  hand-offs" all survive word for word); surrounding boilerplate verbatim (anchor phrase
+  "before the mode is proposed, before any seat is spawned", raw-Read clause, interpretation
+  clause, not-open-until-read close). The new `ways-of-working` and `boundaries` glosses are
+  wave-authored prose, retuned once in-wave to match the schema's actual contents
+  (lead-approved scope extension).
+- **Consumers assessed:** `plugins/mochiko/schemas/setup.yaml` tombstones both nodes the same
+  wave; checker lints re-keyed the same wave.
+
+## [v0.97.0] The two in-Goal `setup.sec.bindings` references — re-pointed under the unified vocabulary (D3/D4, I2)
+
+- **Disposition:** superseded → `setup.sec.tools` at both sites, now inside `## Adaptive Goal
+  Protocol` step 2.
+- **Tier failed:** n/a — supersession by ruling (D3 + D4; the D6-R1 I2 lint fold that named
+  these two sites by line, shipped `setup.md:35` and `setup.md:40`).
+- **Content:** verbatim — "(feature-map rules: `setup.sec.bindings`)" and "(store rules:
+  `setup.sec.bindings`)".
+- **Kept deliberately:** both survive as references — the reader is still pointed at the
+  schema section carrying the feature-map and store rules; only the section ID changed.
+- **Consumers assessed:** the schema producer's routing confirmed both targets — the
+  substantive feature-map rules (`setup.feature-map-brownfield` / `-greenfield`) and store
+  rules (`setup.store-scaffold-unconditional` · `setup.architecture-scope-handoff` ·
+  `setup.baselines-bootstrap`) sit in `setup.sec.tools`; the floor-class
+  `setup.map-never-overwrite` / `setup.store-ruled-content-never-here` sit in
+  `setup.sec.boundaries` with `class: floor` unchanged. The I2 token-resolution lint is the
+  deterministic guard.
+
+## [v0.97.0] `setup.sec.harness` and `setup.sec.bindings` — tombstoned; their 34 rules redistributed across the six-set (D3/D4/D5)
+
+- **Disposition:** superseded → the six minted section nodes in
+  `plugins/mochiko/schemas/setup.yaml` (`setup.sec.roles` · `reserved` · `tools` ·
+  `ways-of-working` · `boundaries`, plus the pre-existing `setup.sec.fail-conditions`). Both
+  retired IDs are recorded under the schema's top-level `tombstones:` key per D11. All 34
+  rules relocate with ID, text, labels, class and pointer byte-identical.
+- **Tier failed:** n/a — supersession by ruling (record D3 · D4 · D5; `DECISIONS.md`
+  2026-08-27 row).
+- **Content:** verbatim, the two section nodes' `title:` and `intent:` lines that left —
+  `setup.sec.harness`, title "Harness", intent "How the run is led, staffed, and graded, and
+  the decisions reserved to the user." · `setup.sec.bindings`, title "Bindings", intent
+  "Surfaces, inputs, templates, and hand-offs the run binds to." No rule content left the
+  file. Plus, from the same schema's grammar header, the sentence the new `tombstones:` key
+  made false — verbatim: "First mint — no tombstones yet." (the surrounding line, "a merge
+  retires the losers under a top-level tombstones: key.", survives unchanged).
+- **Kept deliberately:** every one of the 40 rules survives — 34 relocated, the 6
+  `fail-condition` rules untouched. Counts identical pre/post (40 / 6). The six floor-class
+  bindings rules (`setup.durables-never-deleted` · `setup.governance-region-ownership` ·
+  `setup.carve-outs-preserved` · `setup.map-never-overwrite` ·
+  `setup.store-ruled-content-never-here` · `setup.transport-floor`) land in
+  `setup.sec.boundaries`, which is where their non-waivable class belongs — a relocation of
+  home, never of force: `class: floor` is unchanged on every one. The grammar header's
+  tombstone clause itself survives — only its no-tombstones-yet claim leaves, superseded by
+  the two section tombstones this same edit mints.
+- **Consumers assessed:** provenance rule-ID-keyed (11 `setup.*` anchors, no `sec.` keys) —
+  no re-keys. No surviving rule text references either retired node; the five intra-schema
+  citations (`setup.interrogation-inline` → `setup.interrogation-inputs`,
+  `setup.coverage-survivor-routing` → `setup.blind-map-dispatch`, `setup.map-never-overwrite`
+  → the two feature-map rules, `setup.store-scaffold-unconditional` ↔
+  `setup.architecture-scope-handoff`) all name RULE IDs, which are frozen and survive — D15
+  closure holds without a single reword (the I8 check). `setup.md` carried the retired
+  section tokens at lines 35 and 40, outside its Rules block (record I2) — re-keyed by the
+  same wave's `.md` rewrite, and the widened checker's all-token-resolution lint is what
+  holds that.
+
+## [v0.97.0] Schema grammar-header narrative description — re-worded to the post-D2 scaffold (D2)
+
+- **Disposition:** superseded → the canonical post-D2 wording carried by all six schemas:
+  "Narrative (Identity & Mission, Adaptive Goal Protocol prose) stays in
+  plugins/mochiko/commands/setup.md."
+- **Tier failed:** n/a — supersession by ruling (record D2; `DECISIONS.md` 2026-08-27 row).
+- **Content:** verbatim, the sentence that left — "Narrative (the Goal's mission line and
+  done condition) stays in plugins/mochiko/commands/setup.md."
+- **Kept deliberately:** the clause's whole job survives — naming which surface holds the
+  narrative and which holds the rules. Only its enumeration of the retired goal-form sections
+  leaves. No rule content touched.
+- **Consumers assessed:** header comment only — never parsed, never read by a run; the
+  checker is unaffected (re-run: 0 findings). All six schemas now carry this sentence
+  byte-identical but for the filename.
+
 <!-- Wave context: the D16 provenance-sidecar amendment (v0.96.0) — schemas carry runtime
 content only; decision anchors move to `.mochiko/provenance.yaml`, keyed by rule ID. Ruling:
 record D16 (post-rollout amendment, user-ruled 2026-08-26, incl. the repo-side-home

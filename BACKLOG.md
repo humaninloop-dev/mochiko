@@ -32,26 +32,27 @@ D10 rollout DELIVERED same day at v0.95.0 — all six commands now `.md`+schema 
   consumers: D2 absorption, D2 retreat, D4 ceremony graduation. *Extended 2026-08-27
   (`command-md-scaffold-standardization` C3/D2/D4/D5): probes also measure the canonical
   scaffold — Read executed fully before first action from position 3, behind identity prose ·
-  empty-section runtime cost · one concrete six-set addressing benefit. Baseline perturbation
-  accepted eyes-open: the pre-rewrite pair form never fires live.*
+  empty-section runtime cost · one concrete six-set addressing benefit · a run resolving
+  `spec.lead-latitude`'s "the Goal state" referent now that Goal is a step label, not a
+  heading (V2 advisory). Baseline perturbation accepted eyes-open: the pre-rewrite pair form
+  never fires live.*
 
 ## Command `.md` scaffold build
 
 *(ruled + accepted 2026-08-27, `command-md-scaffold-standardization` D1–D7; provenance:
-`.mochiko/brainstorms/command-md-scaffold-standardization/record.md`)*
-
-- [ ] **Build (cold-buildable):** one wave per the record's 8-item build surface — six `.md`
-  rewrites to the canonical scaffold (3 new capped Identity & Mission sections = sound-loop
-  judgment writes · `argument-hint` added · goal-form opener content into protocol steps 1–2) ·
-  six schema unifications to the six-set (tombstone `{brainstorm,setup,spec}.sec.{harness,bindings}`,
-  mint `sec.reserved` where absent, rules relocate IDs/texts unchanged with the I8
-  no-dangling-reference check, explicit empty markers) · checker lint widening (set-wise IDs ·
-  all-token resolution incl. `setup.md:35`/`:40` · tombstone-ref · negative tests) · ceremony
-  re-key to one class-branching criteria block with the full carrier clause inventory (incl.
-  purge-ADR decision 4; no-clause-superseded carve for contract-only carriers) · ripple:
-  `README.md:5` + `ARCHITECTURE.md` charter sites + conversion skill · strips + per-pair
-  author≠grader audits · gates 4/5/6. Open at build: empty-marker grammar; desks' one-clause
-  FAIL-set re-inventory (M5 — a found under-extraction is a separate ruled addition).
+`.mochiko/brainstorms/command-md-scaffold-standardization/record.md`. Build DELIVERED same
+day at v0.97.0 — build item → trail; the extended first-live-run watch rides the
+Command-content schema section's watch item)*
+- [ ] **Desk FAIL-set widening — confirmed under-extraction, user-deferred (2026-08-27).**
+  The v0.97.0 build's V1 audit discharged the M5 re-inventory: both desks are under-extracted
+  on `fail-condition` — architecture 1 vs 21 other floor rules, feature 1 vs 12 (siblings run
+  4–15). Candidates with FAIL mirrors in sibling commands: arch `truth-user-ruling` ·
+  `breadth-invariant` · `author-grader-separation` · `no-silent-store-mutations` ·
+  `drift-empirical`; feat `capability-writes-sacred` · `no-self-graded-writes` ·
+  `no-silent-map-mutations` · `lane-never-widens`. User ruled: separate ruled pass (label
+  flips or new rules + count-pin updates + strips + audit), never a silent widening.
+  Provenance: `.mochiko/brainstorms/command-md-scaffold-standardization/record.md` (M5, V1 F1
+  in the build trail).
 
 ## Skill-compression eval-primitive build
 

@@ -5,6 +5,110 @@ shared team-form prose relocated into `templates/command-shape.md` (design:
 `.mochiko/brainstorms/pattern-codification-and-minimalism/record.md`, D3/D4/D9). **Stale as a standing claim:**
 the shape is now **v5** (2026-07-30) — see the v0.35.0 section below.
 
+<!-- Wave context: the command-`.md`-scaffold standardization wave (v0.97.0) — one canonical
+`.md` scaffold for all six pair commands (D1/D2: Identity & Mission · Rules block · Adaptive
+Goal Protocol with Entry / Goal / count-pinned Not-done last) and the schema six-set
+unification (D3/D4/D5: `<prefix>.sec.roles` · `reserved` · `tools` · `ways-of-working` ·
+`boundaries` · `fail-conditions`; rule IDs and texts carried unchanged — pure relocation, the
+D14 precedent). Ruling for every [v0.97.0] entry below:
+`.mochiko/brainstorms/command-md-scaffold-standardization/record.md` D1–D7 as review-amended
+→ `DECISIONS.md` 2026-08-27 command-md-scaffold-standardization row. -->
+
+## [v0.97.0] The bold `**Goal:**` opener and the `## Goal` section — the goal-form scaffold superseded (D1/D2)
+
+- **Disposition:** superseded → `plugins/mochiko/commands/brainstorm.md` `## Adaptive Goal
+  Protocol`; the opener's mission clause and `$ARGUMENTS` handling into step 1 (Entry, N1),
+  the `## Goal` body verbatim into step 2.
+- **Tier failed:** n/a — supersession by ruling (`command-md-scaffold-standardization` D1 as
+  narrowed at review C2, D2, N1; `DECISIONS.md` 2026-08-27 row) — the goal-form half of the
+  F3 two-form split.
+- **Content:** verbatim — "**Goal:** think `$ARGUMENTS` through with the user and leave one
+  hardened decision record behind. Empty topic → ask what we are thinking through." and the
+  heading "## Goal".
+- **Kept deliberately:** the fixed done-condition contract untouched (D1's C2 narrowing
+  supersedes layout and vocabulary only) — the whole `## Goal` body (record path, the five
+  confidence marks, cold-review-or-waiver, index bookkeeping, user acceptance) relocated
+  verbatim into step 2; the 4-count Not-done line verbatim. (No strip owed for the new
+  `## Identity & Mission` — pure addition riding D2 step 2, knowingly strip-fodder if the D7
+  absorption trigger later fires.)
+- **Consumers assessed:** `.claude/rules/mochiko/primitive-edits.md` dual criteria blocks
+  collapsed the same wave (D6-R2); `.claude/skills/converting-command-to-schema/SKILL.md`
+  re-keyed the same wave (build item 7); `README.md:5` ripple (build item 6).
+
+## [v0.97.0] The Rules-block three-section enumeration (`brainstorm.sec.harness` · `brainstorm.sec.bindings`) — superseded by the unified six-set (D3/D4/D5)
+
+- **Disposition:** superseded → the six-section enumeration in
+  `plugins/mochiko/commands/brainstorm.md`; the harness gloss splits across
+  `brainstorm.sec.roles` and `brainstorm.sec.reserved`, the bindings gloss carries whole onto
+  `brainstorm.sec.tools`, and `ways-of-working` / `boundaries` are newly enumerated under the
+  D5 breadth invariant.
+- **Tier failed:** n/a — supersession by ruling (`command-md-scaffold-standardization` D3,
+  D4, D5; `DECISIONS.md` 2026-08-27 row).
+- **Content:** verbatim — "run's binding rules, nested in three sections, each addressable by
+  its section ID: `brainstorm.sec.harness` (lead role, seat wiring, review independence, and
+  the decisions reserved to the user) · `brainstorm.sec.bindings` (deliverable, index,
+  synthesis, register, next step) · `brainstorm.sec.fail-conditions` (the Not-done set)."
+- **Kept deliberately:** every gloss word — "lead role, seat wiring, review independence" →
+  `roles`; "the decisions reserved to the user" → `reserved`; "deliverable, index, synthesis,
+  register, next step" → `tools`; "the Not-done set" unchanged. Surrounding boilerplate
+  verbatim (anchor phrase "before any questioning, before any seat is spawned", raw-Read
+  clause, interpretation clause, not-open-until-read close). The new `ways-of-working` and
+  `boundaries` glosses are wave-authored prose, retuned once in-wave to match the schema's
+  actual contents (lead-approved scope extension).
+- **Consumers assessed:** `plugins/mochiko/schemas/brainstorm.yaml` tombstones
+  `brainstorm.sec.harness` / `.bindings` the same wave; the checker's section-count and
+  token-resolution lints re-keyed the same wave; no `brainstorm.sec.*` token appears anywhere
+  else in this `.md`.
+
+## [v0.97.0] `brainstorm.sec.harness` and `brainstorm.sec.bindings` — tombstoned; their 25 rules redistributed across the six-set (D3/D4/D5)
+
+- **Disposition:** superseded → the six minted section nodes in
+  `plugins/mochiko/schemas/brainstorm.yaml` (`brainstorm.sec.roles` · `reserved` · `tools` ·
+  `ways-of-working` · `boundaries`, plus the pre-existing `brainstorm.sec.fail-conditions`).
+  Both retired IDs are recorded under the schema's top-level `tombstones:` key per D11.
+  All 25 rules relocate with ID, text, labels, class and pointer byte-identical.
+- **Tier failed:** n/a — supersession by ruling (record D3 · D4 · D5; `DECISIONS.md`
+  2026-08-27 row).
+- **Content:** verbatim, the two section nodes' `title:` and `intent:` lines that left —
+  `brainstorm.sec.harness`, title "Harness", intent "How the session is led, staffed,
+  reviewed, and bounded, and the decisions reserved to the user." ·
+  `brainstorm.sec.bindings`, title "Bindings", intent "Deliverable, index, synthesis,
+  register, and next-step bindings the session lands on." No rule content left the file.
+  Plus, from the same schema's grammar header, the sentence the new `tombstones:` key made
+  false — verbatim: "First mint — no tombstones yet." (the surrounding line, "a merge retires
+  the losers under a top-level tombstones: key.", survives unchanged).
+- **Kept deliberately:** every one of the 29 rules survives — 25 relocated, the 4
+  `fail-condition` rules untouched in their existing node. Rule counts and the
+  `fail-condition` count are identical pre/post (29 / 4). Both retired intents' substance
+  survives distributed across the six new intents, which is why nothing relocates to a
+  strip-only home. The grammar header's tombstone clause itself survives — only its
+  no-tombstones-yet claim leaves, superseded by the two section tombstones this same edit
+  mints.
+- **Consumers assessed:** provenance is rule-ID-keyed (9 `brainstorm.*` anchors, no `sec.`
+  keys) — no anchor re-keys. No surviving rule text in the schema references
+  `brainstorm.sec.harness` or `brainstorm.sec.bindings` (grepped, clean — the I8 check).
+  `brainstorm.md`'s Rules-block enumeration and its "nested in three sections" phrase are
+  re-keyed to six by the same wave's `.md` rewrite; the checker's D14 section-count guard
+  reads that phrase. The D11 both-live-and-tombstoned guard is satisfied — neither retired ID
+  is re-minted.
+
+## [v0.97.0] Schema grammar-header narrative description — re-worded to the post-D2 scaffold (D2)
+
+- **Disposition:** superseded → the canonical post-D2 wording carried by all six schemas:
+  "Narrative (Identity & Mission, Adaptive Goal Protocol prose) stays in
+  plugins/mochiko/commands/brainstorm.md."
+- **Tier failed:** n/a — supersession by ruling (record D2 — the goal-form `**Goal:**` opener
+  and `## Goal` section are superseded by the canonical scaffold's Adaptive Goal Protocol;
+  `DECISIONS.md` 2026-08-27 row).
+- **Content:** verbatim, the sentence that left — "Narrative (the goal statement and the Goal
+  section's done condition) stays in plugins/mochiko/commands/brainstorm.md."
+- **Kept deliberately:** the clause's whole job survives — naming which surface holds the
+  narrative and which holds the rules. Only its enumeration of the retired goal-form sections
+  leaves, replaced by the sections the D2 scaffold actually ships. No rule content touched.
+- **Consumers assessed:** header comment only — never parsed, never read by a run; the checker
+  reads `kind`, `command`, `vars`, `sections`, `tombstones` and is unaffected (re-run: 0
+  findings). All six schemas now carry this sentence byte-identical but for the filename.
+
 <!-- Wave context: the D16 provenance-sidecar amendment (v0.96.0) — schemas carry runtime
 content only; decision anchors move to `.mochiko/provenance.yaml`, keyed by rule ID. Ruling:
 record D16 (post-rollout amendment, user-ruled 2026-08-26, incl. the repo-side-home
