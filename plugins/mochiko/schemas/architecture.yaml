@@ -1,71 +1,11 @@
-# Command content schema for /mochiko:architecture — SOURCE OF TRUTH for the command's
-# rule-shaped content (command-content-schema D1/D7, DECISIONS.md 2026-08-26; grammar
-# amended by command-schema-ontology D1–D8, DECISIONS.md 2026-08-27). The command .md
-# instructs a raw, full Read of this file at command fire; the model interprets it live —
-# no build step, no binary on the read path (GI-020). Narrative (Identity & Mission,
-# Adaptive Goal Protocol prose) stays in plugins/mochiko/commands/architecture.md.
-#
-# Grammar (D6, as amended by D14 and by command-schema-ontology D1–D8):
-# sections: list, each {id, title, intent, rules}; rule blocks
-# {id, labels, class, kind?, when?, enforces?, extends?, text, pointer?} nest under their section.
-#   section id  arch.sec.<slug> — minted once like rule IDs (D11); title verbatim from
-#           the group it carries; intent one line, navigation only — sections never grow a
-#           second prose surface (narrative stays in the .md).
-#   id      dotted slug — a NAME, never a summary; minted once, frozen (D11). A reword
-#           keeps its ID; a split mints children recording the parent; a merge retires
-#           the losers under a top-level tombstones: key.
-#           FAIL clauses live under the arch.fail.* segment.
-#   labels  values from plugins/mochiko/schemas/command-labels.yaml (D8).
-#   class   floor = non-waivable, must-survive under the pair audit (M3) ·
-#           must = binding obligation · advisory = may change without supersession ceremony.
-#   kind    one of constraint · duty · gate · reservation · binding · bound · routing ·
-#           fail · latitude. CONSTRAINT IS THE DEFAULT — an absent kind: reads constraint
-#           and is never written. kind crosscuts sections; it does not re-group them.
-#           kind: fail is the operative selector for the Not-done set (never defaulted on
-#           an arch.fail.* ID), and the .md Not-done line counts exactly that set.
-#   when    a conjunction of dimension: value terms from this schema's conditions: block —
-#           declared vocabulary only, no boolean algebra, no negation beyond a declared
-#           value, no free-form strings. It carries WHETHER the rule binds, never the
-#           rule's internal logic: a rule-level activation guard lives in when: alone and
-#           leaves the text (single-homing), while intra-rule branches, exceptions, and
-#           carve-outs stay prose. On a class: floor rule, when: gates when the obligation
-#           APPLIES — a floor is always read and always delivered, whatever its when:.
-#   enforces  on kind: fail nodes only — the local rule IDs this end-state predicate is the
-#           contrapositive of. An empty list is legal ONLY with a one-line reason (the
-#           obligation lives in a pointer skill), so absence is a statement, never an omission.
-#   extends  common.<slug> — inherits text, labels, and pointer ONLY from that block in
-#           plugins/mochiko/schemas/common.yaml, which the .md instructs Read raw in the
-#           same first action. class, kind, when, and enforces are ALWAYS local; a locally
-#           declared text/labels/pointer replaces the inherited one; ${var} placeholders in
-#           inherited text substitute from THIS schema's vars:; the stub's arch.* ID
-#           stays the citable ID.
-#   text    carries ${var} placeholders substituted from vars: at read (D5). Verbatim
-#           command strings carry no placeholders.
-#   provenance  decision anchors live in .mochiko/provenance.yaml (D16, repo-side —
-#           not shipped), keyed by rule ID; never read by the run; an anchored
-#           rule still leaves only by recorded supersession-by-ruling.
-#   pointer the skill that owns the floor or procedure — the rule holds the pointer,
-#           never the procedure. Multi-skill bindings name every skill in text.
-# Top-level conditions: declares every run-shape dimension this schema's rules use — the
-#   name, its closed value set (or presence), and its resolution point: entry-derived ·
-#   surface-presence · moment-resolved(<moment>) · user-ruled · standing-trigger. A
-#   moment-resolved dimension is resolved at the named moment; rules gated on it are
-#   inapplicable until it resolves.
-# Top-level moments: declares the named anchor points this schema's rules reference, each
-#   with one navigation line. The list is UNORDERED — relative sequence stays the .md
-#   protocol's narrative and the lead's latitude, and no precedence between moments is
-#   claimed or checkable.
-# Referential closure (D15): a rule's text is self-contained — every reference resolves
-#   within the block or the schema's addressable namespace (${var} · arch.* IDs ·
-#   arch.sec.* · common.* blocks · class:/kind: values · conditions:/moments: names ·
-#   labels · pointer: skills · file paths). A parenthetical arch.<slug> citation is the
-#   dependency idiom and must resolve to a live node or a tombstone (D5).
-#   Deixis ("these rules", "this section", "above"/"below", document-shape remarks) is a
-#   defect — quoted alone, the reference dangles. The checker lints a curated marker list
-#   (warning-class). "this schema", "the desk", and "the visit" are legal self-reference.
-#
-# Rule grain (D12): one block per independently-citable obligation.
-# Advisory checker: scripts/check-command-schema.py (D13) — exit-code signal only.
+# Command content schema for /mochiko:architecture. The command .md instructs a raw, full Read of
+# this file at command fire; the model interprets it live — the .md Rules block carries the
+# reading grammar. Two semantics live only here:
+#   class   floor = non-waivable · must = binding obligation · advisory = guidance, not binding.
+#   conditions:  each dimension declares its resolution point (entry-derived · surface-presence ·
+#           moment-resolved(<moment>) · user-ruled · standing-trigger); a moment-resolved
+#           dimension is unresolved until its named moment — rules gated on it are inapplicable
+#           until then.
 kind: command
 command: architecture
 

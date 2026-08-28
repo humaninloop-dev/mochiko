@@ -1,55 +1,7 @@
-# Shared rule library for the command content schemas (command-schema-ontology D8, as
-# amended by C2 and C3 — `.mochiko/brainstorms/command-schema-ontology/record.md`,
-# `DECISIONS.md` 2026-08-27). D8 is a recorded supersession-by-ruling of
-# command-content-schema D3 — amended, not reversed: per-command rules remain the default
-# and the label registry remains the cross-command link.
-#
-# Extraction bar (as amended by the near-dup convergence ruling,
-# .mochiko/decisions/2026-08-28-near-dup-convergence.md R1/R2, DECISIONS.md 2026-08-28):
-# a block lives here where the same responsibility appears across three or more command
-# schemas in exact or NEAR-identical wording — near-identical meaning differences confined
-# to phrasing, illustration, or unit nouns. Convergence takes the strongest member wording,
-# never an average; a member whose extra content is command-specific keeps its local text
-# (the edge allowlisted in scripts/similar-rules-allowlist.yaml). Anything below that bar
-# stays a per-command rule. A common block is boilerplate by definition, never
-# command-specific judgment.
-#
-# Common blocks are never binding on their own: a command binds one by carrying a rule stub
-# with `extends: common.<slug>` in its own schema, and the stub's `<cmd>.*` ID stays the
-# citable ID.
-#
-# Resolution rule (interpreted live at command fire, no build step — GI-020):
-#   INHERITED — `text`, `labels`, and `pointer`, and those three only. Any one of them
-#     declared locally on the stub REPLACES the inherited value.
-#   ALWAYS LOCAL — `class:` and every absence-meaningful field (`kind:`, `when:`,
-#     `enforces:`). A stub MUST declare `class:` explicitly, so a floor's bindingness stays
-#     readable from the stub's own file; the absence defaults (an absent `kind:` reads
-#     `constraint`; an absent `when:` binds unconditionally) apply after resolution. No
-#     block below carries any of these fields — one here would be inherited but always
-#     overridden, which is dead weight and a trap for a reader who assumes it applies.
-#   `${var}` placeholders in inherited text substitute from the BINDING command schema's
-#     `vars:` block, never from this file.
-#
-# A command `.md` whose schema uses `extends` instructs a raw, full Read of this file
-# alongside its own schema, in the same first action. IDs here are minted once, like rule
-# IDs (D11): a reword keeps its ID, a split mints children recording the parent, a merge
-# retires the losers.
-#
-# History: this file opened as the six-block prototype of the rule-similarity dive
-# (Option A, 2026-08-27), re-screened at D8/C2 against the 3+-exact-duplicate bar. Four
-# blocks passed and ship. `common.author-grader-default-fail` (2 members) and
-# `common.model-tiering` (2) failed the bar and were removed; both revert to per-command
-# rules. Neither ever shipped — the prototype was never committed — so no tombstone is
-# owed. `common.transport-floor` carries guard-stripped text: its seat-count guard is
-# single-homed into each binding stub's `when:` (D3), so the shared block carries less
-# than the prototype's version appeared to.
-# 2026-08-28 (v0.99.0, near-dup convergence wave): the detector census found both removed
-# prototype blocks at 4+ members under the widened bar — `author-grader-default-fail` and
-# `model-tiering` are re-minted below (fresh mint, no tombstone was owed), joined by
-# `no-acceptance` and `plan-approval-producers` (exact triples the original bar already
-# licensed) and `tools-referenced-never-restated`; `transport-floor` and
-# `acceptance-plain-text` texts widened under strongest-wording-wins (flags A / plan move 7
-# of the ADR).
+# Shared rule library for the command content schemas. A block binds only through a command
+# schema's rule stub carrying `extends: common.<slug>` — the stub's `<cmd>.*` ID stays the
+# citable ID, inheritance covers `text`/`labels`/`pointer` only, and `${var}` placeholders in
+# inherited text substitute from the BINDING command schema's `vars:`, never from this file.
 kind: command-common
 
 rules:

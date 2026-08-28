@@ -1,5 +1,36 @@
 # Strip notes — `commands/architecture.md`
 
+<!-- Wave context: the schema-header runtime-kernel wave (v0.100.0) — shipped schema
+top-of-file header comments trimmed to runtime-essential content. Ruling for every
+[v0.100.0] entry below: `.mochiko/decisions/2026-08-28-schema-header-runtime-kernel.md`
+(a recorded supersession-by-amendment of command-content-schema D14) + `DECISIONS.md`
+2026-08-28 row. Pre-edit verbatim text: `git show e44b33d:plugins/mochiko/schemas/<file>`. -->
+
+## [v0.100.0] `schemas/architecture.yaml` header — full-grammar comment superseded by the runtime kernel
+- **Disposition:** superseded → the runtime-kernel header; the grammar is single-sourced in
+  `plugins/mochiko/commands/architecture.md` "Rules — load the schema first" (runtime) and
+  `.claude/rules/mochiko/primitive-edits.md` criterion 11 + the `command-content-schema` /
+  `command-schema-ontology` records (edit-time)
+- **Tier failed:** n/a — supersession by ruling (`2026-08-28-schema-header-runtime-kernel.md` R1)
+- **Content:** the ~68-line canonical D14 header, faithfully compressed: provenance paragraph
+  (D1/D7 citations, GI-020 note, narrative-stays-in-.md note) · full grammar block (section id ·
+  id minting/freeze/tombstones D11 · labels D8 · class incl. M3 audit note · nine-kind vocabulary ·
+  when semantics · enforces · extends resolution · text/${var} D5 · provenance sidecar D16 ·
+  pointer) · conditions/moments block explanations · referential-closure paragraph (D15, deixis,
+  legal self-reference variance) · rule-grain line (D12) · advisory-checker line (D13). Verbatim:
+  `git show e44b33d:plugins/mochiko/schemas/architecture.yaml` (lines 1–68).
+- **Kept deliberately:** the runtime kernel — identity + read-at-fire/interpret-live note pointing
+  at the `.md` Rules block, `class:` value semantics, and the `conditions:` resolution-point
+  vocabulary (the two semantics no `.md` restates). The `advisory` gloss is restated on the
+  runtime axis ("guidance, not binding"), not carried verbatim — the ceremony-axis meaning
+  ("may change without supersession ceremony") stays homed at
+  `.claude/rules/mochiko/primitive-edits.md` criterion 5 and content-schema D6.
+- **Consumers assessed:** the command's own `.md` (self-carries the reading grammar; unchanged) ·
+  `.claude/skills/converting-command-to-schema/SKILL.md` (updated this wave to mint the kernel) ·
+  `scripts/check-command-schema.py` (does not read header comments; post-edit `--all` PASS,
+  0 findings).
+
+
 Entry formats: `strips/README.md`. Command born at v0.81.0 (the product-architecture-schema
 Stage-1 wave, D1 — the standing architecture desk); this file opens with the first edit that
 superseded any of its shipped text.

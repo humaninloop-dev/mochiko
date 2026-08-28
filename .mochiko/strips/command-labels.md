@@ -1,8 +1,38 @@
 # Strip notes — `plugins/mochiko/schemas/command-labels.yaml`
 
-Entry formats: `strips/README.md`. First entry at v0.98.0 — no prior strip file existed for
+Entry formats: `strips/README.md`. File opened at v0.98.0 — no prior strip file existed for
 this registry; earlier edits (its mint at v0.92.0, the D10 rollout additions at v0.95.0)
 rode their decision rows as pure additions.
+
+<!-- Wave context: the schema-header runtime-kernel wave (v0.100.0) — shipped schema
+top-of-file header comments trimmed to runtime-essential content. Ruling for every
+[v0.100.0] entry below: `.mochiko/decisions/2026-08-28-schema-header-runtime-kernel.md`
+(a recorded supersession-by-amendment of command-content-schema D14) + `DECISIONS.md`
+2026-08-28 row. Pre-edit verbatim text: `git show e44b33d:plugins/mochiko/schemas/<file>`. -->
+
+## [v0.100.0] `schemas/command-labels.yaml` header — ceremony/roadmap notes superseded, tombstone kept
+- **Disposition:** superseded → registry-meaning kernel; the registry-edit-first ceremony and the
+  one-line-of-meaning rule live in the command-content-schema record D8 (record line: "new labels
+  enter by registry edit first (normal shipped-primitive ceremony)"); the common.yaml-exception
+  narrative lives in the ontology record (D8 as amended by C2); the Stage-1/goal-state note lives
+  in the command-content-schema record (D3/D4); the clause "a label is a cluster name, never a
+  summary" is **deliberately dropped** under R3, not relocated — its surviving limb ("one line of
+  meaning per label") is the D8 record line above, and the closed-set rule has its executable home
+  in `scripts/check-command-schema.py` check 4
+- **Tier failed:** n/a — supersession by ruling (`2026-08-28-schema-header-runtime-kernel.md` R3)
+- **Content:** faithfully compressed: D3/D8 citation paragraph with the common.yaml exception ·
+  "new label enters by registry edit FIRST, under the normal shipped-primitive ceremony" ·
+  "one line of meaning per label — a label is a cluster name, never a summary" · "Stage 1 job:
+  query/navigation only. Goal state: the edit-time drift check (D4, benefit-keyed graduation on
+  record)" · advisory-checker line (D13). Verbatim:
+  `git show e44b33d:plugins/mochiko/schemas/command-labels.yaml` (lines 1–17).
+- **Kept deliberately:** the cross-command-link semantics (same label = the cross-command link)
+  and the `fail-condition` retirement tombstone, **verbatim** — a tombstone never leaves by
+  cleanup (record integrity, GI-005).
+- **Consumers assessed:** the six command `.md`s (point here for labels; unchanged) ·
+  `.claude/skills/converting-command-to-schema/SKILL.md` (exemplar list unchanged for this file) ·
+  `scripts/check-command-schema.py` (reads label keys, not header comments; post-edit PASS).
+
 
 <!-- Wave context: the command-schema ontology wave (v0.98.0). Ruling:
 `.mochiko/brainstorms/command-schema-ontology/record.md` D1–D11 as amended →

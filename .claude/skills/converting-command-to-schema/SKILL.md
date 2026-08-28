@@ -10,19 +10,23 @@ must never move under `plugins/`.
 
 ## Exemplars and law — read, never restate
 
-- `plugins/mochiko/schemas/implement.yaml` — the exemplar schema; its header comment carries the
-  grammar (D6 as amended by D14/D15 and by command-schema-ontology D1–D8).
+- `plugins/mochiko/schemas/implement.yaml` — the exemplar schema; it opens with the runtime-kernel
+  header (schema-header-runtime-kernel ADR, 2026-08-28, amending D14). The grammar itself (D6 as
+  amended by D14/D15 and by command-schema-ontology D1–D8) is single-sourced in the command `.md`
+  Rules block (runtime) and `.claude/rules/mochiko/primitive-edits.md` criterion 11 (edit-time).
 - `plugins/mochiko/commands/implement.md` — the exemplar `.md`, on the canonical scaffold. Every
   command file has this same shape; there is no second form to choose between.
 - `plugins/mochiko/schemas/command-labels.yaml` — the shared label registry (D8).
 - `plugins/mochiko/schemas/common.yaml` — the shared rule library an `extends:` stub binds; its
-  header carries the resolution rule and the extraction bar.
+  header kernel carries the resolution rule; the extraction bar lives in the near-dup convergence
+  ADR (`2026-08-28-near-dup-convergence.md`, D8 as amended).
 - `scripts/check-command-schema.py` — the advisory checker (D13), which lints the scaffold too.
 - `.mochiko/brainstorms/command-content-schema/record.md` — decisions D1–D16; cite by number.
 - `.mochiko/brainstorms/command-schema-ontology/record.md` — the node ontology: decisions D1–D11
   as amended (`kind:` · `conditions:`/`when:` · `moments:` · `enforces:` · `extends:`); cite by
   number. Its `conversion-inventory.md` is the worked corpus — section A.0 for the kind
-  discriminators, G for the canonical header comment, J for the anomalies a converter will meet.
+  discriminators, G for the pre-kernel header comment (historical; no longer the mint source —
+  see step 2), J for the anomalies a converter will meet.
 - `.mochiko/brainstorms/command-md-scaffold-standardization/record.md` — the canonical `.md`
   scaffold and the unified six-section vocabulary, decisions D1–D7; cite by number.
 - `.claude/rules/mochiko/primitive-edits.md` + `.mochiko/strips/README.md` — the ceremony.
@@ -40,13 +44,15 @@ must never move under `plugins/`.
 1. **Partition** (D2/D7). Narrative — Identity & Mission, protocol prose — stays in the `.md`.
    Rule-shaped content moves to `plugins/mochiko/schemas/<command>.yaml`: roles/seat wiring,
    reserved-to-user items, tools bindings, ways of working, the boundaries floor, FAIL clauses.
-2. **Mint the header comment and the six sections** (D14; scaffold D4/D5). The schema opens with
-   the canonical header comment — one block, `<cmd>` and `<prefix>` substituted, carrying the
-   whole grammar in one place. Copy it from a shipped schema or from the ontology record's
-   `conversion-inventory.md` section G, its authored form; never write a per-command variant.
-   The one sanctioned variance is the legal-self-reference line: the desks (`feature`,
-   `architecture`) say `"this schema", "the desk", and "the visit"`, the run commands say
-   `"this schema" and "the run"`.
+2. **Mint the header comment and the six sections** (D14 as amended by the
+   schema-header-runtime-kernel ADR, 2026-08-28; scaffold D4/D5). The schema opens with the
+   canonical **runtime-kernel** header comment — one block, `<cmd>` substituted, carrying only
+   what a runtime reader needs: identity, the read-at-fire note pointing at the `.md` Rules
+   block for the reading grammar, `class:` semantics, and the `conditions:` resolution-point
+   vocabulary. Copy it verbatim from a shipped schema; never write a per-command variant, and
+   never restate the full grammar in the header. Legal-self-reference vocabulary (the desks'
+   `"the desk"`/`"the visit"` vs the runs' `"the run"`) is carried by the D13 checker's curated
+   marker list and the ontology record, not by the header.
 
    Then every schema carries the same six nodes, in this order: `<cmd>.sec.roles` ·
    `<cmd>.sec.reserved` · `<cmd>.sec.tools` · `<cmd>.sec.ways-of-working` ·
