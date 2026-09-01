@@ -5,6 +5,114 @@ Entry formats: `strips/README.md`. Wave context: skill-succinctness wave 1 (desi
 128 → 111 lines, 17 cut = 13% — **under the 30–70 never-stripped band**; per R3 the under-band
 second pass generates the survivor-provenance (KEPT) entries below.
 
+## [v0.103.0] Schema conversion — census-row → minted-ID map (skill-content-schema wave 2C, small families)
+
+Ruling for every entry below: skill-content-schema D3 (obligations move, procedure stays
+prose) / D8/C4 (protected transfers), `DECISIONS.md` 2026-09-01 rows (Skill-content schema
+ruled · Skill-schema wave-2 family doors ruled — the small-families door); census:
+`.mochiko/brainstorms/skill-content-schema/census-small-families.md` §A (BI) + §B (BI rows
+1–11). Schema home: `plugins/mochiko/skills/brownfield-integration/schema.yaml`. Minted IDs
+carry the `brownfield-integration.` prefix (omitted below). Map — census §B row → minted ID:
+1 `consumes-classification-never-decides` · 2 `extend-interface-impact` ·
+3 `modify-interface-impact` · 4 `extend-never-silently-modify` · 5 `read-full-file-first` ·
+6 `follow-file-conventions` (set-rule, checklist steps 2–5) · 7 `interface-preservation` ·
+8 `conflict-detection-set` (set-rule, the four checks) · 9 `flag-blockers-into-cycle-report`
+(the five When-to-Flag blockers ride the rule text) · 10 `refactoring-out-of-scope` ·
+11 `letter-is-spirit`. 11 rules, no splits.
+**Section distribution (review six-set reused by the door ruling):** scope {1, 2, 3, 7,
+10} · inputs {5, 6, 8} · verdict {11} · output {9} · reserved {4} · independence — the one
+explicit empty marker. **Fit-table deviation, lead-confirmed:** census §B predicted 2 empty
+markers (independence + verdict); the letter-IS-spirit epigraph (row 11, a body floor) homes
+in `sec.verdict` per the wave-1 RPA/VC precedent, so verdict is non-empty and only
+independence carries the marker.
+**Floor count 6 (rows 2 · 3 · 4 · 5 · 7 · 11), lead-ruled at plan approval:** the row-grain
+enumeration marks 5; the §A [v0.49.0] keep-set's "(floors)" disposition names the entire
+consumption discipline — read-before-write, **interface preservation**,
+EXTEND-never-silently-becomes-MODIFY, conflict escalation — which is row-grain
+protected-set evidence promoting row 7 (`interface-preservation`) to floor (the 2B
+vertical-tdd precedent: a protected-set naming beats a class-mix cell). The census tally's
+"BI 6" was right; its path ran through the wrong cell — correction queued for the census §K
+landing appendix. Row 9 stays must (the §A "protected escalation seam" carries no floor
+claim). No `conditions:` block — EXTEND/MODIFY is the rules' own subject (content-derived;
+census §B's live-`when:` dimension list omits BI); the load-first block legally omits the
+`when:` grammar sentence (wave-1 RCM-4 wave-wide ruling).
+Accounting (seat-measured snapshot; the closer re-measures at the gate): body 6,342 → 3,903
+(obligations out + the load-first Rules block in) + schema 6,674 = **payload 10,577**
+(census §F estimate ~10,100, ×1.67 vs est ×1.6 — inside the ±30% band); the delta over the
+pre-conversion body is structural overhead — no content growth claimed. The old 7,928 body
+budget is superseded by the conversion re-seed (ledger's third seeding path, no headroom —
+the wave closer executes the ledger row). Description byte-untouched at 491.
+
+## [v0.103.0] EXTEND/MODIFY table, checklist, conflict detection, When-to-Flag — protection transfers ([v0.25.0] KEPT set)
+
+- **Disposition:** superseded — protection transfers per D8/C4 onto the schema rules; the
+  body sections leave (a floor kept inline beside its schema rule would be the D6
+  anti-dual-homing violation): the EXTEND/MODIFY consumption table's cells →
+  `brownfield-integration.extend-interface-impact` (floor) +
+  `brownfield-integration.modify-interface-impact` (floor); the Read-Before-Write
+  checklist → `brownfield-integration.read-full-file-first` (floor, step 1) +
+  `brownfield-integration.follow-file-conventions` (must set-rule, steps 2–5); Interface
+  Preservation → `brownfield-integration.interface-preservation` (floor, promoted — map
+  entry above); Conflict Detection → `brownfield-integration.conflict-detection-set`
+  (must set-rule, all four checks); When to Flag →
+  `brownfield-integration.flag-blockers-into-cycle-report` (must, routing — all five
+  blockers and the cycle-report seam ride the rule text, pointer
+  `mochiko:executing-tdd-cycle`).
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01
+  skill-content-schema rows; protecting lineage the [v0.25.0] KEPT entry below —
+  batch-2 ratification, `DECISIONS.md` 2026-07-25 skill-succinctness-strip — and the
+  [v0.49.0] keep-set, `DECISIONS.md` 2026-08-02 plan-task-granularity D2.1).
+- **Content:** the five `## Core Process` subsections whole — table cells, five checklist
+  steps, three preservation bullets, four conflict checks, five flag bullets — wording
+  preserved verbatim in substance in the rule texts; verbatim originals in git history
+  (pre-v0.103.0).
+- **Kept deliberately:** the Rationalizations table (whole, per its census
+  body-stays-prose disposition), the Common Mistakes table, and the Red Flags thought
+  bullets stay body prose; the v0.64.0 reconciliation's finding — "The When-to-Use cut
+  removes NONE of these" — now reads: every protected element survives as a schema rule,
+  protection transferred, none deleted.
+- **Consumers assessed:** `mochiko:staff-engineer` mounts the skill; `executing-tdd-cycle`
+  co-fires and owns the cycle report the flag rule points at (seam unchanged);
+  `patterns-vertical-tdd` owns the marker vocabulary (referenced, never restated);
+  none links the removed section anchors.
+
+## [v0.103.0] Boundary, epigraph, refactoring carve — protection transfers + body slims
+
+- **Disposition:** superseded — protection transfers per D8/C4:
+  the Overview's classification provenance and boundary sentences →
+  `brownfield-integration.consumes-classification-never-decides` (must, pointer
+  `mochiko:patterns-vertical-tdd`); the letter-IS-spirit epigraph + the Red-Flags
+  `**No exceptions:**` block → `brownfield-integration.letter-is-spirit` (floor,
+  `sec.verdict`); the extend-never-silently-modify warning →
+  `brownfield-integration.extend-never-silently-modify` (floor, `sec.reserved` — surfaced,
+  never seat-resolved); the When-NOT refactoring bullet's obligation clause →
+  `brownfield-integration.refactoring-out-of-scope` (must), the bullet itself slimming to
+  its category name.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows;
+  protecting lineage `DECISIONS.md` 2026-08-05 ponytail-concepts-integration PT-D7
+  (rung-zero thin-form pointers) + 2026-08-02 plan-task-granularity D2.1 for the boundary;
+  the epigraph's home ruling is the wave-1 RPA/VC verdict-section precedent).
+- **Content:** "Brownfield tasks arrive tagged `[EXTEND]` or `[MODIFY]` by the builder's
+  own decomposition — classified from the cycle card's **brownfield exposure** line, which
+  `patterns-vertical-tdd` declares at design time. This skill does not decide the
+  classification…" · "**Violating the letter of the rules is violating the spirit of the
+  rules.** Every shortcut in read-before-write discipline is a broken consumer waiting to
+  surface." · the five No-exceptions bullets · "**Never treat an `[EXTEND]` task as a
+  `[MODIFY]`.** If you believe the existing code cannot support the extension without
+  changing its interface, surface it as a blocker — do not silently rewrite." ·
+  "Refactoring work — out of scope for an extend/modify task; note the opportunity, do not
+  act on it."
+- **Kept deliberately:** the Overview's craft summary and the consequence aphorism ("The
+  existing code is not wrong until proven otherwise…"). Two conversion-collateral re-keys,
+  disclosed (the v0.24.0 dangling-reference class): the Common Mistakes fix cell "(checklist
+  step 3)" and the Rationalizations cell "Step 1 exists because…" referenced the deleted
+  checklist section — re-keyed to "exactly" and "The read-first floor exists because…";
+  meaning unchanged, referent re-homed.
+- **Consumers assessed:** staff-engineer · executing-tdd-cycle (co-fires, cross-links) ·
+  patterns-vertical-tdd · the router row — none references the moved sentences by anchor;
+  the consumes-classification + co-fire framing the [v0.49.0] ruling re-keyed survives in
+  the untouched description.
+
 ## [v0.64.0] Guardrails body + slim description (guardrails-vs-detail Wave 2 editorial cut)
 - **Disposition:** superseded → Wave 2 editorial guardrails cut (D4 cut line).
 - **Tier failed:** n/a — supersession by ruling (guardrails-vs-detail Wave 2, `DECISIONS.md`

@@ -11,6 +11,133 @@ fixed same day — the audit trail is the wave's ROADMAP row). Consumers assesse
 `templates/artifact-format.md` — grep 2026-07-25: none reference any stripped section;
 `detect-stack.sh` references (setup.md, router) untouched.
 
+## [v0.103.0] Schema conversion — census-row → minted-ID map (skill-content-schema wave 2C, small families)
+
+Ruling for every entry below: skill-content-schema D3 (obligations move, procedure stays
+prose) / D8/C4 (protected transfers), `DECISIONS.md` 2026-09-01 rows (Skill-content schema
+ruled · Skill-schema wave-2 family doors ruled — the small-families door); census:
+`.mochiko/brainstorms/skill-content-schema/census-small-families.md` §A (AC) + §B (AC rows
+1–13). Schema home: `plugins/mochiko/skills/analysis-codebase/schema.yaml`. Minted IDs
+carry the `analysis-codebase.` prefix (omitted below). Map — census §B row → minted ID:
+1 `deliverable-two-arm-binding` · 2 `artifact-envelope-slimmed-legible` ·
+3 `essential-floor-canonical-definition` · 4 `intent-blind-waiver-blind` ·
+5 `never-soften-never-waive` · 6 `interpretation-reserved-to-session` ·
+7 `collision-inventory-out-of-scope` · 8 `only-report-what-is-found` ·
+9 `determinism-boundary` · 10 `brownfield-quality-checklist` (set-rule, all 12 items) ·
+11 `capability-signals-seed-feature-map` · 12 `when-not-routing` ·
+13 `context-gathering-scope-note` (reference stub, pointer
+`references/CONTEXT-GATHERING.md`). 13 rules: 12 body moves + 1 stub, no splits.
+**Section distribution (review six-set reused by the door ruling, 1 empty marker per the
+census fit table):** scope {3, 7, 12, 13} · inputs {9} · verdict {4, 5, 8} · output {1, 2,
+10, 11} · reserved {6} · independence — the explicit empty marker.
+**Floor count 3 (rows 3 · 4 · 5)** — row grain and census tally agree. No `conditions:`
+block — brownfield setup is the invoking context, unconditional within the skill (the
+census's own "arguably unconditional" read, lead-confirmed); the load-first block legally
+omits the `when:` grammar sentence (wave-1 RCM-4 wave-wide ruling). Row 1's two arms ride
+the rule text VERBATIM (GI-020 — the binary-optional first-class raw-Read path); row 3's
+`pointer:` carries the cross-directory climb
+`../authoring-constitution/references/ESSENTIAL-FLOOR.md` (census J2-7, checker-resolved).
+Accounting (seat-measured snapshot; the closer re-measures at the gate): body 6,613 → 3,814
+(obligations out + the load-first Rules block in) + schema 8,284 = **payload 12,098**
+(census §F estimate ~11,100, ×1.83 vs est ×1.7 — inside the ±30% band); the delta over the
+pre-conversion body is structural overhead — no content growth claimed. The old 8,137 body
+budget is superseded by the conversion re-seed (ledger's third seeding path, no headroom —
+the wave closer executes the ledger row). Description byte-untouched at 349.
+
+## [v0.103.0] J2-9 ruled repair — the dangling "indicators below" pointer re-homed (one line, riding the wave by ruling)
+
+- **Disposition:** superseded → "read the canonical definition, then assess against the
+  indicators it carries" — the sentence's referent re-homed onto
+  `authoring-constitution/references/ESSENTIAL-FLOOR.md`, inside
+  `analysis-codebase.essential-floor-canonical-definition`'s rule text, where the moved
+  sentence now lives. Verified before wording: ESSENTIAL-FLOOR.md's four per-category
+  "MUST address" blocks carry the indicator content the sentence points at.
+- **Tier failed:** n/a — supersession by ruling (the wave-2 family-door ruling's repair
+  clause — "analysis-codebase's dangling 'indicators below' pointer takes a one-line
+  ruled repair riding its wave, never a silent fix", the sentence living in
+  `.mochiko/brainstorms/skill-content-schema/record.md`, Wave-2 family-door rulings
+  section; ruling pointer: the `DECISIONS.md` 2026-09-01 family-doors row; census
+  J2-9). This closes the deviation flagged in this file's [v0.63.0] entry ("the surviving
+  sentence 'assess against it using the indicators below' now has no indicators below
+  it"), shipped byte-faithful to the ruled benchmark variant at the time because the
+  dangling form was not the shipper's to rewrite.
+- **Content (superseded, verbatim):**
+
+  ```
+  Read the canonical definition, then assess against it using the
+  indicators below.
+  ```
+
+- **Kept deliberately:** the whole surrounding assess-status contract, moved intact into
+  the schema (entry below); only the two-word referent changed.
+- **Consumers assessed:** `commands/setup.md` relies on the deliverable and the
+  present/partial/absent statuses, not on this sentence; `authoring-constitution` owns
+  the pointed-at canonical file, unchanged.
+
+## [v0.103.0] Two-arm output binding, envelope, feature-map seeding — protection transfers (census §A rows 4–5 + keep-set)
+
+- **Disposition:** superseded — protection transfers per D8/C4 onto
+  `analysis-codebase.deliverable-two-arm-binding` (must, binding — both arms verbatim:
+  `mochiko-cli template codebase-analysis` when the binary is available, otherwise Read
+  `plugins/mochiko/schemas/codebase-analysis.yaml` raw; GI-020),
+  `analysis-codebase.artifact-envelope-slimmed-legible` (must, binding, pointer
+  `../../templates/artifact-format.md`), and
+  `analysis-codebase.capability-signals-seed-feature-map` (must, binding, pointer
+  `mochiko:authoring-feature-map`); the Setup-Brownfield quality checklist →
+  `analysis-codebase.brownfield-quality-checklist` (must set-rule, all 12 boxes in the
+  rule text — none lost), its body section leaving.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows;
+  protecting lineage `DECISIONS.md` 2026-08-16 schema-based-template-guidance D1/D8 for
+  the two-arm binding — this file's [v0.76.0] entry).
+- **Content:** the Mode section's `**Output**:` paragraph and the
+  `### Setup-Brownfield Quality Checklist` section, verbatim in git history
+  (pre-v0.103.0); the Output paragraph's body remnant now names the artifact and points
+  at `analysis-codebase.sec.output`.
+- **Consumers assessed:** `commands/setup.md` dispatches the skill and consumes
+  `.mochiko/memory/codebase-analysis.md` (path unchanged, both arms preserved); the
+  router row describes the produced output generically.
+
+## [v0.103.0] Assess-status contract, parked-mode carve, When-NOT set — protection transfers + body slims
+
+- **Disposition:** superseded — protection transfers per D8/C4 onto
+  `analysis-codebase.essential-floor-canonical-definition` (floor — the
+  canonical-definition boundary and "Do not redefine the categories here"),
+  `analysis-codebase.intent-blind-waiver-blind` (floor),
+  `analysis-codebase.never-soften-never-waive` (floor),
+  `analysis-codebase.interpretation-reserved-to-session` (must, reservation),
+  `analysis-codebase.collision-inventory-out-of-scope` (must, routing — the v0.91.0
+  parked-mode carve, all its qualifiers preserved),
+  `analysis-codebase.when-not-routing` (must, routing — the five When-NOT bullets),
+  `analysis-codebase.determinism-boundary` (must — the detect-stack blockquote), and
+  `analysis-codebase.only-report-what-is-found` +
+  `analysis-codebase.essential-floor-canonical-definition` for the two obligation-shaped
+  Common-Mistakes rows (the table itself stays body prose whole per its census
+  disposition — the [v0.24.0] KEPT survives in the body AND as rules; the rows are
+  teaching, not floors, so no dual-homing violation).
+  Body sections leaving whole: `## When NOT to Use` ·
+  `### Essential-Floor Status Assessment` · `## Other modes (moved to other clusters —
+  not wired this run)` (its routing facts now rules 7 and 13) · the Detection Script
+  blockquote. The Mode section's entity bullet and Essential-Floor bullet slim to
+  non-restating forms (the collision parenthetical → rule 7; "see below" re-pointed at
+  the schema sections — no dangling referent left behind).
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows;
+  protecting lineage `DECISIONS.md` 2026-08-10 validator-scope-and-verbosity (the
+  v0.63.0 guardrails keep-set: assess-status contract, intent-blind/waiver-blind rule) ·
+  2026-08-26 plan-stage-utility D1 (the [v0.91.0] parked-mode vocabulary re-key — meaning
+  preserved again here: the mode stays parked, only its statement moved) · 2026-07-25
+  skill-succinctness-strip (the [v0.24.0] KEPT Common Mistakes table).
+- **Content:** the four sections named above, verbatim in git history (pre-v0.103.0);
+  wording preserved verbatim in substance in the rule texts, including "waivers are
+  governance rulings, not codebase facts" and "the same codebase gets the same status".
+- **Kept deliberately:** the Common Mistakes table whole (CODEOWNERS row included), the
+  Overview's deliverable-and-consumers narrative, the detect-stack invocation block, and
+  the Related Skills section (not census-inventoried — stays prose at census grain).
+- **Consumers assessed:** `commands/setup.md` (deliverable + statuses, unchanged) ·
+  `agents/principal-architect.md` and the router (describe, never restate) ·
+  `authoring-constitution` + its `references/ESSENTIAL-FLOOR.md` (canonical home,
+  untouched, now the single referent of the repaired sentence) · the BACKLOG reclaim item
+  owning the unwired mode (operating-doc content, meaning preserved).
+
 ## [v0.91.0] Parked Brownfield-mode carve-out re-keyed: "spec/plan-cluster" → "spec/design-cluster" — plan-stage retirement D1
 
 - **Disposition:** superseded → "the spec/design-cluster Brownfield mode (not wired this run)",

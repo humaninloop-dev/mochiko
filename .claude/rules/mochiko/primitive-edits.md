@@ -191,7 +191,12 @@ injects on a schema Read.
      `independence` · `scope` · `inputs` · `artifact` · `output` · `reserved`
      (census-authoring J-1, v0.101.0); the patterns family's — a full swap-out, not one
      slot — `trigger` · `scope` · `discipline` · `inputs` · `disclosure` · `reserved`
-     (census-patterns §B/J-P7, v0.102.0). Every `<skill>.sec.*` token
+     (census-patterns §B/J-P7, v0.102.0). The small families' dense five —
+     `testing-end-user` · `testing-gap-finding` · `executing-tdd-cycle` ·
+     `brownfield-integration` · `analysis-codebase` — mint no set of their own: they
+     REUSE the review six-set with explicit empty markers, by the 2026-09-01
+     small-families door ruling (census-small-families §B fit table, v0.103.0).
+     Every `<skill>.sec.*` token
      anywhere in the `.md`, inside the load-first block or outside it, resolves to a live
      node.
   3. **Floor-count pin + read-back.** The `.md`'s pinned line — "the N rules of
@@ -249,7 +254,11 @@ injects on a schema Read.
   `.mochiko/brainstorms/skill-content-schema/census-authoring.md` (§I labels · J-1
   section set · J-6 budget · J-7 first-seeds) · the patterns-family census
   `.mochiko/brainstorms/skill-content-schema/census-patterns.md` (§B section proposal ·
-  §ROAD rejection · §I labels · J-P2 first-strips · J-P5 two-arm/overage) ·
+  §ROAD rejection · §I labels · J-P2 first-strips · J-P5 two-arm/overage) · the
+  small-families census
+  `.mochiko/brainstorms/skill-content-schema/census-small-families.md` (§B six-set-reuse
+  fit table · §C zero common blocks · §D abort-tripped — the dense five convert on the
+  B/C drivers · J2-8 dual-homing twins · J2-9 ruled repair) ·
   `.mochiko/decisions/2026-08-28-near-dup-convergence.md` R1–R6.
 
 **Protected content leaves ONLY by ruling.** A line in a record's protected set, marked `KEPT:`, or

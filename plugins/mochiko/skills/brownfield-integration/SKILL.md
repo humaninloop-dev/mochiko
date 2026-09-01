@@ -7,68 +7,34 @@ description: This skill MUST be invoked when implementing a task that touches ex
 
 ## Overview
 
-Craft for implementing a task that touches existing code. Brownfield tasks arrive tagged `[EXTEND]` or `[MODIFY]` by the builder's own decomposition — classified from the cycle card's **brownfield exposure** line, which `patterns-vertical-tdd` declares at design time. This skill does not decide the classification — it is the implement-time discipline of **consuming** one safely: read the existing code first, follow what is already there, preserve the interface, and surface conflicts rather than silently resolving them.
+Craft for implementing a task that touches existing code — read the existing code first,
+follow what is already there, preserve the interface, and surface conflicts rather than
+silently resolving them.
 
 **The existing code is not wrong until proven otherwise.** It has consumers, tests, and patterns that evolved for reasons not immediately visible.
 
-**Violating the letter of the rules is violating the spirit of the rules.** Every shortcut in
-read-before-write discipline is a broken consumer waiting to surface.
+## Rules — load the schema first
+
+Your first action, before any read or write in the existing file: **Read `schema.yaml`
+(this skill's own directory) raw, in full** — the small families ship no common file, so
+the pair's own schema is the whole first action. The schema is the source of truth for
+this craft's binding rules, nested in six sections, each addressable by its section ID:
+`brownfield-integration.sec.independence` · `brownfield-integration.sec.scope` ·
+`brownfield-integration.sec.inputs` · `brownfield-integration.sec.verdict` ·
+`brownfield-integration.sec.output` · `brownfield-integration.sec.reserved`. Interpret it
+live: a rule's `kind:` names what it is, and an absent `kind:` reads `constraint`; a rule
+of `class: floor` is always read and always delivered; a `pointer:` rule binds you to that
+file's or skill's procedure, referenced never restated; labels come from
+`plugins/mochiko/schemas/skill-labels.yaml`. The floor pin: the 6 rules of `class: floor`
+are non-waivable. Before the first read step, state the floor count back — a skipped or
+partial read leaves that count blank: halt and surface it, and halt likewise if the
+schema's `class: floor` count disagrees with the pin.
 
 ## When NOT to Use
 
 - Greenfield tasks creating entirely new files
 - Tasks with no reference to existing code
-- Refactoring work — out of scope for an extend/modify task; note the opportunity, do not act on it
-
-## Core Process
-
-### EXTEND vs. MODIFY: interface impact
-
-The card's exposure line says *which surfaces* are extend/modify; what each classification is allowed to do to an existing interface — the implement-time consumption rule this skill enforces — is below:
-
-| Marker | Scope of change | Interface impact |
-|--------|-----------------|------------------|
-| `[EXTEND]` | New functions, new methods, new exports — alongside what exists | MUST NOT change existing function signatures, exports, or type contracts |
-| `[MODIFY]` | The specified sections only | MAY change function internals; MUST NOT change signatures unless the task explicitly says so |
-
-**Never treat an `[EXTEND]` task as a `[MODIFY]`.** If you believe the existing code cannot support the extension without changing its interface, surface it as a blocker — do not silently rewrite.
-
-### Read-Before-Write Checklist
-
-Before writing any code in an existing file, complete all five steps:
-
-1. **Read the full file** — not just the section you plan to change. Understand the complete context.
-2. **Identify naming conventions** — variable naming (camelCase, snake_case), file naming, function naming patterns. Follow them exactly.
-3. **Identify error handling patterns** — how does existing code handle errors? Try-catch, Result types, error callbacks? Match the pattern.
-4. **Identify import style** — relative vs. absolute imports, named vs. default exports, import ordering. Follow the same style.
-5. **Identify test patterns** — if the file has tests, how are they structured? Match describe/it nesting, assertion style, fixture patterns.
-
-### Interface Preservation
-
-When extending existing code (the signature/export/public-API MUST-NOTs are the table above):
-
-- Do NOT rename existing variables, functions, or classes
-- DO add new exports alongside existing ones
-- DO follow the file's established patterns for new code
-
-### Conflict Detection
-
-Before adding new code, check for:
-
-- **Name collisions** — search the file for the function/class/variable name you plan to add
-- **Import collisions** — verify your new imports don't shadow existing ones
-- **Test file alignment** — if adding to `user.ts`, check that `user.test.ts` exists and follow its patterns
-- **Circular dependencies** — verify your new imports don't create circular reference chains
-
-### When to Flag
-
-Surface these as blockers rather than silently resolving them — they belong in the cycle report the run produces (owned by `executing-tdd-cycle`), not in a quiet workaround:
-
-- Existing code contradicts the task description
-- The file's patterns are inconsistent (multiple conflicting conventions)
-- The task carries `[EXTEND]` but the existing interface cannot support the addition without modification
-- Existing tests would break from the addition (interface leak)
-- The file has no tests but the task expects test-first development
+- Refactoring work — out of scope for an extend/modify task
 
 ## Common Mistakes
 
@@ -76,14 +42,14 @@ Surface these as blockers rather than silently resolving them — they belong in
 |---------|-----------------|-----|
 | Not reading the full file | Duplicated functionality, mismatched conventions, conflicts with unseen code | Read the entire file first — skimming is not sufficient for brownfield work |
 | Silently rewriting when asked to extend | Consumers break on the changed interface; unrelated tests fail; unexplained modifications | EXTEND means extend; if you cannot extend, flag it |
-| Ignoring existing error handling | Raw exceptions beside Result types — inconsistency confuses consumers | Match the file's error-handling pattern exactly (checklist step 3) |
+| Ignoring existing error handling | Raw exceptions beside Result types — inconsistency confuses consumers | Match the file's error-handling pattern exactly |
 | Adding "better" patterns | Two patterns in one file; the next developer can't tell which to follow | Follow existing patterns; note the improvement opportunity in your report |
 
 ## Common Rationalizations
 
 | Excuse | Reality |
 |--------|---------|
-| "This file is small, I can just skim it" | Small files have hidden conventions. Read the full file. Step 1 exists because skimming misses patterns. |
+| "This file is small, I can just skim it" | Small files have hidden conventions. Read the full file. The read-first floor exists because skimming misses patterns. |
 | "My pattern is better than what exists" | Consistency is more valuable than local improvement. Two patterns in one file is worse than one imperfect pattern. |
 | "The existing code doesn't follow best practices" | Existing code has consumers. Introducing a second convention creates confusion. Note it, follow it. |
 | "I need to refactor to make my extension work" | If EXTEND doesn't fit, flag it. Silent refactoring breaks existing consumers. |
@@ -99,10 +65,3 @@ If any of these thoughts arise, stop — the Rationalizations table above rebuts
 - "The existing tests don't cover this" — a pre-existing gap, not a problem to fix now
 - "I need to refactor this to make my change work"
 - "This interface doesn't make sense"
-
-**No exceptions:**
-- Not for "obviously broken" code
-- Not for "trivially better" patterns
-- Not for "quick cleanup while I'm here"
-- Not even if the existing code has no tests
-- Not even if the existing naming is inconsistent

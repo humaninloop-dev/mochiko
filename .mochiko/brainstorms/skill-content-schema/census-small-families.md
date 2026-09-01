@@ -580,3 +580,50 @@ ceremony unchanged; zero edits proposed.
 *End of census. Per D9-I3 this inventory returns to the user at the wave gate with the §D
 **abort-tripped** result, the §F read costs, and the §C zero-common evidence before any conversion
 begins.*
+
+---
+
+## K. Build-corrections appendix (wave 2C landing, 2026-09-01, v0.103.0)
+
+Corrections and final measures recorded at landing per the wave-1 §K idiom. Scope as ruled:
+the dense five converted (TEU · TGF · ETC · BI · AC); AI · GOD · TGI stay prose.
+
+- **Class-mix tallies vs row grain** (the standing idiom, applications six and seven):
+  **TEU 7 floors** (the tally's 6 under-counted stub 19's floor marker) · **TGF 9 floors**
+  (the tally's 8; rows 3 · 4 · 5 · 7 · 8 · 9 · 14 · 18 · 20). **BI 6 floors** via the row-7
+  interface-preservation promotion — the §A [v0.49.0] keep-set's "(floors)" naming beats the
+  class-mix cell (the 2B vertical-tdd precedent). Named for the user's eye: that keep-set
+  names FOUR items; three are now floors, and the fourth (conflict escalation — the
+  When-to-Flag routing) stays `must` on the §A "protected escalation seam carries no floor
+  claim" reading, reconciling with the census's own BI 6 — a future ruling may promote it.
+- **Rule-count deviations, all lead-ruled a/b splits the census disp column marks or
+  sanctions:** TEU 23 (5a/5b + 14a/14b) · TGF 31 (rows 1, 21, and 16 split 16a/16b so both
+  `mutation_tool` poles are covered).
+- **Structural resolutions, disclosed in strip maps:** ETC sec.verdict EMPTY with the marker
+  note (the executor's outcome grammar is the report-field contract; the clearing verdict is
+  the lead's) · BI ships 1 empty marker, not the fit table's 2 (the epigraph homes in
+  sec.verdict per the wave-1 RPA/VC precedent) · the `ladder` label carries the process rules
+  incl. both rationalization-STOPs (deliberate divergence from 2A ATR's `boundary` mapping,
+  strip-named) · TGF `depth: low` names no rule (deliberate absence) · BI two collateral
+  re-keys of cells referencing the deleted checklist section.
+- **J2-9 executed as ruled:** analysis-codebase's dangling "using the indicators below"
+  repaired to point at the ESSENTIAL-FLOOR reference (verified to carry the four per-category
+  indicator blocks), its own disclosed strip entry, never silent.
+- **Audit round notes:** J2-8's dual-homing twins framed and graded as RULED (no D6 finding);
+  the zero-extends bar held procedurally (the checker cannot catch a dense-five `extends:` —
+  fall-through resolves review-common cleanly; all five schemas grep clean) · the ledger's
+  "was X/Y" notation confirmed as prior-row winner/budget citations, not body measurements —
+  a queued "correction" was cancelled on that proof (the same-wave AC row's 104-char gap
+  under the identical convention) · a fourth unanchored reference-borne stub added to the
+  sidecar banner's named absences.
+- **Final measures** — family delivered-at-invoke **81,799** vs 46,809 pre-conversion =
+  **×1.75**, +4.2% over the §F dense-five estimate (~78,500, ×1.68), inside the band; the
+  wave-1 drift did not recur. Per member: TEU 20,791 · TGF 19,382 · ETC 18,951 · BI 10,577 ·
+  AC 12,098. 104 rules · 35 floors · 11 reference stubs; no common file (§C/§D held — the
+  no-allowlist detector run at landing confirmed zero within-micro-family 3+ clusters at
+  landed grain).
+- **Standing non-blocking observations:** TGF's two skip-noted limbs gate on `mutation_tool`
+  only, not depth — census-faithful; a tightening candidate · criterion 2's "with explicit
+  empty markers" reads family-grain (TGF legitimately carries zero) · 15 of 38 SKILL.md
+  frontmatters fail a strict PyYAML parse (unquoted ": " scalars) — pre-existing corpus-wide,
+  untouched by this arc, recorded for a future hygiene pass.

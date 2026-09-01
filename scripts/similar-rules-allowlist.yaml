@@ -457,3 +457,97 @@ suppressions:
     reason: sibling reference stubs of one TEST-GRAMMAR.md single source — distinct obligations (field set vs the four MUST-includes) sharing the referent (the RPA ISSUE-TEMPLATES precedent)
   - ids: [patterns-transport-floor.mesh-hold, patterns-transport-floor.single-writer-per-surface]
     reason: two distinct legs of one floor sharing the hand-off frame — message-lane start discipline vs topology-lane pen ownership; census carried both as separate legs
+
+  # === Skill-side edges (wave 2C, small-families dense-five conversion, v0.103.0;
+  # adjudications per census-small-families §C/J2-5/J2-6 + the 2026-09-01 door ruling —
+  # abort TRIPPED, zero common blocks, the dense five convert on the B/C drivers; seeded
+  # by the closer seat against the landed 30-pair corpus, detector driven to 0 clusters).
+  # No within-micro-family 3+ cluster fired — the census §C zero-blocks finding holds at
+  # landed grain; nothing contradicts it, no extraction candidate raised. Landed-grain
+  # correction to the census §C pre-list: TEU and ETC mint NO letter-is-spirit rule (the
+  # epigraph rides their rationalization-stop rules and body prose), so only BI carries
+  # the letter-is-spirit edge family — the tripwire stands if a TEU/ETC rule is ever
+  # minted. Census-noted resemblance with no live edge and no row (the standing
+  # convention): AC's essential-floor-canonical-definition / only-report-what-is-found
+  # vs review-common.its-command-states-them — shape, not wording; below threshold. ----
+  # --- [C1] AC envelope vs the authoring envelope-binding family (detector [1]):
+  # cross-family (D5 forbids sharing — AC rides the review-set grammar); AC's rule is
+  # member-specific ("slimmed but legible", file-cited-evidence tables, judgment prose
+  # stays prose) where the block is referenced-never-restated ---
+  - ids: [analysis-codebase.artifact-envelope-slimmed-legible, authoring-feature-map.envelope-binding]
+    reason: cross-family (D5) — AC member-specific envelope content vs the referenced-never-restated block; keep-distinct
+  - ids: [analysis-codebase.artifact-envelope-slimmed-legible, authoring-prototype.envelope-binding]
+    reason: cross-family (D5), same adjudication
+  - ids: [analysis-codebase.artifact-envelope-slimmed-legible, authoring-requirements.envelope-binding]
+    reason: cross-family (D5), same adjudication
+  - ids: [analysis-codebase.artifact-envelope-slimmed-legible, authoring-technical-requirements.deliverable-envelope]
+    reason: cross-family (D5), same adjudication
+  - ids: [analysis-codebase.artifact-envelope-slimmed-legible, authoring-user-stories.deliverable-envelope]
+    reason: cross-family (D5), same adjudication
+  # --- [C2] AC two-arm vs the authoring two-arm family (detector [2]): cross-family
+  # (D5); AC's two-arm names its own artifact path + schema verbatim (GI-020 protected,
+  # the RPA cycle-card-check-mirror precedent) ---
+  - ids: [analysis-codebase.deliverable-two-arm-binding, authoring-architecture-store.two-arm-schema-binding]
+    reason: cross-family (D5) — AC's GI-020 two-arm carries its own artifact path and schema name verbatim; keep-distinct
+  - ids: [analysis-codebase.deliverable-two-arm-binding, authoring-constitution.two-arm-schema-binding]
+    reason: cross-family (D5), same adjudication
+  - ids: [analysis-codebase.deliverable-two-arm-binding, authoring-feature-map.features-index-two-arm]
+    reason: cross-family (D5), same adjudication
+  - ids: [analysis-codebase.deliverable-two-arm-binding, authoring-feature-map.feature-entry-two-arm]
+    reason: cross-family (D5) — vs AFM's ruled LOCAL twin (the lead Q2 twice-bound split); same adjudication
+  - ids: [analysis-codebase.deliverable-two-arm-binding, authoring-prototype.spec-two-arm]
+    reason: cross-family (D5), same adjudication
+  # --- [C3] census J2-5 pre-listed pairs, detector [3]/[4]/[7] ---
+  - ids: [executing-tdd-cycle.strict-order, testing-end-user.strict-order]
+    reason: census J2-5 strict-order — near-verbatim floors, each binding a DIFFERENT sequence (cycle walk vs verification execution); zero common blocks ruled (§C/§D), keep-distinct
+  - ids: [executing-tdd-cycle.rationalization-stop, testing-end-user.rationalization-stop]
+    reason: census J2-5 rationalization-STOP — near-verbatim floors, each returning to its OWN execution sequence; keep-distinct under the §C/§D zero-blocks ruling
+  - ids: [testing-end-user.rationalization-stop, validation-constitution.rationalization-stop]
+    reason: census J2-5 pre-listed — VC's restart floor is the review-side wording (wave-1 screen); cross-pair, below bar
+  - ids: [executing-tdd-cycle.rationalization-stop, validation-constitution.rationalization-stop]
+    reason: census J2-5 pre-listed, same adjudication
+  - ids: [executing-tdd-cycle.sanctioned-set-of-two, testing-end-user.sanctioned-set-closure]
+    reason: census J2-8 — the two [v0.44.0] KEPT dual-homing twins, each a RULED restatement naming its OWN reference file and register set; protection transferred per D8/C4, keep-distinct
+  - ids: [testing-end-user.sanctioned-set-closure, testing-end-user.truncation-bounds]
+    reason: intra-schema — distinct obligations sharing the REPORT-TEMPLATES.md referent (the RPA ISSUE-TEMPLATES precedent)
+  - ids: [executing-tdd-cycle.sanctioned-set-of-two, testing-end-user.truncation-bounds]
+    reason: cross-pair — register/bounds vocabulary overlap only; different obligations (set closure vs truncation mechanics)
+  # --- [C4] TGF vs the command grammar (detector [5]/[8]/[9]/[11]): J-5 cross-grammar
+  # twins — one discipline deliberately mirrored on the command and skill planes, D5
+  # forbids sharing; drift edges deliberately recorded (the impl/RCM precedent) ---
+  - ids: [impl.delivered-territory-routing, testing-gap-finding.out-of-territory-routing]
+    reason: J-5 cross-grammar twin — one delta-card routing discipline on two planes; drift edge deliberately recorded
+  - ids: [impl.mutation-lens, testing-gap-finding.lens-alongside-never-inside]
+    reason: J-5 cross-grammar twin — one lens seat-split on two planes; TGF's is the D5 floor, impl's the run-side mirror
+  - ids: [impl.gap-rework-bound, testing-gap-finding.rework-bound]
+    reason: J-5 cross-grammar twin — one attempt economy on two planes; drift edge deliberately recorded
+  - ids: [brainstorm.user-pen-boundary, testing-gap-finding.bound-exhaustion-user-ruled]
+    reason: J-5 cross-grammar — different reservations (record pen vs bound exhaustion) sharing the reserved-to-user frame
+  - ids: [brainstorm.user-survivor-challenge, testing-gap-finding.bound-exhaustion-user-ruled]
+    reason: J-5 cross-grammar — different reservations sharing the frame
+  # --- [C5] TGF/AC vs review-family members (detector [6]/[10]) ---
+  - ids: [review-code-minimalism.not-test-gates, testing-gap-finding.test-execution-is-testing-end-user]
+    reason: 2-member, below bar — two different jurisdictions routing to the same owner (mochiko:testing-end-user); each names its own carve
+  - ids: [analysis-codebase.capability-signals-seed-feature-map, review-specifications.map-mirror]
+    reason: different duties (capability-signal seeding vs reviewer's mirror) sharing the authoring-feature-map single-source pointer
+  # --- [C6] remaining cross- and intra-schema singles (detector [12]/[13]/[14]) ---
+  - ids: [authoring-prototype.upstream-untouched, executing-tdd-cycle.decompose-only-the-card]
+    reason: cross-family (D5) — different obligations (renders-never-edits vs decompose-exactly-the-card) sharing the nothing-beyond frame
+  - ids: [executing-tdd-cycle.report-binding, executing-tdd-cycle.report-field-contract]
+    reason: intra-schema — the report binding vs the field contract, distinct census rows sharing the CYCLE-REPORT-FORMAT.md referent (the RPA precedent)
+  - ids: [brownfield-integration.extend-interface-impact, brownfield-integration.interface-preservation]
+    reason: intra-schema — two distinct census rows ([EXTEND] MUST-NOTs vs the add-alongside preservation set) sharing the interface vocabulary; census carried both
+  # --- [C7] census pre-seeds, below threshold at the wave-2C sweep — recorded so no
+  # future wave "fixes" them (the J2-6 instruction verbatim) ---
+  - ids: [brownfield-integration.letter-is-spirit, review-plan-artifacts.letter-is-spirit]
+    reason: census J2-5 pre-listed — cross-pair vs the wave-1 RPA/VC kept-distinct family; BI's tail carries brownfield-specific content
+  - ids: [brownfield-integration.letter-is-spirit, validation-constitution.letter-is-spirit]
+    reason: census J2-5 pre-listed, same adjudication (VC wording distinct since the wave-1 screen)
+  - ids: [executing-tdd-cycle.report-not-verdict, review-sufficiency.verdict-is-input]
+    reason: census J2-5 verdict-is-input shape — ETC's lead-owns-verdict (PT-D8 self-disclosure) vs the review-common.verdict-is-input block (RSUF stub, one resolved text across all five binders); different planes of one posture, keep-distinct
+  - ids: [testing-gap-finding.adjudication-lead-and-user, review-sufficiency.verdict-is-input]
+    reason: census J2-5 — TGF's adjudication reservation vs the block, same adjudication
+  - ids: [testing-gap-finding.zero-findings-clean-pass, review-sufficiency.default-fail]
+    reason: census J2-6 — the deliberate polar opposite — the D8 disclosure-based honesty mechanism vs the grader's earned-verdict posture; NEVER converge these
+  - ids: [testing-gap-finding.zero-findings-clean-pass, review-brainstorm.never-default-ready]
+    reason: census J2-6 — the deliberate polar opposite — the D8 disclosure-based honesty mechanism vs the grader's earned-verdict posture (RB's protected tail says zero findings means hunt harder); NEVER converge these

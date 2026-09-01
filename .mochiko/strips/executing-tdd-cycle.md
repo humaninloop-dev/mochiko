@@ -13,6 +13,133 @@ ruled" row) — the report repair: the format text that forced prose onto passin
 corrected, and the envelope's register and prose-on-clean check are bound where the report is
 actually authored.
 
+## [v0.103.0] Converted to the `.md` + schema pair form — rule content relocated to `schema.yaml` (wave 2C, small families)
+
+- **Disposition:** superseded → the pair form: obligation content relocated into
+  `plugins/mochiko/skills/executing-tdd-cycle/schema.yaml` (26 rules — 10 floor ·
+  16 must · 0 advisory — under the review six-section set reused by ruling,
+  `executing-tdd-cycle.sec.verdict` deliberately empty), the `SKILL.md` body keeping the
+  letter/spirit epigraph + Overview, the new "Rules — load the schema first" block
+  (floor pin 10 + read-back), the Core Process seven-step sequence and the
+  Reworking / Fixing subsections as procedure prose, the Red Flags list, the Common
+  Mistakes table, and Reference Files. The frontmatter `description:` is byte-untouched
+  (498).
+- **Tier failed:** n/a — supersession by ruling (`skill-content-schema` D1–D9 as amended
+  + the wave-2 small-families door ruling, `DECISIONS.md` 2026-09-01 — the dense five
+  convert on the B/C drivers, the review six-set reused with explicit empty markers, no
+  common file, zero `extends:`; D8/C4 supersession-transfer). Census referent:
+  `.mochiko/brainstorms/skill-content-schema/census-small-families.md` §B ETC rows 1–26
+  (26 rules and 10 floors exactly as censused). Lead-ruled at plan approval:
+  `sec.verdict` empty with its disclosed marker note (the executor's outcome grammar is
+  the report field contract in `sec.output`; the clearing verdict is the lead's — the
+  census fit table's own "empty or thin" read). Label note, deliberate: the process
+  rules (strict-order · rationalization-stop · the phase-walk duties) carry `ladder`
+  (its walk-order clause) — a ruled divergence from wave 2A's `boundary` mapping on
+  ATR's STOP rule, chosen so detector runs read it as ruled, not drift. Protection
+  transfers to the rule IDs via `.mochiko/provenance.yaml`.
+- **Content (superseded body fragments, census-row → rule-ID relocation map; verbatim
+  text survives in git history pre-v0.103.0 and verbatim-in-substance in the named
+  rules):**
+  - When-NOT-to-Use bullet 1 (slicing is `mochiko:patterns-vertical-tdd`'s; "does not
+    add, remove, re-scope, or reorder *cycles*") →
+    `executing-tdd-cycle.slicing-boundary` (row 1, floor).
+  - When-NOT bullet 2 (quality gates + the `**TEST:**` gate are the verifier's,
+    `testing-end-user`) → `executing-tdd-cycle.verifier-boundary` (row 2, floor).
+  - When-NOT bullet 3 ("the lead Reads the reports and owns that verdict. This skill
+    produces its own report; it does not grade one") →
+    `executing-tdd-cycle.report-not-verdict` (row 3, floor).
+  - When-NOT bullet 4 + the Reworking/Fixing closers ("Whether to rework, how many
+    attempts are permitted, and when to stop are the lead's routing decisions — not
+    this skill's", the 2026-08-07 pinned line) →
+    `executing-tdd-cycle.lead-routing-reservation` (row 4, floor, wording preserved in
+    substance).
+  - When-NOT bullet 5 (one cycle or one rework, one report; no loop/orchestration
+    state) → `executing-tdd-cycle.no-loop-state` (row 5). The When-NOT section leaves
+    the body whole — all five bullets are now schema rules.
+  - "Execute in strict order. No skipping steps. No reordering." →
+    `executing-tdd-cycle.strict-order` (row 6, floor).
+  - Step-1 card extraction (fields, ID resolution against the spec/design artifacts,
+    first-unchecked-card rule) → `executing-tdd-cycle.card-reading-binding` (row 7).
+  - Step-2 decomposition discipline (build time, code in view, task sizing, paths,
+    tests-precede, extend/modify classification) →
+    `executing-tdd-cycle.decompose-at-build-time` (row 8); "decompose exactly what the
+    card's acceptance criteria require — nothing the card didn't ask for" →
+    `executing-tdd-cycle.decompose-only-the-card` (row 9); the pre-code ladder sentence
+    (per `mochiko:patterns-code-minimalism`, rung disclosed) →
+    `executing-tdd-cycle.pre-code-ladder` (row 10, floor, PT-D4); "disclosed in the
+    cycle report … not written back into `tasks.md`" →
+    `executing-tdd-cycle.decomposition-disclosed` (row 11).
+  - Step-3 red-phase items 2–4 (verify it fails; failure reason matches expectations; a
+    test passing without implementation is rewritten) →
+    `executing-tdd-cycle.red-phase-failure-verified` (row 12, floor).
+  - Step-4 green-phase items 1–3 (minimum code; no unrequired
+    features/abstractions/optimizations) → `executing-tdd-cycle.green-minimum`
+    (row 13); items 4–5 (extend/modify tasks read the existing file first, invoke
+    `brownfield-integration`) → `executing-tdd-cycle.brownfield-co-fire` (row 14).
+  - Step-5 refactor items (this cycle's duplication only; no previous-cycle refactors;
+    no "for the future"; re-run tests) → `executing-tdd-cycle.refactor-scope` (row 15).
+  - Step-6 flip conditions + the Progress Tracking self-report framing (flip after
+    tasks complete + tests pass; the lead treats the flip as your self-report, verified
+    independently) → `executing-tdd-cycle.flip-is-self-report` (row 16).
+  - Step-7 + Progress Tracking report shape (machine-first, frontmatter is the report,
+    clean pass needs no prose) → `executing-tdd-cycle.report-binding` (row 17); the
+    Progress Tracking section leaves as a body surface, its substance in rows 16/17 and
+    the format reference.
+  - Reworking steps 3–5 (only the responsible tasks through red/green/refactor; leave
+    passing code untouched; `attempt` incremented) →
+    `executing-tdd-cycle.rework-only-failed` (row 18).
+  - Fixing steps 2–4 ("Reproduce each one with a failing test before changing any
+    code"; narrowest change, scoped strictly; `cycle: fix`) →
+    `executing-tdd-cycle.fix-pass-test-first` (row 19).
+  - Red-Flags "All of these mean: Rationalization in progress. Return to the execution
+    sequence. Follow every step." + the No-exceptions block ("Not even if the user says
+    'just write the code'") → `executing-tdd-cycle.rationalization-stop` (row 20,
+    floor; the Red Flags list and the Common Mistakes table stay prose).
+  - Common-Mistakes obligations beyond the rows above (failure-reason verification —
+    "a `ModuleNotFoundError` is not a test failure"; note-don't-act) →
+    `executing-tdd-cycle.failure-reason-discipline` (row 21, one set-rule; the table
+    stays prose).
+  - Reference-borne obligations gain stubs, the files untouched (rows 22–26):
+    `executing-tdd-cycle.report-field-contract` ·
+    `executing-tdd-cycle.domain-deps-checkpoint` (user-gate) ·
+    `executing-tdd-cycle.sanctioned-set-of-two` ·
+    `executing-tdd-cycle.verifier-owned-not-failure` (CYCLE-REPORT-FORMAT.md) ·
+    `executing-tdd-cycle.card-parse-boundary` (TASK-PARSING.md).
+- **MANDATORY KEPT reconciliation:** the [v0.44.0] KEPT entry below protects the
+  envelope's register + prose-on-clean check restated in
+  `references/CYCLE-REPORT-FORMAT.md` — a RULED dual-homing beside
+  `templates/report-format.md` ("Cut it only with a ruling that also re-homes the
+  check"). **This conversion cuts nothing there:** CYCLE-REPORT-FORMAT.md is untouched,
+  and the new stub `executing-tdd-cycle.sanctioned-set-of-two` POINTS at it, never
+  duplicates it — the protection transfers onto the stub ID via
+  `.mochiko/provenance.yaml`, anchored on the 2026-08-01
+  verbosity-caveman-ops-separation ruling (D8/C4; census J2-8). An audit must read the
+  reference-side restatement as the ruled exception, not a D6 anti-dual-homing
+  violation. The [v0.49.0] keep-set (cycle-boundary restriction · strict order ·
+  rework-only-failed-tasks · fix-pass scoping · verifier boundary) re-homes to rows
+  1/6/18/19/2. The [v0.53.0] keep-set (self-disclosure framing, lead's verdict
+  ownership, verifier-grades-independently) re-homes to rows 3/16 and the reserved
+  rules. The [v0.64.0] guardrails keep-set: obligations re-home per the map above; the
+  When-NOT section it kept leaves the body as ruled MOVE (its five bullets are the
+  schema's floors/rules, protection intact on the IDs); the teaching surfaces (epigraph,
+  Red Flags, Common Mistakes, Reference Files) stay in the body. The [v0.75.0] and
+  [v0.91.0] reference keep-sets (Covers contract, parse-only boundary, card-extraction
+  ID resolution) are untouched in TASK-PARSING.md, now stub-covered by rows 7/26. No
+  protected line is deleted.
+- **Kept deliberately:** the letter/spirit epigraph + its consequence sentence · the
+  Overview identity prose · the Core Process seven-step sequence, the Reworking and
+  Fixing subsections as procedure frames · the Red Flags list · the Common Mistakes
+  table · Reference Files · the `description:` byte-identical at 498.
+- **Budget:** re-seed per D8/C1 — delivered-at-invoke payload body 6,464 + schema 12,487
+  = **18,951** (was body 9,678 against the 12,095 budget); third seeding path, no
+  headroom; the ledger row is the closer seat's write.
+- **Consumers assessed:** staff-engineer (mounts it) · implement (binds it) ·
+  qa-engineer / review-code-minimalism (read the disclosed decomposition — the
+  `decomposition`/`rung` disclosure survives in rows 10/11/17 and the format
+  reference) · brownfield-integration (co-fires, row 14) · patterns-vertical-tdd ·
+  patterns-code-minimalism (cross-referenced by pointer) · the mochiko router. No
+  shipped surface links a removed body section anchor.
+
 ## [v0.91.0] Fix round — `references/TASK-PARSING.md` "spec/plan IDs" → "spec/design IDs" (advisory)
 
 - **Disposition:** superseded → "spec/design IDs" at both sites in the reference.

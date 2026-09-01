@@ -574,3 +574,119 @@ anchors:
   patterns-vertical-tdd.test-gate-runtime-classification-routing: "2026-08-16 vertical-tdd-complexity-and-qa-role D4"
   patterns-vertical-tdd.two-authors-one-card: "2026-08-16 vertical-tdd-complexity-and-qa-role D2"
   patterns-vertical-tdd.author-never-executing-builder: "2026-08-26 plan-stage-utility"
+  # ---- skill-schema entries (v0.103.0 small-families dense-five conversion, wave 2C) ----
+  # D8/C4 protection transfers for the five converted dense-five members; each rule's
+  # supersession-transfer is recorded in its member's .mochiko/strips/ [v0.103.0]
+  # entry. Anchor policy per wave 1: the ORIGINAL protecting ruling anchors the rule;
+  # re-key rulings live in the strip trail. All 90 date+slug pairs closer-verified
+  # against live DECISIONS.md rows at merge; every `class: floor` rule in all five
+  # schemas is anchored. Deliberate must-absences, seat-named and closer-held: four
+  # reference-borne must-class stubs carry NO anchor —
+  # testing-end-user.truncation-bounds · testing-end-user.cleanup-protocol ·
+  # executing-tdd-cycle.report-field-contract ·
+  # analysis-codebase.context-gathering-scope-note — census §B marks them unprotected
+  # (reference mechanics with no protecting ruling; anchoring would over-claim).
+  # Decisions, not gaps. Anchor notes carried from the seat drafts: the 2026-08-07
+  # executing-tdd-cycle row pins the lead's-routing line by name; the [v0.44.0] KEPT
+  # twins (TEU sanctioned-set-closure · ETC sanctioned-set-of-two) anchor the
+  # 2026-08-01 verbosity-caveman-ops-separation D4 ruling per census J2-8 — the ruled
+  # dual-homing's protecting ruling, protection transferred to the stub IDs; ETC
+  # domain-deps-checkpoint inherits the 2026-07-21 domain-dependency-allowlist
+  # registry-visibility floor's protection. Guardrails-keep-set lineage rules anchor
+  # the 2026-08-11 guardrails-vs-detail row (the v0.64.0 keep-set is the recorded
+  # protection).
+  # --- testing-end-user (23 rules; 7 floors, all anchored) ---
+  testing-end-user.grammar-consumed-never-redefined: "2026-08-16 vertical-tdd-complexity-and-qa-role"
+  testing-end-user.grammar-owner-wins: "2026-08-02 plan-task-granularity D2"
+  testing-end-user.strict-order: "2026-08-11 guardrails-vs-detail"
+  testing-end-user.setup-fail-fast: "2026-08-11 guardrails-vs-detail"
+  testing-end-user.modifier-execution-semantics: "2026-08-11 guardrails-vs-detail"
+  testing-end-user.assert-evaluation-semantics: "2026-08-11 guardrails-vs-detail"
+  testing-end-user.rationalization-stop: "2026-08-11 guardrails-vs-detail"
+  testing-end-user.parse-error-halts: "2026-08-02 plan-task-granularity D2"
+  testing-end-user.gate-source-binding: "2026-08-26 plan-stage-utility D4"
+  testing-end-user.no-default-pass: "2026-08-11 guardrails-vs-detail"
+  testing-end-user.runtime-classification-owned: "2026-08-11 guardrails-vs-detail"
+  testing-end-user.browser-flow-exception: "2026-08-02 ux-mocking-in-specify D9"
+  testing-end-user.default-subjective: "2026-08-11 guardrails-vs-detail"
+  testing-end-user.result-vocabulary: "2026-08-11 guardrails-vs-detail"
+  testing-end-user.gates-auto-resolve: "2026-08-26 plan-stage-utility D4"
+  testing-end-user.report-machine-first: "2026-08-01 verbosity-caveman-ops-separation D4"
+  testing-end-user.completion-set: "2026-08-11 guardrails-vs-detail"
+  testing-end-user.evidence-capture-binding: "2026-08-11 guardrails-vs-detail"
+  testing-end-user.sanctioned-set-closure: "2026-08-01 verbosity-caveman-ops-separation D4"
+  testing-end-user.custom-assert-to-human: "2026-08-11 guardrails-vs-detail"
+  testing-end-user.human-gate: "2026-08-11 guardrails-vs-detail"
+  # --- executing-tdd-cycle (26 rules; 10 floors, all anchored) ---
+  executing-tdd-cycle.report-not-verdict: "2026-08-05 ponytail-concepts-integration D8"
+  executing-tdd-cycle.flip-is-self-report: "2026-08-05 ponytail-concepts-integration D8"
+  executing-tdd-cycle.slicing-boundary: "2026-08-02 plan-task-granularity D2"
+  executing-tdd-cycle.verifier-boundary: "2026-08-02 plan-task-granularity D2"
+  executing-tdd-cycle.no-loop-state: "2026-08-11 guardrails-vs-detail"
+  executing-tdd-cycle.strict-order: "2026-08-02 plan-task-granularity D2"
+  executing-tdd-cycle.decompose-at-build-time: "2026-08-02 plan-task-granularity D2"
+  executing-tdd-cycle.decompose-only-the-card: "2026-08-02 plan-task-granularity D2"
+  executing-tdd-cycle.pre-code-ladder: "2026-08-05 ponytail-concepts-integration D4"
+  executing-tdd-cycle.red-phase-failure-verified: "2026-08-11 guardrails-vs-detail"
+  executing-tdd-cycle.green-minimum: "2026-08-11 guardrails-vs-detail"
+  executing-tdd-cycle.brownfield-co-fire: "2026-08-11 guardrails-vs-detail"
+  executing-tdd-cycle.refactor-scope: "2026-08-11 guardrails-vs-detail"
+  executing-tdd-cycle.rework-only-failed: "2026-08-02 plan-task-granularity D2"
+  executing-tdd-cycle.fix-pass-test-first: "2026-08-02 plan-task-granularity D2"
+  executing-tdd-cycle.rationalization-stop: "2026-08-11 guardrails-vs-detail"
+  executing-tdd-cycle.failure-reason-discipline: "2026-08-11 guardrails-vs-detail"
+  executing-tdd-cycle.card-reading-binding: "2026-08-16 vertical-tdd-complexity-and-qa-role"
+  executing-tdd-cycle.card-parse-boundary: "2026-08-16 vertical-tdd-complexity-and-qa-role"
+  executing-tdd-cycle.decomposition-disclosed: "2026-08-02 plan-task-granularity D2"
+  executing-tdd-cycle.report-binding: "2026-08-01 verbosity-caveman-ops-separation D4"
+  executing-tdd-cycle.sanctioned-set-of-two: "2026-08-01 verbosity-caveman-ops-separation D4"
+  executing-tdd-cycle.verifier-owned-not-failure: "2026-08-01 verbosity-caveman-ops-separation D4"
+  executing-tdd-cycle.lead-routing-reservation: "2026-08-07 executing-tdd-cycle"
+  executing-tdd-cycle.domain-deps-checkpoint: "2026-07-21 domain-dependency-allowlist"
+  # --- testing-gap-finding (floors: 9 · transfers: census §A rows 1–10) ---
+  testing-gap-finding.blindness-fence-inclusion-list: "2026-08-19 qa-gap-finding-verification D3"
+  testing-gap-finding.spine-outside-fence: "2026-08-19 product-architecture-schema D12"
+  testing-gap-finding.structural-exclusions: "2026-08-19 qa-gap-finding-verification D3"
+  testing-gap-finding.delegated-reads-inherit-fence: "2026-08-19 qa-gap-finding-verification D3"
+  testing-gap-finding.two-message-dispatch: "2026-08-19 qa-gap-finding-verification D3"
+  testing-gap-finding.expectations-numbered-before-probing: "2026-08-19 qa-gap-finding-verification D3"
+  testing-gap-finding.seat-devils-advocate: "2026-08-19 qa-gap-finding-verification D4"
+  testing-gap-finding.one-pass-at-final-validation: "2026-08-19 qa-gap-finding-verification D2"
+  testing-gap-finding.delta-lane-skip-stated: "2026-08-19 qa-gap-finding-verification D2"
+  testing-gap-finding.real-infrastructure-never-mocks: "2026-08-19 qa-gap-finding-verification D2"
+  testing-gap-finding.lens-alongside-never-inside: "2026-08-19 qa-gap-finding-verification D5"
+  testing-gap-finding.mutation-lens-bounds: "2026-08-19 qa-gap-finding-verification D5"
+  testing-gap-finding.tool-absent-skip-noted: "2026-08-19 qa-gap-finding-verification D5"
+  testing-gap-finding.flaky-suite-skip-noted: "2026-08-19 qa-gap-finding-verification D5"
+  testing-gap-finding.surviving-mutants-advisory: "2026-08-19 qa-gap-finding-verification D5"
+  testing-gap-finding.tool-advisory-posture: "2026-08-19 qa-gap-finding-verification D10"
+  testing-gap-finding.finding-kind-split: "2026-08-19 qa-gap-finding-verification D6"
+  testing-gap-finding.observability-advisory-only: "2026-08-19 qa-gap-finding-verification D6"
+  testing-gap-finding.adjudication-lead-and-user: "2026-08-19 qa-gap-finding-verification D6"
+  testing-gap-finding.rework-bound: "2026-08-19 qa-gap-finding-verification D6"
+  testing-gap-finding.bound-exhaustion-user-ruled: "2026-08-19 qa-gap-finding-verification D6"
+  testing-gap-finding.out-of-territory-routing: "2026-08-19 qa-gap-finding-verification D6"
+  testing-gap-finding.done-condition: "2026-08-19 qa-gap-finding-verification D8"
+  testing-gap-finding.report-disclosure: "2026-08-19 qa-gap-finding-verification D8"
+  testing-gap-finding.zero-findings-clean-pass: "2026-08-19 qa-gap-finding-verification D8"
+  testing-gap-finding.fold-back-authorship: "2026-08-19 qa-gap-finding-verification D7"
+  testing-gap-finding.gates-artifact-contract: "2026-08-19 qa-gap-finding-verification D7"
+  # --- brownfield-integration (floors: 6 · transfers: [v0.25.0] KEPT + [v0.49.0] keep-set) ---
+  brownfield-integration.consumes-classification-never-decides: "2026-08-05 ponytail-concepts-integration"
+  brownfield-integration.extend-interface-impact: "2026-07-25 skill-succinctness-strip"
+  brownfield-integration.modify-interface-impact: "2026-07-25 skill-succinctness-strip"
+  brownfield-integration.extend-never-silently-modify: "2026-08-02 plan-task-granularity"
+  brownfield-integration.read-full-file-first: "2026-08-02 plan-task-granularity"
+  brownfield-integration.interface-preservation: "2026-08-02 plan-task-granularity"
+  brownfield-integration.follow-file-conventions: "2026-07-25 skill-succinctness-strip"
+  brownfield-integration.conflict-detection-set: "2026-07-25 skill-succinctness-strip"
+  brownfield-integration.flag-blockers-into-cycle-report: "2026-07-25 skill-succinctness-strip"
+  brownfield-integration.letter-is-spirit: "2026-07-25 skill-succinctness-strip"
+  # --- analysis-codebase (floors: 3 · transfers: two-arm GI-020 + v0.63.0 keep-set + v0.91.0 carve + [v0.24.0] KEPT rows) ---
+  analysis-codebase.essential-floor-canonical-definition: "2026-08-10 validator-scope-and-verbosity"
+  analysis-codebase.intent-blind-waiver-blind: "2026-08-10 validator-scope-and-verbosity"
+  analysis-codebase.never-soften-never-waive: "2026-08-10 validator-scope-and-verbosity"
+  analysis-codebase.interpretation-reserved-to-session: "2026-08-10 validator-scope-and-verbosity"
+  analysis-codebase.deliverable-two-arm-binding: "2026-08-16 schema-based-template-guidance D8"
+  analysis-codebase.collision-inventory-out-of-scope: "2026-08-26 plan-stage-utility D1"
+  analysis-codebase.only-report-what-is-found: "2026-07-25 skill-succinctness-strip"

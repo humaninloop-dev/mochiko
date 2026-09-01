@@ -15,6 +15,118 @@ the decision row; nothing was removed or rewritten, and the existing *"A passing
 carries **no prose**"* rule was extended, never replaced. The one entry below records a line
 whose right to exist is contested in advance.
 
+## [v0.103.0] Converted to the `.md` + schema pair form — rule content relocated to `schema.yaml` (wave 2C, small families)
+
+- **Disposition:** superseded → the pair form: obligation content relocated into
+  `plugins/mochiko/skills/testing-end-user/schema.yaml` (23 rules — 7 floor · 16 must ·
+  0 advisory — under the review six-section set reused by ruling,
+  `testing-end-user.sec.independence` deliberately empty), the `SKILL.md` body keeping
+  the Overview + letter/spirit epigraph, the new "Rules — load the schema first" block
+  (floor pin 7 + read-back), When NOT to Use, the Core Process procedure (detection, the
+  six-step execution sequence, the quality-gate sequence), the Red Flags list, the
+  Common Rationalizations and Common Mistakes tables, and Reference Files. The
+  frontmatter `description:` is byte-untouched (500).
+- **Tier failed:** n/a — supersession by ruling (`skill-content-schema` D1–D9 as amended
+  + the wave-2 small-families door ruling, `DECISIONS.md` 2026-09-01 — the dense five
+  convert on the B/C drivers, the review six-set reused with explicit empty markers, no
+  common file, zero `extends:`; D8/C4 supersession-transfer). Census referent:
+  `.mochiko/brainstorms/skill-content-schema/census-small-families.md` §B TEU rows 1–21.
+  Lead-ruled recorded deviations at plan approval: the a/b limb splits (5a/5b · 14a/14b —
+  one `kind:` per rule, so 23 rules against the census header's 21) and the floor pin 7
+  against the census tally's 6 (row grain beats tally — the §B stub-19 floor row was
+  under-tallied). Label note, deliberate: the process rules (strict-order ·
+  rationalization-stop · setup-fail-fast) carry `ladder` (its walk-order clause) — a
+  ruled divergence from wave 2A's `boundary` mapping on ATR's STOP rule, chosen so
+  detector runs read it as ruled, not drift. Protection transfers to the rule IDs via
+  `.mochiko/provenance.yaml`.
+- **Content (superseded body fragments, census-row → rule-ID relocation map; verbatim
+  text survives in git history pre-v0.103.0 and verbatim-in-substance in the named
+  rules):**
+  - Overview grammar-ownership banner ("authored and owned by `patterns-vertical-tdd` …
+    This skill **consumes** that grammar; it does not redefine it. What this skill owns
+    is the **runtime**") → `testing-end-user.grammar-consumed-never-redefined` (row 1).
+    The banner's tail clause ("Where the grammar and the execution meet below, the
+    vocabulary is referenced and the *how* is retained.") was a reading instruction
+    about the body's own layout that the conversion makes false — the moved semantics no
+    longer sit "below"; its substance rides
+    `testing-end-user.grammar-consumed-never-redefined` +
+    `testing-end-user.grammar-owner-wins` ([v0.49.0] keep-set protection intact on those
+    IDs).
+  - "Execute in strict order. No skipping steps. No reordering." →
+    `testing-end-user.strict-order` (row 2, floor).
+  - "Fail fast if any setup fails — a setup failure blocks action execution. Record all
+    setup output for debugging." → `testing-end-user.setup-fail-fast` (row 3).
+  - Step-3 modifier execution-semantics bullets (`(background)` PID-tracked ·
+    `(timeout Ns)` kill + `TIMEOUT` · `(in path)`) →
+    `testing-end-user.modifier-execution-semantics` (row 4).
+  - Step-4 assert evaluation-semantics bullets →
+    `testing-end-user.assert-evaluation-semantics` (row 5a); "Any other assert text is a
+    **custom assertion for human evaluation** at the checkpoint" →
+    `testing-end-user.custom-assert-to-human` (row 5b).
+  - "Each assert MUST receive an explicit pass/fail evaluation. **No default to PASS** —
+    an unevaluated assert is a failure." → `testing-end-user.no-default-pass` (row 6,
+    floor).
+  - Step-5 machine-first report shape (frontmatter-only on all-PASS; `## Failures` on any
+    FAIL/PARTIAL/TIMEOUT/ERROR) → `testing-end-user.report-machine-first` (row 7).
+  - "The human decision gates completion — no proceeding without explicit human
+    approval." → `testing-end-user.human-gate` (row 8, floor).
+  - The Task Classification criteria table + "owned by this skill" →
+    `testing-end-user.runtime-classification-owned` (row 9); the browser-flow exception
+    paragraph → `testing-end-user.browser-flow-exception` (row 10, UX-D9 wording
+    preserved in substance); "Default to SUBJECTIVE if uncertain … Any failure, on any
+    classification, forces a checkpoint." → `testing-end-user.default-subjective`
+    (row 11, floor).
+  - The Result Classification table → `testing-end-user.result-vocabulary` (row 12).
+  - The Quality Gates checklist + "No presenting partial results. No skipping evidence
+    capture." → `testing-end-user.completion-set` (row 13).
+  - Quality Gate Auto-Resolution ("always auto-resolve … the answer is an exit code, not
+    a judgment"; "MUST NOT be softened into an LLM judgment call") →
+    `testing-end-user.gates-auto-resolve` (row 14a, floor); the gate source (`tasks.md`
+    `## Quality Gates` + the project's own build configuration) →
+    `testing-end-user.gate-source-binding` (row 14b).
+  - Red-Flags "All of these mean: Rationalization in progress. Return to the execution
+    sequence. Follow every step." + the No-exceptions block →
+    `testing-end-user.rationalization-stop` (row 15, floor; the Red Flags list and both
+    teaching tables stay prose).
+  - The Evidence Types section → `testing-end-user.evidence-capture-binding` (row 16).
+  - Reference-borne obligations gain stubs, the files untouched (rows 17–21):
+    `testing-end-user.grammar-owner-wins` · `testing-end-user.parse-error-halts`
+    (TASK-PARSING.md) · `testing-end-user.sanctioned-set-closure` ·
+    `testing-end-user.truncation-bounds` (REPORT-TEMPLATES.md) ·
+    `testing-end-user.cleanup-protocol` (EVIDENCE-CAPTURE.md).
+- **MANDATORY KEPT reconciliation:** the [v0.44.0] KEPT entry below protects the
+  envelope's register + prose-on-clean check restated in
+  `references/REPORT-TEMPLATES.md` — a RULED dual-homing beside
+  `templates/report-format.md` ("Cut it only with a ruling that also re-homes the
+  check"). **This conversion cuts nothing there:** REPORT-TEMPLATES.md is untouched, and
+  the new stub `testing-end-user.sanctioned-set-closure` POINTS at it, never duplicates
+  it — the protection transfers onto the stub ID via `.mochiko/provenance.yaml`,
+  anchored on the 2026-08-01 verbosity-caveman-ops-separation ruling (D8/C4; census
+  J2-8). An audit must read the reference-side restatement as the ruled exception, not a
+  D6 anti-dual-homing violation. The [v0.49.0] keep-set: the parsing algorithm, field
+  extraction, and legacy-marker normalization stay in TASK-PARSING.md untouched; the
+  grammar-owner banner obligation re-homes to
+  `testing-end-user.grammar-consumed-never-redefined` + the grammar-owner-wins stub. The
+  [v0.64.0] guardrails keep-set: obligations re-home per the map above; the teaching
+  surfaces it protects (epigraph, When NOT to Use, Red Flags, Rationalizations,
+  Mistakes, Reference Files) stay in the body. The [v0.91.0] keep-set (always-auto-
+  resolve, ruled gate-source wording, exit-code classification, `quality_gates` slot)
+  re-homes to rows 14a/14b, `testing-end-user.completion-set`, and
+  `testing-end-user.report-machine-first`. No protected line is deleted.
+- **Kept deliberately:** the Overview + letter/spirit epigraph · When NOT to Use · Task
+  Detection and the six-step Execution Sequence as procedure prose · the quality-gate
+  execution sequence · the Red Flags list · the Common Rationalizations and Common
+  Mistakes tables · Reference Files incl. the grammar-owner row · the `description:`
+  byte-identical at 500.
+- **Budget:** re-seed per D8/C1 — delivered-at-invoke payload body 8,696 + schema 12,095
+  = **20,791** (was body 13,123 against the 16,407 budget); third seeding path, no
+  headroom; the ledger row is the closer seat's write.
+- **Consumers assessed:** qa-engineer (mounts it) · implement (binds the verification
+  seat) · executing-tdd-cycle (cross-links; the `**TEST:**` gate stays the verifier's) ·
+  patterns-vertical-tdd (grammar owner — the seam wording preserved in substance in
+  rule 1 and the grammar-owner-wins stub) · review-code-minimalism · the mochiko router.
+  No shipped surface links a removed body section anchor.
+
 ## [v0.91.0] Quality-gate command source: the `plan.md` build-configuration read dies — plan-stage retirement D4
 
 - **Disposition:** superseded → quality-gate commands come from `tasks.md`'s `## Quality Gates`

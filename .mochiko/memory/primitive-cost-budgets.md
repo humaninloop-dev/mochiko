@@ -47,7 +47,7 @@ audited Wave 2 body no-ops (nothing D4-cuttable); their budgets are their surviv
 | skill | winner chars | budget (+25%) |
 |---|---|---|
 | analysis-iterative | 3,942 | 4,928 |
-| analysis-codebase | 6,509 | 8,137 |
+| analysis-codebase | 12,098 (re-seeded [v0.103.0] schema conversion — payload: body 3,814 + schema 8,284; was 6,509/8,137) | 12,098 (no headroom) |
 | authoring-constitution | 30,387 (re-seeded [v0.101.0] schema conversion — payload: body 7,255 + schema 23,132, re-measured post-fix-round; was 17,240/21,550) | 30,387 (no headroom) |
 | authoring-feature-map | 21,636 (re-seeded [v0.101.0] schema conversion — payload: body 5,505 + schema 16,131; was 12,330/15,413, standing +562 overage dissolved — see the [v0.101.0] note below) | 21,636 (no headroom) |
 | review-governance-intent | 14,663 (re-seeded [v0.100.0] schema conversion — payload: body 2,662 + schema 12,001; was 5,562/6,953) | 14,663 (no headroom) |
@@ -59,10 +59,10 @@ audited Wave 2 body no-ops (nothing D4-cuttable); their budgets are their surviv
 | review-specifications | 15,600 (re-seeded [v0.100.0] schema conversion — payload: body 3,182 + schema 12,418; was 6,187/7,734) | 15,600 (no headroom) |
 | ~~authoring-architecture~~ | 5,250 | 6,563 |
 | authoring-technical-requirements | 19,946 (re-seeded [v0.101.0] schema conversion — payload: body 3,204 + schema 16,742; was 10,628/13,285) | 19,946 (no headroom) |
-| brownfield-integration | 6,342 | 7,928 |
-| executing-tdd-cycle | 9,676 | 12,095 |
+| brownfield-integration | 10,577 (re-seeded [v0.103.0] schema conversion — payload: body 3,903 + schema 6,674; was 6,342/7,928) | 10,577 (no headroom) |
+| executing-tdd-cycle | 18,951 (re-seeded [v0.103.0] schema conversion — payload: body 6,464 + schema 12,487; was 9,676/12,095) | 18,951 (no headroom) |
 | grooming-operating-docs | 2,666 | 3,333 |
-| testing-end-user | 13,125 | 16,407 |
+| testing-end-user | 20,791 (re-seeded [v0.103.0] schema conversion — payload: body 8,696 + schema 12,095; was 13,125/16,407) | 20,791 (no headroom) |
 | patterns-api-contracts | 10,729 | 13,412 |
 | patterns-code-minimalism | 8,024 (re-seeded [v0.102.0] schema conversion — payload: body 2,235 + schema 5,789; was 3,455/4,319) | 8,024 (no headroom) |
 | patterns-entity-modeling | 13,468 | 16,835 |
@@ -85,6 +85,7 @@ audited Wave 2 body no-ops (nothing D4-cuttable); their budgets are their surviv
 | patterns-plan-minimalism | 8,594 (first budget row, seeded [v0.102.0] schema conversion — payload: body 2,812 + schema 5,782; unbudgeted at birth, v0.67.0 hard-cap-only) | 8,594 (no headroom) |
 | patterns-sound-loop | 10,933 (first budget row, seeded [v0.102.0] schema conversion — payload: body 2,022 + schema 8,911, re-measured post-fix-round; unbudgeted at birth, v0.70.0 hard-cap-only) | 10,933 (no headroom) |
 | patterns-transport-floor | 10,556 (first budget row, seeded [v0.102.0] schema conversion — payload: body 2,412 + schema 8,144; unbudgeted at birth, v0.71.0 hard-cap-only) | 10,556 (no headroom) |
+| testing-gap-finding | 19,382 (first budget row, seeded [v0.103.0] schema conversion — payload: body 5,271 + schema 14,111; unbudgeted at birth, v0.79.0 hard-cap-only) | 19,382 (no headroom) |
 
 The v0.63.0 floor-line additions (analysis-iterative, review-governance-intent,
 validation-constitution, review-specifications) and the v0.64.0 ones (review-brainstorm,
@@ -195,6 +196,34 @@ against the census estimate ×1.81 (~91.2k)** — +5.1% over estimate, well insi
 census's stated ±25% band; the measured figure returns to the user at the landing gate.
 Rulings + disposition maps: the [v0.102.0] entries in each member's `.mochiko/strips/`
 file and the 2026-09-01 `DECISIONS.md` rows.
+
+**[v0.103.0] small-families dense-five conversion re-seeds — the third seeding path's
+fourth use.** The five dense-five rows above are conversion re-seeds and a first-seed per
+skill-content-schema D8/C1 and the 2026-09-01 small-families door ruling (`DECISIONS.md`
+2026-09-01 — abort TRIPPED, zero common blocks; the dense five convert on the B/C
+drivers): budget = the measured delivered-at-invoke payload exactly, no +25% headroom.
+Four rows re-seed (`testing-end-user` · `executing-tdd-cycle` · `brownfield-integration` ·
+`analysis-codebase`); **one is a first-seed** — `testing-gap-finding` was unbudgeted at
+birth under the "budgets are never invented" clause and gains its first row via **the
+third seeding path ("a ruled schema conversion")**, which composes with that clause: the
+conversion is a ruled measurement event, not an invention (the wave-2A AAS/AE precedent;
+its unbudgeted-at-birth paragraph below stays as history). **No common file rides this
+wave** — census-small-families §C/§D found zero blocks clearing the 3+ bar in any
+micro-family, so delivered-at-invoke = budgeted payload, no common-read rider. All five
+figures are canonical-snippet counts taken 2026-09-01 by the closer seat against the
+landed tree, never seat-reported numbers (the wave-1 V2/R1 lesson; the closer's counts
+reconcile with the seat snapshots exactly). Descriptions are byte-untouched by the
+conversion (TEU 500 · TGF 709 · ETC 498 · BI 491 · AC 349 — all under the 1,536 cap;
+TGF's 709 stays the library's largest, ruled HOLDS at v0.79.0). Family
+delivered-at-invoke, measured: **81,799 vs the 46,809 pre-conversion five-member bodies =
+×1.75, against the census estimate ~78,500 (×1.68)** — +4.2% over estimate, well inside
+the census's stated ±30% band; the wave-1 estimate-to-measured drift did not recur.
+**This wave closes the wave-2 conversion arc: 30 converted pairs of 38 skill
+directories** — 8 review (v0.100.0) + 8 authoring (v0.101.0) + 9 patterns carriers
+(v0.102.0) + 5 dense-five (this wave); 7 stay prose by ruling (`analysis-iterative` ·
+`grooming-operating-docs` · `testing-governance-injection` + the four patterns teachers);
+the `mochiko` router out of scope (D1). Rulings + disposition maps: the [v0.103.0]
+entries in each member's `.mochiko/strips/` file and the 2026-09-01 `DECISIONS.md` rows.
 
 ## Skill descriptions
 

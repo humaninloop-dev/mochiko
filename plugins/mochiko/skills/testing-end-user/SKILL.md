@@ -13,7 +13,22 @@ Execute verification tasks that validate real infrastructure behavior through st
 
 Verification testing exists to catch failures before they reach production. Every shortcut in this process is a potential production incident waiting to happen.
 
-**Grammar ownership (single source):** the `**TEST:**` construct — its legal marker set, field skeleton, action-modifier vocabulary, and assert-pattern vocabulary — is authored and owned by `patterns-vertical-tdd` in [`TEST-GRAMMAR.md`](../patterns-vertical-tdd/references/TEST-GRAMMAR.md). This skill **consumes** that grammar; it does not redefine it. What this skill owns is the **runtime**: how to detect, parse, execute, evaluate, capture, classify, report, and gate. Where the grammar and the execution meet below, the vocabulary is referenced and the *how* is retained.
+## Rules — load the schema first
+
+Your first action, before any parsing or execution: **Read `schema.yaml` (this skill's own
+directory) raw, in full** — the small families ship no common file and no stub binds, so
+the pair's own schema is the whole first action. The schema is the source of truth for
+this skill's binding rules, nested in six sections, each addressable by its section ID:
+`testing-end-user.sec.independence` · `testing-end-user.sec.scope` ·
+`testing-end-user.sec.inputs` · `testing-end-user.sec.verdict` ·
+`testing-end-user.sec.output` · `testing-end-user.sec.reserved`. Interpret it live: a
+rule's `kind:` names what it is, and an absent `kind:` reads `constraint`; a rule of
+`class: floor` is always read and always delivered; a `pointer:` rule binds you to that
+file's or skill's procedure, referenced never restated; labels come from
+`plugins/mochiko/schemas/skill-labels.yaml`. The floor pin: the 7 rules of
+`class: floor` are non-waivable. Before the first parsing step, state the floor count
+back — a skipped or partial read leaves that count blank: halt and surface it, and halt
+likewise if the schema's `class: floor` count disagrees with the pin.
 
 ## When NOT to Use
 
@@ -34,11 +49,9 @@ Detect a verification task by its marker line:
 **TEST:** {Description}   <!-- at the foot of a cycle card; legacy task-line form also parses -->
 ```
 
-The full field skeleton (`**Setup**` / `**Action**` / `**Assert**` / `**Capture**`) and the legal marker set — unified `**TEST:**` plus the legacy variants (`TEST:VERIFY`, `TEST:CONTRACT`, `HUMAN VERIFICATION`) — are defined by the grammar owner in [`TEST-GRAMMAR.md`](../patterns-vertical-tdd/references/TEST-GRAMMAR.md) (§ *Unified TEST: Format*, § *Legacy Format Support*). Consume that vocabulary; do not re-enumerate it here. What this skill owns is *how to find and read those tasks* — the detection boundaries and field-extraction algorithm live in [references/TASK-PARSING.md](references/TASK-PARSING.md).
+The full field skeleton (`**Setup**` / `**Action**` / `**Assert**` / `**Capture**`) and the legal marker set — unified `**TEST:**` plus the legacy variants (`TEST:VERIFY`, `TEST:CONTRACT`, `HUMAN VERIFICATION`) — are defined by the grammar owner in [`TEST-GRAMMAR.md`](../patterns-vertical-tdd/references/TEST-GRAMMAR.md) (§ *Unified TEST: Format*, § *Legacy Format Support*). How to find and read those tasks — the detection boundaries and field-extraction algorithm — lives in [references/TASK-PARSING.md](references/TASK-PARSING.md).
 
 ### Execution Sequence
-
-Execute in strict order. No skipping steps. No reordering.
 
 **1. Parse Task**
 
@@ -46,129 +59,42 @@ Extract the structured task (ID, test type, setup, actions with modifiers, asser
 
 **2. Execute Setup**
 
-Run setup commands sequentially. Fail fast if any setup fails — a setup failure blocks action execution. Record all setup output for debugging.
+Run setup commands sequentially, capturing each command's output.
 
 **3. Execute Actions**
 
-Run each action honoring its modifiers. The modifier *vocabulary* — `(background)`, `(timeout Ns)`, `(in path)` — is defined in [`TEST-GRAMMAR.md`](../patterns-vertical-tdd/references/TEST-GRAMMAR.md) (§ *Action Modifiers*). The **execution semantics this skill owns**:
-
-- **`(background)`** — start the action asynchronously and **track its PID** so its output can be read for later asserts and the process can be cleaned up (pass or fail).
-- **`(timeout Ns)`** — enforce `N` seconds as the per-action limit, overriding the 60s default; on expiry, capture whatever output exists, kill the process, and mark the result `TIMEOUT`.
-- **`(in path)`** — run the action in the given directory.
-
-Capture all console output, track background processes, and enforce timeouts. See [references/EVIDENCE-CAPTURE.md](references/EVIDENCE-CAPTURE.md) for the capture, PID-tracking, timeout, and cleanup mechanics.
+Run each action honoring its modifiers. The modifier *vocabulary* — `(background)`, `(timeout Ns)`, `(in path)` — is defined in [`TEST-GRAMMAR.md`](../patterns-vertical-tdd/references/TEST-GRAMMAR.md) (§ *Action Modifiers*); the execution semantics are the schema's `testing-end-user.modifier-execution-semantics`. Capture all console output, track background processes, and enforce timeouts — mechanics in [references/EVIDENCE-CAPTURE.md](references/EVIDENCE-CAPTURE.md).
 
 **4. Evaluate Asserts**
 
-Evaluate each assert against the captured evidence. The assert-pattern *vocabulary* — `Console contains "…"` (and its `(within Ns)` timed form), `File exists: …`, `Response status: …`, `Screen reached: …`, `Page contains "…"` — is defined in [`TEST-GRAMMAR.md`](../patterns-vertical-tdd/references/TEST-GRAMMAR.md) (§ *Assert Patterns*). The **evaluation semantics this skill owns**:
-
-- **`Console contains "{text}"`** — substring match against the captured stdout/stderr. The `(within Ns)` form is a timed match against streaming (background) output — poll until the text appears or the window elapses.
-- **`File exists: {path}`** — a filesystem check (`test -f {path}`).
-- **`Response status: {code}`** — compare the captured HTTP status against the expected code.
-- **`Screen reached: {url-path or selector}`** — a Playwright check: the browser's current URL matches the path, or the selector resolves on the current page.
-- **`Page contains "{text}"`** — a Playwright check: the text is present in the rendered page content.
-- Any other assert text is a **custom assertion for human evaluation** at the checkpoint.
-
-Each assert MUST receive an explicit pass/fail evaluation. **No default to PASS** — an unevaluated assert is a failure.
+Evaluate each assert against the captured evidence. The assert-pattern *vocabulary* — `Console contains "…"` (and its `(within Ns)` timed form), `File exists: …`, `Response status: …`, `Screen reached: …`, `Page contains "…"` — is defined in [`TEST-GRAMMAR.md`](../patterns-vertical-tdd/references/TEST-GRAMMAR.md) (§ *Assert Patterns*); the evaluation semantics are the schema's `testing-end-user.assert-evaluation-semantics`.
 
 **5. Generate Report**
 
-Machine-first, per [references/REPORT-TEMPLATES.md](references/REPORT-TEMPLATES.md): the
-persisted verification-report file is YAML frontmatter (per-task results, quality gates,
-classification, recommendation) — **all PASS** → frontmatter only; **any FAIL / PARTIAL /
-TIMEOUT / ERROR** → a `## Failures` section with the evidence tables and bounded output
-excerpts for the failing items. Truncation rules there.
+Generate the verification-report file per [references/REPORT-TEMPLATES.md](references/REPORT-TEMPLATES.md).
 
 **6. Present Checkpoint**
 
-Ask the human to approve, reject, or retry. The human decision gates completion — no proceeding without explicit human approval.
+Ask the human to approve, reject, or retry, per the checkpoint presentation formats in [references/REPORT-TEMPLATES.md](references/REPORT-TEMPLATES.md).
 
 ### Task Classification
 
-Before execution, classify the task from its Action and Assert content. This runtime classification is **owned by this skill** — it decides, per task, whether a human must be involved:
-
-| Classification | Criteria | Checkpoint Behavior |
-|----------------|----------|---------------------|
-| **CLI** | Backtick commands + measurable asserts | May auto-approve if 100% pass |
-| **GUI** | UI actions (`click`, `tap`) or screenshot capture | Always human checkpoint |
-| **SUBJECTIVE** | Qualitative terms (`looks`, `feels`, `appears`) | Always human checkpoint |
-
-**Browser-flow exception:** a GUI-shaped task whose actions are Playwright-driven against a
-cited `FLOW-XXX` path (from the spec's Screens & Flows manifest) and whose asserts are drawn
-only from the grammar's machine-evaluable patterns (`Screen reached:`, `Page contains`,
-`Console contains`, `Response status:`, `File exists:`) classifies as **CLI** — the walk is
-deterministic and may auto-approve at 100% pass, screenshots captured as evidence
-regardless. A subjective or custom assert anywhere in the task keeps it SUBJECTIVE/GUI. The
-binding surface is the flow — screen sequence and actions; visual appearance stays advisory
-and is never an assert target.
-
-**Default to SUBJECTIVE if uncertain** — the safe fallback. Ambiguity is a reason to escalate to a human, never a reason to auto-approve. Any failure, on any classification, forces a checkpoint.
-
-### Result Classification
-
-| Status | Meaning |
-|--------|---------|
-| `PASS` | All asserts passed |
-| `FAIL` | One or more asserts failed |
-| `PARTIAL` | Mixed results, needs judgment |
-| `TIMEOUT` | Action exceeded its time limit |
-| `ERROR` | Execution error (not an assertion failure) |
-
-### Evidence Types
-
-The four evidence types (`console` / `screenshot` / `logs` / `timing`) and their capture methods
-are catalogued in [references/EVIDENCE-CAPTURE.md](references/EVIDENCE-CAPTURE.md).
-
-## Quality Gates
-
-Before presenting the checkpoint, verify completion of ALL items:
-
-- [ ] All setup commands completed
-- [ ] All actions executed (or timed out)
-- [ ] All asserts evaluated
-- [ ] Evidence captured per the Capture field
-- [ ] Report generated with the proper detail level
-
-No presenting partial results. No skipping evidence capture. No proceeding without human approval.
+Before execution, classify the task from its Action and Assert content — the classification criteria, the browser-flow exception, and the uncertain-default posture live in the schema's `testing-end-user.sec.verdict` section.
 
 ## Quality Gate Execution
 
-When a verification run includes quality gates, execute them alongside `**TEST:**` task verification. Quality gates are command-based checks that **always auto-resolve** — they are deterministic ground truth, not a matter of judgment.
+When a verification run includes quality gates, execute them alongside `**TEST:**` task verification:
 
-### Quality Gate Sequence
-
-1. **Identify quality gate commands** from the `## Quality Gates` section of `tasks.md` and the project's own build configuration.
+1. **Identify the quality-gate commands** (source per the schema's `testing-end-user.gate-source-binding`).
 2. **Execute each command** sequentially (lint, build, tests).
 3. **Record results** with exit code, stdout, and stderr.
-4. **Classify**: exit `0` = pass, non-zero = fail.
-5. **Include in the verification report** under the `quality_gates` frontmatter section.
+4. **Include in the verification report** under the `quality_gates` frontmatter section, in the format defined in [references/REPORT-TEMPLATES.md](references/REPORT-TEMPLATES.md).
 
-### Quality Gate Report Format
-
-Record each gate in the verification-report's `quality_gates` frontmatter section — the format
-(status from exit code, command, pass/fail/skip counts for suites) is defined in
-[references/REPORT-TEMPLATES.md](references/REPORT-TEMPLATES.md).
-
-### Quality Gate Auto-Resolution
-
-Quality gates **always auto-resolve**. No human checkpoint is needed for "did lint pass?" decisions — the answer is an exit code, not a judgment:
-
-- **Exit `0`** = pass. Record and continue.
-- **Non-zero exit** = fail. Record the failure output. Include it in the verification report.
-- **No human checkpoint** for quality gate results — they are deterministic.
-
-Quality gate failures are surfaced through the verification report to the gate that consumes it, which evaluates them deterministically. (This exit-code determinism is ground truth; it MUST NOT be softened into an LLM judgment call.)
-
-**No exceptions:**
-- Not for "simple tests that obviously pass"
-- Not if the user seems impatient
-- Not if evidence capture is slow
-- Not even if setup was identical to a previous run
-- Not even if "just checking one thing"
+Quality gate failures are surfaced through the verification report to the gate that consumes it, which evaluates them deterministically.
 
 ## Red Flags - STOP and Restart Properly
 
-If any of these thoughts arise, STOP immediately:
+If any of these thoughts arise, STOP (`testing-end-user.rationalization-stop`):
 
 - "The test obviously passed, no need for full evidence capture"
 - "I already know this works from previous runs"
@@ -178,8 +104,6 @@ If any of these thoughts arise, STOP immediately:
 - "Evidence capture is taking too long"
 - "I can infer the result without running the test"
 - "The setup is the same as last time"
-
-**All of these mean:** Rationalization in progress. Return to the execution sequence. Follow every step.
 
 ## Common Rationalizations
 

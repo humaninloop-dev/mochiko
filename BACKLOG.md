@@ -22,19 +22,22 @@ git history (this line, before this groom).*
 *(ruled + accepted 2026-09-01, `skill-content-schema` D1–D9 as review-amended; provenance:
 `.mochiko/brainstorms/skill-content-schema/record.md`)*
 
-- [ ] **First-live-run watch: skill schema delivery (D6)** — review wave DELIVERED
-  2026-09-01 at v0.100.0, authoring (2A) at v0.101.0, patterns 9 carriers (2B) at
-  v0.102.0 (→ trail). Probes: schema read? whole? before the first procedural step?
-  read-back stated? · the I5 per-invoke read-cost observable against the MEASURED figures
-  (review ×3.24 ~119.9k · authoring ×1.84 ~150.6k · patterns ×1.90 ~95.9k
+- [ ] **First-live-run watch: skill schema delivery (D6)** — the ARC is complete: review
+  v0.100.0 · authoring (2A) v0.101.0 · patterns 9 (2B) v0.102.0 · dense five (2C)
+  v0.103.0 (→ trail); 30 pairs of 38 skill dirs, 7 prose by ruling, router out. Probes:
+  schema read? whole? before the first procedural step? read-back stated? · the I5
+  per-invoke read-cost observable against the MEASURED figures (review ×3.24 ~119.9k ·
+  authoring ×1.84 ~150.6k · patterns ×1.90 ~95.9k · dense five ×1.75 ~81.8k
   delivered-at-invoke; ledger rows the per-member source) · benefit observations (a
-  `skill.*` ID cited by a strip/audit row · the checker or detector catching a real defect
-  — live already: the 2A Shape-token and anchor-gap catches, the 2B display-for-override
-  catch and the sibling-seat GI-005 heading catch). Consumers: the D9 rollback trigger
-  (user-reserved; triggers: delivery underperforming the prose baseline, or the eval
-  sample past the pre-registered bar) + the queued 2C landing. Still owed from wave 1:
-  the D7 compression-eval judged sample (RB+RF, pre-registration + ship bar take their
-  own user ratification).
+  `skill.*` ID cited by a strip/audit row · the checker or detector catching a real
+  defect — live already: the 2A Shape-token and anchor-gap catches, the 2B
+  display-for-override and sibling-seat GI-005 catches, the 2C validator-refutes-validator
+  ledger save). Consumers: the D9 rollback trigger (user-reserved; triggers: delivery
+  underperforming the prose baseline, or the eval sample past the pre-registered bar) ·
+  the prose-seven revisit · the D5 cross-family `skill-common.yaml` graduation candidate
+  (evidence: 2A author≠grader/envelope + 2B 4-member read-before-claim convergences).
+  Still owed from wave 1: the D7 compression-eval judged sample (RB+RF, pre-registration +
+  ship bar take their own user ratification).
 
 ## Command-schema ontology wave
 

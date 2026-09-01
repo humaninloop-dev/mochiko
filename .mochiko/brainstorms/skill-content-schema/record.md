@@ -750,6 +750,49 @@ pointer takes a one-line ruled repair riding its wave, never a silent fix.
   wave 2C small families (dense five). The four teachers (api-contracts · entity-modeling ·
   technical-decisions · system-design) stay prose by ruling; revisit on evidence.
 
+### Wave 2C — small families, dense five, BUILT (2026-09-01, v0.103.0) — THE ARC CLOSES
+
+- **Build:** 3 plan-approved seats (2+3 pairs · a shared/closer seat). Delivered: 5 in-dir
+  pairs (104 rules · 35 floors · 11 reference stubs · pins 7/9/10/6/3 with read-backs) under
+  the REUSED review six-set with explicit empty markers (no set minted — the door ruling) ·
+  **no common file and zero `extends:`** (abort was TRIPPED; the checker cannot enforce
+  zero-extends for fall-through stems, so the bar is procedural — held and audit-verified) ·
+  criteria criterion-2 reuse sentence + census citation · provenance 90 new anchors (597
+  total; all 35 floors anchored; four named deliberate must-absences) · allowlist 181→214
+  distinct rows, detector 0 clusters over 1,016 rules — **the no-allowlist run confirmed
+  zero within-micro-family 3+ clusters: the census's zero-blocks finding held at landed
+  grain** · ledger 4 re-seeds + TGF first-seed, no headroom. J2-8's KEPT dual-homing twins
+  shipped as ruled (stubs point at their own reference homes; reconciliation paragraphs;
+  2026-08-01 anchors); J2-9's dangling-pointer repair executed as its own disclosed entry.
+- **Class-mix rulings:** TEU 7 floors · TGF 9 (row grain, applications six and seven) ·
+  BI 6 via the [v0.49.0]-keep-set row-7 promotion (protected-set naming beats the cell —
+  the 2B VT precedent); TEU 23 / TGF 31 rules via census-marked a/b splits.
+- **Audits (X1 · X2 · X3→X3b, 7 units):** all 7 PASS — zero blocking across the whole wave,
+  a first for the arc. One validator seat went silent twice and was respawned fresh (X3b).
+  Six citation-class minors fixed in one micro-batch. X3b's standout: it REFUTED a sibling
+  validator's queued ledger "correction" by proving the "was X/Y" notation is a prior-row
+  citation (the same-wave AC row's 104-char gap as proof) — the fix was cancelled before it
+  corrupted a four-wave convention. Author≠grader catching the grader: the loop works in
+  both directions.
+- **Measured at landing:** family delivered **81,799** vs 46,809 = **×1.75**, +4.2% over the
+  ×1.68 estimate, in band. Matrices 114/114 · 134/134 · 48/48; sweeps 30/30 skill pairs ·
+  6/6 command pairs.
+- **THE WAVE-2 CONVERSION ARC IS COMPLETE:** 30 converted pairs of 38 skill directories —
+  8 review (v0.100.0) · 8 authoring (v0.101.0) · 9 patterns carriers (v0.102.0) · 5 dense
+  five (v0.103.0); 7 stay prose by ruling (analysis-iterative · grooming-operating-docs ·
+  testing-governance-injection · the four patterns teachers); the `mochiko` router out of
+  scope (D1). Four grammars' worth of family section sets (review · authoring · patterns ·
+  review-reused), two family common files, one label registry at 13, 597 provenance anchors,
+  214 allowlist rows at zero detector residue. Measured multipliers by family: review ×3.24 ·
+  authoring ×1.84 · patterns ×1.90 · dense five ×1.75.
+- Landing ritual: §K appendix · DECISIONS row → 2C built + arc closed · BACKLOG watch
+  extended to all four families · ROADMAP · index · CHANGELOG 0.103.0 · marketplace synced ·
+  cargo (gate 6). Standing after the arc: the first-live-run watch (all four families'
+  read-cost observables) · the D7 compression-eval judged sample (own ratification) · the
+  D5 cross-family `skill-common.yaml` graduation candidate (evidence accumulating: the
+  author≠grader/envelope convergence from 2A + the 4-member read-before-claim convergence
+  from 2B) · the prose seven revisit on evidence.
+
 ## Open questions
 
 - None blocking. Named graduation candidates (not open questions): phase anchors (D3) ·

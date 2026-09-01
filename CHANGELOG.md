@@ -5,6 +5,37 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.103.0] — 2026-09-01
+
+**Skill content schemas — wave 2C, the small-families dense five; the conversion arc
+closes** (wave-2 family-door rulings, `DECISIONS.md` 2026-09-01; census-first per D9,
+`census-small-families.md` + its §K appendix). The five obligation-dense members —
+testing-end-user · testing-gap-finding · executing-tdd-cycle · brownfield-integration ·
+analysis-codebase — each ship as a `SKILL.md` + in-directory `schema.yaml` pair: **104
+rules at D12 grain (35 floors, 11 reference stubs)**, procedure and teaching prose
+body-side, every `description:` byte-untouched, floor pins + read-backs (7 · 9 · 10 · 6 ·
+3). No set is minted: the family **REUSES the review six-set** with explicit empty markers,
+and — the abort having TRIPPED at census (zero common blocks) — ships **no common file and
+zero `extends:`** (a procedural bar: fall-through stems would resolve `skill-review-common`
+cleanly, so the audits hold the line, not the checker). testing-gap-finding's blindness
+fence moves verbatim-in-substance with its inverted default preserved ("zero findings is a
+clean pass" — the deliberate polar opposite of the graders' default-FAIL, polarity-noted
+against future convergence); the [v0.44.0] KEPT register restatements in testing-end-user
+and executing-tdd-cycle ship as RULED dual-homing stubs; analysis-codebase's long-standing
+dangling "indicators below" pointer takes its ruled one-line repair, disclosed, never
+silent. Protected content by supersession-transfer: 90 new sidecar anchors (597 total;
+every floor anchored; four named deliberate absences); allowlist 214 distinct rows,
+detector 0 clusters over 1,016 rules — a no-allowlist run confirms zero within-micro-family
+3+ clusters, so the census's zero-blocks finding held at landed grain. Budgets: four
+re-seeds + testing-gap-finding's first seed via the third seeding path, no headroom; family
+delivered-at-invoke **measured ×1.75 (46,809 → 81,799), +4.2% over the census ×1.68
+estimate, in band**. 3 plan-approved producers + 3 validators (one silent seat respawned),
+7 units: **ALL PASS with zero blocking — the arc's first clean round**; six citation-class
+minors fixed; one validator refuted another's queued ledger "correction" before it
+corrupted the four-wave "was X/Y" citation convention. **Arc totals: 30 converted pairs of
+38 skill directories (review ×3.24 · authoring ×1.84 · patterns ×1.90 · dense five ×1.75);
+7 skills stay prose by ruling; the router out of scope.**
+
 ## [0.102.0] — 2026-09-01
 
 **Skill content schemas — wave 2B, the patterns-family conversion (9 discipline
