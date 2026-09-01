@@ -16,16 +16,26 @@ Checks, all deterministic:
   1. schema + labels + common files parse as YAML
   2. discriminators — schema `kind: skill` with a `skill:` name matching its directory
      stem (D2 in-dir + the R-b filename-stem ruling); registry `kind: skill-labels`;
-     common `kind: skill-common` (generic — future families add files under the same
-     kind; the `review-common.` block prefix carries the family)
-  3. section grammar — the six-section skill set minted at census §H
-     (independence · scope · inputs · verdict · output · reserved), set-wise, with
-     `<stem>.sec.<slug>` IDs; `rules: []` with a one-line `note:` is a deliberate
-     empty marker and valid; empty with no note is a finding
+     common `kind: skill-common` (generic — every family's file ships under the same
+     kind; the `<family>-common.` block prefix carries the family)
+  3. section grammar — the skill's FAMILY section set, set-wise, with
+     `<stem>.sec.<slug>` IDs. The family derives from the directory-name stem prefix:
+     `authoring-*` → the authoring set minted at census-authoring J-1 (independence ·
+     scope · inputs · artifact · output · reserved); everything else → the review set
+     minted at census §H (independence · scope · inputs · verdict · output ·
+     reserved — the small families reuse it by ruling, and further families add a
+     prefix branch by their own ruling). `rules: []` with a one-line `note:` is a
+     deliberate empty marker and valid; empty with no note is a finding
   4. rule-ID uniqueness + dotted-slug format + stem prefix (every rule and section ID
      leads with the skill's directory name)
   5. tombstone integrity — an ID is never both live and tombstoned
-  6. every rule label exists in plugins/mochiko/schemas/skill-labels.yaml
+  6. every rule label exists in plugins/mochiko/schemas/skill-labels.yaml; a stub
+     inheriting from a block that itself carries no labels resolves label-less by
+     design and warns rather than fails (the census assigned some posture blocks no
+     label — the block is the single home of that ruling; a LOCAL empty `labels:` is
+     still a finding); the zero-member claim is sweep-scoped — labels used by NO
+     swept schema are named once, at the end of a sweep (a single-skill run makes no
+     zero-member claim: per-family labels are legally absent from any one member)
   7. `kind:` vocabulary — the eight-kind skill set (census §E: constraint · duty ·
      gate · reservation · binding · bound · routing · latitude; `constraint` the
      omitted default). `kind: fail` and `enforces:` are retired from the skill grammar
@@ -37,12 +47,17 @@ Checks, all deterministic:
      (`moment-resolved(...)` is command grammar); unused dimensions/values warn.
      The per-dimension coverage report excludes floors (the C4 semantics: a floor is
      always delivered whatever its `when:`)
-  9. `extends:` — the named `review-common.<slug>` block exists in
-     plugins/mochiko/schemas/skill-review-common.yaml; the stub declares `class:`
-     locally; a common block carrying `kind:`/`when:`/`enforces:` is an error; blocks
-     bound by no stub in any swept skill are named once, at the end of a sweep (the
-     orphan question is family-wide, so a single-skill run makes no orphan claim).
-     Text-side checks run against RESOLVED text — the run reads the inherited text
+  9. `extends:` — the named `<family>-common.<slug>` block exists in the schema's OWN
+     family library (review → plugins/mochiko/schemas/skill-review-common.yaml ·
+     authoring → plugins/mochiko/schemas/skill-authoring-common.yaml); a stub naming
+     another family's prefix is a finding (D5 per-family library, cross-family
+     sharing forbidden); the stub declares `class:` locally; a common block carrying
+     `kind:`/`when:`/`enforces:` is an error; blocks bound by no stub in any swept
+     skill are named once, at the end of a sweep, per family and only where at least
+     one swept schema belongs to that family (the orphan question is family-wide, so
+     a single-skill run — or a sweep with no members of the family — makes no orphan
+     claim). Text-side checks run against RESOLVED text — the run reads the
+     inherited text
  10. `${var}` closure against `vars:`; unused vars warn; deixis lint (the command D15
      idiom — a reference that dangles when the rule is quoted alone)
  11. `pointer:` path resolution (census J-7) — a path-shaped pointer (carries a `/` or
@@ -135,12 +150,30 @@ BOOL_ALIASES = {"yes": "true", "on": "true", "no": "false", "off": "false"}
 # nothing else. `class`, `kind` and `when` are always local, so their absence stays
 # meaningful; `enforces` does not exist in this grammar at all.
 INHERITED_FIELDS = ("text", "labels", "pointer")
-COMMON_ID_RE = re.compile(r"^review-common\.[a-z0-9]+(?:-[a-z0-9]+)*$")
-# The six-section skill set, minted once at census §H — the grader lifecycle, not the
-# command six-set.
-CANONICAL_SLUGS = (
-    "independence", "scope", "inputs", "verdict", "output", "reserved",
-)
+# Per-family section sets, each minted once by its family's census-backed ruling —
+# review at census §H (the grader lifecycle), authoring at census-authoring J-1
+# (`artifact` replaces `verdict`: producers have no clearing grammar, and the produced
+# artifact's binding grammar needs a home). The family derives from the directory-name
+# stem prefix; everything without a minted prefix falls through to the review set (the
+# small families reuse it by ruling).
+FAMILY_SECTION_SETS = {
+    "review": ("independence", "scope", "inputs", "verdict", "output", "reserved"),
+    "authoring": ("independence", "scope", "inputs", "artifact", "output", "reserved"),
+}
+COMMON_ID_RES = {
+    family: re.compile(rf"^{family}-common\.[a-z0-9]+(?:-[a-z0-9]+)*$")
+    for family in FAMILY_SECTION_SETS
+}
+
+
+def family_of(stem: str) -> str:
+    """The skill's grammar family, from its directory-name stem prefix."""
+    return "authoring" if stem.startswith("authoring-") else "review"
+
+
+def family_common_path(a, family: str) -> Path:
+    """The family's own block library — D5: per-family file, never shared."""
+    return a.authoring_common if family == "authoring" else a.common
 RULES_HEADING = "## Rules — load the schema first"
 CITATION_SUFFIXES = {"md", "yaml", "sh"}
 
@@ -299,7 +332,8 @@ def check_when(rid: str, when, dims: dict, findings: list) -> dict:
     return terms
 
 
-def load_common(path: Path, needed: bool, findings: list, warnings: list):
+def load_common(path: Path, needed: bool, findings: list, warnings: list,
+                family: str = "review"):
     """The family block library (D5) — absent is a finding only where a stub binds it."""
     if not path.exists():
         if needed:
@@ -322,8 +356,8 @@ def load_common(path: Path, needed: bool, findings: list, warnings: list):
             findings.append(f"{path.name}: rules[{j}] needs an `id` (D5)")
             continue
         bid = str(b["id"])
-        if not COMMON_ID_RE.match(bid):
-            findings.append(f"{bid}: block id fails `review-common.<slug>` format (D5)")
+        if not COMMON_ID_RES[family].match(bid):
+            findings.append(f"{bid}: block id fails `{family}-common.<slug>` format (D5)")
         if bid in blocks:
             findings.append(f"{bid}: duplicate block id (minted once)")
         blocks[bid] = b
@@ -344,17 +378,22 @@ def load_common(path: Path, needed: bool, findings: list, warnings: list):
 
 
 def resolve_extends(rid: str, r: dict, common, common_path: Path, bound: set,
-                    findings: list, warnings: list) -> dict:
+                    findings: list, warnings: list, family: str = "review") -> dict:
     """A rule's effective text/labels/pointer after `extends:` — those three only (D5).
 
     The run reads resolved text, so every text-side check downstream reads it too.
+    A stub binds only its OWN family's library: another family's prefix is the D5
+    cross-family sharing the per-family files exist to forbid.
     """
     eff = {f: r.get(f) for f in INHERITED_FIELDS}
     if "extends" not in r:
         return eff
     target = str(r.get("extends"))
-    if not COMMON_ID_RE.match(target):
-        findings.append(f"{rid}: `extends: {target}` — want `review-common.<slug>` (D5)")
+    if not COMMON_ID_RES[family].match(target):
+        findings.append(
+            f"{rid}: `extends: {target}` — want `{family}-common.<slug>` "
+            f"(D5 per-family library; cross-family sharing forbidden)"
+        )
         return eff
     if common is None:
         findings.append(
@@ -446,6 +485,8 @@ def main() -> int:
                    default=root / "plugins/mochiko/schemas/skill-labels.yaml")
     p.add_argument("--common", type=Path,
                    default=root / "plugins/mochiko/schemas/skill-review-common.yaml")
+    p.add_argument("--authoring-common", type=Path,
+                   default=root / "plugins/mochiko/schemas/skill-authoring-common.yaml")
     p.add_argument("--provenance", type=Path, default=root / ".mochiko/provenance.yaml")
     p.add_argument("--decisions", type=Path, default=root / "DECISIONS.md")
     a = p.parse_args()
@@ -469,35 +510,57 @@ def main() -> int:
 
     worst = 0
     bound_all = set()
+    labels_used = set()
     for sp in paths:
         if not a.skill:
             print(f"=== {sp.parent.name} ===")
-        rc = check_pair(sp, a, stems, bound_acc=bound_all if not a.skill else None)
+        rc = check_pair(sp, a, stems,
+                        bound_acc=bound_all if not a.skill else None,
+                        label_acc=labels_used if not a.skill else None)
         worst = max(worst, rc)
 
     # Orphan blocks are a family-wide question: a block bound by review-brainstorm and
     # not by review-feasibility is not orphaned on feasibility's run — so a single-skill
-    # run makes no orphan claim, and the sweep answers it once, at the end.
+    # run makes no orphan claim, and the sweep answers it once, at the end, per family
+    # library and only where the sweep saw at least one member of the family.
     if not a.skill:
-        print(f"=== {a.common.name} ===")
-        common = load_common(a.common, False, [], []) if a.common.exists() else None
-        if common is None:
-            print("family block library absent — no orphan claim")
-        else:
-            orphans = sorted(set(common) - bound_all)
-            if orphans:
-                print("warning: common blocks bound by no `extends:` stub in any swept "
-                      "skill: " + ", ".join(orphans))
+        swept_families = {family_of(sp.parent.name) for sp in paths}
+        for family in FAMILY_SECTION_SETS:
+            path = family_common_path(a, family)
+            print(f"=== {path.name} ===")
+            if family not in swept_families:
+                print(f"no {family}-family schemas swept — no orphan claim")
+                continue
+            common = load_common(path, False, [], [], family) if path.exists() else None
+            if common is None:
+                print("family block library absent — no orphan claim")
             else:
-                print(f"stats: common blocks {len(common)} · all bound by at least one stub")
+                orphans = sorted(set(common) - bound_all)
+                if orphans:
+                    print("warning: common blocks bound by no `extends:` stub in any swept "
+                          "skill: " + ", ".join(orphans))
+                else:
+                    print(f"stats: common blocks {len(common)} · all bound by at least one stub")
+
+        # The zero-member label claim is sweep-scoped for the same reason: per-family
+        # labels are legally absent from any one member, so only a label no swept
+        # schema carries is worth naming — once, here.
+        registry = load_yaml(a.labels, [])
+        reg_labels = (registry or {}).get("labels") or {}
+        unused = sorted(set(reg_labels) - labels_used)
+        if unused:
+            print("warning: labels with zero members across the swept schemas "
+                  "(registry-legal; watch at rollout): " + ", ".join(unused))
     return worst
 
 
-def check_pair(schema_path: Path, a, stems: set, bound_acc: set = None) -> int:
+def check_pair(schema_path: Path, a, stems: set, bound_acc: set = None,
+               label_acc: set = None) -> int:
     findings: list = []
     warnings: list = []
     skill_dir = schema_path.parent
     stem = skill_dir.name
+    family = family_of(stem)
     md_path = skill_dir / "SKILL.md"
 
     # 1. parse
@@ -612,24 +675,30 @@ def check_pair(schema_path: Path, a, stems: set, bound_acc: set = None) -> int:
         sec_stats.append((sid, len(s_rules)))
         rules.extend((r, sid, k) for k, r in enumerate(s_rules))
 
-    # 3. the six-section skill set, set-wise (census §H)
+    # 3. the family section set, set-wise — minted once by the family's census ruling
+    #    (review: census §H · authoring: census-authoring J-1).
+    slugs = FAMILY_SECTION_SETS[family]
     live_sections = set(section_ids)
-    expected = {f"{stem}.sec.{slug}" for slug in CANONICAL_SLUGS}
+    expected = {f"{stem}.sec.{slug}" for slug in slugs}
     for missing in sorted(expected - live_sections):
         findings.append(
-            f"{schema_path.name}: canonical section {missing} absent — every skill schema "
-            f"carries all six, empty ones explicitly (census §H set)"
+            f"{schema_path.name}: canonical section {missing} absent — every "
+            f"{family}-family schema carries all six, empty ones explicitly (the family "
+            f"set, minted once by its census ruling)"
         )
     for extra in sorted(live_sections - expected):
         findings.append(
-            f"{extra}: not one of the six canonical skill sections "
-            f"({' · '.join(CANONICAL_SLUGS)}) — census §H minted the set once"
+            f"{extra}: not one of the six canonical {family}-family sections "
+            f"({' · '.join(slugs)}) — the family set is minted once by its census ruling"
         )
 
-    # 9. `extends:` — the family library loads only where a stub binds it, and an absent
-    #    file is a finding only in that case (a plugin-standalone checkout has none).
+    # 9. `extends:` — the schema's OWN family library loads only where a stub binds it,
+    #    and an absent file is a finding only in that case (a plugin-standalone checkout
+    #    has none).
     binds_common = any(isinstance(r, dict) and "extends" in r for r, _, _ in rules)
-    common = load_common(a.common, binds_common, findings, warnings) if binds_common else None
+    common_path = family_common_path(a, family)
+    common = (load_common(common_path, binds_common, findings, warnings, family)
+              if binds_common else None)
     bound_blocks = set()
 
     label_use = {name: 0 for name in reg_labels}
@@ -658,7 +727,8 @@ def check_pair(schema_path: Path, a, stems: set, bound_acc: set = None) -> int:
 
         # 9. `extends:` resolution first — every text-side and label-side check below
         #    reads the RESOLVED value, because that is what the run reads (D5).
-        eff = resolve_extends(rid, r, common, a.common, bound_blocks, findings, warnings)
+        eff = resolve_extends(rid, r, common, common_path, bound_blocks, findings,
+                              warnings, family)
 
         cls = r.get("class")
         if cls not in CLASSES:
@@ -689,10 +759,21 @@ def check_pair(schema_path: Path, a, stems: set, bound_acc: set = None) -> int:
                 f"`kind: fail`, its only carrier (census §E)"
             )
 
-        # 6. labels ⊆ registry, against the resolved set
+        # 6. labels ⊆ registry, against the resolved set. One carve: a stub inheriting
+        #    from a block that itself carries no labels resolves label-less by design
+        #    (the census assigned some posture blocks no label; the block is the single
+        #    home of that ruling) — a warning keeps it visible without failing the pair.
+        #    A LOCAL empty `labels:` is still a finding, block labels or not.
         rl = eff["labels"]
         if not isinstance(rl, list) or not rl:
-            findings.append(f"{rid}: `labels` missing or empty")
+            target = str(r.get("extends", ""))
+            block = (common or {}).get(target)
+            if rl is None and block is not None and not block.get("labels"):
+                warnings.append(
+                    f"{rid}: resolves with no labels — its block {target} carries none "
+                    f"(inherited absence)")
+            else:
+                findings.append(f"{rid}: `labels` missing or empty")
             rl = []
         for lab in rl:
             if lab not in reg_labels:
@@ -785,9 +866,10 @@ def check_pair(schema_path: Path, a, stems: set, bound_acc: set = None) -> int:
     for v in vars_block:
         if v not in used_vars:
             warnings.append(f"vars.{v}: declared but unused by any rule text")
-    for lab, n in label_use.items():
-        if n == 0:
-            warnings.append(f"label {lab!r}: zero members in {schema_path.name} (registry-legal; watch at rollout)")
+    # The zero-member label claim is sweep-scoped (a per-family label is legally absent
+    # from any one member) — this run only reports what it used, into the accumulator.
+    if label_acc is not None:
+        label_acc.update(lab for lab, n in label_use.items() if n)
 
     # 16. provenance sidecar — the D8/C4 protection transfers, keyed by rule ID. Only
     #     this skill's stem is validated here: command entries belong to the command

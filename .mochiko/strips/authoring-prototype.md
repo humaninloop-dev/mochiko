@@ -3,6 +3,87 @@
 Entry formats: `strips/README.md`. Shipped at v0.50.0 (ux-mocking-in-specify wave); first
 strip entries at v0.58.0 (feature-map-layer wave).
 
+## [v0.101.0] Schema conversion — census-row → minted-ID map (skill-content-schema wave 2A, authoring family)
+
+Ruling for every [v0.101.0] entry below: skill-content-schema D3 (three-home boundary) /
+D8/C4 (protected transfers), `DECISIONS.md` 2026-09-01 rows (record + wave-2 family-door
+rulings); census: `.mochiko/brainstorms/skill-content-schema/census-authoring.md` §A/§B (AP).
+Schema home: `plugins/mochiko/skills/authoring-prototype/schema.yaml`. Minted IDs carry the
+`authoring-prototype.` prefix (omitted below). Map — census row → minted ID:
+1 `letter-is-spirit` (C-A1 stub) · 2a **split** (lead-approved recorded deviation) →
+`two-coupled-artifacts` (LOCAL) + `spec-two-arm` (C-A3 stub, `${template}` = spec) ·
+2b `envelope-binding` (C-A4 stub; the ID-grammar tail — sequential, three-digit padded, cited
+never re-quoted — rides the envelope pointer per the census C-A4 sub-evidence, D6
+anti-dual-homing: `artifact-format.md` single-sources it, no local mint) ·
+3 `static-degrade-path` · 4 `authority-split` · 5a `no-ux-surface-waiver` ·
+5b `stories-routing` · 5c `independent-grade` (C-A2 stub) · 5d `throwaway-never-migrates` ·
+6 `skeleton-first` · 7 `lockstep` · 8 `flow-keys-scenario` · 9 `manifest-html-agreement` ·
+10 `low-fi-discipline` · 11 `design-system-honored` (`when: {design_system: present}`,
+DECLARE — the condition rides the subject noun, text stands with both arms) ·
+12 `feat-retag-pass` · 13 `rejected-stories-visible` · 14 `structure-binding` ·
+15 `upstream-untouched` · 16 `scope-invention-surfaced`.
+**Rule count 21** (4 floor · 17 must): census 20 + 1 for the 2a split.
+**Body relocation inventory:** the epigraph line → the C-A1 stub; the Overview
+numbered-artifacts block and authority-split paragraph → rules 2a/2b/3/4; `## When NOT to
+Use` → the scope/independence rules; `## The invariants (hard rules)` (all 8) → rules 6–13;
+the two `## Structure` normative bullets → rule 14 (the coming-soon rendering detail stays
+prose as teaching); `## Quality checklist` and `## Red Flags` rows → rule sources (3 · 6 · 7 ·
+8 · 9 · 10 · 11 · 12 · 13 · 14 · 15 · 16) or mirror-dedups (React/toolchain flag → 3 ·
+polish flag → 10 · batching flag → 7); `## Related` spec-schema two-arm mechanics → the
+`spec-two-arm` stub. The why-a-prototype teaching, Structure sketch, and Common
+Rationalizations stay prose per the census's teaching dispositions.
+**Accounting:** body 9,066 → 4,353 (−4,713) + schema 9,590 = **payload 13,943** (the C1
+delivered-at-invoke quantity; census est. ~19,650) — ×1.54 vs the pre-conversion body, the
+delta structural overhead (IDs, keys, section scaffolding, reading grammar), no content
+growth claimed.
+
+## [v0.101.0] UX-D1–D9 core — protection transfers (ux-mocking-in-specify)
+
+- **Disposition:** superseded — protection transfers to `two-coupled-artifacts` ·
+  `static-degrade-path` (floor) · `authority-split` (floor) · `skeleton-first` · `lockstep` ·
+  `flow-keys-scenario` · `manifest-html-agreement` · `upstream-untouched` (floor) ·
+  `no-ux-surface-waiver` · `throwaway-never-migrates`, per D8/C4; the provenance sidecar
+  carries the protected status on each ID.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 skill-content-schema
+  rows; original protection: 2026-08-02 ux-mocking-in-specify UX-D1–D9).
+- **Content:** the Overview two-artifacts block with the bun + `file://` degrade path ("No
+  build step, no framework, no install *required* to view"), the binding-flows/advisory-pixels
+  authority split, invariants 1–5, the no-UX waiver line, and the throwaway-by-design boundary.
+- **Kept deliberately:** the Structure tree sketch and the coming-soon rendering grammar detail
+  (reduced opacity + banner, or stub page) stay body-side teaching.
+- **Consumers assessed:** the product-engineer agent mounts this skill (invariants unchanged in
+  meaning, persona contract intact); specify binds it by reference;
+  `mochiko:review-specifications` grades the same manifest shape — contracts intact.
+
+## [v0.101.0] [v0.58.0] re-tag + greying + rejected-story kept-set — protection transfers (feature-map-layer D4/R10)
+
+- **Disposition:** superseded — protection transfers to `feat-retag-pass` and
+  `rejected-stories-visible`, per D8/C4. The greying grammar (coming-soon, always reachable,
+  never a dead end) is carried across `feat-retag-pass` · `rejected-stories-visible` ·
+  `structure-binding`.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows; original
+  protection: 2026-08-10 feature-map-layer D4/R10, reconciled protected at the [v0.63.0] entry
+  below).
+- **Content:** invariant 7 (FEAT tags as a re-tag pass at derivation) and invariant 8
+  (rejected screens kept, greyed, marked, pointed at the recorded rejection — "never silently
+  deleted").
+- **Consumers assessed:** `mochiko:authoring-feature-map` stays the single source of the map
+  machinery the re-tag pass consumes; review-specifications' Screens & Flows checks re-keyed at
+  v0.58.0, untouched here.
+
+## [v0.101.0] [v0.76.0] two-arm spec pointer — protection transfers (schema-based-template-guidance D8, GI-020)
+
+- **Disposition:** superseded — protection transfers to `spec-two-arm`
+  (`extends: authoring-common.two-arm-template`, `${template}` = spec), per D8/C4. Both arms
+  preserved — CLI invoke + first-class raw Read (GI-020).
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows; original
+  protection: 2026-08-16 schema-based-template-guidance D1/D8, the [v0.76.0] entry below).
+- **Content:** the Overview two-arm parenthetical and the `## Related` spec-schema line's
+  mechanics.
+- **Kept deliberately:** the Related list keeps the spec-schema name as a navigation pointer;
+  the `artifact-format.md` pointer stays (now also the C-A4 stub's inherited pointer).
+- **Consumers assessed:** n/a (single-writer skill).
+
 ## [v0.76.0] `spec-template.md` read-pointers → `spec` schema (two-arm CLI / raw Read) — schema-based-template-guidance D1/D8
 - **Disposition:** superseded → `mochiko-cli template spec`, or Read `plugins/mochiko/schemas/spec.yaml` raw (D8-first-class). Two sites re-pointed: the Overview "in the shape … defines" pointer and the Related-section pointer.
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/schema-based-template-guidance/record.md` D1/D3/D8; `DECISIONS.md` "Template-schema CLI ruled").

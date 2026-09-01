@@ -11,3 +11,5 @@ labels:
   verdict: The clearing grammar — vocabulary, criteria, default posture, overrides.
   boundary: A sibling or jurisdiction line — what the skill consumes or routes but never grades.
   fence: A read-boundary — surfaces the skill must read, and surfaces it must never read.
+  artifact-grammar: The produced artifact's binding shape — ID grammars, lifecycle enums, row/field forms, required sections.
+  single-home: A one-home/one-writer/no-copies rule — where a thing lives once and every other surface links or derives.

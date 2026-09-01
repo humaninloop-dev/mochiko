@@ -5,6 +5,33 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.101.0] — 2026-09-01
+
+**Skill content schemas — wave 2A, the authoring-family conversion** (wave-2 family-door
+rulings, `DECISIONS.md` 2026-09-01; census-first per D9 — three parallel family censuses
+landed in-repo beside the record, the authoring door ruled all-8). The 8 authoring skills
+each ship as a `SKILL.md` + in-directory `schema.yaml` pair under the obligations-only
+boundary: **244 rules at D12 grain (67 floors, 16 reference stubs)**, procedure and
+teaching prose body-side, every `description:` byte-untouched, floor pins + read-backs
+(9 · 12 · 10 · 16 · 4 · 4 · 8 · 4). The family mints its own section set per the amended
+criterion 2 — **`artifact`** (the produced artifact's binding grammar, invariants, and
+write mechanics) replacing the grader-lifecycle `verdict` — and its own common file
+`plugins/mochiko/schemas/skill-authoring-common.yaml` (4 blocks: letter-is-spirit ·
+independent-grade · two-arm-template with `${template}` · envelope-binding). Labels
+registry +2 (`artifact-grammar`, `single-home`). Tooling: `check-skill-schema.py` learns
+per-family section sets, per-family `extends:` with a cross-family finding, sweep-scoped
+label claims, and the inherited-absence carve (matrix 103→105); `find-similar-rules.py`
+resolves the authoring library (44→48); `primitive-edits.md` criteria 1/2/6 amended.
+Protected content moved by supersession-transfer: sidecar 389 anchors; AC's whole-body
+v0.28.0 KEPT re-homed onto its pair; allowlist 96→157 with the detector at 0 clusters.
+Budgets: six re-seeds + two first-seeds (architecture-store, epic) via the ledger's third
+seeding path, no headroom; family delivered-at-invoke **measured ×1.84 (81,896 →
+150,576) — under the census ×2.35 estimate**. 4 plan-approved producers + 3 fresh
+author≠grader validators, 10 units: one FAIL round (four protected Shape-token drops
+restored; sidecar anchor gaps filled) → delta re-grades ALL PASS. The patterns-family
+shared-`references/` road was REJECTED at its door this ruling; waves 2B (patterns, 9
+carriers) and 2C (small families, dense five) are queued census-first.
+
 ## [0.100.0] — 2026-09-01
 
 **Skill content schemas — the review-family conversion wave** (ruling

@@ -32,6 +32,114 @@ arch-opinion, outside the depth dial per PO-D3 S7 / review-fold #9). `COMPLIANCE
 `ESSENTIAL-FLOOR.md` worked-example framing gained **pure additions** (D7 level-blind clause; a
 depth note + coverage annotation) — additions ride the decision row and take no strip entry.
 
+## [v0.101.0] Schema conversion — census-row → minted-ID map (skill-content-schema wave 2A, authoring family)
+
+Ruling for every entry below: skill-content-schema D3 (three-home boundary) / D8/C4
+(protected transfers + the whole-body re-home clause), `DECISIONS.md` 2026-09-01 rows
+(Skill-content schema ruled · Skill-schema wave-2 family doors ruled — the authoring-family
+door); census: `.mochiko/brainstorms/skill-content-schema/census-authoring.md` §A (AC) +
+§B (AC). Schema home: `plugins/mochiko/skills/authoring-constitution/schema.yaml`. Minted
+IDs carry the `authoring-constitution.` prefix (omitted below). Map — census §B row →
+minted ID:
+1 `no-constitution-file` · 2 `surface-set-binding` · 3 `trace-summary-in-output` ·
+4 `ratified-synthesis-only` · 5 `independent-grade` (C-A2 stub,
+`extends: authoring-common.independent-grade`; `${artifact}` = "governance surface set",
+`${grader}` = `` `validation-constitution` ``) **+ `never-co-mounted` (residue mint,
+wave-lead ruled: the stub carries only the block core; the protected "never co-mounted" and
+"loop + gates lead-owned" clauses mint an adjacent LOCAL rule in `sec.independence` — AC
+builds 48 rules, census 47, deviation recorded here)** · 6 `every-principle-traces` ·
+7 `realized-or-flagged` · 8 `no-unsanctioned-selection` · 9 `waivers-authored-not-skipped` ·
+10a `universal-routing` · 10b `scope-bound-routing` · 10c `rules-inject-on-read-caveat`
+(`when: {rules_file_in_set: present}`) · 10d `procedure-shaped-routing` ·
+10e `index-and-ledger-closure` · 11 `two-modes-one-core` · 12 `content-source-bindings` ·
+13 `two-arm-schema-binding` (C-A3 stub, `extends: authoring-common.two-arm-template`,
+`${template}` = `governance-surfaces` — BOTH body sites, the "Artifact shapes" line and the
+content-inventory preamble, single-home into this one rule, wave-lead confirmed; the
+governance-intent arm lives only in `references/INTERROGATION-AGENDA.md` and rides the file
+per census J-2) · 14 `missing-synthesis-stop` (`when: {synthesis: absent}`) ·
+15a `markers-only-regeneration` · 15b `preserved-blocks` · 15c `amend-preserves-verbatim`
+(`when: {mode: amend}`) · 16a `grading-routing` · 16b `eliciting-routing` ·
+16c `analysis-routing` · 17 `three-part-rule` · 18 `enforcement-fits-team-reality` ·
+19 `operative-constraint-only` · 20a `region-content-set` ·
+20b `quality-gates-actual-commands` · 20c `output-style-file-every-run` ·
+20d `ledger-riders-and-trace-manifest` · 21 `floor-categories-accounted` ·
+22 `no-sync-section` · 23 `never-route-unselected-modules` · 24a `brownfield-ceiling-test`
+(`when: {mode: brownfield}`) · 24b `evolution-notes-always-brownfield`
+(`when: {mode: brownfield}`) · 25 `roadmap-stub` (advisory) · **reference stubs (files
+untouched, stub points):** 26 `essential-floor-canonical-home` ·
+27 `depth-dial-breadth-invariant` · 28 `floor-doctrine` · 29 `floor-cards-content-sets` ·
+30 `three-source-rule` · 31 `arbitrated-shelf-frame` · 32 `module-mechanical-attachment` ·
+33 `s4-fail-safe` · 34 `domain-dependency-admissibility` ·
+35 `domain-dependency-growth-gate`. `references/INTERROGATION-AGENDA.md` carries NO stub —
+census J-2, by ruling, named here so the omission reads as a ruling, not a miss;
+RFC-2119-KEYWORDS.md and EMERGENT-CEILING-PATTERNS.md stay teaching, no stubs.
+**Section distribution (build call, disclosed):** the census gave body totals
+(independence 1 · scope 5 · inputs 3 · output 6 · reserved 4 · artifact 18) with stubs
+distributing "the same way"; built: independence 2 (stub + residue mint) · scope 5 (16a ·
+16b · 16c · 22 · 25) · inputs 5 (4 · 12 · 14 + stubs 30 · 31) · artifact 27 (**20 body**:
+1 · 2 · 6 · 7 · 9 · 10a · 10b · 10c · 10d · 11 · 13 · 15a · 15b · 15c · 17 · 18 · 19 ·
+21 · 24a · 24b + stubs 26 · 27 · 28 · 29 · 32 · 33 · 34) · output 6 (3 · 10e · 20a–20d) ·
+reserved 3 (8 · 23 + stub 35). Named placement calls: row 9
+`waivers-authored-not-skipped` sits in artifact (waiver records are ledger content), and
+row 21 `floor-categories-accounted` sits in artifact — a move from the census's
+reserved-leaning read of it (the accounting duty binds the set's content, not a
+user-reserved decision). The deltas vs the census tallies are placement calls within the
+lead-granted latitude, all rows accounted.
+**Deleted as dedup, no content loss:** the synthesis-contract bullet list (rows 6–9), the
+surface-routing bullet list (10a–e), the "Artifact shapes" line + the mandatory-content
+inventory's 8-item list (13 · 20a–d · 21's blockquote), the mode-prerequisites and
+ownership-boundary blockquotes (14 · 15a–c), `## When NOT to Use` (16a–c), the
+principle-writing-format line (19), the no-sync line (22), and the roadmap-stub blockquote
+(25) — every line's obligation lives in the mapped rule. The body keeps: the overview +
+surface table (disclosure levels, teaching), the traceable-contract framing, the
+two-modes table, the content-source pointers, the Three-Part + RFC 2119 teaching, the
+module-assembly table (the KEPT survivor's narrative face), the brownfield floor/ceiling
+narrative, and Related.
+Accounting: body 17,886 → 7,255 (−10,631, obligations out + the load-first Rules block in)
++ schema 23,132 = **payload 30,387** (census §F estimate was ~36,350; figure includes the
+V1 fix-round Shape-token restorations); the delta over
+the pre-conversion body is structural overhead (IDs, keys, section scaffolding, reading
+grammar) — no content growth claimed beyond the residue mint recorded above. Budget
+re-seeds from 21,550 to the measured payload, third seeding path, no headroom (P5 executes
+the ledger row).
+
+## [v0.101.0] Whole-body survivor protection re-homes onto the pair (D8/C4 explicit clause)
+- **Disposition:** superseded — the [v0.28.0] "KEPT: the remaining body" under-band survivor ruling (already narrowed by the two recorded v0.63.0 supersessions — the enforcement-strength table and the brownfield action-mapping paragraph) re-homes onto the PAIR: `SKILL.md` body + `schema.yaml` jointly, recorded once here per skill-content-schema D8/C4 — the review-feasibility precedent replayed; no per-line ambiguity survives. Every named survivor's home after conversion: the synthesis contract in `ratified-synthesis-only` + `sec.reserved` + `every-principle-traces`/`realized-or-flagged`; surface routing in `universal-routing` · `scope-bound-routing` · `rules-inject-on-read-caveat` · `procedure-shaped-routing` · `index-and-ledger-closure`; the module-assembly table's obligations in `never-route-unselected-modules` (narrative table stays body prose); both mode contracts in `two-modes-one-core` + the `mode:` dimension; the ceiling test in `brownfield-ceiling-test`; the floor-accounting and mode-prerequisites blockquotes in `floor-categories-accounted` + `missing-synthesis-stop`; the Three-Part Rule in `three-part-rule` (+ `enforcement-fits-team-reality`); RFC 2119 in `operative-constraint-only` + the body's teaching pointer; the inventory behavioral riders in `region-content-set` · `quality-gates-actual-commands` · `output-style-file-every-run` · `ledger-riders-and-trace-manifest`.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 skill-content-schema rows).
+- **Content:** the [v0.28.0] "KEPT: the remaining body (under-band survivor ruling)" claim — see that entry below for its lineage.
+- **Kept deliberately:** `description:` byte-untouched; all 9 `references/` files untouched (6 root + 3 catalog); `templates/constitution-modules/` untouched.
+- **Consumers assessed:** GI-005/GI-006 hold — every protected line traceable through this ledger to its new home, reconstructible in both directions.
+
+## [v0.101.0] Adaptive-depth machinery — protection transfers (census §A row 2; production-floor-adaptive-depth D1–D8, v0.65.0)
+- **Disposition:** superseded — the body-borne depth rules transfer to `two-modes-one-core` (the declared-level row clause), `region-content-set` (floor-first, `(NON-NEGOTIABLE)`, depth-row-selected, `high`-only-absent-at-`low`), and `floor-categories-accounted` (the not-a-missing-category clause); the reference-borne machinery (two-row dial + breadth invariant, floor doctrine, floor cards' content sets, level-blind module attachment) transfers to reference stubs `depth-dial-breadth-invariant` · `floor-doctrine` · `floor-cards-content-sets` · `module-mechanical-attachment` — the reference files stay the procedure homes, referenced never restated (D3/C2 stub-default). Per D8/C4 the protections re-home onto these rule IDs.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows).
+- **Content:** body: "floor cards authored at the synthesis's declared depth level (the two-row `low`/`high` card form)" · "Author each floor principle at the row the synthesis's declared depth level selects; a `high`-only check is absent at `low`." · "(A `high`-only check absent at `low` is not a missing category — its category is still present through its other rows.)"
+- **Consumers assessed:** all v0.65.0 reference-file products untouched; `/mochiko:setup` reads the same doctrine through the catalog (untouched).
+
+## [v0.101.0] Two-arm governance-surfaces pointers — protection transfers to C-A3 stub (census §A row 3; schema-based-template-guidance D1/D8, v0.76.0; GI-020)
+- **Disposition:** superseded — both `SKILL.md` sites (the "Artifact shapes" line and the content-inventory preamble) single-home into `two-arm-schema-binding` (`extends: authoring-common.two-arm-template`, must, `kind: binding`, `${template}` = `governance-surfaces`), per D8/C4; both arms preserved verbatim through the inherited block text (GI-020 — raw Read the first-class degraded path). The third site — the governance-intent pointer in `references/INTERROGATION-AGENDA.md` — rides the untouched file (census J-2).
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows).
+- **Content:** "invoke `mochiko-cli template governance-surfaces` when the binary is available; otherwise Read `plugins/mochiko/schemas/governance-surfaces.yaml` raw" (both body sites carried this two-arm form).
+- **Consumers assessed:** `plugins/mochiko/schemas/skill-authoring-common.yaml` (P1's, this wave) carries the block; `schemas/governance-surfaces.yaml` untouched.
+
+## [v0.101.0] D8 ownership boundary — protection transfers (census §A row 4; constitution-native-surfaces D8, 2026-07-18)
+- **Disposition:** superseded — protection transfers to `markers-only-regeneration` (floor), `preserved-blocks` (floor), and `amend-preserves-verbatim` (must, `when: {mode: amend}`), per D8/C4.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows).
+- **Content:** "Regenerate only what sits between the markers — user content outside them is untouchable." · "the two preserved blocks: `mochiko:domain-registry` … and the `mochiko:output-style` switch line … on every later run **read the existing values and re-emit them unchanged**" · "In amend, preserve untouched principles verbatim (their GI-IDs are stable) and bump the region's semver. A `.mochiko/memory/constitution.md` on disk is superseded — the lead deletes it; never author into it."
+- **Consumers assessed:** `/mochiko:setup`'s amend mode consumes the boundary by reference (untouched).
+
+## [v0.101.0] D4/D4.1/D4.2 waiver discipline — protection transfers (census §A row 5)
+- **Disposition:** superseded — the body rule transfers to `waivers-authored-not-skipped` (floor); the reference copies in COMPLIANCE-MODULES.md and catalog/universal-floor.md ride stubs `module-mechanical-attachment` / `s4-fail-safe` / `floor-cards-content-sets` with this dedup note — the files stay the procedure homes, per D8/C4.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows).
+- **Content:** "**Waivers are authored, not skipped.** A waived standard gets a waiver record in the ledger (standard, justification, optional revisit trigger, trace — D4: permanent pending the D4.1 revisit; legal-mandate module obligations are never waivable, D4.2) — absence is always deliberate and auditable."
+- **Consumers assessed:** `validation-constitution` grades waiver records against the same D4 model (P3-family member wave 1, untouched here).
+
+## [v0.101.0] Remaining body obligations relocated (census §B rows 1 · 2 · 3 · 6 · 7 · 8 · 10a–10e · 16a–16c · 17 · 18 · 19 · 20a–20d · 21 · 22 · 23 · 25)
+- **Disposition:** relocated → `plugins/mochiko/skills/authoring-constitution/schema.yaml`, per the map entry above (D3). Protected standing rides the whole-body re-home entry above; per-line lineage stays reconstructible through the map.
+- **Tier failed:** n/a — supersession by ruling (D3; `DECISIONS.md` 2026-09-01 rows).
+- **Content (decisive line per row):** 1 "**There is no `constitution.md`.** Governance lands on the surfaces Claude Code natively loads" · 2 the four-surface set (region markers · rules files · skill pointers · ledger) · 3 "write it as part of the output, not as an afterthought" · 6 "**Every principle traces.** … always in the **ledger** … the canonical trace record" · 7 "**Every element is realized or flagged.** … never silently dropped" · 8 "**No unsanctioned selection.** … emit a **flagged proposal** … ruled on by the user at the acceptance gate" · 10a "a **short imperative line in the CLAUDE.md region** … Universal principles do NOT go to unconditional rules files" · 10b "`paths` globs covering **every path whose code can violate the concern**" · 10c "rules files inject on **Read**, not Write — … emit the region's standing new-file read line" · 10d "Mint a new skill only for a session-minted procedure" · 10e "Index → home → ledger must close; the validator checks it" · 16a–c the three When-NOT routings (validator · interrogation · `analysis-codebase`) · 17 "Every principle MUST have three components … A principle without all three is incomplete" · 18 "Enforcement MUST fit the team reality recorded in the synthesis" · 19 "The surface … carries the **operative constraint only** … do not restate them" · 20a–d the mandatory content inventory's eight items as four set-rules (stamp/index/universal-lines/stack · gates with **actual commands, never placeholder tokens** · the unconditional output-style rules file every run · ledger riders + trace summary manifest) · 21 "MUST **account for** all four Essential Floor categories … A floor category with neither is a defect in either mode" · 22 "There is **no CLAUDE.md-synchronization section**" · 23 "**Never route module content the synthesis didn't select**" · 25 "reference `.mochiko/memory/evolution-roadmap.md` as a documented stub"
+- **Consumers assessed:** `validation-constitution` grades the produced set, never this skill's text (untouched); the router row stays generically true.
+
 ## [v0.76.0] `governance-surfaces-template.md` + `governance-intent-template.md` read-pointers → schemas (two-arm) — schema-based-template-guidance D1/D8
 - **Disposition:** superseded → `mochiko-cli template governance-surfaces` / `template governance-intent`, or Read `plugins/mochiko/schemas/governance-surfaces.yaml` / `plugins/mochiko/schemas/governance-intent.yaml` raw (D8-first-class). Three sites: `SKILL.md` "Artifact shapes" pointer + "Every governance set MUST include, per" pointer (both → governance-surfaces); `references/INTERROGATION-AGENDA.md` synthesis-shape mention (→ governance-intent).
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/schema-based-template-guidance/record.md` D1/D3/D8; `DECISIONS.md` "Template-schema CLI ruled").

@@ -1,0 +1,385 @@
+# Skill content schema for mochiko:authoring-technical-requirements. The SKILL.md body
+# instructs a raw, full Read of this file at skill invoke — beside
+# plugins/mochiko/schemas/skill-authoring-common.yaml, one declared first action — and its
+# "Rules — load the schema first" section carries the reading grammar. One semantic lives
+# only here:
+#   class   floor = non-waivable · must = binding obligation · advisory = guidance, not binding.
+kind: skill
+skill: authoring-technical-requirements
+
+sections:
+  - id: authoring-technical-requirements.sec.independence
+    title: Independence — the grade is not self-asserted
+    intent: >-
+      Who grades the produced layer, and what a self-check never is.
+    rules:
+
+      - id: authoring-technical-requirements.grade-is-not-self-asserted
+        labels: [independence, boundary]
+        class: must
+        kind: routing
+        text: >-
+          The layer-internal checks are producer self-checks, never the gate — the
+          cross-artifact consistency grade is owned by `mochiko:review-plan-artifacts`,
+          not self-asserted here.
+        pointer: "references/TRACEABILITY-PATTERNS.md"
+
+  - id: authoring-technical-requirements.sec.scope
+    title: Scope — the constraint layer's seam
+    intent: >-
+      What this skill owns, routes downstream or upstream, and never authors.
+    rules:
+
+      - id: authoring-technical-requirements.business-requirements-routing
+        labels: [boundary]
+        class: must
+        kind: routing
+        text: >-
+          Writing business requirements is `mochiko:authoring-requirements`'s — never
+          authored here.
+
+      - id: authoring-technical-requirements.decision-technique-routing
+        labels: [boundary]
+        class: must
+        kind: routing
+        text: >-
+          The decision technique — comparing alternatives, weighing trade-offs, ADR
+          depth, the ≥2-alternatives discipline — lives in
+          `mochiko:patterns-technical-decisions`; this skill owns the
+          `constraints-and-decisions.md` artifact structure (the D-XXX field schema) and
+          the C↔D traceability. Project-scope decisions (the knowledge-management layer —
+          `DECISIONS.md` + `.mochiko/decisions/`) are not this artifact's; only
+          feature-scope D-XXX records live here.
+        pointer: "mochiko:patterns-technical-decisions"
+
+      - id: authoring-technical-requirements.problem-space-not-solutions
+        labels: [boundary]
+        class: must
+        kind: routing
+        text: >-
+          Designing solutions is not this skill's — it defines the problem space, not
+          solutions.
+
+      - id: authoring-technical-requirements.boundaries-not-preferences
+        labels: [boundary]
+        class: must
+        kind: routing
+        text: >-
+          Choosing technologies is not this skill's — constraints document real
+          boundaries, not preferences.
+
+      - id: authoring-technical-requirements.slicing-routing
+        labels: [boundary]
+        class: must
+        kind: routing
+        text: >-
+          Slicing the build — cycle-card structuring — is
+          `mochiko:patterns-vertical-tdd`, downstream of this layer.
+        pointer: "mochiko:patterns-vertical-tdd"
+
+      - id: authoring-technical-requirements.integration-boundary-downstream
+        labels: [boundary]
+        class: must
+        kind: routing
+        text: >-
+          Declare here, author there — the per-endpoint integration boundary (the
+          `x-integration` OpenAPI extension: system, protocol, criticality, failure
+          modes, authentication) is authored on the wrapping operation in
+          `mochiko:patterns-api-contracts`, never here.
+        pointer: "mochiko:patterns-api-contracts"
+
+      - id: authoring-technical-requirements.sensitivity-downstream
+        labels: [boundary]
+        class: must
+        kind: routing
+        text: >-
+          The per-attribute data-sensitivity taxonomy (the four classification levels,
+          encryption / retention / access / audit / masking, compliance mapping, and the
+          canonical `data-model.md` template) is authored against the data model in
+          `mochiko:patterns-entity-modeling`, never here.
+        pointer: "mochiko:patterns-entity-modeling"
+
+      - id: authoring-technical-requirements.design-ladder-binding
+        labels: [binding, floor-pointer]
+        class: must
+        kind: binding
+        text: >-
+          Every element answers the design ladder (`mochiko:patterns-plan-minimalism`)
+          before it enters the package; the simplest-execution stops are disclosed by the
+          design phase as it authors, never re-derived here.
+        pointer: "mochiko:patterns-plan-minimalism"
+
+      - id: authoring-technical-requirements.rationalization-stop
+        labels: [boundary]
+        class: floor
+        text: >-
+          If any excuse in the Common Rationalizations table arises as a thought
+          mid-authoring, STOP immediately — a shortcut is being rationalized; restart
+          with the full process. No exceptions: not for "simple" systems,
+          "well-understood" domains, "tight timelines", or a spec that seems complete and
+          thorough.
+
+  - id: authoring-technical-requirements.sec.inputs
+    title: Inputs — none bound
+    intent: >-
+      Surfaces read before authoring.
+    note: >-
+      Deliberately empty at census — this member binds no pre-read surface beyond its
+      schema pair; the business specification arrives as the run's material, not a bound
+      input.
+    rules: []
+
+  - id: authoring-technical-requirements.sec.artifact
+    title: Artifact — the constraint layer's binding grammar
+    intent: >-
+      The produced surfaces' grammar, invariants, and write mechanics.
+    rules:
+
+      - id: authoring-technical-requirements.letter-is-spirit
+        extends: authoring-common.letter-is-spirit
+        class: floor
+
+      - id: authoring-technical-requirements.business-source-floor
+        labels: [evidence, artifact-grammar]
+        class: floor
+        text: >-
+          Every element traces to a business source, every target is measurable, and
+          every constraint accounts for its design impact.
+
+      - id: authoring-technical-requirements.deliverable-envelope
+        extends: authoring-common.envelope-binding
+        class: must
+        kind: binding
+
+      - id: authoring-technical-requirements.statement-carries-content
+        labels: [artifact-grammar]
+        class: must
+        text: >-
+          The statement carries the content — no Description field re-explains the ID
+          line; entries are one line each; upstream text is cited by ID and never
+          re-quoted; the summary tables at each artifact's head are its ID index, the
+          reviewer coverage surface. Density is not a gap; a gap is missing substance.
+
+      - id: authoring-technical-requirements.layer-prefixes
+        labels: [artifact-grammar]
+        class: must
+        text: >-
+          Each layer uses a distinct ID prefix and a distinct home —
+          `constraints-and-decisions.md` carries C-XXX / D-XXX / IP-XXX plus the thin
+          INT-XXX / DS-XXX declarations; NFR-XXX rows live on the architecture store's
+          concern rows.
+
+      - id: authoring-technical-requirements.constraints-are-facts
+        labels: [artifact-grammar, evidence]
+        class: must
+        text: >-
+          Constraints are facts, not preferences. Each decision record MUST reference
+          the constraints that shaped the choice.
+
+      - id: authoring-technical-requirements.impact-references-decisions
+        labels: [artifact-grammar]
+        class: must
+        text: >-
+          Each constraint impact field SHOULD reference the decisions it influences.
+
+      - id: authoring-technical-requirements.no-exceptions-documentation
+        labels: [evidence]
+        class: floor
+        text: >-
+          No exceptions — not for "well-known" constraints, not for "obvious" technology
+          choices, not even when the team has consensus: document the constraint and its
+          source explicitly.
+
+      - id: authoring-technical-requirements.decision-slots-binding
+        labels: [binding]
+        class: must
+        kind: binding
+        text: >-
+          Reach `mochiko:patterns-technical-decisions` to evaluate alternatives, and
+          record its result in the D-XXX slots — this skill owns only the field schema
+          and the C↔D traceability.
+        pointer: "mochiko:patterns-technical-decisions"
+
+      - id: authoring-technical-requirements.no-topology-decisions
+        labels: [artifact-grammar, single-home]
+        class: floor
+        text: >-
+          A topology choice — component boundaries, interaction style, responsibility
+          placement — is recorded in the architecture store's delta, whose ruling IS its
+          decision record; it never becomes a D-XXX row here. The D-XXX rows in this
+          artifact have one origin: this skill's analysis-time author.
+
+      - id: authoring-technical-requirements.entangled-decision-route
+        labels: [artifact-grammar]
+        class: must
+        text: >-
+          Where a technology decision and a topology choice are genuinely entangled,
+          record the technology decision here, let the store's delta carry the shape,
+          and cross-cite by ID.
+
+      - id: authoring-technical-requirements.platform-implies-ip
+        labels: [artifact-grammar]
+        class: must
+        text: >-
+          Every constraint that implies platform work gets an IP-XXX item — constraints
+          document boundaries; IP-XXX items document what those boundaries require
+          operationally.
+
+      - id: authoring-technical-requirements.nfr-store-home
+        labels: [artifact-grammar, single-home]
+        class: floor
+        text: >-
+          There is no `nfrs.md` — an NFR-XXX row lives as fields on its
+          architecture-store concern row, so one concern has one home: stance, pattern,
+          targets, as-built, drift together. The ids and the grammar are this skill's
+          (numeric target · measurement method · source · category); the row shape is
+          the store's (`plugins/mochiko/schemas/architecture-store.yaml`).
+
+      - id: authoring-technical-requirements.fast-is-not-a-requirement
+        labels: [artifact-grammar, evidence]
+        class: floor
+        text: >-
+          "Fast" is not a requirement — "p95 response time < 200ms under 1000 concurrent
+          users, measured by APM" is. Every NFR gets a number, a measurement method, and
+          a source — no deferrals to "later during design", not for "standard"
+          performance expectations or "obvious" availability targets.
+
+      - id: authoring-technical-requirements.integration-declarations
+        labels: [artifact-grammar]
+        class: must
+        text: >-
+          Flag which external systems the feature depends on and how critical each is —
+          an INT-XXX row ("the feature MUST integrate with `<system>`; its
+          unavailability is `<criticality>`"). Optimistic integration maps are
+          incomplete: every external dependency fails eventually, so every INT-XXX
+          declaration MUST carry through to documented failure modes and a fallback when
+          its boundary is authored in `mochiko:patterns-api-contracts`.
+
+      - id: authoring-technical-requirements.sensitivity-declarations
+        labels: [artifact-grammar]
+        class: must
+        text: >-
+          Flag which data the feature treats as sensitive — a DS-XXX row ("the feature
+          handles `<data>`, which is sensitive and MUST be classified and protected").
+          The row records that sensitive data is present and must be governed; the
+          per-attribute classification is authored downstream.
+
+      - id: authoring-technical-requirements.trace-nfr-to-business
+        labels: [artifact-grammar, evidence]
+        class: must
+        text: >-
+          NFR → FR/SC — an NFR's source is its business source, the FR-XXX or SC-XXX
+          whose promise the target serves; the trace chain resolves
+          FR-XXX / SC-XXX → NFR-XXX.
+
+      - id: authoring-technical-requirements.trace-constraint-decision
+        labels: [artifact-grammar]
+        class: must
+        text: >-
+          C ↔ D — constraints reference the decisions they shape; decisions reference
+          the constraints that shaped them.
+
+      - id: authoring-technical-requirements.trace-constraint-impact
+        labels: [artifact-grammar]
+        class: must
+        text: >-
+          C → impact — every constraint identifies what it restricts.
+
+      - id: authoring-technical-requirements.trace-infrastructure
+        labels: [artifact-grammar]
+        class: must
+        text: >-
+          C/NFR → IP — constraints and NFRs with infrastructure implications reference
+          the IP-XXX items that provision them.
+
+      - id: authoring-technical-requirements.technology-agnostic
+        labels: [artifact-grammar]
+        class: must
+        text: >-
+          Describe WHAT the system must achieve, not HOW — "Must use PostgreSQL"
+          becomes "Must support ACID transactions on relational data." Exception:
+          constraints MAY name specific technologies when they reflect real
+          infrastructure facts.
+
+      - id: authoring-technical-requirements.sequential-ids
+        labels: [artifact-grammar]
+        class: must
+        text: >-
+          ID sequences are sequential with no gaps, three-digit padded, per prefix
+          (C-001…, D-001…, IP-001…, INT-001…, DS-001…).
+
+      - id: authoring-technical-requirements.declaration-rows-complete
+        labels: [artifact-grammar]
+        class: must
+        text: >-
+          Every INT-XXX and DS-XXX declaration is present as a row, with its downstream
+          home named.
+
+      - id: authoring-technical-requirements.field-definitions
+        labels: [artifact-grammar, binding]
+        class: must
+        kind: duty
+        text: >-
+          Author every C / D / IP / Declarations / NFR block to its required field set
+          and the T2 statement-line form — field definitions, document templates, and
+          the two-arm store-row shape live in `references/ARTIFACT-TEMPLATES.md`,
+          referenced never restated.
+        pointer: "references/ARTIFACT-TEMPLATES.md"
+
+      - id: authoring-technical-requirements.never-compress-register
+        labels: [artifact-grammar]
+        class: must
+        text: >-
+          Register `full` — every ID, numeric target, and constraint clause is a
+          never-compress item; compression stops wherever it would make a requirement
+          ambiguous.
+        pointer: "references/ARTIFACT-TEMPLATES.md"
+
+      - id: authoring-technical-requirements.declaration-closure
+        labels: [artifact-grammar]
+        class: must
+        text: >-
+          A declaration with no named downstream home is incomplete, and a constraint
+          with no source is a preference wearing a constraint's clothes — the
+          constraint-vs-preference test lives in `references/ARTIFACT-TEMPLATES.md`.
+        pointer: "references/ARTIFACT-TEMPLATES.md"
+
+      - id: authoring-technical-requirements.layer-internal-consistency
+        labels: [artifact-grammar]
+        class: must
+        text: >-
+          Layer-internal consistency — every cross-referenced ID resolves to an actual
+          entry, bidirectional references match, and no two constraints restrict
+          incompatibly.
+        pointer: "references/TRACEABILITY-PATTERNS.md"
+
+  - id: authoring-technical-requirements.sec.output
+    title: Output — completeness before finalizing
+    intent: >-
+      What is verified before the layer is handed on.
+    rules:
+
+      - id: authoring-technical-requirements.completeness-procedures
+        labels: [evidence]
+        class: must
+        kind: duty
+        text: >-
+          Before finalizing, run the per-link completeness procedures — constraint
+          sourcing, decision traceability, NFR measurability, infrastructure coverage,
+          and INT/DS declaration closure — per `references/TRACEABILITY-PATTERNS.md`,
+          referenced never restated.
+        pointer: "references/TRACEABILITY-PATTERNS.md"
+
+  - id: authoring-technical-requirements.sec.reserved
+    title: Reserved — the user's pen
+    intent: >-
+      Decisions this seat never takes.
+    rules:
+
+      - id: authoring-technical-requirements.store-write-at-sign-off
+        labels: [user-gate]
+        class: floor
+        kind: reservation
+        text: >-
+          A new or changed NFR target reaches the store the way every other store write
+          does — drafted in the package, written at the user's sign-off.

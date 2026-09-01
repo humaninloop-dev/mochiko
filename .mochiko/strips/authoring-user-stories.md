@@ -6,6 +6,128 @@ Entry formats: `strips/README.md`. Wave context: [v0.28.0] entries — skill-suc
 `.mochiko/brainstorms/workflow-token-reduction/record.md` D4 + the wave-2 rulings R1–R4/T1;
 ratified 2026-07-24).
 
+## [v0.101.0] Schema conversion — census-row → minted-ID map (skill-content-schema wave 2A)
+
+Ruling for every [v0.101.0] entry: skill-content-schema D3 (three-home boundary) / D8/C4
+(protected transfers), `DECISIONS.md` 2026-09-01 rows (skill-content-schema + the wave-2
+family-door ruling); census: `.mochiko/brainstorms/skill-content-schema/census-authoring.md`
+§B (AUS). Schema home: `plugins/mochiko/skills/authoring-user-stories/schema.yaml`. Minted
+IDs carry the `authoring-user-stories.` prefix (omitted below). Map — census row →
+minted ID:
+1 `letter-is-spirit` (C-A1 stub) · 2 `independently-testable` · 3a `pm-frame-boundary` ·
+3b `boundary-dispute-escalates` · 4a `technical-tasks-routing` · 4b `bug-reports-routing` ·
+4c `already-story-form` · 4d `architecture-decisions-routing` · 4e
+`api-contracts-routing` · 5a-i `deliverable-envelope` (C-A4 stub — the wave-lead F2
+ruling: AUS takes the envelope stub, restoring the census ×5 membership) + 5a-ii
+`story-structure` (lettered split; the member-specific story form + 2–5 cap, R6) · 5b
+`density-fields` · 6 `priority-justified` · 7a `scenario-count-bound` · 7b
+`scenarios-independently-verifiable` · 7c `observable-outcomes` · 8
+`independent-test-required` · 9 `validation-script` (advisory binding, pointer
+`scripts/validate-user-stories.py`, census J-3) · 10 `rationalization-stop`.
+Build count 19 vs census 18: the approved 5a lettered split — disclosed for the audit.
+Sections: independence, inputs, and output carry explicit empty markers (census fit —
+AUS independence 0).
+Accounting: body 5,351 → 3,775 + schema 7,893 = payload 11,668 (census estimate ~11,800);
+the retained body is the load-first Rules block plus teaching prose (the T1 format block,
+priorities + G/W/T intro with both reference pointers, Common Rationalizations table);
+every removed line is a relocation or transfer recorded below — no content growth
+claimed. Description byte-untouched at 425.
+
+## [v0.101.0] T1-ruled story form — protection transfers (census AUS §A row 1; "untouchable")
+
+- **Disposition:** superseded — the [v0.23.0] T1 ruling's obligations transfer per D8/C4:
+  the 2–3 scenario cap with the compound-story rationale → `scenario-count-bound`
+  (kind: bound) · the one-line scenario rule with its hiding-several-scenarios rationale +
+  the journey ≤ 2 lines / one-line justification and independent-test densities →
+  `density-fields`. The fenced format block itself stays prose in the body — the T1 form's
+  **teaching rendering**, kept deliberately whole (census: "the fenced format block stays
+  prose").
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01
+  skill-content-schema row; original protection: 2026-07-24 token-reduction-wave-2 T1,
+  user-ruled).
+- **Content (verbatim, the load-bearing lines):** "Each story needs 2-3 acceptance
+  scenarios — the happy path plus the key edge case(s); more than 3 means the story is
+  compound or the scenarios overlap" · "Each scenario is **one line** — a scenario that
+  needs a paragraph is hiding several scenarios or restating context the Given already
+  carries" · "the journey ≤ 2 lines, the priority justification and independent test one
+  line each".
+- **Kept deliberately:** the format block fence verbatim in the body, its "— one line"
+  field annotations included; `references/EXAMPLES.md` (the dense-form rewrite) untouched.
+- **Consumers assessed:** `scripts/validate-user-stories.py` checks the authored artifact
+  — its numbered-scenario + G/W/T regexes match the unchanged form (the [v0.23.0] check
+  below stands); `review-specifications`' density-is-not-a-gap note unaffected.
+
+## [v0.101.0] [v0.28.0] KEPT set — protection transfers (census AUS §A row 2)
+
+- **Disposition:** superseded — protection transfers per D8/C4: letter/spirit epigraph →
+  `letter-is-spirit` (C-A1 stub, floor) · the Independent Test bullets ("only home") →
+  `independent-test-required`, the three bullets' content carried whole in the rule text
+  (isolation method · data/setup · pass/fail) · the Quality Checklist → dedup-to-schema
+  (lead F4 ruling), each row mirroring a minted rule, no extra rule minted — row → ID map:
+  clear title + exact structure → `story-structure` · priority with justification →
+  `priority-justified` · journey ≤ 2 lines → `density-fields` · independent test one line
+  → `density-fields` + `independent-test-required` · 2-3 one-line G/W/T scenarios →
+  `scenario-count-bound` + `density-fields` · no implementation details / technology
+  references → `observable-outcomes` · observable, measurable outcomes →
+  `observable-outcomes` + `independently-testable`.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 row; original
+  protection: 2026-07-25 skill-succinctness-strip).
+- **Content (verbatim, the checklist):**
+
+  ```
+  - [ ] Has a clear, descriptive title
+  - [ ] Priority is assigned with justification (one line)
+  - [ ] User journey is described in plain language (≤ 2 lines)
+  - [ ] Independent test is specified (one line)
+  - [ ] 2-3 acceptance scenarios using Given/When/Then, one line each
+  - [ ] No implementation details or technology references
+  - [ ] Outcomes are observable and measurable
+  ```
+
+  And the Independent Test bullets: "How QA can verify this story in isolation · What
+  data or setup is required · What constitutes passing/failing. This enables parallel
+  testing and clear verification."
+- **Kept deliberately:** the format block and the Common Rationalizations table stay in
+  the body whole (teaching, census §B preamble).
+- **Consumers assessed:** the [v0.28.0] wave-open enumeration stands (7 citing files, no
+  section anchors); the router row unchanged.
+
+## [v0.101.0] [v0.91.0] design-track carve-outs — protection transfers (census AUS §A row 3)
+
+- **Disposition:** superseded — protection transfers per D8/C4, both carve-outs entire:
+  `architecture-decisions-routing` + `api-contracts-routing`.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 row; original
+  protection: 2026-08-26 plan-stage-utility D1, kept entire at the [v0.91.0] entry below).
+- **Content (verbatim):** "**Architecture decisions** - Capture technical-decision
+  rationale in the design track instead; this skill authors user stories, not technical
+  choices" · "**API contract design** - Define endpoints and schemas in the design track
+  instead; this skill authors user stories, not interface contracts".
+- **Consumers assessed:** `mochiko:authoring-requirements` keeps its vocabulary-aligned
+  twin (P3's member this wave); nothing links these bullets by anchor.
+
+## [v0.101.0] Remaining body obligations relocated to schema (D3 — grouped)
+
+- **Disposition:** relocated → `plugins/mochiko/skills/authoring-user-stories/schema.yaml`,
+  per the map entry above: the PM-frame boundary paragraph (3a/3b — the boundary floor and
+  its escalates-to-the-user reservation) · the remaining When-NOT-to-Use bullets (4a–c) ·
+  the format-intro obligations (5a-i/5a-ii/5b — envelope binding, 2–5 stories, exact
+  structure, density fields) · the priority rule (6) · the scenario guidelines (7a/7b/7c) ·
+  the Independent Test requirement (8) · the Validation Script section (9 — the command
+  rides the rule text verbatim: `python scripts/validate-user-stories.py path/to/spec.md`) ·
+  the overview's independently-testable line (2) · the Red-Flags STOP paragraph (10,
+  floor, quoted verbatim in the rule text: "No exceptions: not for 'simple' features,
+  'we'll refine later', 'tight deadlines', nor even if the user says 'just give me quick
+  stories'").
+- **Tier failed:** n/a — supersession by ruling (D3; `DECISIONS.md` 2026-09-01 row).
+- **Content:** faithfully compressed — each line's operative text survives in its mapped
+  rule's `text`; pre-conversion body verbatim in git history of `SKILL.md` at v0.100.0.
+- **Kept deliberately:** the format block, the priorities one-line enumeration with its
+  `references/PRIORITY-DEFINITIONS.md` pointer, the G/W/T pattern intro with the
+  `references/EXAMPLES.md` pointer, the Common Rationalizations table, and the overview
+  identity voice stay in the body; `references/` and `scripts/` untouched.
+- **Consumers assessed:** `requirements-analyst` mounts the skill (contract intact); the
+  router row unchanged; no consumer links a removed section anchor.
+
 ## [v0.91.0] Two When-NOT-to-Use carve-outs: "the design/plan track" → "the design track" (advisory)
 
 - **Disposition:** superseded → "the design track" at both sites.

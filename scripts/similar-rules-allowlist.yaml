@@ -242,3 +242,149 @@ suppressions:
     reason: two independence rules for different seats
   - ids: [arch.seat-drift-probe-empirical, arch.drift-empirical]
     reason: role card vs floor for the same discipline — deliberately paired, not duplicated
+
+  # === Wave-2A skill-side edges (authoring-family conversion, v0.101.0; adjudications
+  # per census-authoring §C/J-8 + the wave-2A lead rulings, seeded by P4 against the
+  # landed 16-pair corpus). Same-block stub↔stub pairs are structurally skipped; every
+  # row below is a LOCAL-rule or cross-family/cross-grammar edge. Census-recorded
+  # keep-distincts that fire no live edge need no row (AC never-co-mounted vs the
+  # independent-grade block · AAS sound-loop leg vs C-A2 · ATR/AUS no-exceptions STOP
+  # pair · extend-beats-mint pair · reserved-to-user shapes vs
+  # review-common.verdict-is-input): the tripwire stands if wording ever converges. ----
+
+  # --- [1] referenced-never-restated frame family: each local binds a DIFFERENT
+  # reference; frame is the sanctioned idiom, not a shared obligation; review-side
+  # edges additionally cross-family (D5) ---
+  - ids: [authoring-requirements.rfc2119-pointer, review-brainstorm.record-fitness-binding]
+    reason: J-8 cross-family — different references (RFC-2119 vs RECORD-FITNESS); frame overlap only, D5 forbids sharing
+  - ids: [authoring-requirements.rfc2119-pointer, authoring-technical-requirements.deliverable-envelope]
+    reason: different bindings — a keyword reference pointer vs the envelope stub; frame overlap only
+  - ids: [authoring-requirements.rfc2119-pointer, authoring-user-stories.deliverable-envelope]
+    reason: different bindings, same adjudication
+  - ids: [authoring-feature-map.envelope-binding, authoring-requirements.rfc2119-pointer]
+    reason: different bindings, same adjudication
+  - ids: [authoring-prototype.envelope-binding, authoring-requirements.rfc2119-pointer]
+    reason: different bindings, same adjudication
+  - ids: [authoring-requirements.envelope-binding, authoring-requirements.rfc2119-pointer]
+    reason: intra-schema — the envelope stub vs the AR-specific RFC-2119 pointer; distinct referents
+  - ids: [authoring-requirements.rfc2119-pointer, review-brainstorm.external-claims-binding]
+    reason: J-8 cross-family — different references entirely; D5 forbids sharing
+  - ids: [authoring-requirements.rfc2119-pointer, review-feasibility.external-claims-binding]
+    reason: J-8 cross-family — different references entirely; D5 forbids sharing
+
+  # --- [2] two-arm family: AFM's feature-entry copy is a ruled LOCAL (lead Q2 — the
+  # twice-bound split: one member binding one block twice keeps the second binding
+  # local); RPA's mirror is cross-family (D5) and a --check view, not the plain form ---
+  - ids: [authoring-architecture-store.two-arm-schema-binding, authoring-feature-map.feature-entry-two-arm]
+    reason: lead Q2 ruling — AFM binds two-arm twice (features-index via stub, feature-entry LOCAL); the twice-bound split keeps the second binding local
+  - ids: [authoring-constitution.two-arm-schema-binding, authoring-feature-map.feature-entry-two-arm]
+    reason: lead Q2 ruling, same adjudication
+  - ids: [authoring-feature-map.features-index-two-arm, authoring-feature-map.feature-entry-two-arm]
+    reason: lead Q2 ruling — the stub and its twice-bound LOCAL twin inside one schema
+  - ids: [authoring-feature-map.feature-entry-two-arm, authoring-prototype.spec-two-arm]
+    reason: lead Q2 ruling, same adjudication
+  - ids: [authoring-architecture-store.two-arm-schema-binding, review-plan-artifacts.cycle-card-check-mirror]
+    reason: J-8 cross-family — RPA mirrors the tasks --check view, not the plain two-arm; D5 forbids sharing
+  - ids: [authoring-constitution.two-arm-schema-binding, review-plan-artifacts.cycle-card-check-mirror]
+    reason: J-8 cross-family, same adjudication
+  - ids: [authoring-feature-map.features-index-two-arm, review-plan-artifacts.cycle-card-check-mirror]
+    reason: J-8 cross-family, same adjudication
+  - ids: [authoring-prototype.spec-two-arm, review-plan-artifacts.cycle-card-check-mirror]
+    reason: J-8 cross-family, same adjudication
+  - ids: [authoring-feature-map.feature-entry-two-arm, review-plan-artifacts.cycle-card-check-mirror]
+    reason: J-8 cross-family, same adjudication
+
+  # --- [3] letter-is-spirit cross-family: VC's wording family was screened
+  # keep-distinct in wave 1; D5 forbids a cross-family block — the two families
+  # independently demanding this shape is recorded evidence for the D5 cross-family
+  # skill-common.yaml graduation candidate, not actioned ---
+  - ids: [authoring-feature-map.letter-is-spirit, validation-constitution.letter-is-spirit]
+    reason: J-8 census edge — VC wording distinct (wave-1 screen); D5 forbids cross-family sharing; graduation-candidate evidence only
+  - ids: [authoring-prototype.letter-is-spirit, validation-constitution.letter-is-spirit]
+    reason: J-8 census edge, same adjudication
+  - ids: [authoring-technical-requirements.letter-is-spirit, validation-constitution.letter-is-spirit]
+    reason: J-8 census edge, same adjudication
+  - ids: [authoring-user-stories.letter-is-spirit, validation-constitution.letter-is-spirit]
+    reason: J-8 census edge, same adjudication
+
+  # --- [4] stories-routing shapes: 3 members share only the ~60-char routing core;
+  # member tails carry the real content (trace-by-ID · renders-never-invents ·
+  # focuses-on-requirements) and would strand under R2; R5 net-reduction fails —
+  # surfaced to the wave lead as a borderline, adjudicated keep-distinct ---
+  - ids: [authoring-requirements.stories-routing, authoring-technical-requirements.business-requirements-routing]
+    reason: different routing targets (stories vs business requirements); frame overlap only
+  - ids: [authoring-prototype.stories-routing, authoring-requirements.stories-routing]
+    reason: R5/R6 — shared core fails net-reduction; member tails carry the content; keep-distinct, surfaced at fan-in
+  - ids: [authoring-feature-map.stories-routing, authoring-prototype.stories-routing]
+    reason: R5/R6, same adjudication
+  - ids: [authoring-feature-map.stories-routing, authoring-requirements.stories-routing]
+    reason: R5/R6, same adjudication
+  - ids: [authoring-prototype.stories-routing, authoring-technical-requirements.business-requirements-routing]
+    reason: different routing targets; frame overlap only
+
+  # --- [5] growth-door mint routing: one handoff deliberately mirrored on both
+  # planes; cross-grammar (D5) ---
+  - ids: [arch.dispatch-feature-growth-door, authoring-architecture-store.mint-routing]
+    reason: J-5 cross-grammar — command plane vs skill plane, one growth-door handoff; D5 forbids sharing
+  - ids: [feat.architecture-intake, authoring-architecture-store.mint-routing]
+    reason: J-5 cross-grammar, same adjudication
+
+  # --- [6]-[8] AR↔AUS pairs: census §C kept-distinct — 2 members, below the 3+ bar ---
+  - ids: [authoring-requirements.pm-frame-boundary, authoring-user-stories.pm-frame-boundary]
+    reason: census §C — PM-frame boundary pair, verbatim twins but 2-member, below the R1 bar; extraction reopens if a third member converges
+  - ids: [authoring-requirements.boundary-escalates-to-user, authoring-user-stories.boundary-dispute-escalates]
+    reason: census §C — the boundary pair's reservation limb, 2-member, below bar
+  - ids: [authoring-requirements.validated-requirements-routing, authoring-user-stories.already-story-form]
+    reason: twin already-done bullets, 2-member, below bar; different artifact classes (requirements vs stories)
+
+  # --- [9] When-NOT routing frame family: R5 short-text class — each rule names a
+  # distinct jurisdiction; includes the census §C design-track carve-out pair (same
+  # v0.91.0 lineage, 2-member) ---
+  - ids: [authoring-requirements.implementation-planning-routing, authoring-requirements.architecture-routing]
+    reason: intra-schema — distinct jurisdictions (planning vs architecture) sharing the When-NOT frame
+  - ids: [authoring-user-stories.architecture-decisions-routing, authoring-user-stories.api-contracts-routing]
+    reason: census §C design-track carve-outs — two carve-outs, two jurisdictions, one lineage; frame overlap only
+  - ids: [authoring-requirements.architecture-routing, authoring-user-stories.architecture-decisions-routing]
+    reason: census §C design-track carve-out pair — 2-member, same v0.91.0 lineage, below bar
+  - ids: [authoring-requirements.implementation-planning-routing, authoring-user-stories.technical-tasks-routing]
+    reason: different jurisdictions (planning vs tasks); frame overlap only
+  - ids: [authoring-requirements.api-endpoints-routing, authoring-user-stories.api-contracts-routing]
+    reason: census §C design-track carve-out pair — 2-member, same v0.91.0 lineage, below bar
+  - ids: [authoring-requirements.architecture-routing, authoring-requirements.api-endpoints-routing]
+    reason: intra-schema — distinct jurisdictions sharing the When-NOT frame
+  - ids: [authoring-requirements.data-model-routing, authoring-user-stories.api-contracts-routing]
+    reason: different jurisdictions (data model vs API contracts); frame overlap only
+
+  # --- [10]-[15] cross-pair and cross-grammar singles ---
+  - ids: [spec.staged-derivation, authoring-feature-map.pre-acceptance-workspace]
+    reason: J-5 cross-grammar twin — one staging discipline on two planes, deliberately recorded drift edge (impl/RCM precedent)
+  - ids: [authoring-requirements.fr-numbering, authoring-technical-requirements.sequential-ids]
+    reason: census C-A4 sub-evidence — the id-grammar is single-sourced in artifact-format.md and rides the envelope block's pointer; a minted id-grammar block would dual-home the envelope's text (D6)
+  - ids: [authoring-feature-map.reconstructed-reverify, review-brainstorm.verify-load-bearing-claims]
+    reason: J-8 cross-family — different duties (map-entry re-verify vs record-claim verify); D5 forbids sharing
+  - ids: [authoring-architecture-store.nfr-one-home, authoring-technical-requirements.trace-nfr-to-business]
+    reason: two sides of the ruled NFR seam — the store owns the row home, ATR owns the ids/grammar and the business-source trace (product-architecture-schema D12 split)
+  - ids: [spec.filter-rejections-recorded, authoring-feature-map.complete-disposition]
+    reason: J-5 cross-grammar — the command's filter seat row vs the map's disposition invariant; one discipline, two planes
+  - ids: [impl.epic-design-always-fires, authoring-epic.design-phase-always-fires]
+    reason: J-5 cross-grammar twin — same substance on two planes, deliberately recorded drift edge
+
+  # --- [16] intra-ATR C/D trace family: census D12 grain carried each as its own
+  # obligation (8a/8b posture arms · 17a-d mandatory-links set); 8a's MUST arm and
+  # 17b overlap is a merge candidate at first grooming pass ---
+  - ids: [authoring-technical-requirements.constraints-are-facts, authoring-technical-requirements.trace-constraint-decision]
+    reason: census rows 8a and 17b — posture rule vs mandatory-link rule; merge candidate at first grooming pass
+  - ids: [authoring-technical-requirements.constraints-are-facts, authoring-technical-requirements.impact-references-decisions]
+    reason: census 8a/8b split — MUST arm vs SHOULD arm, deliberately separate
+  - ids: [authoring-technical-requirements.impact-references-decisions, authoring-technical-requirements.trace-constraint-impact]
+    reason: distinct obligations (SHOULD-reference-decisions vs impact-names-restriction) sharing the C-impact referent
+  - ids: [authoring-technical-requirements.trace-constraint-decision, authoring-technical-requirements.trace-infrastructure]
+    reason: two links of the mandatory-links set — different link targets
+  - ids: [authoring-technical-requirements.impact-references-decisions, authoring-technical-requirements.trace-constraint-decision]
+    reason: census 8b vs 17b — SHOULD arm vs bidirectional MUST link; merge candidate at first grooming pass
+
+  # --- [17]-[18] intra-schema singles ---
+  - ids: [authoring-constitution.essential-floor-canonical-home, authoring-constitution.floor-cards-content-sets]
+    reason: two different reference bindings (ESSENTIAL-FLOOR.md vs catalog/universal-floor.md) sharing the canonical-home frame
+  - ids: [authoring-epic.mint-once, authoring-epic.implement-resolves-by-lookup]
+    reason: the mint-once floor vs its implement-run consequence — census carried both rows; merge candidate at first grooming pass

@@ -172,15 +172,23 @@ injects on a schema Read.
 
   1. **Load-first section.** The `SKILL.md` body carries a "Rules — load the schema first"
      section whose obligated first action is a raw, whole Read of the skill's own
-     `schema.yaml` (base-dir-relative) and, where any stub binds,
-     `plugins/mochiko/schemas/skill-review-common.yaml` in the same first action; a member's
+     `schema.yaml` (base-dir-relative) and, where any stub binds, the skill's family
+     common file — `plugins/mochiko/schemas/skill-review-common.yaml` for the review
+     family, `plugins/mochiko/schemas/skill-authoring-common.yaml` from v0.101.0 — in the
+     same first action; a member's
      own obligated reference read (e.g. `review-feasibility`'s lens) sequences there too.
      The reading grammar — `when:` interpretation, floors always delivered, stub
-     inheritance limits — is carried in the block.
+     inheritance limits — is carried in the block; the `when:`-interpretation clause is
+     omitted where the schema declares no `conditions:` (the RCM-4 wave-wide ruling).
   2. **Section enumeration.** The section IDs enumerated in the load-first block match the
-     schema's section IDs **set-wise** — the six-set `<skill>.sec.independence` · `scope` ·
-     `inputs` · `verdict` · `output` · `reserved`, all six present in every schema, a
-     section with no rules carrying its explicit empty marker. Every `<skill>.sec.*` token
+     schema's section IDs **set-wise** — the skill's **family section set**, minted once
+     by that family's census-backed rollout ruling, uniform within the family, every
+     section present in every member schema, a section with no rules carrying its
+     explicit empty marker. Sets minted so far: the review family's
+     `<skill>.sec.independence` · `scope` · `inputs` · `verdict` · `output` · `reserved`
+     (census §H, v0.100.0); the authoring family's, swapping `verdict` for `artifact` —
+     `independence` · `scope` · `inputs` · `artifact` · `output` · `reserved`
+     (census-authoring J-1, v0.101.0). Every `<skill>.sec.*` token
      anywhere in the `.md`, inside the load-first block or outside it, resolves to a live
      node.
   3. **Floor-count pin + read-back.** The `.md`'s pinned line — "the N rules of
@@ -194,14 +202,15 @@ injects on a schema Read.
      without a tombstone. A reword keeps its ID, a split mints children recording the
      parent, a merge tombstones the losers; no surviving rule text references a tombstoned
      or re-homed node.
-  6. **`extends:` conformance.** An `extends: review-common.<slug>` stub inherits
+  6. **`extends:` conformance.** An `extends: <family>-common.<slug>` stub binds only the
+     skill's own family library (cross-family sharing forbidden, D5), inherits
      `text` / `labels` / `pointer` only, declares `class:` locally, and binds only under the
      near-dup bar — near-identical across 3+ members, strongest-wording-wins (R1/R2,
      `.mochiko/decisions/2026-08-28-near-dup-convergence.md`); a member whose extra content
      is skill-specific keeps local text, the edge recorded in
      `scripts/similar-rules-allowlist.yaml`. The stub's `<skill>.*` ID stays the citable
-     ID, and where any stub binds, the load-first action Reads
-     `plugins/mochiko/schemas/skill-review-common.yaml` raw beside the schema.
+     ID, and where any stub binds, the load-first action Reads the skill's family common
+     file raw beside the schema.
   7. **`description:` untouched.** The frontmatter `description:` value is byte-identical
      across the conversion and ≤ 1,536 chars (the delivery cap); it never moves to schema.
   8. **Budget = delivered-at-invoke payload.** The budgeted quantity is the `SKILL.md` body
@@ -233,7 +242,9 @@ injects on a schema Read.
   Rulings: `.mochiko/brainstorms/skill-content-schema/record.md` D1–D9 as amended
   (`DECISIONS.md` 2026-09-01) · the census inventory
   `.mochiko/brainstorms/skill-content-schema/census.md` (§E kind retirement · §H section
-  set · J-7 cross-directory pointers) ·
+  set · J-7 cross-directory pointers) · the authoring-family census
+  `.mochiko/brainstorms/skill-content-schema/census-authoring.md` (§I labels · J-1
+  section set · J-6 budget · J-7 first-seeds) ·
   `.mochiko/decisions/2026-08-28-near-dup-convergence.md` R1–R6.
 
 **Protected content leaves ONLY by ruling.** A line in a record's protected set, marked `KEPT:`, or

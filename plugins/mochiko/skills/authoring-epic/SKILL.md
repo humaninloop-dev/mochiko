@@ -11,129 +11,37 @@ description: This skill MUST be invoked when authoring or updating an epic — t
 
 An **epic** is the transient first-class delivery unit that runs a **closely related
 multi-feature batch** — members designed and built as one unit through `/mochiko:implement`.
-It has identity (`EPIC-XXX`, sequential, same family as `FEAT-XXX`), a
-home directory, a **manifest**, and a **spine**. This skill single-sources the epic's
-**shape** — the manifest and spine files, the mint/overlap guard, and close semantics. The
-commands that consume it (`implement`, `feature`, `specify`) **reference this skill;
-they never restate it.**
+While in flight it is the active unit and member features' pending work rows carry an inline
+`[EPIC-XXX]` marker on the map; at delivery the rows fold into their capabilities' extents,
+the markers vanish, and the epic closes.
 
-One epic type, two faces (no product/tech split): the **manifest is the product view**, the
-**spine is the tech view** — the implement run consumes the spine sections. The epic's **role
-is transient**: while in flight it is the active unit and member features' pending work rows
-carry an inline `[EPIC-XXX]` marker on the map; at delivery the rows fold into their
-capabilities' extents, the markers vanish, and the epic closes. **The directory persists as
-readable record — never as a living map layer.** The map stays two-typed (durable capabilities
-+ transient work rows); an epic is not a third type.
+(*Spine* in this skill is the epic's, never the architecture store's topology spine; where
+both appear, name which.)
 
-## When NOT to Use
+## Rules — load the schema first
 
-- **Grading the epic** — the design-phase and implement outputs are graded by their cluster
-  reviewers; this skill authors the epic object and never grades its own output.
-- **The map marker or seam grammar** — the `[EPIC-XXX]` row marker and within-epic seam-owner
-  bookkeeping are `mochiko:authoring-feature-map`'s; this skill *names* the seam owner in the
-  spine, the map writes it.
-- **Implement run mechanics** — gate shapes, cycle sequencing, and landing steps live in
-  `implement.md`; this skill single-sources only the epic object it consumes.
-- **Transport composition** — worktree isolation vs single pen-holder is
-  `mochiko:patterns-transport-floor`; referenced, never restated.
-- **Batching delta-scope cards or non-feature product-lane work** — parked open threads; not
-  epic scope today.
+Your first action, before any epic touch: **Read `schema.yaml` (this skill's own directory)
+and `../../schemas/skill-authoring-common.yaml` raw, in full, in the same declared first
+action** — schema, then common. The schema is the source of truth for this skill's binding
+rules, nested in six sections, each addressable by its section ID:
+`authoring-epic.sec.independence` · `authoring-epic.sec.scope` ·
+`authoring-epic.sec.inputs` · `authoring-epic.sec.artifact` · `authoring-epic.sec.output` ·
+`authoring-epic.sec.reserved`. Interpret it live: a rule's `kind:` names what it is, and an
+absent `kind:` reads `constraint`; a rule of `class: floor` is always read and always
+delivered; a `pointer:` rule binds you to that file's or skill's procedure, referenced never
+restated; `${var}` substitutes from this schema's `vars:` at read time; labels come from
+`plugins/mochiko/schemas/skill-labels.yaml`. A rule carrying
+`extends: authoring-common.<slug>` inherits text/labels/pointer from
+`skill-authoring-common.yaml` only — `class` and every absence-meaningful field are local —
+and the stub's `authoring-epic.*` ID stays the citable ID. The floor pin: the 10 rules of
+`class: floor` are non-waivable. Before the first epic-touching step, state the floor count
+back — a skipped or partial read leaves that count blank: halt and surface it, and halt
+likewise if the schema's `class: floor` count disagrees with the pin.
 
-## The epic home — manifest + spine
+## The two faces
 
-Home `.mochiko/epics/EPIC-XXX/`. **No separate epics index — the directory is the registry; the
-`/mochiko:feature` desk lists it.**
-
-**`manifest.md`** — the product view:
-
-- **Members** — each `FEAT-XXX`, linked to its `.mochiko/features/FEAT-XXX/` dir.
-- **Status** — `open` / `delivered` / `closed-partial`.
-- **Why-together line** — the relatedness stated at the desk mint that opened it.
-
-**Spine files** beside it — the tech view the implement run consumes. (*Spine* here is the
-epic's, never the architecture store's topology spine; where both appear, name which.)
-
-- **Joint design-phase plan** — one plan over all members (spine artifacts + each member's
-  artifact list), authored in the epic implement run's design phase. An epic run **always
-  fires the design phase** for this joint spine, whatever the sufficiency verdict said.
-- **Joint architecture + seam design** — **one signed store delta** for the whole epic, rendered
-  once and signed off once; **each cross-member seam names its owner explicitly** (members land
-  simultaneously, so no later-lander default applies). The assignment lives here; the map writes
-  it at close.
-- **Ordering** — shared-foundation first, then in-epic dependency order.
-- **Shared-baseline deltas** — see below.
-
-Per-feature **design deltas stay in each member's `.mochiko/features/FEAT-XXX/` dir**, linked
-from the manifest — downstream machinery keeps reading the per-feature dirs it already reads.
-
-## Shared-baseline deltas — author once, one pen-holder
-
-A product baseline touched by **two or more members** gets **one joint delta authored in the
-spine** under a **single pen-holder**; a baseline touched by **one member** keeps its
-per-feature delta. The landing folds each baseline **exactly once** — spine delta for shared
-baselines, feature delta otherwise — preserving the singular-delta-per-baseline graded fold.
-The **transport floor's composition steer** (`mochiko:patterns-transport-floor`) governs every
-epic shared-write surface — spine files and shared baseline deltas: concurrent writers get
-worktree isolation or a single pen-holder, disclosed at run open.
-
-## Minting and the overlap guard
-
-**Mint-once.** Every workflow resolves `EPIC-XXX` by **lookup**; re-minting does not exist. A
-feature's pending rows belong to **at most one open epic at a time**. Two doors:
-
-- **`/mochiko:feature` desk** owns the epic's life — mint, membership change, status view, close.
-  A mint resolves against open epics first: any **membership overlap with an existing epic
-  surfaces to the user** (join it / rule on the overlap), never a silent duplicate.
-- **`/mochiko:specify`** selection may **propose** an epic (when one derivation spans
-  capabilities), **never mint** one.
-
-**The desk is the only mint door.** An implement run resolves its `EPIC-XXX` by lookup and
-mints nothing.
-
-## Selection-scope only
-
-Every member enters as **selection scope** — a spec-accepted selection or growth rows.
-**Delta-scope cards** (bug/improvement deltas on delivered capabilities) **cannot join an
-epic**; the graduation-shaped close (below) is thereby correct by constraint, not presumption.
-
-## Close semantics
-
-One acceptance landing executes **each member's graduation batch** (extent fold, status
-`delivered`, the store's in-flight-class elements flipped `built` and their `FEAT-XXX` keys
-cleared) **plus the epic close**: the `[EPIC-XXX]` markers vanish
-with the folded rows, the manifest is **stamped `delivered` + dated**, and the **directory
-stays in place as record** — no move, no trail file.
-
-A member that **exhausts its attempt bound or hits the no-progress stop** halts
-**member-scoped**. The disposition — **carve the member out** (its rows return to `pending`, the
-epic continues, manifest status `closed-partial`) or **hold the whole run** — is **reserved to
-the user**, never the lead's: carve-out breaks the one-unit promise.
-
-## Red Flags — STOP
-
-- "I'll re-mint the epic here" — mint-once; resolve `EPIC-XXX` by lookup, never a second mint
-- "This feature is already in another epic — I'll add it here too" — one open epic per feature's
-  pending rows; surface the overlap to the user, never a silent second home
-- "Specify found a multi-capability derivation — I'll mint the epic now" — specify **proposes**,
-  never mints; the desk is the only mint door
-- "A member failed — I'll carve it out to keep the run moving" — carve-out is the user's ruling,
-  never the lead's
-
-## Related
-
-- `mochiko:authoring-feature-map` — owns the `[EPIC-XXX]` map marker + within-epic seam-owner
-  grammar; this skill names the owner in the spine, the map writes it
-- `mochiko:patterns-transport-floor` — the composition steer for epic shared-write surfaces
-- `implement.md` — consumes the spine; references this skill, never restates it
-- `/mochiko:feature` — the desk stewarding the epic's life (mint, membership, status, close)
-
-## Quality Checklist
-
-- [ ] Epic resolved by lookup — no re-mint; membership overlap with an open epic surfaced to the user
-- [ ] Home `.mochiko/epics/EPIC-XXX/` with `manifest.md` (members, status, why-together) + spine files
-- [ ] Every cross-member seam names its owner in the spine (no later-lander default inside an epic)
-- [ ] Shared baseline (2+ members) = one spine delta under a single pen-holder; single-member baselines stay per-feature
-- [ ] Transport-floor steer applied to every shared-write surface, disclosed at run open
-- [ ] Every member is selection scope — no delta-scope card admitted
-- [ ] Close = each member's graduation batch + epic close; markers vanish, manifest stamped delivered+dated, dir persists
-- [ ] Member-scoped halt disposition (carve-out / hold) left to the user
+The **manifest** is the product view — who the members are, where the batch stands, and why
+these members belong together. The **spine files** beside it are the tech view the implement
+run consumes: the joint design-phase plan, the joint architecture + seam design, the
+ordering, and the shared-baseline deltas. Per-feature detail stays in the member dirs the
+downstream machinery already reads; the spine carries only what is genuinely joint.

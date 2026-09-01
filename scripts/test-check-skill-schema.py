@@ -10,17 +10,20 @@ satisfies it (the positive control, which must come back clean) and once against
 that breaks exactly that assertion (which must produce the named finding). A check that
 cannot be made to fail is not a check.
 
-The fixtures are synthetic — a `demo-grader` skill that exists only in a temp directory,
-with its own label registry, its own family block library, and a sibling `other-skill`
-directory whose reference file exists solely so the J-7 cross-directory pointer climb has a
-real target. The matrix never depends on the shipped skills and stays green while the real
+The fixtures are synthetic — a `demo-grader` skill (review family) and an `authoring-demo`
+skill (authoring family) that exist only in a temp directory, with their own label
+registry, their own per-family block libraries, and a sibling `other-skill` directory
+whose reference file exists solely so the J-7 cross-directory pointer climb has a real
+target. The matrix never depends on the shipped skills and stays green while the real
 library is mid-wave.
 
 Mutation slots mirror the surfaces the checker reads: `schema` and `md` mutate the parsed
-fixtures, `common` mutates the family block library, `labels` the registry, and `yamltext`
-the dumped YAML string (parse-break probes). `omit` withholds a file entirely, and `sweep`
-runs the checker in sweep mode (no --skill) — the only mode that makes the orphan-block
-claim.
+fixtures of the probe's target skill (`stem`, default `demo-grader`), `common` mutates the
+review-family block library, `acommon` the authoring-family one, `labels` the registry,
+and `yamltext` the dumped YAML string (parse-break probes). `omit` withholds a file
+entirely (`aschema` withholds the authoring pair from the tree), and `sweep` runs the
+checker in sweep mode (no --skill) — the only mode that makes the orphan-block and
+zero-member-label claims.
 
 Run:  uv run scripts/test-check-skill-schema.py
 """
@@ -35,6 +38,7 @@ import yaml
 CHECKER = Path(__file__).resolve().parent / "check-skill-schema.py"
 
 CANONICAL_SLUGS = ("independence", "scope", "inputs", "verdict", "output", "reserved")
+AUTHORING_SLUGS = ("independence", "scope", "inputs", "artifact", "output", "reserved")
 
 
 def rule(rid, labels, text, cls="must", **fields):
@@ -151,8 +155,119 @@ BASELINE_LABELS = {
         "evidence": "where review evidence must live",
         "floor-pointer": "a binding that points at a skill-owned floor",
         "user-gate": "a decision reserved to the user",
+        "artifact-grammar": "the produced artifact's binding shape",
+        "single-home": "one home, one writer, no copies",
     },
 }
+
+
+def baseline_authoring_schema():
+    """A synthetic authoring-family pair — the wave-2A positive control: the `artifact`
+    section set, stubs binding all four authoring-common blocks, and the two new labels."""
+    populated = {
+        "independence": [
+            {"id": "authoring-demo.independent-grade",
+             "extends": "authoring-common.independent-grade", "class": "must"},
+        ],
+        "scope": [
+            rule("authoring-demo.carve-out", ["boundary"],
+                 "Grading the produced artifact is the reviewer's seat, never this one.",
+                 kind="routing"),
+        ],
+        "inputs": [
+            rule("authoring-demo.read-spec", ["fence"],
+                 "Read the source specification itself, never a relay of it.", kind="duty"),
+        ],
+        "artifact": [
+            {"id": "authoring-demo.letter-is-spirit",
+             "extends": "authoring-common.letter-is-spirit", "class": "floor"},
+            {"id": "authoring-demo.envelope",
+             "extends": "authoring-common.envelope-binding", "class": "must",
+             "kind": "binding"},
+            {"id": "authoring-demo.two-arm",
+             "extends": "authoring-common.two-arm-template", "class": "must",
+             "kind": "binding"},
+            rule("authoring-demo.single-writer", ["single-home"],
+                 "The produced artifact has one home and one writer — every other surface "
+                 "links or derives.", "floor"),
+            rule("authoring-demo.id-grammar", ["artifact-grammar"],
+                 "Rows carry sequential, three-digit-padded ids, no gaps."),
+        ],
+        "output": [
+            rule("authoring-demo.trace-summary", ["reporting"],
+                 "The trace summary is emitted as part of the output.", kind="duty"),
+        ],
+        "reserved": [
+            rule("authoring-demo.selection-user", ["user-gate"],
+                 "Selection is the user's ruling — the card recommends, never decides.",
+                 "floor", kind="reservation"),
+        ],
+    }
+    sections = []
+    for slug in AUTHORING_SLUGS:
+        sections.append({
+            "id": f"authoring-demo.sec.{slug}",
+            "title": slug.title(),
+            "intent": f"the {slug} obligations the authoring is bound by",
+            "rules": populated[slug],
+        })
+    return {
+        "kind": "skill",
+        "skill": "authoring-demo",
+        "vars": {
+            "artifact": "the demo artifact",
+            "grader": "`mochiko:review-specifications`",
+            "template": "demo-template",
+        },
+        "sections": sections,
+    }
+
+
+BASELINE_AUTHORING_COMMON = {
+    "kind": "skill-common",
+    "rules": [
+        # Deliberately label-less (census C-A1 assigned no label): the binding stub
+        # resolves label-less and must warn, never fail.
+        {"id": "authoring-common.letter-is-spirit",
+         "text": "Violating the letter of the rules is violating the spirit of the rules."},
+        {"id": "authoring-common.independent-grade", "labels": ["independence"],
+         "text": "The produced ${artifact} is graded by ${grader} — an independent grader, "
+                 "never the author; this skill never grades its own output."},
+        {"id": "authoring-common.two-arm-template", "labels": ["binding"],
+         "text": "Invoke `mochiko-cli template ${template}` when the binary is available; "
+                 "otherwise Read `plugins/mochiko/schemas/${template}.yaml` raw."},
+        {"id": "authoring-common.envelope-binding", "labels": ["binding", "artifact-grammar"],
+         "text": "The produced artifact follows the deliverable envelope in "
+                 "`templates/artifact-format.md` — referenced, never restated.",
+         "pointer": "../../templates/artifact-format.md"},
+    ],
+}
+
+# Three floors in the authoring baseline: the letter-is-spirit stub · single-writer ·
+# selection-user.
+BASELINE_AUTHORING_MD = """---
+description: A synthetic producer used only by the checker's negative-test matrix.
+---
+
+# Authoring Demo
+
+## Rules — load the schema first
+
+Read `schema.yaml` (this skill's own directory) in full before your first action, and
+`plugins/mochiko/schemas/skill-authoring-common.yaml` in the same first action. State the
+floor count back before the first procedural step: the schema carries the 3 rules of
+`class: floor`. A rule carrying `when:` binds only when the run's declared shape matches
+every term; floors are always delivered. Sections, each addressable by its ID:
+`authoring-demo.sec.independence` · `authoring-demo.sec.scope` ·
+`authoring-demo.sec.inputs` · `authoring-demo.sec.artifact` ·
+`authoring-demo.sec.output` · `authoring-demo.sec.reserved`.
+
+## Procedure
+
+1. Author the artifact per the schema's obligations.
+"""
+
+ENVELOPE_MD = "# Deliverable envelope\n\nA fixture target for the envelope-binding pointer.\n"
 
 # Three floors in the baseline: never-author · the default-fail stub · report-home.
 BASELINE_MD = """---
@@ -184,7 +299,12 @@ SHARED_MD = "# Shared claims\n\nSingle source. Consumed by: demo-grader.\n"
 # is accepted too (the check works on both sides of P5's rename).
 BASELINE_PROVENANCE = {
     "kind": "primitive-provenance",
-    "anchors": {"demo-grader.never-author": "2026-09-01 skill-content-schema D8"},
+    "anchors": {
+        "demo-grader.never-author": "2026-09-01 skill-content-schema D8",
+        # Foreign-prefix on a demo-grader run (skipped there), validated on the
+        # authoring-demo run — check 16 exercised for both families.
+        "authoring-demo.single-writer": "2026-09-01 skill-content-schema D8",
+    },
 }
 
 BASELINE_DECISIONS = "| 2026-09-01 | A synthetic row for skill-content-schema | ruled | [x](y) |\n"
@@ -200,9 +320,17 @@ def find_rule(schema, rid):
     raise AssertionError(f"fixture has no rule {rid}")
 
 
-def drop_section(slug):
+def drop_section(slug, stem="demo-grader"):
     def mutate(s):
-        s["sections"] = [n for n in s["sections"] if n["id"] != f"demo-grader.sec.{slug}"]
+        s["sections"] = [n for n in s["sections"] if n["id"] != f"{stem}.sec.{slug}"]
+    return mutate
+
+
+def rename_section(old_slug, new_slug, stem="demo-grader"):
+    def mutate(s):
+        for n in s["sections"]:
+            if n["id"] == f"{stem}.sec.{old_slug}":
+                n["id"] = f"{stem}.sec.{new_slug}"
     return mutate
 
 
@@ -232,17 +360,18 @@ def probes():
     """Each probe breaks exactly one assertion and names the finding it must produce."""
     p = []
 
-    def add(name, expected, schema=None, md=None, common=None, labels=None,
-            provenance=None, yamltext=None, clean=False, absent=None, omit=(),
-            sweep=False):
+    def add(name, expected, schema=None, md=None, common=None, acommon=None,
+            labels=None, provenance=None, yamltext=None, clean=False, absent=None,
+            omit=(), sweep=False, stem="demo-grader"):
         # `absent` is the other half of a "stays clean" probe: asserting only that no
         # finding appeared would also pass if the check never ran at all, so the probes
         # that exist to prove a NON-finding name the message that must not be there.
-        # `omit` withholds a fixture file entirely; `sweep` drops --skill.
+        # `omit` withholds a fixture file entirely; `sweep` drops --skill; `stem` picks
+        # the target skill the `schema`/`md` mutations and the --skill run apply to.
         p.append({"name": name, "schema": schema, "md": md, "common": common,
-                  "labels": labels, "provenance": provenance, "yamltext": yamltext,
-                  "expected": expected, "clean": clean, "absent": absent, "omit": omit,
-                  "sweep": sweep})
+                  "acommon": acommon, "labels": labels, "provenance": provenance,
+                  "yamltext": yamltext, "expected": expected, "clean": clean,
+                  "absent": absent, "omit": omit, "sweep": sweep, "stem": stem})
 
     # --- the positive control ---
     add("baseline pair is clean", "0 findings", clean=True)
@@ -287,7 +416,7 @@ def probes():
         s["sections"].append({"id": "demo-grader.sec.tools", "title": "Tools", "intent": "x",
                               "rules": [rule("demo-grader.stray", ["binding"], "A stray rule.")]})
     add("a section outside the canonical six (the command six-set is not this grammar)",
-        "demo-grader.sec.tools: not one of the six canonical skill sections",
+        "demo-grader.sec.tools: not one of the six canonical review-family sections",
         schema=extra_section)
 
     def foreign_stem_section(s):
@@ -605,27 +734,115 @@ def probes():
         "`kind:` must be one of command-provenance · primitive-provenance",
         provenance=lambda pv: pv.__setitem__("kind", "provenance"))
 
+    # --- 15. the authoring family (wave 2A: per-family section sets + library) ---
+    add("the authoring baseline pair is clean",
+        "0 findings", stem="authoring-demo", clean=True,
+        absent="not in skill-labels.yaml")
+    add("[authoring] the canonical artifact section absent",
+        "canonical section authoring-demo.sec.artifact absent",
+        stem="authoring-demo", schema=drop_section("artifact", "authoring-demo"))
+    add("[authoring] a verdict section is the review set, not this family's",
+        "authoring-demo.sec.verdict: not one of the six canonical authoring-family sections",
+        stem="authoring-demo",
+        schema=rename_section("artifact", "verdict", "authoring-demo"))
+    add("[review] an artifact section is the authoring set, not this family's",
+        "demo-grader.sec.artifact: not one of the six canonical review-family sections",
+        schema=rename_section("verdict", "artifact"))
+    add("[authoring] a stub extending the review family's library is cross-family",
+        "want `authoring-common.<slug>` (D5 per-family library; cross-family sharing "
+        "forbidden)",
+        stem="authoring-demo",
+        schema=set_field("authoring-demo.independent-grade", "extends",
+                         "review-common.author-grader"))
+    add("a review stub extending the authoring family's library is cross-family",
+        "want `review-common.<slug>` (D5 per-family library; cross-family sharing "
+        "forbidden)",
+        schema=set_field("demo-grader.default-fail", "extends",
+                         "authoring-common.letter-is-spirit"))
+    add("[authoring] extends: names no block in the authoring library",
+        "`extends: authoring-common.ghost` names no block",
+        stem="authoring-demo",
+        schema=set_field("authoring-demo.two-arm", "extends", "authoring-common.ghost"))
+    add("[authoring] the authoring library absent while a stub binds",
+        "family block library absent", stem="authoring-demo", omit=("acommon",))
+    add("[authoring] a block id outside the authoring-common.<slug> format",
+        "block id fails `authoring-common.<slug>` format",
+        stem="authoring-demo",
+        acommon=lambda c: c["rules"][0].__setitem__("id", "authoring.letter-is-spirit"))
+    add("[authoring] the library missing its kind: discriminator",
+        "`kind: skill-common` missing",
+        stem="authoring-demo",
+        acommon=lambda c: c.__setitem__("kind", "authoring-common"))
+    add("[authoring] an orphan ${template} is attributed to the binding stub",
+        "authoring-demo.two-arm: orphan placeholder ${template}",
+        stem="authoring-demo",
+        schema=lambda s: s["vars"].pop("template"))
+    add("[authoring] an extends: stub declaring no local class",
+        "declares no local `class:`",
+        stem="authoring-demo",
+        schema=drop_field("authoring-demo.letter-is-spirit", "class"))
+    add("[authoring] a stub inheriting a label-less block warns, never fails",
+        "authoring-demo.letter-is-spirit: resolves with no labels — its block "
+        "authoring-common.letter-is-spirit carries none",
+        stem="authoring-demo", clean=True,
+        absent="authoring-demo.letter-is-spirit: `labels` missing or empty")
+    add("a stub with a LOCAL empty labels: is still a finding",
+        "demo-grader.default-fail: `labels` missing or empty",
+        schema=set_field("demo-grader.default-fail", "labels", []))
+
+    # Per-family orphan and zero-member claims, sweep-scoped.
+    add("[sweep] all-bound authoring blocks make no orphan claim and no label claim",
+        "stats: common blocks 4 · all bound by at least one stub",
+        sweep=True, clean=True,
+        absent="stub in any swept skill: authoring-common")
+    add("[sweep] no authoring schemas swept makes no authoring orphan claim",
+        "no authoring-family schemas swept — no orphan claim",
+        sweep=True, clean=True, omit=("aschema",),
+        absent="stub in any swept skill: authoring-common")
+    add("[sweep] a label unused by every swept schema is named once, at sweep end",
+        "labels with zero members across the swept schemas",
+        sweep=True, clean=True, omit=("aschema",))
+    add("[sweep] labels all carried across the swept schemas make no claim",
+        "0 findings", sweep=True, clean=True,
+        absent="zero members across the swept schemas")
+    add("a single-skill run makes no zero-member label claim",
+        "0 findings", clean=True, absent="zero members")
+
     return p
 
 
 def run_probe(tmp: Path, probe):
     skills = tmp / "skills"
-    skill_dir = skills / "demo-grader"
-    (skill_dir / "references").mkdir(parents=True)
+    grader_dir = skills / "demo-grader"
+    producer_dir = skills / "authoring-demo"
+    (grader_dir / "references").mkdir(parents=True)
+    producer_dir.mkdir(parents=True)
     other_refs = skills / "other-skill" / "references"
     other_refs.mkdir(parents=True)
-    (skill_dir / "references" / "CHECKS.md").write_text(CHECKS_MD, encoding="utf-8")
+    (grader_dir / "references" / "CHECKS.md").write_text(CHECKS_MD, encoding="utf-8")
     (other_refs / "SHARED.md").write_text(SHARED_MD, encoding="utf-8")
+    # The envelope-binding block's inherited pointer climbs to this fixture target.
+    (tmp / "templates").mkdir()
+    (tmp / "templates" / "artifact-format.md").write_text(ENVELOPE_MD, encoding="utf-8")
 
-    schema = baseline_schema()
+    stem = probe["stem"]
+    g_schema = baseline_schema()
+    p_schema = baseline_authoring_schema()
+    target_schema = p_schema if stem == "authoring-demo" else g_schema
     if probe["schema"]:
-        probe["schema"](schema)
+        probe["schema"](target_schema)
     common = yaml.safe_load(yaml.safe_dump(BASELINE_COMMON))
     if probe["common"]:
         probe["common"](common)
-    md = BASELINE_MD
+    acommon = yaml.safe_load(yaml.safe_dump(BASELINE_AUTHORING_COMMON))
+    if probe["acommon"]:
+        probe["acommon"](acommon)
+    g_md, p_md = BASELINE_MD, BASELINE_AUTHORING_MD
     if probe["md"]:
-        md = probe["md"](md)
+        if stem == "authoring-demo":
+            p_md = probe["md"](p_md)
+        else:
+            g_md = probe["md"](g_md)
     labels = yaml.safe_load(yaml.safe_dump(BASELINE_LABELS))
     if probe["labels"]:
         probe["labels"](labels)
@@ -633,17 +850,28 @@ def run_probe(tmp: Path, probe):
     if probe["provenance"]:
         probe["provenance"](prov)
 
-    schema_yaml = yaml.safe_dump(schema, sort_keys=False, allow_unicode=True)
+    dumped = {
+        "demo-grader": yaml.safe_dump(g_schema, sort_keys=False, allow_unicode=True),
+        "authoring-demo": yaml.safe_dump(p_schema, sort_keys=False, allow_unicode=True),
+    }
     if probe["yamltext"]:
-        schema_yaml = probe["yamltext"](schema_yaml)
+        dumped[stem] = probe["yamltext"](dumped[stem])
 
     omit = probe["omit"]
-    (skill_dir / "schema.yaml").write_text(schema_yaml, encoding="utf-8")
+    (grader_dir / "schema.yaml").write_text(dumped["demo-grader"], encoding="utf-8")
+    if "aschema" not in omit:
+        (producer_dir / "schema.yaml").write_text(dumped["authoring-demo"], encoding="utf-8")
+    target_dir, target_md = (producer_dir, p_md) if stem == "authoring-demo" else (grader_dir, g_md)
+    other_dir, other_md = (grader_dir, g_md) if stem == "authoring-demo" else (producer_dir, p_md)
     if "md" not in omit:
-        (skill_dir / "SKILL.md").write_text(md, encoding="utf-8")
+        (target_dir / "SKILL.md").write_text(target_md, encoding="utf-8")
+    (other_dir / "SKILL.md").write_text(other_md, encoding="utf-8")
     if "common" not in omit:
         (tmp / "skill-common.yaml").write_text(
             yaml.safe_dump(common, sort_keys=False, allow_unicode=True), encoding="utf-8")
+    if "acommon" not in omit:
+        (tmp / "skill-authoring-common.yaml").write_text(
+            yaml.safe_dump(acommon, sort_keys=False, allow_unicode=True), encoding="utf-8")
     (tmp / "skill-labels.yaml").write_text(
         yaml.safe_dump(labels, sort_keys=False, allow_unicode=True), encoding="utf-8")
     if "provenance" not in omit:
@@ -655,10 +883,11 @@ def run_probe(tmp: Path, probe):
             "--dir", str(skills),
             "--labels", str(tmp / "skill-labels.yaml"),
             "--common", str(tmp / "skill-common.yaml"),
+            "--authoring-common", str(tmp / "skill-authoring-common.yaml"),
             "--provenance", str(tmp / "provenance.yaml"),
             "--decisions", str(tmp / "DECISIONS.md")]
     if not probe["sweep"]:
-        args += ["--skill", "demo-grader"]
+        args += ["--skill", stem]
     proc = subprocess.run(args, capture_output=True, text=True)
     return proc.returncode, proc.stdout + proc.stderr
 

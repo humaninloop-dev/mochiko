@@ -48,17 +48,17 @@ audited Wave 2 body no-ops (nothing D4-cuttable); their budgets are their surviv
 |---|---|---|
 | analysis-iterative | 3,942 | 4,928 |
 | analysis-codebase | 6,509 | 8,137 |
-| authoring-constitution | 17,240 | 21,550 |
-| authoring-feature-map | 12,330 | 15,413 |
+| authoring-constitution | 30,387 (re-seeded [v0.101.0] schema conversion — payload: body 7,255 + schema 23,132, re-measured post-fix-round; was 17,240/21,550) | 30,387 (no headroom) |
+| authoring-feature-map | 21,636 (re-seeded [v0.101.0] schema conversion — payload: body 5,505 + schema 16,131; was 12,330/15,413, standing +562 overage dissolved — see the [v0.101.0] note below) | 21,636 (no headroom) |
 | review-governance-intent | 14,663 (re-seeded [v0.100.0] schema conversion — payload: body 2,662 + schema 12,001; was 5,562/6,953) | 14,663 (no headroom) |
 | validation-constitution | 13,285 (re-seeded [v0.100.0] schema conversion — payload: body 2,800 + schema 10,485, re-measured post-fix-round; was 5,103/6,379) | 13,285 (no headroom) |
 | testing-governance-injection | 3,540 | 4,425 |
-| authoring-requirements | 4,101 | 5,127 |
-| authoring-user-stories | 5,361 | 6,702 |
-| authoring-prototype | 8,898 | 11,123 |
+| authoring-requirements | 10,796 (re-seeded [v0.101.0] schema conversion — payload: body 2,761 + schema 8,035; was 4,101/5,127) | 10,796 (no headroom) |
+| authoring-user-stories | 11,668 (re-seeded [v0.101.0] schema conversion — payload: body 3,775 + schema 7,893; was 5,361/6,702) | 11,668 (no headroom) |
+| authoring-prototype | 13,943 (re-seeded [v0.101.0] schema conversion — payload: body 4,353 + schema 9,590; was 8,898/11,123) | 13,943 (no headroom) |
 | review-specifications | 15,600 (re-seeded [v0.100.0] schema conversion — payload: body 3,182 + schema 12,418; was 6,187/7,734) | 15,600 (no headroom) |
 | ~~authoring-architecture~~ | 5,250 | 6,563 |
-| authoring-technical-requirements | 10,628 | 13,285 |
+| authoring-technical-requirements | 19,946 (re-seeded [v0.101.0] schema conversion — payload: body 3,204 + schema 16,742; was 10,628/13,285) | 19,946 (no headroom) |
 | brownfield-integration | 6,342 | 7,928 |
 | executing-tdd-cycle | 9,676 | 12,095 |
 | grooming-operating-docs | 2,666 | 3,333 |
@@ -75,6 +75,9 @@ audited Wave 2 body no-ops (nothing D4-cuttable); their budgets are their surviv
 | review-code-minimalism | 8,449 (re-seeded [v0.100.0] schema conversion — payload: body 2,971 + schema 5,478, re-measured post-fix-round; was 3,689/4,612) | 8,449 (no headroom) |
 | review-sufficiency | 14,950 (first budget row, seeded [v0.100.0] schema conversion — payload: body 2,966 + schema 11,984, re-measured post-fix-round; the +82 over the first seed is the lead-ruled F5 restored clause + the F4 `kind:` line; unbudgeted at birth, body 6,652 at v0.91.0) | 14,950 (no headroom) |
 | skill-review-common.yaml | 1,627 (family common file, budgeted once as its own primitive — seeded [v0.100.0] schema conversion) | 1,627 (no headroom) |
+| authoring-architecture-store | 18,876 (first budget row, seeded [v0.101.0] schema conversion — payload: body 4,904 + schema 13,972, re-measured post-fix-round; unbudgeted at birth, v0.81.0 hard-cap-only) | 18,876 (no headroom) |
+| authoring-epic | 13,044 (first budget row, seeded [v0.101.0] schema conversion — payload: body 2,569 + schema 10,475; unbudgeted at birth, v0.72.0 hard-cap-only) | 13,044 (no headroom) |
+| skill-authoring-common.yaml | 1,285 (family common file, budgeted once as its own primitive — seeded [v0.101.0] schema conversion, re-measured after the epigraph-block label-line drop) | 1,285 (no headroom) |
 
 The v0.63.0 floor-line additions (analysis-iterative, review-governance-intent,
 validation-constitution, review-specifications) and the v0.64.0 ones (review-brainstorm,
@@ -128,6 +131,31 @@ description budgets and the 1,536 cap). Prior winner/budget figures are kept vis
 row as history, per the `system-architect`/`authoring-architecture` precedent. Rulings +
 disposition maps: the [v0.100.0] entries in each member's `.mochiko/strips/` file and the
 2026-09-01 skill-content-schema `DECISIONS.md` row.
+
+**[v0.101.0] authoring-family conversion re-seeds — the third seeding path's second use.**
+The eight authoring-family rows above and the `skill-authoring-common.yaml` row are
+conversion re-seeds per skill-content-schema D8/C1 and the wave-2 family-door ruling
+(`DECISIONS.md` 2026-09-01): budget = the measured delivered-at-invoke payload exactly, no
++25% headroom. Six rows re-seed (AC · AFM · AP · AR · ATR · AUS); **two are first-seeds** —
+`authoring-architecture-store` and `authoring-epic` were unbudgeted at birth under the
+"budgets are never invented" clause, and gain their first rows here because the third
+seeding path ("a ruled schema conversion") composes with that clause: the conversion is a
+ruled measurement event, not an invention (census-authoring J-7; their unbudgeted-at-birth
+paragraphs below stay as history). **`authoring-feature-map`'s standing ruled overage
+(+562, ruled HOLDS at v0.91.0) dissolves into its re-seed** — the budget row no longer
+carries it, and its ruling trail survives in `.mochiko/strips/authoring-feature-map.md`
+([v0.91.0] byte-reconciliation + [v0.101.0] conversion entry) per census-authoring J-6
+(GI-006 reconstruction). All nine figures are canonical-snippet counts taken 2026-09-01 by
+the closer seat against the quiesced post-conversion tree (never seat-reported numbers —
+the wave-1 V2/R1 lesson). The common file is budgeted once as its own primitive, never per
+binding skill. Descriptions are byte-untouched by the conversion (AAS 492 · AC 481 ·
+AE 496 · AFM 598 · AP 493 · AR 379 · ATR 598 · AUS 425 — all under their existing
+description budgets and the 1,536 cap). Family delivered-at-invoke, measured (final, post-fix-round re-measure of AAS · AC · the
+common file): 140,296 budgeted payload + 1,285 common ×8 reads = 150,576 vs the 81,896
+pre-conversion family body — **×1.84 against the census estimate ×2.35** (the wave-1 estimate-to-measured drift
+did not recur; figure returns to the user at the landing gate). Rulings + disposition
+maps: the [v0.101.0] entries in each member's `.mochiko/strips/` file and the 2026-09-01
+`DECISIONS.md` rows.
 
 ## Skill descriptions
 

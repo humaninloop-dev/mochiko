@@ -8,9 +8,11 @@ skill schemas — layer 1 of the similar-items grooming system (proposed 2026-08
 conversation-born; no session record yet — the merge POLICY for near-duplicates is
 unruled and gets ruled when the first real merge set is on the table, evidence-first).
 Skill discovery per skill-content-schema D7/M3: `plugins/mochiko/skills/*/schema.yaml`
-beside the command flat-glob; skill stubs resolve `extends: review-common.<slug>`
-against skill-review-common.yaml (commands keep common.yaml — D5 forbids cross-grammar
-sharing of blocks, and the disjoint id prefixes keep one merged lookup safe). A
+beside the command flat-glob; skill stubs resolve `extends: <family>-common.<slug>`
+against their family's library — skill-review-common.yaml, and from v0.101.0
+skill-authoring-common.yaml (commands keep common.yaml — D5 forbids cross-grammar and
+cross-family sharing of blocks, and the disjoint id prefixes keep one merged lookup
+safe; a stub whose prefix matches no loaded library resolves empty and is warned). A
 command-vs-skill near-dup pairs like any other in-kind edge — that is how the J-5
 drift edges surface and get allowlisted.
 
@@ -395,9 +397,13 @@ def main() -> int:
     p.add_argument("--common", type=Path, default=None,
                    help="command block library (default: beside the schemas)")
     p.add_argument("--skill-common", type=Path, default=None,
-                   help="skill family block library (default: "
+                   help="review-family skill block library (default: "
                         "plugins/mochiko/schemas/skill-review-common.yaml, or "
                         "skill-common.yaml beside --skills-dir)")
+    p.add_argument("--skill-authoring-common", type=Path, default=None,
+                   help="authoring-family skill block library (default: "
+                        "plugins/mochiko/schemas/skill-authoring-common.yaml, or "
+                        "skill-authoring-common.yaml beside --skills-dir)")
     p.add_argument("--allowlist", type=Path, default=None,
                    help="adjudicated keep-distinct pairs (default: "
                         "scripts/similar-rules-allowlist.yaml on a live run; a fixture "
@@ -411,6 +417,9 @@ def main() -> int:
     if a.skill_common is None:
         a.skill_common = (Path(a.skills_dir) / "skill-common.yaml") if a.skills_dir \
             else root / "plugins/mochiko/schemas/skill-review-common.yaml"
+    if a.skill_authoring_common is None:
+        a.skill_authoring_common = (Path(a.skills_dir) / "skill-authoring-common.yaml") \
+            if a.skills_dir else root / "plugins/mochiko/schemas/skill-authoring-common.yaml"
 
     # A dir flag puts the run in fixture mode: only the surfaces named by a flag are
     # scanned, so a fixture run never sweeps the live tree beside its fixtures — and
@@ -425,10 +434,12 @@ def main() -> int:
         paths += skill_schema_paths(root, a.skills_dir)
 
     warnings = []
-    # One merged lookup: `common.<slug>` and `review-common.<slug>` prefixes are
-    # disjoint, so a stub can only ever resolve against its own grammar's library.
+    # One merged lookup: the `common.<slug>`, `review-common.<slug>`, and
+    # `authoring-common.<slug>` prefixes are disjoint, so a stub can only ever resolve
+    # against its own grammar's — and family's — library.
     common = load_common(a.common)
     common.update(load_common(a.skill_common))
+    common.update(load_common(a.skill_authoring_common))
     rules = load_rules(paths, common, warnings)
     suppressed = load_allowlist(a.allowlist, {r.rid for r in rules}, warnings) \
         if a.allowlist else set()

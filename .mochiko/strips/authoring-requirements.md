@@ -6,6 +6,105 @@ Entry formats: `strips/README.md`. Wave context: [v0.28.0] entries — skill-suc
 `.mochiko/brainstorms/workflow-token-reduction/record.md` D4 + the wave-2 rulings R1–R4;
 ratified 2026-07-24).
 
+## [v0.101.0] Schema conversion — census-row → minted-ID map (skill-content-schema wave 2A, authoring family)
+
+Ruling for every [v0.101.0] entry below: skill-content-schema D3 (three-home boundary) /
+D8/C4 (protected transfers), `DECISIONS.md` 2026-09-01 rows (record + wave-2 family-door
+rulings); census: `.mochiko/brainstorms/skill-content-schema/census-authoring.md` §A/§B (AR).
+Schema home: `plugins/mochiko/skills/authoring-requirements/schema.yaml`. Minted IDs carry
+the `authoring-requirements.` prefix (omitted below). Map — census row → minted ID:
+1 `technology-agnostic` · 2 `constraint-states-capability` (the worked example stays prose) ·
+3a `envelope-binding` (C-A4 stub) · 3b `density-bounds` (LOCAL tail per R2/R6 — carries the
+one-line-entries / ≤3-line-overview / omit-empty bounds AND "Density is not a gap; a gap is
+missing substance") · 4a `pm-frame-boundary` · 4b `boundary-escalates-to-user` ·
+5a `implementation-planning-routing` · 5b `architecture-routing` ·
+5c `validated-requirements-routing` · 5d `api-endpoints-routing` · 5e `data-model-routing` ·
+5f `stories-routing` · 6a `fr-format` · 6b `rfc2119-pointer` · 7 `fr-numbering` ·
+8 `edge-cases` · 9a `sc-format` · 9b `sc-rules` · 10 `entities-conceptual` ·
+11 `validation-script` (advisory binding, `pointer: scripts/validate-requirements.py` —
+census J-3).
+**Rule count 20** (4 floor · 15 must · 1 advisory) — exactly the census figure; no splits, no
+merges. Two sections ship the explicit empty marker (`independence`, `inputs` — census 0 for
+both).
+**Body relocation inventory:** the Overview WHAT/WHY floor sentence → rule 1; the
+constraint-vs-posture rule sentence → rule 2 (its worked example stays prose, re-framed to
+cite the rule ID); the envelope paragraph → rules 3a/3b; the PM-frame boundary paragraph →
+rules 4a/4b; `## When NOT to Use` → the six scope routing rules; the RFC-2119 keyword
+enumeration + pointer line → rules 6a/6b; `### FR Numbering Rules` → rule 7; `## Edge Cases`
+→ rule 8; the SC intro + `### Success Criteria Rules` → rules 9a/9b; `### Entity Description
+Rules` → rule 10; `## Validation Script` → rule 11; `## Quality Checklist` rows → dedup map
+(RFC keywords → 6a · sequential-no-gaps → 7 · no-tech-details → 1 · 3–5 edge cases → 8 ·
+measurable SCs → 9a/9b · user/business value → 9b · conceptual entities → 10). The FR/SC
+fenced format blocks and the Key Entities compact-form intro stay prose — the artifact
+grammar's teaching renderings (sanctioned dual statement, the census J-5 posture).
+**Accounting:** body 4,413 → 2,761 (−1,652) + schema 8,035 = **payload 10,796** (the C1
+delivered-at-invoke quantity; census est. ~9,800) — ×2.45 vs the pre-conversion body, the
+delta structural overhead (IDs, keys, section scaffolding, reading grammar), no content
+growth claimed.
+
+## [v0.101.0] [v0.28.0] KEPT set — obligations transfer; format blocks stay (skill-succinctness wave 4)
+
+- **Disposition:** superseded — the KEPT set's *obligations* transfer to schema rules per
+  D8/C4: SC rules → `sc-rules`; entity-description rules → `entities-conceptual`; the Quality
+  Checklist leaves the body, each row deduped to its schema rule (map in the entry above). The
+  **FR and SC fenced format blocks stay body-side** — per the [v0.28.0] entry below they are
+  the only explicit homes of the line shapes, and the census disposition keeps format-block
+  shapes as the artifact grammar's teaching rendering.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 skill-content-schema
+  rows; original protection: the [v0.28.0] KEPT set, 2026-07-25 skill-succinctness-strip).
+- **Content:** the `### Success Criteria Rules` numbered list, the `### Entity Description
+  Rules` bullets, and the `## Quality Checklist` rows — each now verbatim-in-meaning in its
+  named rule.
+- **Kept deliberately:** both fenced format blocks, verbatim; the Key Entities compact-form
+  intro line.
+- **Consumers assessed:** no command references this skill (v0.63.0 grep stands);
+  `agents/requirements-analyst.md` declares it in `skills:` — the kept format blocks and
+  references pointers leave that composition intact.
+
+## [v0.101.0] [v0.23.0] compact Key-Entities form — rules transfer, form stays (workflow-token-reduction wave 2)
+
+- **Disposition:** superseded — the compact form's *rules* transfer to `entities-conceptual`
+  (purpose one line · concepts not columns · relationships not foreign keys · no
+  types/constraints/indexes, `data-model.md` downstream), per D8/C4; the **ruled compact form
+  itself stays prose** — the Key Entities intro line ("one purpose line plus concept-level
+  attribute and relationship lists") remains its teaching home.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows; original
+  protection: the [v0.23.0] ruled form, 2026-07-23 workflow-token-reduction wave 2,
+  "untouchable" per the entry below).
+- **Content:** the `### Entity Description Rules` bullet list.
+- **Consumers assessed:** `scripts/validate-requirements.py` is line-regex based, unaffected
+  by the entity form (the [v0.23.0] check stands).
+
+## [v0.101.0] [v0.91.0] constraint-vs-posture rule — protection transfers; worked example stays
+
+- **Disposition:** superseded — the rule transfers to `constraint-states-capability`
+  (class: floor) per D8/C4, carrying the names-no-product / passes-the-leakage-check /
+  freezes-a-design-time-choice consequence; the **worked example stays prose**, re-framed in
+  the body to cite the rule ID.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows; original
+  protection: kept entire at the [v0.91.0] entry below, 2026-08-26 plan-stage-utility
+  re-key).
+- **Content:** "**A constraint states a capability, never a posture.**" and its consequence
+  clause; the corpus/retrieval example sentence stays body-side.
+- **Consumers assessed:** none — self-contained authoring rule (the [v0.91.0] assessment
+  stands).
+
+## [v0.101.0] PM-frame boundary + design-track carve-outs — protection transfers
+
+- **Disposition:** superseded — the PM-frame boundary transfers to `pm-frame-boundary`
+  (floor) + `boundary-escalates-to-user` (floor, reservation); the two design-track carve-outs
+  transfer to `api-endpoints-routing` + `data-model-routing`, per D8/C4.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows; original
+  protections: 2026-08-10 feature-map-layer D15 (PM-owns-which / analyst-owns-how-well) ·
+  2026-08-26 plan-stage-utility (the carve-outs kept entire, name re-keyed — the [v0.91.0]
+  entry below)).
+- **Content:** the Overview Boundary paragraph and the two When-NOT carve-out bullets
+  (endpoint contracts out of FRs · entities only conceptual) — each verbatim-in-meaning in its
+  rule.
+- **Consumers assessed:** `mochiko:authoring-user-stories` carries the twin boundary
+  (converted in its own pair this wave, another seat's member); `mochiko:patterns-entity-modeling` and
+  `mochiko:patterns-api-contracts` stay the downstream homes, correctly named in the rules.
+
 ## [v0.91.0] Fix round — two When-NOT-to-Use carve-outs: "the design/plan track" → "the design track" (advisory)
 
 - **Disposition:** superseded → "the design track" at both sites.

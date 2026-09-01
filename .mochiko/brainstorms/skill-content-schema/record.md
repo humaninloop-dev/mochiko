@@ -633,13 +633,101 @@ ritual run (three-part landing; status agreement across record, index, decisions
   measured figures · ROADMAP Next row → BUILT · index updated. Detector residue zero;
   library = six command pairs + eight skill pairs, two grammars, one ceremony.
 
+## Wave-2 family-door rulings (2026-09-01)
+
+Three family censuses ran as parallel paper exercises (in-repo, this directory:
+`census-authoring.md` · `census-patterns.md` · `census-small-families.md`), each mirroring
+the wave-1 census idiom with the protected-set reconciliation as the literal first step
+(D9/C4). Per D9-I3 the abort evidence returned to the user before any conversion; the user
+ruled all four gate questions "as recommended" (`Confident`):
+
+- **Wave shape — three sequential waves**, authoring → patterns → small families. Each wave
+  carries its own build, author≠grader audits, version bump, and landing ritual, preserving
+  D9 rollback granularity; a single 22-pair landing was declined for conflating rollback.
+- **Authoring (8 members, all convert).** Abort not tripped: 4 blocks clear the 3+ bar
+  (letter-IS-the-spirit epigraph ×4 · produced-artifact-graded-independently ×4 · two-arm
+  template-schema binding ×4 · deliverable-envelope binding ×5) → new
+  `plugins/mochiko/schemas/skill-authoring-common.yaml`. The family section set mints
+  **`artifact`** (the produced artifact's binding grammar, invariants, and write mechanics)
+  in place of `verdict` — census J-1: `verdict` is empty for all 8 producers and ~124
+  artifact-grammar rules had no six-set home — and `primitive-edits.md` criterion 2 is
+  amended to per-family section sets (each minted by that family's census, uniform within
+  the family, explicit empty markers legal); the amendment rides the wave as a ceremonied
+  shipped-rule edit. Labels minted: `artifact-grammar`, `single-home`.
+  INTERROGATION-AGENDA.md stays un-stubbed by ruling (J-2: its obligations bind the setup
+  session, not this skill; a stub would dangle from no §B row). Payload accepted as a band,
+  not a point: est. ×2.35 family delivered, honest band ×2.9–×3.3 on the wave-1
+  estimate-to-measured drift precedent; the measured figure returns at the landing gate.
+- **Patterns (9 of 13 convert).** The shared-`references/` road is **rejected at its
+  door** — the D5/C3 live-candidate note is discharged. §ROAD evidence: the judgment-prose
+  premise holds for only 4 of 13 members (the 2026-08 floor-skill births changed the
+  family's character), and the road's F4 arithmetic fails by an order of magnitude
+  (~26–52k added family-wide to consolidate under 400 chars); the per-member Single-source
+  convention stays the sanctioned mechanism for the teachers' reference content. The abort
+  evidence is borderline (strict R1 reading: 2 blocks — tripped; thin-core reading: exactly
+  3) and the ruling proceeds **on the secondary drivers** (citable IDs, floor semantics,
+  checker visibility) for the nine discipline carriers: adopt-first · architecture-shelves
+  · code-minimalism · map-minimalism · model-tiering · plan-minimalism · sound-loop ·
+  transport-floor · vertical-tdd. Section set minted: `trigger · scope · discipline ·
+  inputs · disclosure · reserved` (13/13 coverage-tested, census §B). **No common file**
+  — the 2–3 thin candidates fail R5 net-reduction. Labels minted: `trigger`, `ladder`.
+  The four teachers (api-contracts · entity-modeling · technical-decisions · system-design)
+  stay prose; revisit on evidence.
+- **Small families (dense five convert).** Abort TRIPPED — zero common blocks in any
+  micro-family; the ruling proceeds eyes-open on the B/C drivers for the five
+  obligation-dense members: testing-gap-finding · executing-tdd-cycle · testing-end-user ·
+  brownfield-integration · analysis-codebase. The review six-set is reused with explicit
+  empty markers; no common file. analysis-iterative · grooming-operating-docs ·
+  testing-governance-injection stay prose with their floors protected as today.
+
+Cross-cutting census findings carried into the waves: ~30 pre-listed allowlist edges
+(letter-IS-spirit, strict-order, rationalization-STOP, author≠grader mirrors, envelope
+density) · two families independently converging on author≠grader and envelope-density
+shapes is the first live signal for the D5 cross-family `skill-common.yaml` graduation
+candidate (evidence only, not actioned) · analysis-codebase's dangling "indicators below"
+pointer takes a one-line ruled repair riding its wave, never a silent fix.
+
+### Wave 2A — authoring family BUILT (2026-09-01, v0.101.0)
+
+- **Build:** 4 plan-approved producers under disjoint ownership (shared surfaces · 3+3+2
+  pairs, the pairs-C seat doubling as single-writer closer for provenance/allowlist/ledger);
+  one mid-wave session-limit crash, all four seats resumed against lead-verified tree state.
+  Delivered: 8 in-dir pairs (244 rules · 67 floors · 16 reference stubs · floor pins
+  9/12/10/16/4/4/8/4 with read-backs) · `plugins/mochiko/schemas/skill-authoring-common.yaml`
+  (4 blocks C-A1–C-A4) · labels registry +2 (`artifact-grammar`, `single-home`) · checker
+  per-family section sets (prefix-derived; the authoring set swaps `verdict` for `artifact`)
+  + detector authoring-library resolution · `primitive-edits.md` criteria 1/2/6 amended ·
+  provenance sidecar 389 anchors · allowlist 96→157 with detector at 0 clusters · ledger 6
+  re-seeds + AAS/AE first-seeds via the third seeding path, no headroom, common file budgeted
+  once (1,285).
+- **Audits (3 fresh author≠grader validators, 10 units):** round 1 — 8 PASS, AC FAIL (four
+  protected "Shape N" template-reference tokens dropped from rule texts; restored verbatim-
+  in-substance, strip artifact-count corrected 18→20 with row-by-row enumeration), AUS major
+  (3 floors without sidecar anchors; added, plus 2 fallback anchors on Overview-born floors).
+  V3's label finding ruled: the epigraph block's `[artifact-grammar]` dropped per census §I
+  with a narrow probe-covered checker carve (inherited-absence warns, local-empty fails);
+  V2's crossing-state BLOCKING on that same drop overruled with the ruling trail and accepted
+  on V2's own re-verification. Fix-round payload drift re-measured same round (the wave-1
+  V2/R1 lesson applied). Delta re-grades: **ALL TEN UNITS PASS.**
+- **Measured at landing:** family delivered-at-invoke **150,576** vs 81,896 pre-conversion =
+  **×1.84 — under the census ×2.35 estimate; the wave-1 estimate-to-measured drift did not
+  recur.** Matrices 105/105 · 134/134 · 48/48; sweeps 16/16 skill pairs · 6/6 command pairs.
+- Landing ritual: census §K build-corrections appendix applied · DECISIONS row → wave 2A
+  built · BACKLOG first-live-run watch extended to the authoring family · ROADMAP Next
+  touched · index updated · CHANGELOG 0.101.0 · marketplace synced · cargo test (gate 6).
+  Remaining waves per the door rulings: 2B patterns (9 carriers) · 2C small families (dense
+  five), each census-first with its own landing.
+
 ## Open questions
 
 - None blocking. Named graduation candidates (not open questions): phase anchors (D3) ·
-  cross-family global `skill-common.yaml` (D5) · kind admission/retirement by census
-  evidence (D4/D9) · the shared-`references/` road at the patterns-family door (D5, C3
-  note). Standing watches owed at build: the first-live-run delivery watch with the I5
-  read-cost observable (D6/D9) · the M1 command path-resolution note on the command D10
+  cross-family global `skill-common.yaml` (D5 — first live signal 2026-09-01: the
+  authoring and small-families censuses independently converge on author≠grader and
+  envelope-density shapes; evidence only) · kind admission/retirement by census
+  evidence (D4/D9). The shared-`references/` road at the patterns-family door was
+  discharged 2026-09-01 — rejected by ruling (see Wave-2 family-door rulings). Standing
+  watches owed at build: the first-live-run delivery watch with the I5 read-cost
+  observable (D6/D9) · the M1 command path-resolution note on the command D10
   watch (`BACKLOG.md`).
 - Owed at build, enumerated once (each durable in its decision — N1): the two-part ledger
   amendment incl. the third seeding path (D8/C1) · the `primitive-edits.md` skill-pair

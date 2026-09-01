@@ -5,31 +5,34 @@ description: This skill MUST be invoked when transforming a feature description 
 
 # Authoring User Stories
 
-**Violating the letter of the rules is violating the spirit of the rules.**
+Transform feature descriptions into testable user stories with clear business value,
+prioritized by impact. This is a discipline-enforcing skill: the structured format exists
+to keep stories unambiguous, testable, and properly prioritized — shortcuts create
+ambiguous requirements that cause implementation failures.
 
-## Overview
+## Rules — load the schema first
 
-Transform feature descriptions into testable user stories with clear business value, prioritized by impact. Each story MUST be independently testable with measurable acceptance criteria.
-
-This is a discipline-enforcing skill. The structured format exists to ensure stories are unambiguous, testable, and properly prioritized. Shortcuts create ambiguous requirements that cause implementation failures.
-
-**Boundary — authored inside the product-manager's frame.** The PM owns *which* capabilities (features, the story filter, selection advice — map machinery: `mochiko:authoring-feature-map`); this craft owns *how well* the stories are written. Neither edits the other's verdicts; a disagreement escalates to the user.
-
-## When NOT to Use
-
-- **Technical implementation tasks** - Use task decomposition instead
-- **Bug reports** - Use issue templates with reproduction steps
-- **When requirements are already in user story format** - Don't duplicate work
-- **Architecture decisions** - Capture technical-decision rationale in the design track instead; this skill authors user stories, not technical choices
-- **API contract design** - Define endpoints and schemas in the design track instead; this skill authors user stories, not interface contracts
+Your first action, before any authoring: **Read `schema.yaml` (this skill's own directory)
+and `../../schemas/skill-authoring-common.yaml` raw, in full, in the same declared first
+action** — schema, then common. The schema is the source of truth for this skill's binding
+rules, nested in six sections, each addressable by its section ID:
+`authoring-user-stories.sec.independence` · `authoring-user-stories.sec.scope` ·
+`authoring-user-stories.sec.inputs` · `authoring-user-stories.sec.artifact` ·
+`authoring-user-stories.sec.output` · `authoring-user-stories.sec.reserved`. Interpret it
+live: a rule's `kind:` names what it is, and an absent `kind:` reads `constraint`; a
+`pointer:` rule binds you to that file's or skill's procedure, referenced never restated;
+labels come from `plugins/mochiko/schemas/skill-labels.yaml`. A rule carrying
+`extends: authoring-common.<slug>` inherits text/labels/pointer from
+`skill-authoring-common.yaml` only — `class` and every absence-meaningful field are local —
+and the stub's `authoring-user-stories.*` ID stays the citable ID. The floor pin: the 4
+rules of `class: floor` are non-waivable. Before the first authoring step, state the floor
+count back — a skipped or partial read leaves that count blank: halt and surface it, and
+halt likewise if the schema's `class: floor` count disagrees with the pin.
 
 ## User Story Format
 
-Generate 2-5 user stories per feature using this exact structure. The story lands in
-`spec.md`, which follows the deliverable envelope in
-[`artifact-format.md`](../../templates/artifact-format.md) — every field below is dense:
-the journey ≤ 2 lines, the priority justification and independent test one line each,
-and **each acceptance scenario a single line**:
+The story lands in `spec.md`, every field to the schema's density rules. The exact
+structure:
 
 ```markdown
 ### User Story N - [Brief Title] (Priority: P#)
@@ -45,57 +48,21 @@ and **each acceptance scenario a single line**:
 2. **Given** [state], **When** [action], **Then** [outcome] — one line
 ```
 
-## Priority Definitions
+## Priorities and Scenarios
 
-P1 (core functionality — MVP requirement, blocks other features, must ship) · P2 (important —
-complete experience, but can ship without initially) · P3 (nice to have — future consideration).
-Detailed assignment guidance: [PRIORITY-DEFINITIONS.md](references/PRIORITY-DEFINITIONS.md).
+P1 (core functionality — MVP requirement, blocks other features, must ship) · P2
+(important — complete experience, but can ship without initially) · P3 (nice to have —
+future consideration). Detailed assignment guidance:
+[PRIORITY-DEFINITIONS.md](references/PRIORITY-DEFINITIONS.md).
 
-## Acceptance Scenario Guidelines
-
-Each scenario follows the Given/When/Then pattern — Given (the initial state or precondition),
-When (the user's action), Then (the expected, observable outcome).
-
-**Rules:**
-1. Each story needs 2-3 acceptance scenarios — the happy path plus the key edge case(s); more than 3 means the story is compound or the scenarios overlap
-2. Each scenario is **one line** — a scenario that needs a paragraph is hiding several scenarios or restating context the Given already carries
-3. Scenarios must be independently verifiable
-4. Use concrete, observable outcomes (not implementation details)
-
-Worked good/bad pairs (scenarios, journeys, justifications, independent tests):
+Each scenario follows the Given/When/Then pattern — Given (the initial state or
+precondition), When (the user's action), Then (the expected, observable outcome). Worked
+good/bad pairs (scenarios, journeys, justifications, independent tests):
 [EXAMPLES.md](references/EXAMPLES.md).
 
-## Independent Test Requirement
-
-Each user story must include an **Independent Test** description that explains:
-- How QA can verify this story in isolation
-- What data or setup is required
-- What constitutes passing/failing
-
-This enables parallel testing and clear verification.
-
-## Quality Checklist
-
-Before finalizing, verify each user story:
-
-- [ ] Has a clear, descriptive title
-- [ ] Priority is assigned with justification (one line)
-- [ ] User journey is described in plain language (≤ 2 lines)
-- [ ] Independent test is specified (one line)
-- [ ] 2-3 acceptance scenarios using Given/When/Then, one line each
-- [ ] No implementation details or technology references
-- [ ] Outcomes are observable and measurable
-
-## Validation Script
-
-Validate format (priority markers + justification, Given/When/Then completeness, independent
-test presence, header format):
-
-```bash
-python scripts/validate-user-stories.py path/to/spec.md
-```
-
 ## Common Rationalizations
+
+The Reality column answers each excuse as it arises mid-authoring.
 
 | Excuse | Reality |
 |--------|---------|
@@ -105,10 +72,3 @@ python scripts/validate-user-stories.py path/to/spec.md
 | "The user just wants quick stories" | Quick incomplete stories waste more time than complete ones. Do it right. |
 | "Independent test is overkill for small features" | Small features still need verification. QA can't test what isn't specified. Include it. |
 | "Everyone knows what P1 means" | P1 without justification is opinion, not prioritization. Explain the value. |
-
-## Red Flags - STOP and Restart Properly
-
-If any excuse in the table above arises as a thought mid-authoring, STOP immediately — you are
-rationalizing; write complete stories with all required sections. No exceptions: not for
-"simple" features, "we'll refine later", "tight deadlines", nor even if the user says "just
-give me quick stories".

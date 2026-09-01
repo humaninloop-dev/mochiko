@@ -9,6 +9,138 @@ the same wave superseded.
 
 ---
 
+## [v0.101.0] Schema conversion — census-row → minted-ID map (skill-content-schema wave 2A, authoring family)
+
+Ruling for every [v0.101.0] entry below: skill-content-schema D3 (three-home boundary) /
+D8/C4 (protected transfers), `DECISIONS.md` 2026-09-01 rows (record + wave-2 family-door
+rulings); census: `.mochiko/brainstorms/skill-content-schema/census-authoring.md` §A/§B (AFM).
+Schema home: `plugins/mochiko/skills/authoring-feature-map/schema.yaml`. Minted IDs carry the
+`authoring-feature-map.` prefix (omitted below). Map — census row → minted ID:
+1 `letter-is-spirit` (C-A1 stub) · 2a `capability-work-row` · 2b `work-rows-transient` ·
+2c `stories-inform-never-define` · 3 + 9b **merged** → `discipline-single-home` (recorded
+deviation: the single-home binding and the When-NOT routing limb are one obligation at D12
+grain — near-identical within one member) · 4 `frame-first` · 5a `one-living-map` ·
+5b `features-index-two-arm` (C-A3 stub, `${template}` = features-index) **+**
+`feature-entry-two-arm` (LOCAL twin — lead-ruled: schema-level `vars:` binds one value per
+name, so the twice-bound block splits stub + local twin; keep-distinct allowlist edge queued) ·
+6 `four-touchpoints` · 7 `map-side-altitude` · 8 → `envelope-binding` (C-A4 stub) **+**
+`map-density` (residue split per the wave lead's residue rule — the AFM density tail mints an
+adjacent LOCAL rule, never stretched inherited text) · 9a `independent-grade` (C-A2 stub) ·
+9c `stories-routing` · 9d `architecture-routing` · 9e `selection-user-ruling` ·
+9f `backlog-boundary` · 10 `one-home` · 11 `complete-disposition` · 12 `row-level-closure` ·
+13 `map-owns-status` · 14a `delivered-sticky-rows-fold` · 14b `retired-terminal` ·
+15a `capability-writes-sacred` · 15b `acceptance-batch` · 16 `integrity-fix-on-sight` ·
+17 `entries-index-never-rewrite` · 18 `growth-rides-work-row` · 19 `in-flight-territory-read` ·
+20 `pre-acceptance-workspace` · 21 `phase-row-stands-alone` · 22a `stubs-are-hypotheses` ·
+22b `selectability-specify-only` · 23a `stub-dependency-unverified` ·
+23b `escalation-never-forced-cut` · 24 `reconstructed-reverify` · 25 `sc-mapping` ·
+26 `acceptance-batch-specs-index` · 27 `selection-card` · 28 `story-trace-provenance`.
+**Rule count 41** (16 floor · 25 must): census §B table grain sums to 40, not the headline 39
+(census arithmetic, the wave-1 VC idiom — landing annotation owed); −1 for the 3+9b merge,
++1 for the 5b twin, +1 for the 8a/8b residue split.
+**Conditions divergence (ruled, not a miss):** the census listed KM-exists and epic-context
+dims; the pair ships **no `conditions:` block** — 9f keeps both arms in text (the non-KM
+degrade path; the wave-1 RPA row-30 both-arms-in-text precedent), and the epic-marker clauses
+ride `retired-terminal` / `sc-mapping` text. Lead-confirmed at plan approval (Q5).
+**Body relocation inventory:** the epigraph line → the C-A1 stub; Overview obligation
+sentences → rules 2a/2b/2c/4/5a/5b/6/7/8; `## When NOT to Use` → the scope/independence/
+reserved rules; `## The invariants (hard rules)` (all 8) → the floor set; `## Red Flags` rows →
+rule sources (4 · 8 · 9e · 14a · 18 · 19 · 20 · 21 · 22a · 22b · 23a · 23b · 24) or
+mirror-dedups (story-mirror ban → `discipline-single-home` + 2a · parent-grouping → the
+discipline's domains · widen-silently → 18); `## Quality checklist` rows → rule sources
+(4 · 11 · 12 · 19 · 22a · 24 · 25 · 26 · 27 · 21 · 28 · 15b) or mirror-dedups; `## Related`
+two-arm mechanics → the 5b pair. The Overview teaching, Vocabulary table (incl. the protected
+capability-batch line, body-side, untouched), and Common Rationalizations stay prose per the
+census's teaching dispositions.
+**Accounting:** body 15,975 → 5,505 (−10,470) + schema 16,131 = **payload 21,636** (the C1
+delivered-at-invoke quantity; census est. ~36,100) — ×1.35 vs the pre-conversion body, the
+delta structural overhead (IDs, keys, section scaffolding, reading grammar), no content growth
+claimed.
+**J-6 — the standing +562 ruled overage dissolves at re-seed:** the +562 declared overage
+(mechanic-(e) zero-gap branch, ruled **HOLDS** by the v0.91.0 wave audit V2, byte-reconciled to
+the ruled obligation) dissolves into the C1 conversion re-seed of the budget row. Named here so
+its ruling trail survives the budget row's supersession (GI-006 reconstruction); the zero-gap
+clause itself transfers verbatim-in-meaning to `four-touchpoints` (entry below).
+
+## [v0.101.0] The 8 hard invariants — protection transfers (pm-role D2/D6/D7/D8 + feature-sizing G4)
+
+- **Disposition:** superseded — protection transfers to the schema floor set: `one-home` ·
+  `complete-disposition` · `row-level-closure` · `map-owns-status` ·
+  `delivered-sticky-rows-fold` + `retired-terminal` (invariant 5 split a/b) ·
+  `capability-writes-sacred` + `acceptance-batch` (invariant 6 split a/b) ·
+  `integrity-fix-on-sight` · `entries-index-never-rewrite`, per D8/C4; the provenance sidecar
+  carries the protected status on each ID.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 skill-content-schema
+  rows; original protections: 2026-08-13 pm-role-and-feature-derivation D2/D6/D7/D8 ·
+  2026-08-10 feature-sizing-and-entry-points G4 · 2026-08-14 multi-feature-plan-implement for
+  the `[EPIC-XXX]` marker clause).
+- **Content:** the eight `## The invariants (hard rules)` entries, verbatim-in-meaning in their
+  rules (one-home · complete disposition · row-level closure · map-owns-status · sticky/fold +
+  retired-terminal · sacred/acceptance-batch/stewardship-direct · integrity-fix-on-sight ·
+  index-never-rewrite).
+- **Kept deliberately:** the Vocabulary table and Common Rationalizations stay body-side
+  teaching; no invariant clause is weakened or dropped.
+- **Consumers assessed:** the five consuming commands dispatch the skill by name and rely on
+  the invariants, now schema-carried and ID-citable; `mochiko:review-specifications` grades map
+  integrity by reference — contracts intact.
+
+## [v0.101.0] Re-type core + frame-first + story-wins — protection transfers (pm-role D1/D2/D5)
+
+- **Disposition:** superseded — protection transfers to `capability-work-row` ·
+  `work-rows-transient` · `stories-inform-never-define` · `frame-first` (which carries the
+  story-wins clause), per D8/C4.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows; original
+  protection: 2026-08-13 pm-role-and-feature-derivation D1/D2/D5).
+- **Content:** the Overview's two-row-type sentences, "Stories inform *which* capabilities
+  exist and sharpen their extents; they never define them", and the frame-first paragraph incl.
+  "where a story and the frame conflict, the **story wins** and the frame adjusts".
+- **Consumers assessed:** the product-manager agent applies the derivation behavior through
+  this skill (decoupling holds); no persona restatement found at the v0.68.0 wave, unchanged
+  since.
+
+## [v0.101.0] Four touchpoints incl. the zero-gap branch — protection transfers (plan-stage mechanic (e))
+
+- **Disposition:** superseded — protection transfers to `four-touchpoints` (class: must), per
+  D8/C4; the zero-gap branch ("on a zero-gap verdict, where no design phase runs, the
+  card-authoring seat performs the dependency and extent assertion instead") carried
+  verbatim-in-meaning. The +562 HOLDS overage this clause anchored dissolves at the re-seed —
+  see the J-6 clause in the map entry above.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows; original
+  protection: 2026-08-26 plan-stage-utility D1 mechanic (e), V2 B1 wording).
+- **Content:** the Overview four-touchpoints sentence, all four duties and the zero-gap branch.
+- **Consumers assessed:** `mochiko:patterns-vertical-tdd` carries the card-authoring seat the
+  branch names; `implement.md` owns the design phase — both untouched by this relocation.
+
+## [v0.101.0] Two-arm features-index / feature-entry bindings — protection transfers (template-schema D8, GI-020)
+
+- **Disposition:** superseded — protection transfers to `features-index-two-arm`
+  (`extends: authoring-common.two-arm-template`, `${template}` = features-index) and
+  `feature-entry-two-arm` (LOCAL twin), per D8/C4. Both arms preserved at both sites — CLI
+  invoke + first-class raw Read (GI-020).
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows; original
+  protection: 2026-08-16 schema-based-template-guidance D1/D8, the v0.76.0 entry below).
+- **Content:** the Overview two-arm parenthetical and the two `## Related` two-arm lines.
+- **Kept deliberately:** the Related list keeps both schema names as navigation pointers,
+  mechanics now schema-carried.
+- **Consumers assessed:** n/a (single-writer skill; the schemas named are P-side data files,
+  untouched).
+
+## [v0.101.0] Stub discipline, BACKLOG boundary, and reservations — protection transfers (feature-sizing + pm-requirements-stacking)
+
+- **Disposition:** superseded — protection transfers to `stubs-are-hypotheses` ·
+  `selectability-specify-only` (floor) · `stub-dependency-unverified` ·
+  `escalation-never-forced-cut` (floor, reservation) · `backlog-boundary` ·
+  `selection-user-ruling` (floor, reservation), per D8/C4.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows; original
+  protections: 2026-08-10 feature-sizing-and-entry-points D2a/D12/D13 · 2026-08-10
+  pm-requirements-stacking D2/D2a/D4 + the v0.62.0 entry below).
+- **Content:** the red-flag and checklist rows carrying the stub/selectability/escalation
+  discipline and the When-NOT BACKLOG boundary line (KM degrade path and extent-growth
+  exception intact in `backlog-boundary`).
+- **Consumers assessed:** `/mochiko:feature` remains the stewardship stub-minter;
+  `mochiko:review-specifications` grades derivation output — both bind by reference, contracts
+  intact.
+
 ## [v0.91.0] Touchpoint line, baseline-surface pointer, and capability-batch line re-keyed — plan-stage retirement D1 (e) — V2 B1
 
 - **Disposition:** superseded → the design phase confirms and hardens (with the zero-gap branch

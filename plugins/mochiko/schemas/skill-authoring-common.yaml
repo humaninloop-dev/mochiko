@@ -1,0 +1,31 @@
+# Shared rule library for the authoring-family skill content schemas. A block binds only
+# through a skill schema's rule stub carrying `extends: authoring-common.<slug>` — the stub's
+# `<skill>.*` ID stays the citable ID, inheritance covers `text`/`labels`/`pointer` only, and
+# `${var}` placeholders in inherited text substitute from the BINDING skill schema's `vars:`,
+# never from this file.
+kind: skill-common
+
+rules:
+
+  - id: authoring-common.letter-is-spirit
+    text: >-
+      Violating the letter of the rules is violating the spirit of the rules.
+
+  - id: authoring-common.independent-grade
+    labels: [independence]
+    text: >-
+      The produced ${artifact} is graded by ${grader} — an independent grader,
+      never the author; this skill never grades its own output.
+
+  - id: authoring-common.two-arm-template
+    labels: [binding]
+    text: >-
+      Invoke `mochiko-cli template ${template}` when the binary is available;
+      otherwise Read `plugins/mochiko/schemas/${template}.yaml` raw.
+
+  - id: authoring-common.envelope-binding
+    labels: [binding, artifact-grammar]
+    text: >-
+      The produced artifact follows the deliverable envelope in
+      `templates/artifact-format.md` — referenced, never restated.
+    pointer: "../../templates/artifact-format.md"

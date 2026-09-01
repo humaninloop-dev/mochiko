@@ -316,9 +316,73 @@ def test_skill_end_to_end():
         check("mixed e2e: both sets scanned", "rules scanned: 8" in out, out)
 
 
+def write_authoring_fixtures(d: Path):
+    """The authoring-family library + two producer directories (wave 2A): one member a
+    stub over authoring-common, its sibling carrying near-identical local text (the
+    EXTEND-GAP proves the stub's text resolved and re-entered scoring), plus a third
+    member whose stub names a prefix no loaded library carries — it must warn, never
+    cluster."""
+    authoring_common = {"kind": "skill-common", "rules": [
+        {"id": "authoring-common.envelope-binding", "labels": ["binding"],
+         "text": "The produced artifact follows the deliverable envelope in "
+                 "templates/artifact-format.md — referenced, never restated."},
+    ]}
+    zeta = {"kind": "skill", "skill": "zeta-producer", "sections": [
+        sec("zeta-producer", "artifact", [
+            {"id": "zeta-producer.envelope", "extends": "authoring-common.envelope-binding",
+             "class": "must", "kind": "binding"},
+        ]),
+    ]}
+    eta = {"kind": "skill", "skill": "eta-producer", "sections": [
+        sec("eta-producer", "artifact", [
+            {"id": "eta-producer.envelope-local", "labels": ["binding"], "class": "must",
+             "kind": "binding",
+             "text": "The produced artifact follows the deliverable envelope in "
+                     "templates/artifact-format.md — referenced never restated."},
+        ]),
+    ]}
+    theta = {"kind": "skill", "skill": "theta-producer", "sections": [
+        sec("theta-producer", "artifact", [
+            {"id": "theta-producer.ghost-stub", "extends": "patterns-common.ghost",
+             "class": "must", "kind": "binding"},
+        ]),
+    ]}
+    (d / "skill-authoring-common.yaml").write_text(
+        yaml.safe_dump(authoring_common, sort_keys=False), encoding="utf-8")
+    for name, doc in (("zeta-producer", zeta), ("eta-producer", eta),
+                      ("theta-producer", theta)):
+        (d / name).mkdir()
+        (d / name / "schema.yaml").write_text(
+            yaml.safe_dump(doc, sort_keys=False), encoding="utf-8")
+
+
+def test_authoring_end_to_end():
+    with tempfile.TemporaryDirectory() as td:
+        d = Path(td)
+        (d / "skills").mkdir()
+        write_skill_fixtures(d / "skills")
+        write_authoring_fixtures(d / "skills")
+
+        r = subprocess.run(
+            [sys.executable, str(DETECTOR), "--skills-dir", str(d / "skills")],
+            capture_output=True, text=True)
+        out = r.stdout
+        check("authoring e2e: exit 0 by default", r.returncode == 0, r.stderr)
+        check("authoring e2e: stub resolves against authoring-common (EXTEND-GAP)",
+              "extends authoring-common.envelope-binding" in out
+              and "eta-producer.envelope-local" in out and "EXTEND-GAP" in out, out)
+        check("authoring e2e: both families resolve in one run",
+              "extends review-common.default-fail" in out
+              and "delta-grader.default-fail" in out, out)
+        check("authoring e2e: unknown-prefix stub warns, never clusters",
+              "theta-producer.ghost-stub: empty resolved text, skipped" in out
+              and "theta-producer.ghost-stub  (" not in out, out)
+
+
 def main() -> int:
     for t in (test_norm, test_text_sim, test_bonus, test_score_pairs_guards,
-              test_classify, test_end_to_end, test_skill_end_to_end):
+              test_classify, test_end_to_end, test_skill_end_to_end,
+              test_authoring_end_to_end):
         t()
     print(f"passed: {PASSED} · failed: {len(FAILED)}")
     for f in FAILED:

@@ -6,6 +6,155 @@ Entry formats: `strips/README.md`. Wave context: [v0.28.0] entries — skill-suc
 `.mochiko/brainstorms/workflow-token-reduction/record.md` D4 + the wave-2 rulings R1–R4/T2;
 ratified 2026-07-24).
 
+## [v0.101.0] Schema conversion — census-row → minted-ID map (skill-content-schema wave 2A)
+
+Ruling for every [v0.101.0] entry: skill-content-schema D3 (three-home boundary) / D8/C4
+(protected transfers), `DECISIONS.md` 2026-09-01 rows (skill-content-schema + the wave-2
+family-door ruling); census: `.mochiko/brainstorms/skill-content-schema/census-authoring.md`
+§B (ATR). Schema home: `plugins/mochiko/skills/authoring-technical-requirements/schema.yaml`.
+Minted IDs carry the `authoring-technical-requirements.` prefix (omitted below). Map —
+census row → minted ID:
+1 `business-source-floor` · 2a `deliverable-envelope` (C-A4 stub) + 2b
+`statement-carries-content` (lettered split; carries the "Density is not a gap" tail) ·
+3 `design-ladder-binding` · 4 `letter-is-spirit` (C-A1 stub) · 5a
+`business-requirements-routing` · 5b `decision-technique-routing` · 5c
+`problem-space-not-solutions` · 5d `boundaries-not-preferences` · 5e `slicing-routing` ·
+6 `layer-prefixes` · 7a `integration-boundary-downstream` · 7b `sensitivity-downstream` ·
+8a `constraints-are-facts` · 8b `impact-references-decisions` · 9
+`no-exceptions-documentation` · 10 `decision-slots-binding` · 11a `no-topology-decisions` ·
+11b `entangled-decision-route` · 12 `platform-implies-ip` · 13a `nfr-store-home` · 13b
+`store-write-at-sign-off` · 14 `fast-is-not-a-requirement` · 15 `integration-declarations` ·
+16 `sensitivity-declarations` · 17a `trace-nfr-to-business` · 17b
+`trace-constraint-decision` · 17c `trace-constraint-impact` · 17d `trace-infrastructure` ·
+18 `technology-agnostic` · 19 `rationalization-stop` · 20 `sequential-ids` · 21
+`declaration-rows-complete` · reference stubs (both reference files untouched, stubs
+point): 22 `field-definitions` · 23 `never-compress-register` · 24 `declaration-closure` ·
+25 `completeness-procedures` · 26 `grade-is-not-self-asserted` · 27
+`layer-internal-consistency`.
+Build count 39 vs the census header's 37: the §B table itself enumerates 32 body rows
+against its own header's 31, and 2a/2b is an approved lettered split — disclosed for the
+audit (census build-corrections appendix at landing). C-A3 membership is reference-side by
+ruling (wave-lead F1): ATR mints no two-arm body stub — the two-arm store-row form sits in
+`references/ARTIFACT-TEMPLATES.md` §2 and rides `field-definitions`' pointer, the wave-1
+RF/C5 mirror. TR-death guard (v0.91.0 D3): no TR-XXX rule resurfaces in the schema —
+verified at mint, nothing to mint.
+Accounting: body 10,500 → 3,204 + schema 16,742 = payload 19,946 (census estimate
+~23,900); the retained body is the load-first Rules block plus teaching prose (artifact
+walk, Common Rationalizations table); every removed line is a relocation or transfer
+recorded below — no content growth claimed. Description byte-untouched at 598.
+
+## [v0.101.0] [v0.28.0]/[v0.23.0] kept-sets — protection transfers to schema rules (D8/C4)
+
+- **Disposition:** superseded — protection transfers per D8/C4, each rule inheriting
+  protected status in the provenance sidecar: letter/spirit epigraph → `letter-is-spirit`
+  (C-A1 stub, floor) · "'Fast' is not a requirement" → `fast-is-not-a-requirement` (floor;
+  the no-deferrals no-exceptions clause rides the same rule) · "constraints are facts" →
+  `constraints-are-facts` · the documentation no-exceptions line →
+  `no-exceptions-documentation` (floor) · the Red-Flags STOP no-exceptions tail →
+  `rationalization-stop` (floor) · Traceability Rules mandatory links →
+  `trace-nfr-to-business` / `trace-constraint-decision` / `trace-constraint-impact` /
+  `trace-infrastructure` · the T2 statement-line form → `statement-carries-content` (body
+  arm) + `field-definitions` (reference arm — the T2 field forms stay in
+  `references/ARTIFACT-TEMPLATES.md`, untouched) · the three-artifact spine →
+  `layer-prefixes` plus the body's retained artifact-walk prose.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01
+  skill-content-schema row; original protections: 2026-07-25 skill-succinctness-strip +
+  2026-07-24 token-reduction-wave-2 rows).
+- **Content:** the kept-set enumerations in the [v0.28.0] and [v0.23.0] entries below —
+  each named line now lives verbatim-or-strengthened in its schema rule's `text`.
+- **Kept deliberately:** the Common Rationalizations table stays in the body whole
+  (teaching, census §B preamble); the fenced worked example homes stay reference-side.
+- **Consumers assessed:** the [v0.28.0] wave-open enumeration stands — no consumer links
+  the moved lines by anchor; the router row is unchanged.
+
+## [v0.101.0] Quality Checklist — dedup-to-schema (lead F4 ruling; [v0.28.0] KEPT member)
+
+- **Disposition:** superseded — dedup-to-schema: each row mirrors a minted rule, no extra
+  rule minted. Row → ID map: source/type/severity → `field-definitions` · C-XXX ↔ D-XXX →
+  `trace-constraint-decision` · no-topology-D-rows → `no-topology-decisions` · NFR
+  target+method+source on its store row → `fast-is-not-a-requirement` + `nfr-store-home` +
+  `trace-nfr-to-business` · IP coverage → `platform-implies-ip` + `trace-infrastructure` ·
+  INT/DS rows present with downstream home → `declaration-rows-complete` ·
+  cross-references consistent → `layer-internal-consistency` · technology-agnostic →
+  `technology-agnostic` · sequential IDs → `sequential-ids`. The before-finalizing duty
+  itself lives in `completeness-procedures`.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 row).
+- **Content (verbatim):**
+
+  ```
+  - [ ] Every constraint has a source, type, and severity classification
+  - [ ] Every decision references the constraints that shaped it (C-XXX ↔ D-XXX)
+  - [ ] No topology choice recorded as a D-XXX row here — structural rulings live in the architecture store's delta
+  - [ ] Every NFR has a numeric target AND measurement method AND its FR-XXX / SC-XXX source, on its store concern row (never a standalone `nfrs.md`)
+  - [ ] Every constraint implying platform provisioning has a corresponding IP-XXX
+  - [ ] Every INT-XXX and DS-XXX declaration is present as a row, with its downstream home named
+  - [ ] Cross-references between artifacts are consistent
+  - [ ] Language is technology-agnostic (except real infrastructure constraints)
+  - [ ] ID sequences are sequential with no gaps (C-001..., D-001..., IP-001..., INT-001..., DS-001...)
+  ```
+
+- **Consumers assessed:** none cites the checklist by anchor; the completeness procedures
+  in `references/TRACEABILITY-PATTERNS.md` are the richer surviving home, untouched.
+
+## [v0.101.0] [v0.81.0] D12 products — protection transfers (census ATR §A row 2)
+
+- **Disposition:** superseded — protection transfers to `nfr-store-home` (floor),
+  `no-topology-decisions` (floor), and `entangled-decision-route`, per D8/C4.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 row; original
+  protection: 2026-08-19 product-architecture-schema D12, `Contested`, user-ruled absorb).
+- **Content (verbatim, the load-bearing lines):** "**There is no `nfrs.md`:** an NFR-XXX
+  row lives as fields on its architecture-store concern row, so one concern has one home —
+  stance, pattern, targets, as-built, drift together. The **ids and the grammar are this
+  skill's** (numeric target · measurement method · source · category), the **row shape is
+  the store's** (`plugins/mochiko/schemas/architecture-store.yaml`)." · "**Structural
+  decisions are not this artifact's.** A *topology* choice — component boundaries,
+  interaction style, responsibility placement — is recorded in the architecture store's
+  delta, whose ruling **is** its decision record; it never becomes a D-XXX row here. …
+  Where a technology decision and a topology choice are genuinely entangled, record the
+  technology decision here and let the store's delta carry the shape, cross-citing by ID."
+- **Consumers assessed:** `authoring-architecture-store` and the store schema carry the
+  store-side halves, untouched; the negative statement "there is no `nfrs.md`" survives in
+  the rule text per the v0.81.0 sweep's posture.
+
+## [v0.101.0] [v0.91.0] D3 products — protection transfers (census ATR §A row 3)
+
+- **Disposition:** superseded — protection transfers per D8/C4: NFR business source (R4)
+  → `trace-nfr-to-business` · INT/DS re-home (R1) → `integration-declarations` +
+  `sensitivity-declarations` + `declaration-rows-complete` · the design-ladder blockquote
+  → `design-ladder-binding`. The TR-layer death is a conversion guard, not a rule — no
+  TR-XXX rule exists in the schema (nothing to mint).
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 row; original
+  protection: 2026-08-26 plan-stage-utility D3 + wave-lead R1/R4).
+- **Content (verbatim, the load-bearing lines):** "**An NFR's source is its business
+  source** — the FR-XXX or SC-XXX whose promise the target serves — so the trace chain
+  resolves FR-XXX / SC-XXX → NFR-XXX." · "**Optimistic integration maps are incomplete.**
+  Every external dependency fails eventually — so every INT-XXX declaration MUST carry
+  through to documented failure modes and a fallback when its boundary is authored in
+  `mochiko:patterns-api-contracts`." · "**Every element answers the design ladder**
+  (`mochiko:patterns-plan-minimalism`) before it enters the package; the simplest-execution
+  stops are disclosed by the design phase as it authors, never re-derived here."
+- **Consumers assessed:** `patterns-entity-modeling` / `patterns-api-contracts` downstream
+  homes unchanged and still pointed at; the [v0.91.0] entries below keep the full lineage.
+
+## [v0.101.0] Remaining body obligations relocated to schema (D3 — grouped)
+
+- **Disposition:** relocated → `plugins/mochiko/skills/authoring-technical-requirements/schema.yaml`,
+  per the map entry above: the When-NOT-to-Use section whole (5a–e) · the
+  declarations-vs-downstream blockquote's routing arms (7a/7b) · the deliverable-envelope
+  paragraph (2a/2b) · §§1–4 obligation lines (6 · 8a/8b · 9 · 10 · 11a/11b · 12 · 15 ·
+  16 · 20 · 21) · the NFR §2 obligations (13a/13b · 14 · 17a) · the Technology-Agnostic
+  section (18) · the Traceability Rules links (17a–d) · the Red-Flags STOP paragraph (19).
+- **Tier failed:** n/a — supersession by ruling (D3; `DECISIONS.md` 2026-09-01 row).
+- **Content:** faithfully compressed — each line's operative text survives in its mapped
+  rule's `text` (floors quoted verbatim in the transfer entries above); pre-conversion
+  body verbatim in git history of `SKILL.md` at v0.100.0.
+- **Kept deliberately:** the artifact-walk prose (authoring order + both reference
+  pointers), the Common Rationalizations table, and the overview identity voice stay in
+  the body; `references/` files untouched.
+- **Consumers assessed:** `technical-analyst` mounts the skill (contract intact — same
+  artifacts, same boundaries, now schema-carried); the router row unchanged; no consumer
+  links a removed section anchor.
+
 ## [v0.91.0] Fix round — the ladder blockquote's dead "authoring proposal" re-keyed (V1 ripple)
 
 - **Disposition:** superseded → "the simplest-execution stops are disclosed by the design phase

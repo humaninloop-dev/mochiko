@@ -5,75 +5,38 @@ description: This skill MUST be invoked when authoring a clickable low-fidelity 
 
 # Authoring a Clickable Low-Fi Prototype
 
-**Violating the letter of the rules is violating the spirit of the rules.**
+A text spec cannot show what the experience will be — surprises surface at build time,
+when they are expensive. A **clickable low-fidelity prototype** fixes this: static HTML
+screens, wired with real links and buttons, that a user clicks through while the stories
+are still wet. Structure and flows are precise; pixels are deliberately rough.
 
-## Overview
+## Rules — load the schema first
 
-A text spec cannot show what the experience will be — surprises surface at build time, when they
-are expensive. A **clickable low-fidelity prototype** fixes this: static HTML screens, wired with
-real links and buttons, that a user clicks through while the stories are still wet. The output is
-two coupled artifacts:
+Your first action at invoke, before any screen or manifest row: **Read `schema.yaml`
+(this skill's own directory) and `../../schemas/skill-authoring-common.yaml` raw, in
+full, in the same first action.** The schema is the source of truth for this skill's
+binding rules; this body carries identity and teaching only. Its rules are nested in six
+sections, each addressable by its section ID: `authoring-prototype.sec.independence`
+(who grades the produced prototype) · `authoring-prototype.sec.scope` (jurisdiction
+lines) · `authoring-prototype.sec.inputs` (empty by design) ·
+`authoring-prototype.sec.artifact` (the app, the manifest, the invariants) ·
+`authoring-prototype.sec.output` (what surfaces upward) ·
+`authoring-prototype.sec.reserved` (empty by design).
 
-1. **The prototype app** — `.mochiko/specs/<feature>/prototype/`: plain static HTML/CSS (+ minimal
-   inline JS for navigation only), servable with `bun` (e.g. `bunx serve prototype/`) and — the
-   degrade path — openable directly from the filesystem with no server at all. No build step, no
-   framework, no install *required* to view (serving is convenience, never a prerequisite).
-2. **The Screens & Flows section of `spec.md`** — the manifest, in the shape the `spec` schema
-   defines (invoke `mochiko-cli template spec` when the binary is available; otherwise Read
-   `plugins/mochiko/schemas/spec.yaml` raw): `SCR-XXX` rows (screen, purpose,
-   data shown, FEAT tag) and `FLOW-XXX` rows (click-path steps, the story acceptance scenario each
-   keys to, FEAT tag). The manifest is the contract surface downstream stages trace to; the HTML is
-   its clickable rendering. IDs per the deliverable envelope
-   ([`artifact-format.md`](../../templates/artifact-format.md)) — sequential, three-digit padded,
-   cited never re-quoted.
+Read the rule grammar along with the rules: a rule's `kind:` names what it is, and an
+absent `kind:` reads `constraint`; a rule carrying `when:` binds only where its terms
+hold against the schema's declared `conditions:`, except that a `class: floor` rule is
+always read and always delivered — `when:` gates when its obligation applies, never
+whether it reaches you. Where a rule carries `extends: authoring-common.<slug>`, the
+stub inherits `text` / `labels` / `pointer` only from `skill-authoring-common.yaml` —
+`class` and `kind` are always this schema's own, and the stub's `authoring-prototype.*`
+ID stays the citable ID. `${var}` placeholders substitute from this schema's `vars:` at
+read time. Labels come from `../../schemas/skill-labels.yaml`. A `pointer:` rule binds
+you to that file's or skill's content, referenced never restated.
 
-**Authority split — binding flows, advisory pixels.** What screens exist, what each shows, and
-what the user can do (the manifest) is binding: downstream design must serve every screen's data
-and route every action. How it looks is deliberately rough and advisory: layout, styling, and
-copy may all improve at build time without ceremony.
-
-## When NOT to Use
-
-- **The feature has no UX surface** — the intent ruling says not UX-bearing; the spec carries the
-  waiver line instead. Never manufacture screens for an API or batch job.
-- **Authoring the stories themselves** — `mochiko:authoring-user-stories`; the prototype renders
-  stories, never invents or rewrites them
-- **Grading the prototype** — graded with the spec by `mochiko:review-specifications`, run by an
-  independent reviewer, never the author
-- **Production UI work** — the prototype is a specification artifact; its code is throwaway by
-  design and never migrates into the product
-
-## The invariants (hard rules)
-
-1. **Skeleton first.** Before any story screen: a nav frame — the app shell, navigation structure,
-   and route stubs for every anticipated screen. Story screens fill into a stable frame; this is
-   what keeps later stories from thrashing earlier screens.
-2. **Lockstep, story by story.** Screens are authored with their story, as one unit of thought —
-   never batched after all stories are drafted. Each story's screens land while that story is
-   under discussion.
-3. **Every flow keys to a scenario.** Each `FLOW-XXX` names the story acceptance scenario it
-   renders (Given/When/Then → the click path that walks it). A flow keyed to nothing is scope
-   invention; a P1 scenario with no flow is a manifest gap.
-4. **Manifest ↔ HTML agreement.** Every `SCR-XXX` is a reachable page; every `FLOW-XXX` is
-   clickable end-to-end in the served app. Drift between the tables and the HTML is a defect,
-   mechanically checkable by walking the app.
-5. **Low-fi discipline.** Grey boxes, system fonts, placeholder data with honest *shape* (realistic
-   fields, realistic cardinality — five rows, not one). No polish, no animation, no pixel
-   perfection — over-fidelity invites sign-off on looks the build won't honor, and makes the
-   advisory half read as binding.
-6. **Design system honored when one exists.** If the project has a design system or component
-   library, use its tokens/primitives (colors, spacing, component names) so screens read as the
-   product's family — at low fidelity, not faithful reproduction. No design system → neutral
-   grey-box defaults; never invent a new visual language.
-7. **FEAT tags carried — a re-tag pass at derivation.** Tags cannot exist during lockstep
-   authoring: feature derivation runs after stories, so FEAT tags land as a **re-tag pass over
-   the SCR/FLOW manifest** once derivation completes. Every row then carries the FEAT tag of the
-   feature its story homes to; screens outside the current selection stay present but visibly
-   greyed **coming-soon** — the app stays a coherent whole, not a stub maze.
-8. **Rejected stories stay visible.** A filter-rejected story's screens are kept, greyed with
-   the same coming-soon grammar, and marked **rejected** with a pointer to the rejection recorded
-   in the story file — never silently deleted; the walkable record of what was considered and
-   declined survives.
+The schema carries **the 4 rules of `class: floor`**. State the floor count back before
+the first procedural step; a skipped or partial schema read is a halt-and-surface, never
+a silent continue.
 
 ## Structure
 
@@ -87,43 +50,9 @@ copy may all improve at build time without ceremony.
 └── README.md           # one-pager: how to serve (bun), degrade path, manifest pointer
 ```
 
-- One file per screen, named by its `SCR-XXX` id. Navigation is plain `<a href>`/`<form action>` —
-  a flow is walkable by clicking, no JS state machine.
-- Coming-soon screens: the real page at reduced opacity with a banner, or a stub page carrying the
-  FEAT tag (rejected screens: the rejection mark and pointer) — either way reachable, so
-  navigation never dead-ends.
-
-## Quality checklist
-
-Before handing off:
-
-- [ ] Skeleton nav frame exists; every screen reachable from `index.html`
-- [ ] Every SCR-XXX row has a page; every page has a row (no drift, either direction)
-- [ ] Every FLOW-XXX clickable end-to-end; each keyed to a named story acceptance scenario
-- [ ] Every P1 story scenario has a flow
-- [ ] Placeholder data has honest shape (realistic fields and cardinality)
-- [ ] Design system tokens/components used where one exists; noted in README
-- [ ] FEAT tags on every row after the re-tag pass; out-of-selection screens greyed, reachable; rejected stories' screens greyed, marked, pointed at the recorded rejection
-- [ ] Serves with bun AND opens file:// with no server (degrade path)
-- [ ] No build step, no framework, no dependency install required to view
-- [ ] Stories, requirements, criteria untouched — the prototype renders them, never edits them
-
-## Red Flags — STOP
-
-- "I'll build all the screens once the stories settle" — lockstep is the point; batching re-creates
-  the late-surprise problem the prototype exists to kill
-- "This looks rough, let me polish it" — over-fidelity makes pixels read as binding; rough is a
-  feature
-- "The story doesn't cover this, but the screen obviously needs it" — scope invention; surface it
-  as a story finding, never silently render it
-- "I'll use React, it's faster for me" — the reader's cost is the constraint: static HTML, no
-  toolchain
-- "The flow works, I don't need to key it to a scenario" — an unkeyed flow is untraceable
-  downstream; the key is the contract
-- "Skip the greyed screens, they're not in this selection" — dead-end navigation breaks the
-  clickable whole; coming-soon is cheap
-- "The story was rejected, delete its screens" — rejected screens stay, greyed and marked with
-  the rejection pointer; deletion erases the record of what was declined
+Coming-soon screens render as the real page at reduced opacity with a banner, or as a
+stub page carrying the FEAT tag; rejected screens carry the rejection mark and pointer —
+the greying grammar the schema's re-tag and rejected-story rules bind.
 
 ## Common Rationalizations
 
@@ -137,8 +66,8 @@ Before handing off:
 
 ## Related
 
-- `spec` schema — owns the Screens & Flows section shape this skill fills; invoke `mochiko-cli template spec` when the binary is available, otherwise Read `plugins/mochiko/schemas/spec.yaml` raw
+- `spec` schema — owns the Screens & Flows section shape this skill fills (binding in the schema's artifact section)
 - [`artifact-format.md`](../../templates/artifact-format.md) — the deliverable envelope (ID grammar, citation rules)
-- `mochiko:review-specifications` — grades the prototype with the spec (independent reviewer, never the author)
+- `mochiko:review-specifications` — grades the prototype with the spec
 - `mochiko:authoring-user-stories` — upstream: the stories and acceptance scenarios the flows render
 - `mochiko:authoring-feature-map` — the feature derivation whose FEAT tags the re-tag pass carries onto the manifest (single source of the map machinery)
