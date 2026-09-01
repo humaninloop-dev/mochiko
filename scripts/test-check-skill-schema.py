@@ -10,12 +10,14 @@ satisfies it (the positive control, which must come back clean) and once against
 that breaks exactly that assertion (which must produce the named finding). A check that
 cannot be made to fail is not a check.
 
-The fixtures are synthetic — a `demo-grader` skill (review family) and an `authoring-demo`
-skill (authoring family) that exist only in a temp directory, with their own label
-registry, their own per-family block libraries, and a sibling `other-skill` directory
-whose reference file exists solely so the J-7 cross-directory pointer climb has a real
-target. The matrix never depends on the shipped skills and stays green while the real
-library is mid-wave.
+The fixtures are synthetic — a `demo-grader` skill (review family), an `authoring-demo`
+skill (authoring family), and a `patterns-demo` skill (patterns family — the six-section
+swap-out set, NO common library by ruling) that exist only in a temp directory, with
+their own label registry, their own per-family block libraries, a sibling `other-skill`
+directory whose reference file exists solely so the J-7 cross-directory pointer climb
+has a real target, and a schema-less `patterns-teacher` directory proving the sweep
+never demands a schema of an unconverted member. The matrix never depends on the shipped
+skills and stays green while the real library is mid-wave.
 
 Mutation slots mirror the surfaces the checker reads: `schema` and `md` mutate the parsed
 fixtures of the probe's target skill (`stem`, default `demo-grader`), `common` mutates the
@@ -39,6 +41,7 @@ CHECKER = Path(__file__).resolve().parent / "check-skill-schema.py"
 
 CANONICAL_SLUGS = ("independence", "scope", "inputs", "verdict", "output", "reserved")
 AUTHORING_SLUGS = ("independence", "scope", "inputs", "artifact", "output", "reserved")
+PATTERNS_SLUGS = ("trigger", "scope", "discipline", "inputs", "disclosure", "reserved")
 
 
 def rule(rid, labels, text, cls="must", **fields):
@@ -157,6 +160,8 @@ BASELINE_LABELS = {
         "user-gate": "a decision reserved to the user",
         "artifact-grammar": "the produced artifact's binding shape",
         "single-home": "one home, one writer, no copies",
+        "trigger": "when a kind-keyed discipline fires",
+        "ladder": "a ranked rung/leg structure's binding rules",
     },
 }
 
@@ -267,6 +272,94 @@ every term; floors are always delivered. Sections, each addressable by its ID:
 1. Author the artifact per the schema's obligations.
 """
 
+def baseline_patterns_schema():
+    """A synthetic patterns-family pair — the wave-2B positive control: the discipline
+    lifecycle section set (census-patterns §B/J-P7, a full swap-out), NO `extends:`
+    anywhere (the family ships no common library by ruling), and the two labels the
+    family minted (`trigger`, `ladder`)."""
+    populated = {
+        "trigger": [
+            rule("patterns-demo.two-part-trigger", ["trigger"],
+                 "The discipline fires on the two-part kind-keyed trigger; neither part "
+                 "is waivable once fired.", "floor", kind="gate"),
+        ],
+        "scope": [
+            rule("patterns-demo.not-for", ["boundary"],
+                 "Sizing the artifact routes to the minimalism siblings, never here.",
+                 kind="routing"),
+        ],
+        "discipline": [
+            rule("patterns-demo.stop-at-first", ["ladder"],
+                 "Walk the rungs in order and stop at the first applicable rung, with a "
+                 "one-line why."),
+            rule("patterns-demo.floor-both-ways", ["floor-pointer"],
+                 "No rung sacrifices a floor obligation.", "floor"),
+        ],
+        "inputs": [
+            rule("patterns-demo.read-before-claim", ["evidence"],
+                 "A reuse claim is made only after reading the current surface, never "
+                 "on trust.", kind="duty"),
+        ],
+        "disclosure": [
+            rule("patterns-demo.rung-disclosed", ["reporting"],
+                 "Each element's rung is disclosed in the report; undisclosed reads "
+                 "rung-skipped.", kind="duty"),
+        ],
+        "reserved": [
+            rule("patterns-demo.user-rules-mint", ["user-gate"],
+                 "The mint/merge/retire ruling is the user's, never self-executed.",
+                 "floor", kind="reservation"),
+        ],
+    }
+    sections = []
+    for slug in PATTERNS_SLUGS:
+        sections.append({
+            "id": f"patterns-demo.sec.{slug}",
+            "title": slug.title(),
+            "intent": f"the {slug} obligations the discipline is bound by",
+            "rules": populated[slug],
+        })
+    return {
+        "kind": "skill",
+        "skill": "patterns-demo",
+        "sections": sections,
+    }
+
+
+# Three floors in the patterns baseline: two-part-trigger · floor-both-ways ·
+# user-rules-mint. No conditions: block, so the when:-grammar sentence is legally
+# omitted from the load-first block (the RCM-4 wave-wide ruling).
+BASELINE_PATTERNS_MD = """---
+description: A synthetic discipline carrier used only by the checker's negative-test matrix.
+---
+
+# Patterns Demo
+
+## Rules — load the schema first
+
+Read `schema.yaml` (this skill's own directory) in full before your first action. State
+the floor count back before the first procedural step: the schema carries the 3 rules of
+`class: floor`. Floors are always delivered. Sections, each addressable by its ID:
+`patterns-demo.sec.trigger` · `patterns-demo.sec.scope` ·
+`patterns-demo.sec.discipline` · `patterns-demo.sec.inputs` ·
+`patterns-demo.sec.disclosure` · `patterns-demo.sec.reserved`.
+
+## Procedure
+
+1. Apply the discipline per the schema's obligations.
+"""
+
+# An unconverted family member: prose only, no schema.yaml. The sweep must never
+# demand a schema of it — both discovery paths glob `*/schema.yaml`.
+PATTERNS_TEACHER_MD = """---
+description: A synthetic prose-only teacher used only by the checker's negative-test matrix.
+---
+
+# Patterns Teacher
+
+Teaching prose only; deliberately unconverted.
+"""
+
 ENVELOPE_MD = "# Deliverable envelope\n\nA fixture target for the envelope-binding pointer.\n"
 
 # Three floors in the baseline: never-author · the default-fail stub · report-home.
@@ -302,8 +395,10 @@ BASELINE_PROVENANCE = {
     "anchors": {
         "demo-grader.never-author": "2026-09-01 skill-content-schema D8",
         # Foreign-prefix on a demo-grader run (skipped there), validated on the
-        # authoring-demo run — check 16 exercised for both families.
+        # authoring-demo / patterns-demo runs — check 16 exercised for all three
+        # families.
         "authoring-demo.single-writer": "2026-09-01 skill-content-schema D8",
+        "patterns-demo.user-rules-mint": "2026-09-01 skill-content-schema D8",
     },
 }
 
@@ -808,6 +903,43 @@ def probes():
     add("a single-skill run makes no zero-member label claim",
         "0 findings", clean=True, absent="zero members")
 
+    # --- 16. the patterns family (wave 2B: six-section swap-out, no common library) ---
+    add("the patterns baseline pair is clean",
+        "0 findings", stem="patterns-demo", clean=True,
+        absent="not in skill-labels.yaml")
+    add("[patterns] the canonical trigger section absent",
+        "canonical section patterns-demo.sec.trigger absent",
+        stem="patterns-demo", schema=drop_section("trigger", "patterns-demo"))
+    add("[patterns] a verdict section is the review set, not this family's",
+        "patterns-demo.sec.verdict: not one of the six canonical patterns-family "
+        "sections",
+        stem="patterns-demo",
+        schema=rename_section("discipline", "verdict", "patterns-demo"))
+    add("[patterns] an artifact section is the authoring set, not this family's",
+        "patterns-demo.sec.artifact: not one of the six canonical patterns-family "
+        "sections",
+        stem="patterns-demo",
+        schema=rename_section("disclosure", "artifact", "patterns-demo"))
+    add("[review] a discipline section is the patterns set, not this family's",
+        "demo-grader.sec.discipline: not one of the six canonical review-family "
+        "sections",
+        schema=rename_section("verdict", "discipline"))
+    add("[patterns] any extends: is the no-common-file finding",
+        "the patterns family ships no common library (census-patterns §C/§ROAD",
+        stem="patterns-demo",
+        schema=set_field("patterns-demo.stop-at-first", "extends",
+                         "patterns-common.stop-at-first"))
+    add("[patterns] a stub naming a real other-family block still gets the no-library "
+        "finding",
+        "the patterns family ships no common library (census-patterns §C/§ROAD",
+        stem="patterns-demo",
+        schema=set_field("patterns-demo.stop-at-first", "extends",
+                         "review-common.default-fail"))
+    add("[sweep] a schema-less patterns member is never swept, never demanded of",
+        "0 findings", sweep=True, clean=True, absent="patterns-teacher")
+    add("[sweep] the sweep makes no patterns orphan claim",
+        "0 findings", sweep=True, clean=True, absent="patterns-common")
+
     return p
 
 
@@ -815,34 +947,44 @@ def run_probe(tmp: Path, probe):
     skills = tmp / "skills"
     grader_dir = skills / "demo-grader"
     producer_dir = skills / "authoring-demo"
+    patterns_dir = skills / "patterns-demo"
     (grader_dir / "references").mkdir(parents=True)
     producer_dir.mkdir(parents=True)
+    patterns_dir.mkdir(parents=True)
     other_refs = skills / "other-skill" / "references"
     other_refs.mkdir(parents=True)
     (grader_dir / "references" / "CHECKS.md").write_text(CHECKS_MD, encoding="utf-8")
     (other_refs / "SHARED.md").write_text(SHARED_MD, encoding="utf-8")
+    # The unconverted member: prose only, no schema.yaml — present in every probe's
+    # tree, so every sweep exercises the schema-less skip.
+    teacher_dir = skills / "patterns-teacher"
+    teacher_dir.mkdir(parents=True)
+    (teacher_dir / "SKILL.md").write_text(PATTERNS_TEACHER_MD, encoding="utf-8")
     # The envelope-binding block's inherited pointer climbs to this fixture target.
     (tmp / "templates").mkdir()
     (tmp / "templates" / "artifact-format.md").write_text(ENVELOPE_MD, encoding="utf-8")
 
     stem = probe["stem"]
-    g_schema = baseline_schema()
-    p_schema = baseline_authoring_schema()
-    target_schema = p_schema if stem == "authoring-demo" else g_schema
+    schemas = {
+        "demo-grader": baseline_schema(),
+        "authoring-demo": baseline_authoring_schema(),
+        "patterns-demo": baseline_patterns_schema(),
+    }
     if probe["schema"]:
-        probe["schema"](target_schema)
+        probe["schema"](schemas[stem])
     common = yaml.safe_load(yaml.safe_dump(BASELINE_COMMON))
     if probe["common"]:
         probe["common"](common)
     acommon = yaml.safe_load(yaml.safe_dump(BASELINE_AUTHORING_COMMON))
     if probe["acommon"]:
         probe["acommon"](acommon)
-    g_md, p_md = BASELINE_MD, BASELINE_AUTHORING_MD
+    mds = {
+        "demo-grader": BASELINE_MD,
+        "authoring-demo": BASELINE_AUTHORING_MD,
+        "patterns-demo": BASELINE_PATTERNS_MD,
+    }
     if probe["md"]:
-        if stem == "authoring-demo":
-            p_md = probe["md"](p_md)
-        else:
-            g_md = probe["md"](g_md)
+        mds[stem] = probe["md"](mds[stem])
     labels = yaml.safe_load(yaml.safe_dump(BASELINE_LABELS))
     if probe["labels"]:
         probe["labels"](labels)
@@ -851,21 +993,20 @@ def run_probe(tmp: Path, probe):
         probe["provenance"](prov)
 
     dumped = {
-        "demo-grader": yaml.safe_dump(g_schema, sort_keys=False, allow_unicode=True),
-        "authoring-demo": yaml.safe_dump(p_schema, sort_keys=False, allow_unicode=True),
+        name: yaml.safe_dump(s, sort_keys=False, allow_unicode=True)
+        for name, s in schemas.items()
     }
     if probe["yamltext"]:
         dumped[stem] = probe["yamltext"](dumped[stem])
 
     omit = probe["omit"]
-    (grader_dir / "schema.yaml").write_text(dumped["demo-grader"], encoding="utf-8")
-    if "aschema" not in omit:
-        (producer_dir / "schema.yaml").write_text(dumped["authoring-demo"], encoding="utf-8")
-    target_dir, target_md = (producer_dir, p_md) if stem == "authoring-demo" else (grader_dir, g_md)
-    other_dir, other_md = (grader_dir, g_md) if stem == "authoring-demo" else (producer_dir, p_md)
-    if "md" not in omit:
-        (target_dir / "SKILL.md").write_text(target_md, encoding="utf-8")
-    (other_dir / "SKILL.md").write_text(other_md, encoding="utf-8")
+    dirs = {"demo-grader": grader_dir, "authoring-demo": producer_dir,
+            "patterns-demo": patterns_dir}
+    for name, d in dirs.items():
+        if not (name == "authoring-demo" and "aschema" in omit):
+            (d / "schema.yaml").write_text(dumped[name], encoding="utf-8")
+        if not (name == stem and "md" in omit):
+            (d / "SKILL.md").write_text(mds[name], encoding="utf-8")
     if "common" not in omit:
         (tmp / "skill-common.yaml").write_text(
             yaml.safe_dump(common, sort_keys=False, allow_unicode=True), encoding="utf-8")

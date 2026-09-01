@@ -10,86 +10,38 @@ description: This skill MUST be invoked when the feature map gains or grooms a c
 ## Overview
 
 The map's durable layer is its **capabilities** — the entries called "feature": what the product
-does, in its own language, permanent. Map minimalism keeps that layer honest and few, firing at
-the **PM's derivation** (specify), the **spec reviewer's** grade, and **`/mochiko:feature`
-grooming** at cap-trip.
+does, in its own language, permanent. Map minimalism keeps that layer honest and few.
 
-**Few is not sparse** — fewness never hides a capability that passes the tests; the map is small
-because the product honestly does few kinds of things, never to sit under the cap.
+## Rules — load the schema first
 
-**Boundary:** this skill owns the discipline; the capability/work-row vocabulary, file shapes, and
-fold mechanism live in `mochiko:authoring-feature-map`.
+Your first action, before any capability judgment: **Read `schema.yaml` (this skill's own
+directory) raw, in full, as a declared first action.** The schema is the source of truth for
+this skill's binding rules, nested in six sections, each addressable by its section ID:
+`patterns-map-minimalism.sec.trigger` · `patterns-map-minimalism.sec.scope` ·
+`patterns-map-minimalism.sec.discipline` · `patterns-map-minimalism.sec.inputs` ·
+`patterns-map-minimalism.sec.disclosure` · `patterns-map-minimalism.sec.reserved`. Interpret
+it live: a rule's `kind:` names what it is, and an absent `kind:` reads `constraint`; a rule
+carrying `when:` binds only where its terms hold against the schema's declared `conditions:`,
+except that a `class: floor` rule is always read and always delivered — `when:` gates when its
+obligation applies, never whether it reaches you; a `pointer:` rule binds you to that file's
+or skill's procedure, referenced never restated; labels come from
+`plugins/mochiko/schemas/skill-labels.yaml`. The floor pin: the 3 rules of `class: floor` are
+non-waivable. Before the first capability-judgment step, state the floor count back — a
+skipped or partial read leaves that count blank: halt and surface it, and halt likewise if the
+schema's `class: floor` count disagrees with the pin.
 
-## When NOT to Use
+## The capability tests, taught
 
-- **Work rows** — the transient delivery increments under a capability may be story-shaped; the
-  tests grade the durable layer, not the rows.
-- **A mint, merge, or retire ruling** — the skill shapes the recommendation; the capability layer
-  is the user's to rule, never self-executed.
-- **Plan or code sizing** — the two siblings, other altitudes.
-
-## The capability tests
-
-A candidate earns a capability only when the **three governing tests all hold** — read the current
-map first, since "new kind" is claimed against what is already there.
-
-1. **System's language** — names what the *product does*, in its own words, never who wanted it or
-   why. A user's request is a story, not a capability.
-2. **Durability** — still true and meaningful after every current story ships and is forgotten. (kinako's
-   "durability and resumption" fails — a quality of one story's moment; "Corpus" passes — the
-   product still has a corpus once those stories are gone.)
+1. **System's language** — names what the *product does*, in its own words, never who wanted it
+   or why. A user's request is a story, not a capability.
+2. **Durability** — still true and meaningful after every current story ships and is forgotten.
+   (kinako's "durability and resumption" fails — a quality of one story's moment; "Corpus"
+   passes — the product still has a corpus once those stories are gone.)
 3. **New-kind-vs-more-of-same** — a *new* capability only when the product does a new *kind* of
    thing; more of a kind it already does extends, not mints.
 
-**noun + verbs is a heuristic aid, never a gate** — a new verb on an existing noun signals
-extend-not-mint, but it never blocks a cross-cutting capability (an onboarding journey) that
-passes the governing tests.
+## Domains, taught
 
-## Extend beats mint
-
-A new story **grows an existing capability first** (the new-kind test decides); a mint must argue
-against extending. An unargued mint is the story-mirroring defect the map exists to stop.
-
-## Soft cap and grooming
-
-Past roughly **nine top-level capabilities**, a grooming pass runs — merge lookalikes, retire dead
-entries. The cap is a **trigger, never a hard block**: the map may exceed nine when the product
-honestly does that many kinds of things. Merge and retire are always **PM recommendations; the
-user rules**. Within-capability roll-up is automatic — rows fold into extent at delivery landing
-(`mochiko:authoring-feature-map`'s).
-
-## Merge mechanics
-
-When a user ruling merges two capabilities, the merge **preserves**:
-
-- the **absorbing ID survives**; the merged entry flips **`retired`**, dated, with a
-  **merged-into pointer** — never deleted;
-- **extents union under an honesty pass** — no flattering over-claim;
-- **story traces and SC references consolidate** onto the absorbing entry;
-- **pending rows and unfolded deltas transfer** — no obligation dropped.
-
-Re-parenting under a domain header is navigation-only — no status semantics.
-
-## Domains (dormant)
-
-Domains are the grouping tier: parts of the product's world owning their own nouns and rules
-(Sessions, Knowledge). Every capability lives in **exactly one** domain, minted **only at
-cap-trip** — a small map stays flat; the **PM proposes** names and the **principal-architect
-co-signs** — a disagreement is an early design conversation, not a defect. **The store's
-domain-to-spine mapping line and the principal-architect's
-co-sign duty are deferred to the first real cap-trip — neither is built until a live map actually
-approaches the cap.**
-
-## Sibling
-
-`mochiko:patterns-plan-minimalism` (plan) and `mochiko:patterns-code-minimalism` (code) run the
-same discipline at their altitudes.
-
-## Quality Checklist
-
-- [ ] Every capability passes all three governing tests (system's-language · durability · new-kind)
-- [ ] noun+verbs used only as an aid, never to block a passing cross-cutting capability
-- [ ] Every mint argued against extending an existing capability
-- [ ] Past the soft cap ~9, grooming proposed as recommendations; the user rules merge/retire
-- [ ] A merge preserved every mechanic above — ID survives, merged entry retired never deleted, honest union, traces/SCs + rows/deltas carried
-- [ ] Domains flat below cap-trip; no domain-to-spine mapping line or co-sign machinery before first cap-trip
+Domains are parts of the product's world owning their own nouns and rules (Sessions,
+Knowledge). A PM/architect disagreement over a domain name is an early design conversation,
+not a defect.

@@ -13,7 +13,9 @@ One entry per session directory under `.mochiko/brainstorms/<topic-slug>/`, **ne
   doors ruled 2026-09-01 (three censuses in-repo — authoring all-8 + `artifact` set ·
   patterns 9 carriers + shared-`references/` road rejected · small-families dense five;
   sequential waves); wave 2A (authoring) BUILT v0.101.0 — 10/10 audit units PASS, measured
-  ×1.84 delivered, under estimate · solo cold review via blind-map two-message
+  ×1.84 delivered, under estimate; wave 2B (patterns 9 carriers) BUILT v0.102.0 — 11/11
+  units PASS, ×1.90 in band, no common file, teachers stay prose · solo cold review via
+  blind-map two-message
   dispatch (38-angle map, topic-only spawn; index fence held whole — never opened, the
   ontology session's index-head leak prevented structurally): verdict critical-gaps —
   4 Critical / 9 Important / 7 Minor survived, 13 reviewer-killed → dispositioned: C1–C4

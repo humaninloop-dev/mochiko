@@ -5,6 +5,124 @@ Entry formats: `strips/README.md`. Wave context: [v0.27.0] entries — skill-suc
 [v0.22.0–v0.23.0] entries — workflow-token-reduction waves 1–2 (design:
 `.mochiko/brainstorms/workflow-token-reduction/record.md`, D6a + D4/wave-2 rulings).
 
+## [v0.102.0] Converted to the `.md` + schema pair form — rule content relocated to `schema.yaml`; the standing +294 HOLDS overage superseded by the conversion re-seed (wave 2B, patterns family)
+
+- **Disposition:** superseded → the pair form: obligation content relocated into
+  `plugins/mochiko/skills/patterns-vertical-tdd/schema.yaml` (15 body rules + 3
+  reference stubs — 5 floor · 13 must — under the patterns six-section set), the
+  `SKILL.md` body keeping the letter/spirit epigraph and the Quality Checklist (the
+  v0.27.0 KEPT live residue, census-patterns §A: body-stays-prose), the teaching prose
+  (vertical-over-horizontal example, skeleton concept, verified-against-reality,
+  heuristics, Case-column definitions, brownfield explanation), and the new "Rules —
+  load the schema first" block (floor pin 5 + read-back). The frontmatter
+  `description:` is byte-untouched. `references/TEST-GRAMMAR.md` and
+  `references/BUNDLE-IDENTIFICATION.md` are untouched — the three TEST-GRAMMAR stubs
+  point, never restate (skill-content-schema D3/C2).
+- **Tier failed:** n/a — supersession by ruling (`skill-content-schema` D1–D9 as
+  amended, `DECISIONS.md` 2026-09-01, D8/C4 supersession-transfer; the wave-2 patterns
+  family-door ruling, same date). Protection transfers to the rule IDs via
+  `.mochiko/provenance.yaml` (D8/C4), each anchored to its original protecting ruling.
+- **Content (superseded body fragments, verbatim, with the relocation map; census §B
+  rows in parentheses):**
+  1. Overview output sentence with the protected v0.76.0 two-arm pointer — `The output
+     is `tasks.md` in the cycle-card shape (the `tasks` schema is the canonical
+     skeleton — invoke `mochiko-cli template tasks` when the binary is available;
+     otherwise Read `plugins/mochiko/schemas/tasks.yaml` raw): per card — stories +
+     rationale, dependencies, the named test-case list (the card's content), cycle-level
+     brownfield exposure, and the Simple/Split/Merge case.` →
+     `patterns-vertical-tdd.tasks-binding-two-arm` (row 1) — **both arms preserved
+     verbatim in the rule text** (census J-P5, GI-020; the RPA two-arm precedent),
+     promoted `class: floor` per the lead's plan-approval ruling reconciling census §B's
+     table (5 floors) with §D ("5 floors incl. two protected two-arm/authorship rules");
+     the §B detail line's `must` marker on this row is queued for the census §K
+     build-corrections appendix at landing.
+  2. Overview design-time paragraph — `This skill works at **design time inside the
+     `/mochiko:implement` run** — after the design phase, or directly on a zero-gap
+     sufficiency verdict; never a separate plan run. It decides the slicing and states
+     what each cycle must prove. It writes no task lists — the builder decomposes each
+     card into concrete tasks, with file paths, at build time with the code in view
+     (`mochiko:executing-tdd-cycle`, downstream).` →
+     `patterns-vertical-tdd.design-time-inside-implement-run` (row 2) +
+     `patterns-vertical-tdd.writes-no-task-lists` (row 3, `class: floor`).
+  3. Two-authors paragraph — `**Two authors, one card:** the design seat running this
+     skill owns the **slicing judgment** — which bundles exist, Simple/Split/Merge,
+     dependencies, the walking-skeleton call; the `qa-engineer` authors the **test-case
+     content** (expected behaviour) in the grammar it later executes. The slicing seat
+     is a **design seat, never the builder who will execute the card.**` →
+     `patterns-vertical-tdd.two-authors-one-card` (row 4) +
+     `patterns-vertical-tdd.author-never-executing-builder` (row 5, `class: floor` —
+     the v0.91.0 mechanic-(c) rule).
+  4. `## When NOT to Use` section whole (bug fixes · documentation-only or
+     spike/research · decomposing a card into tasks · deriving or scoping features with
+     the feature-map boundary) → `patterns-vertical-tdd.not-for-routes` (row 6). Not a
+     KEPT survivor: the v0.64.0/v0.75.0 "kept deliberately" mentions record what those
+     edits spared, not a survivor ruling; the census §A live residue is the epigraph +
+     checklist only.
+  5. Core Principle 1 closing line — `A card whose test cases cannot be demonstrated on
+     their own is not a cycle.` → `patterns-vertical-tdd.vertical-over-horizontal`
+     (row 7); the Wrong/Right example blocks stay body teaching.
+  6. Core Principle 2 normative content — the new-end-to-end-path skeleton rule
+     (`the **first cycle is a walking skeleton**: the thinnest end-to-end path through
+     all layers with one trivial case green` · `Growth or delta work on an
+     already-standing path **skips the skeleton**`) →
+     `patterns-vertical-tdd.walking-skeleton-first` (row 8, `when:
+     {new_end_to_end_path: present}` — the condition declared as the schema's one
+     `conditions:` dimension); `There is **no foundation/feature card type**. …
+     **Infra-only cards are never minted.**` (the v0.75.0 re-anchor floor) →
+     `patterns-vertical-tdd.no-infra-only-cards` (row 9, `class: floor`);
+     `Inter-card dependencies stay explicit; `[P]` parallel eligibility derives from
+     dependencies, not from a type column.` →
+     `patterns-vertical-tdd.parallel-derives-from-dependencies` (row 10).
+  7. Core Principle 3 gate sentences — `Every card closes with a **`**TEST:**` gate**
+     — the cycle's named test cases run against real infrastructure, never a re-run of
+     the automated tests. This gate is the demonstration the cycle is anchored on; a
+     cycle that stops at the mock boundary has proven nothing.` →
+     `patterns-vertical-tdd.test-gate` (row 11, `class: floor`); `this skill owns it;
+     downstream parsers consume it` →
+     `patterns-vertical-tdd.grammar-owned-downstream-consume` (row 12).
+  8. Case-column normative tail — `The story→cycle decision and its rationale live
+     **on the card** (Stories line) — there is no separate mapping artifact.` (plus the
+     two `(record the why, one line)` markers) →
+     `patterns-vertical-tdd.case-and-rationale-on-card` (row 13); the Simple/Split/Merge
+     definitions stay body teaching.
+  9. Brownfield translation sentence — `Design-artifact brownfield markers (e.g. a
+     data-model entity flagged as extending existing code) translate into the exposure
+     line, so the classification survives design into the build.` and the exposure-line
+     duty (`Each card carries a cycle-level exposure line: `none`, or the existing
+     surfaces it extends/modifies.`) → `patterns-vertical-tdd.brownfield-exposure-line`
+     (row 14).
+  10. The per-case citation duty (checklist-carried; row 15) →
+      `patterns-vertical-tdd.cases-cite-ids` — the checklist row itself stays (KEPT
+      residue), the schema rule is the citable obligation.
+  11. Reference stubs (census §B S1–S3; TEST-GRAMMAR.md untouched, its tables and
+      examples staying): the four MUST-includes →
+      `patterns-vertical-tdd.test-gate-must-includes` · the required-field set →
+      `patterns-vertical-tdd.test-gate-field-set` · the producer-vs-runtime routing →
+      `patterns-vertical-tdd.test-gate-runtime-classification-routing`.
+- **Budget — the standing overage SUPERSEDED (census J-P5).** The ledgered **+294 HOLDS
+  overage** (body 6,781 against the 6,487 budget: +68 through v0.80.0 + the +226
+  mechanic-(c) growth ruled HOLDS at the v0.91.0 audit) **is superseded by this
+  conversion's re-seed**: the budget re-seeds to the measured delivered-at-invoke
+  payload (body + own schema, no +25% headroom) via the ledger's third seeding path, and
+  the overage trail survives here and in the `primitive-cost-budgets.md` v0.80.0/v0.91.0
+  paragraphs (GI-006 reconstruction). The wave-2B ledger row names this supersession.
+- **Kept deliberately:** the letter/spirit epigraph and the Quality Checklist whole
+  (v0.27.0 KEPT live residue — census §A body-stays-prose disposition) · all teaching
+  prose named in the Disposition line · the `'vertical slice'` SHOULD-trigger in the
+  description (the v0.80.0 ruling's explicit keep) · the description byte-identical
+  (497 chars) · both `references/` files untouched.
+- **Consumers assessed:** `executing-tdd-cycle` (consumes cards + owns build-time
+  decomposition — boundary now `patterns-vertical-tdd.writes-no-task-lists` +
+  `patterns-vertical-tdd.not-for-routes`, unchanged in substance) · `testing-end-user`
+  (consumes the `**TEST:**` grammar — TEST-GRAMMAR.md untouched; the runtime-routing
+  stub points at it, no wording change on its side) · `testing-gap-finding` (consumes
+  the grammar boundary — untouched) · `review-plan-artifacts` (cycle-card check set —
+  the obligations it grades against now carry schema IDs, substance unchanged) ·
+  `implement.md` (dispatches this skill at design time — no section-anchor link) ·
+  the router `skills/mochiko/SKILL.md` row (names the skill, unaffected) ·
+  `brownfield-integration` (consumes the exposure line — unchanged). No shipped surface
+  links a removed section anchor of this SKILL.md.
+
 ## [v0.91.0] Design-time card authoring re-homed inside the implement run; card author is never the executing builder — plan-stage retirement D1 (c)
 
 - **Disposition:** superseded → the same design-time paragraph, now naming its home: inside the

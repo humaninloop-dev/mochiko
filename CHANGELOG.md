@@ -5,6 +5,38 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.102.0] — 2026-09-01
+
+**Skill content schemas — wave 2B, the patterns-family conversion (9 discipline
+carriers)** (wave-2 family-door rulings, `DECISIONS.md` 2026-09-01; census-first per D9,
+`census-patterns.md` + its §K appendix). The nine carriers — adopt-first ·
+architecture-shelves · code-minimalism · map-minimalism · model-tiering · plan-minimalism ·
+sound-loop · transport-floor · vertical-tdd — each ship as a `SKILL.md` + in-directory
+`schema.yaml` pair: **124 rules at D12 grain (46 floors, 3 reference stubs)**, sequenced
+ladders and teaching prose body-side, every `description:` byte-untouched, floor pins +
+read-backs (7 · 5 · 3 · 3 · 4 · 2 · 6 · 11 · 5). The family mints its own section set —
+**`trigger · scope · discipline · inputs · disclosure · reserved`** (the discipline
+lifecycle; a full swap-out per the amended criterion 2) — and ships **NO common file**:
+the shared-`references/` road was rejected at the family door (census §ROAD) and the thin
+common candidates fail net-reduction, so every rule carries local text and the checker
+makes any patterns `extends:` a finding. Labels registry +2 (`trigger`, `ladder`).
+Conversion held the row-grain-beats-tally line four times (AF 7 floors · CM 3 · TF 11 ·
+VT 5 — each a recorded census correction). The four teachers (api-contracts ·
+entity-modeling · technical-decisions · system-design) stay prose by ruling. Tooling:
+checker library-less-family mechanics + teacher-dirs-stay-unswept (matrix 105→114);
+detector verified unchanged (48/48). Protected content by supersession-transfer: 118 new
+sidecar anchors (507 total; every floor anchored; six deliberate must-absences named);
+two strip files born (architecture-shelves, transport-floor); VT's v0.76.0 two-arm
+`tasks` binding survives verbatim as a floor; allowlist 181 distinct rows, detector 0
+clusters over 912 rules. Budgets: CM + VT re-seeds (VT's +294 HOLDS overage absorbed and
+superseded) + seven first-seeds via the third seeding path, no headroom; family
+delivered-at-invoke **measured ×1.90 (50,379 → 95,858), +5.1% over the census ×1.81
+estimate, inside the ±25% band**. 4 plan-approved producers + 3 fresh author≠grader
+validators, 11 units: one pair major (a census-grain-dropped display-for-override
+obligation, restored), three closer trail-accuracy majors, and one GI-005-class strip
+heading overwrite caught mid-wave by a sibling seat and restored byte-exact → delta
+re-grades ALL PASS. Wave 2C (small families, dense five) queued census-first.
+
 ## [0.101.0] — 2026-09-01
 
 **Skill content schemas — wave 2A, the authoring-family conversion** (wave-2 family-door

@@ -1,0 +1,235 @@
+# Skill content schema for mochiko:patterns-adopt-first. The SKILL.md body instructs a raw,
+# full Read of this file at skill invoke — one declared first action — and its "Rules — load
+# the schema first" section carries the reading grammar. Two semantics live only here:
+#   class   floor = non-waivable · must = binding obligation · advisory = guidance, not binding.
+#   conditions:  each dimension declares its resolution point (entry-derived · surface-presence);
+#           a rule gated on an unresolved dimension is inapplicable until it resolves.
+kind: skill
+skill: patterns-adopt-first
+
+conditions:
+  firing_site:
+    values: [design-phase, build-time]
+    resolution: entry-derived
+    note: >-
+      which of the discipline's two firing sites this decision surfaced at — a design-phase
+      decision, or a commodity need first surfacing at build-time decomposition.
+
+sections:
+  - id: patterns-adopt-first.sec.trigger
+    title: Trigger — the commodity-category test
+    intent: >-
+      When the discipline fires, and what never gates the check.
+    rules:
+
+      - id: patterns-adopt-first.commodity-trigger-test
+        labels: [trigger]
+        class: must
+        kind: gate
+        text: >-
+          The trigger is the commodity-category test — ask of the capability being decided
+          whether this problem is older than this product. Presumptively yes for the
+          infrastructure categories storage · locking · serialization · queueing · caching ·
+          auth · search; that list is a starting set, not a catalog — judgment extends it,
+          and absence from the list is not an exemption.
+
+      - id: patterns-adopt-first.framing-never-gates
+        labels: [trigger]
+        class: floor
+        text: >-
+          The author's framing never gates the check — a decision framed as "record
+          granularity" or "which replace primitive" is still a storage decision, still a
+          locking decision; the test runs against the capability, never the framing.
+
+  - id: patterns-adopt-first.sec.scope
+    title: Scope — jurisdiction lines and routes away
+    intent: >-
+      What this discipline decides, what routes elsewhere, and who grades what.
+    rules:
+
+      - id: patterns-adopt-first.in-process-scope-bound
+        labels: [boundary]
+        class: floor
+        kind: routing
+        text: >-
+          Design and build seats own in-process libraries and self-hostable components
+          only. Buying a managed service, a SaaS product, or a whole capability is a
+          business call — it routes to an IP-XXX provisioning requirement and the PM/user,
+          never decided here.
+
+      - id: patterns-adopt-first.differentiating-domain-exempt
+        labels: [boundary]
+        class: must
+        kind: routing
+        text: >-
+          The product's differentiating domain — what the product exists to do — is
+          presumptively not a commodity; the test is for the infrastructure underneath.
+
+      - id: patterns-adopt-first.never-reopen-ruled-mechanism
+        labels: [boundary]
+        class: must
+        text: >-
+          A mechanism the design phase already ruled is never re-opened — the card carries
+          that commitment, and the code ladder (`mochiko:patterns-code-minimalism`) shapes
+          code without reopening the mechanism. A commodity need the design phase never
+          ruled is the opposite case and takes
+          `patterns-adopt-first.build-time-never-builder-decided`.
+
+      - id: patterns-adopt-first.tooling-doctrine-routing
+        labels: [boundary]
+        class: must
+        kind: routing
+        text: >-
+          Project tooling defaults — "established, never hand-rolled" for linters, CI, and
+          build tooling — are governance-floor doctrine, not a design- or build-time
+          decision; that doctrine's home and this skill cross-point, never merge.
+
+      - id: patterns-adopt-first.grader-routing
+        labels: [boundary]
+        class: must
+        kind: routing
+        text: >-
+          Who grades what — the disclosure line is `mochiko:review-plan-artifacts`'s
+          BLOCKING named-sibling check at conformance strength; needed-but-should-have-
+          been-adopted is `mochiko:review-feasibility` hunt class 7, blocking-capable;
+          rationale-bite honesty is advisory, on the existing rung-honesty lane; the
+          retrofit-cost gate is user-ruled by construction — no seat clears it.
+
+      - id: patterns-adopt-first.siblings-boundary
+        labels: [boundary]
+        class: must
+        kind: routing
+        text: >-
+          The minimalism ladders — `mochiko:patterns-plan-minimalism` (its rung 3 reads
+          adoption as a way something already exists), `mochiko:patterns-code-minimalism`,
+          `mochiko:patterns-map-minimalism` — size the artifact; this discipline asks who
+          should have built it. The governance floor's tooling doctrine (home queued at
+          `authoring-constitution/references/STACK-TOOLING.md`) is the governance-axis
+          sibling: that home carries tooling defaults, this skill the design- and
+          build-time decision — cross-pointers only, no merge.
+
+  - id: patterns-adopt-first.sec.discipline
+    title: Discipline — the two-part obligation and its limbs
+    intent: >-
+      The binding core: disclosure, rationale, the two-sided limb, and the
+      constraint-challenge duty.
+    rules:
+
+      - id: patterns-adopt-first.disclosure-floor
+        labels: [evidence]
+        class: floor
+        kind: duty
+        text: >-
+          Every commodity-category decision's alternative set names at least one real
+          off-the-shelf candidate, by product name, or carries an explicit "no shelf
+          candidate exists" line. A missing line is itself a review finding — silence is
+          not neutral.
+
+      - id: patterns-adopt-first.rationale-bite
+        labels: [evidence]
+        class: floor
+        text: >-
+          Choosing custom is legitimate only against the named candidate — the choice
+          rationale says, in writing, why custom beats it. A shelf row that sits in the
+          options table and is then dropped from the rationale without a word is the
+          defect this rule exists to catch.
+
+      - id: patterns-adopt-first.two-sided-limb
+        labels: [evidence]
+        class: must
+        kind: latitude
+        text: >-
+          The candidate is weighed, not deferred to — below the retrofit-cost line, a
+          capability reasonably implementable in-house at under 100 lines is a legitimate
+          custom-wins rationale: the BE-DEP red flag the backend dependency-discipline
+          standard already names, read symmetrically. It argues against adopting a trivial
+          dependency exactly as this discipline argues against hand-rolling a solved one —
+          no precedence conflict; both say weigh it.
+        pointer: "../authoring-constitution/references/catalog/backend-service.md"
+
+      - id: patterns-adopt-first.constraint-challenge-finding
+        labels: [evidence, user-gate]
+        class: floor
+        kind: duty
+        text: >-
+          A seat never silently overrides a ratified upstream constraint. When the shelf
+          check collides with one — a spec constraint that excludes the candidate — the
+          seat files a constraint-challenge finding carrying three parts: the constraint's
+          stated text, quoted; the real requirement it plausibly restates; the shelf
+          candidate it excludes.
+
+  - id: patterns-adopt-first.sec.inputs
+    title: Inputs
+    intent: >-
+      Read duties this discipline would carry before deciding.
+    note: >-
+      Deliberately empty — no input-side obligation exists at census grain
+      (census-patterns §B: AF stubs 0, no read duty).
+    rules: []
+
+  - id: patterns-adopt-first.sec.disclosure
+    title: Disclosure — where claims and writes land
+    intent: >-
+      The disclosure-line grammar for named candidates and the landing surface for
+      build-time writes.
+    rules:
+
+      - id: patterns-adopt-first.external-claims-binding
+        labels: [binding, evidence]
+        class: must
+        kind: binding
+        text: >-
+          A named candidate is a claim about the world outside the repo — it carries the
+          external-research disclosure line, `verified: <source>` or `memory-asserted`,
+          verified at review. Grammar and mechanics live in the single source, referenced
+          never restated.
+        pointer: "../review-brainstorm/references/EXTERNAL-CLAIMS.md"
+
+      - id: patterns-adopt-first.baseline-delta-landing
+        labels: [binding]
+        class: must
+        kind: binding
+        when: {firing_site: build-time}
+        text: >-
+          A build-time D-XXX / C-XXX / IP-XXX write lands as a `baseline-delta.md` entry
+          graded as judgment before the user accepts it — never an in-place edit of a
+          ruled baseline.
+
+  - id: patterns-adopt-first.sec.reserved
+    title: Reserved — the user's gates
+    intent: >-
+      Decisions no seat takes on its own.
+    rules:
+
+      - id: patterns-adopt-first.retrofit-cost-gate
+        labels: [user-gate]
+        class: floor
+        kind: reservation
+        text: >-
+          Custom-over-shelf is user-ruled when the custom build is expensive to walk back
+          — persisted formats, storage engines, locking/concurrency primitives,
+          migration-bearing shapes — and seat-decidable with disclosure below that line.
+          The split criterion is retrofit cost, deliberately the same principle the
+          adaptive-depth ruling ratified.
+
+      - id: patterns-adopt-first.build-time-never-builder-decided
+        labels: [trigger, user-gate]
+        class: floor
+        kind: reservation
+        when: {firing_site: build-time}
+        text: >-
+          A commodity-category ruling or an IP-XXX provisioning call that first surfaces
+          at build-time decomposition is never the builder's to make — the builder halts
+          the cycle and takes it to the user's checkpoint, where
+          `patterns-adopt-first.disclosure-floor`, `patterns-adopt-first.rationale-bite`,
+          and `patterns-adopt-first.constraint-challenge-finding` fire exactly as they do
+          in the design phase.
+
+      - id: patterns-adopt-first.collision-routes-to-user
+        labels: [user-gate]
+        class: must
+        kind: reservation
+        text: >-
+          A constraint collision routes to the user, who rules — amend the spec, or
+          sustain the constraint. Only the colliding decision pauses; the run proceeds
+          elsewhere. These are expensive decisions; a human rules them.

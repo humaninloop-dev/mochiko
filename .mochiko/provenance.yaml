@@ -420,3 +420,157 @@ anchors:
   authoring-user-stories.rationalization-stop: "2026-07-25 skill-succinctness-strip"
   authoring-requirements.technology-agnostic: "2026-09-01 skill-content-schema"
   authoring-technical-requirements.business-source-floor: "2026-09-01 skill-content-schema"
+  # ---- skill-schema entries (v0.102.0 patterns-family conversion, wave 2B) ----
+  # D8/C4 protection transfers for the nine converted discipline carriers; each rule's
+  # supersession-transfer is recorded in its member's .mochiko/strips/ [v0.102.0] entry.
+  # Anchor rows verified against live DECISIONS.md rows at merge. Deliberate absences,
+  # lead-ruled: six must-class rules carry NO anchor — the sidecar covers protection
+  # transfers, not every must — patterns-vertical-tdd.brownfield-exposure-line ·
+  # patterns-code-minimalism.not-for-routes ·
+  # patterns-code-minimalism.card-criteria-are-the-floor ·
+  # patterns-code-minimalism.rung-zero-read-before-rank ·
+  # patterns-plan-minimalism.not-for-routes · patterns-plan-minimalism.grading-routing:
+  # none has a protecting ruling of its own. Decisions, not gaps. The not-for-routes
+  # asymmetry is deliberate: VT's route content (the feature-vs-cycle boundary) is
+  # itself ruled by the 2026-08-10 feature-map-layer row, so its rule anchors; CM's and
+  # PM's route lists aggregate census boundary rows with no protecting ruling naming
+  # their content.
+  # AF — birth-by-ruling 2026-08-15 build-vs-off-the-shelf; rows 3/12/13 re-keyed at
+  # v0.91.0 by plan-stage-utility D1 mechanic (d), anchored on the operative ruling.
+  patterns-adopt-first.in-process-scope-bound: "2026-08-15 build-vs-off-the-shelf D1"
+  patterns-adopt-first.differentiating-domain-exempt: "2026-08-15 build-vs-off-the-shelf D2"
+  patterns-adopt-first.never-reopen-ruled-mechanism: "2026-08-26 plan-stage-utility"
+  patterns-adopt-first.tooling-doctrine-routing: "2026-08-15 build-vs-off-the-shelf D5"
+  patterns-adopt-first.commodity-trigger-test: "2026-08-15 build-vs-off-the-shelf D2"
+  patterns-adopt-first.framing-never-gates: "2026-08-15 build-vs-off-the-shelf D2"
+  patterns-adopt-first.disclosure-floor: "2026-08-15 build-vs-off-the-shelf D2"
+  patterns-adopt-first.rationale-bite: "2026-08-15 build-vs-off-the-shelf D2"
+  patterns-adopt-first.two-sided-limb: "2026-08-15 build-vs-off-the-shelf D2"
+  patterns-adopt-first.external-claims-binding: "2026-08-15 build-vs-off-the-shelf D2"
+  patterns-adopt-first.retrofit-cost-gate: "2026-08-15 build-vs-off-the-shelf D4"
+  patterns-adopt-first.build-time-never-builder-decided: "2026-08-26 plan-stage-utility"
+  patterns-adopt-first.baseline-delta-landing: "2026-08-26 plan-stage-utility"
+  patterns-adopt-first.constraint-challenge-finding: "2026-08-15 build-vs-off-the-shelf D3"
+  patterns-adopt-first.collision-routes-to-user: "2026-08-15 build-vs-off-the-shelf D3"
+  patterns-adopt-first.grader-routing: "2026-08-15 build-vs-off-the-shelf D2"
+  patterns-adopt-first.siblings-boundary: "2026-08-15 build-vs-off-the-shelf D5"
+  # AS — birth-by-ruling 2026-08-19 product-architecture-schema (R-c: not
+  # wholesale-protected; every move cites the row).
+  patterns-architecture-shelves.event-keyed-freshness: "2026-08-19 product-architecture-schema"
+  patterns-architecture-shelves.ax-grammar-routing: "2026-08-19 product-architecture-schema"
+  patterns-architecture-shelves.never-a-rigor-dial: "2026-08-19 product-architecture-schema"
+  patterns-architecture-shelves.not-per-feature-design: "2026-08-19 product-architecture-schema"
+  patterns-architecture-shelves.one-dial-one-system: "2026-08-19 product-architecture-schema"
+  patterns-architecture-shelves.honest-gaps: "2026-08-19 product-architecture-schema"
+  patterns-architecture-shelves.retrofit-cost-walk-order: "2026-08-19 product-architecture-schema"
+  patterns-architecture-shelves.breadth-invariant: "2026-08-19 product-architecture-schema"
+  patterns-architecture-shelves.floor-asserted-rows: "2026-08-19 product-architecture-schema"
+  patterns-architecture-shelves.opinions-in-data: "2026-08-19 product-architecture-schema"
+  patterns-architecture-shelves.scope-from-spine: "2026-08-19 product-architecture-schema"
+  patterns-architecture-shelves.memory-asserted-provenance: "2026-08-19 product-architecture-schema"
+  patterns-architecture-shelves.stance-vocabulary: "2026-08-19 product-architecture-schema"
+  patterns-architecture-shelves.na-reason-axis: "2026-08-19 product-architecture-schema"
+  patterns-architecture-shelves.not-now-carries-trigger: "2026-08-19 product-architecture-schema"
+  patterns-architecture-shelves.recommend-then-arbitrate: "2026-08-19 product-architecture-schema"
+  patterns-architecture-shelves.card-shelf-conflict-users: "2026-08-19 product-architecture-schema"
+  # MM — birth-by-ruling 2026-08-13 pm-role-and-feature-derivation; domains-dormant's
+  # text carries the v0.81.0 re-keyed wording (2026-08-19 product-architecture-schema
+  # D3/D4 — the strip records the re-key; the birth row is the protecting anchor).
+  patterns-map-minimalism.firing-sites: "2026-08-13 pm-role-and-feature-derivation D5"
+  patterns-map-minimalism.soft-cap-trigger: "2026-08-13 pm-role-and-feature-derivation D3"
+  patterns-map-minimalism.vocabulary-boundary: "2026-08-13 pm-role-and-feature-derivation D4"
+  patterns-map-minimalism.durable-layer-only: "2026-08-13 pm-role-and-feature-derivation D2"
+  patterns-map-minimalism.fewness-never-hides: "2026-08-13 pm-role-and-feature-derivation D3"
+  patterns-map-minimalism.three-governing-tests: "2026-08-13 pm-role-and-feature-derivation D4"
+  patterns-map-minimalism.noun-verbs-aid-only: "2026-08-13 pm-role-and-feature-derivation D4"
+  patterns-map-minimalism.extend-beats-mint: "2026-08-13 pm-role-and-feature-derivation D3"
+  patterns-map-minimalism.domains-dormant: "2026-08-13 pm-role-and-feature-derivation D4"
+  patterns-map-minimalism.read-map-first: "2026-08-13 pm-role-and-feature-derivation D4"
+  patterns-map-minimalism.merge-preserves-mechanics: "2026-08-13 pm-role-and-feature-derivation D12"
+  patterns-map-minimalism.reparenting-navigation-only: "2026-08-13 pm-role-and-feature-derivation D12"
+  patterns-map-minimalism.capability-layer-user-ruled: "2026-08-13 pm-role-and-feature-derivation D5"
+  # CM — the PT ladder lineage; new-dep-not-a-rung is a RECORDED FALLBACK anchor (the
+  # wave-2A idiom): no single protecting row of its own, anchored to the ladder's birth.
+  patterns-code-minimalism.fires-at-decomposition: "2026-08-05 ponytail-concepts-integration"
+  patterns-code-minimalism.rung-disclosed-in-cycle-report: "2026-08-05 ponytail-concepts-integration"
+  patterns-code-minimalism.stop-at-first-rung: "2026-08-05 ponytail-concepts-integration"
+  patterns-code-minimalism.new-dep-not-a-rung: "2026-08-05 ponytail-concepts-integration"
+  patterns-code-minimalism.adopt-first-binding-constraint: "2026-08-26 plan-stage-utility"
+  patterns-code-minimalism.lazy-not-negligent: "2026-08-05 ponytail-concepts-integration"
+  patterns-code-minimalism.one-intensity: "2026-08-05 ponytail-concepts-integration"
+  # PM — birth v0.67.0 (plan-structure-yagni 2026-08-12 + the 2026-08-13 architect-role
+  # restructure); the v0.91.0 firing-site re-keys anchor to their operative ruling
+  # (plan-stage-utility).
+  patterns-plan-minimalism.three-firing-sites: "2026-08-26 plan-stage-utility"
+  patterns-plan-minimalism.epic-joint-plan-one-plan: "2026-08-26 plan-stage-utility"
+  patterns-plan-minimalism.stop-at-first-failing-rung: "2026-08-12 plan-structure-yagni"
+  patterns-plan-minimalism.rung-scope: "2026-08-12 plan-structure-yagni"
+  patterns-plan-minimalism.rung-1-never-deletes: "2026-08-12 plan-structure-yagni"
+  patterns-plan-minimalism.floor-both-ways: "2026-08-12 plan-structure-yagni"
+  patterns-plan-minimalism.disclosure-grammar: "2026-08-12 plan-structure-yagni"
+  patterns-plan-minimalism.read-before-claim: "2026-08-15 build-vs-off-the-shelf"
+  # MT — the census §A ceremony cites BOTH rows (2026-08-16 model-tiered-seats +
+  # 2026-08-19 explorer retarget) on every move; the anchor holds one string, so
+  # retarget-born rules anchor to the retarget row and birth-born rules to the birth
+  # row. The strip entry carries the dual citation.
+  patterns-model-tiering.rostered-seats-never-retier: "2026-08-16 model-tiered-seats"
+  patterns-model-tiering.class-key-cheap-tier: "2026-08-16 model-tiered-seats"
+  patterns-model-tiering.class-key-session-tier: "2026-08-16 model-tiered-seats"
+  patterns-model-tiering.cheap-rung-explore-haiku: "2026-08-19 explorer-retarget-native"
+  patterns-model-tiering.dispatch-ladder: "2026-08-16 model-tiered-seats"
+  patterns-model-tiering.disposable-per-gap: "2026-08-16 model-tiered-seats"
+  patterns-model-tiering.override-is-the-pin: "2026-08-19 explorer-retarget-native"
+  patterns-model-tiering.fact-finder-brief: "2026-08-19 explorer-retarget-native"
+  patterns-model-tiering.terse-return: "2026-08-16 model-tiered-seats"
+  patterns-model-tiering.weak-negative-watch: "2026-08-16 model-tiered-seats"
+  patterns-model-tiering.brief-obligation: "2026-08-16 model-tiered-seats"
+  # SL — birth-by-ruling 2026-08-13 charter-ritual-balance; the store carve is the
+  # v0.81.0 re-key's operative ruling.
+  patterns-sound-loop.two-part-trigger: "2026-08-13 charter-ritual-balance"
+  patterns-sound-loop.kind-keyed-library-wide: "2026-08-13 charter-ritual-balance"
+  patterns-sound-loop.leg-1-seat-produces: "2026-08-13 charter-ritual-balance"
+  patterns-sound-loop.leg-2-non-author-review: "2026-08-13 charter-ritual-balance"
+  patterns-sound-loop.leg-3-user-gate-stays: "2026-08-13 charter-ritual-balance"
+  patterns-sound-loop.governing-surface-table: "2026-08-13 charter-ritual-balance"
+  patterns-sound-loop.exemptions-exactly-three: "2026-08-13 charter-ritual-balance"
+  patterns-sound-loop.store-carve: "2026-08-19 product-architecture-schema"
+  patterns-sound-loop.no-delta-card-exemption: "2026-08-13 charter-ritual-balance"
+  patterns-sound-loop.default-seat-wiring: "2026-08-13 charter-ritual-balance"
+  patterns-sound-loop.map-review-spec-less: "2026-08-13 charter-ritual-balance"
+  patterns-sound-loop.out-of-remit-hosting: "2026-08-13 charter-ritual-balance"
+  patterns-sound-loop.disclosure-line: "2026-08-13 charter-ritual-balance"
+  patterns-sound-loop.only-real-seats: "2026-08-13 charter-ritual-balance"
+  # TF — birth-by-ruling body (census §A, R-c ceremony class): all 14 rules trace to
+  # the 2026-08-14 teammate-message-races row (D1–D7).
+  patterns-transport-floor.message-lane-trigger: "2026-08-14 teammate-message-races"
+  patterns-transport-floor.topology-lane-trigger: "2026-08-14 teammate-message-races"
+  patterns-transport-floor.neither-lane-waivable: "2026-08-14 teammate-message-races"
+  patterns-transport-floor.governs-use-never-choice: "2026-08-14 teammate-message-races"
+  patterns-transport-floor.cross-session-cited-in-scope-only: "2026-08-14 teammate-message-races"
+  patterns-transport-floor.composition-steer: "2026-08-14 teammate-message-races D4"
+  patterns-transport-floor.single-writer-per-surface: "2026-08-14 teammate-message-races"
+  patterns-transport-floor.mesh-hold: "2026-08-14 teammate-message-races"
+  patterns-transport-floor.content-pinned-supersession: "2026-08-14 teammate-message-races"
+  patterns-transport-floor.quiesce-before-cold-grade: "2026-08-14 teammate-message-races"
+  patterns-transport-floor.no-ritual-sends: "2026-08-14 teammate-message-races"
+  patterns-transport-floor.fan-in-confirmation: "2026-08-14 teammate-message-races"
+  patterns-transport-floor.version-floor: "2026-08-14 teammate-message-races"
+  patterns-transport-floor.ordering-undocumented: "2026-08-14 teammate-message-races"
+  # VT — mixed protecting rulings per census §A; every floor anchored.
+  patterns-vertical-tdd.tasks-binding-two-arm: "2026-08-16 schema-based-template-guidance D8"
+  patterns-vertical-tdd.design-time-inside-implement-run: "2026-08-26 plan-stage-utility"
+  patterns-vertical-tdd.writes-no-task-lists: "2026-08-02 plan-task-granularity D2"
+  patterns-vertical-tdd.not-for-routes: "2026-08-10 feature-map-layer"
+  patterns-vertical-tdd.grammar-owned-downstream-consume: "2026-08-16 vertical-tdd-complexity-and-qa-role D4"
+  patterns-vertical-tdd.vertical-over-horizontal: "2026-08-16 vertical-tdd-complexity-and-qa-role D1"
+  patterns-vertical-tdd.walking-skeleton-first: "2026-08-16 vertical-tdd-complexity-and-qa-role D1"
+  patterns-vertical-tdd.no-infra-only-cards: "2026-08-16 vertical-tdd-complexity-and-qa-role D3"
+  patterns-vertical-tdd.parallel-derives-from-dependencies: "2026-08-16 vertical-tdd-complexity-and-qa-role D3"
+  patterns-vertical-tdd.test-gate: "2026-08-16 vertical-tdd-complexity-and-qa-role D4"
+  patterns-vertical-tdd.case-and-rationale-on-card: "2026-08-16 vertical-tdd-complexity-and-qa-role D1"
+  patterns-vertical-tdd.cases-cite-ids: "2026-08-16 vertical-tdd-complexity-and-qa-role D2"
+  patterns-vertical-tdd.test-gate-must-includes: "2026-08-16 vertical-tdd-complexity-and-qa-role D4"
+  patterns-vertical-tdd.test-gate-field-set: "2026-08-16 vertical-tdd-complexity-and-qa-role D4"
+  patterns-vertical-tdd.test-gate-runtime-classification-routing: "2026-08-16 vertical-tdd-complexity-and-qa-role D4"
+  patterns-vertical-tdd.two-authors-one-card: "2026-08-16 vertical-tdd-complexity-and-qa-role D2"
+  patterns-vertical-tdd.author-never-executing-builder: "2026-08-26 plan-stage-utility"

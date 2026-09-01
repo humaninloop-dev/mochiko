@@ -13,3 +13,5 @@ labels:
   fence: A read-boundary — surfaces the skill must read, and surfaces it must never read.
   artifact-grammar: The produced artifact's binding shape — ID grammars, lifecycle enums, row/field forms, required sections.
   single-home: A one-home/one-writer/no-copies rule — where a thing lives once and every other surface links or derives.
+  trigger: When a kind-keyed discipline fires — lane/two-part/commodity/skeleton firing conditions and their non-waivability once fired; marks rules ABOUT firing semantics, distinct from a rule's own `when:` guard.
+  ladder: A ranked rung/leg/test structure's binding rules — stop-at-first, descend-with-why, walk-order, breadth/every-row obligations.

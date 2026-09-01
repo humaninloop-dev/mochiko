@@ -9,18 +9,11 @@ description: This skill MUST be invoked when structuring a feature's implementat
 
 ## Overview
 
-Transform a feature's stories into **cycle cards** — vertical increments that each deliver observable, testable value. A cycle is a coherent bundle of **named test cases** (expected behaviour, Given/When/Then grain, executable Setup/Action/Assert form) that demonstrate together to the user; the cycle is done when those cases show green against real infrastructure. The output is `tasks.md` in the cycle-card shape (the `tasks` schema is the canonical skeleton — invoke `mochiko-cli template tasks` when the binary is available; otherwise Read `plugins/mochiko/schemas/tasks.yaml` raw): per card — stories + rationale, dependencies, the named test-case list (the card's content), cycle-level brownfield exposure, and the Simple/Split/Merge case.
+Transform a feature's stories into **cycle cards** — vertical increments that each deliver observable, testable value. A cycle is a coherent bundle of **named test cases** (expected behaviour, Given/When/Then grain, executable Setup/Action/Assert form) that demonstrate together to the user; the cycle is done when those cases show green against real infrastructure. The card carries the *what and why*; the *how* is deliberately left to the build.
 
-This skill works at **design time inside the `/mochiko:implement` run** — after the design phase, or directly on a zero-gap sufficiency verdict; never a separate plan run. It decides the slicing and states what each cycle must prove. It writes no task lists — the builder decomposes each card into concrete tasks, with file paths, at build time with the code in view (`mochiko:executing-tdd-cycle`, downstream). The card carries the *what and why*; the *how* is deliberately left to the build.
+## Rules — load the schema first
 
-**Two authors, one card:** the design seat running this skill owns the **slicing judgment** — which bundles exist, Simple/Split/Merge, dependencies, the walking-skeleton call; the `qa-engineer` authors the **test-case content** (expected behaviour) in the grammar it later executes. The slicing seat is a **design seat, never the builder who will execute the card.**
-
-## When NOT to Use
-
-- **Bug fixes** — single-change fixes don't need cycle structure
-- **Documentation-only or spike/research work** — no cycle discipline applies
-- **Decomposing a card into tasks** — build-time work, owned by `mochiko:executing-tdd-cycle`
-- **Deriving or scoping features** — the feature is the pipeline unit, owned by `mochiko:authoring-feature-map`, upstream (its vocabulary table disambiguates feature vs cycle); a cycle is a within-one-feature increment
+Your first action, before any slicing step: **Read `schema.yaml` (this skill's own directory) raw, in full** — the patterns family ships no common file, so the pair's own schema is the whole first action. The schema is the source of truth for this skill's binding rules, nested in six sections, each addressable by its section ID: `patterns-vertical-tdd.sec.trigger` · `patterns-vertical-tdd.sec.scope` · `patterns-vertical-tdd.sec.discipline` · `patterns-vertical-tdd.sec.inputs` · `patterns-vertical-tdd.sec.disclosure` · `patterns-vertical-tdd.sec.reserved`. Interpret it live: a rule's `kind:` names what it is, and an absent `kind:` reads `constraint`; a rule's `when:` resolves against the schema's declared `conditions:` (`new_end_to_end_path`) and gates when the obligation applies, never whether it is delivered; a rule of `class: floor` is always read and always delivered whatever its `when:`; a `pointer:` rule binds you to that file's or skill's procedure, referenced never restated; labels come from `plugins/mochiko/schemas/skill-labels.yaml`. The floor pin: the 5 rules of `class: floor` are non-waivable. Before the first slicing step, state the floor count back — a skipped or partial read leaves that count blank: halt and surface it, and halt likewise if the schema's `class: floor` count disagrees with the pin.
 
 ## Core Principles
 
@@ -37,17 +30,13 @@ Cycle 1: User creation (model + service + endpoint, end to end)
 Cycle 2: User authentication (model + service + endpoint, end to end)
 ```
 
-A card whose test cases cannot be demonstrated on their own is not a cycle.
-
 ### 2. Walking Skeleton First, Infrastructure Homed by Need
 
-Where the work opens a **new end-to-end path** — a greenfield feature or a genuinely new path through the system — the **first cycle is a walking skeleton**: the thinnest end-to-end path through all layers with one trivial case green. It is the foundation, by construction. Growth or delta work on an already-standing path **skips the skeleton**.
-
-There is **no foundation/feature card type**. All cycles are test-case bundles. Infrastructure a bundle needs emerges **inside the first bundle that needs it** (YAGNI at cycle grain); platform provisioning (IP-XXX) for the skeleton path lands **in the skeleton cycle**, the rest inside the first bundle that needs it. **Infra-only cards are never minted.** Inter-card dependencies stay explicit; `[P]` parallel eligibility derives from dependencies, not from a type column.
+A walking skeleton proves the path before the features ride it; infrastructure is homed by need at cycle grain rather than front-loaded. The binding forms — when the skeleton fires, how infrastructure homes, no infra-only cards — live in the schema (`patterns-vertical-tdd.sec.discipline`).
 
 ### 3. Verified against reality
 
-Every card closes with a **`**TEST:**` gate** — the cycle's named test cases run against real infrastructure, never a re-run of the automated tests. This gate is the demonstration the cycle is anchored on; a cycle that stops at the mock boundary has proven nothing. Expected behaviour is the Assert fields; actual behaviour is the captured evidence. The grammar (fields, action modifiers, assert patterns, classification) lives in [TEST-GRAMMAR.md](references/TEST-GRAMMAR.md) — this skill owns it; downstream parsers consume it.
+Expected behaviour is the Assert fields; actual behaviour is the captured evidence. The grammar (fields, action modifiers, assert patterns, classification) lives in [TEST-GRAMMAR.md](references/TEST-GRAMMAR.md).
 
 ## Identifying Cycles
 
@@ -64,14 +53,14 @@ A good cycle:
 ### Case column: Simple / Split / Merge
 
 - **Simple** — story's cases = one bundle: a well-scoped story's test cases form one card.
-- **Split** — story > bundle: a story whose cases span more than one demonstrable bundle splits across cards (record the why, one line).
-- **Merge** — stories < bundle: stories too thin to demonstrate alone share one bundle (record the why, one line).
+- **Split** — story > bundle: a story whose cases span more than one demonstrable bundle splits across cards.
+- **Merge** — stories < bundle: stories too thin to demonstrate alone share one bundle.
 
-The story→cycle decision and its rationale live **on the card** (Stories line) — there is no separate mapping artifact. Bundle identification is in [BUNDLE-IDENTIFICATION.md](references/BUNDLE-IDENTIFICATION.md).
+Bundle identification is in [BUNDLE-IDENTIFICATION.md](references/BUNDLE-IDENTIFICATION.md).
 
 ## Brownfield exposure
 
-Each card carries a cycle-level exposure line: `none`, or the existing surfaces it extends/modifies. This is the design-time disclosure — the builder's per-task `[EXTEND]`/`[MODIFY]` handling happens at decomposition, downstream (`mochiko:brownfield-integration`). Design-artifact brownfield markers (e.g. a data-model entity flagged as extending existing code) translate into the exposure line, so the classification survives design into the build.
+Each card's exposure line is the design-time disclosure; the builder's per-task `[EXTEND]`/`[MODIFY]` handling happens at decomposition, downstream (`mochiko:brownfield-integration`).
 
 ## Quality Checklist
 

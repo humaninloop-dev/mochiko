@@ -5,6 +5,76 @@ guardrails-vs-detail **Wave 2** (editorial extension of the D4 cut line to the u
 primitives; design: `.mochiko/brainstorms/validator-scope-and-verbosity/record.md`; build plan:
 `.mochiko/benchmarks/guardrails-vs-detail/report/build-plan.md`, Wave 2 sketch).
 
+## [v0.102.0] Schema conversion — census-row → minted-ID map (skill-content-schema wave 2B, patterns family)
+
+Ruling for every entry below: skill-content-schema D3 (obligations move, procedure stays
+prose) / D8/C4 (protected transfers), `DECISIONS.md` 2026-09-01 rows (Skill-content schema
+ruled · Skill-schema wave-2 family doors ruled — the patterns-family door); census:
+`.mochiko/brainstorms/skill-content-schema/census-patterns.md` §A (CM) + §B (CM rows 1–10).
+Schema home: `plugins/mochiko/skills/patterns-code-minimalism/schema.yaml`. Minted IDs carry
+the `patterns-code-minimalism.` prefix (omitted below). Map — census §B row → minted ID:
+1 `fires-at-decomposition` · 2 `rung-disclosed-in-cycle-report` · 3
+`card-criteria-are-the-floor` · 4 `not-for-routes` · 5 `rung-zero-read-before-rank` · 6
+`stop-at-first-rung` · 7 `new-dep-not-a-rung` · 8 `adopt-first-binding-constraint` · 9
+`lazy-not-negligent` · 10 `one-intensity`.
+**Section distribution (patterns six-set, disclosed):** trigger {1} · scope {4} ·
+discipline {3, 6, 8, 9, 10} · inputs {5} · disclosure {2} · reserved {7 — the
+domain-registry ruling is a reservation: never auto-approved}. No `conditions:` block —
+census §B's live-`when:` dimension list omits CM; the load-first block legally omits the
+`when:` grammar sentence (wave-1 RCM-4 wave-wide ruling).
+**Floor count 3 (rows 7, 9, 10), per the wave lead's OQ1 ruling:** the census summary
+table's "4 floor" cell disagrees with its own row-grain enumeration (three `(floor)`
+markers); the row grain wins, and the summary-cell correction is queued for the census §K
+landing appendix. Row 3 stays must/constraint.
+**Protected content homed in the `description:` (census J-P3):** the [v0.64.0] RETURNED
+existing-code-slimming trigger lives in the frontmatter description, which the conversion
+pins byte-identical (skill-pair criterion 7) — protected by construction; the audit should
+read the pin as protected content, not as unprotected text.
+**Disclosed one-line ruled repair (lead-approved OQ5):** the body's
+`references/DOMAIN-DEPENDENCIES.md` citation dangled — this skill ships no `references/`
+directory; the catalog lives at
+`../authoring-constitution/references/DOMAIN-DEPENDENCIES.md`, and `new-dep-not-a-rung`'s
+`pointer:` now carries the resolvable cross-directory path (census J-P8 class; the
+checker's climb-out resolution covers it). Never a silent fix.
+**Deleted as dedup / moved, no content loss:** `## When NOT to Use` (rows 3–4),
+`## Rung zero — read before you rank` (row 5), `## The floor — lazy, not negligent`
+(row 9), `## One intensity` (row 10), and `## Quality Checklist` (5 boxes, all mapped:
+box 1 = row 2 · box 2 = row 6 · box 3 = row 5 · box 4 = row 9 · box 5 = rows 1/3) leave
+the body as moves or mapped mirrors. The Ladder's seven rungs stay body prose as the
+sequenced procedure (D3); its stop-rule lead-in moved (row 6), and rung 5 lost its moved
+parenthetical + carve (rows 7–8, entries below). Overview slims to identity + sibling
+voice; its firing-site and disclosure sentences moved (rows 1–2).
+Accounting: body 3,795 → 2,235 (obligations out + the load-first Rules block in) + schema
+5,789 = **payload 8,024** (census §F estimate ~7,180); the delta over the pre-conversion
+body is structural overhead (IDs, keys, section scaffolding, reading grammar) — no content
+growth claimed. The old 4,319 body budget is superseded by the conversion re-seed
+(ledger's third seeding path, no headroom — the wave closer executes the ledger row).
+
+## [v0.102.0] PT-D1–D10 core — stop rule, disclosure duty, grading routing: protection transfers (census §A CM row 1)
+- **Disposition:** superseded — protection transfers to `patterns-code-minimalism.stop-at-first-rung` (must), `patterns-code-minimalism.rung-disclosed-in-cycle-report` (must, duty), and `patterns-code-minimalism.fires-at-decomposition` (must, gate), per D8/C4; the provenance sidecar carries the protected status. The seven-rung ladder itself stays body prose as sequenced procedure (D3).
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 skill-content-schema rows; lineage `DECISIONS.md` 2026-08-05 ponytail-concepts-integration PT-D1–D10 ×2).
+- **Content:** "Stop at the **first rung that applies**. Descend only when the rung above genuinely does not apply — and be able to say why, in one line, when it doesn't." · "The chosen rung per task is disclosed in the cycle report's decomposition, where the verification seat grades it against this file (`mochiko:review-code-minimalism`)." · "The ladder fires at card decomposition (`mochiko:executing-tdd-cycle`, step 2), before the red phase — it governs whether and how much code exists, not how the code that exists is written."
+- **Consumers assessed:** `mochiko:executing-tdd-cycle` (points here at the decompose step) and `mochiko:review-code-minimalism` (grades against this skill) reference the skill by name, never a section anchor — the ladder-as-standard contract is intact across the pair.
+
+## [v0.102.0] Adopt-first binding-constraint carve + new-dependency reservation — protection transfers (census §A CM rows 2–3; [v0.91.0] design-time re-key)
+- **Disposition:** superseded — protection transfers to `patterns-code-minimalism.adopt-first-binding-constraint` (must) and `patterns-code-minimalism.new-dep-not-a-rung` (floor, reservation), per D8/C4; rung 5's body prose loses the carve sentence and the new-dependency parenthetical.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows; the carve's protecting ruling `DECISIONS.md` 2026-08-26 plan-stage-utility D1, wording ruled at the v0.91.0 wave).
+- **Content:** "(Adding a NEW dependency is not a rung — it rides the domain-registry ruling where `references/DOMAIN-DEPENDENCIES.md` applies, and is never auto-approved.) A design-committed adopt-first choice reaches these cards as a binding constraint, not a rung to re-open — the design-time discipline is `mochiko:patterns-adopt-first`."
+- **Kept deliberately:** rung 5's core line ("A dependency already in the manifest does this — use it.") stays body prose; the carve's wording survives verbatim-in-substance in the schema rule; the dangling reference path is repaired in the pointer per the map entry's OQ5 note.
+- **Consumers assessed:** `mochiko:patterns-adopt-first` (its Siblings pointer cites this ladder by name, unchanged); `mochiko:patterns-plan-minimalism` rung 3 cites adopt-first on its own side.
+
+## [v0.102.0] The floor (lazy-not-negligent) + one-intensity — protection transfers (census §A CM row 4)
+- **Disposition:** superseded — protection transfers to `patterns-code-minimalism.lazy-not-negligent` (floor) and `patterns-code-minimalism.one-intensity` (floor), per D8/C4.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows; PT-lineage `DECISIONS.md` 2026-08-05).
+- **Content:** "No rung ever sacrifices a floor obligation (security, testing, error/data-loss handling, observability — the project's asserted Essential Floor) **or accessibility** … the ladder deletes speculation, not safety." · "The ladder ships at one strength — there is no off/lite/full/ultra dial. Per-project variance rides the recorded-waiver machinery, never a mode line."
+- **Consumers assessed:** `mochiko:review-code-minimalism` grades rung claims against this skill by name; the floor text moved whole, wording verbatim-in-substance.
+
+## [v0.102.0] Remaining body obligations relocated (census §B rows 3 · 4 · 5)
+- **Disposition:** relocated → `plugins/mochiko/skills/patterns-code-minimalism/schema.yaml`, per the map entry above (D3).
+- **Tier failed:** n/a — supersession by ruling (D3; `DECISIONS.md` 2026-09-01 rows).
+- **Content (decisive line per row):** 3 "the card's acceptance criteria are the floor of what to build; the ladder decides how cheaply to meet them, never whether to meet them" · 4 the two When-NOT routes (green-phase minimum-code rule is `mochiko:executing-tdd-cycle`'s, later; architecture topology sizing is `mochiko:patterns-system-design`'s, upstream) · 5 "Trace the real flow of the code being touched before rung 1 … Brownfield touches ride `mochiko:brownfield-integration`".
+- **Consumers assessed:** none restates these rules; the router's `patterns-code-minimalism` row describes the skill generically and stays true.
+
 ## [v0.91.0] Two sibling references re-keyed from plan-time to design-time — plan-stage retirement D1
 
 - **Disposition:** superseded → "design-time sibling" and "the design-time discipline"; the

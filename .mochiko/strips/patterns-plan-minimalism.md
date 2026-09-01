@@ -2,6 +2,72 @@
 
 Entry formats: `strips/README.md`. First entry for this skill.
 
+## [v0.102.0] Schema conversion — census-row → minted-ID map (skill-content-schema wave 2B, patterns family)
+
+Ruling for every entry below: skill-content-schema D3 (obligations move, procedure stays
+prose) / D8/C4 (protected transfers), `DECISIONS.md` 2026-09-01 rows (Skill-content schema
+ruled · the patterns-family door); census:
+`.mochiko/brainstorms/skill-content-schema/census-patterns.md` §A (PM) + §B (PM rows 1–10).
+Schema home: `plugins/mochiko/skills/patterns-plan-minimalism/schema.yaml`. Minted IDs
+carry the `patterns-plan-minimalism.` prefix (omitted below). Map — census §B row →
+minted ID: 1 `three-firing-sites` · 2 `not-for-routes` · 3 `rung-1-never-deletes` · 4
+`stop-at-first-failing-rung` · 5 `rung-scope` · 6 `read-before-claim` · 7
+`floor-both-ways` · 8 `disclosure-grammar` · 9 `grading-routing` · 10
+`epic-joint-plan-one-plan`.
+**Section distribution (patterns six-set, disclosed):** trigger {1, 10} · scope {2, 9} ·
+discipline {3, 4, 5, 7} · inputs {6} · disclosure {8} · reserved {} (`rules: []` + note —
+no user-reserved decision at census grain). No `conditions:` block — census §B's
+live-`when:` dimension list omits PM; the load-first block legally omits the `when:`
+grammar sentence (wave-1 RCM-4 wave-wide ruling).
+**The rung-3 widening double-statement (lead-ruled OQ3):** the [v0.73.0] widening clause
+rides `read-before-claim`'s schema text as the binding obligation, while the ladder's
+rung-3 body prose keeps its procedural wording verbatim — the sanctioned D3
+procedure-vs-obligation split (the ladder prose teaches, the schema rule binds);
+protection anchors on the schema rule in the provenance sidecar.
+**Deleted as dedup / moved, no content loss:** `## When NOT to Use` (row 2; its rung-1
+carve bullet mirrors row 3), the Ladder's stop-rule lead-in (row 4), `**Scope of each
+rung:**` (row 5), `**Read before you claim:**` (row 6), `## The floor — lazy, not
+negligent` (rows 3/7), `## Disclosure grammar` (row 8), Overview's firing-sites paragraph
+(rows 1, 9, 10), and `## Quality Checklist` (5 boxes, all mapped: box 1 = row 8 · box 2 =
+row 4 · box 3 = rows 3/7 · box 4 = row 6 · box 5 = row 5). The five rungs stay body prose
+as the sequenced procedure (D3); the `## Sibling` section stays as identity voice.
+Accounting: body 4,276 → 2,812 (obligations out + the load-first Rules block in) + schema
+5,782 = **payload 8,594** (census §F estimate ~7,660); structural overhead only, no
+content growth claimed. PM was unbudgeted (hard-cap-only); the conversion re-seed is its
+first budget row (ledger's third seeding path, no headroom — the wave closer executes the
+ledger row).
+
+## [v0.102.0] Stop-at-first-failing-rung + rung-scope rule — protection transfers (census §A PM row 1)
+- **Disposition:** superseded — protection transfers to `patterns-plan-minimalism.stop-at-first-failing-rung` (must) and `patterns-plan-minimalism.rung-scope` (must), per D8/C4; the five-rung ladder itself stays body prose (D3).
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 skill-content-schema rows; birth lineage `DECISIONS.md` 2026-08-12 plan-structure-yagni + `DECISIONS.md` 2026-08-13 architect-role restructure).
+- **Content:** "Per design element (component, entity, contract, mechanism, flow, constraint), stop at the **first rung that fails**, before it enters the package. Descend only when the rung above genuinely holds, and say why in one line when it doesn't." · "**Scope of each rung:** rungs 1, 4, 5 apply to every element without exception; rungs 2, 3 apply to design elements — shape and reuse are design judgments."
+- **Consumers assessed:** `mochiko:review-plan-artifacts` grades rung claims against this skill by name; nothing quotes the moved lead-in.
+
+## [v0.102.0] Rung-3 widening (adoptable proven component) — protection transfer into the read-before-claim rule (census §A PM row 2)
+- **Disposition:** superseded — protection transfers to `patterns-plan-minimalism.read-before-claim` (must, duty), whose text carries "An adoptable proven component (per `mochiko:patterns-adopt-first`) satisfies rung 3's 'already exists'", per D8/C4 and the census §A disposition. The ladder's rung-3 body prose keeps the widened wording verbatim as procedure (the map entry's OQ3 note).
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows; the widening's protecting ruling `DECISIONS.md` 2026-08-15 build-vs-off-the-shelf D5 as amended, Build Surface item 3).
+- **Content:** "3. **Already exists?** — a baseline, the current system, an installed dependency, or an adoptable proven component (per `mochiko:patterns-adopt-first`) carries it: extend, reference, or adopt — never re-design." (stays in the body ladder verbatim; the obligation limb now binds from the schema rule)
+- **Kept deliberately:** the rung's number and position (the [v0.73.0] entry below chose widening over renumbering); the "never re-design" prohibition, in both homes' wording.
+- **Consumers assessed:** `mochiko:patterns-adopt-first` ("its rung 3 reads adoption as a way something already exists" — still true on both surfaces); the description's rung-list summary unchanged (byte-identical description).
+
+## [v0.102.0] Three firing sites + epic joint plan — protection transfers (census §A PM row 3; [v0.91.0] re-scope)
+- **Disposition:** superseded — protection transfers to `patterns-plan-minimalism.three-firing-sites` (must) and `patterns-plan-minimalism.epic-joint-plan-one-plan` (must), per D8/C4.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows; protecting ruling `DECISIONS.md` 2026-08-26 plan-stage-utility D1/D4, wording ruled at the v0.91.0 wave).
+- **Content:** "It fires at three generation-time sites inside the implement run's **design phase**: **what the design phase authors** — scoped to the sufficiency gap list, signed by the user at the design checkpoint — **each producing seat's plan**, and the **epic joint design-phase plan** (one plan over all members)."
+- **Consumers assessed:** the router's row names the three surviving sites (re-keyed at v0.91.0, unchanged now); `mochiko:authoring-epic` carries the joint design-phase plan the third site names.
+
+## [v0.102.0] The floor both ways + disclosure grammar — protection transfers (census §A PM row 4)
+- **Disposition:** superseded — protection transfers to `patterns-plan-minimalism.rung-1-never-deletes` (floor), `patterns-plan-minimalism.floor-both-ways` (floor), and `patterns-plan-minimalism.disclosure-grammar` (must, duty), per D8/C4.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows; birth lineage `DECISIONS.md` 2026-08-12/13).
+- **Content:** "Rung 1's 'required' reads **ratified requirements AND asserted floor obligations** … the floor never enters the package through imagination, and never leaves it to reach a cheaper rung." · "`<element> — rung N (one-line why)` … An undisclosed element reads as rung-skipped at review."
+- **Consumers assessed:** `mochiko:review-plan-artifacts`'s rung-honesty lane grades the same disclosure grammar it always graded — wording verbatim-in-substance in the schema.
+
+## [v0.102.0] Remaining body obligations relocated (census §B rows 2 · 9)
+- **Disposition:** relocated → `plugins/mochiko/skills/patterns-plan-minimalism/schema.yaml`, per the map entry above (D3).
+- **Tier failed:** n/a — supersession by ruling (D3; `DECISIONS.md` 2026-09-01 rows).
+- **Content (decisive line per row):** 2 the two When-NOT routes (build-time code — the code-shaping ladder is `mochiko:patterns-code-minimalism`, downstream; a delta-scope run — no design phase fires by default, its deliverable the desk-confirmed delta card, already minimal) · 9 "`mochiko:review-plan-artifacts` grades them at review — rung-honesty advisory, gap-list conformance blocking".
+- **Consumers assessed:** none restates these rules; the router's row stays true.
+
 ## [v0.91.0] Fix round 3 — the last surviving "proposed" whose object died (advisory)
 
 - **Disposition:** superseded → "Every **authored** artifact and major element carries a

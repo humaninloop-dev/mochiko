@@ -649,3 +649,49 @@ Considered, rejected: `disclosure` (covered by `reporting`) · `stance` (AS-only
 *End of patterns-family census. Per D9-I3 this inventory returns to the user at the family
 gate with the §D borderline-abort evidence, the §ROAD rejection recommendation, the §F ×1.65
 payload projection, and the 9-carriers-vs-13 scope question, before any conversion begins.*
+
+---
+
+## K. Build-corrections appendix (wave 2B landing, 2026-09-01, v0.102.0)
+
+Corrections and final measures recorded at landing per the wave-1 §K idiom. Scope as ruled:
+the 9 discipline carriers converted; the four teachers (AC · EM · TD · SD) stay prose.
+
+- **Class-mix cells vs row-grain enumerations** — the row grain won in every conflict
+  (the standing table-beats-tally idiom, applied per lead ruling at plan approval):
+  **AF 7 floors** (summary row said 6/10/1; enumeration marks 7 floors, no advisory) ·
+  **CM 3 floors** (summary cell said 4; three rows carry the floor marker) ·
+  **TF 11 floors** (the §B table's "10", §D's "10 floors" cell, AND the build brief all
+  under-counted; the enumeration's "(floor, bound)" marker on the version-floor row won by
+  lead overrule) · **VT 5 floors** (the detail line's `must` marker on the two-arm row lost
+  to the §B table + §D's explicit "5 floors incl. two protected two-arm/authorship rules";
+  the promotion gives the GI-020-protected rule floor survival).
+- **Structural resolutions, all disclosed in strip maps:** AS census row 4's store-grammar
+  half folded into `ax-grammar-routing` · MM merge mechanics as one 4-limb rule
+  (census-sanctioned) · TF's sizing not-for route folded into `governs-use-never-choice`
+  (no 15th rule; the J-P10 edge's TF-side ID) · AF's two build-time rules and MM's
+  cap-trip rule are DECLARE-form `when:` (the command-ontology idiom, confirmed
+  transferring) · SL's two tables compressed into rule text with all seven governing-surface
+  rows and all four wiring rows preserved · AFM-class conditions divergences: none (SL and
+  VT are the family's only `conditions:` carriers besides AF/MM).
+- **Audit-mandated repairs (W1/W2/W3 rounds):** AS regained the display-for-override
+  obligation the census row grain had dropped (census-inherited loss, restored by ruling) ·
+  MT regained the sound-loop cross-floor pointer (census §I carrier) · SL regained two
+  governing-surface regime descriptors · VT shed one undisclosed added sentence · one
+  VT strip heading overwrite (the wave-1 GI-005 class) caught mid-wave by a sibling seat
+  and restored byte-exact.
+- **Final measures** — family delivered-at-invoke **95,858** vs 50,379 pre-conversion =
+  **×1.90**, +5.1% over the §F 9-carrier estimate (×1.81, ~91.2k), inside the census ±25%
+  band. Per member: AF 12,910 · AS 12,361 · CM 8,024 · MM 9,362 · MT 8,793 · PM 8,594 ·
+  SL 10,933 · TF 10,556 · VT 14,325. No common file (§ROAD held); 124 rules · 46 floors ·
+  3 reference stubs; two re-seeds (CM, VT — the +294 HOLDS overage absorbed and
+  superseded) + seven first-seeds via the ledger's third seeding path.
+- **Cross-family graduation evidence (D5, not actioned):** the detector surfaced a 4-member
+  cross-family read-before-claim convergence (authoring-feature-map · patterns-map-minimalism
+  · review-brainstorm · review-specifications) — the strongest signal yet for the
+  cross-family `skill-common.yaml` graduation candidate; suppressed on D5 grounds, six
+  allowlist edges, evidence recorded here and at the wave's record trail.
+- **Standing non-blocking observations:** MT's session-tier clause drops its "(the F2
+  guide-line)" internal citation (verbatim-in-substance holds; decision, not oversight) ·
+  the checker's `pointers` stat counts file-path pointers only, so skill-ref pointers
+  (`mochiko:<skill>`) read as 0 — consistent corpus-wide.

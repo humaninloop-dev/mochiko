@@ -175,7 +175,8 @@ injects on a schema Read.
      `schema.yaml` (base-dir-relative) and, where any stub binds, the skill's family
      common file — `plugins/mochiko/schemas/skill-review-common.yaml` for the review
      family, `plugins/mochiko/schemas/skill-authoring-common.yaml` from v0.101.0 — in the
-     same first action; a member's
+     same first action; the patterns family ships no common file (census-patterns §ROAD),
+     so its load-first block reads the pair's own schema only; a member's
      own obligated reference read (e.g. `review-feasibility`'s lens) sequences there too.
      The reading grammar — `when:` interpretation, floors always delivered, stub
      inheritance limits — is carried in the block; the `when:`-interpretation clause is
@@ -188,7 +189,9 @@ injects on a schema Read.
      `<skill>.sec.independence` · `scope` · `inputs` · `verdict` · `output` · `reserved`
      (census §H, v0.100.0); the authoring family's, swapping `verdict` for `artifact` —
      `independence` · `scope` · `inputs` · `artifact` · `output` · `reserved`
-     (census-authoring J-1, v0.101.0). Every `<skill>.sec.*` token
+     (census-authoring J-1, v0.101.0); the patterns family's — a full swap-out, not one
+     slot — `trigger` · `scope` · `discipline` · `inputs` · `disclosure` · `reserved`
+     (census-patterns §B/J-P7, v0.102.0). Every `<skill>.sec.*` token
      anywhere in the `.md`, inside the load-first block or outside it, resolves to a live
      node.
   3. **Floor-count pin + read-back.** The `.md`'s pinned line — "the N rules of
@@ -244,7 +247,9 @@ injects on a schema Read.
   `.mochiko/brainstorms/skill-content-schema/census.md` (§E kind retirement · §H section
   set · J-7 cross-directory pointers) · the authoring-family census
   `.mochiko/brainstorms/skill-content-schema/census-authoring.md` (§I labels · J-1
-  section set · J-6 budget · J-7 first-seeds) ·
+  section set · J-6 budget · J-7 first-seeds) · the patterns-family census
+  `.mochiko/brainstorms/skill-content-schema/census-patterns.md` (§B section proposal ·
+  §ROAD rejection · §I labels · J-P2 first-strips · J-P5 two-arm/overage) ·
   `.mochiko/decisions/2026-08-28-near-dup-convergence.md` R1–R6.
 
 **Protected content leaves ONLY by ruling.** A line in a record's protected set, marked `KEPT:`, or

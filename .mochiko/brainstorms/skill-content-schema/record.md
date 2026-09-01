@@ -718,6 +718,38 @@ pointer takes a one-line ruled repair riding its wave, never a silent fix.
   Remaining waves per the door rulings: 2B patterns (9 carriers) · 2C small families (dense
   five), each census-first with its own landing.
 
+### Wave 2B — patterns family (9 carriers) BUILT (2026-09-01, v0.102.0)
+
+- **Build:** 4 plan-approved producers, disjoint ownership (shared surfaces · 3+4+2 pairs,
+  the pairs-C seat again single-writer closer). Delivered: 9 in-dir pairs (124 rules ·
+  46 floors · 3 reference stubs · pins 7/5/3/3/2/4/6/11/5 with read-backs) · the minted
+  patterns section set `trigger · scope · discipline · inputs · disclosure · reserved` ·
+  **no common file** (§ROAD held; zero `extends:` family-wide, checker-enforced) · labels
+  +2 (`trigger`, `ladder`; registry 13) · checker library-less-family mechanics (matrix
+  105→114) · criteria 1/2 + Rulings block amended · provenance 118 new anchors (507 total,
+  every floor anchored, six deliberate must-absences named) · allowlist 157→181 distinct
+  rows, detector 0 clusters over 912 rules · ledger 2 re-seeds (VT's +294 HOLDS absorbed)
+  + 7 first-seeds, no headroom. Two strip files born (AS, TF — census J-P2).
+- **Class-mix rulings at plan approval (row grain beats tally, four times):** AF 7 floors ·
+  CM 3 · TF 11 (version-floor overruled up — the table, §D, and the lead's own brief all
+  under-counted) · VT 5 (two-arm promoted, §D's explicit naming). All in §K.
+- **Audits (3 fresh author≠grader validators, 11 units):** round 1 — 9 pairs PASS with
+  1 major (AS display-for-override obligation lost at census row grain — restored) +
+  11 minors; W3 unit B FAIL on three trail-accuracy majors (stale quiesced-tree claim ·
+  one-of-six deliberate absences named · duplicate allowlist row) — all repaired; one VT
+  strip heading overwrite (the GI-005 class) caught by a SIBLING SEAT mid-wave, restored
+  byte-exact, verified thrice. Delta re-grades: **ALL ELEVEN UNITS PASS.**
+- **Measured at landing:** family delivered-at-invoke **95,858** vs 50,379 = **×1.90**,
+  +5.1% over the ×1.81 estimate, inside the ±25% band. Matrices 114/114 · 134/134 · 48/48;
+  sweeps 25/25 skill pairs · 6/6 command pairs.
+- **Cross-family graduation evidence:** the 4-member read-before-claim convergence
+  (AFM · MM · RB · RSPEC) recorded as the strongest D5 `skill-common.yaml` candidate signal
+  yet — evidence only, suppressed on D5 grounds.
+- Landing ritual: §K appendix · DECISIONS row → 2B built · BACKLOG watch extended ·
+  ROADMAP · index · CHANGELOG 0.102.0 · marketplace synced · cargo (gate 6). Remaining:
+  wave 2C small families (dense five). The four teachers (api-contracts · entity-modeling ·
+  technical-decisions · system-design) stay prose by ruling; revisit on evidence.
+
 ## Open questions
 
 - None blocking. Named graduation candidates (not open questions): phase anchors (D3) ·

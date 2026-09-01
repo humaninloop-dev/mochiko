@@ -21,10 +21,15 @@ Checks, all deterministic:
   3. section grammar — the skill's FAMILY section set, set-wise, with
      `<stem>.sec.<slug>` IDs. The family derives from the directory-name stem prefix:
      `authoring-*` → the authoring set minted at census-authoring J-1 (independence ·
-     scope · inputs · artifact · output · reserved); everything else → the review set
-     minted at census §H (independence · scope · inputs · verdict · output ·
-     reserved — the small families reuse it by ruling, and further families add a
-     prefix branch by their own ruling). `rules: []` with a one-line `note:` is a
+     scope · inputs · artifact · output · reserved); `patterns-*` → the patterns set
+     minted at census-patterns §B/J-P7 (trigger · scope · discipline · inputs ·
+     disclosure · reserved — a full swap-out, not one slot); everything else → the
+     review set minted at census §H (independence · scope · inputs · verdict ·
+     output · reserved — the small families reuse it by ruling, and further families
+     add a prefix branch by their own ruling). An unconverted member — a skill
+     directory with no schema.yaml, e.g. the four patterns teachers — is never swept:
+     both discovery paths glob `*/schema.yaml`, so prose-only skills stay legal by
+     construction. `rules: []` with a one-line `note:` is a
      deliberate empty marker and valid; empty with no note is a finding
   4. rule-ID uniqueness + dotted-slug format + stem prefix (every rule and section ID
      leads with the skill's directory name)
@@ -51,13 +56,16 @@ Checks, all deterministic:
      family library (review → plugins/mochiko/schemas/skill-review-common.yaml ·
      authoring → plugins/mochiko/schemas/skill-authoring-common.yaml); a stub naming
      another family's prefix is a finding (D5 per-family library, cross-family
-     sharing forbidden); the stub declares `class:` locally; a common block carrying
+     sharing forbidden); the patterns family ships NO common library by ruling
+     (census-patterns §C/§ROAD — the thin candidates fail R5 net-reduction), so ANY
+     `extends:` in a patterns schema is a finding naming that ruling; the stub
+     declares `class:` locally; a common block carrying
      `kind:`/`when:`/`enforces:` is an error; blocks bound by no stub in any swept
-     skill are named once, at the end of a sweep, per family and only where at least
-     one swept schema belongs to that family (the orphan question is family-wide, so
-     a single-skill run — or a sweep with no members of the family — makes no orphan
-     claim). Text-side checks run against RESOLVED text — the run reads the
-     inherited text
+     skill are named once, at the end of a sweep, per library-bearing family and only
+     where at least one swept schema belongs to that family (the orphan question is
+     family-wide, so a single-skill run — or a sweep with no members of the family —
+     makes no orphan claim; a library-less family makes none ever). Text-side checks
+     run against RESOLVED text — the run reads the inherited text
  10. `${var}` closure against `vars:`; unused vars warn; deixis lint (the command D15
      idiom — a reference that dangles when the rule is quoted alone)
  11. `pointer:` path resolution (census J-7) — a path-shaped pointer (carries a `/` or
@@ -153,26 +161,40 @@ INHERITED_FIELDS = ("text", "labels", "pointer")
 # Per-family section sets, each minted once by its family's census-backed ruling —
 # review at census §H (the grader lifecycle), authoring at census-authoring J-1
 # (`artifact` replaces `verdict`: producers have no clearing grammar, and the produced
-# artifact's binding grammar needs a home). The family derives from the directory-name
-# stem prefix; everything without a minted prefix falls through to the review set (the
-# small families reuse it by ruling).
+# artifact's binding grammar needs a home), patterns at census-patterns §B/J-P7 (the
+# discipline lifecycle — a full swap-out of the review set, not one slot). The family
+# derives from the directory-name stem prefix; everything without a minted prefix
+# falls through to the review set (the small families reuse it by ruling).
 FAMILY_SECTION_SETS = {
     "review": ("independence", "scope", "inputs", "verdict", "output", "reserved"),
     "authoring": ("independence", "scope", "inputs", "artifact", "output", "reserved"),
+    "patterns": ("trigger", "scope", "discipline", "inputs", "disclosure", "reserved"),
 }
+# The families that ship a common block library (D5 per-family file). The patterns
+# family ships NONE by ruling — census-patterns §C/§ROAD, the thin candidates fail R5
+# net-reduction — so any `extends:` in a patterns schema is a finding, and the sweep
+# makes no patterns orphan claim.
+LIBRARY_FAMILIES = ("review", "authoring")
 COMMON_ID_RES = {
     family: re.compile(rf"^{family}-common\.[a-z0-9]+(?:-[a-z0-9]+)*$")
-    for family in FAMILY_SECTION_SETS
+    for family in LIBRARY_FAMILIES
 }
 
 
 def family_of(stem: str) -> str:
     """The skill's grammar family, from its directory-name stem prefix."""
-    return "authoring" if stem.startswith("authoring-") else "review"
+    if stem.startswith("authoring-"):
+        return "authoring"
+    if stem.startswith("patterns-"):
+        return "patterns"
+    return "review"
 
 
-def family_common_path(a, family: str) -> Path:
-    """The family's own block library — D5: per-family file, never shared."""
+def family_common_path(a, family: str):
+    """The family's own block library — D5: per-family file, never shared. None for a
+    family that ships no library at all (patterns, by the census-patterns ruling)."""
+    if family not in LIBRARY_FAMILIES:
+        return None
     return a.authoring_common if family == "authoring" else a.common
 RULES_HEADING = "## Rules — load the schema first"
 CITATION_SUFFIXES = {"md", "yaml", "sh"}
@@ -389,6 +411,13 @@ def resolve_extends(rid: str, r: dict, common, common_path: Path, bound: set,
     if "extends" not in r:
         return eff
     target = str(r.get("extends"))
+    if family not in COMMON_ID_RES:
+        findings.append(
+            f"{rid}: `extends: {target}` — the {family} family ships no common library "
+            f"(census-patterns §C/§ROAD: the thin candidates fail R5 net-reduction); "
+            f"every {family} rule carries local text"
+        )
+        return eff
     if not COMMON_ID_RES[family].match(target):
         findings.append(
             f"{rid}: `extends: {target}` — want `{family}-common.<slug>` "
@@ -525,7 +554,7 @@ def main() -> int:
     # library and only where the sweep saw at least one member of the family.
     if not a.skill:
         swept_families = {family_of(sp.parent.name) for sp in paths}
-        for family in FAMILY_SECTION_SETS:
+        for family in LIBRARY_FAMILIES:
             path = family_common_path(a, family)
             print(f"=== {path.name} ===")
             if family not in swept_families:
@@ -697,8 +726,10 @@ def check_pair(schema_path: Path, a, stems: set, bound_acc: set = None,
     #    has none).
     binds_common = any(isinstance(r, dict) and "extends" in r for r, _, _ in rules)
     common_path = family_common_path(a, family)
+    # A library-less family (patterns) loads nothing even where a stray stub appears —
+    # resolve_extends names the no-common-file ruling per stub instead.
     common = (load_common(common_path, binds_common, findings, warnings, family)
-              if binds_common else None)
+              if binds_common and common_path is not None else None)
     bound_blocks = set()
 
     label_use = {name: 0 for name in reg_labels}

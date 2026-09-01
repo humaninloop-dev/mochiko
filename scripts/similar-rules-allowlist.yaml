@@ -388,3 +388,72 @@ suppressions:
     reason: two different reference bindings (ESSENTIAL-FLOOR.md vs catalog/universal-floor.md) sharing the canonical-home frame
   - ids: [authoring-epic.mint-once, authoring-epic.implement-resolves-by-lookup]
     reason: the mint-once floor vs its implement-run consequence — census carried both rows; merge candidate at first grooming pass
+
+  # === Skill-side edges (wave 2B, patterns-family conversion, v0.102.0; adjudications
+  # per census-patterns §C/§D/J-P10 + the wave-2 family-door ruling — no common file:
+  # P1's thin core fails R5 net-reduction, and P5 clears the 3+ bar only as a family
+  # common block the door ruling declined to mint — seeded by the closer seat against
+  # the landed corpus, detector driven to 0 clusters). Census-recorded keep-distincts
+  # with no live edge possible get no row (the standing convention; tripwire stands if
+  # wording converges): sizing-belongs-to-the-minimalism-siblings (SL/TF — SL's carrier
+  # stays body prose, TF's rides `governs-use-never-choice`); the §C P4
+  # envelope-density triple (SD · EM · AC) fires nothing — all three members stayed
+  # prose by the door ruling. The census §C P3 own-or-point cluster (9 same-kind
+  # members — "the single source; never restated here" over nine different owned
+  # objects) is kept distinct under R1 — wordings not near-identical, so no live edge
+  # and no rows owed; this note is the census-requested header so detector reruns
+  # stay quiet. ------------------------------------------------------------------
+  # --- J-P10 pre-listed pairs (census §C screened list, door ruling froze) ---
+  - ids: [patterns-sound-loop.two-part-trigger, patterns-transport-floor.neither-lane-waivable]
+    reason: census J-P10 chartered-freedom-when-untripped — 2-member, below bar; near-verbatim clause on two different axes (ritual vs transport), each rule's operative trigger content member-specific
+  - ids: [patterns-sound-loop.kind-keyed-library-wide, patterns-transport-floor.neither-lane-waivable]
+    reason: census J-P10 kind-keyed-floor-non-waivable — 2-member, below bar; different axes and different firing grammars (two-part judgment/governing test vs transport lanes)
+  - ids: [patterns-code-minimalism.stop-at-first-rung, patterns-plan-minimalism.stop-at-first-failing-rung]
+    reason: census J-P10 / §C stop-at-first-rung — 2-member, below bar; inverted predicates (stop at first rung that APPLIES vs first rung that FAILS), sibling ladders kept single-source by the door ruling
+  - ids: [patterns-code-minimalism.lazy-not-negligent, patterns-plan-minimalism.floor-both-ways]
+    reason: census J-P10 / §C the-floor-lazy-not-negligent — 2-member, below bar; near-identical posture, different floors (code rungs never sacrifice floor obligations vs nothing speculative in / no floor obligation out)
+  # --- census §C P1 stance-is-the-user's (thin core; door ruling's no-common-file
+  # clause froze keep-distinct — extraction saves ~40 chars/member, fails R5) ---
+  - ids: [patterns-adopt-first.build-time-never-builder-decided, patterns-architecture-shelves.recommend-then-arbitrate]
+    reason: census §C P1 — thin shared core ("reserved to the user, never the seat's"), operative content member-specific (build-time halt vs shelf arbitration); door ruling no-common-file, R5 fails
+  - ids: [patterns-adopt-first.build-time-never-builder-decided, patterns-map-minimalism.capability-layer-user-ruled]
+    reason: census §C P1 — same adjudication (build-time halt vs mint/merge/retire reservation)
+  - ids: [patterns-adopt-first.build-time-never-builder-decided, patterns-sound-loop.leg-3-user-gate-stays]
+    reason: census §C P1 — same adjudication (build-time halt vs the user gate above the loop)
+  - ids: [patterns-architecture-shelves.recommend-then-arbitrate, patterns-map-minimalism.capability-layer-user-ruled]
+    reason: census §C P1 — same adjudication (shelf arbitration vs map reservation)
+  - ids: [patterns-architecture-shelves.recommend-then-arbitrate, patterns-sound-loop.leg-3-user-gate-stays]
+    reason: census §C P1 — same adjudication (shelf arbitration vs the loop's user gate)
+  - ids: [patterns-map-minimalism.capability-layer-user-ruled, patterns-sound-loop.leg-3-user-gate-stays]
+    reason: census §C P1 — same adjudication (map reservation vs the loop's user gate)
+  # --- census §C P5 read-before-claim (clears 3+ only as a family common block; the
+  # door ruling minted no common file, so the three sibling ladders keep local) ---
+  - ids: [patterns-code-minimalism.rung-zero-read-before-rank, patterns-plan-minimalism.read-before-claim]
+    reason: census §C P5 — door ruling no-common-file; convergent obligation, different read surfaces (touched code's real flow vs baselines + current state)
+  - ids: [patterns-code-minimalism.rung-zero-read-before-rank, patterns-map-minimalism.read-map-first]
+    reason: census §C P5 — same adjudication (code flow vs the current map)
+  - ids: [patterns-map-minimalism.read-map-first, patterns-plan-minimalism.read-before-claim]
+    reason: census §C P5 — same adjudication (the current map vs baselines + current state)
+  # --- live detector clusters at the wave-2B sweep, adjudicated ---
+  - ids: [authoring-feature-map.reconstructed-reverify, patterns-map-minimalism.read-map-first]
+    reason: cross-family (authoring/patterns) — D5 forbids sharing; different obligations (reconstructed-entry re-verify vs read-the-map-before-new-kind); convergence noted as D5 graduation-candidate evidence only
+  - ids: [authoring-feature-map.reconstructed-reverify, review-specifications.check-existing-first]
+    reason: cross-family (authoring/review) — D5; different surfaces (map entry vs existing patterns/decisions)
+  - ids: [patterns-map-minimalism.read-map-first, review-brainstorm.verify-load-bearing-claims]
+    reason: cross-family (patterns/review) — D5; different surfaces (the map vs record claims)
+  - ids: [patterns-map-minimalism.read-map-first, review-specifications.check-existing-first]
+    reason: cross-family (patterns/review) — D5; different surfaces (the map vs existing patterns/decisions)
+  - ids: [review-brainstorm.verify-load-bearing-claims, review-specifications.check-existing-first]
+    reason: 2-member within review, below bar; different read duties (record's fact-checker map vs existing patterns/decisions before asking)
+  - ids: [impl.seat-card-author-independence, patterns-vertical-tdd.author-never-executing-builder]
+    reason: J-5 cross-grammar twin — same substance on command and skill planes, D5-I7 argued keep-separate; drift edge deliberately recorded (the impl.minimalism-advisory precedent)
+  - ids: [authoring-feature-map.architecture-routing, patterns-architecture-shelves.ax-grammar-routing]
+    reason: cross-family (authoring/patterns) — D5; different routed objects (map entry's spine links vs stance-row grammar ownership)
+  - ids: [patterns-code-minimalism.adopt-first-binding-constraint, review-feasibility.adopt-first-excess]
+    reason: cross-family (patterns/review) — D5; owner-vs-reviewer mirror of the adopt-first discipline (build-time binding constraint vs excess verdict criterion)
+  - ids: [authoring-epic.design-phase-always-fires, patterns-vertical-tdd.design-time-inside-implement-run]
+    reason: cross-family (authoring/patterns) — D5; different obligations (epic always fires the joint design phase vs this skill's firing site inside the run)
+  - ids: [patterns-vertical-tdd.test-gate-field-set, patterns-vertical-tdd.test-gate-must-includes]
+    reason: sibling reference stubs of one TEST-GRAMMAR.md single source — distinct obligations (field set vs the four MUST-includes) sharing the referent (the RPA ISSUE-TEMPLATES precedent)
+  - ids: [patterns-transport-floor.mesh-hold, patterns-transport-floor.single-writer-per-surface]
+    reason: two distinct legs of one floor sharing the hand-off frame — message-lane start discipline vs topology-lane pen ownership; census carried both as separate legs

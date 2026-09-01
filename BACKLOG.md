@@ -23,16 +23,18 @@ git history (this line, before this groom).*
 `.mochiko/brainstorms/skill-content-schema/record.md`)*
 
 - [ ] **First-live-run watch: skill schema delivery (D6)** — review wave DELIVERED
-  2026-09-01 at v0.100.0, authoring wave (2A) at v0.101.0 (→ trail). Probes: schema read?
-  whole? before the first procedural step? read-back stated? · the I5 per-invoke read-cost
-  observable against the MEASURED figures (review ×3.24 ~119.9k · authoring ×1.84 ~150.6k
+  2026-09-01 at v0.100.0, authoring (2A) at v0.101.0, patterns 9 carriers (2B) at
+  v0.102.0 (→ trail). Probes: schema read? whole? before the first procedural step?
+  read-back stated? · the I5 per-invoke read-cost observable against the MEASURED figures
+  (review ×3.24 ~119.9k · authoring ×1.84 ~150.6k · patterns ×1.90 ~95.9k
   delivered-at-invoke; ledger rows the per-member source) · benefit observations (a
   `skill.*` ID cited by a strip/audit row · the checker or detector catching a real defect
-  — two live already: V1's Shape-token catch and V2's anchor-gap catch, wave-2A audits).
-  Consumers: the D9 rollback trigger (user-reserved; triggers: delivery underperforming
-  the prose baseline, or the eval sample past the pre-registered bar) + the queued 2B/2C
-  wave landings. Still owed from wave 1: the D7 compression-eval judged sample (RB+RF,
-  pre-registration + ship bar take their own user ratification).
+  — live already: the 2A Shape-token and anchor-gap catches, the 2B display-for-override
+  catch and the sibling-seat GI-005 heading catch). Consumers: the D9 rollback trigger
+  (user-reserved; triggers: delivery underperforming the prose baseline, or the eval
+  sample past the pre-registered bar) + the queued 2C landing. Still owed from wave 1:
+  the D7 compression-eval judged sample (RB+RF, pre-registration + ship bar take their
+  own user ratification).
 
 ## Command-schema ontology wave
 

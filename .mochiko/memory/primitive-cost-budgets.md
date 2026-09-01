@@ -64,11 +64,11 @@ audited Wave 2 body no-ops (nothing D4-cuttable); their budgets are their surviv
 | grooming-operating-docs | 2,666 | 3,333 |
 | testing-end-user | 13,125 | 16,407 |
 | patterns-api-contracts | 10,729 | 13,412 |
-| patterns-code-minimalism | 3,455 | 4,319 |
+| patterns-code-minimalism | 8,024 (re-seeded [v0.102.0] schema conversion — payload: body 2,235 + schema 5,789; was 3,455/4,319) | 8,024 (no headroom) |
 | patterns-entity-modeling | 13,468 | 16,835 |
 | patterns-system-design | 9,304 (re-asserted v0.81.0) | 11,047 |
 | patterns-technical-decisions | 4,626 | 5,783 |
-| patterns-vertical-tdd | 5,189 | 6,487 |
+| patterns-vertical-tdd | 14,325 (re-seeded [v0.102.0] schema conversion — payload: body 5,145 + schema 9,180, re-measured post-fix-round; was 5,189/6,487 with a standing +294 ruled-HOLDS overage at body 6,781 — absorbed and superseded by this re-seed, trail in `.mochiko/strips/patterns-vertical-tdd.md` [v0.102.0] and the v0.80.0/v0.91.0 paragraphs below) | 14,325 (no headroom) |
 | review-brainstorm | 11,470 (re-seeded [v0.100.0] schema conversion — payload: body 2,328 + schema 9,142, re-measured post-fix-round; was 2,497/3,122) | 11,470 (no headroom) |
 | review-feasibility | 10,572 (re-seeded [v0.100.0] schema conversion — payload: body 2,195 + schema 8,377; was 1,893/2,367) | 10,572 (no headroom) |
 | review-plan-artifacts | 17,890 (re-seeded [v0.100.0] schema conversion — payload: body 3,170 + schema 14,720; was 4,901/6,127) | 17,890 (no headroom) |
@@ -78,6 +78,13 @@ audited Wave 2 body no-ops (nothing D4-cuttable); their budgets are their surviv
 | authoring-architecture-store | 18,876 (first budget row, seeded [v0.101.0] schema conversion — payload: body 4,904 + schema 13,972, re-measured post-fix-round; unbudgeted at birth, v0.81.0 hard-cap-only) | 18,876 (no headroom) |
 | authoring-epic | 13,044 (first budget row, seeded [v0.101.0] schema conversion — payload: body 2,569 + schema 10,475; unbudgeted at birth, v0.72.0 hard-cap-only) | 13,044 (no headroom) |
 | skill-authoring-common.yaml | 1,285 (family common file, budgeted once as its own primitive — seeded [v0.101.0] schema conversion, re-measured after the epigraph-block label-line drop) | 1,285 (no headroom) |
+| patterns-adopt-first | 12,910 (first budget row, seeded [v0.102.0] schema conversion — payload: body 2,253 + schema 10,657; unbudgeted at birth, v0.73.0 build-cap-only) | 12,910 (no headroom) |
+| patterns-architecture-shelves | 12,361 (first budget row, seeded [v0.102.0] schema conversion — payload: body 2,923 + schema 9,438, re-measured post-fix-round; unbudgeted at birth, v0.81.0 hard-cap-only) | 12,361 (no headroom) |
+| patterns-map-minimalism | 9,362 (first budget row, seeded [v0.102.0] schema conversion — payload: body 2,470 + schema 6,892; unbudgeted at birth, v0.68.0 hard-cap-only) | 9,362 (no headroom) |
+| patterns-model-tiering | 8,793 (first budget row, seeded [v0.102.0] schema conversion — payload: body 1,614 + schema 7,179, re-measured post-fix-round; unbudgeted at birth, v0.77.0 hard-cap-only) | 8,793 (no headroom) |
+| patterns-plan-minimalism | 8,594 (first budget row, seeded [v0.102.0] schema conversion — payload: body 2,812 + schema 5,782; unbudgeted at birth, v0.67.0 hard-cap-only) | 8,594 (no headroom) |
+| patterns-sound-loop | 10,933 (first budget row, seeded [v0.102.0] schema conversion — payload: body 2,022 + schema 8,911, re-measured post-fix-round; unbudgeted at birth, v0.70.0 hard-cap-only) | 10,933 (no headroom) |
+| patterns-transport-floor | 10,556 (first budget row, seeded [v0.102.0] schema conversion — payload: body 2,412 + schema 8,144; unbudgeted at birth, v0.71.0 hard-cap-only) | 10,556 (no headroom) |
 
 The v0.63.0 floor-line additions (analysis-iterative, review-governance-intent,
 validation-constitution, review-specifications) and the v0.64.0 ones (review-brainstorm,
@@ -156,6 +163,38 @@ pre-conversion family body — **×1.84 against the census estimate ×2.35** (th
 did not recur; figure returns to the user at the landing gate). Rulings + disposition
 maps: the [v0.101.0] entries in each member's `.mochiko/strips/` file and the 2026-09-01
 `DECISIONS.md` rows.
+
+**[v0.102.0] patterns-family conversion re-seeds — the third seeding path's third use.**
+The nine patterns-carrier rows above are conversion re-seeds and first-seeds per
+skill-content-schema D8/C1 and the wave-2 patterns family-door ruling (`DECISIONS.md`
+2026-09-01): budget = the measured delivered-at-invoke payload exactly, no +25% headroom.
+Two rows re-seed (`patterns-code-minimalism` · `patterns-vertical-tdd`); **seven are
+first-seeds** — `patterns-adopt-first` · `patterns-architecture-shelves` ·
+`patterns-map-minimalism` · `patterns-model-tiering` · `patterns-plan-minimalism` ·
+`patterns-sound-loop` · `patterns-transport-floor` were unbudgeted at birth under the
+"budgets are never invented" clause and gain their first rows via **the third seeding
+path ("a ruled schema conversion")**, which composes with that clause: the conversion is
+a ruled measurement event, not an invention (the wave-2A AAS/AE precedent; their
+unbudgeted-at-birth paragraphs below stay as history).
+**`patterns-vertical-tdd`'s standing ruled overage (+294, declared at v0.80.0/v0.91.0
+and ruled HOLDS) is absorbed and superseded by its re-seed** — the budget row no longer
+carries it; the trail survives in `.mochiko/strips/patterns-vertical-tdd.md`
+([v0.80.0]/[v0.91.0] declarations + the [v0.102.0] conversion entry) and the
+v0.80.0/v0.91.0 paragraphs below (census-patterns J-P5; GI-006 reconstruction). No
+common file exists for this family (census-patterns §C/§ROAD — the door ruling minted
+none), so no common-file row rides this wave. All nine figures are canonical-snippet
+counts taken 2026-09-01 by the closer seat against the tree as landed — **re-measured
+once after the W1/W2 audit fix rounds landed** (the AS/MT/SL text repairs and the VT
+sentence cut; four rows moved and carry "re-measured post-fix-round"), never
+seat-reported numbers (the wave-1 V2/R1 lesson). Descriptions are byte-untouched by the
+conversion (AF 610 · AS 473 · CM 564 · MM 499 · MT 655 · PM 600 · SL 505 ·
+TF 450 · VT 497 — all under the 1,536 cap; CM's protected RETURNED clause stays
+description-borne per census J-P3). Family delivered-at-invoke, measured (final,
+post-fix-round): **95,858 vs the 50,379 pre-conversion nine-carrier bodies = ×1.90,
+against the census estimate ×1.81 (~91.2k)** — +5.1% over estimate, well inside the
+census's stated ±25% band; the measured figure returns to the user at the landing gate.
+Rulings + disposition maps: the [v0.102.0] entries in each member's `.mochiko/strips/`
+file and the 2026-09-01 `DECISIONS.md` rows.
 
 ## Skill descriptions
 

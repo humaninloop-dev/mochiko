@@ -1,0 +1,219 @@
+# Skill content schema for mochiko:patterns-vertical-tdd. The SKILL.md body instructs a
+# raw, full Read of this file at skill invoke — the patterns family ships no common file, so
+# the pair's own schema is the whole first action — and its "Rules — load the schema first"
+# section carries the reading grammar. One semantic lives only here:
+#   class   floor = non-waivable · must = binding obligation · advisory = guidance, not binding.
+kind: skill
+skill: patterns-vertical-tdd
+
+conditions:
+  new_end_to_end_path:
+    values: presence
+    resolution: entry-derived
+    note: >-
+      the work opens a genuinely new end-to-end path — greenfield, or a new path through
+      the system.
+
+sections:
+  - id: patterns-vertical-tdd.sec.trigger
+    title: Trigger — where the slicing fires
+    intent: >-
+      The firing site inside the pipeline.
+    rules:
+
+      - id: patterns-vertical-tdd.design-time-inside-implement-run
+        labels: [trigger]
+        class: must
+        text: >-
+          This skill fires at design time inside the `/mochiko:implement` run — after the
+          design phase, or directly on a zero-gap sufficiency verdict; never a separate
+          plan run.
+
+  - id: patterns-vertical-tdd.sec.scope
+    title: Scope — slicing judgment, not build-time work
+    intent: >-
+      Jurisdiction and ownership lines.
+    rules:
+
+      - id: patterns-vertical-tdd.writes-no-task-lists
+        labels: [boundary]
+        class: floor
+        text: >-
+          This skill writes no task lists and no file paths — the card carries the what
+          and why; the builder decomposes each card into concrete tasks, with file paths,
+          at build time with the code in view (`mochiko:executing-tdd-cycle`,
+          downstream).
+        pointer: "mochiko:executing-tdd-cycle"
+
+      - id: patterns-vertical-tdd.not-for-routes
+        labels: [boundary]
+        class: must
+        kind: routing
+        text: >-
+          Not for bug fixes (single-change fixes need no cycle structure), for
+          documentation-only or spike/research work, for decomposing a card into tasks
+          (build-time, `mochiko:executing-tdd-cycle`), or for deriving or scoping
+          features — the feature is the pipeline unit, owned by
+          `mochiko:authoring-feature-map`, upstream (its vocabulary table disambiguates
+          feature vs cycle); a cycle is a within-one-feature increment.
+
+      - id: patterns-vertical-tdd.grammar-owned-downstream-consume
+        labels: [binding, single-home]
+        class: must
+        kind: binding
+        text: >-
+          The `**TEST:**` grammar — fields, action modifiers, assert patterns,
+          classification — is single-homed in `references/TEST-GRAMMAR.md`; this skill
+          owns it, and downstream parsers consume it, never redefine it.
+        pointer: "references/TEST-GRAMMAR.md"
+
+  - id: patterns-vertical-tdd.sec.discipline
+    title: Discipline — the slicing invariants
+    intent: >-
+      What every cycle card must be.
+    rules:
+
+      - id: patterns-vertical-tdd.vertical-over-horizontal
+        labels: [artifact-grammar]
+        class: must
+        text: >-
+          Cycles slice vertically, never horizontally — a card whose test cases cannot be
+          demonstrated on their own is not a cycle.
+
+      - id: patterns-vertical-tdd.walking-skeleton-first
+        labels: [trigger]
+        class: must
+        when: {new_end_to_end_path: present}
+        text: >-
+          The first cycle is a walking skeleton — the thinnest end-to-end path through
+          all layers with one trivial case green; it is the foundation, by construction.
+          Growth or delta work on an already-standing path skips the skeleton.
+
+      - id: patterns-vertical-tdd.no-infra-only-cards
+        labels: [artifact-grammar]
+        class: floor
+        text: >-
+          There is no foundation/feature card type — all cycles are test-case bundles.
+          Infrastructure a bundle needs emerges inside the first bundle that needs it
+          (YAGNI at cycle grain); platform provisioning (IP-XXX) for the skeleton path
+          lands in the skeleton cycle, the rest inside the first bundle that needs it.
+          Infra-only cards are never minted.
+
+      - id: patterns-vertical-tdd.parallel-derives-from-dependencies
+        labels: [artifact-grammar]
+        class: must
+        text: >-
+          Inter-card dependencies stay explicit and minimal; `[P]` parallel eligibility
+          derives from dependencies, never from a type column.
+
+      - id: patterns-vertical-tdd.test-gate
+        labels: [evidence]
+        class: floor
+        kind: gate
+        text: >-
+          Every card closes with a `**TEST:**` gate — the cycle's named test cases run
+          against real infrastructure, never a re-run of the automated tests. The gate is
+          the demonstration the cycle is anchored on; a cycle that stops at the mock
+          boundary has proven nothing.
+
+  - id: patterns-vertical-tdd.sec.inputs
+    title: Inputs — none bound
+    intent: >-
+      Surfaces read before slicing.
+    note: >-
+      Deliberately empty — no bound pre-read surface exists at census grain; the stories
+      and design artifacts arrive as the run's material, not a bound input.
+    rules: []
+
+  - id: patterns-vertical-tdd.sec.disclosure
+    title: Disclosure — the card is the artifact
+    intent: >-
+      What lands on the card, in what shape, and in what grammar.
+    rules:
+
+      - id: patterns-vertical-tdd.tasks-binding-two-arm
+        labels: [binding]
+        class: floor
+        kind: binding
+        text: >-
+          The output is `tasks.md` in the cycle-card shape — the `tasks` schema is the
+          canonical skeleton: invoke `mochiko-cli template tasks` when the binary is
+          available; otherwise Read `plugins/mochiko/schemas/tasks.yaml` raw. Per card —
+          stories + rationale, dependencies, the named test-case list (the card's
+          content), cycle-level brownfield exposure, and the Simple/Split/Merge case.
+        pointer: "../../schemas/tasks.yaml"
+
+      - id: patterns-vertical-tdd.case-and-rationale-on-card
+        labels: [artifact-grammar]
+        class: must
+        text: >-
+          The story→cycle decision — the Simple/Split/Merge case — and its one-line
+          rationale live on the card (Stories line); there is no separate mapping
+          artifact.
+
+      - id: patterns-vertical-tdd.brownfield-exposure-line
+        labels: [reporting]
+        class: must
+        kind: duty
+        text: >-
+          Each card carries a cycle-level brownfield exposure line — `none`, or the
+          existing surfaces it extends/modifies; design-artifact brownfield markers
+          translate into the line, so the classification survives design into the build.
+
+      - id: patterns-vertical-tdd.cases-cite-ids
+        labels: [evidence]
+        class: must
+        text: >-
+          Each named test case cites the spec/design ID(s) it covers — never re-quoted
+          content.
+
+      - id: patterns-vertical-tdd.test-gate-must-includes
+        labels: [evidence]
+        class: must
+        text: >-
+          Every `**TEST:**` gate carries all four requirements — real infrastructure,
+          tangible output, explicit steps, observable outcome — per
+          `references/TEST-GRAMMAR.md`, referenced never restated.
+        pointer: "references/TEST-GRAMMAR.md"
+
+      - id: patterns-vertical-tdd.test-gate-field-set
+        labels: [artifact-grammar]
+        class: must
+        text: >-
+          A `**TEST:**` block is authored to its required field set — `Action` and
+          `Assert` required, `Setup` and `Capture` optional — per
+          `references/TEST-GRAMMAR.md`, referenced never restated.
+        pointer: "references/TEST-GRAMMAR.md"
+
+      - id: patterns-vertical-tdd.test-gate-runtime-classification-routing
+        labels: [boundary]
+        class: must
+        kind: routing
+        text: >-
+          The producer authors the `**TEST:**` task and its fields; the runtime
+          approval-mode decision (the CLI / GUI / SUBJECTIVE classification) belongs to
+          the downstream verification step (`mochiko:testing-end-user`), never authored
+          here — per `references/TEST-GRAMMAR.md`.
+        pointer: "references/TEST-GRAMMAR.md"
+
+  - id: patterns-vertical-tdd.sec.reserved
+    title: Reserved — who holds which pen
+    intent: >-
+      The seat split no run re-decides.
+    rules:
+
+      - id: patterns-vertical-tdd.two-authors-one-card
+        labels: [independence]
+        class: must
+        text: >-
+          Two authors, one card — the design seat running this skill owns the slicing
+          judgment (which bundles exist, Simple/Split/Merge, dependencies, the
+          walking-skeleton call); the `qa-engineer` authors the test-case content
+          (expected behaviour) in the grammar it later executes.
+
+      - id: patterns-vertical-tdd.author-never-executing-builder
+        labels: [independence, fence]
+        class: floor
+        text: >-
+          The slicing seat is a design seat, never the builder who will execute the card
+          — the card author is never the executing builder.
