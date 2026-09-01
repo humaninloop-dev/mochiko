@@ -1,0 +1,364 @@
+# Skill content schema for mochiko:review-plan-artifacts. The SKILL.md body obligates a raw,
+# whole Read of this file — and of plugins/mochiko/schemas/skill-review-common.yaml, which the
+# extends: stubs bind — as the first action at invoke; the model interprets it live, and the
+# SKILL.md "Rules — load the schema first" section carries the reading grammar. Two semantics
+# live only here:
+#   class   floor = non-waivable · must = binding obligation · advisory = guidance, not binding.
+#   conditions:  each dimension declares its resolution point (entry-derived · surface-presence);
+#           a rule gated on an unresolved dimension is inapplicable until it resolves.
+kind: skill
+skill: review-plan-artifacts
+
+vars:
+  verdict: ready
+
+conditions:
+  incremental:
+    values: presence
+    resolution: entry-derived
+    note: fires when the caller names {new} and {prior} artifact sets for an incremental pass.
+
+sections:
+  - id: review-plan-artifacts.sec.independence
+    title: Independence — who is never whom
+    intent: >-
+      Author/grader separation for the completeness seat.
+    rules:
+
+      - id: review-plan-artifacts.author-grader
+        extends: review-common.author-grader
+        class: floor
+
+  - id: review-plan-artifacts.sec.scope
+    title: Scope — jurisdiction and routing
+    intent: >-
+      What this review covers, what it hands off, and what never shrinks it.
+    rules:
+
+      - id: review-plan-artifacts.gap-list-scope
+        labels: [binding, boundary]
+        class: floor
+        kind: binding
+        text: >-
+          The run's floor is the sufficiency report's gap list — the named gaps the design
+          phase was scoped to close — never a fixed artifact set.
+
+      - id: review-plan-artifacts.feasibility-handoff
+        labels: [boundary]
+        class: must
+        kind: routing
+        text: >-
+          Coverage, measurability, presence, and consistency are this skill's; contradiction,
+          buildability, NFR-design, and topology feasibility are `mochiko:review-feasibility`'s —
+          hand such findings off, never grade them.
+        pointer: "mochiko:review-feasibility"
+
+      - id: review-plan-artifacts.not-for
+        labels: [boundary]
+        class: must
+        kind: routing
+        text: >-
+          Not for: code review (sole carve-out `mochiko:review-code-minimalism`,
+          implement-side) · specs (`mochiko:review-specifications`) · the constitution
+          (`mochiko:validation-constitution`) · artifacts still being drafted.
+
+      - id: review-plan-artifacts.never-shrink
+        labels: [boundary]
+        class: floor
+        text: >-
+          Feature size, producer seniority, time pressure, and found-enough never shrink the
+          review; a vague spec is a gap to flag, not permission to propagate, and "obvious"
+          never exempts a constraint from documentation.
+
+      - id: review-plan-artifacts.incremental-consistency-scope
+        labels: [boundary]
+        class: must
+        when: {incremental: present}
+        text: >-
+          Full checks run on the {new} set; on the {prior} set the Cross-Artifact Consistency
+          checklist only — spot-check entity names, requirement IDs, and decision references,
+          flagging only inconsistencies between artifacts.
+
+      - id: review-plan-artifacts.no-prior-waiver
+        labels: [boundary]
+        class: must
+        when: {incremental: present}
+        text: >-
+          A thorough prior review never waives the consistency pass.
+
+      - id: review-plan-artifacts.escalate-full-reread
+        labels: [boundary]
+        class: must
+        kind: routing
+        when: {incremental: present}
+        text: >-
+          Two or more consistency issues in one prior artifact escalate it to a full re-read.
+
+      - id: review-plan-artifacts.boundary-table
+        labels: [boundary, floor-pointer]
+        class: must
+        kind: routing
+        text: >-
+          The seam with `mochiko:review-feasibility` is the boundary table of
+          references/ARTIFACT-CHECKLISTS.md — this skill keeps the left column,
+          `mochiko:review-feasibility` owns the right.
+        pointer: "references/ARTIFACT-CHECKLISTS.md"
+
+  - id: review-plan-artifacts.sec.inputs
+    title: Inputs — what is read and what is run
+    intent: >-
+      Pre-asserts, checklist bindings, and the read duties the grade stands on.
+    rules:
+
+      - id: review-plan-artifacts.completeness-supplied-sets
+        labels: [binding]
+        class: must
+        kind: binding
+        text: >-
+          Completeness is graded with the fixed mirror checklists of
+          references/ARTIFACT-CHECKLISTS.md, over whichever artifact sets the caller supplies.
+        pointer: "references/ARTIFACT-CHECKLISTS.md"
+
+      - id: review-plan-artifacts.tier1-preassert
+        labels: [evidence]
+        class: floor
+        kind: gate
+        text: >-
+          Tier-1 pre-assert first — `python scripts/check-artifacts.py
+          .mochiko/specs/<feature>/<artifact>.md …` — a `failed` count is ground truth, folded
+          straight into the issue list.
+
+      - id: review-plan-artifacts.cycle-card-checks
+        labels: [evidence]
+        class: must
+        kind: duty
+        text: >-
+          Cycle cards (`tasks.md`) take the complete check set: vertical integrity (each card
+          an observable end-to-end behavior, never a horizontal layer) · `**TEST:**` gate
+          present and in grammar (real infrastructure, never a test-suite re-run) · oracle
+          semantics (Asserts graded semantically against the acceptance scenario / criteria
+          they cite — the right expected behaviour, not merely present and in-grammar) · story
+          traceability (every P1/P2 story on ≥1 card; Simple/Split/Merge case + rationale;
+          cited spec/design IDs real) · dependency minimality (`[P]` only where truly
+          independent) · brownfield exposure stated (`none` counts) · no task lists or file
+          paths (pre-written decomposition is a finding — the builder decomposes at build
+          time).
+
+      - id: review-plan-artifacts.cycle-card-check-mirror
+        labels: [binding]
+        class: must
+        kind: binding
+        text: >-
+          The cycle-card check set mirrors the `tasks` `--check` view — `mochiko-cli template
+          tasks --check`, or Read `plugins/mochiko/schemas/tasks.yaml` when the binary is
+          absent.
+
+      - id: review-plan-artifacts.incremental-read-bound
+        labels: [boundary]
+        class: must
+        kind: bound
+        when: {incremental: present}
+        text: >-
+          No full re-read of a prior artifact — 1–2 minutes per artifact.
+
+      - id: review-plan-artifacts.analysis-checklists
+        labels: [floor-pointer]
+        class: must
+        kind: duty
+        text: >-
+          The analysis checklist set (constraints-and-decisions) applies as
+          references/ARTIFACT-CHECKLISTS.md states it; that file carries no `requirements.md`
+          checklist.
+        pointer: "references/ARTIFACT-CHECKLISTS.md"
+
+      - id: review-plan-artifacts.store-delta-checklists
+        labels: [floor-pointer]
+        class: must
+        kind: duty
+        text: >-
+          The store-delta checklist set applies when the package carries a store delta, else
+          the no-delta claim checks — as references/ARTIFACT-CHECKLISTS.md states them,
+          including the qualifying-flow guard (a P1 journey is the floor, never the cap), the
+          floor-precedence legality row, and the deployment-view row.
+        pointer: "references/ARTIFACT-CHECKLISTS.md"
+
+      - id: review-plan-artifacts.design-cross-checklists
+        labels: [floor-pointer]
+        class: must
+        kind: duty
+        text: >-
+          The design and cross-artifact consistency checklist sets apply as
+          references/ARTIFACT-CHECKLISTS.md states them — Architecture Conformance keyed to
+          the signed store delta, disclosure presence per the external-claims protocol.
+        pointer: "references/ARTIFACT-CHECKLISTS.md"
+
+  - id: review-plan-artifacts.sec.verdict
+    title: Verdict — the clearing grammar and its posture
+    intent: >-
+      The blocking lenses, the mechanical count mapping, and the floors that keep a grade
+      honest.
+    rules:
+
+      - id: review-plan-artifacts.conformance-blocking
+        labels: [verdict]
+        class: floor
+        kind: gate
+        text: >-
+          Conformance is BLOCKING: every named gap closed, within the gap list's depth.
+
+      - id: review-plan-artifacts.material-divergence-autofail
+        labels: [verdict]
+        class: floor
+        text: >-
+          Material divergence — an artifact no gap named, or an element class materially past
+          the gap list — auto-FAILs the package (`critical-gaps`), overriding the count
+          mapping.
+
+      - id: review-plan-artifacts.adopt-first-lens
+        labels: [verdict, floor-pointer]
+        class: must
+        kind: gate
+        text: >-
+          The adopt-first disclosure lens is BLOCKING at conformance strength: a
+          commodity-category decision naming neither a real shelf candidate nor "no shelf
+          candidate exists" is a finding — trigger and floor at `mochiko:patterns-adopt-first`,
+          never restated; rationale-beats-candidate stays advisory.
+        pointer: "mochiko:patterns-adopt-first"
+
+      - id: review-plan-artifacts.rung-honesty-advisory
+        labels: [verdict, floor-pointer]
+        class: must
+        text: >-
+          Rung-claim honesty is advisory, never drives the verdict: each seat's disclosed
+          ladder stops are graded against `mochiko:patterns-plan-minimalism` — the standard,
+          never restated; the independent excess hunt is `mochiko:review-feasibility`'s.
+        pointer: "mochiko:patterns-plan-minimalism"
+
+      - id: review-plan-artifacts.mechanical-verdict
+        labels: [verdict]
+        class: must
+        text: >-
+          The verdict comes mechanically from the issue counts per the Verdict Criteria of
+          references/ISSUE-TEMPLATES.md, subject to the material-divergence override.
+        pointer: "references/ISSUE-TEMPLATES.md"
+
+      - id: review-plan-artifacts.default-fail
+        extends: review-common.default-fail
+        class: floor
+
+      - id: review-plan-artifacts.letter-is-spirit
+        labels: [verdict]
+        class: floor
+        text: >-
+          The letter IS the spirit: never skip a check, never downgrade a severity to dodge a
+          finding — rationalizing DOWN means it is probably higher.
+
+      - id: review-plan-artifacts.na-justified
+        labels: [verdict]
+        class: floor
+        text: >-
+          An inapplicable check is flagged N/A with justification, never silently dropped.
+
+      - id: review-plan-artifacts.critical-blocks
+        labels: [verdict]
+        class: floor
+        text: >-
+          A Critical or Important issue blocks — never "noted but not blocking".
+
+      - id: review-plan-artifacts.severity-classification
+        labels: [verdict, floor-pointer]
+        class: must
+        text: >-
+          Severity levels and classification rules are the Severity Levels and Classification
+          Rules of references/ISSUE-TEMPLATES.md — applied as stated, never re-derived.
+        pointer: "references/ISSUE-TEMPLATES.md"
+
+      - id: review-plan-artifacts.verdict-criteria
+        labels: [verdict, floor-pointer]
+        class: must
+        text: >-
+          The three-state verdict — `ready` / `needs-revision` / `critical-gaps` — maps from
+          the issue counts per the Verdict Criteria of references/ISSUE-TEMPLATES.md.
+        pointer: "references/ISSUE-TEMPLATES.md"
+
+  - id: review-plan-artifacts.sec.output
+    title: Output — report contracts
+    intent: >-
+      Where the grade lands and the shapes it lands in.
+    rules:
+
+      - id: review-plan-artifacts.issue-templates
+        labels: [binding]
+        class: must
+        kind: binding
+        text: >-
+          Issues are classified and shaped per references/ISSUE-TEMPLATES.md.
+        pointer: "references/ISSUE-TEMPLATES.md"
+
+      - id: review-plan-artifacts.report-template
+        labels: [reporting, binding]
+        class: must
+        kind: binding
+        text: >-
+          The report follows `mochiko:advocate-report-template` — evidence and an actionable
+          fix per issue, the one-line `strengths:` field filled.
+        pointer: "mochiko:advocate-report-template"
+
+      - id: review-plan-artifacts.incremental-report
+        labels: [reporting]
+        class: must
+        kind: binding
+        when: {incremental: present}
+        text: >-
+          The incremental report adds `incremental: true`, `full_review:` /
+          `consistency_only:` scope lists, and pass/fail `consistency_checks:` frontmatter —
+          entity_names · schemas · decisions_honored · architecture_conformance ·
+          sensitivity_annotations · integration_boundaries; a failed check also lands as a
+          finding.
+
+      - id: review-plan-artifacts.evidence-floor
+        extends: review-common.evidence-floor
+        class: floor
+
+      - id: review-plan-artifacts.tier1-forms-envelope
+        labels: [binding]
+        class: must
+        kind: binding
+        text: >-
+          Tier-1 command forms and the exit-code contract are as
+          references/ARTIFACT-CHECKLISTS.md states them; density is never itself a finding
+          (the artifact-format envelope).
+        pointer: "references/ARTIFACT-CHECKLISTS.md"
+
+  - id: review-plan-artifacts.sec.reserved
+    title: Reserved — decisions this seat never takes
+    intent: >-
+      What belongs to the caller and the lead, never to the grader.
+    rules:
+
+      - id: review-plan-artifacts.caller-names-sets
+        labels: [boundary]
+        class: must
+        kind: reservation
+        when: {incremental: present}
+        text: >-
+          In incremental mode the caller names the {new} and {prior} sets — never this skill.
+
+      - id: review-plan-artifacts.contradiction-routing
+        labels: [boundary]
+        class: must
+        kind: routing
+        when: {incremental: present}
+        text: >-
+          A contradiction between artifacts is reported — the lead routes it; design-vs-decided
+          is Critical consistency here, a contradiction between requirements and constraints is
+          `mochiko:review-feasibility`'s.
+
+      - id: review-plan-artifacts.unsure-targeted-review
+        labels: [boundary]
+        class: must
+        kind: routing
+        when: {incremental: present}
+        text: >-
+          Unsure whether a prior artifact is still consistent — say so and recommend a
+          targeted review, never silently clear it.

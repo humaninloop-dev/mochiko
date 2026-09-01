@@ -5,101 +5,49 @@ description: This skill MUST be invoked when grading a capability-batch's guidan
 
 # Grading Guidance Sufficiency
 
-Binding pre-build gate over one unit of selected work: **does the guidance that already exists
-carry enough for a builder to build it?** A `sufficient` verdict licenses cards and build
-directly; any gap scopes the in-run design phase to exactly the named gaps, nothing else. You
-grade sources you did not author, and you never author the fix — the design phase is a
+Binding pre-build gate over one unit of selected work: **does the guidance that already
+exists carry enough for a builder to build it?** The check is size-adaptive by construction —
+the unit is the map's own unit of scope — and its answer either licenses the build directly
+or hands the design phase an exact, named scope. The design phase that closes a gap is a
 different seat.
 
-**Fence.** Read the feature's `spec.md` (its Screens & Flows manifest included), the product
-architecture store, the product baselines (`data-model.md`, `contracts/`,
-`constraints-and-decisions.md`), and the capability map entries at
-`.mochiko/features/FEAT-XXX-<slug>.md`. Never the code, `tasks.md`, `**TEST:**` cases, cycle
-reports, or **this batch's own** `FEAT-XXX/` run-output directory — all of those are downstream
-of this verdict, and reading them makes the check circular. **One carve:** a clause-10 in-flight
-collision licenses reading *the colliding feature's* design-phase deltas and owning spec — the
-sole run-output read this fence admits, scoped to the colliding surface, and never extended to
-that feature's code, cards, or cycle reports.
+## Rules — load the schema first
 
-**Unit.** Selection scope grades **per selected work row** — the work row is the map's unit of
-scope, which makes the check size-adaptive by construction. Delta scope grades **per delta
-card**, and only three clauses apply: criteria testable (1) · touched surfaces identified
-(2, 3) · store consult and trip check run (4). Clause 9 does not apply under delta scope — the
-desk's delta card is itself the `[MODIFY]` instrument, carrying the marked delta on the entry
-and folding at landing; a delta fix discovered structural re-fires the design phase rather
-than clearing here.
+Your first action at invoke, before any grading step: **Read `schema.yaml` (this skill's own
+directory) and `../../schemas/skill-review-common.yaml` raw, in full, in the same first
+action.** The schema is the source of truth for this skill's binding rules; this body carries
+identity and procedure only. Its rules are nested in six sections, each addressable by its
+section ID: `review-sufficiency.sec.independence` (author/grader separation) ·
+`review-sufficiency.sec.scope` (the grading unit and the delta collapse) ·
+`review-sufficiency.sec.inputs` (the read fence and its one carve) ·
+`review-sufficiency.sec.verdict` (the gate semantics, the ten clauses, the grading floors) ·
+`review-sufficiency.sec.output` (the report contract) · `review-sufficiency.sec.reserved`
+(what only the user rules).
 
-## The ten clauses
+Read the rule grammar along with the rules: a rule's `kind:` names what it is, and an absent
+`kind:` reads `constraint`; a rule carrying `when:` binds only where its terms hold against
+the schema's declared `conditions:`, except that a `class: floor` rule is always read and
+always delivered — `when:` gates when its obligation applies, never whether it reaches you.
+Where a rule carries `extends: review-common.<slug>`, the stub inherits `text` / `labels` /
+`pointer` only from `skill-review-common.yaml` — `class` and `kind` are always this schema's
+own, and the stub's `review-sufficiency.*` ID stays the citable ID; `${verdict}` in inherited
+text substitutes from this schema's `vars:`. Labels come from
+`../../schemas/skill-labels.yaml`.
 
-A unit is *sufficient* only when every applicable clause holds. Each clause names its own gap
-form; a clause that cannot be graded is a gap, never a pass.
+The schema carries **the 8 rules of `class: floor`**. State the floor count back before the
+first procedural step; a skipped or partial schema read is a halt-and-surface, never a silent
+continue.
 
-1. **Testable criteria** — every acceptance scenario and SC-XXX has a stateable oracle. No
-   stateable oracle = gap.
-2. **Contract exposure** — every touched API surface named, then graded against baseline
-   `contracts/`: *named-and-locatable* (the baseline publishes a continuation point the
-   surface attaches to) = no gap; *named-and-unattachable* (no seam exists to attach it) = gap.
-3. **Data exposure** — every touched entity named, then graded against baseline
-   `data-model.md` on the same locatable / unattachable split.
-4. **Structural trigger** — store consulted, trip check run, and either a no-delta claim
-   recordable or a delta needed (gap). Spine elements whose `Derived from` cites the row's own
-   feature or epic delta are **excluded** from the no-delta evidence: a row never satisfies
-   this clause with its own planned structure.
-5. **NFR targets** — the applicable store concern rows identified *and their targets stated*.
-   Targets absent = gap. A row plausibly bearing NFR load (user-facing latency, data volume,
-   auth surface, availability) with no identifiable concern row = gap.
-6. **Commodity exposure** — any storage, queueing, caching, auth, search, or serialization
-   need named and adopt-first answerable. A stated mechanism with **no weighed alternatives is
-   not resolved**; unresolved = gap.
-7. **Dependency order** — in-batch row dependencies resolvable. Unresolvable = gap.
-8. **UX trace** — where the spec carries a Screens & Flows manifest: every FEAT-tagged
-   SCR-XXX's data shown has a nameable serving contract surface, and every FLOW-XXX action a
-   mutation path. Existing = cited; new = gap. No manifest = n/a.
-9. **Delivered-feature exposure** (*selection scope only*) — keyed on the **row's** status,
-   never the capability's. A touched surface owned by a delivered row is never zero-gap: it
-   auto-fires the design phase, its `[MODIFY]` amendment is named in this report, and the
-   amendment is written as the marked delta on the affected feature's map entry.
-10. **In-flight exposure** — keyed on the **row's** status. A touched surface owned by an
-    in-flight row obliges reading that feature's deltas and owning spec: need covered → cite
-    the planned contract, no gap · adjacent → **gap**, the design phase authors the proposed
-    delta sequenced behind that delivery · conflicting → reserved to the user at run-open.
-    **No locks** — conflict routing is a question to the user, never a hold on the touched
-    feature; only silent contradiction is prohibited.
+## Procedure
 
-## Branches
+Resolve the scope first — selection or delta — because it fixes both the unit and the clause
+set. Then, per unit: read the fenced source set whole, walk every applicable clause in order
+(testable criteria → contract exposure → data exposure → structural trigger → NFR targets →
+commodity exposure → dependency order → UX trace → delivered-feature exposure → in-flight
+exposure), and record what each clause yields — a hold, a gap in that clause's own gap form,
+or a justified n/a.
 
-**Absent baselines.** An absent baseline file grades its touched surfaces new (gap), never
-n/a. The design phase's first duty is then the seed: empty scaffolds where no code is
-delivered, reconstruct-and-confirm with the user at the design checkpoint where delivered code
-exists.
-
-**Trips are not gaps.** A store trip — a touched row standing `open` or `not-now` — never
-becomes a gap. It rides the verdict report and is dispositioned by the user at run-open:
-warn and record; a recorded deferral is a legal escape, a silent skip is not.
-
-## Verdict and output
-
-Verdict per unit: `sufficient`, or the gap list. Binding at entry — a gap list routes to the
-design phase, zero gaps routes to cards and build. A **disputed clause defaults to gap and the
-dispute goes to the user**; the grader never clears alone.
-
-The verdict lands as **`sufficiency-report.md`** in the feature dir
-(`.mochiko/features/FEAT-XXX/`), under the `templates/report-format.md` envelope — the durable
-record of whether this batch was buildable on the guidance that already existed. It carries:
-the per-unit verdicts · the gap list, each gap keyed to its clause · the store-consult result
-and any no-delta claim (clause 4) · store trips awaiting the user's disposition at run-open ·
-in-flight conflicts routed to the user · any `[MODIFY]` amendment naming (clause 9) · the
-`quickstart.md` null-path record where no real external-integration surface exists.
-
-## Floors — non-waivable
-
-- **Defaults to FAIL** — a unit is insufficient until every applicable clause is graded.
-  Absence of looking is never evidence of sufficiency.
-- **Never author what you grade** — you authored none of the three sources, and the design
-  phase that closes a gap is a different seat.
-- **Every clause graded, or flagged n/a with its justification** — never silently dropped.
-  Clause 8's no-manifest n/a and clause 9's delta-scope n/a are the only structural ones.
-- **Verdict and dispositions land in the report** — evidence living only in conversation is a
-  floor violation.
-- **Your verdict is input to routing, never a clearing** — the lead routes; the user rules
-  trips, in-flight conflicts, and any disputed clause.
+Close by assembling the report: per-unit verdicts, the clause-keyed gap list, the
+store-consult result, and everything routed onward — trips, in-flight conflicts, `[MODIFY]`
+amendment namings. The design phase, cards, and build all key off this report, never off the
+conversation.

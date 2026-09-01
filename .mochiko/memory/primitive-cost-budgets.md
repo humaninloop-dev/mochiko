@@ -13,15 +13,22 @@ in `.claude/rules/mochiko/primitive-edits.md`.
 re-derivation base** — running ×1.25 over a grown body would ratchet the budget up every time a
 primitive is edited, which is exactly the drift the budget exists to catch. A budget moves only by
 the seeding paths below. Budgets are always measured, never invented: a new budget enters this
-ledger only from a benchmark-measured winner or a ruled editorial cut shipped through the edit
-ceremony
+ledger only from a benchmark-measured winner, a ruled editorial cut shipped through the edit
+ceremony, or **a ruled schema conversion** (skill-content-schema D8/C1: the budget re-seeds to
+the measured post-conversion delivered-at-invoke payload with **no +25% headroom** — a stated
+departure from the headroom rule; the conversion is a relocation, never a measured winner, so
+the first post-conversion character takes the argued-overage path)
 (Wave 2 seeded its budgets from its own audited cut results this way at v0.64.0). All counts
 are **characters of the parsed value — never `wc -c` bytes** (byte counts over-reject
 unicode-bearing text that is under the char cap; a v1 census defect was exactly this).
 
 **Classes measured:** skill body (content after the closing frontmatter `---`) · skill
-frontmatter `description:` value · agent frontmatter `description:` value. `references/` files
-are exempt (on-demand data, never auto-loaded), as are `scripts/` and schema data files.
+frontmatter `description:` value · agent frontmatter `description:` value. The exemption keys on
+**never auto-loaded**: `references/` and `scripts/` files stay exempt (on-demand data), but a
+schema whose read is obligated at invoke is budgeted — a converted skill's budgeted quantity is
+its delivered-at-invoke payload, `SKILL.md` body plus its own `schema.yaml`, one number
+(skill-content-schema D8 as amended by C1, `DECISIONS.md` 2026-09-01). Command schema data
+files stay unbudgeted with their commands.
 
 **Last authoritative sweep: v0.81.0 release gate** (2026-08-19) — every wave-touched skill and
 agent re-measured with the canonical snippet in one pass, against the quiesced tree, after all
@@ -43,13 +50,13 @@ audited Wave 2 body no-ops (nothing D4-cuttable); their budgets are their surviv
 | analysis-codebase | 6,509 | 8,137 |
 | authoring-constitution | 17,240 | 21,550 |
 | authoring-feature-map | 12,330 | 15,413 |
-| review-governance-intent | 5,562 (re-seeded v0.89.0 — user-ruled true-deletion cut) | 6,953 |
-| validation-constitution | 5,103 (re-seeded v0.90.0 — user-ruled true-deletion cut) | 6,379 |
+| review-governance-intent | 14,663 (re-seeded [v0.100.0] schema conversion — payload: body 2,662 + schema 12,001; was 5,562/6,953) | 14,663 (no headroom) |
+| validation-constitution | 13,285 (re-seeded [v0.100.0] schema conversion — payload: body 2,800 + schema 10,485, re-measured post-fix-round; was 5,103/6,379) | 13,285 (no headroom) |
 | testing-governance-injection | 3,540 | 4,425 |
 | authoring-requirements | 4,101 | 5,127 |
 | authoring-user-stories | 5,361 | 6,702 |
 | authoring-prototype | 8,898 | 11,123 |
-| review-specifications | 6,187 (re-seeded v0.88.0 — user-ruled true-deletion cut) | 7,734 |
+| review-specifications | 15,600 (re-seeded [v0.100.0] schema conversion — payload: body 3,182 + schema 12,418; was 6,187/7,734) | 15,600 (no headroom) |
 | ~~authoring-architecture~~ | 5,250 | 6,563 |
 | authoring-technical-requirements | 10,628 | 13,285 |
 | brownfield-integration | 6,342 | 7,928 |
@@ -62,10 +69,12 @@ audited Wave 2 body no-ops (nothing D4-cuttable); their budgets are their surviv
 | patterns-system-design | 9,304 (re-asserted v0.81.0) | 11,047 |
 | patterns-technical-decisions | 4,626 | 5,783 |
 | patterns-vertical-tdd | 5,189 | 6,487 |
-| review-brainstorm | 2,497 (re-seeded v0.83.0 — user-ruled true-deletion cut) | 3,122 |
-| review-feasibility | 1,893 (re-seeded v0.82.0 — user-ruled 90% cut) | 2,367 |
-| review-plan-artifacts | 4,901 (re-seeded v0.87.0 — user-ruled true-deletion cut) | 6,127 |
-| review-code-minimalism | 3,689 | 4,612 |
+| review-brainstorm | 11,470 (re-seeded [v0.100.0] schema conversion — payload: body 2,328 + schema 9,142, re-measured post-fix-round; was 2,497/3,122) | 11,470 (no headroom) |
+| review-feasibility | 10,572 (re-seeded [v0.100.0] schema conversion — payload: body 2,195 + schema 8,377; was 1,893/2,367) | 10,572 (no headroom) |
+| review-plan-artifacts | 17,890 (re-seeded [v0.100.0] schema conversion — payload: body 3,170 + schema 14,720; was 4,901/6,127) | 17,890 (no headroom) |
+| review-code-minimalism | 8,449 (re-seeded [v0.100.0] schema conversion — payload: body 2,971 + schema 5,478, re-measured post-fix-round; was 3,689/4,612) | 8,449 (no headroom) |
+| review-sufficiency | 14,950 (first budget row, seeded [v0.100.0] schema conversion — payload: body 2,966 + schema 11,984, re-measured post-fix-round; the +82 over the first seed is the lead-ruled F5 restored clause + the F4 `kind:` line; unbudgeted at birth, body 6,652 at v0.91.0) | 14,950 (no headroom) |
+| skill-review-common.yaml | 1,627 (family common file, budgeted once as its own primitive — seeded [v0.100.0] schema conversion) | 1,627 (no headroom) |
 
 The v0.63.0 floor-line additions (analysis-iterative, review-governance-intent,
 validation-constitution, review-specifications) and the v0.64.0 ones (review-brainstorm,
@@ -102,6 +111,23 @@ survive a cut): the user-ruled 90% body cut with breakup into `references/` land
 `.mochiko/decisions/2026-08-22-verbosity-envelope-enforcement.md`. The skill-compression eval
 pilot for this skill is re-purposed as a post-cut regression check (cut-vs-baseline rule
 coverage); a lost load-bearing rule re-adds via the strips re-add path.
+
+**[v0.100.0] skill-content-schema conversion re-seeds — the third seeding path's first use.**
+The eight review-family rows above (`review-sufficiency` gaining its first row) and the
+`skill-review-common.yaml` row are conversion re-seeds per skill-content-schema D8 as amended by
+C1 (`DECISIONS.md` 2026-09-01): the budgeted quantity for a converted skill is its
+**delivered-at-invoke payload** — canonical-snippet `SKILL.md` body chars plus whole-file
+`schema.yaml` chars, one number — and the budget equals the measured payload exactly, **no +25%
+headroom** (the stated departure: a conversion is a relocation, never a measured winner, so the
+first post-conversion character takes the argued-overage path). All nine figures are
+canonical-snippet counts taken 2026-09-01 against the quiesced post-conversion tree, after the
+full `check-skill-schema.py` sweep passed. The common file is budgeted once as its own
+primitive, never per binding skill. Descriptions are byte-untouched by the conversion (RB 490 ·
+RCM 492 · RF 599 · RGI 483 · RPA 598 · RSPEC 490 · RSUF 686 · VC 481 — all under their existing
+description budgets and the 1,536 cap). Prior winner/budget figures are kept visible in each
+row as history, per the `system-architect`/`authoring-architecture` precedent. Rulings +
+disposition maps: the [v0.100.0] entries in each member's `.mochiko/strips/` file and the
+2026-09-01 skill-content-schema `DECISIONS.md` row.
 
 ## Skill descriptions
 

@@ -10,6 +10,170 @@ triggers, restores the tail under the cap, and is strict-YAML-safe. Delivery ver
 deferred: the in-session skill listing is a session-start snapshot (probe received pre-edit
 text), so the probe re-runs in a fresh session.
 
+## [v0.100.0] Schema conversion — census-row → minted-ID map (skill-content-schema wave)
+
+Ruling for every entry below: skill-content-schema D3 (boundary) / D8/C4 (protected
+transfers), `DECISIONS.md` 2026-09-01 row; census:
+`.mochiko/brainstorms/skill-content-schema/census.md` §B (RGI). Schema home:
+`plugins/mochiko/skills/review-governance-intent/schema.yaml`. Minted IDs carry the
+`review-governance-intent.` prefix (omitted below). Map — census row → minted ID:
+1 `frozen-window` · 2 `pre-ratification-timing` · 3 `never-a-participant` ·
+4a `author-grader` (C3 stub) + 4b `verdict-is-input` (C4 stub) + 4c
+`ratification-user-owned` (lettered splits — one row bound two common blocks and carried a
+user-reservation tail; 4c minted so the tail survives as its own floor, deviation reported
+to the wave lead) · 5a `lens-depth-never-jurisdiction` + 5b `report-out-of-lens-trips` ·
+6 `solo-and-verify-routing` (both arms live in the text; no `when:` — extraction would
+falsify, criterion-11 DECLARE latitude, reported) · 7 `authored-surfaces-out` ·
+8 `formulation-quality-excluded` · 9 `sequestration` · 10a `read-set-binding` + 10b
+`brownfield-analysis-read` (`when: {analysis: present}` — the brownfield leg split out so
+the census-named dimension is genuinely used; reported) · 11 `finding-contract` ·
+12 `unresolvable-is-commentary` · 13 `over-governance-admissibility` · 14 `never-excess`
+(C6 stub) · 15 `cross-exam-binding` (`when: {pairing: pair}`, cross-dir pointer, census
+J-7) · 16 `substrate-bindings` · 17 `reality-facts-checked` · 18 `user-facts-flagged` ·
+19 `external-facts-binding` · 20 `survivor-report-form` · 21
+`status-vocabulary-and-criteria` · 22a `default-fail` (C2 stub, `${verdict}` = `ready`;
+the "never by looking reasonable" tail R2-absorbed by the block's "earned only by a
+completed hunt", verbatim preserved below) + 22b `too-thin-first-finding` · 23a
+`findings-through-leads-pen` (kept-distinct edge, RB+RGI) + 23b `evidence-floor` (C1
+stub) · 24 `contested-audit-first` · 25 `echo-rationales-outrank` · 26
+`declared-level-discipline` · 27a `yardstick-never-taste` + 27b
+`no-in-session-confirmation` + 27c `its-command-states-them` (C5 stub).
+Accounting (V1 fix round): body 5,562 → 2,662 (−2,900) + schema 12,001 = payload 14,663;
+the delta over the pre-conversion body is structural overhead (IDs, keys, section
+scaffolding, reading grammar) — no content growth claimed.
+
+## [v0.100.0] Jurisdiction floor — protection transfers (census RGI-7; v0.63.0 keep-set)
+- **Disposition:** superseded — protection transfers to schema rule `review-governance-intent.authored-surfaces-out` (class: floor), per skill-content-schema D8/C4; provenance sidecar carries the protected status.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 skill-content-schema row).
+- **Content:** "**Permanently out of jurisdiction:** the authored surface set and its Tier-2 grading (`mochiko:validation-constitution`, downstream — different artifact, different family)"
+- **Consumers assessed:** `mochiko:validation-constitution` named as the other family — untouched (P3's member).
+
+## [v0.100.0] D1 exclusion — protection transfers (census RGI-8; v0.26.0 surviving element)
+- **Disposition:** superseded — protection transfers to `review-governance-intent.formulation-quality-excluded` (class: floor), per D8/C4.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 row).
+- **Content:** "formulation/enforceability quality of authored principles (closed `Contested`, D1 — never re-raise)"
+- **Consumers assessed:** none restate it (v0.89.0 map stands).
+
+## [v0.100.0] Pair-protocol-by-reference + substrate bindings — protection transfers (census RGI-15/RGI-16; v0.26.0 surviving element)
+- **Disposition:** superseded — protection transfers to `review-governance-intent.cross-exam-binding` (`when: {pairing: pair}`, cross-directory pointer per census J-7) and `review-governance-intent.substrate-bindings`, per D8/C4. `CROSS-EXAM.md` untouched — the single source, shared with `mochiko:review-brainstorm`. V1 fix round (RB-2 counterpart): the rule text KEEPS its pair/solo wording beside the `when:` — a DECLARE, not a double-home: the solo branch carries its own behavior ("solo skips to the report"), so extracting the guard would falsify the text (criterion-11 DECLARE latitude).
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 row).
+- **Content:** "cross-examination (pair only; solo skips to the report): after the lead introduces the counterpart, the one-shot four-message exchange per [../review-brainstorm/references/CROSS-EXAM.md] (the single source, shared with `mochiko:review-brainstorm`); bindings — *artifact*: the frozen synthesis; *fact substrate*: `codebase-analysis.md` + detect-stack baseline (brownfield; the files otherwise)"
+- **Consumers assessed:** the shared file's charter ("An edit here changes both skills") — file untouched, both binders now schema rules.
+
+## [v0.100.0] Verdict criteria incl. missing-declaration arm — protection transfers (census RGI-21; v0.63.0 keep-set + v0.65.0 arm)
+- **Disposition:** superseded — protection transfers to `review-governance-intent.status-vocabulary-and-criteria`, per D8/C4; the v0.65.0 missing/unrecorded-depth-level-declaration arm carried verbatim in substance.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 row).
+- **Content:** "a recommended status: `ready` (every hunt class actively worked, nothing blocking survived) / `needs-revision` (survivors resolvable by the session — an interrogation follow-up, a re-dealt card, a fixable fold) / `critical-gaps` (a fact profile contradicted by its own risk declaration or detected reality, an unrecorded ruling — a missing or unrecorded depth-level declaration among them — or a synthesis too thin to review)"
+- **Kept deliberately:** the needs-revision examples ("an interrogation follow-up, a re-dealt card, a fixable fold") compress out of the rule text — teaching, not obligation; preserved verbatim here.
+- **Consumers assessed:** none restate the criteria (v0.89.0 map stands).
+
+## [v0.100.0] Never-default-ready + too-thin — protection transfers, lettered split (census RGI-22a/22b; v0.63.0 keep-set)
+- **Disposition:** superseded — protection transfers to `review-governance-intent.default-fail` (22a, `extends: review-common.default-fail`, class: floor, `${verdict}` = `ready`) + `review-governance-intent.too-thin-first-finding` (22b, local floor), per D8/C4 and near-dup R2 (the "never by looking reasonable" tail absorbed by the block's completed-hunt wording).
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 row).
+- **Content:** "**Never default to `ready`** — earned by a completed hunt, never by looking reasonable; too thin to attack (rulings without rationale, marks without basis) is itself the first finding."
+- **Consumers assessed:** five family members bind the same C2 block this wave.
+
+## [v0.100.0] Lead's-pen + evidence floor — protection transfers, lettered split (census RGI-23a/23b; v0.63.0 keep-set + v0.64.0 floor line)
+- **Disposition:** superseded — protection transfers to `review-governance-intent.findings-through-leads-pen` (23a, local floor — kept-distinct edge, RB+RGI only) + `review-governance-intent.evidence-floor` (23b, `extends: review-common.evidence-floor`, class: floor), per D8/C4.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 row).
+- **Content:** "findings enter through the lead's pen, dispositions in the Review section — verdict and dispositions land in the reviewed artifacts themselves; review evidence only in conversation is a floor violation"
+- **Consumers assessed:** six family members bind the same C1 block this wave.
+
+## [v0.100.0] Contested-shield audit — protection transfers (census RGI-24; v0.63.0 keep-set)
+- **Disposition:** superseded — protection transfers to `review-governance-intent.contested-audit-first` (class: floor), per D8/C4.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 row).
+- **Content:** "marks are lead-self-reported: honor `Contested` only after its rationale audit (an unaudited `Contested` is a shield; a shield is a finding)"
+- **Consumers assessed:** none (skill-local clause). The lead-self-reported opener rides RGI-25's rule.
+
+## [v0.100.0] Echo-rationales rule — protection transfers (census RGI-25; v0.63.0 keep-set)
+- **Disposition:** superseded — protection transfers to `review-governance-intent.echo-rationales-outrank` (class: floor), per D8/C4.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 row).
+- **Content:** "echo-rationales and adoption streaks outrank any mark"
+- **Consumers assessed:** none (skill-local clause).
+
+## [v0.100.0] Declared-level row — protection transfers (census RGI-26; v0.65.0 protected, complete)
+- **Disposition:** superseded — protection transfers to `review-governance-intent.declared-level-discipline` (class: floor), per D8/C4; the D6 no-watcher fence preserved verbatim in the rule text per census §A.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 row).
+- **Content:** "the declared depth level is the user's recorded ruling (D1/D2): challenge expression, waivers, fact consistency; verify it exists in the ledger, was recommend-then-arbitrated, greenfield got the low recommendation — never flag it against real users or deployment state (D6 no-watcher), never grade stricter than the declared level"
+- **Consumers assessed:** none restate the row (v0.65.0 entry's grep stands).
+
+## [v0.100.0] Yardstick + self-confirmation + its-command-states-them — protection transfers, lettered split (census RGI-27a/27b/27c; v0.63.0 keep-set + v0.46.0 clause)
+- **Disposition:** superseded — protection transfers to `review-governance-intent.yardstick-never-taste` (27a, floor) + `review-governance-intent.no-in-session-confirmation` (27b, floor) + `review-governance-intent.its-command-states-them` (27c, `extends: review-common.its-command-states-them`, class: floor), per D8/C4.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 row).
+- **Content:** "yardstick = the agenda, the asserted floor, the synthesis's own internal consistency — never your governance taste · a session confirming its own synthesis is the gap this review closes; never soften on \"the user already confirmed it in session\" · your status is input; the lead owns the clearing verdict and survivor routing, the user owns ratification — its command states them."
+- **Kept deliberately:** the status-is-input limb deduped into 4b's C4 stub (the body stated it twice); the ratification limb into 4c.
+- **Consumers assessed:** RB and RF bind the same C5 block this wave.
+
+## [v0.100.0] Frozen window relocated (census RGI-1)
+- **Disposition:** relocated → `plugins/mochiko/skills/review-governance-intent/schema.yaml` `review-governance-intent.frozen-window`
+- **Tier failed:** n/a — supersession by ruling (D3; `DECISIONS.md` 2026-09-01 row).
+- **Content:** "Frozen from your spawn until dispositions land."
+
+## [v0.100.0] Pre-ratification timing relocated (census RGI-2)
+- **Disposition:** relocated → schema.yaml `review-governance-intent.pre-ratification-timing`
+- **Tier failed:** n/a — supersession by ruling (D3; `DECISIONS.md` 2026-09-01 row).
+- **Content:** "You run **before ratification**, spawned at the sizing gate"
+
+## [v0.100.0] Never-a-participant floor relocated (census RGI-3)
+- **Disposition:** relocated → schema.yaml `review-governance-intent.never-a-participant`
+- **Tier failed:** n/a — supersession by ruling (D3; `DECISIONS.md` 2026-09-01 row).
+- **Content:** "never a participant — the session is recommend-then-arbitrate and unchallenged; **you are the challenge**" + Floors' "never in the session, out of its framing — the counterpart's included — until the cold read is done; in the session = not a reviewer"
+
+## [v0.100.0] Never-author/revise/ratify relocated, lettered split (census RGI-4a/4b/4c)
+- **Disposition:** relocated → schema.yaml `review-governance-intent.author-grader` (4a, C3 stub, floor) + `review-governance-intent.verdict-is-input` (4b, C4 stub, floor) + `review-governance-intent.ratification-user-owned` (4c, local floor — the user-reservation tail the two blocks do not carry; mint reported to the wave lead).
+- **Tier failed:** n/a — supersession by ruling (D3/D5; `DECISIONS.md` 2026-09-01 row).
+- **Content:** "You recommend; the **lead owns every verdict, the user owns ratification** — never author, revise, or ratify."
+
+## [v0.100.0] Lens depth + out-of-lens trips relocated, lettered split (census RGI-5a/5b)
+- **Disposition:** relocated → schema.yaml `review-governance-intent.lens-depth-never-jurisdiction` (5a) + `review-governance-intent.report-out-of-lens-trips` (5b). The two lens definitions stay body prose (teaching) per D3.
+- **Tier failed:** n/a — supersession by ruling (D3; `DECISIONS.md` 2026-09-01 row).
+- **Content:** "— depth, never jurisdiction: report real out-of-lens trips"
+
+## [v0.100.0] Solo/verify routing relocated (census RGI-6)
+- **Disposition:** relocated → schema.yaml `review-governance-intent.solo-and-verify-routing`. No `when:` — both arms live in the text; extracting the pair/solo guard would falsify it (criterion-11 DECLARE latitude; census annotation resolved this way, reported).
+- **Tier failed:** n/a — supersession by ruling (D3/D4; `DECISIONS.md` 2026-09-01 row).
+- **Content:** "solo, the whole surface is yours. The verify pass belongs to the coherence lens in a pair, to you automatically when solo."
+
+## [v0.100.0] Sequestration relocated (census RGI-9)
+- **Disposition:** relocated → schema.yaml `review-governance-intent.sequestration`
+- **Tier failed:** n/a — supersession by ruling (D3; `DECISIONS.md` 2026-09-01 row).
+- **Content:** "sequestration — the entire attack formed before counterpart contact; the lead withholds the name until findings are formed"
+
+## [v0.100.0] Read set relocated, lettered split (census RGI-10a/10b)
+- **Disposition:** relocated → schema.yaml `review-governance-intent.read-set-binding` (10a, agenda pointer `../authoring-constitution/references/INTERROGATION-AGENDA.md`, census J-7) + `review-governance-intent.brownfield-analysis-read` (10b, `when: {analysis: present}` — the census-named brownfield dimension declared and used; split reported).
+- **Tier failed:** n/a — supersession by ruling (D3/D4; `DECISIONS.md` 2026-09-01 row).
+- **Content:** "read the frozen synthesis, the agenda ([../authoring-constitution/references/INTERROGATION-AGENDA.md] — its ten dimensions are the coverage yardstick), and, brownfield, `.mochiko/memory/codebase-analysis.md`"
+
+## [v0.100.0] Finding contract relocated (census RGI-11)
+- **Disposition:** relocated → schema.yaml `review-governance-intent.finding-contract`
+- **Tier failed:** n/a — supersession by ruling (D3; `DECISIONS.md` 2026-09-01 row).
+- **Content:** "every finding: severity, the GI element(s) touched, a **concrete failure scenario or cited contradiction**, and a resolution path (the one question or check that settles it…)"
+
+## [v0.100.0] Unresolvable-is-commentary relocated (census RGI-12)
+- **Disposition:** relocated → schema.yaml `review-governance-intent.unresolvable-is-commentary`
+- **Tier failed:** n/a — supersession by ruling (D3; `DECISIONS.md` 2026-09-01 row).
+- **Content:** "unresolvable = commentary, not a finding"
+
+## [v0.100.0] Over-governance admissibility relocated (census RGI-13)
+- **Disposition:** relocated → schema.yaml `review-governance-intent.over-governance-admissibility`
+- **Tier failed:** n/a — supersession by ruling (D3; `DECISIONS.md` 2026-09-01 row).
+- **Content:** "the over-governance hunt is in-jurisdiction (remove-shaped): a minted principle or intent no elicited fact justifies is a finding like any absence — admissible only naming the fact it fails to trace to or the lighter surface carrying the real need; … never reaches formulation quality"
+
+## [v0.100.0] Never-excess carve relocated to C6 stub (census RGI-14)
+- **Disposition:** relocated → schema.yaml `review-governance-intent.never-excess` (`extends: review-common.never-excess`, class: must)
+- **Tier failed:** n/a — supersession by ruling (D3/D5; `DECISIONS.md` 2026-09-01 row).
+- **Content:** "a floor-, compliance-module-, or NFR-derived obligation is never excess"
+
+## [v0.100.0] Three fact routes relocated (census RGI-17/18/19)
+- **Disposition:** relocated → schema.yaml `review-governance-intent.reality-facts-checked` (17) + `review-governance-intent.user-facts-flagged` (18) + `review-governance-intent.external-facts-binding` (19, cross-dir pointer, census J-7).
+- **Tier failed:** n/a — supersession by ruling (D3; `DECISIONS.md` 2026-09-01 row).
+- **Content:** "a **reality-surface fact** is checked against the analysis or files, never argued · a **user-declared fact** (team size, risk posture, lifespan, values) is checkable against nothing on disk — flag for the lead to route to the user as confirmation, never to argument · an **external-sourced fact** (a floor-class claim fed from outside the repo) runs per [../review-brainstorm/references/EXTERNAL-CLAIMS.md], never argued."
+
+## [v0.100.0] Survivor report form relocated (census RGI-20)
+- **Disposition:** relocated → schema.yaml `review-governance-intent.survivor-report-form`
+- **Tier failed:** n/a — supersession by ruling (D3; `DECISIONS.md` 2026-09-01 row).
+- **Content:** "**Survivor report** — a message to the lead, no report files: your own survivors, severity-classified, each with failure scenario, resolution path, unresolved counterpart objections, flagged counterpart duplicates; a tally (\"N raised, M survived\" — the fallen stay retrievable on ask)"
+
 ## [v0.89.0] User-ruled true-deletion body cut — body 8,150 → 5,562 chars (−31.8%)
 
 - **Disposition:** superseded → a single-file five-paragraph body (identity+contract ·

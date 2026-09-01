@@ -10,6 +10,184 @@ restores the boundary clauses under the cap, and is strict-YAML-safe. Delivery v
 deferred: the in-session skill listing is a session-start snapshot (probe received pre-edit
 text), so the probe re-runs in a fresh session.
 
+## [v0.100.0] Schema conversion — census-row → minted-ID map (skill-content-schema wave)
+
+Ruling for every entry below: skill-content-schema D3 (boundary) / D8/C4 (protected
+transfers), `DECISIONS.md` 2026-09-01 row; census: `.mochiko/brainstorms/skill-content-schema/census.md`
+§B (RB). Schema home: `plugins/mochiko/skills/review-brainstorm/schema.yaml`. All minted IDs
+carry the `review-brainstorm.` prefix (omitted below). Map — census row → minted ID:
+1 `never-in-the-room` · 2 `lens-depth-never-jurisdiction` · 3 `verdict-is-input` (C4 stub;
+body's twice-stated form deduped here) · 4 `blind-map-before-record-contact` ·
+5 `grounding-excludes-session-artifacts` · 6 `cold-read-before-counterpart` ·
+7 `hunt-classes-per-decision` · 8a `excess-names-cheaper-shape` + 8b `never-excess` (C6 stub;
+lettered split — one row, two obligations) · 9 `verify-load-bearing-claims` ·
+10 `map-sample-audit` · 11 `external-claims-binding` · 12 `record-fitness-binding` ·
+13 `coverage-severity-mapping` · 14 `dismissed-angle-is-ruling` ·
+15 `findings-formed-count-only` · 16 `cross-exam-binding` · 17 `survivor-report-form` ·
+18 `status-vocabulary-and-criteria` · 19 `unresolvable-is-commentary` ·
+20 `verify-pass-grade` · 21 `synthesis-fidelity-sample` · 22 `reopen-born-verify-grade` ·
+23a `author-grader` (C3 stub) + 23b `findings-through-leads-pen` (lettered split) ·
+24 `evidence-floor` (C1 stub) · 25 `contested-needs-new-angle` · 26a `never-default-ready`
+(LOCAL rule by lead ruling — no C2 stub; keep-distinct edge vs `review-common.default-fail`
+reported for the allowlist) + 26b `unverifiable-claim-is-finding` · C5 mint (no census §B
+row; §A v0.46.0 + census §C) `its-command-states-them`.
+Accounting (V1 fix round): pre-conversion body 2,748; relocated content measures 3,265
+across the pair — the +517 content growth is grammatical expansion only (compressed body
+fragments rewritten as standalone, referentially-closed rule sentences per
+command-content-schema D12/D15), no restored playbook prose — the argued-overage path per
+skill-content-schema D8/C1; the remainder of the pair's payload over the body figure is
+structural overhead (IDs, keys, section scaffolding, reading grammar).
+
+## [v0.100.0] Blind-map floor — protection transfers (census RB-4; v0.60.0 + v0.88.0 protected)
+- **Disposition:** superseded — protection transfers to schema rule `review-brainstorm.blind-map-before-record-contact` (class: floor), per skill-content-schema D8/C4; provenance sidecar carries the protected status.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 skill-content-schema row).
+- **Content:** "Phase 0 blind angle map from the topic only, produced as its own deliverable before record contact"
+- **Kept deliberately:** the Protocol's sequencing prose (map first, then cold read) stays in the body per D3.
+- **Consumers assessed:** the dispatching command's two-message blind-map dispatch is command-side, unaffected.
+
+## [v0.100.0] Coverage severity + materiality — protection transfers (census RB-13; v0.60.0 protected)
+- **Disposition:** superseded — protection transfers to `review-brainstorm.coverage-severity-mapping`, per D8/C4.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 row).
+- **Content:** "coverage findings: blind-map-vs-record diff + materiality, severity by whether a ruling would likely / plausibly / not have changed (Critical / Important / Minor)"
+- **Kept deliberately:** the diff+materiality clause survives in `survivor-report-form`'s coverage parenthetical.
+- **Consumers assessed:** none restate the severity test (census sweep).
+
+## [v0.100.0] Dismissed-angle rule — protection transfers (census RB-14; v0.60.0 protected)
+- **Disposition:** superseded — protection transfers to `review-brainstorm.dismissed-angle-is-ruling`, per D8/C4.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 row).
+- **Content:** "a dismissed angle is a ruling, not a gap"
+- **Consumers assessed:** none (skill-local clause).
+
+## [v0.100.0] Reopen-born grade — protection transfers (census RB-22; v0.60.0 protected)
+- **Disposition:** superseded — protection transfers to `review-brainstorm.reopen-born-verify-grade`, per D8/C4. "this grade" deixis resolved to "the verify-pass grade" (command-content-schema D15).
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 row).
+- **Content:** "Reopen-born decisions get this grade, never a fresh cold read."
+- **Consumers assessed:** `commands/brainstorm.md` "reopen-born verify" vocabulary — survives in the rule ID and text.
+
+## [v0.100.0] Tally form — protection transfers (census RB-17; v0.88.0 RETURNED)
+- **Disposition:** superseded — protection transfers to `review-brainstorm.survivor-report-form`, per D8/C4.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 row).
+- **Content:** "survivor report as a message: survivors with severity, the decision(s) touched, failure scenario or cited contradiction (coverage: the diff + materiality), resolution path; tally (\"N raised, M survived\")"
+- **Consumers assessed:** `review-governance-intent` carries its own tally clause (kept-distinct, 2-member — below the common bar).
+
+## [v0.100.0] `critical-gaps` criteria — protection transfers (census RB-18; v0.88.0 RETURNED)
+- **Disposition:** superseded — protection transfers to `review-brainstorm.status-vocabulary-and-criteria`, per D8/C4.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 row).
+- **Content:** "recommended status (`ready / needs-revision / critical-gaps` — critical-gaps: a broken load-bearing claim, an unowned decision, a Critical coverage gap, or a record too thin to review)"
+- **Consumers assessed:** none restate the criteria (census sweep).
+
+## [v0.100.0] Commentary clause — protection transfers (census RB-19; v0.88.0 RETURNED)
+- **Disposition:** superseded — protection transfers to `review-brainstorm.unresolvable-is-commentary`, per D8/C4.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 row).
+- **Content:** "A finding nothing could resolve is commentary, not a finding."
+- **Consumers assessed:** `review-governance-intent` carries its own copy (kept-distinct, 2-member).
+
+## [v0.100.0] Class-6 calibration — protection transfers, lettered split (census RB-8a/8b; v0.67.0 protected)
+- **Disposition:** superseded — protection transfers to `review-brainstorm.excess-names-cheaper-shape` (8a, local) + `review-brainstorm.never-excess` (8b, `extends: review-common.never-excess` — the carve's family block), per D8/C4 and near-dup R2.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 row).
+- **Content:** "excess machinery (name the cheaper shape; floor/compliance/NFR never excess)"
+- **Kept deliberately:** the six-class list stays body prose per census §B note; the class-6 name rides it.
+- **Consumers assessed:** the carve wording now single-homes in `skill-review-common.yaml`; RGI/RSPEC/VC/RF bind the same block.
+
+## [v0.100.0] EXTERNAL-CLAIMS binding — protection transfers (census RB-11; v0.52.0 carve-out protected)
+- **Disposition:** superseded — protection transfers to `review-brainstorm.external-claims-binding` (pointer: `references/EXTERNAL-CLAIMS.md`), per D8/C4. The reference file is untouched (D3/C2 — stub points, never duplicates).
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 row).
+- **Content:** "outside-repo claims per `references/EXTERNAL-CLAIMS.md` (owned here)"
+- **Consumers assessed:** nine consumers named in the reference's Single-source header — file untouched, pointers hold.
+
+## [v0.100.0] CROSS-EXAM binding — protection transfers (census RB-16; v0.52.0-adjacent protected)
+- **Disposition:** superseded — protection transfers to `review-brainstorm.cross-exam-binding` (`when: {pairing: pair}`, pointer: `references/CROSS-EXAM.md`), per D8/C4. File untouched. V1 fix round (RB-2): the "pair only" text limb DROPPED from the rule text — the guard is single-homed in `when:` (criterion-11 MOVE); the verbatim clause is the Content line below.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 row).
+- **Content:** "cross-examination per `references/CROSS-EXAM.md` (pair only; fact substrate: the record's fact-checker map; fact authority: the seated fact-checker, else the files)"
+- **Consumers assessed:** `review-governance-intent` shares the file (its own binding rule, same wave).
+
+## [v0.100.0] Evidence floor — protection transfers to C1 stub (census RB-24; v0.64.0 protected)
+- **Disposition:** superseded — protection transfers to `review-brainstorm.evidence-floor` (`extends: review-common.evidence-floor`, class: floor), per D8/C4; strongest wording now single-homed in `skill-review-common.yaml`.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 row).
+- **Content:** "verdict and dispositions left in the reviewed artifacts themselves, never only in conversation"
+- **Consumers assessed:** six other family members bind the same block this wave.
+
+## [v0.100.0] its-command-states-them — protection transfers to C5 stub (§A v0.46.0; no census §B row — mint reported)
+- **Disposition:** superseded — protection transfers to `review-brainstorm.its-command-states-them` (`extends: review-common.its-command-states-them`), per D8/C4. Census §B carried no RB row for this clause; minted per §A + §C, deviation reported to the wave lead, never silent.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 row).
+- **Content:** "— its command states them."
+- **Consumers assessed:** RGI and RF bind the same block this wave.
+
+## [v0.100.0] Never-in-the-room floor relocated (census RB-1)
+- **Disposition:** relocated → `plugins/mochiko/skills/review-brainstorm/schema.yaml` `review-brainstorm.never-in-the-room` (class: floor)
+- **Tier failed:** n/a — supersession by ruling (skill-content-schema D3; `DECISIONS.md` 2026-09-01 row).
+- **Content:** "paired or solo, **never in the room**"
+
+## [v0.100.0] Lens depth-never-jurisdiction relocated (census RB-2)
+- **Disposition:** relocated → schema.yaml `review-brainstorm.lens-depth-never-jurisdiction`
+- **Tier failed:** n/a — supersession by ruling (D3; `DECISIONS.md` 2026-09-01 row).
+- **Content:** "A lens brief (*decision-quality*: scenario stress, classes 1–4, steelmans · *record-integrity*: inconsistencies, fitness, the map audit) sets depth, never jurisdiction."
+
+## [v0.100.0] Verdict-is-input relocated to C4 stub (census RB-3; body stated it twice)
+- **Disposition:** relocated → schema.yaml `review-brainstorm.verdict-is-input` (`extends: review-common.verdict-is-input`, class: floor)
+- **Tier failed:** n/a — supersession by ruling (D3/D5; `DECISIONS.md` 2026-09-01 row).
+- **Content:** "You recommend; **the lead owns every verdict**." + "your status is input; the lead owns the clearing verdict" (one obligation, deduped at conversion per census).
+
+## [v0.100.0] Grounding fence relocated (census RB-5)
+- **Disposition:** relocated → schema.yaml `review-brainstorm.grounding-excludes-session-artifacts`
+- **Tier failed:** n/a — supersession by ruling (D3; `DECISIONS.md` 2026-09-01 row).
+- **Content:** "(free repo grounding, session artifacts excluded)"
+
+## [v0.100.0] Cold-read-before-counterpart relocated (census RB-6)
+- **Disposition:** relocated → schema.yaml `review-brainstorm.cold-read-before-counterpart`
+- **Tier failed:** n/a — supersession by ruling (D3; `DECISIONS.md` 2026-09-01 row).
+- **Content:** "cold read before counterpart contact"
+
+## [v0.100.0] Hunt duty relocated; class list stays prose (census RB-7)
+- **Disposition:** relocated → schema.yaml `review-brainstorm.hunt-classes-per-decision`; the six-class list stays in the body Protocol per census §B note.
+- **Tier failed:** n/a — supersession by ruling (D3; `DECISIONS.md` 2026-09-01 row).
+- **Content:** "scenario stress + six hunt classes per decision"
+
+## [v0.100.0] Verify-claims duty relocated (census RB-9)
+- **Disposition:** relocated → schema.yaml `review-brainstorm.verify-load-bearing-claims`
+- **Tier failed:** n/a — supersession by ruling (D3; `DECISIONS.md` 2026-09-01 row).
+- **Content:** "verify load-bearing claims against the fact-checker map or the files"
+
+## [v0.100.0] Integrity-lens map audit relocated with `when:` (census RB-10)
+- **Disposition:** relocated → schema.yaml `review-brainstorm.map-sample-audit` (`when: {lens: record-integrity}` — guard moved out of the text, criterion-11 MOVE)
+- **Tier failed:** n/a — supersession by ruling (D3/D4; `DECISIONS.md` 2026-09-01 row).
+- **Content:** "(record-integrity lens: sample-audit the map itself against the files)"
+
+## [v0.100.0] Record-fitness binding relocated (census RB-12)
+- **Disposition:** relocated → schema.yaml `review-brainstorm.record-fitness-binding` (pointer: `references/RECORD-FITNESS.md`; file untouched)
+- **Tier failed:** n/a — supersession by ruling (D3; `DECISIONS.md` 2026-09-01 row).
+- **Content:** "fitness per `references/RECORD-FITNESS.md`"
+
+## [v0.100.0] Findings-formed count-only relocated (census RB-15)
+- **Disposition:** relocated → schema.yaml `review-brainstorm.findings-formed-count-only`
+- **Tier failed:** n/a — supersession by ruling (D3; `DECISIONS.md` 2026-09-01 row).
+- **Content:** "findings-formed = count only"
+
+## [v0.100.0] Verify-pass grade relocated with `when:` (census RB-20)
+- **Disposition:** relocated → schema.yaml `review-brainstorm.verify-pass-grade` (`when: {pass: verify}`)
+- **Tier failed:** n/a — supersession by ruling (D3/D4; `DECISIONS.md` 2026-09-01 row).
+- **Content:** "**Verify pass** (record-integrity lens, or solo): grade each fold against the updated record, quoting evidence; new surface only for fold-introduced contradictions."
+
+## [v0.100.0] Fidelity sample relocated (census RB-21)
+- **Disposition:** relocated → schema.yaml `review-brainstorm.synthesis-fidelity-sample`
+- **Tier failed:** n/a — supersession by ruling (D3; `DECISIONS.md` 2026-09-01 row).
+- **Content:** "Fidelity-sample a requested `synthesis.md` — every ruling present, no confidence mark inflated, no rejected alternative resurrected."
+
+## [v0.100.0] Author≠grader + lead's-pen relocated, lettered split (census RB-23a/23b)
+- **Disposition:** relocated → schema.yaml `review-brainstorm.author-grader` (23a, `extends: review-common.author-grader`, class: floor) + `review-brainstorm.findings-through-leads-pen` (23b, local floor — the lead's-pen limb is a kept-distinct edge, RB+RGI only, below the common bar).
+- **Tier failed:** n/a — supersession by ruling (D3/D5; `DECISIONS.md` 2026-09-01 row).
+- **Content:** "never author or revise the record — findings enter through the lead's pen"
+
+## [v0.100.0] Contested-new-angle floor relocated (census RB-25)
+- **Disposition:** relocated → schema.yaml `review-brainstorm.contested-needs-new-angle`
+- **Tier failed:** n/a — supersession by ruling (D3; `DECISIONS.md` 2026-09-01 row).
+- **Content:** "never raise a `Contested` decision unless the angle is genuinely new to the ruling"
+
+## [v0.100.0] Default-FAIL floor kept LOCAL + unverifiable-claim floor relocated (census RB-26a/26b)
+- **Disposition:** relocated → schema.yaml `review-brainstorm.never-default-ready` (26a — LOCAL full wording by lead ruling: the "zero findings means hunt harder, never manufacture" tail is protected lineage the C2 common block deliberately excludes; keep-distinct allowlist edge vs `review-common.default-fail` reported at fan-in) + `review-brainstorm.unverifiable-claim-is-finding` (26b).
+- **Tier failed:** n/a — supersession by ruling (D3/D5 + near-dup R2/R6; `DECISIONS.md` 2026-09-01 row).
+- **Content:** "never default to `ready` — zero findings means hunt harder, never manufacture · an unverifiable claim is a finding"
+
 ## [v0.88.0] RETURNED: blind map as its own deliverable (floor) + the commentary clause — eval-demanded re-adds, body 2,497 → 2,599; verify round added the tally form + critical-gaps criteria, final body 2,747 (−76.6% vs pre-cut)
 - **Evidence:** the post-cut regression grid `evals/review-brainstorm/runs/20260826-110222/`
   (27 runs, 3 arms; verdict in `evals/review-brainstorm/pass-report.md`). The cut arm failed

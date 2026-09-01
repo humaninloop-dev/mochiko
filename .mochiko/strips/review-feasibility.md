@@ -5,6 +5,124 @@ batch-2 ratified 2026-07-25; design: `.mochiko/brainstorms/skill-succinctness-st
 First strip assessment of this skill (never-stripped band 30–70): body 141 → 136 lines = **3.5%**,
 deeply under-band — whole-skill survivor ruling below.
 
+## [v0.100.0] Schema conversion — census-row → minted-ID map (skill-content-schema wave)
+
+Ruling for every entry below: skill-content-schema D3 (three-home boundary) / D8/C4
+(protected transfers + the explicit review-feasibility whole-body clause), `DECISIONS.md`
+2026-09-01 row; census: `.mochiko/brainstorms/skill-content-schema/census.md` §B (RF).
+Schema home: `plugins/mochiko/skills/review-feasibility/schema.yaml`. Minted IDs carry the
+`review-feasibility.` prefix (omitted below). Map — census row → minted ID:
+1 `sibling-split` · 2 `author-grader` (C3 stub) · 3 `lens-load-first` (also sequenced in
+the SKILL.md load-first block per D6/J-3) · 4 `default-fail` (C2 stub, `${verdict}` =
+`feasible`) · 5 `hunt-coverage-disclosure` · 6 `infeasible-never-flattens` ·
+7 `governance-two-exits` · 8 `evidence-floor` (C1 stub) · 9 `report-template-binding` ·
+10 `findings-cite-ids` · 11 `external-claims-binding` (cross-dir pointer, census J-7) ·
+12a `verdict-is-input` (C4 stub) + 12b `design-phase-only` (lettered split) ·
+13 `verdict-vocabulary` · reference stubs (lens file untouched, stub points):
+14 `skipped-lens-not-clean` · 15 `seam-is-elements` · 16 `single-artifact-routing` ·
+17 `class-seven-bound` · 18 `never-excess` (C6 stub + local lens pointer) ·
+19 `adopt-first-excess` · 20 `interrogatory-round` · 21 `architecture-pass-gate`
+(`when: {store_delta: present}`) · 22 `governance-conformance-only` ·
+23 `gate-fuel-field-names` · C5 mint (no census §B row; census §C — the lens guardrails'
+its-command-states-them copy) `its-command-states-them`, deviation reported to the wave
+lead. Non-protected reference stubs carry no entries below — nothing leaves any file.
+R2-absorption edge reported at fan-in: 12a's local tail "the lead owns … loops, and the
+human gate" is carried by the C4 core plus the C5 stub's loop/human-gate subject — the
+verbatim tail is preserved in 12a/12b's entry.
+Accounting (V1 fix round): body 1,901 → 2,195 (+294) + schema 8,377 = payload 10,572;
+the delta over the pre-conversion body is structural overhead (IDs, keys, section
+scaffolding, reading grammar — the +294 body delta is the load-first Rules block, grammar
+not content) — no content growth claimed.
+
+## [v0.100.0] Whole-body survivor protection re-homes onto the pair (D8/C4 explicit clause)
+- **Disposition:** superseded — the v0.26.0 whole-body survivor ruling (already ended as a body-residency claim at v0.82.0) re-homes onto the PAIR: `SKILL.md` body + `schema.yaml` jointly, recorded once here per skill-content-schema D8/C4's explicit review-feasibility clause; no per-line ambiguity survives. Every named core's home after conversion: floors and bindings in `schema.yaml` (rules mapped above), sequencing and hunt framing in the body, class/pass/guardrail procedure in `references/FEASIBILITY-LENS.md` (untouched).
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 skill-content-schema row).
+- **Content:** the v0.26.0 "KEPT: the entire remaining body" ruling as a protection claim — see the [v0.26.0] and [v0.82.0] entries below for its lineage.
+- **Kept deliberately:** `description:` byte-untouched; all `references/` and `templates/` targets untouched.
+- **Consumers assessed:** GI-005/GI-006 hold — every protected line traceable through this ledger to its new home, reconstructible in both directions.
+
+## [v0.100.0] Never-silently-approved floor — protection transfers (census RF-7; AD-D7 protected)
+- **Disposition:** superseded — protection transfers to schema rule `review-feasibility.governance-two-exits` (class: floor), per D8/C4; provenance sidecar carries the protected status.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 row).
+- **Content:** "**Governance is never silently approved** — two exits only: redesign to conform, or a user-ruled amendment/waiver via `governance-ledger.md`."
+- **Consumers assessed:** lens A3 carries the pass-side copy (untouched; dedup noted at census — the lens guardrail restatement is not a second rule).
+
+## [v0.100.0] Evidence floor — protection transfers to C1 stub (census RF-8; v0.64.0 protected)
+- **Disposition:** superseded — protection transfers to `review-feasibility.evidence-floor` (`extends: review-common.evidence-floor`, class: floor), per D8/C4; the report-binding limb stays local in `report-template-binding`.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 row).
+- **Content:** "**Verdict + per-finding dispositions land in the reviewed artifacts and the filled report** — `templates/feasibility-report-template.md` under the `templates/report-format.md` envelope; evidence living only in conversation is a floor violation."
+- **Consumers assessed:** six family members bind the same block this wave.
+
+## [v0.100.0] v0.82.0 additions — protection transfers (census RF-5, RF-9, RF-23)
+- **Disposition:** superseded — protection transfers to `review-feasibility.hunt-coverage-disclosure` (floor), `review-feasibility.report-template-binding` (floor), and `review-feasibility.gate-fuel-field-names` (reference-borne stub, template pointer), per D8/C4.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 row).
+- **Content:** "Hunt coverage discloses as **one line per class** in the report, never a narrative." · the pathed report binding (quoted in the C1 entry above) · the lens's canonical `gap / at / impact / fix` field names.
+- **Consumers assessed:** `templates/feasibility-report-template.md` untouched; its `hunt_coverage` frontmatter field still the disclosure's bounded home.
+
+## [v0.100.0] Class-7 protected limbs — protection transfers to reference stubs (census RF-17/RF-18; v0.67.0 protected)
+- **Disposition:** superseded — protection transfers to `review-feasibility.class-seven-bound` and `review-feasibility.never-excess` (C6 stub with local lens pointer), per D8/C4. `references/FEASIBILITY-LENS.md` untouched — the stubs point at the class-7 rules' procedure home; the never-alone-`infeasible` limb also rides `verdict-vocabulary`'s row context per census.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 row).
+- **Content:** lens: "class 7 … blocks `feasible` … but never alone at `infeasible`" · "admissible only when it names the cheaper alternative or the specific bar breached; a floor-, compliance-module-, or NFR-derived obligation is never excess"
+- **Consumers assessed:** `mochiko:patterns-adopt-first` and `review-plan-artifacts` cite "hunt class 7" — the lens section title and numbering untouched.
+
+## [v0.100.0] Element-not-file narrowing — protection transfers to reference stub (census RF-15; v0.81.0 protected)
+- **Disposition:** superseded — protection transfers to `review-feasibility.seam-is-elements` (reference-borne stub, lens pointer), per D8/C4; lens intro untouched.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 row).
+- **Content:** lens: "the seam is between two *elements*, never merely between two files"
+- **Consumers assessed:** none restate it (v0.81.0 entry's grep stands).
+
+## [v0.100.0] Architecture-pass gate + boundary watch — protection transfers to reference stubs (census RF-21/RF-22; AD-D7 protected)
+- **Disposition:** superseded — protection transfers to `review-feasibility.architecture-pass-gate` (`when: {store_delta: present}` — the surface-presence guard now declared, criterion-11 MOVE) and `review-feasibility.governance-conformance-only`, per D8/C4; lens A1–A3 untouched as the procedure home.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 row).
+- **Content:** lens: "Fires when the design-phase package carries a **store delta**" · "you grade the *topology's conformance* to governance (a **design-phase artifact** against an input), never whether the governance itself is well-formed"
+- **Consumers assessed:** the sibling's ARTIFACT-CHECKLISTS boundary table keys on the same signed store delta — untouched (P3's member).
+
+## [v0.100.0] Sibling split relocated (census RF-1)
+- **Disposition:** relocated → `plugins/mochiko/skills/review-feasibility/schema.yaml` `review-feasibility.sibling-split`
+- **Tier failed:** n/a — supersession by ruling (D3; `DECISIONS.md` 2026-09-01 row).
+- **Content:** "The sibling `mochiko:review-plan-artifacts` owns coverage / measurability / consistency / presence; you own contradiction / impossibility / buildability."
+
+## [v0.100.0] Author≠grader relocated to C3 stub (census RF-2)
+- **Disposition:** relocated → schema.yaml `review-feasibility.author-grader` (`extends: review-common.author-grader`, class: floor)
+- **Tier failed:** n/a — supersession by ruling (D3/D5; `DECISIONS.md` 2026-09-01 row).
+- **Content:** "Never author or fix what you grade."
+
+## [v0.100.0] Lens load duty relocated (census RF-3; J-3 sequencing)
+- **Disposition:** relocated → schema.yaml `review-feasibility.lens-load-first`; the SKILL.md load-first block sequences schema + common + lens in one declared first action per D6 as amended and census J-3.
+- **Tier failed:** n/a — supersession by ruling (D3/D6; `DECISIONS.md` 2026-09-01 row).
+- **Content:** "**Load [references/FEASIBILITY-LENS.md](references/FEASIBILITY-LENS.md) before hunting** — classes 1–6, class 7 (excess / wrong altitude, remove-shaped, blocking-capable), the architecture pass A1–A3 (mandatory on a drafted store delta), worked examples, the sibling boundary, and the reviewer guardrails."
+
+## [v0.100.0] Never-default-feasible relocated to C2 stub (census RF-4)
+- **Disposition:** relocated → schema.yaml `review-feasibility.default-fail` (`extends: review-common.default-fail`, class: floor; `${verdict}` = `feasible`). R2 strongest-wording: the block's "is never evidence" carries the body's "is not evidence".
+- **Tier failed:** n/a — supersession by ruling (D3/D5 + near-dup R2; `DECISIONS.md` 2026-09-01 row).
+- **Content:** "**Never default to `feasible`** — earned only by a completed hunt; absence of looking is not evidence."
+
+## [v0.100.0] Infeasible-never-flattens relocated (census RF-6)
+- **Disposition:** relocated → schema.yaml `review-feasibility.infeasible-never-flattens`
+- **Tier failed:** n/a — supersession by ruling (D3; `DECISIONS.md` 2026-09-01 row).
+- **Content:** "**`infeasible` never flattens** into `needs-revision` — a fundamental conflict (no revision closes it; a business-level decision) escalates to the human."
+
+## [v0.100.0] Findings-cite-IDs relocated (census RF-10)
+- **Disposition:** relocated → schema.yaml `review-feasibility.findings-cite-ids`
+- **Tier failed:** n/a — supersession by ruling (D3; `DECISIONS.md` 2026-09-01 row).
+- **Content:** "**Findings cite the IDs in tension** (`C-003 ↔ D-007`) with the four gate-fuel fields"
+
+## [v0.100.0] External-premises binding relocated (census RF-11)
+- **Disposition:** relocated → schema.yaml `review-feasibility.external-claims-binding` (cross-directory pointer `../review-brainstorm/references/EXTERNAL-CLAIMS.md`, legal per census J-7)
+- **Tier failed:** n/a — supersession by ruling (D3; `DECISIONS.md` 2026-09-01 row).
+- **Content:** "external premises verify per `../review-brainstorm/references/EXTERNAL-CLAIMS.md`."
+- **Consumers assessed:** the shared reference file untouched; its Single-source header governs.
+
+## [v0.100.0] Verdict-is-input + G1 relocated, lettered split (census RF-12a/12b)
+- **Disposition:** relocated → schema.yaml `review-feasibility.verdict-is-input` (12a, `extends: review-common.verdict-is-input`, class: floor, kind: reservation) + `review-feasibility.design-phase-only` (12b, local floor). The local tail "the lead owns clearing, loops, and the human gate" is absorbed into the C4 core plus the C5 stub's subject (loop/human-gate mechanics are the command's) — verbatim preserved here, edge reported at fan-in.
+- **Tier failed:** n/a — supersession by ruling (D3/D5 + near-dup R2; `DECISIONS.md` 2026-09-01 row).
+- **Content:** "**Your verdict is input** — the lead owns clearing, loops, and the human gate; G1: design-phase artifacts only, never the constitution."
+
+## [v0.100.0] Verdict vocabulary relocated (census RF-13)
+- **Disposition:** relocated → schema.yaml `review-feasibility.verdict-vocabulary`
+- **Tier failed:** n/a — supersession by ruling (D3; `DECISIONS.md` 2026-09-01 row).
+- **Content:** "Verdict: `feasible` · `needs-revision` (resolvable) · `infeasible` (fundamental)."
+
 ## [v0.91.0] Fix round 3 — the architecture pass's boundary watch (V2 N4)
 
 - **Disposition:** superseded → "(a **design-phase artifact** against an input)".

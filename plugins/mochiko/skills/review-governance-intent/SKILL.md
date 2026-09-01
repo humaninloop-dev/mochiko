@@ -5,12 +5,40 @@ description: This skill MUST be invoked when serving as a cold INTENT REVIEWER i
 
 # Intent Review — Stress-Testing the Governance Synthesis
 
-Cold reviewer of the frozen `governance-intent.md` — fact profile, floor-expression and deck rulings, minted intents, waivers, modules, exclusions, each with a GI-ID and a lead-assigned confidence mark (`Confident / Assumed / Contested / Unsure / Deferred`) — a **traceable contract** on the surface-set producer. You run **before ratification**, spawned at the sizing gate, never a participant — the session is recommend-then-arbitrate and unchallenged; **you are the challenge**. Frozen from your spawn until dispositions land. You recommend; the **lead owns every verdict, the user owns ratification** — never author, revise, or ratify.
+Cold reviewer of the frozen `governance-intent.md` — fact profile, floor-expression and
+deck rulings, minted intents, waivers, modules, exclusions, each with a GI-ID and a
+lead-assigned confidence mark (`Confident / Assumed / Contested / Unsure / Deferred`) — a
+**traceable contract** on the surface-set producer. A lens brief may scope you to
+*coverage* (agenda surface: missed dimensions, convergence-skip audits, card-acceptance +
+waiver/module sweeps) or *coherence* (fact↔risk↔ruling alignment, mark/echo-rationale
+audit, reality-conflict resolutions against the analysis, cross-element contradictions).
 
-**Lens + jurisdiction:** a spawn brief may scope to *coverage* (agenda surface: missed dimensions, convergence-skip audits, card-acceptance + waiver/module sweeps) or *coherence* (fact↔risk↔ruling alignment, mark/echo-rationale audit, reality-conflict resolutions against the analysis, cross-element contradictions) — depth, never jurisdiction: report real out-of-lens trips; solo, the whole surface is yours. The verify pass belongs to the coherence lens in a pair, to you automatically when solo. **Permanently out of jurisdiction:** the authored surface set and its Tier-2 grading (`mochiko:validation-constitution`, downstream — different artifact, different family), and formulation/enforceability quality of authored principles (closed `Contested`, D1 — never re-raise).
+## Rules — load the schema first
 
-**Protocol:** sequestration — the entire attack formed before counterpart contact; the lead withholds the name until findings are formed → read the frozen synthesis, the agenda ([../authoring-constitution/references/INTERROGATION-AGENDA.md](../authoring-constitution/references/INTERROGATION-AGENDA.md) — its ten dimensions are the coverage yardstick), and, brownfield, `.mochiko/memory/codebase-analysis.md` → every finding: severity, the GI element(s) touched, a **concrete failure scenario or cited contradiction**, and a resolution path (the one question or check that settles it; unresolvable = commentary, not a finding) → the over-governance hunt is in-jurisdiction (remove-shaped): a minted principle or intent no elicited fact justifies is a finding like any absence — admissible only naming the fact it fails to trace to or the lighter surface carrying the real need; a floor-, compliance-module-, or NFR-derived obligation is never excess; never reaches formulation quality → cross-examination (pair only; solo skips to the report): after the lead introduces the counterpart, the one-shot four-message exchange per [../review-brainstorm/references/CROSS-EXAM.md](../review-brainstorm/references/CROSS-EXAM.md) (the single source, shared with `mochiko:review-brainstorm`); bindings — *artifact*: the frozen synthesis; *fact substrate*: `codebase-analysis.md` + detect-stack baseline (brownfield; the files otherwise); *fact authority*: a **reality-surface fact** is checked against the analysis or files, never argued · a **user-declared fact** (team size, risk posture, lifespan, values) is checkable against nothing on disk — flag for the lead to route to the user as confirmation, never to argument · an **external-sourced fact** (a floor-class claim fed from outside the repo) runs per [../review-brainstorm/references/EXTERNAL-CLAIMS.md](../review-brainstorm/references/EXTERNAL-CLAIMS.md), never argued.
+Your first action, before any protocol step: **Read `schema.yaml` (this skill's own
+directory) and `../../schemas/skill-review-common.yaml` raw, in full, in the same first
+action.** The schema is the source of truth for this skill's binding rules, nested in six
+sections, each addressable by its section ID:
+`review-governance-intent.sec.independence` · `review-governance-intent.sec.scope` ·
+`review-governance-intent.sec.inputs` · `review-governance-intent.sec.verdict` ·
+`review-governance-intent.sec.output` · `review-governance-intent.sec.reserved`. Interpret
+it live: a rule's `kind:` names what it is, and an absent `kind:` reads `constraint`; a
+rule carrying `when:` binds only where its terms hold against the schema's declared
+`conditions:`, except that a `class: floor` rule is always read and always delivered —
+`when:` gates when its obligation applies, never whether it reaches you; a `pointer:` rule
+binds you to that file's or skill's procedure, referenced never restated; `${var}`
+substitutes from this schema's `vars:` at read time; labels come from
+`plugins/mochiko/schemas/skill-labels.yaml`. A rule carrying
+`extends: review-common.<slug>` inherits text/labels/pointer from
+`skill-review-common.yaml` only — `class` and every absence-meaningful field are local —
+and the stub's `review-governance-intent.*` ID stays the citable ID. The floor pin:
+the 16 rules of `class: floor` are non-waivable. Before the first protocol step, state the floor
+count back — a skipped or partial read leaves that count blank: halt and surface it, and
+halt likewise if the schema's `class: floor` count disagrees with the pin.
 
-**Survivor report** — a message to the lead, no report files: your own survivors, severity-classified, each with failure scenario, resolution path, unresolved counterpart objections, flagged counterpart duplicates; a tally ("N raised, M survived" — the fallen stay retrievable on ask); a recommended status: `ready` (every hunt class actively worked, nothing blocking survived) / `needs-revision` (survivors resolvable by the session — an interrogation follow-up, a re-dealt card, a fixable fold) / `critical-gaps` (a fact profile contradicted by its own risk declaration or detected reality, an unrecorded ruling — a missing or unrecorded depth-level declaration among them — or a synthesis too thin to review). **Never default to `ready`** — earned by a completed hunt, never by looking reasonable; too thin to attack (rulings without rationale, marks without basis) is itself the first finding.
+## Protocol
 
-**Floors:** never in the session, out of its framing — the counterpart's included — until the cold read is done; in the session = not a reviewer · findings enter through the lead's pen, dispositions in the Review section — verdict and dispositions land in the reviewed artifacts themselves; review evidence only in conversation is a floor violation · marks are lead-self-reported: honor `Contested` only after its rationale audit (an unaudited `Contested` is a shield; a shield is a finding); echo-rationales and adoption streaks outrank any mark · the declared depth level is the user's recorded ruling (D1/D2): challenge expression, waivers, fact consistency; verify it exists in the ledger, was recommend-then-arbitrated, greenfield got the low recommendation — never flag it against real users or deployment state (D6 no-watcher), never grade stricter than the declared level · yardstick = the agenda, the asserted floor, the synthesis's own internal consistency — never your governance taste · a session confirming its own synthesis is the gap this review closes; never soften on "the user already confirmed it in session" · your status is input; the lead owns the clearing verdict and survivor routing, the user owns ratification — its command states them.
+Form the attack sequestered, then read the frozen synthesis, the agenda, and — brownfield —
+the codebase analysis. Work every hunt class the lens brief admits, the over-governance
+hunt included; shape each finding to the contract; cross-examine in a pair; close with the
+survivor report and the recommended status.

@@ -17,6 +17,22 @@ git history (this line, before this groom).*
 
 ---
 
+## Skill-content schema build
+
+*(ruled + accepted 2026-09-01, `skill-content-schema` D1–D9 as review-amended; provenance:
+`.mochiko/brainstorms/skill-content-schema/record.md`)*
+
+- [ ] **First-live-run watch: skill schema delivery (D6)** — build DELIVERED 2026-09-01
+  at v0.100.0 (→ trail). Probes: schema read? whole? before the first procedural step?
+  read-back stated? · the I5 per-invoke read-cost observable against the MEASURED figures
+  (family ×3.24 delivered-at-invoke, ~119.9k chars; ledger rows the per-member source) ·
+  benefit observations (a `skill.*` ID cited by a strip/audit row · the checker or
+  detector catching a real defect). Consumers: the D9 rollback trigger (user-reserved;
+  triggers: delivery underperforming the prose baseline, or the eval sample past the
+  pre-registered bar) + further-family door rulings. Still owed from the wave: the D7
+  compression-eval judged sample (RB+RF, pre-registration + ship bar take their own user
+  ratification).
+
 ## Command-schema ontology wave
 
 *(ruled + accepted 2026-08-27, `command-schema-ontology` D1–D11 as review-amended;
@@ -46,7 +62,8 @@ D10 rollout DELIVERED same day at v0.95.0 — all six commands now `.md`+schema 
   empty-section runtime cost · one concrete six-set addressing benefit · a run resolving
   `spec.lead-latitude`'s "the Goal state" referent now that Goal is a step label, not a
   heading (V2 advisory). Baseline perturbation accepted eyes-open: the pre-rewrite pair form
-  never fires live.*
+  never fires live.* *Path probe added 2026-09-01 (skill-content-schema M1): does the
+  hard-coded repo-relative schema path resolve from an installed plugin cache?*
 
 ## Command `.md` scaffold build
 

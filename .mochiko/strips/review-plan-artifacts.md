@@ -10,6 +10,153 @@ bullet like the one stripped from `review-specifications`). One contested keep (
 is a library-wide consistency ruling, not a cluster call (see the wave return); note L16 already carries
 the `loop-discipline` reference the strip disposition would add.
 
+## [v0.100.0] Skill-content-schema conversion — body obligations moved to `schema.yaml`; the pair is now the graded unit
+
+Wave context: skill-content-schema D1–D9 as amended (`.mochiko/brainstorms/skill-content-schema/record.md`,
+`DECISIONS.md` 2026-09-01); census referent `.mochiko/brainstorms/skill-content-schema/census.md` §A/§B
+(RPA rows). Every entry below is one move of that conversion. Census-row → minted-ID map: 1 `gap-list-scope` ·
+2 `feasibility-handoff` · 3 `not-for` · 4 `conformance-blocking` · 5 `material-divergence-autofail` ·
+6 `adopt-first-lens` · 7 `rung-honesty-advisory` · 8 `completeness-supplied-sets` · 9 `tier1-preassert` ·
+10 `issue-templates` · 11 `mechanical-verdict` · 12 `report-template` · 13a `cycle-card-checks` ·
+13b `cycle-card-check-mirror` · 14 `caller-names-sets` · 15 `incremental-consistency-scope` ·
+16 `incremental-read-bound` · 17 `no-prior-waiver` · 18 `escalate-full-reread` · 19 `contradiction-routing` ·
+20 `unsure-targeted-review` · 21 `incremental-report` · 22 `default-fail` (stub) · 23a `letter-is-spirit` ·
+23b `na-justified` · 24 `critical-blocks` · 25 `never-shrink` · 26 `evidence-floor` (stub) ·
+27 `severity-classification` · 28 `verdict-criteria` · 29 `analysis-checklists` · 30 `store-delta-checklists` ·
+31 `design-cross-checklists` · 32 `boundary-table` · 33 `tier1-forms-envelope` · (no census row)
+`author-grader` (stub — census-deviation addition, C3 binds all 8 members; lead-ruled 2026-09-01).
+All IDs carry the `review-plan-artifacts.` prefix.
+Structural-vs-content accounting (D8/C1): delivered pair vs pre-conversion body = **1.20×** — the
+overage is structural (IDs, keys, grammar) plus the census-ruled additions that had no body text to
+relocate: the seven reference-borne stub rules (§B 27–33) and the fresh `author-grader` stub; no
+content growth.
+
+### Supersession-transfer — [v0.26.0] KEPT lineage: Red Flags · Common Rationalizations · Incremental Review Mode obligations
+- **Disposition:** superseded — protection transfers to schema rules `never-shrink`,
+  `letter-is-spirit`, `na-justified`, `critical-blocks`, and the incremental set
+  (`incremental-consistency-scope` · `no-prior-waiver` · `escalate-full-reread` ·
+  `incremental-read-bound` · `caller-names-sets` · `contradiction-routing` ·
+  `unsure-targeted-review`), citing skill-content-schema D8/C4 + `DECISIONS.md` 2026-09-01.
+- **Tier failed:** n/a — supersession by ruling.
+- **Content:** the Floors clauses "feature size, producer seniority, time pressure, found-enough never
+  shrink the review; a vague spec is a gap to flag, not permission to propagate, and 'obvious' never
+  exempts a constraint from documentation" · "the letter IS the spirit: never skip a check, never
+  downgrade a severity to dodge a finding (rationalizing DOWN means it is probably higher); an
+  inapplicable check is flagged N/A with justification, never silently dropped" · "a Critical/Important
+  issue blocks — never 'noted but not blocking'"; the Incremental-mode rule clauses of the body's
+  **Incremental mode** paragraph, verbatim per the v0.87.0 compressed form.
+- **Kept deliberately:** the incremental narrative voice (what the pass IS) stays in the body's
+  Procedure prose; only the obligations moved.
+- **Consumers assessed:** none — skill-local content.
+
+### Supersession-transfer — [v0.15.0] KEPT: incremental report-shape block
+- **Disposition:** superseded — protection transfers to schema rule `incremental-report`, citing
+  skill-content-schema D8/C4 + `DECISIONS.md` 2026-09-01.
+- **Tier failed:** n/a — supersession by ruling.
+- **Content:** "The report adds `incremental: true`, `full_review:` / `consistency_only:` scope lists,
+  and pass/fail `consistency_checks:` frontmatter (entity_names · schemas · decisions_honored ·
+  architecture_conformance · sensitivity_annotations · integration_boundaries); a fail also lands as a
+  finding."
+- **Consumers assessed:** none — skill-local content.
+
+### Supersession-transfer — [v0.64.0] review-evidence floor line
+- **Disposition:** superseded — protection transfers to schema rule `evidence-floor`
+  (`extends: review-common.evidence-floor`, `class: floor` local), citing skill-content-schema D8/C4 +
+  `DECISIONS.md` 2026-09-01.
+- **Tier failed:** n/a — supersession by ruling.
+- **Content:** "verdict and per-finding dispositions land in the reviewed artifacts themselves — review
+  evidence only in conversation is a floor violation."
+- **Consumers assessed:** the common block `review-common.evidence-floor` is the family home; the
+  cross-grammar near-dup edge with command `common.yaml` is allowlist territory (census J-5).
+
+### Supersession-transfer — [v0.67.0] three-lens machinery + material-divergence precedence override + class-7 seam sentence
+- **Disposition:** superseded — protection transfers to schema rules `conformance-blocking`,
+  `material-divergence-autofail`, `rung-honesty-advisory`, `feasibility-handoff`, citing
+  skill-content-schema D8/C4 + `DECISIONS.md` 2026-09-01.
+- **Tier failed:** n/a — supersession by ruling.
+- **Content:** "*conformance* — BLOCKING: every named gap closed, within the gap list's depth;
+  **material divergence** (an artifact no gap named, or an element class materially past the gap list)
+  auto-FAILs the package (critical-gaps), overriding the count mapping" · "*rung-claim honesty* —
+  advisory, never drives the verdict: each seat's disclosed ladder stops graded against
+  `mochiko:patterns-plan-minimalism` (the standard, never restated; the independent excess hunt is
+  `review-feasibility`'s class 7)".
+- **Consumers assessed:** none — skill-local content.
+
+### Supersession-transfer — [v0.53.0] code-review carve-out (`review-code-minimalism` sole exception)
+- **Disposition:** superseded — protection transfers to schema rule `not-for`, citing
+  skill-content-schema D8/C4 + `DECISIONS.md` 2026-09-01.
+- **Tier failed:** n/a — supersession by ruling.
+- **Content:** "Not for: code review (sole carve-out `mochiko:review-code-minimalism`, implement-side) ·
+  specs (`review-specifications`) · constitution (`validation-constitution`) · artifacts still being
+  drafted."
+- **Consumers assessed:** `review-specifications` carries its own copy of the carve-out (its own strip
+  entry covers it); allowlist keep-distinct edge per census §C.
+
+### Supersession-transfer — [v0.75.0] oracle-semantics check (ruled wording)
+- **Disposition:** superseded — protection transfers to schema rule `cycle-card-checks`, the wording
+  carried verbatim inside the rule text, citing skill-content-schema D8/C4 + `DECISIONS.md` 2026-09-01.
+- **Tier failed:** n/a — supersession by ruling.
+- **Content:** "oracle semantics (Asserts graded semantically against the acceptance scenario /
+  criteria they cite — the *right* expected behaviour, not merely present and in-grammar)".
+- **Consumers assessed:** none — skill-local content.
+
+### Supersession-transfer — [v0.76.0] two-arm `--check` citation
+- **Disposition:** superseded — protection transfers to schema rule `cycle-card-check-mirror`, both
+  arms preserved (GI-020), citing skill-content-schema D8/C4 + `DECISIONS.md` 2026-09-01.
+- **Tier failed:** n/a — supersession by ruling.
+- **Content:** "Mirrors the `tasks` `--check` view (`mochiko-cli template tasks --check`, or Read
+  `plugins/mochiko/schemas/tasks.yaml` when the binary is absent)."
+- **Consumers assessed:** none — skill-local content.
+
+### Supersession-transfer — [v0.81.0] store-delta re-key incl. the qualifying-flow guard and deployment-view row
+- **Disposition:** superseded — protection transfers to schema rule `store-delta-checklists`
+  (reference-stub: `pointer: references/ARTIFACT-CHECKLISTS.md`; the checklist tables stay in the
+  reference file untouched), citing skill-content-schema D8/C4 + `DECISIONS.md` 2026-09-01.
+- **Tier failed:** n/a — supersession by ruling.
+- **Content:** the body lens clause "*completeness within scope* — … (analysis · store delta when the
+  package carries one, else the no-delta claim · design · cross-artifact), over whichever sets the
+  caller supplies"; the kept-verbatim guard "a P1 journey is the floor, never the cap" is named in the
+  rule text and remains in ARTIFACT-CHECKLISTS.md.
+- **Kept deliberately:** ARTIFACT-CHECKLISTS.md itself — files untouched, stub-default per D3/C2.
+- **Consumers assessed:** none — skill-local content.
+
+### Supersession-transfer — [v0.91.0] gap-list floor + BLOCKING strength (plan-stage retirement D4/D5)
+- **Disposition:** superseded — protection transfers to schema rules `gap-list-scope` and
+  `conformance-blocking`, citing skill-content-schema D8/C4 + `DECISIONS.md` 2026-09-01.
+- **Tier failed:** n/a — supersession by ruling.
+- **Content:** "The run's floor is **the sufficiency report's gap list** (the named gaps the design
+  phase was scoped to close), never a fixed artifact set."
+- **Consumers assessed:** none — skill-local content.
+
+### Relocation — remaining body obligations → schema rules (non-protected clauses)
+- **Disposition:** relocated → `schema.yaml` rules `feasibility-handoff` (sibling split sentence),
+  `completeness-supplied-sets`, `tier1-preassert`, `issue-templates`, `mechanical-verdict`,
+  `report-template`, `adopt-first-lens`, `cycle-card-checks` (the six non-oracle checks),
+  `severity-classification`, `verdict-criteria`, `analysis-checklists`, `design-cross-checklists`,
+  `boundary-table`, `tier1-forms-envelope`.
+- **Tier failed:** n/a — ruled conversion (skill-content-schema D3, obligations-only boundary).
+- **Content:** the Protocol paragraph's obligation clauses ("Tier-1 pre-assert first — `python
+  scripts/check-artifacts.py .mochiko/specs/<feature>/<artifact>.md …` — a `failed` count is ground
+  truth, folded straight into the issue list → run every applicable check → classify and shape issues
+  per ISSUE-TEMPLATES.md → verdict mechanically from the counts (its Verdict Criteria), subject to the
+  divergence override → report per `mochiko:advocate-report-template`: evidence and an actionable fix
+  per issue, the one-line `strengths:` field filled"); the adopt-first lens clause; the cycle-card
+  check-set clauses (vertical integrity · `**TEST:**` gate · story traceability · dependency
+  minimality · brownfield exposure stated · no task lists or file paths); the reference-frame
+  obligations of ARTIFACT-CHECKLISTS.md / ISSUE-TEMPLATES.md now stubbed by pointer (files untouched).
+- **Consumers assessed:** none — skill-local content.
+
+### Relocation — default-FAIL floor line → common stub under strongest-wording-wins
+- **Disposition:** relocated → `default-fail` (`extends: review-common.default-fail`, `class: floor`
+  local, `${verdict}` = `ready`); the member tail superseded by the common block's strongest wording
+  per near-dup convergence R2 (`.mochiko/decisions/2026-08-28-near-dup-convergence.md`).
+- **Tier failed:** n/a — ruled conversion (skill-content-schema D5).
+- **Content:** "defaults to FAIL — good enough is never ready: evidence or rejection".
+- **Kept deliberately:** nothing of the tail needs a local rule — "evidence or rejection" is the
+  default-posture obligation the common text states as "earned only by a completed hunt; absence of
+  looking is never evidence".
+- **Consumers assessed:** family common block; allowlist edge vs command `common.yaml` (census J-5).
+
 ## [v0.91.0] Fix round 4 — the four sibling "Plan Artifact" sites re-titled with the H1; slug still retained — plan-stage retirement D1/D5
 
 - **Disposition:** superseded in four places across the skill's reference and script files, closing

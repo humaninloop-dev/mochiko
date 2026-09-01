@@ -3,10 +3,16 @@
 # requires-python = ">=3.9"
 # dependencies = ["pyyaml"]
 # ///
-"""Similar-rule detector over the six command content schemas — layer 1 of the
-similar-items grooming system (proposed 2026-08-28, conversation-born; no session
-record yet — the merge POLICY for near-duplicates is unruled and gets ruled when the
-first real merge set is on the table, evidence-first).
+"""Similar-rule detector over the six command content schemas AND the in-directory
+skill schemas — layer 1 of the similar-items grooming system (proposed 2026-08-28,
+conversation-born; no session record yet — the merge POLICY for near-duplicates is
+unruled and gets ruled when the first real merge set is on the table, evidence-first).
+Skill discovery per skill-content-schema D7/M3: `plugins/mochiko/skills/*/schema.yaml`
+beside the command flat-glob; skill stubs resolve `extends: review-common.<slug>`
+against skill-review-common.yaml (commands keep common.yaml — D5 forbids cross-grammar
+sharing of blocks, and the disjoint id prefixes keep one merged lookup safe). A
+command-vs-skill near-dup pairs like any other in-kind edge — that is how the J-5
+drift edges surface and get allowlisted.
 
 The detector PROPOSES candidate clusters; it never merges, never edits, never gates.
 Combining is judgment: layer 2 is an agent/lead pass that disposes each cluster
@@ -55,7 +61,8 @@ a judgment pass. A stale entry (an ID no longer live) is named in a warning.
 Exit codes: 0 always, unless --exit-signal is passed (then 1 when any cluster is
 found — the optional exit-code signal GI-019 licenses). Never a required CI gate.
 
-Run:  uv run scripts/find-similar-rules.py                 (all six pairs)
+Run:  uv run scripts/find-similar-rules.py                 (six command pairs + every
+                                                            converted skill schema)
   or: uv run scripts/find-similar-rules.py --min 0.7       (tighter threshold)
   or: uv run scripts/find-similar-rules.py --full          (untrimmed texts)
   or: uv run scripts/find-similar-rules.py --json          (machine-readable, for the
@@ -135,6 +142,14 @@ def schema_paths(root: Path, schemas_dir) -> list:
         (p.stem, p) for p in Path(schemas_dir).glob("*.yaml")
         if p.name not in ("common.yaml", "command-labels.yaml")
     )
+
+
+def skill_schema_paths(root: Path, skills_dir) -> list:
+    """The in-directory skill schemas (skill-content-schema D2, detector sweep D7/M3):
+    every <name>/schema.yaml under the skills root. An unconverted skill has no
+    schema.yaml and is skipped by the glob itself."""
+    base = Path(skills_dir) if skills_dir else root / "plugins/mochiko/skills"
+    return sorted((p.parent.name, p) for p in base.glob("*/schema.yaml"))
 
 
 def load_rules(paths: list, common: dict, warnings: list):
@@ -374,20 +389,49 @@ def main() -> int:
     p.add_argument("--schemas-dir", type=Path, default=None,
                    help="scan every schema in this directory instead of the six "
                         "shipped pairs (fixture/test use)")
+    p.add_argument("--skills-dir", type=Path, default=None,
+                   help="scan every <name>/schema.yaml under this root instead of "
+                        "plugins/mochiko/skills (fixture/test use)")
     p.add_argument("--common", type=Path, default=None,
-                   help="shared block library (default: beside the schemas)")
-    p.add_argument("--allowlist", type=Path,
-                   default=root / "scripts/similar-rules-allowlist.yaml")
+                   help="command block library (default: beside the schemas)")
+    p.add_argument("--skill-common", type=Path, default=None,
+                   help="skill family block library (default: "
+                        "plugins/mochiko/schemas/skill-review-common.yaml, or "
+                        "skill-common.yaml beside --skills-dir)")
+    p.add_argument("--allowlist", type=Path, default=None,
+                   help="adjudicated keep-distinct pairs (default: "
+                        "scripts/similar-rules-allowlist.yaml on a live run; a fixture "
+                        "run reads no allowlist unless one is passed — the live file's "
+                        "IDs would all warn stale against fixtures)")
     a = p.parse_args()
 
     if a.common is None:
         base = a.schemas_dir if a.schemas_dir else root / "plugins/mochiko/schemas"
         a.common = Path(base) / "common.yaml"
+    if a.skill_common is None:
+        a.skill_common = (Path(a.skills_dir) / "skill-common.yaml") if a.skills_dir \
+            else root / "plugins/mochiko/schemas/skill-review-common.yaml"
+
+    # A dir flag puts the run in fixture mode: only the surfaces named by a flag are
+    # scanned, so a fixture run never sweeps the live tree beside its fixtures — and
+    # never reads the live allowlist beside them either.
+    fixture_mode = a.schemas_dir is not None or a.skills_dir is not None
+    if a.allowlist is None and not fixture_mode:
+        a.allowlist = root / "scripts/similar-rules-allowlist.yaml"
+    paths = []
+    if not fixture_mode or a.schemas_dir is not None:
+        paths += schema_paths(root, a.schemas_dir)
+    if not fixture_mode or a.skills_dir is not None:
+        paths += skill_schema_paths(root, a.skills_dir)
 
     warnings = []
+    # One merged lookup: `common.<slug>` and `review-common.<slug>` prefixes are
+    # disjoint, so a stub can only ever resolve against its own grammar's library.
     common = load_common(a.common)
-    rules = load_rules(schema_paths(root, a.schemas_dir), common, warnings)
-    suppressed = load_allowlist(a.allowlist, {r.rid for r in rules}, warnings)
+    common.update(load_common(a.skill_common))
+    rules = load_rules(paths, common, warnings)
+    suppressed = load_allowlist(a.allowlist, {r.rid for r in rules}, warnings) \
+        if a.allowlist else set()
     edges, scored, suppressed_hits = score_pairs(rules, a.min, suppressed)
     clusters = cluster(edges, rules)
 

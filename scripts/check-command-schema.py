@@ -183,6 +183,10 @@ BOOL_ALIASES = {"yes": "true", "on": "true", "no": "false", "off": "false"}
 # schema outside the shipped six still has its citations resolved (J-11: the scan is
 # all-prefix, and a token whose prefix is not this pair's cannot be resolved here).
 COMMAND_PREFIXES = ("impl", "feat", "spec", "arch", "setup", "brainstorm")
+# The sidecar's discriminator, both sides of the skill-content-schema wave's rename
+# (command-provenance → primitive-provenance once skill entries join the file) —
+# mirrored in check-skill-schema.py.
+PROVENANCE_KINDS = ("command-provenance", "primitive-provenance")
 # `spec.md` is a path, not a citation (M3) — a token ending in a file suffix is excluded.
 CITATION_SUFFIXES = {"md", "yaml"}
 # C3 precedence: `extends:` inherits these three fields and nothing else. `class`, `kind`,
@@ -966,8 +970,10 @@ def check_pair(schema_path: Path, md_path: Path, a, bound_acc: set = None) -> in
     else:
         prov = load_yaml(a.provenance, findings)
         if prov is not None:
-            if prov.get("kind") != "command-provenance":
-                findings.append(f"{a.provenance.name}: `kind: command-provenance` missing (got {prov.get('kind')!r})")
+            if prov.get("kind") not in PROVENANCE_KINDS:
+                findings.append(
+                    f"{a.provenance.name}: `kind:` must be one of "
+                    f"{' · '.join(PROVENANCE_KINDS)} (got {prov.get('kind')!r})")
             p_anchors = prov.get("anchors") or {}
             if not isinstance(p_anchors, dict):
                 findings.append(f"{a.provenance.name}: `anchors:` mapping missing")

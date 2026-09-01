@@ -4,6 +4,137 @@ Entry formats: `strips/README.md`. Wave context: the specify cluster wave (v0.13
 Single-consumer primitive (the specify critique, mounted on `devils-advocate`) — strips
 ruled in-wave.
 
+## [v0.100.0] Skill-content-schema conversion — body obligations moved to `schema.yaml`; the pair is now the graded unit
+
+Wave context: skill-content-schema D1–D9 as amended (`.mochiko/brainstorms/skill-content-schema/record.md`,
+`DECISIONS.md` 2026-09-01); census referent `.mochiko/brainstorms/skill-content-schema/census.md` §A/§B
+(RSPEC rows). Census-row → minted-ID map: 1 `input-not-verdict` · 2 `author-grader` (stub) ·
+3 `what-not-how` · 4 `not-for` · 5 `complete-coverage` · 6 `question-format` ·
+7 `no-presupposed-mechanism` · 8 `clarifications-shape` · 9 `gap-taxonomy` · 10a `excess-admissibility` ·
+10b `never-excess` (stub — row 10 split: the admissibility limb stays local per census §C/R2, the carve
+binds the common block) · 11 `smuggled-posture` · 12 `external-claims` · 13 `feature-layer-same-report` ·
+14 `map-git-baseline` · 15 `map-mirror` · 16 `feature-critical-checks` · 17 `feature-important-checks` ·
+18 `sf-legal-shapes` · 19 `serve-and-click` · 20 `authority-split` · 21 `sf-critical-checks` ·
+22 `sf-important-checks` · 23 `severity-grammar` · 24 `report-structure` · 25 `density-never-gap` ·
+26a `evidence-floor` (stub) · 26b `gap-bound` · 27a `no-scope-creep` · 27b `check-existing-first`.
+All IDs carry the `review-specifications.` prefix. Per census §C/J-6 this skill binds NEITHER
+`review-common.default-fail` NOR `review-common.verdict-is-input` — it issues no clearing verdict; its
+local posture rule is `input-not-verdict` (allowlist keep-distinct edge).
+Deviation note (recorded, code correct): census §B marks row 18 `when: manifest-present`, but the
+rule's own text adjudicates BOTH legal shapes (manifest or waiver line), so `sf-legal-shapes` is
+built unconditional — gating it would make the waiver arm unreachable; rows 19–22 gate on the
+declared `manifest-present` condition.
+Structural-vs-content accounting (D8/C1): delivered pair vs pre-conversion body = **0.88×** —
+relocation net of common-stub convergence and the row-10 grain split; structural overhead only, no
+content growth.
+
+### Supersession-transfer — [v0.26.0] KEPT lineage: severity table + Core Principle table substance
+- **Disposition:** superseded — protection transfers to schema rules `severity-grammar` and
+  `what-not-how`, citing skill-content-schema D8/C4 + `DECISIONS.md` 2026-09-01.
+- **Tier failed:** n/a — supersession by ruling.
+- **Content:** "Critical = cannot build without this answer, ask now · Important = will cause rework,
+  should ask now · Minor = polish, log and defer" · "WHAT is missing, never HOW to implement" (+
+  product questions, never implementation questions).
+- **Consumers assessed:** none — skill-local content.
+
+### Supersession-transfer — [v0.25.0] RETURNED five-class canonical-home taxonomy
+- **Disposition:** superseded — protection transfers to schema rule `gap-taxonomy` (the canonical-home
+  binding), citing skill-content-schema D8/C4 + `DECISIONS.md` 2026-09-01.
+- **Tier failed:** n/a — supersession by ruling.
+- **Content:** "the canonical hunt taxonomy `devils-advocate` leans on".
+- **Kept deliberately:** the six class descriptors (the per-class parenthetical sub-lists) stay in the
+  body's Procedure prose — teaching content per census §B (RSPEC row 9 note).
+- **Consumers assessed:** `devils-advocate` leans on the taxonomy by name; the canonical home is
+  unchanged (this skill), only its carrier moved body → schema.
+
+### Supersession-transfer — [v0.67.0] class-6 excess row + calibration
+- **Disposition:** superseded — protection transfers to schema rules `excess-admissibility` (local
+  admissibility limb) and `never-excess` (`extends: review-common.never-excess`, the C6 carve), citing
+  skill-content-schema D8/C4 + `DECISIONS.md` 2026-09-01.
+- **Tier failed:** n/a — supersession by ruling.
+- **Content:** "**excess / unpaid scope** (no user need or ratified driver pays for it — admissible
+  only naming the driver it fails to trace to or the cheaper shape; a floor / compliance-module /
+  NFR-derived obligation is never excess)".
+- **Consumers assessed:** family common block C6; the admissibility limb's object noun stays local per
+  near-dup R2.
+
+### Supersession-transfer — [v0.63.0] guardrails keep-set + review-evidence floor line
+- **Disposition:** superseded — protection transfers to schema rules `density-never-gap`,
+  `no-scope-creep`, `check-existing-first`, `gap-bound`, and `evidence-floor`
+  (`extends: review-common.evidence-floor`), citing skill-content-schema D8/C4 + `DECISIONS.md`
+  2026-09-01.
+- **Tier failed:** n/a — supersession by ruling.
+- **Content:** the Floors paragraph clauses verbatim: "density is never itself a gap
+  (`templates/artifact-format.md` envelope) — grade substance, never prose style; undisclosed overage
+  past the envelope's size defaults is advisory per its rule 8 · verdict and per-finding dispositions
+  land in the reviewed artifacts themselves — review evidence only in conversation is a floor
+  violation · 5–7 Critical/Important gaps per round, related gaps grouped — never a 20-gap dump ·
+  scope creep is not a gap: clarify existing features, never add new ones as 'missing requirements' ·
+  check existing patterns and decisions first — never ask what is already answered."
+- **Consumers assessed:** family common block C1; cross-grammar near-dup edge with command
+  `common.yaml` is allowlist territory (census J-5).
+
+### Supersession-transfer — [v0.58.0] feature-layer 10 checks + R13 git-baseline rule
+- **Disposition:** superseded — protection transfers to schema rules `map-git-baseline`,
+  `feature-layer-same-report`, `feature-critical-checks`, `feature-important-checks`, citing
+  skill-content-schema D8/C4 + `DECISIONS.md` 2026-09-01.
+- **Tier failed:** n/a — supersession by ruling.
+- **Content:** the **Feature layer** paragraph whole — the baseline rule ("grade staged writes against
+  the git state of the map at run open, never a workspace copy"), same-reviewer-same-report, and the
+  ten checks (Critical six + Important four), carried verbatim into the two set-rules.
+- **Consumers assessed:** `mochiko:authoring-feature-map` stays the single source of map machinery
+  (`map-mirror` binds it); the check list remains the reviewer's mirror.
+
+### Supersession-transfer — [v0.50.0] S&F 8 checks + serve-and-click + authority split
+- **Disposition:** superseded — protection transfers to schema rules `sf-legal-shapes`,
+  `serve-and-click`, `authority-split`, `sf-critical-checks`, `sf-important-checks`, citing
+  skill-content-schema D8/C4 + `DECISIONS.md` 2026-09-01.
+- **Tier failed:** n/a — supersession by ruling.
+- **Content:** the **Screens & Flows** paragraph whole — two legal shapes, "Serve the prototype and
+  click it … adversarial, not ceremonial", the authority split ("flows, screens, data shown are
+  binding; layout and styling advisory — a cosmetic finding against a low-fi prototype is
+  wrong-altitude"), and the eight checks (Critical five + Important three), carried verbatim into the
+  set-rules. The S&F check rules gate on the declared `manifest-present` condition.
+- **Consumers assessed:** none — skill-local content.
+
+### Supersession-transfer — [v0.53.0] carve-out
+- **Disposition:** superseded — protection transfers to schema rule `not-for`, citing
+  skill-content-schema D8/C4 + `DECISIONS.md` 2026-09-01.
+- **Tier failed:** n/a — supersession by ruling.
+- **Content:** "code review (sole carve-out `mochiko:review-code-minimalism`, implement-side)".
+- **Consumers assessed:** `review-plan-artifacts` carries its own copy (its own strip entry covers
+  it); allowlist keep-distinct edge per census §C.
+
+### Supersession-transfer — [v0.82.0] envelope wording
+- **Disposition:** superseded — protection transfers to schema rule `density-never-gap`, citing
+  skill-content-schema D8/C4 + `DECISIONS.md` 2026-09-01.
+- **Tier failed:** n/a — supersession by ruling.
+- **Content:** "density is never itself a gap … undisclosed overage past the envelope's size defaults
+  is advisory per its rule 8."
+- **Consumers assessed:** none — skill-local content.
+
+### Relocation — remaining body obligations → schema rules (non-protected clauses)
+- **Disposition:** relocated → `schema.yaml` rules `complete-coverage`, `question-format`,
+  `no-presupposed-mechanism`, `clarifications-shape`, `smuggled-posture`, `external-claims`,
+  `map-mirror`, `report-structure`, `input-not-verdict`, and the stub `author-grader`
+  (`extends: review-common.author-grader`; the body line "Independent reviewer, never the author"
+  superseded by the common block's strongest wording per near-dup convergence R2).
+- **Tier failed:** n/a — ruled conversion (skill-content-schema D3, obligations-only boundary).
+- **Content:** "Coverage is complete, never sampled: every user story reviewed for completeness, every
+  success criterion checked for measurability, edge cases hunted per main flow" · "Every question is a
+  decision the stakeholder can make: 2–3 concrete options, what each means for users, why it matters —
+  specific, never vague, never presupposing a mechanism ('should we cache?' assumes caching) — in the
+  Clarifications shape of `templates/advocate-report-template.md`, never a variant" · "Implementation
+  posture smuggled into a constraint … is an assumption-gap finding — it freezes a choice stakeholders
+  never ratified" · "A regulatory/product-legal assertion is a floor-class external claim — verify per
+  ../review-brainstorm/references/EXTERNAL-CLAIMS.md; undisclosed is a gap" · "map machinery
+  single-sourced in `mochiko:authoring-feature-map`, this list is the reviewer's mirror" · "Report
+  structure (machine-first findings YAML, clarifications with options + impact, recommended verdict,
+  one-line `strengths:`) single-sourced at `templates/advocate-report-template.md`; no report path
+  named → same structure inline" · "**input, never a clearing PASS/FAIL verdict of its own**" ·
+  "Independent reviewer, never the author".
+- **Consumers assessed:** none — skill-local content.
+
 ## [v0.88.0] User-ruled true-deletion body cut — body 12,184 → 6,187 chars (−49.2%)
 
 - **Disposition:** superseded → a single-file six-paragraph body (identity+routing · Method ·

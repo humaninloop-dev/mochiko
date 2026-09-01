@@ -5,14 +5,50 @@ description: This skill MUST be invoked when reviewing an already-drafted specif
 
 # Reviewing Specifications
 
-Gap-finder over a drafted spec — severity-bucketed gaps + clarifying questions a stakeholder can answer; **input, never a clearing PASS/FAIL verdict of its own**. Independent reviewer, never the author. WHAT is missing, never HOW to implement. Not for: architecture/design review · code review (sole carve-out `mochiko:review-code-minimalism`, implement-side) · implementation planning · performance specs · no spec yet (`mochiko:authoring-requirements` first) · pre-spec enrichment of a sparse idea (`mochiko:analysis-iterative` — disjoint triggers by design).
+Gap-finder over a drafted spec — severity-bucketed gaps plus clarifying questions a
+stakeholder can answer. The seat hunts what is missing, ambiguous, assumed, or contradictory
+in a spec that already exists; enriching a sparse idea before a spec exists is a different
+skill's work.
 
-**Method:** product questions, never implementation questions — implementation detail, technical edge cases, architecture, and performance belong to later design work. Coverage is complete, never sampled: every user story reviewed for completeness, every success criterion checked for measurability, edge cases hunted per main flow. Every question is a decision the stakeholder can make: 2–3 concrete options, what each means for users, why it matters — specific, never vague, never presupposing a mechanism ("should we cache?" assumes caching) — in the Clarifications shape of `templates/advocate-report-template.md`, never a variant. Hunt the user-facing categories (user expectations · business rules · scope boundaries · success/failure states · permissions) for the six requirement-defect classes — the canonical hunt taxonomy `devils-advocate` leans on: **missing requirements** (mentioned-not-specified · implicit expectations · dependencies on undefined behavior) · **ambiguities** (unquantified terms · open interpretation · unclear limits) · **edge cases** (empty states · cancelled mid-flow · missing permissions · unstated limits) · **assumption gaps** (assumptions that should be requirements, and the reverse · hidden dependencies) · **contradictions** (conflicting requirements · inconsistent terminology · mutually exclusive acceptance criteria) · **excess / unpaid scope** (no user need or ratified driver pays for it — admissible only naming the driver it fails to trace to or the cheaper shape; a floor / compliance-module / NFR-derived obligation is never excess). Implementation posture smuggled into a constraint ("files on disk" where the requirement is "locally computable") is an assumption-gap finding — it freezes a choice stakeholders never ratified. A regulatory/product-legal assertion is a floor-class external claim — verify per [../review-brainstorm/references/EXTERNAL-CLAIMS.md](../review-brainstorm/references/EXTERNAL-CLAIMS.md); undisclosed is a gap.
+## Rules — load the schema first
 
-**Feature layer** — graded with the spec, same reviewer, same report (only the story-reader sees derivation dishonesty); map machinery single-sourced in `mochiko:authoring-feature-map`, this list is the reviewer's mirror. **Baseline rule:** grade staged writes against the git state of the map at run open, never a workspace copy. Checks — Critical: derivation honesty (every feature traceable to supporting stories) · disposition completeness (every story homed to exactly one feature, or filter-rejected with the why recorded) · dedup by capability against the map files at baseline · delta legality (full grammar — what grows, in-flight mark, named spec; no `delivered` regressed) · SC re-homing (every SC-XXX on a verifying feature; deferred SCs and one-sided seams on the owning entry's obligations line) · in-flight handling (touches read into the owning spec; resolved by reference, sequenced delta, or escalation — never silent contradiction). Important: granularity (one-breath capability, extent ≤ ~3 lines, or split) · entry well-formedness (entry-template shape, all fields) · selection-card honesty (deferred-SC list visible, agreeing with the SC split) · specs-index agreement (staged row matches staged writes: slug, FEAT-IDs, outcomes).
+Your first action at invoke, before any hunting: **Read `schema.yaml` (this skill's own
+directory) and `../../schemas/skill-review-common.yaml` raw, in full, in the same first
+action.** The schema is the source of truth for this skill's binding rules; this body carries
+identity and procedure only. Its rules are nested in six sections, each addressable by its
+section ID: `review-specifications.sec.independence` (author/grader separation) ·
+`review-specifications.sec.scope` (jurisdiction, routing, and what never gets added) ·
+`review-specifications.sec.inputs` (coverage duties, baselines, external claims) ·
+`review-specifications.sec.verdict` (the hunt taxonomy, the check sets, the severity
+grammar) · `review-specifications.sec.output` (question craft and report contracts) ·
+`review-specifications.sec.reserved` (the clearing this seat never issues).
 
-**Screens & Flows (UX-bearing specs)** — graded with the spec, same reviewer, same report. Two legal shapes: a SCR/FLOW manifest with its `prototype/` app, or the waiver line "No UX surface — prototype waived at intent". **Serve the prototype and click it** (bun, or open `prototype/index.html`) — adversarial, not ceremonial: a skeptic walking the app finds what a text read cannot. Authority split: flows, screens, data shown are binding; layout and styling advisory — a cosmetic finding against a low-fi prototype is wrong-altitude. Checks — Critical: screen reachability (every SCR-XXX renders a reachable page) · flow walkability (every FLOW-XXX clickable end-to-end, no dead ends) · scenario coverage (every P1 acceptance scenario has a FLOW click path) · flow traceability (every FLOW-XXX keyed to a real story scenario — no scope invention) · drift both directions (no page without a SCR row, no row without its page). Important: data-shape honesty (realistic fields/cardinality, enough to expose layout and flow problems) · FEAT tags (post-derivation rows FEAT-tagged; out-of-selection and filter-rejected screens greyed but reachable, rejected ones carrying the rejection pointer) · waiver second-guess (a waiver where stories imply screens, or a prototype the intent ruled out — graded against the Intent section's UX-bearing ruling).
+Read the rule grammar along with the rules: a rule's `kind:` names what it is, and an absent
+`kind:` reads `constraint`; a rule carrying `when:` binds only where its terms hold against
+the schema's declared `conditions:`, except that a `class: floor` rule is always read and
+always delivered — `when:` gates when its obligation applies, never whether it reaches you.
+Where a rule carries `extends: review-common.<slug>`, the stub inherits `text` / `labels` /
+`pointer` only from `skill-review-common.yaml` — `class` and `kind` are always this schema's
+own, and the stub's `review-specifications.*` ID stays the citable ID. Labels come from
+`../../schemas/skill-labels.yaml`. A `pointer:` rule binds you to that file's or skill's
+content, referenced never restated.
 
-**Severity + output:** Critical = cannot build without this answer, ask now · Important = will cause rework, should ask now · Minor = polish, log and defer. Report structure (machine-first findings YAML, clarifications with options + impact, recommended verdict, one-line `strengths:`) single-sourced at `templates/advocate-report-template.md`; no report path named → same structure inline.
+The schema carries **the 8 rules of `class: floor`**. State the floor count back before the
+first procedural step; a skipped or partial schema read is a halt-and-surface, never a silent
+continue.
 
-**Floors:** density is never itself a gap (`templates/artifact-format.md` envelope) — grade substance, never prose style; undisclosed overage past the envelope's size defaults is advisory per its rule 8 · verdict and per-finding dispositions land in the reviewed artifacts themselves — review evidence only in conversation is a floor violation · 5–7 Critical/Important gaps per round, related gaps grouped — never a 20-gap dump · scope creep is not a gap: clarify existing features, never add new ones as "missing requirements" · check existing patterns and decisions first — never ask what is already answered.
+## Procedure
+
+Hunt the user-facing categories for the six requirement-defect classes: **missing
+requirements** (mentioned-not-specified · implicit expectations · dependencies on undefined
+behavior) · **ambiguities** (unquantified terms · open interpretation · unclear limits) ·
+**edge cases** (empty states · cancelled mid-flow · missing permissions · unstated limits) ·
+**assumption gaps** (assumptions that should be requirements, and the reverse · hidden
+dependencies) · **contradictions** (conflicting requirements · inconsistent terminology ·
+mutually exclusive acceptance criteria) · **excess / unpaid scope** (no user need or ratified
+driver pays for it).
+
+Then widen to the spec's other layers where they exist: the feature layer (the map checks,
+graded from the git baseline) and the Screens & Flows of a UX-bearing spec (walk the
+prototype as a skeptic, then run the check sets). Bucket findings by severity, shape the
+questions as decisions, and land everything in the report shapes the schema binds.

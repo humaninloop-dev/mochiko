@@ -5,6 +5,110 @@
 # the reason recorded here. Suppression is per-edge — a third command joining a
 # two-member family forms NEW edges and re-fires the detector, so the tripwire stands.
 suppressions:
+  # === Skill-side edges (skill-content-schema conversion wave, v0.100.0; adjudications
+  # per census §C/J-5/J-6 + the P2/P3 recorded deviations, seeded by the lead at the
+  # audit fix round; completed by P4 against the full landed corpus — the same-block
+  # skip already covers stub↔stub pairs in both grammars, so every live evidence-floor
+  # edge runs through RSUF's LOCAL rule, and those edges are census C1's recorded
+  # keep-distinct, rows below). NOT suppressed on purpose: the cross-pair
+  # external-claims-binding edges (RB↔RF↔RSPEC family — genuine adjudication pending at
+  # the wave's landing gate). Census-recorded keep-distincts that fire no live edge
+  # need no row (VC↔RPA letter-is-spirit · RPA↔RSPEC carve-out · RCM's v0.64.0
+  # evidence-floor SKIP — no stub, no clearing verdict, nothing to edge): the tripwire
+  # stands if wording ever converges. -------------------------------------------------
+  - ids: [review-sufficiency.evidence-floor, review-brainstorm.evidence-floor]
+    reason: census C1 edge — RSUF keeps local text ("land in the report" target), the block's two-limb form deliberately not bound; C1 membership x7
+  - ids: [review-sufficiency.evidence-floor, review-feasibility.evidence-floor]
+    reason: census C1 edge — RSUF local target, same adjudication
+  - ids: [review-sufficiency.evidence-floor, review-governance-intent.evidence-floor]
+    reason: census C1 edge — RSUF local target, same adjudication
+  - ids: [review-sufficiency.evidence-floor, review-plan-artifacts.evidence-floor]
+    reason: census C1 edge — RSUF local target, same adjudication
+  - ids: [review-sufficiency.evidence-floor, review-specifications.evidence-floor]
+    reason: census C1 edge — RSUF local target, same adjudication
+  - ids: [review-sufficiency.evidence-floor, validation-constitution.evidence-floor]
+    reason: census C1 edge — RSUF local target, same adjudication
+  - ids: [review-brainstorm.never-default-ready, review-plan-artifacts.default-fail]
+    reason: RB keeps local text — protected tail, same adjudication as the RF/RGI rows (C2)
+  - ids: [review-brainstorm.never-default-ready, review-sufficiency.default-fail]
+    reason: RB keeps local text — protected tail, same adjudication
+  - ids: [review-brainstorm.never-default-ready, validation-constitution.default-fail]
+    reason: RB keeps local text — protected tail, same adjudication
+  - ids: [review-brainstorm.never-default-ready, review-feasibility.default-fail]
+    reason: RB keeps local text — protected v0.83.0 tail ("zero findings means hunt harder, never manufacture") the C2 block deliberately excludes; C2 membership x5
+  - ids: [review-brainstorm.never-default-ready, review-governance-intent.default-fail]
+    reason: RB keeps local text — protected tail, same adjudication
+  - ids: [review-brainstorm.external-claims-binding, review-brainstorm.record-fitness-binding]
+    reason: two different reference bindings sharing the referenced-never-restated frame
+  - ids: [review-brainstorm.external-claims-binding, review-feasibility.external-claims-binding]
+    reason: user-ruled keep-distinct (2026-09-01 landing gate) — member-specific object class (outside-repo claims vs external premises) and pointer path (own-dir vs cross-dir); net-reduction fails once local pointers are declared; extraction reopens if wordings converge
+  - ids: [review-brainstorm.external-claims-binding, review-specifications.external-claims]
+    reason: user-ruled keep-distinct — RSPEC's is a floor-class regulatory-assertion rule, not a general binding; same gate ruling
+  - ids: [review-feasibility.external-claims-binding, review-specifications.external-claims]
+    reason: user-ruled keep-distinct, same gate ruling
+  - ids: [review-brainstorm.record-fitness-binding, review-feasibility.external-claims-binding]
+    reason: different references entirely (RECORD-FITNESS vs EXTERNAL-CLAIMS); frame overlap only — same gate ruling
+  - ids: [review-brainstorm.record-fitness-binding, review-specifications.external-claims]
+    reason: different references entirely; frame overlap only — same gate ruling
+  - ids: [brainstorm.record-review-independence, review-brainstorm.never-in-the-room]
+    reason: J-5 cross-grammar — command plane vs skill plane, D5 forbids sharing
+  - ids: [brainstorm.record-review-independence, review-governance-intent.never-a-participant]
+    reason: J-5 cross-grammar — command plane vs skill plane
+  - ids: [review-brainstorm.never-in-the-room, review-governance-intent.never-a-participant]
+    reason: 2-member, below bar; different fences (the room vs the session and its framing)
+  - ids: [review-brainstorm.dismissed-angle-is-ruling, review-brainstorm.unresolvable-is-commentary]
+    reason: distinct verdict-hygiene obligations sharing a grammatical frame (R5 short-text class)
+  - ids: [review-brainstorm.dismissed-angle-is-ruling, review-code-minimalism.missing-rung-note-is-finding]
+    reason: R5 short-text — five-member "X is/isn't Y" frame family, five distinct obligations; net-reduction fails (lead-ruled at the v0.100.0 audit fix round)
+  - ids: [review-brainstorm.dismissed-angle-is-ruling, review-feasibility.skipped-lens-not-clean]
+    reason: R5 short-text frame family, same adjudication
+  - ids: [review-brainstorm.unresolvable-is-commentary, review-code-minimalism.missing-rung-note-is-finding]
+    reason: R5 short-text frame family, same adjudication
+  - ids: [review-brainstorm.unresolvable-is-commentary, review-feasibility.skipped-lens-not-clean]
+    reason: R5 short-text frame family, same adjudication
+  - ids: [review-brainstorm.unverifiable-claim-is-finding, review-code-minimalism.missing-rung-note-is-finding]
+    reason: R5 short-text frame family, same adjudication
+  - ids: [review-brainstorm.unverifiable-claim-is-finding, review-feasibility.skipped-lens-not-clean]
+    reason: R5 short-text frame family, same adjudication
+  - ids: [review-code-minimalism.missing-rung-note-is-finding, review-feasibility.skipped-lens-not-clean]
+    reason: R5 short-text frame family, same adjudication
+  - ids: [review-brainstorm.dismissed-angle-is-ruling, review-brainstorm.unverifiable-claim-is-finding]
+    reason: distinct verdict-hygiene obligations, frame overlap only
+  - ids: [review-brainstorm.unresolvable-is-commentary, review-brainstorm.unverifiable-claim-is-finding]
+    reason: distinct verdict-hygiene obligations, frame overlap only
+  - ids: [review-brainstorm.findings-through-leads-pen, review-governance-intent.findings-through-leads-pen]
+    reason: 2-member, below bar (census §C); target artifacts differ (record vs synthesis Review section)
+  - ids: [review-specifications.input-not-verdict, review-sufficiency.verdict-is-input]
+    reason: J-6 — RSPEC is a structural non-member of the clearing family (gap-finding input, no clearing verdict); keeps local
+  - ids: [impl.adopt-first-user-call, review-code-minimalism.dispute-at-checkpoint-only]
+    reason: J-5 cross-grammar; different reservations (adopt-first/IP halt vs rung-dispute timing)
+  - ids: [review-code-minimalism.diff-and-report-both-read, review-sufficiency.fence-never-reads]
+    reason: opposite obligations — a must-read set vs a never-read fence; frame overlap only
+  - ids: [feat.feature-map-binding, review-specifications.map-mirror]
+    reason: J-5 cross-grammar; owner vs reviewer-mirror of one single-source
+  - ids: [impl.minimalism-advisory, review-code-minimalism.advisory-never-cycle-failing]
+    reason: J-5 cross-grammar twin — same substance on two planes, D5-I7 argued keep-separate; drift edge deliberately recorded
+  - ids: [review-brainstorm.coverage-severity-mapping, review-specifications.severity-grammar]
+    reason: different severity grammars for different artifact classes
+  - ids: [review-plan-artifacts.mechanical-verdict, review-plan-artifacts.severity-classification]
+    reason: distinct obligations sharing the ISSUE-TEMPLATES referent
+  - ids: [review-plan-artifacts.mechanical-verdict, review-plan-artifacts.verdict-criteria]
+    reason: distinct obligations sharing the ISSUE-TEMPLATES referent
+  - ids: [review-plan-artifacts.severity-classification, review-plan-artifacts.verdict-criteria]
+    reason: distinct obligations sharing the ISSUE-TEMPLATES referent
+  - ids: [review-brainstorm.map-sample-audit, review-brainstorm.verify-load-bearing-claims]
+    reason: sibling duties — the map sample-audit is the record-integrity lens's own leg, the claim-verify is every read's
+  - ids: [review-sufficiency.binding-gate, review-sufficiency.verdict-routing]
+    reason: census carried both rows as separate obligations (entry license vs routing consequence); merge candidate at first grooming pass
+  - ids: [review-plan-artifacts.completeness-supplied-sets, review-plan-artifacts.tier1-forms-envelope]
+    reason: different obligations sharing the ARTIFACT-CHECKLISTS referent
+  - ids: [review-sufficiency.clause-contract-exposure, review-sufficiency.clause-data-exposure]
+    reason: parallel clauses by design — the ten-clause set's intrinsic frame similarity
+  - ids: [review-feasibility.infeasible-never-flattens, review-feasibility.verdict-vocabulary]
+    reason: a floor vs the vocabulary listing it constrains; distinct
+  - ids: [review-governance-intent.brownfield-analysis-read, review-governance-intent.substrate-bindings]
+    reason: recorded 10a/10b split — the conditional read duty vs the substrate identity binding
+
   # --- Ruled keep-local edges (wave flags B/D/E) -------------------------------------
   - ids: [brainstorm.plan-approval-producers, impl.plan-approval-producers]
     reason: flag E — impl keeps local text ("code", "verification seats" are real implement content)

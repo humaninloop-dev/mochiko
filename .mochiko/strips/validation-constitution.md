@@ -17,6 +17,114 @@ Wave-1 body strip landed 2026-07-25 at v0.25.0 (batch-ratified): body 274 → 21
 23% — **under the 30–70 never-stripped band**; per R3 the under-band second pass generates the
 survivor-provenance (KEPT) entries below rather than forcing cuts.
 
+## [v0.100.0] Skill-content-schema conversion — body obligations moved to `schema.yaml`; the pair is now the graded unit
+
+Wave context: skill-content-schema D1–D9 as amended (`.mochiko/brainstorms/skill-content-schema/record.md`,
+`DECISIONS.md` 2026-09-01); census referent `.mochiko/brainstorms/skill-content-schema/census.md` §A/§B
+(VC rows). Census-row → minted-ID map: 1 `set-not-file` · 2 `every-set-must-pass` · 3 `letter-is-spirit`
+(keep-distinct allowlist edge vs `review-plan-artifacts` per census §C) · 4 `not-for` · 5 `from-file-floor` ·
+6 `input-set` · 7 `missing-input-fails` · 8 `superseded-artifact-flag` · 9 `checklist-assembly` ·
+10 `verify-every-item` · 11 `vague-language` · 12a `excess-governance` · 12b `never-excess` (stub —
+row 12 split: the member-specific excess-anti-pattern machinery stays local per census §C/R2, the carve
+binds the common block) · 13 `version-bump` · 14 `validation-result-block` · 15a `binary-verdict` ·
+15b `default-fail` (stub — row 15 split: the binariness obligation is not the default-posture
+obligation; both floors survive, one local, one bound to the common block) · 16 `rationalization-stop` ·
+17 `placeholders-incomplete` · 18 `missing-parts-fail` · 19 `author-grader` (stub) ·
+20 `satisfaction-verifies-nothing` · 21 `skip-documented` · 22 `evidence-floor` (stub) ·
+23 `quality-checklist` + `anti-patterns-scan` (two reference-stub rules; files untouched).
+All IDs carry the `validation-constitution.` prefix.
+Structural-vs-content accounting (D8/C1): delivered pair vs pre-conversion body = **0.91×** —
+relocation net of common-stub convergence (four stubs); the row-12 and row-15 splits are D12 grain
+corrections, not content growth.
+
+### Supersession-transfer — [v0.25.0] KEPT: Red Flags + Common Rationalizations pair (table form ended v0.90.0; rules live as Floors clauses)
+- **Disposition:** superseded — protection transfers to schema rules `rationalization-stop` (the
+  rationalization family + the STOP-and-restart meta-rule, verbatim), `placeholders-incomplete`,
+  `missing-parts-fail`, `satisfaction-verifies-nothing`, citing skill-content-schema D8/C4 +
+  `DECISIONS.md` 2026-09-01.
+- **Tier failed:** n/a — supersession by ruling.
+- **Content:** "catching yourself rationalizing — 'looks complete enough' · 'just a minor update'
+  (minor updates introduce major anti-patterns) · 'anti-patterns don't apply here' (every
+  rationalization claims uniqueness) · 'I didn't use placeholders' (the scan runs against the files
+  regardless) · 'skipping is pragmatic' (pragmatic = following the process) · 'validate later' (later
+  rarely comes) — means STOP and restart from checklist assembly · placeholders = incomplete, return
+  for completion · missing parts = FAIL — return to authoring, never sign off incomplete governance ·
+  user satisfaction verifies nothing — enforcement mechanisms are checked, not vibes."
+- **Kept deliberately:** the [v0.25.0] KEPT Step-7 placeholder-pattern list is historical — ended at
+  v0.63.0 by recorded supersession; its section-bound placeholder items live in
+  references/QUALITY-CHECKLIST.md, now stubbed by `quality-checklist` (file untouched). No new
+  protection claim is made for it.
+- **Consumers assessed:** none — skill-local content.
+
+### Supersession-transfer — [v0.65.0] adaptive-depth extensions (declared-level accounting · MAJOR low→high flip)
+- **Disposition:** superseded — protection transfers to schema rules `version-bump` (the MAJOR
+  low→high depth-level flip, verbatim-in-substance) and `validation-result-block` (the declared-level
+  accounting line), citing skill-content-schema D8/C4 + `DECISIONS.md` 2026-09-01.
+- **Tier failed:** n/a — supersession by ruling.
+- **Content:** "MAJOR (principle removed or incompatibly redefined; floor-level change, incl. a
+  low→high depth-level flip; module attach/detach)" · "floor/module accounting (floor + declared level
+  asserted, region stamp = ledger · modules matched to the fact profile · floor categories principled
+  at the declared level or waived)".
+- **Consumers assessed:** none — skill-local content.
+
+### Supersession-transfer — [v0.76.0] governance-surfaces schema re-key (QUALITY-CHECKLIST header, two-arm)
+- **Disposition:** superseded — protection transfers to schema rule `quality-checklist`
+  (reference-stub: `pointer: references/QUALITY-CHECKLIST.md`, the two-arm citation named in the rule
+  text; the reference file stays untouched), citing skill-content-schema D8/C4 + `DECISIONS.md`
+  2026-09-01.
+- **Tier failed:** n/a — supersession by ruling.
+- **Content:** the two-arm governance-surfaces citation carried by QUALITY-CHECKLIST.md's header —
+  referenced by stub, never restated (GI-020 both-arms posture preserved in the reference file).
+- **Consumers assessed:** none — skill-local content.
+
+### Supersession-transfer — [v0.63.0]/[v0.90.0] keep-sets (set-not-file · every-set-MUST-pass · from-file inputs · VALIDATION RESULT contract)
+- **Disposition:** superseded — protection transfers to schema rules `set-not-file`,
+  `every-set-must-pass`, `from-file-floor`, `validation-result-block`, citing skill-content-schema
+  D8/C4 + `DECISIONS.md` 2026-09-01 (per the v0.90.0 disposition map).
+- **Tier failed:** n/a — supersession by ruling.
+- **Content:** "**The graded artifact is a set, not a file** … grading only the region is partial
+  validation, which is not validation" · "Every set MUST pass — no exceptions" · "Inputs — all read
+  from file, never from the author's report" · the **VALIDATION RESULT** block contract, every line
+  enumerated, carried verbatim-in-substance into `validation-result-block`.
+- **Consumers assessed:** none — skill-local content.
+
+### Relocation — remaining body obligations → schema rules (non-protected clauses)
+- **Disposition:** relocated → `schema.yaml` rules `not-for`, `letter-is-spirit`,
+  `missing-input-fails`, `input-set`, `superseded-artifact-flag`, `checklist-assembly`,
+  `verify-every-item`, `vague-language`, `excess-governance` + `never-excess` (row 12 split: the
+  member machinery local, the carve bound via `extends: review-common.never-excess`),
+  `binary-verdict` + `default-fail` (row 15 split: binariness local floor; the default-posture
+  obligation bound via `extends: review-common.default-fail`, `${verdict}` = `PASS`),
+  `satisfaction-verifies-nothing`, `skip-documented`, `anti-patterns-scan`, and the stubs
+  `author-grader` (`extends: review-common.author-grader`; "authoring mode ≠ validation mode: 'I
+  reviewed it while writing' is not validation" is the common block's own strongest wording — the
+  tail "fresh review catches blind spots" is rationale, recorded here) and `evidence-floor`
+  (`extends: review-common.evidence-floor`).
+- **Tier failed:** n/a — ruled conversion (skill-content-schema D3/D5).
+- **Content:** the Not-for line verbatim · "The letter of the rules IS the spirit" · "A missing
+  synthesis when the set carries trace keys, a missing manifest, or a missing set member — each is
+  itself a FAIL" · the Inputs paragraph's set enumeration · "A `.mochiko/memory/constitution.md` on
+  disk is a superseded artifact the lead should have deleted — flag it in the fix list" · the
+  module-parameterized assembly clause · "Verify every item — never skip one as 'obvious', never
+  check a fragment the synthesis did not select" · "vague language MUST be replaced with measurable
+  criteria — patterns and quantified examples single-sourced in references/ANTI-PATTERNS.md (*Vague
+  Principle*, *Generic Thresholds*, *Missing Enforcement*)" · "**excess governance is an anti-pattern
+  too**, FAIL-eligible … a principle mandated by the asserted floor, an attached compliance module, or
+  an NFR is never excess; lands in the `Anti-patterns found` line" · "binary PASS or FAIL — no soft
+  language, no middle ground" · "user satisfaction verifies nothing — enforcement mechanisms are
+  checked, not vibes" · "a user request to skip validation does not override process: if the user
+  insists, document that validation was skipped against recommendation — never claim a validated set
+  when validation was skipped" · "verdict and per-finding dispositions land in the reviewed artifacts
+  themselves — review evidence only in conversation is a floor violation" · "authoring mode ≠
+  validation mode: 'I reviewed it while writing' is not validation, fresh review catches blind spots".
+- **Kept deliberately:** the producer-pair pointer line ("Producer side:
+  `mochiko:authoring-constitution` (never co-mounted; the validator is a different agent)") stays in
+  the body's identity prose — not censused as a rule; the co-mount fence remains visible at the
+  identity surface.
+- **Consumers assessed:** family common blocks C2/C3/C6; cross-grammar near-dup edges with command
+  `common.yaml` are allowlist territory (census J-5); `letter-is-spirit` is a keep-distinct allowlist
+  edge vs `review-plan-artifacts` (2-member, below the 3+ bar per census §C).
+
 ## [v0.90.0] User-ruled true-deletion body cut — body 7,630 → 5,103 chars (−33.1%)
 
 - **Disposition:** superseded → a single-file five-paragraph body (identity+scope · Inputs

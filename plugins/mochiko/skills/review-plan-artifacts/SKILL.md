@@ -5,14 +5,51 @@ description: This skill MUST be invoked to grade the design-phase output package
 
 # Reviewing Design-Phase Artifacts
 
-Independent completeness grader of the design-phase output package — the mirror-checklist half of the design-phase review pair, never the author. The run's floor is **the sufficiency report's gap list** (the named gaps the design phase was scoped to close), never a fixed artifact set. Coverage / measurability / presence / consistency are yours; contradiction / buildability / NFR-design / topology feasibility are `mochiko:review-feasibility`'s — hand such findings off, never grade them (seam: the [boundary table](references/ARTIFACT-CHECKLISTS.md#scope-boundary--handoff-to-review-feasibility)). Not for: code review (sole carve-out `mochiko:review-code-minimalism`, implement-side) · specs (`review-specifications`) · constitution (`validation-constitution`) · artifacts still being drafted.
+Independent completeness grader of the design-phase output package — the mirror-checklist
+half of the design-phase review pair. This seat walks fixed checklists over what the caller
+supplies and grades what is present, measurable, and consistent; the adversarial
+contradiction hunt belongs to its sibling.
 
-**Lenses:** *conformance* — BLOCKING: every named gap closed, within the gap list's depth; **material divergence** (an artifact no gap named, or an element class materially past the gap list) auto-FAILs the package (critical-gaps), overriding the count mapping · *adopt-first disclosure* — BLOCKING, conformance strength: a commodity-category decision naming neither a real shelf candidate nor "no shelf candidate exists" is a finding (trigger and floor: `mochiko:patterns-adopt-first`; rationale-beats-candidate stays advisory) · *rung-claim honesty* — advisory, never drives the verdict: each seat's disclosed ladder stops graded against `mochiko:patterns-plan-minimalism` (the standard, never restated; the independent excess hunt is `review-feasibility`'s class 7) · *completeness within scope* — the fixed mirror checklists in [ARTIFACT-CHECKLISTS.md](references/ARTIFACT-CHECKLISTS.md) (analysis · store delta when the package carries one, else the no-delta claim · design · cross-artifact), over whichever sets the caller supplies.
+## Rules — load the schema first
 
-**Protocol:** Tier-1 pre-assert first — `python scripts/check-artifacts.py .mochiko/specs/<feature>/<artifact>.md …` — a `failed` count is ground truth, folded straight into the issue list → run every applicable check → classify and shape issues per [ISSUE-TEMPLATES.md](references/ISSUE-TEMPLATES.md) → verdict mechanically from the counts (its Verdict Criteria), subject to the divergence override → report per `mochiko:advocate-report-template`: evidence and an actionable fix per issue, the one-line `strengths:` field filled.
+Your first action at invoke, before any grading step: **Read `schema.yaml` (this skill's own
+directory) and `../../schemas/skill-review-common.yaml` raw, in full, in the same first
+action.** The schema is the source of truth for this skill's binding rules; this body carries
+identity and procedure only. Its rules are nested in six sections, each addressable by its
+section ID: `review-plan-artifacts.sec.independence` (author/grader separation) ·
+`review-plan-artifacts.sec.scope` (jurisdiction, routing, and what never shrinks the
+review) · `review-plan-artifacts.sec.inputs` (pre-asserts, checklist bindings, read duties) ·
+`review-plan-artifacts.sec.verdict` (the blocking lenses, the count mapping, the grading
+floors) · `review-plan-artifacts.sec.output` (report contracts) ·
+`review-plan-artifacts.sec.reserved` (decisions this seat never takes).
 
-**Cycle cards (`tasks.md`) — the complete check set:** vertical integrity (each card an observable end-to-end behavior, never a horizontal layer) · `**TEST:**` gate present and in grammar (real infrastructure, never a test-suite re-run) · oracle semantics (Asserts graded semantically against the acceptance scenario / criteria they cite — the *right* expected behaviour, not merely present and in-grammar) · story traceability (every P1/P2 story on ≥1 card; Simple/Split/Merge case + rationale; cited spec/design IDs real) · dependency minimality (`[P]` only where truly independent) · brownfield exposure stated (`none` counts) · no task lists or file paths (pre-written decomposition is a finding — the builder decomposes at build time). Mirrors the `tasks` `--check` view (`mochiko-cli template tasks --check`, or Read `plugins/mochiko/schemas/tasks.yaml` when the binary is absent).
+Read the rule grammar along with the rules: a rule's `kind:` names what it is, and an absent
+`kind:` reads `constraint`; a rule carrying `when:` binds only where its terms hold against
+the schema's declared `conditions:`, except that a `class: floor` rule is always read and
+always delivered — `when:` gates when its obligation applies, never whether it reaches you.
+Where a rule carries `extends: review-common.<slug>`, the stub inherits `text` / `labels` /
+`pointer` only from `skill-review-common.yaml` — `class` and `kind` are always this schema's
+own, and the stub's `review-plan-artifacts.*` ID stays the citable ID; `${verdict}` in
+inherited text substitutes from this schema's `vars:`. Labels come from
+`../../schemas/skill-labels.yaml`. A `pointer:` rule binds you to that file's or skill's
+content, referenced never restated.
 
-**Incremental mode** (the caller names the {new} and {prior} sets — never you): full checks on {new}; on {prior} the Cross-Artifact Consistency checklist only — spot-check entity names, requirement IDs, decision references, flagging only inconsistencies *between* artifacts; no full re-read, 1–2 minutes per artifact; a thorough prior review never waives it. Escalate: 2+ consistency issues in one prior artifact → re-read it in full; a contradiction → report, the lead routes (design-vs-decided is Critical consistency here; between requirements/constraints is feasibility's); unsure → say so, recommend a targeted review. The report adds `incremental: true`, `full_review:` / `consistency_only:` scope lists, and pass/fail `consistency_checks:` frontmatter (entity_names · schemas · decisions_honored · architecture_conformance · sensitivity_annotations · integration_boundaries); a fail also lands as a finding.
+The schema carries **the 11 rules of `class: floor`**. State the floor count back before the
+first procedural step; a skipped or partial schema read is a halt-and-surface, never a silent
+continue.
 
-**Floors:** defaults to FAIL — good enough is never ready: evidence or rejection · the letter IS the spirit: never skip a check, never downgrade a severity to dodge a finding (rationalizing DOWN means it is probably higher); an inapplicable check is flagged N/A with justification, never silently dropped · a Critical/Important issue blocks — never "noted but not blocking" · feature size, producer seniority, time pressure, found-enough never shrink the review; a vague spec is a gap to flag, not permission to propagate, and "obvious" never exempts a constraint from documentation · verdict and per-finding dispositions land in the reviewed artifacts themselves — review evidence only in conversation is a floor violation.
+## Procedure
+
+Walk the four lenses in order: **conformance** against the sufficiency report's gap list ·
+**adopt-first disclosure** over commodity-category decisions · **rung-claim honesty** over
+each seat's disclosed ladder stops · **completeness within scope** through the mirror
+checklists of [ARTIFACT-CHECKLISTS.md](references/ARTIFACT-CHECKLISTS.md) (analysis · store
+delta or the no-delta claim · design · cross-artifact).
+
+Run shape: Tier-1 pre-assert → every applicable checklist over the supplied sets → classify
+and shape issues per [ISSUE-TEMPLATES.md](references/ISSUE-TEMPLATES.md) → verdict → report.
+
+In an incremental pass the work narrows rather than repeats: the {new} artifacts get the full
+walk, the {prior} artifacts a consistency spot-check — entity names, requirement IDs,
+decision references — escalating where the spot-check turns up trouble instead of silently
+absorbing it.

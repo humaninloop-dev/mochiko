@@ -5,6 +5,43 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.100.0] — 2026-09-01
+
+**Skill content schemas — the review-family conversion wave** (ruling
+`skill-content-schema` D1–D9 as review-amended, `DECISIONS.md` 2026-09-01; census-first
+build per D9). The command content-schema architecture extends to skills: the 8
+review-family graders each ship as a `SKILL.md` + **in-directory** `schema.yaml` pair
+(`plugins/mochiko/skills/<name>/schema.yaml` — base-dir-relative Read, robust from the
+plugin cache) under the **obligations-only boundary**: ~200 rules at D12 grain (181
+body-borne moves, 19 reference-stubs with `pointer:` incl. legal cross-directory climbs),
+the entire sequenced procedure and all teaching prose staying body-side, every
+`description:` byte-untouched. Grammar = the command baseline with skill deltas: 8-kind
+set (`kind: fail` + `enforces:` retired by census evidence) · census-minted six-section
+set (independence · scope · inputs · verdict · output · reserved) · sibling registry
+`plugins/mochiko/schemas/skill-labels.yaml` (6 transfers + `verdict` · `boundary` ·
+`fence`) · per-family common file `plugins/mochiko/schemas/skill-review-common.yaml`
+(6 blocks under the R1–R6 bar; RB and RSUF keep ruled local texts). Delivery guard:
+load-first block + the "the N rules of `class: floor`" pin + a floor-count **read-back**
+before the first procedural step (pins 9 · 3 · 9 · 16 · 11 · 8 · 8 · 14). Protected
+content moved by **supersession-transfer**: 120 provenance entries, sidecar renamed
+`kind: primitive-provenance`; 9 KEPT/RETURNED survivor rulings reconciled census-first;
+review-feasibility's whole-body v0.26.0 ruling re-homed onto the pair. Tooling: new
+`scripts/check-skill-schema.py` (16 checks incl. provenance-anchor resolution, 86-probe
+matrix) · detector extended in-dir + extends-aware (44/44) · command checker accepts both
+provenance kinds (134/134, wave regression caught by V3 and repaired). Budgets re-keyed:
+**budget = delivered-at-invoke payload** (body + own schema); 9 ledger rows re-seeded
+measured-exact, **no +25% headroom**, under the ledger's new third seeding path ("a ruled
+schema conversion"); measured family cost **×3.24** delivered-at-invoke, user-accepted
+eyes-open at the landing gate. Allowlist 60 → 96 adjudicated edges — the detector runs
+silent; the external-claims family user-ruled keep-distinct at the gate. Ceremony: strips
+across 8 files (a three-heading strip corruption caught by V2, restored byte-exact) ·
+`primitive-edits.md` gains the **skill-pair criteria block** (graded by
+`mochiko:validator`) · 3 author≠grader validators — round 1 five of nine units FAIL →
+fix rounds → delta re-grades ALL PASS. Also ships the schema-header runtime-kernel trim
+(ADR 2026-08-28, previously unshipped). First-live-run watch (delivery probes + the
+read-cost observable) in `BACKLOG.md`; census build-corrections appendix in the session
+directory.
+
 ## [0.99.0] — 2026-08-28
 
 **Near-dup convergence — the similar-rule reduction wave** (ruling

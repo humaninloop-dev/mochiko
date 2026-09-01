@@ -11,41 +11,42 @@ neither alone shows what should never have been written.**
 ## Overview
 
 The per-cycle over-engineering lens: an independent, static read of a cycle's produced code
-against the pre-code ladder. The grading standard is `mochiko:patterns-code-minimalism` —
-this skill carries the *grading procedure*, never a copy of the ladder. It runs inside the
-per-cycle verification the verification seat already performs; no separate stage, no
-final-pass sweep — cycle diffs are small, context is fresh, rework is cheapest at cycle
-close.
+against the pre-code ladder. Cycle diffs are small, context is fresh, rework is cheapest at
+cycle close.
 
-## When NOT to Use
+## Rules — load the schema first
 
-- **General code review** — naming, patterns, framework choices, correctness beyond tests:
-  out of scope; this lens grades ladder discipline only
-- **Executing `**TEST:**` gates or quality gates** — `mochiko:testing-end-user`, the same
-  seat's other craft
-- **Design-time artifact review** — the design-phase and spec reviewers own those surfaces; the design-time sibling of this lens is the rung-honesty grade in `mochiko:review-plan-artifacts` against `mochiko:patterns-plan-minimalism` (same posture, design-time altitude)
-
-## Inputs
-
-1. **The cycle's git diff** — what was actually built (files created/modified per the
-   cycle report locate it; `git diff` over those paths).
-2. **`cycle-report.md`** — the disclosed decomposition and its per-task rung claims. Read
-   the report file itself, never a relay of it.
-3. **The codebase around the diff** — obligated for rungs 2/3/5 (below).
+Your first action, before any procedure step: **Read `schema.yaml` (this skill's own
+directory) and `../../schemas/skill-review-common.yaml` raw, in full, in the same first
+action.** The schema is the source of truth for this skill's binding rules, nested in six
+sections, each addressable by its section ID: `review-code-minimalism.sec.independence` ·
+`review-code-minimalism.sec.scope` · `review-code-minimalism.sec.inputs` ·
+`review-code-minimalism.sec.verdict` · `review-code-minimalism.sec.output` ·
+`review-code-minimalism.sec.reserved`. Interpret it live: a rule's `kind:` names what it
+is, and an absent `kind:` reads `constraint`; a `class: floor` rule is always read and
+always delivered; a `pointer:` rule binds you to that skill's procedure, referenced never
+restated; labels come from `plugins/mochiko/schemas/skill-labels.yaml`. A rule carrying
+`extends: review-common.<slug>` inherits text/labels/pointer from
+`skill-review-common.yaml` only — `class` and every absence-meaningful field are local —
+and the stub's `review-code-minimalism.*` ID stays the citable ID. The floor pin:
+the 3 rules of `class: floor` are non-waivable. Before the first procedure step, state the floor
+count back — a skipped or partial read leaves that count blank: halt and surface it, and
+halt likewise if the schema's `class: floor` count disagrees with the pin.
 
 ## Procedure
 
-**1. Read the disclosure.** Every decomposition task should carry a rung. A missing rung
-note is itself a finding (the disclosure surface exists so this lens can grade it — and it
-also shows whether rung-zero reading happened at all).
+Locate the diff first: files created/modified per the cycle report locate it; `git diff`
+over those paths.
+
+**1. Read the disclosure.** Every decomposition task should carry a rung; the disclosure
+surface exists so this lens can grade it — and it also shows whether rung-zero reading
+happened at all.
 
 **2. Grade each rung claim against the standard.** Open
 `mochiko:patterns-code-minimalism`; per task, ask: does the code sit on the claimed rung,
 and does a higher rung apply that the builder descended past?
 
-**3. Never take reuse claims on trust — the codebase-read obligation.** For rungs 2
-(reuse), 3 (stdlib), and 5 (installed dependency), diff + disclosure alone cannot verify
-"should have reused":
+**3. Verify rung-2/3/5 claims against the codebase.**
 - **Rung 2:** targeted greps around the diff for existing helpers/utilities the new code
   duplicates — against the *current* codebase, which also catches cross-cycle accretion
   (cycle 5 duplicating cycle 2's helper reads as a rung-2 violation now).
@@ -53,25 +54,7 @@ and does a higher rung apply that the builder descended past?
 - **Rung 5:** check the dependency manifest — does an installed dependency already cover
   it?
 
-**4. Check the floor line.** Code cut to reach a cheaper rung that a floor obligation or
-accessibility required is a finding — the standard's floor line is part of the standard.
+**4. Check the floor line.**
 
-**5. Emit findings.** One `minimalism:` entry per finding in the verification report
-(format: `mochiko:testing-end-user`'s report templates): task ID, claimed rung, observed
-rung, one-line evidence (the grep hit, the stdlib call, the manifest entry). No findings →
-an empty block; never narrate a clean grade.
-
-## Verdict semantics — advisory
-
-A `minimalism:` finding **never fails a cycle** the way a `**TEST:**` gate does. Findings
-ride the verification report to the lead's checkpoint verdict; the lead decides rework-now
-or carry. A builder-vs-reviewer rung dispute escalates to the user only at the checkpoint,
-never as a mid-cycle stop.
-
-## Quality Checklist
-
-- [ ] Diff AND cycle report both read — never one without the other
-- [ ] Rung-2/3/5 claims verified by codebase read (greps / stdlib / manifest), not trusted
-- [ ] Every finding cites task ID + evidence, one line each
-- [ ] No general-code-review findings smuggled in (naming, style, patterns)
-- [ ] Findings emitted as advisory `minimalism:` entries — no cycle failed on this lens alone
+**5. Emit findings** as the schema's output contract shapes them, one line of evidence
+each (the grep hit, the stdlib call, the manifest entry).

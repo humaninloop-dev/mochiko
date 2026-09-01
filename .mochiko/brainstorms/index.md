@@ -8,6 +8,44 @@ One entry per session directory under `.mochiko/brainstorms/<topic-slug>/`, **ne
 
 ---
 
+## `skill-content-schema` — schema pair form for skills: common schema for similar-ontology skill families, extends, `.md`-vs-schema boundary
+- **When:** 2026-09-01 · **Status:** accepted · solo cold review via blind-map two-message
+  dispatch (38-angle map, topic-only spawn; index fence held whole — never opened, the
+  ontology session's index-head leak prevented structurally): verdict critical-gaps —
+  4 Critical / 9 Important / 7 Minor survived, 13 reviewer-killed → dispositioned: C1–C4
+  individually user-ruled (C1 budget re-key · C2 three-home boundary · C3 coverage, routed
+  **rule inline** — the shared-`references/` road recorded-rejected on the B/C drivers ·
+  C4 protected-set reconciliation + supersession-transfer); I/M one batch "as recommended"
+  (headline folds: I1 pin = desync guard + floor-count read-back · I3 six-of-eight verdict
+  correction + pre-wave census · I4 rollback user-reserved · I8 D9 mark split); verify
+  round 1 NOT CLEAN (14/14 folds confirmed, 2 fold-introduced blockers + 2 nits, all
+  lead-repaired same round) → reviewer delta-check CLEAN, status recommendation `ready`;
+  acceptance followed
+- **Artifacts:** [record.md](skill-content-schema/record.md) (canonical — ranked driver
+  set, ground facts F1–F6, D1–D9 as amended, session trail Q1–Q9 + sizing gate +
+  dispositions, review + verify + delta-check trail, owed-at-build enumeration)
+- **About:** extend the command content-schema architecture to skills. Ruled (D1–D9):
+  review-family pilot, 8 skills, further families by own ruling · in-dir `schema.yaml`
+  beside `SKILL.md` (base-dir-relative, cache-robust) · obligations-only boundary —
+  procedure stays prose, reference-borne obligations stub-covered (three-home ruling),
+  `description:` never moves · command grammar wholesale with skill deltas (no `moments:`,
+  census-minted section set, sibling `skill-labels.yaml`) · per-family
+  `skill-review-common.yaml` + explicit stubs under the near-dup R1–R6 bar · load-first
+  block + `class: floor` count-pin + read-back · checker/detector extension +
+  compression-eval judged sample as the fidelity gate · budget re-key
+  (delivered-at-invoke payload; ledger exemption amended + "a ruled schema conversion"
+  third seeding path; no +25% headroom) · census-first rollout — protected-set
+  reconciliation first, numeric abort, user-reserved rollback with GI-006.
+- **Landed:** DECISIONS.md row (2026-09-01) · BACKLOG "Skill-content schema build" section
+  (census-first build item + first-live-run watch; the M1 path probe added to the command
+  D10 watch) · ROADMAP: merged into the plan-surface/schema Next row · **wave BUILT same
+  day at v0.100.0** — census-first (abort not tripped 6/3), 8 in-dir pairs + shared
+  registry/common + `check-skill-schema.py` + detector extension + 120 provenance
+  transfers + 9 no-headroom budget re-seeds; 5 producers + 3 validators, round 1 five of
+  nine units FAIL → fix rounds → ALL PASS; allowlist 96 edges, detector 0 clusters;
+  measured ×3.24 + external-claims keep-distinct user-ruled at the landing gate; gates
+  4/5/6; build item → trail, watch + eval sample remain
+
 ## `command-schema-ontology` — node kinds beyond `rule`, declared conditions, and dependency grammar for the command content schemas
 - **When:** 2026-08-27 · **Status:** accepted · solo cold review via blind-map two-message
   dispatch (46-angle map, topic-only spawn; one disclosed index-entry fence leak accepted as

@@ -5,10 +5,37 @@ description: This skill MUST be invoked when serving as a cold END-STAGE REVIEWE
 
 # End-Stage Review of a Live Thinking Session
 
-Cold reviewer of a frozen `record.md` — paired or solo, **never in the room**. A lens brief (*decision-quality*: scenario stress, classes 1–4, steelmans · *record-integrity*: inconsistencies, fitness, the map audit) sets depth, never jurisdiction. You recommend; **the lead owns every verdict**.
+Cold reviewer of a frozen `record.md`. A lens brief shapes the depth of your read; you
+recommend, and the ruling is never yours to make.
 
-**Protocol:** Phase 0 blind angle map from the topic only, produced as its own deliverable before record contact (free repo grounding, session artifacts excluded) → cold read before counterpart contact — scenario stress + six hunt classes per decision: unchallenged assumption · missing intra-decision dimension · passive acceptance · rejected-road steelman · inconsistency · excess machinery (name the cheaper shape; floor/compliance/NFR never excess) → verify load-bearing claims against the fact-checker map or the files (record-integrity lens: sample-audit the map itself against the files); outside-repo claims per `references/EXTERNAL-CLAIMS.md` (owned here) → fitness per `references/RECORD-FITNESS.md` → coverage findings: blind-map-vs-record diff + materiality, severity by whether a ruling would likely / plausibly / not have changed (Critical / Important / Minor); a dismissed angle is a ruling, not a gap → findings-formed = count only → cross-examination per `references/CROSS-EXAM.md` (pair only; fact substrate: the record's fact-checker map; fact authority: the seated fact-checker, else the files) → survivor report as a message: survivors with severity, the decision(s) touched, failure scenario or cited contradiction (coverage: the diff + materiality), resolution path; tally ("N raised, M survived"); recommended status (`ready / needs-revision / critical-gaps` — critical-gaps: a broken load-bearing claim, an unowned decision, a Critical coverage gap, or a record too thin to review). A finding nothing could resolve is commentary, not a finding.
+## Rules — load the schema first
 
-**Verify pass** (record-integrity lens, or solo): grade each fold against the updated record, quoting evidence; new surface only for fold-introduced contradictions. Fidelity-sample a requested `synthesis.md` — every ruling present, no confidence mark inflated, no rejected alternative resurrected. Reopen-born decisions get this grade, never a fresh cold read.
+Your first action, before any protocol step: **Read `schema.yaml` (this skill's own
+directory) and `../../schemas/skill-review-common.yaml` raw, in full, in the same first
+action.** The schema is the source of truth for this skill's binding rules, nested in six
+sections, each addressable by its section ID: `review-brainstorm.sec.independence` ·
+`review-brainstorm.sec.scope` · `review-brainstorm.sec.inputs` ·
+`review-brainstorm.sec.verdict` · `review-brainstorm.sec.output` ·
+`review-brainstorm.sec.reserved`. Interpret it live: a rule's `kind:` names what it is, and
+an absent `kind:` reads `constraint`; a rule carrying `when:` binds only where its terms
+hold against the schema's declared `conditions:`, except that a `class: floor` rule is
+always read and always delivered — `when:` gates when its obligation applies, never whether
+it reaches you; a `pointer:` rule binds you to that file's or skill's procedure, referenced
+never restated; labels come from `plugins/mochiko/schemas/skill-labels.yaml`. A rule
+carrying `extends: review-common.<slug>` inherits text/labels/pointer from
+`skill-review-common.yaml` only — `class` and every absence-meaningful field are local —
+and the stub's `review-brainstorm.*` ID stays the citable ID. The floor pin:
+the 9 rules of `class: floor` are non-waivable. Before the first protocol step, state the floor count
+back — a skipped or partial read leaves that count blank: halt and surface it, and halt
+likewise if the schema's `class: floor` count disagrees with the pin.
 
-**Floors:** never author or revise the record — findings enter through the lead's pen, verdict and dispositions left in the reviewed artifacts themselves, never only in conversation · never raise a `Contested` decision unless the angle is genuinely new to the ruling · never default to `ready` — zero findings means hunt harder, never manufacture · an unverifiable claim is a finding · your status is input; the lead owns the clearing verdict — its command states them.
+## Protocol
+
+Blind angle map first, then the cold read — scenario stress and the six hunt classes per
+decision: unchallenged assumption · missing intra-decision dimension · passive acceptance ·
+rejected-road steelman · inconsistency · excess machinery. Ground what the record claims,
+grade its fitness, then diff your blind map against the record for coverage findings.
+Cross-examination follows in a pair; the survivor report closes the pass.
+
+**Verify pass:** the same discipline over folded dispositions instead of a fresh cold
+read; a requested `synthesis.md` gets the fidelity sample.

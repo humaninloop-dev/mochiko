@@ -1,0 +1,13 @@
+# Label registry for skill content schemas — the cross-skill vocabulary: the SAME LABEL
+# on rules in different skill schemas is the cross-skill link.
+kind: skill-labels
+labels:
+  independence: Who is never whom — author/grader separation, non-author seats, blind dispatch.
+  user-gate: A decision or checkpoint reserved to the user — never the run's own call.
+  evidence: What must be captured, run, or shown — real-infrastructure proof, sweeps, disclosed claims.
+  floor-pointer: A binding that points at a skill-owned floor or procedure — the pointer, never the restated procedure.
+  reporting: Where reports land, what they state, and the register they use.
+  binding: A path, schema, workspace, or surface the skill binds to — where its artifacts live and what shapes them.
+  verdict: The clearing grammar — vocabulary, criteria, default posture, overrides.
+  boundary: A sibling or jurisdiction line — what the skill consumes or routes but never grades.
+  fence: A read-boundary — surfaces the skill must read, and surfaces it must never read.

@@ -1,0 +1,151 @@
+# Skill content schema for mochiko:review-code-minimalism. The SKILL.md body instructs a raw,
+# full Read of this file at skill invoke — beside plugins/mochiko/schemas/skill-review-common.yaml —
+# and its "Rules — load the schema first" section carries the reading grammar. One semantic
+# lives only here:
+#   class   floor = non-waivable · must = binding obligation · advisory = guidance, not binding.
+kind: skill
+skill: review-code-minimalism
+
+sections:
+  - id: review-code-minimalism.sec.independence
+    title: Independence — the verification seat, never the producer
+    intent: >-
+      Who grades and who never does.
+    rules:
+
+      - id: review-code-minimalism.author-grader
+        extends: review-common.author-grader
+        class: floor
+
+  - id: review-code-minimalism.sec.scope
+    title: Scope — the minimalism lens only
+    intent: >-
+      Where the lens runs and the surfaces it never grades.
+    rules:
+
+      - id: review-code-minimalism.per-cycle-lens-only
+        labels: [boundary]
+        class: must
+        text: >-
+          Runs inside the per-cycle verification the verification seat already performs —
+          no separate stage, no final-pass sweep.
+
+      - id: review-code-minimalism.not-general-code-review
+        labels: [boundary]
+        class: must
+        kind: routing
+        text: >-
+          General code review — naming, patterns, framework choices, correctness beyond
+          tests — is out of scope; the lens grades ladder discipline only.
+
+      - id: review-code-minimalism.not-test-gates
+        labels: [boundary]
+        class: must
+        kind: routing
+        text: >-
+          Executing `**TEST:**` gates or quality gates belongs to
+          `mochiko:testing-end-user`, never this lens.
+        pointer: "mochiko:testing-end-user"
+
+      - id: review-code-minimalism.not-design-time
+        labels: [boundary]
+        class: must
+        kind: routing
+        text: >-
+          Design-time artifact review belongs to the design-phase and spec reviewers; the
+          design-time sibling of this lens is the rung-honesty grade in
+          `mochiko:review-plan-artifacts` against `mochiko:patterns-plan-minimalism`.
+
+  - id: review-code-minimalism.sec.inputs
+    title: Inputs — diff, report, codebase
+    intent: >-
+      The grading substrate and the reads it obliges.
+    rules:
+
+      - id: review-code-minimalism.standard-binding
+        labels: [binding, floor-pointer]
+        class: must
+        kind: binding
+        text: >-
+          The grading standard is `mochiko:patterns-code-minimalism` — this skill carries
+          the grading procedure, never a copy of the ladder.
+        pointer: "mochiko:patterns-code-minimalism"
+
+      - id: review-code-minimalism.diff-and-report-both-read
+        labels: [fence, evidence]
+        class: must
+        text: >-
+          The cycle's git diff AND `cycle-report.md` are both read — never one without the
+          other; read the report file itself, never a relay of it.
+
+      - id: review-code-minimalism.codebase-read-rungs-2-3-5
+        labels: [evidence]
+        class: floor
+        kind: duty
+        text: >-
+          Never take reuse claims on trust — rungs 2 (reuse), 3 (stdlib), and 5 (installed
+          dependency) carry a codebase-read obligation; diff plus disclosure alone cannot
+          verify them.
+
+  - id: review-code-minimalism.sec.verdict
+    title: Verdict semantics — advisory
+    intent: >-
+      What counts as a finding and what a finding can never do.
+    rules:
+
+      - id: review-code-minimalism.missing-rung-note-is-finding
+        labels: [verdict]
+        class: must
+        text: >-
+          A missing rung note is itself a finding.
+
+      - id: review-code-minimalism.floor-line-check
+        labels: [verdict]
+        class: must
+        kind: duty
+        text: >-
+          Code cut to reach a cheaper rung that a floor obligation or accessibility
+          required is a finding — the standard's floor line is part of the standard.
+
+      - id: review-code-minimalism.advisory-never-cycle-failing
+        labels: [verdict]
+        class: floor
+        text: >-
+          A `minimalism:` finding never fails a cycle — advisory to the lead's checkpoint
+          verdict.
+
+  - id: review-code-minimalism.sec.output
+    title: Output — the findings block
+    intent: >-
+      The one shape findings leave in.
+    rules:
+
+      - id: review-code-minimalism.minimalism-entries-form
+        labels: [reporting]
+        class: must
+        kind: binding
+        text: >-
+          One `minimalism:` entry per finding in the verification report (format:
+          `mochiko:testing-end-user`'s report templates): task ID, claimed rung, observed
+          rung, one-line evidence. No findings — an empty block; never narrate a clean
+          grade.
+
+  - id: review-code-minimalism.sec.reserved
+    title: Reserved — the lead's checkpoint, the user's dispute
+    intent: >-
+      Decisions this lens never takes.
+    rules:
+
+      - id: review-code-minimalism.verdict-is-input
+        extends: review-common.verdict-is-input
+        class: must
+        kind: reservation
+
+      - id: review-code-minimalism.dispute-at-checkpoint-only
+        labels: [user-gate]
+        class: must
+        kind: reservation
+        text: >-
+          A builder-vs-reviewer rung dispute escalates to the user only at the checkpoint,
+          never as a mid-cycle stop; the lead decides rework-now or carry at that
+          checkpoint.

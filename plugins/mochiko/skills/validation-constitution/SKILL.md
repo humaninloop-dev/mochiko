@@ -5,12 +5,45 @@ description: This skill MUST be invoked to grade a DRAFTED governance surface se
 
 # Validating Constitution
 
-Independent binary grade of a drafted governance surface set — enforceable, testable, trace-closed, anti-pattern-free before finalization. **The graded artifact is a set, not a file**: the CLAUDE.md governance region, the rules files, and the ledger are one deliverable, graded together — grading only the region is partial validation, which is not validation. Every set MUST pass — no exceptions for "simple projects" or "tight deadlines". The letter of the rules IS the spirit. Not for: initial drafting (validate AFTER, never during) · non-constitution documents (specs, plans, code) · read-only requests · informal governance sketches — verify the document IS a governance set before validating.
+Independent binary grade of a drafted governance surface set — enforceable, testable,
+trace-closed, anti-pattern-free before finalization. There is no constitution.md: the
+deliverable under grade is the surface set itself, and the grade is earned by walking the
+assembled checklist against the files, never by trusting the author's account of them.
+Producer side: `mochiko:authoring-constitution` (never co-mounted; the validator is a
+different agent).
 
-**Inputs — all read from file, never from the author's report:** the surface set — the CLAUDE.md governance region (between `<!-- mochiko:governance:begin -->` / `<!-- mochiko:governance:end -->`), every rules file under `.claude/rules/mochiko/`, the ledger (`.mochiko/memory/governance-ledger.md`) — plus the session synthesis (`.mochiko/memory/governance-intent.md`, the traceable contract) and the producer's trace summary manifest. A missing synthesis when the set carries trace keys, a missing manifest, or a missing set member — each is itself a FAIL. A `.mochiko/memory/constitution.md` on disk is a superseded artifact the lead should have deleted — flag it in the fix list.
+## Rules — load the schema first
 
-**Protocol:** read [references/QUALITY-CHECKLIST.md](references/QUALITY-CHECKLIST.md) and assemble the working checklist — **module-parameterized**: universal core + the checklist fragment embedded in each SELECTED module's file (`templates/constitution-modules/*.md`), applied to the module's routed content (region pointer / rules files / ledger section, per the authoring skill's routing table). Verify every item — never skip one as "obvious", never check a fragment the synthesis did not select → vague language MUST be replaced with measurable criteria — patterns and quantified examples single-sourced in [references/ANTI-PATTERNS.md](references/ANTI-PATTERNS.md) (*Vague Principle*, *Generic Thresholds*, *Missing Enforcement*) → **excess governance is an anti-pattern too**, FAIL-eligible: a principle restating a constraint already homed elsewhere (a GI-017 violation — governance surfaces point at constraint homes, never restate them) or one with no eliciting fact in the synthesis — admissible only naming the constraint's existing home (point, don't restate) or the missing fact; a principle mandated by the asserted floor, an attached compliance module, or an NFR is never excess; lands in the `Anti-patterns found` line → determine the version bump: MAJOR (principle removed or incompatibly redefined; floor-level change, incl. a low→high depth-level flip; module attach/detach) · MINOR (principle added or significantly expanded; waiver added/removed) · PATCH (clarification, non-semantic). Every change gets a bump determination.
+Your first action at invoke, before any grading step: **Read `schema.yaml` (this skill's own
+directory) and `../../schemas/skill-review-common.yaml` raw, in full, in the same first
+action.** The schema is the source of truth for this skill's binding rules; this body carries
+identity and procedure only. Its rules are nested in six sections, each addressable by its
+section ID: `validation-constitution.sec.independence` (author/grader separation) ·
+`validation-constitution.sec.scope` (jurisdiction and the excess-governance line) ·
+`validation-constitution.sec.inputs` (the from-file input set and checklist assembly) ·
+`validation-constitution.sec.verdict` (the binary posture, the bump grammar, the grading
+floors) · `validation-constitution.sec.output` (the VALIDATION RESULT contract) ·
+`validation-constitution.sec.reserved` (the skip path only the user rules).
 
-**VALIDATION RESULT** — the explicit verdict block, every line: `VALIDATION RESULT: PASS/FAIL` · checklist items X/Y passed (core + N module fragments, named) · surface integrity (region markers · index→home resolution · rules files paths-scoped · scope coverage · new-file read line present/absent/n-a · universal-in-rules violations) · trace closure (manifest rows closed, primary home + companions · synthesis elements realized-or-flagged · waivers matched · modules matched) · floor/module accounting (floor + declared level asserted, region stamp = ledger · modules matched to the fact profile · floor categories principled at the declared level or waived) · anti-patterns found (list or "none") · version bump · issues requiring fix (each failure listed) · advisory (judgment-grade, non-blocking — suspected trace-fidelity mismatches, or "none").
+Read the rule grammar along with the rules: a rule's `kind:` names what it is, and an absent
+`kind:` reads `constraint`. Where a rule carries `extends: review-common.<slug>`, the stub
+inherits `text` / `labels` / `pointer` only from `skill-review-common.yaml` — `class` and
+`kind` are always this schema's own, and the stub's `validation-constitution.*` ID stays the
+citable ID; `${verdict}` in inherited text substitutes from this schema's `vars:`. Labels
+come from `../../schemas/skill-labels.yaml`. A `pointer:` rule binds you to that file's
+content, referenced never restated.
 
-**Floors:** binary PASS or FAIL — no soft language, no middle ground · catching yourself rationalizing — "looks complete enough" · "just a minor update" (minor updates introduce major anti-patterns) · "anti-patterns don't apply here" (every rationalization claims uniqueness) · "I didn't use placeholders" (the scan runs against the files regardless) · "skipping is pragmatic" (pragmatic = following the process) · "validate later" (later rarely comes) — means STOP and restart from checklist assembly · placeholders = incomplete, return for completion · missing parts = FAIL — return to authoring, never sign off incomplete governance · authoring mode ≠ validation mode: "I reviewed it while writing" is not validation, fresh review catches blind spots · user satisfaction verifies nothing — enforcement mechanisms are checked, not vibes · a user request to skip validation does not override process: if the user insists, document that validation was skipped against recommendation — never claim a validated set when validation was skipped · verdict and per-finding dispositions land in the reviewed artifacts themselves — review evidence only in conversation is a floor violation. Producer side: `mochiko:authoring-constitution` (never co-mounted; the validator is a different agent).
+The schema carries **the 14 rules of `class: floor`**. State the floor count back before the
+first procedural step; a skipped or partial schema read is a halt-and-surface, never a silent
+continue.
+
+## Procedure
+
+Read [references/QUALITY-CHECKLIST.md](references/QUALITY-CHECKLIST.md) and assemble the
+working checklist from the universal core plus each selected module's embedded fragment,
+routed to where that module's content actually lives. Then walk it: every item against the
+files, vague language against the patterns of
+[references/ANTI-PATTERNS.md](references/ANTI-PATTERNS.md), excess governance hunted with the
+same seriousness as missing governance, and a version-bump determination for every change.
+Close by emitting the VALIDATION RESULT block in full — the verdict, the accounting, the
+issues, and the advisory line.

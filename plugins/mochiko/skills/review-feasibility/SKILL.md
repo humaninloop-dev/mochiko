@@ -7,29 +7,33 @@ description: This skill MUST be invoked to grade design-phase analysis/design ar
 
 Adversarial cross-artifact review: **can these artifacts be built together?** Hunt the
 impossible combination no single artifact reveals — judgment, never a checklist; looking
-buildable is not being buildable. The sibling
-`mochiko:review-plan-artifacts` owns coverage / measurability / consistency / presence; you own
-contradiction / impossibility / buildability. Never author or fix what you grade.
+buildable is not being buildable.
 
-**Load [references/FEASIBILITY-LENS.md](references/FEASIBILITY-LENS.md) before hunting** —
-classes 1–6, class 7 (excess / wrong altitude, remove-shaped, blocking-capable), the
-architecture pass A1–A3 (mandatory on a drafted store delta), worked examples, the sibling
-boundary, and the reviewer guardrails.
+## Rules — load the schema first
 
-Floors — non-waivable:
+Your first action, before any hunting: **Read `schema.yaml` (this skill's own directory),
+`../../schemas/skill-review-common.yaml`, and `references/FEASIBILITY-LENS.md` raw, in
+full, in the same declared first action** — schema, then common, then lens. The schema is
+the source of truth for this skill's binding rules, nested in six sections, each
+addressable by its section ID: `review-feasibility.sec.independence` ·
+`review-feasibility.sec.scope` · `review-feasibility.sec.inputs` ·
+`review-feasibility.sec.verdict` · `review-feasibility.sec.output` ·
+`review-feasibility.sec.reserved`. Interpret it live: a rule's `kind:` names what it is,
+and an absent `kind:` reads `constraint`; a rule carrying `when:` binds only where its
+terms hold against the schema's declared `conditions:`, except that a `class: floor` rule
+is always read and always delivered — `when:` gates when its obligation applies, never
+whether it reaches you; a `pointer:` rule binds you to that file's or skill's procedure,
+referenced never restated; `${var}` substitutes from this schema's `vars:` at read time;
+labels come from `plugins/mochiko/schemas/skill-labels.yaml`. A rule carrying
+`extends: review-common.<slug>` inherits text/labels/pointer from
+`skill-review-common.yaml` only — `class` and every absence-meaningful field are local —
+and the stub's `review-feasibility.*` ID stays the citable ID. The floor pin:
+the 9 rules of `class: floor` are non-waivable. Before the first hunting step, state the floor count
+back — a skipped or partial read leaves that count blank: halt and surface it, and halt
+likewise if the schema's `class: floor` count disagrees with the pin.
 
-- **Never default to `feasible`** — earned only by a completed hunt; absence of looking is not
-  evidence. Hunt coverage discloses as **one line per class** in the report, never a narrative.
-- **`infeasible` never flattens** into `needs-revision` — a fundamental conflict (no revision
-  closes it; a business-level decision) escalates to the human.
-- **Governance is never silently approved** — two exits only: redesign to conform, or a
-  user-ruled amendment/waiver via `governance-ledger.md`.
-- **Verdict + per-finding dispositions land in the reviewed artifacts and the filled report** —
-  `templates/feasibility-report-template.md` under the `templates/report-format.md` envelope;
-  evidence living only in conversation is a floor violation.
-- **Findings cite the IDs in tension** (`C-003 ↔ D-007`) with the four gate-fuel fields;
-  external premises verify per `../review-brainstorm/references/EXTERNAL-CLAIMS.md`.
-- **Your verdict is input** — the lead owns clearing, loops, and the human gate; G1:
-  design-phase artifacts only, never the constitution.
+## The hunt
 
-Verdict: `feasible` · `needs-revision` (resolvable) · `infeasible` (fundamental).
+Classes 1–6, class 7 (excess / wrong altitude, remove-shaped), and the architecture pass
+A1–A3 all live in the lens file, worked examples and reviewer guardrails included. Hunt
+each class across the package, then fill the report and hand the verdict up.

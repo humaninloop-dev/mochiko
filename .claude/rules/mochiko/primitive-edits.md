@@ -14,10 +14,12 @@ Editing a shipped primitive is a **landing, not an ad-hoc edit**. Any change tha
 SUPERSEDES content — even one line, even an "obvious" cleanup — obliges both moves before the
 change is done. Full contracts: `.mochiko/strips/README.md`.
 
-**Schema data files** (`plugins/mochiko/schemas/*.yaml`) are shipped primitives from v0.76.0
-(schema-based-template-guidance D8 — data = source of truth, the binary renders over them). An
-edit to one takes the same strip + author≠grader ceremony as any command / skill / agent /
-template edit; the path scope above covers them so this reminder injects on a schema Read.
+**Schema data files** (`plugins/mochiko/schemas/*.yaml`, and from v0.100.0 the in-directory
+skill schemas `plugins/mochiko/skills/*/schema.yaml` — skill-content-schema D2/D8) are shipped
+primitives from v0.76.0 (schema-based-template-guidance D8 — data = source of truth, the binary
+renders over them). An edit to one takes the same strip + author≠grader ceremony as any
+command / skill / agent / template edit; the path scope above covers them so this reminder
+injects on a schema Read.
 
 - **Record** — a version-stamped entry in `.mochiko/strips/<primitive>.md` (one file per primitive,
   newest-first; stamp = the `plugin.json` version that made it):
@@ -44,7 +46,11 @@ template edit; the path scope above covers them so this reminder injects on a sc
   `plugins/mochiko/schemas/<cmd>.yaml` — held against the canonical-scaffold criteria below.
   (This supersedes the "the command's own text" bar of ADR
   `2026-08-02-doctrine-purge-wave-1` decision 4; ruling:
-  `command-md-scaffold-standardization` D1, C1 fold.) For every other primitive the matching
+  `command-md-scaffold-standardization` D1, C1 fold.) For a **converted skill** the graded
+  unit is likewise the pair — `SKILL.md` + the skill's in-directory `schema.yaml` — held
+  against the skill-pair criteria block below and graded by `mochiko:validator`
+  (skill-content-schema D8/I6; the matching-skill routing never applies to a converted pair).
+  For every other primitive the matching
   `validation-*` / `review-*` skill applies, graded on internal coherence plus preserved
   responsibilities (`templates/command-shape.md` was deleted at v0.46.0; the dedicated
   `validation-command-shape` skill at v0.45.0). The editor never grades their own edit —
@@ -153,6 +159,82 @@ template edit; the path scope above covers them so this reminder injects on a sc
   `.mochiko/decisions/2026-08-28-near-dup-convergence.md` R1–R6 (`DECISIONS.md` 2026-08-28 —
   widens the D8 extraction bar to 3+-command near-identical families,
   strongest-wording-wins).
+
+  **Skill-pair criteria — every converted skill; the review family from v0.100.0.** A
+  converted skill ships as `SKILL.md` + `plugins/mochiko/skills/<name>/schema.yaml`
+  (in-directory — the skill directory stays the self-contained shipping unit) and is graded
+  across **both surfaces** on this criteria set. The grader is **`mochiko:validator`**,
+  exactly as for a command pair; the matching `validation-*` / `review-*` skill routing never
+  applies to a converted pair (no validator-for-skills exists, and a pilot member never
+  grades itself). This block is a **sibling** of the command block above, never a fork of
+  it: skills are their own grammar family — no `moments:`, no `$ARGUMENTS` protocol, no
+  Not-done count-pin — under the same governance envelope.
+
+  1. **Load-first section.** The `SKILL.md` body carries a "Rules — load the schema first"
+     section whose obligated first action is a raw, whole Read of the skill's own
+     `schema.yaml` (base-dir-relative) and, where any stub binds,
+     `plugins/mochiko/schemas/skill-review-common.yaml` in the same first action; a member's
+     own obligated reference read (e.g. `review-feasibility`'s lens) sequences there too.
+     The reading grammar — `when:` interpretation, floors always delivered, stub
+     inheritance limits — is carried in the block.
+  2. **Section enumeration.** The section IDs enumerated in the load-first block match the
+     schema's section IDs **set-wise** — the six-set `<skill>.sec.independence` · `scope` ·
+     `inputs` · `verdict` · `output` · `reserved`, all six present in every schema, a
+     section with no rules carrying its explicit empty marker. Every `<skill>.sec.*` token
+     anywhere in the `.md`, inside the load-first block or outside it, resolves to a live
+     node.
+  3. **Floor-count pin + read-back.** The `.md`'s pinned line — "the N rules of
+     `class: floor`" — matches the schema's `class: floor` count (a stale pin is an
+     out-of-sync halt-and-surface), and the load-first block obligates stating the floor
+     count back before the first procedural step (the delivery read-back,
+     skill-content-schema D6 as amended).
+  4. **Floor survival.** A `class: floor` rule leaves only by recorded
+     supersession-by-ruling; an `advisory`-class rule may change without the ceremony.
+  5. **ID continuity.** No `<skill>.*` ID — rule or `<skill>.sec.*` section — vanishes
+     without a tombstone. A reword keeps its ID, a split mints children recording the
+     parent, a merge tombstones the losers; no surviving rule text references a tombstoned
+     or re-homed node.
+  6. **`extends:` conformance.** An `extends: review-common.<slug>` stub inherits
+     `text` / `labels` / `pointer` only, declares `class:` locally, and binds only under the
+     near-dup bar — near-identical across 3+ members, strongest-wording-wins (R1/R2,
+     `.mochiko/decisions/2026-08-28-near-dup-convergence.md`); a member whose extra content
+     is skill-specific keeps local text, the edge recorded in
+     `scripts/similar-rules-allowlist.yaml`. The stub's `<skill>.*` ID stays the citable
+     ID, and where any stub binds, the load-first action Reads
+     `plugins/mochiko/schemas/skill-review-common.yaml` raw beside the schema.
+  7. **`description:` untouched.** The frontmatter `description:` value is byte-identical
+     across the conversion and ≤ 1,536 chars (the delivery cap); it never moves to schema.
+  8. **Budget = delivered-at-invoke payload.** The budgeted quantity is the `SKILL.md` body
+     plus the skill's own `schema.yaml`, one number, characters of the parsed value. At
+     conversion the budget re-seeds to the measured post-conversion payload with **no +25%
+     headroom** (the ledger's third seeding path — the conversion is a relocation, never a
+     measured winner), the audit grading the delta against the pre-conversion body figure
+     as structural overhead only (IDs, keys, grammar); content growth takes the normal
+     argued-overage path, named in the brief. The family common file is budgeted once as
+     its own primitive, never per binding skill; `references/` and `scripts/` stay exempt.
+  9. **Pointer resolution.** Every `pointer:` resolves base-dir-relative from the skill
+     directory, cross-directory climbs included (`../<other-skill>/references/...` is
+     legal; the Single-source convention governs the pointed-at files).
+  10. **Deterministic pre-pass.** The advisory skill-schema checker's output for the pair
+      is cited in the audit brief, beside the char-budget pre-assert.
+  11. **Skill-grammar conformance.** Every `kind:` value comes from the **eight-kind**
+      skill set — `constraint` · `duty` · `gate` · `reservation` · `binding` · `bound` ·
+      `routing` · `latitude` — with `constraint` the omitted default; **`kind: fail` and
+      `enforces:` are illegal in a skill schema** (census-evidence retirement,
+      skill-content-schema D9/M2). Every `when:` term resolves against the schema's
+      declared `conditions:`; a `class: floor` rule is always read and always delivered
+      whatever its `when:`; no `moments:` block exists (procedure stays prose, D3).
+  12. **Provenance sidecar.** Decision anchors live in **`.mochiko/provenance.yaml`**,
+      keyed by rule ID — repo-side, never shipped; a rule carrying a supersession-transfer
+      (a `KEPT:`-protected or `DECISIONS.md`-traceable line relocated into the schema,
+      skill-content-schema D8/C4) inherits protected status through its sidecar entry and
+      leaves only by recorded supersession-by-ruling.
+
+  Rulings: `.mochiko/brainstorms/skill-content-schema/record.md` D1–D9 as amended
+  (`DECISIONS.md` 2026-09-01) · the census inventory
+  `.mochiko/brainstorms/skill-content-schema/census.md` (§E kind retirement · §H section
+  set · J-7 cross-directory pointers) ·
+  `.mochiko/decisions/2026-08-28-near-dup-convergence.md` R1–R6.
 
 **Protected content leaves ONLY by ruling.** A line in a record's protected set, marked `KEPT:`, or
 traceable to a `DECISIONS.md` row may be removed only as a recorded supersession-by-ruling. A silent

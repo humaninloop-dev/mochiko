@@ -111,11 +111,20 @@ def test_score_pairs_guards():
     k2 = mk("othr.k2", long_t, schema="other", prefix="othr", kind="fail")
     edges, scored, _ = fsr.score_pairs([k1, k2], 0.55, set())
     check("bucket: cross-kind never scored", edges == [] and scored == 0)
-    # Both extending the same common block — skipped.
+    # Both extending the same common block — skipped. The comparison is on the raw
+    # `extends:` value, so the skip is grammar-agnostic: a `review-common.*` skill pair
+    # skips exactly like a `common.*` command pair (pinned separately because the skill
+    # wave's stubs are the second grammar to lean on it).
     e1 = mk("demo.e1", long_t, extends="common.z")
     e2 = mk("othr.e2", long_t, schema="other", prefix="othr", extends="common.z")
     edges, _, _ = fsr.score_pairs([e1, e2], 0.55, set())
     check("skip: same common block skipped", edges == [])
+    s1 = mk("alpha-grader.e1", long_t, schema="alpha-grader", prefix="alpha-grader",
+            extends="review-common.z")
+    s2 = mk("beta-grader.e2", long_t, schema="beta-grader", prefix="beta-grader",
+            extends="review-common.z")
+    edges, _, _ = fsr.score_pairs([s1, s2], 0.55, set())
+    check("skip: same review-common block skipped (skill grammar)", edges == [])
     # Suppressed pair counted, not emitted.
     edges, _, hits = fsr.score_pairs([x, y], 0.55, {frozenset(("demo.x", "othr.y"))})
     check("allowlist: edge suppressed", edges == [] and hits == 1)
@@ -221,9 +230,95 @@ def test_end_to_end():
         check("e2e: --exit-signal exits 0 when suppressed clean", r.returncode == 0)
 
 
+def write_skill_fixtures(d: Path):
+    """Two converted-skill directories + their family library (skill-content-schema
+    D2/D5/D7-M3 shapes): one member a stub over review-common, its sibling carrying
+    near-identical local text (the EXTEND-GAP), plus a rule near-identical to the
+    command fixtures' register cluster so a mixed sweep shows a cross-grammar edge
+    (the J-5 drift-edge case)."""
+    skill_common = {"kind": "skill-common", "rules": [
+        {"id": "review-common.default-fail", "labels": ["verdict"],
+         "text": "Never default to a clearing verdict — earned only by a completed "
+                 "hunt; absence of looking is never evidence."},
+    ]}
+    delta = {"kind": "skill", "skill": "delta-grader", "sections": [
+        sec("delta-grader", "verdict", [
+            {"id": "delta-grader.default-fail", "extends": "review-common.default-fail",
+             "class": "floor"},
+        ]),
+    ]}
+    epsilon = {"kind": "skill", "skill": "epsilon-grader", "sections": [
+        sec("epsilon-grader", "verdict", [
+            {"id": "epsilon-grader.never-default", "labels": ["verdict"], "class": "floor",
+             "text": "Never default to a clearing verdict — earned by a completed hunt; "
+                     "absence of looking is not evidence."},
+        ]),
+        sec("epsilon-grader", "output", [
+            {"id": "epsilon-grader.register", "labels": ["binding"], "class": "must",
+             "kind": "binding",
+             "text": "User-facing prose follows templates/output-style.md."},
+        ]),
+    ]}
+    (d / "skill-common.yaml").write_text(
+        yaml.safe_dump(skill_common, sort_keys=False), encoding="utf-8")
+    for name, doc in (("delta-grader", delta), ("epsilon-grader", epsilon)):
+        (d / name).mkdir()
+        (d / name / "schema.yaml").write_text(
+            yaml.safe_dump(doc, sort_keys=False), encoding="utf-8")
+
+
+def test_skill_end_to_end():
+    with tempfile.TemporaryDirectory() as td:
+        d = Path(td)
+        (d / "skills").mkdir()
+        write_skill_fixtures(d / "skills")
+
+        # Skills-only run: in-dir discovery + extends resolution against skill-common.
+        r = subprocess.run(
+            [sys.executable, str(DETECTOR), "--skills-dir", str(d / "skills")],
+            capture_output=True, text=True)
+        out = r.stdout
+        check("skill e2e: exit 0 by default", r.returncode == 0, r.stderr)
+        check("skill e2e: fixture run reads no live allowlist",
+              "not a live rule ID" not in out, out)
+        check("skill e2e: in-dir schemas discovered and clustered",
+              "delta-grader.default-fail" in out and "epsilon-grader.never-default" in out, out)
+        check("skill e2e: stub resolves against review-common (EXTEND-GAP)",
+              "extends review-common.default-fail" in out and "EXTEND-GAP" in out, out)
+        check("skill e2e: floor members flagged", "⚑floor" in out, out)
+        check("skill e2e: register control stays unclustered (skills-only run)",
+              "epsilon-grader.register" not in out, out)
+
+        # Skill-edge suppression: the allowlist quiets a skill pair like a command pair.
+        allow = d / "allow.yaml"
+        allow.write_text(yaml.safe_dump({"suppressions": [
+            {"ids": ["delta-grader.default-fail", "epsilon-grader.never-default"],
+             "reason": "adjudicated keep-distinct"},
+        ]}), encoding="utf-8")
+        r = subprocess.run(
+            [sys.executable, str(DETECTOR), "--skills-dir", str(d / "skills"),
+             "--allowlist", str(allow)],
+            capture_output=True, text=True)
+        check("skill e2e: skill edge suppressed",
+              "none — no pair clears the threshold" in r.stdout
+              and "allowlist-suppressed edges: 1" in r.stdout, r.stdout)
+
+        # Mixed sweep: command fixtures + skill fixtures in one run — the cross-grammar
+        # register cluster spans both, and the scanned count covers both sets.
+        write_fixtures(d)
+        r = subprocess.run(
+            [sys.executable, str(DETECTOR), "--schemas-dir", str(d),
+             "--skills-dir", str(d / "skills")],
+            capture_output=True, text=True)
+        out = r.stdout
+        check("mixed e2e: cross-grammar edge surfaces in the register cluster",
+              "epsilon-grader.register" in out and "beta.register" in out, out)
+        check("mixed e2e: both sets scanned", "rules scanned: 8" in out, out)
+
+
 def main() -> int:
     for t in (test_norm, test_text_sim, test_bonus, test_score_pairs_guards,
-              test_classify, test_end_to_end):
+              test_classify, test_end_to_end, test_skill_end_to_end):
         t()
     print(f"passed: {PASSED} · failed: {len(FAILED)}")
     for f in FAILED:

@@ -861,8 +861,12 @@ def probes():
     add("the sidecar absent is a warning, not a finding",
         "provenance sidecar absent", omit=("provenance",), clean=True)
     add("the sidecar missing its kind: discriminator",
-        "`kind: command-provenance` missing",
+        "`kind:` must be one of command-provenance · primitive-provenance",
         provenance=lambda pv: pv.__setitem__("kind", "provenance"))
+    add("the post-rename primitive-provenance kind is accepted",
+        "0 findings",
+        provenance=lambda pv: pv.__setitem__("kind", "primitive-provenance"),
+        clean=True, absent="`kind:` must be one of")
     add("the sidecar carrying no anchors mapping",
         "`anchors:` mapping missing",
         provenance=lambda pv: pv.__setitem__("anchors", ["demo.lead-owns"]))
