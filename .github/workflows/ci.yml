@@ -8,6 +8,8 @@ on:
     paths:
       - "crates/**"
       - "plugins/mochiko/schemas/**"
+      - "migrations/**"
+      - "evals/contract/**"
       - "Cargo.toml"
       - "Cargo.lock"
       - ".github/workflows/ci.yml"
@@ -15,6 +17,8 @@ on:
     paths:
       - "crates/**"
       - "plugins/mochiko/schemas/**"
+      - "migrations/**"
+      - "evals/contract/**"
       - "Cargo.toml"
       - "Cargo.lock"
       - ".github/workflows/ci.yml"

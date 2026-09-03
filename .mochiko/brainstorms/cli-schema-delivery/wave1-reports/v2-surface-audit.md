@@ -270,3 +270,103 @@ rebuilding the pre-P2 binary from `cd5a333` and regenerating all 16 views, the s
 the measurement. The pin claim was checked the same way, by parsing the printed numbers back out of
 36 rendered preambles and summing them against the validator's own census. I edited no code. The
 default posture was FAIL; PASS is what the evidence above bought.
+
+---
+
+# Delta-confirm — fix round 1
+
+Graded at commit `07a39b4` (range `3792104..07a39b4`), read through `git diff` and `git show`
+rather than the working tree, and executed in a scratch checkout unpacked with `git archive` under
+`/private/tmp` with `plugins/mochiko` symlinked in. All three advisory findings **CONFIRMED
+fixed**, each with a control proving no regression on the behaviour it sits beside.
+
+**Gates, re-run by the grader on the scratch checkout of `07a39b4`:** `cargo test --all`
+**164 passed / 0 failed** (cli 22 · migration 25 · render 27 · replay 46 · validate 44 — +2 and +1
+over the reviewed unit, matching the seat's claim) · `cargo fmt --all --check` exit 0 ·
+`cargo clippy --all-targets -- -D warnings` exit 0. The ceiling measurement is unmoved:
+`measured 252 renders; largest is implement · impl.sec.tools at 15450 chars`. No file under
+`plugins/` or `migrations/` is touched by the delta.
+
+## F1 — empty `enforces:` mirror — **CONFIRMED**
+
+`src/render.rs:244-249` now guards with `rule.enforces.as_deref().filter(|ids| !ids.is_empty())`,
+so an empty mirror emits no key at all.
+
+**I accept the reasoning for omission over rendering the note.** The `note:` is precisely what the
+Q4 ruling excludes, and its origin settles it: in the shipped corpus the reason is a
+`# D6 empty-with-reason:` YAML comment that only becomes a `note:` field because comments do not
+survive a typed model. Surfacing it would carve a hole in a lead-ruled boundary without a ruling,
+and would contradict the seat's own `no_render_carries_an_anchor_or_a_rule_note`. Omission is also
+the honest reading of §4's "`enforces: <ids>` for fail nodes" — with no ids there is nothing to
+print. The one residual is that a render can no longer distinguish "empty mirror by ruling" from
+"no mirror declared", and that distinction has no observer: the hard set requires `enforces` on
+every `kind: fail` rule, so the second state cannot exist.
+
+Verified corpus-wide against the fixed crate — 252 shipped renders swept:
+
+| measure | result |
+|---|---|
+| dangling key lines anywhere | **0** |
+| non-empty `enforces:` lines still rendered | **34** (= 36 fail nodes − the 2 empty mirrors) |
+| fail pins summed | 36 |
+| command census vs rendered (rules/floors) | 321/110 vs 321/110 — MATCH |
+| skill census vs rendered (rules/floors) | 695/226 vs 695/226 — MATCH |
+
+The two live cases now render clean, and a sibling with a real mirror still prints it:
+
+```
+### setup.fail.unclosed-trace
+[class: floor · kind: fail · labels: evidence]
+An unclosed trace from ratified intent to authored surfaces.
+
+### setup.fail.author-graded
+[class: floor · kind: fail · labels: independence]
+The governance surface set never graded by anyone but its author.
+enforces: setup.author-grader-default-fail, setup.stress-test-cold-seat
+```
+
+Re-probed on the grader's own log too: the same fail node printed no key with `enforces: []` and
+printed `enforces: audit.boundary` with the mirror restored. The new test's closing loop — no
+rendered line may be a key with an empty value — generalises past `enforces`, which is stronger
+than the finding asked for.
+
+## F2 — ambiguous primitive name — **CONFIRMED**
+
+`find_primitive` at `src/cli.rs:290-308` now returns `Result<DocRef, RenderError>` with a
+`(true, true)` arm feeding a new `RenderError::AmbiguousPrimitive`. Probed on the grader's own
+two-document log:
+
+```
+$ mochiko-cli rules twin --section preamble --log-dir <log>
+error: ambiguous: the log carries both a command and a skill named 'twin' — the two name sets are meant to be disjoint, so this is a defect in the log, not in the request
+[exit 2]
+```
+
+It names both kinds, points at the log rather than the request, and holds on a section render as
+well as the preamble. Control: a genuinely absent name still reports absence with the
+`migrate status` hint, so the original message was narrowed rather than replaced.
+
+## F3 — `migrate validate` on an empty log — **CONFIRMED**
+
+The empty-log halt is extracted to `report_empty_log` (`src/cli.rs:209-221`) and `run_validate`
+gained an `Ok(replay) if …docs.is_empty()` arm ahead of the findings path. All five paths now agree
+— `migrate validate`, `migrate validate --report`, `migrate status`, `rules`, `template` — each
+exit 1 naming the directory:
+
+```
+mochiko-cli: the migration log at <dir> is empty — it carries no migration file
+[exit 1]
+```
+
+Controls: a sound log still validates green (`0 rejecting · 5 advisory`, exit 0), and exit 3 still
+takes precedence — a `grammar: 99` log halts with the unchanged D5 message on `migrate validate`,
+not with a 1. The `Ok`/`Err` arms are disjoint, so the new guard cannot shadow the skew halt, and
+the probe confirms it does not.
+
+## F4 / F5 — carried, not raised
+
+The two remaining advisories from the audit were not in the lead's fix scope and are unchanged:
+`std::env::set_var` in the parallel test binary (`tests/cli.rs`), and the two log-dir resolution
+limbs covered only by this audit's hand probes. Neither blocks; both remain open for a later round.
+
+**Delta verdict: PASS.**

@@ -77,6 +77,41 @@ enum Command {
         #[command(subcommand)]
         action: MigrateAction,
     },
+    /// Regenerate the derived views from the replayed state.
+    Views {
+        #[command(subcommand)]
+        action: ViewsAction,
+    },
+    /// Generate the genesis migration from the shipped schema corpus.
+    Genesis {
+        #[command(subcommand)]
+        action: GenesisAction,
+    },
+}
+
+#[derive(Subcommand)]
+enum ViewsAction {
+    /// Write every document's view under a directory, mirroring the repository's own layout.
+    Emit {
+        /// Where the views are written. Required, and deliberately without a default: a view
+        /// emitter with a default output directory is one flag away from overwriting the
+        /// shipped corpus it is derived from.
+        #[arg(long, value_name = "DIR")]
+        out: PathBuf,
+    },
+}
+
+#[derive(Subcommand)]
+enum GenesisAction {
+    /// Write the genesis migration built from the shipped schema corpus.
+    Emit {
+        /// The file to write. Required, no default — see `views emit --out`.
+        #[arg(long, value_name = "PATH")]
+        out: PathBuf,
+        /// The repository root the corpus and the provenance sidecar are read from.
+        #[arg(long, value_name = "PATH", default_value = ".")]
+        root: PathBuf,
+    },
 }
 
 #[derive(Subcommand)]
@@ -140,6 +175,12 @@ pub fn dispatch(args: &[String], out: &mut dyn Write, err: &mut dyn Write) -> i3
         Command::Migrate { action } => match action {
             MigrateAction::Validate { report } => run_validate(&dir, report, out, err),
             MigrateAction::Status => run_status(&dir, out, err),
+        },
+        Command::Views { action } => match action {
+            ViewsAction::Emit { out: dest } => run_views_emit(&dir, &dest, out, err),
+        },
+        Command::Genesis { action } => match action {
+            GenesisAction::Emit { out: dest, root } => run_genesis_emit(&root, &dest, out, err),
         },
     }
 }
@@ -331,11 +372,16 @@ fn run_template(
 }
 
 fn run_validate(dir: &Path, report: bool, out: &mut dyn Write, err: &mut dyn Write) -> i32 {
+    let mut state: Option<replay::State> = None;
     let findings = match replay::load_full(dir) {
         // An empty log is a failure here too: validate is the gate, and a gate that passes on a
         // mis-pointed `--log-dir` is worse than no gate.
         Ok(replay) if replay.state.docs.is_empty() => return report_empty_log(dir, err),
-        Ok(replay) => replay.all_findings(),
+        Ok(replay) => {
+            let findings = replay.all_findings();
+            state = Some(replay.state);
+            findings
+        }
         Err(findings) => {
             if let Some(skew) = findings.iter().find(|f| f.code == Code::GrammarVersion) {
                 let _ = writeln!(err, "{}", skew.message);
@@ -358,6 +404,21 @@ fn run_validate(dir: &Path, report: bool, out: &mut dyn Write, err: &mut dyn Wri
             }
         }
     }
+    // The similarity clusters are the last advisory report, printed under `--report` beside the
+    // findings (wave-plan §3). Advisory throughout: the detector proposes candidates and never
+    // gates, so it cannot move the exit code.
+    if report {
+        if let Some(state) = &state {
+            let allowlist = crate::similar::default_allowlist(Path::new("."));
+            let clusters = crate::similar::clusters(
+                state,
+                crate::similar::DEFAULT_THRESHOLD,
+                allowlist.as_deref(),
+            );
+            let _ = write!(out, "{}", crate::similar::render_report(&clusters));
+        }
+    }
+
     let _ = writeln!(
         out,
         "mochiko-cli migrate validate · {rejecting} rejecting · {advisory} advisory"
@@ -366,6 +427,70 @@ fn run_validate(dir: &Path, report: bool, out: &mut dyn Write, err: &mut dyn Wri
         1
     } else {
         0
+    }
+}
+
+/// Regenerate the derived views under `dest`.
+///
+/// The views are a projection of the log, so this reads the log like every other delivery path:
+/// a state nothing may be rendered from is a state nothing may be viewed from either.
+fn run_views_emit(dir: &Path, dest: &Path, out: &mut dyn Write, err: &mut dyn Write) -> i32 {
+    let replay = match load_for_delivery(dir, err) {
+        Ok(replay) => replay,
+        Err(code) => return code,
+    };
+    match crate::views::emit_to(&replay.state, dest) {
+        Ok(written) => {
+            let _ = writeln!(
+                out,
+                "mochiko-cli views emit · {} documents · {}",
+                written.len(),
+                dest.display()
+            );
+            0
+        }
+        Err(e) => {
+            let _ = writeln!(err, "error: cannot write views to {}: {e}", dest.display());
+            2
+        }
+    }
+}
+
+/// Build the genesis migration from the shipped corpus and write it to `dest`.
+///
+/// Reads the corpus and the provenance sidecar; writes exactly one file, the one named. The
+/// sidecar is read only — its anchors are carried onto rules, never moved out of it (record D2).
+fn run_genesis_emit(root: &Path, dest: &Path, out: &mut dyn Write, err: &mut dyn Write) -> i32 {
+    let text = match crate::genesis::build(root) {
+        Ok(text) => text,
+        Err(errors) => {
+            let _ = write!(err, "{}", crate::genesis::render_errors(&errors));
+            return 1;
+        }
+    };
+    if let Some(parent) = dest.parent() {
+        if !parent.as_os_str().is_empty() {
+            if let Err(e) = std::fs::create_dir_all(parent) {
+                let _ = writeln!(err, "error: cannot create {}: {e}", parent.display());
+                return 2;
+            }
+        }
+    }
+    match std::fs::write(dest, &text) {
+        Ok(()) => {
+            let _ = writeln!(
+                out,
+                "mochiko-cli genesis emit · {} bytes · {} lines · {}",
+                text.len(),
+                text.lines().count(),
+                dest.display()
+            );
+            0
+        }
+        Err(e) => {
+            let _ = writeln!(err, "error: cannot write {}: {e}", dest.display());
+            2
+        }
     }
 }
 

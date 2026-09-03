@@ -13,11 +13,17 @@
 //! - [`render`] — the delivery render
 //! - [`schema`] — the artifact-template model and its two views
 //! - [`cli`] — argument parsing, resolution order, and the exit-code contract
+//! - [`genesis`] — the generator behind `migrations/0001-genesis.yaml`
+//! - [`views`] — the derived views, regenerated from the replayed state
+//! - [`similar`] — the advisory similar-rule detector
 
 pub mod cli;
+pub mod genesis;
 pub mod migration;
 pub mod model;
 pub mod render;
 pub mod replay;
 pub mod schema;
+pub mod similar;
 pub mod validate;
+pub mod views;

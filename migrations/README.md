@@ -37,7 +37,7 @@ changes:
 | `id` | the file's own stem, `NNNN-<slug>`. |
 | `sequence` | the migration's place in the log, as an integer. It must agree with the filename's numeric prefix. Gaps are legal; collisions are not. |
 | `intent` | one line. Deliberately outside the hash, so it can be corrected without invalidating the file. |
-| `anchor` | the ruling this migration executes, as `YYYY-MM-DD <session-slug>` with an optional trailing decision segment, written either `D2` or `[D2]`. |
+| `anchor` | the ruling this migration executes, as `YYYY-MM-DD <session-slug>` with an optional trailing decision segment, written either `D2` or `[D2]`, a lettered sub-decision such as `D2a` accepted (the corpus carries two). |
 | `hash` | the canonical hash of `{id, sequence, anchor, changes}`. Required, and it must match. |
 
 **Every file in the log is a migration, and every migration is named `NNNN-<slug>.yaml`.** A
@@ -119,7 +119,9 @@ procedural: a floor cannot be dropped quietly, because the tool will not write t
 it has been.
 
 Anchor format is `YYYY-MM-DD <session-slug>`, optionally followed by one decision segment written
-either `D2` or `[D2]`, and nothing after it. The month and day are range-checked. The format is
+either `D2` or `[D2]` — a lettered sub-decision such as `D2a` is accepted, the letters following at
+least one digit (the corpus carries two such anchors) — and nothing after it. The month and day
+are range-checked. The format is
 checked here; resolving the anchor against a `DECISIONS.md` row is an advisory report.
 
 ## Sequence allocation

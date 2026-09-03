@@ -1236,6 +1236,11 @@ fn is_date(text: &str) -> bool {
 }
 
 /// `D<n>` or `[D<n>]` — the human-readable decision pointer, never resolved here.
+///
+/// The number may carry a trailing run of lowercase letters (`D2a`), the spelling a session
+/// uses when it amends a ruling in place. Two live provenance anchors are written that way, so
+/// the grammar accepts it rather than asking the corpus to normalise itself. The suffix is
+/// letters only and must follow at least one digit: `D`, `Da`, and `D2 D3` all stay malformed.
 fn is_decision_segment(text: &str) -> bool {
     let inner = match text.strip_prefix('[') {
         Some(rest) => match rest.strip_suffix(']') {
@@ -1245,7 +1250,10 @@ fn is_decision_segment(text: &str) -> bool {
         None => text,
     };
     match inner.strip_prefix('D') {
-        Some(digits) => !digits.is_empty() && digits.chars().all(|c| c.is_ascii_digit()),
+        Some(rest) => {
+            let digits = rest.trim_end_matches(|c: char| c.is_ascii_lowercase());
+            !digits.is_empty() && digits.chars().all(|c| c.is_ascii_digit())
+        }
         None => false,
     }
 }
