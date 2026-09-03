@@ -169,12 +169,15 @@ Run per `mochiko:patterns-code-minimalism`; what was **not** built, and why.
 
 | suite | tests | this seat's delta |
 |---|---|---|
-| `tests/cli.rs` | 22 | +22, new (20 at first close, +2 in fix round 1) |
+| `tests/cli.rs` | 26 | +26, new (20 at first close, +2 in fix round 1, +4 in fix round 2) |
 | `tests/render.rs` | 27 | +15 (12 pre-existing, all re-based or moved; +1 in fix round 1) |
 | `tests/migration.rs` | 25 | — (P1) |
 | `tests/replay.rs` | 46 | — (P1) |
 | `tests/validate.rs` | 44 | — (P1) |
-| **total** | **164** | **+37** |
+| **this seat's two files** | **53** | **+41** |
+
+Crate-wide at fix round 2's close, P1's and P3's suites included: **246 passed / 0 failed**.
+`tests/cli.rs` runs in 0.51 s.
 
 Of the 12 tests `tests/render.rs` carried before, the 6 dispatch and exit-code tests moved to
 `tests/cli.rs` in re-based form, the 4 view tests were re-based onto the log, and the gate-5
@@ -286,7 +289,95 @@ now applied by `load_for_delivery` and by `run_validate` alike. Its wording was 
 by design. The new test asserts all four subcommands behave identically on an empty directory,
 rather than pinning validate alone.
 
-## 9. Suggested commit
+## 9. Fix round 2 (test hygiene)
+
+The audit's two carried advisories (F4, F5), plus the shipped-log walk the lead ruled in after
+them — all test-only, all in `tests/cli.rs`. 22 → 26 tests. Gates green: `cargo test --all`
+246 passed / 0 failed across the whole crate (P3's suites included) · fmt · clippy `-D warnings` ·
+`git status plugins/` empty.
+
+### F4 — `std::env::set_var` in a parallel test binary
+
+Removed outright; no `set_var` or `remove_var` remains anywhere in the crate. The audit offered
+two roads — parameterise `resolve_log_dir` and unit-test it, or serialise behind a mutex. Both
+were declined for a third: **the test spawns the built binary as a child process** and sets the
+variable and the working directory on the child.
+
+The reason is that the other two roads each test something weaker than the behaviour in question.
+Parameterising the function tests the ordering logic but stops testing that the process actually
+reads its own environment, which is the part that can silently break. A mutex serialises the tests
+that take it and leaves every test that does not still racing the same global. A child process
+carries its own copy of both the environment and the working directory: the ambient state is real
+for the code under test and invisible to the rest of the suite, with no new dependency and no
+`unsafe` under edition 2024. It also puts `main.rs` on a tested path for the first time — until now
+nothing exercised the real binary end to end.
+
+`run_binary` takes `&[(&str, Option<&str>)]`, where `None` removes the variable from the child. The
+last-resort test uses that to clear `MOCHIKO_MIGRATIONS`, so a value already set in a developer's
+own shell cannot decide the outcome.
+
+### F5 — the two unpinned resolution limbs
+
+All four limbs of the ruled order are now pinned by a test:
+
+| limb | test |
+|---|---|
+| `--log-dir` beats `--plugin-root` | `the_log_directory_resolves_flag_first_then_the_plugin_root` (existing) |
+| `<plugin-root>/migrations` beats `$MOCHIKO_MIGRATIONS` | `the_plugin_root_beats_the_environment` (new) |
+| `$MOCHIKO_MIGRATIONS` beats `./migrations` | `the_environment_beats_the_working_directory` (rewritten) |
+| `./migrations` is the last resort | `the_working_directory_is_the_last_resort` (new) |
+
+Each ordering test puts a **competing** log on the loser's side rather than leaving it absent, so
+it pins the precedence rather than merely showing the winner is read at all. The rewritten
+environment test is the clearest case: its child's working directory now carries a `migrations/` of
+its own, so a regression that dropped the environment limb would fail it, where the old test would
+have passed. A fifth test, `the_last_resort_names_the_directory_it_looked_in_when_there_is_none`,
+pins that the last resort still fails honestly with nothing to resolve from.
+
+### The shipped-log walk — carried, then ruled and fixed
+
+P3's genesis landed while this round was open, so
+`the_shipped_log_renders_every_section_of_every_primitive` stopped skipping and ran for real: 252
+renders through `cli::dispatch`, each reloading the whole 618 KB log — parse, hash, replay 50
+documents, run the D6 hard set — taking the `tests/cli.rs` binary from 0.02 s to **25.2 s**. I
+carried it rather than fixing it, the pen for that round being bounded to F4 and F5. The lead then
+ruled it in scope, test-only.
+
+**Split into two tests, because they were testing two different things at once.** The 252 reloads
+tested nothing the first reload had not already settled — one load either succeeds for every
+render or fails for all of them — so the walk now loads once with `replay::load` and renders all
+252 sections from that one state through the library. Its assertions got *stronger* in the move:
+the old walk checked that the head and tail lines had the right prefix, while the new one asserts
+both lines in full, including that the tail's count equals the section's live rule count.
+
+The dispatch path over the shipped log keeps its own test,
+`the_shipped_log_is_reachable_through_the_binary`, on a sample of four — one command and one skill,
+each preamble and first section. It pins exactly what the library walk cannot: that a real
+invocation resolves the plugin version off the shipped manifest and the grammar off the log, and
+prints the triple the `.md` halt clause keys on. The expected version is read from
+`plugins/mochiko/.claude-plugin/plugin.json` at test time rather than hardcoded, so a plugin bump
+does not turn this into a failing test.
+
+| | before | after |
+|---|---|---|
+| `tests/cli.rs` wall time | 25.2 s | **0.51 s** |
+| sections walked | 252 | 252 |
+| log loads | 252 | 2 (one per test) |
+| dispatch invocations over the shipped log | 252 | 4 |
+
+**A measurement worth recording while the corpus is real.** D1 defers the persistent cache until
+"a measured render latency at `!` fire demands it", and there was no such measurement until now.
+One cold section render against the shipped genesis log, process start included:
+
+| build | one `rules <primitive> --section <id>` |
+|---|---|
+| release | **35 ms** |
+| debug | 107 ms |
+
+At six `!` lines per primitive that is about 0.2 s of preprocessing per fire on a release binary,
+against a 618 KB log carrying all 50 documents. Nothing here asks for the cache D1 deferred.
+
+## 10. Suggested commit
 
 Nothing was committed. Suggested message:
 

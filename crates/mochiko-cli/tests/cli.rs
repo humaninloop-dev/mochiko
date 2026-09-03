@@ -134,6 +134,52 @@ fn run(args: &[&str]) -> Run {
     }
 }
 
+/// Run the built binary as a child process, with its working directory and environment set on the
+/// child alone.
+///
+/// The two resolution limbs below depend on ambient state — an environment variable and the
+/// working directory — and neither can be set for one in-process test without setting it for every
+/// other test running beside it on another thread. `set_var` in a test binary is a race whose
+/// safety is a reading of every sibling test rather than a property of the code, and it becomes
+/// `unsafe` under edition 2024. A child process carries its own copy of both, so the ambient state
+/// is real for the code under test and invisible to the rest of the suite. It also puts `main.rs`
+/// on a tested path for the first time.
+///
+/// `env` entries with `None` are removed from the child rather than set, so a variable already
+/// present in the developer's own shell cannot decide the outcome.
+fn run_binary(args: &[&str], cwd: &Path, env: &[(&str, Option<&str>)]) -> Run {
+    let mut command = std::process::Command::new(env!("CARGO_BIN_EXE_mochiko-cli"));
+    command.args(args).current_dir(cwd);
+    for (key, value) in env {
+        match value {
+            Some(value) => command.env(key, value),
+            None => command.env_remove(key),
+        };
+    }
+    let output = command.output().expect("the built binary runs");
+    Run {
+        code: output.status.code().unwrap_or(-1),
+        out: String::from_utf8(output.stdout).expect("stdout is utf-8"),
+        err: String::from_utf8(output.stderr).expect("stderr is utf-8"),
+    }
+}
+
+/// A directory holding a `migrations/` subdirectory with [`LOG`] in it, for the limbs that resolve
+/// a log relative to something rather than from a flag.
+fn dir_with_log(tag: &str) -> PathBuf {
+    let root = scratch(tag);
+    let log = root.join(LOG_DIR_NAME);
+    std::fs::create_dir_all(&log).expect("log dir is creatable");
+    write_migration(&log, "0001-genesis.yaml", LOG);
+    root
+}
+
+/// The log directory's name under a plugin root, and the working-directory last resort.
+const LOG_DIR_NAME: &str = "migrations";
+
+/// The variable naming the log, read after an explicit flag and after a plugin root.
+const LOG_DIR_ENV: &str = "MOCHIKO_MIGRATIONS";
+
 // ---------------------------------------------------------------------------
 // the version contract
 // ---------------------------------------------------------------------------
@@ -760,19 +806,75 @@ fn the_log_directory_resolves_flag_first_then_the_plugin_root() {
     );
 }
 
-/// The env limb, exercised alone: every other test passes an explicit `--log-dir` or
-/// `--plugin-root`, so no concurrent test can see the variable this one sets.
+/// Limb 3 of 4: the environment beats the working directory.
+///
+/// The child's working directory carries a `migrations/` of its own, so this pins the ordering
+/// rather than merely showing the variable is read at all — a test run from a directory with no
+/// log would pass either way.
 #[test]
-fn the_log_directory_falls_back_to_the_environment_before_the_working_directory() {
-    let dir = log("orderenv");
-    std::env::set_var("MOCHIKO_MIGRATIONS", dir.display().to_string());
-    let r = run(&["migrate", "status"]);
-    std::env::remove_var("MOCHIKO_MIGRATIONS");
+fn the_environment_beats_the_working_directory() {
+    let named = log("orderenv");
+    let cwd = dir_with_log("orderenvcwd");
+    let r = run_binary(
+        &["migrate", "status"],
+        &cwd,
+        &[(LOG_DIR_ENV, Some(&named.display().to_string()))],
+    );
     assert_eq!(r.code, 0, "{}", r.err);
     assert!(
-        r.out.starts_with(&format!("log {}", dir.display())),
-        "the environment names the log:\n{}",
+        r.out.starts_with(&format!("log {}", named.display())),
+        "the environment names the log, not ./{LOG_DIR_NAME}:\n{}",
         r.out
+    );
+}
+
+/// Limb 2 of 4: a plugin root beats the environment.
+#[test]
+fn the_plugin_root_beats_the_environment() {
+    let root = plugin_root("orderrootenv", "1.2.3");
+    let named = log("orderrootenvother");
+    let r = run_binary(
+        &[
+            "migrate",
+            "status",
+            "--plugin-root",
+            &root.display().to_string(),
+        ],
+        &scratch("orderrootenvcwd"),
+        &[(LOG_DIR_ENV, Some(&named.display().to_string()))],
+    );
+    assert_eq!(r.code, 0, "{}", r.err);
+    assert!(
+        r.out
+            .starts_with(&format!("log {}", root.join(LOG_DIR_NAME).display())),
+        "the plugin root names the log, not the environment:\n{}",
+        r.out
+    );
+}
+
+/// Limb 4 of 4: with no flag, no plugin root and no variable, `./migrations` is the last resort.
+#[test]
+fn the_working_directory_is_the_last_resort() {
+    let cwd = dir_with_log("ordercwd");
+    let r = run_binary(&["migrate", "status"], &cwd, &[(LOG_DIR_ENV, None)]);
+    assert_eq!(r.code, 0, "{}", r.err);
+    assert!(
+        r.out.starts_with(&format!("log {LOG_DIR_NAME} ")),
+        "the working directory supplies the log as a relative path:\n{}",
+        r.out
+    );
+}
+
+/// With nothing to resolve from, the last resort still fails honestly rather than silently.
+#[test]
+fn the_last_resort_names_the_directory_it_looked_in_when_there_is_none() {
+    let cwd = scratch("ordernone");
+    let r = run_binary(&["migrate", "status"], &cwd, &[(LOG_DIR_ENV, None)]);
+    assert_eq!(r.code, 1, "{}{}", r.out, r.err);
+    assert!(
+        r.err.contains(LOG_DIR_NAME),
+        "the halt names the directory it looked in:\n{}",
+        r.err
     );
 }
 
@@ -780,20 +882,33 @@ fn the_log_directory_falls_back_to_the_environment_before_the_working_directory(
 // the shipped log (present from P3's genesis onward)
 // ---------------------------------------------------------------------------
 
-/// Renders every section of every primitive in the repository's own log. Wave 1's genesis
-/// migration is P3's deliverable, so until it lands this test reports that it was skipped rather
-/// than passing silently.
-#[test]
-fn the_shipped_log_renders_every_section_of_every_primitive() {
-    let log_dir = Path::new(REPO_ROOT).join("migrations");
-    if !log_dir.join("0001-genesis.yaml").is_file() {
+/// The repository's own log, or `None` before P3's genesis migration exists.
+fn shipped_log() -> Option<PathBuf> {
+    let dir = Path::new(REPO_ROOT).join(LOG_DIR_NAME);
+    if dir.join("0001-genesis.yaml").is_file() {
+        Some(dir)
+    } else {
         eprintln!(
             "SKIPPED: {} does not exist yet — P3 generates it; this test is dark until then",
-            log_dir.join("0001-genesis.yaml").display()
+            dir.join("0001-genesis.yaml").display()
         );
-        return;
+        None
     }
-    let plugin_root = Path::new(REPO_ROOT).join("plugins/mochiko");
+}
+
+/// Renders every section of every primitive in the repository's own log.
+///
+/// The walk goes through the library against **one** replayed state. Driving 252 renders through
+/// `dispatch` would reload and revalidate the whole 618 KB log 252 times — about 25 seconds for a
+/// property none of those reloads test, since one load either succeeds for every render or fails
+/// for all of them. The dispatch path over this same log is covered by its own test below, on a
+/// sample; here the subject is the render, so the state is loaded once and every section is
+/// rendered from it.
+#[test]
+fn the_shipped_log_renders_every_section_of_every_primitive() {
+    let Some(log_dir) = shipped_log() else {
+        return;
+    };
     let state = mochiko_cli::replay::load(&log_dir).unwrap_or_else(|findings| {
         let lines: Vec<String> = findings.iter().map(ToString::to_string).collect();
         panic!(
@@ -801,6 +916,14 @@ fn the_shipped_log_renders_every_section_of_every_primitive() {
             lines.join("\n")
         )
     });
+    // The values in the triple are pinned by `the_shipped_log_is_reachable_through_the_binary`
+    // below, which resolves them the way a real fire does. Here they are fixed so the walk asserts
+    // the render's shape rather than the resolution's.
+    let ctx = mochiko_cli::render::Context {
+        binary: "0.1.0".to_string(),
+        grammar: 1,
+        plugin: "0.103.0".to_string(),
+    };
 
     let mut rendered = 0usize;
     for (doc, document) in &state.docs {
@@ -813,25 +936,94 @@ fn the_shipped_log_renders_every_section_of_every_primitive() {
         ) {
             continue;
         }
-        let root = plugin_root.display().to_string();
-        let log = log_dir.display().to_string();
-        for section in std::iter::once("preamble".to_string())
-            .chain(schema.sections.iter().map(|s| s.id.clone()))
-        {
+        for section in std::iter::once(None).chain(schema.sections.iter().map(Some)) {
+            let (id, live) = match section {
+                None => ("preamble".to_string(), 0),
+                Some(section) => (section.id.clone(), section.rules.len()),
+            };
+            let out = mochiko_cli::render::section(&state, doc, &id, &ctx)
+                .unwrap_or_else(|e| panic!("{} · {id}: {e}", doc.name));
+            assert_eq!(
+                out.lines().next().unwrap(),
+                format!(
+                    "mochiko-cli rules {} · section {id} · binary 0.1.0 · grammar 1 · plugin 0.103.0",
+                    doc.name
+                ),
+                "{} · {id}: head line",
+                doc.name
+            );
+            assert_eq!(
+                out.trim_end().lines().last().unwrap(),
+                format!("mochiko-cli rules end · {} · {id} · {live} rules", doc.name),
+                "{} · {id}: tail line",
+                doc.name
+            );
+            rendered += 1;
+        }
+    }
+    assert!(rendered > 0, "the shipped log carries no primitives");
+    eprintln!("rendered {rendered} sections from the shipped log");
+}
+
+/// The same log through the whole binary — argument parsing, both resolutions, the render, the
+/// exit code — on a sample rather than a walk.
+///
+/// One command and one skill, each preamble and first section, is enough to pin what the library
+/// walk cannot: that a real invocation resolves the plugin version off the manifest and the
+/// grammar off the log, and prints the triple the `.md` halt clause keys on.
+#[test]
+fn the_shipped_log_is_reachable_through_the_binary() {
+    let Some(log_dir) = shipped_log() else {
+        return;
+    };
+    let plugin_root = Path::new(REPO_ROOT).join("plugins/mochiko");
+    let expected_plugin = std::fs::read_to_string(plugin_root.join(".claude-plugin/plugin.json"))
+        .ok()
+        .and_then(|text| serde_norway::from_str::<serde_norway::Value>(&text).ok())
+        .and_then(|value| {
+            value
+                .get("version")
+                .and_then(|v| v.as_str())
+                .map(String::from)
+        })
+        .expect("the shipped plugin manifest declares a version");
+
+    let state = mochiko_cli::replay::load(&log_dir).expect("the shipped log is deliverable");
+    let root = plugin_root.display().to_string();
+    let log = log_dir.display().to_string();
+    let mut sampled = 0usize;
+
+    for kind in [
+        mochiko_cli::model::DocKind::Command,
+        mochiko_cli::model::DocKind::Skill,
+    ] {
+        let (doc, schema) = state
+            .docs
+            .iter()
+            .filter(|(doc, _)| doc.kind == kind)
+            .find_map(|(doc, document)| document.as_rules().map(|schema| (doc, schema)))
+            .unwrap_or_else(|| panic!("the shipped log carries at least one {kind}"));
+
+        for id in ["preamble".to_string(), schema.sections[0].id.clone()] {
             let r = run(&[
                 "rules",
                 &doc.name,
                 "--section",
-                &section,
+                &id,
                 "--plugin-root",
                 &root,
                 "--log-dir",
                 &log,
             ]);
-            assert_eq!(r.code, 0, "{} · {section}:\n{}", doc.name, r.err);
-            assert!(
-                r.out.starts_with("mochiko-cli rules "),
-                "{} · {section}: head line",
+            assert_eq!(r.code, 0, "{} · {id}:\n{}", doc.name, r.err);
+            assert_eq!(
+                r.out.lines().next().unwrap(),
+                format!(
+                    "mochiko-cli rules {} · section {id} · binary {} · grammar 1 · plugin {expected_plugin}",
+                    doc.name,
+                    env!("CARGO_PKG_VERSION")
+                ),
+                "{} · {id}: the resolved version triple",
                 doc.name
             );
             assert!(
@@ -840,13 +1032,15 @@ fn the_shipped_log_renders_every_section_of_every_primitive() {
                     .lines()
                     .last()
                     .unwrap()
-                    .starts_with("mochiko-cli rules end · "),
-                "{} · {section}: tail line",
+                    .starts_with(&format!("mochiko-cli rules end · {} · {id} · ", doc.name)),
+                "{} · {id}: tail line",
                 doc.name
             );
-            rendered += 1;
+            sampled += 1;
         }
     }
-    assert!(rendered > 0, "the shipped log carries no primitives");
-    eprintln!("rendered {rendered} sections from the shipped log");
+    assert_eq!(
+        sampled, 4,
+        "one command and one skill, preamble and first section"
+    );
 }

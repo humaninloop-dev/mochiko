@@ -456,8 +456,9 @@ only the styling moved.
 
 ### A4 — the offending node is asserted where the Python names one
 
-Fourteen probes moved from `Expect::Reject(code)` to `Expect::RejectOn(code, id)` — six command,
-eight skill. Three Rust node addresses differ from the Python's and the Rust one is used, because
+Sixteen probes moved from `Expect::Reject(code)` to `Expect::RejectOn(code, id)` (the seat's own
+tally said fourteen — six command, eight skill; the delta re-grade recounted sixteen and its
+figures stand, lead-corrected here). Three Rust node addresses differ from the Python's and the Rust one is used, because
 it names the node that is actually wrong: the three `enforces:` probes report on the rule carrying
 the bad reference (`demo.fail.no-approval`) rather than on its unresolvable target, and the
 condition probe reports on `mode` rather than `conditions.mode`.
@@ -468,8 +469,8 @@ that is not there.
 
 | matrix | `Expect::Reject` | `Expect::RejectOn` |
 |---|---|---|
-| command | 23 | 25 |
-| skill | 25 | 27 |
+| command | 21 | 28 |
+| skill | 26 | 27 |
 
 ### A5 — the skew halt is read off the channel the binary writes it to
 
