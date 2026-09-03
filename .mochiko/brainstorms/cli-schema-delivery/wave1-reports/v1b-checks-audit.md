@@ -253,3 +253,56 @@ failure shapes and to confirm rejecting pointer findings print without `--report
 The ledger arithmetic was recomputed from the arrays rather than read off the report, which is how
 A1 surfaced. Nothing in the repository was edited; the scratch roots live in the session
 scratchpad. Every gate above I executed myself.
+
+---
+
+## Delta-confirm — unit 1b advisory round
+
+**PASS.** Five of nine closed, four named-not-changed as ruled. Nothing regressed.
+
+Graded via `git diff e66d76e HEAD -- crates/mochiko-cli`. The crate, `migrations/` and `plugins/`
+are unmodified in the working tree, so the graded surface is exactly HEAD. Each of the five fixes
+was checked twice: read in the source, then reverted in a scratch copy of the crate to confirm the
+named test goes red. A fix whose test does not fail without it is not a fix.
+
+| item | verdict | evidence |
+|---|---|---|
+| **A2** advisory coverage guard | **CONFIRMED** | `every_advisory_code_is_raised_by_some_probe` (`tests/validate.rs:1697`) asserts set equality against `Code::ADVISORY` in both directions — `missing` and `unexpected` — over all 14 codes, mirroring the rejecting guard. It bites, and it isolates: deleting the `condition-coverage` mutation fails with `these advisory codes are declared but no probe raises them: ["condition-coverage"]`, and deleting the `unused-condition` mutation fails naming that code alone. So the two mutations are genuinely independent, which is what the lead asked |
+| **A2** the two condition codes | **CONFIRMED** | Each has its own mutation with the distinction stated in a comment: `unused-condition` moves *both* users of the `map` dimension to `seats`, so the dimension itself goes unnamed; `condition-coverage` moves one `when:` from `present` to `absent`, leaving the dimension in use and one declared value uncovered. P1b's §13 records that the first draft conflated them and the guard caught it on its first run — the failure mode the guard exists for, found by the guard |
+| **A1** report counts | **CONFIRMED** | §3 now reads 3 command extras and 5 total; §9 reads 97 probes for `matrix_command.rs`, 98 for `tests/validate.rs`, 300 total. All four figures match the code: 94 ported + 3 extra = 97, and the suite reports 300 |
+| **A6** sigil scanner | **CONFIRMED** | `has_skeleton_sigil` (`src/validate.rs:1005`) scans to the first `}` and requires `}}` there, which is `\{\{[^}]*\}\}` exactly, and continues past a failed candidate. Two tests, not one: `a_brace_inside_the_sigil_is_not_a_skeleton_sigil` and `a_well_formed_sigil_after_a_malformed_one_still_fires` — the second guards the fix against over-correcting into an early return. Restoring the substring test fails the first and leaves the second green, which is the right discrimination |
+| **A8** non-string rule key | **CONFIRMED** | `decode_rule` (`src/model.rs:717`) returns `DecodeError` rather than skipping, and `a_non_string_rule_key_is_a_decode_error_rather_than_a_silent_drop` asserts the message names the shape refused. Replacing the `return Err` with a `continue` fails it |
+| **A4** pointer count pinned | **CONFIRMED** | `assert_eq!(report.checked, 87)` replaces `> 50` at `tests/validate.rs:2485`, with the reason in a comment. The corpus still reports 87 checked |
+| **A5** retired-selector superset | **NOTED, documented** | `names_retired_selector` carries a doc comment citing the audit item, stating that `check-skill-schema.py` contains no occurrence of the word and that the Rust applies the lint corpus-wide deliberately, because the label is retired vocabulary rather than a fact about one grammar and the lint cannot block. Zero hits either way. The claim is now visible where a reader of the code will meet it |
+| **A3** pointer containment | **NAMED, not changed** | §11 item 5 records the `../../../../CLAUDE.md` probe, states it is inherited parity under the Q4 ruling, and names the fix as two canonicalisations and a prefix assert |
+| **A7** record sentences | **NAMED, lead's at landing** | §11 item 3 now names all three: `92 advisory` → 105, family 3 "7" → 3, and the severity-parity sentence needing the lead-ruled `class:` divergence noted. The seat's earlier open item had only the first |
+| **A9** ASCII word boundary | **NAMED, not changed** | §11 item 6, with the reason it is negligible for the corpus and why it is recorded anyway |
+| **`resolve_extends` re-scan** | **NAMED, not changed** | §11 item 7, carried as the observation it was raised as, with the measured figure |
+
+**No regression.** The corpus is unchanged where it must be: 0 rejecting, 105 advisory, 105
+distinct, 87 pointers checked. This mattered for two of the fixes — A8 changed the decoder and A6
+narrowed a lint — and neither moved a shipped figure. `Cargo.toml` and `Cargo.lock` are untouched
+this round.
+
+The operating docs and the session record are modified in the working tree, which is the lead's
+landing work, including the A7 corrections. Outside the crate and outside this grade.
+
+### Gate outputs
+
+```
+$ cargo test --all                    300 passed; 0 failed, across 11 binaries
+   anchor_grammar 5 · cli 26 · fidelity 10 · matrix_command 2 · matrix_similar 48
+   matrix_skill 3 · migration 25 · render 27 · replay 46 · validate 98 · views 10
+   exit 0        (validate 94 → 98; total 296 → 300)
+
+$ cargo fmt --all --check             exit 0 (no output)
+$ cargo clippy --all-targets -- -D warnings
+                                      exit 0 (re-run after touching lib.rs, not cached)
+$ cargo audit --deny warnings         exit 0 — 31 crate dependencies, no advisories
+
+$ cargo run -q -- migrate validate --log-dir migrations --plugin-root plugins/mochiko --report
+   pointer resolution: 87 checked against plugins/mochiko
+   mochiko-cli migrate validate · 0 rejecting · 105 advisory          exit 0
+```
+
+**Final verdict: PASS.**

@@ -1086,7 +1086,8 @@ family-2 check gap **closed in this wave** as extension unit **1b** (below).
 **Gates at acceptance:** `cargo test --all` 246 / 0 (35 s; full similarity sweep opt-in
 behind `MOCHIKO_FULL_SIMILAR=1`, 69 s) · fmt · clippy `-D warnings` · `cargo audit --deny
 warnings` clean · no shipped file under `plugins/` changed byte-wise · no `plugin.json`
-bump · `migrate validate --log-dir migrations`: 0 rejecting · 92 advisory.
+bump · `migrate validate --log-dir migrations`: 0 rejecting · 92 advisory. **After unit
+1b (wave close):** 300 / 0 tests · 0 rejecting · 105 advisory · 87 pointers checked.
 
 **Measurements the rulings keyed on:** cold section render **35 ms** release / 107 ms
 debug, process start included — six lines per fire ≈ 0.2 s; **no demand for the deferred
@@ -1114,17 +1115,36 @@ suppressed count · rule field order normalises on emit (P1 A11, accepted partia
 other declaration order is preserved · views are human-readable text under `--out` only
 (comments cannot survive; the 8-line command kernel header is regenerated).
 
-**Extension unit 1b — the family-2 checks (user-ruled 2026-09-04, "family 2 now"):** P3's
-matrix port named 46 command + 35 skill probes that exercise Python checks the wave-plan
-hard set never listed. Family 1 (shape errors the decoder rejects) is covered; family 3 (7
-per-skill sweep-mode claims) has no referent in a whole-state validator and is dropped with
-reason; family 4 is report wording. **Family 2 is real and ported in this wave:** in-text
-rule-ID citation resolution (ontology D5), pointer file resolution, the inline `ruling:`
-guard (D16), the flat top-level `rules:` guard (D14), absence-meaningful fields local on
-library blocks (C3), the retired-selector prose lint, orphan-block and pointless-override
-warnings, the zero-member label warning, the label-less rule check, the `{{...}}` sigil
-warning — each at the severity its Python carried, the probes re-claimed in the ledgers.
-P1 produces on an approved plan; V1 grades.
+**Extension unit 1b — the family-2 checks (user-ruled 2026-09-04, "family 2 now"; BUILT
+same day, commits `e66d76e` → `2f7ce11`, seat P1b on an approved plan with rulings Q1–Q6,
+V1 PASS 0 blocking / 9 advisory → advisory round → delta PASS):** P3's matrix port named
+46 command + 35 skill probes that exercise Python checks the wave-plan hard set never
+listed. **Accounting at close, summed to 81:** 54 re-claimed into the ported ledgers · 12
+family-1 shape errors the decoder rejects before a finding can exist · **3** family-3
+single-skill-run claims with no referent in a whole-state validator (the earlier figure of
+7 was wrong — four of those probes have referents, because a whole-state validator *is*
+the end-of-sweep pass) · 11 family-4 `.md` pin/wording probes dead under D6 · 1 named
+residual (a section whose `rules` key is absent vs null vs empty — the model reads all
+three as an empty section; a `Section` field would tell them apart; an empty section is
+already a finding unless it carries a `note:`). **Sixteen new codes** — nine rejecting
+(`cite-unresolved` incl. tombstoned citations per ontology D5 · `pointer-unresolved` for
+skill pointers behind `--plugin-root`, three failure shapes, never silent: "pointer
+resolution: skipped (no --plugin-root)" prints otherwise · `superseded-field` for an inline
+`ruling:` (D16) and `unknown-field` for any other stray key, both via a **preserved `extra`
+map on `Rule`** — the lead's Q5 amendment, which exposed and fixed a latent lossy round trip
+· `flat-rules` (D14) · `retired-label` · `labels-missing` · the residual structural checks)
+and seven advisory (`cite-foreign` · `retired-selector` corpus-wide, a documented superset
+of the Python's command-only scope · `pointless-override` · `orphan-block` ·
+`zero-member-label` · `labels-inherited` · `skeleton-sigil`); the C3 absence-meaningful
+guard was already ported at P1 (seven stale ledger rows corrected, zero new code); the
+`class`-on-a-common-block divergence stays **rejecting** in Rust where Python warns (Q3,
+disclosed in the ledger). Both code sets now carry set-equality coverage guards. **Corpus:
+0 rejecting · 105 advisory** (the 13 new advisories are the Python's own warnings
+one-for-one: 9 zero-member labels, 4 inherited-label absences) · 87 skill pointers checked,
+all resolving. **Named gaps, not this unit's:** the 23 path-shaped command-side `pointer:`
+values (`architecture` 7 · `implement` 14 · `common` 2) are resolved by no checker, Python
+included; pointer climbs outside the plugin root are permitted (Python parity); the
+citation scanner's word boundary is ASCII.
 
 **Open at acceptance:** the contract suite has not run a real case — the sandbox is
 unauthenticated (`sbx login` is the user's action; preflight `SKIPPED` exit 3 is the
