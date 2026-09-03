@@ -46,6 +46,15 @@ jobs:
       - name: Test
         run: cargo test --all
 
+      # The full-corpus similarity sweep is opt-in for the default suite (98 seconds of a
+      # 137-second run in a debug build). CI runs it explicitly, so nothing about it is skipped
+      # where it matters; the default suite keeps the command-family pin, which is the same
+      # assertion over a tenth of the pairs.
+      - name: Test (full-corpus similarity sweep)
+        env:
+          MOCHIKO_FULL_SIMILAR: "1"
+        run: cargo test --test matrix_similar
+
       - name: Install cargo-audit
         uses: taiki-e/install-action@v2
         with:

@@ -6,6 +6,9 @@
 # rewrite (record D9). So the `publish` job below is present and disabled: wave 2 flips one
 # condition here and lifts `publish = false` in `Cargo.toml`, and nothing else moves.
 #
+# Assets are named `mochiko-cli-vX.Y.Z-<target>.tar.gz`, matching the URL template
+# `cargo binstall` derives by default, so no `[package.metadata.binstall]` override is needed.
+#
 # Actions are pinned to release tags, matching ci.yml; SHA-pinning is the same recorded
 # hardening follow-up that file carries.
 name: release
@@ -69,7 +72,12 @@ jobs:
           set -euo pipefail
           bin="target/${{ matrix.target }}/release/mochiko-cli"
           strip "$bin" || echo "strip unavailable for ${{ matrix.target }}; shipping unstripped"
-          stage="mochiko-cli-${{ github.ref_name }}-${{ matrix.target }}"
+          # `github.ref_name` is already `mochiko-cli-vX.Y.Z`, so the crate name is not
+          # repeated here. The result is `mochiko-cli-vX.Y.Z-<target>.tar.gz`, which is what
+          # `cargo binstall` derives from the crate name, the version and the target triple by
+          # default — a doubled prefix would need a `[package.metadata.binstall]` override to
+          # be installable.
+          stage="${{ github.ref_name }}-${{ matrix.target }}"
           mkdir -p "$stage"
           cp "$bin" "$stage/"
           cp README.md LICENSE* "$stage/" 2>/dev/null || true
@@ -80,8 +88,8 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            mochiko-cli-${{ github.ref_name }}-${{ matrix.target }}.tar.gz
-            mochiko-cli-${{ github.ref_name }}-${{ matrix.target }}.tar.gz.sha256
+            ${{ github.ref_name }}-${{ matrix.target }}.tar.gz
+            ${{ github.ref_name }}-${{ matrix.target }}.tar.gz.sha256
 
   publish:
     name: publish to crates.io (disabled until wave 2)

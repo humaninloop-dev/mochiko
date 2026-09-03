@@ -275,7 +275,7 @@ fn literal_block(text: &str) -> Option<(&'static str, Vec<&str>)> {
         &text[..text.len() - (trailing - usize::from(trailing == 1))]
     };
     let body = body.strip_suffix('\n').unwrap_or(body);
-    let lines: Vec<&str> = body.split('\n').collect();
+    let mut lines: Vec<&str> = body.split('\n').collect();
     // A body line ending in whitespace, or a first line opening with it, does not read back
     // unchanged without an indentation indicator.
     if lines.first().is_some_and(|l| l.starts_with([' ', '\t'])) {
@@ -284,17 +284,25 @@ fn literal_block(text: &str) -> Option<(&'static str, Vec<&str>)> {
     if lines.iter().any(|l| l.ends_with([' ', '\t'])) {
         return None;
     }
+    // `|+` keeps the newlines that are actually written after the body, so the ones past the
+    // first have to be emitted as blank lines. Writing the header alone keeps nothing, which is
+    // how a two-newline string used to read back with one.
+    lines.extend(std::iter::repeat_n("", trailing.saturating_sub(1)));
     Some((header, lines))
 }
 
 /// Whether a single-line string survives folding. Folding joins lines with a space, so any run
 /// of two spaces, or an edge space, would come back different.
+///
+/// Deliberately not gated on `needs_quote`. Inside a folded block a colon, a hash, a leading dash
+/// and a quote are all literal text, and every emitted line is padded to the same column, so none
+/// of the inline hazards apply. Requiring an unquotable string here only made the views
+/// longer-lined than the corpus they mirror, which is the readability D6 asks for.
 fn foldable(text: &str) -> bool {
     !text.contains("  ")
         && !text.starts_with([' ', '\t'])
         && !text.ends_with([' ', '\t'])
-        && !text.contains('\t')
-        && !needs_quote(text, false)
+        && !text.chars().any(char::is_control)
 }
 
 /// Wrap on single spaces at `width`. Every line begins with a word character, so no line reads

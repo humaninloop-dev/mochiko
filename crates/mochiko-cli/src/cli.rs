@@ -409,7 +409,8 @@ fn run_validate(dir: &Path, report: bool, out: &mut dyn Write, err: &mut dyn Wri
     // gates, so it cannot move the exit code.
     if report {
         if let Some(state) = &state {
-            let allowlist = crate::similar::default_allowlist(Path::new("."));
+            // Resolved from the log directory, never the process working directory.
+            let allowlist = crate::similar::find_allowlist(dir);
             let clusters = crate::similar::clusters(
                 state,
                 crate::similar::DEFAULT_THRESHOLD,

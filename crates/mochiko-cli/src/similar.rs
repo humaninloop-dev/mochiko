@@ -28,7 +28,7 @@ use crate::replay::State;
 use crate::validate::{self, Family};
 use std::collections::{BTreeMap, BTreeSet, HashMap};
 use std::fmt::Write as _;
-use std::path::Path;
+use std::path::{Path, PathBuf};
 
 /// The combined-score threshold a pair must clear, and the detector's own default.
 pub const DEFAULT_THRESHOLD: f64 = 0.60;
@@ -828,7 +828,12 @@ pub struct Report {
     pub clusters: Vec<Cluster>,
     pub scanned: usize,
     pub scored: usize,
+    /// Pairs that cleared the threshold and were not suppressed — the edges the clusters are
+    /// built from. Reported so a run with no allowlist can say how much it left unsuppressed.
+    pub edges: usize,
     pub suppressed_hits: usize,
+    /// The allowlist this run actually read, or `None` when no ancestor of the log carried one.
+    pub allowlist: Option<PathBuf>,
     pub threshold: f64,
     pub warnings: Vec<String>,
 }
@@ -851,10 +856,12 @@ pub fn clusters(state: &State, threshold: f64, allowlist: Option<&Path>) -> Repo
     };
     let (edges, scored, suppressed_hits) = score_pairs(&scored_rules, threshold, &suppressed);
     Report {
-        clusters: cluster(&edges, &scored_rules),
         scanned: scored_rules.len(),
         scored,
+        edges: edges.len(),
+        clusters: cluster(&edges, &scored_rules),
         suppressed_hits,
+        allowlist: allowlist.map(Path::to_path_buf),
         threshold,
         warnings,
     }
@@ -935,12 +942,20 @@ pub fn render_report(report: &Report) -> String {
         report.scored,
         report.clusters.len()
     );
-    if report.suppressed_hits > 0 {
-        let _ = writeln!(
-            out,
-            "allowlist-suppressed edges: {}",
-            report.suppressed_hits
-        );
+    // Always say which of the two happened. A run that resolved no allowlist suppresses
+    // nothing, and reporting that silently is how adjudicated-and-closed clusters come back as
+    // fresh signal with nothing to tell the reader why.
+    match &report.allowlist {
+        Some(_) => {
+            let _ = writeln!(
+                out,
+                "allowlist-suppressed edges: {}",
+                report.suppressed_hits
+            );
+        }
+        None => {
+            let _ = writeln!(out, "allowlist: none ({} edges unsuppressed)", report.edges);
+        }
     }
     for warning in &report.warnings {
         let _ = writeln!(out, "warning: {warning}");
@@ -957,10 +972,20 @@ fn trim(text: &str, width: usize) -> String {
     format!("{head}…")
 }
 
-/// The detector's default allowlist path under `root`, when the file is there.
-pub fn default_allowlist(root: &Path) -> Option<std::path::PathBuf> {
-    let path = root.join(ALLOWLIST);
-    path.is_file().then_some(path)
+/// The allowlist governing a log, found by walking up from the log directory.
+///
+/// Resolution never consults the process working directory. The same command over the same log
+/// has to produce the same report from anywhere; resolving `./scripts/…` meant a run from
+/// outside the repository reported 76 adjudicated-and-closed clusters as fresh signal, with the
+/// suppression line simply absent.
+pub fn find_allowlist(log_dir: &Path) -> Option<PathBuf> {
+    let start = log_dir
+        .canonicalize()
+        .unwrap_or_else(|_| log_dir.to_path_buf());
+    start
+        .ancestors()
+        .map(|dir| dir.join(ALLOWLIST))
+        .find(|candidate| candidate.is_file())
 }
 
 /// The document a scored rule came from, for callers that want to address it.

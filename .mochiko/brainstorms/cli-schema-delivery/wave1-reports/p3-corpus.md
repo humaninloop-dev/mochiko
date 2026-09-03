@@ -10,10 +10,11 @@ repo path).
 **Substrate:** P1 at `cd5a333`, P2 at `07a39b4`.
 **Shipped files:** no file under `plugins/` changed byte-wise.
 
-**Gates at close:** `cargo fmt --all --check` clean · `cargo clippy --all-targets -- -D warnings`
-clean · `cargo audit --deny warnings` clean · `cargo test --all --no-fail-fast` **231 passed, 0
-failed** across eleven test binaries. `migrate validate --log-dir migrations` reports `0 rejecting
-· 92 advisory`, and `views emit` writes all 50 views from the log. Nothing in the seat is open.
+**Gates at close (fix round 1):** `cargo fmt --all --check` clean · `cargo clippy --all-targets
+-- -D warnings` clean · `cargo audit --deny warnings` clean · `cargo test --all --no-fail-fast`
+**242 passed, 0 failed** across eleven test binaries, in 35 seconds rather than 137 (§12, A8).
+`migrate validate --log-dir migrations` reports `0 rejecting · 92 advisory` from any working
+directory, and `views emit` writes all 50 views from the log. Nothing in the seat is open.
 
 ---
 
@@ -21,7 +22,7 @@ failed** across eleven test binaries. `migrate validate --log-dir migrations` re
 
 | file | lines | what it carries |
 |---|---|---|
-| `migrations/0001-genesis.yaml` | 10,479 | the generated genesis migration — 50 `import-document` ops, 598,626 bytes |
+| `migrations/0001-genesis.yaml` | 11,701 | the generated genesis migration — 50 `import-document` ops, 618,122 bytes |
 | `crates/mochiko-cli/src/genesis.rs` | 607 | the generator: the corpus scan, the anchor fold, the comment lift, the stamped file |
 | `crates/mochiko-cli/src/views.rs` | 456 | the derived-view emitter and the YAML writer both it and genesis use |
 | `crates/mochiko-cli/src/similar.rs` | 975 | the similar-rule detector, including a faithful `difflib.SequenceMatcher` |
@@ -31,7 +32,7 @@ failed** across eleven test binaries. `migrate validate --log-dir migrations` re
 | `crates/mochiko-cli/tests/matrix_skill.rs` | 822 | the 114-probe skill matrix and its four ledgers |
 | `crates/mochiko-cli/tests/matrix_similar.rs` | 952 | the 48-probe detector matrix, the difflib vectors, the corpus pin |
 | `crates/mochiko-cli/tests/matrix/mod.rs` | 440 | the shared matrix harness (a disclosed addition — §5.1) |
-| `crates/mochiko-cli/tests/anchor_grammar.rs` | 115 | 5 tests pinning the decision-segment grammar against the live corpus (§6) |
+| `crates/mochiko-cli/tests/anchor_grammar.rs` | 117 | 5 tests pinning the decision-segment grammar against the live corpus (§6) |
 | `evals/contract/run.py` | 371 | the contract-suite runner |
 | `evals/contract/README.md`, `fixture/probe-plugin/` | — | the gate split, the prerequisites, the one-`!`-line probe command |
 | `.github/workflows/release.yml` | 104 | four targets, stripped and checksummed; `publish` present and disabled |
@@ -128,9 +129,13 @@ authoring-family and patterns-family waves. Ported at the lead's j1 ruling; `the
 |---|---|---|---|---|---|
 | command | 134 | 66 (+3 beyond the matrix) | 8 | 14 | 46 |
 | skill | 114 | 63 (+1 beyond) | 7 | 9 | 35 |
-| similar | 48 | 45 | — | 3 | — |
+| similar | 48 | 42 | — | 6 | — |
 
 Each matrix's ledgers are asserted to account for its Python list exactly, by name.
+
+The similar row read `45 / 3` until fix round 1. It was a hand count, and it was wrong by three:
+the three `e2e: exit 0 by default` siblings had no Rust referent and appeared in no ledger. The
+row above is now a set equation the test runner checks. §12/B1 has the detail.
 
 ### Not applicable under D6 — the `.md` scaffold and the sidecar
 
@@ -237,11 +242,18 @@ in one function; nothing else in `model.rs` was touched, and the grammar stays a
 ends — the suffix is letters only and must follow at least one digit.
 
 **The pin.** `tests/anchor_grammar.rs`, a file this seat owns, holds five tests: the accepted
-spellings (`D2a`, `[D2a]`, `D12abc`); the eight that stay malformed (`D`, `Da`, `D2 D3`, trailing
-prose, `D2A`, `D2-a`, `D2a1`, `2a`); the pre-existing forms unchanged (`D4`, `[D2]`, no segment, a
-missing date, an out-of-range month); the two live anchors asserted **by rule id** and read from
-the sidecar rather than restated, so the test fails if the corpus stops carrying the spelling that
-forced the widening; and a sweep asserting no anchor anywhere in the sidecar is malformed.
+spellings (`D2a`, `[D2a]`, `D12abc`); the nine that stay malformed (`D`, `Da`, `D2 D3`, trailing
+prose, `D2A`, `D2-a`, `D2a1`, `D2a3`, `2a`); the pre-existing forms unchanged (`D2`, `D4`, `[D2]`,
+no segment, a missing date, an out-of-range month); the two live anchors asserted **by rule id**
+and read from the sidecar rather than restated, so the test fails if the corpus stops carrying the
+spelling that forced the widening; and a sweep asserting no anchor anywhere in the sidecar is
+malformed. Every case the grant names is present by that spelling.
+
+**Where the delta lives.** On branch `worktree-cli-context`, uncommitted, in the worktree at
+`.claude/worktrees/cli-context`. The shared checkout is on `main` at `1ed5c19`, whose crate is
+still the v0.76.0 seed — `src/schema.rs`, and no `model.rs` at all. All of wave 1 lives on the
+worktree branch, so a read of the shared checkout shows none of it. Worth stating because it was
+misread once.
 
 **One doc line is now stale, and it is outside this seat's pen.** `migrations/README.md` says the
 decision segment is "written either `D2` or `[D2]`" in two places — the `anchor` row of the field
@@ -271,19 +283,23 @@ to both sentences.
 
 | suite | tests | state |
 |---|---|---|
-| `tests/views.rs` | 8 | pass |
+| `tests/views.rs` | 10 | pass |
 | `tests/fidelity.rs` | 10 | pass |
 | `tests/anchor_grammar.rs` | 5 | pass |
 | `tests/matrix_command.rs` | 2 (69 probes) | pass |
 | `tests/matrix_skill.rs` | 3 (64 probes) | pass |
-| `tests/matrix_similar.rs` | 39 | pass |
+| `tests/matrix_similar.rs` | 48 | pass |
 | `tests/migration.rs` · `replay.rs` · `validate.rs` | 115 | pass, untouched |
 | `tests/render.rs` · `cli.rs` | 49 | pass |
-| **total** | **231** | **231 pass, 0 failed** |
+| **total** | **242** | **242 pass, 0 failed** |
+
+Fix round 1 added eleven: two to `views.rs` (A2, A3) and nine to `matrix_similar.rs` (two
+accounting tests for B1, five for allowlist resolution under A1, the command-family corpus pin
+under A8, and the full sweep now reporting its own skip). Wall time went from 137 seconds to 35.
 
 An earlier draft of this table put the total at 270 and the passes at 264. Both were arithmetic
-errors in the summing row; the per-suite counts were right then and are right now. The corrected
-figures above are read off `cargo test --all --no-fail-fast` directly.
+errors in the summing row; the per-suite counts were right then and are right now. Every figure
+above is read off `cargo test --all --no-fail-fast` directly.
 
 Corpus pins re-asserted through the log: 50 documents · 321 command rules · 695 skill rules ·
 1,016 total · 226 skill floors · 110 declared command floors · 36 fail nodes · 597 anchors folded.
@@ -304,15 +320,20 @@ than inferred, and the exit code is 3 rather than 0 so no gate can mistake it fo
 
 ## 10. Open items
 
-1. **`migrations/README.md` describes the pre-delta anchor grammar** in two sentences (§6). A
-   named delta for the lead, outside this seat's pen. The `D2a` delta itself is applied, pinned
-   and green.
+1. **Closed.** `migrations/README.md` carried the pre-delta anchor grammar; the lead's two
+   sentences landed. The `D2a` delta itself is applied, pinned and green.
 2. **The narrowed check set** (§3) — 81 probes across the two matrices exercise checks the Rust
    hard set does not carry. Families 2 to 4 need a wave ruling before the Python scripts are
    deleted at wave 6.
 3. **The record's skill-matrix census** says 86; it is 114. A fact line for the wave landing.
-4. **The similarity report is unexercised in CI** — `migrate validate --report` prints it, and the
-   corpus test pins its figures, but no test asserts the rendered text over the real corpus.
+4. **The similarity report's rendered text is still unasserted over the real corpus.** The
+   figures are pinned twice (§12/A8) and the fixture runs assert the text, but no test reads the
+   rendered report over all 1,016 rules. Narrower than it was, not closed.
+6. **The command and skill matrices still carry transcribed `PYTHON_PROBES` arrays.** The
+   detector matrix now re-derives its names from the script (§12/B1); the other two would take
+   the same treatment cheaply.
+7. **`.claude/rules/mochiko/rust-cli.md` does not document `MOCHIKO_FULL_SIMILAR`.** Outside this
+   seat's pen; named for the lead.
 5. **The sequence table needed no edit**: `migrations/README.md` already carries wave 1 as
    `0001 (genesis)`, which is what landed. The pen allowance there went unused.
 
@@ -348,3 +369,158 @@ widening and the eight shapes that stay malformed.
 
 No new dependency. No file under plugins/ changed.
 ```
+
+## 12. Fix round 1
+
+Against `v3-corpus-audit.md` (FAIL: 1 blocking, 9 advisory). Every finding taken. Each fix went
+red first; the red is quoted where it names the defect better than prose would.
+
+### B1 — the detector matrix now has name-level accounting (blocking)
+
+`matrix_similar.rs` gained what the other two matrices already had, and then some:
+
+- `PYTHON_PROBES: [&str; 48]`, every `check("…")` name verbatim and in source order.
+- `PORTED`, built by a `ported!` macro from `<rust test> => [<python names>]`. The test is named
+  once and used twice — as a function value the compiler resolves, and as the ledger's string —
+  so a renamed or deleted test breaks the build instead of quietly unclaiming a probe.
+- `NOT_APPLICABLE`, six rows with reasons.
+- `EXTRA`, the six Rust tests with no Python referent, so the ported count cannot inflate.
+- `the_whole_python_matrix_is_accounted_for`: every name claimed exactly once, no ledger name
+  outside the Python list, and the split asserted as `(42, 6)`.
+
+The first run, with the pre-audit three-row ledger, failed exactly where the audit said it would:
+
+```
+Python probes claimed by no ledger: [
+    "e2e: exit 0 by default",
+    "skill e2e: exit 0 by default",
+    "authoring e2e: exit 0 by default",
+]
+```
+
+Beyond the finding: `the_recorded_python_names_are_the_scripts_own` re-derives the 48 names by
+scanning `scripts/test-find-similar-rules.py` and asserts the recorded array equals them. A
+transcribed list can go stale in silence; this one cannot. The command and skill matrices still
+carry transcribed arrays — a follow-up worth taking when someone next touches them.
+
+### A1 — the allowlist resolves from the log, not the process working directory
+
+`similar::default_allowlist(root)` became `similar::find_allowlist(log_dir)`, which walks up from
+the log directory to the nearest ancestor carrying `scripts/similar-rules-allowlist.yaml`. The
+granted arm in `cli.rs` passes `--log-dir` instead of `Path::new(".")`.
+
+The report also stops going quiet. `Report` gained `allowlist: Option<PathBuf>` and `edges`, and
+`render_report` now always prints one of two lines: `allowlist-suppressed edges: N` when a list
+was read (including at zero, which was silent before), or `allowlist: none (N edges unsuppressed)`
+when none was found. A 76-cluster read can no longer be mistaken for a clean one.
+
+Verified end to end. The identical command over the identical log, run from a scratch directory
+outside the repository:
+
+```
+rules scanned: 1016 · in-kind pairs scored: 146572 · clusters: 0 (none)
+allowlist-suppressed edges: 181
+```
+
+Five tests pin it, including one asserting the resolution works while the process working
+directory demonstrably lacks the file. Deliberate divergence from the Python, disclosed: the
+Python prints nothing when it has no allowlist.
+
+### A2 — `|+` writes the blank lines it promises to keep
+
+`literal_block` chose `|+` for two or more trailing newlines and then emitted a body with none for
+it to keep, so `"a\n\n"` read back as `"a\n"`. It now appends `trailing - 1` blank lines.
+`a_multiline_scalar_keeps_every_trailing_newline` pins eight cases through a real parse.
+
+### A3 — quoted scalars fold
+
+`foldable` no longer requires `!needs_quote(text, false)`. Inside a `>-` block a colon, a hash, a
+leading dash and a quote are all literal, and every emitted line is padded to the same column, so
+the guard was buying nothing and costing readability. It now excludes control characters instead.
+Measured over the 50 schema files and the 50 emitted views:
+
+| | lines over 120 chars | longest line |
+|---|---|---|
+| shipped corpus, 50 schema files | 76 | 693 |
+| emitted views, before | 307 | 944 |
+| emitted views, after | 26 | 341 |
+| generated log, before | 326 | 950 |
+| generated log, after | 36 | 347 |
+
+The "before" rows were measured by re-emitting with the old guard restored, not estimated. The
+views are now shorter-lined than the corpus they mirror. The log's 36 survivors are markdown table
+rows inside literal blocks, which cannot fold without changing content; it grew from 10,479 lines
+to 11,701 and from 598,626 bytes to 618,122. **`migrations/0001-genesis.yaml` was regenerated**;
+its `hash:` is unchanged at `sha256:361cf5d6…`, because the hash covers the decoded content and
+only the styling moved.
+
+### A4 — the offending node is asserted where the Python names one
+
+Fourteen probes moved from `Expect::Reject(code)` to `Expect::RejectOn(code, id)` — six command,
+eight skill. Three Rust node addresses differ from the Python's and the Rust one is used, because
+it names the node that is actually wrong: the three `enforces:` probes report on the rule carrying
+the bad reference (`demo.fail.no-approval`) rather than on its unresolvable target, and the
+condition probe reports on `mode` rather than `conditions.mode`.
+
+Four could not move, and a comment in each file says so: the "canonical section absent" family
+(one command, three skill) reports a finding with no id, because the node it would name is the one
+that is not there.
+
+| matrix | `Expect::Reject` | `Expect::RejectOn` |
+|---|---|---|
+| command | 23 | 25 |
+| skill | 25 | 27 |
+
+### A5 — the skew halt is read off the channel the binary writes it to
+
+Two changes. The fixture's `!` line became
+`` !`mochiko-cli rules brainstorm --section preamble 2>&1` `` so the halt reaches the model through
+the channel wave 0 settled, and `case_skew` gained `assert_skew_halt_on_stderr`, which runs the
+same log against the binary directly and asserts exit 3, empty stdout, and the message on stderr.
+The case no longer rests on an untested assumption about what Claude Code does with stderr. One
+assumption remains and is flagged in the fixture itself: that a redirect does not need its own
+`allowed-tools` grant. It is confirmed at the first authenticated run, not before.
+
+### A6 — an empty suite skips rather than sweeping
+
+`if not CASES: return EXIT_SKIP`, before any case runs. Exit 0 now structurally means "every
+declared case ran".
+
+### A7 — the release archive name
+
+`stage="${{ github.ref_name }}-${{ matrix.target }}"`, so the asset is
+`mochiko-cli-vX.Y.Z-<target>.tar.gz` rather than doubling the crate prefix. That is the URL
+template `cargo binstall` derives by default, so no `[package.metadata.binstall]` override is
+needed. The upload list and the header comment match.
+
+### A8 — the full-corpus sweep is opt-in, and the default suite keeps a real pin
+
+`the_detector_reproduces_the_live_runs_figures_over_the_corpus` runs only under
+`MOCHIKO_FULL_SIMILAR=1`, and prints its skip rather than passing silently. CI runs it in a step
+of its own, so nothing is skipped where it matters.
+
+The default suite gained `the_detector_reproduces_its_figures_over_the_command_family`, the same
+assertion over the command grammar alone. Both figure sets are measured against the reference
+implementation, not self-asserted:
+
+| pin | rules scanned | pairs scored | clusters | suppressed | debug runtime |
+|---|---|---|---|---|---|
+| command family (default) | 321 | 12,154 | 0 | 60 | 5.2 s |
+| whole corpus (opt-in) | 1,016 | 146,572 | 0 | 181 | 98 s |
+
+Both reproduce `uv run scripts/find-similar-rules.py` exactly, the subset under
+`--schemas-dir plugins/mochiko/schemas --allowlist scripts/similar-rules-allowlist.yaml`. The
+whole suite is now 35 seconds rather than 137.
+
+**Pen note:** adding a CI step is wider than this seat's `ci.yml` pen, which is the path filter
+only. Taken because A8 asks for it in those words. Nothing else in that file moved.
+
+### A9 — the report drifts
+
+"nine that stay malformed" was already corrected when `D2a3` was added at the lead's restated
+case list. §10.1 is closed: the two `migrations/README.md` sentences landed.
+
+### Not asked for, and not done
+
+`.claude/rules/mochiko/rust-cli.md` is where a maintainer would look for the
+`MOCHIKO_FULL_SIMILAR` switch, and it is outside this seat's pen. Named delta for the lead.

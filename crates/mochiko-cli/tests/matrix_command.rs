@@ -172,6 +172,10 @@ fn probes() -> Vec<Probe> {
     p.push(Probe::new("baseline pair is clean", Expect::Clean, |_| {}));
 
     // --- 1. set-wise section assertion ---
+    // The four "canonical section absent" probes below stay `Expect::Reject`. The Python names
+    // the missing section inside its message; the Rust finding carries no id, because the node
+    // it would name is the one that is not there. Every other probe whose Python expectation
+    // names a node now asserts that node (advisory A4).
     p.push(Probe::new(
         "canonical section absent",
         Expect::Reject(Code::SectionSet),
@@ -179,7 +183,7 @@ fn probes() -> Vec<Probe> {
     ));
     p.push(Probe::new(
         "section outside the canonical six",
-        Expect::Reject(Code::SectionSet),
+        Expect::RejectOn(Code::SectionSet, "demo.sec.extras"),
         |f| {
             f.command().sections.push(Section {
                 id: "demo.sec.extras".into(),
@@ -205,7 +209,7 @@ fn probes() -> Vec<Probe> {
     // --- 2. empty-marker recognition ---
     p.push(Probe::new(
         "empty section carrying no note",
-        Expect::Reject(Code::TextMissing),
+        Expect::RejectOn(Code::TextMissing, "demo.sec.reserved"),
         |f| f.section("reserved").note = None,
     ));
 
@@ -341,7 +345,7 @@ fn probes() -> Vec<Probe> {
     ));
     p.push(Probe::new(
         "a dimension whose values: is neither a list nor `presence`",
-        Expect::Reject(Code::ConditionDeclaration),
+        Expect::RejectOn(Code::ConditionDeclaration, "mode"),
         |f| f.condition("mode").values = Some(Value::String("sometimes".into())),
     ));
     p.push(Probe::porting(
@@ -425,12 +429,12 @@ fn probes() -> Vec<Probe> {
     ));
     p.push(Probe::new(
         "an enforces: target that resolves to nothing",
-        Expect::Reject(Code::EnforcesUnresolved),
+        Expect::RejectOn(Code::EnforcesUnresolved, "demo.fail.no-approval"),
         |f| f.rule("demo.fail.no-approval").enforces = Some(vec!["demo.ghost".into()]),
     ));
     p.push(Probe::new(
         "an enforces: target that is tombstoned",
-        Expect::Reject(Code::EnforcesUnresolved),
+        Expect::RejectOn(Code::EnforcesUnresolved, "demo.fail.no-approval"),
         |f| {
             f.tombstone("demo.legacy-rule");
             f.rule("demo.fail.no-approval").enforces = Some(vec!["demo.legacy-rule".into()]);
@@ -443,7 +447,7 @@ fn probes() -> Vec<Probe> {
     ));
     p.push(Probe::new(
         "enforces: naming a section rather than a rule",
-        Expect::Reject(Code::EnforcesUnresolved),
+        Expect::RejectOn(Code::EnforcesUnresolved, "demo.fail.no-approval"),
         |f| f.rule("demo.fail.no-approval").enforces = Some(vec!["demo.sec.roles".into()]),
     ));
     p.push(Probe::new(
@@ -515,7 +519,7 @@ fn probes() -> Vec<Probe> {
     ));
     p.push(Probe::new(
         "a common block with no text",
-        Expect::Reject(Code::TextMissing),
+        Expect::RejectOn(Code::TextMissing, "common.register"),
         |f| f.common().blocks[0].text = Some("   ".into()),
     ));
     p.push(Probe::new(
@@ -593,7 +597,7 @@ fn probes() -> Vec<Probe> {
     ));
     p.push(Probe::new(
         "two sections minting the same id",
-        Expect::Reject(Code::IdDuplicate),
+        Expect::RejectOn(Code::IdDuplicate, "demo.sec.roles"),
         |f| f.section("tools").id = "demo.sec.roles".into(),
     ));
     p.push(Probe::new(

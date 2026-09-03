@@ -286,6 +286,10 @@ fn probes() -> Vec<Probe> {
         Expect::Reject(Code::SectionSet),
         |f| f.skill_schema().sections.clear(),
     ));
+    // The four "canonical section absent" probes below stay `Expect::Reject`. The Python names
+    // the missing section inside its message; the Rust finding carries no id, because the node
+    // it would name is the one that is not there. Every other probe whose Python expectation
+    // names a node now asserts that node (advisory A4).
     p.push(Probe::new(
         "canonical section absent",
         Expect::Reject(Code::SectionSet),
@@ -293,7 +297,7 @@ fn probes() -> Vec<Probe> {
     ));
     p.push(Probe::new(
         "a section outside the canonical six (the command six-set is not this grammar)",
-        Expect::Reject(Code::SectionSet),
+        Expect::RejectOn(Code::SectionSet, "demo-grader.sec.tools"),
         |f| f.section("scope").id = "demo-grader.sec.tools".into(),
     ));
     p.push(Probe::porting(
@@ -304,7 +308,7 @@ fn probes() -> Vec<Probe> {
     ));
     p.push(Probe::new(
         "an empty section carrying no note",
-        Expect::Reject(Code::TextMissing),
+        Expect::RejectOn(Code::TextMissing, "demo-grader.sec.reserved"),
         |f| f.section("reserved").note = None,
     ));
 
@@ -322,7 +326,7 @@ fn probes() -> Vec<Probe> {
     ));
     p.push(Probe::new(
         "a rule id leading with a foreign stem",
-        Expect::Reject(Code::IdPrefix),
+        Expect::RejectOn(Code::IdPrefix, "demo-validator.read-report"),
         |f| f.rule("demo-grader.read-report").id = "demo-validator.read-report".into(),
     ));
     p.push(Probe::porting(
@@ -585,7 +589,7 @@ fn probes() -> Vec<Probe> {
     ));
     p.push(Probe::new(
         "[authoring] a verdict section is the review set, not this family's",
-        Expect::Reject(Code::SectionSet),
+        Expect::RejectOn(Code::SectionSet, "authoring-demo.sec.verdict"),
         |f| {
             f.retarget("authoring-demo", Some("skill-authoring-common"));
             f.section("scope").id = "authoring-demo.sec.verdict".into();
@@ -593,7 +597,7 @@ fn probes() -> Vec<Probe> {
     ));
     p.push(Probe::new(
         "[review] an artifact section is the authoring set, not this family's",
-        Expect::Reject(Code::SectionSet),
+        Expect::RejectOn(Code::SectionSet, "demo-grader.sec.artifact"),
         |f| f.section("scope").id = "demo-grader.sec.artifact".into(),
     ));
     p.push(Probe::new(
@@ -676,7 +680,7 @@ fn probes() -> Vec<Probe> {
     ));
     p.push(Probe::new(
         "[patterns] a verdict section is the review set, not this family's",
-        Expect::Reject(Code::SectionSet),
+        Expect::RejectOn(Code::SectionSet, "patterns-demo.sec.verdict"),
         |f| {
             f.retarget("patterns-demo", None);
             f.section("scope").id = "patterns-demo.sec.verdict".into();
@@ -684,7 +688,7 @@ fn probes() -> Vec<Probe> {
     ));
     p.push(Probe::new(
         "[patterns] an artifact section is the authoring set, not this family's",
-        Expect::Reject(Code::SectionSet),
+        Expect::RejectOn(Code::SectionSet, "patterns-demo.sec.artifact"),
         |f| {
             f.retarget("patterns-demo", None);
             f.section("scope").id = "patterns-demo.sec.artifact".into();
@@ -692,7 +696,7 @@ fn probes() -> Vec<Probe> {
     ));
     p.push(Probe::new(
         "[review] a discipline section is the patterns set, not this family's",
-        Expect::Reject(Code::SectionSet),
+        Expect::RejectOn(Code::SectionSet, "demo-grader.sec.discipline"),
         |f| f.section("scope").id = "demo-grader.sec.discipline".into(),
     ));
     p.push(Probe::new(

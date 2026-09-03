@@ -94,6 +94,78 @@ fn the_writer_round_trips_every_scalar_shape_the_corpus_uses() {
     }
 }
 
+/// Trailing newlines are content, and a lossless projection has to keep them.
+///
+/// `|-` strips them, `|` keeps exactly one, `|+` keeps every one that is actually written after
+/// the body. The first cut chose `|+` for two or more and then wrote no blank lines for it to
+/// keep, so `"a\n\n"` and `"a\n\n\n"` both read back as `"a\n"`. Unreachable on today's
+/// corpus, but this module is the GI-006 reconstruction surface.
+#[test]
+fn a_multiline_scalar_keeps_every_trailing_newline() {
+    let cases = [
+        "a",
+        "a\n",
+        "a\n\n",
+        "a\n\n\n",
+        "a\n\n\n\n",
+        "one\ntwo\n\n",
+        "one\n\ntwo\n\n\n",
+        "\n\n",
+    ];
+    for text in cases {
+        let mut map = serde_norway::Mapping::new();
+        map.insert(Value::String("key".into()), Value::String(text.to_string()));
+        let rendered = views::to_yaml(&Value::Mapping(map));
+        let back = parse(&rendered);
+        assert_eq!(
+            back.get("key").and_then(Value::as_str),
+            Some(text),
+            "{text:?} did not survive the writer:\n{rendered}"
+        );
+    }
+}
+
+/// A long scalar folds even when it carries characters that would need quoting inline.
+///
+/// Inside a folded block every one of them is literal text, so the quoting guard was costing
+/// readability for nothing: the corpus this module mirrors has 89 lines over 120 characters and
+/// the first cut of the generated log had 330. The characters still round-trip.
+#[test]
+fn a_long_scalar_folds_even_when_it_would_need_quoting_inline() {
+    let cases = [
+        "- a rule text opening with a dash, long enough to fold across more than one line so the \
+         writer has to choose between one long quoted line and a folded block",
+        "the trace obligation: owned elsewhere, bound at setup.surface-set, and long enough that \
+         the writer must fold it rather than run the line past every reasonable width",
+        "a text carrying a hash # in the middle of it, written out at a length that forces the \
+         writer to fold rather than to emit one line and quote the whole thing",
+        "yes: and a colon-space pair right at the front, then enough words after it to push this \
+         string past the width at which the writer starts folding its output",
+    ];
+    for text in cases {
+        let mut map = serde_norway::Mapping::new();
+        map.insert(
+            Value::String("text".into()),
+            Value::String(text.to_string()),
+        );
+        let rendered = views::to_yaml(&Value::Mapping(map));
+        assert!(
+            rendered.starts_with("text: >-\n"),
+            "not folded:\n{rendered}"
+        );
+        assert!(
+            rendered.lines().all(|l| l.len() <= 98),
+            "a folded line ran past the width:\n{rendered}"
+        );
+        let back = parse(&rendered);
+        assert_eq!(
+            back.get("text").and_then(Value::as_str),
+            Some(text),
+            "{text:?} did not survive folding:\n{rendered}"
+        );
+    }
+}
+
 #[test]
 fn the_writer_round_trips_nested_containers() {
     let source = "\

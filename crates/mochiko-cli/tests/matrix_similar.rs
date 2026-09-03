@@ -1,8 +1,11 @@
 //! The ported probe matrix for `scripts/find-similar-rules.py` — 48 probes.
 //!
-//! 45 port. The three that do not are named in `not_applicable_under_d6`, with their reasons, so
-//! the retirement gate can be graded rather than taken on trust (record D6: the port is the
-//! retirement gate).
+//! 42 port; the six that do not are all assertions about the Python script's own command-line
+//! surface. Which is which is a set equation, not a hand count: `PYTHON_PROBES` carries all 48
+//! check names verbatim, `PORTED` maps each Rust test to the names it covers, `NOT_APPLICABLE`
+//! carries the rest with reasons, and `the_whole_python_matrix_is_accounted_for` asserts that
+//! every name is claimed exactly once and that no ledger invents a name. Record D6 makes the port
+//! the retirement gate for the Python scripts, so the gate has to be gradeable.
 //!
 //! The Python's end-to-end layer drove the detector as a subprocess over temp directories and
 //! asserted on its stdout. Here the same cases build the fixture as state and assert on the
@@ -12,12 +15,16 @@
 //!
 //! * **Reference vectors.** `ratio()` is compared with values captured from CPython's
 //!   `difflib.SequenceMatcher`, including pairs where the autojunk heuristic changes the answer.
-//! * **The whole corpus.** The figures the live detector reports over the real tree.
+//! * **The whole corpus.** The figures the live detector reports over the real tree. The full
+//!   sweep is opt-in — `MOCHIKO_FULL_SIMILAR=1 cargo test` — because it is 98 seconds of a
+//!   137-second suite in a debug build. CI runs it in its own step. The default suite keeps the
+//!   command-family pin, the same assertion over a tenth of the pairs, and it announces the skip
+//!   rather than passing silently.
 
 use mochiko_cli::model::{DocKind, DocRef, Document};
 use mochiko_cli::replay::State;
 use mochiko_cli::similar::{self, ScoredRule, Tag};
-use std::collections::BTreeSet;
+use std::collections::{BTreeMap, BTreeSet};
 use std::path::{Path, PathBuf};
 
 fn repo_root() -> PathBuf {
@@ -569,7 +576,7 @@ fn an_all_extends_cluster_is_not_a_gap() {
 }
 
 // ---------------------------------------------------------------------------
-// the command fixtures (10 probes of the Python's 12; two are named not-applicable)
+// the command fixtures (8 of the Python's 12; four are named in NOT_APPLICABLE)
 // ---------------------------------------------------------------------------
 
 fn command_report() -> similar::Report {
@@ -692,7 +699,8 @@ fn write_allowlist(name: &str, rows: &[(&str, &str, &str)]) -> PathBuf {
 }
 
 // ---------------------------------------------------------------------------
-// the skill fixtures (9 probes)
+// the skill fixtures (6 of the Python's 7; one is named in NOT_APPLICABLE)
+// plus the two mixed-sweep probes
 // ---------------------------------------------------------------------------
 
 #[test]
@@ -769,7 +777,7 @@ fn a_mixed_sweep_surfaces_the_cross_grammar_edge_and_scans_both_sets() {
 }
 
 // ---------------------------------------------------------------------------
-// the authoring fixtures (4 probes)
+// the authoring fixtures (3 of the Python's 4; one is named in NOT_APPLICABLE)
 // ---------------------------------------------------------------------------
 
 #[test]
@@ -897,15 +905,69 @@ fn the_quick_ratios_bound_the_real_one() {
 // parity: the whole shipped corpus
 // ---------------------------------------------------------------------------
 
-#[test]
-fn the_detector_reproduces_the_live_runs_figures_over_the_corpus() {
-    let root = repo_root();
+/// The shipped corpus as a state, optionally narrowed to one grammar.
+///
+/// `keep` decides which documents load. Narrowing to the command family cuts the scored pairs by
+/// an order of magnitude, which is what makes a corpus pin affordable in the default suite.
+fn corpus_state(keep: fn(DocKind) -> bool) -> State {
     let mut state = State::default();
-    for file in mochiko_cli::genesis::scan(&root).expect("the corpus scans") {
+    for file in mochiko_cli::genesis::scan(&repo_root()).expect("the corpus scans") {
+        if !keep(file.doc.kind) {
+            continue;
+        }
         let document = Document::from_value(file.doc.kind, &file.value)
             .unwrap_or_else(|e| panic!("{} decodes: {e}", file.path.display()));
         state.docs.insert(file.doc, document);
     }
+    state
+}
+
+/// The always-on corpus pin: the command family only.
+///
+/// The full sweep below is 98 seconds of a 137-second suite, so it is opt-in. This one runs
+/// every time and would catch any change to normalisation, bucketing, the guards or the
+/// allowlist fold, because it exercises all of them over real shipped text — just less of it.
+#[test]
+fn the_detector_reproduces_its_figures_over_the_command_family() {
+    let state = corpus_state(|kind| {
+        matches!(
+            kind,
+            DocKind::Command | DocKind::CommandCommon | DocKind::CommandLabels
+        )
+    });
+    let allowlist = repo_root().join(similar::ALLOWLIST);
+    let report = similar::clusters(&state, similar::DEFAULT_THRESHOLD, Some(&allowlist));
+
+    assert_eq!(
+        (
+            report.scanned,
+            report.scored,
+            report.clusters.len(),
+            report.suppressed_hits
+        ),
+        // Measured against the reference implementation, not self-asserted:
+        //   uv run scripts/find-similar-rules.py \
+        //     --schemas-dir plugins/mochiko/schemas \
+        //     --allowlist scripts/similar-rules-allowlist.yaml
+        // returns the same four numbers.
+        (321, 12_154, 0, 60),
+        "rules scanned · in-kind pairs scored · clusters · allowlist-suppressed edges"
+    );
+}
+
+/// The whole corpus, pinned to the figures the live Python run reports.
+///
+/// Opt-in: `MOCHIKO_FULL_SIMILAR=1 cargo test`. Skipped by default because the scoring pass is
+/// 98 seconds in a debug build (10 seconds in release, 80 in the Python it replaces), and CI runs
+/// it explicitly in its own step. Skipping is announced, never silent.
+#[test]
+fn the_detector_reproduces_the_live_runs_figures_over_the_corpus() {
+    if std::env::var("MOCHIKO_FULL_SIMILAR").as_deref() != Ok("1") {
+        println!("skipped: the full-corpus sweep is opt-in — set MOCHIKO_FULL_SIMILAR=1 to run it");
+        return;
+    }
+    let root = repo_root();
+    let state = corpus_state(|_| true);
     let allowlist = root.join(similar::ALLOWLIST);
     let report = similar::clusters(&state, similar::DEFAULT_THRESHOLD, Some(&allowlist));
 
@@ -917,36 +979,458 @@ fn the_detector_reproduces_the_live_runs_figures_over_the_corpus() {
 }
 
 // ---------------------------------------------------------------------------
-// the three probes that do not port
+// allowlist resolution (advisory A1)
 // ---------------------------------------------------------------------------
 
-/// The Python probes with no Rust referent, named rather than dropped (record D6: the port is
-/// the retirement gate, so a probe that does not port has to be visible).
+/// A repository-shaped scratch tree: `<name>/scripts/similar-rules-allowlist.yaml` plus a nested
+/// log directory, so resolution can be exercised without touching the real tree.
+fn scratch_repo(name: &str, with_allowlist: bool) -> PathBuf {
+    let root = PathBuf::from(env!("CARGO_TARGET_TMPDIR"))
+        .join("allowlist")
+        .join(name);
+    let log = root.join("nested/deeper/migrations");
+    std::fs::create_dir_all(&log).expect("the scratch tree is writable");
+    if with_allowlist {
+        let scripts = root.join("scripts");
+        std::fs::create_dir_all(&scripts).expect("the scratch tree is writable");
+        std::fs::write(root.join(similar::ALLOWLIST), "suppressions: []\n")
+            .expect("the scratch allowlist writes");
+    }
+    log
+}
+
+#[test]
+fn the_allowlist_is_found_by_walking_up_from_the_log_dir() {
+    let log = scratch_repo("carries-one", true);
+    let found = similar::find_allowlist(&log).expect("an ancestor carries the allowlist");
+    assert!(found.is_file());
+    // The nearest ancestor wins. Both this scratch tree and the repository above it carry an
+    // allowlist, and a log under the scratch tree is governed by the scratch one.
+    assert_eq!(
+        found,
+        log.ancestors()
+            .nth(3)
+            .expect("the scratch root")
+            .join(similar::ALLOWLIST)
+    );
+    assert_ne!(found, repo_root().join(similar::ALLOWLIST));
+}
+
+#[test]
+fn a_log_whose_own_tree_carries_no_allowlist_keeps_walking_up() {
+    // The scratch tree is inside the repository, so the walk continues past it and lands on the
+    // repository's own allowlist. That is the intended behaviour: a log is governed by the
+    // nearest allowlist above it, whatever level that is.
+    let log = scratch_repo("carries-none", false);
+    assert_eq!(
+        similar::find_allowlist(&log),
+        Some(repo_root().join(similar::ALLOWLIST))
+    );
+}
+
+#[test]
+fn a_log_with_no_allowlist_anywhere_above_it_resolves_none() {
+    // The filesystem root is the one directory this test can be sure carries no allowlist, and
+    // no scratch tree can sit outside the repository without writing beyond CARGO_TARGET_TMPDIR.
+    assert_eq!(similar::find_allowlist(Path::new("/")), None);
+}
+
+#[test]
+fn the_repositorys_allowlist_resolves_without_the_process_cwd() {
+    // Integration tests run with the working directory set to the package root, not the
+    // repository root, so a resolution that consulted the cwd would find nothing here. That is
+    // the whole point: the same command over the same log must report the same thing from any
+    // directory. Resolving `./scripts/...` is what returned 76 adjudicated clusters as fresh
+    // signal when the binary was run from outside the tree.
+    let cwd = std::env::current_dir().expect("a working directory");
+    assert!(
+        !cwd.join(similar::ALLOWLIST).is_file(),
+        "this test is vacuous if the cwd carries the allowlist: {}",
+        cwd.display()
+    );
+    let found = similar::find_allowlist(&repo_root().join("migrations"))
+        .expect("the repository's own allowlist");
+    assert_eq!(found, repo_root().join(similar::ALLOWLIST));
+}
+
+#[test]
+fn a_run_with_no_allowlist_says_so_rather_than_going_quiet() {
+    let mut state = State::default();
+    command_fixtures(&mut state);
+    let report = similar::clusters(&state, similar::DEFAULT_THRESHOLD, None);
+    assert!(report.edges > 0, "the fixtures do cluster");
+    assert_eq!(report.allowlist, None);
+
+    let rendered = similar::render_report(&report);
+    assert!(
+        rendered.contains(&format!(
+            "allowlist: none ({} edges unsuppressed)",
+            report.edges
+        )),
+        "{rendered}"
+    );
+}
+
+#[test]
+fn a_run_with_an_allowlist_names_its_suppression_count_even_at_zero() {
+    let mut state = State::default();
+    command_fixtures(&mut state);
+    let allowlist = write_allowlist("suppresses-nothing", &[("ghost.a", "ghost.b", "stale")]);
+    let report = similar::clusters(&state, similar::DEFAULT_THRESHOLD, Some(&allowlist));
+    assert_eq!(report.suppressed_hits, 0);
+    let rendered = similar::render_report(&report);
+    assert!(
+        rendered.contains("allowlist-suppressed edges: 0"),
+        "{rendered}"
+    );
+    assert!(!rendered.contains("allowlist: none"), "{rendered}");
+}
+
+// ---------------------------------------------------------------------------
+// name-level accounting against the Python matrix
+// ---------------------------------------------------------------------------
+
+/// Every `check("…")` name in `scripts/test-find-similar-rules.py`, verbatim and in source
+/// order. Extracted from the script rather than transcribed from its section comments.
 ///
-/// * `e2e: --exit-signal exits 1 on clusters`
-/// * `e2e: --exit-signal exits 0 when suppressed clean`
-///   The detector ships no `--exit-signal` flag. Wave-plan §3 places similarity clusters in the
-///   advisory set, printed by `migrate validate --report` at exit 0, and D6 keeps every heuristic
-///   advisory. Porting the flag would add an exit-code signal this wave does not carry.
-/// * `e2e: --json parses`
-///   There is no JSON surface. The Python's `--json` fed the layer-2 judgment pass, which is not
-///   a wave-1 consumer.
+/// This array is the whole point of the section. Record D6 makes the port the retirement gate
+/// for the Python scripts, so "45 of 48 ported" has to be a set equation the compiler and the
+/// test runner check, never a hand count in a doc comment. The first ledger this seat wrote for
+/// the command matrix summed to 136 of 134; counting by hand is how that happens.
+const PYTHON_PROBES: [&str; 48] = [
+    "norm: ${var} collapsed",
+    "norm: /mochiko:<cmd> collapsed",
+    "norm: own-prefix section collapsed",
+    "norm: own-prefix rule collapsed",
+    "norm: foreign prefix kept",
+    "sim: identical = 1.0",
+    "sim: token-sort rescues reorder",
+    "sim: disjoint under floor = 0.0",
+    "bonus: pointer+section+labels hits cap",
+    "bonus: nothing shared = 0",
+    "bonus: labels jaccard 0.5 counts",
+    "guard: short near-frame pair dropped",
+    "guard: short exact pair kept",
+    "cap: combined never exceeds 1.00",
+    "bucket: cross-kind never scored",
+    "skip: same common block skipped",
+    "skip: same review-common block skipped (skill grammar)",
+    "allowlist: edge suppressed",
+    "classify: 3 schemas = COMMON-CANDIDATE",
+    "classify: 2 schemas = CROSS-PAIR",
+    "classify: 1 schema = INTRA-SCHEMA",
+    "classify: mixed extends adds EXTEND-GAP",
+    "classify: all-extends is not a gap",
+    "e2e: exit 0 by default",
+    "e2e: register cluster found",
+    "e2e: COMMON-CANDIDATE + EXTEND-GAP tagged",
+    "e2e: extends resolution feeds stub text",
+    "e2e: floor flagged",
+    "e2e: controls stay unclustered",
+    "e2e: --exit-signal exits 1 on clusters",
+    "e2e: --json parses",
+    "e2e: fully-suppressed cluster gone",
+    "e2e: suppression count reported",
+    "e2e: stale allowlist ID warned",
+    "e2e: --exit-signal exits 0 when suppressed clean",
+    "skill e2e: exit 0 by default",
+    "skill e2e: fixture run reads no live allowlist",
+    "skill e2e: in-dir schemas discovered and clustered",
+    "skill e2e: stub resolves against review-common (EXTEND-GAP)",
+    "skill e2e: floor members flagged",
+    "skill e2e: register control stays unclustered (skills-only run)",
+    "skill e2e: skill edge suppressed",
+    "mixed e2e: cross-grammar edge surfaces in the register cluster",
+    "mixed e2e: both sets scanned",
+    "authoring e2e: exit 0 by default",
+    "authoring e2e: stub resolves against authoring-common (EXTEND-GAP)",
+    "authoring e2e: both families resolve in one run",
+    "authoring e2e: unknown-prefix stub warns, never clusters",
+];
+
+/// Builds the ported ledger from `<rust test> => [<python check names it covers>]`.
 ///
-/// All three are about the Python script's own command-line surface, not about scoring, and no
-/// scoring behaviour is lost with them.
+/// The test is named once and used twice — as a function value the compiler must resolve, and as
+/// the string the ledger prints. A renamed or deleted test breaks the build rather than quietly
+/// leaving a Python probe unclaimed.
+macro_rules! ported {
+    ($($test:ident => [$($python:literal),+ $(,)?]),+ $(,)?) => {
+        const PORTED: &[(&str, fn(), &[&str])] = &[
+            $((stringify!($test), $test as fn(), &[$($python),+])),+
+        ];
+    };
+}
+
+ported! {
+    // unit layer — normalisation
+    norm_collapses_vars_commands_and_own_prefix => [
+        "norm: ${var} collapsed",
+        "norm: /mochiko:<cmd> collapsed",
+        "norm: own-prefix section collapsed",
+        "norm: own-prefix rule collapsed",
+    ],
+    norm_keeps_a_foreign_prefix => ["norm: foreign prefix kept"],
+
+    // unit layer — text similarity
+    text_sim_is_one_for_identical_text => ["sim: identical = 1.0"],
+    token_sort_rescues_a_reordered_pair => ["sim: token-sort rescues reorder"],
+    a_disjoint_pair_under_the_floor_scores_zero => ["sim: disjoint under floor = 0.0"],
+
+    // unit layer — the structural bonus
+    the_structural_bonus_caps => ["bonus: pointer+section+labels hits cap"],
+    nothing_shared_earns_no_bonus => ["bonus: nothing shared = 0"],
+    a_labels_jaccard_of_one_half_counts => ["bonus: labels jaccard 0.5 counts"],
+
+    // unit layer — the scoring guards
+    a_short_pair_sharing_only_its_frame_is_dropped => ["guard: short near-frame pair dropped"],
+    a_short_pair_that_is_exact_still_pairs => ["guard: short exact pair kept"],
+    the_combined_score_never_exceeds_one => ["cap: combined never exceeds 1.00"],
+    a_cross_kind_pair_is_never_scored => ["bucket: cross-kind never scored"],
+    two_stubs_over_one_common_block_are_skipped => ["skip: same common block skipped"],
+    the_same_block_skip_is_grammar_agnostic => [
+        "skip: same review-common block skipped (skill grammar)",
+    ],
+    an_allowlisted_edge_is_counted_and_not_emitted => ["allowlist: edge suppressed"],
+
+    // unit layer — classification
+    three_schemas_read_as_a_common_candidate => ["classify: 3 schemas = COMMON-CANDIDATE"],
+    two_schemas_read_as_a_cross_pair => ["classify: 2 schemas = CROSS-PAIR"],
+    one_schema_reads_as_intra_schema => ["classify: 1 schema = INTRA-SCHEMA"],
+    a_mixed_extends_cluster_is_an_extend_gap => ["classify: mixed extends adds EXTEND-GAP"],
+    an_all_extends_cluster_is_not_a_gap => ["classify: all-extends is not a gap"],
+
+    // the command fixtures
+    the_register_cluster_is_found_and_tagged => [
+        "e2e: register cluster found",
+        "e2e: COMMON-CANDIDATE + EXTEND-GAP tagged",
+    ],
+    a_stubs_inherited_text_re_enters_scoring => ["e2e: extends resolution feeds stub text"],
+    a_floor_member_is_flagged => ["e2e: floor flagged"],
+    the_unrelated_controls_stay_unclustered => ["e2e: controls stay unclustered"],
+    a_fully_suppressed_cluster_disappears_and_is_counted => [
+        "e2e: fully-suppressed cluster gone",
+        "e2e: suppression count reported",
+        "e2e: stale allowlist ID warned",
+    ],
+
+    // the skill fixtures
+    the_skill_fixtures_cluster_across_the_stub_and_its_sibling => [
+        "skill e2e: in-dir schemas discovered and clustered",
+        "skill e2e: stub resolves against review-common (EXTEND-GAP)",
+        "skill e2e: floor members flagged",
+    ],
+    a_skills_only_run_reads_no_allowlist_and_leaves_the_control_alone => [
+        "skill e2e: fixture run reads no live allowlist",
+        "skill e2e: register control stays unclustered (skills-only run)",
+    ],
+    a_skill_edge_is_suppressed_like_a_command_edge => ["skill e2e: skill edge suppressed"],
+    a_mixed_sweep_surfaces_the_cross_grammar_edge_and_scans_both_sets => [
+        "mixed e2e: cross-grammar edge surfaces in the register cluster",
+        "mixed e2e: both sets scanned",
+    ],
+
+    // the authoring fixtures
+    the_authoring_stub_resolves_and_gaps_against_its_sibling => [
+        "authoring e2e: stub resolves against authoring-common (EXTEND-GAP)",
+    ],
+    both_families_resolve_in_one_run => ["authoring e2e: both families resolve in one run"],
+    a_stub_whose_library_carries_no_such_block_warns_and_never_clusters => [
+        "authoring e2e: unknown-prefix stub warns, never clusters",
+    ],
+}
+
+/// Python checks with no Rust referent, each carrying its reason. Record D6 makes the port the
+/// retirement gate, so a probe that does not port has to be visible rather than absent.
+///
+/// Every row is about the Python script's own command-line surface — its exit code, its `--json`
+/// flag — and none is about scoring. `not_applicable_under_d6` asserts what stands in their
+/// place: the Rust report carries clusters and warnings and no severity or exit code at all.
+const NOT_APPLICABLE: &[(&str, &str)] = &[
+    (
+        "e2e: exit 0 by default",
+        "an assertion about the Python script's process exit code; the Rust detector is a \
+         library call inside `migrate validate --report`, which is advisory and exits 0 whatever \
+         the report says — asserted in `not_applicable_under_d6`",
+    ),
+    (
+        "skill e2e: exit 0 by default",
+        "same assertion over the skills-only run, same reason",
+    ),
+    (
+        "authoring e2e: exit 0 by default",
+        "same assertion over the authoring run, same reason",
+    ),
+    (
+        "e2e: --exit-signal exits 1 on clusters",
+        "the detector ships no `--exit-signal` flag; wave-plan §3 places similarity clusters in \
+         the advisory set, printed by `migrate validate --report` at exit 0",
+    ),
+    (
+        "e2e: --exit-signal exits 0 when suppressed clean",
+        "same flag, same reason",
+    ),
+    (
+        "e2e: --json parses",
+        "there is no JSON surface; the Python's `--json` fed the layer-2 judgment pass, which is \
+         not a wave-1 consumer",
+    ),
+];
+
+/// Rust tests with no Python referent, so the ported ledger never inflates its coverage claim.
+const EXTRA: &[(&str, &str)] = &[
+    (
+        "the_report_names_its_threshold_and_counts",
+        "the report's header, scanned count and tag tally, which the Python asserted only \
+         incidentally through substring matches on its stdout",
+    ),
+    (
+        "an_allowlist_row_without_a_reason_is_warned",
+        "an allowlist row carrying an empty `reason:`; the Python matrix never exercised it",
+    ),
+    (
+        "the_ratio_reproduces_cpython_difflib",
+        "17 reference vectors captured from CPython, a pin the Python matrix could not have",
+    ),
+    (
+        "autojunk_is_ported_rather_than_skipped",
+        "the autojunk witness, where a port without the heuristic returns ~0.95 instead of 0.07",
+    ),
+    (
+        "the_quick_ratios_bound_the_real_one",
+        "the two early-out upper bounds, asserted over the whole vector table",
+    ),
+    (
+        "the_detector_reproduces_the_live_runs_figures_over_the_corpus",
+        "the real corpus, pinned to the figures the live Python run reports",
+    ),
+];
+
+/// The Python check names, re-derived from the script itself.
+///
+/// Every `check("…")` call opens its name on the same line, so a line scan reads the list the
+/// script would produce. A transcribed array can go stale silently; this one cannot.
+fn python_probes_from_source() -> Vec<String> {
+    let path = repo_root().join("scripts/test-find-similar-rules.py");
+    let text = std::fs::read_to_string(&path).expect("the Python matrix is readable");
+    let mut names = Vec::new();
+    for line in text.lines() {
+        let Some(rest) = line.split_once("check(\"").map(|(_, rest)| rest) else {
+            continue;
+        };
+        let Some(end) = rest.find('"') else { continue };
+        names.push(rest[..end].to_string());
+    }
+    names
+}
+
+#[test]
+fn the_recorded_python_names_are_the_scripts_own() {
+    let live = python_probes_from_source();
+    assert_eq!(
+        live.len(),
+        PYTHON_PROBES.len(),
+        "the script declares {} checks; this file records {}",
+        live.len(),
+        PYTHON_PROBES.len()
+    );
+    let recorded: Vec<String> = PYTHON_PROBES.iter().map(|s| s.to_string()).collect();
+    assert_eq!(
+        live, recorded,
+        "the recorded names have drifted from `scripts/test-find-similar-rules.py`"
+    );
+}
+
+#[test]
+fn the_whole_python_matrix_is_accounted_for() {
+    let mut claims: BTreeMap<&str, Vec<&str>> = BTreeMap::new();
+    for (test, _, python) in PORTED {
+        for name in *python {
+            claims.entry(name).or_default().push(test);
+        }
+    }
+    for (name, _) in NOT_APPLICABLE {
+        claims.entry(name).or_default().push("NOT_APPLICABLE");
+    }
+
+    let known: BTreeSet<&str> = PYTHON_PROBES.iter().copied().collect();
+    assert_eq!(
+        known.len(),
+        PYTHON_PROBES.len(),
+        "the Python names are unique"
+    );
+
+    let unclaimed: Vec<&str> = PYTHON_PROBES
+        .iter()
+        .copied()
+        .filter(|name| !claims.contains_key(name))
+        .collect();
+    assert!(
+        unclaimed.is_empty(),
+        "Python probes claimed by no ledger: {unclaimed:#?}"
+    );
+
+    let twice: Vec<(&str, &Vec<&str>)> = claims
+        .iter()
+        .filter(|(_, by)| by.len() > 1)
+        .map(|(name, by)| (*name, by))
+        .collect();
+    assert!(
+        twice.is_empty(),
+        "Python probes claimed more than once: {twice:#?}"
+    );
+
+    let invented: Vec<&str> = claims
+        .keys()
+        .copied()
+        .filter(|name| !known.contains(name))
+        .collect();
+    assert!(
+        invented.is_empty(),
+        "ledger names that are not Python probes: {invented:#?}"
+    );
+
+    let ported: usize = PORTED.iter().map(|(_, _, python)| python.len()).sum();
+    assert_eq!(
+        (ported, NOT_APPLICABLE.len()),
+        (42, 6),
+        "the split this file's header states"
+    );
+    assert_eq!(ported + NOT_APPLICABLE.len(), PYTHON_PROBES.len());
+
+    // The extras are Rust-side additions, so they must not appear as Python claims.
+    for (test, _) in EXTRA {
+        assert!(
+            !PORTED.iter().any(|(name, _, _)| name == test),
+            "{test} is listed as both ported and extra"
+        );
+    }
+}
+
+// ---------------------------------------------------------------------------
+// the six probes that do not port
+// ---------------------------------------------------------------------------
+
+/// What stands in for the six probes `NOT_APPLICABLE` names.
+///
+/// Every one of them asserts something about the Python script's command-line surface: its exit
+/// code, or its `--json` flag. The Rust detector has no command-line surface of its own — it is a
+/// library call inside `migrate validate --report` — so the property that replaces all six is
+/// that the report is advisory by construction. It carries clusters and warnings, and no
+/// severity, no finding code and no exit code at all.
 #[test]
 fn not_applicable_under_d6() {
-    let not_applicable = [
-        "--exit-signal exits 1 on clusters",
-        "--exit-signal exits 0 when suppressed clean",
-        "--json parses",
-    ];
-    assert_eq!(not_applicable.len(), 3);
+    assert_eq!(
+        NOT_APPLICABLE.len(),
+        6,
+        "the ledger is the list; this test asserts what replaces it"
+    );
+    for (name, reason) in NOT_APPLICABLE {
+        assert!(!reason.is_empty(), "{name} carries no reason");
+    }
 
-    // What replaces them: the report is advisory by construction. It carries clusters and
-    // warnings, and no severity or exit code at all.
     let report = command_report();
     assert!(!report.clusters.is_empty());
     let rendered = similar::render_report(&report);
     assert!(!rendered.contains("FINDING"), "the report is advisory");
+    assert!(!rendered.contains("rejecting"), "the report is advisory");
 }

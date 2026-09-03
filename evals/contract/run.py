@@ -231,6 +231,23 @@ def assert_message(text: str, fragment: str) -> str | None:
     return None
 
 
+def assert_skew_halt_on_stderr(proc, fragment: str) -> str | None:
+    """The binary's own D5 behaviour, read off the process rather than the transcript.
+
+    The halt message goes to stderr, stdout stays empty, and the exit code is 3. Asserting this
+    directly keeps the case honest whatever Claude Code does with stderr: the transcript
+    assertion says the message reached the model, and this one says the binary wrote it.
+    """
+    problems = []
+    if proc.returncode != 3:
+        problems.append(f"expected exit 3 from the skew log, got {proc.returncode}")
+    if proc.stdout.strip():
+        problems.append(f"stdout was not empty: {proc.stdout.strip()[:120]!r}")
+    if fragment not in proc.stderr:
+        problems.append(f"{fragment!r} is not on stderr: {proc.stderr.strip()[:200]!r}")
+    return "; ".join(problems) if problems else None
+
+
 # ---------------------------------------------------------------------------
 # cases
 # ---------------------------------------------------------------------------
@@ -306,9 +323,21 @@ def case_skew(runner, binary_dir: str) -> list:
         log_dir=str(log),
     )
     text = transcript_text(events)
+
+    # The same log, run against the binary directly, so the halt is asserted on the channel the
+    # binary actually writes it to rather than only on what the transcript happened to carry.
+    direct = runner.sbx_sh(
+        f"cd {shlex.quote(str(log.parent))} && "
+        f"env PATH={shlex.quote(binary_dir + ':/usr/bin:/bin')} "
+        f"MOCHIKO_MIGRATIONS={shlex.quote(str(log))} "
+        f"mochiko-cli rules brainstorm --section preamble",
+        timeout=120,
+    )
+
     return [
         assert_bang_ran(text),
         assert_no_version_triple(text),
+        assert_skew_halt_on_stderr(direct, "cargo install mochiko-cli"),
         assert_message(text, "cargo install mochiko-cli"),
         assert_no_schema_read(events),
         assert_halted(text),
@@ -346,6 +375,13 @@ def main() -> int:
     binary_dir, reason = build_binary(runner)
     if reason:
         print(f"\nSKIPPED: {reason}")
+        print("exit 3 — the suite did not run, so nothing here is evidence of anything.")
+        return EXIT_SKIP
+
+    # Exit 0 means every declared case ran. A suite with nothing to run has proved nothing, so
+    # it skips rather than reporting a clean sweep of zero.
+    if not CASES:
+        print("\nSKIPPED: the suite declares no cases")
         print("exit 3 — the suite did not run, so nothing here is evidence of anything.")
         return EXIT_SKIP
 
