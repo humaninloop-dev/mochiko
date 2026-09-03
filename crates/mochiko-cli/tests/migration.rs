@@ -90,17 +90,21 @@ changes:
     text: New text.
 "#;
 
-fn with_hash(body: &str) -> String {
-    let m = migration::parse("0002-demo.yaml", body).expect("fixture parses before hashing");
-    body.replace(
-        "changes:",
-        &format!("hash: \"{}\"\nchanges:", m.body_hash()),
-    )
+/// A fixture body stamped with its correct hash. The `hash:` header is required, so every
+/// fixture meant to parse goes through here.
+fn stamped(body: &str) -> String {
+    migration::with_hash("0002-demo.yaml", body).expect("the fixture body can be stamped")
+}
+
+/// Parse a fixture body, stamping it first.
+fn parse_stamped(body: &str) -> migration::Migration {
+    let body = stamped(body);
+    migration::parse("0002-demo.yaml", &body).expect("a stamped fixture parses")
 }
 
 #[test]
 fn a_well_formed_migration_parses_its_header() {
-    let m = migration::parse("0002-demo.yaml", HEADER).expect("header parses");
+    let m = parse_stamped(HEADER);
     assert_eq!(m.grammar, 1);
     assert_eq!(m.id, "0002-demo");
     assert_eq!(m.sequence, 2);
@@ -168,7 +172,7 @@ fn the_filename_sequence_must_agree_with_the_header() {
 
 #[test]
 fn a_matching_body_hash_is_accepted_and_a_mismatch_is_rejected() {
-    let hashed = with_hash(HEADER);
+    let hashed = stamped(HEADER);
     migration::parse("0002-demo.yaml", &hashed).expect("a correct hash is accepted");
 
     let broken = hashed.replace("text: New text.", "text: Tampered text.");
@@ -181,18 +185,14 @@ fn a_matching_body_hash_is_accepted_and_a_mismatch_is_rejected() {
 fn the_body_hash_covers_the_anchor_and_the_sequence_but_not_the_intent() {
     // Q1 ruling: `{id, sequence, anchor, changes}` are hashed; `intent` and `hash` are not.
     // The anchor is the D2 protected-content evidence, so it must not be editable after the fact.
-    let base = migration::parse("0002-demo.yaml", HEADER)
-        .unwrap()
-        .body_hash();
+    let base = parse_stamped(HEADER).body_hash();
 
     let reworded_intent = HEADER.replace(
         "intent: A one-line statement of what this migration does.",
         "intent: Something else entirely.",
     );
     assert_eq!(
-        migration::parse("0002-demo.yaml", &reworded_intent)
-            .unwrap()
-            .body_hash(),
+        parse_stamped(&reworded_intent).body_hash(),
         base,
         "`intent:` is prose and is deliberately outside the hash"
     );
@@ -202,18 +202,19 @@ fn the_body_hash_covers_the_anchor_and_the_sequence_but_not_the_intent() {
         "anchor: \"2026-09-03 cli-schema-delivery [D2]\"\nintent:",
     );
     assert_ne!(
-        migration::parse("0002-demo.yaml", &anchored)
-            .unwrap()
-            .body_hash(),
+        parse_stamped(&anchored).body_hash(),
         base,
         "adding an anchor must move the hash"
     );
 
     let resequenced = HEADER.replace("sequence: 2", "sequence: 9");
     assert_ne!(
-        migration::parse("0009-demo.yaml", &resequenced)
-            .unwrap()
-            .body_hash(),
+        migration::parse(
+            "0009-demo.yaml",
+            &migration::with_hash("0009-demo.yaml", &resequenced).unwrap()
+        )
+        .unwrap()
+        .body_hash(),
         base,
         "the sequence is part of the migration's identity"
     );
@@ -226,12 +227,8 @@ fn the_body_hash_ignores_key_order_inside_a_change() {
         "    text: New text.\n    id: spec.register\n    schema: command/specify",
     );
     assert_eq!(
-        migration::parse("0002-demo.yaml", &reordered)
-            .unwrap()
-            .body_hash(),
-        migration::parse("0002-demo.yaml", HEADER)
-            .unwrap()
-            .body_hash(),
+        parse_stamped(&reordered).body_hash(),
+        parse_stamped(HEADER).body_hash(),
         "the hash is over canonical content, never over the file's key order"
     );
 }
@@ -288,7 +285,8 @@ changes:
   - {op: registry-add, registry: command-labels, label: seats, meaning: Seat wiring.}
   - {op: registry-retire, registry: command-labels, label: seats, note: Retired by ruling.}
 "#;
-    let m = migration::parse("0003-ops.yaml", body).expect("every op decodes");
+    let body = migration::with_hash("0003-ops.yaml", body).expect("the fixture stamps");
+    let m = migration::parse("0003-ops.yaml", &body).expect("every op decodes");
     let ops: Vec<ChangeOp> = m.changes.iter().map(|c| c.op()).collect();
     assert_eq!(ops.len(), 15);
     for op in ChangeOp::ALL {
@@ -305,6 +303,177 @@ fn set_rule_field_accepts_a_null_value_as_an_explicit_clear() {
         "  - op: reword-rule\n    schema: command/specify\n    id: spec.register\n    text: New text.",
         "  - {op: set-rule-field, schema: command/specify, id: spec.a, field: pointer, value: ~}",
     );
-    let m = migration::parse("0002-demo.yaml", &body).expect("a null value decodes");
+    let m = parse_stamped(&body);
     assert_eq!(m.changes.len(), 1);
+}
+
+// ---------------------------------------------------------------------------
+// Fix round 1 — B2: the body hash is required
+// ---------------------------------------------------------------------------
+
+#[test]
+fn a_migration_with_no_hash_is_rejected() {
+    // Three spellings of "no hash", each of which would otherwise skip the check entirely —
+    // and skipping it would leave the anchor the hash exists to protect editable by deleting
+    // one line.
+    for body in [
+        HEADER.to_string(),
+        HEADER.replace("intent:", "hash: \"\"\nintent:"),
+        HEADER.replace("intent:", "hash: ~\nintent:"),
+    ] {
+        let err = migration::parse("0002-demo.yaml", &body)
+            .expect_err("a migration with no body hash is rejected");
+        assert!(
+            matches!(err, ParseError::Header { .. }),
+            "want a header finding for the missing hash, got {err}"
+        );
+        assert!(
+            format!("{err}").contains("hash"),
+            "the finding names the missing field: {err}"
+        );
+    }
+}
+
+#[test]
+fn with_hash_stamps_a_body_that_then_parses() {
+    let stamped = migration::with_hash("0002-demo.yaml", HEADER).expect("the body can be stamped");
+    let parsed = migration::parse("0002-demo.yaml", &stamped).expect("a stamped body parses");
+    assert_eq!(parsed.body_hash(), migration::compute_hash(&parsed));
+    assert_eq!(parsed.sequence, 2);
+    assert_eq!(parsed.changes.len(), 1);
+}
+
+#[test]
+fn with_hash_replaces_an_existing_hash_rather_than_duplicating_it() {
+    let stamped = migration::with_hash("0002-demo.yaml", HEADER).unwrap();
+    let tampered = stamped.replace("text: New text.", "text: Different text.");
+    // The tampered body no longer matches its stamp...
+    assert!(migration::parse("0002-demo.yaml", &tampered).is_err());
+    // ...and re-stamping it makes it valid again, with one hash key, not two.
+    let restamped = migration::with_hash("0002-demo.yaml", &tampered).expect("re-stamps");
+    migration::parse("0002-demo.yaml", &restamped).expect("the re-stamped body parses");
+    assert_eq!(
+        restamped.matches("hash:").count(),
+        1,
+        "re-stamping replaces the hash rather than appending a second one"
+    );
+}
+
+#[test]
+fn with_hash_refuses_a_body_that_is_not_a_migration() {
+    assert!(migration::with_hash("0002-demo.yaml", "grammar: 1\n").is_err());
+}
+
+// ---------------------------------------------------------------------------
+// Fix round 1 — A4: any out-of-range grammar reaches the D5 message
+// ---------------------------------------------------------------------------
+
+#[test]
+fn every_out_of_range_grammar_raises_the_version_contract_finding() {
+    for grammar in ["2", "99", "999999", "4294967295"] {
+        let body = HEADER.replace("grammar: 1", &format!("grammar: {grammar}"));
+        let err = migration::parse("0002-demo.yaml", &body).expect_err("out of range");
+        assert!(
+            matches!(err, ParseError::GrammarVersion { .. }),
+            "grammar {grammar} must raise the version contract, got {err}"
+        );
+        assert!(format!("{err}").contains(migration::INSTALL_COMMAND));
+    }
+}
+
+#[test]
+fn a_grammar_that_is_not_a_whole_number_is_a_header_finding() {
+    for grammar in ["one", "-1", "1.5"] {
+        let body = HEADER.replace("grammar: 1", &format!("grammar: {grammar}"));
+        let err = migration::parse("0002-demo.yaml", &body).expect_err("not a whole number");
+        assert!(
+            matches!(err, ParseError::Header { .. }),
+            "grammar {grammar} is malformed, not out of range, got {err}"
+        );
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Fix round 1 — A9: a malformed change is not an unknown op
+// ---------------------------------------------------------------------------
+
+#[test]
+fn a_known_op_missing_a_field_is_malformed_not_unknown() {
+    let body = HEADER.replace(
+        "  - op: reword-rule\n    schema: command/specify\n    id: spec.register\n    text: New text.",
+        "  - {op: import-document, kind: command, name: specify}",
+    );
+    let err = migration::parse("0002-demo.yaml", &body).expect_err("content: is missing");
+    assert_eq!(
+        err.code(),
+        "op-malformed",
+        "a well-known op missing a field must not be filed under the unknown-op code: {err}"
+    );
+
+    let unknown = HEADER.replace("op: reword-rule", "op: frobnicate-rule");
+    let err = migration::parse("0002-demo.yaml", &unknown).expect_err("unknown op");
+    assert_eq!(err.code(), "op-unknown");
+}
+
+// ---------------------------------------------------------------------------
+// Fix round 1 — A3: the anchor grammar is anchored at both ends
+// ---------------------------------------------------------------------------
+
+#[test]
+fn the_anchor_grammar_accepts_what_the_corpus_writes_and_nothing_looser() {
+    use mochiko_cli::model::is_anchor;
+    // The 597 sidecar anchors are written `YYYY-MM-DD <slug>` with an optional bare `D<n>`
+    // tail; the wave plan writes the tail bracketed. Both are accepted, nothing else is.
+    for good in [
+        "2026-08-02 ux-mocking-in-specify",
+        "2026-08-02 ux-mocking-in-specify D9",
+        "2026-09-03 cli-schema-delivery [D2]",
+        "2026-12-31 year-end D10",
+    ] {
+        assert!(is_anchor(good), "{good:?} is a well-formed anchor");
+    }
+    for bad in [
+        "9999-99-99 out-of-range",
+        "2026-09-03 slug and a whole sentence of junk here",
+        "2026-09-03 slug [NOT-A-DECISION]",
+        "2026-9-3 short-fields",
+        "2026-09-03",
+        "not-a-date slug",
+        "2026-13-01 bad-month",
+        "2026-09-32 bad-day",
+        "2026-00-10 zero-month",
+        " 2026-09-03 leading-space-slug D1 trailing junk",
+    ] {
+        assert!(!is_anchor(bad), "{bad:?} must not pass as an anchor");
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Fix round 1 — A8: the canonical encoder is depth-bounded
+// ---------------------------------------------------------------------------
+
+#[test]
+fn the_canonical_encoder_is_bounded_rather_than_recursing_off_the_stack() {
+    use mochiko_cli::model::{canonical_depth, canonical_hash, MAX_CANONICAL_DEPTH};
+
+    // A document deeper than the bound must not abort the process; it hashes to a value and
+    // reports its depth so the validator can raise a finding. Built rather than parsed, because
+    // a YAML file nested this deep is what a hostile input looks like, not what a text fixture is.
+    let mut value = serde_norway::Value::String("leaf".to_string());
+    for _ in 0..(MAX_CANONICAL_DEPTH + 40) {
+        let mut level = serde_norway::Mapping::new();
+        level.insert(serde_norway::Value::String("a".to_string()), value);
+        value = serde_norway::Value::Mapping(level);
+    }
+    assert!(canonical_depth(&value) > MAX_CANONICAL_DEPTH);
+    let hash = canonical_hash(&value);
+    assert!(hash.starts_with("sha256:"));
+
+    let shallow = value_of("a: {b: {c: 1}}");
+    assert_eq!(canonical_depth(&shallow), 3);
+    assert!(canonical_depth(&value_of("a: 1")) <= MAX_CANONICAL_DEPTH);
+}
+
+fn value_of(yaml: &str) -> serde_norway::Value {
+    serde_norway::from_str(yaml).expect("fixture parses")
 }

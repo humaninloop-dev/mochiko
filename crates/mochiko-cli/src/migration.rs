@@ -40,8 +40,14 @@ pub enum ParseError {
     },
     /// The log's grammar version falls outside [`GRAMMAR_RANGE`].
     GrammarVersion { file: String, found: u32 },
-    /// One entry of `changes:` is not a well-formed change.
-    Change {
+    /// One entry of `changes:` names an op the grammar does not carry.
+    UnknownOp {
+        file: String,
+        index: usize,
+        message: String,
+    },
+    /// One entry of `changes:` names a known op but is not a well-formed instance of it.
+    MalformedChange {
         file: String,
         index: usize,
         message: String,
@@ -79,7 +85,12 @@ impl fmt::Display for ParseError {
                  grammar {}..{}. Update the binary: {INSTALL_COMMAND}",
                 GRAMMAR_RANGE.0, GRAMMAR_RANGE.1
             ),
-            ParseError::Change {
+            ParseError::UnknownOp {
+                file,
+                index,
+                message,
+            }
+            | ParseError::MalformedChange {
                 file,
                 index,
                 message,
@@ -99,7 +110,10 @@ impl ParseError {
             ParseError::SequenceMismatch { .. } => "sequence-mismatch",
             ParseError::HashMismatch { .. } => "hash-mismatch",
             ParseError::GrammarVersion { .. } => "grammar-version",
-            ParseError::Change { .. } => "op-unknown",
+            ParseError::UnknownOp { .. } => "op-unknown",
+            // A known op missing a field is a different problem from an op nobody has heard of,
+            // and sends a maintainer to a different place.
+            ParseError::MalformedChange { .. } => "op-malformed",
         }
     }
 
@@ -111,7 +125,8 @@ impl ParseError {
             | ParseError::SequenceMismatch { file, .. }
             | ParseError::HashMismatch { file, .. }
             | ParseError::GrammarVersion { file, .. }
-            | ParseError::Change { file, .. } => file,
+            | ParseError::UnknownOp { file, .. }
+            | ParseError::MalformedChange { file, .. } => file,
         }
     }
 }
@@ -415,8 +430,18 @@ fn header_err(file: &str, message: impl Into<String>) -> ParseError {
     }
 }
 
+/// A known op that is not a well-formed instance of itself.
 fn change_err(file: &str, index: usize, message: impl Into<String>) -> ParseError {
-    ParseError::Change {
+    ParseError::MalformedChange {
+        file: file.to_string(),
+        index,
+        message: message.into(),
+    }
+}
+
+/// An op the grammar does not carry.
+fn unknown_op_err(file: &str, index: usize, message: impl Into<String>) -> ParseError {
+    ParseError::UnknownOp {
         file: file.to_string(),
         index,
         message: message.into(),
@@ -443,16 +468,38 @@ fn required_str(map: &Mapping, key: &str, file: &str) -> Result<String, ParseErr
 
 fn required_u32(map: &Mapping, key: &str, file: &str) -> Result<u32, ParseError> {
     match get(map, key).and_then(Value::as_u64) {
-        Some(n) if n <= u32::from(u16::MAX) as u64 * 2 => Ok(n as u32),
-        Some(_) => Err(header_err(
-            file,
-            format!("header field `{key}:` is out of range"),
-        )),
+        Some(n) => u32::try_from(n)
+            .map_err(|_| header_err(file, format!("header field `{key}:` is out of range"))),
         None => Err(header_err(
             file,
             format!("header field `{key}:` missing or not a whole number"),
         )),
     }
+}
+
+/// The log's grammar version.
+///
+/// Read before any range check of its own, so that a version this binary cannot handle always
+/// reaches the version-contract halt with its install line. A cap applied first would report a
+/// far-future grammar as a malformed header and swallow the one message the user needs.
+fn read_grammar(map: &Mapping, file: &str) -> Result<u32, ParseError> {
+    let Some(raw) = get(map, "grammar") else {
+        return Err(header_err(file, "header field `grammar:` missing"));
+    };
+    let Some(found) = raw.as_u64() else {
+        return Err(header_err(
+            file,
+            "header field `grammar:` missing or not a whole number",
+        ));
+    };
+    let found = u32::try_from(found).unwrap_or(u32::MAX);
+    if found < GRAMMAR_RANGE.0 || found > GRAMMAR_RANGE.1 {
+        return Err(ParseError::GrammarVersion {
+            file: file.to_string(),
+            found,
+        });
+    }
+    Ok(found)
 }
 
 fn doc_ref(map: &Mapping, key: &str, file: &str, index: usize) -> Result<DocRef, ParseError> {
@@ -519,7 +566,7 @@ fn parse_change(value: &Value, file: &str, index: usize) -> Result<Change, Parse
         field_str(map, "op", file, index).map_err(|_| change_err(file, index, "`op:` missing"))?;
     let op = ChangeOp::parse(op_token.trim()).ok_or_else(|| {
         let known: Vec<&str> = ChangeOp::ALL.iter().map(|o| o.as_str()).collect();
-        change_err(
+        unknown_op_err(
             file,
             index,
             format!(
@@ -627,6 +674,58 @@ fn parse_change(value: &Value, file: &str, index: usize) -> Result<Change, Parse
 
 /// Parse one migration file. `file` is the file's name, which carries the sequence prefix.
 pub fn parse(file: &str, source: &str) -> Result<Migration, ParseError> {
+    parse_inner(file, source, true)
+}
+
+/// The canonical body hash of a parsed migration — the value its `hash:` header must carry.
+pub fn compute_hash(migration: &Migration) -> String {
+    migration.body_hash()
+}
+
+/// Stamp a migration body with its correct `hash:` header, replacing any hash already there.
+///
+/// The authoring helper, and the one fixtures use: every other path requires the hash, so without
+/// this a test or a generator would have to reimplement the canonical encoding to write a valid
+/// file. The body must otherwise be a well-formed migration; it is parsed before it is stamped.
+pub fn with_hash(file: &str, source: &str) -> Result<String, ParseError> {
+    let migration = parse_inner(file, source, false)?;
+    let hash = migration.body_hash();
+
+    let root: Value = serde_norway::from_str(source).map_err(|e| ParseError::Yaml {
+        file: file.to_string(),
+        message: e.to_string(),
+    })?;
+    let existing = root
+        .as_mapping()
+        .ok_or_else(|| header_err(file, "a migration file is a mapping of header fields"))?;
+
+    // Rebuilt in the source's own key order, with `hash:` written in place if it was already
+    // there and appended just before `changes:` if it was not.
+    let mut out = Mapping::new();
+    let mut written = false;
+    for (key, value) in existing {
+        let name = key.as_str().unwrap_or_default();
+        if name == "hash" {
+            out.insert(key.clone(), Value::String(hash.clone()));
+            written = true;
+            continue;
+        }
+        if name == "changes" && !written {
+            out.insert(Value::String("hash".into()), Value::String(hash.clone()));
+            written = true;
+        }
+        out.insert(key.clone(), value.clone());
+    }
+    if !written {
+        out.insert(Value::String("hash".into()), Value::String(hash));
+    }
+    serde_norway::to_string(&Value::Mapping(out)).map_err(|e| ParseError::Yaml {
+        file: file.to_string(),
+        message: e.to_string(),
+    })
+}
+
+fn parse_inner(file: &str, source: &str, require_hash: bool) -> Result<Migration, ParseError> {
     let root: Value = serde_norway::from_str(source).map_err(|e| ParseError::Yaml {
         file: file.to_string(),
         message: e.to_string(),
@@ -635,13 +734,7 @@ pub fn parse(file: &str, source: &str) -> Result<Migration, ParseError> {
         .as_mapping()
         .ok_or_else(|| header_err(file, "a migration file is a mapping of header fields"))?;
 
-    let grammar = required_u32(map, "grammar", file)?;
-    if grammar < GRAMMAR_RANGE.0 || grammar > GRAMMAR_RANGE.1 {
-        return Err(ParseError::GrammarVersion {
-            file: file.to_string(),
-            found: grammar,
-        });
-    }
+    let grammar = read_grammar(map, file)?;
 
     let id = required_str(map, "id", file)?;
     let sequence = required_u32(map, "sequence", file)?;
@@ -706,24 +799,34 @@ pub fn parse(file: &str, source: &str) -> Result<Migration, ParseError> {
         hashed_body,
     };
 
-    // The hash is optional while a migration is being authored and binding once written: a file
-    // that records one must match it.
-    if let Some(recorded) = get(map, "hash") {
-        let recorded = match recorded {
-            Value::String(text) => text.trim().to_string(),
-            Value::Null => String::new(),
-            _ => return Err(header_err(file, "header field `hash:` must be text")),
-        };
-        if !recorded.is_empty() {
-            let computed = migration.body_hash();
-            if recorded != computed {
-                return Err(ParseError::HashMismatch {
-                    file: file.to_string(),
-                    recorded,
-                    computed,
-                });
-            }
-        }
+    // The hash is required. An optional one would be no protection at all: the anchor it covers
+    // is the evidence that protected content left by ruling, and an editor who need not forge a
+    // hash need only delete a line. `with_hash` is the sanctioned way to produce one.
+    if !require_hash {
+        // The stamping path. Any hash already in the file is about to be overwritten, so
+        // validating it here would make `with_hash` unable to correct a stale one — which is
+        // most of what it is for.
+        return Ok(migration);
+    }
+    let recorded = match get(map, "hash") {
+        Some(Value::String(text)) => text.trim().to_string(),
+        Some(Value::Null) | None => String::new(),
+        Some(_) => return Err(header_err(file, "header field `hash:` must be text")),
+    };
+    if recorded.is_empty() {
+        return Err(header_err(
+            file,
+            "header field `hash:` missing — every migration carries the canonical hash of \
+             its own body (write one with `with_hash`)",
+        ));
+    }
+    let computed = migration.body_hash();
+    if recorded != computed {
+        return Err(ParseError::HashMismatch {
+            file: file.to_string(),
+            recorded,
+            computed,
+        });
     }
 
     Ok(migration)

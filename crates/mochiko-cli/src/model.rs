@@ -1009,9 +1009,15 @@ impl Document {
 ///   two distinct values share an encoding — `{ab: c}` and `{a: bc}` are the standard trap.
 ///
 /// Sequence order *is* covered: a section's rule list is ordered data.
+///
+/// Encoding is depth-bounded at [`MAX_CANONICAL_DEPTH`]. Rule-bearing documents are shape-bounded
+/// by the decoder, but templates and shelf data are carried as arbitrary YAML, so an adversarially
+/// nested one would otherwise recurse off the stack and abort the process. Past the bound the
+/// encoder emits a marker instead of descending; [`canonical_depth`] lets the validator report
+/// such a document as a finding rather than hashing it silently.
 pub fn canonical_hash(value: &Value) -> String {
     let mut buffer = Vec::new();
-    encode_canonical(value, &mut buffer);
+    encode_canonical(value, &mut buffer, 0);
     let digest = Sha256::digest(&buffer);
     let mut out = String::with_capacity(7 + 64);
     out.push_str("sha256:");
@@ -1025,8 +1031,41 @@ pub fn canonical_hash(value: &Value) -> String {
 /// The canonical encoding of a value, for callers that need the bytes rather than the digest.
 pub fn canonical_bytes(value: &Value) -> Vec<u8> {
     let mut buffer = Vec::new();
-    encode_canonical(value, &mut buffer);
+    encode_canonical(value, &mut buffer, 0);
     buffer
+}
+
+/// The deepest nesting the canonical encoder will descend before emitting a marker.
+///
+/// Generous by design: the deepest shipped document nests four levels, so anything near this
+/// bound is machine-generated or hostile rather than authored.
+pub const MAX_CANONICAL_DEPTH: usize = 64;
+
+/// How deeply a value nests, saturating one past [`MAX_CANONICAL_DEPTH`] so a hostile document
+/// cannot make the measurement itself expensive.
+pub fn canonical_depth(value: &Value) -> usize {
+    fn walk(value: &Value, depth: usize) -> usize {
+        if depth > MAX_CANONICAL_DEPTH {
+            return depth;
+        }
+        match value {
+            Value::Sequence(items) => items
+                .iter()
+                .map(|item| walk(item, depth + 1))
+                .max()
+                .unwrap_or(depth),
+            Value::Mapping(map) => map
+                .iter()
+                .map(|(_, v)| walk(v, depth + 1))
+                .max()
+                .unwrap_or(depth),
+            Value::Tagged(tagged) => walk(&tagged.value, depth + 1),
+            _ => depth,
+        }
+    }
+    // Containers are what nest; a scalar sits at the depth of the container holding it, so
+    // `a: {b: {c: 1}}` measures 3 rather than 4.
+    walk(value, 0)
 }
 
 fn push_bytes(tag: u8, bytes: &[u8], out: &mut Vec<u8>) {
@@ -1036,7 +1075,13 @@ fn push_bytes(tag: u8, bytes: &[u8], out: &mut Vec<u8>) {
     out.extend_from_slice(bytes);
 }
 
-fn encode_canonical(value: &Value, out: &mut Vec<u8>) {
+fn encode_canonical(value: &Value, out: &mut Vec<u8>, depth: usize) {
+    if depth > MAX_CANONICAL_DEPTH {
+        // Deliberately not a recursion: the marker is distinct from every real encoding, so two
+        // over-deep documents that differ only below the bound hash alike and neither aborts.
+        out.extend_from_slice(b"!depth");
+        return;
+    }
     match value {
         Value::Null => out.push(b'~'),
         Value::Bool(true) => out.extend_from_slice(b"b1"),
@@ -1063,7 +1108,7 @@ fn encode_canonical(value: &Value, out: &mut Vec<u8>) {
             out.extend_from_slice(items.len().to_string().as_bytes());
             out.push(b':');
             for item in items {
-                encode_canonical(item, out);
+                encode_canonical(item, out, depth + 1);
             }
         }
         Value::Mapping(map) => {
@@ -1071,8 +1116,8 @@ fn encode_canonical(value: &Value, out: &mut Vec<u8>) {
                 .iter()
                 .map(|(key, value)| {
                     let mut pair = Vec::new();
-                    encode_canonical(key, &mut pair);
-                    encode_canonical(value, &mut pair);
+                    encode_canonical(key, &mut pair, depth + 1);
+                    encode_canonical(value, &mut pair, depth + 1);
                     pair
                 })
                 .collect();
@@ -1087,7 +1132,7 @@ fn encode_canonical(value: &Value, out: &mut Vec<u8>) {
         Value::Tagged(tagged) => {
             let TaggedValue { tag, value } = tagged.as_ref();
             push_bytes(b't', tag.to_string().as_bytes(), out);
-            encode_canonical(value, out);
+            encode_canonical(value, out, depth + 1);
         }
     }
 }
@@ -1153,17 +1198,54 @@ pub fn norm_value(value: &Value, presence: bool) -> String {
     }
 }
 
-/// Whether an anchor reads `YYYY-MM-DD <slug>` with an optional trailing ` D<n>…` segment.
+/// Whether a ruling anchor is well formed.
+///
+/// The grammar is `YYYY-MM-DD <session-slug>`, optionally followed by one decision segment, and
+/// nothing else. Both spellings of that segment are accepted because both are in use: the 597
+/// provenance anchors write it bare (`D4`), which is what the shipped checker's expression
+/// matches, while the wave plan writes it bracketed (`[D2]`).
+///
+/// Anchored at both ends deliberately. A trailing-junk-tolerant grammar would accept a whole
+/// sentence as an anchor, and the anchor is the evidence that protected content left by ruling.
 pub fn is_anchor(text: &str) -> bool {
-    let mut parts = text.split_whitespace();
+    let mut parts = text.split(' ').filter(|p| !p.is_empty());
     let (Some(date), Some(slug)) = (parts.next(), parts.next()) else {
         return false;
     };
-    let digits: Vec<&str> = date.split('-').collect();
-    let dated = digits.len() == 3
-        && digits[0].len() == 4
-        && digits[1].len() == 2
-        && digits[2].len() == 2
-        && digits.iter().all(|p| p.chars().all(|c| c.is_ascii_digit()));
-    dated && !slug.is_empty()
+    if !is_date(date) || slug.is_empty() {
+        return false;
+    }
+    match parts.next() {
+        None => true,
+        Some(segment) => parts.next().is_none() && is_decision_segment(segment),
+    }
+}
+
+/// `YYYY-MM-DD`, with the month and day range-checked.
+fn is_date(text: &str) -> bool {
+    let parts: Vec<&str> = text.split('-').collect();
+    if parts.len() != 3 || parts[0].len() != 4 || parts[1].len() != 2 || parts[2].len() != 2 {
+        return false;
+    }
+    if !parts.iter().all(|p| p.chars().all(|c| c.is_ascii_digit())) {
+        return false;
+    }
+    let month: u32 = parts[1].parse().unwrap_or(0);
+    let day: u32 = parts[2].parse().unwrap_or(0);
+    (1..=12).contains(&month) && (1..=31).contains(&day)
+}
+
+/// `D<n>` or `[D<n>]` — the human-readable decision pointer, never resolved here.
+fn is_decision_segment(text: &str) -> bool {
+    let inner = match text.strip_prefix('[') {
+        Some(rest) => match rest.strip_suffix(']') {
+            Some(inner) => inner,
+            None => return false,
+        },
+        None => text,
+    };
+    match inner.strip_prefix('D') {
+        Some(digits) => !digits.is_empty() && digits.chars().all(|c| c.is_ascii_digit()),
+        None => false,
+    }
 }

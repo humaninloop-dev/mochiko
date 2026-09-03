@@ -22,8 +22,8 @@ grammar: 1
 id: 0002-widen-fail-set
 sequence: 2
 intent: One line stating what this migration does and why.
-anchor: "2026-09-03 cli-schema-delivery [D2]"   # required in the cases below
-hash: "sha256:<64 hex characters>"              # optional, and binding once written
+anchor: "2026-09-03 cli-schema-delivery D2"     # required in the cases below
+hash: "sha256:<64 hex characters>"              # required
 changes:
   - op: reword-rule
     schema: command/specify
@@ -37,8 +37,23 @@ changes:
 | `id` | the file's own stem, `NNNN-<slug>`. |
 | `sequence` | the migration's place in the log, as an integer. It must agree with the filename's numeric prefix. Gaps are legal; collisions are not. |
 | `intent` | one line. Deliberately outside the hash, so it can be corrected without invalidating the file. |
-| `anchor` | the ruling this migration executes, as `YYYY-MM-DD <session-slug>` with an optional trailing `[D#]`. |
-| `hash` | the canonical hash of `{id, sequence, anchor, changes}`. A file that records one must match it. |
+| `anchor` | the ruling this migration executes, as `YYYY-MM-DD <session-slug>` with an optional trailing decision segment, written either `D2` or `[D2]`. |
+| `hash` | the canonical hash of `{id, sequence, anchor, changes}`. Required, and it must match. |
+
+**Every file in the log is a migration, and every migration is named `NNNN-<slug>.yaml`.** A
+`.yaml` that is not so named is reported rather than skipped: a file called `genesis.yaml`, or
+`O001-genesis.yaml` typed with a letter O, would otherwise replay as if it were not there.
+
+### Writing the hash
+
+The hash is required, so nothing can be written by hand alone. Stamp a body with
+`migration::with_hash(file, source)`, which returns the same migration carrying its correct
+`hash:` header and replaces any stale hash already there. `migration::compute_hash(&migration)`
+returns the value on its own.
+
+An optional hash would be no protection at all. The hash covers the `anchor:`, which is the
+evidence that protected content left by ruling, so an editor who need not forge a hash would need
+only to delete one line.
 
 ### Documents
 
@@ -56,7 +71,7 @@ Each change is independently citable: a rule's history is the set of ops naming 
 |---|---|---|
 | `import-document` | `kind`, `name`, `content` | How a document enters the log, once. Importing over an existing document is rejected. |
 | `replace-document` | `kind`, `name`, `content` | Templates and shelf data only. Rule-bearing documents change one node at a time, so the log stays a per-rule history. |
-| `mint-section` | `schema`, `section` | The section starts empty. |
+| `mint-section` | `schema`, `section` | The section starts empty. A section value carrying `rules:` is rejected rather than having them dropped. |
 | `tombstone-section` | `schema`, `id`, `disposition` | Rejected while the section still holds rules, so no rule is ever retired implicitly. |
 | `mint-rule` | `schema`, `section`, `rule` | |
 | `reword-rule` | `schema`, `id`, `text` | The id survives a reword. |
@@ -83,11 +98,28 @@ content**, which is any of:
 
 Protected content leaves only through `supersede-rule` with a well-formed anchor. A bare
 `tombstone-rule` on any of the three is rejected, and so is a section tombstone that would carry
-rules out with it. This is what makes the record layer's protection mechanical for schema rules
-rather than procedural: a floor cannot be dropped quietly, because the tool will not write the
-state in which it has been.
+rules out with it.
 
-Anchor format is `YYYY-MM-DD <session-slug>`, optionally followed by ` [D#]`. The format is
+**Lowering protection is itself a protected exit.** Protection is read from a rule's own fields,
+so a migration that changed `class:` away from `floor`, changed `kind:` away from `fail`, or
+cleared an `anchor:` would leave an ordinary rule that the next op could retire freely. A
+`set-rule-field` that does any of those three therefore requires the migration's own header
+`anchor:`, exactly as `supersede-rule` requires one. Raising protection — promoting a rule to a
+floor, giving it an anchor — needs no authority.
+
+Corollary, by lead ruling at wave 1: protection is checked **per migration**. An anchored
+migration may lower a rule's protection (floor → must, fail → another kind, anchor cleared);
+once lowered, the rule is ordinary, and a later migration may tombstone it without an anchor.
+The ruled exit is the anchored lowering itself, and the log records it there. A sticky
+"once protected, always protected" set was considered and declined as stricter than the
+record layer's rule (protected content leaves only by ruling — it did, at the lowering).
+
+Together these make the record layer's protection mechanical for schema rules rather than
+procedural: a floor cannot be dropped quietly, because the tool will not write the state in which
+it has been.
+
+Anchor format is `YYYY-MM-DD <session-slug>`, optionally followed by one decision segment written
+either `D2` or `[D2]`, and nothing after it. The month and day are range-checked. The format is
 checked here; resolving the anchor against a `DECISIONS.md` row is an advisory report.
 
 ## Sequence allocation
@@ -112,5 +144,9 @@ mochiko-cli migrate status                # the state hash, the last sequence, t
 ```
 
 `migrate validate` prints one finding per line as `code · schema · id · message`. A rejecting
-finding means the state in memory is partial and nothing may be rendered from it; the advisory
-reports (`--report`) print alongside and exit 0.
+finding means nothing may be rendered from the state; the advisory reports (`--report`) print
+alongside and exit 0.
+
+Rendering paths call `replay::load` (or `replay::load_full`, which also carries the log's grammar
+version). Its `Ok` means both things at once: every op applied, and the finished state passes the
+hard set. A state that is complete but invalid is refused just as firmly as a partial one.

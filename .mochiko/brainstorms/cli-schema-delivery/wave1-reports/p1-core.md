@@ -304,3 +304,134 @@ declared command floors). No shipped file changed.
 
 sha2 is the only new dependency.
 ```
+
+---
+
+# Fix round 1
+
+**Audit:** `v1-core-audit.md` — FAIL, 3 blocking, 12 advisory. All fifteen taken, plus the two P2
+deltas the lead granted. Attempt 1 of 3.
+**Gates at close:** `cargo test --all` 127 passed / 0 failed (was 99) · `cargo fmt --all --check`
+clean · `cargo clippy --all-targets -- -D warnings` clean · `cargo audit --deny warnings` clean
+over the same 25 dependencies. No new dependency. Still no file under `plugins/` changed.
+
+The audit was right, and B1 is the finding that matters: the guarantee the whole wave is built to
+make mechanical did not hold. Everything below was fixed test-first — a red test reproducing the
+finding, then the change.
+
+## Blocking
+
+**B1 — protection was bypassable in one migration.** `Rule::is_protected()` re-derives protection
+from the rule's current `class`, `kind` and `anchor`, and `set-rule-field` may write all three.
+Ops in one `changes:` list apply in order, so a migration downgraded a floor rule and then retired
+it, and the retire step saw an ordinary rule. The audit's probe retired a floor rule, a fail rule
+and an anchored rule with zero findings.
+
+Fixed per the lead's ruling: `lowers_protection` (`replay.rs`) asks whether a `set-rule-field`
+would remove one of the three protection sources — `class` away from `floor`, `kind` away from
+`fail`, or an `anchor` cleared or changed — and if so the op requires the **migration's own header
+`anchor:`**, well-formed, exactly as `supersede-rule` does. Raising protection needs no authority.
+The migration's anchor now travels into `apply` rather than being re-derived from the state the
+change is about to alter.
+
+Six new tests pin it, including the audit's exact probe and its inverse:
+`lowering_protection_without_a_ruling_is_a_protected_exit`,
+`clearing_protection_without_a_ruling_is_a_protected_exit`,
+`clearing_or_changing_an_anchor_without_a_ruling_is_a_protected_exit`,
+`a_ruling_anchor_on_the_migration_authorises_lowering_protection`,
+`a_malformed_migration_anchor_does_not_authorise_lowering_protection`, and
+`raising_protection_never_needs_a_ruling`.
+
+**One residual, stated rather than hidden.** The ruling is per migration, so an anchored migration
+may downgrade a floor and a later unanchored migration may retire what is by then an ordinary
+rule. That is coherent — removing a floor's floor-ness is itself the protected exit, and it was
+ruled — but it is weaker than the audit's preferred sticky-set design, which would keep the rule
+protected until superseded. I implemented what was ruled. If the lead wants the stronger form, it
+is a per-document protected-id set in `State` and about twenty lines.
+
+**B2 — the body hash was optional.** Three spellings skipped the check: the key absent, `hash: ""`,
+and `hash: ~`. That nullified the Q1 amendment, since an editor need not forge a hash to change an
+anchor, only delete a line. The hash is now required and reports as `grammar-header` when absent.
+
+Because fixtures need valid hashes, the stamping helper is public: `migration::with_hash(file,
+source)` returns the body carrying its correct hash, replacing any stale one, and
+`migration::compute_hash(&migration)` returns the value alone. Both are documented in
+`migrations/README.md`. Writing `with_hash` surfaced a second bug in my own code, caught by
+`with_hash_replaces_an_existing_hash_rather_than_duplicating_it`: the stamping path validated the
+very hash it was about to overwrite, so it could not repair a stale one — which is most of what it
+is for.
+
+**B3 — `replay::load` never ran the hard set.** `validate::validate` had no caller in `src/`, so
+`load`'s `Ok` meant only that the ops applied. My own report handed P2 a stronger contract than the
+code kept, which is the worse half of the finding. `replay()` now runs the hard set over the
+finished state and stores it in `Replay::validation`; `is_deliverable()` and `load` consult both
+passes. `Replay::findings` still holds replay findings alone, so the two stay distinguishable, and
+`load`'s `Err` carries everything including the advisory reports.
+
+That change made the replay suite's genesis fixture inadequate — it carried two sections, not the
+canonical six — so the fixture is now a minimal but genuinely valid corpus. That is the honest fix:
+a genesis fixture that cannot pass validation was never a good fixture.
+
+## Advisory
+
+| # | what changed |
+|---|---|
+| A1 | A `.yaml` in the log that is not `NNNN-<slug>.yaml` raises the new `log-file-name` code instead of being dropped. `genesis.yaml`, or `O001-` typed with a letter O, previously replayed as if absent. |
+| A2 | `every_rejecting_code_is_raised_by_some_probe` replaces the tautology. It runs every state-level mutation and builds thirteen real migration logs for the log-level codes, then asserts the raised set equals `Code::REJECTING` in both directions. A new code with no probe now fails it. |
+| A3 | `is_anchor` is anchored at both ends, range-checks month and day, and validates the decision segment. The dead `!slug.is_empty()` branch is gone. **The corpus decided the grammar:** all 597 sidecar anchors write the tail bare (`D4`), not bracketed, so both spellings are accepted and nothing else is. Tightening to brackets alone would have rejected the whole sidecar. |
+| A4 | `read_grammar` parses the grammar field before any header integer cap, so every out-of-range whole number reaches the D5 halt with its install line. Probed at 2, 99, 999999 and `u32::MAX`. |
+| A5 | `mint-section` rejects a section value carrying `rules:` rather than discarding them. |
+| A6 | The deixis list is ported exactly — ten markers including `see below` and the `there is no <X> section` wildcard — matched on word boundaries, so `this sectional` no longer fires. |
+| A7 | The unused-declared-moments advisory is ported, including the shipped checker's deliberate weakness: the prose half is a bare substring test, so it under-reports and never invents. |
+| A8 | `encode_canonical` is depth-bounded at `MAX_CANONICAL_DEPTH` (64) and emits a marker past it rather than recursing off the stack; `canonical_depth` is public, and an over-deep opaque document raises the new `depth-exceeded` code. |
+| A9 | `ParseError::Change` is split into `UnknownOp` and `MalformedChange`, so a known op missing a field reports as the new `op-malformed` rather than as an unrecognised op. |
+| A10 | A non-string `when:` dimension key and a non-string list item are findings; neither is coerced to `""`. |
+| A11 | `the_round_trip_preserves_declaration_order` asserts document key order, section key order, and the declaration order of `vars`, `conditions`, `moments` and registry `labels`. **One honest limit:** rule *field* order is normalised to a fixed canonical order, because preserving it would mean storing a per-rule key sequence and deciding where every op inserts. P3's view test is semantic equality, so this costs nothing there; it is disclosed rather than claimed. |
+| A12 | Section ids get the `id-format` check directly, so a malformed one is reported as what it is and is still caught when the prefix will not derive. |
+
+## P2 deltas
+
+- **D-1** `Replay::grammar() -> Option<u32>` carries the applied log's grammar; `load_full` returns
+  the whole `Replay`, and `load` is re-expressed on it.
+- **D-2** `ResolvedRule` (was the private `Resolved`), `resolve_extends` (was `check_extends`) and
+  `placeholders` are public, so the render path resolves `extends:` and `${var}` through this
+  implementation. A renderer resolving inheritance differently from the validator would show
+  guidance the hard set never graded.
+
+## Codes
+
+`Code::REJECTING` grew from 34 to 37 — `op-malformed`, `log-file-name`, `depth-exceeded`.
+`Code::ADVISORY` grew from 6 to 7 — `unused-moment`. Every one is probed, and A2's guard now
+enforces that.
+
+## Test tally
+
+| suite | before | after |
+|---|---|---|
+| `tests/migration.rs` | 16 | 25 |
+| `tests/replay.rs` | 33 | 46 |
+| `tests/validate.rs` | 38 | 44 |
+| `tests/render.rs` | 12 | 12 (untouched) |
+| **total** | **99** | **127** |
+
+The corpus pins are unchanged and still green: 50 documents, 321 command rules, 695 skill rules,
+226 skill floors, 110 declared command floors, 36 fail nodes. The round trip still passes over all
+50 shipped files with no normalisation.
+
+## Documentation
+
+`migrations/README.md` gains the required-hash rule and the stamping helpers, the file-naming rule,
+the lowering-protection clause, the corrected anchor grammar, the `mint-section` rule, and the
+`load` contract.
+
+## Suggested commit
+
+Nothing committed. The original message stands, with a second paragraph:
+
+```
+Fix round 1 closes the independent audit's three blocking findings: a
+protected exit reachable by downgrading a rule and retiring it in the same
+migration, an optional body hash that left the anchor it covers editable,
+and a load path that never ran the hard set. Twelve advisory findings and
+two P2 deltas land with them. 127 tests, no new dependency.
+```

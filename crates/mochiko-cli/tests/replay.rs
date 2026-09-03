@@ -22,9 +22,14 @@ fn log_dir(tag: &str) -> PathBuf {
     dir
 }
 
-/// Write one migration file into the log directory.
+/// Write one migration file into the log directory, stamped with a valid body hash.
+///
+/// The `hash:` header is required, so every fixture carries one. Fixtures that are deliberately
+/// unparseable (broken YAML, an unsupported grammar) cannot be hashed and are written as-is —
+/// which is what those tests are about.
 fn write(dir: &std::path::Path, name: &str, body: &str) {
-    std::fs::write(dir.join(name), body).expect("fixture migration is writable");
+    let stamped = migration::with_hash(name, body).unwrap_or_else(|_| body.to_string());
+    std::fs::write(dir.join(name), stamped).expect("fixture migration is writable");
 }
 
 /// A genesis migration importing one small command schema, one skill schema and one registry.
@@ -32,7 +37,7 @@ const GENESIS: &str = r#"
 grammar: 1
 id: 0001-genesis
 sequence: 1
-intent: Import a minimal corpus so the ops have something to act on.
+intent: Import a minimal but valid corpus so the ops have something to act on.
 changes:
   - op: import-document
     kind: command-labels
@@ -75,6 +80,26 @@ changes:
               class: advisory
               text: An ordinary rule.
               when: {shape: multi}
+        - id: demo.sec.reserved
+          title: Reserved
+          intent: The user's calls.
+          note: Deliberately empty — this run reserves nothing beyond its floor.
+          rules: []
+        - id: demo.sec.tools
+          title: Tools
+          intent: Bindings.
+          note: Deliberately empty — this run binds no tool.
+          rules: []
+        - id: demo.sec.ways-of-working
+          title: Ways of Working
+          intent: How the run sequences itself.
+          note: Deliberately empty — sequencing is the lead's.
+          rules: []
+        - id: demo.sec.boundaries
+          title: Boundaries
+          intent: The non-waivable floor.
+          note: Deliberately empty — the floor above carries it.
+          rules: []
         - id: demo.sec.fail-conditions
           title: Not done
           intent: The fail set.
@@ -222,7 +247,7 @@ fn import_document_round_trips_a_document_field_for_field() {
     let schema = demo(&replay.state);
     assert_eq!(schema.declared_kind.as_deref(), Some("command"));
     assert_eq!(schema.declared_name.as_deref(), Some("demo"));
-    assert_eq!(schema.sections.len(), 2);
+    assert_eq!(schema.sections.len(), 6, "the canonical six");
     assert_eq!(
         ordered_get(&schema.vars, "seat").and_then(|v| v.as_str()),
         Some("product-manager")
@@ -316,28 +341,28 @@ fn mint_and_tombstone_a_section() {
         "mint-section",
         &followup(
             "Mint a section.",
-            "  - {op: mint-section, schema: command/demo, section: {id: demo.sec.tools, title: Tools, intent: Bindings.}}\n",
+            "  - {op: mint-section, schema: command/demo, section: {id: demo.sec.extra, title: Extra, intent: A minted section.}}\n",
         ),
     );
     assert_clean(&minted);
     let section = demo(&minted.state)
-        .find_section("demo.sec.tools")
+        .find_section("demo.sec.extra")
         .expect("minted");
-    assert_eq!(section.title, "Tools");
+    assert_eq!(section.title, "Extra");
     assert!(section.rules.is_empty(), "a minted section starts empty");
 
     let tombstoned = with_followup(
         "tombstone-section",
         &followup(
             "Mint an empty section, then tombstone it.",
-            "  - {op: mint-section, schema: command/demo, section: {id: demo.sec.tools, title: Tools, intent: Bindings.}}\n\
-             \x20 - {op: tombstone-section, schema: command/demo, id: demo.sec.tools, disposition: superseded}\n",
+            "  - {op: mint-section, schema: command/demo, section: {id: demo.sec.extra, title: Extra, intent: A minted section.}}\n\
+             \x20 - {op: tombstone-section, schema: command/demo, id: demo.sec.extra, disposition: superseded}\n",
         ),
     );
     assert_clean(&tombstoned);
     let schema = demo(&tombstoned.state);
-    assert!(schema.find_section("demo.sec.tools").is_none());
-    assert!(schema.is_tombstoned("demo.sec.tools"));
+    assert!(schema.find_section("demo.sec.extra").is_none());
+    assert!(schema.is_tombstoned("demo.sec.extra"));
 }
 
 #[test]
@@ -874,10 +899,19 @@ fn a_state_carrying_a_rejecting_finding_is_never_deliverable() {
         !broken.is_deliverable(),
         "a state built with a rejecting finding must never be rendered from"
     );
-    assert_eq!(broken.rejecting().count(), 1);
+    let rejecting: Vec<String> = broken.rejecting().map(|f| f.to_string()).collect();
+    assert_eq!(rejecting.len(), 1, "rejecting findings: {rejecting:?}");
+    // `load` hands back everything it collected, advisory reports included, so a caller can
+    // print one report; exactly one of them blocks.
     let findings = replay::load(&dir).expect_err("load refuses an unsound log");
-    assert_eq!(findings.len(), 1);
-    assert_eq!(findings[0].code.as_str(), "op-inapplicable");
+    let blocking: Vec<&mochiko_cli::validate::Finding> =
+        findings.iter().filter(|f| f.is_rejecting()).collect();
+    assert_eq!(blocking.len(), 1, "findings: {findings:?}");
+    assert_eq!(blocking[0].code.as_str(), "op-inapplicable");
+    assert!(
+        findings.len() > blocking.len(),
+        "the advisory reports travel with the refusal"
+    );
 }
 
 #[test]
@@ -913,5 +947,265 @@ fn a_log_written_in_an_unsupported_grammar_halts() {
     assert!(
         message.contains(migration::INSTALL_COMMAND),
         "the halt names the install command: {message}"
+    );
+}
+
+// ---------------------------------------------------------------------------
+// Fix round 1 — B1: protection may not be lowered without a ruling
+// ---------------------------------------------------------------------------
+
+/// A migration carrying a header anchor, so a protected exit is authorised.
+fn anchored_followup(intent: &str, changes: &str) -> String {
+    format!(
+        "grammar: 1\nid: 0002-change\nsequence: 2\nintent: {intent}\n\
+         anchor: \"2026-09-03 cli-schema-delivery D2\"\nchanges:\n{changes}"
+    )
+}
+
+#[test]
+fn lowering_protection_without_a_ruling_is_a_protected_exit() {
+    // The audit's probe: downgrade, then tombstone, in one unanchored migration.
+    for (id, field, value) in [
+        ("demo.floor-rule", "class", "advisory"),
+        ("demo.fail.ungraded", "kind", "gate"),
+    ] {
+        let replay = with_followup(
+            "downgrade",
+            &followup(
+                "Downgrade protected content, then retire it.",
+                &format!(
+                    "  - {{op: set-rule-field, schema: command/demo, id: {id}, field: {field}, value: {value}}}\n  - {{op: tombstone-rule, schema: command/demo, id: {id}, disposition: gone}}\n"
+                ),
+            ),
+        );
+        assert!(
+            codes(&replay).contains(&"protected-exit"),
+            "downgrading {id} via `{field}` must be a protected exit, got {:?}",
+            codes(&replay)
+        );
+        assert!(
+            demo(&replay.state).find_rule(id).is_some(),
+            "{id} must still be live after the rejected downgrade"
+        );
+    }
+}
+
+#[test]
+fn clearing_protection_without_a_ruling_is_a_protected_exit() {
+    for (id, field) in [("demo.floor-rule", "class"), ("demo.fail.ungraded", "kind")] {
+        let replay = with_followup(
+            "clear-protection",
+            &followup(
+                "Clear the field that makes the rule protected.",
+                &format!(
+                    "  - {{op: set-rule-field, schema: command/demo, id: {id}, field: {field}, value: ~}}\n"
+                ),
+            ),
+        );
+        assert!(
+            codes(&replay).contains(&"protected-exit"),
+            "clearing `{field}` on {id} must be a protected exit, got {:?}",
+            codes(&replay)
+        );
+    }
+}
+
+#[test]
+fn clearing_or_changing_an_anchor_without_a_ruling_is_a_protected_exit() {
+    let anchor_it = "  - {op: set-rule-field, schema: command/demo, id: demo.plain, field: anchor, value: \"2026-09-03 demo D1\"}\n";
+    for follow in [
+        "  - {op: set-rule-field, schema: command/demo, id: demo.plain, field: anchor, value: ~}\n",
+        "  - {op: set-rule-field, schema: command/demo, id: demo.plain, field: anchor, value: \"2026-09-04 other D9\"}\n",
+    ] {
+        let replay = with_followup(
+            "anchor-edit",
+            &followup(
+                "Anchor a rule, then edit that anchor away.",
+                &format!("{anchor_it}{follow}"),
+            ),
+        );
+        assert!(
+            codes(&replay).contains(&"protected-exit"),
+            "editing an anchor away must be a protected exit, got {:?}",
+            codes(&replay)
+        );
+    }
+}
+
+#[test]
+fn a_ruling_anchor_on_the_migration_authorises_lowering_protection() {
+    let replay = with_followup(
+        "authorised-downgrade",
+        &anchored_followup(
+            "Downgrade a floor rule under a recorded ruling, then retire it.",
+            "  - {op: set-rule-field, schema: command/demo, id: demo.floor-rule, field: class, value: advisory}\n  - {op: tombstone-rule, schema: command/demo, id: demo.floor-rule, disposition: superseded}\n",
+        ),
+    );
+    assert_clean(&replay);
+    assert!(demo(&replay.state).is_tombstoned("demo.floor-rule"));
+}
+
+#[test]
+fn a_malformed_migration_anchor_does_not_authorise_lowering_protection() {
+    let replay = with_followup(
+        "bad-migration-anchor",
+        &followup(
+            "Downgrade under a malformed ruling anchor.",
+            "  - {op: set-rule-field, schema: command/demo, id: demo.floor-rule, field: class, value: advisory}\n",
+        )
+        .replace("intent:", "anchor: not-an-anchor\nintent:"),
+    );
+    assert!(
+        codes(&replay).contains(&"protected-exit") || codes(&replay).contains(&"anchor-format"),
+        "a malformed header anchor authorises nothing, got {:?}",
+        codes(&replay)
+    );
+}
+
+#[test]
+fn raising_protection_never_needs_a_ruling() {
+    let replay = with_followup(
+        "raise-protection",
+        &followup(
+            "Promote an ordinary rule to a floor and give it an anchor.",
+            "  - {op: set-rule-field, schema: command/demo, id: demo.plain, field: class, value: floor}\n  - {op: set-rule-field, schema: command/demo, id: demo.lead, field: anchor, value: \"2026-09-03 demo D1\"}\n",
+        ),
+    );
+    assert_clean(&replay);
+    assert!(demo(&replay.state)
+        .find_rule("demo.plain")
+        .unwrap()
+        .is_floor());
+}
+
+// ---------------------------------------------------------------------------
+// Fix round 1 — B3: load runs the hard set
+// ---------------------------------------------------------------------------
+
+#[test]
+fn load_refuses_a_log_that_replays_cleanly_but_fails_the_hard_set() {
+    let dir = log_dir("hard-set");
+    write(&dir, "0001-genesis.yaml", GENESIS);
+    // Mint a section outside the canonical six: every op applies, and the hard set rejects.
+    write(
+        &dir,
+        "0002-extra.yaml",
+        &followup(
+            "Mint a section that is not one of the canonical six.",
+            "  - {op: mint-section, schema: command/demo, section: {id: demo.sec.invented, title: T, intent: I, note: Empty on purpose.}}\n",
+        ),
+    );
+    let replay = replay_of(&dir);
+    assert!(
+        replay.findings.is_empty(),
+        "every op applies — the log itself is sound"
+    );
+    assert!(
+        !replay.is_deliverable(),
+        "but the state fails the hard set, so it is not deliverable"
+    );
+    let findings = replay::load(&dir).expect_err("load refuses a state that fails the hard set");
+    assert!(
+        findings.iter().any(|f| f.code.as_str() == "section-set"),
+        "load returns the hard-set findings, got {:?}",
+        findings.iter().map(|f| f.to_string()).collect::<Vec<_>>()
+    );
+}
+
+#[test]
+fn load_accepts_a_log_that_is_sound_and_hard_set_clean() {
+    let dir = log_dir("sound");
+    write(&dir, "0001-genesis.yaml", GENESIS);
+    replay::load(&dir).expect("the genesis fixture is a valid corpus");
+}
+
+// ---------------------------------------------------------------------------
+// Fix round 1 — D-1: the grammar the log was written in
+// ---------------------------------------------------------------------------
+
+#[test]
+fn the_replay_reports_the_grammar_it_applied() {
+    let dir = log_dir("grammar");
+    write(&dir, "0001-genesis.yaml", GENESIS);
+    assert_eq!(replay_of(&dir).grammar(), Some(1));
+    let full = replay::load_full(&dir).expect("a sound log loads whole");
+    assert_eq!(full.grammar(), Some(1));
+    assert_eq!(
+        full.state.content_hash(),
+        replay_of(&dir).state.content_hash()
+    );
+}
+
+#[test]
+fn an_empty_log_reports_no_grammar() {
+    let dir = log_dir("empty");
+    assert_eq!(replay_of(&dir).grammar(), None);
+}
+
+// ---------------------------------------------------------------------------
+// Fix round 1 — A1, A5, A10
+// ---------------------------------------------------------------------------
+
+#[test]
+fn a_yaml_file_that_is_not_a_migration_is_reported_never_skipped() {
+    let dir = log_dir("misnamed");
+    write(&dir, "0001-genesis.yaml", GENESIS);
+    // The letter O typed for a zero: a real migration that would replay as if absent.
+    std::fs::write(
+        dir.join("O002-typo.yaml"),
+        followup("A typo in the sequence prefix.", "  - {}\n"),
+    )
+    .expect("fixture is writable");
+    let replay = replay_of(&dir);
+    assert!(
+        codes(&replay).contains(&"log-file-name"),
+        "a misnamed .yaml in the log is a finding, got {:?}",
+        codes(&replay)
+    );
+}
+
+#[test]
+fn mint_section_carrying_inline_rules_is_rejected() {
+    let replay = with_followup(
+        "mint-section-rules",
+        &followup(
+            "Mint a section with a rule already inside it.",
+            "  - {op: mint-section, schema: command/demo, section: {id: demo.sec.tools, title: T, intent: I, rules: [{id: demo.smuggled, class: floor, text: T}]}}\n",
+        ),
+    );
+    assert!(
+        codes(&replay).contains(&"op-inapplicable"),
+        "an inline rule must be rejected, never silently dropped, got {:?}",
+        codes(&replay)
+    );
+    assert!(demo(&replay.state).find_rule("demo.smuggled").is_none());
+}
+
+#[test]
+fn a_non_string_when_key_or_label_is_a_finding_never_a_silent_coercion() {
+    let bad_when = with_followup(
+        "when-key",
+        &followup(
+            "Write a `when:` whose dimension key is not a name.",
+            "  - {op: set-rule-field, schema: command/demo, id: demo.plain, field: when, value: {1: multi}}\n",
+        ),
+    );
+    assert!(
+        codes(&bad_when).contains(&"op-inapplicable"),
+        "a non-string dimension key is a finding, got {:?}",
+        codes(&bad_when)
+    );
+
+    let bad_labels = with_followup(
+        "label-item",
+        &followup(
+            "Write a labels list carrying a non-string item.",
+            "  - {op: set-rule-field, schema: command/demo, id: demo.plain, field: labels, value: [seats, [nested]]}\n",
+        ),
+    );
+    assert!(
+        codes(&bad_labels).contains(&"op-inapplicable"),
+        "a non-string label is a finding, got {:?}",
+        codes(&bad_labels)
     );
 }

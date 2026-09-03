@@ -936,34 +936,6 @@ fn a_common_librarys_block_prefix_comes_from_its_own_name() {
     );
 }
 
-#[test]
-fn every_rejecting_code_is_reachable() {
-    // The state-level codes are probed above; the log-level ones live in the sibling suites.
-    let log_level = [
-        Code::GrammarParse,
-        Code::GrammarHeader,
-        Code::GrammarVersion,
-        Code::SequenceCollision,
-        Code::SequenceMismatch,
-        Code::HashMismatch,
-        Code::OpUnknown,
-        Code::OpInapplicable,
-        Code::MintOnce,
-        Code::ProtectedExit,
-    ];
-    let state_level: Vec<Code> = Code::REJECTING
-        .into_iter()
-        .filter(|c| !log_level.contains(c))
-        .collect();
-    assert_eq!(
-        state_level.len() + log_level.len(),
-        Code::REJECTING.len(),
-        "every rejecting code is owned by exactly one suite"
-    );
-    // AnchorFormat is raised on both paths; the rest of the state-level set is probed here.
-    assert!(state_level.contains(&Code::AnchorFormat));
-}
-
 // ---------------------------------------------------------------------------
 // the shipped corpus
 // ---------------------------------------------------------------------------
@@ -1173,4 +1145,491 @@ fn the_shipped_corpus_covers_every_document_kind_the_store_holds() {
     for kind in DocKind::ALL {
         assert!(kinds.contains(&kind), "no shipped document of kind {kind}");
     }
+}
+
+// ---------------------------------------------------------------------------
+// Fix round 1 — A6, A7, A8, A11, A12 and the three new codes
+// ---------------------------------------------------------------------------
+
+#[test]
+fn the_deixis_lint_matches_the_shipped_marker_list_on_word_boundaries() {
+    for phrase in [
+        "These rules bind the run.",
+        "This section is where it lives.",
+        "The section above states it.",
+        "The section below states it.",
+        "As stated above, the lead rules.",
+        "As stated earlier, the lead rules.",
+        "See above for the procedure.",
+        "See below for the procedure.",
+        "The aforementioned seat produces.",
+        "There is no boundaries section in this schema.",
+    ] {
+        let state = corpus_with("demo", |yaml| {
+            yaml.replace("text: The lead plans the run.", &format!("text: {phrase}"))
+        });
+        let deictic: Vec<_> = validate::validate(&state)
+            .into_iter()
+            .filter(|f| f.code == Code::Deixis)
+            .collect();
+        assert!(
+            !deictic.is_empty(),
+            "{phrase:?} carries a deictic reference"
+        );
+        assert!(
+            deictic.iter().all(|f| !f.is_rejecting()),
+            "the deixis lint reports, it never blocks"
+        );
+    }
+}
+
+#[test]
+fn the_deixis_lint_does_not_fire_inside_a_longer_word() {
+    // A substring test would match "this section" inside "this sectional"; word boundaries are
+    // the difference between a lint and a nuisance.
+    for phrase in [
+        "This sectional view is advisory.",
+        "The run reads this schema whole.",
+        "There is no shortcut.",
+    ] {
+        let state = corpus_with("demo", |yaml| {
+            yaml.replace("text: The lead plans the run.", &format!("text: {phrase}"))
+        });
+        assert!(
+            !validate::validate(&state)
+                .iter()
+                .any(|f| f.code == Code::Deixis),
+            "{phrase:?} is not deictic"
+        );
+    }
+}
+
+#[test]
+fn a_declared_moment_nothing_names_is_reported() {
+    let state = corpus_with("demo", |yaml| {
+        yaml.replace(
+            "moments:\n  intent: The adaptive-probe stage.",
+            "moments:\n  intent: The adaptive-probe stage.\n  unreferenced: A moment nobody names.",
+        )
+    });
+    let reported: Vec<String> = validate::validate(&state)
+        .into_iter()
+        .filter(|f| f.code == Code::UnusedMoment)
+        .inspect(|f| assert!(!f.is_rejecting(), "the moments report never blocks"))
+        .filter_map(|f| f.id)
+        .collect();
+    assert!(
+        reported.iter().any(|id| id == "unreferenced"),
+        "a moment nothing names is reported, got {reported:?}"
+    );
+
+    // A moment a `moment-resolved` condition names is used, and so is one a rule's text
+    // mentions — the prose half is a bare substring test, exactly as the shipped checker does it.
+    for used in [
+        corpus_with("demo", |yaml| {
+            yaml.replace(
+                "    resolution: standing-trigger",
+                "    resolution: moment-resolved(intent)",
+            )
+        }),
+        corpus_with("demo", |yaml| {
+            yaml.replace(
+                "text: Intent runs as probes.",
+                "text: The intent stage runs as probes.",
+            )
+        }),
+    ] {
+        let unused: Vec<String> = validate::validate(&used)
+            .into_iter()
+            .filter(|f| f.code == Code::UnusedMoment)
+            .filter_map(|f| f.id)
+            .collect();
+        assert!(
+            !unused.iter().any(|id| id == "intent"),
+            "a named moment is used, got {unused:?}"
+        );
+    }
+}
+
+#[test]
+fn a_document_nested_past_the_encoders_bound_is_a_finding_not_a_crash() {
+    use mochiko_cli::model::MAX_CANONICAL_DEPTH;
+    let mut value = serde_norway::Value::String("leaf".to_string());
+    for _ in 0..(MAX_CANONICAL_DEPTH + 10) {
+        let mut level = serde_norway::Mapping::new();
+        level.insert(serde_norway::Value::String("a".to_string()), value);
+        value = serde_norway::Value::Mapping(level);
+    }
+    let mut state = corpus();
+    state.docs.insert(
+        DocRef::new(DocKind::Template, "hostile"),
+        Document::from_value(DocKind::Template, &value).expect("an opaque document decodes"),
+    );
+    assert!(
+        codes(&state).contains(&Code::DepthExceeded),
+        "an unhashable document is reported rather than hashed to a marker in silence"
+    );
+    // And the state hash still computes rather than aborting the process.
+    assert!(state.content_hash().starts_with("sha256:"));
+}
+
+#[test]
+fn a_malformed_section_id_is_an_id_format_finding() {
+    probe(
+        "demo",
+        "  - id: demo.sec.roles",
+        "  - id: demo.sec.Roles",
+        Code::IdFormat,
+    );
+    probe(
+        "review-demo",
+        "  - id: review-demo.sec.scope",
+        "  - id: review-demo.scope",
+        Code::IdFormat,
+    );
+}
+
+/// A11: the round trip preserves declaration order, not only content.
+///
+/// Rule *field* order is the one thing normalised: rules are re-emitted in a fixed canonical
+/// field order rather than the order each file happened to use, because storing a per-rule key
+/// order would leak into every op that writes a field. Everything a regenerated view depends on
+/// — the document's own key order, each section's key order, and the declaration order of `vars`,
+/// `conditions`, `moments` and a registry's `labels` — is preserved and asserted here.
+#[test]
+fn the_round_trip_preserves_declaration_order() {
+    fn keys(value: &serde_norway::Value) -> Vec<String> {
+        value
+            .as_mapping()
+            .map(|m| {
+                m.iter()
+                    .filter_map(|(k, _)| k.as_str().map(str::to_string))
+                    .collect()
+            })
+            .unwrap_or_default()
+    }
+
+    for (doc, original) in shipped_documents() {
+        let re_encoded = Document::from_value(doc.kind, &original)
+            .unwrap_or_else(|e| panic!("{doc} decodes: {e}"))
+            .to_value();
+        assert_eq!(
+            keys(&re_encoded),
+            keys(&original),
+            "{doc}: the document's own key order is not preserved"
+        );
+        for block in ["vars", "conditions", "moments", "labels"] {
+            let (Some(before), Some(after)) = (original.get(block), re_encoded.get(block)) else {
+                continue;
+            };
+            assert_eq!(
+                keys(after),
+                keys(before),
+                "{doc}: `{block}:` lost its declaration order"
+            );
+        }
+        let (Some(before), Some(after)) = (
+            original.get("sections").and_then(|v| v.as_sequence()),
+            re_encoded.get("sections").and_then(|v| v.as_sequence()),
+        ) else {
+            continue;
+        };
+        assert_eq!(before.len(), after.len(), "{doc}: section count changed");
+        for (b, a) in before.iter().zip(after) {
+            assert_eq!(keys(a), keys(b), "{doc}: a section's key order changed");
+        }
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Fix round 1 — A2: every rejecting code is actually raised somewhere
+// ---------------------------------------------------------------------------
+
+/// A minimal valid corpus as a migration log, for the log-level probes below.
+const LOG_GENESIS: &str = r#"
+grammar: 1
+id: 0001-genesis
+sequence: 1
+intent: A one-document corpus for the log-level probes.
+changes:
+  - op: import-document
+    kind: command
+    name: demo
+    content:
+      kind: command
+      command: demo
+      sections:
+        - {id: demo.sec.roles, title: R, intent: I, rules: [{id: demo.floor, class: floor, text: T}]}
+        - {id: demo.sec.reserved, title: R, intent: I, note: Empty., rules: []}
+        - {id: demo.sec.tools, title: R, intent: I, note: Empty., rules: []}
+        - {id: demo.sec.ways-of-working, title: R, intent: I, note: Empty., rules: []}
+        - {id: demo.sec.boundaries, title: R, intent: I, note: Empty., rules: []}
+        - {id: demo.sec.fail-conditions, title: R, intent: I, note: Empty., rules: []}
+"#;
+
+fn log_dir(tag: &str) -> PathBuf {
+    use std::sync::atomic::{AtomicUsize, Ordering};
+    static COUNTER: AtomicUsize = AtomicUsize::new(0);
+    let n = COUNTER.fetch_add(1, Ordering::Relaxed);
+    let dir = PathBuf::from(env!("CARGO_TARGET_TMPDIR")).join(format!("codes-{tag}-{n}"));
+    let _ = std::fs::remove_dir_all(&dir);
+    std::fs::create_dir_all(&dir).expect("fixture dir is creatable");
+    dir
+}
+
+/// Every code raised by a log made of the given files. Files are stamped with a valid hash where
+/// they can be, and written verbatim where they cannot — which is what the malformed probes want.
+fn log_codes(tag: &str, files: &[(&str, String)]) -> BTreeSet<Code> {
+    let dir = log_dir(tag);
+    for (name, body) in files {
+        // A body that already declares a hash is written verbatim: re-stamping it would repair
+        // the very mismatch a probe is trying to produce.
+        let stamped = if body.contains("\nhash:") {
+            body.to_string()
+        } else {
+            mochiko_cli::migration::with_hash(name, body).unwrap_or_else(|_| body.to_string())
+        };
+        std::fs::write(dir.join(name), stamped).expect("fixture is writable");
+    }
+    mochiko_cli::replay::replay_dir(&dir)
+        .expect("the fixture directory is readable")
+        .all_findings()
+        .into_iter()
+        .filter(|f| f.is_rejecting())
+        .map(|f| f.code)
+        .collect()
+}
+
+fn change(intent: &str, body: &str) -> String {
+    format!("grammar: 1\nid: 0002-change\nsequence: 2\nintent: {intent}\nchanges:\n{body}")
+}
+
+/// A2: the guard that keeps coverage complete as codes are added.
+///
+/// The previous version of this test compared two set sizes that were equal by construction, so
+/// it would have stayed green through any gap. This one runs every probe and asserts the codes
+/// actually raised are exactly `Code::REJECTING` — a new code with no probe fails it.
+#[test]
+fn every_rejecting_code_is_raised_by_some_probe() {
+    let mut raised: BTreeSet<Code> = BTreeSet::new();
+
+    // --- state-level, through the synthetic corpus ---
+    let mutations: [(&str, &str, &str); 17] = [
+        ("demo", "kind: command\n", "kind: command-schema\n"),
+        ("demo", "  - id: demo.sec.tools", "  - id: demo.sec.gone"),
+        ("demo", "id: demo.lead", "id: demo.Lead"),
+        ("demo", "id: demo.lead", "id: other.lead"),
+        ("demo", "id: demo.probe-first", "id: demo.lead"),
+        ("demo", "  - id: demo.sec.harness", "  - id: demo.sec.roles"),
+        ("demo", "labels: [seats]", "labels: [invented]"),
+        (
+            "demo",
+            "text: The lead plans the run.",
+            "text: The ${absent} plans.",
+        ),
+        ("demo", "extends: common.register", "extends: common.absent"),
+        (
+            "review-demo",
+            "extends: review-common.author-grader",
+            "extends: common.register",
+        ),
+        (
+            "demo",
+            "        extends: common.register\n        class: must\n",
+            "        extends: common.register\n",
+        ),
+        (
+            "demo",
+            "when: {seats: single}",
+            "when: {undeclared: single}",
+        ),
+        ("demo", "when: {seats: single}", "when: {seats: triple}"),
+        ("demo", "    values: [single, multi]", "    values: single"),
+        (
+            "demo",
+            "    resolution: standing-trigger",
+            "    resolution: moment-resolved(absent)",
+        ),
+        (
+            "demo",
+            "enforces: [demo.gate-acceptance]",
+            "enforces: [demo.absent]",
+        ),
+        ("demo", "class: advisory", "class: mandatory"),
+    ];
+    for (target, from, to) in mutations {
+        let state = corpus_with(target, |yaml| yaml.replace(from, to));
+        raised.extend(codes(&state));
+    }
+    // The remaining state-level clauses, each needing a shape a single replace cannot make.
+    raised.extend(codes(&corpus_with("demo", |yaml| {
+        yaml.replace("        enforces: [demo.gate-acceptance]\n", "")
+    })));
+    raised.extend(codes(&corpus_with("demo", |yaml| {
+        yaml.replace(
+            "        text: The lead plans the run.",
+            "        enforces: [demo.gate-acceptance]\n        text: The lead plans the run.",
+        )
+    })));
+    raised.extend(codes(&corpus_with("demo", |yaml| {
+        yaml.replace("id: demo.fail.no-acceptance", "id: demo.no-acceptance")
+    })));
+    raised.extend(codes(&corpus_with("review-demo", |yaml| {
+        yaml.replace(
+            "        class: must\n        kind: routing",
+            "        class: must\n        kind: fail",
+        )
+    })));
+    raised.extend(codes(&corpus_with("demo", |yaml| {
+        yaml.replace("kind: latitude", "kind: aspiration")
+    })));
+    raised.extend(codes(&corpus_with("demo", |yaml| {
+        yaml.replace("text: The lead plans the run.", "text: \"\"")
+    })));
+    raised.extend(codes(&corpus_with("demo", |yaml| {
+        yaml.replace(
+            "        text: The lead plans the run.",
+            "        anchor: not-a-real-anchor\n        text: The lead plans the run.",
+        )
+    })));
+    {
+        let mut value = serde_norway::Value::String("leaf".to_string());
+        for _ in 0..(mochiko_cli::model::MAX_CANONICAL_DEPTH + 10) {
+            let mut level = serde_norway::Mapping::new();
+            level.insert(serde_norway::Value::String("a".to_string()), value);
+            value = serde_norway::Value::Mapping(level);
+        }
+        let mut state = corpus();
+        state.docs.insert(
+            DocRef::new(DocKind::Template, "hostile"),
+            Document::from_value(DocKind::Template, &value).unwrap(),
+        );
+        raised.extend(codes(&state));
+    }
+
+    // --- log-level, through real migration logs ---
+    let genesis = ("0001-genesis.yaml", LOG_GENESIS.to_string());
+    raised.extend(log_codes(
+        "parse",
+        &[(
+            "0001-broken.yaml",
+            "grammar: 1\n  bad: [indent\n".to_string(),
+        )],
+    ));
+    raised.extend(log_codes(
+        "header",
+        &[("0001-noid.yaml", "grammar: 1\nsequence: 1\n".to_string())],
+    ));
+    raised.extend(log_codes(
+        "version",
+        &[(
+            "0001-future.yaml",
+            LOG_GENESIS.replace("grammar: 1", "grammar: 99"),
+        )],
+    ));
+    raised.extend(log_codes(
+        "collision",
+        &[
+            genesis.clone(),
+            (
+                "0002-a.yaml",
+                change(
+                    "A.",
+                    "  - {op: set-var, schema: command/demo, name: v, value: x}\n",
+                ),
+            ),
+            (
+                "0002-b.yaml",
+                change(
+                    "B.",
+                    "  - {op: set-var, schema: command/demo, name: w, value: y}\n",
+                ),
+            ),
+        ],
+    ));
+    raised.extend(log_codes(
+        "seq",
+        &[("0007-genesis.yaml", LOG_GENESIS.to_string())],
+    ));
+    raised.extend(log_codes(
+        "hash",
+        &[(
+            "0001-genesis.yaml",
+            // Only the header's `intent:`; the sections carry one each.
+            LOG_GENESIS.replacen("intent:", "hash: \"sha256:0000\"\nintent:", 1),
+        )],
+    ));
+    raised.extend(log_codes(
+        "unknown-op",
+        &[
+            genesis.clone(),
+            (
+                "0002-x.yaml",
+                change("X.", "  - {op: frobnicate, schema: command/demo}\n"),
+            ),
+        ],
+    ));
+    raised.extend(log_codes(
+        "malformed-op",
+        &[
+            genesis.clone(),
+            (
+                "0002-x.yaml",
+                change(
+                    "X.",
+                    "  - {op: import-document, kind: command, name: demo}\n",
+                ),
+            ),
+        ],
+    ));
+    raised.extend(log_codes(
+        "inapplicable",
+        &[
+            genesis.clone(),
+            (
+                "0002-x.yaml",
+                change(
+                    "X.",
+                    "  - {op: reword-rule, schema: command/demo, id: demo.absent, text: T}\n",
+                ),
+            ),
+        ],
+    ));
+    raised.extend(log_codes(
+        "filename",
+        &[genesis.clone(), ("genesis.yaml", LOG_GENESIS.to_string())],
+    ));
+    raised.extend(log_codes(
+        "mint-once",
+        &[
+            genesis.clone(),
+            ("0002-x.yaml", change("X.", "  - {op: mint-rule, schema: command/demo, section: demo.sec.roles, rule: {id: demo.floor, class: must, text: T}}\n")),
+        ],
+    ));
+    raised.extend(log_codes(
+        "protected",
+        &[
+            genesis.clone(),
+            ("0002-x.yaml", change("X.", "  - {op: tombstone-rule, schema: command/demo, id: demo.floor, disposition: gone}\n")),
+        ],
+    ));
+    raised.extend(log_codes(
+        "anchor",
+        &[
+            genesis.clone(),
+            ("0002-x.yaml", change("X.", "  - {op: supersede-rule, schema: command/demo, id: demo.floor, disposition: d, anchor: nope}\n")),
+        ],
+    ));
+
+    let expected: BTreeSet<Code> = Code::REJECTING.into_iter().collect();
+    let missing: Vec<&str> = expected.difference(&raised).map(|c| c.as_str()).collect();
+    assert!(
+        missing.is_empty(),
+        "these rejecting codes are declared but no probe raises them: {missing:?}"
+    );
+    let unexpected: Vec<&str> = raised.difference(&expected).map(|c| c.as_str()).collect();
+    assert!(
+        unexpected.is_empty(),
+        "these codes were raised but are not in Code::REJECTING: {unexpected:?}"
+    );
 }

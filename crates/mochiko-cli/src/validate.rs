@@ -11,8 +11,9 @@
 //! this tool owns, which is what keeps the widened kernel-class admission inside the bright line.
 
 use crate::model::{
-    is_anchor, is_dotted_id, is_slug, norm_value, Class, Condition, DocKind, DocRef, Document,
-    LabelRegistry, Ordered, Resolution, Rule, RuleKind, RuleSchema, Values,
+    canonical_depth, is_anchor, is_dotted_id, is_slug, norm_value, Class, Condition, DocKind,
+    DocRef, Document, LabelRegistry, Ordered, Resolution, Rule, RuleKind, RuleSchema, Values,
+    MAX_CANONICAL_DEPTH,
 };
 use crate::replay::State;
 use std::collections::{BTreeMap, BTreeSet};
@@ -43,7 +44,9 @@ pub enum Code {
     SequenceMismatch,
     HashMismatch,
     OpUnknown,
+    OpMalformed,
     OpInapplicable,
+    LogFileName,
     // document level
     KindDiscriminator,
     SectionSet,
@@ -71,10 +74,12 @@ pub enum Code {
     TextMissing,
     ProtectedExit,
     AnchorFormat,
+    DepthExceeded,
     // advisory
     Deixis,
     UnusedVar,
     UnusedCondition,
+    UnusedMoment,
     EnforcesCoverage,
     ConditionCoverage,
     Budget,
@@ -90,7 +95,9 @@ impl Code {
             Code::SequenceMismatch => "sequence-mismatch",
             Code::HashMismatch => "hash-mismatch",
             Code::OpUnknown => "op-unknown",
+            Code::OpMalformed => "op-malformed",
             Code::OpInapplicable => "op-inapplicable",
+            Code::LogFileName => "log-file-name",
             Code::KindDiscriminator => "kind-discriminator",
             Code::SectionSet => "section-set",
             Code::IdFormat => "id-format",
@@ -117,9 +124,11 @@ impl Code {
             Code::TextMissing => "text-missing",
             Code::ProtectedExit => "protected-exit",
             Code::AnchorFormat => "anchor-format",
+            Code::DepthExceeded => "depth-exceeded",
             Code::Deixis => "deixis",
             Code::UnusedVar => "unused-var",
             Code::UnusedCondition => "unused-condition",
+            Code::UnusedMoment => "unused-moment",
             Code::EnforcesCoverage => "enforces-coverage",
             Code::ConditionCoverage => "condition-coverage",
             Code::Budget => "budget",
@@ -133,6 +142,7 @@ impl Code {
             Code::Deixis
             | Code::UnusedVar
             | Code::UnusedCondition
+            | Code::UnusedMoment
             | Code::EnforcesCoverage
             | Code::ConditionCoverage
             | Code::Budget => Severity::Advisory,
@@ -141,7 +151,7 @@ impl Code {
     }
 
     /// The rejecting codes, so a test can assert every one has a probe.
-    pub const REJECTING: [Code; 34] = [
+    pub const REJECTING: [Code; 37] = [
         Code::GrammarParse,
         Code::GrammarHeader,
         Code::GrammarVersion,
@@ -149,7 +159,9 @@ impl Code {
         Code::SequenceMismatch,
         Code::HashMismatch,
         Code::OpUnknown,
+        Code::OpMalformed,
         Code::OpInapplicable,
+        Code::LogFileName,
         Code::KindDiscriminator,
         Code::SectionSet,
         Code::IdFormat,
@@ -176,13 +188,15 @@ impl Code {
         Code::TextMissing,
         Code::ProtectedExit,
         Code::AnchorFormat,
+        Code::DepthExceeded,
     ];
 
     /// The advisory codes.
-    pub const ADVISORY: [Code; 6] = [
+    pub const ADVISORY: [Code; 7] = [
         Code::Deixis,
         Code::UnusedVar,
         Code::UnusedCondition,
+        Code::UnusedMoment,
         Code::EnforcesCoverage,
         Code::ConditionCoverage,
         Code::Budget,
@@ -376,10 +390,10 @@ pub fn derive_prefix(schema: &RuleSchema) -> Result<String, Vec<String>> {
 // the deixis marker list (advisory)
 // ---------------------------------------------------------------------------
 
-/// The curated deixis markers: references that dangle once a rule is quoted on its own. The list
-/// is fixed and small by design — "this schema" and "the run" are legal self-reference and stay
-/// off it.
-const DEIXIS_MARKERS: [&str; 8] = [
+/// The curated deixis markers, ported from the shipped checker's expression exactly: references
+/// that dangle once a rule is quoted on its own. "this schema" and "the run" are legal
+/// self-reference and stay off the list deliberately.
+const DEIXIS_MARKERS: [&str; 10] = [
     "these rules",
     "this section",
     "the section above",
@@ -387,8 +401,47 @@ const DEIXIS_MARKERS: [&str; 8] = [
     "as stated above",
     "as stated earlier",
     "see above",
+    "see below",
     "aforementioned",
+    // `there is no <X> section` is matched separately, by `deixis_marker`, because its middle
+    // token is a wildcard.
+    "there is no",
 ];
+
+/// The first deixis marker in `text`, matched on word boundaries.
+///
+/// A substring test would fire on "this sectional", which is why the boundaries are explicit.
+fn deixis_marker(text: &str) -> Option<String> {
+    let lowered = text.to_ascii_lowercase();
+    for marker in DEIXIS_MARKERS {
+        let mut from = 0;
+        while let Some(at) = lowered[from..].find(marker) {
+            let start = from + at;
+            let end = start + marker.len();
+            let before_ok = start == 0 || !is_word_byte(lowered.as_bytes()[start - 1]);
+            let after_ok = end == lowered.len() || !is_word_byte(lowered.as_bytes()[end]);
+            if before_ok && after_ok {
+                if marker == "there is no" {
+                    // `there is no <X> section` — the wildcard form; a bare "there is no" is not
+                    // deictic on its own.
+                    let rest = lowered[end..].trim_start();
+                    let mut words = rest.split_whitespace();
+                    if words.next().is_some() && words.next() == Some("section") {
+                        return Some("there is no … section".to_string());
+                    }
+                } else {
+                    return Some(marker.to_string());
+                }
+            }
+            from = end;
+        }
+    }
+    None
+}
+
+fn is_word_byte(byte: u8) -> bool {
+    byte.is_ascii_alphanumeric() || byte == b'_'
+}
 
 // ---------------------------------------------------------------------------
 // the validator
@@ -404,7 +457,22 @@ pub fn validate(state: &State) -> Vec<Finding> {
         match document {
             Document::Rules(schema) => validate_rule_schema(state, doc, schema, &mut findings),
             Document::Labels(registry) => validate_registry(doc, registry, &mut findings),
-            Document::Opaque(_) => {}
+            Document::Opaque(value) => {
+                // Templates and shelf data carry no grammar, so the only thing to check is that
+                // they can be encoded at all: past the canonical encoder's depth bound a document
+                // would hash to a marker rather than to its content.
+                let depth = canonical_depth(value);
+                if depth > MAX_CANONICAL_DEPTH {
+                    findings.push(Finding::doc(
+                        Code::DepthExceeded,
+                        doc,
+                        format!(
+                            "nests at least {depth} levels deep, past the canonical encoder's \
+                             bound of {MAX_CANONICAL_DEPTH} — it cannot be hashed as itself"
+                        ),
+                    ));
+                }
+            }
         }
     }
     findings
@@ -453,10 +521,14 @@ fn validate_registry(doc: &DocRef, registry: &LabelRegistry, findings: &mut Vec<
 }
 
 /// A rule's fields after `extends:` resolution — the three inherited fields and nothing else.
-struct Resolved<'a> {
-    text: Option<&'a str>,
-    labels: Option<&'a [String]>,
-    pointer: Option<&'a str>,
+///
+/// Public so the render path resolves inheritance through this implementation rather than a
+/// second copy of it: a renderer that resolved `extends:` differently from the validator would
+/// show guidance the hard set never graded.
+pub struct ResolvedRule<'a> {
+    pub text: Option<&'a str>,
+    pub labels: Option<&'a [String]>,
+    pub pointer: Option<&'a str>,
 }
 
 fn validate_rule_schema(
@@ -518,9 +590,10 @@ fn validate_rule_schema(
     let mut fail_targets: BTreeSet<String> = BTreeSet::new();
     let mut floors_and_gates: Vec<String> = Vec::new();
     let mut char_budget = 0usize;
+    let mut all_text: Vec<String> = Vec::new();
 
     for rule in schema.rules() {
-        let resolved = check_extends(state, doc, rule, family, findings);
+        let resolved = resolve_extends(state, doc, rule, family, findings);
         check_ids(doc, rule, prefix.as_deref(), is_skill_side, findings);
         check_class_and_kind(doc, rule, is_skill_side, findings);
         check_labels(doc, rule, &resolved, registry.as_ref(), findings);
@@ -553,6 +626,9 @@ fn validate_rule_schema(
             floors_and_gates.push(rule.id.clone());
         }
         char_budget += resolved.text.map(str::len).unwrap_or(0);
+        if let Some(text) = resolved.text {
+            all_text.push(text.to_string());
+        }
     }
 
     // --- advisory reports ---
@@ -592,6 +668,41 @@ fn validate_rule_schema(
             }
         }
     }
+    // Declared moments. A moment is used by a moment-resolved condition or by a prose mention,
+    // and by nothing else. The prose half is a bare substring test, exactly as the shipped
+    // checker does it: a moment whose name is a common word reads as used on any incidental
+    // mention, so the check under-reports unused moments and never invents one.
+    let moment_resolved: BTreeSet<&str> = schema
+        .conditions
+        .iter()
+        .filter_map(|(_, condition)| match condition.resolution_of() {
+            Some(Resolution::MomentResolved(moment)) => Some(moment),
+            _ => None,
+        })
+        .map(|moment| {
+            schema
+                .moments
+                .iter()
+                .map(|(name, _)| name.as_str())
+                .find(|name| *name == moment)
+                .unwrap_or("")
+        })
+        .collect();
+    for (name, _) in &schema.moments {
+        if moment_resolved.contains(name.as_str()) {
+            continue;
+        }
+        if all_text.iter().any(|text| text.contains(name.as_str())) {
+            continue;
+        }
+        findings.push(Finding::node(
+            Code::UnusedMoment,
+            doc,
+            name,
+            "declared but named by no moment-resolved condition and mentioned in no rule text",
+        ));
+    }
+
     if !fail_targets.is_empty() {
         let uncovered: Vec<&String> = floors_and_gates
             .iter()
@@ -734,6 +845,20 @@ fn check_sections(
         ));
     }
     for section in &schema.sections {
+        // The set check above catches a malformed id as an "extra" whenever the prefix derives;
+        // this reports it as what it is, and still reports it when the prefix does not derive.
+        let well_formed = section
+            .id
+            .strip_prefix(&format!("{prefix}.sec."))
+            .is_some_and(is_slug);
+        if !well_formed {
+            findings.push(Finding::node(
+                Code::IdFormat,
+                doc,
+                &section.id,
+                format!("section id fails the dotted-slug format — want `{prefix}.sec.<slug>`"),
+            ));
+        }
         if section.title.trim().is_empty() || section.intent.trim().is_empty() {
             findings.push(Finding::node(
                 Code::TextMissing,
@@ -934,7 +1059,7 @@ fn check_class_and_kind(
 fn check_labels(
     doc: &DocRef,
     rule: &Rule,
-    resolved: &Resolved<'_>,
+    resolved: &ResolvedRule<'_>,
     registry: Option<&BTreeSet<String>>,
     findings: &mut Vec<Finding>,
 ) {
@@ -1112,14 +1237,19 @@ fn check_enforces(
     }
 }
 
-fn check_extends<'a>(
+/// Resolve a rule's `extends:` against its family's common library, reporting every way the
+/// binding can be wrong. Inheritance covers text, labels and pointer, and nothing else — class,
+/// kind, `when:` and `enforces:` are always local, so their absence stays meaningful.
+///
+/// Public for the render path (D-2). Pass an empty `findings` sink to resolve without reporting.
+pub fn resolve_extends<'a>(
     state: &'a State,
     doc: &DocRef,
     rule: &'a Rule,
     family: Option<Family>,
     findings: &mut Vec<Finding>,
-) -> Resolved<'a> {
-    let mut resolved = Resolved {
+) -> ResolvedRule<'a> {
+    let mut resolved = ResolvedRule {
         text: rule.text.as_deref(),
         labels: rule.labels.as_deref(),
         pointer: rule.pointer.as_deref(),
@@ -1226,7 +1356,7 @@ fn check_text(
     doc: &DocRef,
     schema: &RuleSchema,
     rule: &Rule,
-    resolved: &Resolved<'_>,
+    resolved: &ResolvedRule<'_>,
     used_vars: &mut BTreeSet<String>,
     findings: &mut Vec<Finding>,
 ) {
@@ -1262,22 +1392,21 @@ fn check_text(
         }
     }
 
-    let lowered = text.to_ascii_lowercase();
-    for marker in DEIXIS_MARKERS {
-        if lowered.contains(marker) {
-            findings.push(Finding::node(
-                Code::Deixis,
-                doc,
-                &rule.id,
-                format!("deictic reference {marker:?} — the referent lives outside the block"),
-            ));
-            break;
-        }
+    if let Some(marker) = deixis_marker(text) {
+        findings.push(Finding::node(
+            Code::Deixis,
+            doc,
+            &rule.id,
+            format!("deictic reference {marker:?} — the referent lives outside the block"),
+        ));
     }
 }
 
 /// Every `${name}` in a string, in order of appearance.
-fn placeholders(text: &str) -> Vec<String> {
+///
+/// Public for the render path (D-2), which substitutes the same placeholders the hard set
+/// checks for closure — one scanner, so the two can never disagree about what a placeholder is.
+pub fn placeholders(text: &str) -> Vec<String> {
     let mut out = Vec::new();
     let bytes = text.as_bytes();
     let mut i = 0;

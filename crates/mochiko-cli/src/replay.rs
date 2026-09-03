@@ -78,9 +78,15 @@ impl State {
 #[derive(Clone, Debug, Default)]
 pub struct Replay {
     pub state: State,
+    /// Findings raised while applying the log — parse failures, ordering problems, ops that
+    /// could not apply. The hard set's findings live in [`Replay::validation`].
     pub findings: Vec<Finding>,
+    /// Findings raised by the D6 hard set over the finished state.
+    pub validation: Vec<Finding>,
     /// The sequence numbers applied, in order.
     sequences: Vec<u32>,
+    /// The grammar version the applied log was written in.
+    grammar: Option<u32>,
 }
 
 impl Replay {
@@ -89,16 +95,33 @@ impl Replay {
         self.sequences.clone()
     }
 
-    /// Every rejecting finding.
+    /// The grammar version the applied log was written in, or `None` for an empty log.
+    pub fn grammar(&self) -> Option<u32> {
+        self.grammar
+    }
+
+    /// Every finding, replay and hard set alike, in that order.
+    pub fn all_findings(&self) -> Vec<Finding> {
+        let mut out = self.findings.clone();
+        out.extend(self.validation.iter().cloned());
+        out
+    }
+
+    /// Every rejecting finding, from both passes.
     pub fn rejecting(&self) -> impl Iterator<Item = &Finding> {
-        self.findings.iter().filter(|f| f.is_rejecting())
+        self.findings
+            .iter()
+            .chain(self.validation.iter())
+            .filter(|f| f.is_rejecting())
     }
 
     /// Whether this state may be rendered from.
     ///
-    /// A state built while any rejecting finding was raised is unusable for delivery: some op did
-    /// not apply, so what is in memory is a partial corpus. Callers on the delivery path check
-    /// this and exit 1 rather than render.
+    /// Two conditions, and both are necessary. A state built while a replay finding was raised is
+    /// a partial corpus, because some op did not apply. A state that fails the hard set is a
+    /// complete corpus that is not a valid one. Rendering from either is the silent-partial-
+    /// delivery class the no-fallback posture exists to rule out, so the delivery path checks
+    /// this and exits 1 rather than render.
     pub fn is_deliverable(&self) -> bool {
         self.rejecting().next().is_none()
     }
@@ -119,16 +142,32 @@ fn is_migration_file(name: &str) -> bool {
 /// finding, so one bad file never hides the rest of the log.
 pub fn replay_dir(dir: &Path) -> std::io::Result<Replay> {
     let mut names: Vec<String> = Vec::new();
+    let mut misnamed: Vec<String> = Vec::new();
     for entry in std::fs::read_dir(dir)? {
         let entry = entry?;
         let name = entry.file_name().to_string_lossy().into_owned();
         if is_migration_file(&name) {
             names.push(name);
+        } else if name.ends_with(".yaml") || name.ends_with(".yml") {
+            misnamed.push(name);
         }
     }
     names.sort();
+    misnamed.sort();
 
     let mut findings = Vec::new();
+    // Never a silent skip. A file named `genesis.yaml`, or `O001-genesis.yaml` typed with a
+    // letter O, would otherwise replay as if it did not exist — silent partial delivery, which
+    // is precisely the class the no-fallback posture rules out.
+    for name in misnamed {
+        findings.push(Finding::log(
+            Code::LogFileName,
+            format!(
+                "{name}: sits in the migration log but is not named `NNNN-<slug>.yaml`, so it \
+                 would replay as if absent"
+            ),
+        ));
+    }
     let mut migrations: Vec<Migration> = Vec::new();
     for name in names {
         let source = match std::fs::read_to_string(dir.join(&name)) {
@@ -177,19 +216,25 @@ pub fn replay_dir(dir: &Path) -> std::io::Result<Replay> {
     Ok(replay)
 }
 
-/// Load a log and refuse an unsound one.
+/// Load a log, replay it, run the D6 hard set over the result, and refuse anything unsound.
 ///
-/// The delivery path's entry point: `Ok` is a state safe to render from, `Err` the findings the
+/// The delivery path's entry point. `Ok` means two things at once: every op applied, and the
+/// finished state passes the hard set. `Err` carries every finding from both passes, which the
 /// caller prints before exiting 1.
-pub fn load(dir: &Path) -> Result<State, Vec<Finding>> {
+pub fn load_full(dir: &Path) -> Result<Replay, Vec<Finding>> {
     match replay_dir(dir) {
-        Ok(replay) if replay.is_deliverable() => Ok(replay.state),
-        Ok(replay) => Err(replay.findings),
+        Ok(replay) if replay.is_deliverable() => Ok(replay),
+        Ok(replay) => Err(replay.all_findings()),
         Err(e) => Err(vec![Finding::log(
             Code::GrammarParse,
             format!("{}: the migration log cannot be read: {e}", dir.display()),
         )]),
     }
+}
+
+/// [`load_full`], keeping only the state.
+pub fn load(dir: &Path) -> Result<State, Vec<Finding>> {
+    load_full(dir).map(|replay| replay.state)
 }
 
 fn code_of(error: &migration::ParseError) -> Code {
@@ -199,7 +244,8 @@ fn code_of(error: &migration::ParseError) -> Code {
         migration::ParseError::SequenceMismatch { .. } => Code::SequenceMismatch,
         migration::ParseError::HashMismatch { .. } => Code::HashMismatch,
         migration::ParseError::GrammarVersion { .. } => Code::GrammarVersion,
-        migration::ParseError::Change { .. } => Code::OpUnknown,
+        migration::ParseError::UnknownOp { .. } => Code::OpUnknown,
+        migration::ParseError::MalformedChange { .. } => Code::OpMalformed,
     }
 }
 
@@ -212,12 +258,20 @@ pub fn replay(migrations: &[Migration]) -> Replay {
     let mut out = Replay::default();
     for m in migrations {
         out.sequences.push(m.sequence);
+        out.grammar = Some(m.grammar);
         for (index, change) in m.changes.iter().enumerate() {
-            if let Err(finding) = apply(&mut out.state, change) {
+            // The migration's own header anchor is the authority a protected exit needs, so it
+            // travels with every change rather than being re-derived from the state the change
+            // is about to alter.
+            let authority = m.anchor.as_deref().filter(|a| is_anchor(a));
+            if let Err(finding) = apply(&mut out.state, change, authority) {
                 out.findings.push(with_origin(finding, &m.file, index));
             }
         }
     }
+    // The hard set runs over the finished state, never over an intermediate one: a migration is
+    // free to pass through a shape the hard set would reject, so long as it does not leave one.
+    out.validation = crate::validate::validate(&out.state);
     out
 }
 
@@ -282,7 +336,7 @@ fn decode_document(doc: &DocRef, content: &Value) -> Result<Document, Finding> {
     })
 }
 
-fn apply(state: &mut State, change: &Change) -> Result<(), Finding> {
+fn apply(state: &mut State, change: &Change, authority: Option<&str>) -> Result<(), Finding> {
     let doc = change.doc().clone();
     match change {
         // --- document level ---
@@ -321,6 +375,20 @@ fn apply(state: &mut State, change: &Change) -> Result<(), Finding> {
 
         // --- sections ---
         Change::MintSection { section, .. } => {
+            // A minted section starts empty. Silently discarding rules written inside one would
+            // lose content the author believed they had added.
+            if section
+                .as_mapping()
+                .and_then(|m| m.get(Value::String("rules".into())))
+                .is_some_and(|rules| !matches!(rules, Value::Null))
+            {
+                return Err(inapplicable(
+                    &doc,
+                    None,
+                    "the section carries `rules:` — a minted section starts empty, and its rules \
+                     arrive by `mint-rule` so each one is separately citable",
+                ));
+            }
             let decoded = Document::from_value(DocKind::Command, &section_wrapper(section))
                 .ok()
                 .and_then(|d| d.as_rules().and_then(|s| s.sections.first().cloned()))
@@ -391,6 +459,19 @@ fn apply(state: &mut State, change: &Change) -> Result<(), Finding> {
             let rule = schema
                 .find_rule_mut(id)
                 .ok_or_else(|| inapplicable(&doc, Some(id), "no such live rule"))?;
+            if let Some(why) = lowers_protection(rule, *field, value) {
+                if authority.is_none() {
+                    return Err(Finding::new(
+                        Code::ProtectedExit,
+                        Some(doc.clone()),
+                        Some(id.clone()),
+                        format!(
+                            "{why} — lowering protection is a protected exit and needs the \
+                             migration's own ruling anchor, exactly as `supersede-rule` does"
+                        ),
+                    ));
+                }
+            }
             set_field(&doc, rule, *field, value)?;
         }
         Change::MoveRule { id, section, .. } => {
@@ -530,6 +611,34 @@ fn apply(state: &mut State, change: &Change) -> Result<(), Finding> {
     Ok(())
 }
 
+/// Whether a `set-rule-field` would remove one of the three things that make a rule protected,
+/// and if so, which.
+///
+/// Protection is re-derived from the rule's current fields, so without this guard a migration
+/// could downgrade a floor rule and retire it in the next op of the same list — the retire step
+/// would see an ordinary rule and let it go. The audit found exactly that. Raising protection
+/// (promoting a rule to a floor, giving it an anchor) needs no authority; only lowering does.
+fn lowers_protection(rule: &Rule, field: RuleField, value: &Value) -> Option<String> {
+    let new = value.as_str();
+    match field {
+        RuleField::Class if rule.is_floor() && new != Some("floor") => Some(match new {
+            Some(other) => format!("`class: floor` would become `class: {other}`"),
+            None => "`class: floor` would be cleared".to_string(),
+        }),
+        RuleField::Kind if rule.is_fail() && new != Some("fail") => Some(match new {
+            Some(other) => format!("`kind: fail` would become `kind: {other}`"),
+            None => "`kind: fail` would be cleared".to_string(),
+        }),
+        RuleField::Anchor if rule.anchor.is_some() && new != rule.anchor.as_deref() => {
+            Some(match new {
+                Some(other) => format!("the rule's ruling anchor would become {other:?}"),
+                None => "the rule's ruling anchor would be cleared".to_string(),
+            })
+        }
+        _ => None,
+    }
+}
+
 fn mint_once(doc: &DocRef, id: &str) -> Finding {
     Finding::new(
         Code::MintOnce,
@@ -596,14 +705,14 @@ fn set_field(
             rule.labels = if clearing {
                 None
             } else {
-                Some(string_list(value).ok_or_else(|| bad("a list of label names"))?)
+                Some(string_list(value).ok_or_else(|| bad("a list of label names, all text"))?)
             }
         }
         RuleField::Enforces => {
             rule.enforces = if clearing {
                 None
             } else {
-                Some(string_list(value).ok_or_else(|| bad("a list of rule ids"))?)
+                Some(string_list(value).ok_or_else(|| bad("a list of rule ids, all text"))?)
             }
         }
         RuleField::When => {
@@ -612,17 +721,22 @@ fn set_field(
             } else {
                 let map = value
                     .as_mapping()
-                    .ok_or_else(|| bad("a mapping of dimension → value"))?;
-                map.iter()
-                    .map(|(k, v)| {
-                        let name = k.as_str().unwrap_or_default().to_string();
-                        let term = match v {
-                            Value::Sequence(items) => WhenValue::List(items.clone()),
-                            other => WhenValue::Scalar(other.clone()),
-                        };
-                        (name, term)
-                    })
-                    .collect()
+                    .ok_or_else(|| bad("a mapping of dimension name to value"))?;
+                let mut terms = Vec::with_capacity(map.len());
+                for (key, v) in map {
+                    // Never coerced. A non-string dimension key silently becoming "" would
+                    // corrupt the rule and surface later as a confusing downstream finding.
+                    let name = key
+                        .as_str()
+                        .ok_or_else(|| bad("dimension names that are text"))?
+                        .to_string();
+                    let term = match v {
+                        Value::Sequence(items) => WhenValue::List(items.clone()),
+                        other => WhenValue::Scalar(other.clone()),
+                    };
+                    terms.push((name, term));
+                }
+                terms
             }
         }
         RuleField::Class
@@ -654,14 +768,15 @@ fn set_field(
     Ok(())
 }
 
+/// A list of strings, or `None` when the value is not a list or any item is not text. A
+/// non-string item is a finding rather than an empty string: quiet corruption is worse than a
+/// rejected op.
 fn string_list(value: &Value) -> Option<Vec<String>> {
-    Some(
-        value
-            .as_sequence()?
-            .iter()
-            .map(|v| v.as_str().unwrap_or_default().to_string())
-            .collect(),
-    )
+    value
+        .as_sequence()?
+        .iter()
+        .map(|v| v.as_str().map(str::to_string))
+        .collect()
 }
 
 fn decode_rule(doc: &DocRef, value: &Value) -> Result<Rule, Finding> {
