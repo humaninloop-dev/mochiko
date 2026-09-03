@@ -36,6 +36,8 @@ pub struct Context {
 #[derive(Debug)]
 pub enum RenderError {
     UnknownPrimitive(String),
+    /// The log carries the name as both a command and a skill.
+    AmbiguousPrimitive(String),
     UnknownSection {
         primitive: String,
         section: String,
@@ -55,6 +57,12 @@ impl fmt::Display for RenderError {
                 f,
                 "no command or skill named '{name}' in the log — check the name against \
                  `mochiko-cli migrate status`"
+            ),
+            RenderError::AmbiguousPrimitive(name) => write!(
+                f,
+                "ambiguous: the log carries both a command and a skill named '{name}' — the two \
+                 name sets are meant to be disjoint, so this is a defect in the log, not in the \
+                 request"
             ),
             RenderError::UnknownSection {
                 primitive,
@@ -233,8 +241,11 @@ fn rule_block(
         out.push_str(substitute(text.trim_end(), &schema.vars).trim_end());
         out.push('\n');
     }
+    // An explicitly empty mirror (`enforces: []`, legal beside a `note:`) renders no key at all.
+    // The note that says why it is empty is maintainer metadata this render excludes, so the key
+    // would carry nothing; a fail node mirroring no local rule says that by the line's absence.
     if rule.is_fail() {
-        if let Some(enforces) = &rule.enforces {
+        if let Some(enforces) = rule.enforces.as_deref().filter(|ids| !ids.is_empty()) {
             out.push_str(&format!("enforces: {}\n", enforces.join(", ")));
         }
     }

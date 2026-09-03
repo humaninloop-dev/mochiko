@@ -300,6 +300,126 @@ fn an_empty_log_directory_exits_1_rather_than_rendering_nothing() {
     assert!(r.err.contains("empty"), "the halt says so:\n{}", r.err);
 }
 
+/// Every path treats an empty log the same way. `migrate validate` reporting green on a
+/// mis-pointed `--log-dir` would make it useless as a gate — the one job it has.
+#[test]
+fn every_subcommand_exits_1_on_an_empty_log_directory_and_names_it() {
+    let dir = scratch("emptyall");
+    let dir_string = dir.display().to_string();
+    for args in [
+        vec!["rules", "demo", "--section", "preamble"],
+        vec!["template", "demo-template"],
+        vec!["migrate", "status"],
+        vec!["migrate", "validate"],
+    ] {
+        let mut full = args.clone();
+        full.push("--log-dir");
+        full.push(&dir_string);
+        let r = run(&full);
+        assert_eq!(r.code, 1, "{args:?} should exit 1:\n{}{}", r.out, r.err);
+        assert!(
+            r.err.contains(&dir_string),
+            "{args:?}: the halt names the directory:\n{}",
+            r.err
+        );
+        assert!(
+            r.err.contains("empty"),
+            "{args:?}: the halt says the log is empty:\n{}",
+            r.err
+        );
+    }
+}
+
+/// A name the log carries as both a command and a skill is ambiguous, not absent. Reporting it as
+/// absent asserts the opposite of the truth and sends the reader hunting for a typo.
+#[test]
+fn a_name_carried_as_both_a_command_and_a_skill_is_reported_as_ambiguous() {
+    let dir = scratch("ambiguous");
+    write_migration(&dir, "0001-genesis.yaml", LOG);
+    write_migration(
+        &dir,
+        "0002-twin.yaml",
+        r#"
+grammar: 1
+id: 0002-twin
+sequence: 2
+intent: Import a skill sharing its name with a command.
+changes:
+  - op: import-document
+    kind: skill-labels
+    name: skill-labels
+    content:
+      kind: skill-labels
+      labels:
+        scope: What the skill covers.
+  - op: import-document
+    kind: skill
+    name: demo
+    content:
+      kind: skill
+      skill: demo
+      sections:
+        - id: demo.sec.independence
+          title: Independence
+          intent: Who may run this skill.
+          note: Nothing beyond the standing floor.
+          rules: []
+        - id: demo.sec.scope
+          title: Scope
+          intent: What is graded.
+          rules:
+            - id: demo.scope-fence
+              labels: [scope]
+              class: must
+              text: Grade the artifact.
+        - id: demo.sec.inputs
+          title: Inputs
+          intent: What the skill reads.
+          note: The artifact alone.
+          rules: []
+        - id: demo.sec.verdict
+          title: Verdict
+          intent: The verdict grammar.
+          note: PASS or FAIL.
+          rules: []
+        - id: demo.sec.output
+          title: Output
+          intent: The report shape.
+          note: One report.
+          rules: []
+        - id: demo.sec.reserved
+          title: Reserved
+          intent: Reserved to the user.
+          note: Nothing reserved.
+          rules: []
+"#,
+    );
+    let r = run(&[
+        "rules",
+        "demo",
+        "--section",
+        "preamble",
+        "--log-dir",
+        &dir.display().to_string(),
+    ]);
+    assert_eq!(r.code, 2, "an ambiguous name is a usage error:\n{}", r.err);
+    assert!(
+        r.err.contains("ambiguous"),
+        "the error says the name is ambiguous:\n{}",
+        r.err
+    );
+    assert!(
+        r.err.contains("command") && r.err.contains("skill"),
+        "the error names both kinds:\n{}",
+        r.err
+    );
+    assert!(
+        !r.err.contains("no command or skill named"),
+        "the error must not assert the name is absent:\n{}",
+        r.err
+    );
+}
+
 #[test]
 fn a_rejecting_log_exits_1_with_one_finding_per_line() {
     let dir = scratch("rejecting");

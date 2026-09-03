@@ -6,10 +6,10 @@ exit-code contract.
 **Plan:** returned 2026-09-03, lead-approved with rulings on all eight open questions (Q1–Q4, Q7,
 Q8 all as recommended) and three of five deltas granted to this seat (D-3 lib.rs pen widening,
 D-5 fixtures; D-1 and D-2 were landed by P1 in its fix round; D-4 goes to P3).
-**Base:** P1 frozen at `cd5a333`.
-**Gates at close:** `cargo test --all` 161 passed / 0 failed · `cargo fmt --all --check` clean ·
-`cargo clippy --all-targets -- -D warnings` clean · `cargo audit --deny warnings` clean over 31
-crate dependencies.
+**Base:** P1 frozen at `cd5a333`; the unit reviewed at `3792104`.
+**Gates at close (after fix round 1):** `cargo test --all` 164 passed / 0 failed ·
+`cargo fmt --all --check` clean · `cargo clippy --all-targets -- -D warnings` clean ·
+`cargo audit --deny warnings` clean over 31 crate dependencies.
 **Shipped files:** no file under `plugins/` changed byte-wise. `git status plugins/` is empty.
 
 ---
@@ -169,12 +169,12 @@ Run per `mochiko:patterns-code-minimalism`; what was **not** built, and why.
 
 | suite | tests | this seat's delta |
 |---|---|---|
-| `tests/cli.rs` | 20 | +20, new |
-| `tests/render.rs` | 26 | +14 (12 pre-existing, all re-based or moved) |
+| `tests/cli.rs` | 22 | +22, new (20 at first close, +2 in fix round 1) |
+| `tests/render.rs` | 27 | +15 (12 pre-existing, all re-based or moved; +1 in fix round 1) |
 | `tests/migration.rs` | 25 | — (P1) |
 | `tests/replay.rs` | 46 | — (P1) |
 | `tests/validate.rs` | 44 | — (P1) |
-| **total** | **161** | **+34** |
+| **total** | **164** | **+37** |
 
 Of the 12 tests `tests/render.rs` carried before, the 6 dispatch and exit-code tests moved to
 `tests/cli.rs` in re-based form, the 4 view tests were re-based onto the log, and the gate-5
@@ -240,7 +240,53 @@ Q2. The fixtures hold everything up to and including the `---` separator; the as
    directly, it is a one-line addition to `resolve_plugin_version` and takes its own ruling.
 4. **`cargo audit` fetches the advisory database over the network** — P1's item 4, unchanged.
 
-## 8. Suggested commit
+## 8. Fix round 1 (advisory)
+
+Three advisory defects from the independent audit
+(`wave1-reports/v2-surface-audit.md`, against `3792104`), closed test-first. Each opened with a
+failing test; the three are `an_explicitly_empty_enforces_mirror_renders_no_key_at_all`,
+`every_subcommand_exits_1_on_an_empty_log_directory_and_names_it`, and
+`a_name_carried_as_both_a_command_and_a_skill_is_reported_as_ambiguous`. Test count 161 → 164.
+
+### F1 — an empty `enforces:` mirror rendered a contentless key
+
+`src/render.rs`. `Some(vec![])` is legal — the D6 empty-with-reason mirror — and `join` on it
+yields the empty string, so a fail node carrying it emitted a bare `enforces:` line. **Ruled: the
+line is omitted outright for an empty list**, and the reason is *not* rendered.
+
+The audit offered the alternative of surfacing the rule's `note:` for this one case. It was
+declined, because the note is exactly what the Q4 ruling excludes. Its origin settles the
+question: in the shipped corpus the reason is a `# D6 empty-with-reason:` YAML **comment**, which
+the migration grammar carries as `note:` data only because comments do not survive a typed model.
+It has always been maintainer-facing text that no reader of the delivered rules saw, and admitting
+it now would both contradict Q4 and fail this seat's own
+`no_render_carries_an_anchor_or_a_rule_note`. A fail node that mirrors no local rule says so by
+the line's absence, which is what the corpus's own two cases mean.
+
+The live cases are `setup.fail.unclosed-trace` and `setup.fail.floor-category-uncovered`; both
+render cleanly under this rule once P3 lifts their comments into `note:`. The new test's last
+assertion is general rather than specific to `enforces` — no rendered line may be a key with an
+empty value — so a future field that forgets the same guard fails here.
+
+### F2 — an ambiguous primitive name reported the opposite of the truth
+
+`src/cli.rs`. `find_primitive` returned `None` both when neither kind carried the name and when
+**both** did, and the caller mapped `None` to "no command or skill named X" — asserting absence
+about a name the log carries twice. It now returns `Result<DocRef, RenderError>` and a third error
+arm, `RenderError::AmbiguousPrimitive`, names both kinds and says the fault is in the log rather
+than in the request. No shipped state reaches this today; the guard is for the state that could.
+
+### F3 — `migrate validate` returned success on an empty log directory
+
+`src/cli.rs`. `run_validate` called `replay::load_full` directly and so skipped the empty-log check
+every other path applied, meaning a CI gate wired to `migrate validate` passed on a mis-pointed
+`--log-dir`. The check was extracted into `report_empty_log` — one message, one exit code — and is
+now applied by `load_for_delivery` and by `run_validate` alike. Its wording was made neutral
+("it carries no migration file", replacing "nothing to deliver") because validate delivers nothing
+by design. The new test asserts all four subcommands behave identically on an empty directory,
+rather than pinning validate alone.
+
+## 9. Suggested commit
 
 Nothing was committed. Suggested message:
 

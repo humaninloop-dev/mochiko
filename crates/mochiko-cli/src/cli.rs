@@ -200,17 +200,25 @@ fn resolve_plugin_version(plugin_root: Option<&Path>) -> String {
 /// findings that are artefacts of the misreading, and D5's halt is the only honest thing to say.
 fn load_for_delivery(dir: &Path, err: &mut dyn Write) -> Result<Replay, i32> {
     match replay::load_full(dir) {
-        Ok(replay) if replay.state.docs.is_empty() => {
-            let _ = writeln!(
-                err,
-                "mochiko-cli: the migration log at {} is empty — nothing to deliver",
-                dir.display()
-            );
-            Err(1)
-        }
+        Ok(replay) if replay.state.docs.is_empty() => Err(report_empty_log(dir, err)),
         Ok(replay) => Ok(replay),
         Err(findings) => Err(report_load_failure(&findings, err)),
     }
+}
+
+/// Report an empty log directory and return the exit code every subcommand shares for it.
+///
+/// A directory that exists but holds no migration replays cleanly to an empty state with no
+/// findings. Left unchecked that reads as success — every primitive an unknown name, and a
+/// `migrate validate` gate green on a mis-pointed path. It is a delivery failure, so it exits 1
+/// and names the directory it looked in.
+fn report_empty_log(dir: &Path, err: &mut dyn Write) -> i32 {
+    let _ = writeln!(
+        err,
+        "mochiko-cli: the migration log at {} is empty — it carries no migration file",
+        dir.display()
+    );
+    1
 }
 
 /// Print a failed load and return its exit code: 3 for the version contract, 1 otherwise.
@@ -251,13 +259,12 @@ fn run_rules(
         Ok(replay) => replay,
         Err(code) => return code,
     };
-    let Some(doc) = find_primitive(&replay.state, primitive) else {
-        let _ = writeln!(
-            err,
-            "error: {}",
-            render::RenderError::UnknownPrimitive(primitive.to_string())
-        );
-        return 2;
+    let doc = match find_primitive(&replay.state, primitive) {
+        Ok(doc) => doc,
+        Err(e) => {
+            let _ = writeln!(err, "error: {e}");
+            return 2;
+        }
     };
     let ctx = context(&replay, plugin_root);
     let rendered = if section == PREAMBLE {
@@ -277,11 +284,15 @@ fn run_rules(
     }
 }
 
-/// A primitive name resolves to a command first, then a skill.
+/// A primitive name resolves to a command or a skill.
 ///
-/// The two name sets are disjoint today; an overlap would make the name ambiguous rather than
-/// silently picking one, so it is reported instead of resolved.
-fn find_primitive(state: &replay::State, name: &str) -> Option<crate::model::DocRef> {
+/// The two name sets are disjoint today. An overlap is neither resolved by picking one nor
+/// reported as an absence — the name is present twice, and saying it is missing would send the
+/// reader hunting for a typo instead of at the log.
+fn find_primitive(
+    state: &replay::State,
+    name: &str,
+) -> Result<crate::model::DocRef, render::RenderError> {
     use crate::model::{DocKind, DocRef};
     let command = DocRef::new(DocKind::Command, name);
     let skill = DocRef::new(DocKind::Skill, name);
@@ -289,9 +300,10 @@ fn find_primitive(state: &replay::State, name: &str) -> Option<crate::model::Doc
         state.docs.contains_key(&command),
         state.docs.contains_key(&skill),
     ) {
-        (true, false) => Some(command),
-        (false, true) => Some(skill),
-        _ => None,
+        (true, false) => Ok(command),
+        (false, true) => Ok(skill),
+        (true, true) => Err(render::RenderError::AmbiguousPrimitive(name.to_string())),
+        (false, false) => Err(render::RenderError::UnknownPrimitive(name.to_string())),
     }
 }
 
@@ -320,6 +332,9 @@ fn run_template(
 
 fn run_validate(dir: &Path, report: bool, out: &mut dyn Write, err: &mut dyn Write) -> i32 {
     let findings = match replay::load_full(dir) {
+        // An empty log is a failure here too: validate is the gate, and a gate that passes on a
+        // mis-pointed `--log-dir` is worse than no gate.
+        Ok(replay) if replay.state.docs.is_empty() => return report_empty_log(dir, err),
         Ok(replay) => replay.all_findings(),
         Err(findings) => {
             if let Some(skew) = findings.iter().find(|f| f.code == Code::GrammarVersion) {

@@ -581,6 +581,65 @@ fn a_non_fail_rule_renders_no_enforces_line() {
     assert!(!out.contains("enforces:"), "no enforces line:\n{out}");
 }
 
+/// The D6 empty-with-reason mirror: `enforces: []` is legal beside a `note:`, and the note is
+/// maintainer metadata the Q4 ruling keeps out of a render. A bare `enforces:` key would therefore
+/// carry nothing at all, so the line is omitted outright — the two shipped `setup.yaml` fail nodes
+/// are the live case once genesis lands.
+#[test]
+fn an_explicitly_empty_enforces_mirror_renders_no_key_at_all() {
+    let dir = log_dir("emptyenforces");
+    write_migration(&dir, "0001-genesis.yaml", RULES_LOG);
+    write_migration(
+        &dir,
+        "0002-empty-mirror.yaml",
+        r#"
+grammar: 1
+id: 0002-empty-mirror
+sequence: 2
+intent: Empty the fail node's mirror and record why, the way setup.yaml carries it.
+changes:
+  - op: set-rule-field
+    schema: command/demo
+    id: demo.fail.unaccepted
+    field: enforces
+    value: []
+  - op: set-rule-field
+    schema: command/demo
+    id: demo.fail.unaccepted
+    field: note
+    value: The obligation this mirrors is the user's, and lives outside the schema.
+"#,
+    );
+    let state = replay::load(&dir).unwrap_or_else(|findings| {
+        let lines: Vec<String> = findings.iter().map(ToString::to_string).collect();
+        panic!(
+            "the empty-mirror corpus should be deliverable:\n{}",
+            lines.join("\n")
+        )
+    });
+
+    let out = render::section(&state, &command(), "demo.sec.fail-conditions", &ctx()).unwrap();
+    assert!(
+        out.contains("### demo.fail.unaccepted"),
+        "the fail node still renders:\n{out}"
+    );
+    assert!(
+        !out.contains("enforces"),
+        "an empty mirror renders no key, not a dangling one:\n{out}"
+    );
+    assert!(
+        !out.contains("lives outside the schema"),
+        "the note stays maintainer metadata (Q4):\n{out}"
+    );
+    // Nothing dangling anywhere: no line is a key with an empty value.
+    for line in out.lines() {
+        assert!(
+            !line.trim_end().ends_with(':') || line.starts_with("##"),
+            "dangling key line {line:?} in:\n{out}"
+        );
+    }
+}
+
 #[test]
 fn an_empty_section_renders_its_note_and_counts_zero_rules() {
     let state = rules_state("emptysection");
