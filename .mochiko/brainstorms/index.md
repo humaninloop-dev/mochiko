@@ -45,8 +45,10 @@ One entry per session directory under `.mochiko/brainstorms/<topic-slug>/`, **ne
   a transition clause (MAJOR); GI-019 widened admission argued and routed through the same
   run (`Assumed`); GI-008 untouched; template-guidance D8/D1/D3, content-schema D1 + the
   crate-extension reservations superseded/discharged.
-- **Landed:** DECISIONS.md row (2026-09-03, "ruled — build pending") · BACKLOG "CLI
-  schema-delivery build" section (six-wave build item, wave 0 first) + the three delivery
+- **Landed:** DECISIONS.md row (2026-09-03, "ruled — wave 0 done, wave 1 pending") ·
+  BACKLOG "CLI schema-delivery build" section (six-wave build item; **wave 0 DONE
+  2026-09-03**, abort not tripped — [wave0-probe-report.md](cli-schema-delivery/wave0-probe-report.md);
+  D3 + D8 amended post-acceptance, user-ruled) + the three delivery
   watches annotated as superseded pending wave 6 · ROADMAP: folded into the
   Template-schema CLI Next row (cap held at 7).
 

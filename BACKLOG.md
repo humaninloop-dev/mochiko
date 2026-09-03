@@ -26,13 +26,14 @@ uncompressed. Prior groom narrative: git history (this line, before this groom).
 *(ruled + accepted 2026-09-03, `cli-schema-delivery` D1–D11 as review-amended; provenance:
 `.mochiko/brainstorms/cli-schema-delivery/record.md`; session ran in worktree `cli-context`)*
 
-- [ ] **Build: CLI-delivered schemas, six waves — wave 0 first** (2026-09-03; provenance:
-  record D9 + build surface) — wave 0 probes (a)–(h) under the **numeric abort**: a bare
-  `mochiko-cli` must resolve from the `!` preprocessing shell (`~/.cargo/bin` / Homebrew on
-  `PATH`), else D3 and D4 return to the user; also the `!` permission-grant question,
-  `Skill` / `UserPromptExpansion` matchers, `!` at subagent skill preload, largest render vs
-  the Bash inline ceiling, `claude plugin eval` fitness, crates.io / tap names, the
-  npm-package road's viability. Then wave 1 (crate: migration grammar, validator + 268-probe
+- [ ] **Build: CLI-delivered schemas, six waves — wave 0 DONE, wave 1 next** (2026-09-03;
+  provenance: record D9 + build surface + `wave0-probe-report.md`) — **wave 0 done
+  2026-09-03: abort NOT tripped** (`~/.cargo/bin` + Homebrew on the preprocessing `PATH`);
+  `!` needs an `allowed-tools` grant (fail-closed when denied); `Skill` +
+  `UserPromptExpansion` hooks inject and block; `!` runs at preload; inline ceiling ≈ 30k →
+  D3 amended (per-section `!` lines, head+tail confirmation); D8 amended (contract suite in
+  the `claude-mochiko` sandbox via `evals/run.py`; needs `sbx login`; ToS caveat on record);
+  `claude plugin eval` early-access, not the substrate. Then wave 1 (crate: migration grammar, validator + 268-probe
   port, in-memory replay, render, genesis import, release machinery, four test layers,
   derived views in today's shapes, CI filter) → wave 2 (`/mochiko:setup` amend run: GI-020
   rewrite + transition clause + Testability rows, GI-019 D11 clauses, GI-012 / GI-002 /

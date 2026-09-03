@@ -1010,6 +1010,66 @@ bounded idiom holds. **The one lead-repaired clause that reads as an amendment t
 user-ruled decision — D3's channel precedence — was put to the user at acceptance and
 confirmed (2026-09-03).**
 
+## Post-acceptance amendments — wave 0 probes (2026-09-03, user-ruled "adopt both")
+
+Wave 0 ran the same day as acceptance; full evidence in
+[`wave0-probe-report.md`](wave0-probe-report.md) (16 headless runs, ≈ $0.60, Claude Code
+2.1.258). **Numeric abort NOT tripped:** the `!` preprocessing shell sees `~/.cargo/bin`
+and Homebrew on `PATH`; D3 and D4 stand. Probe outcomes fold into the ground facts as
+**F12**: (a) `!` needs an `allowed-tools` grant — denied otherwise, and a denied line stops
+a command before the model runs, fails a subagent spawn at preload, and errors a Skill call
+(fail-closed); each sub-command and each `$( )` substitution is matched separately; bare
+names match; (b) `${CLAUDE_PLUGIN_ROOT}` substitutes in command bodies, skill bodies,
+`allowed-tools`, and hook commands; (c) `Skill` is a live `PreToolUse` matcher whose
+`additionalContext` reaches the model and whose `deny` errors the call;
+`UserPromptExpansion` matches the namespaced `command_name`, its stdout reaches the model,
+and exit 2 blocks the expansion before any model turn; `SessionStart` stdout reaches the
+model; (d) `!` runs at subagent skill preload; (e) **the Bash inline ceiling is ≈ 30,000
+characters** — 25k arrives whole, 35k and 60k arrive as a file-path notice whose preview
+keeps only the first line; (f) `claude plugin eval` exists but is early-access, org-gated,
+undocumented publicly; (g) `mochiko-cli` and `mochiko` free on crates.io, `mochiko-cli` free
+on npm, `humaninloop-dev/homebrew-tap` already exists; (h) the npm road stays plausible and
+unexercised. Extra: a `commands` directory-string manifest registered the probe plugin's
+command files as one skill under `--plugin-dir` while the identical form works for mochiko's
+plugin (array form and default scan both work; cause not isolated; the wave-3 pilot
+re-verifies on the real plugin).
+
+### D3 — amended (probe (e)): render chunking; head-and-tail confirmation — `Confident`
+
+**Statement:** the rules render is delivered **one `!` line per schema section** (six per
+command, six per skill — the family section set), each line its own preprocessing command
+under its own ceiling; the CLI gains `rules <primitive> --section <id>`; a whole-primitive
+render is never a single line. Every section render opens with the version-triple line and
+**closes with an end line** (`mochiko-cli rules end · <primitive> · <section> · <N> rules`);
+the `.md`'s halt clause requires **both** lines for every section — either missing, on any
+section, halts. **Rationale:** the ceiling is a platform fact (F12e) and the oversized
+preview keeps the head line, so a head-only confirmation would pass a truncated render;
+chunking keeps every render far under the ceiling as the corpus grows; the tail line makes
+truncation visible. Rejected: forcing every whole-primitive render under 30k (`implement`
+cannot promise it as it grows). User ruled "adopt both".
+
+### D8 — amended: the contract suite runs in the Docker AI sandbox via `evals/run.py`; GitHub CI keeps the crate layers — `Confident`
+
+**Statement:** the plugin contract suite's substrate is the existing sandbox mode of
+`evals/run.py` — sessions inside the Docker AI sandbox `claude-mochiko` (`sbx exec`, cwd
+`/tmp/eval-*`, `--setting-sources ""`, the plugin staged with `--plugin-dir`, stored
+subscription auth, no API key); `mochiko-cli` is placed on the sandbox `PATH` the D4 way
+(`sbx cp` of the built binary into `~/.cargo/bin` before the crates.io publish, `cargo
+install` inside the sandbox after it). The sandbox is Linux; the host is macOS — together
+they are the two OS rows, no CI matrix. **Gate split:** the full contract suite is a
+maintainer-side gate at `plugin.json` bumps (sandbox, no spend); GitHub CI keeps the four
+crate layers (`cargo test` · fmt · clippy · audit) and no headless runs — the "API key in
+CI secrets" clause of the original D8 is withdrawn. **Caveats on record:** the sandbox must
+be authenticated (`sbx login`, the user's action — it was not at wave 0); the sandbox is
+local-only; and the kinako record marks sandbox subscription auth a `Contested` ruling
+sustained against adverse Terms-of-Service evidence — automated headless use of a consumer
+subscription may sit outside what it permits; the user adopted with that on record.
+**Rationale:** the suite wants a fresh user machine — its own plugins, its own `PATH`, a
+real install step — and the sandbox is that machine; the runner already solved isolation
+and auth (probe-settled 2026-08-22). Rejected: host-only headless runs (no install
+isolation) and a GitHub-CI headless matrix (needs metered spend and secrets for a gate the
+sandbox runs free). User ruled "adopt both".
+
 ## Landed (2026-09-03)
 
 - `DECISIONS.md` row (2026-09-03) — status "ruled — build pending (wave 0 probes first)".
