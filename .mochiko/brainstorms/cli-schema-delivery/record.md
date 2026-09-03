@@ -1146,11 +1146,40 @@ values (`architecture` 7 · `implement` 14 · `common` 2) are resolved by no che
 included; pointer climbs outside the plugin root are permitted (Python parity); the
 citation scanner's word boundary is ASCII.
 
-**Open at acceptance:** the contract suite has not run a real case — the sandbox is
-unauthenticated (`sbx login` is the user's action; preflight `SKIPPED` exit 3 is the
-honest state) · `.claude/rules/mochiko/rust-cli.md` owes one line documenting
-`MOCHIKO_FULL_SIMILAR` (governance surface; rides the wave-2 amend run) · the manifest
-quirk from wave 0 (directory-string `commands` under `--plugin-dir`) re-verified at wave 3.
+**Open at acceptance:** the contract suite had not run a real case — the sandbox was
+unauthenticated; **closed 2026-09-04**: after the user re-authenticated the sandbox's own
+Claude session and the lead installed rustup + gcc there, the suite ran for real — `2/2
+cases passed, 2 ran, 1 assertion pending wave 3` (the hook-delivered install line), skew
+measured as the same harness-level abort with the D5 wording injected verbatim, evidence
+persisted per case under `evals/.work/` (F13) · `.claude/rules/mochiko/rust-cli.md` owes
+one line documenting `MOCHIKO_FULL_SIMILAR` (governance surface; rides the wave-2 amend
+run) · the manifest quirk from wave 0 (directory-string `commands` under `--plugin-dir`)
+re-verified at wave 3 · the fixture's `2>&1` does not carry the halt (the harness labels the
+output `[stderr]` regardless) — fixture wording to revisit at wave 3.
+
+### F13 — the absence halt is harness-level, measured (2026-09-04, sandbox `claude-mochiko`)
+
+With `mochiko-cli` off `PATH`, the fixture command's `!` line fails and Claude Code injects a
+user message `<local-command-stderr>Shell command failed for pattern "!`mochiko-cli rules
+brainstorm --section preamble 2>&1`": [stderr] /bin/bash: line 1: mochiko-cli: command not
+found</local-command-stderr>` — and **no model turn happens** (`num_turns` 0, empty result,
+`is_error` false, `claude -p` exit 0). The same class as wave 0's permission denial: a failing
+`!` line aborts the command before the model reads anything. **Consequences, lead-stated,
+put to the user at the next gate:** D3's positive-confirmation halt clause governs the cases
+that DO reach the model (a policy placeholder, an oversized-render stub); absence — and, to be
+measured, grammar skew, since a non-zero `!` exit is likely the same abort — halt earlier, at
+the harness, loudly (the stderr line is visible) but with no install line from the `.md`. The
+install line at fire is therefore carried by **D7(b)'s `UserPromptExpansion` hook** (exit 2
+with the install text — verified at wave 0 to be the visible result) and by the `SessionStart`
+hook's context; D7 is load-bearing, not belt-and-braces. D8's absence assertion re-keys to the
+measured shape (no model turn · the stderr line naming `mochiko-cli` · no schema Read), with
+"install line delivered" a wave-3 hook assertion. No ruling changes; two assertions do.
+
+The first authenticated contract-suite run also exposed a runner defect: it built into the
+worktree's shared `target/` and executed the host's macOS binary inside the Linux sandbox
+(`Syntax error: "(" unexpected`). A sandbox-local `--target-dir` build produces a working
+Linux binary; rustup and gcc were installed in the sandbox as a user would (D4's install
+shape). Runner fix round routed to P3.
 
 ## Landed (2026-09-03)
 

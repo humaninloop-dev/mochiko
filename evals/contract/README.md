@@ -35,6 +35,66 @@ Both are failure paths, because a success path needs a converted primitive and n
 The per-primitive cases, and the behavioural read-back metric with its pre-registered bar, arrive
 at wave 3.
 
+## What a halt looks like to the harness
+
+**Measured, not assumed.** Both wave-1 cases were run against the authenticated `claude-mochiko`
+sandbox, and both halt in the same place — earlier than the fixture's own halt clause:
+
+1. The `!` line runs and exits non-zero.
+2. Claude Code **aborts the prompt expansion** and injects the failing command's stderr as a user
+   message, wrapped in `<local-command-stderr>`.
+3. **No model turn happens.** The session ends with `num_turns: 0`, an empty `result`,
+   `is_error: false`, `subtype: "success"`, and `claude` itself exits **0**.
+
+The `.md` halt clause never executes, because the model never runs. That is a stronger guarantee
+than the clause — nothing can be delivered and nothing can be improvised — but it means a suite
+keyed to the clause's text would assert on something that is never written. The assertions are
+keyed to the measured shape instead: zero turns, no assistant event, and the injected
+`<local-command-stderr>` naming the right thing.
+
+The injected block, verbatim from the skew run:
+
+```
+Shell command failed for pattern "!`mochiko-cli rules brainstorm --section preamble 2>&1`": [stderr]
+0001-skew.yaml: the migration log is written in grammar 99, and this binary reads grammar 1..1. Update the binary: cargo install mochiko-cli
+```
+
+And from the absence run:
+
+```
+Shell command failed for pattern "!`mochiko-cli rules brainstorm --section preamble 2>&1`": [stderr] /bin/bash: line 1: mochiko-cli: command not found
+```
+
+Two consequences worth carrying forward:
+
+- **`claude` exit 0 proves nothing.** A suite reading only the exit code would call both halts
+  clean runs. The result event has to be parsed.
+- **The harness reports the failing command's output under `[stderr]` even though the fixture
+  redirects with `2>&1`.** The message reaches the model either way, so the redirect is not what
+  carries the halt. It stays because the wave-3 delivery path — where the command exits 0 and
+  there is no failure injection — is a different channel question, still unsettled.
+
+One assertion is **pending**, and reported as pending on every run rather than passed: "the
+install line reaches the model". At wave 3 the `UserPromptExpansion` hook exits 2 with that line
+and the SessionStart hook prints presence. Neither exists yet.
+
+## Evidence
+
+Every case writes its evidence to `evals/.work/contract-<case>-<id>/` (gitignored):
+
+| file | what it holds |
+|---|---|
+| `stream.jsonl` | the full stream-json transcript |
+| `stderr.txt` | the sandbox process's stderr |
+| `argv.txt` | the exact `claude` argv |
+| `script.sh` | the `sh -c` script the sandbox ran |
+| `verdict.json` | per-check status, the result event, the injected stderr blocks |
+| `direct-binary.txt` | skew only: the binary's own exit code, stdout and stderr |
+| `probe-plugin/` | the staged fixture, exactly as the run saw it |
+
+A pass/fail line is not evidence. A failing case has to be readable afterwards without re-running
+it, and a passing one has to be auditable by someone who was not there.
+
 ## Running it
 
 ```

@@ -318,6 +318,10 @@ This is the expected honest result — wave 0 recorded the sandbox unauthenticat
 is the user's own action. The case list prints before the skip, so "0 cases ran" is visible rather
 than inferred, and the exit code is 3 rather than 0 so no gate can mistake it for a pass.
 
+**Superseded by §13.** The sandbox was authenticated after this was written, and the suite now
+runs for real: exit 0, both cases ran, one assertion pending wave 3. The skip path above is still
+the behaviour on an unauthenticated machine; it is no longer this machine's result.
+
 ## 10. Open items
 
 1. **Closed.** `migrations/README.md` carried the pre-delta anchor grammar; the lead's two
@@ -525,3 +529,100 @@ case list. §10.1 is closed: the two `migrations/README.md` sentences landed.
 
 `.claude/rules/mochiko/rust-cli.md` is where a maintainer would look for the
 `MOCHIKO_FULL_SIMILAR` switch, and it is outside this seat's pen. Named delta for the lead.
+## 13. Runner fix round
+
+`evals/contract/run.py` only, on a lead-planned four-item brief, after the lead measured the
+suite in the now-authenticated `claude-mochiko` sandbox. **The suite runs for real: exit 0, both
+cases ran.** Section 9's SKIPPED preflight is superseded by this run.
+
+```
+ok    absence
+        ok    no model turn ran
+        ok    no assistant event
+        ok    the harness injected the shell's stderr, naming the missing binary
+        ok    no version triple reached the model
+        ok    no schema file was Read
+        ok    nothing was delivered
+        pend  the install line reaches the model — wave 3: the `UserPromptExpansion` hook exits 2
+              with the install line and the SessionStart hook prints presence. Neither exists
+              yet, so there is nothing here to assert and this is reported rather than passed.
+        evidence: evals/.work/contract-absence-7f245451
+ok    skew
+        ok    the binary halts on stderr with exit 3
+        ok    no model turn ran
+        ok    no assistant event
+        ok    the harness injected the D5 halt message
+        ok    no version triple reached the model
+        ok    no schema file was Read
+        ok    nothing was delivered
+        evidence: evals/.work/contract-skew-3f2c6c9d
+
+contract suite: 2/2 cases passed, 2 ran, 1 assertion(s) pending a later wave
+```
+
+### The build (F-a)
+
+`build_binary` now builds with `--manifest-path <repo>/Cargo.toml --target-dir
+/home/agent/mochiko-target`, and verifies by **running** `<bin> --version` and parsing
+`mochiko-cli <semver> · grammar a..b`. Two defects closed at once: the shared `target/` meant the
+Linux sandbox executed the host's macOS Mach-O binary — the symptom is `sh: Syntax error: "("
+unexpected`, which reads like a shell bug — and `test -x` passes on a binary of the wrong
+architecture, so the old check could not have caught it.
+
+### Evidence on disk (item 2)
+
+Each case writes `stream.jsonl`, `stderr.txt`, `argv.txt`, `script.sh`, `verdict.json` and the
+staged `probe-plugin/` under `evals/.work/contract-<case>-<id>/`; skew adds `direct-binary.txt`.
+Gitignored. A pass/fail line is not evidence: a failing case has to be readable afterwards without
+re-running it, and a passing one has to be auditable by someone who was not there.
+
+### Assertions re-keyed to the measured shape (items 3 and 4)
+
+Both cases halt in the same place, and it is **earlier than the fixture's halt clause**. The `!`
+line exits non-zero, Claude Code aborts the expansion and injects the failing command's stderr as
+a user message, and no model turn happens: `num_turns: 0`, empty `result`, `is_error: false`,
+`subtype: "success"`, and `claude` exits **0**. The `.md` clause never executes because the model
+never runs — a stronger guarantee than the clause, and a different one from what the suite used to
+assert. The skew shape was measured, not assumed, and matched.
+
+New assertions: `assert_no_model_turn` (parses the result event), `assert_no_assistant_event`, and
+`assert_local_command_stderr`, which pulls every `<local-command-stderr>` block out of the user
+messages and checks the fragments. Skew keeps the direct-binary assertion — exit 3, empty stdout,
+the D5 wording on stderr — so the halt is asserted from both sides. The injected block, verbatim:
+
+```
+Shell command failed for pattern "!`mochiko-cli rules brainstorm --section preamble 2>&1`": [stderr]
+0001-skew.yaml: the migration log is written in grammar 99, and this binary reads grammar 1..1. Update the binary: cargo install mochiko-cli
+```
+
+`pending` is now a first-class check status, printed on every run and carried in `verdict.json`.
+The "install line reached the model" assertion is `pending: wave 3` — the hooks that would emit it
+do not exist — so it can never read as a pass.
+
+### A defect this round found on its own
+
+The absence case set `PATH=/usr/bin:/bin`, which removes `claude` as well as `mochiko-cli`; the
+run died with `env: 'claude': No such file or directory` before a session started. That is a
+broken harness, not the halt the case is about, and the old suite would have reported it as an
+assertion failure. `sandbox_path()` now reads the sandbox's own `PATH`
+(`/home/agent/.local/bin:…`) and **verifies `mochiko-cli` is absent from it** rather than assuming
+a hand-written PATH is right. Absence runs on that PATH; skew prepends the binary directory.
+
+### Observation for the record, not acted on
+
+The harness reports the failed command's output under `[stderr]` even though the fixture redirects
+with `2>&1`. The halt message therefore reaches the model whichever channel it was written to, so
+last round's redirect is **not** what carries the halt. It stays: the wave-3 delivery path exits 0
+with no failure injection, and that is a different channel question, still unsettled. The fixture
+was out of this round's scope and was not touched.
+
+### Four helpers kept and labelled
+
+`assert_bang_ran`, `assert_version_triple`, `assert_end_line` and `assert_message` belong to the
+delivery path, where a model turn actually runs. They are unused by the two halt cases and are now
+commented as wave-3 machinery rather than left looking like dead code. `assert_bang_ran` in
+particular would fail a correct halt, since the block never reaches the model.
+
+`python3 -m py_compile` clean. Nothing under `plugins/` or `crates/` changed; the only files
+touched are `evals/contract/run.py` and `evals/contract/README.md`, which gained the measured
+"what a halt looks like to the harness" section the brief asked for. No commits.
