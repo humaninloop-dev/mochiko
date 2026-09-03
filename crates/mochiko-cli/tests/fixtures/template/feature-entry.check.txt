@@ -1,0 +1,12 @@
+# Feature Map Entry (per-capability) — checklist
+
+- [ ] Is the header FEAT-XXX + capability name present, with a Status (proposed/in-flight/delivered/retired) and the matching one-line status detail (and the unrefined/reconstructed markers where they apply)?
+- [ ] Is the Capability statement 1-3 lines in the system's own language, standing without reference to a story or spec?
+- [ ] Does Extent state what is in and what is notably not in, one line each (or is the entry an unrefined stub, which has no Extent)?
+- [ ] Are work rows one line each (newest first), each carrying a state (`live`/`pending`), acceptance, and run pointer — with `live` rows folding into Extent at landing and `pending` rows persisting?
+- [ ] Is each relation one line to a FEAT-ID with a relation kind (depends-on/extends/composes-with) and a one-line why?
+- [ ] Does Architecture point at the realizing store elements by id — SPN-XXX spine elements of any kind (container/boundary/flow) and/or AX-XXX concern rows (pointers only, no restated element content)?
+- [ ] Is the story trace IDs-and-pointers only, newest first (accumulating provenance)?
+- [ ] Are obligations one line each, distinct from work rows — deferred SCs, deferred seams, and cross-cutting extend obligations?
+
+---

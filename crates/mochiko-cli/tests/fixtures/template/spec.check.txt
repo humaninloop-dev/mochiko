@@ -1,0 +1,15 @@
+# Feature Specification — checklist
+
+- [ ] Is the Intent present with its six ruling lines (scope boundary, delivery, depth/rigor, UX-bearing, constraints, out of scope), each confirmed with the user, or a per-line not-applicable note?
+- [ ] Is the Overview present and <= 3 lines?
+- [ ] Is the User Stories section an index (one linked row per story, no inline story bodies), with each row carrying priority, FEAT-ID (or —), and disposition, and every rejected row a one-line why?
+- [ ] Are edge cases enumerated, one line each?
+- [ ] Are functional requirements present in FR-XXX form, one line each, technology-agnostic?
+- [ ] Are key entities listed conceptually and compactly?
+- [ ] Are success criteria present in SC-XXX form and measurable?
+- [ ] If the spec is UX-bearing, are both the SCR-XXX and FLOW-XXX tables present with a Feature column and the prototype pointer? If not UX-bearing, is the single waiver line present and nothing else?
+- [ ] Does Feature Selection carry the derived-features table, the filter rejections (or none), and a Selection recording the user's ruling with deferred features and deferred SCs surfaced?
+- [ ] Are material assumptions recorded (or the section omitted when none)?
+- [ ] Are open questions recorded (or the section omitted when none)?
+
+---

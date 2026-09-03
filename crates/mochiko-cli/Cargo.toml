@@ -7,6 +7,16 @@ license = "MIT OR Apache-2.0"
 publish = false
 
 [dependencies]
+# Only the features a machine-consumed CLI uses. `color` and `suggestions` are deliberately off:
+# nothing reads this output by eye, and dropping them keeps the anstream/anstyle/strsim chain out
+# of the audit surface.
+clap = { version = "4", default-features = false, features = [
+    "std",
+    "derive",
+    "help",
+    "usage",
+    "error-context",
+] }
 serde = { version = "1", features = ["derive"] }
 serde_norway = "0.9"
 sha2 = "0.10"

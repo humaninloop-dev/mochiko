@@ -1,0 +1,199 @@
+# Feature Specification
+
+The feature specification deliverable (spec.md). Dense by construction, human-legible.
+Follows the deliverable envelope (artifact-format.md). Omit empty sections. Section density
+norms: Overview <= 3 lines; stories per authoring-user-stories (scenarios one line each, 2-3
+per story); FR/SC/edge-case entries one line each; entities conceptual and compact.
+
+## Intent
+
+The confirmed one-screen synthesis from the intent stage — elicited rulings, one line
+each, confirmed by the user before authoring began. Governs the authoring depth, the
+feature derivation, and the stress-test rigor. Omit a line only if the probe was
+genuinely not applicable. Lines: Scope boundary; Delivery (whole vs subset now, first
+shippable value, sequencing constraints); Depth / rigor; UX-bearing (yes -> Screens &
+Flows + prototype obligated; no -> the waiver line); Constraints; Out of scope.
+
+_Density:_ one line per ruling
+
+## Overview
+
+A compact synthesis of what the feature is. No more than three lines.
+
+_Density:_ <= 3 lines
+
+## User Stories
+
+An INDEX only. Story content lives in per-story files: stories/US-*.md — each carries the
+story text, its acceptance scenarios, and its FEAT-ID mapping. The only story-native
+status is `rejected` (the derivation filter's verdict, with the why, recorded in the story
+file); every other status is derived by following the story's FEAT-ID to the feature map.
+One row per story. Columns: ID (linked to stories/US-N.md), Story (one breath), Priority
+(P1/P2/P3), Feature (FEAT-XXX or —), Disposition (homed | rejected — why).
+
+## Edge Cases
+
+The boundary and failure conditions the feature must handle — one line each.
+
+_Density:_ one line each
+
+## Functional Requirements
+
+Technology-agnostic functional requirements (FR-XXX), one line each, per
+authoring-requirements. RFC 2119 language.
+
+_Density:_ one line each
+
+## Key Entities
+
+The feature's domain nouns — conceptual and compact, not an OpenAPI schema.
+
+## Success Criteria
+
+Measurable success criteria (SC-XXX), one line each, per authoring-requirements.
+
+_Density:_ one line each
+
+## Screens & Flows
+
+Authored per mochiko:authoring-prototype from the Intent section's UX-bearing ruling. Not
+UX-bearing -> the single line "No UX surface — prototype waived at intent." and nothing
+else. UX-bearing -> both tables + the prototype pointer, in full. The manifest is binding
+(screens, data, actions); the prototype's pixels are advisory. Feature column lands at
+derivation as a re-tag pass (FEAT-XXX per row); screens of unselected features greyed
+coming-soon; a filter-rejected story's screens kept, greyed, marked rejected.
+
+Good example:
+UX-bearing form:
+
+| ID | Screen | Purpose | Data shown | Feature |
+|----|--------|---------|------------|---------|
+| SCR-001 | [name] | [one line] | [fields/collections rendered] | FEAT-001 |
+
+| ID | Flow | Steps | Story scenario | Feature |
+|----|------|-------|----------------|---------|
+| FLOW-001 | [name] | SCR-001 -> [action] -> SCR-002 | US-1 / [scenario] | FEAT-001 |
+
+**Prototype:** `prototype/` — clickable low-fi rendering of this manifest; serve with bun
+or open `prototype/index.html` directly. Flows and data are binding; layout and styling
+advisory.
+
+## Feature Selection
+
+Authored per mochiko:authoring-feature-map after stories are drafted. Derivation output
+(proposed entries, deltas, index-line drafts) stages in this spec workspace; the live map
+is written only at spec acceptance, as one atomic batch. The selection itself is the
+user's ruling — the derived table and filter verdicts are the producer's, the Selected
+line records the user's choice. Three sub-parts: Derived features (table: FEAT-ID,
+Feature, New/delta, Stories, SCs verified); Filter rejections (one line per rejected story
+— the why verbatim from its story file; omit when none); Selection (Selected build-now in
+dependency order; Deferred proposed entries carrying their SCs + seam obligations;
+Deferred SCs — the ones covered only by unselected features, shown at the moment of
+choice, never discovered at close).
+
+## Assumptions — optional
+
+Assumptions the specification rests on. Omit if empty.
+
+## Open Questions — optional
+
+Unresolved questions carried out of authoring. Omit if empty.
+
+## Skeleton
+
+# {{spec_title}}
+
+> Spec: {{spec_id}}
+> Created: {{created}}
+> Status: {{status}}
+
+---
+
+## Intent
+
+- **Scope boundary:** {{intent_scope}}
+- **Delivery:** {{intent_delivery}}
+- **Depth / rigor:** {{intent_depth}}
+- **UX-bearing:** {{intent_ux_bearing}}
+- **Constraints:** {{intent_constraints}}
+- **Out of scope:** {{intent_out_of_scope}}
+
+---
+
+## Overview
+
+{{overview}}
+
+---
+
+## User Stories
+
+| ID | Story (one breath) | Priority | Feature | Disposition |
+|----|--------------------|----------|---------|-------------|
+| [US-1](stories/US-1.md) | {{story_hook}} | P1 | FEAT-XXX | homed |
+| [US-2](stories/US-2.md) | {{story_hook}} | P2 | — | rejected — {{why, one line}} |
+
+---
+
+## Edge Cases
+
+{{edge_cases}}
+
+---
+
+## Functional Requirements
+
+{{functional_requirements}}
+
+---
+
+## Key Entities
+
+{{key_entities}}
+
+---
+
+## Success Criteria
+
+{{success_criteria}}
+
+---
+
+## Screens & Flows
+
+{{screens_and_flows}}
+
+---
+
+## Feature Selection
+
+### Derived features
+
+| FEAT-ID | Feature | New / delta | Stories | SCs verified |
+|---------|---------|-------------|---------|--------------|
+| FEAT-XXX | [name] | new (`proposed`) | US-1, US-3 | SC-1, SC-2 |
+| FEAT-YYY | [name] | delta on delivered | US-2 | SC-3 |
+
+### Filter rejections
+
+- US-4 — rejected: {{why, one line}}
+
+### Selection
+
+- **Selected (build now, dependency order):** FEAT-XXX, FEAT-YYY
+- **Deferred (`proposed` on the map):** FEAT-ZZZ — carries SC-4, SC-5 and [seam obligations]
+- **Deferred SCs:** SC-4, SC-5 — wait until FEAT-ZZZ builds
+
+---
+
+## Assumptions
+
+{{assumptions}}
+
+---
+
+## Open Questions
+
+{{open_questions}}
+
+---
