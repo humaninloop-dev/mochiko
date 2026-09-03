@@ -9,3 +9,4 @@ publish = false
 [dependencies]
 serde = { version = "1", features = ["derive"] }
 serde_norway = "0.9"
+sha2 = "0.10"

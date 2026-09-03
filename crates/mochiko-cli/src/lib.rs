@@ -6,7 +6,11 @@
 //! a process exit code) and the [`schema`] module (model + views) so both the binary and the
 //! integration tests drive the same code path.
 
+pub mod migration;
+pub mod model;
+pub mod replay;
 pub mod schema;
+pub mod validate;
 
 pub const USAGE: &str = "\
 mochiko-cli — template-schema guidance renderer
