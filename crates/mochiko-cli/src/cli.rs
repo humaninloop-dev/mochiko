@@ -173,7 +173,9 @@ pub fn dispatch(args: &[String], out: &mut dyn Write, err: &mut dyn Write) -> i3
         ),
         Command::Template { name, check } => run_template(&dir, &name, check, out, err),
         Command::Migrate { action } => match action {
-            MigrateAction::Validate { report } => run_validate(&dir, report, out, err),
+            MigrateAction::Validate { report } => {
+                run_validate(&dir, cli.plugin_root.as_deref(), report, out, err)
+            }
             MigrateAction::Status => run_status(&dir, out, err),
         },
         Command::Views { action } => match action {
@@ -371,9 +373,15 @@ fn run_template(
     }
 }
 
-fn run_validate(dir: &Path, report: bool, out: &mut dyn Write, err: &mut dyn Write) -> i32 {
+fn run_validate(
+    dir: &Path,
+    plugin_root: Option<&Path>,
+    report: bool,
+    out: &mut dyn Write,
+    err: &mut dyn Write,
+) -> i32 {
     let mut state: Option<replay::State> = None;
-    let findings = match replay::load_full(dir) {
+    let mut findings = match replay::load_full(dir) {
         // An empty log is a failure here too: validate is the gate, and a gate that passes on a
         // mis-pointed `--log-dir` is worse than no gate.
         Ok(replay) if replay.state.docs.is_empty() => return report_empty_log(dir, err),
@@ -390,6 +398,17 @@ fn run_validate(dir: &Path, report: bool, out: &mut dyn Write, err: &mut dyn Wri
             findings
         }
     };
+
+    // Pointer resolution reads the installed tree, so it runs only when one was named. Its
+    // status is printed below either way: a check that could not run must never read as one that
+    // passed.
+    let pointers = match (&state, plugin_root) {
+        (Some(state), Some(root)) => Some(crate::validate::validate_pointers(state, root)),
+        _ => None,
+    };
+    if let Some(pointers) = &pointers {
+        findings.extend(pointers.findings.iter().cloned());
+    }
 
     let mut rejecting = 0usize;
     let mut advisory = 0usize;
@@ -408,6 +427,19 @@ fn run_validate(dir: &Path, report: bool, out: &mut dyn Write, err: &mut dyn Wri
     // findings (wave-plan §3). Advisory throughout: the detector proposes candidates and never
     // gates, so it cannot move the exit code.
     if report {
+        let _ = match (&pointers, plugin_root) {
+            (Some(pointers), Some(root)) => writeln!(
+                out,
+                "pointer resolution: {} checked against {}",
+                pointers.checked,
+                root.display()
+            ),
+            _ => writeln!(
+                out,
+                "pointer resolution: skipped (no --plugin-root; pointers are unchecked, \
+                 not clean)"
+            ),
+        };
         if let Some(state) = &state {
             // Resolved from the log directory, never the process working directory.
             let allowlist = crate::similar::find_allowlist(dir);

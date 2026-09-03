@@ -1414,8 +1414,45 @@ fn every_rejecting_code_is_raised_by_some_probe() {
     let mut raised: BTreeSet<Code> = BTreeSet::new();
 
     // --- state-level, through the synthetic corpus ---
-    let mutations: [(&str, &str, &str); 17] = [
+    let mutations: [(&str, &str, &str); 25] = [
         ("demo", "kind: command\n", "kind: command-schema\n"),
+        // unit 1b — the family-2 checks and the shipped-checker residuals
+        (
+            "demo",
+            "      - id: demo.lead\n",
+            "      - id: demo.lead\n        ruling: 2026-01-01 session D1\n",
+        ),
+        (
+            "demo",
+            "      - id: demo.lead\n",
+            "      - id: demo.lead\n        severity: high\n",
+        ),
+        (
+            "demo",
+            "text: The lead plans the run.",
+            "text: The lead plans the run (demo.invented).",
+        ),
+        (
+            "demo",
+            "sections:\n",
+            "rules:\n  - id: demo.flat\n    class: must\n    labels: [seats]\n    text: Flat.\nsections:\n",
+        ),
+        (
+            "command-labels",
+            "  seats: Seat wiring.\n",
+            "  seats: Seat wiring.\n  fail-condition: The retired selector.\n",
+        ),
+        ("demo", "  intent: The adaptive-probe stage.", "  intent: \"\""),
+        (
+            "common",
+            "kind: command-common\nrules:\n",
+            "kind: command-common\nrules_: \n",
+        ),
+        (
+            "demo",
+            "      - id: demo.lead\n        labels: [seats]\n",
+            "      - id: demo.lead\n",
+        ),
         ("demo", "  - id: demo.sec.tools", "  - id: demo.sec.gone"),
         ("demo", "id: demo.lead", "id: demo.Lead"),
         ("demo", "id: demo.lead", "id: other.lead"),
@@ -1461,6 +1498,22 @@ fn every_rejecting_code_is_raised_by_some_probe() {
         let state = corpus_with(target, |yaml| yaml.replace(from, to));
         raised.extend(codes(&state));
     }
+    // Pointer resolution is the one rejecting check the state-only pass cannot raise: it reads a
+    // tree, so it is probed with one. Left out, the guard would call it covered by silence.
+    raised.extend(
+        validate::validate_pointers(
+            &corpus_with("review-demo", |yaml| {
+                yaml.replace(
+                    "      - id: review-demo.sibling-split\n",
+                    "      - id: review-demo.sibling-split\n        pointer: \"references/ABSENT.md\"\n",
+                )
+            }),
+            &pointer_root(),
+        )
+        .findings
+        .into_iter()
+        .map(|f| f.code),
+    );
     // The remaining state-level clauses, each needing a shape a single replace cannot make.
     raised.extend(codes(&corpus_with("demo", |yaml| {
         yaml.replace("        enforces: [demo.gate-acceptance]\n", "")
@@ -1631,5 +1684,662 @@ fn every_rejecting_code_is_raised_by_some_probe() {
     assert!(
         unexpected.is_empty(),
         "these codes were raised but are not in Code::REJECTING: {unexpected:?}"
+    );
+}
+
+// ---------------------------------------------------------------------------
+// unit 1b — the family-2 checks
+// ---------------------------------------------------------------------------
+
+/// A rule key the model does not know is preserved rather than dropped, and reported.
+///
+/// Before this, an unknown key vanished at decode: the round trip was silently lossy and the D16
+/// guard had nothing to name. The key is kept in `extra`, re-emitted, and rejected.
+#[test]
+fn an_unknown_rule_key_is_preserved_through_the_round_trip() {
+    let value: serde_norway::Value = serde_norway::from_str(
+        "id: demo.lead\nclass: must\ntext: T\nruling: 2026-01-01 session D1\n",
+    )
+    .expect("the fixture parses");
+    let rule = mochiko_cli::model::Rule::from_value(&value).expect("the fixture decodes");
+    assert_eq!(
+        rule.extra.len(),
+        1,
+        "an unknown key is preserved, not dropped"
+    );
+    assert_eq!(rule.extra[0].0, "ruling");
+    assert_eq!(
+        mochiko_cli::model::canonical_hash(&value),
+        mochiko_cli::model::canonical_hash(&rule.to_value()),
+        "a rule carrying an unknown key still round-trips"
+    );
+}
+
+#[test]
+fn an_inline_ruling_field_is_rejected_as_superseded_grammar() {
+    probe(
+        "demo",
+        "      - id: demo.lead\n",
+        "      - id: demo.lead\n        ruling: 2026-01-01 session D1\n",
+        Code::SupersededField,
+    );
+}
+
+#[test]
+fn any_other_unknown_rule_key_is_rejected_by_its_own_code() {
+    probe(
+        "demo",
+        "      - id: demo.lead\n",
+        "      - id: demo.lead\n        severity: high\n",
+        Code::UnknownField,
+    );
+}
+
+/// The other half of [`probe`]: a mutation that must leave the hard set silent.
+///
+/// A check that never fires is worth as little as one that cannot fail, so every scanner here is
+/// pinned twice — once on the text it must catch, once on the text it must let past.
+fn clean_probe(target: &str, from: &str, to: &str, absent: Code) {
+    let state = corpus_with(target, |yaml| {
+        assert!(
+            yaml.contains(from),
+            "probe anchor {from:?} is not in {target}"
+        );
+        yaml.replace(from, to)
+    });
+    let found: Vec<String> = validate::validate(&state)
+        .iter()
+        .filter(|f| f.code == absent)
+        .map(|f| f.to_string())
+        .collect();
+    assert!(
+        found.is_empty(),
+        "mutating {target} ({from:?} -> {to:?}) must not raise {absent}, got {found:?}"
+    );
+}
+
+/// Every finding of one code, over an unmutated corpus edit.
+fn findings_of(state: &State, code: Code) -> Vec<String> {
+    validate::validate(state)
+        .into_iter()
+        .filter(|f| f.code == code)
+        .map(|f| f.to_string())
+        .collect()
+}
+
+// --- in-text citation resolution (ontology D5) ---
+
+#[test]
+fn rule_text_citing_a_node_that_never_existed_is_rejected() {
+    probe(
+        "demo",
+        "text: The lead plans the run.",
+        "text: The lead plans the run (demo.invented).",
+        Code::CiteUnresolved,
+    );
+}
+
+#[test]
+fn rule_text_citing_a_tombstoned_rule_is_rejected_as_a_superseded_reference() {
+    let state = corpus_with("demo", |yaml| {
+        yaml.replace(
+            "text: The lead plans the run.",
+            "text: The lead plans the run (demo.retired-node).",
+        )
+        .replace(
+            "tombstones:\n",
+            "tombstones:\n  - id: demo.retired-node\n    disposition: superseded at the wave\n",
+        )
+    });
+    let found = findings_of(&state, Code::CiteUnresolved);
+    assert_eq!(found.len(), 1, "one citation, one finding: {found:?}");
+    assert!(
+        found[0].contains("superseded reference"),
+        "a tombstoned citation reads as superseded, not as a dangle: {found:?}"
+    );
+}
+
+#[test]
+fn rule_text_citing_a_tombstoned_section_is_rejected() {
+    probe(
+        "demo",
+        "text: The lead plans the run.",
+        "text: The lead plans the run (demo.sec.harness).",
+        Code::CiteUnresolved,
+    );
+}
+
+#[test]
+fn rule_text_naming_a_section_that_never_existed_is_rejected() {
+    probe(
+        "review-demo",
+        "text: The sibling owns coverage; you own contradiction.",
+        "text: See review-demo.sec.absent for the seam.",
+        Code::CiteUnresolved,
+    );
+}
+
+#[test]
+fn a_citation_that_resolves_to_a_live_node_stays_clean() {
+    clean_probe(
+        "demo",
+        "text: The lead plans the run.",
+        "text: The lead plans the run, per demo.probe-first and demo.sec.roles.",
+        Code::CiteUnresolved,
+    );
+}
+
+#[test]
+fn a_file_suffix_token_is_a_path_and_never_a_citation() {
+    clean_probe(
+        "demo",
+        "text: The lead plans the run.",
+        "text: The lead reads demo.md and demo.yaml first.",
+        Code::CiteUnresolved,
+    );
+}
+
+#[test]
+fn the_bare_citation_form_is_scanned_like_the_parenthetical_one() {
+    probe(
+        "demo",
+        "text: The lead plans the run.",
+        "text: demo.invented governs the run.",
+        Code::CiteUnresolved,
+    );
+}
+
+/// A second command in state, so the citation scan has a sibling prefix to be foreign to.
+///
+/// The prefix is read off section ids rather than the document name, which is why this rewrites
+/// the ids as well as the `command:` field.
+fn corpus_with_a_sibling_command(edit: impl Fn(&str) -> String) -> State {
+    let mut state = corpus_with("demo", edit);
+    let (key, document) = doc_of(DocKind::Command, "other", &COMMAND.replace("demo", "other"));
+    state.docs.insert(key, document);
+    state
+}
+
+#[test]
+fn a_foreign_prefix_citation_is_advisory_and_never_a_dangle() {
+    let state = corpus_with_a_sibling_command(|yaml| {
+        yaml.replace(
+            "text: The lead plans the run.",
+            "text: The lead plans the run, as other.gate-acceptance requires.",
+        )
+    });
+    assert!(
+        findings_of(&state, Code::CiteUnresolved).is_empty(),
+        "a foreign prefix cannot be resolved here, so it never dangles"
+    );
+    assert_eq!(
+        findings_of(&state, Code::CiteForeign).len(),
+        1,
+        "it is named once, as a warning"
+    );
+}
+
+#[test]
+fn a_foreign_stem_citation_is_advisory_on_the_skill_side_too() {
+    let state = corpus_with("review-demo", |yaml| {
+        yaml.replace(
+            "text: The sibling owns coverage; you own contradiction.",
+            "text: The seam is authoring-demo.owns, not this seat's.",
+        )
+    });
+    assert!(findings_of(&state, Code::CiteUnresolved).is_empty());
+    assert_eq!(findings_of(&state, Code::CiteForeign).len(), 1);
+}
+
+#[test]
+fn an_own_stem_citation_that_dangles_is_rejected_on_the_skill_side() {
+    probe(
+        "review-demo",
+        "text: The sibling owns coverage; you own contradiction.",
+        "text: See review-demo.invented.",
+        Code::CiteUnresolved,
+    );
+}
+
+// --- the label-less rule, and the one absence that is inherited by design ---
+
+#[test]
+fn a_rule_carrying_no_labels_is_rejected() {
+    probe(
+        "demo",
+        "      - id: demo.lead\n        labels: [seats]\n",
+        "      - id: demo.lead\n",
+        Code::LabelsMissing,
+    );
+}
+
+#[test]
+fn a_locally_empty_labels_list_is_rejected_even_on_a_stub() {
+    probe(
+        "authoring-demo",
+        "        extends: authoring-common.independent-grade\n        class: floor\n",
+        "        extends: authoring-common.independent-grade\n        class: floor\n        labels: []\n",
+        Code::LabelsMissing,
+    );
+}
+
+/// A stub inheriting from a block the census assigned no label resolves label-less by design:
+/// the block is the single home of that ruling, so the absence is reported without failing.
+#[test]
+fn a_stub_inheriting_a_label_less_block_warns_rather_than_failing() {
+    let state = corpus_with("skill-authoring-common", |yaml| {
+        yaml.replace("    labels: [independence]\n", "")
+    });
+    assert!(
+        findings_of(&state, Code::LabelsMissing).is_empty(),
+        "an inherited absence never fails the stub"
+    );
+    let warned = findings_of(&state, Code::LabelsInherited);
+    assert_eq!(warned.len(), 1, "it is named once, on the stub: {warned:?}");
+    assert!(warned[0].contains("authoring-demo.independent-grade"));
+}
+
+#[test]
+fn a_common_block_carrying_no_labels_is_never_itself_a_finding() {
+    clean_probe(
+        "skill-authoring-common",
+        "    labels: [independence]\n",
+        "",
+        Code::LabelsMissing,
+    );
+}
+
+// --- the flat top-level `rules:` grammar (content-schema D14) ---
+
+#[test]
+fn a_command_schema_carrying_top_level_rules_is_rejected() {
+    probe(
+        "demo",
+        "sections:\n",
+        "rules:\n  - id: demo.flat\n    class: must\n    labels: [seats]\n    text: Flat.\nsections:\n",
+        Code::FlatRules,
+    );
+}
+
+#[test]
+fn a_skill_schema_carrying_top_level_rules_is_rejected() {
+    probe(
+        "review-demo",
+        "sections:\n",
+        "rules:\n  - id: review-demo.flat\n    class: must\n    labels: [verdict]\n    text: Flat.\nsections:\n",
+        Code::FlatRules,
+    );
+}
+
+// --- the retired `fail-condition` selector (ontology D1, build item 4) ---
+
+#[test]
+fn a_registry_still_carrying_the_retired_selector_is_rejected() {
+    probe(
+        "command-labels",
+        "  seats: Seat wiring.\n",
+        "  seats: Seat wiring.\n  fail-condition: The retired selector.\n",
+        Code::RetiredLabel,
+    );
+}
+
+#[test]
+fn the_retired_selector_named_in_a_section_intent_is_advisory() {
+    let state = corpus_with("demo", |yaml| {
+        yaml.replace(
+            "    intent: The fail set.",
+            "    intent: The rules labeled fail-condition.",
+        )
+    });
+    assert_eq!(findings_of(&state, Code::RetiredSelector).len(), 1);
+}
+
+#[test]
+fn the_retired_selector_named_in_a_rule_text_is_advisory() {
+    let state = corpus_with("demo", |yaml| {
+        yaml.replace(
+            "text: The lead plans the run.",
+            "text: The lead reads every fail-condition rule.",
+        )
+    });
+    assert_eq!(findings_of(&state, Code::RetiredSelector).len(), 1);
+}
+
+/// `fail-conditions` is live section vocabulary; only the retired singular is the selector.
+#[test]
+fn the_live_plural_section_slug_is_never_read_as_the_retired_selector() {
+    let state = corpus();
+    assert!(
+        findings_of(&state, Code::RetiredSelector).is_empty(),
+        "the fail-conditions section must not trip the singular lint"
+    );
+}
+
+// --- the skeleton sigil ---
+
+#[test]
+fn a_skeleton_sigil_in_rule_text_is_advisory() {
+    let state = corpus_with("demo", |yaml| {
+        yaml.replace(
+            "text: The lead plans the run.",
+            "text: The lead plans the {{run}}.",
+        )
+    });
+    assert_eq!(findings_of(&state, Code::SkeletonSigil).len(), 1);
+    assert!(findings_of(&state, Code::VarUnbound).is_empty());
+}
+
+// --- the library: pointless overrides and orphan blocks ---
+
+#[test]
+fn a_stub_whose_local_text_repeats_its_blocks_is_advisory() {
+    let state = corpus_with("demo", |yaml| {
+        yaml.replace(
+            "      - id: demo.register\n        extends: common.register\n",
+            "      - id: demo.register\n        extends: common.register\n        text: User-facing   prose follows the output style.\n",
+        )
+    });
+    let found = findings_of(&state, Code::PointlessOverride);
+    assert_eq!(
+        found.len(),
+        1,
+        "whitespace alone does not make an override: {found:?}"
+    );
+}
+
+#[test]
+fn a_local_text_that_actually_differs_is_no_pointless_override() {
+    clean_probe(
+        "demo",
+        "      - id: demo.register\n        extends: common.register\n",
+        "      - id: demo.register\n        extends: common.register\n        text: This command's prose follows the run's own style.\n",
+        Code::PointlessOverride,
+    );
+}
+
+#[test]
+fn a_common_block_bound_by_no_stub_is_advisory() {
+    let state = corpus_with("common", |yaml| {
+        yaml.replace(
+            "  - id: common.register\n",
+            "  - id: common.unbound\n    labels: [seats]\n    text: Nothing binds this.\n  - id: common.register\n",
+        )
+    });
+    let found = findings_of(&state, Code::OrphanBlock);
+    assert_eq!(found.len(), 1, "{found:?}");
+    assert!(found[0].contains("common.unbound"));
+}
+
+#[test]
+fn a_library_whose_family_has_no_member_in_state_makes_no_orphan_claim() {
+    let mut state = corpus();
+    state
+        .docs
+        .remove(&DocRef::new(DocKind::Skill, "authoring-demo"));
+    assert!(
+        findings_of(&state, Code::OrphanBlock).is_empty(),
+        "with no authoring skill in state, nothing can bind the authoring library"
+    );
+}
+
+#[test]
+fn every_block_bound_by_some_stub_makes_no_orphan_claim() {
+    assert!(findings_of(&corpus(), Code::OrphanBlock).is_empty());
+}
+
+// --- zero-member labels ---
+
+#[test]
+fn a_command_registry_label_no_rule_here_carries_is_advisory_per_document() {
+    let state = corpus_with("command-labels", |yaml| {
+        yaml.replace(
+            "  seats: Seat wiring.\n",
+            "  seats: Seat wiring.\n  unused-here: Carried by nothing.\n",
+        )
+    });
+    let found = findings_of(&state, Code::ZeroMemberLabel);
+    assert_eq!(found.len(), 1, "one command schema, one claim: {found:?}");
+    assert!(found[0].contains("unused-here"));
+}
+
+/// The skill claim is sweep-scoped: a per-family label is legally absent from any one skill, so
+/// only a label no swept skill carries is named — once, on the registry.
+#[test]
+fn a_skill_registry_label_no_swept_skill_carries_is_named_once() {
+    let state = corpus_with("skill-labels", |yaml| {
+        yaml.replace(
+            "  verdict: The clearing grammar.\n",
+            "  verdict: The clearing grammar.\n  unswept: Carried by no skill.\n",
+        )
+    });
+    let found = findings_of(&state, Code::ZeroMemberLabel);
+    assert_eq!(found.len(), 1, "named once, at sweep scope: {found:?}");
+    assert!(found[0].contains("unswept"));
+}
+
+#[test]
+fn labels_carried_across_the_swept_skills_make_no_claim() {
+    let found = findings_of(&corpus(), Code::ZeroMemberLabel);
+    assert!(
+        found.is_empty(),
+        "every synthetic label is carried somewhere: {found:?}"
+    );
+}
+
+// --- the remaining shipped-checker residuals ---
+
+#[test]
+fn a_when_term_naming_a_dimension_with_no_value_is_rejected() {
+    probe(
+        "demo",
+        "        when: {seats: single}",
+        "        when: {seats: []}",
+        Code::WhenValue,
+    );
+}
+
+#[test]
+fn the_same_node_tombstoned_twice_is_rejected() {
+    probe(
+        "demo",
+        "  - id: demo.sec.harness\n",
+        "  - id: demo.sec.harness\n    disposition: superseded twice\n  - id: demo.sec.harness\n",
+        Code::TombstoneIntegrity,
+    );
+}
+
+#[test]
+fn a_moment_declared_with_no_navigation_line_is_rejected() {
+    probe(
+        "demo",
+        "  intent: The adaptive-probe stage.",
+        "  intent: \"\"",
+        Code::MomentDeclaration,
+    );
+}
+
+#[test]
+fn a_library_carrying_no_blocks_is_rejected() {
+    probe(
+        "common",
+        "kind: command-common\nrules:\n",
+        "kind: command-common\nrules_: \n",
+        Code::DocumentEmpty,
+    );
+}
+
+#[test]
+fn a_registry_carrying_no_labels_mapping_is_rejected() {
+    probe(
+        "command-labels",
+        "kind: command-labels\nlabels:\n",
+        "kind: command-labels\nlabels_:\n",
+        Code::DocumentEmpty,
+    );
+}
+
+/// The skill registry reports through the same code, so neither grammar loses the check.
+#[test]
+fn a_skill_registry_carrying_no_labels_mapping_is_rejected() {
+    probe(
+        "skill-labels",
+        "kind: skill-labels\nlabels:\n",
+        "kind: skill-labels\nlabels_:\n",
+        Code::DocumentEmpty,
+    );
+}
+
+/// A section with no `id:` reports as a malformed id rather than as a distinct missing-key
+/// finding — the same defect, named by the limb that reaches it first.
+#[test]
+fn a_section_missing_its_id_is_rejected_as_a_malformed_id() {
+    probe(
+        "demo",
+        "  - id: demo.sec.ways-of-working\n",
+        "  - note: this section never minted an id\n",
+        Code::IdFormat,
+    );
+}
+
+// --- pointer resolution (skill-side; needs a plugin root) ---
+
+/// A scratch plugin root carrying the three files the pointer probes resolve against.
+///
+/// Built rather than mocked: the check reads the filesystem, so a fixture that did not is not
+/// exercising it. Idempotent, so parallel test binaries can each ask for it.
+fn pointer_root() -> PathBuf {
+    let root = PathBuf::from(env!("CARGO_TARGET_TMPDIR")).join("pointers");
+    for (dir, file) in [
+        ("skills/review-demo/references", "PRESENT.md"),
+        ("skills/authoring-demo/references", "SIBLING.md"),
+        ("templates", "AT-ROOT.md"),
+    ] {
+        let dir = root.join(dir);
+        std::fs::create_dir_all(&dir).expect("the scratch plugin root is writable");
+        std::fs::write(dir.join(file), "# fixture\n").expect("the fixture file writes");
+    }
+    root
+}
+
+/// Put `pointer` on `review-demo.sibling-split` and grade the corpus against the scratch root.
+fn pointer_findings(pointer: &str) -> Vec<String> {
+    let state = corpus_with("review-demo", |yaml| {
+        yaml.replace(
+            "      - id: review-demo.sibling-split\n",
+            &format!("      - id: review-demo.sibling-split\n        pointer: \"{pointer}\"\n"),
+        )
+    });
+    validate::validate_pointers(&state, &pointer_root())
+        .findings
+        .iter()
+        .map(|f| f.to_string())
+        .collect()
+}
+
+#[test]
+fn an_in_directory_pointer_that_resolves_is_clean() {
+    assert!(pointer_findings("references/PRESENT.md").is_empty());
+}
+
+#[test]
+fn a_cross_directory_pointer_that_resolves_is_clean() {
+    assert!(pointer_findings("../authoring-demo/references/SIBLING.md").is_empty());
+}
+
+#[test]
+fn a_pointer_to_a_file_that_does_not_exist_is_rejected() {
+    let found = pointer_findings("references/ABSENT.md");
+    assert_eq!(found.len(), 1, "{found:?}");
+    assert!(found[0].contains("pointer-unresolved") && found[0].contains("no file"));
+}
+
+#[test]
+fn a_cross_directory_climb_to_a_file_that_does_not_exist_is_rejected() {
+    let found = pointer_findings("../authoring-demo/references/ABSENT.md");
+    assert_eq!(found.len(), 1, "{found:?}");
+}
+
+/// Base-directory-relative is the installed-cache read path, so a path that only works from the
+/// plugin root dangles exactly where it is used. Its own message, because the fix differs.
+#[test]
+fn a_pointer_resolving_only_from_the_plugin_root_is_rejected() {
+    let found = pointer_findings("templates/AT-ROOT.md");
+    assert_eq!(found.len(), 1, "{found:?}");
+    assert!(found[0].contains("only from the plugin root"));
+}
+
+#[test]
+fn an_absolute_pointer_path_is_rejected() {
+    let found = pointer_findings("/references/PRESENT.md");
+    assert_eq!(found.len(), 1, "{found:?}");
+    assert!(found[0].contains("absolute"));
+}
+
+#[test]
+fn a_skill_name_pointer_is_a_name_and_never_a_path() {
+    assert!(pointer_findings("mochiko:patterns-sound-loop").is_empty());
+}
+
+#[test]
+fn the_pointer_pass_counts_what_it_checked() {
+    let state = corpus_with("review-demo", |yaml| {
+        yaml.replace(
+            "      - id: review-demo.sibling-split\n",
+            "      - id: review-demo.sibling-split\n        pointer: \"references/PRESENT.md\"\n",
+        )
+    });
+    let report = validate::validate_pointers(&state, &pointer_root());
+    assert_eq!(report.checked, 1, "a name-shaped pointer is not a check");
+}
+
+/// The state-only hard set never raises it: without a root there is nothing to resolve against,
+/// and a check that cannot run must not read as one that passed.
+#[test]
+fn the_state_only_validator_makes_no_pointer_claim() {
+    let state = corpus_with("review-demo", |yaml| {
+        yaml.replace(
+            "      - id: review-demo.sibling-split\n",
+            "      - id: review-demo.sibling-split\n        pointer: \"references/ABSENT.md\"\n",
+        )
+    });
+    assert!(findings_of(&state, Code::PointerUnresolved).is_empty());
+}
+
+/// The real corpus, against the real tree — the pin that would catch a resolution rule the
+/// shipped pointers do not actually satisfy.
+#[test]
+fn every_shipped_pointer_resolves_from_its_own_skill_directory() {
+    let report =
+        validate::validate_pointers(&shipped_state(), &repo_root().join("plugins/mochiko"));
+    assert!(
+        report.checked > 50,
+        "the shipped corpus carries path-shaped pointers to check, got {}",
+        report.checked
+    );
+    assert!(
+        report.findings.is_empty(),
+        "every shipped pointer resolves base-dir-relative, got:\n{}",
+        report
+            .findings
+            .iter()
+            .map(|f| f.to_string())
+            .collect::<Vec<_>>()
+            .join("\n")
+    );
+}
+
+/// The citation scanner reads the resolved text, so an inherited citation is the stub's own.
+#[test]
+fn a_citation_inherited_from_a_common_block_is_attributed_to_the_stub() {
+    let state = corpus_with("common", |yaml| {
+        yaml.replace(
+            "text: User-facing prose follows the output style.",
+            "text: User-facing prose follows demo.invented.",
+        )
+    });
+    let found = findings_of(&state, Code::CiteUnresolved);
+    assert!(
+        found.iter().any(|f| f.contains("demo.register")),
+        "the finding names the binding stub, not the library block: {found:?}"
     );
 }

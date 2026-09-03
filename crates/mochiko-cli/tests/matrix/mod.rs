@@ -13,6 +13,7 @@ use mochiko_cli::model::{
 use mochiko_cli::replay::State;
 use mochiko_cli::validate::{self, Code, Finding};
 use serde_norway::Value;
+use std::path::PathBuf;
 
 // ---------------------------------------------------------------------------
 // the fixture
@@ -26,6 +27,12 @@ pub struct Fixture {
     /// The block library, when the family has one.
     pub library: Option<DocRef>,
     pub registry: DocRef,
+    /// The plugin root pointer resolution reads, for the probes that need one.
+    ///
+    /// `None` by default, and deliberately: pointer resolution is the one check that reads a
+    /// tree rather than the store, so a probe that has not asked for a root gets no claim about
+    /// its pointers rather than a silent pass.
+    pub root: Option<PathBuf>,
 }
 
 fn decode(kind: DocKind, name: &str, yaml: &str) -> (DocRef, Document) {
@@ -53,6 +60,7 @@ impl Fixture {
             target: DocRef::new(DocKind::Command, "demo"),
             library: Some(DocRef::new(DocKind::CommandCommon, "common")),
             registry: DocRef::new(DocKind::CommandLabels, "command-labels"),
+            root: None,
         }
     }
 
@@ -80,6 +88,7 @@ impl Fixture {
             target: DocRef::new(DocKind::Skill, target),
             library: library.map(|name| DocRef::new(DocKind::SkillCommon, name)),
             registry,
+            root: None,
         }
     }
 
@@ -222,7 +231,36 @@ impl Fixture {
     }
 
     pub fn findings(&self) -> Vec<Finding> {
-        validate::validate(&self.state)
+        let mut findings = validate::validate(&self.state);
+        if let Some(root) = &self.root {
+            findings.extend(validate::validate_pointers(&self.state, root).findings);
+        }
+        findings
+    }
+
+    /// Point this fixture's pointer resolution at a scratch plugin root, and return its path.
+    ///
+    /// The tree is real because the check reads one: three files under two skill directories and
+    /// one at the root, which is the whole vocabulary the five pointer probes need. Writing it is
+    /// idempotent, so probes may ask for it in any order.
+    pub fn use_pointer_root(&mut self) -> PathBuf {
+        let root = PathBuf::from(env!("CARGO_TARGET_TMPDIR")).join("matrix-pointers");
+        for (dir, file) in [
+            ("skills/demo-grader/references", "PRESENT.md"),
+            ("skills/authoring-demo/references", "SIBLING.md"),
+            ("templates", "AT-ROOT.md"),
+        ] {
+            let dir = root.join(dir);
+            std::fs::create_dir_all(&dir).expect("the scratch plugin root is writable");
+            std::fs::write(dir.join(file), "# fixture\n").expect("the fixture file writes");
+        }
+        self.root = Some(root.clone());
+        root
+    }
+
+    /// Remove a skill from state, for the probes about what a sweep does *not* claim.
+    pub fn drop_skill(&mut self, name: &str) {
+        self.state.docs.remove(&DocRef::new(DocKind::Skill, name));
     }
 }
 

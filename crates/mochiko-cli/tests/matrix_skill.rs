@@ -10,11 +10,17 @@
 //! validator grades the whole corpus in one pass rather than one skill at a time.
 //!
 //! The four ledgers and their meaning are the same as `matrix_command.rs`.
+//!
+//! **Unit 1b (2026-09-04)** moved 26 probes out of `OUTSIDE_THE_HARD_SET` and into the ported
+//! set, including all five pointer-resolution probes and the sweep-scoped claims: a whole-state
+//! validator *is* the sweep, so "no orphan claim over a family with nothing swept" and "a label
+//! no swept schema carries" both have referents here. What stays outside is the per-single-skill
+//! run, which has none — the validator never grades one skill alone.
 
 mod matrix;
 
 use matrix::{Expect, Fixture, Probe};
-use mochiko_cli::model::{Condition, DocKind, Rule, Section};
+use mochiko_cli::model::{Condition, DocKind, Rule, Section, WhenValue};
 use mochiko_cli::validate::Code;
 use serde_norway::Value;
 
@@ -716,6 +722,237 @@ fn probes() -> Vec<Probe> {
         },
     ));
 
+    // --- unit 1b: the family-2 checks, re-claimed from OUTSIDE_THE_HARD_SET ---
+
+    // Pointer resolution (J-7). Base-directory-relative from the skill's own directory, which is
+    // the path the installed cache is read on — so a root-relative path dangles where it is used.
+    p.push(Probe::new(
+        "the in-directory and cross-directory pointers of the baseline resolve",
+        Expect::CleanOf(Code::PointerUnresolved),
+        |f| {
+            f.use_pointer_root();
+            f.rule("demo-grader.read-report").pointer = Some("references/PRESENT.md".into());
+            f.rule("demo-grader.deep-read").pointer =
+                Some("../authoring-demo/references/SIBLING.md".into());
+        },
+    ));
+    p.push(Probe::new(
+        "a pointer to a file that does not exist",
+        Expect::RejectOn(Code::PointerUnresolved, "demo-grader.read-report"),
+        |f| {
+            f.use_pointer_root();
+            f.rule("demo-grader.read-report").pointer = Some("references/ABSENT.md".into());
+        },
+    ));
+    p.push(Probe::new(
+        "a cross-directory climb to a file that does not exist",
+        Expect::RejectOn(Code::PointerUnresolved, "demo-grader.read-report"),
+        |f| {
+            f.use_pointer_root();
+            f.rule("demo-grader.read-report").pointer =
+                Some("../authoring-demo/references/ABSENT.md".into());
+        },
+    ));
+    p.push(Probe::new(
+        "an absolute pointer path",
+        Expect::RejectOn(Code::PointerUnresolved, "demo-grader.read-report"),
+        |f| {
+            f.use_pointer_root();
+            f.rule("demo-grader.read-report").pointer = Some("/references/PRESENT.md".into());
+        },
+    ));
+    p.push(Probe::new(
+        "a skill-name pointer is a name, not a path — skipped",
+        Expect::CleanOf(Code::PointerUnresolved),
+        |f| {
+            f.use_pointer_root();
+            f.rule("demo-grader.read-report").pointer = Some("mochiko:patterns-sound-loop".into());
+        },
+    ));
+    p.push(Probe::extra(
+        "a pointer resolving only from the plugin root is its own finding",
+        Expect::RejectOn(Code::PointerUnresolved, "demo-grader.read-report"),
+        |f| {
+            f.use_pointer_root();
+            f.rule("demo-grader.read-report").pointer = Some("templates/AT-ROOT.md".into());
+        },
+    ));
+
+    // In-text ID citation resolution. Own-stem tokens resolve here; a foreign stem resolves on
+    // its own document's run and is named in a warning.
+    p.push(Probe::new(
+        "a fabricated citation dangles",
+        Expect::RejectOn(Code::CiteUnresolved, "demo-grader.carve-out"),
+        |f| {
+            f.rule("demo-grader.carve-out").text =
+                Some("Grade the artifact, per demo-grader.ghost-rule.".into())
+        },
+    ));
+    p.push(Probe::new(
+        "a citation of a tombstoned rule is a superseded reference",
+        Expect::RejectOn(Code::CiteUnresolved, "demo-grader.carve-out"),
+        |f| {
+            f.tombstone("demo-grader.legacy-rule");
+            f.rule("demo-grader.carve-out").text =
+                Some("Grade as demo-grader.legacy-rule says.".into());
+        },
+    ));
+    p.push(Probe::new(
+        "a section-ID citation resolves",
+        Expect::CleanAbsent("demo-grader.sec.verdict, which"),
+        |f| {
+            f.rule("demo-grader.carve-out").text =
+                Some("The clearing grammar lives in demo-grader.sec.verdict.".into())
+        },
+    ));
+    p.push(Probe::new(
+        "a foreign-stem citation is a warning, not a dangle",
+        Expect::Advisory(Code::CiteForeign),
+        |f| {
+            f.rule("demo-grader.carve-out").text =
+                Some("The producer owns that, per authoring-demo.scope.".into())
+        },
+    ));
+    p.push(Probe::new(
+        "rule text naming a section that never existed",
+        Expect::RejectOn(Code::CiteUnresolved, "demo-grader.carve-out"),
+        |f| {
+            f.rule("demo-grader.carve-out").text =
+                Some("See demo-grader.sec.ghost for the carve-out.".into())
+        },
+    ));
+    p.push(Probe::new(
+        "rule text naming a tombstoned section",
+        Expect::RejectOn(Code::CiteUnresolved, "demo-grader.carve-out"),
+        |f| {
+            f.tombstone("demo-grader.sec.legacy");
+            f.rule("demo-grader.carve-out").text =
+                Some("See demo-grader.sec.legacy for the carve-out.".into());
+        },
+    ));
+
+    // Labels: the finding, and the one absence that is inherited by design.
+    p.push(Probe::new(
+        "a rule carrying no labels",
+        Expect::RejectOn(Code::LabelsMissing, "demo-grader.carve-out"),
+        |f| f.rule("demo-grader.carve-out").labels = None,
+    ));
+    p.push(Probe::new(
+        "a stub with a LOCAL empty labels: is still a finding",
+        Expect::RejectOn(Code::LabelsMissing, "demo-grader.default-fail"),
+        |f| f.rule("demo-grader.default-fail").labels = Some(Vec::new()),
+    ));
+    p.push(Probe::new(
+        "[authoring] a stub inheriting a label-less block warns, never fails",
+        Expect::AdvisoryOn(Code::LabelsInherited, "authoring-demo.envelope"),
+        |f| {
+            f.retarget("authoring-demo", Some("skill-authoring-common"));
+            f.common().blocks[0].labels = None;
+        },
+    ));
+
+    // The library: absence-meaningful fields stay local (C3), and an override that says nothing.
+    p.push(Probe::new(
+        "a common block carrying `kind:`",
+        Expect::RejectOn(Code::ExtendsClassLocal, "review-common.default-fail"),
+        |f| f.common().blocks[0].kind = Some("gate".into()),
+    ));
+    p.push(Probe::new(
+        "a common block carrying `when:`",
+        Expect::RejectOn(Code::ExtendsClassLocal, "review-common.default-fail"),
+        |f| {
+            f.common().blocks[0].when = vec![(
+                "depth".into(),
+                WhenValue::Scalar(Value::String("deep".into())),
+            )]
+        },
+    ));
+    p.push(Probe::new(
+        "a common block carrying `enforces:`",
+        Expect::RejectOn(Code::ExtendsClassLocal, "review-common.default-fail"),
+        |f| f.common().blocks[0].enforces = Some(vec!["demo-grader.never-author".into()]),
+    ));
+    p.push(Probe::new(
+        "a stub whose local text repeats the block's",
+        Expect::AdvisoryOn(Code::PointlessOverride, "demo-grader.default-fail"),
+        |f| {
+            f.rule("demo-grader.default-fail").text = Some(
+                "Never default to a clearing verdict — earned only by a completed hunt.".into(),
+            )
+        },
+    ));
+
+    // The sweep-scoped claims. A whole-state validator *is* the sweep, so these have referents —
+    // and each guard is probed by the state that would make an unguarded claim wrong.
+    p.push(Probe::new(
+        "[sweep] a common block bound by no stub in any swept skill",
+        Expect::AdvisoryOn(Code::OrphanBlock, "review-common.orphan"),
+        |f| {
+            f.common().blocks.push(Rule {
+                id: "review-common.orphan".into(),
+                labels: Some(vec!["verdict".into()]),
+                text: Some("No stub binds this block.".into()),
+                ..Rule::default()
+            })
+        },
+    ));
+    p.push(Probe::new(
+        "[sweep] all-bound authoring blocks make no orphan claim and no label claim",
+        Expect::CleanOf(Code::OrphanBlock),
+        |_| {},
+    ));
+    p.push(Probe::new(
+        "[sweep] no authoring schemas swept makes no authoring orphan claim",
+        Expect::CleanOf(Code::OrphanBlock),
+        |f| f.drop_skill("authoring-demo"),
+    ));
+    p.push(Probe::new(
+        "[sweep] the sweep makes no patterns orphan claim",
+        Expect::CleanOf(Code::OrphanBlock),
+        |f| {
+            // Only the patterns skill left in state. Its family ships no library by ruling, so
+            // neither library in state has a binder and neither can be called orphaned.
+            f.drop_skill("demo-grader");
+            f.drop_skill("authoring-demo");
+        },
+    ));
+    p.push(Probe::new(
+        "[sweep] a label unused by every swept schema is named once, at sweep end",
+        Expect::AdvisoryOn(Code::ZeroMemberLabel, "unswept"),
+        |f| {
+            f.labels()
+                .labels
+                .push(("unswept".into(), "carried by no skill".into()))
+        },
+    ));
+    p.push(Probe::new(
+        "[sweep] labels all carried across the swept schemas make no claim",
+        Expect::CleanOf(Code::ZeroMemberLabel),
+        |_| {},
+    ));
+
+    // The flat grammar sections superseded.
+    p.push(Probe::new(
+        "a flat top-level rules: key",
+        Expect::Reject(Code::FlatRules),
+        |f| {
+            f.skill_schema().blocks.push(Rule {
+                id: "demo-grader.flat".into(),
+                labels: Some(vec!["binding".into()]),
+                class: Some("must".into()),
+                text: Some("A rule outside every section.".into()),
+                ..Rule::default()
+            })
+        },
+    ));
+
+    // --- unit 1b: the shipped-checker residual on this side ---
+    p.push(Probe::new(
+        "the registry carrying no labels mapping",
+        Expect::Reject(Code::DocumentEmpty),
+        |f| f.labels().labels.clear(),
+    ));
+
     // --- an extra the Python matrix never had ---
     p.push(Probe::extra(
         "a section outside every family's set is reported against this family's",
@@ -761,41 +998,44 @@ const NOT_APPLICABLE: &[(&str, &str)] = &[
 ];
 
 const OUTSIDE_THE_HARD_SET: &[(&str, &str)] = &[
-    ("the registry carrying no labels mapping", "an empty registry is not itself a finding; every label reports instead"),
-    ("a flat top-level rules: key", "the model carries top-level `rules:` as a library's blocks; a skill schema with blocks is not flagged"),
-    ("an empty section written as `rules:` rather than `rules: []`", "a style warning about YAML spelling; the model reads both the same"),
-    ("a rule carrying no labels", "a label-less rule is not in the hard set"),
-    ("when: written as a list, not a conjunction mapping", "a shape error the decoder rejects before the validator sees it"),
-    ("the coverage report makes no claim over floors", "the Rust coverage report is per-value and does not restate the floor carve"),
-    ("a common block carrying `kind:`", "the absence-meaningful-field guard on library blocks is not ported"),
-    ("a common block carrying `when:`", "same"),
-    ("a common block carrying `enforces:`", "same"),
-    ("a stub whose local text repeats the block's", "the pointless-override warning is not ported"),
-    ("[sweep] a common block bound by no stub in any swept skill", "the orphan-block warning is not ported"),
-    ("a single-skill run makes no orphan claim", "there is no per-skill run: the validator always grades the whole state"),
-    ("the in-directory and cross-directory pointers of the baseline resolve", "pointer resolution reads the filesystem; the store carries no file layout"),
-    ("a pointer to a file that does not exist", "pointer resolution reads the filesystem"),
-    ("a cross-directory climb to a file that does not exist", "pointer resolution reads the filesystem"),
-    ("an absolute pointer path", "pointer resolution reads the filesystem"),
-    ("a skill-name pointer is a name, not a path — skipped", "pointer resolution reads the filesystem"),
-    ("a fabricated citation dangles", "in-text citation resolution is not in the D6 hard set"),
-    ("a citation of a tombstoned rule is a superseded reference", "in-text citation resolution is not in the D6 hard set"),
-    ("a section-ID citation resolves", "in-text citation resolution is not in the D6 hard set"),
-    ("a foreign-stem citation is a warning, not a dangle", "in-text citation resolution is not in the D6 hard set"),
-    ("rule text naming a section that never existed", "in-text citation resolution is not in the D6 hard set"),
-    ("rule text naming a tombstoned section", "in-text citation resolution is not in the D6 hard set"),
-    ("the pin absent entirely", "the grammar of a hand-written pin; the count is computed and printed"),
-    ("the pin plural where the count is 1", "the grammar of a hand-written pin"),
-    ("a second, disagreeing pin elsewhere in the body is caught", "the grammar of a hand-written pin"),
-    ("[authoring] a stub inheriting a label-less block warns, never fails", "the label-less-stub warning is not ported"),
-    ("a stub with a LOCAL empty labels: is still a finding", "a label-less rule is not in the hard set"),
-    ("[sweep] all-bound authoring blocks make no orphan claim and no label claim", "there is no sweep mode and no orphan claim"),
-    ("[sweep] no authoring schemas swept makes no authoring orphan claim", "there is no sweep mode"),
-    ("[sweep] a label unused by every swept schema is named once, at sweep end", "the zero-member label warning is not ported"),
-    ("[sweep] labels all carried across the swept schemas make no claim", "the zero-member label warning is not ported"),
-    ("a single-skill run makes no zero-member label claim", "the zero-member label warning is not ported"),
-    ("[sweep] a schema-less patterns member is never swept, never demanded of", "an unconverted skill has no document in state, so nothing demands one of it"),
-    ("[sweep] the sweep makes no patterns orphan claim", "there is no sweep mode and no orphan claim"),
+    (
+        "an empty section written as `rules:` rather than `rules: []`",
+        "a style warning about YAML spelling; the model reads both the same",
+    ),
+    (
+        "when: written as a list, not a conjunction mapping",
+        "a shape error the decoder rejects before the validator sees it",
+    ),
+    (
+        "the coverage report makes no claim over floors",
+        "the Rust coverage report is per-value and does not restate the floor carve",
+    ),
+    (
+        "a single-skill run makes no orphan claim",
+        "there is no per-skill run: the validator always grades the whole state",
+    ),
+    (
+        "the pin absent entirely",
+        "the grammar of a hand-written pin; the count is computed and printed",
+    ),
+    (
+        "the pin plural where the count is 1",
+        "the grammar of a hand-written pin",
+    ),
+    (
+        "a second, disagreeing pin elsewhere in the body is caught",
+        "the grammar of a hand-written pin",
+    ),
+    (
+        "a single-skill run makes no zero-member label claim",
+        "the warning itself is ported, sweep-scoped; what has no referent is the single-skill \
+         run — the validator always grades the whole state, so there is no narrower scope for \
+         the claim to be withheld from",
+    ),
+    (
+        "[sweep] a schema-less patterns member is never swept, never demanded of",
+        "an unconverted skill has no document in state, so nothing demands one of it",
+    ),
 ];
 
 include!("matrix/skill_probe_names.rs");

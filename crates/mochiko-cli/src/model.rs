@@ -347,9 +347,30 @@ pub struct Rule {
     /// The ruling anchor, folded onto the rule from the provenance sidecar at genesis. Present
     /// only in the maintainer build profile; the shipped log carries runtime content alone.
     pub anchor: Option<String>,
+    /// Every key the grammar does not know, kept in the order the document wrote them.
+    ///
+    /// Dropping an unknown key would make the round trip quietly lossy and leave the validator
+    /// with nothing to name: the D16 guard against an inline `ruling:` reports a field that, if
+    /// discarded at decode, no longer exists by the time the hard set runs. So the decoder keeps
+    /// what it does not understand, [`Rule::to_value`] writes it back, and
+    /// [`crate::validate`] rejects every entry — `superseded-field` for the one spelling a
+    /// ruling retired, `unknown-field` for anything else. No shipped rule carries one, so the
+    /// canonical hash of the corpus is unchanged.
+    pub extra: Ordered<Value>,
 }
 
+/// The keys [`Rule`] models. Anything else lands in [`Rule::extra`].
+pub const RULE_KEYS: [&str; 11] = [
+    "id", "labels", "class", "kind", "text", "when", "pointer", "extends", "enforces", "note",
+    "anchor",
+];
+
 impl Rule {
+    /// Decode one rule from its YAML mapping. The inverse of [`Rule::to_value`].
+    pub fn from_value(value: &Value) -> Result<Rule, DecodeError> {
+        decode_rule(value, "rule")
+    }
+
     /// The rule's effective kind, applying the `constraint` default.
     pub fn effective_kind(&self) -> RuleKind {
         match &self.kind {
@@ -693,6 +714,11 @@ fn decode_rule(value: &Value, path: &str) -> Result<Rule, DecodeError> {
         },
         note: opt_scalar(map, "note", path)?,
         anchor: opt_scalar(map, "anchor", path)?,
+        extra: map
+            .iter()
+            .filter_map(|(key, value)| key.as_str().map(|key| (key.to_string(), value.clone())))
+            .filter(|(key, _)| !RULE_KEYS.contains(&key.as_str()))
+            .collect(),
     })
 }
 
@@ -869,6 +895,11 @@ impl Rule {
         }
         put_opt(&mut map, "note", &self.note);
         put_opt(&mut map, "anchor", &self.anchor);
+        // Keys the grammar does not model are written back last, in document order, so a rule
+        // carrying one still round-trips rather than being silently thinned on the way out.
+        for (key, value) in &self.extra {
+            put(&mut map, key, value.clone());
+        }
         Value::Mapping(map)
     }
 }

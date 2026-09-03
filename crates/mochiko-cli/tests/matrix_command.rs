@@ -16,6 +16,13 @@
 //!   it later.
 //!
 //! `the_whole_python_matrix_is_accounted_for` asserts the four add up to 134.
+//!
+//! **Unit 1b (2026-09-04)** moved 28 probes out of the last ledger and into the first: the
+//! family-2 checks the wave ruled in — in-text citation resolution, the retired selector, the
+//! library warnings, the label-less rule, the `{{…}}` sigil, the inline `ruling:` guard and the
+//! flat `rules:` guard — plus six shipped-checker residuals. What is left there is family 1
+//! (shape errors the decoder rejects before a finding can be raised), family 4 (`.md` pin and
+//! report wording, dead under D6), and one named residual.
 
 mod matrix;
 
@@ -663,6 +670,232 @@ fn probes() -> Vec<Probe> {
         |f| f.rule("demo.lead-owns").anchor = Some("2026-08-27 demo-session D1".into()),
     ));
 
+    // --- unit 1b: the family-2 checks, re-claimed from OUTSIDE_THE_HARD_SET ---
+
+    // In-text ID citation resolution (ontology D5). One scanner, two limbs: section tokens
+    // resolve against the document's sections, everything else against its live rule ids.
+    p.push(Probe::new(
+        "rule text names a tombstoned node",
+        Expect::RejectOn(Code::CiteUnresolved, "demo.lead-owns"),
+        |f| {
+            f.tombstone("demo.sec.legacy");
+            f.rule("demo.lead-owns").text = Some("The lead owns demo.sec.legacy.".into());
+        },
+    ));
+    p.push(Probe::new(
+        "rule text names a node that never existed",
+        Expect::RejectOn(Code::CiteUnresolved, "demo.lead-owns"),
+        |f| {
+            f.rule("demo.lead-owns").text =
+                Some("The lead owns the run, per demo.sec.ghost.".into())
+        },
+    ));
+    p.push(Probe::new(
+        "a fabricated citation dangles",
+        Expect::RejectOn(Code::CiteUnresolved, "demo.escalate"),
+        |f| f.rule("demo.escalate").text = Some("Escalate to the lead (demo.ghost-rule).".into()),
+    ));
+    p.push(Probe::new(
+        "a citation of a tombstoned rule is a superseded reference",
+        Expect::RejectOn(Code::CiteUnresolved, "demo.escalate"),
+        |f| {
+            f.tombstone("demo.legacy-rule");
+            f.rule("demo.escalate").text = Some("Escalate as demo.legacy-rule says.".into());
+        },
+    ));
+    p.push(Probe::new(
+        "the bare (non-parenthetical) citation form is scanned",
+        Expect::RejectOn(Code::CiteUnresolved, "demo.escalate"),
+        |f| {
+            f.rule("demo.escalate").text =
+                Some("Escalation is bounded by demo.ghost-rule at all times.".into())
+        },
+    ));
+    p.push(Probe::new(
+        "a section-ID citation resolves",
+        Expect::CleanAbsent("demo.sec.roles, which"),
+        |f| {
+            f.rule("demo.escalate").text =
+                Some("The bare minimum is carried as the desk rules in demo.sec.roles.".into())
+        },
+    ));
+    p.push(Probe::new(
+        "a file-suffix token is not a citation",
+        Expect::CleanAbsent("cites spec.md"),
+        |f| {
+            f.rule("demo.escalate").text =
+                Some("The seat writes spec.md and demo.yaml, never a report.".into())
+        },
+    ));
+    p.push(Probe::new(
+        "a foreign-prefix citation is a warning, not a dangle",
+        Expect::Advisory(Code::CiteForeign),
+        |f| {
+            f.rule("demo.escalate").text =
+                Some("The specify run owns this, per spec.gate-acceptance.".into())
+        },
+    ));
+
+    // The retired `fail-condition` selector (ontology D1, build item 4).
+    p.push(Probe::new(
+        "retired label still in the registry",
+        Expect::RejectOn(Code::RetiredLabel, "fail-condition"),
+        |f| {
+            f.labels()
+                .labels
+                .push(("fail-condition".into(), "the retired selector".into()))
+        },
+    ));
+    p.push(Probe::new(
+        "the retired selector named in a section intent",
+        Expect::AdvisoryOn(Code::RetiredSelector, "demo.sec.roles"),
+        |f| f.section("roles").intent = "the rules labeled fail-condition".into(),
+    ));
+    p.push(Probe::new(
+        "the retired selector named in a rule text",
+        Expect::AdvisoryOn(Code::RetiredSelector, "demo.read-first"),
+        |f| f.rule("demo.read-first").text = Some("Read every fail-condition rule first.".into()),
+    ));
+
+    // The library: an override that says nothing new, and a block nothing binds.
+    p.push(Probe::new(
+        "a stub whose local text repeats the block's",
+        Expect::AdvisoryOn(Code::PointlessOverride, "demo.register"),
+        |f| {
+            f.rule("demo.register").text =
+                Some("User-facing prose follows the house register.".into())
+        },
+    ));
+    p.push(Probe::new(
+        "a common block bound by no stub",
+        Expect::AdvisoryOn(Code::OrphanBlock, "common.orphan"),
+        |f| {
+            f.common().blocks.push(Rule {
+                id: "common.orphan".into(),
+                labels: Some(vec!["binding".into()]),
+                text: Some("Nothing binds this block.".into()),
+                ..Rule::default()
+            })
+        },
+    ));
+
+    // C3: an absence-meaningful field is always local to the stub, never inherited.
+    for (name, mutate) in [
+        ("a common block carrying `kind:`", 0usize),
+        ("a common block carrying `when:`", 1),
+        ("a common block carrying `enforces:`", 2),
+    ] {
+        p.push(Probe::new(
+            name,
+            Expect::RejectOn(Code::ExtendsClassLocal, "common.register"),
+            match mutate {
+                0 => |f: &mut Fixture| {
+                    f.common().blocks[0].kind = Some("gate".into());
+                },
+                1 => |f: &mut Fixture| {
+                    f.common().blocks[0].when = vec![(
+                        "seats".into(),
+                        WhenValue::Scalar(Value::String("multi".into())),
+                    )];
+                },
+                _ => |f: &mut Fixture| {
+                    f.common().blocks[0].enforces = Some(vec!["demo.lead-owns".into()]);
+                },
+            },
+        ));
+    }
+    // Severity divergence, disclosed: the Python warns on `class:`, the Rust rejects. Kept
+    // rejecting because it is shipped behaviour the corpus already satisfies, and weakening a
+    // live check to match a retiring script would be the wrong direction.
+    p.push(Probe::porting(
+        "a common block carrying `class:` is a warning",
+        "a common block carrying `class:` (rejecting here; the Python warns)",
+        Expect::RejectOn(Code::ExtendsClassLocal, "common.register"),
+        |f| f.common().blocks[0].class = Some("must".into()),
+    ));
+
+    // Superseded and unmodelled grammar.
+    p.push(Probe::new(
+        "[regression] inline ruling: field",
+        Expect::RejectOn(Code::SupersededField, "demo.read-first"),
+        |f| {
+            f.rule("demo.read-first").extra.push((
+                "ruling".into(),
+                Value::String("2026-01-01 demo-session D1".into()),
+            ))
+        },
+    ));
+    p.push(Probe::new(
+        "[regression] flat top-level rules:",
+        Expect::Reject(Code::FlatRules),
+        |f| {
+            f.command().blocks.push(Rule {
+                id: "demo.flat".into(),
+                labels: Some(vec!["binding".into()]),
+                class: Some("must".into()),
+                text: Some("A rule outside every section.".into()),
+                ..Rule::default()
+            })
+        },
+    ));
+
+    // The remaining rollout checks.
+    p.push(Probe::new(
+        "a rule carrying no labels",
+        Expect::RejectOn(Code::LabelsMissing, "demo.read-first"),
+        |f| f.rule("demo.read-first").labels = None,
+    ));
+    p.push(Probe::new(
+        "a {{...}} skeleton sigil in rule text is a warning",
+        Expect::AdvisoryOn(Code::SkeletonSigil, "demo.read-first"),
+        |f| f.rule("demo.read-first").text = Some("Read the {{artifact}} in full.".into()),
+    ));
+    p.push(Probe::new(
+        "a registry label with no members here",
+        Expect::AdvisoryOn(Code::ZeroMemberLabel, "unused-here"),
+        |f| {
+            f.labels()
+                .labels
+                .push(("unused-here".into(), "carried by no rule".into()))
+        },
+    ));
+
+    // --- unit 1b: the shipped-checker residuals, each at its Python severity ---
+    p.push(Probe::new(
+        "when: naming a dimension with an empty value list",
+        Expect::RejectOn(Code::WhenValue, "demo.deep-probe"),
+        |f| f.rule("demo.deep-probe").when = vec![("mode".into(), WhenValue::List(Vec::new()))],
+    ));
+    p.push(Probe::new(
+        "the same node tombstoned twice",
+        Expect::RejectOn(Code::TombstoneIntegrity, "demo.legacy"),
+        |f| {
+            f.tombstone("demo.legacy");
+            f.tombstone("demo.legacy");
+        },
+    ));
+    p.push(Probe::new(
+        "a moment declared with no navigation line",
+        Expect::RejectOn(Code::MomentDeclaration, "open"),
+        |f| f.command().moments[0].1 = "  ".into(),
+    ));
+    p.push(Probe::new(
+        "the library carrying no rules: list",
+        Expect::Reject(Code::DocumentEmpty),
+        |f| f.common().blocks.clear(),
+    ));
+    p.push(Probe::new(
+        "the registry carrying no labels mapping",
+        Expect::Reject(Code::DocumentEmpty),
+        |f| f.labels().labels.clear(),
+    ));
+    p.push(Probe::porting(
+        "a section missing its id",
+        "a section missing its id (an empty id fails the dotted-slug format)",
+        Expect::Reject(Code::IdFormat),
+        |f| f.section("ways-of-working").id = String::new(),
+    ));
+
     // --- the protected-exit limb the hard set gained, which the Python never had ---
     p.push(Probe::extra(
         "a floor rule keeps its class",
@@ -722,48 +955,20 @@ const OUTSIDE_THE_HARD_SET: &[(&str, &str)] = &[
     ("count-pin singular where the count is 2", "same"),
     ("count-pin absent entirely", "same"),
     ("the count phrase sitting on a line that is not the Not-done line", "same"),
-    ("rule text names a tombstoned node", "in-text citation resolution is not in the D6 hard set"),
-    ("rule text names a node that never existed", "in-text citation resolution is not in the D6 hard set"),
-    ("a fabricated citation dangles", "in-text citation resolution is not in the D6 hard set"),
-    ("a citation of a tombstoned rule is a superseded reference", "in-text citation resolution is not in the D6 hard set"),
-    ("a section-ID citation resolves", "in-text citation resolution is not in the D6 hard set"),
-    ("a file-suffix token is not a citation", "in-text citation resolution is not in the D6 hard set"),
-    ("the bare (non-parenthetical) citation form is scanned", "in-text citation resolution is not in the D6 hard set"),
-    ("a foreign-prefix citation is a warning, not a dangle", "in-text citation resolution is not in the D6 hard set"),
-    ("retired label still in the registry", "the registry's `retired:` list is data the model carries; nothing cross-checks it against the live labels"),
-    ("the retired selector named in a section intent", "prose lint for a retired selector word"),
-    ("the retired selector named in a rule text", "prose lint for a retired selector word"),
     ("when: written as a list, not a conjunction mapping", "a shape error the decoder rejects before the validator sees it"),
-    ("when: naming a dimension with an empty value list", "an empty value list names no value to check; the hard set reports unknown values, not an absent one"),
-    ("the same node tombstoned twice", "duplicate tombstones are not in the hard set; the id lifecycle is enforced at apply time by mint-once, and an imported document carrying two is not checked"),
     ("enforces: written as a bare string, not a list", "a shape error the decoder rejects: the model holds `enforces` as a list or nothing"),
     ("when: carrying nested structure (boolean algebra)", "the model's `when` value is scalar-or-list by construction"),
     ("conditions: written as something other than a mapping", "a shape error the decoder rejects"),
     ("a dimension declared as a bare string", "a shape error the decoder rejects"),
     ("moments: written as something other than a mapping", "a shape error the decoder rejects"),
-    ("a moment declared with no navigation line", "an empty moment line is not in the hard set"),
     ("coverage report makes no claim over floors", "the coverage report's wording differs; the Rust report is per-value and does not restate the floor carve"),
-    ("a stub whose local text repeats the block's", "the pointless-override warning is not ported"),
-    ("a common block bound by no stub", "the orphan-block warning is not ported"),
-    ("a common block carrying `kind:`", "the absence-meaningful-field guard on library blocks is not ported"),
-    ("a common block carrying `when:`", "same"),
-    ("a common block carrying `enforces:`", "same"),
-    ("a common block carrying `class:` is a warning", "same"),
-    ("the library carrying no rules: list", "an empty library is not itself a finding; every stub over it reports instead"),
     ("a common block with no id", "an id-less block is a decode-level shape error"),
-    ("[regression] inline ruling: field", "the model has no `ruling:` field; an unknown key is dropped at decode rather than reported"),
-    ("[regression] flat top-level rules:", "the model carries top-level `rules:` as a common library's blocks; a command schema with blocks is not flagged"),
-    ("the registry carrying no labels mapping", "an empty registry is not itself a finding; every label reports instead"),
     ("tombstones: written as something other than a list", "a shape error the decoder rejects"),
     ("a section entry that is not a mapping", "a shape error the decoder rejects"),
-    ("a section missing its id", "an empty section id surfaces as `id-format`, not as a distinct missing-key finding"),
-    ("a section missing its rules key", "the model reads an absent `rules:` as an empty section"),
+    ("a section missing its rules key", "the ONE residual unit 1b left unported. The Python separates three states — `rules:` absent, `rules:` null, `rules: []` — and the model reads all three as an empty section, so the distinction cannot be made without a `Section` field recording whether the key was written. That field was outside the unit's pen (`model.rs` was granted for the `extra` map alone), and it is a shape question rather than a content one: an empty section is already a finding unless it carries a `note:`, whichever way it was spelled"),
     ("a section whose rules: is not a list", "a shape error the decoder rejects"),
     ("an empty section written as `rules:` rather than `rules: []`", "a style warning about YAML spelling; the model reads both the same"),
     ("a rule entry that is not a mapping", "a shape error the decoder rejects"),
-    ("a rule carrying no labels", "a label-less rule is not in the hard set"),
-    ("a {{...}} skeleton sigil in rule text is a warning", "the skeleton-sigil warning is not ported"),
-    ("a registry label with no members here", "the zero-member label warning is not ported"),
 ];
 
 /// The 134 probe names of `scripts/test-check-command-schema.py`, verbatim.
