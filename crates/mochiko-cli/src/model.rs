@@ -714,11 +714,21 @@ fn decode_rule(value: &Value, path: &str) -> Result<Rule, DecodeError> {
         },
         note: opt_scalar(map, "note", path)?,
         anchor: opt_scalar(map, "anchor", path)?,
-        extra: map
-            .iter()
-            .filter_map(|(key, value)| key.as_str().map(|key| (key.to_string(), value.clone())))
-            .filter(|(key, _)| !RULE_KEYS.contains(&key.as_str()))
-            .collect(),
+        extra: {
+            let mut extra: Ordered<Value> = Vec::new();
+            for (key, value) in map {
+                // `extra` is keyed by `String`, so a non-string key cannot be carried through it.
+                // Dropping it would leave exactly the lossy round trip the map exists to close,
+                // so the document is refused rather than quietly thinned.
+                let Some(key) = key.as_str() else {
+                    return Err(err(path, "a rule key must be a string"));
+                };
+                if !RULE_KEYS.contains(&key) {
+                    extra.push((key.to_string(), value.clone()));
+                }
+            }
+            extra
+        },
     })
 }
 

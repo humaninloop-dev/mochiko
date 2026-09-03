@@ -1002,6 +1002,30 @@ fn validate_registry(doc: &DocRef, registry: &LabelRegistry, findings: &mut Vec<
     }
 }
 
+/// Whether `text` carries a `{{…}}` skeleton sigil, as the shipped `\{\{[^}]*\}\}` scans for it.
+///
+/// The body admits no `}`, so `{{a}b}}` is not a sigil — a substring test for `{{` followed
+/// anywhere by `}}` would report text the shipped checker leaves alone. The scan continues past a
+/// failed candidate rather than stopping, so a well-formed sigil later in the same text still
+/// fires.
+fn has_skeleton_sigil(text: &str) -> bool {
+    let bytes = text.as_bytes();
+    let mut i = 0;
+    while i + 1 < bytes.len() {
+        if bytes[i] == b'{' && bytes[i + 1] == b'{' {
+            let mut j = i + 2;
+            while j < bytes.len() && bytes[j] != b'}' {
+                j += 1;
+            }
+            if bytes.get(j) == Some(&b'}') && bytes.get(j + 1) == Some(&b'}') {
+                return true;
+            }
+        }
+        i += 1;
+    }
+    false
+}
+
 /// The label the ontology wave's fail re-key retired. `kind: fail` is the operative selector.
 const RETIRED_LABEL: &str = "fail-condition";
 
@@ -1009,6 +1033,12 @@ const RETIRED_LABEL: &str = "fail-condition";
 ///
 /// The `fail-conditions` section slug is live vocabulary, so the plural is excluded rather than
 /// matched and filtered — the singular alone is the retired label.
+///
+/// **Deliberately wider than the shipped checkers** (audit A5): the Python lints for this only on
+/// the command side, `check-skill-schema.py` containing no occurrence of the word. Applied here to
+/// every rule-bearing document, because the label is retired vocabulary across the corpus rather
+/// than a fact about one grammar, and because the lint is advisory — a superset can inform and
+/// cannot block. Zero hits on the shipped tree either way.
 fn names_retired_selector(text: &str) -> bool {
     let mut from = 0;
     while let Some(at) = text[from..].find(RETIRED_LABEL) {
@@ -2159,7 +2189,7 @@ fn check_text(
 
     // A `{{…}}` sigil is the skeleton convention, not var substitution: nothing binds it, and
     // nothing substitutes it, so a live rule carrying one delivers the sigil verbatim.
-    if text.contains("{{") && text[text.find("{{").unwrap_or(0)..].contains("}}") {
+    if has_skeleton_sigil(text) {
         findings.push(Finding::node(
             Code::SkeletonSigil,
             doc,

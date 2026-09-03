@@ -5,8 +5,8 @@ shipped-checker residuals the lead ruled in at plan approval (Q2).
 **Plan:** returned and approved with rulings Q1–Q6. Substrate: the crate at wave-1 acceptance.
 **Shipped files:** no file under `plugins/` changed. Nothing committed.
 
-**Gates at close:** `cargo test --all --no-fail-fast` **296 passed, 0 failed** across eleven test
-binaries · `cargo fmt --all --check` clean · `cargo clippy --all-targets -- -D warnings` clean ·
+**Gates at close (advisory round):** `cargo test --all --no-fail-fast` **300 passed, 0 failed**
+across eleven test binaries · `cargo fmt --all --check` clean · `cargo clippy --all-targets -- -D warnings` clean ·
 `cargo audit --deny warnings` clean. `migrate validate --log-dir migrations --plugin-root
 plugins/mochiko --report` reports **0 rejecting · 105 advisory**, with 87 pointers checked.
 
@@ -74,7 +74,7 @@ probe is claimed by exactly one ledger.
 |---|---|---|---|
 | Python probes | 134 | 114 | 248 |
 | ported (was 66 / 63) | **94** | **89** | 183 |
-| beyond the Python matrix (`Probe::extra`) | 4 | 2 | 6 |
+| beyond the Python matrix (`Probe::extra`) | 3 | 2 | 5 |
 | genesis-side | 8 | 7 | 15 |
 | not applicable under D6 | 14 | 9 | 23 |
 | outside the hard set (was 46 / 35) | **18** | **9** | 27 |
@@ -224,16 +224,17 @@ at landing.
 
 | suite | tests | state |
 |---|---|---|
-| `tests/validate.rs` | 94 | pass — was 44 |
-| `tests/matrix_command.rs` | 2 (98 probes) | pass — was 69 |
+| `tests/validate.rs` | 98 | pass — was 44 |
+| `tests/matrix_command.rs` | 2 (97 probes) | pass — was 69 |
 | `tests/matrix_skill.rs` | 3 (91 probes) | pass — was 64 |
 | `tests/matrix_similar.rs` | 48 | pass, untouched |
 | `tests/replay.rs` · `migration.rs` · `render.rs` | 98 | pass, untouched |
 | `tests/cli.rs` | 26 | pass |
 | `tests/fidelity.rs` · `views.rs` · `anchor_grammar.rs` | 25 | pass |
-| **total** | **296** | **296 pass, 0 failed** |
+| **total** | **300** | **300 pass, 0 failed** |
 
-Fifty tests added; 246 at wave-1 acceptance.
+Fifty-four tests added; 246 at wave-1 acceptance. (Fifty at the unit's close; four more in the
+advisory round, §13.)
 
 ## 10. Files touched
 
@@ -262,10 +263,30 @@ Exactly the granted pen, verified by `git status`:
 2. **Command-side pointers are resolved by nothing** — 23 path-shaped `pointer:` values in
    `architecture` (7), `implement` (14) and `common.yaml` (2). No checker has ever resolved them,
    Python included. Parity was the Q4 ruling; the gap is named for the wave landing.
-3. **The record's `92 advisory`** is now 105 (§7). The lead's to update at landing, per Q6.
+3. **The record's unit-1b paragraph is stale in three places, all the lead's at landing** — the
+   `92 advisory` figure is now 105 (§7); family 3 is described as "7 per-skill sweep-mode claims"
+   and is now 3, four having been re-claimed on the argument that a whole-state validator is the
+   sweep; and "each at the severity its Python carried" needs the one lead-ruled divergence noted
+   (a common block carrying `class:` warns in Python and rejects here, and has since P1). Audit
+   A7, raised there because the seat's own open items had named only the first.
 4. **The two matrices still carry transcribed `PYTHON_PROBES` arrays** — P3's open item 6, and the
    54 moves did not change it. `matrix_similar.rs` re-derives its names from the script; the same
    treatment stays cheap here.
+5. **Pointer resolution follows climbs out of the plugin root** (audit A3). `Path::exists` resolves
+   `../../../../CLAUDE.md` from a skill directory to the repository's own file, and it passes
+   clean. This is inherited parity — the Python's `(skill_dir / p).exists()` has no guard either,
+   and Q4 ruled parity — so it is named rather than changed, per the lead. The check reads as
+   "this pointer resolves" and means "something exists at that path, wherever that is". A
+   containment guard is two canonicalisations and a prefix assert whenever the lead wants it.
+6. **The citation scanner's word boundary is ASCII where the Python's is Unicode** (audit A9).
+   `is_word_byte` classifies ASCII only; Python's `\b` over a `str` pattern uses Unicode `\w`, so
+   a citation immediately preceded by a non-ASCII letter matches here and not there. Negligible
+   for the English rule text the corpus holds, and recorded so the parity claim reads as exact
+   rather than approximate.
+7. **`resolve_extends` runs three to four times per rule**, each call scanning `state.docs` for
+   the library — the one super-linear path this unit adds, raised as an observation rather than a
+   finding by the audit. Measured fine: `migrate validate` is 0.06 s of user time over 1,016
+   rules. Worth remembering rather than fixing.
 
 ## 12. Suggested commit
 
@@ -299,3 +320,78 @@ the Python checkers already print. All 87 shipped pointers resolve.
 
 No new dependency. No file under plugins/ changed.
 ```
+
+## 13. Advisory round
+
+Against `v1b-checks-audit.md` (PASS: 0 blocking, 9 advisory), unit frozen at `e66d76e`. The two
+items the lead directed, plus three of the remaining seven that were genuine one-line fixes. Each
+went red first.
+
+### A2 — the advisory code set gets the guard the rejecting set has (directed)
+
+`every_advisory_code_is_raised_by_some_probe` now asserts set equality over all **14** advisory
+codes in both directions, mirroring the rejecting guard. The pre-existing assertion ran one way
+only — every advisory finding raised carries a declared code — so a fifteenth code with no probe
+behind it would have failed nothing.
+
+It earned its place twice while being written. The first run named `unused-condition`: the
+mutation meant to raise it moved only one of the `map` dimension's two users, so the dimension was
+still in use. The second run then named `condition-coverage`, which the broken mutation had been
+raising by accident. Both now have a mutation of their own, and the pair pins the distinction the
+two codes exist for — **a dimension no rule names** against **a dimension in use whose declared
+value no rule names**.
+
+### A1 — the report's command probe counts, corrected (directed)
+
+The grader's recount is right. `tests/matrix_command.rs` holds **three** `Probe::extra` call sites,
+not four, and **97** probes, not 98. My count came from `grep -c 'p.push('`, which reads 95 and
+undercounts by two because the C3 row pushes three probes from one site inside a loop; I then
+carried a second arithmetic slip on top of it. Corrected in §3 and §9. **The 81-probe accounting
+is untouched** — extras carry `python: None` and sit outside the partition, which the matrix's own
+set-algebra test enforces rather than asserts.
+
+Counting by hand is how P3's ledger went wrong at wave 1, and it is how this went wrong here. The
+figures the accounting rests on are machine-checked; the two I typed by eye were not.
+
+### A6 — the sigil scanner now matches the shipped one (taken)
+
+`has_skeleton_sigil` replaces a substring test for `{{` followed anywhere by `}}`. The shipped
+`\{\{[^}]*\}\}` forbids a `}` inside the body, so `{{a}b}}` fired here and not in Python. The scan
+continues past a failed candidate rather than stopping, so a well-formed sigil later in the same
+text still fires — pinned by both cases.
+
+### A8 — a non-string rule key is now a decode error (taken)
+
+`extra` is keyed by `String`, so a non-string mapping key could not be carried through it and was
+being dropped — leaving, for that corner, exactly the lossy round trip the map exists to close.
+The decoder now refuses the document instead of quietly thinning it. No shipped rule carries one,
+and `tests/fidelity.rs` stays green.
+
+### A4 — the shipped-pointer count is pinned exactly (taken)
+
+`assert_eq!(report.checked, 87)` replaces `> 50`. A figure this report leans on twice should fail
+when it moves, and the corpus census elsewhere pins exact numbers.
+
+### A5 — the retired-selector lint is a deliberate superset, now said so (documented)
+
+The grader is right that `check-skill-schema.py` contains no occurrence of `fail-condition`: the
+lint is command-side only in the Python, and it is applied here to every rule-bearing document.
+Kept, and documented at the definition. The label is retired vocabulary across the corpus rather
+than a fact about one grammar, and the lint is advisory — a superset can inform and cannot block.
+Zero hits on the shipped tree either way. The widening is now stated where a reader meets it,
+which is what the finding asked for.
+
+### Named, not taken
+
+A3 (pointer climbs escaping the plugin root — Python parity, and the lead's instruction was to
+name it), A7 (three stale sentences in the record's unit-1b paragraph, the lead's at landing), A9
+(ASCII versus Unicode word boundary) and the audit's performance observation are all carried into
+§11 as items 3, 5, 6 and 7.
+
+### Gates
+
+`cargo test --all --no-fail-fast` **300 passed, 0 failed** · `cargo fmt --all --check` clean ·
+`cargo clippy --all-targets -- -D warnings` clean. `migrate validate --log-dir migrations
+--plugin-root plugins/mochiko --report` still reports **0 rejecting · 105 advisory**. Four tests
+added: the advisory guard, two sigil cases, and the non-string key. Nothing committed; no file
+under `plugins/` changed.

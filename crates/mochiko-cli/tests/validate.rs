@@ -1687,6 +1687,131 @@ fn every_rejecting_code_is_raised_by_some_probe() {
     );
 }
 
+/// The advisory half of the guard above (audit A2).
+///
+/// `advisory_findings_are_reported_and_never_reject` runs one way only — every advisory finding
+/// raised carries a declared code — so an advisory code declared with no probe behind it would
+/// fail nothing, which is the gap the rejecting set closed a round earlier. This asserts set
+/// equality in both directions over the codes the probe corpus actually raises.
+#[test]
+fn every_advisory_code_is_raised_by_some_probe() {
+    let mut raised: BTreeSet<Code> = BTreeSet::new();
+
+    // The unmutated corpus already exercises the reports that fire unconditionally or on its own
+    // declared vocabulary: the per-document budget, and the condition and moment coverage.
+    let advisory_of = |state: &State| -> BTreeSet<Code> {
+        validate::validate(state)
+            .into_iter()
+            .filter(|f| !f.is_rejecting())
+            .map(|f| f.code)
+            .collect()
+    };
+    raised.extend(advisory_of(&corpus()));
+
+    let mutations: [(&str, &str, &str); 6] = [
+        // deixis
+        (
+            "demo",
+            "text: The lead plans the run.",
+            "text: These rules bind the lead.",
+        ),
+        // unused-var
+        (
+            "demo",
+            "vars:\n  explore_model: haiku\n",
+            "vars:\n  explore_model: haiku\n  spare: unread\n",
+        ),
+        // retired-selector
+        (
+            "demo",
+            "text: The lead plans the run.",
+            "text: The lead reads every fail-condition rule.",
+        ),
+        // skeleton-sigil
+        (
+            "demo",
+            "text: The lead plans the run.",
+            "text: The lead plans the {{run}}.",
+        ),
+        // zero-member-label
+        (
+            "command-labels",
+            "  seats: Seat wiring.\n",
+            "  seats: Seat wiring.\n  unused-here: Carried by nothing.\n",
+        ),
+        // labels-inherited
+        ("skill-authoring-common", "    labels: [independence]\n", ""),
+    ];
+    for (target, from, to) in mutations {
+        raised.extend(advisory_of(&corpus_with(target, |yaml| {
+            assert!(
+                yaml.contains(from),
+                "probe anchor {from:?} is not in {target}"
+            );
+            yaml.replace(from, to)
+        })));
+    }
+
+    // unused-condition: a declared dimension no rule's `when:` names. Both of the map dimension's
+    // users have to move, or the dimension is still in use and only its values go uncovered.
+    raised.extend(advisory_of(&corpus_with("demo", |yaml| {
+        yaml.replace("when: {map: present}", "when: {seats: multi}")
+            .replace("when: {map: absent}", "when: {seats: single}")
+    })));
+    // condition-coverage: the dimension stays in use, one of its declared values does not. The
+    // distinction from unused-condition above is the whole point of the two codes.
+    raised.extend(advisory_of(&corpus_with("demo", |yaml| {
+        yaml.replace("when: {map: present}", "when: {map: absent}")
+    })));
+    // cite-foreign needs a sibling command in state to be foreign to.
+    raised.extend(advisory_of(&corpus_with_a_sibling_command(|yaml| {
+        yaml.replace(
+            "text: The lead plans the run.",
+            "text: The lead plans the run, as other.gate-acceptance requires.",
+        )
+    })));
+    // pointless-override: a stub restating its block word for word.
+    raised.extend(advisory_of(&corpus_with("demo", |yaml| {
+        yaml.replace(
+            "      - id: demo.register\n        extends: common.register\n",
+            "      - id: demo.register\n        extends: common.register\n        text: User-facing prose follows the output style.\n",
+        )
+    })));
+    // orphan-block: a library block no stub binds.
+    raised.extend(advisory_of(&corpus_with("common", |yaml| {
+        yaml.replace(
+            "  - id: common.register\n",
+            "  - id: common.unbound\n    labels: [seats]\n    text: Nothing binds this.\n  - id: common.register\n",
+        )
+    })));
+    // unused-moment: a moment no condition resolves at and no rule text mentions.
+    raised.extend(advisory_of(&corpus_with("demo", |yaml| {
+        yaml.replace(
+            "moments:\n  intent: The adaptive-probe stage.\n",
+            "moments:\n  intent: The adaptive-probe stage.\n  unvisited: A stage nothing reaches.\n",
+        )
+    })));
+    // enforces-coverage: a floor no fail node mirrors, beside a fail node that mirrors something.
+    raised.extend(advisory_of(&corpus_with("demo", |yaml| {
+        yaml.replace(
+            "      - id: demo.probe-first\n        labels: [seats]\n        class: advisory\n",
+            "      - id: demo.probe-first\n        labels: [seats]\n        class: floor\n",
+        )
+    })));
+
+    let expected: BTreeSet<Code> = Code::ADVISORY.into_iter().collect();
+    let missing: Vec<&str> = expected.difference(&raised).map(|c| c.as_str()).collect();
+    assert!(
+        missing.is_empty(),
+        "these advisory codes are declared but no probe raises them: {missing:?}"
+    );
+    let unexpected: Vec<&str> = raised.difference(&expected).map(|c| c.as_str()).collect();
+    assert!(
+        unexpected.is_empty(),
+        "these codes were raised as advisory but are not in Code::ADVISORY: {unexpected:?}"
+    );
+}
+
 // ---------------------------------------------------------------------------
 // unit 1b — the family-2 checks
 // ---------------------------------------------------------------------------
@@ -1712,6 +1837,24 @@ fn an_unknown_rule_key_is_preserved_through_the_round_trip() {
         mochiko_cli::model::canonical_hash(&value),
         mochiko_cli::model::canonical_hash(&rule.to_value()),
         "a rule carrying an unknown key still round-trips"
+    );
+}
+
+/// A rule key that is not a string is a decode error, not a silent drop (audit A8).
+///
+/// `extra` is keyed by `String`, so a non-string key cannot be preserved through it. Dropping it
+/// would leave exactly the lossy round trip the map exists to close, so the decoder refuses the
+/// document instead of quietly thinning it.
+#[test]
+fn a_non_string_rule_key_is_a_decode_error_rather_than_a_silent_drop() {
+    let value: serde_norway::Value =
+        serde_norway::from_str("id: demo.lead\nclass: must\ntext: T\n7: seven\n")
+            .expect("the fixture parses");
+    let error =
+        mochiko_cli::model::Rule::from_value(&value).expect_err("a non-string rule key is refused");
+    assert!(
+        error.to_string().contains("string"),
+        "the error names the shape it refused: {error}"
     );
 }
 
@@ -2029,6 +2172,34 @@ fn a_skeleton_sigil_in_rule_text_is_advisory() {
     assert!(findings_of(&state, Code::VarUnbound).is_empty());
 }
 
+/// The shipped scanner is `\{\{[^}]*\}\}`, which forbids a `}` inside the sigil (audit A6). A
+/// substring test for `{{` … `}}` would fire on text the Python leaves alone.
+#[test]
+fn a_brace_inside_the_sigil_is_not_a_skeleton_sigil() {
+    let state = corpus_with("demo", |yaml| {
+        yaml.replace(
+            "text: The lead plans the run.",
+            "text: The lead writes {{a}b}} and moves on.",
+        )
+    });
+    assert!(
+        findings_of(&state, Code::SkeletonSigil).is_empty(),
+        "a `}}` between the braces ends the candidate, exactly as the shipped scanner does"
+    );
+}
+
+/// … and the scan does not stop at the first candidate: a later, well-formed sigil still fires.
+#[test]
+fn a_well_formed_sigil_after_a_malformed_one_still_fires() {
+    let state = corpus_with("demo", |yaml| {
+        yaml.replace(
+            "text: The lead plans the run.",
+            "text: The lead writes {{a}b}} then {{run}}.",
+        )
+    });
+    assert_eq!(findings_of(&state, Code::SkeletonSigil).len(), 1);
+}
+
 // --- the library: pointless overrides and orphan blocks ---
 
 #[test]
@@ -2311,10 +2482,11 @@ fn the_state_only_validator_makes_no_pointer_claim() {
 fn every_shipped_pointer_resolves_from_its_own_skill_directory() {
     let report =
         validate::validate_pointers(&shipped_state(), &repo_root().join("plugins/mochiko"));
-    assert!(
-        report.checked > 50,
-        "the shipped corpus carries path-shaped pointers to check, got {}",
-        report.checked
+    // Pinned exactly, not as a floor (audit A4): 87 is a figure the unit's report leans on, and
+    // the corpus census elsewhere pins exact numbers. A silent drop to 51 must not pass.
+    assert_eq!(
+        report.checked, 87,
+        "the shipped corpus carries 87 path-shaped pointers"
     );
     assert!(
         report.findings.is_empty(),
