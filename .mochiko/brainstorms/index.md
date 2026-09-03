@@ -48,7 +48,8 @@ One entry per session directory under `.mochiko/brainstorms/<topic-slug>/`, **ne
 - **Landed:** DECISIONS.md row (2026-09-03, "ruled — wave 0 done, wave 1 pending") ·
   BACKLOG "CLI schema-delivery build" section (six-wave build item; **wave 0 DONE
   2026-09-03**, abort not tripped — [wave0-probe-report.md](cli-schema-delivery/wave0-probe-report.md);
-  D3 + D8 amended post-acceptance, user-ruled) + the three delivery
+  D3 + D8 amended post-acceptance, user-ruled) · **wave 1 BUILT + ACCEPTED 2026-09-04**
+  (`wave1-plan.md`, `wave1-reports/`; 246 tests; 1b family-2 checks in flight) + the three delivery
   watches annotated as superseded pending wave 6 · ROADMAP: folded into the
   Template-schema CLI Next row (cap held at 7).
 

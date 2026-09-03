@@ -370,3 +370,94 @@ The two remaining advisories from the audit were not in the lead's fix scope and
 limbs covered only by this audit's hand probes. Neither blocks; both remain open for a later round.
 
 **Delta verdict: PASS.**
+
+---
+
+# Delta-confirm 2 — test hygiene
+
+Graded at `9b43e83` (HEAD), scope `crates/mochiko-cli/tests/cli.rs` only. The hygiene commit
+touches that one crate file plus two reports; P3's `a1e4275` and `e5f723d` sit in between and do
+**not** touch `tests/cli.rs` (`git diff 07a39b4 e5f723d -- crates/mochiko-cli/tests/cli.rs` is
+empty), so the delta is P2's alone. Executed in a scratch checkout unpacked with `git archive HEAD
+crates Cargo.toml Cargo.lock migrations` under `/private/tmp`, with `plugins/mochiko` symlinked in.
+
+**Gates, run by the grader:** `cargo test --test cli` **26 passed / 0 failed in 0.57 s** ·
+`cargo fmt --all --check` exit 0 · `cargo clippy --all-targets -- -D warnings` exit 0.
+
+## F4 — no environment mutation in the test binary — **CONFIRMED**
+
+`git grep set_var\|remove_var HEAD -- crates/mochiko-cli` returns **no mutation anywhere in the
+crate**. The four hits are all benign: `src/cli.rs:205` is the production *read* (`std::env::var`),
+`tests/cli.rs:142` is the word inside the doc comment explaining the avoidance,
+`tests/matrix_similar.rs:965` is P3's opt-in *read*, and `tests/replay.rs:558` is a test name about
+the `set-var` migration op.
+
+The env limb now runs on a spawned child: `run_binary` (`tests/cli.rs:148-163`) invokes
+`CARGO_BIN_EXE_mochiko-cli` with `current_dir` and per-entry `env`/`env_remove` set on the child
+alone. A `None` entry is removed rather than set, so a variable already live in the developer's
+shell cannot decide the outcome. This also puts `main.rs` on a tested path for the first time,
+which the seat claims and which I confirm.
+
+Two probes beyond the claim, both green:
+
+| probe | result |
+|---|---|
+| whole suite under a hostile ambient `MOCHIKO_MIGRATIONS=/nonexistent/bogus` | 26 passed |
+| whole suite at `--test-threads=1` | 26 passed |
+
+The first is the real proof: the suite is now neither a mutator of the ambient environment nor a
+hostage to it.
+
+## F5 — all four resolution limbs pinned — **CONFIRMED**
+
+Each limb has a competing log on the loser's side, so a test cannot pass by the loser having
+nothing to offer:
+
+| limb | test | competing log on the loser |
+|---|---|---|
+| 1. `--log-dir` beats the plugin root | `the_log_directory_resolves_flag_first_then_the_plugin_root` | the plugin root carries its own `migrations/` (written by `plugin_root`) |
+| 2. plugin root beats the environment | `the_plugin_root_beats_the_environment` | `MOCHIKO_MIGRATIONS` points at a real, valid log |
+| 3. environment beats the working directory | `the_environment_beats_the_working_directory` | the child's cwd carries its own `migrations/` with a valid log |
+| 4. the working directory is the last resort | `the_working_directory_is_the_last_resort` | the variable is explicitly removed from the child |
+
+Limb 3's own doc comment names the trap it closes — "a test run from a directory with no log would
+pass either way" — which is precisely the weakness F5 raised. A fifth test,
+`the_last_resort_names_the_directory_it_looked_in_when_there_is_none`, pins the negative: with
+nothing to resolve from, the binary exits 1 naming `migrations` rather than failing silently.
+
+## Walk-test split — **CONFIRMED**
+
+`the_shipped_log_renders_every_section_of_every_primitive` now calls `replay::load` **once** and
+renders every section from that one state through the library. It is no longer dark — P3's genesis
+has landed, and the test reports `rendered 252 sections from the shipped log`. Both confirmation
+lines are asserted in full, not by prefix: the head line is an `assert_eq!` against the complete
+version triple, and the tail is an `assert_eq!` against
+`mochiko-cli rules end · <name> · <id> · <live> rules` where `live` is `section.rules.len()` and 0
+for the preamble.
+
+The sampled dispatch test `the_shipped_log_is_reachable_through_the_binary` carries what the
+library walk cannot: one command and one skill, preamble and first section, driven through
+`dispatch` with `--plugin-root` and `--log-dir`, asserting the *resolved* triple — the plugin
+version read from the shipped `plugin.json` and compared against a version the test reads
+independently from the same manifest, plus `env!("CARGO_PKG_VERSION")` for the binary. It asserts
+exactly 4 samples, so a silently empty loop fails.
+
+The performance claim holds: the whole `tests/cli.rs` binary runs in **0.57 s** (0.67 s with
+`--nocapture`, 2.72 s single-threaded), against the ~25 s the seat says 252 dispatch reloads of the
+616 KB log would have cost.
+
+**One advisory, new and minor.** The walk compares the printed tail count against
+`section.rules.len()` — the same field `render::wrap` was handed — so that assertion is
+self-consistent by construction. The independent form, counting the `### ` blocks actually printed,
+lives only in `tests/render.rs::the_tail_line_counts_the_rules_actually_rendered` on the synthetic
+corpus. I closed the gap myself over the real log rather than leave it speculative: 252 sections,
+**1016 rule blocks rendered, 0 tail-vs-blocks mismatches** (1016 = 321 command + 695 skill rules,
+equal to the census). The property is true; a one-line `out.matches("\n### ").count()` in the walk
+would make the suite prove it. Not blocking.
+
+## F4 / F5 residuals from the first round
+
+Both are now closed. No advisory from either delta-confirm round remains open except the one
+raised immediately above.
+
+**Delta-confirm 2 verdict: PASS.**

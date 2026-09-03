@@ -26,21 +26,21 @@ uncompressed. Prior groom narrative: git history (this line, before this groom).
 *(ruled + accepted 2026-09-03, `cli-schema-delivery` D1–D11 as review-amended; provenance:
 `.mochiko/brainstorms/cli-schema-delivery/record.md`; session ran in worktree `cli-context`)*
 
-- [ ] **Build: CLI-delivered schemas, six waves — wave 0 DONE, wave 1 next** (2026-09-03;
-  provenance: record D9 + build surface + `wave0-probe-report.md`) — **wave 0 done
-  2026-09-03: abort NOT tripped** (`~/.cargo/bin` + Homebrew on the preprocessing `PATH`);
-  `!` needs an `allowed-tools` grant (fail-closed when denied); `Skill` +
-  `UserPromptExpansion` hooks inject and block; `!` runs at preload; inline ceiling ≈ 30k →
-  D3 amended (per-section `!` lines, head+tail confirmation); D8 amended (contract suite in
-  the `claude-mochiko` sandbox via `evals/run.py`; needs `sbx login`; ToS caveat on record);
-  `claude plugin eval` early-access, not the substrate. Then wave 1 (crate: migration grammar, validator + 268-probe
-  port, in-memory replay, render, genesis import, release machinery, four test layers,
-  derived views in today's shapes, CI filter) → wave 2 (`/mochiko:setup` amend run: GI-020
-  rewrite + transition clause + Testability rows, GI-019 D11 clauses, GI-012 / GI-002 /
-  GI-008 note; MAJOR; first public publish) → wave 3 pilot `brainstorm` + hooks + contract
-  suite + pilot abort criteria → waves 4–5 → wave 6 end state (shipped snapshots deleted,
-  views to `.mochiko/schema-views/`, Python retired, sidecar frozen, two-arm text CLI-only,
-  ceremony re-keys). Rollback user-reserved per wave; GI-006 on log + strips.
+- [ ] **Build: CLI-delivered schemas, six waves — waves 0–1 DONE, 1b in flight, wave 2 next**
+  (2026-09-03; provenance: record D9 + build surface + `wave0-probe-report.md` +
+  `wave1-plan.md` + `wave1-reports/`) — wave 0 done 2026-09-03 (abort NOT tripped; D3/D8
+  amended). **Wave 1 built + accepted 2026-09-04** (`f34d48e`…`9b43e83`: grammar, replay,
+  hard-set validator, clap CLI, per-section render, template re-base, genesis 599 KB, views,
+  difflib-parity detector, 296-probe matrices, release.yml publish-disabled, CI filter,
+  contract skeleton; 3 seats + 3 validators, fix rounds, all PASS; 246 tests; no shipped
+  file touched; cold render 35 ms → no cache). **1b open (user-ruled 2026-09-04):** P1 ports
+  the family-2 checks the 81 flagged probes exercise (ID citations D5, pointer resolution,
+  `ruling:`/flat-`rules:` guards, library-block locality, prose lints, label warnings).
+  Then wave 2 (`/mochiko:setup` amend run: GI-020 rewrite + transition clause + Testability
+  rows, GI-019 D11 clauses, GI-012 / GI-002 / GI-008 note; MAJOR; first public publish;
+  `rust-cli.md` documents `MOCHIKO_FULL_SIMILAR`) → wave 3 pilot `brainstorm` + hooks +
+  contract suite (needs `sbx login`) → waves 4–5 → wave 6 end state. Rollback
+  user-reserved per wave; GI-006 on log + strips.
 
 ## Skill-content schema build
 

@@ -1070,6 +1070,68 @@ and auth (probe-settled 2026-08-22). Rejected: host-only headless runs (no insta
 isolation) and a GitHub-CI headless matrix (needs metered spend and secrets for a gate the
 sandbox runs free). User ruled "adopt both".
 
+## Wave 1 — built and accepted (2026-09-03 → 2026-09-04)
+
+**Floor:** `floor: tripped · seats: P1 / P2 / P3 (staff-engineer, sequential single
+pen-holder) / V1 / V2 / V3 (validator, fresh, author ≠ grader)`. Plan: `wave1-plan.md`;
+reports and audits under `wave1-reports/`. User accepted wave 1 on 2026-09-04 and ruled the
+family-2 check gap **closed in this wave** as extension unit **1b** (below).
+
+| unit | commits | what landed | review |
+|---|---|---|---|
+| P1 core | `f34d48e` → `cd5a333` | typed model (lossless round trip over all 50 files), migration grammar (15 ops, canonical hash over id/sequence/anchor/changes, `grammar: 1` range with the D5 halt message), replay + `content_hash`, D6 hard set (34 rejecting codes, 6 advisory), README | V1 FAIL (3 blocking: protection strippable by field-clearing before a tombstone · optional hash · `load` skipping the hard set; 12 advisory) → fix round → PASS, every fix red-when-reverted |
+| P2 surface | `3792104` → `07a39b4` → `9b43e83` | `clap` CLI, `rules <primitive> --section <id>` with the version-triple head and end-line tail, `preamble` with pins and section list, `template`/`--check` re-based on the replay (8+8 outputs byte-identical to captured fixtures, footer `schemas: replayed from <log-dir>`), `migrate validate|status`, `--plugin-root`/`--log-dir`, exit codes 0/1/2/3 | V2 PASS (3 advisory → fixed → delta PASS; 2 test-hygiene → fixed → delta PASS) |
+| P3 corpus | `a1e4275` → `e5f723d` | `migrations/0001-genesis.yaml` (598,626 B, 50 import ops, 597 anchors folded, two `enforces: []` reasons lifted to `note:`, regenerates byte-identically, hash rejects a one-character tamper), views (semantic equality over all 50, emitted only under `--out`), `similar.rs` (CPython difflib Ratcliff/Obershelp with autojunk — 0 mismatches over 18,577 corpus pairs; live figures 1,016 / 146,572 / 0 / 181 reproduced), the three matrices with name-level ledgers (134 / 114 / 48; 81 probes named as exercising checks outside the wave-plan hard set), `release.yml` (publish job present, disabled), `ci.yml` filter + opt-in sweep step, `evals/contract/` (imports `evals/run.py`; absence + skew cases; `SKIPPED` exit 3 on an unauthenticated sandbox, never a false pass) | V3 FAIL (1 blocking: the detector matrix had no name-level ledger — real split 42/6; 9 advisory incl. a cwd-dependent allowlist lookup turning 0 clusters into 76 silently) → fix round → PASS |
+
+**Gates at acceptance:** `cargo test --all` 246 / 0 (35 s; full similarity sweep opt-in
+behind `MOCHIKO_FULL_SIMILAR=1`, 69 s) · fmt · clippy `-D warnings` · `cargo audit --deny
+warnings` clean · no shipped file under `plugins/` changed byte-wise · no `plugin.json`
+bump · `migrate validate --log-dir migrations`: 0 rejecting · 92 advisory.
+
+**Measurements the rulings keyed on:** cold section render **35 ms** release / 107 ms
+debug, process start included — six lines per fire ≈ 0.2 s; **no demand for the deferred
+cache (D1 stands)** · largest shipped section render **15,450 chars** (`implement ·
+impl.sec.tools`) against the ~30,000 ceiling, 252 renders measured (D3 chunking has 1.94×
+headroom) · genesis 598,626 B.
+
+**Fact repairs to this record's earlier figures:** the skill matrix is **114** probes, not
+86 (the 86 predates the authoring and patterns family waves) — 296 probes total ·
+declared command floors are **110** by the validator and the shipped checker; 112 was a
+grep count including two prose occurrences (F2 already carried both instruments) · the
+anchor grammar accepts a **lettered sub-decision** (`D2a`) because the provenance sidecar
+carries two — P3 refused to rewrite provenance to fit the validator, the grammar was
+widened by lead-granted delta and pinned (RULING_RE parity, stricter than Python).
+
+**Design facts settled at build (lead-ruled, disclosed in the reports):** protection is
+checked **per migration** — lowering `class`/`kind`/`anchor` protection requires that
+migration's anchor, and an anchored lowering followed by a later unanchored tombstone is the
+sanctioned path (README corollary) · `hash:` is required on every migration
+(`migration::with_hash` stamps it) · `replay::load` runs the hard set, so `Ok` means
+deliverable · `import-document` on an existing document rejects; `tombstone-section`
+rejects while rules remain · the similarity allowlist resolves by walking up from the log
+directory, and the report always states `allowlist: none (N edges unsuppressed)` or the
+suppressed count · rule field order normalises on emit (P1 A11, accepted partial); every
+other declaration order is preserved · views are human-readable text under `--out` only
+(comments cannot survive; the 8-line command kernel header is regenerated).
+
+**Extension unit 1b — the family-2 checks (user-ruled 2026-09-04, "family 2 now"):** P3's
+matrix port named 46 command + 35 skill probes that exercise Python checks the wave-plan
+hard set never listed. Family 1 (shape errors the decoder rejects) is covered; family 3 (7
+per-skill sweep-mode claims) has no referent in a whole-state validator and is dropped with
+reason; family 4 is report wording. **Family 2 is real and ported in this wave:** in-text
+rule-ID citation resolution (ontology D5), pointer file resolution, the inline `ruling:`
+guard (D16), the flat top-level `rules:` guard (D14), absence-meaningful fields local on
+library blocks (C3), the retired-selector prose lint, orphan-block and pointless-override
+warnings, the zero-member label warning, the label-less rule check, the `{{...}}` sigil
+warning — each at the severity its Python carried, the probes re-claimed in the ledgers.
+P1 produces on an approved plan; V1 grades.
+
+**Open at acceptance:** the contract suite has not run a real case — the sandbox is
+unauthenticated (`sbx login` is the user's action; preflight `SKIPPED` exit 3 is the
+honest state) · `.claude/rules/mochiko/rust-cli.md` owes one line documenting
+`MOCHIKO_FULL_SIMILAR` (governance surface; rides the wave-2 amend run) · the manifest
+quirk from wave 0 (directory-string `commands` under `--plugin-dir`) re-verified at wave 3.
+
 ## Landed (2026-09-03)
 
 - `DECISIONS.md` row (2026-09-03) — status "ruled — build pending (wave 0 probes first)".
