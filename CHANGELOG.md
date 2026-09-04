@@ -5,6 +5,39 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.105.0] — 2026-09-04
+
+**CLI schema delivery — wave 4, the five remaining commands; landed with a tripped read-back**
+(`cli-schema-delivery` D3/D7/D8/D9; `DECISIONS.md` 2026-09-04). `architecture` · `feature` ·
+`implement` · `setup` · `specify` now fire from the migration log in the wave-3 shape — seven
+`!` lines each under the `Bash(mochiko-cli *)` grant, the positive-confirmation halt clause, the
+CLI-printed count pin — so **every command reads no schema file**; `implement`'s Entry step names
+the rendered sections instead of `implement.yaml` (three citations reworded, an eleventh strip
+entry). The migration grammar gains **`reword-section`** (grammar 1, additive before the first
+publish — the log README says why) and the binary gains **`migrate stamp <file>`** (the authoring
+path that writes the hash header); migration **`0002-fail-conditions-intent.yaml`** rewords the
+six `fail-conditions` intents that still claimed a hard-coded count (wave-3 V2 F1), the six
+shipped snapshot files carrying the same one line each (hand-applied under the transition
+clause; the CI view ≡ replay test keeps them honest), state `sequences 1..2`. The preamble
+**legend grows to nine lines** (+233 bytes: labels · moments · empty-enforces — a render-shape
+change named here per the crate rule's coordination clause). The genesis fidelity test now
+rebuilds from a **frozen corpus fixture** of the v0.103.0 schema files (51 files under
+`crates/mochiko-cli/tests/fixtures/genesis-corpus/`, per D8) while the live corpus keeps its
+field-by-field equality against the full-log replay. The contract suite discovers converted
+commands from their `!` lines and runs a delivery ×3 and an absence case per command (20 cases,
+29 sandbox sessions, 20/20, 158 assertions; pre-registered floor sets of 22 · 7 · 13 · 34 · 18 ·
+16 ids cross-checked against the render by `converted-shape`). **Per-command pilot criteria:**
+criterion (2) clear on all six (delivered 15–20 % under every baseline); **criterion (1)
+TRIPPED** — read-back `implement` 1/3, `setup` 1/3, `specify` 0/3 (`architecture`, `brainstorm`,
+`feature` 3/3). Delivery held on every replicate (every missed floor rule is verbatim in the
+transcript); the misses are recall of long floor lists and of ways-of-working floors. **User-ruled
+"land + diagnostic": wave 5 is halted** pending the pre-registered read-back diagnostic
+(`wave4-plan.md` §8). Strips: eleven `[v0.105.0]` supersession entries. Audits: V1 PASS (crate +
+log, after one documentation rework), V2 PASS (five pairs), V3 PASS (suite; its own `implement` re-run scored 0/3, dropping the same
+late-position id). `README.md`: the halting
+sentences read for all six commands. Follow-ups: the D13 advisory checker flags every converted
+command until the wave-6 Python retirement; the wave-2 publish tail is still owed.
+
 ## [0.104.0] — 2026-09-04
 
 **CLI schema delivery — wave 3, the `brainstorm` pilot** (`cli-schema-delivery` D3/D4/D7/D8/D9

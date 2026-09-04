@@ -12,7 +12,7 @@
 //! an unambiguous signal — [`Replay::is_deliverable`] — and [`load`] refuses outright, handing
 //! back the findings a caller must print before exiting 1.
 
-use crate::migration::{self, Change, Migration, RuleField};
+use crate::migration::{self, Change, Migration, RuleField, SectionEdit};
 use crate::model::{
     canonical_hash, is_anchor, ordered_get, ordered_remove, ordered_set, Condition, DocKind,
     DocRef, Document, LabelRegistry, RetiredLabel, Rule, RuleSchema, Section, Tombstone, WhenValue,
@@ -403,6 +403,44 @@ fn apply(state: &mut State, change: &Change, authority: Option<&str>) -> Result<
                 ..decoded
             });
             state.mint(&doc, &id);
+        }
+        Change::RewordSection {
+            id,
+            title,
+            intent,
+            note,
+            ..
+        } => {
+            let schema = schema_of(state, &doc)?;
+            // A retired section reports as retired rather than as absent: the two send a
+            // maintainer to different places, and "no such live section" on an id that plainly
+            // exists in the file reads as a typo hunt.
+            if schema.is_tombstoned(id) {
+                return Err(inapplicable(
+                    &doc,
+                    Some(id),
+                    "the section is retired — a tombstoned node is never reworded",
+                ));
+            }
+            let section = schema
+                .sections
+                .iter_mut()
+                .find(|s| s.id == *id)
+                .ok_or_else(|| inapplicable(&doc, Some(id), "no such live section"))?;
+            // The section's rules are untouched by construction: nothing below reaches them.
+            // Protection is a per-rule property (floor · fail · anchored), so a reword of the
+            // prose around them owes no ruling anchor.
+            if let SectionEdit::Set(text) = title {
+                section.title = text.clone();
+            }
+            if let SectionEdit::Set(text) = intent {
+                section.intent = text.clone();
+            }
+            match note {
+                SectionEdit::Set(text) => section.note = Some(text.clone()),
+                SectionEdit::Clear => section.note = None,
+                SectionEdit::Untouched => {}
+            }
         }
         Change::TombstoneSection {
             id, disposition, ..

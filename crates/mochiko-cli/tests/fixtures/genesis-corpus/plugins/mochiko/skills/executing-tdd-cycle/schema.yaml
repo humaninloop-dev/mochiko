@@ -1,0 +1,291 @@
+# Skill content schema for mochiko:executing-tdd-cycle. The SKILL.md body instructs a raw,
+# full Read of this file at skill invoke — the small families ship no common file and no
+# stub binds, so the pair's own schema is the whole first action — and its "Rules — load the
+# schema first" section carries the reading grammar. One semantic lives only here:
+#   class   floor = non-waivable · must = binding obligation · advisory = guidance, not binding.
+kind: skill
+skill: executing-tdd-cycle
+
+sections:
+  - id: executing-tdd-cycle.sec.independence
+    title: Independence — a self-report, never a verdict
+    intent: >-
+      What this skill's outputs are to the seats that grade them.
+    rules:
+
+      - id: executing-tdd-cycle.report-not-verdict
+        labels: [independence]
+        class: floor
+        kind: reservation
+        text: >-
+          Evaluating checkpoint or validation reports, or deciding the clearing verdict,
+          is never this skill's — the lead Reads the reports and owns that verdict. This
+          skill produces its own report; it does not grade one.
+
+      - id: executing-tdd-cycle.flip-is-self-report
+        labels: [independence, evidence]
+        class: must
+        kind: duty
+        text: >-
+          Flip the card's checkbox (`- [ ]` to `- [x]`) only after your tasks are
+          complete and their tests pass. The `**TEST:**` gate is the verifier's; the
+          lead treats the flip as your self-report, verified independently.
+
+  - id: executing-tdd-cycle.sec.scope
+    title: Scope — one cycle, strict order, minimum code
+    intent: >-
+      The jurisdiction seams and the execution discipline of the cycle this skill is
+      given.
+    rules:
+
+      - id: executing-tdd-cycle.slicing-boundary
+        labels: [boundary]
+        class: floor
+        kind: routing
+        text: >-
+          Deciding what the cycles are — the slicing, the cards, their acceptance
+          criteria and `**TEST:**` gates — is design-time work owned by
+          `mochiko:patterns-vertical-tdd`. This skill executes the card it is given; it
+          does not add, remove, re-scope, or reorder cycles.
+
+      - id: executing-tdd-cycle.verifier-boundary
+        labels: [boundary]
+        class: floor
+        kind: routing
+        text: >-
+          Running the quality gates (lint, build, test suite) and the final
+          real-infrastructure verification that gates a cycle is the verifier's work
+          (`testing-end-user`), never this skill's — this skill executes its own tasks
+          and runs their tests; the `**TEST:**` gate belongs to the verifier.
+
+      - id: executing-tdd-cycle.no-loop-state
+        labels: [boundary]
+        class: must
+        text: >-
+          This skill executes one cycle or one rework and produces one report — it
+          neither drives the loop nor tracks cross-cycle state.
+
+      - id: executing-tdd-cycle.strict-order
+        labels: [ladder]
+        class: floor
+        text: >-
+          Execute in strict order. No skipping steps. No reordering.
+
+      - id: executing-tdd-cycle.decompose-at-build-time
+        labels: [ladder]
+        class: must
+        kind: duty
+        text: >-
+          Decompose the card yourself, at build time, with the code in view: read the
+          relevant existing code first, then cut tasks sized to a single reviewable
+          change, each with a specific file path, ordered so tests precede the
+          implementation they pin; classify each task extend/modify per the card's
+          brownfield exposure.
+
+      - id: executing-tdd-cycle.decompose-only-the-card
+        labels: [boundary]
+        class: must
+        text: >-
+          Decompose exactly what the card's acceptance criteria require — nothing the
+          card didn't ask for.
+
+      - id: executing-tdd-cycle.pre-code-ladder
+        labels: [floor-pointer, ladder]
+        class: floor
+        kind: duty
+        text: >-
+          Before any red-phase test is written, run the pre-code ladder over each
+          prospective task per `mochiko:patterns-code-minimalism` — stop at the first
+          rung that applies, and disclose each task's rung in the cycle report's
+          decomposition.
+        pointer: "mochiko:patterns-code-minimalism"
+
+      - id: executing-tdd-cycle.red-phase-failure-verified
+        labels: [evidence]
+        class: floor
+        kind: duty
+        text: >-
+          Red phase: write the test, run it to verify it fails, and verify the failure
+          reason matches expectations — not a syntax error, import error, or wrong
+          assertion. A test that passes without implementation is not testing what you
+          think — rewrite it.
+
+      - id: executing-tdd-cycle.green-minimum
+        labels: [ladder]
+        class: must
+        text: >-
+          Green phase: write the minimum code to make the failing test pass, run the
+          test to verify it passes, and do not add features, abstractions, or
+          optimizations the card did not require.
+
+      - id: executing-tdd-cycle.brownfield-co-fire
+        labels: [fence, floor-pointer]
+        class: must
+        kind: binding
+        text: >-
+          For extend- and modify-classified tasks: read the existing file first and
+          invoke `brownfield-integration` — extend follows the file's existing
+          patterns; modify changes only what the task specifies.
+        pointer: "mochiko:brownfield-integration"
+
+      - id: executing-tdd-cycle.refactor-scope
+        labels: [boundary]
+        class: must
+        text: >-
+          Refactor phase: remove duplication introduced in this cycle only — no
+          refactoring code from previous cycles, no abstractions "for the future" — and
+          re-run the tests after refactoring to confirm they still pass.
+
+      - id: executing-tdd-cycle.rework-only-failed
+        labels: [boundary]
+        class: must
+        text: >-
+          Rework only the reported-failing tasks, traced to the responsible IDs in your
+          reported decomposition, through red/green/refactor; leave passing code
+          untouched — tasks that passed are done — and write a new report with the
+          `attempt` number incremented and the reworked tasks marked.
+
+      - id: executing-tdd-cycle.fix-pass-test-first
+        labels: [evidence]
+        class: must
+        kind: duty
+        text: >-
+          Fix pass: reproduce each reported failure with a failing test before changing
+          any code, then make the narrowest change that turns it green — cycle
+          boundaries do not constrain the fix, but scope strictly to the reported
+          failure; this is not a refactoring opportunity. The report carries
+          `cycle: fix`.
+
+      - id: executing-tdd-cycle.rationalization-stop
+        labels: [ladder]
+        class: floor
+        text: >-
+          If any Red-Flags thought arises, STOP immediately — rationalization in
+          progress: return to the execution sequence and follow every step. No
+          exceptions — not for "trivial" cards, "obvious" implementations, "tight
+          deadlines", not even if the user says "just write the code".
+
+      - id: executing-tdd-cycle.failure-reason-discipline
+        labels: [evidence]
+        class: must
+        text: >-
+          The Common-Mistakes obligations bind as one set: verify the failure message
+          matches expectation (a `ModuleNotFoundError` is not a test failure), and note
+          out-of-scope opportunities in `Notes of note` instead of acting on them.
+
+  - id: executing-tdd-cycle.sec.inputs
+    title: Inputs — the cycle card
+    intent: >-
+      How the card is read, and what card reading never becomes.
+    rules:
+
+      - id: executing-tdd-cycle.card-reading-binding
+        labels: [fence, binding]
+        class: must
+        kind: binding
+        text: >-
+          Read the current card from the feature's `tasks.md` (under
+          `.mochiko/specs/<feature>/`) per `references/TASK-PARSING.md` — stories,
+          acceptance criteria (cited IDs resolved against the spec/design artifacts),
+          dependencies, brownfield exposure, and `**TEST:**` gate; the current cycle is
+          the first card in order whose checkbox is unchecked.
+        pointer: "references/TASK-PARSING.md"
+
+      - id: executing-tdd-cycle.card-parse-boundary
+        labels: [boundary]
+        class: must
+        kind: routing
+        text: >-
+          Parse the card's `**TEST:**` blocks only to know what the cycle must prove —
+          running the cases is `testing-end-user`'s work — and read the quality gates
+          only to know they exist, per `references/TASK-PARSING.md`.
+        pointer: "references/TASK-PARSING.md"
+
+  - id: executing-tdd-cycle.sec.verdict
+    title: Verdict — none owned
+    intent: >-
+      The clearing grammar this skill would carry.
+    note: >-
+      Deliberately empty — this executor's outcome grammar is the report field contract
+      carried in `executing-tdd-cycle.sec.output`; the clearing verdict is the lead's
+      (`executing-tdd-cycle.report-not-verdict`).
+    rules: []
+
+  - id: executing-tdd-cycle.sec.output
+    title: Output — the disclosed decomposition and the cycle report
+    intent: >-
+      Where the decomposition lands and what the persisted report is.
+    rules:
+
+      - id: executing-tdd-cycle.decomposition-disclosed
+        labels: [reporting]
+        class: must
+        text: >-
+          The decomposition is disclosed in the cycle report (task list, paths,
+          ordering), not written back into `tasks.md` — the card stays the artifact;
+          your decomposition is execution detail.
+
+      - id: executing-tdd-cycle.report-binding
+        labels: [reporting, binding]
+        class: must
+        kind: binding
+        text: >-
+          Produce `cycle-report.md` per `references/CYCLE-REPORT-FORMAT.md`,
+          machine-first: the YAML frontmatter is the report, the decomposition rides its
+          structured fields, and a clean passing cycle needs no prose.
+        pointer: "references/CYCLE-REPORT-FORMAT.md"
+
+      - id: executing-tdd-cycle.report-field-contract
+        labels: [reporting, binding]
+        class: must
+        kind: binding
+        text: >-
+          The report's required frontmatter set, its local task IDs (`T{cycle}.{n}`),
+          and the per-task `rung` field are defined in
+          `references/CYCLE-REPORT-FORMAT.md`, referenced never restated.
+        pointer: "references/CYCLE-REPORT-FORMAT.md"
+
+      - id: executing-tdd-cycle.sanctioned-set-of-two
+        labels: [reporting]
+        class: floor
+        text: >-
+          The report's sanctioned prose set is exactly two sections (`Notes of note` ·
+          the failure narrative), its register is bound, and prose on a clean report is
+          a defect — per the rules in `references/CYCLE-REPORT-FORMAT.md`, the ruled
+          restatement of `templates/report-format.md` in this payload home ([v0.44.0]
+          KEPT: cut it only with a ruling that also re-homes the check).
+        pointer: "references/CYCLE-REPORT-FORMAT.md"
+
+      - id: executing-tdd-cycle.verifier-owned-not-failure
+        labels: [reporting, boundary]
+        class: must
+        text: >-
+          A task you were never meant to run is not an execution failure: a
+          verifier-owned `**TEST:**` gate belongs in `failed_tasks:` with its one-line
+          reason and triggers no narrative, per `references/CYCLE-REPORT-FORMAT.md`.
+        pointer: "references/CYCLE-REPORT-FORMAT.md"
+
+  - id: executing-tdd-cycle.sec.reserved
+    title: Reserved — the lead's routing, the human's registry gate
+    intent: >-
+      Decisions this seat never takes.
+    rules:
+
+      - id: executing-tdd-cycle.lead-routing-reservation
+        labels: [independence]
+        class: floor
+        kind: reservation
+        text: >-
+          Whether to rework, how many attempts are permitted, when to run a fix pass,
+          which cycle runs next, and when to stop are the lead's routing decisions — not
+          this skill's. You execute the cycle, rework, or fix you are given.
+
+      - id: executing-tdd-cycle.domain-deps-checkpoint
+        labels: [user-gate]
+        class: floor
+        kind: gate
+        text: >-
+          A non-empty `domain_deps_added` list always forces a human checkpoint — never
+          auto-approved; the visibility floor's field contract lives in
+          `references/CYCLE-REPORT-FORMAT.md`.
+        pointer: "references/CYCLE-REPORT-FORMAT.md"

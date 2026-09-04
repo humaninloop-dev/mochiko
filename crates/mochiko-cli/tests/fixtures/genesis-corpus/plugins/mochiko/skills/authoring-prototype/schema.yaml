@@ -1,0 +1,234 @@
+# Skill content schema for mochiko:authoring-prototype. The SKILL.md body instructs a raw,
+# full Read of this file at skill invoke — beside plugins/mochiko/schemas/skill-authoring-common.yaml,
+# one declared first action — and its "Rules — load the schema first" section carries the
+# reading grammar. Two semantics live only here:
+#   class   floor = non-waivable · must = binding obligation · advisory = guidance, not binding.
+#   conditions:  each dimension declares its resolution point (entry-derived · surface-presence);
+#           a rule gated on an unresolved dimension is inapplicable until it resolves.
+kind: skill
+skill: authoring-prototype
+
+vars:
+  template: "spec"
+  artifact: "prototype"
+  grader: "`mochiko:review-specifications`"
+
+conditions:
+  design_system:
+    values: presence
+    resolution: surface-presence
+    note: a design system or component library discoverable in the project.
+
+sections:
+  - id: authoring-prototype.sec.independence
+    title: Independence — author, never grader
+    intent: >-
+      Who grades the produced prototype, and never this seat.
+    rules:
+
+      - id: authoring-prototype.independent-grade
+        extends: authoring-common.independent-grade
+        class: must
+        kind: routing
+
+  - id: authoring-prototype.sec.scope
+    title: Scope — what this skill renders, and never touches
+    intent: >-
+      The jurisdiction lines around a specification artifact.
+    rules:
+
+      - id: authoring-prototype.no-ux-surface-waiver
+        labels: [boundary]
+        class: must
+        kind: routing
+        text: >-
+          A feature with no UX surface — the intent ruling says not UX-bearing — takes
+          the waiver line in the spec instead; never manufacture screens for an API or
+          batch job.
+
+      - id: authoring-prototype.stories-routing
+        labels: [boundary]
+        class: must
+        kind: routing
+        text: >-
+          Authoring the stories themselves is `mochiko:authoring-user-stories` — the
+          prototype renders stories, never invents or rewrites them.
+
+      - id: authoring-prototype.throwaway-never-migrates
+        labels: [boundary]
+        class: must
+        kind: routing
+        text: >-
+          The prototype is a specification artifact — its code is throwaway by design
+          and never migrates into production UI.
+
+      - id: authoring-prototype.upstream-untouched
+        labels: [fence]
+        class: floor
+        text: >-
+          Stories, requirements, and acceptance criteria are untouched — the prototype
+          renders them, never edits them.
+
+  - id: authoring-prototype.sec.inputs
+    title: Inputs
+    intent: >-
+      What is read before authoring.
+    note: >-
+      Deliberately empty — no schema-bound read duty; the stories and the
+      design-system discovery ride the procedure prose (census: inputs 0).
+    rules: []
+
+  - id: authoring-prototype.sec.artifact
+    title: Artifact — the app, the manifest, and their agreement
+    intent: >-
+      The binding grammar of the two coupled artifacts and the invariants they are
+      held to.
+    rules:
+
+      - id: authoring-prototype.letter-is-spirit
+        extends: authoring-common.letter-is-spirit
+        class: floor
+
+      - id: authoring-prototype.two-coupled-artifacts
+        labels: [binding, artifact-grammar]
+        class: must
+        kind: binding
+        text: >-
+          The output is two coupled artifacts: the prototype app at
+          `.mochiko/specs/<feature>/prototype/` — plain static HTML/CSS with minimal
+          inline JS for navigation only — and the spec's Screens & Flows manifest:
+          `SCR-XXX` rows (screen, purpose, data shown, FEAT tag) and `FLOW-XXX` rows
+          (click-path steps, the story acceptance scenario each keys to, FEAT tag).
+          The manifest is the contract surface downstream stages trace to; the HTML is
+          its clickable rendering.
+
+      - id: authoring-prototype.spec-two-arm
+        extends: authoring-common.two-arm-template
+        class: must
+        kind: binding
+
+      - id: authoring-prototype.envelope-binding
+        extends: authoring-common.envelope-binding
+        class: must
+        kind: binding
+
+      - id: authoring-prototype.static-degrade-path
+        labels: [artifact-grammar]
+        class: floor
+        text: >-
+          The app is plain static HTML: servable with `bun` (e.g.
+          `bunx serve prototype/`) AND — the degrade path — openable directly from the
+          filesystem with no server at all. No build step, no framework, no install
+          required to view; serving is convenience, never a prerequisite.
+
+      - id: authoring-prototype.authority-split
+        labels: [artifact-grammar]
+        class: floor
+        text: >-
+          Authority split — binding flows, advisory pixels. What screens exist, what
+          each shows, and what the user can do (the manifest) is binding: downstream
+          design must serve every screen's data and route every action. How it looks
+          is deliberately rough and advisory: layout, styling, and copy may all
+          improve at build time without ceremony.
+
+      - id: authoring-prototype.skeleton-first
+        labels: [artifact-grammar]
+        class: must
+        text: >-
+          Skeleton first: before any story screen, a nav frame — the app shell,
+          navigation structure, and route stubs for every anticipated screen — so
+          story screens fill into a stable frame instead of thrashing earlier ones.
+
+      - id: authoring-prototype.lockstep
+        labels: [artifact-grammar]
+        class: must
+        text: >-
+          Lockstep, story by story: screens are authored with their story, as one unit
+          of thought — never batched after all stories are drafted.
+
+      - id: authoring-prototype.flow-keys-scenario
+        labels: [artifact-grammar]
+        class: must
+        text: >-
+          Every `FLOW-XXX` names the story acceptance scenario it renders
+          (Given/When/Then to the click path that walks it); a flow keyed to nothing
+          is scope invention, and a P1 scenario with no flow is a manifest gap.
+
+      - id: authoring-prototype.manifest-html-agreement
+        labels: [artifact-grammar, evidence]
+        class: must
+        text: >-
+          Manifest and HTML agree in both directions: every `SCR-XXX` is a reachable
+          page, every `FLOW-XXX` is clickable end-to-end in the served app; drift
+          between the tables and the HTML is a defect, mechanically checkable by
+          walking the app.
+
+      - id: authoring-prototype.low-fi-discipline
+        labels: [artifact-grammar]
+        class: must
+        text: >-
+          Low-fi discipline: grey boxes, system fonts, placeholder data with honest
+          shape — realistic fields, realistic cardinality (five rows, not one). No
+          polish, no animation, no pixel perfection — over-fidelity invites sign-off
+          on looks the build won't honor, and makes the advisory half read as binding.
+
+      - id: authoring-prototype.design-system-honored
+        labels: [artifact-grammar]
+        class: must
+        when: {design_system: present}
+        text: >-
+          Design system honored when one exists: use its tokens and primitives
+          (colors, spacing, component names) so screens read as the product's
+          family — at low fidelity, not faithful reproduction. No design system means
+          neutral grey-box defaults; never invent a new visual language.
+
+      - id: authoring-prototype.feat-retag-pass
+        labels: [artifact-grammar]
+        class: must
+        kind: duty
+        text: >-
+          FEAT tags land as a re-tag pass over the SCR/FLOW manifest once feature
+          derivation completes — tags cannot exist during lockstep authoring. Every
+          row then carries the FEAT tag of the feature its story homes to; screens
+          outside the current selection stay present but visibly greyed coming-soon —
+          the app stays a coherent whole, not a stub maze.
+
+      - id: authoring-prototype.rejected-stories-visible
+        labels: [artifact-grammar]
+        class: must
+        text: >-
+          A filter-rejected story's screens are kept, greyed with the same coming-soon
+          grammar, and marked rejected with a pointer to the rejection recorded in the
+          story file — never silently deleted; the walkable record of what was
+          considered and declined survives.
+
+      - id: authoring-prototype.structure-binding
+        labels: [artifact-grammar, binding]
+        class: must
+        text: >-
+          One file per screen, named by its `SCR-XXX` id; navigation is plain
+          `<a href>` / `<form action>` — a flow is walkable by clicking, no JS state
+          machine — and navigation never dead-ends: coming-soon and rejected screens
+          stay reachable.
+
+  - id: authoring-prototype.sec.output
+    title: Output — findings leave as findings
+    intent: >-
+      What the authoring surfaces upward rather than resolving silently.
+    rules:
+
+      - id: authoring-prototype.scope-invention-surfaced
+        labels: [reporting]
+        class: must
+        text: >-
+          A screen need the stories do not cover is scope invention — surfaced as a
+          story finding, never silently rendered.
+
+  - id: authoring-prototype.sec.reserved
+    title: Reserved
+    intent: >-
+      Decisions this seat never takes.
+    note: >-
+      Deliberately empty — no decision is reserved at this seat; selection and story
+      rulings live upstream of the prototype (census: reserved 0).
+    rules: []

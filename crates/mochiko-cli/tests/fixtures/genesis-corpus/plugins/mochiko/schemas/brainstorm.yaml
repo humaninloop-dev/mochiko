@@ -1,0 +1,285 @@
+# Command content schema for /mochiko:brainstorm. The command .md instructs a raw, full Read of
+# this file at command fire; the model interprets it live — the .md Rules block carries the
+# reading grammar. Two semantics live only here:
+#   class   floor = non-waivable · must = binding obligation · advisory = guidance, not binding.
+#   conditions:  each dimension declares its resolution point (entry-derived · surface-presence ·
+#           moment-resolved(<moment>) · user-ruled · standing-trigger); a moment-resolved
+#           dimension is unresolved until its named moment — rules gated on it are inapplicable
+#           until then.
+kind: command
+command: brainstorm
+
+vars:
+  record_path: ".mochiko/brainstorms/<slug>/record.md"   # the deliverable; kebab-case <slug> derived at the start
+  index_path: ".mochiko/brainstorms/index.md"
+  km_path: ".mochiko/memory/knowledge-management.md"
+  explore_model: haiku
+
+conditions:
+  km_file:
+    values: presence
+    resolution: surface-presence
+    note: the knowledge-management file at ${km_path}.
+  seats:
+    values: [single, multi]
+    resolution: standing-trigger
+    note: fires the moment the run composes more than one seat, and re-fires on a seat added mid-run.
+
+moments:
+  session-open: Where the index is read and the session is entered as open.
+  cold-review: The blind two-message dispatch and the cold read of the frozen record.
+  acceptance: The user's acceptance of the record.
+  close: Where the index is updated with where the outcome landed and the KM close ritual runs.
+
+sections:
+  - id: brainstorm.sec.roles
+    title: Roles & Responsibilities — seat wiring
+    intent: >-
+      Lead role, seat staffing, and the review independence the session's seats carry.
+    rules:
+
+      - id: brainstorm.lead-inline-questioning
+        labels: [seats]
+        class: must
+        kind: duty
+        text: >-
+          You are the lead. Plan the run and orchestrate it toward the run's goal; run the
+          questioning yourself, inline, via mochiko:analysis-iterative — one question per
+          turn, format adapted to the user's state.
+        pointer: "mochiko:analysis-iterative"
+
+      - id: brainstorm.staffing-latitude
+        labels: [seats]
+        class: must
+        kind: latitude
+        text: >-
+          Teammates or subagents per seat is your call.
+
+      - id: brainstorm.record-review-independence
+        labels: [independence, seats]
+        class: must
+        text: >-
+          The record at ${record_path} is yours, so its review seat is always someone else,
+          reading the frozen record cold from the file.
+
+      - id: brainstorm.blind-map-dispatch
+        labels: [independence, seats]
+        class: must
+        text: >-
+          A review seat is spawned in two messages — first the topic statement and goal
+          line only, never ${record_path}, so it builds its Phase 0 angle map with no sight
+          of what the session decided; its map returns before you send ${record_path} and
+          the cold read begins. The anchoring fence is structural, not a trust ask.
+
+      - id: brainstorm.pair-maps-independent
+        labels: [independence, seats]
+        class: must
+        text: >-
+          In a review pair, both seats build their Phase 0 angle maps independently.
+
+  - id: brainstorm.sec.reserved
+    title: Reserved to the user — never the run's
+    intent: >-
+      Decisions held by the user: acceptance, waivers, and the rulings no seat may take.
+    rules:
+
+      - id: brainstorm.coverage-survivor-routing
+        labels: [user-gate]
+        class: must
+        kind: routing
+        text: >-
+          A surviving coverage finding is a candidate that questions the topic itself, not
+          a fold — present each gap as a candidate topic; the user rules the path: explore
+          now (re-enter mochiko:analysis-iterative on that angle; the resulting decision
+          lands in ${record_path}'s same `D…` namespace), rule inline, or defer.
+
+      - id: brainstorm.user-record-acceptance
+        labels: [user-gate]
+        class: floor
+        kind: gate
+        text: >-
+          Record acceptance is reserved to the user — their word, never yours.
+
+      - id: brainstorm.user-survivor-challenge
+        labels: [user-gate]
+        class: must
+        kind: reservation
+        text: >-
+          The disposition of any review survivor that challenges a user ruling is reserved
+          to the user.
+
+      - id: brainstorm.user-review-waiver
+        labels: [user-gate]
+        class: must
+        kind: reservation
+        text: >-
+          The waiver, if the review is to be skipped, is reserved to the user.
+
+      - id: brainstorm.user-pen-boundary
+        labels: [user-gate]
+        class: must
+        kind: reservation
+        text: >-
+          Any amendment to a user-ruled decision, and any new decision, is reserved to the
+          user — their word, never yours.
+
+  - id: brainstorm.sec.tools
+    title: Tools bindings
+    intent: >-
+      Paths, templates, and skills the session binds to.
+    rules:
+
+      - id: brainstorm.deliverable-record
+        labels: [binding]
+        class: must
+        kind: binding
+        text: >-
+          The deliverable is ${record_path} — kebab-case `<slug>` derived at the start,
+          decisions in one `D1…` namespace.
+
+      - id: brainstorm.record-as-you-go
+        labels: [evidence]
+        class: must
+        text: >-
+          ${record_path} is written as the session progresses, never reconstructed at the
+          end.
+
+      - id: brainstorm.index-bookkeeping
+        labels: [binding, landing]
+        class: must
+        text: >-
+          Read ${index_path} before opening; enter the session on open (status: open);
+          update at acceptance or supersession with where the outcome landed.
+
+      - id: brainstorm.km-close-ritual
+        labels: [landing]
+        class: must
+        when: {km_file: present}
+        text: >-
+          Run the close ritual of ${km_path}.
+
+      - id: brainstorm.synthesis-on-request
+        labels: [binding]
+        class: must
+        kind: binding
+        text: >-
+          A synthesis is written on request only, after acceptance — beside ${record_path},
+          stamped *derived — record canonical*; under a review waiver, stamped *derived,
+          unchecked*.
+
+      - id: brainstorm.register
+        extends: common.register
+        labels: [binding, reporting]
+        class: must
+        kind: binding
+
+      - id: brainstorm.next-step-offer
+        labels: [landing, user-gate]
+        class: must
+        kind: routing
+        text: >-
+          Pipeline entry (e.g. /mochiko:specify when the record is honestly a feature
+          description) is an offer after acceptance, never a default.
+
+  - id: brainstorm.sec.ways-of-working
+    title: Ways of Working
+    intent: >-
+      How the session questions, reviews cold, bounds its rounds, and reports; model
+      routing for its seats.
+    rules:
+
+      - id: brainstorm.model-tiering
+        extends: common.model-tiering
+        class: must
+        kind: routing
+
+      - id: brainstorm.plan-approval-producers
+        extends: common.plan-approval-producers
+        class: must
+
+      - id: brainstorm.author-grader-default-fail
+        extends: common.author-grader-default-fail
+        class: floor
+
+      - id: brainstorm.non-coverage-survivors
+        labels: [user-gate]
+        class: must
+        kind: routing
+        text: >-
+          Non-coverage survivors keep the ordinary fold / repair / ruling path and may be
+          dispositioned in batches.
+
+      - id: brainstorm.reopen-born-verify
+        labels: [attempt-economy]
+        class: must
+        kind: bound
+        text: >-
+          A decision born from a coverage-survivor reopen gets one bounded verify round —
+          internal consistency and record-fitness, no fresh cold read, no blind-map
+          coverage hunt against it, and no second reopen off it.
+
+      - id: brainstorm.no-git-mutations
+        extends: common.no-git-mutations
+        class: must
+
+      - id: brainstorm.acceptance-plain-text
+        extends: common.acceptance-plain-text
+        class: must
+
+  - id: brainstorm.sec.boundaries
+    title: Boundaries — the non-waivable floor
+    intent: >-
+      Floor obligations no seat and no in-run ruling can waive.
+    rules:
+
+      - id: brainstorm.transport-floor
+        extends: common.transport-floor
+        class: floor
+        when: {seats: multi}
+        # C4: floor — always read, always delivered. `when:` gates when the
+        # obligation APPLIES, never whether it is delivered. Re-evaluated
+        # whenever the run's shape changes (a seat added mid-run re-activates it).
+
+  - id: brainstorm.sec.fail-conditions
+    title: Not done — default FAIL
+    intent: >-
+      The kind: fail set — any one standing fails the run; the .md Not-done line hard-codes this set's count.
+    rules:
+
+      - id: brainstorm.fail.record-unaccepted
+        labels: [user-gate]
+        class: floor
+        kind: fail
+        enforces: [brainstorm.user-record-acceptance]
+        text: >-
+          An unaccepted record.
+
+      - id: brainstorm.fail.unreviewed-no-waiver
+        labels: [independence]
+        class: floor
+        kind: fail
+        enforces: [brainstorm.record-review-independence, brainstorm.user-review-waiver]
+        text: >-
+          An unreviewed record with no recorded waiver.
+
+      - id: brainstorm.fail.survivor-undispositioned
+        labels: [user-gate]
+        class: floor
+        kind: fail
+        enforces: [brainstorm.coverage-survivor-routing, brainstorm.non-coverage-survivors]
+        text: >-
+          An undispositioned review survivor.
+
+      - id: brainstorm.fail.index-mismatch
+        labels: [landing]
+        class: floor
+        kind: fail
+        enforces: [brainstorm.index-bookkeeping]
+        text: >-
+          An index entry in ${index_path} missing or contradicting the record's status.
+
+tombstones:
+  - id: brainstorm.sec.harness
+    disposition: "superseded → rules redistributed across the D4 six-set (command-md-scaffold-standardization D3/D4/D5)"
+  - id: brainstorm.sec.bindings
+    disposition: "superseded → rules redistributed across the D4 six-set (command-md-scaffold-standardization D3/D4/D5)"

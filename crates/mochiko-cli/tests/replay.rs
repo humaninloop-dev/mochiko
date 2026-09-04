@@ -1209,3 +1209,224 @@ fn a_non_string_when_key_or_label_is_a_finding_never_a_silent_coercion() {
         codes(&bad_labels)
     );
 }
+
+// ---------------------------------------------------------------------------
+// Wave 4 — `reword-section`
+// ---------------------------------------------------------------------------
+
+/// The section a reword names, from a replayed state.
+fn section<'a>(state: &'a replay::State, id: &str) -> &'a mochiko_cli::model::Section {
+    demo(state)
+        .find_section(id)
+        .unwrap_or_else(|| panic!("{id} is a live section of the demo schema"))
+}
+
+#[test]
+fn reword_section_sets_the_title_the_intent_and_the_note() {
+    let replay = with_followup(
+        "reword-section-all",
+        &followup(
+            "Reword one section's prose.",
+            "  - {op: reword-section, schema: command/demo, id: demo.sec.reserved, \
+             title: Reserved to you, intent: The calls that stay the user's., \
+             note: Deliberately empty by ruling.}\n",
+        ),
+    );
+    assert_clean(&replay);
+    let reserved = section(&replay.state, "demo.sec.reserved");
+    assert_eq!(reserved.title, "Reserved to you");
+    assert_eq!(reserved.intent, "The calls that stay the user's.");
+    assert_eq!(
+        reserved.note.as_deref(),
+        Some("Deliberately empty by ruling.")
+    );
+}
+
+#[test]
+fn reword_section_edits_only_the_fields_it_names() {
+    let replay = with_followup(
+        "reword-section-one",
+        &followup(
+            "Reword one section's intent alone.",
+            "  - {op: reword-section, schema: command/demo, id: demo.sec.reserved, \
+             intent: Only the intent moves.}\n",
+        ),
+    );
+    assert_clean(&replay);
+    let reserved = section(&replay.state, "demo.sec.reserved");
+    assert_eq!(reserved.intent, "Only the intent moves.");
+    assert_eq!(reserved.title, "Reserved", "the title was not named");
+    assert_eq!(
+        reserved.note.as_deref(),
+        Some("Deliberately empty — this run reserves nothing beyond its floor."),
+        "the note was not named"
+    );
+}
+
+#[test]
+fn reword_section_clears_a_note() {
+    let replay = with_followup(
+        "reword-section-clear",
+        &followup(
+            "Clear a section's note.",
+            "  - {op: reword-section, schema: command/demo, id: demo.sec.reserved, note: ~}\n",
+        ),
+    );
+    assert_clean(&replay);
+    assert_eq!(section(&replay.state, "demo.sec.reserved").note, None);
+}
+
+#[test]
+fn reword_section_leaves_the_sections_rules_untouched() {
+    let before = replay_of(&{
+        let dir = log_dir("reword-section-rules-before");
+        write(&dir, "0001-genesis.yaml", GENESIS);
+        dir
+    });
+    let after = with_followup(
+        "reword-section-rules",
+        &followup(
+            "Reword the fail set's intent.",
+            "  - {op: reword-section, schema: command/demo, id: demo.sec.fail-conditions, \
+             intent: The fail set, counted by the render.}\n",
+        ),
+    );
+    assert_clean(&after);
+
+    let ids = |replay: &Replay| -> Vec<String> {
+        demo(&replay.state)
+            .find_section("demo.sec.fail-conditions")
+            .expect("the fail section is live")
+            .rules
+            .iter()
+            .map(|r| r.id.clone())
+            .collect()
+    };
+    assert_eq!(ids(&before), ids(&after), "a reword moves no rule");
+
+    let rule = demo(&after.state)
+        .find_rule("demo.fail.ungraded")
+        .expect("the fail rule is still live");
+    assert_eq!(rule.text.as_deref(), Some("Never graded."));
+    assert_eq!(rule.class.as_deref(), Some("floor"));
+    assert_eq!(rule.kind.as_deref(), Some("fail"));
+}
+
+#[test]
+fn reword_section_needs_no_ruling_anchor_even_over_a_fail_set() {
+    // Protection is read from a rule's own fields — floor, fail, anchored — and a section reword
+    // touches no rule, so no ruling anchor is owed for one.
+    let replay = with_followup(
+        "reword-section-unanchored",
+        &followup(
+            "Reword a fail section with no header anchor.",
+            "  - {op: reword-section, schema: command/demo, id: demo.sec.fail-conditions, \
+             intent: Reworded with no anchor at all.}\n",
+        ),
+    );
+    assert_clean(&replay);
+    assert!(
+        !codes(&replay).contains(&"protected-exit"),
+        "a section reword is not a protected exit, got {:?}",
+        codes(&replay)
+    );
+    assert_eq!(
+        section(&replay.state, "demo.sec.fail-conditions").intent,
+        "Reworded with no anchor at all."
+    );
+}
+
+#[test]
+fn reword_section_on_an_unknown_section_is_inapplicable() {
+    let replay = with_followup(
+        "reword-section-unknown",
+        &followup(
+            "Reword a section that does not exist.",
+            "  - {op: reword-section, schema: command/demo, id: demo.sec.nowhere, \
+             intent: Nothing to reword.}\n",
+        ),
+    );
+    assert!(
+        codes(&replay).contains(&"op-inapplicable"),
+        "an unknown section id is a finding, got {:?}",
+        codes(&replay)
+    );
+}
+
+#[test]
+fn reword_section_on_a_tombstoned_section_names_the_tombstone() {
+    let replay = with_followup(
+        "reword-section-tombstoned",
+        &followup(
+            "Retire a section, then try to reword it.",
+            "  - {op: tombstone-section, schema: command/demo, id: demo.sec.tools, \
+             disposition: superseded}\n  \
+             - {op: reword-section, schema: command/demo, id: demo.sec.tools, \
+             intent: Too late.}\n",
+        ),
+    );
+    let message = replay
+        .findings
+        .iter()
+        .map(std::string::ToString::to_string)
+        .collect::<Vec<_>>()
+        .join("\n");
+    assert!(
+        codes(&replay).contains(&"op-inapplicable"),
+        "rewording a retired section is a finding, got {:?}",
+        codes(&replay)
+    );
+    assert!(
+        message.contains("retired"),
+        "the finding says the section is retired rather than merely absent: {message}"
+    );
+}
+
+#[test]
+fn reword_section_on_a_document_carrying_no_rules_is_inapplicable() {
+    let replay = with_followup(
+        "reword-section-opaque",
+        &followup(
+            "Reword a section of a template, which has none.",
+            "  - {op: reword-section, schema: template/spec, id: spec.sec.tools, \
+             intent: Templates carry no sections.}\n",
+        ),
+    );
+    assert!(
+        codes(&replay).contains(&"op-inapplicable"),
+        "a rules-less document is a finding, got {:?}",
+        codes(&replay)
+    );
+}
+
+#[test]
+fn a_two_migration_log_replays_deterministically() {
+    let build = |tag: &str, first: &str, second: &str| -> String {
+        let dir = log_dir(tag);
+        write(&dir, "0001-genesis.yaml", GENESIS);
+        write(&dir, "0002-a.yaml", first);
+        write(&dir, "0003-b.yaml", second);
+        let replay = replay_of(&dir);
+        assert_clean(&replay);
+        replay.state.content_hash()
+    };
+    let a = "grammar: 1\nid: 0002-a\nsequence: 2\nintent: First reword.\nchanges:\n  \
+             - {op: reword-section, schema: command/demo, id: demo.sec.reserved, intent: First.}\n";
+    let b = "grammar: 1\nid: 0003-b\nsequence: 3\nintent: Second reword.\nchanges:\n  \
+             - {op: reword-section, schema: command/demo, id: demo.sec.reserved, intent: Second.}\n";
+
+    let once = build("determinism-1", a, b);
+    let twice = build("determinism-2", a, b);
+    assert_eq!(once, twice, "the same log replays to the same state");
+
+    // The intent is content, so the last reword in sequence order decides the hash.
+    let swapped = build(
+        "determinism-3",
+        &a.replace("intent: First.}", "intent: Second.}"),
+        &b.replace("intent: Second.}", "intent: First.}"),
+    );
+    assert_ne!(
+        once, swapped,
+        "a section intent is state — reversing the rewords must move the content hash"
+    );
+}

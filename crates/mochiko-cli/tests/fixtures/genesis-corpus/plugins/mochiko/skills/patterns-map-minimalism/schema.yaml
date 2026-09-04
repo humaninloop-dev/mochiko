@@ -1,0 +1,168 @@
+# Skill content schema for mochiko:patterns-map-minimalism. The SKILL.md body instructs a raw,
+# full Read of this file at skill invoke — one declared first action — and its "Rules — load
+# the schema first" section carries the reading grammar. Two semantics live only here:
+#   class   floor = non-waivable · must = binding obligation · advisory = guidance, not binding.
+#   conditions:  each dimension declares its resolution point (entry-derived · surface-presence);
+#           a rule gated on an unresolved dimension is inapplicable until it resolves.
+kind: skill
+skill: patterns-map-minimalism
+
+conditions:
+  cap_trip:
+    values: presence
+    resolution: entry-derived
+    note: >-
+      the soft cap (roughly nine top-level capabilities) has tripped for this map — the
+      grooming firing site.
+
+sections:
+  - id: patterns-map-minimalism.sec.trigger
+    title: Trigger — where the discipline fires
+    intent: >-
+      The firing sites, and the cap that trips grooming.
+    rules:
+
+      - id: patterns-map-minimalism.firing-sites
+        labels: [trigger]
+        class: must
+        kind: gate
+        text: >-
+          The discipline fires at the PM's derivation (specify), the spec reviewer's
+          grade, and `/mochiko:feature` grooming at cap-trip — whenever the feature map
+          gains or grooms a capability.
+
+      - id: patterns-map-minimalism.soft-cap-trigger
+        labels: [trigger, ladder]
+        class: must
+        kind: bound
+        text: >-
+          Past roughly nine top-level capabilities, a grooming pass runs — merge
+          lookalikes, retire dead entries. The cap is a trigger, never a hard block: the
+          map may exceed nine when the product honestly does that many kinds of things.
+
+  - id: patterns-map-minimalism.sec.scope
+    title: Scope — the discipline's altitude and its neighbors
+    intent: >-
+      What this skill owns, what the map skill owns, and what the tests never grade.
+    rules:
+
+      - id: patterns-map-minimalism.vocabulary-boundary
+        labels: [boundary]
+        class: must
+        kind: routing
+        text: >-
+          This skill owns the discipline; the capability/work-row vocabulary, file
+          shapes, and fold mechanism live in `mochiko:authoring-feature-map` —
+          within-capability roll-up is automatic there, rows folding into extent at
+          delivery landing.
+
+      - id: patterns-map-minimalism.durable-layer-only
+        labels: [boundary]
+        class: must
+        kind: routing
+        text: >-
+          The tests grade the durable capability layer, never the transient work rows —
+          a delivery increment under a capability may be story-shaped. Plan and code
+          sizing are the sibling ladders at their own altitudes
+          (`mochiko:patterns-plan-minimalism` · `mochiko:patterns-code-minimalism`).
+
+  - id: patterns-map-minimalism.sec.discipline
+    title: Discipline — the tests, the precedence, the dormant tier
+    intent: >-
+      The binding core: honest fewness, the governing tests, extend-beats-mint, domains.
+    rules:
+
+      - id: patterns-map-minimalism.fewness-never-hides
+        labels: [evidence]
+        class: floor
+        text: >-
+          Few is not sparse — fewness never hides a capability that passes the tests; the
+          map is small because the product honestly does few kinds of things, never to
+          sit under the cap.
+
+      - id: patterns-map-minimalism.three-governing-tests
+        labels: [ladder]
+        class: must
+        kind: duty
+        text: >-
+          A candidate earns a capability only when the three governing tests all hold —
+          system's-language · durability · new-kind-vs-more-of-same, taught in this
+          skill's body.
+
+      - id: patterns-map-minimalism.noun-verbs-aid-only
+        labels: [ladder]
+        class: must
+        text: >-
+          noun + verbs is a heuristic aid, never a gate — a new verb on an existing noun
+          signals extend-not-mint, but it never blocks a cross-cutting capability (an
+          onboarding journey) that passes the governing tests.
+
+      - id: patterns-map-minimalism.extend-beats-mint
+        labels: [ladder]
+        class: floor
+        text: >-
+          A new story grows an existing capability first — the new-kind test decides —
+          and a mint must argue against extending. An unargued mint is the
+          story-mirroring defect the map exists to stop.
+
+      - id: patterns-map-minimalism.domains-dormant
+        labels: [single-home]
+        class: must
+        when: {cap_trip: present}
+        text: >-
+          Domains are the grouping tier — every capability lives in exactly one domain,
+          minted only at cap-trip; a small map stays flat. The PM proposes names and the
+          principal-architect co-signs — and the store's domain-to-spine mapping line and
+          the co-sign duty are deferred to the first real cap-trip: neither is built
+          until a live map actually approaches the cap.
+
+  - id: patterns-map-minimalism.sec.inputs
+    title: Inputs — what is read before a claim
+    intent: >-
+      The read that grounds a new-kind claim.
+    rules:
+
+      - id: patterns-map-minimalism.read-map-first
+        labels: [evidence]
+        class: must
+        kind: duty
+        text: >-
+          The current map is read first — "new kind" is claimed against what is already
+          there.
+
+  - id: patterns-map-minimalism.sec.disclosure
+    title: Disclosure — what a map write preserves
+    intent: >-
+      The write mechanics a ruled merge or re-parenting carries.
+    rules:
+
+      - id: patterns-map-minimalism.merge-preserves-mechanics
+        labels: [artifact-grammar]
+        class: must
+        text: >-
+          A user-ruled merge preserves four mechanics — the absorbing ID survives while
+          the merged entry flips `retired`, dated, with a merged-into pointer, never
+          deleted · extents union under an honesty pass, no flattering over-claim · story
+          traces and SC references consolidate onto the absorbing entry · pending rows
+          and unfolded deltas transfer, no obligation dropped.
+
+      - id: patterns-map-minimalism.reparenting-navigation-only
+        labels: [artifact-grammar]
+        class: must
+        text: >-
+          Re-parenting under a domain header is navigation-only — no status semantics.
+
+  - id: patterns-map-minimalism.sec.reserved
+    title: Reserved — the capability layer is the user's
+    intent: >-
+      The ruling no seat self-executes.
+    rules:
+
+      - id: patterns-map-minimalism.capability-layer-user-ruled
+        labels: [user-gate]
+        class: floor
+        kind: reservation
+        text: >-
+          A mint, merge, or retire ruling is the user's — the skill shapes the
+          recommendation, and merge and retire are always PM recommendations; the
+          capability layer is never self-executed.

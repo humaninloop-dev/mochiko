@@ -1,0 +1,136 @@
+# Schema data file for the `feature-entry` pipeline artifact template.
+# Source of truth for `mochiko-cli template feature-entry` and `--check`. Read raw when the binary is absent (D8).
+template: feature-entry
+title: Feature Map Entry (per-capability)
+form: artifact-format.md
+register: full   # per artifact-format.md rule 11
+overview: |
+  One file per capability: .mochiko/features/FEAT-XXX-<slug>.md. Authored and amended per
+  mochiko:authoring-feature-map — the skill carries the derivation method, the work-row and
+  fold rules, and the write timing; this shape carries only the structure. An entry is a
+  durable capability plus a block of transient work rows (its delivery increments); there is
+  NO parent/leaf nesting — capabilities are flat, grouped by domains only at the soft cap
+  (mochiko:patterns-map-minimalism). Status is owned HERE (and mirrored one-line in
+  FEATURES.md): story files derive theirs by following the FEAT-ID. Omit empty sections per
+  artifact-format.md rule 6.
+
+sections:
+  - name: Header & Status
+    required: true
+    contract: |
+      Title "# FEAT-{{XXX}} — {{capability_name}}" plus a Status line
+      (proposed | in-flight | delivered | retired) and one status-dependent detail line:
+        in-flight  -> since {{date}} · live work rows in run(s): `.mochiko/specs/{{spec-slug}}/`
+                      (or the owning lane run, for feature-command growth-door work)
+        delivered  -> since {{date}} · sticky — live rows may still be visible below
+        retired    -> {{date}} · ruling: {{pointer}}  (or, on a merge: merged-into FEAT-{{YYY}})
+        proposed   -> surfaced by {{spec-slug}} ({{date}}) — or, for a capability stub,
+                      minted by /mochiko:feature ({{date}}) · marked `unrefined`
+      Reconstructed entries add: `reconstructed-from-code ({{date}}) — first touching spec
+      re-verifies extent` — cleared at that spec's acceptance. `unrefined` stubs carry name +
+      one-breath hook only — no Extent, no work rows; only specify's derivation fills them and
+      makes the entry selectable.
+    check: "Is the header FEAT-XXX + capability name present, with a Status (proposed/in-flight/delivered/retired) and the matching one-line status detail (and the unrefined/reconstructed markers where they apply)?"
+
+  - name: Capability
+    required: true
+    density: "1-3 lines"
+    contract: |
+      1-3 lines, the system's own language — what the product does, standing on its own without
+      reference to any story or spec. More than ~3 lines of extent below usually means this is
+      two capabilities, or its bulk is undelivered work rows.
+    check: "Is the Capability statement 1-3 lines in the system's own language, standing without reference to a story or spec?"
+
+  - name: Extent
+    required: true
+    density: "one line each"
+    contract: |
+      What is in, and what is notably NOT in — one line each. This is where stories sharpen the
+      capability over time, and where a delivered work row folds in at its landing. (Absent on
+      an `unrefined` stub.)
+    check: "Does Extent state what is in and what is notably not in, one line each (or is the entry an unrefined stub, which has no Extent)?"
+
+  - name: Work rows
+    required: false
+    density: "one line each, newest first"
+    contract: |
+      Transient delivery increments under this capability — one line each, newest first. Each
+      row carries a state and its run pointer; a `live` row folds into Extent above at its
+      acceptance landing and leaves this list, a `pending` row persists as open obligation
+      (deferred work never silently disappears). Grammar:
+        - `pending` — {{increment}} · acceptance: {{criteria}} · cut by {{spec-slug or lane-run}}
+        - `live`    — {{increment}} · acceptance: {{criteria}} · in {{spec-slug or lane-run}}
+      Story-shaped increments are fine here; a story-shaped *capability* is not.
+    check: "Are work rows one line each (newest first), each carrying a state (`live`/`pending`), acceptance, and run pointer — with `live` rows folding into Extent at landing and `pending` rows persisting?"
+
+  - name: Relations
+    required: false
+    density: "one line per relation"
+    contract: |
+      One line per relation to another FEAT-ID: depends-on / extends / composes-with. A work row
+      may depend on another capability's row — note it here; row-level dependencies order the
+      two capability-batch runs.
+    check: "Is each relation one line to a FEAT-ID with a relation kind (depends-on/extends/composes-with) and a one-line why?"
+
+  - name: Architecture
+    required: false
+    contract: |
+      Which architecture-store elements realize this capability, named by id: SPN-XXX spine
+      elements — any kind (container | boundary | flow) — and/or AX-XXX concern rows, at
+      .mochiko/product/architecture/. Pointers only, navigable both directions; never restate
+      the element. (Domain -> element mapping is dormant: it lands only at the soft cap, per
+      mochiko:patterns-map-minimalism.)
+    check: "Does Architecture point at the realizing store elements by id — SPN-XXX spine elements of any kind (container/boundary/flow) and/or AX-XXX concern rows (pointers only, no restated element content)?"
+
+  - name: Story trace
+    required: false
+    density: "IDs and pointers only, newest first"
+    contract: |
+      Accumulating provenance: which specs/stories informed this capability — IDs and pointers
+      only, newest first.
+    check: "Is the story trace IDs-and-pointers only, newest first (accumulating provenance)?"
+
+  - name: Obligations
+    required: false
+    density: "one line each"
+    contract: |
+      Deferred completeness pointers riding this entry until the work builds — one line each,
+      distinct from work rows (which are cut delivery increments): deferred SC-XXX (travels here
+      when its covering capability went unselected) · deferred seams ("when built, verify seam
+      against FEAT-XXX") · cross-cutting extend obligations from stories homed elsewhere.
+    check: "Are obligations one line each, distinct from work rows — deferred SCs, deferred seams, and cross-cutting extend obligations?"
+
+skeleton: |
+  # FEAT-{{XXX}} — {{capability_name}}
+
+  > Status: {{status}}  <!-- proposed | in-flight | delivered | retired -->
+  > {{status_line_detail}}
+
+  ## Capability
+
+  {{capability_statement}}
+
+  ## Extent
+
+  - {{in_scope_line}}
+  - Not: {{out_of_scope_line}}
+
+  ## Work rows
+
+  - `live` — {{increment}} · acceptance: {{criteria}} · in {{spec_or_lane_run}}
+
+  ## Relations
+
+  - depends-on: {{FEAT-ID}} — {{one_line_why}}
+
+  ## Architecture
+
+  - {{SPN-XXX | AX-XXX}} — {{element_name}} (`.mochiko/product/architecture/`)
+
+  ## Story trace
+
+  - {{spec-slug}}: US-{{n}}, US-{{n}}
+
+  ## Obligations
+
+  - {{obligation_line}}

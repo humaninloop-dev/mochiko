@@ -15,9 +15,9 @@ Two steps. Both are required.
 /plugin install mochiko@mochiko
 ```
 
-**2. The `mochiko-cli` binary.** From this version the plugin **depends** on it: a converted
-command's rules are rendered at fire by the binary, and a converted command **halts** when it is
-missing rather than falling back to anything. The plugin never ships it — you install it once, as
+**2. The `mochiko-cli` binary.** From this version the plugin **depends** on it: every command's
+rules are rendered at fire by the binary, and a command **halts** when it is missing rather than
+falling back to anything. The plugin never ships it — you install it once, as
 you would any other developer tool. A Rust toolchain is required, and until the first crates.io
 release the install is straight from GitHub:
 
@@ -43,7 +43,7 @@ mochiko-cli migrate status --plugin-root <plugin>     # the log's grammar, its s
 mochiko-cli migrate validate --plugin-root <plugin>   # replay the log and report what the hard set found
 ```
 
-A rules render is one section at a time. Each block opens with a version triple — binary version, log grammar version, plugin version — and closes with an end line carrying the section's rule count. A converted command proceeds only when both lines arrive in that exact shape, and halts on anything else.
+A rules render is one section at a time. Each block opens with a version triple — binary version, log grammar version, plugin version — and closes with an end line carrying the section's rule count. A command proceeds only when both lines arrive in that exact shape, and halts on anything else.
 
 `template <name>` takes one of `spec`, `tasks`, `feature-entry`, `features-index`, `codebase-analysis`, `governance-intent`, `governance-surfaces`. The `--check` view is a guidance view, never a linter — it takes no artifact input and always exits 0 on success.
 

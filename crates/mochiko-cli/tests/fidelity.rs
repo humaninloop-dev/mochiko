@@ -2,7 +2,7 @@
 //!
 //! The comparison is deliberately **independent of the generator**: the expected side is the
 //! shipped YAML decoded straight into the model, and the actual side is the document the replay
-//! built from `plugins/mochiko/migrations/0001-genesis.yaml`. Only two deltas are allowed, and
+//! built from the whole log under `plugins/mochiko/migrations/`. Only two deltas are allowed, and
 //! each is asserted rather than excused — the two comment-carried `enforces: []` reasons, which
 //! the model holds as `note:` data, and the provenance anchors, which are checked against the
 //! sidecar the test reads for itself.
@@ -28,6 +28,18 @@ fn repo_root() -> PathBuf {
 
 fn log_dir() -> PathBuf {
     repo_root().join("plugins/mochiko/migrations")
+}
+
+/// The v0.103.0 schema corpus, frozen under `tests/fixtures/` on 2026-09-04.
+///
+/// Genesis imported the corpus as it stood at sequence 1. From the moment a second migration
+/// carries the live corpus forward — wave 4's `0002-fail-conditions-intent.yaml` is the first —
+/// a rebuild from the live tree can no longer reproduce the committed genesis, so the byte
+/// comparison below would grade drift the log has already accounted for. The frozen copy is the
+/// honest input, and record D8 asks for exactly this: the round trip proven against a fixture
+/// kept after the YAML sources retire at wave 6.
+fn frozen_corpus() -> PathBuf {
+    PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("tests/fixtures/genesis-corpus")
 }
 
 fn genesis_path() -> PathBuf {
@@ -82,7 +94,8 @@ fn shipped_documents() -> Vec<(DocRef, Document)> {
 
 #[test]
 fn the_committed_genesis_regenerates_byte_identically() {
-    let generated = genesis::build(&repo_root())
+    // Built from the frozen v0.103.0 corpus (record D8; frozen 2026-09-04), never the live tree.
+    let generated = genesis::build(&frozen_corpus())
         .unwrap_or_else(|errors| panic!("genesis builds:\n{}", genesis::render_errors(&errors)));
     let committed = std::fs::read_to_string(genesis_path())
         .expect("plugins/mochiko/migrations/0001-genesis.yaml is committed");
@@ -96,8 +109,13 @@ fn the_committed_genesis_regenerates_byte_identically() {
         assert_eq!(
             a, b,
             "the committed genesis differs from a fresh build at line {line}\n\
-             regenerate with \
-             `cargo run -- genesis emit --out plugins/mochiko/migrations/0001-genesis.yaml`"
+             The build reads the FROZEN corpus, never the live tree, so regenerate with\n  \
+             `cargo run -- genesis emit \
+             --root crates/mochiko-cli/tests/fixtures/genesis-corpus \
+             --out plugins/mochiko/migrations/0001-genesis.yaml`\n\
+             The committed genesis changes only when that fixture changes. A live-tree build \
+             would rewrite it from a corpus later migrations have already carried forward, \
+             folding their content back into sequence 1 and losing the history."
         );
     }
     panic!(
@@ -128,14 +146,19 @@ fn the_committed_genesis_is_a_valid_migration_carrying_one_op_per_document() {
 
 #[test]
 fn the_log_replays_into_a_deliverable_state() {
-    let state = replay::load(&log_dir()).unwrap_or_else(|findings| {
+    let replay = replay::load_full(&log_dir()).unwrap_or_else(|findings| {
         let lines: Vec<String> = findings
             .iter()
             .map(std::string::ToString::to_string)
             .collect();
         panic!("the log is deliverable:\n{}", lines.join("\n"));
     });
-    assert_eq!(state.docs.len(), 50);
+    assert_eq!(replay.state.docs.len(), 50);
+    assert_eq!(
+        replay.sequences(),
+        vec![1, 2],
+        "genesis plus wave 4's fail-conditions reword"
+    );
 }
 
 // ---------------------------------------------------------------------------
@@ -275,6 +298,90 @@ fn compare_rule(
             "{doc} · {} · anchor: want {expected_anchor:?}, log carries {:?}",
             want.id, got.anchor
         ));
+    }
+}
+
+// ---------------------------------------------------------------------------
+// wave 4 — the fail-conditions reword
+// ---------------------------------------------------------------------------
+
+/// The six commands and the `visit` / `run` word each takes: a desk converges per visit, a run
+/// against a fixed done condition.
+const REWORDED: [(&str, &str, &str); 6] = [
+    ("architecture", "arch", "visit"),
+    ("feature", "feat", "visit"),
+    ("brainstorm", "brainstorm", "run"),
+    ("implement", "impl", "run"),
+    ("setup", "setup", "run"),
+    ("specify", "spec", "run"),
+];
+
+#[test]
+fn the_second_migration_reworded_the_six_fail_conditions_intents() {
+    let state = replay::load(&log_dir()).expect("the log is deliverable");
+    for (command, prefix, word) in REWORDED {
+        let doc = DocRef::new(DocKind::Command, command);
+        let schema = state
+            .docs
+            .get(&doc)
+            .and_then(Document::as_rules)
+            .unwrap_or_else(|| panic!("{command}: the command schema is in state"));
+        let id = format!("{prefix}.sec.fail-conditions");
+        let section = schema
+            .find_section(&id)
+            .unwrap_or_else(|| panic!("{id} is a live section"));
+        assert_eq!(
+            section.intent,
+            format!(
+                "The kind: fail set — any one standing fails the {word}; the .md Not-done line \
+                 cites the count this render prints."
+            ),
+            "{command}: the reworded intent"
+        );
+        assert!(
+            !section.intent.contains("hard-codes"),
+            "{command}: the intent still claims a hard-coded count"
+        );
+        // A reword is prose only: every fail rule in the section is still there, still `fail`.
+        assert!(
+            !section.rules.is_empty(),
+            "{command}: the fail set is not empty"
+        );
+        for rule in &section.rules {
+            assert!(
+                rule.id.starts_with(&format!("{prefix}.fail.")),
+                "{}: a fail-conditions rule keeps its id segment",
+                rule.id
+            );
+        }
+    }
+}
+
+#[test]
+fn the_rendered_fail_conditions_block_carries_the_reworded_intent() {
+    use mochiko_cli::render::{self, Context};
+
+    let state = replay::load(&log_dir()).expect("the log is deliverable");
+    let ctx = Context {
+        binary: env!("CARGO_PKG_VERSION").to_string(),
+        grammar: 1,
+        plugin: "test".to_string(),
+    };
+    for (command, prefix, word) in REWORDED {
+        let doc = DocRef::new(DocKind::Command, command);
+        let id = format!("{prefix}.sec.fail-conditions");
+        let text = render::section(&state, &doc, &id, &ctx)
+            .unwrap_or_else(|e| panic!("{command}: the section renders: {e}"));
+        assert!(
+            text.contains(&format!(
+                "fails the {word}; the .md Not-done line cites the count this render prints."
+            )),
+            "{command}: the rendered block carries the reworded intent:\n{text}"
+        );
+        assert!(
+            !text.contains("hard-codes"),
+            "{command}: the rendered block still claims a hard-coded count"
+        );
     }
 }
 

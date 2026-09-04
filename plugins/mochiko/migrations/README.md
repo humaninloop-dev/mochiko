@@ -13,6 +13,13 @@ Two consequences follow, and they are the point of the design:
 - **The derived views are regenerated, never hand-edited.** A view that disagrees with the replay
   is a defect in the view.
 
+The shipped snapshot files — `plugins/mochiko/schemas/*.yaml` and `plugins/mochiko/skills/*/schema.yaml` —
+are transition-clause copies, kept semantically equal to the replay by the CI view ≡ replay test. A
+migration that changes their content is mirrored into them by a hand edit of the same lines, never by
+a regeneration: regenerating would drop the in-body comments, spacing, and fold width those files
+carry, and the header comments are protected content under the strip ceremony. Wave 6 retires
+them, and the clause with them.
+
 ## File shape
 
 One file per migration, named `NNNN-<slug>.yaml`, ordered by the header's `sequence`.
@@ -46,10 +53,19 @@ changes:
 
 ### Writing the hash
 
-The hash is required, so nothing can be written by hand alone. Stamp a body with
-`migration::with_hash(file, source)`, which returns the same migration carrying its correct
-`hash:` header and replaces any stale hash already there. `migration::compute_hash(&migration)`
-returns the value on its own.
+The hash is required, so nothing can be written by hand alone. Write the migration without one and
+stamp it in place:
+
+```
+mochiko-cli migrate stamp <file>
+```
+
+That is the authoring path every new migration takes. It rejects a body that is not a well-formed
+migration rather than stamping it, and it rejects a filename whose numeric prefix disagrees with the
+header's `sequence:`. The file is rewritten in the log's own layout, a leading comment block carried
+through; nothing else on disk is touched. In the crate, `migration::with_hash(file, source)` returns
+the same migration carrying its correct `hash:` header and replaces any stale hash already there,
+and `migration::compute_hash(&migration)` returns the value on its own.
 
 An optional hash would be no protection at all. The hash covers the `anchor:`, which is the
 evidence that protected content left by ruling, so an editor who need not forge a hash would need
@@ -72,6 +88,7 @@ Each change is independently citable: a rule's history is the set of ops naming 
 | `import-document` | `kind`, `name`, `content` | How a document enters the log, once. Importing over an existing document is rejected. |
 | `replace-document` | `kind`, `name`, `content` | Templates and shelf data only. Rule-bearing documents change one node at a time, so the log stays a per-rule history. |
 | `mint-section` | `schema`, `section` | The section starts empty. A section value carrying `rules:` is rejected rather than having them dropped. |
+| `reword-section` | `schema`, `id`, `title?`, `intent?`, `note?` | A section's prose. At least one of the three, or the change is rejected as rewording nothing. The section must be live — a tombstoned id says so rather than reading as absent. `note: ~` clears; a `title:` or an `intent:` is never cleared, because every section carries both. The section's id and its rules are untouched, so no ruling anchor is owed. |
 | `tombstone-section` | `schema`, `id`, `disposition` | Rejected while the section still holds rules, so no rule is ever retired implicitly. |
 | `mint-rule` | `schema`, `section`, `rule` | |
 | `reword-rule` | `schema`, `id`, `text` | The id survives a reword. |
@@ -86,6 +103,16 @@ Each change is independently citable: a rule's history is the set of ops naming 
 | `registry-retire` | `registry`, `label`, `note` | Moves the label into `retired`. Nothing deletes a label. |
 
 An unrecognised op is rejected rather than skipped.
+
+**Adding an op does not bump the grammar, while no binary is published.** `reword-section` was added
+at wave 4 and the log stayed at grammar 1. No release of `mochiko-cli` exists yet, so there is no
+deployed reader that could meet a file it cannot understand: the D5 range `1..1` is frozen at the
+first publish with whatever ops the grammar carries by then, and the first published binary reads
+every one of them. After that publish the calculus changes, because an older binary meeting a newer
+op is a real situation — and it is already handled. That binary rejects the file loudly, naming the
+install command, rather than skipping the op and replaying a state that is quietly missing a change.
+That is the version contract working, not a gap in it, which is why a new op is additive here and a
+grammar bump is reserved for a change that would make an existing file mean something different.
 
 ## The anchor rule
 
@@ -143,6 +170,7 @@ the hole is cheaper than renumbering.
 ```
 mochiko-cli migrate validate [--report]   # replay the log and print findings
 mochiko-cli migrate status                # the state hash, the last sequence, the grammar version
+mochiko-cli migrate stamp <file>          # write a migration's required hash header in place
 ```
 
 `migrate validate` prints one finding per line as `code · schema · id · message`. A rejecting

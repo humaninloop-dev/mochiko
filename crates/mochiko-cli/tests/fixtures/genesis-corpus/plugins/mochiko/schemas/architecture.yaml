@@ -1,0 +1,493 @@
+# Command content schema for /mochiko:architecture. The command .md instructs a raw, full Read of
+# this file at command fire; the model interprets it live — the .md Rules block carries the
+# reading grammar. Two semantics live only here:
+#   class   floor = non-waivable · must = binding obligation · advisory = guidance, not binding.
+#   conditions:  each dimension declares its resolution point (entry-derived · surface-presence ·
+#           moment-resolved(<moment>) · user-ruled · standing-trigger); a moment-resolved
+#           dimension is unresolved until its named moment — rules gated on it are inapplicable
+#           until then.
+kind: command
+command: architecture
+
+vars:
+  producer_seat: principal-architect
+  grader_seat: tech-lead
+  explore_model: haiku
+  store_dir: .mochiko/product/architecture
+  store_schema: plugins/mochiko/schemas/architecture-store.yaml
+  shelf_schema: plugins/mochiko/schemas/architecture-shelf-backend.yaml
+
+conditions:
+  store_ruled_content:
+    values: presence
+    resolution: surface-presence
+    note: >-
+      absent covers both forms — no store, and scaffold-only (a spine.md holding
+      just its Scope: header).
+  km_file:
+    values: presence
+    resolution: surface-presence
+    note: .mochiko/memory/knowledge-management.md.
+  seats:
+    values: [single, multi]
+    resolution: standing-trigger
+    note: fires the moment the visit composes more than one seat, and re-fires on a seat added mid-visit.
+
+moments:
+  visit-open: Store health surfaced from the derived index before the ask, every visit.
+  close: The verdict against the visit's done condition, with store integrity intact.
+
+sections:
+  - id: arch.sec.roles
+    title: Roles & Responsibilities
+    intent: >-
+      The Delivery Manager's always-happens floor and the other seats' wiring.
+    rules:
+
+      - id: arch.staffing-latitude
+        labels: [seats]
+        class: must
+        kind: latitude
+        text: >-
+          Beyond this schema's `class: floor` rules — the sound-loop floor
+          arch.sound-loop-floor among them — everything is your per-visit judgment: how
+          you staff, sequence, and run the visit is yours to shape.
+
+      - id: arch.dm-health-first
+        labels: [reporting, stewardship]
+        class: floor
+        kind: duty
+        text: >-
+          Surface health before the ask.
+
+      - id: arch.dm-converge-goal
+        labels: [scope-entry]
+        class: floor
+        kind: duty
+        text: >-
+          Converge every visit to a one-line goal and its done condition.
+
+      - id: arch.dm-author-baseline
+        labels: [scope-entry]
+        class: floor
+        kind: duty
+        when: {store_ruled_content: absent}
+        # C4: floor — always read, always delivered. `when:` gates when the
+        # obligation APPLIES, never whether it is delivered. Re-evaluated
+        # whenever the run's shape changes (a seat added mid-run re-activates it).
+        text: >-
+          Author the baseline — greenfield elicits it; brownfield reconstructs and
+          confirms it per arch.tools-brownfield-reconstruction — nothing absorbed is ever
+          silently discarded.
+
+      - id: arch.dm-shelf-walk
+        labels: [evidence]
+        class: floor
+        kind: duty
+        text: >-
+          Walk shelf rows under the breadth invariant (arch.breadth-invariant), ordered by
+          retrofit cost, dealt recommend-then-arbitrate
+          (arch.recommend-then-arbitrate).
+
+      - id: arch.dm-drift-dispatch
+        labels: [evidence, user-gate, stewardship]
+        class: floor
+        kind: duty
+        text: >-
+          Dispatch the scoped drift probe and take each finding to a user disposition.
+
+      - id: arch.dm-route-triggers
+        labels: [reporting, user-gate, stewardship]
+        class: floor
+        kind: duty
+        text: >-
+          Route every fired upgrade trigger to /mochiko:feature's growth door — flagged in
+          the health view until it is routed or the user rules it closed.
+
+      - id: arch.dm-store-integrity-close
+        labels: [landing, stewardship]
+        class: floor
+        kind: duty
+        text: >-
+          Keep store integrity intact at close — the derived index regenerated, orphans
+          flagged, statuses agreeing across index and ledger.
+
+      - id: arch.dm-km-landing
+        labels: [landing, stewardship]
+        class: floor
+        kind: duty
+        when: {km_file: present}
+        # C4: floor — always read, always delivered. `when:` gates when the
+        # obligation APPLIES, never whether it is delivered. Re-evaluated
+        # whenever the run's shape changes (a seat added mid-run re-activates it).
+        text: >-
+          Execute the KM landing for desk-side writes, per
+          .mochiko/memory/knowledge-management.md.
+
+      - id: arch.dm-close-verdict
+        labels: [reporting, landing]
+        class: floor
+        kind: duty
+        text: >-
+          Close the visit with a verdict against its done condition.
+
+      - id: arch.seat-architect-producer
+        labels: [seats]
+        class: must
+        text: >-
+          ${producer_seat} is the producing seat: baseline authoring, shelf-walk stance
+          batches, amendments, and delta authoring. Recommends with reasons; never rules.
+          Plans first and works only on a plan you approved.
+
+      - id: arch.seat-tech-lead-grader
+        labels: [seats, independence]
+        class: must
+        text: >-
+          ${grader_seat} is the independent grader of the architect's judgment writes,
+          before the user's ratification. Status flips and orphan cleanup are
+          transcription and ride the landing audit instead.
+
+      - id: arch.seat-drift-probe-empirical
+        labels: [seats, independence, evidence]
+        class: must
+        text: >-
+          The drift-probe seat is an empirical read of the codebase grading the store's
+          `As-built:` claims. Never the seat that wrote the claim; evidence, never memory.
+
+  - id: arch.sec.reserved
+    title: Reserved to the user — never the desk's
+    intent: >-
+      Decisions held by the user: gates, rulings, and escalations no seat may take.
+    rules:
+
+      - id: arch.user-reserved-rulings
+        labels: [user-gate]
+        class: must
+        kind: reservation
+        text: >-
+          Reserved to the user: every row stance, the baseline confirmation, every
+          amendment, each drift finding's disposition, the shelf-scope override, the
+          capability mint at /mochiko:feature's growth door
+          (arch.dispatch-feature-growth-door), and the governance-ledger waiver a true
+          floor drop needs.
+
+  - id: arch.sec.tools
+    title: Tools
+    intent: >-
+      The store, its skills and schemas, the probes, and the dispatch targets the desk
+      binds to.
+    rules:
+
+      - id: arch.tools-referenced-never-restated
+        extends: common.tools-referenced-never-restated
+        class: must
+
+      - id: arch.tools-store
+        labels: [binding]
+        class: must
+        kind: binding
+        text: >-
+          The store lives at ${store_dir}/: `spine.md` (the topology deep view —
+          containers, boundaries, communication styles) and the `concerns.md` ledger of
+          `AX-XXX` rows, a row graduating to its own file at
+          ${store_dir}/concerns/AX-XXX-<slug>.md only when it carries real depth — extend
+          beats mint. Repo-root `ARCHITECTURE.md` is the store's derived index — spine
+          thumbnail, AX summary table, health view — and is a rendered projection, never a
+          second store.
+
+      - id: arch.tools-store-skill
+        labels: [floor-pointer]
+        class: must
+        kind: binding
+        text: >-
+          mochiko:authoring-architecture-store is the store's owner: AX and spine grammar,
+          the element lifecycle (`ruled` → `in-flight (FEAT-XXX)` /
+          `modifying (FEAT-XXX)` / `removing (FEAT-XXX)` → `built`), the stance vocabulary
+          (`decided` · `not-now` · `n-a` · `open`), row graduation, the fold at landings,
+          the health view, and the index regeneration.
+        pointer: "mochiko:authoring-architecture-store"
+
+      - id: arch.tools-shelves-skill
+        labels: [floor-pointer]
+        class: must
+        kind: binding
+        text: >-
+          mochiko:patterns-architecture-shelves is the opinion carrier: the per-surface
+          shelves as data, their suggested defaults and upgrade-trigger patterns, and the
+          recommend-then-arbitrate deal.
+        pointer: "mochiko:patterns-architecture-shelves"
+
+      - id: arch.shelf-scope-source
+        labels: [binding, user-gate]
+        class: must
+        kind: binding
+        text: >-
+          Shelf scope is read from the `Scope:` line in `spine.md`'s header — declared
+          there by /mochiko:setup and overridable at the desk by an ordinary store write
+          to that line, the user's ruling like any other. The store carries the scope; a
+          full-stack or monorepo product composes the shelves its scope names.
+
+      - id: arch.tools-system-design
+        labels: [floor-pointer]
+        class: must
+        kind: binding
+        text: >-
+          mochiko:patterns-system-design carries altitude and diagram craft for the spine
+          and for the deltas features draft against it.
+        pointer: "mochiko:patterns-system-design"
+
+      - id: arch.tools-store-schema
+        labels: [binding]
+        class: must
+        kind: binding
+        text: >-
+          The store shape is ${store_schema}, the shelf data ${shelf_schema} (rendered by
+          mochiko-cli, or Read raw when the binary is absent — the shipped schema is the
+          first-class source of truth). A small required core; the schema constrains the
+          skeleton, never the voice.
+
+      - id: arch.tools-brownfield-reconstruction
+        labels: [scope-entry, user-gate]
+        class: must
+        text: >-
+          The first visit to an existing repo derives the store from what exists — repo
+          `ARCHITECTURE.md` prose, any per-feature `architecture.md` files, `nfrs.md`,
+          structural `D-XXX` rows — presents it for confirmation, then archives the
+          absorbed sources to .mochiko/archive/product-baselines/<date>/. The derivation
+          inherits the setup-bootstrap `Assumed` caveat and its partial-baseline poisoning
+          risk: say so when you present it.
+
+      - id: arch.tools-drift-probe-scope
+        labels: [evidence, user-gate, stewardship]
+        class: must
+        text: >-
+          The scoped drift probe covers rows touched since the last desk visit plus a
+          sample of the retrofit-expensive rows; never all rows every visit. Findings land
+          in the touched row's `Drift:` field and take a user disposition at the desk.
+
+      - id: arch.dispatch-feature-growth-door
+        labels: [user-gate]
+        class: must
+        kind: routing
+        text: >-
+          /mochiko:feature is the dispatch target for a fired upgrade trigger: it arrives
+          at the growth door as a candidate under the capability-write test;
+          extend-beats-mint applies and the user rules the mint — the architecture lens
+          proposes, the map machinery disposes.
+
+      - id: arch.dispatch-setup-waiver
+        labels: [user-gate]
+        class: must
+        kind: routing
+        text: >-
+          /mochiko:setup is the dispatch target for a governance-ledger waiver when a
+          floor-asserted obligation must truly drop (arch.floor-precedence).
+
+      - id: arch.dispatch-implement-delivery
+        labels: [scope-entry]
+        class: must
+        kind: routing
+        text: >-
+          /mochiko:implement owns all delivery; the desk runs none of it.
+
+      - id: arch.register
+        extends: common.register
+        labels: [reporting, binding]
+        class: must
+        kind: binding
+
+  - id: arch.sec.ways-of-working
+    title: Ways of Working
+    intent: >-
+      How the desk reports, references, separates authors from graders, arbitrates, and
+      routes its dispatches.
+    rules:
+
+      - id: arch.proactive-report-first
+        labels: [reporting, stewardship]
+        class: must
+        kind: duty
+        text: >-
+          Proactive report first — health before the ask, every visit.
+
+      - id: arch.reference-never-restate
+        labels: [floor-pointer]
+        class: must
+        text: >-
+          Reference, never restate — the store grammar lives in
+          mochiko:authoring-architecture-store, the opinions in the shelf data, the
+          delivery bounds in the pipeline commands; the desk points at them and adds
+          nothing.
+
+      - id: arch.author-grader-separation
+        labels: [independence]
+        class: floor
+        text: >-
+          Author ≠ grader — wherever a seat produces (baseline, stance batch, amendment,
+          delta), no output is cleared by its author; a producing seat plans first and
+          works only on a plan you approved.
+
+      - id: arch.recommend-then-arbitrate
+        labels: [user-gate]
+        class: must
+        text: >-
+          Recommend, then arbitrate — a shelf row is dealt with its suggested default and
+          the reasoning behind it, and the user forms the stance. A default is never
+          applied by silence.
+
+      - id: arch.model-tiering
+        labels: [seats, floor-pointer]
+        class: must
+        kind: routing
+        text: >-
+          Exploration and fact-finding dispatches ride the class-keyed tiering floor:
+          locate/enumerate reads go to a native Explore subagent spawned
+          model: ${explore_model}, interpretive or absence-driven reads stay session
+          tier — the drift probe grades claims against code and is interpretive, so it
+          stays session tier and sends only its locate/enumerate legs down. Every seat
+          brief carries the routing rule. Class key, dispatch ladder, and brief
+          obligation: mochiko:patterns-model-tiering, referenced never restated.
+        pointer: "mochiko:patterns-model-tiering"
+
+      - id: arch.single-writer-store
+        labels: [seats, stewardship]
+        class: must
+        text: >-
+          Single writer on the store — one seat holds the pen per visit; the derived index
+          is regenerated by the store skill mochiko:authoring-architecture-store on every
+          store write, never hand-edited alongside it.
+
+      - id: arch.no-git-mutations
+        extends: common.no-git-mutations
+        class: must
+
+      - id: arch.rulings-plain-text
+        extends: common.acceptance-plain-text
+        class: must
+
+  - id: arch.sec.boundaries
+    title: Boundaries — the non-waivable floor
+    intent: >-
+      Floor obligations no seat and no in-visit ruling can waive.
+    rules:
+
+      - id: arch.truth-user-ruling
+        labels: [user-gate]
+        class: floor
+        kind: reservation
+        text: >-
+          Architecture truth is the user's ruling. The desk elicits, recommends, and
+          records; a stance, a baseline, or an amendment lands only on the user's word. A
+          row left unruled stays `open` and shows in the health view — it never acquires a
+          stance by default, by silence, or by the desk's own judgment.
+
+      - id: arch.breadth-invariant
+        labels: [evidence, floor-pointer]
+        class: floor
+        text: >-
+          The breadth invariant: every shelf row in scope is walked. A row may close in
+          two seconds — `n-a`, one line, done — but it is never silently skipped, and the
+          walk order is by retrofit cost: tenancy, auth, and data partitioning before
+          flags and experimentation. A shelf scope narrowed at the desk is the user's
+          explicit override, recorded as one.
+        pointer: "mochiko:patterns-architecture-shelves"
+
+      - id: arch.floor-precedence
+        labels: [user-gate]
+        class: floor
+        text: >-
+          Where a governance floor card asserts the category, `n-a — genuinely never` is
+          unavailable on that row: the legal moves are a stance within the obligation,
+          `n-a — handled elsewhere` with its required pointer, or a narrowing. A true drop
+          is a governance event and routes to a governance-ledger.md waiver through
+          /mochiko:setup — never granted at the shelf. An arbitrated constitution card
+          binds code-layer structure and a shelf row binds product topology; a genuine
+          conflict between them is the user's.
+
+      - id: arch.na-handled-elsewhere-pointer
+        labels: [evidence]
+        class: floor
+        text: >-
+          `n-a — handled elsewhere` carries its pointer. The reason axis is not
+          decoration: a concern another repo or system owns names that owner. Only
+          genuinely never may stand without one.
+
+      - id: arch.derived-index-never-hand-maintained
+        labels: [floor-pointer, landing, stewardship]
+        class: floor
+        text: >-
+          The derived index is never hand-maintained. The store is the single source; the
+          root `ARCHITECTURE.md` is regenerated from it by the store skill
+          mochiko:authoring-architecture-store on every write. An index-vs-ledger
+          disagreement is a defect fixed on sight, never reconciled by editing the index.
+        pointer: "mochiko:authoring-architecture-store"
+
+      - id: arch.drift-empirical
+        labels: [evidence, independence, stewardship]
+        class: floor
+        text: >-
+          Drift is empirical. An `As-built:` claim is graded against the code by a seat
+          that reads it, never affirmed from memory or from the ruling that preceded it.
+          An ungraded claim is reported as ungraded.
+
+      - id: arch.no-depth-dial-coupling
+        labels: [scope-entry]
+        class: floor
+        text: >-
+          The desk never reads the governance low/high depth level: shelf scope and
+          per-row stances are its only adaptiveness, and `not-now` is the per-dimension
+          depth valve. The governance dial governs a floor row's rigor; the desk governs
+          its stance — two instruments, two axes.
+
+      - id: arch.no-delivery-harness
+        labels: [scope-entry]
+        class: floor
+        text: >-
+          No delivery harness at the desk. The desk rules architecture and routes work; it
+          plans and builds none of it. Delivery leaves for /mochiko:feature or the
+          pipeline, and the boundary is audited from the store delta the work leaves
+          behind.
+
+      - id: arch.no-silent-store-mutations
+        labels: [evidence, stewardship]
+        class: floor
+        text: >-
+          No silent store mutations. Every write is visible in the store and in the
+          regenerated index; an integrity defect — an orphan element, a dead `Work:`
+          pointer, a status disagreement — is fixed on sight and surfaced, never quietly
+          corrected.
+
+      - id: arch.sound-loop-floor
+        labels: [floor-pointer, independence]
+        class: floor
+        text: >-
+          A judgment-authored write to a governing surface obliges the loop: a seat
+          produces on a plan you approved, an independent non-author seat reviews before
+          the user's gate — the user's ruling alone never substitutes for the review
+          leg — and every baseline, stance batch, and amendment takes that review leg.
+          Status flips and orphan cleanup are transcription and ride the landing audit.
+          Trigger test, exemptions, seat wiring, and disclosure:
+          mochiko:patterns-sound-loop, referenced never restated.
+        pointer: "mochiko:patterns-sound-loop"
+
+      - id: arch.transport-floor
+        extends: common.transport-floor
+        class: floor
+        when: {seats: multi}
+        # C4: floor — always read, always delivered. `when:` gates when the
+        # obligation APPLIES, never whether it is delivered. Re-evaluated
+        # whenever the run's shape changes (a seat added mid-run re-activates it).
+
+  - id: arch.sec.fail-conditions
+    title: Not done — default FAIL
+    intent: >-
+      The kind: fail set — any one standing fails the visit; the .md Not-done line hard-codes this set's count.
+    rules:
+
+      - id: arch.fail.no-verdict
+        labels: [reporting]
+        class: floor
+        kind: fail
+        enforces: [arch.dm-converge-goal, arch.dm-close-verdict]
+        text: >-
+          A visit that ends with no stated done-condition verdict.

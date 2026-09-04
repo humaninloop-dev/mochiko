@@ -466,7 +466,7 @@ sections:
     title: Not done — default FAIL
     intent: >-
       The kind: fail set — any one standing fails the visit; the .md Not-done line
-      hard-codes this set's count.
+      cites the count this render prints.
     rules:
 
       - id: feat.fail.no-verdict

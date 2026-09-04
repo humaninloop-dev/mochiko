@@ -124,6 +124,12 @@ enum MigrateAction {
     },
     /// Print the log's grammar, its applied sequences, and the replayed state's hash.
     Status,
+    /// Write a migration file's `hash:` header in place — the authoring path for a new migration.
+    Stamp {
+        /// The migration file to stamp. Its name carries the sequence prefix, which must agree
+        /// with the header's `sequence:`.
+        file: PathBuf,
+    },
 }
 
 /// Parse and run. `args` excludes the program name.
@@ -177,6 +183,7 @@ pub fn dispatch(args: &[String], out: &mut dyn Write, err: &mut dyn Write) -> i3
                 run_validate(&dir, cli.plugin_root.as_deref(), report, out, err)
             }
             MigrateAction::Status => run_status(&dir, out, err),
+            MigrateAction::Stamp { file } => run_stamp(&file, out, err),
         },
         Command::Views { action } => match action {
             ViewsAction::Emit { out: dest } => run_views_emit(&dir, &dest, out, err),
@@ -525,6 +532,69 @@ fn run_genesis_emit(root: &Path, dest: &Path, out: &mut dyn Write, err: &mut dyn
             2
         }
     }
+}
+
+/// Stamp one migration file with the hash its header owes.
+///
+/// The hash is required of every migration and is deliberately not writable by hand, so this is
+/// the authoring path a new migration takes before it is committed. Two exit codes carry the two
+/// ways it fails, and they are different problems: a path that cannot be read or written is a
+/// usage error (2), while a body that is not a well-formed migration is unsound content (1).
+///
+/// The bytes written come from the view writer over the re-parsed stamped body, not from
+/// `with_hash`'s own string. `with_hash` re-serialises through serde, whose output is used for
+/// the hash alone — `genesis::build` already routes the same way for the same reason — and a log
+/// whose files were written in two dialects would diff against itself for no reason. A leading
+/// comment block is carried through verbatim so stamping never strips a generated-file preamble.
+fn run_stamp(file: &Path, out: &mut dyn Write, err: &mut dyn Write) -> i32 {
+    let name = file.file_name().map_or_else(
+        || file.display().to_string(),
+        |n| n.to_string_lossy().into(),
+    );
+    let source = match std::fs::read_to_string(file) {
+        Ok(source) => source,
+        Err(e) => {
+            let _ = writeln!(err, "error: cannot read {}: {e}", file.display());
+            return 2;
+        }
+    };
+
+    let stamped = match crate::migration::with_hash(&name, &source) {
+        Ok(stamped) => stamped,
+        Err(e) => {
+            let _ = writeln!(err, "{e}");
+            return 1;
+        }
+    };
+    let value: Value = match serde_norway::from_str(&stamped) {
+        Ok(value) => value,
+        Err(e) => {
+            let _ = writeln!(err, "error: the stamped body does not re-parse: {e}");
+            return 1;
+        }
+    };
+
+    let preamble: String = source
+        .lines()
+        .take_while(|line| line.starts_with('#'))
+        .map(|line| format!("{line}\n"))
+        .collect();
+    let text = format!("{preamble}{}", crate::views::to_yaml(&value));
+    if let Err(e) = std::fs::write(file, &text) {
+        let _ = writeln!(err, "error: cannot write {}: {e}", file.display());
+        return 2;
+    }
+
+    let hash = value
+        .get("hash")
+        .and_then(|h| h.as_str())
+        .unwrap_or(UNKNOWN_VERSION);
+    let _ = writeln!(
+        out,
+        "mochiko-cli migrate stamp · {} · {hash}",
+        file.display()
+    );
+    0
 }
 
 fn run_status(dir: &Path, out: &mut dyn Write, err: &mut dyn Write) -> i32 {

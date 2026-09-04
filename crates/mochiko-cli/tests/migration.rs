@@ -4,7 +4,7 @@
 //! state hash, and (from wave 1's P3 seat) derived-view equality all rest on it, so a
 //! non-injective or order-sensitive encoding would silently weaken three separate guarantees.
 
-use mochiko_cli::migration::{self, ChangeOp, ParseError};
+use mochiko_cli::migration::{self, Change, ChangeOp, ParseError, SectionEdit};
 use mochiko_cli::model::canonical_hash;
 
 fn value(yaml: &str) -> serde_norway::Value {
@@ -272,6 +272,7 @@ changes:
   - {op: import-document, kind: command, name: specify, content: {kind: command}}
   - {op: replace-document, kind: template, name: spec, content: {template: spec}}
   - {op: mint-section, schema: command/specify, section: {id: spec.sec.tools, title: T, intent: I}}
+  - {op: reword-section, schema: command/specify, id: spec.sec.tools, intent: Reworded.}
   - {op: tombstone-section, schema: command/specify, id: spec.sec.tools, disposition: superseded}
   - {op: mint-rule, schema: command/specify, section: spec.sec.tools, rule: {id: spec.a, class: must, text: T}}
   - {op: reword-rule, schema: command/specify, id: spec.a, text: New.}
@@ -288,7 +289,7 @@ changes:
     let body = migration::with_hash("0003-ops.yaml", body).expect("the fixture stamps");
     let m = migration::parse("0003-ops.yaml", &body).expect("every op decodes");
     let ops: Vec<ChangeOp> = m.changes.iter().map(|c| c.op()).collect();
-    assert_eq!(ops.len(), 15);
+    assert_eq!(ops.len(), 16);
     for op in ChangeOp::ALL {
         assert!(
             ops.contains(&op),
@@ -476,4 +477,177 @@ fn the_canonical_encoder_is_bounded_rather_than_recursing_off_the_stack() {
 
 fn value_of(yaml: &str) -> serde_norway::Value {
     serde_norway::from_str(yaml).expect("fixture parses")
+}
+
+// ---------------------------------------------------------------------------
+// Wave 4 — the `reword-section` op
+// ---------------------------------------------------------------------------
+
+/// A migration body carrying one `reword-section` change, `fields` supplying the edited fields
+/// as YAML lines already indented to the change's own level.
+fn reword_section(fields: &str) -> String {
+    format!(
+        "grammar: 1\n\
+         id: 0002-demo\n\
+         sequence: 2\n\
+         intent: Reword one section.\n\
+         changes:\n\
+         \x20 - op: reword-section\n\
+         \x20   schema: command/specify\n\
+         \x20   id: spec.sec.tools\n\
+         {fields}"
+    )
+}
+
+fn only_change(body: &str) -> Change {
+    let m = parse_stamped(body);
+    assert_eq!(m.changes.len(), 1, "the fixture carries one change");
+    m.changes.into_iter().next().expect("one change")
+}
+
+#[test]
+fn reword_section_parses_all_three_fields() {
+    let change = only_change(&reword_section(
+        "    title: Tools\n    intent: What the run may reach for.\n    note: A standing note.\n",
+    ));
+    assert_eq!(change.op(), ChangeOp::RewordSection);
+    assert_eq!(change.target_id(), Some("spec.sec.tools"));
+    let Change::RewordSection {
+        title,
+        intent,
+        note,
+        ..
+    } = change
+    else {
+        panic!("want a reword-section change");
+    };
+    assert_eq!(title, SectionEdit::Set("Tools".into()));
+    assert_eq!(
+        intent,
+        SectionEdit::Set("What the run may reach for.".into())
+    );
+    assert_eq!(note, SectionEdit::Set("A standing note.".into()));
+}
+
+#[test]
+fn reword_section_accepts_any_one_field_alone() {
+    let cases = [
+        ("    title: Tools\n", "title"),
+        ("    intent: What the run reaches for.\n", "intent"),
+        ("    note: Deliberately empty.\n", "note"),
+    ];
+    for (fields, which) in cases {
+        let Change::RewordSection {
+            title,
+            intent,
+            note,
+            ..
+        } = only_change(&reword_section(fields))
+        else {
+            panic!("{which}: want a reword-section change");
+        };
+        // Exactly the named field is edited; the other two are left as they stand.
+        let edited: Vec<&str> = [("title", &title), ("intent", &intent), ("note", &note)]
+            .into_iter()
+            .filter(|(_, edit)| **edit != SectionEdit::Untouched)
+            .map(|(name, _)| name)
+            .collect();
+        assert_eq!(edited, vec![which], "only `{which}:` was named");
+    }
+}
+
+#[test]
+fn reword_section_naming_no_field_is_rejected() {
+    let err = migration::parse("0002-demo.yaml", &reword_section(""))
+        .expect_err("a reword that rewords nothing is rejected");
+    assert_eq!(err.code(), "op-malformed", "got {err}");
+    let message = format!("{err}");
+    for field in ["title", "intent", "note"] {
+        assert!(
+            message.contains(field),
+            "the finding names the fields it wanted one of: {message}"
+        );
+    }
+}
+
+#[test]
+fn reword_section_never_clears_a_title_or_an_intent() {
+    // Every section carries both — `validate.rs`'s TextMissing check — so neither has a clear
+    // form. `note:` is the one field a section may legitimately lose.
+    for fields in [
+        "    title: ~\n",
+        "    intent: ~\n",
+        "    title: ~\n    intent: Still here.\n",
+    ] {
+        let err = migration::parse("0002-demo.yaml", &reword_section(fields))
+            .expect_err("clearing a title or an intent is rejected");
+        assert_eq!(err.code(), "op-malformed", "{fields:?} got {err}");
+    }
+}
+
+#[test]
+fn reword_section_clears_a_note_with_an_explicit_null() {
+    let Change::RewordSection {
+        title,
+        intent,
+        note,
+        ..
+    } = only_change(&reword_section("    note: ~\n"))
+    else {
+        panic!("want a reword-section change");
+    };
+    assert_eq!(note, SectionEdit::Clear);
+    assert_eq!(title, SectionEdit::Untouched);
+    assert_eq!(intent, SectionEdit::Untouched);
+}
+
+#[test]
+fn reword_section_rejects_an_empty_or_blank_value() {
+    // An empty title or intent is what the hard set already calls missing, and an empty note is
+    // not the clear — `note: ~` is. Rejecting here keeps a state the validator would reject from
+    // ever being written.
+    for fields in [
+        "    title: ''\n",
+        "    intent: ''\n",
+        "    note: ''\n",
+        "    title: '   '\n",
+    ] {
+        let err = migration::parse("0002-demo.yaml", &reword_section(fields))
+            .expect_err("an empty or blank value is rejected");
+        assert_eq!(err.code(), "op-malformed", "{fields:?} got {err}");
+    }
+}
+
+#[test]
+fn reword_section_rejects_a_value_that_is_not_a_scalar() {
+    for fields in [
+        "    title: [a, list]\n",
+        "    intent: {a: mapping}\n",
+        "    note: [x]\n",
+    ] {
+        let err = migration::parse("0002-demo.yaml", &reword_section(fields))
+            .expect_err("a container value is rejected");
+        assert_eq!(err.code(), "op-malformed", "{fields:?} got {err}");
+    }
+}
+
+#[test]
+fn reword_section_needs_a_document_and_a_section_id() {
+    let with_title = reword_section("    title: Tools\n");
+
+    let no_schema = with_title.replace("    schema: command/specify\n", "");
+    assert_eq!(
+        migration::parse("0002-demo.yaml", &no_schema)
+            .expect_err("`schema:` is required")
+            .code(),
+        "op-malformed"
+    );
+
+    let no_id = with_title.replace("    id: spec.sec.tools\n", "");
+    assert_eq!(
+        migration::parse("0002-demo.yaml", &no_id)
+            .expect_err("`id:` is required")
+            .code(),
+        "op-malformed"
+    );
 }

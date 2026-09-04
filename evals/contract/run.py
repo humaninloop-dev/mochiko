@@ -11,22 +11,29 @@ What it asserts (D8's deterministic set):
     no schema file Read anywhere · absence halts · skew halts
 
 Wave 1 ran two cases, both failure paths against the fixture plugin, because those are the ones
-that do not need a converted primitive. Wave 3 adds the first converted command, `brainstorm`,
-and with it the cases that need one:
+that do not need a converted primitive. Wave 3 added the first converted command, `brainstorm`,
+and with it the cases that need one. Wave 4 converts the remaining five and generalizes those
+cases into a per-command family:
 
     hook-input          the two hook scripts, fed real captured stdin, on the host
     converted-shape     a converted `.md`'s `!` lines against the sections its render declares
     render-ceiling      every converted primitive's renders against the inline ceiling
     absence   [fixture] the binary is off the sandbox PATH -> the run halts, nothing delivered
     skew      [fixture] the log declares a grammar the binary does not read -> the D5 halt
-    brainstorm-delivery the happy path: seven blocks delivered, plus the read-back metric
-    brainstorm-absence  the same halt, now with the plugin's own hooks in play
+    <cmd>-delivery      the happy path, per converted command: every block its render declares,
+                        delivered, plus the read-back metric and the delivered read cost
+    <cmd>-absence       the same halt, per converted command, with the plugin's own hooks in play
     brainstorm-skew     the staged plugin's own log is out of range
     brainstorm-hooks-off  hooks disabled: the harness path is the only guard left
     brainstorm-policy   shell execution disabled by policy — recorded, never asserted (D8)
 
-Ten cases in all. The first three need neither a sandbox nor a session and run on the host
-binary; `--host-only` runs just those, which is the cheapest gate on the hooks.
+The delivery and absence cases are built from the converted set discovered in the plugin's own
+`.md` files, so the case list grows with the conversion waves rather than being written down. The
+last three are *mechanism* cases and run against the pilot only: they exercise what happens when
+the log, the hooks or the shell is broken, which does not vary with which command fired.
+
+The first three cases need neither a sandbox nor a session and run on the host binary;
+`--host-only` runs just those, which is the cheapest gate on the hooks.
 
 A positive assertion reads only the channels measured to carry delivered text — the session
 transcript and the stream's own events. Negative assertions read the wider union that adds the
@@ -89,38 +96,211 @@ SANDBOX_TARGET_DIR = "/home/agent/mochiko-target"
 # `mochiko-cli --version`, which is also the head of the version triple.
 VERSION_LINE = re.compile(r"^mochiko-cli (\d+\.\d+\.\d+) · grammar (\d+)\.\.(\d+)$")
 
-# The wave-3 pilot: the one converted command, and the seven `class: floor` rule ids its rules
-# carry. Both are verified against the binary's own render before they are used as expectations,
-# so a schema change breaks the check rather than silently rewriting the bar.
+# The wave-3 pilot. It is still the one command the mechanism cases run against (skew, hooks-off
+# and policy exercise the delivery mechanism rather than a primitive, so they are not repeated per
+# command — wave-4 plan §4), and it is one ordinary row of the expectation table below.
 PILOT_COMMAND = "brainstorm"
-FLOOR_IDS = frozenset(
-    {
-        "brainstorm.user-record-acceptance",
-        "brainstorm.author-grader-default-fail",
-        "brainstorm.transport-floor",
-        "brainstorm.fail.record-unaccepted",
-        "brainstorm.fail.unreviewed-no-waiver",
-        "brainstorm.fail.survivor-undispositioned",
-        "brainstorm.fail.index-mismatch",
-    }
-)
+
+
+class Expected(NamedTuple):
+    """One command's pre-registered expectations. Written down, never derived.
+
+    `floor_ids` is the read-back bar's subject and `baseline_bytes` is abort criterion (2)'s
+    comparand. Both are fixed before any run of the wave that uses them: a bar read off the thing
+    it grades is not a bar. What keeps them honest is a cross-check rather than a derivation —
+    `converted-shape` compares every set here against the `class: floor` ids the binary actually
+    renders and goes red on any difference, so a floor rule added or renamed at a later wave
+    breaks a check instead of quietly regrading.
+
+    `baseline_bytes` is `wc -c` of `<cmd>.yaml` plus `common.yaml` — the read the `.md` obligated
+    before conversion. Comparisons are bytes to bytes; chars are reported beside them and are
+    never the criterion.
+    """
+
+    floor_ids: frozenset
+    baseline_bytes: int
+
+
+# Wave 3 pre-registered `brainstorm` (plan §0, at plugin v0.103.0); wave 4 pre-registered the
+# other five (wave-4 plan §4, measured 2026-09-04 against binary 0.1.0 before the wave's own
+# migration landed). The baselines are deliberately the pre-migration figures: the wave's reworded
+# `fail-conditions` intent moves the raw baseline and the delivered figure in the same direction
+# by a few bytes, so a constant that moved after the fact would flatter the comparison.
+EXPECTED = {
+    "architecture": Expected(
+        frozenset(
+            {
+                "arch.dm-health-first",
+                "arch.dm-converge-goal",
+                "arch.dm-author-baseline",
+                "arch.dm-shelf-walk",
+                "arch.dm-drift-dispatch",
+                "arch.dm-route-triggers",
+                "arch.dm-store-integrity-close",
+                "arch.dm-km-landing",
+                "arch.dm-close-verdict",
+                "arch.author-grader-separation",
+                "arch.truth-user-ruling",
+                "arch.breadth-invariant",
+                "arch.floor-precedence",
+                "arch.na-handled-elsewhere-pointer",
+                "arch.derived-index-never-hand-maintained",
+                "arch.drift-empirical",
+                "arch.no-depth-dial-coupling",
+                "arch.no-delivery-harness",
+                "arch.no-silent-store-mutations",
+                "arch.sound-loop-floor",
+                "arch.transport-floor",
+                "arch.fail.no-verdict",
+            }
+        ),
+        23_026,
+    ),
+    "brainstorm": Expected(
+        frozenset(
+            {
+                "brainstorm.user-record-acceptance",
+                "brainstorm.author-grader-default-fail",
+                "brainstorm.transport-floor",
+                "brainstorm.fail.record-unaccepted",
+                "brainstorm.fail.unreviewed-no-waiver",
+                "brainstorm.fail.survivor-undispositioned",
+                "brainstorm.fail.index-mismatch",
+            }
+        ),
+        12_819,
+    ),
+    "feature": Expected(
+        frozenset(
+            {
+                "feat.capability-writes-sacred",
+                "feat.grooming-door-ceiling",
+                "feat.out-of-remit-hosting",
+                "feat.growth-door",
+                "feat.growth-routes-to-specify",
+                "feat.lane-never-widens",
+                "feat.no-delivery-harness",
+                "feat.no-self-graded-writes",
+                "feat.no-silent-map-mutations",
+                "feat.sound-loop-floor",
+                "feat.transport-floor",
+                "feat.stub-parking",
+                "feat.fail.no-verdict",
+            }
+        ),
+        21_020,
+    ),
+    "implement": Expected(
+        frozenset(
+            {
+                "impl.gate-design-checkpoint",
+                "impl.gate-card-confirm",
+                "impl.gate-final-acceptance",
+                "impl.graded-fold",
+                "impl.author-grader-default-fail",
+                "impl.baselines-never-in-place",
+                "impl.deviation-gate",
+                "impl.constitution-supremacy",
+                "impl.constraint-challenge",
+                "impl.attempt-per-grade",
+                "impl.attempt-exemption-user-only",
+                "impl.no-progress-stop",
+                "impl.epic-member-halt",
+                "impl.gap-rework-bound",
+                "impl.gates-never-triaged",
+                "impl.minimalism-advisory",
+                "impl.lane-never-widens",
+                "impl.sound-loop-floor",
+                "impl.transport-floor",
+                "impl.fail.sufficiency-unrecorded",
+                "impl.fail.design-skipped",
+                "impl.fail.card-independence",
+                "impl.fail.card-unchecked",
+                "impl.fail.quality-gate",
+                "impl.fail.no-evidence",
+                "impl.fail.regression",
+                "impl.fail.baseline-in-place",
+                "impl.fail.deviation-unresolved",
+                "impl.fail.store-landing-incomplete",
+                "impl.fail.ungraded-fold",
+                "impl.fail.gap-finding-missing",
+                "impl.fail.skip-unstated",
+                "impl.fail.spec-gap-unresolved",
+                "impl.fail.no-acceptance",
+            }
+        ),
+        44_266,
+    ),
+    "setup": Expected(
+        frozenset(
+            {
+                "setup.blind-map-dispatch",
+                "setup.gate-synthesis-ratification",
+                "setup.gate-final-acceptance",
+                "setup.author-grader-default-fail",
+                "setup.no-git-mutations",
+                "setup.acceptance-plain-text",
+                "setup.transport-floor",
+                "setup.durables-never-deleted",
+                "setup.governance-region-ownership",
+                "setup.carve-outs-preserved",
+                "setup.map-never-overwrite",
+                "setup.store-ruled-content-never-here",
+                "setup.fail.pre-ratification-authoring",
+                "setup.fail.unclosed-trace",
+                "setup.fail.author-graded",
+                "setup.fail.floor-category-uncovered",
+                "setup.fail.no-acceptance",
+                "setup.fail.no-feature-map",
+            }
+        ),
+        20_245,
+    ),
+    "specify": Expected(
+        frozenset(
+            {
+                "spec.pm-recommends-never-selects",
+                "spec.gate-selection",
+                "spec.gate-acceptance",
+                "spec.author-grader-default-fail",
+                "spec.transport-floor",
+                "spec.staged-derivation",
+                "spec.epic-mint-desk-only",
+                "spec.fail.blocking-gap",
+                "spec.fail.intent-unconfirmed",
+                "spec.fail.map-unread",
+                "spec.fail.story-unhomed",
+                "spec.fail.screens-flows",
+                "spec.fail.selection-unruled",
+                "spec.fail.premature-map-write",
+                "spec.fail.self-graded",
+                "spec.fail.no-acceptance",
+            }
+        ),
+        23_434,
+    ),
+}
+
+# The pilot's own row, under the name the wave-3 suite and its audit use for it.
+FLOOR_IDS = EXPECTED[PILOT_COMMAND].floor_ids
 
 # The read-back metric (D8): N replicates, the bar pre-registered before the first run and
-# unchanged after it. Reported, never gating.
+# unchanged after it. One bar for every command, `implement`'s thirty-four ids included — the same
+# pre-registration as the pilot. Reported, never gating.
 READ_BACK_REPLICATES = 3
 READ_BACK_BAR = 3
 
 # The probe topic. It asks for one line before anything else so the metric is readable without a
-# judge: the model either names the floor set it was delivered, or it does not.
+# judge: the model either names the floor set it was delivered, or it does not. It is passed as
+# the command's argument and says nothing command-specific, so one text serves all six.
 PROBE_TOPIC = (
     "CONTRACT PROBE — before your first question reply with exactly one line "
     "`FLOOR: <every class: floor rule id you were delivered, comma-separated>` then stop."
 )
 
-# The pre-conversion read cost the `.md` obligated at v0.103.0: `wc -c` of `brainstorm.yaml` plus
-# `common.yaml`. Abort criterion (2) compares bytes to bytes; chars are reported beside them and
-# are never the criterion.
-BASELINE_BYTES = 12_819
+# The pilot's baseline, under the names the wave-3 README and verdicts use. The two figures beside
+# it are `brainstorm`-only: `wc -m` of the same pair, and `wc -c` counting `command-labels.yaml`.
+BASELINE_BYTES = EXPECTED[PILOT_COMMAND].baseline_bytes
 BASELINE_CHARS = 12_753
 BASELINE_BYTES_WITH_LABELS = 14_349
 
@@ -826,12 +1006,12 @@ def parse_preamble(text: str) -> list[Section]:
 def rendered_floor_ids(binary: str, primitive: str, plugin_root: pathlib.Path) -> set[str]:
     """Every `class: floor` rule id the binary renders for a primitive.
 
-    The read-back bar names seven ids, pre-registered before the first session. `FLOOR_IDS` is
-    that pre-registration and stays a written-down constant — a bar derived from the thing it
-    grades is not a bar. What it needs is a cross-check: a floor rule added at wave 4 would
-    otherwise leave the bar quietly grading six of seven, and the metric would keep reporting a
-    clean 3/3 while asking the wrong question. `converted-shape` compares the two and goes red on
-    any difference.
+    Each command's read-back bar names a fixed id set, pre-registered before that wave's first
+    session. `EXPECTED` holds those sets as written-down constants — a bar derived from the thing
+    it grades is not a bar. What they need is a cross-check: a floor rule added or renamed at a
+    later wave would otherwise leave a bar quietly grading the wrong set, and the metric would keep
+    reporting a clean 3/3 while asking the wrong question. `converted-shape` runs this function for
+    every command in `EXPECTED` and goes red on any difference, in either direction.
 
     Shape read off the render: an id line `### <id>`, then an attribute line carrying `class:`.
     """
@@ -867,6 +1047,20 @@ def converted_primitives(plugin_root: pathlib.Path) -> list[tuple[str, str, path
         if CONVERTED_MARK in path.read_text(encoding="utf-8"):
             out.append(("skill", path.parent.name, path))
     return out
+
+
+def converted_commands(plugin_root: pathlib.Path) -> list[str]:
+    """Every converted command, in schema order, with the pilot first.
+
+    The case matrix is built from this rather than from a written-down list, for the same reason
+    the hook is: the primitive's own file says whether it is converted, so the suite grows with the
+    conversion waves and can never disagree with what actually ships. The pilot leads because the
+    three mechanism cases hang off it, and keeping its five cases adjacent preserves the wave-3
+    reading order.
+    """
+    names = [name for kind, name, _ in converted_primitives(plugin_root) if kind == "command"]
+    lead = [name for name in names if name == PILOT_COMMAND]
+    return lead + [name for name in names if name != PILOT_COMMAND]
 
 
 def unconverted_primitive(plugin_root: pathlib.Path, kind: str) -> str | None:
@@ -1159,13 +1353,15 @@ def assert_slash_commands(events: list, expected: list[str]) -> str | None:
 FLOOR_LINE = re.compile(r"^\s*\**FLOOR:\**\s*(.*)$", re.M)
 
 
-def score_read_back(text: str) -> tuple[list[str], bool]:
+def score_read_back(text: str, command: str) -> tuple[list[str], bool]:
     """One replicate's floor read-back: the token list it named, and whether it is exactly right.
 
     An id counts bare or wrapped in backticks; every other decoration is a miss (lead ruling,
-    2026-09-04). Set equality against `FLOOR_IDS` — every id present, nothing else, no partial
-    credit — and a missing `FLOOR:` line is a failed replicate rather than a harness error.
+    2026-09-04). Set equality against that command's pre-registered set in `EXPECTED` — every id
+    present, nothing else, no partial credit — and a missing `FLOOR:` line is a failed replicate
+    rather than a harness error.
     """
+    floor_ids = EXPECTED[command].floor_ids
     match = FLOOR_LINE.search(text)
     if not match:
         return [], False
@@ -1176,7 +1372,7 @@ def score_read_back(text: str) -> tuple[list[str], bool]:
             token = token[1:-1].strip()
         if token:
             tokens.append(token)
-    return tokens, set(tokens) == set(FLOOR_IDS)
+    return tokens, set(tokens) == set(floor_ids)
 
 
 def delivered_blocks(text: str, primitive: str) -> dict[str, str]:
@@ -1319,12 +1515,29 @@ def case_hook_input(runner, sandbox) -> tuple[list, pathlib.Path]:
 
     unconverted_command = unconverted_primitive(staged.plugin, "command")
     unconverted_skill = unconverted_primitive(staged.plugin, "skill")
+    if unconverted_command is None:
+        # From wave 4 every shipped command is converted, so the transition-clause row loses its
+        # subject and this case would fail on a check about the hook rather than about the wave.
+        # The row still has to run: the clause is live for skills until wave 6, and the limb it
+        # exercises — leave an unconverted primitive completely alone — is the same one. So the
+        # subject is staged, exactly as the converted-skill row above stages its own, and nothing
+        # in `plugins/mochiko/` is touched.
+        unconverted_command = "contract-unconverted"
+        (staged.plugin / "commands" / f"{unconverted_command}.md").write_text(
+            "---\ndescription: staged-only stub for the hook-input transition-clause row\n---\n\n"
+            "This command carries no `!` rules line, so the dependency hook must leave it alone.\n",
+            encoding="utf-8",
+        )
+        notes.append(
+            "every shipped command is converted, so the unconverted-command row used a "
+            "staged-only stub `commands/contract-unconverted.md` (wave-4 plan §4)"
+        )
     checks.append(
         ok(
-            "the plugin still carries an unconverted command and skill to leave alone",
+            "the transition-clause rows have an unconverted command and skill to leave alone",
             None
             if unconverted_command and unconverted_skill
-            else "every primitive is converted; the transition-clause rows cannot be run",
+            else "no unconverted skill remains; that transition-clause row cannot be run",
         )
     )
     if any(check.status == "fail" for check in checks):
@@ -1405,21 +1618,26 @@ def case_hook_input(runner, sandbox) -> tuple[list, pathlib.Path]:
     checks.append(ok("a command outside the mochiko namespace is left alone", silent(proc)))
 
     # --- absence: the block, on the channel each registration uses -----------------------
-    proc = hook(dependency, upe_with(f"mochiko:{PILOT_COMMAND}"), absent_path)
-    problems = []
-    if proc.returncode != 2:
-        problems.append(f"exit {proc.returncode}, expected 2")
-    for fragment in (INSTALL_LINE, f"/mochiko:{PILOT_COMMAND}"):
-        if fragment not in proc.stderr:
-            problems.append(f"stderr is missing {fragment!r}")
-    if proc.stdout.strip():
-        problems.append(f"stdout was not empty: {proc.stdout.strip()[:120]!r}")
-    checks.append(
-        ok(
-            "converted command + no binary: exit 2 and the install line on stderr",
-            "; ".join(problems) if problems else None,
+    #
+    # Every converted command, not just the pilot. The hook extracts the command name from its
+    # own stdin and puts it back in the message, so a per-command row is what proves the user is
+    # told which command halted rather than being handed a generic notice.
+    for command in converted_commands(staged.plugin):
+        proc = hook(dependency, upe_with(f"mochiko:{command}"), absent_path)
+        problems = []
+        if proc.returncode != 2:
+            problems.append(f"exit {proc.returncode}, expected 2")
+        for fragment in (INSTALL_LINE, f"/mochiko:{command}"):
+            if fragment not in proc.stderr:
+                problems.append(f"stderr is missing {fragment!r}")
+        if proc.stdout.strip():
+            problems.append(f"stdout was not empty: {proc.stdout.strip()[:120]!r}")
+        checks.append(
+            ok(
+                f"converted command `{command}` + no binary: exit 2 and the install line on stderr",
+                "; ".join(problems) if problems else None,
+            )
         )
-    )
 
     proc = hook(dependency, skill_with("mochiko:contract-stub"), absent_path)
     decision, problem = json_field(proc, "hookSpecificOutput", "permissionDecision")
@@ -1434,10 +1652,10 @@ def case_hook_input(runner, sandbox) -> tuple[list, pathlib.Path]:
     checks.append(ok("converted skill + no binary: a JSON deny carrying the install line", problem))
 
     # --- presence: one confirmation line, per registration, and never the rules ----------
-    for payload, noun in (
-        (upe_with(f"mochiko:{PILOT_COMMAND}"), "command"),
-        (skill_with("mochiko:contract-stub"), "skill"),
-    ):
+    payloads = [(upe_with(f"mochiko:{command}"), "command", command)
+                for command in converted_commands(staged.plugin)]
+    payloads.append((skill_with("mochiko:contract-stub"), "skill", "contract-stub"))
+    for payload, noun, subject in payloads:
         proc = hook(dependency, payload, present_path)
         context, problem = json_field(proc, "hookSpecificOutput", "additionalContext")
         expected = f"{HOOK_PRESENT_PREFIX} {noun}'s own render"
@@ -1445,7 +1663,9 @@ def case_hook_input(runner, sandbox) -> tuple[list, pathlib.Path]:
             problem = f"additionalContext was {context!r}, expected {expected!r}"
         if problem is None and TRIPLE_HEAD in str(context):
             problem = "the hook injected rules; branch B confirms presence and delivers nothing"
-        checks.append(ok(f"converted {noun} + binary present: the presence line only", problem))
+        checks.append(
+            ok(f"converted {noun} `{subject}` + binary present: the presence line only", problem)
+        )
 
     # --- skew: the hook's only other gate, and the only one that needs a broken log ------
     skew_root = staged.root / "mochiko-skew"
@@ -1539,14 +1759,16 @@ def case_hook_input(runner, sandbox) -> tuple[list, pathlib.Path]:
            "; ".join(problems) if problems else None)
     )
 
+    # Where a row's subject came from, when it was not simply the shipped plugin: a synthesized
+    # capture, or a staged stub standing in for a primitive the conversion waves have used up.
     for note in notes:
-        checks.append(report("capture provenance", note))
+        checks.append(report("row provenance", note))
 
     write_verdict(
         staged.root,
         "hook-input",
         checks,
-        {"shape": "host, no session", "rows": rows, "capture_notes": notes},
+        {"shape": "host, no session", "rows": rows, "provenance_notes": notes},
     )
     return checks, staged.root
 
@@ -1650,16 +1872,24 @@ def case_render_ceiling(runner, sandbox) -> tuple[list, pathlib.Path]:
 # sandbox cases — the converted command in a real session
 # ---------------------------------------------------------------------------
 
-def brainstorm_expectations(plugin: pathlib.Path) -> tuple[list[str], dict[str, int], str | None]:
+def command_expectations(
+    plugin: pathlib.Path, command: str
+) -> tuple[list[str], dict[str, int], str | None]:
     """What the delivery must carry, read from the binary rather than written down here.
 
     Returns the section ids in the order the command's `!` lines fire, the rule count each end
     line must report, and a reason if the expectation could not be built.
+
+    Deliberately *not* pre-registered, unlike the floor sets in `EXPECTED`: the section list and
+    its per-section counts are the render's own statement of what follows, so reading them here
+    means a schema change breaks a check rather than silently rewriting the expectation. The floor
+    sets are the opposite case — they are the bar the model is graded against, so they are written
+    down and cross-checked instead.
     """
     binary, reason = host_binary()
     if reason:
         return [], {}, reason
-    preamble = render(binary, PILOT_COMMAND, "preamble", plugin)
+    preamble = render(binary, command, "preamble", plugin)
     if preamble.returncode != 0:
         return [], {}, f"the preamble render failed: {preamble.stderr.strip()[:200]!r}"
     sections = parse_preamble(preamble.stdout)
@@ -1670,9 +1900,11 @@ def brainstorm_expectations(plugin: pathlib.Path) -> tuple[list[str], dict[str, 
     return ids, counts, None
 
 
-def assert_delivery(text: str, ids: list[str], counts: dict[str, int]) -> list[Check]:
-    heads = head_line_sections(text, PILOT_COMMAND)
-    ends = end_line_counts(text, PILOT_COMMAND)
+def assert_delivery(
+    text: str, command: str, ids: list[str], counts: dict[str, int]
+) -> list[Check]:
+    heads = head_line_sections(text, command)
+    ends = end_line_counts(text, command)
     missing_heads = [i for i in ids if i not in heads]
     missing_ends = [i for i in ids if i not in ends]
     wrong = {i: ends[i] for i in ids if i in ends and ends[i] != counts[i]}
@@ -1713,7 +1945,9 @@ def expected_slash_commands() -> list[str]:
 LATENCY_RUNS = 10
 
 
-def measure_latency(runner, sandbox: "Sandbox", staged: Staged, sections: list[str]) -> dict:
+def measure_latency(
+    runner, sandbox: "Sandbox", staged: Staged, command: str, sections: list[str]
+) -> dict:
     """Per-section render latency in the sandbox, written to the evidence directory.
 
     Timed inside the sandbox in a single shell so the figure is the binary and not the `sbx exec`
@@ -1729,7 +1963,7 @@ for sec in {quoted}; do
   i=0
   while [ $i -lt {LATENCY_RUNS} ]; do
     t0=$(date +%s%N)
-    $B rules {shlex.quote(PILOT_COMMAND)} --section "$sec" --plugin-root "$R" >/dev/null 2>&1
+    $B rules {shlex.quote(command)} --section "$sec" --plugin-root "$R" >/dev/null 2>&1
     t1=$(date +%s%N)
     echo "RUN $sec $(( (t1 - t0) / 1000000 ))"
     i=$(( i + 1 ))
@@ -1737,7 +1971,7 @@ for sec in {quoted}; do
 done
 t0=$(date +%s%N)
 for sec in {quoted}; do
-  $B rules {shlex.quote(PILOT_COMMAND)} --section "$sec" --plugin-root "$R" >/dev/null 2>&1
+  $B rules {shlex.quote(command)} --section "$sec" --plugin-root "$R" >/dev/null 2>&1
 done
 t1=$(date +%s%N)
 echo "FIRE $(( (t1 - t0) / 1000000 ))"
@@ -1773,136 +2007,182 @@ echo "FIRE $(( (t1 - t0) / 1000000 ))"
     return payload
 
 
-def case_brainstorm_delivery(runner, sandbox: "Sandbox") -> tuple[list, pathlib.Path]:
-    """The happy path: the converted command fires, seven blocks arrive, nothing is Read.
+# What the delivery cases measured, in the order they ran. The lead reads both abort criteria off
+# the summary block this feeds; nothing here can change an exit code.
+MEASURED: list[dict] = []
+
+
+def case_delivery(command: str):
+    """Build the happy-path case for one converted command.
+
+    The wave-3 pilot case, parameterized. Every assertion is the one `brainstorm-delivery` carried
+    at wave 3, with the command name substituted and nothing else changed, so the keying that
+    audit established survives the generalization.
 
     Three replicates, because the read-back metric needs them (D8). The delivery assertions are
     checked on every replicate rather than the first — if delivery were flaky, a single-replicate
     check would find it only by luck, and flakiness is exactly the failure this suite exists for.
     """
-    staged = stage("brainstorm-delivery", PLUGIN)
-    ids, counts, reason = brainstorm_expectations(staged.plugin)
-    if reason:
-        checks = [ok("the delivery expectation could be built from the binary", reason)]
-        write_verdict(staged.root, "brainstorm-delivery", checks, {"shape": "delivery"})
-        return checks, staged.root
+    case_name = f"{command}-delivery"
 
-    path_env = f"{sandbox.binary_dir}:{sandbox.path}"
-    replicates = []
-    for index in range(READ_BACK_REPLICATES):
-        probed = run_probe(
-            runner,
-            staged,
-            path_env=path_env,
-            log_dir=None,
-            prompt=f"/mochiko:{PILOT_COMMAND} {PROBE_TOPIC}",
-            max_turns=2,
-            tag=f"-{index + 1}",
+    def run(runner, sandbox: "Sandbox") -> tuple[list, pathlib.Path]:
+        staged = stage(case_name, PLUGIN)
+        if command not in EXPECTED:
+            checks = [
+                ok(
+                    f"`{command}` has a pre-registered floor set and baseline",
+                    f"no `{command}` row in EXPECTED — a converted command whose read-back bar "
+                    "and baseline were never pre-registered cannot be measured",
+                )
+            ]
+            write_verdict(staged.root, case_name, checks, {"shape": "delivery"})
+            return checks, staged.root
+        ids, counts, reason = command_expectations(staged.plugin, command)
+        if reason:
+            checks = [ok("the delivery expectation could be built from the binary", reason)]
+            write_verdict(staged.root, case_name, checks, {"shape": "delivery"})
+            return checks, staged.root
+
+        path_env = f"{sandbox.binary_dir}:{sandbox.path}"
+        replicates = []
+        for index in range(READ_BACK_REPLICATES):
+            probed = run_probe(
+                runner,
+                staged,
+                path_env=path_env,
+                log_dir=None,
+                prompt=f"/mochiko:{command} {PROBE_TOPIC}",
+                max_turns=2,
+                tag=f"-{index + 1}",
+            )
+            session = session_id_of(probed.events)
+            seen, transcript_path = fetch_transcript(runner, staged, session, tag=f"-{index + 1}")
+            tokens, passed = score_read_back(final_assistant_text(probed.events), command)
+            blocks = delivered_blocks(seen, command)
+            result = result_event(probed.events)
+            replicates.append(
+                {
+                    "index": index + 1,
+                    "probed": probed,
+                    "seen": seen,
+                    "transcript_path": transcript_path,
+                    "session_id": session,
+                    "tokens": tokens,
+                    "read_back_passed": passed,
+                    "delivered_chars": sum(len(b) for b in blocks.values()),
+                    "delivered_bytes": sum(len(b.encode("utf-8")) for b in blocks.values()),
+                    "blocks": sorted(blocks),
+                    "num_turns": (result or {}).get("num_turns"),
+                    "final_text": final_assistant_text(probed.events)[:400],
+                }
+            )
+
+        checks: list[Check] = []
+        for name, problems in _aggregate(replicates, command, ids, counts):
+            checks.append(ok(name, problems))
+
+        scored = sum(1 for r in replicates if r["read_back_passed"])
+        checks.append(
+            report(
+                "read-back metric (never gating)",
+                f"{scored}/{len(replicates)} replicates named the floor set exactly "
+                f"({len(EXPECTED[command].floor_ids)} ids); "
+                f"bar {READ_BACK_BAR}/{READ_BACK_REPLICATES} pre-registered — "
+                f"{'MET' if scored >= READ_BACK_BAR else 'NOT MET'}",
+            )
         )
-        session = session_id_of(probed.events)
-        seen, transcript_path = fetch_transcript(runner, staged, session, tag=f"-{index + 1}")
-        tokens, passed = score_read_back(final_assistant_text(probed.events))
-        blocks = delivered_blocks(seen, PILOT_COMMAND)
-        result = result_event(probed.events)
-        replicates.append(
+        baseline = EXPECTED[command].baseline_bytes
+        delivered = replicates[0]["delivered_bytes"]
+        # Wave 3's three replicates agreed to the byte. Across six commands that is worth stating
+        # rather than assuming, so a disagreement is named instead of hidden behind the first.
+        spread = sorted({r["delivered_bytes"] for r in replicates})
+        checks.append(
+            report(
+                "delivered read cost",
+                f"{delivered:,} bytes / {replicates[0]['delivered_chars']:,} chars against the "
+                f"{baseline:,}-byte baseline — {(delivered - baseline) / baseline:+.1%} bytes"
+                + ("" if len(spread) == 1 else f"; replicates disagree: {spread}"),
+            )
+        )
+        latency = measure_latency(runner, sandbox, staged, command, ids)
+        band = latency.get("mean_band_ms")
+        checks.append(
+            report(
+                "store latency (load-dependent)",
+                f"per-section mean {band[0]}–{band[1]} ms, worst single run "
+                f"{latency['worst_single_run_ms']} ms, whole fire "
+                f"{latency['whole_fire_ms']} ms — {LATENCY_RUNS} runs per section, in latency.json"
+                if band
+                else "not measured",
+            )
+        )
+
+        read_cost = {
+            "baseline_bytes": baseline,
+            "baseline_source": "pre-registered; `wc -c` of <cmd>.yaml + common.yaml",
+            "source": "the session transcript, not the stream",
+            "per_replicate": [
+                {
+                    "index": r["index"],
+                    "bytes": r["delivered_bytes"],
+                    "chars": r["delivered_chars"],
+                    "blocks": r["blocks"],
+                    "transcript_path": r["transcript_path"],
+                }
+                for r in replicates
+            ],
+        }
+        if command == PILOT_COMMAND:
+            # The two `brainstorm`-only figures the wave-3 README quotes beside the baseline.
+            read_cost["baseline_chars"] = BASELINE_CHARS
+            read_cost["baseline_bytes_with_labels"] = BASELINE_BYTES_WITH_LABELS
+        MEASURED.append(
             {
-                "index": index + 1,
-                "probed": probed,
-                "seen": seen,
-                "transcript_path": transcript_path,
-                "session_id": session,
-                "tokens": tokens,
-                "read_back_passed": passed,
-                "delivered_chars": sum(len(b) for b in blocks.values()),
-                "delivered_bytes": sum(len(b.encode("utf-8")) for b in blocks.values()),
-                "blocks": sorted(blocks),
-                "num_turns": (result or {}).get("num_turns"),
-                "final_text": final_assistant_text(probed.events)[:400],
+                "command": command,
+                "read_back_scored": scored,
+                "read_back_bar": READ_BACK_BAR,
+                "floor_ids": len(EXPECTED[command].floor_ids),
+                "delivered_bytes": delivered,
+                "baseline_bytes": baseline,
             }
         )
 
-    checks: list[Check] = []
-    for name, problems in _aggregate(replicates, ids, counts):
-        checks.append(ok(name, problems))
-
-    scored = sum(1 for r in replicates if r["read_back_passed"])
-    checks.append(
-        report(
-            "read-back metric (never gating)",
-            f"{scored}/{len(replicates)} replicates named the floor set exactly; "
-            f"bar {READ_BACK_BAR}/{READ_BACK_REPLICATES} pre-registered — "
-            f"{'MET' if scored >= READ_BACK_BAR else 'NOT MET'}",
-        )
-    )
-    delivered = replicates[0]["delivered_bytes"]
-    checks.append(
-        report(
-            "delivered read cost",
-            f"{delivered:,} bytes / {replicates[0]['delivered_chars']:,} chars against the "
-            f"{BASELINE_BYTES:,}-byte baseline — "
-            f"{(delivered - BASELINE_BYTES) / BASELINE_BYTES:+.1%} bytes",
-        )
-    )
-    latency = measure_latency(runner, sandbox, staged, ids)
-    band = latency.get("mean_band_ms")
-    checks.append(
-        report(
-            "store latency (load-dependent)",
-            f"per-section mean {band[0]}–{band[1]} ms, worst single run "
-            f"{latency['worst_single_run_ms']} ms, whole fire "
-            f"{latency['whole_fire_ms']} ms — {LATENCY_RUNS} runs per section, in latency.json"
-            if band
-            else "not measured",
-        )
-    )
-
-    write_verdict(
-        staged.root,
-        "brainstorm-delivery",
-        checks,
-        {
-            "shape": "delivery",
-            "expected_sections": ids,
-            "expected_counts": counts,
-            "read_back": {
-                "bar": READ_BACK_BAR,
-                "replicates": READ_BACK_REPLICATES,
-                "scored": scored,
-                "gating": False,
-                "per_replicate": [
-                    {
-                        "index": r["index"],
-                        "tokens": r["tokens"],
-                        "passed": r["read_back_passed"],
-                        "num_turns": r["num_turns"],
-                        "final_text": r["final_text"],
-                    }
-                    for r in replicates
-                ],
+        write_verdict(
+            staged.root,
+            case_name,
+            checks,
+            {
+                "shape": "delivery",
+                "command": command,
+                "expected_sections": ids,
+                "expected_counts": counts,
+                "read_back": {
+                    "bar": READ_BACK_BAR,
+                    "replicates": READ_BACK_REPLICATES,
+                    "scored": scored,
+                    "gating": False,
+                    "pre_registered_floor_ids": sorted(EXPECTED[command].floor_ids),
+                    "per_replicate": [
+                        {
+                            "index": r["index"],
+                            "tokens": r["tokens"],
+                            "passed": r["read_back_passed"],
+                            "num_turns": r["num_turns"],
+                            "final_text": r["final_text"],
+                        }
+                        for r in replicates
+                    ],
+                },
+                "latency": latency,
+                "read_cost": read_cost,
             },
-            "latency": latency,
-            "read_cost": {
-                "baseline_bytes": BASELINE_BYTES,
-                "baseline_chars": BASELINE_CHARS,
-                "baseline_bytes_with_labels": BASELINE_BYTES_WITH_LABELS,
-                "source": "the session transcript, not the stream",
-                "per_replicate": [
-                    {
-                        "index": r["index"],
-                        "bytes": r["delivered_bytes"],
-                        "chars": r["delivered_chars"],
-                        "blocks": r["blocks"],
-                        "transcript_path": r["transcript_path"],
-                    }
-                    for r in replicates
-                ],
-            },
-        },
-    )
-    return checks, staged.root
+        )
+        return checks, staged.root
+
+    return run
 
 
-def _aggregate(replicates: list, ids: list[str], counts: dict[str, int]) -> list:
+def _aggregate(replicates: list, command: str, ids: list[str], counts: dict[str, int]) -> list:
     """Run each delivery assertion over every replicate, reporting which ones failed.
 
     Two different sources, deliberately. What the model was *given* — the seven blocks and the
@@ -1922,7 +2202,7 @@ def _aggregate(replicates: list, ids: list[str], counts: dict[str, int]) -> list
                 "~/.claude/projects/ — every delivery assertion below reads it",
             )
         ]
-        checks += assert_delivery(entry["seen"], ids, counts) + [
+        checks += assert_delivery(entry["seen"], command, ids, counts) + [
             ok("no schema file was Read", assert_no_schema_read(entry["probed"].events)),
             ok(
                 "the SessionStart hook reported the binary",
@@ -1967,8 +2247,11 @@ def _session_start_line(probed: Probed, transcript: str = "") -> str | None:
     return "no SessionStart version line in the session transcript or the stream events"
 
 
-def case_brainstorm_absence(runner, sandbox: "Sandbox") -> tuple[list, pathlib.Path]:
-    """The binary is off PATH with the plugin's own hooks in play.
+def case_command_absence(command: str):
+    """Build the binary-off-PATH case for one converted command, hooks in play.
+
+    The wave-3 pilot case, parameterized: every assertion is the one `brainstorm-absence` carried,
+    with the command name substituted and nothing else changed.
 
     This is where wave 1's pending assertion resolves. Two limbs can halt this run — the
     `UserPromptExpansion` hook's exit-2 block, which fires *before* expansion, and the `!` line's
@@ -1976,45 +2259,54 @@ def case_brainstorm_absence(runner, sandbox: "Sandbox") -> tuple[list, pathlib.P
     user either way; which channel carried it is recorded rather than assumed, because the stream
     shape of a blocked expansion is not measured anywhere yet.
     """
-    staged = stage("brainstorm-absence", PLUGIN)
-    probed = run_probe(
-        runner,
-        staged,
-        path_env=sandbox.path,
-        log_dir=None,
-        prompt=f"/mochiko:{PILOT_COMMAND} {PROBE_TOPIC}",
-        max_turns=2,
-    )
-    seen, transcript_path = fetch_transcript(runner, staged, session_id_of(probed.events))
-    union = session_output_with(probed, seen)
-    channels = channels_of(probed, INSTALL_LINE, seen)
-    checks = [
-        ok("no model turn ran", assert_halt_before_model(probed.events)),
-        ok("the install line reached the session", assert_in_session(probed, INSTALL_LINE, seen)),
-        ok("no schema file was Read", assert_no_schema_read(probed.events)),
-        ok("no version triple was delivered", assert_no_version_triple(union)),
-        report("install-line channel", ", ".join(channels) or "none"),
-        report(
-            "which limb halted first",
-            "the dependency hook — the result event carries its block notice and no "
-            "`<local-command-stderr>` was injected"
-            if str((result_event(probed.events) or {}).get("result") or "").startswith(
-                HOOK_BLOCK_PREFIX
-            )
-            else "the `!` line — the harness injected its stderr",
-        ),
-    ]
-    write_verdict(
-        staged.root,
-        "brainstorm-absence",
-        checks,
-        {
-            "shape": halt_shape(probed),
-            "channels": channels,
-            "transcript_path": transcript_path,
-        },
-    )
-    return checks, staged.root
+    case_name = f"{command}-absence"
+
+    def run(runner, sandbox: "Sandbox") -> tuple[list, pathlib.Path]:
+        staged = stage(case_name, PLUGIN)
+        probed = run_probe(
+            runner,
+            staged,
+            path_env=sandbox.path,
+            log_dir=None,
+            prompt=f"/mochiko:{command} {PROBE_TOPIC}",
+            max_turns=2,
+        )
+        seen, transcript_path = fetch_transcript(runner, staged, session_id_of(probed.events))
+        union = session_output_with(probed, seen)
+        channels = channels_of(probed, INSTALL_LINE, seen)
+        checks = [
+            ok("no model turn ran", assert_halt_before_model(probed.events)),
+            ok(
+                "the install line reached the session",
+                assert_in_session(probed, INSTALL_LINE, seen),
+            ),
+            ok("no schema file was Read", assert_no_schema_read(probed.events)),
+            ok("no version triple was delivered", assert_no_version_triple(union)),
+            report("install-line channel", ", ".join(channels) or "none"),
+            report(
+                "which limb halted first",
+                "the dependency hook — the result event carries its block notice and no "
+                "`<local-command-stderr>` was injected"
+                if str((result_event(probed.events) or {}).get("result") or "").startswith(
+                    HOOK_BLOCK_PREFIX
+                )
+                else "the `!` line — the harness injected its stderr",
+            ),
+        ]
+        write_verdict(
+            staged.root,
+            case_name,
+            checks,
+            {
+                "shape": halt_shape(probed),
+                "command": command,
+                "channels": channels,
+                "transcript_path": transcript_path,
+            },
+        )
+        return checks, staged.root
+
+    return run
 
 
 def case_brainstorm_skew(runner, sandbox: "Sandbox") -> tuple[list, pathlib.Path]:
@@ -2172,7 +2464,7 @@ def case_brainstorm_policy(runner, sandbox: "Sandbox") -> tuple[list, pathlib.Pa
     # off, no `!` line can produce a version-triple head — and the prose halt is looked for only in
     # what the model itself wrote.
     delivered = head_line_sections(seen, PILOT_COMMAND)
-    expected_ids, _, _ = brainstorm_expectations(staged.plugin)
+    expected_ids, _, _ = command_expectations(staged.plugin, PILOT_COMMAND)
     checks = [
         report("rendered blocks delivered", f"{len(delivered)} of {len(expected_ids)} expected"),
         report(
@@ -2277,19 +2569,42 @@ def case_converted_shape(runner, sandbox) -> tuple[list, pathlib.Path]:
         details.append({"primitive": name, "kind": kind, "requested": requested,
                         "declared": expected})
 
-    # The read-back bar's pre-registered floor set against what the binary actually renders.
-    rendered = rendered_floor_ids(binary, PILOT_COMMAND, staged.plugin)
-    missing = sorted(set(FLOOR_IDS) - rendered)
-    extra = sorted(rendered - set(FLOOR_IDS))
+    # Every read-back bar's pre-registered floor set against what the binary actually renders.
+    #
+    # Run for each command in `EXPECTED`, not only the converted ones: the render comes from the
+    # migration log rather than from the `.md`, so a command's bar can be checked before its
+    # conversion lands — which is what lets a wave validate its constants before spending a
+    # metered session on them.
+    unregistered = sorted(set(converted_commands(staged.plugin)) - set(EXPECTED))
     checks.append(
         ok(
-            f"the pre-registered floor set matches the {PILOT_COMMAND} render",
+            "every converted command has a pre-registered floor set and baseline",
             None
-            if not missing and not extra
-            else f"pre-registered but not rendered: {missing}; rendered but not pre-registered: "
-            f"{extra} — the read-back bar is grading the wrong set",
+            if not unregistered
+            else f"converted with no EXPECTED row: {unregistered} — their delivery cases have no "
+            "bar to report against",
         )
     )
+    floor_report = {}
+    for command in sorted(EXPECTED):
+        rendered = rendered_floor_ids(binary, command, staged.plugin)
+        pre_registered = EXPECTED[command].floor_ids
+        missing = sorted(set(pre_registered) - rendered)
+        extra = sorted(rendered - set(pre_registered))
+        checks.append(
+            ok(
+                f"the pre-registered floor set matches the {command} render "
+                f"({len(pre_registered)} ids)",
+                None
+                if not missing and not extra
+                else f"pre-registered but not rendered: {missing}; rendered but not "
+                f"pre-registered: {extra} — the read-back bar is grading the wrong set",
+            )
+        )
+        floor_report[command] = {
+            "pre_registered": sorted(pre_registered),
+            "rendered": sorted(rendered),
+        }
     write_verdict(
         staged.root,
         "converted-shape",
@@ -2297,7 +2612,7 @@ def case_converted_shape(runner, sandbox) -> tuple[list, pathlib.Path]:
         {
             "shape": "static + binary",
             "primitives": details,
-            "floor_ids": {"pre_registered": sorted(FLOOR_IDS), "rendered": sorted(rendered)},
+            "floor_ids": floor_report,
         },
     )
     return checks, staged.root
@@ -2309,15 +2624,47 @@ HOST_CASES = [
     ("render-ceiling", "every converted render against the inline ceiling", case_render_ceiling),
 ]
 
-SANDBOX_CASES = [
-    ("absence", "[fixture] the binary is off PATH — the run halts, nothing delivered", case_absence),
-    ("skew", "[fixture] the log's grammar is out of range — the D5 halt fires", case_skew),
-    ("brainstorm-delivery", "the converted command delivers all seven blocks", case_brainstorm_delivery),
-    ("brainstorm-absence", "no binary, hooks on — the install line reaches the user", case_brainstorm_absence),
-    ("brainstorm-skew", "the staged plugin's own log is out of range", case_brainstorm_skew),
-    ("brainstorm-hooks-off", "no binary, hooks off — the harness is the only guard", case_brainstorm_hooks_off),
-    ("brainstorm-policy", "shell execution disabled by policy — recorded, not asserted", case_brainstorm_policy),
-]
+def build_sandbox_cases() -> list:
+    """The sandbox case list, built from the converted set rather than written down.
+
+    Two fixture cases, then a delivery and an absence case per converted command. The pilot also
+    carries the three mechanism cases — skew, hooks-off and policy — which are *not* repeated per
+    command: they exercise how delivery behaves when the log, the hooks or the shell is broken,
+    and none of that varies with which command fired. Repeating them would buy metered sessions
+    and no new fact (wave-4 plan §4).
+
+    A command with no row in `EXPECTED` is listed with its cases anyway and fails loudly at run
+    time rather than being silently skipped: a converted command nobody pre-registered a bar for
+    is a gap in the wave, not a case to drop.
+    """
+    cases = [
+        ("absence", "[fixture] the binary is off PATH — the run halts, nothing delivered",
+         case_absence),
+        ("skew", "[fixture] the log's grammar is out of range — the D5 halt fires", case_skew),
+    ]
+    for command in converted_commands(PLUGIN):
+        cases.append(
+            (f"{command}-delivery",
+             f"`/mochiko:{command}` delivers every block its render declares",
+             case_delivery(command))
+        )
+        cases.append(
+            (f"{command}-absence", "no binary, hooks on — the install line reaches the user",
+             case_command_absence(command))
+        )
+        if command == PILOT_COMMAND:
+            cases += [
+                (f"{command}-skew", "the staged plugin's own log is out of range",
+                 case_brainstorm_skew),
+                (f"{command}-hooks-off", "no binary, hooks off — the harness is the only guard",
+                 case_brainstorm_hooks_off),
+                (f"{command}-policy", "shell execution disabled by policy — recorded, not asserted",
+                 case_brainstorm_policy),
+            ]
+    return cases
+
+
+SANDBOX_CASES = build_sandbox_cases()
 
 CASES = HOST_CASES + SANDBOX_CASES
 
@@ -2359,7 +2706,7 @@ def main() -> int:
     scope = "host cases only" if args.host_only else "all cases"
     print(f"mochiko contract suite · declared cases ({scope}):")
     for name, description, _ in declared:
-        print(f"  {name:20s} {description}")
+        print(f"  {name:22s} {description}")
     if args.list:
         return EXIT_OK
 
@@ -2424,6 +2771,37 @@ def summarize(ran: int, failures: int, pendings: int, reports: int) -> None:
     if reports:
         print(f", {reports} measurement(s) recorded and not asserted", end="")
     print()
+    print_measured()
+
+
+def print_measured() -> None:
+    """The per-command block the abort criteria are read off.
+
+    Both criteria in one place, one row per command that actually delivered: (1) read-back below
+    the pre-registered bar, (2) delivered bytes above that command's pre-conversion baseline. It
+    is printed, never gated — every figure here reached the check list through `report()`, and
+    only `status == "fail"` can set a non-zero exit code. The lead rules; this only tabulates.
+    """
+    if not MEASURED:
+        return
+    print("\nper-command measurements (reported, never gating):")
+    print(f"  {'command':14s} {'read-back':>12s}  {'delivered':>10s}  {'baseline':>9s}  "
+          f"{'delta':>7s}")
+    for row in MEASURED:
+        delivered, baseline = row["delivered_bytes"], row["baseline_bytes"]
+        delta = (delivered - baseline) / baseline if baseline else 0.0
+        trips = []
+        if row["read_back_scored"] < row["read_back_bar"]:
+            trips.append("read-back")
+        if delivered > baseline:
+            trips.append("read cost")
+        print(
+            f"  {row['command']:14s} "
+            f"{row['read_back_scored']}/{row['read_back_bar']} of "
+            f"{row['floor_ids']:>2d} ids  "
+            f"{delivered:>10,}  {baseline:>9,}  {delta:>+7.1%}"
+            + (f"   ABORT CRITERION: {', '.join(trips)}" if trips else "")
+        )
 
 
 if __name__ == "__main__":

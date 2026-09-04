@@ -1,0 +1,237 @@
+# Skill content schema for mochiko:review-feasibility. The SKILL.md body instructs a raw, full
+# Read of this file at skill invoke — beside plugins/mochiko/schemas/skill-review-common.yaml
+# and references/FEASIBILITY-LENS.md, one declared first action — and its "Rules — load the
+# schema first" section carries the reading grammar. Two semantics live only here:
+#   class   floor = non-waivable · must = binding obligation · advisory = guidance, not binding.
+#   conditions:  each dimension declares its resolution point (entry-derived · surface-presence);
+#           a rule gated on an unresolved dimension is inapplicable until it resolves.
+kind: skill
+skill: review-feasibility
+
+vars:
+  verdict: "feasible"
+
+conditions:
+  store_delta:
+    values: presence
+    resolution: surface-presence
+    note: a drafted architecture-store delta carried in the design-phase package.
+
+sections:
+  - id: review-feasibility.sec.independence
+    title: Independence — grader, never author
+    intent: >-
+      Who grades, and the one sanctioned channel back to the producer.
+    rules:
+
+      - id: review-feasibility.author-grader
+        extends: review-common.author-grader
+        class: floor
+
+      - id: review-feasibility.interrogatory-round
+        labels: [independence]
+        class: advisory
+        kind: latitude
+        text: >-
+          You may put questions to the producer — the interrogatory round in
+          `references/FEASIBILITY-LENS.md` — and the verdict stays yours alone.
+        pointer: "references/FEASIBILITY-LENS.md"
+
+  - id: review-feasibility.sec.scope
+    title: Scope — the buildability seam
+    intent: >-
+      What this reviewer owns, routes to the sibling, and never grades.
+    rules:
+
+      - id: review-feasibility.sibling-split
+        labels: [boundary]
+        class: must
+        kind: routing
+        text: >-
+          The sibling `mochiko:review-plan-artifacts` owns coverage / measurability /
+          consistency / presence; you own contradiction / impossibility / buildability.
+
+      - id: review-feasibility.design-phase-only
+        labels: [boundary]
+        class: floor
+        text: >-
+          G1: design-phase artifacts only, never the constitution.
+
+      - id: review-feasibility.single-artifact-routing
+        labels: [boundary]
+        class: must
+        kind: routing
+        text: >-
+          A single-artifact flaw is the sibling's — except class 7, the one remove-shaped
+          class, which may fire from a single artifact; its rules live in
+          `references/FEASIBILITY-LENS.md`.
+        pointer: "references/FEASIBILITY-LENS.md"
+
+      - id: review-feasibility.never-excess
+        extends: review-common.never-excess
+        class: must
+        pointer: "references/FEASIBILITY-LENS.md"
+
+      - id: review-feasibility.architecture-pass-gate
+        labels: [boundary, floor-pointer]
+        class: must
+        kind: gate
+        when: {store_delta: present}
+        text: >-
+          The architecture pass is mandatory on a drafted store delta — A1–A3 per
+          `references/FEASIBILITY-LENS.md`.
+        pointer: "references/FEASIBILITY-LENS.md"
+
+      - id: review-feasibility.governance-conformance-only
+        labels: [boundary]
+        class: must
+        kind: routing
+        text: >-
+          A3 grades the topology's conformance to governance, never whether the governance
+          itself is well-formed.
+        pointer: "references/FEASIBILITY-LENS.md"
+
+      - id: review-feasibility.its-command-states-them
+        extends: review-common.its-command-states-them
+        class: must
+        kind: routing
+
+  - id: review-feasibility.sec.inputs
+    title: Inputs — the lens and the external premises
+    intent: >-
+      What is loaded before hunting and how outside claims verify.
+    rules:
+
+      - id: review-feasibility.lens-load-first
+        labels: [fence, floor-pointer]
+        class: must
+        kind: duty
+        text: >-
+          Load `references/FEASIBILITY-LENS.md` before hunting — the classes, worked
+          examples, architecture pass, and reviewer guardrails live there, referenced
+          never restated.
+        pointer: "references/FEASIBILITY-LENS.md"
+
+      - id: review-feasibility.external-claims-binding
+        labels: [binding, evidence]
+        class: must
+        kind: binding
+        text: >-
+          External premises verify per
+          `../review-brainstorm/references/EXTERNAL-CLAIMS.md` — referenced, never
+          restated.
+        pointer: "../review-brainstorm/references/EXTERNAL-CLAIMS.md"
+
+  - id: review-feasibility.sec.verdict
+    title: Verdict — three states, earned
+    intent: >-
+      The clearing grammar, its posture, and the class rules that shape it.
+    rules:
+
+      - id: review-feasibility.default-fail
+        extends: review-common.default-fail
+        class: floor
+
+      - id: review-feasibility.infeasible-never-flattens
+        labels: [verdict]
+        class: floor
+        text: >-
+          `infeasible` never flattens into `needs-revision` — a fundamental conflict, one
+          no revision closes, escalates to the human.
+
+      - id: review-feasibility.governance-two-exits
+        labels: [verdict, user-gate]
+        class: floor
+        kind: routing
+        text: >-
+          Governance is never silently approved — two exits only: redesign to conform, or
+          a user-ruled amendment/waiver via `governance-ledger.md`.
+
+      - id: review-feasibility.verdict-vocabulary
+        labels: [verdict]
+        class: must
+        text: >-
+          Verdict: `feasible` · `needs-revision` (resolvable) · `infeasible`
+          (fundamental).
+
+      - id: review-feasibility.skipped-lens-not-clean
+        labels: [verdict, evidence]
+        class: must
+        text: >-
+          A skipped lens is not a clean lens.
+        pointer: "references/FEASIBILITY-LENS.md"
+
+      - id: review-feasibility.seam-is-elements
+        labels: [verdict]
+        class: must
+        text: >-
+          The seam is between two elements, never merely between two files.
+        pointer: "references/FEASIBILITY-LENS.md"
+
+      - id: review-feasibility.class-seven-bound
+        labels: [verdict]
+        class: must
+        kind: bound
+        text: >-
+          Class 7 blocks `feasible` but never alone earns `infeasible`.
+        pointer: "references/FEASIBILITY-LENS.md"
+
+      - id: review-feasibility.adopt-first-excess
+        labels: [verdict, floor-pointer]
+        class: must
+        text: >-
+          A hand-built commodity with no rationale beating a named candidate is excess —
+          trigger and floor at `mochiko:patterns-adopt-first`, never restated.
+        pointer: "mochiko:patterns-adopt-first"
+
+  - id: review-feasibility.sec.output
+    title: Output — the filled report
+    intent: >-
+      Where the hunt, the findings, and the verdict land.
+    rules:
+
+      - id: review-feasibility.hunt-coverage-disclosure
+        labels: [reporting, evidence]
+        class: floor
+        kind: duty
+        text: >-
+          Hunt coverage discloses as one line per class in the report, never a narrative.
+
+      - id: review-feasibility.evidence-floor
+        extends: review-common.evidence-floor
+        class: floor
+
+      - id: review-feasibility.report-template-binding
+        labels: [binding, reporting]
+        class: floor
+        kind: binding
+        text: >-
+          The filled report is `templates/feasibility-report-template.md` under the
+          `templates/report-format.md` envelope.
+        pointer: "../../templates/feasibility-report-template.md"
+
+      - id: review-feasibility.findings-cite-ids
+        labels: [evidence, reporting]
+        class: must
+        text: >-
+          Findings cite the IDs in tension (`C-003 ↔ D-007`) with the four gate-fuel
+          fields.
+
+      - id: review-feasibility.gate-fuel-field-names
+        labels: [reporting]
+        class: must
+        kind: binding
+        text: >-
+          Gate-fuel field names are the template's own — `gap` / `at` / `impact` / `fix`.
+        pointer: "../../templates/feasibility-report-template.md"
+
+  - id: review-feasibility.sec.reserved
+    title: Reserved — the lead's clearing
+    intent: >-
+      Decisions this seat never takes.
+    rules:
+
+      - id: review-feasibility.verdict-is-input
+        extends: review-common.verdict-is-input
+        class: floor
+        kind: reservation

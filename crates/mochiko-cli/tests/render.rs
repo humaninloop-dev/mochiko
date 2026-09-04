@@ -409,9 +409,11 @@ fn a_skill_preamble_omits_moments_and_the_fail_pin() {
         out.contains("\nskill review-demo\n"),
         "identity line:\n{out}"
     );
+    // The block's own shape, not the bare word: from wave 4 the legend carries a `moments:` line
+    // in prose, and the legend is delivered to skills too. Same narrowing as the fail pin below.
     assert!(
-        !out.contains("moments"),
-        "skills declare no moments:\n{out}"
+        !out.contains("\nmoments\n"),
+        "skills declare no moments block:\n{out}"
     );
     // The pin's own shape, not the bare words: the legend's `enforces:` line names `kind: fail`
     // in prose, and that sentence is delivered to skills too.
@@ -437,15 +439,34 @@ fn the_preamble_pins_match_the_corpus() {
 }
 
 /// The reading grammar the converted command's `.md` no longer restates, verbatim from the wave-3
-/// plan §2. A golden test rather than a shape assertion: the `.md` points at this block by name,
-/// so a silent reword there is a silent change to what every converted primitive is told.
+/// plan §2 and widened at wave 4 with the three things P2 found the old Rules block taught and
+/// the legend did not. A golden test rather than a shape assertion: the `.md` points at this
+/// block by name, so a silent reword there is a silent change to what every converted primitive
+/// is told.
 const LEGEND: &str = "\nlegend\n\
 - class: floor is always delivered whatever its when:; when: gates when the obligation applies, never whether it reaches you.\n\
 - kind: names what a rule is — constraint (the default) · duty · gate · reservation · binding · bound · routing · fail · latitude.\n\
 - when: binds a rule only where its terms hold against the conditions block above.\n\
 - enforces: on a kind: fail rule names the rules it is the end-state contrapositive of.\n\
 - pointer: binds you to that skill's procedure — referenced, never restated.\n\
-- extends: is already resolved in this render; the rule's own id stays the citable id.\n";
+- extends: is already resolved in this render; the rule's own id stays the citable id.\n\
+- labels: cross-reference tags from the labels registry; they bind nothing on their own.\n\
+- moments: the run's anchor points, unordered — never a sequence.\n\
+- enforces: an empty list on a kind: fail rule carries its one-line reason.\n";
+
+/// The legend's own size, pinned because it is a render-shape change a plugin bump names.
+///
+/// Every converted primitive pays it on every `preamble` render, so it is not free and it is not
+/// allowed to grow unnoticed.
+#[test]
+fn the_legend_block_is_the_size_the_wave_recorded() {
+    assert_eq!(LEGEND.len(), 845, "the legend's byte size moved");
+    assert_eq!(
+        LEGEND.lines().filter(|l| l.starts_with("- ")).count(),
+        9,
+        "six original grammar lines plus wave 4's three"
+    );
+}
 
 #[test]
 fn the_preamble_carries_the_fixed_legend_block() {

@@ -26,14 +26,23 @@ pub const PREAMBLE: &str = "preamble";
 /// The reading grammar every preamble carries, fixed text rather than anything derived from
 /// state (wave-3 plan §2). A converted primitive's `.md` points at this block by name instead of
 /// restating what `class:`, `when:` or `pointer:` mean, so the render is the only home the
-/// grammar has. Golden-tested in `tests/render.rs`.
+/// grammar has. Golden-tested in `tests/render.rs`, byte size included.
+///
+/// Widened at wave 4 with the last three lines: converting the remaining five commands found the
+/// old Rules block teaching `labels:`, `moments:` and the empty-`enforces:` reason, none of which
+/// the legend said. A `.md` that stops restating the grammar must be able to point at all of it.
+/// The `moments:` line is delivered to skills too, which declare none — it reads as grammar they
+/// will not meet, which is cheaper than a second legend to maintain.
 const LEGEND: &str = "\nlegend\n\
 - class: floor is always delivered whatever its when:; when: gates when the obligation applies, never whether it reaches you.\n\
 - kind: names what a rule is — constraint (the default) · duty · gate · reservation · binding · bound · routing · fail · latitude.\n\
 - when: binds a rule only where its terms hold against the conditions block above.\n\
 - enforces: on a kind: fail rule names the rules it is the end-state contrapositive of.\n\
 - pointer: binds you to that skill's procedure — referenced, never restated.\n\
-- extends: is already resolved in this render; the rule's own id stays the citable id.\n";
+- extends: is already resolved in this render; the rule's own id stays the citable id.\n\
+- labels: cross-reference tags from the labels registry; they bind nothing on their own.\n\
+- moments: the run's anchor points, unordered — never a sequence.\n\
+- enforces: an empty list on a kind: fail rule carries its one-line reason.\n";
 
 /// The version triple a render announces itself with: the binary's version, the log's grammar,
 /// and the plugin's version (`unknown` when no plugin root resolved).

@@ -1,0 +1,276 @@
+# Skill content schema for mochiko:testing-end-user. The SKILL.md body instructs a raw, full
+# Read of this file at skill invoke — the small families ship no common file and no stub
+# binds, so the pair's own schema is the whole first action — and its "Rules — load the
+# schema first" section carries the reading grammar. One semantic lives only here:
+#   class   floor = non-waivable · must = binding obligation · advisory = guidance, not binding.
+kind: skill
+skill: testing-end-user
+
+sections:
+  - id: testing-end-user.sec.independence
+    title: Independence — none bound
+    intent: >-
+      Who is never whom while this skill runs.
+    note: >-
+      Deliberately empty — the census records no independence-shaped obligation for this
+      member; the human gate that gates completion is reserved-section territory.
+    rules: []
+
+  - id: testing-end-user.sec.scope
+    title: Scope — the owned runtime and the grammar seam
+    intent: >-
+      What this skill owns (the runtime), what it consumes but never redefines, and the
+      walk-order discipline of the execution sequence.
+    rules:
+
+      - id: testing-end-user.grammar-consumed-never-redefined
+        labels: [boundary]
+        class: must
+        kind: binding
+        text: >-
+          The `**TEST:**` construct — its legal marker set, field skeleton,
+          action-modifier vocabulary, and assert-pattern vocabulary — is authored and
+          owned by `patterns-vertical-tdd` in
+          `../patterns-vertical-tdd/references/TEST-GRAMMAR.md`. This skill consumes that
+          grammar; it does not redefine it. What this skill owns is the runtime: how to
+          detect, parse, execute, evaluate, capture, classify, report, and gate.
+        pointer: "../patterns-vertical-tdd/references/TEST-GRAMMAR.md"
+
+      - id: testing-end-user.grammar-owner-wins
+        labels: [boundary]
+        class: must
+        text: >-
+          The parsing regexes are parse mechanics for the grammar defined by the owner —
+          when the two would differ, the grammar owner wins. Detection boundaries, field
+          extraction, and legacy-marker normalization live in
+          `references/TASK-PARSING.md`, referenced never restated.
+        pointer: "references/TASK-PARSING.md"
+
+      - id: testing-end-user.strict-order
+        labels: [ladder]
+        class: floor
+        text: >-
+          Execute in strict order. No skipping steps. No reordering.
+
+      - id: testing-end-user.setup-fail-fast
+        labels: [ladder]
+        class: must
+        text: >-
+          Fail fast if any setup fails — a setup failure blocks action execution. Record
+          all setup output for debugging.
+
+      - id: testing-end-user.modifier-execution-semantics
+        labels: [evidence]
+        class: must
+        kind: duty
+        text: >-
+          The modifier execution semantics are owned here: `(background)` starts the
+          action asynchronously and tracks its PID so output can be read for later
+          asserts and the process cleaned up, pass or fail; `(timeout Ns)` enforces N
+          seconds as the per-action limit — on expiry, capture whatever output exists,
+          kill the process, and mark the result `TIMEOUT`; `(in path)` runs the action in
+          the given directory.
+
+      - id: testing-end-user.assert-evaluation-semantics
+        labels: [evidence]
+        class: must
+        kind: duty
+        text: >-
+          Evaluate each assert against the captured evidence with the evaluation
+          semantics owned here: `Console contains` is a substring match against captured
+          stdout/stderr (its `(within Ns)` form polls streaming output until the text
+          appears or the window elapses); `File exists:` is a filesystem check
+          (`test -f`); `Response status:` compares the captured HTTP status against the
+          expected code; `Screen reached:` and `Page contains` are Playwright checks
+          against the current URL/selector and the rendered page content.
+
+      - id: testing-end-user.rationalization-stop
+        labels: [ladder]
+        class: floor
+        text: >-
+          If any Red-Flags thought arises, STOP immediately — rationalization in
+          progress: return to the execution sequence and follow every step. No
+          exceptions — not for simple tests that obviously pass, an impatient user, slow
+          evidence capture, a setup identical to a previous run, or "just checking one
+          thing".
+
+  - id: testing-end-user.sec.inputs
+    title: Inputs — task and gate sources
+    intent: >-
+      Where the parsed task and the quality-gate commands come from.
+    rules:
+
+      - id: testing-end-user.parse-error-halts
+        labels: [user-gate]
+        class: must
+        kind: routing
+        text: >-
+          A task missing `**Action**` or `**Assert**` is a parsing error — report it, do
+          not attempt execution, and ask the human how to proceed; error handling per
+          `references/TASK-PARSING.md`.
+        pointer: "references/TASK-PARSING.md"
+
+      - id: testing-end-user.gate-source-binding
+        labels: [binding]
+        class: must
+        kind: binding
+        text: >-
+          Quality-gate commands come from the `## Quality Gates` section of `tasks.md`
+          and the project's own build configuration.
+
+  - id: testing-end-user.sec.verdict
+    title: Verdict — classification and result grammar
+    intent: >-
+      The runtime classification, the result vocabulary, and the evaluation posture that
+      earns each status.
+    rules:
+
+      - id: testing-end-user.no-default-pass
+        labels: [verdict, evidence]
+        class: floor
+        text: >-
+          Each assert MUST receive an explicit pass/fail evaluation. No default to PASS —
+          an unevaluated assert is a failure.
+
+      - id: testing-end-user.runtime-classification-owned
+        labels: [verdict]
+        class: must
+        text: >-
+          The runtime classification is owned by this skill: before execution, classify
+          the task from its Action and Assert content — CLI (backtick commands +
+          measurable asserts; may auto-approve if 100% pass) · GUI (UI actions such as
+          `click`/`tap`, or screenshot capture; always human checkpoint) · SUBJECTIVE
+          (qualitative terms such as `looks`, `feels`, `appears`; always human
+          checkpoint).
+
+      - id: testing-end-user.browser-flow-exception
+        labels: [verdict]
+        class: must
+        text: >-
+          Browser-flow exception: a GUI-shaped task whose actions are Playwright-driven
+          against a cited `FLOW-XXX` path (from the spec's Screens & Flows manifest) and
+          whose asserts are drawn only from the grammar's machine-evaluable patterns
+          classifies as CLI — the walk is deterministic and may auto-approve at 100%
+          pass, screenshots captured as evidence regardless. A subjective or custom
+          assert anywhere in the task keeps it SUBJECTIVE/GUI. The binding surface is the
+          flow — screen sequence and actions; visual appearance stays advisory and is
+          never an assert target.
+
+      - id: testing-end-user.default-subjective
+        labels: [verdict, user-gate]
+        class: floor
+        text: >-
+          Default to SUBJECTIVE if uncertain — ambiguity is a reason to escalate to a
+          human, never a reason to auto-approve. Any failure, on any classification,
+          forces a checkpoint.
+
+      - id: testing-end-user.result-vocabulary
+        labels: [verdict]
+        class: must
+        text: >-
+          Result vocabulary: `PASS` (all asserts passed) · `FAIL` (one or more asserts
+          failed) · `PARTIAL` (mixed results, needs judgment) · `TIMEOUT` (action
+          exceeded its time limit) · `ERROR` (execution error, not an assertion
+          failure).
+
+      - id: testing-end-user.gates-auto-resolve
+        labels: [verdict, evidence]
+        class: floor
+        text: >-
+          Quality gates always auto-resolve — exit `0` = pass, non-zero = fail, the
+          failure output recorded. They are deterministic ground truth, not a matter of
+          judgment: no human checkpoint for gate results, and the exit-code determinism
+          MUST NOT be softened into an LLM judgment call.
+
+  - id: testing-end-user.sec.output
+    title: Output — evidence and the report
+    intent: >-
+      What is captured, what the persisted report is, and what completes before the
+      checkpoint.
+    rules:
+
+      - id: testing-end-user.report-machine-first
+        labels: [reporting, binding]
+        class: must
+        kind: binding
+        text: >-
+          The persisted verification report is machine-first per
+          `references/REPORT-TEMPLATES.md`: YAML frontmatter (per-task results, quality
+          gates under the `quality_gates` section, classification, recommendation) — all
+          PASS is frontmatter only; any FAIL / PARTIAL / TIMEOUT / ERROR adds a
+          `## Failures` section with the evidence tables and bounded output excerpts for
+          the failing items.
+        pointer: "references/REPORT-TEMPLATES.md"
+
+      - id: testing-end-user.completion-set
+        labels: [evidence, reporting]
+        class: must
+        kind: duty
+        text: >-
+          Before presenting the checkpoint, verify completion of ALL items: setup
+          commands completed · actions executed or timed out · every assert evaluated ·
+          evidence captured per the Capture field · report generated at the proper detail
+          level. No presenting partial results. No skipping evidence capture.
+
+      - id: testing-end-user.evidence-capture-binding
+        labels: [evidence, binding]
+        class: must
+        kind: binding
+        text: >-
+          Capture evidence per `references/EVIDENCE-CAPTURE.md` — console capture,
+          background-process PID tracking, timeout handling, and the four evidence types
+          (`console` / `screenshot` / `logs` / `timing`).
+        pointer: "references/EVIDENCE-CAPTURE.md"
+
+      - id: testing-end-user.sanctioned-set-closure
+        labels: [reporting]
+        class: floor
+        text: >-
+          The report's sanctioned section set is closed, its register is bound, and prose
+          on a clean report is a defect — per the rules in
+          `references/REPORT-TEMPLATES.md`, the ruled restatement of
+          `templates/report-format.md` in this payload home ([v0.44.0] KEPT: cut it only
+          with a ruling that also re-homes the check).
+        pointer: "references/REPORT-TEMPLATES.md"
+
+      - id: testing-end-user.truncation-bounds
+        labels: [reporting]
+        class: must
+        text: >-
+          Failure evidence in the report is bounded with full-log pointers per the
+          truncation rules in `references/REPORT-TEMPLATES.md`; the checkpoint
+          presentation is in-memory and never persisted.
+        pointer: "references/REPORT-TEMPLATES.md"
+
+      - id: testing-end-user.cleanup-protocol
+        labels: [evidence]
+        class: must
+        kind: duty
+        text: >-
+          Cleanup per `references/EVIDENCE-CAPTURE.md`: background processes are stopped
+          pass or fail; on failure keep the logs for debugging, report their locations,
+          and clean up only after the human reviews.
+        pointer: "references/EVIDENCE-CAPTURE.md"
+
+  - id: testing-end-user.sec.reserved
+    title: Reserved — the human's gate
+    intent: >-
+      Decisions this skill never takes.
+    rules:
+
+      - id: testing-end-user.human-gate
+        labels: [user-gate]
+        class: floor
+        kind: gate
+        text: >-
+          The human decision gates completion — approve, reject, or retry; no proceeding
+          without explicit human approval, and execution never continues past an
+          explicit reject.
+
+      - id: testing-end-user.custom-assert-to-human
+        labels: [user-gate]
+        class: must
+        kind: routing
+        text: >-
+          Any assert text outside the grammar's machine-evaluable patterns is a custom
+          assertion for human evaluation at the checkpoint.

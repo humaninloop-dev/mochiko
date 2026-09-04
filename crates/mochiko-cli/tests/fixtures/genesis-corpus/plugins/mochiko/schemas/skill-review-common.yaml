@@ -1,0 +1,45 @@
+# Shared rule library for the review-family skill content schemas. A block binds only through
+# a skill schema's rule stub carrying `extends: review-common.<slug>` — the stub's `<skill>.*`
+# ID stays the citable ID, inheritance covers `text`/`labels`/`pointer` only, and `${var}`
+# placeholders in inherited text substitute from the BINDING skill schema's `vars:`, never
+# from this file.
+kind: skill-common
+
+rules:
+
+  - id: review-common.evidence-floor
+    labels: [evidence]
+    text: >-
+      Verdict and per-finding dispositions land in the reviewed artifacts
+      themselves — review evidence living only in conversation is a floor
+      violation.
+
+  - id: review-common.default-fail
+    labels: [verdict]
+    text: >-
+      Never default to `${verdict}` — earned only by a completed hunt; absence
+      of looking is never evidence.
+
+  - id: review-common.author-grader
+    labels: [independence]
+    text: >-
+      Never author, fix, or revise what you grade — authoring mode is never
+      grading mode; "I reviewed it while writing" is not a review.
+
+  - id: review-common.verdict-is-input
+    labels: [verdict, user-gate]
+    text: >-
+      Your verdict is input, never a clearing — the lead owns the clearing
+      verdict.
+
+  - id: review-common.its-command-states-them
+    labels: [boundary]
+    text: >-
+      Loop, round-cap, and human-gate mechanics are never restated — its
+      command states them; reference, never restate.
+
+  - id: review-common.never-excess
+    labels: [boundary]
+    text: >-
+      A floor-, compliance-module-, or NFR-derived obligation is never excess,
+      however heavy it looks.

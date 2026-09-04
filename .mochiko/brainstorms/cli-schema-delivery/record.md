@@ -1285,6 +1285,75 @@ change.
 ledger home, GI-020's dormant Testability tier activated by the pilot, the revisit trigger
 evaluated and not tripped, the region's "today the log lives at the repo root" clauses struck.
 
+## Wave 4 — the five remaining commands, landed with a tripped read-back and accepted (2026-09-04, user: "accept wave 4")
+
+**Open:** on the user's "wave 4"; lead's standing assumptions (plan §7: grammar stays 1 before
+the first publish; skew, hooks-off, policy run once; the bar 3/3 per command including
+`implement`'s 34 ids; no governance row). Plan: [`wave4-plan.md`](wave4-plan.md); reports:
+[`wave4-reports/`](wave4-reports/). Seats: P1 crate + log (`staff-engineer`) / V1 (`validator`,
+PASS after one rework on three documentation items) · P2 plugin side (`staff-engineer`) / V2
+(`validator`, PASS on all five pairs) · P3 suite (`qa-engineer`) / V3 (`validator`). Rulings at
+approval: the genesis fidelity byte test rebuilds from a **frozen corpus fixture** of the pre-edit
+v0.103.0 schema files (D8's own words) rather than a new builder path; `implement` Entry's three
+`implement.yaml` citations reworded to the rendered homes (`impl.sec.tools`, the preamble `vars`
+block) with an eleventh strip entry — a live pointer to a file the run must never read is the
+defect; `specify` Goal's template two-arm sentence stays byte-identical for the wave-6 32-site
+migration; the legend gains three lines (labels · moments · empty-enforces). One transport note:
+the legend addendum reached P1 while it was still building and my verification raced its write;
+the supersession I sent was redundant, P3's sandbox run was held until the tree settled.
+`floor: tripped · seats: P1/P2/P3 produced · V1/V2/V3 reviewed`.
+
+**Built.** `reword-section {schema, id, title?, intent?, note?}` (grammar 1, sixteenth op,
+between `mint-section` and `tombstone-section`; rejects none-named, `~` on title/intent, blank
+values, unknown or tombstoned sections; touches no rule, so no anchor is owed); `migrate stamp
+<file>` (exit 1 unparseable, 2 unreadable; a stamp of the committed genesis is a byte-for-byte
+no-op); migration `0002-fail-conditions-intent.yaml` (anchor `2026-09-03 cli-schema-delivery D3`,
+six rewords, state `sequences 1..2`, hash `8972891099f7…43fd`, 0 rejecting · 105 advisory); six
+one-line snapshot edits (hand-applied — regeneration would drop in-body comments and layout; the
+log README now says so); the frozen fixture (51 files, 603,801 bytes, byte-identical to HEAD
+before the edits); legend 612 → 845 bytes; five `.md` re-points (35/35 renders with head and end
+lines; pins 1 · 1 · 15 · 6 · 9 agreeing with the end lines; D13 checker two conversion-expected
+findings per pair, warnings unchanged); eleven `[v0.105.0]` strip entries, Content blocks
+machine-verified; README wording for all six; the suite generalized from the pilot (converted
+commands discovered from their `!` lines; per-command delivery ×3 and absence; `hook-input` rows
+per command; `converted-shape` cross-checks every pre-registered floor set against the render).
+Crate: 331 tests, four layers green.
+
+**Measured (sandbox `claude-mochiko`, 29 sessions, 20/20 cases, 158 assertions, exit 0):**
+
+| command | read-back (bar 3/3) | delivered bytes | baseline | delta |
+|---|---|---|---|---|
+| architecture | 3/3 of 22 | 18,569 | 23,026 | −19.4 % |
+| brainstorm | 3/3 of 7 | 10,933 | 12,819 | −14.7 % |
+| feature | 3/3 of 13 | 17,346 | 21,020 | −17.5 % |
+| implement | **1/3** of 34 | 35,411 | 44,266 | −20.0 % |
+| setup | **1/3** of 18 | 16,283 | 20,245 | −19.6 % |
+| specify | **0/3** of 16 | 19,456 | 23,434 | −17.0 % |
+
+Latency 26–33 ms per section, 181–220 ms per fire (sandbox). Largest render `impl.sec.tools` at
+51.5 % of the ceiling; `implement`'s whole render (35,418 bytes) exceeds the ceiling, which is
+why D3 chunks. Policy environment: five observations now, the prose halt held in three, no schema
+file read in any.
+
+**Abort criterion (1) TRIPPED on three commands; criterion (2) clear on all six.** Delivery held
+on every replicate of every command: the lead verified on the transcripts that every missed
+floor rule is present verbatim with its `class: floor` line. The misses: `specify` omitted the
+same single id (`spec.author-grader-default-fail`, the one floor in `spec.sec.ways-of-working`)
+in all three replicates; `setup` omitted its three ways-of-working floors in two of three;
+`implement` omitted `impl.graded-fold` (42nd of 44 rules in the 15 KB tools block) in one and
+refused the probe argument at its own Entry gate in another. A recall failure on long lists and
+on ways-of-working floors, not a delivery failure — but the bar was pre-registered and a miss is
+a trip. V3's independent `implement` re-run scored 0/3, dropping the same `impl.graded-fold`:
+across two runs `implement` stands at 1 of 6 replicates, the same late-position id missed in
+three of the four failures. **User-ruled "land + diagnostic":** wave 4 lands with the trip recorded; wave 5 is
+halted; the read-back diagnostic pre-registered at plan §8 (gate-valid probe arguments; a
+count-only read-back beside the exact-id one; recorded, never gating) separates recall from
+delivery before any wave-5 ruling.
+
+**Follow-ups minted (BACKLOG):** the D13 advisory checker now flags every converted command
+permanently (two conversion-expected findings) — it loses its regression value until the wave-6
+Python retirement; the `specify` two-arm sentence (wave 6); the publish tail unchanged.
+
 ## Landed (2026-09-03)
 
 - `DECISIONS.md` row (2026-09-03) — status "ruled — build pending (wave 0 probes first)".

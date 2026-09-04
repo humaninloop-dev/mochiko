@@ -1,0 +1,214 @@
+# Skill content schema for mochiko:authoring-requirements. The SKILL.md body instructs a raw,
+# full Read of this file at skill invoke — beside plugins/mochiko/schemas/skill-authoring-common.yaml,
+# one declared first action — and its "Rules — load the schema first" section carries the
+# reading grammar. One semantic lives only here:
+#   class   floor = non-waivable · must = binding obligation · advisory = guidance, not binding.
+kind: skill
+skill: authoring-requirements
+
+sections:
+  - id: authoring-requirements.sec.independence
+    title: Independence
+    intent: >-
+      Who is never whom around this layer.
+    note: >-
+      Deliberately empty — no independence machinery binds this layer; the spec is
+      graded downstream by its own reviewers (census: independence 0).
+    rules: []
+
+  - id: authoring-requirements.sec.scope
+    title: Scope — business requirements, nothing downstream
+    intent: >-
+      The PM-frame boundary and what routes away from this layer.
+    rules:
+
+      - id: authoring-requirements.pm-frame-boundary
+        labels: [boundary]
+        class: floor
+        text: >-
+          Authored inside the product-manager's frame: the PM owns which capabilities
+          (features, the story filter, selection advice — map machinery:
+          `mochiko:authoring-feature-map`); this craft owns how well the requirements
+          are written. Neither edits the other's verdicts.
+
+      - id: authoring-requirements.implementation-planning-routing
+        labels: [boundary]
+        class: must
+        kind: routing
+        text: >-
+          Implementation planning is not requirements work — use design docs or
+          architecture decisions instead.
+
+      - id: authoring-requirements.architecture-routing
+        labels: [boundary]
+        class: must
+        kind: routing
+        text: >-
+          Technical architecture decisions belong in ADRs or technical design
+          documents, not in requirements.
+
+      - id: authoring-requirements.validated-requirements-routing
+        labels: [boundary]
+        class: must
+        kind: routing
+        text: >-
+          Where requirements already exist and are validated, do not duplicate the
+          work.
+
+      - id: authoring-requirements.api-endpoints-routing
+        labels: [boundary]
+        class: must
+        kind: routing
+        text: >-
+          API endpoint specifications belong to the design track, not business
+          requirements — keep concrete endpoint contracts out of FRs.
+
+      - id: authoring-requirements.data-model-routing
+        labels: [boundary]
+        class: must
+        kind: routing
+        text: >-
+          Data model design belongs to the design track; describe entities only
+          conceptually here (Key Entities), never as schemas.
+
+      - id: authoring-requirements.stories-routing
+        labels: [boundary]
+        class: must
+        kind: routing
+        text: >-
+          User story authoring is `mochiko:authoring-user-stories` — this skill
+          focuses on the underlying requirements.
+
+  - id: authoring-requirements.sec.inputs
+    title: Inputs
+    intent: >-
+      What is read before authoring.
+    note: >-
+      Deliberately empty — no schema-bound read duty; this layer consumes the feature
+      description and stories through its command's brief (census: inputs 0).
+    rules: []
+
+  - id: authoring-requirements.sec.artifact
+    title: Artifact — the requirements layer's binding grammar
+    intent: >-
+      The FR/SC/edge-case/entity forms and the floors that keep them
+      technology-agnostic.
+    rules:
+
+      - id: authoring-requirements.technology-agnostic
+        labels: [artifact-grammar]
+        class: floor
+        text: >-
+          Requirements are technology-agnostic — WHAT the system does and WHY, never
+          HOW it is implemented.
+
+      - id: authoring-requirements.constraint-states-capability
+        labels: [artifact-grammar]
+        class: floor
+        text: >-
+          A constraint states a capability, never a posture — a posture wearing
+          constraint clothes names no product and passes the leakage check, yet
+          freezes a design-time choice downstream seats then read as ratified.
+
+      - id: authoring-requirements.envelope-binding
+        extends: authoring-common.envelope-binding
+        class: must
+        kind: binding
+
+      - id: authoring-requirements.density-bounds
+        labels: [artifact-grammar]
+        class: must
+        kind: bound
+        text: >-
+          One-line FR/SC/edge-case entries, overview prose of three lines or fewer,
+          empty sections omitted. Density is not a gap; a gap is missing substance.
+
+      - id: authoring-requirements.fr-format
+        labels: [artifact-grammar]
+        class: must
+        text: >-
+          Functional requirements use the FR-XXX form with RFC 2119 keywords — MUST
+          (absolute; no exceptions) · SHOULD (recommended; valid exceptions may
+          exist) · MAY (optional).
+
+      - id: authoring-requirements.rfc2119-pointer
+        labels: [binding]
+        class: must
+        kind: binding
+        text: >-
+          Detailed keyword usage lives in `references/RFC-2119-KEYWORDS.md` —
+          referenced, never restated.
+        pointer: "references/RFC-2119-KEYWORDS.md"
+
+      - id: authoring-requirements.fr-numbering
+        labels: [artifact-grammar]
+        class: must
+        text: >-
+          FR numbering is sequential, three-digit padded, no gaps (FR-001, FR-002…);
+          related requirements group together.
+
+      - id: authoring-requirements.edge-cases
+        labels: [artifact-grammar]
+        class: must
+        kind: duty
+        text: >-
+          Identify 3–5 boundary conditions needing explicit handling, drawn from the
+          five categories: system limits · invalid input · external failures ·
+          concurrent access · permission boundaries. Patterns, examples, and
+          documentation formats live in `references/EDGE-CASES.md`.
+        pointer: "references/EDGE-CASES.md"
+
+      - id: authoring-requirements.sc-format
+        labels: [artifact-grammar]
+        class: must
+        kind: duty
+        text: >-
+          Define 3–5 measurable outcomes in SC-XXX form.
+
+      - id: authoring-requirements.sc-rules
+        labels: [artifact-grammar]
+        class: must
+        text: >-
+          Success criteria are technology-agnostic (no API metrics, database stats,
+          or code coverage), user- and business-focused (observable by stakeholders),
+          measurable (quantifiable where possible), and outcome-oriented (what
+          changes, not what is built).
+
+      - id: authoring-requirements.entities-conceptual
+        labels: [artifact-grammar]
+        class: must
+        text: >-
+          Entities are described conceptually and compactly: purpose in one line,
+          attributes as concepts not columns, relationships not foreign keys; no data
+          types, constraints, or indexes — the full model is `data-model.md`,
+          downstream.
+
+  - id: authoring-requirements.sec.output
+    title: Output — checking the produced layer
+    intent: >-
+      The advisory check available over the finished artifact.
+    rules:
+
+      - id: authoring-requirements.validation-script
+        labels: [evidence]
+        class: advisory
+        kind: binding
+        text: >-
+          A format validator is available — FR/SC numbering, RFC 2119 keywords,
+          technology-agnostic language:
+          `python scripts/validate-requirements.py .mochiko/specs/<feature>/spec.md`.
+        pointer: "scripts/validate-requirements.py"
+
+  - id: authoring-requirements.sec.reserved
+    title: Reserved — the user's rulings
+    intent: >-
+      Decisions this seat never takes.
+    rules:
+
+      - id: authoring-requirements.boundary-escalates-to-user
+        labels: [user-gate]
+        class: floor
+        kind: reservation
+        text: >-
+          A disagreement across the PM-frame boundary escalates to the user — neither
+          seat overrules the other.

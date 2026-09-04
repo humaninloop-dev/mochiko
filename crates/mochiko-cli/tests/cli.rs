@@ -1044,3 +1044,180 @@ fn the_shipped_log_is_reachable_through_the_binary() {
         "one command and one skill, preamble and first section"
     );
 }
+
+// ---------------------------------------------------------------------------
+// Wave 4 — `migrate stamp`
+// ---------------------------------------------------------------------------
+
+/// An unstamped migration body: well-formed but for the `hash:` header every migration owes.
+const UNSTAMPED: &str = "grammar: 1\n\
+                         id: 0002-reword\n\
+                         sequence: 2\n\
+                         intent: Reword one section's intent.\n\
+                         changes:\n  \
+                         - op: reword-section\n    \
+                             schema: command/demo\n    \
+                             id: demo.sec.roles\n    \
+                             intent: Seat wiring, restated.\n";
+
+#[test]
+fn migrate_stamp_writes_the_hash_a_migration_owes() {
+    let dir = scratch("stamp");
+    let file = dir.join("0002-reword.yaml");
+    std::fs::write(&file, UNSTAMPED).expect("the fixture is writable");
+
+    // Unstamped, it is not a migration at all.
+    assert!(mochiko_cli::migration::parse("0002-reword.yaml", UNSTAMPED).is_err());
+
+    let r = run(&["migrate", "stamp", file.to_str().unwrap()]);
+    assert_eq!(r.code, 0, "stderr: {}", r.err);
+
+    let stamped = std::fs::read_to_string(&file).expect("the stamped file is readable");
+    let parsed = mochiko_cli::migration::parse("0002-reword.yaml", &stamped)
+        .expect("the stamped file parses");
+    assert_eq!(parsed.sequence, 2);
+    assert_eq!(parsed.changes.len(), 1);
+    assert!(
+        r.out.contains("0002-reword.yaml"),
+        "the report names the file it wrote: {}",
+        r.out
+    );
+}
+
+#[test]
+fn migrate_stamp_replaces_a_stale_hash_rather_than_appending_one() {
+    let dir = scratch("stamp-stale");
+    let file = dir.join("0002-reword.yaml");
+    let stale = UNSTAMPED.replace(
+        "intent: Reword",
+        &format!("hash: \"sha256:{}\"\nintent: Reword", "0".repeat(64)),
+    );
+    std::fs::write(&file, &stale).expect("the fixture is writable");
+
+    assert_eq!(run(&["migrate", "stamp", file.to_str().unwrap()]).code, 0);
+    let stamped = std::fs::read_to_string(&file).expect("readable");
+    assert_eq!(
+        stamped.matches("hash:").count(),
+        1,
+        "one hash header, not two:\n{stamped}"
+    );
+    mochiko_cli::migration::parse("0002-reword.yaml", &stamped).expect("the restamp is correct");
+}
+
+#[test]
+fn migrate_stamp_is_idempotent() {
+    let dir = scratch("stamp-twice");
+    let file = dir.join("0002-reword.yaml");
+    std::fs::write(&file, UNSTAMPED).expect("writable");
+
+    assert_eq!(run(&["migrate", "stamp", file.to_str().unwrap()]).code, 0);
+    let once = std::fs::read_to_string(&file).expect("readable");
+    assert_eq!(run(&["migrate", "stamp", file.to_str().unwrap()]).code, 0);
+    let twice = std::fs::read_to_string(&file).expect("readable");
+    assert_eq!(once, twice, "a second stamp rewrites the same bytes");
+}
+
+#[test]
+fn migrate_stamp_carries_a_leading_comment_block_through() {
+    let dir = scratch("stamp-comment");
+    let file = dir.join("0002-reword.yaml");
+    let preamble = "# GENERATED — do not hand-edit.\n# Two lines of it.\n";
+    std::fs::write(&file, format!("{preamble}{UNSTAMPED}")).expect("writable");
+
+    assert_eq!(run(&["migrate", "stamp", file.to_str().unwrap()]).code, 0);
+    let stamped = std::fs::read_to_string(&file).expect("readable");
+    assert!(
+        stamped.starts_with(preamble),
+        "a generated-file preamble survives stamping:\n{stamped}"
+    );
+    mochiko_cli::migration::parse("0002-reword.yaml", &stamped).expect("it still parses");
+}
+
+#[test]
+fn migrate_stamp_refuses_a_body_that_is_not_a_migration() {
+    let dir = scratch("stamp-bad");
+    let file = dir.join("0002-reword.yaml");
+    // A known op missing the field it owes: parseable YAML, not a migration.
+    let broken = UNSTAMPED.replace("    intent: Seat wiring, restated.\n", "");
+    std::fs::write(&file, &broken).expect("writable");
+
+    let r = run(&["migrate", "stamp", file.to_str().unwrap()]);
+    assert_eq!(r.code, 1, "an unstampable body exits 1; stdout: {}", r.out);
+    assert_eq!(
+        std::fs::read_to_string(&file).expect("readable"),
+        broken,
+        "a refused stamp leaves the file exactly as it found it"
+    );
+}
+
+#[test]
+fn migrate_stamp_refuses_a_filename_that_disagrees_with_its_sequence() {
+    let dir = scratch("stamp-mismatch");
+    let file = dir.join("0007-reword.yaml");
+    std::fs::write(&file, UNSTAMPED).expect("writable");
+
+    let r = run(&["migrate", "stamp", file.to_str().unwrap()]);
+    assert_eq!(r.code, 1, "stdout: {}", r.out);
+    assert!(
+        r.err.contains("0007") || r.err.contains("sequence"),
+        "the refusal names the disagreement: {}",
+        r.err
+    );
+}
+
+#[test]
+fn migrate_stamp_reports_a_path_it_cannot_read() {
+    let dir = scratch("stamp-missing");
+    let r = run(&[
+        "migrate",
+        "stamp",
+        dir.join("0002-absent.yaml").to_str().unwrap(),
+    ]);
+    assert_eq!(r.code, 2, "a path that is not there is a usage error");
+}
+
+#[test]
+fn migrate_stamp_writes_one_file_and_no_other() {
+    let dir = scratch("stamp-isolation");
+    let target = dir.join("0002-reword.yaml");
+    std::fs::write(&target, UNSTAMPED).expect("writable");
+    let sibling = dir.join("0001-genesis.yaml");
+    write_migration(&dir, "0001-genesis.yaml", LOG);
+    let before = std::fs::read(&sibling).expect("readable");
+
+    assert_eq!(run(&["migrate", "stamp", target.to_str().unwrap()]).code, 0);
+    assert_eq!(
+        std::fs::read(&sibling).expect("readable"),
+        before,
+        "stamping one file touched another"
+    );
+    let entries: Vec<String> = std::fs::read_dir(&dir)
+        .expect("readable")
+        .filter_map(Result::ok)
+        .map(|e| e.file_name().to_string_lossy().into_owned())
+        .collect();
+    assert_eq!(entries.len(), 2, "no file was created: {entries:?}");
+}
+
+/// The committed genesis is emitted by `genesis emit`, never stamped — but the two must not
+/// disagree, or the authoring path would silently reformat the log's largest file.
+#[test]
+fn migrate_stamp_leaves_the_committed_genesis_byte_identical() {
+    let source = PathBuf::from(REPO_ROOT).join("plugins/mochiko/migrations/0001-genesis.yaml");
+    let original = std::fs::read_to_string(&source).expect("the committed genesis is readable");
+    let dir = scratch("stamp-genesis");
+    let copy = dir.join("0001-genesis.yaml");
+    std::fs::write(&copy, &original).expect("writable");
+
+    assert_eq!(run(&["migrate", "stamp", copy.to_str().unwrap()]).code, 0);
+    let stamped = std::fs::read_to_string(&copy).expect("readable");
+    assert_eq!(
+        stamped.len(),
+        original.len(),
+        "stamping the genesis changed its length"
+    );
+    assert!(
+        stamped == original,
+        "stamping the genesis changed its bytes"
+    );
+}

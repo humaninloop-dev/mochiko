@@ -1,0 +1,531 @@
+# Command content schema for /mochiko:specify. The command .md instructs a raw, full Read of
+# this file at command fire; the model interprets it live — the .md Rules block carries the
+# reading grammar. Two semantics live only here:
+#   class   floor = non-waivable · must = binding obligation · advisory = guidance, not binding.
+#   conditions:  each dimension declares its resolution point (entry-derived · surface-presence ·
+#           moment-resolved(<moment>) · user-ruled · standing-trigger); a moment-resolved
+#           dimension is unresolved until its named moment — rules gated on it are inapplicable
+#           until then.
+kind: command
+command: specify
+
+vars:
+  pm_seat: product-manager
+  explore_model: haiku
+  specs_dir: .mochiko/specs
+  spec_schema: plugins/mochiko/schemas/spec.yaml
+  feature_entry_schema: plugins/mochiko/schemas/feature-entry.yaml
+  features_index_schema: plugins/mochiko/schemas/features-index.yaml
+  rules_dir: .claude/rules/mochiko
+
+conditions:
+  ux_bearing:
+    values: ["yes", "no"]
+    resolution: moment-resolved(intent)
+    note: ruled in the intent stage; rules gated on it are inapplicable until it resolves.
+  feature_map:
+    values: presence
+    resolution: surface-presence
+    note: FEATURES.md plus the entries in the intent's territory.
+  governance_region:
+    values: presence
+    resolution: surface-presence
+    note: the marked governance region in CLAUDE.md.
+  km_file:
+    values: presence
+    resolution: surface-presence
+    note: .mochiko/memory/knowledge-management.md.
+  seats:
+    values: [single, multi]
+    resolution: standing-trigger
+    note: fires the moment the run composes more than one seat, and re-fires on a seat added mid-run.
+
+moments:
+  intent: The adaptive-probe stage that closes in the user-confirmed intent synthesis.
+  stories-confirm: The post-stories step where the capability frame is confirmed or adjusted.
+  derivation: Where work rows are cut under their capabilities and the map delta is staged.
+  selection: Where the user picks which work rows build now, from the selection card.
+  acceptance: The user's accept / amend / reject, which executes the staged map write batch.
+
+sections:
+  - id: spec.sec.roles
+    title: Roles & Responsibilities — seat wiring
+    intent: >-
+      Seat staffing, the producing seats' duties, and grading independence across the
+      run.
+    rules:
+
+      - id: spec.lead-latitude
+        labels: [seats]
+        class: must
+        kind: latitude
+        text: >-
+          You are the lead: plan the run and orchestrate it toward the Goal state in
+          plugins/mochiko/commands/specify.md; teammates or subagents per seat is your
+          call.
+
+      - id: spec.capability-frame-at-intent
+        labels: [seats, scope-entry]
+        class: must
+        text: >-
+          Within the intent stage, once the map and intent are read, the ${pm_seat} seat
+          states the capability frame — which capabilities the territory touches and an
+          extend-vs-mint hypothesis per the capability tests
+          (mochiko:patterns-map-minimalism) — as nouns + verbs only, never enumerating
+          stories, agreed with the user. The agreed frame lands in the confirmed Intent
+          section.
+        pointer: "mochiko:patterns-map-minimalism"
+
+      - id: spec.confirm-frame-post-stories
+        labels: [seats, scope-entry]
+        class: must
+        text: >-
+          After stories, the ${pm_seat} seat — via mochiko:authoring-feature-map and
+          mochiko:patterns-map-minimalism — first confirms or adjusts the intent-stage
+          capability frame against what the stories revealed; stories win any conflict.
+        pointer: "mochiko:authoring-feature-map"
+
+      - id: spec.cut-work-rows
+        labels: [seats, scope-entry]
+        class: must
+        text: >-
+          After the frame confirm (spec.confirm-frame-post-stories), the ${pm_seat} seat
+          cuts the work rows (story-shaped is fine) grouped under their capabilities,
+          extending an existing capability's extent or minting a new one per the
+          extend-vs-mint tests, and maps every SC-XXX to its verifying capability or
+          row.
+        pointer: "mochiko:patterns-map-minimalism"
+
+      - id: spec.filter-rejections-recorded
+        labels: [evidence, reporting]
+        class: must
+        text: >-
+          The ${pm_seat} seat runs the filter: a story that earns no place on the map is
+          rejected with the why recorded in its story file, never silently dropped.
+
+      - id: spec.epic-proposal-optional
+        labels: [seats]
+        class: must
+        kind: latitude
+        text: >-
+          When one derivation spans capabilities such that its work rows want one
+          coordinated multi-feature run, the ${pm_seat} seat may propose an epic as part
+          of the selection card — a proposal only, never a mint.
+
+      - id: spec.pm-recommends-never-selects
+        labels: [user-gate, independence]
+        class: floor
+        text: >-
+          The ${pm_seat} seat recommends, never selects.
+
+      - id: spec.stress-test-one-pass
+        labels: [independence, evidence]
+        class: must
+        text: >-
+          The stress-test grades spec + stories + capability/row derivation + map delta
+          in one pass — derivation honesty, filter rejections justified, dedup against
+          the actual map, granularity respected, capabilities and rows well-formed — its
+          map-delta baseline the map's git state at run open.
+
+      - id: spec.stress-test-prototype-walk
+        labels: [independence, evidence]
+        class: must
+        when: {ux_bearing: "yes"}
+        text: >-
+          The stress-test also walks the prototype (served, or opened directly via the
+          no-server degrade path): every FLOW-XXX clickable end-to-end, every SCR-XXX
+          reachable, every P1 acceptance scenario carrying a click path;
+          manifest↔prototype drift is a blocking gap.
+
+  - id: spec.sec.reserved
+    title: Reserved to the user — never the run's
+    intent: >-
+      Decisions held by the user: gates, rulings, and escalations no seat may take.
+    rules:
+
+      - id: spec.reserved-to-user
+        labels: [user-gate]
+        class: must
+        kind: reservation
+        text: >-
+          Reserved to the user: the feature framing when `$ARGUMENTS` is empty · intent
+          confirmation (the capability frame included) · clarification answers only they
+          can settle · clicking each story's prototype screens as they land (their
+          reactions fold back into story and screen together) · ruling on an escalated
+          filter disagreement.
+
+      - id: spec.selection-card
+        labels: [user-gate, reporting]
+        class: must
+        kind: binding
+        text: >-
+          The user picks which work rows build now, from the ${pm_seat} seat's selection
+          card — the rows grouped per capability, recommendation, row-level dependency
+          order, the deferred-SC list, and, per capability in the spec's territory, the
+          completeness view (pending work rows — cut but undelivered — plus parked stubs
+          and kills), visible at the moment of choice.
+
+      - id: spec.gate-selection
+        labels: [user-gate]
+        class: floor
+        kind: gate
+        text: >-
+          The selection — which work rows build now — is the user's.
+
+      - id: spec.gate-acceptance
+        labels: [user-gate, landing]
+        class: floor
+        kind: gate
+        text: >-
+          Spec acceptance (accept / amend / reject) is the user's, covering intent,
+          requirements, experience, derivation, and selection whole — acceptance is what
+          executes the map write batch; a rejected spec never touched the map.
+
+      - id: spec.filter-disagreement-escalates
+        labels: [user-gate]
+        class: must
+        kind: routing
+        text: >-
+          A producer disagreement — a rejected story held load-bearing — escalates to
+          the user.
+
+  - id: spec.sec.tools
+    title: Tools bindings
+    intent: >-
+      Paths, schemas, skills, and templates the run binds to.
+    rules:
+
+      - id: spec.deliverable
+        labels: [binding]
+        class: must
+        kind: binding
+        text: >-
+          The deliverable is ${specs_dir}/<spec>/ — spec.md from the spec template
+          (rendered by `mochiko-cli template spec`, or its schema ${spec_schema} Read
+          raw when the binary is absent — the shipped schema is the first-class source
+          of truth) plus the stories/US-*.md files; <spec> a kebab-case slug derived
+          from the feature description; never offer to delete it. Uncertainty lives in
+          spec.md's Assumptions and Open Questions sections.
+
+      - id: spec.intent-stage-first
+        labels: [scope-entry]
+        class: must
+        text: >-
+          The intent stage runs before any authoring: the adaptive-probe agenda via
+          mochiko:analysis-iterative — scope boundary · delivery intent · depth-rigor
+          expectation · UX-bearing (does the feature carry a user-facing surface to
+          prototype) · constraints · out-of-scope.
+        pointer: "mochiko:analysis-iterative"
+
+      - id: spec.map-obligated-read
+        labels: [scope-entry, evidence]
+        class: must
+        when: {feature_map: present}
+        text: >-
+          The existing feature map is an obligated read at the intent stage, per
+          mochiko:authoring-feature-map's intent-stage agenda: FEATURES.md plus the
+          entries in the intent's territory.
+        pointer: "mochiko:authoring-feature-map"
+
+      - id: spec.missing-map-surfaced
+        labels: [scope-entry, user-gate]
+        class: must
+        kind: routing
+        when: {feature_map: absent}
+        text: >-
+          A missing feature map is surfaced — offer /mochiko:setup, whose brownfield
+          analysis reconstructs it — never silently tolerated.
+
+      - id: spec.unrefined-stubs
+        labels: [scope-entry]
+        class: must
+        text: >-
+          Map entries marked unrefined are unratified hypotheses, never extension
+          anchors: derivation ignores stub text, deriving frame-first with stories
+          informing; a stub matching a framed or derived capability is confirmation, a
+          stub matching nothing stays parked or is retired (procedure:
+          mochiko:authoring-feature-map).
+        pointer: "mochiko:authoring-feature-map"
+
+      - id: spec.intent-synthesis-governs
+        labels: [scope-entry, reporting]
+        class: must
+        kind: binding
+        text: >-
+          The confirmed intent synthesis governs the run and lands verbatim as the
+          spec's Intent section.
+
+      - id: spec.frame-greenfield-inputs
+        labels: [scope-entry]
+        class: advisory
+        text: >-
+          On a thin greenfield intent the capability frame draws on the intent
+          conversation, the product description's domain nouns, and the capability tests
+          (mochiko:patterns-map-minimalism).
+        pointer: "mochiko:patterns-map-minimalism"
+
+      - id: spec.whole-feature-prototype
+        labels: [evidence]
+        class: must
+        when: {ux_bearing: "yes"}
+        text: >-
+          The whole feature is prototyped at specify time; FEAT-tags land at derivation
+          as a re-tag pass over the SCR/FLOW manifest — unselected features' screens
+          greyed coming-soon, a filter-rejected story's screens kept greyed and marked
+          rejected.
+
+      - id: spec.feature-map-craft
+        labels: [floor-pointer, binding]
+        class: must
+        kind: binding
+        text: >-
+          Feature-map craft — derivation, the filter, capability and work-row authoring
+          (the feature-entry template — `mochiko-cli template feature-entry`, or its
+          schema ${feature_entry_schema} Read raw when the binary is absent, the shipped
+          schema being the first-class source of truth), index lines (the features-index
+          template — `mochiko-cli template features-index`, or its schema
+          ${features_index_schema} Read raw when the binary is absent, likewise the
+          first-class source), delta grammar, SC re-homing, and the acceptance-time
+          write rules — the ${specs_dir}/index.md row included; spec-index stewardship
+          rides the skill — all per mochiko:authoring-feature-map.
+        pointer: "mochiko:authoring-feature-map"
+
+      - id: spec.map-minimalism-binding
+        labels: [floor-pointer]
+        class: must
+        kind: binding
+        text: >-
+          The capability tests, extend-vs-mint, and the frame discipline bind per
+          mochiko:patterns-map-minimalism.
+        pointer: "mochiko:patterns-map-minimalism"
+
+      - id: spec.prototype-craft
+        labels: [floor-pointer, binding]
+        class: must
+        kind: binding
+        text: >-
+          The Screens & Flows section and prototype/ app per
+          mochiko:authoring-prototype — SCR-XXX/FLOW-XXX manifest grammar, low-fi
+          discipline (binding flows, advisory pixels), bun-servable static HTML with the
+          no-server degrade path, design system honored where one exists; not UX-bearing
+          takes the waiver line "No UX surface — prototype waived at intent." instead.
+        pointer: "mochiko:authoring-prototype"
+
+      - id: spec.governance-briefs
+        labels: [seats, scope-entry]
+        class: must
+        when: {governance_region: present}
+        text: >-
+          Name the relevant ${rules_dir}/ files as an obligated read in each author's
+          brief — `paths`-scoped rules do not fire for from-scratch authoring.
+
+      - id: spec.governance-region-absent
+        labels: [scope-entry]
+        class: must
+        kind: routing
+        when: {governance_region: absent}
+        text: >-
+          A missing CLAUDE.md governance region is surfaced (offer /mochiko:setup),
+          never auto-resolved.
+
+      - id: spec.km-landing
+        labels: [landing]
+        class: must
+        when: {km_file: present}
+        text: >-
+          Spec acceptance is a landing — run the
+          .mochiko/memory/knowledge-management.md landing ritual (close/move any BACKLOG
+          item the spec discharges, touch ROADMAP.md) and its command-boundary
+          invariants fix-on-sight; the acceptance-time map write batch lands in the same
+          moment.
+
+      - id: spec.migration-frozen-specs
+        labels: [binding]
+        class: must
+        kind: binding
+        text: >-
+          Existing slice-form specs are valid frozen history; only new runs take the
+          ${specs_dir}/<spec>/ workspace form.
+
+      - id: spec.register
+        extends: common.register
+        class: must
+        kind: binding
+
+      - id: spec.next-step
+        labels: [scope-entry]
+        class: must
+        kind: routing
+        text: >-
+          Next step: /mochiko:implement — one run per capability-batch (a capability's
+          selected work rows), in the rows' dependency order; that run opens with a
+          sufficiency check at its entry.
+
+  - id: spec.sec.ways-of-working
+    title: Ways of Working
+    intent: >-
+      How the run sequences its stages, prototypes, and reports; model routing for its
+      seats.
+    rules:
+
+      - id: spec.model-tiering
+        extends: common.model-tiering
+        class: must
+        kind: routing
+
+      - id: spec.intent-probe-discipline
+        labels: [user-gate]
+        class: must
+        text: >-
+          Intent runs as probes, never a questionnaire; it closes in a one-screen
+          synthesis the user confirms; flag ratification streaks before treating
+          adoptions as engagement.
+
+      - id: spec.frame-hypothesis-not-anchor
+        labels: [scope-entry]
+        class: must
+        text: >-
+          The capability frame is a hypothesis, not an anchor: it dictates neither story
+          boundaries nor journeys (stories stay journey-driven), and stories win any
+          conflict with it, resolved at the post-stories confirm step
+          (spec.confirm-frame-post-stories).
+
+      - id: spec.lockstep-prototyping
+        labels: [user-gate, evidence]
+        class: must
+        when: {ux_bearing: "yes"}
+        text: >-
+          Stories and their screens co-evolve as one unit — skeleton nav frame first,
+          then each story's screens and flows land while that story is under discussion;
+          the user clicks through while the story is wet, never a batch render after the
+          text settles.
+
+      - id: spec.plan-approval
+        extends: common.plan-approval-producers
+        class: must
+
+      - id: spec.author-grader-default-fail
+        extends: common.author-grader-default-fail
+        class: floor
+
+      - id: spec.no-git-mutations
+        extends: common.no-git-mutations
+        class: must
+
+      - id: spec.acceptance-plain-text
+        extends: common.acceptance-plain-text
+        class: must
+
+  - id: spec.sec.boundaries
+    title: Boundaries — the non-waivable floor
+    intent: >-
+      Floor obligations no seat and no in-run ruling can waive.
+    rules:
+
+      - id: spec.transport-floor
+        extends: common.transport-floor
+        class: floor
+        when: {seats: multi}
+        # C4: floor — always read, always delivered. `when:` gates when the
+        # obligation APPLIES, never whether it is delivered. Re-evaluated
+        # whenever the run's shape changes (a seat added mid-run re-activates it).
+
+      - id: spec.staged-derivation
+        labels: [landing]
+        class: floor
+        text: >-
+          All derivation output stages in the spec workspace; the live map stays
+          untouched until acceptance.
+
+      - id: spec.epic-mint-desk-only
+        labels: [user-gate]
+        class: floor
+        kind: routing
+        text: >-
+          The user takes an epic proposal to /mochiko:feature's desk to form, the only
+          door that mints; the run never mints an epic (mochiko:authoring-epic).
+        pointer: "mochiko:authoring-epic"
+
+  - id: spec.sec.fail-conditions
+    title: Not done — default FAIL
+    intent: >-
+      The kind: fail set — any one standing fails the run; the .md Not-done line hard-codes this set's count.
+    rules:
+
+      - id: spec.fail.blocking-gap
+        labels: [evidence]
+        class: floor
+        kind: fail
+        enforces: [spec.stress-test-one-pass]
+        text: >-
+          A blocking gap open.
+
+      - id: spec.fail.intent-unconfirmed
+        labels: [user-gate]
+        class: floor
+        kind: fail
+        enforces: [spec.intent-stage-first, spec.reserved-to-user]
+        text: >-
+          An Intent section never confirmed by the user before authoring.
+
+      - id: spec.fail.map-unread
+        labels: [scope-entry]
+        class: floor
+        kind: fail
+        enforces: [spec.map-obligated-read, spec.missing-map-surfaced]
+        text: >-
+          The feature map not read at intent, or a missing map silently tolerated.
+
+      - id: spec.fail.story-unhomed
+        labels: [evidence]
+        class: floor
+        kind: fail
+        enforces: [spec.cut-work-rows, spec.filter-rejections-recorded]
+        text: >-
+          A drafted story neither homed to exactly one work row nor rejected with a
+          recorded why.
+
+      - id: spec.fail.screens-flows
+        labels: [evidence]
+        class: floor
+        kind: fail
+        enforces: [spec.prototype-craft, spec.stress-test-prototype-walk]
+        text: >-
+          A Screens & Flows section absent (the waiver line counts), or ruled UX-bearing
+          with no clickable prototype, or manifest↔prototype drift unresolved.
+
+      - id: spec.fail.selection-unruled
+        labels: [user-gate]
+        class: floor
+        kind: fail
+        enforces: [spec.gate-selection, spec.selection-card]
+        text: >-
+          A Feature Selection section absent, or the selection not ruled by the user.
+
+      - id: spec.fail.premature-map-write
+        labels: [landing]
+        class: floor
+        kind: fail
+        enforces: [spec.staged-derivation, spec.gate-acceptance]
+        text: >-
+          The live map written before acceptance.
+
+      - id: spec.fail.self-graded
+        labels: [independence]
+        class: floor
+        kind: fail
+        enforces: [spec.author-grader-default-fail]
+        text: >-
+          The spec never graded by anyone but its authors.
+
+      - id: spec.fail.no-acceptance
+        extends: common.no-acceptance
+        class: floor
+        kind: fail
+        enforces: [spec.gate-acceptance]
+
+tombstones:
+  - id: spec.sec.harness
+    disposition: "superseded → rules redistributed across the D4 six-set (command-md-scaffold-standardization D3/D4/D5)"
+  - id: spec.sec.bindings
+    disposition: "superseded → rules redistributed across the D4 six-set (command-md-scaffold-standardization D3/D4/D5)"

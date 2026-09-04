@@ -1,0 +1,200 @@
+# Skill content schema for mochiko:patterns-sound-loop. The SKILL.md body instructs a raw,
+# full Read of this file at skill invoke — one declared first action — and its "Rules —
+# load the schema first" section carries the reading grammar. Two semantics live only here:
+#   class   floor = non-waivable · must = binding obligation · advisory = guidance, not binding.
+#   conditions:  each dimension declares its resolution point (entry-derived);
+#           a rule gated on an unresolved dimension is inapplicable until it resolves.
+# The patterns family ships no common block library (census-patterns §C/§ROAD) — every
+# rule is local.
+kind: skill
+skill: patterns-sound-loop
+
+conditions:
+  trigger:
+    values: [fired, clear]
+    resolution: entry-derived
+    note: >-
+      fired = both parts of the two-part test true of the output about to be produced
+      (judgment-authored AND governing surface); clear otherwise.
+
+sections:
+  - id: patterns-sound-loop.sec.trigger
+    title: Trigger — two parts, no size threshold
+    intent: >-
+      When the floor fires, the door-independence of the test, and the surfaces its
+      second part reads.
+    rules:
+
+      - id: patterns-sound-loop.two-part-trigger
+        labels: [trigger]
+        class: floor
+        kind: gate
+        text: >-
+          The floor fires when both are true of the output about to be produced:
+          (1) judgment-authored — producing it required real judgment; (2) governing
+          surface — downstream work will read it as truth. Both true, the three legs are
+          obligatory; either false, lead-inline freedom stands as chartered. There is no
+          size threshold: a small judgment-authored write on a governing surface trips
+          the floor as surely as a 10-file rewrite — magnitude never gates it.
+
+      - id: patterns-sound-loop.kind-keyed-library-wide
+        labels: [trigger]
+        class: must
+        text: >-
+          The floor is kind-keyed and library-wide: any session, any command, whatever
+          door the work entered through.
+
+      - id: patterns-sound-loop.governing-surface-table
+        labels: [trigger, binding]
+        class: must
+        kind: binding
+        text: >-
+          Governing surfaces and their per-member regime — plugin primitives
+          (`plugins/mochiko/`): the primitive-edits ceremony (strip → record →
+          author≠grader audit), no net-new obligation · product code:
+          `/mochiko:implement` seats, none · specs (`.mochiko/specs/`): the
+          `/mochiko:specify` loop, none · governance surfaces: the `/mochiko:setup`
+          loop, none · capability map (`FEATURES.md` + entries): specify-side derivation
+          graded, desk-side writes carried no loop — full floor, net-new bite · product
+          baselines (the rest of `.mochiko/product/`): no loop outside pipeline runs —
+          full floor, net-new bite · architecture store
+          (`.mochiko/product/architecture/`): desk judgment writes take the tech-lead
+          review leg, design-phase deltas graded by the design review pair beneath the
+          user's sign-off (`mochiko:authoring-architecture-store`); full floor satisfied
+          by the desk's own loop where it runs — the bite is any store write outside it.
+        pointer: "mochiko:authoring-architecture-store"
+
+  - id: patterns-sound-loop.sec.scope
+    title: Scope — the door moves, the ritual never drops
+    intent: >-
+      How out-of-remit demands are hosted without lowering the floor.
+    rules:
+
+      - id: patterns-sound-loop.out-of-remit-hosting
+        labels: [boundary]
+        class: must
+        text: >-
+          When the user explicitly asks a command to host work outside its key
+          responsibilities, it adapts rather than refuses: it names the boundary
+          crossing, then serves the demand with the home command's rituals imported —
+          the three legs at minimum. Adaptation moves the door, never lowers the ritual.
+
+  - id: patterns-sound-loop.sec.discipline
+    title: Discipline — the legs, the exemptions, the wiring
+    intent: >-
+      The producing and reviewing legs, the exact exemption set, and who sits where.
+    rules:
+
+      - id: patterns-sound-loop.leg-1-seat-produces
+        labels: [ladder, independence]
+        class: floor
+        when: {trigger: fired}
+        text: >-
+          Leg 1 — production sits with a seat, never the lead: the producing seat plans
+          first; the lead gives feedback, approves the plan, and distributes work to
+          seats.
+
+      - id: patterns-sound-loop.leg-2-non-author-review
+        labels: [ladder, independence]
+        class: floor
+        when: {trigger: fired}
+        text: >-
+          Leg 2 — independent review: the produced artifact is graded by a non-author
+          seat before the user's gate; the user's ruling alone never substitutes for the
+          review leg.
+
+      - id: patterns-sound-loop.exemptions-exactly-three
+        labels: [boundary]
+        class: must
+        text: >-
+          Only three kinds of write never trip the trigger: mechanical execution of an
+          existing ruling · transcription of user decisions · fix-on-sight integrity
+          repairs (typos, status agreement, dead pointers).
+
+      - id: patterns-sound-loop.store-carve
+        labels: [boundary, evidence]
+        class: must
+        text: >-
+          On the architecture store the exemption carve runs exactly down the middle of a
+          landing: status flips and orphan cleanup are transcription and never trip,
+          while the `As-built:` and `Drift:` writes are judgment and are graded — the
+          natural mistake is to wave the whole landing through as bookkeeping.
+
+      - id: patterns-sound-loop.no-delta-card-exemption
+        labels: [boundary]
+        class: floor
+        text: >-
+          There is no delta-card exemption: every desk-authored delta card — bug and
+          improvement alike — takes the review leg at the desk before dispatch. The
+          review leg only: card authorship stays with the desk.
+
+      - id: patterns-sound-loop.default-seat-wiring
+        labels: [binding, independence]
+        class: must
+        kind: binding
+        when: {trigger: fired}
+        text: >-
+          Default seat wiring — map work (capability map): `product-manager` produces,
+          `devils-advocate` reviews · architecture / baseline touches:
+          `principal-architect` produces, `tech-lead` reviews · desk delta cards:
+          desk-authored (review leg only), `devils-advocate` reviews · specs and product
+          code: existing command wiring, unchanged. The lead may swap personas for
+          cause — disclosed at close.
+
+      - id: patterns-sound-loop.map-review-spec-less
+        labels: [boundary]
+        class: must
+        when: {trigger: fired}
+        text: >-
+          Map review runs spec-less: capability tests per
+          `mochiko:patterns-map-minimalism`, entry/delta legality per
+          `mochiko:authoring-feature-map`, derivation honesty against whatever stories
+          exist — no spec required.
+
+  - id: patterns-sound-loop.sec.inputs
+    title: Inputs
+    intent: >-
+      Read duties this floor would carry before it fires.
+    note: >-
+      Deliberately empty — the floor obligates no read before it fires; the trigger
+      evaluates the write at hand (census-patterns §B: SL rows 1–14).
+    rules: []
+
+  - id: patterns-sound-loop.sec.disclosure
+    title: Disclosure — the pinned line and its honesty rule
+    intent: >-
+      The one line every close report carries, and who may be named in it.
+    rules:
+
+      - id: patterns-sound-loop.disclosure-line
+        labels: [reporting]
+        class: must
+        kind: duty
+        text: >-
+          Every visit/run close report carries one line, pinned grammar:
+          `floor: tripped|clear · seats: <who produced> / <who reviewed>`. When clear:
+          `floor: clear` alone — no seats segment, since no seats existed to name.
+
+      - id: patterns-sound-loop.only-real-seats
+        labels: [reporting, evidence]
+        class: floor
+        text: >-
+          A report may only name a seat that actually existed; otherwise the lead speaks
+          as itself. The known under-classification risk — calling judgment work
+          "mechanical" to stay inline — is what the disclosure line makes auditable,
+          visit by visit.
+
+  - id: patterns-sound-loop.sec.reserved
+    title: Reserved — the user gate stays
+    intent: >-
+      The ruling layer the floor works beneath, never above.
+    rules:
+
+      - id: patterns-sound-loop.leg-3-user-gate-stays
+        labels: [ladder, user-gate]
+        class: floor
+        kind: reservation
+        when: {trigger: fired}
+        text: >-
+          Leg 3 — the user gate stays: rulings reserved to the user remain theirs; the
+          floor adds review beneath the gate, never a machine gate above it.

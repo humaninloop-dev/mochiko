@@ -137,6 +137,7 @@ pub enum ChangeOp {
     ImportDocument,
     ReplaceDocument,
     MintSection,
+    RewordSection,
     TombstoneSection,
     MintRule,
     RewordRule,
@@ -153,10 +154,11 @@ pub enum ChangeOp {
 
 impl ChangeOp {
     /// Every op, so a test can assert the grammar's whole surface is exercised.
-    pub const ALL: [ChangeOp; 15] = [
+    pub const ALL: [ChangeOp; 16] = [
         ChangeOp::ImportDocument,
         ChangeOp::ReplaceDocument,
         ChangeOp::MintSection,
+        ChangeOp::RewordSection,
         ChangeOp::TombstoneSection,
         ChangeOp::MintRule,
         ChangeOp::RewordRule,
@@ -176,6 +178,7 @@ impl ChangeOp {
             ChangeOp::ImportDocument => "import-document",
             ChangeOp::ReplaceDocument => "replace-document",
             ChangeOp::MintSection => "mint-section",
+            ChangeOp::RewordSection => "reword-section",
             ChangeOp::TombstoneSection => "tombstone-section",
             ChangeOp::MintRule => "mint-rule",
             ChangeOp::RewordRule => "reword-rule",
@@ -255,6 +258,20 @@ impl fmt::Display for RuleField {
     }
 }
 
+/// One optional field edit carried by a [`ChangeOp::RewordSection`] change.
+///
+/// Three states, because a field the change never names and a field it explicitly clears are
+/// different instructions. `set-rule-field` already draws that distinction; collapsing it here
+/// would make `note: ~` indistinguishable from a change that said nothing about `note:`.
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub enum SectionEdit {
+    /// The change does not name this field, so it is left exactly as it stands.
+    Untouched,
+    /// `field: ~` — the field is cleared. Legal for `note:` alone.
+    Clear,
+    Set(String),
+}
+
 /// One change. Each is independently citable: a rule's history is the ops naming its id.
 #[derive(Clone, Debug, PartialEq)]
 pub enum Change {
@@ -269,6 +286,15 @@ pub enum Change {
     MintSection {
         doc: DocRef,
         section: Value,
+    },
+    /// A section's prose — its `title:`, its `intent:`, its `note:` — with at least one of the
+    /// three named. The section id and its rules are untouched.
+    RewordSection {
+        doc: DocRef,
+        id: String,
+        title: SectionEdit,
+        intent: SectionEdit,
+        note: SectionEdit,
     },
     TombstoneSection {
         doc: DocRef,
@@ -340,6 +366,7 @@ impl Change {
             Change::ImportDocument { .. } => ChangeOp::ImportDocument,
             Change::ReplaceDocument { .. } => ChangeOp::ReplaceDocument,
             Change::MintSection { .. } => ChangeOp::MintSection,
+            Change::RewordSection { .. } => ChangeOp::RewordSection,
             Change::TombstoneSection { .. } => ChangeOp::TombstoneSection,
             Change::MintRule { .. } => ChangeOp::MintRule,
             Change::RewordRule { .. } => ChangeOp::RewordRule,
@@ -361,6 +388,7 @@ impl Change {
             Change::ImportDocument { doc, .. }
             | Change::ReplaceDocument { doc, .. }
             | Change::MintSection { doc, .. }
+            | Change::RewordSection { doc, .. }
             | Change::TombstoneSection { doc, .. }
             | Change::MintRule { doc, .. }
             | Change::RewordRule { doc, .. }
@@ -379,7 +407,8 @@ impl Change {
     /// The rule or section id this change addresses, where it names one.
     pub fn target_id(&self) -> Option<&str> {
         match self {
-            Change::TombstoneSection { id, .. }
+            Change::RewordSection { id, .. }
+            | Change::TombstoneSection { id, .. }
             | Change::RewordRule { id, .. }
             | Change::SetRuleField { id, .. }
             | Change::MoveRule { id, .. }
@@ -545,6 +574,45 @@ fn field_value(map: &Mapping, key: &str, file: &str, index: usize) -> Result<Val
         .ok_or_else(|| change_err(file, index, format!("`{key}:` missing")))
 }
 
+/// One optional prose field of a `reword-section` change.
+///
+/// `clearable` says whether `~` is a legal instruction for this field. A section always carries a
+/// `title:` and an `intent:` — the hard set reports a section missing either — so only `note:` may
+/// be cleared. An empty or blank value is rejected for all three: it would write the very state
+/// the validator rejects, and for `note:` the clear is spelled `~`, not `''`.
+fn section_edit(
+    map: &Mapping,
+    key: &str,
+    clearable: bool,
+    file: &str,
+    index: usize,
+) -> Result<SectionEdit, ParseError> {
+    match get(map, key) {
+        None => Ok(SectionEdit::Untouched),
+        Some(Value::Null) if clearable => Ok(SectionEdit::Clear),
+        Some(Value::Null) => Err(change_err(
+            file,
+            index,
+            format!(
+                "`{key}: ~` — every section carries a `{key}:`, so it is reworded and never cleared"
+            ),
+        )),
+        Some(Value::String(text)) if text.trim().is_empty() => Err(change_err(
+            file,
+            index,
+            format!("`{key}:` is blank — a reworded field carries text"),
+        )),
+        Some(Value::String(text)) => Ok(SectionEdit::Set(text.clone())),
+        Some(Value::Bool(b)) => Ok(SectionEdit::Set(b.to_string())),
+        Some(Value::Number(n)) => Ok(SectionEdit::Set(n.to_string())),
+        Some(_) => Err(change_err(
+            file,
+            index,
+            format!("`{key}:` must be one scalar of text"),
+        )),
+    }
+}
+
 /// The document a `kind:` + `name:` pair on a document-level op addresses.
 fn kind_name_ref(map: &Mapping, file: &str, index: usize) -> Result<DocRef, ParseError> {
     let kind_token = field_str(map, "kind", file, index)?;
@@ -590,6 +658,31 @@ fn parse_change(value: &Value, file: &str, index: usize) -> Result<Change, Parse
             doc: doc_ref(map, "schema", file, index)?,
             section: field_value(map, "section", file, index)?,
         },
+        ChangeOp::RewordSection => {
+            let doc = doc_ref(map, "schema", file, index)?;
+            let id = field_str(map, "id", file, index)?;
+            let title = section_edit(map, "title", false, file, index)?;
+            let intent = section_edit(map, "intent", false, file, index)?;
+            let note = section_edit(map, "note", true, file, index)?;
+            if title == SectionEdit::Untouched
+                && intent == SectionEdit::Untouched
+                && note == SectionEdit::Untouched
+            {
+                return Err(change_err(
+                    file,
+                    index,
+                    "names no field to reword — want at least one of `title:` · `intent:` · \
+                     `note:`",
+                ));
+            }
+            Change::RewordSection {
+                doc,
+                id,
+                title,
+                intent,
+                note,
+            }
+        }
         ChangeOp::TombstoneSection => Change::TombstoneSection {
             doc: doc_ref(map, "schema", file, index)?,
             id: field_str(map, "id", file, index)?,

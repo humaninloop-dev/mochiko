@@ -1,0 +1,324 @@
+# Skill content schema for mochiko:authoring-architecture-store. The SKILL.md body instructs a
+# raw, full Read of this file at skill invoke — beside
+# plugins/mochiko/schemas/skill-authoring-common.yaml, one declared first action — and its
+# "Rules — load the schema first" section carries the reading grammar. Two semantics live only
+# here:
+#   class   floor = non-waivable · must = binding obligation · advisory = guidance, not binding.
+#   conditions:  each dimension declares its resolution point (entry-derived · surface-presence);
+#           a rule gated on an unresolved dimension is inapplicable until it resolves.
+kind: skill
+skill: authoring-architecture-store
+
+vars:
+  template: "architecture-store"
+
+conditions:
+  delta:
+    values: presence
+    resolution: surface-presence
+    note: an approved architecture-store delta existed for the landing feature.
+  structure_built:
+    values: presence
+    resolution: surface-presence
+    note: the built work changed structure.
+  ruled_content:
+    values: presence
+    resolution: surface-presence
+    note: ruled (non-derived) store content exists — a scaffold-only or absent store reads absent.
+
+sections:
+  - id: authoring-architecture-store.sec.independence
+    title: Independence — who grades a store write
+    intent: >-
+      The review leg a judgment write takes before the user's ruling.
+    rules:
+
+      - id: authoring-architecture-store.sound-loop-on-judgment-writes
+        labels: [independence, floor-pointer]
+        class: floor
+        kind: binding
+        text: >-
+          Judgment writes — baseline authoring, shelf-walk stance batches, amendments, and
+          every `As-built:`/`Drift:` write — take the independent review leg before the
+          user's ruling, per `mochiko:patterns-sound-loop`; status flips and orphan cleanup
+          are transcription and ride the landing audit. Do not relabel judgment as
+          mechanical to skip the leg.
+        pointer: "mochiko:patterns-sound-loop"
+
+  - id: authoring-architecture-store.sec.scope
+    title: Scope — what this skill routes away
+    intent: >-
+      The jurisdiction lines toward the sibling skills and the map machinery.
+    rules:
+
+      - id: authoring-architecture-store.diagram-craft-routing
+        labels: [boundary]
+        class: must
+        kind: routing
+        text: >-
+          Feature-level diagram craft — altitude, container-delta diagrams, which flows earn
+          a sequence diagram — belongs to `mochiko:patterns-system-design`; the store says
+          where a delta lands and what status it carries, never how to draw it.
+
+      - id: authoring-architecture-store.stance-routing
+        labels: [boundary]
+        class: must
+        kind: routing
+        text: >-
+          Forming a stance — which stance a row takes, what walk order applies, what a floor
+          card binds — belongs to `mochiko:patterns-architecture-shelves`; the store owns
+          the field, that skill owns the judgment that fills it.
+
+      - id: authoring-architecture-store.mint-routing
+        labels: [boundary]
+        class: must
+        kind: routing
+        text: >-
+          Capabilities and work rows are never minted here — a fired upgrade trigger is
+          flagged in the store and routed to the `/mochiko:feature` growth door: the
+          architecture lens proposes; the map machinery disposes.
+
+  - id: authoring-architecture-store.sec.inputs
+    title: Inputs — what a probe reads
+    intent: >-
+      The read duties and read bounds behind drift claims.
+    rules:
+
+      - id: authoring-architecture-store.drift-probe-scoped
+        labels: [fence, evidence]
+        class: must
+        kind: bound
+        text: >-
+          The drift probe is scoped — rows touched since the last desk visit, plus a sample
+          of the retrofit-expensive rows; never all rows every visit.
+
+      - id: authoring-architecture-store.as-built-against-code
+        labels: [evidence]
+        class: floor
+        kind: duty
+        text: >-
+          `As-built:` claims are checked against actual code, never against recollection.
+
+  - id: authoring-architecture-store.sec.artifact
+    title: Artifact — the store's binding grammar and write mechanics
+    intent: >-
+      What the store is, the shapes its content takes, and the duties every write carries.
+    rules:
+
+      - id: authoring-architecture-store.one-home-one-writer
+        labels: [single-home, binding]
+        class: floor
+        text: >-
+          One home. One writer. The product's architecture lives at
+          `.mochiko/product/architecture/`, and every write to it goes through this skill.
+
+      - id: authoring-architecture-store.store-layout
+        labels: [binding, artifact-grammar]
+        class: must
+        kind: binding
+        text: >-
+          The store layout binds: `spine.md` (topology deep view) · `concerns.md` (the
+          `AX-XXX` ledger) · `concerns/AX-XXX-<slug>.md` (graduated concerns) · the derived
+          `ARCHITECTURE.md` index at the repo root — never inside the store directory.
+
+      - id: authoring-architecture-store.scope-line-durable-home
+        labels: [single-home, artifact-grammar]
+        class: must
+        text: >-
+          `spine.md` opens with a `Scope:` line naming the surface types the store covers —
+          shelf scope's durable home: the shelf walk reads it rather than re-asking.
+
+      - id: authoring-architecture-store.element-grammar
+        labels: [artifact-grammar]
+        class: must
+        text: >-
+          Spine elements carry `SPN-XXX` (unique store-wide), a kind — `container` ·
+          `boundary` · `flow` — a name, and a status; concern rows carry `AX-XXX` (unique
+          store-wide), a name, a `Stance`, and a `Status`. Everything past that core is
+          free-form — the schema constrains the skeleton, never the voice.
+
+      - id: authoring-architecture-store.two-arm-schema-binding
+        extends: authoring-common.two-arm-template
+        class: must
+        kind: binding
+
+      - id: authoring-architecture-store.nfr-one-home
+        labels: [single-home]
+        class: must
+        text: >-
+          `NFR-XXX` targets live on the concern row they belong to — one home per concern:
+          stance, pattern, target, and as-built together. The ids survive unchanged, and
+          each target names its business source, so `FR-XXX / SC-XXX → NFR-XXX` trace
+          chains keep resolving.
+
+      - id: authoring-architecture-store.work-pointers-only
+        labels: [artifact-grammar, single-home]
+        class: must
+        text: >-
+          `Work:` holds pointers only (`FEAT-XXX`, `EPIC-XXX`) — the work itself lives on
+          the feature map.
+
+      - id: authoring-architecture-store.present-tense-no-history
+        labels: [artifact-grammar]
+        class: must
+        text: >-
+          Spine and rows are written in the present tense, with no history narration — the
+          lifecycle statuses carry the change story. A row's own `Ruling` and `Rationale`
+          belong on the row; rationale already living in a decision record or landing
+          report is linked, never restated.
+
+      - id: authoring-architecture-store.lifecycle-statuses
+        labels: [artifact-grammar]
+        class: must
+        text: >-
+          Five lifecycle statuses — `ruled` · `in-flight` · `modifying` · `removing` ·
+          `built`; each in-flight-class element MUST name the `FEAT-XXX` that owns the
+          change, and status is the build-lifecycle axis only — stance is a separate axis
+          and never implies one.
+
+      - id: authoring-architecture-store.full-ax-table
+        labels: [artifact-grammar, evidence]
+        class: must
+        text: >-
+          The index carries the spine thumbnail and the full AX summary table — every
+          row. The sufficiency check and the design phase read the trip check there, so a
+          missing row is an invisible row.
+
+      - id: authoring-architecture-store.graduation-by-depth
+        labels: [artifact-grammar]
+        class: must
+        text: >-
+          A concern row earns its own file only on real depth — extend beats mint; when a
+          row graduates, the ledger keeps it as a one-line summary plus a link, never
+          losing the row.
+
+      - id: authoring-architecture-store.landing-diff-on-delta
+        labels: [evidence]
+        class: floor
+        kind: duty
+        when: {delta: present}
+        text: >-
+          The landing diff fires because an approved delta existed for the feature —
+          independent of what was built. Never gate the diff on whether structure was
+          built.
+
+      - id: authoring-architecture-store.diff-both-directions
+        labels: [evidence]
+        class: floor
+        kind: duty
+        text: >-
+          The landing diff runs both directions — was every signed add, remove, redirect,
+          and boundary-move actually built, AND was anything structural built that the
+          signed delta did not carry. Grading built topology against the signed delta is a
+          capability this duty owns, taking that delta as its input.
+
+      - id: authoring-architecture-store.fold-duty
+        labels: [artifact-grammar]
+        class: must
+        kind: duty
+        when: {structure_built: present}
+        text: >-
+          The fold fires when the built work changed structure: flip in-flight-class
+          elements to `built`, clear their `FEAT-XXX` keys, update `As-built:` and
+          `Drift:` on every touched row, regenerate the index.
+
+      - id: authoring-architecture-store.orphan-rule
+        labels: [artifact-grammar]
+        class: must
+        text: >-
+          Every in-flight-class element keys an open feature; an element whose `FEAT-XXX`
+          names a closed, retired, or nonexistent feature is an orphan — the health view
+          flags it, and desk visits clean it.
+
+      - id: authoring-architecture-store.first-visit-bootstrap
+        labels: [evidence]
+        class: must
+        kind: duty
+        when: {ruled_content: absent}
+        text: >-
+          The first desk visit to a repo with no ruled store content reconstructs one from
+          what exists — read what the repo already says, reconstruct the spine and AX rows
+          with every reconstructed element marked derived (never ruled), confirm with the
+          user, and archive the absorbed sources to
+          `.mochiko/archive/product-baselines/<date>/`. Never fails, never silently
+          invents.
+
+  - id: authoring-architecture-store.sec.output
+    title: Output — the derived index and the health view
+    intent: >-
+      The projection every write regenerates and the bar it must clear.
+    rules:
+
+      - id: authoring-architecture-store.index-regenerated-every-write
+        labels: [single-home]
+        class: floor
+        kind: duty
+        text: >-
+          The root `ARCHITECTURE.md` is a projection of the store, regenerated on every
+          store write — this skill is its single writer. It is never hand-maintained, and
+          index-vs-store disagreement is a defect fixed by regenerating, never by editing
+          the index.
+
+      - id: authoring-architecture-store.health-view-binding
+        labels: [artifact-grammar, reporting]
+        class: must
+        kind: binding
+        text: >-
+          The health view is a section of the index and no separate artifact exists — five
+          counts, each naming its rows: open rows (walked, no stance formed) · stale
+          `not-now` triggers (deferrals whose revisit condition has gone unreviewed) ·
+          fired triggers awaiting routing · orphan elements · the drift register (rows
+          whose `Drift:` field names a live divergence).
+
+      - id: authoring-architecture-store.readability-bar
+        labels: [artifact-grammar]
+        class: must
+        kind: bound
+        text: >-
+          A reader new to the repo can place any file or component in the system from the
+          index alone; an index too thin for that is regenerated with more of the spine,
+          never padded with hand-written prose.
+
+  - id: authoring-architecture-store.sec.reserved
+    title: Reserved — the user's gates and dispositions
+    intent: >-
+      Decisions a run never takes on its own.
+    rules:
+
+      - id: authoring-architecture-store.sign-off-is-write-gate
+        labels: [user-gate]
+        class: floor
+        kind: gate
+        text: >-
+          Ruled truth is never edited in place by a delivery run — a design-time write is
+          legal only as an in-flight-class delta, and only after the user's sign-off on
+          the rendered diagram plus the named row changes: the sign-off IS the write gate.
+          No sign-off, no store write.
+
+      - id: authoring-architecture-store.diff-user-dispositioned
+        labels: [user-gate, reporting]
+        class: floor
+        kind: reservation
+        text: >-
+          The landing diff reports — each difference named, approved-versus-built, and
+          dispositioned by the user; it never silently reconciles.
+
+      - id: authoring-architecture-store.drift-user-disposition
+        labels: [user-gate]
+        class: floor
+        kind: reservation
+        text: >-
+          Drift findings land in the row's `Drift:` field and take a user disposition at
+          the desk — the store bends to the code, the code bends to the store, or the
+          divergence is accepted and recorded; the probe reports, it never silently
+          reconciles.
+
+      - id: authoring-architecture-store.bootstrap-confirmation-gate
+        labels: [user-gate]
+        class: must
+        kind: reservation
+        text: >-
+          The bootstrap confirmation is a real user gate, not a formality — a derived
+          baseline inherits the brownfield caveat that a partial or wrong read poisons
+          everything downstream. A pipeline run that meets a store with no ruled content
+          offers the bootstrap rather than failing.

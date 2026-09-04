@@ -243,7 +243,7 @@ sections:
   - id: brainstorm.sec.fail-conditions
     title: Not done — default FAIL
     intent: >-
-      The kind: fail set — any one standing fails the run; the .md Not-done line hard-codes this set's count.
+      The kind: fail set — any one standing fails the run; the .md Not-done line cites the count this render prints.
     rules:
 
       - id: brainstorm.fail.record-unaccepted
