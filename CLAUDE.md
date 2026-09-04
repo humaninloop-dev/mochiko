@@ -106,7 +106,7 @@ Session artifacts (`record.md`, `synthesis.md`) live in `.mochiko/brainstorms/<t
 <!-- mochiko:governance:begin -->
 ## Governance
 
-**Ratified:** v3.0.1 · 2026-09-04 (AM-2 + the wave-3 PATCH) · production floor · depth: high · modules: compliance none · knowledge-management (core + CHANGELOG) · release-gates <!-- GI-001 (fact profile) · GI-021 (depth level) -->
+**Ratified:** v3.0.2 · 2026-09-04 (AM-2 + the wave-3 and wave-4 PATCHes) · production floor · depth: high · modules: compliance none · knowledge-management (core + CHANGELOG) · release-gates <!-- GI-001 (fact profile) · GI-021 (depth level) -->
 
 ### Principles
 

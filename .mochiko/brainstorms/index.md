@@ -57,8 +57,10 @@ One entry per session directory under `.mochiko/brainstorms/<topic-slug>/`, **ne
   criteria not tripped; governance PATCH v3.0.1; DECISIONS row 2026-09-04) · **wave 4 LANDED + ACCEPTED
   2026-09-04 at v0.105.0** ([wave4-plan.md](cli-schema-delivery/wave4-plan.md),
   [wave4-reports/](cli-schema-delivery/wave4-reports/); all six commands converted; migration
-  0002; **abort criterion (1) tripped on three commands — wave 5 HALTED pending the plan-§8
-  diagnostic**, user-ruled "land + diagnostic"; DECISIONS row 2026-09-04);
+  0002; abort criterion (1) tripped on three commands, the plan-§8 diagnostic ran (16/16
+  answering replicates exact — a bar property), **criterion (1) re-keyed** to the deterministic
+  floor-delivery assert (PATCH v3.0.2) and **wave 5 OPENED 2026-09-04**; DECISIONS rows
+  2026-09-04);
   the wave-2 publish tail still owed + the three delivery
   watches annotated as superseded pending wave 6 · ROADMAP: folded into the
   Template-schema CLI Next row (cap held at 7).

@@ -1354,6 +1354,37 @@ delivery before any wave-5 ruling.
 permanently (two conversion-expected findings) — it loses its regression value until the wave-6
 Python retirement; the `specify` two-arm sentence (wave 6); the publish tail unchanged.
 
+### Read-back diagnostic — run and graded (2026-09-04, plan §8; `evals/contract/diagnostic.py`, V3 delta PASS)
+
+Eighteen scored sessions plus two probes and one negative control (P3 `qa-engineer`; report
+`wave4-reports/p3-diagnostic.md`; V3 recomputed all 72 scored values with zero mismatches).
+Design as amended: a gate-valid token at the front of `$ARGUMENTS` with the instruction after it
+(the instruction cannot leave the argument in a headless run — placed before the command, nothing
+expands), then two read-back lines, `FLOOR-COUNT:` first and `FLOOR:` second.
+
+| command | floors | count exact | ids exact | the non-3/3 replicate |
+|---|---|---|---|---|
+| brainstorm | 7 | 3/3 | 3/3 | — |
+| architecture | 22 | 2/3 | 2/3 | refused the probe as injected text; all 22 ids in its transcript |
+| feature | 13 | 2/3 | 2/3 | flagged the probe, then ran the desk's health report; all 13 in its transcript |
+| implement | 34 | 3/3 | 3/3 | — (the wave-4 refusal gone with a gate-valid argument; 4/4 including the pre-flight probe) |
+| setup | 18 | 3/3 | 3/3 | — |
+| specify | 16 | 3/3 | 3/3 | — |
+
+**Reading (lead, P3, and V3 concur):** delivery was never in question — all seven blocks in every
+session, every unnamed id verbatim with its `class: floor` line in the transcript read. Recall is
+sound at every floor count the corpus carries: 16 of 16 answering replicates named the exact set
+and the exact count, `implement`'s 34 ids four times of four, and no replicate anywhere produced
+a partial list (the wave-4 partial lists came from the single-line form without the count anchor).
+The two misses sit at 22 and 13 ids, not at the top of the range, and both named zero ids — an
+attention ceiling produces short lists, not empty ones. What the wave-4 bar measured was **probe
+compliance**: an instruction riding inside `$ARGUMENTS` is indistinguishable from injected text,
+and a model following its command's own protocol will sometimes refuse it — the behavior the
+primitives are written to produce. Plan §8's "counts below 3/3 → attention problem" branch does
+not fire: its antecedent is contradicted by the mechanism observed. The negative control held
+(`FLOOR-COUNT: 0`, nothing invented, zero blocks). **The wave-4 trip was a property of the bar,
+not of the render.** The wave-5 question is the bar's design, put to the user.
+
 ## Landed (2026-09-03)
 
 - `DECISIONS.md` row (2026-09-03) — status "ruled — build pending (wave 0 probes first)".

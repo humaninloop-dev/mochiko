@@ -1,7 +1,7 @@
 # Governance Ledger
 
 **Governance Floor:** production (asserted) · **Depth level:** high (user-declared, one-way; `high` terminal — GI-021, minted at AM-1 discharging the legacy-default pointer; set up under the single floor pre-adaptive-depth, already conformed to full depth #7 fold 2026-08-11) · **Modules:** compliance: none (GI-001 negatives confirmed, incl. no-UI) · template: knowledge-management (core + CHANGELOG elective) · release-gates · **Trace:** GI-001 (fact profile) · GI-021 (depth level)
-**Version:** 3.0.1 (must match the region stamp)
+**Version:** 3.0.2 (must match the region stamp)
 
 ## Waivers
 
@@ -409,9 +409,16 @@ with the binary absent the fire halts before a model turn on the hook's install 
 
 **Revisit trigger (review M1):** the wave-3 pilot's abort criteria — the floor read-back metric
 below its pre-registered bar, or the per-invoke read cost above the pre-conversion baseline —
-halt waves 4–5 and return the posture to the user. **Evaluated 2026-09-04: not tripped**
-(read-back 3/3 at the 3/3 bar; 10,839 bytes delivered against the 12,819-byte baseline). The
-trigger stays live for waves 4–5 per converted primitive. Reversal after this ratification costs a
+halt waves 4–5 and return the posture to the user. **Evaluated 2026-09-04 (wave 3): not tripped**
+(read-back 3/3 at the 3/3 bar; 10,839 bytes delivered against the 12,819-byte baseline).
+**Tripped at wave 4 (2026-09-04)** on `implement` 1/3 · `setup` 1/3 · `specify` 0/3 with delivery
+verified on every transcript; the pre-registered diagnostic (record, wave-4 diagnostic section)
+showed the exact-id read-back measured probe compliance and long-list recall, not delivery.
+**Re-keyed at v3.0.2, user-ruled:** criterion (1) is now the deterministic assert that every
+`class: floor` id of the converted primitive is present verbatim, with its class line, in the
+transcript the model read (gating in the contract suite); the read-back is reported, never
+gating (D8's own words); criterion (2) unchanged. The trigger stays live for wave 5 per
+converted primitive on the re-keyed terms. Reversal after this ratification costs a
 second amend run plus re-pointing every converted `.md` (record D9, priced).
 
 **Rationale**: the record's ranked drivers (B change management, C integrity in one toolchain —
@@ -480,6 +487,7 @@ category is live in translated form; application-shaped machinery inapplicable i
 | 2.0.1 | 2026-08-16 | AM-1 dormant crate-gate clauses **activated** — the template-schema Rust crate `crates/mochiko-cli` landed at plugin v0.76.0 (PATCH: pre-authorized activation per the AM-1 pre-wording, four principles' enforcement text re-expressed, no fresh `/mochiko:setup` amend). Driver: schema-based-template-guidance build | GI-012 active (gate 6 `cargo test` PASS + gate-5 schema/binary consistency) · GI-002 tech-stack re-expressed (Rust crate, compiled binary, CI present) · GI-003 un-narrowed (CI secret-scan present) · GI-004/GI-007 re-expressed (crate carries a real `cargo test` suite coexisting with the prose audit ratchet) · `plugins/mochiko/schemas/**` added to the primitive-edit path scope |
 | 3.0.0 | 2026-09-04 | AM-2 — clone-only install with a required `mochiko-cli` dependency; no file-read fallback (MAJOR: a non-negotiable's meaning changes — user-ruled). Driver: cli-schema-delivery D1–D11, F13 | GI-020 **superseded-by-ruling** (clone-only kept · required binary · measured halt · transition clause until wave 6 · unsupported environments · pilot abort criteria as revisit trigger) · GI-019 widened admission + the three D11 clauses + advisory-checker placement · GI-012 gates widened (gate 6 contract suite, SKIPPED blocks, gate 5 = view ≡ replay, crate release train, ToS substrate mark `Contested`) · GI-004 schema-content audit unit re-keyed, count self-check retired · GI-005 schema-rule limb mechanized · GI-006 migration log added as a carrier · GI-002 identity and risk re-expressed, first-public-release trigger fired with a conditional discharge (two controls owed) · **+GI-022** (no feature map for this repo, declined durable) · GI-008 untouched, trigger observation recorded · `.claude/rules/mochiko/rust-cli.md` rewritten, `paths` widened |
 | 3.0.1 | 2026-09-04 | PATCH — the wave-3 pilot landing at plugin v0.104.0 (pre-authorized: the AM-2 glob half; the wave-open Q-B ruling; O-1/A5). `.claude/rules/mochiko/primitive-edits.md` `paths` += `plugins/mochiko/migrations/**` · `plugins/mochiko/hooks/**`; criteria 1, 3, and 11 gain converted-command clauses (heading `## Rules — delivered by mochiko-cli` + the grant, the CLI-printed count pin, no raw common-file Read where the render resolves stubs) · GI-011 homed on the declined-durable line · GI-020 Testability dormant tier **activated** and the revisit trigger evaluated, not tripped · the CLAUDE.md region's "today the log lives at the repo root" clauses struck and the new-file read line re-pathed. Mints no principle; no fresh `/mochiko:setup` amend | GI-004 · GI-011 · GI-020 |
+| 3.0.2 | 2026-09-04 | PATCH — the GI-020 revisit trigger re-keyed after the wave-4 trip (user-ruled "re key", record wave-4 + diagnostic sections): criterion (1) becomes the deterministic floor-delivery assert (every `class: floor` id verbatim in the transcript), the exact-id read-back reported never gating; wave 5 opened on those terms. In the same row: `.claude/rules/mochiko/primitive-edits.md`'s skill-pair criteria gain their converted-skill clauses (the sibling of the v3.0.1 command clauses) as wave 5 converts the first skill. Mints no principle; no fresh `/mochiko:setup` amend | GI-004 · GI-020 |
 
 *AM-2 addendum (2026-09-04):* `.claude/rules/mochiko/rust-cli.md`'s `paths` gained
 `migrations/**`, `plugins/mochiko/migrations/**`, and `evals/contract/**` per the ratified scope,

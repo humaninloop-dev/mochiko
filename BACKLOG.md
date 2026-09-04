@@ -26,21 +26,21 @@ uncompressed. Prior groom narrative: git history (this line, before this groom).
 *(ruled + accepted 2026-09-03, `cli-schema-delivery` D1–D11 as review-amended; provenance:
 `.mochiko/brainstorms/cli-schema-delivery/record.md`; session ran in worktree `cli-context`)*
 
-- [ ] **Build: CLI-delivered schemas, six waves — waves 0–4 DONE; wave 5 HALTED pending the
-  read-back diagnostic** (2026-09-03; provenance: record D9 + build surface + the per-wave
-  `waveN-plan.md` / `waveN-reports/` under the record's directory) — waves 0–3 done
-  2026-09-03/04 (probes · crate · governance v3.0.0 · pilot at v0.104.0, criteria clear);
-  **wave 4 DONE 2026-09-04 at v0.105.0** (all six commands CLI-served; `reword-section` +
-  `migrate stamp` + migration 0002; frozen fidelity fixture; 20/20 suite) with **abort
-  criterion (1) TRIPPED** on `implement` 1/3 · `setup` 1/3 · `specify` 0/3 — delivery verified,
-  recall of long floor lists at fault; user-ruled "land + diagnostic". **Next: the diagnostic**
-  (plan §8: gate-valid probe arguments, count-only read-back beside exact-id, 18 sessions) →
-  the wave-5 ruling (design levers: a `--floors` index line in the preamble, or a count-keyed
-  bar). **Wave 5** skills by family (the `PreToolUse` `Skill` limb goes live). **Wave 6** end
-  state; the D13 checker flags every converted command until its retirement there. **Wave-2
-  tail, still owed:** signed tags + the `crates-io` approval rule, then lift the two gates,
-  tag `mochiko-cli-v0.1.0`, publish — what makes `cargo install mochiko-cli` true (README
-  carries the git-install line until then). Rollback user-reserved per wave; GI-006 on log + strips.
+- [ ] **Build: CLI-delivered schemas, six waves — waves 0–4 DONE; wave 5 (skills) OPEN**
+  (2026-09-03; provenance: record D9 + build surface + the per-wave `waveN-plan.md` /
+  `waveN-reports/` under the record's directory) — waves 0–3 done 2026-09-03/04 (probes ·
+  crate · governance v3.0.0 · pilot at v0.104.0); **wave 4 DONE 2026-09-04 at v0.105.0** (all
+  six commands CLI-served; `reword-section` + `migrate stamp` + migration 0002; frozen
+  fidelity fixture; 20/20 suite) — its read-back trip diagnosed as a bar property (18-session
+  diagnostic, 16/16 answering replicates exact) and **criterion (1) re-keyed** to the
+  deterministic floor-delivery assert (governance PATCH v3.0.2; DECISIONS 2026-09-04).
+  **Wave 5 OPEN 2026-09-04:** skills by family (review · authoring · patterns · dense five;
+  the `PreToolUse` `Skill` limb goes live; a `floors:` preamble line; the suite re-keyed
+  first; skill-pair converted clauses in `primitive-edits.md`). **Wave 6** end state; the D13
+  checker flags every converted command until its retirement there. **Wave-2 tail, still
+  owed:** signed tags + the `crates-io` approval rule, then lift the two gates, tag
+  `mochiko-cli-v0.1.0`, publish — what makes `cargo install mochiko-cli` true (README carries
+  the git-install line until then). Rollback user-reserved per wave; GI-006 on log + strips.
 
 ## Skill-content schema build
 
