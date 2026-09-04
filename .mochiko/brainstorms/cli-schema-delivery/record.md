@@ -1181,6 +1181,28 @@ worktree's shared `target/` and executed the host's macOS binary inside the Linu
 Linux binary; rustup and gcc were installed in the sandbox as a user would (D4's install
 shape). Runner fix round routed to P3.
 
+## Wave 2 — governance landed (2026-09-04)
+
+`/mochiko:setup` amend run **AM-2**, input `wave2-amendments.md`, ran in this session: deck of
+11 user-ruled · solo cold intent review by blind-map two-message dispatch (37 angles) →
+`critical-gaps`, 14 survivors — **C1: the log did not ship in the plugin and nothing had ruled
+where it would; user-ruled "plugin carries it"** (`plugins/mochiko/migrations/` from wave 3,
+604 KiB, net ≈ +70 KiB at wave 6 — a D2/D9 amendment recorded here) · C2 marks split to
+mirror this record · I1–I9/M1–M3 "as recommended" with four rulings (the wave-6
+`primitive-edits.md` re-key is a pre-authorized PATCH · two release controls owed before the
+first publish, discharge conditional · a SKIPPED contract suite blocks the bump · the crate's
+release train is gated) · verify CLEAN 14/14 · **ratified** · producer (`tech-lead`) on an
+approved plan · validator PASS 60/61 → six wording advisories → delta PASS · five flagged
+proposals **accepted**. Governance **v2.0.1 → v3.0.0**: GI-020 superseded-by-ruling (D10.1
+landed with its transition clause and Testability rows), GI-019's widened admission recorded
+(D11 landed — its `Assumed` mark now graded PASS by the validator), GI-012 gates widened
+(D10.3 + the SKIPPED and crate-train rulings), GI-002 live, GI-004/005/006 re-expressed,
+GI-022 minted, `rust-cli.md` rewritten (six globs). Store scaffold written (`spine.md`,
+Scope: developer tooling). Reports: `wave2-reports/`. **Owed after wave 2, before the first
+publish:** signed tags + the `crates-io` approval rule; then lift `publish = false` and
+`if: false`, tag `mochiko-cli-v0.1.0`, publish. **Wave 3 additions from this run:** move the
+log into the plugin; `primitive-edits.md` globs; `README.md` re-authored.
+
 ## Landed (2026-09-03)
 
 - `DECISIONS.md` row (2026-09-03) — status "ruled — build pending (wave 0 probes first)".
