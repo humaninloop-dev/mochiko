@@ -13,7 +13,7 @@
 //! - [`render`] — the delivery render
 //! - [`schema`] — the artifact-template model and its two views
 //! - [`cli`] — argument parsing, resolution order, and the exit-code contract
-//! - [`genesis`] — the generator behind `migrations/0001-genesis.yaml`
+//! - [`genesis`] — the generator behind `plugins/mochiko/migrations/0001-genesis.yaml`
 //! - [`views`] — the derived views, regenerated from the replayed state
 //! - [`similar`] — the advisory similar-rule detector
 

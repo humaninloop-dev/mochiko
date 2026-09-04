@@ -1,38 +1,55 @@
 # Mochiko
 
-Kernel-free agent-skill framework for Claude Code: sound-loop workflows built from native agents and skills.
+Skills-first agent framework for Claude Code: sound-loop workflows built from native agents and skills, their rules delivered at fire by a small CLI.
 
-Mochiko is the successor to human-in-loop. The bet: engineering discipline lives in the quality of the skill library, not in a deterministic kernel. Every command states its whole contract up front, and all six — `architecture`, `brainstorm`, `feature`, `implement`, `setup`, `specify` — follow **one canonical scaffold**: an identity and mission, an obligated first read of the command's own rule schema, and an adaptive goal protocol that names the finish line before work starts and defaults to FAIL until it is met, over a non-waivable floor. The lead plans and orchestrates the run natively, choosing teammates or subagents per seat. Every workflow is a **sound loop**: a producer authors, an independent reviewer grades (never the author), and **you** are the final validator at named human gates.
+Mochiko is the successor to human-in-loop. The bet: engineering discipline lives in the quality of the skill library, not in a deterministic kernel. Every command states its whole contract up front, and all six — `architecture`, `brainstorm`, `feature`, `implement`, `setup`, `specify` — follow **one canonical scaffold**: an identity and mission, the command's own rule set in front of the model before any work begins, and an adaptive goal protocol that names the finish line before work starts and defaults to FAIL until it is met, over a non-waivable floor. The lead plans and orchestrates the run natively, choosing teammates or subagents per seat. Every workflow is a **sound loop**: a producer authors, an independent reviewer grades (never the author), and **you** are the final validator at named human gates.
 
 ## Install
+
+Two steps. Both are required.
+
+**1. The plugin.** A plain marketplace clone — no build step, nothing fetched beyond the clone.
 
 ```
 /plugin marketplace add humaninloop-dev/mochiko
 /plugin install mochiko@mochiko
 ```
 
-Once per project, establish governance with `/mochiko:setup` — it interrogates your intent (type, risk, values), you ratify a synthesis, then it lands enforceable principles on the surfaces Claude Code natively loads (a CLAUDE.md governance region, path-scoped rules files, a governance ledger). Everything downstream inherits it automatically.
-
-### The template-schema CLI (optional)
-
-The install above is complete on its own — the plugin is markdown-only, with **no build step and no binary dependency**. A small Rust CLI, `mochiko-cli`, additionally renders authoring guidance for the seven pipeline artifact templates from the schema data files shipped at `plugins/mochiko/schemas/*.yaml`. When the binary is absent, agents Read those YAML files raw — the schemas are the source of truth either way, so nothing degrades but formatting.
-
-Install it once with Cargo (Rust toolchain required; no prebuilt binaries are published yet). As a plugin user — the plugin install does not ship the crate — install straight from GitHub:
+**2. The `mochiko-cli` binary.** From this version the plugin **depends** on it: a converted
+command's rules are rendered at fire by the binary, and a converted command **halts** when it is
+missing rather than falling back to anything. The plugin never ships it — you install it once, as
+you would any other developer tool. A Rust toolchain is required, and until the first crates.io
+release the install is straight from GitHub:
 
 ```
 cargo install --git https://github.com/humaninloop-dev/mochiko mochiko-cli
 ```
 
-From a checkout of this repo, `cargo install --path crates/mochiko-cli` works too.
+A session-start hook reports the binary's presence, its version, and whether the plugin's
+migration log is inside the version range it reads, so a missing or skewed install is loud before
+your first command rather than at the end of one.
 
-Usage:
+Once per project, establish governance with `/mochiko:setup` — it interrogates your intent (type, risk, values), you ratify a synthesis, then it lands enforceable principles on the surfaces Claude Code natively loads (a CLAUDE.md governance region, path-scoped rules files, a governance ledger). Everything downstream inherits it automatically.
+
+### What `mochiko-cli` serves
+
+The plugin carries a **migration log** at `plugins/mochiko/migrations/` — an append-only record of every rule and template the library ships. The binary replays that log in memory at fire and renders what the moment needs. The log is the source of truth; the rendered view is produced fresh each time and never edited by hand.
 
 ```
-mochiko-cli template <name>            # producer view: schema + example + good/bad guidance
-mochiko-cli template <name> --check    # checklist view: one check line per section
+mochiko-cli rules <primitive> --section <id>   # one section of a command's or skill's rules
+mochiko-cli template <name>                    # producer view: schema + example + good/bad guidance
+mochiko-cli template <name> --check            # checklist view: one check line per section
+mochiko-cli migrate status --plugin-root <plugin>     # the log's grammar, its sequences, the replayed state
+mochiko-cli migrate validate --plugin-root <plugin>   # replay the log and report what the hard set found
 ```
 
-`<name>` is one of `spec`, `tasks`, `feature-entry`, `features-index`, `codebase-analysis`, `governance-intent`, `governance-surfaces`. Schema source resolves `--schemas-dir <path>` → `./plugins/mochiko/schemas/` → the compile-time embedded copy. The `--check` view is a guidance view, never a linter — it takes no artifact input and always exits 0 on success.
+A rules render is one section at a time. Each block opens with a version triple — binary version, log grammar version, plugin version — and closes with an end line carrying the section's rule count. A converted command proceeds only when both lines arrive in that exact shape, and halts on anything else.
+
+`template <name>` takes one of `spec`, `tasks`, `feature-entry`, `features-index`, `codebase-analysis`, `governance-intent`, `governance-surfaces`. The `--check` view is a guidance view, never a linter — it takes no artifact input and always exits 0 on success.
+
+The log directory resolves `--log-dir <path>` → `--plugin-root <root>/migrations` → `MOCHIKO_MIGRATIONS` → `./migrations`. Commands and hooks pass `--plugin-root` so they always read the log inside the installed plugin.
+
+Working from a checkout of this repo rather than a release, `cargo install --path crates/mochiko-cli` builds the maintainer's copy. That is a maintainer path, not a second user install route.
 
 ## The capability map
 

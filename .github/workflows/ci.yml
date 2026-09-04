@@ -8,7 +8,7 @@ on:
     paths:
       - "crates/**"
       - "plugins/mochiko/schemas/**"
-      - "migrations/**"
+      - "plugins/mochiko/migrations/**"
       - "evals/contract/**"
       - "Cargo.toml"
       - "Cargo.lock"
@@ -17,7 +17,7 @@ on:
     paths:
       - "crates/**"
       - "plugins/mochiko/schemas/**"
-      - "migrations/**"
+      - "plugins/mochiko/migrations/**"
       - "evals/contract/**"
       - "Cargo.toml"
       - "Cargo.lock"

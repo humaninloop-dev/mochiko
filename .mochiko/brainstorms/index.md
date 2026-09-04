@@ -51,7 +51,11 @@ One entry per session directory under `.mochiko/brainstorms/<topic-slug>/`, **ne
   D3 + D8 amended post-acceptance, user-ruled) · **wave 1 BUILT + ACCEPTED 2026-09-04**
   (`wave1-plan.md`, `wave1-reports/`; 246 tests) · **1b family-2 checks BUILT 2026-09-04**
   (300 tests; wave 1 closed) · **wave 2 DONE 2026-09-04 — governance v3.0.0 via `/mochiko:setup`
-  AM-2** (`wave2-amendments.md`, `wave2-reports/`; DECISIONS row 2026-09-04); wave-2 tail then wave 3 next + the three delivery
+  AM-2** (`wave2-amendments.md`, `wave2-reports/`; DECISIONS row 2026-09-04) · **wave 3
+  (pilot `brainstorm`) LANDED + ACCEPTED 2026-09-04 at v0.104.0** ([wave3-plan.md](cli-schema-delivery/wave3-plan.md),
+  [wave3-reports/](cli-schema-delivery/wave3-reports/); F14 hooks measured, branch B; abort
+  criteria not tripped; governance PATCH v3.0.1; DECISIONS row 2026-09-04); waves 4–5 next,
+  the wave-2 publish tail still owed + the three delivery
   watches annotated as superseded pending wave 6 · ROADMAP: folded into the
   Template-schema CLI Next row (cap held at 7).
 

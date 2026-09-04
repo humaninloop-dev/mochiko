@@ -1048,7 +1048,9 @@ fn the_repositorys_allowlist_resolves_without_the_process_cwd() {
         "this test is vacuous if the cwd carries the allowlist: {}",
         cwd.display()
     );
-    let found = similar::find_allowlist(&repo_root().join("migrations"))
+    // The log sits three levels below the root since wave 3 (`plugins/mochiko/migrations`), so
+    // the ancestor walk has further to climb; the allowlist it must reach is unmoved.
+    let found = similar::find_allowlist(&repo_root().join("plugins/mochiko/migrations"))
         .expect("the repository's own allowlist");
     assert_eq!(found, repo_root().join(similar::ALLOWLIST));
 }

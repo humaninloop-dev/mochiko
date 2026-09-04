@@ -1,7 +1,7 @@
 # Governance Ledger
 
 **Governance Floor:** production (asserted) · **Depth level:** high (user-declared, one-way; `high` terminal — GI-021, minted at AM-1 discharging the legacy-default pointer; set up under the single floor pre-adaptive-depth, already conformed to full depth #7 fold 2026-08-11) · **Modules:** compliance: none (GI-001 negatives confirmed, incl. no-UI) · template: knowledge-management (core + CHANGELOG elective) · release-gates · **Trace:** GI-001 (fact profile) · GI-021 (depth level)
-**Version:** 3.0.0 (must match the region stamp)
+**Version:** 3.0.1 (must match the region stamp)
 
 ## Waivers
 
@@ -60,6 +60,8 @@ not read later as an unrecorded lapse.
   edited with no ceremony reaching its author.
 - Modules declined durable at AM-1 (not re-offered on future amends): GI-013 layer-rules ·
   GI-014 evolution-notes — rationale in the synthesis; re-openable only by explicit user ruling.
+  Declined durable at v1.0.0 and homed here at v3.0.1 (AM-2 O-1/A5): GI-011 the
+  knowledge-management `RUNBOOK.md` elective — nothing deployed, nothing operated.
 
 ## Exception registry
 
@@ -394,7 +396,10 @@ change is reconstructible (GI-006).*
   rejecting nothing (`mochiko-cli migrate validate --log-dir migrations --plugin-root
   plugins/mochiko`, 0 rejecting). · Fail: either regressing.
 
-**Dormant until the wave-3 pilot re-points the first primitive** (the AM-1 dormant-clause idiom):
+**Activated at v3.0.1 by the wave-3 pilot (2026-09-04, plugin v0.104.0; the AM-1 dormant-clause
+idiom):** `brainstorm` renders from a fresh staged install (contract suite 10/10, read-back 3/3);
+with the binary absent the fire halts before a model turn on the hook's install line; a
+`grammar: 99` log halts with the D5 message. The rows below are now assertable as written:
 - Pass: a fresh clone plus the documented tool install renders every command's and skill's rules;
   with the binary absent every mochiko fire halts before a model turn with the shell error
   visible and the hooks' install line delivered; a log outside the binary's range halts with the
@@ -404,7 +409,9 @@ change is reconstructible (GI-006).*
 
 **Revisit trigger (review M1):** the wave-3 pilot's abort criteria — the floor read-back metric
 below its pre-registered bar, or the per-invoke read cost above the pre-conversion baseline —
-halt waves 4–5 and return the posture to the user. Reversal after this ratification costs a
+halt waves 4–5 and return the posture to the user. **Evaluated 2026-09-04: not tripped**
+(read-back 3/3 at the 3/3 bar; 10,839 bytes delivered against the 12,819-byte baseline). The
+trigger stays live for waves 4–5 per converted primitive. Reversal after this ratification costs a
 second amend run plus re-pointing every converted `.md` (record D9, priced).
 
 **Rationale**: the record's ranked drivers (B change management, C integrity in one toolchain —
@@ -472,6 +479,7 @@ category is live in translated form; application-shaped machinery inapplicable i
 | 2.0.0 | 2026-08-16 | AM-1 — no-kernel softening + additive CLI (MAJOR: a non-negotiable's meaning changes; user-ruled). Driver: schema-based-template-guidance D11 | +GI-019 (kernel-class admission) · +GI-020 (additive install) · +GI-021 (depth: high) · GI-002 annotated (identity + tech-stack dormant) · GI-012 dormant crate-gate clause · GI-013/GI-014 declined-durable |
 | 2.0.1 | 2026-08-16 | AM-1 dormant crate-gate clauses **activated** — the template-schema Rust crate `crates/mochiko-cli` landed at plugin v0.76.0 (PATCH: pre-authorized activation per the AM-1 pre-wording, four principles' enforcement text re-expressed, no fresh `/mochiko:setup` amend). Driver: schema-based-template-guidance build | GI-012 active (gate 6 `cargo test` PASS + gate-5 schema/binary consistency) · GI-002 tech-stack re-expressed (Rust crate, compiled binary, CI present) · GI-003 un-narrowed (CI secret-scan present) · GI-004/GI-007 re-expressed (crate carries a real `cargo test` suite coexisting with the prose audit ratchet) · `plugins/mochiko/schemas/**` added to the primitive-edit path scope |
 | 3.0.0 | 2026-09-04 | AM-2 — clone-only install with a required `mochiko-cli` dependency; no file-read fallback (MAJOR: a non-negotiable's meaning changes — user-ruled). Driver: cli-schema-delivery D1–D11, F13 | GI-020 **superseded-by-ruling** (clone-only kept · required binary · measured halt · transition clause until wave 6 · unsupported environments · pilot abort criteria as revisit trigger) · GI-019 widened admission + the three D11 clauses + advisory-checker placement · GI-012 gates widened (gate 6 contract suite, SKIPPED blocks, gate 5 = view ≡ replay, crate release train, ToS substrate mark `Contested`) · GI-004 schema-content audit unit re-keyed, count self-check retired · GI-005 schema-rule limb mechanized · GI-006 migration log added as a carrier · GI-002 identity and risk re-expressed, first-public-release trigger fired with a conditional discharge (two controls owed) · **+GI-022** (no feature map for this repo, declined durable) · GI-008 untouched, trigger observation recorded · `.claude/rules/mochiko/rust-cli.md` rewritten, `paths` widened |
+| 3.0.1 | 2026-09-04 | PATCH — the wave-3 pilot landing at plugin v0.104.0 (pre-authorized: the AM-2 glob half; the wave-open Q-B ruling; O-1/A5). `.claude/rules/mochiko/primitive-edits.md` `paths` += `plugins/mochiko/migrations/**` · `plugins/mochiko/hooks/**`; criteria 1, 3, and 11 gain converted-command clauses (heading `## Rules — delivered by mochiko-cli` + the grant, the CLI-printed count pin, no raw common-file Read where the render resolves stubs) · GI-011 homed on the declined-durable line · GI-020 Testability dormant tier **activated** and the revisit trigger evaluated, not tripped · the CLAUDE.md region's "today the log lives at the repo root" clauses struck and the new-file read line re-pathed. Mints no principle; no fresh `/mochiko:setup` amend | GI-004 · GI-011 · GI-020 |
 
 *AM-2 addendum (2026-09-04):* `.claude/rules/mochiko/rust-cli.md`'s `paths` gained
 `migrations/**`, `plugins/mochiko/migrations/**`, and `evals/contract/**` per the ratified scope,

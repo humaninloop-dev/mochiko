@@ -1203,6 +1203,88 @@ publish:** signed tags + the `crates-io` approval rule; then lift `publish = fal
 `if: false`, tag `mochiko-cli-v0.1.0`, publish. **Wave 3 additions from this run:** move the
 log into the plugin; `primitive-edits.md` globs; `README.md` re-authored.
 
+## Wave 3 — pilot landed and accepted (2026-09-04, user: "accept wave 3")
+
+**Open:** user-confirmed with four rulings as recommended — **Q-A** the dependency hook delivers
+the rules only if it can see they are missing, else a presence line only; **Q-B** follow D3, no
+hand-pinned count, `primitive-edits.md` criterion 3 gains a converted branch under governance
+PATCH v3.0.1; **Q-C** wave 3 now, the crates.io publish later on the user's word (the README
+carries the git-install line meanwhile); **Q-D** the read-back bar 3/3, pre-registered. Plan:
+[`wave3-plan.md`](wave3-plan.md). Seats: P1 store move + legend (`staff-engineer`) / V1
+(`validator`, PASS after one report-figure delta) · P2 plugin side (`staff-engineer`) / V2
+(`validator`, PASS, six non-blocking findings) · P3 contract suite (`qa-engineer`) / V3
+(`validator`, independent full re-run; FAIL on one item — three positive assertions still read
+the interim channel union — reworked with all five advisories taken, delta PASS). Reports:
+[`wave3-reports/`](wave3-reports/). `floor: tripped · seats: P1/P2/P3 produced · V1/V2/V3 reviewed`.
+
+**F14 — hooks, measured (2026-09-04).** Platform docs verified by a `claude-code-guide` dispatch:
+the `hooks.json` shape; `timeout` in seconds; `SessionStart` context is plain stdout and cannot
+block; `UserPromptExpansion` blocks by exit 2 and adds context by JSON `additionalContext`;
+`PreToolUse` denies by JSON `permissionDecision`; a non-2 failure fails open;
+`disableSkillShellExecution` does not disable hooks (`disableAllHooks` does). Measured on the real
+plugin: **`UserPromptExpansion` fires before expansion and its `prompt` is the raw user line** —
+branch A is impossible by construction, so the hook ships as **branch B** (a presence line, never
+rules); its matcher accepts an anchored regex on the namespaced name; its stdin carries eleven
+fields (five beyond the docs); `SessionStart`'s stdin carries five (three fewer than the docs);
+`--output-format stream-json` carries neither the expanded prompt nor any `UserPromptExpansion`
+row — the session transcript does; a hook-blocked halt injects no `<local-command-stderr>` and
+puts the harness notice in `result`. Captures: `evals/contract/fixture/hook-input/`.
+
+**Built.** The log moved by `git mv` to `plugins/mochiko/migrations/` (state hash unchanged:
+`sha256:8b61de5a…bdd4 · 50 documents · 1016 rules`; the plugin grows 1,366,116 → 1,992,896
+bytes, +45.9 %); the preamble render's fixed `legend` block (612 bytes — a render-shape change,
+named at the 0.104.0 bump per the crate rule's coordination clause); `brainstorm.md` re-pointed
+per D3 (seven `!` lines with `--plugin-root "${CLAUDE_PLUGIN_ROOT}"`, the grant, the halt
+clause, the CLI-printed count pin); `hooks/hooks.json` + `session-start.sh` + `dependency-halt.sh`
+(absence or grammar skew only, converted primitives only — the converted check is the primitive's
+own `!` line, no list; 5-second timeouts; POSIX `sh`, no `jq`); the maintainer advisory hook
+(repo `.claude/settings.json` → `.claude/hooks/validate-migrations.sh`); two `[v0.104.0]` strip
+entries on `brainstorm`; `primitive-edits.md` `paths` globs plus one-sentence converted-command
+clauses on criteria 1, 3, and 11 (criterion 3 under Q-B; 1 and 11 lead-extended under the same
+ruling, disclosed here); `README.md` as a two-step install; the contract suite at ten cases
+(`hook-input` · `converted-shape` · `render-ceiling` host-side; `absence` · `skew` on the wave-1
+fixture; `brainstorm-delivery` ×3 · `-absence` · `-skew` · `-hooks-off` · `-policy` on a staged
+copy of the real plugin); the CI filter re-pathed. D13 checker on the pair: two findings, both the
+conversion-expected substitutions, warnings identical to the pre-edit file (V2 item 7).
+
+**Measured (sandbox `claude-mochiko`, Claude Code 2.1.259; reproduced by V3's own full run):**
+10/10 cases, exit 0; **read-back 3/3** in every scored run (all seven `class: floor` ids exactly;
+replicates byte-identical); **delivered read cost 10,839 bytes** (10,693 rendered + 80 + 66 of
+hook lines) against the 12,819-byte baseline — **−15.4 %** (−24.5 % against the three-file
+figure); store latency load-dependent, a band across four passes of 26–77 ms per section render
+and 182–648 ms per seven-render fire, emitted by the suite to `latency.json`; largest render
+2,102 bytes = 6.9 % of the inline ceiling; all six commands registered under `--plugin-dir` (the
+wave-0 manifest quirk did not recur).
+
+**Pilot abort criteria (D9): neither tripped.** (1) read-back 3/3 at the pre-registered 3/3 bar;
+(2) delivered cost below the baseline. Waves 4–5 open on the user's word.
+
+**Policy environment, recorded (D8, four observations):** with `disableSkillShellExecution` set
+and hooks on, every run delivered zero blocks, read no schema file, and heard the hook's presence
+line; the prose halt held in two of four (the others replied `FLOOR: none` without halting). The
+no-fallback posture held 4/4; the prose clause is a guard that fires half the time — evidence for
+GI-020's unsupported declaration, and the one path where the clause is load-bearing.
+
+**Deviations disclosed:** the maintainer hook is a script, not an inline command; hook scripts
+derive the root from `$0` with `CLAUDE_PLUGIN_ROOT` as override; the dependency hook stays silent
+on a non-0/non-3 `migrate status` exit; `SessionStart` prints on it; criteria 1 and 11 joined
+criterion 3 in the converted-clause set; the suite gained `converted-shape` (which also
+cross-checks the pre-registered floor set against the render) and a `rec` status; P3 fixed two
+defects in its own assertions before the final run (a too-narrow no-Read match; a head-line count
+matching the halt clause's quoted template) and, after V3, removed the interim channel union from
+every positive assertion.
+
+**Follow-ups minted (BACKLOG):** the six `fail-conditions` section intents still say "the `.md`
+Not-done line hard-codes this set's count" — falsified for a converted command; the grammar has
+no section-reword op, so wave 4 adds one (grammar-1 extension before the first publish) and a
+migration rewording the six (V2 F1). The hooks and the D5 message name `cargo install
+mochiko-cli`, which works only after the publish (V2 F3) — the publish is the fix, not a wording
+change.
+
+**Governance PATCH v3.0.1:** the pre-authorized glob half, the Q-B criterion clauses, GI-011's
+ledger home, GI-020's dormant Testability tier activated by the pilot, the revisit trigger
+evaluated and not tripped, the region's "today the log lives at the repo root" clauses struck.
+
 ## Landed (2026-09-03)
 
 - `DECISIONS.md` row (2026-09-03) — status "ruled — build pending (wave 0 probes first)".

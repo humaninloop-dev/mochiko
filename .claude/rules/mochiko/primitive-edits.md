@@ -5,6 +5,8 @@ paths:
   - "plugins/mochiko/agents/**"
   - "plugins/mochiko/templates/**"
   - "plugins/mochiko/schemas/**"
+  - "plugins/mochiko/migrations/**"
+  - "plugins/mochiko/hooks/**"
   - ".mochiko/provenance.yaml"
 ---
 
@@ -19,7 +21,11 @@ skill schemas `plugins/mochiko/skills/*/schema.yaml` — skill-content-schema D2
 primitives from v0.76.0 (schema-based-template-guidance D8 — data = source of truth, the binary
 renders over them). An edit to one takes the same strip + author≠grader ceremony as any
 command / skill / agent / template edit; the path scope above covers them so this reminder
-injects on a schema Read.
+injects on a schema Read. From v0.104.0 a **converted** command's rules are no longer served
+from its schema file at all: they are rendered at fire by `mochiko-cli` from the migration log
+the plugin carries at `plugins/mochiko/migrations/` (`cli-schema-delivery` D3/D4), so editing
+that content means adding a **new migration file** under the log — the grammar is in the log's
+own README — never an in-place edit of a migration already applied.
 
 - **Record** — a version-stamped entry in `.mochiko/strips/<primitive>.md` (one file per primitive,
   newest-first; stamp = the `plugin.json` version that made it):
@@ -70,7 +76,12 @@ injects on a schema Read.
      first` · `## Adaptive Goal Protocol` with its three steps **Entry** → **Goal** →
      **Not done — default FAIL** (last). `$ARGUMENTS` is handled in Entry; the Not-done
      line is the count-pin. No `**Goal:**` opener line, no `Harness` / `Bindings`
-     sections, no per-command extra top-level section.
+     sections, no per-command extra top-level section. **On a converted command** — one
+     whose rules `mochiko-cli` renders at fire (`cli-schema-delivery` D3) — the same
+     scaffold holds with three substitutions: the frontmatter carries the additional
+     required key `allowed-tools: Bash(mochiko-cli *)`, the Rules heading reads
+     `## Rules — delivered by mochiko-cli`, and the Not-done line cites the CLI-printed
+     pin instead of carrying a count (criterion 3).
   2. **Rules-block enumeration.** The section IDs enumerated in the Rules block match the
      schema's section IDs **set-wise** — the six-set `<cmd>.sec.roles` · `reserved` ·
      `tools` · `ways-of-working` · `boundaries` · `fail-conditions`, all six present in
@@ -81,7 +92,14 @@ injects on a schema Read.
      `kind: fail` rule survives (a reword keeps its ID), the `.md` Not-done line's
      hard-coded count matches the schema's `kind: fail` count, and the correspondence
      between the `<cmd>.fail.*` ID segment and `kind: fail` holds in both directions —
-     `kind:` is never defaulted on a `.fail.*` ID.
+     `kind:` is never defaulted on a `.fail.*` ID. **On a converted command** the
+     hand-pinned count is gone by ruling (`cli-schema-delivery` D3: the counts are
+     computed and printed by the CLI, never hand-pinned): the pin is the
+     `- kind: fail · N rules` line the render prints under `pins` in the preamble block,
+     and the `.md`'s Not-done line cites that pin and obliges a halt-and-surface when a
+     delivered section's end-line count disagrees with it. Grade the citation and the
+     halt clause; a hard-coded number there is the defect, not its absence. Everything
+     else in this criterion is unchanged.
   4. **ID continuity (D11/D14).** No `<cmd>.*` ID — rule **or** `<cmd>.sec.*` section —
      vanishes without a tombstone. A reword keeps its ID, a split mints children recording
      the parent, a merge tombstones the losers; no surviving rule text references a
@@ -144,7 +162,9 @@ injects on a schema Read.
       `.mochiko/decisions/2026-08-28-near-dup-convergence.md`; a member whose extra content
       is command-specific keeps local text, the edge recorded in
       `scripts/similar-rules-allowlist.yaml`) — and where any stub binds, the `.md`'s first
-      action Reads `plugins/mochiko/schemas/common.yaml` raw beside the schema.
+      action Reads `plugins/mochiko/schemas/common.yaml` raw beside the schema. **On a
+      converted command** that co-Read is discharged by the render, which resolves every
+      stub before the model sees it, so no raw common-file Read is demanded there.
 
   Rulings: `.mochiko/brainstorms/command-md-scaffold-standardization/record.md`
   D1–D7 (`DECISIONS.md` 2026-08-27 — the canonical scaffold; supersedes the charter-form /

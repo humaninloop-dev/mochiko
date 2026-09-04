@@ -23,6 +23,18 @@ use std::path::Path;
 /// The section id that renders a schema's identity, bindings and pins rather than a rule set.
 pub const PREAMBLE: &str = "preamble";
 
+/// The reading grammar every preamble carries, fixed text rather than anything derived from
+/// state (wave-3 plan §2). A converted primitive's `.md` points at this block by name instead of
+/// restating what `class:`, `when:` or `pointer:` mean, so the render is the only home the
+/// grammar has. Golden-tested in `tests/render.rs`.
+const LEGEND: &str = "\nlegend\n\
+- class: floor is always delivered whatever its when:; when: gates when the obligation applies, never whether it reaches you.\n\
+- kind: names what a rule is — constraint (the default) · duty · gate · reservation · binding · bound · routing · fail · latitude.\n\
+- when: binds a rule only where its terms hold against the conditions block above.\n\
+- enforces: on a kind: fail rule names the rules it is the end-state contrapositive of.\n\
+- pointer: binds you to that skill's procedure — referenced, never restated.\n\
+- extends: is already resolved in this render; the rule's own id stays the citable id.\n";
+
 /// The version triple a render announces itself with: the binary's version, the log's grammar,
 /// and the plugin's version (`unknown` when no plugin root resolved).
 pub struct Context {
@@ -130,6 +142,8 @@ pub fn preamble(state: &State, doc: &DocRef, ctx: &Context) -> Result<String, Re
     }
     let floors = schema.rules().filter(|r| r.is_floor()).count();
     body.push_str(&format!("- class: floor · {floors} rules\n"));
+
+    body.push_str(LEGEND);
 
     body.push_str("\nsections\n");
     for section in &schema.sections {

@@ -3,7 +3,8 @@
 //! Every fixture log is written under `CARGO_TARGET_TMPDIR`, which Cargo places inside `target/` —
 //! the suite never writes outside the build directory. The rules render is exercised against a
 //! synthetic corpus built here rather than the shipped one, because wave 1 has no genesis
-//! migration yet; `tests/cli.rs` carries the test that runs against `migrations/` once it exists.
+//! migration yet; `tests/cli.rs` carries the test that runs against
+//! `plugins/mochiko/migrations/` once it exists.
 
 use mochiko_cli::model::{DocKind, DocRef};
 use mochiko_cli::render::{self, Context, PREAMBLE};
@@ -412,8 +413,10 @@ fn a_skill_preamble_omits_moments_and_the_fail_pin() {
         !out.contains("moments"),
         "skills declare no moments:\n{out}"
     );
+    // The pin's own shape, not the bare words: the legend's `enforces:` line names `kind: fail`
+    // in prose, and that sentence is delivered to skills too.
     assert!(
-        !out.contains("kind: fail"),
+        !out.contains("- kind: fail · "),
         "the fail pin is command grammar:\n{out}"
     );
     assert!(
@@ -431,6 +434,48 @@ fn the_preamble_pins_match_the_corpus() {
         out.contains("- class: floor · 3 rules"),
         "floor pin:\n{out}"
     );
+}
+
+/// The reading grammar the converted command's `.md` no longer restates, verbatim from the wave-3
+/// plan §2. A golden test rather than a shape assertion: the `.md` points at this block by name,
+/// so a silent reword there is a silent change to what every converted primitive is told.
+const LEGEND: &str = "\nlegend\n\
+- class: floor is always delivered whatever its when:; when: gates when the obligation applies, never whether it reaches you.\n\
+- kind: names what a rule is — constraint (the default) · duty · gate · reservation · binding · bound · routing · fail · latitude.\n\
+- when: binds a rule only where its terms hold against the conditions block above.\n\
+- enforces: on a kind: fail rule names the rules it is the end-state contrapositive of.\n\
+- pointer: binds you to that skill's procedure — referenced, never restated.\n\
+- extends: is already resolved in this render; the rule's own id stays the citable id.\n";
+
+#[test]
+fn the_preamble_carries_the_fixed_legend_block() {
+    let state = rules_state("legend");
+    let out = render::preamble(&state, &command(), &ctx()).unwrap();
+
+    assert!(out.contains(LEGEND), "the legend block, verbatim:\n{out}");
+
+    let legend_at = out.find("\nlegend\n").expect("the legend block is present");
+    let pins_at = out.find("\npins\n").expect("the pins block is present");
+    let sections_at = out
+        .find("\nsections\n")
+        .expect("the sections block is present");
+    assert!(
+        pins_at < legend_at && legend_at < sections_at,
+        "the legend sits between pins and sections:\n{out}"
+    );
+
+    assert_eq!(
+        out.trim_end().lines().last().unwrap(),
+        "mochiko-cli rules end · demo · preamble · 0 rules",
+        "the legend is not a rule and the preamble still counts zero:\n{out}"
+    );
+}
+
+#[test]
+fn a_skill_preamble_carries_the_same_legend() {
+    let state = rules_state("skilllegend");
+    let out = render::preamble(&state, &skill(), &ctx()).unwrap();
+    assert!(out.contains(LEGEND), "the legend block, verbatim:\n{out}");
 }
 
 #[test]

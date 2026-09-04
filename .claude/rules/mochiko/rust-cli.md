@@ -1,7 +1,6 @@
 ---
 paths:
   - "crates/mochiko-cli/**"
-  - "migrations/**"
   - "plugins/mochiko/migrations/**"
   - "plugins/mochiko/hooks/**"
   - "evals/contract/**"
@@ -12,8 +11,8 @@ paths:
 
 `crates/mochiko-cli/` is mochiko's admitted kernel-class tool: it serves every command's and
 skill's rules from the migration log — carried in the plugin at `plugins/mochiko/migrations/`
-from wave 3, at the repo root `migrations/` until then — replayed in memory at fire, and it
-validates the log's own data. Admitted by two recorded rulings:
+since wave 3 — replayed in memory at fire, and it validates the log's own data. Admitted by two
+recorded rulings:
 `schema-based-template-guidance` D11 (template delivery, 2026-08-16) and `cli-schema-delivery`
 D11 (the widened role, 2026-09-03). The standing bright line binds it.
 

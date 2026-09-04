@@ -1,9 +1,9 @@
 //! The genesis migration — the shipped corpus imported as the log's baseline.
 //!
-//! `migrations/0001-genesis.yaml` is **generated**, and the committed file is the artifact
-//! (wave plan §5). This module is the generator: it reads the 50 shipped schema files, folds the
-//! provenance sidecar's anchors onto their rules, lifts the two comment-carried `enforces: []`
-//! reasons into `note:` data, and writes one `import-document` op per document.
+//! `plugins/mochiko/migrations/0001-genesis.yaml` is **generated**, and the committed file is the
+//! artifact (wave plan §5). This module is the generator: it reads the 50 shipped schema files,
+//! folds the provenance sidecar's anchors onto their rules, lifts the two comment-carried
+//! `enforces: []` reasons into `note:` data, and writes one `import-document` op per document.
 //!
 //! Three properties make the committed file trustworthy rather than merely present:
 //!

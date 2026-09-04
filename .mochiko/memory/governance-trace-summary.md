@@ -15,7 +15,7 @@ Grading surface for `validation-constitution`.
 | GI-008 | Helper-script FLOOR-TEST waiver | waiver | ledger waiver table | synthesis ✓ |
 | GI-009 | KM core — pin ratified | module: knowledge-management-core | `.mochiko/memory/knowledge-management.md` (pin header updated) | region operating-docs line ✓ · ledger ✓ |
 | GI-010 | CHANGELOG elective | module: km-elective-changelog | `CHANGELOG.md` (scaffolded) | ledger ✓ · release gate 4 ✓ |
-| GI-011 | RUNBOOK elective declined (durable) | module ruling | synthesis (recorded decline — nothing scaffolded, by design) | ledger not required for a decline; synthesis row ✓ |
+| GI-011 | RUNBOOK elective declined (durable) | module ruling | synthesis (recorded decline — nothing scaffolded, by design) | ledger declined-durable line (homed at v3.0.1) ✓; synthesis row ✓ |
 | GI-012 | Release gates (5 gates; marketplace sync = gate 5) | module: release-gates | region quality-gates line + ledger detail entry | index ✓ · ledger ✓ |
 | GI-013 | layer-rules — not offered, no ruling, offerable on amend | bookkeeping | synthesis only (correct — no surface content) | — |
 | GI-014 | evolution-notes module — not offered, no ruling | bookkeeping | synthesis only; **note:** brownfield evolution content (floor status + confrontation rulings) carried as plain ledger sections without attaching the module — see flagged proposal FP-1 | — |

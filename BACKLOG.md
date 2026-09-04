@@ -26,20 +26,20 @@ uncompressed. Prior groom narrative: git history (this line, before this groom).
 *(ruled + accepted 2026-09-03, `cli-schema-delivery` D1–D11 as review-amended; provenance:
 `.mochiko/brainstorms/cli-schema-delivery/record.md`; session ran in worktree `cli-context`)*
 
-- [ ] **Build: CLI-delivered schemas, six waves — waves 0–2 DONE, wave 3 (pilot) next**
-  (2026-09-03; provenance: record D9 + build surface + `wave0-probe-report.md` +
-  `wave1-plan.md` + `wave1-reports/` + `wave2-amendments.md` + `wave2-reports/`) — wave 0 done
-  2026-09-03; **wave 1 + 1b built + accepted 2026-09-04** (`f34d48e`…`2f7ce11`; 300 tests;
-  contract suite 2/2 in the sandbox); **wave 2 DONE 2026-09-04: governance v3.0.0** (AM-2,
-  DECISIONS row; GI-020 superseded, GI-019 widened, GI-012 gated, GI-022 minted; the plugin
-  carries the log from wave 3 at `plugins/mochiko/migrations/`). **Wave-2 tail, owed before
-  the first publish:** signed release tags + the `crates-io` environment approval rule (then
-  lift `publish = false` / `if: false`, tag `mochiko-cli-v0.1.0`, publish to crates.io + the
-  tap). **Wave 3 (pilot `brainstorm`):** move the log into the plugin · `!` lines + halt
-  clauses · `hooks/hooks.json` · contract-suite per-primitive cases + read-back bar ·
-  read-cost and latency measurements · pilot abort criteria · `primitive-edits.md` globs
-  gain `plugins/mochiko/migrations/**` + `hooks/**` · `README.md` re-authored · GI-011's
-  ledger home (next PATCH). Then waves 4–5 → wave 6 end state. Rollback user-reserved per
+- [ ] **Build: CLI-delivered schemas, six waves — waves 0–3 DONE, waves 4–5 next**
+  (2026-09-03; provenance: record D9 + build surface + the per-wave `waveN-plan.md` /
+  `waveN-reports/` under the record's directory) — waves 0–2 done 2026-09-03/04 (probes ·
+  crate, 300 tests · governance v3.0.0); **wave 3 (pilot `brainstorm`) DONE 2026-09-04 at
+  v0.104.0** — log in the plugin, hooks shipped (branch B, F14), suite at ten cases, **abort
+  criteria not tripped** (read-back 3/3; 10,839 B vs 12,819 B), governance PATCH v3.0.1.
+  **Wave 4** (five commands) opens with a section-reword migration op (grammar-1 extension,
+  before the first publish) + a migration rewording the six `fail-conditions` intents that
+  still claim a hard-coded count (V2 F1); **wave 5** skills by family (the `PreToolUse`
+  `Skill` limb goes live with the first converted skill). **Wave-2 tail, still owed:** signed
+  release tags + the `crates-io` approval rule, then lift `publish = false` / `if: false`, tag
+  `mochiko-cli-v0.1.0`, publish — the publish is what makes the hooks' and D5's `cargo install
+  mochiko-cli` line true (V2 F3; README carries the git-install line until then); kinako gets
+  the two-step install at its next plugin update. Then wave 6. Rollback user-reserved per
   wave; GI-006 on log + strips.
 
 ## Skill-content schema build

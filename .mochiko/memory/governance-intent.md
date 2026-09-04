@@ -2,7 +2,7 @@
 
 **Session date:** 2026-08-06 · **Mode:** brownfield
 **Confirmed at synthesis checkpoint:** 2026-08-06 by Deepesh
-**Governs:** the governance surface set v3.0.0 (CLAUDE.md governance region · `.claude/rules/mochiko/` · `.mochiko/memory/governance-ledger.md`) — v2.0.0 at AM-1, v3.0.0 at AM-2 (2026-09-04)
+**Governs:** the governance surface set v3.0.0 (CLAUDE.md governance region · `.claude/rules/mochiko/` · `.mochiko/memory/governance-ledger.md`) — v2.0.0 at AM-1, v3.0.0 at AM-2 (2026-09-04), v3.0.1 by the pre-authorized wave-3 PATCH (2026-09-04, ledger amendment log)
 
 ## Fact profile
 
@@ -33,7 +33,7 @@
 | Purpose | Command | Source |
 |---------|---------|--------|
 | Lint | `cargo fmt --all --check` · `cargo clippy --all-targets -- -D warnings` (crate); markdown primitives: none (procedural) | AM-2 re-expression (Card 5); was "none exists" at v1.0.0 |
-| Test | `cargo test --all` (300 tests at v3.0.0; `MOCHIKO_FULL_SIMILAR=1` opts into the full similarity sweep) · `mochiko-cli migrate validate --log-dir migrations --plugin-root plugins/mochiko` (the log's hard set) · `python3 evals/contract/run.py` (the plugin contract suite, Docker sandbox `claude-mochiko`, maintainer-side) | AM-2 re-expression (Card 5) |
+| Test | `cargo test --all` (300 tests at v3.0.0; `MOCHIKO_FULL_SIMILAR=1` opts into the full similarity sweep) · `mochiko-cli migrate validate --plugin-root plugins/mochiko` (the log's hard set; the log lives in the plugin from v0.104.0) · `python3 evals/contract/run.py` (the plugin contract suite, Docker sandbox `claude-mochiko`, maintainer-side) | AM-2 re-expression (Card 5) |
 | Build | `cargo build --release -p mochiko-cli` | AM-2 re-expression (Card 5) |
 | Dependency advisories | `cargo audit --deny warnings` (a supply-chain control, also named under GI-002's risk discharge) | AM-2 re-expression (review M3) |
 | Release | `plugin.json` semver bump + `CHANGELOG.md` + `marketplace.json` sync (gates GI-012); crate: tag `mochiko-cli-v*` → `.github/workflows/release.yml` (four targets, publish behind manual approval) | AM-2 re-expression (Card 5) |

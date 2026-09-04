@@ -1,6 +1,6 @@
 {
   "name": "mochiko",
-  "version": "0.103.0",
+  "version": "0.104.0",
   "description": "Skills-first agent framework: self-contained command supervisors built from native agent teams and skills",
   "author": {
     "name": "HumanInLoop",

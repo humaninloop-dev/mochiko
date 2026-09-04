@@ -5,6 +5,47 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.104.0] — 2026-09-04
+
+**CLI schema delivery — wave 3, the `brainstorm` pilot** (`cli-schema-delivery` D3/D4/D7/D8/D9
+as amended; governance v3.0.0 → v3.0.1 PATCH; `DECISIONS.md` 2026-09-04). The plugin now
+**carries the migration log** at `plugins/mochiko/migrations/` (the genesis file, 618,122 bytes,
+byte-identical to the repo-root file it replaces; the plugin grows from 1,366,116 to 1,992,896
+bytes) and **depends on the separately installed `mochiko-cli`** for its first converted
+command: `brainstorm` takes its rules from seven `!` lines — one per rendered block, each
+opening with the version-triple line and closing with the end line — under an
+`allowed-tools: Bash(mochiko-cli *)` grant and a positive-confirmation halt clause; it reads no
+schema file, and its Not-done count is the CLI-printed pin, never a hand-pinned number
+(wave-open ruling Q-B). The preamble render gains a fixed **`legend`** block carrying the
+reading grammar the `.md` no longer restates (612 bytes; a render-shape change, named here per
+the crate rule's coordination clause). The plugin ships **`hooks/hooks.json`** (D7):
+`SessionStart` reports presence, version, and grammar range and never blocks; one
+dependency-halt script on `UserPromptExpansion` (`^mochiko:`) and `PreToolUse` (`Skill`) gates
+on **absence or grammar skew only**, for converted primitives only (the converted check is the
+primitive's own `!` line — no list), exiting 2 with the install line or emitting a deny; with
+the binary present it confirms presence in one line and never injects rules — **branch B**,
+measured (F14): the expansion hook fires *before* expansion and sees only the raw user line, so
+a rules-injecting hook would double-deliver on every fire. The contract suite grows to **ten
+cases** (three host-side, seven sandbox sessions) with the read-back metric and its
+pre-registered 3/3 bar; the wave-1 pending assertion is resolved. **Pilot measurements
+(sandbox):** read-back **3/3** replicates naming all seven `class: floor` ids exactly;
+delivered read cost **10,839 bytes** against the 12,819-byte pre-conversion baseline
+(−15.4 %); store latency load-dependent, 26–77 ms per section render and 182–648 ms per
+seven-render fire across four passes; largest render 6.9 % of the inline ceiling. **Neither
+pilot abort criterion tripped — waves 4–5 may open.** The policy-placeholder environment
+(declared unsupported, GI-020) was recorded over four runs: zero blocks delivered, no schema
+file read in any, the prose halt held in two. Strips: two `[v0.104.0]` supersession entries on
+`brainstorm`. Rules files: `primitive-edits.md` `paths` gains `plugins/mochiko/migrations/**`
+and `plugins/mochiko/hooks/**`, and criteria 1, 3, and 11 gain converted-command clauses
+(v3.0.1); `rust-cli.md` present-tense; CI path filter re-pathed. `README.md` re-authored as a
+two-step install (the binary from git until the first crates.io release). Audits: V1 PASS
+(crate, after one report-figure delta), V2 PASS (the `brainstorm` pair + hooks, six
+non-blocking findings), V3 PASS (suite, independent full re-run; one rework round removed an
+interim channel union from the positive assertions). Follow-ups on the backlog: a
+section-reword migration op plus a migration for the six `fail-conditions` intents that still
+claim a hard-coded count; the wave-2 publish tail, which is what makes the hooks' and D5's
+`cargo install mochiko-cli` line true.
+
 ## [0.103.0] — 2026-09-01
 
 **Skill content schemas — wave 2C, the small-families dense five; the conversion arc

@@ -2,10 +2,10 @@
 //!
 //! The comparison is deliberately **independent of the generator**: the expected side is the
 //! shipped YAML decoded straight into the model, and the actual side is the document the replay
-//! built from `migrations/0001-genesis.yaml`. Only two deltas are allowed, and each is asserted
-//! rather than excused — the two comment-carried `enforces: []` reasons, which the model holds as
-//! `note:` data, and the provenance anchors, which are checked against the sidecar the test reads
-//! for itself.
+//! built from `plugins/mochiko/migrations/0001-genesis.yaml`. Only two deltas are allowed, and
+//! each is asserted rather than excused — the two comment-carried `enforces: []` reasons, which
+//! the model holds as `note:` data, and the provenance anchors, which are checked against the
+//! sidecar the test reads for itself.
 //!
 //! One failure per divergence, all of them named in one run: a broken genesis should report its
 //! whole blast radius, not the first field it happens to reach.
@@ -27,7 +27,7 @@ fn repo_root() -> PathBuf {
 }
 
 fn log_dir() -> PathBuf {
-    repo_root().join("migrations")
+    repo_root().join("plugins/mochiko/migrations")
 }
 
 fn genesis_path() -> PathBuf {
@@ -84,8 +84,8 @@ fn shipped_documents() -> Vec<(DocRef, Document)> {
 fn the_committed_genesis_regenerates_byte_identically() {
     let generated = genesis::build(&repo_root())
         .unwrap_or_else(|errors| panic!("genesis builds:\n{}", genesis::render_errors(&errors)));
-    let committed =
-        std::fs::read_to_string(genesis_path()).expect("migrations/0001-genesis.yaml is committed");
+    let committed = std::fs::read_to_string(genesis_path())
+        .expect("plugins/mochiko/migrations/0001-genesis.yaml is committed");
 
     if generated == committed {
         return;
@@ -96,7 +96,8 @@ fn the_committed_genesis_regenerates_byte_identically() {
         assert_eq!(
             a, b,
             "the committed genesis differs from a fresh build at line {line}\n\
-             regenerate with `cargo run -- genesis emit --out migrations/0001-genesis.yaml`"
+             regenerate with \
+             `cargo run -- genesis emit --out plugins/mochiko/migrations/0001-genesis.yaml`"
         );
     }
     panic!(
