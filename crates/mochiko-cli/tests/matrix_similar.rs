@@ -986,8 +986,12 @@ fn the_detector_reproduces_the_live_runs_figures_over_the_corpus() {
     // and striking the shared two-arm clause is exactly the kind of edit that pulls a pair back
     // under the threshold. Twelve edges no longer need suppressing, and the cluster count staying
     // at zero is what says none of them re-surfaced as a finding.
-    assert_eq!(report.scanned, 1016, "rules scanned");
-    assert_eq!(report.scored, 146_572, "in-kind pairs scored");
+    // Re-measured after `0004` (the sonnet worker rung): six skill rules minted on
+    // `patterns-model-tiering` move the scan from 1,016 to 1,022 and the in-kind pair count with
+    // it; no new cluster surfaced and the suppressed set is unchanged — the allowlist was not
+    // touched.
+    assert_eq!(report.scanned, 1022, "rules scanned");
+    assert_eq!(report.scored, 148_353, "in-kind pairs scored");
     assert_eq!(report.clusters.len(), 0, "clusters");
     assert_eq!(report.suppressed_hits, 169, "allowlist-suppressed edges");
 }

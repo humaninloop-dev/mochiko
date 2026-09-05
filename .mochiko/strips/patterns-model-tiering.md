@@ -13,6 +13,52 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 `DECISIONS.md` 2026-09-04 row. Pre-edit verbatim text:
 `git show 7d098b9:plugins/mochiko/skills/patterns-model-tiering/SKILL.md`. -->
 
+## [v0.108.0] description, tagline, and Overview widened to the worker rung
+
+- **Disposition:** superseded → the reworded `description:` (bounded execution work joins the
+  trigger; the worker tier and its two seats named; 'worker subagent' and 'offload to sonnet'
+  trigger phrases added), the reworded tagline ("Every read and every bounded task rides the
+  lowest tier where its result can be trusted."), and the reworded Overview sentence naming the
+  two build-time seats' Sonnet worker and Sonnet's place in the economics line. The rule changes
+  themselves are migration `plugins/mochiko/migrations/0004-sonnet-worker-rung.yaml` (two floor
+  rewords under the anchor — `class-key-session-tier`, `override-is-the-pin` — two `must` rewords —
+  `dispatch-ladder`, `disposable-per-gap` — three section rewords (`trigger` intent; `discipline`
+  and `inputs` title + intent), one note reword, six mints, two of them floors) and take no strip: the prior text is in the log by construction.
+- **Tier failed:** n/a — supersession by ruling (ADR
+  `.mochiko/decisions/2026-09-05-sonnet-worker-rung.md`; `DECISIONS.md` 2026-09-05 row; user
+  ruling 2026-09-05: the staff engineer and QA engineer may use Sonnet subagents to offload coding
+  and verification tasks as they see fit).
+- **Content:** verbatim —
+
+  description (parsed value, 655 chars): `This skill MUST be invoked when dispatching exploration
+  or fact-finding work in any mochiko run — routing each read by the class key.
+  locate/enumerate/targeted-read gaps go to a native `Explore` subagent spawned with an explicit
+  `model: haiku` override; interpretive reads, decision-driving absences, and
+  completeness-sensitive enumerations stay on the session tier. SHOULD also invoke on 'model
+  tiering', 'cheap explorer', 'which model', 'explore the code', 'targeted read', or 'fact-find
+  dispatch'. Governs dispatch tier only — rostered seats never change model (model-tiered-seats
+  D5); third sibling of patterns-sound-loop and patterns-transport-floor.`
+
+  tagline: `**Every read rides the lowest tier where its answer can be trusted.**`
+
+  Overview: `Rostered mochiko personas run on the strong tier and stay there; this floor governs
+  the *reads they and the lead dispatch along the way*. The economics are documented, not
+  assumed: Haiku is ~5× cheaper than Opus and ~10× cheaper than Fable per token both directions,
+  and on subscription seats cheap-model work preserves Opus-cap headroom (model-tiered-seats D1).`
+
+- **Kept deliberately:** the `## Rules — delivered by mochiko-cli` block — its halt clause, seven
+  `!` lines, and read-back sentence — byte for byte; the description's D5 clause ("rostered seats
+  never change model") — the ruling is dispatch-level, D5 stands, both personas stay `model: opus`;
+  the Haiku economics figures, unchanged.
+- **Consumers assessed:** the router row (`skills/mochiko/SKILL.md`, reworded in the same landing —
+  entry in `strips/mochiko.md`); the six command floor lines and the two command-common blocks
+  (`common.model-tiering`, `arch.model-tiering`) — unchanged, they point at the skill and never
+  restate it; the ten persona `## Delegating Cheap Reads` sections — unchanged; `staff-engineer`
+  and `qa-engineer` gain a sibling `## Delegating Bounded Work` section as a pure addition (rides
+  the decision row, no strip); the contract suite's frozen floor set for this skill replaced by
+  ruling (`evals/contract/expected-skills.json`, `floor_ids` 4 → 6 and `floor_pin` 4 → 6, every
+  byte column untouched).
+
 ## [v0.106.0] the Rules block — raw schema Read superseded by CLI delivery
 
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation

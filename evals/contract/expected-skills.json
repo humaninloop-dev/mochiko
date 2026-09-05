@@ -351,9 +351,11 @@
         "patterns-model-tiering.brief-obligation",
         "patterns-model-tiering.class-key-session-tier",
         "patterns-model-tiering.override-is-the-pin",
-        "patterns-model-tiering.rostered-seats-never-retier"
+        "patterns-model-tiering.rostered-seats-never-retier",
+        "patterns-model-tiering.worker-return-is-a-claim",
+        "patterns-model-tiering.worker-seat-set-reserved"
       ],
-      "floor_pin": 4,
+      "floor_pin": 6,
       "schema_bytes": 7232,
       "common": null,
       "common_bytes": null,

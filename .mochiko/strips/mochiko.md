@@ -18,6 +18,23 @@ the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md`
 the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
 `git show 62aa99d:plugins/mochiko/skills/mochiko/SKILL.md`. -->
 
+## [v0.108.0] `patterns-model-tiering` router row widened to the worker rung
+
+- **Disposition:** superseded → the reworded row: the WHEN clause gains "or bounded execution
+  work"; the dispatch-ladder parenthetical gains the worker rung; a worker-rung clause is added
+  before the D5 clause (two build-time seats · decided mechanically-checkable tasks · disposable
+  general-purpose subagent spawned `model: sonnet` · seat's call per task · read-back before it
+  counts · disclosure · judgment legs never tier down).
+- **Tier failed:** n/a — supersession by ruling (ADR
+  `.mochiko/decisions/2026-09-05-sonnet-worker-rung.md`; `DECISIONS.md` 2026-09-05 row).
+- **Content:** verbatim superseded spans — "WHEN dispatching exploration or fact-finding work in
+  any run" · "the dispatch ladder (direct tool call → cheap `Explore` (haiku) → session-tier
+  read)" · "never a nonexistence verdict); rostered seats never change tier (model-tiered-seats
+  D5); third sibling".
+- **Kept deliberately:** the rest of the row byte for byte — the cheap rung and its 2026-08-19
+  retarget clause, the brief obligation, the weak-negative watch, the D5 clause, the sibling line.
+- **Consumers assessed:** router-only text; no command or skill quotes the row.
+
 ## [v0.107.0] the composition paragraph's pair claim and four schema-row fallback arms
 
 - **Disposition:** superseded → the CLI forms; the shelf row's phantom `template` becomes `doc`

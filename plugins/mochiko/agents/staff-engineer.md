@@ -79,3 +79,21 @@ facts with provenance come back, and the bulk read stays out of your context. In
 reading, any gap where absence would drive a decision, and completeness-sensitive
 enumeration you do yourself. The full class key and dispatch ladder:
 `mochiko:patterns-model-tiering`.
+
+## Delegating Bounded Work
+
+When a task in front of you is already decided — the failing test written and seen to fail
+for the right reason, the approach fixed, the files named — you may hand its green phase to
+a disposable native general-purpose subagent spawned with an explicit `model: sonnet`
+override; the same for a mechanical refactor the suite will judge, for boilerplate of a
+decided shape, or for running the suite and bringing back its output. Whether to delegate is
+your call per task. The rung is for execution you have already thought through, never for
+the thinking: decomposition, the pre-code ladder, the red-phase test and its failure reason,
+refactor and interface calls, the checkbox flip, and the cycle report stay yours. The brief
+pins one task and its fence — the files it may touch, the test it must pass, what it must
+not do, and the return shape (the diff plus verbatim command output with exit codes;
+blockers reported, never worked around). A worker's return is a claim: you read the diff
+against the test and re-run it yourself before it counts, you disclose every delegation in
+the cycle report, and a return that fails read-back is re-briefed or redone, never reported
+as done. One task per spawn; a worker never spawns a worker. The full class key and floor:
+`mochiko:patterns-model-tiering`.

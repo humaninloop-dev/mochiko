@@ -5,6 +5,34 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.108.0] — 2026-09-05
+
+**Sonnet worker rung** (ADR `.mochiko/decisions/2026-09-05-sonnet-worker-rung.md`; `DECISIONS.md`
+2026-09-05; user ruling 2026-09-05). The model-tiering floor gains a second dispatch rung beside the
+haiku cheap-read rung: the `staff-engineer` and `qa-engineer` seats may hand decided,
+mechanically-checkable coding and verification tasks — the green phase against a seat-written
+failing test, a mechanical refactor the suite judges, boilerplate of a decided shape, suite / lint /
+build runs, a `**TEST:**` case's Setup and Action legs — to a disposable native general-purpose
+subagent spawned with an explicit `model: sonnet` override. The seat's call per task, never obliged;
+the judgment legs (decomposition, the pre-code ladder, the red-phase test and its failure reason,
+refactor and interface calls, assert evaluation, the auto-approve / checkpoint call, the code-shape
+audit, findings, verdicts, the checkbox flip, reports) never tier down; a worker's return is a claim
+the seat reads back before it counts (new floor `worker-return-is-a-claim`); the two-seat set is a
+reservation floor (`worker-seat-set-reserved`); every dispatch is disclosed in the seat's own report.
+Migration **`0004-sonnet-worker-rung.yaml`**: six minted rules (two floors), two floor rewords under
+the anchor (`class-key-session-tier`, `override-is-the-pin`), two `must` rewords, three section
+rewords, one note; the skill's floor pin 4 → 6 and the contract suite's frozen set replaced by
+ruling (`floor_ids` / `floor_pin` only). `patterns-model-tiering` description, tagline, and Overview
+widened (strip); the router row widened (strip); both personas gain a `## Delegating Bounded Work`
+standing section (pure addition; both stay `model: opus` — model-tiered-seats D5 stands). Crate
+tests re-keyed to the moved census (skill rules 695 → 701, floors 226 → 228, sequences 1..4, the
+sidecar fold graded on genesis alone) plus a per-migration test for 0004, under a non-author review.
+Budget: the skill's payload 14,696 against 10,852, +3,844 ruled HOLDS (a genuine new obligation
+set). Audits: V2 (personas + router) PASS round 1; V1 (skill pair) FAIL round 1 — two section
+headings not reworded, three landing-scope items — fixed, delta PASS; the crate-test re-key took a non-author review, one change requested and applied, APPROVE. Gates: `cargo
+test` all green, `fmt` / `clippy` clean, the opt-in similarity sweep re-pinned (1,022 scanned),
+contract suite full run exit 0 — 82/82 cases, 285 recorded measurements, `patterns-model-tiering` delivering 6/6 floor ids against the replaced pre-registration. Live probe (headless, working-tree plugin): the staff-engineer seat (`claude-opus-5`) spawned a `general-purpose` worker with `model: sonnet` (`claude-sonnet-5` in its sidechain transcript), read the diff back, re-ran the suite itself — the rung fires end to end.
+
 ## [0.107.0] — 2026-09-05
 
 **CLI schema delivery — wave 6, the end state: no schema file ships** (`cli-schema-delivery`

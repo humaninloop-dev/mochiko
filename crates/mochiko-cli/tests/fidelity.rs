@@ -170,8 +170,9 @@ fn the_log_replays_into_a_deliverable_state() {
     assert_eq!(replay.state.docs.len(), 50);
     assert_eq!(
         replay.sequences(),
-        vec![1, 2, 3],
-        "genesis, wave 4's fail-conditions reword, wave 6's two-arm retirement"
+        vec![1, 2, 3, 4],
+        "genesis, wave 4's fail-conditions reword, wave 6's two-arm retirement, the sonnet \
+         worker rung"
     );
 }
 
@@ -487,12 +488,15 @@ fn a_comment_separated_from_its_mirror_is_never_claimed_by_it() {
 
 #[test]
 fn the_sidecar_anchors_ride_their_rules() {
-    let state = replay::load(&log_dir()).expect("the log is deliverable");
+    // The fold is genesis's claim (record D2: carried, not moved), so the strict two-way check
+    // grades sequence 1 alone. A later migration may mint rules carrying anchors of its own —
+    // `0004` is the first to — and those are the subject of that migration's own test.
     let anchors = sidecar();
     assert_eq!(anchors.len(), 597, "the sidecar's recorded census");
 
+    let genesis = genesis_only_state();
     let mut anchored = 0usize;
-    for document in state.docs.values() {
+    for document in genesis.docs.values() {
         let Some(schema) = document.as_rules() else {
             continue;
         };
@@ -509,6 +513,31 @@ fn the_sidecar_anchors_ride_their_rules() {
         }
     }
     assert_eq!(anchored, 597, "every sidecar anchor found its rule");
+
+    // Through the whole log a folded anchor stays where genesis put it: every rule the sidecar
+    // names is still live and still carries that value. Retiring one (`tombstone-rule`,
+    // `supersede-rule`) or clearing its anchor is a protected exit that takes a ruling — and a
+    // re-key here that names the rule. The walk is driven from the sidecar for that reason: a
+    // retired rule never enters the live state, so a walk over live rules would lose it unnamed.
+    let live = replay::load(&log_dir()).expect("the log is deliverable");
+    let mut live_rules: BTreeMap<&str, &Rule> = BTreeMap::new();
+    for document in live.docs.values() {
+        let Some(schema) = document.as_rules() else {
+            continue;
+        };
+        for rule in schema.rules() {
+            live_rules.insert(rule.id.as_str(), rule);
+        }
+    }
+    for (id, expected) in &anchors {
+        let rule = live_rules
+            .get(id.as_str())
+            .unwrap_or_else(|| panic!("{id}: the sidecar's rule is no longer live"));
+        match rule.anchor.as_deref() {
+            Some(carried) => assert_eq!(carried, expected, "{id}: the anchor moved"),
+            None => panic!("{id}: the sidecar's anchor was cleared"),
+        }
+    }
 }
 
 #[test]
@@ -557,10 +586,12 @@ fn the_corpus_census_holds_through_the_log() {
         }
     }
 
+    // `0004` (the sonnet worker rung, 2026-09-05) minted six skill rules on
+    // `patterns-model-tiering`, two of them floors; the command side is untouched.
     assert_eq!(command_rules, 321, "live command rules");
-    assert_eq!(skill_rules, 695, "live skill rules");
-    assert_eq!(command_rules + skill_rules, 1016, "live rules in total");
-    assert_eq!(skill_floors, 226, "skill floors");
+    assert_eq!(skill_rules, 701, "live skill rules");
+    assert_eq!(command_rules + skill_rules, 1022, "live rules in total");
+    assert_eq!(skill_floors, 228, "skill floors");
     assert_eq!(command_floors, 110, "declared command floors");
     assert_eq!(fail_nodes, 36, "command fail nodes");
 }
@@ -824,4 +855,113 @@ fn no_rule_points_at_a_schema_file() {
             );
         }
     }
+}
+
+// ---------------------------------------------------------------------------
+// 0004 — the sonnet worker rung
+// ---------------------------------------------------------------------------
+
+/// The `0004` migration (`2026-09-05 sonnet-worker-rung`) landed where it said it would: six
+/// minted rules on `patterns-model-tiering`, two of them floors, each carrying the ruling anchor;
+/// the two reworded floors still floors, naming both rungs and the D5 clause; the floor pin at
+/// six; the reserved section's note naming its new reservation.
+#[test]
+fn the_fourth_migration_added_the_worker_rung_to_the_tiering_floor() {
+    const ANCHOR: &str = "2026-09-05 sonnet-worker-rung";
+    let state = replay::load(&log_dir()).expect("the log is deliverable");
+    let doc = DocRef::new(DocKind::Skill, "patterns-model-tiering");
+    let schema = state
+        .docs
+        .get(&doc)
+        .and_then(Document::as_rules)
+        .expect("patterns-model-tiering is in state");
+
+    let minted: [(&str, &str, bool); 6] = [
+        (
+            "patterns-model-tiering.class-key-worker-tier",
+            "patterns-model-tiering.sec.trigger",
+            false,
+        ),
+        (
+            "patterns-model-tiering.worker-rung-sonnet",
+            "patterns-model-tiering.sec.discipline",
+            false,
+        ),
+        (
+            "patterns-model-tiering.worker-return-is-a-claim",
+            "patterns-model-tiering.sec.inputs",
+            true,
+        ),
+        (
+            "patterns-model-tiering.worker-brief",
+            "patterns-model-tiering.sec.disclosure",
+            false,
+        ),
+        (
+            "patterns-model-tiering.worker-disclosure",
+            "patterns-model-tiering.sec.disclosure",
+            false,
+        ),
+        (
+            "patterns-model-tiering.worker-seat-set-reserved",
+            "patterns-model-tiering.sec.reserved",
+            true,
+        ),
+    ];
+    for (id, section, floor) in minted {
+        let home = schema
+            .find_section(section)
+            .unwrap_or_else(|| panic!("{section} is a live section"));
+        let rule = home
+            .rules
+            .iter()
+            .find(|rule| rule.id == id)
+            .unwrap_or_else(|| panic!("{id} was minted into {section}"));
+        assert_eq!(
+            rule.anchor.as_deref(),
+            Some(ANCHOR),
+            "{id}: the ruling anchor"
+        );
+        assert_eq!(rule.is_floor(), floor, "{id}: floor class");
+    }
+
+    // The reworded floors kept their ids and their class, and say what the ruling says.
+    let reworded: [(&str, &[&str]); 2] = [
+        (
+            "patterns-model-tiering.class-key-session-tier",
+            &[
+                "never tiered down",
+                "sonnet-worker-rung",
+                "model-tiered-seats D5",
+            ],
+        ),
+        (
+            "patterns-model-tiering.override-is-the-pin",
+            &["`model: haiku`", "`model: sonnet`"],
+        ),
+    ];
+    for (id, needles) in reworded {
+        let rule = schema
+            .find_rule(id)
+            .unwrap_or_else(|| panic!("{id} is a live rule"));
+        assert!(rule.is_floor(), "{id}: still a floor");
+        let text = rule.text.as_deref().unwrap_or_default();
+        for needle in needles {
+            assert!(text.contains(needle), "{id}: the reword names {needle:?}");
+        }
+    }
+
+    let floors = schema.rules().filter(|rule| rule.is_floor()).count();
+    assert_eq!(floors, 6, "the skill's floor pin");
+
+    let reserved = schema
+        .find_section("patterns-model-tiering.sec.reserved")
+        .expect("the reserved section is live");
+    assert!(
+        reserved
+            .note
+            .as_deref()
+            .is_some_and(|note| note.contains("worker-seat-set-reserved")),
+        "the reserved note names the new reservation"
+    );
 }

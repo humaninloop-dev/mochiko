@@ -665,7 +665,7 @@ together. Model-tiered D4 explorer build DELIVERED 2026-08-16 at v0.77.0, retarg
 `mochiko:explorer` seat deleted (agent-team teammates cannot spawn plugin-scoped agents),
 native `Explore` + explicit `model: haiku` override now the rung (ADR
 `2026-08-19-explorer-retarget-native`); D5 seat-tiering stays deferred (Later), D6's three watches
-ride the probe below — D6-ii already positively evidenced by the in-session spawn test. Seam note (2026-08-01, `verbosity-caveman-ops-separation` D8): epic D3's
+ride the probe below — D6-ii already positively evidenced by the in-session spawn test. **Worker rung ADDED 2026-09-05 at v0.108.0** — `staff-engineer` and `qa-engineer` may hand decided coding/verification tasks to a disposable `model: sonnet` general-purpose subagent, read back before it counts (ADR `2026-09-05-sonnet-worker-rung`; migration `0004`); D5 still untouched — seats stay opus. Seam note (2026-08-01, `verbosity-caveman-ops-separation` D8): epic D3's
 conditional-prose intent was **finished by the output-style build wave 1** (v0.44.0) — never a
 wave-3 candidate again; the always-read floor re-baselined at that build (−4,490 B/run on
 `command-shape.md`). Epic D5 (sizing-gate generalization) closed 2026-08-04 — superseded at

@@ -1,0 +1,166 @@
+grammar: 1
+id: 0004-sonnet-worker-rung
+sequence: 4
+intent: >-
+  Add the worker rung to the model-tiering floor: the staff-engineer and qa-engineer seats may
+  hand decided, mechanically-checkable coding and verification tasks to a disposable
+  general-purpose subagent spawned `model: sonnet`, reading every return back before it counts.
+anchor: 2026-09-05 sonnet-worker-rung
+hash: sha256:271adb47efb626ced7971a96ba68154520c9067719d0a89e14e0582e2bb9ba29
+changes:
+  - op: reword-section
+    schema: skill/patterns-model-tiering
+    id: patterns-model-tiering.sec.trigger
+    intent: Which dispatch lane fires for each read or task class; the key every tier rides.
+  - op: reword-rule
+    schema: skill/patterns-model-tiering
+    id: patterns-model-tiering.class-key-session-tier
+    text: >-
+      Session tier — the dispatching seat does it itself, or a strong seat does: interpretive
+      reading (what a design implies, whether patterns conflict, what quality a surface has); any
+      gap where absence would drive a decision — a weak negative that would mislead a producer
+      stays on the strong tier; an enumeration whose completeness would drive a decision (the
+      cheap tier takes only spot-checkable enumerations); and every judgment leg of producing,
+      reviewing, and grading — card decomposition and the pre-code ladder, the red-phase test
+      and its failure-reason check, refactor and brownfield-interface calls, every assert
+      evaluation and auto-approve-versus-checkpoint classification, the code-shape audit, every
+      finding, verdict, checkbox flip, and report — never tiered down (model-tiered-seats D5;
+      the worker rung takes only the execution legs the 2026-09-05 sonnet-worker-rung ruling
+      names, and the seat stays the producer of record). The sound-loop floor
+      (`mochiko:patterns-sound-loop`) governs those seats.
+  - op: mint-rule
+    schema: skill/patterns-model-tiering
+    section: patterns-model-tiering.sec.trigger
+    rule:
+      id: patterns-model-tiering.class-key-worker-tier
+      labels: [boundary]
+      class: must
+      text: >-
+        Worker tier — from the staff-engineer and qa-engineer seats only, dispatch a native
+        general-purpose subagent with `model: sonnet`, disposable per task: green-phase
+        implementation against a failing test the seat has already written and an approach the
+        seat has already fixed; a mechanical refactor whose oracle is the passing suite;
+        boilerplate of a decided shape; running a suite, lint, or build and capturing exit code
+        and output; executing a `**TEST:**` case's Setup and Action legs against real
+        infrastructure and capturing the evidence. A worker executes a decided task; it never
+        decides one.
+      anchor: 2026-09-05 sonnet-worker-rung
+  - op: reword-section
+    schema: skill/patterns-model-tiering
+    id: patterns-model-tiering.sec.discipline
+    title: Discipline — the cheap rung, the worker rung, and the dispatch ladder
+    intent: >-
+      What makes a dispatch cheap, what makes a worker dispatch safe, and the ladder every gap and
+      task sits on.
+  - op: mint-rule
+    schema: skill/patterns-model-tiering
+    section: patterns-model-tiering.sec.discipline
+    rule:
+      id: patterns-model-tiering.worker-rung-sonnet
+      labels: [binding]
+      class: must
+      text: >-
+        The worker rung is a native general-purpose subagent spawned via the Agent tool with an
+        explicit `model: sonnet` override — the tier that codes and verifies reliably against a
+        fixed oracle at a fraction of the seat's cost, where haiku does not (2026-09-05
+        sonnet-worker-rung). Whether a given task goes down is the seat's call per task: the class
+        key bounds what may go down and never obliges a dispatch. A worker never spawns a worker.
+      anchor: 2026-09-05 sonnet-worker-rung
+  - op: reword-rule
+    schema: skill/patterns-model-tiering
+    id: patterns-model-tiering.dispatch-ladder
+    text: >-
+      Direct tool call → cheap `Explore` (haiku) → worker (sonnet) → the seat itself: each
+      gap or task sits on the lowest rung where the result can be trusted. A one-file read the
+      dispatcher already knows the path of is a direct tool call, not a spawn; a sweep across many
+      files is the cheap `Explore`; a decided task with a mechanical oracle is a worker; a
+      judgment read or a judgment call is the seat. A spawn that costs more than the work it saves
+      has failed the ladder.
+  - op: reword-rule
+    schema: skill/patterns-model-tiering
+    id: patterns-model-tiering.disposable-per-gap
+    text: >-
+      Disposable per gap or task — one gap or one task per dispatch, discard after. Never a
+      standing "librarian" or "pair" seat: a standing seat re-pays its transcript across gate
+      pauses (model-tiered-seats D4/F5).
+  - op: reword-rule
+    schema: skill/patterns-model-tiering
+    id: patterns-model-tiering.override-is-the-pin
+    text: >-
+      The override is the pin — every tiered dispatch MUST pass its rung's model explicitly on
+      the Agent tool call: `model: haiku` on the cheap rung, `model: sonnet` on the worker rung; a
+      spawn without the override inherits the session tier and has failed this floor.
+  - op: reword-section
+    schema: skill/patterns-model-tiering
+    id: patterns-model-tiering.sec.inputs
+    title: Inputs — how tiered returns are read
+    intent: >-
+      What a cheap negative is worth and when it re-routes; what a worker's return is until the
+      seat has read it back.
+  - op: mint-rule
+    schema: skill/patterns-model-tiering
+    section: patterns-model-tiering.sec.inputs
+    rule:
+      id: patterns-model-tiering.worker-return-is-a-claim
+      labels: [evidence]
+      class: floor
+      kind: duty
+      text: >-
+        A worker's return is a claim, never a result: the seat reads back every delegated diff
+        against the failing test it wrote and every delegated evidence capture against the assert
+        it owns, re-running the decisive command itself where that is cheap, before anything
+        counts. A return that fails read-back is re-briefed or redone by the seat — never
+        reported as done, never patched around.
+      anchor: 2026-09-05 sonnet-worker-rung
+  - op: mint-rule
+    schema: skill/patterns-model-tiering
+    section: patterns-model-tiering.sec.disclosure
+    rule:
+      id: patterns-model-tiering.worker-brief
+      labels: [binding, evidence]
+      class: must
+      kind: binding
+      text: >-
+        The worker brief pins one task and its fence: the exact files it may touch; the failing
+        test it must pass or the `**TEST:**` case's Setup and Action legs it executes; the
+        approach already decided; what it must not do — no new abstraction, no scope past the
+        task, no interface change, no dependency added, no test edited, no mock where real
+        infrastructure was named; and the return shape — the diff and the verbatim command
+        output with exit codes, blockers reported never worked around. The brief carries this
+        because a native subagent has no persona pinning it.
+      anchor: 2026-09-05 sonnet-worker-rung
+  - op: mint-rule
+    schema: skill/patterns-model-tiering
+    section: patterns-model-tiering.sec.disclosure
+    rule:
+      id: patterns-model-tiering.worker-disclosure
+      labels: [reporting]
+      class: must
+      text: >-
+        Every worker dispatch is disclosed in the seat's own report — the cycle report or the
+        verification report: the task, the rung (sonnet), what came back, and the read-back result
+        — so the lead and the reviewing seat can see what a worker touched. The seat authors
+        that report itself; a report is never a delegated task.
+      anchor: 2026-09-05 sonnet-worker-rung
+  - op: reword-section
+    schema: skill/patterns-model-tiering
+    id: patterns-model-tiering.sec.reserved
+    note: >-
+      Two reserved decision classes, each riding its rule: retiering a rostered seat rides
+      `patterns-model-tiering.rostered-seats-never-retier` in `sec.scope` (census-patterns §B: MT
+      rows 1–11); widening the worker rung's seat set rides
+      `patterns-model-tiering.worker-seat-set-reserved` below (2026-09-05 sonnet-worker-rung).
+  - op: mint-rule
+    schema: skill/patterns-model-tiering
+    section: patterns-model-tiering.sec.reserved
+    rule:
+      id: patterns-model-tiering.worker-seat-set-reserved
+      labels: [boundary]
+      class: floor
+      kind: reservation
+      text: >-
+        Which seats hold the worker rung is ruled, never run-decided: the staff-engineer and
+        qa-engineer seats (2026-09-05 sonnet-worker-rung). A run never extends it to another seat,
+        and a worker below a seat does not retier the seat — its model, judgment, and ownership
+        of the output are unchanged (model-tiered-seats D5).
+      anchor: 2026-09-05 sonnet-worker-rung

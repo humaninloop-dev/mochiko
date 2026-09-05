@@ -263,7 +263,7 @@ byte column byte-identical to the row it replaces.
 | | commands | skills |
 |---|---|---|
 | pre-registration | `EXPECTED` in `run.py` | `expected-skills.json` |
-| floor ids | 110 across six | 226 across thirty |
+| floor ids | 110 across six | 228 across thirty (226 at the freeze; `patterns-model-tiering` 4 → 6 by the 2026-09-05 sonnet-worker-rung ruling) |
 | baseline | `wc -c` of `<cmd>.yaml` + `common.yaml` | `wc -c` of `schema.yaml` + the family common |
 | also frozen | — | the family, and the pre-conversion `SKILL.md` size |
 

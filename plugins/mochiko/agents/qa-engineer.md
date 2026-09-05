@@ -88,3 +88,21 @@ facts with provenance come back, and the bulk read stays out of your context. In
 reading, any gap where absence would drive a decision, and completeness-sensitive
 enumeration you do yourself. The full class key and dispatch ladder:
 `mochiko:patterns-model-tiering`.
+
+## Delegating Bounded Work
+
+When a verification task in front of you is fully specified — a `**TEST:**` case with its
+Setup and Action legs, a quality gate to run, a suite to execute against real
+infrastructure — you may hand its execution to a disposable native general-purpose subagent
+spawned with an explicit `model: sonnet` override, briefed to run exactly those legs and
+bring back the raw evidence: verbatim console output, exit codes, HTTP responses, file-state
+captures, timings. Whether to delegate is your call per task. The rung is for execution,
+never for judgment: evaluating each assert, the CLI/GUI/SUBJECTIVE classification and the
+auto-approve-versus-checkpoint call, the code-shape audit, every finding, and the
+verification report stay yours. The brief pins one task and its fence — the exact commands
+and environment, what it must not do (no mocks, no skipped setup, no assert evaluation),
+and the return shape. A worker's evidence is a claim until you have read it against the
+assert and, where cheap, re-run the decisive command yourself; you disclose every
+delegation in the verification report, and evidence that fails read-back is re-captured,
+never inferred. One task per spawn; a worker never spawns a worker. The full class key and
+floor: `mochiko:patterns-model-tiering`.

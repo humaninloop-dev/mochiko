@@ -1098,10 +1098,12 @@ fn the_shipped_corpus_matches_its_recorded_census() {
         census.get(&DocKind::Command).copied().unwrap_or_default();
     let (skill_rules, skill_floors) = census.get(&DocKind::Skill).copied().unwrap_or_default();
 
+    // `0004` (the sonnet worker rung, 2026-09-05) minted six skill rules on
+    // `patterns-model-tiering`, two of them floors; the command side is untouched.
     assert_eq!(command_rules, 321, "live command rules");
-    assert_eq!(skill_rules, 695, "live skill rules");
-    assert_eq!(command_rules + skill_rules, 1016, "live rules in total");
-    assert_eq!(skill_floors, 226, "skill floors");
+    assert_eq!(skill_rules, 701, "live skill rules");
+    assert_eq!(command_rules + skill_rules, 1022, "live rules in total");
+    assert_eq!(skill_floors, 228, "skill floors");
     // The record's 112 is a `grep -c 'class: floor'` figure. Two of those matches are prose
     // inside rule text (architecture.yaml and implement.yaml each name `class: floor` in a
     // sentence), so the declared floors are 110 — the same figure the shipped checker reports.

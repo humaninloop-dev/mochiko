@@ -1,20 +1,22 @@
 ---
 name: patterns-model-tiering
-description: This skill MUST be invoked when dispatching exploration or fact-finding work in any mochiko run — routing each read by the class key. locate/enumerate/targeted-read gaps go to a native `Explore` subagent spawned with an explicit `model: haiku` override; interpretive reads, decision-driving absences, and completeness-sensitive enumerations stay on the session tier. SHOULD also invoke on 'model tiering', 'cheap explorer', 'which model', 'explore the code', 'targeted read', or 'fact-find dispatch'. Governs dispatch tier only — rostered seats never change model (model-tiered-seats D5); third sibling of patterns-sound-loop and patterns-transport-floor.
+description: This skill MUST be invoked when dispatching exploration, fact-finding, or bounded execution work in any mochiko run — routing each read or task by the class key. locate/enumerate/targeted-read gaps go to a native `Explore` subagent spawned with an explicit `model: haiku` override; decided, mechanically-checkable coding and verification tasks go from the staff-engineer and qa-engineer seats to a disposable general-purpose subagent spawned `model: sonnet`, read back by the seat before they count; interpretive reads, decision-driving absences, completeness-sensitive enumerations, and every judgment leg of producing, reviewing, and grading stay on the session tier. SHOULD also invoke on 'model tiering', 'cheap explorer', 'worker subagent', 'offload to sonnet', 'which model', 'explore the code', 'targeted read', or 'fact-find dispatch'. Governs dispatch tier only — rostered seats never change model (model-tiered-seats D5); third sibling of patterns-sound-loop and patterns-transport-floor.
 allowed-tools: Bash(mochiko-cli *)
 ---
 
 # Model Tiering — The Class-Keyed Dispatch Floor
 
-**Every read rides the lowest tier where its answer can be trusted.**
+**Every read and every bounded task rides the lowest tier where its result can be trusted.**
 
 ## Overview
 
 Rostered mochiko personas run on the strong tier and stay there; this floor governs the
-*reads they and the lead dispatch along the way*. The economics are documented, not
-assumed: Haiku is ~5× cheaper than Opus and ~10× cheaper than Fable per token both
-directions, and on subscription seats cheap-model work preserves Opus-cap headroom
-(model-tiered-seats D1).
+*reads they and the lead dispatch along the way* and, for the two build-time seats —
+staff-engineer and qa-engineer — the *decided coding and verification tasks they hand down
+to a Sonnet worker* (2026-09-05 sonnet-worker-rung ruling). The economics are documented,
+not assumed: Haiku is ~5× cheaper than Opus and ~10× cheaper than Fable per token both
+directions, Sonnet sits between the two, and on subscription seats cheaper-model work
+preserves Opus-cap headroom (model-tiered-seats D1).
 
 ## Rules — delivered by mochiko-cli
 
