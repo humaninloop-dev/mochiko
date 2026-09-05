@@ -59,8 +59,10 @@ One entry per session directory under `.mochiko/brainstorms/<topic-slug>/`, **ne
   [wave4-reports/](cli-schema-delivery/wave4-reports/); all six commands converted; migration
   0002; abort criterion (1) tripped on three commands, the plan-§8 diagnostic ran (16/16
   answering replicates exact — a bar property), **criterion (1) re-keyed** to the deterministic
-  floor-delivery assert (PATCH v3.0.2) and **wave 5 OPENED 2026-09-04**; DECISIONS rows
-  2026-09-04);
+  floor-delivery assert (PATCH v3.0.2) and wave 5 opened; DECISIONS rows 2026-09-04) ·
+  **wave 5 LANDED 2026-09-04 at v0.106.0** ([wave5-plan.md](cli-schema-delivery/wave5-plan.md),
+  [wave5-reports/](cli-schema-delivery/wave5-reports/); all 30 skills converted; `floors:`
+  line; criterion (1) clear on all 36; F15 hook fix; DECISIONS row 2026-09-04); wave 6 next;
   the wave-2 publish tail still owed + the three delivery
   watches annotated as superseded pending wave 6 · ROADMAP: folded into the
   Template-schema CLI Next row (cap held at 7).

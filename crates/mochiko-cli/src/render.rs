@@ -114,8 +114,9 @@ impl std::error::Error for RenderError {}
 // the rules render
 // ---------------------------------------------------------------------------
 
-/// The preamble: the schema's identity, its resolved bindings, its count pins, and its section
-/// list — everything a reader needs before asking for a section. Its rule count is always zero.
+/// The preamble: the schema's identity, its resolved bindings, its count pins, the floor index
+/// those pins name, and its section list — everything a reader needs before asking for a section.
+/// Its rule count is always zero.
 pub fn preamble(state: &State, doc: &DocRef, ctx: &Context) -> Result<String, RenderError> {
     let schema = rule_schema(state, doc)?;
     let is_command = doc.kind == DocKind::Command;
@@ -149,8 +150,24 @@ pub fn preamble(state: &State, doc: &DocRef, ctx: &Context) -> Result<String, Re
         let fails = schema.rules().filter(|r| r.is_fail()).count();
         body.push_str(&format!("- kind: fail · {fails} rules\n"));
     }
-    let floors = schema.rules().filter(|r| r.is_floor()).count();
-    body.push_str(&format!("- class: floor · {floors} rules\n"));
+    let floors: Vec<&str> = schema
+        .rules()
+        .filter(|rule| rule.is_floor())
+        .map(|rule| rule.id.as_str())
+        .collect();
+    body.push_str(&format!("- class: floor · {} rules\n", floors.len()));
+
+    // The floor index (wave-5 plan §2). The pin's number alone leaves a converted `.md` naming a
+    // count it cannot check itself against, so the ids come out beside it — from the same
+    // iterator, which is what makes the two incapable of disagreeing. `rules()` walks sections in
+    // declared order and rules in section order, so this is render order and the read-back can
+    // cite position as well as membership.
+    let index = if floors.is_empty() {
+        "none".to_string()
+    } else {
+        floors.join(" · ")
+    };
+    body.push_str(&format!("\nfloors: {index}\n"));
 
     body.push_str(LEGEND);
 

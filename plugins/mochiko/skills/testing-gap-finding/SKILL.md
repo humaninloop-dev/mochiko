@@ -1,6 +1,7 @@
 ---
 name: testing-gap-finding
 description: This skill MUST be invoked when running the final-validation gap-finding pass — the blind, spec-derived hunt for promised behavior the builder and the test author both missed — or when authoring or folding a feature's durable gate set `.mochiko/features/FEAT-XXX/gates.md`. SHOULD also invoke on 'gap-finding', 'black-box exploration', 'blind explorer', 'exploratory probing', or 'mutation lens'. Owns the blindness fence, two-message dispatch, probe kit, mutation lens, finding-kind split, and fold-back. Selection-scope and epic runs only. Boundary: deterministic `**TEST:**` execution is mochiko:testing-end-user; the `**TEST:**` grammar is owned by mochiko:patterns-vertical-tdd — consume, never redefine.
+allowed-tools: Bash(mochiko-cli *)
 ---
 
 # Gap Finding — The Blind Exploratory Pass
@@ -20,24 +21,31 @@ Sight of the declared cases anchors the hunt on existing coverage — the explor
 *around* what is already asserted instead of deriving independently. The fence and its
 dispatch order exist to prevent exactly that.
 
-## Rules — load the schema first
+## Rules — delivered by mochiko-cli
 
-Your first action, before any derivation or probing step: **Read `schema.yaml` (this
-skill's own directory) raw, in full** — the small families ship no common file, so the
-pair's own schema is the whole first action. The schema is the source of truth for this
-pass's binding rules, nested in six sections, each addressable by its section ID:
-`testing-gap-finding.sec.independence` · `testing-gap-finding.sec.scope` ·
-`testing-gap-finding.sec.inputs` · `testing-gap-finding.sec.verdict` ·
-`testing-gap-finding.sec.output` · `testing-gap-finding.sec.reserved`. Interpret it live:
-a rule's `kind:` names what it is, and an absent `kind:` reads `constraint`; a rule's
-`when:` resolves against the schema's declared `conditions:` — run scope, depth, and
-mutation-tool presence — and gates when the obligation applies, never whether it is
-delivered; a rule of `class: floor` is always read and always delivered whatever its
-`when:`; a `pointer:` rule binds you to that file's or skill's procedure, referenced never
-restated; labels come from `plugins/mochiko/schemas/skill-labels.yaml`. The floor pin: the
-9 rules of `class: floor` are non-waivable. Before the first derivation or probing step,
-state the floor count back — a skipped or partial read leaves that count blank: halt and
-surface it, and halt likewise if the schema's `class: floor` count disagrees with the pin.
+Your rules arrive below, rendered at fire by `mochiko-cli` from the migration log this plugin
+carries — one block per section. Every block opens with a version-triple line
+(`mochiko-cli rules testing-gap-finding · section <id> · binary <v> · grammar <g> · plugin <p>`) and
+closes with an end line (`mochiko-cli rules end · testing-gap-finding · <id> · <N> rules`). **Proceed
+only when every block carries both lines in that exact shape, from whichever channel delivered
+it — this slot, or the plugin's dependency hook on a Skill-tool call.** Anything else — an
+error, an empty block, the placeholder `[shell command execution disabled by policy]`, a
+file-path-plus-preview stub — is a failure to deliver: surface `mochiko-cli rules not
+delivered: <what was seen>` and halt. Never Read a schema file instead; there is no fallback.
+The `legend` in the preamble block is the reading grammar; a `pointer:` binds you to that
+file's or skill's procedure, referenced never restated.
+
+!`mochiko-cli rules testing-gap-finding --section preamble --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules testing-gap-finding --section testing-gap-finding.sec.independence --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules testing-gap-finding --section testing-gap-finding.sec.scope --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules testing-gap-finding --section testing-gap-finding.sec.inputs --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules testing-gap-finding --section testing-gap-finding.sec.verdict --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules testing-gap-finding --section testing-gap-finding.sec.output --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules testing-gap-finding --section testing-gap-finding.sec.reserved --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+
+Before the first procedural step, state back the floor count the preamble's `class: floor` pin
+prints and the ids its `floors:` line lists; a blank or partial read-back is a skipped read —
+halt and surface it.
 
 ## When NOT to Use
 

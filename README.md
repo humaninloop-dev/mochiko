@@ -16,8 +16,8 @@ Two steps. Both are required.
 ```
 
 **2. The `mochiko-cli` binary.** From this version the plugin **depends** on it: every command's
-rules are rendered at fire by the binary, and a command **halts** when it is missing rather than
-falling back to anything. The plugin never ships it — you install it once, as
+and skill's rules are rendered at fire by the binary, and a command or skill **halts** when it is
+missing rather than falling back to anything. The plugin never ships it — you install it once, as
 you would any other developer tool. A Rust toolchain is required, and until the first crates.io
 release the install is straight from GitHub:
 

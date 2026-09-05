@@ -438,6 +438,169 @@ fn the_preamble_pins_match_the_corpus() {
     );
 }
 
+// ---------------------------------------------------------------------------
+// the floor index (wave 5 §2)
+// ---------------------------------------------------------------------------
+
+/// The `floors:` line of a preamble render, whole.
+fn floors_line(render: &str) -> &str {
+    render
+        .lines()
+        .find(|line| line.starts_with("floors: "))
+        .unwrap_or_else(|| panic!("the preamble carries no floors line:\n{render}"))
+}
+
+/// The ids the floor index names, in the order it names them. `floors: none` is the empty set.
+fn floor_ids(render: &str) -> Vec<&str> {
+    match floors_line(render).trim_start_matches("floors: ") {
+        "none" => Vec::new(),
+        list => list.split(" · ").collect(),
+    }
+}
+
+/// The number the `class: floor` pin prints, which the index must agree with.
+fn floor_pin(render: &str) -> usize {
+    let line = render
+        .lines()
+        .find(|line| line.starts_with("- class: floor · "))
+        .unwrap_or_else(|| panic!("the preamble carries no floor pin:\n{render}"));
+    line.trim_start_matches("- class: floor · ")
+        .trim_end_matches(" rules")
+        .parse()
+        .unwrap_or_else(|_| panic!("the floor pin is not a count: {line:?}"))
+}
+
+/// Render order is sections as declared, rules in section order — so the three fixture floors,
+/// which sit in three different sections, are the case that can tell that order from any other.
+#[test]
+fn the_preamble_indexes_every_floor_id_in_render_order() {
+    let state = rules_state("floors");
+    let out = render::preamble(&state, &command(), &ctx()).unwrap();
+    assert_eq!(
+        floors_line(&out),
+        "floors: demo.stub · demo.boundary · demo.fail.unaccepted"
+    );
+    assert_eq!(floor_ids(&out).len(), floor_pin(&out), "index against pin");
+}
+
+#[test]
+fn a_skill_preamble_indexes_its_floor_ids_too() {
+    let state = rules_state("skillfloors");
+    let out = render::preamble(&state, &skill(), &ctx()).unwrap();
+    assert_eq!(
+        floors_line(&out),
+        "floors: review-demo.not-the-author · review-demo.user-rules"
+    );
+    assert_eq!(floor_ids(&out).len(), floor_pin(&out), "index against pin");
+}
+
+/// The line the converted `.md`'s read-back sentence names sits with the pin it restates, and it
+/// is not a rule: the preamble still counts zero.
+#[test]
+fn the_floor_index_sits_between_the_pins_and_the_legend() {
+    let state = rules_state("floorsplace");
+    let out = render::preamble(&state, &command(), &ctx()).unwrap();
+    let pins_at = out.find("\npins\n").expect("the pins block is present");
+    let floors_at = out.find("\nfloors: ").expect("the floor index is present");
+    let legend_at = out.find("\nlegend\n").expect("the legend block is present");
+    assert!(
+        pins_at < floors_at && floors_at < legend_at,
+        "the floor index sits between the pins and the legend:\n{out}"
+    );
+    assert_eq!(
+        out.trim_end().lines().last().unwrap(),
+        "mochiko-cli rules end · demo · preamble · 0 rules",
+        "the floor index is not a rule:\n{out}"
+    );
+}
+
+/// No shipped primitive carries an empty floor set — the corpus runs from 2 floors to 34 — so the
+/// `none` branch can only be reached through a fixture. Imported as a second migration rather
+/// than folded into `RULES_LOG`, which some thirty tests read.
+#[test]
+fn a_primitive_with_no_floor_rule_indexes_none() {
+    let dir = log_dir("floorless");
+    write_migration(&dir, "0001-genesis.yaml", RULES_LOG);
+    write_migration(
+        &dir,
+        "0002-floorless.yaml",
+        r#"
+grammar: 1
+id: 0002-floorless
+sequence: 2
+intent: Import a review skill carrying no floor rule, a shape the shipped corpus has nowhere.
+changes:
+  - op: import-document
+    kind: skill
+    name: review-floorless
+    content:
+      kind: skill
+      skill: review-floorless
+      sections:
+        - id: review-floorless.sec.independence
+          title: Independence
+          intent: Who may run this skill.
+          rules:
+            - id: review-floorless.not-the-author
+              labels: [independence]
+              class: must
+              text: The author never grades their own artifact.
+        - id: review-floorless.sec.scope
+          title: Scope
+          intent: What is graded.
+          rules:
+            - id: review-floorless.scope-fence
+              labels: [scope]
+              class: must
+              text: Grade the artifact, never the author.
+        - id: review-floorless.sec.inputs
+          title: Inputs
+          intent: What the skill reads.
+          note: The skill reads the artifact and nothing else.
+          rules: []
+        - id: review-floorless.sec.verdict
+          title: Verdict
+          intent: The verdict grammar.
+          rules:
+            - id: review-floorless.inherited-verdict
+              extends: review-common.shared-verdict
+              class: must
+        - id: review-floorless.sec.output
+          title: Output
+          intent: The report shape.
+          rules:
+            - id: review-floorless.report-shape
+              labels: [scope]
+              class: must
+              text: The report names every finding.
+        - id: review-floorless.sec.reserved
+          title: Reserved
+          intent: Reserved to the user.
+          rules:
+            - id: review-floorless.user-rules
+              labels: [independence]
+              class: must
+              text: The user rules the verdict's consequence.
+"#,
+    );
+    let state = replay::load(&dir).unwrap_or_else(|findings| {
+        let lines: Vec<String> = findings.iter().map(ToString::to_string).collect();
+        panic!(
+            "the floorless corpus should be deliverable:\n{}",
+            lines.join("\n")
+        )
+    });
+
+    let doc = DocRef::new(DocKind::Skill, "review-floorless");
+    let out = render::preamble(&state, &doc, &ctx()).unwrap();
+    assert!(
+        out.contains("- class: floor · 0 rules"),
+        "the pin counts no floors:\n{out}"
+    );
+    assert_eq!(floors_line(&out), "floors: none");
+    assert!(floor_ids(&out).is_empty(), "the index is empty:\n{out}");
+}
+
 /// The reading grammar the converted command's `.md` no longer restates, verbatim from the wave-3
 /// plan §2 and widened at wave 4 with the three things P2 found the old Rules block taught and
 /// the legend did not. A golden test rather than a shape assertion: the `.md` points at this
@@ -880,6 +1043,132 @@ fn no_shipped_section_renders_past_the_inline_ceiling() {
     eprintln!(
         "measured {measured} renders; largest is {} at {} chars (ceiling {CEILING})",
         largest.0, largest.1
+    );
+}
+
+// ---------------------------------------------------------------------------
+// the floor index against the shipped corpus
+// ---------------------------------------------------------------------------
+
+/// `implement`'s floor set, the corpus's largest, in render order. Written out rather than
+/// derived: a floor rule added, renamed or reordered should break a test here, because the
+/// converted `.md`'s read-back and the contract suite's frozen expectations both key on this set.
+const IMPLEMENT_FLOORS: [&str; 34] = [
+    "impl.gate-design-checkpoint",
+    "impl.gate-card-confirm",
+    "impl.gate-final-acceptance",
+    "impl.graded-fold",
+    "impl.author-grader-default-fail",
+    "impl.baselines-never-in-place",
+    "impl.deviation-gate",
+    "impl.constitution-supremacy",
+    "impl.constraint-challenge",
+    "impl.attempt-per-grade",
+    "impl.attempt-exemption-user-only",
+    "impl.no-progress-stop",
+    "impl.epic-member-halt",
+    "impl.gap-rework-bound",
+    "impl.gates-never-triaged",
+    "impl.minimalism-advisory",
+    "impl.lane-never-widens",
+    "impl.sound-loop-floor",
+    "impl.transport-floor",
+    "impl.fail.sufficiency-unrecorded",
+    "impl.fail.design-skipped",
+    "impl.fail.card-independence",
+    "impl.fail.card-unchecked",
+    "impl.fail.quality-gate",
+    "impl.fail.no-evidence",
+    "impl.fail.regression",
+    "impl.fail.baseline-in-place",
+    "impl.fail.deviation-unresolved",
+    "impl.fail.store-landing-incomplete",
+    "impl.fail.ungraded-fold",
+    "impl.fail.gap-finding-missing",
+    "impl.fail.skip-unstated",
+    "impl.fail.spec-gap-unresolved",
+    "impl.fail.no-acceptance",
+];
+
+/// A skill's floor set, the review family's referent, in render order.
+const REVIEW_BRAINSTORM_FLOORS: [&str; 9] = [
+    "review-brainstorm.never-in-the-room",
+    "review-brainstorm.blind-map-before-record-contact",
+    "review-brainstorm.author-grader",
+    "review-brainstorm.contested-needs-new-angle",
+    "review-brainstorm.never-default-ready",
+    "review-brainstorm.unverifiable-claim-is-finding",
+    "review-brainstorm.evidence-floor",
+    "review-brainstorm.verdict-is-input",
+    "review-brainstorm.findings-through-leads-pen",
+];
+
+#[test]
+fn the_shipped_floor_index_carries_the_recorded_sets() {
+    let state = shipped_state();
+    for (doc, expected) in [
+        (
+            DocRef::new(DocKind::Command, "implement"),
+            IMPLEMENT_FLOORS.as_slice(),
+        ),
+        (
+            DocRef::new(DocKind::Skill, "review-brainstorm"),
+            REVIEW_BRAINSTORM_FLOORS.as_slice(),
+        ),
+    ] {
+        let out = render::preamble(&state, &doc, &ctx())
+            .unwrap_or_else(|e| panic!("{} renders its preamble: {e}", doc.name));
+        assert_eq!(floor_ids(&out), expected, "{}: the floor index", doc.name);
+    }
+}
+
+/// The property every converted `.md`'s read-back leans on: the count the pin prints and the ids
+/// the index lists are the same set, everywhere in the corpus. Both come from one iterator in the
+/// render, so this test guards the code that keeps them together.
+#[test]
+fn every_shipped_floor_index_matches_its_pin() {
+    let state = shipped_state();
+    let mut checked = 0usize;
+    for (doc, document) in &state.docs {
+        if !matches!(doc.kind, DocKind::Command | DocKind::Skill) {
+            continue;
+        }
+        let _ = document.as_rules().expect("a rule-bearing document");
+        let out = render::preamble(&state, doc, &ctx())
+            .unwrap_or_else(|e| panic!("{} renders its preamble: {e}", doc.name));
+        assert_eq!(
+            floor_ids(&out).len(),
+            floor_pin(&out),
+            "{}: the index and the pin disagree:\n{out}",
+            doc.name
+        );
+        checked += 1;
+    }
+    assert_eq!(checked, 36, "six commands and thirty skills");
+}
+
+/// The index's own size at its widest, pinned the way the legend's is: every converted primitive
+/// pays it on every preamble render, and it is a render-shape change a plugin bump names.
+#[test]
+fn the_widest_shipped_floor_index_is_the_size_the_wave_recorded() {
+    let state = shipped_state();
+    let mut widest = (String::new(), 0usize, 0usize);
+    for (doc, _) in state
+        .docs
+        .iter()
+        .filter(|(doc, _)| matches!(doc.kind, DocKind::Command | DocKind::Skill))
+    {
+        let out = render::preamble(&state, doc, &ctx())
+            .unwrap_or_else(|e| panic!("{} renders its preamble: {e}", doc.name));
+        let line = floors_line(&out);
+        if line.chars().count() > widest.1 {
+            widest = (doc.name.clone(), line.chars().count(), line.len());
+        }
+    }
+    assert_eq!(
+        (widest.0.as_str(), widest.1, widest.2),
+        ("implement", 945, 978),
+        "the widest floor index moved"
     );
 }
 

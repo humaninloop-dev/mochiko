@@ -26,21 +26,21 @@ uncompressed. Prior groom narrative: git history (this line, before this groom).
 *(ruled + accepted 2026-09-03, `cli-schema-delivery` D1–D11 as review-amended; provenance:
 `.mochiko/brainstorms/cli-schema-delivery/record.md`; session ran in worktree `cli-context`)*
 
-- [ ] **Build: CLI-delivered schemas, six waves — waves 0–4 DONE; wave 5 (skills) OPEN**
+- [ ] **Build: CLI-delivered schemas, six waves — waves 0–5 DONE; wave 6 (end state) next**
   (2026-09-03; provenance: record D9 + build surface + the per-wave `waveN-plan.md` /
-  `waveN-reports/` under the record's directory) — waves 0–3 done 2026-09-03/04 (probes ·
-  crate · governance v3.0.0 · pilot at v0.104.0); **wave 4 DONE 2026-09-04 at v0.105.0** (all
-  six commands CLI-served; `reword-section` + `migrate stamp` + migration 0002; frozen
-  fidelity fixture; 20/20 suite) — its read-back trip diagnosed as a bar property (18-session
-  diagnostic, 16/16 answering replicates exact) and **criterion (1) re-keyed** to the
-  deterministic floor-delivery assert (governance PATCH v3.0.2; DECISIONS 2026-09-04).
-  **Wave 5 OPEN 2026-09-04:** skills by family (review · authoring · patterns · dense five;
-  the `PreToolUse` `Skill` limb goes live; a `floors:` preamble line; the suite re-keyed
-  first; skill-pair converted clauses in `primitive-edits.md`). **Wave 6** end state; the D13
-  checker flags every converted command until its retirement there. **Wave-2 tail, still
-  owed:** signed tags + the `crates-io` approval rule, then lift the two gates, tag
-  `mochiko-cli-v0.1.0`, publish — what makes `cargo install mochiko-cli` true (README carries
-  the git-install line until then). Rollback user-reserved per wave; GI-006 on log + strips.
+  `waveN-reports/`) — waves 0–4 done 2026-09-03/04 (probes · crate · governance v3.0.0 ·
+  pilot v0.104.0 · five commands v0.105.0 with the read-back trip diagnosed and criterion (1)
+  re-keyed, PATCH v3.0.2); **wave 5 DONE 2026-09-04 at v0.106.0** — all 30 skills CLI-served,
+  `floors:` line, criterion (1) clear on all 36, criterion (2) per family (patterns +17.8 % ·
+  dense five +8.7 %, pre-stated), budgets re-seeded per D10.6, F15 hook fix. **Wave 6 (end
+  state):** delete the shipped snapshot files, views to `.mochiko/schema-views/`, retire the
+  Python checkers (both D13 checkers now flag every converted primitive), migrate the 32
+  two-arm sites (incl. `specify` Goal), freeze the sidecar, expire the transition clause
+  (pre-authorized PATCH), re-key `primitive-edits.md`; plus the wave-5 follow-ups — a skill
+  variant of the legend, three dense-five bodies saying rules live "in the schema", the
+  expansion-path presence line outside the payload figures, a name sanitizer in the hook, an
+  optional shorter skill halt paragraph. **Wave-2 tail, still owed:** signed tags + the
+  `crates-io` approval rule, then lift the two gates, tag `mochiko-cli-v0.1.0`, publish.
 
 ## Skill-content schema build
 

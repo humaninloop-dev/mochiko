@@ -66,8 +66,18 @@ import shlex
 import shutil
 import subprocess
 import sys
+import time
 import uuid
 from typing import NamedTuple
+
+# When this run began, and every directory it staged. Both exist for one check — that the frozen
+# skill expectations predate the run they grade — and neither is read by anything else.
+RUN_STARTED = time.time()
+STAGED_ROOTS: list = []
+
+
+def _stamp(when: float) -> str:
+    return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(when))
 
 REPO = pathlib.Path(__file__).resolve().parents[2]
 CONTRACT = REPO / "evals" / "contract"
@@ -284,19 +294,205 @@ EXPECTED = {
 # The pilot's own row, under the name the wave-3 suite and its audit use for it.
 FLOOR_IDS = EXPECTED[PILOT_COMMAND].floor_ids
 
+# Wave 5 pre-registered the thirty schema-bearing skills the same way, but out of line: thirty
+# rows of floor ids run to a few hundred entries, so they live in `expected-skills.json` beside
+# this file rather than in it. The file is written from the render and the working tree **before
+# any skill is converted and before the wave's first session**, and is never edited afterwards;
+# `converted-shape` reports its mtime against the run's own evidence directories so the ordering
+# is checkable rather than asserted in prose. Its rows carry two figures this file's `Expected`
+# has no room for — the family, and the pre-conversion `SKILL.md` size — because after the
+# conversion lands `HEAD` no longer carries the latter.
+EXPECTED_SKILLS_FILE = CONTRACT / "expected-skills.json"
+
+
+def load_expected_skills() -> tuple[dict, dict]:
+    """The frozen skill rows, as `Expected` records and as their full selves.
+
+    A missing file is not an error here: the suite has to remain runnable on a tree where the
+    freeze has not happened yet, and the cases that need a row say so loudly when they run.
+    """
+    if not EXPECTED_SKILLS_FILE.is_file():
+        return {}, {}
+    payload = json.loads(EXPECTED_SKILLS_FILE.read_text(encoding="utf-8"))
+    rows = payload.get("skills") or {}
+    expected = {
+        name: Expected(frozenset(row["floor_ids"]), row["baseline_bytes"])
+        for name, row in rows.items()
+    }
+    return expected, payload
+
+
+EXPECTED_SKILLS, SKILL_FREEZE = load_expected_skills()
+
+
+def expectation(name: str) -> Expected | None:
+    """One primitive's pre-registered row, whichever table holds it."""
+    return EXPECTED.get(name) or EXPECTED_SKILLS.get(name)
+
+
+def family_of(skill: str) -> str | None:
+    return ((SKILL_FREEZE.get("skills") or {}).get(skill) or {}).get("family")
+
 # The read-back metric (D8): N replicates, the bar pre-registered before the first run and
 # unchanged after it. One bar for every command, `implement`'s thirty-four ids included — the same
 # pre-registration as the pilot. Reported, never gating.
 READ_BACK_REPLICATES = 3
 READ_BACK_BAR = 3
 
-# The probe topic. It asks for one line before anything else so the metric is readable without a
-# judge: the model either names the floor set it was delivered, or it does not. It is passed as
-# the command's argument and says nothing command-specific, so one text serves all six.
-PROBE_TOPIC = (
-    "CONTRACT PROBE — before your first question reply with exactly one line "
-    "`FLOOR: <every class: floor rule id you were delivered, comma-separated>` then stop."
+# The probe topic, in the two-line form the wave-4 diagnostic pre-registered and the wave-5
+# re-key adopts for every delivery case. Two things changed from the one-line wave-4 probe, both
+# for reasons that run measured this:
+#
+# 1. **A gate-valid argument comes first.** At wave 4 the instruction text *was* the whole
+#    argument, and a model following its primitive's own Entry protocol sometimes refused it as
+#    injected text — which is the behaviour the primitives are written to produce. `$ARGUMENTS`
+#    takes everything after the name, so the instruction cannot be moved out of the argument in a
+#    headless run; what can be done is to put a token the primitive accepts at the front.
+# 2. **Two lines, not one.** A model that knows how many floor rules it holds but cannot list
+#    them is failing enumeration, not delivery, and one line cannot show that.
+#
+# Neither line gates anything: criterion (1) is `assert_floor_delivery`, which reads the delivered
+# blocks in the transcript rather than the model's account of them.
+PROBE_INSTRUCTION = (
+    "CONTRACT PROBE — before your first question, and before anything else, reply with exactly "
+    "these two lines and then stop:\n"
+    "FLOOR-COUNT: <how many class: floor rules you were delivered, as a number>\n"
+    "FLOOR: <every class: floor rule id you were delivered, comma-separated>"
 )
+
+# The gate-valid argument per primitive, and why its own entry accepts it. Every row was written
+# by reading that primitive's opening and first procedural step before the wave's first session —
+# the procedure `diagnostic.py` used for the six commands, whose rows are carried here verbatim
+# with their justifications. (Carried rather than imported: the diagnostic imports this file, so
+# the dependency may not run the other way, and it is a frozen wave-4 artifact rather than a live
+# input. The duplication is deliberate and disclosed in the README.)
+#
+# Two argument shapes appear. A primitive whose entry takes free text gets a one-word subject. A
+# primitive whose entry takes an artifact gets a path that does not exist, so its own missing-input
+# or routing branch runs instead of the argument becoming the thing under test.
+PROBE_ARGUMENTS = {
+    # --- commands, from `diagnostic.py`'s pre-registered table -------------------------------
+    "architecture": (
+        "caching",
+        "Entry: `$ARGUMENTS` = the incoming architecture demand or store query. Free text; a "
+        "one-word demand is accepted and the health view is surfaced either way.",
+    ),
+    "brainstorm": (
+        "caching",
+        "Entry: `$ARGUMENTS` = the topic. Free text; only an empty topic is sent back.",
+    ),
+    "feature": (
+        "caching",
+        "Entry: `$ARGUMENTS` = the incoming demand or map query. Free text; health is surfaced "
+        "before the request is taken either way.",
+    ),
+    "implement": (
+        ".mochiko/features/FEAT-000/cards/CARD-000.md",
+        "Entry gates on a capability entry: a spec's accepted selection, or a desk-confirmed "
+        "delta card. A delta-card path that does not exist is neither, so Entry takes its own "
+        "routing branch rather than validating a FEAT id or proposing one.",
+    ),
+    "setup": (
+        "caching",
+        "Entry: `$ARGUMENTS` = an optional setup request, and empty is explicitly fine, so any "
+        "free-text request passes.",
+    ),
+    "specify": (
+        "caching",
+        "Entry: `$ARGUMENTS` = the feature description. Free text; only an empty one is sent back.",
+    ),
+    # --- review family: each grades an artifact the caller supplies --------------------------
+    "review-brainstorm": (
+        ".mochiko/brainstorms/probe/record.md",
+        "Cold reviewer of a frozen `record.md`; the argument is that record. A path that does "
+        "not exist takes the skill's own missing-input branch, after the read-back.",
+    ),
+    "review-code-minimalism": (
+        ".mochiko/specs/probe/cycle-report.md",
+        "Reads a cycle's diff and its `cycle-report.md`; the argument names the report.",
+    ),
+    "review-feasibility": (
+        ".mochiko/specs/probe/",
+        "Grades a design-phase artifact package for cross-artifact feasibility; the argument is "
+        "that package's directory.",
+    ),
+    "review-governance-intent": (
+        ".mochiko/memory/governance-intent.md",
+        "Cold reviewer of the frozen `governance-intent.md`; the argument is that file, and the "
+        "path is the real one so the seat's own scoping step is what runs.",
+    ),
+    "review-plan-artifacts": (
+        ".mochiko/specs/probe/",
+        "Completeness grader over the design-phase output package the caller supplies.",
+    ),
+    "review-specifications": (
+        ".mochiko/specs/probe/spec.md",
+        "Gap-finder over an already-drafted spec; the argument is that spec.",
+    ),
+    "review-sufficiency": (
+        ".mochiko/features/FEAT-000/",
+        "Grades one unit of selected work — the map's own unit of scope — so the argument is a "
+        "capability entry directory.",
+    ),
+    "validation-constitution": (
+        ".claude/rules/mochiko/",
+        "Grades a drafted governance surface set; the argument names the rules directory that "
+        "set lands in.",
+    ),
+    # --- authoring family: a subject to author for --------------------------------------------
+    "authoring-architecture-store": ("caching", "Authors a store write for a subject; free text."),
+    "authoring-constitution": (
+        ".mochiko/memory/governance-intent.md",
+        "Authors the surface set from a ratified synthesis; the argument is that synthesis.",
+    ),
+    "authoring-epic": ("caching", "Authors an epic for a related batch; free text names it."),
+    "authoring-feature-map": ("caching", "Authors a map delta for a capability; free text."),
+    "authoring-prototype": ("caching", "Authors a prototype for a feature; free text."),
+    "authoring-requirements": ("caching", "Authors the FR/SC layer for a feature; free text."),
+    "authoring-technical-requirements": (
+        "caching",
+        "Authors the constraint layer for a feature; free text.",
+    ),
+    "authoring-user-stories": ("caching", "Transforms a feature description; free text."),
+    # --- patterns family: a technique applied to a subject -------------------------------------
+    "patterns-adopt-first": ("caching", "Runs the build-vs-buy ladder over a subject; free text."),
+    "patterns-architecture-shelves": ("caching", "Deals a shelf for a surface; free text."),
+    "patterns-code-minimalism": ("caching", "Runs the pre-code ladder over a task; free text."),
+    "patterns-map-minimalism": ("caching", "Runs the capability tests over a candidate; free text."),
+    "patterns-model-tiering": ("caching", "Routes a read by its class key; free text."),
+    "patterns-plan-minimalism": ("caching", "Runs the design ladder over an element; free text."),
+    "patterns-sound-loop": ("caching", "Wires the floor for a pending write; free text."),
+    "patterns-transport-floor": ("caching", "Applies the floor to a composition; free text."),
+    "patterns-vertical-tdd": ("caching", "Structures a feature into cycle cards; free text."),
+    # --- the dense five -------------------------------------------------------------------------
+    "analysis-codebase": (
+        ".",
+        "Analyses an existing codebase; the argument is the repository root, which exists, so "
+        "the skill's own detection step is what runs.",
+    ),
+    "brownfield-integration": (
+        ".mochiko/specs/probe/cards/CARD-000.md",
+        "Implements one card that touches existing code; the argument names that card.",
+    ),
+    "executing-tdd-cycle": (
+        ".mochiko/specs/probe/cards/CARD-000.md",
+        "Executes one cycle card at runtime; the argument names that card.",
+    ),
+    "testing-end-user": (
+        ".mochiko/specs/probe/tasks.md",
+        "Executes a `**TEST:**` task; the argument names the file carrying it.",
+    ),
+    "testing-gap-finding": (
+        "FEAT-000",
+        "Runs the blind pass over a selection; the argument is a capability id, its own unit.",
+    ),
+}
+
+
+def probe_prompt(name: str) -> str:
+    """The prompt one delivery replicate runs: the primitive, its argument, the instruction."""
+    argument = PROBE_ARGUMENTS[name][0]
+    return f"/mochiko:{name} {argument}\n\n{PROBE_INSTRUCTION}"
 
 # The pilot's baseline, under the names the wave-3 README and verdicts use. The two figures beside
 # it are `brainstorm`-only: `wc -m` of the same pair, and `wc -c` counting `command-labels.yaml`.
@@ -486,10 +682,23 @@ def transcript_text(events: list) -> str:
 
 
 def tool_uses(events: list) -> list:
+    """Every `tool_use` block in the stream.
+
+    Defensive about the event shape rather than trusting it: some rows carry `message` as a plain
+    string instead of an object, and the unguarded form raised `AttributeError` on the first
+    session that produced one (measured 2026-09-04, a natural-language dispatch). Every case in
+    the suite calls this, including the no-Read assertion, so a crash here would take down a run
+    rather than fail a check.
+    """
     uses = []
     for event in events:
-        message = event.get("message") or {}
-        for block in message.get("content") or []:
+        message = event.get("message")
+        if not isinstance(message, dict):
+            continue
+        content = message.get("content")
+        if not isinstance(content, list):
+            continue
+        for block in content:
             if isinstance(block, dict) and block.get("type") == "tool_use":
                 uses.append(block)
     return uses
@@ -724,6 +933,7 @@ def stage(case: str, source: pathlib.Path = FIXTURE) -> Staged:
     root.mkdir(parents=True, exist_ok=True)
     plugin = root / source.name
     shutil.copytree(source, plugin)
+    STAGED_ROOTS.append(root)
     return Staged(root, plugin)
 
 
@@ -1033,6 +1243,117 @@ def rendered_floor_ids(binary: str, primitive: str, plugin_root: pathlib.Path) -
     return found
 
 
+FLOORS_LINE = re.compile(r"^floors:[ \t]*(.*)$", re.M)
+
+
+def floors_from_render(binary: str, primitive: str, plugin_root: pathlib.Path
+                       ) -> tuple[set[str] | None, set[str], str | None]:
+    """The primitive's `class: floor` ids, read two ways, and any disagreement between them.
+
+    The preamble carries a `floors:` index line (wave-5 plan §2) listing every floor id in render
+    order, and `floors: none` when there are none. That line is the cheap read and the one the
+    `.md`'s read-back sentence cites. Walking the section renders is the expensive read and the
+    one that cannot be wrong by construction, because it is the rule bodies themselves.
+
+    Both are computed and returned. Their disagreement is a failing check wherever this is called,
+    which makes the index line's own correctness a thing the suite tests rather than trusts. The
+    first element is `None` when the render carries no `floors:` line at all — the shape before
+    P1's change, kept so this file stays runnable against an older binary.
+    """
+    preamble = render(binary, primitive, "preamble", plugin_root)
+    if preamble.returncode != 0:
+        return None, set(), f"the preamble render failed: {preamble.stderr.strip()[:200]!r}"
+    match = FLOORS_LINE.search(preamble.stdout)
+    listed = None
+    if match:
+        value = match.group(1).strip()
+        listed = set() if value == "none" else {
+            token.strip() for token in value.split("·") if token.strip()
+        }
+    walked = rendered_floor_ids(binary, primitive, plugin_root)
+    problem = None
+    if listed is not None and listed != walked:
+        problem = (
+            f"the `floors:` line and the section renders disagree — only on the line: "
+            f"{sorted(listed - walked)}; only in the sections: {sorted(walked - listed)}"
+        )
+    return listed, walked, problem
+
+
+def transcript_floor_ids(text: str) -> set[str]:
+    """Every rule id delivered into a session *as a floor rule*, read off the transcript.
+
+    The render's rule shape is an id heading followed by an attribute line, and this pairs them
+    the same way `rendered_floor_ids` pairs them on the binary's own output. Two properties make
+    it a delivery assertion rather than a recall one:
+
+    * The pair cannot come from the model. A read-back names ids comma-separated on a `FLOOR:`
+      line; the converted `.md` body carries no rule ids at all after the re-point. Only a
+      rendered block puts `### <id>` immediately above a `class: floor` attribute line.
+    * It is read from the transcript, which is where the delivered blocks actually are — the
+      stream carries no row containing the expanded prompt.
+    """
+    found, pending_id = set(), None
+    for line in text.splitlines():
+        stripped = line.strip()
+        if stripped.startswith("### "):
+            pending_id = stripped[4:].strip()
+        elif pending_id and stripped.startswith("[") and "class:" in stripped:
+            if "class: floor" in stripped:
+                found.add(pending_id)
+            pending_id = None
+    return found
+
+
+def assert_floor_delivery(text: str, expected: set[str]) -> str | None:
+    """**Criterion (1).** Every `class: floor` rule of the primitive reached the model.
+
+    This is the wave-5 re-key (record wave-4 section; the user's ruling at the wave open). The
+    wave-4 criterion was the model's own read-back, which measured recall of a long list and
+    tripped on three commands whose every missed id was verifiably present in the transcript they
+    read. This asks the question that was always meant: was it delivered. It is deterministic,
+    it gates, and the read-back stays beside it as a recorded measurement.
+
+    A superset test on purpose. Extra floor ids in a transcript cannot buy a false pass — they
+    would have to come from a rendered block, and delivering the wrong primitive's blocks still
+    fails the head-line and end-line assertions beside this one.
+    """
+    if not expected:
+        return None
+    delivered = transcript_floor_ids(text)
+    missing = sorted(expected - delivered)
+    if missing:
+        return (
+            f"{len(missing)} of {len(expected)} floor rules never reached the model as a "
+            f"`### <id>` heading with a `class: floor` line: {missing}"
+        )
+    return None
+
+
+def floor_pin(binary: str, primitive: str, plugin_root: pathlib.Path) -> int | None:
+    """The `class: floor` count the preamble itself pins.
+
+    The count line is graded against this rather than against `len(...)` of the pre-registered
+    set, so the two sides of that comparison cannot be the same number by construction. Same
+    function `diagnostic.py` carries, and for the same reason.
+    """
+    out = render(binary, primitive, "preamble", plugin_root)
+    if out.returncode != 0:
+        return None
+    inside = False
+    for line in out.stdout.splitlines():
+        if line.strip() == "pins":
+            inside = True
+            continue
+        if inside:
+            if not line.startswith("- "):
+                break
+            found = re.match(r"- class: floor · (\d+) rules?$", line)
+            if found:
+                return int(found.group(1))
+    return None
+
+
 def converted_primitives(plugin_root: pathlib.Path) -> list[tuple[str, str, pathlib.Path]]:
     """Every primitive whose rules come from the binary, as `(kind, name, file)`.
 
@@ -1061,6 +1382,27 @@ def converted_commands(plugin_root: pathlib.Path) -> list[str]:
     names = [name for kind, name, _ in converted_primitives(plugin_root) if kind == "command"]
     lead = [name for name in names if name == PILOT_COMMAND]
     return lead + [name for name in names if name != PILOT_COMMAND]
+
+
+def converted_skills(plugin_root: pathlib.Path) -> list[str]:
+    """Every converted skill, in the arc's own family order where the freeze knows it.
+
+    Discovered exactly as the commands are — the skill's own `SKILL.md` carries the `!` line — so
+    the case matrix grows family by family through wave 5 and a skill P2 has not re-pointed
+    contributes no case. Ordered by family (review · authoring · patterns · dense five, the
+    conversion order) and then by name, so a partial run's case list reads in the order the
+    families landed; a converted skill the freeze does not know sorts last and its cases fail
+    loudly on the missing row rather than being skipped.
+    """
+    names = [name for kind, name, _ in converted_primitives(plugin_root) if kind == "skill"]
+    order = list((SKILL_FREEZE.get("families") or {}))
+    return sorted(
+        names,
+        key=lambda name: (
+            order.index(family_of(name)) if family_of(name) in order else len(order),
+            name,
+        ),
+    )
 
 
 def unconverted_primitive(plugin_root: pathlib.Path, kind: str) -> str | None:
@@ -1307,6 +1649,39 @@ def assert_halt_before_model(events: list) -> str | None:
     return None
 
 
+def assert_hook_block(probed: Probed) -> str | None:
+    """The halt was the dependency hook blocking before expansion, and nothing else.
+
+    Two halt shapes exist for a converted primitive with no binary, and only one of them is
+    correct once the hook covers the path: the hook exits 2 *before* expansion, so the harness's
+    own notice rides the result event and **no `<local-command-stderr>` is injected**. The other
+    shape — the `!` line failing during expansion, its stderr injected — means the hook did not
+    fire, which is the regression this asserts against.
+
+    Both shapes halt safely, which is exactly why the weaker claim is not good enough here: a
+    check that accepted either would stay green through the hook silently losing its skill limb.
+    That is the tolerant-union failure the wave-3 audit ruled against.
+    """
+    result = result_event(probed.events)
+    if result is None:
+        return "the session produced no result event"
+    text = str(result.get("result") or "")
+    injected = local_command_stderr(probed.events)
+    if not text.startswith(HOOK_BLOCK_PREFIX):
+        return (
+            "the result event carries no hook-block notice, so the hook did not gate this run"
+            + (f"; the harness injected its own stderr instead: {injected[0].strip()[:160]!r}"
+               if injected
+               else f"; the result reads {text.strip()[:160]!r}")
+        )
+    if injected:
+        return (
+            "the hook blocked, but the `!` line also ran and its stderr was injected: "
+            f"{injected[0].strip()[:160]!r}"
+        )
+    return None
+
+
 def halt_shape(probed: Probed) -> dict:
     """The measured shape of a halt, recorded per case so the assertion can be keyed to it."""
     result = result_event(probed.events)
@@ -1361,7 +1736,7 @@ def score_read_back(text: str, command: str) -> tuple[list[str], bool]:
     present, nothing else, no partial credit — and a missing `FLOOR:` line is a failed replicate
     rather than a harness error.
     """
-    floor_ids = EXPECTED[command].floor_ids
+    floor_ids = expectation(command).floor_ids
     match = FLOOR_LINE.search(text)
     if not match:
         return [], False
@@ -1373,6 +1748,38 @@ def score_read_back(text: str, command: str) -> tuple[list[str], bool]:
         if token:
             tokens.append(token)
     return tokens, set(tokens) == set(floor_ids)
+
+
+COUNT_LINE = re.compile(r"^\s*\**FLOOR-COUNT:\**\s*(.*)$", re.M)
+
+
+def score_two_line(text: str, primitive: str, pin: int | None) -> dict:
+    """One replicate's read-back, graded the diagnostic's four ways. Gates nothing.
+
+    Carried over from `diagnostic.py`'s `score()`, which the wave-4 delta audit recomputed across
+    all eighteen replicates with zero mismatches. The count leg is graded against the preamble's
+    own pin and the ids leg against the pre-registered set, so a model that holds the right number
+    but cannot list them is visibly failing enumeration rather than delivery.
+    """
+    expected = set(expectation(primitive).floor_ids)
+    count_match = COUNT_LINE.search(text)
+    raw_count = count_match.group(1).strip() if count_match else ""
+    digits = re.search(r"\d+", raw_count)
+    named_count = int(digits.group()) if digits else None
+    tokens, ids_exact = score_read_back(text, primitive)
+    got = set(tokens)
+    return {
+        "count_line": raw_count or None,
+        "named_count": named_count,
+        "pin": pin,
+        "count_exact": named_count is not None and pin is not None and named_count == pin,
+        "ids_named": len(got),
+        "ids_exact": ids_exact,
+        "ids_superset": expected.issubset(got),
+        "omitted": sorted(expected - got),
+        "extra": sorted(got - expected),
+        "tokens": tokens,
+    }
 
 
 def delivered_blocks(text: str, primitive: str) -> dict[str, str]:
@@ -1503,15 +1910,25 @@ def case_hook_input(runner, sandbox) -> tuple[list, pathlib.Path]:
     (bin_dir / "mochiko-cli").symlink_to(binary)
     present_path = f"{bin_dir}:{absent_path}"
 
-    # A converted skill to exercise the `PreToolUse` limb. Written into the staged copy only: no
-    # skill is converted at wave 3, and converting one for a test would be a plugin edit.
-    stub = staged.plugin / "skills" / "contract-stub"
-    stub.mkdir(parents=True, exist_ok=True)
-    (stub / "SKILL.md").write_text(
-        "---\nname: contract-stub\ndescription: staged-only stub for the hook-input case\n---\n\n"
-        "!`mochiko-cli rules contract-stub --section preamble`\n",
-        encoding="utf-8",
-    )
+    # The `PreToolUse` limb's subjects. From wave 5 these are real: every schema-bearing skill is
+    # converted, so the rows iterate the shipped set exactly as the command rows do, and the hook
+    # is tested against the names it will actually see. Before that landing there is nothing
+    # converted to point at, so the case writes a stub into its own staged copy rather than
+    # dropping the limb — the wave-3 arrangement, kept for exactly as long as it is needed.
+    skill_subjects = converted_skills(staged.plugin)
+    if not skill_subjects:
+        stub = staged.plugin / "skills" / "contract-stub"
+        stub.mkdir(parents=True, exist_ok=True)
+        (stub / "SKILL.md").write_text(
+            "---\nname: contract-stub\ndescription: staged-only stub for the hook-input case\n"
+            "---\n\n!`mochiko-cli rules contract-stub --section preamble`\n",
+            encoding="utf-8",
+        )
+        skill_subjects = ["contract-stub"]
+        notes.append(
+            "no skill is converted yet, so the `PreToolUse` rows used a staged-only stub "
+            "`skills/contract-stub/SKILL.md` (wave-3 arrangement)"
+        )
 
     unconverted_command = unconverted_primitive(staged.plugin, "command")
     unconverted_skill = unconverted_primitive(staged.plugin, "skill")
@@ -1639,22 +2056,60 @@ def case_hook_input(runner, sandbox) -> tuple[list, pathlib.Path]:
             )
         )
 
-    proc = hook(dependency, skill_with("mochiko:contract-stub"), absent_path)
-    decision, problem = json_field(proc, "hookSpecificOutput", "permissionDecision")
-    if problem is None and decision != "deny":
-        problem = f"permissionDecision was {decision!r}, expected 'deny'"
-    if problem is None:
-        reason_text, problem = json_field(
-            proc, "hookSpecificOutput", "permissionDecisionReason"
+    # Every converted skill, for the same reason the command rows iterate: the hook puts the
+    # primitive's own name back in the deny reason, so a per-skill row is what proves the user is
+    # told which skill halted.
+    for skill in skill_subjects:
+        proc = hook(dependency, skill_with(f"mochiko:{skill}"), absent_path)
+        decision, problem = json_field(proc, "hookSpecificOutput", "permissionDecision")
+        if problem is None and decision != "deny":
+            problem = f"permissionDecision was {decision!r}, expected 'deny'"
+        if problem is None:
+            reason_text, problem = json_field(
+                proc, "hookSpecificOutput", "permissionDecisionReason"
+            )
+            if problem is None and INSTALL_LINE not in str(reason_text):
+                problem = f"the deny reason is missing {INSTALL_LINE!r}: {reason_text!r}"
+            if problem is None and f"/mochiko:{skill}" not in str(reason_text):
+                problem = f"the deny reason never names `/mochiko:{skill}`: {reason_text!r}"
+        checks.append(
+            ok(f"converted skill `{skill}` + no binary: a JSON deny carrying the install line",
+               problem)
         )
-        if problem is None and INSTALL_LINE not in str(reason_text):
-            problem = f"the deny reason is missing {INSTALL_LINE!r}: {reason_text!r}"
-    checks.append(ok("converted skill + no binary: a JSON deny carrying the install line", problem))
+
+    # --- the prompt-expansion path for a skill -------------------------------------------
+    #
+    # A `/mochiko:<skill>` prompt line raises `UserPromptExpansion`, not `PreToolUse`: measured at
+    # the wave-5 shape probes, which found no `Skill` tool call happens at all. The hook resolves
+    # the name against `commands/<bare>.md` first and falls back to `skills/<bare>/SKILL.md`, so
+    # one primitive name reaches it down two different limbs and both have to be right. These rows
+    # exist because the fallback did not: the wave-5 run measured a converted skill arriving with
+    # no hook gating it, and this is the row that would have caught that.
+    for skill in skill_subjects:
+        proc = hook(dependency, upe_with(f"mochiko:{skill}"), absent_path)
+        problems = []
+        if proc.returncode != 2:
+            problems.append(f"exit {proc.returncode}, expected 2")
+        for fragment in (INSTALL_LINE, f"/mochiko:{skill}"):
+            if fragment not in proc.stderr:
+                problems.append(f"stderr is missing {fragment!r}")
+        if proc.stdout.strip():
+            problems.append(f"stdout was not empty: {proc.stdout.strip()[:120]!r}")
+        checks.append(
+            ok(
+                f"skill `{skill}` down the prompt-expansion limb + no binary: exit 2 and the "
+                "install line",
+                "; ".join(problems) if problems else None,
+            )
+        )
 
     # --- presence: one confirmation line, per registration, and never the rules ----------
     payloads = [(upe_with(f"mochiko:{command}"), "command", command)
                 for command in converted_commands(staged.plugin)]
-    payloads.append((skill_with("mochiko:contract-stub"), "skill", "contract-stub"))
+    payloads += [(skill_with(f"mochiko:{skill}"), "skill", skill) for skill in skill_subjects]
+    # The same skills again, down the prompt-expansion limb: the noun must still be `skill`,
+    # because the confirmation names what was actually resolved and not which event carried it.
+    payloads += [(upe_with(f"mochiko:{skill}"), "skill", skill) for skill in skill_subjects]
     for payload, noun, subject in payloads:
         proc = hook(dependency, payload, present_path)
         context, problem = json_field(proc, "hookSpecificOutput", "additionalContext")
@@ -1872,7 +2327,7 @@ def case_render_ceiling(runner, sandbox) -> tuple[list, pathlib.Path]:
 # sandbox cases — the converted command in a real session
 # ---------------------------------------------------------------------------
 
-def command_expectations(
+def primitive_expectations(
     plugin: pathlib.Path, command: str
 ) -> tuple[list[str], dict[str, int], str | None]:
     """What the delivery must carry, read from the binary rather than written down here.
@@ -2012,38 +2467,73 @@ echo "FIRE $(( (t1 - t0) / 1000000 ))"
 MEASURED: list[dict] = []
 
 
-def case_delivery(command: str):
-    """Build the happy-path case for one converted command.
+def case_delivery(kind: str, name: str):
+    """Build the happy-path case for one converted primitive, command or skill.
 
-    The wave-3 pilot case, parameterized. Every assertion is the one `brainstorm-delivery` carried
-    at wave 3, with the command name substituted and nothing else changed, so the keying that
-    audit established survives the generalization.
+    The wave-3 pilot case, parameterized twice: at wave 4 across the six commands, and here
+    across both kinds. Every command-side assertion is the one `brainstorm-delivery` carried at
+    wave 3, so the keying that audit established survives both generalizations; the skill side
+    adds the four assertions its own delivery path has and the commands do not.
 
-    Three replicates, because the read-back metric needs them (D8). The delivery assertions are
-    checked on every replicate rather than the first — if delivery were flaky, a single-replicate
-    check would find it only by luck, and flakiness is exactly the failure this suite exists for.
+    What changed at wave 5 is which check gates. Criterion (1) is now `assert_floor_delivery` —
+    the floor rules present in the transcript as rendered blocks — and the model's read-back
+    became a recorded two-line measurement beside it. The wave-4 evidence is why: three commands
+    tripped the read-back bar while every missed id was verifiably delivered, so the bar was
+    grading recall of a long list and calling it delivery.
+
+    Three replicates, and every delivery assertion runs on all three rather than on the first: if
+    delivery were flaky a single-replicate check would find it only by luck, and flakiness is
+    exactly the failure this suite exists for.
     """
-    case_name = f"{command}-delivery"
+    case_name = f"{name}-delivery"
 
     def run(runner, sandbox: "Sandbox") -> tuple[list, pathlib.Path]:
         staged = stage(case_name, PLUGIN)
-        if command not in EXPECTED:
+        row = expectation(name)
+        if row is None or name not in PROBE_ARGUMENTS:
             checks = [
                 ok(
-                    f"`{command}` has a pre-registered floor set and baseline",
-                    f"no `{command}` row in EXPECTED — a converted command whose read-back bar "
-                    "and baseline were never pre-registered cannot be measured",
+                    f"`{name}` has a pre-registered floor set, baseline and probe argument",
+                    f"missing for `{name}`: "
+                    + ", ".join(
+                        what
+                        for what, present in (
+                            ("a frozen expectation row", row is not None),
+                            ("a probe argument", name in PROBE_ARGUMENTS),
+                        )
+                        if not present
+                    )
+                    + " — a converted primitive nobody pre-registered cannot be measured",
                 )
             ]
-            write_verdict(staged.root, case_name, checks, {"shape": "delivery"})
+            write_verdict(staged.root, case_name, checks, {"shape": "delivery", "kind": kind})
             return checks, staged.root
-        ids, counts, reason = command_expectations(staged.plugin, command)
+        ids, counts, reason = primitive_expectations(staged.plugin, name)
         if reason:
             checks = [ok("the delivery expectation could be built from the binary", reason)]
-            write_verdict(staged.root, case_name, checks, {"shape": "delivery"})
+            write_verdict(staged.root, case_name, checks, {"shape": "delivery", "kind": kind})
             return checks, staged.root
 
+        # The floor set this case grades against, read from the render at case time and
+        # cross-checked against the freeze rather than taken from it. Both reads of the render are
+        # kept: the `floors:` index line, and the walk over the section renders.
+        binary, binary_reason = host_binary()
+        pin = None if binary_reason else floor_pin(binary, name, staged.plugin)
+        listed, walked, disagreement = (
+            (None, set(), binary_reason)
+            if binary_reason
+            else floors_from_render(binary, name, staged.plugin)
+        )
+        floor_expected = walked if listed is None else listed
+        frozen = set(row.floor_ids)
+        missing_frozen = sorted(frozen - floor_expected)
+        extra_frozen = sorted(floor_expected - frozen)
+
         path_env = f"{sandbox.binary_dir}:{sandbox.path}"
+        # A skill fires through the platform's `Skill` tool, so the model needs one turn to call
+        # it before the turn that answers. A command's blocks arrive in the expanded prompt and
+        # need no turn of their own. Measured on the wave-5 pre-flight probe, not assumed.
+        max_turns = 3 if kind == "skill" else 2
         replicates = []
         for index in range(READ_BACK_REPLICATES):
             probed = run_probe(
@@ -2051,14 +2541,15 @@ def case_delivery(command: str):
                 staged,
                 path_env=path_env,
                 log_dir=None,
-                prompt=f"/mochiko:{command} {PROBE_TOPIC}",
-                max_turns=2,
+                prompt=probe_prompt(name),
+                max_turns=max_turns,
                 tag=f"-{index + 1}",
             )
             session = session_id_of(probed.events)
             seen, transcript_path = fetch_transcript(runner, staged, session, tag=f"-{index + 1}")
-            tokens, passed = score_read_back(final_assistant_text(probed.events), command)
-            blocks = delivered_blocks(seen, command)
+            final = final_assistant_text(probed.events)
+            scores = score_two_line(final, name, pin)
+            blocks = delivered_blocks(seen, name)
             result = result_event(probed.events)
             replicates.append(
                 {
@@ -2067,31 +2558,98 @@ def case_delivery(command: str):
                     "seen": seen,
                     "transcript_path": transcript_path,
                     "session_id": session,
-                    "tokens": tokens,
-                    "read_back_passed": passed,
+                    "scores": scores,
+                    "tokens": scores["tokens"],
+                    "read_back_passed": scores["ids_exact"],
                     "delivered_chars": sum(len(b) for b in blocks.values()),
                     "delivered_bytes": sum(len(b.encode("utf-8")) for b in blocks.values()),
                     "blocks": sorted(blocks),
+                    "floor_ids_delivered": len(transcript_floor_ids(seen) & frozen),
                     "num_turns": (result or {}).get("num_turns"),
-                    "final_text": final_assistant_text(probed.events)[:400],
+                    "final_text": final[:400],
                 }
             )
 
         checks: list[Check] = []
-        for name, problems in _aggregate(replicates, command, ids, counts):
-            checks.append(ok(name, problems))
+        for check_name, problems in _aggregate(replicates, kind, name, ids, counts):
+            checks.append(ok(check_name, problems))
 
-        scored = sum(1 for r in replicates if r["read_back_passed"])
+        # --- criterion (1), re-keyed: gating -------------------------------------------------
         checks.append(
-            report(
-                "read-back metric (never gating)",
-                f"{scored}/{len(replicates)} replicates named the floor set exactly "
-                f"({len(EXPECTED[command].floor_ids)} ids); "
-                f"bar {READ_BACK_BAR}/{READ_BACK_REPLICATES} pre-registered — "
-                f"{'MET' if scored >= READ_BACK_BAR else 'NOT MET'}",
+            ok(
+                f"the `floors:` line and the section renders agree ({len(floor_expected)} ids)",
+                disagreement,
             )
         )
-        baseline = EXPECTED[command].baseline_bytes
+        checks.append(
+            ok(
+                "the case-time floor set matches the frozen expectation",
+                None
+                if not missing_frozen and not extra_frozen
+                else f"frozen but not rendered: {missing_frozen}; rendered but not frozen: "
+                f"{extra_frozen} — the freeze predates this run and cannot be edited to match it",
+            )
+        )
+        floor_failures = [
+            f"replicate {entry['index']}: {problem}"
+            for entry in replicates
+            if (problem := assert_floor_delivery(entry["seen"], floor_expected))
+        ]
+        checks.append(
+            ok(
+                f"every one of the {len(floor_expected)} floor rules was delivered "
+                f"(criterion (1))",
+                "; ".join(floor_failures) if floor_failures else None,
+            )
+        )
+
+        # --- how the skill actually arrived, recorded ------------------------------------------
+        #
+        # Measured at the wave-5 shape probe and recorded per run rather than asserted, because
+        # both facts are about the platform's routing rather than about this plugin's contract.
+        # A `/mochiko:<skill>` prompt line takes the **prompt-expansion** path: the blocks arrive
+        # in the expanded prompt exactly as a command's do, no `Skill` tool call happens, and so
+        # neither dependency-hook limb fires — `UserPromptExpansion` looks the name up under
+        # `commands/`, and `PreToolUse`/`Skill` is never reached. Wave-0 probe (c) saw the Skill
+        # tool fire for a skill, so the routing is prompt-shape-dependent; recording it here means
+        # a change in either direction shows up in the evidence instead of silently altering what
+        # the suite is testing.
+        if kind == "skill":
+            paths = {
+                "Skill tool" if assert_skill_tool_use(r["probed"].events, name) is None
+                else "prompt expansion"
+                for r in replicates
+            }
+            limbs = set()
+            for r in replicates:
+                for noun in ("skill", "command"):
+                    if f"{HOOK_PRESENT_PREFIX} {noun}'s own render" in r["seen"]:
+                        limbs.add(noun)
+            checks += [
+                report("invocation path", ", ".join(sorted(paths))),
+                report(
+                    "dependency-hook limb that spoke",
+                    ", ".join(sorted(limbs))
+                    if limbs
+                    else "none — no hook gates this path; the halt on absence is the harness's "
+                    "(see the absence case)",
+                ),
+            ]
+
+        # --- the read-back, recorded ----------------------------------------------------------
+        scored = sum(1 for r in replicates if r["scores"]["ids_exact"])
+        counted = sum(1 for r in replicates if r["scores"]["count_exact"])
+        superset = sum(1 for r in replicates if r["scores"]["ids_superset"])
+        omitted = sorted({i for r in replicates for i in r["scores"]["omitted"]})
+        checks.append(
+            report(
+                "read-back, two-line form (recorded, never gating)",
+                f"count {counted}/{len(replicates)} against the preamble pin {pin} · "
+                f"ids {scored}/{len(replicates)} exact · {superset}/{len(replicates)} superset · "
+                f"omitted {omitted if omitted else 'none'}",
+            )
+        )
+        baseline = row.baseline_bytes
         delivered = replicates[0]["delivered_bytes"]
         # Wave 3's three replicates agreed to the byte. Across six commands that is worth stating
         # rather than assuming, so a disagreement is named instead of hidden behind the first.
@@ -2104,7 +2662,7 @@ def case_delivery(command: str):
                 + ("" if len(spread) == 1 else f"; replicates disagree: {spread}"),
             )
         )
-        latency = measure_latency(runner, sandbox, staged, command, ids)
+        latency = measure_latency(runner, sandbox, staged, name, ids)
         band = latency.get("mean_band_ms")
         checks.append(
             report(
@@ -2117,9 +2675,14 @@ def case_delivery(command: str):
             )
         )
 
+        frozen_row = (SKILL_FREEZE.get("skills") or {}).get(name) or {}
         read_cost = {
+            "kind": kind,
+            "family": family_of(name),
             "baseline_bytes": baseline,
-            "baseline_source": "pre-registered; `wc -c` of <cmd>.yaml + common.yaml",
+            "baseline_source": frozen_row.get(
+                "baseline_source", "pre-registered; `wc -c` of <cmd>.yaml + common.yaml"
+            ),
             "source": "the session transcript, not the stream",
             "per_replicate": [
                 {
@@ -2132,18 +2695,42 @@ def case_delivery(command: str):
                 for r in replicates
             ],
         }
-        if command == PILOT_COMMAND:
+        if name == PILOT_COMMAND:
             # The two `brainstorm`-only figures the wave-3 README quotes beside the baseline.
             read_cost["baseline_chars"] = BASELINE_CHARS
             read_cost["baseline_bytes_with_labels"] = BASELINE_BYTES_WITH_LABELS
+        if kind == "skill":
+            # Delivered-at-invoke on both sides, which is what criterion (2) reads per family
+            # (record F3: body + schema). The pre-conversion body comes from the freeze because
+            # after the conversion lands `HEAD` no longer carries it; the new body is measured
+            # from the staged copy the session actually loaded.
+            body_now = (staged.plugin / "skills" / name / "SKILL.md").stat().st_size
+            body_pre = frozen_row.get("body_bytes_pre")
+            read_cost.update(
+                {
+                    "body_bytes_new": body_now,
+                    "body_bytes_pre": body_pre,
+                    "delivered_at_invoke_new": body_now + delivered,
+                    "delivered_at_invoke_old": (body_pre + baseline) if body_pre else None,
+                }
+            )
         MEASURED.append(
             {
-                "command": command,
+                "kind": kind,
+                "command": name,
+                "family": family_of(name),
                 "read_back_scored": scored,
-                "read_back_bar": READ_BACK_BAR,
-                "floor_ids": len(EXPECTED[command].floor_ids),
+                "read_back_counted": counted,
+                "read_back_replicates": READ_BACK_REPLICATES,
+                "floor_ids": len(frozen),
+                "floor_delivered": min(r["floor_ids_delivered"] for r in replicates),
                 "delivered_bytes": delivered,
+                "delivered_chars": replicates[0]["delivered_chars"],
                 "baseline_bytes": baseline,
+                "body_bytes_new": read_cost.get("body_bytes_new"),
+                "body_bytes_pre": read_cost.get("body_bytes_pre"),
+                "invoke_new": read_cost.get("delivered_at_invoke_new"),
+                "invoke_old": read_cost.get("delivered_at_invoke_old"),
             }
         )
 
@@ -2153,22 +2740,33 @@ def case_delivery(command: str):
             checks,
             {
                 "shape": "delivery",
-                "command": command,
+                "kind": kind,
+                "command": name,
                 "expected_sections": ids,
                 "expected_counts": counts,
+                "floor_set": {
+                    "frozen": sorted(frozen),
+                    "floors_line": None if listed is None else sorted(listed),
+                    "section_walk": sorted(walked),
+                    "preamble_pin": pin,
+                    "gating": True,
+                },
                 "read_back": {
-                    "bar": READ_BACK_BAR,
+                    "form": "two-line: FLOOR-COUNT then FLOOR",
                     "replicates": READ_BACK_REPLICATES,
-                    "scored": scored,
+                    "ids_exact": scored,
+                    "count_exact": counted,
+                    "ids_superset": superset,
                     "gating": False,
-                    "pre_registered_floor_ids": sorted(EXPECTED[command].floor_ids),
+                    "pre_registered_floor_ids": sorted(frozen),
+                    "probe_argument": PROBE_ARGUMENTS[name][0],
+                    "probe_argument_why": PROBE_ARGUMENTS[name][1],
                     "per_replicate": [
                         {
                             "index": r["index"],
-                            "tokens": r["tokens"],
-                            "passed": r["read_back_passed"],
                             "num_turns": r["num_turns"],
                             "final_text": r["final_text"],
+                            **r["scores"],
                         }
                         for r in replicates
                     ],
@@ -2182,14 +2780,21 @@ def case_delivery(command: str):
     return run
 
 
-def _aggregate(replicates: list, command: str, ids: list[str], counts: dict[str, int]) -> list:
+def _aggregate(replicates: list, kind: str, name: str, ids: list[str],
+               counts: dict[str, int]) -> list:
     """Run each delivery assertion over every replicate, reporting which ones failed.
 
     Two different sources, deliberately. What the model was *given* — the seven blocks and the
-    `UserPromptExpansion` hook's presence line — is read from the session transcript, because the
-    stream carries neither: the expanded prompt appears in no stream row, and that hook produces
-    no stream row at all even when it fires. What the model *did* — tool uses, the init event's
-    command registry — is read from the stream, which is where those live.
+    dependency hook's presence line — is read from the session transcript, because the stream
+    carries neither: the expanded prompt appears in no stream row, and the `UserPromptExpansion`
+    hook produces no stream row at all even when it fires. What the model *did* — tool uses, the
+    init event's registries — is read from the stream, which is where those live.
+
+    The skill rows are the ones the command path has no equivalent of. A command's blocks arrive
+    in the expanded prompt before any turn; a skill's arrive because the model called the `Skill`
+    tool, and the dependency hook meets it on a different limb with a different noun. Both facts
+    are asserted rather than assumed, so a skill that silently stopped going through that path —
+    or a hook limb that stopped firing — is a failure and not a quiet pass.
     """
     per_replicate = []
     for entry in replicates:
@@ -2202,23 +2807,37 @@ def _aggregate(replicates: list, command: str, ids: list[str], counts: dict[str,
                 "~/.claude/projects/ — every delivery assertion below reads it",
             )
         ]
-        checks += assert_delivery(entry["seen"], command, ids, counts) + [
+        checks += assert_delivery(entry["seen"], name, ids, counts) + [
             ok("no schema file was Read", assert_no_schema_read(entry["probed"].events)),
             ok(
                 "the SessionStart hook reported the binary",
                 _session_start_line(entry["probed"], entry["seen"]),
             ),
             ok(
-                "the dependency hook confirmed presence in the transcript",
-                None
-                if HOOK_PRESENT_PREFIX in entry["seen"]
-                else f"{HOOK_PRESENT_PREFIX!r} is not in the session transcript",
-            ),
-            ok(
                 "the plugin's six commands registered as slash commands",
                 assert_slash_commands(entry["probed"].events, expected_slash_commands()),
             ),
         ]
+        # Both kinds, and the history is worth keeping. A converted skill invoked as
+        # `/mochiko:<skill>` takes the prompt-expansion path (measured, wave-5 shape probes), and
+        # for the length of the wave-5 full run the hook resolved that name against
+        # `commands/<name>.md` only — so no limb fired and a converted skill ran ungated. The
+        # hook now falls back to the skill file, which is what makes this assertion meaningful
+        # for skills; before that fix it could only have been a recorded observation. The noun is
+        # asserted either way, so a skill confirmed as a command still fails.
+        checks.append(
+            ok(
+                "the dependency hook confirmed presence in the transcript",
+                _hook_presence_line(entry["seen"], kind),
+            )
+        )
+        if kind == "skill":
+            checks.append(
+                ok(
+                    f"the init event registered `mochiko:{name}`",
+                    assert_primitive_registered(entry["probed"].events, name),
+                )
+            )
         per_replicate.append(checks)
     merged = []
     for position, template in enumerate(per_replicate[0]):
@@ -2229,6 +2848,66 @@ def _aggregate(replicates: list, command: str, ids: list[str], counts: dict[str,
         ]
         merged.append((template.name, "; ".join(failures) if failures else None))
     return merged
+
+
+def _hook_presence_line(transcript: str, kind: str) -> str | None:
+    """The dependency hook's confirmation, on the limb this primitive's registration uses.
+
+    The hook writes `… delivered by the <noun>'s own render`, and the noun is the registration:
+    `command` on `UserPromptExpansion`, `skill` on `PreToolUse`/`Skill`. Asserting the noun rather
+    than the prefix is what makes a skill case fail when the skill somehow arrived down the
+    command limb, or when the `PreToolUse` limb stopped firing and only a stale command-side line
+    is in the transcript.
+    """
+    expected = f"{HOOK_PRESENT_PREFIX} {kind}'s own render"
+    if expected in transcript:
+        return None
+    if HOOK_PRESENT_PREFIX in transcript:
+        return f"the hook spoke, but not with {expected!r} — the wrong limb confirmed presence"
+    return f"{expected!r} is not in the session transcript"
+
+
+def assert_skill_tool_use(events: list, skill: str) -> str | None:
+    """The skill was invoked through the platform's `Skill` tool.
+
+    Wave-0 probe (c) recorded the shape this asserts: a `Skill` tool call carrying
+    `tool_input.skill` namespaced as `<plugin>:<skill>`, which is the path a `/mochiko:<skill>`
+    prompt line takes and the path the `PreToolUse` hook limb sits on. Asserting it keeps the case
+    honest about *how* delivery happened: if the platform ever routed the prompt some other way,
+    the blocks might still arrive and the hook limb under test would never have fired.
+    """
+    wanted = f"mochiko:{skill}"
+    for use in tool_uses(events):
+        if use.get("name") != "Skill":
+            continue
+        named = str((use.get("input") or {}).get("skill", ""))
+        if named == wanted or named == skill:
+            return None
+    called = sorted(
+        {
+            str((use.get("input") or {}).get("skill", ""))
+            for use in tool_uses(events)
+            if use.get("name") == "Skill"
+        }
+    )
+    return f"no `Skill` tool use named {wanted!r}; the Skill calls in the stream were {called}"
+
+
+def assert_primitive_registered(events: list, skill: str) -> str | None:
+    """The init event lists the skill the case is about.
+
+    The command side has a dedicated field (`slash_commands`) and its own assertion. For skills
+    the registry field is whatever the platform reports, so this looks for the namespaced name
+    anywhere in the init event and the verdict records the whole event — measured first, then
+    narrowed. The wave-0 manifest quirk is the reason a registration check exists at all: a
+    directory-string manifest once registered a probe plugin's commands as a single skill.
+    """
+    init = init_event(events)
+    if init is None:
+        return "the session produced no init event"
+    if f"mochiko:{skill}" in json.dumps(init, ensure_ascii=False):
+        return None
+    return f"`mochiko:{skill}` appears nowhere in the init event's registries"
 
 
 def _session_start_line(probed: Probed, transcript: str = "") -> str | None:
@@ -2268,7 +2947,7 @@ def case_command_absence(command: str):
             staged,
             path_env=sandbox.path,
             log_dir=None,
-            prompt=f"/mochiko:{command} {PROBE_TOPIC}",
+            prompt=probe_prompt(command),
             max_turns=2,
         )
         seen, transcript_path = fetch_transcript(runner, staged, session_id_of(probed.events))
@@ -2309,6 +2988,273 @@ def case_command_absence(command: str):
     return run
 
 
+def case_skill_absence(skill: str):
+    """Build the binary-off-PATH case for one converted skill.
+
+    **Keyed to the measured shape, which changed twice under this case.** The plan expected the
+    `PreToolUse`/`Skill` limb to deny the call, leaving a model turn and an error tool result. The
+    wave-5 shape probes measured something else: `/mochiko:<skill>` takes the prompt-expansion
+    path, and with the hook as it then stood no limb fired at all, so the halt was the wave-1
+    harness shape — the `!` line exits non-zero, the harness aborts the expansion and injects the
+    shell's stderr. The hook then gained its skill fallback, and the halt moved again: the hook
+    now blocks before expansion, so **no `<local-command-stderr>` is injected** and the notice
+    rides the result event instead.
+
+    Both shapes are legitimate halts and the case asserts what is true of both — no model turn,
+    the install line in the session, no block delivered, no version triple, no schema read. Which
+    limb halted is recorded rather than asserted, because that is the part that moved. An
+    assertion pinned to the injected stderr went red the moment the hook was fixed, which is the
+    keying discipline working rather than failing.
+    """
+    case_name = f"{skill}-absence"
+
+    def run(runner, sandbox: "Sandbox") -> tuple[list, pathlib.Path]:
+        staged = stage(case_name, PLUGIN)
+        probed = run_probe(
+            runner,
+            staged,
+            path_env=sandbox.path,
+            log_dir=None,
+            prompt=probe_prompt(skill),
+            max_turns=3,
+        )
+        seen, transcript_path = fetch_transcript(runner, staged, session_id_of(probed.events))
+        union = session_output_with(probed, seen)
+        channels = channels_of(probed, INSTALL_LINE, seen)
+        delivered = head_line_sections(seen, skill)
+        denied = [
+            use
+            for use in tool_uses(probed.events)
+            if use.get("name") == "Skill"
+        ]
+        checks = [
+            ok("no model turn ran", assert_halt_before_model(probed.events)),
+            ok(
+                "the install line reached the session",
+                assert_in_session(probed, INSTALL_LINE, seen),
+            ),
+            # The halt has to say *which* primitive stopped rather than hand over a generic
+            # notice; the hook writes the name into its own message, so this is the session-level
+            # twin of the per-skill `hook-input` rows. It only became assertable when the hook
+            # gained its skill fallback: before that no limb fired here at all, and the harness's
+            # own stderr names the failing shell command rather than the skill.
+            ok(
+                f"the halt names `/mochiko:{skill}`",
+                assert_in_session(probed, f"/mochiko:{skill}", seen),
+            ),
+            ok("no schema file was Read", assert_no_schema_read(probed.events)),
+            ok("no version triple was delivered", assert_no_version_triple(union)),
+            ok(
+                "no rendered block reached the model",
+                None if not delivered else f"blocks arrived with no binary: {sorted(delivered)}",
+            ),
+            # Deliberately *not* `assert_halted`: that reads the fixture's own
+            # `CONTRACT-PROBE: delivered` marker, which a real skill never prints, so the check
+            # would pass without looking at anything.
+            #
+            # The halt shape itself is asserted, not merely recorded (lead ruling, 2026-09-04,
+            # applying the wave-3 V3 ruling on tolerant unions). With the hook's skill fallback in
+            # place there is exactly one correct outcome here — the hook blocks before expansion —
+            # so accepting the harness shape beside it would be a union that passes on a
+            # regression. The pre-fix harness halt is the record on disk, not a second accepted
+            # outcome.
+            ok("the halt was the dependency hook's block", assert_hook_block(probed)),
+            report("install-line channel", ", ".join(channels) or "none"),
+            report(
+                "which limb carried it",
+                "`PreToolUse`/Skill — a Skill call was attempted and refused"
+                if denied
+                else "`UserPromptExpansion` — the prompt-expansion limb",
+            ),
+            report("model turns", str((result_event(probed.events) or {}).get("num_turns"))),
+        ]
+        write_verdict(
+            staged.root,
+            case_name,
+            checks,
+            {
+                "shape": halt_shape(probed),
+                "kind": "skill",
+                "skill": skill,
+                "channels": channels,
+                "skill_tool_calls": len(denied),
+                "transcript_path": transcript_path,
+            },
+        )
+        return checks, staged.root
+
+    return run
+
+
+# The preload subject: a plugin agent whose `skills:` frontmatter carries a converted skill, so
+# the platform renders that skill into the subagent at spawn (wave-0 probe (d): `!` runs at
+# subagent skill preload). `review-specifications` converts in the first family, which is what
+# makes this pair runnable from the wave's first landing.
+PRELOAD_AGENT = "devils-advocate"
+PRELOAD_SKILL = "review-specifications"
+PRELOAD_PROMPT = (
+    "Dispatch the `mochiko:devils-advocate` subagent with this brief and then stop: "
+    "«CONTRACT PROBE — before anything else, reply with exactly one line "
+    "`FLOOR-COUNT: <how many class: floor rules you were delivered, as a number>` and stop.» "
+    "Report the subagent's reply verbatim."
+)
+
+
+def fetch_sidechain_transcripts(runner, staged: Staged, since: str, tag: str = ""
+                                ) -> tuple[str, list[str]]:
+    """Every session transcript the sandbox wrote during this case, concatenated.
+
+    A subagent's turns do not live in the parent's stream, and depending on how the platform
+    stores them they may not live in the parent's transcript file either. Rather than guess which
+    file holds them, this copies out every transcript newer than a marker file created just before
+    the run, and the assertion reads the union. Each file lands in the evidence directory, so a
+    later reader can see exactly which one carried the delivered blocks.
+
+    `tag` state-tags the filenames. Without it the absent run's fetch overwrites the present run's
+    files, and a reader replaying the case from disk reconstructs neither union — the evidence
+    silently destroys half of itself (V3-1).
+    """
+    listing = runner.sbx_sh(
+        f"find ~/.claude/projects -name '*.jsonl' -newer {shlex.quote(since)} 2>/dev/null",
+        timeout=120,
+    )
+    paths = [line.strip() for line in listing.stdout.splitlines() if line.strip()]
+    chunks, kept = [], []
+    for index, path in enumerate(sorted(paths)):
+        got = runner.sbx_sh(f"cat {shlex.quote(path)}", timeout=300)
+        if got.returncode != 0:
+            continue
+        write_evidence(staged.root, f"sidechain{tag}-{index + 1}.jsonl", got.stdout)
+        chunks.append(transcript_plaintext(got.stdout))
+        kept.append(path)
+    return "\n".join(chunks), kept
+
+
+def case_preload(runner, sandbox: "Sandbox") -> tuple[list, pathlib.Path]:
+    """The subagent preload path, in both binary states — one case, two sessions.
+
+    D3's skill form has two delivery channels, and the `<skill>-delivery` cases only exercise one
+    of them. The other is the preload: a plugin agent declaring `skills:` gets that skill rendered
+    into it at spawn, `!` lines and all (wave-0 probe (d)), with no `Skill` tool call and no
+    `PreToolUse` limb in the way. If that channel silently stopped delivering, every assertion in
+    this suite would still pass while a whole class of runs got no rules.
+
+    The absent half is the fail-closed claim, and it is **measured before it is asserted**. Wave-0
+    measured a *denied* `!` line failing the spawn outright; a `command not found` line is a
+    different failure and could plausibly leave the spawn alive with an empty block. So the
+    gating assertion here is the one that holds either way — nothing was delivered and nothing was
+    read as a fallback — and the spawn's own fate is recorded for the wave-5 report to key a
+    tighter assertion to.
+    """
+    staged = stage("preload", PLUGIN)
+    checks: list[Check] = []
+    agent = staged.plugin / "agents" / f"{PRELOAD_AGENT}.md"
+    converted = PRELOAD_SKILL in converted_skills(staged.plugin)
+    declared = agent.is_file() and PRELOAD_SKILL in agent.read_text(encoding="utf-8")
+    if not declared or not converted:
+        checks.append(
+            ok(
+                f"`{PRELOAD_AGENT}` preloads the converted skill `{PRELOAD_SKILL}`",
+                f"agent declares it: {declared}; skill converted: {converted} — the preload case "
+                "needs both",
+            )
+        )
+        write_verdict(staged.root, "preload", checks, {"shape": "preload"})
+        return checks, staged.root
+
+    binary, reason = host_binary()
+    floor_expected = set() if reason else floors_from_render(binary, PRELOAD_SKILL,
+                                                             staged.plugin)[1]
+    ids, _, _ = primitive_expectations(staged.plugin, PRELOAD_SKILL)
+    outcomes = {}
+    for state, path_env in (
+        ("present", f"{sandbox.binary_dir}:{sandbox.path}"),
+        ("absent", sandbox.path),
+    ):
+        marker = f"/tmp/preload-marker-{uuid.uuid4().hex[:8]}"
+        runner.sbx_sh(f"touch {marker}", timeout=60)
+        probed = run_probe(
+            runner,
+            staged,
+            path_env=path_env,
+            log_dir=None,
+            prompt=PRELOAD_PROMPT,
+            max_turns=6,
+            tag=f"-{state}",
+        )
+        parent, _ = fetch_transcript(runner, staged, session_id_of(probed.events), tag=f"-{state}")
+        side, files = fetch_sidechain_transcripts(runner, staged, marker, tag=f"-{state}")
+        runner.sbx_sh(f"rm -f {marker}", timeout=60)
+        union = "\n".join([parent, side])
+        outcomes[state] = {
+            "probed": probed,
+            "seen": union,
+            "sidechain_files": files,
+            "blocks": sorted(head_line_sections(union, PRELOAD_SKILL)),
+            "result_text": str((result_event(probed.events) or {}).get("result") or "")[:400],
+            "num_turns": (result_event(probed.events) or {}).get("num_turns"),
+        }
+
+    present, absent = outcomes["present"], outcomes["absent"]
+    checks += [
+        ok(
+            f"binary present: the subagent received all {len(ids)} blocks of `{PRELOAD_SKILL}`",
+            None
+            if set(present["blocks"]) >= set(ids)
+            else f"delivered {present['blocks']}, expected {ids}",
+        ),
+        ok(
+            f"binary present: every floor rule reached the subagent (criterion (1), "
+            f"{len(floor_expected)} ids)",
+            assert_floor_delivery(present["seen"], floor_expected),
+        ),
+        ok(
+            "binary present: no schema file was Read",
+            assert_no_schema_read(present["probed"].events),
+        ),
+        ok(
+            "binary absent: nothing was delivered",
+            None
+            if not absent["blocks"]
+            else f"blocks arrived with no binary: {absent['blocks']}",
+        ),
+        ok(
+            "binary absent: no schema file was Read",
+            assert_no_schema_read(absent["probed"].events),
+        ),
+        ok(
+            "binary absent: no version triple reached either transcript",
+            assert_no_version_triple(
+                session_output_with(absent["probed"], absent["seen"])
+            ),
+        ),
+        report(
+            "binary absent: what became of the spawn",
+            f"turns {absent['num_turns']}; result {absent['result_text'][:200]!r}",
+        ),
+        report(
+            "sidechain transcripts fetched",
+            f"present {len(present['sidechain_files'])}, absent "
+            f"{len(absent['sidechain_files'])} — copied into the evidence directory",
+        ),
+    ]
+    write_verdict(
+        staged.root,
+        "preload",
+        checks,
+        {
+            "shape": "preload, two sessions",
+            "agent": PRELOAD_AGENT,
+            "skill": PRELOAD_SKILL,
+            "expected_sections": ids,
+            "floor_ids": sorted(floor_expected),
+            "present": {k: v for k, v in present.items() if k not in ("probed", "seen")},
+            "absent": {k: v for k, v in absent.items() if k not in ("probed", "seen")},
+        },
+    )
+    return checks, staged.root
+
+
 def case_brainstorm_skew(runner, sandbox: "Sandbox") -> tuple[list, pathlib.Path]:
     """The staged plugin's own log is out of the binary's grammar range.
 
@@ -2339,7 +3285,7 @@ def case_brainstorm_skew(runner, sandbox: "Sandbox") -> tuple[list, pathlib.Path
         staged,
         path_env=path_env,
         log_dir=None,
-        prompt=f"/mochiko:{PILOT_COMMAND} {PROBE_TOPIC}",
+        prompt=probe_prompt(PILOT_COMMAND),
         max_turns=2,
     )
     seen, transcript_path = fetch_transcript(runner, staged, session_id_of(probed.events))
@@ -2398,7 +3344,7 @@ def case_brainstorm_hooks_off(runner, sandbox: "Sandbox") -> tuple[list, pathlib
         staged,
         path_env=sandbox.path,
         log_dir=None,
-        prompt=f"/mochiko:{PILOT_COMMAND} {PROBE_TOPIC}",
+        prompt=probe_prompt(PILOT_COMMAND),
         max_turns=2,
         settings={"disableAllHooks": True},
     )
@@ -2448,7 +3394,7 @@ def case_brainstorm_policy(runner, sandbox: "Sandbox") -> tuple[list, pathlib.Pa
         staged,
         path_env=f"{sandbox.binary_dir}:{sandbox.path}",
         log_dir=None,
-        prompt=f"/mochiko:{PILOT_COMMAND} {PROBE_TOPIC}",
+        prompt=probe_prompt(PILOT_COMMAND),
         max_turns=2,
         settings={"disableSkillShellExecution": True},
     )
@@ -2464,7 +3410,7 @@ def case_brainstorm_policy(runner, sandbox: "Sandbox") -> tuple[list, pathlib.Pa
     # off, no `!` line can produce a version-triple head — and the prose halt is looked for only in
     # what the model itself wrote.
     delivered = head_line_sections(seen, PILOT_COMMAND)
-    expected_ids, _, _ = command_expectations(staged.plugin, PILOT_COMMAND)
+    expected_ids, _, _ = primitive_expectations(staged.plugin, PILOT_COMMAND)
     checks = [
         report("rendered blocks delivered", f"{len(delivered)} of {len(expected_ids)} expected"),
         report(
@@ -2575,36 +3521,91 @@ def case_converted_shape(runner, sandbox) -> tuple[list, pathlib.Path]:
     # migration log rather than from the `.md`, so a command's bar can be checked before its
     # conversion lands — which is what lets a wave validate its constants before spending a
     # metered session on them.
-    unregistered = sorted(set(converted_commands(staged.plugin)) - set(EXPECTED))
+    unregistered = sorted(
+        (set(converted_commands(staged.plugin)) | set(converted_skills(staged.plugin)))
+        - set(EXPECTED)
+        - set(EXPECTED_SKILLS)
+    )
     checks.append(
         ok(
-            "every converted command has a pre-registered floor set and baseline",
+            "every converted primitive has a pre-registered floor set and baseline",
             None
             if not unregistered
-            else f"converted with no EXPECTED row: {unregistered} — their delivery cases have no "
-            "bar to report against",
+            else f"converted with no frozen row: {unregistered} — their delivery cases have "
+            "nothing to grade criterion (1) against",
         )
     )
+    unargued = sorted(
+        (set(converted_commands(staged.plugin)) | set(converted_skills(staged.plugin)))
+        - set(PROBE_ARGUMENTS)
+    )
+    checks.append(
+        ok(
+            "every converted primitive has a pre-registered probe argument",
+            None
+            if not unargued
+            else f"converted with no PROBE_ARGUMENTS row: {unargued}",
+        )
+    )
+    # Both tables, and both reads of the render. The floor sets are the subject of criterion (1),
+    # so a set that drifted from what the binary renders would leave the gating assertion grading
+    # a stale list; the `floors:` line is the cheap read the `.md` cites, so its agreement with
+    # the rule bodies is checked here rather than trusted.
+    frozen_all = {**{k: v for k, v in EXPECTED.items()}, **EXPECTED_SKILLS}
     floor_report = {}
-    for command in sorted(EXPECTED):
-        rendered = rendered_floor_ids(binary, command, staged.plugin)
-        pre_registered = EXPECTED[command].floor_ids
-        missing = sorted(set(pre_registered) - rendered)
-        extra = sorted(rendered - set(pre_registered))
+    for primitive in sorted(frozen_all):
+        listed, walked, disagreement = floors_from_render(binary, primitive, staged.plugin)
+        pre_registered = frozen_all[primitive].floor_ids
+        missing = sorted(set(pre_registered) - walked)
+        extra = sorted(walked - set(pre_registered))
         checks.append(
             ok(
-                f"the pre-registered floor set matches the {command} render "
+                f"the pre-registered floor set matches the {primitive} render "
                 f"({len(pre_registered)} ids)",
                 None
                 if not missing and not extra
                 else f"pre-registered but not rendered: {missing}; rendered but not "
-                f"pre-registered: {extra} — the read-back bar is grading the wrong set",
+                f"pre-registered: {extra} — criterion (1) would grade the wrong set",
             )
         )
-        floor_report[command] = {
+        checks.append(
+            ok(
+                f"{primitive}: the `floors:` line agrees with the section renders",
+                disagreement
+                if disagreement
+                else (
+                    None
+                    if listed is not None
+                    else "the preamble carries no `floors:` line — the binary predates the "
+                    "wave-5 render change"
+                ),
+            )
+        )
+        floor_report[primitive] = {
             "pre_registered": sorted(pre_registered),
-            "rendered": sorted(rendered),
+            "rendered": sorted(walked),
+            "floors_line": None if listed is None else sorted(listed),
         }
+    # The freeze has to predate the run it grades. This reports the two mtimes rather than
+    # asserting an ordering the filesystem can only weakly attest; the durable proof is the commit
+    # that added the file preceding every session in git history, which an auditor reads there.
+    if EXPECTED_SKILLS_FILE.is_file():
+        # Against *this run's* start, not against the oldest directory in `evals/.work/`: that
+        # directory accumulates across waves, so the earliest thing in it is a wave-4 leftover and
+        # comparing to it would report a freeze that predates this run as out of order. The
+        # earliest directory this run staged is named beside it for an auditor to check.
+        frozen_at = EXPECTED_SKILLS_FILE.stat().st_mtime
+        mine = sorted(STAGED_ROOTS, key=lambda p: p.stat().st_mtime)
+        checks.append(
+            report(
+                "the skill freeze predates this run",
+                f"frozen {_stamp(frozen_at)}, run started {_stamp(RUN_STARTED)} — "
+                f"{'ordered' if frozen_at < RUN_STARTED else 'NOT ordered'}"
+                + (f"; this run's earliest evidence directory is {mine[0].name}" if mine else "")
+                + ". The durable proof is the commit adding the freeze preceding every session "
+                "in git history; this is the cheap check beside it.",
+            )
+        )
     write_verdict(
         staged.root,
         "converted-shape",
@@ -2646,7 +3647,7 @@ def build_sandbox_cases() -> list:
         cases.append(
             (f"{command}-delivery",
              f"`/mochiko:{command}` delivers every block its render declares",
-             case_delivery(command))
+             case_delivery("command", command))
         )
         cases.append(
             (f"{command}-absence", "no binary, hooks on — the install line reaches the user",
@@ -2661,6 +3662,27 @@ def build_sandbox_cases() -> list:
                 (f"{command}-policy", "shell execution disabled by policy — recorded, not asserted",
                  case_brainstorm_policy),
             ]
+    # The skill family, in the conversion order the freeze records. Same two cases per primitive
+    # as the commands and for the same reason — what it delivers, and what it does when delivery
+    # is impossible — with the mechanism cases still run once against the pilot. The preload case
+    # is the one that is neither: it covers the *other* skill delivery channel, once, because the
+    # channel does not vary with which skill rides it.
+    skills = converted_skills(PLUGIN)
+    for skill in skills:
+        cases.append(
+            (f"{skill}-delivery",
+             f"`/mochiko:{skill}` delivers every block its render declares",
+             case_delivery("skill", skill))
+        )
+        cases.append(
+            (f"{skill}-absence", "no binary, hooks on — the Skill call is denied with the "
+             "install line", case_skill_absence(skill))
+        )
+    if PRELOAD_SKILL in skills:
+        cases.append(
+            ("preload", f"`{PRELOAD_AGENT}` preloads `{PRELOAD_SKILL}` — both binary states",
+             case_preload)
+        )
     return cases
 
 
@@ -2775,33 +3797,58 @@ def summarize(ran: int, failures: int, pendings: int, reports: int) -> None:
 
 
 def print_measured() -> None:
-    """The per-command block the abort criteria are read off.
+    """The per-primitive block, and the per-family aggregate criterion (2) is read at.
 
-    Both criteria in one place, one row per command that actually delivered: (1) read-back below
-    the pre-registered bar, (2) delivered bytes above that command's pre-conversion baseline. It
-    is printed, never gated — every figure here reached the check list through `report()`, and
-    only `status == "fail"` can set a non-zero exit code. The lead rules; this only tabulates.
+    What is printed here changed at wave 5, and the change is the point. Criterion (1) is no
+    longer in this table: it became `assert_floor_delivery`, a gating check inside each delivery
+    case, so a floor rule that failed to arrive fails the run rather than printing a number the
+    lead has to notice. The read-back stays as a recorded measurement of a different thing —
+    whether the model can enumerate what it was given — and names no criterion.
+
+    Criterion (2) is read per family for the skills, as the wave open ruled, so the aggregate rows
+    are what the lead reads: delivered-at-invoke against the pre-conversion figure, in bytes.
+    Nothing here can change an exit code; every figure reached a check list through `report()`.
     """
     if not MEASURED:
         return
-    print("\nper-command measurements (reported, never gating):")
-    print(f"  {'command':14s} {'read-back':>12s}  {'delivered':>10s}  {'baseline':>9s}  "
-          f"{'delta':>7s}")
+    print("\nper-primitive measurements (reported, never gating):")
+    print(f"  {'primitive':32s} {'read-back':>16s}  {'floors':>7s}  {'delivered':>10s}  "
+          f"{'baseline':>9s}  {'delta':>7s}")
     for row in MEASURED:
         delivered, baseline = row["delivered_bytes"], row["baseline_bytes"]
         delta = (delivered - baseline) / baseline if baseline else 0.0
-        trips = []
-        if row["read_back_scored"] < row["read_back_bar"]:
-            trips.append("read-back")
-        if delivered > baseline:
-            trips.append("read cost")
+        n = row["read_back_replicates"]
         print(
-            f"  {row['command']:14s} "
-            f"{row['read_back_scored']}/{row['read_back_bar']} of "
-            f"{row['floor_ids']:>2d} ids  "
+            f"  {row['command']:32s} "
+            f"{row['read_back_counted']}/{n} ct {row['read_back_scored']}/{n} id  "
+            f"{row['floor_delivered']:>3d}/{row['floor_ids']:<3d}  "
             f"{delivered:>10,}  {baseline:>9,}  {delta:>+7.1%}"
-            + (f"   ABORT CRITERION: {', '.join(trips)}" if trips else "")
         )
+
+    families = {}
+    for row in MEASURED:
+        if row["kind"] != "skill" or not row["invoke_old"]:
+            continue
+        entry = families.setdefault(row["family"], {"n": 0, "new": 0, "old": 0, "chars": 0})
+        entry["n"] += 1
+        entry["new"] += row["invoke_new"]
+        entry["old"] += row["invoke_old"]
+        entry["chars"] += row["delivered_chars"] + (row["body_bytes_new"] or 0)
+    if not families:
+        return
+    print("\nskill families — delivered-at-invoke, body + render (criterion (2), per family):")
+    print(f"  {'family':12s} {'skills':>6s}  {'converted':>10s}  {'pre-conversion':>14s}  "
+          f"{'delta':>7s}")
+    for family, entry in families.items():
+        delta = (entry["new"] - entry["old"]) / entry["old"] if entry["old"] else 0.0
+        print(
+            f"  {family:12s} {entry['n']:>6d}  {entry['new']:>10,}  {entry['old']:>14,}  "
+            f"{delta:>+7.1%}"
+        )
+    print(
+        "  bytes throughout; the record's F3 family figures are chars and are compared "
+        "separately in the wave report."
+    )
 
 
 if __name__ == "__main__":

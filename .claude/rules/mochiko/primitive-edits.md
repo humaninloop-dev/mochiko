@@ -201,6 +201,12 @@ own README — never an in-place edit of a migration already applied.
      The reading grammar — `when:` interpretation, floors always delivered, stub
      inheritance limits — is carried in the block; the `when:`-interpretation clause is
      omitted where the schema declares no `conditions:` (the RCM-4 wave-wide ruling).
+     **On a converted skill** — one whose rules `mochiko-cli` renders at fire
+     (`cli-schema-delivery` D3, the skill-side form) — the section instead reads
+     `## Rules — delivered by mochiko-cli`, its seven `!` lines are the enumeration, and no
+     raw Read of the schema or of the family common file is demanded: the render resolves
+     every `extends:` stub and every `${var}` before the model sees it, and prints the
+     reading grammar as the preamble's `legend`.
   2. **Section enumeration.** The section IDs enumerated in the load-first block match the
      schema's section IDs **set-wise** — the skill's **family section set**, minted once
      by that family's census-backed rollout ruling, uniform within the family, every
@@ -218,12 +224,18 @@ own README — never an in-place edit of a migration already applied.
      small-families door ruling (census-small-families §B fit table, v0.103.0).
      Every `<skill>.sec.*` token
      anywhere in the `.md`, inside the load-first block or outside it, resolves to a live
-     node.
+     node. **On a converted skill** "the load-first block" reads as the delivered section's
+     `--section` arguments — the six family ids in the preamble's printed order, behind the
+     `preamble` line — and the set-wise match is graded against those.
   3. **Floor-count pin + read-back.** The `.md`'s pinned line — "the N rules of
      `class: floor`" — matches the schema's `class: floor` count (a stale pin is an
      out-of-sync halt-and-surface), and the load-first block obligates stating the floor
      count back before the first procedural step (the delivery read-back,
-     skill-content-schema D6 as amended).
+     skill-content-schema D6 as amended). **On a converted skill** the hand-pinned count is
+     gone by ruling: the pin is the `- class: floor · N rules` line the render prints under
+     `pins` in the preamble block together with the `floors:` index line beneath it, and the
+     read-back sentence cites both — a hard-coded number there is the defect, not its
+     absence.
   4. **Floor survival.** A `class: floor` rule leaves only by recorded
      supersession-by-ruling; an `advisory`-class rule may change without the ceremony.
   5. **ID continuity.** No `<skill>.*` ID — rule or `<skill>.sec.*` section — vanishes
@@ -238,7 +250,9 @@ own README — never an in-place edit of a migration already applied.
      is skill-specific keeps local text, the edge recorded in
      `scripts/similar-rules-allowlist.yaml`. The stub's `<skill>.*` ID stays the citable
      ID, and where any stub binds, the load-first action Reads the skill's family common
-     file raw beside the schema.
+     file raw beside the schema. **On a converted skill** that co-Read is discharged by the
+     render, which resolves every stub before the model sees it, so no raw common-file Read
+     is demanded there.
   7. **`description:` untouched.** The frontmatter `description:` value is byte-identical
      across the conversion and ≤ 1,536 chars (the delivery cap); it never moves to schema.
   8. **Budget = delivered-at-invoke payload.** The budgeted quantity is the `SKILL.md` body
@@ -249,6 +263,11 @@ own README — never an in-place edit of a migration already applied.
      as structural overhead only (IDs, keys, grammar); content growth takes the normal
      argued-overage path, named in the brief. The family common file is budgeted once as
      its own primitive, never per binding skill; `references/` and `scripts/` stay exempt.
+     **On a converted skill** the quantity re-keys again, to the `SKILL.md` body plus the
+     seven rendered blocks the `!` lines deliver — the schema file is no longer read at
+     invoke, so it is no longer the payload (`cli-schema-delivery` D10 clause 6); the budget
+     re-seeds to that measured figure at conversion, still with no headroom, and the hook
+     lines are excluded as the harness's, not the primitive's.
   9. **Pointer resolution.** Every `pointer:` resolves base-dir-relative from the skill
      directory, cross-directory climbs included (`../<other-skill>/references/...` is
      legal; the Single-source convention governs the pointed-at files).

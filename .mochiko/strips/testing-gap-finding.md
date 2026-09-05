@@ -3,6 +3,80 @@
 Entry formats: `strips/README.md`. Skill born at v0.79.0 (the QA gap-finding build); this file
 opens with the first edit that superseded any of its shipped text.
 
+<!-- Wave context: wave 5 of the CLI schema-delivery build (v0.106.0) — the dense-five family
+converts: each member's rules are rendered at fire by `mochiko-cli` from the migration log the
+plugin carries at `plugins/mochiko/migrations/`, and the skill reads no schema file. Ruling for
+every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3 as amended
+(the skill-side form — `!` runs in `SKILL.md` and at subagent preload), D7 (the `PreToolUse`
+`Skill` limb), D9 (families in the arc's order), and D10 clause 6 (the budgeted quantity re-keys
+to body + rendered output), with the wave-open rulings in that session's `wave5-plan.md` and the
+`DECISIONS.md` 2026-09-04 row. Pre-edit verbatim text:
+`git show 7d098b9:plugins/mochiko/skills/testing-gap-finding/SKILL.md`. -->
+
+## [v0.106.0] the Rules block — raw schema Read superseded by CLI delivery
+
+- **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation
+  halt clause plus seven `!` lines, one per rendered block (the preamble and the six sections),
+  and the read-back sentence.
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3 as amended, the
+  skill-side form)
+- **Content:** verbatim —
+
+  ```
+  ## Rules — load the schema first
+
+  Your first action, before any derivation or probing step: **Read `schema.yaml` (this
+  skill's own directory) raw, in full** — the small families ship no common file, so the
+  pair's own schema is the whole first action. The schema is the source of truth for this
+  pass's binding rules, nested in six sections, each addressable by its section ID:
+  `testing-gap-finding.sec.independence` · `testing-gap-finding.sec.scope` ·
+  `testing-gap-finding.sec.inputs` · `testing-gap-finding.sec.verdict` ·
+  `testing-gap-finding.sec.output` · `testing-gap-finding.sec.reserved`. Interpret it live:
+  a rule's `kind:` names what it is, and an absent `kind:` reads `constraint`; a rule's
+  `when:` resolves against the schema's declared `conditions:` — run scope, depth, and
+  mutation-tool presence — and gates when the obligation applies, never whether it is
+  delivered; a rule of `class: floor` is always read and always delivered whatever its
+  `when:`; a `pointer:` rule binds you to that file's or skill's procedure, referenced never
+  restated; labels come from `plugins/mochiko/schemas/skill-labels.yaml`. The floor pin: the
+  9 rules of `class: floor` are non-waivable. Before the first derivation or probing step,
+  state the floor count back — a skipped or partial read leaves that count blank: halt and
+  surface it, and halt likewise if the schema's `class: floor` count disagrees with the pin.
+  ```
+
+- **Kept deliberately:** everything outside this section, byte for byte — the title, the opening
+  paragraph, and every procedural section. The block's substance survives in the render: the six
+  section IDs are now the six `--section` arguments, and the interpretation grammar the block
+  taught is printed as the preamble's `legend` with every fire. The block's inline naming of
+  this schema's own `conditions:` is covered by the render, whose preamble prints the whole
+  `conditions` block with each value and its resolution note — strictly more than the sentence
+  carried.
+- **Consumers assessed:** none shared — the block was this skill's own text, and this family
+  ships no common file.
+
+## [v0.106.0] the hand-pinned `class: floor` count
+
+- **Disposition:** superseded → the CLI-printed pin. The count is the `- class: floor · N rules`
+  line under `pins` in the preamble block, and the `floors:` line beneath it lists the ids; the
+  read-back sentence now cites both rather than carrying a number of its own.
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3, "the counts are computed
+  and printed by the CLI, never hand-pinned"; the wave-4 re-key ruling adding the `floors:` index)
+- **Content:** verbatim —
+
+  ```
+  The floor pin: the
+  9 rules of `class: floor` are non-waivable. Before the first derivation or probing step,
+  state the floor count back — a skipped or partial read leaves that count blank: halt and
+  surface it, and halt likewise if the schema's `class: floor` count disagrees with the pin.
+  ```
+
+- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6 as amended),
+  re-keyed from a hand-pinned number to the printed pin and its id list — the skill still states
+  the floor set back before its first procedural step, and a blank or partial read-back still
+  halts. The independent second number the `.md` used to hold is booked as a loss, per D3's own
+  rationale; the contract suite's `assert_floor_delivery` now carries what it used to check.
+- **Consumers assessed:** `.claude/rules/mochiko/primitive-edits.md` skill-pair criterion 3, which
+  demanded the hand-pinned count — amended in this same wave to branch on a converted skill.
+
 ## [v0.103.0] Schema conversion — census-row → minted-ID map (skill-content-schema wave 2C, small families)
 
 Ruling for every entry below: skill-content-schema D3 (obligations move, procedure stays

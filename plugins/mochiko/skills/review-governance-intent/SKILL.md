@@ -1,6 +1,7 @@
 ---
 name: review-governance-intent
 description: This skill MUST be invoked when serving as a cold INTENT REVIEWER in a `/mochiko:setup` run — stress-testing the frozen interrogation synthesis (`.mochiko/memory/governance-intent.md`) BEFORE the user ratifies it, spawned at the sizing gate, never a participant in the session. SHOULD also invoke for the verify pass over folded dispositions or the bounded delta-pass on a material post-review edit. Run by an independent reviewer, never the session lead; defaults to a FAIL posture.
+allowed-tools: Bash(mochiko-cli *)
 ---
 
 # Intent Review — Stress-Testing the Governance Synthesis
@@ -13,28 +14,31 @@ lead-assigned confidence mark (`Confident / Assumed / Contested / Unsure / Defer
 waiver/module sweeps) or *coherence* (fact↔risk↔ruling alignment, mark/echo-rationale
 audit, reality-conflict resolutions against the analysis, cross-element contradictions).
 
-## Rules — load the schema first
+## Rules — delivered by mochiko-cli
 
-Your first action, before any protocol step: **Read `schema.yaml` (this skill's own
-directory) and `../../schemas/skill-review-common.yaml` raw, in full, in the same first
-action.** The schema is the source of truth for this skill's binding rules, nested in six
-sections, each addressable by its section ID:
-`review-governance-intent.sec.independence` · `review-governance-intent.sec.scope` ·
-`review-governance-intent.sec.inputs` · `review-governance-intent.sec.verdict` ·
-`review-governance-intent.sec.output` · `review-governance-intent.sec.reserved`. Interpret
-it live: a rule's `kind:` names what it is, and an absent `kind:` reads `constraint`; a
-rule carrying `when:` binds only where its terms hold against the schema's declared
-`conditions:`, except that a `class: floor` rule is always read and always delivered —
-`when:` gates when its obligation applies, never whether it reaches you; a `pointer:` rule
-binds you to that file's or skill's procedure, referenced never restated; `${var}`
-substitutes from this schema's `vars:` at read time; labels come from
-`plugins/mochiko/schemas/skill-labels.yaml`. A rule carrying
-`extends: review-common.<slug>` inherits text/labels/pointer from
-`skill-review-common.yaml` only — `class` and every absence-meaningful field are local —
-and the stub's `review-governance-intent.*` ID stays the citable ID. The floor pin:
-the 16 rules of `class: floor` are non-waivable. Before the first protocol step, state the floor
-count back — a skipped or partial read leaves that count blank: halt and surface it, and
-halt likewise if the schema's `class: floor` count disagrees with the pin.
+Your rules arrive below, rendered at fire by `mochiko-cli` from the migration log this plugin
+carries — one block per section. Every block opens with a version-triple line
+(`mochiko-cli rules review-governance-intent · section <id> · binary <v> · grammar <g> · plugin <p>`) and
+closes with an end line (`mochiko-cli rules end · review-governance-intent · <id> · <N> rules`). **Proceed
+only when every block carries both lines in that exact shape, from whichever channel delivered
+it — this slot, or the plugin's dependency hook on a Skill-tool call.** Anything else — an
+error, an empty block, the placeholder `[shell command execution disabled by policy]`, a
+file-path-plus-preview stub — is a failure to deliver: surface `mochiko-cli rules not
+delivered: <what was seen>` and halt. Never Read a schema file instead; there is no fallback.
+The `legend` in the preamble block is the reading grammar; a `pointer:` binds you to that
+file's or skill's procedure, referenced never restated.
+
+!`mochiko-cli rules review-governance-intent --section preamble --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules review-governance-intent --section review-governance-intent.sec.independence --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules review-governance-intent --section review-governance-intent.sec.scope --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules review-governance-intent --section review-governance-intent.sec.inputs --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules review-governance-intent --section review-governance-intent.sec.verdict --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules review-governance-intent --section review-governance-intent.sec.output --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules review-governance-intent --section review-governance-intent.sec.reserved --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+
+Before the first procedural step, state back the floor count the preamble's `class: floor` pin
+prints and the ids its `floors:` line lists; a blank or partial read-back is a skipped read —
+halt and surface it.
 
 ## Protocol
 

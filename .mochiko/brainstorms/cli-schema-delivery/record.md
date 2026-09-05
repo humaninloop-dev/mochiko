@@ -1385,6 +1385,75 @@ not fire: its antecedent is contradicted by the mechanism observed. The negative
 (`FLOOR-COUNT: 0`, nothing invented, zero blocks). **The wave-4 trip was a property of the bar,
 not of the render.** The wave-5 question is the bar's design, put to the user.
 
+## Wave 5 — the thirty skills, landed (2026-09-04)
+
+**Open:** user-ruled — criterion (2) evaluated per family against the record's F3 figures, with
+patterns and the dense five pre-stated to land above (no common file to amortise the render's
+fixed overhead); one bump, 0.106.0; the full D8 session budget. Plan:
+[`wave5-plan.md`](wave5-plan.md); reports: [`wave5-reports/`](wave5-reports/). Seats: P1 the
+`floors:` preamble line (`staff-engineer`) / V1 PASS · P2 thirty re-points in four family units
+plus the hook rework (`staff-engineer`) / V2 PASS ×4 families + hook delta PASS · P3 the suite
+re-key, the skill family, the preload case (`qa-engineer`) / V3. Rulings at approval: **budgets
+re-seed under D10.6** to body + rendered blocks (hook lines excluded, no headroom) — P2's blocker:
+the new Rules section (halt paragraph + seven lines + read-back, 2,012–2,282 chars) outgrows the
+old load-first blocks (1,082–1,891), so every body grew and no seeded budget could clear; the five
+skill-pair converted clauses (criteria 1, 2, 3, 6, 8) under the v3.0.2 row; member sentences
+preserved (`review-feasibility`'s lens read, `authoring-requirements`' script pointer — rewritten
+as their own sentences, old text stripped); the "body carries identity and teaching only" clause
+dropped in seven members and the inline conditions lists in three, each named in its strip.
+Referent probe: `allowed-tools` is **additive on skills** (the converted `review-brainstorm` still
+Read a file) and the model read back all nine floor ids from the `floors:` line.
+`floor: tripped · seats: P1/P2/P3 produced · V1/V2/V3 reviewed`.
+
+**F15 — measured this wave.** A `/mochiko:<skill>` prompt line takes the **`UserPromptExpansion`
+path, not the Skill tool**, so the dependency hook's expansion limb resolved `commands/<name>.md`,
+found nothing, and exited 0 in both binary states — a converted skill was ungated by the hook on
+that path (the harness still failed closed: the `!` line aborts the expansion before any model
+turn, and `SessionStart` carries the install line). Fixed in the same wave: the limb resolves
+`skills/<name>/SKILL.md` when no command file exists (commands first; no name is both), V2 delta
+PASS on a fourteen-cell before/after matrix. The `PreToolUse` `Skill` limb fires only on a
+Skill-tool call, which a natural-language prompt did not produce either; it is covered
+deterministically by the host rows (30 deny, 36 presence). The preload path: a subagent whose
+`skills:` preloads a converted skill received all seven blocks with the binary present, and its
+spawn failed at preload with the binary absent (F12d confirmed).
+
+**Built.** `floors:` line (mean +386 bytes per preamble, `implement`'s 978 bytes; pin and index
+from one iterator); thirty `SKILL.md` re-points (frontmatter delta the grant only; everything
+outside the Rules section byte-identical; 210/210 blocks with head and end lines; every pin equal
+to its `floors:` count); sixty `[v0.106.0]` strip entries, Content machine-verified; the
+`[v0.106.0]` budget block re-seeding all thirty rows; `primitive-edits.md` skill clauses; README
+sentence; the hook fix; the suite: criterion (1) as the deterministic floor-delivery assert
+(gating on all 36 primitives, proved red on a prose-only transcript the old bar would have
+passed), the skill family discovered from the `!` lines, `expected-skills.json` frozen before the
+first conversion (freeze script refuses on any `!` line; mtime ordering recorded), the preload
+case, per-family read cost. Both D13 checkers now report exactly two conversion-expected findings
+per converted primitive and nothing else library-wide.
+
+**Measured (sandbox, pre-fix full run: 81/81 cases, 967 ok, 284 recorded, 0 failed):**
+criterion (1) **PASS on all 36 primitives**; read-back (recorded) exact on 107 of 108 replicates,
+the one miss a `specify` refusal naming zero ids; per-family read cost, delivered-at-invoke vs F3
+(bytes / chars): review −1.5 % / −2.5 % · authoring −1.2 % / −2.0 % · **patterns +17.8 % /
++16.9 %** · **dense five +8.7 % / +7.9 %** (P2's host measure: −2.7 · −2.2 · +17.6 · +8.0 in chars;
+all thirty +3.8 %) — the two overages as pre-stated, the patterns magnitude above the plan's
++10.4 % render-only projection because the new Rules section is larger than patterns' old blocks;
+latency 26–86 ms per section, 183–531 ms per fire. **Post-fix gate run** (absence ×30 keyed to the
+hook-block shape, delivery ×1 per skill, `hook-input`, `converted-shape`): **62 cases, 1,196
+checks, 0 failed, exit 0** — every skill absence identical (zero model turns, no injected shell
+stderr, the hook's notice on the result event naming the skill and the install line; the
+assertion accepts that shape only and, replayed over 66 saved sessions, rejects all 32 pre-fix
+harness-shape sessions), criterion (1) and the presence line re-asserted on all 30 post-fix
+replicates. The freeze script `evals/contract/freeze_expectations.py` is in the tree (V3 F2);
+its verify mode rebuilds `expected-skills.json` byte-identically from the `7d098b9` skills.
+
+**Criteria:** (1) re-keyed — clear on all 36. (2) per family as ruled — review and authoring
+under; patterns and the dense five over, pre-stated and accepted; a shorter skill halt paragraph
+is a wave-6 lever if the user wants the overage back.
+
+**Follow-ups minted (BACKLOG, wave 6):** a skill variant of the legend (it names `kind: fail` and
+`enforces:`, illegal in a skill schema); three dense-five bodies still say rules live "in the
+schema"; the expansion-path presence line sits outside the payload figures; sanitize the hook's
+name-to-path interpolation; both D13 checkers retire; the two rewritten member sentences.
+
 ## Landed (2026-09-03)
 
 - `DECISIONS.md` row (2026-09-03) — status "ruled — build pending (wave 0 probes first)".

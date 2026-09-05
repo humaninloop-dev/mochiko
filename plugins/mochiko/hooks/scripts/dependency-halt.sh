@@ -1,6 +1,6 @@
 #!/bin/sh
 # The dependency halt (record D7b). Registered twice: on UserPromptExpansion for this plugin's
-# own commands, and on PreToolUse/Skill for this plugin's own skills.
+# own commands and skills, and on PreToolUse/Skill for this plugin's own skills.
 #
 # The gate is on dependency absence only, never on behavior or judgment (GI-019). It fires for
 # mochiko's own primitives, only where that primitive actually takes its rules from the binary,
@@ -36,8 +36,14 @@ event=$(field hook_event_name)
 case "$event" in
 UserPromptExpansion)
 	name=$(field command_name)
-	primitive="$ROOT/commands/${name#mochiko:}.md"
+	bare=${name#mochiko:}
+	primitive="$ROOT/commands/$bare.md"
 	noun=command
+	# A `/mochiko:<skill>` prompt line takes this path too, and resolves to no command file.
+	if [ ! -f "$primitive" ]; then
+		primitive="$ROOT/skills/$bare/SKILL.md"
+		noun=skill
+	fi
 	;;
 PreToolUse)
 	[ "$(field tool_name)" = "Skill" ] || exit 0

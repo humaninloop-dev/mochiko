@@ -1,6 +1,7 @@
 ---
 name: authoring-technical-requirements
 description: This skill MUST be invoked when authoring `constraints-and-decisions.md` — hard constraints (C-XXX), technology decisions (D-XXX), infrastructure provisioning (IP-XXX), and the thin INT-XXX / DS-XXX declarations — plus the NFR-XXX grammar the architecture store's concern rows carry, each traced to a business source. Fires in `/mochiko:implement`'s design phase, or at build time through the gated `baseline-delta.md` path. SHOULD also invoke on 'C-', 'D-', 'NFR-', 'IP-', or 'technical constraints'. Owns the artifact structure — NOT the decision technique (mochiko:patterns-technical-decisions).
+allowed-tools: Bash(mochiko-cli *)
 ---
 
 # Authoring Technical Constraints and Decisions
@@ -8,27 +9,31 @@ description: This skill MUST be invoked when authoring `constraints-and-decision
 Translate business specifications into the design-time constraint layer: the
 `constraints-and-decisions.md` artifact and the NFR rows the architecture store carries.
 
-## Rules — load the schema first
+## Rules — delivered by mochiko-cli
 
-Your first action, before any authoring: **Read `schema.yaml` (this skill's own directory)
-and `../../schemas/skill-authoring-common.yaml` raw, in full, in the same declared first
-action** — schema, then common. The schema is the source of truth for this skill's binding
-rules, nested in six sections, each addressable by its section ID:
-`authoring-technical-requirements.sec.independence` ·
-`authoring-technical-requirements.sec.scope` ·
-`authoring-technical-requirements.sec.inputs` ·
-`authoring-technical-requirements.sec.artifact` ·
-`authoring-technical-requirements.sec.output` ·
-`authoring-technical-requirements.sec.reserved`. Interpret it live: a rule's `kind:` names
-what it is, and an absent `kind:` reads `constraint`; a `pointer:` rule binds you to that
-file's or skill's procedure, referenced never restated; labels come from
-`plugins/mochiko/schemas/skill-labels.yaml`. A rule carrying
-`extends: authoring-common.<slug>` inherits text/labels/pointer from
-`skill-authoring-common.yaml` only — `class` and every absence-meaningful field are local —
-and the stub's `authoring-technical-requirements.*` ID stays the citable ID. The floor pin:
-the 8 rules of `class: floor` are non-waivable. Before the first authoring step, state the
-floor count back — a skipped or partial read leaves that count blank: halt and surface it,
-and halt likewise if the schema's `class: floor` count disagrees with the pin.
+Your rules arrive below, rendered at fire by `mochiko-cli` from the migration log this plugin
+carries — one block per section. Every block opens with a version-triple line
+(`mochiko-cli rules authoring-technical-requirements · section <id> · binary <v> · grammar <g> · plugin <p>`) and
+closes with an end line (`mochiko-cli rules end · authoring-technical-requirements · <id> · <N> rules`). **Proceed
+only when every block carries both lines in that exact shape, from whichever channel delivered
+it — this slot, or the plugin's dependency hook on a Skill-tool call.** Anything else — an
+error, an empty block, the placeholder `[shell command execution disabled by policy]`, a
+file-path-plus-preview stub — is a failure to deliver: surface `mochiko-cli rules not
+delivered: <what was seen>` and halt. Never Read a schema file instead; there is no fallback.
+The `legend` in the preamble block is the reading grammar; a `pointer:` binds you to that
+file's or skill's procedure, referenced never restated.
+
+!`mochiko-cli rules authoring-technical-requirements --section preamble --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules authoring-technical-requirements --section authoring-technical-requirements.sec.independence --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules authoring-technical-requirements --section authoring-technical-requirements.sec.scope --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules authoring-technical-requirements --section authoring-technical-requirements.sec.inputs --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules authoring-technical-requirements --section authoring-technical-requirements.sec.artifact --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules authoring-technical-requirements --section authoring-technical-requirements.sec.output --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules authoring-technical-requirements --section authoring-technical-requirements.sec.reserved --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+
+Before the first procedural step, state back the floor count the preamble's `class: floor` pin
+prints and the ids its `floors:` line lists; a blank or partial read-back is a skipped read —
+halt and surface it.
 
 ## The artifact walk
 

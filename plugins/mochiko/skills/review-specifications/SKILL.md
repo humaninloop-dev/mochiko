@@ -1,6 +1,7 @@
 ---
 name: review-specifications
 description: This skill MUST be invoked when reviewing an already-drafted specification for gaps — missing requirements, ambiguities, unstated assumptions, and missing edge cases — including its feature layer and the Screens & Flows of a UX-bearing spec. Reach for it on 'review spec', 'find gaps', 'what's missing', or 'is the spec complete'. Produces gap-finding INPUT, not a clearing PASS/FAIL verdict. For enriching a sparse feature idea before a spec exists, use mochiko:analysis-iterative instead.
+allowed-tools: Bash(mochiko-cli *)
 ---
 
 # Reviewing Specifications
@@ -10,32 +11,31 @@ stakeholder can answer. The seat hunts what is missing, ambiguous, assumed, or c
 in a spec that already exists; enriching a sparse idea before a spec exists is a different
 skill's work.
 
-## Rules — load the schema first
+## Rules — delivered by mochiko-cli
 
-Your first action at invoke, before any hunting: **Read `schema.yaml` (this skill's own
-directory) and `../../schemas/skill-review-common.yaml` raw, in full, in the same first
-action.** The schema is the source of truth for this skill's binding rules; this body carries
-identity and procedure only. Its rules are nested in six sections, each addressable by its
-section ID: `review-specifications.sec.independence` (author/grader separation) ·
-`review-specifications.sec.scope` (jurisdiction, routing, and what never gets added) ·
-`review-specifications.sec.inputs` (coverage duties, baselines, external claims) ·
-`review-specifications.sec.verdict` (the hunt taxonomy, the check sets, the severity
-grammar) · `review-specifications.sec.output` (question craft and report contracts) ·
-`review-specifications.sec.reserved` (the clearing this seat never issues).
+Your rules arrive below, rendered at fire by `mochiko-cli` from the migration log this plugin
+carries — one block per section. Every block opens with a version-triple line
+(`mochiko-cli rules review-specifications · section <id> · binary <v> · grammar <g> · plugin <p>`) and
+closes with an end line (`mochiko-cli rules end · review-specifications · <id> · <N> rules`). **Proceed
+only when every block carries both lines in that exact shape, from whichever channel delivered
+it — this slot, or the plugin's dependency hook on a Skill-tool call.** Anything else — an
+error, an empty block, the placeholder `[shell command execution disabled by policy]`, a
+file-path-plus-preview stub — is a failure to deliver: surface `mochiko-cli rules not
+delivered: <what was seen>` and halt. Never Read a schema file instead; there is no fallback.
+The `legend` in the preamble block is the reading grammar; a `pointer:` binds you to that
+file's or skill's procedure, referenced never restated.
 
-Read the rule grammar along with the rules: a rule's `kind:` names what it is, and an absent
-`kind:` reads `constraint`; a rule carrying `when:` binds only where its terms hold against
-the schema's declared `conditions:`, except that a `class: floor` rule is always read and
-always delivered — `when:` gates when its obligation applies, never whether it reaches you.
-Where a rule carries `extends: review-common.<slug>`, the stub inherits `text` / `labels` /
-`pointer` only from `skill-review-common.yaml` — `class` and `kind` are always this schema's
-own, and the stub's `review-specifications.*` ID stays the citable ID. Labels come from
-`../../schemas/skill-labels.yaml`. A `pointer:` rule binds you to that file's or skill's
-content, referenced never restated.
+!`mochiko-cli rules review-specifications --section preamble --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules review-specifications --section review-specifications.sec.independence --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules review-specifications --section review-specifications.sec.scope --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules review-specifications --section review-specifications.sec.inputs --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules review-specifications --section review-specifications.sec.verdict --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules review-specifications --section review-specifications.sec.output --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules review-specifications --section review-specifications.sec.reserved --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
 
-The schema carries **the 8 rules of `class: floor`**. State the floor count back before the
-first procedural step; a skipped or partial schema read is a halt-and-surface, never a silent
-continue.
+Before the first procedural step, state back the floor count the preamble's `class: floor` pin
+prints and the ids its `floors:` line lists; a blank or partial read-back is a skipped read —
+halt and surface it.
 
 ## Procedure
 

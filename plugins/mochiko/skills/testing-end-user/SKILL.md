@@ -1,6 +1,7 @@
 ---
 name: testing-end-user
 description: This skill MUST be invoked when executing a `**TEST:**` verification task against real infrastructure — parsing its Setup/Action/Assert fields, running actions and capturing evidence, evaluating asserts, and classifying the task CLI/GUI/SUBJECTIVE to decide auto-approve vs human checkpoint. SHOULD also invoke when running quality gates (lint/build/test) as exit-code checks. Consumes the `**TEST:**` grammar owned by mochiko:patterns-vertical-tdd; verifies against real infrastructure, never mocks.
+allowed-tools: Bash(mochiko-cli *)
 ---
 
 # End-User Verification Testing
@@ -13,22 +14,31 @@ Execute verification tasks that validate real infrastructure behavior through st
 
 Verification testing exists to catch failures before they reach production. Every shortcut in this process is a potential production incident waiting to happen.
 
-## Rules — load the schema first
+## Rules — delivered by mochiko-cli
 
-Your first action, before any parsing or execution: **Read `schema.yaml` (this skill's own
-directory) raw, in full** — the small families ship no common file and no stub binds, so
-the pair's own schema is the whole first action. The schema is the source of truth for
-this skill's binding rules, nested in six sections, each addressable by its section ID:
-`testing-end-user.sec.independence` · `testing-end-user.sec.scope` ·
-`testing-end-user.sec.inputs` · `testing-end-user.sec.verdict` ·
-`testing-end-user.sec.output` · `testing-end-user.sec.reserved`. Interpret it live: a
-rule's `kind:` names what it is, and an absent `kind:` reads `constraint`; a rule of
-`class: floor` is always read and always delivered; a `pointer:` rule binds you to that
-file's or skill's procedure, referenced never restated; labels come from
-`plugins/mochiko/schemas/skill-labels.yaml`. The floor pin: the 7 rules of
-`class: floor` are non-waivable. Before the first parsing step, state the floor count
-back — a skipped or partial read leaves that count blank: halt and surface it, and halt
-likewise if the schema's `class: floor` count disagrees with the pin.
+Your rules arrive below, rendered at fire by `mochiko-cli` from the migration log this plugin
+carries — one block per section. Every block opens with a version-triple line
+(`mochiko-cli rules testing-end-user · section <id> · binary <v> · grammar <g> · plugin <p>`) and
+closes with an end line (`mochiko-cli rules end · testing-end-user · <id> · <N> rules`). **Proceed
+only when every block carries both lines in that exact shape, from whichever channel delivered
+it — this slot, or the plugin's dependency hook on a Skill-tool call.** Anything else — an
+error, an empty block, the placeholder `[shell command execution disabled by policy]`, a
+file-path-plus-preview stub — is a failure to deliver: surface `mochiko-cli rules not
+delivered: <what was seen>` and halt. Never Read a schema file instead; there is no fallback.
+The `legend` in the preamble block is the reading grammar; a `pointer:` binds you to that
+file's or skill's procedure, referenced never restated.
+
+!`mochiko-cli rules testing-end-user --section preamble --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules testing-end-user --section testing-end-user.sec.independence --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules testing-end-user --section testing-end-user.sec.scope --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules testing-end-user --section testing-end-user.sec.inputs --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules testing-end-user --section testing-end-user.sec.verdict --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules testing-end-user --section testing-end-user.sec.output --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules testing-end-user --section testing-end-user.sec.reserved --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+
+Before the first procedural step, state back the floor count the preamble's `class: floor` pin
+prints and the ids its `floors:` line lists; a blank or partial read-back is a skipped read —
+halt and surface it.
 
 ## When NOT to Use
 

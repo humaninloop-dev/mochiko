@@ -5,6 +5,40 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.106.0] — 2026-09-04
+
+**CLI schema delivery — wave 5, the thirty schema-bearing skills** (`cli-schema-delivery` D3
+skill form, D7, D8, D9 "skills by family", D10.6; the wave-4 re-key ruling; governance v3.0.2;
+`DECISIONS.md` 2026-09-04). The review (8), authoring (8), patterns (9), and dense-five (5)
+families now fire from the migration log in the skill form of the converted shape — seven `!`
+lines under the `Bash(mochiko-cli *)` grant (additive on skills, probed on the referent), the
+halt paragraph, and a read-back sentence citing the preamble's `class: floor` pin and its new
+**`floors:` index line** — so **no shipped primitive reads a schema file at fire**. The preamble
+render gains the `floors:` line (mean +386 bytes per primitive; a render-shape change named
+here). **F15:** a `/mochiko:<skill>` prompt line takes the prompt-expansion path, not the Skill
+tool; the dependency hook's expansion limb now resolves `skills/<name>/SKILL.md` when no command
+file exists, so converted skills are gated on that path too (V2 delta PASS); the `PreToolUse`
+`Skill` limb is live for Skill-tool calls and host-verified; a subagent preloading a converted
+skill receives the blocks with the binary present and fails to spawn with it absent. The
+contract suite's **criterion (1) is re-keyed** to the deterministic floor-delivery assert
+(every `class: floor` id of a converted primitive verbatim, with its class line, in the
+transcript the model read — gating on all 36 primitives, proved red on a prose-only transcript
+the old bar would have passed); the exact-id read-back is reported, never gating; the suite
+discovers converted skills from their `!` lines and ran 81 cases (pre-fix full run 81/81, 967
+assertions, 284 recorded; post-fix gate run under the final hook and code: 62 cases, 1,196 checks, 0 failed —
+absence ×30 keyed to the hook-block shape only, delivery ×1 per skill with criterion (1) and the
+presence line asserted, `hook-input` 142, `converted-shape` 184). **Criterion (2), read cost, per family as
+ruled at the wave open (delivered-at-invoke, bytes vs the record's F3 figures):** review −1.5 % ·
+authoring −1.2 % · patterns +17.8 % · dense five +8.7 % — the two common-file-less families land
+above their baselines by the render's fixed overhead plus a larger Rules section, pre-stated and
+accepted. Budgets: all 30 converted skills re-seeded to the measured post-conversion payload
+per D10.6 (`primitive-cost-budgets.md`, `[v0.106.0]` block). `primitive-edits.md`: five
+converted-skill clauses (criteria 1, 2, 3, 6, 8). Strips: 60 `[v0.106.0]` supersession entries.
+Audits: V1 PASS (`floors:` line), V2 PASS ×4 families + the hook delta, V3 PASS (suite, after
+one documentation rework; the gate run reproduced under the pinned code). Follow-ups
+(wave 6): a skill variant of the legend, three dense-five bodies still saying rules live "in the
+schema", both D13 checkers retire, a name sanitizer in the hook, the wave-2 publish tail.
+
 ## [0.105.0] — 2026-09-04
 
 **CLI schema delivery — wave 4, the five remaining commands; landed with a tripped read-back**

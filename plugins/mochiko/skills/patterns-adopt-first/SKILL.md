@@ -1,6 +1,7 @@
 ---
 name: patterns-adopt-first
 description: This skill MUST be invoked at a design-phase decision or a build-time decomposition decision in a commodity category (storage, locking, serialization, queueing, caching, auth, search) — the alternatives name a real off-the-shelf candidate or state none exists; custom wins only in writing against it, and a build-time ruling halts to the user, never builder-decided. SHOULD also invoke on 'build vs buy', 'off-the-shelf', 'should we build this ourselves', 'shelf candidate', 'hand-rolled'. In-process/self-hostable only; SaaS buy is an IP-XXX call. Governs CHANGING the stack; `analysis-codebase` describes it.
+allowed-tools: Bash(mochiko-cli *)
 ---
 
 # Adopt First — Build vs Off-the-Shelf at Design and Build Time
@@ -21,20 +22,29 @@ merits. What may not happen is that it was never named at all. The canonical mis
 framing artifact — a storage engine framed as a serialization choice, and the shelf question
 never got asked.
 
-## Rules — load the schema first
+## Rules — delivered by mochiko-cli
 
-Your first action, before any shelf check: **Read `schema.yaml` (this skill's own directory)
-raw, in full, as a declared first action.** The schema is the source of truth for this skill's
-binding rules, nested in six sections, each addressable by its section ID:
-`patterns-adopt-first.sec.trigger` · `patterns-adopt-first.sec.scope` ·
-`patterns-adopt-first.sec.discipline` · `patterns-adopt-first.sec.inputs` ·
-`patterns-adopt-first.sec.disclosure` · `patterns-adopt-first.sec.reserved`. Interpret it
-live: a rule's `kind:` names what it is, and an absent `kind:` reads `constraint`; a rule
-carrying `when:` binds only where its terms hold against the schema's declared `conditions:`,
-except that a `class: floor` rule is always read and always delivered — `when:` gates when its
-obligation applies, never whether it reaches you; a `pointer:` rule binds you to that file's
-or skill's procedure, referenced never restated; labels come from
-`plugins/mochiko/schemas/skill-labels.yaml`. The floor pin: the 7 rules of `class: floor` are
-non-waivable. Before the first shelf-check step, state the floor count back — a skipped or
-partial read leaves that count blank: halt and surface it, and halt likewise if the schema's
-`class: floor` count disagrees with the pin.
+Your rules arrive below, rendered at fire by `mochiko-cli` from the migration log this plugin
+carries — one block per section. Every block opens with a version-triple line
+(`mochiko-cli rules patterns-adopt-first · section <id> · binary <v> · grammar <g> · plugin <p>`) and
+closes with an end line (`mochiko-cli rules end · patterns-adopt-first · <id> · <N> rules`). **Proceed
+only when every block carries both lines in that exact shape, from whichever channel delivered
+it — this slot, or the plugin's dependency hook on a Skill-tool call.** Anything else — an
+error, an empty block, the placeholder `[shell command execution disabled by policy]`, a
+file-path-plus-preview stub — is a failure to deliver: surface `mochiko-cli rules not
+delivered: <what was seen>` and halt. Never Read a schema file instead; there is no fallback.
+The `legend` in the preamble block is the reading grammar; a `pointer:` binds you to that
+file's or skill's procedure, referenced never restated.
+
+!`mochiko-cli rules patterns-adopt-first --section preamble --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules patterns-adopt-first --section patterns-adopt-first.sec.trigger --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules patterns-adopt-first --section patterns-adopt-first.sec.scope --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules patterns-adopt-first --section patterns-adopt-first.sec.discipline --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules patterns-adopt-first --section patterns-adopt-first.sec.inputs --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules patterns-adopt-first --section patterns-adopt-first.sec.disclosure --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules patterns-adopt-first --section patterns-adopt-first.sec.reserved --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+
+Before the first procedural step, state back the floor count the preamble's `class: floor` pin
+prints and the ids its `floors:` line lists; a blank or partial read-back is a skipped read —
+halt and surface it.
+
