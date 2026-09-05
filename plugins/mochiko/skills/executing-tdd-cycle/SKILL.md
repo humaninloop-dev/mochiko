@@ -52,15 +52,15 @@ halt and surface it.
 
 Extract the current card from the feature's `tasks.md` per
 [references/TASK-PARSING.md](references/TASK-PARSING.md) — the card fields, and how far
-card reading legally goes, are the schema's `executing-tdd-cycle.sec.inputs` rules.
+card reading legally goes, are delivered by `mochiko-cli` as the `executing-tdd-cycle.sec.inputs` rules.
 
 **2. Decompose the Card**
 
 Break the card into concrete implementation tasks — yours to decide, here, with the code in
 view. The decomposition discipline (task sizing, ordering, extend/modify classification,
-scope, the pre-code ladder walk per `mochiko:patterns-code-minimalism`) is the schema's
-`executing-tdd-cycle.sec.scope` rules; the decomposition itself lands in the cycle report,
-per `executing-tdd-cycle.sec.output`.
+scope, the pre-code ladder walk per `mochiko:patterns-code-minimalism`) is delivered by
+`mochiko-cli` as the `executing-tdd-cycle.sec.scope` rules; the decomposition itself lands in the
+cycle report, per `executing-tdd-cycle.sec.output`.
 
 **3. Red Phase — Write Failing Tests**
 

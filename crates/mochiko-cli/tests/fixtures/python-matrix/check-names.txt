@@ -1,0 +1,58 @@
+# The 48 check("…") names of scripts/test-find-similar-rules.py, in source order.
+#
+# Frozen at wave 6 (2026-09-05), from the script as of commit 5f775ea, immediately before it was
+# retired with the other two Python checkers (record D6). The ledger below it in
+# tests/matrix_similar.rs is a set equation over these names, so the list has to survive the
+# script it was derived from — otherwise the port coverage claim becomes a hand count.
+#
+# Regenerate is not a thing that can happen: the script is gone. Editing this file changes what
+# the ported-matrix ledger is graded against, which is a claim about history, not a refactor.
+
+norm: ${var} collapsed
+norm: /mochiko:<cmd> collapsed
+norm: own-prefix section collapsed
+norm: own-prefix rule collapsed
+norm: foreign prefix kept
+sim: identical = 1.0
+sim: token-sort rescues reorder
+sim: disjoint under floor = 0.0
+bonus: pointer+section+labels hits cap
+bonus: nothing shared = 0
+bonus: labels jaccard 0.5 counts
+guard: short near-frame pair dropped
+guard: short exact pair kept
+cap: combined never exceeds 1.00
+bucket: cross-kind never scored
+skip: same common block skipped
+skip: same review-common block skipped (skill grammar)
+allowlist: edge suppressed
+classify: 3 schemas = COMMON-CANDIDATE
+classify: 2 schemas = CROSS-PAIR
+classify: 1 schema = INTRA-SCHEMA
+classify: mixed extends adds EXTEND-GAP
+classify: all-extends is not a gap
+e2e: exit 0 by default
+e2e: register cluster found
+e2e: COMMON-CANDIDATE + EXTEND-GAP tagged
+e2e: extends resolution feeds stub text
+e2e: floor flagged
+e2e: controls stay unclustered
+e2e: --exit-signal exits 1 on clusters
+e2e: --json parses
+e2e: fully-suppressed cluster gone
+e2e: suppression count reported
+e2e: stale allowlist ID warned
+e2e: --exit-signal exits 0 when suppressed clean
+skill e2e: exit 0 by default
+skill e2e: fixture run reads no live allowlist
+skill e2e: in-dir schemas discovered and clustered
+skill e2e: stub resolves against review-common (EXTEND-GAP)
+skill e2e: floor members flagged
+skill e2e: register control stays unclustered (skills-only run)
+skill e2e: skill edge suppressed
+mixed e2e: cross-grammar edge surfaces in the register cluster
+mixed e2e: both sets scanned
+authoring e2e: exit 0 by default
+authoring e2e: stub resolves against authoring-common (EXTEND-GAP)
+authoring e2e: both families resolve in one run
+authoring e2e: unknown-prefix stub warns, never clusters

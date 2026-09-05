@@ -98,7 +98,7 @@ superseded by this table):
 Existing codebases have implicit conventions worth preserving (the Emergent Ceiling) but may
 lack foundational governance (the Essential Floor). Read the codebase analysis for
 **"Strengths to Preserve"** (ceiling candidates) and the **Essential-Floor status**
-(present / partial / absent per category); the ceiling-vs-debt call rides the schema's
+(present / partial / absent per category); the ceiling-vs-debt call rides the delivered
 ceiling test.
 
 ## Related (cross-cluster; referenced, not mounted)

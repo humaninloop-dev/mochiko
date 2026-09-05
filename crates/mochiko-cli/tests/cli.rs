@@ -28,8 +28,9 @@ fn write_migration(dir: &Path, name: &str, body: &str) {
     std::fs::write(dir.join(name), stamped).expect("fixture migration is writable");
 }
 
-/// A minimal but valid corpus: one command carrying the six command sections, its registry, and
-/// one template. Enough for every exit-code path without restating the render fixture.
+/// A minimal but valid corpus: one command carrying the six command sections, both label
+/// registries, one template and one shelf. Enough for every exit-code path, and for one document
+/// of each kind `doc` serves, without restating the render fixture.
 const LOG: &str = r#"
 grammar: 1
 id: 0001-genesis
@@ -92,6 +93,14 @@ changes:
               enforces: [demo.boundary]
               text: An unaccepted record.
   - op: import-document
+    kind: skill-labels
+    name: skill-labels
+    content:
+      kind: skill-labels
+      labels:
+        independence: Who is never whom.
+        scope: What the skill covers.
+  - op: import-document
     kind: template
     name: demo-template
     content:
@@ -107,6 +116,17 @@ changes:
           check: Is the purpose stated?
       skeleton: |
         # Demo
+  - op: import-document
+    kind: shelf
+    name: demo-shelf
+    content:
+      shelf: demo-shelf
+      title: Demo Shelf
+      status: seeded
+      dimensions:
+        - id: 1
+          dimension: Storage
+          default: One database before polyglot storage.
 "#;
 
 /// A log directory holding [`LOG`].
@@ -211,6 +231,7 @@ fn a_log_written_in_an_out_of_range_grammar_exits_3_with_the_install_line() {
     for args in [
         vec!["rules", "demo", "--section", "preamble"],
         vec!["template", "demo-template"],
+        vec!["doc", "demo-shelf"],
         vec!["migrate", "status"],
         vec!["migrate", "validate"],
     ] {
@@ -309,6 +330,127 @@ fn an_unknown_template_exits_2() {
 }
 
 // ---------------------------------------------------------------------------
+// doc — the shelf and registry delivery (wave 6, §2.1)
+// ---------------------------------------------------------------------------
+
+/// Every document `doc` serves arrives wrapped in the head and end lines the caller halts on.
+///
+/// The same contract the rules render carries, for the same reason: an oversized render arrives
+/// as a file-path preview whose head line survives, so a head-only confirmation would pass a
+/// truncated delivery. These bodies are small enough today that it cannot happen, which is a fact
+/// about today's corpus rather than a property of the command.
+#[test]
+fn doc_renders_each_shelf_and_registry_between_its_head_and_end_lines() {
+    let dir = log("docall");
+    for name in ["demo-shelf", "command-labels", "skill-labels"] {
+        let r = run(&["doc", name, "--log-dir", &dir.display().to_string()]);
+        assert_eq!(r.code, 0, "{name} should render:\n{}", r.err);
+        let lines: Vec<&str> = r.out.lines().collect();
+        assert_eq!(
+            lines[0],
+            format!(
+                "mochiko-cli doc {name} · binary {} · grammar 1 · plugin unknown",
+                env!("CARGO_PKG_VERSION")
+            ),
+            "{name}: head line:\n{}",
+            r.out
+        );
+        assert_eq!(
+            lines[lines.len() - 1],
+            format!("mochiko-cli doc end · {name}"),
+            "{name}: end line:\n{}",
+            r.out
+        );
+    }
+}
+
+/// The body between the two lines is the document, not a summary of it.
+#[test]
+fn a_doc_body_parses_back_into_the_document_the_log_carries() {
+    let dir = log("docbody");
+    let r = run(&["doc", "demo-shelf", "--log-dir", &dir.display().to_string()]);
+    assert_eq!(r.code, 0, "{}", r.err);
+
+    let body: String = r
+        .out
+        .lines()
+        .skip(1)
+        .take_while(|line| !line.starts_with("mochiko-cli doc end"))
+        .map(|line| format!("{line}\n"))
+        .collect();
+    let value: serde_norway::Value =
+        serde_norway::from_str(&body).unwrap_or_else(|e| panic!("the body parses: {e}\n{body}"));
+    assert_eq!(
+        value.get("shelf").and_then(|v| v.as_str()),
+        Some("demo-shelf"),
+        "the body is the shelf document:\n{body}"
+    );
+    assert_eq!(
+        value
+            .get("dimensions")
+            .and_then(|v| v.as_sequence())
+            .map(Vec::len),
+        Some(1),
+        "the body carries the shelf's own rows:\n{body}"
+    );
+}
+
+/// A `doc` render carries the document alone — never the derived-view file header, which
+/// describes a file on disk and would be a claim about something the plugin no longer ships.
+#[test]
+fn a_doc_render_carries_no_derived_view_file_header() {
+    let dir = log("docnoheader");
+    let r = run(&["doc", "demo-shelf", "--log-dir", &dir.display().to_string()]);
+    assert_eq!(r.code, 0, "{}", r.err);
+    assert!(
+        !r.out.contains("views emit"),
+        "the file header reached a delivery:\n{}",
+        r.out
+    );
+}
+
+#[test]
+fn doc_for_an_unknown_name_exits_2_and_names_the_documents_it_serves() {
+    let dir = log("docunknown");
+    let r = run(&[
+        "doc",
+        "does-not-exist",
+        "--log-dir",
+        &dir.display().to_string(),
+    ]);
+    assert_eq!(r.code, 2, "{}{}", r.out, r.err);
+    for name in ["command-labels", "demo-shelf", "skill-labels"] {
+        assert!(r.err.contains(name), "the error lists {name}:\n{}", r.err);
+    }
+}
+
+/// A name the log carries under another kind is not an absence. Saying "no such document" would
+/// send the reader hunting for a typo instead of at the right subcommand.
+#[test]
+fn doc_for_a_name_of_another_kind_names_the_command_that_serves_it() {
+    let dir = log("docwrong");
+    let dir_string = dir.display().to_string();
+
+    let template = run(&["doc", "demo-template", "--log-dir", &dir_string]);
+    assert_eq!(template.code, 2, "{}{}", template.out, template.err);
+    assert!(
+        template.err.contains("mochiko-cli template demo-template"),
+        "a template redirects to `template`:\n{}",
+        template.err
+    );
+
+    let command = run(&["doc", "demo", "--log-dir", &dir_string]);
+    assert_eq!(command.code, 2, "{}{}", command.out, command.err);
+    assert!(
+        command
+            .err
+            .contains("mochiko-cli rules demo --section <section>"),
+        "a command redirects to `rules`:\n{}",
+        command.err
+    );
+}
+
+// ---------------------------------------------------------------------------
 // an unsound or absent log (exit 1)
 // ---------------------------------------------------------------------------
 
@@ -355,6 +497,7 @@ fn every_subcommand_exits_1_on_an_empty_log_directory_and_names_it() {
     for args in [
         vec!["rules", "demo", "--section", "preamble"],
         vec!["template", "demo-template"],
+        vec!["doc", "demo-shelf"],
         vec!["migrate", "status"],
         vec!["migrate", "validate"],
     ] {
@@ -391,13 +534,6 @@ id: 0002-twin
 sequence: 2
 intent: Import a skill sharing its name with a command.
 changes:
-  - op: import-document
-    kind: skill-labels
-    name: skill-labels
-    content:
-      kind: skill-labels
-      labels:
-        scope: What the skill covers.
   - op: import-document
     kind: skill
     name: demo
@@ -530,7 +666,7 @@ fn migrate_status_prints_the_log_grammar_sequences_and_the_state_hash() {
         r.out
     );
     assert!(
-        lines[1].ends_with(" · 3 documents · 3 rules"),
+        lines[1].ends_with(" · 5 documents · 3 rules"),
         "status line 2 carries the census:\n{}",
         r.out
     );

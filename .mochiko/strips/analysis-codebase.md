@@ -21,6 +21,28 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 `DECISIONS.md` 2026-09-04 row. Pre-edit verbatim text:
 `git show 7d098b9:plugins/mochiko/skills/analysis-codebase/SKILL.md`. -->
 
+<!-- Wave context: wave 6 of the CLI schema-delivery build (v0.107.0) — the end state. No schema
+file ships in the plugin: the 20 files under `plugins/mochiko/schemas/` and the 30
+`skills/*/schema.yaml` were deleted, and every delivery they served now has a CLI form. Ruling for
+the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9 wave 6, with
+the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
+`git show 62aa99d:plugins/mochiko/skills/analysis-codebase/`. -->
+
+## [v0.107.0] the reference file's two-arm codebase-analysis clause and two "in the schema" body lines
+
+- **Disposition:** superseded → the CLI forms
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/cli-schema-delivery/record.md`
+  D9 wave 6; `DECISIONS.md` 2026-09-05)
+- **Content:** three lines.
+  1. `references/CONTEXT-GATHERING.md`: "`mochiko-cli template codebase-analysis`, or
+     `plugins/mochiko/schemas/codebase-analysis.yaml` read raw"
+  2. `SKILL.md`: "the boundary and posture rules live in the schema's scope and verdict sections"
+  3. `SKILL.md`: "capability-signal seeding are the schema's `analysis-codebase.sec.output` rules."
+- **Kept deliberately:** the whole scope note around line 1 — the Setup-Brownfield fold, the
+  standalone Project Context Report carve-out, and the reference-only status of the output-format
+  block. Lines 2 and 3 keep their section ids, which still resolve; only the delivery noun moved.
+  The wave-5 V2 audit raised these two as a non-blocking follow-up, and this entry discharges it.
+
 ## [v0.106.0] the Rules block — raw schema Read superseded by CLI delivery
 
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation

@@ -42,7 +42,7 @@ halt and surface it.
 
 ## The Ladder
 
-Rung by rung — the stop rule and every bound on the walk live in the schema:
+Rung by rung — the stop rule and every bound on the walk are delivered by `mochiko-cli`:
 
 1. **Does it need to exist at all?** The requirement is already met, speculative, or
    YAGNI — skip the task entirely.

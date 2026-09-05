@@ -70,4 +70,20 @@ bump containing re-adds triggers the validator audit on the touched primitives, 
 override-count threshold (build-time parameter) flags a primitive for audit regardless
 (fold S5).
 
+## Schema content is recorded by the migration log, not here (from v0.107.0)
+
+Schema content — what the former `plugins/mochiko/schemas/*.yaml` and
+`plugins/mochiko/skills/*/schema.yaml` carried — is recorded by the migration log at
+`plugins/mochiko/migrations/`, never by a strip entry. The log carries the verbatim prior content
+by construction, so a strip entry would be a second, weaker copy of a record that already exists;
+a schema-content edit is a new migration file instead, and the migration carries the ruling anchor
+where a supersession or tombstone of protected content demands one.
+
+The 50 snapshot files deleted at v0.107.0 — 20 under `plugins/mochiko/schemas/` and 30
+`skills/*/schema.yaml` — therefore take no entries in this directory. Their record is the log plus
+the wave-6 ruling (`.mochiko/brainstorms/cli-schema-delivery/record.md` D2 and D9 wave 6). The
+human-readable projection of the log lives at `.mochiko/schema-views/`, regenerated and never
+hand-edited. Body prose in a `SKILL.md`, a command `.md`, a `references/` file or a template is
+unaffected: those are primitive edits and still take entries here.
+
 Wave summaries do not live here — they land on ROADMAP/REGISTRY rows, as every build does.

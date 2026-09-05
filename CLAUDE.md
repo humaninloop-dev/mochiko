@@ -71,7 +71,7 @@ These were read-only reference sources:
 
 **Kernel-class tooling is admissible only by recorded ruling** (softened per the `schema-based-template-guidance` D11 ruling; governance trace GI-019 · widened admission: `cli-schema-delivery` D11). *Kernel-class* = executable tooling whose output primitives depend on (source-of-truth delivery, composition, or any standing infrastructure role). It is admitted only where a recorded ruling justifies it, and even then never gates pipeline progress, never dispatches or sequences agents, and never holds judgment that skills own — the standing bright line. This licenses no general kernel and no orchestration/brain code — Python/MCP brains, capability catalogs, DAG-mediated orchestration, the old ban's named species, stay banned; advisory post-hoc checkers used as optional exit-code signals are not kernel-class. First admitted instance: the template-schema Rust CLI (`.mochiko/brainstorms/schema-based-template-guidance/record.md` D11).
 
-**Plugin install stays clone-only; delivery depends on `mochiko-cli`** (governance trace GI-020, superseded-by-ruling v3.0.0 — `cli-schema-delivery` D4/D10). The plugin MUST install by a plain marketplace clone — no install-time build step, no fetch beyond the clone, no submodule-class burden. Every command and skill depends on the separately installed `mochiko-cli` binary (a developer tool the user installs — `cargo install mochiko-cli` or the Homebrew tap; never shipped in the plugin), which serves their rules from the migration log the plugin carries at `plugins/mochiko/migrations/`. The binary's absence, or a log outside its grammar range, halts a run loudly at first use and never degrades — at the end state the plugin carries **no schema file a run could read instead**. *Transition clause:* from this ratification until the wave-6 landing, primitives not yet re-pointed read the derived snapshot files shipped in the plugin; the clause expires when no schema file ships in the plugin. Environments that disable skill shell execution or hooks by policy, and PowerShell-only Windows, are declared unsupported. Detail: ledger GI-020.
+**Plugin install stays clone-only; delivery depends on `mochiko-cli`** (governance trace GI-020, superseded-by-ruling v3.0.0 — `cli-schema-delivery` D4/D10). The plugin MUST install by a plain marketplace clone — no install-time build step, no fetch beyond the clone, no submodule-class burden. Every command and skill depends on the separately installed `mochiko-cli` binary (a developer tool the user installs — `cargo install mochiko-cli` or the Homebrew tap; never shipped in the plugin), which serves their rules from the migration log the plugin carries at `plugins/mochiko/migrations/`. The binary's absence, or a log outside its grammar range, halts a run loudly at first use and never degrades — at the end state the plugin carries **no schema file a run could read instead**. No schema file ships in the plugin (from v0.107.0, the wave-6 end state; the transition clause expired at v3.0.3, and the contract suite's run-wide no-Read assert holds it). Environments that disable skill shell execution or hooks by policy, and PowerShell-only Windows, are declared unsupported. Detail: ledger GI-020.
 
 ## How to work in this repo
 
@@ -106,7 +106,7 @@ Session artifacts (`record.md`, `synthesis.md`) live in `.mochiko/brainstorms/<t
 <!-- mochiko:governance:begin -->
 ## Governance
 
-**Ratified:** v3.0.2 · 2026-09-04 (AM-2 + the wave-3 and wave-4 PATCHes) · production floor · depth: high · modules: compliance none · knowledge-management (core + CHANGELOG) · release-gates <!-- GI-001 (fact profile) · GI-021 (depth level) -->
+**Ratified:** v3.0.3 · 2026-09-05 (AM-2 + the wave-3, wave-4, and wave-6 PATCHes) · production floor · depth: high · modules: compliance none · knowledge-management (core + CHANGELOG) · release-gates <!-- GI-001 (fact profile) · GI-021 (depth level) -->
 
 ### Principles
 
@@ -116,7 +116,7 @@ Session artifacts (`record.md`, `synthesis.md`) live in `.mochiko/brainstorms/<t
 - Every primitive edit MUST be reconstructible from strips + the migration log + `DECISIONS.md` + version stamps (NON-NEGOTIABLE) <!-- GI-006 -->
 - Governance surfaces point at existing constraint homes; they MUST NOT restate them <!-- GI-017 -->
 - Kernel-class tooling admission — see `## Non-negotiable constraints` (detail: ledger GI-019; widened admission: `cli-schema-delivery` D11) <!-- GI-019 -->
-- Clone-only install with a required `mochiko-cli` dependency — see `## Non-negotiable constraints` (detail: ledger GI-020; transition clause until wave 6) <!-- GI-020 -->
+- Clone-only install with a required `mochiko-cli` dependency — see `## Non-negotiable constraints` (detail: ledger GI-020) <!-- GI-020 -->
 - No repo-level feature map for mochiko itself — the planning surfaces are `ROADMAP.md` / `BACKLOG.md` / `DECISIONS.md` (declined durable; detail: ledger GI-022) <!-- GI-022 -->
 
 ### Technology stack
@@ -132,7 +132,7 @@ Session artifacts (`record.md`, `synthesis.md`) live in `.mochiko/brainstorms/<t
 ### Governance operations
 
 - Ledger (waivers · amendment policy · exceptions · Three-Part metadata): `.mochiko/memory/governance-ledger.md`
-- Amend via `/mochiko:setup` (fact-profile changes — module attach/detach — and un-waives are governance events); standing amend triggers: public-product transition · GLOSSARY.md content (the CI-arrival trigger fired and discharged at v0.76.0; the crate's first-public-release trigger fired at AM-2 — its discharge conditional on four named controls, two still owed, ledger); the transition clause's wave-6 expiry is a pre-authorized PATCH amendment
+- Amend via `/mochiko:setup` (fact-profile changes — module attach/detach — and un-waives are governance events); standing amend triggers: public-product transition · GLOSSARY.md content (the CI-arrival trigger fired and discharged at v0.76.0; the crate's first-public-release trigger fired at AM-2 — its discharge conditional on four named controls, two still owed, ledger); the transition clause expired at v3.0.3 (the pre-authorized wave-6 PATCH)
 <!-- mochiko:output-style:begin -->
 - Writing style — conversation: `full` · reports: `ultra` *(internal agent hand-offs)* · documents: `full`. Terse and plain-English by default. Set any of the three to `off`, `lite`, `full`, or `ultra` and your choice is kept when this section is regenerated; "normal mode" turns it off for one session.
 <!-- mochiko:output-style:end -->

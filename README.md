@@ -33,19 +33,20 @@ Once per project, establish governance with `/mochiko:setup` — it interrogates
 
 ### What `mochiko-cli` serves
 
-The plugin carries a **migration log** at `plugins/mochiko/migrations/` — an append-only record of every rule and template the library ships. The binary replays that log in memory at fire and renders what the moment needs. The log is the source of truth; the rendered view is produced fresh each time and never edited by hand.
+The plugin carries a **migration log** at `plugins/mochiko/migrations/` — an append-only record of every rule and template the library ships. The binary replays that log in memory at fire and renders what the moment needs. The log is the source of truth; the rendered view is produced fresh each time and never edited by hand. **The plugin ships no schema file at all**: the log is the only rule data it carries, so there is nothing a command could read instead of asking the binary.
 
 ```
 mochiko-cli rules <primitive> --section <id>   # one section of a command's or skill's rules
 mochiko-cli template <name>                    # producer view: schema + example + good/bad guidance
 mochiko-cli template <name> --check            # checklist view: one check line per section
+mochiko-cli doc <name>                         # a shelf or label-registry document
 mochiko-cli migrate status --plugin-root <plugin>     # the log's grammar, its sequences, the replayed state
 mochiko-cli migrate validate --plugin-root <plugin>   # replay the log and report what the hard set found
 ```
 
 A rules render is one section at a time. Each block opens with a version triple — binary version, log grammar version, plugin version — and closes with an end line carrying the section's rule count. A command proceeds only when both lines arrive in that exact shape, and halts on anything else.
 
-`template <name>` takes one of `spec`, `tasks`, `feature-entry`, `features-index`, `codebase-analysis`, `governance-intent`, `governance-surfaces`. The `--check` view is a guidance view, never a linter — it takes no artifact input and always exits 0 on success.
+`template <name>` takes one of `spec`, `tasks`, `feature-entry`, `features-index`, `codebase-analysis`, `governance-intent`, `governance-surfaces`, `architecture-store`. The `--check` view is a guidance view, never a linter — it takes no artifact input and always exits 0 on success. `doc <name>` serves the non-template documents — the backend shelf `architecture-shelf-backend` and the two label registries `command-labels` and `skill-labels`.
 
 The log directory resolves `--log-dir <path>` → `--plugin-root <root>/migrations` → `MOCHIKO_MIGRATIONS` → `./migrations`. Commands and hooks pass `--plugin-root` so they always read the log inside the installed plugin.
 

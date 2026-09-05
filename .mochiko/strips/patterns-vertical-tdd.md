@@ -15,6 +15,23 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 `DECISIONS.md` 2026-09-04 row. Pre-edit verbatim text:
 `git show 7d098b9:plugins/mochiko/skills/patterns-vertical-tdd/SKILL.md`. -->
 
+<!-- Wave context: wave 6 of the CLI schema-delivery build (v0.107.0) — the end state. No schema
+file ships in the plugin: the 20 files under `plugins/mochiko/schemas/` and the 30
+`skills/*/schema.yaml` were deleted, and every delivery they served now has a CLI form. Ruling for
+the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9 wave 6, with
+the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
+`git show 62aa99d:plugins/mochiko/skills/patterns-vertical-tdd/SKILL.md`. -->
+
+## [v0.107.0] the walking-skeleton paragraph's "live in the schema"
+
+- **Disposition:** superseded → "are delivered by `mochiko-cli`", id unchanged
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/cli-schema-delivery/record.md`
+  D9 wave 6; `DECISIONS.md` 2026-09-05)
+- **Content:** "no infra-only cards — live in the schema (`patterns-vertical-tdd.sec.discipline`)."
+- **Kept deliberately:** the id, which still resolves, and the three binding forms it points at —
+  when the skeleton fires, how infrastructure homes, no infra-only cards — plus the whole
+  skeleton-before-features and infrastructure-homed-by-need argument above it.
+
 ## [v0.106.0] the Rules block — raw schema Read superseded by CLI delivery
 
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation

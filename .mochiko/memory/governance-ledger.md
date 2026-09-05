@@ -1,7 +1,7 @@
 # Governance Ledger
 
 **Governance Floor:** production (asserted) · **Depth level:** high (user-declared, one-way; `high` terminal — GI-021, minted at AM-1 discharging the legacy-default pointer; set up under the single floor pre-adaptive-depth, already conformed to full depth #7 fold 2026-08-11) · **Modules:** compliance: none (GI-001 negatives confirmed, incl. no-UI) · template: knowledge-management (core + CHANGELOG elective) · release-gates · **Trace:** GI-001 (fact profile) · GI-021 (depth level)
-**Version:** 3.0.2 (must match the region stamp)
+**Version:** 3.0.3 (must match the region stamp)
 
 ## Waivers
 
@@ -19,8 +19,9 @@ validator FAIL.
 under `plugins/mochiko/skills/*/scripts/`. The row's "script count grows" trigger was tripped by
 three repo-level checkers (`scripts/check-command-schema.py` v0.92.0 · `find-similar-rules.py`
 v0.99.0 · `check-skill-schema.py` v0.100.0) with no disposition recorded at the time. They were
-never waived — they rest on GI-019's advisory-checker clause — and they retire into the crate's
-validator at wave 6, which makes the observation moot then; it is recorded here so the gap is
+never waived — they rest on GI-019's advisory-checker clause — and they retired into the crate's
+validator at wave 6 (v0.107.0, 2026-09-05: the three scripts and their tests deleted), which
+makes the observation moot; it is recorded here so the gap is
 not read later as an unrecorded lapse.
 
 ## Amendment policy
@@ -341,8 +342,9 @@ any rule is where drift starts. User ruling, dimension 9: "leave these out."
   validator grades it (record D11).
 - **The advisory clause, applied:** the three repo-level checkers
   (`scripts/check-command-schema.py` · `check-skill-schema.py` · `find-similar-rules.py`) were
-  never waived — they rest on that clause — and they retire into the crate's validator at wave 6
-  under the admission above. The six skill-shipped helpers under waiver GI-008 are untouched.
+  never waived — they rest on that clause — and they retired into the crate's validator at wave 6
+  (v0.107.0: `mochiko-cli migrate validate --report` is the advisory pre-pass) under the admission
+  above. The six skill-shipped helpers under waiver GI-008 are untouched.
 
 **Testability**:
 - Pass: every kernel-class component in the tree traces to a recorded admission ruling and
@@ -381,10 +383,12 @@ change is reconstructible (GI-006).*
   model turn, the `UserPromptExpansion` hook carries the install line, `SessionStart` reports
   presence. At the end state the shipped plugin carries no schema file a run could read instead
   (records D3, D9 wave 6).
-- **Transition clause:** from this ratification (v3.0.0) until the wave-6 landing, primitives not
-  yet re-pointed read the derived snapshot files shipped in the plugin. The clause expires when
-  no schema file ships in the plugin, asserted by the contract suite's run-wide no-Read assert.
-  Its expiry is a pre-authorized PATCH amendment (amendment policy above).
+- **Transition clause — expired at v3.0.3 (2026-09-05, plugin v0.107.0, the wave-6 end state):**
+  from v3.0.0 until the wave-6 landing, primitives not yet re-pointed read the derived snapshot
+  files shipped in the plugin. No schema file ships now — `plugins/mochiko/schemas/` and every
+  `skills/*/schema.yaml` are deleted, the human-readable views live repo-side at
+  `.mochiko/schema-views/` — and the contract suite's run-wide no-Read assert holds it. The expiry
+  was the pre-authorized PATCH (amendment policy above), recorded in the log row.
 - **Declared unsupported** (dimension-10 exclusions, review I4): environments that disable skill
   shell execution (`disableSkillShellExecution`, Cowork and synced skills) or hooks by policy ·
   **PowerShell-only Windows** (`shell: bash` fails without Git Bash). Windows is served only with
@@ -488,6 +492,7 @@ category is live in translated form; application-shaped machinery inapplicable i
 | 3.0.0 | 2026-09-04 | AM-2 — clone-only install with a required `mochiko-cli` dependency; no file-read fallback (MAJOR: a non-negotiable's meaning changes — user-ruled). Driver: cli-schema-delivery D1–D11, F13 | GI-020 **superseded-by-ruling** (clone-only kept · required binary · measured halt · transition clause until wave 6 · unsupported environments · pilot abort criteria as revisit trigger) · GI-019 widened admission + the three D11 clauses + advisory-checker placement · GI-012 gates widened (gate 6 contract suite, SKIPPED blocks, gate 5 = view ≡ replay, crate release train, ToS substrate mark `Contested`) · GI-004 schema-content audit unit re-keyed, count self-check retired · GI-005 schema-rule limb mechanized · GI-006 migration log added as a carrier · GI-002 identity and risk re-expressed, first-public-release trigger fired with a conditional discharge (two controls owed) · **+GI-022** (no feature map for this repo, declined durable) · GI-008 untouched, trigger observation recorded · `.claude/rules/mochiko/rust-cli.md` rewritten, `paths` widened |
 | 3.0.1 | 2026-09-04 | PATCH — the wave-3 pilot landing at plugin v0.104.0 (pre-authorized: the AM-2 glob half; the wave-open Q-B ruling; O-1/A5). `.claude/rules/mochiko/primitive-edits.md` `paths` += `plugins/mochiko/migrations/**` · `plugins/mochiko/hooks/**`; criteria 1, 3, and 11 gain converted-command clauses (heading `## Rules — delivered by mochiko-cli` + the grant, the CLI-printed count pin, no raw common-file Read where the render resolves stubs) · GI-011 homed on the declined-durable line · GI-020 Testability dormant tier **activated** and the revisit trigger evaluated, not tripped · the CLAUDE.md region's "today the log lives at the repo root" clauses struck and the new-file read line re-pathed. Mints no principle; no fresh `/mochiko:setup` amend | GI-004 · GI-011 · GI-020 |
 | 3.0.2 | 2026-09-04 | PATCH — the GI-020 revisit trigger re-keyed after the wave-4 trip (user-ruled "re key", record wave-4 + diagnostic sections): criterion (1) becomes the deterministic floor-delivery assert (every `class: floor` id verbatim in the transcript), the exact-id read-back reported never gating; wave 5 opened on those terms. In the same row: `.claude/rules/mochiko/primitive-edits.md`'s skill-pair criteria gain five one-sentence converted-skill clauses (criteria 1, 2, 3, 6, and 8's budgeted quantity — the sibling of the v3.0.1 command clauses) as wave 5 converts the first skill, and the budget ledger re-seeds every converted skill to body + rendered blocks per record D10.6. Mints no principle; no fresh `/mochiko:setup` amend | GI-004 · GI-020 |
+| 3.0.3 | 2026-09-05 | PATCH — the wave-6 landing (pre-authorized at AM-2): the GI-020 **transition clause expired** at plugin v0.107.0 — no schema file ships, the derived views live at `.mochiko/schema-views/`, the contract suite's run-wide no-Read assert holds it; `.claude/rules/mochiko/primitive-edits.md` re-keyed (schema content edits are migration files and take no strip; criterion 9's deterministic pre-pass is `mochiko-cli migrate validate --report`; anchors live on the log's rules, the provenance sidecar frozen at `.mochiko/archive/`; the converted-primitive clauses are now the only form); `rust-cli.md`'s clause struck; the three first-live-run delivery watches closed to the trail as superseded by record D10.6; the three Python checkers retired (GI-008's waived helper-script count falls). Mints no principle; no fresh `/mochiko:setup` amend | GI-004 · GI-005 · GI-008 · GI-020 |
 
 *AM-2 addendum (2026-09-04):* `.claude/rules/mochiko/rust-cli.md`'s `paths` gained
 `migrations/**`, `plugins/mochiko/migrations/**`, and `evals/contract/**` per the ratified scope,

@@ -210,11 +210,11 @@ Templates and field definitions for the **two constraint-layer surfaces this ski
 
 **There is no `nfrs.md` document template here.** An NFR-XXX lives as fields on its concern row in
 the architecture store, so a concern has one home — stance, pattern, targets, as-built, drift
-together. The **row shape** is the store's (`mochiko-cli template architecture-store`, or Read
-`plugins/mochiko/schemas/architecture-store.yaml` raw when the binary is absent); what follows is
-the **grammar** this skill owns and the store row carries: the required fields, the categories,
-and what a measurement method must name. A new or changed target reaches the store as part of a
-design-time store delta, written at the user's sign-off — never edited into ruled truth in place.
+together. The **row shape** is the store's (`mochiko-cli template architecture-store`); what
+follows is the **grammar** this skill owns and the store row carries: the required fields, the
+categories, and what a measurement method must name. A new or changed target reaches the store as
+part of a design-time store delta, written at the user's sign-off — never edited into ruled truth
+in place.
 
 The trace chain resolves to the business source: `FR-XXX / SC-XXX → NFR-XXX`, and `Applies to:`
 cites the C-XXX or IP-XXX the target constrains.

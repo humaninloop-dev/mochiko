@@ -1,10 +1,10 @@
 //! Integration tests for the rules render and the re-based template views.
 //!
 //! Every fixture log is written under `CARGO_TARGET_TMPDIR`, which Cargo places inside `target/` —
-//! the suite never writes outside the build directory. The rules render is exercised against a
-//! synthetic corpus built here rather than the shipped one, because wave 1 has no genesis
-//! migration yet; `tests/cli.rs` carries the test that runs against
-//! `plugins/mochiko/migrations/` once it exists.
+//! the suite never writes outside the build directory. The render contract is exercised against a
+//! synthetic corpus built here, shaped to reach limbs the real one does not, and the size and
+//! template assertions replay the committed log; `tests/cli.rs` carries the end-to-end run against
+//! `plugins/mochiko/migrations/` through the binary.
 
 use mochiko_cli::model::{DocKind, DocRef};
 use mochiko_cli::render::{self, Context, PREAMBLE};
@@ -13,10 +13,15 @@ use mochiko_cli::schema;
 use std::path::{Path, PathBuf};
 use std::sync::atomic::{AtomicUsize, Ordering};
 
-/// Absolute path to the shipped schema directory, anchored at the crate root so it is independent
+/// Absolute path to the committed migration log, anchored at the crate root so it is independent
 /// of the test process's working directory.
-const SHIPPED_SCHEMAS_DIR: &str =
-    concat!(env!("CARGO_MANIFEST_DIR"), "/../../plugins/mochiko/schemas");
+///
+/// From wave 6 this is the only source of schema content there is: no schema file ships, so a
+/// test that wants the real corpus replays the log for it.
+const SHIPPED_LOG_DIR: &str = concat!(
+    env!("CARGO_MANIFEST_DIR"),
+    "/../../plugins/mochiko/migrations"
+);
 
 /// The captured template fixtures: today's producer and check views with the trailing
 /// schema-source line stripped, so the byte-equality assertion names the one line that moved.
@@ -252,33 +257,16 @@ changes:
               text: The user rules the verdict's consequence.
 "#;
 
-/// A log carrying only the eight shipped templates, imported verbatim the way genesis will.
-fn template_log(dir: &Path) {
-    let mut body = String::from(
-        "grammar: 1\nid: 0001-genesis\nsequence: 1\nintent: Import the shipped templates.\nchanges:\n",
-    );
-    for name in SHIPPED_TEMPLATES {
-        let path = Path::new(SHIPPED_SCHEMAS_DIR).join(format!("{name}.yaml"));
-        let yaml = std::fs::read_to_string(&path)
-            .unwrap_or_else(|e| panic!("{} should be readable: {e}", path.display()));
-        let content: serde_norway::Value = serde_norway::from_str(&yaml)
-            .unwrap_or_else(|e| panic!("{} should parse as YAML: {e}", path.display()));
-        let mut change = serde_norway::Mapping::new();
-        change.insert("op".into(), "import-document".into());
-        change.insert("kind".into(), "template".into());
-        change.insert("name".into(), name.into());
-        change.insert("content".into(), content);
-        let rendered = serde_norway::to_string(&serde_norway::Value::Sequence(vec![
-            serde_norway::Value::Mapping(change),
-        ]))
-        .expect("a change item serialises");
-        for line in rendered.lines() {
-            body.push_str("  ");
-            body.push_str(line);
-            body.push('\n');
-        }
-    }
-    write_migration(dir, "0001-genesis.yaml", &body);
+/// The committed log, replayed.
+///
+/// Wave 1 built a template-only fixture log from the shipped schema files, because genesis did not
+/// exist yet. It does, the files do not, and the templates the views are graded against are the
+/// ones the log actually carries — so this reads the real thing.
+fn shipped_log_state() -> replay::State {
+    replay::load(Path::new(SHIPPED_LOG_DIR)).unwrap_or_else(|findings| {
+        let lines: Vec<String> = findings.iter().map(ToString::to_string).collect();
+        panic!("the committed log is deliverable:\n{}", lines.join("\n"))
+    })
 }
 
 fn ctx() -> Context {
@@ -606,7 +594,7 @@ changes:
 /// the legend did not. A golden test rather than a shape assertion: the `.md` points at this
 /// block by name, so a silent reword there is a silent change to what every converted primitive
 /// is told.
-const LEGEND: &str = "\nlegend\n\
+const COMMAND_LEGEND: &str = "\nlegend\n\
 - class: floor is always delivered whatever its when:; when: gates when the obligation applies, never whether it reaches you.\n\
 - kind: names what a rule is — constraint (the default) · duty · gate · reservation · binding · bound · routing · fail · latitude.\n\
 - when: binds a rule only where its terms hold against the conditions block above.\n\
@@ -617,17 +605,49 @@ const LEGEND: &str = "\nlegend\n\
 - moments: the run's anchor points, unordered — never a sequence.\n\
 - enforces: an empty list on a kind: fail rule carries its one-line reason.\n";
 
-/// The legend's own size, pinned because it is a render-shape change a plugin bump names.
+/// The skill variant (wave 6, plan §2.2 as ruled at the wave open).
 ///
-/// Every converted primitive pays it on every `preamble` render, so it is not free and it is not
-/// allowed to grow unnoticed.
+/// Three lines of the command legend describe grammar a skill schema cannot carry: `kind: fail`
+/// and its two `enforces:` lines are illegal in a skill schema, and skills declare no `moments:`.
+/// Wave 4 delivered all of them anyway on the argument that one shared legend was cheaper than
+/// two; the moment a second legend exists that argument is spent, so the skill legend states only
+/// the grammar a skill schema can actually meet.
+const SKILL_LEGEND: &str = "\nlegend\n\
+- class: floor is always delivered whatever its when:; when: gates when the obligation applies, never whether it reaches you.\n\
+- kind: names what a rule is — constraint (the default) · duty · gate · reservation · binding · bound · routing · latitude.\n\
+- when: binds a rule only where its terms hold against the conditions block above.\n\
+- pointer: binds you to that skill's procedure — referenced, never restated.\n\
+- extends: is already resolved in this render; the rule's own id stays the citable id.\n\
+- labels: cross-reference tags from the labels registry; they bind nothing on their own.\n";
+
+/// Each legend's own size, pinned because it is a render-shape change a plugin bump names.
+///
+/// Every converted primitive pays one of them on every `preamble` render, so neither is free and
+/// neither is allowed to grow unnoticed. Two pins from wave 6, one per variant.
 #[test]
-fn the_legend_block_is_the_size_the_wave_recorded() {
-    assert_eq!(LEGEND.len(), 845, "the legend's byte size moved");
+fn the_legend_blocks_are_the_sizes_the_waves_recorded() {
     assert_eq!(
-        LEGEND.lines().filter(|l| l.starts_with("- ")).count(),
+        COMMAND_LEGEND.len(),
+        845,
+        "the command legend's byte size moved"
+    );
+    assert_eq!(
+        COMMAND_LEGEND
+            .lines()
+            .filter(|l| l.starts_with("- "))
+            .count(),
         9,
         "six original grammar lines plus wave 4's three"
+    );
+    assert_eq!(
+        SKILL_LEGEND.len(),
+        605,
+        "the skill legend's byte size moved"
+    );
+    assert_eq!(
+        SKILL_LEGEND.lines().filter(|l| l.starts_with("- ")).count(),
+        6,
+        "the command's nine less the two enforces lines and the moments line"
     );
 }
 
@@ -636,7 +656,10 @@ fn the_preamble_carries_the_fixed_legend_block() {
     let state = rules_state("legend");
     let out = render::preamble(&state, &command(), &ctx()).unwrap();
 
-    assert!(out.contains(LEGEND), "the legend block, verbatim:\n{out}");
+    assert!(
+        out.contains(COMMAND_LEGEND),
+        "the legend block, verbatim:\n{out}"
+    );
 
     let legend_at = out.find("\nlegend\n").expect("the legend block is present");
     let pins_at = out.find("\npins\n").expect("the pins block is present");
@@ -656,10 +679,42 @@ fn the_preamble_carries_the_fixed_legend_block() {
 }
 
 #[test]
-fn a_skill_preamble_carries_the_same_legend() {
+fn a_skill_preamble_carries_the_skill_legend() {
     let state = rules_state("skilllegend");
     let out = render::preamble(&state, &skill(), &ctx()).unwrap();
-    assert!(out.contains(LEGEND), "the legend block, verbatim:\n{out}");
+    assert!(
+        out.contains(SKILL_LEGEND),
+        "the skill legend block, verbatim:\n{out}"
+    );
+    assert!(
+        !out.contains(COMMAND_LEGEND),
+        "a skill preamble carries the command legend:\n{out}"
+    );
+}
+
+/// The three lines the skill variant exists to drop, keyed on their own text.
+///
+/// `kind: fail` and `enforces:` are illegal in a skill schema and `moments:` is a command-only
+/// block, so a skill preamble teaching any of them is teaching grammar its reader cannot use.
+#[test]
+fn a_skill_legend_omits_the_grammar_a_skill_schema_cannot_carry() {
+    let state = rules_state("skilllegendomits");
+    let out = render::preamble(&state, &skill(), &ctx()).unwrap();
+    for absent in [
+        "- enforces: on a kind: fail rule",
+        "- enforces: an empty list",
+        "- moments: the run's anchor points",
+        "· routing · fail · latitude",
+    ] {
+        assert!(
+            !out.contains(absent),
+            "the skill legend still carries {absent:?}:\n{out}"
+        );
+    }
+    assert!(
+        out.contains("· routing · latitude."),
+        "the skill legend's kind line should close on latitude:\n{out}"
+    );
 }
 
 #[test]
@@ -953,56 +1008,12 @@ changes:
 // render size against the platform ceiling (F12e)
 // ---------------------------------------------------------------------------
 
-/// The whole shipped corpus as state, addressed the way genesis will address it: a document's own
-/// `kind:` names its kind, a skill's name is its directory, everything else is the file stem.
+/// The whole shipped corpus as state — the committed log, replayed.
+///
+/// Through wave 5 this walked the shipped schema files and addressed each the way genesis would.
+/// No schema file ships from wave 6, so the corpus comes from the only place it lives.
 fn shipped_state() -> replay::State {
-    let plugin = Path::new(concat!(
-        env!("CARGO_MANIFEST_DIR"),
-        "/../../plugins/mochiko"
-    ));
-    let mut paths: Vec<PathBuf> = std::fs::read_dir(plugin.join("schemas"))
-        .expect("the shipped schema directory exists")
-        .filter_map(Result::ok)
-        .map(|e| e.path())
-        .filter(|p| p.extension().and_then(|e| e.to_str()) == Some("yaml"))
-        .collect();
-    for entry in std::fs::read_dir(plugin.join("skills")).expect("the skills directory exists") {
-        let path = entry.expect("readable entry").path().join("schema.yaml");
-        if path.is_file() {
-            paths.push(path);
-        }
-    }
-    paths.sort();
-
-    let mut state = replay::State::default();
-    for path in paths {
-        let text = std::fs::read_to_string(&path)
-            .unwrap_or_else(|e| panic!("{} is readable: {e}", path.display()));
-        let value: serde_norway::Value = serde_norway::from_str(&text)
-            .unwrap_or_else(|e| panic!("{} parses as YAML: {e}", path.display()));
-        let stem = if path.file_name().and_then(|n| n.to_str()) == Some("schema.yaml") {
-            path.parent()
-                .and_then(Path::file_name)
-                .and_then(|n| n.to_str())
-                .expect("a skill schema sits in its skill's directory")
-                .to_string()
-        } else {
-            path.file_stem()
-                .and_then(|n| n.to_str())
-                .expect("a schema file has a stem")
-                .to_string()
-        };
-        let declared = value.get("kind").and_then(|v| v.as_str());
-        let kind = match declared.and_then(DocKind::parse) {
-            Some(kind) => kind,
-            None if value.get("template").is_some() => DocKind::Template,
-            None => DocKind::Shelf,
-        };
-        let document = mochiko_cli::model::Document::from_value(kind, &value)
-            .unwrap_or_else(|e| panic!("{} decodes: {e}", path.display()));
-        state.docs.insert(DocRef::new(kind, stem), document);
-    }
-    state
+    shipped_log_state()
 }
 
 /// Every section render must stay under the Bash tool's ≈30,000-character inline ceiling — the
@@ -1176,22 +1187,13 @@ fn the_widest_shipped_floor_index_is_the_size_the_wave_recorded() {
 // the re-based template views
 // ---------------------------------------------------------------------------
 
-fn template_state(tag: &str) -> (mochiko_cli::replay::State, PathBuf) {
-    let dir = log_dir(tag);
-    template_log(&dir);
-    let state = replay::load(&dir).unwrap_or_else(|findings| {
-        let lines: Vec<String> = findings.iter().map(ToString::to_string).collect();
-        panic!(
-            "the template log should be deliverable:\n{}",
-            lines.join("\n")
-        )
-    });
-    (state, dir)
+fn template_state() -> (mochiko_cli::replay::State, PathBuf) {
+    (shipped_log_state(), PathBuf::from(SHIPPED_LOG_DIR))
 }
 
 #[test]
 fn every_template_producer_view_is_byte_identical_to_its_captured_fixture() {
-    let (state, dir) = template_state("producer");
+    let (state, dir) = template_state();
     for name in SHIPPED_TEMPLATES {
         let view = render::template_view(&state, name, false, &dir)
             .unwrap_or_else(|_| panic!("{name} should render from the log"));
@@ -1204,7 +1206,7 @@ fn every_template_producer_view_is_byte_identical_to_its_captured_fixture() {
 
 #[test]
 fn every_template_check_view_is_byte_identical_to_its_captured_fixture() {
-    let (state, dir) = template_state("check");
+    let (state, dir) = template_state();
     for name in SHIPPED_TEMPLATES {
         let view = render::template_view(&state, name, true, &dir)
             .unwrap_or_else(|_| panic!("{name} should render from the log"));
@@ -1217,7 +1219,7 @@ fn every_template_check_view_is_byte_identical_to_its_captured_fixture() {
 
 #[test]
 fn a_template_name_the_log_does_not_carry_is_unknown() {
-    let (state, dir) = template_state("unknown");
+    let (state, dir) = template_state();
     assert!(render::template_view(&state, "does-not-exist", false, &dir).is_err());
     // The shelf data file is a document, never a template: it stays outside the rendered set.
     assert!(render::template_view(&state, "architecture-shelf-backend", false, &dir).is_err());
@@ -1225,7 +1227,7 @@ fn a_template_name_the_log_does_not_carry_is_unknown() {
 
 #[test]
 fn a_template_still_parses_into_the_typed_model_after_the_re_base() {
-    let (state, _dir) = template_state("typed");
+    let (state, _dir) = template_state();
     for name in SHIPPED_TEMPLATES {
         let template = render::template_of(&state, name)
             .unwrap_or_else(|_| panic!("{name} should decode as a template"));
@@ -1247,7 +1249,7 @@ fn a_template_still_parses_into_the_typed_model_after_the_re_base() {
 
 #[test]
 fn optional_section_fields_still_render_when_present() {
-    let (state, dir) = template_state("optional");
+    let (state, dir) = template_state();
     let spec = render::template_view(&state, "spec", false, &dir).unwrap();
     assert!(
         spec.contains("Good example:"),
@@ -1261,51 +1263,91 @@ fn optional_section_fields_still_render_when_present() {
 }
 
 // ---------------------------------------------------------------------------
-// gate-5 schema-data consistency (GI-020: the shipped files stay readable raw)
+// gate-5 schema-data consistency (GI-020: the log carries everything, and ships nothing)
 // ---------------------------------------------------------------------------
 
-/// The shipped `.yaml` files must stay readable as YAML and must still carry every template the
-/// log serves. Wave 1 changes nothing under `plugins/`, so this is the same guarantee the crate
-/// carried before the re-base — now keyed on the log's own template set rather than a const.
+/// The log carries every template the crate names, and the shelf document beside them.
+///
+/// Through wave 5 this read the shipped `.yaml` files and asserted each was parseable and present.
+/// The files are retired at wave 6, so the claim is keyed on the only place the content lives. Its
+/// other half — that nothing ships where those files used to be — is the test below.
 #[test]
-fn every_shipped_schema_file_is_readable_yaml_and_every_template_has_one() {
-    let entries = std::fs::read_dir(SHIPPED_SCHEMAS_DIR).expect("shipped schema dir should exist");
-    let mut seen = Vec::new();
-    for entry in entries {
-        let path = entry.expect("readable dir entry").path();
-        if path.extension().and_then(|e| e.to_str()) != Some("yaml") {
-            continue;
-        }
-        let yaml = std::fs::read_to_string(&path)
-            .unwrap_or_else(|e| panic!("{} could not be read: {e}", path.display()));
-        serde_norway::from_str::<serde_norway::Value>(&yaml)
-            .unwrap_or_else(|e| panic!("{} is not readable as YAML: {e}", path.display()));
-        seen.push(
-            path.file_stem()
-                .expect("yaml file has a stem")
-                .to_string_lossy()
-                .into_owned(),
+fn the_log_carries_every_template_and_the_shelf() {
+    let state = shipped_log_state();
+    for name in SHIPPED_TEMPLATES {
+        let doc = DocRef::new(DocKind::Template, name);
+        assert!(
+            state.docs.contains_key(&doc),
+            "{name} is named by the crate but carried by no document in the log"
         );
     }
     assert!(
-        seen.iter().any(|name| name == "architecture-shelf-backend"),
-        "the backend shelf data file should ship alongside the rendered schemas"
+        state
+            .docs
+            .keys()
+            .any(|doc| doc.kind == DocKind::Shelf && doc.name == "architecture-shelf-backend"),
+        "the backend shelf is carried by the log"
     );
-    for name in SHIPPED_TEMPLATES {
-        assert!(
-            seen.iter().any(|shipped| shipped == name),
-            "{name} is served by the log with no shipped schema file"
-        );
-    }
+}
+
+/// No schema file ships (GI-020, record D9 wave 6).
+///
+/// The paired half of the test above: the content survives, and the files it used to be read from
+/// are gone. Both directions matter and they fail apart — a deletion that also lost the content
+/// trips the first, and content kept beside a surviving fallback file trips this one. A fallback a
+/// primitive could Read is the whole thing the dependency forbids, so its absence is asserted on
+/// the tree rather than inferred from the log.
+///
+/// The two shapes are named separately because they were retired for different reasons: the flat
+/// `schemas/` directory carried the command schemas, the family commons, the registries, the
+/// templates and the shelf, while `skills/<name>/schema.yaml` was the in-directory skill form added
+/// at v0.100.0. The plugin contract suite asserts the running half — that no primitive reads such a
+/// file during a run — and this asserts there is no such file to read.
+///
+/// **The claim is about schema files, not about YAML.** A skill's `references/` may carry YAML that
+/// is reference content — `patterns-api-contracts` ships an OpenAPI template — and widening this
+/// into "no `.yaml` under `plugins/`" would delete a legitimate reference file to satisfy a test.
+/// The last assertion pins that survivor, so the widening fails here rather than in review.
+#[test]
+fn no_schema_file_ships_in_the_plugin() {
+    let plugin = Path::new(concat!(
+        env!("CARGO_MANIFEST_DIR"),
+        "/../../plugins/mochiko"
+    ));
+
+    assert!(
+        !plugin.join("schemas").exists(),
+        "plugins/mochiko/schemas/ still exists — no schema file ships from wave 6"
+    );
+
+    let stragglers: Vec<String> = std::fs::read_dir(plugin.join("skills"))
+        .expect("the skills directory exists")
+        .filter_map(Result::ok)
+        .map(|entry| entry.path().join("schema.yaml"))
+        .filter(|path| path.is_file())
+        .map(|path| path.display().to_string())
+        .collect();
+    assert!(
+        stragglers.is_empty(),
+        "in-directory skill schemas still ship:\n{}",
+        stragglers.join("\n")
+    );
+
+    assert!(
+        plugin
+            .join("skills/patterns-api-contracts/references/OPENAPI-TEMPLATE.yaml")
+            .is_file(),
+        "reference YAML is not schema data and is exempt from the two assertions above — \
+         this one is missing, so either it was deleted to satisfy them or the skill moved"
+    );
 }
 
 #[test]
-fn every_shipped_template_file_parses_into_the_typed_model() {
+fn every_template_the_log_carries_parses_into_the_typed_model() {
+    let state = shipped_log_state();
     for name in SHIPPED_TEMPLATES {
-        let path = Path::new(SHIPPED_SCHEMAS_DIR).join(format!("{name}.yaml"));
-        let yaml = std::fs::read_to_string(&path).expect("shipped template is readable");
-        let template: schema::Template = serde_norway::from_str(&yaml)
-            .unwrap_or_else(|e| panic!("{name} (shipped) failed to parse: {e}"));
+        let template: schema::Template = render::template_of(&state, name)
+            .unwrap_or_else(|e| panic!("{name} failed to decode from the log: {e}"));
         assert_eq!(template.template, name, "{name}: template field");
     }
 }

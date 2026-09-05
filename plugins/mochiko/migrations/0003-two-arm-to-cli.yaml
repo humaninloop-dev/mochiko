@@ -1,0 +1,151 @@
+grammar: 1
+id: 0003-two-arm-to-cli
+sequence: 3
+intent: >-
+  Retire the two-arm delivery phrasing and every schema-file path from the corpus: no schema file
+  ships from wave 6, so the CLI form is the only form.
+anchor: 2026-09-03 cli-schema-delivery D9
+hash: sha256:03fff77f4bead9606092a50745bb9c8692facfa22723b6c181692a58043fbbe3
+changes:
+  - op: set-var
+    schema: command/implement
+    name: tasks_schema
+    value: mochiko-cli template tasks
+  - op: set-var
+    schema: command/feature
+    name: tasks_schema
+    value: mochiko-cli template tasks
+  - op: set-var
+    schema: command/specify
+    name: spec_schema
+    value: mochiko-cli template spec
+  - op: set-var
+    schema: command/specify
+    name: feature_entry_schema
+    value: mochiko-cli template feature-entry
+  - op: set-var
+    schema: command/specify
+    name: features_index_schema
+    value: mochiko-cli template features-index
+  - op: set-var
+    schema: command/architecture
+    name: store_schema
+    value: mochiko-cli template architecture-store
+  - op: set-var
+    schema: command/architecture
+    name: shelf_schema
+    value: mochiko-cli doc architecture-shelf-backend
+  - op: set-rule-field
+    schema: skill/analysis-codebase
+    id: analysis-codebase.deliverable-two-arm-binding
+    field: pointer
+    value: null
+  - op: set-rule-field
+    schema: skill/patterns-architecture-shelves
+    id: patterns-architecture-shelves.opinions-in-data
+    field: pointer
+    value: null
+  - op: set-rule-field
+    schema: skill/patterns-vertical-tdd
+    id: patterns-vertical-tdd.tasks-binding-two-arm
+    field: pointer
+    value: null
+  - op: reword-rule
+    schema: command/architecture
+    id: arch.tools-store-schema
+    text: >-
+      The store shape is ${store_schema}, the shelf data ${shelf_schema}. A small required core;
+      the schema constrains the skeleton, never the voice.
+  - op: reword-rule
+    schema: command/feature
+    id: feat.delta-cards
+    text: >-
+      One delta card per the tasks template's card shape (rendered by `${tasks_schema}`): a bug's
+      acceptance is its reproduction-failing test, an improvement carries 1–3 acceptance
+      criteria; plus the minimal enumerated baseline-delta.md in appliable before/after form when
+      a product-baseline touch is known at intake. Each card — bug and improvement alike —
+      takes the sound-loop review leg (feat.sound-loop-floor) before dispatch.
+  - op: reword-rule
+    schema: command/implement
+    id: impl.cards-template
+    text: >-
+      tasks.md holds cycle cards from the tasks template — rendered by ${tasks_schema}. The
+      pointer skill owns the slicing judgment and the **TEST:** grammar.
+  - op: reword-rule
+    schema: command/setup
+    id: setup.synthesis-artifact
+    text: >-
+      The synthesis: ${memory_dir}/governance-intent.md, GI-XXX namespace, from the
+      governance-intent template (rendered by mochiko-cli template governance-intent) — the
+      durable amend baseline.
+  - op: reword-rule
+    schema: command/setup
+    id: setup.feature-map-brownfield
+    text: >-
+      The analysis (setup.interrogation-inputs) extends into a feature-map reconstruction —
+      delivered capabilities derived from the code (routes, UI surfaces, services), confirmed with
+      the user, landing as the initial FEATURES.md + .mochiko/features/ entries with `delivered`
+      status and the reconstructed-from-code mark (shape: the features-index and feature-entry
+      templates — mochiko-cli template features-index and mochiko-cli template feature-entry;
+      map machinery and the first-touch re-verify obligation: mochiko:authoring-feature-map).
+  - op: reword-rule
+    schema: command/specify
+    id: spec.deliverable
+    text: >-
+      The deliverable is ${specs_dir}/<spec>/ — spec.md from the spec template (rendered by
+      `${spec_schema}`) plus the stories/US-*.md files; <spec> a kebab-case slug derived from the
+      feature description; never offer to delete it. Uncertainty lives in spec.md's Assumptions
+      and Open Questions sections.
+  - op: reword-rule
+    schema: command/specify
+    id: spec.feature-map-craft
+    text: >-
+      Feature-map craft — derivation, the filter, capability and work-row authoring (the
+      feature-entry template — `${feature_entry_schema}`), index lines (the features-index
+      template — `${features_index_schema}`), delta grammar, SC re-homing, and the
+      acceptance-time write rules — the ${specs_dir}/index.md row included; spec-index
+      stewardship rides the skill — all per mochiko:authoring-feature-map.
+  - op: reword-rule
+    schema: skill-common/skill-authoring-common
+    id: authoring-common.two-arm-template
+    text: Invoke `mochiko-cli template ${template}`.
+  - op: reword-rule
+    schema: skill/analysis-codebase
+    id: analysis-codebase.deliverable-two-arm-binding
+    text: >-
+      The deliverable is `.mochiko/memory/codebase-analysis.md`, following the `codebase-analysis`
+      schema — invoke `mochiko-cli template codebase-analysis`.
+  - op: reword-rule
+    schema: skill/authoring-feature-map
+    id: authoring-feature-map.feature-entry-two-arm
+    text: >-
+      The per-capability entry shape is the `feature-entry` schema: invoke `mochiko-cli template
+      feature-entry`.
+  - op: reword-rule
+    schema: skill/authoring-technical-requirements
+    id: authoring-technical-requirements.nfr-store-home
+    text: >-
+      There is no `nfrs.md` — an NFR-XXX row lives as fields on its architecture-store concern
+      row, so one concern has one home: stance, pattern, targets, as-built, drift together. The
+      ids and the grammar are this skill's (numeric target · measurement method · source ·
+      category); the row shape is the store's (`mochiko-cli template architecture-store`).
+  - op: reword-rule
+    schema: skill/patterns-architecture-shelves
+    id: patterns-architecture-shelves.opinions-in-data
+    text: >-
+      The opinions live in data — the backend shelf is delivered by `mochiko-cli doc
+      architecture-shelf-backend`; the judgment lives in this skill.
+  - op: reword-rule
+    schema: skill/patterns-vertical-tdd
+    id: patterns-vertical-tdd.tasks-binding-two-arm
+    text: >-
+      The output is `tasks.md` in the cycle-card shape — the `tasks` schema is the canonical
+      skeleton: invoke `mochiko-cli template tasks`. Per card — stories + rationale,
+      dependencies, the named test-case list (the card's content), cycle-level brownfield
+      exposure, and the Simple/Split/Merge case.
+  - op: reword-rule
+    schema: skill/review-plan-artifacts
+    id: review-plan-artifacts.cycle-card-check-mirror
+    text: >-
+      The cycle-card check set mirrors the `tasks` `--check` view — `mochiko-cli template tasks
+      --check`.

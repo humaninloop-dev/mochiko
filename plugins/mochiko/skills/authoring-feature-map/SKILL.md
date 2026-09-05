@@ -65,7 +65,7 @@ A **capability-batch** is the pipeline unit: each capability with selected work 
 
 ## Related
 
-- `features-index` / `feature-entry` schemas — own the repo-root `FEATURES.md` index shape and the per-capability entry shape this skill fills (bindings in the schema's artifact section)
+- `features-index` / `feature-entry` schemas — own the repo-root `FEATURES.md` index shape and the per-capability entry shape this skill fills (bindings delivered by `mochiko-cli` in the artifact section)
 - `mochiko:patterns-map-minimalism` — the derivation discipline this skill applies
 - `mochiko:review-specifications` — grades spec + stories + feature derivation + map delta in one pass
 - `mochiko:authoring-user-stories` — upstream: the story quality the derivation reads

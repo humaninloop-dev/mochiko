@@ -43,7 +43,7 @@ halt and surface it.
 
 ## The Ladder
 
-Rung by rung — the stop rule, the rung scopes, and the read duty live in the schema:
+Rung by rung — the stop rule, the rung scopes, and the read duty are delivered by `mochiko-cli`:
 
 1. **Required?** — a ratified requirement or an asserted floor obligation names it, or it
    does not enter the package. Strict: no glue exception (glue is builder's room, rung 5),

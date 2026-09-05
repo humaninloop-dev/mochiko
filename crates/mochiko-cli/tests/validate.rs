@@ -11,7 +11,7 @@ use mochiko_cli::model::{DocKind, DocRef, Document};
 use mochiko_cli::replay::State;
 use mochiko_cli::validate::{self, census, Code, Family, Severity};
 use std::collections::BTreeSet;
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 
 // ---------------------------------------------------------------------------
 // the synthetic corpus
@@ -947,23 +947,28 @@ fn repo_root() -> PathBuf {
         .expect("the repo root resolves from the crate directory")
 }
 
-/// Every shipped schema file, addressed the way genesis will address it: the document's own
-/// `kind:` field names its kind, a skill's name is its directory, and everything else is the
-/// file stem. The two kinds with no `kind:` field are templates (which carry `template:`) and
-/// the shelf data file.
+/// Every document of the corpus as raw YAML text, decoded from the committed derived views.
+///
+/// Through wave 5 this read the shipped schema files. They are retired at wave 6, and the round
+/// trip below wants *text* rather than a value the model produced — a test that encoded its own
+/// input would stop grading the decoder. The committed views under `.mochiko/schema-views/` are
+/// that text: the same corpus, written by the view writer, parsed back here by the same parser a
+/// migration's `content:` goes through.
+///
+/// A document's kind comes from its own `kind:` field, exactly as genesis addresses it; the two
+/// kinds that declare none are templates (which carry `template:`) and the shelf data.
 fn shipped_documents() -> Vec<(DocRef, serde_norway::Value)> {
-    let root = repo_root();
-    let mut paths: Vec<PathBuf> = std::fs::read_dir(root.join("plugins/mochiko/schemas"))
-        .expect("the shipped schema directory exists")
-        .filter_map(Result::ok)
-        .map(|e| e.path())
-        .filter(|p| p.extension().and_then(|e| e.to_str()) == Some("yaml"))
-        .collect();
-    let skills = root.join("plugins/mochiko/skills");
-    for entry in std::fs::read_dir(&skills).expect("the skills directory exists") {
-        let path = entry.expect("readable entry").path().join("schema.yaml");
-        if path.is_file() {
-            paths.push(path);
+    let views = repo_root().join(".mochiko/schema-views");
+    let mut paths: Vec<PathBuf> = Vec::new();
+    let mut stack = vec![views];
+    while let Some(dir) = stack.pop() {
+        for entry in std::fs::read_dir(&dir).expect("the committed views directory is readable") {
+            let path = entry.expect("readable entry").path();
+            if path.is_dir() {
+                stack.push(path);
+            } else if path.extension().and_then(|e| e.to_str()) == Some("yaml") {
+                paths.push(path);
+            }
         }
     }
     paths.sort();
@@ -975,18 +980,11 @@ fn shipped_documents() -> Vec<(DocRef, serde_norway::Value)> {
                 .unwrap_or_else(|e| panic!("{} is readable: {e}", path.display()));
             let value: serde_norway::Value = serde_norway::from_str(&text)
                 .unwrap_or_else(|e| panic!("{} parses as YAML: {e}", path.display()));
-            let stem = if path.file_name().and_then(|n| n.to_str()) == Some("schema.yaml") {
-                path.parent()
-                    .and_then(Path::file_name)
-                    .and_then(|n| n.to_str())
-                    .expect("a skill schema sits in its skill's directory")
-                    .to_string()
-            } else {
-                path.file_stem()
-                    .and_then(|n| n.to_str())
-                    .expect("a schema file has a stem")
-                    .to_string()
-            };
+            let stem = path
+                .file_stem()
+                .and_then(|n| n.to_str())
+                .expect("a view file has a stem")
+                .to_string();
             let declared = value.get("kind").and_then(|v| v.as_str());
             let kind = match declared.and_then(DocKind::parse) {
                 Some(kind) => kind,
@@ -1029,80 +1027,62 @@ fn every_shipped_document_round_trips_through_the_model() {
     }
 }
 
-/// The two shipped rules whose empty `enforces:` carries its reason in a YAML comment.
+/// The two rules whose empty `enforces:` once carried its reason in a YAML comment.
 ///
-/// The shipped checker reads that comment straight off the file; comments do not survive into a
-/// typed model, so the migration grammar carries the reason as a rule `note:` instead. Loading
-/// the raw files, as this test does, therefore sees two rules with an empty mirror and no stated
-/// reason — which is the correct reading of the file as it stands. Genesis lifts both comments
-/// into `note:` fields, and these two findings disappear with it.
+/// The retired Python checker read that comment straight off the shipped file; comments do not
+/// survive into a typed model, so genesis lifted both into rule `note:` fields and the migration
+/// grammar has carried them as data ever since. Through wave 5 this suite loaded the raw shipped
+/// files, saw two empty mirrors with no stated reason, and exempted them. The files are gone: the
+/// corpus this suite reads is the derived views, the notes are in it, and the exemption is spent.
+/// The ids stay pinned because the reasons are the thing that must not go missing.
 const COMMENT_CARRIED_REASONS: [&str; 2] = [
     "setup.fail.unclosed-trace",
     "setup.fail.floor-category-uncovered",
 ];
 
 #[test]
-fn the_shipped_corpus_validates_with_no_rejecting_finding() {
+fn the_corpus_validates_with_no_rejecting_finding() {
     let state = shipped_state();
-    let findings = rejecting(&state);
-    let unexpected: Vec<_> = findings
-        .iter()
-        .filter(|f| {
-            !(f.code == Code::EnforcesRequired
-                && f.id
-                    .as_deref()
-                    .is_some_and(|id| COMMENT_CARRIED_REASONS.contains(&id)))
-        })
-        .collect();
-    assert!(
-        unexpected.is_empty(),
-        "the shipped corpus must pass the hard set, got {} unexpected findings:\n{}",
-        unexpected.len(),
-        unexpected
-            .iter()
-            .map(|f| f.to_string())
-            .collect::<Vec<_>>()
-            .join("\n")
-    );
-    assert_eq!(
-        findings.len(),
-        COMMENT_CARRIED_REASONS.len(),
-        "the only findings the raw corpus may raise are the two comment-carried reasons"
-    );
-}
-
-/// The other half of the claim above: with the reasons carried as data, as genesis will carry
-/// them, the corpus is clean outright. Without this, the exemption above could hide a real defect.
-#[test]
-fn the_shipped_corpus_is_clean_once_the_comment_carried_reasons_are_data() {
-    let mut state = shipped_state();
-    let setup = DocRef::new(DocKind::Command, "setup");
-    let schema = state
-        .docs
-        .get_mut(&setup)
-        .and_then(Document::as_rules_mut)
-        .expect("the setup command schema is in state");
-    for id in COMMENT_CARRIED_REASONS {
-        let rule = schema
-            .find_rule_mut(id)
-            .unwrap_or_else(|| panic!("{id} is a live rule in setup.yaml"));
-        assert_eq!(
-            rule.enforces.as_deref(),
-            Some([].as_slice()),
-            "{id} carries the explicitly empty mirror this test is about"
-        );
-        rule.note = Some("D6 empty-with-reason: owned by a sibling surface.".to_string());
-    }
     let findings = rejecting(&state);
     assert!(
         findings.is_empty(),
-        "with the reasons as data the corpus is clean, got:\n{}",
+        "the corpus must pass the hard set, got {} findings:\n{}",
+        findings.len(),
         findings
             .iter()
             .map(|f| f.to_string())
             .collect::<Vec<_>>()
             .join("\n")
     );
+}
+
+/// Why the test above is clean: both empty mirrors carry their reason as data.
+///
+/// Without this, "no rejecting finding" could mean the reasons had been quietly dropped along with
+/// the `enforces: []` that needs them — the two would fail together and neither would be noticed.
+#[test]
+fn each_empty_enforces_mirror_still_carries_its_reason_as_a_note() {
+    let state = shipped_state();
+    let setup = DocRef::new(DocKind::Command, "setup");
+    let schema = state
+        .docs
+        .get(&setup)
+        .and_then(Document::as_rules)
+        .expect("the setup command schema is in state");
+    for id in COMMENT_CARRIED_REASONS {
+        let rule = schema
+            .find_rule(id)
+            .unwrap_or_else(|| panic!("{id} is a live rule in the setup schema"));
+        assert_eq!(
+            rule.enforces.as_deref(),
+            Some([].as_slice()),
+            "{id} carries the explicitly empty mirror this test is about"
+        );
+        assert!(
+            rule.note.as_deref().is_some_and(|n| !n.trim().is_empty()),
+            "{id}: an empty mirror with no reason — the note is what makes it legal"
+        );
+    }
 }
 
 /// A3: the corpus pins. These are the figures the record carries, and a silent drift in any of
@@ -2482,11 +2462,13 @@ fn the_state_only_validator_makes_no_pointer_claim() {
 fn every_shipped_pointer_resolves_from_its_own_skill_directory() {
     let report =
         validate::validate_pointers(&shipped_state(), &repo_root().join("plugins/mochiko"));
-    // Pinned exactly, not as a floor (audit A4): 87 is a figure the unit's report leans on, and
-    // the corpus census elsewhere pins exact numbers. A silent drop to 51 must not pass.
+    // Pinned exactly, not as a floor (audit A4): the figure is one the unit's report leans on,
+    // and the corpus census elsewhere pins exact numbers. A silent drop to 51 must not pass.
+    // 87 through wave 5; 84 from wave 6, where migration 0003 cleared the three pointers that
+    // aimed at schema files the plugin no longer ships.
     assert_eq!(
-        report.checked, 87,
-        "the shipped corpus carries 87 path-shaped pointers"
+        report.checked, 84,
+        "the corpus carries 84 path-shaped pointers"
     );
     assert!(
         report.findings.is_empty(),

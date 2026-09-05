@@ -25,6 +25,32 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 `DECISIONS.md` 2026-09-04 row. Pre-edit verbatim text:
 `git show 7d098b9:plugins/mochiko/skills/testing-end-user/SKILL.md`. -->
 
+<!-- Wave context: wave 6 of the CLI schema-delivery build (v0.107.0) — the end state. No schema
+file ships in the plugin: the 20 files under `plugins/mochiko/schemas/` and the 30
+`skills/*/schema.yaml` were deleted, and every delivery they served now has a CLI form. Ruling for
+the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9 wave 6, with
+the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
+`git show 62aa99d:plugins/mochiko/skills/testing-end-user/SKILL.md`. -->
+
+## [v0.107.0] two body lines telling the reader that rules live "in the schema"
+
+- **Disposition:** superseded → "delivered by `mochiko-cli`", ids unchanged
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/cli-schema-delivery/record.md`
+  D9 wave 6; `DECISIONS.md` 2026-09-05)
+- **Content:** four lines.
+  1. "the uncertain-default posture live in the schema's `testing-end-user.sec.verdict` section."
+  2. "(source per the schema's `testing-end-user.gate-source-binding`)"
+  3. "the execution semantics are the schema's `testing-end-user.modifier-execution-semantics`."
+  4. "the evaluation semantics are the schema's `testing-end-user.assert-evaluation-semantics`."
+- **Kept deliberately:** all four ids, which still resolve, and every sentence's substance — the
+  classification criteria, the browser-flow exception and the uncertain-default posture; the
+  quality-gate command source; and the split between the `TEST-GRAMMAR.md` *vocabulary* and the
+  delivered *semantics* for both modifiers and asserts, including the pointer to that reference
+  file. Lines 1 and 2 are the exact wording the wave-5 V2 audit quoted when it raised the
+  contradiction with this skill's own "Never Read a schema file instead" halt clause; the entry
+  discharges that follow-up. Lines 3 and 4 are the same class, found by the wave-6 sweep for
+  "the schema's" rather than "in the schema".
+
 ## [v0.106.0] the Rules block — raw schema Read superseded by CLI delivery
 
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation

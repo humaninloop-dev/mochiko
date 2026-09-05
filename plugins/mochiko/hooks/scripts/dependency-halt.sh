@@ -31,12 +31,21 @@ field() {
 # Escape a string for use as a JSON string value.
 escape() { sed -e 's/\\/\\\\/g' -e 's/"/\\"/g' | tr '\n' ' '; }
 
+# A primitive name is a bare identifier. Anything else — a path separator, a traversal, an empty
+# name — is not one of ours, so it leaves silently before it can be interpolated into a path.
+require_bare_name() {
+	case "${1:-}" in
+	*[!A-Za-z0-9_-]* | "") exit 0 ;;
+	esac
+}
+
 event=$(field hook_event_name)
 
 case "$event" in
 UserPromptExpansion)
 	name=$(field command_name)
 	bare=${name#mochiko:}
+	require_bare_name "$bare"
 	primitive="$ROOT/commands/$bare.md"
 	noun=command
 	# A `/mochiko:<skill>` prompt line takes this path too, and resolves to no command file.
@@ -48,7 +57,9 @@ UserPromptExpansion)
 PreToolUse)
 	[ "$(field tool_name)" = "Skill" ] || exit 0
 	name=$(field skill)
-	primitive="$ROOT/skills/${name#mochiko:}/SKILL.md"
+	bare=${name#mochiko:}
+	require_bare_name "$bare"
+	primitive="$ROOT/skills/$bare/SKILL.md"
 	noun=skill
 	;;
 *)
@@ -62,9 +73,10 @@ mochiko:*) ;;
 *) exit 0 ;;
 esac
 
-# The converted check. A primitive that still reads a shipped schema file is covered by the
-# transition clause and is never gated; one whose rules come from the binary is. The primitive's
-# own file is the truth here, so there is no list to keep in sync with the conversion waves.
+# The delivery check. A primitive with no `!` line has no rules to deliver — the seven prose
+# skills and the router carry procedure only, and never had a rule set — so the binary's absence
+# cannot break it and it is never gated. One whose rules come from the binary is. The primitive's
+# own file is the truth here, so there is no list to keep in sync.
 grep -q -F '!`mochiko-cli rules' "$primitive" 2>/dev/null || exit 0
 
 block() {

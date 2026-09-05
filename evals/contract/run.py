@@ -8,7 +8,14 @@ owns; it imports them and never forks them. Maintainer-side, never shipped (GI-0
 What it asserts (D8's deterministic set):
 
     the `!` line executed · the version-triple line present · the closing end line present ·
-    no schema file Read anywhere · absence halts · skew halts
+    no schema file read anywhere · absence halts · skew halts
+
+The fourth of those went **run-wide at wave 6**, when the last schema file left the plugin. It was
+scoped per converted primitive through waves 3 to 5, because a converted command invoking an
+unconverted skill legitimately read that skill's file; now nothing may read one, so the assertion
+sweeps every JSONL channel each case captured — streams, session transcripts, and the sidechain
+transcripts a subagent's turns land in. Its host-side half lives in `render-ceiling`: no rendered
+rule may still name a shipped schema file for a model to go and read.
 
 Wave 1 ran two cases, both failure paths against the fixture plugin, because those are the ones
 that do not need a converted primitive. Wave 3 added the first converted command, `brainstorm`,
@@ -17,7 +24,9 @@ cases into a per-command family:
 
     hook-input          the two hook scripts, fed real captured stdin, on the host
     converted-shape     a converted `.md`'s `!` lines against the sections its render declares
-    render-ceiling      every converted primitive's renders against the inline ceiling
+    render-ceiling      every converted primitive's renders against the inline ceiling, and
+                        against the two phrases no rendered rule may still carry
+    deliverables        every template, shelf and registry through its CLI form
     absence   [fixture] the binary is off the sandbox PATH -> the run halts, nothing delivered
     skew      [fixture] the log declares a grammar the binary does not read -> the D5 halt
     <cmd>-delivery      the happy path, per converted command: every block its render declares,
@@ -32,8 +41,8 @@ The delivery and absence cases are built from the converted set discovered in th
 last three are *mechanism* cases and run against the pilot only: they exercise what happens when
 the log, the hooks or the shell is broken, which does not vary with which command fired.
 
-The first three cases need neither a sandbox nor a session and run on the host binary;
-`--host-only` runs just those, which is the cheapest gate on the hooks.
+The first four cases need neither a sandbox nor a session and run on the host binary;
+`--host-only` runs just those, which is the cheapest gate on the hooks and on delivery shape.
 
 A positive assertion reads only the channels measured to carry delivered text — the session
 transcript and the stream's own events. Negative assertions read the wider union that adds the
@@ -93,6 +102,32 @@ EXIT_OK, EXIT_ASSERT, EXIT_SKIP = 0, 1, 3
 TRIPLE_HEAD = "mochiko-cli rules "
 TRIPLE_MARKERS = ("· binary ", "· grammar ", "· plugin ")
 END_LINE = "mochiko-cli rules end"
+
+# `mochiko-cli doc` (record D9 wave 6) wraps a non-rule document the same way `rules` wraps a
+# section — same three markers, no `section` field.
+DOC_HEAD = "mochiko-cli doc "
+DOC_END = "mochiko-cli doc end · "
+
+# `mochiko-cli template` does not, and that is deliberate rather than an omission: its output is
+# read as a document, so it opens on the document's own `# Title` and closes on this footer. The
+# wave-6 lead ruling keeps that shape and books the wrapping as a follow-up, so the `deliverables`
+# case holds each command to what it emits rather than to a shape neither yet shares.
+TEMPLATE_FOOTER = "schemas: replayed from "
+
+# What `template` and `doc` are expected to serve, written down beside the discovery that walks
+# them. Discovery alone would shrink silently if a document vanished from the log; a written-down
+# set alone would go stale when one is added. Compared in both directions, neither can.
+TEMPLATE_NAMES = (
+    "architecture-store",
+    "codebase-analysis",
+    "feature-entry",
+    "features-index",
+    "governance-intent",
+    "governance-surfaces",
+    "spec",
+    "tasks",
+)
+DOC_NAMES = ("architecture-shelf-backend", "command-labels", "skill-labels")
 
 # What the fixture command prints, so the model's own verdict is readable in the transcript.
 PROBE_DELIVERED = "CONTRACT-PROBE: delivered"
@@ -504,6 +539,13 @@ BASELINE_BYTES_WITH_LABELS = 14_349
 # the first line, which would strand a render without its end line.
 INLINE_CEILING = 30_000
 
+# The two-arm wording, and the path it offered. Every rule that carried either was reworded by
+# migration `0003` (wave 6, record D9), and no shipped schema file survives for one to point at,
+# so a render still carrying one is a rule telling the model to read a file that is not there.
+# Checked against the renders in `render-ceiling`; never against the log, which is append-only and
+# keeps the original wording in `0001-genesis.yaml` by construction.
+DEAD_PHRASES = ("when the binary is absent", "plugins/mochiko/schemas/")
+
 # What marks a primitive as converted. The same test the dependency hook makes, and for the same
 # reason: the primitive's own file is the truth, so there is no list to keep in sync with the
 # conversion waves.
@@ -752,33 +794,131 @@ def is_schema_path(path: str) -> bool:
     copy's own `schemas/brainstorm.yaml` matches neither the repository path nor the `schema.yaml`
     suffix — the assertion would have passed a run that did exactly the thing no-fallback exists to
     rule out. Any `.yaml` under a `schemas/` directory counts, wherever it was staged.
+
+    Wave 6 widened it once more, for a hole the wave-6 bite proofs found rather than a run did:
+    the directory test was `"/schemas/" in path`, so a **relative** `schemas/common.yaml` — the
+    form a Read written from the plugin root produces — matched neither limb and passed. The
+    leading-segment case is now its own test.
     """
     return path.endswith("schema.yaml") or (
-        "/schemas/" in path and path.endswith(".yaml")
+        path.endswith(".yaml")
+        and ("/schemas/" in path or path.startswith("schemas/"))
     )
 
 
-def assert_no_schema_read(events: list) -> str | None:
-    """No schema file was read anywhere in the run (D8; run-wide from wave 6).
+def names_schema_source(path: str) -> bool:
+    """Whether a search argument points into the schema corpus — a file, or the directory itself.
 
-    `Read` is the tool D8 names, and it is also the one a fallback would reach for. A shell read of
-    the same file would be the same failure wearing a different hat, so a Bash command naming a
-    schema path counts too — the assertion is about the posture, not about which tool carried it.
+    `is_schema_path` answers for a file. A search can be pointed at the directory instead, or at a
+    glob that names it, and reading the rules out of `schemas/` a line at a time is the same
+    fallback wearing a third hat.
     """
-    for use in tool_uses(events):
+    return (
+        is_schema_path(path)
+        or "/schemas/" in path
+        or path.startswith("schemas/")
+        or path.rstrip("/").endswith("schemas")
+    )
+
+
+def schema_reads_in(rows: list) -> tuple[list[str], list[str]]:
+    """Every schema-file read, and every mere listing, named by the `tool_use` blocks in `rows`.
+
+    **Structural, never a substring search over the channel's text.** From wave 6 this walks
+    session transcripts as well as stream events, and a transcript carries the rendered rules
+    themselves, the user's prompt and the model's own prose. A text search for a schema path
+    across all that would fire on a run which merely *named* one — which, until migration `0003`
+    reworded them, the rules did — and would call a clean run dirty. Only a tool call that would
+    hand the file's content back counts.
+
+    The split is by what the call returns. `Read`, `NotebookRead`, a shell read and a content-mode
+    `Grep` all return rule text, and are the failure no-fallback exists to rule out. `Glob` and a
+    name-mode `Grep` return paths, which delivers no rule to anyone; those come back separately
+    and are recorded rather than gated.
+    """
+    reads, listings = [], []
+    for use in tool_uses(rows):
         name, args = use.get("name"), (use.get("input") or {})
         if name in ("Read", "NotebookRead"):
             path = str(args.get("file_path", ""))
             if is_schema_path(path):
-                return f"a schema file was Read: {path}"
+                reads.append(f"{name} {path}")
         elif name == "Bash":
             # Routed through `is_schema_path` so the two limbs cannot drift: a separate regex
             # here missed `skills/<name>/schema.yaml`, which the `Read` limb caught by suffix.
             command = str(args.get("command", ""))
             for token in re.findall(r"[\w./-]+\.yaml", command):
                 if is_schema_path(token):
-                    return f"a schema file was read through the shell: {token}"
-    return None
+                    reads.append(f"Bash {token}")
+        elif name == "Grep":
+            named = [
+                f"{field}={value}"
+                for field in ("path", "glob")
+                if (value := str(args.get(field, ""))) and names_schema_source(value)
+            ]
+            if named:
+                content = str(args.get("output_mode") or "") == "content"
+                (reads if content else listings).append("Grep " + " ".join(named))
+        elif name == "Glob":
+            pattern = str(args.get("pattern", ""))
+            if names_schema_source(pattern):
+                listings.append(f"Glob {pattern}")
+    return reads, listings
+
+
+def assert_no_schema_read(events: list) -> str | None:
+    """No schema file was read on this case's stream (D8).
+
+    Kept for the two fixture cases, which halt before any model turn and fetch no transcript, so
+    the stream is the only channel they have. Every case that reaches a session uses the wider
+    evidence sweep below instead.
+    """
+    reads, _ = schema_reads_in(events)
+    return None if not reads else f"a schema file was read: {reads[0]}"
+
+
+def sweep_evidence(root: pathlib.Path) -> tuple[str | None, list[str]]:
+    """Every JSONL channel a case captured, swept for schema reads and schema listings.
+
+    D8 scoped the no-Read assertion per converted primitive through waves 3 to 5, because a
+    converted command invoking an unconverted skill legitimately read that skill's file. From
+    wave 6 no schema file ships at all, so the assertion is unconditional — and its *reach* has to
+    widen with it. Keying it to one case's stream events left a real hole: a subagent's turns are
+    in neither the parent's stream nor the parent's transcript, so a fallback read inside the
+    `preload` case's spawned agent was invisible to the assertion written to catch exactly that.
+
+    The subject is the case's own evidence directory, which is where every channel has already
+    been written by the time a check list is built — `stream*.jsonl` from `run_probe`,
+    `transcript*.jsonl` from `fetch_transcript`, `sidechain*-N.jsonl` from
+    `fetch_sidechain_transcripts`. Nothing is passed in, so a case that grows a fourth channel is
+    covered by having captured it.
+    """
+    problem, listings, channels = None, [], sorted(root.glob("*.jsonl"))
+    for path in channels:
+        try:
+            rows = events_of(path.read_text(encoding="utf-8", errors="replace"))
+        except OSError as failure:
+            return f"the captured channel {path.name} could not be read: {failure}", listings
+        reads, listed = schema_reads_in(rows)
+        listings += [f"{path.name}: {entry}" for entry in listed]
+        if reads and problem is None:
+            problem = f"a schema file was read on {path.name}: {reads[0]}"
+    if not channels:
+        # An assertion with nothing to read has proved nothing — the same reason the suite skips
+        # rather than reporting a clean sweep of zero cases.
+        return f"no JSONL channel was captured under {root.name}; the sweep read nothing", []
+    return problem, listings
+
+
+def no_schema_read_checks(root: pathlib.Path) -> list:
+    """The gating sweep, plus the recorded listings when the run produced any."""
+    problem, listings = sweep_evidence(root)
+    checks = [ok("no schema file was read on any captured channel", problem)]
+    if listings:
+        checks.append(
+            report("schema paths listed but never read", "; ".join(listings[:5]))
+        )
+    return checks
 
 
 def assert_halted(text: str) -> str | None:
@@ -1406,7 +1546,14 @@ def converted_skills(plugin_root: pathlib.Path) -> list[str]:
 
 
 def unconverted_primitive(plugin_root: pathlib.Path, kind: str) -> str | None:
-    """One primitive the hook must leave alone — the transition clause's side of the check."""
+    """One primitive the hook must leave alone, because it has no rules to deliver.
+
+    Through wave 5 the subject of this was the transition clause: a primitive still reading a
+    shipped schema file was never gated. The clause expired at wave 6 and no schema file ships,
+    but the limb it exercised outlives it and the subject is still real. Eight shipped skills
+    carry no schema and never did — the router and the prose skills — so the hook must leave them
+    alone for the simpler reason that there is nothing to halt for.
+    """
     if kind == "command":
         for path in sorted((plugin_root / "commands").glob("*.md")):
             if CONVERTED_MARK not in path.read_text(encoding="utf-8"):
@@ -1878,8 +2025,8 @@ def case_hook_input(runner, sandbox) -> tuple[list, pathlib.Path]:
     exits with the wrong code or writes to the wrong channel.
 
     Every row is keyed to a shape the scripts actually produce, and the two rows that matter most
-    are the negative ones: an unconverted primitive must be left completely alone, because the
-    transition clause says a primitive still reading a shipped schema file is never gated.
+    are the negative ones: a primitive with no rules of its own must be left completely alone,
+    because there is nothing for the binary's absence to have cost it.
     """
     staged = stage("hook-input", PLUGIN)
     checks: list[Check] = []
@@ -1933,15 +2080,15 @@ def case_hook_input(runner, sandbox) -> tuple[list, pathlib.Path]:
     unconverted_command = unconverted_primitive(staged.plugin, "command")
     unconverted_skill = unconverted_primitive(staged.plugin, "skill")
     if unconverted_command is None:
-        # From wave 4 every shipped command is converted, so the transition-clause row loses its
-        # subject and this case would fail on a check about the hook rather than about the wave.
-        # The row still has to run: the clause is live for skills until wave 6, and the limb it
-        # exercises — leave an unconverted primitive completely alone — is the same one. So the
-        # subject is staged, exactly as the converted-skill row above stages its own, and nothing
-        # in `plugins/mochiko/` is touched.
+        # From wave 4 every shipped command is converted, so this row loses its subject and the
+        # case would fail on a check about the hook rather than about the wave. The row still has
+        # to run: eight shipped skills carry no rules and never will, so the limb it exercises —
+        # leave a primitive with nothing to deliver completely alone — stays live on the skill
+        # side. So the subject is staged, exactly as the converted-skill row above stages its own,
+        # and nothing in `plugins/mochiko/` is touched.
         unconverted_command = "contract-unconverted"
         (staged.plugin / "commands" / f"{unconverted_command}.md").write_text(
-            "---\ndescription: staged-only stub for the hook-input transition-clause row\n---\n\n"
+            "---\ndescription: staged-only stub for the hook-input leave-alone row\n---\n\n"
             "This command carries no `!` rules line, so the dependency hook must leave it alone.\n",
             encoding="utf-8",
         )
@@ -1951,10 +2098,10 @@ def case_hook_input(runner, sandbox) -> tuple[list, pathlib.Path]:
         )
     checks.append(
         ok(
-            "the transition-clause rows have an unconverted command and skill to leave alone",
+            "the leave-alone rows have a rule-less command and skill to leave alone",
             None
             if unconverted_command and unconverted_skill
-            else "no unconverted skill remains; that transition-clause row cannot be run",
+            else "no skill without rules remains; that leave-alone row cannot be run",
         )
     )
     if any(check.status == "fail" for check in checks):
@@ -2024,12 +2171,12 @@ def case_hook_input(runner, sandbox) -> tuple[list, pathlib.Path]:
         )
         return proc
 
-    # --- the transition clause: an unconverted primitive is never gated ------------------
+    # --- a primitive with no rules of its own is never gated -----------------------------
     proc = hook(dependency, upe_with(f"mochiko:{unconverted_command}"), absent_path)
-    checks.append(ok(f"unconverted command `{unconverted_command}` is left alone", silent(proc)))
+    checks.append(ok(f"rule-less command `{unconverted_command}` is left alone", silent(proc)))
 
     proc = hook(dependency, skill_with(f"mochiko:{unconverted_skill}"), absent_path)
-    checks.append(ok(f"unconverted skill `{unconverted_skill}` is left alone", silent(proc)))
+    checks.append(ok(f"rule-less skill `{unconverted_skill}` is left alone", silent(proc)))
 
     proc = hook(dependency, upe_with("other:thing"), absent_path)
     checks.append(ok("a command outside the mochiko namespace is left alone", silent(proc)))
@@ -2229,12 +2376,20 @@ def case_hook_input(runner, sandbox) -> tuple[list, pathlib.Path]:
 
 
 def case_render_ceiling(runner, sandbox) -> tuple[list, pathlib.Path]:
-    """Every render of every converted primitive against the inline ceiling.
+    """Every render of every converted primitive, against the inline ceiling and the dead phrases.
 
     Wave-0 probe (e) measured the ceiling at roughly 30,000 characters: above it a `!` block
     arrives as a file-path notice whose preview keeps only the first line, which would strand a
     render without its end line — delivered, apparently fine, and silently truncated. This is the
     one assertion that catches that before a user does, and it needs no session at all.
+
+    Wave 6 folds a second sweep into the same renders, at no extra cost because they are already
+    in hand: no rendered rule may still carry `when the binary is absent` or a
+    `plugins/mochiko/schemas/` path. That is the host-side half of the run-wide no-fallback
+    posture — the sessions prove nothing *read* a schema file, and this proves nothing *told* the
+    model to. Its subject is the **render**, never the log: the log is append-only, so
+    `0001-genesis.yaml` still carries the two-arm wording by construction and always will. Only
+    the replayed state has to be clean, and only the render shows it.
     """
     staged = stage("render-ceiling", PLUGIN)
     checks: list[Check] = []
@@ -2264,7 +2419,7 @@ def case_render_ceiling(runner, sandbox) -> tuple[list, pathlib.Path]:
             None if primitives else "no primitive carries a `!` rules line; nothing to measure",
         )
     )
-    measurements, largest = [], None
+    measurements, largest, dead = [], None, []
     for kind, name, _ in primitives:
         preamble = render(binary, name, "preamble", staged.plugin)
         if preamble.returncode != 0:
@@ -2294,11 +2449,35 @@ def case_render_ceiling(runner, sandbox) -> tuple[list, pathlib.Path]:
             measurements.append(entry)
             if largest is None or entry["chars"] > largest["chars"]:
                 largest = entry
+            for line in out.stdout.splitlines():
+                for phrase in DEAD_PHRASES:
+                    if phrase in line:
+                        dead.append(
+                            {
+                                "primitive": name,
+                                "section": section,
+                                "phrase": phrase,
+                                "line": line.strip()[:200],
+                            }
+                        )
     over = [m for m in measurements if m["chars"] >= INLINE_CEILING]
     checks.append(
         ok(
             f"every converted render is under the {INLINE_CEILING:,}-char inline ceiling",
             None if not over else f"over the ceiling: {over}",
+        )
+    )
+    checks.append(
+        ok(
+            "no rendered rule still names a shipped schema file "
+            f"({' · '.join(DEAD_PHRASES)})",
+            None
+            if not dead
+            else "; ".join(
+                f"{d['primitive']} · {d['section']}: {d['phrase']!r} in {d['line']!r}"
+                for d in dead[:5]
+            )
+            + (f" (+{len(dead) - 5} more)" if len(dead) > 5 else ""),
         )
     )
     if largest is not None:
@@ -2318,6 +2497,7 @@ def case_render_ceiling(runner, sandbox) -> tuple[list, pathlib.Path]:
             "converted": [f"{kind}:{name}" for kind, name, _ in primitives],
             "measurements": measurements,
             "largest": largest,
+            "dead_phrases": {"looked_for": list(DEAD_PHRASES), "found": dead},
         },
     )
     return checks, staged.root
@@ -2574,6 +2754,13 @@ def case_delivery(kind: str, name: str):
         for check_name, problems in _aggregate(replicates, kind, name, ids, counts):
             checks.append(ok(check_name, problems))
 
+        # --- the no-fallback posture, swept run-wide ------------------------------------------
+        #
+        # One sweep for the whole case rather than one assertion per replicate: the subject is
+        # every channel the three replicates wrote, so a read on replicate 2's transcript fails
+        # the case even though replicate 1's stream is clean.
+        checks += no_schema_read_checks(staged.root)
+
         # --- criterion (1), re-keyed: gating -------------------------------------------------
         checks.append(
             ok(
@@ -2790,6 +2977,10 @@ def _aggregate(replicates: list, kind: str, name: str, ids: list[str],
     hook produces no stream row at all even when it fires. What the model *did* — tool uses, the
     init event's registries — is read from the stream, which is where those live.
 
+    The no-Read assertion used to sit here, once per replicate, keyed to that replicate's stream.
+    From wave 6 it is a single case-level sweep over every channel the case captured, all three
+    replicates' streams and transcripts included, so it moved to the caller.
+
     The skill rows are the ones the command path has no equivalent of. A command's blocks arrive
     in the expanded prompt before any turn; a skill's arrive because the model called the `Skill`
     tool, and the dependency hook meets it on a different limb with a different noun. Both facts
@@ -2808,7 +2999,6 @@ def _aggregate(replicates: list, kind: str, name: str, ids: list[str],
             )
         ]
         checks += assert_delivery(entry["seen"], name, ids, counts) + [
-            ok("no schema file was Read", assert_no_schema_read(entry["probed"].events)),
             ok(
                 "the SessionStart hook reported the binary",
                 _session_start_line(entry["probed"], entry["seen"]),
@@ -2959,7 +3149,6 @@ def case_command_absence(command: str):
                 "the install line reached the session",
                 assert_in_session(probed, INSTALL_LINE, seen),
             ),
-            ok("no schema file was Read", assert_no_schema_read(probed.events)),
             ok("no version triple was delivered", assert_no_version_triple(union)),
             report("install-line channel", ", ".join(channels) or "none"),
             report(
@@ -2972,6 +3161,7 @@ def case_command_absence(command: str):
                 else "the `!` line — the harness injected its stderr",
             ),
         ]
+        checks += no_schema_read_checks(staged.root)
         write_verdict(
             staged.root,
             case_name,
@@ -3042,7 +3232,6 @@ def case_skill_absence(skill: str):
                 f"the halt names `/mochiko:{skill}`",
                 assert_in_session(probed, f"/mochiko:{skill}", seen),
             ),
-            ok("no schema file was Read", assert_no_schema_read(probed.events)),
             ok("no version triple was delivered", assert_no_version_triple(union)),
             ok(
                 "no rendered block reached the model",
@@ -3068,6 +3257,7 @@ def case_skill_absence(skill: str):
             ),
             report("model turns", str((result_event(probed.events) or {}).get("num_turns"))),
         ]
+        checks += no_schema_read_checks(staged.root)
         write_verdict(
             staged.root,
             case_name,
@@ -3209,18 +3399,10 @@ def case_preload(runner, sandbox: "Sandbox") -> tuple[list, pathlib.Path]:
             assert_floor_delivery(present["seen"], floor_expected),
         ),
         ok(
-            "binary present: no schema file was Read",
-            assert_no_schema_read(present["probed"].events),
-        ),
-        ok(
             "binary absent: nothing was delivered",
             None
             if not absent["blocks"]
             else f"blocks arrived with no binary: {absent['blocks']}",
-        ),
-        ok(
-            "binary absent: no schema file was Read",
-            assert_no_schema_read(absent["probed"].events),
         ),
         ok(
             "binary absent: no version triple reached either transcript",
@@ -3238,6 +3420,10 @@ def case_preload(runner, sandbox: "Sandbox") -> tuple[list, pathlib.Path]:
             f"{len(absent['sidechain_files'])} — copied into the evidence directory",
         ),
     ]
+    # Both states in one sweep, and this is the case the sweep was widened for: the subagent's
+    # turns are in the sidechain files and in neither `probed.events` nor the parent transcript,
+    # so the per-state stream assertions this replaces could not have seen a fallback read there.
+    checks += no_schema_read_checks(staged.root)
     write_verdict(
         staged.root,
         "preload",
@@ -3302,7 +3488,6 @@ def case_brainstorm_skew(runner, sandbox: "Sandbox") -> tuple[list, pathlib.Path
             assert_in_session(probed, "grammar 99", seen),
         ),
         ok("the install line reached the session", assert_in_session(probed, INSTALL_LINE, seen)),
-        ok("no schema file was Read", assert_no_schema_read(probed.events)),
         ok("no version triple was delivered", assert_no_version_triple(text)),
         report("halt channel", ", ".join(channels) or "none"),
         report(
@@ -3315,6 +3500,7 @@ def case_brainstorm_skew(runner, sandbox: "Sandbox") -> tuple[list, pathlib.Path
             else "the `!` line — the harness injected its stderr",
         ),
     ]
+    checks += no_schema_read_checks(staged.root)
     write_verdict(
         staged.root,
         "brainstorm-skew",
@@ -3360,7 +3546,6 @@ def case_brainstorm_hooks_off(runner, sandbox: "Sandbox") -> tuple[list, pathlib
             "the harness injected the shell's stderr, naming the missing binary",
             assert_local_command_stderr(probed.events, "mochiko-cli", "command not found"),
         ),
-        ok("no schema file was Read", assert_no_schema_read(probed.events)),
         ok("no version triple was delivered", assert_no_version_triple(union)),
         report(
             "the hooks really were off",
@@ -3369,6 +3554,7 @@ def case_brainstorm_hooks_off(runner, sandbox: "Sandbox") -> tuple[list, pathlib
             else "a hook still spoke — the setting did not take",
         ),
     ]
+    checks += no_schema_read_checks(staged.root)
     write_verdict(
         staged.root,
         "brainstorm-hooks-off",
@@ -3426,9 +3612,12 @@ def case_brainstorm_policy(runner, sandbox: "Sandbox") -> tuple[list, pathlib.Pa
         ),
         report("the hook spoke", "yes" if HOOK_PRESENT_PREFIX in text else "no"),
         report("model turns", str((result_event(probed.events) or {}).get("num_turns"))),
+        # Recorded, never asserted, like everything else this case measures — but read through
+        # the same run-wide sweep the gating cases use, so what is recorded here is the same fact
+        # they assert rather than a narrower one.
         report(
             "a schema file was read as a fallback",
-            assert_no_schema_read(probed.events) or "no",
+            sweep_evidence(staged.root)[0] or "no",
         ),
     ]
     write_verdict(
@@ -3619,10 +3808,158 @@ def case_converted_shape(runner, sandbox) -> tuple[list, pathlib.Path]:
     return checks, staged.root
 
 
+def render_shape_problems(proc: subprocess.CompletedProcess) -> list[str]:
+    """What every rendered deliverable owes, whichever command produced it."""
+    problems = []
+    if proc.returncode != 0:
+        problems.append(f"exit {proc.returncode}")
+    if proc.stderr.strip():
+        problems.append(f"stderr was not empty: {proc.stderr.strip()[:120]!r}")
+    if not proc.stdout.strip():
+        problems.append("stdout was empty")
+    return problems
+
+
+def set_delta(found: list, expected: tuple) -> str | None:
+    missing = sorted(set(expected) - set(found))
+    extra = sorted(set(found) - set(expected))
+    if not missing and not extra:
+        return None
+    return f"written down but not emitted: {missing}; emitted but not written down: {extra}"
+
+
+def case_deliverables(runner, sandbox) -> tuple[list, pathlib.Path]:
+    """Every non-rule document the deleted schema files used to serve, through its CLI form.
+
+    Wave 6's done condition is that no schema file ships, which is only half a contract: the other
+    half is that everything those files delivered still has a way of being delivered. Rules had
+    one from wave 3. The artifact templates got `mochiko-cli template` at the template-schema
+    wave. The shelf document and the two label registries had no CLI form at all until
+    `mochiko-cli doc` (record D9 wave 6), and a primitive citing one of those was, until this
+    case, pointing at a file about to be deleted with nothing checking that the replacement
+    worked. This is the check that the replacement works, on the host, for nothing.
+
+    **The subjects are discovered, not written down.** The binary's own view emitter names every
+    document in the replayed state, so the case walks what the log actually holds rather than a
+    list that would quietly go stale — the doctrine `converted_commands()` already follows for the
+    session cases. A written-down set is then compared against it in both directions, for the
+    opposite reason: discovery alone would shrink silently if a document vanished from the log,
+    and a case that gets smaller when the thing it guards disappears is not a guard.
+
+    **The two commands are asserted to their own shapes, not to a shared one.** `doc` wraps its
+    document in the version triple, head line and end line, exactly as `rules` does. `template`
+    does not and did not: it opens on the document's own title and closes on the provenance
+    footer, because its output is read as a document rather than as a delivery envelope. Wrapping
+    it would be a change to the render output shape and a `mochiko-cli` release concern (GI-012),
+    not something for a test to presume; the lead booked it as a follow-up at the wave-6 approval.
+    So each command is held to what it emits.
+    """
+    staged = stage("deliverables", PLUGIN)
+    checks: list[Check] = []
+    binary, reason = host_binary()
+    if reason:
+        checks.append(ok("a runnable host binary", reason))
+        write_verdict(staged.root, "deliverables", checks, {"shape": "direct binary"})
+        return checks, staged.root
+
+    views = staged.root / "views"
+    emitted = host_sh(
+        f"{shlex.quote(binary)} views emit --out {shlex.quote(str(views))} "
+        f"--plugin-root {shlex.quote(str(staged.plugin))}"
+    )
+    checks.append(
+        ok(
+            "the view emitter wrote a tree to discover the documents from",
+            None
+            if emitted.returncode == 0
+            else f"exit {emitted.returncode}: {emitted.stderr.strip()[:200]!r}",
+        )
+    )
+    if emitted.returncode != 0:
+        write_verdict(staged.root, "deliverables", checks, {"shape": "direct binary"})
+        return checks, staged.root
+
+    found = {
+        kind: sorted(path.stem for path in (views / kind).glob("*.yaml"))
+        for kind in ("templates", "shelves", "labels")
+    }
+    templates = found["templates"]
+    documents = sorted(found["shelves"] + found["labels"])
+    checks += [
+        ok("every template in the log is one this case walks", set_delta(templates, TEMPLATE_NAMES)),
+        ok(
+            "every shelf and registry in the log is one this case walks",
+            set_delta(documents, DOC_NAMES),
+        ),
+    ]
+
+    rendered = []
+    for name in templates:
+        for flag, view in (("", "producer"), ("--check", "checklist")):
+            proc = host_sh(
+                f"{shlex.quote(binary)} template {shlex.quote(name)} {flag} "
+                f"--plugin-root {shlex.quote(str(staged.plugin))}"
+            )
+            problems = render_shape_problems(proc)
+            lines = [line for line in proc.stdout.splitlines() if line.strip()]
+            if lines and not lines[0].startswith("# "):
+                problems.append(f"the first line is not the document's title: {lines[0][:80]!r}")
+            if lines and not lines[-1].startswith(TEMPLATE_FOOTER):
+                problems.append(f"the last line is not the provenance footer: {lines[-1][:80]!r}")
+            checks.append(
+                ok(f"template `{name}` renders its {view} view", "; ".join(problems) or None)
+            )
+            rendered.append({"command": "template", "name": name, "view": view,
+                             "exit": proc.returncode, "bytes": len(proc.stdout.encode("utf-8"))})
+
+    for name in documents:
+        proc = host_sh(
+            f"{shlex.quote(binary)} doc {shlex.quote(name)} "
+            f"--plugin-root {shlex.quote(str(staged.plugin))}"
+        )
+        problems = render_shape_problems(proc)
+        lines = [line for line in proc.stdout.splitlines() if line.strip()]
+        head = lines[0] if lines else ""
+        if not head.startswith(f"{DOC_HEAD}{name} ·") or not all(
+            marker in head for marker in TRIPLE_MARKERS
+        ):
+            problems.append(f"the head line is not the version triple: {head[:120]!r}")
+        if not lines or lines[-1] != f"{DOC_END}{name}":
+            problems.append(
+                f"the end line is not {DOC_END + name!r}: {(lines[-1] if lines else '')[:120]!r}"
+            )
+        checks.append(
+            ok(f"document `{name}` renders with both lines", "; ".join(problems) or None)
+        )
+        rendered.append({"command": "doc", "name": name, "view": "document",
+                         "exit": proc.returncode, "bytes": len(proc.stdout.encode("utf-8"))})
+
+    checks.append(
+        report(
+            "deliverables rendered",
+            f"{len(templates)} templates × 2 views through `template`, {len(documents)} "
+            f"through `doc` — {len(rendered)} invocations, no session",
+        )
+    )
+    write_verdict(
+        staged.root,
+        "deliverables",
+        checks,
+        {
+            "shape": "direct binary",
+            "discovered": found,
+            "written_down": {"templates": list(TEMPLATE_NAMES), "documents": list(DOC_NAMES)},
+            "rendered": rendered,
+        },
+    )
+    return checks, staged.root
+
+
 HOST_CASES = [
     ("hook-input", "the hook scripts, fed captured stdin — no sandbox, no session", case_hook_input),
     ("converted-shape", "a converted `.md`'s `!` lines against its own render", case_converted_shape),
     ("render-ceiling", "every converted render against the inline ceiling", case_render_ceiling),
+    ("deliverables", "every template, shelf and registry through its CLI form", case_deliverables),
 ]
 
 def build_sandbox_cases() -> list:
@@ -3748,7 +4085,8 @@ def main() -> int:
         return EXIT_ASSERT if failures else EXIT_OK
 
     # The host cases run first: they are free, they need nothing built, and a broken hook script
-    # should be visible before twenty minutes of sandbox build and nine metered sessions.
+    # or an undeliverable template should be visible before twenty minutes of sandbox build and a
+    # hundred and fifty-one metered sessions.
     print()
     failures, pendings, reports = run_cases(HOST_CASES, None, None)
 

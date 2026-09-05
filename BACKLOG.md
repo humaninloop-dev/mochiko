@@ -26,42 +26,32 @@ uncompressed. Prior groom narrative: git history (this line, before this groom).
 *(ruled + accepted 2026-09-03, `cli-schema-delivery` D1–D11 as review-amended; provenance:
 `.mochiko/brainstorms/cli-schema-delivery/record.md`; session ran in worktree `cli-context`)*
 
-- [ ] **Build: CLI-delivered schemas, six waves — waves 0–5 DONE; wave 6 (end state) next**
-  (2026-09-03; provenance: record D9 + build surface + the per-wave `waveN-plan.md` /
-  `waveN-reports/`) — waves 0–4 done 2026-09-03/04 (probes · crate · governance v3.0.0 ·
-  pilot v0.104.0 · five commands v0.105.0 with the read-back trip diagnosed and criterion (1)
-  re-keyed, PATCH v3.0.2); **wave 5 DONE 2026-09-04 at v0.106.0** — all 30 skills CLI-served,
-  `floors:` line, criterion (1) clear on all 36, criterion (2) per family (patterns +17.8 % ·
-  dense five +8.7 %, pre-stated), budgets re-seeded per D10.6, F15 hook fix. **Wave 6 (end
-  state):** delete the shipped snapshot files, views to `.mochiko/schema-views/`, retire the
-  Python checkers (both D13 checkers now flag every converted primitive), migrate the 32
-  two-arm sites (incl. `specify` Goal), freeze the sidecar, expire the transition clause
-  (pre-authorized PATCH), re-key `primitive-edits.md`; plus the wave-5 follow-ups — a skill
-  variant of the legend, three dense-five bodies saying rules live "in the schema", the
-  expansion-path presence line outside the payload figures, a name sanitizer in the hook, an
-  optional shorter skill halt paragraph. **Wave-2 tail, still owed:** signed tags + the
-  `crates-io` approval rule, then lift the two gates, tag `mochiko-cli-v0.1.0`, publish.
+- [ ] **CLI schema delivery — post-build residuals** (2026-09-05; the six-wave build is DONE →
+  trail; provenance: `.mochiko/brainstorms/cli-schema-delivery/record.md` waves 3–6). Owed on the
+  user's side: **the wave-2 publish tail** — signed release tags + the `crates-io` environment
+  approval rule (GI-002's two owed controls), then lift `publish = false` / `if: false`, tag
+  `mochiko-cli-v0.1.0`, publish to crates.io + the tap — what makes the hooks' and D5's
+  `cargo install mochiko-cli` line true (README carries the git-install line until then).
+  Follow-ups: wrap `mochiko-cli template` output in head/end lines like `rules` and `doc` · the
+  expansion-path presence line sits outside the payload figures (66 B per fire) · the patterns
+  family's +15.5 % read cost (wave-6 run) stands accepted (a shorter skill halt paragraph is the
+  lever) · kinako picks up the end state at its next plugin update (two-step install) · `claude
+  plugin eval` as a contract-layer substrate once enabled (wave-0 finding) · `freeze_expectations.py`
+  dies with a raw `FileNotFoundError` on the default plugin root instead of the README's stated
+  reason (wave-6 V3 F4, pre-existing, LOW) · the freeze is once-only by design (refuses when its
+  output exists or any skill is converted), so a migration that moves a floor set takes a
+  hand-landed pre-registration under the audit — a regenerating path is the lever if that bites.
 
 ## Skill-content schema build
 
 *(ruled + accepted 2026-09-01, `skill-content-schema` D1–D9 as review-amended; provenance:
 `.mochiko/brainstorms/skill-content-schema/record.md`)*
 
-- [ ] **First-live-run watch: skill schema delivery (D6)** — arc complete: review v0.100.0 ·
-  authoring v0.101.0 · patterns v0.102.0 · dense five v0.103.0 (→ trail); 30 pairs of 38
-  skill dirs, 7 prose by ruling, router out. *(Superseded pending build —
-  `cli-schema-delivery` D10.6, 2026-09-03: delivery becomes tested by the contract suite at
-  wave 6; closes there.)* Probes: schema read? whole? before the first procedural step?
-  read-back stated? · the I5 per-invoke read-cost observable against the MEASURED figures
-  (review ×3.24 ~119.9k · authoring ×1.84 ~150.6k · patterns ×1.90 ~95.9k · dense five
-  ×1.75 ~81.8k delivered-at-invoke; ledger rows per member) · benefit observations (a
-  `skill.*` ID cited by a strip/audit row · a checker/detector catch — live already: 2A
-  Shape-token + anchor-gap, 2B display-for-override + sibling-seat GI-005, 2C
-  validator-refutes-validator ledger save). Consumers: the D9 rollback trigger
-  (user-reserved: delivery under the prose baseline, or the eval sample past its bar) · the
-  prose-seven revisit · the D5 cross-family `skill-common.yaml` graduation candidate (2A +
-  2B convergences as evidence). Still owed from wave 1: the D7 compression-eval judged
-  sample (RB+RF; pre-registration + ship bar take their own user ratification).
+- [ ] **Skill-content schema residuals** (carried from the closed D6 watch, 2026-09-05): the
+  prose-seven revisit · the D5 cross-family `skill-common.yaml` graduation candidate (2A + 2B
+  convergences as evidence) · the D7 compression-eval judged sample (RB+RF; pre-registration +
+  ship bar take their own user ratification). The delivery probes and the read-cost observable
+  closed at wave 6 (contract suite; per-family figures in the `cli-schema-delivery` record).
 
 ## Command-schema ontology wave
 
@@ -80,21 +70,13 @@ provenance: `.mochiko/brainstorms/command-schema-ontology/record.md`)*
 `.mochiko/brainstorms/command-content-schema/record.md`. Build DELIVERED same day at v0.92.0;
 D10 rollout DELIVERED same day at v0.95.0 — all six commands now `.md`+schema pairs)*
 
-- [ ] **First-live-run watch: schema-carried rule delivery** (D10) — now spanning all six
-  *(Superseded pending build — `cli-schema-delivery` D10.6, 2026-09-03: contract suite at wave 6; M1 path probe answered by the `!` binding; closes there.)*
-  pairs (implement · feature · specify · architecture · setup · brainstorm): delivery probes
-  (schema read? read fully? before first action?) · benefit observations (a schema rule ID
-  cited by a strip/audit/DECISIONS row · a `vars:` change replacing a multi-site edit · the
-  checker catching a real defect · a cross-command label query answering a real question) ·
-  D4 edit observations (pair-touching edits without label churn). One watch item, three
-  consumers: D2 absorption, D2 retreat, D4 ceremony graduation. *Extended 2026-08-27
-  (`command-md-scaffold-standardization` C3/D2/D4/D5): probes also measure the canonical
-  scaffold — Read executed fully before first action from position 3, behind identity prose ·
-  empty-section runtime cost · one concrete six-set addressing benefit · a run resolving
-  `spec.lead-latitude`'s "the Goal state" referent now that Goal is a step label, not a
-  heading (V2 advisory). Baseline perturbation accepted eyes-open: the pre-rewrite pair form
-  never fires live.* *Path probe added 2026-09-01 (skill-content-schema M1): does the
-  hard-coded repo-relative schema path resolve from an installed plugin cache?*
+- [ ] **Command-content schema residuals** (carried from the closed D10 watch, 2026-09-05):
+  the benefit observations that still want a live run — a schema rule ID cited by a
+  strip/audit/DECISIONS row (live already: waves 3–6 cite rule ids throughout) · a `vars:`
+  change replacing a multi-site edit (live: migration 0003's `set-var` ×7) · a cross-command
+  label query · D4 edit observations without label churn — and their three consumers: D2
+  absorption, D2 retreat, D4 ceremony graduation. The delivery probes, the M1 path probe, and
+  the scaffold measurements closed at wave 6 (contract suite; `!` binding).
 
 ## Command `.md` scaffold build
 
@@ -288,20 +270,14 @@ supersessions (byte-exact strips) + 14-surface re-points + thin D7 re-key + gove
 fidelity + 8/8 strips, V3 13/13 re-points, `authoring-feature-map` budget overage HOLDS, one
 fix round (CI `cargo audit --deny`); trail. Open residual:
 
-- [ ] **Template-schema first-live-run watch** (2026-08-16; provenance:
-  *(Superseded pending build — `cli-schema-delivery` D10.6, 2026-09-03: M7 re-keys to revert-the-wave, the D9 pilot criteria replace the falsifier, D5 reopen carried; closes at wave 6.)*
-  [record](.mochiko/brainstorms/schema-based-template-guidance/record.md) evidence-honesty
-  thread — n=0, the D11 null-road concession on record) — no run yet demonstrates CLI/schema-
-  delivered guidance outperforms the old `.md` exemplars. Watch the first live authoring runs on
-  the 8 converted templates (specify/plan/feature/setup + the skills that read them): does the
-  producer view (schema + example + good/bad) and the `--check` checklist view guide artifact
-  quality at least as well as the `.md` baseline, and does the raw-Read fallback stay honest when
-  the binary is absent (D8/GI-020)? **M7 rollback trigger:** CLI-delivered guidance
-  underperforming the `.md` baseline on artifact quality reverts the 8 supersessions
-  (reconstructible from strips, GI-006) and re-points skills back; the crate may survive under
-  D11's foundation ruling. **D5 reopen condition:** if a real per-project depth need emerges (the
-  governance depth dial and template guidance visibly diverge), the baked-in-norms ruling reopens
-  by explicit user ruling only.
+- [ ] **Template-guidance residuals** (carried from the closed first-live-run watch,
+  2026-09-05): the artifact-quality question — does CLI-delivered template guidance guide
+  artifact quality at least as well as the old `.md` exemplars? — stays n=0 until a live
+  authoring run is judged (`schema-based-template-guidance` D11 null-road concession); the
+  **D5 reopen condition** (a real per-project depth need; the governance depth dial and
+  template guidance visibly diverge) reopens by explicit user ruling only. The raw-Read
+  fallback question and the M7 revert-the-wave trigger closed at wave 6 (no fallback exists;
+  the D9 pilot criteria replaced the falsifier).
 
 ## Adopt-first build
 

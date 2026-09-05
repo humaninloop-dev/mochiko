@@ -23,6 +23,29 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 `DECISIONS.md` 2026-09-04 row. Pre-edit verbatim text:
 `git show 7d098b9:plugins/mochiko/skills/executing-tdd-cycle/SKILL.md`. -->
 
+<!-- Wave context: wave 6 of the CLI schema-delivery build (v0.107.0) — the end state. No schema
+file ships in the plugin: the 20 files under `plugins/mochiko/schemas/` and the 30
+`skills/*/schema.yaml` were deleted, and every delivery they served now has a CLI form. Ruling for
+the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9 wave 6, with
+the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
+`git show 62aa99d:plugins/mochiko/skills/executing-tdd-cycle/SKILL.md`. -->
+
+## [v0.107.0] two body lines telling the reader that rules live "in the schema"
+
+- **Disposition:** superseded → "delivered by `mochiko-cli`", section ids unchanged
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/cli-schema-delivery/record.md`
+  D9 wave 6; `DECISIONS.md` 2026-09-05)
+- **Content:** two lines.
+  1. "card reading legally goes, are the schema's `executing-tdd-cycle.sec.inputs` rules."
+  2. "is the schema's `executing-tdd-cycle.sec.scope` rules"
+- **Kept deliberately:** both section ids, which still resolve, and the substance of both
+  sentences — what the card fields are and how far card reading legally goes, and the
+  decomposition discipline's full list (task sizing, ordering, extend/modify classification,
+  scope, the pre-code ladder walk) with its landing in the cycle report per
+  `executing-tdd-cycle.sec.output`. The wording pointed at a file this converted skill is
+  forbidden to read, two screens below its own "Never Read a schema file instead" halt clause;
+  the wave-5 V2 audit raised the contradiction as a follow-up and this entry discharges it.
+
 ## [v0.106.0] the Rules block — raw schema Read superseded by CLI delivery
 
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation

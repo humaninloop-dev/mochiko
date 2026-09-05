@@ -11,6 +11,41 @@ recorded here and flagged on the wave's ROADMAP row.
 2026-08-27 row); the implement-only-pair staleness half by
 `.mochiko/brainstorms/command-content-schema/record.md` D10 (`DECISIONS.md` 2026-08-26). -->
 
+<!-- Wave context: wave 6 of the CLI schema-delivery build (v0.107.0) — the end state. No schema
+file ships in the plugin: the 20 files under `plugins/mochiko/schemas/` and the 30
+`skills/*/schema.yaml` were deleted, and every delivery they served now has a CLI form. Ruling for
+the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9 wave 6, with
+the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
+`git show 62aa99d:plugins/mochiko/skills/mochiko/SKILL.md`. -->
+
+## [v0.107.0] the composition paragraph's pair claim and four schema-row fallback arms
+
+- **Disposition:** superseded → the CLI forms; the shelf row's phantom `template` becomes `doc`
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/cli-schema-delivery/record.md`
+  D9 wave 6; `DECISIONS.md` 2026-09-05)
+- **Content:** seven lines, in file order.
+  1. "the six ships as a **`.md` + schema pair**."
+  2. "then an obligated first read of the command's own `plugins/mochiko/schemas/<cmd>.yaml`"
+  3. "The schema carries the rule set in six sections"
+  4. `architecture-store` row: ", or Read `plugins/mochiko/schemas/architecture-store.yaml` raw
+     when the binary is absent"
+  5. `architecture-shelf-backend` row: "`mochiko-cli template architecture-shelf-backend`, or Read
+     `plugins/mochiko/schemas/architecture-shelf-backend.yaml` raw"
+  6. `spec` row: ", or Read `plugins/mochiko/schemas/spec.yaml` raw when the binary is absent"
+  7. `tasks` row: ", or Read `plugins/mochiko/schemas/tasks.yaml` raw when the binary is absent"
+- **Kept deliberately:** every row's substantive description — the store's required-core/flexibility
+  gloss and its `--check` advisory clause, the shelf's 13 concern dimensions and 3 spine opinions,
+  the spec row's lead-seeded and header-`status` clauses, the tasks row's cycle-card skeleton — and
+  the whole of the composition paragraph's run/desk distinction and four soundness conditions.
+  Lines 1 and 3 were reworded rather than dropped: the contract they describe survives, only its
+  delivery noun moved, so the paragraph still says a command's rule set has six named sections.
+  Line 5's `template` verb was a phantom — no such template ever existed — and becomes `doc`,
+  the command P1 landed this wave.
+- **Consumers assessed:** the router is read by users choosing a primitive, never by a run. No
+  command or skill cites these lines; the four rows' subjects are all reachable through the CLI
+  names now printed. `mochiko-cli doc architecture-shelf-backend` verified exit 0 with head and
+  end lines before line 5 was rewritten.
+
 ## [v0.97.0] Router's two-anatomy composition paragraph and charter-as-form row
 
 - **Disposition:** superseded → the canonical-scaffold paragraph in the same section of

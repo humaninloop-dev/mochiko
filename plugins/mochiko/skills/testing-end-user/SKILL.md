@@ -73,11 +73,11 @@ Run setup commands sequentially, capturing each command's output.
 
 **3. Execute Actions**
 
-Run each action honoring its modifiers. The modifier *vocabulary* — `(background)`, `(timeout Ns)`, `(in path)` — is defined in [`TEST-GRAMMAR.md`](../patterns-vertical-tdd/references/TEST-GRAMMAR.md) (§ *Action Modifiers*); the execution semantics are the schema's `testing-end-user.modifier-execution-semantics`. Capture all console output, track background processes, and enforce timeouts — mechanics in [references/EVIDENCE-CAPTURE.md](references/EVIDENCE-CAPTURE.md).
+Run each action honoring its modifiers. The modifier *vocabulary* — `(background)`, `(timeout Ns)`, `(in path)` — is defined in [`TEST-GRAMMAR.md`](../patterns-vertical-tdd/references/TEST-GRAMMAR.md) (§ *Action Modifiers*); the execution semantics are the delivered `testing-end-user.modifier-execution-semantics` rule. Capture all console output, track background processes, and enforce timeouts — mechanics in [references/EVIDENCE-CAPTURE.md](references/EVIDENCE-CAPTURE.md).
 
 **4. Evaluate Asserts**
 
-Evaluate each assert against the captured evidence. The assert-pattern *vocabulary* — `Console contains "…"` (and its `(within Ns)` timed form), `File exists: …`, `Response status: …`, `Screen reached: …`, `Page contains "…"` — is defined in [`TEST-GRAMMAR.md`](../patterns-vertical-tdd/references/TEST-GRAMMAR.md) (§ *Assert Patterns*); the evaluation semantics are the schema's `testing-end-user.assert-evaluation-semantics`.
+Evaluate each assert against the captured evidence. The assert-pattern *vocabulary* — `Console contains "…"` (and its `(within Ns)` timed form), `File exists: …`, `Response status: …`, `Screen reached: …`, `Page contains "…"` — is defined in [`TEST-GRAMMAR.md`](../patterns-vertical-tdd/references/TEST-GRAMMAR.md) (§ *Assert Patterns*); the evaluation semantics are the delivered `testing-end-user.assert-evaluation-semantics` rule.
 
 **5. Generate Report**
 
@@ -89,13 +89,13 @@ Ask the human to approve, reject, or retry, per the checkpoint presentation form
 
 ### Task Classification
 
-Before execution, classify the task from its Action and Assert content — the classification criteria, the browser-flow exception, and the uncertain-default posture live in the schema's `testing-end-user.sec.verdict` section.
+Before execution, classify the task from its Action and Assert content — the classification criteria, the browser-flow exception, and the uncertain-default posture are delivered by `mochiko-cli` as the `testing-end-user.sec.verdict` rules.
 
 ## Quality Gate Execution
 
 When a verification run includes quality gates, execute them alongside `**TEST:**` task verification:
 
-1. **Identify the quality-gate commands** (source per the schema's `testing-end-user.gate-source-binding`).
+1. **Identify the quality-gate commands** (source per the delivered `testing-end-user.gate-source-binding` rule).
 2. **Execute each command** sequentially (lint, build, tests).
 3. **Record results** with exit code, stdout, and stderr.
 4. **Include in the verification report** under the `quality_gates` frontmatter section, in the format defined in [references/REPORT-TEMPLATES.md](references/REPORT-TEMPLATES.md).

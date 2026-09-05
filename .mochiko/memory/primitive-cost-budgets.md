@@ -74,10 +74,10 @@ audited Wave 2 body no-ops (nothing D4-cuttable); their budgets are their surviv
 | review-plan-artifacts | 18,013 (re-seeded [v0.106.0] CLI delivery, D10.6 — payload: body 3,363 + render 14,650; was 17,890 — re-seeded [v0.100.0] schema conversion — payload: body 3,170 + schema 14,720; was 4,901/6,127) | 18,013 (no headroom) |
 | review-code-minimalism | 10,664 (re-seeded [v0.106.0] CLI delivery, D10.6 — payload: body 3,711 + render 6,953; was 8,449 — re-seeded [v0.100.0] schema conversion — payload: body 2,971 + schema 5,478, re-measured post-fix-round; was 3,689/4,612) | 10,664 (no headroom) |
 | review-sufficiency | 15,423 (re-seeded [v0.106.0] CLI delivery, D10.6 — payload: body 3,262 + render 12,161; was 14,950 — first budget row, seeded [v0.100.0] schema conversion — payload: body 2,966 + schema 11,984, re-measured post-fix-round; the +82 over the first seed is the lead-ruled F5 restored clause + the F4 `kind:` line; unbudgeted at birth, body 6,652 at v0.91.0) | 15,423 (no headroom) |
-| skill-review-common.yaml | 1,627 (family common file, budgeted once as its own primitive — seeded [v0.100.0] schema conversion) | 1,627 (no headroom) |
+| skill-review-common.yaml | 1,627 (family common file, budgeted once — seeded [v0.100.0] schema conversion; a log document, not a shipped file, from [v0.107.0] — see the note) | 1,627 (no headroom) |
 | authoring-architecture-store | 19,733 (re-seeded [v0.106.0] CLI delivery, D10.6 — payload: body 5,391 + render 14,342; was 18,876 — first budget row, seeded [v0.101.0] schema conversion — payload: body 4,904 + schema 13,972, re-measured post-fix-round; unbudgeted at birth, v0.81.0 hard-cap-only) | 19,733 (no headroom) |
 | authoring-epic | 14,062 (re-seeded [v0.106.0] CLI delivery, D10.6 — payload: body 3,129 + render 10,933; was 13,044 — first budget row, seeded [v0.101.0] schema conversion — payload: body 2,569 + schema 10,475; unbudgeted at birth, v0.72.0 hard-cap-only) | 14,062 (no headroom) |
-| skill-authoring-common.yaml | 1,285 (family common file, budgeted once as its own primitive — seeded [v0.101.0] schema conversion, re-measured after the epigraph-block label-line drop) | 1,285 (no headroom) |
+| skill-authoring-common.yaml | 1,285 (family common file, budgeted once — seeded [v0.101.0] schema conversion, re-measured after the epigraph-block label-line drop; a log document, not a shipped file, from [v0.107.0] — see the note) | 1,285 (no headroom) |
 | patterns-adopt-first | 14,242 (re-seeded [v0.106.0] CLI delivery, D10.6 — payload: body 3,061 + render 11,181; was 12,910 — first budget row, seeded [v0.102.0] schema conversion — payload: body 2,253 + schema 10,657; unbudgeted at birth, v0.73.0 build-cap-only) | 14,242 (no headroom) |
 | patterns-architecture-shelves | 14,493 (re-seeded [v0.106.0] CLI delivery, D10.6 — payload: body 4,003 + render 10,490; was 12,361 — first budget row, seeded [v0.102.0] schema conversion — payload: body 2,923 + schema 9,438, re-measured post-fix-round; unbudgeted at birth, v0.81.0 hard-cap-only) | 14,493 (no headroom) |
 | patterns-map-minimalism | 11,245 (re-seeded [v0.106.0] CLI delivery, D10.6 — payload: body 3,288 + render 7,957; was 9,362 — first budget row, seeded [v0.102.0] schema conversion — payload: body 2,470 + schema 6,892; unbudgeted at birth, v0.68.0 hard-cap-only) | 11,245 (no headroom) |
@@ -245,6 +245,18 @@ vs 119,895 (−2.7 %) · authoring 147,304 vs 150,576 (−2.2 %) · patterns 112
 the eyes-open trade for deterministic delivery. Rulings + disposition maps: the [v0.106.0] entries
 in each member's `.mochiko/strips/` file and the 2026-09-04 `cli-schema-delivery` `DECISIONS.md`
 row.
+
+**[v0.107.0] the two family common rows are no longer shipped files — figures unchanged.** The
+wave-6 end state deleted every schema file from the plugin (`cli-schema-delivery` D9 wave 6,
+`DECISIONS.md` 2026-09-05), `skill-review-common.yaml` and `skill-authoring-common.yaml` among
+them. They are now **documents in the migration log**, resolved into every render before the model
+sees them, so the `.yaml` suffix in their row names is a historical name rather than a path on
+disk. This **supersedes the "they still ship" clause** in the [v0.106.0] block above, which was
+true when written. Their rows stay exactly as they are — 1,627 and 1,285, no headroom — re-read as
+**the budget of the shared block text**, not of a shipped primitive: the text still has a size
+worth holding, it is still budgeted once rather than per binding skill, and it is still absent
+from every member's payload because the render resolves each `extends:` stub. No figure on this
+page changes at wave 6, and no member row is re-seeded: the wave moved no block text.
 
 ## Skill descriptions
 

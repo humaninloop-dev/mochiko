@@ -51,7 +51,7 @@ halt and surface it.
 
 Coming-soon screens render as the real page at reduced opacity with a banner, or as a
 stub page carrying the FEAT tag; rejected screens carry the rejection mark and pointer —
-the greying grammar the schema's re-tag and rejected-story rules bind.
+the greying grammar the delivered re-tag and rejected-story rules bind.
 
 ## Common Rationalizations
 
@@ -65,7 +65,7 @@ the greying grammar the schema's re-tag and rejected-story rules bind.
 
 ## Related
 
-- `spec` schema — owns the Screens & Flows section shape this skill fills (binding in the schema's artifact section)
+- `spec` schema — owns the Screens & Flows section shape this skill fills (binding delivered by `mochiko-cli` in the artifact section)
 - [`artifact-format.md`](../../templates/artifact-format.md) — the deliverable envelope (ID grammar, citation rules)
 - `mochiko:review-specifications` — grades the prototype with the spec
 - `mochiko:authoring-user-stories` — upstream: the stories and acceptance scenarios the flows render

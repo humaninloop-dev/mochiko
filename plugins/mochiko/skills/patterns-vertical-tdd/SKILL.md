@@ -55,7 +55,7 @@ Cycle 2: User authentication (model + service + endpoint, end to end)
 
 ### 2. Walking Skeleton First, Infrastructure Homed by Need
 
-A walking skeleton proves the path before the features ride it; infrastructure is homed by need at cycle grain rather than front-loaded. The binding forms — when the skeleton fires, how infrastructure homes, no infra-only cards — live in the schema (`patterns-vertical-tdd.sec.discipline`).
+A walking skeleton proves the path before the features ride it; infrastructure is homed by need at cycle grain rather than front-loaded. The binding forms — when the skeleton fires, how infrastructure homes, no infra-only cards — are delivered by `mochiko-cli` (`patterns-vertical-tdd.sec.discipline`).
 
 ### 3. Verified against reality
 

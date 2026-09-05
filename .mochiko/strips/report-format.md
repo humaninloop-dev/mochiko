@@ -2,6 +2,30 @@
 
 Entry formats: `strips/README.md`.
 
+<!-- Wave context: wave 6 of the CLI schema-delivery build (v0.107.0) — the end state. No schema
+file ships in the plugin: the 20 files under `plugins/mochiko/schemas/` and the 30
+`skills/*/schema.yaml` were deleted, and every delivery they served now has a CLI form. Ruling for
+the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9 wave 6, with
+the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
+`git show 62aa99d:plugins/mochiko/templates/report-format.md`. -->
+
+## [v0.107.0] rule 9's file citation of the implement schema — now cited by rule id alone
+
+- **Disposition:** superseded → the bare rule ids `impl.escalation-batching` /
+  `impl.finding-severity-routing`
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/cli-schema-delivery/record.md`
+  D9 wave 6; `DECISIONS.md` 2026-09-05)
+- **Content:** "`plugins/mochiko/schemas/implement.yaml`'s `impl.escalation-batching` /
+  `impl.finding-severity-routing` rules"
+- **Kept deliberately:** both rule ids, which are the citation that matters and still resolve in
+  the delivered implement rules; and the whole of rule 9 — the prose-on-a-clean-report defect,
+  the devolved-branch terms it keys to, the any-lead-collecting-any-report-class extension, and
+  the bounce-to-seat remedy. Only the file path in front of the ids left, because the file is gone
+  and the ids are the durable handle.
+- **Consumers assessed:** `report-format.md` is the shared envelope every workflow report follows.
+  The two ids are cited here only as the source of the devolved-branch terms; no consumer reads
+  the path. Nothing else in the templates directory names a schema file.
+
 ## [v0.91.0] Dead `commands/plan.md` pointer re-homed; `plan.md` struck from the not-a-report list
 
 - **Disposition:** superseded → `commands/implement.md`. Two sites named surfaces the plan-stage

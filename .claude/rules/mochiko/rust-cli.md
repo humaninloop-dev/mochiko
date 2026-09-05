@@ -22,8 +22,8 @@ D11 (the widened role, 2026-09-03). The standing bright line binds it.
   never on behavior. Home: CLAUDE.md `## Non-negotiable constraints`; detail: ledger GI-019.
 - **Dependency, not fallback (GI-020 as amended v3.0.0).** The plugin depends on this binary;
   absence or skew halts loudly and never degrades. No code path may read a schema file as a
-  fallback. The transition clause covers only primitives not yet re-pointed, and expires at
-  wave 6 when no schema file ships in the plugin. Detail: ledger GI-020.
+  fallback, and no schema file ships in the plugin (the transition clause expired at v3.0.3 with
+  the wave-6 end state). Detail: ledger GI-020.
 - **The log is truth (record D1/D2/D6).** A migration file under the log directory is the only
   editing surface for schema content; the derived views under `--out` are generated and never
   hand-edited. The log's own constraints — required fields, and the ruling anchor a supersession

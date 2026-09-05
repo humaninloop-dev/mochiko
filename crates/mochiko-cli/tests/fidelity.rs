@@ -1,11 +1,17 @@
-//! Genesis fidelity — every rule of the 50 shipped schema files survives the log.
+//! Genesis fidelity — every rule of the 50-document corpus survives the log — plus the wave-6
+//! end-state assertions over what the whole log replays into.
 //!
-//! The comparison is deliberately **independent of the generator**: the expected side is the
-//! shipped YAML decoded straight into the model, and the actual side is the document the replay
-//! built from the whole log under `plugins/mochiko/migrations/`. Only two deltas are allowed, and
-//! each is asserted rather than excused — the two comment-carried `enforces: []` reasons, which
-//! the model holds as `note:` data, and the provenance anchors, which are checked against the
-//! sidecar the test reads for itself.
+//! The genesis comparison is deliberately **independent of the generator**: the expected side is
+//! the frozen corpus decoded straight into the model, and the actual side is the document sequence
+//! 1 alone builds. Only two deltas are allowed, and each is asserted rather than excused — the two
+//! comment-carried `enforces: []` reasons, which the model holds as `note:` data, and the
+//! provenance anchors, which are checked against the sidecar the test reads for itself.
+//!
+//! Both sides moved at wave 6. The expected side was the live schema tree, kept equal to the
+//! replay by hand under the transition clause; no schema file ships now, so it is the frozen
+//! fixture. The actual side was the whole log, which is no longer the same thing as genesis once
+//! later migrations carry the corpus forward, so it is genesis replayed alone. The later
+//! migrations have their own tests, at the foot of this file and above it.
 //!
 //! One failure per divergence, all of them named in one run: a broken genesis should report its
 //! whole blast radius, not the first field it happens to reach.
@@ -47,7 +53,7 @@ fn genesis_path() -> PathBuf {
 }
 
 /// The two rules whose empty `enforces:` carries its reason in a YAML comment, and the text that
-/// comment must become. Verbatim from `plugins/mochiko/schemas/setup.yaml`.
+/// comment must become. Verbatim from the frozen corpus's `setup.yaml`.
 const CARRIED_REASONS: [(&str, &str); 2] = [
     (
         "setup.fail.floor-category-uncovered",
@@ -62,8 +68,12 @@ const CARRIED_REASONS: [(&str, &str); 2] = [
 ];
 
 /// The sidecar's anchors, read by this test rather than through the generator.
+///
+/// From wave 6 the repo-side sidecar is frozen to `.mochiko/archive/`, so the copy this suite
+/// reads is the one inside the frozen corpus — the file genesis was actually built from, kept
+/// beside the corpus it belongs to rather than tracked through an archive path.
 fn sidecar() -> BTreeMap<String, String> {
-    let path = repo_root().join(genesis::SIDECAR);
+    let path = frozen_corpus().join(genesis::SIDECAR);
     let text = std::fs::read_to_string(&path).expect("the provenance sidecar is readable");
     let value: Value = serde_norway::from_str(&text).expect("the sidecar parses");
     let Some(Value::Mapping(anchors)) = value.get("anchors") else {
@@ -75,9 +85,13 @@ fn sidecar() -> BTreeMap<String, String> {
         .collect()
 }
 
-/// The shipped corpus decoded straight from disk, with no note or anchor applied.
+/// The frozen corpus decoded straight from disk, with no note or anchor applied.
+///
+/// Through wave 5 this scanned the live tree, which the transition clause kept semantically equal
+/// to the replay by hand. The files are gone at wave 6, and the honest expected side is the corpus
+/// genesis actually imported — the frozen fixture (record D8).
 fn shipped_documents() -> Vec<(DocRef, Document)> {
-    genesis::scan(&repo_root())
+    genesis::scan(&frozen_corpus())
         .expect("the corpus scans")
         .into_iter()
         .map(|file| {
@@ -156,8 +170,8 @@ fn the_log_replays_into_a_deliverable_state() {
     assert_eq!(replay.state.docs.len(), 50);
     assert_eq!(
         replay.sequences(),
-        vec![1, 2],
-        "genesis plus wave 4's fail-conditions reword"
+        vec![1, 2, 3],
+        "genesis, wave 4's fail-conditions reword, wave 6's two-arm retirement"
     );
 }
 
@@ -165,9 +179,26 @@ fn the_log_replays_into_a_deliverable_state() {
 // field-by-field fidelity
 // ---------------------------------------------------------------------------
 
+/// The state as sequence 1 alone builds it — genesis replayed with nothing after it.
+///
+/// The comparison below grades genesis, so its actual side must be genesis and no more. The frozen
+/// corpus is the pre-`0002` tree; measuring it against the full replay would grade the later
+/// migrations' deliberate rewords as genesis divergences. Every migration after the first has its
+/// own test, which is where a change to what it did belongs.
+fn genesis_only_state() -> replay::State {
+    let dir = PathBuf::from(env!("CARGO_TARGET_TMPDIR")).join("fidelity-genesis-only");
+    let _ = std::fs::remove_dir_all(&dir);
+    std::fs::create_dir_all(&dir).expect("the scratch log dir is creatable");
+    std::fs::copy(genesis_path(), dir.join(genesis::FILE)).expect("genesis is copyable");
+    replay::load(&dir).unwrap_or_else(|findings| {
+        let lines: Vec<String> = findings.iter().map(ToString::to_string).collect();
+        panic!("genesis alone replays:\n{}", lines.join("\n"))
+    })
+}
+
 #[test]
-fn every_shipped_document_survives_the_log_field_by_field() {
-    let state = replay::load(&log_dir()).expect("the log is deliverable");
+fn every_frozen_document_survives_genesis_field_by_field() {
+    let state = genesis_only_state();
     let anchors = sidecar();
     let reasons: BTreeMap<&str, &str> = CARRIED_REASONS.into_iter().collect();
 
@@ -205,7 +236,7 @@ fn every_shipped_document_survives_the_log_field_by_field() {
 
     assert!(
         divergences.is_empty(),
-        "{} divergences between the shipped corpus and the log:\n{}",
+        "{} divergences between the frozen corpus and genesis:\n{}",
         divergences.len(),
         divergences.join("\n")
     );
@@ -482,11 +513,11 @@ fn the_sidecar_anchors_ride_their_rules() {
 
 #[test]
 fn the_sidecar_file_is_never_written() {
-    // The anchors are carried, not moved (record D2). A generator that rewrote the sidecar would
-    // break the Python checkers, which stay authoritative on it until they retire.
-    let path = repo_root().join(genesis::SIDECAR);
+    // The anchors are carried, not moved (record D2). The sidecar is an input genesis reads and
+    // must leave exactly as it found it, whichever tree it is pointed at.
+    let path = frozen_corpus().join(genesis::SIDECAR);
     let before = std::fs::read(&path).expect("the sidecar is readable");
-    let _ = genesis::build(&repo_root()).expect("genesis builds");
+    let _ = genesis::build(&frozen_corpus()).expect("genesis builds");
     let after = std::fs::read(&path).expect("the sidecar is still readable");
     assert_eq!(before, after, "genesis wrote to the provenance sidecar");
 }
@@ -532,4 +563,265 @@ fn the_corpus_census_holds_through_the_log() {
     assert_eq!(skill_floors, 226, "skill floors");
     assert_eq!(command_floors, 110, "declared command floors");
     assert_eq!(fail_nodes, 36, "command fail nodes");
+}
+
+// ---------------------------------------------------------------------------
+// wave 6 — the two-arm retirement
+// ---------------------------------------------------------------------------
+
+/// The phrasings that must not survive `0003`, anywhere in the state.
+///
+/// Two of them are the two arms of the same construct: the shipped snapshot file was named as a
+/// fallback for the binary being absent, or as the second arm when it was unavailable. There is no
+/// fallback and there is no file, so both readings are wrong, and both are pinned — a reword that
+/// struck one arm and left the other would read as fixed while still sending a run to find a file.
+/// The third is the path itself, which nothing may name once nothing ships there.
+const RETIRED_PHRASINGS: [&str; 3] = [
+    "plugins/mochiko/schemas/",
+    "when the binary is absent",
+    "when the binary is available",
+];
+
+/// No document in the state names a schema file or the absence arm — the whole state, not just
+/// rule text.
+///
+/// Widened past "no rule text" deliberately. A `vars:` entry, a section intent, a condition note, a
+/// template's own prose and the shelf data all reach a reader, and any of them naming a file the
+/// plugin does not ship is the same defect wherever it sits. Serialising each document through the
+/// view writer is what makes the sweep exhaustive without enumerating fields: it walks every string
+/// the model holds, so a field added later is covered the day it is added.
+#[test]
+fn no_document_in_the_state_names_a_schema_file_or_the_absence_arm() {
+    let state = replay::load(&log_dir()).expect("the log is deliverable");
+    let mut offences: Vec<String> = Vec::new();
+    for (doc, document) in &state.docs {
+        let text = mochiko_cli::views::to_yaml(&document.to_value());
+        for needle in RETIRED_PHRASINGS {
+            for line in text.lines().filter(|line| line.contains(needle)) {
+                offences.push(format!("{doc}: {}", line.trim()));
+            }
+        }
+    }
+    assert!(
+        offences.is_empty(),
+        "{} lines still name a retired schema path or the absence arm:\n{}",
+        offences.len(),
+        offences.join("\n")
+    );
+}
+
+/// The `0003` rewords landed on the rules they name, and the CLI form is what a reader now sees.
+///
+/// The sweep above proves the old phrasing is gone; on its own it would also pass if a rule had
+/// been emptied rather than reworded. This one names each rule and the delivery it must carry.
+#[test]
+fn the_third_migration_left_every_reworded_rule_naming_its_cli_form() {
+    let state = replay::load(&log_dir()).expect("the log is deliverable");
+    let cases: [(DocKind, &str, &str, &str); 14] = [
+        (
+            DocKind::Command,
+            "architecture",
+            "arch.tools-store-schema",
+            "${shelf_schema}",
+        ),
+        (
+            DocKind::Command,
+            "feature",
+            "feat.delta-cards",
+            "${tasks_schema}",
+        ),
+        (
+            DocKind::Command,
+            "implement",
+            "impl.cards-template",
+            "${tasks_schema}",
+        ),
+        (
+            DocKind::Command,
+            "setup",
+            "setup.synthesis-artifact",
+            "mochiko-cli template governance-intent",
+        ),
+        (
+            DocKind::Command,
+            "setup",
+            "setup.feature-map-brownfield",
+            "mochiko-cli template feature-entry",
+        ),
+        (
+            DocKind::Command,
+            "specify",
+            "spec.deliverable",
+            "${spec_schema}",
+        ),
+        (
+            DocKind::Command,
+            "specify",
+            "spec.feature-map-craft",
+            "${features_index_schema}",
+        ),
+        (
+            DocKind::SkillCommon,
+            "skill-authoring-common",
+            "authoring-common.two-arm-template",
+            "mochiko-cli template ${template}",
+        ),
+        (
+            DocKind::Skill,
+            "analysis-codebase",
+            "analysis-codebase.deliverable-two-arm-binding",
+            "mochiko-cli template codebase-analysis",
+        ),
+        (
+            DocKind::Skill,
+            "authoring-feature-map",
+            "authoring-feature-map.feature-entry-two-arm",
+            "mochiko-cli template feature-entry",
+        ),
+        (
+            DocKind::Skill,
+            "authoring-technical-requirements",
+            "authoring-technical-requirements.nfr-store-home",
+            "mochiko-cli template architecture-store",
+        ),
+        (
+            DocKind::Skill,
+            "patterns-architecture-shelves",
+            "patterns-architecture-shelves.opinions-in-data",
+            "mochiko-cli doc architecture-shelf-backend",
+        ),
+        (
+            DocKind::Skill,
+            "patterns-vertical-tdd",
+            "patterns-vertical-tdd.tasks-binding-two-arm",
+            "mochiko-cli template tasks",
+        ),
+        (
+            DocKind::Skill,
+            "review-plan-artifacts",
+            "review-plan-artifacts.cycle-card-check-mirror",
+            "mochiko-cli template tasks --check",
+        ),
+    ];
+
+    for (kind, name, id, expected) in cases {
+        let doc = DocRef::new(kind, name);
+        let schema = state
+            .docs
+            .get(&doc)
+            .and_then(Document::as_rules)
+            .unwrap_or_else(|| panic!("{doc} is in state"));
+        let rule = schema
+            .find_rule(id)
+            .unwrap_or_else(|| panic!("{id} survived its reword as a live rule"));
+        let text = rule.text.as_deref().unwrap_or_default();
+        assert!(
+            text.contains(expected),
+            "{id}: the reworded text does not name {expected:?}:\n{text}"
+        );
+    }
+}
+
+/// The six vars that named a schema file now name the command that delivers it.
+///
+/// Each is still referenced by a rule, so one left pointing at a path would substitute a dead file
+/// path into a delivered render. The sweep above would catch that by its path text; this names the
+/// values the rewords were written against.
+#[test]
+fn the_delivery_vars_name_a_cli_invocation() {
+    let state = replay::load(&log_dir()).expect("the log is deliverable");
+    let cases: [(&str, &str, &str); 7] = [
+        ("implement", "tasks_schema", "mochiko-cli template tasks"),
+        ("feature", "tasks_schema", "mochiko-cli template tasks"),
+        ("specify", "spec_schema", "mochiko-cli template spec"),
+        (
+            "specify",
+            "feature_entry_schema",
+            "mochiko-cli template feature-entry",
+        ),
+        (
+            "specify",
+            "features_index_schema",
+            "mochiko-cli template features-index",
+        ),
+        (
+            "architecture",
+            "store_schema",
+            "mochiko-cli template architecture-store",
+        ),
+        (
+            "architecture",
+            "shelf_schema",
+            "mochiko-cli doc architecture-shelf-backend",
+        ),
+    ];
+    for (command, var, expected) in cases {
+        let doc = DocRef::new(DocKind::Command, command);
+        let schema = state
+            .docs
+            .get(&doc)
+            .and_then(Document::as_rules)
+            .unwrap_or_else(|| panic!("{doc} is in state"));
+        let value = mochiko_cli::model::ordered_get(&schema.vars, var)
+            .unwrap_or_else(|| panic!("{command}: `{var}` is still bound"));
+        assert_eq!(
+            value.as_str(),
+            Some(expected),
+            "{command}: `{var}` does not name its delivery command"
+        );
+    }
+}
+
+/// No rule points at a schema file.
+///
+/// A `pointer:` is resolved against the installed tree, so one left aiming at a deleted file is a
+/// rejecting `pointer-unresolved` finding rather than cosmetic staleness. The three that did are
+/// named, so clearing the wrong one fails here rather than passing the sweep below by accident.
+#[test]
+fn no_rule_points_at_a_schema_file() {
+    let state = replay::load(&log_dir()).expect("the log is deliverable");
+    let cleared = [
+        (
+            "analysis-codebase",
+            "analysis-codebase.deliverable-two-arm-binding",
+        ),
+        (
+            "patterns-architecture-shelves",
+            "patterns-architecture-shelves.opinions-in-data",
+        ),
+        (
+            "patterns-vertical-tdd",
+            "patterns-vertical-tdd.tasks-binding-two-arm",
+        ),
+    ];
+    for (skill, id) in cleared {
+        let doc = DocRef::new(DocKind::Skill, skill);
+        let rule = state
+            .docs
+            .get(&doc)
+            .and_then(Document::as_rules)
+            .and_then(|schema| schema.find_rule(id))
+            .unwrap_or_else(|| panic!("{id} is a live rule"));
+        assert!(
+            rule.pointer.is_none(),
+            "{id} still carries `pointer: {}`",
+            rule.pointer.as_deref().unwrap_or_default()
+        );
+    }
+
+    for (doc, document) in &state.docs {
+        let Some(schema) = document.as_rules() else {
+            continue;
+        };
+        for rule in schema.rules() {
+            let Some(pointer) = rule.pointer.as_deref() else {
+                continue;
+            };
+            assert!(
+                !pointer.contains("schemas/"),
+                "{doc} · {}: `pointer: {pointer}` names a schema directory",
+                rule.id
+            );
+        }
+    }
 }

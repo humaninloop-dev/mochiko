@@ -10,6 +10,26 @@ commands"), the wave-open Q-B ruling recorded in that session's `wave3-plan.md` 
 `DECISIONS.md` 2026-09-04 wave-3 row, and this wave's row. Pre-edit verbatim text:
 `git show 9732de0:plugins/mochiko/commands/specify.md`. -->
 
+<!-- Wave context: wave 6 of the CLI schema-delivery build (v0.107.0) — the end state. No schema
+file ships in the plugin: the 20 files under `plugins/mochiko/schemas/` and the 30
+`skills/*/schema.yaml` were deleted, and every delivery they served now has a CLI form. Ruling for
+the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9 wave 6, with
+the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
+`git show 62aa99d:plugins/mochiko/commands/specify.md`. -->
+
+## [v0.107.0] the Goal step's two-arm spec-template clause — the fallback arm superseded
+
+- **Disposition:** superseded → the single CLI form `(rendered by mochiko-cli template spec)`
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/cli-schema-delivery/record.md`
+  D9 wave 6; `DECISIONS.md` 2026-09-05)
+- **Content:** "to the spec template (rendered by `mochiko-cli template spec`, or its schema
+  `plugins/mochiko/schemas/spec.yaml` Read raw when the binary is absent — the shipped schema
+  is the first-class source of truth) with no placeholder tokens"
+- **Kept deliberately:** the render arm itself, and every other clause of the fixed done condition —
+  the Intent section, FR-XXX / SC-XXX, Screens & Flows, Feature Selection, the staged map delta,
+  the independent stress test, and the user's acceptance. Only the raw-Read fallback and its
+  "first-class source of truth" gloss left, both of which name a file that no longer ships.
+
 ## [v0.105.0] the Rules block — raw schema Read superseded by CLI delivery
 
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation

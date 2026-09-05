@@ -44,18 +44,16 @@ Every run has a goal and an explicit done condition; a run is never goal-less.
 1. **Entry.** `$ARGUMENTS` = the feature description — turn it into an accepted spec workspace.
    Empty → ask the user for the description.
 2. **Goal — the done condition, fixed.** `.mochiko/specs/<spec>/` exists: `spec.md` conforming
-   to the spec template (rendered by `mochiko-cli template spec`, or its schema
-   `plugins/mochiko/schemas/spec.yaml` Read raw when the binary is absent — the shipped schema
-   is the first-class source of truth) with no placeholder tokens — a confirmed **Intent**
-   section (the elicited scope / delivery / depth-rigor / UX-bearing / constraints /
-   out-of-scope rulings, plus the agreed capability frame), FR-XXX requirements, measurable
-   SC-XXX criteria, edge cases, a **Screens & Flows** section (the SCR-XXX/FLOW-XXX manifest
-   with its clickable low-fi prototype under `prototype/`, or the single line "No UX surface —
-   prototype waived at intent."), and a **Feature Selection** section (the confirmed capability
-   frame, derived work rows grouped per capability, filter verdicts with reasons, the user's
-   selection with its deferred-SC list and the per-capability completeness view); stories as
-   `stories/US-*.md` files (text, acceptance scenarios, work-row mapping under a capability — or
-   `rejected` with the why); the staged map delta executed at spec acceptance as one atomic
+   to the spec template (rendered by `mochiko-cli template spec`) with no placeholder tokens — a
+   confirmed **Intent** section (the elicited scope / delivery / depth-rigor / UX-bearing /
+   constraints / out-of-scope rulings, plus the agreed capability frame), FR-XXX requirements,
+   measurable SC-XXX criteria, edge cases, a **Screens & Flows** section (the SCR-XXX/FLOW-XXX
+   manifest with its clickable low-fi prototype under `prototype/`, or the single line "No UX
+   surface — prototype waived at intent."), and a **Feature Selection** section (the confirmed
+   capability frame, derived work rows grouped per capability, filter verdicts with reasons, the
+   user's selection with its deferred-SC list and the per-capability completeness view); stories
+   as `stories/US-*.md` files (text, acceptance scenarios, work-row mapping under a capability —
+   or `rejected` with the why); the staged map delta executed at spec acceptance as one atomic
    batch — capabilities land or extend, work rows attach (pending; selected rows flip `live`,
    the capability reading `in-flight` while live rows exist), deltas attach, `FEATURES.md` and
    `.mochiko/specs/index.md` rows touch; it was independently stress-tested from the files —

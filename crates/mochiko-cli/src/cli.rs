@@ -72,6 +72,11 @@ enum Command {
         #[arg(long)]
         check: bool,
     },
+    /// Render a shelf or label registry — the documents that are neither rules nor templates.
+    Doc {
+        /// A shelf name (`architecture-shelf-backend`) or a registry (`command-labels`).
+        name: String,
+    },
     /// Work on the migration log itself.
     Migrate {
         #[command(subcommand)]
@@ -178,6 +183,7 @@ pub fn dispatch(args: &[String], out: &mut dyn Write, err: &mut dyn Write) -> i3
             err,
         ),
         Command::Template { name, check } => run_template(&dir, &name, check, out, err),
+        Command::Doc { name } => run_doc(&dir, cli.plugin_root.as_deref(), &name, out, err),
         Command::Migrate { action } => match action {
             MigrateAction::Validate { report } => {
                 run_validate(&dir, cli.plugin_root.as_deref(), report, out, err)
@@ -369,6 +375,35 @@ fn run_template(
         Err(code) => return code,
     };
     match render::template_view(&replay.state, name, check, dir) {
+        Ok(text) => {
+            let _ = write!(out, "{text}");
+            0
+        }
+        Err(e) => {
+            let _ = writeln!(err, "error: {e}");
+            2
+        }
+    }
+}
+
+/// Render one shelf or label registry.
+///
+/// Takes the plugin root for the same reason `rules` does: the head line reports the version
+/// triple, and a delivery that cannot say which plugin it came from is harder to trust than one
+/// that says `unknown`.
+fn run_doc(
+    dir: &Path,
+    plugin_root: Option<&Path>,
+    name: &str,
+    out: &mut dyn Write,
+    err: &mut dyn Write,
+) -> i32 {
+    let replay = match load_for_delivery(dir, err) {
+        Ok(replay) => replay,
+        Err(code) => return code,
+    };
+    let ctx = context(&replay, plugin_root);
+    match render::document_view(&replay.state, name, &ctx) {
         Ok(text) => {
             let _ = write!(out, "{text}");
             0

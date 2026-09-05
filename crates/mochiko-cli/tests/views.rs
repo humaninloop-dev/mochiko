@@ -1,16 +1,22 @@
 //! The derived views — the replayed state written back out in the corpus's own file shapes.
 //!
 //! Equality here is **semantic**, never byte-wise (wave plan §5). A view is compared with its
-//! shipped file through the canonical hash, which sorts mapping keys and ignores the file's
+//! committed file through the canonical hash, which sorts mapping keys and ignores the file's
 //! comments, its blank lines, and the scalar style a given string was written in. Byte equality
 //! is not available and is not claimed: comments do not survive a typed model, and rule field
 //! order normalises on emit (P1's A11).
 //!
-//! Every write in this suite lands under `CARGO_TARGET_TMPDIR`. No shipped file is touched.
+//! **The comparand moved at wave 6.** Through wave 5 an emitted view was compared with the shipped
+//! snapshot file it mirrored. No schema file ships now, so the comparand is the committed view
+//! under `.mochiko/schema-views/`: emit and the committed tree must agree, which is the same
+//! "view ≡ replay" claim CI gate 5 makes, keyed on the surface that still exists. Drift is a
+//! failing test, and the fix is to regenerate.
+//!
+//! Every write in this suite lands under `CARGO_TARGET_TMPDIR`. No committed file is touched.
 
 use mochiko_cli::model::{canonical_hash, DocKind, Document};
-use mochiko_cli::replay::State;
-use mochiko_cli::{genesis, views};
+use mochiko_cli::replay::{self, State};
+use mochiko_cli::views;
 use serde_norway::Value;
 use std::path::{Path, PathBuf};
 
@@ -22,18 +28,19 @@ fn repo_root() -> PathBuf {
         .to_path_buf()
 }
 
-/// The shipped corpus decoded into a state directly, without going through the log.
+/// Where the committed views live, relative to the repository root.
+const VIEWS_DIR: &str = ".mochiko/schema-views";
+
+/// The corpus as the log replays it — the only source of schema content from wave 6.
 ///
-/// Deliberately not the replayed state: this suite grades the emitter, so its input must not
-/// depend on genesis being right. `tests/fidelity.rs` grades the log.
-fn shipped_state() -> State {
-    let mut state = State::default();
-    for file in genesis::scan(&repo_root()).expect("the shipped corpus scans") {
-        let document = Document::from_value(file.doc.kind, &file.value)
-            .unwrap_or_else(|e| panic!("{} decodes: {e}", file.path.display()));
-        state.docs.insert(file.doc, document);
-    }
-    state
+/// Through wave 5 this decoded the shipped files directly, so the emitter could be graded without
+/// depending on genesis being right. Those files are gone; `tests/fidelity.rs` still grades
+/// genesis against the frozen corpus, which is where that independence now lives.
+fn replayed_state() -> State {
+    replay::load(&repo_root().join("plugins/mochiko/migrations")).unwrap_or_else(|findings| {
+        let lines: Vec<String> = findings.iter().map(ToString::to_string).collect();
+        panic!("the committed log is deliverable:\n{}", lines.join("\n"))
+    })
 }
 
 fn parse(text: &str) -> Value {
@@ -247,21 +254,26 @@ sections:
 // the emitter
 // ---------------------------------------------------------------------------
 
+/// Emit and the committed tree agree, document for document — the "view ≡ replay" claim.
+///
+/// A failure here means the committed views are stale: regenerate them with
+/// `mochiko-cli views emit --plugin-root plugins/mochiko --out .mochiko/schema-views`. It never
+/// means a view should be hand-edited into agreement.
 #[test]
-fn every_shipped_document_emits_a_semantically_equal_view() {
-    let root = repo_root();
-    let state = shipped_state();
+fn every_emitted_view_matches_the_committed_one() {
+    let views_dir = repo_root().join(VIEWS_DIR);
+    let state = replayed_state();
     let views = views::emit(&state);
     assert_eq!(views.len(), 50, "the corpus is 50 documents");
 
     let mut divergences: Vec<String> = Vec::new();
     for (relative, text) in &views {
-        let shipped = root.join(relative);
+        let committed = views_dir.join(relative);
         let original: Value = serde_norway::from_str(
-            &std::fs::read_to_string(&shipped)
-                .unwrap_or_else(|e| panic!("{} is readable: {e}", shipped.display())),
+            &std::fs::read_to_string(&committed)
+                .unwrap_or_else(|e| panic!("{} is readable: {e}", committed.display())),
         )
-        .unwrap_or_else(|e| panic!("{} parses: {e}", shipped.display()));
+        .unwrap_or_else(|e| panic!("{} parses: {e}", committed.display()));
         let emitted: Value = match serde_norway::from_str(text) {
             Ok(value) => value,
             Err(e) => {
@@ -274,22 +286,61 @@ fn every_shipped_document_emits_a_semantically_equal_view() {
         };
         if canonical_hash(&emitted) != canonical_hash(&original) {
             divergences.push(format!(
-                "{}: the view is not semantically equal to the shipped file",
+                "{}: the emitted view is not semantically equal to the committed one",
                 relative.display()
             ));
         }
     }
     assert!(
         divergences.is_empty(),
-        "{} of 50 views diverged:\n{}",
+        "{} of 50 views diverged — regenerate with `mochiko-cli views emit`:\n{}",
         divergences.len(),
         divergences.join("\n")
     );
 }
 
+/// The committed tree carries exactly the views the emitter writes, and nothing else.
+///
+/// The emitter creates and overwrites but never deletes, so a document that is renamed or retired
+/// leaves its old view behind. Without this the stale file would sit in the tree indefinitely,
+/// read as current, and pass every other test here.
+#[test]
+fn the_committed_views_tree_holds_no_file_the_emitter_does_not_write() {
+    let views_dir = repo_root().join(VIEWS_DIR);
+    let expected: std::collections::BTreeSet<PathBuf> = views::emit(&replayed_state())
+        .into_iter()
+        .map(|(relative, _)| views_dir.join(relative))
+        .collect();
+
+    let mut found: Vec<PathBuf> = Vec::new();
+    let mut stack = vec![views_dir.clone()];
+    while let Some(dir) = stack.pop() {
+        for entry in std::fs::read_dir(&dir).expect("the committed views directory is readable") {
+            let path = entry.expect("readable entry").path();
+            if path.is_dir() {
+                stack.push(path);
+            } else {
+                found.push(path);
+            }
+        }
+    }
+
+    let orphans: Vec<String> = found
+        .iter()
+        .filter(|path| !expected.contains(*path))
+        .map(|path| path.display().to_string())
+        .collect();
+    assert!(
+        orphans.is_empty(),
+        "the committed views tree carries files the emitter does not write:\n{}",
+        orphans.join("\n")
+    );
+    assert_eq!(found.len(), 50, "the committed tree is 50 views");
+}
+
 #[test]
 fn a_view_re_decodes_into_the_document_it_came_from() {
-    let state = shipped_state();
+    let state = replayed_state();
     for (doc, document) in &state.docs {
         let text = views::render(doc, document);
         let value: Value =
@@ -301,17 +352,17 @@ fn a_view_re_decodes_into_the_document_it_came_from() {
 }
 
 #[test]
-fn the_regenerated_command_header_matches_the_shipped_one() {
-    let root = repo_root();
-    let state = shipped_state();
+fn the_regenerated_command_header_matches_the_committed_one() {
+    let views_dir = repo_root().join(VIEWS_DIR);
+    let state = replayed_state();
     for (doc, _) in state
         .docs
         .iter()
         .filter(|(d, _)| d.kind == DocKind::Command)
     {
-        let shipped = std::fs::read_to_string(root.join(views::view_path(doc)))
+        let committed = std::fs::read_to_string(views_dir.join(views::view_path(doc)))
             .unwrap_or_else(|e| panic!("{doc} is readable: {e}"));
-        let head: String = shipped
+        let head: String = committed
             .lines()
             .take_while(|line| line.starts_with('#'))
             .map(|line| format!("{line}\n"))
@@ -319,46 +370,65 @@ fn the_regenerated_command_header_matches_the_shipped_one() {
         assert_eq!(
             views::header(doc),
             head,
-            "{doc}: the regenerated runtime-kernel header is not the shipped one"
+            "{doc}: the regenerated header is not the committed one"
         );
     }
 }
 
+/// No view path names the plugin, and none names a schema directory.
+///
+/// The layout is keyed by document kind from wave 6, outside `plugins/` entirely, so nothing
+/// about a view's path suggests a file a run could read instead of asking the binary.
 #[test]
-fn a_view_path_mirrors_the_repository_layout() {
+fn a_view_path_is_keyed_by_document_kind() {
     use mochiko_cli::model::DocRef;
     let cases = [
         (
             DocRef::new(DocKind::Command, "specify"),
-            "plugins/mochiko/schemas/specify.yaml",
+            "commands/specify.yaml",
         ),
         (
             DocRef::new(DocKind::Skill, "review-feasibility"),
-            "plugins/mochiko/skills/review-feasibility/schema.yaml",
+            "skills/review-feasibility.yaml",
         ),
         (
             DocRef::new(DocKind::CommandCommon, "common"),
-            "plugins/mochiko/schemas/common.yaml",
+            "common/common.yaml",
         ),
         (
             DocRef::new(DocKind::SkillCommon, "skill-review-common"),
-            "plugins/mochiko/schemas/skill-review-common.yaml",
+            "common/skill-review-common.yaml",
         ),
         (
             DocRef::new(DocKind::CommandLabels, "command-labels"),
-            "plugins/mochiko/schemas/command-labels.yaml",
+            "labels/command-labels.yaml",
+        ),
+        (
+            DocRef::new(DocKind::SkillLabels, "skill-labels"),
+            "labels/skill-labels.yaml",
         ),
         (
             DocRef::new(DocKind::Template, "spec"),
-            "plugins/mochiko/schemas/spec.yaml",
+            "templates/spec.yaml",
         ),
         (
             DocRef::new(DocKind::Shelf, "architecture-shelf-backend"),
-            "plugins/mochiko/schemas/architecture-shelf-backend.yaml",
+            "shelves/architecture-shelf-backend.yaml",
         ),
     ];
     for (doc, want) in cases {
         assert_eq!(views::view_path(&doc), PathBuf::from(want), "{doc}");
+    }
+
+    for (doc, path) in views::emit(&replayed_state())
+        .into_iter()
+        .map(|(path, _)| (path.clone(), path))
+    {
+        let text = path.display().to_string();
+        assert!(
+            !text.contains("plugins/") && !text.contains("schemas/"),
+            "{doc:?}: a view path still names the shipped tree"
+        );
     }
 }
 
@@ -366,7 +436,7 @@ fn a_view_path_mirrors_the_repository_layout() {
 fn emit_to_writes_only_under_the_out_directory() {
     let out = PathBuf::from(env!("CARGO_TARGET_TMPDIR")).join("views-emit-to");
     let _ = std::fs::remove_dir_all(&out);
-    let state = shipped_state();
+    let state = replayed_state();
     let written = views::emit_to(&state, &out).expect("the views write");
 
     assert_eq!(written.len(), 50);
@@ -374,8 +444,9 @@ fn emit_to_writes_only_under_the_out_directory() {
         assert!(path.starts_with(&out), "{} escaped --out", path.display());
         assert!(path.is_file(), "{} was not written", path.display());
     }
-    assert!(out.join("plugins/mochiko/schemas/specify.yaml").is_file());
+    assert!(out.join("commands/specify.yaml").is_file());
+    assert!(out.join("skills/review-feasibility.yaml").is_file());
     assert!(out
-        .join("plugins/mochiko/skills/review-feasibility/schema.yaml")
+        .join("shelves/architecture-shelf-backend.yaml")
         .is_file());
 }

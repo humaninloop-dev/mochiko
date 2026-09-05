@@ -62,7 +62,11 @@ One entry per session directory under `.mochiko/brainstorms/<topic-slug>/`, **ne
   floor-delivery assert (PATCH v3.0.2) and wave 5 opened; DECISIONS rows 2026-09-04) ·
   **wave 5 LANDED 2026-09-04 at v0.106.0** ([wave5-plan.md](cli-schema-delivery/wave5-plan.md),
   [wave5-reports/](cli-schema-delivery/wave5-reports/); all 30 skills converted; `floors:`
-  line; criterion (1) clear on all 36; F15 hook fix; DECISIONS row 2026-09-04); wave 6 next;
+  line; criterion (1) clear on all 36; F15 hook fix; DECISIONS row 2026-09-04) · **wave 6 LANDED
+  2026-09-05 at v0.107.0 — the end state** ([wave6-plan.md](cli-schema-delivery/wave6-plan.md),
+  [wave6-reports/](cli-schema-delivery/wave6-reports/); no schema file ships; `doc` command;
+  migration 0003; views at `.mochiko/schema-views/`; PATCH v3.0.3; DECISIONS row 2026-09-05);
+  **the six-wave build is closed**;
   the wave-2 publish tail still owed + the three delivery
   watches annotated as superseded pending wave 6 · ROADMAP: folded into the
   Template-schema CLI Next row (cap held at 7).

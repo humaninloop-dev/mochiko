@@ -13,12 +13,22 @@ Two consequences follow, and they are the point of the design:
 - **The derived views are regenerated, never hand-edited.** A view that disagrees with the replay
   is a defect in the view.
 
-The shipped snapshot files — `plugins/mochiko/schemas/*.yaml` and `plugins/mochiko/skills/*/schema.yaml` —
-are transition-clause copies, kept semantically equal to the replay by the CI view ≡ replay test. A
-migration that changes their content is mirrored into them by a hand edit of the same lines, never by
-a regeneration: regenerating would drop the in-body comments, spacing, and fold width those files
-carry, and the header comments are protected content under the strip ceremony. Wave 6 retires
-them, and the clause with them.
+**No schema file ships.** The snapshot copies the plugin carried under the transition clause —
+`plugins/mochiko/schemas/*.yaml` and `plugins/mochiko/skills/*/schema.yaml` — were deleted at
+wave 6, and the clause expired with them. There is no file a run can read instead of asking the
+binary, which is what makes the GI-020 dependency literal rather than a posture.
+
+The human-readable projection of the log is the derived views at `.mochiko/schema-views/`, laid
+out by document kind and committed to the repository. They live outside `plugins/`, so they are
+never installed and no primitive can reach one. Regenerate them with:
+
+```
+mochiko-cli views emit --plugin-root plugins/mochiko --out .mochiko/schema-views
+```
+
+They are read, reviewed and diffed; they are never hand-edited. The CI view ≡ replay test compares
+each emitted view against its committed file, so a view that disagrees with the log fails the
+build, and the fix is always to regenerate.
 
 ## File shape
 

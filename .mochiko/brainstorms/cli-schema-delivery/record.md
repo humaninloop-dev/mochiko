@@ -1454,6 +1454,72 @@ is a wave-6 lever if the user wants the overage back.
 schema"; the expansion-path presence line sits outside the payload figures; sanitize the hook's
 name-to-path interpolation; both D13 checkers retire; the two rewritten member sentences.
 
+## Wave 6 — the end state, landed (2026-09-05)
+
+**Open:** user-ruled 0.107.0 and no halt-paragraph trim (the patterns overage stays accepted).
+Plan: [`wave6-plan.md`](wave6-plan.md); reports: [`wave6-reports/`](wave6-reports/). Seats: P1
+crate + log (`staff-engineer`) / V1 PASS + delta PASS · P2 plugin + rules file
+(`staff-engineer`) / V2 PASS + two deltas PASS · P3 suite (`qa-engineer`) / V3 PASS + delta PASS
+(F1–F3, F5 closed; F4 residual). Rulings at
+approval: the skill legend drops `moments:` too (six lines, 605 bytes); `COMMAND_HEADER`'s first
+sentence rewritten to the derived-view form; the three schema-file `pointer:` fields cleared by
+migration; `feat.delta-cards` the fourteenth reword; the fidelity byte test against a genesis-only
+replay of the frozen fixture; `matrix_similar.rs` inlines the 48 Python check names from `5f775ea`
+before the script retires; P2's grep union — fourteen body sites (router lines 20 and 23 added)
+and eighteen "in the schema" / "the schema's" sentences across nine skill bodies — all reworded to
+the end-state truth; the migrations README and hook comments take no strip (documentation, not
+protected content); `template` keeps its shape this wave (head/end wrap booked as a follow-up).
+`floor: tripped · seats: P1/P2/P3 produced · V1/V2/V3 reviewed`.
+
+**Built.** `mochiko-cli doc <name>` (the shelf `architecture-shelf-backend` and the two label
+registries; head/end lines; exit-2 redirects for template, command, skill, and unknown names); the
+skill legend variant; the derived views at `.mochiko/schema-views/` (50 files by kind, committed,
+byte-identical to a fresh emit; the CI view ≡ replay check reads them); migration
+`0003-two-arm-to-cli.yaml` (anchor `2026-09-03 cli-schema-delivery D9`; 24 changes — seven
+`set-var`, three pointer clears, fourteen minimal rewords; state hash `57114e5d…f070`, 50
+documents, 1016 rules; a state-wide test forbids the two-arm phrasings and the schemas path — 27
+occurrences before, zero after; pointer census 87 → 84; suppressed similarity edges 181 → 169,
+clusters 0); every crate test re-pointed off the deleted files; the three-arm pin
+`no_schema_file_ships_in_the_plugin`; 350 tests, four layers and the opt-in sweep green. **The
+50 snapshot files deleted** (`plugins/mochiko/schemas/` gone; no `skills/*/schema.yaml`); fourteen
+body sites and eighteen sentences reworded (router row 58's phantom `template
+architecture-shelf-backend` → `doc`); eighteen `[v0.107.0]` strip files, 32 quoted spans verified
+verbatim; the hook name sanitizer (a planted file at a traversal target was read pre-fix, silent
+post-fix); `primitive-edits.md` re-keyed (schema content edits are migrations and take no strip;
+criterion 9's pre-pass is `mochiko-cli migrate validate --report`; anchors on the log's rules;
+"every schema-bearing skill (the thirty)" with the seven prose skills and the router on the plain
+ceremony); the strips README note; the sidecar frozen at
+`.mochiko/archive/provenance-frozen-2026-09-05.yaml`; the three Python checkers and their tests
+and the repo skill `converting-command-to-schema` deleted; the budget file's note that the two
+family common files are log documents now. Plugin size 2,241 → 1,708 KB (P2's measure) — the
+migration log in, the snapshots out.
+
+**Measured (sandbox):** full run exit 0 — 82/82 cases, 151 sessions, 1,109 assertions `ok`, 0
+failures, 285 recorded (P3 §6, every figure recomputed from the evidence directories). Criterion
+(1): every floor rule delivered on every primitive — commands 110/110, review 78/78, authoring
+67/67, patterns 46/46, dense five 35/35, and the preload subagent 8/8. Run-wide no-Read: no channel
+on any of the 78 sandbox cases carried a schema read (75 wide sweeps; the two fixture cases
+stream-only, having no transcript; `brainstorm-policy` recorded). Criterion (2) per family in bytes
+against the frozen wave-5 baselines: review −3.1 %, authoring −2.7 %, patterns +15.5 %, dense five
++7.2 % — every family about a point and a half below wave 5 (migration `0003` removing the two-arm
+clause); against the record's F3 char figures review −0.3 % and authoring −0.7 %, the common-bearing
+families now on top of the estimate. Read-back 108/108 (recorded, never gating). Preload, both
+shapes, reproduce wave 5 exactly (present: all seven blocks, 8/8 floors; absent: zero blocks, no
+version triple, the parent explains the failed preload). Latency, load-dependent: per-section means
+27–29 ms, worst single run 42 ms, whole fire 180–197 ms. Host layer on the end-state tree: 4/4
+cases, 349 assertions — the suite reads no schema file on a tree that has none; no rendered rule of
+any of the 36 primitives carries the two-arm wording or a schema path (18 section renders across 14
+primitives, 32 line findings, when 0003 is removed from a copy — V3 F1's re-derivation); all 36
+frozen floor sets match the renders; `deliverables` 19/19.
+
+**Governance PATCH v3.0.3:** the GI-020 transition clause expired; `primitive-edits.md` re-keyed;
+`rust-cli.md`'s clause struck; the three first-live-run delivery watches closed to the trail under
+D10.6; the ledger's checker notes in the past tense. **The six-wave build closes.** Open on the
+user's side: the wave-2 publish tail (signed tags, the `crates-io` approval rule, the first
+`mochiko-cli-v0.1.0` release — what makes `cargo install mochiko-cli` true; the README carries
+the git-install line until then). Follow-ups: wrap `template` output in head/end lines; kinako
+picks up the end state at its next plugin update.
+
 ## Landed (2026-09-03)
 
 - `DECISIONS.md` row (2026-09-03) — status "ruled — build pending (wave 0 probes first)".

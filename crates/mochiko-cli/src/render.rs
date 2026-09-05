@@ -23,7 +23,7 @@ use std::path::Path;
 /// The section id that renders a schema's identity, bindings and pins rather than a rule set.
 pub const PREAMBLE: &str = "preamble";
 
-/// The reading grammar every preamble carries, fixed text rather than anything derived from
+/// The reading grammar a command preamble carries, fixed text rather than anything derived from
 /// state (wave-3 plan §2). A converted primitive's `.md` points at this block by name instead of
 /// restating what `class:`, `when:` or `pointer:` mean, so the render is the only home the
 /// grammar has. Golden-tested in `tests/render.rs`, byte size included.
@@ -31,9 +31,7 @@ pub const PREAMBLE: &str = "preamble";
 /// Widened at wave 4 with the last three lines: converting the remaining five commands found the
 /// old Rules block teaching `labels:`, `moments:` and the empty-`enforces:` reason, none of which
 /// the legend said. A `.md` that stops restating the grammar must be able to point at all of it.
-/// The `moments:` line is delivered to skills too, which declare none — it reads as grammar they
-/// will not meet, which is cheaper than a second legend to maintain.
-const LEGEND: &str = "\nlegend\n\
+const COMMAND_LEGEND: &str = "\nlegend\n\
 - class: floor is always delivered whatever its when:; when: gates when the obligation applies, never whether it reaches you.\n\
 - kind: names what a rule is — constraint (the default) · duty · gate · reservation · binding · bound · routing · fail · latitude.\n\
 - when: binds a rule only where its terms hold against the conditions block above.\n\
@@ -43,6 +41,22 @@ const LEGEND: &str = "\nlegend\n\
 - labels: cross-reference tags from the labels registry; they bind nothing on their own.\n\
 - moments: the run's anchor points, unordered — never a sequence.\n\
 - enforces: an empty list on a kind: fail rule carries its one-line reason.\n";
+
+/// The skill variant of the legend (wave 6, plan §2.2).
+///
+/// Three of the command legend's lines describe grammar a skill schema cannot carry: `kind: fail`
+/// and `enforces:` are illegal in a skill schema (skill-content-schema D9/M2), and skills declare
+/// no `moments:` block (D3). Wave 4 delivered all three to skills anyway, on the argument that one
+/// shared legend was cheaper to maintain than two. That argument is spent the moment a second
+/// legend exists, so this one states only the grammar its reader can actually meet — the eight
+/// skill kinds, and nothing about fail nodes or moments.
+const SKILL_LEGEND: &str = "\nlegend\n\
+- class: floor is always delivered whatever its when:; when: gates when the obligation applies, never whether it reaches you.\n\
+- kind: names what a rule is — constraint (the default) · duty · gate · reservation · binding · bound · routing · latitude.\n\
+- when: binds a rule only where its terms hold against the conditions block above.\n\
+- pointer: binds you to that skill's procedure — referenced, never restated.\n\
+- extends: is already resolved in this render; the rule's own id stays the citable id.\n\
+- labels: cross-reference tags from the labels registry; they bind nothing on their own.\n";
 
 /// The version triple a render announces itself with: the binary's version, the log's grammar,
 /// and the plugin's version (`unknown` when no plugin root resolved).
@@ -68,6 +82,18 @@ pub enum RenderError {
     TemplateUndecodable {
         name: String,
         message: String,
+    },
+    /// A `doc` request for a name no shelf or registry carries.
+    UnknownDocument {
+        name: String,
+        available: Vec<String>,
+    },
+    /// A `doc` request for a name the log carries under a kind `doc` does not serve. `hint` says
+    /// where it is served instead.
+    DocumentElsewhere {
+        name: String,
+        kind: DocKind,
+        hint: String,
     },
 }
 
@@ -104,6 +130,15 @@ impl fmt::Display for RenderError {
                     "the log's '{name}' document is not a template: {message}"
                 )
             }
+            RenderError::UnknownDocument { name, available } => write!(
+                f,
+                "no document named '{name}' in the log\n\navailable: {}",
+                available.join(" ")
+            ),
+            RenderError::DocumentElsewhere { name, kind, hint } => write!(
+                f,
+                "'{name}' is a {kind} document, which `doc` does not serve — {hint}"
+            ),
         }
     }
 }
@@ -169,7 +204,11 @@ pub fn preamble(state: &State, doc: &DocRef, ctx: &Context) -> Result<String, Re
     };
     body.push_str(&format!("\nfloors: {index}\n"));
 
-    body.push_str(LEGEND);
+    body.push_str(if is_command {
+        COMMAND_LEGEND
+    } else {
+        SKILL_LEGEND
+    });
 
     body.push_str("\nsections\n");
     for section in &schema.sections {
@@ -370,6 +409,84 @@ fn scalar(value: &Value) -> String {
             .trim_end()
             .to_string(),
     }
+}
+
+// ---------------------------------------------------------------------------
+// the document render
+// ---------------------------------------------------------------------------
+
+/// The kinds `doc` serves: the documents that are neither rules nor templates.
+///
+/// The rule-bearing kinds go out through `rules`, section by section, and templates through
+/// `template` in their two views. That leaves the shelf data and the two label registries, which
+/// the plugin used to ship as files for a primitive to Read raw and which nothing else delivers.
+const DOC_KINDS: [DocKind; 3] = [DocKind::Shelf, DocKind::CommandLabels, DocKind::SkillLabels];
+
+/// One shelf or registry, wrapped in the head and end lines the caller halts on.
+///
+/// The body is the document itself through the views writer — the same projection the derived
+/// views carry, minus their file header, which describes a file on disk rather than a delivery.
+pub fn document_view(state: &State, name: &str, ctx: &Context) -> Result<String, RenderError> {
+    let doc = find_document(state, name)?;
+    let document = state
+        .docs
+        .get(&doc)
+        .expect("find_document returned a live address");
+    let body = crate::views::to_yaml(&document.to_value());
+    Ok(format!(
+        "mochiko-cli doc {name} · binary {} · grammar {} · plugin {}\n\n{}\n\n\
+         mochiko-cli doc end · {name}\n",
+        ctx.binary,
+        ctx.grammar,
+        ctx.plugin,
+        body.trim_end()
+    ))
+}
+
+/// The address behind a `doc` name, or the error that names where the name actually lives.
+///
+/// The kinds are scanned rather than addressed directly so a second shelf is served the day it
+/// lands, with no list to remember to extend.
+fn find_document(state: &State, name: &str) -> Result<DocRef, RenderError> {
+    if let Some(doc) = state
+        .docs
+        .keys()
+        .find(|doc| DOC_KINDS.contains(&doc.kind) && doc.name == name)
+    {
+        return Ok(doc.clone());
+    }
+    // A name the log carries under another kind is not an absence, and reporting it as one would
+    // send the reader hunting for a typo instead of at the right subcommand.
+    if let Some(doc) = state.docs.keys().find(|doc| doc.name == name) {
+        let hint = match doc.kind {
+            DocKind::Template => format!("render it with `mochiko-cli template {name}`"),
+            DocKind::Command | DocKind::Skill => {
+                format!("render it with `mochiko-cli rules {name} --section <section>`")
+            }
+            // A family common library has no delivery of its own, and that is the answer rather
+            // than a gap: the render resolves every `extends:` stub before the model sees it, so
+            // a caller who wants a block already has it in the rule that inherits it.
+            _ => "its blocks are resolved into every rule that extends them, so a `rules` render \
+                  already carries them"
+                .to_string(),
+        };
+        return Err(RenderError::DocumentElsewhere {
+            name: name.to_string(),
+            kind: doc.kind,
+            hint,
+        });
+    }
+    let mut available: Vec<String> = state
+        .docs
+        .keys()
+        .filter(|doc| DOC_KINDS.contains(&doc.kind))
+        .map(|doc| doc.name.clone())
+        .collect();
+    available.sort();
+    Err(RenderError::UnknownDocument {
+        name: name.to_string(),
+        available,
+    })
 }
 
 // ---------------------------------------------------------------------------

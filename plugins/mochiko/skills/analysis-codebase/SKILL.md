@@ -62,11 +62,11 @@ sub-procedure with domain-entity extraction and an Essential-Floor status assess
   see [references/CONTEXT-GATHERING.md](references/CONTEXT-GATHERING.md))
 - Domain entities and relationships (where they live, and what is found)
 - Essential-Floor **status** assessment (present / partial / absent, file-cited — the
-  boundary and posture rules live in the schema's scope and verdict sections)
+  boundary and posture rules are delivered by `mochiko-cli` in the scope and verdict sections)
 - Inconsistencies and strengths to preserve
 
 **Output**: `.mochiko/memory/codebase-analysis.md` — the production binding, envelope, and
-capability-signal seeding are the schema's `analysis-codebase.sec.output` rules.
+capability-signal seeding are delivered by `mochiko-cli` as the `analysis-codebase.sec.output` rules.
 
 ## Detection Script
 

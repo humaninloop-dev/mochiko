@@ -39,7 +39,7 @@ halt and surface it.
 
 ## User Story Format
 
-The story lands in `spec.md`, every field to the schema's density rules. The exact
+The story lands in `spec.md`, every field to the delivered density rules. The exact
 structure:
 
 ```markdown

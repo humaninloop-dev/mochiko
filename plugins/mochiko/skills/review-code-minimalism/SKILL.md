@@ -64,5 +64,5 @@ and does a higher rung apply that the builder descended past?
 
 **4. Check the floor line.**
 
-**5. Emit findings** as the schema's output contract shapes them, one line of evidence
+**5. Emit findings** as the delivered output contract shapes them, one line of evidence
 each (the grep hit, the stdlib call, the manifest entry).

@@ -13,24 +13,25 @@ use mochiko_cli::genesis;
 use mochiko_cli::model::is_anchor;
 use serde_norway::Value;
 use std::collections::BTreeMap;
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 
 /// A well-formed anchor with `segment` appended, so each case varies only in the segment.
 fn anchor_with(segment: &str) -> String {
     format!("2026-08-10 pm-requirements-stacking {segment}")
 }
 
-fn repo_root() -> PathBuf {
-    PathBuf::from(env!("CARGO_MANIFEST_DIR"))
-        .parent()
-        .and_then(Path::parent)
-        .expect("the crate sits two levels under the repository root")
-        .to_path_buf()
+/// The frozen v0.103.0 corpus, which carries its own copy of the provenance sidecar.
+///
+/// From wave 6 the repo-side sidecar is frozen to `.mochiko/archive/`. The copy here is the one
+/// genesis was built from, so it is the honest place to read the two live anchors this test is
+/// about — and it moves with the fixture rather than with an archive path.
+fn frozen_corpus() -> PathBuf {
+    PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("tests/fixtures/genesis-corpus")
 }
 
 /// The sidecar's anchors, read straight from disk.
 fn sidecar() -> BTreeMap<String, String> {
-    let path = repo_root().join(genesis::SIDECAR);
+    let path = frozen_corpus().join(genesis::SIDECAR);
     let text = std::fs::read_to_string(&path).expect("the provenance sidecar is readable");
     let value: Value = serde_norway::from_str(&text).expect("the sidecar parses");
     let Some(Value::Mapping(anchors)) = value.get("anchors") else {

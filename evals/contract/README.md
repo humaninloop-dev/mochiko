@@ -10,7 +10,7 @@ for, and it lives here.
 
 Most cases are one headless `claude -p` run inside the Docker AI sandbox `claude-mochiko`, loading
 a plugin under `--plugin-dir` with `mochiko-cli` placed on the sandbox `PATH` the way a user would
-install it (D4). Three cases need no session and no sandbox at all. The run is then
+install it (D4). Four cases need no session and no sandbox at all. The run is then
 asserted against D8's deterministic set:
 
 | assertion | what it catches |
@@ -19,7 +19,7 @@ asserted against D8's deterministic set:
 | the version-triple line present | the render never reached the model |
 | the closing end line present | an oversized render truncated, keeping only its head line (wave-0 probe (e)) |
 | **every `class: floor` rule delivered** | a floor rule the primitive declares never reached the model — criterion (1), added at wave 5 |
-| no schema file Read | the model fell back to a file — the posture no-fallback exists to rule out |
+| no schema file read, run-wide | the model fell back to a file — the posture no-fallback exists to rule out |
 | absence halts | a missing binary degraded silently instead of halting |
 | skew halts | an out-of-range grammar was read best-effort instead of halting |
 
@@ -33,6 +33,30 @@ attribute line contains `class: floor`. That pair is the render's own rule shape
 in a session produces it — a converted `.md` body carries no rule ids, and a model's read-back
 names them comma-separated on one line. It is deterministic, it gates, and the read-back stays
 beside it as a recorded measurement of the other thing.
+
+The fifth row is the wave-6 widening, and what changed is its **reach**. D8 scoped it per
+converted primitive through waves 3 to 5, because a converted command invoking an unconverted
+skill legitimately read that skill's file; from wave 6 no schema file ships, so nothing may read
+one and the assertion is unconditional. Reach had to widen with it. Keyed to a case's stream
+events, it had a hole big enough to drive the `preload` case through: a subagent's turns are in
+neither the parent's stream nor the parent's transcript, so a fallback read inside the spawned
+agent was invisible to the assertion written to catch exactly that. It now sweeps every JSONL
+channel the case captured — `stream*.jsonl`, `transcript*.jsonl`, and the `sidechain*.jsonl` files
+the subagent's turns land in — and a case that captured no channel fails rather than passes.
+
+The sweep is **structural, never a text search**. It walks `tool_use` blocks and counts only calls
+that would hand the file's content back: `Read`, `NotebookRead`, a shell read, a content-mode
+`Grep`. A `Glob` or a name-mode `Grep` returns paths, delivers no rule to anyone, and is recorded
+beside the assertion rather than gated by it. The distinction is not fussiness: a transcript
+carries the rendered rules, the prompt and the model's prose, so a substring search for a schema
+path across all that would fire on a run which merely *named* one — which, until migration `0003`
+reworded them, the rules themselves did.
+
+That rewording has its own host-side check, in `render-ceiling`: no rendered rule may still
+contain `when the binary is absent` or `plugins/mochiko/schemas/`. The sessions prove nothing read
+a schema file; this proves nothing told the model to. Its subject is the **render**, never the
+log — the log is append-only, so `0001-genesis.yaml` carries the original two-arm wording by
+construction and always will. Only the replayed state has to be clean.
 
 ## The plugin under test
 
@@ -58,7 +82,8 @@ prints the real set, which is how a partial wave shows exactly the families that
 |---|---|---|
 | `hook-input` | 0 | the two hook scripts, fed the committed stdin captures, on the host |
 | `converted-shape` | 0 | each converted `.md`'s `!` lines against its own render, and every pre-registered floor set against the ids the binary renders |
-| `render-ceiling` | 0 | every render of every converted primitive, against the inline ceiling |
+| `render-ceiling` | 0 | every render of every converted primitive, against the inline ceiling and against the two phrases no rendered rule may still carry |
+| `deliverables` | 0 | every artifact template through `mochiko-cli template` and `--check`, every shelf and registry through `mochiko-cli doc` |
 | `absence` `[fixture]` | 1 | the binary is off `PATH`: the run halts and reads no schema file |
 | `skew` `[fixture]` | 1 | the log declares `grammar: 99`: the D5 message, not a best-effort read |
 | `<cmd>-delivery` ×6 | 3 each | the happy path — every block the command's render declares, every floor rule delivered, nothing Read, plus the read-back measurement and the delivered read cost |
@@ -70,12 +95,26 @@ prints the real set, which is how a partial wave shows exactly the families that
 | `<skill>-absence` ×30 | 1 each | no binary: the halt fires before any model turn and the install line still reaches the user |
 | `preload` | 2 | a plugin agent's `skills:` frontmatter renders a converted skill at spawn — both binary states |
 
-At the wave-5 landing that is **eighty-one cases and a hundred and fifty-one sessions**: two
-fixture cases, six command delivery cases of three replicates, six single-session command absence
-cases, three mechanism cases, thirty skill delivery cases of three replicates, thirty
-single-session skill absence cases, and the two-session preload case. During the wave itself the
-list is shorter, because it is discovered: after the review family lands it declares thirty-seven
-cases, and it grows by sixteen or eighteen with each family.
+At the wave-6 landing that is **eighty-two cases and a hundred and fifty-one sessions**: four host
+cases, two fixture cases, six command delivery cases of three replicates, six single-session
+command absence cases, three mechanism cases, thirty skill delivery cases of three replicates,
+thirty single-session skill absence cases, and the two-session preload case. The session count is
+wave 5's unchanged, because wave 6 adds only a host case. During a conversion wave the list is
+shorter, because it is discovered: after the review family landed it declared thirty-seven cases,
+and it grew by sixteen or eighteen with each family.
+
+**`deliverables` is the case that guards the other half of wave 6's done condition.** Rules got a
+CLI form at wave 3 and templates at the template-schema wave, but the shelf document and the two
+label registries had none until `mochiko-cli doc` (record D9 wave 6) — so until this case a
+primitive citing one was pointing at a file about to be deleted with nothing checking the
+replacement worked. Its subjects are discovered from `mochiko-cli views emit`, which names every
+document the log holds, and then compared in both directions against a written-down set, because
+discovery alone would shrink silently if a document vanished and a written-down set alone would go
+stale when one was added. The two commands are held to their own output shapes: `doc` wraps its
+document in the version triple's head and end lines, while `template` opens on the document's own
+title and closes on the provenance footer, which is deliberate — its output is read as a document
+rather than as a delivery envelope. Wrapping `template` is booked as a follow-up, not presumed by
+a test.
 
 **The last three run against the pilot only, and that is deliberate.** They exercise what happens
 when the log, the hooks, or the shell is broken — log resolution beating `MOCHIKO_MIGRATIONS`, the
@@ -172,6 +211,11 @@ either. Rather than guess, the case touches a marker file before each session an
 copies out every transcript under `~/.claude/projects/` newer than it; the assertions read the
 union and every fetched file lands in the evidence directory as `sidechain-<state>-N.jsonl`.
 
+That fetch is also **why the no-Read assertion was rewritten at wave 6**. Through wave 5 the
+assertion read the parent's stream events, where a subagent's tool calls never appear — so on the
+one case whose whole subject is a subagent, a fallback read was invisible to it. The sweep now
+reads every JSONL channel the case captured, both states at once, sidechain files included.
+
 **`converted-shape` catches the one failure no session assertion can.** A `.md` that enumerates
 six sections when the schema declares seven delivers six blocks, every one of them correctly
 formed, and the only symptom is a rule the model was never given. The session assertions check
@@ -199,8 +243,22 @@ any difference fails the case. Commands are pre-registered in `EXPECTED` in `run
 (`brainstorm`'s seven in `wave3-reports/p3-suite-plan.md`, the other five in `wave4-plan.md` §4);
 the thirty skills are in `expected-skills.json` beside this file, because thirty rows of floor ids
 run to a few hundred entries. A bar read off the thing it grades is not a bar — the freeze cannot
-be edited to match a render that changed, so a floor rule added or renamed later breaks a check
-instead of quietly regrading.
+be edited to match a render that changed, only replaced by ruling, so a floor rule added or
+renamed later breaks a check instead of quietly regrading.
+
+**When a migration legitimately moves a floor set, the remedy is a new pre-registration, never an
+edit.** The migration and the replacement set land together, recorded by ruling in the wave's own
+record and carried through the same author≠grader audit the migration takes, so the new bar is
+fixed by a decision rather than by the render it will grade. Regenerating the file needs a plugin
+root that satisfies `freeze_expectations.py`'s two guards — no existing output file, and no
+`SKILL.md` carrying a `!` line — which a converted tree does not meet, so on today's tree the
+replacement set is derived under that ruling rather than by re-running the script over `HEAD`.
+
+**A replacement moves `floor_ids` and `floor_pin`, and nothing else.** `schema_bytes`,
+`common_bytes`, `baseline_bytes` and `body_bytes_pre` are historical constants measured from files
+deleted at v0.107.0; nothing can re-derive them and nothing may move them. So the audit on a
+replacement is a field-scoped diff: the two floor fields against the migration's own render, every
+byte column byte-identical to the row it replaces.
 
 | | commands | skills |
 |---|---|---|
@@ -275,12 +333,12 @@ what it always was.
 
 ## The hook-input case
 
-The cheapest gate in the suite, and one of the three that need neither sandbox nor session: each
+The cheapest gate in the suite, and one of the four that need neither sandbox nor session: each
 committed capture under `fixture/hook-input/` is fed on stdin to the two hook scripts on the host,
 with `CLAUDE_PLUGIN_ROOT` and `PATH` controlled per row.
 
-The rows cover the three limbs the hooks are allowed to have — leave an unconverted primitive
-alone, block on absence, block on an out-of-range log — plus the `SessionStart` reporting
+The rows cover the three limbs the hooks are allowed to have — leave a primitive with no rules of
+its own alone, block on absence, block on an out-of-range log — plus the `SessionStart` reporting
 branches. The absence and presence rows **iterate every converted command**, because the hook
 extracts the command name from its own stdin and puts it back in the message: a per-command row is
 what proves the user is told which command halted rather than being handed a generic notice. The
@@ -300,12 +358,18 @@ wrote a stub `SKILL.md` into its own staged copy; that path is kept for exactly 
 needed and announces itself as a `row provenance` observation when it fires.
 
 **One row still stages its own subject, and it touches nothing in `plugins/mochiko/`.** From
-wave 4 every shipped command is converted, so the transition-clause row — an unconverted primitive
-is never gated — has no command left to point at, and the case writes a stub
-`contract-unconverted.md` into the staged copy. Its skill-side twin needs no stub even after
-wave 5: the eight prose skills that carry no `schema.yaml` are never converted, so
-`analysis-iterative` and its siblings remain real subjects for the limb. Both substitutions are
-recorded as `row provenance` observations in the case's check list and in its `verdict.json`.
+wave 4 every shipped command is converted, so the leave-alone row has no command left to point at
+and the case writes a stub `contract-unconverted.md` into the staged copy. Its skill-side twin
+needs no stub: the eight prose skills that carry no rules — `analysis-iterative`,
+`grooming-operating-docs`, the router, four `patterns-*` and `testing-governance-injection` — are
+real subjects and always will be. Both substitutions are recorded as `row provenance` observations
+in the case's check list and in its `verdict.json`.
+
+**The row's justification changed at wave 6, and its subject did not.** Through wave 5 this was
+the transition clause: a primitive still reading a shipped schema file was never gated. The clause
+expired when the last schema file left the plugin, but the limb it exercised outlives it, because
+a primitive with no rules of its own has nothing for a missing binary to have cost it. Same rows,
+same subjects, a simpler reason.
 
 ## What a halt looks like to the harness
 
@@ -366,9 +430,13 @@ never looking at anything:
 
 | read from the transcript | read from the stream |
 |---|---|
-| the seven head and end lines | tool uses, and so the no-Read assertion |
+| the seven head and end lines | tool uses |
 | the delivered read cost | the init event's `slash_commands` |
 | the `UserPromptExpansion` hook's presence line — that hook emits **no stream row at all** | the `SessionStart` hook's output, which does appear as hook rows |
+
+The no-Read assertion sat in the right-hand column until wave 6 and now sits in neither: it reads
+tool uses from **every** captured channel, the transcript included, because a subagent's are in no
+stream at all.
 
 One more trap: a command's own halt clause quotes both the head-line shape and the phrases
 `[shell command execution disabled by policy]` and `mochiko-cli rules not delivered`, and the
@@ -390,6 +458,10 @@ it looks, so those read the widest union available, transcript and process strea
 `asserted_output` is the narrow one and `session_output_with` the wide one; the docstrings on both
 say which is which.
 
+The no-Read sweep is the widest of all and reads none of those unions, because it is not about a
+string. Its subject is the case's evidence directory — every JSONL channel captured, parsed back
+into `tool_use` blocks — so breadth there means every channel rather than every substring.
+
 ## Read cost, and the two units
 
 Criterion (2) is the read cost, and at wave 5 it is read **per family** for the skills, as the
@@ -407,10 +479,26 @@ delivered figure sits seven bytes below the render total for a seven-block primi
 `delivered_blocks` captures head line through end line and each block's trailing newline falls
 outside the capture.
 
+**From wave 6 the baselines are history, and the suite never re-measures them.** The baseline
+column is the pre-conversion read each `.md` obligated — `wc -c` of `<cmd>.yaml` plus
+`common.yaml` for a command, `schema.yaml` plus the family common for a skill — frozen in `run.py`
+and in `expected-skills.json` before the waves that used them, at plugin 0.103.0 and 0.105.0. The
+files those figures were taken from no longer ship: they were deleted at v0.107.0 and survive in
+git history alone. Nothing in `run.py` reads one, then or now, so every case stays runnable and
+every comparison stays against the number the wave pre-registered. What that costs is one
+reproducibility step, and the recipe is worth writing down: `freeze_expectations.py --verify`
+needs a plugin root from **before** v0.107.0, which is a `git worktree add` at the v0.106.0
+landing, not the working tree. Re-freezing is not the answer and the script refuses it twice over,
+exiting if its output already exists or if any `SKILL.md` already carries a `!` line — a bar
+re-read after the thing it grades has landed is not a bar. What a migration that genuinely moves a
+floor set takes instead is the new pre-registration described under criterion (1) above: landed
+with the migration, by ruling, under the audit.
+
 ## Measured figures
 
-**Under binary `mochiko-cli 0.1.0 · grammar 1..1` with the wave-5 preamble** — the `floors:` index
-line and the nine-line legend — against plugin 0.105.0 after migration `0002`. The crate version
+**Under binary `mochiko-cli 0.1.0 · grammar 1..1` with the wave-6 preamble** — the `floors:` index
+line, a nine-line legend on a command and a six-line legend on a skill — against plugin 0.106.0
+after migration `0003`. The crate version
 does not move before the first publish, so a render-shape change like the `floors:` line is named
 by the `plugin.json` bump rather than by a binary version (GI-012); every figure here is therefore
 keyed to the plugin version plus the preamble shape, not to a crate release. Comparisons are
@@ -419,21 +507,21 @@ keyed to the plugin version plus the preamble shape, not to a crate release. Com
 ### The six commands
 
 The baseline is the pre-conversion read each `.md` obligated — `wc -c` of `<cmd>.yaml` plus
-`common.yaml` — pre-registered before wave 4 ran. The rendered and delivered columns are wave 5's,
-re-measured under the `floors:` line, which adds between 98 and about 1,000 bytes to a preamble
-depending on how many floor ids the primitive carries.
+`common.yaml` — pre-registered before wave 4 ran. The rendered and delivered columns are wave 6's,
+measured on the run that closed the wave; the `floors:` line adds between 98 and about 1,000 bytes
+to a preamble depending on how many floor ids the primitive carries.
 
 | command | baseline | seven blocks rendered | largest render | delivered | vs baseline |
 |---|---|---|---|---|---|
-| `architecture` | 23,026 | 19,193 | `arch.sec.boundaries` 4,761 | 19,186 | −16.7 % |
+| `architecture` | 23,026 | 19,028 | `arch.sec.boundaries` 4,761 | 19,021 | −17.4 % |
 | `brainstorm` | 12,819 | 11,209 | `preamble` 2,604 | 11,202 | −12.6 % |
-| `feature` | 21,020 | 17,714 | `feat.sec.tools` 5,354 | 17,707 | −15.8 % |
-| `implement` | 44,266 | 36,398 | `impl.sec.tools` 15,617 | 36,391 | −17.8 % |
-| `setup` | 20,245 | 16,872 | `setup.sec.tools` 5,289 | 16,865 | −16.7 % |
-| `specify` | 23,434 | 19,917 | `spec.sec.tools` 5,965 | 19,910 | −15.0 % |
+| `feature` | 21,020 | 17,563 | `feat.sec.tools` 5,211 | 17,556 | −16.5 % |
+| `implement` | 44,266 | 36,272 | `impl.sec.tools` 15,499 | 36,265 | −18.1 % |
+| `setup` | 20,245 | 16,514 | `setup.sec.tools` 4,931 | 16,507 | −18.5 % |
+| `specify` | 23,434 | 19,473 | `spec.sec.tools` 5,545 | 19,466 | −16.9 % |
 
 `implement`'s whole render exceeds the ≈ 30,000-character inline ceiling, which is exactly why
-delivery is chunked per section: every individual block is under it, the largest at 51.5 %. The
+delivery is chunked per section: every individual block is under it, the largest at 51.1 %. The
 delivered figure sits seven bytes below the render total for every command because
 `delivered_blocks` captures head line through end line and each block's trailing newline falls
 outside the capture.
@@ -447,26 +535,30 @@ conversion landed.
 
 | family | skills | rendered | converted B | pre-conversion B | Δ B | converted ch | pre-conversion ch | Δ ch |
 |---|---|---|---|---|---|---|---|---|
-| review | 8 | 92,595 | 123,570 | 125,499 | −1.5 % | 121,548 | 124,610 | −2.5 % |
-| authoring | 8 | 110,385 | 154,143 | 156,070 | −1.2 % | 151,902 | 154,950 | −2.0 % |
-| patterns | 9 | 82,335 | 120,144 | 102,016 | **+17.8 %** | 118,273 | 101,178 | **+16.9 %** |
-| dense five | 5 | 56,973 | 92,531 | 85,143 | **+8.7 %** | 91,305 | 84,584 | **+7.9 %** |
+| review | 8 | 90,603 | 121,579 | 125,499 | −3.1 % | 119,581 | 124,610 | −4.0 % |
+| authoring | 8 | 107,984 | 151,781 | 156,070 | −2.7 % | 149,564 | 154,950 | −3.5 % |
+| patterns | 9 | 79,978 | 117,823 | 102,016 | **+15.5 %** | 115,981 | 101,178 | **+14.6 %** |
+| dense five | 5 | 55,626 | 91,309 | 85,143 | **+7.2 %** | 90,099 | 84,584 | **+6.5 %** |
 
 **Against the record's F3 figures**, which are in chars and were estimates taken before the wave:
 review ~119.9k, authoring ~150.6k, patterns ~95.9k, dense five ~81.8k. The pre-conversion column
 above lands 2 to 6 % above each of them — 124.6k, 155.0k, 101.2k and 84.6k — so F3 slightly
-understated the old cost, and the deltas measured here are correspondingly conservative.
+understated the old cost, and the deltas measured here are correspondingly conservative. The
+converted column now sits essentially on top of F3 for the two common-bearing families — review
+0.3 % below it and authoring 0.7 % below — while patterns and the dense five remain 21.0 % and
+10.1 % above, which is the same missing-common story the delta column tells.
 
 Patterns and the dense five land **above** their baselines, which the wave open pre-stated: neither
 family has a common schema file, so the render's fixed overhead has nothing to amortise against.
 The two families that do have one come in below. The largest skill render is
-`authoring-constitution.sec.artifact` at 9,938 bytes, 33 % of the ceiling; `impl.sec.tools` is
-larger still at 15,617.
+`authoring-constitution.sec.artifact` at 9,838 bytes, 32 % of the ceiling; `impl.sec.tools` is
+larger still at 15,499.
 
-Store latency, timed inside the sandbox and load-dependent: per-section means of 26 to 86 ms across
-the thirty-six primitives, a worst single run of 159 ms, and whole-fire figures of 183 to 531 ms for
-all seven sections. The spread is wider than wave 4's six-command figures because thirty-six
-primitives were timed under varying load. Every individual run is in each case's `latency.json`.
+Store latency, timed inside the sandbox and load-dependent: per-section means of 27 to 29 ms across
+the thirty-six primitives, a worst single run of 42 ms, and whole-fire figures of 180 to 197 ms for
+all seven sections. The band is far tighter than wave 5's — means of 26 to 86 ms and a worst run of
+159 ms — on a quieter machine and the same binary, which is what "load-dependent" means here. Every
+individual run is in each case's `latency.json`.
 
 ## The policy environment, recorded
 
@@ -499,23 +591,31 @@ Every case writes its evidence to `evals/.work/contract-<case>-<id>/` (gitignore
 A pass/fail line is not evidence. A failing case has to be readable afterwards without re-running
 it, and a passing one has to be auditable by someone who was not there.
 
+From wave 6 the `.jsonl` files here are also an **assertion subject**, not only a record: the
+no-Read sweep reads every one of them. That is deliberate — it means the assertion looks at
+exactly what a later auditor can look at, and a channel the case forgot to capture fails the sweep
+instead of narrowing it silently.
+
 ## Running it
 
 ```
 python3 evals/contract/run.py              # every case
-python3 evals/contract/run.py --host-only  # only the three that need no sandbox
+python3 evals/contract/run.py --host-only  # only the four that need no sandbox
 python3 evals/contract/run.py --list       # print the case list and exit
 
-# the frozen skill expectations: written once, checked any time
+# the frozen skill expectations: written once, checked any time. The plugin root must predate
+# v0.107.0 — the schema files the baselines were measured from ship in no later tree.
+git worktree add /tmp/plugin-at-v0.106.0 <the v0.106.0 landing commit>
 python3 evals/contract/freeze_expectations.py --verify evals/contract/expected-skills.json \
-    --plugin-root <a tree whose SKILL.md files predate the conversion>
+    --plugin-root /tmp/plugin-at-v0.106.0/plugins/mochiko
 ```
 
 The host cases run first even in a full run: they are free, they need nothing built, and a broken
-hook script or a `.md` that asks for the wrong sections should be visible before twenty minutes of
-sandbox build and a hundred and fifty-one sessions. During a conversion wave they are also the
-per-family gate: after each family lands they validate that family's frozen floor sets, its `!`
-line enumeration and its renders against the ceiling, at no session cost.
+hook script, a `.md` that asks for the wrong sections or an undeliverable template should be
+visible before twenty minutes of sandbox build and a hundred and fifty-one sessions. During a
+conversion wave they are also the per-family gate: after each family lands they validate that
+family's frozen floor sets, its `!` line enumeration and its renders against the ceiling, at no
+session cost.
 
 **The host binary must match the source tree.** The host cases render through
 `target/release/mochiko-cli`, so a binary built before the current migration log fails every
@@ -578,9 +678,11 @@ CI keeps the four crate layers** (`cargo test` · `fmt` · `clippy` · `audit`) 
 sessions — the original D8's "API key in CI secrets" clause is withdrawn. The sandbox is Linux and
 the host is macOS; together they are the two OS rows, and there is no CI matrix.
 
-A hundred and fifty-one sessions per full run at wave 5: two fixture cases, eighteen delivery
-replicates across six commands, ninety across thirty skills, thirty-six single-session absence
-cases, three mechanism cases, and the two-session preload case. Wave 4's figure was twenty-nine.
+A hundred and fifty-one sessions per full run, unchanged from wave 5 because wave 6 adds only a
+host case: two fixture cases, eighteen delivery replicates across six commands, ninety across
+thirty skills, thirty-six single-session absence cases, three mechanism cases, and the two-session
+preload case. Wave 4's figure was twenty-nine. The four host cases add none, which is why the
+wave-6 additions could be validated before a single metered session was spent.
 
 ## Caveat carried on record
 
@@ -594,5 +696,6 @@ is the file a future maintainer reads before running the suite.
 The suite never edits the plugin and never grades a primitive's content — it asserts delivery
 mechanics and nothing else (GI-019). It dispatches no agent of its own; the one case that involves
 a subagent, `preload`, has the headless session under test dispatch it, which is the behaviour
-being measured. Nothing in this directory ships
-with the plugin (GI-020).
+being measured. From wave 6 the suite reads no schema file either, because none ships: every
+expectation it holds a run to comes from the binary's own render, from a frozen table, or from the
+primitive's `.md`. Nothing in this directory ships with the plugin (GI-020).

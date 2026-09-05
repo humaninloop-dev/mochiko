@@ -91,7 +91,7 @@ surviving mutants are measured holes in that suite. **Tool class per stack:** ca
 ## Fold-back — the durable gate set
 
 Folded findings land in the durable gate set — the grammar, authorship, and artifact rules
-live in the schema; the artifact looks like this:
+are delivered by `mochiko-cli`; the artifact looks like this:
 
 ```markdown
 # FEAT-014 — Durable gates

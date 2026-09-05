@@ -42,6 +42,27 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 `DECISIONS.md` 2026-09-04 row. Pre-edit verbatim text:
 `git show 7d098b9:plugins/mochiko/skills/authoring-constitution/SKILL.md`. -->
 
+<!-- Wave context: wave 6 of the CLI schema-delivery build (v0.107.0) — the end state. No schema
+file ships in the plugin: the 20 files under `plugins/mochiko/schemas/` and the 30
+`skills/*/schema.yaml` were deleted, and every delivery they served now has a CLI form. Ruling for
+the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9 wave 6, with
+the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
+`git show 62aa99d:plugins/mochiko/skills/authoring-constitution/references/INTERROGATION-AGENDA.md`. -->
+
+## [v0.107.0] the agenda preamble's raw-Read fallback for the governance-intent schema
+
+- **Disposition:** superseded → the CLI form `mochiko-cli template governance-intent`
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/cli-schema-delivery/record.md`
+  D9 wave 6; `DECISIONS.md` 2026-09-05)
+- **Content:** two lines.
+  1. `references/INTERROGATION-AGENDA.md`: ", or `plugins/mochiko/schemas/governance-intent.yaml`
+     read raw"
+  2. `SKILL.md`: "the ceiling-vs-debt call rides the schema's ceiling test."
+- **Kept deliberately:** the render arm, the synthesis's home at
+  `.mochiko/memory/governance-intent.md`, and the whole agenda-leads-the-deck framing around
+  line 1; the ceiling test itself and the codebase-analysis read that feeds it around line 2.
+  Line 2 was found by the wave-6 sweep for "the schema's" rather than "in the schema".
+
 ## [v0.106.0] the Rules block — raw schema Read superseded by CLI delivery
 
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation

@@ -27,6 +27,24 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 `DECISIONS.md` 2026-09-04 row. Pre-edit verbatim text:
 `git show 7d098b9:plugins/mochiko/skills/validation-constitution/SKILL.md`. -->
 
+<!-- Wave context: wave 6 of the CLI schema-delivery build (v0.107.0) — the end state. No schema
+file ships in the plugin: the 20 files under `plugins/mochiko/schemas/` and the 30
+`skills/*/schema.yaml` were deleted, and every delivery they served now has a CLI form. Ruling for
+the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9 wave 6, with
+the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
+`git show 62aa99d:plugins/mochiko/skills/validation-constitution/references/QUALITY-CHECKLIST.md`. -->
+
+## [v0.107.0] the checklist preamble's raw-Read fallback for the governance-surfaces schema
+
+- **Disposition:** superseded → the two CLI forms already named in the same sentence
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/cli-schema-delivery/record.md`
+  D9 wave 6; `DECISIONS.md` 2026-09-05)
+- **Content:** "; when the binary is absent, Read
+  `plugins/mochiko/schemas/governance-surfaces.yaml` raw"
+- **Kept deliberately:** both surviving arms — `mochiko-cli template governance-surfaces` for the
+  shapes and `--check` for the mirror-checklist view — and the module-parameterization instruction
+  that follows, which is the sentence's operative content.
+
 ## [v0.106.0] the Rules block — raw schema Read superseded by CLI delivery
 
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation

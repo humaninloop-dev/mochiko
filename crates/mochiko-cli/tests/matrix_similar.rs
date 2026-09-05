@@ -905,19 +905,25 @@ fn the_quick_ratios_bound_the_real_one() {
 // parity: the whole shipped corpus
 // ---------------------------------------------------------------------------
 
-/// The shipped corpus as a state, optionally narrowed to one grammar.
+/// The corpus as a state, optionally narrowed to one grammar.
 ///
 /// `keep` decides which documents load. Narrowing to the command family cuts the scored pairs by
 /// an order of magnitude, which is what makes a corpus pin affordable in the default suite.
+///
+/// Through wave 5 this scanned the shipped schema files. No schema file ships from wave 6, so the
+/// corpus is the replayed log — which is also the text a run is actually delivered, and therefore
+/// the text a near-duplicate detector should be scoring.
 fn corpus_state(keep: fn(DocKind) -> bool) -> State {
+    let full = mochiko_cli::replay::load(&repo_root().join("plugins/mochiko/migrations"))
+        .unwrap_or_else(|findings| {
+            let lines: Vec<String> = findings.iter().map(ToString::to_string).collect();
+            panic!("the committed log is deliverable:\n{}", lines.join("\n"))
+        });
     let mut state = State::default();
-    for file in mochiko_cli::genesis::scan(&repo_root()).expect("the corpus scans") {
-        if !keep(file.doc.kind) {
-            continue;
+    for (doc, document) in full.docs {
+        if keep(doc.kind) {
+            state.docs.insert(doc, document);
         }
-        let document = Document::from_value(file.doc.kind, &file.value)
-            .unwrap_or_else(|e| panic!("{} decodes: {e}", file.path.display()));
-        state.docs.insert(file.doc, document);
     }
     state
 }
@@ -945,17 +951,19 @@ fn the_detector_reproduces_its_figures_over_the_command_family() {
             report.clusters.len(),
             report.suppressed_hits
         ),
-        // Measured against the reference implementation, not self-asserted:
+        // Seeded against the reference implementation rather than self-asserted: the retired
         //   uv run scripts/find-similar-rules.py \
         //     --schemas-dir plugins/mochiko/schemas \
         //     --allowlist scripts/similar-rules-allowlist.yaml
-        // returns the same four numbers.
+        // returned these same four numbers over the shipped files. Re-measured at wave 6 against
+        // the replayed corpus and unmoved: `0003`'s command-side rewords left no allowlisted
+        // command-family edge below the threshold.
         (321, 12_154, 0, 60),
         "rules scanned · in-kind pairs scored · clusters · allowlist-suppressed edges"
     );
 }
 
-/// The whole corpus, pinned to the figures the live Python run reports.
+/// The whole corpus, pinned to its measured figures.
 ///
 /// Opt-in: `MOCHIKO_FULL_SIMILAR=1 cargo test`. Skipped by default because the scoring pass is
 /// 98 seconds in a debug build (10 seconds in release, 80 in the Python it replaces), and CI runs
@@ -971,11 +979,17 @@ fn the_detector_reproduces_the_live_runs_figures_over_the_corpus() {
     let allowlist = root.join(similar::ALLOWLIST);
     let report = similar::clusters(&state, similar::DEFAULT_THRESHOLD, Some(&allowlist));
 
-    // Measured by running `uv run scripts/find-similar-rules.py` against this tree.
+    // Seeded from a live `uv run scripts/find-similar-rules.py` over the shipped files, and
+    // re-measured at wave 6 against the replayed corpus. Rule count and pair count are unmoved —
+    // `0003` reworded fourteen rules and retired none. The suppressed count fell from 181 to 169:
+    // an allowlisted edge is suppressed only while its two rules still score as near-identical,
+    // and striking the shared two-arm clause is exactly the kind of edit that pulls a pair back
+    // under the threshold. Twelve edges no longer need suppressing, and the cluster count staying
+    // at zero is what says none of them re-surfaced as a finding.
     assert_eq!(report.scanned, 1016, "rules scanned");
     assert_eq!(report.scored, 146_572, "in-kind pairs scored");
     assert_eq!(report.clusters.len(), 0, "clusters");
-    assert_eq!(report.suppressed_hits, 181, "allowlist-suppressed edges");
+    assert_eq!(report.suppressed_hits, 169, "allowlist-suppressed edges");
 }
 
 // ---------------------------------------------------------------------------
@@ -1307,22 +1321,24 @@ const EXTRA: &[(&str, &str)] = &[
     ),
 ];
 
-/// The Python check names, re-derived from the script itself.
+/// The Python check names, read from the frozen extract of the script.
 ///
-/// Every `check("…")` call opens its name on the same line, so a line scan reads the list the
-/// script would produce. A transcribed array can go stale silently; this one cannot.
+/// Through wave 5 this scanned `scripts/test-find-similar-rules.py` itself — every `check("…")`
+/// call opens its name on the same line, so a line scan read the list the script would produce,
+/// and a transcribed array could not go stale silently. The script retires at wave 6 with the
+/// other two Python checkers (record D6), so its 48 names were lifted verbatim, in source order,
+/// into `tests/fixtures/python-matrix/check-names.txt` immediately before the deletion. The
+/// second source survives, and the assertion below is unchanged: the ledger's coverage claim is
+/// still a set equation against a list this file does not itself declare.
 fn python_probes_from_source() -> Vec<String> {
-    let path = repo_root().join("scripts/test-find-similar-rules.py");
-    let text = std::fs::read_to_string(&path).expect("the Python matrix is readable");
-    let mut names = Vec::new();
-    for line in text.lines() {
-        let Some(rest) = line.split_once("check(\"").map(|(_, rest)| rest) else {
-            continue;
-        };
-        let Some(end) = rest.find('"') else { continue };
-        names.push(rest[..end].to_string());
-    }
-    names
+    let path = repo_root().join("crates/mochiko-cli/tests/fixtures/python-matrix/check-names.txt");
+    let text =
+        std::fs::read_to_string(&path).expect("the frozen Python matrix extract is readable");
+    text.lines()
+        .map(str::trim_end)
+        .filter(|line| !line.is_empty() && !line.starts_with('#'))
+        .map(str::to_string)
+        .collect()
 }
 
 #[test]
@@ -1338,7 +1354,8 @@ fn the_recorded_python_names_are_the_scripts_own() {
     let recorded: Vec<String> = PYTHON_PROBES.iter().map(|s| s.to_string()).collect();
     assert_eq!(
         live, recorded,
-        "the recorded names have drifted from `scripts/test-find-similar-rules.py`"
+        "the recorded names have drifted from the frozen extract of \
+         `scripts/test-find-similar-rules.py`"
     );
 }
 

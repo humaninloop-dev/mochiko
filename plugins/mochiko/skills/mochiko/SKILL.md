@@ -17,18 +17,18 @@ The kernel-free successor to human-in-loop. Discipline lives in the skill librar
 ## How the library composes
 
 Each command below states its whole contract in **one canonical scaffold**, and every one of
-the six ships as a **`.md` + schema pair**. The `.md` carries the narrative: Identity & Mission,
-then an obligated first read of the command's own `plugins/mochiko/schemas/<cmd>.yaml` (labels
-registry `command-labels.yaml`), then an Adaptive Goal Protocol whose three steps are Entry ·
-Goal · the count-pinned Not-done, default FAIL. The schema carries the rule set in six
-sections — roles (the Delivery-Manager responsibilities, where the command is chartered) ·
-reserved · tools · ways-of-working · boundaries (the non-waivable floor) · fail-conditions —
-and the lead composes the run toward it. The desks (`feature`, `architecture`) converge their
-done condition with the user each visit; the runs (`brainstorm`, `implement`, `setup`,
-`specify`) carry a fixed one. Any run, command or not, is sound only when its done-condition
-was written before it ran and defaults to FAIL, no output is cleared by its author (the
-grade reads the artifact itself), and the decisions the command reserves to the user are
-ruled by the user.
+the six ships as a **`.md`** whose rule set lives in the migration log the plugin carries. The
+`.md` carries the narrative: Identity & Mission, then the command's own rules rendered at fire
+by `mochiko-cli` (labels registry `command-labels.yaml`), then an Adaptive Goal Protocol whose
+three steps are Entry · Goal · the count-pinned Not-done, default FAIL. The rule set is
+delivered in six sections — roles (the Delivery-Manager responsibilities, where the command is
+chartered) · reserved · tools · ways-of-working · boundaries (the non-waivable floor) ·
+fail-conditions — and the lead composes the run toward it. The desks (`feature`,
+`architecture`) converge their done condition with the user each visit; the runs
+(`brainstorm`, `implement`, `setup`, `specify`) carry a fixed one. Any run, command or not, is
+sound only when its done-condition was written before it ran and defaults to FAIL, no output
+is cleared by its author (the grade reads the artifact itself), and the decisions the command
+reserves to the user are ruled by the user.
 
 **The two review-skill families** (the `validation-*`/`review-*` split, 2026-07-18): the prefix encodes **who owns the
 clearing**. `validation-*` = the skill **issues the authoritative grade** — a binary PASS/FAIL
@@ -54,8 +54,8 @@ human adjudicates; the reviewer's verdict never clears anything by itself.
 |-------|------------|
 | `authoring-architecture-store` | owning the **product architecture store** (`.mochiko/product/architecture/` — `spine.md` topology deep view holding `SPN-XXX` elements (container / boundary / flow) · `concerns.md` `AX-XXX` ledger · graduated `concerns/AX-XXX-<slug>.md`; ids store-wide unique): the AX/spine grammar, the stance vocabulary (`decided` / `not-now` + revisit trigger / `n-a` + reason axis / `open`), element lifecycle (`ruled` → `in-flight` / `modifying` / `removing (FEAT-XXX)` → `built`), row graduation, the fold at landings (status flips + graded `As-built:`/`Drift:` writes + the built-vs-signed landing diff), the orphan rule, and the **derived index** it regenerates on every store write — repo-root `ARCHITECTURE.md`, a rendered projection of the store and never a second store, carrying the health view (open counts · stale and fired triggers · orphans · drift register) as one of its sections. Retires `authoring-architecture` |
 | `patterns-architecture-shelves` | walking the **opinionated shelves** at the desk — one exhaustive shelf per surface type (backend-service today; frontend/mobile/desktop are named Stage-2 gaps), rows carrying suggested SaaS/PLG defaults + upgrade-trigger patterns, dealt **recommend-then-arbitrate and never asserted**, ordered by retrofit cost (tenancy / auth / data partitioning first, flags / experimentation late), under the **breadth invariant** (every row walked — a row may close in two seconds but is never silently skipped) and the floor-precedence rule (where a floor card asserts the category, `n-a — genuinely never` is unavailable; a true drop routes to the governance-ledger waiver). Opinions live in the shelf data, judgment stays in the persona |
-| `architecture-store` (schema) | the store's shape — delivered by `mochiko-cli template architecture-store`, or Read `plugins/mochiko/schemas/architecture-store.yaml` raw when the binary is absent; small required core + broad flexibility (the schema constrains the skeleton, never the voice). Its `--check` view grades the skeleton only — required fields, legal status values, id uniqueness, dangling `Work:`/NFR pointers — advisory exit-code signal, never a gate |
-| `architecture-shelf-backend` (schema) | the backend SaaS/PLG shelf data the walk deals from — 13 concern dimensions + 3 topology-spine opinions; `mochiko-cli template architecture-shelf-backend`, or Read `plugins/mochiko/schemas/architecture-shelf-backend.yaml` raw |
+| `architecture-store` (schema) | the store's shape — delivered by `mochiko-cli template architecture-store`; small required core + broad flexibility (the schema constrains the skeleton, never the voice). Its `--check` view grades the skeleton only — required fields, legal status values, id uniqueness, dangling `Work:`/NFR pointers — advisory exit-code signal, never a gate |
+| `architecture-shelf-backend` (schema) | the backend SaaS/PLG shelf data the walk deals from — 13 concern dimensions + 3 topology-spine opinions; `mochiko-cli doc architecture-shelf-backend` |
 
 ### Specify cluster (model-invoked — auto-reached during a `/mochiko:specify` run)
 | Skill | Reach when |
@@ -71,7 +71,7 @@ human adjudicates; the reviewer's verdict never clears anything by itself.
 | `authoring-prototype` | authoring the spec's **Screens & Flows section** + the clickable low-fi prototype under `prototype/` (UX-bearing specs only, keyed to the Intent section's UX-bearing ruling) — SCR-XXX/FLOW-XXX manifest grammar, skeleton-first lockstep authoring, binding flows / advisory pixels, bun-servable static HTML, design system honored where one exists; the waiver line when not UX-bearing |
 | `authoring-requirements` | writing technology-agnostic functional requirements (FR-XXX) with measurable success criteria (SC-XXX) and edge cases |
 | `authoring-user-stories` | writing prioritized user stories (P1/P2/P3) with independently testable Given/When/Then acceptance scenarios |
-| `spec` (schema) | the `spec.md` shape — delivered by `mochiko-cli template spec`, or Read `plugins/mochiko/schemas/spec.yaml` raw when the binary is absent; the `spec.md` the analyst authors and the loop converges on — lead-seeded; header `status` carries the loop's done-condition |
+| `spec` (schema) | the `spec.md` shape — delivered by `mochiko-cli template spec`; the `spec.md` the analyst authors and the loop converges on — lead-seeded; header `status` carries the loop's done-condition |
 | `analyst-report-template` (template) | structuring the producer's per-round disclosure (assumptions, what-changed-this-round) the lead reads directly |
 | `advocate-report-template` (template) | **shared (specify + implement)** — structures every pipeline reviewer's grounded review, machine-first (severity-classified `findings:` YAML, clarifying questions, recommended verdict, one-line `strengths:`) the lead reads to own the verdict |
 | `report-format` (template) | **shared (all workflows)** — the report envelope every workflow report follows: machine-first frontmatter, conditional prose (failures keep narrative; clean reports are frontmatter-only), no-self-verdict, no-restatement; each report template carries only its payload schema over this envelope |
@@ -94,7 +94,7 @@ human adjudicates; the reviewer's verdict never clears anything by itself.
 | `review-plan-artifacts` | independently grading the design-phase output package against the **sufficiency report's gap list** — conformance (every named gap closed, nothing materially past the gap list; material divergence auto-FAILs — BLOCKING) + honesty of disclosed rung claims (advisory) + **completeness within scope** (coverage / measurability / consistency, the store delta when the feature is structural — or the no-delta claim when it is not — and the cycle cards) → 3-state `ready / needs-revision / critical-gaps` (the mirror-checklist half of the design-phase review pair; an independent reviewer, never the author) |
 | `review-feasibility` | adversarially grading the producer's design-phase artifacts for cross-artifact **feasibility** — contradiction / impossibility / buildability that no single artifact reveals, plus **hunt class 7: unjustified structure / wrong altitude** (blocking-capable, calibration clause, interrogatory round) and the **architecture pass** (topology feasibility + governance conformance, including whether a floor-asserted obligation is actually met by the shape a row claims) when the package carries a store delta → 3-state `feasible / needs-revision / infeasible` (the adversarial-critique half of the design-phase review pair; the distinct `infeasible` = a business-level escalation; an independent reviewer, never the author) |
 | `patterns-vertical-tdd` | structuring the accepted design into **cycle cards** (`tasks.md`) **inside the implement run** — after the design phase, or directly on a zero-gap sufficiency verdict, never a separate plan run: bundle identification (walking skeleton first), Simple/Split/Merge story→cycle cases with on-card rationale, acceptance-criteria citation, the `**TEST:**` gate grammar (owner), cycle-level brownfield exposure; no task lists, no file paths — the builder decomposes at build time. The slicing seat is a design seat, **never the builder who will execute the card**; the cards take their own blocking user confirm before build |
-| `tasks` (schema) | the `tasks.md` shape — delivered by `mochiko-cli template tasks`, or Read `plugins/mochiko/schemas/tasks.yaml` raw when the binary is absent; the cycle-card skeleton (per-card checkbox as the progress surface, Stories+rationale, type, dependencies, acceptance criteria by ID, `**TEST:**` gate, brownfield exposure) |
+| `tasks` (schema) | the `tasks.md` shape — delivered by `mochiko-cli template tasks`; the cycle-card skeleton (per-card checkbox as the progress surface, Stories+rationale, type, dependencies, acceptance criteria by ID, `**TEST:**` gate, brownfield exposure) |
 | `techanalyst-report-template` (template) | the technical-analyst producer's per-round self-disclosure (what was produced, what changed this round) — filled alongside the analysis/design artifacts, read directly by the lead + reviewers; carries no verdict |
 | `feasibility-report-template` (template) | the feasibility reviewer's cross-artifact critique — the contradiction taxonomies, the 3-state feasibility verdict, and the 4-field per-issue gate fuel the human gate reads |
 

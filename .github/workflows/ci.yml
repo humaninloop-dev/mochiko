@@ -1,13 +1,16 @@
 # mochiko CI — the repo's first executable gate (M6 → GI-012).
-# Scope: the Rust crate and the schema data files it renders. Actions are pinned to release tags;
-# SHA-pinning is a recorded hardening follow-up.
+# Scope: the Rust crate, the migration log it replays, and the derived views it emits. No schema
+# file ships from wave 6, so the old `plugins/mochiko/schemas/**` filter names nothing; the views
+# at `.mochiko/schema-views/**` are what the view ≡ replay test compares against, so a hand edit
+# there has to reach this workflow. Actions are pinned to release tags; SHA-pinning is a recorded
+# hardening follow-up.
 name: ci
 
 on:
   push:
     paths:
       - "crates/**"
-      - "plugins/mochiko/schemas/**"
+      - ".mochiko/schema-views/**"
       - "plugins/mochiko/migrations/**"
       - "evals/contract/**"
       - "Cargo.toml"
@@ -16,7 +19,7 @@ on:
   pull_request:
     paths:
       - "crates/**"
-      - "plugins/mochiko/schemas/**"
+      - ".mochiko/schema-views/**"
       - "plugins/mochiko/migrations/**"
       - "evals/contract/**"
       - "Cargo.toml"
