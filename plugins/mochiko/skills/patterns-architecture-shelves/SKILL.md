@@ -1,6 +1,7 @@
 ---
 name: patterns-architecture-shelves
 description: This skill MUST be invoked when dealing an architecture shelf at the desk — walking every dimension of the scoped shelf in retrofit-cost order, recommend-then-arbitrate, so the user forms a stance per row (decided / not-now + trigger / n-a + reason / open). Owns the breadth invariant and the three-strata precedence: floor-asserted categories bind, cards bind code, the desk governs stance. SHOULD also invoke on 'architecture shelf', 'shelf walk', 'stance', or 'not-now'.
+allowed-tools: Bash(mochiko-cli *)
 ---
 
 # Architecture Shelves — The Opinion Carrier
@@ -16,21 +17,31 @@ opinions live in **data**; the judgment lives here.
 
 Full-stack and monorepo projects **compose** shelves — walk each surface's shelf, one store.
 
-## Rules — load the schema first
+## Rules — delivered by mochiko-cli
 
-Your first action, before any shelf walk: **Read `schema.yaml` (this skill's own directory)
-raw, in full, as a declared first action.** The schema is the source of truth for this skill's
-binding rules, nested in six sections, each addressable by its section ID:
-`patterns-architecture-shelves.sec.trigger` · `patterns-architecture-shelves.sec.scope` ·
-`patterns-architecture-shelves.sec.discipline` · `patterns-architecture-shelves.sec.inputs` ·
-`patterns-architecture-shelves.sec.disclosure` ·
-`patterns-architecture-shelves.sec.reserved`. Interpret it live: a rule's `kind:` names what
-it is, and an absent `kind:` reads `constraint`; a rule of `class: floor` is always read and
-always delivered; a `pointer:` rule binds you to that file's or skill's procedure, referenced
-never restated; labels come from `plugins/mochiko/schemas/skill-labels.yaml`. The floor pin:
-the 5 rules of `class: floor` are non-waivable. Before the first walk step, state the floor
-count back — a skipped or partial read leaves that count blank: halt and surface it, and halt
-likewise if the schema's `class: floor` count disagrees with the pin.
+Your rules arrive below, rendered at fire by `mochiko-cli` from the migration log this plugin
+carries — one block per section. Every block opens with a version-triple line
+(`mochiko-cli rules patterns-architecture-shelves · section <id> · binary <v> · grammar <g> · plugin <p>`) and
+closes with an end line (`mochiko-cli rules end · patterns-architecture-shelves · <id> · <N> rules`). **Proceed
+only when every block carries both lines in that exact shape, from whichever channel delivered
+it — this slot, or the plugin's dependency hook on a Skill-tool call.** Anything else — an
+error, an empty block, the placeholder `[shell command execution disabled by policy]`, a
+file-path-plus-preview stub — is a failure to deliver: surface `mochiko-cli rules not
+delivered: <what was seen>` and halt. Never Read a schema file instead; there is no fallback.
+The `legend` in the preamble block is the reading grammar; a `pointer:` binds you to that
+file's or skill's procedure, referenced never restated.
+
+!`mochiko-cli rules patterns-architecture-shelves --section preamble --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules patterns-architecture-shelves --section patterns-architecture-shelves.sec.trigger --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules patterns-architecture-shelves --section patterns-architecture-shelves.sec.scope --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules patterns-architecture-shelves --section patterns-architecture-shelves.sec.discipline --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules patterns-architecture-shelves --section patterns-architecture-shelves.sec.inputs --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules patterns-architecture-shelves --section patterns-architecture-shelves.sec.disclosure --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules patterns-architecture-shelves --section patterns-architecture-shelves.sec.reserved --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+
+Before the first procedural step, state back the floor count the preamble's `class: floor` pin
+prints and the ids its `floors:` line lists; a blank or partial read-back is a skipped read —
+halt and surface it.
 
 ## Walk order — the poles, taught
 

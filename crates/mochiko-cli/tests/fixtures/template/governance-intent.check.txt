@@ -1,0 +1,18 @@
+# Governance Intent (the session synthesis — traceable contract) — checklist
+
+- [ ] Is the header present with project name, session date, mode (greenfield/brownfield/amend), the synthesis-checkpoint confirmation line, and the Governs line naming the surface-set version?
+- [ ] Does the Fact profile carry GI-001 (industry, data classes, jurisdictions, contractual commitments, with a mark), the mechanically-triggered modules (or 'none' with each negative + its stated consequence), and — brownfield only — the declared-facts-vs-codebase cross-check?
+- [ ] Does Project identity & type carry GI-002 (type + shelves dealt + mark), the identity (what/for whom/lifespan), the risk surface, and the team reality?
+- [ ] Is there one project-wide Depth level declaration (GI-0XX: low|high, declared date + by user, mark, rationale, one-way ratchet), the user's declaration alone (never fact-derived)?
+- [ ] Are convergence skips named-only (each a dimension settled by an earlier answer) or 'none' — with no skip used as a scope/pruning ruling?
+- [ ] Are real commands (lint, test, etc.) captured as ACTUAL commands with a detected/declared source — no placeholders — meeting the validator's placeholder bar?
+- [ ] Does Floor expression & deck rulings record each floor card's expression (type translation, not a level ruling) and each arbitrated card's user ruling (kept/tightened/dropped with reason — dropped cards recorded too), each with a GI-ID and mark?
+- [ ] Is each minted principle intent one element (GI-0XX, what to enforce + how strictly, mark) traced to an elicited answer (never to prompting)?
+- [ ] Is every waiver auditable (GI-ID, standard, justification, revisit-or-permanent, mark), with none naming a legal-mandate module obligation (D4.2), and interim transition deltas (D6) recorded as bounded transition-scoped exceptions that do not lower the declared level?
+- [ ] Does Module selections rule the template modules in-session (adopted/declined, each with a why + GI-ID + mark), with declines recorded as durable rulings, and compliance modules NOT listed here (they attach mechanically in Fact profile)?
+- [ ] When layer-rules is adopted, are domain-dependency seeds session-arbitrated (domain-relevance filtered, trust-ranked, level-cited), with rejected seeds recorded as rulings too, each GI-ID'd and marked?
+- [ ] Is each deliberate exclusion (dimension 10) recorded with what governance will not cover + why + a mark, and never a floor category (the floor leaves only by recorded waiver)?
+- [ ] Is the Review section present as the durable pre-G3 review record — one block per run with sizing (and departure trail if below default), or a user-reserved waiver, else reviewer/tally/recommended-status, every survivor carrying a disposition, plus the verify-pass and any G3-edit delta-pass?
+- [ ] Is the Amendment Log present (empty on first ratification; one appended entry per delta on amend — date, GI-IDs added/edited/superseded, rationale, re-confirmation date)?
+
+---

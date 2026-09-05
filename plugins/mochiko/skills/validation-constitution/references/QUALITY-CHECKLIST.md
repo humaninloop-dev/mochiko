@@ -2,10 +2,9 @@
 
 Before finalizing a governance surface set, verify all items below against the shapes in the
 `governance-surfaces` schema — `mochiko-cli template governance-surfaces` for the shapes,
-`mochiko-cli template governance-surfaces --check` for the mirror-checklist view; when the binary
-is absent, Read `plugins/mochiko/schemas/governance-surfaces.yaml` raw. The Structure sections are
-**module-parameterized**: read the synthesis's module selections first, then check core + exactly
-the selected modules.
+`mochiko-cli template governance-surfaces --check` for the mirror-checklist view. The Structure
+sections are **module-parameterized**: read the synthesis's module selections first, then check
+core + exactly the selected modules.
 
 ## Principle Quality
 

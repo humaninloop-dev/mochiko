@@ -2,6 +2,7 @@
 description: Think a problem through with the user and leave one hardened, cold-reviewed decision record behind.
 argument-hint: [topic]
 disable-model-invocation: true
+allowed-tools: Bash(mochiko-cli *)
 ---
 
 # Brainstorm — Think Together, Review Cold
@@ -16,31 +17,26 @@ mark; the thinking is stress-tested cold by a seat that was never in the room; a
 and the acceptance are the user's, never yours. Nothing survives only in the conversation — the
 record is the deliverable, and the session index says where its outcome landed.
 
-## Rules — load the schema first
+## Rules — delivered by mochiko-cli
 
-Your first action, before any questioning, before any seat is spawned: **Read
-`plugins/mochiko/schemas/brainstorm.yaml` raw, in full.** It is the source of truth for this
-run's binding rules, nested in six sections, each addressable by its section ID:
-`brainstorm.sec.roles` (lead role, seat wiring, and review independence) ·
-`brainstorm.sec.reserved` (the decisions reserved to the user) · `brainstorm.sec.tools`
-(deliverable, index, synthesis, close ritual, register, next step) ·
-`brainstorm.sec.ways-of-working` (model tiering, plan approval, author ≠ grader default-FAIL,
-survivor routing, reopen-verify, git and acceptance discipline) · `brainstorm.sec.boundaries`
-(the non-waivable floor — the transport floor) · `brainstorm.sec.fail-conditions` (the
-Not-done set). The raw Read is the first-class read: no binary, no render step. Interpret
-it live: substitute every `${var}` from its `vars:` block at read time; a `pointer:` rule
-binds you to that skill's procedure, referenced never restated; labels come from
-`plugins/mochiko/schemas/command-labels.yaml`. Read the rule grammar along with the rules: a
-rule's `kind:` names what it is, and an absent `kind:` reads `constraint`; a rule carrying
-`when:` binds only where its terms hold against the schema's declared `conditions:`, except
-that a `class: floor` rule is always read and always delivered — `when:` gates when its
-obligation applies, never whether it reaches you; the `moments:` block names this run's
-anchor points, unordered; and every `kind: fail` node's `enforces:` names the rules it is the
-end-state contrapositive of. Where a rule carries `extends: common.<slug>`, **Read
-`plugins/mochiko/schemas/common.yaml` raw, in full, in the same first action**; a stub
-inherits text/labels/pointer only — `class` and every absence-meaningful field are local —
-and the stub's `brainstorm.*` ID stays the citable ID. A rule you have not read is not
-thereby waived — this run is not open until the schema is read whole.
+Your rules arrive below, rendered at fire by `mochiko-cli` from the migration log this plugin
+carries — one block per section. Every block opens with a version-triple line
+(`mochiko-cli rules brainstorm · section <id> · binary <v> · grammar <g> · plugin <p>`) and
+closes with an end line (`mochiko-cli rules end · brainstorm · <id> · <N> rules`). **Proceed
+only when every block carries both lines in that exact shape, from whichever channel delivered
+it — this slot or the plugin's dependency hook.** Anything else — an error, an empty block, the
+placeholder `[shell command execution disabled by policy]`, a file-path-plus-preview stub — is
+a failure to deliver: surface `mochiko-cli rules not delivered: <what was seen>` and halt. Never
+Read a schema file instead; there is no fallback. The `legend` in the preamble block is the
+reading grammar; a `pointer:` binds you to that skill's procedure, referenced never restated.
+
+!`mochiko-cli rules brainstorm --section preamble --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules brainstorm --section brainstorm.sec.roles --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules brainstorm --section brainstorm.sec.reserved --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules brainstorm --section brainstorm.sec.tools --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules brainstorm --section brainstorm.sec.ways-of-working --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules brainstorm --section brainstorm.sec.boundaries --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules brainstorm --section brainstorm.sec.fail-conditions --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
 
 ## Adaptive Goal Protocol
 
@@ -54,7 +50,7 @@ Every run has a goal and an explicit done condition; a run is never goal-less.
    finding dispositioned — or the user's waiver of the review is recorded on it; the session's
    entry in `.mochiko/brainstorms/index.md` is updated with where the outcome landed; and the
    user accepted the record.
-3. **Not done — default FAIL:** the 4 rules of `kind: fail` in
-   `plugins/mochiko/schemas/brainstorm.yaml` (section `brainstorm.sec.fail-conditions`) — any one
-   standing fails the run. If the schema's `kind: fail` count is not 4, the pair is out of
-   sync: halt and surface it before closing.
+3. **Not done — default FAIL:** the `kind: fail` rules of `brainstorm.sec.fail-conditions` —
+   their count is the `kind: fail` line under `pins` in the preamble block — any one standing
+   fails the run. A fail-conditions block whose end-line count disagrees with that pin is the
+   delivery out of sync: halt and surface it before closing.

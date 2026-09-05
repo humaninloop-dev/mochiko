@@ -1,6 +1,7 @@
 ---
 name: authoring-feature-map
 description: This skill MUST be invoked when deriving or updating the repo-level feature map — the FEATURES.md index of durable capabilities plus per-capability FEAT-XXX entry files carrying transient work rows — during a specify or /mochiko:feature touch. SHOULD also invoke on 'feature map', 'FEATURES.md', 'FEAT-XXX', 'capability', 'work row', 'feature derivation', 'extend beats mint', or 'map delta'. Boundary: authors the MAP — NOT user stories (mochiko:authoring-user-stories), NOT architecture, NOT selection; mint/extend discipline lives in mochiko:patterns-map-minimalism. Never grades its own output.
+allowed-tools: Bash(mochiko-cli *)
 ---
 
 # Authoring the Feature Map
@@ -13,30 +14,31 @@ subset of their rows. The map is durable; specs are delivery events. This skill 
 the authoring craft — the derivation flow (frame at intent, stories authored inside it,
 filter and selection after), entry authoring, and the write mechanics.
 
-## Rules — load the schema first
+## Rules — delivered by mochiko-cli
 
-Your first action at invoke, before any derivation or map write: **Read `schema.yaml`
-(this skill's own directory) and `../../schemas/skill-authoring-common.yaml` raw, in
-full, in the same first action.** The schema is the source of truth for this skill's
-binding rules; this body carries identity and teaching only. Its rules are nested in six
-sections, each addressable by its section ID: `authoring-feature-map.sec.independence`
-(who grades the produced artifacts) · `authoring-feature-map.sec.scope` (jurisdiction and
-routing) · `authoring-feature-map.sec.inputs` (read duties before deriving) ·
-`authoring-feature-map.sec.artifact` (the map's binding grammar, invariants, and write
-mechanics) · `authoring-feature-map.sec.output` (the acceptance batch and the selection
-card) · `authoring-feature-map.sec.reserved` (decisions reserved to the user).
+Your rules arrive below, rendered at fire by `mochiko-cli` from the migration log this plugin
+carries — one block per section. Every block opens with a version-triple line
+(`mochiko-cli rules authoring-feature-map · section <id> · binary <v> · grammar <g> · plugin <p>`) and
+closes with an end line (`mochiko-cli rules end · authoring-feature-map · <id> · <N> rules`). **Proceed
+only when every block carries both lines in that exact shape, from whichever channel delivered
+it — this slot, or the plugin's dependency hook on a Skill-tool call.** Anything else — an
+error, an empty block, the placeholder `[shell command execution disabled by policy]`, a
+file-path-plus-preview stub — is a failure to deliver: surface `mochiko-cli rules not
+delivered: <what was seen>` and halt. Never Read a schema file instead; there is no fallback.
+The `legend` in the preamble block is the reading grammar; a `pointer:` binds you to that
+file's or skill's procedure, referenced never restated.
 
-Read the rule grammar along with the rules: a rule's `kind:` names what it is, and an
-absent `kind:` reads `constraint`. Where a rule carries `extends: authoring-common.<slug>`,
-the stub inherits `text` / `labels` / `pointer` only from `skill-authoring-common.yaml` —
-`class` and `kind` are always this schema's own, and the stub's `authoring-feature-map.*`
-ID stays the citable ID. `${var}` placeholders substitute from this schema's `vars:` at
-read time. Labels come from `../../schemas/skill-labels.yaml`. A `pointer:` rule binds you
-to that file's or skill's content, referenced never restated.
+!`mochiko-cli rules authoring-feature-map --section preamble --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules authoring-feature-map --section authoring-feature-map.sec.independence --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules authoring-feature-map --section authoring-feature-map.sec.scope --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules authoring-feature-map --section authoring-feature-map.sec.inputs --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules authoring-feature-map --section authoring-feature-map.sec.artifact --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules authoring-feature-map --section authoring-feature-map.sec.output --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules authoring-feature-map --section authoring-feature-map.sec.reserved --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
 
-The schema carries **the 16 rules of `class: floor`**. State the floor count back before
-the first procedural step; a skipped or partial schema read is a halt-and-surface, never a
-silent continue.
+Before the first procedural step, state back the floor count the preamble's `class: floor` pin
+prints and the ids its `floors:` line lists; a blank or partial read-back is a skipped read —
+halt and surface it.
 
 ## Vocabulary — capability vs the units around it
 
@@ -63,7 +65,7 @@ A **capability-batch** is the pipeline unit: each capability with selected work 
 
 ## Related
 
-- `features-index` / `feature-entry` schemas — own the repo-root `FEATURES.md` index shape and the per-capability entry shape this skill fills (bindings in the schema's artifact section)
+- `features-index` / `feature-entry` schemas — own the repo-root `FEATURES.md` index shape and the per-capability entry shape this skill fills (bindings delivered by `mochiko-cli` in the artifact section)
 - `mochiko:patterns-map-minimalism` — the derivation discipline this skill applies
 - `mochiko:review-specifications` — grades spec + stories + feature derivation + map delta in one pass
 - `mochiko:authoring-user-stories` — upstream: the story quality the derivation reads

@@ -1,0 +1,651 @@
+{
+  "provenance": "wave5-plan.md \u00a74.2 and wave5-reports/p3-skills-plan.md \u00a73. Frozen from the render and the working tree before P2 converted any skill and before the wave's first session. Never edited after; a floor rule added or renamed later breaks the cross-check in `converted-shape` rather than regrading quietly.",
+  "frozen_utc": "2026-09-04T10:49:47+00:00",
+  "binary": "mochiko-cli 0.1.0 \u00b7 grammar 1..1",
+  "plugin_version": "0.105.0",
+  "labels_registry": {
+    "path": "schemas/skill-labels.yaml",
+    "bytes": 1675,
+    "note": "recorded beside the baselines and never part of the criterion, the convention `command-labels.yaml` got at wave 3"
+  },
+  "families": {
+    "review": {
+      "common": "schemas/skill-review-common.yaml",
+      "members": [
+        "review-brainstorm",
+        "review-code-minimalism",
+        "review-feasibility",
+        "review-governance-intent",
+        "review-plan-artifacts",
+        "review-specifications",
+        "review-sufficiency",
+        "validation-constitution"
+      ]
+    },
+    "authoring": {
+      "common": "schemas/skill-authoring-common.yaml",
+      "members": [
+        "authoring-architecture-store",
+        "authoring-constitution",
+        "authoring-epic",
+        "authoring-feature-map",
+        "authoring-prototype",
+        "authoring-requirements",
+        "authoring-technical-requirements",
+        "authoring-user-stories"
+      ]
+    },
+    "patterns": {
+      "common": null,
+      "members": [
+        "patterns-adopt-first",
+        "patterns-architecture-shelves",
+        "patterns-code-minimalism",
+        "patterns-map-minimalism",
+        "patterns-model-tiering",
+        "patterns-plan-minimalism",
+        "patterns-sound-loop",
+        "patterns-transport-floor",
+        "patterns-vertical-tdd"
+      ]
+    },
+    "dense-five": {
+      "common": null,
+      "members": [
+        "analysis-codebase",
+        "brownfield-integration",
+        "executing-tdd-cycle",
+        "testing-end-user",
+        "testing-gap-finding"
+      ]
+    }
+  },
+  "skills": {
+    "analysis-codebase": {
+      "family": "dense-five",
+      "floor_ids": [
+        "analysis-codebase.essential-floor-canonical-definition",
+        "analysis-codebase.intent-blind-waiver-blind",
+        "analysis-codebase.never-soften-never-waive"
+      ],
+      "floor_pin": 3,
+      "schema_bytes": 8345,
+      "common": null,
+      "common_bytes": null,
+      "baseline_bytes": 8345,
+      "baseline_source": "wc -c of skills/analysis-codebase/schema.yaml (no family common file)",
+      "body_bytes_pre": 4232
+    },
+    "authoring-architecture-store": {
+      "family": "authoring",
+      "floor_ids": [
+        "authoring-architecture-store.as-built-against-code",
+        "authoring-architecture-store.diff-both-directions",
+        "authoring-architecture-store.diff-user-dispositioned",
+        "authoring-architecture-store.drift-user-disposition",
+        "authoring-architecture-store.index-regenerated-every-write",
+        "authoring-architecture-store.landing-diff-on-delta",
+        "authoring-architecture-store.one-home-one-writer",
+        "authoring-architecture-store.sign-off-is-write-gate",
+        "authoring-architecture-store.sound-loop-on-judgment-writes"
+      ],
+      "floor_pin": 9,
+      "schema_bytes": 14070,
+      "common": "schemas/skill-authoring-common.yaml",
+      "common_bytes": 1291,
+      "baseline_bytes": 15361,
+      "baseline_source": "wc -c of skills/authoring-architecture-store/schema.yaml + schemas/skill-authoring-common.yaml",
+      "body_bytes_pre": 5500
+    },
+    "authoring-constitution": {
+      "family": "authoring",
+      "floor_ids": [
+        "authoring-constitution.every-principle-traces",
+        "authoring-constitution.floor-categories-accounted",
+        "authoring-constitution.markers-only-regeneration",
+        "authoring-constitution.missing-synthesis-stop",
+        "authoring-constitution.never-route-unselected-modules",
+        "authoring-constitution.no-constitution-file",
+        "authoring-constitution.no-unsanctioned-selection",
+        "authoring-constitution.preserved-blocks",
+        "authoring-constitution.ratified-synthesis-only",
+        "authoring-constitution.realized-or-flagged",
+        "authoring-constitution.three-part-rule",
+        "authoring-constitution.waivers-authored-not-skipped"
+      ],
+      "floor_pin": 12,
+      "schema_bytes": 23275,
+      "common": "schemas/skill-authoring-common.yaml",
+      "common_bytes": 1291,
+      "baseline_bytes": 24566,
+      "baseline_source": "wc -c of skills/authoring-constitution/schema.yaml + schemas/skill-authoring-common.yaml",
+      "body_bytes_pre": 7866
+    },
+    "authoring-epic": {
+      "family": "authoring",
+      "floor_ids": [
+        "authoring-epic.design-phase-always-fires",
+        "authoring-epic.desk-only-mint-door",
+        "authoring-epic.halt-disposition-user-owned",
+        "authoring-epic.mint-once",
+        "authoring-epic.one-open-epic-per-pending-rows",
+        "authoring-epic.one-signed-store-delta",
+        "authoring-epic.overlap-surfaces-to-user",
+        "authoring-epic.selection-scope-only",
+        "authoring-epic.shared-baseline-single-pen-holder",
+        "authoring-epic.transient-role"
+      ],
+      "floor_pin": 10,
+      "schema_bytes": 10558,
+      "common": "schemas/skill-authoring-common.yaml",
+      "common_bytes": 1291,
+      "baseline_bytes": 11849,
+      "baseline_source": "wc -c of skills/authoring-epic/schema.yaml + schemas/skill-authoring-common.yaml",
+      "body_bytes_pre": 3133
+    },
+    "authoring-feature-map": {
+      "family": "authoring",
+      "floor_ids": [
+        "authoring-feature-map.acceptance-batch",
+        "authoring-feature-map.capability-work-row",
+        "authoring-feature-map.capability-writes-sacred",
+        "authoring-feature-map.complete-disposition",
+        "authoring-feature-map.delivered-sticky-rows-fold",
+        "authoring-feature-map.entries-index-never-rewrite",
+        "authoring-feature-map.escalation-never-forced-cut",
+        "authoring-feature-map.integrity-fix-on-sight",
+        "authoring-feature-map.letter-is-spirit",
+        "authoring-feature-map.map-owns-status",
+        "authoring-feature-map.one-home",
+        "authoring-feature-map.retired-terminal",
+        "authoring-feature-map.row-level-closure",
+        "authoring-feature-map.selectability-specify-only",
+        "authoring-feature-map.selection-user-ruling",
+        "authoring-feature-map.work-rows-transient"
+      ],
+      "floor_pin": 16,
+      "schema_bytes": 16223,
+      "common": "schemas/skill-authoring-common.yaml",
+      "common_bytes": 1291,
+      "baseline_bytes": 17514,
+      "baseline_source": "wc -c of skills/authoring-feature-map/schema.yaml + schemas/skill-authoring-common.yaml",
+      "body_bytes_pre": 6196
+    },
+    "authoring-prototype": {
+      "family": "authoring",
+      "floor_ids": [
+        "authoring-prototype.authority-split",
+        "authoring-prototype.letter-is-spirit",
+        "authoring-prototype.static-degrade-path",
+        "authoring-prototype.upstream-untouched"
+      ],
+      "floor_pin": 4,
+      "schema_bytes": 9655,
+      "common": "schemas/skill-authoring-common.yaml",
+      "common_bytes": 1291,
+      "baseline_bytes": 10946,
+      "baseline_source": "wc -c of skills/authoring-prototype/schema.yaml + schemas/skill-authoring-common.yaml",
+      "body_bytes_pre": 4971
+    },
+    "authoring-requirements": {
+      "family": "authoring",
+      "floor_ids": [
+        "authoring-requirements.boundary-escalates-to-user",
+        "authoring-requirements.constraint-states-capability",
+        "authoring-requirements.pm-frame-boundary",
+        "authoring-requirements.technology-agnostic"
+      ],
+      "floor_pin": 4,
+      "schema_bytes": 8089,
+      "common": "schemas/skill-authoring-common.yaml",
+      "common_bytes": 1291,
+      "baseline_bytes": 9380,
+      "baseline_source": "wc -c of skills/authoring-requirements/schema.yaml + schemas/skill-authoring-common.yaml",
+      "body_bytes_pre": 3208
+    },
+    "authoring-technical-requirements": {
+      "family": "authoring",
+      "floor_ids": [
+        "authoring-technical-requirements.business-source-floor",
+        "authoring-technical-requirements.fast-is-not-a-requirement",
+        "authoring-technical-requirements.letter-is-spirit",
+        "authoring-technical-requirements.nfr-store-home",
+        "authoring-technical-requirements.no-exceptions-documentation",
+        "authoring-technical-requirements.no-topology-decisions",
+        "authoring-technical-requirements.rationalization-stop",
+        "authoring-technical-requirements.store-write-at-sign-off"
+      ],
+      "floor_pin": 8,
+      "schema_bytes": 16863,
+      "common": "schemas/skill-authoring-common.yaml",
+      "common_bytes": 1291,
+      "baseline_bytes": 18154,
+      "baseline_source": "wc -c of skills/authoring-technical-requirements/schema.yaml + schemas/skill-authoring-common.yaml",
+      "body_bytes_pre": 3888
+    },
+    "authoring-user-stories": {
+      "family": "authoring",
+      "floor_ids": [
+        "authoring-user-stories.boundary-dispute-escalates",
+        "authoring-user-stories.letter-is-spirit",
+        "authoring-user-stories.pm-frame-boundary",
+        "authoring-user-stories.rationalization-stop"
+      ],
+      "floor_pin": 4,
+      "schema_bytes": 7953,
+      "common": "schemas/skill-authoring-common.yaml",
+      "common_bytes": 1291,
+      "baseline_bytes": 9244,
+      "baseline_source": "wc -c of skills/authoring-user-stories/schema.yaml + schemas/skill-authoring-common.yaml",
+      "body_bytes_pre": 4294
+    },
+    "brownfield-integration": {
+      "family": "dense-five",
+      "floor_ids": [
+        "brownfield-integration.extend-interface-impact",
+        "brownfield-integration.extend-never-silently-modify",
+        "brownfield-integration.interface-preservation",
+        "brownfield-integration.letter-is-spirit",
+        "brownfield-integration.modify-interface-impact",
+        "brownfield-integration.read-full-file-first"
+      ],
+      "floor_pin": 6,
+      "schema_bytes": 6728,
+      "common": null,
+      "common_bytes": null,
+      "baseline_bytes": 6728,
+      "baseline_source": "wc -c of skills/brownfield-integration/schema.yaml (no family common file)",
+      "body_bytes_pre": 4474
+    },
+    "executing-tdd-cycle": {
+      "family": "dense-five",
+      "floor_ids": [
+        "executing-tdd-cycle.domain-deps-checkpoint",
+        "executing-tdd-cycle.lead-routing-reservation",
+        "executing-tdd-cycle.pre-code-ladder",
+        "executing-tdd-cycle.rationalization-stop",
+        "executing-tdd-cycle.red-phase-failure-verified",
+        "executing-tdd-cycle.report-not-verdict",
+        "executing-tdd-cycle.sanctioned-set-of-two",
+        "executing-tdd-cycle.slicing-boundary",
+        "executing-tdd-cycle.strict-order",
+        "executing-tdd-cycle.verifier-boundary"
+      ],
+      "floor_pin": 10,
+      "schema_bytes": 12558,
+      "common": null,
+      "common_bytes": null,
+      "baseline_bytes": 12558,
+      "baseline_source": "wc -c of skills/executing-tdd-cycle/schema.yaml (no family common file)",
+      "body_bytes_pre": 7062
+    },
+    "patterns-adopt-first": {
+      "family": "patterns",
+      "floor_ids": [
+        "patterns-adopt-first.build-time-never-builder-decided",
+        "patterns-adopt-first.constraint-challenge-finding",
+        "patterns-adopt-first.disclosure-floor",
+        "patterns-adopt-first.framing-never-gates",
+        "patterns-adopt-first.in-process-scope-bound",
+        "patterns-adopt-first.rationale-bite",
+        "patterns-adopt-first.retrofit-cost-gate"
+      ],
+      "floor_pin": 7,
+      "schema_bytes": 10739,
+      "common": null,
+      "common_bytes": null,
+      "baseline_bytes": 10739,
+      "baseline_source": "wc -c of skills/patterns-adopt-first/schema.yaml (no family common file)",
+      "body_bytes_pre": 2929
+    },
+    "patterns-architecture-shelves": {
+      "family": "patterns",
+      "floor_ids": [
+        "patterns-architecture-shelves.breadth-invariant",
+        "patterns-architecture-shelves.floor-asserted-rows",
+        "patterns-architecture-shelves.honest-gaps",
+        "patterns-architecture-shelves.never-a-rigor-dial",
+        "patterns-architecture-shelves.recommend-then-arbitrate"
+      ],
+      "floor_pin": 5,
+      "schema_bytes": 9513,
+      "common": null,
+      "common_bytes": null,
+      "baseline_bytes": 9513,
+      "baseline_source": "wc -c of skills/patterns-architecture-shelves/schema.yaml (no family common file)",
+      "body_bytes_pre": 3481
+    },
+    "patterns-code-minimalism": {
+      "family": "patterns",
+      "floor_ids": [
+        "patterns-code-minimalism.lazy-not-negligent",
+        "patterns-code-minimalism.new-dep-not-a-rung",
+        "patterns-code-minimalism.one-intensity"
+      ],
+      "floor_pin": 3,
+      "schema_bytes": 5833,
+      "common": null,
+      "common_bytes": null,
+      "baseline_bytes": 5833,
+      "baseline_source": "wc -c of skills/patterns-code-minimalism/schema.yaml (no family common file)",
+      "body_bytes_pre": 2883
+    },
+    "patterns-map-minimalism": {
+      "family": "patterns",
+      "floor_ids": [
+        "patterns-map-minimalism.capability-layer-user-ruled",
+        "patterns-map-minimalism.extend-beats-mint",
+        "patterns-map-minimalism.fewness-never-hides"
+      ],
+      "floor_pin": 3,
+      "schema_bytes": 6951,
+      "common": null,
+      "common_bytes": null,
+      "baseline_bytes": 6951,
+      "baseline_source": "wc -c of skills/patterns-map-minimalism/schema.yaml (no family common file)",
+      "body_bytes_pre": 3052
+    },
+    "patterns-model-tiering": {
+      "family": "patterns",
+      "floor_ids": [
+        "patterns-model-tiering.brief-obligation",
+        "patterns-model-tiering.class-key-session-tier",
+        "patterns-model-tiering.override-is-the-pin",
+        "patterns-model-tiering.rostered-seats-never-retier"
+      ],
+      "floor_pin": 4,
+      "schema_bytes": 7232,
+      "common": null,
+      "common_bytes": null,
+      "baseline_bytes": 7232,
+      "baseline_source": "wc -c of skills/patterns-model-tiering/schema.yaml (no family common file)",
+      "body_bytes_pre": 2337
+    },
+    "patterns-plan-minimalism": {
+      "family": "patterns",
+      "floor_ids": [
+        "patterns-plan-minimalism.floor-both-ways",
+        "patterns-plan-minimalism.rung-1-never-deletes"
+      ],
+      "floor_pin": 2,
+      "schema_bytes": 5835,
+      "common": null,
+      "common_bytes": null,
+      "baseline_bytes": 5835,
+      "baseline_source": "wc -c of skills/patterns-plan-minimalism/schema.yaml (no family common file)",
+      "body_bytes_pre": 3502
+    },
+    "patterns-sound-loop": {
+      "family": "patterns",
+      "floor_ids": [
+        "patterns-sound-loop.leg-1-seat-produces",
+        "patterns-sound-loop.leg-2-non-author-review",
+        "patterns-sound-loop.leg-3-user-gate-stays",
+        "patterns-sound-loop.no-delta-card-exemption",
+        "patterns-sound-loop.only-real-seats",
+        "patterns-sound-loop.two-part-trigger"
+      ],
+      "floor_pin": 6,
+      "schema_bytes": 8996,
+      "common": null,
+      "common_bytes": null,
+      "baseline_bytes": 8996,
+      "baseline_source": "wc -c of skills/patterns-sound-loop/schema.yaml (no family common file)",
+      "body_bytes_pre": 2604
+    },
+    "patterns-transport-floor": {
+      "family": "patterns",
+      "floor_ids": [
+        "patterns-transport-floor.composition-steer",
+        "patterns-transport-floor.content-pinned-supersession",
+        "patterns-transport-floor.fan-in-confirmation",
+        "patterns-transport-floor.mesh-hold",
+        "patterns-transport-floor.message-lane-trigger",
+        "patterns-transport-floor.neither-lane-waivable",
+        "patterns-transport-floor.no-ritual-sends",
+        "patterns-transport-floor.quiesce-before-cold-grade",
+        "patterns-transport-floor.single-writer-per-surface",
+        "patterns-transport-floor.topology-lane-trigger",
+        "patterns-transport-floor.version-floor"
+      ],
+      "floor_pin": 11,
+      "schema_bytes": 8200,
+      "common": null,
+      "common_bytes": null,
+      "baseline_bytes": 8200,
+      "baseline_source": "wc -c of skills/patterns-transport-floor/schema.yaml (no family common file)",
+      "body_bytes_pre": 2938
+    },
+    "patterns-vertical-tdd": {
+      "family": "patterns",
+      "floor_ids": [
+        "patterns-vertical-tdd.author-never-executing-builder",
+        "patterns-vertical-tdd.no-infra-only-cards",
+        "patterns-vertical-tdd.tasks-binding-two-arm",
+        "patterns-vertical-tdd.test-gate",
+        "patterns-vertical-tdd.writes-no-task-lists"
+      ],
+      "floor_pin": 5,
+      "schema_bytes": 9250,
+      "common": null,
+      "common_bytes": null,
+      "baseline_bytes": 9250,
+      "baseline_source": "wc -c of skills/patterns-vertical-tdd/schema.yaml (no family common file)",
+      "body_bytes_pre": 5741
+    },
+    "review-brainstorm": {
+      "family": "review",
+      "floor_ids": [
+        "review-brainstorm.author-grader",
+        "review-brainstorm.blind-map-before-record-contact",
+        "review-brainstorm.contested-needs-new-angle",
+        "review-brainstorm.evidence-floor",
+        "review-brainstorm.findings-through-leads-pen",
+        "review-brainstorm.never-default-ready",
+        "review-brainstorm.never-in-the-room",
+        "review-brainstorm.unverifiable-claim-is-finding",
+        "review-brainstorm.verdict-is-input"
+      ],
+      "floor_pin": 9,
+      "schema_bytes": 9182,
+      "common": "schemas/skill-review-common.yaml",
+      "common_bytes": 1639,
+      "baseline_bytes": 10821,
+      "baseline_source": "wc -c of skills/review-brainstorm/schema.yaml + schemas/skill-review-common.yaml",
+      "body_bytes_pre": 2888
+    },
+    "review-code-minimalism": {
+      "family": "review",
+      "floor_ids": [
+        "review-code-minimalism.advisory-never-cycle-failing",
+        "review-code-minimalism.author-grader",
+        "review-code-minimalism.codebase-read-rungs-2-3-5"
+      ],
+      "floor_pin": 3,
+      "schema_bytes": 5516,
+      "common": "schemas/skill-review-common.yaml",
+      "common_bytes": 1639,
+      "baseline_bytes": 7155,
+      "baseline_source": "wc -c of skills/review-code-minimalism/schema.yaml + schemas/skill-review-common.yaml",
+      "body_bytes_pre": 3537
+    },
+    "review-feasibility": {
+      "family": "review",
+      "floor_ids": [
+        "review-feasibility.author-grader",
+        "review-feasibility.default-fail",
+        "review-feasibility.design-phase-only",
+        "review-feasibility.evidence-floor",
+        "review-feasibility.governance-two-exits",
+        "review-feasibility.hunt-coverage-disclosure",
+        "review-feasibility.infeasible-never-flattens",
+        "review-feasibility.report-template-binding",
+        "review-feasibility.verdict-is-input"
+      ],
+      "floor_pin": 9,
+      "schema_bytes": 8424,
+      "common": "schemas/skill-review-common.yaml",
+      "common_bytes": 1639,
+      "baseline_bytes": 10063,
+      "baseline_source": "wc -c of skills/review-feasibility/schema.yaml + schemas/skill-review-common.yaml",
+      "body_bytes_pre": 2866
+    },
+    "review-governance-intent": {
+      "family": "review",
+      "floor_ids": [
+        "review-governance-intent.author-grader",
+        "review-governance-intent.authored-surfaces-out",
+        "review-governance-intent.contested-audit-first",
+        "review-governance-intent.declared-level-discipline",
+        "review-governance-intent.default-fail",
+        "review-governance-intent.echo-rationales-outrank",
+        "review-governance-intent.evidence-floor",
+        "review-governance-intent.findings-through-leads-pen",
+        "review-governance-intent.formulation-quality-excluded",
+        "review-governance-intent.its-command-states-them",
+        "review-governance-intent.never-a-participant",
+        "review-governance-intent.no-in-session-confirmation",
+        "review-governance-intent.ratification-user-owned",
+        "review-governance-intent.too-thin-first-finding",
+        "review-governance-intent.verdict-is-input",
+        "review-governance-intent.yardstick-never-taste"
+      ],
+      "floor_pin": 16,
+      "schema_bytes": 12066,
+      "common": "schemas/skill-review-common.yaml",
+      "common_bytes": 1639,
+      "baseline_bytes": 13705,
+      "baseline_source": "wc -c of skills/review-governance-intent/schema.yaml + schemas/skill-review-common.yaml",
+      "body_bytes_pre": 3229
+    },
+    "review-plan-artifacts": {
+      "family": "review",
+      "floor_ids": [
+        "review-plan-artifacts.author-grader",
+        "review-plan-artifacts.conformance-blocking",
+        "review-plan-artifacts.critical-blocks",
+        "review-plan-artifacts.default-fail",
+        "review-plan-artifacts.evidence-floor",
+        "review-plan-artifacts.gap-list-scope",
+        "review-plan-artifacts.letter-is-spirit",
+        "review-plan-artifacts.material-divergence-autofail",
+        "review-plan-artifacts.na-justified",
+        "review-plan-artifacts.never-shrink",
+        "review-plan-artifacts.tier1-preassert"
+      ],
+      "floor_pin": 11,
+      "schema_bytes": 14815,
+      "common": "schemas/skill-review-common.yaml",
+      "common_bytes": 1639,
+      "baseline_bytes": 16454,
+      "baseline_source": "wc -c of skills/review-plan-artifacts/schema.yaml + schemas/skill-review-common.yaml",
+      "body_bytes_pre": 3853
+    },
+    "review-specifications": {
+      "family": "review",
+      "floor_ids": [
+        "review-specifications.author-grader",
+        "review-specifications.check-existing-first",
+        "review-specifications.density-never-gap",
+        "review-specifications.evidence-floor",
+        "review-specifications.gap-bound",
+        "review-specifications.input-not-verdict",
+        "review-specifications.map-git-baseline",
+        "review-specifications.no-scope-creep"
+      ],
+      "floor_pin": 8,
+      "schema_bytes": 12521,
+      "common": "schemas/skill-review-common.yaml",
+      "common_bytes": 1639,
+      "baseline_bytes": 14160,
+      "baseline_source": "wc -c of skills/review-specifications/schema.yaml + schemas/skill-review-common.yaml",
+      "body_bytes_pre": 3754
+    },
+    "review-sufficiency": {
+      "family": "review",
+      "floor_ids": [
+        "review-sufficiency.author-grader",
+        "review-sufficiency.default-fail",
+        "review-sufficiency.disputed-clause-gap",
+        "review-sufficiency.every-applicable-clause",
+        "review-sufficiency.evidence-floor",
+        "review-sufficiency.fence-never-reads",
+        "review-sufficiency.na-justified",
+        "review-sufficiency.verdict-is-input"
+      ],
+      "floor_pin": 8,
+      "schema_bytes": 12063,
+      "common": "schemas/skill-review-common.yaml",
+      "common_bytes": 1639,
+      "baseline_bytes": 13702,
+      "baseline_source": "wc -c of skills/review-sufficiency/schema.yaml + schemas/skill-review-common.yaml",
+      "body_bytes_pre": 3744
+    },
+    "testing-end-user": {
+      "family": "dense-five",
+      "floor_ids": [
+        "testing-end-user.default-subjective",
+        "testing-end-user.gates-auto-resolve",
+        "testing-end-user.human-gate",
+        "testing-end-user.no-default-pass",
+        "testing-end-user.rationalization-stop",
+        "testing-end-user.sanctioned-set-closure",
+        "testing-end-user.strict-order"
+      ],
+      "floor_pin": 7,
+      "schema_bytes": 12163,
+      "common": null,
+      "common_bytes": null,
+      "baseline_bytes": 12163,
+      "baseline_source": "wc -c of skills/testing-end-user/schema.yaml (no family common file)",
+      "body_bytes_pre": 9303
+    },
+    "testing-gap-finding": {
+      "family": "dense-five",
+      "floor_ids": [
+        "testing-gap-finding.adjudication-lead-and-user",
+        "testing-gap-finding.blindness-fence-inclusion-list",
+        "testing-gap-finding.delegated-reads-inherit-fence",
+        "testing-gap-finding.delta-lane-skip-stated",
+        "testing-gap-finding.lens-alongside-never-inside",
+        "testing-gap-finding.real-infrastructure-never-mocks",
+        "testing-gap-finding.structural-exclusions",
+        "testing-gap-finding.tool-advisory-posture",
+        "testing-gap-finding.two-message-dispatch"
+      ],
+      "floor_pin": 9,
+      "schema_bytes": 14195,
+      "common": null,
+      "common_bytes": null,
+      "baseline_bytes": 14195,
+      "baseline_source": "wc -c of skills/testing-gap-finding/schema.yaml (no family common file)",
+      "body_bytes_pre": 6083
+    },
+    "validation-constitution": {
+      "family": "review",
+      "floor_ids": [
+        "validation-constitution.author-grader",
+        "validation-constitution.binary-verdict",
+        "validation-constitution.default-fail",
+        "validation-constitution.every-set-must-pass",
+        "validation-constitution.evidence-floor",
+        "validation-constitution.from-file-floor",
+        "validation-constitution.letter-is-spirit",
+        "validation-constitution.missing-parts-fail",
+        "validation-constitution.placeholders-incomplete",
+        "validation-constitution.rationalization-stop",
+        "validation-constitution.satisfaction-verifies-nothing",
+        "validation-constitution.set-not-file",
+        "validation-constitution.skip-documented",
+        "validation-constitution.verify-every-item"
+      ],
+      "floor_pin": 14,
+      "schema_bytes": 10579,
+      "common": "schemas/skill-review-common.yaml",
+      "common_bytes": 1639,
+      "baseline_bytes": 12218,
+      "baseline_source": "wc -c of skills/validation-constitution/schema.yaml + schemas/skill-review-common.yaml",
+      "body_bytes_pre": 3350
+    }
+  }
+}

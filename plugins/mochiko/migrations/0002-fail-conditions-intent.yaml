@@ -1,0 +1,45 @@
+grammar: 1
+id: 0002-fail-conditions-intent
+sequence: 2
+intent: >-
+  Reword the six fail-conditions section intents: the count is printed by the render, never
+  hard-coded in the .md.
+anchor: 2026-09-03 cli-schema-delivery D3
+hash: sha256:47abe5a344e71b73fb234c48f1305c9e80af40001d9629e3277ade56c5236757
+changes:
+  - op: reword-section
+    schema: command/architecture
+    id: arch.sec.fail-conditions
+    intent: >-
+      The kind: fail set — any one standing fails the visit; the .md Not-done line cites the
+      count this render prints.
+  - op: reword-section
+    schema: command/feature
+    id: feat.sec.fail-conditions
+    intent: >-
+      The kind: fail set — any one standing fails the visit; the .md Not-done line cites the
+      count this render prints.
+  - op: reword-section
+    schema: command/brainstorm
+    id: brainstorm.sec.fail-conditions
+    intent: >-
+      The kind: fail set — any one standing fails the run; the .md Not-done line cites the count
+      this render prints.
+  - op: reword-section
+    schema: command/implement
+    id: impl.sec.fail-conditions
+    intent: >-
+      The kind: fail set — any one standing fails the run; the .md Not-done line cites the count
+      this render prints.
+  - op: reword-section
+    schema: command/setup
+    id: setup.sec.fail-conditions
+    intent: >-
+      The kind: fail set — any one standing fails the run; the .md Not-done line cites the count
+      this render prints.
+  - op: reword-section
+    schema: command/specify
+    id: spec.sec.fail-conditions
+    intent: >-
+      The kind: fail set — any one standing fails the run; the .md Not-done line cites the count
+      this render prints.

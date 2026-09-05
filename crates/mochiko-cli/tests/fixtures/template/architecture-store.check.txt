@@ -1,0 +1,9 @@
+# Product Architecture Store — checklist
+
+- [ ] Are `spine.md` and `concerns.md` present under `.mochiko/product/architecture/`, with the derived `ARCHITECTURE.md` at the repo root (not inside the store directory), and graduated concern files only where a row actually graduated?
+- [ ] Does `spine.md` open with a `Scope:` line, and does every spine element carry a unique SPN-XXX id, a kind (container/boundary/flow), a name, and a legal status — with a FEAT-XXX key on every in-flight/modifying/removing element and none on ruled/built?
+- [ ] Does every concern row carry a unique AX-XXX id, a name, a legal stance, and a legal status — with every `n-a` stance written in its suffixed form (`n-a — genuinely never` / `n-a — handled elsewhere`), an `Owned by` pointer on every handled-elsewhere row, and every Work/NFR pointer resolving?
+- [ ] Does each graduated file carry the same id, name, stance, and status as its ledger row, with the ledger still holding that row as a one-line summary plus a link?
+- [ ] Is the root index a derived view carrying the spine thumbnail, the FULL AX summary table (one line per row, none omitted), and a Health section with the five counts — with nothing in it that is not derived from the store?
+
+---

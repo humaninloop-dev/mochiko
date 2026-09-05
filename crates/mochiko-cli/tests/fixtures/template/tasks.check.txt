@@ -1,0 +1,8 @@
+# Implementation Cycles (cycle cards) — checklist
+
+- [ ] Is the header present with the FEAT-XXX title and both provenance pointers (source artifacts and the patterns-vertical-tdd structure note)?
+- [ ] Does the Overview table report the cycle count and the covered US-# list, with every P1/P2 story on at least one card?
+- [ ] Does the Cycle Format explain the card as a bundle of named test cases, the test-first flow, cycle-done when named cases pass on real infrastructure, the checkbox-as-progress rule, the walking-skeleton first cycle where a new end-to-end path opens, no foundation/feature type with `[P]` derived from dependencies, and per-case ID citation?
+- [ ] Are cards listed directly (no foundation/feature grouping), each a bundle of named `**TEST:**` cases with per-case `**Covers**:` IDs (never a standalone acceptance-criteria field), carrying Stories/Depends-on/Case/Brownfield-exposure; is the first cycle a walking skeleton where a new end-to-end path opens; is `[P]` used only where dependencies allow; and is no illustrative sample or pre-written task list / file path left in?
+
+---

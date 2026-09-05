@@ -1,6 +1,7 @@
 ---
 name: patterns-code-minimalism
 description: This skill MUST be invoked at build-time card decomposition, BEFORE any red-phase test — running the pre-code ladder over each task (stop at the first applicable rung: exist at all · in codebase · stdlib · native platform · installed dep · one line · minimum), disclosed in the cycle report. SHOULD also invoke on 'should this code exist', 'reuse before build', 'stdlib first', 'over-engineering', 'YAGNI', or when slimming existing code that grew unneeded abstraction layers. Single source of the ladder; distinct from the green-phase 'minimum code to pass' rule.
+allowed-tools: Bash(mochiko-cli *)
 ---
 
 # Code Minimalism — The Pre-Code Ladder
@@ -13,25 +14,35 @@ Before any code is written for a task, run the ladder: a ranked pre-code check o
 task. Its design-time sibling `mochiko:patterns-plan-minimalism` runs the same discipline
 over the design's elements upstream; this ladder is the build-time continuation.
 
-## Rules — load the schema first
+## Rules — delivered by mochiko-cli
 
-Your first action, before any rung is ranked: **Read `schema.yaml` (this skill's own
-directory) raw, in full, as one declared first action.** The schema is the source of truth
-for this skill's binding rules, nested in six sections, each addressable by its section
-ID: `patterns-code-minimalism.sec.trigger` · `patterns-code-minimalism.sec.scope` ·
-`patterns-code-minimalism.sec.discipline` · `patterns-code-minimalism.sec.inputs` ·
-`patterns-code-minimalism.sec.disclosure` · `patterns-code-minimalism.sec.reserved`.
-Interpret it live: a rule's `kind:` names what it is, and an absent `kind:` reads
-`constraint`; a rule of `class: floor` is always read and always delivered; a `pointer:`
-rule binds you to that file's or skill's procedure, referenced never restated; labels come
-from `plugins/mochiko/schemas/skill-labels.yaml`. The floor pin: the 3 rules of
-`class: floor` are non-waivable. Before the first rung is ranked, state the floor count
-back — a skipped or partial read leaves that count blank: halt and surface it, and halt
-likewise if the schema's `class: floor` count disagrees with the pin.
+Your rules arrive below, rendered at fire by `mochiko-cli` from the migration log this plugin
+carries — one block per section. Every block opens with a version-triple line
+(`mochiko-cli rules patterns-code-minimalism · section <id> · binary <v> · grammar <g> · plugin <p>`) and
+closes with an end line (`mochiko-cli rules end · patterns-code-minimalism · <id> · <N> rules`). **Proceed
+only when every block carries both lines in that exact shape, from whichever channel delivered
+it — this slot, or the plugin's dependency hook on a Skill-tool call.** Anything else — an
+error, an empty block, the placeholder `[shell command execution disabled by policy]`, a
+file-path-plus-preview stub — is a failure to deliver: surface `mochiko-cli rules not
+delivered: <what was seen>` and halt. Never Read a schema file instead; there is no fallback.
+The `legend` in the preamble block is the reading grammar; a `pointer:` binds you to that
+file's or skill's procedure, referenced never restated.
+
+!`mochiko-cli rules patterns-code-minimalism --section preamble --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules patterns-code-minimalism --section patterns-code-minimalism.sec.trigger --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules patterns-code-minimalism --section patterns-code-minimalism.sec.scope --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules patterns-code-minimalism --section patterns-code-minimalism.sec.discipline --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules patterns-code-minimalism --section patterns-code-minimalism.sec.inputs --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules patterns-code-minimalism --section patterns-code-minimalism.sec.disclosure --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules patterns-code-minimalism --section patterns-code-minimalism.sec.reserved --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+
+Before the first procedural step, state back the floor count the preamble's `class: floor` pin
+prints and the ids its `floors:` line lists; a blank or partial read-back is a skipped read —
+halt and surface it.
 
 ## The Ladder
 
-Rung by rung — the stop rule and every bound on the walk live in the schema:
+Rung by rung — the stop rule and every bound on the walk are delivered by `mochiko-cli`:
 
 1. **Does it need to exist at all?** The requirement is already met, speculative, or
    YAGNI — skip the task entirely.

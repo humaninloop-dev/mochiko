@@ -1,6 +1,7 @@
 ---
 name: patterns-map-minimalism
 description: This skill MUST be invoked when the feature map gains or grooms a capability — PM derivation, spec review, `/mochiko:feature` grooming at cap-trip — running the ranked capability tests (system's-language · durability · new-kind; noun+verbs only aids), extend-beats-mint, soft cap ~9, and merge mechanics. SHOULD also invoke on 'is this a capability', 'extend beats mint', 'feature map growth', or 'merge capabilities'. Single source of the map-minimalism discipline; sibling of the plan/code skills.
+allowed-tools: Bash(mochiko-cli *)
 ---
 
 # Map Minimalism — The Fewest Honest Capabilities
@@ -12,23 +13,31 @@ description: This skill MUST be invoked when the feature map gains or grooms a c
 The map's durable layer is its **capabilities** — the entries called "feature": what the product
 does, in its own language, permanent. Map minimalism keeps that layer honest and few.
 
-## Rules — load the schema first
+## Rules — delivered by mochiko-cli
 
-Your first action, before any capability judgment: **Read `schema.yaml` (this skill's own
-directory) raw, in full, as a declared first action.** The schema is the source of truth for
-this skill's binding rules, nested in six sections, each addressable by its section ID:
-`patterns-map-minimalism.sec.trigger` · `patterns-map-minimalism.sec.scope` ·
-`patterns-map-minimalism.sec.discipline` · `patterns-map-minimalism.sec.inputs` ·
-`patterns-map-minimalism.sec.disclosure` · `patterns-map-minimalism.sec.reserved`. Interpret
-it live: a rule's `kind:` names what it is, and an absent `kind:` reads `constraint`; a rule
-carrying `when:` binds only where its terms hold against the schema's declared `conditions:`,
-except that a `class: floor` rule is always read and always delivered — `when:` gates when its
-obligation applies, never whether it reaches you; a `pointer:` rule binds you to that file's
-or skill's procedure, referenced never restated; labels come from
-`plugins/mochiko/schemas/skill-labels.yaml`. The floor pin: the 3 rules of `class: floor` are
-non-waivable. Before the first capability-judgment step, state the floor count back — a
-skipped or partial read leaves that count blank: halt and surface it, and halt likewise if the
-schema's `class: floor` count disagrees with the pin.
+Your rules arrive below, rendered at fire by `mochiko-cli` from the migration log this plugin
+carries — one block per section. Every block opens with a version-triple line
+(`mochiko-cli rules patterns-map-minimalism · section <id> · binary <v> · grammar <g> · plugin <p>`) and
+closes with an end line (`mochiko-cli rules end · patterns-map-minimalism · <id> · <N> rules`). **Proceed
+only when every block carries both lines in that exact shape, from whichever channel delivered
+it — this slot, or the plugin's dependency hook on a Skill-tool call.** Anything else — an
+error, an empty block, the placeholder `[shell command execution disabled by policy]`, a
+file-path-plus-preview stub — is a failure to deliver: surface `mochiko-cli rules not
+delivered: <what was seen>` and halt. Never Read a schema file instead; there is no fallback.
+The `legend` in the preamble block is the reading grammar; a `pointer:` binds you to that
+file's or skill's procedure, referenced never restated.
+
+!`mochiko-cli rules patterns-map-minimalism --section preamble --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules patterns-map-minimalism --section patterns-map-minimalism.sec.trigger --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules patterns-map-minimalism --section patterns-map-minimalism.sec.scope --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules patterns-map-minimalism --section patterns-map-minimalism.sec.discipline --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules patterns-map-minimalism --section patterns-map-minimalism.sec.inputs --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules patterns-map-minimalism --section patterns-map-minimalism.sec.disclosure --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules patterns-map-minimalism --section patterns-map-minimalism.sec.reserved --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+
+Before the first procedural step, state back the floor count the preamble's `class: floor` pin
+prints and the ids its `floors:` line lists; a blank or partial read-back is a skipped read —
+halt and surface it.
 
 ## The capability tests, taught
 

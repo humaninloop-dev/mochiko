@@ -47,45 +47,45 @@ audited Wave 2 body no-ops (nothing D4-cuttable); their budgets are their surviv
 | skill | winner chars | budget (+25%) |
 |---|---|---|
 | analysis-iterative | 3,942 | 4,928 |
-| analysis-codebase | 12,098 (re-seeded [v0.103.0] schema conversion — payload: body 3,814 + schema 8,284; was 6,509/8,137) | 12,098 (no headroom) |
-| authoring-constitution | 30,387 (re-seeded [v0.101.0] schema conversion — payload: body 7,255 + schema 23,132, re-measured post-fix-round; was 17,240/21,550) | 30,387 (no headroom) |
-| authoring-feature-map | 21,636 (re-seeded [v0.101.0] schema conversion — payload: body 5,505 + schema 16,131; was 12,330/15,413, standing +562 overage dissolved — see the [v0.101.0] note below) | 21,636 (no headroom) |
-| review-governance-intent | 14,663 (re-seeded [v0.100.0] schema conversion — payload: body 2,662 + schema 12,001; was 5,562/6,953) | 14,663 (no headroom) |
-| validation-constitution | 13,285 (re-seeded [v0.100.0] schema conversion — payload: body 2,800 + schema 10,485, re-measured post-fix-round; was 5,103/6,379) | 13,285 (no headroom) |
+| analysis-codebase | 13,776 (re-seeded [v0.106.0] CLI delivery, D10.6 — payload: body 4,688 + render 9,088; was 12,098 — re-seeded [v0.103.0] schema conversion — payload: body 3,814 + schema 8,284; was 6,509/8,137) | 13,776 (no headroom) |
+| authoring-constitution | 29,614 (re-seeded [v0.106.0] CLI delivery, D10.6 — payload: body 7,695 + render 21,919; was 30,387 — re-seeded [v0.101.0] schema conversion — payload: body 7,255 + schema 23,132, re-measured post-fix-round; was 17,240/21,550) | 29,614 (no headroom) |
+| authoring-feature-map | 22,323 (re-seeded [v0.106.0] CLI delivery, D10.6 — payload: body 5,936 + render 16,387; was 21,636 — re-seeded [v0.101.0] schema conversion — payload: body 5,505 + schema 16,131; was 12,330/15,413, standing +562 overage dissolved — see the [v0.101.0] note below) | 22,323 (no headroom) |
+| review-governance-intent | 16,274 (re-seeded [v0.106.0] CLI delivery, D10.6 — payload: body 3,160 + render 13,114; was 14,663 — re-seeded [v0.100.0] schema conversion — payload: body 2,662 + schema 12,001; was 5,562/6,953) | 16,274 (no headroom) |
+| validation-constitution | 15,017 (re-seeded [v0.106.0] CLI delivery, D10.6 — payload: body 3,263 + render 11,754; was 13,285 — re-seeded [v0.100.0] schema conversion — payload: body 2,800 + schema 10,485, re-measured post-fix-round; was 5,103/6,379) | 15,017 (no headroom) |
 | testing-governance-injection | 3,540 | 4,425 |
-| authoring-requirements | 10,796 (re-seeded [v0.101.0] schema conversion — payload: body 2,761 + schema 8,035; was 4,101/5,127) | 10,796 (no headroom) |
-| authoring-user-stories | 11,668 (re-seeded [v0.101.0] schema conversion — payload: body 3,775 + schema 7,893; was 5,361/6,702) | 11,668 (no headroom) |
-| authoring-prototype | 13,943 (re-seeded [v0.101.0] schema conversion — payload: body 4,353 + schema 9,590; was 8,898/11,123) | 13,943 (no headroom) |
-| review-specifications | 15,600 (re-seeded [v0.100.0] schema conversion — payload: body 3,182 + schema 12,418; was 6,187/7,734) | 15,600 (no headroom) |
+| authoring-requirements | 12,373 (re-seeded [v0.106.0] CLI delivery, D10.6 — payload: body 3,439 + render 8,934; was 10,796 — re-seeded [v0.101.0] schema conversion — payload: body 2,761 + schema 8,035; was 4,101/5,127) | 12,373 (no headroom) |
+| authoring-user-stories | 13,444 (re-seeded [v0.106.0] CLI delivery, D10.6 — payload: body 4,529 + render 8,915; was 11,668 — re-seeded [v0.101.0] schema conversion — payload: body 3,775 + schema 7,893; was 5,361/6,702) | 13,444 (no headroom) |
+| authoring-prototype | 14,980 (re-seeded [v0.106.0] CLI delivery, D10.6 — payload: body 4,601 + render 10,379; was 13,943 — re-seeded [v0.101.0] schema conversion — payload: body 4,353 + schema 9,590; was 8,898/11,123) | 14,980 (no headroom) |
+| review-specifications | 16,174 (re-seeded [v0.106.0] CLI delivery, D10.6 — payload: body 3,441 + render 12,733; was 15,600 — re-seeded [v0.100.0] schema conversion — payload: body 3,182 + schema 12,418; was 6,187/7,734) | 16,174 (no headroom) |
 | ~~authoring-architecture~~ | 5,250 | 6,563 |
-| authoring-technical-requirements | 19,946 (re-seeded [v0.101.0] schema conversion — payload: body 3,204 + schema 16,742; was 10,628/13,285) | 19,946 (no headroom) |
-| brownfield-integration | 10,577 (re-seeded [v0.103.0] schema conversion — payload: body 3,903 + schema 6,674; was 6,342/7,928) | 10,577 (no headroom) |
-| executing-tdd-cycle | 18,951 (re-seeded [v0.103.0] schema conversion — payload: body 6,464 + schema 12,487; was 9,676/12,095) | 18,951 (no headroom) |
+| authoring-technical-requirements | 20,775 (re-seeded [v0.106.0] CLI delivery, D10.6 — payload: body 4,038 + render 16,737; was 19,946 — re-seeded [v0.101.0] schema conversion — payload: body 3,204 + schema 16,742; was 10,628/13,285) | 20,775 (no headroom) |
+| brownfield-integration | 12,854 (re-seeded [v0.106.0] CLI delivery, D10.6 — payload: body 4,831 + render 8,023; was 10,577 — re-seeded [v0.103.0] schema conversion — payload: body 3,903 + schema 6,674; was 6,342/7,928) | 12,854 (no headroom) |
+| executing-tdd-cycle | 20,063 (re-seeded [v0.106.0] CLI delivery, D10.6 — payload: body 7,340 + render 12,723; was 18,951 — re-seeded [v0.103.0] schema conversion — payload: body 6,464 + schema 12,487; was 9,676/12,095) | 20,063 (no headroom) |
 | grooming-operating-docs | 2,666 | 3,333 |
-| testing-end-user | 20,791 (re-seeded [v0.103.0] schema conversion — payload: body 8,696 + schema 12,095; was 13,125/16,407) | 20,791 (no headroom) |
+| testing-end-user | 21,710 (re-seeded [v0.106.0] CLI delivery, D10.6 — payload: body 9,563 + render 12,147; was 20,791 — re-seeded [v0.103.0] schema conversion — payload: body 8,696 + schema 12,095; was 13,125/16,407) | 21,710 (no headroom) |
 | patterns-api-contracts | 10,729 | 13,412 |
-| patterns-code-minimalism | 8,024 (re-seeded [v0.102.0] schema conversion — payload: body 2,235 + schema 5,789; was 3,455/4,319) | 8,024 (no headroom) |
+| patterns-code-minimalism | 10,318 (re-seeded [v0.106.0] CLI delivery, D10.6 — payload: body 3,259 + render 7,059; was 8,024 — re-seeded [v0.102.0] schema conversion — payload: body 2,235 + schema 5,789; was 3,455/4,319) | 10,318 (no headroom) |
 | patterns-entity-modeling | 13,468 | 16,835 |
 | patterns-system-design | 9,304 (re-asserted v0.81.0) | 11,047 |
 | patterns-technical-decisions | 4,626 | 5,783 |
-| patterns-vertical-tdd | 14,325 (re-seeded [v0.102.0] schema conversion — payload: body 5,145 + schema 9,180, re-measured post-fix-round; was 5,189/6,487 with a standing +294 ruled-HOLDS overage at body 6,781 — absorbed and superseded by this re-seed, trail in `.mochiko/strips/patterns-vertical-tdd.md` [v0.102.0] and the v0.80.0/v0.91.0 paragraphs below) | 14,325 (no headroom) |
-| review-brainstorm | 11,470 (re-seeded [v0.100.0] schema conversion — payload: body 2,328 + schema 9,142, re-measured post-fix-round; was 2,497/3,122) | 11,470 (no headroom) |
-| review-feasibility | 10,572 (re-seeded [v0.100.0] schema conversion — payload: body 2,195 + schema 8,377; was 1,893/2,367) | 10,572 (no headroom) |
-| review-plan-artifacts | 17,890 (re-seeded [v0.100.0] schema conversion — payload: body 3,170 + schema 14,720; was 4,901/6,127) | 17,890 (no headroom) |
-| review-code-minimalism | 8,449 (re-seeded [v0.100.0] schema conversion — payload: body 2,971 + schema 5,478, re-measured post-fix-round; was 3,689/4,612) | 8,449 (no headroom) |
-| review-sufficiency | 14,950 (first budget row, seeded [v0.100.0] schema conversion — payload: body 2,966 + schema 11,984, re-measured post-fix-round; the +82 over the first seed is the lead-ruled F5 restored clause + the F4 `kind:` line; unbudgeted at birth, body 6,652 at v0.91.0) | 14,950 (no headroom) |
-| skill-review-common.yaml | 1,627 (family common file, budgeted once as its own primitive — seeded [v0.100.0] schema conversion) | 1,627 (no headroom) |
-| authoring-architecture-store | 18,876 (first budget row, seeded [v0.101.0] schema conversion — payload: body 4,904 + schema 13,972, re-measured post-fix-round; unbudgeted at birth, v0.81.0 hard-cap-only) | 18,876 (no headroom) |
-| authoring-epic | 13,044 (first budget row, seeded [v0.101.0] schema conversion — payload: body 2,569 + schema 10,475; unbudgeted at birth, v0.72.0 hard-cap-only) | 13,044 (no headroom) |
-| skill-authoring-common.yaml | 1,285 (family common file, budgeted once as its own primitive — seeded [v0.101.0] schema conversion, re-measured after the epigraph-block label-line drop) | 1,285 (no headroom) |
-| patterns-adopt-first | 12,910 (first budget row, seeded [v0.102.0] schema conversion — payload: body 2,253 + schema 10,657; unbudgeted at birth, v0.73.0 build-cap-only) | 12,910 (no headroom) |
-| patterns-architecture-shelves | 12,361 (first budget row, seeded [v0.102.0] schema conversion — payload: body 2,923 + schema 9,438, re-measured post-fix-round; unbudgeted at birth, v0.81.0 hard-cap-only) | 12,361 (no headroom) |
-| patterns-map-minimalism | 9,362 (first budget row, seeded [v0.102.0] schema conversion — payload: body 2,470 + schema 6,892; unbudgeted at birth, v0.68.0 hard-cap-only) | 9,362 (no headroom) |
-| patterns-model-tiering | 8,793 (first budget row, seeded [v0.102.0] schema conversion — payload: body 1,614 + schema 7,179, re-measured post-fix-round; unbudgeted at birth, v0.77.0 hard-cap-only) | 8,793 (no headroom) |
-| patterns-plan-minimalism | 8,594 (first budget row, seeded [v0.102.0] schema conversion — payload: body 2,812 + schema 5,782; unbudgeted at birth, v0.67.0 hard-cap-only) | 8,594 (no headroom) |
-| patterns-sound-loop | 10,933 (first budget row, seeded [v0.102.0] schema conversion — payload: body 2,022 + schema 8,911, re-measured post-fix-round; unbudgeted at birth, v0.70.0 hard-cap-only) | 10,933 (no headroom) |
-| patterns-transport-floor | 10,556 (first budget row, seeded [v0.102.0] schema conversion — payload: body 2,412 + schema 8,144; unbudgeted at birth, v0.71.0 hard-cap-only) | 10,556 (no headroom) |
-| testing-gap-finding | 19,382 (first budget row, seeded [v0.103.0] schema conversion — payload: body 5,271 + schema 14,111; unbudgeted at birth, v0.79.0 hard-cap-only) | 19,382 (no headroom) |
+| patterns-vertical-tdd | 15,775 (re-seeded [v0.106.0] CLI delivery, D10.6 — payload: body 5,896 + render 9,879; was 14,325 — re-seeded [v0.102.0] schema conversion — payload: body 5,145 + schema 9,180, re-measured post-fix-round; was 5,189/6,487 with a standing +294 ruled-HOLDS overage at body 6,781 — absorbed and superseded by this re-seed, trail in `.mochiko/strips/patterns-vertical-tdd.md` [v0.102.0] and the v0.80.0/v0.91.0 paragraphs below) | 15,775 (no headroom) |
+| review-brainstorm | 12,824 (re-seeded [v0.106.0] CLI delivery, D10.6 — payload: body 2,833 + render 9,991; was 11,470 — re-seeded [v0.100.0] schema conversion — payload: body 2,328 + schema 9,142, re-measured post-fix-round; was 2,497/3,122) | 12,824 (no headroom) |
+| review-feasibility | 12,220 (re-seeded [v0.106.0] CLI delivery, D10.6 — payload: body 2,721 + render 9,499; was 10,572 — re-seeded [v0.100.0] schema conversion — payload: body 2,195 + schema 8,377; was 1,893/2,367) | 12,220 (no headroom) |
+| review-plan-artifacts | 18,013 (re-seeded [v0.106.0] CLI delivery, D10.6 — payload: body 3,363 + render 14,650; was 17,890 — re-seeded [v0.100.0] schema conversion — payload: body 3,170 + schema 14,720; was 4,901/6,127) | 18,013 (no headroom) |
+| review-code-minimalism | 10,664 (re-seeded [v0.106.0] CLI delivery, D10.6 — payload: body 3,711 + render 6,953; was 8,449 — re-seeded [v0.100.0] schema conversion — payload: body 2,971 + schema 5,478, re-measured post-fix-round; was 3,689/4,612) | 10,664 (no headroom) |
+| review-sufficiency | 15,423 (re-seeded [v0.106.0] CLI delivery, D10.6 — payload: body 3,262 + render 12,161; was 14,950 — first budget row, seeded [v0.100.0] schema conversion — payload: body 2,966 + schema 11,984, re-measured post-fix-round; the +82 over the first seed is the lead-ruled F5 restored clause + the F4 `kind:` line; unbudgeted at birth, body 6,652 at v0.91.0) | 15,423 (no headroom) |
+| skill-review-common.yaml | 1,627 (family common file, budgeted once — seeded [v0.100.0] schema conversion; a log document, not a shipped file, from [v0.107.0] — see the note) | 1,627 (no headroom) |
+| authoring-architecture-store | 19,733 (re-seeded [v0.106.0] CLI delivery, D10.6 — payload: body 5,391 + render 14,342; was 18,876 — first budget row, seeded [v0.101.0] schema conversion — payload: body 4,904 + schema 13,972, re-measured post-fix-round; unbudgeted at birth, v0.81.0 hard-cap-only) | 19,733 (no headroom) |
+| authoring-epic | 14,062 (re-seeded [v0.106.0] CLI delivery, D10.6 — payload: body 3,129 + render 10,933; was 13,044 — first budget row, seeded [v0.101.0] schema conversion — payload: body 2,569 + schema 10,475; unbudgeted at birth, v0.72.0 hard-cap-only) | 14,062 (no headroom) |
+| skill-authoring-common.yaml | 1,285 (family common file, budgeted once — seeded [v0.101.0] schema conversion, re-measured after the epigraph-block label-line drop; a log document, not a shipped file, from [v0.107.0] — see the note) | 1,285 (no headroom) |
+| patterns-adopt-first | 14,242 (re-seeded [v0.106.0] CLI delivery, D10.6 — payload: body 3,061 + render 11,181; was 12,910 — first budget row, seeded [v0.102.0] schema conversion — payload: body 2,253 + schema 10,657; unbudgeted at birth, v0.73.0 build-cap-only) | 14,242 (no headroom) |
+| patterns-architecture-shelves | 14,493 (re-seeded [v0.106.0] CLI delivery, D10.6 — payload: body 4,003 + render 10,490; was 12,361 — first budget row, seeded [v0.102.0] schema conversion — payload: body 2,923 + schema 9,438, re-measured post-fix-round; unbudgeted at birth, v0.81.0 hard-cap-only) | 14,493 (no headroom) |
+| patterns-map-minimalism | 11,245 (re-seeded [v0.106.0] CLI delivery, D10.6 — payload: body 3,288 + render 7,957; was 9,362 — first budget row, seeded [v0.102.0] schema conversion — payload: body 2,470 + schema 6,892; unbudgeted at birth, v0.68.0 hard-cap-only) | 11,245 (no headroom) |
+| patterns-model-tiering | 10,852 (re-seeded [v0.106.0] CLI delivery, D10.6 — payload: body 2,633 + render 8,219; was 8,793 — first budget row, seeded [v0.102.0] schema conversion — payload: body 1,614 + schema 7,179, re-measured post-fix-round; unbudgeted at birth, v0.77.0 hard-cap-only) | 10,852 (no headroom) |
+| patterns-plan-minimalism | 10,824 (re-seeded [v0.106.0] CLI delivery, D10.6 — payload: body 3,834 + render 6,990; was 8,594 — first budget row, seeded [v0.102.0] schema conversion — payload: body 2,812 + schema 5,782; unbudgeted at birth, v0.67.0 hard-cap-only) | 10,824 (no headroom) |
+| patterns-sound-loop | 12,388 (re-seeded [v0.106.0] CLI delivery, D10.6 — payload: body 2,812 + render 9,576; was 10,933 — first budget row, seeded [v0.102.0] schema conversion — payload: body 2,022 + schema 8,911, re-measured post-fix-round; unbudgeted at birth, v0.70.0 hard-cap-only) | 12,388 (no headroom) |
+| patterns-transport-floor | 12,564 (re-seeded [v0.106.0] CLI delivery, D10.6 — payload: body 3,114 + render 9,450; was 10,556 — first budget row, seeded [v0.102.0] schema conversion — payload: body 2,412 + schema 8,144; unbudgeted at birth, v0.71.0 hard-cap-only) | 12,564 (no headroom) |
+| testing-gap-finding | 19,977 (re-seeded [v0.106.0] CLI delivery, D10.6 — payload: body 5,954 + render 14,023; was 19,382 — first budget row, seeded [v0.103.0] schema conversion — payload: body 5,271 + schema 14,111; unbudgeted at birth, v0.79.0 hard-cap-only) | 19,977 (no headroom) |
 
 The v0.63.0 floor-line additions (analysis-iterative, review-governance-intent,
 validation-constitution, review-specifications) and the v0.64.0 ones (review-brainstorm,
@@ -224,6 +224,39 @@ directories** — 8 review (v0.100.0) + 8 authoring (v0.101.0) + 9 patterns carr
 `grooming-operating-docs` · `testing-governance-injection` + the four patterns teachers);
 the `mochiko` router out of scope (D1). Rulings + disposition maps: the [v0.103.0]
 entries in each member's `.mochiko/strips/` file and the 2026-09-01 `DECISIONS.md` rows.
+
+**[v0.106.0] wave-5 CLI-delivery re-seeds — the budgeted quantity itself re-keys.** The thirty
+converted-skill rows above are re-seeded per `cli-schema-delivery` D10 clause 6 (`DECISIONS.md`
+2026-09-04): a converted skill reads no schema file at invoke, so its delivered-at-invoke payload
+is no longer body + `schema.yaml` but **the `SKILL.md` body plus the seven blocks `mochiko-cli`
+renders** — the preamble and the six family sections, measured after the `floors:` index line
+landed. The plugin's dependency-hook lines are excluded: they are the harness's output, not the
+primitive's. Budget = the measured payload exactly, **no +25% headroom**, the third seeding path's
+next use, unchanged in that respect from the [v0.100.0]–[v0.103.0] conversion re-seeds. Every row
+keeps its prior figure and prior payload split as history, per the standing convention. The two
+family common files (`skill-review-common.yaml` 1,627 · `skill-authoring-common.yaml` 1,285) are
+**untouched**: they still ship, and they are still budgeted once as their own primitives, but no
+converted skill reads them any more — the render resolves every `extends:` stub before the model
+sees it, so their bytes have left the converted members' payloads. Descriptions are byte-untouched
+by this wave; the only frontmatter change is the added `allowed-tools: Bash(mochiko-cli *)` grant,
+which is not a budgeted class. Family aggregates against the record's F3 baselines: review 116,609
+vs 119,895 (−2.7 %) · authoring 147,304 vs 150,576 (−2.2 %) · patterns 112,701 vs 95,858
+(+17.6 %) · dense five 88,380 vs 81,799 (+8.0 %) — the two overages pre-stated at the wave open as
+the eyes-open trade for deterministic delivery. Rulings + disposition maps: the [v0.106.0] entries
+in each member's `.mochiko/strips/` file and the 2026-09-04 `cli-schema-delivery` `DECISIONS.md`
+row.
+
+**[v0.107.0] the two family common rows are no longer shipped files — figures unchanged.** The
+wave-6 end state deleted every schema file from the plugin (`cli-schema-delivery` D9 wave 6,
+`DECISIONS.md` 2026-09-05), `skill-review-common.yaml` and `skill-authoring-common.yaml` among
+them. They are now **documents in the migration log**, resolved into every render before the model
+sees them, so the `.yaml` suffix in their row names is a historical name rather than a path on
+disk. This **supersedes the "they still ship" clause** in the [v0.106.0] block above, which was
+true when written. Their rows stay exactly as they are — 1,627 and 1,285, no headroom — re-read as
+**the budget of the shared block text**, not of a shipped primitive: the text still has a size
+worth holding, it is still budgeted once rather than per binding skill, and it is still absent
+from every member's payload because the render resolves each `extends:` stub. No figure on this
+page changes at wave 6, and no member row is re-seeded: the wave moved no block text.
 
 ## Skill descriptions
 

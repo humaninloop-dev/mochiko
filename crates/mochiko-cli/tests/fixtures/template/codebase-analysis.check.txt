@@ -1,0 +1,8 @@
+# Codebase Analysis (brownfield-setup) — checklist
+
+- [ ] Is the header present with generated timestamp, Mode brownfield-setup, and a Status of draft or confirmed?
+- [ ] Is Part 1 a factual, file-cited inventory covering project identity, directory structure, detected patterns (architecture, naming, error-handling, test), domain entities, and external dependencies — each finding one line and sourced?
+- [ ] Does Part 2 carry the strengths prose, the inconsistencies table with severities, the twelve-row Essential Floor Status table (present/partial/absent, file-cited evidence) with the category rollup, and the recommended constitution focus?
+- [ ] Is the Detection Method appendix present, naming the method per aspect (detect-stack.sh, directory pattern matching, ORM patterns, file sampling)?
+
+---

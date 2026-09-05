@@ -1,6 +1,7 @@
 ---
 name: authoring-user-stories
 description: This skill MUST be invoked when transforming a feature description into prioritized user stories — assigning P1/P2/P3 priority levels, authoring Given/When/Then acceptance scenarios, and specifying an independent test for each story. SHOULD also invoke when the work involves a user story, story prioritization (P1/P2/P3), acceptance scenarios, or breaking a large feature into separate, independently testable user journeys.
+allowed-tools: Bash(mochiko-cli *)
 ---
 
 # Authoring User Stories
@@ -10,28 +11,35 @@ prioritized by impact. This is a discipline-enforcing skill: the structured form
 to keep stories unambiguous, testable, and properly prioritized — shortcuts create
 ambiguous requirements that cause implementation failures.
 
-## Rules — load the schema first
+## Rules — delivered by mochiko-cli
 
-Your first action, before any authoring: **Read `schema.yaml` (this skill's own directory)
-and `../../schemas/skill-authoring-common.yaml` raw, in full, in the same declared first
-action** — schema, then common. The schema is the source of truth for this skill's binding
-rules, nested in six sections, each addressable by its section ID:
-`authoring-user-stories.sec.independence` · `authoring-user-stories.sec.scope` ·
-`authoring-user-stories.sec.inputs` · `authoring-user-stories.sec.artifact` ·
-`authoring-user-stories.sec.output` · `authoring-user-stories.sec.reserved`. Interpret it
-live: a rule's `kind:` names what it is, and an absent `kind:` reads `constraint`; a
-`pointer:` rule binds you to that file's or skill's procedure, referenced never restated;
-labels come from `plugins/mochiko/schemas/skill-labels.yaml`. A rule carrying
-`extends: authoring-common.<slug>` inherits text/labels/pointer from
-`skill-authoring-common.yaml` only — `class` and every absence-meaningful field are local —
-and the stub's `authoring-user-stories.*` ID stays the citable ID. The floor pin: the 4
-rules of `class: floor` are non-waivable. Before the first authoring step, state the floor
-count back — a skipped or partial read leaves that count blank: halt and surface it, and
-halt likewise if the schema's `class: floor` count disagrees with the pin.
+Your rules arrive below, rendered at fire by `mochiko-cli` from the migration log this plugin
+carries — one block per section. Every block opens with a version-triple line
+(`mochiko-cli rules authoring-user-stories · section <id> · binary <v> · grammar <g> · plugin <p>`) and
+closes with an end line (`mochiko-cli rules end · authoring-user-stories · <id> · <N> rules`). **Proceed
+only when every block carries both lines in that exact shape, from whichever channel delivered
+it — this slot, or the plugin's dependency hook on a Skill-tool call.** Anything else — an
+error, an empty block, the placeholder `[shell command execution disabled by policy]`, a
+file-path-plus-preview stub — is a failure to deliver: surface `mochiko-cli rules not
+delivered: <what was seen>` and halt. Never Read a schema file instead; there is no fallback.
+The `legend` in the preamble block is the reading grammar; a `pointer:` binds you to that
+file's or skill's procedure, referenced never restated.
+
+!`mochiko-cli rules authoring-user-stories --section preamble --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules authoring-user-stories --section authoring-user-stories.sec.independence --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules authoring-user-stories --section authoring-user-stories.sec.scope --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules authoring-user-stories --section authoring-user-stories.sec.inputs --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules authoring-user-stories --section authoring-user-stories.sec.artifact --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules authoring-user-stories --section authoring-user-stories.sec.output --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules authoring-user-stories --section authoring-user-stories.sec.reserved --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+
+Before the first procedural step, state back the floor count the preamble's `class: floor` pin
+prints and the ids its `floors:` line lists; a blank or partial read-back is a skipped read —
+halt and surface it.
 
 ## User Story Format
 
-The story lands in `spec.md`, every field to the schema's density rules. The exact
+The story lands in `spec.md`, every field to the delivered density rules. The exact
 structure:
 
 ```markdown

@@ -8,6 +8,69 @@ One entry per session directory under `.mochiko/brainstorms/<topic-slug>/`, **ne
 
 ---
 
+## `cli-schema-delivery` — CLI-served schema store: migration log + replay, `.md` points at the CLI, no raw-file fallback, dependency-halt hooks
+- **When:** 2026-09-03 · **Status:** accepted · pair cold review, lens-split (decision
+  quality / record integrity), blind-map two-message dispatch (maps 40 + 52 angles; index
+  fence held whole; the sibling record on `main` read read-only for relation checks):
+  both `critical-gaps` — lens A 3 Critical / 10 Important / 8 Minor, lens B 2 / 15 / 10;
+  48 survivors → cross-set merge into four Critical clusters (K1 delivery-halt mechanism ·
+  K2 GI-020 transition + GI-019 route · K3 coverage: the maintainer-side-only road, routed
+  **rule inline** · K4 distribution menu incomplete) + the store-engine question, each
+  user-ruled "as recommended", the I/M batch likewise; lead cold re-read of every
+  external claim at code.claude.com (all confirmed, two facts added: hooks fail-open;
+  oversized `!` output arrives as a file path); verify round 1 NOT CLEAN (6 blocking + 3
+  nits, all lead-repaired) → round 2 three nits repaired, closed; D3 precedence clause
+  confirmed at acceptance; accepted 2026-09-03 (worktree `cli-context`)
+- **Artifacts:** [record.md](cli-schema-delivery/record.md) (canonical — ground facts
+  F1–F11 incl. the source-verified F9 platform block, constraints, ranked drivers + roads
+  rejected at the frame, D1–D11 as amended, build surface by wave, evidence honesty, open
+  threads, Q1–Q13 trail, review + disposition + verify trail) ·
+  [review-lens-a.md](cli-schema-delivery/review-lens-a.md) ·
+  [review-lens-b.md](cli-schema-delivery/review-lens-b.md)
+- **About:** move schema and content delivery from raw-Read YAML (6 command pairs, 30
+  skill pairs, 8 templates, common/label files) to a CLI-served migration log. Ruled
+  (D1–D11): ordered text migration log = truth, replay in memory at fire, cache in
+  `${CLAUDE_PLUGIN_DATA}` on measured need, **SQLite deferred** (user-ruled per
+  adopt-first D4) · full schema class + provenance as anchor-required migration grammar;
+  prose stays markdown · `!` preprocessing injects `mochiko-cli rules <primitive>`; halt
+  keys on a positive version line from either channel; `allowed-tools` grant; **no file
+  fallback, ever** · user-installed binary (cargo/brew; `Contested`; npm-lockfile road
+  recorded unverified; Windows only with Git Bash; access-loss class named) ·
+  grammar-versioned log + binary range · hard constraints at apply, advisory reports,
+  Python checkers retire after a 268-probe port, audit unit named · hooks: `SessionStart`
+  presence + **dependency-halt hooks** (`UserPromptExpansion` on `mochiko:*`, `PreToolUse`
+  on `Skill`) gating on absence only; behavior gating declined · four test layers with a
+  plugin contract suite as the release gate · six waves, wave-0 `PATH`-visibility abort,
+  wave 6 deletes shipped snapshots · GI-020 superseded by a `/mochiko:setup` amend run with
+  a transition clause (MAJOR); GI-019 widened admission argued and routed through the same
+  run (`Assumed`); GI-008 untouched; template-guidance D8/D1/D3, content-schema D1 + the
+  crate-extension reservations superseded/discharged.
+- **Landed:** DECISIONS.md row (2026-09-03, "ruled — wave 0 done, wave 1 pending") ·
+  BACKLOG "CLI schema-delivery build" section (six-wave build item; **wave 0 DONE
+  2026-09-03**, abort not tripped — [wave0-probe-report.md](cli-schema-delivery/wave0-probe-report.md);
+  D3 + D8 amended post-acceptance, user-ruled) · **wave 1 BUILT + ACCEPTED 2026-09-04**
+  (`wave1-plan.md`, `wave1-reports/`; 246 tests) · **1b family-2 checks BUILT 2026-09-04**
+  (300 tests; wave 1 closed) · **wave 2 DONE 2026-09-04 — governance v3.0.0 via `/mochiko:setup`
+  AM-2** (`wave2-amendments.md`, `wave2-reports/`; DECISIONS row 2026-09-04) · **wave 3
+  (pilot `brainstorm`) LANDED + ACCEPTED 2026-09-04 at v0.104.0** ([wave3-plan.md](cli-schema-delivery/wave3-plan.md),
+  [wave3-reports/](cli-schema-delivery/wave3-reports/); F14 hooks measured, branch B; abort
+  criteria not tripped; governance PATCH v3.0.1; DECISIONS row 2026-09-04) · **wave 4 LANDED + ACCEPTED
+  2026-09-04 at v0.105.0** ([wave4-plan.md](cli-schema-delivery/wave4-plan.md),
+  [wave4-reports/](cli-schema-delivery/wave4-reports/); all six commands converted; migration
+  0002; abort criterion (1) tripped on three commands, the plan-§8 diagnostic ran (16/16
+  answering replicates exact — a bar property), **criterion (1) re-keyed** to the deterministic
+  floor-delivery assert (PATCH v3.0.2) and wave 5 opened; DECISIONS rows 2026-09-04) ·
+  **wave 5 LANDED 2026-09-04 at v0.106.0** ([wave5-plan.md](cli-schema-delivery/wave5-plan.md),
+  [wave5-reports/](cli-schema-delivery/wave5-reports/); all 30 skills converted; `floors:`
+  line; criterion (1) clear on all 36; F15 hook fix; DECISIONS row 2026-09-04) · **wave 6 LANDED
+  2026-09-05 at v0.107.0 — the end state** ([wave6-plan.md](cli-schema-delivery/wave6-plan.md),
+  [wave6-reports/](cli-schema-delivery/wave6-reports/); no schema file ships; `doc` command;
+  migration 0003; views at `.mochiko/schema-views/`; PATCH v3.0.3; DECISIONS row 2026-09-05);
+  **the six-wave build is closed**;
+  the wave-2 publish tail still owed + the three delivery
+  watches annotated as superseded pending wave 6 · ROADMAP: folded into the
+  Template-schema CLI Next row (cap held at 7).
+
 ## `producer-plan-enforcement` — enforcing plan-first, read-only producer planning; grader + Delivery Manager QA of the seat plan
 - **When:** 2026-09-03 · **Status:** accepted (2026-09-03); landed as the 2026-09-03 `DECISIONS.md`
   row (+ supersession annotations on the 2026-08-02 realignment and 2026-08-13 charter-ritual

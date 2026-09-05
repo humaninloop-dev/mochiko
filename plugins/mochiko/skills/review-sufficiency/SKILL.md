@@ -1,6 +1,7 @@
 ---
 name: review-sufficiency
 description: This skill MUST be invoked when grading a capability-batch's guidance sufficiency at `/mochiko:implement` entry — the ten-clause check per selected work row, collapsing to a three-clause form per delta card under delta scope, over the spec, the architecture store, and the product baselines, emitting a binding per-row `sufficient` verdict or the gap list that scopes the in-run design phase. SHOULD also invoke on 'sufficiency check', 'enough guidance', 'sufficiency verdict', or 'gap list'. Never reads code, `tasks.md`, `**TEST:**` cases, or cycle reports. Defaults to FAIL — a row is insufficient until every clause is graded; run by a seat that authored none of the graded sources.
+allowed-tools: Bash(mochiko-cli *)
 ---
 
 # Grading Guidance Sufficiency
@@ -11,32 +12,31 @@ the unit is the map's own unit of scope — and its answer either licenses the b
 or hands the design phase an exact, named scope. The design phase that closes a gap is a
 different seat.
 
-## Rules — load the schema first
+## Rules — delivered by mochiko-cli
 
-Your first action at invoke, before any grading step: **Read `schema.yaml` (this skill's own
-directory) and `../../schemas/skill-review-common.yaml` raw, in full, in the same first
-action.** The schema is the source of truth for this skill's binding rules; this body carries
-identity and procedure only. Its rules are nested in six sections, each addressable by its
-section ID: `review-sufficiency.sec.independence` (author/grader separation) ·
-`review-sufficiency.sec.scope` (the grading unit and the delta collapse) ·
-`review-sufficiency.sec.inputs` (the read fence and its one carve) ·
-`review-sufficiency.sec.verdict` (the gate semantics, the ten clauses, the grading floors) ·
-`review-sufficiency.sec.output` (the report contract) · `review-sufficiency.sec.reserved`
-(what only the user rules).
+Your rules arrive below, rendered at fire by `mochiko-cli` from the migration log this plugin
+carries — one block per section. Every block opens with a version-triple line
+(`mochiko-cli rules review-sufficiency · section <id> · binary <v> · grammar <g> · plugin <p>`) and
+closes with an end line (`mochiko-cli rules end · review-sufficiency · <id> · <N> rules`). **Proceed
+only when every block carries both lines in that exact shape, from whichever channel delivered
+it — this slot, or the plugin's dependency hook on a Skill-tool call.** Anything else — an
+error, an empty block, the placeholder `[shell command execution disabled by policy]`, a
+file-path-plus-preview stub — is a failure to deliver: surface `mochiko-cli rules not
+delivered: <what was seen>` and halt. Never Read a schema file instead; there is no fallback.
+The `legend` in the preamble block is the reading grammar; a `pointer:` binds you to that
+file's or skill's procedure, referenced never restated.
 
-Read the rule grammar along with the rules: a rule's `kind:` names what it is, and an absent
-`kind:` reads `constraint`; a rule carrying `when:` binds only where its terms hold against
-the schema's declared `conditions:`, except that a `class: floor` rule is always read and
-always delivered — `when:` gates when its obligation applies, never whether it reaches you.
-Where a rule carries `extends: review-common.<slug>`, the stub inherits `text` / `labels` /
-`pointer` only from `skill-review-common.yaml` — `class` and `kind` are always this schema's
-own, and the stub's `review-sufficiency.*` ID stays the citable ID; `${verdict}` in inherited
-text substitutes from this schema's `vars:`. Labels come from
-`../../schemas/skill-labels.yaml`.
+!`mochiko-cli rules review-sufficiency --section preamble --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules review-sufficiency --section review-sufficiency.sec.independence --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules review-sufficiency --section review-sufficiency.sec.scope --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules review-sufficiency --section review-sufficiency.sec.inputs --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules review-sufficiency --section review-sufficiency.sec.verdict --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules review-sufficiency --section review-sufficiency.sec.output --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules review-sufficiency --section review-sufficiency.sec.reserved --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
 
-The schema carries **the 8 rules of `class: floor`**. State the floor count back before the
-first procedural step; a skipped or partial schema read is a halt-and-surface, never a silent
-continue.
+Before the first procedural step, state back the floor count the preamble's `class: floor` pin
+prints and the ids its `floors:` line lists; a blank or partial read-back is a skipped read —
+halt and surface it.
 
 ## Procedure
 

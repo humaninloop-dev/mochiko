@@ -1,6 +1,7 @@
 ---
 name: authoring-architecture-store
 description: This skill MUST be invoked for any write to the product architecture store at `.mochiko/product/architecture/` — spine and `AX-XXX` row grammar, element lifecycle statuses, the derived repo-root `ARCHITECTURE.md` index (single writer), landing folds plus the built-vs-approved landing diff, scoped drift probes, the orphan rule, and first-visit migration. SHOULD also invoke on 'architecture store', 'AX-XXX', 'architecture spine', 'health view', 'architecture drift', or 'built vs approved'.
+allowed-tools: Bash(mochiko-cli *)
 ---
 
 # Authoring the Architecture Store
@@ -20,28 +21,31 @@ kills the **artifact** diff — there is no separate "approved" document to reco
 "current" one. It does not kill the **code-vs-claim** diff: what the store says was built can
 still be false, and that is exactly what the scoped drift probe exists for.
 
-## Rules — load the schema first
+## Rules — delivered by mochiko-cli
 
-Your first action, before any store touch: **Read `schema.yaml` (this skill's own
-directory) and `../../schemas/skill-authoring-common.yaml` raw, in full, in the same
-declared first action** — schema, then common. The schema is the source of truth for this
-skill's binding rules, nested in six sections, each addressable by its section ID:
-`authoring-architecture-store.sec.independence` · `authoring-architecture-store.sec.scope` ·
-`authoring-architecture-store.sec.inputs` ·
-`authoring-architecture-store.sec.artifact` · `authoring-architecture-store.sec.output` ·
-`authoring-architecture-store.sec.reserved`. Interpret it live: a rule's `kind:` names what
-it is, and an absent `kind:` reads `constraint`; a rule carrying `when:` binds only where
-its terms hold against the schema's declared `conditions:`, except that a `class: floor`
-rule is always read and always delivered — `when:` gates when its obligation applies, never
-whether it reaches you; a `pointer:` rule binds you to that file's or skill's procedure,
-referenced never restated; `${var}` substitutes from this schema's `vars:` at read time;
-labels come from `plugins/mochiko/schemas/skill-labels.yaml`. A rule carrying
-`extends: authoring-common.<slug>` inherits text/labels/pointer from
-`skill-authoring-common.yaml` only — `class` and every absence-meaningful field are local —
-and the stub's `authoring-architecture-store.*` ID stays the citable ID. The floor pin: the
-9 rules of `class: floor` are non-waivable. Before the first store-touching step, state the
-floor count back — a skipped or partial read leaves that count blank: halt and surface it,
-and halt likewise if the schema's `class: floor` count disagrees with the pin.
+Your rules arrive below, rendered at fire by `mochiko-cli` from the migration log this plugin
+carries — one block per section. Every block opens with a version-triple line
+(`mochiko-cli rules authoring-architecture-store · section <id> · binary <v> · grammar <g> · plugin <p>`) and
+closes with an end line (`mochiko-cli rules end · authoring-architecture-store · <id> · <N> rules`). **Proceed
+only when every block carries both lines in that exact shape, from whichever channel delivered
+it — this slot, or the plugin's dependency hook on a Skill-tool call.** Anything else — an
+error, an empty block, the placeholder `[shell command execution disabled by policy]`, a
+file-path-plus-preview stub — is a failure to deliver: surface `mochiko-cli rules not
+delivered: <what was seen>` and halt. Never Read a schema file instead; there is no fallback.
+The `legend` in the preamble block is the reading grammar; a `pointer:` binds you to that
+file's or skill's procedure, referenced never restated.
+
+!`mochiko-cli rules authoring-architecture-store --section preamble --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules authoring-architecture-store --section authoring-architecture-store.sec.independence --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules authoring-architecture-store --section authoring-architecture-store.sec.scope --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules authoring-architecture-store --section authoring-architecture-store.sec.inputs --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules authoring-architecture-store --section authoring-architecture-store.sec.artifact --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules authoring-architecture-store --section authoring-architecture-store.sec.output --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules authoring-architecture-store --section authoring-architecture-store.sec.reserved --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+
+Before the first procedural step, state back the floor count the preamble's `class: floor` pin
+prints and the ids its `floors:` line lists; a blank or partial read-back is a skipped read —
+halt and surface it.
 
 ## Store layout
 

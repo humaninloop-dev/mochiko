@@ -100,9 +100,8 @@ grade is the draft in the package, not the store.
 
 Ids are store-wide unique: `SPN-XXX` for spine elements (kind: container | boundary | flow),
 `AX-XXX` for concern rows. Row shape — required core fields, legal status values, id uniqueness — is owned by the store
-schema (`mochiko-cli template architecture-store --check`, or Read
-`plugins/mochiko/schemas/architecture-store.yaml` raw when the binary is absent). Grade the
-checks above against that shape; never invent field names here.
+schema (`mochiko-cli template architecture-store --check`). Grade the checks above against that
+shape; never invent field names here.
 
 > **Qualifying-flow coverage is keyed to ordering/failure complexity, NOT story priority.** A check
 > that reads "every P1 journey has a sequence diagram" under-enforces exactly the ordering-critical

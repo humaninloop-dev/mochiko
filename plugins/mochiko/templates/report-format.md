@@ -75,7 +75,7 @@ fields are not.
 9. **Prose on a clean report is a defect — and every collecting lead enforces it.**
    `status: pass` plus body content outside rule 2's set is **not a clean report**: it
    fails the deterministic-and-clean clearing conditions (the dispatching command's
-   devolved-branch terms — `plugins/mochiko/schemas/implement.yaml`'s `impl.escalation-batching` /
+   devolved-branch terms — the `impl.escalation-batching` /
    `impl.finding-severity-routing` rules) and returns to the
    lead instead of devolving. The check is not the cycle checkpoint's alone: **any lead
    collecting any report class** (feasibility, review, disclosure included) reads it

@@ -17,6 +17,107 @@ Wave-1 body strip landed 2026-07-25 at v0.25.0 (batch-ratified): body 274 → 21
 23% — **under the 30–70 never-stripped band**; per R3 the under-band second pass generates the
 survivor-provenance (KEPT) entries below rather than forcing cuts.
 
+<!-- Wave context: wave 5 of the CLI schema-delivery build (v0.106.0) — the review family
+converts: each member's rules are rendered at fire by `mochiko-cli` from the migration log the
+plugin carries at `plugins/mochiko/migrations/`, and the skill reads no schema file. Ruling for
+every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3 as amended
+(the skill-side form — `!` runs in `SKILL.md` and at subagent preload), D7 (the `PreToolUse`
+`Skill` limb), D9 (families in the arc's order), and D10 clause 6 (the budgeted quantity re-keys
+to body + rendered output), with the wave-open rulings in that session's `wave5-plan.md` and the
+`DECISIONS.md` 2026-09-04 row. Pre-edit verbatim text:
+`git show 7d098b9:plugins/mochiko/skills/validation-constitution/SKILL.md`. -->
+
+<!-- Wave context: wave 6 of the CLI schema-delivery build (v0.107.0) — the end state. No schema
+file ships in the plugin: the 20 files under `plugins/mochiko/schemas/` and the 30
+`skills/*/schema.yaml` were deleted, and every delivery they served now has a CLI form. Ruling for
+the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9 wave 6, with
+the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
+`git show 62aa99d:plugins/mochiko/skills/validation-constitution/references/QUALITY-CHECKLIST.md`. -->
+
+## [v0.107.0] the checklist preamble's raw-Read fallback for the governance-surfaces schema
+
+- **Disposition:** superseded → the two CLI forms already named in the same sentence
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/cli-schema-delivery/record.md`
+  D9 wave 6; `DECISIONS.md` 2026-09-05)
+- **Content:** "; when the binary is absent, Read
+  `plugins/mochiko/schemas/governance-surfaces.yaml` raw"
+- **Kept deliberately:** both surviving arms — `mochiko-cli template governance-surfaces` for the
+  shapes and `--check` for the mirror-checklist view — and the module-parameterization instruction
+  that follows, which is the sentence's operative content.
+
+## [v0.106.0] the Rules block — raw schema Read superseded by CLI delivery
+
+- **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation
+  halt clause plus seven `!` lines, one per rendered block (the preamble and the six sections),
+  and the read-back sentence.
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3 as amended, the
+  skill-side form)
+- **Content:** verbatim —
+
+  ```
+  ## Rules — load the schema first
+
+  Your first action at invoke, before any grading step: **Read `schema.yaml` (this skill's own
+  directory) and `../../schemas/skill-review-common.yaml` raw, in full, in the same first
+  action.** The schema is the source of truth for this skill's binding rules; this body carries
+  identity and procedure only. Its rules are nested in six sections, each addressable by its
+  section ID: `validation-constitution.sec.independence` (author/grader separation) ·
+  `validation-constitution.sec.scope` (jurisdiction and the excess-governance line) ·
+  `validation-constitution.sec.inputs` (the from-file input set and checklist assembly) ·
+  `validation-constitution.sec.verdict` (the binary posture, the bump grammar, the grading
+  floors) · `validation-constitution.sec.output` (the VALIDATION RESULT contract) ·
+  `validation-constitution.sec.reserved` (the skip path only the user rules).
+
+  Read the rule grammar along with the rules: a rule's `kind:` names what it is, and an absent
+  `kind:` reads `constraint`. Where a rule carries `extends: review-common.<slug>`, the stub
+  inherits `text` / `labels` / `pointer` only from `skill-review-common.yaml` — `class` and
+  `kind` are always this schema's own, and the stub's `validation-constitution.*` ID stays the
+  citable ID; `${verdict}` in inherited text substitutes from this schema's `vars:`. Labels
+  come from `../../schemas/skill-labels.yaml`. A `pointer:` rule binds you to that file's
+  content, referenced never restated.
+
+  The schema carries **the 14 rules of `class: floor`**. State the floor count back before the
+  first procedural step; a skipped or partial schema read is a halt-and-surface, never a silent
+  continue.
+  ```
+
+- **Kept deliberately:** everything outside this section, byte for byte — the title, the opening
+  paragraph, and every procedural section. The block's substance survives in the render: the six
+  section IDs are now the six `--section` arguments, and the interpretation grammar the block
+  taught is printed as the preamble's `legend` with every fire. The per-section glosses this
+  block carried are covered by the render, whose `sections` line prints a title per section and
+  whose empty sections carry a `note:` giving the reason. The "this body carries identity and
+  procedure only" clause is dropped: it stated a scope rather than an obligation, and the new
+  halt paragraph states the same split. The `extends:` stub resolution and the family
+  common-file co-Read are discharged by the render, which resolves every stub before the model
+  sees it.
+- **Consumers assessed:** the family common file
+  `plugins/mochiko/schemas/skill-review-common.yaml` is unchanged and still bound by every
+  unconverted consumer; nothing shared leaves. The block was this skill's own text.
+
+## [v0.106.0] the hand-pinned `class: floor` count
+
+- **Disposition:** superseded → the CLI-printed pin. The count is the `- class: floor · N rules`
+  line under `pins` in the preamble block, and the `floors:` line beneath it lists the ids; the
+  read-back sentence now cites both rather than carrying a number of its own.
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3, "the counts are computed
+  and printed by the CLI, never hand-pinned"; the wave-4 re-key ruling adding the `floors:` index)
+- **Content:** verbatim —
+
+  ```
+  The schema carries **the 14 rules of `class: floor`**. State the floor count back before the
+  first procedural step; a skipped or partial schema read is a halt-and-surface, never a silent
+  continue.
+  ```
+
+- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6 as amended),
+  re-keyed from a hand-pinned number to the printed pin and its id list — the skill still states
+  the floor set back before its first procedural step, and a blank or partial read-back still
+  halts. The independent second number the `.md` used to hold is booked as a loss, per D3's own
+  rationale; the contract suite's `assert_floor_delivery` now carries what it used to check.
+- **Consumers assessed:** `.claude/rules/mochiko/primitive-edits.md` skill-pair criterion 3, which
+  demanded the hand-pinned count — amended in this same wave to branch on a converted skill.
+
 ## [v0.100.0] Skill-content-schema conversion — body obligations moved to `schema.yaml`; the pair is now the graded unit
 
 Wave context: skill-content-schema D1–D9 as amended (`.mochiko/brainstorms/skill-content-schema/record.md`,

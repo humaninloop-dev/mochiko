@@ -1,0 +1,6 @@
+# Features Index (FEATURES.md) — checklist
+
+- [ ] Is the header present with the capability-peer framing (peer of the architecture store), the entry-file pointer convention, and the four-status legend?
+- [ ] Is the index one linked line per capability (ID · name · status · one-breath hook), ordered newest-relevant first, with work rows as `↳` sublines, `unrefined` stubs marked `proposed (unrefined)`, and no parent/leaf nesting or premature domain headers below the ~9 cap?
+
+---

@@ -1,0 +1,8 @@
+{
+  "name": "mochiko-contract-probe",
+  "version": "0.0.1",
+  "description": "Contract-suite fixture plugin. Never shipped; carries one command with one ! line.",
+  "commands": [
+    "./commands/rules-probe.md"
+  ]
+}

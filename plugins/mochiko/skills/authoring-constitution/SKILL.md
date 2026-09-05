@@ -1,6 +1,7 @@
 ---
 name: authoring-constitution
 description: This skill MUST be invoked when authoring or amending a project's governance surface set from a ratified session synthesis (`.mochiko/memory/governance-intent.md`), landing principles on native Claude Code surfaces; there is NO constitution.md. SHOULD also invoke when the work concerns principle enforcement, compliance modules, floor waivers, or an Essential Floor. The single governance-authoring skill for BOTH greenfield and brownfield projects — no separate brownfield skill.
+allowed-tools: Bash(mochiko-cli *)
 ---
 
 # Authoring Constitution — Governance on Native Surfaces
@@ -22,28 +23,31 @@ The synthesis is a **traceable contract, not a brief** — the floor is asserted
 expression session-shaped; formulation is where this skill's judgment lives, and the
 routing IS part of formulation quality.
 
-## Rules — load the schema first
+## Rules — delivered by mochiko-cli
 
-Your first action, before any authoring step: **Read `schema.yaml` (this skill's own
-directory) and `../../schemas/skill-authoring-common.yaml` raw, in full, in the same
-declared first action** — schema, then common. The schema is the source of truth for this
-skill's binding rules, nested in six sections, each addressable by its section ID:
-`authoring-constitution.sec.independence` · `authoring-constitution.sec.scope` ·
-`authoring-constitution.sec.inputs` · `authoring-constitution.sec.artifact` ·
-`authoring-constitution.sec.output` · `authoring-constitution.sec.reserved`. Interpret it
-live: a rule's `kind:` names what it is, and an absent `kind:` reads `constraint`; a rule
-carrying `when:` binds only where its terms hold against the schema's declared
-`conditions:`, except that a `class: floor` rule is always read and always delivered —
-`when:` gates when its obligation applies, never whether it reaches you; a `pointer:` rule
-binds you to that file's or skill's procedure, referenced never restated; `${var}`
-substitutes from this schema's `vars:` at read time; labels come from
-`plugins/mochiko/schemas/skill-labels.yaml`. A rule carrying
-`extends: authoring-common.<slug>` inherits text/labels/pointer from
-`skill-authoring-common.yaml` only — `class` and every absence-meaningful field are local —
-and the stub's `authoring-constitution.*` ID stays the citable ID. The floor pin: the 12
-rules of `class: floor` are non-waivable. Before the first authoring step, state the floor
-count back — a skipped or partial read leaves that count blank: halt and surface it, and
-halt likewise if the schema's `class: floor` count disagrees with the pin.
+Your rules arrive below, rendered at fire by `mochiko-cli` from the migration log this plugin
+carries — one block per section. Every block opens with a version-triple line
+(`mochiko-cli rules authoring-constitution · section <id> · binary <v> · grammar <g> · plugin <p>`) and
+closes with an end line (`mochiko-cli rules end · authoring-constitution · <id> · <N> rules`). **Proceed
+only when every block carries both lines in that exact shape, from whichever channel delivered
+it — this slot, or the plugin's dependency hook on a Skill-tool call.** Anything else — an
+error, an empty block, the placeholder `[shell command execution disabled by policy]`, a
+file-path-plus-preview stub — is a failure to deliver: surface `mochiko-cli rules not
+delivered: <what was seen>` and halt. Never Read a schema file instead; there is no fallback.
+The `legend` in the preamble block is the reading grammar; a `pointer:` binds you to that
+file's or skill's procedure, referenced never restated.
+
+!`mochiko-cli rules authoring-constitution --section preamble --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules authoring-constitution --section authoring-constitution.sec.independence --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules authoring-constitution --section authoring-constitution.sec.scope --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules authoring-constitution --section authoring-constitution.sec.inputs --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules authoring-constitution --section authoring-constitution.sec.artifact --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules authoring-constitution --section authoring-constitution.sec.output --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules authoring-constitution --section authoring-constitution.sec.reserved --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+
+Before the first procedural step, state back the floor count the preamble's `class: floor` pin
+prints and the ids its `floors:` line lists; a blank or partial read-back is a skipped read —
+halt and surface it.
 
 ## Two modes, one shared core
 
@@ -94,7 +98,7 @@ superseded by this table):
 Existing codebases have implicit conventions worth preserving (the Emergent Ceiling) but may
 lack foundational governance (the Essential Floor). Read the codebase analysis for
 **"Strengths to Preserve"** (ceiling candidates) and the **Essential-Floor status**
-(present / partial / absent per category); the ceiling-vs-debt call rides the schema's
+(present / partial / absent per category); the ceiling-vs-debt call rides the delivered
 ceiling test.
 
 ## Related (cross-cluster; referenced, not mounted)

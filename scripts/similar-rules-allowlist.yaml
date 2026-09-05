@@ -1,4 +1,4 @@
-# Keep-distinct adjudications for scripts/find-similar-rules.py (near-dup convergence
+# Keep-distinct adjudications for the similar-rule detector in `mochiko-cli` (near-dup convergence
 # ruling R6, .mochiko/decisions/2026-08-28-near-dup-convergence.md, DECISIONS.md
 # 2026-08-28). Every suppressed edge was adjudicated at the v0.99.0 convergence wave:
 # the pair reads as similar to the detector but was ruled (or assessed) distinct, with

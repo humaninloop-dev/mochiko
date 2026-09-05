@@ -1,6 +1,7 @@
 ---
 name: authoring-requirements
 description: This skill MUST be invoked when authoring the functional-requirements layer of a feature specification — technology-agnostic functional requirements in FR-XXX format, edge cases, and measurable success criteria in SC-XXX format. SHOULD also invoke when the work involves 'functional requirements', 'FR-', 'success criteria', 'SC-', 'RFC 2119', 'MUST SHOULD MAY', or 'edge cases'.
+allowed-tools: Bash(mochiko-cli *)
 ---
 
 # Authoring Requirements
@@ -13,30 +14,34 @@ Worked example of the constraint-vs-posture floor
 is a storage posture wearing constraint clothes when the real requirement is "retrieval
 is locally computable."
 
-## Rules — load the schema first
+## Rules — delivered by mochiko-cli
 
-Your first action at invoke, before any requirement is drafted: **Read `schema.yaml`
-(this skill's own directory) and `../../schemas/skill-authoring-common.yaml` raw, in
-full, in the same first action.** The schema is the source of truth for this skill's
-binding rules; this body carries identity and teaching only. Its rules are nested in six
-sections, each addressable by its section ID: `authoring-requirements.sec.independence`
-(empty by design) · `authoring-requirements.sec.scope` (the PM-frame boundary and what
-routes away) · `authoring-requirements.sec.inputs` (empty by design) ·
-`authoring-requirements.sec.artifact` (the FR/SC/edge-case/entity grammar and its
-floors) · `authoring-requirements.sec.output` (the advisory format check) ·
-`authoring-requirements.sec.reserved` (decisions reserved to the user).
+Your rules arrive below, rendered at fire by `mochiko-cli` from the migration log this plugin
+carries — one block per section. Every block opens with a version-triple line
+(`mochiko-cli rules authoring-requirements · section <id> · binary <v> · grammar <g> · plugin <p>`) and
+closes with an end line (`mochiko-cli rules end · authoring-requirements · <id> · <N> rules`). **Proceed
+only when every block carries both lines in that exact shape, from whichever channel delivered
+it — this slot, or the plugin's dependency hook on a Skill-tool call.** Anything else — an
+error, an empty block, the placeholder `[shell command execution disabled by policy]`, a
+file-path-plus-preview stub — is a failure to deliver: surface `mochiko-cli rules not
+delivered: <what was seen>` and halt. Never Read a schema file instead; there is no fallback.
+The `legend` in the preamble block is the reading grammar; a `pointer:` binds you to that
+file's or skill's procedure, referenced never restated.
 
-Read the rule grammar along with the rules: a rule's `kind:` names what it is, and an
-absent `kind:` reads `constraint`. Where a rule carries `extends:
-authoring-common.<slug>`, the stub inherits `text` / `labels` / `pointer` only from
-`skill-authoring-common.yaml` — `class` and `kind` are always this schema's own, and the
-stub's `authoring-requirements.*` ID stays the citable ID. Labels come from
-`../../schemas/skill-labels.yaml`. A `pointer:` rule binds you to that file's or
-script's content, referenced never restated.
+!`mochiko-cli rules authoring-requirements --section preamble --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules authoring-requirements --section authoring-requirements.sec.independence --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules authoring-requirements --section authoring-requirements.sec.scope --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules authoring-requirements --section authoring-requirements.sec.inputs --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules authoring-requirements --section authoring-requirements.sec.artifact --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules authoring-requirements --section authoring-requirements.sec.output --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules authoring-requirements --section authoring-requirements.sec.reserved --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
 
-The schema carries **the 4 rules of `class: floor`**. State the floor count back before
-the first procedural step; a skipped or partial schema read is a halt-and-surface, never
-a silent continue.
+Before the first procedural step, state back the floor count the preamble's `class: floor` pin
+prints and the ids its `floors:` line lists; a blank or partial read-back is a skipped read —
+halt and surface it.
+
+A `pointer:` here may bind you to a script's content as well as a file's or skill's
+procedure — referenced, never restated.
 
 ## Functional Requirements Format
 

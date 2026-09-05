@@ -6,6 +6,102 @@ Entry formats: `strips/README.md`. Wave context: [v0.28.0] entries — skill-suc
 `.mochiko/brainstorms/workflow-token-reduction/record.md` D4 + the wave-2 rulings R1–R4/T2;
 ratified 2026-07-24).
 
+<!-- Wave context: wave 5 of the CLI schema-delivery build (v0.106.0) — the authoring family
+converts: each member's rules are rendered at fire by `mochiko-cli` from the migration log the
+plugin carries at `plugins/mochiko/migrations/`, and the skill reads no schema file. Ruling for
+every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3 as amended
+(the skill-side form — `!` runs in `SKILL.md` and at subagent preload), D7 (the `PreToolUse`
+`Skill` limb), D9 (families in the arc's order), and D10 clause 6 (the budgeted quantity re-keys
+to body + rendered output), with the wave-open rulings in that session's `wave5-plan.md` and the
+`DECISIONS.md` 2026-09-04 row. Pre-edit verbatim text:
+`git show 7d098b9:plugins/mochiko/skills/authoring-technical-requirements/SKILL.md`. -->
+
+<!-- Wave context: wave 6 of the CLI schema-delivery build (v0.107.0) — the end state. No schema
+file ships in the plugin: the 20 files under `plugins/mochiko/schemas/` and the 30
+`skills/*/schema.yaml` were deleted, and every delivery they served now has a CLI form. Ruling for
+the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9 wave 6, with
+the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
+`git show 62aa99d:plugins/mochiko/skills/authoring-technical-requirements/references/ARTIFACT-TEMPLATES.md`. -->
+
+## [v0.107.0] the NFR row-shape clause's raw-Read fallback for the architecture-store schema
+
+- **Disposition:** superseded → the CLI form `mochiko-cli template architecture-store`
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/cli-schema-delivery/record.md`
+  D9 wave 6; `DECISIONS.md` 2026-09-05)
+- **Content:** ", or Read `plugins/mochiko/schemas/architecture-store.yaml` raw when the binary is
+  absent"
+- **Kept deliberately:** the whole of the surrounding rule — that there is no `nfrs.md` template,
+  that an NFR-XXX lives as fields on its concern row so a concern has one home, the division
+  between the store's row shape and this skill's grammar, and the design-time delta path with its
+  never-edited-into-ruled-truth-in-place clause.
+
+## [v0.106.0] the Rules block — raw schema Read superseded by CLI delivery
+
+- **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation
+  halt clause plus seven `!` lines, one per rendered block (the preamble and the six sections),
+  and the read-back sentence.
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3 as amended, the
+  skill-side form)
+- **Content:** verbatim —
+
+  ```
+  ## Rules — load the schema first
+
+  Your first action, before any authoring: **Read `schema.yaml` (this skill's own directory)
+  and `../../schemas/skill-authoring-common.yaml` raw, in full, in the same declared first
+  action** — schema, then common. The schema is the source of truth for this skill's binding
+  rules, nested in six sections, each addressable by its section ID:
+  `authoring-technical-requirements.sec.independence` ·
+  `authoring-technical-requirements.sec.scope` ·
+  `authoring-technical-requirements.sec.inputs` ·
+  `authoring-technical-requirements.sec.artifact` ·
+  `authoring-technical-requirements.sec.output` ·
+  `authoring-technical-requirements.sec.reserved`. Interpret it live: a rule's `kind:` names
+  what it is, and an absent `kind:` reads `constraint`; a `pointer:` rule binds you to that
+  file's or skill's procedure, referenced never restated; labels come from
+  `plugins/mochiko/schemas/skill-labels.yaml`. A rule carrying
+  `extends: authoring-common.<slug>` inherits text/labels/pointer from
+  `skill-authoring-common.yaml` only — `class` and every absence-meaningful field are local —
+  and the stub's `authoring-technical-requirements.*` ID stays the citable ID. The floor pin:
+  the 8 rules of `class: floor` are non-waivable. Before the first authoring step, state the
+  floor count back — a skipped or partial read leaves that count blank: halt and surface it,
+  and halt likewise if the schema's `class: floor` count disagrees with the pin.
+  ```
+
+- **Kept deliberately:** everything outside this section, byte for byte — the title, the opening
+  paragraph, and every procedural section. The block's substance survives in the render: the six
+  section IDs are now the six `--section` arguments, and the interpretation grammar the block
+  taught is printed as the preamble's `legend` with every fire. The `extends:` stub resolution
+  and the family common-file co-Read are discharged by the render, which resolves every stub
+  before the model sees it.
+- **Consumers assessed:** the family common file
+  `plugins/mochiko/schemas/skill-authoring-common.yaml` is unchanged and still bound by every
+  unconverted consumer; nothing shared leaves. The block was this skill's own text.
+
+## [v0.106.0] the hand-pinned `class: floor` count
+
+- **Disposition:** superseded → the CLI-printed pin. The count is the `- class: floor · N rules`
+  line under `pins` in the preamble block, and the `floors:` line beneath it lists the ids; the
+  read-back sentence now cites both rather than carrying a number of its own.
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3, "the counts are computed
+  and printed by the CLI, never hand-pinned"; the wave-4 re-key ruling adding the `floors:` index)
+- **Content:** verbatim —
+
+  ```
+  The floor pin:
+  the 8 rules of `class: floor` are non-waivable. Before the first authoring step, state the
+  floor count back — a skipped or partial read leaves that count blank: halt and surface it,
+  and halt likewise if the schema's `class: floor` count disagrees with the pin.
+  ```
+
+- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6 as amended),
+  re-keyed from a hand-pinned number to the printed pin and its id list — the skill still states
+  the floor set back before its first procedural step, and a blank or partial read-back still
+  halts. The independent second number the `.md` used to hold is booked as a loss, per D3's own
+  rationale; the contract suite's `assert_floor_delivery` now carries what it used to check.
+- **Consumers assessed:** `.claude/rules/mochiko/primitive-edits.md` skill-pair criterion 3, which
+  demanded the hand-pinned count — amended in this same wave to branch on a converted skill.
+
 ## [v0.101.0] Schema conversion — census-row → minted-ID map (skill-content-schema wave 2A)
 
 Ruling for every [v0.101.0] entry: skill-content-schema D3 (three-home boundary) / D8/C4

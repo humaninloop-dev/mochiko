@@ -5,6 +5,79 @@ Entry formats: `strips/README.md`. Wave context: [v0.27.0] entries — skill-suc
 [v0.22.0–v0.23.0] entries — workflow-token-reduction waves 1–2 (design:
 `.mochiko/brainstorms/workflow-token-reduction/record.md`, D6a + D4/wave-2 rulings).
 
+<!-- Wave context: wave 5 of the CLI schema-delivery build (v0.106.0) — the patterns family
+converts: each member's rules are rendered at fire by `mochiko-cli` from the migration log the
+plugin carries at `plugins/mochiko/migrations/`, and the skill reads no schema file. Ruling for
+every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3 as amended
+(the skill-side form — `!` runs in `SKILL.md` and at subagent preload), D7 (the `PreToolUse`
+`Skill` limb), D9 (families in the arc's order), and D10 clause 6 (the budgeted quantity re-keys
+to body + rendered output), with the wave-open rulings in that session's `wave5-plan.md` and the
+`DECISIONS.md` 2026-09-04 row. Pre-edit verbatim text:
+`git show 7d098b9:plugins/mochiko/skills/patterns-vertical-tdd/SKILL.md`. -->
+
+<!-- Wave context: wave 6 of the CLI schema-delivery build (v0.107.0) — the end state. No schema
+file ships in the plugin: the 20 files under `plugins/mochiko/schemas/` and the 30
+`skills/*/schema.yaml` were deleted, and every delivery they served now has a CLI form. Ruling for
+the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9 wave 6, with
+the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
+`git show 62aa99d:plugins/mochiko/skills/patterns-vertical-tdd/SKILL.md`. -->
+
+## [v0.107.0] the walking-skeleton paragraph's "live in the schema"
+
+- **Disposition:** superseded → "are delivered by `mochiko-cli`", id unchanged
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/cli-schema-delivery/record.md`
+  D9 wave 6; `DECISIONS.md` 2026-09-05)
+- **Content:** "no infra-only cards — live in the schema (`patterns-vertical-tdd.sec.discipline`)."
+- **Kept deliberately:** the id, which still resolves, and the three binding forms it points at —
+  when the skeleton fires, how infrastructure homes, no infra-only cards — plus the whole
+  skeleton-before-features and infrastructure-homed-by-need argument above it.
+
+## [v0.106.0] the Rules block — raw schema Read superseded by CLI delivery
+
+- **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation
+  halt clause plus seven `!` lines, one per rendered block (the preamble and the six sections),
+  and the read-back sentence.
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3 as amended, the
+  skill-side form)
+- **Content:** verbatim —
+
+  ```
+  ## Rules — load the schema first
+
+  Your first action, before any slicing step: **Read `schema.yaml` (this skill's own directory) raw, in full** — the patterns family ships no common file, so the pair's own schema is the whole first action. The schema is the source of truth for this skill's binding rules, nested in six sections, each addressable by its section ID: `patterns-vertical-tdd.sec.trigger` · `patterns-vertical-tdd.sec.scope` · `patterns-vertical-tdd.sec.discipline` · `patterns-vertical-tdd.sec.inputs` · `patterns-vertical-tdd.sec.disclosure` · `patterns-vertical-tdd.sec.reserved`. Interpret it live: a rule's `kind:` names what it is, and an absent `kind:` reads `constraint`; a rule's `when:` resolves against the schema's declared `conditions:` (`new_end_to_end_path`) and gates when the obligation applies, never whether it is delivered; a rule of `class: floor` is always read and always delivered whatever its `when:`; a `pointer:` rule binds you to that file's or skill's procedure, referenced never restated; labels come from `plugins/mochiko/schemas/skill-labels.yaml`. The floor pin: the 5 rules of `class: floor` are non-waivable. Before the first slicing step, state the floor count back — a skipped or partial read leaves that count blank: halt and surface it, and halt likewise if the schema's `class: floor` count disagrees with the pin.
+  ```
+
+- **Kept deliberately:** everything outside this section, byte for byte — the title, the opening
+  paragraph, and every procedural section. The block's substance survives in the render: the six
+  section IDs are now the six `--section` arguments, and the interpretation grammar the block
+  taught is printed as the preamble's `legend` with every fire. The block's inline naming of
+  this schema's own `conditions:` is covered by the render, whose preamble prints the whole
+  `conditions` block with each value and its resolution note — strictly more than the sentence
+  carried.
+- **Consumers assessed:** none shared — the block was this skill's own text, and this family
+  ships no common file.
+
+## [v0.106.0] the hand-pinned `class: floor` count
+
+- **Disposition:** superseded → the CLI-printed pin. The count is the `- class: floor · N rules`
+  line under `pins` in the preamble block, and the `floors:` line beneath it lists the ids; the
+  read-back sentence now cites both rather than carrying a number of its own.
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3, "the counts are computed
+  and printed by the CLI, never hand-pinned"; the wave-4 re-key ruling adding the `floors:` index)
+- **Content:** verbatim —
+
+  ```
+  The floor pin: the 5 rules of `class: floor` are non-waivable. Before the first slicing step, state the floor count back — a skipped or partial read leaves that count blank: halt and surface it, and halt likewise if the schema's `class: floor` count disagrees with the pin.
+  ```
+
+- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6 as amended),
+  re-keyed from a hand-pinned number to the printed pin and its id list — the skill still states
+  the floor set back before its first procedural step, and a blank or partial read-back still
+  halts. The independent second number the `.md` used to hold is booked as a loss, per D3's own
+  rationale; the contract suite's `assert_floor_delivery` now carries what it used to check.
+- **Consumers assessed:** `.claude/rules/mochiko/primitive-edits.md` skill-pair criterion 3, which
+  demanded the hand-pinned count — amended in this same wave to branch on a converted skill.
+
 ## [v0.102.0] Converted to the `.md` + schema pair form — rule content relocated to `schema.yaml`; the standing +294 HOLDS overage superseded by the conversion re-seed (wave 2B, patterns family)
 
 - **Disposition:** superseded → the pair form: obligation content relocated into

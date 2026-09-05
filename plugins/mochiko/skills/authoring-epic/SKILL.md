@@ -1,6 +1,7 @@
 ---
 name: authoring-epic
 description: This skill MUST be invoked when authoring or updating an epic — the transient unit for a multi-feature batch: the manifest + spine at `.mochiko/epics/EPIC-XXX/`, mint-once/overlap guard, close semantics. SHOULD also invoke on 'epic', 'EPIC-XXX', 'mint an epic', 'epic manifest', 'epic spine', or 'multi-feature batch'. Boundary: owns the epic OBJECT — NOT its map marker/seam grammar (mochiko:authoring-feature-map), NOT implement-run mechanics. Selection-scope only; never grades its own output.
+allowed-tools: Bash(mochiko-cli *)
 ---
 
 # Authoring the Epic — Manifest and Spine
@@ -18,25 +19,31 @@ the markers vanish, and the epic closes.
 (*Spine* in this skill is the epic's, never the architecture store's topology spine; where
 both appear, name which.)
 
-## Rules — load the schema first
+## Rules — delivered by mochiko-cli
 
-Your first action, before any epic touch: **Read `schema.yaml` (this skill's own directory)
-and `../../schemas/skill-authoring-common.yaml` raw, in full, in the same declared first
-action** — schema, then common. The schema is the source of truth for this skill's binding
-rules, nested in six sections, each addressable by its section ID:
-`authoring-epic.sec.independence` · `authoring-epic.sec.scope` ·
-`authoring-epic.sec.inputs` · `authoring-epic.sec.artifact` · `authoring-epic.sec.output` ·
-`authoring-epic.sec.reserved`. Interpret it live: a rule's `kind:` names what it is, and an
-absent `kind:` reads `constraint`; a rule of `class: floor` is always read and always
-delivered; a `pointer:` rule binds you to that file's or skill's procedure, referenced never
-restated; `${var}` substitutes from this schema's `vars:` at read time; labels come from
-`plugins/mochiko/schemas/skill-labels.yaml`. A rule carrying
-`extends: authoring-common.<slug>` inherits text/labels/pointer from
-`skill-authoring-common.yaml` only — `class` and every absence-meaningful field are local —
-and the stub's `authoring-epic.*` ID stays the citable ID. The floor pin: the 10 rules of
-`class: floor` are non-waivable. Before the first epic-touching step, state the floor count
-back — a skipped or partial read leaves that count blank: halt and surface it, and halt
-likewise if the schema's `class: floor` count disagrees with the pin.
+Your rules arrive below, rendered at fire by `mochiko-cli` from the migration log this plugin
+carries — one block per section. Every block opens with a version-triple line
+(`mochiko-cli rules authoring-epic · section <id> · binary <v> · grammar <g> · plugin <p>`) and
+closes with an end line (`mochiko-cli rules end · authoring-epic · <id> · <N> rules`). **Proceed
+only when every block carries both lines in that exact shape, from whichever channel delivered
+it — this slot, or the plugin's dependency hook on a Skill-tool call.** Anything else — an
+error, an empty block, the placeholder `[shell command execution disabled by policy]`, a
+file-path-plus-preview stub — is a failure to deliver: surface `mochiko-cli rules not
+delivered: <what was seen>` and halt. Never Read a schema file instead; there is no fallback.
+The `legend` in the preamble block is the reading grammar; a `pointer:` binds you to that
+file's or skill's procedure, referenced never restated.
+
+!`mochiko-cli rules authoring-epic --section preamble --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules authoring-epic --section authoring-epic.sec.independence --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules authoring-epic --section authoring-epic.sec.scope --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules authoring-epic --section authoring-epic.sec.inputs --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules authoring-epic --section authoring-epic.sec.artifact --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules authoring-epic --section authoring-epic.sec.output --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules authoring-epic --section authoring-epic.sec.reserved --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+
+Before the first procedural step, state back the floor count the preamble's `class: floor` pin
+prints and the ids its `floors:` line lists; a blank or partial read-back is a skipped read —
+halt and surface it.
 
 ## The two faces
 

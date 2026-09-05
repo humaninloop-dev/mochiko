@@ -2,6 +2,7 @@
 description: Build one selected capability-batch into working, verified code — a sufficiency check at entry, a design phase for any gaps it finds, then TDD cycle cards independently verified against real infrastructure.
 argument-hint: [FEAT-XXX | EPIC-XXX]
 disable-model-invocation: true
+allowed-tools: Bash(mochiko-cli *)
 ---
 
 # Implement — the Single Downstream Run
@@ -29,29 +30,26 @@ verified build; its design phase always fires, for the joint spine
 
 The working code is the deliverable. Plan the run and steer it to the done condition.
 
-## Rules — load the schema first
+## Rules — delivered by mochiko-cli
 
-Your first action, before entry gating, before any seat is spawned: **Read
-`plugins/mochiko/schemas/implement.yaml` raw, in full.** It is the source of truth for this
-run's binding rules, nested in six sections, each addressable by its section ID:
-`impl.sec.roles` (seat wiring and independence) · `impl.sec.reserved` (decisions held by
-the user) · `impl.sec.tools` (tool bindings) · `impl.sec.ways-of-working` (how the run
-sequences, verifies, and reports) · `impl.sec.boundaries` (the non-waivable floor) ·
-`impl.sec.fail-conditions` (the Not-done set). The raw Read is the first-class read: no
-binary, no render step. Interpret it live: substitute every `${var}` from its `vars:` block
-at read time; a `pointer:` rule binds you to that skill's procedure, referenced never
-restated; labels come from `plugins/mochiko/schemas/command-labels.yaml`. Read the rule
-grammar along with the rules: a rule's `kind:` names what it is, and an absent `kind:` reads
-`constraint`; a rule carrying `when:` binds only where its terms hold against the schema's
-declared `conditions:`, except that a `class: floor` rule is always read and always
-delivered — `when:` gates when its obligation applies, never whether it reaches you; the
-`moments:` block names this run's anchor points, unordered; and every `kind: fail` node's
-`enforces:` names the rules it is the end-state contrapositive of. Where a rule carries
-`extends: common.<slug>`, **Read `plugins/mochiko/schemas/common.yaml` raw, in full, in the
-same first action**; a stub inherits text/labels/pointer only — `class` and every
-absence-meaningful field are local — and the stub's `impl.*` ID stays the citable ID. A rule
-you have not read is not thereby waived — this run is not open until the schema is read
-whole.
+Your rules arrive below, rendered at fire by `mochiko-cli` from the migration log this plugin
+carries — one block per section. Every block opens with a version-triple line
+(`mochiko-cli rules implement · section <id> · binary <v> · grammar <g> · plugin <p>`) and
+closes with an end line (`mochiko-cli rules end · implement · <id> · <N> rules`). **Proceed
+only when every block carries both lines in that exact shape, from whichever channel delivered
+it — this slot or the plugin's dependency hook.** Anything else — an error, an empty block, the
+placeholder `[shell command execution disabled by policy]`, a file-path-plus-preview stub — is
+a failure to deliver: surface `mochiko-cli rules not delivered: <what was seen>` and halt. Never
+Read a schema file instead; there is no fallback. The `legend` in the preamble block is the
+reading grammar; a `pointer:` binds you to that skill's procedure, referenced never restated.
+
+!`mochiko-cli rules implement --section preamble --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules implement --section impl.sec.roles --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules implement --section impl.sec.reserved --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules implement --section impl.sec.tools --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules implement --section impl.sec.ways-of-working --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules implement --section impl.sec.boundaries --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules implement --section impl.sec.fail-conditions --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
 
 ## Adaptive Goal Protocol
 
@@ -73,20 +71,21 @@ Every run has a goal and an explicit done condition; a run is never goal-less.
 
    **The sufficiency check runs here** — per row (per card under delta scope), graded by
    a seat that authored none of its sources, per `mochiko:review-sufficiency` (rules:
-   `implement.yaml`). The verdict is binding: any gap fires the design phase before any
-   code. Absent surfaces are surfaced to the user, never auto-resolved, never run-failing
-   (rules: `implement.yaml`).
+   `impl.sec.tools`, delivered above). The verdict is binding: any gap fires the design phase
+   before any code. Absent surfaces are surfaced to the user, never auto-resolved, never
+   run-failing (rules: `impl.sec.tools`, delivered above).
 
    **Run-open confirmation — the entry gate.** One confirmation, no negotiation: name the
    batch and scope type (epic: members too; delta: the card-vs-entry check) · restate both
-   attempt bounds — per-cycle and gap-rework, defaults carried by `implement.yaml`'s `vars:`
-   block — at their **only redeclaration point** · present the sufficiency verdict, its gap
-   routing, and the trips and conflicts for the user's ruling · state the done condition.
+   attempt bounds — per-cycle and gap-rework, defaults carried by the `vars` block of the
+   preamble delivered above — at their **only redeclaration point** · present the sufficiency
+   verdict, its gap routing, and the trips and conflicts for the user's ruling · state the done
+   condition.
 2. **Goal — the done condition, fixed.** Every cycle card `[x]`, built test-first and
    independently verified against real infrastructure (per cycle and whole); the code meets its
    criteria, traces to requirements, aligns with governance; the acceptance landing executed
    whole; the run closes at final acceptance (accept / amend / reject). And nothing below stands.
-3. **Not done — default FAIL:** the 15 rules of `kind: fail` in
-   `plugins/mochiko/schemas/implement.yaml` (section `impl.sec.fail-conditions`) — any one
-   standing fails the run. If the schema's `kind: fail` count is not 15, the pair is out of
-   sync: halt and surface it before closing.
+3. **Not done — default FAIL:** the `kind: fail` rules of `impl.sec.fail-conditions` — their
+   count is the `kind: fail` line under `pins` in the preamble block — any one standing fails
+   the run. A fail-conditions block whose end-line count disagrees with that pin is the
+   delivery out of sync: halt and surface it before closing.

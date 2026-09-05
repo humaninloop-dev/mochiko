@@ -1,6 +1,7 @@
 ---
 name: brownfield-integration
 description: This skill MUST be invoked when implementing a task that touches existing code — safely making an `[EXTEND]` or `[MODIFY]` change to a file on disk: reading the whole file first, following its patterns, and preserving its interface. SHOULD also invoke when extending an existing file, modifying existing behavior, or following prior patterns. Consumes the extend/modify classification from the card's brownfield exposure — NOT the cycle execution that co-fires (mochiko:executing-tdd-cycle).
+allowed-tools: Bash(mochiko-cli *)
 ---
 
 # Brownfield Integration
@@ -13,22 +14,31 @@ silently resolving them.
 
 **The existing code is not wrong until proven otherwise.** It has consumers, tests, and patterns that evolved for reasons not immediately visible.
 
-## Rules — load the schema first
+## Rules — delivered by mochiko-cli
 
-Your first action, before any read or write in the existing file: **Read `schema.yaml`
-(this skill's own directory) raw, in full** — the small families ship no common file, so
-the pair's own schema is the whole first action. The schema is the source of truth for
-this craft's binding rules, nested in six sections, each addressable by its section ID:
-`brownfield-integration.sec.independence` · `brownfield-integration.sec.scope` ·
-`brownfield-integration.sec.inputs` · `brownfield-integration.sec.verdict` ·
-`brownfield-integration.sec.output` · `brownfield-integration.sec.reserved`. Interpret it
-live: a rule's `kind:` names what it is, and an absent `kind:` reads `constraint`; a rule
-of `class: floor` is always read and always delivered; a `pointer:` rule binds you to that
-file's or skill's procedure, referenced never restated; labels come from
-`plugins/mochiko/schemas/skill-labels.yaml`. The floor pin: the 6 rules of `class: floor`
-are non-waivable. Before the first read step, state the floor count back — a skipped or
-partial read leaves that count blank: halt and surface it, and halt likewise if the
-schema's `class: floor` count disagrees with the pin.
+Your rules arrive below, rendered at fire by `mochiko-cli` from the migration log this plugin
+carries — one block per section. Every block opens with a version-triple line
+(`mochiko-cli rules brownfield-integration · section <id> · binary <v> · grammar <g> · plugin <p>`) and
+closes with an end line (`mochiko-cli rules end · brownfield-integration · <id> · <N> rules`). **Proceed
+only when every block carries both lines in that exact shape, from whichever channel delivered
+it — this slot, or the plugin's dependency hook on a Skill-tool call.** Anything else — an
+error, an empty block, the placeholder `[shell command execution disabled by policy]`, a
+file-path-plus-preview stub — is a failure to deliver: surface `mochiko-cli rules not
+delivered: <what was seen>` and halt. Never Read a schema file instead; there is no fallback.
+The `legend` in the preamble block is the reading grammar; a `pointer:` binds you to that
+file's or skill's procedure, referenced never restated.
+
+!`mochiko-cli rules brownfield-integration --section preamble --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules brownfield-integration --section brownfield-integration.sec.independence --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules brownfield-integration --section brownfield-integration.sec.scope --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules brownfield-integration --section brownfield-integration.sec.inputs --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules brownfield-integration --section brownfield-integration.sec.verdict --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules brownfield-integration --section brownfield-integration.sec.output --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+!`mochiko-cli rules brownfield-integration --section brownfield-integration.sec.reserved --plugin-root "${CLAUDE_PLUGIN_ROOT}" 2>&1`
+
+Before the first procedural step, state back the floor count the preamble's `class: floor` pin
+prints and the ids its `floors:` line lists; a blank or partial read-back is a skipped read —
+halt and surface it.
 
 ## When NOT to Use
 

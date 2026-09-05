@@ -1,5 +1,88 @@
 # Strip notes — `commands/setup.md`
 
+<!-- Wave context: the CLI schema-delivery command wave (v0.105.0) — the five remaining commands
+convert, `setup` among them: its rules are rendered at fire by `mochiko-cli` from the migration
+log the plugin carries at `plugins/mochiko/migrations/`, and the command reads no schema file.
+Ruling for every [v0.105.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md`
+D3 as amended (delivery binding, positive-confirmation halt, counts printed by the CLI) and D9
+("Wave 4: the remaining five commands"), the wave-open Q-B ruling recorded in that session's
+`wave3-plan.md` §9, the `DECISIONS.md` 2026-09-04 wave-3 row, and this wave's row. Pre-edit
+verbatim text: `git show 9732de0:plugins/mochiko/commands/setup.md`. -->
+
+## [v0.105.0] the Rules block — raw schema Read superseded by CLI delivery
+
+- **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation
+  halt clause plus seven `!` lines, one per rendered block (the preamble and the six sections).
+  The reading grammar the block carried is now printed by the binary as the preamble's `legend`
+  block; the `common.yaml` co-Read obligation is discharged in the render, which resolves every
+  `extends: common.<slug>` stub before the model sees it (setup binds eight).
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3 as amended)
+- **Content:** verbatim —
+
+  ```
+  ## Rules — load the schema first
+
+  Your first action, before the mode is proposed, before any seat is spawned: **Read
+  `plugins/mochiko/schemas/setup.yaml` raw, in full.** It is the source of truth for this
+  run's binding rules, nested in six sections, each addressable by its section ID:
+  `setup.sec.roles` (how the run is led, staffed, and graded) · `setup.sec.reserved` (the
+  decisions reserved to the user) · `setup.sec.tools` (surfaces, inputs, templates, the
+  feature-map and store landings, and hand-offs) · `setup.sec.ways-of-working` (model tiering,
+  plan approval, author ≠ grader default-FAIL, git and acceptance discipline) ·
+  `setup.sec.boundaries` (the non-waivable floor — transport, the durables, the governance region
+  and its carve-outs, the never-overwrite floors) · `setup.sec.fail-conditions` (the Not-done
+  set). The raw Read is the first-class read: no binary, no render step. Interpret it live:
+  substitute every `${var}` from its `vars:` block at read time; a `pointer:` rule binds you to
+  that skill's procedure, referenced never restated; labels come from
+  `plugins/mochiko/schemas/command-labels.yaml`. `kind:` names what a rule is — `constraint`
+  (the default, never written) · `duty` · `gate` · `reservation` · `binding` · `bound` ·
+  `routing` · `fail` · `latitude`; `when:` gates a rule on the dimensions declared in the
+  top-level `conditions:` block and binds it only when its terms hold — except on a
+  `class: floor` rule, which is always read and always delivered, its `when:` gating when the
+  obligation applies and never whether it reaches you; the top-level `moments:` block names the
+  run's anchor points and is unordered, never a sequence; and `enforces:` on a `kind: fail` node
+  lists the local rules it is the end-state contrapositive of, an empty list carrying its
+  reason. A rule carrying `extends: common.<slug>` binds a shared block in
+  `plugins/mochiko/schemas/common.yaml` — **Read that file raw, in full, in the same first
+  action**: a stub inherits `text`, `labels`, and `pointer` only, `class:` and every
+  absence-meaningful field (`kind:`, `when:`, `enforces:`) are local, a locally declared field
+  replaces the inherited one, `${var}` placeholders in inherited text substitute from this
+  schema's own `vars:` block, and the stub's `setup.*` ID stays the citable ID. A rule you have
+  not read is not thereby waived — this run is not open until the schema is read whole.
+  ```
+
+- **Kept deliberately:** `## Identity & Mission` byte for byte, and Adaptive Goal Protocol steps
+  1 (Entry) and 2 (Goal — the fixed done condition), likewise byte for byte. The section's
+  substance survives in the render: the six section IDs are now the six `--section` arguments, and
+  each section's own title and intent line replaces the parenthetical gloss the block carried. Two
+  clauses have no successor and are booked as losses — the `labels:` pointer at
+  `command-labels.yaml`, and "the `moments:` block … is unordered, never a sequence" — because the
+  preamble's `legend` covers neither; both are wave-wide, carried to P1 as legend lines this wave.
+- **Consumers assessed:** none shared — the block was this command's own text.
+
+## [v0.105.0] the hand-pinned `kind: fail` count in Not-done
+
+- **Disposition:** superseded → the CLI-printed pin. The count is the `- kind: fail · N rules`
+  line under `pins` in the preamble block, and the `.md` now cites that pin and halts when a
+  delivered fail-conditions end line disagrees with it, rather than carrying a number of its own.
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3, "the count pins are
+  computed and printed by the CLI, never hand-pinned"; wave-3 Q-B, 2026-09-04)
+- **Content:** verbatim —
+
+  ```
+  3. **Not done — default FAIL:** the 6 rules of `kind: fail` in
+     `plugins/mochiko/schemas/setup.yaml` (section `setup.sec.fail-conditions`) — any one
+     standing fails the run. If the schema's `kind: fail` count is not 6, the pair is out of
+     sync: halt and surface it before closing.
+  ```
+
+- **Kept deliberately:** the out-of-sync halt itself, re-keyed from the pair to the delivery —
+  the run still stops rather than proceeding on a count it cannot trust. Booked as a loss, per
+  D3's own rationale: the independent second number the `.md` used to hold is gone, and the
+  contract suite now carries what it used to check.
+- **Consumers assessed:** `.claude/rules/mochiko/primitive-edits.md` criterion 3, which demanded
+  the hand-pinned count — already branched on a converted command at governance v3.0.1.
+
 <!-- Wave context: the schema-header runtime-kernel wave (v0.100.0) — shipped schema
 top-of-file header comments trimmed to runtime-essential content. Ruling for every
 [v0.100.0] entry below: `.mochiko/decisions/2026-08-28-schema-header-runtime-kernel.md`
