@@ -338,6 +338,21 @@ Build DELIVERED 2026-08-13 at v0.70.0 (same-day as the ruling; the wave ran unde
 ships — 2 plan-approved producer seats + 2 fresh author≠grader validator seats, 2/2 PASS round 1;
 trail). Open residual:
 
+- [ ] **Producer-plan enforcement build — wave 1 (plan-QA leg) · wave 2 (validator retirement)**
+  (2026-09-03; provenance:
+  [producer-plan-enforcement](.mochiko/brainstorms/producer-plan-enforcement/record.md) D8–D9)
+  — wave 1: sound-loop leg 1 amended (ID kept, floor pin 6) · all plan-approval restatement
+  sites swept across the six schemas + `common.yaml` (near-dup convergence) · disclosure
+  `plans:` segment · new `review-seat-plan` pair + router row + first-seed budget ·
+  `primitive-edits.md` criterion 6 rewritten · `patterns-plan-minimalism.grading-routing`
+  re-pointed · install refresh gate before the first dispatch · 2026-08-02 D2 supersession
+  annotation (done at landing) · the wave itself runs under the leg (plan-only dispatch →
+  peer grade → lead approves on PASS → resume), watch with stop condition (FAIL rate > ½,
+  any second re-plan, any dirtied tree → halt). Wave 2, gated on wave-1 figures + the named
+  default-FAIL carrier: `validator` agent/plugin entry/router lines retired, CLAUDE.md
+  (3 mentions + axis 5 reword), `validation-constitution`, ledgers, four supersession rows.
+  Open after acceptance: OQ3 cost watch · OQ4 devils-advocate re-entry (no trigger).
+
 - [ ] **D5 rules-file leg (first-miss trigger) + first-live-run watch** (2026-08-13; provenance:
   [charter-ritual-balance](.mochiko/brainstorms/charter-ritual-balance/record.md) D5 `Contested` +
   D7) — the path-injected `.claude/rules/mochiko/sound-loop.md` leg (setup-scaffolded, path-scoped
