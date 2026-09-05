@@ -8,6 +8,23 @@ One entry per session directory under `.mochiko/brainstorms/<topic-slug>/`, **ne
 
 ---
 
+## `producer-plan-enforcement` — enforcing plan-first, read-only producer planning; grader + Delivery Manager QA of the seat plan
+- **When:** 2026-09-03 · **Status:** accepted (2026-09-03); landed as the 2026-09-03 `DECISIONS.md`
+  row (+ supersession annotations on the 2026-08-02 realignment and 2026-08-13 charter-ritual
+  rows), a BACKLOG build item under "Charter ritual-floor build" (waves 1 + 2), and the
+  ROADMAP Next "Floor builds" line; build pending. Review: pair lens-split via blind
+  two-message dispatch — 28 raw survivors → 23 merged, 4 Critical user-ruled one by one, rest
+  batch as recommended; verify NOT CLEAN (4 Minor) repaired → delta-check CLEAN;
+  acceptance-stage amendment (no worktree) bounded-verified (2 Minor) repaired → CLEAN
+- **Artifacts:** [record.md](producer-plan-enforcement/record.md) (canonical — ground facts
+  R1–R5 / P1–P9 / F1–F4, D1–D9 as amended at review, session + review trails, OQ1–OQ7)
+- **About:** the six commands' "plans first and works only on a plan you approved" is prose
+  with no mechanism, and the native lever the 2026-08-02 ruling leaned on does not bite:
+  teammate plan approval is auto-granted, subagents never enter plan mode, and a probe this
+  session showed seats spawned under a plan-mode lead write freely on both transports (F1,
+  the driver). Rules what "enforce" means for producer planning, who QAs the plan before
+  the lead approves it, and how the sound-loop leg 1 and the command schemas change.
+
 ## `skill-content-schema` — schema pair form for skills: common schema for similar-ontology skill families, extends, `.md`-vs-schema boundary
 - **When:** 2026-09-01 · **Status:** accepted; review wave built v0.100.0; wave-2 family
   doors ruled 2026-09-01 (three censuses in-repo — authoring all-8 + `artifact` set ·
