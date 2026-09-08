@@ -3,6 +3,7 @@
 
 Provenance: .mochiko/brainstorms/skill-compression-tooling/record.md (D8 as amended).
 Maintainer-side advisory tooling (GI-019 trace recorded); never shipped (GI-020).
+Vocabulary shared with the command and persona targets: evals/README.md (v2 D1).
 
 One run = one isolated claude -p session loading a synthesized minimal plugin that
 carries only the skill variant under test (R4), executing one golden prompt in a

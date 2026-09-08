@@ -102,20 +102,14 @@ Command-content schema section's watch item)*
 build* and *Skill-compression eval-primitive build* sections — their delivered items are in the
 trail (2026-09-08); their open residue is carried below.)*
 
-- [ ] **Persona mode in the plan-only runner** (D3 · D5 · D6 · D7 · D10 · C1/C4 folds) — `--agent
-  mochiko:<persona>` seating from the fixture cwd, fence `Write,Edit,Bash,Agent,NotebookEdit,Skill`,
-  `--permission-mode acceptEdits`; rubric mint from the persona body (union of both refs, tags
-  added/removed/common, body-derived completeness check, `not-a-claim`); `pre`/`post` arms;
-  `nopersona` mint pass; `--model opus` explicit on every arm (R5); `model-native` tags carry
-  forward by claim id (R3); the read-back bullet split into plan-statement / execution claims (R4);
-  every eval runner cites `evals/README.md` as the one vocabulary (C4 — due before the promotion
-  steps, R8). Pre-build probes owed: read-trace capture under `--agent`
-  (I8; fallback `self-report`), pin resolution with a non-default model (I1).
-- [ ] **`staff-engineer` pilot** (D8 · D9 · D11) — goldens sized from post-pruning claims (floor
+- [ ] **`staff-engineer` pilot** (D8 · D9 · D11; persona mode BUILT 2026-09-08 → trail) — goldens sized from post-pruning claims (floor
   3–5, `untempted` tag), `preregistration.md` with the positive control on the v0.108.0
   section's plan-observable residue (C2 re-cut), tolerance band from the probe run's measured
   `pre` spread, stopping rule (two re-keys → back to the user), hand-labelled calibration set +
-  judge agreement bar (I9), per-pilot budget bound (M6). Grid `pre` = v0.107.0, `post` = v0.108.0.
+  judge agreement bar (I9), per-pilot budget bound (M6). Grid `pre` = b099154 (v0.107.0), `post` =
+  v0.108.0. Build notes carried: the smoke golden `g1-decided-card` cannot pass the positive control
+  by construction (the ladder says do a four-line green phase yourself) — the set needs a
+  delegation-forcing golden; ten plan-observable claims sit `untempted` from the smoke set.
 - [ ] **`validator` pilot** (D9) — same form; goldens plant a defective artifact beside a
   flattering author summary. Runs after the staff-engineer pilot meets or re-keys its bar.
 - [ ] **Skill `rules.json` re-key onto migration-log ids** (D12 · C3 · R2) — the five schema-backed
@@ -123,6 +117,8 @@ trail (2026-09-08); their open residue is carried below.)*
   `review-specifications` · `validation-constitution`) cite `SKILL.md` headings that no longer
   exist; re-key each rule to its log id (`patterns-entity-modeling` stays a hand inventory),
   floor list = the render's `floors:` line (`review-brainstorm` today: 6 listed vs 9 delivered).
+  Parser note for any persona mint beyond the pilots: `sentences()` merges prose fragments around
+  lists (tech-lead *Three-Part Rule*, requirements-analyst *Your Process*) — `not_claims` them at mint.
   Then **fill the four post-cut eval slots** — `review-governance-intent` · `review-plan-artifacts`
   · `review-specifications` · `validation-constitution` — with goldens + pre-registration from the
   re-keyed inventories, never the stale ones (`skill-content-schema` D7's judged-sample-of-two
@@ -135,7 +131,10 @@ trail (2026-09-08); their open residue is carried below.)*
   session, an `Agent` subagent, and an agent-team teammate, with injected text landing before the
   first model turn? Three legs; a census opens only on a positive result. `!` injection in agent
   bodies is ruled out (record F12).
-- [ ] **Command-target residue (carried from the plan-only section)** — D10 one-real-run
+- [ ] **Command-target residue (carried from the plan-only section)** — **runner defect found
+  2026-09-08:** `evals/commands/run.py` `extract_rules` still reads `plugins/mochiko/schemas/*.yaml`,
+  deleted at v0.107.0, so `check-rubric` / `partition` / `judge` for commands fail at HEAD — re-key
+  onto `mochiko-cli` renders or the derived views (same move as the skill re-key) · D10 one-real-run
   correlation check · the other four commands' fixtures · name-resolution marker allowlist (the
   three governance comment-marker names false-positive in every `setup` run) · judge-retry loop
   for unparseable opus coverage-judge arrays · noise-domination disposition: implement was

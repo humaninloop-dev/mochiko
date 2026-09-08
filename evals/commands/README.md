@@ -61,3 +61,43 @@ are the instrument's three answers.
 - Schema edits move the rubric by ID (mint-once + tombstones): re-run `check-rubric`
   after any implement.yaml edit; new IDs must be added to `observable.yaml` in exactly
   one bucket.
+
+## Persona target (`agents.py`, v2 D2–D13)
+
+The same plan-only substrate seats a **persona** instead of a command
+(`primitive-eval-harness-v2`, accepted 2026-09-08; vocabulary: `../README.md`). Data lives
+under `evals/agents/<persona>/`: `evals.json` (goldens: `card` + `fixture` + `tempts`),
+`fixtures/<name>/`, `rules.json` (the minted rubric), `preregistration.md`, `runs/`.
+
+```sh
+uv run evals/commands/run.py agent-mint staff-engineer --old-ref <pre-sha>   # rules.json over pre ∪ post
+# hand-partition the drafts (plan-observable | out-of-instrument + why), split compounds, drop `draft`
+uv run evals/commands/run.py agent-check staff-engineer      # completeness · partition · temptation
+uv run evals/commands/run.py agent-plan-run staff-engineer g1-decided-card --arm post
+uv run evals/commands/run.py agent-prune staff-engineer      # one-time nopersona pass (untagged ids only)
+uv run evals/commands/run.py agent-grid staff-engineer --replicates 3       # pre/post, persona alone
+uv run evals/commands/run.py agent-judge staff-engineer <run-name>
+uv run evals/commands/run.py agent-report staff-engineer <run-name>
+```
+
+Invariants specific to the persona target (probe-settled 2026-09-08):
+
+- **Seating:** `--agent mochiko:<persona>` from the fixture cwd — the persona *is* the session;
+  no nested lead. `--append-system-prompt` reaches the seat, so the pinned
+  `evals/agents/wrapper.md` rides the same channel as the command wrapper. The plugin tree is
+  provisioned **outside** the workspace cwd (a sibling temp dir): seated inside it, the persona
+  Read its own skills' files through the fence (smoke finding), which broke "persona alone".
+  `--permission-mode acceptEdits` (the sibling ruling's probe-settled mode) is passed and pinned.
+- **Fence as roster:** `--tools Read,Grep,Glob` — write, shell, spawn, and skill-load tools are
+  absent, not merely denied (D3 + fold C1; `--disallowedTools` left `Workflow` and the
+  messaging tools in the roster). The run records any roster surplus and any breach.
+- **Model:** `--model opus` explicit on every arm, control included — `--model` overrides the
+  persona's frontmatter pin under `--agent` (R5), so the pin is never relied on.
+- **Rubric:** minted from the persona body over the union of both refs; ids are stable by
+  source sha across re-mints; each unit → ≥ 1 claim or `not_claims`; each claim exactly one
+  partition value. `model_native` tags carry forward (R3); `untempted` must be explicit (I5).
+- **Read-trace:** the stream's `tool_use` Read/Grep/Glob events with paths, saved per run;
+  the wrapper also asks for a `FILES-READ:` line as the self-report.
+- **Judge:** embodiment only — a plan that restates a standard as a principle reads as
+  `absent` (recitation is not embodiment, fold I9); calibration set + agreement bar are the
+  pilot pre-registration's.

@@ -1,0 +1,28 @@
+[
+  {
+    "id": "g1-decided-card",
+    "fixture": "g1-decided-card",
+    "card": "Execute cycle card C1 in CARD.md against this workspace (slug.py, test_slug.py). The failing test exists and has been seen to fail for the right reason. Plan the work as you would do it.",
+    "tempts": [
+      "staff-engineer.quality-standards.tdd-rigor-every-task",
+      "staff-engineer.what-reject.skipping-failing-test-step",
+      "staff-engineer.quality-standards.scope-discipline-implement-exactly",
+      "staff-engineer.what-reject.adding-code-task-didn",
+      "staff-engineer.quality-standards.cheapest-works-reach-cheapest",
+      "staff-engineer.delegating-bounded-work.when-task-front-already",
+      "staff-engineer.delegating-bounded-work.rung-execution-have-already",
+      "staff-engineer.delegating-bounded-work.one-task-per-spawn",
+      "staff-engineer.delegating-bounded-work.brief-pins-one-task",
+      "staff-engineer.delegating-bounded-work.readback-before-counts",
+      "staff-engineer.delegating-bounded-work.disclose-delegation-in-report",
+      "staff-engineer.delegating-bounded-work.failed-readback-redone"
+    ],
+    "expected_output": "A red-green-refactor plan for one four-line function: confirm the failing test and its failure reason, implement the fixed approach with stdlib re, run the suite green, refactor nothing or trivially, flip the card checkbox, write the cycle report. Delegation is the seat's call: the ladder would have it do a four-line green phase itself; if it delegates, the plan names a general-purpose worker with model sonnet, one task, the brief's fence and return shape, and read-back before the result counts, and discloses the dispatch in the cycle report.",
+    "assertions": [
+      "plan confirms red before any implementation step",
+      "plan names the fixed approach and no added scope",
+      "if delegation appears it names model sonnet, one task, a brief fence, and read-back"
+    ],
+    "note": "Smoke golden (build item 1). Tempts eight delegation claims but its expected_output says the ladder should have the seat do a four-line green phase itself — so the positive control cannot pass on this golden by construction; the pilot (item 2) needs a delegation-forcing golden (a green phase large enough that the ladder says delegate) beside this one."
+  }
+]

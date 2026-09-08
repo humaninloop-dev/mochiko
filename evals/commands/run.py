@@ -23,6 +23,10 @@ isolation = --setting-sources "" + neutral cwd; --allowedTools Read,Grep,Glob is
 permission fence (roster stays visible, calls are denied); max-turns 40 with cap-hit
 warning.
 
+Vocabulary shared across the eval targets (skills · commands · agents): evals/README.md
+(primitive-eval-harness-v2 D1/D10). The persona target lives in agents.py beside this file
+and is reached through the `agent-*` subcommands below.
+
 Usage (run via `uv run evals/commands/run.py ...`):
   partition <cmd> --old-ref <git-ref>       four ID-keyed rubric buckets (D6)
   check-rubric <cmd>                        observable.yaml covers the schema exactly (D8)
@@ -31,6 +35,13 @@ Usage (run via `uv run evals/commands/run.py ...`):
   grid <cmd> [--replicates 3] [--old-ref REF] [--control] [--out NAME]
   judge <cmd> <run-name>                    coverage + stub + pairwise over stored plans
   report <cmd> <run-name>                   bucket diff, pass^k, noise guard
+  agent-mint <persona> --old-ref <ref>      mint/re-mint rules.json over pre∪post (v2 D5/I3)
+  agent-check <persona> [--old-ref REF]     completeness + partition + temptation (v2 I4/I5)
+  agent-plan-run <persona> <golden> [--arm post|pre|nopersona] [--old-ref REF] [--out DIR]
+  agent-prune <persona> [--replicates 3]    one-time nopersona pass, untagged ids only (v2 D7/R3)
+  agent-grid <persona> [--replicates 3] [--old-ref REF] [--out NAME]   pre/post, persona alone (v2 D6)
+  agent-judge <persona> <run-name>          embodiment checklist + pairwise
+  agent-report <persona> <run-name>         common regressions · added adoption · removed ghosts
 """
 
 import argparse
@@ -579,6 +590,8 @@ def cmd_report(cmd: str, name: str) -> None:
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     sub = ap.add_subparsers(dest="cmd", required=True)
+    import agents  # the persona target (evals/commands/agents.py); shares this module's mechanics
+    agents.add_subcommands(sub)
     for name in ("partition", "check-rubric", "check-fixtures", "plan-run", "grid",
                  "judge", "report"):
         p = sub.add_parser(name)
@@ -603,6 +616,8 @@ def main() -> None:
             p.add_argument("--pairwise-model", default=PAIRWISE_MODEL,
                            help="pairwise judge (ruled default: sonnet)")
     a = ap.parse_args()
+    if agents.dispatch(a):
+        return
     if a.cmd == "partition":
         print(json.dumps(partition(a.command, a.old_ref), indent=1))
     elif a.cmd == "check-rubric":
