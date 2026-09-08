@@ -112,11 +112,11 @@ trail (2026-09-08); their open residue is carried below.)*
   delegation-forcing golden; ten plan-observable claims sit `untempted` from the smoke set.
 - [ ] **`validator` pilot** (D9) — same form; goldens plant a defective artifact beside a
   flattering author summary. Runs after the staff-engineer pilot meets or re-keys its bar.
-- [ ] **Skill `rules.json` re-key onto migration-log ids** (D12 · C3 · R2) — the five schema-backed
-  inventories (`review-brainstorm` · `review-governance-intent` · `review-plan-artifacts` ·
-  `review-specifications` · `validation-constitution`) cite `SKILL.md` headings that no longer
-  exist; re-key each rule to its log id (`patterns-entity-modeling` stays a hand inventory),
-  floor list = the render's `floors:` line (`review-brainstorm` today: 6 listed vs 9 delivered).
+- [ ] **Fill the four post-cut eval slots from the re-keyed inventories** (D12 · C3 · R2) — the
+  five schema-backed inventories were **RE-KEYED 2026-09-08** onto log ids (67→30 · 70→35 · 113→36 ·
+  81→30 · 69→26 rules; floors 9 · 16 · 11 · 8 · 14 = the render pins; 15 old rules retired with
+  dispositions in `evals/<skill>/rekey.md`; validator PASS; `patterns-entity-modeling` stays a hand
+  inventory). Pre-re-key runs are no longer comparable (four floor counts rose).
   Parser note for any persona mint beyond the pilots: `sentences()` merges prose fragments around
   lists (tech-lead *Three-Part Rule*, requirements-analyst *Your Process*) — `not_claims` them at mint.
   Then **fill the four post-cut eval slots** — `review-governance-intent` · `review-plan-artifacts`
