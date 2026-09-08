@@ -95,86 +95,53 @@ Command-content schema section's watch item)*
   Provenance: `.mochiko/brainstorms/command-md-scaffold-standardization/record.md` (M5, V1 F1
   in the build trail).
 
-## Command plan-only eval build
+## Primitive evals v2 build
 
-*(ruled + accepted 2026-08-27, `command-plan-only-eval` D1–D11 as review-amended; provenance:
-`.mochiko/brainstorms/command-plan-only-eval/record.md` — build surface 0–9)*
+*(ruled + accepted 2026-09-08, `primitive-eval-harness-v2` D1–D13 as review-amended; provenance:
+`.mochiko/brainstorms/primitive-eval-harness-v2/record.md`. Replaces the *Command plan-only eval
+build* and *Skill-compression eval-primitive build* sections — their delivered items are in the
+trail (2026-09-08); their open residue is carried below.)*
 
-- [ ] **Build the plan-only command regression eval** (cold-buildable from the record's build
-  surface): probe first on `brainstorm` — **item 0 DONE 2026-08-27, all seven probe
-  questions answered, substrate bet stands** (`evals/commands/brainstorm-probe/`:
-  invocability PASS · workdir provisioning PASS · shadowing closed via init-event version
-  assert · fence holds as permission fence, roster not stripped · absent-user contract PASS ·
-  $0.65/107s at the turn cap; build amendments: drop `--bare` (kills stored auth) · wrapper
-  register line "no rule-ID citations" · max-turns headroom ~40 + cap-hit warning · fixture
-  internal-consistency check) — **items 1–8 BUILT 2026-08-27** (`evals/commands/`: `run.py`
-  runner with partition/check-rubric/check-fixtures/plan-run/grid/judge/report, pinned
-  `wrapper.md`, 3 self-contained `implement` fixtures + goldens (planted: missing search
-  contract · store-colliding background worker · empty-args entry), `observable.yaml` D8
-  partition 58 rubric / 46 declared out — validates 104/104, `preregistration.md` read rule +
-  F2 noise guard; live smoke PASS: load gate true at 0.97.0, under turn cap, fence denied an
-  attempted Bash call and recorded it, $0.65; smoke finding: sessions cite rule IDs despite
-  the wrapper — runner scrubs all known IDs pre-judge so only embodiment is gradeable).
-  **Remaining (updated 2026-08-28 — the ontology wave DISCHARGED the pilot):** the pilot
-  grid + judged rounds ran on a real edit — implement (optionA pre/post + ontology post +
-  a noise-guard r4 pair, 24 plans, $18.31) and a user-picked second command, setup (fresh
-  mode-keyed substrate, 18 plans, $10.56), opus judges — see the ontology record's eval
-  entry. Still open: D10 one-real-run correlation check · the other four commands · a
-  name-resolution marker allowlist (the assert false-positives on the three governance
-  comment-marker names in every setup run, both arms).
-- [ ] **Substrate watches** — **noise falsifier FIRED at the first grids (2026-08-28,
-  n=2):** implement was noise-dominated at k=3 AND k=4 (s2 flaky share ~21% breaches the
-  preregistered 20% bound; every flagged regression replicate-flaky) — per the prereg this
-  revisits the substrate premise: the instrument cannot resolve small diffs at this k, and
-  the eval session's open question 3 now has its evidence; setup's grid was cleaner
-  (directional +4/+2 with zero regressions in two scenarios). Disposition owed at the eval
-  session's own desk, not here. · D10 proxy falsifier: still open · Goodhart watch: still
-  open, D3's anti-recitation register the standing mitigation · opus pairwise showed
-  position bias in a majority of implement pairs — pairwise informativeness joins the
-  watch. · **Second live use (near-dup convergence wave, 2026-08-28, v0.99.0 —
-  `neardup-grid` both substrates, k=4):** the D7-style pre-arm reuse worked (ontology-grid
-  post arm re-judged as pre); noise-domination re-confirmed at k=4 on BOTH grids (every
-  flagged regression replicate-flaky, no attributable regression); new instrument defect —
-  **opus coverage-judge calls intermittently return unparseable arrays** (runner stores
-  all-`None` verdicts, silently zeroing that replicate's pass^k; healed by targeted
-  re-judge this wave) — a judge-retry loop belongs in `evals/commands/run.py`, joins the
-  desk's work list.
-
-## Skill-compression eval-primitive build
-
-*(ruled 2026-08-22, `skill-compression-tooling` D1–D8 as amended; provenance:
-`.mochiko/brainstorms/skill-compression-tooling/record.md` — build surface + folds R1–R16)*
-
-- [ ] **`.claude/skills/compressing-skills/SKILL.md`** — repo-level compressor (never shipped):
-  rule inventory (non-author-reviewed, consumer-side check R10) → pre-arm `KEPT:`/protected
-  reconciliation (R2) → Arm A densify → Arm B cut-line → eval dispatch → report → user
-  ratification → landing hand-off (strips + audit + budget re-seed R11). Description minimal;
-  voluntary author≠grader audit (R16).
-- [ ] **`evals/` runner** (top-level, never shipped) — probe run first (R5: `stream-json` for
-  `plugin_errors`, write allow rules); minimal per-run plugin dir (R4); 4 arms incl. no-skill
-  control (R3); pre-registered ship bar + delivered-chars arithmetic before the grid (R6/R9).
-- [ ] **Pilot grid** — `patterns-entity-modeling` end-to-end first (fills `primitive-eval-harness`
-  D5's deferred pilot slot), then `mochiko` router (Arm A only) + `review-feasibility` —
-  **pilot re-purposed 2026-08-22**: the skill took a user-ruled 90% direct cut at v0.82.0
-  ("cut now, eval validates later", verbosity-envelope ADR), so its slot runs as a **post-cut
-  regression check** (cut-vs-v0.81.0-baseline rule coverage; a lost load-bearing rule re-adds
-  via the strips re-add path) — (AR-D3 seeded-defect method is the follow-on if its checklist
-  proves insensitive, R13). **`review-brainstorm` joined the post-cut set 2026-08-26** (user-ruled
-  true-deletion cut at v0.83.0, rules from the v0.82.0 baseline; ADR
-  `.mochiko/decisions/2026-08-26-review-brainstorm-true-deletion-cut.md`).
-  **`review-plan-artifacts` joined the post-cut set 2026-08-26** (user-ruled true-deletion
-  cut at v0.87.0; its 113-entry `rules.json` already non-compressor-authored from the
-  pre-cut baseline; ADR
-  `.mochiko/decisions/2026-08-26-review-plan-artifacts-true-deletion-cut.md`).
-  **`review-specifications` joined the post-cut set 2026-08-26** (user-ruled true-deletion
-  cut at v0.88.0, 81-entry `rules.json` non-compressor-authored; ADR
-  `.mochiko/decisions/2026-08-26-review-specifications-true-deletion-cut.md`).
-  **`review-governance-intent` (v0.89.0, 70 rules) and `validation-constitution` (v0.90.0,
-  69 rules) joined the post-cut set 2026-08-26** — series close-out: every
-  `review-*`/`validation-*` skill is now ruled-cut; further reduction routes to the
-  eval-graded pilot path (ADRs
-  `.mochiko/decisions/2026-08-26-review-governance-intent-true-deletion-cut.md`,
-  `.mochiko/decisions/2026-08-26-validation-constitution-true-deletion-cut.md`).
+- [ ] **Persona mode in the plan-only runner** (D3 · D5 · D6 · D7 · D10 · C1/C4 folds) — `--agent
+  mochiko:<persona>` seating from the fixture cwd, fence `Write,Edit,Bash,Agent,NotebookEdit,Skill`,
+  `--permission-mode acceptEdits`; rubric mint from the persona body (union of both refs, tags
+  added/removed/common, body-derived completeness check, `not-a-claim`); `pre`/`post` arms;
+  `nopersona` mint pass; `--model opus` explicit on every arm (R5); `model-native` tags carry
+  forward by claim id (R3); the read-back bullet split into plan-statement / execution claims (R4);
+  every eval runner cites `evals/README.md` as the one vocabulary (C4 — due before the promotion
+  steps, R8). Pre-build probes owed: read-trace capture under `--agent`
+  (I8; fallback `self-report`), pin resolution with a non-default model (I1).
+- [ ] **`staff-engineer` pilot** (D8 · D9 · D11) — goldens sized from post-pruning claims (floor
+  3–5, `untempted` tag), `preregistration.md` with the positive control on the v0.108.0
+  section's plan-observable residue (C2 re-cut), tolerance band from the probe run's measured
+  `pre` spread, stopping rule (two re-keys → back to the user), hand-labelled calibration set +
+  judge agreement bar (I9), per-pilot budget bound (M6). Grid `pre` = v0.107.0, `post` = v0.108.0.
+- [ ] **`validator` pilot** (D9) — same form; goldens plant a defective artifact beside a
+  flattering author summary. Runs after the staff-engineer pilot meets or re-keys its bar.
+- [ ] **Skill `rules.json` re-key onto migration-log ids** (D12 · C3 · R2) — the five schema-backed
+  inventories (`review-brainstorm` · `review-governance-intent` · `review-plan-artifacts` ·
+  `review-specifications` · `validation-constitution`) cite `SKILL.md` headings that no longer
+  exist; re-key each rule to its log id (`patterns-entity-modeling` stays a hand inventory),
+  floor list = the render's `floors:` line (`review-brainstorm` today: 6 listed vs 9 delivered).
+  Then **fill the four post-cut eval slots** — `review-governance-intent` · `review-plan-artifacts`
+  · `review-specifications` · `validation-constitution` — with goldens + pre-registration from the
+  re-keyed inventories, never the stale ones (`skill-content-schema` D7's judged-sample-of-two
+  floor stands).
+- [ ] **One-runner promotion, three landing acts** (D10) — rename `evals/commands/` → `evals/plan/`
+  (citations move with it); extract the shared core into `evals/lib/` and make `evals/run.py`
+  import it; converge the CLI to `evals/run.py <target> <subcommand> <name>`. `evals/contract/`
+  untouched (release gate, not an eval). Each act its own audit.
+- [ ] **Agents-as-schema channel probe** (D4 door) — does a plugin hook fire for a `--agent`
+  session, an `Agent` subagent, and an agent-team teammate, with injected text landing before the
+  first model turn? Three legs; a census opens only on a positive result. `!` injection in agent
+  bodies is ruled out (record F12).
+- [ ] **Command-target residue (carried from the plan-only section)** — D10 one-real-run
+  correlation check · the other four commands' fixtures · name-resolution marker allowlist (the
+  three governance comment-marker names false-positive in every `setup` run) · judge-retry loop
+  for unparseable opus coverage-judge arrays · noise-domination disposition: implement was
+  noise-dominated at k=3 and k=4 (flaky share ~21 % vs the 20 % bound), setup cleaner — the v2
+  record's D11 (measured band + stopping rule) is the ruled answer; apply it to the command target
+  at its next grid · Goodhart watch (anti-recitation register) · opus pairwise position bias.
 
 ## Plan-retirement residuals
 
@@ -893,20 +860,6 @@ Raw captures (2026-08-01) — to triage/brainstorm; grooming may re-key into fin
   `ui-designer` cluster the persona composes? Persona-carries-judgment /
   skill-carries-procedure (five-axis #4) constrains the shape. Resolve overlap with the Design
   track before authoring.
-- [ ] **Quality-control pipeline — deepeval or equivalent** (2026-08-04; provenance: capture
-  session, to-brainstorm; re-keyed here from To-triage at the 2026-08-06 groom) — explore
-  deepeval (or a comparable eval/QC pipeline) for automated quality control over produced
-  artifacts / generated code. Open: what does it grade (spec fidelity · code · agent output),
-  how it composes with the existing producer↔validator pairing (five-axis #5) and the
-  qa-engineer / testing-* skills, and whether it's a kernel-shaped dependency (constraint
-  check — no Python/MCP brain code; must live as skill/agent or native CC). Brainstorm the
-  fit before adopting any external harness. (2026-08-19: mutation-tool adoption ruled not
-  kernel-class — `qa-gap-finding-verification` D10, GI-019 recorded; that adoption is not
-  this item's eval-harness brainstorm; item stays open.) (2026-08-22: `skill-compression-tooling`
-  accepted — rules the lowest-level per-skill eval primitive and fills `primitive-eval-harness`
-  D5's pilot slot; this item still owns the wider produced-artifact QC question.)
-  (2026-08-27: `command-plan-only-eval` accepted — rules the command-surface eval on a
-  plan-only substrate; this item still owns produced-artifact QC.)
 - [ ] **Multi-stack / monorepo registries** (2026-07-21) — per-stack registries, paths scopes,
   seeding. **Revisit: first multi-stack setup run.**
 - [ ] **`codebase-inventory-schema.json` port** (2026-06-27; provenance:

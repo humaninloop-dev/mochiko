@@ -8,6 +8,12 @@ One entry per session directory under `.mochiko/brainstorms/<topic-slug>/`, **ne
 
 ---
 
+## `primitive-eval-harness-v2` — primitive evals, second pass: agents join skills and commands; the layer re-grounded at v0.108.0
+- **When:** 2026-09-05 · **Status:** accepted 2026-09-08 · single cold review (`mochiko:devils-advocate` on `mochiko:review-brainstorm`, blind-map two-message dispatch; 29 raised → 20 survivors: 4 Critical · 9 Important · 7 Minor, all dispositioned by the user as proposed — 14 folds, 6 coverage survivors ruled inline, 1 record repair; verify pass NOT CLEAN — 9 residuals, 5 substantive, all confirmed and repaired by user ruling 2026-09-08; one round, bound held)
+- **Artifacts:** [record.md](primitive-eval-harness-v2/record.md) (canonical — F1–F13 ground facts, D1–D13, open-questions floor, review table)
+- **About:** reopened `primitive-eval-harness` from scratch by user ruling. Ruled: one eval layer with three targets (D1); the persona target is plan-only (D2, `Contested`), seated as the headless session itself via `--agent` with a read-only fence incl. `Skill` (D3); agents-as-schema a door gated on a hook-channel probe — `!` injection ruled out by probe (D4); prose-derived rubric with minted ids, union-of-refs, completeness check (D5); `pre`/`post` arms, persona alone (D6); `nopersona` a one-time mint pass at `--model opus` (D7); hand-authored goldens sized from claims (D8); pilots `staff-engineer` then `validator` (D9); persona mode lands inside the plan-only runner, one runner the promotion target (D10); pre-registration with a positive control re-cut to the plan-observable residue, measured band, stopping rule, judge calibration, budget (D11); cleanup as the landing act incl. the skill `rules.json` re-key (D12); the old record's four open questions ruled (D13).
+- **Landed:** DECISIONS.md row (2026-09-08) · BACKLOG *Primitive evals v2 build* section (replaces the two eval build sections; delivered items → trail; the deepeval QC item → trail as superseded) · ROADMAP: folded into the token-epic Next row (cap held) · `primitive-eval-harness` → superseded (record Status line + index).
+
 ## `cli-schema-delivery` — CLI-served schema store: migration log + replay, `.md` points at the CLI, no raw-file fallback, dependency-halt hooks
 - **When:** 2026-09-03 · **Status:** accepted · pair cold review, lens-split (decision
   quality / record integrity), blind-map two-message dispatch (maps 40 + 52 angles; index
@@ -363,7 +369,7 @@ One entry per session directory under `.mochiko/brainstorms/<topic-slug>/`, **ne
   pilot slot (that session stays open on its own terms)
 
 ## `primitive-eval-harness` — evaluation harness (deepeval or alternative) for CI/CD of skill and skill+agent changes
-- **When:** 2026-08-19 · **Status:** open
+- **When:** 2026-08-19 · **Status:** superseded 2026-09-08 by [`primitive-eval-harness-v2`](primitive-eval-harness-v2/record.md) — never cold-reviewed, never accepted; D1–D5 re-ruled by number there, its four open questions ruled in v2 D13; record frozen, provenance only
 
 ## `product-architecture-schema` — product-level architecture as schema: opinionated SaaS/PLG patterns, product-vs-feature lens push/pull, adaptive depth
 - **When:** 2026-08-19 · **Status:** accepted · record pair-cold-reviewed via blind-map two-message dispatch, lens-split decision-quality + record-integrity (38-angle maps each; one negligible fence leak disclosed and accepted; cross-exam both directions, zero kills, reduction by merge only — pre-adjudication union 5 Critical / 13 Important / 10 Minor, post-adjudication 5/12/11 after the 7th-command demotion on seat A's fact-kill → both verdicts critical-gaps → 28/28 dispositioned: bucket 3 one user-ruled batch "as recommended", buckets 1–2 explored individually — S1 baselines reconciliation user-ruled **absorb** against the lead's coexist recommendation (D12 `Contested`), S14 → D13 growth-door routing, S2 floor-precedence → D14 + F7 corrected (FLOOR-SEC/FLOOR-OBS falsified the no-defaults claim), S4 → D5/D7/D10/D11 re-marked `Assumed` + falsifier, S5 staging → D15 two stages, S11 → D16 migration; verify round 1 NOT CLEAN — 2 blocking fold-propagation + 8 non-blocking, all ten lead-repaired same round → bounded round 2 CLEAN; acceptance followed)
