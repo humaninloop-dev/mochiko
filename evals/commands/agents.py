@@ -506,12 +506,50 @@ def judge_items(doc: dict, *, for_prune: bool = False, include_removed: bool = F
             if c.get("control") or c.get("tag") == "removed":
                 continue
         else:
-            if c.get("model_native"):
+            if c.get("model_native") or c.get("untempted"):   # graded set only (I5)
                 continue
             if c.get("tag") == "removed" and not include_removed:
                 continue
         items.append({"id": c["id"], "section": c["source"]["section"], "text": c["text"]})
     return items
+
+
+JUDGE_COST = {"usd": 0.0, "calls": 0}   # accumulated per process; written into summary.json
+
+
+def judge_session_costed(prompt: str, model: str) -> str:
+    """The command runner's judge call, with the session's own `total_cost_usd` kept
+    (validator fix 4: the pre-registration's spend bound must be measurable)."""
+    with tempfile.TemporaryDirectory(prefix="agentjudge-") as td:
+        proc = subprocess.run(
+            ["claude", "-p", prompt, "--model", model, "--max-turns", "1",
+             "--setting-sources", "", "--output-format", "json"],
+            cwd=td, capture_output=True, text=True, timeout=600)
+        try:
+            doc = json.loads(proc.stdout)
+        except json.JSONDecodeError:
+            return ""
+        JUDGE_COST["usd"] += doc.get("total_cost_usd") or 0.0
+        JUDGE_COST["calls"] += 1
+        return doc.get("result", "") or ""
+
+
+def judge_pairwise(text_a: str, text_b: str, model: str = cmdrun.PAIRWISE_MODEL) -> dict:
+    """Blind A/B with position swap — the command runner's mechanics, cost-accounted and
+    with the persona-target wording ("the same card for the same workspace"). A deliberate
+    fork of `run.judge_pairwise`: two prompts to keep in step until the shared core lands
+    (v2 D10, promotion step 2)."""
+    def ask(first, second):
+        prompt = ("Two action plans answer the same card for the same workspace. Which is the "
+                  "better plan overall — more faithful to the task, more concretely actionable? "
+                  "Reply ONLY JSON {\"winner\": \"1\"|\"2\"|\"tie\", \"reason\": "
+                  "\"<one sentence>\"}.\n\nPLAN 1:\n" + first[:60_000]
+                  + "\n\nPLAN 2:\n" + second[:60_000])
+        return cmdrun.extract_json(judge_session_costed(prompt, model)) or {}
+    v1, v2 = ask(text_a, text_b), ask(text_b, text_a)
+    w1, w2 = v1.get("winner"), v2.get("winner")
+    agree = (w1 == "1" and w2 == "2") or (w1 == "2" and w2 == "1") or (w1 == w2 == "tie")
+    return {"first_order": v1, "swapped": v2, "position_consistent": agree}
 
 
 def judge_coverage(items: list, plan: str, model: str = cmdrun.CHECKLIST_MODEL) -> list:
@@ -538,7 +576,7 @@ def judge_coverage(items: list, plan: str, model: str = cmdrun.CHECKLIST_MODEL) 
             "STANDARDS:\n" + json.dumps(chunk, indent=1) + "\n\nPLAN:\n" + plan[:120_000])
         byid = {}
         for _ in range(2):
-            verdicts = cmdrun.extract_json(cmdrun.judge_session(prompt, model))
+            verdicts = cmdrun.extract_json(judge_session_costed(prompt, model))
             if isinstance(verdicts, list):
                 for v in verdicts:
                     if isinstance(v, dict) and v.get("id") and v.get("verdict"):
@@ -556,7 +594,8 @@ def rundir(persona: str, name: str) -> pathlib.Path:
     return AGENT_EVALS / persona / "runs" / name
 
 
-def cmd_grid(persona: str, replicates: int, old_ref: str | None, out: str | None) -> None:
+def cmd_grid(persona: str, replicates: int, old_ref: str | None, out: str | None,
+             arms: list | None = None) -> None:
     prereg = AGENT_EVALS / persona / "preregistration.md"
     if not prereg.is_file():
         die(f"{prereg} missing — no grid without a pre-registration (D11)")
@@ -569,7 +608,9 @@ def cmd_grid(persona: str, replicates: int, old_ref: str | None, out: str | None
     goldens = load_goldens(persona)
     if len(goldens) < 3:
         die(f"{len(goldens)} golden(s) — D8 sets a floor of three per persona before any grid")
-    arms = ["pre", "post"]
+    arms = arms or ["pre", "post"]          # `--arms pre` = the pre-registration's probe run
+    if any(a not in ("pre", "post") for a in arms):
+        die(f"grid arms are pre/post only (nopersona is agent-prune): {arms}")
     name = out or datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
     rd = rundir(persona, name)
     rd.mkdir(parents=True, exist_ok=True)
@@ -592,7 +633,8 @@ def cmd_grid(persona: str, replicates: int, old_ref: str | None, out: str | None
     meta = {"persona": persona, "old_ref": old_ref, "replicates": replicates, "arms": arms,
             "total_cost_usd": round(total, 4),
             "rubric_snapshot": {c["id"]: {"tag": c["tag"], "partition": c["partition"],
-                                          "model_native": c.get("model_native", False)}
+                                          "model_native": c.get("model_native", False),
+                                          "untempted": c.get("untempted", False)}
                                 for c in doc["claims"]},
             "runs": runs}
     (rd / "summary.json").write_text(json.dumps(meta, indent=1))
@@ -645,7 +687,8 @@ def cmd_prune(persona: str, replicates: int, out: str | None) -> None:
     (rd / "summary.json").write_text(json.dumps(
         {"persona": persona, "pass": "nopersona-prune", "arm_model": ARM_MODEL,
          "replicates": replicates, "judged": [i["id"] for i in items], "model_native": native,
-         "total_cost_usd": round(total, 4), "runs": runs}, indent=1))
+         "total_cost_usd": round(total, 4), "judge_cost_usd": round(JUDGE_COST["usd"], 4),
+         "judge_calls": JUDGE_COST["calls"], "runs": runs}, indent=1))
     print(f"prune done: {len(native)}/{len(items)} judged claims tagged model_native  (${total:.2f})  {rd}")
 
 
@@ -669,9 +712,12 @@ def cmd_judge(persona: str, name: str, judge_model: str = cmdrun.CHECKLIST_MODEL
             if a and b:
                 print(f"pairwise {g}/r{r} ...", flush=True)
                 meta["pairwise"].append({"golden": g, "replicate": r,
-                                         **cmdrun.judge_pairwise(a, b, pairwise_model)})
+                                         **judge_pairwise(a, b, pairwise_model)})
+    # Accumulate across re-judges (the noise guard prescribes one): never overwrite.
+    meta["judge_cost_usd"] = round((meta.get("judge_cost_usd") or 0.0) + JUDGE_COST["usd"], 4)
+    meta["judge_calls"] = (meta.get("judge_calls") or 0) + JUDGE_COST["calls"]
     (rd / "summary.json").write_text(json.dumps(meta, indent=1))
-    print(f"judged: {rd / 'summary.json'}")
+    print(f"judged: {rd / 'summary.json'}  (judges ${JUDGE_COST['usd']:.2f} over {JUDGE_COST['calls']} calls)")
 
 
 def cmd_report(persona: str, name: str) -> None:
@@ -679,39 +725,53 @@ def cmd_report(persona: str, name: str) -> None:
     meta = json.loads((rd / "summary.json").read_text())
     snap = meta["rubric_snapshot"]
     goldens = {g["id"]: g for g in load_goldens(persona)}
+    # The graded set: plan-observable, not model-native, not removed, and TEMPTED by some
+    # golden — an `untempted` claim is a disclosed gap, never read as absent (I5).
     graded = sorted(i for i, s in snap.items()
                     if s["partition"] == "plan-observable" and not s["model_native"]
-                    and s["tag"] != "removed")
+                    and s["tag"] != "removed" and not s.get("untempted"))
+    untempted = sorted(i for i, s in snap.items() if s.get("untempted"))
     removed = sorted(i for i, s in snap.items() if s["tag"] == "removed")
     lines = [f"# Persona plan-only eval report — {persona} / {name}", "",
              f"Arms: {meta['arms']} · replicates {meta['replicates']} · pre ref {meta['old_ref']} · "
              f"cost ${meta['total_cost_usd']}", "",
              "Advisory (harness D2): nothing below sets an exit code. Read against the persona's "
-             "preregistration.md — the positive control and the noise band live there.", ""]
+             "preregistration.md — the positive control and the noise band live there.", "",
+             f"Graded claims: {len(graded)} · untempted (disclosed, not read): {len(untempted)}"
+             + (f" {untempted}" if untempted else ""), ""]
     for g in sorted({e["golden"] for e in meta["runs"]}):
         lines.append(f"## {g}")
         pre = [e for e in meta["runs"] if e["golden"] == g and e["arm"] == "pre"]
         post = [e for e in meta["runs"] if e["golden"] == g and e["arm"] == "post"]
+        both = bool(pre) and bool(post)      # a single-arm run (the probe) reads no diff
         regressions, adoptions, ghosts, flaky_ids = [], [], [], []
+        flaky_pre = [rid for rid in graded if cmdrun.flaky(pre, rid)]
+        flaky_post = [rid for rid in graded if cmdrun.flaky(post, rid)]
         for rid in graded:
             if cmdrun.flaky(post, rid) or cmdrun.flaky(pre, rid):
                 flaky_ids.append(rid)
-            if snap[rid]["tag"] == "common" and cmdrun.passk(pre, rid) and not cmdrun.passk(post, rid):
+            if both and snap[rid]["tag"] == "common" and cmdrun.passk(pre, rid) \
+                    and not cmdrun.passk(post, rid):
                 regressions.append(rid)
-            if snap[rid]["tag"] == "added":
+            if both and snap[rid]["tag"] == "added":
                 adoptions.append((rid, cmdrun.passk(pre, rid), cmdrun.passk(post, rid)))
         removed_read = []
         for rid in removed:
             judged = any(v["id"] == rid for e in post for v in e.get("coverage", []))
-            if not judged:
+            if not judged or not both:
                 continue
             a, b = cmdrun.passk(pre, rid), cmdrun.passk(post, rid)
             removed_read.append((rid, a, b))
             if b:
                 ghosts.append(rid)
-        lines.append(f"- post coverage (pass^k): {sum(1 for r in graded if cmdrun.passk(post, r))}/{len(graded)}"
-                     f" · pre coverage: {sum(1 for r in graded if cmdrun.passk(pre, r))}/{len(graded)}")
-        lines.append(f"- **common-claim regressions:** {regressions or 'none'}")
+        for arm_name, arm_runs in (("pre", pre), ("post", post)):
+            if arm_runs:
+                lines.append(f"- {arm_name} coverage (pass^k): "
+                             f"{sum(1 for r in graded if cmdrun.passk(arm_runs, r))}/{len(graded)}")
+        if both:
+            lines.append(f"- **common-claim regressions:** {regressions or 'none'}")
+        else:
+            lines.append("- single-arm run: no pre/post read (band and calibration inputs only)")
         if adoptions:
             lines.append("- added-claim adoption (pre → post): " + ", ".join(
                 f"{r}={'absent' if not a else 'PRESENT-IN-PRE'}→{'LANDED' if b else 'DEAD-TEXT'}"
@@ -728,6 +788,10 @@ def cmd_report(persona: str, name: str) -> None:
             lines.append(f"- **removed claims still surfacing:** {ghosts}")
         lines.append(f"- flaky claims (replicate disagreement — noise-guard input): {len(flaky_ids)}"
                      + (f" {flaky_ids}" if flaky_ids else ""))
+        lines.append("- flaky share per arm (band input): "
+                     + " · ".join(f"{a} {len(f)}/{len(graded)}"
+                                  for a, f, runs_ in (("pre", flaky_pre, pre), ("post", flaky_post, post))
+                                  if runs_))
         for e in pre + post:
             if e["asserts"]["cap_hit"]:
                 lines.append(f"- WARN cap-hit {e['arm']}/r{e['replicate']}")
@@ -745,13 +809,105 @@ def cmd_report(persona: str, name: str) -> None:
         lines.append(f"- pairwise {p['golden']}/r{p['replicate']}: "
                      f"{(p['first_order'].get('winner'), p['swapped'].get('winner'))} "
                      f"(position_consistent={p['position_consistent']})")
+    if meta.get("judge_cost_usd") is not None:
+        lines.append(f"- judge spend: ${meta['judge_cost_usd']} over {meta.get('judge_calls')} calls "
+                     f"(plan sessions ${meta['total_cost_usd']})")
     (rd / "report.md").write_text("\n".join(lines) + "\n")
     print(f"report: {rd / 'report.md'}")
 
 
+# ---------- judge calibration (D11 fold I9) ----------
+
+def cmd_label_sheet(persona: str, name: str, size: int, seed: int) -> None:
+    """Emit a hand-labelling sheet: `size` (golden, arm, replicate, claim) pairs sampled
+    from a judged run, judge verdicts hidden, for the lead to label. The filled sheet
+    feeds `agent-calibrate`."""
+    import random
+    rd = rundir(persona, name)
+    meta = json.loads((rd / "summary.json").read_text())
+    pairs = [{"golden": e["golden"], "arm": e["arm"], "replicate": e["replicate"],
+              "id": v["id"], "label": ""}
+             for e in meta["runs"] for v in e.get("coverage", []) if v.get("verdict")]
+    if not pairs:
+        die("run carries no judged coverage — run agent-judge first")
+    random.Random(seed).shuffle(pairs)
+    pairs = pairs[:size]
+    # Arm-blind (validator fix 12): the labeller sees an opaque plan key and an anonymized
+    # copy of the plan, never the arm; the key → (golden, arm, replicate) map is written to a
+    # separate file the labeller must not open, and agent-calibrate joins through it.
+    cal = rd / "calibration"
+    cal.mkdir(exist_ok=True)
+    keys, mapping = {}, {}
+    for pr in pairs:
+        src = (pr["golden"], pr["arm"], pr["replicate"])
+        if src not in keys:
+            k = hashlib.sha256(f"{seed}:{src}".encode()).hexdigest()[:8]
+            keys[src] = k
+            mapping[k] = {"golden": pr["golden"], "arm": pr["arm"], "replicate": pr["replicate"]}
+            shutil.copy(rd / f"{pr['golden']}-{pr['arm']}-r{pr['replicate']}.plan.md",
+                        cal / f"plan-{k}.md")
+        pr["plan"] = keys[src]
+        for f in ("golden", "arm", "replicate"):
+            pr.pop(f)
+    sheet = {"persona": persona, "run": name, "seed": seed,
+             "instructions": "Label each pair reflected | absent | contradicted by reading "
+                             "calibration/plan-<plan>.md against the claim text in rules.json: a "
+                             "restated principle without a task-specific action = absent; a "
+                             "declined or hypothetical conditional path = absent; a Reject-section "
+                             "standard is reflected when a concrete action avoids the behaviour. Do "
+                             "not open calibration-map.json and do not look at the judge's verdicts.",
+             "pairs": pairs}
+    out = rd / "calibration-sheet.json"
+    out.write_text(json.dumps(sheet, indent=1))
+    (rd / "calibration-map.json").write_text(json.dumps(mapping, indent=1))
+    print(f"sheet: {out}  ({len(pairs)} pairs to label, {len(mapping)} anonymized plans in {cal})")
+
+
+def cmd_calibrate(persona: str, name: str, labels_path: str) -> None:
+    """Agreement between the hand labels and the judge's verdicts on the same pairs;
+    writes calibration.json beside the run. The bars live in preregistration.md."""
+    rd = rundir(persona, name)
+    meta = json.loads((rd / "summary.json").read_text())
+    sheet = json.loads(pathlib.Path(labels_path).read_text())
+    judged = {(e["golden"], e["arm"], e["replicate"], v["id"]): v["verdict"]
+              for e in meta["runs"] for v in e.get("coverage", [])}
+    mapping = json.loads((rd / "calibration-map.json").read_text())
+    rows, agree, contra_total, contra_agree = [], 0, 0, 0
+    confusion = {}
+    for pr in sheet["pairs"]:
+        lab = (pr.get("label") or "").strip()
+        if lab not in ("reflected", "absent", "contradicted"):
+            die(f"unlabelled or invalid pair {pr}")
+        src = mapping.get(pr["plan"])
+        if src is None:
+            die(f"sheet row names plan key {pr['plan']!r} absent from calibration-map.json — "
+                "the sheet and map were generated with different seeds; regenerate both together")
+        pr = {**pr, **src}
+        jv = judged.get((src["golden"], src["arm"], src["replicate"], pr["id"]))
+        rows.append({**pr, "judge": jv, "agree": jv == lab})
+        agree += jv == lab
+        confusion[(lab, jv)] = confusion.get((lab, jv), 0) + 1
+        if lab == "contradicted":
+            contra_total += 1
+            contra_agree += jv == lab
+    n = len(rows)
+    result = {"persona": persona, "run": name, "pairs": n,
+              "agreement": round(agree / n, 3) if n else None,
+              "contradicted_pairs": contra_total,
+              "contradicted_agreement": (round(contra_agree / contra_total, 3)
+                                         if contra_total else None),
+              "confusion": {f"label={a} judge={b}": c for (a, b), c in sorted(confusion.items(),
+                                                                                key=str)},
+              "rows": rows}
+    (rd / "calibration.json").write_text(json.dumps(result, indent=1))
+    print(f"calibration: agreement {result['agreement']} over {n} pairs · contradicted "
+          f"{contra_agree}/{contra_total} · {rd / 'calibration.json'}")
+
+
 def add_subcommands(sub) -> None:
     for name in ("agent-mint", "agent-check", "agent-plan-run", "agent-grid",
-                 "agent-prune", "agent-judge", "agent-report"):
+                 "agent-prune", "agent-judge", "agent-report", "agent-label-sheet",
+                 "agent-calibrate"):
         p = sub.add_parser(name)
         p.add_argument("persona")
         if name == "agent-mint":
@@ -768,8 +924,15 @@ def add_subcommands(sub) -> None:
             p.add_argument("--out")
         if name == "agent-grid":
             p.add_argument("--old-ref")
-        if name in ("agent-judge", "agent-report"):
+            p.add_argument("--arms", default="pre,post",
+                           help="comma list; `pre` alone is the pre-registration probe run")
+        if name in ("agent-judge", "agent-report", "agent-label-sheet", "agent-calibrate"):
             p.add_argument("run_name")
+        if name == "agent-label-sheet":
+            p.add_argument("--size", type=int, default=24)
+            p.add_argument("--seed", type=int, default=7)
+        if name == "agent-calibrate":
+            p.add_argument("--labels", required=True)
         if name == "agent-judge":
             p.add_argument("--judge-model", default=cmdrun.CHECKLIST_MODEL)
             p.add_argument("--pairwise-model", default=cmdrun.PAIRWISE_MODEL)
@@ -804,11 +967,16 @@ def dispatch(a) -> bool:
         print(f"reads: {[r['target'] for r in e['reads']]}")
         print(f"saved: {out}  (${e.get('cost_usd')}, {e.get('num_turns')} turns)")
     elif a.cmd == "agent-grid":
-        cmd_grid(a.persona, a.replicates, a.old_ref, a.out)
+        cmd_grid(a.persona, a.replicates, a.old_ref, a.out,
+                 [x.strip() for x in a.arms.split(",") if x.strip()])
     elif a.cmd == "agent-prune":
         cmd_prune(a.persona, a.replicates, a.out)
     elif a.cmd == "agent-judge":
         cmd_judge(a.persona, a.run_name, a.judge_model, a.pairwise_model)
     elif a.cmd == "agent-report":
         cmd_report(a.persona, a.run_name)
+    elif a.cmd == "agent-label-sheet":
+        cmd_label_sheet(a.persona, a.run_name, a.size, a.seed)
+    elif a.cmd == "agent-calibrate":
+        cmd_calibrate(a.persona, a.run_name, a.labels)
     return True

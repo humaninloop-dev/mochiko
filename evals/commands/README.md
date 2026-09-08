@@ -78,6 +78,8 @@ uv run evals/commands/run.py agent-prune staff-engineer      # one-time noperson
 uv run evals/commands/run.py agent-grid staff-engineer --replicates 3       # pre/post, persona alone
 uv run evals/commands/run.py agent-judge staff-engineer <run-name>
 uv run evals/commands/run.py agent-report staff-engineer <run-name>
+uv run evals/commands/run.py agent-label-sheet staff-engineer <run-name>   # hand-label 24 pairs (I9)
+uv run evals/commands/run.py agent-calibrate staff-engineer <run-name> --labels evals/agents/staff-engineer/runs/<run-name>/calibration-sheet.json
 ```
 
 Invariants specific to the persona target (probe-settled 2026-09-08):

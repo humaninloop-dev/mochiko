@@ -42,6 +42,8 @@ Usage (run via `uv run evals/commands/run.py ...`):
   agent-grid <persona> [--replicates 3] [--old-ref REF] [--out NAME]   pre/post, persona alone (v2 D6)
   agent-judge <persona> <run-name>          embodiment checklist + pairwise
   agent-report <persona> <run-name>         common regressions · added adoption · removed ghosts
+  agent-label-sheet <persona> <run-name> [--size 24]   hand-labelling sheet for judge calibration (v2 I9)
+  agent-calibrate <persona> <run-name> --labels <sheet.json>   agreement vs the labels → calibration.json
 """
 
 import argparse
@@ -82,33 +84,46 @@ def die(msg: str) -> None:
 
 # ---------- schema access ----------
 
+# The schema files shipped under plugins/mochiko/schemas/ until v0.107.0; from wave 6 the
+# rules live in the migration log and the repo-side derived views at .mochiko/schema-views/
+# are their projection (same shape, regenerated never hand-edited). A ref is read from
+# whichever of the two it carries — old refs the schema file, current refs the view.
+SCHEMA_CANDIDATES = ("plugins/mochiko/schemas/{cmd}.yaml",
+                     ".mochiko/schema-views/commands/{cmd}.yaml")
+COMMON_CANDIDATES = ("plugins/mochiko/schemas/common.yaml",
+                     ".mochiko/schema-views/common/common.yaml")
+
+
+def read_at_ref(rels: tuple, old_ref: str | None) -> str | None:
+    """The first candidate path that exists at the working tree or at `old_ref`."""
+    for rel in rels:
+        if old_ref is None:
+            path = REPO / rel
+            if path.is_file():
+                return path.read_text()
+        else:
+            proc = subprocess.run(["git", "-C", str(REPO), "show", f"{old_ref}:{rel}"],
+                                  capture_output=True, text=True)
+            if proc.returncode == 0:
+                return proc.stdout
+    return None
+
+
 def schema_text(cmd: str, old_ref: str | None = None) -> str:
-    rel = f"plugins/mochiko/schemas/{cmd}.yaml"
-    if old_ref is None:
-        return (REPO / rel).read_text()
-    proc = subprocess.run(["git", "-C", str(REPO), "show", f"{old_ref}:{rel}"],
-                          capture_output=True, text=True)
-    if proc.returncode != 0:
-        die(f"git show {old_ref}:{rel} failed: {proc.stderr.strip()}")
-    return proc.stdout
+    text = read_at_ref(tuple(r.format(cmd=cmd) for r in SCHEMA_CANDIDATES), old_ref)
+    if text is None:
+        die(f"no schema or derived view for {cmd}" + (f" at {old_ref}" if old_ref else "")
+            + f" — looked at {[r.format(cmd=cmd) for r in SCHEMA_CANDIDATES]}")
+    return text
 
 
 def common_blocks(old_ref: str | None = None) -> dict:
-    """{common.<slug>: block} from schemas/common.yaml, or {} where the file does not
-    exist (pre-extends refs). Same resolution semantics as the command .md instructs:
+    """{common.<slug>: block} from the common file (schema or derived view), or {} where
+    none exists (pre-extends refs). Same resolution semantics as the command .md instructs:
     a stub inherits every field; a locally declared field replaces the inherited one."""
-    rel = "plugins/mochiko/schemas/common.yaml"
-    if old_ref is None:
-        path = REPO / rel
-        if not path.is_file():
-            return {}
-        raw = path.read_text()
-    else:
-        proc = subprocess.run(["git", "-C", str(REPO), "show", f"{old_ref}:{rel}"],
-                              capture_output=True, text=True)
-        if proc.returncode != 0:
-            return {}
-        raw = proc.stdout
+    raw = read_at_ref(COMMON_CANDIDATES, old_ref)
+    if raw is None:
+        return {}
     doc = yaml.safe_load(raw)
     return {b["id"]: b for b in doc.get("rules") or []}
 

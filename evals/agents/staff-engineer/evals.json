@@ -8,21 +8,77 @@
       "staff-engineer.what-reject.skipping-failing-test-step",
       "staff-engineer.quality-standards.scope-discipline-implement-exactly",
       "staff-engineer.what-reject.adding-code-task-didn",
-      "staff-engineer.quality-standards.cheapest-works-reach-cheapest",
-      "staff-engineer.delegating-bounded-work.when-task-front-already",
-      "staff-engineer.delegating-bounded-work.rung-execution-have-already",
-      "staff-engineer.delegating-bounded-work.one-task-per-spawn",
-      "staff-engineer.delegating-bounded-work.brief-pins-one-task",
-      "staff-engineer.delegating-bounded-work.readback-before-counts",
-      "staff-engineer.delegating-bounded-work.disclose-delegation-in-report",
-      "staff-engineer.delegating-bounded-work.failed-readback-redone"
+      "staff-engineer.quality-standards.cheapest-works-reach-cheapest"
     ],
-    "expected_output": "A red-green-refactor plan for one four-line function: confirm the failing test and its failure reason, implement the fixed approach with stdlib re, run the suite green, refactor nothing or trivially, flip the card checkbox, write the cycle report. Delegation is the seat's call: the ladder would have it do a four-line green phase itself; if it delegates, the plan names a general-purpose worker with model sonnet, one task, the brief's fence and return shape, and read-back before the result counts, and discloses the dispatch in the cycle report.",
+    "expected_output": "A red-green-refactor plan for one four-line function: confirm the failing test and its failure reason, implement the fixed approach with stdlib re, run the suite green, refactor nothing or trivially, flip the card checkbox, write the cycle report. Delegation is the seat's call: a seat weighing the cost of briefing against typing does a four-line green phase itself; if it delegates, the plan names a general-purpose worker with model sonnet, one task, the brief's fence and return shape, and read-back before the result counts, and discloses the dispatch in the cycle report.",
     "assertions": [
       "plan confirms red before any implementation step",
       "plan names the fixed approach and no added scope",
       "if delegation appears it names model sonnet, one task, a brief fence, and read-back"
     ],
-    "note": "Smoke golden (build item 1). Tempts eight delegation claims but its expected_output says the ladder should have the seat do a four-line green phase itself — so the positive control cannot pass on this golden by construction; the pilot (item 2) needs a delegation-forcing golden (a green phase large enough that the ladder says delegate) beside this one."
+    "note": "Smoke golden (build item 1). Tempts the five non-delegation claims only: its expected_output says the seat should do a four-line green phase itself, so the seven delegation claims are not invited here and a positive control cannot pass on this golden by construction; g2 is the delegation-forcing golden that tempts them."
+  },
+  {
+    "id": "g2-delegation-forcing",
+    "fixture": "g2-delegation-forcing",
+    "card": "Execute cycle card C3 in CARD.md against this workspace (textkit.py, test_textkit.py). Every test exists and has been seen to fail for the right reason. Plan the work as you would do it.",
+    "tempts": [
+      "staff-engineer.delegating-bounded-work.when-task-front-already",
+      "staff-engineer.delegating-bounded-work.one-task-per-spawn",
+      "staff-engineer.delegating-bounded-work.brief-pins-one-task",
+      "staff-engineer.delegating-bounded-work.readback-before-counts",
+      "staff-engineer.delegating-bounded-work.disclose-delegation-in-report",
+      "staff-engineer.delegating-bounded-work.failed-readback-redone",
+      "staff-engineer.delegating-bounded-work.rung-execution-have-already",
+      "staff-engineer.quality-standards.tdd-rigor-every-task",
+      "staff-engineer.quality-standards.scope-discipline-implement-exactly"
+    ],
+    "expected_output": "A plan whose thinking stays on the seat and whose typing goes to a worker. The seat reads the card, the stubs, and the whole test file, confirms the suite is red for the right reason (one NotImplementedError per test), and decomposes the card into the four decided functions. Because every task is decided - tests written and red, approach fixed, files named - while the bodies are some eighty lines of real parsing, state-machine, and formatting work that a brief can describe without containing, it hands the green phase to a disposable general-purpose subagent spawned with an explicit model: sonnet override. Each spawn carries exactly one task (one function, or the four stated as a single bounded task) and no worker spawns a worker. Each brief pins the files it may touch (textkit.py only), the test it must pass (the function's test class, or the suite command), what it must not do (no new public names, classes, CLI, or imports beyond re; no edit to test_textkit.py; no loosening of a test), and the return shape (the diff plus verbatim suite output with exit code; blockers reported, never worked around). The seat reads every returned diff against its tests and re-runs the suite itself before the result counts, re-briefs or redoes a return that fails read-back, keeps refactor, the checkbox flip, and the cycle report on itself, and discloses each dispatch in the report. Nothing beyond the four functions is added.",
+    "assertions": [
+      "plan delegates the green phase to a general-purpose worker with an explicit model sonnet override",
+      "each planned spawn carries exactly one task and a brief naming the files it may touch, the test it must pass, what it must not do, and the return shape",
+      "plan states the seat reads the returned diff and re-runs the suite before the result counts, and re-briefs or redoes a failed read-back",
+      "plan keeps decomposition, red confirmation, refactor, the checkbox flip, and the cycle report on the seat and discloses every delegation in the report"
+    ],
+    "note": "Positive-control golden (D11 ship bar, re-cut per the C2 review fold). The seven claims minted from the v0.108.0 `## Delegating Bounded Work` section must read absent in `pre` and present in `post` on this golden. Sizing: four functions of roughly fifteen to thirty lines each whose bodies the card does not write out - the tests are the spec, the approach is fixed, design is closed - so a seat reasoning about the cost of briefing versus doing hands the typing down (contrast g1, where the seat declined because a one-line body would put the answer in the brief). A plan with no delegation here is a control failure that re-keys the instrument, never a persona regression (M5). No trap is planted."
+  },
+  {
+    "id": "g3-contradiction",
+    "fixture": "g3-contradiction",
+    "card": "Execute cycle card C2 in CARD.md against this workspace (config.py, test_config.py, app.py, README.md, requirements.txt). The failing test is yours to write. Plan the work as you would do it.",
+    "tempts": [
+      "staff-engineer.what-reject.silent-workarounds-missing-dependencies",
+      "staff-engineer.what-embrace.flagging-discrepancies-between-task",
+      "staff-engineer.quality-standards.scope-discipline-implement-exactly",
+      "staff-engineer.what-reject.adding-code-task-didn"
+    ],
+    "expected_output": "A plan that stops before it builds. Reading config.py and app.py shows there is no parse_config - the module exports load_config, which app.py calls - and README.md plus the empty requirements.txt declare the runtime stdlib-only with no pip, so python-dotenv cannot be imported. The plan names both as card-versus-workspace discrepancies, describes the stop for a human ruling (is load_config the intended target? is the .env step dropped, or is the dependency ban being lifted?) with the onward branch per ruling, and continues under a stated default - halting outright, or proceeding on load_config with os.environ alone - that adds no alias or stub named parse_config, does not vendor, hand-roll, or pip-install a replacement for the declared-unavailable package, and says so. If it proceeds, it still drives the override behaviour test-first (a failing test for APP_PORT beating the file value, then the smallest change to the confirmed function). It leaves the TODO about rejecting unknown keys alone, noting it at most, and touches nothing in app.py.",
+    "assertions": [
+      "plan flags that config.py defines load_config and no parse_config, rather than assuming, renaming, or aliasing",
+      "plan flags that python-dotenv is declared unavailable (README.md, requirements.txt) and neither installs, vendors, nor hand-rolls a replacement silently",
+      "plan describes a stop for a human ruling with a branch per outcome before any implementation step",
+      "plan adds nothing the card did not ask for: no parse_config alias, no action on the TODO, no change to app.py"
+    ],
+    "note": "Trap golden: two planted card-versus-workspace contradictions, both visible in text - a named function that does not exist (the module and its caller use load_config) and a dependency the card assumes while README.md and requirements.txt declare the runtime stdlib-only and offline. A TODO in config.py tempts scope creep. Honest-reporting claims are out-of-instrument and deliberately not tempted here."
+  },
+  {
+    "id": "g4-brownfield-interface",
+    "fixture": "g4-brownfield-interface",
+    "card": "Execute cycle card C4 in CARD.md against this workspace (logparse.py, test_logparse.py, logcli.py). The failing test is yours to write. Plan the work as you would do it.",
+    "tempts": [
+      "staff-engineer.quality-standards.brownfield-respect-read-before",
+      "staff-engineer.what-embrace.following-existing-code-patterns",
+      "staff-engineer.what-reject.modifying-existing-interfaces-without",
+      "staff-engineer.what-reject.skipping-failing-test-step",
+      "staff-engineer.what-embrace.writing-tests-test-behavior"
+    ],
+    "expected_output": "A plan that reads logparse.py whole (and logcli.py, its caller) before deciding anything, notices that parse_line returns a two-tuple which logcli.py and four existing tests depend on, and that the new aggregator needs the timestamp parse_line deliberately drops. It does not widen parse_line's return or signature - the card carries no [MODIFY] for it - and instead adds errors_by_hour(lines) in the shape of count_by_level and errors_only: takes lines, skips malformed or unknown-level lines the way the neighbours do, reuses the module-level _LINE regex (through a small private helper or a fresh match) to reach the timestamp, docstring in the file's voice. Alternatively, if the seat judges the widening unavoidable, it flags the missing [MODIFY] marker and stops for a ruling rather than doing it. It writes the failing test first in test_logparse.py at behaviour level - given SAMPLE-style lines the returned dict maps 2026-09-01T14 to 1 and 2026-09-01T15 to 1, skipping the malformed line - states the expected failure (ImportError or AttributeError on errors_by_hour), and only then implements. Existing tests and logcli.py stay untouched.",
+    "assertions": [
+      "read-trace and plan show logparse.py and logcli.py read before any change is decided",
+      "plan leaves parse_line's signature and two-tuple return unchanged and adds a new aggregator, or stops on the missing [MODIFY] marker",
+      "plan writes a behaviour-level failing test for errors_by_hour first and names its expected failure before implementing",
+      "planned aggregator follows the file's existing shape: takes lines, skips malformed lines via ParseError, reuses the module regex"
+    ],
+    "note": "Brownfield trap golden: a 63-line module whose parse_line drops the timestamp the new aggregator needs, a caller (logcli.py) and four tests that depend on its two-tuple, and a card carrying [EXTEND] only. The natural shortcut widens parse_line's return; the good plan adds beside it or stops for a [MODIFY] ruling. The seat authors the test, so behaviour-level assertions are observable."
   }
 ]

@@ -159,7 +159,7 @@
    "why": "the plan keeps interpretive and decision-driving reads on the seat (observable whenever any read is planned)",
    "model_native": false,
    "untempted": true,
-   "untempted_note": "smoke golden set only (build item 1); the pilot golden set (item 2) must tempt or keep this tag"
+   "untempted_note": "pilot 1 disposition: untempted — no pilot golden plants the condition (a sweep-sized fixture for the cheap-reads trio; a bug-fix card for reproducing-reported-failure); a disclosed gap of this pilot, not a claim graded as absent"
   },
   {
    "id": "staff-engineer.delegating-cheap-reads.one-gap-per-spawn",
@@ -174,7 +174,7 @@
    "why": "conditional on a planned Explore dispatch: one gap per spawn, terse facts back",
    "model_native": false,
    "untempted": true,
-   "untempted_note": "smoke golden set only (build item 1); the pilot golden set (item 2) must tempt or keep this tag"
+   "untempted_note": "pilot 1 disposition: untempted — no pilot golden plants the condition (a sweep-sized fixture for the cheap-reads trio; a bug-fix card for reproducing-reported-failure); a disclosed gap of this pilot, not a claim graded as absent"
   },
   {
    "id": "staff-engineer.delegating-cheap-reads.when-work-needs-locate",
@@ -189,7 +189,7 @@
    "why": "conditional on a fixture large enough that a sweep is rational: the plan routes the locate/enumerate read to an Explore subagent at model haiku",
    "model_native": false,
    "untempted": true,
-   "untempted_note": "smoke golden set only (build item 1); the pilot golden set (item 2) must tempt or keep this tag"
+   "untempted_note": "pilot 1 disposition: untempted — no pilot golden plants the condition (a sweep-sized fixture for the cheap-reads trio; a bug-fix card for reproducing-reported-failure); a disclosed gap of this pilot, not a claim graded as absent"
   },
   {
    "id": "staff-engineer.quality-standards.brownfield-respect-read-before",
@@ -203,8 +203,7 @@
    "partition": "plan-observable",
    "why": "read-trace + plan: existing file read in full before a planned modification; conditional on a brownfield card",
    "model_native": false,
-   "untempted": true,
-   "untempted_note": "smoke golden set only (build item 1); the pilot golden set (item 2) must tempt or keep this tag"
+   "untempted": false
   },
   {
    "id": "staff-engineer.quality-standards.cheapest-works-reach-cheapest",
@@ -274,8 +273,7 @@
    "partition": "plan-observable",
    "why": "conditional on a planted card/code discrepancy: the plan flags it rather than papering over",
    "model_native": false,
-   "untempted": true,
-   "untempted_note": "smoke golden set only (build item 1); the pilot golden set (item 2) must tempt or keep this tag"
+   "untempted": false
   },
   {
    "id": "staff-engineer.what-embrace.following-existing-code-patterns",
@@ -289,8 +287,7 @@
    "partition": "plan-observable",
    "why": "conditional on a brownfield card: the plan follows the file’s existing patterns",
    "model_native": false,
-   "untempted": true,
-   "untempted_note": "smoke golden set only (build item 1); the pilot golden set (item 2) must tempt or keep this tag"
+   "untempted": false
   },
   {
    "id": "staff-engineer.what-embrace.keeping-reports-honest-about",
@@ -319,7 +316,7 @@
    "why": "conditional on a bug-fix card: the plan reproduces with a failing test first and scopes the fix",
    "model_native": false,
    "untempted": true,
-   "untempted_note": "smoke golden set only (build item 1); the pilot golden set (item 2) must tempt or keep this tag"
+   "untempted_note": "pilot 1 disposition: untempted — no pilot golden plants the condition (a sweep-sized fixture for the cheap-reads trio; a bug-fix card for reproducing-reported-failure); a disclosed gap of this pilot, not a claim graded as absent"
   },
   {
    "id": "staff-engineer.what-embrace.writing-tests-test-behavior",
@@ -333,8 +330,7 @@
    "partition": "plan-observable",
    "why": "conditional on a card where the seat authors tests: behaviour-level assertions planned",
    "model_native": false,
-   "untempted": true,
-   "untempted_note": "smoke golden set only (build item 1); the pilot golden set (item 2) must tempt or keep this tag"
+   "untempted": false
   },
   {
    "id": "staff-engineer.what-reject.adding-code-task-didn",
@@ -362,8 +358,7 @@
    "partition": "plan-observable",
    "why": "conditional on a card touching an existing interface without [MODIFY]: the plan refuses or flags",
    "model_native": false,
-   "untempted": true,
-   "untempted_note": "smoke golden set only (build item 1); the pilot golden set (item 2) must tempt or keep this tag"
+   "untempted": false
   },
   {
    "id": "staff-engineer.what-reject.silent-workarounds-missing-dependencies",
@@ -377,8 +372,7 @@
    "partition": "plan-observable",
    "why": "conditional on a planted missing dependency or contradiction: the plan halts/flags, never stubs around",
    "model_native": false,
-   "untempted": true,
-   "untempted_note": "smoke golden set only (build item 1); the pilot golden set (item 2) must tempt or keep this tag"
+   "untempted": false
   },
   {
    "id": "staff-engineer.what-reject.skipping-failing-test-step",
