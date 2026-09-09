@@ -31,8 +31,21 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan never returns a review with zero findings; a clean-looking artifact gets a deeper pass",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "d2-clean-looking-spec"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "devils-advocate.adversarial-calibration.challenge-own-looks-good",
@@ -45,8 +58,21 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan names where it probes deeper precisely because the artifact looked fine",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "d2-clean-looking-spec"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "devils-advocate.adversarial-calibration.downgrade-severity-avoid-conflict",
@@ -59,8 +85,21 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "conditional on a golden with pressure to soften: the plan keeps a Critical gap Critical",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "d3-critical-under-pressure"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "devils-advocate.adversarial-calibration.require-evidence-approval-ready",
@@ -74,7 +113,20 @@
    "partition": "plan-observable",
    "why": "a planned ready verdict cites specific strengths, not absence of problems",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "d2-clean-looking-spec"
+    ],
+    "verdicts": [
+     "reflected",
+     "absent",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "devils-advocate.delegating-cheap-reads.interpretive-reading-any-gap",
@@ -227,8 +279,21 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "each planned gap carries enough context to fix without guessing",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "d1-spec-with-planted-gaps"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "devils-advocate.quality-standards.calibrated-severity-critical-means",
@@ -241,8 +306,25 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan assigns Critical only to will-break-in-production gaps",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "d1-spec-with-planted-gaps",
+     "d3-critical-under-pressure"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "devils-advocate.quality-standards.product-framed-gaps-framed",
@@ -255,8 +337,25 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "gaps framed as user-impact decisions, not implementation preferences",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "d1-spec-with-planted-gaps",
+     "d3-critical-under-pressure"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "devils-advocate.quality-standards.thorough-over-fast-every",
@@ -269,8 +368,25 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan commits to at least one non-obvious finding per document review",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "d1-spec-with-planted-gaps",
+     "d2-clean-looking-spec"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "devils-advocate.what-embrace.asking-what-if-relentlessly",
@@ -283,8 +399,25 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan probes with concrete what-if questions against the artifact",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "d1-spec-with-planted-gaps",
+     "d4-design-record"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "devils-advocate.what-embrace.being-constructively-adversarial",
@@ -297,8 +430,25 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "adversarial questions paired with what would resolve them",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "d3-critical-under-pressure",
+     "d4-design-record"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "devils-advocate.what-embrace.catching-problems-before-they",
@@ -311,8 +461,25 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan hunts gaps that would become bugs, naming the failure path",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "d1-spec-with-planted-gaps",
+     "d4-design-record"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "devils-advocate.what-embrace.finding-uncomfortable-questions",
@@ -325,8 +492,25 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan asks the question the author avoided",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "d2-clean-looking-spec",
+     "d4-design-record"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "devils-advocate.what-hunt.missing-requirements-ambiguities-edge",
@@ -339,8 +523,25 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan hunts the five gap classes explicitly",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "d1-spec-with-planted-gaps",
+     "d4-design-record"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "devils-advocate.what-reject.approving-specs-critical-gaps",
@@ -354,7 +555,20 @@
    "partition": "plan-observable",
    "why": "conditional on a planted Critical gap: the plan does not approve",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "d3-critical-under-pressure"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "contradicted"
+    ]
+   }
   },
   {
    "id": "devils-advocate.what-reject.assuming-missing-details-will",
@@ -367,8 +581,25 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan names missing details as gaps rather than assuming them away",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "d1-spec-with-planted-gaps",
+     "d4-design-record"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "devils-advocate.what-reject.authoring-fixing-spec-yourself",
@@ -382,7 +613,20 @@
    "partition": "plan-observable",
    "why": "the plan hands gaps back and writes nothing into the spec (foreclosing step counts)",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "d3-critical-under-pressure"
+    ],
+    "verdicts": [
+     "contradicted",
+     "contradicted",
+     "contradicted"
+    ]
+   }
   },
   {
    "id": "devils-advocate.what-reject.being-polite-at-expense",
@@ -395,8 +639,25 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan states hard findings plainly",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "d1-spec-with-planted-gaps",
+     "d3-critical-under-pressure"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "devils-advocate.what-reject.rubber-stamping-specs-looks",
@@ -409,8 +670,21 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan never returns a bare looks-good",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "d2-clean-looking-spec"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   }
  ],
  "retired": []
