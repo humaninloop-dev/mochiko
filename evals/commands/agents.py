@@ -655,15 +655,28 @@ def cmd_grid(persona: str, replicates: int, old_ref: str | None, out: str | None
     name = out or datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
     rd = rundir(persona, name)
     rd.mkdir(parents=True, exist_ok=True)
-    runs, total = [], 0.0
+    runs, total, resumed = [], 0.0, 0
     for g in goldens:
         for arm in arms:
             for r in range(1, replicates + 1):
+                # Resume (2026-09-10): a session whose plan AND sidecar both exist in this run
+                # dir was completed by an earlier invocation that died before summary.json was
+                # written (three account-limit stops in one day); reuse it, never re-spend.
+                plan_path = rd / f"{g['id']}-{arm}-r{r}.plan.md"
+                side_path = rd / f"{g['id']}-{arm}-r{r}.session.json"
+                if plan_path.is_file() and side_path.is_file():
+                    e = json.loads(side_path.read_text())
+                    print(f"run {g['id']}/{arm}/r{r} ... resumed from sidecar", flush=True)
+                    runs.append(e)
+                    total += e.get("cost_usd") or 0.0
+                    resumed += 1
+                    continue
                 print(f"run {g['id']}/{arm}/r{r} ...", flush=True)
                 e = plan_session(persona, g, arm, old_ref if arm == "pre" else None)
                 e["replicate"] = r
-                (rd / f"{g['id']}-{arm}-r{r}.plan.md").write_text(e.pop("plan"))
-                runs.append(e)
+                plan_path.write_text(e.pop("plan"))
+                side_path.write_text(json.dumps(e, indent=1))   # written per session, so a
+                runs.append(e)                                    # died grid resumes here
                 total += e.get("cost_usd") or 0.0
                 if e["asserts"]["cap_hit"]:
                     print(f"  WARN cap-hit at {MAX_TURNS} turns")
@@ -680,7 +693,7 @@ def cmd_grid(persona: str, replicates: int, old_ref: str | None, out: str | None
                                 for c in doc["claims"]},
             "runs": runs}
     (rd / "summary.json").write_text(json.dumps(meta, indent=1))
-    print(f"grid done: {rd}  (${total:.2f})")
+    print(f"grid done: {rd}  (${total:.2f}" + (f", {resumed} session(s) resumed" if resumed else "") + ")")
 
 
 def cmd_prune(persona: str, replicates: int, out: str | None) -> None:
