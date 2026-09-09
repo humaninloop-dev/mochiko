@@ -1,0 +1,128 @@
+{
+ "persona": "requirements-analyst",
+ "run": "baseline",
+ "seed": 7,
+ "instructions": "Label each pair reflected | absent | contradicted by reading calibration/plan-<plan>.md against the claim text in rules.json: a restated principle without a task-specific action = absent; a declined or hypothetical conditional path = absent; a Reject-section standard is reflected when a concrete action avoids the behaviour. Do not open calibration-map.json and do not look at the judge's verdicts.",
+ "pairs": [
+  {
+   "id": "requirements-analyst.what-reject.assumptions-hidden-requirements",
+   "label": "",
+   "plan": "259637f1"
+  },
+  {
+   "id": "requirements-analyst.quality-standards.independent-benefit-anchored-every",
+   "label": "",
+   "plan": "a2d42cc1"
+  },
+  {
+   "id": "requirements-analyst.what-reject.assumptions-hidden-requirements",
+   "label": "",
+   "plan": "f6161250"
+  },
+  {
+   "id": "requirements-analyst.what-reject.requirements-can-t-be",
+   "label": "",
+   "plan": "dc051424"
+  },
+  {
+   "id": "requirements-analyst.what-reject.requirements-can-t-be",
+   "label": "",
+   "plan": "3bf488fa"
+  },
+  {
+   "id": "requirements-analyst.quality-standards.independent-benefit-anchored-every",
+   "label": "",
+   "plan": "3bf488fa"
+  },
+  {
+   "id": "requirements-analyst.what-reject.requirements-can-t-be",
+   "label": "",
+   "plan": "005d181c"
+  },
+  {
+   "id": "requirements-analyst.what-reject.requirements-can-t-be",
+   "label": "",
+   "plan": "54ec5893"
+  },
+  {
+   "id": "requirements-analyst.what-reject.requirements-can-t-be",
+   "label": "",
+   "plan": "26d6f0ec"
+  },
+  {
+   "id": "requirements-analyst.quality-standards.independent-benefit-anchored-every",
+   "label": "",
+   "plan": "26d6f0ec"
+  },
+  {
+   "id": "requirements-analyst.what-reject.assumptions-hidden-requirements",
+   "label": "",
+   "plan": "3bf488fa"
+  },
+  {
+   "id": "requirements-analyst.what-reject.assumptions-hidden-requirements",
+   "label": "",
+   "plan": "54ec5893"
+  },
+  {
+   "id": "requirements-analyst.what-reject.assumptions-hidden-requirements",
+   "label": "",
+   "plan": "91d30991"
+  },
+  {
+   "id": "requirements-analyst.quality-standards.independent-benefit-anchored-every",
+   "label": "",
+   "plan": "927b3b55"
+  },
+  {
+   "id": "requirements-analyst.quality-standards.independent-benefit-anchored-every",
+   "label": "",
+   "plan": "a9a74b87"
+  },
+  {
+   "id": "requirements-analyst.what-reject.assumptions-hidden-requirements",
+   "label": "",
+   "plan": "c48dda77"
+  },
+  {
+   "id": "requirements-analyst.quality-standards.independent-benefit-anchored-every",
+   "label": "",
+   "plan": "259637f1"
+  },
+  {
+   "id": "requirements-analyst.what-reject.assumptions-hidden-requirements",
+   "label": "",
+   "plan": "005d181c"
+  },
+  {
+   "id": "requirements-analyst.quality-standards.independent-benefit-anchored-every",
+   "label": "",
+   "plan": "54ec5893"
+  },
+  {
+   "id": "requirements-analyst.what-reject.requirements-can-t-be",
+   "label": "",
+   "plan": "91d30991"
+  },
+  {
+   "id": "requirements-analyst.what-reject.assumptions-hidden-requirements",
+   "label": "",
+   "plan": "26d6f0ec"
+  },
+  {
+   "id": "requirements-analyst.what-reject.requirements-can-t-be",
+   "label": "",
+   "plan": "a9a74b87"
+  },
+  {
+   "id": "requirements-analyst.quality-standards.independent-benefit-anchored-every",
+   "label": "",
+   "plan": "91d30991"
+  },
+  {
+   "id": "requirements-analyst.quality-standards.independent-benefit-anchored-every",
+   "label": "",
+   "plan": "005d181c"
+  }
+ ]
+}

@@ -128,10 +128,35 @@ declared ready.
 
 ## Fill log
 
-- band: **[measured at baseline]**
-- calibration agreement: **[measured at baseline]**
-- contradicted bar: **[measured at baseline]**
-- budget: **[measured at baseline]**
-- ship bar: **[measured at baseline]**
+- prune (2026-09-09, `runs/baseline-prune`, 12 nopersona sessions, $3.52): **18 of 21 plan-observable claims
+  model-native** — the whole discovery process, the measurable-criteria trio, the never-guess judgment set
+  (`guess-security-data-user` included: the bare model on r3 stops for the four money/access gaps without the
+  persona), the split-and-benefit embraces. Graded set: `independent-benefit-anchored-every`,
+  `assumptions-hidden-requirements`, `requirements-can-t-be` — 5 invited pairs (r1 1 · r2 2 · r3 1 · r4 1).
+- baseline (`runs/baseline`, 12 `post` sessions, $3.35): pass^k on the invited pairs — r2 both reject claims
+  3/3 · r3 `assumptions-hidden-requirements` 3/3 · r1 and r4 `independent-benefit-anchored-every` split
+  (`reflected/absent/contradicted` on r1, `reflected/absent/absent` on r4).
+- judge incident, disclosed: the first judge pass ran into the account session limit and returned MISSING
+  verdicts for all of r4 and one r3 session (the runner had no load gate on the judge path); the report read
+  them as failures and as the kit's only flaky pair. Runner fixed (retry + warn + unjudged exclusion, commit
+  9babfb9), the run re-judged in full (judge $1.39 over 33 calls, cumulative), zero MISSING remain.
+- band: **flaky 2/5 invited pairs = 40 % → capped 20 %, UNDER-SAMPLED** (both flaky pairs are the
+  `independent-benefit-anchored-every` claim); all graded claims 4/12. The next edit takes one extra replicate
+  per arm before any difference is read.
+- calibration agreement: **0.87 over 23 pairs** against an independent full-read labeller (arm-blind sheet,
+  seed 0; `calibration-sheet-labeller2.json` / `calibration-labeller2.json`). All three disagreements sit on
+  `independent-benefit-anchored-every` (judge reflected / labeller absent on a story list with a so-that on a
+  minority of stories; judge contradicted / labeller absent on r1 r3; judge absent / labeller reflected on
+  r2 r1): the claim's "every story … independent … benefit-anchored" wording is read at different strictness
+  by judge and labeller — recorded as a judge-instability finding on that one claim, the other two claims at
+  1.00.
+- contradicted bar: **not exercised** — zero `contradicted` labels over 23 pairs (the judge's one
+  `contradicted` on r1 r3 is the disputed pair above).
+- budget: 24 plan sessions · **US$ 8.26** metered (prune 3.52 + grid 3.35 + judge 1.39) of 20.
+- ship bar: (a) met on 3 of 5 invited pairs (pass^k), the two `independent-benefit` pairs explained as
+  judge-unstable on one soft claim; (b) not met — 40 % on five pairs, the sample too small to read (the
+  under-sampled rule applies); (c) met (0.87 ≥ 0.80; contradicted not exercised). Kit status: **READY with
+  the under-sampled mark** — like `devils-advocate`, the bare model already carries most of this persona's
+  craft on plan-only; what the kit reads at the next edit is the two reject claims and one soft standard.
 - re-key count: 0
-- kit status: **AUTHORED — baseline not yet run**
+- kit status: **READY (under-sampled band)**

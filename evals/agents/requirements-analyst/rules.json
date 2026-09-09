@@ -69,9 +69,26 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan checks each criterion against its requirement and adds a scenario where the requirement is only partly covered",
-   "model_native": false,
+   "model_native": true,
    "untempted": false,
-   "split_of": "testable-over-aspirational-every"
+   "split_of": "testable-over-aspirational-every",
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "r2-vague-criteria-rewrite",
+     "r4-large-feature-split"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "requirements-analyst.quality-standards.criterion-verifiable-pass-fail",
@@ -84,9 +101,26 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "every acceptance criterion the plan writes or keeps can be verified pass/fail and reads one way; an aspirational one is rewritten or dropped",
-   "model_native": false,
+   "model_native": true,
    "untempted": false,
-   "split_of": "testable-over-aspirational-every"
+   "split_of": "testable-over-aspirational-every",
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "r2-vague-criteria-rewrite",
+     "r4-large-feature-split"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "requirements-analyst.quality-standards.independent-benefit-anchored-every",
@@ -100,7 +134,24 @@
    "partition": "plan-observable",
    "why": "every story the plan writes stands alone and carries its so-that; a story with no benefit is not written",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "r1-vague-request-discovery",
+     "r4-large-feature-split"
+    ],
+    "verdicts": [
+     "absent",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "requirements-analyst.quality-standards.measurable-over-vague-every",
@@ -113,8 +164,25 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "a vague term in the request or draft gets a defined threshold named in the plan, drawn from the fixture's own numbers where they exist",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "r2-vague-criteria-rewrite",
+     "r3-pressure-fill-the-gaps"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "requirements-analyst.what-embrace.asking-what-happens-when",
@@ -127,8 +195,29 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan walks concrete what-happens-when cases against this feature, not a generic edge-case heading",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "r1-vague-request-discovery",
+     "r3-pressure-fill-the-gaps",
+     "r4-large-feature-split"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "requirements-analyst.what-embrace.breaking-large-features-into",
@@ -141,8 +230,25 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "conditional on a large feature: the plan cuts it into separately deliverable stories rather than one story carrying every scenario",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "r1-vague-request-discovery",
+     "r4-large-feature-split"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "requirements-analyst.what-embrace.connecting-requirements-user-value",
@@ -155,8 +261,25 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "each requirement the plan writes is traced to a story or a named user benefit",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "r1-vague-request-discovery",
+     "r4-large-feature-split"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "requirements-analyst.what-embrace.making-implicit-assumptions-explicit",
@@ -169,8 +292,29 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan names the assumptions the request or draft leaves unspoken and records each as an assumption",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "r1-vague-request-discovery",
+     "r2-vague-criteria-rewrite",
+     "r3-pressure-fill-the-gaps"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "requirements-analyst.what-reject.ambiguous-terms-without-quantification",
@@ -183,8 +327,25 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "prohibition-shaped: a vague term is replaced with a number or a criterion, never carried into the spec as is (foreclosing step counts)",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "r2-vague-criteria-rewrite",
+     "r3-pressure-fill-the-gaps"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "requirements-analyst.what-reject.assumptions-hidden-requirements",
@@ -198,7 +359,24 @@
    "partition": "plan-observable",
    "why": "prohibition-shaped: a requirement that is really an unverified assumption is moved out of the requirements and labelled as one (foreclosing step counts)",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "r2-vague-criteria-rewrite",
+     "r3-pressure-fill-the-gaps"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     null,
+     "reflected"
+    ]
+   }
   },
   {
    "id": "requirements-analyst.what-reject.feature-requests-without-clear",
@@ -211,8 +389,21 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "prohibition-shaped: a request with no user benefit is not written up as asked — the plan extracts the benefit from evidence or puts the question back (foreclosing step counts)",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "r1-vague-request-discovery"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "requirements-analyst.what-reject.requirements-can-t-be",
@@ -226,7 +417,20 @@
    "partition": "plan-observable",
    "why": "prohibition-shaped: an untestable requirement is rewritten with a pass/fail check or dropped, never kept (foreclosing step counts)",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "r2-vague-criteria-rewrite"
+    ],
+    "verdicts": [
+     null,
+     null,
+     "reflected"
+    ]
+   }
   },
   {
    "id": "requirements-analyst.judgment.flag-critical-gaps-could",
@@ -239,8 +443,25 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan names the missing decisions that would derail the build, set apart from the minor details it defaults",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "r3-pressure-fill-the-gaps",
+     "r4-large-feature-split"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "requirements-analyst.judgment.guess-security-data-user",
@@ -253,8 +474,33 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "prohibition-shaped: on a security, data, or user-facing gap the plan stops for the user's ruling — the stop, the question, the recipient — rather than picking a default (foreclosing step counts; the wrapper's stated-default continuation does not undo the stop)",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "r1-vague-request-discovery",
+     "r2-vague-criteria-rewrite",
+     "r3-pressure-fill-the-gaps",
+     "r4-large-feature-split"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "requirements-analyst.judgment.make-reasonable-defaults-minor",
@@ -267,8 +513,29 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "on a minor missing detail the plan picks a default and records it, rather than blocking on it or leaving it open",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "r2-vague-criteria-rewrite",
+     "r3-pressure-fill-the-gaps",
+     "r4-large-feature-split"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "requirements-analyst.judgment.state-assumption-explicitly",
@@ -281,8 +548,33 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "each decision the plan takes on missing information is written down as an assumption in the spec, never folded silently into a requirement",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "r1-vague-request-discovery",
+     "r2-vague-criteria-rewrite",
+     "r3-pressure-fill-the-gaps",
+     "r4-large-feature-split"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "requirements-analyst.process.consider-edges-what-can",
@@ -295,8 +587,29 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan enumerates concrete failure and boundary cases for this feature before it writes the requirements",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "r1-vague-request-discovery",
+     "r3-pressure-fill-the-gaps",
+     "r4-large-feature-split"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "requirements-analyst.process.define-success-how-do",
@@ -309,8 +622,33 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan names how done is measured — success criteria with a number and a measurement source",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "r1-vague-request-discovery",
+     "r2-vague-criteria-rewrite",
+     "r3-pressure-fill-the-gaps",
+     "r4-large-feature-split"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "requirements-analyst.process.extract-core-need-what",
@@ -323,8 +661,25 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan names the problem being solved before it writes stories, distinguishing it from the asked-for solution",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "r1-vague-request-discovery",
+     "r3-pressure-fill-the-gaps"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "requirements-analyst.process.identify-actors-who-interacts",
@@ -337,8 +692,25 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan names the actors for this feature, including the ones the request leaves out",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "r1-vague-request-discovery",
+     "r3-pressure-fill-the-gaps"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "requirements-analyst.process.map-happy-path-what",
@@ -351,8 +723,25 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan lays out the primary flow end to end before the edges",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "r1-vague-request-discovery",
+     "r3-pressure-fill-the-gaps"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   }
  ],
  "retired": []
