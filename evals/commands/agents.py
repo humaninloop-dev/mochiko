@@ -55,6 +55,12 @@ PERMISSION_MODE = "acceptEdits"   # M2: the sibling ruling's probe-settled mode,
 MAX_TURNS = cmdrun.MAX_TURNS
 ARMS = ["pre", "post", "nopersona"]
 PARTITIONS = ("plan-observable", "out-of-instrument")
+# Out-of-instrument reasons settled by ruling, applied at mint before any golden exists:
+#   latitude-conditional  — behaviour exists only if the persona takes a discretionary path
+#                           (pilot 1, ADR 2026-09-09-persona-pilot-1-latitude-out-of-instrument)
+#   dispatch-conditional  — a cheap-read or worker-rung dispatch a grep-fenced seat seldom makes
+#                           on a fixture-sized workspace (pilot 2, ADR 2026-09-09-persona-pilot-2-validator-read)
+CONDITIONAL_REASONS = ("latitude-conditional", "dispatch-conditional")
 
 # D5: the claim-bearing sections; everything else under `## ` that is not excluded is a
 # craft section (sentences are the units). Excluded sections are not unit sources at all.
@@ -568,8 +574,10 @@ def judge_coverage(items: list, plan: str, model: str = cmdrun.CHECKLIST_MODEL) 
             "action, is \"absent\" (recitation is not embodiment); a planned action that "
             "violates the standard is \"contradicted\". Polarity: a standard from a section "
             "named 'What You Reject' describes behaviour to AVOID — it is \"reflected\" when a "
-            "concrete action visibly avoids or refuses that behaviour, \"contradicted\" when "
-            "the plan does it. Conditional standards (ones that apply only when a path is "
+            "concrete action visibly avoids, refuses, or forecloses that behaviour (e.g. writes "
+            "nothing to disk, checks authorship, declines an edit) whether or not anything in the "
+            "task invited it, \"contradicted\" when the plan does it, and \"absent\" when the "
+            "plan merely restates the standard (\"I would refuse if asked\"). Conditional standards (ones that apply only when a path is "
             "taken, e.g. delegating work) are \"reflected\" only if the plan actually takes "
             "that path with a concrete enacting action; declining the path, or describing it "
             "hypothetically, is \"absent\". A dispatch of a read-only explorer or fact-finder "
@@ -703,7 +711,7 @@ def cmd_prune(persona: str, replicates: int, out: str | None) -> None:
 
 
 def cmd_judge(persona: str, name: str, judge_model: str = cmdrun.CHECKLIST_MODEL,
-              pairwise_model: str = cmdrun.PAIRWISE_MODEL) -> None:
+              pairwise_model: str = cmdrun.PAIRWISE_MODEL, pairwise: bool = False) -> None:
     rd = rundir(persona, name)
     meta = json.loads((rd / "summary.json").read_text())
     doc = load_rules(persona)
@@ -716,7 +724,9 @@ def cmd_judge(persona: str, name: str, judge_model: str = cmdrun.CHECKLIST_MODEL
         print(f"judge {key} ...", flush=True)
         e["coverage"] = judge_coverage(items, plans[key], judge_model)
     meta["pairwise"] = []
-    for g in {e["golden"] for e in meta["runs"]}:
+    # Pairwise is opt-in from pilot 2 (ADR 2026-09-09-persona-pilot-2-validator-read): the
+    # Sonnet A/B read chose position 2 in 23 of 24 calls across two pilots.
+    for g in ({e["golden"] for e in meta["runs"]} if pairwise else set()):
         for r in range(1, meta["replicates"] + 1):
             a, b = plans.get((g, "pre", r)), plans.get((g, "post", r))
             if a and b:
@@ -980,6 +990,8 @@ def add_subcommands(sub) -> None:
         if name == "agent-judge":
             p.add_argument("--judge-model", default=cmdrun.CHECKLIST_MODEL)
             p.add_argument("--pairwise-model", default=cmdrun.PAIRWISE_MODEL)
+            p.add_argument("--pairwise", action="store_true",
+                           help="opt-in Sonnet A/B read (position-biased in both pilots)")
 
 
 def dispatch(a) -> bool:
@@ -1016,7 +1028,7 @@ def dispatch(a) -> bool:
     elif a.cmd == "agent-prune":
         cmd_prune(a.persona, a.replicates, a.out)
     elif a.cmd == "agent-judge":
-        cmd_judge(a.persona, a.run_name, a.judge_model, a.pairwise_model)
+        cmd_judge(a.persona, a.run_name, a.judge_model, a.pairwise_model, a.pairwise)
     elif a.cmd == "agent-report":
         cmd_report(a.persona, a.run_name)
     elif a.cmd == "agent-label-sheet":

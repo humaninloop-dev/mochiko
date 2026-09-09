@@ -152,3 +152,4 @@ rule.
     `rank-evidence-rely-deterministic`) read pass^k stable in both arms; the two uncovered are the dispatch pair.
   - pairwise (Sonnet): position 2 preferred in 23 of 24 calls, position-consistent 0 of 12 — uninformative.
 - re-key count: 0 (judge-prompt re-key from pilot 1 applied pre-session)
+- **ruling 2026-09-09 (user): accept as recommended** — pilot 2 closes on this reading (ADR `2026-09-09-persona-pilot-2-validator-read`): dispatch-conditional claims out of instrument for grep-fenced graders; the foreclosing-step rule settled in the judge prompt and labelling rule; pairwise dropped; the target proven for must-shaped judgment claims; wave A opens.
