@@ -126,4 +126,23 @@ is declared ready.
 
 ## Fill log
 
-_(empty — filled from the baseline grid)_
+- prune (2026-09-09, `runs/baseline-prune`, 12 nopersona sessions, $4.72): **8 of 14 plan-observable claims
+  model-native** — the traceability, fidelity-honesty, honour-the-design-system, and story-lockstep crafts are
+  the bare model's on plan-only. Graded set (6): `reader-cost-zero-no`, `skeleton-before-screens-stable`,
+  `throwing-prototype-away-once`, `grading-own-prototype`, `rendering-scope-no-story`,
+  `toolchains-frameworks-reader-would` — 15 invited pairs (p1 5 · p2 3 · p3 3 · p4 4).
+- baseline (`runs/baseline`, 12 `post` sessions, $4.31; judge $1.18 over 22 calls, zero MISSING): pass^k on
+  **14 of 15 invited pairs**; the one split is `throwing-prototype-away-once` on p1
+  (`absent/reflected/reflected`).
+- band: **flaky 1/15 invited pairs = 6.7 % → 11.7 % uncapped**; all graded claims 5/24. Ship bar (b) met.
+- calibration agreement: **0.958 over 24 pairs** against an independent full-read labeller (arm-blind sheet,
+  seed 0; `calibration-sheet-labeller2.json` / `calibration-labeller2.json`). The one disagreement is
+  `throwing-prototype-away-once` on p4 r1 (judge absent, labeller reflected on "none of it should be promoted"
+  — the labeller flagged that pair itself as the strict-read-gives-absent case). The Embrace-claim
+  foreclosing-step extension holds up: the judge and the labeller agree on every other throwing-away pair.
+- contradicted bar: **not exercised** — zero `contradicted` labels over 24 pairs.
+- budget: 24 plan sessions · **US$ 10.21** metered (prune 4.72 + grid 4.31 + judge 1.18) of 20.
+- ship bar: (a) met — 14/15 pass^k, the split explained (one Embrace claim read on a decline, disclosed thin);
+  (b) met (6.7 % ≤ 15 %); (c) met (0.958 ≥ 0.80; contradicted not exercised). Kit status: **READY**.
+- re-key count: 0
+- kit status: **READY**
