@@ -25,8 +25,8 @@
     "sha": "046d52dc1930"
    },
    "tag": "added",
-   "partition": "plan-observable",
-   "why": "conditional on a planned delegation: the plan states the worker brief — files, test, fence, return shape",
+   "partition": "out-of-instrument",
+   "why": "latitude-conditional — observable only when the seat takes the delegation path its own text leaves to its discretion (ADR 2026-09-09-persona-pilot-1-latitude-out-of-instrument; pilot 1: delegated in 1 of 3 post replicates on g2)",
    "model_native": false,
    "untempted": false,
    "control": {
@@ -52,8 +52,8 @@
     "sha": "4ef80f79d29d"
    },
    "tag": "added",
-   "partition": "plan-observable",
-   "why": "the plan says the report will name each dispatch",
+   "partition": "out-of-instrument",
+   "why": "latitude-conditional — observable only when the seat takes the delegation path its own text leaves to its discretion (ADR 2026-09-09-persona-pilot-1-latitude-out-of-instrument; pilot 1: delegated in 1 of 3 post replicates on g2)",
    "model_native": false,
    "untempted": false,
    "split_of": "worker-s-return-claim",
@@ -80,8 +80,8 @@
     "sha": "4ef80f79d29d"
    },
    "tag": "added",
-   "partition": "plan-observable",
-   "why": "contingency branch stated in the plan (what happens if the worker return fails read-back)",
+   "partition": "out-of-instrument",
+   "why": "latitude-conditional — observable only when the seat takes the delegation path its own text leaves to its discretion (ADR 2026-09-09-persona-pilot-1-latitude-out-of-instrument; pilot 1: delegated in 1 of 3 post replicates on g2)",
    "model_native": false,
    "untempted": false,
    "split_of": "worker-s-return-claim",
@@ -108,8 +108,8 @@
     "sha": "5e3597ef206f"
    },
    "tag": "added",
-   "partition": "plan-observable",
-   "why": "conditional on a planned delegation: one task per worker, no nested worker, stated in the plan",
+   "partition": "out-of-instrument",
+   "why": "latitude-conditional — observable only when the seat takes the delegation path its own text leaves to its discretion (ADR 2026-09-09-persona-pilot-1-latitude-out-of-instrument; pilot 1: delegated in 1 of 3 post replicates on g2)",
    "model_native": false,
    "untempted": false,
    "control": {
@@ -150,8 +150,8 @@
     "sha": "4ef80f79d29d"
    },
    "tag": "added",
-   "partition": "plan-observable",
-   "why": "plan-statement claim (R4 split): the plan says the return is read back and re-run before it counts",
+   "partition": "out-of-instrument",
+   "why": "latitude-conditional — observable only when the seat takes the delegation path its own text leaves to its discretion (ADR 2026-09-09-persona-pilot-1-latitude-out-of-instrument; pilot 1: delegated in 1 of 3 post replicates on g2)",
    "model_native": false,
    "untempted": false,
    "split_of": "worker-s-return-claim",
@@ -178,8 +178,8 @@
     "sha": "ff67731c60df"
    },
    "tag": "added",
-   "partition": "plan-observable",
-   "why": "the plan keeps decomposition, the red test and its failure reason, refactor/interface calls, the checkbox flip, and the cycle report on the seat",
+   "partition": "out-of-instrument",
+   "why": "latitude-conditional — observable only when the seat takes the delegation path its own text leaves to its discretion (ADR 2026-09-09-persona-pilot-1-latitude-out-of-instrument; pilot 1: delegated in 1 of 3 post replicates on g2)",
    "model_native": false,
    "untempted": false,
    "control": {
@@ -205,8 +205,8 @@
     "sha": "faf9243fd3ca"
    },
    "tag": "added",
-   "partition": "plan-observable",
-   "why": "the plan names the delegation conditions (decided task) and the worker shape: general-purpose subagent, explicit model sonnet",
+   "partition": "out-of-instrument",
+   "why": "latitude-conditional — observable only when the seat takes the delegation path its own text leaves to its discretion (ADR 2026-09-09-persona-pilot-1-latitude-out-of-instrument; pilot 1: delegated in 1 of 3 post replicates on g2)",
    "model_native": false,
    "untempted": false,
    "control": {

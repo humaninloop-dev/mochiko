@@ -131,3 +131,4 @@ arms. (a) failing after one re-key, or (c) failing twice, triggers the stopping 
   the read is returned to the user for a keep / re-shape / abandon ruling before further spend, because the
   control failure is about the shape of the edit under a plan-only observable (D2 `Contested`), not a
   mechanical defect a re-key would settle.
+- **ruling 2026-09-09 (user): accept** — pilot 1 closes on this reading; latitude-conditional claims are out of instrument for the plan-only target (ADR `2026-09-09-persona-pilot-1-latitude-out-of-instrument`); the seven delegation claims re-partitioned in `rules.json`; pilot 2 proceeds on `validator`.

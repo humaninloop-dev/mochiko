@@ -102,20 +102,12 @@ Command-content schema section's watch item)*
 build* and *Skill-compression eval-primitive build* sections — their delivered items are in the
 trail (2026-09-08); their open residue is carried below.)*
 
-- [ ] **`staff-engineer` pilot** (D8 · D9 · D11; persona mode BUILT 2026-09-08 → trail; **GRID RUN 2026-09-09,
-  user ruling owed** — noise guard tripped at 35 % `post` flaky share vs the 20 % band, positive control
-  failed under pass^k (the seat delegates in 1 of 3 replicates on g2), no common-claim regressions, judge
-  calibration 0.875 PASS, contradicted bar not exercised; evidence `evals/agents/staff-engineer/runs/{probe,pilot1-prune,pilot1}`;
-  spend $16.92 of $40) — goldens sized from post-pruning claims (floor
-  3–5, `untempted` tag), `preregistration.md` with the positive control on the v0.108.0
-  section's plan-observable residue (C2 re-cut), tolerance band from the probe run's measured
-  `pre` spread, stopping rule (two re-keys → back to the user), hand-labelled calibration set +
-  judge agreement bar (I9), per-pilot budget bound (M6). Grid `pre` = b099154 (v0.107.0), `post` =
-  v0.108.0. Build notes carried: the smoke golden `g1-decided-card` cannot pass the positive control
-  by construction (the ladder says do a four-line green phase yourself) — the set needs a
-  delegation-forcing golden; ten plan-observable claims sit `untempted` from the smoke set.
-- [ ] **`validator` pilot** (D9) — same form; goldens plant a defective artifact beside a
-  flattering author summary. Runs after the staff-engineer pilot meets or re-keys its bar.
+- [ ] **`validator` pilot** (D9; opened 2026-09-09 after pilot 1 closed by ruling) — same form; goldens
+  plant a defective artifact beside a flattering author summary. Carries two instrument watches from
+  pilot 1: re-key the judge prompt so an `Explore` read dispatch is never credited as worker
+  delegation and a declined/hypothetical path never reads `reflected`; Sonnet pairwise position bias
+  (advisory). Positive control needs a known `validator` edit as `pre`; if none exists the pilot
+  reads noise band + coverage + regressions only and says so.
 - [ ] **Fill the four post-cut eval slots from the re-keyed inventories** (D12 · C3 · R2) — the
   five schema-backed inventories were **RE-KEYED 2026-09-08** onto log ids (67→30 · 70→35 · 113→36 ·
   81→30 · 69→26 rules; floors 9 · 16 · 11 · 8 · 14 = the render pins; 15 old rules retired with
