@@ -1,0 +1,9 @@
+{
+  "name": "tapestry",
+  "private": true,
+  "workspaces": ["apps/api", "apps/staff-web", "apps/worker", "packages/db"],
+  "scripts": {
+    "build": "npm run build -ws",
+    "deploy": "fly deploy"
+  }
+}
