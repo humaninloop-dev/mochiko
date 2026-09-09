@@ -1,0 +1,128 @@
+{
+ "persona": "qa-engineer",
+ "run": "baseline",
+ "seed": 7,
+ "instructions": "Label each pair reflected | absent | contradicted by reading calibration/plan-<plan>.md against the claim text in rules.json: a restated principle without a task-specific action = absent; a declined or hypothetical conditional path = absent; a Reject-section standard is reflected when a concrete action avoids the behaviour. Do not open calibration-map.json and do not look at the judge's verdicts.",
+ "pairs": [
+  {
+   "id": "qa-engineer.quality-standards.conservative-when-uncertain-about",
+   "label": "",
+   "plan": "87380908"
+  },
+  {
+   "id": "qa-engineer.quality-standards.conservative-when-uncertain-about",
+   "label": "",
+   "plan": "802975f5"
+  },
+  {
+   "id": "qa-engineer.what-embrace.real-infrastructure-testing-over",
+   "label": "",
+   "plan": "bb5a39b5"
+  },
+  {
+   "id": "qa-engineer.quality-standards.conservative-when-uncertain-about",
+   "label": "",
+   "plan": "b7c59818"
+  },
+  {
+   "id": "qa-engineer.what-embrace.escalating-ambiguous-evidence-human",
+   "label": "",
+   "plan": "802975f5"
+  },
+  {
+   "id": "qa-engineer.judgment.ambiguity-reason-auto-approve",
+   "label": "",
+   "plan": "38e2c7f8"
+  },
+  {
+   "id": "qa-engineer.quality-standards.conservative-when-uncertain-about",
+   "label": "",
+   "plan": "84915033"
+  },
+  {
+   "id": "qa-engineer.what-reject.mock-based-testing-when",
+   "label": "",
+   "plan": "4772a36c"
+  },
+  {
+   "id": "qa-engineer.what-reject.auto-approving-anything-requires",
+   "label": "",
+   "plan": "38e2c7f8"
+  },
+  {
+   "id": "qa-engineer.quality-standards.conservative-when-uncertain-about",
+   "label": "",
+   "plan": "bcea34a2"
+  },
+  {
+   "id": "qa-engineer.what-reject.mock-based-testing-when",
+   "label": "",
+   "plan": "87380908"
+  },
+  {
+   "id": "qa-engineer.what-embrace.real-infrastructure-testing-over",
+   "label": "",
+   "plan": "87380908"
+  },
+  {
+   "id": "qa-engineer.judgment.ambiguity-reason-auto-approve",
+   "label": "",
+   "plan": "802975f5"
+  },
+  {
+   "id": "qa-engineer.what-reject.mock-based-testing-when",
+   "label": "",
+   "plan": "bb5a39b5"
+  },
+  {
+   "id": "qa-engineer.what-reject.auto-approving-anything-requires",
+   "label": "",
+   "plan": "bb5a39b5"
+  },
+  {
+   "id": "qa-engineer.what-reject.mock-based-testing-when",
+   "label": "",
+   "plan": "ad5e2334"
+  },
+  {
+   "id": "qa-engineer.what-embrace.escalating-ambiguous-evidence-human",
+   "label": "",
+   "plan": "4772a36c"
+  },
+  {
+   "id": "qa-engineer.what-reject.auto-approving-anything-requires",
+   "label": "",
+   "plan": "87380908"
+  },
+  {
+   "id": "qa-engineer.what-embrace.real-infrastructure-testing-over",
+   "label": "",
+   "plan": "377e9df6"
+  },
+  {
+   "id": "qa-engineer.what-embrace.escalating-ambiguous-evidence-human",
+   "label": "",
+   "plan": "84915033"
+  },
+  {
+   "id": "qa-engineer.what-reject.mock-based-testing-when",
+   "label": "",
+   "plan": "bcea34a2"
+  },
+  {
+   "id": "qa-engineer.what-reject.auto-approving-anything-requires",
+   "label": "",
+   "plan": "377e9df6"
+  },
+  {
+   "id": "qa-engineer.what-reject.mock-based-testing-when",
+   "label": "",
+   "plan": "38e2c7f8"
+  },
+  {
+   "id": "qa-engineer.judgment.ambiguity-reason-auto-approve",
+   "label": "",
+   "plan": "4772a36c"
+  }
+ ]
+}
