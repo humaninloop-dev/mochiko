@@ -522,15 +522,23 @@ def passk(entries: list, rule_id: str) -> bool | None:
     """pass^k: reflected in ALL replicates. None = never judged."""
     vs = [v["verdict"] for e in entries for v in e.get("coverage", [])
           if v["id"] == rule_id]
-    if not vs:
-        return None
+    if not vs or any(v is None for v in vs):
+        return None          # a MISSING verdict (judge call failed) leaves the pair unjudged
     return all(v == "reflected" for v in vs)
 
 
 def flaky(entries: list, rule_id: str) -> bool:
     vs = {v["verdict"] for e in entries for v in e.get("coverage", [])
           if v["id"] == rule_id}
+    if None in vs:
+        return False         # unjudged, not disagreement — reported separately as MISSING
     return len(vs) > 1
+
+
+def missing(entries: list, rule_id: str) -> int:
+    """Count of replicates whose judge verdict is MISSING for this rule."""
+    return sum(1 for e in entries for v in e.get("coverage", [])
+               if v["id"] == rule_id and v["verdict"] is None)
 
 
 def cmd_report(cmd: str, name: str) -> None:

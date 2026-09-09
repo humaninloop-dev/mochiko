@@ -748,6 +748,12 @@ def cmd_judge(persona: str, name: str, judge_model: str = cmdrun.CHECKLIST_MODEL
         plans[key] = (rd / f"{e['golden']}-{e['arm']}-r{e['replicate']}.plan.md").read_text()
         print(f"judge {key} ...", flush=True)
         e["coverage"] = judge_coverage(items, plans[key], judge_model)
+        if any(v["verdict"] is None for v in e["coverage"]):
+            # A whole-session MISSING set is the judge call failing (a session-limit hit, a
+            # malformed reply): retry once before it is written down.
+            print(f"judge {key} returned MISSING verdicts — retrying once", flush=True)
+            e["coverage"] = judge_coverage(items, plans[key], judge_model)
+    missing_total = sum(1 for e in meta["runs"] for v in e.get("coverage", []) if v["verdict"] is None)
     meta["pairwise"] = []
     # Pairwise is opt-in from pilot 2 (ADR 2026-09-09-persona-pilot-2-validator-read): the
     # Sonnet A/B read chose position 2 in 23 of 24 calls across two pilots.
@@ -763,6 +769,10 @@ def cmd_judge(persona: str, name: str, judge_model: str = cmdrun.CHECKLIST_MODEL
     meta["judge_calls"] = (meta.get("judge_calls") or 0) + JUDGE_COST["calls"]
     (rd / "summary.json").write_text(json.dumps(meta, indent=1))
     print(f"judged: {rd / 'summary.json'}  (judges ${JUDGE_COST['usd']:.2f} over {JUDGE_COST['calls']} calls)")
+    if missing_total:
+        print(f"WARN {missing_total} MISSING verdict(s) remain after retry — the judge call failed "
+              f"(session limit? malformed reply?); re-run agent-judge before reading this run", flush=True)
+        sys.exit(2)
 
 
 def cmd_report(persona: str, name: str) -> None:
@@ -796,6 +806,11 @@ def cmd_report(persona: str, name: str) -> None:
              "preregistration.md — the positive control and the noise band live there.", "",
              f"Graded claims: {len(graded)} · untempted (disclosed, not read): {len(untempted)}"
              + (f" {untempted}" if untempted else ""), ""]
+    missing_total = sum(1 for e in meta["runs"] for v in e.get("coverage", []) if v.get("verdict") is None)
+    if missing_total:
+        lines.append(f"**WARN: {missing_total} MISSING judge verdict(s)** — those pairs are unjudged "
+                     "(excluded from coverage, flaky, and the band); re-run agent-judge before reading.")
+        lines.append("")
     band_counts: dict = {}
     for g in sorted({e["golden"] for e in meta["runs"]}):
         lines.append(f"## {g}")
@@ -871,6 +886,9 @@ def cmd_report(persona: str, name: str) -> None:
                 for r, a, b in removed_read))
         if ghosts:
             lines.append(f"- **removed claims still surfacing:** {ghosts}")
+        unjudged = [r for r in graded if cmdrun.missing(pre + post, r)]
+        if unjudged:
+            lines.append(f"- MISSING judge verdicts (unjudged pairs, excluded): {len(unjudged)} {unjudged}")
         lines.append(f"- flaky claims (replicate disagreement — noise-guard input): {len(flaky_ids)}"
                      + (f" {flaky_ids}" if flaky_ids else ""))
         # Band input (2026-09-09 invited-only re-key, ADR persona-band-invited-only): the band
@@ -878,7 +896,7 @@ def cmd_report(persona: str, name: str) -> None:
         # judged and still feed coverage, but a claim read against a task that never invites
         # it is a control read, not a noise measurement — it inflates the band with near-misses
         # (tech-lead t2) or dilutes it with trivial absents (staff-engineer pilot 1).
-        invited = [r for r in graded if r in g_tempts]
+        invited = [r for r in graded if r in g_tempts and not cmdrun.missing(pre + post, r)]
         for a, f, runs_ in (("pre", flaky_pre, pre), ("post", flaky_post, post)):
             if runs_:
                 band_counts.setdefault(a, [0, 0, 0, 0])
