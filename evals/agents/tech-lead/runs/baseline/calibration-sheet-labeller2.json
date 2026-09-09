@@ -1,0 +1,152 @@
+{
+ "persona": "tech-lead",
+ "run": "baseline",
+ "seed": 7,
+ "labelled_by": "independent labeller, 2026-09-09T08:48:10Z",
+ "pairs": [
+  {
+   "id": "tech-lead.quality-standards.enforceable-every-must-write",
+   "label": "reflected",
+   "plan": "2b138848",
+   "evidence": "*Security — input*: no enforcement mechanism. \"No handler reads `request.json()`\" is a pass condition restated; nothing catches a violation. Name a lint"
+  },
+  {
+   "id": "tech-lead.quality-standards.justified-every-constraint-carries",
+   "label": "reflected",
+   "plan": "f69f64da",
+   "evidence": "which is a record of *who* agreed, not *why*. Two specific numbers are being made binding; a maintainer in 2028 asked to raise them has nothing to evaluate."
+  },
+  {
+   "id": "tech-lead.three-part-rule.every-standard-write-evaluate",
+   "label": "reflected",
+   "plan": "c6d929e5",
+   "evidence": "For each I ask the same four things: can a violation actually be caught, is there a stated pass/fail, is the reasoning one a maintainer could re-evaluate in two years, and does the row pay for itself."
+  },
+  {
+   "id": "tech-lead.essential-floor-knowledge.every-project-s-governance",
+   "label": "absent",
+   "plan": "5cb4ea69",
+   "evidence": "Under review: `spec.md`, `data-model.md`, `contracts/api.yaml`, `constraints-and-decisions.md`."
+  },
+  {
+   "id": "tech-lead.feasibility-review.never-review-own-artifact",
+   "label": "reflected",
+   "plan": "5cb4ea69",
+   "evidence": "Authorship: three artifacts carry the technical-analyst seat (`analyst-1`), `spec.md` carries the requirements-analyst seat. I authored none of them, so I am clear to grade all four."
+  },
+  {
+   "id": "tech-lead.three-part-rule.testability-what-pass-fail",
+   "label": "absent",
+   "plan": "ff3b5757",
+   "evidence": "I will not judge whether each artifact is individually complete, whether alternatives were weighed, or whether an NFR is well-formed on its own; a different review covers that."
+  },
+  {
+   "id": "tech-lead.essential-floor-knowledge.four-categories-non-negotiable",
+   "label": "reflected",
+   "plan": "2b138848",
+   "evidence": "A baseline category cannot be deferred; and the weakest state in the codebase is the one being left ungoverned. This is the single largest defect in the draft."
+  },
+  {
+   "id": "tech-lead.quality-standards.justified-every-constraint-carries",
+   "label": "reflected",
+   "plan": "917a5736",
+   "evidence": "**Rationale is absent.** \"team preference; agreed on the call\" tells a maintainer in 2028 nothing about whether 60/600 still applies."
+  },
+  {
+   "id": "tech-lead.three-part-rule.every-standard-write-evaluate",
+   "label": "absent",
+   "plan": "bfee8ab0",
+   "evidence": "whether alternatives to D-005/D-006 were formally weighed, whether SC-001 is well-formed as a measurement. I will touch SC-001 only where it collides with another artifact."
+  },
+  {
+   "id": "tech-lead.quality-standards.precise-rfc-2119-demanded",
+   "label": "absent",
+   "plan": "ff3b5757",
+   "evidence": "My question is only: can these pieces be built together as written, and is anything here carrying weight nothing pays for."
+  },
+  {
+   "id": "tech-lead.quality-standards.justified-every-constraint-carries",
+   "label": "reflected",
+   "plan": "e9d0d3de",
+   "evidence": "Every rule I write carries how it is caught, what failing looks like, and why it exists — a rule missing any of those three does not go in."
+  },
+  {
+   "id": "tech-lead.quality-standards.enforceable-every-must-write",
+   "label": "absent",
+   "plan": "bfee8ab0",
+   "evidence": "Nothing in this package is a governance surface, so there is no artifact here I have to hand off to a different validator on domain grounds."
+  },
+  {
+   "id": "tech-lead.quality-standards.justified-every-constraint-carries",
+   "label": "reflected",
+   "plan": "0fd18822",
+   "evidence": "**Data — time: no rationale.** Every other rule carries one; this one just stops after the pass line. A maintainer in two years cannot evaluate whether it still applies."
+  },
+  {
+   "id": "tech-lead.essential-floor-knowledge.every-project-s-governance",
+   "label": "absent",
+   "plan": "c6d929e5",
+   "evidence": "The walk was booked as the reliability and security dimensions. Security got real coverage. Reliability is thinner than the label implies"
+  },
+  {
+   "id": "tech-lead.judgment.justified-if-can-t",
+   "label": "reflected",
+   "plan": "f69f64da",
+   "evidence": "**Revisions required before ratification:** AX-007 measurable trigger; AX-008 real rationale; AX-009 enforcement mechanism."
+  },
+  {
+   "id": "tech-lead.three-part-rule.enforcement-how-compliance-verified",
+   "label": "reflected",
+   "plan": "f69f64da",
+   "evidence": "But there is no mechanism that catches a violation — no test, no single signing path named."
+  },
+  {
+   "id": "tech-lead.feasibility-review.never-review-own-artifact",
+   "label": "reflected",
+   "plan": "f69f64da",
+   "evidence": "That is my seat. I authored it; I cannot clear it. I will not grade it, will not soften it, and will not wave it through on the grounds that it looks fine"
+  },
+  {
+   "id": "tech-lead.essential-floor-knowledge.four-categories-non-negotiable",
+   "label": "absent",
+   "plan": "bfee8ab0",
+   "evidence": "I flag this as a buildability gap in the contract-vs-model pair and hand the broader \"is the security story complete\" question to the other reviewer rather than expanding my lane."
+  },
+  {
+   "id": "tech-lead.three-part-rule.enforcement-how-compliance-verified",
+   "label": "absent",
+   "plan": "5cb4ea69",
+   "evidence": "this review is document-against-document, and I would say so rather than manufacture a check that proves nothing."
+  },
+  {
+   "id": "tech-lead.judgment.justified-if-can-t",
+   "label": "reflected",
+   "plan": "ea62d26d",
+   "evidence": "Any rule I cannot give all three for does not get written — if I catch myself writing \"code should be clean,\" it comes out."
+  },
+  {
+   "id": "tech-lead.essential-floor-knowledge.four-categories-non-negotiable",
+   "label": "reflected",
+   "plan": "9dc7b007",
+   "evidence": "This is the single largest defect in the draft, and I would not soften it. A baseline category cannot be postponed to \"once the carrier integrations settle.\""
+  },
+  {
+   "id": "tech-lead.judgment.testable-if-can-t",
+   "label": "reflected",
+   "plan": "e9d0d3de",
+   "evidence": "Every rule I write carries how it is caught, what failing looks like, and why it exists — a rule missing any of those three does not go in."
+  },
+  {
+   "id": "tech-lead.quality-standards.justified-every-constraint-carries",
+   "label": "reflected",
+   "plan": "32c184fd",
+   "evidence": "Every rule gets three things or it doesn't get written: how CI or review catches a violation, what failing looks like concretely, and why it exists."
+  },
+  {
+   "id": "tech-lead.judgment.justified-if-can-t",
+   "label": "reflected",
+   "plan": "2b138848",
+   "evidence": "**F. Three-part-rule failures — must fix before adoption.**\n- *Data — time*: no rationale at all."
+  }
+ ]
+}

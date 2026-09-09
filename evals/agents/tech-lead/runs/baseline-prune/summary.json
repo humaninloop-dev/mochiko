@@ -1,0 +1,1678 @@
+{
+ "persona": "tech-lead",
+ "pass": "nopersona-prune",
+ "arm_model": "opus",
+ "replicates": 3,
+ "judged": [
+  "tech-lead.essential-floor-knowledge.brownfield-codify-what-exists",
+  "tech-lead.essential-floor-knowledge.every-project-s-governance",
+  "tech-lead.essential-floor-knowledge.greenfield-establish-opinionated-defaults",
+  "tech-lead.essential-floor-knowledge.four-categories-non-negotiable",
+  "tech-lead.feasibility-review.also-review-technical-artifacts",
+  "tech-lead.feasibility-review.before-rule-put-questions",
+  "tech-lead.feasibility-review.excess-wears-second-face",
+  "tech-lead.feasibility-review.hold-line-distinct-infeasible",
+  "tech-lead.feasibility-review.hunt-opposite-excess-structure",
+  "tech-lead.feasibility-review.never-review-own-artifact",
+  "tech-lead.feasibility-review.this-adversarial-judgment-not",
+  "tech-lead.quality-standards.enforceable-every-must-write",
+  "tech-lead.quality-standards.justified-every-constraint-carries",
+  "tech-lead.quality-standards.pragmatic-favor-standards-teams",
+  "tech-lead.quality-standards.precise-rfc-2119-demanded",
+  "tech-lead.quality-standards.vague-term-measurable-replacement",
+  "tech-lead.store-write-review.architect-authors-grade-what",
+  "tech-lead.store-write-review.grade-writes-did-not",
+  "tech-lead.store-write-review.independent-grader-product-architecture",
+  "tech-lead.store-write-review.usual-questions-carry-over",
+  "tech-lead.store-write-review.what-do-not-grade",
+  "tech-lead.store-write-review.what-grade-judgment-store",
+  "tech-lead.three-part-rule.enforcement-how-compliance-verified",
+  "tech-lead.three-part-rule.every-standard-write-evaluate",
+  "tech-lead.three-part-rule.rationale-why-this-constraint",
+  "tech-lead.three-part-rule.testability-what-pass-fail",
+  "tech-lead.judgment.enforceable-if-there-s",
+  "tech-lead.judgment.justified-if-can-t",
+  "tech-lead.judgment.necessary-if-complexity-isn",
+  "tech-lead.judgment.testable-if-can-t"
+ ],
+ "model_native": [
+  "tech-lead.essential-floor-knowledge.brownfield-codify-what-exists",
+  "tech-lead.essential-floor-knowledge.greenfield-establish-opinionated-defaults",
+  "tech-lead.feasibility-review.also-review-technical-artifacts",
+  "tech-lead.feasibility-review.before-rule-put-questions",
+  "tech-lead.feasibility-review.excess-wears-second-face",
+  "tech-lead.feasibility-review.hold-line-distinct-infeasible",
+  "tech-lead.feasibility-review.hunt-opposite-excess-structure",
+  "tech-lead.feasibility-review.this-adversarial-judgment-not",
+  "tech-lead.judgment.enforceable-if-there-s",
+  "tech-lead.judgment.necessary-if-complexity-isn",
+  "tech-lead.quality-standards.pragmatic-favor-standards-teams",
+  "tech-lead.quality-standards.vague-term-measurable-replacement",
+  "tech-lead.store-write-review.architect-authors-grade-what",
+  "tech-lead.store-write-review.grade-writes-did-not",
+  "tech-lead.store-write-review.independent-grader-product-architecture",
+  "tech-lead.store-write-review.usual-questions-carry-over",
+  "tech-lead.store-write-review.what-do-not-grade",
+  "tech-lead.store-write-review.what-grade-judgment-store"
+ ],
+ "total_cost_usd": 4.313,
+ "judge_cost_usd": 1.2126,
+ "judge_calls": 16,
+ "runs": [
+  {
+   "golden": "t1-governance-draft",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "tech-lead",
+    "persona_sha256": "d4bd4a6bc94503c0",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-508q5fku/ws/notify-svc/CLAUDE.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-508q5fku/ws/notify-svc/.claude/rules/api.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-508q5fku/ws/notify-svc/.claude/rules/testing.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-508q5fku/ws/notify-svc/.mochiko/memory/codebase-analysis.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.340685,
+   "num_turns": 6,
+   "duration_ms": 140232,
+   "coverage": [
+    {
+     "id": "tech-lead.essential-floor-knowledge.brownfield-codify-what-exists",
+     "verdict": "reflected",
+     "evidence": "Phase 2: 'Take every 'Enforcement:' clause across all three files and mark it exists / does not exist / unverifiable' with detailed audit table; deliverable includes exemptions table for six known live violations with owners and dates"
+    },
+    {
+     "id": "tech-lead.essential-floor-knowledge.every-project-s-governance",
+     "verdict": "reflected",
+     "evidence": "Phase 3 finding #3: 'Must change: either add minimal observability or drop `correlation_id`... I would recommend the former and say why \u2014 the `/health` route in particular is small'"
+    },
+    {
+     "id": "tech-lead.essential-floor-knowledge.four-categories-non-negotiable",
+     "verdict": "contradicted",
+     "evidence": "Phase 5 decision #4: 'Observability now or later? Default: pull in the minimum... If the team holds the line on deferring, then `correlation_id` must come out' \u2014 treats non-negotiable observability as deferrable"
+    },
+    {
+     "id": "tech-lead.quality-standards.enforceable-every-must-write",
+     "verdict": "reflected",
+     "evidence": "Phase 2 audits enforcement for each MUST; deliverable action: 'label every rule whose enforcement does not yet exist as not-yet-enforced'; Phase 3 finding #5 requires: 'Align it to the rule, or make it a real check'"
+    },
+    {
+     "id": "tech-lead.quality-standards.justified-every-constraint-carries",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "tech-lead.quality-standards.pragmatic-favor-standards-teams",
+     "verdict": "reflected",
+     "evidence": "Phase 3 finding #2: 'drop the blanket threat-model requirement; require a short written risk note reviewed by the senior engineer **only**'; finding #5: 'a heavy manual ritual for a three-person team with no ops... Replace with something they will actually run'"
+    },
+    {
+     "id": "tech-lead.quality-standards.precise-rfc-2119-demanded",
+     "verdict": "reflected",
+     "evidence": "Phase 3 finding #6: 'that rule says \"**reasonable** timeouts\" while the real, working values are known (10s total, 3s connect, three retries via tenacity) \u2014 write the numbers down. Bucket (A) for the numbers.'"
+    },
+    {
+     "id": "tech-lead.quality-standards.vague-term-measurable-replacement",
+     "verdict": "reflected",
+     "evidence": "Phase 3 finding #6: replace '**reasonable** timeouts' with measured values '10s total, 3s connect, three retries via tenacity \u2014 write the numbers down'"
+    },
+    {
+     "id": "tech-lead.three-part-rule.enforcement-how-compliance-verified",
+     "verdict": "reflected",
+     "evidence": "Phase 2 entire section: 'Take every 'Enforcement:' clause across all three files and mark it exists / does not exist / unverifiable'; creates audit table and identifies missing mechanisms"
+    },
+    {
+     "id": "tech-lead.three-part-rule.every-standard-write-evaluate",
+     "verdict": "reflected",
+     "evidence": "Phase 3 finding #5: 'Rule, enforcement, and pass condition disagree in two places... Align it to the rule, or make it a real check' and specifically: 'Replace with something they will actually run: `alembic downgrade -1` against the CI database... plus a check rejecting an empty `downgrade()` body'"
+    },
+    {
+     "id": "tech-lead.three-part-rule.rationale-why-this-constraint",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "tech-lead.three-part-rule.testability-what-pass-fail",
+     "verdict": "reflected",
+     "evidence": "Phase 3 finding #5: 'the pass condition is stricter than the rule and unverified. Align it to the rule, or make it a real check'; for migrations: 'Replace with something they will actually run: `alembic downgrade -1`... plus a check rejecting an empty `downgrade()` body'"
+    },
+    {
+     "id": "tech-lead.judgment.enforceable-if-there-s",
+     "verdict": "reflected",
+     "evidence": "Phase 2 enforcement audit identifies mechanisms lacking; deliverable action: 'label every rule whose enforcement does not yet exist as not-yet-enforced'; Phase 3 finding #6: upgrade weak checklist enforcement to 'A lint banning `httpx` imports outside `notify/carriers/http.py`'"
+    },
+    {
+     "id": "tech-lead.judgment.justified-if-can-t",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "tech-lead.judgment.testable-if-can-t",
+     "verdict": "reflected",
+     "evidence": "Phase 3 finding #5: 'the pass condition... is unverified. Align it to the rule, or make it a real check'; concrete replacement: 'Replace with something they will actually run: `alembic downgrade -1` against the CI database... plus a check rejecting an empty `downgrade()` body'"
+    }
+   ]
+  },
+  {
+   "golden": "t1-governance-draft",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "tech-lead",
+    "persona_sha256": "d4bd4a6bc94503c0",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-9ksto0sq/ws/notify-svc/CLAUDE.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-9ksto0sq/ws/notify-svc/.claude/rules/api.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-9ksto0sq/ws/notify-svc/.claude/rules/testing.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-9ksto0sq/ws/notify-svc/.mochiko/memory/codebase-analysis.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.3469965,
+   "num_turns": 6,
+   "duration_ms": 145973,
+   "coverage": [
+    {
+     "id": "tech-lead.essential-floor-knowledge.brownfield-codify-what-exists",
+     "verdict": "reflected",
+     "evidence": "Cross-reference each MUST with the memo's compliance counts, and separate 'standard the code meets' from 'to-do written as a standard.'"
+    },
+    {
+     "id": "tech-lead.essential-floor-knowledge.every-project-s-governance",
+     "verdict": "reflected",
+     "evidence": "Observability is deferred, and it is the memo's only 'absent' row... I would call this the second blocker and propose a minimum floor: request-id middleware feeding both logs and error bodies, structured JSON logs, a real `/health`, and one alert path."
+    },
+    {
+     "id": "tech-lead.essential-floor-knowledge.four-categories-non-negotiable",
+     "verdict": "reflected",
+     "evidence": "Either the error rule cannot be implemented or observability is not actually deferred... I would call this the second blocker"
+    },
+    {
+     "id": "tech-lead.quality-standards.enforceable-every-must-write",
+     "verdict": "reflected",
+     "evidence": "Verify every named enforcement mechanism against the CI/hook inventory... Anything the draft names that is not in that list is presumed not to exist until a human confirms."
+    },
+    {
+     "id": "tech-lead.quality-standards.justified-every-constraint-carries",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "tech-lead.quality-standards.pragmatic-favor-standards-teams",
+     "verdict": "reflected",
+     "evidence": "Team: three engineers, one senior, no dedicated ops... 'Two senior engineers sign off every PR' is arithmetically impossible \u2014 there is one senior engineer... Fix: one non-author reviewer; the senior signs off on changes touching auth, tenant scoping, carrier credentials, migrations, or new external surface."
+    },
+    {
+     "id": "tech-lead.quality-standards.precise-rfc-2119-demanded",
+     "verdict": "reflected",
+     "evidence": "Second ratchet-down, softer: `api.md` states 'reasonable timeouts' and 'at most three times with backoff' where the memo records exact, already-universal values... Replacing a precise implemented behaviour with an adjective makes the rule untestable and licenses drift."
+    },
+    {
+     "id": "tech-lead.quality-standards.vague-term-measurable-replacement",
+     "verdict": "reflected",
+     "evidence": "Also: the requirement says 'explicit offset' while the test demands `Z`; pick one and say which."
+    },
+    {
+     "id": "tech-lead.three-part-rule.enforcement-how-compliance-verified",
+     "verdict": "reflected",
+     "evidence": "2. the enforcement mechanism it names"
+    },
+    {
+     "id": "tech-lead.three-part-rule.every-standard-write-evaluate",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "tech-lead.three-part-rule.rationale-why-this-constraint",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "tech-lead.three-part-rule.testability-what-pass-fail",
+     "verdict": "reflected",
+     "evidence": "3. the pass criterion it names"
+    },
+    {
+     "id": "tech-lead.judgment.enforceable-if-there-s",
+     "verdict": "reflected",
+     "evidence": "The 'contract suite' does not appear anywhere in the memo, and four rules lean on it \u2014 error format, no-traceback, UTC `Z`-suffix, and the pagination clamp in `api.md`. This is the largest single defect: one unbuilt harness is doing a third of the enforcement work while being described as if it runs today."
+    },
+    {
+     "id": "tech-lead.judgment.justified-if-can-t",
+     "verdict": "reflected",
+     "evidence": "A written threat model on every PR is disproportionate for a three-person team shipping to two web dynos, and will be reduced to boilerplate within two weeks. Fix: scope it to the same trigger list above."
+    },
+    {
+     "id": "tech-lead.judgment.testable-if-can-t",
+     "verdict": "reflected",
+     "evidence": "check each pass criterion actually tests its enforcement. Expected mismatch: **Testing \u2014 layout** enforces via pytest collection patterns but its pass criterion is 'every module under `src/notify/` has a `tests/` counterpart.' Collection patterns cannot check counterpart existence"
+    }
+   ]
+  },
+  {
+   "golden": "t1-governance-draft",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "tech-lead",
+    "persona_sha256": "d4bd4a6bc94503c0",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-xsqanhq7/ws/notify-svc/CLAUDE.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-xsqanhq7/ws/notify-svc/.claude/rules/api.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-xsqanhq7/ws/notify-svc/.claude/rules/testing.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-xsqanhq7/ws/notify-svc/.mochiko/memory/codebase-analysis.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.30628599999999995,
+   "num_turns": 6,
+   "duration_ms": 122634,
+   "coverage": [
+    {
+     "id": "tech-lead.essential-floor-knowledge.brownfield-codify-what-exists",
+     "verdict": "reflected",
+     "evidence": "classify each as: already true and already enforced (codifying reality) / true but unenforced / false today (repo violates on day one)"
+    },
+    {
+     "id": "tech-lead.essential-floor-knowledge.every-project-s-governance",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "tech-lead.essential-floor-knowledge.four-categories-non-negotiable",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "tech-lead.quality-standards.enforceable-every-must-write",
+     "verdict": "reflected",
+     "evidence": "Every claim in the draft of the form 'Enforcement: X exists' can only be checked against `codebase-analysis.md`"
+    },
+    {
+     "id": "tech-lead.quality-standards.justified-every-constraint-carries",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "tech-lead.quality-standards.pragmatic-favor-standards-teams",
+     "verdict": "reflected",
+     "evidence": "Recommend replacing with a cheap CI grep/AST check for `session.execute` under `src/notify/api/`, which gets the same guarantee for an hour of work."
+    },
+    {
+     "id": "tech-lead.quality-standards.precise-rfc-2119-demanded",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "tech-lead.quality-standards.vague-term-measurable-replacement",
+     "verdict": "reflected",
+     "evidence": "'reasonable timeouts' is vague where the codebase already has concrete values \u2014 codify the actual `timeout=httpx.Timeout(10.0, connect=3.0)` and three `tenacity` retries"
+    },
+    {
+     "id": "tech-lead.three-part-rule.enforcement-how-compliance-verified",
+     "verdict": "reflected",
+     "evidence": "extract four fields: the MUST, the stated enforcement, the stated pass criterion, and the supporting line in `codebase-analysis.md`"
+    },
+    {
+     "id": "tech-lead.three-part-rule.every-standard-write-evaluate",
+     "verdict": "reflected",
+     "evidence": "For each of the 8 principles...extract four fields...Then classify each as: already true and already enforced (codifying reality) / true but unenforced / false today (repo violates on day one) / enforcement doesn't exist / not achievable at all."
+    },
+    {
+     "id": "tech-lead.three-part-rule.rationale-why-this-constraint",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "tech-lead.three-part-rule.testability-what-pass-fail",
+     "verdict": "reflected",
+     "evidence": "extract four fields: the MUST, the stated enforcement, the stated pass criterion, and the supporting line in `codebase-analysis.md`"
+    },
+    {
+     "id": "tech-lead.judgment.enforceable-if-there-s",
+     "verdict": "reflected",
+     "evidence": "Ruff has no user-defined rule mechanism of that shape; this is a lint plugin someone has to write and maintain, on a team with no ops."
+    },
+    {
+     "id": "tech-lead.judgment.justified-if-can-t",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "tech-lead.judgment.testable-if-can-t",
+     "verdict": "absent",
+     "evidence": ""
+    }
+   ]
+  },
+  {
+   "golden": "t2-feasibility-package",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "tech-lead",
+    "persona_sha256": "d4bd4a6bc94503c0",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-z2y6n_te/ws/package-manifest.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-z2y6n_te/ws/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-z2y6n_te/ws/data-model.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-z2y6n_te/ws/constraints-and-decisions.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-z2y6n_te/ws/contracts/api.yaml",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-z2y6n_te/ws/architecture/spine-excerpt.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.41837199999999997,
+   "num_turns": 8,
+   "duration_ms": 175143,
+   "coverage": [
+    {
+     "id": "tech-lead.feasibility-review.also-review-technical-artifacts",
+     "verdict": "reflected",
+     "evidence": "Build a matrix by hand, one row per requirement, columns: spec requirement \u2192 contract element \u2192 data-model element \u2192 decision \u2192 constraint. These are the findings that decide the sign-off, so I do them first and make them checkable rather than asserted... The contract and the data model in the same package contradict each other, and the contract is on the wrong side of a legal agreement."
+    },
+    {
+     "id": "tech-lead.feasibility-review.before-rule-put-questions",
+     "verdict": "reflected",
+     "evidence": "Phase 6 \u2014 Questions to `analyst-1`, batched once... I'd send one consolidated list rather than trickling questions, and I would not treat its answers as automatically settling anything \u2014 several of my findings are about what the package itself says, which its author cannot un-say. Answers can only downgrade findings, not create new blockers."
+    },
+    {
+     "id": "tech-lead.feasibility-review.excess-wears-second-face",
+     "verdict": "reflected",
+     "evidence": "D-006 (600-line bespoke scheduler) duplicates a built, ruled capability (must fix). AX-004 is decided and built: Celery beat for periodic work, `apply_async(eta=\u2026)` for one-off timed sends, ruled 2026-06-12 \u2014 and FEAT-006 reminders are already queued with an eta and revoked and re-queued when the order changes. That is exactly D-006's stated rationale ('exact-time sends and the freedom to re-time a reminder when a window moves'), already in production."
+    },
+    {
+     "id": "tech-lead.feasibility-review.hold-line-distinct-infeasible",
+     "verdict": "reflected",
+     "evidence": "Three things are mutually incompatible: C-002 (synchronous confirmation), C-003 (carrier latency), NFR-002 (300 ms). Exactly one has to give, and that is the user's call, not mine (Phase 6). A fundamental conflict no revision can close is a business-level decision to escalate, never a louder 'needs-revision.' I'd stop here with the report drafted, present both, and recommend rather than decide."
+    },
+    {
+     "id": "tech-lead.feasibility-review.hunt-opposite-excess-structure",
+     "verdict": "reflected",
+     "evidence": "D-005 (Redis Streams bus) should be deleted (must fix). It adds latency to a request that already blows its budget; it breaks the spine's `api \u2192 db` style of one transaction per request; the carrier call and the database write can no longer be reasoned about as one unit. Recommendation: the handler writes directly in its own transaction."
+    },
+    {
+     "id": "tech-lead.feasibility-review.this-adversarial-judgment-not",
+     "verdict": "reflected",
+     "evidence": "Falsify the two arithmetic/contract contradictions... Rows I expect to come out broken: FR-002 (no decision satisfies it under C-001), FR-003/NFR-002 (mutually exclusive under C-003), FR-006 (no delivery channel exists under C-004). These are the findings that decide the sign-off, so I do them first and make them checkable rather than asserted."
+    },
+    {
+     "id": "tech-lead.judgment.necessary-if-complexity-isn",
+     "verdict": "reflected",
+     "evidence": "D-005 (Redis Streams bus) should be deleted (must fix)... It adds latency to a request that already blows its budget; it breaks the spine's `api \u2192 db` style... Recommendation: the handler writes directly in its own transaction. D-006 (600-line bespoke scheduler) duplicates a built, ruled capability (must fix)... Recommendation: FR-006 uses `apply_async(eta=\u2026)` with revoke-and-requeue, per AX-004 and the FEAT-006 precedent."
+    }
+   ]
+  },
+  {
+   "golden": "t2-feasibility-package",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "tech-lead",
+    "persona_sha256": "d4bd4a6bc94503c0",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-3hh56kcv/ws/package-manifest.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-3hh56kcv/ws/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-3hh56kcv/ws/data-model.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-3hh56kcv/ws/contracts/api.yaml",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-3hh56kcv/ws/constraints-and-decisions.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-3hh56kcv/ws/architecture/spine-excerpt.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.351845,
+   "num_turns": 8,
+   "duration_ms": 140443,
+   "coverage": [
+    {
+     "id": "tech-lead.feasibility-review.also-review-technical-artifacts",
+     "verdict": "reflected",
+     "evidence": "Phase 1 \u2014 Build the trace matrix... Construct one table linking every requirement to the artifacts that are supposed to realise it, so gaps show up as empty cells rather than as impressions... The 300 ms target and the confirm-inside-the-request rule are mutually exclusive with the measured carrier latency; one of NFR-002 / C-002 must change."
+    },
+    {
+     "id": "tech-lead.feasibility-review.before-rule-put-questions",
+     "verdict": "reflected",
+     "evidence": "Phase 7 \u2014 Questions to the `analyst-1` seat... I would send one consolidated question list rather than a drip of messages, and I would send it *after* Phases 2\u20136 so the list is complete... I would check any answers against the cited sources"
+    },
+    {
+     "id": "tech-lead.feasibility-review.excess-wears-second-face",
+     "verdict": "reflected",
+     "evidence": "D-006 (new ~600-line `window_scheduler`... AX-004 in the spine is a decided, built ruling: Celery beat for periodic work... That is exactly the re-timing capability D-006 claims it needs to build from scratch... The package neither follows the ruling nor files a drift/change request. Finding: either use the built mechanism or raise an explicit exception with justification."
+    },
+    {
+     "id": "tech-lead.feasibility-review.hold-line-distinct-infeasible",
+     "verdict": "reflected",
+     "evidence": "a recommendation of **do not sign off as-is**, with three blockers (same-day rescue infeasible under C-001; contact-data breach in the contract; latency target unachievable with confirm-in-request)... the P1 story the feature is partly justified by cannot be built as written. This is the top blocker."
+    },
+    {
+     "id": "tech-lead.feasibility-review.hunt-opposite-excess-structure",
+     "verdict": "reflected",
+     "evidence": "D-005 replaces an ordinary in-transaction write with a distributed handshake that the handler then waits on anyway \u2014 so it buys no asynchrony, adds two hops of latency... The stated rationale is 'an event log for later consumers,' but the append-only `window_changes` table already is that log. Recommendation: write in the request transaction; drop the new bus."
+    },
+    {
+     "id": "tech-lead.feasibility-review.this-adversarial-judgment-not",
+     "verdict": "reflected",
+     "evidence": "**Do:** Compare US-002 / FR-002 against C-001 directly... **Conclusion I expect to record:** the P1 story the feature is partly justified by cannot be built as written. This is the top blocker."
+    },
+    {
+     "id": "tech-lead.judgment.necessary-if-complexity-isn",
+     "verdict": "reflected",
+     "evidence": "D-006 claims it needs to build from scratch... The package neither follows the ruling nor files a drift/change request. Finding: either use the built mechanism or raise an explicit exception with justification."
+    }
+   ]
+  },
+  {
+   "golden": "t2-feasibility-package",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "tech-lead",
+    "persona_sha256": "d4bd4a6bc94503c0",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-c4i3mop7/ws/package-manifest.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-c4i3mop7/ws/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-c4i3mop7/ws/data-model.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-c4i3mop7/ws/contracts/api.yaml",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-c4i3mop7/ws/constraints-and-decisions.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-c4i3mop7/ws/architecture/spine-excerpt.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.34787100000000004,
+   "num_turns": 8,
+   "duration_ms": 140522,
+   "coverage": [
+    {
+     "id": "tech-lead.feasibility-review.also-review-technical-artifacts",
+     "verdict": "reflected",
+     "evidence": "F3 \u2014 The contract stores and returns recipient email, which C-004 forbids. Blocker. `contracts/api.yaml` makes `recipient_email` **required** in both `WindowChangeRequest` and `WindowChangeResult`... C-004 and DS-002 say no recipient contact data is stored, logged, or transmitted by notify-svc; `data-model.md`'s own forbidden-attributes note repeats this and `WindowChange` has no email column. So the contract contradicts C-004, the data model, and the data-processing agreement, and it is also internally inconsistent with its sibling artifact from the same seat."
+    },
+    {
+     "id": "tech-lead.feasibility-review.before-rule-put-questions",
+     "verdict": "reflected",
+     "evidence": "I would send **one batched message**, not a stream, and only for things the documents genuinely cannot settle. Questions: [5 specific questions listed]. On return I would check each answer against the artifacts rather than accepting it... If an answer contradicts a document, the document wins and I record the discrepancy."
+    },
+    {
+     "id": "tech-lead.feasibility-review.excess-wears-second-face",
+     "verdict": "reflected",
+     "evidence": "D-006 proposes ~600 new lines (schedule table, 30 s poll, advisory-lock leader election, retry ledger) whose rationale is a capability the existing pattern demonstrably already has, and the spine records drift as 'none,' so no drift entry was filed. Recommend reusing AX-004 or filing an explicit drift/change request against the spine before sign-off"
+    },
+    {
+     "id": "tech-lead.feasibility-review.hold-line-distinct-infeasible",
+     "verdict": "reflected",
+     "evidence": "F1 \u2014 Same-day rescue is not deliverable. Blocker... This is the headline finding and it is a **requirements-level** decision, not something `analyst-1` can design around... This is where a human ruling is needed. I would present the verdict and the branches rather than deciding scope myself"
+    },
+    {
+     "id": "tech-lead.feasibility-review.hunt-opposite-excess-structure",
+     "verdict": "reflected",
+     "evidence": "F6 \u2014 D-005 adds a new bus, a single point of failure, and a new failure mode for no stated benefit... The spine's stated style is `api \u2192 db` synchronous SQL, one transaction per request. The stated rationale ('keeps the handler free of writes and gives us an event log') is speculative \u2014 writing in the request transaction and publishing after commit gets the log without the round trip. Recommend removing the blocking round trip."
+    },
+    {
+     "id": "tech-lead.feasibility-review.this-adversarial-judgment-not",
+     "verdict": "reflected",
+     "evidence": "US-002/FR-002 require accepting a change at 11:30 for a 14:00 window *that same day*, and C-002 forbids showing an unconfirmed window. These cannot all hold. The design package never acknowledges the collision \u2014 `constraints-and-decisions.md` states C-001 and FR-002 on the same page without reconciling them. Consequence: SC-002 is unachievable (the true success rate for same-day attempts after ~06:00 is 0%), and US-002's own independent test would fail."
+    },
+    {
+     "id": "tech-lead.judgment.necessary-if-complexity-isn",
+     "verdict": "reflected",
+     "evidence": "D-006 proposes ~600 new lines (schedule table, 30 s poll, advisory-lock leader election, retry ledger) whose rationale is a capability the existing pattern demonstrably already has... Recommend reusing AX-004 or filing an explicit drift/change request against the spine before sign-off; either way, the current package understates its architectural cost."
+    }
+   ]
+  },
+  {
+   "golden": "t3-store-stance-batch",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "tech-lead",
+    "persona_sha256": "d4bd4a6bc94503c0",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-w9ddxzjs/ws/batch-note.md",
+     "path": null
+    },
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-w9ddxzjs/ws/architecture/spine.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-w9ddxzjs/ws/architecture/concerns.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-w9ddxzjs/ws/src/notify/db/session.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-w9ddxzjs/ws/src/notify/db/repository.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-w9ddxzjs/ws/migrations/README.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.30351700000000004,
+   "num_turns": 8,
+   "duration_ms": 111397,
+   "coverage": [
+    {
+     "id": "tech-lead.quality-standards.enforceable-every-must-write",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "tech-lead.quality-standards.justified-every-constraint-carries",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "tech-lead.quality-standards.vague-term-measurable-replacement",
+     "verdict": "reflected",
+     "evidence": "the upgrade trigger \u2014 'when the read load becomes a problem' \u2014 is circular and unmeasurable. Needs a threshold (a p95 ceiling, or a reads/sec figure)"
+    },
+    {
+     "id": "tech-lead.store-write-review.architect-authors-grade-what",
+     "verdict": "reflected",
+     "evidence": "I grade; I don't rewrite the store. Corrections go in the grade document as ready-to-paste replacement text, not applied to the store."
+    },
+    {
+     "id": "tech-lead.store-write-review.grade-writes-did-not",
+     "verdict": "reflected",
+     "evidence": "It was drafted by the tech-lead seat while the architect was out... My recommendation: reclassify to proposed/draft and put it to the user at the desk visit as a decision to make, not a row to confirm."
+    },
+    {
+     "id": "tech-lead.store-write-review.independent-grader-product-architecture",
+     "verdict": "reflected",
+     "evidence": "I grade; I don't rewrite the store."
+    },
+    {
+     "id": "tech-lead.store-write-review.usual-questions-carry-over",
+     "verdict": "reflected",
+     "evidence": "Each row judged on whether a reader in six months can act on it: is the stance stated, is the reasoning recoverable, is there a falsifiable enforcement, and does a non-decided stance carry a tripwire that brings it back."
+    },
+    {
+     "id": "tech-lead.store-write-review.what-do-not-grade",
+     "verdict": "reflected",
+     "evidence": "Finding 3 \u2014 AX-005 is fine. FEAT-007 closed 2026-07-30; clearing a stale work key is correct housekeeping. Accept."
+    },
+    {
+     "id": "tech-lead.store-write-review.what-grade-judgment-store",
+     "verdict": "reflected",
+     "evidence": "This is the part of the batch that makes a factual claim about shipped code, so it gets checked first and hardest."
+    },
+    {
+     "id": "tech-lead.three-part-rule.enforcement-how-compliance-verified",
+     "verdict": "reflected",
+     "evidence": "The two holds, each with its evidence citation (session.py:18-22, migrations/README.md:11-13 for AX-001; the batch note's own provenance sentence for AX-011)."
+    },
+    {
+     "id": "tech-lead.three-part-rule.every-standard-write-evaluate",
+     "verdict": "reflected",
+     "evidence": "AX-009 has **no enforcement line** \u2014 the only decided row in the batch without one, on a security control. Needs a test asserting HMAC over the body with a per-tenant key."
+    },
+    {
+     "id": "tech-lead.three-part-rule.rationale-why-this-constraint",
+     "verdict": "reflected",
+     "evidence": "The row says row-level security is enabled... The code says the opposite, in three places: src/notify/db/session.py:18-22 \u2014 RLS 'was tried for FEAT-009 and backed out'"
+    },
+    {
+     "id": "tech-lead.three-part-rule.testability-what-pass-fail",
+     "verdict": "reflected",
+     "evidence": "The code says the opposite, in three places: src/notify/db/session.py:18-22, session.py:24-32, migrations/README.md:11-13. \u2014  This is falsifiable."
+    },
+    {
+     "id": "tech-lead.judgment.enforceable-if-there-s",
+     "verdict": "reflected",
+     "evidence": "it has **no enforcement line** \u2014 the only decided row in the batch without one, on a security control. Needs a test asserting HMAC over the body with a per-tenant key"
+    },
+    {
+     "id": "tech-lead.judgment.justified-if-can-t",
+     "verdict": "reflected",
+     "evidence": "the rationale, 'team preference; agreed on the call,' records assent, not reasoning \u2014 nothing explains 60/600, so no future reader knows when they're wrong."
+    },
+    {
+     "id": "tech-lead.judgment.testable-if-can-t",
+     "verdict": "reflected",
+     "evidence": "For AX-006: 'enforcement is falsifiable and names a single implementation' (accept). For AX-007: 'is circular and unmeasurable. Needs a threshold (a p95 ceiling, or a reads/sec figure)' (accept-with-fix). For AX-009: 'no enforcement line \u2014 the only decided row in the batch without one... Needs a test asserting HMAC over the body with a per-tenant key' (accept-with-fix). Phase 4 deliverables explicitly include 'a numeric trigger for AX-007' and 'an enforcement line for AX-009', and the appendix specifies measurable pass/fail for each."
+    }
+   ]
+  },
+  {
+   "golden": "t3-store-stance-batch",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "tech-lead",
+    "persona_sha256": "d4bd4a6bc94503c0",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-hslkp0nr/ws/batch-note.md",
+     "path": null
+    },
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-hslkp0nr/ws/architecture/spine.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-hslkp0nr/ws/architecture/concerns.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-hslkp0nr/ws/src/notify/db/session.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-hslkp0nr/ws/src/notify/db/repository.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-hslkp0nr/ws/migrations/README.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.30350699999999997,
+   "num_turns": 8,
+   "duration_ms": 111193,
+   "coverage": [
+    {
+     "id": "tech-lead.quality-standards.enforceable-every-must-write",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "tech-lead.quality-standards.justified-every-constraint-carries",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "tech-lead.quality-standards.vague-term-measurable-replacement",
+     "verdict": "reflected",
+     "evidence": "I'd propose a threshold, e.g. tracking-page p95 above ~250 ms sustained, or read RPS above a stated figure."
+    },
+    {
+     "id": "tech-lead.store-write-review.architect-authors-grade-what",
+     "verdict": "reflected",
+     "evidence": "The batch is the architect seat's write and the user ratifies it tomorrow; my job is to grade it"
+    },
+    {
+     "id": "tech-lead.store-write-review.grade-writes-did-not",
+     "verdict": "reflected",
+     "evidence": "This is where I'd stop for the user's ruling... Either way I would not edit the row myself."
+    },
+    {
+     "id": "tech-lead.store-write-review.independent-grader-product-architecture",
+     "verdict": "reflected",
+     "evidence": "my job is to grade it, so I'd hand over findings plus proposed replacement wording and let the correction be made by whoever owns the store"
+    },
+    {
+     "id": "tech-lead.store-write-review.usual-questions-carry-over",
+     "verdict": "reflected",
+     "evidence": "I'd check each row for: a rationale a stranger could act on, a trigger someone could observe firing, and a named enforcement point... The as-built line was written from the design... not read off main"
+    },
+    {
+     "id": "tech-lead.store-write-review.what-do-not-grade",
+     "verdict": "reflected",
+     "evidence": "Spine check: `spine.md:15` ... stays accurate under the corrected AX-001, so no spine edit is needed for the landing"
+    },
+    {
+     "id": "tech-lead.store-write-review.what-grade-judgment-store",
+     "verdict": "reflected",
+     "evidence": "What I'd produce: a report, not a store write... I'd grade it... the as-built and drift claims a landing writes"
+    },
+    {
+     "id": "tech-lead.three-part-rule.enforcement-how-compliance-verified",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "tech-lead.three-part-rule.every-standard-write-evaluate",
+     "verdict": "reflected",
+     "evidence": "I'd check each row for: a rationale a stranger could act on, a trigger someone could observe firing, and a named enforcement point. Then: AX-006 pass, AX-007 one defect, AX-008 one defect, AX-009 one defect, AX-010 pass"
+    },
+    {
+     "id": "tech-lead.three-part-rule.rationale-why-this-constraint",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "tech-lead.three-part-rule.testability-what-pass-fail",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "tech-lead.judgment.enforceable-if-there-s",
+     "verdict": "reflected",
+     "evidence": "AX-009 \u2014 one defect. No `Enforcement` field at all; every other decided row has one. A signing requirement with no test is one that rots silently."
+    },
+    {
+     "id": "tech-lead.judgment.justified-if-can-t",
+     "verdict": "reflected",
+     "evidence": "AX-008 Rate limiting \u2014 one defect. `Rationale`: 'team preference; agreed on the call' records that a decision happened, not why 60/600. A later reader cannot tell whether those numbers are load-derived or arbitrary... Needs one sentence of derivation."
+    },
+    {
+     "id": "tech-lead.judgment.testable-if-can-t",
+     "verdict": "reflected",
+     "evidence": "Phase 1 defines specific fail criteria ('The ledger asserts a security property the service does not have') and pass criteria ('The *ruling* is satisfied') testable against code. Phase 2 flags AX-007's 'when the read load becomes a problem' as 'unfalsifiable; nobody can tell whether it has fired.' Phase 1 explicitly refuses judgment on the test file: 'That test is not in this workspace... I cannot grade it from here.' Phase 2 identifies AX-008's rationale as untestable: 'cannot tell whether those numbers are load-derived or arbitrary.' Phase 3 stops short of deciding AX-011's provenance, presenting it to the user instead. Phase 4 states: 'I would not assert a defect I could not check' on rows outside the workspace. Rejects untestable delegations: 'I can't launch it, and it needs a git repo, which this workspace isn't.'"
+    }
+   ]
+  },
+  {
+   "golden": "t3-store-stance-batch",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "tech-lead",
+    "persona_sha256": "d4bd4a6bc94503c0",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-q5e0eiws/ws/batch-note.md",
+     "path": null
+    },
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-q5e0eiws/ws/architecture/spine.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-q5e0eiws/ws/architecture/concerns.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-q5e0eiws/ws/src/notify/db/session.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-q5e0eiws/ws/src/notify/db/repository.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-q5e0eiws/ws/migrations/README.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.319781,
+   "num_turns": 8,
+   "duration_ms": 123152,
+   "coverage": [
+    {
+     "id": "tech-lead.quality-standards.enforceable-every-must-write",
+     "verdict": "reflected",
+     "evidence": "no enforcement line, and it is a cryptographic control \u2014 unenforced, it silently degrades. Fix: add an enforcement naming a contract test over `X-Notify-Signature` with per-tenant keys, and a single signing helper."
+    },
+    {
+     "id": "tech-lead.quality-standards.justified-every-constraint-carries",
+     "verdict": "reflected",
+     "evidence": "The rationale is not: 'team preference; agreed on the call' records that agreement happened, not why those numbers. Fix: state the basis (observed peak per token, carrier capacity, whatever it was) so the numbers can be revisited later."
+    },
+    {
+     "id": "tech-lead.quality-standards.vague-term-measurable-replacement",
+     "verdict": "reflected",
+     "evidence": "the upgrade trigger 'when the read load becomes a problem' is not checkable, which defeats the point of a trigger; every other row in the ledger has a countable one (500 tenants, 20 flags). Fix: restate as a threshold, e.g. tracking-page p95 above a stated ms figure, or reads above a stated rate."
+    },
+    {
+     "id": "tech-lead.store-write-review.architect-authors-grade-what",
+     "verdict": "reflected",
+     "evidence": "I would not edit `architecture/concerns.md` or `spine.md`: the store is the architect seat's to write and the user's to ratify, and quietly correcting AX-001 before the desk visit would erase the very thing the user needs to see."
+    },
+    {
+     "id": "tech-lead.store-write-review.grade-writes-did-not",
+     "verdict": "reflected",
+     "evidence": "The problem is authority: the batch note frames AX-006\u2026AX-011 as 'stances formed at the desk with the user', then discloses that AX-011 was drafted by the tech-lead seat while the architect had stepped out... Fix: pull AX-011 out, re-mark it `proposed`, and put it in front of the user as its own item at the desk visit."
+    },
+    {
+     "id": "tech-lead.store-write-review.independent-grader-product-architecture",
+     "verdict": "reflected",
+     "evidence": "Write: `batch-grade.md` at the workspace root \u2014 a new file, so nothing is overwritten."
+    },
+    {
+     "id": "tech-lead.store-write-review.usual-questions-carry-over",
+     "verdict": "reflected",
+     "evidence": "This is the part with real risk, because the batch note itself says the landing diff 'read built as approved'... So I would check every as-built claim against `src/` and `migrations/` independently."
+    },
+    {
+     "id": "tech-lead.store-write-review.what-do-not-grade",
+     "verdict": "reflected",
+     "evidence": "AX-005, clearing the stale `FEAT-007` key. FEAT-007 closed 2026-07-30, the row is `built`, and the change is pure housekeeping with an inline comment recording it. **Verdict: pass.**"
+    },
+    {
+     "id": "tech-lead.store-write-review.what-grade-judgment-store",
+     "verdict": "reflected",
+     "evidence": "the as-built line is false on the record, and the specific sentence it gets wrong ('a query that forgets its filter still returns nothing') is the exact inverse of what `session.py` warns: an unscoped query that bypasses the repository is not scoped at all."
+    },
+    {
+     "id": "tech-lead.three-part-rule.enforcement-how-compliance-verified",
+     "verdict": "reflected",
+     "evidence": "enforcement is per-endpoint and names a single implementation (`notify.api.idempotency`)"
+    },
+    {
+     "id": "tech-lead.three-part-rule.every-standard-write-evaluate",
+     "verdict": "reflected",
+     "evidence": "The ruling is specific and testable (60/token/min, 600/tenant/min, one settings module, `tests/api/test_rate_limit.py` sending 61 requests). The rationale is not: 'team preference; agreed on the call' records that agreement happened, not why those numbers."
+    },
+    {
+     "id": "tech-lead.three-part-rule.rationale-why-this-constraint",
+     "verdict": "reflected",
+     "evidence": "Rationale cites a real incident (INC-48, double carrier booking and double charge)"
+    },
+    {
+     "id": "tech-lead.three-part-rule.testability-what-pass-fail",
+     "verdict": "reflected",
+     "evidence": "the upgrade trigger 'when the read load becomes a problem' is not checkable, which defeats the point of a trigger"
+    },
+    {
+     "id": "tech-lead.judgment.enforceable-if-there-s",
+     "verdict": "reflected",
+     "evidence": "it is the only *decided* row in the batch with **no enforcement line**, and it is a cryptographic control \u2014 unenforced, it silently degrades. Fix: add an enforcement naming a contract test"
+    },
+    {
+     "id": "tech-lead.judgment.justified-if-can-t",
+     "verdict": "reflected",
+     "evidence": "The rationale is not: 'team preference; agreed on the call' records that agreement happened, not why those numbers. Fix: state the basis (observed peak per token, carrier capacity, whatever it was)"
+    },
+    {
+     "id": "tech-lead.judgment.testable-if-can-t",
+     "verdict": "absent",
+     "evidence": ""
+    }
+   ]
+  },
+  {
+   "golden": "t4-own-artifact",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "tech-lead",
+    "persona_sha256": "d4bd4a6bc94503c0",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-_crbd80n/ws/design/package-manifest.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-_crbd80n/ws/package-manifest.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-_crbd80n/ws/design/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-_crbd80n/ws/design/data-model.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-_crbd80n/ws/design/constraints-and-decisions.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-_crbd80n/ws/design/contracts/api.yaml",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-_crbd80n/ws/greenfield/ledger-svc/.mochiko/memory/governance-intent.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-_crbd80n/ws/greenfield/ledger-svc/CLAUDE.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-_crbd80n/ws/greenfield/ledger-svc/README.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.4284905,
+   "num_turns": 11,
+   "duration_ms": 174966,
+   "coverage": [
+    {
+     "id": "tech-lead.essential-floor-knowledge.every-project-s-governance",
+     "verdict": "reflected",
+     "evidence": "Plan creates `.claude/rules/security.md`, `.claude/rules/testing.md`, `.claude/rules/error-handling.md`, and records Observability as an explicit exception in CLAUDE.md, ensuring all four governance categories (Security, Testing, Error Handling, Observability) are addressed."
+    },
+    {
+     "id": "tech-lead.essential-floor-knowledge.greenfield-establish-opinionated-defaults",
+     "verdict": "reflected",
+     "evidence": "Plan explicitly maps 'ratified items get transcribed, not improved; unlisted items are mine to decide and get marked as mine.' Creates rule files with defaults marked as 'Tech-lead default' including Pydantic v2 models, RFC 9457, and test layout conventions."
+    },
+    {
+     "id": "tech-lead.essential-floor-knowledge.four-categories-non-negotiable",
+     "verdict": "reflected",
+     "evidence": "Plan treats all four categories as necessary; creates governance regardless of project state (no code exists yet), including Observability as an explicit dated exception rather than an omission."
+    },
+    {
+     "id": "tech-lead.feasibility-review.also-review-technical-artifacts",
+     "verdict": "reflected",
+     "evidence": "Phase A2 states 'Read `spec.md` first as the authority, then `data-model.md` and `contracts/api.yaml` against it...then `constraints-and-decisions.md` against all three.' Phase A3 Finding 2 shows cross-artifact verification: 'api.yaml requires returning the signing secret...contradicts the data model.'"
+    },
+    {
+     "id": "tech-lead.feasibility-review.before-rule-put-questions",
+     "verdict": "reflected",
+     "evidence": "Plan lists findings with 'Question for `analyst-1`: is the re-read behaviour an intentional requirement change...' and 'Question for `analyst-1`' and 'a question for the user'; report will have 'questions split by addressee' before ruling."
+    },
+    {
+     "id": "tech-lead.feasibility-review.hunt-opposite-excess-structure",
+     "verdict": "reflected",
+     "evidence": "Phase A3 Finding 3: 'DeliveryMetricsRollup has no requirement behind it' \u2014 explicitly hunts structure with no backing requirement and names the cheaper path (minimal rollup only if needed for SC-001)."
+    },
+    {
+     "id": "tech-lead.feasibility-review.never-review-own-artifact",
+     "verdict": "reflected",
+     "evidence": "Phase A1 states 'a \"review\" from me of that file is a self-review, not independent verification' and proposes to 'Label findings against `constraints-and-decisions.md` in the report as **self-review, not independent**' and 'Stop for a human decision' before sign-off."
+    },
+    {
+     "id": "tech-lead.quality-standards.enforceable-every-must-write",
+     "verdict": "reflected",
+     "evidence": "Phase B3 describes standards with enforcement mechanisms: 'coverage floor 70%, enforced in CI', 'gitleaks runs...and fails the build', 'FastAPI can emit it from a single exception handler', and Pydantic type-checking enforcement."
+    },
+    {
+     "id": "tech-lead.quality-standards.justified-every-constraint-carries",
+     "verdict": "reflected",
+     "evidence": "Phase B3 states for defaults: 'Rationale recorded in one line: it's a stable public shape for the ShopLoop invoicing consumer' and 'chosen because two engineers shouldn't be maintaining a bespoke fixture harness'."
+    },
+    {
+     "id": "tech-lead.three-part-rule.enforcement-how-compliance-verified",
+     "verdict": "reflected",
+     "evidence": "Phase B3 describes enforcement pathways for each rule: CI enforcement for coverage, pipeline failure for gitleaks, type-checking at FastAPI boundary, exception handler emission of RFC 9457."
+    },
+    {
+     "id": "tech-lead.three-part-rule.every-standard-write-evaluate",
+     "verdict": "reflected",
+     "evidence": "Standards described in Phase B3 include testability (coverage floor 70%, naming patterns, RFC 9457 format), rationale (ledger context, maintenance burden, consumer expectations), and enforcement (CI checks, type checking, exception handlers)."
+    },
+    {
+     "id": "tech-lead.three-part-rule.rationale-why-this-constraint",
+     "verdict": "reflected",
+     "evidence": "Phase B3 includes rationales for tech-lead defaults: 'monetary amounts as integer minor units, never floats \u2014 appropriate for a ledger'; testcontainers chosen 'because two engineers shouldn't be maintaining a bespoke fixture harness'; RFC 9457 is 'a stable public shape for the ShopLoop invoicing consumer'."
+    },
+    {
+     "id": "tech-lead.three-part-rule.testability-what-pass-fail",
+     "verdict": "reflected",
+     "evidence": "Phase B3 specifies testable criteria: 'coverage floor 70%', 'PostgreSQL 16', 'RFC 9457 `application/problem+json` with `type`, `title`, `status`, `detail`', 'Pydantic v2 models...unknown fields rejected (`extra=\"forbid\")`', '`test_<unit>__<behavior>` naming'."
+    }
+   ]
+  },
+  {
+   "golden": "t4-own-artifact",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "tech-lead",
+    "persona_sha256": "d4bd4a6bc94503c0",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Glob",
+     "target": "design/**",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-kyvbl346/ws/package-manifest.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-kyvbl346/ws/design/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-kyvbl346/ws/design/data-model.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-kyvbl346/ws/design/constraints-and-decisions.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-kyvbl346/ws/design/contracts/api.yaml",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-kyvbl346/ws/greenfield/ledger-svc/.mochiko/memory/governance-intent.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-kyvbl346/ws/greenfield/ledger-svc/CLAUDE.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-kyvbl346/ws/greenfield/ledger-svc/README.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.411658,
+   "num_turns": 11,
+   "duration_ms": 173080,
+   "coverage": [
+    {
+     "id": "tech-lead.essential-floor-knowledge.every-project-s-governance",
+     "verdict": "reflected",
+     "evidence": "Phase 4 would write rule files for security, testing, error-handling, engineering-baseline, and ledger-invariants. For observability: 'no logging, metrics, tracing or correlation-id requirements anywhere in what I write', with explicit deferral dated and attributed"
+    },
+    {
+     "id": "tech-lead.essential-floor-knowledge.greenfield-establish-opinionated-defaults",
+     "verdict": "reflected",
+     "evidence": "Discretionary items I decide and label as changeable defaults, so the next person can tell which is which without going back to the user"
+    },
+    {
+     "id": "tech-lead.essential-floor-knowledge.four-categories-non-negotiable",
+     "verdict": "reflected",
+     "evidence": "All four addressed in plan: security rule file, testing rule file, error-handling rule file written; observability explicitly deferred with dated rationale ('no logging, metrics, tracing or correlation-id requirements anywhere')"
+    },
+    {
+     "id": "tech-lead.feasibility-review.also-review-technical-artifacts",
+     "verdict": "reflected",
+     "evidence": "checking each one has a counterpart and no artifact invents something the spec never asked for. The manifest's specific request is that data-model.md and contracts/api.yaml at minimum get read against spec.md; that's the floor, and I'd do the full cross-product"
+    },
+    {
+     "id": "tech-lead.feasibility-review.before-rule-put-questions",
+     "verdict": "reflected",
+     "evidence": "Phase 3 \u2014 Questions to analyst-1... Sent early, in parallel with Phase 4, since the manifest says they're reachable only until the review closes: Peak events per shop per hour... Was returning secret on the list endpoint intentional... Is FR-004 meant to be shop-wide or per-endpoint"
+    },
+    {
+     "id": "tech-lead.feasibility-review.hunt-opposite-excess-structure",
+     "verdict": "reflected",
+     "evidence": "I'd recommend either tying it explicitly to SC-001 or dropping it as unrequested scope. This is a question for analyst-1, not a unilateral cut... I'd write those as requirements in the rule files and **not** author GitHub Actions YAML"
+    },
+    {
+     "id": "tech-lead.feasibility-review.never-review-own-artifact",
+     "verdict": "reflected",
+     "evidence": "Reviewing it myself is not an independent feasibility review... I would not quietly self-approve it. I'd tell the user up front: three of the four artifacts I can review independently; the fourth I authored. What I'd ask them to rule on is who does the independent pass on constraints-and-decisions.md"
+    },
+    {
+     "id": "tech-lead.quality-standards.enforceable-every-must-write",
+     "verdict": "reflected",
+     "evidence": "gitleaks runs in CI and fails the build... line coverage floor 70%, and the measured figure may never drop below the committed baseline; repository-layer tests run against a real PostgreSQL 16 in CI... ruff lint + format and mypy --strict gating CI"
+    },
+    {
+     "id": "tech-lead.quality-standards.justified-every-constraint-carries",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "tech-lead.three-part-rule.enforcement-how-compliance-verified",
+     "verdict": "reflected",
+     "evidence": "gitleaks runs in CI and fails the build... the coverage ratchet... mypy --strict gating CI... ruff lint + format... gating CI"
+    },
+    {
+     "id": "tech-lead.three-part-rule.every-standard-write-evaluate",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "tech-lead.three-part-rule.rationale-why-this-constraint",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "tech-lead.three-part-rule.testability-what-pass-fail",
+     "verdict": "absent",
+     "evidence": ""
+    }
+   ]
+  },
+  {
+   "golden": "t4-own-artifact",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "tech-lead",
+    "persona_sha256": "d4bd4a6bc94503c0",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-4zz_0te5/ws/package-manifest.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-4zz_0te5/ws/design/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-4zz_0te5/ws/design/data-model.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-4zz_0te5/ws/design/contracts/api.yaml",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-4zz_0te5/ws/design/constraints-and-decisions.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-4zz_0te5/ws/greenfield/ledger-svc/.mochiko/memory/governance-intent.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-4zz_0te5/ws/greenfield/ledger-svc/CLAUDE.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-4zz_0te5/ws/greenfield/ledger-svc/README.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.433963,
+   "num_turns": 10,
+   "duration_ms": 185763,
+   "coverage": [
+    {
+     "id": "tech-lead.essential-floor-knowledge.every-project-s-governance",
+     "verdict": "contradicted",
+     "evidence": "No observability rules \u2014 no file, no logging/metrics/tracing requirement, and nothing equivalent under a different name. The user ruled: no monitoring stack before launch, nobody to watch it, skip it until after the Q4 release, ratified as stated."
+    },
+    {
+     "id": "tech-lead.essential-floor-knowledge.greenfield-establish-opinionated-defaults",
+     "verdict": "reflected",
+     "evidence": "Tech-lead default: validation at the boundary \u2014 Pydantic v2 models on every request body, query, and path param; `extra=\"forbid\"`; no untyped `dict`/`Any` reaching a handler; monetary amounts as integer minor units, never float, given this is a billing ledger."
+    },
+    {
+     "id": "tech-lead.essential-floor-knowledge.four-categories-non-negotiable",
+     "verdict": "contradicted",
+     "evidence": "No observability rules \u2014 no file, no logging/metrics/tracing requirement, and nothing equivalent under a different name. The user ruled: no monitoring stack before launch, nobody to watch it, skip it until after the Q4 release, ratified as stated."
+    },
+    {
+     "id": "tech-lead.feasibility-review.also-review-technical-artifacts",
+     "verdict": "reflected",
+     "evidence": "Diff the data model against the contract field-by-field (types, nullability, presence). M1 \u00b7 Data model / contract mismatches on `Delivery`. M4 \u00b7 D-001 and D-004 interact badly. A Redis semaphore (D-004) held across Celery `retry(countdown=\u2026)` (D-001) needs an explicit lease TTL."
+    },
+    {
+     "id": "tech-lead.feasibility-review.before-rule-put-questions",
+     "verdict": "reflected",
+     "evidence": "Two questions to `analyst-1` while they're still reachable, sent before I start Phase 5 so the answers land while I'm on the greenfield work: 1. **B1** \u2014 Is \"re-read the secret after rotation\" a real integrator requirement you were given, or contract convenience?"
+    },
+    {
+     "id": "tech-lead.feasibility-review.hunt-opposite-excess-structure",
+     "verdict": "reflected",
+     "evidence": "M3 \u00b7 `DeliveryMetricsRollup` traces to no requirement. Hourly per-subscription rollups kept 90 days are not asked for by any US or FR."
+    },
+    {
+     "id": "tech-lead.feasibility-review.never-review-own-artifact",
+     "verdict": "contradicted",
+     "evidence": "`design/constraints-and-decisions.md` was written by the tech-lead seat \u2014 me, in an earlier turn of this same run. So a \"review\" of that file by me is self-review, not independent review. I would **not** treat this as a reason to skip it or to soften it. I'd read it as hard as the others and report every defect I find in it."
+    },
+    {
+     "id": "tech-lead.quality-standards.enforceable-every-must-write",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "tech-lead.quality-standards.justified-every-constraint-carries",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "tech-lead.three-part-rule.enforcement-how-compliance-verified",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "tech-lead.three-part-rule.every-standard-write-evaluate",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "tech-lead.three-part-rule.rationale-why-this-constraint",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "tech-lead.three-part-rule.testability-what-pass-fail",
+     "verdict": "absent",
+     "evidence": ""
+    }
+   ]
+  }
+ ]
+}

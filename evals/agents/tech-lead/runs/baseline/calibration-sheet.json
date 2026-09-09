@@ -1,0 +1,128 @@
+{
+ "persona": "tech-lead",
+ "run": "baseline",
+ "seed": 7,
+ "instructions": "Label each pair reflected | absent | contradicted by reading calibration/plan-<plan>.md against the claim text in rules.json: a restated principle without a task-specific action = absent; a declined or hypothetical conditional path = absent; a Reject-section standard is reflected when a concrete action avoids the behaviour. Do not open calibration-map.json and do not look at the judge's verdicts.",
+ "pairs": [
+  {
+   "id": "tech-lead.quality-standards.enforceable-every-must-write",
+   "label": "",
+   "plan": "2b138848"
+  },
+  {
+   "id": "tech-lead.quality-standards.justified-every-constraint-carries",
+   "label": "",
+   "plan": "f69f64da"
+  },
+  {
+   "id": "tech-lead.three-part-rule.every-standard-write-evaluate",
+   "label": "",
+   "plan": "c6d929e5"
+  },
+  {
+   "id": "tech-lead.essential-floor-knowledge.every-project-s-governance",
+   "label": "",
+   "plan": "5cb4ea69"
+  },
+  {
+   "id": "tech-lead.feasibility-review.never-review-own-artifact",
+   "label": "",
+   "plan": "5cb4ea69"
+  },
+  {
+   "id": "tech-lead.three-part-rule.testability-what-pass-fail",
+   "label": "",
+   "plan": "ff3b5757"
+  },
+  {
+   "id": "tech-lead.essential-floor-knowledge.four-categories-non-negotiable",
+   "label": "",
+   "plan": "2b138848"
+  },
+  {
+   "id": "tech-lead.quality-standards.justified-every-constraint-carries",
+   "label": "",
+   "plan": "917a5736"
+  },
+  {
+   "id": "tech-lead.three-part-rule.every-standard-write-evaluate",
+   "label": "",
+   "plan": "bfee8ab0"
+  },
+  {
+   "id": "tech-lead.quality-standards.precise-rfc-2119-demanded",
+   "label": "",
+   "plan": "ff3b5757"
+  },
+  {
+   "id": "tech-lead.quality-standards.justified-every-constraint-carries",
+   "label": "",
+   "plan": "e9d0d3de"
+  },
+  {
+   "id": "tech-lead.quality-standards.enforceable-every-must-write",
+   "label": "",
+   "plan": "bfee8ab0"
+  },
+  {
+   "id": "tech-lead.quality-standards.justified-every-constraint-carries",
+   "label": "",
+   "plan": "0fd18822"
+  },
+  {
+   "id": "tech-lead.essential-floor-knowledge.every-project-s-governance",
+   "label": "",
+   "plan": "c6d929e5"
+  },
+  {
+   "id": "tech-lead.judgment.justified-if-can-t",
+   "label": "",
+   "plan": "f69f64da"
+  },
+  {
+   "id": "tech-lead.three-part-rule.enforcement-how-compliance-verified",
+   "label": "",
+   "plan": "f69f64da"
+  },
+  {
+   "id": "tech-lead.feasibility-review.never-review-own-artifact",
+   "label": "",
+   "plan": "f69f64da"
+  },
+  {
+   "id": "tech-lead.essential-floor-knowledge.four-categories-non-negotiable",
+   "label": "",
+   "plan": "bfee8ab0"
+  },
+  {
+   "id": "tech-lead.three-part-rule.enforcement-how-compliance-verified",
+   "label": "",
+   "plan": "5cb4ea69"
+  },
+  {
+   "id": "tech-lead.judgment.justified-if-can-t",
+   "label": "",
+   "plan": "ea62d26d"
+  },
+  {
+   "id": "tech-lead.essential-floor-knowledge.four-categories-non-negotiable",
+   "label": "",
+   "plan": "9dc7b007"
+  },
+  {
+   "id": "tech-lead.judgment.testable-if-can-t",
+   "label": "",
+   "plan": "e9d0d3de"
+  },
+  {
+   "id": "tech-lead.quality-standards.justified-every-constraint-carries",
+   "label": "",
+   "plan": "32c184fd"
+  },
+  {
+   "id": "tech-lead.judgment.justified-if-can-t",
+   "label": "",
+   "plan": "2b138848"
+  }
+ ]
+}
