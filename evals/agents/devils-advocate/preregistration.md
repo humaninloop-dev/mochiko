@@ -58,7 +58,23 @@ three claims gets one golden re-cut before it is declared ready.
 
 ## Fill log
 
-- band: **[measured at baseline]** — pending
-- calibration agreement: pending
-- contradicted bar: pending
-- re-key count: 0
+- band: **17.5 %** — filled 2026-09-09 from `runs/baseline` (12 `post` sessions, $2.94; judge $0.54 / 12 calls) on
+  the graded set after prune (`runs/baseline-prune`, 12 sessions, $3.14: **15 of 18 claims model-native** — the
+  document-review craft is largely the bare model's on plan-only; graded: `approving-specs-critical-gaps`,
+  `authoring-fixing-spec-yourself`, and `require-evidence-approval-ready` until the read below moved it): flaky
+  pairs 1/8 = 12.5 % on the two-claim set (+ 5 = 17.5 %, uncapped) — ship bar (b) met.
+- read: `approving-specs-critical-gaps` pass^k reflected on all four goldens; `authoring-fixing-spec-yourself`
+  pass^k on d1/d2/d4 and **contradicted once on d3** (the persona patched the spec's wording in one of three
+  replicates under the cover note's explicit patch ask) — a persona finding to carry, not instrument noise.
+- calibration: lead sheet **0.708** (24 pairs, labelled from keyword extracts — a process defect: not a full read);
+  an independent second labeller reading every plan in full agreed with the lead on only **0.667** of pairs and
+  with the judge on **0.792**; every judge/labeller-2 disagreement (5) was `require-evidence-approval-ready`,
+  which binds a READY verdict no wave-A golden can yield — the judge applied the pre-registered conditional rule
+  correctly, the brief to the labeller had widened it. That claim is now `out-of-instrument: conditional` and
+  removed from tempts; on the remaining 16 pairs judge/labeller-2 agreement is **1.00**, judge/lead 0.875.
+  Process rule from here: calibration labels come from FULL plan reads, never keyword extracts.
+- contradicted bar: one `contradicted` pair (d3, judge and both labellers agree) — bar exercised on one pair,
+  recorded as under-exercised (< 2).
+- re-key count: 0 (no judge or golden change; one partition move by the conditional rule)
+- kit status: **READY** for the next `devils-advocate` edit — graded set two claims; the cheap-read trio, the
+  runtime remit, and the ready-verdict claim out of instrument; fifteen claims model-native.

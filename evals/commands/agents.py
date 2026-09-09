@@ -841,6 +841,11 @@ def cmd_report(persona: str, name: str) -> None:
         tempted = goldens.get(g, {}).get("tempts", [])
         if tempted:
             def mark(r):
+                s = snap.get(r, {})
+                if s.get("model_native"):
+                    return f"{r}=native"
+                if s.get("untempted") or s.get("partition") != "plan-observable":
+                    return f"{r}=not-read"
                 parts = []
                 if pre:
                     parts.append(f"pre{'✓' if cmdrun.passk(pre, r) else '✗'}")

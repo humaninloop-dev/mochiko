@@ -110,8 +110,8 @@
     "sha": "300c3e81269e"
    },
    "tag": "common",
-   "partition": "plan-observable",
-   "why": "a planned ready verdict cites specific strengths, not absence of problems",
+   "partition": "out-of-instrument",
+   "why": "conditional — the standard binds a READY verdict, and every wave-A golden plants a Critical so no plan can issue one; judge and full-read labeller split exactly on this (baseline calibration 2026-09-09); needs a golden on which ready is warranted, which collides with never-approve-with-zero-findings",
    "model_native": false,
    "untempted": false,
    "control": {
