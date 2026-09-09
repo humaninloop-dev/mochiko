@@ -1,0 +1,14 @@
+services:
+  postgres:
+    image: postgres:16
+    environment: { POSTGRES_USER: shiftbook, POSTGRES_PASSWORD: shiftbook, POSTGRES_DB: shiftbook }
+    ports: ["5435:5432"]
+    volumes: [shiftbook-pg:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U shiftbook"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+volumes:
+  shiftbook-pg:

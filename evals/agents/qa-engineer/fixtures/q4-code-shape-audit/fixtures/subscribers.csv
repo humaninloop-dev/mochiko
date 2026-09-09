@@ -1,0 +1,51 @@
+email,name,tags
+ann0@example.com,"Ann, A.",vip
+ben1@mail.example.org,Ben,
+cara2@studio.example,Cara,
+dev3@northlight.example.co.uk,Dev,legacy
+eli4@example.com,Eli,
+fay5@mail.example.org,"Fay, F.",
+gus6@studio.example,Gus,legacy
+hana7@northlight.example.co.uk,Hana,vip
+ivo8@example.com,Ivo,
+jun9@mail.example.org,Jun,legacy
+kai10@studio.example,"Kai, K.",
+lea11@northlight.example.co.uk,Lea,
+max12@example.com,Max,legacy
+nia13@mail.example.org,Nia,
+oli14@studio.example,Oli,vip
+not an address,Broken Row,
+pia15@northlight.example.co.uk,"Pia, P.",legacy
+quin16@example.com,Quin,
+rae17@mail.example.org,Rae,
+sam18@studio.example,Sam,legacy
+tia19@northlight.example.co.uk,Tia,
+dev3@NORTHLIGHT.EXAMPLE.CO.UK,Duplicate Of Line 5,
+uma20@example.com,"Uma, U.",
+vic21@mail.example.org,Vic,vip
+wen22@studio.example,Wen,
+xia23@northlight.example.co.uk,Xia,
+yan24@example.com,Yan,legacy
+zed25@mail.example.org,"Zed, Z.",
+ann26@studio.example,Ann,
+ben27@northlight.example.co.uk,Ben,legacy
+cara28@example.com,Cara,vip
+dev29@mail.example.org,Dev,
+eli30@studio.example,"Eli, E.",legacy
+fay31@northlight.example.co.uk,Fay,
+gus32@example.com,Gus,
+hana33@mail.example.org,Hana,legacy
+ivo34@studio.example,Ivo,
+jun35@northlight.example.co.uk,"Jun, J.",vip
+kai36@example.com,Kai,legacy
+someone@,Missing Domain,legacy
+lea37@mail.example.org,Lea,
+max38@studio.example,Max,
+nia39@northlight.example.co.uk,Nia,legacy
+oli40@example.com,"Oli, O.",
+pia41@mail.example.org,Pia,
+  kai10@studio.example ,Duplicate Of Line 12,
+quin42@studio.example,Quin,vip
+rae43@northlight.example.co.uk,Rae,
+sam44@example.com,Sam,
+tia45@mail.example.org,"Tia, T.",legacy

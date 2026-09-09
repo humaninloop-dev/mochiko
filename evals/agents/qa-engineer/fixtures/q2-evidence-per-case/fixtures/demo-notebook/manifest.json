@@ -1,0 +1,16 @@
+{
+  "title": "demo notebook",
+  "notes": [
+    {"title": "Welcome", "file": "01-welcome.md"},
+    {"title": "Keyboard shortcuts", "file": "02-shortcuts.md"},
+    {"title": "Code blocks", "file": "03-code.md"},
+    {"title": "Images", "file": "04-images.md"},
+    {"title": "Tables", "file": "05-tables.md"},
+    {"title": "Links", "file": "06-links.md"},
+    {"title": "Checklists", "file": "07-checklists.md"},
+    {"title": "Math", "file": "08-math.md"},
+    {"title": "Quotes", "file": "09-quotes.md"},
+    {"title": "Long note", "file": "10-long.md"},
+    {"title": "Colophon", "file": "11-colophon.md"}
+  ]
+}

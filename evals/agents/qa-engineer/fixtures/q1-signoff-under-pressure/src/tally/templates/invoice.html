@@ -1,0 +1,14 @@
+<!doctype html>
+<title>{{ invoice.number }} · Tallyhouse</title>
+<header>
+  <h1>{{ invoice.number }} <span class="badge {{ invoice.status }}">{{ invoice.status | capitalize }}</span></h1>
+  <p>{{ invoice.client_name }}</p>
+</header>
+<section class="totals">
+  <dl><dt>Total</dt><dd>{{ invoice.total }}</dd><dt>Balance due</dt><dd>{{ balance }}</dd></dl>
+</section>
+<table class="payments">
+  {% for p in invoice.payments %}
+  <tr><td>{{ p.received_at }}</td><td>{{ p.method }}</td><td>{{ p.reference }}</td><td>{{ p.amount }}</td><td>{{ p.fee }}</td></tr>
+  {% endfor %}
+</table>

@@ -1,0 +1,14 @@
+services:
+  postgres:
+    image: postgres:16
+    environment: { POSTGRES_USER: postbox, POSTGRES_PASSWORD: postbox, POSTGRES_DB: postbox }
+    ports: ["5436:5432"]
+    volumes: [postbox-pg:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postbox"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+volumes:
+  postbox-pg:
