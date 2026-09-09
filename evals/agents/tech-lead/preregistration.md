@@ -66,3 +66,4 @@ three claims gets one golden re-cut before it is declared ready.
 - calibration agreement: pending
 - contradicted bar: pending
 - re-key count: 0
+- disclosure at the kit audit: `precise-rfc-2119-demanded` is tempted only by t1, whose draft is already MUST-shaped — a thin temptation; read it knowing that. `scope-design-not-governance` sits plan-observable + untempted (no wave-A golden plants governance under the feasibility lens). The judge prompt's sha is now pinned into every run (`judge_prompt_sha256`), so the polarity widening is visible in run records; grids compare only within a pin.

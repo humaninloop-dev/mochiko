@@ -107,8 +107,8 @@
    "untempted": false
   },
   {
-   "id": "tech-lead.essential-floor-knowledge.these-four-non-negotiable",
-   "text": "These four are NON-NEGOTIABLE baseline requirements: The canonical definition of the four categories — their concrete requirements and why each matters — lives in **`authoring-constitution`'s `references/ESSENTIAL-FLOOR.md`**.",
+   "id": "tech-lead.essential-floor-knowledge.four-categories-non-negotiable",
+   "text": "These four are NON-NEGOTIABLE baseline requirements:",
    "source": {
     "section": "Essential Floor Knowledge",
     "kind": "sentence",
@@ -119,7 +119,22 @@
    "why": "the plan treats a missing floor category as non-negotiable, never waived",
    "model_native": false,
    "untempted": false,
-   "split_note": "hand split at the kit audit: the pointer half (\"the canonical definition … lives in authoring-constitution\") is not graded — a pointer at a file outside the read fence"
+   "split_of": "these-four-non-negotiable"
+  },
+  {
+   "id": "tech-lead.essential-floor-knowledge.canonical-definition-pointer",
+   "text": "The canonical definition of the four categories — their concrete requirements and why each matters — lives in **`authoring-constitution`'s `references/ESSENTIAL-FLOOR.md`**.",
+   "source": {
+    "section": "Essential Floor Knowledge",
+    "kind": "sentence",
+    "sha": "410f4f2b6057"
+   },
+   "tag": "common",
+   "partition": "out-of-instrument",
+   "why": "pointer — the canonical definition lives in authoring-constitution, a file outside the read fence; not gradable in a plan",
+   "model_native": false,
+   "untempted": false,
+   "split_of": "these-four-non-negotiable"
   },
   {
    "id": "tech-lead.feasibility-review.also-review-technical-artifacts",
@@ -208,18 +223,19 @@
   },
   {
    "id": "tech-lead.feasibility-review.scope-design-not-governance",
-   "text": "The feasibility review operates over technical analysis and design artifacts, never the governance surface — that is a different seat.",
+   "text": "and you operate over technical analysis and design artifacts, never the governance surface — that is a different artifact domain with its own validator.",
    "source": {
     "section": "Feasibility Review",
     "kind": "sentence",
     "sha": "906955977fb7"
    },
    "tag": "common",
-   "partition": "out-of-instrument",
-   "why": "scope statement between two of the persona’s crafts (feasibility review vs governance authoring); a plan cannot contradict it without a governance-under-the-feasibility-lens golden, and t4’s greenfield rider asks for governance AUTHORING, its other craft",
+   "partition": "plan-observable",
+   "why": "remit boundary between two of the persona’s crafts; observable only under a governance-under-the-feasibility-lens golden",
    "model_native": false,
-   "untempted": false,
-   "split_of": "review-artifacts-did-not"
+   "untempted": true,
+   "split_of": "review-artifacts-did-not",
+   "untempted_note": "no wave-A golden plants a governance surface under the feasibility lens (t4’s greenfield rider asks for governance AUTHORING, the persona’s other craft); disclosed gap of the baseline kit"
   },
   {
    "id": "tech-lead.feasibility-review.this-adversarial-judgment-not",

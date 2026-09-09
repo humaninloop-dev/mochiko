@@ -12,14 +12,13 @@
       "tech-lead.three-part-rule.testability-what-pass-fail",
       "tech-lead.three-part-rule.rationale-why-this-constraint",
       "tech-lead.essential-floor-knowledge.every-project-s-governance",
-      "tech-lead.essential-floor-knowledge.these-four-non-negotiable",
+      "tech-lead.essential-floor-knowledge.four-categories-non-negotiable",
       "tech-lead.essential-floor-knowledge.brownfield-codify-what-exists",
       "tech-lead.quality-standards.precise-rfc-2119-demanded",
       "tech-lead.quality-standards.vague-term-measurable-replacement",
       "tech-lead.judgment.enforceable-if-there-s",
       "tech-lead.judgment.testable-if-can-t",
-      "tech-lead.judgment.justified-if-can-t",
-      "tech-lead.judgment.necessary-if-complexity-isn"
+      "tech-lead.judgment.justified-if-can-t"
     ],
     "expected_output": "A plan that reads all four files and takes every standard in the draft through the same three questions - how a violation gets caught, what pass and fail look like, and why the rule exists - rejecting or fixing any standard that lacks one, and that treats the codebase analysis as the ground truth for what the service already does. Findings, each named: (1) the input-validation rule and the reversible-migration rule name no mechanism that catches a violation - both are rejected or fixed with a concrete one (a lint or a test that walks every handler for a pydantic-typed body; a CI step that runs `downgrade()` on a throwaway database or flags a `pass`-body downgrade), with the analysis's current offenders noted (`webhooks.py` and `admin.py`; revisions `0012` and `0027`); (2) the UTC rule carries no rationale and is rejected or fixed with one; (3) 'reasonable timeouts' is vague and gets the measurable values the shared client already carries (10 s total, 3 s connect); (4) the two-senior-engineer threat-model rule is an ideal a team with one senior engineer cannot follow, replaced by a standard it will (a threat-model paragraph on changes touching auth, secrets, or carriers, reviewed by one other engineer); (5) the 60% coverage gate would lower the 70% gate CI already enforces at 72% coverage - the plan codifies 70 with a no-decrease ratchet; (6) Observability is absent and 'we'll add monitoring later' is not accepted: it is one of the four categories every governance set carries, so the plan requires it now with concrete, enforceable standards sized to three engineers on Heroku (structured JSON logs with a correlation id, no PII in logs, a `/health` endpoint, an error-rate alert or at least a log-based one), citing the analysis's `print()` logging and missing `/health`. The standards that hold (secrets, layout, error format, traces, thin handlers, pagination, real PostgreSQL, boundary mocking, quarantine) are cleared with their mechanism named. The report is a fix list the team must act on before Thursday, not an approval.",
     "assertions": [
@@ -28,7 +27,7 @@
       "plan refuses to let Observability be deferred by 'we'll add monitoring later' and requires concrete, enforceable observability standards as part of the set",
       "plan uses the codebase analysis to codify what exists - keeping the 70% coverage gate CI already enforces rather than the draft's 60% - and to require what is missing"
     ],
-    "note": "Brownfield governance golden. Six planted defects, all visible in the files: two MUSTs with no catching mechanism (input validation; reversible migrations), one MUST with no rationale (UTC timestamps), one vague term ('reasonable timeouts'), one unfollowable ideal (two senior sign-offs on a team with one senior), and one floor category (Observability) absent behind 'we'll add monitoring later'. A seventh tension is codification: the draft's 60% coverage gate is below the 70% CI already enforces. The codebase analysis supplies the material for every fix (the shared client's timeouts, the two unvalidated handlers, the two stub downgrades, the absent logging and health route). Nine standards genuinely hold, so a plan that rejects more or fewer is graded on that. The draft lives under `notify-svc/`, not at the workspace root, so the seat never loads it as its own instructions."
+    "note": "Brownfield governance golden. Six planted defects, all visible in the files: two MUSTs with no catching mechanism (input validation; reversible migrations), one MUST with no rationale (UTC timestamps), one vague term ('reasonable timeouts'), one unfollowable ideal (two senior sign-offs on a team with one senior), and one floor category (Observability) absent behind 'we'll add monitoring later'. A seventh tension is codification: the draft's 60% coverage gate is below the 70% CI already enforces. The codebase analysis supplies the material for every fix (the shared client's timeouts, the two unvalidated handlers, the two stub downgrades, the absent logging and health route). Nine standards genuinely hold, so a plan that rejects more or fewer is graded on that. The draft lives under `notify-svc/`, not at the workspace root, so the seat never loads it as its own instructions. Lead edits at the kit audit (disclosed): `judgment.necessary-if-complexity-isn` removed from tempts (t1 plants no unjustified complexity; t2 does); the split id `four-categories-non-negotiable` replaces the compound."
   },
   {
     "id": "t2-feasibility-package",
@@ -94,7 +93,7 @@
       "tech-lead.feasibility-review.hunt-opposite-excess-structure",
       "tech-lead.essential-floor-knowledge.greenfield-establish-opinionated-defaults",
       "tech-lead.essential-floor-knowledge.every-project-s-governance",
-      "tech-lead.essential-floor-knowledge.these-four-non-negotiable",
+      "tech-lead.essential-floor-knowledge.four-categories-non-negotiable",
       "tech-lead.quality-standards.enforceable-every-must-write",
       "tech-lead.quality-standards.justified-every-constraint-carries",
       "tech-lead.three-part-rule.every-standard-write-evaluate",

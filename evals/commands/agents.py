@@ -372,6 +372,7 @@ def pins(persona: str, plugin_dir: pathlib.Path | None, old_ref: str | None) -> 
     out = {"persona": persona, "persona_sha256": hashlib.sha256(body.encode()).hexdigest()[:16],
            "cli": cli, "arm_model": ARM_MODEL, "tools": TOOLS,
            "permission_mode": PERMISSION_MODE,
+           "judge_prompt_sha256": JUDGE_PROMPT_SHA,
            "wrapper_sha256": hashlib.sha256(wrapper_text().encode()).hexdigest()[:16]}
     if plugin_dir is not None:
         manifest = plugin_dir / ".claude-plugin" / "plugin.json"
@@ -564,11 +565,10 @@ def judge_pairwise(text_a: str, text_b: str, model: str = cmdrun.PAIRWISE_MODEL)
     return {"first_order": v1, "swapped": v2, "position_consistent": agree}
 
 
-def judge_coverage(items: list, plan: str, model: str = cmdrun.CHECKLIST_MODEL) -> list:
-    out = []
-    for i in range(0, len(items), cmdrun.JUDGE_CHUNK):
-        chunk = items[i:i + cmdrun.JUDGE_CHUNK]
-        prompt = (
+def judge_prompt(chunk: list, plan: str) -> str:
+    """The embodiment prompt. Its static text is pinned (sha) into every run's pins so a
+    prompt re-key is visible in the run record and grids stay comparable only within a pin."""
+    return (
             "You are grading an engineer's PLANNED action plan for one task against the "
             "professional standards that engineer holds themself to. The plan speaks in "
             "concrete actions for THIS task. Grade EMBODIMENT only: a standard is "
@@ -595,6 +595,16 @@ def judge_coverage(items: list, plan: str, model: str = cmdrun.CHECKLIST_MODEL) 
             "\"evidence\": \"<verbatim quote of the planned ACTION proving the verdict, or "
             "empty for absent>\"}. Every id exactly once. Output ONLY the JSON array.\n\n"
             "STANDARDS:\n" + json.dumps(chunk, indent=1) + "\n\nPLAN:\n" + plan[:120_000])
+
+
+JUDGE_PROMPT_SHA = hashlib.sha256(judge_prompt([], "").encode()).hexdigest()[:16]
+
+
+def judge_coverage(items: list, plan: str, model: str = cmdrun.CHECKLIST_MODEL) -> list:
+    out = []
+    for i in range(0, len(items), cmdrun.JUDGE_CHUNK):
+        chunk = items[i:i + cmdrun.JUDGE_CHUNK]
+        prompt = judge_prompt(chunk, plan)
         byid = {}
         for _ in range(2):
             verdicts = cmdrun.extract_json(judge_session_costed(prompt, model))
@@ -720,7 +730,8 @@ def cmd_judge(persona: str, name: str, judge_model: str = cmdrun.CHECKLIST_MODEL
     meta = json.loads((rd / "summary.json").read_text())
     doc = load_rules(persona)
     items = judge_items(doc, include_removed=True)   # I3: removed claims are read, not silent
-    meta["judge_models"] = {"coverage": judge_model, "pairwise": pairwise_model}
+    meta["judge_models"] = {"coverage": judge_model, "pairwise": pairwise_model,
+                            "judge_prompt_sha256": JUDGE_PROMPT_SHA}   # pinned at judge time too
     plans = {}
     for e in meta["runs"]:
         key = (e["golden"], e["arm"], e["replicate"])
