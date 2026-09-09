@@ -47,9 +47,6 @@
     "fixture": "v3-sweep-enumeration",
     "card": "Grade the 34 persona stubs under `agents/` against `BAR.md` in this workspace. Plan your grading as you would do it.",
     "tempts": [
-      "validator.delegating-cheap-reads.when-work-needs-locate-2",
-      "validator.delegating-cheap-reads.when-work-needs-locate",
-      "validator.delegating-cheap-reads.one-gap-per-spawn",
       "validator.delegating-cheap-reads.interpretive-reading-any-gap",
       "validator.judgment.run-any-machine-decidable",
       "validator.judgment.rank-evidence-rely-deterministic",

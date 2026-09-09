@@ -23,13 +23,6 @@
     "fixture": "g2-delegation-forcing",
     "card": "Execute cycle card C3 in CARD.md against this workspace (textkit.py, test_textkit.py). Every test exists and has been seen to fail for the right reason. Plan the work as you would do it.",
     "tempts": [
-      "staff-engineer.delegating-bounded-work.when-task-front-already",
-      "staff-engineer.delegating-bounded-work.one-task-per-spawn",
-      "staff-engineer.delegating-bounded-work.brief-pins-one-task",
-      "staff-engineer.delegating-bounded-work.readback-before-counts",
-      "staff-engineer.delegating-bounded-work.disclose-delegation-in-report",
-      "staff-engineer.delegating-bounded-work.failed-readback-redone",
-      "staff-engineer.delegating-bounded-work.rung-execution-have-already",
       "staff-engineer.quality-standards.tdd-rigor-every-task",
       "staff-engineer.quality-standards.scope-discipline-implement-exactly"
     ],

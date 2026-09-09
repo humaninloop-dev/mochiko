@@ -192,7 +192,12 @@ def units(body: str) -> list[dict]:
         # Prose inside a claim section (an intro line such as "When given a feature request:",
         # a closing flourish) is not a unit by design (D5: bullets are the claims there); craft
         # sections are prose-first, so their sentences and fences are units.
-        if title not in CLAIM_SECTIONS:
+        # Fallback (2026-09-09, qa-engineer wave B): a claim section written entirely as
+        # prose — no bullet and no numbered item — would otherwise mint nothing and its
+        # standards would be ungradable; its sentences are the units then. A claim section
+        # with any list keeps the D5 rule (prose there is intro or flourish).
+        prose_only_claims = title in CLAIM_SECTIONS and not bullets(text) and not numbered(text)
+        if title not in CLAIM_SECTIONS or prose_only_claims:
             blocks, _ = fences(text)
             for f in blocks:
                 out.append({"section": title, "kind": "fence", "text": f, "sha": sha(f)})
@@ -327,6 +332,11 @@ def check(persona: str, old_ref: str | None = None) -> int:
     tempted = {t for g in goldens for t in g.get("tempts", [])}
     for t in tempted - set(ids):
         fail(f"golden tempts unknown claim id {t}")
+    by_id = {c["id"]: c for c in claims}
+    for t in sorted(tempted & set(ids)):          # a tempt binds a graded claim only
+        if by_id[t].get("partition") != "plan-observable":
+            fail(f"golden tempts {t}, which is {by_id[t].get('partition')} — drop it from tempts "
+                 f"or re-partition (a kit stayed green on this before 2026-09-09)")
     graded = [c for c in claims if c.get("partition") == "plan-observable"
               and not c.get("model_native") and c.get("tag") != "removed"]
     for c in graded:
