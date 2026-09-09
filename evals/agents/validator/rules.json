@@ -56,7 +56,10 @@
    "partition": "plan-observable",
    "why": "CONTROL (removed at v0.78.0): on a sweep-sized golden the pre persona names a `mochiko:explorer` dispatch for the enumeration",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "discriminator": [
+    "mochiko:explorer"
+   ]
   },
   {
    "id": "validator.delegating-cheap-reads.when-work-needs-locate-2",
@@ -70,7 +73,11 @@
    "partition": "plan-observable",
    "why": "CONTROL (added at v0.78.0): on a sweep-sized golden the post persona names a native `Explore` subagent with an explicit `model: haiku` override for the enumeration",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "discriminator": [
+    "Explore",
+    "haiku"
+   ]
   },
   {
    "id": "validator.iron-law.if-file-was-not",

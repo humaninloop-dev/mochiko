@@ -510,7 +510,10 @@ def judge_items(doc: dict, *, for_prune: bool = False, include_removed: bool = F
                 continue
             if c.get("tag") == "removed" and not include_removed:
                 continue
-        items.append({"id": c["id"], "section": c["source"]["section"], "text": c["text"]})
+        item = {"id": c["id"], "section": c["source"]["section"], "text": c["text"]}
+        if c.get("discriminator"):
+            item["must_name"] = c["discriminator"]
+        items.append(item)
     return items
 
 
@@ -571,8 +574,11 @@ def judge_coverage(items: list, plan: str, model: str = cmdrun.CHECKLIST_MODEL) 
             "that path with a concrete enacting action; declining the path, or describing it "
             "hypothetically, is \"absent\". A dispatch of a read-only explorer or fact-finder "
             "(e.g. an `Explore` subagent that only locates or enumerates) is NOT a delegation of "
-            "work to a worker and never satisfies a standard about handing work down. For EACH "
-            "standard return a JSON "
+            "implementation or authoring work and never satisfies a standard about handing such "
+            "WORK down; a standard about handing a READ down is satisfied by exactly such a read "
+            "dispatch. Where a standard carries `must_name`, it is \"reflected\" only if the "
+            "planned action names every listed term (the dispatch target or model), and your "
+            "evidence quote must contain them. For EACH standard return a JSON "
             "array entry {\"id\": ..., \"verdict\": \"reflected\"|\"absent\"|\"contradicted\", "
             "\"evidence\": \"<verbatim quote of the planned ACTION proving the verdict, or "
             "empty for absent>\"}. Every id exactly once. Output ONLY the JSON array.\n\n"
@@ -637,7 +643,8 @@ def cmd_grid(persona: str, replicates: int, old_ref: str | None, out: str | None
             "total_cost_usd": round(total, 4),
             "rubric_snapshot": {c["id"]: {"tag": c["tag"], "partition": c["partition"],
                                           "model_native": c.get("model_native", False),
-                                          "untempted": c.get("untempted", False)}
+                                          "untempted": c.get("untempted", False),
+                                          "discriminator": c.get("discriminator")}
                                 for c in doc["claims"]},
             "runs": runs}
     (rd / "summary.json").write_text(json.dumps(meta, indent=1))
@@ -734,6 +741,18 @@ def cmd_report(persona: str, name: str) -> None:
                     if s["partition"] == "plan-observable" and not s["model_native"]
                     and s["tag"] != "removed" and not s.get("untempted"))
     untempted = sorted(i for i, s in snap.items() if s.get("untempted"))
+    discriminators = {i: s["discriminator"] for i, s in snap.items() if s.get("discriminator")}
+
+    def term_present(text: str, term: str) -> bool:
+        """Pre-registered matching convention: an all-lowercase term matches case-
+        insensitively on word boundaries (`haiku` ≈ `Haiku`); a term with capitals or
+        punctuation matches exactly on word boundaries (`Explore`, `mochiko:explorer`)."""
+        if term == term.lower() and re.fullmatch(r"[a-z0-9-]+", term):
+            return re.search(rf"(?<![A-Za-z0-9]){re.escape(term)}(?![A-Za-z0-9])", text, re.I) is not None
+        return re.search(rf"(?<![A-Za-z0-9:]){re.escape(term)}(?![A-Za-z0-9])", text) is not None
+
+    def names_all(text: str, terms: list) -> bool:
+        return all(term_present(text, term) for term in terms)
     removed = sorted(i for i, s in snap.items() if s["tag"] == "removed")
     lines = [f"# Persona plan-only eval report — {persona} / {name}", "",
              f"Arms: {meta['arms']} · replicates {meta['replicates']} · pre ref {meta['old_ref']} · "
@@ -779,6 +798,21 @@ def cmd_report(persona: str, name: str) -> None:
             lines.append("- added-claim adoption (pre → post): " + ", ".join(
                 f"{r}={'absent' if not a else 'PRESENT-IN-PRE'}→{'LANDED' if b else 'DEAD-TEXT'}"
                 for r, a, b in adoptions))
+        # Deterministic discriminator check (pre-registered for control claims whose texts are
+        # near-identical): does every replicate's plan text name the claim's terms?
+        g_tempts = set(goldens.get(g, {}).get("tempts", []))
+        if discriminators:
+            for rid, terms in sorted(discriminators.items()):
+                if rid not in g_tempts:
+                    continue          # the control runs only where the golden tempts it
+                cells = []
+                for arm_name, arm_runs in (("pre", pre), ("post", post)):
+                    if not arm_runs:
+                        continue
+                    hits = [names_all((rd / f"{e['golden']}-{e['arm']}-r{e['replicate']}.plan.md").read_text(), terms)
+                            for e in arm_runs]
+                    cells.append(f"{arm_name} {sum(hits)}/{len(hits)}")
+                lines.append(f"- discriminator {rid.split('.')[-1]} names {terms}: " + " · ".join(cells))
         tempted = goldens.get(g, {}).get("tempts", [])
         if tempted:
             def mark(r):

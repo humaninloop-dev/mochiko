@@ -11,7 +11,10 @@ act. Fields marked **[measured at probe]** are filled from the probe run before 
 dispatch) · `post` = the working tree (the v0.78.0 retarget: a native `Explore` subagent with an
 explicit `model: haiku` override). The pair `when-work-needs-locate` (removed) /
 `when-work-needs-locate-2` (added) is the edit; every other claim is `common`. The v0.84.0 /
-v0.85.0 changes to the checklist-selection prose sit in an excluded section and are not read.
+v0.85.0 changes to the checklist-selection prose sit in an excluded section and are not read;
+their direction is disclosed: the `post` body's "the brief wins — grade against exactly that"
+reinforces `substituting-own-bar-grade` in `post` only, so a `pre`→`post` gain on that claim is
+expected and is not evidence about the read edit.
 
 ## Read rule (D11, the command target's form)
 
@@ -23,6 +26,10 @@ v0.85.0 changes to the checklist-selection prose sit in an excluded section and 
 - **Removed claim** (`when-work-needs-locate`): must read `reflected` in `pre` on the sweep golden
   and `absent` in `post` (a GHOST reading = the edit did not take).
 - **Untempted claims** are excluded from the graded set by the runner and listed as disclosed.
+- **`Grep` is inside this target's fence** (`--tools Read,Grep,Glob`), so the validator's
+  deterministic pre-asserts (`run-any-machine-decidable`, `rank-evidence-rely-deterministic`) are
+  genuinely runnable in a plan-only session: "plan-only" means less here than in pilot 1, where
+  the seat could not run tests. Read those two claims knowing the seat may have run the grep.
 - **Latitude-conditional claims** (pilot-1 ruling): none in this rubric — every validator claim is
   must-shaped; the two cheap-read claims are obligations under a plantable condition (a
   sweep-sized enumeration), not discretion.
@@ -31,11 +38,34 @@ v0.85.0 changes to the checklist-selection prose sit in an excluded section and 
 
 On `v3-sweep-enumeration`: `when-work-needs-locate-2` reads **absent in `pre`** and **`reflected`
 under pass^k in `post`**; `when-work-needs-locate` reads **`reflected` under pass^k in `pre`** and
-**absent in `post`**. A plan that reads all ~30 files itself in both arms reads both claims absent
-in both arms — that is an instrument finding about the golden's sizing (re-key candidate), never a
-persona regression. Any control claim reading `reflected` in the wrong arm is a judge or rubric
+**absent in `post`**. A plan that reads all 34 files itself in both arms reads both claims absent
+in both arms — the pre-committed reading below applies ("not exercised"), never a persona
+regression. Any control claim reading `reflected` in the wrong arm is a judge or rubric
 defect (the pilot-1 watch: an `Explore` dispatch credited where none is planned, or the wrong
 dispatch target credited).
+
+**Discriminator pre-assert (the two control claims share their first forty words and sit in one
+judge chunk):** each carries a `discriminator` in `rules.json` — `when-work-needs-locate` must
+name `mochiko:explorer`; `when-work-needs-locate-2` must name `Explore` and `haiku`. The judge
+prompt carries them as `must_name` and its evidence quote must contain them; independently, the
+report runs a deterministic presence check of the terms over every replicate's plan text. A
+control claim counts as `reflected` for the control only when BOTH the judge pass^k and the
+deterministic check pass^k hold in that arm. Matching convention: an all-lowercase term matches
+case-insensitively on word boundaries (`haiku` ≈ `Haiku`); a term with capitals or punctuation
+matches exactly on word boundaries (`Explore`, `mochiko:explorer`). The deterministic check is a
+necessary condition only — it cannot see negation ("Explore is not warranted here"); polarity is
+the judge's, which is why the two are conjoined and never read alone. The removed claim's `absent` in `post` likewise
+requires the deterministic check to find `mochiko:explorer` in no `post` replicate.
+
+**Pre-committed reading for a seat that keeps both sweeps itself.** The persona's own text keeps
+"completeness-sensitive enumeration" on the seat, and `Grep` sits inside this target's fence, so a
+validator may legitimately run both enumerations as its own deterministic pre-asserts and cite
+completeness or the Iron Law. If that happens in BOTH arms, both control claims read `absent` in
+both arms: the control is **not exercised** — an instrument finding about the golden (the sweep
+is grep-shaped, not read-shaped), reported as "edit undetected by construction", never a persona
+regression, and the cheap-read claims are then recorded as out of instrument for validator-class
+personas with `Grep` in the fence. If it happens in one arm only, that asymmetry is read as the
+edit's effect and reported with the evidence quotes.
 
 ## Noise guard (I7)
 
@@ -73,8 +103,13 @@ returns to the user.
 
 Useful if it (a) passes the positive control on v3 in both directions, (b) reports zero
 common-claim regressions or localizes each to a named claim with evidence, and (c) keeps the flaky
-share inside the band on both arms. (a) failing after one re-key, or (c) failing twice, triggers
-the stopping rule.
+share inside the band on both arms. **The pilot's ending is settled here, one way:** if the
+control reads "not exercised" under the pre-committed reading (both arms keep the sweeps on the
+seat), the pilot **closes and returns to the user with that finding — no re-key** (a stronger
+golden would test whether the seat can be made to spawn, not whether the edit changed it; the
+pilot-1 precedent). If the control fails for any other reason (judge, rubric, matcher, wrapper),
+one instrument re-key is allowed, then the stopping rule. (c) failing twice triggers the stopping
+rule.
 
 ## Fill log
 
