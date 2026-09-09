@@ -8,16 +8,17 @@ Fields marked **[measured at baseline]** are filled from the baseline grid.
 
 ## Edit under read
 
-None. `pre` = `post` = the working tree (rubric minted at HEAD, all claims `common`). The next persona
+None. `pre` = `post` = the tree at `b9efb59` (the commit the rubric was minted at; the persona file is byte-identical in the working tree), all claims `common`. The pin, not `HEAD`, is what the next edit's `--old-ref` names. The next persona
 edit re-mints over the union of refs and runs the pilot form with a positive control on the edit.
 
 ## Read rule (D11)
 
+- **Prune FIRST** = `agent-prune tech-lead --replicates 3` over the tempting goldens (≤ 12 sessions): claims the
+  bare model meets in every replicate are tagged `model_native` and leave the graded set. It runs before
+  the grid because the grid freezes the rubric snapshot the report grades from.
 - **Baseline grid** = `agent-grid tech-lead --arms post --replicates 3 --out baseline` (4 goldens × 3 = 12
   plan sessions), judged with the Haiku embodiment checklist (foreclosing-step rule in force; pairwise
-  off). It records, per claim, pass^k coverage and replicate agreement.
-- **Prune** = `agent-prune tech-lead --replicates 3` over the tempting goldens (≤ 12 sessions): claims the
-  bare model meets in every replicate are tagged `model_native` and leave the graded set.
+  off). It records, per claim, pass^k coverage and replicate agreement on the pruned rubric.
 - **Untempted claims** are excluded by the runner and listed as disclosed.
 - **Conditional reasons applied at mint** (never read): `dispatch-conditional` (the cheap-read trio)
   and, for devils-advocate, `conditional` (the runtime gap-finding remit — no plan-only golden plants a
@@ -50,7 +51,9 @@ same seed) or record "not exercised". Certifies the judge against the lead's rea
 
 The kit is ready if (a) the baseline read shows every tempted plan-observable claim either
 pass^k-reflected or explained (model-native, flaky within band, or a golden-design note), (b) the
-flaky share sits inside the band, and (c) calibration meets its bar. A kit failing (a) on more than
+baseline's own flaky share is ≤ 15 % so the band it fixes comes out ≤ 20 % uncapped (a band that only
+binds through the cap is a kit whose goldens are too noisy to read the next edit), and (c) calibration
+meets its bar. A kit failing (a) on more than
 three claims gets one golden re-cut before it is declared ready.
 
 ## Fill log

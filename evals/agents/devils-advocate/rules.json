@@ -3,8 +3,9 @@
  "provenance": "primitive-eval-harness-v2 D5 (+ I3 union-of-refs, I4 completeness, D7/R3 model_native carry-forward, I5 untempted)",
  "minted_at": "2026-09-09T06:23:06+00:00",
  "refs": {
-  "pre": "HEAD",
-  "post": "working-tree"
+  "pre": "b9efb59",
+  "post": "working-tree",
+  "pre_note": "pinned: the tree the rubric was minted at (HEAD at mint = b9efb59); persona file identical at 6400252"
  },
  "unit_counts": {
   "pre": 33,
@@ -16,7 +17,6 @@
   "882e9f1e5fde",
   "8a57710c7149",
   "a6920bf71723",
-  "b93a2a839531",
   "f3915ed55968"
  ],
  "claims": [
@@ -143,6 +143,20 @@
    "tag": "common",
    "partition": "out-of-instrument",
    "why": "conditional — the runtime gap-finding pass needs a running system no plan-only golden plants",
+   "model_native": false,
+   "untempted": false
+  },
+  {
+   "id": "devils-advocate.hunting-against-running.derive-what-promised",
+   "text": "There you work the same way in a harder direction: you derive what the thing was promised to do — including the negative, abuse, and boundary behaviors nobody wrote down — *before* you have seen it run, because expectations formed after watching a system tend to describe it rather than judge it.",
+   "source": {
+    "section": "Hunting Against a Running System",
+    "kind": "sentence",
+    "sha": "b93a2a839531"
+   },
+   "tag": "common",
+   "partition": "out-of-instrument",
+   "why": "conditional — the runtime gap-finding pass (derive the promised surface incl. negative/abuse/boundary behaviours) needs a running system no plan-only golden plants; re-admitted from not_claims at the kit audit (it is a duty, not a description)",
    "model_native": false,
    "untempted": false
   },

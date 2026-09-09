@@ -3,8 +3,9 @@
  "provenance": "primitive-eval-harness-v2 D5 (+ I3 union-of-refs, I4 completeness, D7/R3 model_native carry-forward, I5 untempted)",
  "minted_at": "2026-09-09T06:23:06+00:00",
  "refs": {
-  "pre": "HEAD",
-  "post": "working-tree"
+  "pre": "b9efb59",
+  "post": "working-tree",
+  "pre_note": "pinned: the tree the rubric was minted at (HEAD at mint = b9efb59); persona file identical at 6400252"
  },
  "unit_counts": {
   "pre": 36,
