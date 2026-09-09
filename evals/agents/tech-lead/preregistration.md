@@ -1,0 +1,61 @@
+# Preregistration — tech-lead persona plan-only eval (wave A baseline kit)
+
+Committed BEFORE the baseline grid (`primitive-eval-harness-v2` D11 as folded; the pilot rulings
+`2026-09-09-persona-pilot-1-latitude-out-of-instrument` and `2026-09-09-persona-pilot-2-validator-read`).
+This is a **baseline kit**: no persona edit exists to detect, so there is no positive control. The kit
+fixes the band and the coverage so that the persona's next edit gets a `pre`/`post` read on day one.
+Fields marked **[measured at baseline]** are filled from the baseline grid.
+
+## Edit under read
+
+None. `pre` = `post` = the working tree (rubric minted at HEAD, all claims `common`). The next persona
+edit re-mints over the union of refs and runs the pilot form with a positive control on the edit.
+
+## Read rule (D11)
+
+- **Baseline grid** = `agent-grid tech-lead --arms post --replicates 3 --out baseline` (4 goldens × 3 = 12
+  plan sessions), judged with the Haiku embodiment checklist (foreclosing-step rule in force; pairwise
+  off). It records, per claim, pass^k coverage and replicate agreement.
+- **Prune** = `agent-prune tech-lead --replicates 3` over the tempting goldens (≤ 12 sessions): claims the
+  bare model meets in every replicate are tagged `model_native` and leave the graded set.
+- **Untempted claims** are excluded by the runner and listed as disclosed.
+- **Conditional reasons applied at mint** (never read): `dispatch-conditional` (the cheap-read trio)
+  and, for devils-advocate, `conditional` (the runtime gap-finding remit — no plan-only golden plants a
+  running system). Any `latitude-conditional` claim found at partition is likewise out.
+
+## Noise guard (I7)
+
+Band = the baseline arm's replicate spread, **[measured at baseline]**, plus five points, capped at
+20 %, computed per arm from the judged `summary.json`. It binds the next edit's grid: an arm above the
+band is noise-dominated and no `pre`/`post` difference is read; one extra replicate per arm, once.
+Stopping rule at the next edit: two consecutive instrument re-keys without a detectable control return
+the target to the user.
+
+## Judge calibration (I9)
+
+Drawn from the baseline grid after `agent-judge`: ≥ 20 (claim, plan) pairs via the arm-blind
+`agent-label-sheet` (single arm here, so blinding is nominal), labelled by the lead with the settled
+rules — embodies-never-recites; declined/hypothetical conditional path = `absent`; a Reject-section
+standard is `reflected` when a concrete step forecloses the behaviour whether or not it was invited,
+`absent` when merely restated; an `Explore` read dispatch is never a worker delegation. Bars: ≥ 80 %
+agreement; 100 % on `contradicted` pairs; fewer than two `contradicted` labels → extend (`--size` up,
+same seed) or record "not exercised". Certifies the judge against the lead's reading, not the rubric.
+
+## Budget (M6)
+
+≤ 24 plan sessions (12 baseline + ≤ 12 prune) and ≤ US$ 20 metered spend including judge calls
+(`total_cost_usd` + `judge_cost_usd`); exceeding either halts and returns to the user.
+
+## Ship bar (advisory)
+
+The kit is ready if (a) the baseline read shows every tempted plan-observable claim either
+pass^k-reflected or explained (model-native, flaky within band, or a golden-design note), (b) the
+flaky share sits inside the band, and (c) calibration meets its bar. A kit failing (a) on more than
+three claims gets one golden re-cut before it is declared ready.
+
+## Fill log
+
+- band: **[measured at baseline]** — pending
+- calibration agreement: pending
+- contradicted bar: pending
+- re-key count: 0
