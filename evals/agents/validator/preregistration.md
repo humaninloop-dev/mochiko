@@ -113,7 +113,18 @@ rule.
 
 ## Fill log
 
-- band: **[measured at probe]** — pending
+- band: **12.1 %** — filled 2026-09-09 from `runs/probe` (12 `pre` sessions, $2.22; judge $1.28 / 17 calls;
+  graded set at probe time 14 claims, before the prune tags): flaky (golden, claim) pairs in `pre` =
+  0 + 1 + 1 + 2 of 4 × 14 = 4/56 = 7.1 %; + 5 points = 12.1 % (cap 20 % not reached). `pre` coverage
+  12/14 on every golden. Early control signal, recorded not acted on: on v3 the `pre` seat named
+  `mochiko:explorer` in 0 of 3 replicates (discriminator pre-assert), so the removed-claim leg of the
+  control may read "not exercised" by construction — the pre-committed reading decides at the grid.
+- prune (`runs/pilot2-prune`, 12 `nopersona` sessions, $2.97): 7 of 14 judged claims model-native —
+  `interpretive-reading-any-gap`, `no-pass-without-evidence`, `grading-from-summary-say`,
+  `mostly-conforms-looks-fine`, `substituting-own-bar-grade`, `be-specific-failures-fail`,
+  `bulk-grade-genuine-model` (the validator's core discipline reads as model-native on plan-only);
+  the control claim `when-work-needs-locate-2` is not native (bare model: contradicted / absent /
+  contradicted). Graded set for the grid: 7 claims plus the removed claim's read.
 - calibration agreement: pending
 - contradicted bar: pending
 - re-key count: 0 (judge-prompt re-key from pilot 1 applied pre-session)

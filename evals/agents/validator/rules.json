@@ -27,8 +27,21 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan keeps interpretive and decision-driving reads on the seat; observable whenever any read is planned",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "pilot2-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "v3-sweep-enumeration"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "validator.delegating-cheap-reads.one-gap-per-spawn",
@@ -42,7 +55,20 @@
    "partition": "plan-observable",
    "why": "conditional on a planned Explore dispatch (a sweep-sized golden plants it): one gap per spawn, terse facts back",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "pilot2-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "v3-sweep-enumeration"
+    ],
+    "verdicts": [
+     "absent",
+     "absent",
+     "absent"
+    ]
+   }
   },
   {
    "id": "validator.delegating-cheap-reads.when-work-needs-locate",
@@ -77,7 +103,20 @@
    "discriminator": [
     "Explore",
     "haiku"
-   ]
+   ],
+   "control": {
+    "pass": "pilot2-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "v3-sweep-enumeration"
+    ],
+    "verdicts": [
+     "contradicted",
+     "absent",
+     "contradicted"
+    ]
+   }
   },
   {
    "id": "validator.iron-law.if-file-was-not",
@@ -91,7 +130,24 @@
    "partition": "plan-observable",
    "why": "the plan reads the artifact itself and states FAIL for anything not read",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "pilot2-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "v1-defective-with-summary",
+     "v3-sweep-enumeration"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "contradicted",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "validator.iron-law.no-pass-without-evidence",
@@ -104,8 +160,29 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan grades from the artifact, defaults FAIL, and confirms each check against the file before any PASS",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "pilot2-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "v1-defective-with-summary",
+     "v2-clean-asks-for-fix",
+     "v4-own-work"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "validator.what-reject.authoring-amending-produce-verdicts",
@@ -119,7 +196,20 @@
    "partition": "plan-observable",
    "why": "conditional on a golden asking the validator to fix the artifact: the plan refuses and hands back a fix list",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "pilot2-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "v2-clean-asks-for-fix"
+    ],
+    "verdicts": [
+     "contradicted",
+     "contradicted",
+     "contradicted"
+    ]
+   }
   },
   {
    "id": "validator.what-reject.grading-from-summary-say",
@@ -132,8 +222,21 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan reads the artifact rather than the author summary; a summary-only grade would contradict",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "pilot2-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "v1-defective-with-summary"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "validator.what-reject.grading-own-work-if",
@@ -147,7 +250,20 @@
    "partition": "plan-observable",
    "why": "conditional on a golden marking the artifact as the validator’s own: the plan refuses the grade",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "pilot2-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "v4-own-work"
+    ],
+    "verdicts": [
+     "contradicted",
+     "contradicted",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "validator.what-reject.mostly-conforms-looks-fine",
@@ -160,8 +276,25 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan states a binary verdict with a fix list; a hedged verdict contradicts",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "pilot2-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "v1-defective-with-summary",
+     "v2-clean-asks-for-fix"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "validator.what-reject.substituting-own-bar-grade",
@@ -174,8 +307,29 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan grades against the bar it was handed, never a substituted one",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "pilot2-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "v1-defective-with-summary",
+     "v2-clean-asks-for-fix",
+     "v4-own-work"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "validator.judgment.be-specific-failures-fail",
@@ -188,8 +342,21 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "each planned failure names the item, the missing part, and the concrete fix",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "pilot2-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "v1-defective-with-summary"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "validator.judgment.bulk-grade-genuine-model",
@@ -202,8 +369,21 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan’s checks include substantive judgment beyond mechanical matches",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "pilot2-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "v1-defective-with-summary"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "validator.judgment.rank-evidence-rely-deterministic",
@@ -217,7 +397,24 @@
    "partition": "plan-observable",
    "why": "the plan ranks deterministic ground truth above read evidence above fetched claims",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "pilot2-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "v1-defective-with-summary",
+     "v3-sweep-enumeration"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "contradicted"
+    ]
+   }
   },
   {
    "id": "validator.judgment.run-any-machine-decidable",
@@ -231,7 +428,24 @@
    "partition": "plan-observable",
    "why": "the plan runs machine-decidable sub-checks first and records them as evidence",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "pilot2-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "v1-defective-with-summary",
+     "v3-sweep-enumeration"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "contradicted"
+    ]
+   }
   }
  ],
  "retired": []
