@@ -1,0 +1,11 @@
+loan_id,member,item_id,borrowed_on,due_on,status,renewed
+ln_9012,Marguerite Okonjo-Baptiste,it_0142,2026-08-11,2026-09-01,overdue,no
+ln_9044,Marguerite Okonjo-Baptiste,it_0207,2026-08-22,2026-09-12,on_loan,no
+ln_9051,Marguerite Okonjo-Baptiste,it_0019,2026-08-24,2026-09-14,on_loan,no
+ln_9067,Marguerite Okonjo-Baptiste,it_0455,2026-08-02,2026-09-13,on_loan,yes
+ln_9072,Marguerite Okonjo-Baptiste,it_0501,2026-07-05,2026-07-26,overdue,no
+ln_9080,Marguerite Okonjo-Baptiste,it_0127,2026-08-30,2026-09-20,on_loan,no
+ln_9091,Marguerite Okonjo-Baptiste,it_0077,2026-09-01,2026-09-22,on_loan,no
+ln_9099,Marguerite Okonjo-Baptiste,it_0398,2026-09-06,2026-09-27,on_loan,no
+ln_9023,Tom Reilly,it_0088,2026-08-15,2026-09-05,overdue,no
+ln_9038,Aisha Begum,it_0311,2026-08-28,2026-09-18,on_loan,no
