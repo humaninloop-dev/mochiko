@@ -778,8 +778,15 @@ def cmd_report(persona: str, name: str) -> None:
                 for r, a, b in adoptions))
         tempted = goldens.get(g, {}).get("tempts", [])
         if tempted:
-            lines.append("- tempted claims (this golden's expectations): " + ", ".join(
-                f"{r}={'post✓' if cmdrun.passk(post, r) else 'post✗'}" for r in tempted))
+            def mark(r):
+                parts = []
+                if pre:
+                    parts.append(f"pre{'✓' if cmdrun.passk(pre, r) else '✗'}")
+                if post:
+                    parts.append(f"post{'✓' if cmdrun.passk(post, r) else '✗'}")
+                return f"{r}={'/'.join(parts)}"
+            lines.append("- tempted claims (this golden's expectations): "
+                         + ", ".join(mark(r) for r in tempted))
         if removed_read:
             lines.append("- removed-claim read (pre → post): " + ", ".join(
                 f"{r}={'present' if a else 'absent'}→{'GHOST' if b else 'gone'}"

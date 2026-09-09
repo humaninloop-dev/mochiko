@@ -98,7 +98,14 @@ arms. (a) failing after one re-key, or (c) failing twice, triggers the stopping 
 
 ## Fill log
 
-- band: **[measured at probe]** — pending
+- band: **20 %** — filled 2026-09-09 from probe run `runs/probe` (12 `pre` sessions, $2.74; judge $1.57 / 27
+  calls): flaky (golden, claim) pairs in `pre` = 3 + 2 + 6 + 0 of 4 × 18 = 11/72 = 15.3 %; + 5 points =
+  20.3 %, capped at 20 %. Observation recorded, not acted on (the read rule stays as pre-registered):
+  g3's six flaky claims are all delegation claims g3 does not tempt — replicate disagreement
+  concentrates on (golden, claim) pairs where the golden never invites the claim. A tempted-only
+  read is a candidate re-key if the grid trips the guard; it is not applied pre-emptively.
+  Pre-arm sanity for the control: on g2 the seven delegation claims read `absent` in every `pre`
+  replicate (none flaky), as the control requires.
 - calibration agreement: pending (drawn from the grid run, arm-blind)
 - contradicted bar: pending
 - re-key count: 0
