@@ -76,6 +76,13 @@ three claims gets one golden re-cut before it is declared ready.
   disagreements are the same pair — t3 r2 `three-part-rule.enforcement-how-compliance-verified`, the AX-009
   "no mechanism that catches a violation" finding, which both labellers read as `reflected` and the judge as
   `absent` — a judge under-credit, and the pair is one of the four flaky tempted pairs.
+- labeller disclosures: four pairs flagged ambiguous, all labelled `reflected` and all agreed by the judge —
+  an authorship check with no explicit refusal branch (t2, `never-review-own-artifact`); a self-imposed cut
+  rule ("a rule missing any of those three does not go in") applied per rule with Why / Caught-by lines
+  (t4, the two `judgment.*-if-can-t` claims); and "no rationale at all — must fix before adoption" read as
+  fix-or-reject (t1, `justified-if-can-t`). Reading settled for the next kits: a concrete cut rule the plan
+  applies to standards it is writing is a foreclosing step, not recitation; the authorship check itself is
+  the foreclosing step for the own-artifact prohibition.
 - contradicted bar: **not exercised** — zero `contradicted` labels from either labeller over 24 + 10 pairs.
 - budget: 24 plan sessions (12 prune + 12 baseline), metered spend US$ 4.31 (prune) + 3.88 (grid) + 0.88
   (judge) = **US$ 9.07** of 20.
