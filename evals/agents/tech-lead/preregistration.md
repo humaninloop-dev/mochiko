@@ -20,9 +20,13 @@ edit re-mints over the union of refs and runs the pilot form with a positive con
   plan sessions), judged with the Haiku embodiment checklist (foreclosing-step rule in force; pairwise
   off). It records, per claim, pass^k coverage and replicate agreement on the pruned rubric.
 - **Untempted claims** are excluded by the runner and listed as disclosed.
-- **Conditional reasons applied at mint** (never read): `dispatch-conditional` (the cheap-read trio)
-  and, for devils-advocate, `conditional` (the runtime gap-finding remit — no plan-only golden plants a
-  running system). Any `latitude-conditional` claim found at partition is likewise out.
+- **Conditional reasons applied at mint** (never read): `dispatch-conditional` (the cheap-read trio).
+  Any `latitude-conditional` claim found at partition is likewise out. One scope statement
+  (`feasibility-review.scope-design-not-governance`) is out of instrument as a remit boundary.
+- **Wrapper interaction, recorded now:** `feasibility-review.before-rule-put-questions` is `reflected`
+  when the plan states the questions it would put to the named producer and to whom, before its
+  verdict; the wrapper's no-dispatch line forbids spawning, not describing the exchange, so a plan
+  that names the questions and the recipient embodies the standard without any dispatch.
 
 ## Noise guard (I7)
 
@@ -36,9 +40,9 @@ the target to the user.
 
 Drawn from the baseline grid after `agent-judge`: ≥ 20 (claim, plan) pairs via the arm-blind
 `agent-label-sheet` (single arm here, so blinding is nominal), labelled by the lead with the settled
-rules — embodies-never-recites; declined/hypothetical conditional path = `absent`; a Reject-section
-standard is `reflected` when a concrete step forecloses the behaviour whether or not it was invited,
-`absent` when merely restated; an `Explore` read dispatch is never a worker delegation. Bars: ≥ 80 %
+rules — embodies-never-recites; declined/hypothetical conditional path = `absent`; a Reject-section or
+prohibition-shaped standard (never / do not / reject / refuse) is `reflected` when a concrete step
+forecloses the behaviour whether or not it was invited, `absent` when merely restated; an `Explore` read dispatch is never a worker delegation. Bars: ≥ 80 %
 agreement; 100 % on `contradicted` pairs; fewer than two `contradicted` labels → extend (`--size` up,
 same seed) or record "not exercised". Certifies the judge against the lead's reading, not the rubric.
 

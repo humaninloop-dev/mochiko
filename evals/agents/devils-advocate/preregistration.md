@@ -36,9 +36,9 @@ the target to the user.
 
 Drawn from the baseline grid after `agent-judge`: ≥ 20 (claim, plan) pairs via the arm-blind
 `agent-label-sheet` (single arm here, so blinding is nominal), labelled by the lead with the settled
-rules — embodies-never-recites; declined/hypothetical conditional path = `absent`; a Reject-section
-standard is `reflected` when a concrete step forecloses the behaviour whether or not it was invited,
-`absent` when merely restated; an `Explore` read dispatch is never a worker delegation. Bars: ≥ 80 %
+rules — embodies-never-recites; declined/hypothetical conditional path = `absent`; a Reject-section or
+prohibition-shaped standard (never / do not / reject / refuse) is `reflected` when a concrete step
+forecloses the behaviour whether or not it was invited, `absent` when merely restated; an `Explore` read dispatch is never a worker delegation. Bars: ≥ 80 %
 agreement; 100 % on `contradicted` pairs; fewer than two `contradicted` labels → extend (`--size` up,
 same seed) or record "not exercised". Certifies the judge against the lead's reading, not the rubric.
 

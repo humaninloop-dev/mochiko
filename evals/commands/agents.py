@@ -186,10 +186,13 @@ def units(body: str) -> list[dict]:
         for b in bullets(text):
             out.append({"section": title, "kind": "bullet", "text": normalize(b),
                         "sha": sha(b)})
-        if title not in CLAIM_SECTIONS:            # craft section: prose is a unit source
-            for n in numbered(text):
-                out.append({"section": title, "kind": "numbered", "text": normalize(n),
-                            "sha": sha(n)})
+        for n in numbered(text):                   # list items are units in every section
+            out.append({"section": title, "kind": "numbered", "text": normalize(n),
+                        "sha": sha(n)})
+        # Prose inside a claim section (an intro line such as "When given a feature request:",
+        # a closing flourish) is not a unit by design (D5: bullets are the claims there); craft
+        # sections are prose-first, so their sentences and fences are units.
+        if title not in CLAIM_SECTIONS:
             blocks, _ = fences(text)
             for f in blocks:
                 out.append({"section": title, "kind": "fence", "text": f, "sha": sha(f)})
@@ -573,7 +576,8 @@ def judge_coverage(items: list, plan: str, model: str = cmdrun.CHECKLIST_MODEL) 
             "restates or paraphrases the standard as a principle, without a task-specific "
             "action, is \"absent\" (recitation is not embodiment); a planned action that "
             "violates the standard is \"contradicted\". Polarity: a standard from a section "
-            "named 'What You Reject' describes behaviour to AVOID — it is \"reflected\" when a "
+            "named 'What You Reject', or any standard phrased as a prohibition or a rejection "
+            "(never / do not / reject it / refuse / not your own), describes behaviour to AVOID — it is \"reflected\" when a "
             "concrete action visibly avoids, refuses, or forecloses that behaviour (e.g. writes "
             "nothing to disk, checks authorship, declines an edit) whether or not anything in the "
             "task invited it, \"contradicted\" when the plan does it, and \"absent\" when the "
