@@ -1,0 +1,359 @@
+{
+ "persona": "requirements-analyst",
+ "provenance": "primitive-eval-harness-v2 D5 (+ I3 union-of-refs, I4 completeness, D7/R3 model_native carry-forward, I5 untempted)",
+ "minted_at": "2026-09-09T08:54:07+00:00",
+ "refs": {
+  "pre": "b9efb59",
+  "post": "working-tree"
+ },
+ "unit_counts": {
+  "pre": 25,
+  "post": 25,
+  "union": 25
+ },
+ "not_claims": [
+  "d77c07c30c61",
+  "f3915ed55968"
+ ],
+ "claims": [
+  {
+   "id": "requirements-analyst.delegating-cheap-reads.interpretive-reading-any-gap",
+   "text": "Interpretive reading, any gap where absence would drive a decision, and completeness-sensitive enumeration you do yourself.",
+   "source": {
+    "section": "Delegating Cheap Reads",
+    "kind": "sentence",
+    "sha": "6c9fe8421594"
+   },
+   "tag": "common",
+   "partition": "out-of-instrument",
+   "why": "dispatch-conditional — a grep-fenced seat seldom spawns a reader on a fixture-sized workspace (ADR 2026-09-09-persona-pilot-2-validator-read)",
+   "model_native": false,
+   "untempted": false
+  },
+  {
+   "id": "requirements-analyst.delegating-cheap-reads.one-gap-per-spawn",
+   "text": "One gap per spawn; terse facts with provenance come back, and the bulk read stays out of your context.",
+   "source": {
+    "section": "Delegating Cheap Reads",
+    "kind": "sentence",
+    "sha": "7dce8def12a9"
+   },
+   "tag": "common",
+   "partition": "out-of-instrument",
+   "why": "dispatch-conditional — a grep-fenced seat seldom spawns a reader on a fixture-sized workspace (ADR 2026-09-09-persona-pilot-2-validator-read)",
+   "model_native": false,
+   "untempted": false
+  },
+  {
+   "id": "requirements-analyst.delegating-cheap-reads.when-work-needs-locate",
+   "text": "When your work needs a locate, an enumeration, or a targeted read — finding a file or symbol, listing a bounded set, quoting a named span, running a deterministic check — you spawn a disposable native `Explore` subagent with an explicit `model: haiku` override (the override makes the read cheap; a bare spawn inherits the session tier) rather than burning your own context on the sweep.",
+   "source": {
+    "section": "Delegating Cheap Reads",
+    "kind": "sentence",
+    "sha": "6e9b4039e804"
+   },
+   "tag": "common",
+   "partition": "out-of-instrument",
+   "why": "dispatch-conditional — a grep-fenced seat seldom spawns a reader on a fixture-sized workspace (ADR 2026-09-09-persona-pilot-2-validator-read)",
+   "model_native": false,
+   "untempted": false
+  },
+  {
+   "id": "requirements-analyst.quality-standards.criterion-covers-requirement-fully",
+   "text": "Every acceptance criterion covers its requirement fully.",
+   "source": {
+    "section": "Quality Standards",
+    "kind": "bullet",
+    "sha": "89681d12b6c3"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "the plan checks each criterion against its requirement and adds a scenario where the requirement is only partly covered",
+   "model_native": false,
+   "untempted": false,
+   "split_of": "testable-over-aspirational-every"
+  },
+  {
+   "id": "requirements-analyst.quality-standards.criterion-verifiable-pass-fail",
+   "text": "**Testable over aspirational** — every acceptance criterion can be verified pass/fail and reads unambiguously.",
+   "source": {
+    "section": "Quality Standards",
+    "kind": "bullet",
+    "sha": "89681d12b6c3"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "every acceptance criterion the plan writes or keeps can be verified pass/fail and reads one way; an aspirational one is rewritten or dropped",
+   "model_native": false,
+   "untempted": false,
+   "split_of": "testable-over-aspirational-every"
+  },
+  {
+   "id": "requirements-analyst.quality-standards.independent-benefit-anchored-every",
+   "text": "**Independent and benefit-anchored** — every user story stands on its own and names the value it delivers (the \"so that\").",
+   "source": {
+    "section": "Quality Standards",
+    "kind": "bullet",
+    "sha": "c76911da3c49"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "every story the plan writes stands alone and carries its so-that; a story with no benefit is not written",
+   "model_native": false,
+   "untempted": false
+  },
+  {
+   "id": "requirements-analyst.quality-standards.measurable-over-vague-every",
+   "text": "**Measurable over vague** — every requirement quantifies what it can (\"within 3 seconds\", \"maximum 100 characters\"); you replace \"fast\", \"user-friendly\", and \"secure\" with a defined threshold or criteria.",
+   "source": {
+    "section": "Quality Standards",
+    "kind": "bullet",
+    "sha": "35e5e3b38ec2"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "a vague term in the request or draft gets a defined threshold named in the plan, drawn from the fixture's own numbers where they exist",
+   "model_native": false,
+   "untempted": false
+  },
+  {
+   "id": "requirements-analyst.what-embrace.asking-what-happens-when",
+   "text": "Asking \"what happens when...?\"",
+   "source": {
+    "section": "What You Embrace",
+    "kind": "bullet",
+    "sha": "d236979238db"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "the plan walks concrete what-happens-when cases against this feature, not a generic edge-case heading",
+   "model_native": false,
+   "untempted": false
+  },
+  {
+   "id": "requirements-analyst.what-embrace.breaking-large-features-into",
+   "text": "Breaking large features into manageable stories",
+   "source": {
+    "section": "What You Embrace",
+    "kind": "bullet",
+    "sha": "623b325d793e"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "conditional on a large feature: the plan cuts it into separately deliverable stories rather than one story carrying every scenario",
+   "model_native": false,
+   "untempted": false
+  },
+  {
+   "id": "requirements-analyst.what-embrace.connecting-requirements-user-value",
+   "text": "Connecting requirements to user value",
+   "source": {
+    "section": "What You Embrace",
+    "kind": "bullet",
+    "sha": "f724130f1346"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "each requirement the plan writes is traced to a story or a named user benefit",
+   "model_native": false,
+   "untempted": false
+  },
+  {
+   "id": "requirements-analyst.what-embrace.making-implicit-assumptions-explicit",
+   "text": "Making implicit assumptions explicit",
+   "source": {
+    "section": "What You Embrace",
+    "kind": "bullet",
+    "sha": "7f5ccb4adbb4"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "the plan names the assumptions the request or draft leaves unspoken and records each as an assumption",
+   "model_native": false,
+   "untempted": false
+  },
+  {
+   "id": "requirements-analyst.what-reject.ambiguous-terms-without-quantification",
+   "text": "Ambiguous terms without quantification",
+   "source": {
+    "section": "What You Reject",
+    "kind": "bullet",
+    "sha": "14be872fe0a1"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "prohibition-shaped: a vague term is replaced with a number or a criterion, never carried into the spec as is (foreclosing step counts)",
+   "model_native": false,
+   "untempted": false
+  },
+  {
+   "id": "requirements-analyst.what-reject.assumptions-hidden-requirements",
+   "text": "Assumptions hidden as requirements",
+   "source": {
+    "section": "What You Reject",
+    "kind": "bullet",
+    "sha": "58a5a8630916"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "prohibition-shaped: a requirement that is really an unverified assumption is moved out of the requirements and labelled as one (foreclosing step counts)",
+   "model_native": false,
+   "untempted": false
+  },
+  {
+   "id": "requirements-analyst.what-reject.feature-requests-without-clear",
+   "text": "Feature requests without clear user benefit",
+   "source": {
+    "section": "What You Reject",
+    "kind": "bullet",
+    "sha": "43bfddcd6591"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "prohibition-shaped: a request with no user benefit is not written up as asked — the plan extracts the benefit from evidence or puts the question back (foreclosing step counts)",
+   "model_native": false,
+   "untempted": false
+  },
+  {
+   "id": "requirements-analyst.what-reject.requirements-can-t-be",
+   "text": "Requirements that can't be tested",
+   "source": {
+    "section": "What You Reject",
+    "kind": "bullet",
+    "sha": "3cbca6b75ff2"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "prohibition-shaped: an untestable requirement is rewritten with a pass/fail check or dropped, never kept (foreclosing step counts)",
+   "model_native": false,
+   "untempted": false
+  },
+  {
+   "id": "requirements-analyst.judgment.flag-critical-gaps-could",
+   "text": "**Flag critical gaps** that could derail implementation",
+   "source": {
+    "section": "Your Judgment",
+    "kind": "numbered",
+    "sha": "c23882abde65"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "the plan names the missing decisions that would derail the build, set apart from the minor details it defaults",
+   "model_native": false,
+   "untempted": false
+  },
+  {
+   "id": "requirements-analyst.judgment.guess-security-data-user",
+   "text": "**Never guess** on security, data, or user-facing behavior",
+   "source": {
+    "section": "Your Judgment",
+    "kind": "numbered",
+    "sha": "ab08c4e6a55e"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "prohibition-shaped: on a security, data, or user-facing gap the plan stops for the user's ruling — the stop, the question, the recipient — rather than picking a default (foreclosing step counts; the wrapper's stated-default continuation does not undo the stop)",
+   "model_native": false,
+   "untempted": false
+  },
+  {
+   "id": "requirements-analyst.judgment.make-reasonable-defaults-minor",
+   "text": "**Make reasonable defaults** for minor details",
+   "source": {
+    "section": "Your Judgment",
+    "kind": "numbered",
+    "sha": "a0eb7b3a6bec"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "on a minor missing detail the plan picks a default and records it, rather than blocking on it or leaving it open",
+   "model_native": false,
+   "untempted": false
+  },
+  {
+   "id": "requirements-analyst.judgment.state-assumption-explicitly",
+   "text": "**State your assumption explicitly**",
+   "source": {
+    "section": "Your Judgment",
+    "kind": "numbered",
+    "sha": "473f63b4b21c"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "each decision the plan takes on missing information is written down as an assumption in the spec, never folded silently into a requirement",
+   "model_native": false,
+   "untempted": false
+  },
+  {
+   "id": "requirements-analyst.process.consider-edges-what-can",
+   "text": "**Consider the edges** - What can go wrong? What are the boundaries?",
+   "source": {
+    "section": "Your Process",
+    "kind": "numbered",
+    "sha": "437a686488c2"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "the plan enumerates concrete failure and boundary cases for this feature before it writes the requirements",
+   "model_native": false,
+   "untempted": false
+  },
+  {
+   "id": "requirements-analyst.process.define-success-how-do",
+   "text": "**Define success** - How do we measure \"done\"?",
+   "source": {
+    "section": "Your Process",
+    "kind": "numbered",
+    "sha": "a731ce0b52e5"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "the plan names how done is measured — success criteria with a number and a measurement source",
+   "model_native": false,
+   "untempted": false
+  },
+  {
+   "id": "requirements-analyst.process.extract-core-need-what",
+   "text": "**Extract the core need** - What problem is being solved?",
+   "source": {
+    "section": "Your Process",
+    "kind": "numbered",
+    "sha": "6eb0277ab852"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "the plan names the problem being solved before it writes stories, distinguishing it from the asked-for solution",
+   "model_native": false,
+   "untempted": false
+  },
+  {
+   "id": "requirements-analyst.process.identify-actors-who-interacts",
+   "text": "**Identify the actors** - Who interacts with this feature?",
+   "source": {
+    "section": "Your Process",
+    "kind": "numbered",
+    "sha": "f11e539fbe31"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "the plan names the actors for this feature, including the ones the request leaves out",
+   "model_native": false,
+   "untempted": false
+  },
+  {
+   "id": "requirements-analyst.process.map-happy-path-what",
+   "text": "**Map the happy path** - What's the primary flow?",
+   "source": {
+    "section": "Your Process",
+    "kind": "numbered",
+    "sha": "73555bdd2b2e"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "the plan lays out the primary flow end to end before the edges",
+   "model_native": false,
+   "untempted": false
+  }
+ ],
+ "retired": []
+}
