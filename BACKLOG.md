@@ -102,7 +102,11 @@ Command-content schema section's watch item)*
 build* and *Skill-compression eval-primitive build* sections — their delivered items are in the
 trail (2026-09-08); their open residue is carried below.)*
 
-- [ ] **`staff-engineer` pilot** (D8 · D9 · D11; persona mode BUILT 2026-09-08 → trail) — goldens sized from post-pruning claims (floor
+- [ ] **`staff-engineer` pilot** (D8 · D9 · D11; persona mode BUILT 2026-09-08 → trail; **GRID RUN 2026-09-09,
+  user ruling owed** — noise guard tripped at 35 % `post` flaky share vs the 20 % band, positive control
+  failed under pass^k (the seat delegates in 1 of 3 replicates on g2), no common-claim regressions, judge
+  calibration 0.875 PASS, contradicted bar not exercised; evidence `evals/agents/staff-engineer/runs/{probe,pilot1-prune,pilot1}`;
+  spend $16.92 of $40) — goldens sized from post-pruning claims (floor
   3–5, `untempted` tag), `preregistration.md` with the positive control on the v0.108.0
   section's plan-observable residue (C2 re-cut), tolerance band from the probe run's measured
   `pre` spread, stopping rule (two re-keys → back to the user), hand-labelled calibration set +

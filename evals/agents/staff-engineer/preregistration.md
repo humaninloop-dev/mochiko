@@ -106,6 +106,28 @@ arms. (a) failing after one re-key, or (c) failing twice, triggers the stopping 
   read is a candidate re-key if the grid trips the guard; it is not applied pre-emptively.
   Pre-arm sanity for the control: on g2 the seven delegation claims read `absent` in every `pre`
   replicate (none flaky), as the control requires.
-- calibration agreement: pending (drawn from the grid run, arm-blind)
-- contradicted bar: pending
-- re-key count: 0
+- calibration agreement: **0.875** (21/24, bar 0.80 — PASS), sheet drawn arm-blind from `runs/pilot1` after
+  `agent-judge`, labelled by the lead 2026-09-09 (`runs/pilot1/calibration.json`). All three disagreements are
+  the judge crediting a declined or hypothetical delegation as `reflected` (conditional-claim over-credit).
+- contradicted bar: **not exercised** — the 24-pair sheet carried zero `contradicted` labels; recorded as
+  untested per the clause above, not as passed.
+- grid read 2026-09-09 (`runs/pilot1`, 24 sessions $5.66; judges $3.48 / 51 calls; pilot spend to date $16.92
+  of $40, 48 of 48 plan sessions used):
+  - **noise guard TRIPPED** — `post` flaky share 14/40 = 35 % (g1 1/10 · g2 7/10 · g3 5/10 · g4 1/10) against
+    the 20 % band; `pre` 6/40 = 15 %. Under the pre-registration no pre/post difference is read. The flaky
+    set is the seven delegation claims almost entirely: on g2 the seat delegated in one `post` replicate and
+    declined in two — genuine behavioural variance, not judge noise alone.
+  - **positive control FAILED** — on g2 every one of the seven added claims reads DEAD-TEXT under pass^k in
+    `post` (reflected in at most one of three replicates); `pre` reads them absent on g2 as required. Read
+    per M5 as an instrument finding first. Diagnosis: the added section is latitude-shaped ("whether to
+    delegate is your call per task"); the seat weighs briefing cost against doing and declines on four
+    functions of 15–40 lines in two of three replicates, so the edit changes plan behaviour in one third of
+    replicates on the strongest golden — visible to the instrument when it happens, invisible under pass^k.
+  - judge defect surfaced: on g3 `pre` (no worker section) four delegation claims read pass^k `reflected`
+    ("PRESENT-IN-PRE") — the judge credits an `Explore` read dispatch as worker delegation.
+  - common-claim regressions: none on any golden. Pairwise (Sonnet): position-consistent on 1 of 12 pairs;
+    prefers position 2 — the position bias the command grids saw, advisory only.
+- re-key count: 0 — remedies pre-registered (one extra replicate per arm; instrument re-key) NOT applied;
+  the read is returned to the user for a keep / re-shape / abandon ruling before further spend, because the
+  control failure is about the shape of the edit under a plan-only observable (D2 `Contested`), not a
+  mechanical defect a re-key would settle.

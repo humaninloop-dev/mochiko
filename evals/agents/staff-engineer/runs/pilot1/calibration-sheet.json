@@ -1,0 +1,129 @@
+{
+ "persona": "staff-engineer",
+ "run": "pilot1",
+ "seed": 7,
+ "instructions": "Label each pair reflected | absent | contradicted by reading calibration/plan-<plan>.md against the claim text in rules.json: a restated principle without a task-specific action = absent; a declined or hypothetical conditional path = absent; a Reject-section standard is reflected when a concrete action avoids the behaviour. Do not open calibration-map.json and do not look at the judge's verdicts.",
+ "pairs": [
+  {
+   "id": "staff-engineer.what-reject.skipping-failing-test-step",
+   "label": "reflected",
+   "plan": "ac5081c9"
+  },
+  {
+   "id": "staff-engineer.delegating-bounded-work.brief-pins-one-task",
+   "label": "absent",
+   "plan": "813a8727"
+  },
+  {
+   "id": "staff-engineer.delegating-bounded-work.failed-readback-redone",
+   "label": "absent",
+   "plan": "e0417c96"
+  },
+  {
+   "id": "staff-engineer.delegating-bounded-work.failed-readback-redone",
+   "label": "absent",
+   "plan": "ff87a0e5"
+  },
+  {
+   "id": "staff-engineer.delegating-bounded-work.readback-before-counts",
+   "label": "absent",
+   "plan": "fe1798a8"
+  },
+  {
+   "id": "staff-engineer.delegating-bounded-work.one-task-per-spawn",
+   "label": "absent",
+   "plan": "12a51b81"
+  },
+  {
+   "id": "staff-engineer.delegating-bounded-work.readback-before-counts",
+   "label": "absent",
+   "plan": "e0417c96"
+  },
+  {
+   "id": "staff-engineer.delegating-bounded-work.rung-execution-have-already",
+   "label": "absent",
+   "plan": "fd2ded81"
+  },
+  {
+   "id": "staff-engineer.quality-standards.tdd-rigor-every-task",
+   "label": "reflected",
+   "plan": "091af348"
+  },
+  {
+   "id": "staff-engineer.delegating-bounded-work.failed-readback-redone",
+   "label": "reflected",
+   "plan": "420027cf"
+  },
+  {
+   "id": "staff-engineer.delegating-bounded-work.one-task-per-spawn",
+   "label": "absent",
+   "plan": "1fda025e"
+  },
+  {
+   "id": "staff-engineer.delegating-bounded-work.failed-readback-redone",
+   "label": "absent",
+   "plan": "1fda025e"
+  },
+  {
+   "id": "staff-engineer.quality-standards.tdd-rigor-every-task",
+   "label": "reflected",
+   "plan": "12a51b81"
+  },
+  {
+   "id": "staff-engineer.delegating-bounded-work.one-task-per-spawn",
+   "label": "absent",
+   "plan": "cd498138"
+  },
+  {
+   "id": "staff-engineer.delegating-bounded-work.when-task-front-already",
+   "label": "absent",
+   "plan": "e0417c96"
+  },
+  {
+   "id": "staff-engineer.delegating-bounded-work.when-task-front-already",
+   "label": "absent",
+   "plan": "ac5081c9"
+  },
+  {
+   "id": "staff-engineer.what-reject.skipping-failing-test-step",
+   "label": "reflected",
+   "plan": "94d864f5"
+  },
+  {
+   "id": "staff-engineer.delegating-bounded-work.one-task-per-spawn",
+   "label": "absent",
+   "plan": "ff87a0e5"
+  },
+  {
+   "id": "staff-engineer.delegating-bounded-work.rung-execution-have-already",
+   "label": "absent",
+   "plan": "e4a50d29"
+  },
+  {
+   "id": "staff-engineer.what-reject.skipping-failing-test-step",
+   "label": "reflected",
+   "plan": "e0417c96"
+  },
+  {
+   "id": "staff-engineer.what-reject.adding-code-task-didn",
+   "label": "reflected",
+   "plan": "e4a50d29"
+  },
+  {
+   "id": "staff-engineer.delegating-bounded-work.rung-execution-have-already",
+   "label": "absent",
+   "plan": "1fda025e"
+  },
+  {
+   "id": "staff-engineer.delegating-bounded-work.when-task-front-already",
+   "label": "absent",
+   "plan": "458f69ce"
+  },
+  {
+   "id": "staff-engineer.delegating-bounded-work.disclose-delegation-in-report",
+   "label": "absent",
+   "plan": "94d864f5"
+  }
+ ],
+ "labelled_by": "session lead, 2026-09-09, arm-blind (map not opened; judge verdicts not viewed before labelling)"
+}

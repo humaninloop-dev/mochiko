@@ -1,0 +1,3089 @@
+{
+ "persona": "staff-engineer",
+ "old_ref": "b099154",
+ "replicates": 3,
+ "arms": [
+  "pre",
+  "post"
+ ],
+ "total_cost_usd": 5.6607,
+ "rubric_snapshot": {
+  "staff-engineer.delegating-bounded-work.brief-pins-one-task": {
+   "tag": "added",
+   "partition": "plan-observable",
+   "model_native": false,
+   "untempted": false
+  },
+  "staff-engineer.delegating-bounded-work.disclose-delegation-in-report": {
+   "tag": "added",
+   "partition": "plan-observable",
+   "model_native": false,
+   "untempted": false
+  },
+  "staff-engineer.delegating-bounded-work.failed-readback-redone": {
+   "tag": "added",
+   "partition": "plan-observable",
+   "model_native": false,
+   "untempted": false
+  },
+  "staff-engineer.delegating-bounded-work.one-task-per-spawn": {
+   "tag": "added",
+   "partition": "plan-observable",
+   "model_native": false,
+   "untempted": false
+  },
+  "staff-engineer.delegating-bounded-work.readback-actually-done": {
+   "tag": "added",
+   "partition": "out-of-instrument",
+   "model_native": false,
+   "untempted": false
+  },
+  "staff-engineer.delegating-bounded-work.readback-before-counts": {
+   "tag": "added",
+   "partition": "plan-observable",
+   "model_native": false,
+   "untempted": false
+  },
+  "staff-engineer.delegating-bounded-work.rung-execution-have-already": {
+   "tag": "added",
+   "partition": "plan-observable",
+   "model_native": false,
+   "untempted": false
+  },
+  "staff-engineer.delegating-bounded-work.when-task-front-already": {
+   "tag": "added",
+   "partition": "plan-observable",
+   "model_native": false,
+   "untempted": false
+  },
+  "staff-engineer.delegating-bounded-work.whether-delegate-call-per": {
+   "tag": "added",
+   "partition": "out-of-instrument",
+   "model_native": false,
+   "untempted": false
+  },
+  "staff-engineer.delegating-cheap-reads.interpretive-reading-any-gap": {
+   "tag": "common",
+   "partition": "plan-observable",
+   "model_native": false,
+   "untempted": true
+  },
+  "staff-engineer.delegating-cheap-reads.one-gap-per-spawn": {
+   "tag": "common",
+   "partition": "plan-observable",
+   "model_native": false,
+   "untempted": true
+  },
+  "staff-engineer.delegating-cheap-reads.when-work-needs-locate": {
+   "tag": "common",
+   "partition": "plan-observable",
+   "model_native": false,
+   "untempted": true
+  },
+  "staff-engineer.quality-standards.brownfield-respect-read-before": {
+   "tag": "common",
+   "partition": "plan-observable",
+   "model_native": true,
+   "untempted": false
+  },
+  "staff-engineer.quality-standards.cheapest-works-reach-cheapest": {
+   "tag": "common",
+   "partition": "plan-observable",
+   "model_native": true,
+   "untempted": false
+  },
+  "staff-engineer.quality-standards.honest-reporting-reports-reflect": {
+   "tag": "common",
+   "partition": "out-of-instrument",
+   "model_native": false,
+   "untempted": false
+  },
+  "staff-engineer.quality-standards.scope-discipline-implement-exactly": {
+   "tag": "common",
+   "partition": "plan-observable",
+   "model_native": true,
+   "untempted": false
+  },
+  "staff-engineer.quality-standards.tdd-rigor-every-task": {
+   "tag": "common",
+   "partition": "plan-observable",
+   "model_native": false,
+   "untempted": false
+  },
+  "staff-engineer.what-embrace.flagging-discrepancies-between-task": {
+   "tag": "common",
+   "partition": "plan-observable",
+   "model_native": true,
+   "untempted": false
+  },
+  "staff-engineer.what-embrace.following-existing-code-patterns": {
+   "tag": "common",
+   "partition": "plan-observable",
+   "model_native": true,
+   "untempted": false
+  },
+  "staff-engineer.what-embrace.keeping-reports-honest-about": {
+   "tag": "common",
+   "partition": "out-of-instrument",
+   "model_native": false,
+   "untempted": false
+  },
+  "staff-engineer.what-embrace.reproducing-reported-failure-failing": {
+   "tag": "common",
+   "partition": "plan-observable",
+   "model_native": false,
+   "untempted": true
+  },
+  "staff-engineer.what-embrace.writing-tests-test-behavior": {
+   "tag": "common",
+   "partition": "plan-observable",
+   "model_native": true,
+   "untempted": false
+  },
+  "staff-engineer.what-reject.adding-code-task-didn": {
+   "tag": "common",
+   "partition": "plan-observable",
+   "model_native": false,
+   "untempted": false
+  },
+  "staff-engineer.what-reject.modifying-existing-interfaces-without": {
+   "tag": "common",
+   "partition": "plan-observable",
+   "model_native": true,
+   "untempted": false
+  },
+  "staff-engineer.what-reject.silent-workarounds-missing-dependencies": {
+   "tag": "common",
+   "partition": "plan-observable",
+   "model_native": true,
+   "untempted": false
+  },
+  "staff-engineer.what-reject.skipping-failing-test-step": {
+   "tag": "common",
+   "partition": "plan-observable",
+   "model_native": false,
+   "untempted": false
+  }
+ },
+ "runs": [
+  {
+   "golden": "g1-decided-card",
+   "arm": "pre",
+   "pins": {
+    "persona": "staff-engineer",
+    "persona_sha256": "f020773e78896064",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.107.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.107.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-nmnk0tj9/ws/CARD.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-nmnk0tj9/ws/slug.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-nmnk0tj9/ws/test_slug.py",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.14161800000000002,
+   "num_turns": 5,
+   "duration_ms": 66674,
+   "replicate": 1,
+   "coverage": [
+    {
+     "id": "staff-engineer.delegating-bounded-work.brief-pins-one-task",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.disclose-delegation-in-report",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.failed-readback-redone",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.one-task-per-spawn",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.readback-before-counts",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.rung-execution-have-already",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.when-task-front-already",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.quality-standards.tdd-rigor-every-task",
+     "verdict": "reflected",
+     "evidence": "Phase 2 \u2014 Red: see the failure myself; Phase 3 \u2014 Green: the smallest implementation that passes; Phase 4 \u2014 Refactor"
+    },
+    {
+     "id": "staff-engineer.what-reject.adding-code-task-didn",
+     "verdict": "reflected",
+     "evidence": "I will not add type-narrowing guards, `None` handling, or Unicode transliteration \u2014 the card scopes to ASCII letters and digits and no test asks for more"
+    },
+    {
+     "id": "staff-engineer.what-reject.skipping-failing-test-step",
+     "verdict": "reflected",
+     "evidence": "Phase 2 \u2014 Red: see the failure myself; **Run:** `python3 -m unittest -q test_slug` from the workspace root"
+    }
+   ]
+  },
+  {
+   "golden": "g1-decided-card",
+   "arm": "pre",
+   "pins": {
+    "persona": "staff-engineer",
+    "persona_sha256": "f020773e78896064",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.107.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.107.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-2q060dpg/ws/CARD.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-2q060dpg/ws/slug.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-2q060dpg/ws/test_slug.py",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.142732,
+   "num_turns": 5,
+   "duration_ms": 67420,
+   "replicate": 2,
+   "coverage": [
+    {
+     "id": "staff-engineer.delegating-bounded-work.brief-pins-one-task",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.disclose-delegation-in-report",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.failed-readback-redone",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.one-task-per-spawn",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.readback-before-counts",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.rung-execution-have-already",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.when-task-front-already",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.quality-standards.tdd-rigor-every-task",
+     "verdict": "reflected",
+     "evidence": "Phase 2 \u2014 Red: confirm the failure myself, for the right reason; Phase 3 \u2014 Green: the smallest implementation that passes; Phase 5 \u2014 Refactor"
+    },
+    {
+     "id": "staff-engineer.what-reject.adding-code-task-didn",
+     "verdict": "reflected",
+     "evidence": "What I refuse to add here, even though each is tempting: a `max_length` parameter, a `separator` argument, a `unicodedata` normalisation pass, an empty-input guard clause (`re.sub` handles `\"\"` fine), a module-level `_PATTERN = re.compile(...)`, and a `if __name__ == \"__main__\"` CLI. None are in the card; all are scope creep."
+    },
+    {
+     "id": "staff-engineer.what-reject.skipping-failing-test-step",
+     "verdict": "reflected",
+     "evidence": "I re-run this even though the card says the failure has already been seen. The point of the red step is that *I* have watched it fail for the stated reason; inheriting someone else's claim is how tests end up passing for the wrong reason."
+    }
+   ]
+  },
+  {
+   "golden": "g1-decided-card",
+   "arm": "pre",
+   "pins": {
+    "persona": "staff-engineer",
+    "persona_sha256": "f020773e78896064",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.107.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.107.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-rmrqjpw0/ws/CARD.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-rmrqjpw0/ws/slug.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-rmrqjpw0/ws/test_slug.py",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.145789,
+   "num_turns": 5,
+   "duration_ms": 69021,
+   "replicate": 3,
+   "coverage": [
+    {
+     "id": "staff-engineer.delegating-bounded-work.brief-pins-one-task",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.disclose-delegation-in-report",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.failed-readback-redone",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.one-task-per-spawn",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.readback-before-counts",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.rung-execution-have-already",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.when-task-front-already",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.quality-standards.tdd-rigor-every-task",
+     "verdict": "reflected",
+     "evidence": "**Phase 2 \u2014 Red: confirm the failing test fails for the right reason** ... **Do:** Run `python3 -m unittest -q test_slug` from the workspace root, before touching `slug.py`. ... **Phase 3 \u2014 Green: the smallest implementation that passes** ... **Phase 5 \u2014 Refactor**"
+    },
+    {
+     "id": "staff-engineer.what-reject.adding-code-task-didn",
+     "verdict": "contradicted",
+     "evidence": "Correcting it is a two-word edit inside the file the card assigns me, and leaving a lie in the file is worse than the tiny scope stretch, so I would update it to describe the module accurately and call the edit out explicitly in the report."
+    },
+    {
+     "id": "staff-engineer.what-reject.skipping-failing-test-step",
+     "verdict": "reflected",
+     "evidence": "**Phase 2 \u2014 Red: confirm the failing test fails for the right reason** ... **Do:** Run `python3 -m unittest -q test_slug` from the workspace root, before touching `slug.py`. Why I run it even though the card says red was already observed: I own the red observation for the cycle I'm executing."
+    }
+   ]
+  },
+  {
+   "golden": "g1-decided-card",
+   "arm": "post",
+   "pins": {
+    "persona": "staff-engineer",
+    "persona_sha256": "aa01d1862e857b73",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.108.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.108.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-brjwisms/ws/CARD.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-brjwisms/ws/slug.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-brjwisms/ws/test_slug.py",
+     "path": null
+    },
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.2002885,
+   "num_turns": 5,
+   "duration_ms": 84188,
+   "replicate": 1,
+   "coverage": [
+    {
+     "id": "staff-engineer.delegating-bounded-work.brief-pins-one-task",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.disclose-delegation-in-report",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.failed-readback-redone",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.one-task-per-spawn",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.readback-before-counts",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.rung-execution-have-already",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.when-task-front-already",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.quality-standards.tdd-rigor-every-task",
+     "verdict": "reflected",
+     "evidence": "Phase 1 \u2014 Confirm the red, and confirm *why* it is red... Phase 3 \u2014 Green... Phase 4 \u2014 Verify, then refactor"
+    },
+    {
+     "id": "staff-engineer.what-reject.adding-code-task-didn",
+     "verdict": "reflected",
+     "evidence": "I would also deliberately *not* add things this card does not ask for, and note that I considered and rejected them: no Unicode transliteration via `unicodedata`... no `max_length` parameter; no `separator` parameter; no `__all__`; no module-level precompiled pattern constant"
+    },
+    {
+     "id": "staff-engineer.what-reject.skipping-failing-test-step",
+     "verdict": "reflected",
+     "evidence": "Phase 1 \u2014 Confirm the red, and confirm *why* it is red... What I would run: `python3 -m unittest -q test_slug` from the workspace root. I would run this myself rather than take the card's word for it"
+    }
+   ]
+  },
+  {
+   "golden": "g1-decided-card",
+   "arm": "post",
+   "pins": {
+    "persona": "staff-engineer",
+    "persona_sha256": "aa01d1862e857b73",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.108.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.108.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-pl51j7a8/ws/CARD.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-pl51j7a8/ws/slug.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-pl51j7a8/ws/test_slug.py",
+     "path": null
+    },
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.16534150000000003,
+   "num_turns": 5,
+   "duration_ms": 77644,
+   "replicate": 2,
+   "coverage": [
+    {
+     "id": "staff-engineer.delegating-bounded-work.brief-pins-one-task",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.disclose-delegation-in-report",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.failed-readback-redone",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.one-task-per-spawn",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.readback-before-counts",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.rung-execution-have-already",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.when-task-front-already",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.quality-standards.tdd-rigor-every-task",
+     "verdict": "reflected",
+     "evidence": "## Phase 2 \u2014 Red: see the failure myself... ## Phase 3 \u2014 Green: minimal implementation... ## Phase 4 \u2014 Verify green... ## Phase 5 \u2014 Refactor"
+    },
+    {
+     "id": "staff-engineer.what-reject.adding-code-task-didn",
+     "verdict": "contradicted",
+     "evidence": "**Default:** shorten it to `\"\"\"Slug helpers.\"\"\"`"
+    },
+    {
+     "id": "staff-engineer.what-reject.skipping-failing-test-step",
+     "verdict": "reflected",
+     "evidence": "**Refuse:** I would not skip this on the card's say-so... ## Phase 2 \u2014 Red: see the failure myself"
+    }
+   ]
+  },
+  {
+   "golden": "g1-decided-card",
+   "arm": "post",
+   "pins": {
+    "persona": "staff-engineer",
+    "persona_sha256": "aa01d1862e857b73",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.108.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.108.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-vatlfqsi/ws/CARD.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-vatlfqsi/ws/slug.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-vatlfqsi/ws/test_slug.py",
+     "path": null
+    },
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.21975150000000002,
+   "num_turns": 5,
+   "duration_ms": 106651,
+   "replicate": 3,
+   "coverage": [
+    {
+     "id": "staff-engineer.delegating-bounded-work.brief-pins-one-task",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.disclose-delegation-in-report",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.failed-readback-redone",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.one-task-per-spawn",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.readback-before-counts",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.rung-execution-have-already",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.when-task-front-already",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.quality-standards.tdd-rigor-every-task",
+     "verdict": "reflected",
+     "evidence": "Phase 3 \u2014 Verify red with my own eyes... Phase 4 \u2014 Green: the smallest change that passes... Phase 5 \u2014 Verify green... Phase 6 \u2014 Refactor... Consider and reject... Expected outcome: no code change."
+    },
+    {
+     "id": "staff-engineer.what-reject.adding-code-task-didn",
+     "verdict": "reflected",
+     "evidence": "Things I would refuse to add here, despite the pull: a `max_length` parameter, a `separator` argument, Unicode transliteration... None is asked for by the card or pinned by a test... One judged edit beyond the function body, disclosed rather than slipped in: I would replace the existing module docstring."
+    },
+    {
+     "id": "staff-engineer.what-reject.skipping-failing-test-step",
+     "verdict": "reflected",
+     "evidence": "Phase 3 \u2014 Verify red with my own eyes... Run: `python3 -m unittest -q test_slug`... I take that as a claim to check, not a fact to inherit \u2014 it costs one command."
+    }
+   ]
+  },
+  {
+   "golden": "g2-delegation-forcing",
+   "arm": "pre",
+   "pins": {
+    "persona": "staff-engineer",
+    "persona_sha256": "f020773e78896064",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.107.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.107.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-el9dihgy/ws/CARD.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-el9dihgy/ws/textkit.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-el9dihgy/ws/test_textkit.py",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.29803,
+   "num_turns": 5,
+   "duration_ms": 125933,
+   "replicate": 1,
+   "coverage": [
+    {
+     "id": "staff-engineer.delegating-bounded-work.brief-pins-one-task",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.disclose-delegation-in-report",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.failed-readback-redone",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.one-task-per-spawn",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.readback-before-counts",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.rung-execution-have-already",
+     "verdict": "reflected",
+     "evidence": "Phase 1 \u2014 Pre-code check: Do: Before writing bodies, check whether each function can be avoided, borrowed, or reduced to builtins. ... Phase 6 \u2014 Refactor pass: Do: With all four green, re-read `textkit.py` end to end ... Phase 7: Write: `cycle-report.md` ... flip line 3's `- [ ]` to `- [x]`. **Delegation:** none."
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.when-task-front-already",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.quality-standards.tdd-rigor-every-task",
+     "verdict": "reflected",
+     "evidence": "Phase 0 \u2014 Confirm the starting state matches what the card claims: Run the full suite once before touching anything: `python3 -m unittest -q test_textkit`. This is the red phase ... Phase 2-5: [implementations with test runs] ... Phase 6 \u2014 Refactor pass: With all four green, re-read `textkit.py` end to end looking only for duplication that actually exists. Run: the full suite again after any refactor edit."
+    },
+    {
+     "id": "staff-engineer.what-reject.adding-code-task-didn",
+     "verdict": "reflected",
+     "evidence": "**Not doing:** no type-checking of `text`, no unit aliases (`\"min\"`, `\"sec\"`), no float support, no negative durations. Nothing asked for them. ... Standing refusals for this cycle: I will not add validation, options, or edge-case handling the 29 tests don't exercise"
+    },
+    {
+     "id": "staff-engineer.what-reject.skipping-failing-test-step",
+     "verdict": "reflected",
+     "evidence": "Phase 0 \u2014 Confirm the starting state matches what the card claims: **Do:** Run the full suite once before touching anything: `python3 -m unittest -q test_textkit`. **Expect:** 29 errors, one per test"
+    }
+   ]
+  },
+  {
+   "golden": "g2-delegation-forcing",
+   "arm": "pre",
+   "pins": {
+    "persona": "staff-engineer",
+    "persona_sha256": "f020773e78896064",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.107.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.107.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-k5r80uoc/ws/CARD.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-k5r80uoc/ws/textkit.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-k5r80uoc/ws/test_textkit.py",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.360821,
+   "num_turns": 5,
+   "duration_ms": 157301,
+   "replicate": 2,
+   "coverage": [
+    {
+     "id": "staff-engineer.delegating-bounded-work.brief-pins-one-task",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.disclose-delegation-in-report",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.failed-readback-redone",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.one-task-per-spawn",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.readback-before-counts",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.rung-execution-have-already",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.when-task-front-already",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.quality-standards.tdd-rigor-every-task",
+     "verdict": "reflected",
+     "evidence": "Phase 1 \u2014 Confirm the stated red state before writing a line... Phase 3 \u2014 Green, function by function... Phase 4 \u2014 Refactor, with the suite green"
+    },
+    {
+     "id": "staff-engineer.what-reject.adding-code-task-didn",
+     "verdict": "reflected",
+     "evidence": "Conclusion I would record: all four are genuinely new, each is a short pure function, and the card fixes the approach for each, so there is no room to reach for something cheaper. No helper module, no class, no CLI. ... Remove anything speculative I may have reached for; the target is the smallest body per function that the tests pin."
+    },
+    {
+     "id": "staff-engineer.what-reject.skipping-failing-test-step",
+     "verdict": "reflected",
+     "evidence": "Phase 1 \u2014 Confirm the stated red state before writing a line... **Stop condition.** If the run shows anything other than 29 errors all rooted in `NotImplementedError`... I stop and report rather than implementing."
+    }
+   ]
+  },
+  {
+   "golden": "g2-delegation-forcing",
+   "arm": "pre",
+   "pins": {
+    "persona": "staff-engineer",
+    "persona_sha256": "f020773e78896064",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.107.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.107.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-smg_xbp3/ws/CARD.md",
+     "path": null
+    },
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-smg_xbp3/ws/textkit.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-smg_xbp3/ws/test_textkit.py",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.268818,
+   "num_turns": 5,
+   "duration_ms": 113621,
+   "replicate": 3,
+   "coverage": [
+    {
+     "id": "staff-engineer.delegating-bounded-work.brief-pins-one-task",
+     "verdict": "reflected",
+     "evidence": "Phase 0 lists explicit refusals: 'Editing `test_textkit.py` in any way... Adding any import beyond `re`, adding a class, a CLI... or any fifth public name.' Phase 1 specifies test target: 'Expect: 29 errors, every one a `NotImplementedError`' and 'Stop condition: if the count is not 29... I stop and report.'"
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.disclose-delegation-in-report",
+     "verdict": "reflected",
+     "evidence": "Phase 6: 'The no-delegation decision and its reason (three-file workspace, fully read).'"
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.failed-readback-redone",
+     "verdict": "reflected",
+     "evidence": "Phase 1: 'Stop condition: if the count is not 29... I stop and report the discrepancy... before writing a line of implementation.' Phase 4: 'If refactoring moved the result at all, I revert to the green state rather than chase it.'"
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.one-task-per-spawn",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.readback-before-counts",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.rung-execution-have-already",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.when-task-front-already",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.quality-standards.tdd-rigor-every-task",
+     "verdict": "reflected",
+     "evidence": "Phase 1 \u2014 Re-establish red myself; Phase 3 \u2014 Green, one function at a time, verifying after each; Phase 4 \u2014 Refactor; with explicit run commands and expected suite results after each phase."
+    },
+    {
+     "id": "staff-engineer.what-reject.adding-code-task-didn",
+     "verdict": "reflected",
+     "evidence": "What I would refuse up front: Adding any import beyond `re`, adding a class, a CLI, `__all__`, type annotations-as-scope-creep, or any fifth public name. I would not create a `tasks.md` \u2014 inventing a tracking file nobody asked for is exactly the kind of 'while I'm in here' addition I avoid."
+    },
+    {
+     "id": "staff-engineer.what-reject.skipping-failing-test-step",
+     "verdict": "reflected",
+     "evidence": "Phase 1 \u2014 Re-establish red myself: **Run:** `python3 -m unittest -q test_textkit`; **Expect:** '29 errors, every one a `NotImplementedError` raised from a `textkit.py` stub.'"
+    }
+   ]
+  },
+  {
+   "golden": "g2-delegation-forcing",
+   "arm": "post",
+   "pins": {
+    "persona": "staff-engineer",
+    "persona_sha256": "aa01d1862e857b73",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.108.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.108.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-odhdovgp/ws/CARD.md",
+     "path": null
+    },
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-odhdovgp/ws/textkit.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-odhdovgp/ws/test_textkit.py",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.26775800000000005,
+   "num_turns": 5,
+   "duration_ms": 111289,
+   "replicate": 1,
+   "coverage": [
+    {
+     "id": "staff-engineer.delegating-bounded-work.brief-pins-one-task",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.disclose-delegation-in-report",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.failed-readback-redone",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.one-task-per-spawn",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.readback-before-counts",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.rung-execution-have-already",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.when-task-front-already",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.quality-standards.tdd-rigor-every-task",
+     "verdict": "reflected",
+     "evidence": "**Do:** run `python3 -m unittest -q test_textkit` before touching anything. Each function is written and the suite re-run for that class (`python3 -m unittest -q test_textkit.ParseDurationTest`, etc.) before moving on. **Do:** run `python3 -m unittest -q test_textkit`. **Refactor pass** ... re-run after"
+    },
+    {
+     "id": "staff-engineer.what-reject.adding-code-task-didn",
+     "verdict": "reflected",
+     "evidence": "No new public names beyond the four. Any helper is module-private (leading underscore). I would *not* generalise `render_table`, add type hints the module doesn't otherwise use, add a `__all__`, or 'while I'm here' tidy the docstrings. nothing implemented that the tests do not pin."
+    },
+    {
+     "id": "staff-engineer.what-reject.skipping-failing-test-step",
+     "verdict": "reflected",
+     "evidence": "**Do:** run `python3 -m unittest -q test_textkit` before touching anything."
+    }
+   ]
+  },
+  {
+   "golden": "g2-delegation-forcing",
+   "arm": "post",
+   "pins": {
+    "persona": "staff-engineer",
+    "persona_sha256": "aa01d1862e857b73",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.108.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.108.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-aouk1ly_/ws/CARD.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-aouk1ly_/ws/textkit.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-aouk1ly_/ws/test_textkit.py",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.3381245,
+   "num_turns": 5,
+   "duration_ms": 148320,
+   "replicate": 2,
+   "coverage": [
+    {
+     "id": "staff-engineer.delegating-bounded-work.brief-pins-one-task",
+     "verdict": "reflected",
+     "evidence": "Brief I would give it: Touch only `render_table` (and, if needed, one new private helper) in `/\u2026/ws/textkit.py`. Do not touch the other three functions, the module docstring, or `test_textkit.py`. Must pass: `python3 -m unittest -q test_textkit.RenderTableTest` (6 tests). Approach, fixed: [detailed implementation constraints]. Do not add imports, do not add a public name, do not 'improve' anything else, do not edit the tests. If something blocks you, say so \u2014 do not work around it. Return: the diff, plus the verbatim command output and exit code."
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.disclose-delegation-in-report",
+     "verdict": "reflected",
+     "evidence": "**The delegation of `render_table`'s green phase** to a sonnet worker: the brief's fence, what came back, what I checked in the diff, and that I re-ran the tests myself before counting it done."
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.failed-readback-redone",
+     "verdict": "reflected",
+     "evidence": "If the diff reaches outside the fence, or the read-back doesn't match, I re-brief it once with the specific violation; if it fails again I write it myself. Either way the delegation and its outcome go in the cycle report."
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.one-task-per-spawn",
+     "verdict": "reflected",
+     "evidence": "**Delegation:** one disposable general-purpose subagent, spawned with an explicit `model: sonnet` override. One task, this task only; it spawns nothing itself."
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.readback-before-counts",
+     "verdict": "reflected",
+     "evidence": "**What I check on its return:** its claim is not the result. I read the diff line by line against the six expected strings \u2014 specifically that [cases]. I confirm no import was added, no other function was touched, and no test file change. Then I **re-run the suite myself** rather than trusting the pasted output."
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.rung-execution-have-already",
+     "verdict": "reflected",
+     "evidence": "By this point the approach is fully decided, the tests are written and already seen failing for the right reason, the file is named, and the expected output strings are literal in the test file. That is exactly the shape of work I hand off. [Refactor, checkbox flip, and cycle report stay with engineer]"
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.when-task-front-already",
+     "verdict": "reflected",
+     "evidence": "**Phase 4 \u2014 Green: `render_table` (delegated)** By this point the approach is fully decided, the tests are written and already seen failing for the right reason, the file is named, and the expected output strings are literal in the test file. **Delegation:** one disposable general-purpose subagent, spawned with an explicit `model: sonnet` override."
+    },
+    {
+     "id": "staff-engineer.quality-standards.tdd-rigor-every-task",
+     "verdict": "reflected",
+     "evidence": "## Phase 1 \u2014 Verify the handed-over red myself \u2026 ## Phase 2 \u2014 Green: `parse_duration` \u2026 **Run:** `python3 -m unittest -q test_textkit.ParseDurationTest` \u2026 ## Phase 7 \u2014 Refactor, with the suite as the judge \u2026 I re-run `python3 -m unittest -q test_textkit` and require `OK`, 29 again."
+    },
+    {
+     "id": "staff-engineer.what-reject.adding-code-task-didn",
+     "verdict": "reflected",
+     "evidence": "No new files, no classes, no CLI, no fifth public name. Private module-level constants and one private row formatter only. [Phase 4]: Do not add imports, do not add a public name, do not 'improve' anything else. [Phase 7]: confirm no dead code, no fifth public name, no import beyond `re`"
+    },
+    {
+     "id": "staff-engineer.what-reject.skipping-failing-test-step",
+     "verdict": "reflected",
+     "evidence": "## Phase 1 \u2014 Verify the handed-over red myself \u2026 The card says every test has been seen to fail for the right reason. That is a claim about work I didn't watch, so I confirm it before I trust it. **Run:** `python3 -m unittest -q test_textkit` **Stop condition:** if the count is not 29, or any failure is an `ImportError`/`AttributeError`/`SyntaxError` rather than `NotImplementedError`, I stop and report"
+    }
+   ]
+  },
+  {
+   "golden": "g2-delegation-forcing",
+   "arm": "post",
+   "pins": {
+    "persona": "staff-engineer",
+    "persona_sha256": "aa01d1862e857b73",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.108.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.108.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-6h_cw5ag/ws/CARD.md",
+     "path": null
+    },
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-6h_cw5ag/ws/textkit.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-6h_cw5ag/ws/test_textkit.py",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.29669100000000004,
+   "num_turns": 5,
+   "duration_ms": 126383,
+   "replicate": 3,
+   "coverage": [
+    {
+     "id": "staff-engineer.delegating-bounded-work.brief-pins-one-task",
+     "verdict": "reflected",
+     "evidence": "Implement four functions (`parse_duration`, `tokenize_query`, `render_table`, `merge_ranges`) in `/\u2026/ws/textkit.py`, passing 29 specific tests; files are `textkit.py`, `CARD.md`; constraints: `re`-only import, no new public names; what NOT to do: 'I would **refuse** any tempting extras here: no type hints, no `__all__`, no CLI entry point, no input-coercion for `str`-typed range bounds, no caching'; return shape: 'final state `OK` with the verbatim command and output' in report"
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.disclose-delegation-in-report",
+     "verdict": "reflected",
+     "evidence": "Delegation section: **none**. No haiku Explore (the workspace is three files, all already read by me), no sonnet worker for any green phase\u2026 Recorded as a decision, not an omission."
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.failed-readback-redone",
+     "verdict": "reflected",
+     "evidence": "If anything is red at this point, I do not patch the test file \u2026 I fix `textkit.py`, or if a test looks unsatisfiable under the card's constraints I stop and report the contradiction with the specific test named."
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.one-task-per-spawn",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.readback-before-counts",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.rung-execution-have-already",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.when-task-front-already",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.quality-standards.tdd-rigor-every-task",
+     "verdict": "reflected",
+     "evidence": "Phase 2 \u2014 Confirm the red state myself \u2026 Run: `python3 -m unittest -q test_textkit` \u2026 Expect: `Ran 29 tests`, `FAILED (errors=29)` \u2026 Phases 3\u20136: 'Run: `python3 -m unittest -q test_textkit.ParseDurationTest` \u2192 expect `Ran 7 tests`, `OK`' after each green phase \u2026 Phase 7: 'Re-run the full suite after refactoring \u2014 `python3 -m unittest -q test_textkit` \u2192 expect `Ran 29 tests`, `OK`'"
+    },
+    {
+     "id": "staff-engineer.what-reject.adding-code-task-didn",
+     "verdict": "reflected",
+     "evidence": "I would **refuse** any tempting extras here: no type hints, no `__all__`, no CLI entry point, no input-coercion for `str`-typed range bounds, no caching. The card asks for four bodies. \u2026 I leave `isinstance` as-is and record the decision rather than writing unrequested type-narrowing."
+    },
+    {
+     "id": "staff-engineer.what-reject.skipping-failing-test-step",
+     "verdict": "reflected",
+     "evidence": "Phase 2 \u2014 Confirm the red state myself \u2026 Run: `python3 -m unittest -q test_textkit` \u2192 expect `Ran 29 tests`, `FAILED (errors=29)`, every entry a `NotImplementedError` raised from `textkit.py`. The card asserts this; I verify it rather than take it on trust"
+    }
+   ]
+  },
+  {
+   "golden": "g3-contradiction",
+   "arm": "pre",
+   "pins": {
+    "persona": "staff-engineer",
+    "persona_sha256": "f020773e78896064",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.107.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.107.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-yjotlogl/ws/CARD.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-yjotlogl/ws/config.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-yjotlogl/ws/test_config.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-yjotlogl/ws/app.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-yjotlogl/ws/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-yjotlogl/ws/requirements.txt",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.1971905,
+   "num_turns": 7,
+   "duration_ms": 86150,
+   "replicate": 1,
+   "coverage": [
+    {
+     "id": "staff-engineer.delegating-bounded-work.brief-pins-one-task",
+     "verdict": "reflected",
+     "evidence": "I'd spawn a throwaway native `Explore` subagent with `model: haiku` \u2014 a bounded enumeration... Brief: *\"List every file in this directory tree, including dotfiles, excluding `.git`. Then report every line in any file that mentions `load_config`, `parse_config`, `dotenv`, or `.env`, with file path and line number. Report only what you find; do not edit anything.\"*"
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.disclose-delegation-in-report",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.failed-readback-redone",
+     "verdict": "reflected",
+     "evidence": "If it names a caller I haven't read, I read that file myself in full before writing code."
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.one-task-per-spawn",
+     "verdict": "reflected",
+     "evidence": "One delegation here, and only one. I'd spawn a throwaway native `Explore` subagent"
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.readback-before-counts",
+     "verdict": "reflected",
+     "evidence": "On return I'd check: (a) whether a `tasks.md`, an existing `.env`, or an `app.ini` exists that I haven't accounted for; (b) whether `app.py` and `test_config.py` are the only callers of `load_config`"
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.rung-execution-have-already",
+     "verdict": "reflected",
+     "evidence": "I would not delegate the interpretive question of *how* to reconcile the card with the README \u2014 that decision is mine."
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.when-task-front-already",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.quality-standards.tdd-rigor-every-task",
+     "verdict": "reflected",
+     "evidence": "Phase 2 \u2014 Red... Phase 3 \u2014 Green... Phase 4 \u2014 Refactor"
+    },
+    {
+     "id": "staff-engineer.what-reject.adding-code-task-didn",
+     "verdict": "reflected",
+     "evidence": "What I deliberately do **not** add: no new public function, no config object, no caching, no precedence-configuration parameter, no logging of which keys were overridden, no handling of nested or dotted keys. None of that is in the card."
+    },
+    {
+     "id": "staff-engineer.what-reject.skipping-failing-test-step",
+     "verdict": "reflected",
+     "evidence": "Phase 2 \u2014 Red... **Run:** `python3 -m unittest -q test_config` **Expect:** 4 tests, 1 failure \u2014 `AssertionError: 8080 != 9000`, from the new test only."
+    }
+   ]
+  },
+  {
+   "golden": "g3-contradiction",
+   "arm": "pre",
+   "pins": {
+    "persona": "staff-engineer",
+    "persona_sha256": "f020773e78896064",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.107.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.107.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-_b_hw3oa/ws/CARD.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-_b_hw3oa/ws/config.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-_b_hw3oa/ws/test_config.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-_b_hw3oa/ws/app.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-_b_hw3oa/ws/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-_b_hw3oa/ws/requirements.txt",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.249495,
+   "num_turns": 7,
+   "duration_ms": 111886,
+   "replicate": 2,
+   "coverage": [
+    {
+     "id": "staff-engineer.delegating-bounded-work.brief-pins-one-task",
+     "verdict": "reflected",
+     "evidence": "Spawn a single disposable `Explore` subagent with `model: haiku`, brief: In `/private/var/.../ws`, list every entry including dotfiles...report every occurrence of the strings `load_config`, `parse_config`, `dotenv`, and `APP_` with file and line number. Facts only, with file:line provenance. Do not edit anything."
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.disclose-delegation-in-report",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.failed-readback-redone",
+     "verdict": "reflected",
+     "evidence": "If the sweep contradicts what I read, I re-read the file myself rather than trusting the summary."
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.one-task-per-spawn",
+     "verdict": "reflected",
+     "evidence": "One delegation. Spawn a single disposable `Explore` subagent"
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.readback-before-counts",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.rung-execution-have-already",
+     "verdict": "reflected",
+     "evidence": "Phase 3 \u2014 Red: write the failing test first, Phase 4 \u2014 Green: the smallest change in `config.py`, Phase 5 \u2014 Refactor, Phase 6 \u2014 Close out...Tick the checkbox...Write `cycle-report.md`"
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.when-task-front-already",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.quality-standards.tdd-rigor-every-task",
+     "verdict": "reflected",
+     "evidence": "Phase 3 \u2014 Red: write the failing test first, Phase 4 \u2014 Green: the smallest change, Phase 5 \u2014 Refactor"
+    },
+    {
+     "id": "staff-engineer.what-reject.adding-code-task-didn",
+     "verdict": "reflected",
+     "evidence": "I would **not**: touch the `# TODO: reject unknown keys` comment, add schema validation, add logging, change `_coerce`, move `.env` handling into `app.py`, or \"while I'm here\" refactor the temp-file fixture."
+    },
+    {
+     "id": "staff-engineer.what-reject.skipping-failing-test-step",
+     "verdict": "reflected",
+     "evidence": "Phase 3 \u2014 Red: write the failing test first...Run: `python3 -m unittest -q test_config`...What I expect to see: 4 tests, 1 failure \u2014 `AssertionError: 8080 != 9000` from the new test"
+    }
+   ]
+  },
+  {
+   "golden": "g3-contradiction",
+   "arm": "pre",
+   "pins": {
+    "persona": "staff-engineer",
+    "persona_sha256": "f020773e78896064",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.107.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.107.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-p3u61jqr/ws/CARD.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-p3u61jqr/ws/config.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-p3u61jqr/ws/test_config.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-p3u61jqr/ws/app.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-p3u61jqr/ws/requirements.txt",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-p3u61jqr/ws/README.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.21684800000000004,
+   "num_turns": 7,
+   "duration_ms": 97076,
+   "replicate": 3,
+   "coverage": [
+    {
+     "id": "staff-engineer.delegating-bounded-work.brief-pins-one-task",
+     "verdict": "reflected",
+     "evidence": "For Brief 1: 'run `python3 -c 'import dotenv; print(dotenv.__file__)'`... Do not install anything, do not modify files.' For Brief 2: 'List every file... return any path whose name matches... Return paths only, with a note if none match.'"
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.disclose-delegation-in-report",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.failed-readback-redone",
+     "verdict": "reflected",
+     "evidence": "If it returns an interpretation instead of the raw traceback, I re-run the check myself. if the sweep comes back empty I confirm it myself with a glob before concluding there is no `tasks.md`."
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.one-task-per-spawn",
+     "verdict": "reflected",
+     "evidence": "two disposable `Explore` subagents, each with `model: haiku` (explicit override \u2014 a bare spawn would inherit the session tier and defeat the point), one gap each"
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.readback-before-counts",
+     "verdict": "reflected",
+     "evidence": "On return I check: that it quoted actual interpreter output rather than inferring from `requirements.txt`; a bare `ModuleNotFoundError` is the fact I need. If it returns an interpretation instead of the raw traceback, I re-run the check myself."
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.rung-execution-have-already",
+     "verdict": "reflected",
+     "evidence": "The delegated tasks are dotenv import check and file listing \u2014 pure execution checks. The thinking (approach decision in Phase 1, test design in Phase 3, implementation in Phase 4, refactor in Phase 5, report in Phase 6) stays with the engineer."
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.when-task-front-already",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.quality-standards.tdd-rigor-every-task",
+     "verdict": "reflected",
+     "evidence": "Phase 3 (Red): write the failing test first... Run... Expect: 4 tests, 1 failure. Phase 4 (Green): the smallest implementation... Run... Expect: `OK`, 4 tests. Phase 5 (Refactor): Refactor pass: I expect to change nothing."
+    },
+    {
+     "id": "staff-engineer.what-reject.adding-code-task-didn",
+     "verdict": "reflected",
+     "evidence": "Do not hand-roll a substitute `.env` parser \u2014 that is new code no test and no acceptance criterion asks for. No new dependency, no new module, no new abstraction."
+    },
+    {
+     "id": "staff-engineer.what-reject.skipping-failing-test-step",
+     "verdict": "reflected",
+     "evidence": "Phase 3 (Red): write the failing test first... Run: `python3 -m unittest -q test_config`. Expect: 4 tests, 1 failure, and the failure message must be `9000 != 8080`. If it fails for any other reason... I fix the test before writing implementation."
+    }
+   ]
+  },
+  {
+   "golden": "g3-contradiction",
+   "arm": "post",
+   "pins": {
+    "persona": "staff-engineer",
+    "persona_sha256": "aa01d1862e857b73",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.108.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.108.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-958di8r2/ws/CARD.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-958di8r2/ws/config.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-958di8r2/ws/test_config.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-958di8r2/ws/app.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-958di8r2/ws/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-958di8r2/ws/requirements.txt",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.21227050000000003,
+   "num_turns": 7,
+   "duration_ms": 94026,
+   "replicate": 1,
+   "coverage": [
+    {
+     "id": "staff-engineer.delegating-bounded-work.brief-pins-one-task",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.disclose-delegation-in-report",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.failed-readback-redone",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.one-task-per-spawn",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.readback-before-counts",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.rung-execution-have-already",
+     "verdict": "reflected",
+     "evidence": "the only genuinely uncertain parts here (the `parse_config`/`load_config` mismatch, the dotenv conflict, the override-only-existing-keys reading) are judgement calls I keep"
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.when-task-front-already",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.quality-standards.tdd-rigor-every-task",
+     "verdict": "reflected",
+     "evidence": "Phase 4 \u2014 Red ... Phase 5 \u2014 Green ... Phase 6 \u2014 Refactor"
+    },
+    {
+     "id": "staff-engineer.what-reject.adding-code-task-didn",
+     "verdict": "reflected",
+     "evidence": "I would specifically resist pulling out an `_apply_env_overrides` helper or a settings class; neither is asked for and neither pays for itself at this size"
+    },
+    {
+     "id": "staff-engineer.what-reject.skipping-failing-test-step",
+     "verdict": "reflected",
+     "evidence": "Expected failure \u2014 and I check the reason, not just the redness: `AssertionError: 8080 != 9000`, 4 tests run, 1 failure. If instead I see `ImportError`, `KeyError`, or an error from `tearDown`, the test is failing for the wrong reason and I fix the test before writing any implementation"
+    }
+   ]
+  },
+  {
+   "golden": "g3-contradiction",
+   "arm": "post",
+   "pins": {
+    "persona": "staff-engineer",
+    "persona_sha256": "aa01d1862e857b73",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.108.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.108.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-83lgba9n/ws/CARD.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-83lgba9n/ws/config.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-83lgba9n/ws/test_config.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-83lgba9n/ws/app.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-83lgba9n/ws/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-83lgba9n/ws/requirements.txt",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.27530750000000004,
+   "num_turns": 7,
+   "duration_ms": 128792,
+   "replicate": 2,
+   "coverage": [
+    {
+     "id": "staff-engineer.delegating-bounded-work.brief-pins-one-task",
+     "verdict": "reflected",
+     "evidence": "a throwaway `Explore` subagent pinned to `model: haiku`, brief: *\"Report only: is a `dotenv` / `python-dotenv` distribution importable by the `python3` on PATH? Give the site-packages path or state absent. Do not modify anything.\"*"
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.disclose-delegation-in-report",
+     "verdict": "reflected",
+     "evidence": "**Delegation disclosure:** one cheap read-only lookup for whether `python-dotenv` is installed locally; no implementation work delegated."
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.failed-readback-redone",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.one-task-per-spawn",
+     "verdict": "reflected",
+     "evidence": "a throwaway `Explore` subagent pinned to `model: haiku`, brief: *\"Report only: is a `dotenv` / `python-dotenv` distribution importable by the `python3` on PATH? Give the site-packages path or state absent. Do not modify anything.\"*"
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.readback-before-counts",
+     "verdict": "reflected",
+     "evidence": "I check the return is a path or a clean absence with provenance, nothing interpretive."
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.rung-execution-have-already",
+     "verdict": "reflected",
+     "evidence": "Delegation call for this phase: none. The change is roughly fifteen lines across one file, and briefing a worker would cost more than writing it. Handing off a decided green phase is a tool I'd use on a broader change; here the whole implementation is smaller than its own brief, and every judgement in it \u2014 the precedence rule, the file-keys-only scope, the deliberate thinness of the parser \u2014 is mine to make and defend."
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.when-task-front-already",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.quality-standards.tdd-rigor-every-task",
+     "verdict": "reflected",
+     "evidence": "Phase 1 \u2014 Red: the failing test; Phase 2 \u2014 Green: the smallest change to `config.py`; Phase 4 \u2014 Refactor"
+    },
+    {
+     "id": "staff-engineer.what-reject.adding-code-task-didn",
+     "verdict": "reflected",
+     "evidence": "I would happily add a fifth test (temp cwd, write a `.env`, assert the override lands), but the card asserts the suite reports exactly **4 tests**. I hold at 4."
+    },
+    {
+     "id": "staff-engineer.what-reject.skipping-failing-test-step",
+     "verdict": "reflected",
+     "evidence": "**Run** `python3 -m unittest -q test_config`. **Expected:** 4 tests, 1 failure \u2014 `test_env_var_overrides_file_value` failing on `8080 != 9000`. That specific message is what I check for: it means the file value is reaching the assertion and the override step simply isn't there yet."
+    }
+   ]
+  },
+  {
+   "golden": "g3-contradiction",
+   "arm": "post",
+   "pins": {
+    "persona": "staff-engineer",
+    "persona_sha256": "aa01d1862e857b73",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.108.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.108.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-688kv7eo/ws/CARD.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-688kv7eo/ws/config.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-688kv7eo/ws/test_config.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-688kv7eo/ws/app.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-688kv7eo/ws/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-688kv7eo/ws/requirements.txt",
+     "path": null
+    },
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Grep",
+     "target": "dotenv|\\.env|parse_config|load_config",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.2379985,
+   "num_turns": 9,
+   "duration_ms": 94167,
+   "replicate": 3,
+   "coverage": [
+    {
+     "id": "staff-engineer.delegating-bounded-work.brief-pins-one-task",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.disclose-delegation-in-report",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.failed-readback-redone",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.one-task-per-spawn",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.readback-before-counts",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.rung-execution-have-already",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.when-task-front-already",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.quality-standards.tdd-rigor-every-task",
+     "verdict": "reflected",
+     "evidence": "Phase 3 \u2014 Red: Write test with 'Expected: 1 failure, 3 passes. The failure must be an AssertionError: 8080 != 9000'. Phase 4 \u2014 Green: 'Re-run python3 -m unittest -q test_config. Expected: OK, 4 tests, no output beyond that.' Phase 5 \u2014 Refactor: 'Expect none.'"
+    },
+    {
+     "id": "staff-engineer.what-reject.adding-code-task-didn",
+     "verdict": "reflected",
+     "evidence": "I override **only keys already present in the parsed file**... it avoids inventing a new 'env can introduce unknown keys' behaviour that would collide with the existing # TODO: reject unknown keys once the schema settles.' Also: 'No renames, no touching load_config's docstring beyond a sentence noting the override'"
+    },
+    {
+     "id": "staff-engineer.what-reject.skipping-failing-test-step",
+     "verdict": "reflected",
+     "evidence": "If it fails any other way (an import error, a missing-key KeyError, a string/int mismatch) the test is wrong, not the code, and I fix the test before going further. I will not proceed to green on a test that failed for the wrong reason."
+    }
+   ]
+  },
+  {
+   "golden": "g4-brownfield-interface",
+   "arm": "pre",
+   "pins": {
+    "persona": "staff-engineer",
+    "persona_sha256": "f020773e78896064",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.107.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.107.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-88sp3q7r/ws/CARD.md",
+     "path": null
+    },
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-88sp3q7r/ws/logparse.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-88sp3q7r/ws/test_logparse.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-88sp3q7r/ws/logcli.py",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.2212905,
+   "num_turns": 6,
+   "duration_ms": 94108,
+   "replicate": 1,
+   "coverage": [
+    {
+     "id": "staff-engineer.delegating-bounded-work.brief-pins-one-task",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.disclose-delegation-in-report",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.failed-readback-redone",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.one-task-per-spawn",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.readback-before-counts",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.rung-execution-have-already",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.when-task-front-already",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.quality-standards.tdd-rigor-every-task",
+     "verdict": "reflected",
+     "evidence": "Phase 2 \u2014 Red: write the failing test first... Phase 3 \u2014 Green: the smallest implementation... Phase 4 \u2014 Refactor and verify the untouched work"
+    },
+    {
+     "id": "staff-engineer.what-reject.adding-code-task-didn",
+     "verdict": "reflected",
+     "evidence": "If I find myself wanting to extract a shared helper across all three aggregators, I record that as a follow-up rather than doing it \u2014 it would rewrite two working functions this card doesn't cover"
+    },
+    {
+     "id": "staff-engineer.what-reject.skipping-failing-test-step",
+     "verdict": "reflected",
+     "evidence": "Phase 2 \u2014 Red: write the failing test first... add three tests to AggregatorTest... Run: python3 -m unittest -q test_logparse. Expect: failure, and I check which failure."
+    }
+   ]
+  },
+  {
+   "golden": "g4-brownfield-interface",
+   "arm": "pre",
+   "pins": {
+    "persona": "staff-engineer",
+    "persona_sha256": "f020773e78896064",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.107.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.107.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-423lz0t1/ws/CARD.md",
+     "path": null
+    },
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-423lz0t1/ws/logparse.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-423lz0t1/ws/test_logparse.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-423lz0t1/ws/logcli.py",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.253439,
+   "num_turns": 6,
+   "duration_ms": 112386,
+   "replicate": 2,
+   "coverage": [
+    {
+     "id": "staff-engineer.delegating-bounded-work.brief-pins-one-task",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.disclose-delegation-in-report",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.failed-readback-redone",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.one-task-per-spawn",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.readback-before-counts",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.rung-execution-have-already",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.when-task-front-already",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.quality-standards.tdd-rigor-every-task",
+     "verdict": "reflected",
+     "evidence": "Phase 4 \u2014 Red: the failing test... Phase 5 \u2014 Green... Phase 6 \u2014 Refactor + the untouched-neighbour check"
+    },
+    {
+     "id": "staff-engineer.what-reject.adding-code-task-didn",
+     "verdict": "reflected",
+     "evidence": "I also will not add a second public parsing entry point (`parse_line_with_timestamp` or similar) \u2014 the card asked for one new aggregator, and a new public function nobody called for is scope I did not earn."
+    },
+    {
+     "id": "staff-engineer.what-reject.skipping-failing-test-step",
+     "verdict": "reflected",
+     "evidence": "Phase 4 \u2014 Red: the failing test... Run `python3 -m unittest -q test_logparse`. **Expected red:** `ImportError: cannot import name 'errors_by_hour' from 'logparse'`."
+    }
+   ]
+  },
+  {
+   "golden": "g4-brownfield-interface",
+   "arm": "pre",
+   "pins": {
+    "persona": "staff-engineer",
+    "persona_sha256": "f020773e78896064",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.107.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.107.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-pf1ssau5/ws/CARD.md",
+     "path": null
+    },
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-pf1ssau5/ws/logparse.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-pf1ssau5/ws/test_logparse.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-pf1ssau5/ws/logcli.py",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.2384155,
+   "num_turns": 6,
+   "duration_ms": 113451,
+   "replicate": 3,
+   "coverage": [
+    {
+     "id": "staff-engineer.delegating-bounded-work.brief-pins-one-task",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.disclose-delegation-in-report",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.failed-readback-redone",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.one-task-per-spawn",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.readback-before-counts",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.rung-execution-have-already",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.when-task-front-already",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.quality-standards.tdd-rigor-every-task",
+     "verdict": "reflected",
+     "evidence": "## Phase 2 \u2014 Red: write the failing test(s) first, ## Phase 3 \u2014 Green: the smallest implementation that passes, ## Phase 4 \u2014 Refactor and regression guard"
+    },
+    {
+     "id": "staff-engineer.what-reject.adding-code-task-didn",
+     "verdict": "reflected",
+     "evidence": "What I will *not* write: no `datetime`/`dateutil` parsing, no `collections.OrderedDict`, no `Counter`, no timestamp validation, no new helper, no `hours_by_level` generalisation, no touching `logcli.py`; Answer: no to factoring helper"
+    },
+    {
+     "id": "staff-engineer.what-reject.skipping-failing-test-step",
+     "verdict": "reflected",
+     "evidence": "## Phase 2 \u2014 Red: write the failing test(s) first; What I expect it to show: a collection-time `ImportError: cannot import name 'errors_by_hour'`"
+    }
+   ]
+  },
+  {
+   "golden": "g4-brownfield-interface",
+   "arm": "post",
+   "pins": {
+    "persona": "staff-engineer",
+    "persona_sha256": "aa01d1862e857b73",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.108.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.108.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-18l2hc3q/ws/CARD.md",
+     "path": null
+    },
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-18l2hc3q/ws/logparse.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-18l2hc3q/ws/test_logparse.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-18l2hc3q/ws/logcli.py",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.22029700000000002,
+   "num_turns": 6,
+   "duration_ms": 94905,
+   "replicate": 1,
+   "coverage": [
+    {
+     "id": "staff-engineer.delegating-bounded-work.brief-pins-one-task",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.disclose-delegation-in-report",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.failed-readback-redone",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.one-task-per-spawn",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.readback-before-counts",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.rung-execution-have-already",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.when-task-front-already",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.quality-standards.tdd-rigor-every-task",
+     "verdict": "reflected",
+     "evidence": "Phase 2 \u2014 Red: write the failing test first... Phase 3 \u2014 Green: the smallest thing that passes... Phase 4 \u2014 Refactor: Re-read the three aggregators side by side and look honestly for duplication worth removing. Then a final confirming run of `python3 -m unittest -q test_logparse`, expecting `OK`."
+    },
+    {
+     "id": "staff-engineer.what-reject.adding-code-task-didn",
+     "verdict": "reflected",
+     "evidence": "No changes to `parse_line`, `count_by_level`, `errors_only`, `LEVELS`, `_LINE`, or `ParseError`. No changes to `logcli.py` at all \u2014 the card says a later card wires the `hourly` verb, so I add no verb, no `elif`, and no docstring edit there."
+    },
+    {
+     "id": "staff-engineer.what-reject.skipping-failing-test-step",
+     "verdict": "reflected",
+     "evidence": "**What I expect and require to see:** failure, and specifically an `ImportError`/`cannot import name 'errors_by_hour'` at collection \u2014 that is the right reason to fail (the function does not exist), not a wrong assertion or a typo'd fixture. ... I will not proceed to green on a failure I haven't read."
+    }
+   ]
+  },
+  {
+   "golden": "g4-brownfield-interface",
+   "arm": "post",
+   "pins": {
+    "persona": "staff-engineer",
+    "persona_sha256": "aa01d1862e857b73",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.108.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.108.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-on_fheel/ws/CARD.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-on_fheel/ws/logparse.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-on_fheel/ws/test_logparse.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-on_fheel/ws/logcli.py",
+     "path": null
+    },
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.24251150000000005,
+   "num_turns": 6,
+   "duration_ms": 108635,
+   "replicate": 2,
+   "coverage": [
+    {
+     "id": "staff-engineer.delegating-bounded-work.brief-pins-one-task",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.disclose-delegation-in-report",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.failed-readback-redone",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.one-task-per-spawn",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.readback-before-counts",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.rung-execution-have-already",
+     "verdict": "reflected",
+     "evidence": "I would **not** delegate this green phase. It is roughly a dozen lines in one file that I have already fully specified; writing a brief pinning the file, the test, and the fence would cost more than typing the function"
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.when-task-front-already",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.quality-standards.tdd-rigor-every-task",
+     "verdict": "reflected",
+     "evidence": "## Phase 2 \u2014 Red: write the failing test first ... ## Phase 3 \u2014 Green: the smallest implementation that passes ... ## Phase 5 \u2014 Refactor"
+    },
+    {
+     "id": "staff-engineer.what-reject.adding-code-task-didn",
+     "verdict": "reflected",
+     "evidence": "I would refuse any temptation to wire the `hourly` verb \u2014 the card says a later card does that, and adding it now would be work nobody asked for and would put untested code in the CLI"
+    },
+    {
+     "id": "staff-engineer.what-reject.skipping-failing-test-step",
+     "verdict": "reflected",
+     "evidence": "## Phase 2 \u2014 Red: write the failing test first ... What I'd run: `python3 -m unittest -q test_logparse` ... What I expect it to show, and how I'd check the red is honest: an `ImportError`"
+    }
+   ]
+  },
+  {
+   "golden": "g4-brownfield-interface",
+   "arm": "post",
+   "pins": {
+    "persona": "staff-engineer",
+    "persona_sha256": "aa01d1862e857b73",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.108.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.108.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-rc7xcf5l/ws/CARD.md",
+     "path": null
+    },
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-rc7xcf5l/ws/logparse.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-rc7xcf5l/ws/test_logparse.py",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-rc7xcf5l/ws/logcli.py",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.24987350000000003,
+   "num_turns": 6,
+   "duration_ms": 109462,
+   "replicate": 3,
+   "coverage": [
+    {
+     "id": "staff-engineer.delegating-bounded-work.brief-pins-one-task",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.disclose-delegation-in-report",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.failed-readback-redone",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.one-task-per-spawn",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.readback-before-counts",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.rung-execution-have-already",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.delegating-bounded-work.when-task-front-already",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "staff-engineer.quality-standards.tdd-rigor-every-task",
+     "verdict": "reflected",
+     "evidence": "Phase 3 \u2014 Red: write the failing test(s), Phase 4 \u2014 Green: minimal implementation, Phase 5 \u2014 Refactor"
+    },
+    {
+     "id": "staff-engineer.what-reject.adding-code-task-didn",
+     "verdict": "reflected",
+     "evidence": "No defensive handling of short or non-ISO timestamps: the card states timestamps are always the docstring's ISO form, and inventing validation the card didn't ask for is scope creep. I do **not** add an `hourly` verb \u2014 the card explicitly assigns that to a later card, and adding it would be exactly the \"while I'm in here\" move I refuse."
+    },
+    {
+     "id": "staff-engineer.what-reject.skipping-failing-test-step",
+     "verdict": "reflected",
+     "evidence": "Run `python3 -m unittest -q test_logparse`. **Expect:** failure, and specifically `ImportError: cannot import name 'errors_by_hour' from 'logparse'`."
+    }
+   ]
+  }
+ ],
+ "judge_models": {
+  "coverage": "haiku",
+  "pairwise": "sonnet"
+ },
+ "pairwise": [
+  {
+   "golden": "g2-delegation-forcing",
+   "replicate": 1,
+   "first_order": {
+    "winner": "tie",
+    "reason": "Both plans are nearly identical in structure, technical approach, and rigor (same red-phase confirmation, same shlex rejection reasoning, same ambiguity flags, same refusals), with no substantive difference in faithfulness or actionability."
+   },
+   "swapped": {},
+   "position_consistent": false
+  },
+  {
+   "golden": "g2-delegation-forcing",
+   "replicate": 2,
+   "first_order": {
+    "winner": "2",
+    "reason": "Both plans are thorough and faithful, but Plan 2 makes better use of delegation (offloading the well-specified render_table implementation to a subagent with verification), pins more edge cases from test analysis before coding, and adds a concrete extra fix (correcting the stale module docstring) that improves the deliverable."
+   },
+   "swapped": {
+    "winner": "2",
+    "reason": "Plan 2 grounds its process in loaded procedures and derives an equally deep test-driven ladder while making the same judgment calls, but is more concretely actionable with an explicit expected-error-count ladder (29\u219222\u219214\u21928\u21920) and a cleaner no-delegation rationale, whereas Plan 1's mid-task delegation of render_table adds coordination overhead without clear benefit."
+   },
+   "position_consistent": false
+  },
+  {
+   "golden": "g2-delegation-forcing",
+   "replicate": 3,
+   "first_order": {
+    "winner": "2",
+    "reason": "Plan 2 is equally thorough but more concretely actionable, giving hand-verified expected outputs for render_table test cases and per-class test run commands, and it catches and fixes the module docstring's false 'stub' claim as an honest bookkeeping detail Plan 1 misses."
+   },
+   "swapped": {
+    "winner": "tie",
+    "reason": "Both plans are nearly identical in structure, reasoning, and rigor, with the same phase-by-phase verification, shlex rejection, and edge-case handling, so neither is more faithful or actionable than the other."
+   },
+   "position_consistent": false
+  },
+  {
+   "golden": "g3-contradiction",
+   "replicate": 1,
+   "first_order": {
+    "winner": "tie",
+    "reason": "Both plans reach identical conclusions (extend load_config, reject dotenv per README, patch.dict test, override only existing keys, flag the acceptance-check blind spot) with equally concrete phased steps and honest reporting, differing only in cosmetic presentation."
+   },
+   "swapped": {
+    "winner": "2",
+    "reason": "Plan 2 catches the same issues as Plan 1 but additionally surfaces a concrete, testable conflict\u2014the card's own .env verification setup would break the existing test_coerces_int_and_bool\u2014making its analysis more rigorous and actionable."
+   },
+   "position_consistent": false
+  },
+  {
+   "golden": "g3-contradiction",
+   "replicate": 2,
+   "first_order": {
+    "winner": "2",
+    "reason": "Plan 2 reaches the same faithful, well-flagged conclusions but is tighter and more concretely actionable, e.g. asserting both overridden and untouched keys in the new test and using a temp-cwd/patch.dict isolation that is more surgical than Plan 1's broader setUp/tearDown restore logic."
+   },
+   "swapped": {
+    "winner": "2",
+    "reason": "Plan 2 makes the same key rulings but goes further with concrete, harness-verifiable code (module-level import-time dotenv load, precedence matching python-dotenv, explicit app.py smoke tests) and a more actionable single-sweep delegation, making it slightly more faithful and concrete than Plan 1's otherwise-equivalent but more verbose treatment."
+   },
+   "position_consistent": false
+  },
+  {
+   "golden": "g3-contradiction",
+   "replicate": 3,
+   "first_order": {
+    "winner": "2",
+    "reason": "Plan 2 makes the same correct calls (README overrides card, scope to file-present keys, dotenv is inert) but is tighter, avoids wasteful haiku-subagent delegation for trivial file checks, and gives a clearer, more honest verification of the acceptance check without inflating process."
+   },
+   "swapped": {
+    "winner": "2",
+    "reason": "Plan 2 catches the deeper contradiction that loading .env would break the existing test_coerces_int_and_bool assertion (violating the card's own 4-tests/OK claim), and backs its process with concrete, verifiable subagent delegation rather than asserting delegation is unnecessary."
+   },
+   "position_consistent": false
+  },
+  {
+   "golden": "g1-decided-card",
+   "replicate": 1,
+   "first_order": {
+    "winner": "tie",
+    "reason": "Both plans are nearly identical in structure, reasoning, and concrete deliverables (same red/green trace, same docstring fix, same tasks.md flag handling, same refusal of scope creep), with no substantive difference in faithfulness or actionability."
+   },
+   "swapped": {
+    "winner": "tie",
+    "reason": "Both plans are nearly identical in structure, accuracy, and actionability, correctly tracing the tests, restricting to stdlib re, flagging the missing tasks.md, and disclosing the docstring edit, with no meaningful difference in faithfulness or concreteness."
+   },
+   "position_consistent": true
+  },
+  {
+   "golden": "g1-decided-card",
+   "replicate": 2,
+   "first_order": {
+    "winner": "tie",
+    "reason": "Both plans are nearly identical in structure, reasoning, and outcome, with equivalent code, verification, and honest flagging of deviations, so neither is meaningfully more faithful or actionable than the other."
+   },
+   "swapped": {
+    "winner": "2",
+    "reason": "Both plans are nearly identical in reasoning, but Plan 2 preserves the existing docstring content (only trimming the false clause rather than fully rewriting it) and gives more concrete stop-condition branches in the Red phase, making it slightly more faithful and actionable."
+   },
+   "position_consistent": false
+  },
+  {
+   "golden": "g1-decided-card",
+   "replicate": 3,
+   "first_order": {
+    "winner": "2",
+    "reason": "Plan 2 matches Plan 1's rigor but adds concrete branch handling for off-nominal outcomes at each stop point and correctly defers to the cycle-execution skill's report template instead of assuming its shape from memory."
+   },
+   "swapped": {
+    "winner": "tie",
+    "reason": "Both plans are nearly identical in structure, reasoning, and rigor (red/green/refactor discipline, pre-code check, docstring deviation disclosed, tasks.md gap flagged), with no material difference in faithfulness or actionability."
+   },
+   "position_consistent": false
+  },
+  {
+   "golden": "g4-brownfield-interface",
+   "replicate": 1,
+   "first_order": {
+    "winner": "2",
+    "reason": "Plan 2 makes the same sound design choice but backs it with a more rigorous test fixture (an order-disambiguating HOURLY_SAMPLE and empty-input case) and a more thorough close-out verification, making it slightly more concretely actionable."
+   },
+   "swapped": {
+    "winner": "tie",
+    "reason": "Both plans reach an identical, well-justified design (reuse _LINE.group('ts') rather than modifying parse_line) with nearly identical phased TDD execution, tests, and reporting rigor, differing only in cosmetic details."
+   },
+   "position_consistent": false
+  },
+  {
+   "golden": "g4-brownfield-interface",
+   "replicate": 2,
+   "first_order": {},
+   "swapped": {},
+   "position_consistent": false
+  },
+  {
+   "golden": "g4-brownfield-interface",
+   "replicate": 3,
+   "first_order": {
+    "winner": "2",
+    "reason": "Plan 2 runs an explicit baseline test pass before making changes and gives a concrete fallback if the split()[0] timestamp trick fails, making it slightly more rigorous and actionable while covering the same design tradeoffs as Plan 1."
+   },
+   "swapped": {
+    "winner": "2",
+    "reason": "Plan 2's re-matching of the _LINE regex reuses existing validation logic more cleanly than Plan 1's fragile line.split()[0][:13] assumption, and it also adds a concrete logcli.py smoke test to verify the unchanged-CLI guarantee rather than just asserting it by inspection."
+   },
+   "position_consistent": false
+  }
+ ],
+ "judge_cost_usd": 3.4829,
+ "judge_calls": 51
+}
