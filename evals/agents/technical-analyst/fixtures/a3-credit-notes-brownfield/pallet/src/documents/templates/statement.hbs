@@ -1,0 +1,4 @@
+{{!-- Monthly statement PDF template; rendered by documents.render with the statement subject loader --}}
+<h1>Statement {{id}} — {{period}}</h1>
+<table>{{#each invoices}}<tr><td>{{id}}</td><td>{{status}}</td><td>{{money total}}</td><td>{{money amount_outstanding}}</td></tr>{{/each}}</table>
+<p>Outstanding at {{period_end}}: {{money outstanding}}</p>

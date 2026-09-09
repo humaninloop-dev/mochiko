@@ -1,0 +1,37 @@
+// Pallet — schema excerpt: the models the live-stock feature touches.
+// Ids are prefixed ULIDs (sup_, prd_); money is integer minor units.
+
+enum InventorySource {
+  none
+  lightspeed
+  shopify
+  sftp_csv
+}
+
+model Supplier {
+  id               String          @id
+  name             String
+  contact_email    String
+  inventory_source InventorySource @default(none)
+  products         Product[]
+}
+
+enum ProductStatus {
+  active
+  paused
+  delisted
+}
+
+model Product {
+  id           String        @id
+  supplier_id  String
+  supplier     Supplier      @relation(fields: [supplier_id], references: [id])
+  name         String
+  supplier_sku String?       // the supplier's own code, where they gave us one (61% of products)
+  unit         String
+  price_minor  Int
+  currency     String        @default("GBP")
+  status       ProductStatus @default(active)
+  updated_at   DateTime      @updatedAt
+  // no stock fields today; "availability" is status == active
+}

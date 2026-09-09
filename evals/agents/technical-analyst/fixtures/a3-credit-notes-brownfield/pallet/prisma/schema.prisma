@@ -1,0 +1,102 @@
+// Pallet — schema excerpt: the models the credit-notes feature touches.
+// Ids are prefixed ULIDs (inv_, ord_, rtl_, sup_, pay_, adj_, doc_); money is integer minor units.
+
+model Retailer {
+  id            String    @id
+  name          String
+  contact_email String
+  invoices      Invoice[]
+}
+
+model Supplier {
+  id            String    @id
+  name          String
+  currency      String    // "GBP" | "EUR"
+  contact_email String
+  invoices      Invoice[]
+}
+
+enum InvoiceStatus {
+  draft
+  issued
+  paid
+  void
+}
+
+model Invoice {
+  id                String        @id
+  order_id          String        @unique
+  supplier_id       String
+  retailer_id       String
+  status            InvoiceStatus @default(draft)
+  issued_at         DateTime?
+  due_at            DateTime?
+  total_minor       Int
+  amount_paid_minor Int           @default(0)
+  currency          String
+  lines             InvoiceLine[]
+  payment           Payment?
+  document          Document?
+  supplier          Supplier      @relation(fields: [supplier_id], references: [id])
+  retailer          Retailer      @relation(fields: [retailer_id], references: [id])
+}
+
+model InvoiceLine {
+  id               String  @id
+  invoice_id       String
+  product_id       String
+  description      String
+  quantity         Int
+  unit_price_minor Int
+  line_total_minor Int
+  invoice          Invoice @relation(fields: [invoice_id], references: [id])
+}
+
+model Payment {
+  id               String    @id
+  invoice_id       String    @unique
+  stripe_intent_id String
+  kind             String    // "card" | "bacs_debit"
+  status           String    // "pending" | "succeeded" | "failed"
+  settled_at       DateTime?
+  amount_minor     Int
+  authorised_by    String
+  invoice          Invoice   @relation(fields: [invoice_id], references: [id])
+}
+
+// Delivery quantity adjustments noted at the door (short or over delivery); they change the
+// order lines BEFORE the invoice is issued. Exposed at POST /orders/{id}/adjustments.
+model Adjustment {
+  id             String   @id
+  order_id       String
+  order_line_id  String
+  delta_quantity Int
+  reason         String   // "short" | "over" | "damaged"
+  noted_by       String
+  noted_at       DateTime @default(now())
+}
+
+enum DocumentKind {
+  invoice
+  statement
+}
+
+model Document {
+  id          String       @id
+  kind        DocumentKind
+  subject_id  String       @unique // the invoice or statement id
+  status      String       // "queued" | "rendered" | "failed"
+  storage_key String?
+  rendered_at DateTime?
+  invoice     Invoice?     @relation(fields: [subject_id], references: [id])
+}
+
+model AuditEvent {
+  id          String   @id
+  actor_id    String
+  action      String
+  subject     String   // e.g. "invoice:inv_01J8Q2..."
+  before      Json?
+  after       Json?
+  occurred_at DateTime @default(now())
+}
