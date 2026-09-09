@@ -90,5 +90,5 @@ three claims gets one golden re-cut before it is declared ready.
   tempted pairs sit inside the band; (b) **not met** on the pre-registered all-pairs read (27.1 % > 15 %),
   met on the tempted-only read (14.3 %); (c) met (0.958 ≥ 0.80; contradicted bar not exercised). Kit status:
   **READY pending the band ruling above.**
-- re-key count: 0 (the tempted-only figure is recorded, not adopted)
+- re-key count: 1 — the invited-only band ADOPTED 2026-09-09 by ruling (ADR `2026-09-09-persona-band-invited-only`), post-hoc for this kit and disclosed as such: band **19.3 %** uncapped (4/28 invited pairs), ship bar (b) met. Kit status: **READY**.
 - disclosure at the kit audit: `precise-rfc-2119-demanded` is tempted only by t1, whose draft is already MUST-shaped — a thin temptation; read it knowing that. `scope-design-not-governance` sits plan-observable + untempted (no wave-A golden plants governance under the feasibility lens). The judge prompt's sha is now pinned into every run (`judge_prompt_sha256`), so the polarity widening is visible in run records; grids compare only within a pin.

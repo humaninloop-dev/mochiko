@@ -132,3 +132,4 @@ arms. (a) failing after one re-key, or (c) failing twice, triggers the stopping 
   control failure is about the shape of the edit under a plan-only observable (D2 `Contested`), not a
   mechanical defect a re-key would settle.
 - **ruling 2026-09-09 (user): accept** — pilot 1 closes on this reading; latitude-conditional claims are out of instrument for the plan-only target (ADR `2026-09-09-persona-pilot-1-latitude-out-of-instrument`); the seven delegation claims re-partitioned in `rules.json`; pilot 2 proceeds on `validator`.
+- band recount under ADR `2026-09-09-persona-band-invited-only` (invited pairs only): `pre` 5/13 = 38.5 %, `post` 8/13 = 61.5 % — the latitude claims this pilot ruled out of instrument dominate the invited set; the pilot's reading stands.

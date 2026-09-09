@@ -786,6 +786,7 @@ def cmd_report(persona: str, name: str) -> None:
              "preregistration.md — the positive control and the noise band live there.", "",
              f"Graded claims: {len(graded)} · untempted (disclosed, not read): {len(untempted)}"
              + (f" {untempted}" if untempted else ""), ""]
+    band_counts: dict = {}
     for g in sorted({e["golden"] for e in meta["runs"]}):
         lines.append(f"## {g}")
         pre = [e for e in meta["runs"] if e["golden"] == g and e["arm"] == "pre"]
@@ -862,10 +863,27 @@ def cmd_report(persona: str, name: str) -> None:
             lines.append(f"- **removed claims still surfacing:** {ghosts}")
         lines.append(f"- flaky claims (replicate disagreement — noise-guard input): {len(flaky_ids)}"
                      + (f" {flaky_ids}" if flaky_ids else ""))
-        lines.append("- flaky share per arm (band input): "
+        # Band input (2026-09-09 invited-only re-key, ADR persona-band-invited-only): the band
+        # counts only the (golden, claim) pairs this golden tempts. Uninvited pairs are still
+        # judged and still feed coverage, but a claim read against a task that never invites
+        # it is a control read, not a noise measurement — it inflates the band with near-misses
+        # (tech-lead t2) or dilutes it with trivial absents (staff-engineer pilot 1).
+        invited = [r for r in graded if r in g_tempts]
+        for a, f, runs_ in (("pre", flaky_pre, pre), ("post", flaky_post, post)):
+            if runs_:
+                band_counts.setdefault(a, [0, 0, 0, 0])
+                band_counts[a][0] += sum(1 for r in f if r in invited)
+                band_counts[a][1] += len(invited)
+                band_counts[a][2] += len(f)
+                band_counts[a][3] += len(graded)
+        lines.append("- flaky share per arm (band input — invited pairs only): "
+                     + " · ".join(f"{a} {sum(1 for r in f if r in invited)}/{len(invited)}"
+                                  for a, f, runs_ in (("pre", flaky_pre, pre), ("post", flaky_post, post))
+                                  if runs_)
+                     + "  (all graded claims, disclosure: "
                      + " · ".join(f"{a} {len(f)}/{len(graded)}"
                                   for a, f, runs_ in (("pre", flaky_pre, pre), ("post", flaky_post, post))
-                                  if runs_))
+                                  if runs_) + ")")
         for e in pre + post:
             if e["asserts"]["cap_hit"]:
                 lines.append(f"- WARN cap-hit {e['arm']}/r{e['replicate']}")
@@ -878,6 +896,14 @@ def cmd_report(persona: str, name: str) -> None:
                  for e in pre + post}
         lines.append("- read-trace (Read targets per arm/replicate): "
                      + "; ".join(f"{a}/r{r}: {len(t)}" for (a, r), t in sorted(reads.items())))
+        lines.append("")
+    if band_counts:
+        lines.append("## Band input — all goldens (invited pairs only; ADR 2026-09-09 persona-band-invited-only)")
+        for a, (fi, ni, fa, na) in sorted(band_counts.items()):
+            share = 100 * fi / ni if ni else 0.0
+            lines.append(f"- {a}: flaky {fi}/{ni} invited pairs = {share:.1f} % → band {min(share + 5, 20):.1f} % "
+                         f"(+5, capped 20)  · all graded claims: {fa}/{na}"
+                         + ("  · UNDER-SAMPLED (< 8 invited pairs)" if ni < 8 else ""))
         lines.append("")
     for p in meta.get("pairwise", []):
         lines.append(f"- pairwise {p['golden']}/r{p['replicate']}: "

@@ -78,3 +78,4 @@ three claims gets one golden re-cut before it is declared ready.
 - re-key count: 0 (no judge or golden change; one partition move by the conditional rule)
 - kit status: **READY** for the next `devils-advocate` edit — graded set two claims; the cheap-read trio, the
   runtime remit, and the ready-verdict claim out of instrument; fifteen claims model-native.
+- band recount under ADR `2026-09-09-persona-band-invited-only` (invited pairs only): `post` 1/2 = 50 % → **UNDER-SAMPLED**, band at the cap (20 %); the one flaky invited pair is the d3 persona finding. Kit stays READY with the mark; its next edit takes one extra replicate per arm before any difference is read.

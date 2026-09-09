@@ -153,3 +153,4 @@ rule.
   - pairwise (Sonnet): position 2 preferred in 23 of 24 calls, position-consistent 0 of 12 — uninformative.
 - re-key count: 0 (judge-prompt re-key from pilot 1 applied pre-session)
 - **ruling 2026-09-09 (user): accept as recommended** — pilot 2 closes on this reading (ADR `2026-09-09-persona-pilot-2-validator-read`): dispatch-conditional claims out of instrument for grep-fenced graders; the foreclosing-step rule settled in the judge prompt and labelling rule; pairwise dropped; the target proven for must-shaped judgment claims; wave A opens.
+- band recount under ADR `2026-09-09-persona-band-invited-only` (invited pairs only, `agent-report` aggregate): `pre` 1/10 = 10.0 % (band 15.0 %), `post` 1/10 = 10.0 % — the guard does not trip under the invited count; the pilot's ruling rests on the control-not-exercised evidence and stands.
