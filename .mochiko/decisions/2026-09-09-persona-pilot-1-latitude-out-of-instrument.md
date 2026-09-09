@@ -21,7 +21,7 @@
 - **Decision:**
   1. **Latitude-conditional claims are `out-of-instrument` for the plan-only persona target.**
      A claim whose observable behaviour exists only when the persona takes a path its own text
-     leaves to its discretion (the six delegation claims conditional on `whether-delegate-call-per`)
+     leaves to its discretion (the seven delegation claims conditional on `whether-delegate-call-per`)
      carries partition `out-of-instrument`, reason `latitude-conditional`, unless a golden makes
      the path non-optional by construction. The partition vocabulary gains that reason.
   2. **Pilot 1 closes on this reading.** The persona target stands for non-latitude claims: the
