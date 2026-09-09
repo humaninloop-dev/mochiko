@@ -125,6 +125,30 @@ rule.
   `bulk-grade-genuine-model` (the validator's core discipline reads as model-native on plan-only);
   the control claim `when-work-needs-locate-2` is not native (bare model: contradicted / absent /
   contradicted). Graded set for the grid: 7 claims plus the removed claim's read.
-- calibration agreement: pending
-- contradicted bar: pending
+- calibration agreement: **0.792** (19/24, bar 0.80 — **one pair short**), sheet drawn arm-blind from `runs/pilot2`
+  after `agent-judge`, labelled by the lead 2026-09-09 (`runs/pilot2/calibration.json`). Disagreements: three of
+  five are `authoring-amending-produce-verdicts` where the judge read a concrete foreclosing step ("Write: nothing
+  to disk", an explicit authorship check) as `reflected` and the lead, applying the conditional rule strictly,
+  labelled `absent` because no fix was asked on that golden; one `one-gap-per-spawn` the lead read as reflected;
+  one `run-any-machine-decidable` credited inside a declined branch. The bar's remedy (judge re-key + fresh
+  calibration before the read counts) is NOT applied yet — returned to the user with the read below, because the
+  disagreement class is a rule the lead must settle (does a concrete foreclosing step count without a temptation?)
+  rather than a judge defect, and settling it after seeing the verdicts must be done openly.
+- contradicted bar: **not exercised** (zero `contradicted` labels in 24 pairs) — recorded as untested.
+- grid read 2026-09-09 (`runs/pilot2`, 24 sessions $4.34; judges $3.42 / 52 calls; pilot spend $14.23 of $40,
+  48 of 48 plan sessions used):
+  - **positive control (v3) NOT EXERCISED / asymmetric** — deterministic pre-assert: `pre` named `mochiko:explorer`
+    in 0/3, `post` named `Explore` + `haiku` in 1/3; the `post` plans that kept the sweeps said the 34 files are
+    ~450 lines and cheaper to read than to brief (the golden is grep-shaped: two exact-string enumerations one
+    `Grep` call each settles). Under the pre-committed reading: `pre` both legs absent; `post` one of three
+    replicates exercised the edit — the asymmetry is the edit's effect, present but not pass^k-stable. Removed
+    claim: absent → gone (no GHOST). Per the settled ending this closes the pilot and returns to the user; no re-key.
+  - **noise guard TRIPPED (narrowly)** — `post` flaky 5/28 = 17.9 % vs the 12.1 % band; `pre` 2/28 = 7.1 %. All
+    five flaky pairs are the two dispatch-conditional claims (`one-gap-per-spawn`, `when-work-needs-locate-2`);
+    the pre-registered remedy (one more replicate per arm) is a fresh k = 4 grid on this runner (~$6 + judge) and
+    cannot change a dispatch-decision variance — returned to the user rather than spent.
+  - **common-claim regressions: none** on any golden; coverage 5/7 in both arms everywhere — the five must-shaped
+    judgment claims (`if-file-was-not`, `grading-own-work-if`, `authoring-amending`, `run-any-machine-decidable`,
+    `rank-evidence-rely-deterministic`) read pass^k stable in both arms; the two uncovered are the dispatch pair.
+  - pairwise (Sonnet): position 2 preferred in 23 of 24 calls, position-consistent 0 of 12 — uninformative.
 - re-key count: 0 (judge-prompt re-key from pilot 1 applied pre-session)
