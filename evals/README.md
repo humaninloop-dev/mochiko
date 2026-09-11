@@ -14,10 +14,10 @@ runner, `evals/commands/run.py` + `agents.py`) — under one ruling set and one 
 
 | term | meaning |
 |---|---|
-| **golden** | one frozen scenario: fixture + prompt/card + `expected_output` + assertions (+ `tempts` for personas); changes only as a landing act |
+| **golden** | one frozen scenario: fixture + prompt/card + `expected_output` + assertions + `tempts` (the rule/claim ids it invites — the band's denominator); changes only as a landing act |
 | **rules / claims** | the rubric — a skill's rule inventory, a command's schema rule ids, a persona's body-derived claims with minted ids |
 | **partition** | `plan-observable` vs `out-of-instrument` (+ why) — every rule/claim in exactly one list; commands in `observable.yaml`, personas inside `rules.json` |
-| **arms** | skills `noskill · baseline · armA · armB`; commands/personas `pre` (at `--old-ref`) · `post` (working tree); `nocmd` / `nopersona` = bare-model control |
+| **arms** | every target `pre` (at `--old-ref`) · `post` (working tree); `noskill` / `nocmd` / `nopersona` = bare-model control (skills' legacy `baseline · armA · armB` runs stay readable, never runnable) |
 | **pre-registration** | `preregistration.md` before any grid: read rule, tolerance band, noise guard, ship bar (personas: + positive control, stopping rule, judge calibration bar, budget bound) |
 | **pass^k** | a rule/claim holds only if it holds in every replicate |
 | **deterministic-may-block / judge-advisory** | scripted asserts may fail a run; LLM-judge readings never set an exit code (old D2, re-affirmed v2) |
@@ -28,19 +28,31 @@ runner, `evals/commands/run.py` + `agents.py`) — under one ruling set and one 
 
 ## What one run is
 
-One isolated `claude -p --bare` session, loading a **synthesized minimal plugin** that carries
-only the skill variant under test, executing one golden prompt in a throwaway workspace. The
-produced artifact is graded two ways:
+One isolated `claude -p` session on the host's stored subscription auth (`--setting-sources ""`
+so no user-level install loads beside the provisioned tree), loading the **whole `plugins/mochiko`
+tree** provisioned OUTSIDE the workspace — the working tree for `post`, a git-archived `--old-ref`
+for `pre`, no plugin at all for the bare-model `noskill` control — executing one golden prompt in a
+throwaway workspace seeded from the golden's `fixture`. Rules ride the plugin's migration log
+rendered by `mochiko-cli` at fire (v0.107.0 end state), so the whole plugin is the unit under test;
+the pre-v0.107.0 synthesized single-skill plugin and the `variants/` staging are retired
+(converged 2026-09-11, runner review PASS after fixes). The produced artifact — every workspace
+file the session wrote or changed — is graded two ways:
 
 - **Scripted assertions** (deterministic, from `evals.json`) — may block.
-- **Rule-coverage checklist** (Haiku judge; one binary per baseline rule with a quoted
-  evidence span) — advisory. Aggregation is **pass^k**: a rule holds only if it holds in all
-  replicates.
-- A **pairwise blind A/B** (Sonnet judge, position-swapped) runs as a secondary sanity read.
+- **Rule-coverage checklist** (Haiku judge; one binary per rule with a quoted evidence span; a
+  restated principle is not evidence) — advisory. Aggregation is **pass^k** over valid runs.
+- A **pairwise blind A/B** (Sonnet judge, position-swapped, `pre` vs `post`) is opt-in
+  `--pairwise` — position-biased in both pilots.
 
-Arms: `noskill` (control — rules that pass here measure the model, not the skill, and are
-pruned) · `baseline` (current `plugins/mochiko/skills/<skill>/`) · `armA` · `armB`
-(variants staged by the `compressing-skills` repo skill).
+**Load gate per run** (mirrors the persona runner): the provisioned plugin appears in the init
+event with its pinned version · a `Skill` tool_use names the skill (invocation is explicit in the
+golden prompt) · no `mochiko-cli rules not delivered` halt · session model as pinned · a result
+event without `is_error` · the rendered-rules pin succeeded; the control must run bare (no plugin, no skill). A run failing the gate
+is recorded `invalid`, excluded from every read, listed in the report, and makes the grid exit 2.
+The Skill tool and the rule-delivery binary are pre-allowed (`--allowedTools Skill,Bash(mochiko-cli:*)`)
+because headless cannot answer a permission prompt. Pins per run: plugin version · `SKILL.md` sha ·
+rendered-rules sha and chars (the skill's `!` lines run with the provisioned tree as root) · judge
+prompt sha · session model.
 
 ## Layout
 
@@ -48,11 +60,11 @@ pruned) · `baseline` (current `plugins/mochiko/skills/<skill>/`) · `armA` · `
 evals/
   run.py                      # the runner
   <skill>/
-    evals.json                # 3 goldens: {id, prompt, expected_output?, assertions[]}
-    rules.json                # rule inventory: {id, rule, class, source}
+    evals.json                # 3 goldens: {id, prompt, fixture?, expected_output?, assertions[], tempts?}
+    fixtures/<name>/          # workspace files a golden seeds (the artifact under review + context)
+    rules.json                # rule inventory: {id, rule, class, source} (re-keyed onto log ids, rekey.md)
     preregistration.md        # ship bar + delivered-chars arithmetic — REQUIRED before a grid
-    variants/armA/ armB/      # full skill-dir copies (staged by compressing-skills)
-    runs/<stamp>/             # transcripts, artifacts, summary.json, report.md
+    runs/<stamp>/             # artifacts, result text, streams, summary.json, report.md
     pass-report.md            # the compression pass report (compressing-skills step 7)
     baseline/                 # committed baseline results; regenerate only as a landing act
 ```
@@ -60,30 +72,26 @@ evals/
 ## Usage
 
 ```
-python3 evals/run.py probe   <skill>              # R5: settle flags empirically (1 cheap run)
-python3 evals/run.py grid    <skill> [--replicates 3] [--arms noskill,baseline,armA,armB]
-python3 evals/run.py report  <skill>              # rebuild report.md from the latest run
+python3 evals/run.py probe   <skill> [--arm post|pre] [--old-ref <ref>]   # R5: mechanics (1 cheap run)
+python3 evals/run.py grid    <skill> [--replicates 3] [--arms noskill,post] [--old-ref <ref>] [--out <name>] [--pairwise]
+python3 evals/run.py rejudge <skill> --out <name>                          # judges only, no sessions
+python3 evals/run.py report  <skill> [--out <name>]                        # rebuild report.md
 ```
 
-Requirements — **sandbox mode (default)**: Docker AI sandbox `claude-mochiko` (`sbx` CLI)
-with a logged-in claude agent; sessions run via `sbx exec` on the sandbox's stored
-subscription auth — no API key. Isolation (probe-settled 2026-08-22, R5): neutral cwd
-`/tmp/eval-*` inside the sandbox + `--setting-sources ""` (the sandbox carries a user-level
-mochiko plugin install that otherwise loads the real skill beside the variant; the probe
-caught it). `--bare` is dropped in sandbox mode — it skips stored credentials by design.
-`plugin_errors` was FIELD-ABSENT on CLI 2.1.221; the load gate is "synthesized skill visible
-in the init event" instead. **`--local` mode**: the original `claude -p --bare` path;
-requires `ANTHROPIC_API_KEY` (metered spend; `total_cost_usd` is a client-side estimate). Session model under test: Sonnet (ruled R7). Judges: Haiku (checklist), Sonnet (pairwise —
-baseline vs each variant, first replicate per golden, position-swapped). Permission mode is
-`acceptEdits`, a recorded divergence from the record's `dontAsk` wording: I2 found `dontAsk`
-denies writes absent allow rules; R5 mandates settling the flags empirically, and
-`acceptEdits` is the build's call under that mandate — the probe verifies it.
+A grid persists `summary.json` after every session and resumes a named `--out` by skipping stored
+(arm, golden, replicate) sessions — to redo an arm, name a new `--out`. Session model under test:
+Sonnet (ruled R7). Judges: Haiku (checklist), Sonnet (pairwise, opt-in). Permission mode is
+`acceptEdits`, a recorded divergence from the record's `dontAsk` wording (I2 found `dontAsk` denies
+writes; R5 mandates settling flags empirically — the probe verifies it). `--local` keeps the original
+`--bare` + `ANTHROPIC_API_KEY` path (metered). Requirements: a logged-in `claude` and `mochiko-cli`
+on PATH (the plugin's SessionStart hook prints its version line).
 
 ## Discipline (ruled; do not relax in code review)
 
 - The grid refuses to run without `preregistration.md` (R6/R9).
 - Floor-class rules are absolute: one lost floor rule kills the arm.
 - Judges are advisory — the runner exits 0 on judged degradation and nonzero only on
-  mechanical failure (missing prereq, spawn failure, failed scripted assertion in `baseline`).
+  mechanical failure (missing prereq, spawn failure, a failed scripted assertion on `post`, or
+  an invalid run on any arm).
 - Baseline results under `baseline/` are committed and regenerated only as a deliberate,
   reviewed act.
