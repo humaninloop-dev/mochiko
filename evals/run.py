@@ -51,7 +51,9 @@ CHECKLIST_MODEL = "haiku"   # checklist judge (D8)
 PAIRWISE_MODEL = "sonnet"   # pairwise judge (D8; opt-in — position-biased in both pilots)
 MAX_TURNS = 40
 PERMISSION_MODE = "acceptEdits"
-ALLOWED_TOOLS = "Skill,Bash(mochiko-cli:*),Bash(mochiko-cli *)"
+# python is pre-allowed for the skills that ship a checker script (review-plan-artifacts
+# runs scripts/check-artifacts.py as its tier-1 pre-assert; the real seat runs it too).
+ALLOWED_TOOLS = "Skill,Bash(mochiko-cli:*),Bash(mochiko-cli *),Bash(python3:*),Bash(python3 *),Bash(python:*),Bash(python *)"
 ARMS = ["noskill", "pre", "post"]
 LEGACY_ARMS = ["baseline", "armA", "armB"]   # readable in pre-convergence runs, never run
 

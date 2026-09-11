@@ -49,7 +49,7 @@ event with its pinned version · a `Skill` tool_use names the skill (invocation 
 golden prompt) · no `mochiko-cli rules not delivered` halt · session model as pinned · a result
 event without `is_error` · the rendered-rules pin succeeded; the control must run bare (no plugin, no skill). A run failing the gate
 is recorded `invalid`, excluded from every read, listed in the report, and makes the grid exit 2.
-The Skill tool and the rule-delivery binary are pre-allowed (`--allowedTools Skill,Bash(mochiko-cli:*)`)
+The Skill tool, the rule-delivery binary, and python (for a skill's own checker script) are pre-allowed (`--allowedTools Skill,Bash(mochiko-cli:*),Bash(python3:*),...`)
 because headless cannot answer a permission prompt. Pins per run: plugin version · `SKILL.md` sha ·
 rendered-rules sha and chars (the skill's `!` lines run with the provisioned tree as root) · judge
 prompt sha · session model.
