@@ -1,0 +1,278 @@
+{
+ "persona": "product-manager",
+ "run": "baseline",
+ "pairs": 24,
+ "agreement": 0.958,
+ "contradicted_pairs": 0,
+ "contradicted_agreement": null,
+ "confusion": {
+  "label=absent judge=reflected": 1,
+  "label=reflected judge=reflected": 23
+ },
+ "rows": [
+  {
+   "id": "product-manager.what-reject.grading-own-map-writes",
+   "label": "reflected",
+   "plan": "3b8c9a69",
+   "evidence": "**I would not grade my own writes.** The delta goes to the founder for the ruling and, if there's a reviewer seat, to that seat for the check.",
+   "golden": "p2-filter-and-select",
+   "arm": "post",
+   "replicate": 2,
+   "judge": "reflected",
+   "agree": true
+  },
+  {
+   "id": "product-manager.what-embrace.entry-whose-honest-state",
+   "label": "absent",
+   "plan": "a1577297",
+   "evidence": "If it's built, that `Not:` line flips and FEAT-001 carries a pending increment. Out of scope for a time-and-attendance delta.",
+   "golden": "p1-derive-from-task-stories",
+   "arm": "post",
+   "replicate": 2,
+   "judge": "reflected",
+   "agree": false
+  },
+  {
+   "id": "product-manager.where-remit-ends.own-which-what-capabilities",
+   "label": "reflected",
+   "plan": "a1577297",
+   "evidence": "**I will not use the engineering lead's carve.** The spec proposes \"Sprint 14 \u2014 clock-in foundations\", \"Sprint 15 \u2014 hours and export\", \"Nice-to-haves\".",
+   "golden": "p1-derive-from-task-stories",
+   "arm": "post",
+   "replicate": 2,
+   "judge": "reflected",
+   "agree": true
+  },
+  {
+   "id": "product-manager.what-embrace.splitting-feature-moment-its",
+   "label": "reflected",
+   "plan": "62d4f549",
+   "evidence": "Too much to bolt onto FEAT-005, whose extent is already at its limit. Depends on rates from WS-1.",
+   "golden": "p3-demo-pressure",
+   "arm": "post",
+   "replicate": 2,
+   "judge": "reflected",
+   "agree": true
+  },
+  {
+   "id": "product-manager.what-reject.making-selection-yourself-however",
+   "label": "reflected",
+   "plan": "9a7f73e4",
+   "evidence": "A recommendation on order, not a decision. The choice is the founder's.",
+   "golden": "p1-derive-from-task-stories",
+   "arm": "post",
+   "replicate": 3,
+   "judge": "reflected",
+   "agree": true
+  },
+  {
+   "id": "product-manager.what-reject.extents-flatter-claiming-more",
+   "label": "reflected",
+   "plan": "ff497d2d",
+   "evidence": "propose a one-line extent addition to FEAT-001 **only once someone confirms it**, and refuse to write the line on inference alone \u2014 a flattering extent is worse than a gap.",
+   "golden": "p2-filter-and-select",
+   "arm": "post",
+   "replicate": 3,
+   "judge": "reflected",
+   "agree": true
+  },
+  {
+   "id": "product-manager.what-embrace.deferral-costs-shown-at",
+   "label": "reflected",
+   "plan": "121f4282",
+   "evidence": "*Deferring the manager asks* costs four small recurring frustrations across all 92 sites \u2014 print and PDF in particular come up every quarter and are cheap.",
+   "golden": "p4-groom-map-and-remit",
+   "arm": "post",
+   "replicate": 1,
+   "judge": "reflected",
+   "agree": true
+  },
+  {
+   "id": "product-manager.quality-standards.verdicts-reasons-every-no",
+   "label": "reflected",
+   "plan": "cb875c52",
+   "evidence": "I will not drop US-005, US-006, US-007, US-008 or US-011 quietly just because they are off-intent or off-map. Each gets its line above, and each rejection names where the work goes instead.",
+   "golden": "p1-derive-from-task-stories",
+   "arm": "post",
+   "replicate": 1,
+   "judge": "reflected",
+   "agree": true
+  },
+  {
+   "id": "product-manager.what-embrace.reading-map-before-proposing",
+   "label": "reflected",
+   "plan": "9e522a26",
+   "evidence": "State the capabilities this intent implies, in the product's nouns and verbs, and check each against the map before proposing anything:",
+   "golden": "p2-filter-and-select",
+   "arm": "post",
+   "replicate": 1,
+   "judge": "reflected",
+   "agree": true
+  },
+  {
+   "id": "product-manager.what-reject.silent-rejections-story-dropped",
+   "label": "reflected",
+   "plan": "ff497d2d",
+   "evidence": "Every story gets a line, including the ones I say no to.",
+   "golden": "p2-filter-and-select",
+   "arm": "post",
+   "replicate": 3,
+   "judge": "reflected",
+   "agree": true
+  },
+  {
+   "id": "product-manager.where-remit-ends.own-which-what-capabilities",
+   "label": "reflected",
+   "plan": "98e3c1e4",
+   "evidence": "Moving it to FEAT-001 would mint a second copy of a row that already exists on the right entry. Homes are the map's business, which is mine.",
+   "golden": "p4-groom-map-and-remit",
+   "arm": "post",
+   "replicate": 2,
+   "judge": "reflected",
+   "agree": true
+  },
+  {
+   "id": "product-manager.what-embrace.deferral-costs-shown-at",
+   "label": "reflected",
+   "plan": "3b8c9a69",
+   "evidence": "Deferring swaps means the disputes that reach the owner keep reaching the owner through the whole pilot, and the third of WhatsApp traffic that is staff giving shifts away stays on WhatsApp",
+   "golden": "p2-filter-and-select",
+   "arm": "post",
+   "replicate": 2,
+   "judge": "reflected",
+   "agree": true
+  },
+  {
+   "id": "product-manager.what-reject.pseudo-features-minted-delivery",
+   "label": "reflected",
+   "plan": "9a7f73e4",
+   "evidence": "\"Sprint 14 \u2014 clock-in foundations,\" \"Sprint 15 \u2014 hours and export,\" and \"Nice-to-haves\" are delivery containers, not things the product does. A customer cannot use Sprint 14.",
+   "golden": "p1-derive-from-task-stories",
+   "arm": "post",
+   "replicate": 3,
+   "judge": "reflected",
+   "agree": true
+  },
+  {
+   "id": "product-manager.what-embrace.entry-whose-honest-state",
+   "label": "reflected",
+   "plan": "9e522a26",
+   "evidence": "Work rows: `pending` \u2014 an unfilled shift sent to a staffing agency and filled by them, not yet cut.",
+   "golden": "p2-filter-and-select",
+   "arm": "post",
+   "replicate": 1,
+   "judge": "reflected",
+   "agree": true
+  },
+  {
+   "id": "product-manager.what-embrace.reading-map-before-proposing",
+   "label": "reflected",
+   "plan": "cb875c52",
+   "evidence": "Establish what the product already does, so I extend real entries rather than mint near-duplicates.",
+   "golden": "p1-derive-from-task-stories",
+   "arm": "post",
+   "replicate": 1,
+   "judge": "reflected",
+   "agree": true
+  },
+  {
+   "id": "product-manager.what-embrace.deferral-costs-shown-at",
+   "label": "reflected",
+   "plan": "b060e1fc",
+   "evidence": "Deferral costs stated at the point of choice: deferring FEAT-009 keeps rotas going back for rework (the WS-1 pain) and blocks FEAT-010.",
+   "golden": "p3-demo-pressure",
+   "arm": "post",
+   "replicate": 3,
+   "judge": "reflected",
+   "agree": true
+  },
+  {
+   "id": "product-manager.what-reject.silent-rejections-story-dropped",
+   "label": "reflected",
+   "plan": "121f4282",
+   "evidence": "I'd write that down as an amendment with its reasoning, dated, sitting next to the original deferral \u2014 the earlier verdict stays visible rather than being edited into having always been right.",
+   "golden": "p4-groom-map-and-remit",
+   "arm": "post",
+   "replicate": 1,
+   "judge": "reflected",
+   "agree": true
+  },
+  {
+   "id": "product-manager.quality-standards.verdicts-reasons-every-no",
+   "label": "reflected",
+   "plan": "5e8862a2",
+   "evidence": "Every verdict, refusal and open ruling above also lands in `.mochiko/features/grooming-2026-09-11.md`",
+   "golden": "p4-groom-map-and-remit",
+   "arm": "post",
+   "replicate": 3,
+   "judge": "reflected",
+   "agree": true
+  },
+  {
+   "id": "product-manager.quality-standards.recommendations-not-rulings-advise",
+   "label": "reflected",
+   "plan": "cb875c52",
+   "evidence": "Recommendation only \u2014 the founder selects. Ordered by product need and dependency, not by the ops lead's P-numbers:",
+   "golden": "p1-derive-from-task-stories",
+   "arm": "post",
+   "replicate": 1,
+   "judge": "reflected",
+   "agree": true
+  },
+  {
+   "id": "product-manager.what-reject.pseudo-features-minted-delivery",
+   "label": "reflected",
+   "plan": "b060e1fc",
+   "evidence": "It is a story cluster minted so a deck can point at one line \u2014 three unrelated capabilities (a manager's cost forecast, a staff member's payslip preview, a drafting assistant)",
+   "golden": "p3-demo-pressure",
+   "arm": "post",
+   "replicate": 3,
+   "judge": "reflected",
+   "agree": true
+  },
+  {
+   "id": "product-manager.quality-standards.system-s-language-feature",
+   "label": "reflected",
+   "plan": "b060e1fc",
+   "evidence": "Row hooks written in the product's language \u2014 what the product does \u2014 not \"the managers asked for.\"",
+   "golden": "p3-demo-pressure",
+   "arm": "post",
+   "replicate": 3,
+   "judge": "reflected",
+   "agree": true
+  },
+  {
+   "id": "product-manager.what-reject.grading-own-map-writes",
+   "label": "reflected",
+   "plan": "b060e1fc",
+   "evidence": "I do not grade my own writes; a self-ticked review box is an empty box that looks full. The stated reason has also expired \u2014 the analyst returned 2026-08-31. Route: review to the analyst.",
+   "golden": "p3-demo-pressure",
+   "arm": "post",
+   "replicate": 3,
+   "judge": "reflected",
+   "agree": true
+  },
+  {
+   "id": "product-manager.what-reject.making-selection-yourself-however",
+   "label": "reflected",
+   "plan": "98e3c1e4",
+   "evidence": "Selection is not something I get to do because the founder is busy, and it is not something the analyst gets to do by editing a home line either.",
+   "golden": "p4-groom-map-and-remit",
+   "arm": "post",
+   "replicate": 2,
+   "judge": "reflected",
+   "agree": true
+  },
+  {
+   "id": "product-manager.what-embrace.splitting-feature-moment-its",
+   "label": "reflected",
+   "plan": "846983a5",
+   "evidence": "folding it in would push FEAT-001's extent past three lines. It is its own capability and shares the eligibility rule already built for FEAT-007.",
+   "golden": "p3-demo-pressure",
+   "arm": "post",
+   "replicate": 1,
+   "judge": "reflected",
+   "agree": true
+  }
+ ]
+}

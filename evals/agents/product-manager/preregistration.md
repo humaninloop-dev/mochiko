@@ -105,13 +105,29 @@ is declared ready.
 
 ## Fill log
 
-- band (invited pairs; all-pairs in parentheses): **[measured at baseline]**
-- prune result (claims tagged model-native, sessions, spend): **[measured at baseline]**
-- coverage read (pass^k per tempted claim; flaky pairs listed by golden): **[measured at baseline]**
-- calibration agreement (labeller, pairs, seed; disagreements named): **[measured at baseline]**
-- contradicted bar: **[measured at baseline]**
-- budget (sessions; prune + grid + judge spend): **[measured at baseline]**
-- ship bar (a) / (b) / (c): **[measured at baseline]**
+- band (invited pairs; all-pairs in parentheses): **flaky 0/45 invited pairs = 0 % → 5 % uncapped** (all
+  graded claims 1/60). Ship bar (b) met with the widest margin in the wave.
+- prune result (claims tagged model-native, sessions, spend): **7 of 22 plan-observable claims model-native**
+  (`runs/baseline-prune`, 12 nopersona sessions, $5.68) — the read-first half of map-before-invention, the
+  disagreement-goes-to-user remit split, and five embrace/reject claims; the fixture echo cut at the kit
+  audit held (the bare model did not carry the remit or selection rules). Graded set: 15 claims — 45 invited
+  pairs (p1 12 · p2 10 · p3 11 · p4 12).
+- coverage read (pass^k per tempted claim; flaky pairs listed by golden): **45/45 invited pairs pass^k**
+  (`runs/baseline`, 12 `post` sessions, $5.44; judge $1.00 over 18 calls, zero MISSING). No flaky pair on
+  any golden.
+- calibration agreement (labeller, pairs, seed; disagreements named): **0.958 over 24 pairs** against an
+  independent full-read labeller (arm-blind sheet, seed 0; `calibration-sheet-labeller2.json` /
+  `calibration-labeller2.json`). One disagreement: `entry-whose-honest-state` on p1 r2 — the plan writes no
+  pending row and carries the deferred story only as a hypothetical "if it's built, that `Not:` line flips";
+  labeller absent (a conditional path, per the settled rule), judge reflected. Labeller disclosure: the two
+  `splitting-feature-moment-its` pairs were credited on minting a new entry rather than overflowing an
+  existing extent; a strict divide-an-existing-entry reading gives absent — recorded as the reading the next
+  edit inherits.
+- contradicted bar: **not exercised** — zero `contradicted` labels; the draw paired neither selection claim
+  with a p3 plan, so the stop rule was not stressed on the sheet (it was on the grid: all three p3
+  replicates named the founder's ruling).
+- budget (sessions; prune + grid + judge spend): 24 plan sessions · **US$ 12.12** (5.68 + 5.44 + 1.00) of 20.
+- ship bar (a) / (b) / (c): (a) met — every invited pair pass^k; (b) met (0 %); (c) met (0.958 ≥ 0.80;
+  contradicted not exercised). Kit status: **READY**.
 - re-key count: 0
-- kit status: **AUTHORED — awaiting the baseline grid** (`agent-check product-manager --old-ref b9efb59`
-  reports 0 failures at authoring; see the kit audit for the persona-body notes)
+- kit status: **READY**

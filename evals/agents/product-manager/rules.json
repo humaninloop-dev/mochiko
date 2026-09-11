@@ -70,7 +70,32 @@
    "why": "where a story is more of a kind the map already has, the plan extends the existing entry (an extent line or work row) and argues any mint against extending; a near-duplicate pair is proposed for merge",
    "model_native": false,
    "untempted": false,
-   "split_of": "map-before-invention-no"
+   "split_of": "map-before-invention-no",
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-derive-from-task-stories",
+     "p2-filter-and-select",
+     "p3-demo-pressure",
+     "p4-groom-map-and-remit"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     null,
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "product-manager.quality-standards.map-before-invention-read-first",
@@ -83,9 +108,30 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan reads the index and every entry before it proposes a capability — a read step that precedes the first proposal",
-   "model_native": false,
+   "model_native": true,
    "untempted": false,
-   "split_of": "map-before-invention-no"
+   "split_of": "map-before-invention-no",
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-derive-from-task-stories",
+     "p2-filter-and-select",
+     "p4-groom-map-and-remit"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "product-manager.quality-standards.one-breath-granularity-each",
@@ -98,8 +144,29 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "every capability the plan proposes or keeps is named in a breath with an extent of about three lines; one whose extent overflows is split into two, the split named",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-derive-from-task-stories",
+     "p2-filter-and-select",
+     "p4-groom-map-and-remit"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "product-manager.quality-standards.recommendations-not-rulings-advise",
@@ -113,7 +180,28 @@
    "partition": "plan-observable",
    "why": "the plan recommends which capabilities to build and in what order, states the reasons, and stops for the user's ruling rather than deciding; a merge, retire, or selection is described as a proposal the user rules on",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p2-filter-and-select",
+     "p3-demo-pressure",
+     "p4-groom-map-and-remit"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "contradicted",
+     null,
+     "contradicted",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "product-manager.quality-standards.system-s-language-feature",
@@ -127,7 +215,28 @@
    "partition": "plan-observable",
    "why": "the capability statements the plan drafts say what the product does, in the product's own words, with no requester, sprint, or story id in the name or statement; stories are cited as trace, never as the definition",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-derive-from-task-stories",
+     "p2-filter-and-select",
+     "p3-demo-pressure"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     null,
+     "reflected"
+    ]
+   }
   },
   {
    "id": "product-manager.quality-standards.verdicts-reasons-every-no",
@@ -141,7 +250,32 @@
    "partition": "plan-observable",
    "why": "every story the plan keeps off the map carries a written verdict (reject or defer) and its reason, recorded where the user can read it",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-derive-from-task-stories",
+     "p2-filter-and-select",
+     "p3-demo-pressure",
+     "p4-groom-map-and-remit"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     null,
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "product-manager.what-embrace.deferral-costs-shown-at",
@@ -155,7 +289,24 @@
    "partition": "plan-observable",
    "why": "the selection advice names, per deferred capability or row, what deferring it costs the product now (who is hurt, what stays manual), at the moment the recommendation is made",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p2-filter-and-select",
+     "p3-demo-pressure"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     null,
+     "reflected"
+    ]
+   }
   },
   {
    "id": "product-manager.what-embrace.entries-outlive-every-spec",
@@ -168,8 +319,25 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan keeps a delivered entry when its spec has closed (never deletes it) and drafts entries that stand without reference to any spec or story set",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-derive-from-task-stories",
+     "p4-groom-map-and-remit"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "product-manager.what-embrace.entry-whose-honest-state",
@@ -183,7 +351,32 @@
    "partition": "plan-observable",
    "why": "a cut-but-undelivered increment (an accepted story not built now, a deferred row) is recorded on its entry as a pending row, never dropped or hidden; a pending row leaves only by an explicit ruling",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-derive-from-task-stories",
+     "p2-filter-and-select",
+     "p3-demo-pressure",
+     "p4-groom-map-and-remit"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     null,
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "product-manager.what-embrace.reading-map-before-proposing",
@@ -197,7 +390,32 @@
    "partition": "plan-observable",
    "why": "the plan reads FEATURES.md and the entry files before it names any capability or verdict",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-derive-from-task-stories",
+     "p2-filter-and-select",
+     "p3-demo-pressure",
+     "p4-groom-map-and-remit"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     null,
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "product-manager.what-embrace.saying-no-early-writing",
@@ -210,8 +428,25 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "rejections are written with their reasons in the filter step, before any map write or selection, not deferred to a later pass",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-derive-from-task-stories",
+     "p2-filter-and-select"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "product-manager.what-embrace.splitting-feature-moment-its",
@@ -225,7 +460,24 @@
    "partition": "plan-observable",
    "why": "an entry whose extent no longer fits in about three lines is split by the plan, the two resulting capabilities named",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-derive-from-task-stories",
+     "p4-groom-map-and-remit"
+    ],
+    "verdicts": [
+     "reflected",
+     "absent",
+     "reflected",
+     "reflected",
+     "absent",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "product-manager.what-reject.extents-flatter-claiming-more",
@@ -239,7 +491,24 @@
    "partition": "plan-observable",
    "why": "the plan refuses to mark undelivered work as delivered or in extent, and corrects an extent that claims more than the product has, whatever the pressure",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p3-demo-pressure",
+     "p4-groom-map-and-remit"
+    ],
+    "verdicts": [
+     "reflected",
+     null,
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "product-manager.what-reject.features-defined-story-clusters",
@@ -253,7 +522,28 @@
    "partition": "plan-observable",
    "why": "the plan declines to mint a capability whose definition is a list of stories and derives from the stories individually instead",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-derive-from-task-stories",
+     "p3-demo-pressure",
+     "p4-groom-map-and-remit"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     null,
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "product-manager.what-reject.grading-own-map-writes",
@@ -267,7 +557,24 @@
    "partition": "plan-observable",
    "why": "the plan hands its map write to an independent grader and refuses to review or sign off its own changes (a named hand-off or refusal is the foreclosing step)",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p3-demo-pressure",
+     "p4-groom-map-and-remit"
+    ],
+    "verdicts": [
+     "reflected",
+     null,
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "product-manager.what-reject.making-selection-yourself-however",
@@ -281,7 +588,24 @@
    "partition": "plan-observable",
    "why": "asked to choose, the plan recommends with reasons and stops for the user's ruling; it never records a selection as made",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p2-filter-and-select",
+     "p3-demo-pressure"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "contradicted",
+     null,
+     "contradicted"
+    ]
+   }
   },
   {
    "id": "product-manager.what-reject.pseudo-features-minted-delivery",
@@ -295,7 +619,28 @@
    "partition": "plan-observable",
    "why": "the plan declines a capability named for a sprint, phase, demo, bundle, or rollout mechanism and derives from what the product would do instead",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-derive-from-task-stories",
+     "p2-filter-and-select",
+     "p3-demo-pressure"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     null,
+     "reflected"
+    ]
+   }
   },
   {
    "id": "product-manager.what-reject.silent-rejections-story-dropped",
@@ -309,7 +654,28 @@
    "partition": "plan-observable",
    "why": "every drafted story reaches a disposition in the plan (homed, rejected with reason, or deferred with reason); none is left out",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-derive-from-task-stories",
+     "p2-filter-and-select",
+     "p3-demo-pressure"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     null,
+     "reflected"
+    ]
+   }
   },
   {
    "id": "product-manager.where-remit-ends.disagreement-goes-to-user",
@@ -322,9 +688,22 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "a story-craft verdict that contradicts the plan's filter verdict is put to the user as a disagreement to rule on, neither side's verdict quietly overruled",
-   "model_native": false,
+   "model_native": true,
    "untempted": false,
-   "split_of": "edit-discipline-s-verdicts"
+   "split_of": "edit-discipline-s-verdicts",
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p4-groom-map-and-remit"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "product-manager.where-remit-ends.how-well-story-written",
@@ -337,8 +716,25 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "stories that read like tasks or carry weak criteria are derived from and flagged to the story author; the plan never rewrites their wording or acceptance criteria itself",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-derive-from-task-stories",
+     "p4-groom-map-and-remit"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "product-manager.where-remit-ends.never-edit-story-craft-verdicts",
@@ -351,9 +747,22 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan leaves the story craft's verdict on a story (its grade, its rework mark) untouched, declining a request to clear or override it",
-   "model_native": false,
+   "model_native": true,
    "untempted": false,
-   "split_of": "edit-discipline-s-verdicts"
+   "split_of": "edit-discipline-s-verdicts",
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p4-groom-map-and-remit"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "product-manager.where-remit-ends.own-which-what-capabilities",
@@ -367,7 +776,32 @@
    "partition": "plan-observable",
    "why": "the plan itself decides what the capabilities are, their extents, which stories earn a place, and what to recommend — it does not take a pre-grouping or another seat's homing as given",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-derive-from-task-stories",
+     "p2-filter-and-select",
+     "p3-demo-pressure",
+     "p4-groom-map-and-remit"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     null,
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   }
  ],
  "retired": []
