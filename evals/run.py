@@ -425,7 +425,7 @@ def cmd_probe(skill: str, old_ref: str | None, arm: str) -> None:
 
 
 def cmd_grid(skill: str, replicates: int, arms: list, old_ref: str | None,
-             out: str | None = None, pairwise: bool = False) -> None:
+             out: str | None = None, pairwise: bool = False, budget_usd: float = 25.0) -> None:
     base, goldens, rules = load_kit(skill)
     prereg = base / "preregistration.md"
     if not prereg.is_file():
@@ -491,6 +491,9 @@ def cmd_grid(skill: str, replicates: int, arms: list, old_ref: str | None,
                                total_cost, old_ref, stored_pw)
                 if ws:
                     shutil.rmtree(ws, ignore_errors=True)
+                if total_cost > budget_usd:
+                    die(f"budget {budget_usd} USD exceeded (sessions {total_cost:.2f}); the grid "
+                        f"halts here and resumes with the same --out once the user rules")
 
     pw = list(stored_pw)
     if pairwise and "pre" in {e["arm"] for e in results}:
@@ -558,14 +561,20 @@ def summarize(skill, arms, replicates, rules, goldens, results, total_cost, old_
     any_tempts = any(tempts.values())
     tempted_by = {r["id"]: [g for g, s in tempts.items() if r["id"] in s] for r in rules}
     untempted = [r["id"] for r in rules if any_tempts and not tempted_by[r["id"]]]
-    held, flaky, invited_flaky, invited_n, pairs_n = {}, {}, {}, {}, {}
+    held, flaky, invited_flaky = {}, {}, {}
     for arm in arms:
-        n_f = n_if = n_i = n_p = 0
         for r in rules:
             verdicts = [v.get("passed") for e in valid if e["arm"] == arm
                         and (not any_tempts or e["golden"] in tempted_by[r["id"]])
                         for v in e["checklist"] if v.get("id") == r["id"]]
             held[(arm, r["id"])] = bool(verdicts) and all(v is True for v in verdicts)
+    pruned = [r["id"] for r in rules if held.get(("noskill", r["id"]))]  # R3
+    live = [r for r in rules if r["id"] not in pruned and r["id"] not in untempted]
+    # The band's pairs are the graded set's: live rules only (pruned and untempted rules
+    # leave the denominator, as the persona target's model-native claims do).
+    for arm in arms:
+        n_f = n_if = n_i = n_p = 0
+        for r in live:
             for g in goldens:
                 vs = [v.get("passed") for e in valid if e["arm"] == arm and e["golden"] == g["id"]
                       for v in e["checklist"] if v.get("id") == r["id"]]
@@ -580,8 +589,6 @@ def summarize(skill, arms, replicates, rules, goldens, results, total_cost, old_
                     n_if += disagree
         flaky[arm] = {"flaky": n_f, "pairs": n_p}
         invited_flaky[arm] = {"flaky": n_if, "pairs": n_i}
-    pruned = [r["id"] for r in rules if held.get(("noskill", r["id"]))]  # R3
-    live = [r for r in rules if r["id"] not in pruned and r["id"] not in untempted]
     ref = "pre" if "pre" in arms else ("baseline" if "baseline" in arms else None)
     lost = {arm: [r["id"] for r in live if held.get((ref, r["id"])) and not held.get((arm, r["id"]))]
             for arm in arms if ref and arm not in ("noskill", ref)}
@@ -709,6 +716,8 @@ def main() -> None:
             p.add_argument("--out", default=None,
                            help="run-dir name under runs/ to append into (staged grids)")
             p.add_argument("--pairwise", action="store_true")
+            p.add_argument("--budget-usd", type=float, default=25.0,
+                           help="halt the grid when session spend passes this (resumable)")
     args = ap.parse_args()
     MODE = "local" if args.local else "host"
     WORK.mkdir(exist_ok=True)
@@ -716,7 +725,7 @@ def main() -> None:
         cmd_probe(args.skill, args.old_ref, args.arm)
     elif args.cmd == "grid":
         cmd_grid(args.skill, args.replicates, args.arms.split(","), args.old_ref, args.out,
-                 args.pairwise)
+                 args.pairwise, args.budget_usd)
     elif args.cmd == "rejudge":
         cmd_rejudge(args.skill, args.out)
     else:
