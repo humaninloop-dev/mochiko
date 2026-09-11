@@ -549,11 +549,19 @@ def summarize(skill, arms, replicates, rules, goldens, results, total_cost, old_
     invalid = [f"{e['arm']}/{e['golden']}/r{e['replicate']}" for e in results
                if not e.get("valid", True)]
     tempts = {g["id"]: set(g.get("tempts", [])) for g in goldens}
+    # Invited read (mirrors the persona target, ADR 2026-09-09): when the goldens declare
+    # `tempts`, a rule is held only over the goldens that invite it — a golden-specific rule
+    # read `false` on a golden that never asked for it is not a loss. A rule no golden invites
+    # is `untempted`: disclosed, never read. Without tempts the read is cross-golden.
+    any_tempts = any(tempts.values())
+    tempted_by = {r["id"]: [g for g, s in tempts.items() if r["id"] in s] for r in rules}
+    untempted = [r["id"] for r in rules if any_tempts and not tempted_by[r["id"]]]
     held, flaky, invited_flaky, invited_n, pairs_n = {}, {}, {}, {}, {}
     for arm in arms:
         n_f = n_if = n_i = n_p = 0
         for r in rules:
             verdicts = [v.get("passed") for e in valid if e["arm"] == arm
+                        and (not any_tempts or e["golden"] in tempted_by[r["id"]])
                         for v in e["checklist"] if v.get("id") == r["id"]]
             held[(arm, r["id"])] = bool(verdicts) and all(v is True for v in verdicts)
             for g in goldens:
@@ -571,7 +579,7 @@ def summarize(skill, arms, replicates, rules, goldens, results, total_cost, old_
         flaky[arm] = {"flaky": n_f, "pairs": n_p}
         invited_flaky[arm] = {"flaky": n_if, "pairs": n_i}
     pruned = [r["id"] for r in rules if held.get(("noskill", r["id"]))]  # R3
-    live = [r for r in rules if r["id"] not in pruned]
+    live = [r for r in rules if r["id"] not in pruned and r["id"] not in untempted]
     ref = "pre" if "pre" in arms else ("baseline" if "baseline" in arms else None)
     lost = {arm: [r["id"] for r in live if held.get((ref, r["id"])) and not held.get((arm, r["id"]))]
             for arm in arms if ref and arm not in ("noskill", ref)}
@@ -590,6 +598,7 @@ def summarize(skill, arms, replicates, rules, goldens, results, total_cost, old_
         "skill": skill, "arms": arms, "replicates": replicates, "old_ref": old_ref,
         "rules_total": len(rules), "floor_total": len(floor_ids),
         "rules_pruned_by_noskill": pruned, "live_total": len(live),
+        "untempted": untempted, "invited_read": any_tempts,
         "coverage_per_arm": coverage, "floor_held_per_arm": floor_held,
         "reference_arm": ref,
         "rules_lost_per_arm": lost, "floor_rules_lost_per_arm": floor_lost,
@@ -611,7 +620,11 @@ def render_report(skill, stamp, s) -> str:
              f"reference arm {s.get('reference_arm')}", "",
              f"Rules: {s['rules_total']} total ({s.get('floor_total', 0)} floor), "
              f"{len(s['rules_pruned_by_noskill'])} pruned by the no-skill control (they measure "
-             f"the model, not the skill), {s.get('live_total', s['rules_total'])} live.", ""]
+             f"the model, not the skill), {s.get('live_total', s['rules_total'])} live"
+             + (f", {len(s['untempted'])} untempted (disclosed, not read): {s['untempted']}"
+                if s.get("untempted") else "")
+             + (" · read over invited (golden, rule) pairs" if s.get("invited_read") else
+                " · cross-golden read (no tempts declared)") + ".", ""]
     if s.get("invalid_runs"):
         lines += [f"**INVALID runs (excluded from every read): {len(s['invalid_runs'])}** — "
                   + ", ".join(s["invalid_runs"]), ""]
