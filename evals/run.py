@@ -224,13 +224,35 @@ def extract_json(text: str):
         return None
 
 
-def run_assertions(assertions: list, workspace: pathlib.Path) -> list:
+def changed_fixture_files(workspace: pathlib.Path, fixture: pathlib.Path | None) -> list:
+    """Handed-in fixture files the session edited or deleted (relative paths)."""
+    if fixture is None:
+        return []
+    out = []
+    for f in sorted(fixture.rglob("*")):
+        if not f.is_file():
+            continue
+        rel = f.relative_to(fixture)
+        w = workspace / rel
+        if not w.is_file() or w.read_bytes() != f.read_bytes():
+            out.append(str(rel))
+    return out
+
+
+def run_assertions(assertions: list, workspace: pathlib.Path,
+                   fixture: pathlib.Path | None = None) -> list:
     out = []
     for a in assertions:
         kind = a["type"]
         ok, detail = False, ""
         target = workspace / a.get("path", "")
-        if kind == "file_exists":
+        if kind == "fixture_unchanged":
+            # Every handed-in file is byte-identical after the run, except the listed paths
+            # (`except`: files a golden expects the session to touch).
+            changed = [c for c in changed_fixture_files(workspace, fixture)
+                       if c not in set(a.get("except", []))]
+            ok, detail = not changed, (", ".join(changed) if changed else "")
+        elif kind == "file_exists":
             ok = target.is_file()
         elif kind == "file_absent":
             ok = not target.exists()
@@ -474,7 +496,8 @@ def cmd_grid(skill: str, replicates: int, arms: list, old_ref: str | None,
                     "arm": arm, "golden": g["id"], "replicate": rep,
                     "pins": r["pins"], "asserts": r["asserts"], "valid": r["valid"],
                     "tool_calls": r["tool_calls"], "skills_fired": r["skills_fired"],
-                    "assertions": run_assertions(g.get("assertions", []), ws) if ws else [],
+                    "assertions": (run_assertions(g.get("assertions", []), ws, fixture_dir(skill, g))
+                                   if ws else []),
                     "checklist": (judge_checklist(rules, artifact, g.get("expected_output", ""))
                                   if r["valid"] else []),
                     "cost_usd": cost, "num_turns": r["num_turns"],

@@ -38,7 +38,7 @@ the pre-v0.107.0 synthesized single-skill plugin and the `variants/` staging are
 (converged 2026-09-11, runner review PASS after fixes). The produced artifact — every workspace
 file the session wrote or changed — is graded two ways:
 
-- **Scripted assertions** (deterministic, from `evals.json`) — may block.
+- **Scripted assertions** (deterministic, from `evals.json`: `file_exists` · `file_absent` · `contains` · `not_contains` (regex on a workspace file) · `fixture_unchanged` (every handed-in file byte-identical after the run, `except` a listed few)) — may block.
 - **Rule-coverage checklist** (Haiku judge; one binary per rule with a quoted evidence span; a
   restated principle is not evidence) — advisory. Aggregation is **pass^k** over valid runs.
 - A **pairwise blind A/B** (Sonnet judge, position-swapped, `pre` vs `post`) is opt-in
