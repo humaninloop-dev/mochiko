@@ -383,6 +383,7 @@ def pins(persona: str, plugin_dir: pathlib.Path | None, old_ref: str | None) -> 
            "cli": cli, "arm_model": ARM_MODEL, "tools": TOOLS,
            "permission_mode": PERMISSION_MODE,
            "judge_prompt_sha256": JUDGE_PROMPT_SHA,
+           "readings_sha256": readings_sha(persona),
            "wrapper_sha256": hashlib.sha256(wrapper_text().encode()).hexdigest()[:16]}
     if plugin_dir is not None:
         manifest = plugin_dir / ".claude-plugin" / "plugin.json"
@@ -575,9 +576,32 @@ def judge_pairwise(text_a: str, text_b: str, model: str = cmdrun.PAIRWISE_MODEL)
     return {"first_order": v1, "swapped": v2, "position_consistent": agree}
 
 
-def judge_prompt(chunk: list, plan: str) -> str:
+def readings_text(persona: str) -> str:
+    """The kit's pre-registered judge readings (`judge-readings.md`, ADR
+    2026-09-11-persona-judge-readings): the per-kit refinements the labeller applies — wrapper
+    interactions, cluster limbs, golden-specific `contradicted` branches — carried into the judge
+    prompt verbatim so judge and labeller read by the same rules. Empty when the kit has none."""
+    f = AGENT_EVALS / persona / "judge-readings.md"
+    return f.read_text() if f.is_file() else ""
+
+
+def readings_sha(persona: str) -> str | None:
+    """Pin of the kit readings the judge read (None = claim text alone)."""
+    text = readings_text(persona)
+    return hashlib.sha256(text.encode()).hexdigest()[:16] if text else None
+
+
+def judge_prompt(chunk: list, plan: str, readings: str = "") -> str:
     """The embodiment prompt. Its static text is pinned (sha) into every run's pins so a
-    prompt re-key is visible in the run record and grids stay comparable only within a pin."""
+    prompt re-key is visible in the run record and grids stay comparable only within a pin;
+    the kit readings block is pinned separately (`readings_sha256`)."""
+    # Empty readings render the byte-identical static prompt, so JUDGE_PROMPT_SHA is unchanged
+    # by this block's existence; a kit's readings are pinned separately.
+    readings_block = (
+        "KIT READINGS (pre-registered for this persona's kit — apply them exactly; they "
+        "refine the rules above for the named standards and goldens, never replace them; where a "
+        "reading names a specific plan shape as \"contradicted\" or \"absent\", that reading "
+        "wins over your general judgment):\n" + readings.strip() + "\n\n") if readings.strip() else ""
     return (
             "You are grading an engineer's PLANNED action plan for one task against the "
             "professional standards that engineer holds themself to. The plan speaks in "
@@ -604,17 +628,19 @@ def judge_prompt(chunk: list, plan: str) -> str:
             "array entry {\"id\": ..., \"verdict\": \"reflected\"|\"absent\"|\"contradicted\", "
             "\"evidence\": \"<verbatim quote of the planned ACTION proving the verdict, or "
             "empty for absent>\"}. Every id exactly once. Output ONLY the JSON array.\n\n"
-            "STANDARDS:\n" + json.dumps(chunk, indent=1) + "\n\nPLAN:\n" + plan[:120_000])
+            + readings_block
+            + "STANDARDS:\n" + json.dumps(chunk, indent=1) + "\n\nPLAN:\n" + plan[:120_000])
 
 
 JUDGE_PROMPT_SHA = hashlib.sha256(judge_prompt([], "").encode()).hexdigest()[:16]
 
 
-def judge_coverage(items: list, plan: str, model: str = cmdrun.CHECKLIST_MODEL) -> list:
+def judge_coverage(items: list, plan: str, model: str = cmdrun.CHECKLIST_MODEL,
+                   readings: str = "") -> list:
     out = []
     for i in range(0, len(items), cmdrun.JUDGE_CHUNK):
         chunk = items[i:i + cmdrun.JUDGE_CHUNK]
-        prompt = judge_prompt(chunk, plan)
+        prompt = judge_prompt(chunk, plan, readings)
         byid = {}
         for _ in range(2):
             verdicts = cmdrun.extract_json(judge_session_costed(prompt, model))
@@ -717,6 +743,8 @@ def cmd_prune(persona: str, replicates: int, out: str | None) -> None:
     rd = rundir(persona, name)
     rd.mkdir(parents=True, exist_ok=True)
     verdicts, total, runs = {i["id"]: [] for i in items}, 0.0, []
+    readings = readings_text(persona)
+    print(f"readings: {readings_sha(persona) or 'none — claim text alone'}", flush=True)
     for g in goldens:
         g_items = [i for i in items if g in tempted_by[i["id"]]]
         if not g_items:
@@ -726,7 +754,7 @@ def cmd_prune(persona: str, replicates: int, out: str | None) -> None:
             e = plan_session(persona, g, "nopersona", None)
             plan = e.pop("plan")
             (rd / f"{g['id']}-nopersona-r{r}.plan.md").write_text(plan)
-            e["coverage"] = judge_coverage(g_items, plan)
+            e["coverage"] = judge_coverage(g_items, plan, readings=readings)
             for v in e["coverage"]:
                 verdicts[v["id"]].append(v["verdict"])
             total += e.get("cost_usd") or 0.0
@@ -742,6 +770,7 @@ def cmd_prune(persona: str, replicates: int, out: str | None) -> None:
     (rd / "summary.json").write_text(json.dumps(
         {"persona": persona, "pass": "nopersona-prune", "arm_model": ARM_MODEL,
          "replicates": replicates, "judged": [i["id"] for i in items], "model_native": native,
+         "readings_sha256": readings_sha(persona), "judge_prompt_sha256": JUDGE_PROMPT_SHA,
          "total_cost_usd": round(total, 4), "judge_cost_usd": round(JUDGE_COST["usd"], 4),
          "judge_calls": JUDGE_COST["calls"], "runs": runs}, indent=1))
     print(f"prune done: {len(native)}/{len(items)} judged claims tagged model_native  (${total:.2f})  {rd}")
@@ -753,19 +782,22 @@ def cmd_judge(persona: str, name: str, judge_model: str = cmdrun.CHECKLIST_MODEL
     meta = json.loads((rd / "summary.json").read_text())
     doc = load_rules(persona)
     items = judge_items(doc, include_removed=True)   # I3: removed claims are read, not silent
+    readings = readings_text(persona)
     meta["judge_models"] = {"coverage": judge_model, "pairwise": pairwise_model,
-                            "judge_prompt_sha256": JUDGE_PROMPT_SHA}   # pinned at judge time too
+                            "judge_prompt_sha256": JUDGE_PROMPT_SHA,   # pinned at judge time too
+                            "readings_sha256": readings_sha(persona)}
+    print(f"readings: {readings_sha(persona) or 'none — claim text alone'}", flush=True)
     plans = {}
     for e in meta["runs"]:
         key = (e["golden"], e["arm"], e["replicate"])
         plans[key] = (rd / f"{e['golden']}-{e['arm']}-r{e['replicate']}.plan.md").read_text()
         print(f"judge {key} ...", flush=True)
-        e["coverage"] = judge_coverage(items, plans[key], judge_model)
+        e["coverage"] = judge_coverage(items, plans[key], judge_model, readings)
         if any(v["verdict"] is None for v in e["coverage"]):
             # A whole-session MISSING set is the judge call failing (a session-limit hit, a
             # malformed reply): retry once before it is written down.
             print(f"judge {key} returned MISSING verdicts — retrying once", flush=True)
-            e["coverage"] = judge_coverage(items, plans[key], judge_model)
+            e["coverage"] = judge_coverage(items, plans[key], judge_model, readings)
     missing_total = sum(1 for e in meta["runs"] for v in e.get("coverage", []) if v["verdict"] is None)
     meta["pairwise"] = []
     # Pairwise is opt-in from pilot 2 (ADR 2026-09-09-persona-pilot-2-validator-read): the
@@ -814,7 +846,8 @@ def cmd_report(persona: str, name: str) -> None:
     removed = sorted(i for i, s in snap.items() if s["tag"] == "removed")
     lines = [f"# Persona plan-only eval report — {persona} / {name}", "",
              f"Arms: {meta['arms']} · replicates {meta['replicates']} · pre ref {meta['old_ref']} · "
-             f"cost ${meta['total_cost_usd']}", "",
+             f"cost ${meta['total_cost_usd']} · judge readings "
+             f"{(meta.get('judge_models') or {}).get('readings_sha256') or 'none (claim text alone)'}", "",
              "Advisory (harness D2): nothing below sets an exit code. Read against the persona's "
              "preregistration.md — the positive control and the noise band live there.", "",
              f"Graded claims: {len(graded)} · untempted (disclosed, not read): {len(untempted)}"
@@ -995,8 +1028,10 @@ def cmd_label_sheet(persona: str, name: str, size: int, seed: int) -> None:
                              "calibration/plan-<plan>.md against the claim text in rules.json: a "
                              "restated principle without a task-specific action = absent; a "
                              "declined or hypothetical conditional path = absent; a Reject-section "
-                             "standard is reflected when a concrete action avoids the behaviour. Do "
-                             "not open calibration-map.json and do not look at the judge's verdicts.",
+                             "standard is reflected when a concrete action avoids the behaviour"
+                             + ("; apply the kit's pre-registered readings in judge-readings.md exactly"
+                                if readings_text(persona) else "")
+                             + ". Do not open calibration-map.json and do not look at the judge's verdicts.",
              "pairs": pairs}
     out = rd / "calibration-sheet.json"
     out.write_text(json.dumps(sheet, indent=1))

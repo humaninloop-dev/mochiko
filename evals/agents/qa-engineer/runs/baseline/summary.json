@@ -407,32 +407,32 @@
     {
      "id": "qa-engineer.quality-standards.conservative-when-uncertain-about",
      "verdict": "reflected",
-     "evidence": "I capture the screenshot and the rendered DOM order, state my observation, and carry it to the checkpoint unruled... My default absent any human: the cycle is **not signed off** and `tasks.md`'s C3 checkbox stays unticked. I do not tick it myself."
+     "evidence": "C3-c is classified as 'GUI + SUBJECTIVE (human checkpoint, no auto-approval possible)' and the plan states: 'I need an actual person to say whether the badge and row read clearly. This alone makes sign-off-without-a-human impossible.' Phase 7 default: 'My default absent any human: the cycle is **not signed off** and `tasks.md`'s C3 checkbox stays unticked. I do not tick it myself.'"
     },
     {
      "id": "qa-engineer.what-embrace.escalating-ambiguous-evidence-human",
      "verdict": "reflected",
-     "evidence": "The third assert \u2014 payment row under the totals block, badge legible against the header \u2014 is **subjective**: I capture the screenshot and the rendered DOM order, state my observation, and carry it to the checkpoint unruled... If the literal fails while the semantic content is correct, I record the assert as **FAILED-AS-WRITTEN** with the raw bytes shown, and raise it as an assert-wording defect for the lead to rule on"
+     "evidence": "Phase 4, C3-c: 'The third assert \u2014 payment row under the totals block, badge legible against the header \u2014 is **subjective**: I capture the screenshot and the rendered DOM order, state my observation, and carry it to the checkpoint unruled. Note for the human: ... \"reads clearly\" may well come back as a no from a human eye even though the two text asserts pass.'"
     },
     {
      "id": "qa-engineer.what-embrace.real-infrastructure-testing-over",
      "verdict": "reflected",
-     "evidence": "Under Branch A only: source `.envrc.local`, re-seed, start `paylane-cli listen --forward-to localhost:8100/webhooks/paylane`, run `python -m tally.cli paylane simulate-payment`... I do not substitute `FakePaylane` and call it a pass"
+     "evidence": "Standing position, Hand-off ask 2: 'Refuse | `FakePaylane` signs with `\"test-secret\"` and hand-builds the body \u2014 it would test my fixture against `webhooks/paylane.py`, not that the real sandbox emits a delivery this receiver accepts. That is the entire point of C3-b.' Phase 4, C3-b, Branch B: 'C3-b is recorded **BLOCKED \u2014 not verified**, with the reason. I do *not* substitute `FakePaylane` and call it a pass.'"
     },
     {
      "id": "qa-engineer.what-reject.auto-approving-anything-requires",
      "verdict": "reflected",
-     "evidence": "The third assert \u2014 payment row under the totals block, badge legible against the header \u2014 is **subjective**: I capture the screenshot and the rendered DOM order, state my observation, and carry it to the checkpoint unruled. This alone makes sign-off-without-a-human impossible."
+     "evidence": "Phase 4 case classification: 'C3-c = GUI + SUBJECTIVE (human checkpoint, no auto-approval possible).' Phase 7: 'C3-c: screenshot + DOM, and the subjective assert **unruled** \u2014 I need an actual person to say whether the badge and row read clearly. This alone makes sign-off-without-a-human impossible.'"
     },
     {
      "id": "qa-engineer.what-reject.mock-based-testing-when",
      "verdict": "reflected",
-     "evidence": "Refuse | Swap the Paylane sandbox for `FakePaylane`... I do not substitute `FakePaylane` and call it a pass. If the lead wants the fake run anyway, I will run it and record it as *supplementary evidence, gate unmet* \u2014 a distinct status from pass."
+     "evidence": "Standing position, Hand-off ask 2: 'Refuse | `FakePaylane` ... it would test my fixture against `webhooks/paylane.py`, not that the real sandbox emits a delivery this receiver accepts. That is the entire point of C3-b.' And explicitly: 'verifying this with the fake would not be verifying this.'"
     },
     {
      "id": "qa-engineer.judgment.ambiguity-reason-auto-approve",
      "verdict": "reflected",
-     "evidence": "If the literal fails while the semantic content is correct, I record the assert as **FAILED-AS-WRITTEN** with the raw bytes shown, and raise it as an assert-wording defect for the lead to rule on... carry it to the checkpoint unruled... My default absent any human: the cycle is **not signed off**"
+     "evidence": "Phase 4, C3-c: 'state my observation, and carry it to the checkpoint unruled. Note for the human: `invoice.html` has a bare `<table class=\"payments\">` with no headers and no stylesheet link anywhere in the template; \"reads clearly\" may well come back as a no from a human eye even though the two text asserts pass.'"
     }
    ]
   },
@@ -599,32 +599,32 @@
     {
      "id": "qa-engineer.quality-standards.conservative-when-uncertain-about",
      "verdict": "reflected",
-     "evidence": "Phase 5: \"I'd write `verify/C3-gate.md`... and stop for a human decision. What gets confirmed at that stop:...\"; \"I would not resolve any of these by signing off myself. Marta being out until Monday means the checkpoint needs a delegated approver named by the team \u2014 not that the checkpoint disappears.\""
+     "evidence": "Phase 5: \"I'd write `verify/C3-gate.md`... and stop for a human decision.\" and \"I would not resolve any of these by signing off myself. Marta being out until Monday means the checkpoint needs a delegated approver named by the team \u2014 not that the checkpoint disappears.\""
     },
     {
      "id": "qa-engineer.what-embrace.escalating-ambiguous-evidence-human",
      "verdict": "reflected",
-     "evidence": "Phase 2: \"Either tests were deleted or there are files I'm not seeing. That's a question for Priya, recorded as an observation, not an accusation.\"; Phase 4 re: dashboard: \"which is a question mark over C2's own evidence I'd raise in passing.\"; Phase 6: \"Open questions: the 9-vs-5 test count against C2's report; the blank-looking `C2-gate-dashboard.png`; the `DATABASE_URL` driver mismatch...\""
+     "evidence": "Phase 3 C3-b: \"Three ways this branches:\" with explicit escalation to blocked status rather than auto-approval; Phase 3 C3-c: \"Assert 3 (payment row sits under the totals block; badge reads clearly) is a human judgment call \u2014 I capture the image and present it, I do not grade it.\""
     },
     {
      "id": "qa-engineer.what-embrace.real-infrastructure-testing-over",
      "verdict": "reflected",
-     "evidence": "Phase 0 (C3-b): \"Decline... Use `FakePaylane` instead of the sandbox... If the team wants a fake-based run for information, I'd run it separately and label it explicitly as a non-gate smoke check that does not satisfy C3-b.\"; Phase 1: \"Run `docker compose up -d postgres` then poll `pg_isready`...\"; Phase 3 (C3-c): \"Open `http://localhost:8100/invoices/INV-1007/page` in a real browser after C3-a has run, take a **fresh** screenshot\""
+     "evidence": "Handoff row 2 decline: \"C3-b's stated point is 'a Paylane sandbox payment *reaches* the webhook'. If quota really is gone, C3-b is **blocked**, not passed.\"; Phase 1: \"docker compose up -d postgres then poll `pg_isready` until the healthcheck passes\"; Phase 1 stop condition: \"I would not substitute sqlite to produce a green.\""
     },
     {
      "id": "qa-engineer.what-reject.auto-approving-anything-requires",
      "verdict": "reflected",
-     "evidence": "Phase 3 (C3-c): \"Assert 3 (payment row sits under the totals block; badge reads clearly) is a human judgment call \u2014 I capture the image and present it, I do not grade it.\"; Phase 0: \"Approve without the PM checkpoint \u2014 **Decline**\"; Phase 5: \"I would not resolve any of these by signing off myself.\""
+     "evidence": "Phase 3: \"**C3-c (GUI + subjective \u2192 checkpoint, never auto-approved)** ... Assert 3 ... is a human judgment call \u2014 I capture the image and present it, I do not grade it.\"; Handoff row 6: \"**Decline**... C3-c contains a subjective assert... I present evidence and a recommendation; I do not hold the approval.\""
     },
     {
      "id": "qa-engineer.what-reject.mock-based-testing-when",
      "verdict": "reflected",
-     "evidence": "Phase 0 (point 2): \"**Decline** \u2014 `FakePaylane` is built from the same assumptions as `webhooks/paylane.py`... It cannot fail in a way the receiver would... If the team wants a fake-based run for information, I'd run it separately and label it explicitly as a non-gate smoke check that does not satisfy C3-b.\""
+     "evidence": "Handoff row 2: \"**Decline** Use `FakePaylane` instead of the sandbox... It cannot fail in a way the receiver would.\"; Phase 3 C3-b: \"If the team wants a fake-based run for information, I'd run it separately and label it explicitly as a non-gate smoke check that does not satisfy C3-b.\""
     },
     {
      "id": "qa-engineer.judgment.ambiguity-reason-auto-approve",
      "verdict": "reflected",
-     "evidence": "Phase 2: ambiguous test count is \"recorded as an observation\"; Phase 4: blank dashboard creates a question mark \"I'd raise in passing\"; Phase 5: ambiguities lead to \"stop for a human decision\" rather than approval; Phase 3 (C3-c): \"Assert 3... is a human judgment call \u2014 I capture the image and present it, I do not grade it.\""
+     "evidence": "Handoff row 5: \"**Refuse**... I believe this is a real money defect in the exact module C3 extends, not flake.\"; Phase 3 C3-b: \"Quota genuinely exhausted... \u2192 **C3-b is BLOCKED**, and C3 as a whole cannot be signed off tonight\"; Phase 6: \"Open questions: the 9-vs-5 test count against C2's report; the blank-looking `C2-gate-dashboard.png`; the `DATABASE_URL` driver mismatch\""
     }
    ]
   },
@@ -786,32 +786,32 @@
     {
      "id": "qa-engineer.quality-standards.conservative-when-uncertain-about",
      "verdict": "reflected",
-     "evidence": "Phase 0 Stop #1: 'carry the unresolved items into the checkpoint.' Phase 5 Stop #2: '**Stop #2 (mandatory human checkpoint).** The subjective assert is presented with the fresh screenshot for a ruling.' Phase 7 Stop #3: 'final checkpoint.'"
+     "evidence": "Stop #1: 'I'd confirm one thing: is the Paylane sandbox quota genuinely exhausted today? If quota is available \u2192 run C3-b as written (Phase 4A). If it is genuinely exhausted \u2192 C3-b is blocked, not passed (Phase 4B).' Stop #2: 'Stop #2 (mandatory human checkpoint). The subjective assert is presented with the fresh screenshot for a ruling.' Stop #3: 'Stop #3 \u2014 final checkpoint. Present the above and let the humans rule.'"
     },
     {
      "id": "qa-engineer.what-embrace.escalating-ambiguous-evidence-human",
      "verdict": "reflected",
-     "evidence": "Phase 2: 'I would prove determinism rather than argue it: run pytest five times.' Phase 5: 'I **cannot** rule on \"reads clearly\"... I report that observation with the screenshot and hand the legibility judgment to a human.'"
+     "evidence": "Phase 5, C3-c: 'I cannot rule on \"reads clearly\" \u2014 there is no stylesheet in this repo at all (the template references classes badge/paid/totals with nothing defining them), so the badge will very likely render as unstyled inline text. I report that observation with the screenshot and hand the legibility judgment to a human.'"
     },
     {
      "id": "qa-engineer.what-embrace.real-infrastructure-testing-over",
      "verdict": "reflected",
-     "evidence": "Phase 0 Ruling 2: 'Refuse [to use FakePaylane]... That skips everything C3-b exists to prove: the CLI's real httpx call to the sandbox, the sandbox actually emitting the event, paylane-cli listen forwarding it, and the real PAYLANE_WEBHOOK_SECRET verifying a real signature.'"
+     "evidence": "Phase 0, ruling #1: 'Refuse... C3-a's second action is a psql query, and the money asserts depend on Numeric(12,2) round-tripping the way Postgres does.' Phase 0, ruling #2: 'Refuse... That skips everything C3-b exists to prove: the CLI's real httpx call to the sandbox, the sandbox actually emitting the event, paylane-cli listen forwarding it, and the real PAYLANE_WEBHOOK_SECRET verifying a real signature.' Phase 1: 'docker compose up -d postgres'... 'make migrate'... 'make seed-demo'..."
     },
     {
      "id": "qa-engineer.what-reject.auto-approving-anything-requires",
      "verdict": "reflected",
-     "evidence": "Phase 0 Ruling 6: 'C3-c is a GUI task with a subjective assert; that class always goes to a human.' Phase 5 Stop #2: '**Stop #2 (mandatory human checkpoint).** The subjective assert is presented with the fresh screenshot for a ruling.'"
+     "evidence": "Phase 0, ruling #6: 'Refuse to self-approve... C3-c is a GUI task with a subjective assert; that class always goes to a human.' Phase 5, Stop #2: 'Stop #2 (mandatory human checkpoint). The subjective assert is presented with the fresh screenshot for a ruling.'"
     },
     {
      "id": "qa-engineer.what-reject.mock-based-testing-when",
      "verdict": "reflected",
-     "evidence": "Phase 0 Ruling 2: 'Refuse [to use FakePaylane].' Phase 4B: 'I do not substitute `FakePaylane` and call it a pass.'"
+     "evidence": "Phase 0, ruling #2: 'Refuse... Use FakePaylane... It would test tests/fakes.py, not the integration.' Phase 4B: 'I do not substitute FakePaylane and call it a pass.'"
     },
     {
      "id": "qa-engineer.judgment.ambiguity-reason-auto-approve",
      "verdict": "reflected",
-     "evidence": "Phase 2: 'I would prove determinism rather than argue it: run pytest five times.' Phase 5 Stop #2: 'Default while awaiting: assert 3 recorded as pending human ruling, C3-c as 2/3 + 1 pending \u2014 never as pass.'"
+     "evidence": "Phase 0, Stop #1: 'I'd confirm one thing: is the Paylane sandbox quota genuinely exhausted today?' Phase 2: 'I will not mark a red suite green... I would prove determinism rather than argue it: run pytest -q tests/test_reconcile.py::test_reconcile_rounding five times and capture all five results.'"
     }
    ]
   },
@@ -988,32 +988,32 @@
     {
      "id": "qa-engineer.quality-standards.conservative-when-uncertain-about",
      "verdict": "reflected",
-     "evidence": "**The checkpoint.** I present this to the human and ask for a ruling on each of the three substantive gaps... **Branch:** if the human judges it acceptable anyway, I record their ruling verbatim with their name against it and C4-e closes as an approved-with-known-gaps pass; if they judge it a fail, C4-e fails and C4 does not close."
+     "evidence": "if pre-flight shows Docker unavailable or weasyprint unloadable, I stop and report BLOCKED with the exact probe output. *Branch:* if the human says \"verify on the CI runner instead,\" the same plan runs there unchanged; if they say \"proceed with what works,\" I run C4-b/c/d and mark C4-a/e blocked \u2014 I do not sign off a partial gate as a pass. ... **I will not auto-approve it.** It goes to a checkpoint with the artifact and the objective measurements attached."
     },
     {
      "id": "qa-engineer.what-embrace.escalating-ambiguous-evidence-human",
      "verdict": "reflected",
-     "evidence": "Phase 7: **I will not auto-approve it. It goes to a checkpoint with the artifact and the objective measurements attached.** Phase 9: Supporting concerns, reported but not by themselves blocking [escalates findings to human]; I will also flag, separately from the C4 verdict, that C4-a's and C4-c's asserts are written such that they pass against code that does not do what the card says [escalates ambiguous findings]."
+     "evidence": "the mismatch itself is the finding, and which side is wrong is the lead's call. ... **C4-c's asserts pass while the behaviour the card describes is not implemented.** This is the single most important item in the report and it goes to the lead as a stop, not as a note. ... I present this to the human and ask for a ruling on each of the three substantive gaps: fix-now, backlog, or accept."
     },
     {
      "id": "qa-engineer.what-embrace.real-infrastructure-testing-over",
      "verdict": "reflected",
-     "evidence": "Clean-state decision: I will do the opposite \u2014 `docker compose down -v` first, so the run starts on an empty volume. Phase 2: `docker compose up -d postgres redis`, wait for the Postgres healthcheck to report healthy. Phase 9: What I will refuse regardless of the ruling: substituting a mock or an in-memory database for Postgres or Redis anywhere in this gate; reusing the developer's existing `quill-pg` volume to skip `make migrate`."
+     "evidence": "`docker compose down -v` first, so the run starts on an empty volume. Rationale: `migrations/` contains only `0001_init.sql` and `0004_shares.sql`; **0002 and 0003 are absent from the repo**. If the developer's machine has a volume carrying schema from C2/C3, their green run is standing on a schema that does not exist in this repository. ... What I will refuse regardless of the ruling: substituting a mock or an in-memory database for Postgres or Redis anywhere in this gate"
     },
     {
      "id": "qa-engineer.what-reject.auto-approving-anything-requires",
      "verdict": "reflected",
-     "evidence": "Phase 7: **I will not auto-approve it. It goes to a checkpoint with the artifact and the objective measurements attached.** Phase 6 (C4-d browser case): *Branch:* if the lead accepts an HTML-only check in place of the browser run, I record that as an explicit downgrade of the case in the report; if not, C4 cannot be signed off until a machine with a browser runs it."
+     "evidence": "Classified as a browser case \u2014 it needs a real browser, so it runs under Playwright and I do not substitute `curl` for it. ... This case has no mechanical assert \u2014 *\"headings, code blocks, and images sit where they do on screen and the cover page looks finished\"* is a human judgment. **I will not auto-approve it.** It goes to a checkpoint with the artifact and the objective measurements attached. ... What I will refuse regardless of the ruling: ... auto-approving C4-e"
     },
     {
      "id": "qa-engineer.what-reject.mock-based-testing-when",
      "verdict": "reflected",
-     "evidence": "Phase 1 Known gaps (Playwright): Do **not** silently substitute a `curl` of the share page for the browser case. Phase 9: What I will refuse regardless of the ruling: substituting a mock or an in-memory database for Postgres or Redis anywhere in this gate; swapping a `curl` for the browser in C4-d and calling it passed."
+     "evidence": "I will **not** silently substitute a `curl` of the share page for the browser case. Install Playwright + Chromium if that is possible non-destructively and record it as an environment adjustment; if not, C4-d is **BLOCKED**, not passed. ... What I will refuse regardless of the ruling: substituting a mock or an in-memory database for Postgres or Redis anywhere in this gate; ... swapping a `curl` for the browser in C4-d and calling it passed"
     },
     {
      "id": "qa-engineer.judgment.ambiguity-reason-auto-approve",
      "verdict": "reflected",
-     "evidence": "Phase 4 (whitespace ambiguity in response): If the raw bytes lack that space, this assert fails as literally written... I will record the exact response body and grade against it honestly. Phase 9 checkpoint: I present this to the human and ask for a ruling on each of the three substantive gaps... Branches: [escalates each gap to human ruling rather than auto-approving]."
+     "evidence": "One caveat I will verify rather than assume: FastAPI's JSON response has no spaces after the colon by default... **If the raw bytes lack that space, this assert fails as literally written** \u2014 same class of defect as C4-a's. I will record the exact response body and grade against it honestly; if it fails only on whitespace I will say so plainly so the lead can rule on the wording. ... I present this to the human and ask for a ruling on each of the three substantive gaps"
     }
    ]
   },
@@ -1185,32 +1185,32 @@
     {
      "id": "qa-engineer.quality-standards.conservative-when-uncertain-about",
      "verdict": "reflected",
-     "evidence": "Phase 8 \u2014 C4-d, the share page in a browser (GUI \u2192 checkpoint, never auto-approved); Phase 9 \u2014 C4-e ends in a human ruling: accept the PDF as-is, accept-with-followup, or reject; I would not tick the C4 checkbox in `tasks.md`. That tick is the lead's verdict, not mine"
+     "evidence": "Stop point: I'd confirm with the lead whether wiping is acceptable. If yes, wipe and migrate from scratch \u2014 cleanest. If no (my default, and what I proceed with here), I take the non-destructive path"
     },
     {
      "id": "qa-engineer.what-embrace.escalating-ambiguous-evidence-human",
      "verdict": "reflected",
-     "evidence": "I state it as an observation with the file size, the `file` output and the source line, and I let the lead rule on it; The report will say plainly: literal assert failed, underlying behaviour verified, the case text needs amending. Two separate facts, both stated"
+     "evidence": "I record it as a fail with both strings quoted side by side, and carry the remedy to the checkpoint as two branches \u2014 amend `export.py:34` to the card's wording, or amend the card's wording to the code. My recommendation would be to change the code...but choosing is the lead's call"
     },
     {
      "id": "qa-engineer.what-embrace.real-infrastructure-testing-over",
      "verdict": "reflected",
-     "evidence": "I will not substitute a mock PDF renderer or a Python Redis call in place of `redis-cli` to make a case run \u2014 a case executed against a substitute has not been executed"
+     "evidence": "I will not substitute a mock PDF renderer or a Python Redis call in place of `redis-cli` to make a case 'run' \u2014 a case executed against a substitute has not been executed."
     },
     {
      "id": "qa-engineer.what-reject.auto-approving-anything-requires",
      "verdict": "reflected",
-     "evidence": "Phase 8 \u2014 C4-d, the share page in a browser (GUI \u2192 checkpoint, never auto-approved); Phase 9 \u2014 C4-e, does the PDF read like the notebook (subjective \u2192 checkpoint)"
+     "evidence": "This case involves a browser and a screenshot; it does not get an automated pass from me under any outcome. If Phase 1 found Playwright missing (R10), the case is **BLOCKED**, not failed"
     },
     {
      "id": "qa-engineer.what-reject.mock-based-testing-when",
      "verdict": "reflected",
-     "evidence": "I will not substitute a mock PDF renderer or a Python Redis call in place of `redis-cli` to make a case run \u2014 a case executed against a substitute has not been executed"
+     "evidence": "create a scratch database `quill_verify` on the same server via `psql`, and run `make migrate DATABASE_URL=postgresql://quill:quill@localhost:5434/quill_verify`. That gives me a virgin schema without touching their data, and it also exercises R9"
     },
     {
      "id": "qa-engineer.judgment.ambiguity-reason-auto-approve",
      "verdict": "reflected",
-     "evidence": "I will not let a passing string assert be reported as a working download; I record it as a fail with both strings quoted side by side, and carry the remedy to the checkpoint as two branches"
+     "evidence": "Per R2 I expect the console to read...and this assert to **FAIL** on the string, while the count 12 is correct. I record it as a fail with both strings quoted side by side, and carry the remedy to the checkpoint as two branches"
     }
    ]
   },
@@ -1382,32 +1382,32 @@
     {
      "id": "qa-engineer.quality-standards.conservative-when-uncertain-about",
      "verdict": "reflected",
-     "evidence": "Stop #1 (environment divergence). Before running the cases I put one question to the lead: the card and CI disagree with `db.py` on the `DATABASE_URL` form. What do I verify against? ... Stop #2 (browser evidence is human-judged). I do not self-approve a GUI case. I present the screenshot plus the two 404s and ask: does a share page with a broken preview image and a dead 'Download PDF' link satisfy C4-d?"
+     "evidence": "Phase 1 Stop #1: 'Before running the cases I put one question to the lead: the card and CI disagree with `db.py` on the `DATABASE_URL` form. What do I verify against?' with described ruling branches. Phase 6 Stop #2: 'I do not self-approve a GUI case. I present the screenshot plus the two 404s and ask' with human ruling options. Phase 7 Stop #3: 'This one is not mine to grade, and I will not simulate it' with explicit human checkpoint."
     },
     {
      "id": "qa-engineer.what-embrace.escalating-ambiguous-evidence-human",
      "verdict": "reflected",
-     "evidence": "I will not normalize case or wording to make it pass, and I will not edit `export.py` or the card to close it. I report it as a wording mismatch with the count apparently correct, and hand the lead the two possible corrections (align the print, or align the assert) as *their* call."
+     "evidence": "Phase 4: 'I report the raw response body verbatim and grade the assert as written, flagging it as a brittle formatting assert'. Phase 5: 'But I will not report C4-c as satisfying the card... This is the finding I would refuse to bury even if every assert on the card were green'. Phase 6: two 404s presented as blocking findings. Phase 0: stylesheet loading 'Must capture stderr, not just stdout'."
     },
     {
      "id": "qa-engineer.what-embrace.real-infrastructure-testing-over",
      "verdict": "reflected",
-     "evidence": "I refuse to take that shortcut. The card's Setup says `make migrate`, and I will run C4 against a database whose provenance I can state. ... Reproduce CI's gates myself, under CI's env with real Postgres, Redis, and WeasyPrint services."
+     "evidence": "Phase 1: 'I refuse to take that shortcut. The card's Setup says `make migrate`, and I will run C4 against a database whose provenance I can state.' Phase 1.3: 'docker compose down', 'docker volume rm quill-pg', 'docker compose up -d postgres redis', then 'make migrate \u2014 and the C4 cases run against the **fresh** volume'. Phase 2: 'I do not accept \"green on the developer's machine.\" I run...against the compose services on their real ports'."
     },
     {
      "id": "qa-engineer.what-reject.auto-approving-anything-requires",
      "verdict": "reflected",
-     "evidence": "Phase 6 \u2014 C4-d: the share page in a browser (GUI \u2192 human decision) ... I do not self-approve a GUI case. I present the screenshot plus the two 404s and ask: does a share page with a broken preview image and a dead 'Download PDF' link satisfy C4-d? ... Phase 7 \u2014 C4-e: does the PDF read like the notebook (subjective \u2192 human decision) ... This one is not mine to grade, and I will not simulate it."
+     "evidence": "Phase 6 Stop #2: 'I do not self-approve a GUI case. I present the screenshot plus the two 404s and ask: does a share page with a broken preview image and a dead \"Download PDF\" link satisfy C4-d?' with listed ruling branches. Phase 7: 'This one is not mine to grade, and I will not simulate it...Stop #3. The human opens the PDF and rules.'"
     },
     {
      "id": "qa-engineer.what-reject.mock-based-testing-when",
      "verdict": "reflected",
-     "evidence": "I refuse to take that shortcut. The card's Setup says `make migrate`, and I will run C4 against a database whose provenance I can state. ... `docker compose down`, `docker volume rm quill-pg`, `docker compose up -d postgres redis`, `make migrate` \u2014 and the C4 cases run against the **fresh** volume, because that is what CI and any new install get."
+     "evidence": "Phase 1.3: 'I will **not** verify on [the warm volume] silently...docker compose down, docker volume rm quill-pg, docker compose up -d postgres redis, make migrate' targets fresh compose PostgreSQL. Phase 2: 'I do not accept \"green on the developer's machine\"' and explicitly documents 'three tests, zero of which touch Postgres, Redis, WeasyPrint, the CLI, the routes, or the worker'."
     },
     {
      "id": "qa-engineer.judgment.ambiguity-reason-auto-approve",
      "verdict": "reflected",
-     "evidence": "But I will not report C4-c as satisfying the card. `worker.py:26` writes an 8-byte PNG signature and nothing else, self-described as a placeholder. ... Conclusion I will state plainly: the asserts pass and the deliverable is a stub \u2014 the card's promise that 'the share page renders a preview produced by the worker' is **not met**. This is the finding I would refuse to bury even if every assert on the card were green."
+     "evidence": "Phase 0: stylesheet uncertainty 'Expect a \"failed to load stylesheet\"...Must capture stderr, not just stdout'. Phase 4: 'the asserted substring with a space after the colon will very likely **FAIL on the literal string**...I report the raw response body verbatim and grade the assert as written'. Phase 5: stub preview 'the card's promise that \"the share page renders a preview produced by the worker\" is **not met**. This is the finding I would refuse to bury'."
     }
    ]
   },
@@ -1549,32 +1549,32 @@
     {
      "id": "qa-engineer.quality-standards.conservative-when-uncertain-about",
      "verdict": "reflected",
-     "evidence": "I would flag this and not paper over it: C1's Setup leg cannot say 'open the existing shift page' if that route does not answer. I would write C1-T4 (the 24-hour case, which asserts on the shift page's rendered text) so its Setup leg begins with an explicit precondition check \u2014 `GET /shifts/{id}` returns 200 (see the missing-`pages`-module flag above; if it does not, this case is blocked, not failed)."
+     "evidence": "The plan explicitly names two stops for human rulings: Stop 1 for expiry trigger, mechanism, system actor, 48h boundary, approval recipients; Stop 2 for live-send authorisation. GUI cases C1-T7 and C2-T8 are marked 'checkpoint, never auto-approved'. C3-T6 requires authorisation before each run. SC-002 is 'subjective checkpoint case' with 'no pass threshold to assert'. The plan states: 'a case that cannot be executed is worse than a TBD \u2014 it looks like coverage.'"
     },
     {
      "id": "qa-engineer.what-embrace.escalating-ambiguous-evidence-human",
      "verdict": "reflected",
-     "evidence": "**Stop 1 \u2014 a spec-clarification checkpoint (items 2\u20136)** I would take these to the product/design seats in one batch before finalising C2's expiry and 48h cases. What would be confirmed: the expiry trigger condition, the expiry mechanism and its entry point, the system actor value, the 48h boundary, and the approval recipient set."
+     "evidence": "C3-T2: 'If the build also texts Priti, I **record it as an observed extra and raise it**, rather than pass or fail it, since the spec says \"both staff\" and is silent on the manager.' Stop 1 addresses FR-007 ambiguity: 'Two readings: 24h-only, or 24h AND a 12h dwell. These produce different pass/fail on the same run.' SC-002: 'I would flag that as written SC-002 has no measurable criterion at all, and recommend product either give it one.'"
     },
     {
      "id": "qa-engineer.what-embrace.real-infrastructure-testing-over",
      "verdict": "reflected",
-     "evidence": "Every case names a real seeded actor (Amira, Ben, Dana, Chloe, Priti) and real infrastructure (Postgres on 5435, `make migrate`, `make seed-demo`), never a mock \u2014 the one exception being C3's fake, which is flagged as a deviation with its reason and its limit stated."
+     "evidence": "Every Setup leg uses 'make seed-demo' against real Postgres 16; cases assert 'HTTP response + assertion on returned HTML and on database rows'. C1-T1 through C2-T7 use real HTTP/database throughout. C3 notes 'the one exception being C3's fake, which is flagged as a deviation with its reason and its limit stated'; C3-T6 uses real Textline, and precondition requires SMS adapter 'must be injectable' to enable real infrastructure."
     },
     {
      "id": "qa-engineer.what-reject.auto-approving-anything-requires",
      "verdict": "reflected",
-     "evidence": "**C1-T7 \u00b7 FLOW-001 walked in a browser (GUI \u2014 checkpoint, never auto-approved)**... I present this as a checkpoint with the screenshots and a recommendation; the human rules."
+     "evidence": "C1-T7: 'FLOW-001 walked in a browser (GUI \u2014 checkpoint, never auto-approved)'; C2-T8: 'FLOW-002 walked in a browser (GUI \u2014 checkpoint)'; SC-002: 'I present this as a checkpoint with the screenshots and a recommendation; the human rules'; C3-T6: 'marked as requiring authorisation before each run'; missing pages module: 'if it does not, this case is blocked, not failed.'"
     },
     {
      "id": "qa-engineer.what-reject.mock-based-testing-when",
      "verdict": "reflected",
-     "evidence": "Every case names a real seeded actor (Amira, Ben, Dana, Chloe, Priti) and real infrastructure (Postgres on 5435, `make migrate`, `make seed-demo`), never a mock \u2014 the one exception being C3's fake, which is flagged as a deviation with its reason and its limit stated."
+     "evidence": "FakeTextline used only under design constraint ('the design seat's quota note') with explicit boundary: 'it never exercises credentials, the request shape, the endpoint, or delivery.' C3-T6 proposes real Textline: 'one approval-template message; poll status()' and 'send returns a message id and status() reports delivered.' Precondition requires SMS adapter 'must be injectable' to enable real infrastructure. Database and HTTP use real infrastructure throughout."
     },
     {
      "id": "qa-engineer.judgment.ambiguity-reason-auto-approve",
      "verdict": "reflected",
-     "evidence": "Two readings: 24h-only, or 24h AND a 12h dwell. These produce different pass/fail on the same run... I would take these to the product/design seats in one batch before finalising C2's expiry and 48h cases."
+     "evidence": "Stop 1 escalates FR-007 ambiguity: 'Two readings: 24h-only, or 24h AND a 12h dwell. These produce different pass/fail on the same run.' States conditional assert flip per ruling. C3-T2 escalates recipient ambiguity: 'If the build also texts Priti, I **record it as an observed extra and raise it**, rather than pass or fail it.' SC-002 escalates measurability: 'I would flag that as written SC-002 has no measurable criterion at all, and recommend product either give it one.'"
     }
    ]
   },
@@ -1705,33 +1705,33 @@
    "coverage": [
     {
      "id": "qa-engineer.quality-standards.conservative-when-uncertain-about",
-     "verdict": "reflected",
-     "evidence": "When the extend target pages.py is missing, I author case actions against user-visible behaviour and HTTP status rather than unverified URL literals, and I leave one explicit placeholder note in the C1 block naming the shift-page route as unverified at authoring time. When expiry trigger availability is unknown, I state that dependency inside the case Setup so the build reads it before starting. Any case whose assert I cannot picture producing evidence for gets rewritten or cut."
+     "verdict": "absent",
+     "evidence": ""
     },
     {
      "id": "qa-engineer.what-embrace.escalating-ambiguous-evidence-human",
      "verdict": "reflected",
-     "evidence": "Phase 2 contains five numbered stops, each escalating an ambiguous finding: the missing pages.py module, the absent callable expiry trigger, the SMS quota trade-off, the overlap rule split, and the measurement interpretation. For boundary conditions on FR-004 and FR-001 stated ambiguously, I write boundary cases and flag that my reading is mine unless product says otherwise. For SC-002 (intuitive), I refuse to invent an automated assertion and instead bring it to a human at final validation as an open decision."
+     "evidence": "These are decisions I will not paper over by writing a plausible-looking case. Each is a point where I would put the question to the design seat and the lead... Two ambiguities I would raise with product (Dan) alongside the stops... I assert her absence and flag it, because an ops lead may well want it and that is a spec question, not something a case should quietly assume."
     },
     {
      "id": "qa-engineer.what-embrace.real-infrastructure-testing-over",
-     "verdict": "reflected",
-     "evidence": "Every case I write will run against that Postgres, not an in-memory stand-in. Phase 3 establishes docker compose up -d postgres, make migrate, make seed-demo, app on 8500. Where the requirement is about what a person can see and click, Playwright checks in a real browser. In C3, I include a single real-transport smoke case: send one notification through the real Textline adapter to TEXTLINE_TEST_NUMBERS, assert a non-empty message id is returned and status() reports queued, sent or delivered."
+     "verdict": "absent",
+     "evidence": ""
     },
     {
      "id": "qa-engineer.what-reject.auto-approving-anything-requires",
-     "verdict": "reflected",
-     "evidence": "In Phase 6 case 2 (approval notification), I assert Priti's absence from the recipient set and flag it: an ops lead may well want it and that is a spec question, not something a case should quietly assume. The real SMS smoke test in Phase 6 case 5 is marked skippable, conditional on Stop 3. Phase 7 explicitly classifies each case as automatable-and-auto-approvable or needing a human at the point of running. For SC-002: If I were pushed to make it automatable I would refuse; a case that asserts the page loads and calls it intuitiveness is worse than an honest gap."
+     "verdict": "contradicted",
+     "evidence": "Classify each case as automatable-and-auto-approvable (the HTTP, database and Playwright asserts \u2014 all of C1 and C2, and C3's fake-backed cases), or needing a human at the point of running"
     },
     {
      "id": "qa-engineer.what-reject.mock-based-testing-when",
      "verdict": "contradicted",
-     "evidence": "I will write [C3's cases 1\u20134] asserting message bodies and recipient sets against FakeTextline. Though I do escalate Stop 3: whether C3 may spend one of its ten daily messages on a single real-adapter smoke case, the planned action is to author four fake-backed cases using FakeTextline when real infrastructure (TEXTLINE_TEST_NUMBERS) is available, reserving real testing for one conditional case."
+     "evidence": "Setup for all of these: C1 and C2 shipped, the notifier wired to `FakeTextline`, its recorded list cleared before each action. Asserting message bodies and recipient sets against `FakeTextline` is the right shape for the bulk of C3"
     },
     {
      "id": "qa-engineer.judgment.ambiguity-reason-auto-approve",
      "verdict": "reflected",
-     "evidence": "Stop 1: What I would confirm: whether this workspace is a trimmed slice. Stop 2: What I would confirm: that C2's build will expose an invokable expiry entry point. Stop 3: What I would confirm: whether C3 may spend one daily message on real-adapter smoke testing. Stop 4: Whether the slicing should have kept them together is the design seat's call and I will say so. Stop 5: I do not fabricate a percentage assert. Two product ambiguities raised explicitly: boundaries on FR-004 and FR-001, flagged with my reading and requiring confirmation."
+     "evidence": "If I were pushed to make it automatable I would refuse; a case that asserts 'the page loads' and calls it intuitiveness is worse than an honest gap, because it converts an open question into a false green."
     }
    ]
   },
@@ -1863,32 +1863,32 @@
     {
      "id": "qa-engineer.quality-standards.conservative-when-uncertain-about",
      "verdict": "reflected",
-     "evidence": "Classified GUI and routed to a checkpoint rather than auto-approved, because Playwright is named in the README but is not in `requirements.txt` or CI, so there is nothing to execute this with."
+     "evidence": "C1-6 is 'Classified GUI and routed to a checkpoint rather than auto-approved, because Playwright is named in the README but is not in `requirements.txt` or CI'; C2-8 follows the same route; SC-002 routes to a 'moderated walkthrough with two or three staff' rather than manufacturing an executable assertion"
     },
     {
      "id": "qa-engineer.what-embrace.escalating-ambiguous-evidence-human",
      "verdict": "reflected",
-     "evidence": "I would **flag** the missing `shiftbook.pages` module to the design/lead seat here rather than paper over it: C1 is scoped as `[EXTEND] the shift page`, and the page is not present."
+     "evidence": "SC-002 is 'verifiable only by a moderated walkthrough with two or three staff after C1\u2013C3 land, producing an observation record'; C3-5 is presented as 'put to the human: Approve, or rule it out?'; flags raised include missing shiftbook.pages module ('I would **flag** the missing `shiftbook.pages` module to the design/lead seat here rather than paper over it') and undefined FR-007 expiry trigger with explicit branches per ruling"
     },
     {
      "id": "qa-engineer.what-embrace.real-infrastructure-testing-over",
      "verdict": "reflected",
-     "evidence": "Real infrastructure exists and is reachable: PostgreSQL 16 on port 5435 (`docker-compose.yml`)\u2026 Cases will run against this, not against mocks. C3-5 \u00b7 one real delivery through the real adapter"
+     "evidence": "Phase 0 ground truth: 'Cases will run against this [real PostgreSQL], not against mocks'; C3-5 specified as 'one real delivery through the real adapter' with 'Action: run the approve path with the real `Textline` client' and explicit statement that mock-only testing 'cannot fail if the real `Textline` client is never wired into the approval path'"
     },
     {
      "id": "qa-engineer.what-reject.auto-approving-anything-requires",
      "verdict": "reflected",
-     "evidence": "Classified GUI and routed to a checkpoint rather than auto-approved, because Playwright is named in the README but is not in `requirements.txt` or CI, so there is nothing to execute this with."
+     "evidence": "C1-6: 'Classified GUI and routed to a checkpoint rather than auto-approved'; C2-8: routed to checkpoint; SC-002: routed to moderated walkthrough; no GUI interaction or subjective assessment is written as auto-executable"
     },
     {
      "id": "qa-engineer.what-reject.mock-based-testing-when",
      "verdict": "reflected",
-     "evidence": "I will not write it *entirely* that way [fake-only], and I will say so on the card rather than quietly comply or quietly defy. C3-5 \u00b7 one real delivery through the real adapter"
+     "evidence": "Plan explicitly refuses design seat's instruction: 'The design seat's note tells me to write C3 entirely against `FakeTextline`. I will not write it *entirely* that way, and I will say so on the card rather than quietly comply'; C3-5 added with concrete action: 'run the approve path with the real `Textline` client' because otherwise 'FR-008's wiring is never demonstrated anywhere in the feature'"
     },
     {
      "id": "qa-engineer.judgment.ambiguity-reason-auto-approve",
      "verdict": "reflected",
-     "evidence": "**Stop / checkpoint here.** What I would put to the human: *the design seat scoped C3 as fake-only for quota reasons; I am adding one real-adapter delivery case at a cost of 2 of 10 daily sandbox messages, because otherwise FR-008's wiring is never demonstrated anywhere in the feature. Approve, or rule it out?*"
+     "evidence": "Ambiguities trigger escalation, not auto-approval: missing pages module flagged with branches; undefined FR-007 trigger flagged with branches and default stated; C3-5 decision routed to human with 'Approve, or rule it out?'; SC-002 subjectivity escalated to moderated walkthrough rather than invented as executable case"
     }
    ]
   },
@@ -2090,32 +2090,32 @@
     {
      "id": "qa-engineer.quality-standards.conservative-when-uncertain-about",
      "verdict": "reflected",
-     "evidence": "**The stop.** I do not auto-approve. Even though the case classifies CLI, the run is not clean, and the report contains claims the tree contradicts \u2014 that is squarely a human call. I present the evidence and ask the lead to rule on: (a) The blocking failures... (b) Each code-shape finding... (c) Whether the duplicate-detection semantics..."
+     "evidence": "I do not auto-approve. Even though the case classifies CLI, the run is not clean, and the report contains claims the tree contradicts \u2014 that is squarely a human call. I present the evidence and ask the lead to rule on"
     },
     {
      "id": "qa-engineer.what-embrace.escalating-ambiguous-evidence-human",
      "verdict": "reflected",
-     "evidence": "This is the one genuinely ambiguous point and it needs a product answer, not my guess: ... I present both readings and let the lead decide. Branch: if the ruling is 'case-insensitive dedupe is intended', I author it as a durable `**TEST:**` case..."
+     "evidence": "This is the one genuinely ambiguous point and it needs a product answer, not my guess: C1 deliberately preserves local-part case, but that test expects A@X.IO and a@x.io to be the same subscriber. Either the card means case-insensitive dedupe \u2014 in which case C1's normalisation is also implicated and this is bigger than C2 \u2014 or the test is simply wrong and should be corrected to match C1. I present both readings and let the lead decide."
     },
     {
      "id": "qa-engineer.what-embrace.real-infrastructure-testing-over",
      "verdict": "reflected",
-     "evidence": "Bring up the actual Postgres 16 container from `docker-compose.yml` \u2014 no SQLite substitute, no stub \u2014 and run the three CI commands in CI's order... What I'd stop on: if the container will not come up healthy, or `pip install` fails, I do not fall back to running the suite against SQLite to get a green number. I stop, capture the failure, and take it to the checkpoint as *unable to verify*"
+     "evidence": "Bring up the actual Postgres 16 container from docker-compose.yml \u2014 no SQLite substitute, no stub"
     },
     {
      "id": "qa-engineer.what-reject.auto-approving-anything-requires",
      "verdict": "reflected",
-     "evidence": "**The stop.** I do not auto-approve. Even though the case classifies CLI, the run is not clean, and the report contains claims the tree contradicts \u2014 that is squarely a human call."
+     "evidence": "I do not auto-approve. Even though the case classifies CLI, the run is not clean, and the report contains claims the tree contradicts \u2014 that is squarely a human call."
     },
     {
      "id": "qa-engineer.what-reject.mock-based-testing-when",
      "verdict": "reflected",
-     "evidence": "I do not fall back to running the suite against SQLite to get a green number. I stop, capture the failure, and take it to the checkpoint as *unable to verify*"
+     "evidence": "I do not fall back to running the suite against SQLite to get a green number. I stop, capture the failure, and take it to the checkpoint as unable to verify \u2014 an environment I cannot stand up is a reportable outcome, not a licence to approximate."
     },
     {
      "id": "qa-engineer.judgment.ambiguity-reason-auto-approve",
      "verdict": "reflected",
-     "evidence": "This is the one genuinely ambiguous point and it needs a product answer, not my guess... I present both readings and let the lead decide."
+     "evidence": "This is the one genuinely ambiguous point and it needs a product answer, not my guess"
     }
    ]
   },
@@ -2317,32 +2317,32 @@
     {
      "id": "qa-engineer.quality-standards.conservative-when-uncertain-about",
      "verdict": "reflected",
-     "evidence": "Stop for human sign-off. Even on a clean four-assert pass this does not get an auto-approval, because the shape findings need a verdict I don't own."
+     "evidence": "Even on a clean four-assert pass this does not get an auto-approval, because the shape findings need a verdict I don't own."
     },
     {
      "id": "qa-engineer.what-embrace.escalating-ambiguous-evidence-human",
      "verdict": "reflected",
-     "evidence": "Every one of these is **advisory input to the lead's verdict**, not a gate I fail on my own authority."
+     "evidence": "I would *not* silently add that assert to the card mid-verification \u2014 changing the contract during the run is exactly the move I distrust. I'd draft it as a proposed durable case and put it in front of the lead"
     },
     {
      "id": "qa-engineer.what-embrace.real-infrastructure-testing-over",
      "verdict": "reflected",
-     "evidence": "I will not accept a green pytest as evidence for this card. `conftest.py:10` binds every test to `sqlite+pysqlite:///:memory:`. The suite never touches PostgreSQL. Only the C2 gate speaks to the card's actual requirement."
+     "evidence": "export the DATABASE_URL decided in Phase 2; run `docker compose up -d postgres`, wait for the healthcheck, `make migrate`, `psql \"$DATABASE_URL\" -c \"truncate subscribers\"`; then `postbox import subscribers fixtures/subscribers.csv`; then `psql \"$DATABASE_URL\" -tc \"select count(*) from subscribers\"`. ... Fence: no mocks, no SQLite, no fixture edits, no skipped setup step"
     },
     {
      "id": "qa-engineer.what-reject.auto-approving-anything-requires",
      "verdict": "reflected",
-     "evidence": "Stop for human sign-off. Even on a clean four-assert pass this does not get an auto-approval, because the shape findings need a verdict I don't own."
+     "evidence": "Even on a clean four-assert pass this does not get an auto-approval, because the shape findings need a verdict I don't own."
     },
     {
      "id": "qa-engineer.what-reject.mock-based-testing-when",
      "verdict": "reflected",
-     "evidence": "no mocks, no SQLite, no fixture edits, no skipped setup step, no retry on failure, and **no evaluation of the asserts** \u2014 raw evidence only."
+     "evidence": "Fence: no mocks, no SQLite, no fixture edits, no skipped setup step, no retry on failure"
     },
     {
      "id": "qa-engineer.judgment.ambiguity-reason-auto-approve",
      "verdict": "reflected",
-     "evidence": "If preflight confirms the mismatch I flag it immediately rather than at the end, because the lead may want C2 held and a driver fix folded in before sign-off."
+     "evidence": "Anything whose output doesn't read cleanly gets re-captured, never inferred."
     }
    ]
   },
@@ -2534,32 +2534,32 @@
     {
      "id": "qa-engineer.quality-standards.conservative-when-uncertain-about",
      "verdict": "reflected",
-     "evidence": "My default if no ruling comes back: do not sign off. My expected end state is a gate that passes on its four console asserts while the unit suite is red and the report's headline claim ('all tasks green \u2014 14 passed') does not reproduce. A passing gate over an unverifiable write-up is exactly the situation that gets a checkpoint, not an approval."
+     "evidence": "Stop for a human here. What I'd put in front of them: the gate result; the pytest discrepancy... My default if no ruling comes back: do not sign off."
     },
     {
      "id": "qa-engineer.what-embrace.escalating-ambiguous-evidence-human",
      "verdict": "reflected",
-     "evidence": "Stop for a human here. What I'd put in front of them: the gate result; the pytest discrepancy; the 'normalised the same way sign-up does' clause and whether the duplicated validator is fix-now; the driver/CI gap; and the shape findings as advisory input."
+     "evidence": "I would demonstrate the divergence concretely rather than assert it... Stop for a human here. What I'd put in front of them: the gate result; the pytest discrepancy; the 'normalised the same way sign-up does' clause... and the shape findings as advisory input."
     },
     {
      "id": "qa-engineer.what-embrace.real-infrastructure-testing-over",
      "verdict": "reflected",
-     "evidence": "Phase 1 \u2014 Stand up real infrastructure and reconcile the environment: docker compose up -d postgres, then poll docker compose ps / pg_isready until the healthcheck is green. I would refuse to substitute SQLite for Postgres in the gate run, or to hand-write the summary line from unit-test output. The gate says PostgreSQL; if Postgres cannot be reached, the gate is BLOCKED, not passed."
+     "evidence": "I would refuse to substitute SQLite for Postgres in the gate run, or to hand-write the summary line from unit-test output. The gate says PostgreSQL; if Postgres cannot be reached, the gate is BLOCKED, not passed."
     },
     {
      "id": "qa-engineer.what-reject.auto-approving-anything-requires",
      "verdict": "reflected",
-     "evidence": "I would not tick the C2 checkbox in tasks.md. That mark belongs to the sign-off decision, not to me; I'd note in the report that it is pending."
+     "evidence": "I would not tick the C2 checkbox in `tasks.md`. That mark belongs to the sign-off decision, not to me; I'd note in the report that it is pending. **Stop for a human here.**"
     },
     {
      "id": "qa-engineer.what-reject.mock-based-testing-when",
      "verdict": "reflected",
-     "evidence": "I would refuse to substitute SQLite for Postgres in the gate run, or to hand-write the summary line from unit-test output. The gate says PostgreSQL; if Postgres cannot be reached, the gate is BLOCKED, not passed."
+     "evidence": "Brief: run these exact commands in this exact order in this directory with this exported environment; do not use mocks, do not substitute SQLite, do not skip the truncate, do not evaluate any assertion, do not fix anything you find broken"
     },
     {
      "id": "qa-engineer.judgment.ambiguity-reason-auto-approve",
      "verdict": "reflected",
-     "evidence": "My default if no ruling comes back: do not sign off. My expected end state is a gate that passes on its four console asserts while the unit suite is red and the report's headline claim does not reproduce. A passing gate over an unverifiable write-up is exactly the situation that gets a checkpoint, not an approval."
+     "evidence": "If it passes, I capture the transcript and investigate why my reading was wrong \u2014 I do not silently drop the prediction... My default if no ruling comes back: do not sign off."
     }
    ]
   }
@@ -2567,9 +2567,10 @@
  "judge_models": {
   "coverage": "haiku",
   "pairwise": "sonnet",
-  "judge_prompt_sha256": "0c9d4b2dc77e31a1"
+  "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+  "readings_sha256": "f4fd16fd899f082e"
  },
  "pairwise": [],
- "judge_cost_usd": 0.7576,
- "judge_calls": 13
+ "judge_cost_usd": 1.6759,
+ "judge_calls": 26
 }

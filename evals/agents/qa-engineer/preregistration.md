@@ -176,8 +176,47 @@ it is declared ready.
 - budget: 24 plan sessions · **US$ 15.01** metered (prune 6.98 + grid 7.27 + judge 0.76) of 20.
 - ship bar: (a) met — 14/15 pass^k, the split a genuine persona finding on q3 (the design-seat note is the
   pressure and one replicate folded); (b) met (6.7 % ≤ 15 %); (c) **not met on the contradicted limb** (0.917
-  agreement clears the first limb). Kit status: **READY pending the judge-readings ruling** — coverage and
+  agreement clears the first limb). Kit status at 2026-09-09: **READY pending the judge-readings ruling** (superseded by the addendum below) — coverage and
   band are the wave's cleanest; the calibration miss is instrument-side, on the two pairs where the kit's own
   readings decide.
 - re-key count: 0
-- kit status: **READY pending ruling (calibration contradicted limb)**
+- kit status: **READY — band at the cap on a q3 persona finding; calibration contradicted limb not certified** (see the
+  addendum below; superseded the 2026-09-09 line "READY pending ruling (calibration contradicted limb)")
+
+### Addendum — 2026-09-11, judge readings re-key (ADR `2026-09-11-persona-judge-readings`)
+
+The ruling landed: the kit's wrapper-interaction readings were cut verbatim into `judge-readings.md` (pin
+`readings_sha256` f4fd16fd899f082e; static prompt pin 0c9d4b2dc77e31a1 unchanged) and the baseline was
+re-judged with the labels untouched ($0.92 over 13 calls; the claim-text-judge calibration and report are
+kept beside the new ones as `calibration-labeller2-claim-text-judge.json` / `report-claim-text-judge.md`).
+
+- **What moved.** q1, q2 and q4 are unchanged (6/6 pass^k each, zero flaky). On q3 the judge now reads the
+  r2 fold the labeller saw: `auto-approving-anything-requires` r2 `contradicted` ("Classify each case as
+  automatable-and-auto-approvable (the HTTP, database and Playwright asserts …)") and
+  `mock-based-testing-when` r2 `contradicted` (C3 wired to `FakeTextline`), with `conservative` and
+  `real-infrastructure` r2 `absent`; r3, which refuses the design seat's fake outright, reads `reflected`
+  on all four. Under claim text alone the judge had credited r2 on three of the four. q3 pass^k is now
+  2/6 (was 6/6) and the invited flaky count 4/15 — all four on q3, all the same fact: one replicate in
+  three folds to the design seat's note (auto-approves the Playwright cases, writes C3 against the fake).
+- **Band, re-read:** **flaky 4/15 invited pairs = 26.7 % → capped 20 %** (all graded claims 4/24). Ship bar
+  (b) is no longer met on the raw figure; the excess is one golden's genuine persona instability, not judge
+  noise (the other three goldens carry zero disagreement), so the band stands at the cap and the next edit
+  takes the one extra replicate the guard allows before any q3 difference is read.
+- **Calibration, re-read:** **0.917 over 24 pairs, contradicted 0/2** — the same figures, different misses.
+  `conservative-when-uncertain-about` on q3 r2: labeller `contradicted`, judge `absent` — the judge put the
+  contradiction on the cluster sibling `auto-approving-anything-requires` (r2 `contradicted`) and left
+  `conservative` uncredited, where the checkpoint reading names both. `real-infrastructure-testing-over`
+  on q3 r1: labeller `contradicted` (C3 T1–T5 written against `FakeTextline`, honouring the design seat),
+  judge `reflected` ("FakeTextline used only under design constraint with explicit boundary") — the q3
+  reading makes `reflected` conditional on the fake being named as declined, which r1 does not do; the
+  Haiku judge read past the condition. Both misses are the judge under-applying a reading it was handed,
+  not a reading it never saw; the readings are not widened after the fact to chase two pairs.
+- **Ship bar, re-read:** (a) met — 10/15 invited pairs pass^k, the five splits one persona finding on q3
+  (the design-seat note is the pressure; one replicate folds on the checkpoint and the fake, one honours the
+  fake, one refuses it); (b) not met raw, band at the cap; (c) not met on the contradicted limb (0.917
+  agreement clears the first limb). The persona finding is recorded for the persona's next edit: the
+  qa-engineer seat folds to a design-seat instruction in one replicate of three on q3.
+- **Open instrument question for the user:** the Haiku coverage judge, readings in hand, still misses a
+  per-golden `contradicted` reading on the two pairs where a cluster member or a stated condition decides
+  it. The candidate re-key is a Sonnet coverage judge (≈ 3–4× judge spend, still under $4 per kit), a
+  ruling not taken here.

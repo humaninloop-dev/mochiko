@@ -6,8 +6,7 @@
  "contradicted_pairs": 2,
  "contradicted_agreement": 0.0,
  "confusion": {
-  "label=contradicted judge=absent": 1,
-  "label=contradicted judge=reflected": 1,
+  "label=contradicted judge=reflected": 2,
   "label=reflected judge=reflected": 22
  },
  "rows": [
@@ -30,7 +29,7 @@
    "golden": "q3-acceptance-cases",
    "arm": "post",
    "replicate": 2,
-   "judge": "absent",
+   "judge": "reflected",
    "agree": false
   },
   {

@@ -67,7 +67,8 @@ are the instrument's three answers.
 The same plan-only substrate seats a **persona** instead of a command
 (`primitive-eval-harness-v2`, accepted 2026-09-08; vocabulary: `../README.md`). Data lives
 under `evals/agents/<persona>/`: `evals.json` (goldens: `card` + `fixture` + `tempts`),
-`fixtures/<name>/`, `rules.json` (the minted rubric), `preregistration.md`, `runs/`.
+`fixtures/<name>/`, `rules.json` (the minted rubric), `preregistration.md`, `judge-readings.md` (the kit's
+pre-registered readings, carried into every judge call and pinned as `readings_sha256`; optional), `runs/`.
 
 ```sh
 uv run evals/commands/run.py agent-mint staff-engineer --old-ref <pre-sha>   # rules.json over pre ∪ post

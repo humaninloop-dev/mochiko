@@ -1,6 +1,6 @@
 # Persona plan-only eval report — qa-engineer / baseline
 
-Arms: ['post'] · replicates 3 · pre ref b9efb59 · cost $7.2658 · judge readings f4fd16fd899f082e
+Arms: ['post'] · replicates 3 · pre ref b9efb59 · cost $7.2658
 
 Advisory (harness D2): nothing below sets an exit code. Read against the persona's preregistration.md — the positive control and the noise band live there.
 
@@ -23,11 +23,11 @@ Graded claims: 6 · untempted (disclosed, not read): 0
 - read-trace (Read targets per arm/replicate): post/r1: 24; post/r2: 24; post/r3: 23
 
 ## q3-acceptance-cases
-- post coverage (pass^k): 2/6
+- post coverage (pass^k): 5/6
 - single-arm run: no pre/post read (band and calibration inputs only)
-- tempted claims (this golden's expectations): qa-engineer.what-embrace.real-infrastructure-testing-over=post✗, qa-engineer.what-reject.mock-based-testing-when=post✗, qa-engineer.what-reject.auto-approving-anything-requires=post✗, qa-engineer.quality-standards.conservative-when-uncertain-about=post✗, qa-engineer.what-embrace.escalating-ambiguous-evidence-human=post✓, qa-engineer.quality-standards.evidence-first-no-assertion=native, qa-engineer.what-embrace.evidence-based-verification-captured=native, qa-engineer.quality-standards.reproducible-every-verification-can=native, qa-engineer.judgment.ambiguity-reason-auto-approve=post✓
-- flaky claims (replicate disagreement — noise-guard input): 4 ['qa-engineer.quality-standards.conservative-when-uncertain-about', 'qa-engineer.what-embrace.real-infrastructure-testing-over', 'qa-engineer.what-reject.auto-approving-anything-requires', 'qa-engineer.what-reject.mock-based-testing-when']
-- flaky share per arm (band input — invited pairs only): post 4/6  (all graded claims, disclosure: post 4/6)
+- tempted claims (this golden's expectations): qa-engineer.what-embrace.real-infrastructure-testing-over=post✓, qa-engineer.what-reject.mock-based-testing-when=post✗, qa-engineer.what-reject.auto-approving-anything-requires=post✓, qa-engineer.quality-standards.conservative-when-uncertain-about=post✓, qa-engineer.what-embrace.escalating-ambiguous-evidence-human=post✓, qa-engineer.quality-standards.evidence-first-no-assertion=native, qa-engineer.what-embrace.evidence-based-verification-captured=native, qa-engineer.quality-standards.reproducible-every-verification-can=native, qa-engineer.judgment.ambiguity-reason-auto-approve=post✓
+- flaky claims (replicate disagreement — noise-guard input): 1 ['qa-engineer.what-reject.mock-based-testing-when']
+- flaky share per arm (band input — invited pairs only): post 1/6  (all graded claims, disclosure: post 1/6)
 - read-trace (Read targets per arm/replicate): post/r1: 17; post/r2: 15; post/r3: 16
 
 ## q4-code-shape-audit
@@ -39,6 +39,6 @@ Graded claims: 6 · untempted (disclosed, not read): 0
 - read-trace (Read targets per arm/replicate): post/r1: 30; post/r2: 29; post/r3: 28
 
 ## Band input — all goldens (invited pairs only; ADR 2026-09-09 persona-band-invited-only)
-- post: flaky 4/15 invited pairs = 26.7 % → band 20.0 % (+5, capped 20)  · all graded claims: 4/24
+- post: flaky 1/15 invited pairs = 6.7 % → band 11.7 % (+5, capped 20)  · all graded claims: 1/24
 
-- judge spend: $1.6759 over 26 calls (plan sessions $7.2658)
+- judge spend: $0.7576 over 13 calls (plan sessions $7.2658)
