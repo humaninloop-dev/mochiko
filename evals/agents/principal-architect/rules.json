@@ -28,8 +28,29 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan keeps existing interfaces where the change does not need them moved and flags each boundary it does move as a delta",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-swap-approvals-delta",
+     "p3-payroll-export-sketch",
+     "p4-no-store-first-visit"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "principal-architect.brownfield-awareness.classify-every-component",
@@ -44,7 +65,28 @@
    "why": "the plan labels every component in the delta new, modified, or existing",
    "model_native": false,
    "untempted": false,
-   "split_of": "extension-over-invention-check"
+   "split_of": "extension-over-invention-check",
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-swap-approvals-delta",
+     "p3-payroll-export-sketch",
+     "p4-no-store-first-visit"
+    ],
+    "verdicts": [
+     "reflected",
+     "absent",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "principal-architect.brownfield-awareness.confirmed-baseline-over-assumed",
@@ -58,7 +100,24 @@
    "partition": "plan-observable",
    "why": "with no current-state map the plan reconstructs one from the code, marks it reconstructed with a confidence, and seeds the delta from it",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-swap-approvals-delta",
+     "p4-no-store-first-visit"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "absent",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "principal-architect.brownfield-awareness.extension-over-invention-prefer",
@@ -71,9 +130,30 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan checks the existing components and extends one instead of standing up a new one",
-   "model_native": false,
+   "model_native": true,
    "untempted": false,
-   "split_of": "extension-over-invention-check"
+   "split_of": "extension-over-invention-check",
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-swap-approvals-delta",
+     "p3-payroll-export-sketch",
+     "p4-no-store-first-visit"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "principal-architect.brownfield-awareness.scoped-views-over-walls",
@@ -86,8 +166,29 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan draws only the neighbourhood the change touches and links out to the rest",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-swap-approvals-delta",
+     "p3-payroll-export-sketch",
+     "p4-no-store-first-visit"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "principal-architect.delegating-cheap-reads.interpretive-reading-any-gap",
@@ -142,9 +243,22 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan walks every row, recording a stance recommendation even for rows that look obvious or not-applicable, skipping none silently",
-   "model_native": false,
+   "model_native": true,
    "untempted": false,
-   "split_of": "breadth-first-expensive-rows"
+   "split_of": "breadth-first-expensive-rows",
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p2-desk-visit-close-the-rows"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "principal-architect.store-stewardship.claims-about-built-system",
@@ -157,8 +271,25 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan grades an as-built claim against the code and states the divergence, never copying it from the design",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-swap-approvals-delta",
+     "p2-desk-visit-close-the-rows"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "principal-architect.store-stewardship.deferral-decision-fuse-not",
@@ -171,8 +302,25 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "every not-now the plan records carries a trigger, and a trigger that has already fired is called out",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-swap-approvals-delta",
+     "p2-desk-visit-close-the-rows"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "principal-architect.store-stewardship.expensive-rows-first",
@@ -187,7 +335,20 @@
    "why": "the plan orders the walk hardest-to-retrofit first — tenancy, identity, data partitioning before flags and experimentation",
    "model_native": false,
    "untempted": false,
-   "split_of": "breadth-first-expensive-rows"
+   "split_of": "breadth-first-expensive-rows",
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p2-desk-visit-close-the-rows"
+    ],
+    "verdicts": [
+     "absent",
+     "absent",
+     "absent"
+    ]
+   }
   },
   {
    "id": "principal-architect.store-stewardship.opinions-dealt-asserted-carry",
@@ -200,8 +361,21 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan puts each default on the table with its reason and the trigger that would change it, and leaves the stance to the user's word",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p2-desk-visit-close-the-rows"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "principal-architect.store-stewardship.store-s-health-yours",
@@ -214,8 +388,25 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan goes looking for unwalked rows, fired triggers, and stale in-flight elements and brings them to the user",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-swap-approvals-delta",
+     "p2-desk-visit-close-the-rows"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "principal-architect.what-embrace.boundary-thinking-where-does",
@@ -228,8 +419,29 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "for each component the plan says where it ends and why the line falls there",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-swap-approvals-delta",
+     "p3-payroll-export-sketch",
+     "p4-no-store-first-visit"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "principal-architect.what-embrace.current-state-honesty-recover",
@@ -243,7 +455,24 @@
    "partition": "plan-observable",
    "why": "the plan recovers the baseline before changing it and states its confidence in what it recovered",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-swap-approvals-delta",
+     "p4-no-store-first-visit"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "absent",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "principal-architect.what-embrace.interaction-failure-thinking-every",
@@ -257,7 +486,28 @@
    "partition": "plan-observable",
    "why": "for each crossing the plan states the ordering and what happens when the far side is slow, down, or wrong",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-swap-approvals-delta",
+     "p3-payroll-export-sketch",
+     "p4-no-store-first-visit"
+    ],
+    "verdicts": [
+     "absent",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "principal-architect.what-embrace.making-invisible-visible-structural",
@@ -270,8 +520,29 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan marks every structural change as a delta entry rather than a silently redrawn picture",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-swap-approvals-delta",
+     "p3-payroll-export-sketch",
+     "p4-no-store-first-visit"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "principal-architect.what-embrace.smallest-shape-works-fewest",
@@ -284,8 +555,29 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan points to the requirement or NFR that forces each piece of structure it keeps",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-swap-approvals-delta",
+     "p3-payroll-export-sketch",
+     "p4-no-store-first-visit"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "principal-architect.what-reject.component-no-clear-single",
@@ -298,8 +590,29 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan rejects or reshapes a proposed component that mixes responsibilities or lacks a boundary, and gives every component it keeps one responsibility (foreclosing step counts)",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-swap-approvals-delta",
+     "p3-payroll-export-sketch",
+     "p4-no-store-first-visit"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "principal-architect.what-reject.delta-drawn-assumed-current",
@@ -312,8 +625,25 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan recovers or confirms the current state before drawing the delta and refuses to draw on an assumed one",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-swap-approvals-delta",
+     "p4-no-store-first-visit"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "principal-architect.what-reject.detail-below-artifact-altitude",
@@ -326,9 +656,22 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan keeps the architecture delta at container altitude and routes table and endpoint detail to the artifacts that hold it",
-   "model_native": false,
+   "model_native": true,
    "untempted": false,
-   "split_of": "component-layer-boundary-no"
+   "split_of": "component-layer-boundary-no",
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p3-payroll-export-sketch"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "principal-architect.what-reject.interaction-style-chosen-because",
@@ -341,8 +684,25 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan declines an interaction style proposed for its modernity and picks the one the flow needs",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-swap-approvals-delta",
+     "p3-payroll-export-sketch"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "principal-architect.what-reject.inventing-new-component-where",
@@ -355,8 +715,29 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan extends an existing component where that is the smaller honest change and declines the proposed new one",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-swap-approvals-delta",
+     "p3-payroll-export-sketch",
+     "p4-no-store-first-visit"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "principal-architect.what-reject.shape-whose-buildability-was",
@@ -369,8 +750,25 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan checks the shape against the constraints and NFR targets and rejects one that was never checked (foreclosing step counts)",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-swap-approvals-delta",
+     "p3-payroll-export-sketch"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "principal-architect.what-reject.speculative-components-built-future",
@@ -383,8 +781,29 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan drops components proposed for a future no requirement asks for",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-swap-approvals-delta",
+     "p3-payroll-export-sketch",
+     "p4-no-store-first-visit"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "principal-architect.what-reject.stance-recorded-settled-user",
@@ -397,8 +816,21 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan records its recommendation as a recommendation and never writes a row as decided without the user's ruling (foreclosing step counts)",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p2-desk-visit-close-the-rows"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "principal-architect.what-reject.structural-change-new-component",
@@ -411,8 +843,25 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan lists every new component, moved boundary, and redirected call as a change, and rejects a draft that calls such a change no change",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-swap-approvals-delta",
+     "p4-no-store-first-visit"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "principal-architect.what-reject.structure-no-requirement-pays",
@@ -425,9 +874,30 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan cuts a component, layer, or boundary no requirement or constraint pays for, naming what would have had to pay",
-   "model_native": false,
+   "model_native": true,
    "untempted": false,
-   "split_of": "component-layer-boundary-no"
+   "split_of": "component-layer-boundary-no",
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-swap-approvals-delta",
+     "p3-payroll-export-sketch",
+     "p4-no-store-first-visit"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "principal-architect.what-reject.topology-smuggled-into-data",
@@ -440,8 +910,21 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan surfaces topology implied by a data-model or contract draft and makes the component shape explicit before any of that detail is kept",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-swap-approvals-delta"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "principal-architect.judgment.altitude-necessity-weigh-whether",
@@ -454,8 +937,29 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan names each piece of structure nothing pays for, says to cut it, and names the cheaper shape that does the same job",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-swap-approvals-delta",
+     "p3-payroll-export-sketch",
+     "p4-no-store-first-visit"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "principal-architect.judgment.boundaries-component-unit-deployment",
@@ -468,8 +972,29 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan places or declines each boundary with the reason named — a responsibility, change-rate, or trust difference — and cuts none for its own sake",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-swap-approvals-delta",
+     "p3-payroll-export-sketch",
+     "p4-no-store-first-visit"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "principal-architect.judgment.buildability-shape-only-design",
@@ -482,8 +1007,29 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan tests the proposed shape against the stated constraints and NFR targets before committing to it",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-swap-approvals-delta",
+     "p3-payroll-export-sketch",
+     "p4-no-store-first-visit"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "principal-architect.judgment.cheaper-boxes-not-only",
@@ -497,7 +1043,24 @@
    "partition": "plan-observable",
    "why": "for a paid-for box in a solved category the plan names the proven component already available instead of hand-building it",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-swap-approvals-delta",
+     "p3-payroll-export-sketch"
+    ],
+    "verdicts": [
+     "absent",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "principal-architect.judgment.delta-over-greenfield-fantasy",
@@ -510,8 +1073,29 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "on an existing system the plan produces the difference from what exists, current state recovered first, never a redesign from scratch",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-swap-approvals-delta",
+     "p3-payroll-export-sketch",
+     "p4-no-store-first-visit"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "principal-architect.judgment.interaction-style-synchronous-request",
@@ -524,8 +1108,29 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan picks sync or async per flow from its coupling, ordering, and failure needs, and says which need decided it",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-swap-approvals-delta",
+     "p3-payroll-export-sketch",
+     "p4-no-store-first-visit"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "principal-architect.judgment.responsibility-placement-every-responsibility",
@@ -538,8 +1143,29 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan gives each responsibility one component and names any duplication it finds or declines to add",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-swap-approvals-delta",
+     "p3-payroll-export-sketch",
+     "p4-no-store-first-visit"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   }
  ],
  "retired": []

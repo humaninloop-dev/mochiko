@@ -126,14 +126,29 @@ declared ready.
 
 ## Fill log
 
-- band: **[measured at baseline]**
-- calibration agreement: **[measured at baseline]**
-- labeller disclosures: —
-- contradicted bar: —
-- budget: —
-- ship bar: —
+- prune (2026-09-09, `runs/baseline-prune`, 12 nopersona sessions, $5.52): **28 of 34 plan-observable claims
+  model-native** — topology, boundary, responsibility, buildability, delta-over-redesign, the stance
+  prohibitions and the store-health reads are the bare model's on plan-only, as the pre-registration expected.
+  Graded set (6): `classify-every-component`, `confirmed-baseline-over-assumed`, `expensive-rows-first`,
+  `current-state-honesty-recover`, `interaction-failure-thinking-every`, `cheaper-boxes-not-only` — 13
+  invited pairs (p1 4 · p2 2 · p3 3 · p4 4).
+- baseline (`runs/baseline`, 12 `post` sessions, $5.88; judge $0.79 over 12 calls, zero MISSING; the grid
+  resumed cleanly after the 2026-09-09 login expiry stop): pass^k on **12 of 13 invited pairs**; the one split
+  is `expensive-rows-first` on p2 (`reflected/absent/reflected` — one replicate walked the ledger in the CTO's
+  flags-first order).
+- band: **flaky 1/13 invited pairs = 7.7 % → 12.7 % uncapped**; all graded claims 3/24. Ship bar (b) met.
+- calibration agreement: **0.917 over 24 pairs** against an independent full-read labeller (arm-blind sheet,
+  seed 0; `calibration-sheet-labeller2.json` / `calibration-labeller2.json`). Both disagreements are judge
+  over-credits on p2 (the desk visit): `expensive-rows-first` on r3 (the plan walks in ledger order and only
+  names AX-019 as most important — labeller absent, judge reflected) and `classify-every-component` on r2
+  (no delta, nothing classified — labeller absent, judge reflected).
+- labeller disclosures: `confirmed-baseline-over-assumed` credited on p3 under the recover-the-baseline
+  cluster reading though its literal trigger is "no map exists" (p3 has a stale one); the
+  `interaction-failure-thinking-every` reads on p2/p3 credit a single crossing's ordering and failure
+  semantics rather than a designed flow. Both recorded as the readings the next edit inherits.
+- contradicted bar: **not exercised** — zero `contradicted` labels over 24 pairs.
+- budget: 24 plan sessions · **US$ 12.19** metered (prune 5.52 + grid 5.88 + judge 0.79) of 20.
+- ship bar: (a) met — 12/13 pass^k, the split a walk-order lapse on the desk visit, inside the band; (b) met
+  (7.7 % ≤ 15 %); (c) met (0.917 ≥ 0.80; contradicted not exercised). Kit status: **READY**.
 - re-key count: 0
-- kit status: **AUTHORED, not yet run** — rubric partitioned (37 claims · 34 plan-observable · 3
-  out-of-instrument · 3 `not_claims` · 3 splits), four goldens with fixtures (80 invited pairs), `agent-check` green at
-  `b9efb59`; kit audit fixes applied 2026-09-09 (echo sweep, p2 router set and second stale in-flight,
-  correlated-cluster disclosure, thin-tempt disclosure, slice notes).
+- kit status: **READY**

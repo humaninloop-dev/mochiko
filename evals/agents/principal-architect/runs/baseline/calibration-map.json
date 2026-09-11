@@ -1,0 +1,52 @@
+{
+ "058134f4": {
+  "golden": "p4-no-store-first-visit",
+  "arm": "post",
+  "replicate": 1
+ },
+ "1e26fd40": {
+  "golden": "p3-payroll-export-sketch",
+  "arm": "post",
+  "replicate": 2
+ },
+ "78cf006e": {
+  "golden": "p2-desk-visit-close-the-rows",
+  "arm": "post",
+  "replicate": 3
+ },
+ "385e664f": {
+  "golden": "p4-no-store-first-visit",
+  "arm": "post",
+  "replicate": 3
+ },
+ "0642de21": {
+  "golden": "p2-desk-visit-close-the-rows",
+  "arm": "post",
+  "replicate": 1
+ },
+ "479871bf": {
+  "golden": "p1-swap-approvals-delta",
+  "arm": "post",
+  "replicate": 1
+ },
+ "0173c95d": {
+  "golden": "p1-swap-approvals-delta",
+  "arm": "post",
+  "replicate": 3
+ },
+ "399987af": {
+  "golden": "p2-desk-visit-close-the-rows",
+  "arm": "post",
+  "replicate": 2
+ },
+ "c086faac": {
+  "golden": "p1-swap-approvals-delta",
+  "arm": "post",
+  "replicate": 2
+ },
+ "75cb5d55": {
+  "golden": "p3-payroll-export-sketch",
+  "arm": "post",
+  "replicate": 1
+ }
+}
