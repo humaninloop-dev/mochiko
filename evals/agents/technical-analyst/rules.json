@@ -27,8 +27,25 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "a planted name or enum collision is flagged for escalation with options, not silently resolved",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "a2-payouts-under-pressure",
+     "a3-credit-notes-brownfield"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "technical-analyst.brownfield-awareness.convention-consistency-match-existing",
@@ -41,8 +58,21 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan matches the existing id, money, pagination, and error conventions over the spec author’s divergent suggestion",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "a3-credit-notes-brownfield"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "technical-analyst.brownfield-awareness.existing-patterns-over-invention",
@@ -55,8 +85,21 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan checks the existing modules and reuses an existing pipeline or pattern instead of inventing one",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "a3-credit-notes-brownfield"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "technical-analyst.brownfield-awareness.explicit-extension-classification-clearly",
@@ -69,8 +112,21 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "each entity or component in the plan is marked new, extended, or reused",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "a3-credit-notes-brownfield"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "technical-analyst.brownfield-awareness.priority-alignment-track-which",
@@ -83,8 +139,21 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan reports which listed gaps it closes and which new gaps it found, in the listed priority order",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "a3-credit-notes-brownfield"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "technical-analyst.delegating-cheap-reads.interpretive-reading-any-gap",
@@ -140,7 +209,32 @@
    "partition": "plan-observable",
    "why": "each data element the plan introduces gets a sensitivity level with its handling policy and compliance mapping",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "a1-standing-orders-decomposition",
+     "a2-payouts-under-pressure",
+     "a3-credit-notes-brownfield",
+     "a4-stock-sync-boundaries"
+    ],
+    "verdicts": [
+     "absent",
+     "absent",
+     "absent",
+     "absent",
+     "absent",
+     "absent",
+     "absent",
+     "absent",
+     "absent",
+     "reflected",
+     "reflected",
+     null
+    ]
+   }
   },
   {
    "id": "technical-analyst.quality-standards.failure-aware-every-external",
@@ -154,7 +248,32 @@
    "partition": "plan-observable",
    "why": "every external dependency the plan maps carries what happens when it fails and the fallback",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "a1-standing-orders-decomposition",
+     "a2-payouts-under-pressure",
+     "a3-credit-notes-brownfield",
+     "a4-stock-sync-boundaries"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "absent",
+     "reflected",
+     "reflected",
+     "absent",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     null
+    ]
+   }
   },
   {
    "id": "technical-analyst.quality-standards.infrastructure-aware-every-constraint",
@@ -168,7 +287,24 @@
    "partition": "plan-observable",
    "why": "a constraint implying provisioning or deployment is paired with an infrastructure-provisioning requirement in the plan",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "a1-standing-orders-decomposition",
+     "a4-stock-sync-boundaries"
+    ],
+    "verdicts": [
+     "absent",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     null
+    ]
+   }
   },
   {
    "id": "technical-analyst.quality-standards.measurable-every-non-functional",
@@ -182,7 +318,24 @@
    "partition": "plan-observable",
    "why": "each NFR the plan writes carries a numeric target, a measurement method, and a source justification",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "a1-standing-orders-decomposition",
+     "a4-stock-sync-boundaries"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     null
+    ]
+   }
   },
   {
    "id": "technical-analyst.quality-standards.normalized-entities-have-clear",
@@ -195,8 +348,21 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "entities the plan models carry boundaries, relationships with cardinality, validation rules, and a full lifecycle",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "a3-credit-notes-brownfield"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "technical-analyst.quality-standards.realistic-examples-use-realistic",
@@ -209,8 +375,21 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan states the example values its contract would carry and they are realistic (thin temptation — a plan seldom writes examples; read knowing that)",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "a3-credit-notes-brownfield"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "technical-analyst.quality-standards.schema-aligned-error-codes-cover-failure-modes",
@@ -223,9 +402,22 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "each endpoint’s error responses in the plan are specific codes covering the named failure modes",
-   "model_native": false,
+   "model_native": true,
    "untempted": false,
-   "split_of": "schema-aligned-api-schemas"
+   "split_of": "schema-aligned-api-schemas",
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "a3-credit-notes-brownfield"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "technical-analyst.quality-standards.schema-aligned-schemas-match-entities",
@@ -238,9 +430,22 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the contract schemas the plan designs mirror the entity attributes field for field",
-   "model_native": false,
+   "model_native": true,
    "untempted": false,
-   "split_of": "schema-aligned-api-schemas"
+   "split_of": "schema-aligned-api-schemas",
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "a3-credit-notes-brownfield"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "technical-analyst.quality-standards.technology-agnostic-constraints-real-boundaries",
@@ -253,9 +458,22 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "a design choice presented as a constraint is kept out of the constraint layer in the plan",
-   "model_native": false,
+   "model_native": true,
    "untempted": false,
-   "split_of": "technology-agnostic-analysis-requirements"
+   "split_of": "technology-agnostic-analysis-requirements",
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "a2-payouts-under-pressure"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "technical-analyst.quality-standards.technology-agnostic-requirements-what-not-how",
@@ -270,7 +488,24 @@
    "why": "the requirements the plan writes state what the system must achieve without naming an implementation",
    "model_native": false,
    "untempted": false,
-   "split_of": "technology-agnostic-analysis-requirements"
+   "split_of": "technology-agnostic-analysis-requirements",
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "a1-standing-orders-decomposition",
+     "a4-stock-sync-boundaries"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     null
+    ]
+   }
   },
   {
    "id": "technical-analyst.quality-standards.traceable-every-technical-requirement",
@@ -284,7 +519,32 @@
    "partition": "plan-observable",
    "why": "every requirement, constraint, NFR, entity, and endpoint the plan writes names its business source (FR/SC/story/governance) — the chain is checked in both directions",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "a1-standing-orders-decomposition",
+     "a2-payouts-under-pressure",
+     "a3-credit-notes-brownfield",
+     "a4-stock-sync-boundaries"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "absent",
+     "reflected",
+     "reflected",
+     "reflected",
+     null
+    ]
+   }
   },
   {
    "id": "technical-analyst.what-embrace.alignment-project-governance-every",
@@ -298,7 +558,32 @@
    "partition": "plan-observable",
    "why": "the plan states how each artifact aligns with the product’s governance principles, reading the governance region in the fixture",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "a1-standing-orders-decomposition",
+     "a2-payouts-under-pressure",
+     "a3-credit-notes-brownfield",
+     "a4-stock-sync-boundaries"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "absent",
+     null
+    ]
+   }
   },
   {
    "id": "technical-analyst.what-embrace.constraint-infrastructure-tracing-when",
@@ -312,7 +597,24 @@
    "partition": "plan-observable",
    "why": "a hosting or availability constraint is traced to the concrete provisioning that makes it achievable",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "a1-standing-orders-decomposition",
+     "a4-stock-sync-boundaries"
+    ],
+    "verdicts": [
+     "absent",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     null
+    ]
+   }
   },
   {
    "id": "technical-analyst.what-embrace.decompose-don-t-transcribe",
@@ -325,8 +627,21 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "a compound business FR is broken into several technical requirements in the plan",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "a1-standing-orders-decomposition"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "technical-analyst.what-embrace.explicit-over-implicit-when",
@@ -340,7 +655,32 @@
    "partition": "plan-observable",
    "why": "an ambiguity in the spec is surfaced as a question or a flagged assumption, never silently resolved",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "a1-standing-orders-decomposition",
+     "a2-payouts-under-pressure",
+     "a3-credit-notes-brownfield",
+     "a4-stock-sync-boundaries"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     null
+    ]
+   }
   },
   {
    "id": "technical-analyst.what-embrace.failure-mode-analysis-what",
@@ -354,7 +694,24 @@
    "partition": "plan-observable",
    "why": "the plan asks what happens when each dependency, integration, or data flow fails and documents the scenario",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "a1-standing-orders-decomposition",
+     "a4-stock-sync-boundaries"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     null
+    ]
+   }
   },
   {
    "id": "technical-analyst.what-embrace.flag-don-t-guess",
@@ -368,7 +725,32 @@
    "partition": "plan-observable",
    "why": "genuinely missing information about money, security, or data handling is flagged for clarification with a stated default, never silently assumed (wrapper: a described stop with a default is a flag, a silent default is a guess)",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "a1-standing-orders-decomposition",
+     "a2-payouts-under-pressure",
+     "a3-credit-notes-brownfield",
+     "a4-stock-sync-boundaries"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     null
+    ]
+   }
   },
   {
    "id": "technical-analyst.what-embrace.fr-tr-traceability-every",
@@ -381,8 +763,25 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "every technical requirement maps to a business requirement and every business requirement is covered — an orphan on either side is called out (no TR artifact exists in the skill set; read on whichever files carry the traced layers)",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "a1-standing-orders-decomposition",
+     "a2-payouts-under-pressure"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "technical-analyst.what-embrace.measurability-if-cannot-measure",
@@ -396,7 +795,28 @@
    "partition": "plan-observable",
    "why": "targets are quantified, measurement methods defined, and thresholds justified in the plan",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "a1-standing-orders-decomposition",
+     "a2-payouts-under-pressure",
+     "a4-stock-sync-boundaries"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     null
+    ]
+   }
   },
   {
    "id": "technical-analyst.what-embrace.question-vague-boundaries-when",
@@ -410,7 +830,28 @@
    "partition": "plan-observable",
    "why": "a vague integration mention gets the which-provider / which-version / which-endpoints / timeout / retry questions asked or answered",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "a1-standing-orders-decomposition",
+     "a2-payouts-under-pressure",
+     "a4-stock-sync-boundaries"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "absent",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     null
+    ]
+   }
   },
   {
    "id": "technical-analyst.what-embrace.separate-constraints-from-preferences",
@@ -424,7 +865,24 @@
    "partition": "plan-observable",
    "why": "a \"should match the rest of the app\" line is classified as a preference and a sourced limitation as a constraint",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "a2-payouts-under-pressure",
+     "a4-stock-sync-boundaries"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     null
+    ]
+   }
   },
   {
    "id": "technical-analyst.what-embrace.surface-implicit-business-specs",
@@ -438,7 +896,24 @@
    "partition": "plan-observable",
    "why": "the plan names the caching, rate-limiting, audit, idempotency, or retention needs the spec never mentions",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "a1-standing-orders-decomposition",
+     "a4-stock-sync-boundaries"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     null
+    ]
+   }
   },
   {
    "id": "technical-analyst.what-embrace.system-boundary-thinking-where",
@@ -452,7 +927,24 @@
    "partition": "plan-observable",
    "why": "the plan draws where the system ends and names each crossing as an integration point with failure modes",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "a1-standing-orders-decomposition",
+     "a4-stock-sync-boundaries"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     null
+    ]
+   }
   },
   {
    "id": "technical-analyst.what-embrace.thorough-exploration-alternatives-ship",
@@ -466,7 +958,28 @@
    "partition": "plan-observable",
    "why": "every technology choice in the plan names at least two real alternatives and the trade-off",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "a1-standing-orders-decomposition",
+     "a2-payouts-under-pressure",
+     "a4-stock-sync-boundaries"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "contradicted",
+     "absent",
+     "reflected",
+     "reflected",
+     null
+    ]
+   }
   },
   {
    "id": "technical-analyst.what-reject.api-endpoints-without-error",
@@ -479,8 +992,21 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "every endpoint the plan designs carries its error responses (prohibition-shaped; foreclosing step counts)",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "a3-credit-notes-brownfield"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "technical-analyst.what-reject.assumptions-should-be-decisions",
@@ -493,8 +1019,25 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "an assumption that hides a design choice is converted into a recorded decision with alternatives (prohibition-shaped; foreclosing step counts)",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "a1-standing-orders-decomposition",
+     "a2-payouts-under-pressure"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "technical-analyst.what-reject.business-requirements-passed-through",
@@ -507,8 +1050,21 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "a business FR is translated into technical requirements, never copied verbatim as one (prohibition-shaped; foreclosing step counts)",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "a1-standing-orders-decomposition"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "technical-analyst.what-reject.constraints-without-sources-every",
@@ -522,7 +1078,24 @@
    "partition": "plan-observable",
    "why": "an asserted constraint with no source is challenged for its source or demoted to an assumption (prohibition-shaped; foreclosing step counts)",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "a2-payouts-under-pressure",
+     "a4-stock-sync-boundaries"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     null
+    ]
+   }
   },
   {
    "id": "technical-analyst.what-reject.data-requirements-without-sensitivity",
@@ -536,7 +1109,32 @@
    "partition": "plan-observable",
    "why": "no data element is carried unclassified (prohibition-shaped; foreclosing step counts)",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "a1-standing-orders-decomposition",
+     "a2-payouts-under-pressure",
+     "a3-credit-notes-brownfield",
+     "a4-stock-sync-boundaries"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "absent",
+     "reflected",
+     "absent",
+     "reflected",
+     "reflected",
+     null
+    ]
+   }
   },
   {
    "id": "technical-analyst.what-reject.entities-without-clear-lifecycle",
@@ -549,8 +1147,21 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "no entity the plan models is left without its state lifecycle and relationships (prohibition-shaped; foreclosing step counts)",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "a3-credit-notes-brownfield"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "technical-analyst.what-reject.ignoring-brownfield-context-when",
@@ -563,8 +1174,25 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "the plan reads the existing schema, contracts, and store before proposing, and its proposals answer to them (prohibition-shaped; foreclosing step counts)",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "a2-payouts-under-pressure",
+     "a3-credit-notes-brownfield"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "technical-analyst.what-reject.implicit-assumptions-treated-requirements",
@@ -578,7 +1206,28 @@
    "partition": "plan-observable",
    "why": "a statement of fact the fixture contradicts is named as an assumption and flagged, never carried as a requirement (prohibition-shaped; foreclosing step counts)",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "a1-standing-orders-decomposition",
+     "a2-payouts-under-pressure",
+     "a4-stock-sync-boundaries"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     null
+    ]
+   }
   },
   {
    "id": "technical-analyst.what-reject.integration-dependencies-without-failure",
@@ -592,7 +1241,32 @@
    "partition": "plan-observable",
    "why": "no integration is carried without its failure modes named (prohibition-shaped; foreclosing step counts)",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "a1-standing-orders-decomposition",
+     "a2-payouts-under-pressure",
+     "a3-credit-notes-brownfield",
+     "a4-stock-sync-boundaries"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     null
+    ]
+   }
   },
   {
    "id": "technical-analyst.what-reject.non-functional-requirements-without",
@@ -606,7 +1280,24 @@
    "partition": "plan-observable",
    "why": "a vague quality expectation in the spec is replaced by a numeric target in the plan, never carried as written (prohibition-shaped; foreclosing step counts)",
    "model_native": false,
-   "untempted": false
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "a1-standing-orders-decomposition",
+     "a4-stock-sync-boundaries"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     null
+    ]
+   }
   },
   {
    "id": "technical-analyst.what-reject.shallow-research-single-option",
@@ -619,8 +1310,21 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "a handed-down single-option decision is weighed against named alternatives before it is recorded (prohibition-shaped; foreclosing step counts)",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "a2-payouts-under-pressure"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   },
   {
    "id": "technical-analyst.what-reject.technology-choices-disguised-requirements",
@@ -633,8 +1337,21 @@
    "tag": "common",
    "partition": "plan-observable",
    "why": "a product-name \"constraint\" is restated as the real need and the product becomes a candidate weighed in a decision (prohibition-shaped; foreclosing step counts)",
-   "model_native": false,
-   "untempted": false
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "a2-payouts-under-pressure"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
   }
  ],
  "retired": []

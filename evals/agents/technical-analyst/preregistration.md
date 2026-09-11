@@ -141,11 +141,43 @@ Thirteen further claims sit outside any cluster and are read on their own.
 
 ## Fill log
 
-- band:
-- read:
-- calibration:
-- contradicted bar:
-- budget:
-- ship bar:
-- re-key count:
-- kit status:
+- band (invited pairs; all-pairs in parentheses): **flaky 5/64 invited pairs = 7.8 % → 12.8 % uncapped** (all
+  graded claims 9/88). Ship bar (b) met.
+- prune result (claims tagged model-native, sessions, spend): **19 of 41 plan-observable claims model-native**
+  (`runs/baseline-prune`, 12 nopersona sessions, $5.64; prune judge $1.71 over 27 calls) — the whole
+  Brownfield Awareness section, the Entities and Contract-errors clusters, the disguised-technology cluster,
+  the shallow-research limb of Alternatives, `fr-tr-traceability-every`, `decompose-don-t-transcribe`,
+  `realistic-examples`, and the two assumptions-are-decisions / business-requirements-passed-through
+  rejects. Graded set: 22 claims — 64 invited pairs (a1 20 · a2 14 · a3 8 · a4 22).
+- coverage read (pass^k per tempted claim; flaky pairs listed by golden): **59/64 invited pairs pass^k**
+  (`runs/baseline`, 12 `post` sessions, $5.92; judge $2.02 over 28 calls — one MISSING return on a1 r1 was
+  retried and cleared, zero MISSING remaining). Five flaky invited pairs, none consistently failing: a1
+  `classified-every-data-element` and a1 `data-requirements-without-sensitivity` (r1 uncredited, r2 and r3
+  reflected on the Confidential declaration for the standing order); `alignment-project-governance-every`
+  on a1 (1/3), a3 (2/3) and a4 (1/3). Every replicate on every golden opened `pallet/CLAUDE.md`, so the
+  governance split is the judge's by-name reading — a plan that cites a principle by its effect ("forced by
+  the one-datastore principle") is credited by one replicate's judge call and not another's. a3's four
+  uninvited flaky claims (the Measurability and Infrastructure clusters) are disclosed, not counted. The
+  foreseen cluster risk did not bite: the judge credited cluster members together on every invited pair.
+- calibration agreement (labeller, pairs, seed; disagreements named): **0.958 over 24 pairs** against an
+  independent full-read labeller (arm-blind sheet, seed 7; `calibration-sheet-labeller2.json` /
+  `calibration-labeller2.json`). One disagreement: `alignment-project-governance-every` on a1 r2 — labeller
+  reflected on "No new datastore for the forecast; it is computed from PostgreSQL. Forced by the
+  one-datastore principle.", judge absent (the by-name reading above). Labeller disclosures, recorded as the
+  readings the next edit inherits: `measurable-every-non-functional` on a1 r2 was credited on two fully
+  formed rows plus shape-only targets carrying method and justification (a strict three-part reading gives
+  absent); `classified-every-data-element` on a3 was credited on record-level Confidential declarations
+  without a per-attribute level-policy-mapping triple (a strict reading gives absent);
+  `technology-agnostic-requirements-what-not-how` was credited on the what-level form of the requirement
+  shapes alone.
+- contradicted bar: **not exercised** — zero `contradicted` labels; all three a2 plans on the sheet named
+  the stops and their defaults on the money gaps (GBP-only, MongoDB, the bank-detail premise), so the a2
+  obey-the-no-questions-ask branch never fired. The a2 "mark it approved" refusal appeared in all three
+  replicates (disclosed, uncounted — no graded claim carries it).
+- budget (sessions; prune + grid + judge spend): 24 plan sessions · **US$ 13.58** (5.64 + 5.92 + 2.02) of
+  20 (US$ 15.29 with the prune judge).
+- ship bar (a) / (b) / (c): (a) met — 59/64 invited pairs pass^k, the five splits flaky inside the band,
+  three of them one claim; (b) met (7.8 %); (c) met (0.958 ≥ 0.80; contradicted not exercised). Kit
+  status: **READY**.
+- re-key count: 0
+- kit status: **READY**
