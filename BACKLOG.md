@@ -102,13 +102,6 @@ Command-content schema section's watch item)*
 build* and *Skill-compression eval-primitive build* sections — their delivered items are in the
 trail (2026-09-08); their open residue is carried below.)*
 
-- [ ] **Wave B persona kits — the six producers** (`principal-architect` · `product-engineer` · `product-manager`
-  · `requirements-analyst` · `technical-analyst` · `qa-engineer`; opened 2026-09-09 at the wave A landing) — the
-  wave A kit shape per persona (mint + partition with both conditional reasons, three to five goldens, prereg
-  in the baseline form, prune then `post`-only grid, independent full-read calibration labeller, band on
-  invited pairs per ADR `2026-09-09-persona-band-invited-only`). Producer plans write artefacts, so the
-  read-only fence reads their *planned* writes; expect a larger plan-observable set than the graders.
-  ≈ $8–10 per persona.
 - [ ] **Fill the four post-cut eval slots from the re-keyed inventories** (D12 · C3 · R2) — the
   five schema-backed inventories were **RE-KEYED 2026-09-08** onto log ids (67→30 · 70→35 · 113→36 ·
   81→30 · 69→26 rules; floors 9 · 16 · 11 · 8 · 14 = the render pins; 15 old rules retired with
