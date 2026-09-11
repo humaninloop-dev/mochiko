@@ -226,7 +226,9 @@ actually traded: body prose (tables, worked examples, the checklist) for log-ren
 ## Budget
 
 ≤ 27 graded sessions (+ ≤ 2 probes) and ≤ US$ 25 metered spend including judge calls
-(`total_cost_usd` + judge cost); exceeding either halts the grid and returns to the user.
+(`total_cost_usd` + judge cost). The mechanical halt (`--budget-usd 25`, runner 85e5f89) reads
+graded-session spend only; judge spend is hand-added in the fill log, and the session cap is
+manual. Exceeding either returns to the user.
 
 ## Fill log
 
