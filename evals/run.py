@@ -624,6 +624,7 @@ def summarize(skill, arms, replicates, rules, goldens, results, total_cost, old_
     parse_failures = sum(1 for e in valid for v in e["checklist"] if v.get("passed") is None)
     truncations = sum(1 for e in results if e.get("artifact_truncated"))
     post_fail = [f"{e['golden']}/r{e['replicate']}: {a.get('path', a['type'])}"
+                 + (f" ({a['detail']})" if a.get("detail") else "")
                  for e in valid if e["arm"] == "post"
                  for a in e["assertions"] if not a["passed"]]
     return {
