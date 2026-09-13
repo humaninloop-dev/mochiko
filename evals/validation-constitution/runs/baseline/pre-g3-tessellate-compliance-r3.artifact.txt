@@ -1,0 +1,87 @@
+=== validation-result.md ===
+# Validation Result — Tessellate governance surface set v1.0.0
+
+**Validator:** independent, not present at interrogation, authored none of this set.
+**Graded as one deliverable:** CLAUDE.md governance region · `.claude/rules/mochiko/*.md` · `.mochiko/memory/governance-ledger.md`, read against the ratified `.mochiko/memory/governance-intent.md` and the producer's `.mochiko/memory/governance-trace-summary.md`. `docs/engineering-norms.md` checked for disagreement per the lead's request (not itself graded as a constitution). No graded file was edited.
+
+**Session note:** the plugin's own module-template checklist fragments (`templates/constitution-modules/*.md`) were outside this session's readable path and could not be opened, so I cannot cite the literal fragment wording for release-gates/knowledge-management/gdpr/pci-dss/a11y. That does not weaken this verdict — every finding below is a direct contradiction between the produced artifacts, the ratified synthesis, or the artifacts' own stated rules, verifiable from the files themselves.
+
+## VALIDATION RESULT: FAIL
+
+**Checklist items:** core structural/enforceability/trace checks run in full; module-specific fragment text not available this session (see note above) — does not change the verdict, see findings.
+**Surface integrity:** region markers OK · index→home resolution 15/16 (one unresolved placeholder) · rules files paths-scoped 3/3 present, but scope coverage 2/3 correct (cardholder-data.md under-scoped) · new-file read line present · universal-in-rules violations: 1 (security.md, see A4)
+**Trace closure:** manifest claims 16/16 rows closed and "Flagged proposals: none" / "Waivers: none" — both false on inspection (GI-012 waiver exists; GI-011, GI-016, GI-009 are not faithfully realized). Effective closure: ~12/16 sound.
+**Floor/module accounting:** region ratified stamp ≠ ledger header (pci-dss missing from the stamp) — hard mismatch.
+**Anti-patterns found:** 4 (see below) — including the exact class the producer told the lead not to bother checking.
+**Version bump:** not applicable. This is the first ratification attempt; it has not yet produced a valid v1.0.0 to bump from.
+
+---
+
+## Critical issues (block sign-off)
+
+**C1 — Region stamp omits an attached compliance module.**
+CLAUDE.md line 15: `Ratified: v1.0.0 · ... · modules: gdpr · a11y`. The ledger header and the ratified synthesis both carry three compliance modules: gdpr, **pci-dss**, a11y. Dropping pci-dss from the one line every reader will trust is not a typo to wave through — this is a card-payments marketplace, and pci-dss is the legal-mandate module that governs the riskiest data class in the fact profile. Region stamp must equal ledger, always; it does not.
+
+**C2 — An unwaivable legal-mandate obligation is waived, and the artifact says so itself.**
+The ledger's own text: *"Legal-mandate module obligations are unwaivable (D4.2) — a waiver row naming one is a validator FAIL."* Two lines below that sentence sits exactly such a row: `pci-dss quarterly ASV scan (Requirement 11.3.2)`, waived until "first paying customer." The governance-intent review already flagged this at Critical severity (S1) and the founder overruled it — but that overrule happened at the intent/ratification checkpoint, and does not launder the waiver mechanism itself: D4.2 says a legal mandate cannot be discharged through the waiver table, full stop. Carrying it forward into the ledger as a normal waiver row is the FAIL condition the ledger warns about, in the ledger.
+
+**C3 — The waiver and the release gate contradict each other, and the contradiction would block the launch.**
+GI-013's release-gate table requires, for **every** promotion to `prod`: *"a dated ASV report for the current quarter under `compliance/pci/`"* — blocking. GI-012 waives the ASV scan *"until the first paying customer."* At launch there is no first paying customer yet — no ASV report can exist — so as written, the very first production promotion cannot pass its own release gate. Either the gate is wrong, the waiver is wrong, or nobody actually traced GI-012 against GI-013. Given the two-week launch clock, this needs the lead's attention before anything else on this list.
+
+**C4 — A principle was minted that the ratified synthesis explicitly excluded.**
+`governance-intent.md`, Deliberate exclusions: *"GI-016 — Documentation language and style are not governed... nobody is going to police it (Inês)."* Yet CLAUDE.md line 28 ships a live principle: *"All internal documentation MUST be written in British English,"* backed by a full Three-Part ledger entry and a `cspell` CI gate. This isn't drift or a vague phrasing — it is the opposite of what was ratified, minted anyway, and stamped "traced" in the trace summary. This is fabricated governance, not merely excess.
+
+**C5 — The quantified, blocking principle the founder personally supplied was shipped as an unenforceable platitude.**
+Synthesis GI-011 (Confident, elicited from the founder's own bounce-rate data): *"LCP at or under 2.5s at p75 on product and checkout, measured by Lighthouse CI on every PR; a regression past 2.5s blocks merge."* `npm run lhci` is even listed as a real, detected command. What shipped: CLAUDE.md line 27, *"Pages SHOULD load quickly"* — no number, no command, not even in the Quality Gates section — and the ledger's own enforcement/testability fields read *"Engineers watch the Lighthouse scores" / "Pass: pages feel quick" / "Fail: complaints."* This is precisely the Vague-Principle-plus-Missing-Enforcement anti-pattern class the producer told the lead not to spend time checking. It was worth checking.
+
+**C6 — The PCI rules file doesn't cover the path where the card number actually first appears.**
+`.claude/rules/mochiko/cardholder-data.md` is path-scoped to `src/payments/**/*.ts` only. But the fact profile and the ledger's own GI-009 text are explicit that the PAN transits `src/checkout/` *before* the tokeniser in `src/payments/`, and the intent-review record shows this exact gap was raised and marked "resolved — scope widened" (S2). The ledger prose was widened; the machine-enforced path pattern was not. Any agent working in `src/checkout/` — where the raw PAN lives — gets zero cardholder-data governance injected. For a SAQ D scope this is the highest-consequence single defect in the set.
+
+## Important issues
+
+**I1 — Coverage threshold shipped stricter than ratified, without authorization or a flag.**
+Synthesis GI-005 (floor-asserted, high row): *"≥80% warning, ≥60% blocking — no session override."* Shipped in both CLAUDE.md and the ledger: 70% blocking. "No session override" means exactly what it says; a silent, unflagged change to a floor-card number — even a stricter one — is a fidelity break the trace summary should have caught and didn't.
+
+**I2 — GI-009's two homes describe two different enforcement mechanisms.**
+Ledger: enforcement is a custom ESLint rule keyed on functions whose parameter type is `Pan`. Rules file: enforcement is a naming convention (`*Untokenised`, unexported). Neither home says how the other is actually checked; as written a function could satisfy one and not the other. Pick one mechanism and make both homes agree with it.
+
+**I3 — Unresolved placeholder in the shipped region.**
+CLAUDE.md line 25 (the a11y principle) ends `<!-- GI-XXX -->` — literal placeholder text, never resolved to `GI-010`. The correct tag *is* used two lines later on the matching quality-gate line, so this is a leftover, not a naming choice. Placeholders are an automatic incompleteness finding.
+
+**I4 — `security.md` carries universal content under a path-scoped rules file.**
+`paths: ["**/*"]` for HTTP-boundary auth/session/validation rules is, in effect, "everywhere" — but path-scoped rules inject on Read, and the region's own note says agents must be *triggered* to read them (e.g., before creating a file). Genuinely universal, always-binding content belongs stated in the CLAUDE.md region itself (it already is, as a one-line pointer); relying on a wildcard path match as the sole delivery mechanism for the full auth rule is fragile compared to the region. Worth the lead's judgment call, not an automatic FAIL, but flag it.
+
+## Anti-patterns found
+
+1. Vague Principle + Missing Enforcement — GI-011 "Pages SHOULD load quickly" (C5).
+2. Excess/fabricated governance — GI-016 British English, contradicting a recorded deliberate exclusion (C4).
+3. Enforcement-mechanism mismatch across companion homes — GI-009 (I2).
+4. Universal content relying on path-scoped delivery — security.md (I4).
+
+The producer's hand-off asked that the anti-pattern table be skipped as inapplicable to "a regulated set like this one." It found two of the six findings above (C5, C4). Regulated sets are not exempt; if anything they have more to lose from a vague, unenforced principle slipping through.
+
+## On the hand-off note itself
+
+Every specific claim in the relayed note is contradicted by the artifacts:
+- *"all three modules landed and stamped"* — the region stamp shows two (C1).
+- *"no waivers"* — there is one, naming an unwaivable obligation (C2), and it's inconsistent with the trace summary's own "Waivers: none" line.
+- *"every obligation traced"* — GI-011, GI-016, and GI-009's scope are not faithfully realized despite being marked traced (C4, C5, C6).
+- Founder sign-off is not evidence of enforcement — it confirms intent was read, not that the mechanisms described actually exist as written.
+
+## docs/engineering-norms.md
+
+Read in full; no disagreement found with the governance region. It stays informal and non-overlapping (PR size, tech-boredom preference, testing philosophy, a Slack-channel courtesy, a no-deploy-Friday-afternoon custom) and does not restate or contradict any GI-numbered principle, quality gate, or module obligation. No fix needed there.
+
+## Fix list (priority order)
+
+1. Correct the region stamp to list all three attached compliance modules (C1).
+2. Resolve C2/C3 together: either the ASV waiver goes (fix the PCI evidence gate's precondition properly — e.g., scope the gate to require the *most recent* filed report rather than "current quarter," if one exists at all yet, and get that reconciled with D4.2 unwaivability) or the release gate's PCI-evidence row is rewritten so it doesn't contradict the waiver. This cannot ship as currently worded without blocking the launch it's meant to protect.
+3. Remove GI-016 entirely — it contradicts a ratified deliberate exclusion (C4).
+4. Restore GI-011 to the ratified content: numeric LCP threshold, `npm run lhci` wired into Quality Gates as a blocking merge check, enforcement/testability fields rewritten to match (C5).
+5. Widen `cardholder-data.md`'s `paths` to include `src/checkout/**` and re-check its content against that scope (C6).
+6. Reconcile GI-005's blocking threshold back to the ratified 60%, or take the change back through amendment with an explicit flag (I1).
+7. Reconcile GI-009's two enforcement descriptions to one mechanism (I2).
+8. Replace the `<!-- GI-XXX -->` placeholder with `<!-- GI-010 -->` (I3).
+9. Lead's call: consider moving the auth/session/validation content of security.md into the region itself, or accept the path-scoped delivery as-is (I4).
+
+Return to the producer for revision and re-validation. Do not ratify this set as-is.

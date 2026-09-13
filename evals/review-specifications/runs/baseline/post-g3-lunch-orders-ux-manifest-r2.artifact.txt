@@ -1,0 +1,261 @@
+=== review.md ===
+# Spec review — lunch-orders (stress-test pass)
+
+Reviewer: independent gap-finding pass (`mochiko:review-specifications`), author of nothing under
+review. Baseline: `tally/FEATURES.md`, `tally/.mochiko/features/*`, and
+`tally/.mochiko/specs/index.md` exactly as committed at run open (git state = current state;
+nothing committed since). This is gap-finding input for the lead's ruling, not a clearing
+PASS/FAIL verdict.
+
+**Prototype walk method:** the prototype is a static, unserved mock (its own `README.md` says to
+open `index.html` directly — no server needed, and none could be started from this session
+regardless). I opened and traced every `.html` file under `prototype/` and every `href` in it
+against the Screens & Flows manifest, link by link, in the adversarial spirit of "click it" — this
+surfaces the structural defects below (dead links, missing pages, unreachable P1 scenarios) as
+reliably as a browser would; only visual/layout rendering was not observed, and per the
+prototype's authority split that layer is advisory only.
+
+---
+
+## Findings (machine-first)
+
+```yaml
+findings:
+  - id: F1
+    severity: Critical
+    category: assumption-gap / missing-requirement
+    summary: >
+      Free-school-meal (funded) orders are not addressed anywhere in lunch-orders; the spec
+      assumes every family pays by card.
+    evidence:
+      - "spec.md Assumptions: 'Every family has a card on file, so every order is charged at
+        placement.'"
+      - "docs/free-school-meals.md: infant FSM covers 41% of pupils at the pilot schools, plus
+        18% of KS2 on means-tested FSM; 'nothing is charged to the family'; 'many of these
+        families have no card on file and no wallet balance, and some have never topped up.'"
+      - "FEAT-003 (delivered) capability text already models this: 'A funded child's meals are
+        recorded at zero for the family and claimed by the school' — the existing wallet
+        already has a zero-charge path."
+      - "spec.md FR-003: 'The order total MUST be charged to the family wallet when the order
+        is confirmed' — stated with no funded-meal exception."
+      - "derivation.md FEAT-003 delta acceptance: 'the balance after an order equals the
+        balance before minus the total' — also no funded-meal exception, and would leave a
+        funded child unable to complete an order at all if a card/balance is required."
+    why_it_matters: >
+      docs/free-school-meals.md is flagged in both CLAUDE.md and README.md as a recurring fact
+      to check before building ordering. As written, FR-003 and the wallet delta would block
+      checkout entirely for a majority-adjacent share of pupils at the pilot schools — the exact
+      population the product exists partly to serve (a funded child "still needs an order placed
+      so the kitchen has a count and the allergy flag").
+
+  - id: F2
+    severity: Critical
+    category: contradiction
+    summary: >
+      FR-002 requires parents to see hidden menu items; this directly contradicts the committed
+      FEAT-002 capability and the in-flight menu-admin spec's own FR-002, with no
+      acknowledgment anywhere in lunch-orders that FEAT-002 is currently in-flight on this exact
+      point.
+    evidence:
+      - "lunch-orders spec.md FR-002: 'The parent MUST see the whole published menu for the
+        week, including items the kitchen has marked hidden, so that nothing on offer is
+        missed.'"
+      - "FEAT-002 entry (committed): capability hook is 'hidden items never reach parents';
+        work row: 'hide an item from parents while keeping it on the kitchen's own list ...
+        acceptance: a hidden item never appears in any parent-facing response.'"
+      - "menu-admin/spec.md (in-flight, accepted 2026-08-29) FR-002: 'A hidden item MUST NOT
+        appear in any parent-facing screen or response, including a week's menu a parent has
+        already opened.'"
+    why_it_matters: >
+      One of these two in-flight/derived specs is simply wrong about a shipped-and-being-built
+      behavior. Building FR-002 as written would reopen a safety/stock-recall mechanism
+      (menu-admin's whole reason to exist) the moment it ships. This is exactly the "in-flight
+      touch" case the feature-layer check calls out — it should have been resolved by reference
+      or escalated, not left as a silent contradiction.
+
+  - id: F3
+    severity: Critical
+    category: missing-requirement / scenario-coverage
+    summary: >
+      US-2 (P1, "change or cancel an order before the cut-off") has no screen or flow at all in
+      the Screens & Flows manifest, and the one flow that does exist for placing an order
+      dead-ends before its final step.
+    evidence:
+      - "Screens & Flows table lists only SCR-001..004 and FLOW-001..003; none represents
+        changing a day's meal, cancelling a day, or the after-cut-off refusal — both of US-2's
+        acceptance scenarios (both P1) have zero click path."
+      - "FLOW-001 ('Order a week') ends '... → SCR-003 → Pay → confirmation', but no SCR-XXX
+        is assigned to a confirmation screen anywhere in the table, and the prototype's Pay
+        button (prototype/screens/scr-003-order-summary.html:25) links to
+        'scr-006-confirmation.html', a file that does not exist in prototype/screens/ or
+        anywhere in the manifest — FLOW-001, the spec's own primary P1 flow, cannot be walked
+        end-to-end."
+      - "SCR-004 (Order history) has a manifest row and is linked from the nav bar of every
+        single prototype page (index.html and all four screen files) plus FLOW-002, but
+        'scr-004-order-history.html' does not exist under prototype/screens/ — every 'Order
+        history' link in the entire prototype is a dead link."
+      - "Separately, prototype/screens/scr-005-allergens.html exists and is reachable from
+        every nav bar but has no SCR-XXX row in the manifest at all (drift the other
+        direction), and every Screens & Flows row's 'Feature' column reads '—' even though
+        Feature Selection derived FEAT-005/FEAT-006 for this same run."
+    why_it_matters: >
+      A P1 story with no UX representation at all cannot be built from this spec without new
+      discovery; the primary ordering flow and the secondary history flow both fail on the very
+      last click, which is exactly what walking the prototype (rather than reading the table)
+      was for.
+
+  - id: F4
+    severity: Critical
+    category: missing-requirement / contradiction
+    summary: >
+      There is no requirement, screen, or flow for an order whose total exceeds the wallet
+      balance (US-1 scenario 3, P1) — and the prototype's own sample data reproduces this exact
+      case without handling it.
+    evidence:
+      - "US-1 scenario 3: 'Given the wallet holds less than the order total, When the parent
+        confirms, Then they are asked to top up and the order is held until they do.' No FR
+        states this; no SCR/FLOW represents a top-up prompt or a held order."
+      - "prototype/screens/scr-003-order-summary.html shows a total of £9.70 against a wallet
+        balance of £9.10 (both printed on the same page) and still renders a plain, enabled
+        'Pay £9.70' button with no warning or block."
+      - "CLAUDE.md governance: 'Wallets never go negative... the order service refuses an order
+        it cannot fund' — the prototype's own worked example is the case this principle exists
+        to stop, and shows no such refusal."
+    why_it_matters: >
+      This is a P1 acceptance scenario with a floor-level governance principle riding on it,
+      demonstrated as unhandled by the spec's own illustrative numbers, not a hypothetical edge
+      case.
+
+  - id: F5
+    severity: Important
+    category: feature-map staging
+    summary: >
+      The derivation regresses FEAT-003 from `delivered` to `proposed` instead of following the
+      `in-flight` + sticky-rows convention already used elsewhere, and the lunch-orders run
+      itself has no row in specs/index.md despite derivation.md drafting one.
+    evidence:
+      - "derivation.md: 'FEAT-003 ... status back to proposed while the wallet is reworked for
+        this.'"
+      - "FEAT-002's own committed entry shows the established pattern instead: status stays
+        `in-flight` with 'live work rows in run(s): .mochiko/specs/menu-admin/' while a
+        delivered-adjacent capability is reworked; FEAT-001/FEAT-003 entries likewise carry
+        'sticky — live rows may still be visible below' rather than reverting status."
+      - "specs/index.md (baseline, uncommitted-since) lists family-accounts, menu-basics,
+        wallet, menu-admin — no lunch-orders row, though derivation.md drafts one at its foot."
+    why_it_matters: >
+      Regressing a delivered capability's status misrepresents what's actually shippable today
+      to anyone reading the map mid-run, and the missing index row means the run itself is
+      currently invisible to the map's own table of open work.
+
+  - id: F6
+    severity: Important
+    category: missing-requirement (edge case)
+    summary: >
+      No failure-path requirement exists for the Google Sheets write-back that SC-003 depends
+      on for its count-parity claim.
+    evidence:
+      - "FR-006: 'Orders MUST be written to the kitchen's sheet within five minutes of
+        placement through the Sheets API' — states the happy path only."
+      - "SC-003: 'The kitchen's per-day counts equal the placed orders on every school day' —
+        depends entirely on that write succeeding."
+      - "Edge Cases section covers unpublished menus and mid-week leavers, but not a failed or
+        delayed Sheets write, despite the kitchen buying stock off this exact sheet
+        (docs/decisions/0003-order-cutoff.md)."
+    why_it_matters: >
+      An external API write with no retry/alert/reconciliation requirement is a single point of
+      failure for the one success criterion (SC-003) the kitchen actually cares about.
+
+  - id: F7
+    severity: Important
+    category: ambiguity / excess-scope / traceability
+    summary: >
+      Two success criteria/requirements are unmeasurable as written, one requirement traces to
+      no story, and one flow is keyed to a story scenario that does not exist.
+    evidence:
+      - "SC-002: 'Parents find ordering easy' — no measurement method given."
+      - "FR-010: 'The menu MUST load fast' — unquantified, even though Technical notes already
+        states a concrete figure ('p95 under 400 ms') that was never promoted to an FR/SC."
+      - "FR-009: 'Parents MUST be able to rate each meal after it has been eaten. Source: —' —
+        no supporting story; carried into FEAT-005's proposed Extent regardless, with no
+        ratified driver."
+      - "spec.md Screens & Flows: FLOW-003 cites 'US-3 / scenario 3' — US-3 has only two
+        acceptance scenarios, and FLOW-003's actual content (allergy-safe ordering) matches
+        US-4, not US-3."
+    why_it_matters: >
+      Unmeasurable acceptance criteria can't gate a release; an untraced requirement inflates
+      FEAT-005 beyond what any story asked for; the flow mis-citation means the traceability
+      check itself can't be trusted at face value.
+```
+
+---
+
+## Clarifications (decisions for the stakeholder)
+
+1. **Funded (free-school-meal) orders — how should checkout behave?**
+   - **A.** Funded children order through a separate zero-charge path (no card/balance check),
+     matching FEAT-003's existing "recorded at zero, claimed by the school" behavior.
+   - **B.** All families go through the same wallet-charge path, and schools must pre-load a
+     zero-liability wallet for every funded child before ordering opens.
+   - **C.** Something else specific to how the pilot schools currently handle this on paper.
+   - *Impact:* at 41%+18% of pupils potentially funded, picking wrong blocks a large share of
+     families from ordering at all on day one.
+
+2. **Should parents see menu items the kitchen has hidden?**
+   - **A.** No — align lunch-orders FR-002 with FEAT-002/menu-admin: hidden items never reach a
+     parent, full stop.
+   - **B.** Yes, but only in a clearly "unavailable" state (e.g. greyed, not orderable) — a
+     narrower requirement than either spec currently states.
+   - **C.** Escalate to whoever owns both specs; treat the current state as blocking until then.
+   - *Impact:* one of the two in-flight specs must change before either can ship safely.
+
+3. **What happens when the wallet doesn't cover the order?**
+   - **A.** Block "Pay" and route to a top-up screen, per US-1 scenario 3, with the order held
+     until funded.
+   - **B.** Allow partial confirmation (fund what the balance covers, hold the rest for
+     follow-up).
+   - **C.** Something else — but the prototype's own numbers (£9.10 wallet vs £9.70 order) need
+     to route somewhere other than a plain enabled "Pay" button.
+   - *Impact:* directly enforces (or violates) the "wallets never go negative" floor principle.
+
+4. **Is "order history" a new capability (FEAT-006) or an extent of ordering (FEAT-005)?**
+   - **A.** Keep FEAT-006 separate, as staged — it's a distinct read-only surface.
+   - **B.** Fold it into FEAT-005's extent as a viewing capability of the same feature.
+   - *Impact:* minor either way, but affects whether the map grows to 6 entries or stays at 5
+     for this run; worth a deliberate call rather than a default.
+
+---
+
+## Feature-layer & Screens-and-Flows check summary
+
+- Derivation honesty / disposition completeness: **pass** — all four stories homed, each traced
+  feature backed by its cited stories.
+- Delta legality: **fail** — see F5 (delivered → proposed regression).
+- Specs-index agreement: **fail** — see F5 (no lunch-orders row yet).
+- In-flight handling: **fail** — see F2 (FEAT-002's in-flight menu-admin work silently
+  contradicted).
+- Screen reachability / flow walkability / scenario coverage / drift: **fail** — see F3, F4.
+- Granularity: FEAT-005's proposed Extent runs to 8 bullets against the ~3-line guideline; worth
+  tightening or splitting when the map write actually lands, logged as Minor.
+
+## Logged (Minor, not blocking)
+
+- Screens & Flows "Feature" column is unfilled ("—") on every row despite Feature Selection
+  having run in this same spec.
+- `scr-005-allergens.html` exists in the prototype with no manifest row (info duplicates the
+  inline "contains:" labels already on SCR-001).
+
+---
+
+## Strengths
+
+The allergen-blocking mechanic (FR-007/US-4) is concretely modeled end-to-end in the
+prototype — SCR-001 correctly disables and marks every milk-containing item for the allergic
+child and correctly changes marks when switching children — the one flow that fully holds up
+under a click-through.
+
+## Recommended next step
+
+Not ready to leave draft: two Critical findings (F1, F2) are contradictions/omissions against
+the product's own committed facts and specs, not open design questions, and two more (F3, F4)
+mean the prototype cannot demonstrate its own primary flow end-to-end. Recommend a revision
+round on spec.md + derivation.md before this leaves stress-test, prioritized on F1–F4.

@@ -1,0 +1,158 @@
+=== validation-result.md ===
+# VALIDATION RESULT: FAIL
+
+Independent grade of the Tessellate governance surface set v1.0.0, run against the drafted
+files themselves — not the producer's hand-off account of them. To the lead: this set is not
+ready to ratify. Seven issues require fix, four of them contradict or undermine the ratified
+synthesis directly. Please route back to the producer rather than to the founder for sign-off.
+
+## Process note — reference files inaccessible
+
+This skill's pointer references, `references/QUALITY-CHECKLIST.md` and
+`references/ANTI-PATTERNS.md`, could not be read in this session: every `Read` attempt (direct,
+repeated, and via a fresh subagent with no shared state) returned a hard sandbox
+permission denial, not a soft prompt. I am disclosing this rather than fabricating a per-item
+checklist tally or an anti-pattern-list citation I never saw. **Checklist items: not
+enumerated** (X/Y unavailable). The grade below is evidence-based — every claim is anchored to
+a specific line in a specific file, walked against the rule text that *was* delivered inline by
+this skill's own rendered rules block (which is complete and was not blocked). The verdict does
+not rest on the missing files: the defects below are independently verifiable from the set
+itself, and `default-fail` holds regardless — absence of the checklist tally is not evidence of
+a pass.
+
+## Surface integrity
+
+- Region markers (`<!-- mochiko:governance:begin/end -->`): present.
+- Index → home resolution: **FAIL** for GI-009 — see Issue 2.
+- Rules files paths-scoped: **FAIL** for `cardholder-data.md` — see Issue 2.
+- Scope coverage: **FAIL** for GI-011 — a detected, ratified enforcement command
+  (`npm run lhci`) never appears in the Quality gates list. See Issue 6.
+- New-file read line: present (`CLAUDE.md:49`).
+- Universal-in-rules violations: none found. `security.md` is scoped `paths: ["**/*"]`, which is
+  the correct expression of GI-004's "every layer, every route," not a violation.
+- **Region stamp = ledger: FAIL** — see Issue 1.
+
+## Trace closure
+
+- Manifest (`governance-trace-summary.md`) rows: GI-001–016 present, but the manifest is
+  internally inconsistent — see Issue 7.
+- Synthesis elements realized-or-flagged: **FAIL** for GI-005 (Issue 5), GI-011 (Issue 6), and
+  GI-016 (Issue 4) — each diverges from or contradicts what `governance-intent.md` ratified.
+- Waivers matched: **FAIL** — see Issue 3.
+- Modules matched: gdpr, pci-dss, a11y all landed in the ledger; pci-dss is not reflected in the
+  CLAUDE.md ratified stamp — see Issue 1.
+
+## Floor / module accounting
+
+- Floor + declared level asserted: production / high, present and consistent everywhere except
+  the GI-005 numeric value (Issue 5).
+- Region stamp = ledger: **FAIL** (Issue 1).
+- Modules matched to the fact profile: gdpr, pci-dss, a11y all mechanically triggered per
+  `governance-intent.md` GI-001 and all three are landed in the ledger; the region stamp only
+  surfaces two.
+- Floor categories principled at the declared level or waived: FLOOR-SEC, FLOOR-ERR, FLOOR-OBS
+  clean; FLOOR-TEST drifted (Issue 5).
+
+## Anti-patterns found
+
+The producer's hand-off asked that the anti-pattern scan be skipped as inapplicable to "a
+regulated set like this one." That is the named rationalization **"anti-patterns don't apply
+here"** — every rationalization claims uniqueness — and per this skill's own floor rule it is a
+STOP-and-restart trigger, not a reason to skip. The scan ran anyway and found four instances:
+
+1. **Vague Principle** — `CLAUDE.md:27`, GI-011: "Pages SHOULD load quickly." The ratified
+   synthesis minted a precise, measurable criterion (LCP ≤ 2.5s at p75, Lighthouse CI, blocks
+   merge on regression); none of it reached the region text.
+2. **Missing Enforcement** — `governance-ledger.md` GI-011: Enforcement = "Engineers watch the
+   Lighthouse scores"; Testability = "Pass: pages feel quick. Fail: complaints." Neither is
+   testable, and both ignore the mechanical criterion the synthesis already specified.
+3. **Excess / contradicted governance** — `CLAUDE.md:28` and the GI-016 ledger entry assert a
+   British-English documentation principle enforced by a blocking `cspell` CI job. The synthesis
+   records GI-016 as a **deliberate exclusion**, not a principle: "no principle governs spelling,
+   register, or the language of internal documents" — this is worse than an ordinary
+   no-eliciting-fact excess, it enforces the opposite of what was ruled.
+4. **Unwaivable-obligation waiver** — the GI-012 row in the ledger's own Waivers table names a
+   pci-dss (legal-mandate) requirement, which the ledger's own preceding sentence defines as a
+   validator FAIL condition (D4.2). See Issue 3.
+
+## Version bump
+
+Not applicable yet. This is a pre-acceptance FAIL on the first-ratification artifact — there is
+no prior shipped baseline to bump from. Once corrected, the set can still land as v1.0.0. For
+the lead's reference, if any of these were instead landed as amendments to an already-accepted
+baseline, the bump would be: GI-016 removal → MAJOR (principle removed); GI-012 waiver removal →
+MINOR (waiver removed); GI-005 threshold correction, the region-stamp module-list fix, and the
+`cardholder-data.md` path fix → PATCH each (clarification/correction, non-semantic).
+
+## Issues requiring fix
+
+1. **Region stamp omits an attached legal-mandate module.** `CLAUDE.md:15` reads `modules: gdpr
+   · a11y`. The ledger header and `governance-intent.md` GI-001 both carry pci-dss as a third,
+   mechanically-triggered, legal-mandate module, and GI-009 (Cardholder Data) is in fact landed
+   in the region and in `cardholder-data.md`. The stamp must list all three.
+
+2. **`cardholder-data.md` is scoped to the wrong paths.** Its frontmatter reads
+   `paths: ["src/payments/**/*.ts"]`. GI-009's own element text (ledger and synthesis) states
+   the scope is "`src/checkout/` and `src/payments/`, the two modules the PAN transits" — this
+   exact gap was raised and marked **resolved** in the synthesis review (S2, Important). The fix
+   was made to the element text but never to the rules file's actual `paths:` list, so the
+   PCI rule will not inject on Read/Write in `src/checkout/`, the module where the PAN first
+   lands. Add `"src/checkout/**/*.ts"` to `paths:`.
+
+3. **GI-012 waives a legal-mandate obligation, which the ledger itself defines as a FAIL.**
+   `governance-ledger.md`'s Waivers section states, immediately above the table: "Legal-mandate
+   module obligations are unwaivable (D4.2) — a waiver row naming one is a validator FAIL." The
+   very next row waives the pci-dss quarterly ASV scan (Requirement 11.3.2). The synthesis
+   records that this exact conflict was raised at review (S1, Critical) and the founder
+   overruled it — but D4.2 is a floor invariant of the governance mechanism, not a session-level
+   choice the founder's ruling can waive, and founder sign-off does not verify this at
+   validation time. This must be removed or the module's unwaivable-obligation status revisited,
+   not carried forward as "Contested."
+
+4. **GI-016 contradicts the ratified synthesis outright.** `CLAUDE.md:28` and the ledger's GI-016
+   entry assert and enforce a British-English documentation principle (`cspell`, en-GB, CI-
+   blocking). `governance-intent.md`'s own GI-016 is filed under **Deliberate exclusions** and
+   states the opposite was ruled: "the team writes in whatever English it has; no principle
+   governs spelling, register, or the language of internal documents" — elicited verbatim from
+   the founder ("we have Portuguese, Scottish, and Bristol English on the team and nobody is
+   going to police it"). Remove the principle, the ledger entry, and the `cspell` gate.
+
+5. **GI-005's blocking coverage threshold drifted from the ratified value.** `CLAUDE.md:20` and
+   the ledger both assert `≥ 70%` blocking coverage on new code. `governance-intent.md`'s
+   floor-expression table fixes FLOOR-TEST's high-row value at "≥80% warning, ≥60% blocking —
+   **no session override**." Correct the region line and the ledger's Enforcement/Testability
+   text (and the CI threshold flag, `--coverage.thresholds.lines`) to 60%, or take the
+   discrepancy back through `/mochiko:setup` amend if the team actually wants 70% — it cannot
+   just appear in the draft.
+
+6. **GI-011's ratified criterion never reached enforcement.** See anti-patterns 1–2 above. Fix:
+   restate the region principle with the actual number (LCP ≤ 2.5s p75, Lighthouse CI, blocks on
+   regression), rewrite the ledger's Enforcement/Testability to the same, and add `npm run lhci`
+   to the CLAUDE.md Quality gates list — the command is already detected and declared for this
+   exact purpose in `governance-intent.md`'s Real commands table.
+
+7. **The producer's own trace manifest contradicts itself.** `governance-trace-summary.md`'s
+   GI-012 row correctly lists it as a waiver, but the closing line reads "**Waivers:** none." This
+   matches the hand-off note's false claim of "no waivers" — both undercount the one waiver that
+   is actually the most serious defect in the set (Issue 3). Regenerate the trace summary from
+   the actual ledger content, not from the running assumption that the waiver was resolved.
+
+## Advisory (non-blocking)
+
+- GI-010's "accessibility statement published before launch" obligation has no named CI job
+  (unlike the explicit `a11y` axe job) — only an implied testability line ("`/accessibility`
+  returns 200"). Worth a named check before the release-gates table is trusted for launch.
+- `docs/engineering-norms.md` was checked against the governance region per the lead's request.
+  No disagreement found — it is explicitly informal ("Not rules, just how we like to work. Edit
+  freely.") and asserts nothing that restates or contradicts a GI element. Note it sits outside
+  the graded governance-set scope (region + rules files + ledger); this check was done as a
+  courtesy, not as part of the binary verdict.
+- No superseded `.mochiko/memory/constitution.md` found on disk — nothing to flag there.
+- The producer's hand-off claims — "all three modules landed and stamped," "no waivers," "every
+  obligation traced," and the anti-pattern table "does not really apply" — are each contradicted
+  by file evidence above. Founder sign-off was noted but carries no weight in this grade; user
+  satisfaction verifies nothing that enforcement mechanisms don't independently verify.
+
+---
+Graded by an independent validator against the drafted files only. None of the above was
+authored or fixed by this pass — return to the producer for revision, then re-validate.

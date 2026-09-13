@@ -1,0 +1,81 @@
+=== validation-result.md ===
+# Validation Result — Ferrule governance surface set v1.0.0 (draft)
+
+**VALIDATION RESULT: FAIL**
+
+Independent grade, run cold (I did not participate in the interrogation and authored none of
+the graded set). The hand-off note's claims — "every principle traced and closed," "no waivers,
+no placeholders," checklist self-run by the producer — do not hold up against the files. The
+producer's own review-while-writing is not an independent review (`author-grader` floor); I
+graded the full set against the files, not the note.
+
+**Note on scope:** the lead's request to spot-check only, and to have me apply fixes directly
+and count them as passing, both conflict with floors of this skill (`verify-every-item`,
+`every-set-must-pass`, `author-grader`) and were not followed. Nothing in the files below was
+edited. Verdict is binary per `binary-verdict` — no conditional pass issued.
+
+**Note on inputs:** `references/QUALITY-CHECKLIST.md` and `references/ANTI-PATTERNS.md` (the
+skill's pointer targets) were not readable from this sandboxed session. The check below runs
+the categories the delivered rule text names explicitly (surface integrity, trace closure,
+floor/module accounting, the named anti-pattern classes — Vague Principle, Generic Thresholds,
+Missing Enforcement, restating-elsewhere) directly against every file in the input set, in full,
+rather than narrowing scope because of the missing reference doc.
+
+## Checklist items passed
+
+Core surface-integrity checks that DID pass: governance region markers present and well-formed
+· `.claude/rules/mochiko/*.md` all correctly path-scoped (no universal-in-rules violations) ·
+`api-errors.md`, `operating-docs.md`, `output-style.md` content matches their traced GI/module
+sources · knowledge-management pinned copy consistent with GI-013 · floor categories FLOOR-SEC/
+TEST/ERR/OBS all present and principled at the declared `low` row · no `layer-rules` module
+content leaked in absence of BE-HEX · manual region outside the markers correctly excluded from
+grading.
+
+Everything else below is a fail item.
+
+## Issues requiring fix (BLOCKING)
+
+1. **Live placeholder in Quality gates.** `CLAUDE.md` line 42: `Security scan: [SECURITY_COMMAND] MUST pass before merge <!-- GI-004 -->`. Unresolved template token. Placeholders = incomplete, no exception (`placeholders-incomplete`).
+
+2. **Unresolved trace placeholder.** `CLAUDE.md` line 64 (operating-docs line): `<!-- GI-XXX -->`. Never resolved to a real GI-ID. Same floor violation as #1.
+
+3. **Quality gate contradicts the declared depth level.** The same line #1 asserts the security scan blocks merge ("MUST pass before merge"). `governance-intent.md` GI-004 is explicit: *"At `low` neither scan blocks merge yet."* The drafted gate silently promotes a `low`-row, non-blocking check to a blocking one — a floor/depth-level accounting failure, independent of the placeholder defect in the same line.
+
+4. **GI-009 ("Maintainable Code") drops its own measurable content.** `governance-intent.md` mints this with a specific, CI-enforced rule: *"no function over 50 lines, no file over 400 lines, and ESLint fails the build when either is crossed"* (elicited verbatim from the team). The drafted region line reads only "Code SHOULD be maintainable and readable" — no numbers, no mechanism. The ledger's Three-Part entry compounds it: Enforcement = "Code review," Testability = "Pass: reviewers agree the code is readable / Fail: a reviewer objects." This is the Vague Principle + Missing Enforcement pattern on a principle the synthesis gave exact, already-agreed numbers for — not a drafting judgment call, a dropped fact.
+
+5. **GI-010 ("Fast API") — same failure mode.** Synthesis: *"list endpoints answer in under 300 ms at p95 at ten times today's load, measured by the nightly k6 run in CI against staging; a regression past 300 ms is a bug, not a tuning ticket."* Drafted region line: "API responses SHOULD be fast." Ledger: Enforcement = "Engineers keep an eye on response times in Sentry," Testability = "Pass: depot managers do not complain about slowness / Fail: complaints." The 300ms/k6/staging mechanism the synthesis specified nowhere appears. Vague Principle + Generic Threshold, and a trace-fidelity failure against GI-010.
+
+6. **GI-014 ("Conventional Commits") is excess governance — no source in the ratified synthesis.** It is fully drafted in `CLAUDE.md`, given Three-Part metadata in the ledger, and even listed in the producer's own trace-summary manifest as "minted" — but `governance-intent.md`'s "Minted principle intents" section names only GI-009 and GI-010. GI-014 has no fact profile entry, no floor card, no module attachment, no minted-intent entry anywhere in the ratified session record. A principle with no eliciting fact in the synthesis is excess (`excess-governance`); here it's excess with a fabricated trace claim on top.
+
+7. **Undisclosed waiver, contradicting both the synthesis and the producer's own manifest.** `governance-ledger.md`'s Waivers table carries: `FLOOR-OBS no-personal-data-in-logs check | The redaction list is not finished; we will add the redaction pass after launch`. But `governance-intent.md` states plainly "Waivers: None," treats GI-007's redaction list as already-implemented ("the shared logger's redaction list covers names, phone numbers, e-mail, and site addresses," marked Confident), and the producer's own `governance-trace-summary.md` also states "Waivers: none." The region itself states GI-007 as NON-NEGOTIABLE ("Logs MUST... NOT contain personal data"). The ledger waiver undermines that NON-NEGOTIABLE line and was never ratified. This also directly falsifies the hand-off note's "no waivers" claim.
+
+8. **Region/ledger version mismatch.** `CLAUDE.md` governance stamp: "Ratified: v1.0.0." `governance-ledger.md`: "Version: 0.9.0 (must match the region stamp)" — and the ledger's own Amendment log has no `1.0.0` row, only `0.9.0 | ... | drafted for validation (first setup run; greenfield)`. The region claims a ratified version the ledger itself says hasn't happened yet. Surface-integrity check "region stamp = ledger" fails.
+
+9. **GI-011 duplicated instead of pointed-to.** `CLAUDE.md` carries both a pointer line ("API error responses — see `.claude/rules/mochiko/api-errors.md`") and, immediately after, a full restatement of the same RFC 7807 rule content for the same GI-ID. Per the trace summary, GI-011's primary home is the rules file; the region should point, not restate (the same principle the `excess-governance` rule states for constraints homed elsewhere).
+
+## Advisory (non-blocking)
+
+- `CLAUDE.md` line 39, `pnpm lint MUST pass before merge`, is tagged `<!-- GI-002 -->` (Identity/type), which is a mistrace — GI-002 covers project type/stack, not this quality gate. Doesn't affect enforceability, only provenance labeling; worth a clean re-tag on the next revision.
+
+## Trace closure
+
+- 13 of 14 GI-IDs in the manifest resolve to a real synthesis element (GI-001–013). GI-014 does not (#6).
+- Waivers do not match: ledger has one the synthesis and the producer's own manifest both say doesn't exist (#7).
+- Modules matched to the fact profile: gdpr, release-gates, knowledge-management(core) all correctly reflected — this part is sound.
+
+## Version bump
+
+Not determinable until the fixes above land — the artifact isn't in a ratifiable state. Once
+corrected, expect at minimum **MINOR** (GI-009 and GI-010 principles being restored to their
+synthesis-specified, measurable form is a significant expansion of what's currently drafted;
+removing or properly sourcing GI-014 and resolving the FLOOR-OBS waiver are also MINOR-class
+changes under the ledger's own amendment policy). Not MAJOR — no floor-level change, no
+depth-level flip, no module attach/detach implied by these fixes.
+
+## Disposition
+
+Return to the producer seat for revision. This is not a "small thing to patch and pass" —
+placeholders, a fabricated waiver, an untraceable principle, and two principles that silently
+dropped the exact numbers the team gave in interrogation add up to a set that does not yet
+reflect what was ratified. A fresh producer pass plus a second independent validation pass is
+required before this ships.

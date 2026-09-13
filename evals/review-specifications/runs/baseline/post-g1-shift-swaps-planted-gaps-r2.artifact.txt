@@ -1,0 +1,265 @@
+=== review.md ===
+# Stress-test review — shift-swaps spec
+
+Reviewer: independent gap-finding pass (mochiko:review-specifications). Author of spec.md,
+stories/, and derivation.md was not consulted or amended — this is a read-only review.
+Scope: spec.md, stories/US-1..5, derivation.md, graded against kestrel/CLAUDE.md,
+kestrel/README.md, kestrel/docs/, kestrel/FEATURES.md + `.mochiko/features/*` (git-open
+baseline, unchanged since run start), and `.mochiko/specs/index.md`.
+
+This is gap-finding input for the lead, not a PASS/FAIL clearance.
+
+## Findings
+
+```yaml
+findings:
+  - id: F1
+    category: contradiction
+    severity: critical
+    summary: >
+      The spec contradicts itself on when an accepted swap changes the published rota —
+      immediately on mutual acceptance, or only after manager approval.
+    evidence:
+      - spec.md FR-004 (line 66-67): "An accepted swap MUST take effect on the published
+        rota the moment both staff have accepted."
+      - spec.md FR-006 (line 70-71): "A swap MUST NOT change the published rota until the
+        venue manager has approved it."
+      - spec.md Intent scope boundary (line 11-12): "...the venue manager sees the result"
+        (observer, not gate).
+      - stories/US-1.md AC2 (line 15-16): rota shows the exchange the moment the colleague
+        accepts — no approval step.
+      - stories/US-3.md (whole file): manager "approves or refuses ... before the rota
+        changes" — a hard gate.
+    failure_scenario: >
+      Built against FR-004 + US-1, two staff swap a bar shift and the rota updates
+      instantly with no eligibility/licensing check; built against FR-006 + US-3, the same
+      swap sits pending until a manager acts, and US-1's own acceptance test ("confirm the
+      published rota shows the two shifts exchanged") fails because the rota hasn't changed.
+      Both cannot be true of the same build.
+
+  - id: F2
+    category: contradiction
+    severity: critical
+    summary: >
+      The spec assumes any colleague can take any swapped shift, bypassing the three
+      placement-safety mechanisms the rest of the product already enforces, and adds a
+      new legal claim (11-hour rest) with no citation.
+    evidence:
+      - spec.md Assumptions (line 129): "Any colleague at the venue is eligible to take
+        any shift offered in a swap."
+      - docs/decisions/0003-role-flags.md and docs/roles-and-eligibility.md: the rota
+        builder already hard-refuses an ineligible placement (bar needs 18+ and
+        alcohol-service sign-off, box office needs till training, duty manager needs the
+        flag) and shows the reason.
+      - FEAT-002-availability.md (line 14-15): availability is meant to flag an
+        out-of-pattern placement to the manager — shift-swaps never mentions checking it.
+      - FEAT-003-time-off.md (line 8-9): an approved day off blocks any shift for that
+        person on the draft — shift-swaps never mentions checking it for the accepting
+        colleague.
+      - spec.md FR-005 (line 68-69): introduces "eleven hours' rest" as UK law, a
+        regulatory claim with no decision record or citation anywhere in docs/.
+    failure_scenario: >
+      A 17-year-old usher accepts a swap onto a bar shift (no age/sign-off check), or
+      accepts a shift that overlaps a day they already have approved time off for (no
+      time-off check) — both currently impossible through the rota builder, both possible
+      through the swap flow as specced. Given the Intent's own "high rigor — touches pay
+      and licensing" framing, this is the exact class of mistake the feature exists to
+      prevent, not create.
+
+  - id: F3
+    category: assumption-gap
+    severity: critical
+    summary: >
+      The proposed FEAT-006 entry invents an "offer to everyone, first to claim" mechanic
+      that no shift-swaps story asks for and that duplicates the existing FEAT-005 Open
+      shifts capability — which derivation.md's own baseline table omits.
+    evidence:
+      - derivation.md "Map at baseline" (line 7-12): lists FEAT-001..004 only; FEAT-005 is
+        absent even though FEATURES.md carries it (line 14) as "proposed (unrefined)".
+      - derivation.md proposed FEAT-006 entry, Extent (line 34): "A shift offered to all
+        staff at the venue, claimed by the first eligible colleague."
+      - FEATURES.md FEAT-005 (line 14): "a manager offers an unfilled shift to eligible
+        staff; the first to claim it takes it" — same shape, different offering actor.
+      - stories/US-1..5: every story is a named-colleague, one-for-one exchange; none
+        describes an all-staff offer or first-claim race.
+      - spec.md Intent "Out of scope" (line 19-20) explicitly excludes "offering a shift
+        with no counterpart (that is open shifts)" — the proposed entry's own extent line
+        contradicts the spec it's derived from.
+    failure_scenario: >
+      Two capabilities (FEAT-005 and FEAT-006) end up governing the same first-claim
+      mechanic with no dedup ruling between them, and FEAT-006 ships a chunk of behavior
+      (all-staff offer) with zero acceptance criteria or test coverage anywhere in
+      shift-swaps' stories, because the spec's own Out-of-scope line says it isn't here.
+
+  - id: F4
+    category: missing-requirement
+    severity: critical
+    summary: >
+      SC-002 is not homed to any feature in the Feature Selection table, and SC-003 has
+      no measurable definition of "intuitive."
+    evidence:
+      - spec.md Success Criteria (line 90-96): SC-001..SC-004.
+      - spec.md Derived features table (line 112-113): FEAT-006 verifies SC-001, SC-003;
+        FEAT-001 delta verifies SC-004. SC-002 appears in neither row.
+      - spec.md Selection (line 123): "Deferred SCs: none" — so SC-002 isn't deferred
+        either; it's simply dropped.
+      - spec.md SC-003 (line 94): "Managers find the swap flow intuitive" — no metric, no
+        threshold, no instrument.
+    failure_scenario: >
+      Nothing in the run ever checks SC-002 ("managers spend half as much time on swap
+      admin") against any feature's obligations, so it can quietly go unmet forever; SC-003
+      can never be marked met or missed because "intuitive" isn't a measurement.
+
+  - id: F5
+    category: missing-requirement
+    severity: critical
+    summary: >
+      Intent declares the spec UX-bearing, but Screens & Flows carries neither of the two
+      legal shapes (a SCR/FLOW manifest with its prototype/ app, or an explicit waiver).
+    evidence:
+      - spec.md Intent (line 15-16): "UX-bearing: yes — a swap request screen and an
+        answer screen in the staff app, and a manager view."
+      - spec.md Screens & Flows (line 100-102): "to be mocked by the designer once the
+        spec is approved — Figma link to follow."
+      - No `prototype/` directory exists under `.mochiko/specs/shift-swaps/`.
+    failure_scenario: >
+      The spec proceeds to build with three screens nobody has walked end-to-end — the
+      swap-request screen, the answer screen, and the manager approval view named in F1's
+      contradiction have no clickable surface to catch a dead end or a missing state before
+      code is written.
+
+  - id: F6
+    category: contradiction
+    severity: important
+    summary: >
+      The spec's core value pitch assumes near-universal push notification reach, which
+      the team's own device survey and decision 0007 both contradict.
+    evidence:
+      - spec.md Overview (line 32-34): "Every staff member carries the Kestrel app and has
+        push notifications on, so a swap request reaches its counterpart within seconds."
+      - docs/staff-devices.md (line 6-11): 69% have the app installed, 41% use it while on
+        shift, only 52% of those installed have push enabled — nowhere near "every staff
+        member."
+      - docs/decisions/0007-notification-channels.md (line 6-9): staff notifications go by
+        push if enabled, else SMS, else the person is flagged to the manager — a fallback
+        the spec's FRs (002, 003, 009) never invoke.
+    failure_scenario: >
+      SC-001's "80% answered within 24 hours" target and the Overview's "reaches its
+      counterpart within seconds" promise are built on a premise the venue's own 2026
+      survey already disproves — a majority of on-shift staff won't see a push-only swap
+      request until they check their phone, and the spec never routes swap notifications
+      through the SMS fallback decision 0007 requires of every notifying feature.
+
+  - id: F7
+    category: excess-scope
+    severity: important
+    summary: >
+      Three untraced or smuggled items should be confirmed before build: an unsourced
+      dark-mode requirement, an implementation-specific CSV-on-shared-drive constraint
+      that bypasses the existing audit-table pattern, and a specs-index draft that drops
+      the FEAT-001 delta this spec also selects.
+    evidence:
+      - spec.md FR-008 (line 74): "The swap request screen MUST offer a dark-mode toggle.
+        *Source: —*" — no story, no design-system driver named.
+      - spec.md Intent Constraints (line 17-18): "swap history is kept as a CSV file on
+        the venue's shared drive for twelve months" — a storage mechanism and an
+        undefined access boundary, sitting alongside FR-007's actor/time trail and
+        CLAUDE.md's append-only `rota_change` table (line 12-15) and its
+        managers-only-Confidential-data principle (line 18-22).
+      - derivation.md Specs-index line (line 55): lists only FEAT-006 under capabilities
+        touched, dropping the FEAT-001 delta the same spec's Selection (line 121) picks to
+        build now — contrast with the existing `rota-changes` row in
+        `.mochiko/specs/index.md` (line 7), which names the single delivered feature it
+        deltas.
+    failure_scenario: >
+      FR-008 ships polish nobody asked for while real gaps (F1-F6) stay open; the CSV
+      constraint creates a second, undefined-access history store that can drift from the
+      `rota_change` table F1/F2 depend on for licensing defensibility; and the specs index,
+      once the draft row lands, undercounts what shift-swaps actually touches.
+```
+
+## Clarifications
+
+1. **When does an accepted swap actually change the published rota?**
+   - **A. Immediately on mutual acceptance** (FR-004, matches US-1's acceptance test) —
+     fastest for staff, but skips the manager check US-3 exists for, and skips whatever
+     eligibility/licensing check F2 raises.
+   - **B. Only after manager approval** (FR-006, matches US-3) — matches the "high rigor"
+     framing, but US-1 and US-2's acceptance scenarios need rewriting, since they currently
+     promise an immediate rota change.
+   - **C. Immediate for low-risk swaps (e.g. usher-usher), manager-gated for licensed roles
+     (bar, duty manager)** — matches "touches pay and licensing" without slowing every
+     swap down, but introduces a role-based branch nothing in the spec currently models.
+   - Why it matters: this single decision reshapes the state machine, FEAT-001's delta
+     acceptance criteria, and which of US-1/US-2/US-3's acceptance scenarios are correct.
+
+2. **Should a swap request enforce the same eligibility, availability, and time-off checks
+   the rota builder already applies?**
+   - **A. Yes, reuse the existing checks** — hard-refuse an ineligible or blocked swap the
+     way the rota builder refuses an ineligible placement today.
+   - **B. No, trust the swap participants and let manager approval (US-3) catch problems**
+     — matches the current Assumptions line, but only if F1 resolves to "manager gates
+     every swap"; leaves a gap if F1 resolves to "immediate on acceptance."
+   - **C. Warn, don't block** — mirror FEAT-002's "it flags, the manager decides" pattern
+     for availability, while still hard-refusing on the 0003 eligibility flags (age,
+     sign-off, till-training) the way placements already do.
+   - Why it matters: decision 0003 already hard-refuses ineligible placements for
+     licensing reasons; a swap that routes around it is a live compliance exposure, not a
+     hypothetical one.
+
+3. **Is "offer a shift to everyone, first to claim" part of shift-swaps (FEAT-006) or of
+   Open shifts (FEAT-005)?**
+   - **A. Drop it from FEAT-006** — shift-swaps stays a named-colleague exchange, matching
+     every story it actually has; FEAT-005 keeps owning any first-claim mechanic.
+   - **B. Fold FEAT-005 into FEAT-006** — but this needs its own stories, since none exist
+     in this spec, and a ruling on why one capability should own both shapes.
+   - **C. It's a drafting slip** — remove the line from the proposed FEAT-006 entry;
+     FEAT-005 stays untouched and unrefined for a later run.
+   - Why it matters: FEAT-005 already exists on the map with near-identical wording; the
+     derivation's own baseline table doesn't list it, so this overlap wasn't caught by the
+     dedup step it should have been caught by.
+
+4. **Where does SC-002 belong, and how should SC-003 be measured?**
+   - **A. Home SC-002 to FEAT-006** (manager admin time is a direct effect of the
+     request/answer flow); replace SC-003's "intuitive" with a scored post-launch survey
+     threshold.
+   - **B. Home SC-002 to the FEAT-001 delta** (it's measuring the manager-facing rota
+     surface); drop SC-003 or replace it with a support-ticket-volume threshold.
+   - **C. Treat SC-002 as a product-level outcome outside any single feature's obligations,
+     tracked on `specs/index.md` rather than the Feature Selection table.**
+   - Why it matters: an unhomed SC has nothing checking it after launch; an unmeasurable
+     SC can never be marked met or missed either way.
+
+5. **What UX artifact ships with this spec, given Intent already says UX-bearing: yes?**
+   - **A. Author the SCR/FLOW manifest and a clickable low-fi prototype now**, before the
+     spec is called ready, covering the request, answer, and manager-approval screens.
+   - **B. Add the explicit waiver line** ("No UX surface — prototype waived at intent") if
+     the team has since decided against prototyping — this also means correcting Intent's
+     "UX-bearing: yes."
+   - **C. Leave "designer mocks it after approval,"** and treat this spec as not yet
+     ready for build sign-off until that mock exists.
+   - Why it matters: right now the spec is in neither of the two states a UX-bearing spec
+     is allowed to be in, so nothing has walked the three screens this feature depends on.
+
+6. **Which notification channel does a swap event actually use?**
+   - **A. Follow decision 0007 exactly** (push if enabled, else SMS, else flag to manager)
+     for every swap event, and rewrite the Overview's "every staff member has push on"
+     claim against the 2026 device survey.
+   - **B. Push-only for swaps**, accepting that SC-001's 24-hour answer target will run
+     slower than the Overview currently promises.
+   - **C. SMS for the initial request (time-critical), push for everything else** —
+     matches staff-devices.md's own reading ("anything time-critical goes by SMS as well").
+   - Why it matters: the spec's headline claim ("reaches its counterpart within seconds")
+     and SC-001's target both depend on a reach rate the team's own survey says isn't real.
+
+## Strengths
+
+The core request/answer/history story set (US-1 through US-4) is well-scoped and each
+carries a concrete independent test; the explicit exclusion of cross-venue swaps (US-5) is
+a clean, well-justified cut against the Regal-pilot reality.
+
+## Recommended verdict
+
+**needs-revision** — five Critical findings (F1-F5) touch the swap state machine, safety
+checks the rest of the product already relies on, feature-map dedup, and the UX gate; none
+of these are polish-level and none should be resolved by the implementer's judgment call.

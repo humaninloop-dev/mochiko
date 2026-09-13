@@ -1,0 +1,10 @@
+I've written the review to `review.md`. One process note up front: the `mochiko:review-specifications` skill wasn't actually installed in this session, so I did the stress-test manually against the same materials (spec, stories, derivation, prototype, feature map, docs, and the sibling `menu-admin` spec).
+
+Headline findings, most severe first:
+
+1. **FR-002 directly contradicts `menu-admin`'s accepted FR-002** — this spec requires parents see hidden menu items ("so nothing is missed"); `menu-admin` (already accepted, in-flight since 2026-08-25) requires hidden items *never* reach parents. Traced the root cause: `derivation.md`'s baseline table claims FEAT-002 was `delivered` when the run opened, but the actually-committed `FEATURES.md` already showed it `in-flight` a week earlier — a stale/wrong baseline read.
+2. **Free-school-meal funded lunches are assumed away entirely.** The spec's own Assumption ("every family has a card on file") contradicts `docs/free-school-meals.md` and the governance principle that explicitly carves out funded meals. No FR, screen, or wallet-delta criterion handles a non-charged order, despite FSM covering roughly half the pilot pupil population.
+3. **Pupil order data exits via a Google Sheet**, bypassing the API-serializer allowlist that `CLAUDE.md` names as the actual confidentiality enforcement mechanism — no access control or field minimization specified.
+4. **US-1's own acceptance scenario states the wrong cut-off** ("before Sunday midnight" vs. the real Thursday 17:00 cut-off).
+
+Plus medium/low findings: broken and undeclared screens in the prototype, the prototype's own numbers showing an over-budget "successful" checkout, an unspecified multi-child-payment claim, a caching/real-time conflict with `menu-admin`, an untraceable meal-rating requirement, two unmeasurable success criteria, and an edge case with no owning mechanism. Full detail with line citations is in `review.md`.

@@ -1,0 +1,5 @@
+I've written the full validation to `validation-result.md`. Verdict: **FAIL**.
+
+The set has six critical, cross-artifact-verifiable defects — most urgently for a two-week launch: the PCI-evidence release gate and the ASV-scan waiver directly contradict each other (the launch promotion can't pass its own gate), an unwaivable legal-mandate obligation sits in the waiver table despite the ledger's own text banning exactly that, the ratified stamp drops pci-dss from its module list, a principle (British English) was minted that the ratified synthesis explicitly excluded, the founder's own quantified page-speed requirement was shipped as an unenforceable "SHOULD load quickly," and the cardholder-data rules file doesn't cover `src/checkout/` — the path where the raw card number actually lives.
+
+Notably, two of the four anti-patterns found fall exactly in the category the producer's hand-off note said not to bother checking. `docs/engineering-norms.md` has no conflict with the governance region and needs no changes. Full findings and a priority-ordered fix list are in the file for the lead.

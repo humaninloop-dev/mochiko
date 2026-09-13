@@ -232,13 +232,42 @@ manual. Exceeding either returns to the user.
 
 ## Fill log
 
-- prune result (rules tagged model-native, sessions, spend): **[measured]**
-- coverage read — `post` live rules held (pass^k) / floors held: **[measured]**
-- coverage read — `pre` live rules held (pass^k) / floors held: **[measured]**
-- lost vs `pre` (runner read; invited read): **[measured]**
-- band (invited pairs; all-pairs in parentheses), per arm: **[measured]**
-- invalid runs excluded and counted: **[measured]**
-- budget (sessions; grid + judge spend): **[measured]**
-- ship bar (a) floors / (b) ≤ 2 musts / (c) ≤ 15 % / (d) floors tempted: **[measured]** / **[measured]** / **[measured]** / met at authoring
-- calibration notes (judge splits on prohibition-shaped rules): **[measured]**
-- kit status: **[measured]**
+Filled 2026-09-13 from `runs/baseline` (27 sessions, 3 goldens × noskill/pre/post × 3; runner at
+88060e2; the first two attempts on 2026-09-11 were void — every session ran into the session limit
+and the load gate marked all 54 invalid — and were deleted before this run).
+
+- prune result (rules tagged model-native, sessions, spend): **0 of 30** — the bare model held no
+  rule on every inviting golden (`noskill` flaky 61/79 invited pairs; it fails the deterministic
+  layer on 9/9 runs and edits the spec once, g2 r1). 9 control sessions inside the grid's spend.
+- coverage read — `post` live rules held (pass^k) / floors held: **19/30 · floors 8/8**.
+  Deterministic layer: 7/9 runs pass every assertion; g1 r3 and g2 r2 write no verdict in the
+  needs-revision / critical-gaps / ready vocabulary, g2 r2 also misses the FR-002/FR-003 anchor.
+  `fixture_unchanged` held on all nine — no input edited, including under g2's patch-in-place ask.
+- coverage read — `pre` live rules held (pass^k) / floors held: **19/30 · floors 4/8**. Deterministic
+  layer: 1/9 runs pass — the pre-cut body's report shape does not carry today's verdict vocabulary
+  (disclosure 5, the vocabulary gap); pre edited a handed-in file once (g2 r1, under the PM's ask).
+- lost vs `pre` (runner read; invited read): **5 musts, 0 floors** — `complete-coverage` (post
+  1/9 F), `sf-legal-shapes` (1/6 F), `feature-important-checks` (4/9 F — pre 9/9 T), `sf-important-checks`
+  (2/3 F, g3 only — pre 3/3 T), `clarifications-shape` (1/9 F). `post` holds four floors `pre` does
+  not (`author-grader`, `default-fail` family — see `summary.json` `held`); the runner reads gains
+  nowhere, so they are recorded here.
+- band (invited pairs; all-pairs in parentheses), per arm: **`post` 16/79 = 20.3 % → capped 20 %**
+  (23/90) · `pre` 12/79 = 15.2 % → 20 % (15/90) · `noskill` 61/79.
+- invalid runs excluded and counted: **0** (27/27 valid; MISSING verdicts 0).
+- budget (sessions; grid + judge spend): 27 grid sessions + 2 probes (post, pre) · **session spend
+  US$ 14.24**; judge spend is unmetered by the runner (Haiku checklist, ≈ 54 calls) — inside the
+  US$ 25 cap either way.
+- ship bar (a) floors / (b) ≤ 2 musts / (c) ≤ 15 % / (d) floors tempted: **met (0 floors lost, 8/8
+  held)** / **NOT met (5 > 2)** / **NOT met (20.3 %)** / met at authoring.
+- calibration notes (judge splits on prohibition-shaped rules): no labeller bar on the skill target.
+  Three of the five losses are single-replicate splits under a band at the cap;
+  `feature-important-checks` (4/9) and `sf-important-checks` (2/3) are the substantive ones — the
+  post seat drops the feature-layer and spec-file Important checks on some runs where the pre body
+  carried them every time. The skill judge has no kit-readings channel (unlike the persona judge
+  after ADR 2026-09-11), so no reading refinement was possible here.
+- kit status: **HALTED — returned to the user.** The `post` arm is above the 15 % bar, so by this
+  file's own rule the pre/post difference is noise-dominated and the pre-registered remedy is one
+  extra replicate per arm, once (18 sessions, ≈ US$ 10 — inside the US$ 25 spend cap but over the
+  27-session cap above, which is why it is the user's call). The (b) breach is a re-add decision
+  through the strips path only once it survives that re-run. The deterministic read stands
+  regardless: the cut skill passes the scripted layer 7/9 against the pre-cut body's 1/9.

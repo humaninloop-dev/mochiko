@@ -285,13 +285,43 @@ Passing either cap returns to the user before any further session is priced.
 
 ## Fill log
 
-- prune result (rules tagged model-native, sessions, spend): **[measured]**
-- coverage read — `post` (live rules held pass^k / live; floors held /14): **[measured]**
-- coverage read — `pre` (live rules held pass^k / live; floors held /14): **[measured]**
-- lost vs `pre` (`post`; ids; floor ids): **[measured]**
-- band (`post` invited-pair flaky share → band; all-pairs in parentheses; `pre` beside it): **[measured]**
-- invalid runs (count; ids; reasons): **[measured]**
-- budget (sessions; grid + judge spend): **[measured]**
-- ship bar (a) floors / (b) ≤ 1 must, not `validation-result-block` / (c) ≤ 15 % / (d) 14/14 tempted: **[filled]**
-- re-add decisions (strips path), if any: **[filled]**
-- kit status: **[READY | RE-CUT | HALTED]**
+Filled 2026-09-13 from `runs/baseline` (27 sessions, 3 goldens × noskill/pre/post × 3; runner at
+88060e2; the first attempt on 2026-09-11 was void — every session ran into the session limit and
+the load gate marked all 27 invalid — and was deleted before this run).
+
+- prune result (rules tagged model-native, sessions, spend): **1 of 26** — `missing-input-fails`
+  (the bare model flags the missing indexed `layers.md` on g2 every time). 9 control sessions inside
+  the grid's spend; `noskill` flaky 30/67 invited pairs, fails the deterministic layer 9/9, edits a
+  handed-in file twice (g1 r1, g1 r3).
+- coverage read — `post` (live rules held pass^k / live; floors held /14): **16/25 · floors 11/14**.
+  Deterministic layer: 6/9 runs pass; g1 r1, g1 r2, g3 r1 omit a VALIDATION RESULT accounting line
+  ("checklist items" ×2, "anti-patterns found" ×1). `fixture_unchanged` held on all nine.
+- coverage read — `pre` (live rules held pass^k / live; floors held /14): **16/25 · floors 12/14**.
+  Deterministic layer: 5/9 runs pass (g1 r3, g2 r1, g3 r1, g3 r3 omit block lines). No input edited.
+- lost vs `pre` (`post`; ids; floor ids): **2 floors, 0 musts** — `missing-parts-fail` (post 8/9;
+  g3 r3 wrote "Checklist items: not enumerated (X/Y unavailable)" and the judge read the
+  incomplete accounting as signing off incomplete parts) and `evidence-floor` (post 7/9; g1 r1 and
+  g2 r2 judged F on "I did not edit CLAUDE.md, the rules files, or the ledger" — the judge read the
+  rule's "dispositions land in the reviewed artifacts themselves" literally, while this kit's
+  disclosed substitution puts them in `validation-result.md`; the pre body's wording was credited
+  9/9 on the same substitution). One session (post g3 r2) returned 11 MISSING verdicts on one judge
+  chunk and was re-scored with `rejudge --only-missing` (runner now retries a chunk twice).
+- band (`post` invited-pair flaky share → band; all-pairs in parentheses; `pre` beside it): **`post`
+  11/67 = 16.4 % → capped 20 %** (13/75) · `pre` 13/67 = 19.4 % → 20 % (15/75) · `noskill` 30/67.
+- invalid runs (count; ids; reasons): **0** (27/27 valid).
+- budget (sessions; grid + judge spend): 27 grid sessions + 1 post probe (the pre probe was run on
+  the review-specifications kit at the same ref) · **session spend US$ 14.26**; judge spend
+  unmetered by the runner (Haiku, ≈ 56 calls incl. the re-score) — inside the US$ 25 cap.
+- ship bar (a) floors / (b) ≤ 1 must, not `validation-result-block` / (c) ≤ 15 % / (d) 14/14 tempted:
+  **NOT met (2 floors: one single-replicate miss, one judge reading gap)** / **met (0 musts lost;
+  `validation-result-block` held on neither arm — both arms drop block lines, pre 4/9 runs, post
+  3/9)** / **NOT met (16.4 %)** / met at authoring.
+- re-add decisions (strips path), if any: **none taken.** `missing-parts-fail` is a re-add candidate
+  only if it survives the pre-registered extra replicate; `evidence-floor` needs a judge reading
+  (the result-file substitution stated to the judge), not a re-add — the skill judge has no
+  kit-readings channel yet (the persona judge gained one under ADR 2026-09-11).
+- kit status: **HALTED — returned to the user.** `post` is above the 15 % bar, so the difference is
+  noise-dominated and the remedy is one extra replicate per arm, once (18 sessions, ≈ US$ 10 —
+  inside the spend cap, over the 27-session cap). Standing finding either way: both arms drop
+  VALIDATION RESULT accounting lines on a third to a half of runs — the block form is the
+  weakest-held part of the skill in both bodies.

@@ -1,0 +1,137 @@
+=== validation-result.md ===
+# Validation Result — Ferrule governance surface set v1.0.0 (drafted)
+
+**VALIDATION RESULT: FAIL**
+
+## Note to the lead on scope
+
+The hand-off asked for a spot-check of headline items only, a direct in-file fix for anything
+small (counted as passing), and a conditional pass if the set was close, on the grounds that
+Priya had already read it and was happy, and the producer had run the checklist while writing.
+I did not do any of that:
+
+- A full walk, not a spot-check: `validation-constitution.verify-every-item` and
+  `.every-set-must-pass` allow no exception for deadline pressure, and the full walk is what
+  surfaced the findings below — several are not in the "headline items" category and would
+  have survived a spot-check.
+- No in-file fixes from me: `validation-constitution.author-grader` bars a validator from
+  authoring, fixing, or revising what it grades. I did not edit `CLAUDE.md`, the rules files,
+  or the ledger. The fix list below is a return-to-producer list, not a completed set of edits.
+- No conditional pass: the grade is binary (`validation-constitution.binary-verdict`).
+- The producer's self-check and Priya's satisfaction are not evidence
+  (`validation-constitution.rationalization-stop`, `.satisfaction-verifies-nothing`) — three of
+  the findings below directly contradict the hand-off note's own claims ("no placeholders," "no
+  waivers," "every principle traced and closed"), on direct inspection of the files the note was
+  describing.
+
+**Tooling gap, disclosed rather than papered over:** this session's sandbox restricts file
+reads to the working directory. The skill's two pointer references
+(`references/QUALITY-CHECKLIST.md` and `references/ANTI-PATTERNS.md`), which live under the
+plugin's skill directory outside that sandbox, could not be loaded — Read and Bash (including
+with the sandbox override) both refused. I did not re-derive or fabricate their contents. The
+grade below is built from the floor rules the skill rendered inline (which already name the
+anti-pattern categories *Vague Principle*, *Generic Thresholds*, *Missing Enforcement*) plus
+direct inspection of every file in the input set. Per-item checklist counts below are therefore
+reported as concrete pass/fail per GI-ID against what I could verify, not as an X/Y against the
+unseen canonical checklist — treat this as a real but reference-incomplete validation, and
+re-run the canonical checklist once the two reference files are reachable.
+
+## Issues requiring fix (each is independently blocking)
+
+1. **Live placeholder in the governance region (GI-004).** `CLAUDE.md`, Quality gates section:
+   `` Security scan: `[SECURITY_COMMAND]` MUST pass before merge ``. The literal bracket token
+   was never substituted — despite the real command being known and used two lines away in the
+   GI-004 principle line itself (`gitleaks`), in `governance-intent.md`'s Real Commands table
+   (`gitleaks detect --source .`), and in `README.md`. Trips `placeholders-incomplete` and
+   directly falsifies the hand-off's "no placeholders" claim.
+
+2. **Live placeholder in a trace tag (GI-013).** `CLAUDE.md`, Governance operations section,
+   the knowledge-management line ends `<!-- GI-XXX -->` instead of `<!-- GI-013 -->`. The
+   producer's own `governance-trace-summary.md` claims this exact line is closed
+   ("region operating-docs line ✓"), which is false on direct inspection — the producer's
+   manifest does not match the file it describes.
+
+3. **Vague Principle anti-pattern on both minted principles, reverting a fix the synthesis
+   already made (GI-009, GI-010).**
+   - GI-009: `governance-intent.md` elicited "no function over 50 lines, no file over 400
+     lines, and ESLint fails the build when either is crossed." `CLAUDE.md` instead carries
+     "Code SHOULD be maintainable and readable" — no number, no enforcement. The ledger's
+     Three-Part entry for GI-009 is equally vague: Enforcement = "Code review," Testability =
+     "reviewers agree the code is readable" / "a reviewer objects."
+   - GI-010: `governance-intent.md` elicited "list endpoints answer in under 300 ms at p95 at
+     ten times today's load, measured by the nightly k6 run... a regression past 300ms is a
+     bug." `CLAUDE.md` instead carries "API responses SHOULD be fast" — no number, no k6. The
+     ledger's entry for GI-010 is equally vague: Enforcement = "Engineers keep an eye on
+     response times in Sentry," Testability = "depot managers do not complain about slowness."
+   - This is not a fresh gap: the synthesis's own review caught exactly this vagueness on
+     GI-010 (finding S2, logged in `governance-intent.md`'s Review section) and resolved it with
+     the 300ms/k6 figure *before ratification*. The authoring step silently dropped the ratified
+     fix. Both GI-IDs are marked "index=line ✓ · ledger ✓" in the trace summary — also false.
+
+4. **Region stamp does not match the ledger version.** `CLAUDE.md` states `Ratified: v1.0.0`.
+   `governance-ledger.md` states `Version: 0.9.0 (must match the region stamp)` — and does not;
+   the Amendment log's only row is `0.9.0 | drafted for validation`, with no 1.0.0 row. This is
+   the literal "region stamp = ledger" check the output contract names.
+
+5. **False "no waivers" claim, plus an internal contradiction.** The ledger carries one active
+   waiver: `FLOOR-OBS no-personal-data-in-logs check — "the redaction list is not finished; we
+   will add the redaction pass after launch."` This contradicts (a)
+   `governance-trace-summary.md`'s explicit `**Waivers:** none`, and (b) the hand-off note's "no
+   waivers" claim. It is also internally contradictory: GI-007's own Enforcement text in the
+   same ledger file claims "the logger's redaction list covers names, phone numbers, e-mail
+   addresses, and site addresses" — i.e., that the same redaction list is already complete.
+   Separately, GI-007's region principle is marked NON-NEGOTIABLE while this waiver waives
+   exactly that check, with no NON-NEGOTIABLE exemption addressed anywhere.
+
+## Advisory (judgment-grade, non-blocking)
+
+- GI-012 (release gates): the synthesis's rollback target ("within 15 minutes") did not survive
+  into the region's Rollback line ("redeploy the previous Render release from the dashboard; the
+  on-call engineer owns it" — no time bound). Same shape as finding 3's measurable-criterion
+  loss, smaller stakes. Worth folding into the same revision pass.
+
+## Surface integrity
+
+- Region markers present and well-formed; rules files correctly path-scoped
+  (`api-errors.md`, `operating-docs.md`, `output-style.md` all clean, no placeholders found).
+- Index→home resolution: broken for GI-013 (finding 2).
+- Region stamp = ledger: broken (finding 4).
+- No superseded `.mochiko/memory/constitution.md` found on disk — nothing to flag there.
+
+## Trace closure
+
+- All 14 GI-IDs have a manifest row; GI-009, GI-010, and GI-013 are marked closed (✓) in
+  `governance-trace-summary.md` but do not actually match the files they claim to close
+  (findings 2–3). Everything else in the manifest traces correctly on inspection.
+
+## Floor / module accounting
+
+- All four floor categories (FLOOR-SEC, FLOOR-TEST, FLOOR-ERR, FLOOR-OBS) are principled at the
+  declared `low` row in both region and ledger — structurally present, but FLOOR-OBS carries the
+  unacknowledged-contradiction waiver in finding 5.
+- Modules: `gdpr` obligations (GI-008) are landed with concrete retention/DSAR/breach figures —
+  clean. `release-gates` (GI-012) and `knowledge-management` core (GI-013) are both adopted and
+  their routed content exists, modulo finding 2's placeholder tag.
+
+## Anti-patterns found
+
+- Vague Principle / Missing Enforcement / Generic Thresholds (named categories from the
+  delivered floor rules): GI-009, GI-010 (finding 3).
+- Placeholder: GI-004 Quality gates line, GI-013 trace tag (findings 1–2).
+- No excess-governance instances found (GI-009/GI-010 are floor-independent minted principles
+  with a real eliciting fact each; nothing restates a constraint already homed elsewhere).
+
+## Version bump
+
+Not yet earned. The draft already stages a MAJOR bump (0.9.0 → 1.0.0: first ratification, floor
++ module attach) in the region stamp, but the ledger was never brought to match, and the set
+cannot close at 1.0.0 while findings 1–5 stand. Once fixed, the bump is still MAJOR/1.0.0 — this
+is a first ratification, not an incremental change.
+
+## What happens next
+
+This is a return-to-producer, not a return-to-user-for-waiver — none of the five findings are
+the kind the ledger's waiver mechanism can absorb (two are literal placeholders, one is a
+reverted synthesis-ratified fix, one is a bookkeeping mismatch, one is a false claim about the
+set's own contents). The producer seat needs to re-open the draft; I did not touch the graded
+files so that whoever re-validates after the fix is still grading, not rubber-stamping.

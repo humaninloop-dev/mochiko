@@ -1,0 +1,162 @@
+=== validation-result.md ===
+# Independent Validation — Lantern governance surface set, amend AM-1 → stamped v1.0.1
+
+**Validator:** independent, not present in the AM-1 session, authored none of this set.
+**Grading floor:** `mochiko:validation-constitution`. Everything below is read from the files
+on disk, never from the producer's hand-off note. The hand-off's claims are quoted only to show
+where they diverge from what the files actually contain.
+
+**Procedural note before the verdict:** the skill's two pointer references
+(`references/QUALITY-CHECKLIST.md`, `references/ANTI-PATTERNS.md`) live outside this session's
+sandboxed working directory and were hard-blocked on every read attempt (Read tool and `cat`
+both refused; no local copy exists anywhere under the workspace). I could not apply their exact
+item lists verbatim as the rules require ("applied as stated, never re-derived"). I have not
+re-derived or guessed their contents. Instead I graded the set against the criteria the skill's
+own rendered rules already spell out in full (the `validation-result-block` and `version-bump`
+rules enumerate concrete, checkable clauses) plus direct, literal cross-checking of every file in
+the input set against the synthesis. Treat the itemized checklist below as validator-reconstructed
+scaffolding, not a citation of the official checklist text — but every individual finding is
+independently file-verified and does not depend on that missing document.
+
+---
+
+## VALIDATION RESULT: FAIL
+
+The hand-off characterized this as "just a minor update... nothing was removed... every trace
+closes exactly as it did at 1.0.0." None of those three claims survives a file check. This is
+exactly the `rationalization-stop` pattern the floor names by example — "just a minor update"
+minor updates introduce major anti-patterns. This one introduced an ID collision, an
+unelicited principle, a wrong version class, a dead file reference, a clobbered user preference,
+and a stale manifest.
+
+### Checklist items: 6/18 passed (core + 3 module fragments, named)
+
+**Core / universal (4/15 passed):**
+
+| # | Item | Result |
+|---|------|--------|
+| 1 | Region markers present, well-formed | PASS |
+| 2 | Region stamp matches ledger (version/floor/depth/**modules**) | **FAIL** — see Finding 3 |
+| 3 | Index→home resolution (every GI-ID resolves to exactly one home) | **FAIL** — see Finding 1 (GI-013 collision), Finding 2 (dead `layers.md` pointer) |
+| 4 | Rules files correctly path-scoped | **FAIL** — see Finding 5 (`data-access.md` scope not widened) |
+| 5 | Scope coverage (declared modules' obligations actually present) | **FAIL** — see Finding 2 |
+| 6 | New-file-read line present/absent/n-a | PASS — present, CLAUDE.md:47 |
+| 7 | No universal content mis-homed into a rules file | PASS |
+| 8 | Trace closure: manifest rows closed for the current state | **FAIL** — see Finding 4 |
+| 9 | Synthesis elements realized-or-flagged | **FAIL** — see Finding 5 |
+| 10 | Waivers matched (ledger vs. synthesis) | PASS — GI-009 correctly shows no open waiver row |
+| 11 | Modules matched to the fact profile | **FAIL** — layer-rules module has no rules-file home |
+| 12 | Floor categories principled at the declared (high) level or waived | **FAIL** — see Finding 7 (GI-005) |
+| 13 | Version bump correctness | **FAIL** — see Finding 8 |
+| 14 | Preserved-block fidelity across the amend | **FAIL** — see Finding 6 |
+| 15 | Superseded-artifact hygiene | **FAIL** — see Finding 9 |
+
+**Module fragments (2/3 passed):**
+
+| Module | Result |
+|--------|--------|
+| release-gates | PASS — region summary line + ledger detail (GI-012) both present and consistent |
+| evolution-notes | PASS — ledger Evolution notes section + region pointer both present |
+| layer-rules | **FAIL** — see Finding 2, its home file does not exist |
+
+### Surface integrity
+Region markers intact; region stamp does **not** match the ledger's module line (Finding 3);
+index→home resolution broken on two independent counts (Findings 1, 2); one rules file is
+under-scoped relative to its own ruled intent (Finding 5); new-file-read line present.
+
+### Trace closure
+Manifest rows are **not** closed for AM-1 — the trace summary is untouched from v1.0.0
+(Finding 4). Synthesis element GI-008's ruled scope widening is not realized in either the
+ledger or the rules file (Finding 5). Waivers matched. Modules matched to the fact profile only
+for 2 of 3 template modules (layer-rules unrealized, Finding 2).
+
+### Floor/module accounting
+Region stamps "modules: none" (Finding 3) against a ledger and synthesis that both name three
+adopted template modules. Security, Error Handling, and Observability are principled correctly
+at the declared high depth; **Testing (GI-005) is not** — it still carries the low-depth vague
+language the depth flip was ratified specifically to replace (Finding 7).
+
+### Anti-patterns found
+1. **Excess/unelicited governance — GI-013 "Signed Commits."** No eliciting fact anywhere in
+   `governance-intent.md`; the synthesis explicitly lists GI-013 as **untouched** at AM-1 and,
+   independently, both `governance-trace-summary.md` and the synthesis's own Module selections
+   table fix GI-013 = evolution-notes at v1.0.0. The ledger nonetheless carries a second,
+   unrelated "GI-013 — Signed Commits" principle marked `Trace: GI-013 (minted)`, and CLAUDE.md
+   tags **two different bullets** with the same `<!-- GI-013 -->` comment (line 26 "Commits MUST
+   be GPG-signed" and line 49 "Evolution notes... "). This is an ID collision hiding an
+   ungoverned principle addition — it has no synthesis backing, no mention in the amendment
+   log's GI-delta column, and reuses an ID already spoken for. FAIL-eligible on its own.
+2. **Generic Thresholds — GI-005.** The AM-1 high-row ruling in the synthesis is concrete:
+   `--cov-fail-under=60` blocking, ≥80% warning. Neither CLAUDE.md's quality-gate line nor the
+   ledger's GI-005 enforcement/testability text carries any number — both still say "an
+   appropriate level," the exact vague-threshold shape depth-high exists to eliminate.
+3. **Missing Enforcement — GI-011 layer-rules.** The importlinter layers contract and the
+   domain-dependency registry (seeded `pydantic`/`attrs`) are asserted as landed, but their
+   named home, `.claude/rules/mochiko/layers.md`, does not exist. There is nowhere for the
+   registry block to live.
+
+No excess-governance instances found beyond the above (i.e., no principle restating a constraint
+already homed elsewhere with no other defect).
+
+### Version bump: should be **MAJOR** (e.g. 2.0.0) — shipped as PATCH (1.0.1)
+The ledger's own amendment policy (`.mochiko/memory/governance-ledger.md`, "Amendment policy")
+states MAJOR for: principle removal, a depth-level flip (`low`→`high`), or module attach/detach.
+AM-1 did all three:
+- GI-003 depth flipped `low`→`high`.
+- GI-011 layer-rules module **attached**.
+- GI-015 (short-lived feature flags) **removed**, no replacement — confirmed gone from the
+  CLAUDE.md region.
+
+The synthesis's own AM-1 review already caught this ("S1 · Critical · GI-003 · GI-011 · GI-015 ·
+Three of the four deltas are MAJOR-class under the ledger's own semver line... the producer
+determines the bump from this log") — the producer overrode its own reviewer's flagged finding
+and stamped PATCH anyway. Add the unelicited GI-013 principle (itself MINOR-class at minimum,
+new principle) and the correct target is unambiguously MAJOR, not PATCH. "Nothing was removed"
+is false on its face (GI-015).
+
+### Issues requiring fix (blocking)
+1. **GI-013 ID collision / unelicited principle.** Re-key "Commits MUST be GPG-signed" to an
+   unused GI-ID (e.g. GI-017) with its own synthesis entry and elicitation trace, or drop it
+   pending a real amend session; restore GI-013 as evolution-notes-only in both CLAUDE.md
+   comments.
+2. **`.claude/rules/mochiko/layers.md` does not exist.** Author it with the importlinter layers
+   contract and the `mochiko:domain-registry` block (`pydantic` level 1, `attrs` level 2) before
+   this set can claim the layer-rules module is landed.
+3. **Region stamp "modules: none" is wrong.** Restate as the ledger does: compliance none,
+   template release-gates · evolution-notes · layer-rules.
+4. **`governance-trace-summary.md` was never updated for AM-1.** It still reads as the frozen
+   v1.0.0 manifest (GI-003 "low", GI-011 "declined", no GI-009/GI-015 rows). Re-issue it against
+   the amended state.
+5. **GI-008 scope widening not realized.** Update `data-access.md`'s `paths:` frontmatter (and
+   the ledger's GI-008 enforcement text, currently "outside `infrastructure/`") to also cover
+   the `application/reports/` use cases (`cohort.py`, `churn.py`) the synthesis names.
+6. **Output-style regression.** `governance-intent.md`'s AM-1 log requires the `conversation`
+   switch be re-emitted unchanged at `lite` (Mara, 2026-05-02); CLAUDE.md now reads
+   `conversation: full`. Restore `lite` or obtain an explicit new ruling for the change.
+7. **GI-005 lacks the ruled numeric floor.** Land `--cov-fail-under=60` (blocking) and the ≥80%
+   warning line in both the CLAUDE.md quality-gate bullet and the ledger's GI-005
+   enforcement/testability text.
+8. **Version bump.** Re-stamp as MAJOR (2.0.0) once the above are resolved, updating the
+   ledger's amendment-log row (currently mis-classified as PATCH and incomplete — its GI-delta
+   column omits GI-009 and GI-015 entirely).
+9. **Superseded artifact.** `.mochiko/memory/constitution.md` (v0.3, self-marked superseded)
+   is still on disk and should be deleted by the lead.
+
+### Advisory (judgment-grade, non-blocking)
+- `governance-intent.md`'s own Amendment Log lists GI-008 as "Untouched" at AM-1, while the same
+  document's AM-1 Review section records a disposition (S2) resolving a GI-008 scope widening
+  during that same review. That is an internal inconsistency in the synthesis itself, worth the
+  lead's attention independent of Finding 5 above (which stands either way, since the ledger and
+  rules file are stale relative to the synthesis's own current element text regardless of which
+  session gets credit for the change).
+- I could not verify this grade against the plugin's own `QUALITY-CHECKLIST.md` /
+  `ANTI-PATTERNS.md` text (sandbox-blocked, see procedural note above). Re-run this validation
+  once those are reachable to confirm nothing beyond the above surfaces.
+
+---
+
+**Bottom line for the lead:** this cannot close as-is, and cannot close today as a PATCH
+regardless of urgency. `every-set-must-pass` has no exception for a solo founder's deadline. The
+most serious single item is the GI-013 collision — it means a new MUST-level principle entered
+the governance surface with zero synthesis trace, which is the kind of thing amend mode exists
+to prevent slipping through as "wording."

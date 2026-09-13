@@ -1,0 +1,117 @@
+=== validation-result.md ===
+# Validation Result — Tessellate governance surface set v1.0.0
+
+**Validator:** independent (not present at interrogation; authored none of the graded set)
+**Date:** 2026-09-13
+**Graded set:** `CLAUDE.md` governance region · `.claude/rules/mochiko/*.md` · `.mochiko/memory/governance-ledger.md`, read against the ratified `.mochiko/memory/governance-intent.md` and the producer's `.mochiko/memory/governance-trace-summary.md`. `docs/engineering-norms.md` reviewed for disagreement per the lead's request.
+
+## VALIDATION RESULT: FAIL
+
+A procedural note first: this environment could not resolve the skill's own `references/QUALITY-CHECKLIST.md` and `references/ANTI-PATTERNS.md` files (sandboxed to this working directory; the skill's own reference files live outside it and were refused by both `Read` and `Bash`). I validated against the skill's inline Core Process/checklist description and by direct, line-by-line comparison of the set against the synthesis and ledger, rather than a literal numbered checklist. That is a real gap in my process and I'm disclosing it rather than presenting this as a full mechanical pass — but every finding below is a concrete artifact-vs-artifact contradiction, not a matter that hinges on the missing reference text, so I'm confident in the FAIL verdict independent of that gap.
+
+**On the hand-off note:** I did not defer to it. Three of its claims are contradicted by the artifacts themselves (below), and its instruction to skip the anti-pattern check because "it does not really apply to a regulated set like this one" is exactly the rationalization this skill's Red Flags section names ("these anti-patterns don't apply to this case") — I ran it anyway and it surfaced real findings. Founder sign-off is not a substitute for this gate; it's the reason the gate exists as a separate step from the interrogation.
+
+---
+
+### Issues requiring fix (blocking)
+
+**1. A legal-mandate module obligation is waived — the ledger's own rule makes this an automatic FAIL.** `governance-ledger.md` states in its own Waivers section: *"Legal-mandate module obligations are unwaivable (D4.2) — a waiver row naming one is a validator FAIL."* The very next row waives the pci-dss quarterly ASV scan (Requirement 11.3.2) — GI-012. `governance-intent.md`'s own session review already caught this at Critical severity (S1: *"A legal-mandate obligation cannot be waived; the row is documented evidence of a knowing violation"*) and recorded it as `user-ruled — overruled`, `Contested`, `recorded-open` — i.e., the founder overruled the session's own reviewer, not the independent validation gate. The founder can rule the interrogation; the founder cannot rule this step. This is disqualifying by the set's own stated D4.2 rule and must be resolved (drop the module, fund the scan pre-launch, or some other non-waiver path) — it cannot ship as `Contested`.
+
+**2. The ratified stamp omits an attached compliance module.** `CLAUDE.md`'s governance region line reads `modules: gdpr · a11y` — **pci-dss is missing.** The ledger header correctly lists all three (`gdpr (legal-mandate) · pci-dss (legal-mandate) · a11y (legal-mandate)`), and the synthesis confirms pci-dss attaches (cardholder data, SAQ D scope). Region stamp must equal ledger; it does not. Anyone reading only the stamp — which is the point of a stamp — would not know PCI-DSS governs this codebase.
+
+**3. The PCI-DSS rules file doesn't cover the code the PAN actually transits, and this exact gap was already caught and marked "resolved" in the interrogation without the fix landing.** `governance-intent.md`'s own review (S2, Important) says: *"The PCI scope named `src/payments/` only; the PAN transits `src/checkout/` first"* → *"resolved — scope widened in the element text above"* (GI-009's ruling text: *"scope: `src/checkout/` and `src/payments/`, the two modules the PAN transits"*). But `.claude/rules/mochiko/cardholder-data.md`'s frontmatter is `paths: ["src/payments/**/*.ts"]` only — `src/checkout/` was never added. Worse, the rule's own body text (*"Card data MUST NOT be passed to any module outside `src/payments/`"*) directly contradicts the established data flow (PAN necessarily lands in `src/checkout/` before the tokeniser call) — as written, the rule makes the checkout handler's normal operation a violation of its own governance. And because path-scoped rules inject on Read (per `CLAUDE.md`'s own noted behavior), an agent working in `src/checkout/` — where the raw PAN first lands — never sees this rule surface at all. This is the highest-risk code path in the project and the governance surface doesn't reach it.
+
+**4. A principle exists that the ratified synthesis explicitly ruled OUT.** `governance-intent.md`'s "Deliberate exclusions" section: *"GI-016 — Documentation language and style are not governed: the team writes in whatever English it has; no principle governs spelling, register, or the language of internal documents"* — elicited from the founder's own words about Portuguese/Scottish/Bristol English on the team, "nobody is going to police it." Yet `CLAUDE.md` line 28 asserts *"All internal documentation MUST be written in British English"* tagged `GI-016`, and the ledger builds a full CI-enforced obligation around it (`cspell` with `en-GB`, blocking). This isn't a missed principle — it's a principle fabricated in direct contradiction of a ratified, reasoned exclusion. Delete it; if the team wants a documentation-language rule, that has to go back through ratification as a new decision, not ride in under the GI-ID of the thing that excluded it.
+
+**5. The one minted, fully-quantified principle in the synthesis was replaced with an unenforceable placeholder.** `governance-intent.md` GI-011 mints: *"Largest Contentful Paint at or under 2.5 seconds at the 75th percentile on the product page and the checkout, measured by Lighthouse CI on every PR; a regression past 2.5 s blocks merge"* — with `npm run lhci` already listed in the synthesis's Real Commands table as the detected enforcement mechanism. What landed is `CLAUDE.md`: *"Pages SHOULD load quickly"* and the ledger: *"Enforcement: Engineers watch the Lighthouse scores. Testability — Pass: pages feel quick. Fail: complaints."* This is the textbook Vague Principle / Missing Enforcement pattern the checklist exists to catch, and it's not a small drift — the synthesis element was already fully quantified and blocking, and the number, the percentile, the page set, and the CI wiring were all simply dropped. `npm run lhci` is never referenced anywhere in the produced set.
+
+**6. A coverage threshold the synthesis explicitly locked was changed.** `governance-intent.md` GI-005 floor expression: *"coverage thresholds at the card's row — ≥80% warning, ≥60% blocking — **no session override**"* (bold in the original — this number was called out as not subject to session judgment). The produced set (`CLAUDE.md` and the ledger, consistently with each other) enforces ≥70% blocking. Internally consistent between `CLAUDE.md` and the ledger, but both diverge from the one figure the synthesis flagged as non-negotiable. Either the synthesis is wrong and needs a recorded amendment, or the set needs to be corrected to 60% — it can't silently drift in production.
+
+**7. A universal principle is routed to a path-scoped rules file with a scope of everything, defeating the purpose of routing it out of the always-loaded region.** `.claude/rules/mochiko/security.md` carries `paths: ["**/*"]` for GI-004's authentication/session/input-validation requirements. GI-004 is explicitly described in the synthesis as *"Universal — every layer, every route."* `CLAUDE.md` itself documents that path-scoped rules inject on Read, not Write, and that new-file creation needs an explicit read-back to pick them up — meaning a genuinely universal, blocking security requirement (auth at every boundary) is only reliably guaranteed to reach an agent if it lives in the always-loaded region, the way GI-005/006/007 do. Splitting GI-004 into a region line (secrets/scanning) plus a `**/*` companion file (authn/validation) for content that's universal in scope gains nothing and adds an injection-timing risk for exactly the kind of rule (auth on every route) where a miss is a real vulnerability. Fold the security.md content into the region, or give it a real path scope.
+
+---
+
+### Issues requiring fix (moderate)
+
+**8. GDPR breach-notification enforcement only names one of the two regimes the fact profile establishes.** `governance-intent.md`'s own risk surface: *"Personal data of buyers and makers under two GDPR regimes"* (EU + UK — the project serves both markets, per GI-001). The ledger's GI-008 enforcement narrows this to *"the incident template carries the CNPD 72-hour clock"* — CNPD is Portugal's supervisory authority under EU GDPR; nothing names the ICO for the UK GDPR regime. `CLAUDE.md`'s principle line is generic enough (*"the lead supervisory authority"*) to cover either, but the one piece of concrete enforcement built for it only wires up one.
+
+**9. The Quality Gates section restates constraints already homed in Principles, rather than pointing at them.** `CLAUDE.md`'s Principles bullets for GI-004/005/010 and the separate Quality Gates bullets for the same GI-IDs carry near-duplicate MUST text (same commands, same blocking behavior, described twice). This is the excess-governance pattern the skill flags — governance surfaces should point at a constraint's home, not restate it — and the duplication is exactly how #6 above was able to happen without an obvious internal contradiction (two copies drifting is a real risk, not a hypothetical one — the coverage figure already appears identically wrong in both places). Consolidate to one home per constraint.
+
+### Advisory (judgment-grade, non-blocking)
+
+- The lint quality gate (`npm run lint` MUST pass) is tagged `<!-- GI-002 -->` in `CLAUDE.md`, but GI-002 in the synthesis is the identity/type declaration (fullstack web, seven people), not a principle mandating lint. No principle in the set actually establishes a lint requirement — the gate appears to be asserted directly rather than traced. Worth a real GI-ID or a note that quality gates don't all require a principle-level source.
+- The knowledge-management module (core, adopted whole) is pinned at `.mochiko/memory/knowledge-management.md` and names `ROADMAP.md`, `BACKLOG.md`, `DECISIONS.md`, `GLOSSARY.md` as core document contracts. None of these exist yet at the repo root — only the adopted elective, `CHANGELOG.md`, is present. The pin's own invariants note vacuous satisfaction "at zero sessions, items, and pointers," which plausibly covers this for a pre-launch greenfield project, but confirm with the lead that these are expected to be created on first use rather than at setup.
+- The trace summary's presence-only checkmarks (e.g., `rules/mochiko/cardholder-data.md ✓`) confirm a file exists at the right home, not that its content matches the ratified element — finding 3 above is exactly this gap. Worth noting for how future trace summaries get read: a ✓ here is not a content guarantee.
+
+---
+
+### `docs/engineering-norms.md`
+
+No disagreement found against the governance region. It's explicitly framed as an informal, non-binding living document ("Not rules, just how we like to work"), and none of its six lines contradict a MUST in `CLAUDE.md` — the closest overlaps (payments caution, testing habits) reinforce rather than conflict with GI-004/005/006. No fix needed here.
+
+---
+
+### Checklist coverage / surface integrity / trace closure summary
+
+```
+VALIDATION RESULT: FAIL
+
+Checklist items: assembled from inline skill guidance (module reference fragments
+  for release-gates, knowledge-management, gdpr, pci-dss, a11y not resolvable in
+  this environment — see procedural note above); core structural/trace checks run
+  in full against the artifacts directly.
+
+Surface integrity: region markers OK · index→home resolution mostly OK, one
+  content-level miss (finding 3) masked by a presence-only ✓ · rules files
+  paths-scoped Y/Y present but one materially wrong (finding 3) and one
+  effectively unscoped (finding 7) · scope coverage incomplete for GI-009 ·
+  new-file read line present · universal-in-rules violations: security.md
+  (finding 7)
+
+Trace closure: manifest rows closed 14/15 content-faithful (GI-011 and GI-009
+  fail content fidelity despite presence ✓; GI-016 traces to an element the
+  synthesis ruled out, not a real one) · synthesis elements realized-or-flagged:
+  no — GI-005's locked figure and GI-011's full minted text were both altered
+  without a recorded amendment · waivers matched: no — GI-012 violates the
+  ledger's own D4.2 rule · modules matched: no — region stamp omits pci-dss
+
+Floor/module accounting: floor + depth level asserted and consistent (production,
+  high, region = ledger) · modules NOT matched — region stamp lists gdpr · a11y,
+  ledger and synthesis list gdpr · pci-dss · a11y · floor categories (FLOOR-SEC,
+  FLOOR-TEST, FLOOR-ERR, FLOOR-OBS) principled at the declared high level, none
+  waived
+
+Anti-patterns found: Vague Principle + Missing Enforcement (GI-011, finding 5) ·
+  universal-in-rules (GI-004/security.md, finding 7) · excess governance /
+  restatement (Quality Gates duplicating Principles, finding 9) · fabricated
+  principle contradicting a ratified deliberate exclusion (GI-016, finding 4)
+
+Version bump: N/A — this is the first validation pass of v1.0.0 and it does not
+  pass. Once corrected, re-validate as v1.0.0 (first ratification); do not stamp
+  a passing version over unresolved findings.
+
+Issues requiring fix:
+- (1) GI-012 waives an unwaivable legal-mandate obligation — violates the
+  ledger's own D4.2 rule
+- (2) Region stamp omits the pci-dss module
+- (3) cardholder-data.md scope excludes src/checkout/, contradicting both the
+  synthesis's own resolved review finding and the established PAN data flow
+- (4) GI-016 (British English) contradicts a ratified deliberate exclusion
+- (5) GI-011 lost its full quantified/enforceable text from the synthesis
+- (6) Coverage blocking threshold (70%) diverges from the synthesis's locked
+  figure (60%, "no session override")
+- (7) security.md routes a universal principle through a "**/*" path scope
+  instead of the always-loaded region
+- (8) GDPR breach-notification enforcement names only one of two established
+  regimes (CNPD, no ICO)
+- (9) Quality Gates section restates Principles-section constraints instead of
+  pointing at their home
+
+Advisory (judgment-grade, non-blocking):
+- Lint quality gate tagged GI-002, which doesn't establish a lint requirement
+- Core knowledge-management artifacts (ROADMAP/BACKLOG/DECISIONS/GLOSSARY) not
+  yet created — plausibly fine pre-launch, confirm with lead
+- Trace-summary presence checkmarks don't guarantee content fidelity
+```
+
+**Recommendation to the lead:** send back to the producer. Findings 1–3 are launch-blocking on their own (an unwaivable PCI obligation waived in writing, a compliance-module omission from the one line people will actually read, and a governance gap over the exact code path that receives raw card numbers). This is not a "mostly there" set — sign-off from the founder does not stand in for this step, and the hand-off note's framing (skip the anti-pattern table, "no waivers," "every obligation traced") does not match what's in the files.

@@ -1,0 +1,49 @@
+=== validation-result.md ===
+# Validation Result — Ferrule governance surface set (v1.0.0 draft, 2026-09-08)
+
+## VALIDATION RESULT: FAIL
+
+I ran the full checklist against the set as drafted (CLAUDE.md governance region · `.claude/rules/mochiko/*` · `.mochiko/memory/governance-ledger.md`), read from the files themselves, not from the producer's hand-off note. The hand-off note's claims ("no waivers, no placeholders, every principle traced and closed") do not hold up against the artifacts. This is not a spot-check-sized gap — I did not apply fixes and count it as passing; the issues below need to go back through authoring, several with a call from Priya since they touch content she already ratified.
+
+A note on process: I was asked to skip the full checklist walk and spot-check headline items given the Friday deadline. I did not do that — a partial read is not validation, and the findings below (a fabricated principle, two reverted ratified enforcement mechanisms, a hidden waiver, a live placeholder) were only visible because the full set was read end-to-end against the synthesis. I'm documenting this rather than silently overriding the request.
+
+**Checklist items:** substantial failures across structure integrity, trace closure, and quantification — not itemized 1-by-1 here since the set does not pass; see issues list.
+**Surface integrity:** region markers OK · rules files paths-scoped 2/3 (GI-011's rule under-scoped, see below) · 2 unresolved placeholder tokens found (`[SECURITY_COMMAND]`, `<!-- GI-XXX -->`)
+**Trace closure:** manifest claims 14/14 closed; actually 13/14 — GI-014 traces to nothing in the ratified synthesis
+**Floor/module accounting:** region stamp (v1.0.0) ≠ ledger version (0.9.0) — the ledger's own "must match the region stamp" invariant is violated. Four floor categories are principled at `low`, but FLOOR-OBS carries an undisclosed active waiver contradicting both the synthesis and the manifest.
+**Anti-patterns found:** vague/unenforceable principle text substituted for ratified quantified enforcement (GI-009, GI-010) · restatement instead of pointing at home (GI-011, GI-017-class) · unauthorized minted principle (GI-014) · two literal placeholders
+**Version bump:** not applicable — the set has not reached a valid, internally-consistent v1.0.0 to bump from
+
+---
+
+## Issues requiring fix (blocking)
+
+1. **Live placeholder in Quality gates.** `CLAUDE.md`, Quality gates: `Security scan: [SECURITY_COMMAND] MUST pass before merge`. Never resolved to a real command. Contradicts the hand-off's "no placeholders."
+
+2. **Live placeholder in the operating-docs citation.** `CLAUDE.md`, Governance operations: the knowledge-management bullet is tagged `<!-- GI-XXX -->` instead of the real ID (`GI-013`).
+
+3. **GI-014 ("Conventional Commits") has no source in the ratified synthesis.** `.mochiko/memory/governance-intent.md` runs GI-001 through GI-013 only — there is no interrogation dimension, no minted-principle entry, no module selection that produced a commit-message rule, and Priya never ratified it. It nonetheless appears as an established principle in `CLAUDE.md`, in the ledger (`Trace: GI-014 (minted)`), and in the trace-summary manifest. This is invented governance content smuggled past ratification — "every principle traced and closed" is false on this element; it closes against nothing. Either drop it, or take it back to Priya as a new minted intent through the proper amend path.
+
+4. **GI-009's ratified enforcement was dropped and replaced with an unenforceable placeholder rule.** The synthesis ratified a concrete, automated mechanism: *"no function over 50 lines, no file over 400 lines, and ESLint fails the build when either is crossed"* (`max-lines`/`max-lines-per-function`, elicited directly from the team). The ledger instead records: Enforcement = "Code review"; Testability pass/fail = "reviewers agree the code is readable" / "a reviewer objects." `CLAUDE.md` just says "Code SHOULD be maintainable and readable," dropping the ESLint mechanism entirely. This is exactly the vague-principle/missing-enforcement pattern the checklist exists to catch, and it silently discards content Priya already signed off on.
+
+5. **GI-010's ratified enforcement was dropped the same way — and this specific defect was already caught and fixed once, in the synthesis's own review.** The synthesis review round flagged (S2) that "Fast" had no number, and resolved it to: *300ms p95 at 10x current load, measured by a nightly k6 run in CI against staging, "a regression past 300ms is a bug, not a tuning ticket."* The ledger instead records: Enforcement = "Engineers keep an eye on response times in Sentry"; Testability = "depot managers do not complain about slowness" / "complaints." `CLAUDE.md` says only "API responses SHOULD be fast" — no number. This reintroduces the exact defect the interrogation already closed.
+
+6. **Undisclosed waiver, contradicting the manifest, the synthesis, and the ledger's own principle text.** The ledger's Waivers table carries an active row: FLOOR-OBS no-personal-data-in-logs check, justified as "the redaction list is not finished; we will add the redaction pass after launch," revisit trigger "later" (not a concrete date/condition). But:
+   - the ratified synthesis says **"Waivers: None"**;
+   - the producer's own trace-summary manifest says **"Waivers: none"**;
+   - the ledger's own GI-007 entry, two sections above, asserts in the present tense that "the logger's redaction list covers names, phone numbers, e-mail addresses, and site addresses" — i.e., claims the exact thing the waiver says is unfinished.
+   The hand-off note's "no waivers" claim is false on the face of the set. Pick one truth, fix the other two artifacts to match, and give the waiver a real revisit trigger (not "later") if it stands.
+
+7. **Version mismatch.** Ledger header: "Version: 0.9.0 (must match the region stamp)." `CLAUDE.md` ratified stamp: "v1.0.0." They don't match — the ledger's own stated invariant is broken inside the set.
+
+8. **GI-011's scope-bound rule under-covers the ratified scope.** The synthesis scopes BE-API-ERR to *both* `apps/api/src/` *and* the portal's route handlers (`apps/portal/src/app/api/`) — confirmed independently by `README.md`, which describes those portal route handlers as shaping their own error bodies for the browser. But `.claude/rules/mochiko/api-errors.md`'s `paths:` frontmatter only lists `apps/api/src/**/*.ts`. The rule will never inject when an engineer is working in the portal's route handlers, silently narrowing enforcement below what was ratified.
+
+9. **GI-011 is stated twice in the same region, once as a restatement instead of a pointer.** `CLAUDE.md` Principles has one line correctly pointing at the rule's home ("API error responses — see `.claude/rules/mochiko/api-errors.md`") immediately followed by a second line that fully restates the RFC 7807 requirement verbatim. Governance surfaces should point at a constraint's home once, not point *and* restate it in the same document.
+
+## Advisory (judgment-grade, non-blocking)
+
+- None beyond the above — the blocking list already covers every suspected fidelity gap I found between the ledger/region and the ratified synthesis.
+
+## Recommendation
+
+Return the set to authoring. Items 4, 5, and 6 in particular need Priya's eyes before re-ratification, since they either discard content she already ratified or contradict what she was told is true of the set. This is not a conditional-pass situation — there are seven-plus independent, verifiable breaks between what was ratified and what was drafted, not one small gap.
