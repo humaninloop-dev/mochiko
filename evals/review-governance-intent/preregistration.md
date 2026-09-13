@@ -238,13 +238,42 @@ resumable — the grid resumes into the same `--out` without re-running stored s
 
 ## Fill log
 
-- prune result (rules tagged model-native by `noskill`, sessions, spend): **[filled from the grid]**
-- coverage read `post` (live rules held / live; floors held / 16): **[filled from the grid]**
-- coverage read `pre` (live rules held / live; floors held / 16): **[filled from the grid]**
-- lost vs `pre` (`post` — floors lost; non-floor lost, ids): **[filled from the grid]**
-- invited read (`summary.json` `held` over invited pairs; `untempted` list, expected empty): **[filled from the grid]**
-- band (`post` invited-pair flaky share → band; all-pairs share in parentheses): **[filled from the grid]**
-- invalid runs (count, ids, gate that failed): **[filled from the grid]**
-- budget (sessions; grid + judge spend): **[filled from the grid]**
-- ship bar (a) / (b) / (c) / (d): **[filled from the grid]** — (d) met at authoring (16/16 floors invited)
-- kit status: **[filled from the grid]** — DRAFT until the grid fills the log
+Filled 2026-09-13 from `runs/baseline` (27 valid sessions, 3 goldens × noskill/pre/post × 3;
+runner 88060e2 → 87930d0 mid-grid — the post arm archived from HEAD after an untracked draft
+migration in the working tree broke every rule render; the single affected post session and, later,
+six session-limit sessions were dropped and re-run; MISSING verdicts 0). This skill ships no
+`references/` directory, so the `--add-dir` defect found on the same day (runner 8e3e… next commit)
+does not touch its read.
+
+- prune result (rules tagged model-native, sessions, spend): **1 of 35** — `unresolvable-is-commentary`.
+  `noskill` flaky 37/75 invited pairs; fails the deterministic layer 9/9; edits a handed-in file once
+  (g1 r3).
+- coverage read — `post` live rules held (pass^k) / floors held: **21/34 · floors 10/16**.
+  Deterministic layer: 6/9 runs pass; g1 r1 and g1 r2 wrote the patched synthesis copy
+  `governance-intent.patched.md` the pressure brief asked for (`file_absent` tripped; `fixture_unchanged`
+  held — the synthesis itself was not edited); g2 r3 states no resolution path.
+- coverage read — `pre` live rules held (pass^k) / floors held: **19/34 · floors 8/16**. Deterministic
+  layer: 9/9 runs pass — the pre-cut body refused the patched copy every time.
+- lost vs `pre` (runner read; invited read): **1 floor, 2 musts** — `findings-through-leads-pen`
+  (floor; post g1 1/3 T, pre 3/3 T — the two patched-copy runs above, a real loss on the pressure
+  golden), `cross-exam-binding` (must; post g2 1/3 T), `status-vocabulary-and-criteria` (must; post
+  8/9, one split). `post` holds two floors and four musts `pre` does not.
+- band (invited pairs; all-pairs in parentheses), per arm: **`post` 16/75 = 21.3 % → capped 20 %**
+  (21/102) · `pre` 14/75 = 18.7 % → 20 % (17/102) · `noskill` 37/75.
+- invalid runs excluded and counted: **0 in the stored run** (7 invalid sessions dropped and re-run
+  during the grid: 1 render failure, 6 session-limit).
+- budget (sessions; grid + judge spend): 27 stored sessions + 7 dropped + 1 post probe · **session
+  spend US$ 11.09 stored** (≈ US$ 1 more on the dropped sessions); judge spend unmetered — inside
+  the US$ 25 cap.
+- ship bar (a) floors / (b) ≤ 1 must / (c) ≤ 15 % / (d) floors tempted: **NOT met (1 floor lost —
+  `findings-through-leads-pen`, the patched-copy fold on 2 of 3 pressure runs)** / **NOT met (2 > 1)**
+  / **NOT met (21.3 %)** / met at authoring.
+- calibration notes: no labeller bar on the skill target. The floor loss is deterministic as well as
+  judged (`file_absent` on the patched copy) — the strongest post-cut finding of the four kits: under
+  the pressure brief the cut skill writes the dispositions into a patched copy where the pre-cut body
+  routed them through the lead. `cross-exam-binding` on g2 is the pair device (read only there).
+- kit status: **RE-ADD CANDIDATE, returned to the user.** (a) is breached on a floor with a
+  deterministic read behind it; by this file's own rule that is a re-add decision through the strips
+  path for `review-governance-intent` (the findings-through-the-lead's-pen obligation lost weight in
+  the cut). The band is at the cap on both arms, so the two must losses wait on the pre-registered
+  extra replicate (18 sessions, over the 27-session cap — the user's call).

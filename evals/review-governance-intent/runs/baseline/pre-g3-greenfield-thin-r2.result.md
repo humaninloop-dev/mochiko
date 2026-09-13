@@ -1,0 +1,8 @@
+I've written the review as `review.md` — the message to send to the lead. Summary of what it says:
+
+- **Verdict: critical-gaps**, not ready for the producer to start authoring yet.
+- Two blocking findings: the fact profile says GDPR doesn't attach while the risk surface calls the same data a "GDPR-reportable breach" — a direct internal contradiction, and the legal reasoning behind the exclusion looks wrong (GDPR scope turns on identifiable natural persons, not B2B/B2C); and FLOOR-ERR has a blank ruling cell marked Confident anyway.
+- One major finding on `CLAUDE.md`: its mandatory no-self-merge review rule traces to no ratified GI element and contradicts the recorded "no formal code review" team-reality fact — risky given Tomas is only around two days a week.
+- Medium/minor findings on thin rationale behind the terminal `high` depth-level call, an unjustified weekly architecture-review ritual, missing rationale on arbitrated deck cards, and scope drift between GI-011 ("tests for everything") and `CLAUDE.md`'s narrower draft.
+- Recommends Lena gets one more round (targeted follow-up, not a full re-session), then I run the verify pass solo before the producer is cleared to start.
+- Closes with my own opinion (flagged as personal, not part of the verdict): I'd have gone asymmetric — hard floor only where the money/legal risk actually lives, light-touch elsewhere — rather than uniform `high`.

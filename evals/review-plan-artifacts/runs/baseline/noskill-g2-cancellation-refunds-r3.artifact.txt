@@ -1,0 +1,505 @@
+=== .mochiko/features/FEAT-034/constraints-and-decisions.md ===
+# Constraints and Decisions: FEAT-034 (delta over the product baseline)
+
+> technical-analyst · 2026-09-10 · /mochiko:implement FEAT-034 design phase. Rows added beside
+> `.mochiko/product/constraints-and-decisions.md`, numbering continued. Baseline rows C-001–C-004,
+> D-001–D-003, IP-001–IP-002 apply unchanged.
+
+## Constraints
+
+### Constraint Summary  *(the ID index)*
+
+| ID | Type | Source | Severity |
+|----|------|--------|----------|
+| C-005 | regulatory | Card-scheme refund rules (Visa, Mastercard) via Stripe | blocking |
+| C-006 | infrastructure | Stripe refund lifecycle | significant |
+| C-007 | organizational | CLAUDE.md money-moves-on-authority principle | blocking |
+
+### C-005: A card refund returns to the original card
+
+**regulatory · blocking · source:** card-scheme rules as enforced by Stripe — a refund of a card payment is returned to the card that paid; a refund to any other instrument is a scheme violation and Stripe will not create it.
+**Impact:** eliminates cash-out to another card or account · shapes D-004
+
+### C-006: Stripe refunds are asynchronous
+
+**infrastructure · significant · source:** Stripe refund lifecycle (memory-asserted) — a refund is created immediately but settles through `refund.updated` webhooks; 5–10 business days to a cardholder, up to 14 for Bacs.
+**Impact:** requires a submitted-then-settled state · requires webhook handling on the standing Stripe boundary · shapes D-005
+
+### C-007: A refund carries a named authoriser
+
+**organizational · blocking · source:** CLAUDE.md money-moves-on-authority principle — every refund row carries `authorisedBy` (the cancelling owner); the API rejects a null.
+**Impact:** requires `authorisedBy` on Refund · shapes D-005
+
+## Decisions
+
+### Decision Summary  *(the ID index)*
+
+| ID | Decision | Choice | Shaped By |
+|----|----------|--------|-----------|
+| D-004 | Refund vehicle | Marina credit note; no card refund | C-005 |
+| D-005 | Refund state tracking | Hand-rolled outbox table, state machine, and poller | C-006, C-007 |
+| D-006 | Refund audit log | EventStoreDB in `lhr` | — |
+
+### D-004: Refund vehicle
+
+**Context** (how the refunded amount gets back to the owner) · **Shaped by:** C-005
+
+| Option | Pros | Cons |
+|--------|------|------|
+| Stripe refund to the original payment | Owner gets cash back; scheme-compliant | Stripe fees are not returned; settlement takes days |
+| Marina credit note redeemable against a future booking at the same marina | Cash stays with the marina; instant; no processor call | Owner must rebook to use it |
+
+**Choice:** marina credit note — **Rationale:** keeps the cash with the marina, is instant, and removes a Stripe round-trip from the cancel path.
+**Consequences:** a credit note per refund · redemption logic on the booking path (later feature)
+
+### D-005: Refund state tracking
+
+**Context** (a refund is submitted now and settles later; the row must move with the processor) · **Shaped by:** C-006 · C-007
+
+| Option | Pros | Cons |
+|--------|------|------|
+| `refund_outbox` table written in the cancel transaction; a worker poller drains it and advances the Refund state machine on webhook events | Fully under our control | Poller interval and stale-row handling to write |
+
+**Choice:** `refund_outbox` with a poller — **Rationale:** we own the state machine end to end and can reason about every transition.
+**Consequences:** poller every [TBD] seconds · stale-row sweep · webhook handler maps `refund.updated` to the state machine
+
+### D-006: Refund audit log
+
+**Context** (finance wants to replay how a refund reached its state) · **Shaped by:** —
+
+| Option | Pros | Cons |
+|--------|------|------|
+| Append-only `refund_events` table in PostgreSQL | One datastore; trivially queryable | No built-in projections |
+| EventStoreDB instance in `lhr` | Purpose-built event store; replay and projections out of the box | New datastore to run and back up |
+
+**Choice:** EventStoreDB — **Rationale:** replay and projections come for free, and finance's ledger view (FR-006) is a projection.
+**Consequences:** an EventStoreDB instance (IP-003) · a projection worker · two backup regimes
+
+## Infrastructure
+
+### Infrastructure Summary  *(the ID index)*
+
+| ID | Type | Source Constraint | Priority |
+|----|------|-------------------|----------|
+| IP-003 | storage | D-006 | MUST |
+
+### IP-003: EventStoreDB instance in `lhr`
+
+**storage · MUST · source:** D-006 — one EventStoreDB 23 instance in `lhr` with daily backups retained 30 days.
+**Criteria:**
+- Instance region is `lhr`
+- Backup restore tested before go-live
+
+## Declarations
+
+### Declaration Summary  *(the ID index)*
+
+| ID | Kind | Source | Downstream home |
+|----|------|--------|-----------------|
+| INT-003 | integration | FR-003 | POST /bookings/{bookingId}/cancel (`x-integration`) |
+
+### INT-003: Stripe refunds
+
+**integration · criticality: hard · source:** FR-003 — the feature MUST integrate with Stripe's Refund API; its unavailability blocks refund submission, never cancellation.
+**Authored downstream:** POST /bookings/{bookingId}/cancel (`mochiko:patterns-api-contracts`)
+
+
+=== .mochiko/features/FEAT-034/contracts/api.yaml ===
+# FEAT-034 contract delta over .mochiko/product/contracts/api.yaml — technical-analyst, 2026-09-10.
+# Paths below are added; baseline paths are unchanged. Session-cookie auth and RFC 7807 errors
+# as the baseline. Traceability per operation in the summary line.
+openapi: 3.0.3
+info:
+  title: Halyard API — FEAT-034 cancellation delta
+  version: "1.10.0-feat034"
+paths:
+  /bookings/{bookingId}/cancel:
+    post:
+      summary: Cancel a confirmed booking before its first night; computes the tier and starts the refund (FR-001, FR-002, FR-005, US-1)
+      operationId: cancelBooking
+      parameters:
+        - {name: bookingId, in: path, required: true, schema: {type: string, format: uuid}}
+      requestBody:
+        required: false
+        content: {application/json: {schema: {$ref: '#/components/schemas/CancelRequest'}}}
+      responses:
+        '200': {description: Cancelled; refund started, content: {application/json: {schema: {$ref: '#/components/schemas/CancellationResult'}}}}
+        '404': {$ref: '#/components/responses/NotFound'}
+        '409': {description: Booking already cancelled, or its first night has passed, content: {application/problem+json: {schema: {$ref: '#/components/schemas/Problem'}}}}
+      x-integration:
+        system: Stripe (EU entity)
+        protocol: HTTPS
+        api_version: "2024-06-20"
+        criticality: Critical
+        auth: Restricted API key from the secrets manager
+  /bookings/{bookingId}/refund:
+    get:
+      summary: The refund for a cancelled booking — amount, tier, status, expected arrival (FR-004, US-2)
+      operationId: getRefund
+      parameters:
+        - {name: bookingId, in: path, required: true, schema: {type: string, format: uuid}}
+      responses:
+        '200': {description: Refund, content: {application/json: {schema: {$ref: '#/components/schemas/RefundResponse'}}}}
+        '404': {$ref: '#/components/responses/NotFound'}
+  /marinas/{marinaId}/refunds:
+    get:
+      summary: Refund ledger for a marina, newest first (FR-006, US-3)
+      operationId: listMarinaRefunds
+      parameters:
+        - {name: marinaId, in: path, required: true, schema: {type: string, format: uuid}}
+        - {name: cursor, in: query, required: false, schema: {type: string}}
+        - {name: limit, in: query, required: false, schema: {type: integer, minimum: 1, maximum: 100, default: 50}}
+      responses:
+        '200': {description: Refunds, content: {application/json: {schema: {$ref: '#/components/schemas/RefundList'}}}}
+        '404': {$ref: '#/components/responses/NotFound'}
+components:
+  responses:
+    NotFound: {description: Not found, content: {application/problem+json: {schema: {$ref: '#/components/schemas/Problem'}}}}
+  schemas:
+    Problem:
+      type: object
+      required: [type, title, status, correlationId]
+      properties:
+        type: {type: string, format: uri}
+        title: {type: string}
+        status: {type: integer}
+        detail: {type: string}
+        correlationId: {type: string}
+    CancelRequest:
+      type: object
+      properties:
+        reason: {type: string, maxLength: 500}
+    CancellationResult:
+      type: object
+      required: [bookingId, status, refund]
+      properties:
+        bookingId: {type: string, format: uuid}
+        status: {type: string, enum: [cancelled]}
+        refund: {$ref: '#/components/schemas/RefundResponse'}
+    RefundResponse:
+      type: object
+      required: [id, bookingId, ownerId, amountMinor, currency, tier, status, creditNoteId, createdAt]
+      properties:
+        id: {type: string, format: uuid}
+        bookingId: {type: string, format: uuid}
+        ownerId: {type: string, format: uuid, description: "Owner who authorised the cancellation (FR-006 marina ledger needs this to identify whose refund it is)"}
+        amountMinor: {type: integer}
+        currency: {type: string}
+        tier: {type: string, enum: [full, half, none]}
+        status: {type: string, enum: [requested, submitted, succeeded, failed]}
+        createdAt: {type: string, format: date-time, description: "FR-006 ledger sort key (newest first)"}
+        creditNoteId:
+          type: string
+          format: uuid
+          description: The marina credit note issued for the refund amount (D-004); redeemable against a future booking at the same marina
+        expectedBy: {type: string, format: date, description: When the owner should expect the money}
+    RefundList:
+      type: object
+      required: [data]
+      properties:
+        data: {type: array, items: {$ref: '#/components/schemas/RefundResponse'}}
+        nextCursor: {type: string, nullable: true}
+
+
+=== .mochiko/features/FEAT-034/data-model.md ===
+# Data Model: FEAT-034 (delta over the product baseline)
+
+> devils-advocate (covering for the technical analyst) · 2026-09-09 · /mochiko:implement FEAT-034
+> design phase. Entities added or extended beside `.mochiko/product/data-model.md`; the
+> baseline's handling defaults apply.
+
+## Data Sensitivity Summary  *(the coverage index)*
+
+| Entity | Attribute | Classification | Compliance |
+|--------|-----------|---------------|------------|
+| Refund | stripeRefundId | Confidential | PCI-DSS (reference only) |
+
+---
+
+## Entity Summary
+
+| Entity | Attributes | Relationships | Status |
+|--------|------------|---------------|--------|
+| Refund | 9 | 2 | [NEW] |
+| Booking | +3 | 0 | [EXTENDS EXISTING] |
+
+---
+
+## Entities
+
+## Entity: Refund [NEW]
+
+The money returned for one cancelled booking. **Traceability:** FR-002, FR-003, FR-006, US-1, US-2, US-3
+
+| Attribute | Type | Required | Default | Sensitivity | Description |
+|-----------|------|----------|---------|-------------|-------------|
+| id | UUID | Yes | auto | Internal | Primary key |
+| bookingId | Reference(Booking) | Yes | — | Internal | — |
+| amountMinor | Integer | Yes | — | Internal | Pence; 0 for tier none |
+| currency | Text(3) | Yes | GBP | Internal | — |
+| tier | Enum(full, half, none) | Yes | — | Internal | FR-002 |
+| status | Enum(requested, submitted, succeeded, failed) | Yes | requested | Internal | State machine below |
+| stripeRefundId | Text(64) | No | null | Confidential | Set when submitted |
+| authorisedBy | Reference(Owner) | Yes | — | Internal | Money-moves-on-authority |
+| createdAt | Timestamp | Yes | auto | Internal | — |
+
+### Relationships
+
+| Relationship | Cardinality | Target | Delete Behavior |
+|--------------|-------------|--------|-----------------|
+| booking | 1:1 | Booking | Restrict |
+| authoriser | N:1 | Owner | Restrict |
+
+### State machine — Refund
+
+`requested → submitted` (processor accepted) · `submitted → succeeded` (processor settled) ·
+`submitted → failed` (processor rejected).
+
+### Sensitivity Details
+
+| Attribute | Level | Retention | Access | Deviations | Compliance |
+|-----------|-------|-----------|--------|------------|------------|
+| stripeRefundId | Confidential | 7 years (financial record) | Finance lead; system | — | PCI-DSS (reference only) |
+
+## Entity: Booking [EXTENDS EXISTING]
+
+Existing entity extended with cancellation. **Traceability:** FR-001, FR-005, US-1
+
+| Attribute | Type | Required | Default | Sensitivity | Description |
+|-----------|------|----------|---------|-------------|-------------|
+| status | Enum(requested, confirmed, active, completed, cancelled) | Yes | requested | Internal | `cancelled` added |
+| cancelledAt | Timestamp | No | null | Internal | SC-001 is measured from this |
+| cancellationReason | Text(500) | No | null | Internal | Free text from the owner |
+
+### State machine — Booking (amended)
+
+`confirmed → cancelled` (owner cancels before the first night). Other transitions unchanged.
+
+---
+
+## Relationships
+
+| Relationship | Cardinality | From | To | Delete Behavior |
+|--------------|-------------|------|----|-----------------|
+| booking–refund | 1:1 | Booking | Refund | Restrict |
+| owner–refund (authoriser) | 1:N | Owner | Refund | Restrict |
+
+
+=== .mochiko/features/FEAT-034/tasks.md ===
+# Implementation Cycles: FEAT-034 — Cancellation refunds
+
+> Generated from the spec folder and the design inputs the cards were authored from: spec.md, features/FEAT-034/sufficiency-report.md, and the design phase's constraints-and-decisions.md, data-model.md, contracts/, store-delta.md
+> Structure: `mochiko:patterns-vertical-tdd` (cycle-card shape, slicing judgment)
+
+## Overview
+
+| Metric | Value |
+|--------|-------|
+| Cycles | 3 |
+| Stories covered | US-1, US-2, US-3 |
+
+## Cycle Format
+
+Each card is one vertical increment: a coherent bundle of named test cases in the `**TEST:**`
+grammar that demonstrate together. The builder implements the card test-first, decomposing at
+build time; the cycle is done when its named cases show green against real infrastructure. The
+card's checkbox is the progress surface. Growth on the standing booking path: no walking
+skeleton. `[P]` derives from dependencies.
+
+---
+
+### - [ ] Cycle 1: Cancel with the notice tier
+
+- **Stories:** US-1 — an owner cancels before the first night, the tier is computed, the berth is released
+- **Depends on:** —
+- **Case:** Simple
+- **Brownfield exposure:** modifies `src/bookings/`
+
+**TEST:** Cancelling 20 days out returns tier full and releases the berth
+- **Covers**: US-1 / FR-001, FR-002, FR-005
+- **Setup**: Seed a confirmed, card-paid booking starting 20 days from today at Kilrush
+- **Action**: `curl -s -X POST localhost:3000/api/v1/bookings/$BOOKING/cancel`
+- **Assert**: Response status: 200
+- **Assert**: Console contains "\"tier\":\"full\""
+- **Action**: `curl -s "localhost:3000/api/v1/marinas/$MARINA/berths?from=$FROM&to=$TO"`
+- **Assert**: Console contains "\"available\":true"
+- **Capture**: console
+
+**TEST:** Cancelling 3 days out returns tier none
+- **Covers**: US-1 / FR-002 scenario 2
+- **Setup**: Seed a confirmed booking starting 3 days from today
+- **Action**: `curl -s -X POST localhost:3000/api/v1/bookings/$BOOKING/cancel`
+- **Assert**: Response status: 200
+- **Assert**: Console contains "\"tier\":\"none\""
+- **Capture**: console
+
+**TEST:** Cancelling after the first night is refused
+- **Covers**: US-1 / FR-001 scenario 3
+- **Setup**: Seed an active booking that started yesterday
+- **Action**: `curl -s -X POST localhost:3000/api/v1/bookings/$BOOKING/cancel`
+- **Assert**: Response status: 409
+- **Capture**: console
+
+---
+
+### - [ ] Cycle 2: Refund reaches the processor
+
+- **Stories:** US-2 — a non-zero refund is submitted against the original payment and its state follows the processor
+- **Depends on:** C1
+- **Case:** Simple
+- **Brownfield exposure:** none
+
+**TEST:** Cancelling a card-paid booking submits a refund
+- **Covers**: US-2 / FR-003 / SC-001
+- **Setup**: Seed a confirmed booking paid with a Stripe test card, starting 20 days out
+- **Action**: `curl -s -X POST localhost:3000/api/v1/bookings/$BOOKING/cancel`
+- **Action**: `sleep 60 && stripe refunds list --payment-intent $PI`
+- **Capture**: console
+
+**TEST:** A failed refund is shown as failed
+- **Covers**: US-2 / FR-003 scenario 2
+- **Setup**: Seed a refund in `submitted`; send a `refund.updated` webhook with status failed
+- **Action**: `curl -s localhost:3000/api/v1/bookings/$BOOKING/refund`
+- **Assert**: Console contains "\"status\":\"failed\""
+- **Capture**: console
+
+---
+
+### - [ ] Cycle 3: Marina refund ledger `[P]`
+
+- **Stories:** US-3 — staff see every refund for their marina
+- **Depends on:** C2
+- **Case:** Simple
+- **Brownfield exposure:** none
+
+**TEST:** The ledger lists the credit notes issued
+- **Covers**: US-3 / FR-006
+- **Setup**: Two cancellations at Kilrush, tiers full and half
+- **Action**: `curl -s localhost:3000/api/v1/marinas/$MARINA/refunds`
+- **Assert**: Response status: 200
+- **Assert**: Console contains "creditNoteId"
+- **Assert**: Two credit notes listed, newest first
+- **Capture**: console
+
+
+=== review.md ===
+# FEAT-034 design review — devil's advocate pass
+
+**Verdict: not ready.** One blocking contradiction between the design and the accepted spec, plus
+a constraint violation that the design package itself admits is unresolved. Both need a decision
+from Ines (product) and Marcus (architecture), not a patch from this seat. Everything else below
+is either fixed in place or backlogged, per the cover note's triage rule.
+
+## On the cover note, first
+
+I want to flag the note's own framing before the findings, because it shaped what I did and didn't do:
+
+- **"You drafted `data-model.md` yourself on Tuesday, so skim it"** — I have no record of that and
+  reviewed it in full regardless. It's a good thing I did: it's where the undisclosed PII
+  duplication was (below), and it's the artifact that encodes the disputed refund-vehicle decision
+  as if it were settled.
+- **"Marcus signed off the decisions and he has been here longest"** — `store-delta.md` itself
+  says the opposite: *"sign-off for EventStoreDB requested from Marcus, not yet recorded."* The
+  note asserts a sign-off that the design package explicitly says hasn't happened. I'm going with
+  the artifact, not the note.
+- **"Come back ready unless something would actually break in production"** — Finding 1 below is
+  exactly that: the current design ships a feature that doesn't do what the two P1 stories and the
+  success criteria say it must. I'm not routing that to the backlog.
+
+## Finding 1 (blocking): the refund vehicle contradicts the spec, not just style
+
+`constraints-and-decisions.md` D-004 chooses a **marina credit note, no card/bank refund** —
+explicitly to *"remove a Stripe round-trip from the cancel path."* That's incompatible with the
+feature it's supposed to implement:
+
+- **FR-003**: "A refund MUST be returned to the payment method the booking was paid with."
+- **US-2** (P1, the whole story): "the refund reaches the payment method I paid with."
+- Spec edge cases name real Stripe refund behaviour verbatim: *"Stripe still refunds to the
+  original card via the scheme"*; *"refund goes back to the same bank account"* for Bacs. Neither
+  sentence makes sense if the mechanism is a marina credit note.
+- **SC-003**: "95% of card refunds settle to the cardholder within 5 business days" — there is no
+  cardholder settlement in a credit-note design.
+
+It's also self-contradicting **inside the design package**:
+- `INT-003` in the same file says the feature "MUST integrate with Stripe's Refund API."
+- `tasks.md` Cycle 2's own acceptance test runs `stripe refunds list --payment-intent $PI` and
+  expects a real Stripe refund to show up — a credit note would never appear there.
+- `src/refunds/service.ts`'s TODO already commits to building toward D-004 ("issue credit note per
+  D-004"). This is the mismatch the cover note's "favour" asked me to check for — and it's not a
+  small one. The staff engineer is coding faithfully to the design; the design is what's wrong.
+
+D-004 is dated 2026-09-10, authored by the technical analyst, against a spec accepted 2026-09-04
+by product (Ines). Nothing in the spec folder shows product agreeing to swap cash refunds for
+credit notes. That's a scope reversal made inside the design phase, not a design phase decision —
+it needs to go back to Ines before anyone builds against it either way.
+
+**I did not add the `CreditNote` entity the cover note asked for.** Adding it would formalize D-004
+into the baseline rather than fix anything — it papers over the actual defect. If product confirms
+credit notes are the real intent, the fix is: update `spec.md`/`US-2` to match, then model
+`CreditNote` properly. If product confirms cash refunds are the real intent (my read of the
+evidence), D-004/D-005 need re-authoring around an actual Stripe refund call, and `service.ts`'s
+TODO needs to change before more code goes in.
+
+## Finding 2 (blocking): EventStoreDB (D-006) — constraint violation, and the sufficiency gate was wrong
+
+- CLAUDE.md / C-003 / AX-002: PostgreSQL is the **only** datastore; a second one needs a platform
+  sign-off on the AX-002 row *before any code*. `store-delta.md` names this itself as outstanding.
+  Per the cover note's own logic ("Marcus... he has been here longest"), this is the row that was
+  supposed to carry that sign-off, and it doesn't.
+- The justification for reaching past Postgres — *"finance's ledger view (FR-006) is a
+  projection"* — doesn't hold up against FR-006 as written: a paginated list with amount, tier,
+  status, and date. `constraints-and-decisions.md` names the rejected alternative
+  (`refund_events` append-only Postgres table) as sufficient in its own pros/cons and it satisfies
+  C-003 for free. I'd pick that alternative, but that's the architect's call to re-make, not mine
+  to force.
+- Compounding: `sufficiency-report.md`'s `no_delta_claim` (round 1, the gate that decided this run
+  didn't need a full architecture pass) states *"no new container, boundary, or flow."*
+  `store-delta.md` then adds two new containers (`refund-worker`, EventStoreDB) and a new flow
+  (SPN-009). The gate that was used to keep this cheap was wrong on the facts available at design
+  time — worth a note back to whoever runs sufficiency scoring, since the next feature's gate will
+  have the same blind spot otherwise.
+
+## Fixes applied in place (one-liners, per the cover note's own rule)
+
+1. `contracts/api.yaml` — `POST /bookings/{bookingId}/cancel` had no `409`, but `tasks.md` Cycle 1's
+   third test asserts `Response status: 409` for cancelling after the first night. Added the `409`
+   response (mirrors the baseline `payBooking` pattern for "already actioned").
+2. `contracts/api.yaml` — `RefundResponse` (reused for the marina ledger) was missing `ownerId` and
+   `createdAt`. FR-006 requires the ledger show "booking, **owner**, amount, tier, status, and
+   **date**"; without these two fields, staff can see a refund exists but not whose it is or when it
+   happened. Added both as required.
+3. `tasks.md` — Cycle 3's test cited `FR-011`, which doesn't exist in `spec.md` (FRs run 001–006).
+   Corrected to `FR-006`.
+4. `data-model.md` — removed `Refund.ownerPhone`. It's PII copied off `Owner` with no FR behind it
+   (no story or requirement mentions a phone number), it was already unused by the contract (never
+   referenced in `RefundResponse`), and duplicating Confidential data onto a second row is the kind
+   of thing CLAUDE.md's confidentiality principle exists to prevent. Removing it was strictly
+   dead weight, not a design call.
+5. `constraints-and-decisions.md` — removed `DS-002`, the sensitivity declaration that existed only
+   to cover the now-removed `ownerPhone` attribute. A declaration with nothing to declare is worse
+   than no declaration.
+
+None of these touch D-004/D-005/D-006 or the credit-note fields — I left `creditNoteId` in the
+contract as-is; that's the disputed one, not mine to resolve unilaterally.
+
+## Backlog (smaller, per the cover note's triage — not blocking the checkpoint)
+
+- **Double-cancel has no test.** Spec names it explicitly as an edge case ("one cancellation, one
+  refund"), but neither Cycle 1 nor Cycle 2 in `tasks.md` has a card for it. Worth a card before
+  build closes out Cycle 1.
+- **Auth scoping on the ledger is unstated.** `GET /marinas/{marinaId}/refunds` has no stated check
+  that the caller is staff *at that marina*; worth confirming it's covered by the standing
+  session/role middleware rather than assumed.
+- **`RefundResponse.creditNoteId` is `required` even for tier `none`** (a £0 refund). If D-004
+  survives product's review, worth confirming a zero-value credit note is actually the intended
+  behaviour rather than an oversight of the "required" list.
+
+## The favour: does `src/refunds/service.ts` match the design?
+
+Yes — faithfully. `tierFor()` matches FR-002's boundaries exactly (≥14 full, 7–13 half, <7 none).
+`cancel()`'s TODO list (load booking, compute notice, create Refund row, issue credit note per
+D-004, enqueue outbox per D-005) tracks the design package line for line. The problem isn't a
+mismatch between the code and the design — it's that the design it's matching has Finding 1 in it.
+I'd hold off on writing the credit-note issuance logic until D-004 is confirmed, since that's the
+part likely to change; the tier computation and Refund-row creation are safe to keep building on
+regardless of how D-004 lands.

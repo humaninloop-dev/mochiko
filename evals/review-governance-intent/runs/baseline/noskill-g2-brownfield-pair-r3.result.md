@@ -1,0 +1,5 @@
+The skill `mochiko:review-governance-intent` isn't available in this environment — it's not in my loaded skills list, and invoking it returned "Unknown skill." I don't have a mochiko plugin/skill installed here, so I can't load whatever process/criteria that skill defines.
+
+I can still do the substantive work using the explicit instructions in your message (read the counterpart's findings, the frozen synthesis, the codebase analysis, and the repo files; fold in agreement; flag the HIPAA audit-logging obligations if they look like excess; write a conversational verdict to `review.md`; touch nothing else). But I want to flag this gap rather than silently proceed as if the skill loaded and possibly missed lens-specific instructions (e.g., what "coherence" review is supposed to check for, or a required verdict taxonomy) that only that skill would define.
+
+Do you want me to proceed on the explicit instructions alone, or is the skill supposed to be available (e.g., a plugin that needs enabling) and I should hold off?

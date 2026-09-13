@@ -1,0 +1,310 @@
+=== review.md ===
+---
+report: review-plan-artifacts
+feature: FEAT-031
+seat: devils-advocate (completeness grader)
+role_note: independent of the tech-lead seat reviewing the same package for feasibility; no coordination occurred
+verdict: critical-gaps
+floor_readback: "11 floor rules pinned: author-grader · gap-list-scope · never-shrink · tier1-preassert · conformance-blocking · material-divergence-autofail · default-fail · letter-is-spirit · na-justified · critical-blocks · evidence-floor"
+strengths: "Cycle 1 and the join/leave/accept/decline contract surface are clean, vertically sliced, and correctly traced to US-1/US-2/US-3; the WaitlistEntry/Offer/Booking data model closes G-02 cleanly with correct cardinalities and delete behavior."
+---
+
+# Environment / tooling notes (read before the findings)
+
+- **Tier-1 pre-assert not run.** `scripts/check-artifacts.py` (the tier-1 pre-assert floor) is not
+  present in this workspace and the skill's own `references/` directory is outside this session's
+  sandboxed working directory (read permission was denied on both `ARTIFACT-CHECKLISTS.md` and
+  `ISSUE-TEMPLATES.md`, and `find`/`cat` against that path were blocked by the sandbox). Flagging
+  as N/A-with-justification per the `na-justified` floor rather than silently skipping it. All
+  checks below were done by direct manual read of the named artifacts against the sufficiency
+  report and the product baselines.
+- **Verdict-mapping assumption.** Without the `ISSUE-TEMPLATES.md` Verdict Criteria table, I used
+  the standard three-tier severity (Critical / Important / Minor) with the stated floors
+  (`critical-blocks`, `material-divergence-autofail`) to derive the verdict: any Critical finding
+  or a material-divergence trigger → `critical-gaps`; Important-only → `needs-revision`;
+  Minor-only → `ready`. Multiple Critical findings and an explicit material-divergence trigger are
+  both present below, so `critical-gaps` holds under any reasonable reading of that table.
+- **Evidence-floor conflict, disclosed.** `review-plan-artifacts.evidence-floor` calls for the
+  verdict and per-finding dispositions to land in the reviewed artifacts themselves. The dispatch
+  instructions for this run are explicit and more specific: write only `review.md`, never edit the
+  files handed to me. I followed the dispatch instructions and recorded everything here instead —
+  flagging the divergence so the lead knows dispositions are not mirrored into the artifacts.
+
+---
+
+# 1. Conformance — sufficiency report gap list (BLOCKING)
+
+| Gap | Verdict | Basis |
+|---|---|---|
+| G-01 contract-exposure (join/leave, accept/decline, **marina queue view**) | **NOT CLOSED** | See Finding C-2 |
+| G-02 data-exposure (WaitlistEntry, Offer, Booking touch) | Closed | `data-model.md` adds WaitlistEntry/Offer, extends Booking with `offerId`, correct cardinalities |
+| G-03 commodity-exposure (locking, hold-expiry scheduling) | **NOT CLOSED** (fails the adopt-first lens) | See Findings C-4, C-6 |
+| G-04 nfr-targets (SC-002 offer-issue latency) | **NOT CLOSED** | See Finding C-3 |
+
+Additionally, the package contains a **material divergence** the gap list never named — see
+Finding C-1. Per `material-divergence-autofail`, this alone overrides the count mapping and
+forces `critical-gaps` independent of the individual gap grades above.
+
+---
+
+# 2. Critical findings
+
+### C-1. Material divergence: an entire out-of-scope feature was designed and carded
+
+**Files:** `.mochiko/features/FEAT-031/contracts/api.yaml` (`GET /berths/{berthId}/availability-forecast`, `AvailabilityForecast` schema), `.mochiko/features/FEAT-031/data-model.md` (`Notification [NEW]`, traced to "FR-007"), `.mochiko/features/FEAT-031/tasks.md` (Cycle 4), `.mochiko/features/FEAT-031/design-disclosure.md` (forecast ladder row)
+
+None of G-01 through G-04 name a forecast feature. `.mochiko/specs/berth-waitlist/spec.md` defines
+only US-1–US-4 and FR-001–FR-006 — there is no US-5 and no FR-007/FR-009. Yet:
+- The contract delta adds `GET /berths/{berthId}/availability-forecast "(US-5)"`.
+- `data-model.md` adds a `Notification` entity traced to `FR-007`.
+- `tasks.md` Cycle 4 is titled "Availability forecast digest," cites `US-5` and `FR-009`, and its
+  only test is `npm test -- --grep forecast` (a suite re-run, not the required real-infrastructure
+  gate either).
+- `design-disclosure.md`'s ladder justifies the forecast endpoint as "marina ops asked for it at
+  kickoff" — a claim that appears nowhere in the spec or the sufficiency report.
+
+**Failure scenario:** a reviewer or the build seat trusts the citations, builds a whole endpoint,
+schema, entity, and cycle against fabricated requirement IDs, and ships work the spec never asked
+for while the two things the spec *did* ask for (see C-2, C-3) go missing.
+
+**Fix:** drop Cycle 4, the forecast endpoint/schema, and the `Notification` entity from this
+package entirely; if marina ops genuinely requested a forecast feature, it needs its own spec
+entry and its own sufficiency pass, not a smuggled-in cycle here.
+
+---
+
+### C-2. G-01 not closed: no contract or cycle coverage for the marina queue view (US-4/FR-006)
+
+**Files:** `.mochiko/features/FEAT-031/contracts/api.yaml`, `.mochiko/features/FEAT-031/tasks.md`
+
+G-01's named surface explicitly includes "marina queue view." The contract delta has exactly four
+real paths (join, leave, accept, decline) plus the out-of-scope forecast path from C-1 — there is
+no endpoint anywhere for marina staff to see the waitlist per berth class. `tasks.md`'s own
+Overview table states "Stories covered: US-1, US-2, US-3" — US-4 (P2) is not on the list, and no
+cycle card references it. This is a P2 story with zero card coverage, which the cycle-card check
+set requires ("every P1/P2 story on ≥1 card").
+
+**Failure scenario:** the build phase has no contract, no schema, and no test case to build
+against for US-4 — the feature ships without the one thing marina staff (the paying customer for
+FEAT-031's second stakeholder) explicitly asked for, and nothing in the package flags that it's
+missing.
+
+**Fix:** author a `GET` endpoint (e.g. `/marinas/{marinaId}/waitlist?berthClass=...`) returning
+entrant position, date range, vessel length, and open-offer status per FR-006/US-4, and add a
+cycle card with a real-infrastructure `**TEST:**` case for it.
+
+---
+
+### C-3. G-04 not closed: no NFR target recorded for SC-002
+
+**File:** `.mochiko/features/FEAT-031/constraints-and-decisions.md`
+
+The sufficiency report is explicit: "no concern row carries an offer-issue latency target... The
+design phase states the target on its row (in the no-delta amendment) so the build has a number
+to meet." The FEAT-031 constraints-and-decisions delta adds C-005/C-006/C-007, D-004/D-005,
+IP-003, and DS-002 — no NFR row for SC-002 (first offer within 60 s, p95) appears anywhere in the
+package.
+
+**Failure scenario:** the build has a `**TEST:**` case that checks 60 s informally (Cycle 2), but
+no durable concern-ledger row exists for ops to alert on once it's built — SC-002 quietly has no
+enforced target the way NFR-002 (payments) and NFR-003 (notifications) do today.
+
+**Fix:** add an NFR row (e.g. against a new or amended AX row) stating the p95 ≤ 60 s target from
+release-commit to `Offer.issuedAt`, with a measurement method, mirroring the AX-004/AX-007 pattern
+already in `.mochiko/product/architecture/concerns.md`.
+
+---
+
+### C-4. D-005 introduces a second datastore (Redis) in violation of C-003, on a false factual premise, with no sign-off
+
+**Files:** `.mochiko/features/FEAT-031/constraints-and-decisions.md` (D-005, IP-003), `.mochiko/product/constraints-and-decisions.md` (C-003, D-002), `.mochiko/product/architecture/concerns.md` (AX-002, AX-009)
+
+D-005 chooses "Redis key TTL with keyspace notifications" for hold expiry, and IP-003 provisions a
+new managed Redis instance in `lhr`. This directly contradicts:
+- **C-003** (blocking): "PostgreSQL is the only datastore... a second datastore needs a platform
+  sign-off recorded on AX-002 before any code." AX-002's own row states "Sign-offs recorded: none."
+- **CLAUDE.md**'s "One datastore" governance principle, ratified at production-floor depth.
+- The sufficiency report's own `no_delta_claim`: "no new container, boundary, or flow" — Redis is
+  precisely a new boundary, and no architecture-store delta was authored to introduce it.
+
+Worse, D-005's rationale is factually wrong: "Redis is already in the stack for sessions." Checking
+the actual baseline (`.mochiko/product/constraints-and-decisions.md` D-002): sessions are
+server-side, stored in a **PostgreSQL** table, chosen specifically over JWT. Redis is not in the
+stack anywhere today. This also contradicts AX-009, which already rules pg-boss as the mechanism
+for "scheduled and delayed jobs... no cron on the machines" — i.e., the exact "timed expiry"
+problem D-005 solves is already the province of a decided, built mechanism the design package
+chose to bypass without engaging it on its merits (the Options table gives pg-boss one dismissive
+line — "job table grows with open offers (small)" — against a Redis alternative justified by a
+premise that is false).
+
+**Failure scenario:** the build seat stands up a brand-new managed Redis instance because the
+design package told it Redis "adds no new infrastructure," discovering only at ops/security review
+(or a CI/governance gate keyed on AX-002) that this is an unsanctioned second datastore with no
+sign-off — a rework that should have been caught here.
+
+**Fix:** replace D-005 with a pg-boss delayed job per offer (already proposed as option 1, already
+transactional with the offer row, already the ruled mechanism per AX-009/D-001); if Redis is
+genuinely wanted, that requires a platform sign-off recorded on AX-002 *before* this design closes,
+not a decision that asserts one doesn't apply.
+
+---
+
+### C-5. Cycle 3's test oracle asserts the opposite of the required behavior
+
+**File:** `.mochiko/features/FEAT-031/tasks.md` (Cycle 3)
+
+FR-005: "A declined or lapsed offer MUST release the berth to the next eligible entrant
+**immediately**." US-3: "the next eligible entrant is issued an offer immediately, **not after the
+original hold would have ended**." Cycle 3's TEST case asserts: "The second entrant's offer
+`issuedAt` is T + 24 h, **after the declined offer's hold elapses**" — this is the literal
+behavior FR-005 and US-3 forbid, encoded as the passing condition.
+
+**Failure scenario:** a build that correctly implements immediate reissue (issuedAt ≈ T) *fails*
+this test; a build that (incorrectly) waits the full 24 hours before reissuing *passes* it. The
+acceptance gate rewards the bug and punishes the fix.
+
+**Fix:** correct the assert to require the second entrant's `issuedAt` to be within seconds of the
+decline action (mirroring Cycle 2's "within 60 s" pattern), not T + 24 h.
+
+---
+
+### C-6. D-004 fails the adopt-first lens: no real shelf candidate named, no alternatives compared
+
+**Files:** `.mochiko/features/FEAT-031/constraints-and-decisions.md` (D-004), `.mochiko/features/FEAT-031/design-disclosure.md`
+
+D-004 (offer-issue serialization, category: locking — a commodity category) has an Options table
+with exactly **one** option (the hand-rolled `offer_locks` polling table); no alternative is
+scored. The disclosure's `adopt_first` block records `shelf_named: no`, with the note "small
+enough to own" — that is a build-custom rationale, not a candidate-naming statement, and the
+adopt-first lens requires naming a real shelf candidate *or* stating none exists. Here one plainly
+exists and is not engaged: this is a one-datastore shop (C-003) whose datastore natively supports
+per-key serialization — `pg_advisory_lock`/`pg_try_advisory_lock` or a transactional `SELECT ...
+FOR UPDATE` on the berth row — with zero new infrastructure and zero sweeper-job upkeep, unlike the
+chosen design (which needs a stale-lock sweeper and carries a 500 ms worst-case latency tax).
+
+**Failure scenario:** the build stands up and maintains a bespoke lock table plus its sweeper job
+indefinitely, when the existing datastore already does this job in one line, because the decision
+record never surfaced the comparison for anyone to object to.
+
+**Fix:** add Postgres advisory locks (or `SELECT ... FOR UPDATE` on the berth row within the
+existing per-request transaction) as a scored alternative in D-004's Options table; only proceed
+with the custom table if that comparison still favors it in writing.
+
+---
+
+# 3. Important findings
+
+### I-1. Cycle 3 marked `[P]` while declaring a dependency on Cycle 2
+
+**File:** `.mochiko/features/FEAT-031/tasks.md` — "### - [ ] Cycle 3: Decline hands the berth on `[P]`" / "**Depends on:** C2"
+
+`[P]` is reserved for cards with no true dependency; this card states one explicitly. The two lines
+contradict each other on their face.
+
+**Fix:** drop the `[P]` tag from Cycle 3 (it cannot run parallel to Cycle 2 if it depends on it).
+
+### I-2. Cycle 2 embeds a pre-written task/file-path list, which the cycle-card grammar forbids
+
+**File:** `.mochiko/features/FEAT-031/tasks.md` — Cycle 2's "Tasks:" block (`src/waitlist/offer.service.ts`, `src/waitlist/accept.controller.ts`, `prisma/migrations/0031_offers/migration.sql`, `src/mail/templates.ts`)
+
+Cycle cards carry stories, case, dependencies, brownfield exposure, and `**TEST:**` gates — never
+task lists or file paths; decomposition is the builder's job at build time. `design-disclosure.md`
+discloses this as a rung-5 "builder's room" call "to save the builder the lookup," but writing the
+exact decomposition is the opposite of leaving it to the builder — the rung claim doesn't match
+what was actually done, and the check applies regardless of disclosure.
+
+**Fix:** delete the "Tasks:" block from Cycle 2; leave decomposition to the build-time TDD cycle.
+
+### I-3. WaitlistEntry.contactEmail's sensitivity documentation is inconsistent with its own declaration
+
+**File:** `.mochiko/features/FEAT-031/data-model.md`
+
+`DS-002` in `constraints-and-decisions.md` declares `WaitlistEntry.contactEmail` Confidential. But
+in `data-model.md`: the entity's own attribute table leaves the Sensitivity column **blank** for
+`contactEmail`; the top-of-file Data Sensitivity Summary (the document's own "coverage index")
+lists only `Offer.stripePaymentIntentId` and omits `contactEmail` entirely; and there is no
+Sensitivity Details sub-table (retention/access/masking) for it, unlike the product baseline's
+treatment of the structurally identical `Owner.email`/`Owner.phone` fields.
+
+**Fix:** mark `contactEmail` Confidential in the attribute table, add it to the Data Sensitivity
+Summary index, and add a Sensitivity Details row (retention, access, masking) consistent with the
+baseline's own pattern for owner contact data.
+
+### I-4. Two spec-named edge cases have no test coverage anywhere in the package
+
+**File:** `.mochiko/features/FEAT-031/tasks.md`
+
+`spec.md`'s Edge Cases list two scenarios that motivated design elements in this very package, yet
+neither has a `**TEST:**` case anywhere in `tasks.md`:
+- "The first entrant's vessel no longer fits the freed berth... skip to the next entrant... the
+  skipped entrant keeps their position" (an FR-003 edge case).
+- "Two berths of the class free within the same minute: one offer per berth... never two offers to
+  one entrant" — the exact edge case that motivated C-007/D-004.
+
+**Fix:** add a `**TEST:**` case per edge case to Cycle 2 (or a new card) so the serialization logic
+and the length-skip logic are actually gated by the acceptance suite, not just implied by the data
+model's validation rules.
+
+### I-5. An unresolved `[NEEDS CLARIFICATION]` marker ships inside the closed design package
+
+**File:** `.mochiko/features/FEAT-031/constraints-and-decisions.md` — C-006
+
+"[NEEDS CLARIFICATION] does marketing consent gate the offer e-mail, or is it transactional?" is
+left open in a design phase that is otherwise being presented as ready for the checkpoint. This is
+exactly the category `mochiko:patterns-technical-decisions` expects resolved before a decision
+record closes.
+
+**Fix:** resolve the marketing-consent question (transactional e-mail under GDPR is the likely
+answer given C-002/C-006's own framing) and close the marker before this package clears the
+checkpoint.
+
+---
+
+# 4. Minor findings
+
+- **M-1.** The "one entrant never holds two offers" edge case is only implicitly enforced (via
+  `WaitlistEntry.status`), never stated as an explicit Validation Rule the way "At most one open
+  Offer per berthId" is. Consider stating it explicitly for symmetry and build-time clarity.
+- **M-2.** `WaitlistEntry.contactEmail` is a point-in-time copy of `Owner.email`; if the owner
+  changes their e-mail after joining, the design package doesn't say whether the offer notice
+  should follow the update or stay pinned to the value at join time. Worth a one-line decision.
+
+---
+
+# 5. Spec gaps noticed (for the requirements analyst — informational, not part of the plan-artifact verdict)
+
+1. **The premise depends on a mechanism the product doesn't have yet.** The whole feature fires
+   when "a berth of the class frees," but `.mochiko/product/data-model.md`'s Booking state machine
+   states plainly: "No cancellation path in the baseline (FEAT-034 pending)." Today a berth only
+   frees when a booking reaches `endsOn` naturally. The spec never states this dependency or
+   defines what "frees" means pre-FEAT-034 — worth an explicit assumption/dependency note.
+
+2. **No FR promotes the entry-expiry edge case.** The Edge Cases list "the date range on the entry
+   has passed with no berth freed: the entry expires and the owner is told," and the design
+   package's data model even carries an `expired` status for it — but no FR (FR-001–FR-006) covers
+   it, and consequently no design element or cycle card implements the owner notification either.
+   An edge case with no FR is easy to lose, and it appears to have been lost here.
+
+3. **No story or FR covers the owner viewing their own waitlist status after joining.** US-1 says
+   "the owner sees it" (at join time, via the 201 response), but nothing in the spec establishes a
+   durable way for the owner to check their position or an open-offer state afterward — and,
+   correspondingly, the design package's contract has no `GET` for an owner's own entries. Worth
+   deciding whether this is genuinely out of scope (owner portal polls some other way) or missing.
+
+4. **No FR/SC constrains the marina queue view's shape at scale** (pagination, ordering
+   guarantees, refresh expectations) — minor, but worth a line before US-4 is built, especially
+   since the design package dropped this story's coverage entirely (see Finding C-2), which may
+   partly trace to it being under-specified relative to US-1–US-3.
+
+---
+
+# 6. Verdict
+
+**critical-gaps.** Two independent triggers are each sufficient on their own: (1) the
+material-divergence auto-fail (Finding C-1 — an entire feature, with fabricated requirement/story
+IDs, was designed and carded outside the gap list), and (2) two of the four named gaps (G-01, G-04)
+are not closed, which is blocking under `conformance-blocking`. Findings C-4, C-5, and C-6 add
+independent, high-confidence Critical defects (a governance-violating datastore addition on a false
+premise, an acceptance test that rewards the bug it exists to catch, and a locking decision that
+never named the obvious existing shelf candidate). This package should not clear the design
+checkpoint as-is.

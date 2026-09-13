@@ -331,11 +331,33 @@ the user. The probe runs are outside the session count and inside the US$ 25.
 
 ## Fill log
 
-- prune result (rules tagged model-native, sessions): **[measured at grid]**
-- coverage read (`post`, `pre`; live rules held pass^k per arm): **[measured at grid]**
-- lost vs `pre` (floors; non-floor list): **[measured at grid]**
-- band (invited pairs; all-pairs in parentheses; UNDER-SAMPLED marks): **[measured at grid]**
-- invalid runs excluded and counted: **[measured at grid]**
-- budget (sessions; est. spend incl. judge): **[measured at grid]**
-- ship bar (a) floors / (b) ≤ 2 non-floor lost / (c) band ≤ 15 % / (d) floor coverage: **[measured at grid]** / **[measured at grid]** / **[measured at grid]** / met at authoring (all 11)
-- kit status: **[measured at grid]**
+Filled 2026-09-13 from `runs/baseline` (27 valid sessions; runner 88060e2 → 87930d0 mid-grid, six
+session-limit sessions and one render-failure session dropped and re-run; MISSING 0). **The pre and
+post reads of this run are void — instrument defect.** The plugin tree is provisioned beside the
+workspace, and in headless mode every Read outside the workspace is auto-denied: the seat could not
+open the skill's `references/ARTIFACT-CHECKLISTS.md`, `references/ISSUE-TEMPLATES.md`, or the
+advocate report template except by reading them through python. Two post sessions (g2 r3, g3 r2)
+stopped on the denial and wrote no review at all; the others worked around it unevenly (3–34 Bash
+calls per session). The runner now passes `--add-dir` for the plugin tree (probe: the seat reads
+`references/ISSUE-TEMPLATES.md` directly). The numbers below are recorded as the defective run's, not
+as the kit's read; the pre and post arms are re-run under `--add-dir` once the user rules on the
+session cap (18 sessions ≈ US$ 10; the nine `noskill` sessions stand).
+
+- prune result: **0 of 36** — `noskill` flaky 10/87 invited pairs, deterministic layer 0/9, edits a
+  handed-in file once (g2 r3). The control read stands.
+- coverage read — `post` (defective): 0/36 live held, floors 0/11; deterministic layer 2/9; two runs
+  wrote no `review.md`; `fixture_unchanged` held on all nine.
+- coverage read — `pre` (defective): 8/36, floors 5/11; deterministic layer 3/9; one handed-in file
+  edited (g2 r3).
+- lost vs `pre` (defective): 8 rules incl. 5 floors — not read.
+- band (defective): `post` 49/87 = 56.3 % · `pre` 42/87 = 48.3 % — noise-dominated on both arms, as a
+  reference-blind seat would be.
+- invalid runs: 0 stored (7 dropped mid-grid).
+- budget: 27 stored sessions + 7 dropped + 2 probes · **session spend US$ 14.84**; judge unmetered.
+- ship bar: **not read** (void run).
+- assertion note for the re-run: the severity regex (`sev:`/`Severity`/`### … Issues`/table cell)
+  failed on 7/9 post and 6/9 pre reviews of this run; reviews wrote `verdict: critical-gaps` with
+  findings that name no severity token in those shapes. Re-read the regex against the re-run's
+  reviews before counting it — if a compliant review still fails it, the assertion is re-cut, not
+  the skill.
+- kit status: **VOID — re-run pre/post under `--add-dir`; returned to the user for the session cap.**

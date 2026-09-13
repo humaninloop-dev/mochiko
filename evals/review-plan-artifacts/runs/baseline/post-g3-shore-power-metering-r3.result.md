@@ -1,0 +1,11 @@
+Review complete — written to `./review.md`, no other files touched.
+
+**Verdict: `critical-gaps`.** Ten findings (3 Critical, 5 Important, 2 Minor), most severe:
+
+- **G7 (Critical, material divergence):** round 2 quietly added a `consumption-export` endpoint citing "US-6" — a story that doesn't exist anywhere in this spec (only US-1..US-4), closes none of the sufficiency report's named gaps, and has zero cycle-card coverage. That alone auto-fails the package under this skill's own floor.
+- **G5 (Critical, design-vs-decided contradiction):** the re-issued `constraints-and-decisions.md` now asserts Enerlink *cannot* push readings and chose an hourly-pull worker — directly contradicting the **user-signed** `store-delta.md` (push-based ingest, ratified for FR-002's 5-minute target), the contract (a gateway-push endpoint), and `tasks.md` Cycle 1 (which tests that push). Four artifacts split 3-vs-1 on the single foundational fact of how readings arrive.
+- **G6 (Critical, wrong test oracle):** Cycle 4's acceptance test asserts a £6.00 invoice line computed at "the tariff current at generation" — which is exactly the wrong math US-2's own worked example (with the same numbers) says must never happen (correct answer is £5.00). As written, the test would pass while validating the billing bug the story exists to prevent.
+
+The four round-1 issues (pagination, missing US-3 card, D-004 rationale, missing schema example) were genuinely fixed — that's noted as a strength. But the D-004 rewrite is what produced G5.
+
+One methodology caveat worth flagging: the skill's pointed-to canonical files (`ARTIFACT-CHECKLISTS.md`, `ISSUE-TEMPLATES.md`, the report template, and the Tier-1 `check-artifacts.py` script) were outside this sandbox and unreadable by any method I tried, so severity labels and the exact verdict thresholds are my best-effort substitute rather than the canonical mapping — I disclosed this plainly in the report rather than fabricating conformance to files I couldn't see. Also confirmed on disk: `quickstart.md`, which the sufficiency report marks required, doesn't actually exist in the feature directory despite being described as already-signed prior work (G9).

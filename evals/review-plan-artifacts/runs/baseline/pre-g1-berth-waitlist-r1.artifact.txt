@@ -1,0 +1,95 @@
+=== review.md ===
+---
+report: devils-advocate-review
+feature: FEAT-031
+round: 1
+reviewer: devils-advocate (design-checkpoint completeness grader)
+scope:
+  package: [data-model.md, contracts/api.yaml, constraints-and-decisions.md, tasks.md, design-disclosure.md]
+  graded_against: [.mochiko/specs/berth-waitlist/spec.md, .mochiko/features/FEAT-031/sufficiency-report.md, .mochiko/product/*]
+note: "check-artifacts.py and the skill's reference checklists were not reachable from this sandbox (outside the allowed working directory); this review is a manual pass against mochiko:review-plan-artifacts' stated checks. Recommend the lead also run the deterministic pre-assert before acting on this."
+verdict: critical-gaps
+---
+
+# Devil's-advocate review — FEAT-031 design-phase package
+
+## Verdict: critical-gaps
+
+One finding alone (#1) is a material, unapproved divergence from the spec the package was
+supposed to design against — that overrides any count-based verdict on its own. Independently,
+there are enough Critical findings below (a dropped P1 test scenario, a dropped P2 story, a
+blocking-constraint violation, a missing sensitivity classification, an unresolved sufficiency
+gap) that this package should not pass the design checkpoint as-is.
+
+---
+
+## Critical
+
+**1. An entire capability was invented that isn't in the spec — auto-fail on conformance.**
+`spec.md` defines only US-1–US-4 and FR-001–FR-006; its Out-of-scope line names cross-marina
+waitlists, priority tiers, and SMS, nothing else. Nowhere does it define a `US-5` or `FR-007`/`FR-009`.
+Yet the design package authors, against those fabricated IDs:
+- `GET /berths/{berthId}/availability-forecast` + `AvailabilityForecast` schema (`contracts/api.yaml`)
+- The `Notification` entity, traced to "FR-007" (`data-model.md`)
+- Cycle 4 "Availability forecast digest," traced to "US-5"/"FR-009" (`tasks.md`)
+- `design-disclosure.md`'s own ladder concedes this is a self-initiated addition: *"marina ops asked for it at kickoff; 90-day window is the minimum useful"* — kickoff conversation is not the accepted spec, and no amendment was ever made to `spec.md` to bring US-5 in scope.
+
+This is exactly the "unproposed artifact" case this skill auto-fails on. Sever it from the package (or send it back through the spec/feature-map track as its own proposal) before this can be re-graded.
+
+**2. FR-006 / US-4 — a P1-adjacent, explicitly-scoped P2 story — has zero coverage.**
+`tasks.md`'s own Overview states *"Stories covered: US-1, US-2, US-3."* US-4 ("Marina staff see the queue per berth class") is missing entirely: no cycle card, and `contracts/api.yaml` has no read endpoint for the marina staff queue view at all (only `POST .../waitlist`, `DELETE /waitlist/{entryId}`, and the two offer actions). `design-disclosure.md`'s ladder never mentions FR-006 or US-4 either — this wasn't rung-justified as deferred, it was silently dropped, while an unscoped capability (finding #1) was fully built out in its place.
+
+**3. `Offer.status` has no `lapsed` state — contradicts FR-005 and US-3 directly.**
+`data-model.md`: `status | Enum(open, accepted, declined)`, state machine only shows `open → accepted` and `open → declined`. But FR-005 is explicit: *"A declined **or lapsed** offer MUST release the berth..."*, and US-3's second Given/When/Then is the lapse scenario itself ("when 24 hours pass without a response, the offer lapses"). There is no way to represent that state. The same truncated enum is copied into `contracts/api.yaml`'s `Offer` schema. This also breaks SC-001 ("90% of offers are accepted or declined within the hold, measured... from the offers table") — a lapsed offer has no status to land in, so the metric can't distinguish "lapsed" from whatever an implementer improvises.
+
+**4. The lapse path (and the "no further eligible entrant" path) of US-3 (P1) is untested.**
+Cycle 3's single `**TEST:**` covers only the decline scenario. US-3 has three Given/When/Then scenarios in the spec; two — the 24-hour lapse trigger, and "no further eligible entrant → berth returns to general availability" — have no test anywhere in `tasks.md`. The lapse path is also the *only* place D-005's brand-new Redis-TTL infrastructure would ever fire, and it is completely unexercised by the package.
+
+**5. D-005 (Redis TTL) violates the blocking one-datastore constraint, on a false premise.**
+`constraints-and-decisions.md` (FEAT-031) states baseline rows "C-001–C-004... apply unchanged" — meaning C-003 ("PostgreSQL is the only datastore... a second datastore needs a platform sign-off recorded on AX-002 before any code") still binds. D-005 chooses "Redis key TTL with keyspace notifications" and provisions `IP-003: one managed Redis 7 instance in lhr` — a second datastore, with **no sign-off on AX-002** (`concerns.md`: *"Sign-offs recorded: none"*). The decision's own rationale — *"Redis is already in the stack for sessions"* — is false: D-002 (also unchanged baseline) puts sessions in PostgreSQL, not Redis. Nothing in this package earns an exception to a blocking constraint.
+
+**6. `acceptOffer` drops the declined-charge path that its own story requires.**
+US-2's third scenario: *"Given an open offer, when the charge is declined, then the offer stays open... and the owner is told to try another method."* `POST /offers/{offerId}/accept` in `contracts/api.yaml` has only `200` and `404` — no `402` for a declined charge (the baseline's `payBooking` models exactly this case with a `402`), and no `409` for accepting an offer that's no longer open (declineOffer has a `409`; acceptOffer doesn't).
+
+**7. `WaitlistEntry.contactEmail` ships with no sensitivity classification, contradicting the package's own declaration.**
+`constraints-and-decisions.md` declares `DS-002: WaitlistEntry.contactEmail (Confidential)`. But `data-model.md`'s Data Sensitivity Summary index doesn't list `contactEmail` at all, and the attribute's own table row has a **blank** Sensitivity cell (`| contactEmail | Email | Yes | — | | Address the offer notice goes to... |`). A Confidential PII field with no classification is a direct miss against CLAUDE.md's counterparty-confidentiality principle, and it's inconsistent within this same package (DS-002 says Confidential; the entity table says nothing).
+
+**8. Sufficiency-report gap G-04 (offer-issue latency NFR target) was never resolved.**
+G-04 required: *"The design phase states the target on its row (in the no-delta amendment) so the build has a number to meet."* No amendment to any AX concern row (e.g. `AX-009`) appears anywhere in this package. SC-002 ("first offer within 60s, p95") has no home on the concern ledger the build is measured against.
+
+**9. `tasks.md` Cycle 2 pre-writes the builder's file list — the exact thing the cycle-card grammar forbids.**
+Cycle 2 has a `Tasks:` block naming `src/waitlist/offer.service.ts`, `src/waitlist/accept.controller.ts`, a migration path, and `src/mail/templates.ts`. `design-disclosure.md` itself flags this as rung "5 builder's room" — i.e., the producing seats knew this oversteps and shipped it anyway. Decomposition into files/tasks belongs to the builder at build time, not the design phase.
+
+**10. The FEAT-012 cross-feature amendment the sufficiency report required is missing entirely.**
+The sufficiency report's `delivered_feature_exposure` says the Booking amendment must be *"written as the marked delta on FEAT-012's entry."* There is no `FEAT-012` artifact anywhere in the workspace — the `offerId` extension exists only inside FEAT-031's own `data-model.md`, which doesn't discharge an obligation to mark the delta on the *other* feature's entry.
+
+## Important
+
+**11. D-004 (offer-issue serialization) never actually weighs an alternative, and its adopt-first disclosure is a non-answer.**
+The decision table has exactly one row. `design-disclosure.md`'s adopt-first block reads `{shelf_named: no, note: "small enough to own"}` — that's neither a named shelf candidate nor an affirmative "no candidate exists," and it ignores that Postgres itself (the datastore C-003 already mandates) offers native serialization primitives — advisory locks, `SELECT ... FOR UPDATE SKIP LOCKED`, a unique constraint — that are the textbook shelf candidate here. G-03 specifically asked the design phase to weigh pg-boss/native options for the locking half of this gap; that weighing didn't happen.
+
+**12. `acceptOffer`'s integration boundary is thinner than the pattern it's copying.**
+It carries `system`/`protocol`/`api_version`/`criticality`/`auth` but no `failure_modes`, unlike the baseline `payBooking` (INT-001) for the identical Stripe-charge shape. Given accept is a new charge path with its own declared decline scenario, it should carry the same timeout/5xx/decline documentation.
+
+**13. An unresolved `[NEEDS CLARIFICATION]` sits in a blocking, GDPR-sourced constraint.**
+C-006: *"does marketing consent gate the offer e-mail, or is it transactional?"* — open into the design checkpoint, on a constraint whose severity is "blocking."
+
+**14. `Notification` can't be correlated back to the offer/entry it concerns.**
+No `offerId`/`waitlistEntryId` reference, no `kind`/`event` field distinguishing notice types. SC-003 ("fewer than 1 in 100 offers leads to a support ticket... from the helpdesk tag") implicitly needs support to trace a ticket to the offer's notification trail; as modeled, that trace doesn't exist.
+
+**15. The leave-while-holding-an-offer edge case is undescribed by any test.**
+`spec.md`'s edge case ("An entrant leaves the waitlist while holding an open offer: the offer is withdrawn and the berth goes to the next entrant") is reflected only in a one-line response description in `contracts/api.yaml` (`leaveWaitlist`'s `204`); no cycle in `tasks.md` demonstrates it.
+
+## Minor
+
+**16.** `data-model.md` records a uniqueness rule ("One `waiting` or `offered` WaitlistEntry per (ownerId, marinaId, berthClass, fromDate, toDate)") that traces to no FR — it may well be the right business rule, but as written it's a design-time invention with no spec source; worth a one-line FR or an explicit note that it's a design-time addition.
+
+---
+
+## Gaps in the spec itself (for the requirements analyst, as requested)
+
+- **No FR for the offer-issued notification.** US-2 says entrants "are notified"; the edge cases and US-3 imply notices on decline/lapse too, but no FR ever states an owner-notification requirement. The design phase had to invent FR-007 (fabricated, see Critical #1) to hang the `Notification` entity on *something* — that's a symptom of the spec not covering a requirement its own stories assume.
+- **FR-006 under-specifies its own story's acceptance criteria.** US-4's Given/When/Then has staff seeing "position, date range, vessel length, **and whether an offer is open**" — FR-006 only lists "position, date range, and vessel length," dropping the offer-open flag its own story names.
+- **The release trigger is undefined, and may not be buildable yet.** The feature's entire mechanism is "when a berth of the class frees" (FR-003), but the product baseline's `Booking` state machine has *no cancellation path* ("No cancellation path in the baseline (FEAT-034 pending)"). Bookings only ever reach `completed` when `endsOn` passes naturally — which is predictable and not really what a waitlist is for. It's unclear what event the spec intends as "frees": an early cancellation (which doesn't exist yet) or something else. Worth clarifying whether FEAT-031 has an undeclared dependency on FEAT-034.
+- **Notification consent/opt-out is unaddressed.** C-006's open `[NEEDS CLARIFICATION]` (marketing consent vs. transactional) traces back to the spec never discussing consent or an opt-out path for waitlist notices.
+- **No stated limit on concurrent waitlist entries per owner.** The design's uniqueness rule (Minor #16) suggests one entry per (owner, marina, berthClass, dates) combination, but the spec never states whether an owner may hold entries on multiple berth classes/marinas simultaneously, or whether that's intentional.

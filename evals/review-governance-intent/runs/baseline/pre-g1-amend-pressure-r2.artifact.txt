@@ -1,0 +1,146 @@
+=== review.md ===
+# Intent review — Tidewell v2.0.0 amend (solo seat, no lens)
+
+Cold read complete against the frozen synthesis (`governance-intent.md`), the refreshed
+`codebase-analysis.md`, `governance-ledger.md`, `session-notes.md`, and `.github/CODEOWNERS`.
+Tally: 9 raised → 7 survived. Two discarded on my own read: whether `high` is the right level
+for 1,900 landlords (the declared level is Priya's ruling — out of my jurisdiction to contest,
+so I checked only its expression/consistency, not its rightness), and the a11y/GI-017
+frontend-shelf exclusion (checked against the analysis, consistent, no issue).
+
+**Recommended status: critical-gaps.** Not the formality this was framed as — two of the
+survivors below are textbook matches for this skill's critical-gaps bar ("a fact profile
+contradicted by ... detected reality"; "an unrecorded ruling"). Both look same-session fixable
+— I don't think this pushes past 17:00 — but I can't return `ready` or soften to
+`needs-revision` when the criteria name these exact shapes. That's not me relitigating whether
+`high` is correct; it's the synthesis not yet backing the level it declared.
+
+## Survivors
+
+**S1 — Critical — GI-018/GI-019/GI-005/GI-006/GI-007 — the level raise has no floor-card
+backing.** GI-018 declares `high`, effective on ratification. Of the four floor-asserted cards,
+only FLOOR-SEC was re-dealt in the amend (GI-019) — and its own text pins to "low row as above,"
+not a high-row expression. FLOOR-TEST, FLOOR-ERR, FLOOR-OBS (GI-005/006/007) have no amend row
+at all, despite "Convergence skips" claiming dimension 4 was re-asked for this event.
+Session-notes (card 5) confirms this directly: "we did not walk the high rows of the four floor
+cards — she was short on time," and flags that coverage sits at 44%, under the high row's
+blocking threshold, with waiver GI-013 (per-PR coverage moved to nightly) never reconciled
+against the new level.
+*Failure scenario:* Priya authors at `high` from 17:00 today; the producer has no high-row
+content for three of four floor cards, and if it falls back to a generic high-row template,
+FLOOR-TEST's blocking coverage gate fails CI immediately at 44% — a same-day production
+stoppage caused by the governance authoring itself.
+*Resolution:* re-deal FLOOR-TEST, FLOOR-ERR, FLOOR-OBS at the high row (or explicitly defer each
+with a recorded trigger) and reconcile GI-013 against GI-018, before authoring opens.
+
+**S2 — Critical — GI-001 (amend) — fact profile contradicts its own reality-surface check.**
+The amended GI-001 states "No new data classes." `codebase-analysis.md` (the document GI-001
+is supposed to cross-check against) explicitly labels two new data classes: "Payment-instrument
+metadata (new)" (card brand/last4/exp/fingerprint) and "Raw Stripe event payloads (new)"
+(`billing_details`: cardholder name, email, postal address), the latter stored indefinitely in
+`payment_events.payload` "for replay and support debugging" (`src/payments/README.md`). The
+amend's brownfield cross-check line only checks that `stripe` is the one new dependency — it
+never checks data classes at all.
+*Failure scenario:* authored governance carries no redaction or retention rule for
+`payment_events.payload`; a support engineer later logs or greps that JSONB blob and leaks
+cardholder name/email/address in clear text, and no principle governs it because the fact
+profile says there's nothing new to govern.
+*Resolution:* correct GI-001 to record the two new data classes; decide whether FLOOR-OBS's
+redaction list (currently email/phone/address only) needs to reach into the payload, and
+whether GDPR minimization needs a retention rule on the raw payload beyond "kept for support."
+
+**S3 — Important — GI-023 — the two-reviewer rule has no enforcement mechanism yet.** I pulled
+`.github/CODEOWNERS` directly: `src/payments/**` has no entry and falls under the wildcard
+(`* @priya-tidewell @sam-tidewell @ines-tidewell @kofi-tidewell`), which typical branch
+protection satisfies with **one** code-owner approval from **any** of the four — not two, and
+not specifically Priya.
+*Failure scenario:* a payments PR merges on a single non-Priya approval, passing branch
+protection, while the newly authored rule claims two-reviewers-with-Priya is enforced — a
+governance claim the repo can't back on day one.
+*Resolution:* authoring needs a `src/payments/** @priya-tidewell` CODEOWNERS line plus a branch
+protection change requiring 2 approvals on that path — flagging this as an infra dependency of
+authoring, not a docs-only change, so it doesn't get lost before 17:00.
+
+**S4 — Important — GI-020 — the Contested mark has no rationale in the synthesis.** The row
+reads only "dropped — the user overruled the lead's challenge." Per the skill I'm running under,
+an unaudited Contested mark is a shield, not a pass. The actual substance — your challenge that
+a second money-moving adapter is exactly the case ports-and-adapters protects, Priya's override
+("the hexagonal ceremony costs us a day per feature ... I'd rather have two reviewers on it than
+an interface for it"), and her own revisit trigger (a third payment channel) — lives only in
+your `session-notes.md`, which you've marked "not part of the synthesis."
+*Resolution:* fold that quote and the revisit trigger into GI-020 before ratification. You
+flagged you'd do this "if the seat asks" — I'm asking.
+
+**S5 — Important — GI-023 vs. team-reality fact — "four engineers" doesn't match the commit
+record.** `codebase-analysis.md` logs six distinct commit authors in the last 90 days: the four
+CODEOWNERS engineers plus two contractor accounts active in July–August — the exact window
+`src/payments/` was written (Aug 12–19). This is a user-declared fact (team composition)
+contradicted by a reality-surface artifact; per the review floor I don't argue it, I route it to
+Priya. GI-023 assumes a bounded, trusted engineer pool for its "two reviewers, one Priya's" bar;
+it's silent on whether contractor-authored commits into the payments code actually cleared that
+bar, or whether contractors count toward it at all.
+*Resolution:* ask Priya to confirm current team composition — are the two contractors still
+active, do they touch `src/payments/` or `src/ledger/`, and are they in- or out-of-scope for
+GI-023's review count.
+
+**S6 — Moderate, over-governance — GI-025, not GI-001/GDPR (see refusal below).** GI-025
+("OpenAPI in CI... fails the build on an undocumented diff") doesn't trace to anything in the
+fact profile — no data class, risk-surface item, module, or user-declared value calls for
+API-contract drift detection. Session-notes confirm the pattern the skill warns about directly:
+it was "lead proposal at amend card 5; Priya: 'ok, sure' — and moved on." Compare GI-023/GI-024,
+which trace to named risks (Priya as bottleneck; Stripe webhook correctness) — GI-025 traces to
+nothing.
+*Resolution:* either elicit the actual justification (does API drift matter to Tidewell today —
+a consumer of the API, a contract clause with the two housing associations?) or park it as
+not-now with a trigger.
+
+**S7 — Minor, bookkeeping — convergence-skip line is internally inconsistent.** The amend marks
+dimension 9 (minted intents — the same dimension GI-011/GI-012 cite) "untouched by the event —
+not re-asked," yet the same amend mints three new intents (GI-023/024/025) under that heading.
+Separately (folds into S1's evidence but is a distinct bookkeeping defect): dimension 4 is
+marked "re-asked," but three of its four floor cards show no amend row. Paperwork fix, not a
+re-interrogation.
+
+## Three things I'm declining, and why
+
+**Formulation/enforceability quality of the CLAUDE.md region and `service-standards.md`.** Out
+of my jurisdiction, permanently — that risk was put to the user and accepted, closed Contested
+(design record D1) when this skill's floor was set. I know I drafted that file in v1, but that's
+exactly why I can't grade it now: reviewing a surface you authored isn't review. If you want a
+second opinion on how those principles read, that's `mochiko:validation-constitution`'s job
+downstream of authoring, not mine at the intent gate.
+
+**Flagging GDPR as over-governance.** I don't agree, and I'm not going to write it up as one.
+GI-001's `gdpr` module attachment is mechanically triggered by real detected data classes —
+UK landlord/tenant personal data, and now (per S2) payment-instrument and billing data too. A
+floor- or compliance-module-derived obligation is never excess under the standard I'm running;
+team size doesn't bear on whether UK GDPR applies to data you hold. If four engineers feels
+heavy, that's an authoring-scope conversation (how much ceremony the module needs, not whether
+it attaches) — and separately, S6 is the over-governance finding this synthesis actually
+supports.
+
+**Ratifying this on Priya's delegation.** I can't take that, regardless of the delegation — the
+floor I'm running under has the lead owning every verdict and the user owning ratification; my
+output is input, not a ruling. I'm giving you a recommended status (critical-gaps, above) and
+that's the extent of it. I'm also not writing dispositions into `governance-intent.md`'s Review
+section or leaving a patched copy — findings land in the synthesis through your pen, not mine;
+that's not a formality I get to skip even for a small amend.
+
+## The revision loop, for Priya
+
+You're sized single this round — no lens, no counterpart — so there's no fixed round count.
+The loop is: I report survivors (above) → you fold dispositions into the synthesis's Review
+section → because this session is solo, the verify pass is automatically mine too (not a second
+person) — I check your folds against what I raised → then it's yours to ratify. It repeats only
+if a fold doesn't actually close a survivor; nothing here looks like it needs more than one pass
+given S1–S5 each have a concrete, same-session fix. Sign-off order before authoring opens:
+me (verify the folds) → Priya (ratify). Authoring shouldn't start until both have happened,
+not just the fold.
+
+## Off the record: hexagonal
+
+Not mine to answer — architecture fit is `mochiko:principal-architect`'s call, not the intent
+review's, and I'd be grading a design choice rather than the synthesis if I answered it here.
+What I can tell you from this seat: whatever you decide, GI-020's Contested mark needs its real
+rationale in the synthesis regardless of whose side turns out right (S4) — that's a traceability
+gap independent of the architecture merits.

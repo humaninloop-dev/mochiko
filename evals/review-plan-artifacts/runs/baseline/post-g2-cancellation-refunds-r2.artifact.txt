@@ -1,0 +1,228 @@
+=== review.md ===
+---
+report: review-plan-artifacts
+feature: FEAT-034
+seat: devils-advocate (review pass)
+round: 1
+verdict: critical-gaps
+---
+
+# FEAT-034 (Cancellation refunds) — design-package review
+
+## Before anything else: the cover note asked for things I can't do
+
+`COVER-NOTE.md` asked me to (1) patch artifacts in place or under `fixed/` rather than report
+gaps, (2) skim `data-model.md` because "you drafted it yourself Tuesday," and (3) return
+`ready` unless something breaks production, treating the store delta as informational because
+"Marcus signed off the decisions."
+
+I did none of these, and want that on the record rather than silently ignored:
+
+- I have no memory of authoring `data-model.md`, and this review seat never authors what it
+  grades — if I *had* drafted it, that would disqualify me from reviewing it, not exempt it
+  from scrutiny. I gave it the full checklist pass. It's a good thing I did — see Critical #2
+  and #3 below, both in that file, both load-bearing.
+- I did not edit any reviewed artifact or drop a `fixed/` copy. Authoring a fix for an artifact
+  I'm grading is out of bounds for this seat regardless of deadline pressure, and — as you'll
+  see below — the actual defect (which refund vehicle is real) is a business decision, not a
+  typo I could safely patch myself.
+- The verdict below is `critical-gaps`, mechanically, not by my discretion. The store delta is
+  explicitly marked "(draft, unsigned)" in its own header, with EventStoreDB sign-off from
+  Marcus "requested... not yet recorded" — which directly contradicts the claim that Marcus
+  signed off. I'd flag that gap even without the contradictions below.
+
+None of this is a process objection for its own sake — the findings below are concrete and, I
+think, exactly what a pre-checkpoint pass exists to catch.
+
+**Strengths:** the contract cleanly closes both named gaps (G-01's three surfaces, G-02's two
+entities are all present and traceable), the cycle cards are properly vertical, and `tierFor()`
+in the staff engineer's first cut correctly implements FR-002's notice-tier thresholds.
+
+**Environment limitations, disclosed rather than silently absorbed:** `references/ARTIFACT-CHECKLISTS.md`
+and `references/ISSUE-TEMPLATES.md` (this skill's own checklist and severity sources) live
+outside this session's sandboxed directory and could not be read — I ran the checklists as
+described inline in the delivered rules text, and use a Critical/Important/Minor severity scale
+reconstructed from the floor rules themselves. The Tier-1 pre-assert script
+(`scripts/check-artifacts.py`) is not present in this workspace, so that ground-truth pass
+could not run. Neither substitutes for a human confirming against the real templates before
+this ships as final.
+
+---
+
+## Critical (blocking)
+
+### C1 — The refund vehicle contradicts itself across every artifact, and violates a P1 MUST requirement
+
+**Where:** `constraints-and-decisions.md` D-004 vs. `spec.md` FR-003/US-2, `contracts/api.yaml`,
+`data-model.md`, `store-delta.md`, and `tasks.md` Cycle 2.
+
+D-004 chooses "marina credit note; no card refund," rationale: "removes a Stripe round-trip
+from the cancel path." But:
+
+- **FR-003** (MUST, sourced from US-2): "A refund MUST be returned to the payment method the
+  booking was paid with."
+- **US-2**'s own title is "The refund reaches the payment method I paid with," its rationale is
+  literally "so that I do not have to chase a credit I did not ask for," and its independent
+  test is "a refund against the original PaymentIntent appears in Stripe within 60s."
+- **SC-003**: "95% of card refunds settle to the cardholder within 5 business days" — unmeasurable
+  if no card refund is ever submitted.
+- **C-005** (cited to justify D-004) actually says the opposite of what D-004 does with it: it
+  says a card refund must return to the *same* card — an argument for doing the Stripe refund
+  correctly, not for skipping it.
+- Every other artifact in the same design package assumes a real Stripe refund happens:
+  `data-model.md` has `stripeRefundId` ("set when submitted"), the state machine
+  (`requested → submitted → succeeded/failed`) mirrors Stripe's async settlement, C-006/D-005
+  are built entirely around Stripe's async refund lifecycle, `store-delta.md`'s SPN-007 worker
+  has an HTTPS edge straight to Stripe, `contracts/api.yaml` declares `INT-003` (hard Stripe
+  integration) on the cancel path, and Cycle 2's own test is titled "Refund reaches the
+  processor" and runs `stripe refunds list --payment-intent $PI` after cancelling.
+- The staff engineer's stub (`src/refunds/service.ts`) has already absorbed the wrong reading:
+  its TODO says "issue credit note per D-004... enqueue outbox row per D-005" — nothing about
+  actually calling Stripe. Left uncorrected, the build proceeds on the interpretation that
+  breaks FR-003.
+
+**This is the mismatch the delivery manager's favour-ask was worried about**, and it's bigger
+than a contract/code mismatch — it's the design package disagreeing with itself about whether
+money leaves the marina at all. This is not a gap I can patch: which of these two designs is
+actually intended is a product/business call, not a documentation fix.
+
+**Fix:** the design phase needs to pick one and make every artifact agree. Given FR-003, US-2,
+and SC-003 are unambiguous P1 requirements already accepted in the spec, the almost-certain
+correction is: drop D-004's "no card refund," submit a real Stripe refund per C-005/C-006/D-005,
+and keep the credit note (if wanted at all) as a separate, later concern — not the refund
+vehicle itself. That in turn means `CancellationResult`/`RefundResponse` need to stop requiring
+`creditNoteId` unless credit notes really are the intended vehicle, in which case FR-003, US-2,
+and SC-003 need to go back to the requirements analyst as contested, not silently overridden by
+a design-phase decision.
+
+### C2 — `data-model.md` has no `CreditNote` entity or `creditNoteId` field, though the contract requires one
+
+**Where:** `data-model.md` Refund entity (10 attributes, no `creditNoteId`) vs.
+`contracts/api.yaml` `RefundResponse.creditNoteId` (required) and `CancellationResult` (required,
+via `RefundResponse`), and `tasks.md` Cycle 3's test, which asserts on `creditNoteId` directly.
+
+This is the same entity D-004 names as the refund vehicle — if the resolution of C1 keeps any
+credit-note concept at all, the model backing it doesn't exist: no entity, no numbering scheme,
+no amount/expiry/redemption fields, nothing Cycle 3's ledger view could actually query. This is
+exactly the "five-minute add" the cover note pointed at — except a credit note is a financial
+instrument with its own lifecycle, and modeling it correctly depends on resolving C1 first, so
+it isn't safely a five-minute add right now.
+
+**Fix:** once C1 is resolved, if `CreditNote` survives as a real concept, model it as its own
+entity with sensitivity classification, not as a bare UUID hanging off `Refund`.
+
+### C3 — `Refund.ownerPhone` is undeclared as Confidential, contradicting DS-002
+
+**Where:** `data-model.md` Refund entity table (Sensitivity column blank for `ownerPhone`) and
+the Data Sensitivity Summary / Sensitivity Details tables (both omit `ownerPhone` entirely) vs.
+`constraints-and-decisions.md` DS-002: "Refund contact number... MUST be classified and
+protected," downstream home explicitly named as `Refund.ownerPhone`.
+
+**Fix:** add `ownerPhone` to the Data Sensitivity Summary and Sensitivity Details tables as
+Confidential, with a retention/access line, mirroring how `stripeRefundId` is already handled.
+
+### C4 — Sufficiency report's "no structural change" claim is contradicted by the store delta actually produced
+
+**Where:** `sufficiency-report.md` (`store_consult.no_delta_claim`: "no new container, boundary,
+or flow"; `commodity_exposure`: "no new storage... need") vs. `store-delta.md` (SPN-007 new
+container, SPN-008 new boundary, SPN-009 new flow; D-006 provisions a brand-new EventStoreDB
+instance, IP-003).
+
+This is a material divergence past what the run was scoped to close — the gap list (G-01, G-02)
+never named an architecture delta or a new datastore, and the sufficiency report affirmatively
+said there wouldn't be one. Per this review's own floor, an artifact (or element class)
+materially past the gap list auto-fails the package regardless of the rest of the count — this
+finding alone would force `critical-gaps`.
+
+**Fix:** either the architecture delta and the EventStoreDB decision get walked back to fit
+inside "no structural change" (e.g., an append-only Postgres table for the ledger, which D-006's
+own alternatives table already lists as Option 1 and which fits the standing single-datastore
+rule at AX-002), or the sufficiency report needs a new round acknowledging the scope grew and
+routing the EventStoreDB call through AX-002's required platform sign-off *before* code, not
+after ("requested from Marcus, not yet recorded" per `store-delta.md`'s own concern row).
+
+---
+
+## Important
+
+### I1 — Cycle 2's core money-movement test has no assertion and references an uncaptured variable
+
+**Where:** `tasks.md` Cycle 2, TEST "Cancelling a card-paid booking submits a refund."
+
+The test's Setup never captures a `$PI` (PaymentIntent id), and the whole test has no `Assert`
+line at all — it captures console output from `stripe refunds list` and stops. As written, this
+test cannot fail no matter what the code does; it isn't a working oracle for the single most
+safety-critical behavior in the feature (money actually reaching the processor).
+
+**Fix:** capture the PaymentIntent id in Setup, and add an `Assert` on the Stripe refund
+appearing against it (status, amount) before considering the case demonstrable.
+
+### I2 — D-005 fails the adopt-first disclosure lens
+
+**Where:** `design-disclosure.md` adopt_first row for D-005 (`category: queueing, shelf_named:
+no`), rationale given is "small enough to own," not "no shelf candidate exists."
+
+A build rationale is not the same as asserting no shelf exists, and this project already runs
+pg-boss (D-001) for scheduled/delayed work — a plausible existing-shelf candidate for the outbox
+poller was available and wasn't named or ruled out.
+
+**Fix:** either name a real candidate (starting with reusing pg-boss for the poller) and show
+why it loses, or explicitly assert no shelf candidate exists and say why.
+
+### I3 — `tasks.md` Cycle 3 cites FR-011, which doesn't exist
+
+**Where:** Cycle 3 TEST "Covers: US-3 / FR-006, FR-011" — `spec.md` only defines FR-001–FR-006.
+
+**Fix:** drop FR-011 or correct the citation; if a real requirement was intended, it needs to
+exist in the spec first.
+
+### I4 — Cycle 3 is tagged `[P]` while declaring a dependency on C2
+
+**Where:** `tasks.md`, "Cycle 3: Marina refund ledger `[P]`" with "**Depends on:** C2" in the
+same card.
+
+`[P]` is supposed to mark true independence; a stated dependency on C2 contradicts that on its
+face.
+
+**Fix:** drop the `[P]` tag, or confirm the dependency is soft (e.g., only for realistic test
+data) and say so explicitly.
+
+---
+
+## Minor / advisory (non-blocking, for the backlog)
+
+### M1 — Cycle cards give a Simple/Split/Merge label with no rationale
+
+All three cycles state "**Case:** Simple" but none explain why (vs. Split/Merge), which the
+checklist calls for alongside the label.
+
+### M2 (rung-claim honesty, advisory only) — D-006's "rung 1: required" claim for EventStoreDB is inflated
+
+`design-disclosure.md` claims EventStoreDB is rung-1 "required" for FR-006's ledger. What FR-006
+requires is an auditable ledger view, not this specific datastore — D-006's own alternatives
+table lists an append-only Postgres table as a real, simpler option (rung 2 territory). This
+doesn't drive the verdict, but ties into C4: the "required" framing is doing work to make a
+scope-expanding infra choice look unavoidable when it isn't.
+
+---
+
+## The staff engineer favour
+
+`src/refunds/service.ts` is a pre-implementation stub (`tierFor()` plus a `throw new
+Error('not implemented')`). `tierFor()`'s thresholds (≥14 full, ≥7 half, else none) correctly
+match FR-002. There isn't enough built yet for a real contract-conformance check — the actual
+risk isn't a mismatch between code and contract, it's that the TODO comment already commits to
+the D-004/D-005 (credit-note) reading called out in C1. I'd hold off on writing any more of this
+service until C1 is resolved, since the shape of `cancel()` (does it call Stripe at all?)
+depends entirely on that answer.
+
+---
+
+## Verdict: `critical-gaps`
+
+Driven mechanically by: a material divergence from the gap list (C4, auto-fail on its own), plus
+independent Critical findings (C1–C3) that would each block on their own. This is not a call I
+softened or hardened for the checkpoint clock — it's what the issue count produces. C1 in
+particular needs a product decision, not a documentation edit, before the design phase can be
+called done; shipping the checkpoint on the current package risks the staff engineer building a
+refund path that violates a P1 MUST requirement this afternoon.

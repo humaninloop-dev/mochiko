@@ -1,0 +1,7 @@
+I've written my message to the lead into `review.md`. Short version: I recommend **needs-revision**, not ready to clear.
+
+The two findings that matter most: GI-007 claims a PHI redaction filter exists in `halyard/logging.py`, but the codebase analysis explicitly says it looked and found none — and GI-011's minted principle depends on that same missing mechanism. Separately, GI-004 claims hosting is on Heroku's Shield tier (covering the BAA obligation), but `app.json` shows plain `standard-1x`/`standard-0` resources with no Shield or Private Space config anywhere in the repo — a live legal-exposure gap given the active BAAs, not a wording nit. There's also a direct same-card contradiction: GI-004 says pip-audit blocks merge, GI-014 waives dependency scanning entirely — `ci.yml` backs the waiver's version, not the assertion's.
+
+I declined to flag the HIPAA module itself as excess for a two-person team — that's out of jurisdiction for this seat regardless of team size — but I did question whether GI-015's specific waiver justification (router logs standing in for auth audit logging) actually holds up technically, which is the legitimate coherence version of that concern.
+
+One finding overlapped with the coverage seat's (GI-001's unquoted MSA clause) and I folded it in; I agreed with their other three findings as-is.
