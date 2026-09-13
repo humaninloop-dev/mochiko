@@ -296,7 +296,8 @@ def judge_checklist(rules: list, artifact_text: str, expected_output: str = "") 
         chunk = [{k: r[k] for k in ("id", "rule", "class") if k in r} for r in rules[i:i + JUDGE_CHUNK]]
         prompt = judge_prompt(chunk, artifact_text, expected_output)
         byid = {}
-        for _ in range(2):  # one retry on parse failure / missing ids
+        for _ in range(3):  # two retries on parse failure / missing ids (VC baseline: one
+            # chunk failed twice and its MISSING read as seven floors lost)
             res = run_session(prompt, model=CHECKLIST_MODEL, plugin=None, max_turns=1)
             verdicts = extract_json((res["result"] or {}).get("result", "") or "")
             if isinstance(verdicts, list):
@@ -548,8 +549,9 @@ def _write_summary(skill, rundir, stamp, replicates, rules, goldens, results, to
     return summary
 
 
-def cmd_rejudge(skill: str, out: str) -> None:
-    """Re-score stored artifacts with the current judge — no sessions, judges only."""
+def cmd_rejudge(skill: str, out: str, only_missing: bool = False) -> None:
+    """Re-score stored artifacts with the current judge — no sessions, judges only.
+    --only-missing re-scores just the sessions carrying a MISSING verdict."""
     base, goldens, rules = load_kit(skill)
     rundir = base / "runs" / out
     summ = rundir / "summary.json"
@@ -562,6 +564,8 @@ def cmd_rejudge(skill: str, out: str) -> None:
         art_file = rundir / f"{e['arm']}-{e['golden']}-r{e['replicate']}.artifact.txt"
         if not art_file.is_file() or not e.get("valid", True):
             print(f"skip {art_file.name}: {'artifact missing' if not art_file.is_file() else 'invalid run'}")
+            continue
+        if only_missing and not any(v.get("passed") is None for v in e.get("checklist", [])):
             continue
         print(f"rejudge {e['arm']}/{e['golden']}/r{e['replicate']} ...", flush=True)
         e["checklist"] = judge_checklist(rules, art_file.read_text(),
@@ -735,6 +739,8 @@ def main() -> None:
             p.add_argument("--arm", default="post", choices=["pre", "post"])
         if name == "rejudge":
             p.add_argument("--out", required=True)
+            p.add_argument("--only-missing", action="store_true",
+                           help="re-score only sessions carrying a MISSING verdict")
         if name == "report":
             p.add_argument("--out", default=None)
         if name == "grid":
@@ -754,7 +760,7 @@ def main() -> None:
         cmd_grid(args.skill, args.replicates, args.arms.split(","), args.old_ref, args.out,
                  args.pairwise, args.budget_usd)
     elif args.cmd == "rejudge":
-        cmd_rejudge(args.skill, args.out)
+        cmd_rejudge(args.skill, args.out, args.only_missing)
     else:
         cmd_report(args.skill, args.out)
 
