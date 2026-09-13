@@ -10,6 +10,7 @@
 //! Nothing here grades a primitive's judgment content. The checks are structural validity on data
 //! this tool owns, which is what keeps the widened kernel-class admission inside the bright line.
 
+use crate::home::{Bounds, Form, Home};
 use crate::model::{
     canonical_depth, is_anchor, is_dotted_id, is_slug, norm_value, Class, Condition, DocKind,
     DocRef, Document, LabelRegistry, Ordered, Resolution, Rule, RuleKind, RuleSchema, Values,
@@ -85,6 +86,11 @@ pub enum Code {
     RetiredLabel,
     MomentDeclaration,
     DocumentEmpty,
+    HomeShape,
+    HomePattern,
+    HomeDuplicate,
+    HomeBinding,
+    HomeBounds,
     // advisory
     Deixis,
     UnusedVar,
@@ -151,6 +157,11 @@ impl Code {
             Code::RetiredLabel => "retired-label",
             Code::MomentDeclaration => "moment-declaration",
             Code::DocumentEmpty => "document-empty",
+            Code::HomeShape => "home-shape",
+            Code::HomePattern => "home-pattern",
+            Code::HomeDuplicate => "home-duplicate",
+            Code::HomeBinding => "home-binding",
+            Code::HomeBounds => "home-bounds",
             Code::Deixis => "deixis",
             Code::UnusedVar => "unused-var",
             Code::UnusedCondition => "unused-condition",
@@ -865,6 +876,156 @@ fn cross_document(state: &State, findings: &mut Vec<Finding>) {
     }
 
     zero_member_labels(state, findings);
+    validate_homes(state, findings);
+}
+
+/// The hard set over `home` documents: the binary validating its own data (module docs of
+/// [`crate::home`]) rather than grading any artifact a home governs.
+fn validate_homes(state: &State, findings: &mut Vec<Finding>) {
+    let mut paths: BTreeMap<Vec<String>, Vec<(String, DocRef)>> = BTreeMap::new();
+    for (doc, document) in &state.docs {
+        if doc.kind != DocKind::Home {
+            continue;
+        }
+        let Document::Opaque(value) = document else {
+            continue;
+        };
+        let home: Home = match serde_norway::from_value(value.clone()) {
+            Ok(home) => home,
+            Err(e) => {
+                findings.push(Finding::doc(
+                    Code::HomeShape,
+                    doc,
+                    format!("is not a well-formed home document: {e}"),
+                ));
+                continue;
+            }
+        };
+
+        for segment in &home.path {
+            check_home_token(doc, segment, findings);
+        }
+        for deliverable in &home.deliverables {
+            for token in file_tokens(&deliverable.file) {
+                check_home_token(doc, token, findings);
+            }
+        }
+
+        for deliverable in &home.deliverables {
+            if let Some(name) = &deliverable.template {
+                check_home_binding(state, doc, name, findings);
+            }
+        }
+        if let Some(reports) = &home.reports {
+            check_home_binding(state, doc, &reports.envelope, findings);
+            for name in reports.by_type.values() {
+                check_home_binding(state, doc, name, findings);
+            }
+        }
+
+        if home.bounds == Bounds::Elsewhere && home.bounds_cite.is_none() {
+            findings.push(Finding::doc(
+                Code::HomeBounds,
+                doc,
+                "declares `bounds: elsewhere` with no `bounds_cite` naming the constraint home \
+                 its bounds live in",
+            ));
+        }
+        for deliverable in &home.deliverables {
+            if deliverable.form == Some(Form::Log) && deliverable.entry_max_lines.is_none() {
+                findings.push(Finding::doc(
+                    Code::HomeBounds,
+                    doc,
+                    format!(
+                        "deliverable `{}` is form: log with no `entry_max_lines` — a log is \
+                         bounded per entry, never per file",
+                        deliverable.file
+                    ),
+                ));
+            }
+            if deliverable.form != Some(Form::Log)
+                && deliverable.template.is_none()
+                && deliverable.max_lines.is_none()
+                && home.bounds != Bounds::Elsewhere
+            {
+                findings.push(Finding::doc(
+                    Code::HomeBounds,
+                    doc,
+                    format!(
+                        "deliverable `{}` carries no template and no `max_lines` — a \
+                         template-less deliverable takes a whole-file bound",
+                        deliverable.file
+                    ),
+                ));
+            }
+        }
+
+        paths
+            .entry(home.path.clone())
+            .or_default()
+            .push((home.home.clone(), doc.clone()));
+    }
+
+    for (path, mut entries) in paths {
+        if entries.len() < 2 {
+            continue;
+        }
+        entries.sort_unstable_by(|a, b| a.0.cmp(&b.0));
+        let names: Vec<&str> = entries.iter().map(|(name, _)| name.as_str()).collect();
+        let anchor = &entries[0].1;
+        findings.push(Finding::doc(
+            Code::HomeDuplicate,
+            anchor,
+            format!(
+                "homes {} declare the identical path `{}` — an ambiguous pattern is a log \
+                 defect, not a runtime coin-flip",
+                names.join(", "),
+                path.join("/")
+            ),
+        ));
+    }
+}
+
+/// Every `<...>` run inside a deliverable's file-name pattern, for the same token check the
+/// path's segments take.
+fn file_tokens(file: &str) -> Vec<&str> {
+    let mut out = Vec::new();
+    let mut rest = file;
+    while let Some(open) = rest.find('<') {
+        let Some(close) = rest[open..].find('>') else {
+            break;
+        };
+        out.push(&rest[open..open + close + 1]);
+        rest = &rest[open + close + 1..];
+    }
+    out
+}
+
+/// A path or file-name segment that looks like a token must be one of [`crate::home::TOKENS`].
+fn check_home_token(doc: &DocRef, segment: &str, findings: &mut Vec<Finding>) {
+    let looks_like_token = segment.starts_with('<') && segment.ends_with('>') && segment.len() > 2;
+    if looks_like_token && !crate::home::TOKENS.contains(&segment) {
+        findings.push(Finding::doc(
+            Code::HomePattern,
+            doc,
+            format!(
+                "declares unknown segment token `{segment}` — the vocabulary is {}",
+                crate::home::TOKENS.join(", ")
+            ),
+        ));
+    }
+}
+
+/// A `template:`/`envelope:`/`by_type:` binding must name a template document the log carries.
+fn check_home_binding(state: &State, doc: &DocRef, name: &str, findings: &mut Vec<Finding>) {
+    let target = DocRef::new(DocKind::Template, name);
+    if !state.docs.contains_key(&target) {
+        findings.push(Finding::doc(
+            Code::HomeBinding,
+            doc,
+            format!("binds template `{name}`, which the log does not carry"),
+        ));
+    }
 }
 
 /// Registry labels no rule carries.

@@ -1,9 +1,12 @@
 //! The command surface: argument parsing, resolution order, and the exit-code contract.
 //!
-//! Four exit codes carry everything (record D3/D5, wave-plan §4): `0` ok · `1` the log is absent,
-//! empty or unsound · `2` a usage error or a name the log does not carry · `3` the version
-//! contract. Three beats one: a log outside the binary's grammar range halts with the D5 message
-//! alone, because every other finding it might raise is downstream of not understanding the file.
+//! Five exit codes carry everything: `0` ok · `1` the log is absent, empty or unsound · `2` a usage
+//! error or a name the log does not carry · `3` the version contract · `4` a conformance denial
+//! (`check` only, see [`run_check`]). Three beats one: a log outside the binary's grammar range
+//! halts with the D5 message alone, because every other finding it might raise is downstream of not
+//! understanding the file. Four is minted rather than reused, because reusing 1 would make an
+//! unsound log indistinguishable from a non-conforming artifact — and the hook contract turns
+//! exactly one of those two into a deny.
 //!
 //! Output goes to caller-supplied sinks rather than straight to the process streams, so the
 //! integration suite asserts on the exact bytes each stream carried without spawning a binary.
@@ -14,7 +17,7 @@ use crate::replay::{self, Replay};
 use crate::validate::{census, Code, Finding};
 use clap::{Parser, Subcommand};
 use serde_norway::Value;
-use std::io::Write;
+use std::io::{Read, Write};
 use std::path::{Path, PathBuf};
 
 /// The environment variable naming the migration log, read after an explicit flag and after a
@@ -77,6 +80,22 @@ enum Command {
         /// A shelf name (`architecture-shelf-backend`) or a registry (`command-labels`).
         name: String,
     },
+    /// Answer a `PreToolUse` hook: allow the write, or deny it with the reason.
+    ///
+    /// The payload arrives on stdin because the shipped wrapper is a pipe holding no rule of its
+    /// own. Only this subcommand can exit [`crate::hook::EXIT_CONFORMANCE`].
+    Check {
+        /// Read the raw `PreToolUse` payload from stdin. `-` is the only accepted value: the
+        /// flag names its source rather than defaulting to it, so a future second source cannot
+        /// silently change what an existing call reads.
+        #[arg(long, value_name = "SOURCE")]
+        hook_json: String,
+    },
+    /// Render a path's declared home: its file set, template bindings and budgets.
+    Home {
+        /// A repository-relative path, or an absolute one under the working directory.
+        path: PathBuf,
+    },
     /// Work on the migration log itself.
     Migrate {
         #[command(subcommand)]
@@ -137,8 +156,24 @@ enum MigrateAction {
     },
 }
 
-/// Parse and run. `args` excludes the program name.
+/// Parse and run, reading any stdin payload from the process's own stdin.
+///
+/// `args` excludes the program name.
 pub fn dispatch(args: &[String], out: &mut dyn Write, err: &mut dyn Write) -> i32 {
+    dispatch_io(args, &mut std::io::stdin(), out, err)
+}
+
+/// Parse and run against caller-supplied streams.
+///
+/// `input` is only read by `check --hook-json -`. Taking it as a parameter is what lets the
+/// integration suite drive the whole exit-code contract in-process, without spawning a binary or
+/// touching the real stdin.
+pub fn dispatch_io(
+    args: &[String],
+    input: &mut dyn Read,
+    out: &mut dyn Write,
+    err: &mut dyn Write,
+) -> i32 {
     let argv = std::iter::once("mochiko-cli".to_string()).chain(args.iter().cloned());
     let cli = match Cli::try_parse_from(argv) {
         Ok(cli) => cli,
@@ -184,6 +219,8 @@ pub fn dispatch(args: &[String], out: &mut dyn Write, err: &mut dyn Write) -> i3
         ),
         Command::Template { name, check } => run_template(&dir, &name, check, out, err),
         Command::Doc { name } => run_doc(&dir, cli.plugin_root.as_deref(), &name, out, err),
+        Command::Check { hook_json } => run_check(&dir, &hook_json, input, out, err),
+        Command::Home { path } => run_home(&dir, cli.plugin_root.as_deref(), &path, out, err),
         Command::Migrate { action } => match action {
             MigrateAction::Validate { report } => {
                 run_validate(&dir, cli.plugin_root.as_deref(), report, out, err)
@@ -663,5 +700,75 @@ fn run_status(dir: &Path, out: &mut dyn Write, err: &mut dyn Write) -> i32 {
         replay.state.content_hash(),
         replay.state.docs.len()
     );
+    0
+}
+
+/// Answer one `PreToolUse` hook from the payload on stdin.
+///
+/// # The exit-code contract (record D3, as amended at review C2)
+///
+/// This is the only subcommand that can exit [`crate::hook::EXIT_CONFORMANCE`], and that code is
+/// the only thing the wrapper turns into a deny. Every other outcome is a pass-through:
+///
+/// | code | meaning | stdout | the write |
+/// |---|---|---|---|
+/// | 0 | conforming, amnestied, or no verdict owed | an explicit `allow` decision | proceeds |
+/// | 1 | the log is absent, empty or unsound | nothing | proceeds |
+/// | 2 | a usage error, or a payload this binary cannot read | nothing | proceeds |
+/// | 3 | the log is outside this binary's grammar range | nothing | proceeds |
+/// | 4 | a conformance denial | the `deny` decision and its reason | **denied** |
+///
+/// Codes 1, 2 and 3 print nothing and say nothing: absence and skew are already the shipped halt
+/// hooks' job, and a usage error must never deny a consumer's every write. The wrapper supplies the
+/// explicit allow for them, because the platform denies a background subagent's call when no hook
+/// returns a decision at all (wave-0 finding).
+fn run_check(
+    dir: &Path,
+    hook_json: &str,
+    input: &mut dyn Read,
+    out: &mut dyn Write,
+    err: &mut dyn Write,
+) -> i32 {
+    if hook_json != "-" {
+        let _ = writeln!(
+            err,
+            "error: --hook-json takes '-' (the payload is read from stdin)"
+        );
+        return 2;
+    }
+    let mut raw = String::new();
+    if input.read_to_string(&mut raw).is_err() {
+        let _ = writeln!(err, "error: the hook payload could not be read from stdin");
+        return 2;
+    }
+    let Some(payload) = crate::hook::parse(&raw) else {
+        let _ = writeln!(err, "error: the hook payload is not readable JSON");
+        return 2;
+    };
+    // The log is loaded after the payload so a malformed payload is reported as the usage error it
+    // is, rather than as whatever the log happens to say.
+    let replay = match load_for_delivery(dir, err) {
+        Ok(replay) => replay,
+        Err(code) => return code,
+    };
+    let outcome = crate::hook::decide(&replay.state, &payload);
+    let _ = writeln!(out, "{}", crate::hook::render(&outcome));
+    outcome.exit_code()
+}
+
+/// Render one path's declared home.
+fn run_home(
+    dir: &Path,
+    plugin_root: Option<&Path>,
+    path: &Path,
+    out: &mut dyn Write,
+    err: &mut dyn Write,
+) -> i32 {
+    let replay = match load_for_delivery(dir, err) {
+        Ok(replay) => replay,
+        Err(code) => return code,
+    };
+    let ctx = context(&replay, plugin_root);
+    let _ = write!(out, "{}", render::home_view(&replay.state, path, &ctx));
     0
 }

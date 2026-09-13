@@ -1,0 +1,152 @@
+# The shared home fixture. The crate's own tests and the plugin contract suite BOTH read this log,
+# so it is the single place either side declares an artifact home — the suite carries no fixture of
+# its own (wave-4 contract plan).
+#
+# It exists so no contract row waits on wave 3's census, and it deliberately covers four branches:
+#
+#   1. a templated deliverable whose template carries per-section `max_lines` — the heading-level
+#      conformance block (record D4a/D6);
+#   2. a template-less deliverable under a whole-file bound (D4f);
+#   3. a home opening a `reports/` directory whose envelope enumerates report types (D2);
+#   4. a kind whose bounds live in another named constraint home, cited (D4f's exemption, V2).
+#
+# Adding a branch here is additive. REMOVING one breaks a contract row downstream, so
+# `the_shared_fixture_log_covers_every_branch_the_contract_suite_reads` in `tests/home.rs` asserts
+# each of the four is present and fails if one is dropped.
+#
+# Regenerate the hash after any edit: `mochiko-cli migrate stamp <this file>`.
+grammar: 1
+id: 0001-homes
+sequence: 1
+intent: >-
+  Declare the artifact homes, templates and report envelope the crate tests and the plugin
+  contract suite both read.
+hash: sha256:ac08c94dcc06ad8e05134bf6d5f2018aaa77d2a85f435b2094f765dff3d552e6
+changes:
+  - op: import-document
+    kind: home
+    name: feature
+    content:
+      home: feature
+      title: Feature work home
+      path: [.mochiko, features, <FEAT-ID>]
+      bounds: template
+      deliverables:
+        - file: spec.md
+          template: demo-spec
+        - file: gates.md
+          max_lines: 40
+        - file: implement-log.md
+          form: log
+          entry_max_lines: 30
+      subdirs: [stories]
+      reports:
+        envelope: report-envelope
+        by_type: {}
+  - op: import-document
+    kind: home
+    name: feature-stories
+    content:
+      home: feature-stories
+      title: Per-story files
+      path: [.mochiko, features, <FEAT-ID>, stories]
+      bounds: whole-file
+      deliverables:
+        - file: US-<n>.md
+          max_lines: 60
+  - op: import-document
+    kind: home
+    name: desk
+    content:
+      home: desk
+      title: Specify desk
+      path: [.mochiko, features, desk, <date-slug>]
+      bounds: whole-file
+      deliverables:
+        - file: derivation.md
+          max_lines: 120
+  - op: import-document
+    kind: home
+    name: memory
+    content:
+      home: memory
+      title: Durable memory surfaces
+      path: [.mochiko, memory]
+      bounds: elsewhere
+      bounds_cite: .mochiko/memory/knowledge-management.md
+      deliverables:
+        - file: knowledge-management.md
+        - file: governance-ledger.md
+  - op: import-document
+    kind: template
+    name: demo-spec
+    content:
+      template: demo-spec
+      title: Demo Specification
+      form: artifact-format.md
+      register: full
+      overview: A specification shaped for the conformance matrix.
+      conformance:
+        frontmatter:
+          required: [feature, status]
+          enum:
+            status: [draft, accepted, superseded]
+        placeholders:
+          - '[entity]'
+          - <feature-id>
+          - FEAT-XXX
+        extra_headings: deny
+      sections:
+        - name: Header
+          required: true
+          contract: The title line and the frontmatter block. Governs no heading of its own.
+          check: Is the header present?
+        - name: Intent
+          heading: Intent
+          required: true
+          max_lines: 8
+          contract: One line per ruling.
+          check: Is the Intent present with one line per ruling?
+        - name: Requirements
+          heading: Requirements
+          required: true
+          max_lines: 20
+          contract: FR-XXX entries, one line each.
+          check: Are the requirements in FR-XXX form, one line each?
+        - name: Open Questions
+          heading: Open Questions
+          required: false
+          max_lines: 10
+          contract: Whatever is still unresolved. Omit when there is nothing.
+          check: Are open questions listed, or the section absent?
+      skeleton: |
+        ---
+        feature: FEAT-XXX
+        status: draft
+        ---
+
+        # [Feature name]
+
+        ## Intent
+
+        ## Requirements
+  - op: import-document
+    kind: template
+    name: report-envelope
+    content:
+      template: report-envelope
+      title: Report envelope
+      form: report-format.md
+      register: full
+      overview: The envelope every mochiko report opens with.
+      conformance:
+        frontmatter:
+          required: [report, feature]
+          enum:
+            report: [cycle, verification, final-validation, review, feasibility, disclosure]
+      sections: []
+      skeleton: |
+        ---
+        report: cycle
+        feature: FEAT-001
+        ---

@@ -528,3 +528,124 @@ pub fn template_view(
         template.producer_view(&source)
     })
 }
+
+// ---------------------------------------------------------------------------
+// the home view
+// ---------------------------------------------------------------------------
+
+/// One path's home, its file set, its template bindings and its budgets.
+///
+/// This is the line the authoring-time rule points a seat at (record D1a): for a kind with no
+/// template yet, it is the whole of the channel — the declared home, its file set and its bound,
+/// delivered before the first write. It renders what the log declares and says nothing about any
+/// file on disk, so it never grades an artifact.
+pub fn home_view(state: &State, path: &Path, ctx: &Context) -> String {
+    use crate::home::{Bounds, Form, Homes, Resolution};
+
+    let display = path.display().to_string();
+    let homes = Homes::load(state);
+    let resolution = homes.resolve(path);
+
+    let mut body = String::new();
+    let home = match &resolution {
+        Resolution::Outside => None,
+        Resolution::File { home, .. }
+        | Resolution::Report { home, .. }
+        | Resolution::UndeclaredFile { home, .. }
+        | Resolution::UndeclaredSubdir { home, .. }
+        | Resolution::Deferred { home, .. } => Some(*home),
+    };
+
+    let verdict = match &resolution {
+        Resolution::Outside => {
+            "no declared home governs this path — nothing here is checked at write time".to_string()
+        }
+        Resolution::File { deliverable, .. } => {
+            format!("`{}`, a declared deliverable", deliverable.file)
+        }
+        Resolution::Report { name, .. } => {
+            format!("`{name}`, a report — any name, the envelope binds")
+        }
+        Resolution::UndeclaredFile { name, .. } => {
+            format!("`{name}` is NOT a declared deliverable of this home")
+        }
+        Resolution::UndeclaredSubdir { subdir, .. } => {
+            format!("`{subdir}/` is NOT a declared sub-directory of this home")
+        }
+        Resolution::Deferred { subdir, .. } => format!(
+            "`{subdir}/` is a declared sub-directory governed by its own home document, if one exists"
+        ),
+    };
+
+    match home {
+        None => {
+            body.push_str(&format!("resolved: {verdict}\n"));
+            if !homes.is_empty() {
+                body.push_str(&format!("\ndeclared homes ({}):\n", homes.len()));
+                for home in homes.iter() {
+                    body.push_str(&format!("  - {} · {}\n", home.home, home.display_path()));
+                }
+            }
+        }
+        Some(home) => {
+            body.push_str(&format!("home: {} — {}\n", home.home, home.title));
+            body.push_str(&format!("directory: {}\n", home.display_path()));
+            body.push_str(&format!("resolved: {verdict}\n"));
+            body.push_str(&format!(
+                "bounds: {}\n",
+                match home.bounds {
+                    Bounds::Template => "per template section".to_string(),
+                    Bounds::WholeFile => "whole file, per deliverable".to_string(),
+                    Bounds::Elsewhere => format!(
+                        "declared elsewhere — {}",
+                        home.bounds_cite.as_deref().unwrap_or("uncited")
+                    ),
+                }
+            ));
+
+            body.push_str("\ndeliverables:\n");
+            if home.deliverables.is_empty() {
+                body.push_str("  (none declared)\n");
+            }
+            for deliverable in &home.deliverables {
+                let shape = match (&deliverable.form, &deliverable.template) {
+                    (Some(Form::Log), _) => match deliverable.entry_max_lines {
+                        Some(lines) => format!("append-only log · {lines} lines per `##` entry"),
+                        None => "append-only log · no per-entry bound declared".to_string(),
+                    },
+                    (_, Some(template)) => format!(
+                        "template `{template}` · `mochiko-cli template {template}` carries its \
+                         section budgets"
+                    ),
+                    (_, None) => match deliverable.max_lines {
+                        Some(lines) => format!("no template · {lines} lines, whole file"),
+                        None => "no template · no bound declared".to_string(),
+                    },
+                };
+                body.push_str(&format!("  - {} · {shape}\n", deliverable.file));
+            }
+
+            if !home.subdirs.is_empty() {
+                body.push_str(&format!("\nsub-directories: {}\n", home.subdirs.join(", ")));
+            }
+            match &home.reports {
+                Some(reports) => body.push_str(&format!(
+                    "\nreports: `{}reports/` · any name · envelope `{}`\n",
+                    home.display_path(),
+                    reports.envelope
+                )),
+                None => body.push_str("\nreports: this home opens no reports/ directory\n"),
+            }
+        }
+    }
+
+    format!(
+        "mochiko-cli home {display} · binary {} · grammar {} · plugin {}\n\n{}\n\
+         mochiko-cli home end · {display} · {}\n",
+        ctx.binary,
+        ctx.grammar,
+        ctx.plugin,
+        body.trim_end(),
+        home.map_or("no home", |h| h.home.as_str())
+    )
+}

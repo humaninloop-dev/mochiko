@@ -1120,12 +1120,34 @@ fn the_shipped_corpus_matches_its_recorded_census() {
     assert_eq!(fail_nodes, 36, "command fail nodes");
 }
 
+/// The kinds the shipped corpus does not carry yet, each with the wave that lands it.
+///
+/// This list exists so the coverage assert below can stay exact while a kind is in flight, and it
+/// is written to **fail when the gap closes**: the day wave 3's census migration lands the first
+/// `home` document, the second assert trips and this constant must shrink. A plain skip would rot
+/// silently instead.
+const KINDS_NOT_SHIPPED_YET: [DocKind; 1] = [
+    // hook-enforced-artifact-schema wave 1 mints the kind; wave 3's census migration lands the
+    // documents. Wave 1 changes no file under `plugins/mochiko/`, so the corpus carries none.
+    DocKind::Home,
+];
+
 #[test]
 fn the_shipped_corpus_covers_every_document_kind_the_store_holds() {
     let state = shipped_state();
     let kinds: BTreeSet<DocKind> = state.docs.keys().map(|d| d.kind).collect();
     for kind in DocKind::ALL {
+        if KINDS_NOT_SHIPPED_YET.contains(&kind) {
+            continue;
+        }
         assert!(kinds.contains(&kind), "no shipped document of kind {kind}");
+    }
+    for kind in KINDS_NOT_SHIPPED_YET {
+        assert!(
+            !kinds.contains(&kind),
+            "the corpus now carries a {kind} document — drop {kind} from KINDS_NOT_SHIPPED_YET so \
+             this assert covers it again"
+        );
     }
 }
 

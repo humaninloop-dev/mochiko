@@ -59,9 +59,16 @@ pub fn ordered_remove<T>(items: &mut Ordered<T>, key: &str) -> bool {
 // document identity
 // ---------------------------------------------------------------------------
 
-/// The eight document kinds the store holds. The four rule-bearing kinds decode to a
-/// [`RuleSchema`], the two registries to a [`LabelRegistry`], and templates and shelf data stay
-/// opaque YAML — the binary renders them but owns no grammar for them.
+/// The nine document kinds the store holds. The four rule-bearing kinds decode to a
+/// [`RuleSchema`], the two registries to a [`LabelRegistry`], and templates, shelf data and
+/// artifact homes stay opaque YAML — the binary renders them but owns no grammar for them.
+///
+/// `Home` joined at the hook-enforced-artifact-schema wave 1. It is opaque for the same reason a
+/// template is: the store carries the document, and [`crate::home::Home`] decodes it at the point
+/// of use. Adding a kind is additive under the log's grammar — an older reader rejects an unknown
+/// `kind:` loudly rather than replaying a state quietly missing the document (see
+/// `plugins/mochiko/migrations/README.md` § Change ops), and no binary is published yet, so the
+/// `1..1` range freezes at the first publish with this kind inside it.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub enum DocKind {
     Command,
@@ -72,11 +79,12 @@ pub enum DocKind {
     SkillLabels,
     Template,
     Shelf,
+    Home,
 }
 
 impl DocKind {
     /// Every kind, for exhaustive iteration in tests and reports.
-    pub const ALL: [DocKind; 8] = [
+    pub const ALL: [DocKind; 9] = [
         DocKind::Command,
         DocKind::Skill,
         DocKind::CommandCommon,
@@ -85,6 +93,7 @@ impl DocKind {
         DocKind::SkillLabels,
         DocKind::Template,
         DocKind::Shelf,
+        DocKind::Home,
     ];
 
     /// The kind's wire spelling — the token a migration file writes.
@@ -98,6 +107,7 @@ impl DocKind {
             DocKind::SkillLabels => "skill-labels",
             DocKind::Template => "template",
             DocKind::Shelf => "shelf",
+            DocKind::Home => "home",
         }
     }
 
@@ -121,9 +131,12 @@ impl DocKind {
 
     /// Whether `replace-document` is legal for this kind. Rule-bearing documents and registries
     /// change one addressable node at a time so the log stays a per-rule history; wholesale
-    /// replacement is reserved for the two kinds the store carries opaquely.
+    /// replacement is reserved for the three kinds the store carries opaquely.
+    ///
+    /// A home is replaceable for the same reason a template is, and for one of its own: a home's
+    /// budget table is re-keyed as a set, so replacing the document is the honest op for it.
     pub fn is_replaceable(self) -> bool {
-        matches!(self, DocKind::Template | DocKind::Shelf)
+        matches!(self, DocKind::Template | DocKind::Shelf | DocKind::Home)
     }
 
     /// The label registry a document of this kind draws its labels from.
