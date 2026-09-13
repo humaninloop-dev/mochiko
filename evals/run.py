@@ -71,17 +71,25 @@ def sha(text: str) -> str:
 
 # ---------- provisioning ----------
 
+POST_REF = "HEAD"  # the post arm is the committed tree; "worktree" opts into the working copy
+
+
 def provision_plugin(dest: pathlib.Path, old_ref: str | None) -> pathlib.Path:
-    """plugins/mochiko at the working tree or a git-archived old ref, at `dest/mochiko`."""
+    """plugins/mochiko git-archived at a ref, at `dest/mochiko`: `old_ref` for the pre arm,
+    POST_REF (HEAD) for post. The working copy is provisioned only under
+    `--post-ref worktree`: an untracked or half-written file there rides into every post
+    session (2026-09-13: a malformed draft migration made every skill's rule render fail and
+    invalidated two grids' post arms)."""
     plug = dest / "mochiko"
-    if old_ref is None:
+    ref = old_ref or POST_REF
+    if ref == "worktree":
         shutil.copytree(PLUGIN, plug)
     else:
         plug.mkdir(parents=True)
-        ar = subprocess.run(["git", "-C", str(REPO), "archive", old_ref, "plugins/mochiko"],
+        ar = subprocess.run(["git", "-C", str(REPO), "archive", ref, "plugins/mochiko"],
                             capture_output=True)
         if ar.returncode != 0:
-            die(f"git archive {old_ref} failed: {ar.stderr.decode()[-500:]}")
+            die(f"git archive {ref} failed: {ar.stderr.decode()[-500:]}")
         subprocess.run(["tar", "-x", "--strip-components", "2", "-C", str(plug)],
                        input=ar.stdout, check=True)
     return plug
@@ -123,7 +131,7 @@ def pins(skill: str, plug: pathlib.Path | None, old_ref: str | None) -> dict:
                           text=True).stdout.strip()
     out = {"skill": skill, "cli": cli, "mochiko_cli": mcli, "session_model": SESSION_MODEL,
            "permission_mode": PERMISSION_MODE, "judge_prompt_sha256": JUDGE_PROMPT_SHA,
-           "old_ref": old_ref}
+           "old_ref": old_ref, "post_ref": None if old_ref else POST_REF}
     if plug is not None:
         manifest = plug / ".claude-plugin" / "plugin.json"
         out["plugin_version"] = json.loads(manifest.read_text()).get("version")
@@ -729,6 +737,8 @@ def main() -> None:
     global MODE
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--local", action="store_true", help="--bare + ANTHROPIC_API_KEY")
+    ap.add_argument("--post-ref", default="HEAD",
+                    help="git ref the post arm is archived from (default HEAD; 'worktree' copies the working tree)")
     sub = ap.add_subparsers(dest="cmd", required=True)
     for name in ("probe", "grid", "report", "rejudge"):
         p = sub.add_parser(name)
@@ -753,6 +763,8 @@ def main() -> None:
                            help="halt the grid when session spend passes this (resumable)")
     args = ap.parse_args()
     MODE = "local" if args.local else "host"
+    global POST_REF
+    POST_REF = args.post_ref
     WORK.mkdir(exist_ok=True)
     if args.cmd == "probe":
         cmd_probe(args.skill, args.old_ref, args.arm)
