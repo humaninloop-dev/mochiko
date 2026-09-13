@@ -164,7 +164,11 @@ def claude_args(prompt: str, model: str, max_turns: int, plugin: pathlib.Path | 
     if MODE == "local":
         args.insert(1, "--bare")  # hermetic, needs ANTHROPIC_API_KEY
     if plugin is not None:
-        args += ["--plugin-dir", str(plugin)]
+        # The plugin tree sits beside the workspace; without --add-dir every Read of a
+        # skill's references/ is auto-denied in headless mode (RPA/VC baselines 2026-09-13:
+        # two post sessions stopped on it, others read through python). The seat may read
+        # its own skill's references as it would in a real session.
+        args += ["--plugin-dir", str(plugin), "--add-dir", str(plugin)]
     return args
 
 
