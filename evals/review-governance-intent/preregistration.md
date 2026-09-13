@@ -242,8 +242,8 @@ Filled 2026-09-13 from `runs/baseline` (27 valid sessions, 3 goldens × noskill/
 runner 88060e2 → 87930d0 mid-grid — the post arm archived from HEAD after an untracked draft
 migration in the working tree broke every rule render; the single affected post session and, later,
 six session-limit sessions were dropped and re-run; MISSING verdicts 0). This skill ships no
-`references/` directory, so the `--add-dir` defect found on the same day (runner 8e3e… next commit)
-does not touch its read.
+`references/` directory, so the `--add-dir` defect found on the same day (runner ebcab85) does not
+touch its read.
 
 - prune result (rules tagged model-native, sessions, spend): **1 of 35** — `unresolvable-is-commentary`.
   `noskill` flaky 37/75 invited pairs; fails the deterministic layer 9/9; edits a handed-in file once

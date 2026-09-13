@@ -325,3 +325,16 @@ the load gate marked all 27 invalid — and was deleted before this run).
   inside the spend cap, over the 27-session cap). Standing finding either way: both arms drop
   VALIDATION RESULT accounting lines on a third to a half of runs — the block form is the
   weakest-held part of the skill in both bodies.
+
+### Addendum — 2026-09-13, `--add-dir` instrument defect (runner ebcab85)
+
+The pre and post reads above are **compromised**: this skill's procedure reads
+`references/QUALITY-CHECKLIST.md` and `references/ANTI-PATTERNS.md`, which sit in the plugin tree
+beside the workspace, and in headless mode every Read outside the workspace was auto-denied until
+the runner passed `--add-dir` for the plugin tree (found on the review-plan-artifacts grid the same
+day: two post sessions stopped on the denial, others read through python). Sessions that could not
+open the checklist had no X/Y to enumerate — the "VALIDATION RESULT accounting lines dropped on a
+third to a half of runs" finding above may be this defect rather than the skill's. The nine
+`noskill` sessions stand (no plugin, nothing to read); the pre and post arms are re-run under the
+fixed runner once the user rules on the session cap (18 sessions ≈ US$ 10; total spend then ≈ US$ 24
+of 25). Kit status until then: **VOID pending re-run** (supersedes HALTED above).
