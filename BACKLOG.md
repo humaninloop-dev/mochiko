@@ -21,6 +21,27 @@ uncompressed. Prior groom narrative: git history (this line, before this groom).
 
 ---
 
+## Hook-enforced artifact schema build
+
+*(ruled + accepted 2026-09-13, `hook-enforced-artifact-schema` D1–D11 as review-amended;
+provenance: `.mochiko/brainstorms/hook-enforced-artifact-schema/record.md`)*
+
+- [ ] **Hook-enforced artifact schema — waves 0–5** (2026-09-13; provenance: the record's D8,
+  D10, D11). **Wave 0 DONE 2026-09-13 (PROCEED; `wave0-probe-report.md`)** — probe: hooks fire for `Agent` subagents / teammates / `--agent`;
+  `Read` field name; `Bash` heredoc write seen; deny holds under `bypassPermissions`/`acceptEdits`/
+  `auto`; dead-gate behavior; aggregate per-run cost incl. every shell call — abort if silent for
+  `Agent` subagents or over the per-run budget (absorbs the eval-v2 agents-as-schema probe).
+  **Wave 1** — crate: `home` kind + grammar bump, `check --hook-json -`, `home`, per-section
+  conformance, producer-view block, matrices; exit = crate published. **Wave 2** — governance
+  amend (D7 supersession, GI-019 carve, `rust-cli.md` strip, hooks-disabled scope line).
+  **Wave 3** — census over kinako's and mochiko's `.mochiko/` trees (288 files) → one migration:
+  homes, sets, bindings, conformance blocks, the authoring-time rule per producing primitive, the
+  budget table **user-ratified as one artifact** (OQ1/OQ2 ruled there). **Wave 4** — hooks ship
+  (two scripts, `hooks.json`), contract cases per exit code and shell leg, `impl.reports-envelope`
+  re-key, strips + audits, `plugin.json` bump. **Wave 5** — violator pass on kinako with the
+  pre-gate plugin, upgrade, dogfood run; watch: denies by kind, section sizes, per-home total
+  volume, reports-per-run, reminder lines (OQ3/OQ4 closed by the probe).
+
 ## CLI schema-delivery build
 
 *(ruled + accepted 2026-09-03, `cli-schema-delivery` D1–D11 as review-amended; provenance:
@@ -120,7 +141,9 @@ trail (2026-09-08); their open residue is carried below.)*
 - [ ] **Agents-as-schema channel probe** (D4 door) — does a plugin hook fire for a `--agent`
   session, an `Agent` subagent, and an agent-team teammate, with injected text landing before the
   first model turn? Three legs; a census opens only on a positive result. `!` injection in agent
-  bodies is ruled out (record F12).
+  bodies is ruled out (record F12). **Absorbed 2026-09-13 into the hook-enforced artifact schema
+  wave-0 probe** (`hook-enforced-artifact-schema` D8 — same three legs, one session); result
+  lands here.
 - [ ] **Command-target residue (carried from the plan-only section)** — **runner defect found
   2026-09-08:** `evals/commands/run.py` `extract_rules` still reads `plugins/mochiko/schemas/*.yaml`,
   deleted at v0.107.0, so `check-rubric` / `partition` / `judge` for commands fail at HEAD — re-key
@@ -467,10 +490,6 @@ Ruling: DECISIONS.md row 2026-08-04 (AR-D1–D6); test deliberately parked for a
 
 ## Open design decisions
 
-- [ ] **Prose vs. gate allocation** (2026-06-27; provenance: unrecoverable —
-  `agent-skills-research/synthesis/my-framework.md`, submodule removed 2026-07-21) — which
-  behaviors earn graded anti-rationalization prose vs a hard `PreToolUse` hook? Kernel excluded;
-  allocate between prose and hook.
 - [ ] **Claude-Code portability** (2026-06-27; provenance: unrecoverable — same source) —
   `rfc2119-invocation-trigger` + `disable-model-invocation` are CC-specific: adopt-and-bind or
   abstract? Surfaces when the router evolves.
