@@ -398,6 +398,10 @@ def skill_session(skill: str, golden: dict, arm: str, old_ref: str | None,
     }
     if asserts["auth_failure"]:
         die("claude -p reports 'Not logged in' — run /login, then re-run")
+    if "session limit" in text.lower() or (out["models"] and all(m == "<synthetic>" for m in out["models"])):
+        # A session-limit hit answers every session with a synthetic error; burning through
+        # the grid would store nothing valid. Halt; the grid resumes on the same --out.
+        die(f"session limit hit ({text.strip()[:120]!r}) — resume the grid after the reset")
     valid = (asserts["load_gate"] and asserts["model_ok"] and not asserts["no_result"]
              and not asserts["is_error"]
              and (arm == "noskill" or (fired and asserts["rules_delivered"]
