@@ -370,8 +370,11 @@ def skill_session(skill: str, golden: dict, arm: str, old_ref: str | None,
     not_delivered = "rules not delivered" in (text + artifact)
     mochiko_loaded = any(n == "mochiko" for n, _ in loaded)
     asserts = {
-        # The control must run bare: no mochiko plugin loaded, no skill fired.
-        "load_gate": ((not mochiko_loaded and not fired) if arm == "noskill"
+        # The control must run bare: no mochiko plugin loaded. The bare model may still
+        # attempt the Skill tool on the same prompt (the call errors — no such skill); that
+        # attempt is recorded in `skills_fired` and is not a gate failure (grid 2026-09-13:
+        # every control session tried it).
+        "load_gate": ((not mochiko_loaded) if arm == "noskill"
                       else ("mochiko", run_pins.get("plugin_version")) in loaded),
         "loaded_plugins": loaded,
         "skill_fired": fired if arm != "noskill" else None,
