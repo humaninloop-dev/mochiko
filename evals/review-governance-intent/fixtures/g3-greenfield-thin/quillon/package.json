@@ -1,0 +1,28 @@
+{
+  "name": "quillon",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "lint": "prettier --check . && eslint .",
+    "test": "echo \"no tests yet\" && exit 0",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate"
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-vercel": "5.4.3",
+    "@sveltejs/kit": "2.5.27",
+    "drizzle-kit": "0.24.2",
+    "eslint": "9.9.0",
+    "prettier": "3.3.3",
+    "svelte": "4.2.19",
+    "typescript": "5.5.4",
+    "vite": "5.4.3"
+  },
+  "dependencies": {
+    "drizzle-orm": "0.33.0",
+    "postgres": "3.4.4"
+  }
+}

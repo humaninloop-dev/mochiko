@@ -1,0 +1,7 @@
+{
+  "name": "halyard",
+  "stack": "heroku-24",
+  "formation": { "web": { "quantity": 1, "size": "standard-1x" } },
+  "addons": ["heroku-postgresql:standard-0", "papertrail:choklad"],
+  "env": { "DJANGO_SETTINGS_MODULE": { "value": "halyard.settings.production" } }
+}
