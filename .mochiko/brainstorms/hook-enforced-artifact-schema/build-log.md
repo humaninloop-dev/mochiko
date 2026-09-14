@@ -467,3 +467,14 @@ only; no shared write surface unless disclosed here.
   the original `claude_args` from `32c1ed5` in isolation — argv identical across three modes).
   Cycle-report carried items 1 and 5 cleared as discharged (reminder golden frozen via
   `REMINDER_GOLDEN`; audit routing ruled and run). **WAVE 4 CLOSED (lead).**
+- 2026-09-15 · `wave5-plan.md` (`qa-wave0`, 119 lines) read and **approved**. Inventory
+  (fresh-write reading, no amnesty): mochiko 474 files / 143 deny (path 69 · size 58 · set 14 ·
+  shape 2); kinako 499 / 360 (path 202 · size 114 · shape 32 · set 12). Path is the only
+  non-relaxable measure → the re-home half (297 moves: mochiko 83, kinako 214; pointer fixes 204
+  / 143) is mandatory, the size half is carried by amnesty (recommendation: rewrite nothing).
+  Under the pending C1 amendment mochiko's size denies fall 58 → 6, kinako's 114 → 102 (67
+  report-section, 33 whole-file 300–4,744). Findings for the user: 161 kinako evidence files
+  (154 `.txt`) have no legal home under `.mochiko/` (recommend moving the tree out);
+  `build-log.md` fits no amendment row (needs a `form: log` row); kinako's plugin is a
+  project-scoped 0.103.0 pin. Lead calls by analogy: `B61` = R1; `EPIC-001/landing/` → that
+  epic's `reports/`. **Mochiko re-home half OPEN** on `qa-wave0`, one class per commit.
