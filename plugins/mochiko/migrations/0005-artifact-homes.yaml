@@ -6,7 +6,7 @@ intent: >-
   import the report envelope and the split architecture templates, and mint the authoring-time
   home rule on every producing primitive the log carries.
 anchor: 2026-09-13 hook-enforced-artifact-schema D3
-hash: sha256:c3eb3dd3c1f6b73ab96175c84cb2f8397a4a999c60066e948ccad5b3ddfcc594
+hash: sha256:a9af4a1953c4b01d9cc43bf41030c1e7df6f91cd9f47ad3442d116e3b4c66b7a
 changes:
   - op: import-document
     kind: home
@@ -29,13 +29,18 @@ changes:
       bounds: whole-file
       deliverables:
         - file: record.md
-          max_lines: 150
+          bound_reason: >-
+            a decision record is as long as the session it records; the cold review grades it, and
+            a line count invented for it would be enforced against work it cannot measure
         - file: synthesis.md
-          max_lines: 150
+          bound_reason: >-
+            a decision record is as long as the session it records; the cold review grades it, and
+            a line count invented for it would be enforced against work it cannot measure
         - file: build-log.md
-          max_lines: 150
+          form: log
+          entry_max_lines: 60
         - file: wave<n>-<slug>.md
-          max_lines: 150
+          max_lines: 300
       subdirs: [inputs, research, referents]
       reports:
         envelope: report-envelope
@@ -74,13 +79,13 @@ changes:
         - file: spec.md
           template: spec
         - file: derivation.md
-          max_lines: 150
+          max_lines: 300
         - file: data-model.md
-          max_lines: 150
+          max_lines: 300
         - file: constraints-and-decisions.md
-          max_lines: 150
+          max_lines: 300
         - file: quickstart.md
-          max_lines: 150
+          max_lines: 300
       subdirs: [stories, contracts, prototype, map-delta]
       reports:
         envelope: report-envelope
@@ -153,25 +158,25 @@ changes:
         - file: tasks.md
           template: tasks
         - file: plan.md
-          max_lines: 150
+          max_lines: 300
         - file: requirements.md
-          max_lines: 150
+          max_lines: 300
         - file: design-closure.md
-          max_lines: 150
+          max_lines: 300
         - file: baseline-delta.md
           max_lines: 300
         - file: sufficiency-report.md
-          max_lines: 150
+          max_lines: 300
         - file: data-model.md
-          max_lines: 150
+          max_lines: 300
         - file: constraints-and-decisions.md
-          max_lines: 150
+          max_lines: 300
         - file: architecture.md
-          max_lines: 150
+          max_lines: 300
         - file: proposal.md
-          max_lines: 150
+          max_lines: 300
         - file: contest-brief.md
-          max_lines: 150
+          max_lines: 300
         - file: gates.md
           max_lines: 150
       subdirs: [contracts]
@@ -201,7 +206,7 @@ changes:
       bounds: whole-file
       deliverables:
         - file: derivation.md
-          max_lines: 150
+          max_lines: 300
       reports:
         envelope: report-envelope
         by_type: {}
@@ -215,23 +220,23 @@ changes:
       bounds: template
       deliverables:
         - file: manifest.md
-          max_lines: 150
+          max_lines: 300
         - file: proposal.md
-          max_lines: 150
+          max_lines: 300
         - file: contest-brief.md
-          max_lines: 150
+          max_lines: 300
         - file: architecture.md
-          max_lines: 150
+          max_lines: 300
         - file: data-model.md
-          max_lines: 150
+          max_lines: 300
         - file: constraints-and-decisions.md
-          max_lines: 150
+          max_lines: 300
         - file: quickstart.md
-          max_lines: 150
+          max_lines: 300
         - file: build-order.md
-          max_lines: 150
+          max_lines: 300
         - file: screens-and-flows.md
-          max_lines: 150
+          max_lines: 300
         - file: implement-log.md
           form: log
           entry_max_lines: 60
@@ -262,11 +267,11 @@ changes:
       bounds: template
       deliverables:
         - file: data-model.md
-          max_lines: 150
+          max_lines: 300
         - file: constraints-and-decisions.md
-          max_lines: 150
+          max_lines: 300
         - file: quickstart.md
-          max_lines: 150
+          max_lines: 300
       subdirs: [architecture, contracts]
   - op: import-document
     kind: home
@@ -316,7 +321,7 @@ changes:
       bounds: whole-file
       deliverables:
         - file: sufficiency-report.md
-          max_lines: 150
+          max_lines: 300
         - file: baseline-delta.md
           max_lines: 300
       reports:

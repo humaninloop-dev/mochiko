@@ -81,6 +81,15 @@ pub struct Deliverable {
     /// The per-entry bound for `form: log`.
     #[serde(default)]
     pub entry_max_lines: Option<usize>,
+    /// Why this template-less deliverable carries no size bound at all.
+    ///
+    /// The per-deliverable analogue of a home's `bounds_cite`: a bound may be declared absent, but
+    /// never silently absent. Some artifacts are as long as their subject — a decision record's
+    /// length is the session's — and a number invented for them would be enforced against work it
+    /// cannot measure. Present with no `max_lines` is the declared-unbounded class; present *with*
+    /// one is a contradiction `migrate validate` rejects.
+    #[serde(default)]
+    pub bound_reason: Option<String>,
 }
 
 /// A home's `reports/` directory: names are free, types are enumerated (record D2).

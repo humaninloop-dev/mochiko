@@ -642,11 +642,13 @@ running record)
   `architecture-spine`, `architecture-concerns`), 5 replacements incl. the `tasks` skeleton fix
   (R7), 17 `artifact-home` floor mints, 1 reword; `check` 27 ms on the grown log. R1–R11 ruled
   as proposed. `wave3-budget-table.md` re-attributed to `artifact-format.md` rule 4 as amended;
-  under the gate rule 4's defaults become caps (escapes structural). **Ratification pending the
-  C1 amendment** (record/synthesis unbounded · template-less pipeline deliverables and
-  `wave<n>-<slug>.md` 300 · entry-class 150).
+  under the gate rule 4's defaults become caps (escapes structural). **Ratified 2026-09-15 by the user with
+  the C1 amendment** (four rows: `record.md`/`synthesis.md` no size bound · template-less
+  pipeline deliverables and `wave<n>-<slug>.md` 300 · entry-class 150 · `build-log.md` a log at
+  60 per entry) — D6's gate closed; `0005` and the table re-keyed to it (wave-3 close commit).
 - **Wave 4 (2026-09-15, built, audits PASS, review PASS, delta-check CLEAN; bump staged at
-  0.109.0, NOT landed):** two registrations (un-narrowed `Write|Edit`; `Bash`/`PowerShell` on
+  0.109.0, NOT landed; the user ruled 2026-09-15 to set up the two owed publish controls and
+  publish — the bump follows the publish and the full contract run):** two registrations (un-narrowed `Write|Edit`; `Bash`/`PowerShell` on
   `*.mochiko*`; `SubagentStart`), two parse-nothing wrappers (explicit allow always; exit-4
   empty-stdout guard), file-set amnesty as ratified (the ledger's "bare allow" description was
   wrong — pre-fix behaviour was deny at exit 4 on both limbs; corrected in the bump's PATCH),

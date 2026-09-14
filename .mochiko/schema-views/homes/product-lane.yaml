@@ -5,7 +5,7 @@ path: [.mochiko, product, <slug>]
 bounds: whole-file
 deliverables:
   - file: sufficiency-report.md
-    max_lines: 150
+    max_lines: 300
   - file: baseline-delta.md
     max_lines: 300
 reports:

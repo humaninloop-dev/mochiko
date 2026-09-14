@@ -391,7 +391,7 @@ any rule is where drift starts. User ruling, dimension 9: "leave these out."
   adequacy — those stay with the review skills and the author≠grader ceremony. It is not
   sequencing: the gate names no seat, no order, no stage. It is not a pipeline gate: a denied
   write is re-emitted, the run continues, and the two-strike halt sentence is advisory (D9).
-  **Condition, standing open (review C1, user-ruled 2026-09-14, road (a)):** the clause holds on a
+  **Condition (review C1, user-ruled 2026-09-14, road (a)) — DISCHARGED 2026-09-15: the budget table was ratified by the user with the C1 amendment (record/synthesis unbounded · template-less pipeline deliverables and wave files 300 · entry-class 150 · `build-log.md` a log at 60 per entry); status flip transcribed at the wave-3 close, to be carried into the amendment log by the pre-authorized PATCH v3.1.1. As written at AM-3:** the clause holds on a
   user-ratified budget table (D6, wave 3's gate) that admits honest content. A bound honest
   content cannot meet is a table defect, corrected by ruling at the table and never by the hook;
   record OQ1 — whether a prose-shaped deliverable carries a budget or `max_lines: none` — is ruled
@@ -480,7 +480,7 @@ delivery/composition roles, never the judgment or orchestration skills own. Soft
 v1.0.0 absolute no-kernel position per the D11 ruling (evidence basis n=0 — the recorded concession
 is that template delivery alone would not carry the CLI; the machine rides the foundation bet).
 
-**Trace**: GI-019 (minted at AM-1; driver: `.mochiko/brainstorms/schema-based-template-guidance/record.md` D11 · **widened admission: `cli-schema-delivery` D11 (AM-2, v3.0.0)** — bright-line text unchanged, the three clauses recorded as its argument; AM-1's template-scope limb discharged, the no-general-kernel and no-orchestration limbs standing; **conformance-gate admission: `hook-enforced-artifact-schema` D1/D7 (AM-3, v3.1.0)** — bright-line text unchanged, clause (iv) recorded with its C1 budget-table condition standing open; `cli-schema-delivery` D7 narrowly superseded, its judgment/sequencing decline standing; `.claude/rules/mochiko/rust-cli.md`'s bright-line bullet superseded by ruling, prior text preserved above)
+**Trace**: GI-019 (minted at AM-1; driver: `.mochiko/brainstorms/schema-based-template-guidance/record.md` D11 · **widened admission: `cli-schema-delivery` D11 (AM-2, v3.0.0)** — bright-line text unchanged, the three clauses recorded as its argument; AM-1's template-scope limb discharged, the no-general-kernel and no-orchestration limbs standing; **conformance-gate admission: `hook-enforced-artifact-schema` D1/D7 (AM-3, v3.1.0)** — bright-line text unchanged, clause (iv) recorded with its C1 budget-table condition discharged 2026-09-15 by the ratified table; `cli-schema-delivery` D7 narrowly superseded, its judgment/sequencing decline standing; `.claude/rules/mochiko/rust-cli.md`'s bright-line bullet superseded by ruling, prior text preserved above)
 
 ### GI-020 — Clone-Only Install with a Required `mochiko-cli` Dependency · home: CLAUDE.md `## Non-negotiable constraints` (prose)
 

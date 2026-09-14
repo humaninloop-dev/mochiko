@@ -11,6 +11,7 @@
 use mochiko_cli::home::{self, Bounds, Homes, Resolution};
 use mochiko_cli::migration;
 use mochiko_cli::model::{DocKind, DocRef, Document};
+use mochiko_cli::render;
 use mochiko_cli::replay::{self, State};
 use mochiko_cli::views;
 use std::path::{Path, PathBuf};
@@ -1311,4 +1312,68 @@ fn the_shared_fixture_log_never_answers_with_empty_stdout_on_a_non_deny() {
         );
         assert_eq!(outcome.exit_code(), 0);
     }
+}
+
+// ---------------------------------------------------------------------------
+// what `mochiko-cli home` says about each bound arm
+// ---------------------------------------------------------------------------
+
+/// The three ways a deliverable can be bounded, as a seat reads them before the first write.
+///
+/// The render is the delivery surface: a bound recorded in the log but not printed here is a rule
+/// nobody sees. The declared-unbounded arm matters most — its whole point is that the ruling is
+/// carried, not that the number is absent.
+#[test]
+fn the_home_render_names_each_bound_arm_as_the_log_declares_it() {
+    let body = r#"
+grammar: 1
+id: 0001-homes
+sequence: 1
+intent: One home carrying all three bound arms.
+changes:
+  - op: import-document
+    kind: home
+    name: session
+    content:
+      home: session
+      title: One thinking session's home
+      path: [".mochiko", "brainstorms", "<slug>"]
+      bounds: whole-file
+      deliverables:
+        - file: record.md
+          bound_reason: the session it records
+        - file: wave<n>-<slug>.md
+          max_lines: 300
+        - file: build-log.md
+          form: log
+          entry_max_lines: 60
+"#;
+    let state = state("render-bound-arms", body);
+    let ctx = render::Context {
+        binary: "0.1.0".to_string(),
+        grammar: 1,
+        plugin: "test".to_string(),
+    };
+    let view = render::home_view(
+        &state,
+        Path::new(".mochiko/brainstorms/demo/record.md"),
+        &ctx,
+    );
+
+    assert!(
+        view.contains("record.md · no template · no size bound — the session it records"),
+        "the declared-unbounded arm prints its reason where a seat reads it: {view}"
+    );
+    assert!(
+        view.contains("wave<n>-<slug>.md · no template · 300 lines, whole file"),
+        "the whole-file arm prints its number: {view}"
+    );
+    assert!(
+        view.contains("build-log.md · append-only log · 60 lines per `##` entry"),
+        "the log arm prints the per-entry bound and the entry shape: {view}"
+    );
+    assert!(
+        !view.contains("no bound declared"),
+        "no arm here is silently unbounded: {view}"
+    );
 }

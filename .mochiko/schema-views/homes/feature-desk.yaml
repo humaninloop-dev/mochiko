@@ -5,7 +5,7 @@ path: [.mochiko, features, desk, <date-slug>]
 bounds: whole-file
 deliverables:
   - file: derivation.md
-    max_lines: 150
+    max_lines: 300
 reports:
   envelope: report-envelope
   by_type: {}

@@ -1,9 +1,10 @@
 # Wave 3 — the budget table (for the user's ratification)
 
-**Author:** staff-engineer seat, wave 3 · **Date:** 2026-09-13 · **Ruling home:** record D6, D4a/D4f,
-OQ1 · **Keyed to:** `plugins/mochiko/templates/artifact-format.md` rule 4 and `report-format.md`,
+**Author:** staff-engineer seat, wave 3 · **Date:** 2026-09-13 · **Status: ratified 2026-09-15 with
+the C1 amendment** (four rows moved; the rest as tabled) · **Ruling home:** record D6, D4a/D4f, OQ1 ·
+**Keyed to:** `plugins/mochiko/templates/artifact-format.md` rule 4 and `report-format.md`,
 as amended by the ADR `.mochiko/decisions/2026-08-22-verbosity-envelope-enforcement.md` · **Built
-into:** `plugins/mochiko/migrations/0005-artifact-homes.yaml`, landed and not yet gating.
+into:** `plugins/mochiko/migrations/0005-artifact-homes.yaml`, re-keyed to the amendment.
 
 Ratifying this table settles the per-section budgets a templated artifact carries, the whole-file
 bound a template-less one carries, and where the answer is deliberately **no bound at all**. Nothing
@@ -84,17 +85,21 @@ under the wrong heading. R7 fixes the skeleton, and the 6 lines bind the prose i
 
 ## Whole-file bounds — the template-less deliverables
 
-All keyed **S**: no document-level line figure exists in artifact-format.md or the ADR, so 150 and
-300 are the seat's call rather than a derivation, and not read off the corpus either.
+All keyed **S**: no document-level line figure exists in artifact-format.md or the ADR, so every
+figure below is the seat's call rather than a derivation, and not read off the corpus either. **The
+C1 amendment moved four rows**; the classes, not the individual files, are what it ruled on.
 
 | bound | files |
 |---|---|
-| 150 | `record.md` · `synthesis.md` · `build-log.md` · `wave<n>-<slug>.md` · `<date-slug>.md` · `derivation.md` · `data-model.md` · `constraints-and-decisions.md` · `quickstart.md` · `US-<n>.md` · `FEATURES.md` · `README.md` · `selection-card.md` · `specs-index.md` · `plan.md` · `requirements.md` · `design-closure.md` · `sufficiency-report.md` · `architecture.md` · `proposal.md` · `contest-brief.md` · `gates.md` · `manifest.md` · `build-order.md` · `screens-and-flows.md` · `<AX-ID>.md` |
-| 300 | `baseline-delta.md` |
-| per entry, 60 | `implement-log.md` — a `form: log` deliverable is bounded per `##` entry, never per file (D4d) |
+| none | `record.md` · `synthesis.md` — a decision record is as long as the session it records, and the cold review grades it. Declared, never silent: the deliverable carries `bound_reason` and `mochiko-cli home` prints it |
+| 300 | the template-less pipeline deliverables — `data-model.md` · `constraints-and-decisions.md` · `requirements.md` · `architecture.md` · `derivation.md` · `plan.md` · `design-closure.md` · `sufficiency-report.md` · `proposal.md` · `contest-brief.md` · `quickstart.md` · `build-order.md` · `screens-and-flows.md` · `manifest.md` — plus `wave<n>-<slug>.md`, and `baseline-delta.md` as before |
+| 150 | the entry class — `US-<n>.md` · `<date-slug>.md` · `<AX-ID>.md` · `gates.md` · `README.md` · `selection-card.md` · `specs-index.md` · `FEATURES.md`. One row, one entry, one screen |
+| per entry, 60 | `implement-log.md` and `build-log.md` — a `form: log` deliverable is bounded per `##` entry, never per file (D4d). One entry is one `##` block, which is how the entry span is measured |
 
-Widest gaps: `baseline-delta.md` 4,745 against 300 · `architecture.md` 2,373 · `requirements.md`
-1,648 · `constraints-and-decisions.md` 1,437 · `data-model.md` 1,080. Every other file is under 840.
+The amendment does not close the corpus gaps, it halves the distance: `baseline-delta.md` 4,745
+against 300 · `architecture.md` 2,373 · `requirements.md` 1,648 ·
+`constraints-and-decisions.md` 1,437 · `data-model.md` 1,080. Every other file is under 840, and the
+two now-unbounded records are out of the count entirely. Closing the rest is the violator pass's.
 
 ## Where size is not checked at all (`bounds: elsewhere`, D4f/V2)
 
@@ -125,7 +130,7 @@ already names, verbatim rather than widened. The enum is also the D9 sniff's voc
 outside every home carrying one of these types is denied. `feature:` and `round:` stay conventional
 and unchecked, since a brainstorm-session report has no feature.
 
-## What ratification costs today
+## What ratification cost — ratified 2026-09-15 with the C1 amendment
 
 **A change in kind, first.** Rule 4 calls these numbers *defaults, not caps on substance*, and the
 ADR made an undisclosed overage an advisory finding a reviewer names. Under the gate they become
@@ -141,10 +146,27 @@ Two mechanisms keep the bite survivable:
 
 - **First-touch amnesty.** An `Edit` whose overage is already on disk and not made worse is allowed,
   with the standing overage named as context. Existing artifacts stay editable.
-- **The gate is not live.** `0005` declares; the hook lands at wave 4, and loosening a row before
-  then costs one migration and no code.
+- **The gate is live from wave 4.** `0005` declares and the hook now enforces, so loosening a row
+  costs a migration rather than an edit. The C1 amendment is exactly that move, taken before the
+  first gated run rather than after it.
 
-Four rows a fresh run would meet first: `governance-intent`'s `## Fact profile` (15 against 145
-observed) and `## Review` (25 against 167), both long by nature; `report-envelope`'s `## Notes of
-note` (15 against 314); `architecture-spine`'s `## Key flows` (30 against 221). Say the word on any
-of them and the number moves.
+Four section rows a fresh run would still meet first, none of them touched by C1:
+`governance-intent`'s `## Fact profile` (15 against 145 observed) and `## Review` (25 against 167),
+both long by nature; `report-envelope`'s `## Notes of note` (15 against 314);
+`architecture-spine`'s `## Key flows` (30 against 221). They stay as tabled, and each still moves
+for one migration if a run proves the number wrong.
+
+## The C1 amendment, as built
+
+| row | was | now | why |
+|---|---|---|---|
+| `record.md` · `synthesis.md` | 150 | **no bound**, with `bound_reason` | the length is the session's; the cold review is the grader a line count cannot be |
+| the fourteen template-less pipeline deliverables, and `wave<n>-<slug>.md` | 150 | **300** | the `baseline-delta.md` figure, applied to the class that writes at the same scale |
+| the entry class, eight files | 150 | **150** | unchanged — one row, one entry, one screen |
+| `build-log.md` | 150 whole-file | **`form: log`, 60 per entry** | a log grows by entries forever; bounding the file would wedge it at the first full one |
+
+Declaring the absence of a bound took one crate change: a template-less deliverable may now carry
+`bound_reason` in place of `max_lines`, `migrate validate` accepts it and rejects carrying both, and
+`mochiko-cli home` prints the reason where a seat reads it. Verified end to end: a 602-line
+`record.md` is allowed; a 301-line `wave<n>-<slug>.md` and a 301-line `data-model.md` are denied at
+300; a 62-line `build-log.md` entry is denied at 60; `gates.md` still denies at 151.

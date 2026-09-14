@@ -7,13 +7,13 @@ deliverables:
   - file: spec.md
     template: spec
   - file: derivation.md
-    max_lines: 150
+    max_lines: 300
   - file: data-model.md
-    max_lines: 150
+    max_lines: 300
   - file: constraints-and-decisions.md
-    max_lines: 150
+    max_lines: 300
   - file: quickstart.md
-    max_lines: 150
+    max_lines: 300
 subdirs: [stories, contracts, prototype, map-delta]
 reports:
   envelope: report-envelope

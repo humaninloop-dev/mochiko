@@ -7,25 +7,25 @@ deliverables:
   - file: tasks.md
     template: tasks
   - file: plan.md
-    max_lines: 150
+    max_lines: 300
   - file: requirements.md
-    max_lines: 150
+    max_lines: 300
   - file: design-closure.md
-    max_lines: 150
+    max_lines: 300
   - file: baseline-delta.md
     max_lines: 300
   - file: sufficiency-report.md
-    max_lines: 150
+    max_lines: 300
   - file: data-model.md
-    max_lines: 150
+    max_lines: 300
   - file: constraints-and-decisions.md
-    max_lines: 150
+    max_lines: 300
   - file: architecture.md
-    max_lines: 150
+    max_lines: 300
   - file: proposal.md
-    max_lines: 150
+    max_lines: 300
   - file: contest-brief.md
-    max_lines: 150
+    max_lines: 300
   - file: gates.md
     max_lines: 150
 subdirs: [contracts]

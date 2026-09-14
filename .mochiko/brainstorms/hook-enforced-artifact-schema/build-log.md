@@ -512,3 +512,40 @@ only; no shared write surface unless disclosed here.
   record/synthesis whole-file · 13 wave files · 5 report sections · 1 build log · 2 missing
   headings). QA caught and fixed two bugs in its own pointer pass (needle chaining; dropped
   session segment) and restored a stale worktree it had touched. Kinako half awaits the user.
+- 2026-09-15 · **user rulings:** budget table **ratified with the C1 amendment** (four rows);
+  **publish controls: yes** (user's act — manual-approval `crates-io` environment + signed tags,
+  then publish). Rulings 2–4 (size survivors · kinako evidence tree · kinako pass) still open.
+  Wave-3 re-key opened on `se-wave1` (`0005` + table; a small validate-rule extension likely for
+  `max_lines: none` on a template-less deliverable → `reviewer-2`).
+- 2026-09-15 · `wave5-gate6-plan.md` (`qa-wave0`, 59 lines) approved: full deterministic set =
+  87 cases (7 host + 80 sandboxed), ≈ 155 metered sessions, $13–16 (measured: mean $0.081 /
+  median $0.098 per session over 194 result events), ~1 h wall clock; pass = exit 0, every case
+  green, exit 3 blocks like exit 1. Two runner changes opened: the sandbox installs the
+  published crate at the tagged version behind an explicit gate flag (default stays the
+  worktree build), and a repeatable `--case` filter. Review by `reviewer-2`.
+- 2026-09-15 · wave-3 re-key done (`se-wave1`): 7 home ops' content changed, 31 deliverable rows
+  (28 → 300; `record.md`/`synthesis.md` → `bound_reason`, the crate's new no-bound shape since
+  YAML `none` is a string; `build-log.md` → `form: log` 60 per `##` entry); validate rejects a row
+  carrying both `max_lines` and `bound_reason`; `0005` restamped `a9af4a19…`; 462 tests; views
+  regenerated; `check` 28.0 ms on 14,082 lines; probes allow/deny on both sides of each bound.
+  Table 172 lines, stamped ratified, states the amendment halves the corpus gap (`baseline-delta`
+  4,745; `architecture.md` 2,373 remain far past 300 — the violator pass's territory, amnestied).
+  Bounded re-check dispatched to `reviewer-2`; wave-3 close commit follows.
+- 2026-09-15 · contract-runner changes built (`qa-wave0`; `run.py` +106/−9, README): `--case`
+  repeatable (unknown → exit 2; no-sandbox selection never starts the sandbox; FILTERED banner
+  twice, extended to `--host-only`); `MOCHIKO_GATE_VERSION=<x>` → sandbox `cargo install
+  mochiko-cli --version <x> --root /home/agent/.cargo-gate --locked` (install root outside the
+  default PATH; refusals: version mismatch, regex-failing pin before any shell call, nothing
+  runnable → skip). Proved via a stub-recorded sandbox (no crate published yet). Review queued on
+  `reviewer-2` after the re-key re-check.
+- 2026-09-15 · lead drafted `wave5-bump-patch.md` — the pre-authorized PATCH (v3.1.1) applied at
+  the 0.109.0 bump: GI-019 conformance-testability limb activated; the wave-4 precondition
+  struck once landed; the amnesty paragraph's "bare allow" description corrected on wave-4
+  evidence (deny at exit 4 on both limbs pre-fix); one pointer line for the gate's stated limits.
+  Graded by `mochiko:validation-constitution` at the bump.
+- 2026-09-15 · re-key reviewed **PASS** (`reviewer-2`: diff = 31 rows + hash, nine probe cells
+  clean, views byte-identical); minors R1 (tests inserted inside a doc comment) and R2 (the
+  `home` render line unasserted) routed. Status flips transcribed (user's ratification):
+  DECISIONS row → "ratified 2026-09-15 with the C1 amendment"; ledger GI-019 clause (iv)
+  condition + trace → DISCHARGED 2026-09-15; recorded in `wave5-bump-patch.md` §(e) for the
+  v3.1.1 log row.

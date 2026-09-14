@@ -334,3 +334,81 @@ cases, and the `observed` column of the budget table, which is stated as the gap
 source.
 
 **Status: CLEAN** — 8 of 8 Minor items held, no new findings, all five gates green.
+
+## Wave-3 re-key
+
+**PASS.** Two Minor fixes, neither blocking. Bounded re-check of the wave-3 re-key to the
+user-ratified C1 amendment, 2026-09-15, by the same non-author reviewer. Default FAIL; every claim
+below was reproduced rather than read. I edited nothing outside this section.
+
+**(1) The migration — held, exactly as described.** The diff touches 31 deliverable rows and the
+stamped hash, and nothing else: no `op:`, `name:` or `kind:` line moves, so no op was added, removed
+or retargeted, and the file still carries 46 ops in the wave-3 split of 23 `import-document`, 5
+`replace-document`, 17 `mint-rule` and 1 `reword-rule`. Counted off the diff rather than the prose:
+28 rows move `max_lines: 150` to `300`, two take `bound_reason` with no bound, and one takes
+`form: log` with `entry_max_lines: 60`, which sums to the 31 removed. The 28 resolve to 15 distinct
+file names — the fourteen template-less pipeline deliverables plus `wave<n>-<slug>.md` — repeated
+across the homes that declare them, with `data-model.md` and `constraints-and-decisions.md` at four
+homes each. Seven home documents change content: `brainstorm-session`, `spec`, `feature`,
+`feature-desk`, `epic`, `product`, `product-lane`. Eight rows stay at 150 and they are the eight the
+table calls the entry class. The stamp is `sha256:a9af4a19…`, up from the wave-3 `c3eb3dd3…` I
+delta-checked before, and it verifies: `migrate validate` reports `0 rejecting · 104 advisory`, and
+a body-hash mismatch is a rejecting finding. The views are regenerated, and I checked that by
+emitting to a scratch directory and diffing: byte-identical to the committed tree, 73 files each
+side, so the seven home views carry the re-key and nothing else drifted.
+
+**(2) The crate change — held.** `home.rs` gains `bound_reason: Option<String>` with the reasoning
+in its doc comment. `validate.rs` carries both limbs: the missing-bound rule now accepts a
+`bound_reason` in place of `max_lines`, and a new rule rejects a row carrying both, each under
+`Code::HomeBounds` — a code already in `Code::REJECTING` and already probed, from wave 3's own W4
+fix, so the coverage guard picks the new rule up for free. `render.rs` splits the template-less arm
+three ways, and I ran it rather than reading it: `mochiko-cli home .mochiko/brainstorms/demo/record.md`
+prints all four classes in one view — the two records as `no size bound` followed by their reason,
+`build-log.md` as `append-only log · 60 lines per ## entry`, and `wave<n>-<slug>.md` at
+`300 lines, whole file`. The two tests are the right two, each with the opposite cell as its control.
+Gates on my run: `cargo test --all` 462 passed 0 failed · `cargo fmt --all --check` exit 0 ·
+`cargo clippy --all-targets -- -D warnings` exit 0, zero warnings · `cargo audit --deny warnings`
+exit 0. The host contract suite is 7/7 besides.
+
+**(3) The budget table — held, and it reconciles row for row.** The header carries
+**Status: ratified 2026-09-15 with the C1 amendment**, and the costs section repeats the stamp in
+its own heading. The whole-file section is four classes now — none, 300, the 150 entry class, and
+60 per entry — and I checked the `as built` before/after table against the YAML rather than against
+itself: its "fourteen template-less pipeline deliverables, and `wave<n>-<slug>.md`" is exactly the
+15 distinct names the diff moves to 300, its "entry class, eight files" is exactly the eight rows
+still at 150, and its `record.md`/`synthesis.md` and `build-log.md` rows match the three remaining
+changed rows. It states the limit plainly: "The amendment does not close the corpus gaps, it halves
+the distance", then names `baseline-delta.md` at 4,745 against 300 and the four next-largest, and
+says closing the rest is the violator pass's. The two now-unbounded records are declared out of that
+count, which is honest rather than convenient.
+
+**(4) The probes — held, and I ran seven more than the two asked for.** A 602-line `record.md`
+allows, and so does a 5,000-line one, which is what "no bound" has to mean. A 301-line
+`data-model.md` denies with `is 301 lines against a whole-file bound of 300`; 300 allows. The table's
+other three claims hold too: a 301-line `wave<n>-<slug>.md` denies, `gates.md` denies at 151 and
+allows at 150, and a `build-log.md` entry over 60 lines denies on the entry, not the file. Nine
+cells, zero mismatches.
+
+**R1 — Minor, test hygiene.** The two new tests were inserted into the middle of an existing doc
+comment. `/// A2: the guard that keeps coverage complete as codes are added.` and its trailing `///`
+now sit directly above `a_template_less_deliverable_may_declare_no_bound_when_it_says_why`, so the
+A2 unit label documents the wrong function, while `every_rejecting_code_is_raised_by_some_probe`
+keeps only the second half of its comment and now opens "The previous version of this test…" with no
+antecedent. There is also no blank line between the second test's closing brace and that comment.
+It compiles and `cargo fmt` is clean, so nothing is broken — but A2 is a traceable unit id and it
+currently points at the wrong test. Fix: move the two tests below the coverage test, or move the
+orphaned two lines back onto it.
+
+**R2 — Minor, test coverage.** The `render.rs` change ships unasserted. No test anywhere reads the
+`mochiko-cli home` deliverable line: a grep for its three literals finds them only in `render.rs`.
+This is a standing gap rather than one this change created — the two older arms are equally
+unasserted — but the change widens it, and `tests/home.rs` with its `fixtures/home-log/` corpus is
+where the pattern for covering it already lives. I confirmed the new arm works by running the
+binary, which is not the same as the suite confirming it. Fix: one assertion over the three arms.
+
+**Outside the four graded parts, and the lead's to route.** Two governance surfaces still say the
+ratification has not happened. `DECISIONS.md`'s hook-enforced-artifact-schema row reads "wave 3
+built, budget table awaiting ratification", and the ledger's GI-019 clause (iv) still carries
+"**Condition, standing open** (review C1…)". The table now says ratified 2026-09-15. Under the KM
+invariants a status that disagrees across surfaces is a defect to fix on sight, and the C1 condition
+was written to be discharged by exactly this ratification.

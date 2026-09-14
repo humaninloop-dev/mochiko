@@ -1413,6 +1413,61 @@ fn change(intent: &str, body: &str) -> String {
     format!("grammar: 1\nid: 0002-change\nsequence: 2\nintent: {intent}\nchanges:\n{body}")
 }
 
+#[test]
+fn a_template_less_deliverable_may_declare_no_bound_when_it_says_why() {
+    // The C1 amendment: some artifacts are as long as their subject — a decision record's
+    // length is the session's — so a bound may be declared absent. Absent *and* explained
+    // validates; absent and silent does not, which is the probe in the rejecting-code set.
+    let mut state = corpus();
+    let yaml = [
+        "home: probe-unbounded-ok",
+        "title: Declared unbounded",
+        "path: [.mochiko, probe-unbounded-ok]",
+        "bounds: whole-file",
+        "deliverables:",
+        "  - file: record.md",
+        "    bound_reason: the session it records",
+    ]
+    .join("\n");
+    let value: serde_norway::Value = serde_norway::from_str(&yaml).expect("the probe parses");
+    state.docs.insert(
+        DocRef::new(DocKind::Home, "probe-unbounded-ok".to_string()),
+        Document::from_value(DocKind::Home, &value).expect("a home is opaque"),
+    );
+    assert!(
+        !codes(&state).contains(&Code::HomeBounds),
+        "a declared-unbounded deliverable that says why is legal: {:?}",
+        rejecting(&state)
+    );
+}
+
+#[test]
+fn a_deliverable_carrying_both_a_bound_and_a_reason_to_have_none_is_rejected() {
+    // Both is not belt and braces, it is two contradicting rulings in one row, and a reader
+    // has no way to tell which was meant.
+    let mut state = corpus();
+    let yaml = [
+        "home: probe-bound-both",
+        "title: Contradictory bound",
+        "path: [.mochiko, probe-bound-both]",
+        "bounds: whole-file",
+        "deliverables:",
+        "  - file: x.md",
+        "    max_lines: 10",
+        "    bound_reason: but also unbounded",
+    ]
+    .join("\n");
+    let value: serde_norway::Value = serde_norway::from_str(&yaml).expect("the probe parses");
+    state.docs.insert(
+        DocRef::new(DocKind::Home, "probe-bound-both".to_string()),
+        Document::from_value(DocKind::Home, &value).expect("a home is opaque"),
+    );
+    assert!(
+        codes(&state).contains(&Code::HomeBounds),
+        "a bound and a reason to have none contradict"
+    );
+}
+
 /// A2: the guard that keeps coverage complete as codes are added.
 ///
 /// The previous version of this test compared two set sizes that were equal by construction, so

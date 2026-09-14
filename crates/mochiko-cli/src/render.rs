@@ -617,9 +617,13 @@ pub fn home_view(state: &State, path: &Path, ctx: &Context) -> String {
                         "template `{template}` · `mochiko-cli template {template}` carries its \
                          section budgets"
                     ),
-                    (_, None) => match deliverable.max_lines {
-                        Some(lines) => format!("no template · {lines} lines, whole file"),
-                        None => "no template · no bound declared".to_string(),
+                    (_, None) => match (deliverable.max_lines, &deliverable.bound_reason) {
+                        (Some(lines), _) => format!("no template · {lines} lines, whole file"),
+                        // Declared unbounded, with the ruling carried to where a seat reads it.
+                        (None, Some(reason)) => {
+                            format!("no template · no size bound — {reason}")
+                        }
+                        (None, None) => "no template · no bound declared".to_string(),
                     },
                 };
                 body.push_str(&format!("  - {} · {shape}\n", deliverable.file));

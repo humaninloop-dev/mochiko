@@ -5,23 +5,23 @@ path: [.mochiko, epics, <EPIC-ID>]
 bounds: template
 deliverables:
   - file: manifest.md
-    max_lines: 150
+    max_lines: 300
   - file: proposal.md
-    max_lines: 150
+    max_lines: 300
   - file: contest-brief.md
-    max_lines: 150
+    max_lines: 300
   - file: architecture.md
-    max_lines: 150
+    max_lines: 300
   - file: data-model.md
-    max_lines: 150
+    max_lines: 300
   - file: constraints-and-decisions.md
-    max_lines: 150
+    max_lines: 300
   - file: quickstart.md
-    max_lines: 150
+    max_lines: 300
   - file: build-order.md
-    max_lines: 150
+    max_lines: 300
   - file: screens-and-flows.md
-    max_lines: 150
+    max_lines: 300
   - file: implement-log.md
     form: log
     entry_max_lines: 60

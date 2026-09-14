@@ -954,14 +954,29 @@ fn validate_homes(state: &State, findings: &mut Vec<Finding>) {
             if deliverable.form != Some(Form::Log)
                 && deliverable.template.is_none()
                 && deliverable.max_lines.is_none()
+                && deliverable.bound_reason.is_none()
                 && home.bounds != Bounds::Elsewhere
             {
                 findings.push(Finding::doc(
                     Code::HomeBounds,
                     doc,
                     format!(
-                        "deliverable `{}` carries no template and no `max_lines` — a \
-                         template-less deliverable takes a whole-file bound",
+                        "deliverable `{}` carries no template, no `max_lines` and no \
+                         `bound_reason` — a template-less deliverable takes a whole-file bound, or \
+                         declares the absence of one and says why",
+                        deliverable.file
+                    ),
+                ));
+            }
+            // An explicit `bound_reason` says the file is unbounded; a `max_lines` says it is not.
+            // Carrying both leaves a reader no way to tell which the ruling was.
+            if deliverable.bound_reason.is_some() && deliverable.max_lines.is_some() {
+                findings.push(Finding::doc(
+                    Code::HomeBounds,
+                    doc,
+                    format!(
+                        "deliverable `{}` carries both `max_lines` and `bound_reason` — a bound is \
+                         declared or its absence is, never both",
                         deliverable.file
                     ),
                 ));
