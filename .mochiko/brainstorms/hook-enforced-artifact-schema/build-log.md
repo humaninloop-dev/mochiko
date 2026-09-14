@@ -458,3 +458,12 @@ only; no shared write surface unless disclosed here.
   BACKLOG item wave statuses touched. Committing waves 3 + 4 as built and reviewed (bump staged,
   not landed; table re-key pending).
   `floor: tripped · seats: se-wave1 (mochiko:staff-engineer) + qa-wave0 (mochiko:qa-engineer) / validator (mochiko:validator) + reviewer-2 (mochiko:tech-lead)`
+- 2026-09-15 · **committed `5d8fc69`** — waves 3 + 4 as built and reviewed (104 files incl. the
+  staged 0.109.0 release files; not a release: feature branch, no tag, the bump "lands" only
+  under the AM-3 precondition). Tree clean. Wave 5 (violator pass) planning dispatched to
+  `qa-wave0` — re-home half independent of the table ruling, size-split half waits on it; mochiko
+  first (AM-3 C10), kinako on the user's word.
+- 2026-09-15 · reviewer-2 delta-check extended: **CLEAN 6/6** (W6 verified by reconstructing
+  the original `claude_args` from `32c1ed5` in isolation — argv identical across three modes).
+  Cycle-report carried items 1 and 5 cleared as discharged (reminder golden frozen via
+  `REMINDER_GOLDEN`; audit routing ruled and run). **WAVE 4 CLOSED (lead).**
