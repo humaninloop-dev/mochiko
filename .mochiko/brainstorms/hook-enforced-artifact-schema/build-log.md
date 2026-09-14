@@ -478,3 +478,11 @@ only; no shared write surface unless disclosed here.
   `build-log.md` fits no amendment row (needs a `form: log` row); kinako's plugin is a
   project-scoped 0.103.0 pin. Lead calls by analogy: `B61` = R1; `EPIC-001/landing/` → that
   epic's `reports/`. **Mochiko re-home half OPEN** on `qa-wave0`, one class per commit.
+- 2026-09-15 · **wave 5 class 1 committed `bd993c3`**: 51 reports out of nine `wave<n>-reports/`
+  dirs into each session's `reports/` as `wave<n>-<original>`; 47 stamped with the envelope
+  (22 `cycle` · 24 `review` · 1 `verification`), bodies byte-identical; mochiko path denies
+  69 → 18 (13 held plans + `wave0-fixtures/`, both class 2). Surfaced and amnestied: two
+  over-budget report sections (56/15, 90/15). **Finding:** the placeholder check fires on `<n>`
+  inside a backticked path pattern quoted in a frontmatter value — a quotation, not a
+  placeholder; crate fix (skip code spans, reuse the classifier) dispatched to `se-wave1`,
+  review by `reviewer-2`. Dead `producer_report:` pointer noted for class 4. Class 2 open.
