@@ -10,7 +10,7 @@ for, and it lives here.
 
 Most cases are one headless `claude -p` run inside the Docker AI sandbox `claude-mochiko`, loading
 a plugin under `--plugin-dir` with `mochiko-cli` placed on the sandbox `PATH` the way a user would
-install it (D4). Four cases need no session and no sandbox at all. The run is then
+install it (D4). Seven cases need no session and no sandbox at all. The run is then
 asserted against D8's deterministic set:
 
 | assertion | what it catches |
@@ -333,7 +333,7 @@ what it always was.
 
 ## The hook-input case
 
-The cheapest gate in the suite, and one of the four that need neither sandbox nor session: each
+The cheapest gate in the suite, and one of the seven that need neither sandbox nor session: each
 committed capture under `fixture/hook-input/` is fed on stdin to the two hook scripts on the host,
 with `CLAUDE_PLUGIN_ROOT` and `PATH` controlled per row.
 
@@ -600,8 +600,12 @@ instead of narrowing it silently.
 
 ```
 python3 evals/contract/run.py              # every case
-python3 evals/contract/run.py --host-only  # only the four that need no sandbox
+python3 evals/contract/run.py --host-only  # only the seven that need no sandbox
 python3 evals/contract/run.py --list       # print the case list and exit
+python3 evals/contract/run.py --case gate-input --case if-placement   # a named subset
+
+# gate 6: run the sessions against the published crate rather than this worktree
+MOCHIKO_GATE_VERSION=0.2.0 python3 evals/contract/run.py
 
 # the frozen skill expectations: written once, checked any time. The plugin root must predate
 # v0.107.0 — the schema files the baselines were measured from ship in no later tree.
@@ -616,6 +620,26 @@ visible before twenty minutes of sandbox build and a hundred and fifty-one sessi
 conversion wave they are also the per-family gate: after each family lands they validate that
 family's frozen floor sets, its `!` line enumeration and its renders against the ceiling, at no
 session cost.
+
+**`--case NAME` is repeatable, and a narrowed run is not a gate run.** It narrows the declared
+set to the cases named, and an unknown name is a usage error rather than a silently empty run.
+When the selection contains no sandbox case the sandbox is never brought up at all — no preflight,
+no build, no session — which is what makes re-running a host-side red free. Both `--case` and
+`--host-only` say `FILTERED` before the cases and again beside the verdict, because GI-012 gate 6
+wants the whole declared set and a green line from a subset — of either kind — is the easiest
+thing here to quote as if it were one.
+
+**`MOCHIKO_GATE_VERSION` swaps the sandbox binary for a published one.** Unset, the sandbox
+builds `mochiko-cli` from this worktree, which is what a development run wants. Set to a published
+version, `build_binary()` runs `cargo install mochiko-cli --version <x> --root
+/home/agent/.cargo-gate --locked` instead and the sessions grade the crate that was actually
+released — the artifact a consumer installs, which no build of the working tree can stand in for.
+Three refusals guard it: a version that is not a version never reaches the shell; an install that
+leaves nothing runnable is a skip with the install tail attached; and an installed binary whose
+`--version` disagrees with the pin is refused outright, because `cargo install` will leave an
+earlier binary in place when a build fails partway and a gate grading the wrong artifact while
+printing the right version is worse than a gate that does not run. The install root sits outside
+the sandbox's default `PATH`, so the absence cases still measure absence.
 
 **The host binary must match the source tree.** The host cases render through
 `target/release/mochiko-cli`, so a binary built before the current migration log fails every
@@ -634,7 +658,8 @@ one that fails:
 
 A failed assertion outranks a skip: if a host case fails and the sandbox is then unreachable, the
 exit is 1, not 3. The case list prints on every path, so "0 cases ran" is visible rather than
-inferred, and `--host-only` narrows the declared set rather than partially running the full one.
+inferred, and `--host-only` and `--case` narrow the declared set rather than partially running
+the full one.
 
 A check has four statuses, and two of them are deliberately not passes. `pend` marks an assertion
 whose subject arrives in a later wave. `rec` marks a measurement D8 records rather than asserts —

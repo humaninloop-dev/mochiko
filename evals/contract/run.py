@@ -76,6 +76,7 @@ Usage:
 import argparse
 import importlib.util
 import json
+import os
 import pathlib
 import re
 import shlex
@@ -149,6 +150,20 @@ PROBE_HALTED = "CONTRACT-PROBE: halted"
 # at the same path the host uses, so a shared target directory means the Linux sandbox executes
 # the host's macOS Mach-O binary and reports `sh: Syntax error: "(" unexpected`.
 SANDBOX_TARGET_DIR = "/home/agent/mochiko-target"
+
+# Gate 6 (GI-012) grades the artifact a consumer installs, not the worktree. Setting
+# `MOCHIKO_GATE_VERSION` to a published version swaps the sandbox source build for
+# `cargo install`, so the sessions run against the crate that was actually released. Unset — the
+# development default — the sandbox builds from this tree, which is what an ordinary run wants.
+# The install root is deliberately outside the sandbox's default PATH, so `sandbox_path()`'s
+# absence check still holds and the absence cases still measure what they name.
+GATE_VERSION_ENV = "MOCHIKO_GATE_VERSION"
+GATE_INSTALL_ROOT = "/home/agent/.cargo-gate"
+# A version reaches `sh -c`, so it is allowlisted rather than trusted. Three numeric groups and
+# nothing else: `VERSION_LINE` can only parse `\d+\.\d+\.\d+`, so a pre-release or build suffix
+# would install cleanly and then fail the version assertion — a refusal bought with a paid
+# install. Refusing it up front costs nothing and says why.
+GATE_VERSION = re.compile(r"^\d+\.\d+\.\d+$")
 
 # `mochiko-cli --version`, which is also the head of the version triple.
 VERSION_LINE = re.compile(r"^mochiko-cli (\d+\.\d+\.\d+) · grammar (\d+)\.\.(\d+)$")
@@ -716,6 +731,10 @@ def build_binary(runner) -> tuple[str | None, str | None]:
     if cargo.returncode != 0 or not cargo.stdout.strip():
         return None, "no `cargo` in the sandbox, so `mochiko-cli` cannot be built there"
 
+    pin = os.environ.get(GATE_VERSION_ENV, "").strip()
+    if pin:
+        return install_published(runner, pin)
+
     build = runner.sbx_sh(
         "cargo build --release -p mochiko-cli "
         f"--manifest-path {shlex.quote(str(REPO / 'Cargo.toml'))} "
@@ -733,6 +752,50 @@ def build_binary(runner) -> tuple[str | None, str | None]:
     line = version.stdout.strip().splitlines()[0] if version.stdout.strip() else ""
     if not VERSION_LINE.match(line):
         return None, f"`{binary} --version` printed {line!r}, not the version line"
+    return binary, None
+
+
+def install_published(runner, pin: str) -> tuple[str | None, str | None]:
+    """Install a published `mochiko-cli` into the sandbox and return its path there.
+
+    The gate-6 half of [`build_binary`]. `cargo install` rebuilds from the crates.io source inside
+    the sandbox, so the architecture is right for the same reason the source build is, and what it
+    proves is that the *released* crate serves the plugin's rules — which a build of the working
+    tree cannot prove however green it is.
+
+    The installed version is asserted against the pin, not assumed from it. `cargo install` is
+    happy to leave an earlier binary in place when a build fails partway, and a gate that graded
+    the wrong version while printing the right one is worse than a gate that does not run.
+    """
+    if not GATE_VERSION.match(pin):
+        return None, (
+            f"{GATE_VERSION_ENV}={pin!r} is not a release version — expected three numeric "
+            "groups like `0.2.0`. A pre-release or build suffix is refused here rather than "
+            "after the install, because the version line this gate reads cannot carry one"
+        )
+    install = runner.sbx_sh(
+        f"cargo install mochiko-cli --version {shlex.quote(pin)} "
+        f"--root {shlex.quote(GATE_INSTALL_ROOT)} --locked 2>&1 | tail -5",
+        timeout=1800,
+    )
+    binary = f"{GATE_INSTALL_ROOT}/bin/mochiko-cli"
+    version = runner.sbx_sh(f"{shlex.quote(binary)} --version", timeout=120)
+    if version.returncode != 0:
+        return None, (
+            f"`cargo install mochiko-cli --version {pin}` produced no runnable binary "
+            f"(exit {version.returncode}: {(version.stderr or version.stdout).strip()[:200]}); "
+            f"install tail: {install.stdout.strip()[:200]}"
+        )
+    line = version.stdout.strip().splitlines()[0] if version.stdout.strip() else ""
+    match = VERSION_LINE.match(line)
+    if not match:
+        return None, f"`{binary} --version` printed {line!r}, not the version line"
+    if match.group(1) != pin:
+        return None, (
+            f"{GATE_VERSION_ENV} asked for {pin}, but the installed binary reports "
+            f"{match.group(1)} — the gate would grade the wrong artifact"
+        )
+    print(f"gate binary: mochiko-cli {pin}, installed from crates.io into {GATE_INSTALL_ROOT}")
     return binary, None
 
 
@@ -4941,15 +5004,48 @@ def main() -> int:
         action="store_true",
         help="run only the cases that need no sandbox and no session",
     )
+    parser.add_argument(
+        "--case",
+        action="append",
+        metavar="NAME",
+        dest="selected",
+        help="run only this case; repeatable. A filtered run is never a gate run (GI-012)",
+    )
     args = parser.parse_args()
 
-    declared = HOST_CASES if args.host_only else CASES
+    host_cases, sandbox_cases = HOST_CASES, SANDBOX_CASES
+    if args.host_only:
+        sandbox_cases = []
+    if args.selected:
+        known = {name for name, _, _ in CASES}
+        unknown = [name for name in args.selected if name not in known]
+        if unknown:
+            parser.error(
+                f"unknown case{'s' if len(unknown) > 1 else ''}: {', '.join(sorted(unknown))}. "
+                "Run with --list for the case names."
+            )
+        wanted = set(args.selected)
+        host_cases = [c for c in host_cases if c[0] in wanted]
+        sandbox_cases = [c for c in sandbox_cases if c[0] in wanted]
+
+    declared = host_cases + sandbox_cases
+    # `--host-only` narrows the declared set exactly as `--case` does, so it carries the same
+    # banner: a host-only green is the other line easy to quote as if it were gate 6.
+    filtered = bool(args.selected) or args.host_only
     scope = "host cases only" if args.host_only else "all cases"
+    if args.selected:
+        scope += f", filtered to {len(declared)} of {len(CASES)}"
     print(f"mochiko contract suite · declared cases ({scope}):")
     for name, description, _ in declared:
         print(f"  {name:22s} {description}")
     if args.list:
         return EXIT_OK
+
+    # A filtered run answers "is this case green again", never "may the bump land". GI-012 gate 6
+    # wants the whole declared set, and a green line from a subset is the easiest thing in this
+    # suite to mistake for one. So it is said before the run and again beside the verdict.
+    if filtered:
+        print("\nFILTERED RUN — a subset, not a gate run. Gate 6 needs the full set.")
 
     # Exit 0 means every declared case ran. A suite with nothing to run has proved nothing, so
     # it skips rather than reporting a clean sweep of zero.
@@ -4960,17 +5056,19 @@ def main() -> int:
 
     WORK.mkdir(parents=True, exist_ok=True)
 
-    if args.host_only:
+    # No sandbox case selected means no sandbox at all — no preflight, no build, no session. That
+    # is the point of `--case` for a host-side red: re-running one costs nothing.
+    if not sandbox_cases:
         print()
-        failures, pendings, reports = run_cases(HOST_CASES, None, None)
-        summarize(len(HOST_CASES), failures, pendings, reports)
+        failures, pendings, reports = run_cases(host_cases, None, None)
+        summarize(len(host_cases), failures, pendings, reports, filtered=filtered)
         return EXIT_ASSERT if failures else EXIT_OK
 
     # The host cases run first: they are free, they need nothing built, and a broken hook script
     # or an undeliverable template should be visible before twenty minutes of sandbox build and a
     # hundred and fifty-one metered sessions.
     print()
-    failures, pendings, reports = run_cases(HOST_CASES, None, None)
+    failures, pendings, reports = run_cases(host_cases, None, None)
 
     runner = load_runner()
 
@@ -4978,7 +5076,7 @@ def main() -> int:
         # A failed assertion outranks a skip. The host cases really ran, and what they found is
         # evidence whether or not the sandbox is reachable.
         print(f"\nSKIPPED (sandbox cases): {reason}")
-        summarize(len(HOST_CASES), failures, pendings, reports)
+        summarize(len(host_cases), failures, pendings, reports, filtered=filtered)
         if failures:
             print("exit 1 — a host case failed; the sandbox cases did not run.")
             return EXIT_ASSERT
@@ -5000,19 +5098,24 @@ def main() -> int:
         binary=binary_path,
         binary_dir=str(pathlib.PurePosixPath(binary_path).parent),
     )
-    more = run_cases(SANDBOX_CASES, runner, sandbox)
+    more = run_cases(sandbox_cases, runner, sandbox)
     failures, pendings, reports = (a + b for a, b in zip((failures, pendings, reports), more))
-    summarize(len(CASES), failures, pendings, reports)
+    summarize(len(declared), failures, pendings, reports, filtered=filtered)
     return EXIT_ASSERT if failures else EXIT_OK
 
 
-def summarize(ran: int, failures: int, pendings: int, reports: int) -> None:
+def summarize(ran: int, failures: int, pendings: int, reports: int,
+              filtered: bool = False) -> None:
     print(f"\ncontract suite: {ran - failures}/{ran} cases passed, {ran} ran", end="")
     if pendings:
         print(f", {pendings} assertion(s) pending a later wave", end="")
     if reports:
         print(f", {reports} measurement(s) recorded and not asserted", end="")
     print()
+    # Said twice on purpose — once before the run, once beside the verdict. A green line from a
+    # subset is the easiest thing here to quote as if it were gate 6.
+    if filtered:
+        print(f"FILTERED — {ran} of {len(CASES)} declared cases. Not a gate run.")
     print_measured()
 
 

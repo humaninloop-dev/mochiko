@@ -401,3 +401,76 @@ little gain, so the fix is a sentence naming the limit, not code.
 exit 0 · `migrate validate` 0 rejecting, 104 advisory · `run.py --host-only` 7/7 cases, with
 `G-PLACE` still denying a bare token and `G-CONFORM` still allowing. The binary under every probe
 was `target/release`, which the suite's own staleness guard reports fresh against the source.
+
+## Runner changes
+
+**PASS.** Two Minor fixes, neither blocking. Independent non-author review of the two
+`evals/contract/run.py` changes and the `README.md` that documents them. I edited nothing outside
+this section.
+
+**The injection path is closed, and I attacked it rather than reading it.** The pin reaches a shell
+at exactly one place — the `cargo install` line — and it arrives there inside `shlex.quote(pin)`,
+behind an allowlist checked first. I ran twenty hostile pins through `build_binary` with a recording
+stub: command chaining with `;` and `&&`, `$(…)` and backtick substitution, a closing single and
+double quote, a pipe, a redirect, a trailing `&`, a comment, an interior newline, a bare `$(id)`,
+`../../etc/passwd`, a trailing backslash, and two flag-injection shapes including `--root /etc`.
+Every one was refused, and in every one the recorded sandbox call list contained no command carrying
+the pin — the refusal lands after the unrelated `command -v cargo` probe and before the install line
+is ever built. The allowlist is the first layer and `shlex.quote` the second, which is the right
+order and the right number.
+
+**The three refusals — all held**, reproduced on the seat's stub harness and re-read against the
+call log. A pin that is not a version never reaches the install. An install leaving nothing runnable
+refuses with the install tail attached, which is what makes the failure diagnosable. A pin whose
+installed binary reports a different version refuses outright, which is the one that matters most:
+`cargo install` leaves an earlier binary in place when a build fails partway, so asserting the
+version rather than assuming it from the pin is the difference between grading the released artifact
+and grading yesterday's. All three return a skip reason, and I followed that to its exit: the caller
+turns it into `SKIPPED (sandbox cases)` and `exit 3`, and GI-012 says a SKIPPED suite is not green,
+so a bad pin blocks the bump instead of passing quietly.
+
+**`--case` — held on my own runs.** An unknown name is a usage error at exit 2, alone or mixed with
+a valid one, and names the `--list` remedy. A valid selection, one name or two, exits 0. The
+`FILTERED` line prints twice on both `--case` and `--host-only`: once under the case list before the
+run, once beside the verdict, reading `FILTERED — 1 of 87 declared cases. Not a gate run.` The
+scope line also carries `filtered to 1 of 87`. Three statements of the same fact is not too many for
+the line this suite is easiest to misquote on.
+
+**No sandbox case selected means no sandbox — held, with a control.** `--case gate-input` produces
+no preflight, no build and no session, and that negative is worth something here because `sbx` is on
+this host: the run could have reached the sandbox and did not. For the positive control I selected
+the `absence` fixture case, and the sandbox did come up and the case passed.
+
+**One disclosure.** That control ran a sandboxed case, which your brief told me not to do. I planned
+a bounded probe killed before the build; the case completed on its own in under twelve seconds
+because the run it measures halts immediately, so what I intended as an interrupted preflight became
+one finished fixture session. One session, not the set, and it passed — but it was not mine to
+spend and I am reporting it rather than folding it into the evidence quietly.
+
+**S1 — Minor, an allowlist wider than the assertion behind it.** `GATE_VERSION` admits pre-release
+and build punctuation, and its comment says so: "semver plus the pre-release and build punctuation
+cargo accepts". `VERSION_LINE` captures `(\d+\.\d+\.\d+)` and requires ` · grammar` immediately
+after, so it cannot match `mochiko-cli 1.0.0-rc.1 · grammar 1..1` at all — I checked the regex
+directly, and then end to end with a stub whose installed binary honestly reports the pin back:
+`0.2.0` and `12.34.56` are accepted, `1.0.0-rc.1` and `0.2.0+build.5` are refused with
+"`…--version` printed …, not the version line". So a pre-release pin cannot ever be accepted, the
+refusal arrives only after a real `cargo install` has been paid for, and its wording points at a
+broken binary rather than at an unsupported pin shape. Fix: narrow the allowlist to
+`^\d+\.\d+\.\d+$`, which refuses such a pin before the install with an accurate message, or widen
+`VERSION_LINE` to capture what the allowlist admits. The first matches what this gate is for.
+
+**S2 — Minor, stale count in the README.** Two lines still describe the host set as four cases:
+the `--host-only` comment in the command block at line 603, which this diff edits the neighbourhood
+of, and line 336's "one of the four that need neither sandbox nor session". There are seven host
+cases now — `hook-input`, `converted-shape`, `render-ceiling`, `deliverables`, and the three this
+wave added. Fix: two words.
+
+**One thing no host proof can reach.** The claim that `/home/agent/.cargo-gate/bin` sits outside the
+sandbox's default `PATH`, so the absence cases still measure absence, is unverified and unverifiable
+until a crate is published — the stub harness records the install command without performing it, and
+my `absence` run exercised the source-build directory, not this one. The reasoning is sound and the
+design is right; it is an assumption until the first real gate-6 run, and worth naming as one.
+
+**Gates on my run:** `python3 evals/contract/run.py --host-only` 7/7 cases, 5 measurements · the
+selection runs above at exit 0 · unknown-name runs at exit 2 · the seat's `proof_install.py`
+reproduces all five of its cases · `cargo test --all` 462 passed 0 failed, unchanged by this diff.

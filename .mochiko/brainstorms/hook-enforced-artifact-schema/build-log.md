@@ -552,3 +552,10 @@ only; no shared write surface unless disclosed here.
 - 2026-09-15 · **WAVE 3 CLOSED — committed `0a03626`** (R1/R2 landed, 463 tests). Remaining
   uncommitted: QA's runner changes under review.
   `floor: tripped · seats: se-wave1 (mochiko:staff-engineer) / reviewer-2 (mochiko:tech-lead) + validator (mochiko:validator) on the earlier grade`
+- 2026-09-15 · runner changes reviewed **PASS** (`reviewer-2`: 20 hostile pins refused before any
+  shell call — allowlist first, `shlex.quote` second; refusals exit 3 = bump-blocking; `--case`
+  and `--host-only` banners; a host-only selection starts no sandbox). Minors S1 (allowlist
+  admits suffixes the version parse cannot match → three numeric groups) and S2 (README host
+  count 4 → 7) routed. Disclosed: one sandboxed `absence` case ran during the review (one
+  session, passed). Standing assumption until a crate is published: the gate install root sits
+  outside the sandbox default PATH.
