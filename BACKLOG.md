@@ -27,20 +27,20 @@ uncompressed. Prior groom narrative: git history (this line, before this groom).
 provenance: `.mochiko/brainstorms/hook-enforced-artifact-schema/record.md`)*
 
 - [ ] **Hook-enforced artifact schema — waves 0–5** (2026-09-13; provenance: the record's D8,
-  D10, D11). **Wave 0 DONE 2026-09-13 (PROCEED; `wave0-probe-report.md`)** — probe: hooks fire for `Agent` subagents / teammates / `--agent`;
-  `Read` field name; `Bash` heredoc write seen; deny holds under `bypassPermissions`/`acceptEdits`/
-  `auto`; dead-gate behavior; aggregate per-run cost incl. every shell call — abort if silent for
-  `Agent` subagents or over the per-run budget (absorbs the eval-v2 agents-as-schema probe).
-  **Wave 1** — crate: `home` kind + grammar bump, `check --hook-json -`, `home`, per-section
-  conformance, producer-view block, matrices; exit = crate published. **Wave 2** — governance
-  amend (D7 supersession, GI-019 carve, `rust-cli.md` strip, hooks-disabled scope line).
-  **Wave 3** — census over kinako's and mochiko's `.mochiko/` trees (288 files) → one migration:
-  homes, sets, bindings, conformance blocks, the authoring-time rule per producing primitive, the
-  budget table **user-ratified as one artifact** (OQ1/OQ2 ruled there). **Wave 4** — hooks ship
-  (two scripts, `hooks.json`), contract cases per exit code and shell leg, `impl.reports-envelope`
-  re-key, strips + audits, `plugin.json` bump. **Wave 5** — violator pass on kinako with the
-  pre-gate plugin, upgrade, dogfood run; watch: denies by kind, section sizes, per-home total
-  volume, reports-per-run, reminder lines (OQ3/OQ4 closed by the probe).
+  D10, D11 + the AM-3 run, `.mochiko/memory/governance-intent.md`). **Wave 0 DONE 2026-09-13
+  (PROCEED; `wave0-probe-report.md`)** · **wave 1 BUILT + ACCEPTED 2026-09-13** (crate: `home`
+  kind, `check --hook-json -`, `home`, matrices; exit = crate published — still owed, break-glass
+  through waves 3–4) · **wave 2 DONE 2026-09-14 — governance v3.1.0 (AM-3:** GI-019
+  conformance-gate admission, clause iv conditioned on the budget table; D7 narrowly superseded;
+  `rust-cli.md` bullet superseded by ruling, no strips entry; the wave-4 hook ship gated on all
+  four supply-chain controls; two pre-authorized PATCHes). **Wave 3** — census → migration `0005`
+  BUILT, reviewed PASS; **budget-table ratification = the gate** (OQ1/OQ2 ruled there; carry the
+  AM-3 C1 measurement: `record.md` 150-line bound vs 43/66 records over it). **Wave 4** — hooks
+  ship, contract cases per exit code and shell leg, strips + audits, `plugin.json` bump; fix
+  candidate: name a standing file-set violation in `additionalContext` (AM-3 amnesty gap).
+  **Wave 5** — violator pass on kinako with the pre-gate plugin, upgrade, dogfood, watch; **this
+  repo's own violator pass runs before the wave-4 plugin installs locally** (AM-3 C10; the
+  synthesis's heading drift and the undeclared `wave<n>-reports/` dirs are fixed there).
 
 ## CLI schema-delivery build
 

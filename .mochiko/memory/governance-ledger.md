@@ -1,7 +1,7 @@
 # Governance Ledger
 
 **Governance Floor:** production (asserted) · **Depth level:** high (user-declared, one-way; `high` terminal — GI-021, minted at AM-1 discharging the legacy-default pointer; set up under the single floor pre-adaptive-depth, already conformed to full depth #7 fold 2026-08-11) · **Modules:** compliance: none (GI-001 negatives confirmed, incl. no-UI) · template: knowledge-management (core + CHANGELOG elective) · release-gates · **Trace:** GI-001 (fact profile) · GI-021 (depth level)
-**Version:** 3.0.3 (must match the region stamp)
+**Version:** 3.1.0 (must match the region stamp)
 
 ## Waivers
 
@@ -29,7 +29,8 @@ not read later as an unrecorded lapse.
 - Route: `/mochiko:setup` amend mode; fact-profile changes (module attach/detach) and
   un-waives are governance events.
 - Semver: MAJOR — principle removal / incompatible redefinition / floor-level change / module
-  attach or detach · MINOR — new principle or waiver change · PATCH — clarification.
+  attach or detach · MINOR — new principle, a principle significantly expanded, or a waiver
+  change · PATCH — clarification.
 - Approvers: Deepesh (solo maintainer — GI-002 team reality; no code-review lean, enforcement is
   procedural gates + audits).
 - Standing amend triggers recorded in the synthesis: public-product transition (GI-002 —
@@ -49,7 +50,15 @@ not read later as an unrecorded lapse.
   signed release tags (**owed** — no signing exists in the repo). The trigger discharges only
   when all four exist at the first publish; until then it stays open, and the two owed controls
   are wave-2 tail obligations gating that publish. `cargo audit --deny warnings` is also one of
-  the four crate layers in GI-012's release train.
+  the four crate layers in GI-012's release train. **From AM-3 (v3.1.0, review C5, user-ruled
+  2026-09-14) the two still-owed controls — signed release tags and the `crates-io` environment's
+  approval rule (the publish job is `if: false` at `.github/workflows/release.yml:100` today) —
+  are hard preconditions of the wave-4 hook ship:** the `plugin.json` bump that ships the
+  conformance hooks MUST NOT land before the first publish with all four controls in place, and a
+  maintainer break-glass install never substitutes for consumers. The same clause is recorded on
+  GI-012's release limb. Once the wave-4 bump has landed under this precondition, striking the
+  clause from the region gates line and these two paragraphs is a pre-authorized PATCH amendment,
+  recorded in the log row.
 - **The GI-020 transition clause's expiry is a pre-authorized PATCH amendment** (AM-2, the AM-1
   activation idiom): when wave 6 lands and no schema file ships in the plugin, the clause is
   struck and the version-log row recorded without a fresh `/mochiko:setup` amend run. The
@@ -265,8 +274,23 @@ grammar range does not version it. The two owed first-publish controls (signed r
 `cargo publish` behind a manual-approval environment) gate the first publish under the GI-002
 trigger recorded in the amendment policy above.
 
+**From AM-3 (v3.1.0, review C5, user-ruled 2026-09-14) those two owed controls gate the wave-4
+hook ship too:** the `plugin.json` bump that ships the conformance hooks MUST NOT land before the
+first publish with all four named controls in place, because from wave 4 the plugin's hooks
+execute the author's code on every gated artifact write in a consuming project and once per
+spawned seat, not only at command and skill fire — a maintainer break-glass install never
+substitutes for consumers. Wave 4's bump also takes the contract suite with the new hook cases
+(D10). Once the wave-4 bump has landed under this precondition, striking the clause from the
+region gates line and these two paragraphs is a pre-authorized PATCH amendment, recorded in the
+log row.
+
 **Gate note:** the behavioural read-back metric is **reported, never gating** (record D8) — it
 informs the wave-3 pilot's abort criteria (GI-020's revisit trigger); it does not block a bump.
+The same posture binds the **aggregate per-run hook cost cap (≤ 60 s, `hook-enforced-artifact-schema`
+OQ4): a D10 watch by ruling, never a bump gate** (AM-3, review C9, user-ruled 2026-09-14) — a
+wall-clock cap in the Docker contract suite is nondeterministic and gate 6 is the deterministic
+set; the `${CLAUDE_PLUGIN_DATA}` replay cache (`cli-schema-delivery` D1, deferred on measured
+need) is the named response if the budget trips.
 
 **Substrate caveat, carried (review I7):** the contract suite runs on the Docker sandbox's stored
 consumer-subscription auth — a `Contested` ruling sustained against adverse Terms-of-Service
@@ -281,14 +305,14 @@ Rollback: `git revert` of the bump commit + marketplace metadata re-sync — exe
 solo maintainer; no time-bound SLO (no operated service).
 
 **Testability**:
-- Pass: all six checks hold at the bump commit (gates 1–5 every bump; gate 6 `cargo test` PASS from v0.76.0, the crate having landed, plus the contract suite at exit 0 from v3.0.0); a `mochiko-cli-v*` tag has the four crate layers, the suite against the tagged binary, and an unchanged output shape or a coordinated plugin bump. · Fail: any missing; a contract suite reported SKIPPED (exit 3) and treated as green; a crate tag landed on any of the three train conditions unmet.
+- Pass: all six checks hold at the bump commit (gates 1–5 every bump; gate 6 `cargo test` PASS from v0.76.0, the crate having landed, plus the contract suite at exit 0 from v3.0.0); a `mochiko-cli-v*` tag has the four crate layers, the suite against the tagged binary, and an unchanged output shape or a coordinated plugin bump; the wave-4 hook-shipping bump lands only after a first publish carrying all four named controls. · Fail: any missing; a contract suite reported SKIPPED (exit 3) and treated as green; a crate tag landed on any of the three train conditions unmet; the wave-4 hook-shipping bump landed before that publish.
 
 **Rationale**: Releases are the only distribution moment; the gates codify the existing ritual
 plus the one detected drift (marketplace lag) it silently permitted. From AM-2 the crate's
 release is a second distribution moment of the same system — consumers run the binary — so it
 carries its own train rather than riding the plugin's.
 
-**Trace**: GI-012 (module: release-gates; GI-016 folded as gate 5; AM-1 dormant crate-gate clause **activated v0.76.0** — gate 6 `cargo test` + gate-5 schema/binary consistency; **widened AM-2 v3.0.0** — contract suite on gate 6, SKIPPED blocks, gate 5 = view ≡ replay, crate release train, ToS substrate mark `Contested`; driver `.mochiko/brainstorms/cli-schema-delivery/record.md` D8/D10.3)
+**Trace**: GI-012 (module: release-gates; GI-016 folded as gate 5; AM-1 dormant crate-gate clause **activated v0.76.0** — gate 6 `cargo test` + gate-5 schema/binary consistency; **widened AM-2 v3.0.0** — contract suite on gate 6, SKIPPED blocks, gate 5 = view ≡ replay, crate release train, ToS substrate mark `Contested`; **extended AM-3 v3.1.0** — the wave-4 hook-ship precondition (review C5) and the ≤ 60 s aggregate hook-cost watch (review C9, never a bump gate); driver `.mochiko/brainstorms/cli-schema-delivery/record.md` D8/D10.3 · `.mochiko/brainstorms/hook-enforced-artifact-schema/record.md` D10)
 
 ### GI-017 — Pointer-Only Region · home: the governance region itself
 
@@ -345,13 +369,110 @@ any rule is where drift starts. User ruling, dimension 9: "leave these out."
   never waived — they rest on that clause — and they retired into the crate's validator at wave 6
   (v0.107.0: `mochiko-cli migrate validate --report` is the advisory pre-pass) under the admission
   above. The six skill-shipped helpers under waiver GI-008 are untouched.
+- **Admission ruling — mechanical conformance gates on artifact writes (AM-3, v3.1.0):**
+  `hook-enforced-artifact-schema` (accepted 2026-09-13; D1/D7, wave-0 probe PROCEED) is the
+  recorded admission for two plugin-shipped hooks beyond the dependency halt: **(1)** a
+  `PreToolUse` gate on `Write|Edit|Bash|PowerShell` that pipes the payload to `mochiko-cli check
+  --hook-json -` and denies a write failing a **mechanical** check — path against a declared
+  home's pattern · file name against the home's declared set · required `##` headings in the
+  declared order, with an undeclared `##` denied · required frontmatter fields and enum values ·
+  declared placeholder tokens · per-section line budgets · a shell command carrying a write
+  operator aimed at a declared home; **(2)** a `SubagentStart` hook injecting one self-identified
+  reminder line per seat (D1b as amended 2026-09-13, superseding the `Read`-time form). Every
+  check is decidable by string and count against data the log carries — the `home` document kind
+  and each template's conformance block. **Narrow supersession:** `cli-schema-delivery` D7's
+  "behavior-gating hooks are declined" stands for **judgment and sequencing**; the gate holds one
+  write until it conforms — or, over an existing file already failing a relaxable measure, until
+  the write does not worsen that measure — and a passing draft pays nothing.
+- **The bright-line argument, clause (iv) (D1/D4):** mechanical conformance is structural validity
+  of an artifact against the store's own declared shape — the same class as clause (ii)'s hard
+  constraints at migration apply, a compiler on its own language, applied at write time to the
+  artifact the shape governs. It is not a grade: no check reads meaning, ranks quality, or judges
+  adequacy — those stay with the review skills and the author≠grader ceremony. It is not
+  sequencing: the gate names no seat, no order, no stage. It is not a pipeline gate: a denied
+  write is re-emitted, the run continues, and the two-strike halt sentence is advisory (D9).
+  **Condition, standing open (review C1, user-ruled 2026-09-14, road (a)):** the clause holds on a
+  user-ratified budget table (D6, wave 3's gate) that admits honest content. A bound honest
+  content cannot meet is a table defect, corrected by ruling at the table and never by the hook;
+  record OQ1 — whether a prose-shaped deliverable carries a budget or `max_lines: none` — is ruled
+  there, not here. The review's measurement is carried to that ruling: the working-tree
+  migration's 150-line whole-file bound on `record.md` against 43 of 66 brainstorm records in this
+  repo exceeding it (largest 1,536; this amend's own driver 738), with no in-run route for a fresh
+  over-budget deliverable — amnesty needs a baseline, `reports/` takes only report-typed content,
+  and a new kind takes a migration and a plugin release. The declined road (b) — whole-file bounds
+  advisory at create time, deny reserved for templated per-section checks — would amend D1/D6 in
+  the brainstorm record and was not taken.
+- **First-touch amnesty (D4e, as corrected at the verify pass against the built binary):** on any
+  write over an existing file, `Write` and `Edit` alike, the on-disk file is the baseline. Where
+  the baseline already fails a **relaxable** measure — file set (an undeclared name in a declared
+  home), shape (headings · frontmatter · placeholders), or budget — a write that does not worsen
+  that measure is allowed; **path is not a relaxable measure** (a write outside every declared
+  home is ungated, not amnestied). The binary names a standing shape or budget violation in
+  `additionalContext`. **Known gap, measured at the verify pass:** an `Edit` to an existing
+  undeclared file name rides amnesty with a bare allow and no `additionalContext`, so a mis-homed
+  file carries no signal; D9 makes the reviewer responsible for exactly that escape. Carried to
+  the wave-4 build as a fix candidate — name the file-set violation too — not a governance change.
+  Existing files are never wedged, and the rewrite that fixes one is itself an allowed
+  non-worsening write.
+- **Reach of the gate (D9, review C4):** outside every declared home a `.md` write is gated only
+  when its content opens with mochiko report frontmatter or a template's `## Header` signature — a
+  plain `.md` elsewhere is not mochiko's business. `NotebookEdit` and any MCP file writer a
+  consumer enables are knowingly outside the matcher set; escapes past the sniff and hook-disabled
+  consumers are the reviewer's under the author≠grader ceremony. The gate is a floor, not the
+  whole fence.
+- **What the gate reads (review C7):** the raw `PreToolUse` payload — `tool_input.content`,
+  `old_string`/`new_string`, `command` — and, on `Edit`, the on-disk file, to apply the edit in
+  memory; it reads them against the log the plugin carries. Nothing leaves the machine.
+- **Hook floor, re-ratified for the new hooks (D7c):** a 5-second `timeout` on every shipped hook;
+  fail-open when a hook cannot run or times out; hooks ship to every consuming project and execute
+  the plugin author's code on every gated call — ratified knowingly. **Explicit-allow rule (D3/C2,
+  wave-0 platform fact):** the platform denies a background subagent's call when no hook returns a
+  decision, so the wrapper always exits 0 and emits an explicit `permissionDecision: allow` on
+  every non-deny path, including CLI exit 1 (log unsound), 2 (usage, or a binary predating
+  `check`) and 3 (grammar skew). A conformance verdict — `check` exit 4, `EXIT_CONFORMANCE` in
+  `crates/mochiko-cli/src/hook.rs` — is the only deny; the dependency halt stays the existing
+  hooks' job. The exit-code contract and the `check --hook-json -` interface are `Assumed` (record
+  D3 — derived from GI-020 and `cli-schema-delivery` D1, never put to the user as a fork); the
+  exit-4 fact was verified against the built crate at this amend.
+- **Scope of the guarantee (D7e, reconciled with GI-020 at Card 5):** the gate is a floor for
+  consumers who keep the plugin's hooks enabled. A project that sets `disableAllHooks`, or an
+  enterprise under `allowManagedHooksOnly`, stays **outside GI-020's supported set** — D7e states
+  what remains there (the procedural author≠grader ceremony), it grants no support; a ratified
+  consequence, not a defect. The environments GI-020 already declares unsupported are unchanged;
+  the `PowerShell` matcher arm ships on the doc quote, unverifiable on macOS (wave 0).
 
-**Testability**:
+*Recorded supersession — `.claude/rules/mochiko/rust-cli.md`'s bright-line bullet (D7d, Card 4).*
+The bullet was rewritten at AM-3 and its prior text is preserved here so the change is
+reconstructible (GI-006); no `.mochiko/strips/` entry, because that file is a governance surface,
+not a plugin primitive — AM-2's full rewrite of the same file took none. *The prior bullet read:*
+
+> - **Bright line (GI-019).** The tool renders, replays, and validates its own data. It MUST NOT
+>   grade an artifact, MUST NOT dispatch or sequence agents, and MUST NOT hold judgment that skills
+>   own. Its hooks MUST block only on the binary's absence or a log outside its grammar range,
+>   never on behavior. Home: CLAUDE.md `## Non-negotiable constraints`; detail: ledger GI-019.
+
+The two superseded clauses are "MUST NOT grade an artifact" and "hooks MUST block only on the
+binary's absence or a log outside its grammar range, never on behavior": "validates an artifact's
+mechanical conformance against its own data" is the admitted reading, and grading of meaning or
+quality stays forbidden.
+
+**Testability** — two tiers, in the GI-020 idiom: the conformance limb cannot be asserted until
+wave 4 ships the hooks (`plugins/mochiko/hooks/hooks.json` carries only the three dependency-halt
+hooks today). **Assertable at ratification (2026-09-14):**
 - Pass: every kernel-class component in the tree traces to a recorded admission ruling and
-  satisfies all three bright-line clauses; every shipped hook blocks only on the binary's absence
-  or a log outside its grammar range. · Fail: an admitted binary that gates the pipeline,
-  sequences agents, or holds skill-owned judgment; a kernel-class component with no admission
-  ruling; a shipped hook that blocks on anything other than the binary's absence or grammar skew.
+  satisfies the bright-line clauses; every shipped hook blocks only on the binary's absence or a
+  log outside its grammar range; `mochiko-cli check` exists and returns exit 4 on a conformance
+  verdict (`EXIT_CONFORMANCE`, `crates/mochiko-cli/src/hook.rs`, verified against the built crate
+  this run). · Fail: an admitted binary that gates the pipeline, sequences agents, or holds
+  skill-owned judgment; a kernel-class component with no admission ruling; a shipped hook that
+  blocks on anything other than the binary's absence or grammar skew.
+
+**Dormant until the wave-4 hook ship**, activated at that `plugin.json` bump as a pre-authorized
+PATCH activation (the AM-1/AM-2 dormant-clause idiom), no fresh `/mochiko:setup` amend:
+- Pass: every shipped hook blocks on exactly two grounds — the binary's absence or a log outside
+  its grammar range, and a conformance deny from `check` — with every other outcome an explicit
+  `allow`; `check` reads no meaning and names no seat, order, or stage. · Fail: a hook blocking on
+  any other ground; a `check` that grades meaning or quality; a hook that sequences.
 
 **Rationale**: Skills and agents are the primary quality surface; an unbounded kernel is the exact
 failure mode mochiko was built against. The bright line keeps admitted tooling to
@@ -359,7 +480,7 @@ delivery/composition roles, never the judgment or orchestration skills own. Soft
 v1.0.0 absolute no-kernel position per the D11 ruling (evidence basis n=0 — the recorded concession
 is that template delivery alone would not carry the CLI; the machine rides the foundation bet).
 
-**Trace**: GI-019 (minted at AM-1; driver: `.mochiko/brainstorms/schema-based-template-guidance/record.md` D11 · **widened admission: `cli-schema-delivery` D11 (AM-2, v3.0.0)** — bright-line text unchanged, the three clauses recorded as its argument; AM-1's template-scope limb discharged, the no-general-kernel and no-orchestration limbs standing)
+**Trace**: GI-019 (minted at AM-1; driver: `.mochiko/brainstorms/schema-based-template-guidance/record.md` D11 · **widened admission: `cli-schema-delivery` D11 (AM-2, v3.0.0)** — bright-line text unchanged, the three clauses recorded as its argument; AM-1's template-scope limb discharged, the no-general-kernel and no-orchestration limbs standing; **conformance-gate admission: `hook-enforced-artifact-schema` D1/D7 (AM-3, v3.1.0)** — bright-line text unchanged, clause (iv) recorded with its C1 budget-table condition standing open; `cli-schema-delivery` D7 narrowly superseded, its judgment/sequencing decline standing; `.claude/rules/mochiko/rust-cli.md`'s bright-line bullet superseded by ruling, prior text preserved above)
 
 ### GI-020 — Clone-Only Install with a Required `mochiko-cli` Dependency · home: CLAUDE.md `## Non-negotiable constraints` (prose)
 
@@ -493,6 +614,28 @@ category is live in translated form; application-shaped machinery inapplicable i
 | 3.0.1 | 2026-09-04 | PATCH — the wave-3 pilot landing at plugin v0.104.0 (pre-authorized: the AM-2 glob half; the wave-open Q-B ruling; O-1/A5). `.claude/rules/mochiko/primitive-edits.md` `paths` += `plugins/mochiko/migrations/**` · `plugins/mochiko/hooks/**`; criteria 1, 3, and 11 gain converted-command clauses (heading `## Rules — delivered by mochiko-cli` + the grant, the CLI-printed count pin, no raw common-file Read where the render resolves stubs) · GI-011 homed on the declined-durable line · GI-020 Testability dormant tier **activated** and the revisit trigger evaluated, not tripped · the CLAUDE.md region's "today the log lives at the repo root" clauses struck and the new-file read line re-pathed. Mints no principle; no fresh `/mochiko:setup` amend | GI-004 · GI-011 · GI-020 |
 | 3.0.2 | 2026-09-04 | PATCH — the GI-020 revisit trigger re-keyed after the wave-4 trip (user-ruled "re key", record wave-4 + diagnostic sections): criterion (1) becomes the deterministic floor-delivery assert (every `class: floor` id verbatim in the transcript), the exact-id read-back reported never gating; wave 5 opened on those terms. In the same row: `.claude/rules/mochiko/primitive-edits.md`'s skill-pair criteria gain five one-sentence converted-skill clauses (criteria 1, 2, 3, 6, and 8's budgeted quantity — the sibling of the v3.0.1 command clauses) as wave 5 converts the first skill, and the budget ledger re-seeds every converted skill to body + rendered blocks per record D10.6. Mints no principle; no fresh `/mochiko:setup` amend | GI-004 · GI-020 |
 | 3.0.3 | 2026-09-05 | PATCH — the wave-6 landing (pre-authorized at AM-2): the GI-020 **transition clause expired** at plugin v0.107.0 — no schema file ships, the derived views live at `.mochiko/schema-views/`, the contract suite's run-wide no-Read assert holds it; `.claude/rules/mochiko/primitive-edits.md` re-keyed (schema content edits are migration files and take no strip; criterion 9's deterministic pre-pass is `mochiko-cli migrate validate --report`; anchors live on the log's rules, the provenance sidecar frozen at `.mochiko/archive/`; the converted-primitive clauses are now the only form); `rust-cli.md`'s clause struck; the three first-live-run delivery watches closed to the trail as superseded by record D10.6; the three Python checkers retired (GI-008's waived helper-script count falls). Mints no principle; no fresh `/mochiko:setup` amend | GI-004 · GI-005 · GI-008 · GI-020 |
+| 3.1.0 | 2026-09-14 | AM-3 — mechanical conformance gates on artifact writes (MINOR — a widened admission under an unchanged non-negotiable; user-ruled Card 1 with the MAJOR reading in view, re-put at review C6 and re-ruled MINOR as a **recorded departure** from the AM-1/AM-2 MAJOR precedents: those two redefined a principle, AM-3 widens an admission under a principle whose text does not change, and the GI-019 Testability inversion is read as re-keying a formulation narrower than the principle; the MINOR limb gains "principle significantly expanded" at this amend so policy and the validator's bump grammar agree). Driver: hook-enforced-artifact-schema D1–D11, wave-0 probe PROCEED, wave-1 crate built and accepted 2026-09-13 | GI-019 admission widened (clause iv: mechanical conformance ≠ judgment, its C1 budget-table condition standing open) · `cli-schema-delivery` D7 narrowly superseded, its judgment/sequencing decline standing · hook floor re-ratified + explicit-allow rule + first-touch amnesty + reach + what the gate reads + hooks-disabled scope reconciled with GI-020 · GI-019 Testability re-keyed · GI-012 gains the wave-4 hook-ship precondition (review C5) and the ≤ 60 s hook-cost watch (review C9) · amendment-policy MINOR limb and first-publish paragraph extended · `.claude/rules/mochiko/rust-cli.md` bright-line bullet superseded by ruling, prior text preserved in GI-019 · **fix round (validator B1/M1/M2):** GI-019 Testability re-keyed into two tiers, the conformance limb **dormant until the wave-4 hook ship** and activated at that `plugin.json` bump as a pre-authorized PATCH (the v2.0.1 / v3.0.1 / v3.0.3 idiom) · the wave-4 precondition's strike, once that bump has landed under it, is itself a pre-authorized PATCH recorded in the log row (M2, at both ledger homes) · `rust-cli.md` `paths` += `plugins/mochiko/.claude-plugin/plugin.json` · `.claude-plugin/marketplace.json` · `CHANGELOG.md` (FP-5, B1) |
+
+*AM-3 addendum (2026-09-14):* outside the governance region, and under the Card 2 ruling ratified
+2026-09-14, the `## Non-negotiable constraints` kernel-class paragraph's trace parenthetical in
+`CLAUDE.md` was extended with the conformance-gate admission pointer (GI-019). The GI-020
+paragraph and every other line outside the markers are untouched. Mints no principle. Three
+further touches are disclosed rather than silent: the amendment policy's MINOR limb gained
+"principle significantly expanded" — a lead addition outside the deck of 8, disclosed in the
+synthesis's AM-3 Scope bullet (verify R3) — so this ledger and `validation-constitution`'s
+version-bump grammar, which already reads that wording, agree; GI-012's gate note gained the
+≤ 60 s aggregate hook-cost watch (review C9), the second GI-012 touch beyond Card 7's C5 clause,
+authored as a producer-flagged proposal and ruled at the acceptance gate; and
+`.claude/rules/mochiko/rust-cli.md`'s log-is-truth bullet had its bare `(record D1/D2/D6)`
+qualified to `(record `cli-schema-delivery` D1/D2/D6)`, a lead-ruled formulation touch outside
+Card 4's literal scope, because this run's header rewrite introduces a second driver record whose
+own D1 would otherwise be the nearer reading. At the validator's blocking finding B1,
+`.claude/rules/mochiko/rust-cli.md`'s `paths` gained three globs —
+`plugins/mochiko/.claude-plugin/plugin.json`, `.claude-plugin/marketplace.json` and
+`CHANGELOG.md` — as a producer-flagged proposal ruled at the acceptance gate (FP-5, the AM-2
+FP-1/FP-2 precedent): every GI-012 gate fires at the `plugin.json` bump and AM-3 puts the set's
+strictest MUST NOT there, and `CHANGELOG.md` is GI-010's home, so a globs-honest reading has to
+reach all three. Mints no principle.
 
 *AM-2 addendum (2026-09-04):* `.claude/rules/mochiko/rust-cli.md`'s `paths` gained
 `migrations/**`, `plugins/mochiko/migrations/**`, and `evals/contract/**` per the ratified scope,

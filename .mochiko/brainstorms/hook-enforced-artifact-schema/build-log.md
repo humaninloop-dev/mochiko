@@ -209,3 +209,79 @@ only; no shared write surface unless disclosed here.
   frontmatter half of the envelope binding unless the fixture gains sections (QA's call at the
   wave-4 open). **WAVE 1 CLOSED (lead) — user acceptance + crate publish (exit condition) owed.**
   `floor: tripped · seats: se-wave1 (mochiko:staff-engineer; 2 sonnet workers read back) / reviewer (mochiko:tech-lead)`
+- 2026-09-13 · **user: wave 1 ACCEPTED**; committed on the user's word — `89139a8` (session
+  landing + artifacts) and `c395dab` (crate wave 1). **User ruled R1–R11 all as proposed.**
+  Wave-2 amend run: the user runs `/mochiko:setup` next. Crate publish (wave-1 exit): not yet
+  ruled — working assumption (b), break-glass install through waves 3–4, publish gating the
+  `plugin.json` bump; re-put at wave 4. **Wave 3 OPEN** on `se-wave1`: `0005-artifact-homes.yaml`
+  (21 homes · 3 template imports · 5 replacements · 19 rule mints · 1 reword), views
+  regenerated, `KINDS_NOT_SHIPPED_YET` shrunk (the one licensed crate touch), cost median over
+  20 runs vs the 100 ms trigger, budget table as a standalone ratification artifact
+  (`wave3-budget-table.md`), cycle report; non-author grade after; no `plugin.json` bump.
+- 2026-09-13 · QA contract-plan check: the crate fixture's `sections: []` bites only one row
+  class — reports written *inside* a declared `reports/` dir — which the plan had missed (D2's
+  open-by-name limb): `G-REPORT-OK` / `G-REPORT-BAD` added (34 rows). Ruled: rows resolve
+  against the plugin's real log via `--plugin-root`, asserting structurally; crate fixture as
+  fallback only. Relayed to wave 3: `report-envelope` ships with real sections + budgets.
+- 2026-09-13 · **wave 3 BUILT** (`se-wave1`): `0005-artifact-homes.yaml` — 46 ops / 2,014
+  lines: 20 homes (68 deliverables; `spec-prototype` became a deferred subdir), 3 template
+  imports (`report-envelope` with sections+budgets, `architecture-spine`, `architecture-
+  concerns`), 5 template replacements incl. the `tasks` skeleton fix, 17 `artifact-home` floor
+  mints (two prose skills unreachable — no schema doc — home rule owed as a `.md` edit), 1
+  reword. Validate 0 rejecting / 104 advisory; similar-rule clusters 0; `check` median 27.2 ms
+  vs 100 ms trigger on the 14,077-line log (the wave-1 37 ms corrected). Seven homes moved to
+  `bounds: elsewhere` with reasons. Crate/eval touches: `KINDS_NOT_SHIPPED_YET` emptied, a
+  `home` view-kind arm, log-determined pin re-keys (docs 50→73, rules 1,022→1,039, floor
+  index, similarity pins, producer-view fixtures, contract floor sets/README — `0004`
+  precedent). Contract host cases green; 78 sandboxed cases deferred to wave 4's bump. The
+  published-shape binary rejected `0005` loudly until the break-glass install (GI-020 as
+  designed). Lead items: two unreachable skills · five `Home*` codes outside `Code::REJECTING`
+  · `migrations/README.md` lacks `home`. `wave3-budget-table.md` (150 lines) is the user's
+  ratification artifact. Non-author grade dispatched (`wave3-reports/migration-review.md`).
+- 2026-09-13 · `report-envelope` confirmed shipping with sections (`Header` heading-less ·
+  `## Failure narrative` · `## Notes of note` · `## Null-exit reasoning`, each 15 lines,
+  `extra_headings: allow`, `required: [report]` + six-type enum — all verbatim from
+  `templates/report-format.md`); both wave-4 report-row classes proven against the real log
+  (7 writes: 3 allow / 4 deny, each deny naming its measure). First self-application: the
+  wave-3 cycle report itself ran `## Notes of note` at 28 lines vs 15 and was split under
+  `extra_headings: allow` — passes clean at its future `reports/` path.
+- 2026-09-13 · `wave3-reports/migration-review.md` (`reviewer`): **PASS — 8 Minor, none
+  blocking.** Validate 0 rejecting; state hash stable; views diff = exactly the 26 expected
+  paths; census collapse reproduced 174/44/42/14/72 from the raw file (199 kinako + 147
+  mochiko); ten sampled patterns run live (B53/reviews/landing/evidence/wave1-reports deny;
+  desk/wave-file/benchmarks/root DECISIONS allow); 20 homes / 68 deliverables; all four
+  deviations OK; item 10 corrected in the seat's favour (`Home*` codes reject at runtime —
+  gap is the coverage manifest only). Three findings on the ratification artifact: A4p/A4l text
+  lives in `artifact-format.md` rule 4 not the ADR (38 rows mis-attributed); whole-file 150/300
+  carry no key; **rule 4 calls the numbers defaults with a justification escape — under the
+  gate they become caps** (a change in kind the table must name). Fix round opened; user
+  ratifies the corrected table after.
+- 2026-09-13 · wave-3 fix round done (`se-wave1`, 8/8): table re-attributed to
+  `artifact-format.md` rule 4 as amended, whole-file bounds keyed `S` (seat's call, no
+  derivation), change-in-kind paragraph (defaults → caps under the gate; escapes structural);
+  `Home*` codes in `Code::REJECTING` + five coverage probes (the wave's only `src/` line);
+  README lists `home`; freeze provenance string records the re-key; gates green; migration
+  hash/views untouched; the corrected table passes the gate as a fresh write. Delta-check
+  dispatched to `reviewer`. **User ratification of the table = wave 3's gate.**
+
+## Wave 2 — governance amend (D7)
+
+- 2026-09-14 · **`/mochiko:setup` amend run (AM-3) — DONE; governance v3.0.3 → v3.1.0 (MINOR).**
+  Input `wave2-amendments.md`; deck of 8 user-ruled "as recommended"; synthesis folded and
+  frozen; solo cold intent review (`intent-reviewer`, devils-advocate on
+  review-governance-intent, blind-map two-message dispatch, 28 angles → 10 survivors incl. 4
+  emergent, `critical-gaps`: C1 clause (iv) unconditional while OQ1 open — user-ruled road (a),
+  the budget-table condition; C5 the two owed supply-chain controls gate the wave-4 ship — yes;
+  C6 MINOR re-put — stands as a recorded departure; C9 the cost cap a D10 watch; C10 this
+  repo's violator pass before the local wave-4 install; C2/C3/C4/C7/C8 lead-repaired); verify
+  NOT CLEAN 5 → delta-check 1 → closed; ratified. Producer `gov-producer` (tech-lead on
+  authoring-constitution) on a lead-approved plan (FC-1…FC-4, FP-1…FP-5); validator
+  `gov-validator` FAIL (B1 no rules file scoped the bump surfaces; M1 dormancy tier; M2 expiry
+  route) → fix round → PASS 60/61 → two residual rounds → PASS, no residuals; user accepted all.
+  Reports: `wave2-reports/intent-review.md` · `gov-producer.md` · `gov-validator.md`. Carried
+  forward: the C1 measurement (`record.md` 150 vs 43/66 over) to the wave-3 table ruling · wave-4
+  fix candidate: name a standing file-set violation in `additionalContext` · this repo's violator
+  pass before the local wave-4 install · the ledger MAJOR limb's depth-flip clause at the next
+  PATCH · DECISIONS row 2026-09-13 reworded ("strip" → recorded supersession, no strips entry).
+  **WAVE 2 CLOSED.** `floor: tripped · seats: intent-reviewer (devils-advocate, cold) /
+  gov-producer (tech-lead) / gov-validator (validator)`
