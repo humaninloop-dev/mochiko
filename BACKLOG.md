@@ -33,9 +33,10 @@ provenance: `.mochiko/brainstorms/hook-enforced-artifact-schema/record.md`)*
   through waves 3–4) · **wave 2 DONE 2026-09-14 — governance v3.1.0 (AM-3:** GI-019
   conformance-gate admission, clause iv conditioned on the budget table; D7 narrowly superseded;
   `rust-cli.md` bullet superseded by ruling, no strips entry; the wave-4 hook ship gated on all
-  four supply-chain controls; two pre-authorized PATCHes). **Wave 3** — census → migration `0005`
-  BUILT, reviewed PASS; **budget-table ratification = the gate** (OQ1/OQ2 ruled there; carry the
-  AM-3 C1 measurement: `record.md` 150-line bound vs 43/66 records over it). **Wave 4 BUILT 2026-09-15, audits PASS (11/11 overage HOLDS stamped), review PASS, delta-check
+  four supply-chain controls; two pre-authorized PATCHes). **Wave 3 CLOSED 2026-09-15** — migration `0005`
+  BUILT, reviewed PASS, delta-check CLEAN; **budget table ratified by the user with the C1
+  amendment** (record/synthesis unbounded · template-less pipeline deliverables + wave files 300 ·
+  entry-class 150 · `build-log.md` a log at 60/entry), `0005` re-keyed (`0a03626`). **Wave 4 BUILT 2026-09-15, audits PASS (11/11 overage HOLDS stamped), review PASS, delta-check
   CLEAN; bump STAGED at 0.109.0, NOT landed** (precondition: the crate publish with four controls;
   the full sandboxed contract run at the bump — the suite's sandbox half was repaired as its own
   module after the 2026-09-11 runner convergence broke it; file-set amnesty landed as ratified).

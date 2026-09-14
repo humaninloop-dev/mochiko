@@ -549,3 +549,6 @@ only; no shared write surface unless disclosed here.
   DECISIONS row → "ratified 2026-09-15 with the C1 amendment"; ledger GI-019 clause (iv)
   condition + trace → DISCHARGED 2026-09-15; recorded in `wave5-bump-patch.md` §(e) for the
   v3.1.1 log row.
+- 2026-09-15 · **WAVE 3 CLOSED — committed `0a03626`** (R1/R2 landed, 463 tests). Remaining
+  uncommitted: QA's runner changes under review.
+  `floor: tripped · seats: se-wave1 (mochiko:staff-engineer) / reviewer-2 (mochiko:tech-lead) + validator (mochiko:validator) on the earlier grade`
