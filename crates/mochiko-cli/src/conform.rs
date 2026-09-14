@@ -13,7 +13,8 @@
 //!    Relaxable by the amnesty below, unlike the path itself.
 //! 3. **frontmatter** — required keys present; a key declared as an enum holds a listed value.
 //! 4. **headings** — required `##` headings present in declared order; an undeclared `##` denied.
-//! 5. **placeholders** — declared tokens absent from frontmatter values and heading text.
+//! 5. **placeholders** — declared tokens absent from frontmatter values and heading text, read
+//!    outside backticked code spans: a quotation of a pattern is not an instance of it.
 //! 6. **size** — each heading's span within its budget, or the whole-file/per-entry bound.
 //!
 //! # First-touch amnesty (D4e, as amended at review C3/V3)
@@ -536,11 +537,15 @@ fn placeholder_faults(
     // [`heading_spans`] uses. Before round 1's G2 this filtered every line starting with `#`, so a
     // `#` comment inside a fenced example counted as heading text and denied a conforming
     // artifact — a false deny, which stops honest work where a false allow only misses drift.
-    let mut haystacks: Vec<&str> = Vec::new();
+    // Both halves are read outside their backticked code spans, by the same [`outside_code_spans`]
+    // classifier, for the reason the fence skip exists: a quotation of a pattern is not an instance
+    // of it. A report about the schema writes `` `wave<n>-<slug>.md` `` in a frontmatter value, and
+    // any report discussing a home would otherwise be denied by its own subject matter.
+    let mut haystacks: Vec<String> = Vec::new();
     if let Some(front) = front {
-        haystacks.extend(front.values().map(String::as_str));
+        haystacks.extend(front.values().map(|value| outside_code_spans(value)));
     }
-    haystacks.extend(heading_texts(body));
+    haystacks.extend(heading_texts(body).into_iter().map(outside_code_spans));
 
     let mut faults = Vec::new();
     for token in tokens {
@@ -619,6 +624,46 @@ fn heading_scan(body: &str) -> Vec<Option<(usize, &str)>> {
             continue;
         }
         out.push(if fenced { None } else { heading_of(line) });
+    }
+    out
+}
+
+/// One string with its backticked code spans removed, the segments joined by a space.
+///
+/// **Every "quotation or instance?" question routes through here**, the same write-it-once rule
+/// [`heading_scan`] follows and for the same reason: a second implementation is how the trap gets
+/// reintroduced one function away from where it was closed. Frontmatter values and heading text
+/// both read through this one classifier.
+///
+/// A backticked span is a quotation of a pattern, not a surviving placeholder. Without this, a
+/// report whose subject *is* the schema — one naming `` `wave<n>-<slug>.md` `` in a frontmatter
+/// value — is denied by its own subject matter, and every report discussing a home would hit it.
+///
+/// Two details it gets right. **An unterminated backtick run is literal text**, per CommonMark, so
+/// its tail is kept and a real placeholder cannot hide behind a lone backtick — the false allow
+/// this would otherwise buy. And the kept segments are **joined by a space**, so splicing either
+/// side of a removed span cannot manufacture a token that was never written.
+///
+/// The deliberate non-catch: two *stray* backticks bracket everything between them, so a placeholder
+/// that happens to sit inside that accidental span is not seen. Nothing here distinguishes a real
+/// code span from two unrelated backticks, and the module errs toward allow — the same posture the
+/// fence skip takes, where a missed survivor is drift and a false deny stops honest work.
+// `is_multiple_of` needs Rust 1.87, and this manifest declares no `rust-version`. Raising the
+// floor of the whole crate is a manifest policy call, not this function's to make, so the parity
+// arithmetic stands and the lint is deferred with it.
+#[allow(clippy::manual_is_multiple_of)]
+fn outside_code_spans(text: &str) -> String {
+    let parts: Vec<&str> = text.split('`').collect();
+    // An even count of backticks pairs every span; an odd count leaves the final run open.
+    let unterminated = parts.len() % 2 == 0;
+    let last = parts.len() - 1;
+    let mut out = String::with_capacity(text.len());
+    for (index, part) in parts.iter().enumerate() {
+        let inside = index % 2 == 1 && !(unterminated && index == last);
+        if !inside {
+            out.push_str(part);
+            out.push(' ');
+        }
     }
     out
 }

@@ -224,6 +224,68 @@ fn an_undeclared_name_on_a_file_already_on_disk_is_amnestied_and_names_the_viola
 }
 
 #[test]
+fn a_backticked_pattern_is_a_quotation_and_not_a_surviving_placeholder() {
+    // A report whose subject is the schema names patterns in its own frontmatter. Reading those as
+    // surviving placeholders denies the artifact by its own subject matter — the defect this closes,
+    // found on a real review report quoting `wave<n>-<slug>.md`.
+    let state = state("placeholder-quoted");
+    let quoted = "---\nfeature: FEAT-001\nstatus: draft\nscope: the `FEAT-XXX` pattern\n---\n\n\
+                  # Demo\n\n## Intent\n\nScope is the thing.\n";
+    let verdict = grade(&state, SPEC, quoted);
+    assert!(
+        allowed(&verdict),
+        "a quoted pattern in a frontmatter value is not a placeholder: {:?}",
+        verdict.reason
+    );
+
+    // The control: the same token unquoted in the same field is a survivor, and still denies.
+    let bare = "---\nfeature: FEAT-001\nstatus: draft\nscope: the FEAT-XXX pattern\n---\n\n\
+                # Demo\n\n## Intent\n\nScope is the thing.\n";
+    let verdict = grade(&state, SPEC, bare);
+    assert!(
+        denied(&verdict),
+        "an unquoted token in a value still denies"
+    );
+    assert!(verdict.reason.unwrap_or_default().contains("FEAT-XXX"));
+}
+
+#[test]
+fn a_backticked_pattern_in_a_heading_is_a_quotation_and_its_bare_twin_is_not() {
+    // `###` is the producer's to structure, so this exercises the heading half without also
+    // tripping the undeclared-`##` check.
+    let state = state("placeholder-heading");
+    let quoted = "---\nfeature: FEAT-001\nstatus: draft\n---\n\n# Demo\n\n## Intent\n\n\
+                  ### The `FEAT-XXX` shape\n";
+    let verdict = grade(&state, SPEC, quoted);
+    assert!(
+        allowed(&verdict),
+        "a quoted pattern in heading text is not a placeholder: {:?}",
+        verdict.reason
+    );
+
+    let bare = "---\nfeature: FEAT-001\nstatus: draft\n---\n\n# Demo\n\n## Intent\n\n\
+                ### The FEAT-XXX shape\n";
+    assert!(
+        denied(&grade(&state, SPEC, bare)),
+        "an unquoted token in heading text still denies"
+    );
+}
+
+#[test]
+fn a_lone_backtick_cannot_hide_a_placeholder_behind_it() {
+    // An unterminated run is literal text per CommonMark, so its tail is still read. Without this
+    // the skip would buy a false allow: one stray backtick would blank the rest of the value.
+    let state = state("placeholder-unpaired");
+    let body =
+        "---\nfeature: FEAT-001\nstatus: draft\nscope: a stray ` then FEAT-XXX bare\n---\n\n\
+                # Demo\n\n## Intent\n\nScope is the thing.\n";
+    assert!(
+        denied(&grade(&state, SPEC, body)),
+        "an unpaired backtick is literal text, not an opener that swallows the rest"
+    );
+}
+
+#[test]
 fn an_undeclared_subdir_is_denied() {
     let state = state("subdir");
     let verdict = grade(

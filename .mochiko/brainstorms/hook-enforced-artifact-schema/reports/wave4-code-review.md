@@ -334,3 +334,70 @@ golden "authored and unfrozen", which W2's fix discharged.
 files compile.
 
 **Status: CLEAN** — 6 of 6 held.
+
+## Placeholder code-span fix
+
+**PASS.** Two Minor fixes, neither blocking. Independent non-author review per `rust-cli.md`; I
+authored none of it and edited nothing outside this section.
+
+**The change reads as implementation, not an amendment.** D4c rules that a template's declared
+placeholder tokens are absent from frontmatter values and heading text. A backticked quotation of a
+pattern is not a surviving token, so narrowing where "text" is read does not change what is checked.
+The precedent is in the same function: round 1's G2 added the fenced-code skip for exactly this
+class, where a `#` inside a fenced example counted as heading text and denied a conforming artifact.
+Both narrow a deny, so neither can wedge anyone, and the residual risk is a missed drift, which this
+module states it prefers over a false deny. I record the reading rather than assert it; the lead can
+rule it an amendment if it wants one.
+
+**One classifier, reused — held.** `outside_code_spans` is the only code-span stripper in `src/`,
+and both haystack halves route through it: `front.values().map(...)` and
+`heading_texts(body).into_iter().map(...)`. It sits beside `heading_scan` without forking it, which
+is the write-it-once rule the module already follows for heading classification.
+
+**The unterminated run — held, and it is the load-bearing detail.** `parts.len().is_multiple_of(2)`
+is true exactly when the backtick count is odd, and the final odd-index part is then exempted from
+the inside test, so its tail is still scanned. Measured, not read: a value reading
+``a stray ` then FEAT-XXX bare`` denies. Without that exemption one stray backtick would blank
+everything after it, which is the false allow the guard exists to prevent.
+
+**The space join — held, and I checked the failure it prevents.** Every kept segment is pushed with
+a trailing space, so a token cannot be manufactured across a removed span. The control is a value
+reading ``<`x`n>``: it allows, where a bare concatenation would splice `<` to `n>` and deny an
+artifact for a token nobody wrote.
+
+**The five cells — all held on my own run**, fed through `check` as fresh writes against the shipped
+log rather than read off the tests: a quoted pattern in a frontmatter value allows; the same token
+bare in the same field denies and the reason names it; a backticked token in heading text allows;
+its bare twin denies; a lone backtick followed by a bare token denies. The tests carry the same five
+across three functions, each with its control beside it.
+
+**The reproduction — held, and the before/after is the proof.** `reports/wave3-migration-review.md`
+fed as a fresh write now denies on `## Notes of note` is 29 lines against a budget of 15, with no
+placeholder finding at all. The same payload against the pre-fix binary denies on "the placeholder
+token `<n>` survives in a frontmatter value or a `##`/`###` heading". The file carries `<n>`,
+`<slug>` and `<date-slug>`, every one of them inside a longer backticked span such as
+`` `wave<n>-reports/` `` rather than wrapped tightly, so this also exercises the case a naive
+adjacency test would miss.
+
+**P1 — Minor, toolchain.** `is_multiple_of` is new to this crate with this change: both uses are in
+the new function and `HEAD`'s `conform.rs` has none. It is an integer method stabilized in Rust
+1.87, and `crates/mochiko-cli/Cargo.toml` declares no `rust-version`. CI is unaffected, since it
+installs `dtolnay/rust-toolchain@stable` and there is no pinned toolchain file. The exposure is a
+consumer running `cargo install mochiko-cli` on an older toolchain, who gets
+`no method named is_multiple_of` instead of a clear minimum-version message — and GI-020 makes that
+binary a hard dependency of the plugin. Fix: declare `rust-version` in `Cargo.toml`, or write
+`% 2 == 0`, which costs nothing and reads the same.
+
+**P2 — Minor, documentation.** The docstring says "Two details it gets right" and names the
+unterminated run and the space join. There is a third case it deliberately does not catch, and it is
+worth a sentence: because the classifier splits on single backticks, two stray backticks anywhere in
+one value bracket everything between them, so a real surviving token in that stretch is hidden. I
+measured it — a value reading ``use ` in a name like <n> or ` elsewhere`` allows. The direction of
+error is the one this module prefers, and closing it would mean CommonMark run-length matching for
+little gain, so the fix is a sentence naming the limit, not code.
+
+**Gates on my run:** `cargo test --all` 460 passed 0 failed · `cargo fmt --all --check` exit 0 ·
+`cargo clippy --all-targets -- -D warnings` exit 0, zero warnings · `cargo audit --deny warnings`
+exit 0 · `migrate validate` 0 rejecting, 104 advisory · `run.py --host-only` 7/7 cases, with
+`G-PLACE` still denying a bare token and `G-CONFORM` still allowing. The binary under every probe
+was `target/release`, which the suite's own staleness guard reports fresh against the source.

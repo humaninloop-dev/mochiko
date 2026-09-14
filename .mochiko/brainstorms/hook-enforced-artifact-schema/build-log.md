@@ -486,3 +486,18 @@ only; no shared write surface unless disclosed here.
   inside a backticked path pattern quoted in a frontmatter value — a quotation, not a
   placeholder; crate fix (skip code spans, reuse the classifier) dispatched to `se-wave1`,
   review by `reviewer-2`. Dead `producer_report:` pointer noted for class 4. Class 2 open.
+- 2026-09-15 · **wave 5 class 2 committed `73d1746`**: 29 files — 13 plans to their session root
+  (`wave<n>-<name>.md`), 5 fixtures to `research/wave0-fixtures/`, 11 working files to
+  `research/`; every `wave<n>-reports/`/`wave0-fixtures/` dir gone; mochiko **path denies 0**,
+  set 3 (class 3). One path deny became a size deny (`wave1-p3-corpus-plan.md`, 368 lines —
+  amnestied; the trade working as intended). Classes 3 + 4 opened together.
+- 2026-09-15 · placeholder code-span fix built (`se-wave1`): `outside_code_spans` beside
+  `heading_scan`, both placeholder haystacks read through it; unterminated backtick = literal
+  (tail still scanned); kept segments joined with a space; 5 cells; 460 tests, gates green.
+  The real file (`reports/wave3-migration-review.md`) now denies on `## Notes of note` 29/15 —
+  a genuine size violation, amnestied. Non-author review dispatched to `reviewer-2`.
+- 2026-09-15 · code-span fix reviewed **PASS** (`reviewer-2`; the splice guard proven on
+  `<`x`n>`; the reproduction now denies on size, not `<n>`). Minors P1 (`is_multiple_of` is
+  Rust 1.87+, no `rust-version` declared → `% 2 == 0`) and P2 (docstring: two stray backticks
+  bracket everything between them — errs toward allow) routed. Reviewer's reading, adopted: this
+  narrows where text is read, not what is checked — implementation, not a D4c amendment.
