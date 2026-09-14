@@ -39,9 +39,11 @@ provenance: `.mochiko/brainstorms/hook-enforced-artifact-schema/record.md`)*
   CLEAN; bump STAGED at 0.109.0, NOT landed** (precondition: the crate publish with four controls;
   the full sandboxed contract run at the bump — the suite's sandbox half was repaired as its own
   module after the 2026-09-11 runner convergence broke it; file-set amnesty landed as ratified).
-  **Wave 5** — violator pass on kinako with the pre-gate plugin, upgrade, dogfood, watch; **this
-  repo's own violator pass runs before the wave-4 plugin installs locally** (AM-3 C10; the
-  synthesis's heading drift and the undeclared `wave<n>-reports/` dirs are fixed there).
+  **Wave 5 — mochiko half DONE 2026-09-15** (83 files re-homed, 111 pointers, path 0 · set 0,
+  65 amnestied residuals; AM-3 C10 satisfied before any local install); **kinako half pending
+  the user** — evidence-tree ruling (161 files with no legal home under `.mochiko/`), pass
+  authorization (214 moves, 143 pointers), then upgrade, dogfood, D10 watch; kinako stays on its
+  project-pinned 0.103.0 until its pass is done.
 
 ## CLI schema-delivery build
 

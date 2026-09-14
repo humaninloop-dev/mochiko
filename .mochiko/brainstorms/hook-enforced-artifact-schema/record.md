@@ -654,6 +654,15 @@ running record)
   standing-overage ledger lines (the `artifact-home` mints cost 497–558 each; identity closes
   11/11), contract suite: 39 host rows green, sandbox half repaired as the suite's own module
   (smoke 5/5, 16 sessions; full run at the bump). 457 tests.
+- **Wave 5, mochiko half (2026-09-15, DONE — `bd993c3` · `73d1746` · `3aad540`):** 83 files
+  re-homed (51 wave reports → `reports/` with envelope frontmatter stamped, 13 plans to the
+  session root as `wave<n>-<name>.md`, 16 working files + the wave-0 fixtures → `research/`, 3
+  reviews → `reports/`), 111 pointer lines across 74 files repointed, historical citations left;
+  inventory after: **path 0 · set 0**, 65 amnestied size/shape residuals (the pass rewrites
+  nothing for size — existing files ride D4e amnesty). A placeholder false-positive found by the
+  pass (a backticked path pattern in a frontmatter value) is fixed in the crate (`c56ca1c`).
+  Kinako half: 214 moves incl. 161 evidence files with no legal home under `.mochiko/` — user
+  rulings pending (evidence tree; pass authorization); kinako pinned at 0.103.0 until then.
 - **Stated limits found in the build (D1c/D9 disclosed holes, added here by transcription):**
   a session artifact written to the repo root is uncaught (root docs are not a home — R6);
   three shell shapes evade the write-operator scan — `cd <home> && … > x.md`, a path held in a

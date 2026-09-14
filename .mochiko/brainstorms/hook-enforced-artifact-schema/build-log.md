@@ -505,3 +505,10 @@ only; no shared write surface unless disclosed here.
   `#[allow(clippy::manual_is_multiple_of)]` with reason — the method is Rust 1.87+, no
   `rust-version` declared, raising the floor is a manifest policy call; P2 docstring). 460 tests.
   Classes 3–4 of the mochiko pass in progress (77 paths in the tree).
+- 2026-09-15 · **wave 5 classes 3–4 committed** (see git log): 3 reviews re-homed; 111 pointer
+  lines across 74 files (strips, DECISIONS, governance intent/trace, contract fixtures,
+  `primitive-edits.md`'s four dead pointers — fix-on-sight), history left where a finding cites
+  the then-location. **Mochiko pass DONE: path 0 · set 0**; 65 amnestied residuals (44
+  record/synthesis whole-file · 13 wave files · 5 report sections · 1 build log · 2 missing
+  headings). QA caught and fixed two bugs in its own pointer pass (needle chaining; dropped
+  session segment) and restored a stale worktree it had touched. Kinako half awaits the user.
