@@ -48,7 +48,9 @@ handoff: "{{which artifacts to grade + known soft spots, one line}}"
    open questions feed the clarification loop, where the reviewer stress-tests them.
    **`governance_alignment`** discloses alignment to the CLAUDE.md governance region + its
    `.claude/rules/mochiko/` files in one line.
-7. **Output location** — `.mochiko/specs/<feature>/techanalyst-report.md`, seeded and
-   collected by the lead, alongside the analysis/design artifacts.
+7. **Output location** — `.mochiko/specs/<slug>/reports/techanalyst-report.md`, seeded and
+   collected by the lead, alongside the analysis/design artifacts. A report lands in its home's
+   `reports/` directory under any name, and the `report: disclosure` type above is what admits
+   this one; `mochiko-cli home <path>` prints the home that governs a given path.
 8. **This is a reference template** — the technical-analyst fills in actual content
    following this structure.

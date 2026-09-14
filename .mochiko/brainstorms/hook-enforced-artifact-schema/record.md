@@ -620,6 +620,48 @@ inheriting F13's figures.
 
 **Confidence:** Confident (drafted by the lead as derived; user-confirmed as drafted at Q7).
 
+## Build trail (post-acceptance transcription — facts, not new rulings; `build-log.md` is the
+running record)
+
+- **Wave 0 (2026-09-13, PROCEED, user-ruled R4):** `wave0-probe-report.md`, reviewed PASS
+  after one fix round. All four transports fire; deny holds in every permission mode; `Read`
+  carries `file_path`; the grep/sed payload parse produced one false allow; Bash is 85–86 % of
+  gated volume and the `if` narrowing removes 60–64 %; leg 8 `SubagentStart` → D1b amended (R5).
+- **Wave 1 (2026-09-13, accepted, `c395dab`):** the `home` kind, `check --hook-json -`,
+  per-section conformance, exit 4 minted, explicit allow on every non-deny path; 453 tests;
+  non-author review PASS after one fix round (a fence-unaware placeholder scan fixed
+  structurally). Replay cost is log-size-bound (~37 ms on the 12k-line log), not process start.
+- **Wave 2 (2026-09-14, governance v3.1.0 AM-3, `794cea8`):** MINOR ruled as a recorded
+  departure; GI-019 clause (iv); `rust-cli.md` bullet superseded (prior text in the ledger).
+  Consequences: the wave-4 bump MUST NOT land before the crate's first publish with all four
+  controls (review C5); clause (iv)'s C1 condition — the budget table must admit honest content
+  (the 150-line whole-file bound on `record.md` failed it: 43/66 mochiko, 7/7 kinako records
+  over; amendment put to the user); the ≤ 60 s cost cap is a watch, never a bump gate.
+- **Wave 3 (2026-09-13/14, built, graded PASS, delta-check CLEAN):** `0005-artifact-homes.yaml`
+  — 20 homes, 68 deliverables, 3 template imports (`report-envelope` with sections + budgets,
+  `architecture-spine`, `architecture-concerns`), 5 replacements incl. the `tasks` skeleton fix
+  (R7), 17 `artifact-home` floor mints, 1 reword; `check` 27 ms on the grown log. R1–R11 ruled
+  as proposed. `wave3-budget-table.md` re-attributed to `artifact-format.md` rule 4 as amended;
+  under the gate rule 4's defaults become caps (escapes structural). **Ratification pending the
+  C1 amendment** (record/synthesis unbounded · template-less pipeline deliverables and
+  `wave<n>-<slug>.md` 300 · entry-class 150).
+- **Wave 4 (2026-09-15, built, audits PASS, review PASS, delta-check CLEAN; bump staged at
+  0.109.0, NOT landed):** two registrations (un-narrowed `Write|Edit`; `Bash`/`PowerShell` on
+  `*.mochiko*`; `SubagentStart`), two parse-nothing wrappers (explicit allow always; exit-4
+  empty-stdout guard), file-set amnesty as ratified (the ledger's "bare allow" description was
+  wrong — pre-fix behaviour was deny at exit 4 on both limbs; corrected in the bump's PATCH),
+  PowerShell write-cmdlet vocabulary, five primitive edits + three strips, eleven
+  standing-overage ledger lines (the `artifact-home` mints cost 497–558 each; identity closes
+  11/11), contract suite: 39 host rows green, sandbox half repaired as the suite's own module
+  (smoke 5/5, 16 sessions; full run at the bump). 457 tests.
+- **Stated limits found in the build (D1c/D9 disclosed holes, added here by transcription):**
+  a session artifact written to the repo root is uncaught (root docs are not a home — R6);
+  three shell shapes evade the write-operator scan — `cd <home> && … > x.md`, a path held in a
+  variable, a relative write when cwd is already inside a home (the `Write`/`Edit` arm is
+  unaffected); whether Claude Code routes a real `PowerShell` call to the hook is unverifiable
+  on macOS (the arm decides correctly when reached); a project with `disableAllHooks` keeps the
+  procedural ceremony only (D7e).
+
 ## Open questions
 
 - **OQ1 — Section budgets for prose-shaped deliverables.** A brainstorm `record.md` or a

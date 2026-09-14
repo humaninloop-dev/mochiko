@@ -27,12 +27,19 @@ cases into a per-command family:
     render-ceiling      every converted primitive's renders against the inline ceiling, and
                         against the two phrases no rendered rule may still carry
     deliverables        every template, shelf and registry through its CLI form
+    gate-input          `artifact-gate.sh`, one payload per row — the six conformance
+                        checks, the Bash arm, the sniff, and one row per CLI exit code
+    reminder-input      `seat-reminder.sh`, fed the captured `SubagentStart` stdin
+    if-placement        the shipped `hooks.json` read as data: a matcher-group `if` is
+                        silently ignored by the platform, so it is caught statically
     absence   [fixture] the binary is off the sandbox PATH -> the run halts, nothing delivered
     skew      [fixture] the log declares a grammar the binary does not read -> the D5 halt
     <cmd>-delivery      the happy path, per converted command: every block its render declares,
                         delivered, plus the read-back metric and the delivered read cost
     <cmd>-absence       the same halt, per converted command, with the plugin's own hooks in play
     brainstorm-skew     the staged plugin's own log is out of range
+    gate-live           one session: the deny stops the write, a conforming write lands
+    reminder-spawn      two sessions: the reminder reaches an unnamed and a named spawn
     brainstorm-hooks-off  hooks disabled: the harness path is the only guard left
     brainstorm-policy   shell execution disabled by policy — recorded, never asserted (D8)
 
@@ -118,12 +125,17 @@ TEMPLATE_FOOTER = "schemas: replayed from "
 # them. Discovery alone would shrink silently if a document vanished from the log; a written-down
 # set alone would go stale when one is added. Compared in both directions, neither can.
 TEMPLATE_NAMES = (
+    # `0005-artifact-homes` (2026-09-13) imported the last three: the report envelope every
+    # `reports/` directory binds, and the spine/concerns split of the store template.
+    "architecture-concerns",
+    "architecture-spine",
     "architecture-store",
     "codebase-analysis",
     "feature-entry",
     "features-index",
     "governance-intent",
     "governance-surfaces",
+    "report-envelope",
     "spec",
     "tasks",
 )
@@ -175,6 +187,9 @@ EXPECTED = {
     "architecture": Expected(
         frozenset(
             {
+                # `0005-artifact-homes` (2026-09-13) minted the authoring-time home
+                # floor on every producing primitive.
+                "arch.artifact-home",
                 "arch.dm-health-first",
                 "arch.dm-converge-goal",
                 "arch.dm-author-baseline",
@@ -204,6 +219,9 @@ EXPECTED = {
     "brainstorm": Expected(
         frozenset(
             {
+                # `0005-artifact-homes` (2026-09-13) minted the authoring-time home
+                # floor on every producing primitive.
+                "brainstorm.artifact-home",
                 "brainstorm.user-record-acceptance",
                 "brainstorm.author-grader-default-fail",
                 "brainstorm.transport-floor",
@@ -218,6 +236,9 @@ EXPECTED = {
     "feature": Expected(
         frozenset(
             {
+                # `0005-artifact-homes` (2026-09-13) minted the authoring-time home
+                # floor on every producing primitive.
+                "feat.artifact-home",
                 "feat.capability-writes-sacred",
                 "feat.grooming-door-ceiling",
                 "feat.out-of-remit-hosting",
@@ -238,6 +259,9 @@ EXPECTED = {
     "implement": Expected(
         frozenset(
             {
+                # `0005-artifact-homes` (2026-09-13) minted the authoring-time home
+                # floor on every producing primitive.
+                "impl.artifact-home",
                 "impl.gate-design-checkpoint",
                 "impl.gate-card-confirm",
                 "impl.gate-final-acceptance",
@@ -279,6 +303,9 @@ EXPECTED = {
     "setup": Expected(
         frozenset(
             {
+                # `0005-artifact-homes` (2026-09-13) minted the authoring-time home
+                # floor on every producing primitive.
+                "setup.artifact-home",
                 "setup.blind-map-dispatch",
                 "setup.gate-synthesis-ratification",
                 "setup.gate-final-acceptance",
@@ -304,6 +331,9 @@ EXPECTED = {
     "specify": Expected(
         frozenset(
             {
+                # `0005-artifact-homes` (2026-09-13) minted the authoring-time home
+                # floor on every producing primitive.
+                "spec.artifact-home",
                 "spec.pm-recommends-never-selects",
                 "spec.gate-selection",
                 "spec.gate-acceptance",
@@ -589,9 +619,17 @@ def report(name: str, what: str) -> Check:
 
 
 def load_runner():
-    """Import `evals/run.py` — the sandbox helpers, never a second copy of them."""
-    path = REPO / "evals" / "run.py"
-    spec = importlib.util.spec_from_file_location("mochiko_eval_runner", path)
+    """Import the suite's own sandbox helpers — `evals/contract/sandbox.py`.
+
+    This used to import `evals/run.py`, the skill-eval harness. It stopped working when that
+    harness converged onto host mode and dropped `SANDBOX` and `sbx_sh` outright: `preflight()`
+    raised `AttributeError` before any sandbox case ran, and `run_probe()`'s positional
+    `claude_args` call silently rebound to a changed signature and began asking for
+    `--plugin-dir True`. A release gate may not depend on a research harness that owes it nothing
+    (GI-012), so the three names it needs now live beside it. See `sandbox.py`'s header.
+    """
+    path = CONTRACT / "sandbox.py"
+    spec = importlib.util.spec_from_file_location("mochiko_contract_sandbox", path)
     if spec is None or spec.loader is None:
         raise RuntimeError(f"{path} cannot be imported")
     module = importlib.util.module_from_spec(spec)
@@ -1144,7 +1182,10 @@ def run_probe(
     `tag` distinguishes the evidence files of several runs sharing one case directory, which is
     what the three delivery replicates need.
     """
-    args = runner.claude_args(prompt, "sonnet", max_turns, True, staged.plugin)
+    # By keyword, never positionally: a positional call is what let the 2026-09-11 signature
+    # change rebind `plugin` to `True` without a single test going red.
+    args = runner.claude_args(prompt=prompt, model="sonnet", max_turns=max_turns,
+                              stream=True, plugin=staged.plugin)
     if settings is not None:
         args += ["--settings", json.dumps(settings, separators=(",", ":"))]
     env = [f"PATH={shlex.quote(path_env)}"]
@@ -1293,6 +1334,38 @@ def host_sh(script: str, *, env: dict | None = None, stdin: str | None = None,
     )
 
 
+# The crate's source tree. A binary older than it is the trap the wave-4 cases hit: the file-set
+# amnesty had landed in `conform.rs` and the built binary predated it, so a conforming row denied
+# and read exactly like a gate regression.
+CRATE_SRC = REPO / "crates" / "mochiko-cli" / "src"
+
+
+def stale_against_source(candidate: str) -> str | None:
+    """The reason this binary is older than the crate source, or None.
+
+    Refuses rather than rebuilding. A gate that silently rebuilds its own subject is grading
+    something the operator did not choose, and `cargo build` inside a release gate is a side
+    effect nobody asked for; the message carries the command instead.
+    """
+    try:
+        built = pathlib.Path(candidate).stat().st_mtime
+    except OSError:
+        return None
+    newer = [
+        path for path in CRATE_SRC.rglob("*.rs")
+        if path.is_file() and path.stat().st_mtime > built
+    ]
+    if not newer:
+        return None
+    names = ", ".join(sorted(p.name for p in newer)[:4])
+    more = f" and {len(newer) - 4} more" if len(newer) > 4 else ""
+    return (
+        f"`{candidate}` is older than the crate source ({names}{more} changed since it was "
+        f"built), so every row would grade a binary that is not the one under test — the trap "
+        f"reads as a gate regression. Rebuild with `cargo build --release -p mochiko-cli`"
+    )
+
+
 def host_binary() -> tuple[str | None, str | None]:
     """The host's `mochiko-cli`, verified by running it, or the reason there isn't one.
 
@@ -1307,7 +1380,8 @@ def host_binary() -> tuple[str | None, str | None]:
         probe = host_sh(f"{shlex.quote(candidate)} --version")
         line = probe.stdout.strip().splitlines()[0] if probe.stdout.strip() else ""
         if probe.returncode == 0 and VERSION_LINE.match(line):
-            return candidate, None
+            stale = stale_against_source(candidate)
+            return (None, stale) if stale else (candidate, None)
     return None, (
         f"no runnable `mochiko-cli` on the host — build one with "
         f"`cargo build --release -p mochiko-cli` (looked at {HOST_BINARY} and PATH)"
@@ -3955,11 +4029,811 @@ def case_deliverables(runner, sandbox) -> tuple[list, pathlib.Path]:
     return checks, staged.root
 
 
+# ---------------------------------------------------------------------------
+# wave 4 — the artifact gate and the seat reminder
+# ---------------------------------------------------------------------------
+
+ARTIFACT_HOOKS = CONTRACT / "fixture" / "artifact-hooks"
+GATE_SCRIPT = "artifact-gate.sh"
+REMINDER_SCRIPT = "seat-reminder.sh"
+# The reminder's frozen line, carried here on purpose. Reading it out of the script instead would
+# make the row tautological: a reword of the script would rewrite the golden and the case would
+# pass, which is the opposite of a freeze. Held in the suite, a reword fails the row until someone
+# changes this line too — and changing it is a visible edit to a release gate, which is the point.
+REMINDER_GOLDEN = (
+    "mochiko gate: artifacts under declared homes take their shape from "
+    "`mochiko-cli home <path>`; existing files are not templates."
+)
+
+# `check`'s minted conformance code (record D3 / wave-1 plan §4). Every other exit is
+# pass-through: the wrapper still speaks an explicit allow, because the platform denies a
+# background subagent's call when no hook returns a decision (wave-0 probe, leg 1).
+EXIT_CONFORMANCE = 4
+
+# D9's advisory closing sentence. Asserted by its stable head rather than in full, so a reword of
+# its tail is not a suite failure while its presence still is.
+HALT_SENTENCE = "a second deny on this path halts"
+
+# The two homes the rows are keyed to, chosen for what they can exercise rather than for what they
+# are: `architecture-spine` is the only shipped template carrying both `extra_headings: deny` and
+# per-section budgets, and the report envelope is the only one carrying required frontmatter, an
+# enum and placeholder tokens. Between them the six conformance checks are all reachable.
+SPINE_PATH = ".mochiko/product/architecture/spine.md"
+SESSION_HOME = ".mochiko/brainstorms/contract-demo"
+
+# A conforming `architecture-spine`: the three required headings, nothing undeclared, every section
+# inside its budget. Written down rather than derived — a baseline read off the thing it grades is
+# not a baseline — and cross-checked by `G-CONFORM`, which goes red if the shipped template moves
+# out from under it. Deliberately no numbers appear in any assertion about it (lead ruling,
+# 2026-09-13): `0005`'s budgets may be re-keyed by the table amendment, and a row that asserts a
+# measure by name survives that where a row asserting `30` does not.
+CONFORMING_SPINE = """# Architecture spine
+
+## Container diagram
+
+One container.
+
+## Elements
+
+One element.
+
+## Key flows
+
+One flow.
+"""
+
+CONFORMING_REPORT = """---
+report: verification
+feature: FEAT-001
+round: 1
+---
+"""
+
+
+def load_artifact_captures() -> tuple[dict, list[str]]:
+    """The wave-0 captures for the gate and reminder rows, indexed by file stem.
+
+    Kept out of `fixture/hook-input/` on purpose. `load_captures()` globs that directory and
+    indexes by `hook_event_name` with the first sorted filename winning; three of these are
+    `PreToolUse`, and one of them sorts ahead of `pre-tool-use-skill.json`. Dropping them in there
+    would hand the dependency-halt case a Bash payload where it expects `tool_input.skill` and its
+    per-skill rows would quietly stop testing what they name.
+    """
+    captures, notes = {}, []
+    for path in sorted(ARTIFACT_HOOKS.glob("*.json")) if ARTIFACT_HOOKS.is_dir() else []:
+        try:
+            captures[path.stem] = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as err:
+            notes.append(f"{path.name} is not readable JSON: {err}")
+    return captures, notes
+
+
+def script_reminder_line(plugin: pathlib.Path) -> tuple[str | None, str | None]:
+    """The line `seat-reminder.sh` is written to emit, lifted out of the script's own text.
+
+    This is *not* the golden — `REMINDER_GOLDEN` is. What it is for is the other half of the
+    freeze: the script's text and the golden must agree, so a reword of the script is caught
+    statically here as well as dynamically in what the script emits.
+    """
+    script = plugin / "hooks" / "scripts" / REMINDER_SCRIPT
+    try:
+        text = script.read_text(encoding="utf-8")
+    except OSError as err:
+        return None, f"{script} is unreadable: {err}"
+    for chunk in re.findall(r"'(\{.*?\})'", text, re.S):
+        try:
+            payload = json.loads(chunk)
+        except json.JSONDecodeError:
+            continue
+        line = (payload.get("hookSpecificOutput") or {}).get("additionalContext")
+        if line:
+            return line, None
+    return None, f"no frozen `additionalContext` line found in {script.name}"
+
+
+class GateRow(NamedTuple):
+    """One `artifact-gate.sh` row: a payload, the decision it must draw, and why it exists.
+
+    `keywords` are what the deny reason must *name* — the failing measure, the path, the declared
+    set — never a number. `context` is the same for `additionalContext`, which the two amnesty
+    rows require and every other allow row must not carry a deny in.
+    """
+
+    id: str
+    clause: str
+    decision: str            # "allow" | "deny"
+    build: object            # (workspace: str) -> payload dict
+    keywords: tuple = ()
+    context: tuple = ()
+    setup: object = None     # (workspace: str) -> None
+    root: str = "plugin"     # "plugin" | "skew" | "unsound"
+    path: str = "present"    # "present" | "absent" | "stub2"
+    status: str = "assert"   # "assert" | "report"
+
+
+def _abs(workspace: str, rel: str) -> str:
+    return str(pathlib.Path(workspace) / rel)
+
+
+def _write_payload(workspace: str, rel: str, content: str) -> dict:
+    return {
+        "hook_event_name": "PreToolUse", "tool_name": "Write", "cwd": workspace,
+        "tool_input": {"file_path": _abs(workspace, rel), "content": content},
+    }
+
+
+def _edit_payload(workspace: str, rel: str, old: str, new: str) -> dict:
+    return {
+        "hook_event_name": "PreToolUse", "tool_name": "Edit", "cwd": workspace,
+        "tool_input": {"file_path": _abs(workspace, rel), "old_string": old,
+                       "new_string": new, "replace_all": False},
+    }
+
+
+def _seed(workspace: str, rel: str, text: str) -> None:
+    target = pathlib.Path(workspace) / rel
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_text(text, encoding="utf-8")
+
+
+def _repoint(capture: dict, workspace: str, probe_fragment: str, real: str) -> dict:
+    """A captured payload bound to this row's workspace, and nothing else touched.
+
+    The captures name the wave-0 probe's own `probe-home/` tree, which resolves to no mochiko home.
+    Only `cwd` and the one path inside `file_path` / `command` are substituted, so the field set,
+    the field order and — for the redirect capture, which is the whole reason it is kept — the
+    escaping survive exactly as the platform sent them.
+    """
+    payload = json.loads(json.dumps(capture))
+    payload["cwd"] = workspace
+    tool_input = payload.get("tool_input") or {}
+    if "file_path" in tool_input:
+        tool_input["file_path"] = _abs(workspace, real)
+    if "command" in tool_input:
+        tool_input["command"] = tool_input["command"].replace(probe_fragment, _abs(workspace, real))
+    payload["tool_input"] = tool_input
+    return payload
+
+
+def gate_rows(captures: dict) -> list:
+    """The gate's row table. Every payload and expected exit was validated against `check`
+    directly before `artifact-gate.sh` existed, so a failure here is the wrapper's, not the row's.
+    """
+    heredoc = captures.get("pre-tool-use-bash-heredoc")
+    redirect = captures.get("pre-tool-use-bash-redirect-false-allow")
+    read = captures.get("pre-tool-use-read-home")
+    oversized_spine = CONFORMING_SPINE.replace(
+        "One container.", "\n".join(f"PAD{i}" for i in range(40)))
+
+    rows = [
+        GateRow("G-PATH", "deny: path", "deny",
+                lambda w: _write_payload(w, ".mochiko/specs/demo/stories/nope/deep.md", "# x\n"),
+                keywords=("not a declared sub-directory",)),
+        GateRow("G-SET", "deny: file set", "deny",
+                lambda w: _write_payload(w, f"{SESSION_HOME}/notes.md", "# notes\n"),
+                keywords=("not a declared deliverable", "notes.md")),
+        GateRow("G-HEAD", "deny: shape (headings)", "deny",
+                lambda w: _write_payload(w, SPINE_PATH, CONFORMING_SPINE + "\n## Undeclared\n\nx\n"),
+                keywords=("## Undeclared", "not a declared heading")),
+        GateRow("G-SIZE", "deny: size", "deny",
+                lambda w: _write_payload(w, SPINE_PATH, oversized_spine),
+                keywords=("Container diagram", "against a budget of")),
+        GateRow("G-FM-MISSING", "deny: shape (frontmatter)", "deny",
+                lambda w: _write_payload(w, f"{SESSION_HOME}/reports/r.md",
+                                         "---\nfeature: FEAT-001\n---\n"),
+                keywords=("missing the required field", "report")),
+        GateRow("G-FM-ENUM", "deny: shape (enum)", "deny",
+                lambda w: _write_payload(w, f"{SESSION_HOME}/reports/r.md",
+                                         "---\nreport: not-a-type\nfeature: FEAT-001\n---\n"),
+                keywords=("is not one of",)),
+        GateRow("G-PLACE", "deny: shape (placeholders, D4c)", "deny",
+                lambda w: _write_payload(w, f"{SESSION_HOME}/reports/r.md",
+                                         "---\nreport: verification\nfeature: <feature-id>\n---\n"),
+                keywords=("placeholder token", "<feature-id>")),
+        GateRow("G-CONFORM", "allow on a conforming write", "allow",
+                lambda w: _write_payload(w, SPINE_PATH, CONFORMING_SPINE)),
+        GateRow("G-REPORT-OK", "D2: open-by-name reports", "allow",
+                lambda w: _write_payload(w, f"{SESSION_HOME}/reports/anything-at-all.md",
+                                         CONFORMING_REPORT)),
+        GateRow("G-REPORT-BAD", "D2: the envelope still binds a report", "deny",
+                lambda w: _write_payload(w, f"{SESSION_HOME}/reports/anything-at-all.md",
+                                         "---\nreport: nope\n---\n"),
+                keywords=("is not one of",)),
+        GateRow("G-EDIT", "D4e: Edit checked on the in-memory result", "deny",
+                lambda w: _edit_payload(w, SPINE_PATH, "One flow.",
+                                        "One flow.\n\n## Undeclared\n\nx"),
+                keywords=("## Undeclared",),
+                setup=lambda w: _seed(w, SPINE_PATH, CONFORMING_SPINE)),
+        GateRow("G-AMNESTY", "D4e: first-touch amnesty on a measure", "allow",
+                lambda w: _edit_payload(w, SPINE_PATH, "PAD0", "PAD0 touched"),
+                context=("Container diagram",),
+                setup=lambda w: _seed(w, SPINE_PATH, oversized_spine)),
+        GateRow("G-SET-AMNESTY-EXISTING", "D4e: the file set is inside the amnesty", "allow",
+                lambda w: _edit_payload(w, f"{SESSION_HOME}/notes.md", "old", "new"),
+                context=("notes.md",),
+                setup=lambda w: _seed(w, f"{SESSION_HOME}/notes.md", "old\n")),
+        GateRow("G-SET-NEW", "D4e: a new undeclared name still denies", "deny",
+                lambda w: _write_payload(w, f"{SESSION_HOME}/brand-new-undeclared.md", "# x\n"),
+                keywords=("not a declared deliverable",)),
+        GateRow("G-BASH-HEREDOC", "V12: a denied Bash heredoc write", "deny",
+                lambda w: _repoint(heredoc, w, "probe-home/b.md", f"{SESSION_HOME}/record.md"),
+                keywords=("Write/Edit", "shell redirect")),
+        GateRow("G-BASH-REDIRECT", "V12 · the field() false-allow regression", "deny",
+                lambda w: _repoint(redirect, w,
+                                   "/private/tmp/claude-501/-Users-deepeshadmin-Documents-GitHub-"
+                                   "mochiko/9a06b8f1-b39c-4461-b67f-d4f40bb297b5/scratchpad/wave0/"
+                                   "probe-cwd/probe-home/c.md",
+                                   f"{SESSION_HOME}/record.md"),
+                keywords=("Write/Edit", "shell redirect")),
+        GateRow("G-BASH-PLAIN", "V12: an ordinary Bash command is untouched", "allow",
+                lambda w: {"hook_event_name": "PreToolUse", "tool_name": "Bash", "cwd": w,
+                           "tool_input": {"command": "echo probe-plain-ok",
+                                          "description": "an ordinary command"}}),
+        GateRow("G-BASH-READ", "D1c: the write-operator scope, not the path", "allow",
+                lambda w: {"hook_event_name": "PreToolUse", "tool_name": "Bash", "cwd": w,
+                           "tool_input": {"command": f"cat {SESSION_HOME}/record.md",
+                                          "description": "reads a home, writes nothing"}}),
+        GateRow("G-SNIFF", "D9: the frontmatter sniff outside every home", "deny",
+                lambda w: _write_payload(w, "docs/smuggled.md",
+                                         "---\nreport: review\nfeature: FEAT-001\n---\n"),
+                keywords=("under no declared home",)),
+        GateRow("G-PLAIN-MD", "D9: a plain `.md` elsewhere is not mochiko's business", "allow",
+                lambda w: _write_payload(w, "docs/ordinary.md", "# just a doc\n")),
+        GateRow("G-OUTSIDE-CWD", "§3 step 4: outside `cwd` is not measured", "allow",
+                lambda w: {"hook_event_name": "PreToolUse", "tool_name": "Write", "cwd": w,
+                           "tool_input": {"file_path": "/etc/elsewhere/x.md", "content": "# x\n"}}),
+        GateRow("G-READ", "R5: the gate owns no `Read` behaviour", "allow",
+                lambda w: _repoint(read, w, "", f"{SESSION_HOME}/record.md")),
+        GateRow("G-EXIT1", "C2: exit 1 (log unsound) is pass-through", "allow",
+                lambda w: _write_payload(w, SPINE_PATH, CONFORMING_SPINE), root="unsound"),
+        GateRow("G-EXIT2", "C2: exit 2 (a binary predating `check`) is pass-through", "allow",
+                lambda w: _write_payload(w, SPINE_PATH, CONFORMING_SPINE), path="stub2"),
+        GateRow("G-EXIT3", "C2: exit 3 (grammar skew) is pass-through", "allow",
+                lambda w: _write_payload(w, SPINE_PATH, CONFORMING_SPINE), root="skew"),
+        GateRow("G-UNPARSABLE", "§3 step 1: an unparsable payload never denies", "allow",
+                lambda w: "{not json at all"),
+        GateRow("G-ABSENT", "fail-open, D7 floor: no binary on PATH", "allow",
+                lambda w: _write_payload(w, SPINE_PATH, CONFORMING_SPINE), path="absent"),
+        # The PowerShell arm. Wave 0 could not test it at all — macOS has no PowerShell tool, so
+        # no call reaches it. But `check` branches on `tool_name`, not on the platform's dispatch,
+        # so every *decision* below is host testable even where the routing is not. What stays
+        # unasserted anywhere in this suite is only whether Claude Code routes a real PowerShell
+        # call to this hook; a Windows leg is the only thing that could close that.
+        GateRow("G-PWSH-REDIRECT", "D1c's PowerShell arm decides", "deny",
+                lambda w: {"hook_event_name": "PreToolUse", "tool_name": "PowerShell", "cwd": w,
+                           "tool_input": {"command":
+                                          f"echo x > {SESSION_HOME}/record.md"}},
+                keywords=("Write/Edit", "shell redirect")),
+        # The second half used to be a recorded allow: the write-operator vocabulary was
+        # POSIX-shell-shaped, so a seat writing the way PowerShell is actually written passed the
+        # arm untouched. `powershell_write_targets` closed that, and the row is asserted from here.
+        # It is kept structural — the deny must name the target it resolved, never a fixed sentence
+        # — so a re-worded reason or a widened cmdlet table does not fail it.
+        GateRow("G-PWSH-NATIVE", "D1c: a native write cmdlet denies like a redirect", "deny",
+                lambda w: {"hook_event_name": "PreToolUse", "tool_name": "PowerShell", "cwd": w,
+                           "tool_input": {"command":
+                                          f"Set-Content -Path {SESSION_HOME}/record.md -Value x"}},
+                keywords=("Write/Edit", "shell redirect", f"{SESSION_HOME}/record.md")),
+        # The allow control the deny above needs: the cmdlet table is scoped to write verbs, not to
+        # paths, so reading a home is untouched. Without this row a table that denied on any
+        # `.mochiko` mention would still pass — the PowerShell mirror of `G-BASH-READ`.
+        GateRow("G-PWSH-READ", "D1c: the cmdlet table is write-scoped, not path-scoped", "allow",
+                lambda w: {"hook_event_name": "PreToolUse", "tool_name": "PowerShell", "cwd": w,
+                           "tool_input": {"command": f"Get-Content {SESSION_HOME}/record.md"}}),
+    ]
+    return rows
+
+
+def _decision_of(proc) -> tuple[dict | None, str | None]:
+    """The wrapper's decision object, or the reason there isn't one.
+
+    The wrapper's whole contract is that it always exits 0 and always speaks a decision — never an
+    empty stdout, because the platform denies a background subagent's call when no hook returns
+    one (wave-0 probe leg 1, folded into D3). So a parse failure here is a contract failure, not a
+    row failure, and it is reported as such.
+    """
+    if proc.returncode != 0:
+        return None, f"the wrapper exited {proc.returncode}, and it must always exit 0"
+    if not proc.stdout.strip():
+        return None, "the wrapper wrote nothing to stdout; every outcome owes an explicit decision"
+    try:
+        payload = json.loads(proc.stdout)
+    except json.JSONDecodeError as err:
+        return None, f"stdout is not JSON ({err}): {proc.stdout.strip()[:160]!r}"
+    inner = payload.get("hookSpecificOutput")
+    if not isinstance(inner, dict):
+        return None, f"no `hookSpecificOutput` object: {proc.stdout.strip()[:160]!r}"
+    return inner, None
+
+
+def _stub_binary(root: pathlib.Path) -> str:
+    """A `mochiko-cli` that exits 2 — an installed binary predating `check` (record D3, C2)."""
+    bin_dir = root / "stub-bin"
+    bin_dir.mkdir(exist_ok=True)
+    stub = bin_dir / "mochiko-cli"
+    stub.write_text("#!/bin/sh\nprintf 'unrecognized subcommand\\n' >&2\nexit 2\n", encoding="utf-8")
+    stub.chmod(0o755)
+    return str(bin_dir)
+
+
+def _unsound_root(root: pathlib.Path) -> pathlib.Path:
+    """A staged plugin whose migration log is present but empty — CLI exit 1."""
+    staged = stage("gate-unsound", PLUGIN)
+    for stale in (staged.plugin / "migrations").glob("*.yaml"):
+        stale.unlink()
+    return staged.plugin
+
+
+def _skew_root(root: pathlib.Path) -> pathlib.Path:
+    """A staged plugin whose own log declares a grammar this binary does not read — CLI exit 3."""
+    staged = stage("gate-skew", PLUGIN)
+    log = staged.plugin / "migrations"
+    for stale in log.glob("*.yaml"):
+        stale.unlink()
+    (log / "0001-skew.yaml").write_text(
+        "grammar: 99\nid: 0001-skew\nsequence: 1\n"
+        "intent: A log from a grammar this binary does not read.\n"
+        'hash: "sha256:' + "0" * 64 + '"\nchanges: []\n',
+        encoding="utf-8",
+    )
+    return staged.plugin
+
+
+def case_gate_input(runner, sandbox) -> tuple[list, pathlib.Path]:
+    """`artifact-gate.sh`, fed one payload per row on the host — no sandbox, no session.
+
+    The cheapest gate there is on the write-time gate, and the one that can assert what a session
+    cannot: that *every* outcome speaks a decision. A session proves the deny blocks the write;
+    only a row-by-row host pass proves the wrapper never goes silent on the paths where going
+    silent would, on the subagent transport, turn a pass-through into a denial.
+
+    Rows resolve against the plugin's **real** log through `CLAUDE_PLUGIN_ROOT`, as ruled — the
+    crate's fixture log is the crate's unit surface, and this suite's subject is what ships. The
+    cost of that is a row keyed to a budget the wave-3 table may re-key, so no assertion here reads
+    a number: each deny row names the measure that must appear in the reason, never its magnitude.
+    """
+    staged = stage("gate-input", PLUGIN)
+    checks: list[Check] = []
+    script = staged.plugin / "hooks" / "scripts" / GATE_SCRIPT
+    if not script.is_file():
+        checks.append(ok(f"{GATE_SCRIPT} exists", f"no script at {script}"))
+        write_verdict(staged.root, "gate-input", checks, {"shape": "host, no session"})
+        return checks, staged.root
+
+    binary, reason = host_binary()
+    if reason:
+        checks.append(ok("a runnable host binary for the present-binary rows", reason))
+        write_verdict(staged.root, "gate-input", checks, {"shape": "host, no session"})
+        return checks, staged.root
+
+    captures, notes = load_artifact_captures()
+    missing = [
+        name for name in (
+            "pre-tool-use-bash-heredoc", "pre-tool-use-bash-redirect-false-allow",
+            "pre-tool-use-read-home")
+        if name not in captures
+    ]
+    if missing:
+        checks.append(ok("the wave-0 captures are committed",
+                         f"missing under {ARTIFACT_HOOKS}: {', '.join(missing)}"))
+        write_verdict(staged.root, "gate-input", checks, {"shape": "host, no session"})
+        return checks, staged.root
+
+    bin_dir = staged.root / "bin"
+    bin_dir.mkdir(exist_ok=True)
+    (bin_dir / "mochiko-cli").symlink_to(binary)
+    present_path = f"{bin_dir}:{MINIMAL_PATH}"
+    stub_path = f"{_stub_binary(staged.root)}:{MINIMAL_PATH}"
+    roots = {"plugin": staged.plugin}
+
+    silent_rows, outcomes = [], []
+    for row in gate_rows(captures):
+        workspace = staged.root / f"ws-{row.id.lower()}"
+        workspace.mkdir(parents=True, exist_ok=True)
+        if row.setup:
+            row.setup(str(workspace))
+        if row.root not in roots:
+            roots[row.root] = _unsound_root(staged.root) if row.root == "unsound" \
+                else _skew_root(staged.root)
+        payload = row.build(str(workspace))
+        stdin = payload if isinstance(payload, str) else json.dumps(payload)
+        env = {
+            "PATH": {"present": present_path, "absent": MINIMAL_PATH, "stub2": stub_path}[row.path],
+            "CLAUDE_PLUGIN_ROOT": str(roots[row.root]),
+            "HOME": str(staged.root),
+        }
+        proc = host_sh(shlex.quote(str(script)), env=env, stdin=stdin)
+        write_evidence(staged.root, f"{row.id}.stdin.json", stdin + "\n")
+        write_evidence(staged.root, f"{row.id}.stdout.json", proc.stdout)
+
+        inner, contract_problem = _decision_of(proc)
+        outcomes.append({"row": row.id, "clause": row.clause, "exit": proc.returncode,
+                         "decision": (inner or {}).get("permissionDecision"),
+                         "reason": (inner or {}).get("permissionDecisionReason", "")[:300]})
+        if contract_problem:
+            silent_rows.append(f"{row.id}: {contract_problem}")
+            checks.append(ok(f"{row.id} — {row.clause}", contract_problem))
+            continue
+
+        problems = []
+        decision = inner.get("permissionDecision")
+        if decision != row.decision:
+            problems.append(f"decision {decision!r}, expected {row.decision!r}")
+        text = inner.get("permissionDecisionReason") or ""
+        if row.decision == "deny":
+            for keyword in row.keywords:
+                if keyword not in text:
+                    problems.append(f"the reason does not name {keyword!r}")
+            if HALT_SENTENCE not in text:
+                problems.append("the deny reason does not carry D9's advisory halt sentence")
+        for fragment in row.context:
+            context = inner.get("additionalContext") or ""
+            if fragment not in context:
+                problems.append(
+                    f"the standing violation is not reported in `additionalContext` ({fragment!r})")
+        problem = "; ".join(problems) or None
+        if row.status == "report":
+            checks.append(report(
+                f"{row.id} — {row.clause}",
+                f"decision {decision!r}" + (f"; {problem}" if problem else "; as expected")))
+        else:
+            checks.append(ok(f"{row.id} — {row.clause}", problem))
+
+    checks.append(ok(
+        "G-NEVER-EMPTY — every outcome speaks an explicit decision, wrapper exit always 0",
+        "; ".join(silent_rows) or None))
+    for note in notes:
+        checks.append(report("capture provenance", note))
+    write_verdict(staged.root, "gate-input", checks,
+                  {"shape": "host, no session", "rows": outcomes})
+    return checks, staged.root
+
+
+def case_reminder_input(runner, sandbox) -> tuple[list, pathlib.Path]:
+    """`seat-reminder.sh`, fed the captured `SubagentStart` payload on the host.
+
+    R5 moved the reminder off `Read` and onto the seat: one self-identified line per spawned
+    subagent, before its first turn, instead of one per home read. The line's own wording is
+    load-bearing and the reason is measured, not aesthetic — a wave-0 seat read the Read-time form
+    as a prompt injection and refused to act on it, so the row asserts that the line says who is
+    speaking rather than issuing a bare imperative.
+    """
+    staged = stage("reminder-input", PLUGIN)
+    checks: list[Check] = []
+    script = staged.plugin / "hooks" / "scripts" / REMINDER_SCRIPT
+    if not script.is_file():
+        checks.append(ok(f"{REMINDER_SCRIPT} exists", f"no script at {script}"))
+        write_verdict(staged.root, "reminder-input", checks, {"shape": "host, no session"})
+        return checks, staged.root
+
+    captures, notes = load_artifact_captures()
+    capture = captures.get("subagent-start")
+    if capture is None:
+        checks.append(ok("the captured SubagentStart stdin is committed",
+                         f"missing under {ARTIFACT_HOOKS}"))
+        write_verdict(staged.root, "reminder-input", checks, {"shape": "host, no session"})
+        return checks, staged.root
+
+    binary, reason = host_binary()
+    bin_dir = staged.root / "bin"
+    bin_dir.mkdir(exist_ok=True)
+    if binary:
+        (bin_dir / "mochiko-cli").symlink_to(binary)
+    present_path = f"{bin_dir}:{MINIMAL_PATH}"
+    base_env = {"CLAUDE_PLUGIN_ROOT": str(staged.plugin), "HOME": str(staged.root)}
+
+    def fire(payload: dict, path_env: str):
+        return host_sh(shlex.quote(str(script)), env={**base_env, "PATH": path_env},
+                       stdin=json.dumps(payload))
+
+    proc = fire(capture, present_path)
+    write_evidence(staged.root, "R-INJECT.stdout.json", proc.stdout)
+    inner, contract_problem = _decision_of(proc)
+
+    if contract_problem:
+        checks.append(ok("R-INJECT — one injected line, no decision", contract_problem))
+        write_verdict(staged.root, "reminder-input", checks, {"shape": "host, no session"})
+        return checks, staged.root
+
+    line = inner.get("additionalContext") or ""
+    problems = []
+    if not line.strip():
+        problems.append("`hookSpecificOutput.additionalContext` is empty")
+    if "permissionDecision" in inner:
+        problems.append("the reminder carries a `permissionDecision`; it decides nothing (R5)")
+    checks.append(ok("R-INJECT — one injected line under `hookSpecificOutput`, no decision",
+                     "; ".join(problems) or None))
+
+    # The freeze is asserted from both ends against the golden this suite carries: the script's
+    # own text, and what the script actually emitted. Either one drifting fails the row.
+    scripted, script_problem = script_reminder_line(staged.plugin)
+    shape = []
+    if script_problem:
+        shape.append(script_problem)
+    elif scripted != REMINDER_GOLDEN:
+        shape.append(f"{REMINDER_SCRIPT}'s line is not the frozen golden: script "
+                     f"{scripted.strip()[:120]!r}, golden {REMINDER_GOLDEN[:120]!r}")
+    if line != REMINDER_GOLDEN:
+        shape.append(f"the emitted line is not the frozen golden: emitted {line.strip()[:120]!r}, "
+                     f"golden {REMINDER_GOLDEN[:120]!r}")
+    if len(line.strip().splitlines()) != 1:
+        shape.append(f"the reminder is {len(line.strip().splitlines())} lines, not one")
+    if "mochiko" not in line.lower():
+        shape.append("the line does not identify mochiko as its source — a bare imperative from "
+                     "an unnamed source is what a wave-0 seat read as a prompt injection")
+    checks.append(ok(
+        f"R-LINE-EXACT — {REMINDER_SCRIPT}'s line and the emitted line are both the golden this "
+        "suite carries, one line, self-identified", "; ".join(shape) or None))
+    checks.append(report("the frozen reminder line", REMINDER_GOLDEN[:300]))
+
+    try:
+        whole = json.loads(proc.stdout)
+    except json.JSONDecodeError:
+        whole = {}
+    checks.append(ok(
+        "R-NO-TOPLEVEL — no top-level `additionalContext`",
+        "a top-level `additionalContext` is present; wave 0 measured that the platform does not "
+        "consume it, so shipping it misleads a reader"
+        if "additionalContext" in whole else None))
+
+    absent = fire(capture, MINIMAL_PATH)
+    write_evidence(staged.root, "R-ABSENT.stdout.json", absent.stdout)
+    checks.append(ok(
+        "R-ABSENT — no binary on PATH: silent, exit 0, never a broken session",
+        f"exit {absent.returncode}, expected 0" if absent.returncode != 0 else None))
+
+    wrong = fire({**capture, "hook_event_name": "PreToolUse", "tool_name": "Write",
+                  "tool_input": {"file_path": "/tmp/x.md", "content": "x"}}, present_path)
+    write_evidence(staged.root, "R-WRONG-EVENT.stdout.json", wrong.stdout)
+    leave_alone = []
+    if wrong.returncode != 0:
+        leave_alone.append(f"exit {wrong.returncode}, expected 0")
+    if wrong.stdout.strip():
+        leave_alone.append(f"stdout {wrong.stdout.strip()[:120]!r}, expected silence")
+    checks.append(ok("R-WRONG-EVENT — a `PreToolUse` payload is left alone",
+                     "; ".join(leave_alone) or None))
+
+    if reason:
+        checks.append(report("host binary", reason))
+    for note in notes:
+        checks.append(report("capture provenance", note))
+    write_verdict(staged.root, "reminder-input", checks,
+                  {"shape": "host, no session", "reminder_line": line.strip()})
+    return checks, staged.root
+
+
+def case_if_placement(runner, sandbox) -> tuple[list, pathlib.Path]:
+    """The shipped `hooks.json`, read as data — no binary, no sandbox, no session.
+
+    Wave 0 measured that an `if` placed on the matcher-group object is silently ignored and every
+    matched call runs the hook: the narrowing is simply gone, with nothing in any transcript to say
+    so. That is the same invisibility class as a dead gate, and it cannot be caught by firing the
+    hook, because a hook that over-fires still answers correctly. So it is caught statically, here.
+    """
+    staged = stage("if-placement", PLUGIN)
+    checks: list[Check] = []
+    manifest = staged.plugin / "hooks" / "hooks.json"
+    try:
+        config = json.loads(manifest.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as err:
+        checks.append(ok("`hooks/hooks.json` is readable JSON", f"{manifest}: {err}"))
+        write_verdict(staged.root, "if-placement", checks, {"shape": "static, no session"})
+        return checks, staged.root
+
+    groups = [
+        (event, group)
+        for event, entries in (config.get("hooks") or {}).items()
+        for group in entries
+    ]
+    stray = [
+        f"{event} matcher {group.get('matcher', '<none>')!r}"
+        for event, group in groups if "if" in group
+    ]
+    checks.append(ok(
+        "IF-HANDLER — every `if` sits on a handler object, none on a matcher group",
+        f"a group-level `if` is silently ignored by the platform: {', '.join(stray)}"
+        if stray else None))
+
+    handlers = [
+        (event, group.get("matcher", ""), handler)
+        for event, group in groups for handler in (group.get("hooks") or [])
+    ]
+    gate = [(m, h) for _, m, h in handlers if GATE_SCRIPT in (h.get("command") or "")]
+    write_arm = [(m, h) for m, h in gate if "Write" in m or "Edit" in m]
+    # Each shell tool is asserted by name rather than as one "Bash|PowerShell" arm. The shipped
+    # registration splits them into two groups, and a check that looked only for a matcher
+    # containing "Bash" would pass while the PowerShell group carried no narrowing at all.
+    shell_arms = {tool: [(m, h) for m, h in gate if tool in m] for tool in ("Bash", "PowerShell")}
+
+    if not gate:
+        checks.append(ok("IF-ARMS — the gate is registered in `hooks.json`",
+                         f"no handler runs {GATE_SCRIPT}"))
+    else:
+        problems = []
+        if not write_arm:
+            problems.append("no `Write`/`Edit` arm is registered")
+        elif any("if" in h for _, h in write_arm):
+            problems.append("the `Write`/`Edit` arm carries an `if`; it is registered unnarrowed")
+        for tool, arms in shell_arms.items():
+            if not arms:
+                problems.append(f"no `{tool}` arm is registered")
+            elif not all(".mochiko" in (h.get("if") or "") for _, h in arms):
+                problems.append(f"a `{tool}` arm's `if` does not narrow on `.mochiko`")
+        checks.append(ok(
+            "IF-ARMS — `Write`/`Edit` unnarrowed, every shell arm narrowed on `.mochiko`",
+            "; ".join(problems) or None))
+
+    write_verdict(staged.root, "if-placement", checks,
+                  {"shape": "static, no session",
+                   "handlers": [{"event": e, "matcher": m, "if": h.get("if"),
+                                 "command": h.get("command")} for e, m, h in handlers]})
+    return checks, staged.root
+
+
+def _artifact_probe(runner, staged: Staged, *, prompt: str, workspace: str, seed: str,
+                    max_turns: int, tag: str, path_env: str) -> Probed:
+    """One headless session in a provisioned workspace, for the two artifact-hook cases.
+
+    `path_env` is not optional and both callers pass the binary's directory ahead of the sandbox
+    PATH. `sandbox_path()` verifies that `mochiko-cli` is *absent* from the sandbox's own PATH —
+    that absence is what the `absence` case is built on — so a session that inherited it would run
+    the gate with no binary behind it, the wrapper would fall through to its explicit allow, the
+    write under test would land, and the case would report a gate failure that was really a
+    harness one.
+
+    `runner.claude_args` is called with keyword arguments on purpose: a positional call is what
+    let the 2026-09-11 signature change rebind `plugin` to `True` without a test going red.
+    """
+    args = runner.claude_args(prompt=prompt, model="sonnet", max_turns=max_turns,
+                              plugin=staged.plugin, stream=True)
+    script = (
+        f"mkdir -p {workspace} && cd {workspace} && {seed} && "
+        f"env PATH={shlex.quote(path_env)} {shlex.join(args)}"
+    )
+    proc = runner.sbx_sh(script)
+    write_evidence(staged.root, f"argv{tag}.txt", "\n".join(args) + "\n")
+    write_evidence(staged.root, f"script{tag}.sh", script + "\n")
+    write_evidence(staged.root, f"stream{tag}.jsonl", proc.stdout)
+    write_evidence(staged.root, f"stderr{tag}.txt", proc.stderr)
+    return Probed(events_of(proc.stdout), proc)
+
+
+def case_gate_live(runner, sandbox) -> tuple[list, pathlib.Path]:
+    """One session: the deny actually stops the write, and a conforming write in the same run lands.
+
+    The one limb no host row carries. A host row proves the wrapper answers `deny`; only a session
+    proves the platform *acts* on that answer — that the file is not on disk afterwards and the
+    reason reached the model as text it could read. Wave 0 measured both once with a throwaway
+    plugin; this is the same claim against what ships.
+    """
+    staged = stage("gate-live", PLUGIN)
+    checks: list[Check] = []
+    if not (staged.plugin / "hooks" / "scripts" / GATE_SCRIPT).is_file():
+        checks.append(ok(f"{GATE_SCRIPT} exists", f"no script in the staged plugin"))
+        write_verdict(staged.root, "gate-live", checks, {"shape": "1 session"})
+        return checks, staged.root
+
+    workspace = f"/tmp/contract-gate-live-{uuid.uuid4().hex[:8]}"
+    good = _abs(workspace, SPINE_PATH)
+    bad = _abs(workspace, f"{SESSION_HOME}/notes.md")
+    seed = f"mkdir -p {shlex.quote(str(pathlib.Path(good).parent))} {shlex.quote(str(pathlib.Path(bad).parent))}"
+    prompt = (
+        "Do these two steps in order, yourself, and do not work around a refusal.\n"
+        f"1. Use the Write tool to create {good} with exactly this content:\n"
+        f"{CONFORMING_SPINE}\n"
+        f"2. Use the Write tool to create {bad} with the content: notes\n"
+        "Then state, for each step, the exact verbatim text of any error you saw."
+    )
+    probed = _artifact_probe(runner, staged, prompt=prompt, workspace=workspace, seed=seed,
+                             max_turns=8, tag="",
+                             path_env=f"{sandbox.binary_dir}:{sandbox.path}")
+    text = transcript_text(probed.events)
+    listing = runner.sbx_sh(f"ls -1 {shlex.quote(str(pathlib.Path(bad).parent))} 2>/dev/null || true")
+    conforming = runner.sbx_sh(f"test -f {shlex.quote(good)} && echo present || echo absent")
+    runner.sbx_sh(f"rm -rf {workspace}", timeout=60)
+
+    checks.append(ok(
+        "the non-conforming write was denied and left no file on disk",
+        f"{pathlib.Path(bad).name} is present in {listing.stdout.strip()!r}"
+        if pathlib.Path(bad).name in listing.stdout else None))
+    checks.append(ok(
+        "the conforming write in the same session landed",
+        None if "present" in conforming.stdout else "the conforming write did not land either — "
+        "the gate is denying what it must allow"))
+    checks.append(ok(
+        "the deny reason reached the model, carrying D9's advisory halt sentence",
+        None if HALT_SENTENCE in text else "the halt sentence is not in the transcript"))
+    checks.append(ok(
+        "the deny named the failing measure",
+        None if "not a declared deliverable" in text else
+        "the transcript does not carry the file-set reason"))
+    write_verdict(staged.root, "gate-live", checks,
+                  {"shape": "1 session", "workspace": workspace,
+                   "result_event": result_event(probed.events)})
+    return checks, staged.root
+
+
+def case_reminder_spawn(runner, sandbox) -> tuple[list, pathlib.Path]:
+    """Two sessions: the reminder reaches an unnamed `Agent` spawn and a named teammate spawn.
+
+    Wave 0 measured that `SubagentStart` carries `agent_type: general-purpose` for both, so the
+    event's agent-type matcher cannot single a named teammate out — which is why both arms run.
+
+    **The evidence is the subagent's own transcript, never its report.** The first shape of this
+    case asked each subagent to quote the context it had been given, and the lead seat refused the
+    whole task as a system-prompt extraction attempt — correctly — so no subagent was ever spawned
+    and the case asserted nothing. That refusal is the same reflex wave 0 recorded when a seat read
+    the injected line itself as a prompt injection. So the seats are given a trivial task, and the
+    line is read off the `hook_additional_context` attachment in the sidechain transcript on disk,
+    which takes the model out of the evidence path entirely.
+    """
+    staged = stage("reminder-spawn", PLUGIN)
+    checks: list[Check] = []
+    script = staged.plugin / "hooks" / "scripts" / REMINDER_SCRIPT
+    if not script.is_file():
+        checks.append(ok(f"{REMINDER_SCRIPT} exists", f"no script at {script}"))
+        write_verdict(staged.root, "reminder-spawn", checks, {"shape": "2 sessions"})
+        return checks, staged.root
+
+    # The sidechain grep looks for the golden this suite carries, not for whatever the script
+    # happens to say — the same reason `R-LINE-EXACT` does. `reminder-input` is where a script that
+    # drifted off the golden is reported; here it simply means the marker is not found.
+    marker = REMINDER_GOLDEN.split(";")[0].strip()
+
+    task = "Reply with exactly the word ACKNOWLEDGED. Do not use any tool."
+    arms = [
+        ("unnamed", 'Spawn exactly one subagent with the Agent tool, subagent_type '
+                    f'"general-purpose", with no name, and give it this task: "{task}" '
+                    'Then reply with the single word DONE.'),
+        ("named", 'Spawn exactly one agent with the Agent tool, subagent_type "general-purpose", '
+                  f'name "contractseat", and give it this task: "{task}" '
+                  'Then reply with the single word DONE.'),
+    ]
+    findings = []
+    for tag, prompt in arms:
+        workspace = f"/tmp/contract-reminder-{tag}-{uuid.uuid4().hex[:8]}"
+        probed = _artifact_probe(runner, staged, prompt=prompt, workspace=workspace, seed="true",
+                                 max_turns=10, tag=f"-{tag}",
+                                 path_env=f"{sandbox.binary_dir}:{sandbox.path}")
+        spawned = [use for use in tool_uses(probed.events) if use.get("name") in ("Agent", "Task")]
+        result = result_event(probed.events) or {}
+        session = result.get("session_id") or ""
+        hits = runner.sbx_sh(
+            f"grep -rl {shlex.quote(marker)} "
+            f"$HOME/.claude/projects/*/{shlex.quote(session)}/subagents/ 2>/dev/null | head -5"
+        ) if session else None
+        runner.sbx_sh(f"rm -rf {workspace}", timeout=60)
+
+        problems = []
+        if not spawned:
+            problems.append("no subagent was spawned, so nothing could be injected into one — "
+                            f"the seat's own reply was {str(result.get('result'))[:120]!r}")
+        elif not session:
+            problems.append("the run carried no session id, so its sidechains cannot be located")
+        elif not (hits and hits.stdout.strip()):
+            problems.append("no sidechain transcript carries the injected line")
+        findings.append({"arm": tag, "spawns": len(spawned), "session": session,
+                         "sidechains_with_line": (hits.stdout.strip().splitlines() if hits else [])})
+        checks.append(ok(
+            f"R-SPAWN-{tag.upper()} — the reminder reached the subagent before its first turn",
+            "; ".join(problems) or None))
+
+    checks.append(report("the line both arms looked for", marker))
+    write_verdict(staged.root, "reminder-spawn", checks,
+                  {"shape": "2 sessions", "reminder_line": golden, "arms": findings})
+    return checks, staged.root
+
+
 HOST_CASES = [
     ("hook-input", "the hook scripts, fed captured stdin — no sandbox, no session", case_hook_input),
     ("converted-shape", "a converted `.md`'s `!` lines against its own render", case_converted_shape),
     ("render-ceiling", "every converted render against the inline ceiling", case_render_ceiling),
     ("deliverables", "every template, shelf and registry through its CLI form", case_deliverables),
+    ("gate-input", "`artifact-gate.sh`, one payload per row — no sandbox, no session",
+     case_gate_input),
+    ("reminder-input", "`seat-reminder.sh`, fed the captured SubagentStart stdin", case_reminder_input),
+    ("if-placement", "the shipped `hooks.json` read as data — every `if` on a handler object",
+     case_if_placement),
 ]
 
 def build_sandbox_cases() -> list:
@@ -4020,6 +4894,14 @@ def build_sandbox_cases() -> list:
             ("preload", f"`{PRELOAD_AGENT}` preloads `{PRELOAD_SKILL}` — both binary states",
              case_preload)
         )
+    # The two artifact-hook session cases. Once, not per command: what they exercise is the
+    # platform acting on a decision and the reminder reaching a spawned seat, and neither varies
+    # with which command fired — the same reason the three mechanism cases are pilot-only.
+    cases += [
+        ("gate-live", "the deny stops the write; a conforming write in the same session lands",
+         case_gate_live),
+        ("reminder-spawn", "the reminder reaches an unnamed and a named spawn", case_reminder_spawn),
+    ]
     return cases
 
 

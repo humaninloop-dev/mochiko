@@ -39,7 +39,9 @@ handoff: "{{what the critic should grade + any known soft spots, one line}}"
    addressed (by the critic's gap IDs), so the lead can see progress and detect a stalled,
    no-change round. Cite IDs; never restate spec text (the spec is the artifact the critic
    and lead read directly).
-5. **Output location** — `.mochiko/specs/<feature>/analyst-report.md`, seeded and collected
-   by the lead.
+5. **Output location** — `.mochiko/specs/<slug>/reports/analyst-report.md`, seeded and
+   collected by the lead. A report lands in its home's `reports/` directory under any name, and
+   the `report: disclosure` type above is what admits this one; `mochiko-cli home <path>` prints
+   the home that governs a given path.
 6. **This is a reference template** — the producer fills in actual content following this
    structure.

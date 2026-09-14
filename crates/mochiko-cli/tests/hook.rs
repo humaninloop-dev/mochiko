@@ -197,6 +197,61 @@ fn an_amnestied_allow_carries_its_standing_overage_as_additional_context() {
 }
 
 #[test]
+fn an_existing_file_at_an_undeclared_name_is_editable_while_a_new_one_still_denies() {
+    // D4e as ratified at AM-3 — the file set is relaxable, the path is not. Three cells plus the
+    // control that keeps the set binding on anything that does not exist yet.
+    let (state, dir) = state("file-set-amnesty");
+    let cwd = dir.display().to_string();
+    let home = dir.join(".mochiko/features/FEAT-001");
+    std::fs::create_dir_all(&home).expect("dirs");
+    let stray = home.join("notes.md");
+    std::fs::write(&stray, "a\nb\n").expect("baseline is writable");
+
+    // The control: a *different* undeclared name in the same home has no baseline of its own, so
+    // it is denied — an amnestied neighbour excuses nothing.
+    let fresh = format!(
+        r##"{{"cwd":"{cwd}","tool_name":"Write","tool_input":{{"file_path":"{}","content":"x\n"}}}}"##,
+        home.join("invented.md").display()
+    );
+    let outcome = decide(&state, &fresh);
+    assert!(is_deny(&outcome), "a new undeclared name still denies");
+    assert!(reason(&outcome).contains("invented.md"));
+
+    // A Write over the existing undeclared name is allowed, and names the violation.
+    let over = format!(
+        r##"{{"cwd":"{cwd}","tool_name":"Write","tool_input":{{"file_path":"{}","content":"a\nb\nc\n"}}}}"##,
+        stray.display()
+    );
+    let outcome = decide(&state, &over);
+    assert!(
+        is_allow(&outcome),
+        "an existing mis-homed file is not wedged"
+    );
+    let rendered = hook::render(&outcome);
+    assert!(
+        rendered.contains("additionalContext") && rendered.contains("notes.md"),
+        "the allow carries the standing violation: {rendered}"
+    );
+
+    // An Edit over it likewise.
+    let edit = format!(
+        r##"{{"cwd":"{cwd}","tool_name":"Edit","tool_input":{{"file_path":"{}","old_string":"b\n","new_string":"b\nc\n"}}}}"##,
+        stray.display()
+    );
+    let outcome = decide(&state, &edit);
+    assert!(
+        is_allow(&outcome),
+        "Edit is relaxed on the same terms as Write"
+    );
+    let rendered = hook::render(&outcome);
+    assert!(
+        rendered.contains("additionalContext") && rendered.contains("notes.md"),
+        "the Edit allow names the standing violation, which is the limb the ledger's gap \
+         describes: {rendered}"
+    );
+}
+
+#[test]
 fn the_rendered_json_escapes_every_character_json_requires() {
     let outcome = Outcome::Deny {
         reason: "quote \" backslash \\ newline \n tab \t control \u{1} em—dash".to_string(),
@@ -343,6 +398,77 @@ fn an_ordinary_shell_command_is_allowed() {
             reason(&outcome)
         );
     }
+}
+
+fn pwsh(state: &State, cwd: &str, command: &str) -> Outcome {
+    let escaped = command.replace('\\', "\\\\").replace('"', "\\\"");
+    let json = format!(
+        r##"{{"cwd":"{cwd}","tool_name":"PowerShell","tool_input":{{"command":"{escaped}"}}}}"##
+    );
+    decide(state, &json)
+}
+
+#[test]
+fn every_powershell_write_cmdlet_aimed_at_a_home_is_denied() {
+    // The arm reached `check` before this table existed, and allowed every cmdlet below: the
+    // vocabulary was POSIX-shaped, so `Set-Content` resolved to no target at all.
+    let (state, dir) = state("shell-pwsh-cmdlets");
+    let cwd = dir.display().to_string();
+    let target = ".mochiko/features/FEAT-001/gates.md";
+    let denied = [
+        format!("Set-Content -Path {target} -Value 'x'"),
+        format!("Set-Content {target} 'x'"),
+        format!("Out-File -FilePath {target}"),
+        format!("'x' | Out-File {target}"),
+        format!("Add-Content -Path {target} -Value 'x'"),
+        format!("New-Item -Path {target} -ItemType File"),
+        format!("Tee-Object -FilePath {target}"),
+        format!("Copy-Item /tmp/other.md {target}"),
+        format!("Move-Item /tmp/other.md -Destination {target}"),
+        // Both ends of a move: a move *out* of a home names the home as its source.
+        format!("Move-Item {target} /tmp/elsewhere.md"),
+        // The redirects PowerShell shares with the POSIX shells.
+        format!("'x' > {target}"),
+        format!("'x' >> {target}"),
+        // Case-insensitive, because PowerShell is.
+        format!("set-content -path {target} -value 'x'"),
+    ];
+    for command in denied {
+        let outcome = pwsh(&state, &cwd, &command);
+        assert!(
+            is_deny(&outcome),
+            "a PowerShell write into a home must be denied: {command}"
+        );
+        assert!(
+            reason(&outcome).contains("Write/Edit"),
+            "the reason names the real route: {}",
+            reason(&outcome)
+        );
+    }
+
+    let allowed = [
+        // Reading a home writes nothing.
+        format!("Get-Content {target}"),
+        "Get-ChildItem .mochiko/features/FEAT-001".to_string(),
+        // The false-deny control: a home path as a *value* is content, not a destination.
+        format!("Set-Content -Path notes.txt -Value '{target}'"),
+    ];
+    for command in allowed {
+        assert!(
+            is_allow(&pwsh(&state, &cwd, &command)),
+            "this PowerShell command writes nothing into a home: {command}"
+        );
+    }
+}
+
+#[test]
+fn a_bash_command_naming_a_powershell_cmdlet_is_not_measured_against_it() {
+    // The vocabularies are keyed to the tool. A Bash line mentioning a cmdlet name means nothing,
+    // and reading it as a write would deny ordinary work.
+    let (state, dir) = state("shell-pwsh-crosstalk");
+    let cwd = dir.display().to_string();
+    let command = "echo 'Set-Content -Path .mochiko/features/FEAT-001/gates.md'";
+    assert!(is_allow(&shell(&state, &cwd, command)));
 }
 
 #[test]

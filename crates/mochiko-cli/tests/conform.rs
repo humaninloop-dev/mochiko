@@ -204,6 +204,26 @@ fn an_undeclared_file_name_is_denied_and_the_reason_names_the_set_and_the_route(
 }
 
 #[test]
+fn an_undeclared_name_on_a_file_already_on_disk_is_amnestied_and_names_the_violation() {
+    // D4e as ratified at AM-3: the file set is a relaxable measure. A mis-homed file that already
+    // exists stays editable, with the violation reported rather than hidden, because a gate that
+    // refuses every write to it is a gate that wedges it.
+    let state = state("set-amnesty");
+    let verdict = regrade(
+        &state,
+        ".mochiko/features/FEAT-001/build-order.md",
+        CONFORMING,
+        "# what was already there\n",
+    );
+    assert!(allowed(&verdict), "reason: {:?}", verdict.reason);
+    let context = verdict.context.unwrap_or_default();
+    assert!(
+        context.contains("build-order.md") && context.contains("not a declared deliverable"),
+        "the allow names the standing violation: {context}"
+    );
+}
+
+#[test]
 fn an_undeclared_subdir_is_denied() {
     let state = state("subdir");
     let verdict = grade(

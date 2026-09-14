@@ -140,6 +140,17 @@ sections:
           The extracted capability signals (routes, UI surfaces, services) seed setup's
           feature-map reconstruction — map machinery: `mochiko:authoring-feature-map`.
         pointer: mochiko:authoring-feature-map
+      - id: analysis-codebase.artifact-home
+        labels: [binding]
+        class: floor
+        kind: binding
+        text: >-
+          The analysis lands at the one declared path: `codebase-analysis.md` in the memory home,
+          bound to the `codebase-analysis` template. Render `mochiko-cli home .mochiko/memory`
+          before the write and take the section shape from `mochiko-cli template
+          codebase-analysis` — the three parts and the appendix are the kind's headings, and the
+          detection layer's output belongs inside them, not in a file of its own.
+        anchor: 2026-09-13 hook-enforced-artifact-schema D1
   - id: analysis-codebase.sec.reserved
     title: Reserved — interpretation is the session's
     intent: What this analysis never decides.

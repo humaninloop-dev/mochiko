@@ -5,6 +5,47 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.109.0] — 2026-09-15
+
+**The write-time artifact gate** (`.mochiko/brainstorms/hook-enforced-artifact-schema/record.md`
+D1, D2, D3, D4, D7, D9; ledger AM-3; `DECISIONS.md` 2026-09-13). Two hook registrations ship, both
+fail-open, both holding no rule of their own.
+
+`PreToolUse` on `Write|Edit` un-narrowed, and on `Bash|PowerShell` narrowed to commands whose text
+names `.mochiko`, runs `hooks/scripts/artifact-gate.sh`. The wrapper parses nothing: it hands its
+own stdin to `mochiko-cli check --hook-json -` untouched and prints what comes back, because a
+shell field reader provably mis-parses an escaped command into an allow. Only exit 4 — a
+conformance denial — becomes a deny; exits 1, 2 and 3 pass through as an explicit allow, and so
+does a missing binary, so a gate that cannot read its log never wedges a repository. The checks are
+the log's own declarations for the path — home, file set, frontmatter, headings, placeholders, size
+— and nothing else.
+
+`SubagentStart` runs `hooks/scripts/seat-reminder.sh`, which gives every spawned seat one frozen
+line naming `mochiko-cli home <path>` as the way to read an artifact's declared shape, and emits no
+permission decision at all. It carries no matcher: `agent_type` is `general-purpose` for named and
+unnamed spawns alike, so a matcher could not single out a teammate.
+
+**First-touch amnesty now covers the file set** (record D4e as ratified at AM-3). An undeclared file
+name on a file that is already on disk is allowed through with the violation named in
+`additionalContext`, so a mis-homed file stays editable; a new file at an undeclared name still
+denies. The path itself is never relaxed. Before this release the gate denied every write to such a
+file, which would have wedged exactly the artifacts a re-homing pass needs to rewrite.
+
+**Five shipped primitives re-point at the homes** migration `0005-artifact-homes.yaml` declares.
+`executing-tdd-cycle`'s `description:` now names `tasks.md` under the feature home rather than the
+spec home; the two analyst report templates now write into their spec home's `reports/` directory,
+where their existing `report: disclosure` type admits them under any name. `patterns-entity-modeling`
+and `patterns-api-contracts` gain a Where the Artifact Lives section pointing at `mochiko-cli home`
+— neither carries a rule set, so no migration could reach them. Strip entries:
+`.mochiko/strips/executing-tdd-cycle.md`, `analyst-report-template.md`,
+`techanalyst-report-template.md`.
+
+**Release precondition.** This bump MUST NOT be released before `mochiko-cli` has published with
+all four controls named in the ledger at GI-012 (two still owed: signed release tags and the
+`crates-io` environment's approval rule; the publish job is `if: false` in
+`.github/workflows/release.yml`). A maintainer break-glass install never substitutes for a
+consumer's install.
+
 ## [0.108.0] — 2026-09-05
 
 **Sonnet worker rung** (ADR `.mochiko/decisions/2026-09-05-sonnet-worker-rung.md`; `DECISIONS.md`

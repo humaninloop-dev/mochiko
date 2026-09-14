@@ -1,0 +1,9 @@
+# Architecture Spine — checklist
+
+- [ ] Is the title present with a scope line?
+- [ ] Is there exactly one container view, with in-flight elements marked?
+- [ ] Is every element one row with an id, a kind, a responsibility and a status?
+- [ ] Does each diagram earn its place, or does the container view already say it?
+- [ ] Is each note one line, keyed to an element id?
+
+---

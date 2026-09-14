@@ -362,6 +362,18 @@ sections:
       - id: spec.acceptance-plain-text
         class: must
         extends: common.acceptance-plain-text
+      - id: spec.artifact-home
+        labels: [binding]
+        class: floor
+        kind: binding
+        text: >-
+          A spec run writes into declared homes only: render `mochiko-cli home
+          .mochiko/specs/<slug>` before the first write. `spec.md` binds the `spec` template,
+          whose per-section budgets come from `mochiko-cli template spec` before drafting;
+          `stories/`, `contracts/`, `prototype/` and `map-delta/` are the admitted
+          sub-directories, each with its own declared set. A file name the home does not carry is
+          raised to the user rather than created beside the ones that are.
+        anchor: 2026-09-13 hook-enforced-artifact-schema D1
   - id: spec.sec.boundaries
     title: Boundaries — the non-waivable floor
     intent: Floor obligations no seat and no in-run ruling can waive.

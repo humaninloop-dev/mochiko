@@ -11,7 +11,7 @@ asserted with `ok()` / `report()` and `json_field()`. New host cases rather than
 `hook-input`, whose rows iterate primitives where these iterate payloads. Four rows are fed real
 wave-0 captures, durable at `wave0-fixtures/` — provenance and consuming row in its `README.md`.
 
-## Case list — 3 host cases, 32 rows (30 tabled, G-FM carrying two variants, plus `if-placement`'s 2)
+## Case list — 3 host cases, 34 rows (30 tabled, G-FM carrying two variants, `if-placement`'s 2, and the two report rows gap 6 adds)
 
 `gate-input` — the write-time gate wrapper. Fixture log per §"What wave 1 owes" below.
 
@@ -97,3 +97,21 @@ transcribed in `wave0-probe-report.md` leg 7 for the negative fixture.
 4. **G-PWSH cannot be a real capture.** No PowerShell tool exists on macOS, so its payload is
    hand-written and the row is recorded with `report()` rather than asserted — the posture
    `brainstorm-policy` already uses. Asserting it needs a Windows leg the suite does not have.
+5. **Which log the rows resolve — open, ruled at the wave-4 open** (lead note, 2026-09-13, from the
+   reviewer's read of the crate fixture). Verified: `crates/mochiko-cli/tests/fixtures/home-log/
+   0001-homes.yaml` declares `sections: []` on `report-envelope` (line 147) while its `demo-spec`
+   template carries a full block — four ordered sections with `max_lines`, `extra_headings: deny`,
+   three placeholder tokens, required frontmatter with an enum. So the gap is narrower than a
+   frontmatter-only fixture: every deliverable-bound row (`G-HEAD`, `G-PLACE`, `G-SIZE`, `G-FM`,
+   `G-EDIT`, `G-AMNESTY`) runs in full against the crate fixture today, and `G-SNIFF` needs only the
+   envelope's enum, which is populated. **Recommendation:** resolve against the plugin's real log via
+   `--plugin-root`, matching the suite's standing posture that every per-command case stages
+   `plugins/mochiko/` and perturbs its own copy; keep the crate fixture as the fallback only for a
+   branch wave 3's log does not carry. To survive a budget re-key, those rows assert **structurally**
+   — a deny fired naming the failing measure — never against a specific `max_lines` value.
+6. **A row the plan is missing, found while checking gap 5.** D2's open-by-name reports limb has no
+   row: nothing writes a report *inside* a declared `reports/` dir, either conforming at an arbitrary
+   name (allow) or failing the envelope (deny). `G-SNIFF` only covers a report smuggled *outside*
+   every home. Two rows owed — `G-REPORT-OK` and `G-REPORT-BAD` — and they are the rows that need
+   wave 3's `report-envelope` to carry real sections, so they cannot run against the crate fixture as
+   it stands. Row count becomes 34.

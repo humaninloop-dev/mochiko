@@ -180,11 +180,13 @@ this box — 3 ms of process start; 3 ms on the 152-line fixture log; **37 ms me
 ~2,900 lines (+24%), which projects to a ~45 ms median — under the > 100 ms cache trigger, but
 projected, not measured.
 
-**Therefore the done condition measures it.** After `0005` lands, report `check --hook-json -`'s
-median over 20 runs against the grown log beside the 100 ms trigger. Over the trigger, the
-`${CLAUDE_PLUGIN_DATA}` cache at the single `load_for_delivery` call site in `cli.rs` (key: the
-existing `State::content_hash`) becomes a wave-4 item on the lead's word — designed in wave 1, still
-not built, and never built on a projection.
+**Measured, 2026-09-13, after `0005` landed.** Median of 20 runs on the grown 14,077-line log:
+**27.2 ms**, against 25.3–27.7 ms over two samples of the same log without `0005` — the migration's
++2,014 lines sit inside the run-to-run variance, and the wave-1 figure of 37 ms was high for the
+same tree. The trigger is > 100 ms, so no cache is built: at roughly 1 ms per 1,000 log lines the
+log would have to grow several times over to reach it. The `${CLAUDE_PLUGIN_DATA}` cache at the
+single `load_for_delivery` call site in `cli.rs` (key: the existing `State::content_hash`) stays
+designed and unbuilt.
 
 ## 7. User ruling vs seat's call
 

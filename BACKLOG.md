@@ -35,9 +35,10 @@ provenance: `.mochiko/brainstorms/hook-enforced-artifact-schema/record.md`)*
   `rust-cli.md` bullet superseded by ruling, no strips entry; the wave-4 hook ship gated on all
   four supply-chain controls; two pre-authorized PATCHes). **Wave 3** — census → migration `0005`
   BUILT, reviewed PASS; **budget-table ratification = the gate** (OQ1/OQ2 ruled there; carry the
-  AM-3 C1 measurement: `record.md` 150-line bound vs 43/66 records over it). **Wave 4** — hooks
-  ship, contract cases per exit code and shell leg, strips + audits, `plugin.json` bump; fix
-  candidate: name a standing file-set violation in `additionalContext` (AM-3 amnesty gap).
+  AM-3 C1 measurement: `record.md` 150-line bound vs 43/66 records over it). **Wave 4 BUILT 2026-09-15, audits PASS (11/11 overage HOLDS stamped), review PASS, delta-check
+  CLEAN; bump STAGED at 0.109.0, NOT landed** (precondition: the crate publish with four controls;
+  the full sandboxed contract run at the bump — the suite's sandbox half was repaired as its own
+  module after the 2026-09-11 runner convergence broke it; file-set amnesty landed as ratified).
   **Wave 5** — violator pass on kinako with the pre-gate plugin, upgrade, dogfood, watch; **this
   repo's own violator pass runs before the wave-4 plugin installs locally** (AM-3 C10; the
   synthesis's heading drift and the undeclared `wave<n>-reports/` dirs are fixed there).

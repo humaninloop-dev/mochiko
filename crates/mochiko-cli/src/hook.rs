@@ -276,7 +276,13 @@ fn decide_shell(state: &State, payload: &Payload) -> Outcome {
         return Outcome::Allow { context: None };
     }
 
-    for target in write_targets(command) {
+    // The two shells have different write vocabularies, and a cmdlet name in a Bash command means
+    // nothing. Keying the table to the tool keeps each arm's false-positive surface its own.
+    let targets = match payload.tool_name.as_deref() {
+        Some("PowerShell") => powershell_write_targets(command),
+        _ => write_targets(command),
+    };
+    for target in targets {
         let Some(relative) = relativize(cwd, &target) else {
             continue;
         };
@@ -355,6 +361,99 @@ fn write_targets(command: &str) -> Vec<String> {
     }
     targets.retain(|t| !t.is_empty());
     targets
+}
+
+/// Every path this PowerShell command text appears to write to.
+///
+/// Best-effort over the command string, exactly as the POSIX table is. The vocabulary is the write
+/// cmdlets a seat reaches for after a `Write` deny — `Set-Content`, `Out-File`, `Add-Content`,
+/// `New-Item`, `Tee-Object`, and the `Copy-Item`/`Move-Item` pair — plus the `>` and `>>` redirects
+/// PowerShell shares with the POSIX shells. Without this table the whole arm was inert: the
+/// `PowerShell` leg reaches [`decide_shell`], but every cmdlet above resolved to no target and
+/// allowed the write.
+///
+/// Cmdlet names are matched case-insensitively, because PowerShell is.
+fn powershell_write_targets(command: &str) -> Vec<String> {
+    let tokens = tokenize(command);
+    let mut targets = Vec::new();
+    let mut index = 0;
+    while index < tokens.len() {
+        let token = tokens[index].as_str();
+        // The redirects, identical to the POSIX arm including the `>|` clobber form.
+        if let Some(rest) = token.strip_prefix(">>").or_else(|| token.strip_prefix('>')) {
+            let rest = rest.strip_prefix('|').unwrap_or(rest);
+            if rest.is_empty() {
+                if let Some(next) = tokens.get(index + 1) {
+                    targets.push(next.trim_start_matches('|').to_string());
+                }
+            } else {
+                targets.push(rest.to_string());
+            }
+        }
+        // How many *positional* paths this cmdlet takes. `Copy-Item`/`Move-Item` take two, because
+        // a move out of a home names the home as its source and the re-home is done with Write by
+        // design — the same reasoning as the POSIX `cp`/`mv` arm.
+        let positionals = match bare_command(token).to_ascii_lowercase().as_str() {
+            "set-content" | "out-file" | "add-content" | "new-item" | "tee-object" => 1,
+            "copy-item" | "move-item" => 2,
+            _ => 0,
+        };
+        if positionals > 0 {
+            targets.extend(cmdlet_targets(&tokens[index + 1..], positionals));
+        }
+        index += 1;
+    }
+    targets.retain(|t| !t.is_empty());
+    targets
+}
+
+/// The path arguments of one cmdlet's argument run, stopping at the next statement separator.
+///
+/// Named path parameters name their target directly. A parameter known to take a non-path value
+/// has that value skipped, so `-Value "<some text>"` cannot be read as a path — the one shape that
+/// would otherwise deny an innocent write elsewhere. Every other `-Switch` is treated as taking no
+/// value, which costs at most a missed source on `Copy-Item -Force <src> <dst>` and never a false
+/// deny.
+fn cmdlet_targets(tokens: &[String], positionals: usize) -> Vec<String> {
+    const PATH_PARAMETERS: [&str; 4] = ["path", "filepath", "literalpath", "destination"];
+    const VALUE_PARAMETERS: [&str; 7] = [
+        "value", "itemtype", "encoding", "filter", "include", "exclude", "name",
+    ];
+    let mut out = Vec::new();
+    let mut taken = 0;
+    let mut index = 0;
+    while index < tokens.len() {
+        let token = tokens[index].as_str();
+        if matches!(token, "|" | ";" | "&&" | "||" | "&") {
+            break;
+        }
+        if token.starts_with('>') || token.starts_with('<') {
+            index += 1;
+            continue;
+        }
+        if let Some(name) = token.strip_prefix('-') {
+            let name = name.to_ascii_lowercase();
+            let value = tokens.get(index + 1).filter(|v| !v.starts_with('-'));
+            if PATH_PARAMETERS.contains(&name.as_str()) {
+                if let Some(value) = value {
+                    out.push(value.clone());
+                    index += 2;
+                    continue;
+                }
+            } else if VALUE_PARAMETERS.contains(&name.as_str()) && value.is_some() {
+                index += 2;
+                continue;
+            }
+            index += 1;
+            continue;
+        }
+        if taken < positionals {
+            out.push(token.to_string());
+            taken += 1;
+        }
+        index += 1;
+    }
+    out
 }
 
 /// A command token's bare name, without a leading path.

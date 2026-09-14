@@ -10,6 +10,7 @@
 //!
 //! 1. **path** — the file sits under a declared home. Resolved upstream by [`crate::home`].
 //! 2. **file set** — the name is a declared deliverable, or any name under a declared `reports/`.
+//!    Relaxable by the amnesty below, unlike the path itself.
 //! 3. **frontmatter** — required keys present; a key declared as an enum holds a listed value.
 //! 4. **headings** — required `##` headings present in declared order; an undeclared `##` denied.
 //! 5. **placeholders** — declared tokens absent from frontmatter values and heading text.
@@ -22,7 +23,14 @@
 //! and the candidate does not worsen is **allowed**, with the standing overage reported as
 //! `additionalContext` rather than hidden. Only a worsening — or a brand-new fault — denies. So the
 //! rewrite that fixes an oversized file is itself an allowed write, which is the property that
-//! makes the wave-5 violator pass possible at all.
+//! makes the violator pass over the existing tree possible at all.
+//!
+//! The **file set** is inside the amnesty, and the path is not. An existing file at an undeclared
+//! name in a declared home is allowed through with the violation named, because a file already on
+//! disk cannot be re-homed by a gate that refuses to let anyone touch it; a file that does not
+//! exist yet is denied, because nothing is wedged by refusing to create it. A path outside every
+//! declared home, or in an undeclared sub-directory, is never relaxed — there is no home to
+//! measure the write against.
 
 use crate::home::{Bounds, Deliverable, Form, Home, Reports, Resolution};
 use crate::render;
@@ -151,7 +159,21 @@ pub fn check(
         // A declared sub-directory with no home document of its own. Inventing a rule for it is
         // exactly what D4f forbids.
         Resolution::Deferred { .. } => Verdict::allow(),
-        Resolution::UndeclaredFile { home, name } => Verdict::deny(undeclared_file_reason(home, name)),
+        // The file set is a *relaxable* measure (D4e, as ratified at AM-3): an undeclared name on a
+        // file that is already on disk is amnestied and named in `additionalContext`, so a
+        // mis-homed file is never wedged — those are exactly the files the violator pass rewrites.
+        // A *new* file at an undeclared name has no baseline and still denies, so the set binds on
+        // everything that does not exist yet.
+        Resolution::UndeclaredFile { home, name } => {
+            let fault = || {
+                vec![Fault::new(
+                    format!("file-set:{name}"),
+                    None,
+                    undeclared_file_reason(home, name),
+                )]
+            };
+            settle(fault(), || baseline.map(|_| fault())).unwrap_or_else(Verdict::allow)
+        }
         Resolution::UndeclaredSubdir { home, subdir } => Verdict::deny(format!(
             "`{subdir}/` is not a declared sub-directory of `{}`. Declared: {}. A new sub-directory \
              takes a migration in the plugin's log and a plugin release.",

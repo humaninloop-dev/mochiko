@@ -368,6 +368,17 @@ sections:
           never snapshots. Referenced, never restated.
         pointer: references/DOMAIN-DEPENDENCIES.md
         anchor: 2026-07-21 domain-dependency-allowlist
+      - id: authoring-constitution.artifact-home
+        labels: [binding]
+        class: floor
+        kind: binding
+        text: >-
+          The governance surfaces this skill lands — the CLAUDE.md region, the scope-bound rules
+          files, the output-style file — sit outside every declared home by ruling, and their
+          bounds are the knowledge-management invariants. The ledger and the trace manifest are
+          declared files in the memory home: render `mochiko-cli home .mochiko/memory` before
+          writing either, and raise a name it does not carry rather than adding one.
+        anchor: 2026-09-13 hook-enforced-artifact-schema D1
   - id: authoring-constitution.sec.output
     title: Output — what every governance set ships
     intent: The mandatory content the set carries and the closure the validator checks.

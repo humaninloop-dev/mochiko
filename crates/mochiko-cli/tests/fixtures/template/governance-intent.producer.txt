@@ -208,6 +208,26 @@ verify pass; waived or verified → G3. -->
 - [YYYY-MM-DD] — [GI-IDs added/edited/superseded] — [one-line rationale] — re-confirmed at
   synthesis checkpoint [date]
 
+## Conformance
+
+Checked mechanically before the write lands. Each line is a string or a count, never a judgment.
+
+- Required headings, in order: `## Fact profile`, `## Project identity & type`, `## Depth level declaration`, `## Real commands`, `## Floor expression & deck rulings`, `## Module selections`, `## Review`, `## Amendment Log`
+- Line budgets, each counted from its `##` line to the next `##`, nested content included:
+  - `## Fact profile` — 15 lines
+  - `## Project identity & type` — 10 lines
+  - `## Depth level declaration` — 6 lines
+  - `## Convergence skips` — 10 lines (optional)
+  - `## Real commands` — 12 lines
+  - `## Floor expression & deck rulings` — 25 lines
+  - `## Minted principle intents` — 25 lines (optional)
+  - `## Waivers` — 25 lines (optional)
+  - `## Module selections` — 25 lines
+  - `## Domain-dependency seeds` — 10 lines (optional)
+  - `## Deliberate exclusions` — 10 lines (optional)
+  - `## Review` — 25 lines
+  - `## Amendment Log` — 25 lines
+
 ## Skeleton
 
 # Governance Intent — [PROJECT_NAME]

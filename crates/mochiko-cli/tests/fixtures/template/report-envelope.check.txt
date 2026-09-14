@@ -1,0 +1,8 @@
+# Report Envelope — checklist
+
+- [ ] Is the frontmatter present, typed by `report:`, with every consumed datum a field?
+- [ ] Where the report fails, does the narrative say what failed, why, and what was tried?
+- [ ] Are the notes non-obvious, or are they restating fields?
+- [ ] Where a null exit fired, is its reasoning stated in the workflow's own terms?
+
+---

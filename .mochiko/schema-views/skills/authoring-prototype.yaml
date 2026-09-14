@@ -184,6 +184,17 @@ sections:
           action>` — a flow is walkable by clicking, no JS state machine — and navigation
           never dead-ends: coming-soon and rejected screens stay reachable.
         anchor: 2026-08-02 ux-mocking-in-specify
+      - id: authoring-prototype.artifact-home
+        labels: [binding]
+        class: floor
+        kind: binding
+        text: >-
+          The prototype is written under the spec home's declared `prototype/` sub-directory,
+          which no home document governs: render `mochiko-cli home .mochiko/specs/<slug>` before
+          the first write to confirm that, and keep the screens and flows the prototype renders in
+          `spec.md`'s own section under the `spec` template. Nothing outside that sub-directory is
+          the prototype's to write.
+        anchor: 2026-09-13 hook-enforced-artifact-schema D1
   - id: authoring-prototype.sec.output
     title: Output — findings leave as findings
     intent: What the authoring surfaces upward rather than resolving silently.

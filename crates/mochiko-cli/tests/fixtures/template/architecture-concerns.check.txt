@@ -1,0 +1,7 @@
+# Concern Ledger — checklist
+
+- [ ] Is the title present?
+- [ ] Does every row carry a stance, a status and a rationale, one line per field?
+- [ ] Does each graduated row keep a summary and a link, with no duplicated depth?
+
+---

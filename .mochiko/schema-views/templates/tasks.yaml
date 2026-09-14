@@ -33,6 +33,8 @@ sections:
     check: >-
       Does the Overview table report the cycle count and the covered US-# list, with every P1/P2
       story on at least one card?
+    heading: Overview
+    max_lines: 8
   - name: Cycle Format
     required: true
     contract: |
@@ -52,6 +54,8 @@ sections:
       cycle-done when named cases pass on real infrastructure, the checkbox-as-progress rule, the
       walking-skeleton first cycle where a new end-to-end path opens, no foundation/feature type
       with `[P]` derived from dependencies, and per-case ID citation?
+    heading: Cycle Format
+    max_lines: 6
   - name: Cycle Cards
     required: true
     contract: |
@@ -106,6 +110,7 @@ sections:
       field), carrying Stories/Depends-on/Case/Brownfield-exposure; is the first cycle a walking
       skeleton where a new end-to-end path opens; is `[P]` used only where dependencies allow; and
       is no illustrative sample or pre-written task list / file path left in?
+    heading: Cycle Cards
 skeleton: |
   # Implementation Cycles: [FEAT-XXX — FEATURE NAME]
 
@@ -133,6 +138,8 @@ skeleton: |
   column. Each named test case cites the spec/design ID(s) it covers.
 
   ---
+
+  ## Cycle Cards
 
   ### - [ ] Cycle 1: Walking skeleton — [thinnest end-to-end path]
 
@@ -162,3 +169,8 @@ skeleton: |
   - **Action**: `[command]`
   - **Assert**: [expected]
   - **Capture**: console
+conformance:
+  placeholders:
+    - '[thinnest end-to-end path]'
+    - '[Feature bundle title]'
+  extra_headings: deny

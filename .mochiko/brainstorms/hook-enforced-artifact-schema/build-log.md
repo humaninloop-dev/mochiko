@@ -285,3 +285,176 @@ only; no shared write surface unless disclosed here.
   PATCH · DECISIONS row 2026-09-13 reworded ("strip" → recorded supersession, no strips entry).
   **WAVE 2 CLOSED.** `floor: tripped · seats: intent-reviewer (devils-advocate, cold) /
   gov-producer (tech-lead) / gov-validator (validator)`
+- 2026-09-14 · **wave 2 DONE** — governance v3.1.0 (AM-3), commit `794cea8`, user-ruled MINOR as
+  a recorded departure; GI-019 gains the admission + clause (iv); `rust-cli.md` bullet rewritten
+  (prior text preserved in the ledger); `cli-schema-delivery` D7 narrowly superseded. Two
+  consequences bind this build: **(a) wave-4 hook-ship precondition (review C5):** the
+  `plugin.json` bump that ships the hooks MUST NOT land before the crate's first publish with
+  all four controls (cargo audit in CI ✓ · sha256 assets ✓ · `cargo publish` behind a
+  manual-approval environment — owed · signed release tags — owed); a break-glass install never
+  substitutes for consumers — the lead's working assumption (b) is overruled; wave 4 may be
+  BUILT but not bumped until then. **(b) clause (iv) condition (review C1, road (a)):** the
+  budget table must admit honest content; a bound honest content cannot meet is a table defect
+  corrected at the table — measured: the 150-line whole-file bound on brainstorm `record.md`
+  vs 43 of 66 mochiko records over it (largest 1,536; the amend's own driver 738) and 7/7
+  kinako records, with no in-run route for a fresh over-budget deliverable. Also: a crate gap
+  found at the amend's verify pass — an `Edit` to an existing *undeclared* file name rides
+  amnesty with a bare allow and no `additionalContext` → wave-4 crate fix list. The ≤ 60 s cost
+  cap is a watch by ruling, never a bump gate (review C9). Previous reviewer seat hit its
+  session limit; `reviewer-2` (`mochiko:tech-lead`) spawned for the wave-3 delta-check.
+- 2026-09-14 · wave-3 delta-check **CLEAN 8/8** (`reviewer-2`): gates green on own run; state
+  hash `cbb455a6…` identical pre/post fix round; `0005` untouched by the round (only
+  `migrations/README.md` modified). Wave 3 now waits on the user's table ruling (the C1
+  amendment: three whole-file rows) → `0005` re-keyed by the seat → bounded re-check → commit.
+- 2026-09-14 · `wave4-plan.md` (`se-wave1`, 199 lines) read via the seat's summary and
+  **approved**; five primitive edits (two prose-skill home rules additive; `executing-tdd-cycle`
+  `description:` path, `analyst-report-template.md`, `techanalyst-report-template.md` →
+  supersession strips), no command `.md` re-points (rules come from the log; `impl.reports-
+  envelope` re-keyed in `0005`), gate wrapper parses no JSON. Lead calls: **(1)** implement D4e
+  file-set amnesty as ratified (existing undeclared name editable with the violation named; new
+  name still denies; path non-relaxable) — the built binary denied both, wider than the ledger's
+  "bare allow" description, to be corrected in the bump's pre-authorized PATCH; **(2)** one
+  un-narrowed `Write|Edit` handler (volume tiny), `if` narrowing on `Bash|PowerShell` only.
+  **Wave 4 BUILD OPEN** on `se-wave1` (crate fix → wrappers + hooks.json → five primitive edits +
+  three strips → CHANGELOG/marketplace/staged bump) and `qa-wave0` (contract cases under
+  `evals/contract/`, real-log resolution, structural asserts). Bump NOT landed (AM-3 precondition:
+  crate publish with four controls). Wave-3 commit waits on the user's table ruling.
+- 2026-09-14 · `wave4-plan.md` read in full by the lead after the summary approval — holds.
+  Accepted the plan's owed ruling: the two analyst report templates re-point to the spec home's
+  `reports/` as `report: disclosure` (sixth migration declined). Lead calls (single un-narrowed
+  `Write|Edit` handler; file-set amnesty as ratified) supersede plan §(a) and ladder row 3.
+  Release mechanics staged: `plugin.json` 0.108.0 → 0.109.0 (MINOR), marketplace sync,
+  CHANGELOG entry, gate 6 = cargo test + the full deterministic contract set (78 sandboxed +
+  QA's new rows); precondition carried on the commit.
+- 2026-09-15 · wave-4 contract cases in (`qa-wave0`): 5 cases, 38 host rows, host run 7/7
+  green against the landed wrappers (`gate-input` 30 · `reminder-input` 6 · `if-placement` 2);
+  fixtures at `evals/contract/fixture/artifact-hooks/` (a `load_captures()` first-sorted-wins
+  trap avoided); report moved to the session dir's `reports/contract-report.md` — `wave4-reports/`
+  is not a declared subdir (correct under the gate; `wave0-fixtures/`, `wave1-reports/`,
+  `wave3-reports/` re-home in wave 5's pass). **Blocker, pre-existing:** the suite's sandbox
+  half cannot start — `evals/contract/run.py` imports `SANDBOX`/`sbx_sh`/old `claude_args` from
+  `evals/run.py`, removed at the skill runner's host-mode convergence (`8c27460`, 2026-09-11);
+  77 of 82 cases (~151 metered sessions) unrunnable; gate 6 blocked. Lead ruling: the suite
+  gets its own sandbox module under `evals/contract/` (lifted from `32c1ed5`), decoupled from
+  the eval runner; smoke run only now, full run at the bump. Findings: PowerShell native
+  cmdlets (`Set-Content`, `Out-File`, `Add-Content`, `New-Item`) allow — vocabulary gap → crate
+  fix routed to `se-wave1`; stale `target/release` binary read as a gate regression → staleness
+  guard; `R-LINE-EXACT` reads its golden from `seat-reminder.sh`.
+- 2026-09-15 · **wave 4 BUILT** (`se-wave1`): `hooks.json` +2 registrations (un-narrowed
+  `Write|Edit`; `Bash`/`PowerShell` narrowed `*.mochiko*`; `SubagentStart` no matcher); two POSIX
+  wrappers (`artifact-gate.sh` parses nothing — exit 4 prints the deny, else explicit allow,
+  wrapper exit always 0; `seat-reminder.sh` presence-tests the event, frozen line under
+  `hookSpecificOutput.additionalContext`); crate fix in `conform.rs` (file-set amnesty as
+  ratified, four cells; pre-fix behaviour captured: deny at exit 4, not the ledger's "bare
+  allow" — correction owed in the bump's PATCH); five primitive edits + three strips (the
+  analyst templates already carried `report: disclosure`; `executing-tdd-cycle` had 125 chars
+  of headroom, not none); release files staged at 0.109.0, uncommitted. Gates: 455 tests, fmt/
+  clippy/audit, validate 0 rejecting, contract host 7/7. Cost 31.5 ms/call → 6.6 s / 5.0 s per
+  run vs the 60 s cap (the un-narrowed arm costs 0.16 s / 0.09 s extra). **Finding:** wave 3's
+  17 mints put 11 skills 114–317 chars over their ledger budget — lead ruled the argued-
+  overage path (graders rule HOLDS/FAIL per row; HOLDS rows stamped in
+  `primitive-cost-budgets.md` at v0.109.0). Audit routing: two prose skills → `mochiko:validator`
+  on coherence + preserved responsibilities. `evolution-roadmap.md` left undeclared. **Audits
+  dispatched:** `validator` (5 pair/prose units + the 11-row overage ruling →
+  `reports/wave4-audit.md`); `reviewer-2` (wrappers, hooks.json, crate fix →
+  `reports/wave4-code-review.md`). QA's sandbox repair + smoke in flight. Tree frozen.
+- 2026-09-15 · PowerShell write vocabulary landed (`src/hook.rs`, table keyed by `tool_name`;
+  `Tee-Object` kept as the `tee` analogue); 457 tests; the suite's staleness guard fired for
+  real (six cases red until a rebuild — a saved false green). Cycle report at
+  `reports/wave4-cycle-report.md`; staging re-confirmed (0.109.0 uncommitted, untagged). Reviewer
+  told the frozen state is the current tree; QA told to promote `G-PWSH-NATIVE` to an asserted
+  deny.
+- 2026-09-15 · **contract-suite sandbox repaired** (`qa-wave0`): `evals/contract/sandbox.py`
+  (helpers lifted from `32c1ed5`, provenance + decoupling reason in the header), keyword
+  `claude_args`, staleness guard that refuses (never rebuilds), `R-LINE-EXACT` parses the golden
+  from `seat-reminder.sh`. **Smoke 5/5** (absence · skew · brainstorm-absence · `gate-live` ·
+  `reminder-spawn`), 16 metered sessions. Two traps caught: the `gate-live` helper inherited the
+  sandbox PATH that deliberately lacks the binary (would have blamed the gate) — `path_env` now
+  required; `reminder-spawn`'s first shape ("quote your context") was refused by the lead seat
+  as an extraction attempt — the case now reads the injection off the sidechain, model out of
+  the evidence path (2 of 16 sessions spent on the refused shape). The report trimmed two
+  sections to pass the gate on a fresh baseline — the gate biting its own author. Suite changes
+  added to `reviewer-2`'s wave-4 review as item 5.
+- 2026-09-15 · `reports/wave4-audit.md` (`validator`, `mochiko:validator`): units 3–5 PASS
+  (`executing-tdd-cycle` pair — description 501/623, body byte-identical, floors read back;
+  both analyst templates + strips verbatim); **unit 6: 11/11 HOLDS** — each mint priced at
+  497–558 against a 0001–0004 log, every row under budget without it, no restored prose (small
+  body deltas trace to the v0.107.0 reword strips); **units 1–2 FAIL** on rule text — F1 single
+  home asserted for dual-home artifacts (`data-model.md`: spec + feature; `api.yaml`: both
+  contracts homes), F2 a literal `<slug>` inside a fenced `mochiko-cli home` command that does
+  not run (resolves to `specs-index`). Fix round opened (units 1–2 only) + the eleven
+  standing-overage ledger lines owed at v0.109.0.
+- 2026-09-15 · `reports/wave4-code-review.md` (`reviewer-2`): **PASS, 5 Minor** — gates green on
+  own run (457 tests; host 7/7); pre-fix behaviour confirmed on the installed 2026-09-13 binary:
+  deny at exit 4 on both limbs (the ledger's "bare allow" sentence corrected at the bump's
+  PATCH); cost 30.2 ms median. Minors routed: W1 QA row (in flight) · **W2 reversal** — the
+  frozen line is carried in the case as the golden and the script asserted against it (reading
+  the golden from the script let a reword pass) · W3 gate exit-4 empty-stdout guard · W4 Edit
+  amnesty cell asserts the file name · W5 three undeniable shell shapes (`cd &&`, variable path,
+  cwd inside a home) disclosed — to the record at close as D1c/D9 stated limits. Gate 6's full
+  sandboxed set and the bump precondition remain owed.
+- 2026-09-15 · validator second pass: all eleven triples reproduce; **corrections** — no prior
+  headroom (v0.106.0 re-seed, none); the 237 is an exact v0.107.0 render-format constant (six
+  control skills); mint cost 497–558 gross; `executing-tdd-cycle` +317 = mint +512 + two-arm
+  reword +42 − format 237; seven rows carry a `0003` two-arm residual. Ledger lines to be
+  stamped from re-measurement (relayed to `se-wave1`). QA: PowerShell rows promoted
+  (`G-PWSH-NATIVE` asserted deny, `G-PWSH-READ` allow control; 31 gate rows, 39 host rows, 7/7);
+  the staleness guard is mtime-based (a content-identical rebuild trips it — kept strict for a
+  release gate); `R-INJECT` reads as a hook regression when the guard refuses (self-clears).
+- 2026-09-15 · wave-4 fix round (`se-wave1`): units 1–2 — `data-model.md` named in all four
+  homes (spec · feature · epic · product), `api.yaml` in the `contracts/` home under each,
+  `quickstart.md` explicitly not a feature deliverable; the three fenced `home` commands
+  replaced by the ruled mints' phrasing; both files additive and under budget (14,355/16,835;
+  11,877/13,412). **Eleven standing-overage ledger lines stamped v0.109.0** from re-measurement
+  (no budget moved; seven body deltas named to the v0.107.0 reword — validator to settle six vs
+  seven). Gates green (457; validate 0/104; host 7/7). Re-audit of units 1–2 + the ledger lines
+  dispatched to `validator`; W3–W5 confirmation requested from the seat.
+- 2026-09-15 · QA W2 landed: `REMINDER_GOLDEN` carried in `evals/contract/run.py`; `R-LINE-EXACT`
+  four limbs (script line == golden · emitted line == golden · one line · names mochiko);
+  `reminder-spawn`'s marker from the constant; proven negatively (a reworded script copy trips
+  both limbs). Host 7/7, 39 rows. W1 in. Waiting: validator re-audit; seat's W3–W5.
+- 2026-09-15 · re-audit (`validator`): **units 1–2 PASS** (deliverables resolved against the
+  whole homes set — `data-model.md` in exactly spec/feature/epic/product; `api.yaml` in the
+  four contracts homes, all `bounds: elsewhere`; `quickstart.md` absent from feature — a real
+  exclusion). **Unit 7 FAIL** on one criterion: the eleven ledger rows reproduce every figure and
+  move no budget, but omit the −237 format constant and the `0003` two-arm residual, so no
+  row's arithmetic closes (GI-006). Fix = one clause per row. Body deltas settled at seven.
+  Routed to `se-wave1` with the W3–W5 confirmation.
+- 2026-09-15 · wave-4 round complete (`se-wave1`): ledger lines rebuilt from pristine HEAD rows
+  + fresh measurement; identity closes on all eleven (overage = mint + body delta − 237 − `0003`
+  render reduction); the "350–550 net" reading withdrawn; the two-arm residual has two limbs on
+  two different sevens (render reduction 8–189; body delta +1–42), nine rows carry ≥ 1 limb,
+  each row names only its own. W3 fixed + verified with a stub (exit 4, empty stdout → explicit
+  allow); W4 fixed; W5 measured — `cd <home> && >`, a variable-held path, and a relative write
+  from inside a home all allow (one root cause: the scanner reads literal tokens; `Write`/`Edit`
+  unaffected) — to the record at close. Gates green. Unit-7 re-check (`validator`) and W1–W5
+  delta-check (`reviewer-2`) dispatched.
+- 2026-09-15 · reviewer-2 second pass (pre-delta-check): PASS; item 5 (suite) PASS — `sandbox.py`
+  diffed name by name against `32c1ed5`, staleness guard exercised, every D10 clause has a row,
+  `path_env` keyword-only with the four bare-PATH sites all absence cases; W1–W4 re-verified.
+  Open: W5 (now disclosed in the cycle report — delta-check covers it) and **W6** new:
+  `sandbox.py` header claims "unchanged in behaviour" while `claude_args` dropped `--bare` and
+  gained two defaults (unconsumed) → header fix routed to QA. The reviewer's own report was
+  denied twice by the gate (notes 18 → 16 → 15 lines) before passing.
+- 2026-09-15 · seat confirmed W3 (`artifact-gate.sh:48` empty-stdout guard on the exit-4
+  branch), W4 (`tests/hook.rs:232`, `:248` assert `notes.md` in `additionalContext`), W5 (cycle
+  report section "The shell parse's known gaps, disclosed"). Ledger rows re-stamped a third
+  time from pristine rows: −237 on all eleven + the two-arm limb split by row set with the
+  `cli-schema-delivery` D9 anchor and the full `0003` filename; identity closes 11/11
+  (`analysis-codebase` 9,088 − 237 − 146 + 523 = 9,228). Validator told the frozen state is the
+  current tree.
+- 2026-09-15 · **unit 7 PASS** (`validator`): identity recomputed from the validator's own
+  figures closes 11/11; each row names only its limbs (render limb on seven, body limb on a
+  different seven, two on neither); limb sourcing separates the migration's render change from
+  the strip-recorded body reword (GI-006); no budget moved, prior history verbatim. **Every
+  wave-4 audit unit PASS, `blocking: 0`.** Validator's note: an intermediate row version
+  mis-credited the body delta to `0003` — the verdict is against the current text; re-run if
+  edited again before the bump. QA W6 fixed (header names three deltas vs `32c1ed5`; argv
+  byte-identical in sandbox mode, verified by import). Remaining on wave 4: `reviewer-2`'s
+  W1–W6 delta-check.
+- 2026-09-15 · reviewer-2 delta-check **CLEAN 5/5** (W2 proved by a one-word reword; W3 three
+  stub cells; W5 gaps table reproduced). **WAVE 4 CHECKS CLOSED.** One stale cycle-report line
+  (reminder golden "unfrozen") routed to the seat. Record gains a Build-trail transcription;
+  BACKLOG item wave statuses touched. Committing waves 3 + 4 as built and reviewed (bump staged,
+  not landed; table re-key pending).
+  `floor: tripped · seats: se-wave1 (mochiko:staff-engineer) + qa-wave0 (mochiko:qa-engineer) / validator (mochiko:validator) + reviewer-2 (mochiko:tech-lead)`

@@ -1,0 +1,40 @@
+# Concern Ledger
+
+`concerns.md` — the architecture store's concern catalog, one `##` entry per `AX-XXX` row. The row set is the product's, so this kind declares no heading grammar and takes no size bound: a ledger's length is the concern count, which the product owns, and a cap there would be a verbosity lever over the wrong thing. What is bound is the row's own shape — the fields below, compact by default, with depth graduating to `concerns/AX-XXX-<slug>.md` only where a row earned its own file. Its sibling file is `spine.md`; the repo-root `ARCHITECTURE.md` is a derived view of both. Authored per mochiko:authoring-architecture-store.
+
+## Header
+
+Title "# Concern Ledger" and nothing else above the first row.
+
+## Concern rows
+
+One `## AX-XXX <concern>` entry per row, in id order. Each carries **Stance** (decided | not-now | n-a | open) · **Status** (the lifecycle state) · **Ruling** with its date where the stance is decided · **Rationale** · **Upgrade trigger** where the stance is not-now · **Owned by** where the stance is n-a — handled elsewhere · **Targets** (NFR-XXX, with the measurement point) · **As-built** · **Drift** · **Work** (FEAT/EPIC ids). One line per field; a field with nothing to say is omitted, never written as "none" prose — except **Drift**, where `none` is the finding.
+
+## Graduated rows — optional
+
+A row that earned its own file keeps its summary here and links to `concerns/AX-XXX-<slug>.md`. The graduated file holds the depth the row could not — never a copy of the row.
+
+## Skeleton
+
+# Concern Ledger
+
+## AX-001 Tenancy
+
+- **Stance**: decided
+- **Status**: built
+- **Ruling**: pooled multi-tenant, `tenant_id` row-level scoping (ruled [DATE])
+- **Rationale**: [why this, and what it costs]
+- **Upgrade trigger**: first enterprise deal requiring silo OR >[N] tenants
+- **Targets**: NFR-014 (from SC-007) — tenant-scoped read p95 < 200ms, at the gateway histogram
+- **As-built**: pooled; `tenant_id` on 14 tables
+- **Drift**: none
+- **Work**: FEAT-012, EPIC-004
+
+## AX-002 SSO
+
+- **Stance**: not-now
+- **Status**: ruled
+- **Rationale**: [real concern, consciously deferred — why now is not the time]
+- **Upgrade trigger**: first prospect whose security review demands SAML
+
+---

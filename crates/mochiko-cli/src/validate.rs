@@ -202,7 +202,7 @@ impl Code {
     }
 
     /// The rejecting codes, so a test can assert every one has a probe.
-    pub const REJECTING: [Code; 46] = [
+    pub const REJECTING: [Code; 51] = [
         Code::GrammarParse,
         Code::GrammarHeader,
         Code::GrammarVersion,
@@ -249,6 +249,14 @@ impl Code {
         Code::RetiredLabel,
         Code::MomentDeclaration,
         Code::DocumentEmpty,
+        // The home checks (wave 3). `severity()` already rejected them from the day wave 1 minted
+        // them, because everything outside the advisory arm rejects; what was missing was their
+        // place in this manifest, which is what the probe-coverage guard reads.
+        Code::HomeShape,
+        Code::HomePattern,
+        Code::HomeDuplicate,
+        Code::HomeBinding,
+        Code::HomeBounds,
     ];
 
     /// The advisory codes.

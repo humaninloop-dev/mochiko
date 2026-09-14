@@ -302,6 +302,17 @@ sections:
           spine's design-time assignment (`mochiko:authoring-epic`), never the later-lander
           default.
         anchor: 2026-08-10 feature-map-layer D21
+      - id: authoring-feature-map.artifact-home
+        labels: [binding]
+        class: floor
+        kind: binding
+        text: >-
+          The map's files are declared: render `mochiko-cli home .mochiko/features` before the
+          first entry write. A capability entry is `<FEAT-ID>.md` bound to the `feature-entry`
+          template — its section shape and per-section budgets come from `mochiko-cli template
+          feature-entry` before drafting. A spec run's staged delta writes the same shapes in the
+          spec home's `map-delta/`, never over the live map.
+        anchor: 2026-09-13 hook-enforced-artifact-schema D1
   - id: authoring-feature-map.sec.output
     title: Output — what leaves the seat
     intent: The acceptance batch and the selection card the derivation hands up.

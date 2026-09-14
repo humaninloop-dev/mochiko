@@ -30,6 +30,32 @@ the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md`
 the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
 `git show 62aa99d:plugins/mochiko/skills/executing-tdd-cycle/SKILL.md`. -->
 
+<!-- Wave context: wave 4 of the hook-enforced-artifact-schema build (v0.109.0) — the write-time
+artifact gate ships. Every `.mochiko/` path a shipped primitive names was resolved against the homes
+the migration log declares (`plugins/mochiko/migrations/0005-artifact-homes.yaml`, wave 3), and a
+path the homes do not carry is re-pointed rather than left to be denied at write time. Ruling for
+the [v0.109.0] entry below: `.mochiko/brainstorms/hook-enforced-artifact-schema/record.md` D2 (a
+report lands in its home's `reports/` directory) and D3 (the homes as the migration declares them),
+with that session's `wave4-plan.md` section (c). Pre-edit verbatim text:
+`git show 794cea8:plugins/mochiko/skills/executing-tdd-cycle/SKILL.md`. -->
+
+## [v0.109.0] the `description:` names `tasks.md` under the spec home
+
+- **Disposition:** superseded → `.mochiko/features/<FEAT-ID>/tasks.md`, where the feature home
+  declares `tasks.md` as a templated deliverable
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/brainstorms/hook-enforced-artifact-schema/record.md` D3; migration
+  `0005-artifact-homes.yaml`, the `feature` home)
+- **Content:** `turning one card from \`.mochiko/specs/<feature>/tasks.md\` into working code`
+- **Kept deliberately:** the whole of the rest of the `description:` value — the MUST clause, the
+  red/green/refactor sequence, the `cycle-report.md` obligation, the SHOULD triggers, and the
+  boundary line handing cycle design to `mochiko:patterns-vertical-tdd`. Only the directory
+  segment moved; the delivery-relevant trigger phrases are byte-identical.
+- **Consumers assessed:** the fully-qualified path appears nowhere else in the plugin (swept over
+  `commands/`, `agents/`, `skills/` and `templates/`, every `.mochiko/` path resolved with
+  `mochiko-cli home`). Thirteen other files mention the bare name `tasks.md` with no directory
+  prefix; none of them is affected, and the file they mean is the same one.
+
 ## [v0.107.0] two body lines telling the reader that rules live "in the schema"
 
 - **Disposition:** superseded → "delivered by `mochiko-cli`", section ids unchanged
