@@ -703,11 +703,13 @@ CI keeps the four crate layers** (`cargo test` · `fmt` · `clippy` · `audit`) 
 sessions — the original D8's "API key in CI secrets" clause is withdrawn. The sandbox is Linux and
 the host is macOS; together they are the two OS rows, and there is no CI matrix.
 
-A hundred and fifty-one sessions per full run, unchanged from wave 5 because wave 6 adds only a
-host case: two fixture cases, eighteen delivery replicates across six commands, ninety across
-thirty skills, thirty-six single-session absence cases, three mechanism cases, and the two-session
-preload case. Wave 4's figure was twenty-nine. The four host cases add none, which is why the
-wave-6 additions could be validated before a single metered session was spent.
+**A hundred and fifty-five metered sessions per full run.** A hundred and fifty-four of them are
+cases: two fixture cases, eighteen delivery replicates across six commands, ninety across thirty
+skills, thirty-six single-session absence cases, three mechanism cases, the two-session preload
+case, and the three the wave-4 hook cases add — `gate-live` one, `reminder-spawn` two. The last is
+the preflight authentication probe, one per invocation whatever is selected. Wave 6 landed at a
+hundred and fifty-one and wave 4's figure was twenty-nine. The seven host cases add none, which is
+why a host-side change can be validated before a single metered session is spent.
 
 ## Caveat carried on record
 
