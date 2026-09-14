@@ -161,7 +161,7 @@ entries below. **Also stale:** the shape is **v5** as of the v0.35.0 wave below,
 block, `enforces:` on fail nodes, and `extends: common.<slug>` (D1–D8). Ruling for every
 [v0.98.0] entry below: `.mochiko/brainstorms/command-schema-ontology/record.md` D1–D11 as
 amended → `DECISIONS.md` 2026-08-27 row. Clause inventory and audit referent:
-`.mochiko/brainstorms/command-schema-ontology/conversion-inventory.md` — sections A.1
+`.mochiko/brainstorms/command-schema-ontology/research/conversion-inventory.md` — sections A.1
 (kinds), B.1 (the `when:` extraction), C.1 / D.1 (the declared blocks), E.1 (`enforces:`),
 F (bindings), G (the canonical header), H (the Not-done re-key).
 
@@ -564,7 +564,7 @@ refinement) → `DECISIONS.md` 2026-08-26 command-content-schema row. -->
 splits into a narrative `.md` (Identity & Mission · the obligated schema read · Adaptive Goal
 Protocol) and `plugins/mochiko/schemas/implement.yaml` (mint-once rules at D12 grain;
 labels from `command-labels.yaml`); source text = the approved simplified rewrite,
-`.mochiko/brainstorms/command-content-schema/implement-rewrite.md` (build step 0). Ruling for
+`.mochiko/brainstorms/command-content-schema/research/implement-rewrite.md` (build step 0). Ruling for
 every [v0.92.0] entry below: `.mochiko/brainstorms/command-content-schema/record.md` (D2 · D6 ·
 D7 · D9 · D12 · build item 4's M4 verbatim rule) → `DECISIONS.md` 2026-08-26
 command-content-schema row. Every Content field quotes the SHIPPED v0.91.0 text — what actually

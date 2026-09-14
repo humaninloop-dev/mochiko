@@ -2,7 +2,7 @@
 """Write `expected-skills.json` — the pre-registered floor sets and baselines for the skills.
 
 Provenance: `.mochiko/brainstorms/cli-schema-delivery/wave5-plan.md` §4.2 and
-`wave5-reports/p3-skills-plan.md` §3. This is the tool that produced the committed freeze, kept in
+`cli-schema-delivery/wave5-p3-skills-plan.md` §3. This is the tool that produced the committed freeze, kept in
 the tree so the file is reproducible rather than a hand-made artifact nobody can re-derive.
 
 **The refusal rule is the point.** Criterion (1) grades delivery against a set fixed before the
@@ -144,7 +144,7 @@ def build(plugin: pathlib.Path, binary: str, metadata: dict) -> dict:
             }
     return {
         "provenance": (
-            "wave5-plan.md §4.2 and wave5-reports/p3-skills-plan.md §3. Frozen from the render "
+            "wave5-plan.md §4.2 and cli-schema-delivery/wave5-p3-skills-plan.md §3. Frozen from the render "
             "and the working tree before P2 converted any skill and before the wave's first "
             "session. Never edited after; a floor rule added or renamed later breaks the "
             "cross-check in `converted-shape` rather than regrading quietly."

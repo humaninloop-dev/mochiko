@@ -14,7 +14,7 @@ note_on_item_grades: >
 graded_artifact: the uncommitted wave-1 crate work under crates/mochiko-cli/
 graded_against: wave1-plan.md (approved, §3 steps 3/8 superseded by the explicit-allow open) + record.md D3, D4, D6, D9, D10 + .claude/rules/mochiko/rust-cli.md
 reviewer_role: standing non-author reviewer; authored none of the graded code
-producer_report: wave1-reports/cycle-report.md
+producer_report: reports/wave1-cycle-report.md
 fix_list_count: 10
 blocking: [G1, G2, G4]
 nothing_edited_under: [crates/, plugins/]

@@ -504,7 +504,7 @@ ungated, not amnestied, so path is not a measure amnesty can relax. D4e's own fo
 (a)–(d) — headings, frontmatter, placeholders, size — a different four.
 (ii) It states the standing violation is "named in `additionalContext`". The binary does that for
 shape and not for an undeclared file name: an `Edit` to the existing, undeclared
-`.mochiko/brainstorms/hook-enforced-artifact-schema/review.md` returns a bare
+`.mochiko/brainstorms/hook-enforced-artifact-schema/reports/review.md` returns a bare
 `{"permissionDecision":"allow"}` with no `additionalContext` at all, while the same name written
 fresh denies at exit 4 with the full file-set reason. A mis-homed file therefore rides amnesty
 **silently**, and D9 makes the reviewer responsible for exactly the escapes that carry no signal.

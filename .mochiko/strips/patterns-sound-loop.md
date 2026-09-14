@@ -77,7 +77,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 Ruling for every entry below: skill-content-schema D3 (obligations move, procedure stays
 prose) / D8/C4 (protected transfers), `DECISIONS.md` 2026-09-01 rows (Skill-content schema
 ruled · the patterns-family door); census:
-`.mochiko/brainstorms/skill-content-schema/census-patterns.md` §A (SL) + §B (SL rows
+`.mochiko/brainstorms/skill-content-schema/research/census-patterns.md` §A (SL) + §B (SL rows
 1–14). Schema home: `plugins/mochiko/skills/patterns-sound-loop/schema.yaml`. Minted IDs
 carry the `patterns-sound-loop.` prefix (omitted below). Map — census §B row → minted ID:
 1 `two-part-trigger` · 2 `kind-keyed-library-wide` · 3 `leg-1-seat-produces` · 4

@@ -252,7 +252,7 @@ Q2. The fixtures hold everything up to and including the `---` separator; the as
 ## 8. Fix round 1 (advisory)
 
 Three advisory defects from the independent audit
-(`wave1-reports/v2-surface-audit.md`, against `3792104`), closed test-first. Each opened with a
+(`reports/wave1-v2-surface-audit.md`, against `3792104`), closed test-first. Each opened with a
 failing test; the three are `an_explicitly_empty_enforces_mirror_renders_no_key_at_all`,
 `every_subcommand_exits_1_on_an_empty_log_directory_and_names_it`, and
 `a_name_carried_as_both_a_command_and_a_skill_is_reported_as_ambiguous`. Test count 161 → 164.

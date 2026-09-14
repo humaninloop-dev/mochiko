@@ -78,7 +78,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 Ruling for every entry below: skill-content-schema D3 (three-home boundary) / D8/C4
 (protected transfers), `DECISIONS.md` 2026-09-01 rows (Skill-content schema ruled ·
 Skill-schema wave-2 family doors ruled — the patterns-family door); census:
-`.mochiko/brainstorms/skill-content-schema/census-patterns.md` §A (MM) + §B (MM row
+`.mochiko/brainstorms/skill-content-schema/research/census-patterns.md` §A (MM) + §B (MM row
 inventory). Schema home: `plugins/mochiko/skills/patterns-map-minimalism/schema.yaml`.
 Minted IDs carry the `patterns-map-minimalism.` prefix (omitted below). Map — census §B row
 → minted ID: 1 (fires at derivation/review/grooming) `firing-sites` · 2 (fewness never

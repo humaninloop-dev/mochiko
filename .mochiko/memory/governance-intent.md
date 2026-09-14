@@ -209,7 +209,7 @@ with the lead-drafted proposal
   ship gated on all four controls · C6 user-ruled MINOR stands as a recorded departure · C9
   user-ruled watch by ruling · C10 user-ruled violator pass, scheduled here ahead of the local wave-4 install (R4); all five rulings "as
   recommended". Report:
-  `.mochiko/brainstorms/hook-enforced-artifact-schema/wave2-reports/intent-review.md`. *Verify
+  `.mochiko/brainstorms/hook-enforced-artifact-schema/reports/wave2-intent-review.md`. *Verify
   pass:* round 1 **NOT CLEAN** 2026-09-14 — 8/10 folds confirmed faithful from disk, 5 residuals
   (R1 the Card 7 clause still calling GI-012 untouched · R2 the amnesty clause over-corrected against
   the binary — path is not a relaxable measure, a file-set violation rides a bare allow, the framing
@@ -296,7 +296,7 @@ wave 0 probes + wave 1 crate built 2026-09-04; F13 measured; setup amend invoked
   no-build-step scoped to the plugin · I7 ToS carried onto GI-012 as a Contested substrate
   mark · I9 README at the wave-3 landing · M1 pilot abort criteria as GI-020's revisit
   trigger · M2 break-glass line · M3 `cargo audit` on its own row. Report:
-  `.mochiko/brainstorms/cli-schema-delivery/wave2-reports/intent-review.md`. *Verify pass:*
+  `.mochiko/brainstorms/cli-schema-delivery/reports/wave2-intent-review.md`. *Verify pass:*
   **CLEAN** 2026-09-04 — 14/14 folds confirmed by the same cold seat from disk, no fold
   misapplied, no new contradiction, no mark upgraded past the record; three wording nits
   lead-repaired in the same pass (pricing figures in KiB over 50 files and the 604 KiB log ·

@@ -6,7 +6,7 @@ verdict: PASS
 graded_artifact: plugins/mochiko/migrations/0005-artifact-homes.yaml (46 ops, 2,014 lines) and its renders, plus the uncommitted crate/eval pin re-keys
 graded_against: wave3-plan.md (approved, R1–R11) · wave3-budget-table.md · record.md D2/D4 (as clarified at G8)/D5/D6/D11 wave 3 · wave1-template-readiness.md · wave3-census-raw.md
 reviewer_role: standing non-author reviewer; authored none of it
-producer_report: wave3-reports/cycle-report.md
+producer_report: reports/wave3-cycle-report.md
 fix_list_count: 8
 blocking: []
 nothing_edited: true
@@ -192,7 +192,7 @@ findings:
      gap: "Both were re-encoded from `\\u00a7` and `\\u00b7` escapes to literal `§` and `·`. The decoded values are identical, so nothing the suite reads has changed — but it is a byte edit the log does not determine, inside the one file this wave was licensed to touch only for pins.",
      fix: "Restore the two escapes, or note the re-encode in the cycle report's crate-touches list so the diff has no unexplained line."}
   - {id: W8, type: accuracy, sev: Minor,
-     at: "wave3-reports/cycle-report.md, the `Not a deviation, worth stating` paragraph on R9a",
+     at: "reports/wave3-cycle-report.md, the `Not a deviation, worth stating` paragraph on R9a",
      gap: "It says `features-index`'s \"only placeholders sit in a level-1 title\". They sit in table cells — `{{capability_name}}`, `{{status}}`, `{{work_row}}` and friends; the level-1 `# Features` carries none. The conclusion is unaffected, since a table cell is as far outside D4c's frontmatter-and-heading surface as a title is, and I agree a conformance block there would assert nothing.",
      fix: "Correct the clause to name table cells. The reasoning stands as written."}
 

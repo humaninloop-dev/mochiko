@@ -9,7 +9,7 @@ round: 4
 **Overall verdict: PASS.** All five pairs pass every graded item, plus the README, the report-honesty
 check and the budget pre-assert. Graded against `.claude/rules/mochiko/primitive-edits.md` criteria
 1–11 as amended, `wave4-plan.md` §3 and §6, and the wave-3 referent `commands/brainstorm.md` with
-`wave3-reports/v2-plugin-audit.md` as the bar — on the files, never on P2's report. Three findings;
+`reports/wave3-v2-plugin-audit.md` as the bar — on the files, never on P2's report. Three findings;
 none blocks the landing. Binary: `mochiko-cli 0.1.0 · grammar 1..1`, built here. HEAD is `9732de0`.
 
 - `architecture` / `arch` — **PASS** (items 1–8, all)

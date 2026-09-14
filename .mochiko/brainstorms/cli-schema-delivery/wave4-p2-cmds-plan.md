@@ -1,6 +1,6 @@
 # P2 — plan: five command re-points, ten strip entries, README wording
 
-Referent: `commands/brainstorm.md` at HEAD plus its two `[v0.104.0]` strip entries; bar `wave3-reports/v2-plugin-audit.md`. Figures from `mochiko-cli` 0.1.0 · grammar 1 · plugin 0.104.0.
+Referent: `commands/brainstorm.md` at HEAD plus its two `[v0.104.0]` strip entries; bar `reports/wave3-v2-plugin-audit.md`. Figures from `mochiko-cli` 0.1.0 · grammar 1 · plugin 0.104.0.
 
 | command | prefix `<p>` | `kind: fail` pin | `class: floor` | step-3 word | D13 baseline |
 |---|---|---|---|---|---|

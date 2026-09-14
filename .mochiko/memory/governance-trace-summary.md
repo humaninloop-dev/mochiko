@@ -3,7 +3,7 @@
 The producer's manifest over the ratified synthesis (`governance-intent.md`, GI-001–022). Grading
 surface for `validation-constitution`. Superseded rounds: v2.0.0 and v3.0.0 carried their
 manifests inside their producer reports
-(`.mochiko/brainstorms/cli-schema-delivery/wave2-reports/gov-producer.md` for v3.0.0), and the
+(`.mochiko/brainstorms/cli-schema-delivery/reports/wave2-gov-producer.md` for v3.0.0), and the
 v1.0.0 manifest this file held — including its ruled FP-1 — is in git history.
 
 ## Trace summary — GI element to homes

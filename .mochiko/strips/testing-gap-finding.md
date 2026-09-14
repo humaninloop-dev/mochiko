@@ -101,7 +101,7 @@ Ruling for every entry below: skill-content-schema D3 (obligations move, procedu
 prose) / D8/C4 (protected transfers), `DECISIONS.md` 2026-09-01 rows (Skill-content schema
 ruled · Skill-schema wave-2 family doors ruled — the small-families door: abort tripped, the
 dense five convert on the B/C drivers, review six-set reused); census:
-`.mochiko/brainstorms/skill-content-schema/census-small-families.md` §A (TGF) + §B (TGF rows
+`.mochiko/brainstorms/skill-content-schema/research/census-small-families.md` §A (TGF) + §B (TGF rows
 1–28). Schema home: `plugins/mochiko/skills/testing-gap-finding/schema.yaml`. Minted IDs
 carry the `testing-gap-finding.` prefix (omitted below). Map — census §B row → minted ID:
 1a `test-execution-is-testing-end-user` · 1b `test-grammar-consumed-never-redefined` ·

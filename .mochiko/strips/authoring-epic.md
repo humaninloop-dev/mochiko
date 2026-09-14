@@ -83,7 +83,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 Ruling for every entry below: skill-content-schema D3 (three-home boundary) / D8/C4
 (protected transfers), `DECISIONS.md` 2026-09-01 rows (Skill-content schema ruled ·
 Skill-schema wave-2 family doors ruled — the authoring-family door); census:
-`.mochiko/brainstorms/skill-content-schema/census-authoring.md` §A (AE) + §B (AE).
+`.mochiko/brainstorms/skill-content-schema/research/census-authoring.md` §A (AE) + §B (AE).
 Schema home: `plugins/mochiko/skills/authoring-epic/schema.yaml`. Minted IDs carry the
 `authoring-epic.` prefix (omitted below). Map — census §B row → minted ID:
 1 `single-sources-epic-shape` · 2 `identity-grammar` · 3 `one-type-two-faces` ·

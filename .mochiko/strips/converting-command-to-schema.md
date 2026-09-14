@@ -7,7 +7,7 @@ its mint and its v0.97.0 scaffold re-key rode their decision rows.
 <!-- Wave context: the command-schema ontology wave (v0.98.0). Ruling:
 `.mochiko/brainstorms/command-schema-ontology/record.md` D1–D11 as amended →
 `DECISIONS.md` 2026-08-27 row. Clause inventory:
-`.mochiko/brainstorms/command-schema-ontology/conversion-inventory.md` (sections G and H
+`.mochiko/brainstorms/command-schema-ontology/research/conversion-inventory.md` (sections G and H
 carry the two forms this wave replaces). -->
 
 ## [v0.98.0] The `fail-condition` label re-keyed to `kind: fail` at four sites

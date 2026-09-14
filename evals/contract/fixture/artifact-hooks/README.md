@@ -2,7 +2,7 @@
 
 Real hook stdin, captured on 2026-09-13 (macOS arm64, Claude Code 2.1.258) by the wave-0 transport
 probe. Provenance per file, with the run id and entry tag it came from, is in the session's own
-evidence home: `.mochiko/brainstorms/hook-enforced-artifact-schema/wave0-fixtures/README.md`. These
+evidence home: `.mochiko/brainstorms/hook-enforced-artifact-schema/research/wave0-fixtures/README.md`. These
 are copies of those four payloads, kept here so the cases stage from `evals/contract/fixture/` like
 every other fixture.
 

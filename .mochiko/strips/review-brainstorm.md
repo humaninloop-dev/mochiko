@@ -89,7 +89,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 ## [v0.100.0] Schema conversion — census-row → minted-ID map (skill-content-schema wave)
 
 Ruling for every entry below: skill-content-schema D3 (boundary) / D8/C4 (protected
-transfers), `DECISIONS.md` 2026-09-01 row; census: `.mochiko/brainstorms/skill-content-schema/census.md`
+transfers), `DECISIONS.md` 2026-09-01 row; census: `.mochiko/brainstorms/skill-content-schema/research/census.md`
 §B (RB). Schema home: `plugins/mochiko/skills/review-brainstorm/schema.yaml`. All minted IDs
 carry the `review-brainstorm.` prefix (omitted below). Map — census row → minted ID:
 1 `never-in-the-room` · 2 `lens-depth-never-jurisdiction` · 3 `verdict-is-input` (C4 stub;

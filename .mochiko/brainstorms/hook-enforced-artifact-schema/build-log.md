@@ -501,3 +501,7 @@ only; no shared write surface unless disclosed here.
   Rust 1.87+, no `rust-version` declared → `% 2 == 0`) and P2 (docstring: two stray backticks
   bracket everything between them — errs toward allow) routed. Reviewer's reading, adopted: this
   narrows where text is read, not what is checked — implementation, not a D4c amendment.
+- 2026-09-15 · **committed `c56ca1c`** — the placeholder code-span fix (P1 as a scoped
+  `#[allow(clippy::manual_is_multiple_of)]` with reason — the method is Rust 1.87+, no
+  `rust-version` declared, raising the floor is a manifest policy call; P2 docstring). 460 tests.
+  Classes 3–4 of the mochiko pass in progress (77 paths in the tree).

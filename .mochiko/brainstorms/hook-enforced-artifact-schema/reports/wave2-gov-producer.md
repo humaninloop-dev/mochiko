@@ -133,7 +133,7 @@ was used.
 ## 6 — Fix round (2026-09-14, after the validator's FAIL)
 
 The independent `validation-constitution` seat graded round 1 FAIL on one blocking and two minor
-findings (`wave2-reports/gov-validator.md`). All three applied, nothing else; each is formulation,
+findings (`reports/wave2-gov-validator.md`). All three applied, nothing else; each is formulation,
 no ruling changed.
 
 | ID | Finding | What changed |

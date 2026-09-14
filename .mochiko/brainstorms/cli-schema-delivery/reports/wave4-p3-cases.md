@@ -17,7 +17,7 @@ misses and not delivery failures, but the bar was pre-registered and a miss is a
 is the lead's.
 
 Unit: `evals/contract/run.py` and `evals/contract/README.md`. Nothing else was touched; nothing
-was committed. Plan: `wave4-reports/p3-cases-plan.md`, approved 2026-09-04.
+was committed. Plan: `cli-schema-delivery/wave4-p3-cases-plan.md`, approved 2026-09-04.
 
 ## The two abort criteria, per command
 

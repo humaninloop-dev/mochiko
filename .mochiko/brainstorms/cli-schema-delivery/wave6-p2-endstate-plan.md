@@ -1,6 +1,6 @@
 # P2 — end-state plan (plugin side + rules file), wave 6
 
-**Status: approved 2026-09-05, all three findings ruled in scope. Execution waits on the lead's "P1 closed".** Report per family of change lands at `wave6-reports/p2-endstate.md`. No commits.
+**Status: approved 2026-09-05, all three findings ruled in scope. Execution waits on the lead's "P1 closed".** Report per family of change lands at `reports/wave6-p2-endstate.md`. No commits.
 
 ## 0. Inventory confirmed, three findings ruled in
 

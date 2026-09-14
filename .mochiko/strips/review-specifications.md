@@ -92,7 +92,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 ## [v0.100.0] Skill-content-schema conversion — body obligations moved to `schema.yaml`; the pair is now the graded unit
 
 Wave context: skill-content-schema D1–D9 as amended (`.mochiko/brainstorms/skill-content-schema/record.md`,
-`DECISIONS.md` 2026-09-01); census referent `.mochiko/brainstorms/skill-content-schema/census.md` §A/§B
+`DECISIONS.md` 2026-09-01); census referent `.mochiko/brainstorms/skill-content-schema/research/census.md` §A/§B
 (RSPEC rows). Census-row → minted-ID map: 1 `input-not-verdict` · 2 `author-grader` (stub) ·
 3 `what-not-how` · 4 `not-for` · 5 `complete-coverage` · 6 `question-format` ·
 7 `no-presupposed-mechanism` · 8 `clarifications-shape` · 9 `gap-taxonomy` · 10a `excess-admissibility` ·

@@ -89,7 +89,7 @@ I touch `evals/contract/run.py`, `evals/contract/README.md`, and additive files 
 4. Shape-discovery probes: approved, Phase 3, one run each, the final assertion keyed to what they
    measure. A synthesized `SessionStart` capture is an approved fallback, but a real one from P2 is
    preferred if it lands before `hook-input` runs.
-5. The report goes to `wave3-reports/p3-suite.md`. Nothing is committed.
+5. The report goes to `reports/wave3-p3-suite.md`. Nothing is committed.
 
 ## 9. Deviations from §1, disclosed at build (Phase 2)
 

@@ -92,7 +92,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 
 Ruling for every entry below: skill-content-schema D3 (boundary) / D8/C4 (protected
 transfers), `DECISIONS.md` 2026-09-01 row; census:
-`.mochiko/brainstorms/skill-content-schema/census.md` §B (RGI). Schema home:
+`.mochiko/brainstorms/skill-content-schema/research/census.md` §B (RGI). Schema home:
 `plugins/mochiko/skills/review-governance-intent/schema.yaml`. Minted IDs carry the
 `review-governance-intent.` prefix (omitted below). Map — census row → minted ID:
 1 `frozen-window` · 2 `pre-ratification-timing` · 3 `never-a-participant` ·

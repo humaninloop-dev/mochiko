@@ -240,7 +240,7 @@ trusted.
 
 That case-time set is then cross-checked **in both directions** against a pre-registration, and
 any difference fails the case. Commands are pre-registered in `EXPECTED` in `run.py`
-(`brainstorm`'s seven in `wave3-reports/p3-suite-plan.md`, the other five in `wave4-plan.md` §4);
+(`brainstorm`'s seven in `cli-schema-delivery/wave3-p3-suite-plan.md`, the other five in `wave4-plan.md` §4);
 the thirty skills are in `expected-skills.json` beside this file, because thirty rows of floor ids
 run to a few hundred entries. A bar read off the thing it grades is not a bar — the freeze cannot
 be edited to match a render that changed, only replaced by ruling, so a floor rule added or

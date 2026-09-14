@@ -12,7 +12,7 @@ tasks_delivered: 9
 tests_added: 102
 tests_total: 453
 tests_failed: 0
-review_round_1: FAIL — 10 items (1 Critical · 3 Important · 6 Minor); fix list wave1-reports/code-review.md
+review_round_1: FAIL — 10 items (1 Critical · 3 Important · 6 Minor); fix list reports/wave1-code-review.md
 corrections_from_review_1: 10 of 10 addressed; G8 was routed to the lead and is now settled in
   `record.md` — D4f reads "no size check where bounds live elsewhere; shape checks still run where a
   template binds; location + set always bind", the reading this build took

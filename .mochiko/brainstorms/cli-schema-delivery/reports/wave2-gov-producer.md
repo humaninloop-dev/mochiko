@@ -152,7 +152,7 @@ note rather than deleted, so the withdrawal of the raw-Read degraded path is rec
 ## 6 — Advisory round (2026-09-04, after the validator's PASS)
 
 The independent `validation-constitution` seat passed the set 60/61 with no blocking finding
-(`wave2-reports/gov-validator.md`). Six of its nine advisories were taken in this round, wording
+(`reports/wave2-gov-validator.md`). Six of its nine advisories were taken in this round, wording
 only — no principle, routing, or scope changed.
 
 | ID | Change | Surface |

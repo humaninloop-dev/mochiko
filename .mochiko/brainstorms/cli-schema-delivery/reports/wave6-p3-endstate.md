@@ -8,7 +8,7 @@ round: 6
 
 **Status: built, and the full suite is GREEN on the frozen end-state tree.** Unit:
 `evals/contract/**`, two files. Nothing outside the unit was touched and nothing was committed.
-Plan of record: `wave6-reports/p3-endstate-plan.md`, approved with four rulings, all four applied.
+Plan of record: `cli-schema-delivery/wave6-p3-endstate-plan.md`, approved with four rulings, all four applied.
 
 | run | result |
 |---|---|
@@ -333,7 +333,7 @@ Repo-relative, from the `cli-context` worktree root.
 
 - `evals/contract/run.py` — the unit; frozen for V3's cold grade
 - `evals/contract/README.md` — the unit; frozen, and §4 names what is stale in it
-- `.mochiko/brainstorms/cli-schema-delivery/wave6-reports/p3-endstate-plan.md` — the approved plan
+- `.mochiko/brainstorms/cli-schema-delivery/wave6-p3-endstate-plan.md` — the approved plan
 - `evals/.work/contract-*` — 82 evidence directories, one per case: staged plugin, streams,
   transcripts, sidechain transcripts, `verdict.json`, and `latency.json` on the delivery cases
 - session scratchpad `full-run-2.txt` — the green full run, 1,692 lines, `EXIT=0`

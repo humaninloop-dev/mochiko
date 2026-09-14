@@ -1,3 +1,8 @@
+---
+report: review
+feature: cli-schema-delivery
+---
+
 # Cold end-stage review — lens B (record integrity)
 
 **Record under review:** `.mochiko/brainstorms/cli-schema-delivery/record.md` (frozen at the Q12 line, Status `open`)

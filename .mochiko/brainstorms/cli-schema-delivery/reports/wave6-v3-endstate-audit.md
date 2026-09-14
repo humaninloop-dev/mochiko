@@ -228,7 +228,7 @@ in them is correct.
 
 **F1 — MEDIUM. The pre-`0003` dead-phrase count does not reproduce as worded, and has propagated
 into the record.**
-`.mochiko/brainstorms/cli-schema-delivery/wave6-reports/p3-endstate.md:74` ("the dead-phrase limb
+`.mochiko/brainstorms/cli-schema-delivery/reports/wave6-p3-endstate.md:74` ("the dead-phrase limb
 finds **24 section renders carrying a phrase**") and `:168` ("24 phrase-carrying renders");
 `.mochiko/brainstorms/cli-schema-delivery/record.md:1510` ("24 found when 0003 is removed from a
 copy").
@@ -242,7 +242,7 @@ Fix: in both report lines, state "18 section renders, 32 line-level findings"; c
 
 **F2 — MEDIUM. §4's "Five things moved beyond the six figures … Nothing else in the README was
 touched" is incomplete.**
-`.mochiko/brainstorms/cli-schema-delivery/wave6-reports/p3-endstate.md:132` and `:153`.
+`.mochiko/brainstorms/cli-schema-delivery/reports/wave6-p3-endstate.md:132` and `:153`.
 Three further figure groups moved in "Measured figures" and are named by neither the six-figure
 table nor the five forced cells:
 - the `vs baseline` column of the five moved command rows (`README.md:500–505`): −16.7 → −17.4,

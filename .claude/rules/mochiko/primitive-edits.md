@@ -264,14 +264,14 @@ log by construction, so schema-content edits take no strip entry. The human-read
 
   Rulings: `.mochiko/brainstorms/skill-content-schema/record.md` D1–D9 as amended
   (`DECISIONS.md` 2026-09-01) · the census inventory
-  `.mochiko/brainstorms/skill-content-schema/census.md` (§E kind retirement · §H section
+  `.mochiko/brainstorms/skill-content-schema/research/census.md` (§E kind retirement · §H section
   set · J-7 cross-directory pointers) · the authoring-family census
-  `.mochiko/brainstorms/skill-content-schema/census-authoring.md` (§I labels · J-1
+  `.mochiko/brainstorms/skill-content-schema/research/census-authoring.md` (§I labels · J-1
   section set · J-6 budget · J-7 first-seeds) · the patterns-family census
-  `.mochiko/brainstorms/skill-content-schema/census-patterns.md` (§B section proposal ·
+  `.mochiko/brainstorms/skill-content-schema/research/census-patterns.md` (§B section proposal ·
   §ROAD rejection · §I labels · J-P2 first-strips · J-P5 two-arm/overage) · the
   small-families census
-  `.mochiko/brainstorms/skill-content-schema/census-small-families.md` (§B six-set-reuse
+  `.mochiko/brainstorms/skill-content-schema/research/census-small-families.md` (§B six-set-reuse
   fit table · §C zero common blocks · §D abort-tripped — the dense five convert on the
   B/C drivers · J2-8 dual-homing twins · J2-9 ruled repair) ·
   `.mochiko/decisions/2026-08-28-near-dup-convergence.md` R1–R6.

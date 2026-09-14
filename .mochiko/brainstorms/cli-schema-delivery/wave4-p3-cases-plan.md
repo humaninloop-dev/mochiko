@@ -62,7 +62,7 @@ On "approved" I write the parametrization, the constant table, the `hook-input` 
 the README, then run `--host-only`, which needs no sandbox and validates the five constant sets
 before a metered session is spent. On the lead's "P1 and P2 closed" I re-run `--host-only` (P2's `!`
 lines are what `converted-shape` grades; P1's migration changes the delivered `fail-conditions`
-line) and then the full run. The report goes to `wave4-reports/p3-suite.md`: tally, abort criteria
+line) and then the full run. The report goes to `reports/p3-suite.md`: tally, abort criteria
 per command, measurements, deviations. Nothing is committed. Two flags: the baselines are measured
 **before** P1's migration, whose reworded intent line moves the raw baseline and the delivered
 figure by a few bytes in the same direction, so the criterion is unaffected and the constants do not

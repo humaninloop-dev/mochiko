@@ -1,3 +1,8 @@
+---
+report: review
+feature: cli-schema-delivery
+---
+
 # Cold Review — Lens A (Decision Quality)
 
 **Record under review:** `.mochiko/brainstorms/cli-schema-delivery/record.md` (frozen, 608 lines)

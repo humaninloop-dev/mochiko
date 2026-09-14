@@ -180,7 +180,7 @@ GI-009, GI-010, GI-017, GI-020, GI-022.
   `GI-XXX`, `[TBD]`, `[TODO]`, and the module templates' bracketed examples: **zero hits**.
 - **Pointers introduced or carried this round** — all resolve:
   `hook-enforced-artifact-schema/record.md` · `wave2-amendments.md` ·
-  `wave2-reports/intent-review.md` · `wave3-budget-table.md` · `cli-schema-delivery/record.md` ·
+  `reports/wave2-intent-review.md` · `wave3-budget-table.md` · `cli-schema-delivery/record.md` ·
   `schema-based-template-guidance/record.md` · `crates/mochiko-cli/src/hook.rs` ·
   `plugins/mochiko/migrations/0005-artifact-homes.yaml` · `.mochiko/memory/knowledge-management.md` ·
   `.mochiko/strips/README.md`.

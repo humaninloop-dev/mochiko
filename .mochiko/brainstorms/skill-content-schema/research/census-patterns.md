@@ -4,7 +4,7 @@
 **Referent law:** `.mochiko/brainstorms/skill-content-schema/record.md` D1–D9 as amended ·
 command-content-schema D12/D15 · near-dup ADR R1–R6
 (`.mochiko/decisions/2026-08-28-near-dup-convergence.md`) · the wave-1 census
-(`.mochiko/brainstorms/skill-content-schema/census.md`) as structural referent, its §K
+(`.mochiko/brainstorms/skill-content-schema/research/census.md`) as structural referent, its §K
 build-corrections included.
 **Corpus:** the 13 `patterns-*` skills, `SKILL.md` whole + every `references/*.md` surveyed
 (obligation-line sweep + targeted whole-reads of the obligation-dense files) + all 11 existing

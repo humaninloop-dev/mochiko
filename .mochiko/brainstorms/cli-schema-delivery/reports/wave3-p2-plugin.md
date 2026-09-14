@@ -6,7 +6,7 @@ round: 3
 
 # P2 — plugin side: what was built and what was checked
 
-**Seat:** P2, wave 3 of `cli-schema-delivery`. **Plan:** `wave3-reports/p2-plugin-plan.md`,
+**Seat:** P2, wave 3 of `cli-schema-delivery`. **Plan:** `cli-schema-delivery/wave3-p2-plugin-plan.md`,
 approved 2026-09-04 with the criterion-1 and criterion-11 companion clauses granted.
 **Binary under test:** host release build, `mochiko-cli 0.1.0 · grammar 1..1`. **Log:**
 `plugins/mochiko/migrations/` (P1's move, closed before these tests ran).

@@ -130,7 +130,7 @@ file, and nothing protected left.
    `the_committed_genesis_regenerates_byte_identically` must stop telling a maintainer to
    regenerate genesis from the live tree. Point at the fixture, or say a real corpus change is a
    new migration and never a genesis rebuild.
-3. `wave4-reports/p1-op.md` — "330 passing" to 331.
+3. `reports/wave4-p1-op.md` — "330 passing" to 331.
 
 ## Delta verdict — 2026-09-04 — **PASS** (diff sha256 `e08ba43a…cb5f`)
 

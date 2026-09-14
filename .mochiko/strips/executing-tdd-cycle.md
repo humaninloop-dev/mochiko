@@ -146,7 +146,7 @@ with that session's `wave4-plan.md` section (c). Pre-edit verbatim text:
   + the wave-2 small-families door ruling, `DECISIONS.md` 2026-09-01 — the dense five
   convert on the B/C drivers, the review six-set reused with explicit empty markers, no
   common file, zero `extends:`; D8/C4 supersession-transfer). Census referent:
-  `.mochiko/brainstorms/skill-content-schema/census-small-families.md` §B ETC rows 1–26
+  `.mochiko/brainstorms/skill-content-schema/research/census-small-families.md` §B ETC rows 1–26
   (26 rules and 10 floors exactly as censused). Lead-ruled at plan approval:
   `sec.verdict` empty with its disclosed marker note (the executor's outcome grammar is
   the report field contract in `sec.output`; the clearing verdict is the lead's — the

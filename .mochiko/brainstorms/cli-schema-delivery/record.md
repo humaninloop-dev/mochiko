@@ -1074,7 +1074,7 @@ sandbox runs free). User ruled "adopt both".
 
 **Floor:** `floor: tripped · seats: P1 / P2 / P3 (staff-engineer, sequential single
 pen-holder) / V1 / V2 / V3 (validator, fresh, author ≠ grader)`. Plan: `wave1-plan.md`;
-reports and audits under `wave1-reports/`. User accepted wave 1 on 2026-09-04 and ruled the
+reports and audits under `reports/`. User accepted wave 1 on 2026-09-04 and ruled the
 family-2 check gap **closed in this wave** as extension unit **1b** (below).
 
 | unit | commits | what landed | review |
@@ -1198,7 +1198,7 @@ landed with its transition clause and Testability rows), GI-019's widened admiss
 (D11 landed — its `Assumed` mark now graded PASS by the validator), GI-012 gates widened
 (D10.3 + the SKIPPED and crate-train rulings), GI-002 live, GI-004/005/006 re-expressed,
 GI-022 minted, `rust-cli.md` rewritten (six globs). Store scaffold written (`spine.md`,
-Scope: developer tooling). Reports: `wave2-reports/`. **Owed after wave 2, before the first
+Scope: developer tooling). Reports: `reports/`. **Owed after wave 2, before the first
 publish:** signed tags + the `crates-io` approval rule; then lift `publish = false` and
 `if: false`, tag `mochiko-cli-v0.1.0`, publish. **Wave 3 additions from this run:** move the
 log into the plugin; `primitive-edits.md` globs; `README.md` re-authored.
@@ -1215,7 +1215,7 @@ carries the git-install line meanwhile); **Q-D** the read-back bar 3/3, pre-regi
 (`validator`, PASS, six non-blocking findings) · P3 contract suite (`qa-engineer`) / V3
 (`validator`, independent full re-run; FAIL on one item — three positive assertions still read
 the interim channel union — reworked with all five advisories taken, delta PASS). Reports:
-[`wave3-reports/`](wave3-reports/). `floor: tripped · seats: P1/P2/P3 produced · V1/V2/V3 reviewed`.
+[`reports/`](reports/). `floor: tripped · seats: P1/P2/P3 produced · V1/V2/V3 reviewed`.
 
 **F14 — hooks, measured (2026-09-04).** Platform docs verified by a `claude-code-guide` dispatch:
 the `hooks.json` shape; `timeout` in seconds; `SessionStart` context is plain stdout and cannot
@@ -1290,7 +1290,7 @@ evaluated and not tripped, the region's "today the log lives at the repo root" c
 **Open:** on the user's "wave 4"; lead's standing assumptions (plan §7: grammar stays 1 before
 the first publish; skew, hooks-off, policy run once; the bar 3/3 per command including
 `implement`'s 34 ids; no governance row). Plan: [`wave4-plan.md`](wave4-plan.md); reports:
-[`wave4-reports/`](wave4-reports/). Seats: P1 crate + log (`staff-engineer`) / V1 (`validator`,
+[`reports/`](reports/). Seats: P1 crate + log (`staff-engineer`) / V1 (`validator`,
 PASS after one rework on three documentation items) · P2 plugin side (`staff-engineer`) / V2
 (`validator`, PASS on all five pairs) · P3 suite (`qa-engineer`) / V3 (`validator`). Rulings at
 approval: the genesis fidelity byte test rebuilds from a **frozen corpus fixture** of the pre-edit
@@ -1357,7 +1357,7 @@ Python retirement; the `specify` two-arm sentence (wave 6); the publish tail unc
 ### Read-back diagnostic — run and graded (2026-09-04, plan §8; `evals/contract/diagnostic.py`, V3 delta PASS)
 
 Eighteen scored sessions plus two probes and one negative control (P3 `qa-engineer`; report
-`wave4-reports/p3-diagnostic.md`; V3 recomputed all 72 scored values with zero mismatches).
+`reports/wave4-p3-diagnostic.md`; V3 recomputed all 72 scored values with zero mismatches).
 Design as amended: a gate-valid token at the front of `$ARGUMENTS` with the instruction after it
 (the instruction cannot leave the argument in a headless run — placed before the command, nothing
 expands), then two read-back lines, `FLOOR-COUNT:` first and `FLOOR:` second.
@@ -1390,7 +1390,7 @@ not of the render.** The wave-5 question is the bar's design, put to the user.
 **Open:** user-ruled — criterion (2) evaluated per family against the record's F3 figures, with
 patterns and the dense five pre-stated to land above (no common file to amortise the render's
 fixed overhead); one bump, 0.106.0; the full D8 session budget. Plan:
-[`wave5-plan.md`](wave5-plan.md); reports: [`wave5-reports/`](wave5-reports/). Seats: P1 the
+[`wave5-plan.md`](wave5-plan.md); reports: [`reports/`](reports/). Seats: P1 the
 `floors:` preamble line (`staff-engineer`) / V1 PASS · P2 thirty re-points in four family units
 plus the hook rework (`staff-engineer`) / V2 PASS ×4 families + hook delta PASS · P3 the suite
 re-key, the skill family, the preload case (`qa-engineer`) / V3. Rulings at approval: **budgets
@@ -1457,7 +1457,7 @@ name-to-path interpolation; both D13 checkers retire; the two rewritten member s
 ## Wave 6 — the end state, landed (2026-09-05)
 
 **Open:** user-ruled 0.107.0 and no halt-paragraph trim (the patterns overage stays accepted).
-Plan: [`wave6-plan.md`](wave6-plan.md); reports: [`wave6-reports/`](wave6-reports/). Seats: P1
+Plan: [`wave6-plan.md`](wave6-plan.md); reports: [`reports/`](reports/). Seats: P1
 crate + log (`staff-engineer`) / V1 PASS + delta PASS · P2 plugin + rules file
 (`staff-engineer`) / V2 PASS + two deltas PASS · P3 suite (`qa-engineer`) / V3 PASS + delta PASS
 (F1–F3, F5 closed; F4 residual). Rulings at

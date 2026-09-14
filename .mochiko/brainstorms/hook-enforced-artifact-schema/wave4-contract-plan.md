@@ -9,7 +9,7 @@ Shape follows the existing `hook-input` case: host rows, no sandbox, no metered 
 of `plugins/mochiko/`, each row one `host_sh` call with stdin, `PATH` and `CLAUDE_PLUGIN_ROOT` per row,
 asserted with `ok()` / `report()` and `json_field()`. New host cases rather than more rows on
 `hook-input`, whose rows iterate primitives where these iterate payloads. Four rows are fed real
-wave-0 captures, durable at `wave0-fixtures/` — provenance and consuming row in its `README.md`.
+wave-0 captures, durable at `research/wave0-fixtures/` — provenance and consuming row in its `README.md`.
 
 ## Case list — 3 host cases, 34 rows (30 tabled, G-FM carrying two variants, `if-placement`'s 2, and the two report rows gap 6 adds)
 
@@ -26,14 +26,14 @@ wave-0 captures, durable at `wave0-fixtures/` — provenance and consuming row i
 | G-EDIT | Edit whose applied result adds an undeclared `##` | deny | 4 | D4e Edit-on-result |
 | G-AMNESTY | Edit over an already-oversized baseline, not worsened | allow + `additionalContext` naming the standing overage | 0 | D4e first-touch amnesty |
 | G-CONFORM | conforming Write at a declared name | allow | 0 | allow on a conforming write |
-| G-BASH-HEREDOC | `wave0-fixtures/pre-tool-use-bash-heredoc.json` | deny | 4 | V12 denied heredoc |
-| G-BASH-REDIRECT | `wave0-fixtures/pre-tool-use-bash-redirect-false-allow.json`, path re-pointed at the fixture home | deny | 4 | V12 · the field() regression |
+| G-BASH-HEREDOC | `research/wave0-fixtures/pre-tool-use-bash-heredoc.json` | deny | 4 | V12 denied heredoc |
+| G-BASH-REDIRECT | `research/wave0-fixtures/pre-tool-use-bash-redirect-false-allow.json`, path re-pointed at the fixture home | deny | 4 | V12 · the field() regression |
 | G-BASH-PLAIN | `echo probe-plain-ok` and `git status --porcelain` | allow | 0 | V12 allowed ordinary Bash |
 | G-BASH-READ | `cat <home>/seed.md` (reads a home, writes nothing) | allow | 0 | D1c write-operator scope |
 | G-SNIFF | Write outside every home, content opens `report:` in the enum | deny | 4 | D9 frontmatter sniff |
 | G-PLAIN-MD | Write of a plain `.md` outside the declared tree | allow | 0 | D9 no gate outside |
 | G-OUTSIDE-CWD | Write to an absolute path outside `cwd` | allow | 0 | §3 step 4 |
-| G-READ | `wave0-fixtures/pre-tool-use-read-home.json` fed to the gate wrapper | allow, no `additionalContext` | 0 | R5: the gate owns no Read behaviour |
+| G-READ | `research/wave0-fixtures/pre-tool-use-read-home.json` fed to the gate wrapper | allow, no `additionalContext` | 0 | R5: the gate owns no Read behaviour |
 | G-EXIT1 | any Write; staged log emptied / unsound | explicit allow | 1 | C2 exit 1 pass-through |
 | G-EXIT2 | any Write; `mochiko-cli` on `PATH` is a stub that exits 2 | explicit allow | 2 | C2 exit 2 (binary predates `check`) |
 | G-EXIT3 | any Write; staged log `grammar: 99` | explicit allow | 3 | C2 exit 3 skew |
@@ -43,7 +43,7 @@ wave-0 captures, durable at `wave0-fixtures/` — provenance and consuming row i
 | G-NEVER-EMPTY | run-wide over every row above | stdout is non-empty valid JSON carrying `permissionDecision`; wrapper exit always 0 | — | wave-0 platform fold in D3 |
 | G-PWSH | hand-written PowerShell-shaped payload (`tool_name: PowerShell`) | deny | 4 | **`report()`, not asserted** — see gap 4 |
 
-`reminder-input` — the `SubagentStart` wrapper. Uses `wave0-fixtures/subagent-start.json`, whose real
+`reminder-input` — the `SubagentStart` wrapper. Uses `research/wave0-fixtures/subagent-start.json`, whose real
 key set is `agent_id · agent_type · cwd · hook_event_name · prompt_id · session_id · transcript_path`
 — no `permission_mode`, which is why it is a capture rather than written from the doc field list.
 

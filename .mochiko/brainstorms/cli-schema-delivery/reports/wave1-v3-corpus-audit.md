@@ -329,7 +329,7 @@ mochiko-cli rules specify --section roles --log-dir <skew>
   cargo install mochiko-cli"                                            exit 3
 ```
 
-Git state at close: only `wave1-reports/p3-corpus.md` modified in the tree (an author-side line-count
+Git state at close: only `reports/wave1-p3-corpus.md` modified in the tree (an author-side line-count
 correction, 115 → 117, unrelated to this audit). No file was edited by this seat.
 
 ---

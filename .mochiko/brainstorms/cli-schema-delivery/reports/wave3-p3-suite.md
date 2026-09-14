@@ -17,7 +17,7 @@ advisories. Every fix was written test-first — the red probes are listed with 
 full suite was re-run afterwards, so every `verdict.json` on disk comes from the final code.
 
 Files changed: `evals/contract/run.py`, `evals/contract/README.md`. The plan this was built to is
-`wave3-reports/p3-suite-plan.md`, whose sections 8 and 9 carry the lead's rulings and the
+`cli-schema-delivery/wave3-p3-suite-plan.md`, whose sections 8 and 9 carry the lead's rulings and the
 deviations disclosed at build time.
 
 ## The abort criteria

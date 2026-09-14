@@ -226,7 +226,7 @@ budgeted set), so it does not enter this table. I did not touch
 
 ## 10. Delta — three text fixes after V2 PASS (2026-09-05)
 
-Lead-directed after the V2 audit at `wave6-reports/v2-endstate-audit.md`. No ruling involved, no
+Lead-directed after the V2 audit at `reports/wave6-v2-endstate-audit.md`. No ruling involved, no
 figures changed, no behavior changed. The hook matrix re-ran and is byte-identical across all
 twelve rows; checks 1 and 6 re-ran clean.
 

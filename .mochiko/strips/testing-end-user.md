@@ -125,7 +125,7 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
   + the wave-2 small-families door ruling, `DECISIONS.md` 2026-09-01 — the dense five
   convert on the B/C drivers, the review six-set reused with explicit empty markers, no
   common file, zero `extends:`; D8/C4 supersession-transfer). Census referent:
-  `.mochiko/brainstorms/skill-content-schema/census-small-families.md` §B TEU rows 1–21.
+  `.mochiko/brainstorms/skill-content-schema/research/census-small-families.md` §B TEU rows 1–21.
   Lead-ruled recorded deviations at plan approval: the a/b limb splits (5a/5b · 14a/14b —
   one `kind:` per rule, so 23 rules against the census header's 21) and the floor pin 7
   against the census tally's 6 (row grain beats tally — the §B stub-19 floor row was

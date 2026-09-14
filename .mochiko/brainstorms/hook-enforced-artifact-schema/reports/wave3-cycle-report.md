@@ -26,7 +26,7 @@ gate_contract_host: PASS — 4/4 host cases (hook-input · converted-shape · re
 gate_contract_sandbox: NOT RUN — 78 metered sandbox sessions; reason below
 plugin_json_bumped: no (wave 4's, per the lead)
 committed: no
-review_round_1: PASS — 8 Minor, none blocking; fix list wave3-reports/migration-review.md
+review_round_1: PASS — 8 Minor, none blocking; fix list reports/wave3-migration-review.md
 corrections_from_review_1: 8 of 8 addressed — W1/W2/W3 in the budget table, W4 in the crate, W5 in
   the log README, W6/W7 in the contract fixture, W8 here
 gates_after_corrections: cargo test 453 passed (the five home probes ride the existing coverage
