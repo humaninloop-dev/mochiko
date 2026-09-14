@@ -26,25 +26,21 @@ uncompressed. Prior groom narrative: git history (this line, before this groom).
 *(ruled + accepted 2026-09-13, `hook-enforced-artifact-schema` D1–D11 as review-amended;
 provenance: `.mochiko/brainstorms/hook-enforced-artifact-schema/record.md`)*
 
-- [ ] **Hook-enforced artifact schema — waves 0–5** (2026-09-13; provenance: the record's D8,
-  D10, D11 + the AM-3 run, `.mochiko/memory/governance-intent.md`). **Wave 0 DONE 2026-09-13
-  (PROCEED; `wave0-probe-report.md`)** · **wave 1 BUILT + ACCEPTED 2026-09-13** (crate: `home`
-  kind, `check --hook-json -`, `home`, matrices; exit = crate published — still owed, break-glass
-  through waves 3–4) · **wave 2 DONE 2026-09-14 — governance v3.1.0 (AM-3:** GI-019
-  conformance-gate admission, clause iv conditioned on the budget table; D7 narrowly superseded;
-  `rust-cli.md` bullet superseded by ruling, no strips entry; the wave-4 hook ship gated on all
-  four supply-chain controls; two pre-authorized PATCHes). **Wave 3 CLOSED 2026-09-15** — migration `0005`
-  BUILT, reviewed PASS, delta-check CLEAN; **budget table ratified by the user with the C1
-  amendment** (record/synthesis unbounded · template-less pipeline deliverables + wave files 300 ·
-  entry-class 150 · `build-log.md` a log at 60/entry), `0005` re-keyed (`0a03626`). **Wave 4 BUILT 2026-09-15, audits PASS (11/11 overage HOLDS stamped), review PASS, delta-check
-  CLEAN; bump STAGED at 0.109.0, NOT landed** (precondition: the crate publish with four controls;
-  the full sandboxed contract run at the bump — the suite's sandbox half was repaired as its own
-  module after the 2026-09-11 runner convergence broke it; file-set amnesty landed as ratified).
-  **Wave 5 — mochiko half DONE 2026-09-15** (83 files re-homed, 111 pointers, path 0 · set 0,
-  65 amnestied residuals; AM-3 C10 satisfied before any local install); **kinako half pending
-  the user** — evidence-tree ruling (161 files with no legal home under `.mochiko/`), pass
-  authorization (214 moves, 143 pointers), then upgrade, dogfood, D10 watch; kinako stays on its
-  project-pinned 0.103.0 until its pass is done.
+- [ ] **Hook-enforced artifact schema — what is left** (2026-09-15; provenance: the record's
+  § Build trail + `build-log.md`; delivered through `9738a90`). Waves 0–3 CLOSED (probe · crate
+  463 tests · governance v3.1.0 AM-3 · `0005` with the ratified budget table); wave 4 BUILT +
+  audited, 0.109.0 committed on the branch **not released**; wave 5 mochiko half DONE (path 0 ·
+  set 0). Owed, each gated on the user:
+  1. **Crate publish** — the two first-publish controls (manual-approval publish environment ·
+     signed tags), then the `mochiko-cli-v*` tag. Gates 2 and 3 (GI-012 as amended, AM-3 C5).
+  2. **Gate-6 full run** against the published binary (`MOCHIKO_GATE_VERSION=<tag>`; 87 cases,
+     ≈155 sessions, $13–16, ≈1 h — `wave5-gate6-plan.md`), then the release commit + the
+     pre-authorized **PATCH v3.1.1** (`wave5-bump-patch.md`, graded by `validation-constitution`).
+  3. **Kinako violator pass** — evidence-tree ruling owed (161 files with no legal home under
+     `.mochiko/`; recommend a repo-root `evidence/`), then 214 moves + 143 pointers on the
+     pre-gate 0.103.0 pin, upgrade, dogfood, **D10 watch** (`wave5-plan.md` §3/§7).
+  4. **Size survivors** — ruling owed on the recommendation: rewrite nothing, existing
+     over-budget files ride D4e amnesty (mochiko 65 · kinako 102).
 
 ## CLI schema-delivery build
 
