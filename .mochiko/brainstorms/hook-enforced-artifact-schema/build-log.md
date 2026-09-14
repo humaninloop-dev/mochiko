@@ -559,3 +559,9 @@ only; no shared write surface unless disclosed here.
   count 4 → 7) routed. Disclosed: one sandboxed `absence` case ran during the review (one
   session, passed). Standing assumption until a crate is published: the gate install root sits
   outside the sandbox default PATH.
+- 2026-09-15 · **runner changes committed `4556d60`** (S1 allowlist `^\d+\.\d+\.\d+$`, S2 README
+  counts). Tree clean. Build state: waves 0–3 closed · wave 4 built/audited (bump staged, not
+  landed) · wave 5 mochiko half done. **Owed by the user:** rulings on size survivors (leave to
+  amnesty), the kinako evidence tree, the kinako pass authorization; the crate publish (then the
+  gate-6 run with `MOCHIKO_GATE_VERSION=<tag>`, ≈155 sessions / $13–16, the bump commit + PATCH
+  v3.1.1 under `mochiko:validation-constitution`, kinako pass → upgrade → dogfood + D10 watch).
