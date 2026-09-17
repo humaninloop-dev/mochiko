@@ -99,14 +99,14 @@ fact-finding as the session needs)*
 - **D4 — Fixtures: minimal synthetic per-scenario repos, branch-forcing by design, in the
   skill-eval scaffolding.** `Confident` (user-ruled "ratify" on the refined shape).
   Carried over from `primitive-eval-harness` D1–D5 + `skill-compression-tooling` D8:
-  `skill-creator` golden format at `evals/commands/<cmd>/evals.json` (id · prompt ·
+  `skill-creator` golden format at `evals/plan/<cmd>/evals.json` (id · prompt ·
   assertions) · goldens authored by a seat that did not edit the command (author≠grader) ·
   3 replicates, pass^k · Haiku judge for coverage binaries, Sonnet for the pairwise read,
   both advisory · runner `claude -p --bare --plugin-dir` with cwd = the fixture dir (as
   amended below at C4: cwd is the assembled ephemeral workdir, not the committed scenario
   dir), `--max-turns` cap, JSON output · committed baseline results file regenerated only
   as a deliberate landing act. Command-specific refinements, ratified: **(1)** each scenario dir
-  `evals/commands/<cmd>/fixtures/<scenario>/` contains exactly the files the command's own
+  `evals/plan/<cmd>/fixtures/<scenario>/` contains exactly the files the command's own
   `.md` + schema declare as inputs — nothing else (smallness + the neutrality constraint;
   verify N5: this binds the committed scenario dir — the assembled run-time workdir is a
   distinct object and additionally carries the provisioned `plugins/mochiko`, per the C4
@@ -346,7 +346,7 @@ construction (D7).
 3. **Rule-partition scripts:** (a) two schema YAMLs in, four ID-keyed buckets out
    (unchanged / removed / added / changed-text, D6); (b) the D8 observable-vs-contingency
    partition, authored by the fixture seat, committed beside the rubric.
-4. **Pilot fixtures:** `evals/commands/implement/fixtures/<scenario>/` — 3 self-contained
+4. **Pilot fixtures:** `evals/plan/implement/fixtures/<scenario>/` — 3 self-contained
    scenario dirs (happy path + branch-forcers, e.g. two planted sufficiency gaps · zero-gap
    direct-to-cards) plus `evals.json` goldens; authored by a seat that did not edit the
    command (D4); provisioned into ephemeral workdirs at run time (D4 as amended).

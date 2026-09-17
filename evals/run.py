@@ -4,7 +4,9 @@
 Provenance: .mochiko/brainstorms/skill-compression-tooling/record.md (D8 as amended) and
 .mochiko/brainstorms/primitive-eval-harness-v2/record.md (D1 vocabulary, D12/C3 the re-keyed
 inventories). Maintainer-side advisory tooling (GI-019 trace recorded); never shipped (GI-020).
-Vocabulary shared with the command and persona targets: evals/README.md.
+Vocabulary shared with the command and persona targets: evals/README.md. Shared mechanics
+(session · provisioning · judge calls · band arithmetic) come from evals/lib/ (D10, second
+landing act); this file keeps the skill target's load gate, fixtures, invited read, and report.
 
 One run = one isolated `claude -p` session on the host's subscription auth, loading the
 provisioned plugin tree (`plugins/mochiko` at the working tree for `post`, a git-archived
@@ -29,7 +31,6 @@ invisible inside the sandbox, so every sandbox run would spend and then fail the
 
 import argparse
 import datetime
-import hashlib
 import json
 import os
 import pathlib
@@ -40,10 +41,13 @@ import sys
 import tempfile
 import uuid
 
-REPO = pathlib.Path(__file__).resolve().parent.parent
-EVALS = REPO / "evals"
+_EVALS_DIR = str(pathlib.Path(__file__).resolve().parent)
+if _EVALS_DIR not in sys.path:   # the `lib` package lives beside this file (D10 act 2)
+    sys.path.insert(0, _EVALS_DIR)
+from lib import EVALS, PLUGIN  # noqa: E402
+from lib import judge as J, provision as P, session as S, stats as ST  # noqa: E402
+
 WORK = EVALS / ".work"
-PLUGIN = REPO / "plugins" / "mochiko"
 PLUGIN_SKILLS = PLUGIN / "skills"
 
 SESSION_MODEL = "sonnet"    # model under test (R7)
@@ -60,13 +64,8 @@ LEGACY_ARMS = ["baseline", "armA", "armB"]   # readable in pre-convergence runs,
 MODE = "host"  # host | local
 
 
-def die(msg: str) -> None:
-    print(f"error: {msg}", file=sys.stderr)
-    sys.exit(1)
-
-
-def sha(text: str) -> str:
-    return hashlib.sha256(text.encode()).hexdigest()[:16]
+die = S.die
+sha = S.sha
 
 
 # ---------- provisioning ----------
@@ -80,19 +79,7 @@ def provision_plugin(dest: pathlib.Path, old_ref: str | None) -> pathlib.Path:
     `--post-ref worktree`: an untracked or half-written file there rides into every post
     session (2026-09-13: a malformed draft migration made every skill's rule render fail and
     invalidated two grids' post arms)."""
-    plug = dest / "mochiko"
-    ref = old_ref or POST_REF
-    if ref == "worktree":
-        shutil.copytree(PLUGIN, plug)
-    else:
-        plug.mkdir(parents=True)
-        ar = subprocess.run(["git", "-C", str(REPO), "archive", ref, "plugins/mochiko"],
-                            capture_output=True)
-        if ar.returncode != 0:
-            die(f"git archive {ref} failed: {ar.stderr.decode()[-500:]}")
-        subprocess.run(["tar", "-x", "--strip-components", "2", "-C", str(plug)],
-                       input=ar.stdout, check=True)
-    return plug
+    return P.provision_plugin(dest / "mochiko", old_ref or POST_REF)
 
 
 def fixture_dir(skill: str, golden: dict) -> pathlib.Path | None:
@@ -126,15 +113,14 @@ def rendered_rules(skill: str, plug: pathlib.Path) -> tuple:
 
 
 def pins(skill: str, plug: pathlib.Path | None, old_ref: str | None) -> dict:
-    cli = subprocess.run(["claude", "--version"], capture_output=True, text=True).stdout.strip()
+    cli = S.claude_version()
     mcli = subprocess.run(["mochiko-cli", "--version"], capture_output=True,
                           text=True).stdout.strip()
     out = {"skill": skill, "cli": cli, "mochiko_cli": mcli, "session_model": SESSION_MODEL,
            "permission_mode": PERMISSION_MODE, "judge_prompt_sha256": JUDGE_PROMPT_SHA,
            "old_ref": old_ref, "post_ref": None if old_ref else POST_REF}
     if plug is not None:
-        manifest = plug / ".claude-plugin" / "plugin.json"
-        out["plugin_version"] = json.loads(manifest.read_text()).get("version")
+        out["plugin_version"] = P.plugin_version(plug)
         body = plug / "skills" / skill / "SKILL.md"
         out["skill_sha256"] = sha(body.read_text()) if body.is_file() else None
         rendered, ok = rendered_rules(skill, plug)
@@ -149,57 +135,21 @@ def pins(skill: str, plug: pathlib.Path | None, old_ref: str | None) -> dict:
 def claude_args(prompt: str, model: str, max_turns: int, plugin: pathlib.Path | None,
                 stream: bool = True) -> list:
     # `acceptEdits` is the probe-settled permission mode (R5; `dontAsk` denied writes).
-    args = ["claude", "-p", prompt, "--model", model,
-            "--permission-mode", PERMISSION_MODE, "--max-turns", str(max_turns),
-            # Headless cannot answer a permission prompt: the Skill tool (probe 2026-09-11:
-            # `permission_denied` under acceptEdits) and the rule-delivery binary are
-            # pre-allowed; everything else stays on acceptEdits' own rules.
-            "--allowedTools", ALLOWED_TOOLS,
-            # No user/project config: the host carries a user-level mochiko install that
-            # would otherwise load beside the provisioned tree. Stored auth survives this.
-            "--setting-sources", "",
-            "--output-format", "stream-json" if stream else "json"]
-    if stream:
-        args += ["--verbose"]
-    if MODE == "local":
-        args.insert(1, "--bare")  # hermetic, needs ANTHROPIC_API_KEY
-    if plugin is not None:
-        # The plugin tree sits beside the workspace; without --add-dir every Read of a
-        # skill's references/ is auto-denied in headless mode (RPA/VC baselines 2026-09-13:
-        # two post sessions stopped on it, others read through python). The seat may read
-        # its own skill's references as it would in a real session.
-        args += ["--plugin-dir", str(plugin), "--add-dir", str(plugin)]
-    return args
+    # Headless cannot answer a permission prompt: the Skill tool (probe 2026-09-11:
+    # `permission_denied` under acceptEdits) and the rule-delivery binary are pre-allowed;
+    # everything else stays on acceptEdits' own rules. The plugin tree sits beside the
+    # workspace; without --add-dir every Read of a skill's references/ is auto-denied in
+    # headless mode (RPA/VC baselines 2026-09-13: two post sessions stopped on it, others
+    # read through python) — the seat may read its own skill's references as it would in a
+    # real session. `--setting-sources ""` (no user/project config beside the provisioned
+    # tree) and `--bare` (--local) ride in lib.session.
+    return S.claude_argv(prompt, model=model, max_turns=max_turns,
+                         output="stream-json" if stream else "json",
+                         plugin_dir=plugin, add_plugin_dir=True,
+                         permission_mode=PERMISSION_MODE, allowed_tools=ALLOWED_TOOLS)
 
 
-def parse_stream(stdout: str) -> dict:
-    init = result = None
-    tool_calls, skills_fired, models = [], [], set()
-    for line in stdout.splitlines():
-        line = line.strip()
-        if not line:
-            continue
-        try:
-            ev = json.loads(line)
-        except json.JSONDecodeError:
-            continue
-        if ev.get("parent_tool_use_id"):
-            continue  # a subagent's events (an Explore read) never speak for the session
-        if ev.get("type") == "system" and ev.get("subtype") == "init":
-            init = ev
-        elif ev.get("type") == "assistant":
-            msg = ev.get("message") or {}
-            if isinstance(msg, dict) and msg.get("model"):
-                models.add(msg["model"])
-            for b in (msg.get("content") or []):
-                if isinstance(b, dict) and b.get("type") == "tool_use":
-                    tool_calls.append(b.get("name"))
-                    if b.get("name") == "Skill":
-                        skills_fired.append(str((b.get("input") or {}).get("skill", "")))
-        elif ev.get("type") == "result":
-            result = ev
-    return {"init": init, "result": result, "tool_calls": tool_calls,
-            "skills_fired": skills_fired, "models": sorted(models)}
+parse_stream = S.parse_stream   # subagent events skipped; models, tool calls, skills fired
 
 
 def run_session(prompt: str, *, model: str, plugin: pathlib.Path | None,
@@ -211,8 +161,7 @@ def run_session(prompt: str, *, model: str, plugin: pathlib.Path | None,
         ws.mkdir()
         if fixture is not None:
             shutil.copytree(fixture, ws, dirs_exist_ok=True)
-        proc = subprocess.run(claude_args(prompt, model, max_turns, plugin),
-                              cwd=ws, capture_output=True, text=True, timeout=3600)
+        proc = S.run_claude(claude_args(prompt, model, max_turns, plugin), cwd=ws, timeout=3600)
         if proc.returncode != 0 and not proc.stdout.strip():
             die(f"claude spawn failed (exit {proc.returncode}): {proc.stderr[-2000:]}")
         out = parse_stream(proc.stdout)
@@ -225,15 +174,7 @@ def run_session(prompt: str, *, model: str, plugin: pathlib.Path | None,
         return out
 
 
-def extract_json(text: str):
-    """Lenient JSON extraction from judge output."""
-    m = re.search(r"\{.*\}|\[.*\]", text, re.DOTALL)
-    if not m:
-        return None
-    try:
-        return json.loads(m.group(0))
-    except json.JSONDecodeError:
-        return None
+extract_json = J.extract_json
 
 
 def changed_fixture_files(workspace: pathlib.Path, fixture: pathlib.Path | None) -> list:
@@ -280,7 +221,7 @@ def run_assertions(assertions: list, workspace: pathlib.Path,
 
 # ---------- judges ----------
 
-JUDGE_CHUNK = 15  # rules per judge call — an 82-entry single-shot array was ~9% unparseable
+JUDGE_CHUNK = J.JUDGE_CHUNK  # rules per judge call — an 82-entry single-shot array was ~9% unparseable
 
 
 def judge_prompt(chunk: list, artifact_text: str, expected_output: str = "") -> str:
@@ -302,42 +243,26 @@ JUDGE_PROMPT_SHA = sha(judge_prompt([], ""))
 
 
 def judge_checklist(rules: list, artifact_text: str, expected_output: str = "") -> list:
-    """One binary per rule, quoted evidence. Advisory. Chunked + one retry per chunk."""
-    out = []
-    for i in range(0, len(rules), JUDGE_CHUNK):
-        chunk = [{k: r[k] for k in ("id", "rule", "class") if k in r} for r in rules[i:i + JUDGE_CHUNK]]
-        prompt = judge_prompt(chunk, artifact_text, expected_output)
-        byid = {}
-        for _ in range(3):  # two retries on parse failure / missing ids (VC baseline: one
-            # chunk failed twice and its MISSING read as seven floors lost)
-            res = run_session(prompt, model=CHECKLIST_MODEL, plugin=None, max_turns=1)
-            verdicts = extract_json((res["result"] or {}).get("result", "") or "")
-            if isinstance(verdicts, list):
-                for v in verdicts:
-                    if isinstance(v, dict) and v.get("id") and v.get("passed") is not None:
-                        byid.setdefault(v["id"], v)
-            if all(r["id"] in byid for r in chunk):
-                break
-        out += [byid.get(r["id"], {"id": r["id"], "passed": None, "evidence": "MISSING"})
-                for r in chunk]
-    return out
+    """One binary per rule, quoted evidence. Advisory. Chunked; each chunk asked up to three
+    times — two retries on parse failure / missing ids (VC baseline: one chunk failed twice
+    and its MISSING read as seven floors lost). The judge is a tool-less one-turn session
+    (lib.judge), bare under --local."""
+    items = [{k: r[k] for k in ("id", "rule", "class") if k in r} for r in rules]
+    return J.judge_chunked(items, lambda chunk: judge_prompt(chunk, artifact_text, expected_output),
+                           CHECKLIST_MODEL, key="passed", attempts=3, chunk_size=JUDGE_CHUNK)
+
+
+def pairwise_prompt(first: str, second: str) -> str:
+    return (
+        "Two artifacts answer the same task. Which is better overall? Reply ONLY JSON "
+        "{\"winner\": \"1\"|\"2\"|\"tie\", \"reason\": \"<one sentence>\"}.\n\n"
+        "ARTIFACT 1:\n" + first[:60_000] + "\n\nARTIFACT 2:\n" + second[:60_000]
+    )
 
 
 def judge_pairwise(golden_id: str, text_a: str, text_b: str) -> dict:
-    """Blind A/B with position swap. Advisory, opt-in."""
-    def ask(first, second):
-        prompt = (
-            "Two artifacts answer the same task. Which is better overall? Reply ONLY JSON "
-            "{\"winner\": \"1\"|\"2\"|\"tie\", \"reason\": \"<one sentence>\"}.\n\n"
-            "ARTIFACT 1:\n" + first[:60_000] + "\n\nARTIFACT 2:\n" + second[:60_000]
-        )
-        res = run_session(prompt, model=PAIRWISE_MODEL, plugin=None, max_turns=1)
-        return extract_json((res["result"] or {}).get("result", "") or "") or {}
-    v1 = ask(text_a, text_b)
-    v2 = ask(text_b, text_a)  # position swap
-    w1, w2 = v1.get("winner"), v2.get("winner")
-    agree = (w1 == "1" and w2 == "2") or (w1 == "2" and w2 == "1") or (w1 == w2 == "tie")
-    return {"golden": golden_id, "first_order": v1, "swapped": v2, "position_consistent": agree}
+    """Blind A/B with position swap (lib.judge mechanics; this target's prompt). Advisory, opt-in."""
+    return {"golden": golden_id, **J.judge_pairwise(text_a, text_b, PAIRWISE_MODEL, pairwise_prompt)}
 
 
 def collect_artifact(workspace: pathlib.Path, fixture: pathlib.Path | None) -> str:
@@ -377,7 +302,7 @@ def skill_session(skill: str, golden: dict, arm: str, old_ref: str | None,
                           fixture=fixture, want_workspace=True)
     init, result, ws = out["init"], out["result"], out.get("workspace")
     text = (result or {}).get("result") or ""
-    loaded = [(p.get("name"), p.get("version")) for p in (init or {}).get("plugins", [])]
+    loaded = S.loaded_plugins(init)
     artifact = collect_artifact(ws, fixture) if ws else "(no workspace)"
     fired = any(skill in s for s in out["skills_fired"])
     not_delivered = "rules not delivered" in (text + artifact)
@@ -396,13 +321,13 @@ def skill_session(skill: str, golden: dict, arm: str, old_ref: str | None,
                                                   for m in out["models"]),
         "models": out["models"],
         "cap_hit": (result or {}).get("num_turns") == MAX_TURNS,
-        "auth_failure": "Not logged in" in text,
+        "auth_failure": S.auth_failed(text),
         "no_result": result is None,
         "is_error": bool((result or {}).get("is_error")),
     }
     if asserts["auth_failure"]:
         die("claude -p reports 'Not logged in' — run /login, then re-run")
-    if "session limit" in text.lower() or (out["models"] and all(m == "<synthetic>" for m in out["models"])):
+    if S.session_limit_hit(text, out["models"]):
         # A session-limit hit answers every session with a synthetic error; burning through
         # the grid would store nothing valid. Halt; the grid resumes on the same --out.
         die(f"session limit hit ({text.strip()[:120]!r}) — resume the grid after the reset")
@@ -696,9 +621,9 @@ def render_report(skill, stamp, s) -> str:
         line = (f"- **{arm}** — live rules held (pass^k): {cov}/{s.get('live_total', s['rules_total'])}"
                 f" · floors held {fh if fh is not None else '?'}/{s.get('floor_total', 0)}")
         if fl.get("pairs"):
-            share = 100.0 * fl["flaky"] / fl["pairs"]
-            under = fl["pairs"] < 8   # ADR 2026-09-09 clause 3: the band is the cap
-            band = 20.0 if under else min(share + 5, 20)
+            share, band, under = ST.band(fl["flaky"], fl["pairs"])
+            if under:                 # ADR 2026-09-09 clause 3: the band is the cap
+                band = ST.BAND_CAP
             line += (f" · flaky {fl['flaky']}/{fl['pairs']} invited pairs = {share:.1f} % → band "
                      f"{band:.1f} % (all pairs {al.get('flaky')}/{al.get('pairs')})"
                      + (" UNDER-SAMPLED (< 8 invited pairs)" if under else ""))
@@ -771,6 +696,7 @@ def main() -> None:
                            help="halt the grid when session spend passes this (resumable)")
     args = ap.parse_args()
     MODE = "local" if args.local else "host"
+    S.BARE = MODE == "local"   # `--bare` on every session and judge call
     global POST_REF
     POST_REF = args.post_ref
     WORK.mkdir(exist_ok=True)

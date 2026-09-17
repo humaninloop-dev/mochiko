@@ -425,7 +425,7 @@ Three unaddressed problems.
 not establish them; a failing run may be noise. The record sets no N and no threshold, so "green"
 is undefined for the gate that carries the user's entire "the plugin doesn't fail" requirement.
 
-*Noise precedent.* D8 leans on `evals/commands` as proven substrate. That work's own recorded finding
+*Noise precedent.* D8 leans on `evals/plan` as proven substrate. That work's own recorded finding
 in `DECISIONS.md` is "24 plans — **noise-dominated per its own prereg guard, no stable regression
 attributable**", and the near-dup wave repeats "noise falsifier re-confirmed instrument-side". The
 record cites the substrate's invocability and ignores its measured discriminating power.

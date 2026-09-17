@@ -144,7 +144,7 @@ misses are repaired in place below.)*
   coverage, `extends:` resolution with local-`class:` assert — are all deterministic. GI-019
   places advisory exit-code scripts outside kernel-class (waiver GI-008, revisit trigger "a
   script becomes load-bearing in a shipped flow"). Eval harnesses: `evals/run.py` (skill
-  compression, judged) and `evals/commands/run.py` (plan-only command eval, implement pilot,
+  compression, judged) and `evals/plan/run.py` (plan-only command eval, implement pilot,
   brainstorm probe done; its own recorded finding: "24 plans — noise-dominated per its own
   prereg guard").
 - **F6 — Change management today is procedural.** 99 strip files under `.mochiko/strips/`
@@ -605,7 +605,7 @@ the three schemas that carry them) through the genesis migration and replay — 
 fixture kept after the YAML sources retire. **Plugin contract** (the new class): a headless
 `claude -p` run per command and per converted skill, the plugin installed fresh from the
 marketplace (never the repo checkout), the binary from `cargo install --path`, under the
-plan-only fence `evals/commands` already proved — **deterministic asserts, gating at N=1:**
+plan-only fence `evals/plan` already proved — **deterministic asserts, gating at N=1:**
 the `!` line executed · the version-triple line present · **no schema file Read anywhere**
 (scoped **per converted primitive** through waves 3–5 — a converted command invoking an
 unconverted skill legitimately reads that skill's file — and run-wide from wave 6);

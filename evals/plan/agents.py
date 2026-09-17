@@ -29,6 +29,11 @@ the `model_native` / `untempted` marks. Arms: `pre` and `post`, persona alone (D
 `--plugin-dir`, so it also lacks the plugin's SessionStart hook line that `pre`/`post`
 carry; the hook is identical at both refs, so D6's one-variable difference holds and the
 control differs from the arms in the persona and that one harness line, disclosed here.
+
+Shared mechanics (session · provisioning · judge calls · grid math · band arithmetic) come
+from evals/lib/ (D10, second landing act); the plan target's pins (turn cap, judge models)
+from plan/run.py. This file keeps the persona target's rubric mint and checks, seating,
+read-trace, embodiment prompt, prune, calibration, and report.
 """
 
 import datetime
@@ -42,11 +47,14 @@ import subprocess
 import sys
 import tempfile
 
-import run as cmdrun  # the plan-only runner: shared session/judge/report mechanics
+_EVALS_DIR = str(pathlib.Path(__file__).resolve().parent.parent)
+if _EVALS_DIR not in sys.path:   # `lib` and this `plan` package live under evals/
+    sys.path.insert(0, _EVALS_DIR)
+from lib import EVALS, PLUGIN, REPO  # noqa: E402
+from lib import judge as J, provision as P, session as S, stats as ST  # noqa: E402
+from plan import run as cmdrun  # noqa: E402 — the plan-only runner: this target's pins
 
-REPO = cmdrun.REPO
-PLUGIN = cmdrun.PLUGIN
-AGENT_EVALS = REPO / "evals" / "agents"
+AGENT_EVALS = EVALS / "agents"
 WRAPPER = AGENT_EVALS / "wrapper.md"
 
 ARM_MODEL = "opus"                # R5: explicit on every arm, control included
@@ -69,7 +77,7 @@ CLAIM_SECTIONS = {"Quality Standards", "What You Reject", "What You Embrace",
 EXCLUDED_SECTIONS = {"Core Identity", "What You Produce", "Skills Available",
                      "Skills you lean on"}
 
-die = cmdrun.die
+die = S.die
 
 
 # ---------- persona body -> units ----------
@@ -377,8 +385,7 @@ def wrapper_text() -> str:
 
 def pins(persona: str, plugin_dir: pathlib.Path | None, old_ref: str | None) -> dict:
     body = persona_text(persona, old_ref)
-    cli = subprocess.run(["claude", "--version"], capture_output=True,
-                         text=True).stdout.strip()
+    cli = S.claude_version()
     out = {"persona": persona, "persona_sha256": hashlib.sha256(body.encode()).hexdigest()[:16],
            "cli": cli, "arm_model": ARM_MODEL, "tools": TOOLS,
            "permission_mode": PERMISSION_MODE,
@@ -386,34 +393,18 @@ def pins(persona: str, plugin_dir: pathlib.Path | None, old_ref: str | None) -> 
            "readings_sha256": readings_sha(persona),
            "wrapper_sha256": hashlib.sha256(wrapper_text().encode()).hexdigest()[:16]}
     if plugin_dir is not None:
-        manifest = plugin_dir / ".claude-plugin" / "plugin.json"
-        out["plugin_version"] = json.loads(manifest.read_text()).get("version")
+        out["plugin_version"] = P.plugin_version(plugin_dir)
     return out
 
 
 def parse_stream(stdout: str) -> dict:
-    """The command runner's parser plus the read-trace (paths) and the models seen."""
-    base = cmdrun.parse_stream(stdout)
-    reads, models = [], set()
-    for line in stdout.splitlines():
-        try:
-            ev = json.loads(line.strip())
-        except (json.JSONDecodeError, AttributeError):
-            continue
-        if ev.get("type") != "assistant":
-            continue
-        msg = ev.get("message") or {}
-        if isinstance(msg, dict) and msg.get("model"):
-            models.add(msg["model"])
-        for b in msg.get("content") or []:
-            if isinstance(b, dict) and b.get("type") == "tool_use":
-                inp = b.get("input") or {}
-                reads.append({"tool": b.get("name"),
-                              "target": inp.get("file_path") or inp.get("pattern")
-                              or inp.get("path"),
-                              "path": inp.get("path")})   # Glob/Grep search root
-    base["reads"] = reads
-    base["models"] = sorted(models)
+    """The shared parser plus the read-trace: every tool_use with its target (Read's file,
+    Grep/Glob's pattern) and search root."""
+    base = S.parse_stream(stdout)
+    base["reads"] = [{"tool": name,
+                      "target": inp.get("file_path") or inp.get("pattern") or inp.get("path"),
+                      "path": inp.get("path")}   # Glob/Grep search root
+                     for name, inp in base["tool_inputs"]]
     return base
 
 
@@ -432,18 +423,7 @@ def inside(target: str, root: pathlib.Path) -> bool:
 
 def provision_plugin(dest: pathlib.Path, old_ref: str | None) -> pathlib.Path:
     """plugins/mochiko at the working tree or a git-archived old ref, at `dest/mochiko`."""
-    plug = dest / "mochiko"
-    if old_ref is None:
-        shutil.copytree(PLUGIN, plug)
-    else:
-        plug.mkdir(parents=True)
-        ar = subprocess.run(["git", "-C", str(REPO), "archive", old_ref, "plugins/mochiko"],
-                            capture_output=True)
-        if ar.returncode != 0:
-            die(f"git archive {old_ref} failed: {ar.stderr.decode()[-500:]}")
-        subprocess.run(["tar", "-x", "--strip-components", "2", "-C", str(plug)],
-                       input=ar.stdout, check=True)
-    return plug
+    return P.provision_plugin(dest / "mochiko", old_ref or P.WORKTREE)
 
 
 def plan_session(persona: str, golden: dict, arm: str, old_ref: str | None) -> dict:
@@ -463,24 +443,18 @@ def plan_session(persona: str, golden: dict, arm: str, old_ref: str | None) -> d
             plug = provision_plugin(pathlib.Path(td) / "plugin",
                                     old_ref if arm == "pre" else None)
         run_pins = pins(persona, plug, old_ref if arm == "pre" else None)
-        argv = ["claude", "-p", golden["card"]]
-        if plug is not None:
-            argv += ["--agent", f"mochiko:{persona}", "--plugin-dir", str(plug)]
-        argv += ["--setting-sources", "",
-                 "--tools", TOOLS,
-                 "--permission-mode", PERMISSION_MODE,
-                 "--max-turns", str(MAX_TURNS),
-                 "--model", ARM_MODEL,
-                 "--output-format", "stream-json", "--verbose",
-                 "--append-system-prompt", wrapper_text()]
-        proc = subprocess.run(argv, cwd=wd, capture_output=True, text=True, timeout=1800)
+        argv = S.claude_argv(golden["card"], model=ARM_MODEL, max_turns=MAX_TURNS,
+                             agent=f"mochiko:{persona}" if plug is not None else None,
+                             plugin_dir=plug, tools=TOOLS, permission_mode=PERMISSION_MODE,
+                             append_system_prompt=wrapper_text())
+        proc = S.run_claude(argv, cwd=wd, timeout=1800)
         out = parse_stream(proc.stdout)
         init, result = out["init"], out["result"]
         if result is None:
             die(f"no result event (exit {proc.returncode}): {proc.stderr[-800:]}")
         plan = result.get("result") or ""
         agents = (init or {}).get("agents") or []
-        loaded = [(p.get("name"), p.get("version")) for p in (init or {}).get("plugins", [])]
+        loaded = S.loaded_plugins(init)
         load_ok = (arm == "nopersona") or (
             f"mochiko:{persona}" in agents
             and ("mochiko", run_pins.get("plugin_version")) in loaded)
@@ -493,7 +467,7 @@ def plan_session(persona: str, golden: dict, arm: str, old_ref: str | None) -> d
             "model_ok": all(m.startswith(f"claude-{ARM_MODEL}") for m in out["models"]) and bool(out["models"]),
             "models": out["models"],
             "cap_hit": result.get("num_turns") == MAX_TURNS,
-            "auth_failure": "Not logged in" in plan,
+            "auth_failure": S.auth_failed(plan),
             "files_read_line": bool(re.search(r"^FILES-READ:", plan, re.M)),
             # D6 watch: any Read whose absolute target lies outside the workspace — the
             # persona reaching for its plugin/skill files, or anything else off-fixture.
@@ -542,38 +516,25 @@ JUDGE_COST = {"usd": 0.0, "calls": 0}   # accumulated per process; written into 
 
 
 def judge_session_costed(prompt: str, model: str) -> str:
-    """The command runner's judge call, with the session's own `total_cost_usd` kept
+    """The shared judge call with the session's own `total_cost_usd` kept in JUDGE_COST
     (validator fix 4: the pre-registration's spend bound must be measurable)."""
-    with tempfile.TemporaryDirectory(prefix="agentjudge-") as td:
-        proc = subprocess.run(
-            ["claude", "-p", prompt, "--model", model, "--max-turns", "1",
-             "--setting-sources", "", "--output-format", "json"],
-            cwd=td, capture_output=True, text=True, timeout=600)
-        try:
-            doc = json.loads(proc.stdout)
-        except json.JSONDecodeError:
-            return ""
-        JUDGE_COST["usd"] += doc.get("total_cost_usd") or 0.0
-        JUDGE_COST["calls"] += 1
-        return doc.get("result", "") or ""
+    return J.judge_session(prompt, model, cost=JUDGE_COST)
+
+
+def pairwise_prompt(first: str, second: str) -> str:
+    return ("Two action plans answer the same card for the same workspace. Which is the "
+            "better plan overall — more faithful to the task, more concretely actionable? "
+            "Reply ONLY JSON {\"winner\": \"1\"|\"2\"|\"tie\", \"reason\": "
+            "\"<one sentence>\"}.\n\nPLAN 1:\n" + first[:60_000]
+            + "\n\nPLAN 2:\n" + second[:60_000])
 
 
 def judge_pairwise(text_a: str, text_b: str, model: str = cmdrun.PAIRWISE_MODEL) -> dict:
-    """Blind A/B with position swap — the command runner's mechanics, cost-accounted and
-    with the persona-target wording ("the same card for the same workspace"). A deliberate
-    fork of `run.judge_pairwise`: two prompts to keep in step until the shared core lands
-    (v2 D10, promotion step 2)."""
-    def ask(first, second):
-        prompt = ("Two action plans answer the same card for the same workspace. Which is the "
-                  "better plan overall — more faithful to the task, more concretely actionable? "
-                  "Reply ONLY JSON {\"winner\": \"1\"|\"2\"|\"tie\", \"reason\": "
-                  "\"<one sentence>\"}.\n\nPLAN 1:\n" + first[:60_000]
-                  + "\n\nPLAN 2:\n" + second[:60_000])
-        return cmdrun.extract_json(judge_session_costed(prompt, model)) or {}
-    v1, v2 = ask(text_a, text_b), ask(text_b, text_a)
-    w1, w2 = v1.get("winner"), v2.get("winner")
-    agree = (w1 == "1" and w2 == "2") or (w1 == "2" and w2 == "1") or (w1 == w2 == "tie")
-    return {"first_order": v1, "swapped": v2, "position_consistent": agree}
+    """Blind A/B with position swap — lib.judge mechanics, cost-accounted, with the
+    persona-target wording ("the same card for the same workspace"). The fork the v2 D10
+    record named (two copies of the mechanics to keep in step until the shared core landed)
+    closed with lib.judge; only the prompt is this target's."""
+    return J.judge_pairwise(text_a, text_b, model, pairwise_prompt, cost=JUDGE_COST)
 
 
 def readings_text(persona: str) -> str:
@@ -637,22 +598,10 @@ JUDGE_PROMPT_SHA = hashlib.sha256(judge_prompt([], "").encode()).hexdigest()[:16
 
 def judge_coverage(items: list, plan: str, model: str = cmdrun.CHECKLIST_MODEL,
                    readings: str = "") -> list:
-    out = []
-    for i in range(0, len(items), cmdrun.JUDGE_CHUNK):
-        chunk = items[i:i + cmdrun.JUDGE_CHUNK]
-        prompt = judge_prompt(chunk, plan, readings)
-        byid = {}
-        for _ in range(2):
-            verdicts = cmdrun.extract_json(judge_session_costed(prompt, model))
-            if isinstance(verdicts, list):
-                for v in verdicts:
-                    if isinstance(v, dict) and v.get("id") and v.get("verdict"):
-                        byid.setdefault(v["id"], v)
-            if all(r["id"] in byid for r in chunk):
-                break
-        out += [byid.get(r["id"], {"id": r["id"], "verdict": None, "evidence": "MISSING"})
-                for r in chunk]
-    return out
+    """One verdict per graded claim — chunked, one retry per chunk, cost-accounted."""
+    return J.judge_chunked(items, lambda chunk: judge_prompt(chunk, plan, readings), model,
+                           key="verdict", attempts=2, accept=lambda v: bool(v.get("verdict")),
+                           chunk_size=cmdrun.JUDGE_CHUNK, cost=JUDGE_COST)
 
 
 # ---------- commands ----------
@@ -864,29 +813,29 @@ def cmd_report(persona: str, name: str) -> None:
         post = [e for e in meta["runs"] if e["golden"] == g and e["arm"] == "post"]
         both = bool(pre) and bool(post)      # a single-arm run (the probe) reads no diff
         regressions, adoptions, ghosts, flaky_ids = [], [], [], []
-        flaky_pre = [rid for rid in graded if cmdrun.flaky(pre, rid)]
-        flaky_post = [rid for rid in graded if cmdrun.flaky(post, rid)]
+        flaky_pre = [rid for rid in graded if ST.flaky(pre, rid)]
+        flaky_post = [rid for rid in graded if ST.flaky(post, rid)]
         for rid in graded:
-            if cmdrun.flaky(post, rid) or cmdrun.flaky(pre, rid):
+            if ST.flaky(post, rid) or ST.flaky(pre, rid):
                 flaky_ids.append(rid)
-            if both and snap[rid]["tag"] == "common" and cmdrun.passk(pre, rid) \
-                    and not cmdrun.passk(post, rid):
+            if both and snap[rid]["tag"] == "common" and ST.passk(pre, rid) \
+                    and not ST.passk(post, rid):
                 regressions.append(rid)
             if both and snap[rid]["tag"] == "added":
-                adoptions.append((rid, cmdrun.passk(pre, rid), cmdrun.passk(post, rid)))
+                adoptions.append((rid, ST.passk(pre, rid), ST.passk(post, rid)))
         removed_read = []
         for rid in removed:
             judged = any(v["id"] == rid for e in post for v in e.get("coverage", []))
             if not judged or not both:
                 continue
-            a, b = cmdrun.passk(pre, rid), cmdrun.passk(post, rid)
+            a, b = ST.passk(pre, rid), ST.passk(post, rid)
             removed_read.append((rid, a, b))
             if b:
                 ghosts.append(rid)
         for arm_name, arm_runs in (("pre", pre), ("post", post)):
             if arm_runs:
                 lines.append(f"- {arm_name} coverage (pass^k): "
-                             f"{sum(1 for r in graded if cmdrun.passk(arm_runs, r))}/{len(graded)}")
+                             f"{sum(1 for r in graded if ST.passk(arm_runs, r))}/{len(graded)}")
         if both:
             lines.append(f"- **common-claim regressions:** {regressions or 'none'}")
         else:
@@ -920,9 +869,9 @@ def cmd_report(persona: str, name: str) -> None:
                     return f"{r}=not-read"
                 parts = []
                 if pre:
-                    parts.append(f"pre{'✓' if cmdrun.passk(pre, r) else '✗'}")
+                    parts.append(f"pre{'✓' if ST.passk(pre, r) else '✗'}")
                 if post:
-                    parts.append(f"post{'✓' if cmdrun.passk(post, r) else '✗'}")
+                    parts.append(f"post{'✓' if ST.passk(post, r) else '✗'}")
                 return f"{r}={'/'.join(parts)}"
             lines.append("- tempted claims (this golden's expectations): "
                          + ", ".join(mark(r) for r in tempted))
@@ -932,7 +881,7 @@ def cmd_report(persona: str, name: str) -> None:
                 for r, a, b in removed_read))
         if ghosts:
             lines.append(f"- **removed claims still surfacing:** {ghosts}")
-        unjudged = [r for r in graded if cmdrun.missing(pre + post, r)]
+        unjudged = [r for r in graded if ST.missing(pre + post, r)]
         if unjudged:
             lines.append(f"- MISSING judge verdicts (unjudged pairs, excluded): {len(unjudged)} {unjudged}")
         lines.append(f"- flaky claims (replicate disagreement — noise-guard input): {len(flaky_ids)}"
@@ -942,7 +891,7 @@ def cmd_report(persona: str, name: str) -> None:
         # judged and still feed coverage, but a claim read against a task that never invites
         # it is a control read, not a noise measurement — it inflates the band with near-misses
         # (tech-lead t2) or dilutes it with trivial absents (staff-engineer pilot 1).
-        invited = [r for r in graded if r in g_tempts and not cmdrun.missing(pre + post, r)]
+        invited = [r for r in graded if r in g_tempts and not ST.missing(pre + post, r)]
         for a, f, runs_ in (("pre", flaky_pre, pre), ("post", flaky_post, post)):
             if runs_:
                 band_counts.setdefault(a, [0, 0, 0, 0])
@@ -974,10 +923,10 @@ def cmd_report(persona: str, name: str) -> None:
     if band_counts:
         lines.append("## Band input — all goldens (invited pairs only; ADR 2026-09-09 persona-band-invited-only)")
         for a, (fi, ni, fa, na) in sorted(band_counts.items()):
-            share = 100 * fi / ni if ni else 0.0
-            lines.append(f"- {a}: flaky {fi}/{ni} invited pairs = {share:.1f} % → band {min(share + 5, 20):.1f} % "
+            share, band, under = ST.band(fi, ni)
+            lines.append(f"- {a}: flaky {fi}/{ni} invited pairs = {share:.1f} % → band {band:.1f} % "
                          f"(+5, capped 20)  · all graded claims: {fa}/{na}"
-                         + ("  · UNDER-SAMPLED (< 8 invited pairs)" if ni < 8 else ""))
+                         + ("  · UNDER-SAMPLED (< 8 invited pairs)" if under else ""))
         lines.append("")
     for p in meta.get("pairwise", []):
         lines.append(f"- pairwise {p['golden']}/r{p['replicate']}: "

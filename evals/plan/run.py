@@ -5,7 +5,7 @@
 """Command plan-only eval runner.
 
 Provenance: .mochiko/brainstorms/command-plan-only-eval/record.md (D1-D11, accepted
-2026-08-27) with the brainstorm-probe amendments (evals/commands/brainstorm-probe/).
+2026-08-27) with the brainstorm-probe amendments (evals/plan/brainstorm-probe/).
 Maintainer-side advisory tooling (GI-019 trace via the harness session); never shipped
 (GI-020). Sibling of the skill runner evals/run.py; judge patterns adapted from it.
 
@@ -25,9 +25,11 @@ warning.
 
 Vocabulary shared across the eval targets (skills · commands · agents): evals/README.md
 (primitive-eval-harness-v2 D1/D10). The persona target lives in agents.py beside this file
-and is reached through the `agent-*` subcommands below.
+and is reached through the `agent-*` subcommands below. Shared mechanics (session ·
+provisioning · judge calls · grid math) come from evals/lib/ (D10, second landing act); this
+file keeps the command target's rubric, load gate, prompts, and report.
 
-Usage (run via `uv run evals/commands/run.py ...`):
+Usage (run via `uv run evals/plan/run.py ...`):
   partition <cmd> --old-ref <git-ref>       four ID-keyed rubric buckets (D6)
   check-rubric <cmd>                        observable.yaml covers the schema exactly (D8)
   check-fixtures <cmd>                      every path a fixture references exists
@@ -57,29 +59,32 @@ import subprocess
 import sys
 import tempfile
 
+_EVALS_DIR = str(pathlib.Path(__file__).resolve().parent.parent)
+if _EVALS_DIR not in sys.path:   # `lib` and this `plan` package live under evals/
+    sys.path.insert(0, _EVALS_DIR)
+from lib import EVALS, PLUGIN, REPO  # noqa: E402
+from lib import judge as J, provision as P, session as S  # noqa: E402
+from lib.stats import flaky, passk  # noqa: E402 — the report's grid math (agents.py adds missing)
+
 try:
     import yaml
 except ImportError:
-    print("error: PyYAML unavailable — run via `uv run evals/commands/run.py ...`",
+    print("error: PyYAML unavailable — run via `uv run evals/plan/run.py ...`",
           file=sys.stderr)
     sys.exit(2)
 
-REPO = pathlib.Path(__file__).resolve().parent.parent.parent
-CMD_EVALS = REPO / "evals" / "commands"
-PLUGIN = REPO / "plugins" / "mochiko"
+CMD_EVALS = EVALS / "plan"
 WRAPPER = CMD_EVALS / "wrapper.md"
 
 SESSION_MODEL = "sonnet"    # session under test (skill-harness R7 carried over)
 CHECKLIST_MODEL = "haiku"   # coverage + stub judge
 PAIRWISE_MODEL = "sonnet"   # pairwise judge
 MAX_TURNS = 40              # probe finding 10: 25 hit the cap; headroom + warning
-JUDGE_CHUNK = 15            # skill-harness staged-001 finding: big arrays misparse
+JUDGE_CHUNK = J.JUDGE_CHUNK # lib.judge; skill-harness staged-001 finding: big arrays misparse
 ARMS = ["pre", "post", "nocmd"]
 
 
-def die(msg: str) -> None:
-    print(f"error: {msg}", file=sys.stderr)
-    sys.exit(1)
+die = S.die
 
 
 # ---------- schema access ----------
@@ -234,18 +239,7 @@ def provision_workdir(dest: pathlib.Path, fixture: pathlib.Path,
     """Fixture files + a provisioned plugins/mochiko tree (working tree, or a
     git-archived old ref for the pre arm). D4 as amended (C4)."""
     shutil.copytree(fixture, dest, dirs_exist_ok=True)
-    plug = dest / "plugins" / "mochiko"
-    if old_ref is None:
-        shutil.copytree(PLUGIN, plug)
-    else:
-        plug.mkdir(parents=True)
-        ar = subprocess.run(["git", "-C", str(REPO), "archive", old_ref,
-                             "plugins/mochiko"], capture_output=True)
-        if ar.returncode != 0:
-            die(f"git archive {old_ref} failed: {ar.stderr.decode()[-500:]}")
-        subprocess.run(["tar", "-x", "--strip-components", "2", "-C", str(plug)],
-                       input=ar.stdout, check=True)
-    return plug
+    return P.provision_plugin(dest / "plugins" / "mochiko", old_ref or P.WORKTREE)
 
 
 def wrapper_text() -> str:
@@ -256,36 +250,12 @@ def wrapper_text() -> str:
 
 def pins(plugin_dir: pathlib.Path) -> dict:
     """C3: versions pinned into every run's meta and the baseline."""
-    manifest = plugin_dir / ".claude-plugin" / "plugin.json"
-    if not manifest.is_file():
-        manifest = plugin_dir / "plugin.json"
-    ver = json.loads(manifest.read_text()).get("version")
-    cli = subprocess.run(["claude", "--version"], capture_output=True,
-                         text=True).stdout.strip()
-    return {"plugin_version": ver, "cli": cli, "session_model": SESSION_MODEL,
+    return {"plugin_version": P.plugin_version(plugin_dir), "cli": S.claude_version(),
+            "session_model": SESSION_MODEL,
             "wrapper_sha256": hashlib.sha256(wrapper_text().encode()).hexdigest()[:16]}
 
 
-def parse_stream(stdout: str) -> dict:
-    init = result = None
-    tool_calls = []
-    for line in stdout.splitlines():
-        line = line.strip()
-        if not line:
-            continue
-        try:
-            ev = json.loads(line)
-        except json.JSONDecodeError:
-            continue
-        if ev.get("type") == "system" and ev.get("subtype") == "init":
-            init = ev
-        elif ev.get("type") == "assistant":
-            for b in ev.get("message", {}).get("content", []) or []:
-                if isinstance(b, dict) and b.get("type") == "tool_use":
-                    tool_calls.append(b.get("name"))
-        elif ev.get("type") == "result":
-            result = ev
-    return {"init": init, "result": result, "tool_calls": tool_calls}
+parse_stream = S.parse_stream   # init · result · tool_calls (+ inputs, models, skills fired)
 
 
 def plan_session(cmd: str, golden: dict, arm: str, old_ref: str | None) -> dict:
@@ -300,24 +270,20 @@ def plan_session(cmd: str, golden: dict, arm: str, old_ref: str | None) -> dict:
         else:
             args_part = golden.get("args", "")
             prompt = f"/mochiko:{cmd} {args_part}".strip()
-        argv = ["claude", "-p", prompt,
-                "--plugin-dir", str(plug),           # absolute; authoritative (N4)
-                "--setting-sources", "",             # isolation, auth kept (probe f.1)
-                "--allowedTools", "Read,Grep,Glob",  # D7 permission fence
-                "--permission-mode", "dontAsk",
-                "--max-turns", str(MAX_TURNS),
-                "--model", SESSION_MODEL,
-                "--output-format", "stream-json", "--verbose",
-                "--append-system-prompt", wrapper_text()]
-        proc = subprocess.run(argv, cwd=wd, capture_output=True, text=True, timeout=1800)
+        # --plugin-dir absolute and authoritative (N4); --setting-sources "" isolates and
+        # keeps auth (probe f.1); --allowedTools Read,Grep,Glob under dontAsk is the D7
+        # permission fence.
+        argv = S.claude_argv(prompt, model=SESSION_MODEL, max_turns=MAX_TURNS,
+                             plugin_dir=plug, allowed_tools="Read,Grep,Glob",
+                             permission_mode="dontAsk", append_system_prompt=wrapper_text())
+        proc = S.run_claude(argv, cwd=wd, timeout=1800)
         out = parse_stream(proc.stdout)
         init, result = out["init"], out["result"]
         if result is None:
             die(f"no result event (exit {proc.returncode}): {proc.stderr[-800:]}")
         plan = result.get("result") or ""
         # Blocking load gate (I1): the pair under test visible in the init event.
-        loaded = [(p.get("name"), p.get("version"))
-                  for p in (init or {}).get("plugins", [])]
+        loaded = S.loaded_plugins(init)
         load_ok = ("mochiko", run_pins["plugin_version"]) in loaded
         asserts = {
             "load_gate": load_ok,
@@ -326,7 +292,7 @@ def plan_session(cmd: str, golden: dict, arm: str, old_ref: str | None) -> dict:
             "fence_breach": sorted({t for t in out["tool_calls"]
                                     if t not in ("Read", "Grep", "Glob")}),
             "name_resolution": name_resolution(plan) if arm != "nocmd" else [],
-            "auth_failure": "Not logged in" in plan,
+            "auth_failure": S.auth_failed(plan),
         }
         if asserts["auth_failure"] or not load_ok:
             die(f"run invalid — load_gate:{load_ok} loaded:{loaded} "
@@ -351,28 +317,10 @@ def name_resolution(plan: str) -> list:
     return sorted(bad)
 
 
-# ---------- judges (adapted from evals/run.py; advisory) ----------
+# ---------- judges (mechanics in lib.judge; the prompts pinned here; advisory) ----------
 
-def judge_session(prompt: str, model: str) -> str:
-    with tempfile.TemporaryDirectory(prefix="cmdjudge-") as td:
-        proc = subprocess.run(
-            ["claude", "-p", prompt, "--model", model, "--max-turns", "1",
-             "--setting-sources", "", "--output-format", "json"],
-            cwd=td, capture_output=True, text=True, timeout=600)
-        try:
-            return json.loads(proc.stdout).get("result", "") or ""
-        except json.JSONDecodeError:
-            return ""
-
-
-def extract_json(text: str):
-    m = re.search(r"\[.*\]|\{.*\}", text, re.DOTALL)
-    if not m:
-        return None
-    try:
-        return json.loads(m.group(0))
-    except json.JSONDecodeError:
-        return None
+judge_session = J.judge_session
+extract_json = J.extract_json
 
 
 def scrub_rule_ids(plan: str, rule_ids) -> str:
@@ -386,35 +334,26 @@ def scrub_rule_ids(plan: str, rule_ids) -> str:
     return plan
 
 
+def coverage_prompt(chunk: list, plan: str) -> str:
+    return (
+        "You are grading a command's PLANNED-run action plan against rules the "
+        "command is bound to. The plan speaks in concrete actions and may never "
+        "cite rule IDs — grade EMBODIMENT: does the plan's described behavior "
+        "enact the rule? For EACH rule return a JSON array entry "
+        "{\"id\": ..., \"verdict\": \"reflected\"|\"absent\"|\"contradicted\", "
+        "\"evidence\": \"<verbatim quote from the plan proving the verdict, or "
+        "empty for absent>\"}. Every rule id exactly once. Output ONLY the JSON "
+        "array.\n\nRULES:\n" + json.dumps(chunk, indent=1)
+        + "\n\nPLAN:\n" + plan[:120_000])
+
+
 def judge_coverage(rule_items: list, plan: str, model: str = CHECKLIST_MODEL) -> list:
     """One binary per observable rule: does the PLAN's content EMBODY the rule —
     reflected in its actions, absent, or contradicted (D2/D3). Quoted plan-line
     evidence. Chunked + one retry (skill-harness staged-001 finding)."""
-    out = []
-    for i in range(0, len(rule_items), JUDGE_CHUNK):
-        chunk = rule_items[i:i + JUDGE_CHUNK]
-        prompt = (
-            "You are grading a command's PLANNED-run action plan against rules the "
-            "command is bound to. The plan speaks in concrete actions and may never "
-            "cite rule IDs — grade EMBODIMENT: does the plan's described behavior "
-            "enact the rule? For EACH rule return a JSON array entry "
-            "{\"id\": ..., \"verdict\": \"reflected\"|\"absent\"|\"contradicted\", "
-            "\"evidence\": \"<verbatim quote from the plan proving the verdict, or "
-            "empty for absent>\"}. Every rule id exactly once. Output ONLY the JSON "
-            "array.\n\nRULES:\n" + json.dumps(chunk, indent=1)
-            + "\n\nPLAN:\n" + plan[:120_000])
-        byid = {}
-        for _ in range(2):
-            verdicts = extract_json(judge_session(prompt, model))
-            if isinstance(verdicts, list):
-                for v in verdicts:
-                    if isinstance(v, dict) and v.get("id") and v.get("verdict"):
-                        byid.setdefault(v["id"], v)
-            if all(r["id"] in byid for r in chunk):
-                break
-        out += [byid.get(r["id"], {"id": r["id"], "verdict": None,
-                                   "evidence": "MISSING"}) for r in chunk]
-    return out
+    return J.judge_chunked(rule_items, lambda chunk: coverage_prompt(chunk, plan), model,
+                           key="verdict", attempts=2, accept=lambda v: bool(v.get("verdict")),
+                           chunk_size=JUDGE_CHUNK)
 
 
 def judge_stub(plan: str, model: str = CHECKLIST_MODEL) -> list:
@@ -430,19 +369,17 @@ def judge_stub(plan: str, model: str = CHECKLIST_MODEL) -> list:
     return verdicts if isinstance(verdicts, list) else []
 
 
+def pairwise_prompt(first: str, second: str) -> str:
+    return ("Two action plans answer the same command invocation. Which is the "
+            "better plan overall — more faithful, more concretely actionable? "
+            "Reply ONLY JSON {\"winner\": \"1\"|\"2\"|\"tie\", \"reason\": "
+            "\"<one sentence>\"}.\n\nPLAN 1:\n" + first[:60_000]
+            + "\n\nPLAN 2:\n" + second[:60_000])
+
+
 def judge_pairwise(text_a: str, text_b: str, model: str = PAIRWISE_MODEL) -> dict:
-    """Blind A/B with position swap (skill-harness pattern, verbatim mechanics)."""
-    def ask(first, second):
-        prompt = ("Two action plans answer the same command invocation. Which is the "
-                  "better plan overall — more faithful, more concretely actionable? "
-                  "Reply ONLY JSON {\"winner\": \"1\"|\"2\"|\"tie\", \"reason\": "
-                  "\"<one sentence>\"}.\n\nPLAN 1:\n" + first[:60_000]
-                  + "\n\nPLAN 2:\n" + second[:60_000])
-        return extract_json(judge_session(prompt, model)) or {}
-    v1, v2 = ask(text_a, text_b), ask(text_b, text_a)
-    w1, w2 = v1.get("winner"), v2.get("winner")
-    agree = (w1 == "1" and w2 == "2") or (w1 == "2" and w2 == "1") or (w1 == w2 == "tie")
-    return {"first_order": v1, "swapped": v2, "position_consistent": agree}
+    """Blind A/B with position swap (lib.judge mechanics; this target's prompt)."""
+    return J.judge_pairwise(text_a, text_b, model, pairwise_prompt)
 
 
 # ---------- commands ----------
@@ -518,27 +455,7 @@ def cmd_judge(cmd: str, name: str, judge_model: str = CHECKLIST_MODEL,
     print(f"judged: {rd / 'summary.json'}")
 
 
-def passk(entries: list, rule_id: str) -> bool | None:
-    """pass^k: reflected in ALL replicates. None = never judged."""
-    vs = [v["verdict"] for e in entries for v in e.get("coverage", [])
-          if v["id"] == rule_id]
-    if not vs or any(v is None for v in vs):
-        return None          # a MISSING verdict (judge call failed) leaves the pair unjudged
-    return all(v == "reflected" for v in vs)
-
-
-def flaky(entries: list, rule_id: str) -> bool:
-    vs = {v["verdict"] for e in entries for v in e.get("coverage", [])
-          if v["id"] == rule_id}
-    if None in vs:
-        return False         # unjudged, not disagreement — reported separately as MISSING
-    return len(vs) > 1
-
-
-def missing(entries: list, rule_id: str) -> int:
-    """Count of replicates whose judge verdict is MISSING for this rule."""
-    return sum(1 for e in entries for v in e.get("coverage", [])
-               if v["id"] == rule_id and v["verdict"] is None)
+# pass^k · flaky · missing: lib.stats (imported above).
 
 
 def cmd_report(cmd: str, name: str) -> None:
@@ -613,7 +530,7 @@ def cmd_report(cmd: str, name: str) -> None:
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     sub = ap.add_subparsers(dest="cmd", required=True)
-    import agents  # the persona target (evals/commands/agents.py); shares this module's mechanics
+    from plan import agents  # the persona target (evals/plan/agents.py)
     agents.add_subcommands(sub)
     for name in ("partition", "check-rubric", "check-fixtures", "plan-run", "grid",
                  "judge", "report"):

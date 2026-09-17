@@ -155,7 +155,7 @@ trail (2026-09-08); their open residue is carried below.)*
   wave-0 probe** (`hook-enforced-artifact-schema` D8 — same three legs, one session); result
   lands here.
 - [ ] **Command-target residue (carried from the plan-only section)** — **runner defect found
-  2026-09-08:** `evals/commands/run.py` `extract_rules` still reads `plugins/mochiko/schemas/*.yaml`,
+  2026-09-08:** `evals/plan/run.py` `extract_rules` still reads `plugins/mochiko/schemas/*.yaml`,
   deleted at v0.107.0, so `check-rubric` / `partition` / `judge` for commands fail at HEAD — re-key
   onto `mochiko-cli` renders or the derived views (same move as the skill re-key) · D10 one-real-run
   correlation check · the other four commands' fixtures · name-resolution marker allowlist (the

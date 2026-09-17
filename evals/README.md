@@ -9,7 +9,7 @@ directory ships with the plugin (GI-020 untouched).
 ## Targets and the one vocabulary
 
 The eval layer has three **targets** — skills (this runner), commands and agents (the plan-only
-runner, `evals/commands/run.py` + `agents.py`) — under one ruling set and one vocabulary
+runner, `evals/plan/run.py` + `agents.py`) — under one ruling set and one vocabulary
 (`primitive-eval-harness-v2` D1, accepted 2026-09-08). Every runner cites this file for it:
 
 | term | meaning |
@@ -58,7 +58,11 @@ prompt sha · session model.
 
 ```
 evals/
-  run.py                      # the runner
+  run.py                      # the skill runner (CLI below)
+  lib/                        # the shared core every runner imports (D10 act 2): session ·
+                              #   provision · judge · stats — mechanics only, no target's read
+  plan/                       # the plan-only runner: command + persona targets (plan/README.md)
+  agents/<persona>/           # persona kits (goldens, rules.json, preregistration, runs)
   <skill>/
     evals.json                # 3 goldens: {id, prompt, fixture?, expected_output?, assertions[], tempts?}
     fixtures/<name>/          # workspace files a golden seeds (the artifact under review + context)
