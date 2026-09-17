@@ -134,6 +134,16 @@ trail (2026-09-08); their open residue is carried below.)*
   · `review-specifications` · `validation-constitution` — with goldens + pre-registration from the
   re-keyed inventories, never the stale ones (`skill-content-schema` D7's judged-sample-of-two
   floor stands).
+  **Status 2026-09-18:** all four kits BUILT + audited (author≠grader, FAIL→fix→PASS each) on the
+  skill runner converged onto the plan-only mechanics (host mode, whole plugin archived per arm,
+  fixtures, load gate, invited read, `fixture_unchanged`; `evals/run.py`, 2026-09-11..13). Reads:
+  `review-specifications` — post 8/8 floors vs pre 4/8, scripted layer 7/9 vs 1/9, five must
+  losses under a band at the cap (extra replicate running); `review-governance-intent` — post
+  21/34 vs 19/34, **one floor lost deterministically** (`findings-through-leads-pen`: the cut skill
+  writes the patched synthesis copy on 2/3 pressure runs; **re-add ruling owed**);
+  `validation-constitution` and `review-plan-artifacts` — first runs void (references unreadable
+  without `--add-dir`; fixed), pre/post re-running with the post arm pinned to the v0.108.0 tree
+  (`--post-ref 7ac0b9c`). Fill logs in each `evals/<skill>/preregistration.md`.
 - [ ] **One-runner promotion, three landing acts** (D10) — rename `evals/commands/` → `evals/plan/`
   (citations move with it); extract the shared core into `evals/lib/` and make `evals/run.py`
   import it; converge the CLI to `evals/run.py <target> <subcommand> <name>`. `evals/contract/`
@@ -767,6 +777,23 @@ Raw captures (2026-08-01) — to triage/brainstorm; grooming may re-key into fin
 
 ## Defects & empirical checks
 
+- [ ] **`check-artifacts.py` heading grammar vs the entity-modeling template** (found 2026-09-11 by the
+  review-plan-artifacts kit author and auditor; provenance: `evals/review-plan-artifacts/preregistration.md`
+  §Disclosures 13) — `plugins/mochiko/skills/review-plan-artifacts/scripts/check-artifacts.py` requires
+  `## Entities` / `## Relationships` / `## Validation Rules` in `data-model.md`, but the entity-modeling
+  template writes `## Entity: <Name>` and never `## Entities`, so the tier-1 checker false-positives on
+  every real data model. Align one to the other; re-run the checker over a real feature's model.
+- [ ] **`QUALITY-CHECKLIST.md` names a bare `mochiko-cli template` call** (found 2026-09-11 by the
+  validation-constitution kit auditor; provenance: `evals/validation-constitution/preregistration.md`
+  audit trail) — `plugins/mochiko/skills/validation-constitution/references/QUALITY-CHECKLIST.md:4` tells
+  the seat to run `mochiko-cli template governance-surfaces` without `--plugin-root`, which fails
+  ("migration log cannot be read") and costs the seat a turn. Add the root flag the SKILL.md `!` lines use.
+- [ ] **`qa-engineer` does not mount `review-plan-artifacts`** though `impl.card-review-before-confirm`
+  binds the card review to the verification seat (found 2026-09-11 by the review-plan-artifacts kit
+  auditor; provenance: the kit's audit message, `evals/review-plan-artifacts/preregistration.md`
+  §Disclosures 15) — `plugins/mochiko/agents/qa-engineer.md` declares only `testing-end-user` and
+  `review-code-minimalism`; only `devils-advocate.md` mounts the skill. Either mount it on the
+  verification seat or re-point the implement rule.
 - [ ] **ARCHITECTURE.md staleness residue (pre-v0.68.0 debt)** (2026-08-13; provenance: the
   v0.68.0 ripple audit's fix #1 — precise inventory) — line-3 header still stamps
   "(v0.48.0…)" (20 versions stale) · System-overview pipeline line reads "governance → spec →
