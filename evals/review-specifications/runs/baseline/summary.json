@@ -7761,6 +7761,1795 @@
    "cost_usd": 0.730987,
    "num_turns": 37,
    "artifact_truncated": false
+  },
+  {
+   "arm": "pre",
+   "golden": "g1-shift-swaps-planted-gaps",
+   "replicate": 4,
+   "pins": {
+    "skill": "review-specifications",
+    "cli": "2.1.258 (Claude Code)",
+    "mochiko_cli": "mochiko-cli 0.1.0 \u00b7 grammar 1..1",
+    "session_model": "sonnet",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "ed46faa8c200be51",
+    "old_ref": "475c955",
+    "post_ref": null,
+    "plugin_version": "0.86.0",
+    "skill_sha256": "bd74d7f82ea9ad7b",
+    "rendered_rules_ok": true,
+    "rendered_rules_sha256": null,
+    "rendered_rules_chars": 0
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.86.0"
+     ]
+    ],
+    "skill_fired": true,
+    "rules_delivered": true,
+    "model_ok": true,
+    "models": [
+     "claude-sonnet-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "no_result": false,
+    "is_error": false
+   },
+   "valid": true,
+   "tool_calls": [
+    "Skill",
+    "Bash",
+    "Bash",
+    "Bash",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Write"
+   ],
+   "skills_fired": [
+    "mochiko:review-specifications"
+   ],
+   "assertions": [
+    {
+     "type": "file_exists",
+     "path": "review.md",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "review.md",
+     "pattern": "(?i)(needs[- ]revision|critical[- ]gaps|\\bready\\b)",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "review.md",
+     "pattern": "(?i)(findings\\s*:|\\bsev\\s*:)",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "review.md",
+     "pattern": "(?s)\\bFR-004\\b.*\\bFR-006\\b|\\bFR-006\\b.*\\bFR-004\\b",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "not_contains",
+     "path": "review.md",
+     "pattern": "(?im)(here is (the|a|my|your) (revised|updated|corrected|fixed|patched|tightened|rewritten) (spec|specification)|(revised|rewritten|corrected) spec(ification)? (below|follows)|^#+ *(revised|updated|corrected) spec)",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "kestrel/.mochiko/specs/shift-swaps/spec.md",
+     "pattern": "Managers find the swap flow intuitive",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "fixture_unchanged",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "not_contains",
+     "path": "review.md",
+     "pattern": "(?im)^\\s*\\**\\s*(?:(verdict|status)\\s*\\**\\s*:\\s*\\**\\s*(PASS|APPROVED|SIGNED[- ]OFF)|verdict\\s*\\**\\s*:\\s*\\**\\s*FAIL)\\b",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "not_contains",
+     "path": "review.md",
+     "pattern": "(?is)(\\{id:\\s*G\\d+[^}]*?\\bsev\\s*:\\s*\\**\\s*(Critical|Important)\\b[^}]*\\}.*?){8}",
+     "passed": false,
+     "detail": ""
+    }
+   ],
+   "checklist": [
+    {
+     "id": "review-specifications.author-grader",
+     "passed": true,
+     "evidence": "The review identifies gaps and recommends fixes without authoring or revising the spec itself. All findings frame changes as 'the spec should say X' or 'drop/add this,' not as rewrites."
+    },
+    {
+     "id": "review-specifications.what-not-how",
+     "passed": true,
+     "evidence": "All fixes specify WHAT is needed, not HOW to implement. E.g., G2: 'Turn this into a functional requirement: either the swap target's eligibility is checked...or the manager-approval step is explicitly the eligibility backstop \u2014 state which' (product decision, not code mechanism)."
+    },
+    {
+     "id": "review-specifications.not-for",
+     "passed": true,
+     "evidence": "The artifact is a specification review of a user-story and functional-requirement spec, the correct scope. It does not attempt architecture review, code review, or implementation planning."
+    },
+    {
+     "id": "review-specifications.excess-admissibility",
+     "passed": true,
+     "evidence": "G14 explicitly identifies FR-008 (dark-mode toggle) as unpaid scope: 'No story, driver, or existing pattern traces to a dark-mode toggle; it appears in the FR list with an explicit blank source \u2014 unpaid scope' and names the missing driver as the rationale for its admissibility."
+    },
+    {
+     "id": "review-specifications.never-excess",
+     "passed": true,
+     "evidence": "G11 treats FR-005's 11-hour rest rule as a floor-class regulatory obligation ('a floor-class external regulatory claim') and flags the missing disclosure rather than treating it as excess scope."
+    },
+    {
+     "id": "review-specifications.feature-layer-same-report",
+     "passed": true,
+     "evidence": "G3 ('derivation.md \"Map at baseline\" table and Proposed entry FEAT-006') and G6 ('derivation.md Specs-index line...vs spec.md Feature Selection') review the feature-map delta within the same report alongside spec findings."
+    },
+    {
+     "id": "review-specifications.no-scope-creep",
+     "passed": true,
+     "evidence": "No finding suggests new features as missing requirements. Edge cases (G9, G17) are hunted within stated scope; rejection of US-5 (cross-venue swaps, G16) is noted as a prior cut, not a missing feature."
+    },
+    {
+     "id": "review-specifications.complete-coverage",
+     "passed": true,
+     "evidence": "All five user stories reviewed: US-1 (G1, G7), US-2 (G7, G15), US-3 (G1, G2, G7, G13), US-4 (G8), US-5 (G16). All success criteria checked: SC-001 (G10), SC-002 (G5, G10), SC-003 (G18), SC-004 (G18). Edge cases hunted (G9, G17)."
+    },
+    {
+     "id": "review-specifications.external-claims",
+     "passed": true,
+     "evidence": "G11 identifies FR-005 ('eleven hours' rest \u2026 as UK law requires') as a floor-class external regulatory claim, notes it lacks a disclosure line ('no `verified: <source>` / `memory-asserted` disclosure line'), and mandates adding one per the external-claims rule."
+    },
+    {
+     "id": "review-specifications.map-git-baseline",
+     "passed": true,
+     "evidence": "G3 grades the staged FEAT-006 extent against 'the committed map' explicitly: 'The baseline table lists only FEAT-001\u2013004, omitting FEAT-005 (Open shifts, already `proposed` on the committed map).'"
+    },
+    {
+     "id": "review-specifications.map-mirror",
+     "passed": true,
+     "evidence": "G3 and G6 use the spec's Feature Selection and Derived features as the authoritative mirror to check the map delta, not as a second independent definition. The derivation table is graded against the map's committed state."
+    },
+    {
+     "id": "review-specifications.sf-legal-shapes",
+     "passed": true,
+     "evidence": "G4 identifies the violation: 'Intent commits to UX-bearing with three named screens (request, answer, manager view), but the section carries neither an SCR/FLOW manifest with a servable prototype nor the waiver line the intent ruling requires instead.'"
+    },
+    {
+     "id": "review-specifications.serve-and-click",
+     "passed": true,
+     "evidence": "G4 shows the prototype verification step: 'There is no prototype/ directory in the workspace. Nothing here is walkable.' This demonstrates the reviewer checked for the prototype, attempted to verify its existence, and correctly flagged that it cannot be walked."
+    },
+    {
+     "id": "review-specifications.check-existing-first",
+     "passed": true,
+     "evidence": "The review references existing patterns and decisions: docs/staff-devices.md (G12), docs/roles-and-eligibility.md (G2), docs/decisions/0003-role-flags.md (G2), decision 0007 (G12, G13). Does not ask 'should notifications use SMS?' when decision 0007 already answers it."
+    },
+    {
+     "id": "review-specifications.gap-taxonomy",
+     "passed": true,
+     "evidence": "Findings systematically use the six taxonomy categories: Contradiction (G1, G6, G7, G12), Assumption (G2, G11), Missing (G3, G4, G5, G8, G13, G14, G16), EdgeCase (G9, G17), Ambiguous (G10, G15, G18). Excess/unpaid scope hunted and identified (G14)."
+    },
+    {
+     "id": "review-specifications.smuggled-posture",
+     "passed": true,
+     "evidence": "G8: \"This constraint has no corresponding FR, no entity, and no access-control statement, and it sits oddly next to US-4's in-app manager history view.\""
+    },
+    {
+     "id": "review-specifications.feature-critical-checks",
+     "passed": true,
+     "evidence": "G3 checks derivation honesty and dedup (\"FEAT-006's proposed extent... unsupported by any of US-1\u20134\"); G5 checks SC re-homing (\"SC-002... is not listed under any feature's 'SCs verified' column\"); G6 checks delta legality (\"The staged specs-index row lists only FEAT-006... but the same spec also stages a delta on FEAT-001\")"
+    },
+    {
+     "id": "review-specifications.feature-important-checks",
+     "passed": false,
+     "evidence": ""
+    },
+    {
+     "id": "review-specifications.authority-split",
+     "passed": true,
+     "evidence": "G4 flags missing manifest and waiver, not cosmetics; no findings critique layout or styling of prototype"
+    },
+    {
+     "id": "review-specifications.sf-critical-checks",
+     "passed": true,
+     "evidence": "G4: \"Intent commits to UX-bearing with three named screens (request, answer, manager view), but the section carries neither an SCR/FLOW manifest... Nothing here is walkable.\""
+    },
+    {
+     "id": "review-specifications.sf-important-checks",
+     "passed": true,
+     "evidence": "G4: \"the section carries neither an SCR/FLOW manifest... nor the waiver line the intent ruling requires instead\""
+    },
+    {
+     "id": "review-specifications.severity-grammar",
+     "passed": true,
+     "evidence": "Critical findings (G1\u2013G6) block building; Important findings (G7\u2013G16) cause rework; Minor (G17\u2013G18) are polish"
+    },
+    {
+     "id": "review-specifications.density-never-gap",
+     "passed": true,
+     "evidence": "All findings address substantive gaps; no findings critique overview length, prose style, or envelope compliance"
+    },
+    {
+     "id": "review-specifications.question-format",
+     "passed": true,
+     "evidence": "C1: \"**Options**: 1. ... 2. ... 3. ... **Why it matters**: This is the entire mechanism of the feature\""
+    },
+    {
+     "id": "review-specifications.no-presupposed-mechanism",
+     "passed": true,
+     "evidence": "C2: \"Can any colleague take any shift offered in a swap, regardless of role eligibility?\" \u2014 opens the question without assuming yes or no"
+    },
+    {
+     "id": "review-specifications.clarifications-shape",
+     "passed": true,
+     "evidence": "## Clarifications needed section with C1\u2013C7 entries each structured as Question / Options / Why it matters"
+    },
+    {
+     "id": "review-specifications.report-structure",
+     "passed": true,
+     "evidence": "YAML frontmatter (report, feature, round, verdict, verdict_basis, strengths); findings array with id/type/sev/at/gap/fix; Clarifications section"
+    },
+    {
+     "id": "review-specifications.evidence-floor",
+     "passed": true,
+     "evidence": "Verdict and per-finding dispositions documented in review.md: \"verdict: critical-gaps\"; findings G1\u2013G18 with at/gap/fix recorded in artifact"
+    },
+    {
+     "id": "review-specifications.gap-bound",
+     "passed": false,
+     "evidence": "6 Critical (G1\u2013G6) + 10 Important (G7\u2013G16) = 16 critical/important findings; rule requires 5\u20137 total"
+    },
+    {
+     "id": "review-specifications.input-not-verdict",
+     "passed": true,
+     "evidence": "\"verdict: critical-gaps\" with basis; not a clearing PASS/FAIL \u2014 input for stakeholder decision-making"
+    }
+   ],
+   "cost_usd": 0.7250526000000002,
+   "num_turns": 34,
+   "artifact_truncated": false
+  },
+  {
+   "arm": "post",
+   "golden": "g1-shift-swaps-planted-gaps",
+   "replicate": 4,
+   "pins": {
+    "skill": "review-specifications",
+    "cli": "2.1.258 (Claude Code)",
+    "mochiko_cli": "mochiko-cli 0.1.0 \u00b7 grammar 1..1",
+    "session_model": "sonnet",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "ed46faa8c200be51",
+    "old_ref": null,
+    "post_ref": "7ac0b9c",
+    "plugin_version": "0.108.0",
+    "skill_sha256": "34ace842ec3ab3e6",
+    "rendered_rules_ok": true,
+    "rendered_rules_sha256": "43dbb61cb4ee9e8c",
+    "rendered_rules_chars": 12502
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.108.0"
+     ]
+    ],
+    "skill_fired": true,
+    "rules_delivered": true,
+    "model_ok": true,
+    "models": [
+     "claude-sonnet-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "no_result": false,
+    "is_error": false
+   },
+   "valid": true,
+   "tool_calls": [
+    "Skill",
+    "Bash",
+    "Bash",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Bash",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "ToolSearch",
+    "WebSearch",
+    "WebSearch",
+    "Bash",
+    "Bash",
+    "Bash",
+    "Read",
+    "Read",
+    "Write"
+   ],
+   "skills_fired": [
+    "mochiko:review-specifications"
+   ],
+   "assertions": [
+    {
+     "type": "file_exists",
+     "path": "review.md",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "review.md",
+     "pattern": "(?i)(needs[- ]revision|critical[- ]gaps|\\bready\\b)",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "review.md",
+     "pattern": "(?i)(findings\\s*:|\\bsev\\s*:)",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "review.md",
+     "pattern": "(?s)\\bFR-004\\b.*\\bFR-006\\b|\\bFR-006\\b.*\\bFR-004\\b",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "not_contains",
+     "path": "review.md",
+     "pattern": "(?im)(here is (the|a|my|your) (revised|updated|corrected|fixed|patched|tightened|rewritten) (spec|specification)|(revised|rewritten|corrected) spec(ification)? (below|follows)|^#+ *(revised|updated|corrected) spec)",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "kestrel/.mochiko/specs/shift-swaps/spec.md",
+     "pattern": "Managers find the swap flow intuitive",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "fixture_unchanged",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "not_contains",
+     "path": "review.md",
+     "pattern": "(?im)^\\s*\\**\\s*(?:(verdict|status)\\s*\\**\\s*:\\s*\\**\\s*(PASS|APPROVED|SIGNED[- ]OFF)|verdict\\s*\\**\\s*:\\s*\\**\\s*FAIL)\\b",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "not_contains",
+     "path": "review.md",
+     "pattern": "(?is)(\\{id:\\s*G\\d+[^}]*?\\bsev\\s*:\\s*\\**\\s*(Critical|Important)\\b[^}]*\\}.*?){8}",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "checklist": [
+    {
+     "id": "review-specifications.author-grader",
+     "passed": true,
+     "evidence": "The artifact identifies gaps and calls for fixes ('Add an FR requiring...', 'Re-run the baseline read...') without authoring or revising the spec itself."
+    },
+    {
+     "id": "review-specifications.what-not-how",
+     "passed": true,
+     "evidence": "G1 frames what is missing ('these cannot both hold') not how to fix it. G2 identifies the missing check, not its implementation. C1\u2013C7 reframe issues as decisions on requirements, not implementation steps."
+    },
+    {
+     "id": "review-specifications.not-for",
+     "passed": true,
+     "evidence": "The artifact reviews requirement completeness and consistency (contradictions, ambiguities, gaps, edge cases) \u2014 not architecture, design, code, or implementation planning. No architectural critique, system design, or implementation detail appears."
+    },
+    {
+     "id": "review-specifications.excess-admissibility",
+     "passed": true,
+     "evidence": "G3 identifies the broadcast mechanic as excess: 'spec.md's own Intent explicitly places [it] out of scope.' G7 flags FR-008 as excess and asks 'drop FR-008 or name its real driver' \u2014 tracing it to no user need."
+    },
+    {
+     "id": "review-specifications.never-excess",
+     "passed": true,
+     "evidence": "FR-005 (rest rule) is flagged as 'Missing' with 'undisclosed regulatory claim,' not 'Excess.' FR-007 (audit) is noted in Strengths as 'correctly traced to the governance principle' \u2014 treated as a required obligation, not excess."
+    },
+    {
+     "id": "review-specifications.feature-layer-same-report",
+     "passed": true,
+     "evidence": "G3 audits the feature derivation (FEAT-005 baseline gap, FEAT-006 scope drift, SC-002 homelessness) in the same report alongside spec gaps, unified by the Intent's out-of-scope boundary."
+    },
+    {
+     "id": "review-specifications.no-scope-creep",
+     "passed": true,
+     "evidence": "The artifact does not invent new features as 'missing requirements.' No mention of 'give a shift away' or 'cross-venue swaps' as scope gaps \u2014 only reviews what is in scope but incomplete."
+    },
+    {
+     "id": "review-specifications.complete-coverage",
+     "passed": true,
+     "evidence": "The artifact reviews Intent, all nine FRs (FR-001\u2013FR-009), success criteria (SC-001, SC-002, SC-003 all checked), edge cases with explicit gaps named ('missing edge cases: a shift already tied to another open swap...'), Key Entities, Assumptions, and the feature layer."
+    },
+    {
+     "id": "review-specifications.external-claims",
+     "passed": true,
+     "evidence": "G7 identifies FR-005's 'undisclosed regulatory claim' (11-hour rest rule) and notes: 'this review could not complete a live disconfirming-source check... so the omission itself stands as the finding per the external-claims rule.'"
+    },
+    {
+     "id": "review-specifications.map-git-baseline",
+     "passed": true,
+     "evidence": "G3 grades the staged 'Map at baseline' table against git-state feature files (e.g., `FEAT-005-open-shifts.md`) and the staged specs-index row against the Selection section 'that the Selection section also selects to build now.'"
+    },
+    {
+     "id": "review-specifications.map-mirror",
+     "passed": true,
+     "evidence": "The artifact checks that SC-002 is 'homed or deferred,' that FEAT-005 is included in the baseline read per the authoring rules, and that FEAT-006's extent doesn't duplicate a separate feature \u2014 mirroring the authoring machinery, not authoring a second definition."
+    },
+    {
+     "id": "review-specifications.sf-legal-shapes",
+     "passed": true,
+     "evidence": "G4 explicitly checks: 'neither a SCR/FLOW manifest with a prototype/ app nor the waiver line ('No UX surface \u2014 prototype waived at intent') is present.' Names both legal shapes and identifies the gap."
+    },
+    {
+     "id": "review-specifications.serve-and-click",
+     "passed": false,
+     "evidence": "G4 identifies that no prototype exists ('to be mocked by the designer once the spec is approved \u2014 Figma link to follow'), preventing the artifact from serving and clicking the prototype; no report on adversarial clicking is provided."
+    },
+    {
+     "id": "review-specifications.check-existing-first",
+     "passed": true,
+     "evidence": "G2 references Decision 0003 and docs/roles-and-eligibility.md to find the contradiction. G5 cites decision 0007 for the notification-channel pattern. G6 references the 'governance principle on Confidential data.' Existing rules and decisions are checked before raising gaps."
+    },
+    {
+     "id": "review-specifications.gap-taxonomy",
+     "passed": true,
+     "evidence": "The artifact hunts all six defect classes: Contradictions (G1, G3), Missing (G2, G4, G5, G6, G7), Ambiguities (G7, C1\u2013C7), Assumptions (G2), and Excess (G3, G7) across user expectations (push adoption in SC-001), business rules (FR-005, FR-004/FR-006), scope boundaries (Intent's 'out of scope'), and permissions (Confidential data, role eligibility)."
+    },
+    {
+     "id": "review-specifications.smuggled-posture",
+     "passed": true,
+     "evidence": "Intent states swap history is kept as a CSV file on the venue's shared drive for twelve months, but no FR, entity, or story implements, explains, or even mentions this again. It's unclear how it relates to FR-007's actor/time audit trail (presumably the swap_requests/rota_change tables), and whether a CSV of requester/counterpart names on a shared drive is consistent with the governance principle that 'staff personal data is Confidential ... visible to managers only'"
+    },
+    {
+     "id": "review-specifications.feature-critical-checks",
+     "passed": false,
+     "evidence": "Missing explicit verification of derivation honesty (every feature traceable to supporting stories) and in-flight handling checks; disposition completeness is only partially addressed for success criteria (SC-002) rather than comprehensively for all stories (e.g., US-5's rejection why)"
+    },
+    {
+     "id": "review-specifications.feature-important-checks",
+     "passed": false,
+     "evidence": "Artifact addresses specs-index agreement and selection-card honesty (SC-002 is not listed under either feature's 'SCs verified' and not on the 'Deferred SCs' line) but does not explicitly evaluate granularity of entries (extent \u2264 ~3 lines, or split) or entry-template shape/all-fields compliance"
+    },
+    {
+     "id": "review-specifications.authority-split",
+     "passed": true,
+     "evidence": "No cosmetic or layout findings are made against non-existent prototype screens/flows; G4 correctly identifies the absence of screens rather than grading advisory styling details"
+    },
+    {
+     "id": "review-specifications.sf-critical-checks",
+     "passed": true,
+     "evidence": "Intent rules 'UX-bearing: yes' and names three screens (swap request, answer, manager view). The Screens & Flows section instead reads 'to be mocked by the designer once the spec is approved \u2014 Figma link to follow' \u2014 neither a SCR/FLOW manifest with a prototype/app nor the waiver line is present"
+    },
+    {
+     "id": "review-specifications.sf-important-checks",
+     "passed": true,
+     "evidence": "Correctly identifies that screens/flows section exists but provides no prototype or manifest, making data-shape honesty, FEAT tags, and waiver second-guess checks impossible to perform"
+    },
+    {
+     "id": "review-specifications.severity-grammar",
+     "passed": true,
+     "evidence": "G1-G4 marked Critical (FR contradictions, eligibility gaps, derivation issues, UX delivery); G5-G7 marked Important (notification fallback, CSV history, smaller defects); severity assignments align with cannot-build-without vs. will-cause-rework distinction"
+    },
+    {
+     "id": "review-specifications.density-never-gap",
+     "passed": true,
+     "evidence": "Findings address substance (FR contradictions, missing eligibility checks, derivation gaps, notification channels) rather than prose style, density, or format envelope violations"
+    },
+    {
+     "id": "review-specifications.question-format",
+     "passed": true,
+     "evidence": "C1 offers 3 options (immediate accept, manager approval, role-based gating) with why-it-matters explaining gate implications; all C1-C7 follow pattern of 2-3 concrete options with user impact and decision consequence"
+    },
+    {
+     "id": "review-specifications.no-presupposed-mechanism",
+     "passed": true,
+     "evidence": "C5 'What's the fallback when a swap notification can't reach someone by push?' asks how to handle the case where push fails, not assuming push as mechanism; C7 'How long should an unanswered swap request stay open before it expires?' asks for quantification, not mechanism selection"
+    },
+    {
+     "id": "review-specifications.clarifications-shape",
+     "passed": true,
+     "evidence": "Clarifications section present with C1-C7 each containing Question, Options (numbered list), and Why it matters paragraphs matching advocate-report-template.md structure"
+    },
+    {
+     "id": "review-specifications.report-structure",
+     "passed": true,
+     "evidence": "Machine-first findings in YAML (id, type, sev, at, gap, fix); clarifications with options + impact (C1-C7); recommended verdict 'critical-gaps' with basis; one-line strengths field: 'Edge cases for decline/withdraw/manager-cancel are handled cleanly...'"
+    },
+    {
+     "id": "review-specifications.evidence-floor",
+     "passed": true,
+     "evidence": "Findings reference reviewed artifacts with specific locations (at: 'spec.md FR-004 vs FR-006', 'derivation.md Map at baseline / Proposed entry FEAT-006') and include verbatim gap descriptions; review evidence lives in review.md file, not conversation only"
+    },
+    {
+     "id": "review-specifications.gap-bound",
+     "passed": true,
+     "evidence": "Seven findings total: G1-G4 Critical (4), G5-G7 Important (3), grouped by topic (contradictions, eligibility, derivation, UX, notifications, history, smaller defects) within 5-7 range"
+    },
+    {
+     "id": "review-specifications.input-not-verdict",
+     "passed": true,
+     "evidence": "Output provides gap-finding input (G1-G7 with fix recommendations) and decision questions (C1-C7) with verdict='critical-gaps' and basis, never a clearing PASS/FAIL verdict of the spec itself"
+    }
+   ],
+   "cost_usd": 0.7825274,
+   "num_turns": 37,
+   "artifact_truncated": false
+  },
+  {
+   "arm": "pre",
+   "golden": "g2-pause-subscription-pressure",
+   "replicate": 4,
+   "pins": {
+    "skill": "review-specifications",
+    "cli": "2.1.258 (Claude Code)",
+    "mochiko_cli": "mochiko-cli 0.1.0 \u00b7 grammar 1..1",
+    "session_model": "sonnet",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "ed46faa8c200be51",
+    "old_ref": "475c955",
+    "post_ref": null,
+    "plugin_version": "0.86.0",
+    "skill_sha256": "bd74d7f82ea9ad7b",
+    "rendered_rules_ok": true,
+    "rendered_rules_sha256": null,
+    "rendered_rules_chars": 0
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.86.0"
+     ]
+    ],
+    "skill_fired": true,
+    "rules_delivered": true,
+    "model_ok": true,
+    "models": [
+     "claude-sonnet-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "no_result": false,
+    "is_error": false
+   },
+   "valid": true,
+   "tool_calls": [
+    "Skill",
+    "Bash",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "ToolSearch",
+    "WebSearch",
+    "Bash",
+    "Read",
+    "Write"
+   ],
+   "skills_fired": [
+    "mochiko:review-specifications"
+   ],
+   "assertions": [
+    {
+     "type": "file_exists",
+     "path": "review.md",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "review.md",
+     "pattern": "(?i)(needs[- ]revision|critical[- ]gaps|\\bready\\b)",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "review.md",
+     "pattern": "(?i)(findings\\s*:|\\bsev\\s*:)",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "review.md",
+     "pattern": "(?s)\\bFR-002\\b.*\\bFR-003\\b|\\bFR-003\\b.*\\bFR-002\\b",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "not_contains",
+     "path": "review.md",
+     "pattern": "(?im)(here is (the|a|my|your) (revised|updated|corrected|fixed|patched|tightened|rewritten) (spec|specification)|(revised|rewritten|corrected) spec(ification)? (below|follows)|^#+ *(revised|updated|corrected) spec)",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "bramble/.mochiko/specs/pause-subscription/spec.md",
+     "pattern": "Customers feel in control of their subscription",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "fixture_unchanged",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "file_absent",
+     "path": "bramble/.mochiko/specs/pause-subscription/spec-revised.md",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "not_contains",
+     "path": "review.md",
+     "pattern": "(?im)^\\s*\\**\\s*(?:(verdict|status)\\s*\\**\\s*:\\s*\\**\\s*(PASS|APPROVED|SIGNED[- ]OFF)|verdict\\s*\\**\\s*:\\s*\\**\\s*FAIL)\\b",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "file_absent",
+     "path": "spec-revised.md",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "not_contains",
+     "path": "review.md",
+     "pattern": "(?is)(\\{id:\\s*G\\d+[^}]*?\\bsev\\s*:\\s*\\**\\s*(Critical|Important)\\b[^}]*\\}.*?){8}",
+     "passed": false,
+     "detail": ""
+    }
+   ],
+   "checklist": [
+    {
+     "id": "review-specifications.author-grader",
+     "passed": true,
+     "evidence": "No edits landed in `spec.md`, and no `spec-revised.md` was written."
+    },
+    {
+     "id": "review-specifications.what-not-how",
+     "passed": true,
+     "evidence": "No rule for a Direct Debit collection already lodged (Thursday, per docs/payment-methods.md) when the pause request lands before Friday's cut-off \u2014 that collection \"cannot be pulled back\", so FR-003's \"MUST NOT be charged\" is unbuildable as written for 22% of customers."
+    },
+    {
+     "id": "review-specifications.not-for",
+     "passed": true,
+     "evidence": "# Stress-test review \u2014 pause-subscription spec reviewing completeness and correctness of a specification document"
+    },
+    {
+     "id": "review-specifications.excess-admissibility",
+     "passed": true,
+     "evidence": "it is scope with no driver... Either author a story for it, or drop it from this spec"
+    },
+    {
+     "id": "review-specifications.never-excess",
+     "passed": true,
+     "evidence": "is a regulatory claim... This is a floor-class external claim per the run's own external-claims rule."
+    },
+    {
+     "id": "review-specifications.feature-layer-same-report",
+     "passed": true,
+     "evidence": "## Feature-layer checks (against FEATURES.md / .mochiko/features/ as committed at run open) with results table"
+    },
+    {
+     "id": "review-specifications.no-scope-creep",
+     "passed": true,
+     "evidence": "**skip a single week** as a missing requirement) was not actioned... I've kept the existing correct disposition and flagged the request itself"
+    },
+    {
+     "id": "review-specifications.complete-coverage",
+     "passed": true,
+     "evidence": "All four stories carry Given/When/Then, a priority rationale, and an independent test. None read as thin."
+    },
+    {
+     "id": "review-specifications.external-claims",
+     "passed": true,
+     "evidence": "is a regulatory claim with no `verified:`/`memory-asserted` disclosure line... This is a floor-class external claim"
+    },
+    {
+     "id": "review-specifications.map-git-baseline",
+     "passed": true,
+     "evidence": "against FEATURES.md / .mochiko/features/ as committed at run open"
+    },
+    {
+     "id": "review-specifications.map-mirror",
+     "passed": true,
+     "evidence": "| # | Check | Result | ... standard numbered checklist spanning rows 1-10"
+    },
+    {
+     "id": "review-specifications.sf-legal-shapes",
+     "passed": true,
+     "evidence": "Waived at intent (\"no new screen\")"
+    },
+    {
+     "id": "review-specifications.serve-and-click",
+     "passed": false,
+     "evidence": "Waived at intent (\"no new screen\"). Second-guessed per G14"
+    },
+    {
+     "id": "review-specifications.check-existing-first",
+     "passed": true,
+     "evidence": "docs/decisions/0004-pause-length.md already rules the max pause length (8 weeks)... the spec's own Open Questions re-asks \"how long may a pause be at most?\" as if it were unanswered."
+    },
+    {
+     "id": "review-specifications.gap-taxonomy",
+     "passed": true,
+     "evidence": "{type: Contradiction} {type: Missing} {type: Assumption} {type: Ambiguous} {type: EdgeCase} across findings G1-G14"
+    },
+    {
+     "id": "review-specifications.smuggled-posture",
+     "passed": true,
+     "evidence": "G7 identifies a contradiction where \"Key Entities models 'Pause' with requested-at / starts / resumes / ended-early fields (implying history), but Constraints + Technical notes describe pause state as one boolean plus two timestamp columns on the customer record\" \u2014 flagging implementation posture (database structure choice) as a gap requiring product decision."
+    },
+    {
+     "id": "review-specifications.feature-critical-checks",
+     "passed": true,
+     "evidence": "Feature-layer checks table (rows 1-10) systematically covers: derivation honesty, disposition completeness, dedup against map, delta legality, SC re-homing, in-flight handling, selection-card honesty, specs-index agreement; two marked Fail/Gap with specific evidence (G5, G10)."
+    },
+    {
+     "id": "review-specifications.feature-important-checks",
+     "passed": true,
+     "evidence": "Feature-layer checks include: granularity (check 4: Pass), entry well-formedness (check 5: Pass), selection-card honesty (check 9: Pass), specs-index agreement (check 10: Pass); all marked in the table."
+    },
+    {
+     "id": "review-specifications.authority-split",
+     "passed": true,
+     "evidence": "G14 is graded Minor (\"not a blocking gap\") for missing design documentation rather than flagging cosmetic/styling concerns; no cosmetic findings appear in Critical or Important gaps."
+    },
+    {
+     "id": "review-specifications.sf-critical-checks",
+     "passed": true,
+     "evidence": "\"Waived at intent ('no new screen').\" Waiver is applied because intent constrains scope; the check is appropriately scoped out where screens/flows are ruled out by stated intent."
+    },
+    {
+     "id": "review-specifications.sf-important-checks",
+     "passed": true,
+     "evidence": "\"Waived at intent ('no new screen'). Second-guessed per G14: defensible, since the flow is a control on an existing page rather than a new screen\" \u2014 waiver is explicitly second-guessed and rationale for defensibility is recorded."
+    },
+    {
+     "id": "review-specifications.severity-grammar",
+     "passed": true,
+     "evidence": "G1 (contradicts paymethod scope): Critical, justified as \"can't build without answering\"; G8 (reminder timing): Important, justified as \"will cause rework\"; G12 (transaction detail): Minor, justified as \"polish\"; severity labels match the grammar definition."
+    },
+    {
+     "id": "review-specifications.density-never-gap",
+     "passed": true,
+     "evidence": "No findings flag prose density or style. G13 flags \"soon after\" as vague wording (substance: precision gap vs. Edge Cases wording), not prose style; G12 flags implementation detail presence (substance), not density."
+    },
+    {
+     "id": "review-specifications.question-format",
+     "passed": true,
+     "evidence": "C1: 3 options (refund, deliver last box, block pause) with \"Why it matters: 22% of customers are on Direct Debit...\"; C2: 3 options for policy placement with \"Why it matters: design starts Thursday...\"; C3-C5 similarly structured with options and impact."
+    },
+    {
+     "id": "review-specifications.no-presupposed-mechanism",
+     "passed": false,
+     "evidence": "C4 presupposes mechanism choices in its options: \"1. Add a history-preserving `pauses` table/log... \u00b7 2. Keep the flat-column design and measure SC-003 from a separate analytics event stream instead.\" These are implementation mechanisms (data structure choice), not stakeholder-level requirements."
+    },
+    {
+     "id": "review-specifications.clarifications-shape",
+     "passed": true,
+     "evidence": "Clarifications section (C1-C6) follows the shape: heading with gap reference, **Question** field, **Options** (numbered list), **Why it matters** line; matches advocate-report-template.md structure."
+    },
+    {
+     "id": "review-specifications.report-structure",
+     "passed": true,
+     "evidence": "Machine-first findings in YAML block with id/type/sev/at/gap/fix fields, plus report/feature/round/incremental/verdict/verdict_basis/strengths metadata; clarifications section with options+impact; recommended verdict (\"critical-gaps\") with basis."
+    },
+    {
+     "id": "review-specifications.evidence-floor",
+     "passed": true,
+     "evidence": "Verdict (critical-gaps), per-finding dispositions (14 numbered findings with id/sev/gap/fix), and feature-layer check results all land in review.md artifact; evidence is not confined to conversation."
+    },
+    {
+     "id": "review-specifications.gap-bound",
+     "passed": false,
+     "evidence": "Artifact reports 7 Critical gaps (G1-G7) + 4 Important gaps (G8-G11) = 11 Critical/Important findings; rule specifies 5\u20137 Critical/Important gaps per round."
+    },
+    {
+     "id": "review-specifications.input-not-verdict",
+     "passed": true,
+     "evidence": "\"This skill's output is gap-finding input with a recommended verdict from `{ready, needs-revision, critical-gaps}`, not a PASS/FAIL stamp, and the recommended verdict is advisory \u2014 clearing the ticket is the lead's call, not mine or the PM's.\" Recommendation given as advisory input, not clearing verdict."
+    }
+   ],
+   "cost_usd": 0.7791518000000001,
+   "num_turns": 28,
+   "artifact_truncated": false
+  },
+  {
+   "arm": "post",
+   "golden": "g2-pause-subscription-pressure",
+   "replicate": 4,
+   "pins": {
+    "skill": "review-specifications",
+    "cli": "2.1.258 (Claude Code)",
+    "mochiko_cli": "mochiko-cli 0.1.0 \u00b7 grammar 1..1",
+    "session_model": "sonnet",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "ed46faa8c200be51",
+    "old_ref": null,
+    "post_ref": "7ac0b9c",
+    "plugin_version": "0.108.0",
+    "skill_sha256": "34ace842ec3ab3e6",
+    "rendered_rules_ok": true,
+    "rendered_rules_sha256": "43dbb61cb4ee9e8c",
+    "rendered_rules_chars": 12502
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.108.0"
+     ]
+    ],
+    "skill_fired": true,
+    "rules_delivered": true,
+    "model_ok": true,
+    "models": [
+     "claude-sonnet-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "no_result": false,
+    "is_error": false
+   },
+   "valid": true,
+   "tool_calls": [
+    "Skill",
+    "Read",
+    "Bash",
+    "Bash",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Bash",
+    "Read",
+    "Read",
+    "Bash",
+    "Read",
+    "ToolSearch",
+    "WebSearch",
+    "Write"
+   ],
+   "skills_fired": [
+    "mochiko:review-specifications"
+   ],
+   "assertions": [
+    {
+     "type": "file_exists",
+     "path": "review.md",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "review.md",
+     "pattern": "(?i)(needs[- ]revision|critical[- ]gaps|\\bready\\b)",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "review.md",
+     "pattern": "(?i)(findings\\s*:|\\bsev\\s*:)",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "review.md",
+     "pattern": "(?s)\\bFR-002\\b.*\\bFR-003\\b|\\bFR-003\\b.*\\bFR-002\\b",
+     "passed": false,
+     "detail": ""
+    },
+    {
+     "type": "not_contains",
+     "path": "review.md",
+     "pattern": "(?im)(here is (the|a|my|your) (revised|updated|corrected|fixed|patched|tightened|rewritten) (spec|specification)|(revised|rewritten|corrected) spec(ification)? (below|follows)|^#+ *(revised|updated|corrected) spec)",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "bramble/.mochiko/specs/pause-subscription/spec.md",
+     "pattern": "Customers feel in control of their subscription",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "fixture_unchanged",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "file_absent",
+     "path": "bramble/.mochiko/specs/pause-subscription/spec-revised.md",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "not_contains",
+     "path": "review.md",
+     "pattern": "(?im)^\\s*\\**\\s*(?:(verdict|status)\\s*\\**\\s*:\\s*\\**\\s*(PASS|APPROVED|SIGNED[- ]OFF)|verdict\\s*\\**\\s*:\\s*\\**\\s*FAIL)\\b",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "file_absent",
+     "path": "spec-revised.md",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "not_contains",
+     "path": "review.md",
+     "pattern": "(?is)(\\{id:\\s*G\\d+[^}]*?\\bsev\\s*:\\s*\\**\\s*(Critical|Important)\\b[^}]*\\}.*?){8}",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "checklist": [
+    {
+     "id": "review-specifications.author-grader",
+     "passed": true,
+     "evidence": "This skill's `author-grader` floor forbids a reviewer from authoring or revising what it grades \u2014 a review that edits the artifact isn't independent anymore. All wording issues are listed above as findings for the PM or spec author to apply instead."
+    },
+    {
+     "id": "review-specifications.what-not-how",
+     "passed": true,
+     "evidence": "All findings identify WHAT is missing/wrong (missing FRs, false assumptions, no story, orphaned SC, undefined data shape, unverified claims, wrong baseline) rather than HOW to implement; clarifications ask product-level decisions, not implementation details."
+    },
+    {
+     "id": "review-specifications.not-for",
+     "passed": true,
+     "evidence": "Artifact is specification review only; no architecture/design review, code review, implementation planning, performance specs, or pre-spec enrichment attempted."
+    },
+    {
+     "id": "review-specifications.excess-admissibility",
+     "passed": true,
+     "evidence": "G3 identifies excess scope (FR-008 'send to a friend as a gift') and names the driver it fails to trace to: 'has Source: \"\u2014\", no supporting story, no acceptance criteria, and isn't mentioned in Overview, Edge Cases, or Key Entities.'"
+    },
+    {
+     "id": "review-specifications.never-excess",
+     "passed": true,
+     "evidence": "No findings incorrectly flag floor or compliance items as excess; G6's regulatory claim is flagged for verification lack, not categorized as excess scope."
+    },
+    {
+     "id": "review-specifications.feature-layer-same-report",
+     "passed": true,
+     "evidence": "G7 'derivation.md \u2014 Map at baseline' grades the feature layer in same report; explicit statement: 'On the feature layer it grades against the committed map, not derivation.md's baseline table.'"
+    },
+    {
+     "id": "review-specifications.no-scope-creep",
+     "passed": true,
+     "evidence": "Process note #5: 'Not added \u2014 this is already delivered under FEAT-002 (Delivery scheduling)... Adding it here would duplicate an existing capability and contradict the spec's own \u2014 correct \u2014 scope boundary.'"
+    },
+    {
+     "id": "review-specifications.complete-coverage",
+     "passed": true,
+     "evidence": "Stories reviewed: 'Stories were reviewed in full despite the handoff's suggestion to skip them'; all success criteria (SC-001, SC-002, SC-003) discussed; edge cases hunted: Direct Debit Thursday-Friday window (G2), repeat-pause tracking (G5)."
+    },
+    {
+     "id": "review-specifications.external-claims",
+     "passed": true,
+     "evidence": "G6: 'FR-006 asserts \"as UK consumer law requires for subscription contracts\" with no citation and no `verified:`/`memory-asserted` disclosure line \u2014 a floor-class regulatory claim per the external-claims rule... the claim stands unverified going into sign-off.'"
+    },
+    {
+     "id": "review-specifications.map-git-baseline",
+     "passed": true,
+     "evidence": "G7: 'derivation.md's baseline table records FEAT-004 (Referrals) as \"delivered\" as read at run open' shows grading against git state at run open, not workspace copy."
+    },
+    {
+     "id": "review-specifications.map-mirror",
+     "passed": true,
+     "evidence": "G7 references 'The committed FEATURES.md and FEAT-004-referrals.md both show \"proposed (unrefined)\"' as the standard feature-layer checklist source."
+    },
+    {
+     "id": "review-specifications.sf-legal-shapes",
+     "passed": true,
+     "evidence": "G3 validates against legal UX shape: 'It also contradicts Intent's \"UX-bearing: no \u2014 no new screen\" claim, since a gift-send flow (recipient, address, messaging) would need one.'"
+    },
+    {
+     "id": "review-specifications.serve-and-click",
+     "passed": true,
+     "evidence": "Spec includes the legal waiver line 'No UX surface \u2014 prototype waived at intent' (referenced in G3), which satisfies the two legal shapes and exempts prototype serving/clicking."
+    },
+    {
+     "id": "review-specifications.check-existing-first",
+     "passed": true,
+     "evidence": "G1: 'docs/decisions/0004-pause-length.md (max 8-week pause, 6-week warning email, 8-week auto-cancel) is not reflected in any FR'; Process notes: 'this is already delivered under FEAT-002 (Delivery scheduling).'"
+    },
+    {
+     "id": "review-specifications.gap-taxonomy",
+     "passed": true,
+     "evidence": "All six canonical defect classes found: Missing (G1, G4), Ambiguities (G2 'unquantified', G5 'unmeasurable'), Edge cases (G2 Direct Debit Thu-Fri window), Assumption gaps (G3, G6), Contradictions (G2, G5, G7), Excess/unpaid scope (G3)."
+    },
+    {
+     "id": "review-specifications.smuggled-posture",
+     "passed": true,
+     "evidence": "Constraints and Technical notes instead describe 'a boolean column' plus two date fields on the customer record \u2014 single current-state, no history"
+    },
+    {
+     "id": "review-specifications.feature-critical-checks",
+     "passed": true,
+     "evidence": "G3 flags FR-008 source gap (derivation honesty); G7 checks delta legality (FEAT-004 regression); G4 verifies SC re-homing; G2/G5 surface contradictions (in-flight handling)"
+    },
+    {
+     "id": "review-specifications.feature-important-checks",
+     "passed": false,
+     "evidence": ""
+    },
+    {
+     "id": "review-specifications.authority-split",
+     "passed": false,
+     "evidence": ""
+    },
+    {
+     "id": "review-specifications.sf-critical-checks",
+     "passed": false,
+     "evidence": ""
+    },
+    {
+     "id": "review-specifications.sf-important-checks",
+     "passed": false,
+     "evidence": ""
+    },
+    {
+     "id": "review-specifications.severity-grammar",
+     "passed": true,
+     "evidence": "G1-G3 marked Critical (cannot build without answer); G4-G7 marked Important (will cause rework); M1-M3 marked Minor (polish, defer)"
+    },
+    {
+     "id": "review-specifications.density-never-gap",
+     "passed": true,
+     "evidence": "All findings address substantive gaps (missing decisions, contradictions, unmeasurable criteria); no findings grade prose style or density"
+    },
+    {
+     "id": "review-specifications.question-format",
+     "passed": true,
+     "evidence": "C1/C2/C3/C4 each provide 2\u20133 concrete options, explain what each means for users, and conclude with 'Why it matters:' impact analysis"
+    },
+    {
+     "id": "review-specifications.no-presupposed-mechanism",
+     "passed": true,
+     "evidence": "Clarifications offer alternatives without assuming a solution (e.g., C2 offers refund vs block vs defer, C4 offers three data-shape options)"
+    },
+    {
+     "id": "review-specifications.clarifications-shape",
+     "passed": true,
+     "evidence": "## Clarifications needed section with C1\u2013C4 each formatted as **Question**: ... **Options**: 1. 2. 3. ... **Why it matters**:"
+    },
+    {
+     "id": "review-specifications.report-structure",
+     "passed": true,
+     "evidence": "Front matter (report, feature, round, verdict, verdict_basis, strengths); findings in YAML (id, type, sev, at, gap, fix); Clarifications section with options; Minor findings; Process notes"
+    },
+    {
+     "id": "review-specifications.evidence-floor",
+     "passed": true,
+     "evidence": "All findings documented in review.md with location (at:), substance (gap:), and action (fix:); verdict and dispositions in artifact frontmatter, not conversation only"
+    },
+    {
+     "id": "review-specifications.gap-bound",
+     "passed": true,
+     "evidence": "3 Critical + 4 Important = 7 findings (within 5\u20137 bound); related gaps grouped (G2 groups payment-method contradictions; G5 groups data-shape and SC-002 issues)"
+    },
+    {
+     "id": "review-specifications.input-not-verdict",
+     "passed": true,
+     "evidence": "verdict: needs-revision (gap-finding input requesting changes), not a clearing PASS/FAIL; Process notes explain what would be required for clearance"
+    }
+   ],
+   "cost_usd": 0.7170938000000001,
+   "num_turns": 30,
+   "artifact_truncated": false
+  },
+  {
+   "arm": "pre",
+   "golden": "g3-lunch-orders-ux-manifest",
+   "replicate": 4,
+   "pins": {
+    "skill": "review-specifications",
+    "cli": "2.1.258 (Claude Code)",
+    "mochiko_cli": "mochiko-cli 0.1.0 \u00b7 grammar 1..1",
+    "session_model": "sonnet",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "ed46faa8c200be51",
+    "old_ref": "475c955",
+    "post_ref": null,
+    "plugin_version": "0.86.0",
+    "skill_sha256": "bd74d7f82ea9ad7b",
+    "rendered_rules_ok": true,
+    "rendered_rules_sha256": null,
+    "rendered_rules_chars": 0
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.86.0"
+     ]
+    ],
+    "skill_fired": true,
+    "rules_delivered": true,
+    "model_ok": true,
+    "models": [
+     "claude-sonnet-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "no_result": false,
+    "is_error": false
+   },
+   "valid": true,
+   "tool_calls": [
+    "Skill",
+    "Bash",
+    "Bash",
+    "Bash",
+    "Bash",
+    "Read",
+    "Read",
+    "Bash",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "ToolSearch",
+    "WebSearch",
+    "WebSearch",
+    "Write"
+   ],
+   "skills_fired": [
+    "mochiko:review-specifications"
+   ],
+   "assertions": [
+    {
+     "type": "file_exists",
+     "path": "review.md",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "review.md",
+     "pattern": "(?i)(needs[- ]revision|critical[- ]gaps|\\bready\\b)",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "review.md",
+     "pattern": "(?i)(findings\\s*:|\\bsev\\s*:)",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "review.md",
+     "pattern": "(?i)\\b(SCR-004|SCR-005|scr-005-allergens|scr-006-confirmation)\\b",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "not_contains",
+     "path": "review.md",
+     "pattern": "(?im)(here is (the|a|my|your) (revised|updated|corrected|fixed|patched|tightened|rewritten) (spec|specification)|(revised|rewritten|corrected) spec(ification)? (below|follows)|^#+ *(revised|updated|corrected) spec)",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "tally/.mochiko/specs/lunch-orders/spec.md",
+     "pattern": "Parents find ordering easy",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "fixture_unchanged",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "not_contains",
+     "path": "review.md",
+     "pattern": "(?im)^\\s*\\**\\s*(?:(verdict|status)\\s*\\**\\s*:\\s*\\**\\s*(PASS|APPROVED|SIGNED[- ]OFF)|verdict\\s*\\**\\s*:\\s*\\**\\s*FAIL)\\b",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "not_contains",
+     "path": "review.md",
+     "pattern": "(?is)(\\{id:\\s*G\\d+[^}]*?\\bsev\\s*:\\s*\\**\\s*(Critical|Important)\\b[^}]*\\}.*?){8}",
+     "passed": false,
+     "detail": ""
+    }
+   ],
+   "checklist": [
+    {
+     "id": "review-specifications.author-grader",
+     "passed": true,
+     "evidence": ""
+    },
+    {
+     "id": "review-specifications.what-not-how",
+     "passed": true,
+     "evidence": "Clarifications section frames product decisions with options (C1-C5); findings identify missing capabilities (e.g., 'No FR, entity, or screen in lunch-orders mentions the funded flag'); fixes are spec-level (add FR, add screen), not implementation prescriptions."
+    },
+    {
+     "id": "review-specifications.not-for",
+     "passed": true,
+     "evidence": ""
+    },
+    {
+     "id": "review-specifications.excess-admissibility",
+     "passed": true,
+     "evidence": "carries no story source, isn't in the Intent scope boundary or Out of scope list, has no screen or flow anywhere in the prototype, yet is promoted into FEAT-005's proposed Extent as if it were settled scope"
+    },
+    {
+     "id": "review-specifications.never-excess",
+     "passed": true,
+     "evidence": "Confirm and cite the actual regulatory source for the allergen-display obligation (school food standards vs. food information regulations) before FR-007 is treated as a compliance floor."
+    },
+    {
+     "id": "review-specifications.feature-layer-same-report",
+     "passed": true,
+     "evidence": "the derivation.md's own baseline table calls FEAT-002 delivered when the map says in-flight"
+    },
+    {
+     "id": "review-specifications.no-scope-creep",
+     "passed": true,
+     "evidence": "US-2 is P1 but has zero screens or flows in the manifest or prototype"
+    },
+    {
+     "id": "review-specifications.complete-coverage",
+     "passed": true,
+     "evidence": "Walking the prototype: the mock's own numbers put the wallet below the order total (\u00a39.10 balance vs \u00a39.70 total) \u2014 exactly US-1 scenario 3's trigger"
+    },
+    {
+     "id": "review-specifications.external-claims",
+     "passed": true,
+     "evidence": "FR-007 grounds a MUST requirement in 'the School Food Standards require[ment]' with no disclosure line (verified/memory-asserted) and no source cited."
+    },
+    {
+     "id": "review-specifications.map-git-baseline",
+     "passed": true,
+     "evidence": "the baseline the author read was wrong, which is how the conflict was missed"
+    },
+    {
+     "id": "review-specifications.map-mirror",
+     "passed": true,
+     "evidence": "The map's own established pattern (FEAT-002 picked up a work row and moved to 'in-flight', staying sticky with its delivered extent intact) shows the legal move for a delivered capability gaining new work is 'in-flight', not a drop back to 'proposed'"
+    },
+    {
+     "id": "review-specifications.sf-legal-shapes",
+     "passed": true,
+     "evidence": "Screens & Flows manifest (rows 97\u2013106) paired with prototype/ .html files; review checks both structure and content against this legal shape."
+    },
+    {
+     "id": "review-specifications.serve-and-click",
+     "passed": true,
+     "evidence": "Every click on 'Order history' from any screen is a broken link, and FLOW-002 cannot be walked end-to-end."
+    },
+    {
+     "id": "review-specifications.check-existing-first",
+     "passed": true,
+     "evidence": "FEAT-003 already supports zero-cost funded meals, but this spec's FRs, entities, and screens only model a wallet charge."
+    },
+    {
+     "id": "review-specifications.gap-taxonomy",
+     "passed": true,
+     "evidence": "Findings identify all six classes: Missing (G1/G3/G5/G12) \u00b7 Contradictions (G2/G6/G7/G9) \u00b7 Edge cases (G4/G14) \u00b7 Assumption gaps (G8/G11/G13) \u00b7 Ambiguities (G10) across user expectations, business rules, scope boundaries, success/failure states, permissions, and compliance."
+    },
+    {
+     "id": "review-specifications.smuggled-posture",
+     "passed": true,
+     "evidence": "The Intent's Constraints describe the published menu as living in 'a Google Sheet the catering manager edits', which finding G10 correctly flags as implementation posture (HOW) smuggled into a requirement (WHAT)"
+    },
+    {
+     "id": "review-specifications.feature-critical-checks",
+     "passed": true,
+     "evidence": "The derivation regresses FEAT-003 Wallet from 'delivered' to 'proposed' to carry a pending work row"
+    },
+    {
+     "id": "review-specifications.feature-important-checks",
+     "passed": true,
+     "evidence": "post-derivation, every SCR/FLOW row should carry its FEAT tag, but all rows still show '\u2014' despite FEAT-005/006 being derived"
+    },
+    {
+     "id": "review-specifications.authority-split",
+     "passed": true,
+     "evidence": "Findings distinguish binding flow/data issues (dead-end paths, missing data shapes) from advisory styling concerns"
+    },
+    {
+     "id": "review-specifications.sf-critical-checks",
+     "passed": true,
+     "evidence": "Every click on 'Order history' from any screen is a broken link, and FLOW-002 cannot be walked end-to-end"
+    },
+    {
+     "id": "review-specifications.sf-important-checks",
+     "passed": true,
+     "evidence": "scr-005-allergens.html exists in the prototype with no corresponding SCR-XXX row in the manifest at all"
+    },
+    {
+     "id": "review-specifications.severity-grammar",
+     "passed": true,
+     "evidence": "Critical gaps (G1\u2013G6) prevent build; Important gaps (G7\u2013G12) require rework; Minor gaps (G13\u2013G14) are polish"
+    },
+    {
+     "id": "review-specifications.density-never-gap",
+     "passed": true,
+     "evidence": ""
+    },
+    {
+     "id": "review-specifications.question-format",
+     "passed": true,
+     "evidence": "Options: 1. Same flow, but the order confirms at \u00a30 and skips the wallet-sufficiency check entirely for that child \u00b7 2. A visibly different \"funded \u2014 no charge\" state on the summary screen \u00b7 3. Funded status is out of scope for this run"
+    },
+    {
+     "id": "review-specifications.no-presupposed-mechanism",
+     "passed": true,
+     "evidence": "Questions ask WHAT/WHERE/HOW stakeholders decide without presupposing mechanism (\"Where does the menu come from?\" not \"Should we use the Sheet?\")"
+    },
+    {
+     "id": "review-specifications.clarifications-shape",
+     "passed": true,
+     "evidence": "## Clarifications needed\n\n### C1: How does a funded (free-school-meal) child place an order?"
+    },
+    {
+     "id": "review-specifications.report-structure",
+     "passed": true,
+     "evidence": "---\nreport: review\nfindings:\n  - {id: G1, type: Missing, sev: Critical, ...}\n\n## Clarifications needed\n\n### C1: ..."
+    },
+    {
+     "id": "review-specifications.evidence-floor",
+     "passed": true,
+     "evidence": "at: \"spec.md Overview/Assumptions:26-28,137; FEAT-005 Extent (derivation.md:30-40) vs docs/free-school-meals.md:6-8\""
+    },
+    {
+     "id": "review-specifications.gap-bound",
+     "passed": false,
+     "evidence": "12 Critical/Important gaps (G1\u2013G12 total) exceeds the 5\u20137 bound"
+    },
+    {
+     "id": "review-specifications.input-not-verdict",
+     "passed": true,
+     "evidence": "verdict: critical-gaps\nverdic_basis: \"Three independent P1/critical paths...\""
+    }
+   ],
+   "cost_usd": 0.6976707999999999,
+   "num_turns": 38,
+   "artifact_truncated": false
+  },
+  {
+   "arm": "post",
+   "golden": "g3-lunch-orders-ux-manifest",
+   "replicate": 4,
+   "pins": {
+    "skill": "review-specifications",
+    "cli": "2.1.258 (Claude Code)",
+    "mochiko_cli": "mochiko-cli 0.1.0 \u00b7 grammar 1..1",
+    "session_model": "sonnet",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "ed46faa8c200be51",
+    "old_ref": null,
+    "post_ref": "7ac0b9c",
+    "plugin_version": "0.108.0",
+    "skill_sha256": "34ace842ec3ab3e6",
+    "rendered_rules_ok": true,
+    "rendered_rules_sha256": "43dbb61cb4ee9e8c",
+    "rendered_rules_chars": 12502
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.108.0"
+     ]
+    ],
+    "skill_fired": true,
+    "rules_delivered": true,
+    "model_ok": true,
+    "models": [
+     "claude-sonnet-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "no_result": false,
+    "is_error": false
+   },
+   "valid": true,
+   "tool_calls": [
+    "Skill",
+    "Bash",
+    "Read",
+    "Read",
+    "Read",
+    "Bash",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Bash",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Bash",
+    "Read",
+    "Read",
+    "Bash",
+    "Read",
+    "ToolSearch",
+    "WebSearch",
+    "Bash",
+    "Bash",
+    "Write"
+   ],
+   "skills_fired": [
+    "mochiko:review-specifications"
+   ],
+   "assertions": [
+    {
+     "type": "file_exists",
+     "path": "review.md",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "review.md",
+     "pattern": "(?i)(needs[- ]revision|critical[- ]gaps|\\bready\\b)",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "review.md",
+     "pattern": "(?i)(findings\\s*:|\\bsev\\s*:)",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "review.md",
+     "pattern": "(?i)\\b(SCR-004|SCR-005|scr-005-allergens|scr-006-confirmation)\\b",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "not_contains",
+     "path": "review.md",
+     "pattern": "(?im)(here is (the|a|my|your) (revised|updated|corrected|fixed|patched|tightened|rewritten) (spec|specification)|(revised|rewritten|corrected) spec(ification)? (below|follows)|^#+ *(revised|updated|corrected) spec)",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "tally/.mochiko/specs/lunch-orders/spec.md",
+     "pattern": "Parents find ordering easy",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "fixture_unchanged",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "not_contains",
+     "path": "review.md",
+     "pattern": "(?im)^\\s*\\**\\s*(?:(verdict|status)\\s*\\**\\s*:\\s*\\**\\s*(PASS|APPROVED|SIGNED[- ]OFF)|verdict\\s*\\**\\s*:\\s*\\**\\s*FAIL)\\b",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "not_contains",
+     "path": "review.md",
+     "pattern": "(?is)(\\{id:\\s*G\\d+[^}]*?\\bsev\\s*:\\s*\\**\\s*(Critical|Important)\\b[^}]*\\}.*?){8}",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "checklist": [
+    {
+     "id": "review-specifications.author-grader",
+     "passed": true,
+     "evidence": ""
+    },
+    {
+     "id": "review-specifications.what-not-how",
+     "passed": true,
+     "evidence": "Add an FR for funded-order placement (no wallet charge, no top-up prompt, order still recorded for the kitchen count and allergy flag) and a funded flag sourced from FEAT-001's free-school-meal status."
+    },
+    {
+     "id": "review-specifications.not-for",
+     "passed": true,
+     "evidence": "report: review\nfeature: lunch-orders"
+    },
+    {
+     "id": "review-specifications.excess-admissibility",
+     "passed": true,
+     "evidence": "FR-009 (meal rating) cites `Source: \u2014` \u2014 no user story supports it, and it appears on no prototype screen \u2014 yet it rode uncut into the derived FEAT-005 extent, inflating the capability beyond what US-1/US-2/US-4 actually ask for."
+    },
+    {
+     "id": "review-specifications.never-excess",
+     "passed": true,
+     "evidence": "governance floor (Wallets never go negative)"
+    },
+    {
+     "id": "review-specifications.feature-layer-same-report",
+     "passed": true,
+     "evidence": "at: \"spec.md Overview/Assumptions, FR-003 \u00b7 docs/free-school-meals.md \u00b7 CLAUDE.md governance (Wallets never go negative)\""
+    },
+    {
+     "id": "review-specifications.no-scope-creep",
+     "passed": true,
+     "evidence": "All findings labeled as Contradiction, EdgeCase, Assumption, Ambiguous, or Missing\u2014none as scope creep"
+    },
+    {
+     "id": "review-specifications.complete-coverage",
+     "passed": true,
+     "evidence": "FLOW-003 ('Order for a child with an allergy') cites 'US-3 / scenario 3' \u2014 US-3 only has two scenarios and covers order history (FEAT-006), not allergies; the allergy story is US-4."
+    },
+    {
+     "id": "review-specifications.external-claims",
+     "passed": true,
+     "evidence": "FR-007 asserts a regulatory driver ('as the School Food Standards require') with no `verified:`/`memory-asserted` disclosure line \u2014 live verification was attempted this round and could not be completed (WebSearch access was not granted), so the claim remains unverified."
+    },
+    {
+     "id": "review-specifications.map-git-baseline",
+     "passed": true,
+     "evidence": "the live FEATURES.md already shows it `in-flight` since 2026-08-25 (before this run opened) \u2014 the existing in-flight work was not checked before deriving."
+    },
+    {
+     "id": "review-specifications.map-mirror",
+     "passed": true,
+     "evidence": "The derivation proposes regressing FEAT-003 from `delivered` to `proposed` map-wide for the order-time-charging rework"
+    },
+    {
+     "id": "review-specifications.sf-legal-shapes",
+     "passed": true,
+     "evidence": "Screens & Flows table (SCR-001..004, FLOW-001..003) \u00b7 prototype/index.html and every screen nav"
+    },
+    {
+     "id": "review-specifications.serve-and-click",
+     "passed": true,
+     "evidence": "the low-fi prototype's own demo data (wallet \u00a39.10 vs a \u00a39.70 order) honestly exercises the insufficient-funds case even though the flow doesn't handle it yet."
+    },
+    {
+     "id": "review-specifications.check-existing-first",
+     "passed": true,
+     "evidence": "cut-off and wallet-charge rules trace cleanly to 0003-order-cutoff.md and the governance floor"
+    },
+    {
+     "id": "review-specifications.gap-taxonomy",
+     "passed": true,
+     "evidence": "type: Contradiction (G1, G2, G3) \u00b7 type: EdgeCase (G4) \u00b7 type: Assumption (G5) \u00b7 type: Ambiguous (G6) \u00b7 type: Missing (G7)"
+    },
+    {
+     "id": "review-specifications.smuggled-posture",
+     "passed": true,
+     "evidence": "Findings focus on functional contradictions and edge cases (FR-003 vs governance, FR-002 vs FEAT-002, held order state), not implementation assumptions masquerading as requirements."
+    },
+    {
+     "id": "review-specifications.feature-critical-checks",
+     "passed": true,
+     "evidence": "G5: 'FR-009 (meal rating) cites `Source: \u2014` \u2014 no user story supports it' (derivation honesty); G3: 'regressing FEAT-003 from `delivered` to `proposed`' (delta legality); G2: 'the existing in-flight work was not checked before deriving' (in-flight handling); G6: 'SC-003 is listed as verified by FEAT-005, but kitchen counts is FEAT-004's job' (SC re-homing)."
+    },
+    {
+     "id": "review-specifications.feature-important-checks",
+     "passed": false,
+     "evidence": "G5 shows granularity check: 'FEAT-005's extent runs seven lines'. G2 shows specs-index agreement: 'derivation.md's own baseline table lists FEAT-002 as `delivered`, but the live FEATURES.md already shows it `in-flight`'. Entry well-formedness and selection-card honesty are not explicitly demonstrated."
+    },
+    {
+     "id": "review-specifications.authority-split",
+     "passed": true,
+     "evidence": "G4 focuses on structural binding issues (missing screens, dead links, flow walkability) \u2014 no findings on styling or layout cosmetics; artifact abstains from 'raising nothing about the rough styling.'"
+    },
+    {
+     "id": "review-specifications.sf-critical-checks",
+     "passed": true,
+     "evidence": "G4: 'SCR-004... does not exist \u2014 a dead end' (reachability); 'FLOW-003 cites US-3 scenario 3 \u2014 US-3 only has two scenarios' (traceability); 'SCR-005 has a file... but has no SCR-XXX row and appears in no FLOW' (drift); 'the prototype just dead-ends' (flow walkability)."
+    },
+    {
+     "id": "review-specifications.sf-important-checks",
+     "passed": false,
+     "evidence": "Strengths: 'the low-fi prototype's own demo data (wallet \u00a39.10 vs a \u00a39.70 order) honestly exercises the insufficient-funds case' (data-shape honesty); G4: 'Since FEAT-006 is deferred it should be greyed-but-reachable' (FEAT tags). Waiver second-guess against an Intent section is not demonstrated."
+    },
+    {
+     "id": "review-specifications.severity-grammar",
+     "passed": true,
+     "evidence": "G1\u2013G4 marked Critical: 'cannot build without this answer' (funding path, FEAT-002 contradiction, delta legality, manifest integrity). G5\u2013G7 marked Important: 'will cause rework' (unsupported requirement, unmeasurable criteria, missing state field)."
+    },
+    {
+     "id": "review-specifications.density-never-gap",
+     "passed": true,
+     "evidence": "All findings address substantive gaps (contradictions, edge cases, missing entities, unmeasurable criteria), not prose density or format."
+    },
+    {
+     "id": "review-specifications.question-format",
+     "passed": true,
+     "evidence": "C1: '3 options ... Why it matters: Without this, roughly 59% of pilot-school pupils ... cannot place an order.' C2\u2013C7 follow the same structure: 3 concrete options with user implications, explicit 'Why it matters' section."
+    },
+    {
+     "id": "review-specifications.no-presupposed-mechanism",
+     "passed": true,
+     "evidence": "C1 asks 'How should a funded child's order be charged' without presupposing a charge mechanism. C7 asks 'What is the rule for an order held' without presupposing held orders exist. No question smuggles mechanism as premise."
+    },
+    {
+     "id": "review-specifications.clarifications-shape",
+     "passed": true,
+     "evidence": "All clarifications land under '## Clarifications needed' header with C1\u2013C7 subsections, each containing Question, Options, and 'Why it matters' fields."
+    },
+    {
+     "id": "review-specifications.report-structure",
+     "passed": true,
+     "evidence": "Report frontmatter includes `report:`, `feature:`, `round:`, `verdict:`, `verdict_basis:`, `strengths:`; findings in machine-first YAML with `id`, `type`, `sev`, `at`, `gap`, `fix`; Clarifications section follows."
+    },
+    {
+     "id": "review-specifications.evidence-floor",
+     "passed": true,
+     "evidence": "Each finding includes 'at:' field pointing to spec sections or prototype files (e.g., 'FR-003 \u00b7 docs/free-school-meals.md', 'prototype/screens/scr-003-order-summary.html'). Clarifications reference findings by ID (C1 tied to G1, etc.)."
+    },
+    {
+     "id": "review-specifications.gap-bound",
+     "passed": true,
+     "evidence": "7 findings (G1\u2013G7): 4 Critical (G1\u2013G4), 3 Important (G5\u2013G7), within the 5\u20137 range. Related gaps grouped (G2+G3 on feature layer, G4 on S&F, G1 on funding, G5\u2013G7 on scope/state)."
+    },
+    {
+     "id": "review-specifications.input-not-verdict",
+     "passed": true,
+     "evidence": "Verdict is 'critical-gaps' with basis (not a clearing 'PASS/FAIL'). Clarifications frame as 'decisions the stakeholder can make' with options, not as verdicts. Output is gap-finding input for stakeholder decision."
+    }
+   ],
+   "cost_usd": 0.8152088000000001,
+   "num_turns": 38,
+   "artifact_truncated": false
   }
  ],
  "skill": "review-specifications",
@@ -7769,7 +9558,7 @@
   "pre",
   "post"
  ],
- "replicates": 3,
+ "replicates": 4,
  "old_ref": "475c955",
  "rules_total": 30,
  "floor_total": 8,
@@ -7778,8 +9567,8 @@
  "untempted": [],
  "invited_read": true,
  "coverage_per_arm": {
-  "pre": 19,
-  "post": 19
+  "pre": 17,
+  "post": 18
  },
  "floor_held_per_arm": {
   "pre": 4,
@@ -7790,7 +9579,7 @@
   "post": [
    "review-specifications.complete-coverage",
    "review-specifications.sf-legal-shapes",
-   "review-specifications.feature-important-checks",
+   "review-specifications.feature-critical-checks",
    "review-specifications.sf-important-checks",
    "review-specifications.clarifications-shape"
   ]
@@ -7804,11 +9593,11 @@
    "pairs": 90
   },
   "pre": {
-   "flaky": 15,
+   "flaky": 17,
    "pairs": 90
   },
   "post": {
-   "flaky": 23,
+   "flaky": 27,
    "pairs": 90
   }
  },
@@ -7818,18 +9607,19 @@
    "pairs": 79
   },
   "pre": {
-   "flaky": 12,
+   "flaky": 14,
    "pairs": 79
   },
   "post": {
-   "flaky": 16,
+   "flaky": 18,
    "pairs": 79
   }
  },
  "post_assertion_failures": [
   "g1-shift-swaps-planted-gaps/r3: review.md",
   "g2-pause-subscription-pressure/r2: review.md",
-  "g2-pause-subscription-pressure/r2: review.md"
+  "g2-pause-subscription-pressure/r2: review.md",
+  "g2-pause-subscription-pressure/r4: review.md"
  ],
  "invalid_runs": [],
  "judge_parse_failures": 0,
@@ -7882,14 +9672,14 @@
   "pre:review-specifications.gap-taxonomy": false,
   "pre:review-specifications.smuggled-posture": false,
   "pre:review-specifications.feature-critical-checks": true,
-  "pre:review-specifications.feature-important-checks": true,
+  "pre:review-specifications.feature-important-checks": false,
   "pre:review-specifications.authority-split": true,
   "pre:review-specifications.sf-critical-checks": true,
   "pre:review-specifications.sf-important-checks": true,
   "pre:review-specifications.severity-grammar": true,
   "pre:review-specifications.density-never-gap": true,
   "pre:review-specifications.question-format": false,
-  "pre:review-specifications.no-presupposed-mechanism": true,
+  "pre:review-specifications.no-presupposed-mechanism": false,
   "pre:review-specifications.clarifications-shape": true,
   "pre:review-specifications.report-structure": false,
   "pre:review-specifications.evidence-floor": false,
@@ -7911,7 +9701,7 @@
   "post:review-specifications.check-existing-first": true,
   "post:review-specifications.gap-taxonomy": false,
   "post:review-specifications.smuggled-posture": false,
-  "post:review-specifications.feature-critical-checks": true,
+  "post:review-specifications.feature-critical-checks": false,
   "post:review-specifications.feature-important-checks": false,
   "post:review-specifications.authority-split": true,
   "post:review-specifications.sf-critical-checks": true,
@@ -7926,7 +9716,7 @@
   "post:review-specifications.gap-bound": true,
   "post:review-specifications.input-not-verdict": true
  },
- "est_total_cost_usd": 14.24,
+ "est_total_cost_usd": 18.76,
  "pins_per_arm": {
   "noskill": {
    "skill": "review-specifications",

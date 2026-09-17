@@ -271,3 +271,40 @@ and the load gate marked all 54 invalid — and were deleted before this run).
   27-session cap above, which is why it is the user's call). The (b) breach is a re-add decision
   through the strips path only once it survives that re-run. The deterministic read stands
   regardless: the cut skill passes the scripted layer 7/9 against the pre-cut body's 1/9.
+
+### Addendum — extra replicate, filled 2026-09-18
+
+Filled from `runs/baseline` after the pre-registered extra replicate (r4 on `pre` and `post`;
+runner at ebcab85, `post` arm pinned to the v0.108.0 tree at 7ac0b9c because the installed
+`mochiko-cli 0.1.0` cannot render HEAD's migration log; rendered-rules sha unchanged at
+43dbb61cb4ee9e8c). 36 sessions valid, 0 invalid, MISSING verdicts 0. pass^k now runs over four
+replicates on the two skill arms, so every figure below is stricter than the 2026-09-13 read.
+
+- coverage read — `post` live rules held / floors held: **18/30 · floors 8/8**. `pre`: **17/30 ·
+  floors 4/8**. Deterministic layer: `post` 9/12 (g1 r3, g2 r2, g2 r4 write no verdict in the
+  vocabulary; g2 r2 also misses the FR-002/FR-003 anchor), `pre` 1/12. `fixture_unchanged` held on
+  all twelve `post` runs; `pre` edited the spec once (g2 r1, the run already recorded above).
+- lost vs `pre` (invited read): **5 musts, 0 floors** — `complete-coverage` (post 11/12 raw, a single
+  g1 split), `sf-legal-shapes` (9/12: g1 3/4, g2 2/4), `feature-critical-checks` (11/12, a single g1
+  split), `sf-important-checks` (invited on G3 only: post 1/4 against pre 4/4), `clarifications-shape`
+  (11/12, a single g2 split). `feature-important-checks` left the lost set only because `pre` now
+  flakes once on g1 (3/4); its `post` raw count is 5/12 (g1 2/4, g2 1/4, g3 2/4) — the weakest rule
+  on the cut body, read as a regression candidate regardless of the runner's relative read.
+- band (invited pairs; all-pairs in parentheses): **`post` 18/79 = 22.8 % → capped 20 %** (27/90) ·
+  `pre` 14/79 = 17.7 % → 20 % (17/90). The extra replicate raised both shares, as four-way
+  agreement must; `post` stays above the cap.
+- budget: 36 grid sessions + 2 probes · **session spend US$ 18.76** (r4 added US$ 4.52); judge
+  spend unmetered — inside the US$ 25 cap, over the 27-session cap by the 9 sessions the user
+  authorised for this replicate.
+- ship bar (a) / (b) / (c) / (d): **met (8/8)** / **NOT met (5 > 2)** / **NOT met (22.8 %)** / met.
+- kit status: **HALTED — returned to the user.** The once-only remedy is spent and the `post` arm
+  is still noise-dominated by this file's rule, so the five must losses are not read as a pre/post
+  difference and no further sessions are pre-registered. What stands regardless of the band: the
+  cut body holds all eight floors where the pre-cut body holds four, passes the scripted layer 9/12
+  against 1/12, and never edits an input. What the raw counts say, offered as calibration not as a
+  ruling: two rules are substantively weaker on the cut body — `feature-important-checks` (5/12) and
+  `sf-important-checks` (5/12) — and the other three losses are single-replicate splits. The user's
+  options: accept the read as is (floors and the deterministic layer carry the ship decision; the
+  must losses stay recorded), or re-key — a kit-readings channel for the skill judge (the persona
+  judge gained one under ADR 2026-09-11) or re-cut goldens with the two Important-check rules
+  tempted on every golden — before any re-add through the strips path.
