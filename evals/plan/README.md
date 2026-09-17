@@ -60,7 +60,9 @@ are the instrument's three answers.
 - **No `--bare`** — it skips stored auth; isolation is `--setting-sources ""` + a
   neutral ephemeral cwd (fixture + provisioned `plugins/mochiko`, absolute
   `--plugin-dir`).
-- **Blocking:** the init-event load gate (pair name+version visible) and fixture/rubric
+- **Blocking:** the init-event load gate (pair name+version visible), the rule-delivery
+  gate (the command's own `mochiko-cli` lines render clean and the plan carries no
+  not-delivered halt), and fixture/rubric
   consistency. **Advisory:** every judge verdict (harness D2) — the runner exits 0 on
   judged degradation.
 - The wrapper forces *form only* — never the phases, seats, rules, or artifacts a good

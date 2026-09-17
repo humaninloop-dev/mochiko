@@ -13,10 +13,18 @@ One run = one headless `claude -p` session in an ephemeral workdir (fixture file
 a provisioned plugins/mochiko tree), invoking the command as the prompt under a pinned
 form-only wrapper (D11). The session plans; it never executes (allow-list fence, D7;
 user gates described, never awaited, D9). Grading: deterministic asserts (load gate,
-name resolution, cap-hit) + a Haiku rule-coverage checklist over the D8 plan-observable
-subset + a stub-detection axis + a position-swapped Sonnet pairwise read. Judges are
-advisory (harness D2): judged degradation never sets a nonzero exit code; only broken
-mechanics (missing prereg, load-gate failure) do.
+rule-delivery gate, name resolution, cap-hit) + a Haiku rule-coverage checklist over the D8
+plan-observable subset + a stub-detection axis + a position-swapped Sonnet pairwise read.
+Judges are advisory (harness D2): judged degradation never sets a nonzero exit code; only
+broken mechanics (missing prereg, load-gate failure, undelivered rules) do.
+
+The rule-delivery gate is the skill runner's, carried over: the command's own
+`!`mochiko-cli …`` lines are fired against the provisioned tree before the session, and the
+returned plan is scanned for the halt string a command surfaces when its rules did not
+arrive. Either limb failing invalidates the run and halts the grid, because a session whose
+rules never arrived plans about the halt rather than about the work, and grading that plan
+would read a broken instrument as a regression. The gate is scoped to the arms that fire a
+command; the `nocmd` control never loads one.
 
 Probe-settled invocation (2026-08-27): NO --bare (it skips stored auth by design);
 isolation = --setting-sources "" + neutral cwd; --allowedTools Read,Grep,Glob is a
@@ -253,11 +261,43 @@ def wrapper_text() -> str:
     return WRAPPER.read_text()
 
 
-def pins(plugin_dir: pathlib.Path) -> dict:
+def rendered_rules(cmd: str, plugin_dir: pathlib.Path) -> tuple:
+    """Fire the command's own `!`mochiko-cli …`` delivery lines against the provisioned
+    tree, exactly as the session will, and report whether every one of them exited 0.
+
+    The skill runner carries the same check. A tree whose command file has no delivery
+    line — every pre-v0.107.0 ref, where the rules still shipped as a schema file — renders
+    nothing and passes: the gate is about a slot that failed, never a slot that does not
+    exist yet. A non-zero exit here means the installed `mochiko-cli` cannot serve this
+    tree's migration log, so the session under it would plan against undelivered rules.
+    """
+    body = plugin_dir / "commands" / f"{cmd}.md"
+    if not body.is_file():
+        return "", True
+    out, ok = [], True
+    env = {**os.environ, "CLAUDE_PLUGIN_ROOT": str(plugin_dir)}
+    for m in re.finditer(r"^!`(.+)`\s*$", body.read_text(), re.M):
+        line = m.group(1).replace("${CLAUDE_PLUGIN_ROOT}", str(plugin_dir))
+        if not line.startswith("mochiko-cli "):
+            continue          # only the rule-delivery lines are the instrument's concern
+        r = subprocess.run(["sh", "-c", line], capture_output=True, text=True, env=env)
+        ok = ok and r.returncode == 0
+        out.append(r.stdout)
+    return "\n".join(out), ok
+
+
+def pins(cmd: str, plugin_dir: pathlib.Path) -> dict:
     """C3: versions pinned into every run's meta and the baseline."""
+    mcli = subprocess.run(["mochiko-cli", "--version"], capture_output=True,
+                          text=True).stdout.strip()
+    rendered, ok = rendered_rules(cmd, plugin_dir)
     return {"plugin_version": P.plugin_version(plugin_dir), "cli": S.claude_version(),
-            "session_model": SESSION_MODEL,
-            "wrapper_sha256": hashlib.sha256(wrapper_text().encode()).hexdigest()[:16]}
+            "mochiko_cli": mcli, "session_model": SESSION_MODEL,
+            "wrapper_sha256": hashlib.sha256(wrapper_text().encode()).hexdigest()[:16],
+            "rendered_rules_ok": ok,
+            "rendered_rules_sha256": (hashlib.sha256(rendered.encode()).hexdigest()[:16]
+                                      if ok and rendered.strip() else None),
+            "rendered_rules_chars": len(rendered) if ok else 0}
 
 
 parse_stream = S.parse_stream   # init · result · tool_calls (+ inputs, models, skills fired)
@@ -269,7 +309,7 @@ def plan_session(cmd: str, golden: dict, arm: str, old_ref: str | None) -> dict:
         wd = pathlib.Path(td) / "ws"
         wd.mkdir()
         plug = provision_workdir(wd, fixture_dir(cmd, golden), old_ref)
-        run_pins = pins(plug)
+        run_pins = pins(cmd, plug)
         if arm == "nocmd":
             prompt = golden["control_prompt"]
         else:
@@ -290,9 +330,16 @@ def plan_session(cmd: str, golden: dict, arm: str, old_ref: str | None) -> dict:
         # Blocking load gate (I1): the pair under test visible in the init event.
         loaded = S.loaded_plugins(init)
         load_ok = ("mochiko", run_pins["plugin_version"]) in loaded
+        # Delivery gate: a command whose rules did not arrive says so and halts, and the
+        # plan is then about the halt rather than about the work. Both limbs are scoped to
+        # the arms that fire the command — the `nocmd` control never loads one.
+        rules_ok = run_pins["rendered_rules_ok"] if arm != "nocmd" else None
+        delivered = ("rules not delivered" not in plan) if arm != "nocmd" else None
         asserts = {
             "load_gate": load_ok,
             "loaded_plugins": loaded,
+            "rendered_rules_ok": rules_ok,
+            "rules_delivered": delivered,
             "cap_hit": result.get("num_turns") == MAX_TURNS,   # warning, not failure
             "fence_breach": sorted({t for t in out["tool_calls"]
                                     if t not in ("Read", "Grep", "Glob")}),
@@ -302,6 +349,13 @@ def plan_session(cmd: str, golden: dict, arm: str, old_ref: str | None) -> dict:
         if asserts["auth_failure"] or not load_ok:
             die(f"run invalid — load_gate:{load_ok} loaded:{loaded} "
                 f"auth_failure:{asserts['auth_failure']} (arm {arm}, {golden['id']})")
+        if rules_ok is False or delivered is False:
+            die(f"run invalid — mochiko-cli rules not delivered "
+                f"(rendered_rules_ok:{rules_ok} plan_reports_delivery:{delivered}, "
+                f"arm {arm}, {golden['id']}, plugin {run_pins['plugin_version']}, "
+                f"mochiko-cli {run_pins['mochiko_cli'] or 'absent'}) — install a binary "
+                f"whose grammar range covers this tree's migration log "
+                f"(`cargo install --path crates/mochiko-cli`), then re-run")
         return {"golden": golden["id"], "arm": arm, "plan": plan, "pins": run_pins,
                 "asserts": asserts, "cost_usd": result.get("total_cost_usd"),
                 "num_turns": result.get("num_turns"),
