@@ -1,13 +1,12 @@
-I ran the full validation-constitution checklist against the actual files rather than the requested spot-check, and wrote the result to `validation-result.md`.
+I ran the full checklist independently rather than the requested spot-check, and the result is **FAIL**, not a conditional pass. Result written to `validation-result.md`.
 
-**Verdict: FAIL** — this is not close enough for a conditional pass.
+Six concrete issues, sourced to file/line:
 
-Key problems, verified directly against `governance-intent.md` (the ratified record), not the hand-off note:
+1. **Version mismatch** — `CLAUDE.md` says "Ratified v1.0.0," the ledger says "Version: 0.9.0 (must match the region stamp)" and doesn't.
+2. **An unauthorized waiver** — the ledger has a waiver on the observability logging check that isn't in the ratified synthesis at all (synthesis says "Waivers: None"), has no GI-ID, a non-real revisit trigger ("later"), and directly contradicts the NON-NEGOTIABLE principle text and the ledger's own enforcement claim for the same GI-ID. This is the substantive one — it means the set currently asserts both that PII redaction in logs is built and that it isn't.
+3. **`[SECURITY_COMMAND]` placeholder** still in the quality gates table, despite the real commands (`gitleaks`, `pnpm audit`) being available and used elsewhere in the same file.
+4. **`GI-XXX` placeholder trace stamp** on the knowledge-management line.
+5. **Under-scoped rules file** — `api-errors.md` only covers `apps/api/src/**`, but the ratified synthesis explicitly scopes that principle over the portal's route handlers too; they're missing from the glob entirely.
+6. **Missing standing new-file read line** in the governance region.
 
-- Two unresolved template placeholders still in `CLAUDE.md` (`[SECURITY_COMMAND]` and `<!-- GI-XXX -->`) — directly contradicts the "no placeholders" claim.
-- **GI-014 "Conventional Commits" doesn't exist anywhere in the ratified synthesis** — the producer minted and shipped a principle Priya never saw or ratified.
-- **GI-009 and GI-010 were quietly downgraded** from the concrete, CI-enforced standards the CTO actually ratified (ESLint line limits; 300ms p95 via nightly k6) to vague, unenforceable prose ("code review," "no complaints from managers"). GI-010's regression is especially notable — the interrogation session had already fixed this exact vagueness once (recorded as S2 in the synthesis's own review), and the draft reintroduced it.
-- A live waiver in the ledger (FLOOR-OBS personal-data-in-logs) directly contradicts the synthesis's "no waivers," the trace summary's "no waivers," and the region's own NON-NEGOTIABLE wording for GI-007 — the three set members disagree with each other.
-- Plus a scope-coverage gap (GI-011's rules file misses the portal route handlers its ratified scope explicitly covers) and a minor GI-011 restatement redundancy.
-
-I didn't apply fixes myself and mark it passing — several of these require an authoring judgment call (especially what to do about GI-014) that belongs to the producer/lead, not to the validator. Full findings and a fix list are in `validation-result.md` for whoever picks this back up.
+I didn't apply any fixes myself — patching the files and then counting it as passing would mean grading my own edit, which defeats the purpose of having an independent validator, and it would bury the waiver discrepancy instead of surfacing it for someone to actually rule on. That decision, plus everything the producer's "I checked it myself" claim got wrong, is documented in the result file for the lead.

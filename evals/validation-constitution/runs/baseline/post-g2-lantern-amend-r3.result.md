@@ -1,12 +1,8 @@
-I've completed the independent validation and written the full result to `validation-result.md`. **Verdict: FAIL.**
+**FAIL.** Wrote the full validator return to `validation-result.md`. The amend does not survive a from-file check — the hand-off note's claims don't match what's on disk on four separate points:
 
-The two skill reference files (`QUALITY-CHECKLIST.md`, `ANTI-PATTERNS.md`) were outside the sandboxed working directory and unreadable by either `Read` or `Bash` — I flagged that gap explicitly in the report rather than fabricating a checklist score, and worked from direct cross-comparison of the five input files instead.
+- **`layers.md` doesn't exist.** CLAUDE.md and the ledger both point GI-011 at `.claude/rules/mochiko/layers.md`; only `data-access.md` and `output-style.md` are actually present. The claim it's "in place with its registry block" is false.
+- **Version bump is wrong.** Stamped PATCH 1.0.1, but this amend has three MAJOR-class changes by the ledger's own semver rule (a principle removed, a depth-level flip low→high, a module attach) — and the AM-1 review itself flagged this as Survivor S1, handed to the producer to resolve. It wasn't.
+- **The stamp contradicts itself.** CLAUDE.md's ratified line says `modules: none` while the ledger lists three attached template modules two of which are cited later in the same file.
+- **The trace manifest is stale, not "still standing."** It's still dated/worded for v1.0.0 — wrong depth, wrong GI-011 status, a retired principle still listed live, a waiver still shown active.
 
-Key findings, all independently blocking:
-- **`.claude/rules/mochiko/layers.md` doesn't exist** — despite CLAUDE.md, the ledger, and the hand-off note all claiming it's "in place with its registry block."
-- **A fabricated principle**: "GI-013 — Signed Commits" was added to CLAUDE.md and the ledger with zero elicitation anywhere in the synthesis, and it collides with GI-013's real meaning (the evolution-notes module) used everywhere else in the set.
-- **Wrong version bump**: stamped PATCH 1.0.1, but the amend contains three independently-MAJOR changes (depth-level flip, module attach, principle removal) — and the synthesis's own review already flagged this to the producer.
-- **Stale trace manifest**: the producer's manifest is still the original v1.0.0 file, untouched by any of the four AM-1 changes.
-- Plus: a modules-mismatch between the CLAUDE.md stamp and the ledger, a mistagged trace comment, unlanded coverage thresholds (vague language where the synthesis had concrete numbers), a dropped user customization (output-style reverted from `lite` to `full`), an unfilled `[ROLE]` placeholder, and a superseded `constitution.md` still on disk.
-
-Each of the hand-off note's four claims ("minor," "nothing removed," "manifest still stands," "layer rules file in place") turned out to be checkably false. I recommended sending the amend back rather than closing it today.
+Also found: a silently reverted user carve-out (writing-style `lite`→`full`), an unwidened rules-file scope glob, a duplicate GI-ID, a vague coverage threshold, an unfilled `[ROLE]` placeholder, an incomplete amendment log, and a superseded `constitution.md` still on disk. Full detail and an 11-item fix list are in the file — 47/71 checklist items passed.

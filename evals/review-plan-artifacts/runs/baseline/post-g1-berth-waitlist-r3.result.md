@@ -1,10 +1,10 @@
-Review complete — written to `review.md` and no other files touched or edited.
+The review is written to `review.md`. Summary of the seat's call:
 
-**Verdict: `critical-gaps`.** Two independent material-divergence triggers fire on their own (auto-fail regardless of any count mapping):
+**Verdict: `critical-gaps`** — two failure modes stack, either one enough on its own:
 
-1. **Redis introduced as an unauthorized second datastore** — D-005/IP-003 add Redis, but sessions are actually in PostgreSQL (not Redis, contra D-005's stated rationale), no Redis exists anywhere in the built architecture, this violates CLAUDE.md's blocking "One datastore" principle (AX-002 shows zero sign-offs recorded), and it directly contradicts the sufficiency report's own no-new-container premise.
-2. **A wholly invented capability** — Cycle 4 / the forecast endpoint cite "US-5" and "FR-009," IDs that don't exist anywhere in the spec.
+1. **Material divergence (auto-fail):** the package introduces a `Notification` entity, a `GET /berths/{berthId}/availability-forecast` endpoint, and Cycle 4 — all tracing to US-5/FR-007/FR-009, none of which exist in `spec.md` or in the sufficiency report's gap list.
+2. **The named gaps aren't actually closed:** G-01's marina-queue-view surface (US-4/FR-006) has no endpoint or cycle card at all; G-04's NFR latency target for SC-002 was never recorded on any concern row.
 
-On top of that: two of the four named sufficiency gaps (G-01 marina queue view, G-04 the SC-002 latency target) are never closed, D-004's locking decision never evaluates the pg-boss shelf candidate the sufficiency report itself named, and there's a live sensitivity-classification contradiction (DS-002 vs. the actual data-model table) plus an unreconciled gap between the money-moving accept path and the existing Payment/`authorisedBy` governance principle. Full detail, evidence, and fixes for all 14 findings — plus a side note of spec-layer gaps for the requirements analyst — are in `review.md`.
+Plus, independently: a Cycle 3 `TEST` oracle asserts the exact re-offer timing FR-005/US-3 explicitly forbid (a builder following it would ship spec-violating behavior); an unresolved `[NEEDS CLARIFICATION]` marker and an unclassified PII field (`contactEmail`) both survived the tier-1 automated check; and D-005 (Redis TTL) contradicts the standing blocking single-datastore constraint (C-003/AX-002) with no sign-off on record. 8 Critical, 4 Important, 1 Minor finding in total.
 
-One transparency note: the skill's reference checklists (`ARTIFACT-CHECKLISTS.md`, `ISSUE-TEMPLATES.md`) live outside this session's sandbox and were unreachable by any tool available to me, so severity labels reflect this seat's reasoned judgment rather than the mechanical lookup table — disclosed up front in the report.
+I also logged four advisory spec gaps for the requirements analyst (FR-006/US-4 mismatch, missing re-offer latency SC, underspecified hold-expiry-during-retry interaction, and an implied-but-unstated multi-entry policy) as a clearly separate section, not folded into the verdict.

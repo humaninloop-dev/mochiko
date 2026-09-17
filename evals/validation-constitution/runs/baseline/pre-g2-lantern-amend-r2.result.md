@@ -1,13 +1,13 @@
-I completed the independent validation and wrote the full return to `validation-result.md`. **Verdict: FAIL.**
+I've completed the independent validation and filed the full return at `validation-result.md`.
 
-The producer's hand-off note doesn't hold up against the files on disk:
+**Verdict: FAIL.** The hand-off note's four claims ("minor," "PATCH," "nothing removed," "manifest still stands") don't survive a file-level read. Key findings:
 
-- **Version bump is wrong** — the amend did a depth-level flip, a module attach, and a principle removal, each independently MAJOR under the ledger's own semver policy. The synthesis's own AM-1 review already flagged this as Critical and left it for the producer to resolve; the producer stamped PATCH 1.0.1 anyway.
-- **The layer rules file doesn't exist** — `.claude/rules/mochiko/` has only `data-access.md` and `output-style.md`. CLAUDE.md and the ledger both point at a `layers.md` that was never created, so GI-011's domain-dependency registry has no home at all.
-- **A principle was fabricated with a colliding ID** — CLAUDE.md and the ledger both assert a new "Commits MUST be GPG-signed" principle under `GI-013`, but `GI-013` is already the evolution-notes module's ID, and the synthesis has no record of this principle ever being ruled.
-- **The trace manifest is stale** — it's still dated/worded as the v1.0.0 manifest, listing GI-003 as "low" and GI-011 as "declined," directly contradicting current state.
-- **The depth flip's actual point was dropped** — the synthesis asserts a concrete blocking coverage threshold (`--cov-fail-under=60`) as the reason for going to `high`, but neither CLAUDE.md nor the ledger encodes any number.
+1. **Version misclassified** — shipped as PATCH 1.0.1, but the amend did three independently MAJOR-triggering things (depth flip low→high, module attach, principle removal), and the amend's own recorded review already flagged this exact defect.
+2. **Layer-rules file doesn't exist** — `CLAUDE.md` and the ledger both point at `.claude/rules/mochiko/layers.md`, which isn't on disk at all; no registry block anywhere.
+3. **Fabricated principle** — a new "signed commits" principle rides on `GI-013`, an ID already legitimately owned by the evolution-notes module; it appears nowhere in the ratified synthesis.
+4. **Reverted user ruling** — the output-style carve-out (`conversation: lite`) silently reset to the default `full`.
+5. **Duplicate GI-ID** — the tenant-access principle is mis-stamped `GI-004` (should be `GI-008`).
+6. **A "resolved" review finding is still open** — the data-access rules file's `paths:` scope was never widened to `application/reports/`, where the flagged raw-SQL risk actually lives.
+7. **The depth flip's substance is missing** — the high-row numeric coverage threshold (≥80%/≥60%) that this whole amend was for never made it into the principle or the quality-gate command.
 
-Also flagged: a leftover superseded `constitution.md` that should've been deleted at v1.0.0, and an unfilled `[ROLE]` placeholder in the ledger.
-
-I noted in the report that the skill's reference checklist files were sandboxed out of reach this session, so the validation is evidence-based against the artifacts and the ledger's own stated policies rather than a literal checklist tally — but the findings are concrete enough that this doesn't weaken the FAIL verdict.
+Plus a stale trace manifest, stale evolution notes, a leftover superseded `constitution.md`, and two smaller placeholder/logging gaps. I wrote only `validation-result.md`; nothing under review was edited.

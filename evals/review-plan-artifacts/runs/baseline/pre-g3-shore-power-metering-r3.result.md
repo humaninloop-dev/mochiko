@@ -1,9 +1,0 @@
-I've written the review to `review.md`. Summary of the round-2 checkpoint verdict: **critical-gaps** (worse than needs-revision), driven by five Critical findings — most notably:
-
-- **F1**: the only test exercising the P1 pricing story (Cycle 4 in `tasks.md`) asserts the exact wrong invoice total (£6.00, all 20 kWh at the post-change tariff) that US-2's own acceptance scenario explicitly names as the forbidden answer.
-- **F2**: the re-issued `constraints-and-decisions.md` (C-005/D-004) now asserts Enerlink can't push and the worker must pull hourly — directly reversing the signed `store-delta.md` (SPN-007 dedicated push-ingest container, AX-013 ruled "push-based"), while `contracts/api.yaml` and `tasks.md` Cycle 1 still assume push. Three artifacts disagree with the fourth.
-- **F3**: `quickstart.md`, flagged required by the sufficiency report and described in this checkpoint's briefing as an existing prior-round artifact, doesn't exist anywhere in the repo.
-- **F4**: a new `consumption-export` endpoint cites a nonexistent "US-6" and has no spec grounding or test coverage — looks like scope added at the design desk.
-- **F5**: D-005 (storage) fails the blocking adopt-first disclosure check — no shelf candidate named or ruled out in the decision record itself, even though the design-disclosure metadata contradicts that by admitting (and rejecting) Postgres partitioning.
-
-Plus four Important/Minor findings (US-4 has zero cycle-card coverage, Cycle 2's TEST gate is a bare test-suite re-run, an unresolved `[TODO]` on tariff authorization, and an orphan `D-009` citation in the unchanged `data-model.md`). Full detail and fixes are in `review.md`.

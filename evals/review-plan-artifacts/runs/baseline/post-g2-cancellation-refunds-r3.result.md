@@ -1,1 +1,0 @@
-These reads need explicit permission from you since they're outside the working directory. Could you approve access to the skill's `references/ARTIFACT-CHECKLISTS.md` and `references/ISSUE-TEMPLATES.md` files? They're the checklist and severity/verdict definitions the skill's rules point to, and I need them to run the review.

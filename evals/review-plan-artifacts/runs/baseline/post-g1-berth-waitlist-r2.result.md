@@ -1,12 +1,12 @@
-I ran the full review-plan-artifacts protocol and wrote the report to `./review.md`. No other files were written or edited.
+The review is written to `review.md`. Summary of the completeness grade for FEAT-031's design-phase package:
 
-**Verdict: critical-gaps.** Two independent auto-fail triggers hit:
+**Verdict: critical-gaps** — driven by material divergence (an entire unrequested capability, "availability-forecast"/US-5/FR-009, with no basis in spec or the sufficiency gap list) plus 11 other Critical issues, including:
 
-1. **Material divergence** — an entire out-of-scope feature (a berth availability forecast endpoint/entity/cycle) was designed and carded citing a story (US-5) and requirements (FR-007, FR-009) that don't exist anywhere in the spec.
-2. **Two of four named gaps unclosed** — G-01's "marina queue view" (US-4/FR-006) has zero contract or cycle coverage despite being explicitly named, and G-04's SC-002 latency target was never recorded as an NFR row.
+- The gap list's actual requirement (FR-006/US-4 marina queue view, G-01) was never built — no endpoint, no cycle card — while the unrequested forecast feature took its place.
+- G-04 (SC-002 latency target) still unclosed — no NFR row recorded.
+- D-005 picks Redis for hold expiry, violating the product's blocking single-datastore constraint (C-003/AX-002) with no sign-off recorded — and silently contradicts the package's own "no structural change" claim.
+- D-004 considers only one alternative and never names a shelf candidate (Postgres advisory locks were sitting right there).
+- WaitlistEntry.contactEmail is unmarked for PII sensitivity (tier-1 checker confirmed), and there's a live `[NEEDS CLARIFICATION]` marker (tier-1 confirmed) on C-006.
+- Offer's state machine has no "lapsed" state despite FR-005 requiring it; Notification traces to a nonexistent FR-007; the Stripe accept endpoint lacks an idempotency key and documented failure modes.
 
-On top of that, three more Critical defects: D-005 introduces Redis as an unsanctioned second datastore (violating the blocking C-003 constraint, with zero AX-002 sign-off, justified by a factually false claim that Redis is "already in the stack"); Cycle 3's acceptance test literally asserts the opposite of what FR-005/US-3 require (rewards the bug, fails the fix); and D-004's locking decision never named the obvious existing shelf candidate (Postgres advisory locks) despite being a one-datastore shop.
-
-I also flagged five Important issues (a contradictory `[P]`/dependency tag, a cycle card that pre-writes file paths in violation of the build-time-decomposition boundary, an inconsistent sensitivity annotation, two untested spec edge cases, and an unresolved `[NEEDS CLARIFICATION]` marker), plus a separate section of spec gaps for the requirements analyst — most notably that the feature's premise depends on a cancellation mechanism the product doesn't have yet (FEAT-034 is still pending).
-
-Two environment notes are disclosed at the top of the report: the skill's reference checklists (`ARTIFACT-CHECKLISTS.md`, `ISSUE-TEMPLATES.md`) and the tier-1 pre-assert script were outside this sandbox's readable paths, so I graded manually against the inline rule text and disclosed the verdict-mapping assumption I used instead of guessing at undisclosed content.
+I also appended a non-blocking section for the requirements analyst noting spec-layer gaps I ran into (missing notification FR, the marketing-consent silence behind C-006, overlapping-date-range handling, and the no-saved-payment-method case) — clearly marked as outside this skill's jurisdiction and not part of the verdict.

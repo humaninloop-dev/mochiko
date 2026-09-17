@@ -1,14 +1,12 @@
-I ran the validation independently against the actual artifacts (never the producer's summary) and wrote the full result to `validation-result.md`.
+I graded the full set (CLAUDE.md governance region, the four rules files, the ledger) against the checklist, cross-checked against `governance-intent.md` and the trace manifest — and wrote the verdict to `validation-result.md`.
 
-**Verdict: FAIL.** Six blocking findings survived, several of which directly contradict the producer's hand-off note:
+**Verdict: FAIL** — 11 blocking findings, plus 3 advisory notes. Highlights:
 
-1. **Unwaivable obligation waived** — the ledger states legal-mandate obligations can't be waived, then waives the PCI-DSS quarterly ASV scan two lines later.
-2. **PCI rule scoped to the wrong directory** — `cardholder-data.md` only covers `src/payments/`, but the synthesis's own review already caught and marked "resolved" that the PAN transits `src/checkout/` first; the fix was never applied to the actual rules file.
-3. **Module stamp under-declares itself** — CLAUDE.md's ratified line lists `gdpr · a11y` and omits `pci-dss`, contradicting its own cited trace and the ledger header.
-4. **Coverage threshold mismatch** — the floor card fixes 60% blocking with "no session override"; both the region and ledger encode 70% with no disclosed rationale.
-5. **The exact anti-pattern the producer said to skip** — "Fast pages" regressed from a concrete, CI-enforced 2.5s LCP gate to "Pages SHOULD load quickly" / "engineers watch the score," with the known `npm run lhci` command dropped entirely from the quality gates.
-6. **Trace manifest misreports its own waiver** — it claims "Waivers: none" while one exists.
+- **Critical:** the ledger waives the pci-dss quarterly ASV scan — a legal-mandate obligation, which the ledger's own printed rule says is a validator FAIL regardless of the founder's overrule.
+- A principle ("all docs in British English") was minted from a synthesis element that was explicitly recorded as a *deliberate exclusion* — it directly reverses a ruling the founder signed off on.
+- The PCI rules file only scopes `src/payments/`, missing `src/checkout/` — the exact gap the session's own review said it had resolved, but the fix never reached the actual rules file.
+- Coverage threshold drafted at 70% blocking against an explicit "no session override, ≥60%" ruling.
+- The CLAUDE.md ratified-stamp line omits `pci-dss` from the attached-modules list.
+- A leftover `GI-XXX` placeholder trace ID, a duplicated GI-004 index entry, a universal `**/*` glob in a scoped rules file, and a missing Exception registry section.
 
-I also cross-checked `docs/engineering-norms.md` per the lead's request — no conflict; it's explicitly non-binding cultural notes and doesn't assert anything the governed set contradicts.
-
-One transparency note included in the report: the skill's reference checklist files were outside this session's permitted read path and couldn't be loaded, so the findings rest on direct cross-file comparison against the ratified synthesis rather than a literal checklist walk — the failures found are independently verifiable regardless.
+I also flagged, and pushed back on, the two claims in the hand-off note: skipping the anti-pattern table (it caught a real vague-principle/missing-enforcement defect on the performance principle) and treating founder sign-off as equivalent to validation (several findings are exactly places where the drafted set doesn't match what the founder actually ruled). `docs/engineering-norms.md` was checked for disagreement only, per its own "not rules, edit freely" framing — no conflict found, and I recommended it stay separate from governance rather than being folded in.
