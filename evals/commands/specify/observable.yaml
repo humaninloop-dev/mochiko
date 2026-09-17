@@ -1,0 +1,104 @@
+# D8 partition — /mochiko:specify rule set, plan-observable vs out-of-instrument.
+# Ruling: command-plan-only-eval D8 (accepted 2026-08-27, review fold C1).
+# The `observable` list IS the D2 rubric; `out_of_instrument` rules are declared here,
+# never silently absent at coverage 0. Validated by `run.py check-rubric specify`:
+# every schema rule ID appears in exactly one list.
+#
+# Out-of-instrument reason vocabulary (setup's — specify has no epic-scope rules; its two
+# epic rules are a latitude and a floor, classed on their own terms):
+#   contingency    — fires only on a run-time event no forward plan contains
+#   conditional    — observable only under a fixture condition no current scenario plants
+#                    (activating it = planting the condition, a scenario-design act)
+#   latitude       — grants freedom; nothing falsifiable in a plan
+#   register       — prose-register meta-rule; not plan content
+#   fail-condition — end-state failure, not forward-plan content
+#
+# Condition gating: the three scenarios plant both values of every surface-presence
+# dimension and both values of `ux_bearing` — s1-online-payment (UX-bearing · map present
+# with an unrefined stub in the territory · governance region present · km file present),
+# s2-webhook-retry (not UX-bearing · map present · governance region present · km file
+# absent), s3-bare-greenfield (UX-bearing · map absent · governance region absent · km file
+# absent). `ux_bearing` is moment-resolved at intent — a user ruling a headless run cannot
+# take — so each plan describes that gate with both branches and the feature description
+# makes one branch the scenario-concrete path (s1 and s3 name a screen; s2 names none).
+# `seats` resolves to multi in every scenario: the stress-test is always a second seat.
+command: specify
+
+observable:
+  # roles
+  - {id: spec.capability-frame-at-intent, why: intent stage shows the PM seat naming the capabilities the territory touches with an extend-or-mint call each — nouns and verbs only — agreed with the user and landed in Intent}
+  - {id: spec.confirm-frame-post-stories, why: a post-stories step re-confirms or adjusts the frame against what the stories showed — stories win}
+  - {id: spec.cut-work-rows, why: rows cut per capability after the confirm step and every SC mapped to the capability or row that verifies it}
+  - {id: spec.filter-rejections-recorded, why: derivation step records a rejected story with its why in the story file — s1 plants the PDF-cents bug as bait}
+  - {id: spec.pm-recommends-never-selects, why: selection card is a recommendation and the pick is described as the user's}
+  - {id: spec.stress-test-one-pass, why: one grading pass over spec + stories + derivation + map delta read from the files with the map's run-open git state as its baseline}
+  - {id: spec.stress-test-prototype-walk, why: s1 and s3 plan a served-prototype walk — every flow clickable and every screen reachable with drift a blocking gap}
+  # reserved
+  - {id: spec.reserved-to-user, why: plan names the decisions held for the user — intent confirmation with the frame · clarifications · clicking screens as they land · an escalated filter ruling}
+  - {id: spec.selection-card, why: card contents planned — rows per capability · recommendation · dependency order · deferred-SC list · per-capability completeness view at the moment of choice}
+  - {id: spec.gate-selection, why: selection gate described as the user's with onward branches}
+  - {id: spec.gate-acceptance, why: accept / amend / reject gate over the whole with acceptance executing the map batch and rejection leaving the map untouched}
+  # tools
+  - {id: spec.deliverable, why: the spec workspace path with a slug derived from the description · spec.md plus stories/US-*.md · never offered for deletion · uncertainty into Assumptions and Open Questions}
+  - {id: spec.intent-stage-first, why: intent stage precedes every authoring step and walks the six probes — scope · delivery · depth · UX-bearing · constraints · out of scope}
+  - {id: spec.map-obligated-read, why: s1 and s2 read FEATURES.md plus the territory entries at intent}
+  - {id: spec.missing-map-surfaced, why: s3 surfaces the absent map and offers /mochiko:setup rather than proceeding silently}
+  - {id: spec.unrefined-stubs, why: s1 plants FEAT-005 marked unrefined — treated as a hypothesis and confirmed or parked by frame-first derivation — never an anchor}
+  - {id: spec.intent-synthesis-governs, why: the confirmed synthesis is carried verbatim into the Intent section and cited as governing later stages}
+  - {id: spec.frame-greenfield-inputs, why: s3 frames from the intent conversation and the README's domain nouns with no map to read}
+  - {id: spec.whole-feature-prototype, why: s1 and s3 prototype the whole feature with a re-tag pass at derivation greying unselected and rejected screens}
+  - {id: spec.feature-map-craft, why: derivation · filter · entries · index lines · delta · specs-index row bound to the feature-map skill and its templates — referenced not restated}
+  - {id: spec.map-minimalism-binding, why: capability tests and extend-vs-mint referenced to the minimalism skill}
+  - {id: spec.prototype-craft, why: s1 and s3 bind the manifest and prototype/ app to the prototype skill · s2 takes the waiver line}
+  - {id: spec.governance-briefs, why: s1 and s2 name the relevant rules files as an obligated read in each author's brief}
+  - {id: spec.governance-region-absent, why: s3 surfaces the absent governance region and offers /mochiko:setup}
+  - {id: spec.km-landing, why: s1 plans the landing ritual at acceptance — the online-payment BACKLOG item closed to the trail · ROADMAP touched · invariants checked}
+  - {id: spec.migration-frozen-specs, why: s1 plants a slice-form spec the plan leaves as frozen history while the new run takes the workspace form}
+  - {id: spec.next-step, why: close names one implement run per capability-batch in the rows' dependency order}
+  # ways-of-working
+  - {id: spec.model-tiering, why: locate and enumerate reads routed to a cheap Explore subagent and every brief carries the routing rule}
+  - {id: spec.intent-probe-discipline, why: intent runs as adaptive probes closing in a one-screen synthesis the user confirms — not a questionnaire}
+  - {id: spec.frame-hypothesis-not-anchor, why: stories planned journey-first with the frame adjusting to them at the confirm step}
+  - {id: spec.lockstep-prototyping, why: s1 and s3 plan a skeleton nav frame first then each story's screens while that story is under discussion with the user clicking as they land}
+  - {id: spec.plan-approval, why: producing seats plan first and work only on an approved plan — graders exempt}
+  - {id: spec.author-grader-default-fail, why: grading reads the authored files and defaults to FAIL — nothing cleared by its author}
+  - {id: spec.no-git-mutations, why: plan suggests commits and never runs a git mutation}
+  - {id: spec.acceptance-plain-text, why: every gate described as plain blocking text and never a timed prompt}
+  - {id: spec.artifact-home, why: the home rendered before the first write · the spec template's budgets rendered before drafting · admitted sub-directories named · an unknown file name raised to the user}
+  # boundaries
+  - {id: spec.transport-floor, why: every scenario composes more than one seat so the floor binds — referenced never restated}
+  - {id: spec.staged-derivation, why: derivation output staged under the spec workspace with the live map untouched until acceptance}
+  - {id: spec.epic-mint-desk-only, why: s1 spans three capabilities — where an epic is raised the plan routes minting to the feature desk and never mints in-run}
+
+out_of_instrument:
+  # latitude / register
+  - {id: spec.lead-latitude, why: latitude}
+  - {id: spec.epic-proposal-optional, why: latitude — the PM seat may propose an epic and nothing in a plan falsifies not doing so}
+  - {id: spec.register, why: register}
+  # contingency (run-time events)
+  - {id: spec.filter-disagreement-escalates, why: contingency — a producer holds a rejected story load-bearing}
+  # fail-conditions (all 9 — end-state failures, not forward-plan content; C1)
+  - {id: spec.fail.blocking-gap, why: fail-condition}
+  - {id: spec.fail.intent-unconfirmed, why: fail-condition}
+  - {id: spec.fail.map-unread, why: fail-condition}
+  - {id: spec.fail.story-unhomed, why: fail-condition}
+  - {id: spec.fail.screens-flows, why: fail-condition}
+  - {id: spec.fail.selection-unruled, why: fail-condition}
+  - {id: spec.fail.premature-map-write, why: fail-condition}
+  - {id: spec.fail.self-graded, why: fail-condition}
+  - {id: spec.fail.no-acceptance, why: fail-condition}
+
+# Declared unplanted branches (fixture-design record, not a partition class): four rule
+# facets are observable through one side of their subject only, because no scenario plants
+# the other side. Each is a plant candidate if a later grid wants it graded whole.
+#   spec.reserved-to-user — its empty-`$ARGUMENTS` clause (the feature framing asked of the
+#     user) needs a golden with no args; all three goldens carry a description, so the plan
+#     is graded on the four other reservations.
+#   spec.epic-mint-desk-only — s1 plants the multi-capability span that invites an epic
+#     proposal, but the proposal itself rides spec.epic-proposal-optional's latitude; a plan
+#     that never raises an epic reads `absent` here without contradicting the rule. The
+#     weakest observable rule in the set — read its evidence quotes before any verdict.
+#   spec.unrefined-stubs — s1's stub matches the framed capability, so the plan is graded on
+#     the confirmation half; the parked-or-retired half needs a stub matching nothing.
+#   spec.transport-floor — `seats: single` is never planted; the floor is graded on its
+#     multi branch in every scenario.

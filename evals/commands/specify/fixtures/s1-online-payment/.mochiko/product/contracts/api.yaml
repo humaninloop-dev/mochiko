@@ -1,0 +1,33 @@
+openapi: 3.0.3
+info:
+  title: Ledgerlite API
+  version: 0.4.0
+paths:
+  /invoices:
+    post:
+      summary: Create a draft invoice
+      responses:
+        "201": {description: Draft created}
+  /invoices/{id}/send:
+    post:
+      summary: Send the invoice to its client by email
+      responses:
+        "202": {description: Email queued; public link minted or reused}
+        "409": {description: Draft incomplete}
+  /invoices/{id}/payments:
+    post:
+      summary: Record a payment against the invoice
+      responses:
+        "201": {description: Payment recorded; balance returned}
+        "422": {description: Amount exceeds the balance or is not positive}
+  /i/{token}:
+    get:
+      summary: Public invoice page (no session)
+      responses:
+        "200": {description: The invoice, its status and balance, the studio's bank details}
+        "404": {description: Unknown token}
+  /studios/{id}/reminder-schedule:
+    put:
+      summary: Set the studio's reminder offsets
+      responses:
+        "200": {description: Schedule saved}

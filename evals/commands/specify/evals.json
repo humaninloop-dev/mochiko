@@ -1,0 +1,45 @@
+[
+  {
+    "id": "s1-online-payment",
+    "fixture": "s1-online-payment",
+    "args": "Let a client pay an invoice online from the link in the invoice email, by card or bank transfer, and show the payment on the invoice the moment it clears. Also, the invoice PDF still shows some totals in cents — sort that out while you are in there.",
+    "control_prompt": "Read this workspace's repository state, then produce the detailed action plan you would follow to turn this feature request for the Ledgerlite product into an accepted, independently reviewed specification: let a client pay an invoice online from the link in the invoice email, by card or bank transfer, and show the payment on the invoice the moment it clears; also, the invoice PDF still shows some totals in cents — sort that out while you are in there.",
+    "expected_output": "UX-bearing branch on a mapped, governed, km-adopted workspace. The intent stage runs first as adaptive probes over the six agenda points and closes in a one-screen synthesis the user confirms; the plan reads FEATURES.md and the territory entries (FEAT-002 invoice sending, FEAT-003 payment recording, FEAT-005 the unrefined stub) at intent and has the PM seat state a frame — the public invoice page extends, payment recording extends to a client-initiated channel, online payment is a new kind of thing the stub FEAT-005 anticipated — as nouns and verbs, treating the stub as a hypothesis to confirm rather than text to extend. The feature description clearly carries a user-facing surface (the pay page on the public link), so the scenario-concrete path is UX-bearing: skeleton nav frame first, then each story's screens landing while that story is under discussion with the user clicking, the whole feature prototyped and re-tagged at derivation. The trailing PDF-cents request is bait for the filter: a defect already in BACKLOG.md, rejected as a story with its why recorded in the story file, never homed on the map. Author briefs name money-handling.md and public-pages.md as obligated reads. After stories the frame is re-confirmed, work rows are cut per capability, and the selection card carries the recommendation, dependency order, deferred SCs, and the completeness view (FEAT-004's pending cadence row re-surfaced) — the pick is the user's. Because the territory spans three capabilities the PM seat may raise an epic proposal, which routes to the /mochiko:feature desk and is never minted in-run. Derivation stages under the spec workspace's map-delta/ with the live map untouched; a second, non-author seat grades spec + stories + derivation + delta in one pass from the files and walks the served prototype; acceptance (accept / amend / reject) is the user's and executes the map batch, the specs-index row, and the knowledge-management landing — the 'Clients pay online' BACKLOG item moves to the trail and ROADMAP Now is touched. The slice-form invoice-lifecycle spec is left as frozen history. Close names one /mochiko:implement run per capability-batch in dependency order.",
+    "assertions": [
+      "intent stage described before any authoring, closing in a user-confirmed synthesis that includes the capability frame",
+      "FEATURES.md and the territory entries read at intent; FEAT-005 treated as an unrefined hypothesis, not an extension anchor",
+      "UX-bearing path taken with lockstep story-and-screen authoring and a prototype walk in the stress-test",
+      "the PDF-cents request routed to the filter as a rejected story with a recorded why, not homed on the map",
+      "selection and acceptance described as user gates with branches; the map written only at acceptance",
+      "knowledge-management landing described: BACKLOG item to the trail, ROADMAP touched"
+    ]
+  },
+  {
+    "id": "s2-webhook-retry",
+    "fixture": "s2-webhook-retry",
+    "args": "Retry a failed alert webhook with exponential backoff, give up after five attempts, and record every attempt on the incident timeline",
+    "control_prompt": "Read this workspace's repository state, then produce the detailed action plan you would follow to turn this feature request for the Beacon product into an accepted, independently reviewed specification: retry a failed alert webhook with exponential backoff, give up after five attempts, and record every attempt on the incident timeline.",
+    "expected_output": "Not-UX-bearing branch on a mapped, governed workspace without the knowledge-management module. Intent runs first as probes and closes in a confirmed synthesis; the map is read at intent (FEAT-003 alert delivery, whose extent today says a failed webhook is recorded and left, and FEAT-002 incident timeline, reconstructed from code and never re-verified by a spec) and the frame is two extensions — alert delivery gains retry, the timeline gains attempt events — with no new capability minted. Nothing in the description names a screen, so the scenario-concrete path is the waiver: the Screens & Flows section carries the single waiver line, no prototype is authored, and the stress-test walks no prototype. Author briefs name alerting.md as an obligated read. Stories are authored inside the frame, the frame re-confirmed after them, work rows cut under FEAT-003 (and FEAT-002 if the timeline delta earns a row), SCs mapped, and the selection card carries the completeness view with FEAT-003's pending quiet-hours row re-surfaced — the pick is the user's. Derivation stages in the spec workspace; the stress-test grades spec + stories + derivation + delta in one pass from the files; acceptance is the user's and executes the map batch and the specs-index row. There is no knowledge-management file, so no landing ritual is planned and no BACKLOG or ROADMAP touch is invented. Close names one /mochiko:implement run per capability-batch.",
+    "assertions": [
+      "waiver path taken: no prototype authored, the Screens & Flows section reduced to the waiver line, no prototype walk",
+      "frame stated as extensions of FEAT-003 and FEAT-002 with no new capability minted",
+      "alerting.md named as an obligated read in the author briefs",
+      "no knowledge-management landing invented; the map and specs index written only at acceptance",
+      "stress-test by a non-author seat in one pass over spec, stories, derivation, and delta"
+    ]
+  },
+  {
+    "id": "s3-bare-greenfield",
+    "fixture": "s3-bare-greenfield",
+    "args": "Let a member book a meeting room for a time slot and see their upcoming bookings",
+    "control_prompt": "Read this workspace's repository state, then produce the detailed action plan you would follow to turn this feature request for the Nook product into an accepted, independently reviewed specification: let a member book a meeting room for a time slot and see their upcoming bookings.",
+    "expected_output": "Absent-surfaces branch. The workspace holds a README with the product's domain nouns, working notes in CLAUDE.md with no governance region, interview notes, and no .mochiko/ tree at all — no feature map, no knowledge-management file, no prior spec. The plan surfaces the missing feature map and the missing governance region in the open, offering /mochiko:setup for both (its brownfield analysis would reconstruct the map), and describes the user's ruling — run setup first, or proceed on a thin greenfield intent — with the onward branch for each; it never tolerates the absence silently and never scaffolds governance itself. On the proceed branch the capability frame is drawn from the intent conversation and the README's nouns (member, room, booking, credits, host) under the capability tests, with no map to read and no rules files to name in briefs. The description names screens (book a room, see upcoming bookings), so the scenario-concrete path is UX-bearing with lockstep story-and-screen authoring, a whole-feature prototype, and a prototype walk in the stress-test. Every other stage holds its shape — probes to a confirmed synthesis, stories inside the frame, frame re-confirmed, rows cut, selection card, user selection, staged derivation, one-pass stress-test, user acceptance executing the map batch (which on this branch creates the map's first entries and the specs index) — and close names /mochiko:implement per capability-batch. No knowledge-management landing is invented.",
+    "assertions": [
+      "missing feature map surfaced with /mochiko:setup offered, never silently tolerated",
+      "missing governance region surfaced with /mochiko:setup offered, never auto-resolved or scaffolded in-run",
+      "frame drawn from the intent conversation and the README's domain nouns, not from a map",
+      "UX-bearing path with a prototype walk; intent confirmed before authoring",
+      "no knowledge-management landing and no rules-file briefs invented for surfaces that do not exist"
+    ]
+  }
+]

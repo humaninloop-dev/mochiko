@@ -1,0 +1,31 @@
+openapi: 3.0.3
+info:
+  title: Beacon API
+  version: 0.3.0
+paths:
+  /monitors:
+    post:
+      summary: Create a monitor
+      responses:
+        "201": {description: Monitor created}
+  /incidents/{id}:
+    get:
+      summary: Incident with its timeline
+      responses:
+        "200": {description: Incident, state, events newest-last}
+  /incidents/{id}/close:
+    post:
+      summary: Close an incident
+      responses:
+        "200": {description: Closed}
+        "409": {description: Latest probe still failing}
+  /channels:
+    post:
+      summary: Add an alert channel
+      responses:
+        "201": {description: Channel created; target masked in the response}
+  /channels/{id}/test:
+    post:
+      summary: Send a synthetic incident to the channel
+      responses:
+        "202": {description: Attempt recorded; outcome returned when known}
