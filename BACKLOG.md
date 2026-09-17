@@ -172,7 +172,13 @@ trail (2026-09-08); their open residue is carried below.)*
   pairs; implement's stored `ontology-grid` reads pre 15.7 % / post 17.4 %) — the noise-domination
   disposition is thereby applied at the next grid. **Remaining:** the other four commands'
   kits (`architecture` · `brainstorm` · `feature` · `specify` — authored 2026-09-18 in worktrees,
-  audits pending) · D10 one-real-run correlation check · Goodhart watch (anti-recitation register).
+  audits pending) · D10 one-real-run correlation check · Goodhart watch (anti-recitation register) ·
+  **runner delivery-halt gate** (found 2026-09-18 by the brainstorm and specify kit authors) — the
+  command runner's validity gate checks plugin load and auth only, never the plan for
+  `mochiko-cli rules not delivered`, so a post session whose installed binary predates the log's
+  newest migration halts at delivery and is still stored as a valid run; add the gate the skill
+  runner already has (`rendered_rules_ok` + the not-delivered scan) · `evals/commands/README.md`
+  layout block still lists only `implement`/`setup`.
 
 ## Plan-retirement residuals
 
@@ -803,6 +809,11 @@ Raw captures (2026-08-01) — to triage/brainstorm; grooming may re-key into fin
   §Disclosures 15) — `plugins/mochiko/agents/qa-engineer.md` declares only `testing-end-user` and
   `review-code-minimalism`; only `devils-advocate.md` mounts the skill. Either mount it on the
   verification seat or re-point the implement rule.
+- [ ] **Feature-entry path grammar disagrees across three surfaces** (found 2026-09-18 by the specify
+  kit author; provenance: `evals/commands/specify/preregistration.md` disclosures) — the feature-entry and
+  features-index templates say `.mochiko/features/FEAT-XXX-<slug>.md`, the hook-enforced declared home
+  (newer) says `<FEAT-ID>.md`, and `testing-gap-finding` says `FEAT-XXX/gates.md`. Kit fixtures follow the
+  declared home. Align the two older surfaces to the home.
 - [ ] **ARCHITECTURE.md staleness residue (pre-v0.68.0 debt)** (2026-08-13; provenance: the
   v0.68.0 ripple audit's fix #1 — precise inventory) — line-3 header still stamps
   "(v0.48.0…)" (20 versions stale) · System-overview pipeline line reads "governance → spec →
