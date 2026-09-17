@@ -18,8 +18,9 @@ and post-edit pair.
 ```
 plan/                    (shared mechanics — session, provisioning, judge calls, grid math —
                           come from ../lib/, D10 act 2; this package keeps the targets' reads)
-  run.py                 runner (uv run evals/plan/run.py <subcommand> ...)
-  agents.py              persona target (the `agent-*` subcommands; data under evals/agents/)
+  run.py                 command target (uv run evals/run.py command <subcommand> ...); the file's
+                         own `main` is a deprecated forwarding shim for one release
+  agents.py              persona target (uv run evals/run.py agent <subcommand> ...; data under evals/agents/)
   wrapper.md             pinned form-only elicitation wrapper (D11; sha in every run's pins)
   brainstorm-probe/      build-item-0 probe report + captured plan
   implement/             pilot command (D5); setup/ is the second command kit
@@ -35,16 +36,20 @@ plan/                    (shared mechanics — session, provisioning, judge call
 ## Workflow
 
 ```sh
-uv run evals/plan/run.py check-rubric implement      # D8 partition still covers the schema
-uv run evals/plan/run.py check-fixtures implement    # every referenced path exists
-uv run evals/plan/run.py plan-run implement s1-zero-gap   # one ad-hoc session (~$1)
+uv run evals/run.py command check-rubric implement      # D8 partition still covers the schema
+uv run evals/run.py command check-fixtures implement    # every referenced path exists
+uv run evals/run.py command plan-run implement s1-zero-gap   # one ad-hoc session (~$1)
 # Baseline / edit evaluation (metered — ~18 sessions + judges per edit):
-uv run evals/plan/run.py grid implement --old-ref <pre-edit-sha> [--control]
-uv run evals/plan/run.py judge implement <run-name>
-uv run evals/plan/run.py report implement <run-name>
+uv run evals/run.py command grid implement --old-ref <pre-edit-sha> [--control]
+uv run evals/run.py command judge implement <run-name>
+uv run evals/run.py command report implement <run-name>
 # Rubric bucket diff alone (free, no sessions):
-uv run evals/plan/run.py partition implement --old-ref <sha>
+uv run evals/run.py command partition implement --old-ref <sha>
 ```
+
+Deprecated for one release (D10 act 3): `uv run evals/plan/run.py <subcommand> ...` and the
+pre-rename `uv run evals/commands/run.py <subcommand> ...` still work — each prints a stderr
+notice and forwards to `evals/run.py command ...` — and go away at the next plugin release.
 
 Editing a command pair? Run the grid with `--old-ref` at the pre-edit commit; the
 report's unchanged-bucket regressions / removed-still-surfacing / added-DEAD-TEXT lines
@@ -75,17 +80,20 @@ under `evals/agents/<persona>/`: `evals.json` (goldens: `card` + `fixture` + `te
 pre-registered readings, carried into every judge call and pinned as `readings_sha256`; optional), `runs/`.
 
 ```sh
-uv run evals/plan/run.py agent-mint staff-engineer --old-ref <pre-sha>   # rules.json over pre ∪ post
+uv run evals/run.py agent mint staff-engineer --old-ref <pre-sha>   # rules.json over pre ∪ post
 # hand-partition the drafts (plan-observable | out-of-instrument + why), split compounds, drop `draft`
-uv run evals/plan/run.py agent-check staff-engineer      # completeness · partition · temptation
-uv run evals/plan/run.py agent-plan-run staff-engineer g1-decided-card --arm post
-uv run evals/plan/run.py agent-prune staff-engineer      # one-time nopersona pass (untagged ids only)
-uv run evals/plan/run.py agent-grid staff-engineer --replicates 3       # pre/post, persona alone
-uv run evals/plan/run.py agent-judge staff-engineer <run-name>
-uv run evals/plan/run.py agent-report staff-engineer <run-name>
-uv run evals/plan/run.py agent-label-sheet staff-engineer <run-name>   # hand-label 24 pairs (I9)
-uv run evals/plan/run.py agent-calibrate staff-engineer <run-name> --labels evals/agents/staff-engineer/runs/<run-name>/calibration-sheet.json
+uv run evals/run.py agent check staff-engineer      # completeness · partition · temptation
+uv run evals/run.py agent plan-run staff-engineer g1-decided-card --arm post
+uv run evals/run.py agent prune staff-engineer      # one-time nopersona pass (untagged ids only)
+uv run evals/run.py agent grid staff-engineer --replicates 3       # pre/post, persona alone
+uv run evals/run.py agent judge staff-engineer <run-name>
+uv run evals/run.py agent report staff-engineer <run-name>
+uv run evals/run.py agent label-sheet staff-engineer <run-name>   # hand-label 24 pairs (I9)
+uv run evals/run.py agent calibrate staff-engineer <run-name> --labels evals/agents/staff-engineer/runs/<run-name>/calibration-sheet.json
 ```
+
+The pre-convergence spellings `uv run evals/plan/run.py agent-<subcommand> ...` are forwarded for
+one release (stderr notice), then removed.
 
 Invariants specific to the persona target (probe-settled 2026-09-08):
 

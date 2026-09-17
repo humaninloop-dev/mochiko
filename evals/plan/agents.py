@@ -224,7 +224,7 @@ def rules_path(persona: str) -> pathlib.Path:
 def load_rules(persona: str) -> dict:
     path = rules_path(persona)
     if not path.is_file():
-        die(f"{path} missing — mint it first: agent-mint {persona} --old-ref <ref>")
+        die(f"{path} missing — mint it first: evals/run.py agent mint {persona} --old-ref <ref>")
     return json.loads(path.read_text())
 
 
@@ -626,7 +626,7 @@ def cmd_grid(persona: str, replicates: int, old_ref: str | None, out: str | None
         die(f"{len(goldens)} golden(s) — D8 sets a floor of three per persona before any grid")
     arms = arms or ["pre", "post"]          # `--arms pre` = the pre-registration's probe run
     if any(a not in ("pre", "post") for a in arms):
-        die(f"grid arms are pre/post only (nopersona is agent-prune): {arms}")
+        die(f"grid arms are pre/post only (nopersona is `agent prune`): {arms}")
     name = out or datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
     rd = rundir(persona, name)
     rd.mkdir(parents=True, exist_ok=True)
@@ -765,7 +765,7 @@ def cmd_judge(persona: str, name: str, judge_model: str = cmdrun.CHECKLIST_MODEL
     print(f"judged: {rd / 'summary.json'}  (judges ${JUDGE_COST['usd']:.2f} over {JUDGE_COST['calls']} calls)")
     if missing_total:
         print(f"WARN {missing_total} MISSING verdict(s) remain after retry — the judge call failed "
-              f"(session limit? malformed reply?); re-run agent-judge before reading this run", flush=True)
+              f"(session limit? malformed reply?); re-run `agent judge` before reading this run", flush=True)
         sys.exit(2)
 
 
@@ -944,7 +944,7 @@ def cmd_report(persona: str, name: str) -> None:
 def cmd_label_sheet(persona: str, name: str, size: int, seed: int) -> None:
     """Emit a hand-labelling sheet: `size` (golden, arm, replicate, claim) pairs sampled
     from a judged run, judge verdicts hidden, for the lead to label. The filled sheet
-    feeds `agent-calibrate`."""
+    feeds `agent calibrate`."""
     import random
     rd = rundir(persona, name)
     meta = json.loads((rd / "summary.json").read_text())
@@ -952,12 +952,12 @@ def cmd_label_sheet(persona: str, name: str, size: int, seed: int) -> None:
               "id": v["id"], "label": ""}
              for e in meta["runs"] for v in e.get("coverage", []) if v.get("verdict")]
     if not pairs:
-        die("run carries no judged coverage — run agent-judge first")
+        die("run carries no judged coverage — run `agent judge` first")
     random.Random(seed).shuffle(pairs)
     pairs = pairs[:size]
     # Arm-blind (validator fix 12): the labeller sees an opaque plan key and an anonymized
     # copy of the plan, never the arm; the key → (golden, arm, replicate) map is written to a
-    # separate file the labeller must not open, and agent-calibrate joins through it.
+    # separate file the labeller must not open, and `agent calibrate` joins through it.
     cal = rd / "calibration"
     cal.mkdir(exist_ok=True)
     keys, mapping = {}, {}
@@ -1029,55 +1029,57 @@ def cmd_calibrate(persona: str, name: str, labels_path: str) -> None:
           f"{contra_agree}/{contra_total} · {rd / 'calibration.json'}")
 
 
+SUBCOMMANDS = ("mint", "check", "plan-run", "prune", "grid", "judge", "report",
+               "label-sheet", "calibrate")
+
+
 def add_subcommands(sub) -> None:
-    for name in ("agent-mint", "agent-check", "agent-plan-run", "agent-grid",
-                 "agent-prune", "agent-judge", "agent-report", "agent-label-sheet",
-                 "agent-calibrate"):
+    """The persona target's subcommands under `evals/run.py agent <subcommand> <persona> ...`
+    (the pre-convergence `agent-<subcommand>` spellings are forwarded by evals/plan/run.py
+    for one release)."""
+    for name in SUBCOMMANDS:
         p = sub.add_parser(name)
         p.add_argument("persona")
-        if name == "agent-mint":
+        if name == "mint":
             p.add_argument("--old-ref", required=True)
-        if name == "agent-check":
+        if name == "check":
             p.add_argument("--old-ref")
-        if name == "agent-plan-run":
+        if name == "plan-run":
             p.add_argument("golden")
             p.add_argument("--arm", default="post", choices=ARMS)
             p.add_argument("--old-ref")
             p.add_argument("--out")
-        if name in ("agent-grid", "agent-prune"):
+        if name in ("grid", "prune"):
             p.add_argument("--replicates", type=int, default=3)
             p.add_argument("--out")
-        if name == "agent-grid":
+        if name == "grid":
             p.add_argument("--old-ref")
             p.add_argument("--arms", default="pre,post",
                            help="comma list; `pre` alone is the pre-registration probe run")
-        if name in ("agent-judge", "agent-report", "agent-label-sheet", "agent-calibrate"):
+        if name in ("judge", "report", "label-sheet", "calibrate"):
             p.add_argument("run_name")
-        if name == "agent-label-sheet":
+        if name == "label-sheet":
             p.add_argument("--size", type=int, default=24)
             p.add_argument("--seed", type=int, default=7)
-        if name == "agent-calibrate":
+        if name == "calibrate":
             p.add_argument("--labels", required=True)
-        if name == "agent-judge":
+        if name == "judge":
             p.add_argument("--judge-model", default=cmdrun.CHECKLIST_MODEL)
             p.add_argument("--pairwise-model", default=cmdrun.PAIRWISE_MODEL)
             p.add_argument("--pairwise", action="store_true",
                            help="opt-in Sonnet A/B read (position-biased in both pilots)")
 
 
-def dispatch(a) -> bool:
-    """Handle an agent-* subcommand; False when `a.cmd` is not one of ours."""
-    if not a.cmd.startswith("agent-"):
-        return False
-    if a.cmd == "agent-mint":
+def dispatch(a) -> None:
+    if a.cmd == "mint":
         doc = mint(a.persona, a.old_ref)
         drafts = sum(1 for c in doc["claims"] if c.get("draft"))
         print(f"minted {len(doc['claims'])} claims ({drafts} drafts to partition) → "
               f"{rules_path(a.persona)}  units pre/post/union "
               f"{doc['unit_counts']['pre']}/{doc['unit_counts']['post']}/{doc['unit_counts']['union']}")
-    elif a.cmd == "agent-check":
+    elif a.cmd == "check":
         sys.exit(1 if check(a.persona, a.old_ref) else 0)
-    elif a.cmd == "agent-plan-run":
+    elif a.cmd == "plan-run":
         goldens = {g["id"]: g for g in load_goldens(a.persona)}
         if a.golden not in goldens:
             die(f"unknown golden {a.golden}; have {sorted(goldens)}")
@@ -1093,17 +1095,16 @@ def dispatch(a) -> bool:
         print(json.dumps(e["asserts"], indent=1))
         print(f"reads: {[r['target'] for r in e['reads']]}")
         print(f"saved: {out}  (${e.get('cost_usd')}, {e.get('num_turns')} turns)")
-    elif a.cmd == "agent-grid":
+    elif a.cmd == "grid":
         cmd_grid(a.persona, a.replicates, a.old_ref, a.out,
                  [x.strip() for x in a.arms.split(",") if x.strip()])
-    elif a.cmd == "agent-prune":
+    elif a.cmd == "prune":
         cmd_prune(a.persona, a.replicates, a.out)
-    elif a.cmd == "agent-judge":
+    elif a.cmd == "judge":
         cmd_judge(a.persona, a.run_name, a.judge_model, a.pairwise_model, a.pairwise)
-    elif a.cmd == "agent-report":
+    elif a.cmd == "report":
         cmd_report(a.persona, a.run_name)
-    elif a.cmd == "agent-label-sheet":
+    elif a.cmd == "label-sheet":
         cmd_label_sheet(a.persona, a.run_name, a.size, a.seed)
-    elif a.cmd == "agent-calibrate":
+    elif a.cmd == "calibrate":
         cmd_calibrate(a.persona, a.run_name, a.labels)
-    return True

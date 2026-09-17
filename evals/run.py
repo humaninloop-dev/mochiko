@@ -1,12 +1,22 @@
 #!/usr/bin/env python3
-"""Skill eval runner — the skill target of the one eval layer.
+# /// script
+# dependencies = ["pyyaml"]
+# ///
+"""The eval layer's one runner: `evals/run.py <target> <subcommand> <name>` — targets `skill`
+(this file), `command` and `agent` (evals/plan/, PyYAML: run those under `uv run`).
+
+Skill target: the skill-compression regression instrument.
 
 Provenance: .mochiko/brainstorms/skill-compression-tooling/record.md (D8 as amended) and
 .mochiko/brainstorms/primitive-eval-harness-v2/record.md (D1 vocabulary, D12/C3 the re-keyed
 inventories). Maintainer-side advisory tooling (GI-019 trace recorded); never shipped (GI-020).
 Vocabulary shared with the command and persona targets: evals/README.md. Shared mechanics
 (session · provisioning · judge calls · band arithmetic) come from evals/lib/ (D10, second
-landing act); this file keeps the skill target's load gate, fixtures, invited read, and report.
+landing act); this file keeps the skill target's load gate, fixtures, invited read, and report,
+and carries the converged CLI (third act): `skill` parses and runs here; `command` and `agent`
+import evals/plan/ only when asked for. The pre-convergence forms — `evals/run.py <sub> <skill>`,
+`uv run evals/plan/run.py <sub> ...`, `uv run evals/commands/run.py <sub> ...` — are deprecated
+shims for one release (they print a stderr notice and forward here).
 
 One run = one isolated `claude -p` session on the host's subscription auth, loading the
 provisioned plugin tree (`plugins/mochiko` at the working tree for `post`, a git-archived
@@ -246,7 +256,9 @@ def judge_checklist(rules: list, artifact_text: str, expected_output: str = "") 
     """One binary per rule, quoted evidence. Advisory. Chunked; each chunk asked up to three
     times — two retries on parse failure / missing ids (VC baseline: one chunk failed twice
     and its MISSING read as seven floors lost). The judge is a tool-less one-turn session
-    (lib.judge), bare under --local."""
+    (lib.judge), bare under --local; its call carries the plan targets' contract — a 600 s
+    timeout, and a spawn failure reads as an empty reply (retried, then MISSING) rather than
+    halting the grid."""
     items = [{k: r[k] for k in ("id", "rule", "class") if k in r} for r in rules]
     return J.judge_chunked(items, lambda chunk: judge_prompt(chunk, artifact_text, expected_output),
                            CHECKLIST_MODEL, key="passed", attempts=3, chunk_size=JUDGE_CHUNK)
@@ -666,14 +678,19 @@ def cmd_report(skill: str, out: str | None) -> None:
     print(render_report(skill, runs[-1].parent.name, {k: data[k] for k in data if k != "runs"}))
 
 
-def main() -> None:
-    global MODE
-    ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("--local", action="store_true", help="--bare + ANTHROPIC_API_KEY")
-    ap.add_argument("--post-ref", default="HEAD",
+# ---------- CLI: one runner, three targets (D10, third landing act) ----------
+
+TARGETS = ("skill", "command", "agent")
+SKILL_SUBS = ("probe", "grid", "report", "rejudge")
+
+
+def add_skill_cli(sp) -> None:
+    """The skill target: `evals/run.py skill [--local] [--post-ref R] <subcommand> <skill>`."""
+    sp.add_argument("--local", action="store_true", help="--bare + ANTHROPIC_API_KEY")
+    sp.add_argument("--post-ref", default="HEAD",
                     help="git ref the post arm is archived from (default HEAD; 'worktree' copies the working tree)")
-    sub = ap.add_subparsers(dest="cmd", required=True)
-    for name in ("probe", "grid", "report", "rejudge"):
+    sub = sp.add_subparsers(dest="cmd", required=True)
+    for name in SKILL_SUBS:
         p = sub.add_parser(name)
         p.add_argument("skill")
         if name in ("probe", "grid"):
@@ -694,10 +711,12 @@ def main() -> None:
             p.add_argument("--pairwise", action="store_true")
             p.add_argument("--budget-usd", type=float, default=25.0,
                            help="halt the grid when session spend passes this (resumable)")
-    args = ap.parse_args()
+
+
+def run_skill(args) -> None:
+    global MODE, POST_REF
     MODE = "local" if args.local else "host"
     S.BARE = MODE == "local"   # `--bare` on every session and judge call
-    global POST_REF
     POST_REF = args.post_ref
     WORK.mkdir(exist_ok=True)
     if args.cmd == "probe":
@@ -709,6 +728,59 @@ def main() -> None:
         cmd_rejudge(args.skill, args.out, args.only_missing)
     else:
         cmd_report(args.skill, args.out)
+
+
+def plan_module(name: str):
+    """The plan-only package's module for the command (`run`) or persona (`agents`) target,
+    imported only when that target is asked for — the skill path never needs PyYAML."""
+    import importlib
+    return importlib.import_module(f"plan.{name}")
+
+
+def legacy_skill_argv(argv: list) -> list | None:
+    """The pre-convergence skill form `evals/run.py [--local] [--post-ref R] <sub> <skill>`
+    mapped onto `skill ...` — kept one release (D10 act 3) for the fill logs that cite it."""
+    i = 0
+    while i < len(argv):
+        a = argv[i]
+        if a == "--post-ref":
+            i += 2
+            continue
+        if a == "--local" or a.startswith("--post-ref="):
+            i += 1
+            continue
+        return ["skill", *argv] if a in SKILL_SUBS else None
+    return None
+
+
+def main() -> None:
+    argv = sys.argv[1:]
+    mapped = legacy_skill_argv(argv)
+    if mapped:
+        print("deprecated: `evals/run.py <subcommand> <skill>` is now `evals/run.py skill "
+              "<subcommand> <skill>`; the bare form goes away next release", file=sys.stderr)
+        argv = mapped
+    ap = argparse.ArgumentParser(prog="evals/run.py", description=__doc__,
+                                 formatter_class=argparse.RawDescriptionHelpFormatter)
+    tsub = ap.add_subparsers(dest="target", required=True, metavar="{skill,command,agent}")
+    add_skill_cli(tsub.add_parser("skill", help="skill target — this file's runner (plain python3)"))
+    cp = tsub.add_parser("command", help="command target — evals/plan/run.py (needs `uv run`: PyYAML)")
+    gp = tsub.add_parser("agent", help="persona target — evals/plan/agents.py (needs `uv run`: PyYAML)")
+    target = argv[0] if argv and argv[0] in TARGETS else None
+    planrun = agents = None
+    if target == "command":
+        planrun = plan_module("run")
+        planrun.add_subcommands(cp.add_subparsers(dest="cmd", required=True))
+    elif target == "agent":
+        agents = plan_module("agents")
+        agents.add_subcommands(gp.add_subparsers(dest="cmd", required=True))
+    args = ap.parse_args(argv)
+    if args.target == "skill":
+        run_skill(args)
+    elif args.target == "command":
+        planrun.dispatch(args)
+    else:
+        agents.dispatch(args)
 
 
 if __name__ == "__main__":

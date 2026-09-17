@@ -25,33 +25,38 @@ warning.
 
 Vocabulary shared across the eval targets (skills · commands · agents): evals/README.md
 (primitive-eval-harness-v2 D1/D10). The persona target lives in agents.py beside this file
-and is reached through the `agent-*` subcommands below. Shared mechanics (session ·
+and is reached through `evals/run.py agent ...`. Shared mechanics (session ·
 provisioning · judge calls · grid math) come from evals/lib/ (D10, second landing act); this
 file keeps the command target's rubric, load gate, prompts, and report.
 
-Usage (run via `uv run evals/plan/run.py ...`):
-  partition <cmd> --old-ref <git-ref>       four ID-keyed rubric buckets (D6)
-  check-rubric <cmd>                        observable.yaml covers the schema exactly (D8)
-  check-fixtures <cmd>                      every path a fixture references exists
-  plan-run <cmd> <golden-id> [--arm post|pre|nocmd] [--old-ref REF] [--out DIR]
-  grid <cmd> [--replicates 3] [--old-ref REF] [--control] [--out NAME]
-  judge <cmd> <run-name>                    coverage + stub + pairwise over stored plans
-  report <cmd> <run-name>                   bucket diff, pass^k, noise guard
-  agent-mint <persona> --old-ref <ref>      mint/re-mint rules.json over pre∪post (v2 D5/I3)
-  agent-check <persona> [--old-ref REF]     completeness + partition + temptation (v2 I4/I5)
-  agent-plan-run <persona> <golden> [--arm post|pre|nopersona] [--old-ref REF] [--out DIR]
-  agent-prune <persona> [--replicates 3]    one-time nopersona pass, untagged ids only (v2 D7/R3)
-  agent-grid <persona> [--replicates 3] [--old-ref REF] [--out NAME]   pre/post, persona alone (v2 D6)
-  agent-judge <persona> <run-name>          embodiment checklist + pairwise
-  agent-report <persona> <run-name>         common regressions · added adoption · removed ghosts
-  agent-label-sheet <persona> <run-name> [--size 24]   hand-labelling sheet for judge calibration (v2 I9)
-  agent-calibrate <persona> <run-name> --labels <sheet.json>   agreement vs the labels → calibration.json
+Usage — the converged CLI (D10 act 3), run under `uv run` for PyYAML:
+  uv run evals/run.py command <subcommand> <cmd> ...
+    partition <cmd> --old-ref <git-ref>       four ID-keyed rubric buckets (D6)
+    check-rubric <cmd>                        observable.yaml covers the schema exactly (D8)
+    check-fixtures <cmd>                      every path a fixture references exists
+    plan-run <cmd> <golden-id> [--arm post|pre|nocmd] [--old-ref REF] [--out DIR]
+    grid <cmd> [--replicates 3] [--old-ref REF] [--control] [--out NAME]
+    judge <cmd> <run-name>                    coverage + stub + pairwise over stored plans
+    report <cmd> <run-name>                   bucket diff, pass^k, noise guard
+  uv run evals/run.py agent <subcommand> <persona> ...   (agents.py)
+    mint <persona> --old-ref <ref>            mint/re-mint rules.json over pre∪post (v2 D5/I3)
+    check <persona> [--old-ref REF]           completeness + partition + temptation (v2 I4/I5)
+    plan-run <persona> <golden> [--arm post|pre|nopersona] [--old-ref REF] [--out DIR]
+    prune <persona> [--replicates 3]          one-time nopersona pass, untagged ids only (v2 D7/R3)
+    grid <persona> [--replicates 3] [--old-ref REF] [--out NAME]   pre/post, persona alone (v2 D6)
+    judge <persona> <run-name>                embodiment checklist + pairwise
+    report <persona> <run-name>               common regressions · added adoption · removed ghosts
+    label-sheet <persona> <run-name> [--size 24]   hand-labelling sheet for judge calibration (v2 I9)
+    calibrate <persona> <run-name> --labels <sheet.json>   agreement vs the labels → calibration.json
+  Deprecated for one release: `uv run evals/plan/run.py <subcommand> ...` and the persona
+  spellings `agent-<subcommand>` (this file's `main` forwards them), and the pre-rename
+  `uv run evals/commands/run.py ...` (a shim at the old path).
 """
 
-import argparse
 import datetime
 import hashlib
 import json
+import os
 import pathlib
 import re
 import shutil
@@ -69,8 +74,8 @@ from lib.stats import flaky, passk  # noqa: E402 — the report's grid math (age
 try:
     import yaml
 except ImportError:
-    print("error: PyYAML unavailable — run via `uv run evals/plan/run.py ...`",
-          file=sys.stderr)
+    print("error: PyYAML unavailable — run the command and agent targets via "
+          "`uv run evals/run.py command|agent ...`", file=sys.stderr)
     sys.exit(2)
 
 CMD_EVALS = EVALS / "plan"
@@ -527,11 +532,8 @@ def cmd_report(cmd: str, name: str) -> None:
     print(f"report: {rd / 'report.md'}")
 
 
-def main() -> None:
-    ap = argparse.ArgumentParser(description=__doc__)
-    sub = ap.add_subparsers(dest="cmd", required=True)
-    from plan import agents  # the persona target (evals/plan/agents.py)
-    agents.add_subcommands(sub)
+def add_subcommands(sub) -> None:
+    """The command target's subcommands under `evals/run.py command <subcommand> <cmd> ...`."""
     for name in ("partition", "check-rubric", "check-fixtures", "plan-run", "grid",
                  "judge", "report"):
         p = sub.add_parser(name)
@@ -555,9 +557,9 @@ def main() -> None:
                            help="coverage+stub judge (ruled default: haiku)")
             p.add_argument("--pairwise-model", default=PAIRWISE_MODEL,
                            help="pairwise judge (ruled default: sonnet)")
-    a = ap.parse_args()
-    if agents.dispatch(a):
-        return
+
+
+def dispatch(a) -> None:
     if a.cmd == "partition":
         print(json.dumps(partition(a.command, a.old_ref), indent=1))
     elif a.cmd == "check-rubric":
@@ -587,6 +589,23 @@ def main() -> None:
         cmd_judge(a.command, a.run_name, a.judge_model, a.pairwise_model)
     elif a.cmd == "report":
         cmd_report(a.command, a.run_name)
+
+
+def main() -> None:
+    """Deprecated entrypoint, kept one release (D10 act 3): `uv run evals/plan/run.py <sub> ...`
+    forwards to `evals/run.py command <sub> ...`, and `agent-<sub> ...` to
+    `evals/run.py agent <sub> ...`; the converged CLI is the one code path."""
+    argv = sys.argv[1:]
+    first = next((i for i, a in enumerate(argv) if not a.startswith("-")), None)
+    if first is not None and argv[first].startswith("agent-"):
+        mapped = ["agent", argv[first][len("agent-"):], *argv[:first], *argv[first + 1:]]
+    else:
+        mapped = ["command", *argv]
+    old_sub = argv[first] if first is not None else "<subcommand>"
+    new_sub = " ".join(mapped[:2]) if first is not None else "command <subcommand>"
+    print(f"deprecated: `evals/plan/run.py {old_sub}` is now `evals/run.py {new_sub}`; "
+          "this entrypoint goes away next release", file=sys.stderr)
+    os.execv(sys.executable, [sys.executable, str(EVALS / "run.py"), *mapped])
 
 
 if __name__ == "__main__":

@@ -278,7 +278,7 @@ log by construction, so schema-content edits take no strip entry. The human-read
 
 **Persona edits with an eval kit carry an advisory grid read.** When the edited primitive is
 `plugins/mochiko/agents/<persona>.md` and `evals/agents/<persona>/` exists, the audit brief cites a
-`pre`/`post` plan-only grid — `uv run evals/plan/run.py agent-grid <persona> --arms pre,post`
+`pre`/`post` plan-only grid — `uv run evals/run.py agent grid <persona> --arms pre,post`
 (`pre` at the kit's pinned `refs.pre`, `post` the working tree), judged and reported — and the report's
 regression, adoption, and band lines are quoted in the strip entry (or the decision row for a pure
 addition). Advisory only, never a gate (ADR `2026-09-09-persona-edit-advisory-grid`, harness D2,

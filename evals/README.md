@@ -1,4 +1,4 @@
-# evals/ — skill-compression eval runner (maintainer-side, never shipped)
+# evals/ — the eval layer: one runner, three targets (maintainer-side, never shipped)
 
 Provenance: `.mochiko/brainstorms/skill-compression-tooling/record.md` (D1–D8 as amended) and
 `primitive-eval-harness` D1–D5 (this directory is that session's ruled home; the pilot here
@@ -8,9 +8,11 @@ directory ships with the plugin (GI-020 untouched).
 
 ## Targets and the one vocabulary
 
-The eval layer has three **targets** — skills (this runner), commands and agents (the plan-only
-runner, `evals/plan/run.py` + `agents.py`) — under one ruling set and one vocabulary
-(`primitive-eval-harness-v2` D1, accepted 2026-09-08). Every runner cites this file for it:
+The eval layer has three **targets** — skills (`evals/run.py` itself), commands and agents (the
+plan-only package `evals/plan/`: `run.py` + `agents.py`) — behind one CLI,
+`evals/run.py <target> <subcommand> <name>` (D10 act 3), sharing one core (`evals/lib/`, act 2),
+under one ruling set and one vocabulary (`primitive-eval-harness-v2` D1, accepted 2026-09-08).
+Every runner cites this file for it:
 
 | term | meaning |
 |---|---|
@@ -76,11 +78,21 @@ evals/
 ## Usage
 
 ```
-python3 evals/run.py probe   <skill> [--arm post|pre] [--old-ref <ref>]   # R5: mechanics (1 cheap run)
-python3 evals/run.py grid    <skill> [--replicates 3] [--arms noskill,post] [--old-ref <ref>] [--out <name>] [--pairwise]
-python3 evals/run.py rejudge <skill> --out <name>                          # judges only, no sessions
-python3 evals/run.py report  <skill> [--out <name>]                        # rebuild report.md
+python3 evals/run.py skill probe   <skill> [--arm post|pre] [--old-ref <ref>]   # R5: mechanics (1 cheap run)
+python3 evals/run.py skill grid    <skill> [--replicates 3] [--arms noskill,post] [--old-ref <ref>] [--out <name>] [--pairwise]
+python3 evals/run.py skill rejudge <skill> --out <name>                          # judges only, no sessions
+python3 evals/run.py skill report  <skill> [--out <name>]                        # rebuild report.md
+python3 evals/run.py skill --post-ref <ref> grid <skill> ...                     # skill options sit before the subcommand
+uv run  evals/run.py command <subcommand> <cmd> ...       # command target — subcommands in plan/README.md
+uv run  evals/run.py agent   <subcommand> <persona> ...   # persona target — subcommands in plan/README.md
 ```
+
+`skill` runs under plain `python3`; `command` and `agent` import `evals/plan/` (PyYAML), so run
+them under `uv run` (the PEP 723 header on `evals/run.py` provisions it). **Deprecated for one
+release** (D10 act 3) — each prints a stderr notice and forwards to the CLI above: the bare skill
+form `python3 evals/run.py <subcommand> <skill>`, `uv run evals/plan/run.py <subcommand> ...`
+(with the persona spellings `agent-<subcommand>`), and the pre-rename
+`uv run evals/commands/run.py <subcommand> ...`. They go away at the next plugin release.
 
 A grid persists `summary.json` after every session and resumes a named `--out` by skipping stored
 (arm, golden, replicate) sessions — to redo an arm, name a new `--out`. Session model under test:
