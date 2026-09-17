@@ -1,0 +1,56 @@
+openapi: 3.1.0
+info:
+  title: Tidewatch API
+  version: 1.4.0
+paths:
+  /berths:
+    get:
+      summary: List berths with tonight's occupancy
+      responses:
+        "200":
+          description: berth list
+  /bookings:
+    post:
+      summary: Book a boat onto a berth for one night
+      responses:
+        "201":
+          description: booking created (pending office confirmation)
+  /stays/{id}:
+    get:
+      summary: One stay with its readings
+      responses:
+        "200":
+          description: stay
+  /invoices/{id}:
+    get:
+      summary: One invoice with its lines
+      responses:
+        "200":
+          description: invoice
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Invoice"
+components:
+  schemas:
+    Invoice:
+      type: object
+      required: [id, stay_id, status, currency, lines, total_minor]
+      properties:
+        id: {type: string}
+        stay_id: {type: string}
+        status: {type: string, enum: [draft, issued, paid]}
+        currency: {type: string, example: GBP}
+        total_minor: {type: integer}
+        lines:
+          type: array
+          items: {$ref: "#/components/schemas/InvoiceLine"}
+    InvoiceLine:
+      type: object
+      required: [kind, quantity, unit, unit_price_minor, amount_minor]
+      properties:
+        kind: {type: string, enum: [berth-night, electricity, water]}
+        quantity: {type: number}
+        unit: {type: string, example: kWh}
+        unit_price_minor: {type: integer}
+        amount_minor: {type: integer}
