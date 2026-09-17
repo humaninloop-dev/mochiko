@@ -1,0 +1,44 @@
+[
+  {
+    "id": "s1-tradeoff-confident",
+    "fixture": "s1-tradeoff-confident",
+    "args": "waitlist offers: hold the seat for a fixed 24-hour window vs let it go to whoever claims first — I'm fairly sure the fixed window is right, pressure-test it",
+    "control_prompt": "Read this workspace's repository state, then produce the detailed action plan you would follow to think through, together with the user, whether Saltmarsh's waitlist offers should hold a freed seat for a fixed 24-hour window or let it go to whoever claims it first — the user is fairly sure the fixed window is right and wants it pressure-tested — and leave behind one written decision record the project can build on.",
+    "expected_output": "Confident design-trade-off branch with the knowledge-management file present. The topic line carries a stated lean and asks for it to be pressure-tested, so the questioning is planned as the lead's own inline loop of confirmations and structured options that test the lean, one per turn, not open probes; the dimensions it plans to test come from what the workspace shows (docs/waitlist.md: 412 offers in 90 days, 28% never answered, seats held a median 3.1 days, 4.5% of offer emails bouncing, schools split 11 for a deadline versus 3 for first-come; the refund policy's 48-hour rule; the autumn launch date on the roadmap). Must show: the index read (three prior entries) then a new open entry under a proposed kebab slug; the session home rendered before the first write with its file set held; the record written as decisions settle, each with statement, rationale and a confidence mark, the lean expected to land Confident or Contested; the review seat as someone other than the author reading the frozen record from the file, dispatched in two messages with the record path withheld until its angle map returns; the review-waiver gate as the user's, recorded on the record if taken; survivor disposition gates that split coverage gaps (candidate topics the user routes) from other survivors (fold/repair/ruling, batchable) and send any survivor that challenges a user ruling to the user; acceptance as the user's plain-text word with both branches; at close the index entry updated with where the outcome landed and the three-part landing ritual from .mochiko/memory/knowledge-management.md planned concretely — a DECISIONS.md row, the BACKLOG.md item 'Waitlist offer expiry' moved to the trail, ROADMAP.md Now touched; a commit suggested, never run; a synthesis and any pipeline entry offered only after acceptance.",
+    "assertions": [
+      "questioning planned inline by the lead as confirmations testing the stated lean, one question per turn",
+      "review seat is a non-author, dispatched in two messages with the record path withheld until the map returns",
+      "user gates (waiver, survivor dispositions, acceptance) described as the user's with onward branches",
+      "close plans the landing ritual from the pinned knowledge-management file: decision row, the waitlist backlog item to the trail, roadmap touch",
+      "index read before opening and the entry updated at acceptance"
+    ]
+  },
+  {
+    "id": "s2-halfformed-unsure",
+    "fixture": "s2-halfformed-unsure",
+    "args": "something is off with how instructors see their week — I can't tell if it's a data problem or a screen problem, not sure where to even start",
+    "control_prompt": "Read this workspace's repository state, then produce the detailed action plan you would follow to think through, together with the user, why Saltmarsh's instructors see something wrong in their week view — the user cannot tell whether it is a data problem or a screen problem and is unsure where to start — and leave behind one written decision record the project can build on.",
+    "expected_output": "Unsure half-formed-problem branch with no knowledge-management file. The topic line is a symptom with explicit uncertainty and no framing, so the questioning is planned as open probes that help the user find what they think — not option lists or leading confirmations — one per turn, with decisions expected to carry Unsure or Deferred marks and every unresolved zone surfaced as an open question rather than silently dropped. The workspace gives the session something to find: three support notes describe handed-over sessions still showing on the old instructor's week, and the source tree shows the week view reading bookings.instructor_id while the handover flow writes sessions.instructor_id — a locate/enumerate read the plan routes to a cheap Explore dispatch, keeping the interpretive read on the session tier. Must show: the index read (one prior entry) then a new open entry under a proposed slug; the home rendered before the first write; the record written as it goes; the non-author review seat dispatched blind in two messages; the waiver, disposition and acceptance gates as the user's plain-text word with branches; the close updating the index and stating that no knowledge-management file exists in this workspace so its landing ritual does not run here — without inventing operating docs; a commit suggested, never run; synthesis on request only.",
+    "assertions": [
+      "questioning planned as open probes suited to an unsure user, not structured options",
+      "the instructor_id data/screen mismatch is found by a cheap Explore read and interpreted on the session",
+      "no knowledge-management file: the close ritual is stated as not applicable, no operating docs invented",
+      "review seat non-author, two-message blind dispatch; gates described as the user's with branches",
+      "decisions expected to carry Unsure/Deferred marks with open questions surfaced"
+    ]
+  },
+  {
+    "id": "s3-feature-shaped",
+    "fixture": "s3-feature-shaped",
+    "args": "add a 'bring a friend' referral code — the referrer and the friend each get 10% off their next course booking, codes expire after 90 days, one use per friend",
+    "control_prompt": "Read this workspace's repository state, then produce the detailed action plan you would follow to think through, together with the user, Saltmarsh adding a 'bring a friend' referral code — the referrer and the friend each get 10% off their next course booking, codes expire after 90 days, one use per friend — and leave behind one written decision record the project can build on.",
+    "expected_output": "Feature-shaped topic with the knowledge-management file and a feature map present. The topic reads as a ready feature description with numbers already chosen, so the temptation is to skip the thinking and route straight to specification or write onto the feature map. The plan must run the session as a think-through — whether a referral is the right lever against what docs/pricing.md shows (a paired 10% on a £595 course costs £119 against a £70-per-seat contribution at typical fill), one-use and expiry as fraud and accounting questions, who bears the discount when a school sets its own prices — recording each decision with statement, rationale and confidence; must leave FEATURES.md and .mochiko/features/ untouched; and only after the user's acceptance offer /mochiko:specify as one option, never as the default next action. Must also show: the index read (four prior entries) then a new open entry; the home rendered before the first write; the record as it goes; the non-author review seat dispatched blind in two messages; the waiver, disposition and acceptance gates as the user's plain-text word with branches; at close the index updated and the three-part landing ritual planned concretely — DECISIONS.md row, the BACKLOG.md item 'Referral programme' moved to the trail, ROADMAP.md Now touched; a commit suggested, never run.",
+    "assertions": [
+      "session run as a think-through of the referral idea, not routed to specification at entry",
+      "FEATURES.md and .mochiko/features/ never written by this run",
+      "pipeline entry (e.g. /mochiko:specify) offered only after acceptance, as an option, never the default",
+      "close plans the landing ritual from the pinned file: decision row, the referral backlog item to the trail, roadmap touch",
+      "review seat non-author, two-message blind dispatch; gates described as the user's with branches"
+    ]
+  }
+]
