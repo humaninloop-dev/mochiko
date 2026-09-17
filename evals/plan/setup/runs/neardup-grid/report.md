@@ -5,16 +5,16 @@ Arms: ['pre', 'post'] · replicates 4 · cost $9.3036
 Advisory (harness D2): nothing below sets an exit code.
 
 ## s1-greenfield
-- post coverage (pass^k): 25/32
-- pre coverage (pass^k): 27/32
+- post coverage (pass^k): 25/33
+- pre coverage (pass^k): 27/33
 - **unchanged-bucket regressions:** ['setup.carve-outs-preserved', 'setup.feature-map-brownfield']
 - changed-text (graded vs NEW text, advisory): ['setup.acceptance-plain-text', 'setup.transport-floor']
 - flaky rules (replicate disagreement — noise-guard input): 8 ['setup.carve-outs-preserved', 'setup.durables-never-deleted', 'setup.feature-map-brownfield', 'setup.map-never-overwrite', 'setup.model-tiering', 'setup.transport-floor', 'setup.user-conflict-rulings', 'setup.user-map-confirmation']
 - **unresolvable names in plans:** ['mochiko:domain-registry', 'mochiko:governance', 'mochiko:output-style']
 
 ## s2-brownfield
-- post coverage (pass^k): 31/32
-- pre coverage (pass^k): 30/32
+- post coverage (pass^k): 31/33
+- pre coverage (pass^k): 30/33
 - **unchanged-bucket regressions:** none
 - changed-text (graded vs NEW text, advisory): ['setup.acceptance-plain-text', 'setup.transport-floor']
 - flaky rules (replicate disagreement — noise-guard input): 2 ['setup.durables-never-deleted', 'setup.feature-map-greenfield']
@@ -22,12 +22,16 @@ Advisory (harness D2): nothing below sets an exit code.
 - **unresolvable names in plans:** ['mochiko:domain-registry', 'mochiko:governance', 'mochiko:output-style']
 
 ## s3-amend
-- post coverage (pass^k): 21/32
-- pre coverage (pass^k): 22/32
+- post coverage (pass^k): 21/33
+- pre coverage (pass^k): 22/33
 - **unchanged-bucket regressions:** ['setup.architecture-scope-handoff', 'setup.carve-outs-preserved', 'setup.store-scaffold-unconditional']
 - changed-text (graded vs NEW text, advisory): ['setup.acceptance-plain-text', 'setup.transport-floor']
 - flaky rules (replicate disagreement — noise-guard input): 12 ['setup.acceptance-plain-text', 'setup.architecture-scope-handoff', 'setup.baselines-bootstrap', 'setup.carve-outs-preserved', 'setup.durables-never-deleted', 'setup.feature-map-brownfield', 'setup.km-module-scaffold', 'setup.model-tiering', 'setup.no-git-mutations', 'setup.store-scaffold-unconditional', 'setup.user-conflict-rulings', 'setup.user-map-confirmation']
 - **unresolvable names in plans:** ['mochiko:domain-registry', 'mochiko:governance', 'mochiko:output-style']
+
+## Band input — all goldens (all (golden, rule) pairs; v2 D11)
+- pre: flaky 16/99 pairs = 16.2 % → band 20.0 % — an arm above its band is noise-dominated: no pre/post difference is read; one extra replicate per arm, once; two re-keys without a detectable control return the target to the user
+- post: flaky 15/99 pairs = 15.2 % → band 20.0 % — an arm above its band is noise-dominated: no pre/post difference is read; one extra replicate per arm, once; two re-keys without a detectable control return the target to the user
 
 - pairwise s3-amend/r1: ('1', '2') (position_consistent=True)
 - pairwise s3-amend/r2: ('2', '2') (position_consistent=False)

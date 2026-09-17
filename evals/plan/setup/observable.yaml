@@ -20,6 +20,8 @@
 command: setup
 
 observable:
+  # artifact homes (0005-artifact-homes, 2026-09-13)
+  - {id: setup.artifact-home, why: the plan names the `mochiko-cli home .mochiko/memory` render before its first write and takes governance-intent / codebase-analysis section shapes from `mochiko-cli template <kind>`}
   # roles
   - {id: setup.interrogation-inline, why: lead runs the interrogation itself — agenda adaptively then the catalog deck card by card}
   - {id: setup.stress-test-cold-seat, why: the pre-ratification stress-test is staffed by a cold seat or a recorded waiver}

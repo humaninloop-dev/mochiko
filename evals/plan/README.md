@@ -23,12 +23,19 @@ plan/                    (shared mechanics — session, provisioning, judge call
   agents.py              persona target (uv run evals/run.py agent <subcommand> ...; data under evals/agents/)
   wrapper.md             pinned form-only elicitation wrapper (D11; sha in every run's pins)
   brainstorm-probe/      build-item-0 probe report + captured plan
-  implement/             pilot command (D5); setup/ is the second command kit
+  implement/             pilot command (D5). Six kits now share this shape, one
+  setup/                 directory each: implement · setup · specify · feature ·
+  specify/               architecture · brainstorm (the last four authored 2026-09-18,
+  feature/               audits pending). Each holds:
+  architecture/
+  brainstorm/
     evals.json           goldens: id · args · fixture · control_prompt · expectations
     fixtures/<scenario>/ self-contained minimal workspaces (D4): s1-zero-gap ·
                          s2-two-gaps (planted: missing search contract + store-colliding
                          background worker) · s3-empty-args
-    observable.yaml      D8 partition: 58-rule rubric + 46 declared out-of-instrument
+    observable.yaml      D8 partition: every rule bucketed observable or declared
+                         out-of-instrument (implement 58 + 46; specify 39 of 52;
+                         feature 47 of 50; architecture 45 of 48; brainstorm 21 of 30)
     preregistration.md   read rule + tolerance band + F2 noise guard (grid-gating)
     runs/<name>/         plans, summary.json, report.md (gitignored or committed per run)
 ```

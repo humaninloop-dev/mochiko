@@ -14,6 +14,8 @@
 command: implement
 
 observable:
+  # artifact homes (0005-artifact-homes, 2026-09-13)
+  - {id: impl.artifact-home, why: the plan names the `mochiko-cli home` render of the feature (or epic/lane) home before its first write and routes tasks.md, reports/, and implement-log.md to it}
   # roles
   - {id: impl.dm-entry-gate, why: plan shows run-open gating on the selected batch}
   - {id: impl.design-phase-fires-on-gap, why: gap-vs-zero-gap branch visible (s1 vs s2)}
