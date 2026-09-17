@@ -150,20 +150,29 @@ trail (2026-09-08); their open residue is carried below.)*
   untouched (release gate, not an eval). Each act its own audit.
 - [ ] **Agents-as-schema channel probe** (D4 door) — does a plugin hook fire for a `--agent`
   session, an `Agent` subagent, and an agent-team teammate, with injected text landing before the
-  first model turn? Three legs; a census opens only on a positive result. `!` injection in agent
-  bodies is ruled out (record F12). **Absorbed 2026-09-13 into the hook-enforced artifact schema
-  wave-0 probe** (`hook-enforced-artifact-schema` D8 — same three legs, one session); result
-  lands here.
-- [ ] **Command-target residue (carried from the plan-only section)** — **runner defect found
-  2026-09-08:** `evals/commands/run.py` `extract_rules` still reads `plugins/mochiko/schemas/*.yaml`,
-  deleted at v0.107.0, so `check-rubric` / `partition` / `judge` for commands fail at HEAD — re-key
-  onto `mochiko-cli` renders or the derived views (same move as the skill re-key) · D10 one-real-run
-  correlation check · the other four commands' fixtures · name-resolution marker allowlist (the
-  three governance comment-marker names false-positive in every `setup` run) · judge-retry loop
-  for unparseable opus coverage-judge arrays · noise-domination disposition: implement was
-  noise-dominated at k=3 and k=4 (flaky share ~21 % vs the 20 % bound), setup cleaner — the v2
-  record's D11 (measured band + stopping rule) is the ruled answer; apply it to the command target
-  at its next grid · Goodhart watch (anti-recitation register) · opus pairwise position bias.
+  first model turn? `!` injection in agent bodies is ruled out (record F12). **Absorbed 2026-09-13
+  into the hook-enforced artifact schema wave-0 probe** (`hook-enforced-artifact-schema` D8).
+  **Result (wave 0, leg 8, user-ruled R5):** POSITIVE for the `Agent` subagent leg — a
+  `SubagentStart` hook's `hookSpecificOutput.additionalContext` lands in every spawned seat's
+  context before its first turn, named and unnamed spawns alike (proof: `attachment:
+  hook_additional_context` in both sidechains); the plugin now ships that reminder channel.
+  The `--agent` headless leg and the agent-team teammate leg were not measured there. Per this
+  item's own rule a positive result opens the census question — which agent-body content could
+  move to a schema-delivered channel — as a candidate brainstorm topic; the two unmeasured legs
+  are its first probe. Nothing here is closed without that ruling.
+
+- [ ] **Command-target residue (carried from the plan-only section)** — **2026-09-18 status:** the
+  runner defect is gone (`extract_rules` reads `.mochiko/schema-views/commands/<cmd>.yaml` when the
+  schema file is absent; `check-rubric implement`/`setup` PASS again once the artifact-homes rule
+  `impl.artifact-home` / `setup.artifact-home` joined both partitions as observable) · the three
+  governance comment-marker names (`mochiko:governance` · `domain-registry` · `output-style`) are
+  allowlisted in `name_resolution` · the coverage judge retries a chunk twice · the Sonnet pairwise
+  read is opt-in (`judge --pairwise`; position-biased in both pilots) · the v2 D11 noise band prints
+  in every command report (`## Band input`, all-pairs share + 5 capped 20, UNDER-SAMPLED below 8
+  pairs; implement's stored `ontology-grid` reads pre 15.7 % / post 17.4 %) — the noise-domination
+  disposition is thereby applied at the next grid. **Remaining:** the other four commands'
+  kits (`architecture` · `brainstorm` · `feature` · `specify` — authored 2026-09-18 in worktrees,
+  audits pending) · D10 one-real-run correlation check · Goodhart watch (anti-recitation register).
 
 ## Plan-retirement residuals
 

@@ -346,7 +346,10 @@ def name_resolution(plan: str) -> list:
     for m in set(re.findall(r"mochiko:([a-z][a-z0-9-]+)", plan)):
         if m not in skills and m not in agents and m not in {
                 "architecture", "brainstorm", "feature", "implement",
-                "setup", "specify", "mochiko"}:
+                "setup", "specify", "mochiko",
+                # governance comment markers (`<!-- mochiko:governance -->` and kin) a setup
+                # plan quotes — region names, not primitives (false-positive in every setup run)
+                "governance", "domain-registry", "output-style"}:
             bad.append(f"mochiko:{m}")
     return sorted(bad)
 
@@ -404,7 +407,7 @@ def judge_coverage(rule_items: list, plan: str, model: str = CHECKLIST_MODEL) ->
             "array.\n\nRULES:\n" + json.dumps(chunk, indent=1)
             + "\n\nPLAN:\n" + plan[:120_000])
         byid = {}
-        for _ in range(2):
+        for _ in range(3):  # two retries on parse failure / missing ids
             verdicts = extract_json(judge_session(prompt, model))
             if isinstance(verdicts, list):
                 for v in verdicts:
@@ -488,7 +491,7 @@ def cmd_grid(cmd: str, replicates: int, old_ref: str | None, control: bool,
 
 
 def cmd_judge(cmd: str, name: str, judge_model: str = CHECKLIST_MODEL,
-              pairwise_model: str = PAIRWISE_MODEL) -> None:
+              pairwise_model: str = PAIRWISE_MODEL, pairwise: bool = False) -> None:
     rd = rundir(cmd, name)
     meta = json.loads((rd / "summary.json").read_text())
     rub = load_rubric(cmd)
@@ -505,7 +508,9 @@ def cmd_judge(cmd: str, name: str, judge_model: str = CHECKLIST_MODEL,
         e["coverage"] = judge_coverage(items, scrubbed, judge_model)
         e["stub"] = judge_stub(scrubbed, judge_model)
     meta["pairwise"] = []
-    if "pre" in meta["arms"]:
+    # Pairwise is opt-in (the Sonnet A/B read chose position 2 in 23 of 24 calls across the
+    # persona pilots — ADR 2026-09-09-persona-pilot-2-validator-read; same read here).
+    if pairwise and "pre" in meta["arms"]:
         for g in {e["golden"] for e in meta["runs"]}:
             for r in range(1, meta["replicates"] + 1):
                 a, b = plans.get((g, "pre", r)), plans.get((g, "post", r))
@@ -602,6 +607,31 @@ def cmd_report(cmd: str, name: str) -> None:
         if nres:
             lines.append(f"- **unresolvable names in plans:** {nres}")
         lines.append("")
+    # Noise band (primitive-eval-harness-v2 D11: measured band + stopping rule, applied to
+    # the command target at its next grid). Commands' goldens declare no tempts, so the
+    # band is the all-pairs replicate-disagreement share per arm over the observable rules,
+    # plus five points, capped at 20 %; fewer than eight pairs = UNDER-SAMPLED (band = cap).
+    lines.append("## Band input — all goldens (all (golden, rule) pairs; v2 D11)")
+    for arm in [a for a in meta["arms"] if a != "nocmd"]:
+        n_f = n_p = 0
+        for g in goldens:
+            entries = [e for e in meta["runs"] if e["golden"] == g and e["arm"] == arm]
+            if len(entries) < 2:
+                continue
+            for rid in obs:
+                if missing(entries, rid) == len(entries):
+                    continue
+                n_p += 1
+                n_f += flaky(entries, rid)
+        if n_p:
+            share = 100.0 * n_f / n_p
+            band = 20.0 if n_p < 8 else min(share + 5, 20)
+            lines.append(f"- {arm}: flaky {n_f}/{n_p} pairs = {share:.1f} % → band {band:.1f} %"
+                         + (" UNDER-SAMPLED (< 8 pairs)" if n_p < 8 else "")
+                         + " — an arm above its band is noise-dominated: no pre/post difference is"
+                           " read; one extra replicate per arm, once; two re-keys without a"
+                           " detectable control return the target to the user")
+    lines.append("")
     for p in meta.get("pairwise", []):
         w = p["first_order"].get("winner"), p["swapped"].get("winner")
         lines.append(f"- pairwise {p['golden']}/r{p['replicate']}: {w} "
@@ -638,6 +668,8 @@ def main() -> None:
                            help="coverage+stub judge (ruled default: haiku)")
             p.add_argument("--pairwise-model", default=PAIRWISE_MODEL,
                            help="pairwise judge (ruled default: sonnet)")
+            p.add_argument("--pairwise", action="store_true",
+                           help="opt-in Sonnet A/B read (position-biased in both pilots)")
     a = ap.parse_args()
     if agents.dispatch(a):
         return
@@ -667,7 +699,7 @@ def main() -> None:
     elif a.cmd == "grid":
         cmd_grid(a.command, a.replicates, a.old_ref, a.control, a.out)
     elif a.cmd == "judge":
-        cmd_judge(a.command, a.run_name, a.judge_model, a.pairwise_model)
+        cmd_judge(a.command, a.run_name, a.judge_model, a.pairwise_model, a.pairwise)
     elif a.cmd == "report":
         cmd_report(a.command, a.run_name)
 
