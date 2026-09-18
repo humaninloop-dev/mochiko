@@ -11,6 +11,10 @@
 #   contingency    — fires only on a run-time event no forward plan contains
 #   conditional    — observable only under a condition no current scenario plants
 #                    (activating it = planting the condition, a scenario-design act)
+#   structural     — the command's own seat wiring never composes the condition in any
+#                    run, so no fixture can plant it without redesigning the command
+#                    (added 2026-09-19, kit audit re-grade: `conditional` invited a
+#                    reader to hunt for a fixture that cannot exist)
 #   latitude       — grants freedom; nothing falsifiable in a plan
 #   register       — prose-register meta-rule; not plan content
 #   fail-condition — end-state failure, not forward-plan content
@@ -58,9 +62,9 @@ out_of_instrument:
   # latitude / register
   - {id: brainstorm.staffing-latitude, why: latitude}
   - {id: brainstorm.register, why: register}
-  # conditional (no fixture can plant the condition)
+  # conditional (plantable, unplanted) / structural (unplantable by design)
   - {id: brainstorm.pair-maps-independent, why: conditional — binds only when the lead's staffing call composes a review pair; staffing is latitude so no fixture plants a pair and the read would follow the lead's choice replicate by replicate}
-  - {id: brainstorm.plan-approval-producers, why: conditional — binds only when a seat other than the lead writes an artifact; the run's seats are the review seat (a grader and exempt) and fact-finding dispatches (exempt) so no scenario composes a producing seat}
+  - {id: brainstorm.plan-approval-producers, why: structural — binds only when a seat other than the lead writes an artifact; the run's seats are the review seat (a grader and exempt) and fact-finding dispatches (exempt), so the command's own wiring never composes a producing seat and no fixture can plant one}
   # fail-conditions (all 4 — end-state failures, not forward-plan content; C1)
   - {id: brainstorm.fail.record-unaccepted, why: fail-condition}
   - {id: brainstorm.fail.unreviewed-no-waiver, why: fail-condition}

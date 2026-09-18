@@ -55,10 +55,15 @@ emptying the contingency class, because the same reasoning would have condemned
   same in both arms and never a regression. `seats` resolves to multi on every path (the
   review seat is a second seat), so `brainstorm.transport-floor` is graded everywhere and
   `single` is unplanted (only the user's in-run waiver reaches it).
-- **Thin reads, named now:** `brainstorm.user-survivor-challenge` and
-  `brainstorm.user-pen-boundary` are graded on one described branch each at the disposition
-  and acceptance gates. They are the expected flaky candidates; a flaky pair on either is
-  read as one noise event, never as a command finding on its own.
+- **Thin reads, named now:** `brainstorm.user-survivor-challenge`,
+  `brainstorm.user-pen-boundary` and `brainstorm.reopen-born-verify` are graded on one
+  described branch each at the disposition and acceptance gates. They are the expected
+  flaky candidates; a flaky pair on any of them is read as one noise event, never as a
+  command finding on its own. `reopen-born-verify` (moved here from out-of-instrument on
+  2026-09-19) sits one hypothetical layer deeper than the other two — it bounds a decision
+  born from a reopen that itself only happens if a coverage survivor is routed — so expect
+  it flakier than its siblings, not their equal. An `absent` read on every replicate of
+  every golden is the one outcome that reopens it as a dead-rule finding.
 - **Co-moving pairs:** `record-review-independence` / `author-grader-default-fail` and
   `coverage-survivor-routing` / `non-coverage-survivors` describe one seat and one gate
   respectively; a disagreement on one member usually shows on the other. The band counts
@@ -114,7 +119,7 @@ one retires.
   combined pre-or-post flaky line per golden (`cmd_report`, "flaky rules (replicate
   disagreement — noise-guard input)"); the per-arm share the band needs is computed from
   `summary.json`'s per-run `coverage` verdicts — count, per arm, the (golden, rule) pairs
-  whose three replicate verdicts are not all equal, over 63. A per-arm band line in
+  whose three replicate verdicts are not all equal, over 66. A per-arm band line in
   `cmd_report` mirroring `agent-report`'s *Band input* section is the disclosed runner gap
   (a re-key candidate; no verdict depends on it).
 - **Guard:** an arm whose flaky share exceeds the band is noise-dominated: no pre/post
@@ -217,15 +222,16 @@ tripping twice, triggers the stopping rule.
 
 ## Fill log
 
-- band: **[measured at baseline]** — `pre` flaky pairs ___/63 = ___ % → +5 = ___ %
-  (capped 20 %); `post` ___/63 = ___ %. Filled from `runs/<grid>` on ____ (sessions $___;
+- band: **[measured at baseline]** — `pre` flaky pairs ___/66 = ___ % → +5 = ___ %
+  (capped 20 %); `post` ___/66 = ___ %. Filled from `runs/<grid>` on ____ (sessions $___;
   judges $___ / ___ calls).
 - positive control (`artifact-home`, `--old-ref 794cea8`): pre `absent` on s1 / s2 / s3
   ___; post pass^k `reflected` on s1 / s2 / s3 ___.
 - unchanged-bucket regressions per golden: s1 ___ · s2 ___ · s3 ___.
 - dead-zone (`nocmd`, first grid only): rules pass^k under `nocmd` per golden ___.
-- thin reads (`user-survivor-challenge`, `user-pen-boundary`): flaky on ___; co-moving
-  clusters observed ___.
+- thin reads (`user-survivor-challenge`, `user-pen-boundary`, `reopen-born-verify`):
+  flaky on ___; co-moving clusters observed ___; `reopen-born-verify` absent on every
+  replicate of every golden? ___ (yes = dead-rule finding, not noise).
 - branch legibility (ship bar d): `lead-inline-questioning` evidence on s1 vs s2 ___;
   `km-close-ritual` on s1/s3 vs s2 ___; `next-step-offer` on s3 ___.
 - cap-hit runs ___ · fence breaches ___ · unresolvable names ___.
