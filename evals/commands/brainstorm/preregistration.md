@@ -36,15 +36,18 @@ edit to the pair is available as the first grid's edit under read: migration 000
 (`2026-09-13 hook-enforced-artifact-schema D1`, commit `5d8fc69`) added
 `brainstorm.artifact-home`. `--old-ref 794cea8` (the parent of that commit; the view file
 exists there) gives, per `uv run evals/commands/run.py partition brainstorm --old-ref 794cea8`
-run at authoring: **unchanged 29 (20 observable) · changed 0 · removed 0 · added 1
-(observable)**. Recompute before reading any grid — the buckets move with every edit — and
+run at authoring: **unchanged 29 (21 observable after the 2026-09-19 move; 20 at
+authoring) · changed 0 · removed 0 · added 1 (observable)**. Recompute before reading any grid — the buckets move with every edit — and
 name the SHA explicitly; `HEAD` is never the pre arm.
 
 ## Rubric shape (D8 partition, `observable.yaml`)
 
-30 rules: **21 plan-observable · 9 out-of-instrument** (2 latitude/register · 2
-conditional · 1 contingency · 4 fail-conditions). `check-rubric brainstorm` prints
-`rubric OK: 21 observable, 9 out-of-instrument, 30 total` at authoring.
+30 rules: **22 plan-observable · 8 out-of-instrument** (2 latitude/register · 2
+conditional · 4 fail-conditions). `check-rubric brainstorm` prints
+`rubric OK: 22 observable, 8 out-of-instrument, 30 total`. At authoring the split was
+21 · 9; the kit audit of 2026-09-19 moved `brainstorm.reopen-born-verify` to observable,
+emptying the contingency class, because the same reasoning would have condemned
+`brainstorm.coverage-survivor-routing`, which this kit grades observable.
 
 - **Condition gating.** `km_file` is planted both ways (present in s1 and s3, absent in s2):
   `brainstorm.km-close-ritual` is graded on s1 and s3, where a backlog item exists for the
@@ -99,7 +102,7 @@ one retires.
 
 - **Denominator: all pairs.** Command goldens carry no `tempts`; every observable rule is
   judged on every golden, so the band is the **all-pairs** flaky share per arm — pairs with
-  replicate disagreement over 3 goldens × 21 observable rules = **63 pairs per arm** (well
+  replicate disagreement over 3 goldens × 22 observable rules = **66 pairs per arm** (well
   above the 8-pair `UNDER-SAMPLED` mark; a rubric re-cut that drops an arm below 8 pairs
   carries the mark and takes the band as the cap). The persona kits' invited-only recount
   (`2026-09-09-persona-band-invited-only`) does not apply where no golden invites a subset;
@@ -144,7 +147,7 @@ sessions' `total_cost_usd` (the command runner does not yet sum it; record it by
 The kit is ready if the first grid (a) passes the positive control on every golden, (b)
 localizes zero unchanged-bucket regressions or each one to a named rule id with evidence
 quotes, (c) keeps the `pre` all-pairs flaky share ≤ 15 % so the band it fixes binds
-uncapped (≤ 9 of 63 pairs), and (d) shows the branch is legible: the three goldens produce
+uncapped (≤ 9 of 66 pairs), and (d) shows the branch is legible: the three goldens produce
 visibly different coverage or evidence profiles on `lead-inline-questioning` (confirmations
 on s1 versus open probes on s2), `km-close-ritual` (s1/s3 versus s2), and `next-step-offer`
 (the s3 offer described as an option after acceptance). Identical profiles across the three
