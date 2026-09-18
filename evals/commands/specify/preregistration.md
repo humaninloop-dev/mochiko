@@ -26,7 +26,7 @@ already on disk (below).
 - Comparison substrate: the **in-grid pre-edit arm** (never a committed baseline file,
   which is only a pinned historical record).
 - **Judge:** Haiku rule-coverage checklist over the D8 observable subset (`observable.yaml`:
-  **39 observable · 13 out-of-instrument · 52 total**), one binary per rule with a quoted
+  **40 observable · 12 out-of-instrument · 52 total** (39 · 13 at authoring; `spec.filter-disagreement-escalates` moved to observable on 2026-09-19 by kit audit finding 2)), one binary per rule with a quoted
   evidence span, graded on embodiment after every known rule id is scrubbed from the plan;
   a restated principle is not evidence. Plus the stub axis per numbered phase. Sonnet
   pairwise, position-swapped, advisory.
@@ -55,8 +55,8 @@ already on disk (below).
   (the invited-only re-key has no separate denominator here; where a later edit adds a
   `tempts` list, the invited-only share takes over and the all-pairs figure is disclosed
   beside it). **Band = share + 5 points, capped at 20 %.** An arm with fewer than 8 graded
-  pairs carries an `UNDER-SAMPLED` mark and its band is the cap; at 3 goldens × 39 rules =
-  117 pairs per arm this kit cannot be under-sampled unless the partition shrinks below
+  pairs carries an `UNDER-SAMPLED` mark and its band is the cap; at 3 goldens × 40 rules =
+  120 pairs per arm this kit cannot be under-sampled unless the partition shrinks below
   3 observable rules.
 - **Guard:** the **pre arm's own spread must sit inside its band** before any pre/post diff
   is read. An arm whose flaky share exceeds its band is noise-dominated: add **one extra
@@ -91,15 +91,19 @@ its control from the added or changed bucket in a fill-log row before the grid r
   plan for the halt string. A plan carrying `mochiko-cli rules not delivered` is an
   **invalid run** — discarded, excluded from every read, listed in the fill log — and a
   whole arm invalid is an instrument finding (binary grammar range short of the ref), not a
-  command finding. At kit authoring the installed binary predates HEAD's migration 0005, so
-  the post arm cannot run until the binary is rebuilt from `crates/mochiko-cli`.
+  command finding. At kit authoring the installed binary predated HEAD's migration 0005 and
+  the post arm could not run; **discharged 2026-09-19** — the binary was rebuilt from
+  `crates/mochiko-cli` and now renders both the working tree and the `32c1ed5` archive
+  cleanly, verified before this kit's first grid. Re-check the render rather than the version
+  string if an arm ever comes back wholly invalid: the version did not change across that
+  rebuild.
 - No run stalls at a gate or emits a bare confirmation request (D9); such a run is discarded
   and, if persistent across replicates, reported as a substrate result.
 
 ## Grid shape and budget
 
 - **Grid:** 3 goldens (s1-online-payment · s2-webhook-retry · s3-bare-greenfield) × 3
-  replicates × 2 arms (pre + post) = **18 sessions**; judges: Haiku coverage over 39 rules in
+  replicates × 2 arms (pre + post) = **18 sessions**; judges: Haiku coverage over 40 rules in
   three chunks of ≤ 15 per plan + the stub axis; Sonnet pairwise on each (golden, replicate)
   pre/post pair.
 - **Control arm:** `--control` adds 9 `nocmd` sessions. Run it **once at the first grid**
@@ -134,7 +138,7 @@ branch — a fixture finding, not a command finding.
 One row per grid, appended before the grid runs (control named) and completed after the
 report is read. Never edit an earlier row; correct with a new one.
 
-| Date | Run name | `--old-ref` | Control (added/changed id expected LANDED) | Arms × k | Sessions · USD | Invalid runs | Pre cov · post cov (pass^k /39) | Unchanged regressions | Added adoption · removed ghosts | Flaky share → band (pre · post) | Guard tripped · extra replicate | Verdict | Re-key count |
+| Date | Run name | `--old-ref` | Control (added/changed id expected LANDED) | Arms × k | Sessions · USD | Invalid runs | Pre cov · post cov (pass^k /40) | Unchanged regressions | Added adoption · removed ghosts | Flaky share → band (pre · post) | Guard tripped · extra replicate | Verdict | Re-key count |
 |------|----------|-------------|--------------------------------------------|----------|----------------|--------------|----------------------------------|-----------------------|--------------------------------|--------------------------------|-------------------------------|---------|--------------|
 | _none yet_ | | | | | | | | | | | | | |
 
