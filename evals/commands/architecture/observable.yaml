@@ -83,6 +83,25 @@ out_of_instrument:
   # fail-conditions (the pair's single kind: fail rule — an end-state failure, not forward-plan content; C1)
   - {id: arch.fail.no-verdict, why: fail-condition}
 
+# What the pipeline actually reads (traced in the runner, kit audit re-grade 2026-09-19):
+# the coverage judge is handed each observable rule's id and its text from the derived schema
+# view, plus the scrubbed plan — never this file's `why` fields, and never evals.json's
+# `assertions` or `expected_output`, which nothing in the command runner reads (the skill
+# runner does run its assertions; this target does not). So every `why` here, and every
+# assertion there, is authoring rationale and a human's spot-check aid at the report's
+# investigate step — not a grading input. A rubric weakness is fixed in the fixtures or the
+# rule text, never by sharpening the prose below.
+#
+# Correlated by fixture design (g1, g2): arch.seat-architect-producer,
+# arch.seat-tech-lead-grader, arch.author-grader-separation and arch.sound-loop-floor can all
+# be satisfied by one rubber-stamp sentence on these two goldens, because neither fixture
+# hands the grading seat anything a lazy pass would get wrong. g3 is the counter-example — it
+# plants a mechanical status flip beside a real judgment write and lets the rules' own text
+# tell them apart. Read these four as one signal on g1 and g2, the way arch.model-tiering and
+# arch.seat-drift-probe-empirical are already read. FOLLOW-UP before the next grid: plant the
+# same discriminator in g1's and g2's fixtures, which is the only fix that changes what the
+# instrument can see.
+#
 # Evidentiary bar (kit audit 2026-09-19, finding 1): the four seat-separation rules —
 # arch.seat-architect-producer, arch.seat-tech-lead-grader, arch.author-grader-separation,
 # arch.sound-loop-floor — were all satisfiable by one interchangeable "producer plans,
