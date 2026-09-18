@@ -29,7 +29,15 @@ plan/                    (shared mechanics — session, provisioning, judge call
   feature/               audits pending). Each holds:
   architecture/
   brainstorm/
-    evals.json           goldens: id · args · fixture · control_prompt · expectations
+    evals.json           goldens: id · args · fixture · control_prompt · expectations.
+                         Only `fixture`, `args` and `control_prompt` reach a session;
+                         `assertions` and `expected_output` are read by nothing in this
+                         runner — they are authoring rationale and a human's spot-check
+                         aid (the skill target DOES run its assertions; this one does
+                         not). Same for observable.yaml's `why`: the coverage judge gets
+                         each rule's id and its text from the derived schema view, plus
+                         the scrubbed plan. Sharpen a fixture or the rule text to change
+                         what the instrument sees; sharpening this prose changes nothing.
     fixtures/<scenario>/ self-contained minimal workspaces (D4): s1-zero-gap ·
                          s2-two-gaps (planted: missing search contract + store-colliding
                          background worker) · s3-empty-args

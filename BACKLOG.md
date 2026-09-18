@@ -170,7 +170,7 @@ trail (2026-09-08); their open residue is carried below.)*
   read is opt-in (`judge --pairwise`; position-biased in both pilots) · the v2 D11 noise band prints
   in every command report (`## Band input`, all-pairs share + 5 capped 20, UNDER-SAMPLED below 8
   pairs; implement's stored `ontology-grid` reads pre 15.7 % / post 17.4 %) — the noise-domination
-  disposition is thereby applied at the next grid. **Remaining:** the other four commands'
+  disposition is thereby applied at the next grid. **Remaining:** **the command target's unread golden fields** (found 2026-09-19 by the architecture kit's audit re-grade, traced in the runner) — `assertions` and `expected_output` in a command kit's `evals.json` are read by nothing, while the skill target runs its assertions as a deterministic layer; decide whether to wire them here (a scripted layer beside the judged one, which the plan-only substrate may not support) or to declare them human-only in the kit shape so no author mistakes them for a gate · the other four commands'
   kits (`architecture` · `brainstorm` · `feature` · `specify` — authored 2026-09-18 in worktrees,
   audits pending) · D10 one-real-run correlation check · Goodhart watch (anti-recitation register) ·
   the four kits' relocation under the renamed
