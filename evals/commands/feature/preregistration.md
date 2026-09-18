@@ -32,6 +32,19 @@ from the baseline grid.
   reads `absent` under `pre` and `reflected` pass^k under `post`, localized to that id with
   evidence quotes. A control that does not land is an instrument failure, not a command
   finding: the read stops and the runner, the rubric or a golden is re-keyed, under the
+  **What this control does and does not prove (audit re-grade 2026-09-19, traced in
+  `cmd_report`):** an added rule exercises the *adoption* path — `passk(post, rid)` alone.
+  The regression path the tolerance band and the ship bars actually gate on is a different
+  branch: `rid` in the unchanged bucket, `passk(pre, rid)` true and `passk(post, rid)` false.
+  No real `--old-ref` can control that branch, here or in the sibling kits, because it fires
+  only when the command has genuinely regressed. Detecting new text appearing is the easy
+  direction; detecting a standing obligation quietly vanishing is the failure-prone one, and
+  it stays unproven until a synthetic mutation probe runs. **Pre-registered:** before this
+  kit's first *regression* read — not before its baseline grid — run one probe pair that
+  weakens a single rule's text in the post tree and confirm the report names exactly that id
+  in `unchanged-bucket regressions`. A probe that fails to localize is an instrument failure
+  under the stopping rule.
+
   stopping rule below. Two other refs were checked and rejected: `49acf05`, `0a03626` and
   `5d8fc69` carry no delta at all, and `9cdac97` carries two (`feat.artifact-home` added plus
   `feat.delta-cards` changed) at the cost of a three-version gap whose unrelated changes would
