@@ -20,6 +20,24 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 `DECISIONS.md` 2026-09-04 row. Pre-edit verbatim text:
 `git show 7d098b9:plugins/mochiko/skills/review-brainstorm/SKILL.md`. -->
 
+## [v0.113.0] the EXTERNAL-CLAIMS consumer pointer annotated for the retired agent
+
+- **Disposition:** superseded → the annotated pointer line, which now records that
+  `agents/validator.md` retired at v0.113.0 with the persona and that the consumer has **no
+  successor** — the persona's copy of the source re-read clause retired with it rather than
+  being re-homed, and the clause's live consumers are the others listed in that paragraph.
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/brainstorms/producer-plan-enforcement/record.md` D3 ·
+  `.mochiko/brainstorms/author-grader-consolidation/record.md` D7; `DECISIONS.md` 2026-09-03
+  and 2026-09-19 rows).
+- **Content:** verbatim superseded span — "`agents/validator.md` (evidence-hierarchy rung — the
+  source re-read clause only; added with the v0.52.0 build, beyond ER-D6's eight ruled touches)."
+- **Kept deliberately:** the consumer line itself and its ER-D6 provenance note — nothing leaves
+  the list, because the list is the edit-time guard's own record of who reads this file.
+- **Consumers assessed:** `EXTERNAL-CLAIMS.md` is a `references/` file, unbudgeted and read on
+  demand; no skill quotes this line, and the "assessed against all consumers" obligation is
+  discharged by the `validator.md` entry's consumer list.
+
 ## [v0.106.0] the Rules block — raw schema Read superseded by CLI delivery
 
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation

@@ -1121,6 +1121,10 @@ fn the_shipped_corpus_matches_its_recorded_census() {
     // fifteen rules of which five are floors; every other op it carries is a `reword-rule`,
     // which keeps its rule's id, class and section and so mints nothing. The command figures
     // and the fail set hold; only the skill side moves.
+    // `0010` (the validator retirement, 2026-09-03 producer-plan-enforcement D3) is three
+    // `reword-rule` ops and nothing else — one on `patterns-model-tiering` and two on
+    // `authoring-constitution`, each keeping its id, class, kind and section — so it mints and
+    // retires nothing and every figure below holds unmoved.
     assert_eq!(command_rules, 329, "live command rules");
     assert_eq!(skill_rules, 753, "live skill rules");
     assert_eq!(command_rules + skill_rules, 1082, "live rules in total");

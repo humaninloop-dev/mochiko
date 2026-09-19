@@ -95,5 +95,7 @@ seat never fetches: external verification belongs to the review seats alone.
 (disclosure-presence check only) · `patterns-technical-decisions` (disclosure grammar) ·
 `templates/artifact-format.md` (disclosure grammar) · `CROSS-EXAM.md` (external-claim
 carve-out) · `agents/validator.md` (evidence-hierarchy rung — the source re-read clause
-only; added with the v0.52.0 build, beyond ER-D6's eight ruled touches).
+only; added with the v0.52.0 build, beyond ER-D6's eight ruled touches) — consumer retired
+v0.113.0 with the persona, with no successor consumer; this clause's live consumers are the
+others listed above.
 Edit-time guard: a change here is assessed against **all** consumers.

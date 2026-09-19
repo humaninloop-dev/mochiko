@@ -14,7 +14,12 @@ new skill `review-seat-plan`, sound-loop leg 1 reworded and the wave run under t
 `primitive-edits.md` criterion 6 to the peer-graded standard; plans P1:PASS(1) · P2:PASS(0) ·
 P3:PASS(1); 14 gate units / 1 fix round under the new form, the `review-seat-plan` pair
 double-graded as the D9 baseline, D7 cost limb Measured; gates green, contract suite 91/91 — see
-the log); commit pending the user
+the log; committed `56b44c2`) · **wave 3 BUILT 2026-09-20 at v0.113.0** (plan
+`wave3-validator-retirement.md`; migration `0010-validator-retirement`, the `validator` persona
+retired — nine agents ship, the carrier live at both sites; governance PATCH v3.1.0 → v3.1.1
+user-ruled; plans P1:PASS(0) · P2:PASS(1) · P3:PASS(0); 11 gate units / 3 rounds / 4 blocking
+caught, 11 PASS at close; gates green — see the log) — **all three waves built, the path
+complete**; commit pending the user
 **Opened:** 2026-09-19
 **Supersedes:** `author-grader-value-tiering` (opened 2026-08-26, stalled at Q1 with
 ground facts F1–F6 and no decisions). This session carries that record's facts forward, adds the

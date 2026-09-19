@@ -457,3 +457,202 @@ unit; one old-form `mochiko:validator` for the double-grade. Watch: PPE D8 item 
   → wave 2 built · KM invariants run. Commit pending the user.
 - **Wave 2 CLOSED 2026-09-19 at v0.112.0.** Next: wave 3, the `validator` retirement
   (producer-plan D8 item 5), audited under the gate form — one gate grader, no double-grade.
+
+## Wave 3 — the `validator` retirement — opened 2026-09-19
+
+Plan: [wave3-validator-retirement.md](wave3-validator-retirement.md). Target 0.113.0.
+`producer-plan-enforcement` D3 / D8 item 5 / D9 wave 2, sequenced as this path's wave 3 (D10).
+Sequence allocated: `0010-validator-retirement.yaml` (three `reword-rule` ops, no id or pin moves).
+Seats: P1 schema + tiering pair · P2 prose sweep · P3 suite/crate fixtures/eval kit (persona-less,
+`model: opus`); per-producer fresh generic peer graders per `mochiko:review-seat-plan` (installed at
+0.112.0 — both delivery ways live); one plain gate grader for every unit. Watch: PPE D8 item 7.
+
+- **Sound-loop read-back:** `class: floor · 6 rules` — `two-part-trigger · leg-1-seat-produces ·
+  leg-2-non-author-review · no-delta-card-exemption · only-real-seats · leg-3-user-gate-stays`.
+  Trigger fired on every item (judgment-authored writes to plugin primitives, CLAUDE.md, the
+  governance ledger). Leg 1 under the plan-QA form; leg 2 the gate grader; leg 3 the user's bump.
+- **Gate for this wave (D3 / D9):** carrier live (v0.111.0, 14 units graded at wave 2); plan-grade
+  figures in (`P1:PASS(1) · P2:PASS(0) · P3:PASS(1)`, no dirty tree). Installed copy 0.112.0 after
+  the user's `/plugin` update + `/reload-plugins --force` (48 skills, 20 agents across plugins).
+- **Inventory (lead, grep over the live tree):** persona named in `agents/validator.md`,
+  `plugin.json`, the router (family sentence · roster row · mount doctrine · one hygiene line),
+  `validation-constitution/SKILL.md` (description + one body line), one `review-brainstorm`
+  reference pointer, `CLAUDE.md` (three mentions + axis 5), `primitive-edits.md` (one
+  parenthetical), `ARCHITECTURE.md` (six lines), the governance ledger (GI-004 + GI-005 detail),
+  the budget ledger (one row), and three log rules (`patterns-model-tiering.seat-default-key`,
+  `authoring-constitution.never-co-mounted`, `authoring-constitution.grading-routing`). The contract
+  suite's preload case is `devils-advocate` × `review-specifications` — untouched. Role-noun uses
+  and frozen records stay (plan §8). `.mochiko/provenance.yaml` no longer exists — D3's anchor item
+  is moot; the `validator-scope-and-verbosity` anchor strings in the log are history.
+- **Lead's default, stated to the user:** the ledger's GI-004/GI-005 grader-identity lines are a
+  detail edit under this wave's audit (meaning unchanged), not an amend run; user said "go".
+- **Tree snapshot clean (2 lead paths); P1, P2, P3 plan-only dispatched under the leg** — each plan
+  returned verbatim (the notification channel caps near 4,000 chars, so each seat re-sent its
+  remainder in labelled parts via SendMessage; nothing persisted); diff against the snapshot after
+  all three returned: identical. Fresh generic peers (`general-purpose`, `model: opus`) grade each
+  plan per `mochiko:review-seat-plan`, the skill named and its 0.112.0 render pasted (two-way).
+- **P3 plan — `PLAN GRADE: P3w3 · PASS · none`** (peer-p3w3, every cited line re-read; two
+  advisories inside item 3: six citations drift 1–10 lines, two pending checks worded past-tense).
+  Its two questions ruled lead-level: a sweep edge surfaced by the `never-co-mounted` reword routes
+  to P1's allowlist path (§2 already licenses it); the anchor question is answered by P3's own read
+  of the landed 0010 (rewords only). Execution waits on P1's landing.
+- **Rulings on P1/P2 questions, for the approvals:** P1 gains the `authoring-constitution` payload
+  row (+66 render chars from its two rewords, ruled-HOLDS restamp, covered under unit 1's argued
+  overage); P2 gains the router's `patterns-model-tiering` row count (six → five) and the axis-5
+  title ("Producer↔grader pairing", the same role-noun alignment §3.2 licenses for the router
+  hygiene line); the GI-005 editorial note drops — that block never named the persona, both lines
+  sit under GI-004 (plan §3.2 misattributed line 126; corrected at approval). The ledger
+  amendment-log row (PATCH 3.1.1 + `Ratified:` header, the v3.0.1–v3.0.3 idiom) is put to the
+  user: A add the row (recommended) · B no row; P2 executes everything else meanwhile.
+- **P1 plan — `PLAN GRADE: P1w3 · PASS · no items failed`** (peer-p1w3; rule texts re-measured
+  784/224/134 → 772/268/156, roster 10 → 9 personas confirmed; two slips noted, no action: 0009
+  has 13 rewords not 12, four rules files not two). **Approved and resumed** with the
+  `authoring-constitution` budget-row amendment and a single-writer rule: P1 is the only writer of
+  `primitive-cost-budgets.md` until it reports done, P2's rows wait. Peer's note on the questions
+  was cut by the channel cap after the seven items; both were already ruled above.
+- **P2 plan — `PLAN GRADE: P2w3 · FAIL · item 3`** (peer-p2w3): the `agents/validator.md` read
+  claim said "whole, 1-93"; the file is 105 lines and strip entry A promised every section named,
+  so `## Delegating Cheap Reads` (95-105, shared boilerplate homed on `patterns-model-tiering`)
+  was missing from the record. Fix sent with the peer's two advisories (porcelain check as a
+  before/after delta; the bare-`validator` survivor list gains the two governance references) and
+  the lead rulings (GI-004 only, no GI-005 note · axis-5 title aligned · router row 71 count · the
+  budget rows held until P1 lands · the amendment-log row held for the user). **Re-plan bound:
+  first consumption (1 of 1 shared).** Watch: 1 of 3 first-round FAILs — under half, no halt.
+## Wave 3 — execution — 2026-09-20
+
+*(Previous entry stood at exactly its 60-line bound; the hook denied two appends — the second
+counted the blank separator. User ruled A: this heading follows the entry with no blank line.)*
+
+- **P1 LANDED** ([reports/w3-p1-disclosure.md](reports/w3-p1-disclosure.md)): `0010-validator-retirement.yaml`
+  stamped (`sha256:f33dc11c…`), `migrate status` → `sequences 1..10 · state sha256:d03d5dee… · 75
+  documents · 1082 rules`; `migrate validate` 0 rejecting · 106 advisory; two views re-emitted,
+  emit idempotent; rule texts 772/268/156 as approved; full sweep 48 green, 0 clusters, 170
+  suppressed, no allowlist row; budget rows restamped — `patterns-model-tiering` 18,347 (+7,495
+  ruled-HOLDS), `authoring-constitution` 29,890 (+276 ruled-HOLDS, the +66 argued to the two D3
+  rewords); description 1,209. One hook deny (heredoc into `reports/`) — used Write, no rewrite
+  around. Ledger released to P2. **P3 approved and resumed** on the landed 0010.
+- **P2 revision (six parts) — `PLAN GRADE: P2w3 · PASS · none blocking`** (same peer resumed;
+  eight section homes checked against the file; two advisories folded — `review-plan-artifacts:3`
+  and the annotated EXTERNAL-CLAIMS pointer added to the survivor list). **Approved and resumed**
+  with "P1 landed"; the amendment-log row and `Ratified:` line held for the user.
+- **P2 LANDED** ([reports/w3-p2-disclosure.md](reports/w3-p2-disclosure.md)): agent file deleted,
+  manifest at nine agents; five router lines; two `validation-constitution` edits (description
+  475, payload 14,797, both under budget); EXTERNAL-CLAIMS annotated; CLAUDE.md three lines, axis 5
+  re-titled; `primitive-edits.md` parenthetical; six ARCHITECTURE.md lines; GI-004 two lines + one
+  editorial note; three budget rows after P1; four strip entries (pre-edit sha `56b44c2`). Sweep:
+  `mochiko:validator` 0 hits; bare `validator` 16 hits, each a listed role-noun survivor
+  (CLAUDE.md and ARCHITECTURE.md contribute none). One hook deny (Notes of note 16 > 15), trimmed.
+- **P3 LANDED** ([reports/w3-p3-disclosure.md](reports/w3-p3-disclosure.md)): one figure moved —
+  `fidelity.rs` sequence list 1..10, from its own `migrate status`; every other census figure
+  held under re-derivation; `validate.rs` census comment gains the 0010 paragraph; raw run 77/170
+  and 29/56 confirm both suppressed zeros; probe removed, `matrix_similar.rs` byte-identical;
+  `cargo test` 472 · sweep 48 · fmt · clippy green; kit stamped, README line in; `run.py`,
+  contract README, `agents.py` untouched. One hook deny (Notes of note 32 > 15), trimmed.
+- **Lead writes before the gate:** supersession annotations on the four older rulings
+  (`DECISIONS.md` rows 2026-08-26 ×2, 2026-08-10, 2026-08-01), the 2026-08-26 ADR's Status, both
+  older records' Status lines and index entries — all "superseded (in part) 2026-09-20"; CHANGELOG
+  `[0.113.0]` written with two close-time placeholders; both manifests → 0.113.0.
+- **Gate audit dispatched:** `gate-grader-w3`, plain `general-purpose` at explicit `model: opus`,
+  the `validation-primitive-edit` render at 0.113.0 pasted verbatim (identical to the wave-2
+  render but for the version line), eleven units, pre-pass first-hand. Contract suite (91 cases)
+  started in the background at the same tree, a stall-aware watcher on its log.
+- **User ruled A on both open calls:** this log entry's placement, and the ledger PATCH row
+  `3.1.1` + the CLAUDE.md `Ratified:` line (the v3.0.1–v3.0.3 idiom) — P2 writes both after the
+  grader's first round, then the same grader re-reads units 7 and 8 as a delta.
+
+## Wave 3 — gate audit rounds — 2026-09-20
+
+- **Round 1 — 9 PASS · 2 FAIL · 2 blocking** (gate-grader-w3; pre-pass first-hand: validate 0
+  rejecting · 106 advisory, status 1..10 / 75 / 1082, views ≡ replay by `diff -r`, cargo test 472,
+  fmt, clippy, audit 31 deps clean, full sweep 48; every budget figure reproduced by control replay
+  with 0010 removed — the +66 is `.sec.independence` +44 and `.sec.scope` +22). Outcome lines:
+  - `audit: unit 1 schema content (0010-validator-retirement) · gate-grader-w3 · opus · 3 files · 1 rounds · 0 blocking`
+  - `audit: unit 2 skill pair (patterns-model-tiering) · gate-grader-w3 · opus · 3 files · 1 rounds · 0 blocking`
+  - `audit: unit 3 skill pair (validation-constitution) · gate-grader-w3 · opus · 3 files · 1 rounds · 0 blocking`
+  - `audit: unit 4 prose primitive (validator retirement) · gate-grader-w3 · opus · 8 files · 1 rounds · 0 blocking`
+  - `audit: unit 5 prose primitive (router) · gate-grader-w3 · opus · 2 files · 1 rounds · 0 blocking`
+  - `audit: unit 6 prose primitive (EXTERNAL-CLAIMS pointer) · gate-grader-w3 · opus · 2 files · 1 rounds · 1 blocking`
+  - `audit: unit 7 repo prose (CLAUDE.md · primitive-edits.md · ARCHITECTURE.md) · gate-grader-w3 · opus · 3 files · 1 rounds · 1 blocking`
+  - `audit: unit 8 ledgers · gate-grader-w3 · opus · 2 files · 1 rounds · 0 blocking`
+  - `audit: unit 9 suite + eval kit · gate-grader-w3 · opus · 5 files · 1 rounds · 0 blocking`
+  - `audit: unit 10 crate fixtures · gate-grader-w3 · opus · 5 files · 1 rounds · 0 blocking`
+  - `audit: unit 11 CHANGELOG + manifests · gate-grader-w3 · opus · 3 files · 1 rounds · 0 blocking`
+- **The two FAILs:** unit 6 — the EXTERNAL-CLAIMS annotation named `from-file-floor` /
+  `evidence-floor` as the source re-read clause's new home; the grader read all 21 rules of the
+  gate render and none carries it — the persona's copy retired, not re-homed. Unit 7 —
+  `ARCHITECTURE.md:26` still said "10 personas". Both P2's; fix round sent (annotation → "no
+  successor consumer", strip A discloses the sub-clause as retired; count → 9), together with the
+  user-ruled ledger row `3.1.1` + `Ratified:` header and three grader notes (a pre-existing
+  "38 skills" drift at `ARCHITECTURE.md:27`, the editorial note's date, the −237 constant on the
+  `validation-constitution` row). Round 2 = the same seat resumed on the delta: units 6, 7, 8.
+- **Grader's report write halted:** two Write attempts at `reports/w3-gate-audit.md` denied —
+  "`## Failure narrative` is 16 lines against a budget of 15" then "`## Notes of note` is 19 lines
+  against a budget of 15"; the seat stopped at the second deny and surfaced both. Verdict blocks
+  arrived in six messages plus an addendum. The report lands at round 2 within the budgets.
+- **P2 fix round landed** (six files): EXTERNAL-CLAIMS tail → "consumer retired v0.113.0 with the
+  persona, with no successor consumer"; strip D reconciled; strip A's `## Your Judgment` bullet
+  discloses the source re-read sub-clause as retired, not re-homed; `ARCHITECTURE.md:26` → 9
+  personas; ledger row `3.1.1` after 3.1.0, the GI-004 note now "recorded as the PATCH 3.1.1 row;
+  no fresh `/mochiko:setup` amend"; `CLAUDE.md:109` → `v3.1.1 · 2026-09-20 (AM-3 + the
+  validator-retirement PATCH)`, the rest of the line byte-identical. **Disclosed:** P2 made these
+  six edits with scripted in-place string replacements rather than the Edit tool — the artifact
+  hook's best-effort parse did not catch them; the lead ruled Edit/Write only from here and the
+  content goes to the grader unchanged. Three grader notes (skills count, note date, −237
+  constant) in flight under that rule — landed by the same mechanism before the ruling reached
+  the seat, verified with Read, not re-laid.
+- **Round 2 (same seat, delta) — units 4 · 6 · 7 PASS; unit 8 FAIL (1 blocking, first FAIL);
+  unit 11 FAIL as a knock-on (1 blocking, first FAIL).** Unit 8: the ledger's `**Version:**` field
+  still 3.1.0 against the v3.1.1 stamp, and the GI-019 clause-iv paragraph's "pre-authorized PATCH
+  v3.1.1" pointer reserved that number for the hook-wave's own activation row, never recorded —
+  our row took it. Unit 11: the CHANGELOG entry still said "no amendment". Fixes: P2 moves the
+  field and re-keys the pointer to "still owed, now v3.1.2"; the lead rewrites the CHANGELOG's
+  governance sentence. The owed hook-wave PATCH row is surfaced to the user as governance debt.
+  - `audit: unit 4 prose primitive (validator retirement) · gate-grader-w3 · opus · 8 files · 2 rounds · 0 blocking`
+  - `audit: unit 6 prose primitive (EXTERNAL-CLAIMS pointer) · gate-grader-w3 · opus · 2 files · 2 rounds · 0 blocking`
+  - `audit: unit 7 repo prose (CLAUDE.md · primitive-edits.md · ARCHITECTURE.md) · gate-grader-w3 · opus · 3 files · 2 rounds · 0 blocking`
+  - `audit: unit 8 ledgers · gate-grader-w3 · opus · 2 files · 2 rounds · 1 blocking`
+  - `audit: unit 11 CHANGELOG + manifests · gate-grader-w3 · opus · 3 files · 2 rounds · 1 blocking`
+
+## Wave 3 — close — 2026-09-20
+
+- **Round 3 (same seat, delta on units 8 and 11) — both PASS. Wave: 11 PASS · 0 blocking; four
+  blocking findings caught over three rounds; no unit reached its second FAIL.** Unit 8: the
+  `**Version:**` field moved in lockstep with the stamp; the GI-019 pointer re-keyed to "still
+  owed, now v3.1.2" — the grader checked v3.1.2 is free and the hook-wave PATCH is genuinely
+  pre-authorized at the 3.1.0 row. Unit 11: the governance sentence now names the v3.1.0 → v3.1.1
+  PATCH. Report: [reports/w3-gate-audit.md](reports/w3-gate-audit.md) (round 3).
+  - `audit: unit 8 ledgers · gate-grader-w3 · opus · 2 files · 3 rounds · 0 blocking`
+  - `audit: unit 11 CHANGELOG + manifests · gate-grader-w3 · opus · 3 files · 3 rounds · 0 blocking`
+- **Correction to the "governance debt" reading:** the hook wave's PATCH v3.1.1 was a scheduled,
+  pre-authorized row (`hook-enforced-artifact-schema/wave5-bump-patch.md`, gated on the crate
+  publish and its gate-6 run), not an unrecorded one. Our row took the number, so that plan, the
+  ledger pointer and BACKLOG's "what is left" item 2 now read v3.1.2 (re-key notes dated
+  2026-09-20; no new BACKLOG item needed).
+- **Lead release checks at the final tree:** `migrate validate` 0 rejecting · 106 advisory ·
+  `migrate status` 1..10 / 75 / 1082 · views ≡ replay (`diff -rq` clean) · `cargo test -p
+  mochiko-cli` 472/0 · fmt · clippy · manifests 0.113.0 ×2. Gate 6 (contract suite, 91 cases)
+  running with a stall-aware watcher.
+- **Gate 6 — contract suite 91/91**: `contract suite: 91/91 cases passed, 91 ran, 303
+  measurement(s) recorded and not asserted`, exit 0 (log `contract-suite-w3.log`, session
+  scratchpad). No crash, no fix-on-sight. **Every wave-3 gate green**; the CHANGELOG's Results
+  and Gates sentences filled.
+- **Disclosure line:** `floor: tripped · seats: P1 (schema + tiering pair) · P2 (prose sweep) ·
+  P3 (suite · crate fixtures · eval kit) / peer-p1w3 · peer-p2w3 · peer-p3w3 · gate-grader-w3 ·
+  plans: P1:PASS(0) · P2:PASS(1) · P3:PASS(0)`. Every seat a plain `general-purpose` spawn at
+  explicit `model: opus`; no persona seat this wave. The lead wrote the wave plan, this log, the
+  CHANGELOG entry, the manifests, the supersession annotations and the operating-doc landing.
+- **Halts and watches:** no halt. The D8 item-7 watch stayed clear (1 of 3 first-round plan
+  FAILs, no second re-plan, no dirty tree). Three hook denies surfaced and never rewritten around
+  (this log at its bound ×2, the grader's report ×2, three seats' Notes budgets); one process
+  disclosure (P2's scripted in-place writes, ruled Edit/Write only from then). No unit reached
+  its second FAIL; the wave's fix-and-re-audit ran three rounds on the one seat.
+- **Landing set (this close):** record Status + index entry → wave 3 BUILT, path complete ·
+  DECISIONS 2026-09-19 row → all three waves built; 2026-09-03 producer-plan row → build
+  complete · BACKLOG producer-plan item → trail as DONE; the D9 watch item carries the wave-3
+  figures; the hook wave's "what is left" item 2 re-keyed to PATCH v3.1.2 · ROADMAP "Floor
+  builds" row → the producer-plan build complete · KM invariants run (a false bound trip on the
+  watch item, measured to the wrong boundary; the count watch stands at 87 vs 83, the delivery
+  sweep still owed and offered) · commit pending the user.
+- **Wave 3 CLOSED 2026-09-20 at v0.113.0 — the `author-grader-consolidation` path is built end
+  to end.** Open after close: the D9 gate-form watch (five-wave read), the hook wave's owed PATCH
+  v3.1.2, and the install refresh the user runs (agents 20 → 19 across plugins).

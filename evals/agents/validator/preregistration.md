@@ -1,5 +1,11 @@
 # Preregistration — validator persona plan-only eval (pilot 2)
 
+> **Retired.** The `mochiko:validator` persona was retired at v0.113.0 by
+> `producer-plan-enforcement` D3 and `author-grader-consolidation` D7; its grading now runs
+> on a plain fresh seat carrying `validation-primitive-edit` (primitive-edit gate) or
+> `validation-constitution` (setup's validate step). This kit is frozen as provenance: its
+> evidence is archived on the `eval-evidence-2026-09-19` ref and it is never re-run.
+
 > **Evidence.** The run directories cited below (`runs/probe`, `runs/pilot2`, `runs/pilot2-prune`)
 > are not carried in the working tree — this kit's `.gitignore` ignores every `runs/` directory, so
 > the raw sessions are archived on a ref of their own rather than force-added here. Read one with:

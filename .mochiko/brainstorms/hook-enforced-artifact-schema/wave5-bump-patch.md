@@ -1,5 +1,10 @@
 # The bump PATCH — pre-authorized governance edits applied with the 0.109.0 bump (lead draft)
 
+*Re-keyed 2026-09-20: this PATCH is **v3.1.2**. The v3.1.1 row was taken on 2026-09-20 by the
+`validator` retirement (`author-grader-consolidation` wave 3, user-ruled), so every "v3.1.1" below,
+the ledger's GI-019 clause-iv pointer, and the BACKLOG line now read v3.1.2; the `Ratified:` line
+and the ledger `**Version:**` field move 3.1.1 → 3.1.2 when this lands. Content unchanged.*
+
 **Authority:** the AM-3 ledger row (v3.1.0, 2026-09-14) pre-authorizes two PATCH amendments
 "recorded in the log row": (a) activation of GI-019's dormant conformance-testability limb at the
 `plugin.json` bump that ships the hooks (the v2.0.1 / v3.0.1 / v3.0.3 idiom); (b) the strike of the

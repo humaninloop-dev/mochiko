@@ -18,6 +18,39 @@ the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md`
 the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
 `git show 62aa99d:plugins/mochiko/skills/mochiko/SKILL.md`. -->
 
+## [v0.113.0] the router's five `validator`-bearing lines — persona retired
+
+- **Disposition:** superseded → the reworded lines: the two-families sentence now names a plain
+  fresh seat with an explicit `model:` alias, with `validation-constitution` at setup's validate
+  step; the roster row is deleted with the persona; the mount-doctrine line carries the ruled text
+  "never mount producing and grading skills for the same artifact on one seat"; the context-hygiene
+  line reads producer↔grader; and the `patterns-model-tiering` row's seat-default-key clause reads
+  five `opus` where it read six.
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/brainstorms/producer-plan-enforcement/record.md` D3 ·
+  `.mochiko/brainstorms/author-grader-consolidation/record.md` D7; `DECISIONS.md` 2026-09-03
+  and 2026-09-19 rows).
+- **Content:** verbatim superseded spans — "on the `validator` persona (today:
+  `validation-constitution`;" · "six `opus`, four `sonnet`" · the whole roster row "| `validator` |
+  one generic independent grader for any cluster — grades a finished artifact against a checklist,
+  defaults to FAIL, authors nothing (skills: validation-constitution) |" · "**Always cross the
+  producer↔validator boundary.** The author never grades its own output; the lead dispatches an
+  independent validator that Reads the artifact itself. Never mount producer and validator skills
+  on one agent." · "**Keep a producer↔validator round in one unbroken context** so the validator
+  reasons across the whole artifact at once".
+- **Kept deliberately:** the rest of the two-families sentence — the `validation-primitive-edit`
+  clause added at v0.111.0 and the human-gated-downstream parenthetical — and the whole of the
+  `patterns-model-tiering` row apart from the one word: the `haiku` Explore rung and its
+  2026-08-19 retarget clause, the worker rung, the override-is-the-pin parenthetical, the brief
+  obligation, the weak-negative watch, the no-seat-below-`sonnet` and no-`inherit` clauses, and the
+  sibling line. Every other roster row and hygiene bullet stands byte for byte. The
+  context-hygiene edit is a role-noun alignment beside a reworded line, not a ruling of its own;
+  the seat-count edit tracks migration `0010-validator-retirement.yaml` op 1, which drops
+  `validator` from the `strong` list of `patterns-model-tiering.seat-default-key`.
+- **Consumers assessed:** router-only text; no command or skill quotes these lines. The seat
+  count's source of truth is the rendered `seat-default-key` rule, reworded in the same landing, so
+  the row and the render agree only if both land.
+
 ## [v0.110.0] `patterns-model-tiering` router row widened to the seat default key
 
 - **Disposition:** superseded → the reworded row: the WHEN clause gains "and when spawning a

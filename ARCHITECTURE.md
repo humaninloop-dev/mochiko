@@ -23,8 +23,8 @@ flowchart LR
   user -->|"/mochiko:* + gate rulings"| commands
   subgraph plugin ["plugins/mochiko/"]
     commands["commands/ — 6 supervisors"]
-    agents["agents/ — 10 personas"]
-    skills["skills/ — 38 skills"]
+    agents["agents/ — 9 personas"]
+    skills["skills/ — 40 skills"]
     templates["templates/ — report schemas + envelopes"]
     migrations["migrations/ — the rule + artifact-schema log"]
     commands -->|"spawn seats, each dispatch self-briefed"| agents
@@ -79,7 +79,8 @@ registered).
   seat: different agent, different skill. A verification skill is never mounted on the seat it
   would grade.
 - **Two review families** — the skill prefix encodes who owns the clearing:
-  `validation-*` issues the authoritative binary PASS/FAIL (on the `validator` persona,
+  `validation-*` issues the authoritative binary PASS/FAIL (on a plain fresh seat carrying the
+  rendered contract,
   default FAIL, human-gated downstream); `review-*` produces severity-ranked findings with a
   *recommended* status that the lead adjudicates — it never clears anything by itself.
 - **Single-sourced homes** — the command shape, the report/artifact envelopes, and each
@@ -125,14 +126,14 @@ this map records the wiring.
 
 [`commands/setup.md`](plugins/mochiko/commands/setup.md). The lead interrogates the user's
 intent inline (ten dimensions via `analysis-iterative`, then the catalog deck), a sized cold
-review stress-tests the synthesis before the user ratifies it, then a producer↔validator loop
+review stress-tests the synthesis before the user ratifies it, then a producer↔grader loop
 authors and grades the governance surface set — there is no `constitution.md`.
 
 | Seat | Wiring |
 |---|---|
 | producer | `tech-lead` × `analysis-codebase` (brownfield), `authoring-constitution` |
 | intent reviewer(s) | `devils-advocate` × `review-governance-intent` — sized pair / single / waiver |
-| validator | `validator` × `validation-constitution` — binary PASS/FAIL from the files |
+| grader | plain fresh seat (explicit `model:` alias) × `validation-constitution` — binary PASS/FAIL from the files |
 
 ```mermaid
 flowchart LR
@@ -140,11 +141,11 @@ flowchart LR
   user(("User"))
   reviewers["devils-advocate ×<br/>review-governance-intent"]
   producer["tech-lead ×<br/>authoring-constitution"]
-  validator["validator ×<br/>validation-constitution"]
+  grader["plain fresh seat ×<br/>validation-constitution"]
   lead -->|"interrogation, inline"| synthesis[("governance-intent.md")]
   synthesis --> reviewers -->|"survivors + tally"| lead
   lead -->|"ratified contract"| producer --> surfaces[("CLAUDE.md region ·<br/>.claude/rules/mochiko/ ·<br/>governance-ledger.md")]
-  surfaces --> validator -->|"fix list"| producer
+  surfaces --> grader -->|"fix list"| producer
   lead ---|"user rulings + acceptance"| user
 ```
 
@@ -351,8 +352,9 @@ architecture desk, and reviews feasibility in implement's design phase;
 implement's design phase, scribes/diffs `ARCHITECTURE.md` at implement landings, and co-signs
 domains at the product desk (dormant until the first cap-trip); `product-manager` frames and
 derives in specify and carries the product desk's grooming proposals; `qa-engineer` verifies
-cycles and authors the design phase's `**TEST:**` cases; `validator` grades setup's surfaces
-(and any artifact handed to it with an explicit checklist). The cycle-card craft
+cycles and authors the design phase's `**TEST:**` cases; the shipped-primitive and setup grades
+run on plain fresh seats carrying the rendered contracts — `validation-primitive-edit` at the
+primitive-edit gate, `validation-constitution` at setup's validate step. The cycle-card craft
 (`patterns-vertical-tdd`) is seatless — lead-dispatched to whichever design seat fits the run,
 never to the builder who will execute the cards.
 

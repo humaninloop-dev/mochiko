@@ -32,9 +32,10 @@ sections:
         labels: [independence, boundary]
         class: must
         text: >-
-          The grading validator runs as a separate agent, never co-mounted with this skill; the
-          sequencing, the produce→validate→revise loop, and the human gates are owned by the
-          command lead that drives this skill, not by this skill.
+          The grader is a plain fresh seat that authored no surface, never co-mounted with this
+          skill (per `setup.validate-seat-form`); the sequencing, the produce→validate→revise
+          loop, and the human gates are owned by the command lead that drives this skill, not by
+          this skill.
         anchor: 2026-07-25 skill-succinctness-strip
   - id: authoring-constitution.sec.scope
     title: Scope — what this skill never does
@@ -45,8 +46,8 @@ sections:
         class: must
         kind: routing
         text: >-
-          Reviewing or grading an existing surface set is the independent validator's job
-          (`validation-constitution`), run by a different agent.
+          Reviewing or grading an existing surface set is the independent grader's job
+          (`validation-constitution`), run by a fresh seat that authored none of the set.
       - id: authoring-constitution.eliciting-routing
         labels: [boundary]
         class: must

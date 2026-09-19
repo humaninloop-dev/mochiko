@@ -1,7 +1,7 @@
 # ADR — `validator` persona re-indexed to the router (general-purpose grader made explicit)
 
 - **Date:** 2026-08-26
-- **Status:** ruled (user, in-session) + built
+- **Status:** ruled (user, in-session) + built — **superseded 2026-09-20**: the `validator` persona retired whole at v0.113.0 (`producer-plan-enforcement` D3 · `author-grader-consolidation` D7, built as that path's wave 3; strip `.mochiko/strips/validator.md` [v0.113.0]); the router now indexes the grading contracts by unit (`validation-primitive-edit` at the primitive-edit gate, `validation-constitution` at setup's validate step), carried by plain fresh seats
 - **Ships:** v0.84.0
 - **Primitive:** `plugins/mochiko/agents/validator.md`
 - **Strip entry:** `.mochiko/strips/validator.md` [v0.84.0]

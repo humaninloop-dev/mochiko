@@ -34,6 +34,29 @@ the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md`
 the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
 `git show 62aa99d:plugins/mochiko/skills/validation-constitution/references/QUALITY-CHECKLIST.md`. -->
 
+## [v0.113.0] grader identity re-pointed — the description tail and the co-mount parenthetical
+
+- **Disposition:** superseded → the grader-side wordings: "Grader-side skill of the governance
+  producer↔grader pair; defaults to FAIL; run by a fresh seat that authored none of the set." and
+  "(never co-mounted; the grader is a fresh seat that authored no surface)".
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/brainstorms/producer-plan-enforcement/record.md` D3 ·
+  `.mochiko/brainstorms/author-grader-consolidation/record.md` D7; `DECISIONS.md` 2026-09-03
+  and 2026-09-19 rows).
+- **Content:** verbatim superseded spans — "Validator-side skill of the governance
+  producer↔validator pair; defaults to FAIL; run by an independent validator, never the author." ·
+  "(never co-mounted; the validator is a different agent)". Measured: description 481 → 475 chars
+  against the 602 budget and the 1,536 delivery cap; body +17 chars.
+- **Kept deliberately:** every MUST/SHOULD trigger and both boundary clauses of the description,
+  and the whole procedure, the `## Rules — delivered by mochiko-cli` block, and every floor — the
+  grade's substance is untouched, only who holds it is re-pointed.
+- **Consumers assessed:** `authoring-constitution`'s `never-co-mounted` and `grading-routing` rules
+  are reworded in the same landing by migration `0010-validator-retirement.yaml`;
+  `setup.validate-seat-form` already names this skill and needed no edit; the router's two-families
+  sentence is reworded in the same wave (strip `mochiko.md`);
+  `validation-constitution.sec.independence`'s intent line keeps "the validator" as a role word for
+  setup's grading seat and is deliberately untouched.
+
 ## [v0.107.0] the checklist preamble's raw-Read fallback for the governance-surfaces schema
 
 - **Disposition:** superseded → the two CLI forms already named in the same sentence

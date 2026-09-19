@@ -170,10 +170,10 @@ fn the_log_replays_into_a_deliverable_state() {
     assert_eq!(replay.state.docs.len(), 75);
     assert_eq!(
         replay.sequences(),
-        vec![1, 2, 3, 4, 5, 6, 7, 8, 9],
+        vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
         "genesis, wave 4's fail-conditions reword, wave 6's two-arm retirement, the sonnet \
          worker rung, the artifact-home census, the lead's-pen copy loophole, 0007's seat \
-         default key, 0008's gate form, 0009's plan-QA leg"
+         default key, 0008's gate form, 0009's plan-QA leg, 0010's validator retirement"
     );
 }
 
@@ -627,6 +627,12 @@ fn the_corpus_census_holds_through_the_log() {
     // `common`, and six command-local rules — and a reword keeps its id, its class and its
     // section, so it mints nothing. Both command figures and the fail set therefore hold, and
     // only the skill side moves.
+    // `0010` (the validator retirement, 2026-09-03 producer-plan-enforcement D3) carries three
+    // `reword-rule` ops and nothing else: `patterns-model-tiering.seat-default-key` drops the
+    // retired persona from its `strong` list, and the two `authoring-constitution` rules that
+    // named the persona's mechanism re-point to the plain fresh grading seat. Each keeps its id,
+    // class, kind and section, so every figure below holds — this migration moves the sequence
+    // list and nothing else in this census.
     assert_eq!(command_rules, 329, "live command rules");
     assert_eq!(skill_rules, 753, "live skill rules");
     assert_eq!(command_rules + skill_rules, 1082, "live rules in total");

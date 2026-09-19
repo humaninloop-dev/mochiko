@@ -62,12 +62,12 @@ sections:
           structurally independent seat stand between this seat's output and the run's verdict?
           Where one does, the seat's default is `down`; where the seat IS that check, `strong`.
           Each rostered persona pins its ruled default in its own frontmatter as a tier alias,
-          never a full model id — `strong` = `opus`: validator · devils-advocate · tech-lead
-          · qa-engineer · staff-engineer · principal-architect; `down` = `sonnet`:
-          requirements-analyst · technical-analyst · product-manager · product-engineer. The
-          two rows held `strong` against the criterion — staff-engineer and principal-architect
-          — are argued in the ruling and never re-argued in a run. A persona carrying `inherit`
-          or no `model:` has failed this floor.
+          never a full model id — `strong` = `opus`: devils-advocate · tech-lead · qa-engineer
+          · staff-engineer · principal-architect; `down` = `sonnet`: requirements-analyst ·
+          technical-analyst · product-manager · product-engineer. The two rows held `strong`
+          against the criterion — staff-engineer and principal-architect — are argued in the
+          ruling and never re-argued in a run. A persona carrying `inherit` or no `model:` has
+          failed this floor.
         anchor: 2026-09-19 orchestrator-model-selection D3
   - id: patterns-model-tiering.sec.discipline
     title: Discipline — the cheap rung, the worker rung, and the dispatch ladder

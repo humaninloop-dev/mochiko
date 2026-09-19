@@ -1,7 +1,7 @@
 # Governance Ledger
 
 **Governance Floor:** production (asserted) · **Depth level:** high (user-declared, one-way; `high` terminal — GI-021, minted at AM-1 discharging the legacy-default pointer; set up under the single floor pre-adaptive-depth, already conformed to full depth #7 fold 2026-08-11) · **Modules:** compliance: none (GI-001 negatives confirmed, incl. no-UI) · template: knowledge-management (core + CHANGELOG elective) · release-gates · **Trace:** GI-001 (fact profile) · GI-021 (depth level)
-**Version:** 3.1.0 (must match the region stamp)
+**Version:** 3.1.1 (must match the region stamp)
 
 ## Waivers
 
@@ -108,8 +108,9 @@ total control.
 ### GI-004 — Primitive Audit Ratchet · home: CLAUDE.md region line
 
 **Enforcement**:
-- Every shipped-primitive edit passes the independent author≠grader audit (`mochiko:validator`
-  against the primitive's own text) before the `plugin.json` version bump that ships it — the
+- Every shipped-primitive edit passes the independent author≠grader audit (a plain fresh seat
+  running the rendered `mochiko:validation-primitive-edit` contract against the unit's own files)
+  before the `plugin.json` version bump that ships it — the
   existing ceremony at `.claude/rules/mochiko/primitive-edits.md`, referenced not restated
   (GI-017). The schema data files (`plugins/mochiko/schemas/**`) are shipped primitives from
   v0.76.0 and take the same strip + author≠grader ceremony (primitive-edits path scope extended).
@@ -123,7 +124,7 @@ total control.
 - **Re-expressed at AM-2 (v3.0.0) for schema content** — the ratchet is unchanged, the audit
   unit is not. For markdown primitives the unit stays the primitive's own text. For schema
   content the steady-state unit becomes the migration file plus the regenerated derived-view
-  diff, graded by `mochiko:validator` on five criteria (intent stated · anchor present where
+  diff, graded by the primitive-edit gate seat on five criteria (intent stated · anchor present where
   required · ID lifecycle right · floor and fail survival · register), with the CLI's apply
   result as the deterministic pre-pass (record D6). The `.md`'s independent count self-check is
   **retired and booked as a loss** (record D3): the version triple confirms delivery, the CLI's
@@ -133,6 +134,11 @@ total control.
 - **Author≠grader extends to code** (crate, wave-1 precedent): every unit of
   `crates/mochiko-cli` lands on a lead-approved plan with an independent non-author review.
   Touch-time carrier: `.claude/rules/mochiko/rust-cli.md`.
+- *Editorial 2026-09-20 (v0.113.0):* grader identity re-pointed from the retired `validator`
+  persona to a plain fresh seat running the rendered `mochiko:validation-primitive-edit` contract
+  (`producer-plan-enforcement` D3 · `author-grader-consolidation` D7). The ratchet, the audit-unit
+  keys, and the five schema-content criteria are unchanged; recorded as the PATCH 3.1.1 row; no
+  fresh `/mochiko:setup` amend.
 
 **Testability**:
 - Pass: each bump's landed edits have audit PASS on record (session record or decision row); a
@@ -391,7 +397,7 @@ any rule is where drift starts. User ruling, dimension 9: "leave these out."
   adequacy — those stay with the review skills and the author≠grader ceremony. It is not
   sequencing: the gate names no seat, no order, no stage. It is not a pipeline gate: a denied
   write is re-emitted, the run continues, and the two-strike halt sentence is advisory (D9).
-  **Condition (review C1, user-ruled 2026-09-14, road (a)) — DISCHARGED 2026-09-15: the budget table was ratified by the user with the C1 amendment (record/synthesis unbounded · template-less pipeline deliverables and wave files 300 · entry-class 150 · `build-log.md` a log at 60 per entry); status flip transcribed at the wave-3 close, to be carried into the amendment log by the pre-authorized PATCH v3.1.1. As written at AM-3:** the clause holds on a
+  **Condition (review C1, user-ruled 2026-09-14, road (a)) — DISCHARGED 2026-09-15: the budget table was ratified by the user with the C1 amendment (record/synthesis unbounded · template-less pipeline deliverables and wave files 300 · entry-class 150 · `build-log.md` a log at 60 per entry); status flip transcribed at the wave-3 close, to be carried into the amendment log by the hook-wave's pre-authorized PATCH — still owed, now v3.1.2 (v3.1.1 recorded the `validator` retirement, 2026-09-20). As written at AM-3:** the clause holds on a
   user-ratified budget table (D6, wave 3's gate) that admits honest content. A bound honest
   content cannot meet is a table defect, corrected by ruling at the table and never by the hook;
   record OQ1 — whether a prose-shaped deliverable carries a budget or `max_lines: none` — is ruled
@@ -615,6 +621,7 @@ category is live in translated form; application-shaped machinery inapplicable i
 | 3.0.2 | 2026-09-04 | PATCH — the GI-020 revisit trigger re-keyed after the wave-4 trip (user-ruled "re key", record wave-4 + diagnostic sections): criterion (1) becomes the deterministic floor-delivery assert (every `class: floor` id verbatim in the transcript), the exact-id read-back reported never gating; wave 5 opened on those terms. In the same row: `.claude/rules/mochiko/primitive-edits.md`'s skill-pair criteria gain five one-sentence converted-skill clauses (criteria 1, 2, 3, 6, and 8's budgeted quantity — the sibling of the v3.0.1 command clauses) as wave 5 converts the first skill, and the budget ledger re-seeds every converted skill to body + rendered blocks per record D10.6. Mints no principle; no fresh `/mochiko:setup` amend | GI-004 · GI-020 |
 | 3.0.3 | 2026-09-05 | PATCH — the wave-6 landing (pre-authorized at AM-2): the GI-020 **transition clause expired** at plugin v0.107.0 — no schema file ships, the derived views live at `.mochiko/schema-views/`, the contract suite's run-wide no-Read assert holds it; `.claude/rules/mochiko/primitive-edits.md` re-keyed (schema content edits are migration files and take no strip; criterion 9's deterministic pre-pass is `mochiko-cli migrate validate --report`; anchors live on the log's rules, the provenance sidecar frozen at `.mochiko/archive/`; the converted-primitive clauses are now the only form); `rust-cli.md`'s clause struck; the three first-live-run delivery watches closed to the trail as superseded by record D10.6; the three Python checkers retired (GI-008's waived helper-script count falls). Mints no principle; no fresh `/mochiko:setup` amend | GI-004 · GI-005 · GI-008 · GI-020 |
 | 3.1.0 | 2026-09-14 | AM-3 — mechanical conformance gates on artifact writes (MINOR — a widened admission under an unchanged non-negotiable; user-ruled Card 1 with the MAJOR reading in view, re-put at review C6 and re-ruled MINOR as a **recorded departure** from the AM-1/AM-2 MAJOR precedents: those two redefined a principle, AM-3 widens an admission under a principle whose text does not change, and the GI-019 Testability inversion is read as re-keying a formulation narrower than the principle; the MINOR limb gains "principle significantly expanded" at this amend so policy and the validator's bump grammar agree). Driver: hook-enforced-artifact-schema D1–D11, wave-0 probe PROCEED, wave-1 crate built and accepted 2026-09-13 | GI-019 admission widened (clause iv: mechanical conformance ≠ judgment, its C1 budget-table condition standing open) · `cli-schema-delivery` D7 narrowly superseded, its judgment/sequencing decline standing · hook floor re-ratified + explicit-allow rule + first-touch amnesty + reach + what the gate reads + hooks-disabled scope reconciled with GI-020 · GI-019 Testability re-keyed · GI-012 gains the wave-4 hook-ship precondition (review C5) and the ≤ 60 s hook-cost watch (review C9) · amendment-policy MINOR limb and first-publish paragraph extended · `.claude/rules/mochiko/rust-cli.md` bright-line bullet superseded by ruling, prior text preserved in GI-019 · **fix round (validator B1/M1/M2):** GI-019 Testability re-keyed into two tiers, the conformance limb **dormant until the wave-4 hook ship** and activated at that `plugin.json` bump as a pre-authorized PATCH (the v2.0.1 / v3.0.1 / v3.0.3 idiom) · the wave-4 precondition's strike, once that bump has landed under it, is itself a pre-authorized PATCH recorded in the log row (M2, at both ledger homes) · `rust-cli.md` `paths` += `plugins/mochiko/.claude-plugin/plugin.json` · `.claude-plugin/marketplace.json` · `CHANGELOG.md` (FP-5, B1) |
+| 3.1.1 | 2026-09-20 | PATCH — the `validator` persona retired at plugin v0.113.0 by ruling (`producer-plan-enforcement` D3 · `author-grader-consolidation` D7, that path's wave 3; the row itself user-ruled): GI-004's two detail lines re-point the grader identity from the persona to a plain fresh seat running the rendered `mochiko:validation-primitive-edit` contract, an editorial note beside them; the ratchet, the audit-unit keys and the five schema-content criteria are unchanged. Mints no principle; no fresh `/mochiko:setup` amend (the v3.0.1–v3.0.3 idiom) | GI-004 |
 
 *AM-3 addendum (2026-09-14):* outside the governance region, and under the Card 2 ruling ratified
 2026-09-14, the `## Non-negotiable constraints` kernel-class paragraph's trace parenthetical in

@@ -65,6 +65,7 @@ evals/
                               #   provision · judge · stats — mechanics only, no target's read
   plan/                       # the plan-only runner: command + persona targets (plan/README.md)
   agents/<persona>/           # persona kits (goldens, rules.json, preregistration, runs)
+  agents/validator/           # FROZEN provenance — persona retired at v0.113.0; never re-run
   <skill>/
     evals.json                # 3 goldens: {id, prompt, fixture?, expected_output?, assertions[], tempts?}
     fixtures/<name>/          # workspace files a golden seeds (the artifact under review + context)

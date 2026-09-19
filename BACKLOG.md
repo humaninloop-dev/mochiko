@@ -35,7 +35,9 @@ provenance: `.mochiko/brainstorms/hook-enforced-artifact-schema/record.md`)*
      signed tags), then the `mochiko-cli-v*` tag. Gates 2 and 3 (GI-012 as amended, AM-3 C5).
   2. **Gate-6 full run** against the published binary (`MOCHIKO_GATE_VERSION=<tag>`; 87 cases,
      ≈155 sessions, $13–16, ≈1 h — `wave5-gate6-plan.md`), then the release commit + the
-     pre-authorized **PATCH v3.1.1** (`wave5-bump-patch.md`, graded by `validation-constitution`).
+     pre-authorized **PATCH v3.1.2** (`wave5-bump-patch.md`, graded by `validation-constitution`;
+     re-keyed 2026-09-20 — v3.1.1 was taken by the `validator` retirement row, so the ledger's
+     GI-019 clause-iv pointer and this line now read v3.1.2).
   3. **Kinako violator pass** — evidence-tree ruling owed (161 files with no legal home under
      `.mochiko/`; recommend a repo-root `evidence/`), then 214 moves + 143 pointers on the
      pre-gate 0.103.0 pin, upgrade, dogfood, **D10 watch** (`wave5-plan.md` §3/§7).
@@ -376,23 +378,10 @@ trail). Open residual:
   gate artifact) rides the same touch. **Baseline landed 2026-09-19 (wave 2, `review-seat-plan`
   pair):** old form PASS · 0 blocking · 4 non-blocking vs new form PASS · 0 blocking · 0 notes;
   first-turn cache-creation 22,404 (persona) vs 27,634 (plain seat, 13 units) — no instantiation
-  saving; D11 batching is the lever. Wave-2 lines: 14 units · 15 lines · 1 fix round.
-- [ ] **Producer-plan enforcement build — wave 2 (`validator` retirement)** (2026-09-03;
-  provenance: [producer-plan-enforcement](.mochiko/brainstorms/producer-plan-enforcement/record.md)
-  D3, D8 item 5, D9; **re-sequenced 2026-09-19** by `author-grader-consolidation` D10 as that
-  path's wave 3; wave 1, the plan-QA leg, BUILT 2026-09-19 at v0.112.0 — trail) — gate satisfied:
-  the default-FAIL carrier `validation-primitive-edit` is live and the plan-grade figures are in
-  (3 producers, 2 first-round FAILs repaired in one round, no dirty tree). Scope: `validator`
-  agent file + `plugin.json` entry retired · router's three validator-bearing lines + mount
-  doctrine reword · CLAUDE.md three mentions + axis 5 reword · `primitive-edits.md` grader
-  wording · `validation-constitution` grader identity · `authoring-constitution` schema text ·
-  budget + governance ledgers (GI-004 detail) · contract-suite `preload` case re-pointed ·
-  supersession rows for the older validator rulings (`validator-scope-and-verbosity` ·
-  `validator-worktree-isolation` · ADR `2026-08-26-validator-router-indexed-checklists`; the
-  `author-grader-value-tiering` row is the gate-form landing's). Audited under the gate form, one
-  gate grader, no double-grade. Open after acceptance: OQ3 cost watch · OQ4 devils-advocate
-  re-entry (no trigger).
-
+  saving; D11 batching is the lever. Wave-2 lines: 14 units · 15 lines · 1 fix round. Wave-3
+  lines (the persona retired, the gate form now the only form): 11 units · 18 lines · 3 rounds ·
+  4 blocking caught (two authoring misses, two follow-throughs of a user-ruled ledger row) —
+  read against wave 1's 8 and wave 2's 1 at the five-line read.
 - [ ] **D5 rules-file leg (first-miss trigger) + first-live-run watch** (2026-08-13; provenance:
   [charter-ritual-balance](.mochiko/brainstorms/charter-ritual-balance/record.md) D5 `Contested` +
   D7) — the path-injected `.claude/rules/mochiko/sound-loop.md` leg (setup-scaffolded, path-scoped

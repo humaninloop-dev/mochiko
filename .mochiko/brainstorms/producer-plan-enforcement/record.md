@@ -6,7 +6,7 @@ Delivery Manager reviewing the plan. Driver ask (user, 2026-09-03): "how we can 
 author to use native plan mode that claude provides to plan and the grader and delivery
 manager to QA the plan."
 
-**Status:** accepted (2026-09-03) — **wave 1 (plan-QA leg) BUILT 2026-09-19 at v0.112.0** as `author-grader-consolidation` wave 2 (its D10 re-sequencing; migration `0009-plan-qa-leg`, skill `review-seat-plan`, `plans: P1:PASS(1) · P2:PASS(0) · P3:PASS(1)`; log and reports in that session's home; trail) · wave 2 (validator retirement) next as that path's wave 3, gate satisfied on the wave-1 figures
+**Status:** accepted (2026-09-03) — **wave 1 (plan-QA leg) BUILT 2026-09-19 at v0.112.0** as `author-grader-consolidation` wave 2 (its D10 re-sequencing; migration `0009-plan-qa-leg`, skill `review-seat-plan`, `plans: P1:PASS(1) · P2:PASS(0) · P3:PASS(1)`; log and reports in that session's home; trail) · **wave 2 (the `validator` retirement) BUILT 2026-09-20 at v0.113.0** as that path's wave 3 (migration `0010-validator-retirement`; the persona and its manifest entry gone, nine agents; the router's mount-doctrine line and CLAUDE.md's axis 5 carry the D3 wordings verbatim; strip `.mochiko/strips/validator.md` [v0.113.0]; the older `validator` rulings annotated superseded; `plans: P1:PASS(0) · P2:PASS(1) · P3:PASS(0)`) — **build complete**; OQ3's cost watch rides the gate-form D9 watch, OQ4 (devils-advocate re-entry) has no trigger
 **Opened:** 2026-09-03
 **Lead:** session lead (brainstorm charter, run inline in-conversation)
 

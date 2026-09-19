@@ -2,6 +2,58 @@
 
 Entry formats: `strips/README.md`.
 
+## [v0.113.0] the `validator` persona retired whole — 105 lines, eight sections
+
+- **Disposition:** superseded → the carrier (`author-grader-consolidation` D7): a plain fresh seat
+  running the rendered `mochiko:validation-primitive-edit` contract at the primitive-edit gate, and
+  `mochiko:validation-constitution` at setup's validate step per the `setup.validate-seat-form`
+  rule. Section by section:
+  - `# Validator` (12-17) — handed a finished artifact and a bar, say so plainly when either is
+    missing → the gate skill's scope section and its `rendered-contract-only` floor; the setup site
+    is covered by `setup.validate-seat-form`.
+  - `## Skills you lean on` (18-37) — the router-indexed selection order and the
+    delivery-not-scope closing line → retired with the mount rather than re-homed: the dispatch
+    brief names the skill, and each site names its member, so no runtime routing survives.
+  - `## Core Identity` (38-54) — you did not write it, so assume it is not done →
+    `validation-primitive-edit.author-grader` and `.default-fail`.
+  - `## What You Produce` (55-68) — the verdict block with its `Evidence read:` field → the gate
+    skill's output section and `.evidence-floor`.
+  - `## Iron Law` (69-79) — no PASS without evidence read from the artifact itself →
+    `.tamper-proof-clause` and `.from-file-floor`.
+  - `## What You Reject` (80-87) — grading from say-so, "mostly conforms", authoring, grading your
+    own work, substituting your own bar → `.binary-verdict`, `.author-grader`, and the skill's
+    reserved section.
+  - `## Your Judgment` (88-94) — the evidence hierarchy and the deterministic pre-assert →
+    `.from-file-floor`, `.pre-pass-first-hand`, `.evidence-floor`. The external-claim source
+    re-read sub-clause has **no successor rule** in the gate contract — it retired with the
+    persona, and is disclosed here rather than claimed re-homed.
+  - `## Delegating Cheap Reads` (95-105) — the disposable `Explore` subagent with an explicit
+    `model: haiku` override, one gap per spawn, interpretive reads kept on the seat →
+    `mochiko:patterns-model-tiering`, which this section already pointed at by name. It is the
+    shared boilerplate carried on every persona file, so nothing unique to this persona leaves
+    with it.
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/brainstorms/producer-plan-enforcement/record.md` D3 ·
+  `.mochiko/brainstorms/author-grader-consolidation/record.md` D7; `DECISIONS.md` 2026-09-03
+  and 2026-09-19 rows).
+- **Content:** the frontmatter (`name`, the 269-char `description`, `model: opus`, `color: red`,
+  `skills: validation-constitution`) plus the eight sections above, each named with its operative
+  sentence. The file as it stood is recoverable verbatim at
+  `git show 56b44c2:plugins/mochiko/agents/validator.md`.
+- **Kept deliberately:** the substance the two skills carry verbatim as floors — default FAIL,
+  read-the-file-or-FAIL, a binary verdict with a fix list, never grade work you authored — and the
+  explicit-`model:` pin (`validation-primitive-edit.plain-seat-explicit-tier`) that replaces the
+  retired frontmatter `model: opus`. The cheap-read discipline of the closing section survives
+  unchanged in `mochiko:patterns-model-tiering`, which never belonged to this file.
+- **Consumers assessed:** the `plugin.json` agents entry removed · the router's five lines
+  reworded (strip `mochiko.md`) · `review-brainstorm/references/EXTERNAL-CLAIMS.md` pointer
+  annotated (strip `review-brainstorm.md`) · `CLAUDE.md` item 3, the shipped-primitive paragraph,
+  and axis 5 · `.claude/rules/mochiko/primitive-edits.md` parenthetical · `ARCHITECTURE.md` six
+  lines · the governance ledger's GI-004 detail and editorial note · the budget ledger's agent row
+  struck · migration `0010-validator-retirement.yaml` drops the persona from
+  `patterns-model-tiering.seat-default-key` and rewords the two `authoring-constitution` rules ·
+  the crate census tests and the frozen eval kit at `evals/agents/validator/`.
+
 ## [v0.85.0] Router-registration sentence stripped from the v0.84.0 closing paragraph
 
 - **Disposition:** deleted (the doctrine home already carries it: the router's own "Adding to

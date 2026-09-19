@@ -1,6 +1,6 @@
 ---
 name: validation-constitution
-description: This skill MUST be invoked to grade a DRAFTED governance surface set against the quality checklist — there is NO constitution.md; the graded set is the CLAUDE.md governance region, the `.claude/rules/mochiko/` files, and the governance ledger. SHOULD also invoke for the setup loop's validate step, or when re-validating after a FAIL-loop revision. Validator-side skill of the governance producer↔validator pair; defaults to FAIL; run by an independent validator, never the author.
+description: This skill MUST be invoked to grade a DRAFTED governance surface set against the quality checklist — there is NO constitution.md; the graded set is the CLAUDE.md governance region, the `.claude/rules/mochiko/` files, and the governance ledger. SHOULD also invoke for the setup loop's validate step, or when re-validating after a FAIL-loop revision. Grader-side skill of the governance producer↔grader pair; defaults to FAIL; run by a fresh seat that authored none of the set.
 allowed-tools: Bash(mochiko-cli *)
 ---
 
@@ -10,8 +10,8 @@ Independent binary grade of a drafted governance surface set — enforceable, te
 trace-closed, anti-pattern-free before finalization. There is no constitution.md: the
 deliverable under grade is the surface set itself, and the grade is earned by walking the
 assembled checklist against the files, never by trusting the author's account of them.
-Producer side: `mochiko:authoring-constitution` (never co-mounted; the validator is a
-different agent).
+Producer side: `mochiko:authoring-constitution` (never co-mounted; the grader is a fresh
+seat that authored no surface).
 
 ## Rules — delivered by mochiko-cli
 

@@ -1,0 +1,36 @@
+grammar: 1
+id: 0010-validator-retirement
+sequence: 10
+intent: >-
+  Retire the `validator` persona from the schema corpus: the seat default key's strong list drops
+  it, and the two authoring-constitution rules that name the persona's mechanism re-point to the
+  plain fresh grading seat.
+anchor: 2026-09-03 producer-plan-enforcement D3
+hash: sha256:f33dc11cf1de9c281c1e55345462ea560dc451163eda8cb8338e6611485d46f7
+changes:
+  - op: reword-rule
+    schema: skill/patterns-model-tiering
+    id: patterns-model-tiering.seat-default-key
+    text: >-
+      The seat default key — sibling of the class key, keyed on one question: does a
+      structurally independent seat stand between this seat's output and the run's verdict? Where
+      one does, the seat's default is `down`; where the seat IS that check, `strong`. Each
+      rostered persona pins its ruled default in its own frontmatter as a tier alias, never a full
+      model id — `strong` = `opus`: devils-advocate · tech-lead · qa-engineer ·
+      staff-engineer · principal-architect; `down` = `sonnet`: requirements-analyst ·
+      technical-analyst · product-manager · product-engineer. The two rows held `strong` against
+      the criterion — staff-engineer and principal-architect — are argued in the ruling and
+      never re-argued in a run. A persona carrying `inherit` or no `model:` has failed this floor.
+  - op: reword-rule
+    schema: skill/authoring-constitution
+    id: authoring-constitution.never-co-mounted
+    text: >-
+      The grader is a plain fresh seat that authored no surface, never co-mounted with this skill
+      (per `setup.validate-seat-form`); the sequencing, the produce→validate→revise loop, and
+      the human gates are owned by the command lead that drives this skill, not by this skill.
+  - op: reword-rule
+    schema: skill/authoring-constitution
+    id: authoring-constitution.grading-routing
+    text: >-
+      Reviewing or grading an existing surface set is the independent grader's job
+      (`validation-constitution`), run by a fresh seat that authored none of the set.

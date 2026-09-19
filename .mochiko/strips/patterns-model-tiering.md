@@ -13,6 +13,56 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 `DECISIONS.md` 2026-09-04 row. Pre-edit verbatim text:
 `git show 7d098b9:plugins/mochiko/skills/patterns-model-tiering/SKILL.md`. -->
 
+## [v0.113.0] description and Overview roster count re-keyed to the `validator` retirement
+
+- **Disposition:** superseded → the reworded `description:` closing clause and the reworded
+  Overview opening sentence, both carrying the roster count `five `opus` and four `sonnet``
+  in place of `six`. The count moves because the `validator` persona retires library-wide and
+  `plugins/mochiko/agents/validator.md` is deleted in the same landing, leaving nine rostered
+  personas: `strong` = `opus` devils-advocate · tech-lead · qa-engineer · staff-engineer ·
+  principal-architect; `down` = `sonnet` requirements-analyst · technical-analyst ·
+  product-manager · product-engineer. The matching rule change — the `validator` entry dropped
+  from the `strong` list of the `patterns-model-tiering.seat-default-key` floor — is migration
+  `plugins/mochiko/migrations/0010-validator-retirement.yaml` (one `reword-rule` under the header
+  anchor, the id, class, kind, labels and rule anchor all unchanged) and takes no strip: the
+  prior text is in the log by construction.
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/brainstorms/producer-plan-enforcement/record.md` D3 — the `validator` persona
+  retires library-wide, second wave; sequenced as wave 3 by
+  `.mochiko/brainstorms/author-grader-consolidation/record.md` D10, wave plan
+  `wave3-validator-retirement.md` §3.1; `DECISIONS.md` 2026-09-03 and 2026-09-19 rows).
+- **Content:** verbatim —
+
+  description, closing clause (parsed value was 1,208 chars, now 1,209): `Governs dispatch tier
+  and the seat default key — every rostered persona pins a ruled tier alias, six `opus` and
+  four `sonnet`, and only the lead deviates it for a run, disclosed; `inherit` never
+  (orchestrator-model-selection D1–D5); third sibling of patterns-sound-loop and
+  patterns-transport-floor.`
+
+  Overview opening sentence: `Each rostered mochiko persona pins a ruled default tier in its own
+  frontmatter — six on `opus`, four on `sonnet` — and only the lead deviates one for a
+  run, with the reason disclosed (2026-09-19 orchestrator-model-selection ruling).`
+
+- **Kept deliberately:** the `## Rules — delivered by mochiko-cli` block — its halt clause, seven
+  `!` lines, and read-back sentence — byte for byte; the tagline ("Every read, every bounded task,
+  and every seat rides the lowest tier where its result can be trusted."); the Overview's
+  economics sentence and its `model-tiered-seats D1` citation; the description's cheap-rung and
+  worker-rung clauses and every trigger phrase, all unchanged — the 2026-09-05 sonnet-worker-rung
+  ruling stands. Inside the floor itself, the two rows held `strong` against the criterion
+  (staff-engineer and principal-architect) keep their sentence, and the `down` list is untouched:
+  D3 retires one persona, it does not reopen the seat default key.
+- **Consumers assessed:** the router's `patterns-model-tiering` row
+  (`plugins/mochiko/skills/mochiko/SKILL.md`) carries the same count and is re-keyed in this same
+  landing by the prose-sweep seat, not here — raised by this seat as Q2 and ruled P2's by the
+  wave lead; `.mochiko/memory/primitive-cost-budgets.md` — the payload row restamped at
+  [v0.113.0] (18,358 → 18,347: render −12, body +1; description 1,208 → 1,209, hard-cap-only, no
+  description budget row exists), and the `authoring-constitution` payload row restamped in the
+  same pass for the +66 render the migration's other two rewords add (lead ruling on this seat's
+  Q1); `evals/contract/expected-skills.json` — read and unchanged: a reword keeps the id and the
+  class, so `floor_ids` (8) and `floor_pin: 8` stand and the frozen byte columns are historical;
+  the ten persona `## Delegating Cheap Reads` and two `## Delegating Bounded Work` sections —
+  unchanged (the `validator.md` deletion is its own primitive edit with its own strip entry).
+
 ## [v0.110.0] description, tagline, and Overview widened to the seat default key
 
 - **Disposition:** superseded → the reworded `description:` (the trigger gains spawning a rostered

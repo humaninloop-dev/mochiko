@@ -1,6 +1,6 @@
 # Record — Validator scope & description verbosity
 
-**Status:** accepted (2026-08-10)
+**Status:** accepted (2026-08-10) · **superseded in part 2026-09-20** — the `validator` persona limb retired at v0.113.0 (`producer-plan-enforcement` D3 · `author-grader-consolidation` D7, built as that path's wave 3; strip `.mochiko/strips/validator.md` [v0.113.0]); the budget ledger (D7), the description discipline and the D4 cut line stand
 **Opened:** 2026-08-10
 **Topic:** the scope of the validator when it validates changes to skills, agents, and commands in the mochiko workflow — the user's read is that it forces descriptions to be much more verbose than they need to be; re-examine the validating strategy.
 

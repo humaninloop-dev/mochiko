@@ -5,6 +5,65 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.113.0] — 2026-09-20
+
+**The `validator` persona retires** (`producer-plan-enforcement` D3 and D8 item 5, `DECISIONS.md`
+2026-09-03; sequenced by `author-grader-consolidation` D10 as its wave 3, the last of the path; the
+carrier named at its D7). `plugins/mochiko/agents/validator.md` and its manifest entry are gone —
+nine agents ship. The generic default-FAIL grade the persona carried now runs on a plain fresh
+seat with an explicit `model:` alias: `mochiko:validation-primitive-edit` at the primitive-edit
+gate (shipped v0.111.0) and `mochiko:validation-constitution` at setup's validate step
+(`setup.validate-seat-form`). The strip entry names each of the file's eight sections with the
+floor or skill that now carries it (`.mochiko/strips/validator.md` [v0.113.0]); the pre-edit file
+is recoverable at `56b44c2`. The eval kit `evals/agents/validator/` stays, frozen as provenance.
+
+Migration **`0010-validator-retirement.yaml`** (sequence 10, anchor `2026-09-03
+producer-plan-enforcement D3`) rewords three rules and mints nothing: the
+`patterns-model-tiering.seat-default-key` floor's `strong` list drops `validator` (five `opus`
+seats, four `sonnet`), and `authoring-constitution`'s `never-co-mounted` and `grading-routing` name
+a fresh seat that authored no surface where they said "a separate agent". Ids, classes, pins and
+anchors unchanged — 75 documents, 1,082 rules, the frozen sidecar anchor on `never-co-mounted`
+riding its rule. The prose sweep, reworded only where the persona was named (D3): the router's
+family sentence, roster row, hygiene line, the tiering row's count, and the mount-doctrine line —
+now the ruled text, **never mount producing and grading skills for the same artifact on one
+seat**; `validation-constitution`'s description and body ("the grader is a fresh seat that
+authored no surface"); `CLAUDE.md`'s two ceremony mentions and axis 5, re-titled
+**Producer↔grader pairing** with the ruled standard — graded by a structurally independent
+grader: a fresh seat that authored nothing it grades, running a different skill from the author's;
+one parenthetical in `.claude/rules/mochiko/primitive-edits.md`; `ARCHITECTURE.md`'s setup
+wiring; the governance ledger's two GI-004 detail lines with a dated editorial note (ratchet and
+criteria unchanged) — recorded as **governance v3.1.0 → v3.1.1 PATCH**, user-ruled: the
+amendment-log row `3.1.1` added and the `Ratified:` stamp in `CLAUDE.md` moved with it, no
+fresh `/mochiko:setup` amend (the v3.0.1–v3.0.3 idiom); the budget ledger's agent row struck, the
+`validation-constitution` rows re-measured (475 / 14,797, under budget), the
+`patterns-model-tiering` and `authoring-constitution` ruled-HOLDS overages restamped (+7,495 and
++276, the latter the two rewords' 66 chars). Role-noun uses of "validator" that never named the
+persona stay. Four older rulings carry supersession annotations — `validator-scope-and-verbosity`
+(persona limb only), `validator-worktree-isolation` (grader identity only), and the two 2026-08-26
+`validator` rows with their ADR (whole). The crate's census fixtures move one figure — the
+sequence list, 1..10 — and every other figure held under re-derivation; no crate source changed.
+
+The wave ran under the plan-QA leg — three persona-less producers plan-only, fresh peers per
+`mochiko:review-seat-plan` (both delivery ways live at 0.112.0), the lead approving only a PASS:
+`plans: P1:PASS(0) · P2:PASS(1) · P3:PASS(0)`, P2's one re-plan repairing a strip claim that had
+stopped one section short of the agent file; no dirty tree; the D8 item-7 watch clear. Audited
+under the gate form by one plain seat with an explicit `model:` alias over every unit. Results:
+eleven units over three rounds, **11 PASS · 0 blocking at close, four blocking findings caught** —
+round 1 nine PASS and two FAIL (the EXTERNAL-CLAIMS pointer claimed a successor for the retired
+source re-read clause that no gate rule carries; ARCHITECTURE.md still counted ten personas);
+round 2 closed both and the user-ruled PATCH row tripped two follow-throughs of its own (the
+ledger's `**Version:**` field, and a pointer that had reserved "PATCH v3.1.1" for the hook wave's
+own pre-authorized row — that row is now v3.1.2 in the ledger, its plan and BACKLOG; and this
+entry's governance sentence); round 3 clean. The grader's first report write was denied twice by
+the artifact hook on section budgets and halted as the check directs; the report landed at round
+2 inside them. Gates: `mochiko-cli migrate validate` 0 rejecting · 106 advisory (unchanged) ·
+views ≡ replay (`diff -rq` clean against a fresh emit) · `cargo test -p mochiko-cli` 472 green ·
+fmt · clippy · audit (31 dependencies clean) · full-corpus similarity sweep 48/48, 0 clusters, 170
+allowlist-suppressed edges, no row added · **contract suite 91/91** (one full sandbox run, 303
+measurements recorded and not asserted) · char-budget pre-assert (three rows restamped, none over
+its budget beyond the two standing ruled-HOLDS overages) · `plugin.json` and `marketplace.json`
+synced at 0.113.0.
+
 ## [0.112.0] — 2026-09-19
 
 **The plan-QA leg** (record `.mochiko/brainstorms/producer-plan-enforcement/record.md` D1–D9,

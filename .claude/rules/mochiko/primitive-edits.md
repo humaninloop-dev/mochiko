@@ -245,7 +245,7 @@ log by construction, so schema-content edits take no strip entry. The human-read
   (the skill directory stays the self-contained shipping unit) and is graded
   across **both surfaces** on this criteria set. The grader is the gate grader defined above,
   exactly as for a command pair; the matching `validation-*` / `review-*` skill routing never
-  applies to the pair (no validator-for-skills exists, and a pilot member never
+  applies to the pair (no skill-specific grader exists, and a pilot member never
   grades itself). This block is a **sibling** of the command block above, never a fork of
   it: skills are their own grammar family — no `moments:`, no `$ARGUMENTS` protocol, no
   Not-done count-pin — under the same governance envelope.
