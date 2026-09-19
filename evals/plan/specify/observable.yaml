@@ -38,6 +38,7 @@ observable:
   - {id: spec.selection-card, why: card contents planned — rows per capability · recommendation · dependency order · deferred-SC list · per-capability completeness view at the moment of choice}
   - {id: spec.gate-selection, why: selection gate described as the user's with onward branches}
   - {id: spec.gate-acceptance, why: accept / amend / reject gate over the whole with acceptance executing the map batch and rejection leaving the map untouched}
+  - {id: spec.filter-disagreement-escalates, why: the plan describes the escalation branch — a producer holding a rejected story load-bearing goes to the user, never settled between seats}
   # tools
   - {id: spec.deliverable, why: the spec workspace path with a slug derived from the description · spec.md plus stories/US-*.md · never offered for deletion · uncertainty into Assumptions and Open Questions}
   - {id: spec.intent-stage-first, why: intent stage precedes every authoring step and walks the six probes — scope · delivery · depth · UX-bearing · constraints · out of scope}
@@ -75,8 +76,6 @@ out_of_instrument:
   - {id: spec.lead-latitude, why: latitude}
   - {id: spec.epic-proposal-optional, why: latitude — the PM seat may propose an epic and nothing in a plan falsifies not doing so}
   - {id: spec.register, why: register}
-  # contingency (run-time events)
-  - {id: spec.filter-disagreement-escalates, why: contingency — a producer holds a rejected story load-bearing}
   # fail-conditions (all 9 — end-state failures, not forward-plan content; C1)
   - {id: spec.fail.blocking-gap, why: fail-condition}
   - {id: spec.fail.intent-unconfirmed, why: fail-condition}
@@ -100,5 +99,13 @@ out_of_instrument:
 #     weakest observable rule in the set — read its evidence quotes before any verdict.
 #   spec.unrefined-stubs — s1's stub matches the framed capability, so the plan is graded on
 #     the confirmation half; the parked-or-retired half needs a stub matching nothing.
+#   spec.filter-disagreement-escalates — no scenario plants a producer who holds a rejected
+#     story load-bearing, so the plan is graded on describing the escalation branch, not on
+#     taking it. A plan that never raises a disagreement reads `absent` here without
+#     contradicting the rule — the same weak-but-observable shape as spec.epic-mint-desk-only,
+#     and read the same way: its evidence quotes before any verdict. Moved here from
+#     out-of-instrument on 2026-09-19 (kit audit, finding 2): four sibling `kind: routing`
+#     rules were already graded this way, and parking this one alone contradicted the
+#     partition's own pattern.
 #   spec.transport-floor — `seats: single` is never planted; the floor is graded on its
 #     multi branch in every scenario.
