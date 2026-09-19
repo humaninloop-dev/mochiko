@@ -846,6 +846,12 @@ Raw captures (2026-08-01) — to triage/brainstorm; grooming may re-key into fin
 
 ## Defects & empirical checks
 
+- [ ] **`primitive-cost-budgets.md`'s `review-governance-intent` row is stale, and the margin is
+  thin** (2026-09-19, found by the audit of the lead's-pen reword) — the row predates v0.107.0's
+  render-format change, and a rough remeasure puts the reworded rule about eight characters under
+  its no-headroom ceiling. A budget that close, resting on bookkeeping two formats old, cannot be
+  trusted to catch the next edit. Re-seed the row against the current render before any further
+  edit to this skill's rules.
 - [ ] **`review-brainstorm.findings-through-leads-pen` carries the copy loophole its sibling just
   closed** (2026-09-19) — the governance-intent floor was reworded at v0.110.0 after the eval
   caught a cut body writing a corrected copy of the synthesis beside the original, which its old

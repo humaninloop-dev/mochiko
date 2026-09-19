@@ -1,7 +1,10 @@
 # The lead's-pen floor closes its copy loophole
 
 **Date:** 2026-09-19
-**Status:** ruled (user), built the same day at plugin v0.110.0
+**Status:** ruled (user) and built 2026-09-19; **the plugin bump is staged, not landed** —
+`plugin.json` stays at 0.110.0 only once release gate 6 (the contract suite in full, not a
+filtered run) is green. The migration, the derived view and this record are on the branch
+at 0.109.0.
 **Driver:** the `primitive-evals-v2` four-slot read — `evals/review-governance-intent/preregistration.md`
 
 ## What was ruled
