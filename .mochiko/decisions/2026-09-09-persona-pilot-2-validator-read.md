@@ -2,6 +2,9 @@
 
 - **Status:** ruled
 - **Date:** 2026-09-09
+- **Evidence:** the run directories cited below are archived at the tag `eval-evidence-2026-09-19`,
+  not carried in the working tree (`git fetch origin tag eval-evidence-2026-09-19`, then
+  `git show eval-evidence-2026-09-19:<path>`).
 - **Context:** Pilot 2 ran the plan-only persona target on `validator` with a pre-registered
   positive control on the v0.78.0 cheap-rung retarget (`mochiko:explorer` → native `Explore` at
   `model: haiku`) and four goldens (`evals/agents/validator/`; read in the pre-registration fill

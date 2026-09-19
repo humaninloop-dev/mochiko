@@ -1,7 +1,0 @@
-I've completed the stress-test review and written it to `review.md` in the working directory (not inside the spec folder, and not touching `spec.md`).
-
-**Key points:**
-
-- I declined three of the PM's asks because they'd break this review's independence/coverage floors: I didn't edit `spec.md` or write `spec-revised.md` (author/grader separation), didn't skip the story files (full coverage is mandatory), and didn't add "skip a single week" as a missing requirement (US-4 already correctly rejects it as duplicate scope already delivered by FEAT-002 — re-adding it would be exactly the scope creep this review exists to catch).
-- Severity followed the actual rubric rather than the PM's "keep it proportionate" ask — 5 Critical findings surfaced because the story-only read the PM already did missed things that live in `docs/`: an already-ratified pause-length decision (max 8 weeks, warning, auto-cancel) that never made it into the FRs; a "customers pay by card" assumption that's false for 28% of the base and breaks the no-charge guarantee for Direct Debit; a "boolean column" data constraint that contradicts the spec's own Key Entities; an unbacked FR that contradicts the entire "nothing delivered while paused" premise; and an orphaned success criterion plus a misstated feature-map baseline.
-- Recommended verdict is **needs-revision**, not a PASS — but I noted the Critical items look like same-day-answerable policy questions (not new discovery), so a same-day fix is still plausible if someone with authority rules on the five clarification questions.

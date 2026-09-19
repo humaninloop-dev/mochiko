@@ -1,5 +1,14 @@
 # Preregistration — validator persona plan-only eval (pilot 2)
 
+> **Evidence.** The run directories cited below (`runs/probe`, `runs/pilot2`, `runs/pilot2-prune`)
+> are not carried in the working tree — this kit's `.gitignore` ignores every `runs/` directory, so
+> the raw sessions are archived on a ref of their own rather than force-added here. Read one with:
+>
+>     git fetch origin tag eval-evidence-2026-09-19
+>     git show eval-evidence-2026-09-19:evals/agents/validator/runs/pilot2/report.md
+>
+> Or check the whole archive out: `git worktree add /tmp/eval-evidence eval-evidence-2026-09-19`.
+
 Committed BEFORE the first grid (`primitive-eval-harness-v2` D11 with folds C2 · I7 · I8 · I9 · M5
 · M6, and the pilot-1 ruling `2026-09-09-persona-pilot-1-latitude-out-of-instrument`). The runner
 refuses `agent-grid` without this file. Amending it after results exist is a recorded, deliberate

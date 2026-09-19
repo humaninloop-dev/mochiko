@@ -1,5 +1,14 @@
 # Pre-registration — `validation-constitution` (post-cut regression kit)
 
+> **Evidence.** The run directories cited below (`runs/baseline`) are not carried in the working
+> tree — this kit's `.gitignore` ignores every `runs/` directory, so the raw sessions are archived
+> on a ref of their own rather than force-added here. Read one with:
+>
+>     git fetch origin tag eval-evidence-2026-09-19
+>     git show eval-evidence-2026-09-19:evals/validation-constitution/runs/baseline/report.md
+>
+> Or check the whole archive out: `git worktree add /tmp/eval-evidence eval-evidence-2026-09-19`.
+
 Committed BEFORE any grid. Kit authored by an independent seat (rules re-keyed by another seat,
 `rekey.md`; the cut authored by the compression pass, `pass-report.md`; the kit graded by a third
 seat — author ≠ grader all the way down). No value below changes after the first priced run.

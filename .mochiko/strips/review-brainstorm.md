@@ -265,7 +265,10 @@ structural overhead (IDs, keys, section scaffolding, reading grammar).
 - **Content:** "never default to `ready` — zero findings means hunt harder, never manufacture · an unverifiable claim is a finding"
 
 ## [v0.88.0] RETURNED: blind map as its own deliverable (floor) + the commentary clause — eval-demanded re-adds, body 2,497 → 2,599; verify round added the tally form + critical-gaps criteria, final body 2,747 (−76.6% vs pre-cut)
-- **Evidence:** the post-cut regression grid `evals/review-brainstorm/runs/20260826-110222/`
+- **Evidence:** the post-cut regression grid `evals/review-brainstorm/runs/20260826-110222/`,
+  archived at the tag `eval-evidence-2026-09-19` — never carried in the working tree, so before
+  2026-09-19 this pointer resolved only on the machine that ran the grid
+  (`git show eval-evidence-2026-09-19:evals/review-brainstorm/runs/20260826-110222/report.md`)
   (27 runs, 3 arms; verdict in `evals/review-brainstorm/pass-report.md`). The cut arm failed
   the ratified bar on one root cause: 5 of 9 cut runs produced **no blind-map artifact**
   (pre-cut produced `phase0-blind-map.md` in 9/9) — "Return the map to the lead as a message"

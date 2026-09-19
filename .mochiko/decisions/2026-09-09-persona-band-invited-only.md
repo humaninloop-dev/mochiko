@@ -2,6 +2,9 @@
 
 - **Status:** ruled
 - **Date:** 2026-09-09
+- **Evidence:** the run directories cited below are archived at the tag `eval-evidence-2026-09-19`,
+  not carried in the working tree (`git fetch origin tag eval-evidence-2026-09-19`, then
+  `git show eval-evidence-2026-09-19:<path>`).
 - **Context:** The pre-registered noise band for the persona target (`primitive-eval-harness-v2`
   I7) is the replicate-disagreement share over every (golden, graded claim) pair, plus five points,
   capped at 20 %. Every graded claim is judged on every golden, so the count includes pairs where

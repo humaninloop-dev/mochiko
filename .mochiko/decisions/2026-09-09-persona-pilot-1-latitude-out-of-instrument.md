@@ -2,6 +2,9 @@
 
 - **Status:** ruled
 - **Date:** 2026-09-09
+- **Evidence:** the run directories cited below are archived at the tag `eval-evidence-2026-09-19`,
+  not carried in the working tree (`git fetch origin tag eval-evidence-2026-09-19`, then
+  `git show eval-evidence-2026-09-19:<path>`).
 - **Context:** `primitive-eval-harness-v2` (accepted 2026-09-08) made the persona eval target
   plan-only (D2, `Contested`) and pre-registered a positive control for the first pilot: the
   v0.108.0 `staff-engineer` section (`## Delegating Bounded Work`, the Sonnet worker rung)

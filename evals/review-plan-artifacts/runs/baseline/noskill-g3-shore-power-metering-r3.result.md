@@ -1,3 +1,0 @@
-The skill `mochiko:review-plan-artifacts` isn't in my available skills list (I only see: dataviz, update-config, keybindings-help, code-review, simplify, fewer-permission-prompts, loop, schedule, claude-api, workflow-authoring, run, init, security-review). It's possible the `mochiko` plugin isn't installed/enabled in this session, or the skill name is slightly different.
-
-Could you confirm the plugin is installed, or check the exact skill name? If it's not actually available, I can still do the round-2 review manually by reading the artifacts you listed and writing `review.md` — just let me know if you'd like me to proceed that way.

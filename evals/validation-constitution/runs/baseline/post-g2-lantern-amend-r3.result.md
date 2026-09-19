@@ -1,8 +1,0 @@
-**FAIL.** Wrote the full validator return to `validation-result.md`. The amend does not survive a from-file check — the hand-off note's claims don't match what's on disk on four separate points:
-
-- **`layers.md` doesn't exist.** CLAUDE.md and the ledger both point GI-011 at `.claude/rules/mochiko/layers.md`; only `data-access.md` and `output-style.md` are actually present. The claim it's "in place with its registry block" is false.
-- **Version bump is wrong.** Stamped PATCH 1.0.1, but this amend has three MAJOR-class changes by the ledger's own semver rule (a principle removed, a depth-level flip low→high, a module attach) — and the AM-1 review itself flagged this as Survivor S1, handed to the producer to resolve. It wasn't.
-- **The stamp contradicts itself.** CLAUDE.md's ratified line says `modules: none` while the ledger lists three attached template modules two of which are cited later in the same file.
-- **The trace manifest is stale, not "still standing."** It's still dated/worded for v1.0.0 — wrong depth, wrong GI-011 status, a retired principle still listed live, a waiver still shown active.
-
-Also found: a silently reverted user carve-out (writing-style `lite`→`full`), an unwidened rules-file scope glob, a duplicate GI-ID, a vague coverage threshold, an unfilled `[ROLE]` placeholder, an incomplete amendment log, and a superseded `constitution.md` still on disk. Full detail and an 11-item fix list are in the file — 47/71 checklist items passed.

@@ -1,8 +1,0 @@
-I've written the full grade to `validation-result.md`. Verdict: **FAIL**, 30/45 checklist items passed, 9 ranked issues.
-
-Headline problems:
-1. **Legal-mandate waiver (critical)** — the ledger waives a PCI-DSS ASV-scan requirement, which the checklist forbids outright regardless of the founder overruling the reviewer who flagged it during synthesis.
-2. **Cardholder-data rules file scope gap (critical)** — `cardholder-data.md` only watches `src/payments/`, but the PAN transits `src/checkout/` first (the synthesis says so explicitly), so the PAN-handling rules never inject where the raw card number actually lands.
-3. Plus a literal `GI-XXX` placeholder, the ratified stamp line silently dropping `pci-dss` from its module list, a minted "British English" principle that directly inverts a ratified exclusion under the same GI-ID, a coverage-threshold that doesn't match the declared floor row with no recorded override, a vague/unenforced LCP principle that drops the founder's own numeric commitment, and a missing ledger section.
-
-The producer's hand-off note also doesn't hold up: it claimed "no waivers" (there is one, and it's an illegal one) and "all three modules... stamped" (the region stamp only shows two), and its dismissal of the anti-pattern scan was exactly the kind of rationalization that scan turned out to catch real instances of. I did not edit any graded file — only `validation-result.md` was written.

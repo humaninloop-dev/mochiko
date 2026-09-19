@@ -1,3 +1,0 @@
-The skill `mochiko:review-plan-artifacts` isn't available in this session — it's not in the list of invocable skills I have access to (I only see `dataviz`, `update-config`, `keybindings-help`, `code-review`, `simplify`, `fewer-permission-prompts`, `loop`, `schedule`, `claude-api`, `workflow-authoring`, `run`, `init`, `security-review`).
-
-I can't guess at a skill name that isn't registered. Could you confirm the exact skill name, or check whether the `mochiko` plugin is installed/enabled in this environment? If it's not actually available, let me know and I can instead do the review manually (reading COVER-NOTE.md, the FEAT-034 design package, and service.ts, then writing review.md) using the same review-plan-artifacts intent you described — just say the word.

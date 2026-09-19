@@ -1,8 +1,0 @@
-I've completed the cold read and written my findings to `review.md` — that's the message to the lead, per the transport constraint.
-
-Summary of what's in it:
-
-- **Recommended status: critical-gaps**, not the "formality" framing — two survivors are direct matches for this skill's critical-gaps bar: GI-001's amended fact profile ("no new data classes") is contradicted by `codebase-analysis.md`'s own explicit new-data-class findings (payment-instrument metadata, raw Stripe payloads with billing details), and the `high` depth-level declaration (GI-018) has no backing floor-card rulings — only FLOOR-SEC was re-dealt, and it still reads as the low row; FLOOR-TEST/ERR/OBS have no amend record at all, with coverage sitting under the high row's blocking threshold.
-- Five more survivors: GI-023's two-reviewer rule has no CODEOWNERS/branch-protection backing (verified directly), GI-020's Contested mark has no rationale in the synthesis itself, a team-reality conflict (contractors in the commit log vs. "four engineers"), a real over-governance candidate (GI-025, traced to nothing but "ok, sure"), and a convergence-skip bookkeeping inconsistency.
-- I declined three of the lead's asks on jurisdiction grounds: grading `service-standards.md`'s formulation (permanently out of scope, and I authored it), flagging GDPR as over-governance (it's module-derived from real data, not excess), and ratifying on delegation (ratification is the user's, verdicts are the lead's — I only recommend).
-- I explained the revision-loop sign-off order for Priya, and declined the off-the-record hexagonal question as outside this review's remit (redirected to principal-architect), while noting the GI-020 rationale gap stands regardless of which way that goes.

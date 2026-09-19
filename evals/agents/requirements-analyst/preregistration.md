@@ -1,5 +1,14 @@
 # Preregistration — requirements-analyst persona plan-only eval (wave A baseline kit)
 
+> **Evidence.** The run directories cited below (`runs/baseline` and its siblings) are not carried
+> in the working tree — this kit's `.gitignore` ignores every `runs/` directory, so the raw sessions
+> are archived on a ref of their own rather than force-added here. Read one with:
+>
+>     git fetch origin tag eval-evidence-2026-09-19
+>     git show eval-evidence-2026-09-19:evals/agents/requirements-analyst/runs/baseline/report.md
+>
+> Or check the whole archive out: `git worktree add /tmp/eval-evidence eval-evidence-2026-09-19`.
+
 Committed BEFORE the baseline grid (`primitive-eval-harness-v2` D11 as folded; the pilot rulings
 `2026-09-09-persona-pilot-1-latitude-out-of-instrument` and `2026-09-09-persona-pilot-2-validator-read`;
 the band re-key `2026-09-09-persona-band-invited-only`).

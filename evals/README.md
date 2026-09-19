@@ -71,9 +71,33 @@ evals/
     rules.json                # rule inventory: {id, rule, class, source} (re-keyed onto log ids, rekey.md)
     preregistration.md        # ship bar + delivered-chars arithmetic — REQUIRED before a grid
     runs/<stamp>/             # artifacts, result text, streams, summary.json, report.md
+                              #   LOCAL ONLY — gitignored; archived to a ref, see below
     pass-report.md            # the compression pass report (compressing-skills step 7)
     baseline/                 # committed baseline results; regenerate only as a landing act
 ```
+
+## Where the run evidence lives
+
+Every `runs/` directory is gitignored (`evals/.gitignore`): run output is regenerated locally on
+each grid, and carrying it on the working branch meant force-adding every file. That is not a
+theoretical cost — it silently dropped twenty-two sessions once, across the constitution and
+plan-artifacts kits, because two commits staged updates to already-tracked files and never noticed
+the new ones.
+
+The raw sessions behind a published read are archived on a ref of their own instead:
+
+```
+git fetch origin tag eval-evidence-2026-09-19
+git show eval-evidence-2026-09-19:evals/agents/tech-lead/runs/baseline/report.md
+git worktree add /tmp/eval-evidence eval-evidence-2026-09-19    # or browse the whole tree
+```
+
+Each kit's `preregistration.md` carries the same pointer at its head. A citation names a
+kit-relative run directory — `runs/baseline`, `runs/probe`, `runs/pilot2-prune` — which resolves
+under the tag at that kit's path. Stream transcripts were never committed and are not archived.
+
+A later archive supersedes rather than replaces: tags are immutable, so a new grid's evidence lands
+under a new `eval-evidence-<date>` tag and the citations that point at the old one keep resolving.
 
 ## Usage
 

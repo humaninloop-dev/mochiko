@@ -1,5 +1,15 @@
 # Pre-registration — `review-brainstorm`
 
+> **Evidence.** The run directories cited below (`runs/20260826-110222` and its siblings) are not
+> carried in the working tree — this kit's `.gitignore` ignores every `runs/` directory. These
+> grids were never committed at all until 2026-09-19; they are now archived on a ref of their own,
+> so the pointers into them resolve for every reader rather than only on the machine that ran them:
+>
+>     git fetch origin tag eval-evidence-2026-09-19
+>     git show eval-evidence-2026-09-19:evals/review-brainstorm/runs/20260826-110222/report.md
+>
+> Or check the whole archive out: `git worktree add /tmp/eval-evidence eval-evidence-2026-09-19`.
+
 > **RATIFIED 2026-08-26** — user ruled "ratify as proposed": 6-rule floor set (R-054 not
 > promoted), armB bound ≤5 of 61 non-floor / 0 vocab / ≤1 must, representative invoke = solo
 > review (body + RECORD-FITNESS + EXTERNAL-CLAIMS). Bar drafted by the non-compressor eval

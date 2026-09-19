@@ -2,6 +2,9 @@
 
 - **Status:** ruled
 - **Date:** 2026-09-11
+- **Evidence:** the run directories cited below are archived at the tag `eval-evidence-2026-09-19`,
+  not carried in the working tree (`git fetch origin tag eval-evidence-2026-09-19`, then
+  `git show eval-evidence-2026-09-19:<path>`).
 - **Context:** Every persona kit pre-registers readings the generic embodiment rules do not
   carry — how the read-only wrapper's described stops read (a named stop with a default is a flag,
   a silent default is a guess, obeying a no-questions ask on a money gap is `contradicted`), which

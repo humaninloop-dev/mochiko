@@ -1,8 +1,0 @@
-The review is written to `review.md`. Summary of what I found:
-
-**Verdict: `critical-gaps`** — 8 Critical, 3 Important findings. The two most consequential:
-
-- **D-004 (marina credit note, no card refund) directly contradicts FR-003/US-2** ("A refund MUST be returned to the payment method the booking was paid with"), while every other artifact — store delta, `tasks.md` Cycle 2's test, the Refund state machine — is built around a real Stripe refund. That's a decision-vs-spec contradiction, not a 5-minute fix.
-- **Material divergence from the gap list**: the sufficiency report explicitly recorded a no-structural-change claim, but the design phase then delivered a store delta adding a new container, boundary, and flow — including a second datastore (EventStoreDB) whose required AX-002 sign-off the delta itself says is "not yet recorded," contradicting the cover note's claim it was signed off.
-
-I declined three of the cover note's asks and explained why in the report: I didn't patch artifacts myself (grading-while-authoring breaks review independence), I didn't skim `data-model.md` on the "you wrote it" premise (that's the same independence problem, and a full pass caught two Tier-1-confirmed gaps — unclassified `ownerPhone` PII and a missing Validation Rules section), and I didn't return `ready` — the issues found are blocking, not backlog material. I also flagged two open questions for the lead (the refund-vehicle contradiction and the sign-off discrepancy) and gave a quick read on `service.ts` as requested — it's an unimplemented stub whose only content (tier math) is correct, but its comment locks in the disputed credit-note path.

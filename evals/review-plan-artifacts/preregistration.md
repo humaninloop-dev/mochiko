@@ -1,5 +1,14 @@
 # Preregistration — `review-plan-artifacts` post-cut regression check
 
+> **Evidence.** The run directories cited below (`runs/baseline`) are not carried in the working
+> tree — this kit's `.gitignore` ignores every `runs/` directory, so the raw sessions are archived
+> on a ref of their own rather than force-added here. Read one with:
+>
+>     git fetch origin tag eval-evidence-2026-09-19
+>     git show eval-evidence-2026-09-19:evals/review-plan-artifacts/runs/baseline/report.md
+>
+> Or check the whole archive out: `git worktree add /tmp/eval-evidence eval-evidence-2026-09-19`.
+
 Committed BEFORE any grid (`skill-compression-tooling` R6/R9 as carried into the converged
 skill runner; `primitive-eval-harness-v2` D1 vocabulary, D12/C3 the re-keyed inventory). Kit
 authored by an independent seat (author ≠ grader: the kit author graded nothing, the auditor
