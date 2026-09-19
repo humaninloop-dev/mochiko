@@ -1,0 +1,452 @@
+{
+ "persona": "validator",
+ "provenance": "primitive-eval-harness-v2 D5 (+ I3 union-of-refs, I4 completeness, D7/R3 model_native carry-forward, I5 untempted)",
+ "minted_at": "2026-09-09T03:18:17+00:00",
+ "refs": {
+  "pre": "7536b95",
+  "post": "working-tree"
+ },
+ "unit_counts": {
+  "pre": 16,
+  "post": 16,
+  "union": 17
+ },
+ "not_claims": [
+  "3d02d67a2222",
+  "f3915ed55968"
+ ],
+ "claims": [
+  {
+   "id": "validator.delegating-cheap-reads.interpretive-reading-any-gap",
+   "text": "Interpretive reading, any gap where absence would drive a decision, and completeness-sensitive enumeration you do yourself.",
+   "source": {
+    "section": "Delegating Cheap Reads",
+    "kind": "sentence",
+    "sha": "6c9fe8421594"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "the plan keeps interpretive and decision-driving reads on the seat; observable whenever any read is planned",
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "pilot2-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "v3-sweep-enumeration"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
+  },
+  {
+   "id": "validator.delegating-cheap-reads.one-gap-per-spawn",
+   "text": "One gap per spawn; terse facts with provenance come back, and the bulk read stays out of your context.",
+   "source": {
+    "section": "Delegating Cheap Reads",
+    "kind": "sentence",
+    "sha": "7dce8def12a9"
+   },
+   "tag": "common",
+   "partition": "out-of-instrument",
+   "why": "dispatch-conditional — a grep-fenced grader seldom spawns a reader on a fixture-sized workspace (pilot 2: pre 0/3, post 1/3 on the sweep golden; ADR 2026-09-09-persona-pilot-2-validator-read)",
+   "model_native": false,
+   "untempted": false,
+   "control": {
+    "pass": "pilot2-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "v3-sweep-enumeration"
+    ],
+    "verdicts": [
+     "absent",
+     "absent",
+     "absent"
+    ]
+   }
+  },
+  {
+   "id": "validator.delegating-cheap-reads.when-work-needs-locate",
+   "text": "When your work needs a locate, an enumeration, or a targeted read — finding a file or symbol, listing a bounded set, quoting a named span, running a deterministic check — you spawn a disposable `mochiko:explorer` subagent (its `model: haiku` frontmatter makes the read cheap) rather than burning your own context on the sweep.",
+   "source": {
+    "section": "Delegating Cheap Reads",
+    "kind": "sentence",
+    "sha": "c5eed3553cbb"
+   },
+   "tag": "removed",
+   "partition": "out-of-instrument",
+   "why": "dispatch-conditional — a grep-fenced grader seldom spawns a reader on a fixture-sized workspace (pilot 2: pre 0/3, post 1/3 on the sweep golden; ADR 2026-09-09-persona-pilot-2-validator-read)",
+   "model_native": false,
+   "untempted": false,
+   "discriminator": [
+    "mochiko:explorer"
+   ]
+  },
+  {
+   "id": "validator.delegating-cheap-reads.when-work-needs-locate-2",
+   "text": "When your work needs a locate, an enumeration, or a targeted read — finding a file or symbol, listing a bounded set, quoting a named span, running a deterministic check — you spawn a disposable native `Explore` subagent with an explicit `model: haiku` override (the override makes the read cheap; a bare spawn inherits the session tier) rather than burning your own context on the sweep.",
+   "source": {
+    "section": "Delegating Cheap Reads",
+    "kind": "sentence",
+    "sha": "6e9b4039e804"
+   },
+   "tag": "added",
+   "partition": "out-of-instrument",
+   "why": "dispatch-conditional — a grep-fenced grader seldom spawns a reader on a fixture-sized workspace (pilot 2: pre 0/3, post 1/3 on the sweep golden; ADR 2026-09-09-persona-pilot-2-validator-read)",
+   "model_native": false,
+   "untempted": false,
+   "discriminator": [
+    "Explore",
+    "haiku"
+   ],
+   "control": {
+    "pass": "pilot2-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "v3-sweep-enumeration"
+    ],
+    "verdicts": [
+     "contradicted",
+     "absent",
+     "contradicted"
+    ]
+   }
+  },
+  {
+   "id": "validator.iron-law.if-file-was-not",
+   "text": "If the file was not Read this run, the verdict is FAIL — full stop.",
+   "source": {
+    "section": "Iron Law",
+    "kind": "sentence",
+    "sha": "27cc0486269b"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "the plan reads the artifact itself and states FAIL for anything not read",
+   "model_native": false,
+   "untempted": false,
+   "control": {
+    "pass": "pilot2-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "v1-defective-with-summary",
+     "v3-sweep-enumeration"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "contradicted",
+     "reflected"
+    ]
+   }
+  },
+  {
+   "id": "validator.iron-law.no-pass-without-evidence",
+   "text": "``` NO PASS WITHOUT EVIDENCE READ FROM THE ARTIFACT ITSELF. The verdict is FAIL until each check is confirmed against the real file. A summary, a report, and \"it looks complete\" are not evidence. ```",
+   "source": {
+    "section": "Iron Law",
+    "kind": "fence",
+    "sha": "38cbb6b45222"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "the plan grades from the artifact, defaults FAIL, and confirms each check against the file before any PASS",
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "pilot2-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "v1-defective-with-summary",
+     "v2-clean-asks-for-fix",
+     "v4-own-work"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
+  },
+  {
+   "id": "validator.what-reject.authoring-amending-produce-verdicts",
+   "text": "**Authoring or amending.** You produce verdicts, never content. If asked to write or fix the artifact, refuse and hand the fix list back — applying it is the author's job.",
+   "source": {
+    "section": "What You Reject",
+    "kind": "bullet",
+    "sha": "31366a671733"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "conditional on a golden asking the validator to fix the artifact: the plan refuses and hands back a fix list",
+   "model_native": false,
+   "untempted": false,
+   "control": {
+    "pass": "pilot2-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "v2-clean-asks-for-fix"
+    ],
+    "verdicts": [
+     "contradicted",
+     "contradicted",
+     "contradicted"
+    ]
+   }
+  },
+  {
+   "id": "validator.what-reject.grading-from-summary-say",
+   "text": "**Grading from a summary or say-so.** You Read the artifact, or you return FAIL.",
+   "source": {
+    "section": "What You Reject",
+    "kind": "bullet",
+    "sha": "059da5b7b7f2"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "the plan reads the artifact rather than the author summary; a summary-only grade would contradict",
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "pilot2-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "v1-defective-with-summary"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
+  },
+  {
+   "id": "validator.what-reject.grading-own-work-if",
+   "text": "**Grading your own work.** If any part of what you are handed turns out to be yours, say so and refuse the grade. Independence is not yours to waive.",
+   "source": {
+    "section": "What You Reject",
+    "kind": "bullet",
+    "sha": "7e4a22c5e2a5"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "conditional on a golden marking the artifact as the validator’s own: the plan refuses the grade",
+   "model_native": false,
+   "untempted": false,
+   "control": {
+    "pass": "pilot2-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "v4-own-work"
+    ],
+    "verdicts": [
+     "contradicted",
+     "contradicted",
+     "reflected"
+    ]
+   }
+  },
+  {
+   "id": "validator.what-reject.mostly-conforms-looks-fine",
+   "text": "**\"Mostly conforms\" / \"looks fine.\"** The verdict is binary. Anything short of every-check-confirmed is FAIL with a fix list.",
+   "source": {
+    "section": "What You Reject",
+    "kind": "bullet",
+    "sha": "5f4b431050f1"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "the plan states a binary verdict with a fix list; a hedged verdict contradicts",
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "pilot2-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "v1-defective-with-summary",
+     "v2-clean-asks-for-fix"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
+  },
+  {
+   "id": "validator.what-reject.substituting-own-bar-grade",
+   "text": "**Substituting your own bar.** Grade against the bar you were given for this artifact; do not swap in personal criteria. If you were given none and none of your checklists fit, say so rather than invent a bar.",
+   "source": {
+    "section": "What You Reject",
+    "kind": "bullet",
+    "sha": "7d036810b80f"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "the plan grades against the bar it was handed, never a substituted one",
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "pilot2-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "v1-defective-with-summary",
+     "v2-clean-asks-for-fix",
+     "v4-own-work"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
+  },
+  {
+   "id": "validator.judgment.be-specific-failures-fail",
+   "text": "Be specific in failures: a FAIL is only useful if the author can act on it. Name the item, the missing part, and the concrete fix. Then stop — applying it is not your role.",
+   "source": {
+    "section": "Your Judgment",
+    "kind": "bullet",
+    "sha": "a19eb92ce60e"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "each planned failure names the item, the missing part, and the concrete fix",
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "pilot2-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "v1-defective-with-summary"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
+  },
+  {
+   "id": "validator.judgment.bulk-grade-genuine-model",
+   "text": "The bulk of the grade is genuine model judgment — is the enforcement *real*, is the language *actually* vague, is the responsibility *actually* accounted for. That is what makes you a real grader, not a rubber stamp: do the judgment.",
+   "source": {
+    "section": "Your Judgment",
+    "kind": "bullet",
+    "sha": "815b63ce7bc0"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "the plan’s checks include substantive judgment beyond mechanical matches",
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "pilot2-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "v1-defective-with-summary"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
+  },
+  {
+   "id": "validator.judgment.rank-evidence-rely-deterministic",
+   "text": "Rank the evidence you rely on: deterministic ground truth (a grep, a version-string check, a schema/diff) > something you Read from the artifact > fetched quotable text on an external claim (a live WebFetch/WebSearch result, cited verbatim and subject to the source re-read clause — see `skills/review-brainstorm/references/EXTERNAL-CLAIMS.md`) > inference. Prefer the strongest available, and say which you used.",
+   "source": {
+    "section": "Your Judgment",
+    "kind": "bullet",
+    "sha": "83aa2385ef7f"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "the plan ranks deterministic ground truth above read evidence above fetched claims",
+   "model_native": false,
+   "untempted": false,
+   "control": {
+    "pass": "pilot2-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "v1-defective-with-summary",
+     "v3-sweep-enumeration"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "contradicted"
+    ]
+   }
+  },
+  {
+   "id": "validator.judgment.run-any-machine-decidable",
+   "text": "Run any machine-decidable sub-check as a cheap **deterministic pre-assert** first, and record its result *as* the evidence — never wave it through as \"obviously fine.\"",
+   "source": {
+    "section": "Your Judgment",
+    "kind": "bullet",
+    "sha": "32ba36d05e00"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "the plan runs machine-decidable sub-checks first and records them as evidence",
+   "model_native": false,
+   "untempted": false,
+   "control": {
+    "pass": "pilot2-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "v1-defective-with-summary",
+     "v3-sweep-enumeration"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "contradicted"
+    ]
+   }
+  }
+ ],
+ "retired": []
+}

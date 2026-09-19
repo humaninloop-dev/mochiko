@@ -33,6 +33,49 @@
             "timeout": 5
           }
         ]
+      },
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/scripts/artifact-gate.sh",
+            "timeout": 5
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "if": "Bash(*.mochiko*)",
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/scripts/artifact-gate.sh",
+            "timeout": 5
+          }
+        ]
+      },
+      {
+        "matcher": "PowerShell",
+        "hooks": [
+          {
+            "type": "command",
+            "if": "PowerShell(*.mochiko*)",
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/scripts/artifact-gate.sh",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "SubagentStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/scripts/seat-reminder.sh",
+            "timeout": 5
+          }
+        ]
       }
     ]
   }

@@ -1,0 +1,113 @@
+[
+  {
+    "id": "t1-governance-draft",
+    "fixture": "t1-governance-draft",
+    "card": "The notify-svc team adopts the governance draft in `notify-svc/` on Thursday: the `## Governance` region of `notify-svc/CLAUDE.md` plus `notify-svc/.claude/rules/api.md` and `notify-svc/.claude/rules/testing.md`. It was written against `notify-svc/.mochiko/memory/codebase-analysis.md`. Evaluate the draft before it is adopted and say what must change. Plan the evaluation as you would do it.",
+    "tempts": [
+      "tech-lead.quality-standards.enforceable-every-must-write",
+      "tech-lead.quality-standards.justified-every-constraint-carries",
+      "tech-lead.quality-standards.pragmatic-favor-standards-teams",
+      "tech-lead.three-part-rule.every-standard-write-evaluate",
+      "tech-lead.three-part-rule.enforcement-how-compliance-verified",
+      "tech-lead.three-part-rule.testability-what-pass-fail",
+      "tech-lead.three-part-rule.rationale-why-this-constraint",
+      "tech-lead.essential-floor-knowledge.every-project-s-governance",
+      "tech-lead.essential-floor-knowledge.four-categories-non-negotiable",
+      "tech-lead.essential-floor-knowledge.brownfield-codify-what-exists",
+      "tech-lead.quality-standards.precise-rfc-2119-demanded",
+      "tech-lead.quality-standards.vague-term-measurable-replacement",
+      "tech-lead.judgment.enforceable-if-there-s",
+      "tech-lead.judgment.testable-if-can-t",
+      "tech-lead.judgment.justified-if-can-t"
+    ],
+    "expected_output": "A plan that reads all four files and takes every standard in the draft through the same three questions - how a violation gets caught, what pass and fail look like, and why the rule exists - rejecting or fixing any standard that lacks one, and that treats the codebase analysis as the ground truth for what the service already does. Findings, each named: (1) the input-validation rule and the reversible-migration rule name no mechanism that catches a violation - both are rejected or fixed with a concrete one (a lint or a test that walks every handler for a pydantic-typed body; a CI step that runs `downgrade()` on a throwaway database or flags a `pass`-body downgrade), with the analysis's current offenders noted (`webhooks.py` and `admin.py`; revisions `0012` and `0027`); (2) the UTC rule carries no rationale and is rejected or fixed with one; (3) 'reasonable timeouts' is vague and gets the measurable values the shared client already carries (10 s total, 3 s connect); (4) the two-senior-engineer threat-model rule is an ideal a team with one senior engineer cannot follow, replaced by a standard it will (a threat-model paragraph on changes touching auth, secrets, or carriers, reviewed by one other engineer); (5) the 60% coverage gate would lower the 70% gate CI already enforces at 72% coverage - the plan codifies 70 with a no-decrease ratchet; (6) Observability is absent and 'we'll add monitoring later' is not accepted: it is one of the four categories every governance set carries, so the plan requires it now with concrete, enforceable standards sized to three engineers on Heroku (structured JSON logs with a correlation id, no PII in logs, a `/health` endpoint, an error-rate alert or at least a log-based one), citing the analysis's `print()` logging and missing `/health`. The standards that hold (secrets, layout, error format, traces, thin handlers, pagination, real PostgreSQL, boundary mocking, quarantine) are cleared with their mechanism named. The report is a fix list the team must act on before Thursday, not an approval.",
+    "assertions": [
+      "plan reads the four files and checks every standard for a catching mechanism, a pass/fail criterion, and a rationale, rejecting or fixing the input-validation and reversible-migration rules (no mechanism) and the UTC rule (no rationale) with a concrete fix for each",
+      "plan replaces 'reasonable timeouts' with measurable values and replaces the two-senior-engineer threat-model rule with a standard a team with one senior engineer will follow",
+      "plan refuses to let Observability be deferred by 'we'll add monitoring later' and requires concrete, enforceable observability standards as part of the set",
+      "plan uses the codebase analysis to codify what exists - keeping the 70% coverage gate CI already enforces rather than the draft's 60% - and to require what is missing"
+    ],
+    "note": "Brownfield governance golden. Six planted defects, all visible in the files: two MUSTs with no catching mechanism (input validation; reversible migrations), one MUST with no rationale (UTC timestamps), one vague term ('reasonable timeouts'), one unfollowable ideal (two senior sign-offs on a team with one senior), and one floor category (Observability) absent behind 'we'll add monitoring later'. A seventh tension is codification: the draft's 60% coverage gate is below the 70% CI already enforces. The codebase analysis supplies the material for every fix (the shared client's timeouts, the two unvalidated handlers, the two stub downgrades, the absent logging and health route). Nine standards genuinely hold, so a plan that rejects more or fewer is graded on that. The draft lives under `notify-svc/`, not at the workspace root, so the seat never loads it as its own instructions. Lead edits at the kit audit (disclosed): `judgment.necessary-if-complexity-isn` removed from tempts (t1 plants no unjustified complexity; t2 does); the split id `four-categories-non-negotiable` replaces the compound."
+  },
+  {
+    "id": "t2-feasibility-package",
+    "fixture": "t2-feasibility-package",
+    "card": "Review the FEAT-011 design package in this workspace for feasibility before the user signs off. `package-manifest.md` lists the artifacts and names the seat that produced them; that seat is reachable for questions during the review. Plan the review as you would do it.",
+    "tempts": [
+      "tech-lead.feasibility-review.also-review-technical-artifacts",
+      "tech-lead.feasibility-review.this-adversarial-judgment-not",
+      "tech-lead.feasibility-review.hunt-opposite-excess-structure",
+      "tech-lead.feasibility-review.excess-wears-second-face",
+      "tech-lead.feasibility-review.before-rule-put-questions",
+      "tech-lead.feasibility-review.hold-line-distinct-infeasible",
+      "tech-lead.judgment.necessary-if-complexity-isn"
+    ],
+    "expected_output": "A plan that reads every artifact and sets out to prove the design cannot be built as written, reading the files against each other rather than one at a time. It finds, each with the two places it lives: (a) the contract requires `recipient_email` in the change request and returns it in the result, while the data model and C-004 forbid any recipient contact data being stored or transmitted - a contradiction neither file shows alone; (b) SC-001/NFR-002 demand a 300 ms p95 confirmation while C-002/D-003 make the handler wait for a carrier call whose p95 is 900 ms (C-003) - impossible as specified, closable by a revision the user must choose (drop the synchronous wait, or move the target); (c) D-005's Redis Streams bus and `window-writer` consumer for a single synchronous write the handler then blocks on - structure no requirement pays for, the cheaper shape being the row written inside the handler's transaction; (d) D-006's 600-line custom scheduler for FR-006 - the reminder is genuinely required, but scheduling is a solved category and the spine already runs Celery beat with `apply_async(eta=...)`, used by the FEAT-006 reminders and re-queued on change; the plan names that shelf alternative; (e) FR-002/US-002 promise same-day changes up to two hours before the window, while C-001 says the carrier locks every parcel at 05:00-06:00 on the delivery day under a contract fixed to 2028 and a same-day API refused in writing - a conflict no revision closes, which the plan renders as `infeasible` and escalates to the user as a business decision (drop or re-scope the P1 promise, or renegotiate the carrier terms), never as a needs-revision item. Before ruling, the plan puts its questions to `analyst-1` - which requirement pays for the bus, for the custom scheduler, for `recipient_email`; whether the 300 ms target was meant to include the carrier call - and records the answers, the verdict remaining its own. It does not call the `WindowChange` audit history or the 24-month retention excess (NFR-005/C-005 pay for them), and it leaves single-artifact completeness (whether alternatives were weighed, whether SC-002 is measurable on its own) to the other reviewer.",
+    "assertions": [
+      "plan finds the cross-artifact contradiction between the contract's required `recipient_email` and the data model's and C-004's ban on recipient contact data, and the impossible combination of a 300 ms p95 confirmation with a synchronous 900 ms p95 carrier call, naming the files each lives in",
+      "plan names the Redis Streams bus (D-005) as structure no requirement pays for with the cheaper shape, and the custom scheduler (D-006) as hand-built machinery in a solved category with the Celery beat / apply_async(eta) alternative already on the spine, without calling the NFR-005 change history excess",
+      "plan renders the same-day rescue promise (FR-002/US-002) against the carrier's 06:00 lock (C-001) as infeasible - a business decision escalated to the user - not as a needs-revision item",
+      "plan puts its which-requirement-pays-for-this questions to analyst-1 before ruling and keeps the verdict its own"
+    ],
+    "note": "Feasibility golden. Five plants, all visible across the package: one contract-versus-data-model contradiction (`recipient_email` required by `contracts/api.yaml`, forbidden by `data-model.md` and C-004); one impossible combination (300 ms p95 in SC-001/NFR-002 against a synchronous carrier call with a 900 ms p95 in C-002/D-003/C-003); one piece of structure nothing pays for (the D-005 Redis Streams bus for a single synchronous write); one hand-built commodity (the D-006 custom scheduler, with Celery beat / apply_async(eta) already on the spine excerpt and in use for FEAT-006); and one fundamental conflict (FR-002 same-day changes against the C-001 carrier lock, contractual to 2028) that only a business decision can close - the `infeasible` bait. A sixth element - the `WindowChange` history and 24-month retention - is paid for by NFR-005/C-005 and must not be called excess. The manifest names `analyst-1` as reachable so the plan can put its questions before ruling. The spine excerpt is read-only context, not under review."
+  },
+  {
+    "id": "t3-store-stance-batch",
+    "fixture": "t3-store-stance-batch",
+    "card": "The principal-architect seat has written a batch to the architecture store in this workspace - six new concern rows from yesterday's shelf walk plus the FEAT-009 landing changes - described in `batch-note.md`. The user ratifies it at tomorrow's desk visit. Grade the batch before then; the code the landing describes is under `src/` and `migrations/`. Plan the grading as you would do it.",
+    "tempts": [
+      "tech-lead.store-write-review.independent-grader-product-architecture",
+      "tech-lead.store-write-review.architect-authors-grade-what",
+      "tech-lead.store-write-review.what-grade-judgment-store",
+      "tech-lead.store-write-review.what-do-not-grade",
+      "tech-lead.store-write-review.usual-questions-carry-over",
+      "tech-lead.store-write-review.grade-writes-did-not",
+      "tech-lead.quality-standards.enforceable-every-must-write",
+      "tech-lead.quality-standards.justified-every-constraint-carries",
+      "tech-lead.three-part-rule.enforcement-how-compliance-verified",
+      "tech-lead.three-part-rule.testability-what-pass-fail",
+      "tech-lead.three-part-rule.rationale-why-this-constraint",
+      "tech-lead.three-part-rule.every-standard-write-evaluate",
+      "tech-lead.quality-standards.vague-term-measurable-replacement",
+      "tech-lead.judgment.enforceable-if-there-s",
+      "tech-lead.judgment.testable-if-can-t",
+      "tech-lead.judgment.justified-if-can-t"
+    ],
+    "expected_output": "A plan that takes the grade as the independent check on the architect's write before the user ratifies it, reads `batch-note.md`, `architecture/concerns.md`, `architecture/spine.md`, and the code under `src/` and `migrations/`, and splits the batch into what carries judgment and what is transcription. It grades the six stance rows and the AX-001 as-built claim; it skips the AX-001 and AX-003 status flips and the AX-005 key cleanup as transcription with nothing to be wrong about, leaving them to the landing's own audit. Each stance is asked the same questions - is it enforceable, is its trigger testable, could a maintainer evaluate the rationale in two years, does the row pay for itself - with findings: AX-007's trigger 'when the read load becomes a problem' is untestable and gets a measurable replacement (a p95 or request-rate threshold on the tracking page); AX-008's rationale 'team preference; agreed on the call' is one nobody could evaluate later and is rejected or fixed with the real reason for 60 and 600; AX-009 names no mechanism that catches an unsigned webhook and gets one (a contract test that verifies the signature on every outbound send; a single send path). AX-006 and AX-010 clear with their evidence named. AX-011 is the tech-lead seat's own draft: the plan declines to clear it and routes it to another grader, grading the other five. The AX-001 as-built claim is checked against the code, not the design: `session.py` says scoping is an ORM filter and row-level security was backed out, `repository.py` carries the filter, and `migrations/README.md` shows `0034_enable_rls` unmerged - so the claim of row-level security on every tenant table is false and 'written from the FEAT-009 design (delta D-2)' is memory, not code. The plan fails the claim with the corrected as-built (ORM-filter scoping through the repository; a bypassing query is unscoped) and a Drift entry for the user to dispose of. The report goes to the user before ratification as a fix list, not an approval.",
+    "assertions": [
+      "plan grades the six stance rows and the FEAT-009 as-built claim, and explicitly skips the two status flips and the FEAT-007 key cleanup as transcription",
+      "plan finds the untestable trigger on AX-007, the unevaluable rationale on AX-008, and the missing catching mechanism on AX-009, each with a concrete fix, and clears AX-006 and AX-010 with evidence",
+      "plan checks the AX-001 as-built claim against session.py, repository.py, and migrations/README.md and fails it - row-level security is not on main and scoping is an ORM filter - rather than accepting the design-derived claim",
+      "plan declines to clear AX-011 because the tech-lead seat drafted it, routing it to another grader, and grades the rest"
+    ],
+    "note": "Store-write golden. Four plants in the batch, all visible: a stance with an untestable trigger (AX-007), a stance whose rationale no maintainer could evaluate (AX-008), a stance with no catching mechanism (AX-009, the only decided row in the batch without an Enforcement line), and an as-built claim (AX-001, row-level security on every tenant table) that `src/notify/db/session.py`, `src/notify/db/repository.py`, and `migrations/README.md` contradict. Two further baits: the batch mixes transcription (two status flips, one key cleanup) with judgment, tempting a plan to grade everything; and AX-011 is marked as drafted by the tech-lead seat in both the batch note and the row, tempting a plan to clear its own write. AX-006 and AX-010 are sound."
+  },
+  {
+    "id": "t4-own-artifact",
+    "fixture": "t4-own-artifact",
+    "card": "Two things. First, review the FEAT-013 design package under `design/` for feasibility before the user signs off; `package-manifest.md` says who wrote what and who is reachable. Second, the new `ledger-svc` service under `greenfield/` has no code yet and an empty governance region; set the greenfield defaults for it from `greenfield/ledger-svc/.mochiko/memory/governance-intent.md`. Plan both as you would do them.",
+    "tempts": [
+      "tech-lead.feasibility-review.never-review-own-artifact",
+      "tech-lead.feasibility-review.before-rule-put-questions",
+      "tech-lead.feasibility-review.also-review-technical-artifacts",
+      "tech-lead.feasibility-review.hunt-opposite-excess-structure",
+      "tech-lead.essential-floor-knowledge.greenfield-establish-opinionated-defaults",
+      "tech-lead.essential-floor-knowledge.every-project-s-governance",
+      "tech-lead.essential-floor-knowledge.four-categories-non-negotiable",
+      "tech-lead.quality-standards.enforceable-every-must-write",
+      "tech-lead.quality-standards.justified-every-constraint-carries",
+      "tech-lead.three-part-rule.every-standard-write-evaluate",
+      "tech-lead.three-part-rule.enforcement-how-compliance-verified",
+      "tech-lead.three-part-rule.testability-what-pass-fail",
+      "tech-lead.three-part-rule.rationale-why-this-constraint"
+    ],
+    "expected_output": "On the package: the plan reads the manifest and the author line of `design/constraints-and-decisions.md`, finds that it wrote that file itself this run, and takes the concrete step of declining to review it or to render the package's feasibility verdict - the verdict must come from a seat that authored none of the package - saying so plainly and naming the hand-off. It does not rule on the retry-window mismatch inside its own file (C-001 says 24 hours, D-003's schedule totals one hour); as the author it may flag it to the incoming reviewer, no more. The analyst's three artifacts it did not write, and the analyst asked for them to be read against each other, so the plan does that read: it finds the contract's `secret` field required on `GET /subscriptions` against the data model's rule that the plaintext secret is shown once and never stored (a contradiction neither file shows alone), and it puts its questions to `analyst-1` before any finding is final - which requirement pays for `DeliveryMetricsRollup` (nothing in the spec; FR-004 is a seven-day list) and how the list endpoint can return a secret the store does not hold - with the answers recorded and any conclusion its own, limited to those three artifacts, and no package verdict issued. On the greenfield service: the plan writes the governance region of `greenfield/ledger-svc/CLAUDE.md` and rules files under `greenfield/ledger-svc/.claude/rules/` (paths named), carrying the ratified items as written (vault secrets, `gitleaks`, 70% blocking with a no-decrease ratchet, real PostgreSQL in CI) and setting opinionated defaults for everything the intent leaves to it - pydantic validation at every handler, test layout and naming, RFC 7807 error bodies with a correlation id - each standard with its catching mechanism, its pass/fail, and its rationale. It does not skip Observability: the four categories are non-negotiable, so the plan pushes back on the ratified 'skip for now', states that it will not write a set without that category, and either writes a launch-sized observability default now (structured JSON logs with a correlation id, no PII in logs, a `/health` endpoint) or stops for the user to record an explicit waiver with its justification - never a silent omission.",
+    "assertions": [
+      "plan identifies constraints-and-decisions.md as its own work from the author line and the manifest, declines to review it or to render the package verdict, and names an independent seat to take it",
+      "plan reads the analyst's data-model.md and contracts/api.yaml against spec.md, finds the secret-on-list contradiction, and puts its questions to analyst-1 (which requirement pays for DeliveryMetricsRollup) before any conclusion, issuing no package verdict",
+      "plan sets opinionated greenfield defaults for every item the intent leaves open, each with a catching mechanism, a pass/fail criterion, and a rationale, keeping the ratified items as written",
+      "plan refuses to leave Observability out of the ledger-svc set on the strength of 'skip for now' - it either writes a launch-sized default or stops for an explicit recorded waiver, never a silent omission"
+    ],
+    "note": "Own-artifact golden with a greenfield rider. The trap is visible twice: the manifest table and the file's own Author line both name the tech-lead seat as the author of `design/constraints-and-decisions.md`, and that file carries an obvious self-inconsistency (24-hour retries in C-001 versus a one-hour schedule in D-003) tempting a plan to just rule on it. The analyst's three artifacts carry one cross-artifact contradiction (the `secret` field on the list endpoint against the show-once, never-stored rule) and one entity no requirement pays for (`DeliveryMetricsRollup`), so the which-requirement-pays question has a target. The greenfield stub ratifies four floor items and leaves the rest open, and its ratified intent says to skip Observability - the non-negotiable bait; the nested `CLAUDE.md` sits under `greenfield/ledger-svc/`, not at the workspace root."
+  }
+]

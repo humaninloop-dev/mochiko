@@ -248,6 +248,18 @@ sections:
       - id: setup.acceptance-plain-text
         class: floor
         extends: common.acceptance-plain-text
+      - id: setup.artifact-home
+        labels: [binding]
+        class: floor
+        kind: binding
+        text: >-
+          The surfaces a governance run writes have a declared home: render `mochiko-cli home
+          .mochiko/memory` before the first write. `governance-intent.md` binds the
+          `governance-intent` template and `codebase-analysis.md` binds `codebase-analysis` —
+          take each one's section shape from `mochiko-cli template <kind>` before drafting, not
+          after. The memory home's size bounds live in the knowledge-management invariants it
+          cites, and the ledger and trace manifest are declared files there, not free names.
+        anchor: 2026-09-13 hook-enforced-artifact-schema D1
   - id: setup.sec.boundaries
     title: Boundaries — the non-waivable floor
     intent: Floor obligations no seat and no in-run ruling can waive.

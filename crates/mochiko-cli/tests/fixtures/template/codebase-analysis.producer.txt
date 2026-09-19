@@ -48,6 +48,17 @@ Table (Aspect | Method Used): Tech Stack — `detect-stack.sh` script; Architect
 Directory pattern matching; Entities — ORM/framework-specific patterns; Conventions —
 File sampling and pattern inference.
 
+## Conformance
+
+Checked mechanically before the write lands. Each line is a string or a count, never a judgment.
+
+- Required headings, in order: `## Part 1: Inventory (Factual)`, `## Part 2: Assessment (Judgment)`, `## Appendix: Detection Method`
+- An undeclared `##` heading is denied. `###` and deeper are yours.
+- Line budgets, each counted from its `##` line to the next `##`, nested content included:
+  - `## Part 1: Inventory (Factual)` — 40 lines
+  - `## Part 2: Assessment (Judgment)` — 40 lines
+  - `## Appendix: Detection Method` — 15 lines
+
 ## Skeleton
 
 # Codebase Analysis

@@ -1,6 +1,6 @@
 ---
 name: executing-tdd-cycle
-description: This skill MUST be invoked when executing a cycle card at runtime — turning one card from `.mochiko/specs/<feature>/tasks.md` into working code: decomposing it into tasks, driving each through red→green→refactor, flipping the checkbox, and writing `cycle-report.md` with the decomposition disclosed. SHOULD also invoke on 'execute cycle' or when reworking failed tasks test-first. Deciding WHAT the cycles are (slicing, cards, TEST gates) is design-time work owned by mochiko:patterns-vertical-tdd.
+description: This skill MUST be invoked when executing a cycle card at runtime — turning one card from `.mochiko/features/<FEAT-ID>/tasks.md` into working code: decomposing it into tasks, driving each through red→green→refactor, flipping the checkbox, and writing `cycle-report.md` with the decomposition disclosed. SHOULD also invoke on 'execute cycle' or when reworking failed tasks test-first. Deciding WHAT the cycles are (slicing, cards, TEST gates) is design-time work owned by mochiko:patterns-vertical-tdd.
 allowed-tools: Bash(mochiko-cli *)
 ---
 

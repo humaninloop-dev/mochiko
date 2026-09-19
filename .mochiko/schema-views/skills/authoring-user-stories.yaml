@@ -148,6 +148,17 @@ sections:
           independent-test presence, header format) with `python scripts/validate-user-stories.py
           path/to/spec.md`.
         pointer: scripts/validate-user-stories.py
+      - id: authoring-user-stories.artifact-home
+        labels: [binding]
+        class: floor
+        kind: binding
+        text: >-
+          Stories land in the declared spec home, never beside it: the story set rides `spec.md`'s
+          own section under the `spec` template, and a per-story file is `stories/US-<n>.md` in
+          the sub-home. Render `mochiko-cli home .mochiko/specs/<slug>` before the first write,
+          and take the section's budget from `mochiko-cli template spec` — the story count is
+          the feature's, the section's length is not.
+        anchor: 2026-09-13 hook-enforced-artifact-schema D1
   - id: authoring-user-stories.sec.output
     title: Output — none beyond the artifact
     intent: Report contracts this skill carries.

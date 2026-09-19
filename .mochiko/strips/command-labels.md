@@ -37,7 +37,7 @@ top-of-file header comments trimmed to runtime-essential content. Ruling for eve
 <!-- Wave context: the command-schema ontology wave (v0.98.0). Ruling:
 `.mochiko/brainstorms/command-schema-ontology/record.md` D1–D11 as amended →
 `DECISIONS.md` 2026-08-27 row. Clause inventory:
-`.mochiko/brainstorms/command-schema-ontology/conversion-inventory.md`. -->
+`.mochiko/brainstorms/command-schema-ontology/research/conversion-inventory.md`. -->
 
 ## [v0.98.0] The `fail-condition` label retired — `kind: fail` is the selector
 

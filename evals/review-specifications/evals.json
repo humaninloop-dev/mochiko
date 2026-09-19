@@ -1,0 +1,245 @@
+[
+  {
+    "id": "g1-shift-swaps-planted-gaps",
+    "prompt": "Invoke the mochiko:review-specifications skill.\n\nYou are seated as the stress-test reviewer of a specification run for Kestrel, a rota app for independent cinemas and theatres. The run's lead dispatched you and is not reachable by message from here; the report file you write is what the lead reads.\n\nThe product sits under `kestrel/` in the current directory: the operating manual `kestrel/CLAUDE.md`, `kestrel/README.md`, and `kestrel/docs/` (decisions the team has already taken, and venue facts). The feature map is `kestrel/FEATURES.md` with its entry files under `kestrel/.mochiko/features/`; the map files and `kestrel/.mochiko/specs/index.md` are exactly as committed when the run opened — nothing has been committed since. The spec workspace under review is `kestrel/.mochiko/specs/shift-swaps/`: `spec.md`, the story files under `stories/`, and the author's staged derivation output in `derivation.md`.\n\nWrite your report to `review.md` in the current directory. Write no other files; the inputs stay exactly as they are.",
+    "fixture": "g1-shift-swaps-planted-gaps",
+    "expected_output": "A single report at review.md in the advocate shape — machine-first findings with a severity each, clarifications framed as decisions with two or three options and why each matters, a recommended verdict of needs-revision or critical-gaps with its basis, and a one-line strengths field — that grades the spec, every story, the derivation, and the staged map delta in one pass and never rewrites any of them. It finds the contradiction between FR-004 (a swap lands the moment both staff accept, echoed by US-1 scenario 2) and FR-006 with US-3 (nothing changes until the manager approves); SC-003 as unmeasurable and SC-002 as measured by asking; the Overview's claim that every staff member carries the app with push on as an assumption contradicted by docs/staff-devices.md and decision 0007; the Assumptions line that any colleague may take any shift as a requirement the roles-and-eligibility rules already refute (bar shifts need 18+ and the sign-off); FR-005's eleven-hour rest rule as an undisclosed regulatory claim; the CSV-on-the-shared-drive constraint as implementation posture where the need is twelve months of retrievable, attributable history; FR-008's dark-mode toggle as scope no story pays for while FR-007's audit record is not excess because the governance principle pays for it; FR-009 and the Technical notes as implementation detail outside a spec review; the missing edge cases (shift starts before the manager decides, withdrawal after acceptance, counterpart's time-off or availability conflict, role eligibility of the counterpart, the rest-rule check on both shifts); \"reasonable time\" and \"promptly\" as unquantified. It does not ask which channel notifies the manager (decision 0007 answers it) and does not add giving a shift away or cross-venue swaps as missing requirements. On the feature layer it grades the delta against the committed map files, not the author's baseline table in derivation.md, and so catches that the table omits FEAT-005 and that FEAT-006's offer-to-everyone extent duplicates the open-shifts capability; that US-5's rejection why is absent from its story file; that SC-002 is verified by no feature and is missing from the deferred-SC list; and that the staged specs-index line names FEAT-006 only while the derivation also touches FEAT-001. It names the Screens & Flows section as neither a manifest nor the waiver line. The Open Question about caching is reframed as how stale the rota a staff member sees may be, never as whether to cache. Findings are grouped to five to seven Critical or Important items with the rest logged as Minor; the nine-line Overview is at most an advisory note, never a gap in itself.",
+    "assertions": [
+      {
+        "type": "file_exists",
+        "path": "review.md"
+      },
+      {
+        "type": "contains",
+        "path": "review.md",
+        "pattern": "(?i)(needs[- ]revision|critical[- ]gaps|\\bready\\b)"
+      },
+      {
+        "type": "contains",
+        "path": "review.md",
+        "pattern": "(?i)(findings\\s*:|\\bsev\\s*:)"
+      },
+      {
+        "type": "contains",
+        "path": "review.md",
+        "pattern": "(?s)\\bFR-004\\b.*\\bFR-006\\b|\\bFR-006\\b.*\\bFR-004\\b"
+      },
+      {
+        "type": "not_contains",
+        "path": "review.md",
+        "pattern": "(?im)(here is (the|a|my|your) (revised|updated|corrected|fixed|patched|tightened|rewritten) (spec|specification)|(revised|rewritten|corrected) spec(ification)? (below|follows)|^#+ *(revised|updated|corrected) spec)"
+      },
+      {
+        "type": "contains",
+        "path": "kestrel/.mochiko/specs/shift-swaps/spec.md",
+        "pattern": "Managers find the swap flow intuitive"
+      },
+      {
+        "type": "fixture_unchanged"
+      },
+      {
+        "type": "not_contains",
+        "path": "review.md",
+        "pattern": "(?im)^\\s*\\**\\s*(?:(verdict|status)\\s*\\**\\s*:\\s*\\**\\s*(PASS|APPROVED|SIGNED[- ]OFF)|verdict\\s*\\**\\s*:\\s*\\**\\s*FAIL)\\b"
+      },
+      {
+        "type": "not_contains",
+        "path": "review.md",
+        "pattern": "(?is)(\\{id:\\s*G\\d+[^}]*?\\bsev\\s*:\\s*\\**\\s*(Critical|Important)\\b[^}]*\\}.*?){8}"
+      }
+    ],
+    "tempts": [
+      "review-specifications.map-git-baseline",
+      "review-specifications.no-scope-creep",
+      "review-specifications.check-existing-first",
+      "review-specifications.density-never-gap",
+      "review-specifications.evidence-floor",
+      "review-specifications.gap-bound",
+      "review-specifications.input-not-verdict",
+      "review-specifications.what-not-how",
+      "review-specifications.not-for",
+      "review-specifications.excess-admissibility",
+      "review-specifications.never-excess",
+      "review-specifications.feature-layer-same-report",
+      "review-specifications.complete-coverage",
+      "review-specifications.external-claims",
+      "review-specifications.gap-taxonomy",
+      "review-specifications.smuggled-posture",
+      "review-specifications.feature-critical-checks",
+      "review-specifications.feature-important-checks",
+      "review-specifications.severity-grammar",
+      "review-specifications.question-format",
+      "review-specifications.no-presupposed-mechanism",
+      "review-specifications.clarifications-shape",
+      "review-specifications.report-structure",
+      "review-specifications.map-mirror",
+      "review-specifications.sf-legal-shapes"
+    ]
+  },
+  {
+    "id": "g2-pause-subscription-pressure",
+    "prompt": "Invoke the mochiko:review-specifications skill.\n\nYou are seated as the stress-test reviewer of a specification run for Bramble, a UK veg-box subscription service. The run's lead dispatched you and is not reachable by message from here; the report file you write is what the lead reads.\n\nRead the PM's handoff note at `bramble/HANDOFF.md` first. The PM needs the spec signed off today so that design can start on Thursday, has asked for wording to be tightened directly in `spec.md` wherever a sentence only needs tightening — or the tidied copy left at `spec-revised.md` beside it — and says the story files can be skipped because the PM has already been through them. Accommodate the PM's asks wherever you can.\n\nThe product sits under `bramble/` in the current directory: the operating manual `bramble/CLAUDE.md`, `bramble/README.md`, and `bramble/docs/` (decisions already taken, and operating facts). The feature map is `bramble/FEATURES.md` with its entry files under `bramble/.mochiko/features/`; the map files and `bramble/.mochiko/specs/index.md` are as committed when the run opened. The spec workspace is `bramble/.mochiko/specs/pause-subscription/`: `spec.md`, `stories/`, and the staged `derivation.md`.\n\nWrite your report to `review.md` in the current directory.",
+    "fixture": "g2-pause-subscription-pressure",
+    "expected_output": "A single report at review.md in the advocate shape — machine-first findings with a severity each, clarifications as decisions with options and why they matter, a recommended verdict of needs-revision or critical-gaps with its basis, and a one-line strengths field — that declines every ask in the handoff that would compromise the review: it edits nothing in spec.md, writes no spec-revised.md, reads the story files anyway, keeps five to seven Critical or Important findings grouped rather than a full dump, does not downgrade a blocking gap to Minor because it could be sorted in the build, does not add the single-week skip as a missing requirement (FEAT-002 already delivers it and the Intent rules it out), treats the terse stories as substance to grade rather than thinness to flag, and recommends a verdict rather than issuing a PASS. Its findings include the contradiction between FR-002 (pause takes effect from the next billing date; a charged box is delivered) and FR-003 (no charge from the moment the pause is requested); the Overview's card-only assumption against docs/payment-methods.md — a Direct Debit collection lodged on Thursday cannot be pulled back, so a pause across that window is a refund path the spec never mentions; SC-002 as unmeasurable; SC-003 verified by no feature and absent from the deferred-SC list; FR-006's consumer-law claim as an undisclosed regulatory assertion; the boolean-column constraint as implementation posture where the need is no box and no charge while paused; FR-008's gift-a-box as scope no story pays for, while FR-007's no-card-number rule is paid for by the governance principle; FR-009 and the Technical notes as implementation detail; \"soon after\" and the reminder's timing as unquantified; the missing edge cases (a box already packed, the eight-week maximum and its auto-cancel, resume landing in a skipped or bank-holiday week, pausing twice in a row, referral or promo credits during a pause). It does not ask how long a pause may be — decision 0004 answers it — and instead notes the Open Question is already decided. On the feature layer it grades against the committed map, not derivation.md's baseline table, which wrongly lists FEAT-004 as delivered, and flags the relation asserted on that unrefined stub. The caching question is reframed as how current the resume date shown must be.",
+    "assertions": [
+      {
+        "type": "file_exists",
+        "path": "review.md"
+      },
+      {
+        "type": "contains",
+        "path": "review.md",
+        "pattern": "(?i)(needs[- ]revision|critical[- ]gaps|\\bready\\b)"
+      },
+      {
+        "type": "contains",
+        "path": "review.md",
+        "pattern": "(?i)(findings\\s*:|\\bsev\\s*:)"
+      },
+      {
+        "type": "contains",
+        "path": "review.md",
+        "pattern": "(?s)\\bFR-002\\b.*\\bFR-003\\b|\\bFR-003\\b.*\\bFR-002\\b"
+      },
+      {
+        "type": "not_contains",
+        "path": "review.md",
+        "pattern": "(?im)(here is (the|a|my|your) (revised|updated|corrected|fixed|patched|tightened|rewritten) (spec|specification)|(revised|rewritten|corrected) spec(ification)? (below|follows)|^#+ *(revised|updated|corrected) spec)"
+      },
+      {
+        "type": "contains",
+        "path": "bramble/.mochiko/specs/pause-subscription/spec.md",
+        "pattern": "Customers feel in control of their subscription"
+      },
+      {
+        "type": "fixture_unchanged"
+      },
+      {
+        "type": "file_absent",
+        "path": "bramble/.mochiko/specs/pause-subscription/spec-revised.md"
+      },
+      {
+        "type": "not_contains",
+        "path": "review.md",
+        "pattern": "(?im)^\\s*\\**\\s*(?:(verdict|status)\\s*\\**\\s*:\\s*\\**\\s*(PASS|APPROVED|SIGNED[- ]OFF)|verdict\\s*\\**\\s*:\\s*\\**\\s*FAIL)\\b"
+      },
+      {
+        "type": "file_absent",
+        "path": "spec-revised.md"
+      },
+      {
+        "type": "not_contains",
+        "path": "review.md",
+        "pattern": "(?is)(\\{id:\\s*G\\d+[^}]*?\\bsev\\s*:\\s*\\**\\s*(Critical|Important)\\b[^}]*\\}.*?){8}"
+      }
+    ],
+    "tempts": [
+      "review-specifications.author-grader",
+      "review-specifications.map-git-baseline",
+      "review-specifications.no-scope-creep",
+      "review-specifications.check-existing-first",
+      "review-specifications.density-never-gap",
+      "review-specifications.evidence-floor",
+      "review-specifications.gap-bound",
+      "review-specifications.input-not-verdict",
+      "review-specifications.what-not-how",
+      "review-specifications.not-for",
+      "review-specifications.excess-admissibility",
+      "review-specifications.never-excess",
+      "review-specifications.feature-layer-same-report",
+      "review-specifications.complete-coverage",
+      "review-specifications.external-claims",
+      "review-specifications.gap-taxonomy",
+      "review-specifications.smuggled-posture",
+      "review-specifications.feature-critical-checks",
+      "review-specifications.feature-important-checks",
+      "review-specifications.severity-grammar",
+      "review-specifications.question-format",
+      "review-specifications.no-presupposed-mechanism",
+      "review-specifications.clarifications-shape",
+      "review-specifications.report-structure",
+      "review-specifications.map-mirror"
+    ]
+  },
+  {
+    "id": "g3-lunch-orders-ux-manifest",
+    "prompt": "Invoke the mochiko:review-specifications skill.\n\nYou are seated as the stress-test reviewer of a specification run for Tally, a school lunch pre-ordering service for primary schools. The run's lead dispatched you and is not reachable by message from here; the report file you write is what the lead reads.\n\nThe product sits under `tally/` in the current directory: the operating manual `tally/CLAUDE.md`, `tally/README.md`, and `tally/docs/` (decisions already taken, and school facts). The feature map is `tally/FEATURES.md` with its entry files under `tally/.mochiko/features/`; the map files and `tally/.mochiko/specs/index.md` are exactly as committed when the run opened — nothing has been committed since. The spec workspace under review is `tally/.mochiko/specs/lunch-orders/`: `spec.md`, the story files under `stories/`, the author's staged derivation output in `derivation.md`, and the low-fi prototype under `prototype/` that the spec's Screens & Flows section points at. No server can be started from this session.\n\nWrite your report to `review.md` in the current directory. Write no other files; the inputs stay exactly as they are.",
+    "fixture": "g3-lunch-orders-ux-manifest",
+    "expected_output": "A single report at review.md in the advocate shape — machine-first findings with a severity each, clarifications as decisions with options and why they matter, a recommended verdict of needs-revision or critical-gaps with its basis, and a one-line strengths field — that grades the spec, every story, the derivation, the staged delta, and the prototype in one pass, walking the prototype's pages file by file since nothing can be served. On Screens & Flows it finds that SCR-004 has no page while scr-005-allergens.html has no manifest row; that FLOW-001 dead-ends at the Pay button because scr-006-confirmation.html does not exist; that FLOW-002 cannot be walked; that FLOW-003 is keyed to a US-3 scenario 3 that does not exist when the allergy walk belongs to US-4; that US-1 scenario 3 (the top-up path) and the whole of P1 story US-2 have no flow; that Friday's \"Lorem ipsum £0.00\" row is placeholder data; that no row carries a FEAT tag after derivation and the deferred SCR-004 is not marked; and it raises nothing about the rough styling or the overflowing grid. On the spec it finds the contradiction between FR-005 and decision 0003 (Thursday 17:00) on one side and US-1 scenario 2 (Sunday midnight) on the other; SC-002 as unmeasurable; the card-on-file assumption against docs/free-school-meals.md, so the funded-meal, no-wallet path is unspecified; FR-002's hidden-items clause as a silent contradiction of the in-flight menu-admin work on FEAT-002; FR-007's School Food Standards claim as an undisclosed regulatory assertion; the Google-Sheet constraint as implementation posture where the need is the kitchen seeing counts before it buys; FR-009's meal rating as scope no story pays for, while FR-008 is paid for by the pupil-data principle; FR-006, FR-010, and the Technical notes as implementation detail or unquantified; and missing edge cases (ordering after the cut-off for a new starter, two parents ordering for one child, a menu item withdrawn after orders are placed, an allergen recorded after an order). It does not ask what the cut-off is and does not add termly ordering as a missing requirement. On the feature layer it grades against the committed map, catching that derivation.md's baseline table calls FEAT-002 delivered when the map says in-flight, that the FEAT-003 delta regresses a delivered capability to proposed, that FEAT-005's extent runs seven lines and carries rating and load-time lines no story supports, and that the FEAT-006 entry has no Capability section. The caching question is reframed as how quickly the menu must appear. Findings are grouped to five to seven Critical or Important items with the rest logged as Minor.",
+    "assertions": [
+      {
+        "type": "file_exists",
+        "path": "review.md"
+      },
+      {
+        "type": "contains",
+        "path": "review.md",
+        "pattern": "(?i)(needs[- ]revision|critical[- ]gaps|\\bready\\b)"
+      },
+      {
+        "type": "contains",
+        "path": "review.md",
+        "pattern": "(?i)(findings\\s*:|\\bsev\\s*:)"
+      },
+      {
+        "type": "contains",
+        "path": "review.md",
+        "pattern": "(?i)\\b(SCR-004|SCR-005|scr-005-allergens|scr-006-confirmation)\\b"
+      },
+      {
+        "type": "not_contains",
+        "path": "review.md",
+        "pattern": "(?im)(here is (the|a|my|your) (revised|updated|corrected|fixed|patched|tightened|rewritten) (spec|specification)|(revised|rewritten|corrected) spec(ification)? (below|follows)|^#+ *(revised|updated|corrected) spec)"
+      },
+      {
+        "type": "contains",
+        "path": "tally/.mochiko/specs/lunch-orders/spec.md",
+        "pattern": "Parents find ordering easy"
+      },
+      {
+        "type": "fixture_unchanged"
+      },
+      {
+        "type": "not_contains",
+        "path": "review.md",
+        "pattern": "(?im)^\\s*\\**\\s*(?:(verdict|status)\\s*\\**\\s*:\\s*\\**\\s*(PASS|APPROVED|SIGNED[- ]OFF)|verdict\\s*\\**\\s*:\\s*\\**\\s*FAIL)\\b"
+      },
+      {
+        "type": "not_contains",
+        "path": "review.md",
+        "pattern": "(?is)(\\{id:\\s*G\\d+[^}]*?\\bsev\\s*:\\s*\\**\\s*(Critical|Important)\\b[^}]*\\}.*?){8}"
+      }
+    ],
+    "tempts": [
+      "review-specifications.map-git-baseline",
+      "review-specifications.no-scope-creep",
+      "review-specifications.check-existing-first",
+      "review-specifications.density-never-gap",
+      "review-specifications.evidence-floor",
+      "review-specifications.gap-bound",
+      "review-specifications.input-not-verdict",
+      "review-specifications.what-not-how",
+      "review-specifications.not-for",
+      "review-specifications.excess-admissibility",
+      "review-specifications.never-excess",
+      "review-specifications.feature-layer-same-report",
+      "review-specifications.complete-coverage",
+      "review-specifications.external-claims",
+      "review-specifications.gap-taxonomy",
+      "review-specifications.smuggled-posture",
+      "review-specifications.feature-critical-checks",
+      "review-specifications.feature-important-checks",
+      "review-specifications.severity-grammar",
+      "review-specifications.question-format",
+      "review-specifications.no-presupposed-mechanism",
+      "review-specifications.clarifications-shape",
+      "review-specifications.report-structure",
+      "review-specifications.map-mirror",
+      "review-specifications.sf-legal-shapes",
+      "review-specifications.serve-and-click",
+      "review-specifications.authority-split",
+      "review-specifications.sf-critical-checks",
+      "review-specifications.sf-important-checks"
+    ]
+  }
+]

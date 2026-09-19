@@ -419,13 +419,15 @@ sections:
         class: must
         kind: binding
         text: >-
-          All reports land in ${features_dir}/FEAT-XXX/ (a product-lane run:
-          ${product_dir}/lane-<slug>/): the sufficiency report, cycle reports, verification
-          reports, the final-validation report, the built-vs-signed diff. Every one follows
-          templates/report-format.md (machine-first frontmatter, ultra register, clean =
-          frontmatter-only; bounce an envelope-breaking report per its rule 9), and each producing
-          seat's brief names the envelope path. Repeat runs append, dated; delta files overwrite
-          only via the graded fold.
+          All reports land in the owning home's `reports/` directory —
+          ${features_dir}/FEAT-XXX/reports/ (a product-lane run:
+          ${product_dir}/lane-<slug>/reports/, an epic run: the epic home's): the sufficiency
+          report, cycle reports, verification reports, the final-validation report, the
+          built-vs-signed diff. Every one carries the `report-envelope` frontmatter
+          (machine-first, typed by `report:`, ultra register, clean = frontmatter-only; bounce an
+          envelope-breaking report per templates/report-format.md rule 9), and each producing
+          seat's brief names the home's `reports/` path. Repeat runs append, dated; delta files
+          overwrite only via the graded fold.
       - id: impl.gates-full-suite
         labels: [evidence]
         class: must
@@ -655,6 +657,18 @@ sections:
         text: >-
           The user's ruling at each blocking gate — the design checkpoint, the card confirm,
           final acceptance — is plain blocking text, never a timed prompt.
+      - id: impl.artifact-home
+        labels: [binding]
+        class: floor
+        kind: binding
+        text: >-
+          Build-run artifacts have a declared home: render `mochiko-cli home
+          ${features_dir}/FEAT-XXX` — an epic run, the epic home; a lane run, the lane home —
+          before the first write. `tasks.md` binds the `tasks` template; every report lands in
+          that home's `reports/` typed by its envelope; `implement-log.md` is bounded per entry,
+          never per file. A name the home's set does not carry is raised to the lead, never minted
+          from a sibling run.
+        anchor: 2026-09-13 hook-enforced-artifact-schema D1
   - id: impl.sec.boundaries
     title: Boundaries — the non-waivable floor
     intent: Floor obligations no seat and no in-run ruling can waive.

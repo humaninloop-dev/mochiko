@@ -102,7 +102,7 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
 
 Ruling for every entry below: skill-content-schema D3 (boundary) / D8/C4 (protected
 transfers), `DECISIONS.md` 2026-09-01 row; census:
-`.mochiko/brainstorms/skill-content-schema/census.md` §B (RCM). Schema home:
+`.mochiko/brainstorms/skill-content-schema/research/census.md` §B (RCM). Schema home:
 `plugins/mochiko/skills/review-code-minimalism/schema.yaml`. Minted IDs carry the
 `review-code-minimalism.` prefix (omitted below). Map — census row → minted ID:
 1 `standard-binding` · 2 `per-cycle-lens-only` · 3 `not-general-code-review` ·

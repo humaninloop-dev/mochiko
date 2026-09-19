@@ -86,6 +86,17 @@ SAMPLE (illustration only — replace with actual cycles; DO NOT keep the sample
 - **Assert**: Response status: 400
 - **Capture**: console
 
+## Conformance
+
+Checked mechanically before the write lands. Each line is a string or a count, never a judgment.
+
+- Required headings, in order: `## Overview`, `## Cycle Format`, `## Cycle Cards`
+- An undeclared `##` heading is denied. `###` and deeper are yours.
+- Line budgets, each counted from its `##` line to the next `##`, nested content included:
+  - `## Overview` — 8 lines
+  - `## Cycle Format` — 6 lines
+- Placeholder tokens that must not survive: `[thinnest end-to-end path]`, `[Feature bundle title]` — checked in frontmatter values and heading text, by exact spelling.
+
 ## Skeleton
 
 # Implementation Cycles: [FEAT-XXX — FEATURE NAME]
@@ -114,6 +125,8 @@ card type — `[P]` parallel eligibility derives from a card's dependencies, not
 column. Each named test case cites the spec/design ID(s) it covers.
 
 ---
+
+## Cycle Cards
 
 ### - [ ] Cycle 1: Walking skeleton — [thinnest end-to-end path]
 

@@ -1,0 +1,93 @@
+# D8 partition — /mochiko:brainstorm rule set, plan-observable vs out-of-instrument.
+# Ruling: command-plan-only-eval D8 (accepted 2026-08-27, review fold C1).
+# The `observable` list IS the D2 rubric; `out_of_instrument` rules are declared here,
+# never silently absent at coverage 0. Validated by `run.py check-rubric brainstorm`:
+# every schema rule ID appears in exactly one list. Rule ids and texts come from the
+# derived view `.mochiko/schema-views/commands/brainstorm.yaml` (the projection of the
+# migration log the runner reads; 30 rules at migration 0005).
+#
+# Out-of-instrument reason vocabulary (implement's, minus `epic` — brainstorm has no epic
+# scope — plus `fail-condition`, as setup's):
+#   contingency    — fires only on a run-time event no forward plan contains
+#   conditional    — observable only under a condition no current scenario plants
+#                    (activating it = planting the condition, a scenario-design act)
+#   structural     — the command's own seat wiring never composes the condition in any
+#                    run, so no fixture can plant it without redesigning the command
+#                    (added 2026-09-19, kit audit re-grade: `conditional` invited a
+#                    reader to hunt for a fixture that cannot exist)
+#   latitude       — grants freedom; nothing falsifiable in a plan
+#   register       — prose-register meta-rule; not plan content
+#   fail-condition — end-state failure, not forward-plan content
+#
+# Condition gating: the `km_file` dimension is planted both ways — present in
+# s1-tradeoff-confident and s3-feature-shaped, absent in s2-halfformed-unsure — so the
+# one rule gated on it (`brainstorm.km-close-ritual`) is graded on s1 and s3 and reads on
+# the stated skip in s2 (an honest `absent` there is stable across arms, never a
+# regression). The `seats` dimension resolves to multi in every scenario: the record's
+# review seat is structurally a second seat, so the transport floor binds on every path;
+# `single` is reachable only through the user's in-run review waiver, which a plan can
+# describe as a branch but no fixture can plant.
+command: brainstorm
+
+observable:
+  # roles
+  - {id: brainstorm.lead-inline-questioning, why: the lead plans the questioning as its own inline loop — one question per turn with the format adapted to the user's state as the topic line shows it (confirmations for s1's stated lean and open probes for s2's uncertainty)}
+  - {id: brainstorm.record-review-independence, why: the review seat is named as a non-author reading the frozen record from the file}
+  - {id: brainstorm.blind-map-dispatch, why: the review seat is dispatched in two messages — topic and goal first with the record path sent only after the angle map returns}
+  # reserved
+  - {id: brainstorm.coverage-survivor-routing, why: the disposition gate presents each coverage gap as a candidate topic with the user ruling explore-now / rule-inline / defer}
+  - {id: brainstorm.user-record-acceptance, why: the acceptance gate is described as the user's word with both onward branches}
+  - {id: brainstorm.user-survivor-challenge, why: the disposition gate routes any survivor that challenges a user ruling to the user — never lead-resolved (thin read — see preregistration)}
+  - {id: brainstorm.user-review-waiver, why: the waiver gate is described as the user's with the waiver recorded on the record when taken}
+  - {id: brainstorm.user-pen-boundary, why: amendments to a ruled decision and any new decision are described as the user's word at the disposition and acceptance gates (thin read)}
+  - {id: brainstorm.reopen-born-verify, why: the explore-now branch of the disposition gate carries its bound — one verify round on the decision born there, no fresh cold read and no second reopen off it (thin read — described branch, same shape as brainstorm.coverage-survivor-routing)}
+  # tools
+  - {id: brainstorm.deliverable-record, why: a kebab-case slug is proposed at the start and the record path with its single decision namespace is named}
+  - {id: brainstorm.record-as-you-go, why: the record is written as decisions settle during the questioning — never assembled at the end}
+  - {id: brainstorm.index-bookkeeping, why: the index is read before opening then a new open entry is added and updated at acceptance with where the outcome landed (every fixture carries prior entries)}
+  - {id: brainstorm.km-close-ritual, why: the close runs the three-part ritual the pinned file describes — decision row · backlog item to the trail · roadmap touch (s1 and s3 plant the file and a backlog item this session closes)}
+  - {id: brainstorm.synthesis-on-request, why: a synthesis is offered on request only after acceptance and stamped by the review outcome}
+  - {id: brainstorm.next-step-offer, why: pipeline entry is an offer after acceptance and never the default — s3's feature-shaped topic tempts the default}
+  # ways-of-working
+  - {id: brainstorm.model-tiering, why: locate/enumerate fact-finding is routed to a cheap Explore read with interpretive reads kept on the session (s2's source tree invites it)}
+  - {id: brainstorm.author-grader-default-fail, why: the record is graded by a seat that did not write it reading the record itself and defaulting to FAIL}
+  - {id: brainstorm.non-coverage-survivors, why: non-coverage survivors take the fold / repair / ruling path and may be dispositioned in batches}
+  - {id: brainstorm.no-git-mutations, why: the plan suggests a commit and never runs a git mutation}
+  - {id: brainstorm.acceptance-plain-text, why: gates are described as plain blocking text and never a timed prompt}
+  - {id: brainstorm.artifact-home, why: the session home is rendered before the first write and its closed file set held — the added rule at migration 0005 and this kit's positive control}
+  # boundaries
+  - {id: brainstorm.transport-floor, why: the two-message dispatch to the review seat makes every run multi-seat so the floor binds and is referenced never restated}
+
+out_of_instrument:
+  # latitude / register
+  - {id: brainstorm.staffing-latitude, why: latitude}
+  - {id: brainstorm.register, why: register}
+  # conditional (plantable, unplanted) / structural (unplantable by design)
+  - {id: brainstorm.pair-maps-independent, why: conditional — binds only when the lead's staffing call composes a review pair; staffing is latitude so no fixture plants a pair and the read would follow the lead's choice replicate by replicate}
+  - {id: brainstorm.plan-approval-producers, why: structural — binds only when a seat other than the lead writes an artifact; the run's seats are the review seat (a grader and exempt) and fact-finding dispatches (exempt), so the command's own wiring never composes a producing seat and no fixture can plant one}
+  # fail-conditions (all 4 — end-state failures, not forward-plan content; C1)
+  - {id: brainstorm.fail.record-unaccepted, why: fail-condition}
+  - {id: brainstorm.fail.unreviewed-no-waiver, why: fail-condition}
+  - {id: brainstorm.fail.survivor-undispositioned, why: fail-condition}
+  - {id: brainstorm.fail.index-mismatch, why: fail-condition}
+
+# Moved to observable 2026-09-19 (kit audit, one medium finding):
+#   brainstorm.reopen-born-verify — parked as a contingency on reasoning that would equally
+#     condemn brainstorm.coverage-survivor-routing, which the kit grades observable for the
+#     identical event chain. It is graded on the described branch, like the other thin reads;
+#     no scenario plants a taken reopen, so it reads `absent` on a plan that never routes a
+#     survivor, and the audit's alternative — planting the follow-on in s1 — stays a plant
+#     candidate rather than a change made without a measurement asking for it.
+
+# Declared unplanted branches (fixture-design record, not a partition class): plant
+# candidates if a later grid wants them graded.
+#   brainstorm.user-review-waiver — graded on the described gate only; no fixture plants a
+#     taken waiver (the waiver is the user's in-run word). A topic line that pre-declares
+#     "skip the review" would force the single-seat path, the *derived, unchecked* synthesis
+#     stamp, and the transport floor's non-firing — a scenario-design act not taken here
+#     because it also removes six review rules from that golden's read.
+#   brainstorm.km-close-ritual — s1 and s3 plant a backlog item the session closes, so the
+#     ritual's subtractive half is observable; neither plants a superseded prior record, so
+#     the supersession clause (both indexes updated so statuses agree) is never exercised.
+#   brainstorm.index-bookkeeping — every fixture carries an index; the missing-index branch
+#     (create on first open) is unplanted.

@@ -88,7 +88,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 Ruling for every entry below: skill-content-schema D3 (three-home boundary) / D8/C4
 (protected transfers), `DECISIONS.md` 2026-09-01 rows (Skill-content schema ruled ·
 Skill-schema wave-2 family doors ruled — the authoring-family door); census:
-`.mochiko/brainstorms/skill-content-schema/census-authoring.md` §A (AAS) + §B (AAS).
+`.mochiko/brainstorms/skill-content-schema/research/census-authoring.md` §A (AAS) + §B (AAS).
 Schema home: `plugins/mochiko/skills/authoring-architecture-store/schema.yaml`. Minted IDs
 carry the `authoring-architecture-store.` prefix (omitted below). Map — census §B row →
 minted ID:

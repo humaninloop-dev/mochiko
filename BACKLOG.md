@@ -21,6 +21,27 @@ uncompressed. Prior groom narrative: git history (this line, before this groom).
 
 ---
 
+## Hook-enforced artifact schema build
+
+*(ruled + accepted 2026-09-13, `hook-enforced-artifact-schema` D1–D11 as review-amended;
+provenance: `.mochiko/brainstorms/hook-enforced-artifact-schema/record.md`)*
+
+- [ ] **Hook-enforced artifact schema — what is left** (2026-09-15; provenance: the record's
+  § Build trail + `build-log.md`; delivered through `9738a90`). Waves 0–3 CLOSED (probe · crate
+  463 tests · governance v3.1.0 AM-3 · `0005` with the ratified budget table); wave 4 BUILT +
+  audited, 0.109.0 committed on the branch **not released**; wave 5 mochiko half DONE (path 0 ·
+  set 0). Owed, each gated on the user:
+  1. **Crate publish** — the two first-publish controls (manual-approval publish environment ·
+     signed tags), then the `mochiko-cli-v*` tag. Gates 2 and 3 (GI-012 as amended, AM-3 C5).
+  2. **Gate-6 full run** against the published binary (`MOCHIKO_GATE_VERSION=<tag>`; 87 cases,
+     ≈155 sessions, $13–16, ≈1 h — `wave5-gate6-plan.md`), then the release commit + the
+     pre-authorized **PATCH v3.1.1** (`wave5-bump-patch.md`, graded by `validation-constitution`).
+  3. **Kinako violator pass** — evidence-tree ruling owed (161 files with no legal home under
+     `.mochiko/`; recommend a repo-root `evidence/`), then 214 moves + 143 pointers on the
+     pre-gate 0.103.0 pin, upgrade, dogfood, **D10 watch** (`wave5-plan.md` §3/§7).
+  4. **Size survivors** — ruling owed on the recommendation: rewrite nothing, existing
+     over-budget files ride D4e amnesty (mochiko 65 · kinako 102).
+
 ## CLI schema-delivery build
 
 *(ruled + accepted 2026-09-03, `cli-schema-delivery` D1–D11 as review-amended; provenance:
@@ -95,86 +116,99 @@ Command-content schema section's watch item)*
   Provenance: `.mochiko/brainstorms/command-md-scaffold-standardization/record.md` (M5, V1 F1
   in the build trail).
 
-## Command plan-only eval build
+## Primitive evals v2 build
 
-*(ruled + accepted 2026-08-27, `command-plan-only-eval` D1–D11 as review-amended; provenance:
-`.mochiko/brainstorms/command-plan-only-eval/record.md` — build surface 0–9)*
+*(ruled + accepted 2026-09-08, `primitive-eval-harness-v2` D1–D13 as review-amended; provenance:
+`.mochiko/brainstorms/primitive-eval-harness-v2/record.md`. Replaces the *Command plan-only eval
+build* and *Skill-compression eval-primitive build* sections — their delivered items are in the
+trail (2026-09-08); their open residue is carried below.)*
 
-- [ ] **Build the plan-only command regression eval** (cold-buildable from the record's build
-  surface): probe first on `brainstorm` — **item 0 DONE 2026-08-27, all seven probe
-  questions answered, substrate bet stands** (`evals/commands/brainstorm-probe/`:
-  invocability PASS · workdir provisioning PASS · shadowing closed via init-event version
-  assert · fence holds as permission fence, roster not stripped · absent-user contract PASS ·
-  $0.65/107s at the turn cap; build amendments: drop `--bare` (kills stored auth) · wrapper
-  register line "no rule-ID citations" · max-turns headroom ~40 + cap-hit warning · fixture
-  internal-consistency check) — **items 1–8 BUILT 2026-08-27** (`evals/commands/`: `run.py`
-  runner with partition/check-rubric/check-fixtures/plan-run/grid/judge/report, pinned
-  `wrapper.md`, 3 self-contained `implement` fixtures + goldens (planted: missing search
-  contract · store-colliding background worker · empty-args entry), `observable.yaml` D8
-  partition 58 rubric / 46 declared out — validates 104/104, `preregistration.md` read rule +
-  F2 noise guard; live smoke PASS: load gate true at 0.97.0, under turn cap, fence denied an
-  attempted Bash call and recorded it, $0.65; smoke finding: sessions cite rule IDs despite
-  the wrapper — runner scrubs all known IDs pre-judge so only embodiment is gradeable).
-  **Remaining (updated 2026-08-28 — the ontology wave DISCHARGED the pilot):** the pilot
-  grid + judged rounds ran on a real edit — implement (optionA pre/post + ontology post +
-  a noise-guard r4 pair, 24 plans, $18.31) and a user-picked second command, setup (fresh
-  mode-keyed substrate, 18 plans, $10.56), opus judges — see the ontology record's eval
-  entry. Still open: D10 one-real-run correlation check · the other four commands · a
-  name-resolution marker allowlist (the assert false-positives on the three governance
-  comment-marker names in every setup run, both arms).
-- [ ] **Substrate watches** — **noise falsifier FIRED at the first grids (2026-08-28,
-  n=2):** implement was noise-dominated at k=3 AND k=4 (s2 flaky share ~21% breaches the
-  preregistered 20% bound; every flagged regression replicate-flaky) — per the prereg this
-  revisits the substrate premise: the instrument cannot resolve small diffs at this k, and
-  the eval session's open question 3 now has its evidence; setup's grid was cleaner
-  (directional +4/+2 with zero regressions in two scenarios). Disposition owed at the eval
-  session's own desk, not here. · D10 proxy falsifier: still open · Goodhart watch: still
-  open, D3's anti-recitation register the standing mitigation · opus pairwise showed
-  position bias in a majority of implement pairs — pairwise informativeness joins the
-  watch. · **Second live use (near-dup convergence wave, 2026-08-28, v0.99.0 —
-  `neardup-grid` both substrates, k=4):** the D7-style pre-arm reuse worked (ontology-grid
-  post arm re-judged as pre); noise-domination re-confirmed at k=4 on BOTH grids (every
-  flagged regression replicate-flaky, no attributable regression); new instrument defect —
-  **opus coverage-judge calls intermittently return unparseable arrays** (runner stores
-  all-`None` verdicts, silently zeroing that replicate's pass^k; healed by targeted
-  re-judge this wave) — a judge-retry loop belongs in `evals/commands/run.py`, joins the
-  desk's work list.
+- [ ] **Fill the four post-cut eval slots from the re-keyed inventories** (D12 · C3 · R2) — the
+  five schema-backed inventories were **RE-KEYED 2026-09-08** onto log ids (67→30 · 70→35 · 113→36 ·
+  81→30 · 69→26 rules; floors 9 · 16 · 11 · 8 · 14 = the render pins; 15 old rules retired with
+  dispositions in `evals/<skill>/rekey.md`; validator PASS; `patterns-entity-modeling` stays a hand
+  inventory). Pre-re-key runs are no longer comparable (four floor counts rose).
+  Parser note for any persona mint beyond the pilots: `sentences()` merges prose fragments around
+  lists (tech-lead *Three-Part Rule*, requirements-analyst *Your Process*) — `not_claims` them at mint.
+  Then **fill the four post-cut eval slots** — `review-governance-intent` · `review-plan-artifacts`
+  · `review-specifications` · `validation-constitution` — with goldens + pre-registration from the
+  re-keyed inventories, never the stale ones (`skill-content-schema` D7's judged-sample-of-two
+  floor stands).
+  **Status 2026-09-19 — three slots CLOSED by user ruling, one open.**
+  `review-specifications` — **accepted as read, re-key declined** (post 8/8 floors vs pre 4/8,
+  scripted 9/12 vs 1/12; five must losses stay recorded as *unread*, band 22.8 % over cap after
+  the extra replicate; no strips re-add). `validation-constitution` — **accepted as read**
+  (post 19/25 live and 13/14 floors vs pre 16/25 and 11/14, **nothing lost either way**,
+  scripted 8/9 vs 7/9 vs control 0/9; bar (c) breached at 16.4 %, so the gain is kept but not
+  claimed as a measured difference; US$ 16.70). `review-plan-artifacts` — **accepted on its
+  deterministic layer; judged layer closed as UNREADABLE** (both arms ≈ twice the cap, 36.8 %
+  and 46.0 %; scripted 8/9 · 8/9 · 0/9 with 80/81 assertions per skill arm vs 33/81 control;
+  **the runner's KILLED verdict on 5 rules / 3 floors is void as a finding** — no strips re-add
+  in either direction; the control arm is the steady one at 11.5 %, which points at the skill
+  arms' long varied artifacts, re-key candidates listed in the fill log; US$ 17.41; stopping-rule
+  budget untouched). `review-governance-intent` — **user ruled 2026-09-19: put the floor back**
+  (`findings-through-leads-pen`, lost deterministically on 2/3 pressure runs) — re-add owed
+  through the strips path: migration entry + strip supersession-by-ruling + author≠grader audit
+  + CHANGELOG + `plugin.json` bump + marketplace sync.
+  Earlier status 2026-09-18: all four kits BUILT + audited (author≠grader, FAIL→fix→PASS each) on the
+  skill runner converged onto the plan-only mechanics (host mode, whole plugin archived per arm,
+  fixtures, load gate, invited read, `fixture_unchanged`; `evals/run.py`, 2026-09-11..13). Reads:
+  `review-specifications` — post 8/8 floors vs pre 4/8, scripted layer 7/9 vs 1/9, five must
+  losses under a band at the cap (extra replicate running); `review-governance-intent` — post
+  21/34 vs 19/34, **one floor lost deterministically** (`findings-through-leads-pen`: the cut skill
+  writes the patched synthesis copy on 2/3 pressure runs; **re-add ruling owed**);
+  `validation-constitution` and `review-plan-artifacts` — first runs void (references unreadable
+  without `--add-dir`; fixed), pre/post re-running with the post arm pinned to the v0.108.0 tree
+  (`--post-ref 7ac0b9c`). Fill logs in each `evals/<skill>/preregistration.md`.
+- [x] **One-runner promotion, three landing acts** (D10) — **DELIVERED 2026-09-19** (three acts
+  built, each independently audited PASS, byte-identical report oracle across 12 persona + 4 skill
+  + 11 command renders after every act; deprecated shims kept one release; merged to
+  `primitive-evals-v2`). Residue on the trail line. Original scope: rename `evals/commands/` → `evals/plan/`
+  (citations move with it); extract the shared core into `evals/lib/` and make `evals/run.py`
+  import it; converge the CLI to `evals/run.py <target> <subcommand> <name>`. `evals/contract/`
+  untouched (release gate, not an eval). Each act its own audit.
+- [ ] **Agents-as-schema channel probe** (D4 door) — does a plugin hook fire for a `--agent`
+  session, an `Agent` subagent, and an agent-team teammate, with injected text landing before the
+  first model turn? `!` injection in agent bodies is ruled out (record F12). **Absorbed 2026-09-13
+  into the hook-enforced artifact schema wave-0 probe** (`hook-enforced-artifact-schema` D8).
+  **Result (wave 0, leg 8, user-ruled R5):** POSITIVE for the `Agent` subagent leg — a
+  `SubagentStart` hook's `hookSpecificOutput.additionalContext` lands in every spawned seat's
+  context before its first turn, named and unnamed spawns alike (proof: `attachment:
+  hook_additional_context` in both sidechains); the plugin now ships that reminder channel.
+  The `--agent` headless leg and the agent-team teammate leg were not measured there. Per this
+  item's own rule a positive result opens the census question — which agent-body content could
+  move to a schema-delivered channel — as a candidate brainstorm topic; the two unmeasured legs
+  are its first probe. Nothing here is closed without that ruling.
 
-## Skill-compression eval-primitive build
-
-*(ruled 2026-08-22, `skill-compression-tooling` D1–D8 as amended; provenance:
-`.mochiko/brainstorms/skill-compression-tooling/record.md` — build surface + folds R1–R16)*
-
-- [ ] **`.claude/skills/compressing-skills/SKILL.md`** — repo-level compressor (never shipped):
-  rule inventory (non-author-reviewed, consumer-side check R10) → pre-arm `KEPT:`/protected
-  reconciliation (R2) → Arm A densify → Arm B cut-line → eval dispatch → report → user
-  ratification → landing hand-off (strips + audit + budget re-seed R11). Description minimal;
-  voluntary author≠grader audit (R16).
-- [ ] **`evals/` runner** (top-level, never shipped) — probe run first (R5: `stream-json` for
-  `plugin_errors`, write allow rules); minimal per-run plugin dir (R4); 4 arms incl. no-skill
-  control (R3); pre-registered ship bar + delivered-chars arithmetic before the grid (R6/R9).
-- [ ] **Pilot grid** — `patterns-entity-modeling` end-to-end first (fills `primitive-eval-harness`
-  D5's deferred pilot slot), then `mochiko` router (Arm A only) + `review-feasibility` —
-  **pilot re-purposed 2026-08-22**: the skill took a user-ruled 90% direct cut at v0.82.0
-  ("cut now, eval validates later", verbosity-envelope ADR), so its slot runs as a **post-cut
-  regression check** (cut-vs-v0.81.0-baseline rule coverage; a lost load-bearing rule re-adds
-  via the strips re-add path) — (AR-D3 seeded-defect method is the follow-on if its checklist
-  proves insensitive, R13). **`review-brainstorm` joined the post-cut set 2026-08-26** (user-ruled
-  true-deletion cut at v0.83.0, rules from the v0.82.0 baseline; ADR
-  `.mochiko/decisions/2026-08-26-review-brainstorm-true-deletion-cut.md`).
-  **`review-plan-artifacts` joined the post-cut set 2026-08-26** (user-ruled true-deletion
-  cut at v0.87.0; its 113-entry `rules.json` already non-compressor-authored from the
-  pre-cut baseline; ADR
-  `.mochiko/decisions/2026-08-26-review-plan-artifacts-true-deletion-cut.md`).
-  **`review-specifications` joined the post-cut set 2026-08-26** (user-ruled true-deletion
-  cut at v0.88.0, 81-entry `rules.json` non-compressor-authored; ADR
-  `.mochiko/decisions/2026-08-26-review-specifications-true-deletion-cut.md`).
-  **`review-governance-intent` (v0.89.0, 70 rules) and `validation-constitution` (v0.90.0,
-  69 rules) joined the post-cut set 2026-08-26** — series close-out: every
-  `review-*`/`validation-*` skill is now ruled-cut; further reduction routes to the
-  eval-graded pilot path (ADRs
-  `.mochiko/decisions/2026-08-26-review-governance-intent-true-deletion-cut.md`,
-  `.mochiko/decisions/2026-08-26-validation-constitution-true-deletion-cut.md`).
+- [ ] **Command-target residue (carried from the plan-only section)** — **2026-09-18 status:** the
+  runner defect is gone (`extract_rules` reads `.mochiko/schema-views/commands/<cmd>.yaml` when the
+  schema file is absent; `check-rubric implement`/`setup` PASS again once the artifact-homes rule
+  `impl.artifact-home` / `setup.artifact-home` joined both partitions as observable) · the three
+  governance comment-marker names (`mochiko:governance` · `domain-registry` · `output-style`) are
+  allowlisted in `name_resolution` · the coverage judge retries a chunk twice · the Sonnet pairwise
+  read is opt-in (`judge --pairwise`; position-biased in both pilots) · the v2 D11 noise band prints
+  in every command report (`## Band input`, all-pairs share + 5 capped 20, UNDER-SAMPLED below 8
+  pairs; implement's stored `ontology-grid` reads pre 15.7 % / post 17.4 %) — the noise-domination
+  disposition is thereby applied at the next grid. **Remaining:** **the four new kits' first grids** — `specify` · `feature` ·
+  `architecture` · `brainstorm` were BUILT 2026-09-18 and **audited 2026-09-19** (author≠grader,
+  each FAIL-or-challenged → fix → re-grade PASS: specify's mis-bucketed routing rule + a stale
+  binary disclosure · architecture's four-rule recitation cluster + a bare-mention rule ·
+  brainstorm's wrongly-parked reopen bound + an unplantable rule mislabelled `conditional` ·
+  feature's **missing positive control** (pre = post at the branch base; re-pinned to `794cea8`,
+  a real one-rule delta) and a **control-prompt leak** of rubric vocabulary into the bare-model
+  arm); none has run a grid · **the regression path is uncontrolled across every command kit** (found 2026-09-19 by the feature kit's audit re-grade, traced in `cmd_report`) — all four kits' positive controls are *added* rules, which exercise only the adoption branch (`passk(post, rid)`); the branch the tolerance band and ship bars gate on is `passk(pre, rid) and not passk(post, rid)` over the unchanged bucket, and no real `--old-ref` can fire it because it only happens when a command has actually regressed. One synthetic mutation probe — weaken a single rule's text in the post tree, confirm the report names exactly that id — validates it for the whole target, not per kit; owed before any kit's first regression read, not before a baseline grid · **the command target's unread golden fields** (found 2026-09-19 by the architecture kit's audit re-grade, traced in the runner) — `assertions` and `expected_output` in a command kit's `evals.json` are read by nothing, while the skill target runs its assertions as a deterministic layer; decide whether to wire them here (a scripted layer beside the judged one, which the plan-only substrate may not support) or to declare them human-only in the kit shape so no author mistakes them for a gate · the other four commands'
+  kits (`architecture` · `brainstorm` · `feature` · `specify` — authored 2026-09-18 in worktrees,
+  audits pending) · D10 one-real-run correlation check · Goodhart watch (anti-recitation register) ·
+  the four kits' relocation under the renamed
+  runner directory (they were authored on branches cut before D10's rename, so a plain merge
+  strands them at the pre-rename path) · an independent non-author review of the delivery-halt
+  gate. **Discharged 2026-09-18:** the **runner delivery-halt gate** — found by the brainstorm and
+  specify kit authors, whose post sessions halted at delivery under a binary predating the log's
+  newest migration and were still stored as valid runs; the command runner now carries the gate the
+  skill runner has (`rendered_rules_ok` over the command's own delivery lines, plus the
+  not-delivered scan of the returned plan, both scoped to the arms that fire a command, halting the
+  grid with the binary and plugin versions in the message) · the layout block of the runner's own
+  README, which listed two kits and now lists all six.
 
 ## Plan-retirement residuals
 
@@ -461,9 +495,33 @@ Ruling: DECISIONS.md row 2026-08-10 (D1–D22); build delivered 2026-08-10 at v0
   feature (open thread 1) and selection-UX presentation (thread 5) observed. Scale trigger:
   map at ~60 entries (thread 6) — far off.
 
+## Impeccable design-integration build
+
+Ruling: DECISIONS.md row 2026-09-19 (D1–D14 as review-amended); record
+`.mochiko/brainstorms/impeccable-design-integration/record.md` — build surface items 0–11,
+plan-minimalism ladder disclosed, cost line, evidence honesty.
+
+- [ ] **Design-integration wave** (2026-09-19; provenance: record § Build surface) — one wave,
+  plan-approved producers with disjoint ownership (≈4) + 3 fresh author≠grader validators, under
+  the sound-loop + transport floors. Item 0 first, **abort-gated**: pin the upstream SHA, add root
+  `LICENSE` + `NOTICE` (D14), census the three rewritten skills against the budget ledger — abort
+  to the user at > 25 % over the family band; measure descriptions ≤ 1,536. Then: rename
+  `product-engineer` → `product-designer` + persona rewrite (D3/D4, store re-render for
+  `ARCHITECTURE.md`, README, cost ledger, eval kit) · `patterns-design-direction` +
+  `patterns-craft-floor` + `review-design-audit` (schema pairs) · critique section in
+  `testing-gap-finding` + the D11 supersession strip · `**TEST:**` example asserts · design home
+  + template + setup leg + detection leg + `review-sufficiency` clause-8 re-key + specify re-keys
+  · migrations (item 8) · gates incl. derived view ≡ replay, MINOR bump, `GLOSSARY.md` scaffold
+  (standing trigger fires on the minted terms). Watches minted at landing (item 11).
+
 ## UX-prototype-stage watches
 
-Ruling: DECISIONS.md row 2026-08-02 (UX-D1–D9); built same day at v0.50.0.
+Ruling: DECISIONS.md row 2026-08-02 (UX-D1–D9); built same day at v0.50.0. **Extended
+2026-09-19** by the Impeccable design-integration ruling (D1–D14): the first UX-bearing run also
+watches the critique lens's blocking/advisory line (D8 `Assumed`, both depths) · the first
+landing-fold system-part write and its user checkpoint (D7) · the setup leg on a brownfield repo
+with a real design system (D6) · the `desktop` platform value with no ported guidance (OQ3) · the
+shelf seam at the frontend shelf's first deal (D12).
 
 - [ ] **First live UX-bearing specify run** (2026-08-02; provenance:
   `.mochiko/brainstorms/ux-mocking-in-specify/record.md`, open threads 1–3) — watch the first
@@ -511,10 +569,6 @@ Ruling: DECISIONS.md row 2026-08-04 (AR-D1–D6); test deliberately parked for a
 
 ## Open design decisions
 
-- [ ] **Prose vs. gate allocation** (2026-06-27; provenance: unrecoverable —
-  `agent-skills-research/synthesis/my-framework.md`, submodule removed 2026-07-21) — which
-  behaviors earn graded anti-rationalization prose vs a hard `PreToolUse` hook? Kernel excluded;
-  allocate between prose and hook.
 - [ ] **Claude-Code portability** (2026-06-27; provenance: unrecoverable — same source) —
   `rfc2119-invocation-trigger` + `disable-model-invocation` are CC-specific: adopt-and-bind or
   abstract? Surfaces when the router evolves.
@@ -798,6 +852,49 @@ Raw captures (2026-08-01) — to triage/brainstorm; grooming may re-key into fin
 
 ## Defects & empirical checks
 
+- [ ] **`primitive-cost-budgets.md`'s `review-governance-intent` row is stale, and the margin is
+  thin** (2026-09-19, found by the audit of the lead's-pen reword) — the row predates v0.107.0's
+  render-format change, and a rough remeasure puts the reworded rule about eight characters under
+  its no-headroom ceiling. A budget that close, resting on bookkeeping two formats old, cannot be
+  trusted to catch the next edit. Re-seed the row against the current render before any further
+  edit to this skill's rules.
+- [ ] **`review-brainstorm.findings-through-leads-pen` carries the copy loophole its sibling just
+  closed** (2026-09-19) — the governance-intent floor was reworded by migration
+  `0006-leads-pen-no-patched-copy` (bump staged behind release gate 6, branch at 0.109.0) after the
+  eval caught a cut body writing a corrected copy of the synthesis beside the original, which its
+  old words ("never your own edits to the synthesis") did not forbid. The brainstorm floor still
+  reads "never your own edits to the record" and has the same hole. **Deliberately not amended**:
+  the evidence is from the governance-intent kit alone and no eval has put `review-brainstorm`
+  under pressure goldens. **The independent auditor dissents** and would have moved the pair
+  together, on the ground that the loophole is a property of the sentence's wording — "never edits
+  to X" does not forbid a corrected copy of X — which generalises on a plain read rather than
+  depending on one kit's goldens; the strips record shows the two floors were kept structurally
+  independent at v0.100.0, so nothing blocks moving them either way. Close it either by building
+  that kit's pressure golden and measuring, or by ruling the reword across the pair on the textual
+  argument alone — the second is a one-line migration, and it should say which of the two it is.
+
+- [ ] **`check-artifacts.py` heading grammar vs the entity-modeling template** (found 2026-09-11 by the
+  review-plan-artifacts kit author and auditor; provenance: `evals/review-plan-artifacts/preregistration.md`
+  §Disclosures 13) — `plugins/mochiko/skills/review-plan-artifacts/scripts/check-artifacts.py` requires
+  `## Entities` / `## Relationships` / `## Validation Rules` in `data-model.md`, but the entity-modeling
+  template writes `## Entity: <Name>` and never `## Entities`, so the tier-1 checker false-positives on
+  every real data model. Align one to the other; re-run the checker over a real feature's model.
+- [ ] **`QUALITY-CHECKLIST.md` names a bare `mochiko-cli template` call** (found 2026-09-11 by the
+  validation-constitution kit auditor; provenance: `evals/validation-constitution/preregistration.md`
+  audit trail) — `plugins/mochiko/skills/validation-constitution/references/QUALITY-CHECKLIST.md:4` tells
+  the seat to run `mochiko-cli template governance-surfaces` without `--plugin-root`, which fails
+  ("migration log cannot be read") and costs the seat a turn. Add the root flag the SKILL.md `!` lines use.
+- [ ] **`qa-engineer` does not mount `review-plan-artifacts`** though `impl.card-review-before-confirm`
+  binds the card review to the verification seat (found 2026-09-11 by the review-plan-artifacts kit
+  auditor; provenance: the kit's audit message, `evals/review-plan-artifacts/preregistration.md`
+  §Disclosures 15) — `plugins/mochiko/agents/qa-engineer.md` declares only `testing-end-user` and
+  `review-code-minimalism`; only `devils-advocate.md` mounts the skill. Either mount it on the
+  verification seat or re-point the implement rule.
+- [ ] **Feature-entry path grammar disagrees across three surfaces** (found 2026-09-18 by the specify
+  kit author; provenance: `evals/commands/specify/preregistration.md` disclosures) — the feature-entry and
+  features-index templates say `.mochiko/features/FEAT-XXX-<slug>.md`, the hook-enforced declared home
+  (newer) says `<FEAT-ID>.md`, and `testing-gap-finding` says `FEAT-XXX/gates.md`. Kit fixtures follow the
+  declared home. Align the two older surfaces to the home.
 - [ ] **ARCHITECTURE.md staleness residue (pre-v0.68.0 debt)** (2026-08-13; provenance: the
   v0.68.0 ripple audit's fix #1 — precise inventory) — line-3 header still stamps
   "(v0.48.0…)" (20 versions stale) · System-overview pipeline line reads "governance → spec →
@@ -887,32 +984,6 @@ Raw captures (2026-08-01) — to triage/brainstorm; grooming may re-key into fin
 - [ ] **Feature-close verification has no owning workflow** (2026-07-02) — until audit owns
   it, the section is executable by hand; implement surfaces "declared, not verified" after the
   last slice.
-- [ ] **Design track** (2026-06-27, carried; archive REGISTRY disposition) — `ui-designer` +
-  `analysis-screenshot` / `authoring-design-system` / `patterns-flow-mapping` /
-  `patterns-interface-design`; port as a dedicated cluster (HIL sources listed in the archive).
-- [ ] **Design/UX skills for product engineer** (2026-08-04; provenance: capture session,
-  to-brainstorm; re-keyed here from To-triage at the 2026-08-06 groom) — add design + UX
-  competence to the product-engineer surface. Scope the brainstorm against what already exists
-  so it doesn't duplicate: the **Design track** item above (`ui-designer` cluster, HIL port)
-  and the landed **UX-prototype stage** in specify (`authoring-prototype`, UX-D1–D9, v0.50.0).
-  Decide: does design/UX ride the product-engineer persona as skills, or a dedicated
-  `ui-designer` cluster the persona composes? Persona-carries-judgment /
-  skill-carries-procedure (five-axis #4) constrains the shape. Resolve overlap with the Design
-  track before authoring.
-- [ ] **Quality-control pipeline — deepeval or equivalent** (2026-08-04; provenance: capture
-  session, to-brainstorm; re-keyed here from To-triage at the 2026-08-06 groom) — explore
-  deepeval (or a comparable eval/QC pipeline) for automated quality control over produced
-  artifacts / generated code. Open: what does it grade (spec fidelity · code · agent output),
-  how it composes with the existing producer↔validator pairing (five-axis #5) and the
-  qa-engineer / testing-* skills, and whether it's a kernel-shaped dependency (constraint
-  check — no Python/MCP brain code; must live as skill/agent or native CC). Brainstorm the
-  fit before adopting any external harness. (2026-08-19: mutation-tool adoption ruled not
-  kernel-class — `qa-gap-finding-verification` D10, GI-019 recorded; that adoption is not
-  this item's eval-harness brainstorm; item stays open.) (2026-08-22: `skill-compression-tooling`
-  accepted — rules the lowest-level per-skill eval primitive and fills `primitive-eval-harness`
-  D5's pilot slot; this item still owns the wider produced-artifact QC question.)
-  (2026-08-27: `command-plan-only-eval` accepted — rules the command-surface eval on a
-  plan-only substrate; this item still owns produced-artifact QC.)
 - [ ] **Multi-stack / monorepo registries** (2026-07-21) — per-stack registries, paths scopes,
   seeding. **Revisit: first multi-stack setup run.**
 - [ ] **`codebase-inventory-schema.json` port** (2026-06-27; provenance:

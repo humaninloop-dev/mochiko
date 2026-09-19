@@ -1,0 +1,75 @@
+// Pallet — schema excerpt: the models the supplier-payouts feature touches.
+// Ids are prefixed ULIDs (sup_, rtl_, ord_, inv_, pay_); money is integer minor units.
+
+model Supplier {
+  id             String   @id
+  name           String
+  country        String   // "GB" | "IE"
+  currency       String   // "GBP" | "EUR" — the currency the supplier invoices in
+  contact_email  String
+  payout_account Json?    // typed in by the supplier at onboarding, never checked since:
+                          //   GB: { "sort_code": "40-11-23", "account_number": "31926819", "account_name": "Hollow Tree Bakery Ltd" }
+                          //   IE: { "iban": "IE29AIBK93115212345678", "bic": "AIBKIE2D", "account_name": "Cloonan Dairy" }
+                          // 11 suppliers have no payout_account at all
+  orders         Order[]
+  created_at     DateTime @default(now())
+}
+
+model Retailer {
+  id            String  @id
+  name          String
+  contact_email String
+  orders        Order[]
+}
+
+enum OrderStatus {
+  placed
+  accepted
+  delivered
+  cancelled
+}
+
+model Order {
+  id            String      @id
+  retailer_id   String
+  supplier_id   String
+  status        OrderStatus @default(placed)
+  placed_at     DateTime
+  delivered_at  DateTime?   // set by the supplier when the drop is confirmed
+  total_minor   Int
+  currency      String
+  authorised_by String
+  invoice       Invoice?
+  retailer      Retailer    @relation(fields: [retailer_id], references: [id])
+  supplier      Supplier    @relation(fields: [supplier_id], references: [id])
+}
+
+enum InvoiceStatus {
+  draft
+  issued
+  paid
+  void
+}
+
+model Invoice {
+  id          String        @id
+  order_id    String        @unique
+  status      InvoiceStatus
+  issued_at   DateTime?
+  total_minor Int
+  currency    String
+  payment     Payment?
+  order       Order         @relation(fields: [order_id], references: [id])
+}
+
+model Payment {
+  id               String    @id
+  invoice_id       String    @unique
+  stripe_intent_id String
+  kind             String    // "card" | "bacs_debit"
+  status           String    // "pending" | "succeeded" | "failed"
+  settled_at       DateTime? // card: at charge; bacs_debit: when Stripe reports settlement
+  amount_minor     Int
+  authorised_by    String
+  invoice          Invoice   @relation(fields: [invoice_id], references: [id])
+}

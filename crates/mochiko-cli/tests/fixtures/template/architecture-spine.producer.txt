@@ -1,0 +1,66 @@
+# Architecture Spine
+
+`spine.md` — the product's topology deep view, one of the two hand-written files in the architecture store at `.mochiko/product/architecture/`. It carries the container diagram, the element table (containers, boundaries and flows, each with a lifecycle status), the sequence diagrams for qualifying flows, and the as-built notes a landing fold writes. The concern catalog is its sibling file, `concerns.md`, and the repo-root `ARCHITECTURE.md` is a derived view of both — regenerated on every store write, never hand-edited. Authored per mochiko:authoring-architecture-store; diagram craft and altitude per mochiko:patterns-system-design.
+
+## Header
+
+Title "# Architecture Spine" plus the scope line naming the product shape the spine describes. Governs no heading of its own.
+
+## Container diagram
+
+One C4-container view as a mermaid block: the containers and how they communicate, with in-flight-class elements marked. One diagram, not a gallery — a second view earns its place only where the first cannot carry it.
+
+## Elements
+
+The element table, one row per element: `SPN-XXX` id · kind (container | boundary | flow) · name · one-line responsibility · what it talks to and in which style · lifecycle status. One line per element; a row that needs a paragraph is hiding a concern row or a graduated file.
+
+## Key flows
+
+Sequence diagrams for the flows that qualify — selection and altitude per mochiko:patterns-system-design. A flow that reads off the container diagram does not qualify.
+
+## As-built notes — optional
+
+What the landing fold recorded about the built state where it differs from the approved shape — one line per element, id-keyed. Drift itself lives on the element's row; this section is the fold's own note.
+
+## Conformance
+
+Checked mechanically before the write lands. Each line is a string or a count, never a judgment.
+
+- Required headings, in order: `## Container diagram`, `## Elements`, `## Key flows`
+- An undeclared `##` heading is denied. `###` and deeper are yours.
+- Line budgets, each counted from its `##` line to the next `##`, nested content included:
+  - `## Container diagram` — 30 lines
+  - `## Elements` — 40 lines
+  - `## Key flows` — 30 lines
+  - `## As-built notes` — 15 lines (optional)
+
+## Skeleton
+
+# Architecture Spine
+
+**Scope**: backend-service
+
+## Container diagram
+
+```mermaid
+flowchart TD
+    [containers and their communication; in-flight-class elements marked]
+```
+
+## Elements
+
+| ID | Kind | Name | Responsibility | Talks to (style) | Status |
+|----|------|------|----------------|------------------|--------|
+| SPN-001 | container | [name] | [one line] | SPN-002 (sync REST) | built |
+| SPN-002 | container | [name] | [one line] | SPN-003 (queue) | in-flight (FEAT-012) |
+| SPN-003 | boundary | [name] | [what changes across it — trust, ownership, tenancy] | — | ruled |
+
+## Key flows
+
+[Sequence diagrams for qualifying flows — selection and altitude per mochiko:patterns-system-design.]
+
+## As-built notes
+
+- SPN-002 — [what the fold found built, one line]
+
+---

@@ -183,7 +183,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 Ruling for every entry below: skill-content-schema D3 (obligations move, procedure stays
 prose) / D8/C4 (protected transfers), `DECISIONS.md` 2026-09-01 rows (Skill-content schema
 ruled · the patterns-family door); census:
-`.mochiko/brainstorms/skill-content-schema/census-patterns.md` §A (MT) + §B (MT rows
+`.mochiko/brainstorms/skill-content-schema/research/census-patterns.md` §A (MT) + §B (MT rows
 1–11). Schema home: `plugins/mochiko/skills/patterns-model-tiering/schema.yaml`. Minted
 IDs carry the `patterns-model-tiering.` prefix (omitted below). Map — census §B row →
 minted ID: 1 `rostered-seats-never-retier` · 2 `cheap-rung-explore-haiku` · 3

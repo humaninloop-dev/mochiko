@@ -167,12 +167,13 @@ fn the_log_replays_into_a_deliverable_state() {
             .collect();
         panic!("the log is deliverable:\n{}", lines.join("\n"));
     });
-    assert_eq!(replay.state.docs.len(), 50);
+    assert_eq!(replay.state.docs.len(), 73);
     assert_eq!(
         replay.sequences(),
-        vec![1, 2, 3, 4, 7],
+        vec![1, 2, 3, 4, 5, 6, 7],
         "genesis, wave 4's fail-conditions reword, wave 6's two-arm retirement, the sonnet \
-         worker rung, 0007's seat default key"
+         worker rung, the artifact-home census, the lead's-pen copy loophole, 0007's seat \
+         default key"
     );
 }
 
@@ -607,16 +608,19 @@ fn the_corpus_census_holds_through_the_log() {
         }
     }
 
-    // `0004` (the sonnet worker rung, 2026-09-05) minted six skill rules on
-    // `patterns-model-tiering`, two of them floors; `0007` (the seat default key,
-    // 2026-09-19) nets +4 on the same skill — one `supersede-rule` (−1) and five
-    // `mint-rule`s (+5), two of the five floors; the command side is untouched throughout.
-    // The superseded rule was itself a floor, so the skill's floor count nets +1.
-    assert_eq!(command_rules, 321, "live command rules");
-    assert_eq!(skill_rules, 705, "live skill rules");
-    assert_eq!(command_rules + skill_rules, 1026, "live rules in total");
-    assert_eq!(skill_floors, 229, "skill floors");
-    assert_eq!(command_floors, 110, "declared command floors");
+    // `patterns-model-tiering`, two of them floors; the command side was untouched.
+    // `0005` (the artifact-home census, 2026-09-13) minted the authoring-time home rule on every
+    // producing primitive the log carries: six command floors and eleven skill floors, one per
+    // document, so both rule counts and both floor counts move by the mint count and the fail set
+    // does not move at all. `0007` (the seat default key, 2026-09-19) nets +4 on
+    // `patterns-model-tiering` — one `supersede-rule` (−1) and five `mint-rule`s (+5), two of the
+    // five floors; the command side is untouched. The superseded rule was itself a floor, so the
+    // skill's floor count nets +1 on top of `0005`'s eleven.
+    assert_eq!(command_rules, 327, "live command rules");
+    assert_eq!(skill_rules, 716, "live skill rules");
+    assert_eq!(command_rules + skill_rules, 1043, "live rules in total");
+    assert_eq!(skill_floors, 240, "skill floors");
+    assert_eq!(command_floors, 116, "declared command floors");
     assert_eq!(fail_nodes, 36, "command fail nodes");
 }
 

@@ -88,7 +88,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 
 Ruling for every entry below: skill-content-schema D3 (three-home boundary) / D8/C4
 (protected transfers + the explicit review-feasibility whole-body clause), `DECISIONS.md`
-2026-09-01 row; census: `.mochiko/brainstorms/skill-content-schema/census.md` §B (RF).
+2026-09-01 row; census: `.mochiko/brainstorms/skill-content-schema/research/census.md` §B (RF).
 Schema home: `plugins/mochiko/skills/review-feasibility/schema.yaml`. Minted IDs carry the
 `review-feasibility.` prefix (omitted below). Map — census row → minted ID:
 1 `sibling-split` · 2 `author-grader` (C3 stub) · 3 `lens-load-first` (also sequenced in

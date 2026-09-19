@@ -1,6 +1,6 @@
 # Evaluation Harness for Primitive Changes (CI/CD) — Decision Record
 
-**Status:** open
+**Status:** **superseded 2026-09-08** by [`primitive-eval-harness-v2`](../primitive-eval-harness-v2/record.md) — never cold-reviewed, never accepted; D1–D5 re-ruled by number there (D1 → v2 D8 · D2 re-affirmed layer-wide · D3 re-affirmed · D4 re-affirmed as amended by v2 D10 · D5 discharged by `skill-compression-tooling`); the four open questions ruled in v2 D13. Frozen; provenance only.
 **Opened:** 2026-08-19
 **Session:** collaborative brainstorm via `mochiko:analysis-iterative` (one question per turn)
 

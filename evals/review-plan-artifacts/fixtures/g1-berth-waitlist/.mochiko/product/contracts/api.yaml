@@ -1,0 +1,139 @@
+# Halyard product baseline contract — as of FEAT-019 landing (2026-08-27).
+# Feature deltas live beside this file under .mochiko/features/FEAT-XXX/contracts/api.yaml
+# until their landing folds them here.
+openapi: 3.0.3
+info:
+  title: Halyard API
+  version: "1.9.0"
+  description: |
+    Berth booking API. Session-cookie auth (AX-001). Errors are RFC 7807 Problem Details
+    (D-003). Owner-facing and marina-facing operations share one API.
+servers:
+  - url: /api/v1
+tags:
+  - name: Berths
+  - name: Bookings
+  - name: Payments
+paths:
+  /marinas/{marinaId}/berths:
+    get:
+      summary: List a marina's berths with availability for a date range
+      operationId: listBerths
+      tags: [Berths]
+      parameters:
+        - {name: marinaId, in: path, required: true, schema: {type: string, format: uuid}}
+        - {name: from, in: query, required: true, schema: {type: string, format: date}}
+        - {name: to, in: query, required: true, schema: {type: string, format: date}}
+      responses:
+        '200': {description: Berths, content: {application/json: {schema: {$ref: '#/components/schemas/BerthList'}}}}
+        '404': {$ref: '#/components/responses/NotFound'}
+  /bookings:
+    post:
+      summary: Request a booking
+      operationId: createBooking
+      tags: [Bookings]
+      requestBody:
+        required: true
+        content: {application/json: {schema: {$ref: '#/components/schemas/CreateBookingRequest'}}}
+      responses:
+        '201': {description: Booking requested, content: {application/json: {schema: {$ref: '#/components/schemas/Booking'}}}}
+        '400': {$ref: '#/components/responses/BadRequest'}
+        '409': {description: Berth not available for the range, content: {application/problem+json: {schema: {$ref: '#/components/schemas/Problem'}}}}
+  /bookings/{bookingId}:
+    get:
+      summary: Get a booking
+      operationId: getBooking
+      tags: [Bookings]
+      parameters:
+        - {name: bookingId, in: path, required: true, schema: {type: string, format: uuid}}
+      responses:
+        '200': {description: Booking, content: {application/json: {schema: {$ref: '#/components/schemas/Booking'}}}}
+        '404': {$ref: '#/components/responses/NotFound'}
+  /bookings/{bookingId}/pay:
+    post:
+      summary: Charge the booking to the owner's saved payment method
+      operationId: payBooking
+      tags: [Payments]
+      parameters:
+        - {name: bookingId, in: path, required: true, schema: {type: string, format: uuid}}
+      responses:
+        '200': {description: Payment succeeded, content: {application/json: {schema: {$ref: '#/components/schemas/Payment'}}}}
+        '402': {description: Card declined, content: {application/problem+json: {schema: {$ref: '#/components/schemas/Problem'}}}}
+        '404': {$ref: '#/components/responses/NotFound'}
+        '409': {description: Booking already paid, content: {application/problem+json: {schema: {$ref: '#/components/schemas/Problem'}}}}
+        '503': {description: Payment processor unavailable, content: {application/problem+json: {schema: {$ref: '#/components/schemas/Problem'}}}}
+      x-integration:
+        system: Stripe (EU entity)
+        protocol: HTTPS
+        api_version: "2024-06-20"
+        criticality: Critical
+        auth: Restricted API key from the secrets manager
+        failure_modes:
+          - failure: Stripe timeout (> 8 s)
+            detection: HTTP client timeout
+            impact: Payment outcome unknown
+            fallback: One retry with the same idempotency key; then 503 with Retry-After, booking stays requested
+          - failure: Stripe 5xx
+            detection: Upstream status
+            impact: Payment unavailable
+            fallback: 503; booking stays requested; alert on rate > 1% (AX-011)
+          - failure: Card declined
+            detection: PaymentIntent status requires_payment_method
+            impact: Booking not confirmed
+            fallback: 402 with decline reason; owner retries with another method
+components:
+  responses:
+    BadRequest: {description: Invalid request, content: {application/problem+json: {schema: {$ref: '#/components/schemas/Problem'}}}}
+    NotFound: {description: Not found, content: {application/problem+json: {schema: {$ref: '#/components/schemas/Problem'}}}}
+  schemas:
+    Problem:
+      type: object
+      required: [type, title, status, correlationId]
+      properties:
+        type: {type: string, format: uri}
+        title: {type: string}
+        status: {type: integer}
+        detail: {type: string}
+        correlationId: {type: string}
+    Berth:
+      type: object
+      required: [id, marinaId, berthClass, maxLengthM, shorePower]
+      properties:
+        id: {type: string, format: uuid}
+        marinaId: {type: string, format: uuid}
+        berthClass: {type: string, enum: [pontoon, finger, swing]}
+        maxLengthM: {type: number}
+        shorePower: {type: boolean}
+        available: {type: boolean}
+    BerthList:
+      type: object
+      properties:
+        data: {type: array, items: {$ref: '#/components/schemas/Berth'}}
+    CreateBookingRequest:
+      type: object
+      required: [vesselId, berthId, startsOn, endsOn]
+      properties:
+        vesselId: {type: string, format: uuid}
+        berthId: {type: string, format: uuid}
+        startsOn: {type: string, format: date}
+        endsOn: {type: string, format: date}
+    Booking:
+      type: object
+      required: [id, ownerId, vesselId, berthId, startsOn, endsOn, status]
+      properties:
+        id: {type: string, format: uuid}
+        ownerId: {type: string, format: uuid}
+        vesselId: {type: string, format: uuid}
+        berthId: {type: string, format: uuid}
+        startsOn: {type: string, format: date}
+        endsOn: {type: string, format: date}
+        status: {type: string, enum: [requested, confirmed, active, completed]}
+    Payment:
+      type: object
+      required: [id, bookingId, amountMinor, currency, status]
+      properties:
+        id: {type: string, format: uuid}
+        bookingId: {type: string, format: uuid}
+        amountMinor: {type: integer}
+        currency: {type: string}
+        status: {type: string, enum: [pending, succeeded, failed]}

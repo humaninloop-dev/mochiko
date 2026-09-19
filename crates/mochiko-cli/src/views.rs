@@ -84,6 +84,7 @@ pub fn view_path(doc: &DocRef) -> PathBuf {
         DocKind::CommandLabels | DocKind::SkillLabels => "labels",
         DocKind::Template => "templates",
         DocKind::Shelf => "shelves",
+        DocKind::Home => "homes",
     };
     PathBuf::from(format!("{shelf}/{}.yaml", doc.name))
 }

@@ -309,6 +309,17 @@ sections:
           Layer-internal consistency — every cross-referenced ID resolves to an actual entry,
           bidirectional references match, and no two constraints restrict incompatibly.
         pointer: references/TRACEABILITY-PATTERNS.md
+      - id: authoring-technical-requirements.artifact-home
+        labels: [binding]
+        class: floor
+        kind: binding
+        text: >-
+          `constraints-and-decisions.md` is a declared file in whichever home the run owns — the
+          spec, the feature, the epic or the product baseline: render `mochiko-cli home <that
+          path>` before the first write and hold the bound it returns. The NFR rows this skill
+          authors ride the architecture store's concern rows, in the store's home, never as a
+          second file here.
+        anchor: 2026-09-13 hook-enforced-artifact-schema D1
   - id: authoring-technical-requirements.sec.output
     title: Output — completeness before finalizing
     intent: What is verified before the layer is handed on.

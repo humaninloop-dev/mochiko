@@ -1,0 +1,5 @@
+{{!-- Invoice PDF template; rendered by documents.render with the invoice subject loader --}}
+<h1>Invoice {{id}}</h1>
+<p>{{supplier.name}} to {{retailer.name}} · issued {{issued_at}} · due {{due_at}}</p>
+<table>{{#each lines}}<tr><td>{{description}}</td><td>{{quantity}}</td><td>{{money unit_price}}</td><td>{{money line_total}}</td></tr>{{/each}}</table>
+<p>Total {{money total}} · paid {{money amount_paid}} · outstanding {{money amount_outstanding}}</p>

@@ -38,6 +38,8 @@ sections:
       Is Part 1 a factual, file-cited inventory covering project identity, directory structure,
       detected patterns (architecture, naming, error-handling, test), domain entities, and
       external dependencies — each finding one line and sourced?
+    heading: 'Part 1: Inventory (Factual)'
+    max_lines: 40
   - name: Part 2 — Assessment (Judgment)
     required: true
     contract: |
@@ -56,6 +58,8 @@ sections:
       Does Part 2 carry the strengths prose, the inconsistencies table with severities, the
       twelve-row Essential Floor Status table (present/partial/absent, file-cited evidence) with
       the category rollup, and the recommended constitution focus?
+    heading: 'Part 2: Assessment (Judgment)'
+    max_lines: 40
   - name: Appendix — Detection Method
     required: true
     contract: |
@@ -65,6 +69,8 @@ sections:
     check: >-
       Is the Detection Method appendix present, naming the method per aspect (detect-stack.sh,
       directory pattern matching, ORM patterns, file sampling)?
+    heading: 'Appendix: Detection Method'
+    max_lines: 15
 skeleton: |
   # Codebase Analysis
 
@@ -188,3 +194,5 @@ skeleton: |
   | Architecture | Directory pattern matching |
   | Entities | ORM/framework-specific patterns |
   | Conventions | File sampling and pattern inference |
+conformance:
+  extra_headings: deny

@@ -1,5 +1,5 @@
 {
-  "provenance": "wave5-plan.md \u00a74.2 and wave5-reports/p3-skills-plan.md \u00a73. Frozen from the render and the working tree before P2 converted any skill and before the wave's first session. Never edited after; a floor rule added or renamed later breaks the cross-check in `converted-shape` rather than regrading quietly.",
+  "provenance": "wave5-plan.md \u00a74.2 and cli-schema-delivery/wave5-p3-skills-plan.md \u00a73. Frozen from the render and the working tree before P2 converted any skill and before the wave's first session. Never edited after; a floor rule added or renamed later breaks the cross-check in `converted-shape` rather than regrading quietly. Re-keyed once since, and only for ids the log determines: the 2026-09-13 hook-enforced-artifact-schema wave added one `artifact-home` floor to each of eleven skills (`floor_ids` plus `floor_pin`), on the lead's licence, with the same move recorded in this directory's README floor-ids row. Every byte-size field is still the freeze's own, and no other field has been touched.",
   "frozen_utc": "2026-09-04T10:49:47+00:00",
   "binary": "mochiko-cli 0.1.0 \u00b7 grammar 1..1",
   "plugin_version": "0.105.0",
@@ -64,11 +64,12 @@
     "analysis-codebase": {
       "family": "dense-five",
       "floor_ids": [
+        "analysis-codebase.artifact-home",
         "analysis-codebase.essential-floor-canonical-definition",
         "analysis-codebase.intent-blind-waiver-blind",
         "analysis-codebase.never-soften-never-waive"
       ],
-      "floor_pin": 3,
+      "floor_pin": 4,
       "schema_bytes": 8345,
       "common": null,
       "common_bytes": null,
@@ -79,6 +80,7 @@
     "authoring-architecture-store": {
       "family": "authoring",
       "floor_ids": [
+        "authoring-architecture-store.artifact-home",
         "authoring-architecture-store.as-built-against-code",
         "authoring-architecture-store.diff-both-directions",
         "authoring-architecture-store.diff-user-dispositioned",
@@ -89,7 +91,7 @@
         "authoring-architecture-store.sign-off-is-write-gate",
         "authoring-architecture-store.sound-loop-on-judgment-writes"
       ],
-      "floor_pin": 9,
+      "floor_pin": 10,
       "schema_bytes": 14070,
       "common": "schemas/skill-authoring-common.yaml",
       "common_bytes": 1291,
@@ -100,6 +102,7 @@
     "authoring-constitution": {
       "family": "authoring",
       "floor_ids": [
+        "authoring-constitution.artifact-home",
         "authoring-constitution.every-principle-traces",
         "authoring-constitution.floor-categories-accounted",
         "authoring-constitution.markers-only-regeneration",
@@ -113,7 +116,7 @@
         "authoring-constitution.three-part-rule",
         "authoring-constitution.waivers-authored-not-skipped"
       ],
-      "floor_pin": 12,
+      "floor_pin": 13,
       "schema_bytes": 23275,
       "common": "schemas/skill-authoring-common.yaml",
       "common_bytes": 1291,
@@ -124,6 +127,7 @@
     "authoring-epic": {
       "family": "authoring",
       "floor_ids": [
+        "authoring-epic.artifact-home",
         "authoring-epic.design-phase-always-fires",
         "authoring-epic.desk-only-mint-door",
         "authoring-epic.halt-disposition-user-owned",
@@ -135,7 +139,7 @@
         "authoring-epic.shared-baseline-single-pen-holder",
         "authoring-epic.transient-role"
       ],
-      "floor_pin": 10,
+      "floor_pin": 11,
       "schema_bytes": 10558,
       "common": "schemas/skill-authoring-common.yaml",
       "common_bytes": 1291,
@@ -147,6 +151,7 @@
       "family": "authoring",
       "floor_ids": [
         "authoring-feature-map.acceptance-batch",
+        "authoring-feature-map.artifact-home",
         "authoring-feature-map.capability-work-row",
         "authoring-feature-map.capability-writes-sacred",
         "authoring-feature-map.complete-disposition",
@@ -163,7 +168,7 @@
         "authoring-feature-map.selection-user-ruling",
         "authoring-feature-map.work-rows-transient"
       ],
-      "floor_pin": 16,
+      "floor_pin": 17,
       "schema_bytes": 16223,
       "common": "schemas/skill-authoring-common.yaml",
       "common_bytes": 1291,
@@ -174,12 +179,13 @@
     "authoring-prototype": {
       "family": "authoring",
       "floor_ids": [
+        "authoring-prototype.artifact-home",
         "authoring-prototype.authority-split",
         "authoring-prototype.letter-is-spirit",
         "authoring-prototype.static-degrade-path",
         "authoring-prototype.upstream-untouched"
       ],
-      "floor_pin": 4,
+      "floor_pin": 5,
       "schema_bytes": 9655,
       "common": "schemas/skill-authoring-common.yaml",
       "common_bytes": 1291,
@@ -190,12 +196,13 @@
     "authoring-requirements": {
       "family": "authoring",
       "floor_ids": [
+        "authoring-requirements.artifact-home",
         "authoring-requirements.boundary-escalates-to-user",
         "authoring-requirements.constraint-states-capability",
         "authoring-requirements.pm-frame-boundary",
         "authoring-requirements.technology-agnostic"
       ],
-      "floor_pin": 4,
+      "floor_pin": 5,
       "schema_bytes": 8089,
       "common": "schemas/skill-authoring-common.yaml",
       "common_bytes": 1291,
@@ -206,6 +213,7 @@
     "authoring-technical-requirements": {
       "family": "authoring",
       "floor_ids": [
+        "authoring-technical-requirements.artifact-home",
         "authoring-technical-requirements.business-source-floor",
         "authoring-technical-requirements.fast-is-not-a-requirement",
         "authoring-technical-requirements.letter-is-spirit",
@@ -215,7 +223,7 @@
         "authoring-technical-requirements.rationalization-stop",
         "authoring-technical-requirements.store-write-at-sign-off"
       ],
-      "floor_pin": 8,
+      "floor_pin": 9,
       "schema_bytes": 16863,
       "common": "schemas/skill-authoring-common.yaml",
       "common_bytes": 1291,
@@ -226,12 +234,13 @@
     "authoring-user-stories": {
       "family": "authoring",
       "floor_ids": [
+        "authoring-user-stories.artifact-home",
         "authoring-user-stories.boundary-dispute-escalates",
         "authoring-user-stories.letter-is-spirit",
         "authoring-user-stories.pm-frame-boundary",
         "authoring-user-stories.rationalization-stop"
       ],
-      "floor_pin": 4,
+      "floor_pin": 5,
       "schema_bytes": 7953,
       "common": "schemas/skill-authoring-common.yaml",
       "common_bytes": 1291,
@@ -260,6 +269,7 @@
     "executing-tdd-cycle": {
       "family": "dense-five",
       "floor_ids": [
+        "executing-tdd-cycle.artifact-home",
         "executing-tdd-cycle.domain-deps-checkpoint",
         "executing-tdd-cycle.lead-routing-reservation",
         "executing-tdd-cycle.pre-code-ladder",
@@ -271,7 +281,7 @@
         "executing-tdd-cycle.strict-order",
         "executing-tdd-cycle.verifier-boundary"
       ],
-      "floor_pin": 10,
+      "floor_pin": 11,
       "schema_bytes": 12558,
       "common": null,
       "common_bytes": null,
@@ -422,13 +432,14 @@
     "patterns-vertical-tdd": {
       "family": "patterns",
       "floor_ids": [
+        "patterns-vertical-tdd.artifact-home",
         "patterns-vertical-tdd.author-never-executing-builder",
         "patterns-vertical-tdd.no-infra-only-cards",
         "patterns-vertical-tdd.tasks-binding-two-arm",
         "patterns-vertical-tdd.test-gate",
         "patterns-vertical-tdd.writes-no-task-lists"
       ],
-      "floor_pin": 5,
+      "floor_pin": 6,
       "schema_bytes": 9250,
       "common": null,
       "common_bytes": null,

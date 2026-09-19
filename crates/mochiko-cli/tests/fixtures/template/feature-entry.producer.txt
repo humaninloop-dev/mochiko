@@ -84,6 +84,21 @@ against FEAT-XXX") · cross-cutting extend obligations from stories homed elsewh
 
 _Density:_ one line each
 
+## Conformance
+
+Checked mechanically before the write lands. Each line is a string or a count, never a judgment.
+
+- Required headings, in order: `## Capability`, `## Extent`
+- An undeclared `##` heading is denied. `###` and deeper are yours.
+- Line budgets, each counted from its `##` line to the next `##`, nested content included:
+  - `## Capability` — 6 lines
+  - `## Extent` — 6 lines
+  - `## Work rows` — 20 lines (optional)
+  - `## Relations` — 20 lines (optional)
+  - `## Architecture` — 20 lines (optional)
+  - `## Story trace` — 20 lines (optional)
+  - `## Obligations` — 20 lines (optional)
+
 ## Skeleton
 
 # FEAT-{{XXX}} — {{capability_name}}

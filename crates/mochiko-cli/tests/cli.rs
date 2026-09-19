@@ -1357,3 +1357,340 @@ fn migrate_stamp_leaves_the_committed_genesis_byte_identical() {
         "stamping the genesis changed its bytes"
     );
 }
+
+// ---------------------------------------------------------------------------
+// check — the exit-code-to-decision mapping (record D3, as amended at review C2)
+// ---------------------------------------------------------------------------
+
+/// A log holding one declared home (`feature`, bound to `.mochiko/features/<FEAT-ID>/`, one
+/// deliverable `gates.md`) and the report template its `reports:` block cites.
+///
+/// Copied verbatim from `tests/hook.rs`'s `LOG` constant: the two test binaries do not share a
+/// crate, so importing it is not an option, and the fixture is exactly the shape `check` and
+/// `home` both need — a home for `check` to deny against and for `home` to render.
+const HOME_LOG: &str = r#"
+grammar: 1
+id: 0001-hook
+sequence: 1
+intent: One home and its template, for the hook surface.
+changes:
+  - op: import-document
+    kind: home
+    name: feature
+    content:
+      home: feature
+      title: Feature work home
+      path: [".mochiko", "features", "<FEAT-ID>"]
+      bounds: whole-file
+      deliverables:
+        - file: gates.md
+          max_lines: 6
+      reports:
+        envelope: report-envelope
+  - op: import-document
+    kind: template
+    name: report-envelope
+    content:
+      template: report-envelope
+      title: Report envelope
+      form: report-format.md
+      register: full
+      overview: The envelope every report opens with.
+      conformance:
+        frontmatter:
+          required: [report]
+          enum:
+            report: [cycle, review]
+      sections: []
+      skeleton: |
+        ---
+        report: cycle
+        ---
+"#;
+
+/// A log directory holding [`HOME_LOG`].
+fn home_log(tag: &str) -> PathBuf {
+    let dir = scratch(tag);
+    write_migration(&dir, "0001-hook.yaml", HOME_LOG);
+    dir
+}
+
+/// Drive `check` in-process with `payload` as its stdin, the one call site `dispatch_io`'s
+/// `input` parameter exists for.
+fn run_check(args: &[&str], payload: &str) -> Run {
+    let owned: Vec<String> = args.iter().map(|s| s.to_string()).collect();
+    let mut out = Vec::new();
+    let mut err = Vec::new();
+    let code = cli::dispatch_io(&owned, &mut payload.as_bytes(), &mut out, &mut err);
+    Run {
+        code,
+        out: String::from_utf8(out).expect("stdout is utf-8"),
+        err: String::from_utf8(err).expect("stderr is utf-8"),
+    }
+}
+
+/// Exit 0: a sound log carrying no home at all, and a `Write` aimed at a path that is therefore
+/// under no declared home.
+fn check_allow_outside_home() -> Run {
+    let dir = log("check-allow");
+    let cwd = dir.display().to_string();
+    let payload = format!(
+        r##"{{"cwd":"{cwd}","tool_name":"Write","tool_input":{{"file_path":"{cwd}/docs/x.md","content":"# x\n"}}}}"##
+    );
+    run_check(&["check", "--hook-json", "-", "--log-dir", &cwd], &payload)
+}
+
+/// Exit 1: the log directory exists but holds no migration file at all.
+fn check_empty_log() -> Run {
+    let dir = scratch("check-empty");
+    let cwd = dir.display().to_string();
+    let payload = format!(
+        r##"{{"cwd":"{cwd}","tool_name":"Write","tool_input":{{"file_path":"{cwd}/docs/x.md","content":"# x\n"}}}}"##
+    );
+    run_check(&["check", "--hook-json", "-", "--log-dir", &cwd], &payload)
+}
+
+/// Exit 2: a payload that is not JSON at all, read against a log that is otherwise sound — the
+/// failure named is the payload's, never the log's.
+fn check_non_json_payload() -> Run {
+    let dir = log("check-badjson");
+    run_check(
+        &[
+            "check",
+            "--hook-json",
+            "-",
+            "--log-dir",
+            &dir.display().to_string(),
+        ],
+        "not json {",
+    )
+}
+
+/// Exit 3: a migration carrying a grammar this binary's range does not cover.
+fn check_grammar_skew() -> Run {
+    let dir = scratch("check-skew");
+    std::fs::write(
+        dir.join("0001-genesis.yaml"),
+        "grammar: 99\nid: 0001-genesis\nsequence: 1\nintent: A log from the future.\nchanges: []\n",
+    )
+    .expect("fixture is writable");
+    let cwd = dir.display().to_string();
+    let payload = format!(
+        r##"{{"cwd":"{cwd}","tool_name":"Write","tool_input":{{"file_path":"{cwd}/docs/x.md","content":"# x\n"}}}}"##
+    );
+    run_check(&["check", "--hook-json", "-", "--log-dir", &cwd], &payload)
+}
+
+/// Exit 4: a `Write` aimed at a name the home does not declare — the one case a `check` failure
+/// is allowed to turn into a deny.
+fn check_deny_undeclared_file() -> Run {
+    let log_dir = home_log("check-deny-log");
+    let cwd = scratch("check-deny-cwd");
+    let cwd_string = cwd.display().to_string();
+    let payload = format!(
+        r##"{{"cwd":"{cwd_string}","tool_name":"Write","tool_input":{{"file_path":"{cwd_string}/.mochiko/features/FEAT-001/invented.md","content":"# x\n"}}}}"##
+    );
+    run_check(
+        &[
+            "check",
+            "--hook-json",
+            "-",
+            "--log-dir",
+            &log_dir.display().to_string(),
+        ],
+        &payload,
+    )
+}
+
+#[test]
+fn check_exits_0_and_allows_a_write_outside_every_declared_home() {
+    let r = check_allow_outside_home();
+    assert_eq!(r.code, 0, "{}", r.err);
+    assert!(
+        r.out.contains(r#""permissionDecision":"allow""#),
+        "the platform denies a background subagent's call when no hook returns a decision, so a \
+         pass-through case must still render an explicit allow: {}",
+        r.out
+    );
+}
+
+#[test]
+fn check_exits_1_and_prints_nothing_on_a_log_directory_with_no_migration_file() {
+    let r = check_empty_log();
+    assert_eq!(r.code, 1, "{}", r.err);
+    assert!(r.out.is_empty(), "stdout must stay empty: {}", r.out);
+    assert!(!r.err.is_empty(), "the halt explains itself on stderr");
+}
+
+#[test]
+fn check_exits_2_on_a_payload_that_is_not_json_even_against_a_sound_log() {
+    let r = check_non_json_payload();
+    assert_eq!(r.code, 2, "{}", r.err);
+    assert!(r.out.is_empty(), "{}", r.out);
+}
+
+#[test]
+fn check_exits_3_on_a_log_outside_the_grammar_range() {
+    let r = check_grammar_skew();
+    assert_eq!(r.code, 3, "{}", r.err);
+    assert!(r.out.is_empty(), "{}", r.out);
+}
+
+#[test]
+fn check_exits_4_and_denies_a_write_to_an_undeclared_file_inside_a_declared_home() {
+    let r = check_deny_undeclared_file();
+    assert_eq!(r.code, mochiko_cli::hook::EXIT_CONFORMANCE);
+    assert!(
+        r.out.contains(r#""permissionDecision":"deny""#),
+        "{}",
+        r.out
+    );
+}
+
+/// The property that ties the whole table together (record D3/C2).
+///
+/// Codes 1, 2 and 3 all mean one thing: the binary could not read its log — absent, empty or
+/// unsound, malformed payload, or out-of-range grammar. None of those is a verdict about the
+/// write, so none of them may print a decision; a binary that cannot read its log must never
+/// deny a consumer's write, and the shipped wrapper supplies the explicit allow for exactly these
+/// three codes. Codes 0 and 4 are the two cases the binary actually decided, and each renders
+/// exactly one line of decision JSON — never more, since the wrapper prints it verbatim as the
+/// hook's whole answer.
+#[test]
+fn check_stdout_carries_json_only_when_the_binary_could_read_its_log() {
+    for r in [
+        check_empty_log(),
+        check_non_json_payload(),
+        check_grammar_skew(),
+    ] {
+        assert!(
+            r.out.is_empty(),
+            "a code meaning the log could not be read must print nothing: {}",
+            r.out
+        );
+    }
+    for r in [check_allow_outside_home(), check_deny_undeclared_file()] {
+        assert_eq!(
+            r.out.lines().count(),
+            1,
+            "a decided outcome renders exactly one line of JSON: {}",
+            r.out
+        );
+    }
+}
+
+#[test]
+fn check_hook_json_takes_only_a_dash() {
+    let dir = log("check-hookjson");
+    let r = run_check(
+        &[
+            "check",
+            "--hook-json",
+            "not-a-dash",
+            "--log-dir",
+            &dir.display().to_string(),
+        ],
+        "irrelevant",
+    );
+    assert_eq!(
+        r.code, 2,
+        "the flag names its source rather than defaulting to it: {}",
+        r.err
+    );
+}
+
+// ---------------------------------------------------------------------------
+// home — the render golden
+// ---------------------------------------------------------------------------
+
+/// Assertions here are on substrings and on the first/last line shape, never on the whole body:
+/// the body's wording is free to change without breaking the contract the `.md` halt clause and
+/// the shipped wrapper actually depend on.
+#[test]
+fn home_on_a_declared_deliverable_lists_the_homes_file_set_and_its_reports_directory() {
+    let dir = home_log("home-inside");
+    let r = run(&[
+        "home",
+        ".mochiko/features/FEAT-001/gates.md",
+        "--log-dir",
+        &dir.display().to_string(),
+    ]);
+    assert_eq!(r.code, 0, "{}", r.err);
+    let lines: Vec<&str> = r.out.lines().collect();
+    assert!(
+        lines[0].starts_with("mochiko-cli home ")
+            && lines[0].contains("· binary ")
+            && lines[0].contains("· grammar "),
+        "head line: {}",
+        r.out
+    );
+    assert!(
+        lines[lines.len() - 1].starts_with("mochiko-cli home end · "),
+        "end line: {}",
+        r.out
+    );
+    assert!(r.out.contains("home: feature"), "names the home: {}", r.out);
+    assert!(
+        r.out.contains("directory:"),
+        "carries the home's directory line: {}",
+        r.out
+    );
+    assert!(
+        r.out.contains("deliverables:") && r.out.contains("gates.md"),
+        "lists every declared file: {}",
+        r.out
+    );
+    assert!(
+        r.out.contains("reports:"),
+        "carries the reports line: {}",
+        r.out
+    );
+}
+
+#[test]
+fn home_on_a_path_no_declared_home_governs_still_lists_what_does_exist() {
+    let dir = home_log("home-outside");
+    let r = run(&["home", "docs/x.md", "--log-dir", &dir.display().to_string()]);
+    assert_eq!(r.code, 0, "{}", r.err);
+    assert!(
+        r.out.contains("no declared home governs"),
+        "says so plainly: {}",
+        r.out
+    );
+    assert!(
+        r.out.contains("feature"),
+        "still lists the declared homes, so the seat can see what does govern something: {}",
+        r.out
+    );
+}
+
+#[test]
+fn home_on_an_undeclared_name_inside_a_home_renders_rather_than_verdicts() {
+    let dir = home_log("home-undeclared");
+    let r = run(&[
+        "home",
+        ".mochiko/features/FEAT-001/invented.md",
+        "--log-dir",
+        &dir.display().to_string(),
+    ]);
+    // A render never fails on the content it describes — only `check` holds a verdict over a
+    // write, and this is `home`, never `check`.
+    assert_eq!(r.code, 0, "{}", r.err);
+    assert!(
+        r.out.contains("NOT a declared deliverable"),
+        "the resolved line says the name is not one: {}",
+        r.out
+    );
+}
+
+#[test]
+fn home_against_an_empty_log_exits_1() {
+    let dir = scratch("home-emptylog");
+    let r = run(&[
+        "home",
+        ".mochiko/features/FEAT-001/gates.md",
+        "--log-dir",
+        &dir.display().to_string(),
+    ]);
+    assert_eq!(r.code, 1, "{}", r.err);
+}

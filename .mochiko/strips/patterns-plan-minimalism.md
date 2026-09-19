@@ -92,7 +92,7 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
 Ruling for every entry below: skill-content-schema D3 (obligations move, procedure stays
 prose) / D8/C4 (protected transfers), `DECISIONS.md` 2026-09-01 rows (Skill-content schema
 ruled · the patterns-family door); census:
-`.mochiko/brainstorms/skill-content-schema/census-patterns.md` §A (PM) + §B (PM rows 1–10).
+`.mochiko/brainstorms/skill-content-schema/research/census-patterns.md` §A (PM) + §B (PM rows 1–10).
 Schema home: `plugins/mochiko/skills/patterns-plan-minimalism/schema.yaml`. Minted IDs
 carry the `patterns-plan-minimalism.` prefix (omitted below). Map — census §B row →
 minted ID: 1 `three-firing-sites` · 2 `not-for-routes` · 3 `rung-1-never-deletes` · 4

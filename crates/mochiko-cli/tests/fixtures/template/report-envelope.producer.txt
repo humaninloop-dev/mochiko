@@ -1,0 +1,45 @@
+# Report Envelope
+
+The envelope every mochiko report opens with, and the only part of a report this schema grades. A report lands in its home's `reports/` directory under a free name; its type is the frontmatter's `report:` field, drawn from the closed set below. Payload fields per type live in that type's own home — the producing skill's reference or a per-type template named by the home's `by_type` binding — never here. The prose set is closed: a failure narrative where the report carries a FAIL or blocking finding, notes of note where a non-obvious decision or blocker needs saying, and a null-exit reasoning block where the workflow defines one. A clean report is frontmatter-only, and an empty section is omitted rather than written as "None". Full shared rules: `templates/report-format.md`.
+
+## Header
+
+The YAML frontmatter block, machine-first: `report:` from the closed type set, `feature:` where the run has one (a cycle report carries `cycle:` and `attempt:` instead of `round:`), `round:` where a lead counts rounds. Unknown extra fields are permitted; a missing required payload field is not. Governs no heading of its own.
+
+## Failure narrative — optional
+
+Mandatory where the report carries a FAIL or a blocking finding, absent otherwise: what failed, why, and what was tried. Debug value concentrates here, which is why it is the one prose section that is ever required.
+
+## Notes of note — optional
+
+Non-obvious decisions, difficulties, and flagged blockers — only when non-empty. A fact that fits a frontmatter field belongs in the field, not here.
+
+## Null-exit reasoning — optional
+
+Present only where the workflow defines a null exit: why the run produced nothing, in the terms that workflow names.
+
+## Conformance
+
+Checked mechanically before the write lands. Each line is a string or a count, never a judgment.
+
+- Required frontmatter: `report`
+- `report` is one of: `cycle`, `verification`, `final-validation`, `review`, `feasibility`, `disclosure`
+- Line budgets, each counted from its `##` line to the next `##`, nested content included:
+  - `## Failure narrative` — 15 lines (optional)
+  - `## Notes of note` — 15 lines (optional)
+  - `## Null-exit reasoning` — 15 lines (optional)
+- Placeholder tokens that must not survive: `<feature-id>`, `<n>` — checked in frontmatter values and heading text, by exact spelling.
+
+## Skeleton
+
+---
+report: cycle
+feature: <feature-id>
+round: <n>
+---
+
+## Failure narrative
+
+## Notes of note
+
+---

@@ -1,0 +1,8 @@
+<!doctype html>
+<title>Dashboard · Tallyhouse</title>
+<h1>Open invoices</h1>
+<table>
+  {% for invoice, balance in rows %}
+  <tr><td>{{ invoice.number }}</td><td>{{ invoice.client_name }}</td><td>{{ balance }}</td></tr>
+  {% endfor %}
+</table>

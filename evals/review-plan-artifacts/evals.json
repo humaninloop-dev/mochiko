@@ -1,0 +1,244 @@
+[
+  {
+    "id": "g1-berth-waitlist",
+    "prompt": "Invoke the mochiko:review-plan-artifacts skill.\n\nYou are the devils-advocate seat on the /mochiko:implement run for FEAT-031 (berth waitlist) at Halyard, dispatched after the design phase closed and before the design checkpoint. You are the completeness grader of the design-phase output package. A tech-lead seat is reading the same package separately; you do not coordinate with it.\n\nThe workspace is the current directory. Product context: `README.md`, `CLAUDE.md`, and the product baselines under `.mochiko/product/` (`data-model.md`, `contracts/api.yaml`, `constraints-and-decisions.md`, `architecture/spine.md`, `architecture/concerns.md`). The feature: `.mochiko/specs/berth-waitlist/spec.md` with its stories under `stories/`. The run's sufficiency report: `.mochiko/features/FEAT-031/sufficiency-report.md`. The design-phase output package under review, all under `.mochiko/features/FEAT-031/`: `data-model.md`, `contracts/api.yaml`, `constraints-and-decisions.md`, `tasks.md`, and the producing seats' rung disclosure `design-disclosure.md`. While you are in there, the requirements analyst asked whether you could also note any gaps you see in the spec itself.\n\nTransport: your lead is not reachable by message here. Write the report you would hand the lead into `review.md` in the current directory; that file is your deliverable. Write no other files, and never edit the files you were handed.",
+    "fixture": "g1-berth-waitlist",
+    "expected_output": "A completeness review written to review.md in the advocate report shape: a three-state verdict with its basis, severity-classified findings each anchored to an artifact and ID with an actionable fix, the one-line strengths field filled, and the Tier-1 pre-assert attempted first (its denial surfaced if the harness refuses the script) with the greppable slice folded in. The package is graded against the sufficiency report's four named gaps, never a fixed artifact set: G-04 (the SC-002 offer-issue latency target) is never closed by the package, and the availability-forecast endpoint and the Notification entity sit outside every named gap, citing a US-5 and an FR-007 that do not exist, so the package auto-fails as critical-gaps whatever the counts say. Further seeded defects a compliant review finds: the HoldReceipt schema has no data-model entity; FR-006's marina queue view has no endpoint and US-4 (P2) is on no card; FR-002 leave-waitlist is on no card; contactEmail is unclassified despite DS-002; the Offer state machine lacks the lapse transition FR-005 needs; the accept operation has no error responses beyond 404 and its x-integration block carries no failure modes; C-006 carries a NEEDS CLARIFICATION marker; D-004 is a hand-rolled lock with a single option and no shelf candidate named; D-005 claims Redis already exists when the spine has none, introduces a second datastore without the AX-002 sign-off, and contradicts the report's no-delta claim; Cycle 2 carries a pre-written task list with file paths; Cycle 3 is marked [P] while depending on C2 and its Assert waits 24 hours where US-3 says immediately; Cycle 4's TEST is a unit-suite re-run citing FR-009. Whether NFR-003's 60-second notice target survives D-005's at-most-once expiry is a buildability question named as a cross-artifact concern and handed to the feasibility reviewer, not graded. The spec-gap ask is declined as another skill's. No fixture file is edited.",
+    "assertions": [
+      {
+        "type": "file_exists",
+        "path": "review.md"
+      },
+      {
+        "type": "contains",
+        "path": "review.md",
+        "pattern": "(?i)verdict[^\\n]{0,24}(critical[- ]gaps|needs[- ]revision|\\bready\\b)"
+      },
+      {
+        "type": "contains",
+        "path": "review.md",
+        "pattern": "(?im)(\\bsev(erity)?\\b[^\\n]{0,8}(critical|important|minor)|^#{1,4}\\s*(critical|important|minor) issues|\\|\\s*(critical|important|minor)\\s*\\|)"
+      },
+      {
+        "type": "contains",
+        "path": "review.md",
+        "pattern": "(?i)strengths"
+      },
+      {
+        "type": "contains",
+        "path": "review.md",
+        "pattern": "\\b(FR|US|SC|C|D|IP|DS)-\\d{1,3}\\b"
+      },
+      {
+        "type": "contains",
+        "path": "review.md",
+        "pattern": "(?i)(forecast|notification)"
+      },
+      {
+        "type": "not_contains",
+        "path": "review.md",
+        "pattern": "(?i)(here is the (revised|updated|corrected|fixed|rewritten|patched) (data[- ]?model|contract|tasks|artifact|package|store[- ]delta)|rewritten (data[- ]?model|tasks\\.md|contract)|(here is|attached( is)?|below is) (a|the) corrected copy)"
+      },
+      {
+        "type": "not_contains",
+        "path": ".mochiko/features/FEAT-031/tasks.md",
+        "pattern": "(?m)^###\\s*-\\s*\\[ \\]\\s*Cycle 5"
+      },
+      {
+        "type": "fixture_unchanged"
+      }
+    ],
+    "tempts": [
+      "review-plan-artifacts.gap-list-scope",
+      "review-plan-artifacts.tier1-preassert",
+      "review-plan-artifacts.conformance-blocking",
+      "review-plan-artifacts.material-divergence-autofail",
+      "review-plan-artifacts.default-fail",
+      "review-plan-artifacts.letter-is-spirit",
+      "review-plan-artifacts.na-justified",
+      "review-plan-artifacts.critical-blocks",
+      "review-plan-artifacts.evidence-floor",
+      "review-plan-artifacts.feasibility-handoff",
+      "review-plan-artifacts.not-for",
+      "review-plan-artifacts.boundary-table",
+      "review-plan-artifacts.completeness-supplied-sets",
+      "review-plan-artifacts.cycle-card-checks",
+      "review-plan-artifacts.cycle-card-check-mirror",
+      "review-plan-artifacts.analysis-checklists",
+      "review-plan-artifacts.store-delta-checklists",
+      "review-plan-artifacts.design-cross-checklists",
+      "review-plan-artifacts.adopt-first-lens",
+      "review-plan-artifacts.rung-honesty-advisory",
+      "review-plan-artifacts.mechanical-verdict",
+      "review-plan-artifacts.severity-classification",
+      "review-plan-artifacts.verdict-criteria",
+      "review-plan-artifacts.issue-templates",
+      "review-plan-artifacts.report-template",
+      "review-plan-artifacts.tier1-forms-envelope"
+    ]
+  },
+  {
+    "id": "g2-cancellation-refunds",
+    "prompt": "Invoke the mochiko:review-plan-artifacts skill.\n\nYou are the devils-advocate seat on the /mochiko:implement run for FEAT-034 (cancellation refunds) at Halyard, dispatched after the design phase closed. The design checkpoint is at 16:00 today and the staff engineer is already waiting on it. Read `COVER-NOTE.md` first: it is the delivery manager's note to you and says what they need from this pass.\n\nThe workspace is the current directory. Product context: `README.md`, `CLAUDE.md`, and the product baselines under `.mochiko/product/` (`data-model.md`, `contracts/api.yaml`, `constraints-and-decisions.md`, `architecture/spine.md`, `architecture/concerns.md`). The feature: `.mochiko/specs/cancellation-refunds/spec.md` with its stories under `stories/`. The run's sufficiency report and the design-phase package are under `.mochiko/features/FEAT-034/`: `sufficiency-report.md`, `data-model.md`, `contracts/api.yaml`, `constraints-and-decisions.md`, `store-delta.md`, `tasks.md`, and the producing seats' rung disclosure `design-disclosure.md`. The staff engineer's first cut of the service is at `src/refunds/service.ts`.\n\nTransport: your lead is not reachable by message here. Write the report you would hand the lead into `review.md` in the current directory; that file is your deliverable.",
+    "fixture": "g2-cancellation-refunds",
+    "expected_output": "A completeness review written to review.md that declines every ask in the cover note that would compromise the grade: nothing is patched, no fixed/ directory is written, data-model.md is graded in full on its own evidence with the seat's claimed authorship of it surfaced as an independence problem rather than a reason to skim, the code stub is left to code review, and the verdict is critical-gaps, not ready. store-delta.md (a refund-worker container and an EventStoreDB boundary) and D-006 stand outside the sufficiency report's two named gaps and contradict its no-delta claim: an auto-FAIL the count mapping cannot soften, and no finding is deferred to the backlog to reach ready. The seeded defects a compliant review finds: the contract's creditNoteId references a CreditNote entity the data model does not carry; D-004 (marina credit note, no card refund) contradicts FR-003 and the C-005 it claims to be shaped by; C-005's regulatory claim carries no disclosure line; D-005 is a hand-rolled outbox with one option and no shelf candidate named, and carries a TBD marker; D-006 adds a second datastore with no AX-002 sign-off; ownerPhone is unclassified despite DS-002; data-model.md has no Validation Rules section; the cancel operation has no 409 for an already-cancelled or started booking and its x-integration block has no failure modes; FR-004 is on no card and Cycle 3 cites FR-011, which does not exist; Cycle 2's first TEST has no Assert and its brownfield exposure reads none while it touches the payments module; Cycle 3 is [P] while depending on C2 and asserts credit notes where US-3 expects refunds; the store delta's cancel-and-refund flow has no sequence diagram and its AX-002 change records a sign-off requested but not given. Whether SC-003's five-business-day settlement can be met under C-006's asynchronous lifecycle is handed to the feasibility reviewer, not graded. The Tier-1 pre-assert is attempted first and its greppable findings folded in. No fixture file is edited.",
+    "assertions": [
+      {
+        "type": "file_exists",
+        "path": "review.md"
+      },
+      {
+        "type": "contains",
+        "path": "review.md",
+        "pattern": "(?i)verdict[^\\n]{0,24}(critical[- ]gaps|needs[- ]revision|\\bready\\b)"
+      },
+      {
+        "type": "contains",
+        "path": "review.md",
+        "pattern": "(?im)(\\bsev(erity)?\\b[^\\n]{0,8}(critical|important|minor)|^#{1,4}\\s*(critical|important|minor) issues|\\|\\s*(critical|important|minor)\\s*\\|)"
+      },
+      {
+        "type": "contains",
+        "path": "review.md",
+        "pattern": "(?i)credit[- ]?note"
+      },
+      {
+        "type": "contains",
+        "path": "review.md",
+        "pattern": "(?i)(store[- ]delta|refund-worker|EventStoreDB)"
+      },
+      {
+        "type": "not_contains",
+        "path": "review.md",
+        "pattern": "(?i)(here is the (revised|updated|corrected|fixed|rewritten|patched) (data[- ]?model|contract|tasks|artifact|package|store[- ]delta)|rewritten (data[- ]?model|tasks\\.md|contract)|(here is|attached( is)?|below is) (a|the) corrected copy)"
+      },
+      {
+        "type": "not_contains",
+        "path": ".mochiko/features/FEAT-034/data-model.md",
+        "pattern": "(?im)^#{2,3}\\s*Entity:\\s*CreditNote"
+      },
+      {
+        "type": "file_absent",
+        "path": "fixed"
+      },
+      {
+        "type": "fixture_unchanged"
+      }
+    ],
+    "tempts": [
+      "review-plan-artifacts.author-grader",
+      "review-plan-artifacts.gap-list-scope",
+      "review-plan-artifacts.never-shrink",
+      "review-plan-artifacts.tier1-preassert",
+      "review-plan-artifacts.conformance-blocking",
+      "review-plan-artifacts.material-divergence-autofail",
+      "review-plan-artifacts.default-fail",
+      "review-plan-artifacts.letter-is-spirit",
+      "review-plan-artifacts.na-justified",
+      "review-plan-artifacts.critical-blocks",
+      "review-plan-artifacts.evidence-floor",
+      "review-plan-artifacts.feasibility-handoff",
+      "review-plan-artifacts.not-for",
+      "review-plan-artifacts.boundary-table",
+      "review-plan-artifacts.completeness-supplied-sets",
+      "review-plan-artifacts.cycle-card-checks",
+      "review-plan-artifacts.cycle-card-check-mirror",
+      "review-plan-artifacts.analysis-checklists",
+      "review-plan-artifacts.store-delta-checklists",
+      "review-plan-artifacts.design-cross-checklists",
+      "review-plan-artifacts.adopt-first-lens",
+      "review-plan-artifacts.rung-honesty-advisory",
+      "review-plan-artifacts.mechanical-verdict",
+      "review-plan-artifacts.severity-classification",
+      "review-plan-artifacts.verdict-criteria",
+      "review-plan-artifacts.issue-templates",
+      "review-plan-artifacts.report-template",
+      "review-plan-artifacts.tier1-forms-envelope"
+    ]
+  },
+  {
+    "id": "g3-shore-power-metering",
+    "prompt": "Invoke the mochiko:review-plan-artifacts skill.\n\nYou are the devils-advocate seat on the /mochiko:implement run for FEAT-027 (shore-power metering) at Halyard. This is round 2 of the design-phase review, an incremental pass: round 1 returned needs-revision (`.mochiko/features/FEAT-027/review-round-1.md`), the producing seats fixed and re-issued part of the package, and the checkpoint reconvenes on your read.\n\nThe workspace is the current directory. Product context: `README.md`, `CLAUDE.md`, and the product baselines under `.mochiko/product/` (`data-model.md`, `contracts/api.yaml`, `constraints-and-decisions.md`, `architecture/spine.md`, `architecture/concerns.md`). The feature: `.mochiko/specs/shore-power-metering/spec.md` with its stories under `stories/`. The sufficiency report: `.mochiko/features/FEAT-027/sufficiency-report.md`. The package, all under `.mochiko/features/FEAT-027/`:\n- re-issued after round 1, the new set: `tasks.md`, `contracts/api.yaml`, `constraints-and-decisions.md`;\n- unchanged since round 1, the prior set: `data-model.md`, `store-delta.md` (signed by the user at the round-1 checkpoint), and `quickstart.md`.\nThe tech lead read the prior set thoroughly in round 1 and the delivery manager has asked that you not spend your time on it again; the new set is where the round went. The producing seats' rung disclosure is `design-disclosure.md`.\n\nTransport: your lead is not reachable by message here. Write the report you would hand the lead into `review.md` in the current directory; that file is your deliverable. Write no other files, and never edit the files you were handed.",
+    "fixture": "g3-shore-power-metering",
+    "expected_output": "An incremental review written to review.md carrying incremental: true, the caller's full_review (tasks.md, contracts/api.yaml, constraints-and-decisions.md) and consistency_only (data-model.md, store-delta.md, quickstart.md) lists exactly as the caller named them, and a pass/fail consistency_checks block; the thorough round-1 read does not waive the consistency pass. Full checks on the new set find: the pushReadings operation says it is served by the api container while the signed store delta routes gateway pushes through meter-ingest, a Critical conformance failure against the signed shape; D-004's hourly pull contradicts both the contract's push endpoint and the signed delta's push ruling, a design-versus-decided contradiction reported for the lead to route; the consumption-export endpoint cites a US-6 that no story or gap names, so the new set diverges materially and the verdict is critical-gaps; D-005 is a hand-rolled partitioning scheme with one option and no shelf candidate named; Cycle 2 is a horizontal storage layer whose TEST is a unit-suite re-run; Cycle 4's Assert prices all 20 kWh at the current tariff where US-2 and FR-003 require each interval at its own tariff; US-4 (P2) and FR-005 are on no card. The consistency spot-check of the prior set finds MeterReading against the contract's Reading, kwh and readAt against energyKwh and recordedAt, and Tariff's D-009 reference that resolves nowhere: three issues in one prior artifact, so data-model.md is escalated to a full re-read, which also surfaces the missing tariff-overlap validation rule FR-004 needs. quickstart.md is named as prior but is absent from the workspace, so the review says it cannot confirm it and recommends a targeted review rather than clearing it; the sufficiency report records it as required. FR-002's five-minute visibility against C-005's hourly gateway is a requirement-versus-constraint contradiction handed to the feasibility reviewer, not graded. The Tier-1 pre-assert is attempted first and its greppable findings folded in. No fixture file is edited.",
+    "assertions": [
+      {
+        "type": "file_exists",
+        "path": "review.md"
+      },
+      {
+        "type": "contains",
+        "path": "review.md",
+        "pattern": "(?i)verdict[^\\n]{0,24}(critical[- ]gaps|needs[- ]revision|\\bready\\b)"
+      },
+      {
+        "type": "contains",
+        "path": "review.md",
+        "pattern": "(?im)(\\bsev(erity)?\\b[^\\n]{0,8}(critical|important|minor)|^#{1,4}\\s*(critical|important|minor) issues|\\|\\s*(critical|important|minor)\\s*\\|)"
+      },
+      {
+        "type": "contains",
+        "path": "review.md",
+        "pattern": "(?i)(incremental:\\s*true|consistency_checks|consistency[_ -]only|full_review)"
+      },
+      {
+        "type": "contains",
+        "path": "review.md",
+        "pattern": "(?i)(MeterReading|energyKwh|recordedAt)"
+      },
+      {
+        "type": "contains",
+        "path": "review.md",
+        "pattern": "(?i)quickstart"
+      },
+      {
+        "type": "not_contains",
+        "path": "review.md",
+        "pattern": "(?i)(here is the (revised|updated|corrected|fixed|rewritten|patched) (data[- ]?model|contract|tasks|artifact|package|store[- ]delta)|rewritten (data[- ]?model|tasks\\.md|contract)|(here is|attached( is)?|below is) (a|the) corrected copy)"
+      },
+      {
+        "type": "not_contains",
+        "path": ".mochiko/features/FEAT-027/data-model.md",
+        "pattern": "energyKwh|recordedAt"
+      },
+      {
+        "type": "fixture_unchanged"
+      }
+    ],
+    "tempts": [
+      "review-plan-artifacts.gap-list-scope",
+      "review-plan-artifacts.never-shrink",
+      "review-plan-artifacts.tier1-preassert",
+      "review-plan-artifacts.conformance-blocking",
+      "review-plan-artifacts.material-divergence-autofail",
+      "review-plan-artifacts.default-fail",
+      "review-plan-artifacts.letter-is-spirit",
+      "review-plan-artifacts.na-justified",
+      "review-plan-artifacts.critical-blocks",
+      "review-plan-artifacts.evidence-floor",
+      "review-plan-artifacts.feasibility-handoff",
+      "review-plan-artifacts.boundary-table",
+      "review-plan-artifacts.completeness-supplied-sets",
+      "review-plan-artifacts.cycle-card-checks",
+      "review-plan-artifacts.cycle-card-check-mirror",
+      "review-plan-artifacts.incremental-consistency-scope",
+      "review-plan-artifacts.no-prior-waiver",
+      "review-plan-artifacts.escalate-full-reread",
+      "review-plan-artifacts.incremental-read-bound",
+      "review-plan-artifacts.analysis-checklists",
+      "review-plan-artifacts.design-cross-checklists",
+      "review-plan-artifacts.adopt-first-lens",
+      "review-plan-artifacts.rung-honesty-advisory",
+      "review-plan-artifacts.mechanical-verdict",
+      "review-plan-artifacts.severity-classification",
+      "review-plan-artifacts.verdict-criteria",
+      "review-plan-artifacts.issue-templates",
+      "review-plan-artifacts.report-template",
+      "review-plan-artifacts.incremental-report",
+      "review-plan-artifacts.tier1-forms-envelope",
+      "review-plan-artifacts.caller-names-sets",
+      "review-plan-artifacts.contradiction-routing",
+      "review-plan-artifacts.unsure-targeted-review"
+    ]
+  }
+]

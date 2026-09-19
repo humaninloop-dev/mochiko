@@ -136,10 +136,10 @@ the checker (`scripts/check-command-schema.py`), and the cited records.
   routes = contingency); its D6 changed-text fourth bucket absorbs a mass reword.
   *(Corrected at review, C1 — the open-state "its pre-edit baseline grid has not yet
   run" was already false at the record's final write:)* the grid RAN this session —
-  `evals/commands/implement/runs/optionA-grid/` holds a completed 18-run pre/post grid
+  `evals/plan/implement/runs/optionA-grid/` holds a completed 18-run pre/post grid
   (`old_ref: HEAD`, 3 scenarios × 3 replicates × 2 arms, $13.0973, runs pinned plugin
   v0.97.0). Its pre arm is the reusable HEAD baseline; its post arm is the six-block
-  `extends:` prototype; `evals/commands/run.py` was extended (uncommitted) with
+  `extends:` prototype; `evals/plan/run.py` was extended (uncommitted) with
   `extends:` resolution to support it — and its differ resolves `extends:` **before**
   diffing, so that grid's four-bucket diff reads the prototype as unchanged (a stated
   instrument limit, I1). The prototype itself sits uncommitted on the implement pair.
@@ -671,7 +671,7 @@ observable.yaml reconciled at F7/item 10 · falsifier present · rejected roads 
 GI-020 disclosure present · provenance anchors survive rewords · cargo-test claim
 accurate · F8 verified exact).
 **Lead verification of load-bearing review claims (pre-disposition):** C1 grid exists
-(`evals/commands/implement/runs/optionA-grid/summary.json`: `old_ref: HEAD`, arms
+(`evals/plan/implement/runs/optionA-grid/summary.json`: `old_ref: HEAD`, arms
 pre+post, replicates 3, $13.0973) · M1 HEAD is v0.97.0 · I7 BACKLOG "Desk FAIL-set
 widening … separate ruled pass" confirmed · I4 checker's bidirectional
 fail-label/segment check confirmed (`check-command-schema.py:311–316`) · C2 substance

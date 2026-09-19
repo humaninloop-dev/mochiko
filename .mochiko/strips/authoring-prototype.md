@@ -113,7 +113,7 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
 
 Ruling for every [v0.101.0] entry below: skill-content-schema D3 (three-home boundary) /
 D8/C4 (protected transfers), `DECISIONS.md` 2026-09-01 rows (record + wave-2 family-door
-rulings); census: `.mochiko/brainstorms/skill-content-schema/census-authoring.md` §A/§B (AP).
+rulings); census: `.mochiko/brainstorms/skill-content-schema/research/census-authoring.md` §A/§B (AP).
 Schema home: `plugins/mochiko/skills/authoring-prototype/schema.yaml`. Minted IDs carry the
 `authoring-prototype.` prefix (omitted below). Map — census row → minted ID:
 1 `letter-is-spirit` (C-A1 stub) · 2a **split** (lead-approved recorded deviation) →

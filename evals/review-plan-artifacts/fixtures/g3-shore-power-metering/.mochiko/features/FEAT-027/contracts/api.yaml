@@ -1,0 +1,127 @@
+# FEAT-027 contract delta over .mochiko/product/contracts/api.yaml — technical-analyst, 2026-09-05,
+# re-issued 2026-09-10 (round 2: pagination on the consumption list, Reading example added, a
+# consumption export for finance). Paths below are added; baseline paths unchanged. Session-cookie
+# auth for owner and marina operations; the gateway operation uses an HMAC-signed request.
+openapi: 3.0.3
+info:
+  title: Halyard API — FEAT-027 metering delta
+  version: "1.10.0-feat027"
+paths:
+  /gateway/readings:
+    post:
+      summary: The gateway pushes a batch of readings; served by the api container (FR-001, US-1)
+      operationId: pushReadings
+      security: [{gatewayHmac: []}]
+      requestBody:
+        required: true
+        content: {application/json: {schema: {$ref: '#/components/schemas/ReadingBatch'}}}
+      responses:
+        '202': {description: Accepted; duplicates dropped}
+        '400': {$ref: '#/components/responses/BadRequest'}
+        '401': {description: Bad signature, content: {application/problem+json: {schema: {$ref: '#/components/schemas/Problem'}}}}
+      x-integration:
+        system: Enerlink gateway (per marina)
+        protocol: HTTPS, HMAC-SHA256 signed body
+        api_version: "v3"
+        criticality: Degraded
+        auth: Per-marina shared secret from the secrets manager
+        failure_modes:
+          - failure: Gateway unreachable for more than 15 min
+            detection: No batch received for a marina with metered berths
+            impact: Consumption stale; invoice lines at risk
+            fallback: Alert (AX-011); backfill from the gateway store when it returns (FR-005)
+          - failure: Batch with a bad signature
+            detection: HMAC mismatch
+            impact: Batch rejected
+            fallback: 401; alert after 3 consecutive rejections for one marina
+  /berths/{berthId}/consumption:
+    get:
+      summary: An owner's consumption for the current stay, per reading, newest first (FR-002, US-1)
+      operationId: getConsumption
+      parameters:
+        - {name: berthId, in: path, required: true, schema: {type: string, format: uuid}}
+        - {name: cursor, in: query, required: false, schema: {type: string}}
+        - {name: limit, in: query, required: false, schema: {type: integer, minimum: 1, maximum: 500, default: 100}}
+      responses:
+        '200': {description: Readings and running total, content: {application/json: {schema: {$ref: '#/components/schemas/Consumption'}}}}
+        '404': {$ref: '#/components/responses/NotFound'}
+  /marinas/{marinaId}/tariffs:
+    put:
+      summary: Add a tariff for a validity period; overlapping periods are refused (FR-004, US-3)
+      operationId: putTariff
+      parameters:
+        - {name: marinaId, in: path, required: true, schema: {type: string, format: uuid}}
+      requestBody:
+        required: true
+        content: {application/json: {schema: {$ref: '#/components/schemas/TariffRequest'}}}
+      responses:
+        '201': {description: Tariff saved, content: {application/json: {schema: {$ref: '#/components/schemas/Tariff'}}}}
+        '400': {$ref: '#/components/responses/BadRequest'}
+        '403': {description: Caller is not staff at this marina, content: {application/problem+json: {schema: {$ref: '#/components/schemas/Problem'}}}}
+        '409': {description: Validity period overlaps an existing tariff; the overlapping tariff is named in detail, content: {application/problem+json: {schema: {$ref: '#/components/schemas/Problem'}}}}
+  /marinas/{marinaId}/consumption-export:
+    get:
+      summary: CSV of every reading at the marina for a month, for finance (US-6)
+      operationId: exportConsumption
+      parameters:
+        - {name: marinaId, in: path, required: true, schema: {type: string, format: uuid}}
+        - {name: month, in: query, required: true, schema: {type: string, pattern: '^\\d{4}-\\d{2}$'}}
+      responses:
+        '200': {description: CSV, content: {text/csv: {schema: {type: string}}}}
+        '404': {$ref: '#/components/responses/NotFound'}
+components:
+  securitySchemes:
+    gatewayHmac: {type: apiKey, in: header, name: X-Enerlink-Signature}
+  responses:
+    BadRequest: {description: Invalid request, content: {application/problem+json: {schema: {$ref: '#/components/schemas/Problem'}}}}
+    NotFound: {description: Not found, content: {application/problem+json: {schema: {$ref: '#/components/schemas/Problem'}}}}
+  schemas:
+    Problem:
+      type: object
+      required: [type, title, status, correlationId]
+      properties:
+        type: {type: string, format: uri}
+        title: {type: string}
+        status: {type: integer}
+        detail: {type: string}
+        correlationId: {type: string}
+    ReadingBatch:
+      type: object
+      required: [marinaId, readings]
+      properties:
+        marinaId: {type: string, format: uuid}
+        readings: {type: array, items: {$ref: '#/components/schemas/Reading'}}
+    Reading:
+      type: object
+      required: [gatewayMeterId, recordedAt, energyKwh]
+      properties:
+        id: {type: string, format: uuid}
+        gatewayMeterId: {type: string}
+        recordedAt: {type: string, format: date-time}
+        energyKwh: {type: number}
+        source: {type: string, enum: [gateway, backfill]}
+      example: {gatewayMeterId: "KIL-0042", recordedAt: "2026-09-10T10:00:00Z", energyKwh: 1234.567, source: gateway}
+    Consumption:
+      type: object
+      required: [berthId, totalKwh, data]
+      properties:
+        berthId: {type: string, format: uuid}
+        totalKwh: {type: number}
+        data: {type: array, items: {$ref: '#/components/schemas/Reading'}}
+        nextCursor: {type: string, nullable: true}
+    TariffRequest:
+      type: object
+      required: [pencePerKwh, validFrom]
+      properties:
+        pencePerKwh: {type: integer, minimum: 0}
+        validFrom: {type: string, format: date}
+        validTo: {type: string, format: date, nullable: true}
+    Tariff:
+      type: object
+      required: [id, marinaId, pencePerKwh, validFrom]
+      properties:
+        id: {type: string, format: uuid}
+        marinaId: {type: string, format: uuid}
+        pencePerKwh: {type: integer}
+        validFrom: {type: string, format: date}
+        validTo: {type: string, format: date, nullable: true}

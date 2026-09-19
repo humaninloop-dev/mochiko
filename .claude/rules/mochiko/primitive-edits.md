@@ -264,17 +264,25 @@ log by construction, so schema-content edits take no strip entry. The human-read
 
   Rulings: `.mochiko/brainstorms/skill-content-schema/record.md` D1–D9 as amended
   (`DECISIONS.md` 2026-09-01) · the census inventory
-  `.mochiko/brainstorms/skill-content-schema/census.md` (§E kind retirement · §H section
+  `.mochiko/brainstorms/skill-content-schema/research/census.md` (§E kind retirement · §H section
   set · J-7 cross-directory pointers) · the authoring-family census
-  `.mochiko/brainstorms/skill-content-schema/census-authoring.md` (§I labels · J-1
+  `.mochiko/brainstorms/skill-content-schema/research/census-authoring.md` (§I labels · J-1
   section set · J-6 budget · J-7 first-seeds) · the patterns-family census
-  `.mochiko/brainstorms/skill-content-schema/census-patterns.md` (§B section proposal ·
+  `.mochiko/brainstorms/skill-content-schema/research/census-patterns.md` (§B section proposal ·
   §ROAD rejection · §I labels · J-P2 first-strips · J-P5 two-arm/overage) · the
   small-families census
-  `.mochiko/brainstorms/skill-content-schema/census-small-families.md` (§B six-set-reuse
+  `.mochiko/brainstorms/skill-content-schema/research/census-small-families.md` (§B six-set-reuse
   fit table · §C zero common blocks · §D abort-tripped — the dense five convert on the
   B/C drivers · J2-8 dual-homing twins · J2-9 ruled repair) ·
   `.mochiko/decisions/2026-08-28-near-dup-convergence.md` R1–R6.
+
+**Persona edits with an eval kit carry an advisory grid read.** When the edited primitive is
+`plugins/mochiko/agents/<persona>.md` and `evals/agents/<persona>/` exists, the audit brief cites a
+`pre`/`post` plan-only grid — `uv run evals/run.py agent grid <persona> --arms pre,post`
+(`pre` at the kit's pinned `refs.pre`, `post` the working tree), judged and reported — and the report's
+regression, adoption, and band lines are quoted in the strip entry (or the decision row for a pure
+addition). Advisory only, never a gate (ADR `2026-09-09-persona-edit-advisory-grid`, harness D2,
+GI-019); the landing re-pins `refs.pre` to the landed ref.
 
 **Protected content leaves ONLY by ruling.** A line in a record's protected set, marked `KEPT:`, or
 traceable to a `DECISIONS.md` row may be removed only as a recorded supersession-by-ruling. A silent

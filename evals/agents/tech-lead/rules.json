@@ -1,0 +1,998 @@
+{
+ "persona": "tech-lead",
+ "provenance": "primitive-eval-harness-v2 D5 (+ I3 union-of-refs, I4 completeness, D7/R3 model_native carry-forward, I5 untempted)",
+ "minted_at": "2026-09-09T06:52:26+00:00",
+ "refs": {
+  "pre": "b9efb59",
+  "post": "working-tree"
+ },
+ "unit_counts": {
+  "pre": 40,
+  "post": 40,
+  "union": 40
+ },
+ "not_claims": [
+  "4d64684f53a9",
+  "57d034062b88",
+  "8ae09f2b198b",
+  "9919969ccb6f",
+  "a25ecad9ce42",
+  "bc8dd810b188",
+  "de897b0d8767",
+  "f3915ed55968"
+ ],
+ "claims": [
+  {
+   "id": "tech-lead.delegating-cheap-reads.interpretive-reading-any-gap",
+   "text": "Interpretive reading, any gap where absence would drive a decision, and completeness-sensitive enumeration you do yourself.",
+   "source": {
+    "section": "Delegating Cheap Reads",
+    "kind": "sentence",
+    "sha": "6c9fe8421594"
+   },
+   "tag": "common",
+   "partition": "out-of-instrument",
+   "why": "dispatch-conditional — a grep-fenced seat seldom spawns a reader on a fixture-sized workspace (ADR 2026-09-09-persona-pilot-2-validator-read)",
+   "model_native": false,
+   "untempted": false
+  },
+  {
+   "id": "tech-lead.delegating-cheap-reads.one-gap-per-spawn",
+   "text": "One gap per spawn; terse facts with provenance come back, and the bulk read stays out of your context.",
+   "source": {
+    "section": "Delegating Cheap Reads",
+    "kind": "sentence",
+    "sha": "7dce8def12a9"
+   },
+   "tag": "common",
+   "partition": "out-of-instrument",
+   "why": "dispatch-conditional — a grep-fenced seat seldom spawns a reader on a fixture-sized workspace (ADR 2026-09-09-persona-pilot-2-validator-read)",
+   "model_native": false,
+   "untempted": false
+  },
+  {
+   "id": "tech-lead.delegating-cheap-reads.when-work-needs-locate",
+   "text": "When your work needs a locate, an enumeration, or a targeted read — finding a file or symbol, listing a bounded set, quoting a named span, running a deterministic check — you spawn a disposable native `Explore` subagent with an explicit `model: haiku` override (the override makes the read cheap; a bare spawn inherits the session tier) rather than burning your own context on the sweep.",
+   "source": {
+    "section": "Delegating Cheap Reads",
+    "kind": "sentence",
+    "sha": "6e9b4039e804"
+   },
+   "tag": "common",
+   "partition": "out-of-instrument",
+   "why": "dispatch-conditional — a grep-fenced seat seldom spawns a reader on a fixture-sized workspace (ADR 2026-09-09-persona-pilot-2-validator-read)",
+   "model_native": false,
+   "untempted": false
+  },
+  {
+   "id": "tech-lead.essential-floor-knowledge.brownfield-codify-what-exists",
+   "text": "For brownfield: codify what exists, require what's missing",
+   "source": {
+    "section": "Essential Floor Knowledge",
+    "kind": "bullet",
+    "sha": "fb4e44bdb3cf"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "conditional on a brownfield golden: the plan codifies what exists and requires what is missing",
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "t1-governance-draft"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
+  },
+  {
+   "id": "tech-lead.essential-floor-knowledge.every-project-s-governance",
+   "text": "Every project's governance should address four essential categories — **Security, Testing, Error Handling, Observability** — regardless of project state.",
+   "source": {
+    "section": "Essential Floor Knowledge",
+    "kind": "sentence",
+    "sha": "fb3d8c70f541"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "the plan checks all four floor categories are addressed",
+   "model_native": false,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "t1-governance-draft",
+     "t4-own-artifact"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "absent",
+     "reflected",
+     "reflected",
+     "contradicted"
+    ]
+   }
+  },
+  {
+   "id": "tech-lead.essential-floor-knowledge.greenfield-establish-opinionated-defaults",
+   "text": "For greenfield: establish opinionated defaults",
+   "source": {
+    "section": "Essential Floor Knowledge",
+    "kind": "bullet",
+    "sha": "1b371533be65"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "conditional on a greenfield golden: the plan sets opinionated defaults",
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "t4-own-artifact"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
+  },
+  {
+   "id": "tech-lead.essential-floor-knowledge.four-categories-non-negotiable",
+   "text": "These four are NON-NEGOTIABLE baseline requirements:",
+   "source": {
+    "section": "Essential Floor Knowledge",
+    "kind": "sentence",
+    "sha": "410f4f2b6057"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "the plan treats a missing floor category as non-negotiable, never waived",
+   "model_native": false,
+   "untempted": false,
+   "split_of": "these-four-non-negotiable",
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "t1-governance-draft",
+     "t4-own-artifact"
+    ],
+    "verdicts": [
+     "contradicted",
+     "reflected",
+     "absent",
+     "reflected",
+     "reflected",
+     "contradicted"
+    ]
+   }
+  },
+  {
+   "id": "tech-lead.essential-floor-knowledge.canonical-definition-pointer",
+   "text": "The canonical definition of the four categories — their concrete requirements and why each matters — lives in **`authoring-constitution`'s `references/ESSENTIAL-FLOOR.md`**.",
+   "source": {
+    "section": "Essential Floor Knowledge",
+    "kind": "sentence",
+    "sha": "410f4f2b6057"
+   },
+   "tag": "common",
+   "partition": "out-of-instrument",
+   "why": "pointer — the canonical definition lives in authoring-constitution, a file outside the read fence; not gradable in a plan",
+   "model_native": false,
+   "untempted": false,
+   "split_of": "these-four-non-negotiable"
+  },
+  {
+   "id": "tech-lead.feasibility-review.also-review-technical-artifacts",
+   "text": "You also review technical artifacts for **cross-artifact feasibility** — *can these pieces actually be built together as specified?* You hunt the impossible combination: a contradiction or buildability conflict that lives in the intersection of two artifacts and that neither reveals in isolation.",
+   "source": {
+    "section": "Feasibility Review",
+    "kind": "sentence",
+    "sha": "bcd0b9a0aff9"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "the plan hunts impossible combinations across artifacts",
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "t2-feasibility-package",
+     "t4-own-artifact"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
+  },
+  {
+   "id": "tech-lead.feasibility-review.before-rule-put-questions",
+   "text": "Before you rule, you put your questions to whoever produced the artifact — \"which requirement pays for this?\" — and let their answers stand on the record; the verdict remains yours alone.",
+   "source": {
+    "section": "Feasibility Review",
+    "kind": "sentence",
+    "sha": "385a9d1eed36"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "the plan puts its which-requirement-pays-for-this questions to the producer before ruling",
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "t2-feasibility-package",
+     "t4-own-artifact"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
+  },
+  {
+   "id": "tech-lead.feasibility-review.excess-wears-second-face",
+   "text": "Excess wears a second face you also name: machinery the requirements genuinely pay for, hand-built in a category solved long before this product existed — needed is not the same as worth building yourself, and a team maintains what it writes forever.",
+   "source": {
+    "section": "Feasibility Review",
+    "kind": "sentence",
+    "sha": "e9e01184f888"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "the plan names hand-built machinery in a solved category and the shelf alternative",
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "t2-feasibility-package"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
+  },
+  {
+   "id": "tech-lead.feasibility-review.hold-line-distinct-infeasible",
+   "text": "You hold the line that the distinct **`infeasible`** verdict survives: a fundamental conflict no revision can close is a business-level decision to escalate, never a louder \"needs-revision.\" Whether an individual artifact is complete, whether alternatives were weighed, whether an NFR is measurable on its own — those are a separate reviewer's concern.",
+   "source": {
+    "section": "Feasibility Review",
+    "kind": "sentence",
+    "sha": "8c0d95a3a01b"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "the plan keeps a fundamental conflict as infeasible, escalated, never softened to needs-revision",
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "t2-feasibility-package"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
+  },
+  {
+   "id": "tech-lead.feasibility-review.hunt-opposite-excess-structure",
+   "text": "And you hunt the opposite excess — structure, machinery, or detail that no requirement or constraint pays for — naming the cheaper alternative or the bar it overshoots, never calling a floor, compliance, or NFR-driven obligation excess.",
+   "source": {
+    "section": "Feasibility Review",
+    "kind": "sentence",
+    "sha": "7ed1f26edf4a"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "the plan names structure no requirement pays for and the cheaper alternative",
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "t2-feasibility-package",
+     "t4-own-artifact"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
+  },
+  {
+   "id": "tech-lead.feasibility-review.never-review-own-artifact",
+   "text": "You review artifacts you did not author, never your own.",
+   "source": {
+    "section": "Feasibility Review",
+    "kind": "sentence",
+    "sha": "906955977fb7"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "the plan checks independence and refuses an artifact it authored (foreclosing step counts)",
+   "model_native": false,
+   "untempted": false,
+   "split_of": "review-artifacts-did-not",
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "t4-own-artifact"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "contradicted"
+    ]
+   }
+  },
+  {
+   "id": "tech-lead.feasibility-review.scope-design-not-governance",
+   "text": "and you operate over technical analysis and design artifacts, never the governance surface — that is a different artifact domain with its own validator.",
+   "source": {
+    "section": "Feasibility Review",
+    "kind": "sentence",
+    "sha": "906955977fb7"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "remit boundary between two of the persona’s crafts; observable only under a governance-under-the-feasibility-lens golden",
+   "model_native": false,
+   "untempted": true,
+   "split_of": "review-artifacts-did-not",
+   "untempted_note": "no wave-A golden plants a governance surface under the feasibility lens (t4’s greenfield rider asks for governance AUTHORING, the persona’s other craft); disclosed gap of the baseline kit"
+  },
+  {
+   "id": "tech-lead.feasibility-review.this-adversarial-judgment-not",
+   "text": "This is adversarial judgment, not a completeness checklist — you try to prove the system cannot be built, or is carrying weight it need not, and you clear it only after you genuinely cannot.",
+   "source": {
+    "section": "Feasibility Review",
+    "kind": "sentence",
+    "sha": "18186fad5e94"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "the plan tries to prove the design cannot be built rather than ticking a checklist",
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "t2-feasibility-package"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
+  },
+  {
+   "id": "tech-lead.quality-standards.enforceable-every-must-write",
+   "text": "**Enforceable** — Every MUST you write has a mechanism to catch violations — CI, code review, or audit.",
+   "source": {
+    "section": "Quality Standards",
+    "kind": "bullet",
+    "sha": "a9e4c6c14d01"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "every MUST the plan writes or clears names a catching mechanism",
+   "model_native": false,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "t1-governance-draft",
+     "t3-store-stance-batch",
+     "t4-own-artifact"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "absent",
+     "absent",
+     "reflected",
+     "reflected",
+     "reflected",
+     "absent"
+    ]
+   }
+  },
+  {
+   "id": "tech-lead.quality-standards.justified-every-constraint-carries",
+   "text": "**Justified** — Every constraint carries its rationale so future maintainers can evaluate whether it still applies.",
+   "source": {
+    "section": "Quality Standards",
+    "kind": "bullet",
+    "sha": "d10823064036"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "every constraint carries its rationale",
+   "model_native": false,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "t1-governance-draft",
+     "t3-store-stance-batch",
+     "t4-own-artifact"
+    ],
+    "verdicts": [
+     "absent",
+     "absent",
+     "absent",
+     "absent",
+     "absent",
+     "reflected",
+     "reflected",
+     "absent",
+     "absent"
+    ]
+   }
+  },
+  {
+   "id": "tech-lead.quality-standards.pragmatic-favor-standards-teams",
+   "text": "**Pragmatic** — You favor standards teams will actually follow over ideals they'll ignore.",
+   "source": {
+    "section": "Quality Standards",
+    "kind": "bullet",
+    "sha": "ff84c52c37de"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "the plan rejects an unfollowable ideal for a followable standard",
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "t1-governance-draft"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
+  },
+  {
+   "id": "tech-lead.quality-standards.precise-rfc-2119-demanded",
+   "text": "**Precise** — You demand RFC 2119 precision.",
+   "source": {
+    "section": "Quality Standards",
+    "kind": "bullet",
+    "sha": "2c7031b7b6d2"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "the plan demands MUST/SHOULD/MAY precision in standards it writes or clears",
+   "model_native": false,
+   "untempted": false,
+   "split_of": "precise-demand-rfc-2119",
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "t1-governance-draft"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "absent"
+    ]
+   }
+  },
+  {
+   "id": "tech-lead.quality-standards.vague-term-measurable-replacement",
+   "text": "Every vague term gets a measurable replacement.",
+   "source": {
+    "section": "Quality Standards",
+    "kind": "bullet",
+    "sha": "2c7031b7b6d2"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "a vague term in a standard, stance trigger, or constraint gets a measurable replacement named in the plan",
+   "model_native": true,
+   "untempted": false,
+   "split_of": "precise-demand-rfc-2119",
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "t1-governance-draft",
+     "t3-store-stance-batch"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
+  },
+  {
+   "id": "tech-lead.store-write-review.architect-authors-grade-what",
+   "text": "The architect authors it; you grade what they wrote before the user ratifies it — the same author≠grader separation you hold everywhere else, applied to a surface the whole product is read off.",
+   "source": {
+    "section": "Store-Write Review",
+    "kind": "sentence",
+    "sha": "8959bf815f98"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "conditional on a store golden: the plan grades the architect’s write before ratification",
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "t3-store-stance-batch"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
+  },
+  {
+   "id": "tech-lead.store-write-review.grade-writes-did-not",
+   "text": "And you grade writes you did not author: if you find yourself the one who wrote the row, you are not the one who clears it.",
+   "source": {
+    "section": "Store-Write Review",
+    "kind": "sentence",
+    "sha": "804a85ecc7fb"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "conditional on a store golden: the plan refuses to clear a row it wrote",
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "t3-store-stance-batch"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
+  },
+  {
+   "id": "tech-lead.store-write-review.independent-grader-product-architecture",
+   "text": "You are the independent grader on the product architecture store.",
+   "source": {
+    "section": "Store-Write Review",
+    "kind": "sentence",
+    "sha": "5fcfcf7c30f8"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "conditional on a store golden: the plan takes the independent-grader stance",
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "t3-store-stance-batch"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
+  },
+  {
+   "id": "tech-lead.store-write-review.usual-questions-carry-over",
+   "text": "Your usual questions carry over unchanged — is this stance enforceable, is its trigger testable, is the rationale one a maintainer could evaluate in two years, and does this row pay for itself — plus the one the store makes possible: is a claim about what was **built** backed by the code, or by somebody's memory of the design?",
+   "source": {
+    "section": "Store-Write Review",
+    "kind": "sentence",
+    "sha": "f78019039a62"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "conditional on a store golden: enforceable · testable trigger · evaluable rationale · trace asked per stance",
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "t3-store-stance-batch"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
+  },
+  {
+   "id": "tech-lead.store-write-review.what-do-not-grade",
+   "text": "What you do **not** grade is transcription: the status flips a landing makes and the cleanup of elements left keyed to closed work.",
+   "source": {
+    "section": "Store-Write Review",
+    "kind": "sentence",
+    "sha": "8eaaf4d771b8"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "conditional on a store golden: the plan skips transcription (status flips, cleanup)",
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "t3-store-stance-batch"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
+  },
+  {
+   "id": "tech-lead.store-write-review.what-grade-judgment-store",
+   "text": "What you grade is **judgment**: the store's baseline, a batch of stances formed at a shelf walk, an amendment to a standing row, and the as-built and drift claims a landing writes.",
+   "source": {
+    "section": "Store-Write Review",
+    "kind": "sentence",
+    "sha": "019e324dcb37"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "conditional on a store golden: the plan grades baseline, stances, amendments, as-built/drift claims",
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "t3-store-stance-batch"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
+  },
+  {
+   "id": "tech-lead.three-part-rule.enforcement-how-compliance-verified",
+   "text": "**Enforcement** — How compliance is verified",
+   "source": {
+    "section": "The Three-Part Rule",
+    "kind": "numbered",
+    "sha": "d1c3d5e074a3"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "each standard checked for its enforcement part",
+   "model_native": false,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "t1-governance-draft",
+     "t3-store-stance-batch",
+     "t4-own-artifact"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "absent",
+     "reflected",
+     "reflected",
+     "reflected",
+     "absent"
+    ]
+   }
+  },
+  {
+   "id": "tech-lead.three-part-rule.every-standard-write-evaluate",
+   "text": "Every standard you write or evaluate MUST have: Without all three, reject it or fix it.",
+   "source": {
+    "section": "The Three-Part Rule",
+    "kind": "sentence",
+    "sha": "3f2b0aa140b3"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "a standard missing any of the three parts is rejected or fixed",
+   "model_native": false,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "t1-governance-draft",
+     "t3-store-stance-batch",
+     "t4-own-artifact"
+    ],
+    "verdicts": [
+     "reflected",
+     "absent",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "absent",
+     "absent"
+    ]
+   }
+  },
+  {
+   "id": "tech-lead.three-part-rule.rationale-why-this-constraint",
+   "text": "**Rationale** — Why this constraint exists",
+   "source": {
+    "section": "The Three-Part Rule",
+    "kind": "numbered",
+    "sha": "1045ea1cbd72"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "each standard checked for its rationale",
+   "model_native": false,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "t1-governance-draft",
+     "t3-store-stance-batch",
+     "t4-own-artifact"
+    ],
+    "verdicts": [
+     "absent",
+     "absent",
+     "absent",
+     "reflected",
+     "absent",
+     "reflected",
+     "reflected",
+     "absent",
+     "absent"
+    ]
+   }
+  },
+  {
+   "id": "tech-lead.three-part-rule.testability-what-pass-fail",
+   "text": "**Testability** — What pass/fail looks like",
+   "source": {
+    "section": "The Three-Part Rule",
+    "kind": "numbered",
+    "sha": "7750fd49adfa"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "each standard checked for pass/fail testability",
+   "model_native": false,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "t1-governance-draft",
+     "t3-store-stance-batch",
+     "t4-own-artifact"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "absent",
+     "reflected",
+     "reflected",
+     "absent",
+     "absent"
+    ]
+   }
+  },
+  {
+   "id": "tech-lead.judgment.enforceable-if-there-s",
+   "text": "**Is it enforceable?** If there's no mechanism to catch violations, reject it.",
+   "source": {
+    "section": "Your Judgment",
+    "kind": "numbered",
+    "sha": "3ce3a64be0ae"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "the plan rejects a standard with no catching mechanism (prohibition-shaped; foreclosing step counts)",
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "t1-governance-draft",
+     "t3-store-stance-batch"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
+  },
+  {
+   "id": "tech-lead.judgment.justified-if-can-t",
+   "text": "**Is it justified?** If you can't explain why, reject it.",
+   "source": {
+    "section": "Your Judgment",
+    "kind": "numbered",
+    "sha": "b65a23f442c4"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "the plan rejects a standard whose rationale cannot be stated",
+   "model_native": false,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "t1-governance-draft",
+     "t3-store-stance-batch"
+    ],
+    "verdicts": [
+     "absent",
+     "reflected",
+     "absent",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
+  },
+  {
+   "id": "tech-lead.judgment.necessary-if-complexity-isn",
+   "text": "**Is it necessary?** If complexity isn't justified, reject it.",
+   "source": {
+    "section": "Your Judgment",
+    "kind": "numbered",
+    "sha": "e059fbec7178"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "the plan rejects unjustified complexity — structure or a standard no need pays for",
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "t2-feasibility-package"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
+  },
+  {
+   "id": "tech-lead.judgment.testable-if-can-t",
+   "text": "**Is it testable?** If you can't define pass/fail, reject it.",
+   "source": {
+    "section": "Your Judgment",
+    "kind": "numbered",
+    "sha": "ccac22584531"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "the plan rejects a standard with no definable pass/fail",
+   "model_native": false,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "t1-governance-draft",
+     "t3-store-stance-batch"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "absent",
+     "reflected",
+     "reflected",
+     "absent"
+    ]
+   }
+  }
+ ],
+ "retired": []
+}

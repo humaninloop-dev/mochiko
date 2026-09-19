@@ -1,0 +1,27 @@
+# Render blueprint — crewboard. No new services this quarter (budget); vendor additions
+# wait on the SOC 2 audit (2027-Q1).
+services:
+  - type: web
+    name: api
+    runtime: python
+    plan: standard
+    numInstances: 2
+    startCommand: uvicorn crewboard.api.main:app --host 0.0.0.0 --port 10000
+  - type: worker
+    name: worker
+    runtime: python
+    plan: starter
+    startCommand: celery -A crewboard.worker.celery_app worker -B -Q celery,slow --concurrency 4
+    # Static outbound IPs: enabled in the dashboard 2026-05-12 (allow-listed at Xero).
+  - type: web
+    name: web
+    runtime: static
+    staticPublishPath: web/dist
+  - type: redis
+    name: redis
+    plan: starter
+    ipAllowList: []
+databases:
+  - name: db
+    plan: standard
+    postgresMajorVersion: "16"

@@ -121,7 +121,7 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
 ## [v0.100.0] Skill-content-schema conversion — body obligations moved to `schema.yaml`; the pair is now the graded unit
 
 Wave context: skill-content-schema D1–D9 as amended (`.mochiko/brainstorms/skill-content-schema/record.md`,
-`DECISIONS.md` 2026-09-01); census referent `.mochiko/brainstorms/skill-content-schema/census.md` §A/§B
+`DECISIONS.md` 2026-09-01); census referent `.mochiko/brainstorms/skill-content-schema/research/census.md` §A/§B
 (VC rows). Census-row → minted-ID map: 1 `set-not-file` · 2 `every-set-must-pass` · 3 `letter-is-spirit`
 (keep-distinct allowlist edge vs `review-plan-artifacts` per census §C) · 4 `not-for` · 5 `from-file-floor` ·
 6 `input-set` · 7 `missing-input-fails` · 8 `superseded-artifact-flag` · 9 `checklist-assembly` ·

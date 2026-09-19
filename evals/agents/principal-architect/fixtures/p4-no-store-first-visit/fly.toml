@@ -1,0 +1,32 @@
+app = "tapestry-prod"
+primary_region = "lhr"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  NODE_ENV = "production"
+  # DATABASE_URL, REDIS_URL (Upstash), STRIPE_SECRET, STRIPE_WEBHOOK_SECRET, SESSION_SECRET
+  # are Fly secrets.
+
+[processes]
+  api = "node apps/api/dist/server.js"
+  worker = "node apps/worker/dist/index.js"
+
+[[services]]
+  processes = ["api"]
+  internal_port = 3000
+  protocol = "tcp"
+  [[services.ports]]
+    port = 443
+    handlers = ["tls", "http"]
+
+[[vm]]
+  processes = ["api"]
+  size = "shared-cpu-2x"
+  memory = "1gb"
+
+[[vm]]
+  processes = ["worker"]
+  size = "shared-cpu-1x"
+  memory = "512mb"

@@ -1,0 +1,99 @@
+// Pallet — schema excerpt: the models the standing-orders feature touches.
+// Ids are prefixed ULIDs (rtl_, sup_, prd_, ord_, pay_); money is integer minor units.
+
+enum PaymentTerms {
+  card_on_file
+  direct_debit
+  invoice_30d      // 214 retailers pay by bank transfer against a monthly statement
+}
+
+model Retailer {
+  id             String         @id
+  name           String
+  contact_email  String
+  contact_phone  String?
+  payment_terms  PaymentTerms
+  payment_method PaymentMethod? // null for every invoice_30d retailer, and for 31 card_on_file retailers who never finished setup
+  orders         Order[]
+  created_at     DateTime       @default(now())
+}
+
+model PaymentMethod {
+  id               String   @id
+  retailer_id      String   @unique
+  retailer         Retailer @relation(fields: [retailer_id], references: [id])
+  stripe_pm_id     String   // Stripe PaymentMethod id — the only thing Pallet holds
+  kind             String   // "card" | "bacs_debit"
+  bacs_mandate_ref String?  // shown on the retailer's bank statement
+  last4            String
+}
+
+model Supplier {
+  id          String    @id
+  name        String
+  cutoff_time DateTime  @db.Time // stored as typed on the supplier's settings page; the worker machine runs in UTC
+  route_days  Int[]     // ISO weekdays the supplier delivers (1 = Monday)
+  products    Product[]
+  orders      Order[]
+}
+
+enum ProductStatus {
+  active
+  paused   // hidden by the supplier for a while (seasonal)
+  delisted
+}
+
+model Product {
+  id          String        @id
+  supplier_id String
+  supplier    Supplier      @relation(fields: [supplier_id], references: [id])
+  name        String
+  unit        String        // "case of 12", "kg", "tray"
+  price_minor Int           // current wholesale price; suppliers change prices roughly monthly
+  currency    String        @default("GBP")
+  status      ProductStatus @default(active)
+  updated_at  DateTime      @updatedAt
+}
+
+enum OrderStatus {
+  placed
+  accepted
+  delivered
+  cancelled
+}
+
+model Order {
+  id            String      @id
+  retailer_id   String
+  supplier_id   String
+  status        OrderStatus @default(placed)
+  placed_at     DateTime
+  delivery_date DateTime    @db.Date
+  total_minor   Int
+  currency      String
+  authorised_by String      // the user who placed it
+  lines         OrderLine[]
+  payment       Payment?
+  retailer      Retailer    @relation(fields: [retailer_id], references: [id])
+  supplier      Supplier    @relation(fields: [supplier_id], references: [id])
+}
+
+model OrderLine {
+  id               String @id
+  order_id         String
+  product_id       String
+  quantity         Int
+  unit_price_minor Int    // the price when the order was placed
+  order            Order  @relation(fields: [order_id], references: [id])
+}
+
+model Payment {
+  id               String   @id
+  order_id         String   @unique
+  stripe_intent_id String
+  status           String   // "pending" | "succeeded" | "failed"
+  amount_minor     Int
+  authorised_by    String   // user id or standing-instruction id
+  created_at       DateTime @default(now())
+  order            Order    @relation(fields: [order_id], references: [id])
+}

@@ -76,7 +76,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 ## [v0.102.0] Schema conversion — ruled shelf machinery relocated, census-row → minted-ID map (skill-content-schema wave 2B, patterns family)
 
 - **Disposition:** relocated → `plugins/mochiko/skills/patterns-architecture-shelves/schema.yaml` (skill-content-schema D3, the three-home boundary). Per the census R-c idiom the body is birth-by-ruling, **not wholesale-protected** (no KEPT line exists); each move below is recorded here citing the birth row, and the DECISIONS-traceable core rules inherit protected status through the provenance sidecar (D8/C4).
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows: Skill-content schema ruled · Skill-schema wave-2 family doors ruled — the patterns-family door; birth/protecting ruling `DECISIONS.md` 2026-08-19 product-architecture-schema — shelves dealt recommend-then-arbitrate under three-strata floor precedence. Census: `.mochiko/brainstorms/skill-content-schema/census-patterns.md` §A (AS) + §B (AS row inventory)).
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows: Skill-content schema ruled · Skill-schema wave-2 family doors ruled — the patterns-family door; birth/protecting ruling `DECISIONS.md` 2026-08-19 product-architecture-schema — shelves dealt recommend-then-arbitrate under three-strata floor precedence. Census: `.mochiko/brainstorms/skill-content-schema/research/census-patterns.md` §A (AS) + §B (AS row inventory)).
 
 **Census-row → minted-ID map.** Minted IDs carry the `patterns-architecture-shelves.` prefix
 (omitted below). Census §B row → minted ID: 1 (opinions-in-data Read-raw) `opinions-in-data`

@@ -99,6 +99,21 @@ Assumptions the specification rests on. Omit if empty.
 
 Unresolved questions carried out of authoring. Omit if empty.
 
+## Conformance
+
+Checked mechanically before the write lands. Each line is a string or a count, never a judgment.
+
+- Required headings, in order: `## Intent`, `## Overview`, `## User Stories`, `## Edge Cases`, `## Functional Requirements`, `## Key Entities`, `## Success Criteria`, `## Screens & Flows`, `## Feature Selection`
+- An undeclared `##` heading is denied. `###` and deeper are yours.
+- Line budgets, each counted from its `##` line to the next `##`, nested content included:
+  - `## Intent` — 10 lines
+  - `## Overview` — 6 lines
+  - `## Key Entities` — 15 lines
+  - `## Screens & Flows` — 30 lines
+  - `## Feature Selection` — 20 lines
+  - `## Assumptions` — 10 lines (optional)
+  - `## Open Questions` — 10 lines (optional)
+
 ## Skeleton
 
 # {{spec_title}}

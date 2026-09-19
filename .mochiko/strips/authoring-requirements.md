@@ -95,7 +95,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 
 Ruling for every [v0.101.0] entry below: skill-content-schema D3 (three-home boundary) /
 D8/C4 (protected transfers), `DECISIONS.md` 2026-09-01 rows (record + wave-2 family-door
-rulings); census: `.mochiko/brainstorms/skill-content-schema/census-authoring.md` §A/§B (AR).
+rulings); census: `.mochiko/brainstorms/skill-content-schema/research/census-authoring.md` §A/§B (AR).
 Schema home: `plugins/mochiko/skills/authoring-requirements/schema.yaml`. Minted IDs carry
 the `authoring-requirements.` prefix (omitted below). Map — census row → minted ID:
 1 `technology-agnostic` · 2 `constraint-states-capability` (the worked example stays prose) ·

@@ -1,0 +1,102 @@
+# D8 partition — /mochiko:feature rule set, plan-observable vs out-of-instrument.
+# Ruling: command-plan-only-eval D8 (accepted 2026-08-27, review fold C1).
+# The `observable` list IS the D2 rubric; `out_of_instrument` rules are declared here,
+# never silently absent at coverage 0. Validated by `run.py check-rubric feature`:
+# every schema rule ID appears in exactly one list.
+#
+# Out-of-instrument reason vocabulary (implement's plus setup's `fail-condition`):
+#   contingency    — fires only on a run-time event no forward plan contains
+#   conditional    — observable only under a fixture condition no current scenario plants
+#                    (activating it = planting the condition, a scenario-design act)
+#   epic           — epic-scope rule; no epic scenario exists
+#   latitude       — grants freedom; nothing falsifiable in a plan
+#   register       — prose-register meta-rule; not plan content
+#   fail-condition — end-state failure, not forward-plan content
+#
+# Condition gating: the schema declares two dimensions. `km_file` (surface-presence) is
+# planted present in s1 and s3 (`.mochiko/memory/knowledge-management.md` exists) and absent
+# in s2, so the gated `feat.dm-km-landing` is graded on s1/s3 and the km-relation degrade
+# branch on s2. `seats` (standing-trigger) resolves to multi in every scenario: every desk
+# write takes a producing seat plus a non-author reviewing seat, so `feat.transport-floor`
+# binds on all three. The routing doors are planted across the three scenarios — delta lane
+# (delivered owner) · in-flight territory · growth-door extend · route-out mint · product lane
+# under single-flight · grooming at cap-trip · the ceiling crossed with an explicit hosting
+# ask · a fired architecture trigger · an open epic ready to dispatch — so no `conditional`
+# or `epic` entry remains, and no routing rule fires only on a mid-run event.
+command: feature
+
+observable:
+  # roles
+  - {id: feat.dm-health-first, why: map health read from the files and surfaced before any item is taken (stale stub · dangling row · unfolded delta · epics · cap pressure) on every scenario}
+  - {id: feat.dm-converge-goal, why: a one-line visit goal and its done condition put to the user as a described gate before the work runs}
+  - {id: feat.dm-map-integrity, why: close leaves no dangling row (s1 FEAT-002) · no unfolded delta or orphan (s3) · statuses agreeing across index and entries}
+  - {id: feat.dm-route-honestly, why: each item keyed to its surface from the entry and product files with the reasoning shown and the resulting map delta auditable}
+  - {id: feat.dm-complete-card, why: every dispatched run handed a complete card — delta cards (s1) · the growth row card (s2) · the epic run card (s3)}
+  - {id: feat.dm-epic-stewardship, why: s3 status view and dispatch of EPIC-001 · s2 the 'all in one go' ask answered through mint-once and the overlap guard · s1 no open epics listed}
+  - {id: feat.dm-km-landing, why: gated km_file present — s1 and s3 plant the pinned knowledge-management file so the desk's writes take the KM landing}
+  - {id: feat.dm-close-verdict, why: the close states a verdict against the visit's done condition}
+  - {id: feat.pm-seat, why: the PM seat argues extend-vs-mint with reasons (s2) · proposes merge and retire at cap-trip (s3) · writes the what-next line (all) · never rules}
+  - {id: feat.architect-dormancy, why: s3 plants the cap-trip so the dormant principal-architect wakes only for the domain co-sign; s1 and s2 keep it dormant with no desk duty}
+  - {id: feat.dispatched-runs-own-delivery, why: the plan leaves bounds · verification seats · evidence to the dispatched implement run and builds nothing at the desk}
+  # reserved
+  - {id: feat.user-reserved, why: merge and retire rulings (s3) · route overrides · every selection described as the user's}
+  # tools
+  - {id: feat.tools-referenced-never-restated, why: skill and template bindings are pointed at, their procedure never restated in the plan}
+  - {id: feat.map-files, why: the map is answered from FEATURES.md plus the entry files and the FEAT-XXX/ artifact directories actually read, never from memory}
+  - {id: feat.map-minimalism-binding, why: extend-vs-mint (s2) · soft cap and grooming trigger · merge mechanics (s3) reached through mochiko:patterns-map-minimalism}
+  - {id: feat.feature-map-binding, why: entry shape · row grammar · fold-at-landing reached through mochiko:authoring-feature-map}
+  - {id: feat.epic-binding, why: manifest and spine shape · mint guard · close semantics reached through mochiko:authoring-epic (s2 question, s3 dispatch)}
+  - {id: feat.epic-dispatch, why: s3 plants an open epic with two pending members so the plan dispatches it as one implement run over its members}
+  - {id: feat.capability-write-test, why: every item asked whether it touches a capability or only its rows — capabilities route out, rows the desk cuts}
+  - {id: feat.stable-ground-triage, why: s1 plants a delivered single owner (delta lane) and an in-flight owner (files to the run) · s2 plants a no-single-owner report (product lane)}
+  - {id: feat.delta-cards, why: s1 bug card acceptance is the reproduction-failing test · improvement card carries 1–3 criteria plus baseline-delta.md in before/after form · both take the review leg}
+  - {id: feat.product-surface, why: baselines at .mochiko/product/ with the delta beside contracts/api.yaml (s1) · the live lane run at lane-tide-tables/ (s2) · cards append dated and delta files overwrite only via the graded fold}
+  - {id: feat.architecture-intake, why: s3 plants the fired AX-003 trigger so it is routed like any demand — capability-write test · extend-beats-mint · the user rules the mint · no auto-mint}
+  - {id: feat.dispatch-scope-split, why: delta scope for the s1 bug and improvement cards · selection scope for the s2 growth row and the s3 epic members}
+  - {id: feat.dispatch-specify, why: the s2 fuel dock routes to /mochiko:specify; the s3 re-derivation is named specify's work}
+  - {id: feat.km-relation, why: s1/s3 name BACKLOG.md as the defect queue and lane acceptance as a landing event · s2 states the no-KM degrade path (lane runs accept direct requests) rather than assuming it}
+  # ways-of-working
+  - {id: feat.proactive-report, why: the health report opens the visit before the ask (twin of dm-health-first — one quote may credit both; disclosed in the preregistration)}
+  - {id: feat.reference-never-restate, why: implement's bounds · verification seats · evidence rules are pointed at from the desk and never restated}
+  - {id: feat.author-grader, why: cards · baseline-delta.md · grooming proposals · the derivation are produced on an approved plan and cleared by a non-author}
+  - {id: feat.advisory-front-door, why: bug · improvement · growth intake taken at the desk; the s2 route-out and the s3 ceiling tell the user specify stays directly invocable (thin — s2/s3 only)}
+  - {id: feat.model-tiering, why: locate and enumerate reads (entries · specs index · store rows) routed to a cheap Explore subagent; interpretive reads stay on the session; briefs carry the rule}
+  - {id: feat.single-flight-lane, why: s2 plants a live product-lane run so the new no-owner request queues behind it rather than opening a second lane run}
+  - {id: feat.no-git-mutations, why: commits suggested at close, never run}
+  - {id: feat.rulings-plain-text, why: the goal gate · card confirmation · merge and retire rulings described as plain blocking text, never a timed prompt}
+  - {id: feat.artifact-home, why: the features home (and the desk-sitting home on s3) rendered before the first write; entry as <FEAT-ID>.md · the desk's output derivation.md · reviews in reports/}
+  # boundaries
+  - {id: feat.capability-writes-sacred, why: s2 parks a stub and mints nothing · s3 merge and retire wait for the user's ruling · no status change made at the desk}
+  - {id: feat.grooming-door-ceiling, why: s3 plants a wholesale re-derivation ask that the plan names as specify's derivation work, outside the grooming door}
+  - {id: feat.out-of-remit-hosting, why: s3 plants the explicit 'do it here' ask so the plan names the boundary crossing and imports specify's rituals rather than dropping them}
+  - {id: feat.growth-door, why: s2 cuts one pending row on FEAT-001 through the growth door with acceptance on the card; s3 routes the fired trigger through the same door}
+  - {id: feat.growth-routes-to-specify, why: the s2 fuel dock is mint-or-uncertain and routes to specify}
+  - {id: feat.lane-never-widens, why: s1 plants a report on in-flight FEAT-004 territory that files to the arrivals-board run instead of lane work (the mid-run-outgrowth half is unplanted)}
+  - {id: feat.no-delivery-harness, why: every admitted demand leaves as an implement capability-batch; nothing is built or verified at the desk}
+  - {id: feat.no-self-graded-writes, why: every desk write named with an independent reviewer}
+  - {id: feat.no-silent-map-mutations, why: the s1 dangling row · the s3 unfolded delta and orphan element are fixed on sight and visibly; every write is on the map}
+  - {id: feat.sound-loop-floor, why: produce on an approved plan · non-author review · the user's gate wired end to end; delta cards take the review leg before dispatch}
+  - {id: feat.transport-floor, why: gated seats multi — every scenario composes a producing seat and a reviewing seat, so the floor is referenced never restated}
+  - {id: feat.stub-parking, why: s2 parks the fuel dock as name plus hook marked unrefined; s1 and s3 stale stubs are surfaced, never matured at the desk}
+
+out_of_instrument:
+  # latitude / register
+  - {id: feat.staffing-latitude, why: latitude}
+  - {id: feat.register, why: register}
+  # fail-conditions (the one `kind: fail` rule — end-state failure, not forward-plan content; C1)
+  - {id: feat.fail.no-verdict, why: fail-condition}
+
+# Declared unplanted branches (fixture-design record, not a partition class): three rule
+# facets are observable through one half of their subject only, because no scenario plants
+# the other half. Each is a plant candidate if a later grid wants it graded whole.
+#   feat.lane-never-widens — its mid-run-outgrowth clause (a lane run outgrows its framing,
+#     aborts and re-routes) is a contingency no forward plan contains; only the in-flight
+#     territory clause is planted (s1).
+#   feat.dm-epic-stewardship — mint and membership change are answered as questions (s2)
+#     and the status view and dispatch are planted (s3); no scenario plants an epic close, so
+#     close semantics are graded on the described branch only.
+#   feat.advisory-front-door — the default-entry-when-unsure clause needs an unsure user;
+#     every scenario arrives with a concrete demand, so the rule is graded on the intake and
+#     the route-out clauses only.
+# The empty-`$ARGUMENTS` entry (health, then ask what the visit is for) is likewise
+# unplanted: every scenario carries a demand, and `feat.dm-health-first` fires either way.

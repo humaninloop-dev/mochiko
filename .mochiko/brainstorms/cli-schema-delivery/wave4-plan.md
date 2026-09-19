@@ -152,7 +152,7 @@ lines); latency is emitted per delivery case as at wave 3 and reported as a band
 ## 6. Seat protocol and review criteria
 
 As at wave 3 (`wave3-plan.md` §7–§8): plan first, lead approves, test-first where a test layer
-exists, reports under `wave4-reports/<seat>.md`, no git mutations, three verification attempts
+exists, reports under `reports/<seat>.md`, no git mutations, three verification attempts
 per unit, validators fresh and never the author. V1 adds: the op rejects what §2 says it rejects;
 the migration file's hash verifies; the six snapshot diffs are one line each; grammar stays 1
 and the README says why. V2 adds: each pair against `primitive-edits.md` criteria 1–11 as amended,
@@ -191,7 +191,7 @@ problem at that floor count; wave 5 needs a design change before opening. `imple
 refusal is counted as a harness artifact only if the gate-valid argument removes it 3/3.
 
 **Cost:** 18 sandbox sessions. **Evidence:** per-case directories as in the suite; a
-`diagnostic.json` summary. Report: `wave4-reports/p3-diagnostic.md`; V3 delta re-grade.
+`diagnostic.json` summary. Report: `reports/wave4-p3-diagnostic.md`; V3 delta re-grade.
 
 *Amendment before the scored runs (P3 probe, 2026-09-04, two sessions):* change (1) is not
 implementable as written — in a headless run `$ARGUMENTS` takes everything after the command name,

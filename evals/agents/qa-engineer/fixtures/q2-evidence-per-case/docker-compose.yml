@@ -1,0 +1,17 @@
+services:
+  postgres:
+    image: postgres:16
+    environment: { POSTGRES_USER: quill, POSTGRES_PASSWORD: quill, POSTGRES_DB: quill }
+    ports: ["5434:5432"]
+    volumes: [quill-pg:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U quill"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+  redis:
+    image: redis:7
+    ports: ["6380:6379"]
+
+volumes:
+  quill-pg:

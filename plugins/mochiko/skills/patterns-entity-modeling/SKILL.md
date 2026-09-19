@@ -154,6 +154,17 @@ Constraints and validation rules ensure data integrity.
 
 See [VALIDATION-RULES.md](references/VALIDATION-RULES.md) for constraint patterns, format validations, and business rule documentation.
 
+## Where the Artifact Lives
+
+`data-model.md` is a declared file in whichever home the run owns — the spec, the feature, the epic
+or the product baseline. Render `mochiko-cli home <that path>` for the file you are about to write,
+before the first write, and hold the file set and the bound it returns. Do not copy a sibling file
+instead: one already on disk may itself predate the declared shape, and it is not a template.
+
+A write to a name the home does not carry is refused at write time, and so is a body past the bound
+the home returns. A new deliverable kind takes a migration in the plugin's log, never a local
+exception.
+
 ## data-model.md Structure
 
 This is the **single canonical `data-model.md` template**, following the deliverable

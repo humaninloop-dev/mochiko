@@ -87,7 +87,12 @@ A change names its document as `<kind>/<name>` — `command/specify`, `skill/rev
 `skill-common/skill-review-common`, `template/spec`. A bare `<kind>` means the name equals the
 kind, which is how the two singleton registries are written (`command-labels`). The kinds are
 `command`, `skill`, `command-common`, `skill-common`, `command-labels`, `skill-labels`,
-`template`, `shelf`.
+`template`, `shelf`, `home`.
+
+`home` arrived at the 2026-09-13 `hook-enforced-artifact-schema` wave and is opaque like
+`template` and `shelf`: it declares one artifact directory — its path as ordered segments, the
+closed set of file names it admits, the template bound to each, and its size posture — and only
+`import-document` and `replace-document` apply to it.
 
 ### Change ops
 

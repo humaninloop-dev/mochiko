@@ -1,0 +1,91 @@
+# FEAT-034 contract delta over .mochiko/product/contracts/api.yaml — technical-analyst, 2026-09-10.
+# Paths below are added; baseline paths are unchanged. Session-cookie auth and RFC 7807 errors
+# as the baseline. Traceability per operation in the summary line.
+openapi: 3.0.3
+info:
+  title: Halyard API — FEAT-034 cancellation delta
+  version: "1.10.0-feat034"
+paths:
+  /bookings/{bookingId}/cancel:
+    post:
+      summary: Cancel a confirmed booking before its first night; computes the tier and starts the refund (FR-001, FR-002, FR-005, US-1)
+      operationId: cancelBooking
+      parameters:
+        - {name: bookingId, in: path, required: true, schema: {type: string, format: uuid}}
+      requestBody:
+        required: false
+        content: {application/json: {schema: {$ref: '#/components/schemas/CancelRequest'}}}
+      responses:
+        '200': {description: Cancelled; refund started, content: {application/json: {schema: {$ref: '#/components/schemas/CancellationResult'}}}}
+        '404': {$ref: '#/components/responses/NotFound'}
+      x-integration:
+        system: Stripe (EU entity)
+        protocol: HTTPS
+        api_version: "2024-06-20"
+        criticality: Critical
+        auth: Restricted API key from the secrets manager
+  /bookings/{bookingId}/refund:
+    get:
+      summary: The refund for a cancelled booking — amount, tier, status, expected arrival (FR-004, US-2)
+      operationId: getRefund
+      parameters:
+        - {name: bookingId, in: path, required: true, schema: {type: string, format: uuid}}
+      responses:
+        '200': {description: Refund, content: {application/json: {schema: {$ref: '#/components/schemas/RefundResponse'}}}}
+        '404': {$ref: '#/components/responses/NotFound'}
+  /marinas/{marinaId}/refunds:
+    get:
+      summary: Refund ledger for a marina, newest first (FR-006, US-3)
+      operationId: listMarinaRefunds
+      parameters:
+        - {name: marinaId, in: path, required: true, schema: {type: string, format: uuid}}
+        - {name: cursor, in: query, required: false, schema: {type: string}}
+        - {name: limit, in: query, required: false, schema: {type: integer, minimum: 1, maximum: 100, default: 50}}
+      responses:
+        '200': {description: Refunds, content: {application/json: {schema: {$ref: '#/components/schemas/RefundList'}}}}
+        '404': {$ref: '#/components/responses/NotFound'}
+components:
+  responses:
+    NotFound: {description: Not found, content: {application/problem+json: {schema: {$ref: '#/components/schemas/Problem'}}}}
+  schemas:
+    Problem:
+      type: object
+      required: [type, title, status, correlationId]
+      properties:
+        type: {type: string, format: uri}
+        title: {type: string}
+        status: {type: integer}
+        detail: {type: string}
+        correlationId: {type: string}
+    CancelRequest:
+      type: object
+      properties:
+        reason: {type: string, maxLength: 500}
+    CancellationResult:
+      type: object
+      required: [bookingId, status, refund]
+      properties:
+        bookingId: {type: string, format: uuid}
+        status: {type: string, enum: [cancelled]}
+        refund: {$ref: '#/components/schemas/RefundResponse'}
+    RefundResponse:
+      type: object
+      required: [id, bookingId, amountMinor, currency, tier, status, creditNoteId]
+      properties:
+        id: {type: string, format: uuid}
+        bookingId: {type: string, format: uuid}
+        amountMinor: {type: integer}
+        currency: {type: string}
+        tier: {type: string, enum: [full, half, none]}
+        status: {type: string, enum: [requested, submitted, succeeded, failed]}
+        creditNoteId:
+          type: string
+          format: uuid
+          description: The marina credit note issued for the refund amount (D-004); redeemable against a future booking at the same marina
+        expectedBy: {type: string, format: date, description: When the owner should expect the money}
+    RefundList:
+      type: object
+      required: [data]
+      properties:
+        data: {type: array, items: {$ref: '#/components/schemas/RefundResponse'}}
+        nextCursor: {type: string, nullable: true}

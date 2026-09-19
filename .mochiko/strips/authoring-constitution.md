@@ -136,7 +136,7 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
 Ruling for every entry below: skill-content-schema D3 (three-home boundary) / D8/C4
 (protected transfers + the whole-body re-home clause), `DECISIONS.md` 2026-09-01 rows
 (Skill-content schema ruled · Skill-schema wave-2 family doors ruled — the authoring-family
-door); census: `.mochiko/brainstorms/skill-content-schema/census-authoring.md` §A (AC) +
+door); census: `.mochiko/brainstorms/skill-content-schema/research/census-authoring.md` §A (AC) +
 §B (AC). Schema home: `plugins/mochiko/skills/authoring-constitution/schema.yaml`. Minted
 IDs carry the `authoring-constitution.` prefix (omitted below). Map — census §B row →
 minted ID:
