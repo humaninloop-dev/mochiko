@@ -1164,7 +1164,9 @@ fn every_shipped_floor_index_matches_its_pin() {
         );
         checked += 1;
     }
-    assert_eq!(checked, 36, "six commands and thirty skills");
+    // Thirty skills through `0007`; `0008-gate-form` imported `validation-primitive-edit`
+    // (2026-09-19 author-grader-consolidation D7), which carries its own eleven-floor index.
+    assert_eq!(checked, 37, "six commands and thirty-one skills");
 }
 
 /// The index's own size at its widest, pinned the way the legend's is: every converted primitive

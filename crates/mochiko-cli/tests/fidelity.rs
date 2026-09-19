@@ -167,13 +167,13 @@ fn the_log_replays_into_a_deliverable_state() {
             .collect();
         panic!("the log is deliverable:\n{}", lines.join("\n"));
     });
-    assert_eq!(replay.state.docs.len(), 73);
+    assert_eq!(replay.state.docs.len(), 74);
     assert_eq!(
         replay.sequences(),
-        vec![1, 2, 3, 4, 5, 6, 7],
+        vec![1, 2, 3, 4, 5, 6, 7, 8],
         "genesis, wave 4's fail-conditions reword, wave 6's two-arm retirement, the sonnet \
          worker rung, the artifact-home census, the lead's-pen copy loophole, 0007's seat \
-         default key"
+         default key, 0008's gate form"
     );
 }
 
@@ -615,12 +615,17 @@ fn the_corpus_census_holds_through_the_log() {
     // does not move at all. `0007` (the seat default key, 2026-09-19) nets +4 on
     // `patterns-model-tiering` — one `supersede-rule` (−1) and five `mint-rule`s (+5), two of the
     // five floors; the command side is untouched. The superseded rule was itself a floor, so the
-    // skill's floor count nets +1 on top of `0005`'s eleven.
-    assert_eq!(command_rules, 327, "live command rules");
-    assert_eq!(skill_rules, 716, "live skill rules");
-    assert_eq!(command_rules + skill_rules, 1043, "live rules in total");
-    assert_eq!(skill_floors, 240, "skill floors");
-    assert_eq!(command_floors, 116, "declared command floors");
+    // skill's floor count nets +1 on top of `0005`'s eleven. `0008` (the gate form, 2026-09-19
+    // author-grader-consolidation D7) is pure mints and retires nothing: two command rules on
+    // `setup`, one of them a floor, and twenty-two skill rules — one on `patterns-model-tiering`
+    // and twenty-one in the imported `validation-primitive-edit` document, eleven of those
+    // floors. `common.gate-loop-bound` is a block in the existing command-common library, so it
+    // mints no document and falls outside both rule counts. The fail set does not move.
+    assert_eq!(command_rules, 329, "live command rules");
+    assert_eq!(skill_rules, 738, "live skill rules");
+    assert_eq!(command_rules + skill_rules, 1067, "live rules in total");
+    assert_eq!(skill_floors, 252, "skill floors");
+    assert_eq!(command_floors, 117, "declared command floors");
     assert_eq!(fail_nodes, 36, "command fail nodes");
 }
 
@@ -893,8 +898,9 @@ fn no_rule_points_at_a_schema_file() {
 /// minted rules on `patterns-model-tiering`, two of them floors, each carrying the ruling anchor;
 /// the two reworded floors still floors, naming both rungs (D5's text since superseded by
 /// `0007`'s seat default key — this test reads the full log, so the current wording is what it
-/// checks); the floor pin now seven after `0007`; the reserved section's note still naming its
-/// new reservation.
+/// checks); the floor pin now eight, seven after `0007` and one more from `0008`'s
+/// persona-less-grader pin (2026-09-19 author-grader-consolidation D7); the reserved section's
+/// note still naming its new reservation.
 #[test]
 fn the_fourth_migration_added_the_worker_rung_to_the_tiering_floor() {
     const ANCHOR: &str = "2026-09-05 sonnet-worker-rung";
@@ -982,7 +988,7 @@ fn the_fourth_migration_added_the_worker_rung_to_the_tiering_floor() {
     }
 
     let floors = schema.rules().filter(|rule| rule.is_floor()).count();
-    assert_eq!(floors, 7, "the skill's floor pin");
+    assert_eq!(floors, 8, "the skill's floor pin");
 
     let reserved = schema
         .find_section("patterns-model-tiering.sec.reserved")

@@ -1,5 +1,5 @@
 {
-  "provenance": "wave5-plan.md \u00a74.2 and cli-schema-delivery/wave5-p3-skills-plan.md \u00a73. Frozen from the render and the working tree before P2 converted any skill and before the wave's first session. Never edited after; a floor rule added or renamed later breaks the cross-check in `converted-shape` rather than regrading quietly. Re-keyed once since, and only for ids the log determines: the 2026-09-13 hook-enforced-artifact-schema wave added one `artifact-home` floor to each of eleven skills (`floor_ids` plus `floor_pin`), on the lead's licence, with the same move recorded in this directory's README floor-ids row. Every byte-size field is still the freeze's own, and no other field has been touched.",
+  "provenance": "wave5-plan.md \u00a74.2 and cli-schema-delivery/wave5-p3-skills-plan.md \u00a73. Frozen from the render and the working tree before P2 converted any skill and before the wave's first session. Never edited after; a floor rule added or renamed later breaks the cross-check in `converted-shape` rather than regrading quietly. Re-keyed once since, and only for ids the log determines: the 2026-09-13 hook-enforced-artifact-schema wave added one `artifact-home` floor to each of eleven skills (`floor_ids` plus `floor_pin`), on the lead's licence, with the same move recorded in this directory's README floor-ids row. Re-keyed again by the 2026-09-19 author-grader-consolidation wave-1 ruling (D7): `patterns-model-tiering` gained one floor, and `validation-primitive-edit` joins the review family as a post-freeze member — born after this freeze, so no pre-conversion baseline exists for it and its four byte columns are 0 rather than measured. Every byte-size field of every pre-freeze row is still the freeze's own, and no other field has been touched.",
   "frozen_utc": "2026-09-04T10:49:47+00:00",
   "binary": "mochiko-cli 0.1.0 \u00b7 grammar 1..1",
   "plugin_version": "0.105.0",
@@ -19,7 +19,8 @@
         "review-plan-artifacts",
         "review-specifications",
         "review-sufficiency",
-        "validation-constitution"
+        "validation-constitution",
+        "validation-primitive-edit"
       ]
     },
     "authoring": {
@@ -361,12 +362,13 @@
         "patterns-model-tiering.brief-obligation",
         "patterns-model-tiering.class-key-session-tier",
         "patterns-model-tiering.override-is-the-pin",
+        "patterns-model-tiering.persona-less-grader-pin",
         "patterns-model-tiering.seat-default-key",
         "patterns-model-tiering.seat-deviation-bounds",
         "patterns-model-tiering.worker-return-is-a-claim",
         "patterns-model-tiering.worker-seat-set-reserved"
       ],
-      "floor_pin": 7,
+      "floor_pin": 8,
       "schema_bytes": 7232,
       "common": null,
       "common_bytes": null,
@@ -660,6 +662,29 @@
       "baseline_bytes": 12218,
       "baseline_source": "wc -c of skills/validation-constitution/schema.yaml + schemas/skill-review-common.yaml",
       "body_bytes_pre": 3350
+    },
+    "validation-primitive-edit": {
+      "family": "review",
+      "floor_ids": [
+        "validation-primitive-edit.author-grader",
+        "validation-primitive-edit.binary-verdict",
+        "validation-primitive-edit.default-fail",
+        "validation-primitive-edit.evidence-floor",
+        "validation-primitive-edit.from-file-floor",
+        "validation-primitive-edit.gate-loop-bound",
+        "validation-primitive-edit.plain-seat-explicit-tier",
+        "validation-primitive-edit.pre-pass-first-hand",
+        "validation-primitive-edit.rendered-contract-only",
+        "validation-primitive-edit.second-fail-user",
+        "validation-primitive-edit.tamper-proof-clause"
+      ],
+      "floor_pin": 11,
+      "schema_bytes": 0,
+      "common": "schemas/skill-review-common.yaml",
+      "common_bytes": 0,
+      "baseline_bytes": 0,
+      "baseline_source": "post-freeze member, 2026-09-19 author-grader-consolidation D7 — no pre-conversion baseline exists, never measured",
+      "body_bytes_pre": 0
     }
   }
 }

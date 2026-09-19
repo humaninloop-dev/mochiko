@@ -17,7 +17,11 @@ ledger only from a benchmark-measured winner, a ruled editorial cut shipped thro
 ceremony, or **a ruled schema conversion** (skill-content-schema D8/C1: the budget re-seeds to
 the measured post-conversion delivered-at-invoke payload with **no +25% headroom** — a stated
 departure from the headroom rule; the conversion is a relocation, never a measured winner, so
-the first post-conversion character takes the argued-overage path)
+the first post-conversion character takes the argued-overage path), or **a ruled birth seed**
+(`author-grader-consolidation`, build item 1, 2026-09-19: a skill born inside a ruling that names
+its budget seeds to its measured delivered-at-invoke payload with no headroom, and takes the
+argued-overage path from its first edit — a fourth path, opened because the three above all
+assume a primitive that already shipped)
 (Wave 2 seeded its budgets from its own audited cut results this way at v0.64.0). All counts
 are **characters of the parsed value — never `wc -c` bytes** (byte counts over-reject
 unicode-bearing text that is under the char cap; a v1 census defect was exactly this).
@@ -81,11 +85,12 @@ audited Wave 2 body no-ops (nothing D4-cuttable); their budgets are their surviv
 | patterns-adopt-first | 14,242 (re-seeded [v0.106.0] CLI delivery, D10.6 — payload: body 3,061 + render 11,181; was 12,910 — first budget row, seeded [v0.102.0] schema conversion — payload: body 2,253 + schema 10,657; unbudgeted at birth, v0.73.0 build-cap-only) | 14,242 (no headroom) |
 | patterns-architecture-shelves | 14,493 (re-seeded [v0.106.0] CLI delivery, D10.6 — payload: body 4,003 + render 10,490; was 12,361 — first budget row, seeded [v0.102.0] schema conversion — payload: body 2,923 + schema 9,438, re-measured post-fix-round; unbudgeted at birth, v0.81.0 hard-cap-only) | 14,493 (no headroom) |
 | patterns-map-minimalism | 11,245 (re-seeded [v0.106.0] CLI delivery, D10.6 — payload: body 3,288 + render 7,957; was 9,362 — first budget row, seeded [v0.102.0] schema conversion — payload: body 2,470 + schema 6,892; unbudgeted at birth, v0.68.0 hard-cap-only) | 11,245 (no headroom) |
-| patterns-model-tiering | 10,852 (standing **+7,012 ruled-HOLDS overage at [v0.110.0]** — payload 17,864: body 3,112 + render 14,752; the seat-default-key ruling's five minted rules (two floors), one anchored supersession and three floor rewords (migration `0007-seat-default-key`, record `orchestrator-model-selection` D1–D5/D8, `DECISIONS.md` 2026-09-19), audit V1 ruled the growth a genuine new obligation set by replaying the log without 0007 and word-diffing every rendered block — nothing from the three prior strip entries returned; description 998 → 1,208 chars under the 1,536 cap; prior standing overage +3,844 at [v0.108.0] — payload 14,696: body 2,873 + render 11,823; the sonnet-worker-rung ruling's six minted rules and four rewords, ADR `2026-09-05-sonnet-worker-rung`, audit V1 + its delta ruled the growth a genuine new obligation set; re-seeded [v0.106.0] CLI delivery, D10.6 — payload: body 2,633 + render 8,219; was 8,793 — first budget row, seeded [v0.102.0] schema conversion — payload: body 1,614 + schema 7,179, re-measured post-fix-round; unbudgeted at birth, v0.77.0 hard-cap-only) | 10,852 (no headroom) |
+| patterns-model-tiering | 10,852 (standing **+7,506 ruled-HOLDS overage at [v0.111.0]** — payload 18,358: body 3,112 + render 15,246, re-measured at the quiesced tree with the canonical snippet after migration `0008-gate-form.yaml` landed, never derived from the figure below. The whole delta over the [v0.110.0] payload is render, **+494**, and it is one component: the `persona-less-grader-pin` floor minted on `patterns-model-tiering.sec.discipline` by `0008-gate-form.yaml` (record `author-grader-consolidation` D7, anchor 2026-09-19), which closes that record's F12 by obliging an explicit `model:` alias on every persona-less grader or reviewer spawn. Floor pin 7 → 8; body unchanged at 3,112 and description unchanged at 1,208, so no body or frontmatter growth rides this stamp. A genuine new obligation — never restored prose; the wave-1 A1 audit raised the missing restamp and this row carries the measurement. Prior standing overage **+7,012 at [v0.110.0]** — payload 17,864: body 3,112 + render 14,752; the seat-default-key ruling's five minted rules (two floors), one anchored supersession and three floor rewords (migration `0007-seat-default-key`, record `orchestrator-model-selection` D1–D5/D8, `DECISIONS.md` 2026-09-19), audit V1 ruled the growth a genuine new obligation set by replaying the log without 0007 and word-diffing every rendered block — nothing from the three prior strip entries returned; description 998 → 1,208 chars under the 1,536 cap; prior standing overage +3,844 at [v0.108.0] — payload 14,696: body 2,873 + render 11,823; the sonnet-worker-rung ruling's six minted rules and four rewords, ADR `2026-09-05-sonnet-worker-rung`, audit V1 + its delta ruled the growth a genuine new obligation set; re-seeded [v0.106.0] CLI delivery, D10.6 — payload: body 2,633 + render 8,219; was 8,793 — first budget row, seeded [v0.102.0] schema conversion — payload: body 1,614 + schema 7,179, re-measured post-fix-round; unbudgeted at birth, v0.77.0 hard-cap-only) | 10,852 (no headroom) |
 | patterns-plan-minimalism | 10,824 (re-seeded [v0.106.0] CLI delivery, D10.6 — payload: body 3,834 + render 6,990; was 8,594 — first budget row, seeded [v0.102.0] schema conversion — payload: body 2,812 + schema 5,782; unbudgeted at birth, v0.67.0 hard-cap-only) | 10,824 (no headroom) |
 | patterns-sound-loop | 12,388 (re-seeded [v0.106.0] CLI delivery, D10.6 — payload: body 2,812 + render 9,576; was 10,933 — first budget row, seeded [v0.102.0] schema conversion — payload: body 2,022 + schema 8,911, re-measured post-fix-round; unbudgeted at birth, v0.70.0 hard-cap-only) | 12,388 (no headroom) |
 | patterns-transport-floor | 12,564 (re-seeded [v0.106.0] CLI delivery, D10.6 — payload: body 3,114 + render 9,450; was 10,556 — first budget row, seeded [v0.102.0] schema conversion — payload: body 2,412 + schema 8,144; unbudgeted at birth, v0.71.0 hard-cap-only) | 12,564 (no headroom) |
 | testing-gap-finding | 19,977 (re-seeded [v0.106.0] CLI delivery, D10.6 — payload: body 5,954 + render 14,023; was 19,382 — first budget row, seeded [v0.103.0] schema conversion — payload: body 5,271 + schema 14,111; unbudgeted at birth, v0.79.0 hard-cap-only) | 19,977 (no headroom) |
+| validation-primitive-edit | 14,968 (first budget row at birth, seeded [v0.111.0] ruled birth seed, `author-grader-consolidation` build item 1 — payload: body 3,449 + render 11,519, re-measured with the canonical snippet after the wave's schema fix rounds, against log state `sha256:7b58e8c1…` · 74 documents · 1067 rules · floor pin 11, binary 0.2.0; the seat's two earlier readings were 15,022 at the landing sha `8950f9b9…` and 11,582/15,031 as the A3 audit read it, both superseded here — the log was still moving under the fix rounds, and this row must be re-confirmed by the release-gate sweep against the quiesced tree, which is the standing rule that caught `authoring-architecture-store` at v0.81.0; the argued-overage path applies from here) | 14,968 (no headroom) |
 
 The v0.63.0 floor-line additions (analysis-iterative, review-governance-intent,
 validation-constitution, review-specifications) and the v0.64.0 ones (review-brainstorm,
@@ -292,10 +297,22 @@ cap).
 | review-feasibility | 500 | 625 |
 | review-plan-artifacts | 500 | 625 |
 | review-code-minimalism | 492 | 615 |
+| validation-primitive-edit | 730 | 730 (no headroom) |
 
 `patterns-system-design` (541) and `patterns-code-minimalism` (564) include the v0.64.0
 RETURNED clauses (fire-rate probe evidence, user-ruled — see their strips); their budgets
 derive from the restored values.
+
+`validation-primitive-edit` (730, seeded [v0.111.0] on the ruled birth seed) sits well above the
+~500 family norm and is disclosed rather than trimmed. Every clause is routing-load-bearing:
+the entry site and the GI-004 gate boundary, the four SHOULD trigger phrases, the unit keying
+that decides which criteria set applies, the first-hand pre-pass clause, the default-FAIL and
+plain-seat independence lines, and the two negative boundaries that keep the skill off the
+input-job `review-*` families and off `validation-constitution`'s governance surface set. No
+playbook prose. Precedent for a description above the norm, at the figures these carry on the
+current tree: `patterns-model-tiering` 1,208 (the library's largest, widened by the
+seat-default-key ruling from its 643 birth figure), `testing-gap-finding` 709,
+`review-sufficiency` 686. It sits 806 chars under the 1,536 delivery cap.
 
 ## Agent descriptions
 

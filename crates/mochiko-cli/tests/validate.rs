@@ -1095,8 +1095,10 @@ fn each_empty_enforces_mirror_still_carries_its_reason_as_a_note() {
 #[test]
 fn the_shipped_corpus_matches_its_recorded_census() {
     let state = shipped_state();
-    // 50 through wave 6; `0005-artifact-homes` added twenty `home` documents and three templates.
-    assert_eq!(state.docs.len(), 73, "the schema class is 73 files");
+    // 50 through wave 6; `0005-artifact-homes` added twenty `home` documents and three templates;
+    // `0008-gate-form` imported the `validation-primitive-edit` skill (2026-09-19
+    // author-grader-consolidation D7).
+    assert_eq!(state.docs.len(), 74, "the schema class is 74 files");
 
     let census = census(&state);
     let (command_rules, command_floors) =
@@ -1108,16 +1110,21 @@ fn the_shipped_corpus_matches_its_recorded_census() {
     // eleven skills. `0007` (the seat default key, 2026-09-19) nets +4 on the same skill — one
     // `supersede-rule` (−1) and five `mint-rule`s (+5), two of the five floors; the command side
     // is untouched. The superseded rule was itself a floor, so the skill's floor count nets +1 on
-    // top of `0005`'s eleven.
-    assert_eq!(command_rules, 327, "live command rules");
-    assert_eq!(skill_rules, 716, "live skill rules");
-    assert_eq!(command_rules + skill_rules, 1043, "live rules in total");
-    assert_eq!(skill_floors, 240, "skill floors");
+    // top of `0005`'s eleven. `0008` (the gate form, 2026-09-19 author-grader-consolidation D7) is
+    // pure mints and retires nothing: two command rules on `setup`, one of them a floor, and
+    // twenty-two skill rules — one on `patterns-model-tiering` and twenty-one in the imported
+    // `validation-primitive-edit` document, eleven of those floors. `common.gate-loop-bound` is a
+    // block in the existing command-common library, so it mints no document and falls outside both
+    // rule counts. The fail set does not move.
+    assert_eq!(command_rules, 329, "live command rules");
+    assert_eq!(skill_rules, 738, "live skill rules");
+    assert_eq!(command_rules + skill_rules, 1067, "live rules in total");
+    assert_eq!(skill_floors, 252, "skill floors");
     // The record's 112 is a `grep -c 'class: floor'` figure. Two of those matches are prose
     // inside rule text (architecture.yaml and implement.yaml each name `class: floor` in a
     // sentence), so the declared floors were 110 — the same figure the shipped checker reported —
-    // and `0005`'s six command mints carry it to 116.
-    assert_eq!(command_floors, 116, "declared command floors");
+    // and `0005`'s six command mints carry it to 116, `0008`'s `setup.gate-loop-bound` to 117.
+    assert_eq!(command_floors, 117, "declared command floors");
 
     let fail_nodes = state
         .docs

@@ -264,7 +264,9 @@ fn every_emitted_view_matches_the_committed_one() {
     let views_dir = repo_root().join(VIEWS_DIR);
     let state = replayed_state();
     let views = views::emit(&state);
-    assert_eq!(views.len(), 73, "the corpus is 73 documents");
+    // 73 through `0007`; `0008-gate-form` imported the `validation-primitive-edit` skill
+    // (2026-09-19 author-grader-consolidation D7).
+    assert_eq!(views.len(), 74, "the corpus is 74 documents");
 
     let mut divergences: Vec<String> = Vec::new();
     for (relative, text) in &views {
@@ -335,7 +337,9 @@ fn the_committed_views_tree_holds_no_file_the_emitter_does_not_write() {
         "the committed views tree carries files the emitter does not write:\n{}",
         orphans.join("\n")
     );
-    assert_eq!(found.len(), 73, "the committed tree is 73 views");
+    // 74 since `0008-gate-form` (2026-09-19 author-grader-consolidation D7) — the count only
+    // holds once the new skill's view is committed alongside the migration.
+    assert_eq!(found.len(), 74, "the committed tree is 74 views");
 }
 
 #[test]
@@ -439,7 +443,8 @@ fn emit_to_writes_only_under_the_out_directory() {
     let state = replayed_state();
     let written = views::emit_to(&state, &out).expect("the views write");
 
-    assert_eq!(written.len(), 73);
+    // 74 since `0008-gate-form` (2026-09-19 author-grader-consolidation D7).
+    assert_eq!(written.len(), 74);
     for path in &written {
         assert!(path.starts_with(&out), "{} escaped --out", path.display());
         assert!(path.is_file(), "{} was not written", path.display());

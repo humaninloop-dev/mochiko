@@ -105,7 +105,7 @@ Each change is independently citable: a rule's history is the set of ops naming 
 | `mint-section` | `schema`, `section` | The section starts empty. A section value carrying `rules:` is rejected rather than having them dropped. |
 | `reword-section` | `schema`, `id`, `title?`, `intent?`, `note?` | A section's prose. At least one of the three, or the change is rejected as rewording nothing. The section must be live — a tombstoned id says so rather than reading as absent. `note: ~` clears; a `title:` or an `intent:` is never cleared, because every section carries both. The section's id and its rules are untouched, so no ruling anchor is owed. |
 | `tombstone-section` | `schema`, `id`, `disposition` | Rejected while the section still holds rules, so no rule is ever retired implicitly. |
-| `mint-rule` | `schema`, `section`, `rule` | |
+| `mint-rule` | `schema`, `section?`, `rule` | `section:` is required on a command or skill schema and rejected on a common library, which carries its blocks at the document's top level: there, omit it and the rule is appended as a block. |
 | `reword-rule` | `schema`, `id`, `text` | The id survives a reword. |
 | `set-rule-field` | `schema`, `id`, `field`, `value` | `field` is one of `labels · class · kind · when · pointer · extends · enforces · anchor · note`. `value: ~` clears. An id is minted once and text has its own op, so neither is settable here. |
 | `move-rule` | `schema`, `id`, `section` | The id survives a move. |
@@ -128,6 +128,8 @@ op is a real situation — and it is already handled. That binary rejects the fi
 install command, rather than skipping the op and replaying a state that is quietly missing a change.
 That is the version contract working, not a gap in it, which is why a new op is additive here and a
 grammar bump is reserved for a change that would make an existing file mean something different.
+Widening an existing op is the same case: `mint-rule` gained an optional `section:` at the
+author-grader-consolidation wave and the log stayed at grammar 1.
 
 ## The anchor rule
 

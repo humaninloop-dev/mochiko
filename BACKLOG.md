@@ -160,13 +160,6 @@ trail (2026-09-08); their open residue is carried below.)*
   `validation-constitution` and `review-plan-artifacts` — first runs void (references unreadable
   without `--add-dir`; fixed), pre/post re-running with the post arm pinned to the v0.108.0 tree
   (`--post-ref 7ac0b9c`). Fill logs in each `evals/<skill>/preregistration.md`.
-- [x] **One-runner promotion, three landing acts** (D10) — **DELIVERED 2026-09-19** (three acts
-  built, each independently audited PASS, byte-identical report oracle across 12 persona + 4 skill
-  + 11 command renders after every act; deprecated shims kept one release; merged to
-  `primitive-evals-v2`). Residue on the trail line. Original scope: rename `evals/commands/` → `evals/plan/`
-  (citations move with it); extract the shared core into `evals/lib/` and make `evals/run.py`
-  import it; converge the CLI to `evals/run.py <target> <subcommand> <name>`. `evals/contract/`
-  untouched (release gate, not an eval). Each act its own audit.
 - [ ] **Agents-as-schema channel probe** (D4 door) — does a plugin hook fire for a `--agent`
   session, an `Agent` subagent, and an agent-team teammate, with injected text landing before the
   first model turn? `!` injection in agent bodies is ruled out (record F12). **Absorbed 2026-09-13
@@ -372,20 +365,31 @@ Build DELIVERED 2026-08-13 at v0.70.0 (same-day as the ruling; the wave ran unde
 ships — 2 plan-approved producer seats + 2 fresh author≠grader validator seats, 2/2 PASS round 1;
 trail). Open residual:
 
+- [ ] **Gate-form watch (D9)** (2026-09-19; provenance: same record D9 + I7) — one line per gate
+  audit (`audit: <unit> · <seat> · <tier> · <n> files · <n> rounds · <n> blocking[ · cost]`) in
+  the landing's build log or ADR; wave 2 double-grades one unit under both forms, sets side by
+  side = the baseline, that plain-seat spawn read for cache-creation tokens the F13 way (D7's
+  cost limb leaves `Assumed` on it). **Trigger:** blocking findings per wave fall by more than
+  half against the F3 baseline with no independent escape signal, or any defect reaches a
+  release a full-read audit would have caught. **Revert:** the gate form returns to a full read
+  by recorded ruling, one migration entry. Read at five lines; OQ4 (a `sonnet` producer on a
+  gate artifact) rides the same touch.
 - [ ] **Producer-plan enforcement build — wave 1 (plan-QA leg) · wave 2 (validator retirement)**
   (2026-09-03; provenance:
-  [producer-plan-enforcement](.mochiko/brainstorms/producer-plan-enforcement/record.md) D8–D9)
-  — wave 1: sound-loop leg 1 amended (ID kept, floor pin 6) · all plan-approval restatement
-  sites swept across the six schemas + `common.yaml` (near-dup convergence) · disclosure
-  `plans:` segment · new `review-seat-plan` pair + router row + first-seed budget ·
+  [producer-plan-enforcement](.mochiko/brainstorms/producer-plan-enforcement/record.md) D8–D9;
+  **re-sequenced 2026-09-19** by `author-grader-consolidation` D10 — these run as that path's
+  waves 2 and 3, after the gate-form wave above; wave 2 is audited under the new gate form and
+  carries the D9 double-grade of one unit; the retirement gate is satisfied on wave-1 figures
+  alone, the default-FAIL carrier now named — D7) — wave 1: sound-loop leg 1 amended (ID kept,
+  floor pin 6) · plan-approval restatement sites swept across the six schemas + `common.yaml` ·
+  disclosure `plans:` segment · new `review-seat-plan` pair + router row + first-seed budget ·
   `primitive-edits.md` criterion 6 rewritten · `patterns-plan-minimalism.grading-routing`
-  re-pointed · install refresh gate before the first dispatch · 2026-08-02 D2 supersession
-  annotation (done at landing) · the wave itself runs under the leg (plan-only dispatch →
-  peer grade → lead approves on PASS → resume), watch with stop condition (FAIL rate > ½,
-  any second re-plan, any dirtied tree → halt). Wave 2, gated on wave-1 figures + the named
-  default-FAIL carrier: `validator` agent/plugin entry/router lines retired, CLAUDE.md
-  (3 mentions + axis 5 reword), `validation-constitution`, ledgers, four supersession rows.
-  Open after acceptance: OQ3 cost watch · OQ4 devils-advocate re-entry (no trigger).
+  re-pointed · install refresh gate · runs under the leg (plan-only dispatch → peer grade → lead
+  approves on PASS → resume), stop condition (FAIL rate > ½, any second re-plan, any dirtied
+  tree → halt). Wave 2: `validator` agent/plugin entry/router lines retired, CLAUDE.md (3
+  mentions + axis 5 reword), `validation-constitution`, ledgers, supersession rows (the
+  `author-grader-value-tiering` row is the gate-form landing's, not this wave's). Open after
+  acceptance: OQ3 cost watch · OQ4 devils-advocate re-entry (no trigger).
 
 - [ ] **D5 rules-file leg (first-miss trigger) + first-live-run watch** (2026-08-13; provenance:
   [charter-ritual-balance](.mochiko/brainstorms/charter-ritual-balance/record.md) D5 `Contested` +

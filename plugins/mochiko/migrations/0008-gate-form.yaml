@@ -1,0 +1,271 @@
+grammar: 1
+id: 0008-gate-form
+sequence: 8
+intent: >-
+  Ship the primitive-edit gate form: the one-place FAIL loop bound in the command common block,
+  setup's bound and validate-seat rule, the persona-less grader tier pin, and the
+  validation-primitive-edit skill that carries the gate contract as rules.
+anchor: 2026-09-19 author-grader-consolidation D7
+hash: sha256:b9356c807ebdc076c6c37c7af384a3718f4c6630bf1ae2f187f6985f695ae96f
+changes:
+  - op: mint-rule
+    schema: command-common/common
+    rule:
+      id: common.gate-loop-bound
+      labels: [user-gate, independence]
+      text: >-
+        A gate verdict of FAIL allows one fix and one re-audit — by the same grader seat
+        resumed, reading only what the fix touched and what it could have broken; a second FAIL
+        halts the landing and goes to the user with both fix lists, fix again or drop; no run
+        raises this bound. Beyond the extending command,
+        `.claude/rules/mochiko/primitive-edits.md` and `validation-primitive-edit.gate-loop-bound`
+        cite this id — a rename or tombstone sweeps them.
+      anchor: 2026-09-19 author-grader-consolidation D6
+  - op: mint-rule
+    schema: command/setup
+    section: setup.sec.boundaries
+    rule:
+      id: setup.gate-loop-bound
+      class: floor
+      extends: common.gate-loop-bound
+      anchor: 2026-09-19 author-grader-consolidation D6
+  - op: mint-rule
+    schema: command/setup
+    section: setup.sec.roles
+    rule:
+      id: setup.validate-seat-form
+      labels: [independence, seats]
+      class: must
+      kind: binding
+      text: >-
+        The validate step's grader is a plain fresh seat that authored no surface, running
+        `mochiko:validation-constitution` with its floors unchanged, spawned with an explicit
+        `model:` alias never below the producer's tier; its FAIL→fix→re-grade loop is bounded
+        by setup.gate-loop-bound.
+      anchor: 2026-09-19 author-grader-consolidation D7
+  - op: mint-rule
+    schema: skill/patterns-model-tiering
+    section: patterns-model-tiering.sec.discipline
+    rule:
+      id: patterns-model-tiering.persona-less-grader-pin
+      labels: [boundary]
+      class: floor
+      kind: bound
+      text: >-
+        A persona-less grader or reviewer spawn carries an explicit `model:` alias, never omitted
+        — the tier the graded work was produced at, never below, and `opus` where the lead
+        itself produced it. An omitted alias is a floor miss whatever the verdict says: the seat
+        took whatever tier the dispatching session happened to run at, which is not a pin.
+      anchor: 2026-09-19 author-grader-consolidation D7
+  - op: import-document
+    kind: skill
+    name: validation-primitive-edit
+    content:
+      kind: skill
+      skill: validation-primitive-edit
+      vars:
+        verdict: PASS
+      sections:
+        - id: validation-primitive-edit.sec.independence
+          title: Independence — who grades, and at what tier
+          intent: >-
+            The plain fresh seat that carries the gate, the tier it is pinned to, and the rendered
+            contract it grades against.
+          rules:
+            - id: validation-primitive-edit.author-grader
+              class: floor
+              extends: review-common.author-grader
+            - id: validation-primitive-edit.plain-seat-explicit-tier
+              labels: [independence, binding]
+              class: floor
+              kind: binding
+              text: >-
+                The gate grader is a persona-less fresh seat that authored nothing in the unit it
+                grades, spawned with an explicit `model:` alias — the tier the graded work was
+                produced at, never below, and `opus` where the lead itself made the edit. A spawn
+                whose alias was omitted has missed this floor whatever the verdict says.
+              anchor: 2026-09-19 author-grader-consolidation D7
+            - id: validation-primitive-edit.rendered-contract-only
+              labels: [independence, fence]
+              class: floor
+              kind: binding
+              text: >-
+                The gate contract is what `mochiko-cli rules validation-primitive-edit` renders.
+                The dispatching brief carries only the unit, the file paths, and the pre-pass
+                command to run; a contract section hand-written into a brief instead of rendered
+                is a floor miss, on the same terms as an omitted `model:` alias. The grade runs
+                against the render, never a paraphrase of it.
+              anchor: 2026-09-19 author-grader-consolidation D7
+            - id: validation-primitive-edit.one-seat-per-wave
+              labels: [independence, binding]
+              class: must
+              kind: binding
+              text: >-
+                One grader seat takes every unit of a wave; independence holds because that seat
+                authored none of them. Each unit keeps its own verdict block and its own outcome
+                line, tagged with the seat, so no verdict hides in the batch. The seat splits in
+                two only when the units' files would not fit its context, and the lines say so.
+              anchor: 2026-09-19 author-grader-consolidation D11
+        - id: validation-primitive-edit.sec.scope
+          title: Scope — the gate job and its one site
+          intent: >-
+            What the gate job is, where it applies, and how the unit is keyed; the input job and
+            the governance set belong elsewhere.
+          rules:
+            - id: validation-primitive-edit.gate-job
+              labels: [boundary, verdict]
+              class: must
+              kind: routing
+              text: >-
+                The job is a gate — a binary the lead cannot ship past — and it applies at the
+                primitive-edit gate alone: a shipped `plugins/mochiko/` primitive, before the
+                `plugin.json` bump that ships it (GI-004). Reviews whose findings a user rules
+                downstream are the review family's input job, and setup's governance surface set
+                is `mochiko:validation-constitution`'s.
+              anchor: 2026-09-19 author-grader-consolidation D2
+            - id: validation-primitive-edit.unit-keyed
+              labels: [boundary, binding]
+              class: must
+              kind: binding
+              text: >-
+                The unit is keyed by kind, and the criteria follow the unit: a command pair, its
+                `.md` with its render · a skill pair, its `SKILL.md` with its render · a prose
+                primitive · schema content, which is the migration file together with its
+                regenerated view diff.
+            - id: validation-primitive-edit.never-excess
+              class: must
+              extends: review-common.never-excess
+        - id: validation-primitive-edit.sec.inputs
+          title: Inputs — read from the files, and the pre-pass run first-hand
+          intent: >-
+            Where the graded evidence comes from, what the grader runs itself, and what the brief
+            is allowed to carry.
+          rules:
+            - id: validation-primitive-edit.from-file-floor
+              labels: [fence, evidence]
+              class: floor
+              text: >-
+                Inputs are read from the files themselves — the edited primitive, its render,
+                the migration and its regenerated view diff, and the strip entry where one is owed
+                — never from the author's report.
+            - id: validation-primitive-edit.pre-pass-first-hand
+              labels: [evidence]
+              class: floor
+              kind: duty
+              text: >-
+                The grader runs `mochiko-cli migrate validate --report` and the char-budget
+                measurement itself and quotes their output as first-hand evidence; a pre-pass
+                result quoted from the brief is not evidence. Nothing that output already asserts
+                is re-derived by judgment.
+              anchor: 2026-09-19 author-grader-consolidation D3
+            - id: validation-primitive-edit.brief-carries-unit
+              labels: [binding]
+              class: must
+              kind: binding
+              text: >-
+                The brief carries the unit's kind and name, its file paths, and the pre-pass
+                commands to run — and nothing else of the contract.
+        - id: validation-primitive-edit.sec.verdict
+          title: Verdict — binary, evidenced, and bounded
+          intent: >-
+            The grading floors, the judgment items keyed by unit, and the re-audit the loop
+            allows.
+          rules:
+            - id: validation-primitive-edit.binary-verdict
+              labels: [verdict]
+              class: floor
+              text: >-
+                The verdict is PASS or FAIL and nothing between — a gate the lead cannot ship
+                past, so a hedged or partial clearing is not a verdict at all.
+            - id: validation-primitive-edit.default-fail
+              class: floor
+              extends: review-common.default-fail
+            - id: validation-primitive-edit.tamper-proof-clause
+              labels: [verdict, evidence]
+              class: floor
+              text: >-
+                A verdict carrying no evidence-read line that names the run's own files is FAIL,
+                automatically: the unit is not done until the grader has read it.
+              anchor: 2026-09-19 author-grader-consolidation D3
+            - id: validation-primitive-edit.judgment-items-pair
+              labels: [verdict]
+              class: must
+              kind: binding
+              text: >-
+                For a command pair or a skill pair the grader confirms each judgment item once,
+                with one evidence line: scaffold headings and order · preserved responsibilities
+                · floor survival · independence, no seat grading its own row · reserved-to-user
+                content in the reserved section · the matching done-condition branch · an argued
+                overage where the pre-pass shows one. The mechanical items — the section-set
+                enumeration, `kind: fail` against its fail segment, id continuity and tombstones,
+                ontology grammar, `extends:` conformance, pointer resolution — belong to the
+                pre-pass and are read from its output, never re-derived.
+              anchor: 2026-09-19 author-grader-consolidation D3
+            - id: validation-primitive-edit.judgment-items-schema
+              labels: [verdict]
+              class: must
+              kind: binding
+              text: >-
+                For schema content — a migration file with its regenerated view diff — the
+                judgment items are the AM-2 five: intent stated · anchor present where the exit
+                requires one · ID lifecycle right · floor and fail survival · register.
+              anchor: 2026-09-19 author-grader-consolidation D3
+            - id: validation-primitive-edit.judgment-items-prose
+              labels: [verdict]
+              class: must
+              text: >-
+                For a prose primitive the items are coherence and preserved responsibilities. An
+                edit to a kitted persona also reads the advisory grid the brief cites; the grid
+                informs the grade and never gates it.
+            - id: validation-primitive-edit.gate-loop-bound
+              labels: [verdict, user-gate]
+              class: floor
+              kind: bound
+              text: >-
+                The bound and its number are `common.gate-loop-bound`'s — cited here, never
+                restated: after a FAIL the fix is re-audited by the same grader seat resumed,
+                reading only what the fix touched and what it could have broken; no run raises the
+                bound.
+              anchor: 2026-09-19 author-grader-consolidation D6
+        - id: validation-primitive-edit.sec.output
+          title: Output — the verdict block and the outcome line
+          intent: The shape each unit's verdict lands in, and the line the landing keeps.
+          rules:
+            - id: validation-primitive-edit.verdict-block
+              labels: [reporting, binding]
+              class: must
+              kind: binding
+              text: >-
+                Each unit lands one block: `VALIDATE:` with the unit · `Checklist run:` ·
+                `Evidence read:`, whose absence is FAIL · `Pre-pass:` with the command and its
+                quoted output · one PASS or FAIL line per judgment item with its evidence ·
+                `VERDICT: PASS | FAIL` · `Issues requiring fix:`, each entry naming the item, the
+                missing thing, and one concrete fix.
+            - id: validation-primitive-edit.outcome-line
+              labels: [reporting, evidence]
+              class: must
+              kind: duty
+              text: >-
+                Every gate audit writes one line, in this grammar exactly — `audit: <unit> ·
+                <seat> · <tier> · <n> files · <n> rounds · <n> blocking[ · cost: $<x>]` —
+                into the record of the landing it belongs to: the wave's `build-log.md` entry, or
+                the `.mochiko/decisions/` record when the edit closes an ad-hoc defect. The
+                `cost:` field is present only where the audit ran as a launched session, read from
+                that session's own reported total.
+              anchor: 2026-09-19 author-grader-consolidation D9
+            - id: validation-primitive-edit.evidence-floor
+              class: floor
+              extends: review-common.evidence-floor
+        - id: validation-primitive-edit.sec.reserved
+          title: Reserved — a repeat FAIL is the user's
+          intent: The one disposition no run takes for itself.
+          rules:
+            - id: validation-primitive-edit.second-fail-user
+              labels: [user-gate]
+              class: floor
+              kind: reservation
+              text: >-
+                The disposition after a second FAIL is the user's — fix again, or drop the edit.
+                A bump carrying an unfixed FAIL is a bump without audits PASS; overruling a grader
+                the user judges wrong rides the ledger's waiver path, never a run's own call.
+              anchor: 2026-09-19 author-grader-consolidation D6

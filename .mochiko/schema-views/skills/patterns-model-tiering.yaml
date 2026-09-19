@@ -163,6 +163,16 @@ sections:
           substitution beat every model choice on both transports; both are the consumer's own
           environment, ruled undetected in-run.
         anchor: 2026-09-19 orchestrator-model-selection D2
+      - id: patterns-model-tiering.persona-less-grader-pin
+        labels: [boundary]
+        class: floor
+        kind: bound
+        text: >-
+          A persona-less grader or reviewer spawn carries an explicit `model:` alias, never
+          omitted — the tier the graded work was produced at, never below, and `opus` where the
+          lead itself produced it. An omitted alias is a floor miss whatever the verdict says: the
+          seat took whatever tier the dispatching session happened to run at, which is not a pin.
+        anchor: 2026-09-19 author-grader-consolidation D7
   - id: patterns-model-tiering.sec.inputs
     title: Inputs — how tiered returns are read
     intent: >-

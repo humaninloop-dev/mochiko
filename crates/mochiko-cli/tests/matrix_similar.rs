@@ -960,9 +960,15 @@ fn the_detector_reproduces_its_figures_over_the_command_family() {
         // command-family edge below the threshold. Re-measured after `0005` (the artifact-home
         // census): its six command mints move the scan and the pair count, and the cluster count
         // holding at zero is the assertion that each command's home rule names its own home rather
-        // than copying a sibling's text — a shared block would have been the alternative, and the
-        // log carries no op that adds a rule to a common library.
-        (327, 12_421, 0, 60),
+        // than copying a sibling's text — a shared block would have been the alternative, and at
+        // the time the log carried no op that could add a rule to a common library.
+        // That last clause no longer holds: the 2026-09-19 author-grader-consolidation wave
+        // widened `mint-rule` so a change carrying no `section:` appends a block to a common
+        // library, and `0008-gate-form` is the first use (`common.gate-loop-bound`). A common
+        // block is not a rule, so it does not enter this scan; the +2 here is `setup`'s two
+        // mints, `setup.gate-loop-bound` and `setup.validate-seat-form`. The suppressed count
+        // holds at 60 because all three allowlist rows `0008` added are skill-side.
+        (329, 12_607, 0, 60),
         "rules scanned · in-kind pairs scored · clusters · allowlist-suppressed edges"
     );
 }
@@ -1013,10 +1019,29 @@ fn the_detector_reproduces_the_live_runs_figures_over_the_corpus() {
     // `binding`, `latitude`, `bound` and `duty` buckets, so the pairs lost from the big bucket
     // outnumber the pairs gained in the small ones. No new cluster surfaced and the suppressed
     // set is unchanged — the allowlist was not touched.
-    assert_eq!(report.scanned, 1043, "rules scanned");
-    assert_eq!(report.scored, 150_489, "in-kind pairs scored");
+    // Re-measured after `0008` (the gate form, 2026-09-19 author-grader-consolidation D7): the
+    // scan moves from 1,043 to 1,067 — two command rules on `setup` and twenty-two skill rules,
+    // twenty-one of them the imported `validation-primitive-edit` document. `scored` *rises* here
+    // where `0007`'s fell, and the mechanism is the same in both directions: pairs are scored
+    // within a kind. `0007` retired a kind-less rule out of the large `constraint` bucket, which
+    // costs that bucket `n-1` pairs; `0008` retires nothing at all, so every bucket it touches
+    // only grows.
+    // The zero below is a SUPPRESSED zero, not a naive one, and that distinction is the reason
+    // this pin is worth reading twice. Before `0008` shipped its allowlist rows the sweep
+    // reported three clusters, every one of them an edge `validation-primitive-edit` forms on
+    // arrival against an existing review-family rule. `scripts/similar-rules-allowlist.yaml`
+    // gained exactly three rows for exactly those three edges, which is why `suppressed_hits`
+    // moves 168 → 171 and the cluster count reads 0. Two of the three are the stub-versus-local
+    // shape the file already suppresses eleven times (`.evidence-floor` and `.default-fail` are
+    // `extends:` stubs binding a `review-common` block while the counterparty keeps local text);
+    // the third, against `review-code-minimalism.diff-and-report-both-read`, is a keep-distinct
+    // adjudication between two local texts with different read boundaries. Drop or reword any of
+    // those three rows and this assertion fails looking like a detector regression when it is an
+    // allowlist edit.
+    assert_eq!(report.scanned, 1067, "rules scanned");
+    assert_eq!(report.scored, 156_764, "in-kind pairs scored");
     assert_eq!(report.clusters.len(), 0, "clusters");
-    assert_eq!(report.suppressed_hits, 168, "allowlist-suppressed edges");
+    assert_eq!(report.suppressed_hits, 171, "allowlist-suppressed edges");
 }
 
 // ---------------------------------------------------------------------------

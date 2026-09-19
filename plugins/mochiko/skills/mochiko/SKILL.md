@@ -33,7 +33,9 @@ reserves to the user are ruled by the user.
 **The two review-skill families** (the `validation-*`/`review-*` split, 2026-07-18): the prefix encodes **who owns the
 clearing**. `validation-*` = the skill **issues the authoritative grade** — a binary PASS/FAIL
 checklist grade, default FAIL, on the `validator` persona (today: `validation-constitution`;
-a PASS is still human-gated downstream). `review-*` = the skill **produces
+a PASS is still human-gated downstream), joined by `validation-primitive-edit`, the
+maintainer-side member carried by a plain fresh seat rather than a persona
+(`author-grader-consolidation` D7). `review-*` = the skill **produces
 lead-adjudicated input** — severity-ranked findings and a *recommended* status that the lead or a
 human adjudicates; the reviewer's verdict never clears anything by itself.
 
@@ -116,6 +118,11 @@ human adjudicates; the reviewer's verdict never clears anything by itself.
 | `review-brainstorm` | serving as a cold **end-stage reviewer** of a thinking session's `record.md` (lens-briefed pair or solo per the user's sizing) — independent cold read first, then the one-shot cross-examination → survivors + tally + recommended status (never a session co-author; verdicts lead-owned) |
 
 > The questioning engine is `analysis-iterative` (registered under Specify, above — a general/shared skill); it is not brainstorm-specific.
+
+### Primitive-edit gate (model-invoked — reached by the maintainer ceremony in `.claude/rules/mochiko/primitive-edits.md`)
+| Skill | Reach when |
+|-------|------------|
+| `validation-primitive-edit` | running the **primitive-edit gate audit** — the binary PASS/FAIL a shipped `plugins/mochiko/` primitive takes before the `plugin.json` bump that ships it (GI-004). The unit is keyed by kind (command pair · skill pair · prose primitive · schema content) and the judgment items follow it; the deterministic pre-pass is run first-hand by the grader and quoted, never relayed from the brief; the verdict block carries the evidence-read line (absent ⇒ FAIL) and one outcome line goes into the record of the landing. Carried by a **plain fresh seat with an explicit `model:` alias**, never the editor, one seat per wave; a FAIL allows one fix and one re-audit by the same seat resumed, a second FAIL goes to the user. Not the input-job `review-*` families, and not setup's governance surface set (`validation-constitution`) |
 
 ### Entry point (user-invoked — you run it)
 | Command | Reach when |

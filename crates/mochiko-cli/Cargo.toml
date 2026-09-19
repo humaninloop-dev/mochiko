@@ -1,6 +1,9 @@
 [package]
 name = "mochiko-cli"
-version = "0.1.0"
+# 0.2.0 at the 2026-09-19 author-grader-consolidation wave: `mint-rule` carrying no `section:` now
+# appends a block to a common library, so a log written against this grammar is rejected by an
+# older binary. The grammar version stays 1 — no binary carrying the narrower rule was released.
+version = "0.2.0"
 edition = "2021"
 description = "Template-schema guidance renderer for the mochiko plugin (foundation seed CLI)."
 license = "MIT OR Apache-2.0"

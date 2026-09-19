@@ -651,3 +651,68 @@ fn reword_section_needs_a_document_and_a_section_id() {
         "op-malformed"
     );
 }
+
+// ---------------------------------------------------------------------------
+// author-grader-consolidation wave 1 — a section-less `mint-rule` on a common library
+// ---------------------------------------------------------------------------
+
+/// A one-change migration minting a rule into `schema`, with `fields` supplying or omitting the
+/// `section:` line.
+fn mint_rule(schema: &str, fields: &str) -> String {
+    format!(
+        "grammar: 1\n\
+         id: 0002-demo\n\
+         sequence: 2\n\
+         intent: Mint one rule.\n\
+         changes:\n\
+         \x20 - op: mint-rule\n\
+         \x20   schema: {schema}\n\
+         {fields}\
+         \x20   rule: {{id: common.new, labels: [seats], text: A new common block.}}\n"
+    )
+}
+
+#[test]
+fn mint_rule_on_a_common_library_parses_with_no_section() {
+    // A common library carries its blocks at the top level, so there is no section to name and
+    // the op is well formed without one.
+    for schema in ["command-common/common", "skill-common/skill-review-common"] {
+        let Change::MintRule { section, .. } = only_change(&mint_rule(schema, "")) else {
+            panic!("{schema}: want a mint-rule change");
+        };
+        assert_eq!(section, None, "{schema}: a library mint names no section");
+    }
+
+    // A named section still parses; it is the replay that rejects it, because whether the
+    // document holds that section is a question about state.
+    let Change::MintRule { section, .. } = only_change(&mint_rule(
+        "command-common/common",
+        "    section: common.sec.any\n",
+    )) else {
+        panic!("want a mint-rule change");
+    };
+    assert_eq!(section.as_deref(), Some("common.sec.any"));
+}
+
+#[test]
+fn mint_rule_on_a_command_or_skill_schema_needs_a_section() {
+    // Every other rule-bearing document nests its rules in sections, so a section-less mint names
+    // no home for the rule and is malformed rather than merely inapplicable.
+    for schema in ["command/specify", "skill/review-feasibility"] {
+        let err = migration::parse("0002-demo.yaml", &mint_rule(schema, ""))
+            .expect_err("`section:` is required outside a common library");
+        assert_eq!(err.code(), "op-malformed", "{schema}: got {err}");
+        assert!(
+            format!("{err}").contains("common library"),
+            "{schema}: the finding names the one shape that may omit it: {err}"
+        );
+    }
+
+    // A `section:` that is present but not a scalar keeps the rejection it has always had.
+    let err = migration::parse(
+        "0002-demo.yaml",
+        &mint_rule("command/specify", "    section: [a, list]\n"),
+    )
+    .expect_err("a container `section:` is rejected");
+    assert_eq!(err.code(), "op-malformed", "got {err}");
+}

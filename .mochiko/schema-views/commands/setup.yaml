@@ -65,6 +65,16 @@ sections:
           (${memory_dir}/governance-intent.md), so it builds its Phase 0 angle map blind to what
           the interrogation concluded; its map returns before you send the synthesis path and the
           cold read begins. In a pair, both seats build their maps independently.
+      - id: setup.validate-seat-form
+        labels: [independence, seats]
+        class: must
+        kind: binding
+        text: >-
+          The validate step's grader is a plain fresh seat that authored no surface, running
+          `mochiko:validation-constitution` with its floors unchanged, spawned with an explicit
+          `model:` alias never below the producer's tier; its FAIL→fix→re-grade loop is
+          bounded by setup.gate-loop-bound.
+        anchor: 2026-09-19 author-grader-consolidation D7
   - id: setup.sec.reserved
     title: Reserved to the user — never the run's
     intent: 'Decisions held by the user: gates, rulings, and escalations no seat may take.'
@@ -309,6 +319,10 @@ sections:
           it with the user (brownfield) — those two paths are instances of its reach, not its
           extent.
         anchor: 2026-08-19 product-architecture-schema
+      - id: setup.gate-loop-bound
+        class: floor
+        extends: common.gate-loop-bound
+        anchor: 2026-09-19 author-grader-consolidation D6
   - id: setup.sec.fail-conditions
     title: Not done — default FAIL
     intent: >-

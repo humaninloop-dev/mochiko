@@ -474,13 +474,40 @@ fn apply(state: &mut State, change: &Change, authority: Option<&str>) -> Result<
             if state.was_minted(&doc, &id) {
                 return Err(mint_once(&doc, &id));
             }
+            let is_library = matches!(doc.kind, DocKind::CommandCommon | DocKind::SkillCommon);
             let schema = schema_of(state, &doc)?;
-            let target = schema
-                .sections
-                .iter_mut()
-                .find(|s| s.id == *section)
-                .ok_or_else(|| inapplicable(&doc, Some(section), "no such live section"))?;
-            target.rules.push(decoded);
+            match section {
+                // A common library has no sections to name, so the op says so as what it is
+                // rather than as a section that happens to be missing.
+                Some(section) if is_library => {
+                    return Err(inapplicable(
+                        &doc,
+                        Some(section),
+                        "a common library carries its blocks at the document's top level and \
+                         never sections — omit `section:` to append a block",
+                    ))
+                }
+                Some(section) => {
+                    let target = schema
+                        .sections
+                        .iter_mut()
+                        .find(|s| s.id == *section)
+                        .ok_or_else(|| inapplicable(&doc, Some(section), "no such live section"))?;
+                    target.rules.push(decoded);
+                }
+                None if is_library => schema.blocks.push(decoded),
+                // Unreachable through the log: the parse rejects a section-less mint on any other
+                // kind. The arm is written total anyway, so a caller building a `Change` by hand
+                // cannot write the top-level `rules:` state that `flat-rules` exists to reject.
+                None => {
+                    return Err(inapplicable(
+                        &doc,
+                        Some(&id),
+                        "a section-less mint appends a top-level block, which only a common \
+                         library carries",
+                    ))
+                }
+            }
             state.mint(&doc, &id);
         }
         Change::RewordRule { id, text, .. } => {

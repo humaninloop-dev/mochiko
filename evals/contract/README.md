@@ -91,15 +91,19 @@ prints the real set, which is how a partial wave shows exactly the families that
 | `brainstorm-skew` | 1 | the staged plugin's own log is out of range |
 | `brainstorm-hooks-off` | 1 | no binary, hooks off: the harness path is the only guard left |
 | `brainstorm-policy` | 1 | shell execution disabled by policy — recorded, never asserted (D8) |
-| `<skill>-delivery` ×30 | 3 each | the same happy path, with the skill registered and the invocation path recorded |
-| `<skill>-absence` ×30 | 1 each | no binary: the halt fires before any model turn and the install line still reaches the user |
+| `<skill>-delivery` ×31 | 3 each | the same happy path, with the skill registered and the invocation path recorded |
+| `<skill>-absence` ×31 | 1 each | no binary: the halt fires before any model turn and the install line still reaches the user |
 | `preload` | 2 | a plugin agent's `skills:` frontmatter renders a converted skill at spawn — both binary states |
 
-At the wave-6 landing that is **eighty-two cases and a hundred and fifty-one sessions**: four host
+At v0.111.0 that is **eighty-nine cases and a hundred and fifty-eight sessions**: seven host
 cases, two fixture cases, six command delivery cases of three replicates, six single-session
-command absence cases, three mechanism cases, thirty skill delivery cases of three replicates,
-thirty single-session skill absence cases, and the two-session preload case. The session count is
-wave 5's unchanged, because wave 6 adds only a host case. During a conversion wave the list is
+command absence cases, three mechanism cases, thirty-one skill delivery cases of three replicates,
+thirty-one single-session skill absence cases, the two-session preload case, and the two wave-4
+hook cases — `gate-live` one session, `reminder-spawn` two. `python3 evals/contract/run.py --list`
+counts the cases, and its number is the one this figure must agree with. The 2026-09-19
+author-grader-consolidation ruling added `validation-primitive-edit`, and so two cases and four
+sessions, on top of a base that had grown by three host cases and the two hook cases since the
+wave-6 prose was written. During a conversion wave the list is
 shorter, because it is discovered: after the review family landed it declared thirty-seven cases,
 and it grew by sixteen or eighteen with each family.
 
@@ -263,7 +267,7 @@ byte column byte-identical to the row it replaces.
 | | commands | skills |
 |---|---|---|
 | pre-registration | `EXPECTED` in `run.py` | `expected-skills.json` |
-| floor ids | 116 across six (110 at the freeze; one `artifact-home` floor per command by the 2026-09-13 hook-enforced-artifact-schema ruling) | 240 across thirty (226 at the freeze; `patterns-model-tiering` 4 → 6 by the 2026-09-05 sonnet-worker-rung ruling → 7 by the 2026-09-19 seat-default-key ruling; eleven `artifact-home` floors by the 2026-09-13 hook-enforced-artifact-schema ruling) |
+| floor ids | 117 across six (110 at the freeze; one `artifact-home` floor per command by the 2026-09-13 hook-enforced-artifact-schema ruling; `setup.gate-loop-bound` by the 2026-09-19 author-grader-consolidation ruling) | 252 across thirty-one (226 at the freeze; `patterns-model-tiering` 4 → 6 by the 2026-09-05 sonnet-worker-rung ruling → 7 by the 2026-09-19 seat-default-key ruling → 8 by the 2026-09-19 author-grader-consolidation ruling; eleven `artifact-home` floors by the 2026-09-13 hook-enforced-artifact-schema ruling; `validation-primitive-edit`'s eleven, a post-freeze member born at the same author-grader-consolidation ruling and so carrying no measured baseline) |
 | baseline | `wc -c` of `<cmd>.yaml` + `common.yaml` | `wc -c` of `schema.yaml` + the family common |
 | also frozen | — | the family, and the pre-conversion `SKILL.md` size |
 
@@ -703,12 +707,13 @@ CI keeps the four crate layers** (`cargo test` · `fmt` · `clippy` · `audit`) 
 sessions — the original D8's "API key in CI secrets" clause is withdrawn. The sandbox is Linux and
 the host is macOS; together they are the two OS rows, and there is no CI matrix.
 
-**A hundred and fifty-five metered sessions per full run.** A hundred and fifty-four of them are
-cases: two fixture cases, eighteen delivery replicates across six commands, ninety across thirty
-skills, thirty-six single-session absence cases, three mechanism cases, the two-session preload
-case, and the three the wave-4 hook cases add — `gate-live` one, `reminder-spawn` two. The last is
+**A hundred and fifty-nine metered sessions per full run.** A hundred and fifty-eight of them are
+cases: two fixture cases, eighteen delivery replicates across six commands, ninety-three across
+thirty-one skills, thirty-seven single-session absence cases, three mechanism cases, the
+two-session preload case, and the three the wave-4 hook cases add — `gate-live` one,
+`reminder-spawn` two. The last is
 the preflight authentication probe, one per invocation whatever is selected. Wave 6 landed at a
-hundred and fifty-one and wave 4's figure was twenty-nine. The seven host cases add none, which is
+hundred and fifty-one, v0.111.0 added four, and wave 4's figure was twenty-nine. The seven host cases add none, which is
 why a host-side change can be validated before a single metered session is spent.
 
 ## Caveat carried on record

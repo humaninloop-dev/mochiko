@@ -38,6 +38,18 @@ suppressions:
     reason: RB keeps local text — protected v0.83.0 tail ("zero findings means hunt harder, never manufacture") the C2 block deliberately excludes; C2 membership x5
   - ids: [review-brainstorm.never-default-ready, review-governance-intent.default-fail]
     reason: RB keeps local text — protected tail, same adjudication
+  # === author-grader-consolidation wave 1, v0.111.0 (migration 0008-gate-form). The three edges
+  # `validation-primitive-edit` forms on arrival. The first two the detector marks CROSS-PAIR +
+  # EXTEND-GAP — the stub-versus-local shape already adjudicated above, where the new skill binds
+  # a review-common block and the counterparty keeps local text. The third is a plain CROSS-PAIR:
+  # both sides carry local text and neither binds a block, so it is an ordinary keep-distinct
+  # rather than an extraction candidate. No extraction is proposed by any of them. -------------
+  - ids: [review-sufficiency.evidence-floor, validation-primitive-edit.evidence-floor]
+    reason: census C1 edge — RSUF local target, same adjudication as its six rows above; VPE binds the block
+  - ids: [review-brainstorm.never-default-ready, validation-primitive-edit.default-fail]
+    reason: RB keeps local text — protected tail, same adjudication as its five rows above; VPE binds the block
+  - ids: [review-code-minimalism.diff-and-report-both-read, validation-primitive-edit.from-file-floor]
+    reason: keep-distinct — different read boundaries, RCM binds a cycle's diff plus its report, VPE binds the edited primitive plus its render and view diff; the shared frame is "read the artifact, never a relay of it"
   - ids: [review-brainstorm.external-claims-binding, review-brainstorm.record-fitness-binding]
     reason: two different reference bindings sharing the referenced-never-restated frame
   - ids: [review-brainstorm.external-claims-binding, review-feasibility.external-claims-binding]

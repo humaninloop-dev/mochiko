@@ -333,6 +333,9 @@ EXPECTED = {
                 "setup.carve-outs-preserved",
                 "setup.map-never-overwrite",
                 "setup.store-ruled-content-never-here",
+                # `0008-gate-form` (2026-09-19) homed the gate loop bound in the command
+                # common block; setup binds it as a floor by `extends:`.
+                "setup.gate-loop-bound",
                 "setup.fail.pre-ratification-authoring",
                 "setup.fail.unclosed-trace",
                 "setup.fail.author-graded",
@@ -518,6 +521,12 @@ PROBE_ARGUMENTS = {
         ".claude/rules/mochiko/",
         "Grades a drafted governance surface set; the argument names the rules directory that "
         "set lands in.",
+    ),
+    "validation-primitive-edit": (
+        "plugins/mochiko/skills/mochiko/SKILL.md",
+        "Grades one shipped primitive edit at the gate; the argument names the edited "
+        "primitive's own file. A path the sandbox does not carry takes the skill's own "
+        "missing-input branch, after the read-back.",
     ),
     # --- authoring family: a subject to author for --------------------------------------------
     "authoring-architecture-store": ("caching", "Authors a store write for a subject; free text."),
@@ -2978,11 +2987,20 @@ def case_delivery(kind: str, name: str):
         # Wave 3's three replicates agreed to the byte. Across six commands that is worth stating
         # rather than assuming, so a disagreement is named instead of hidden behind the first.
         spread = sorted({r["delivered_bytes"] for r in replicates})
+        # A post-freeze member has no pre-conversion baseline to measure against — it was born
+        # after the freeze, so its byte columns are 0 by ruling rather than by omission. Guarded
+        # the way the summary printer guards the same division, so one such row cannot take the
+        # whole delivery case down with a ZeroDivisionError.
+        against = (
+            f"{baseline:,}-byte baseline — {(delivered - baseline) / baseline:+.1%} bytes"
+            if baseline
+            else "no pre-conversion baseline — post-freeze member, delta not computable"
+        )
         checks.append(
             report(
                 "delivered read cost",
                 f"{delivered:,} bytes / {replicates[0]['delivered_chars']:,} chars against the "
-                f"{baseline:,}-byte baseline — {(delivered - baseline) / baseline:+.1%} bytes"
+                f"{against}"
                 + ("" if len(spread) == 1 else f"; replicates disagree: {spread}"),
             )
         )
@@ -4883,7 +4901,7 @@ def case_reminder_spawn(runner, sandbox) -> tuple[list, pathlib.Path]:
 
     checks.append(report("the line both arms looked for", marker))
     write_verdict(staged.root, "reminder-spawn", checks,
-                  {"shape": "2 sessions", "reminder_line": golden, "arms": findings})
+                  {"shape": "2 sessions", "reminder_line": marker, "arms": findings})
     return checks, staged.root
 
 
@@ -5066,7 +5084,7 @@ def main() -> int:
 
     # The host cases run first: they are free, they need nothing built, and a broken hook script
     # or an undeliverable template should be visible before twenty minutes of sandbox build and a
-    # hundred and fifty-one metered sessions.
+    # hundred and fifty-nine metered sessions.
     print()
     failures, pendings, reports = run_cases(host_cases, None, None)
 

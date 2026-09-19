@@ -1,6 +1,9 @@
 # Record — author≠grader questioned: value-tiered verification
 
-**Status:** open
+**Status:** superseded 2026-09-19 — by `author-grader-consolidation`
+(`../author-grader-consolidation/record.md`): F1–F6 carried forward and re-verified there; Q1's
+driver ruling (cost + latency/ceremony, yield not disputed) stands as its F11. This session
+stalled at Q1 with no decisions.
 **Opened:** 2026-08-26
 **Topic:** Question the author≠grader philosophy wholesale and find a pragmatic split: independent
 verification reserved for high-value surfaces, author self-verification accepted for low-value

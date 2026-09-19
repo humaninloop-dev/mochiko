@@ -301,9 +301,13 @@ pub enum Change {
         id: String,
         disposition: String,
     },
+    /// A new rule. `section` is `Some` on a command or skill schema, whose rules nest in
+    /// sections, and `None` on a common library, whose blocks sit at the document's top level
+    /// and which carries no sections to name. The pairing is checked at parse, where the
+    /// document's kind is already in hand.
     MintRule {
         doc: DocRef,
-        section: String,
+        section: Option<String>,
         rule: Value,
     },
     RewordRule {
@@ -688,11 +692,31 @@ fn parse_change(value: &Value, file: &str, index: usize) -> Result<Change, Parse
             id: field_str(map, "id", file, index)?,
             disposition: field_str(map, "disposition", file, index)?,
         },
-        ChangeOp::MintRule => Change::MintRule {
-            doc: doc_ref(map, "schema", file, index)?,
-            section: field_str(map, "section", file, index)?,
-            rule: field_value(map, "rule", file, index)?,
-        },
+        ChangeOp::MintRule => {
+            let doc = doc_ref(map, "schema", file, index)?;
+            // A common library carries its blocks at the top level and no sections at all, so
+            // there is nothing for a `section:` to name; every other rule-bearing document nests
+            // its rules in sections, so one is owed. The kind decides which shape is legal, and
+            // it is in hand here — the wrong shape is a malformed op, not a state a replay could
+            // discover it cannot apply.
+            let is_library = matches!(doc.kind, DocKind::CommandCommon | DocKind::SkillCommon);
+            let section =
+                match get(map, "section") {
+                    Some(_) => Some(field_str(map, "section", file, index)?),
+                    None if is_library => None,
+                    None => return Err(change_err(
+                        file,
+                        index,
+                        "`section:` missing — only a common library takes a section-less mint, \
+                         which appends the rule as a top-level block",
+                    )),
+                };
+            Change::MintRule {
+                doc,
+                section,
+                rule: field_value(map, "rule", file, index)?,
+            }
+        }
         ChangeOp::RewordRule => Change::RewordRule {
             doc: doc_ref(map, "schema", file, index)?,
             id: field_str(map, "id", file, index)?,

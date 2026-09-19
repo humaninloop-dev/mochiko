@@ -5,6 +5,71 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.111.0] — 2026-09-19
+
+**The primitive-edit gate form** (record
+`.mochiko/brainstorms/author-grader-consolidation/record.md` D2–D7, D9, D11; `DECISIONS.md`
+2026-09-19; supersedes `author-grader-value-tiering`). Author≠grader was ruled in pieces across
+five sessions and one governance principle; this wave lands the gate half as one contract.
+
+Two grading jobs are now ruled rather than grown (D2). A **gate** — a binary the lead cannot ship
+past — applies only where the artifact leaves the repo with no human ruling behind the grade:
+shipped plugin primitives before the `plugin.json` bump (GI-004), and setup's validate step.
+**Input** — severity-ranked findings the user rules — applies everywhere a user ruling already
+sits downstream. At the primitive-edit gate the completeness rule shrinks to judgment items keyed
+by unit, each confirmed once with one evidence line (D3); the mechanical tier is the deterministic
+pre-pass, which **the grader runs itself and quotes** — a pre-pass result relayed in the brief is
+not evidence, and a re-audit reads only the fix delta. The posture (default FAIL) and the
+tamper-proof clause (a verdict with no evidence-read line is FAIL) are unchanged, and setup's
+validate step keeps `validation-constitution`'s completeness floors untouched (C1).
+
+New skill **`validation-primitive-edit`** (D7/C3) — the gate contract as rules on the review
+six-set, eleven floors. It is carried by a **plain fresh seat**, no persona, spawned with an
+explicit `model:` alias equal to the tier the edit was produced at and never below, `opus` when
+the lead made it; an omitted alias is a floor miss. The dispatcher pastes the render verbatim and
+writes only the unit, its paths, and the pre-pass command — a hand-written contract section is a
+floor miss on the same terms. One seat takes every unit of a wave (D11), each unit keeping its own
+verdict block and its own outcome line.
+
+Migration **`0008-gate-form.yaml`** (sequence 8): `common.gate-loop-bound` minted in the command
+common block, its number in its own text (D4/D6) — a FAIL allows one fix and one re-audit by the
+same seat resumed, a second FAIL halts the landing and goes to the user, fix again or drop, and no
+run raises it — extended by `setup.gate-loop-bound`; `setup.validate-seat-form`;
+`patterns-model-tiering.persona-less-grader-pin` (floor); and the `validation-primitive-edit`
+document. `.claude/rules/mochiko/primitive-edits.md` Check section rewritten to the same form,
+every criterion tagged CLI-asserted / contract-suite / judgment from a build-time inventory
+against `crates/mochiko-cli/src/validate.rs` and `evals/contract/run.py` rather than guessed — the
+inventory corrected the assumption that the contract suite checks a command's scaffold headings,
+which it does not. Every gate audit now leaves one outcome line (D9) in the record of its landing,
+the baseline the wave-2 double-grade is read against.
+
+**Migration grammar widened, and the binary floor moves with it.** `mint-rule` now takes
+`section:` as optional: omitted on a command or skill it is still `op-malformed`, but omitted on a
+family common library it appends a new block — the op the log had no way to express, which is what
+`common.gate-loop-bound` needed. No grammar-version bump: the change is additive and no
+`mochiko-cli-v*` tag has been released, so no consumer reads the old shape. **The plugin now
+requires `mochiko-cli` 0.2.0 or later** — a 0.1.x binary rejects `0008-gate-form.yaml` at parse
+and, per the dependency rule, halts rather than degrading.
+
+Router gains the primitive-edit gate table and names the new member beside
+`validation-constitution`. Budget: the ledger opens a fourth seeding path, the **ruled birth
+seed**, and the new skill takes the first one — payload 14,968 (body 3,449 + render 11,519), no
+headroom; description 730, well above the ~500 family norm, disclosed against the
+`testing-gap-finding` and `review-sufficiency` precedents. Contract suite pre-registers the new
+member (`expected-skills.json` post-freeze row, floor fields only elsewhere; `EXPECTED["setup"]`
++1 floor; a `PROBE_ARGUMENTS` row; a zero-baseline guard).
+
+The wave was audited under the **old** form (D10 — its last full wave): fresh `mochiko:validator`
+seats, full read, one per cluster — 12 units over 17 rounds, 8 blocking findings caught and fixed
+(the D9 outcome lines and every verdict in
+`.mochiko/brainstorms/author-grader-consolidation/build-log.md` and `reports/`). Gates:
+`mochiko-cli migrate validate` 0 rejecting · 105 advisory (+1, the new skill's budget line) ·
+views ≡ replay · `cargo test -p mochiko-cli` 472 green (nine new for the widened op) · fmt ·
+clippy · audit · full-corpus similarity sweep 48/48 (three allowlist rows) · **contract suite
+89/89** — the full sandbox run passed 88 and crashed on `reminder-spawn` in the runner's
+evidence write (`NameError`, pre-existing since 2026-09-15, after both assertions had passed);
+fixed on sight (`golden` → `marker`), reviewed, the case re-run green on its own.
+
 ## [0.110.0] — 2026-09-19
 
 **Seat default key — orchestrator-selected seat models** (record

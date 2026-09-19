@@ -1430,3 +1430,295 @@ fn a_two_migration_log_replays_deterministically() {
         "a section intent is state — reversing the rewords must move the content hash"
     );
 }
+
+// ---------------------------------------------------------------------------
+// author-grader-consolidation wave 1 — minting a common-library block
+//
+// A common library carries its blocks at the document's top level and no sections at all, so
+// `mint-rule` appends one when `section:` is absent. The library documents are imported by a
+// second migration rather than folded into `GENESIS`, which every other test in this file
+// replays: a new document there would widen the surface of assertions that are about something
+// else entirely.
+// ---------------------------------------------------------------------------
+
+/// Imports the skill-label registry and the two family common libraries, and binds one command
+/// block from the demo command's own rule — so a library in these fixtures always has a real
+/// stub pointing into it.
+const LIBRARIES: &str = r#"
+grammar: 1
+id: 0002-libraries
+sequence: 2
+intent: Import the two family common libraries and bind one of their blocks.
+changes:
+  - op: import-document
+    kind: skill-labels
+    name: skill-labels
+    content:
+      kind: skill-labels
+      labels:
+        independence: Who is never whom.
+  - op: import-document
+    kind: command-common
+    name: common
+    content:
+      kind: command-common
+      rules:
+        - id: common.register
+          labels: [seats]
+          text: User-facing prose follows the output style.
+  - op: import-document
+    kind: skill-common
+    name: skill-review-common
+    content:
+      kind: skill-common
+      rules:
+        - id: review-common.author-grader
+          labels: [independence]
+          text: Never author, fix, or revise what you grade.
+  - op: set-rule-field
+    schema: command/demo
+    id: demo.plain
+    field: extends
+    value: common.register
+"#;
+
+/// Replay `GENESIS`, then [`LIBRARIES`], then the changes given — the third file at sequence 3.
+fn with_libraries(tag: &str, changes: &str) -> Replay {
+    let dir = log_dir(tag);
+    write(&dir, "0001-genesis.yaml", GENESIS);
+    write(&dir, "0002-libraries.yaml", LIBRARIES);
+    write(
+        &dir,
+        "0003-change.yaml",
+        &format!(
+            "grammar: 1\nid: 0003-change\nsequence: 3\nintent: The change under test.\n\
+             changes:\n{changes}"
+        ),
+    );
+    replay_of(&dir)
+}
+
+fn library<'a>(
+    state: &'a replay::State,
+    kind: DocKind,
+    name: &str,
+) -> &'a mochiko_cli::model::RuleSchema {
+    state
+        .docs
+        .get(&DocRef::new(kind, name))
+        .and_then(Document::as_rules)
+        .expect("the common library is in state")
+}
+
+/// Every hard-set and advisory finding the state raises, as `code · id` pairs.
+fn validation(replay: &Replay) -> Vec<String> {
+    replay
+        .validation
+        .iter()
+        .map(|f| format!("{} · {}", f.code.as_str(), f.id.as_deref().unwrap_or("-")))
+        .collect()
+}
+
+#[test]
+fn mint_rule_without_a_section_appends_a_block_to_a_command_common_library() {
+    let replay = with_libraries(
+        "mint-block-command",
+        "  - {op: mint-rule, schema: command-common/common, \
+         rule: {id: common.model-tiering, labels: [seats], text: Exploration rides haiku.}}\n",
+    );
+    assert_clean(&replay);
+
+    let lib = library(&replay.state, DocKind::CommandCommon, "common");
+    assert!(
+        lib.sections.is_empty(),
+        "a library holds no sections, before or after a mint"
+    );
+    let ids: Vec<&str> = lib.blocks.iter().map(|b| b.id.as_str()).collect();
+    assert_eq!(
+        ids,
+        vec!["common.register", "common.model-tiering"],
+        "the block is appended after the genesis blocks"
+    );
+
+    // Nothing bound the new block, so the library check reports it — advisory, not rejecting, so
+    // the state is still sound. The test asserts what the finding is rather than its absence.
+    assert!(
+        validation(&replay).contains(&"orphan-block · common.model-tiering".to_string()),
+        "an unbound new block reports as an orphan: {:?}",
+        validation(&replay)
+    );
+    assert!(
+        replay.rejecting().next().is_none(),
+        "orphan-block is advisory, so the minted state stays deliverable: {:?}",
+        replay
+            .rejecting()
+            .map(|f| f.to_string())
+            .collect::<Vec<_>>()
+    );
+}
+
+#[test]
+fn mint_rule_without_a_section_appends_a_block_to_a_skill_common_library() {
+    let replay = with_libraries(
+        "mint-block-skill",
+        "  - {op: mint-rule, schema: skill-common/skill-review-common, \
+         rule: {id: review-common.verdict, labels: [independence], \
+         text: A verdict is PASS or FAIL and nothing else.}}\n",
+    );
+    assert_clean(&replay);
+
+    let lib = library(&replay.state, DocKind::SkillCommon, "skill-review-common");
+    assert!(lib.sections.is_empty());
+    let ids: Vec<&str> = lib.blocks.iter().map(|b| b.id.as_str()).collect();
+    assert_eq!(
+        ids,
+        vec!["review-common.author-grader", "review-common.verdict"],
+        "the skill-side library appends at the top level the same way"
+    );
+}
+
+#[test]
+fn a_minted_common_block_resolves_a_dependent_stubs_extends() {
+    // The control: the stub binds a block that was never minted, and the hard set says so.
+    let unresolved = with_libraries(
+        "extends-control",
+        "  - {op: set-rule-field, schema: command/demo, id: demo.lead, field: extends, \
+         value: common.model-tiering}\n",
+    );
+    assert!(
+        validation(&unresolved).contains(&"extends-unresolved · demo.lead".to_string()),
+        "the control must fail for the reason the next case fixes: {:?}",
+        validation(&unresolved)
+    );
+
+    // Mint the block the same stub names, and the `extends:` resolves.
+    let resolved = with_libraries(
+        "extends-resolved",
+        "  - {op: mint-rule, schema: command-common/common, \
+         rule: {id: common.model-tiering, labels: [seats], text: Exploration rides haiku.}}\n  \
+         - {op: set-rule-field, schema: command/demo, id: demo.lead, field: extends, \
+         value: common.model-tiering}\n",
+    );
+    assert_clean(&resolved);
+    assert!(
+        !validation(&resolved)
+            .iter()
+            .any(|f| f.starts_with("extends-unresolved")),
+        "a minted block resolves the stub that binds it: {:?}",
+        validation(&resolved)
+    );
+    assert!(
+        !validation(&resolved)
+            .iter()
+            .any(|f| f.starts_with("extends-class-local")),
+        "the stub carries its own class, so nothing is inherited that may not be: {:?}",
+        validation(&resolved)
+    );
+}
+
+#[test]
+fn mint_rule_naming_a_section_on_a_common_library_is_rejected() {
+    let replay = with_libraries(
+        "mint-block-with-section",
+        "  - {op: mint-rule, schema: command-common/common, section: common.sec.roles, \
+         rule: {id: common.model-tiering, labels: [seats], text: T}}\n",
+    );
+    assert!(
+        codes(&replay).contains(&"op-inapplicable"),
+        "{:?}",
+        codes(&replay)
+    );
+    let lib = library(&replay.state, DocKind::CommandCommon, "common");
+    assert_eq!(
+        lib.blocks.len(),
+        1,
+        "a rejected op leaves the library exactly as it stood"
+    );
+}
+
+#[test]
+fn mint_rule_with_no_section_on_a_command_schema_is_malformed() {
+    // The parse rejects it, so the whole file is reported rather than the op being skipped.
+    let replay = with_libraries(
+        "mint-no-section-command",
+        "  - {op: mint-rule, schema: command/demo, \
+         rule: {id: demo.new, labels: [seats], class: must, text: T}}\n",
+    );
+    assert!(
+        codes(&replay).contains(&"op-malformed"),
+        "{:?}",
+        codes(&replay)
+    );
+    assert!(
+        demo(&replay.state).find_rule("demo.new").is_none(),
+        "the rule never entered the state"
+    );
+}
+
+#[test]
+fn a_minted_common_block_carrying_a_class_is_rejected() {
+    // Class, kind, when and enforces are local to the binding stub, never inherited. The op
+    // applies — apply owns placement, not shape — and the hard set refuses the state.
+    for (field, literal) in [
+        ("class", "class: must"),
+        ("kind", "kind: gate"),
+        ("enforces", "enforces: [demo.lead]"),
+    ] {
+        let replay = with_libraries(
+            &format!("mint-block-{field}"),
+            &format!(
+                "  - {{op: mint-rule, schema: command-common/common, \
+                 rule: {{id: common.model-tiering, labels: [seats], {literal}, text: T}}}}\n"
+            ),
+        );
+        assert_clean(&replay);
+        assert!(
+            validation(&replay).contains(&"extends-class-local · common.model-tiering".to_string()),
+            "`{field}:` on a block must be refused: {:?}",
+            validation(&replay)
+        );
+        assert!(
+            !replay.is_deliverable(),
+            "`{field}:` on a block is rejecting, so nothing may render from the state"
+        );
+    }
+}
+
+#[test]
+fn minting_a_block_id_that_is_already_live_is_rejected() {
+    // Against a genesis-imported block: `seed_minted` walks `live_ids()`, which chains blocks.
+    let over_imported = with_libraries(
+        "mint-block-over-import",
+        "  - {op: mint-rule, schema: command-common/common, \
+         rule: {id: common.register, labels: [seats], text: A second register block.}}\n",
+    );
+    assert!(
+        codes(&over_imported).contains(&"mint-once"),
+        "{:?}",
+        codes(&over_imported)
+    );
+    assert_eq!(
+        library(&over_imported.state, DocKind::CommandCommon, "common")
+            .blocks
+            .len(),
+        1,
+        "the imported block is not duplicated"
+    );
+
+    // And against a block minted earlier in the same log.
+    let twice = with_libraries(
+        "mint-block-twice",
+        "  - {op: mint-rule, schema: command-common/common, \
+         rule: {id: common.model-tiering, labels: [seats], text: First.}}\n  \
+         - {op: mint-rule, schema: command-common/common, \
+         rule: {id: common.model-tiering, labels: [seats], text: Second.}}\n",
+    );
+    assert!(codes(&twice).contains(&"mint-once"), "{:?}", codes(&twice));
+    let lib = library(&twice.state, DocKind::CommandCommon, "common");
+    assert_eq!(lib.blocks.len(), 2, "the second mint added nothing");
+    assert_eq!(
+        lib.blocks.last().unwrap().text.as_deref(),
+        Some("First."),
+        "mint-once keeps the first write, not the last"
+    );
+}
