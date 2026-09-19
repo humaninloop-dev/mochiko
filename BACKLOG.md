@@ -853,14 +853,19 @@ Raw captures (2026-08-01) — to triage/brainstorm; grooming may re-key into fin
   trusted to catch the next edit. Re-seed the row against the current render before any further
   edit to this skill's rules.
 - [ ] **`review-brainstorm.findings-through-leads-pen` carries the copy loophole its sibling just
-  closed** (2026-09-19) — the governance-intent floor was reworded at v0.110.0 after the eval
-  caught a cut body writing a corrected copy of the synthesis beside the original, which its old
-  words ("never your own edits to the synthesis") did not forbid. The brainstorm floor still reads
-  "never your own edits to the record" and has the same hole. **Deliberately not amended**: the
-  evidence is from the governance-intent kit alone and no eval has put `review-brainstorm` under
-  pressure goldens. Close it either by building that kit's pressure golden and measuring, or by
-  ruling the reword across the pair on the textual argument alone — the second is a one-line
-  migration, and it should say which of the two it is.
+  closed** (2026-09-19) — the governance-intent floor was reworded by migration
+  `0006-leads-pen-no-patched-copy` (bump staged behind release gate 6, branch at 0.109.0) after the
+  eval caught a cut body writing a corrected copy of the synthesis beside the original, which its
+  old words ("never your own edits to the synthesis") did not forbid. The brainstorm floor still
+  reads "never your own edits to the record" and has the same hole. **Deliberately not amended**:
+  the evidence is from the governance-intent kit alone and no eval has put `review-brainstorm`
+  under pressure goldens. **The independent auditor dissents** and would have moved the pair
+  together, on the ground that the loophole is a property of the sentence's wording — "never edits
+  to X" does not forbid a corrected copy of X — which generalises on a plain read rather than
+  depending on one kit's goldens; the strips record shows the two floors were kept structurally
+  independent at v0.100.0, so nothing blocks moving them either way. Close it either by building
+  that kit's pressure golden and measuring, or by ruling the reword across the pair on the textual
+  argument alone — the second is a one-line migration, and it should say which of the two it is.
 
 - [ ] **`check-artifacts.py` heading grammar vs the entity-modeling template** (found 2026-09-11 by the
   review-plan-artifacts kit author and auditor; provenance: `evals/review-plan-artifacts/preregistration.md`
