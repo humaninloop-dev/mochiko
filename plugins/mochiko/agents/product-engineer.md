@@ -6,7 +6,7 @@ description: |
   walkable flows, honoring an existing design system, and keeping fidelity honest: structure
   and flows precise, pixels deliberately rough. Produces the prototype and its manifest; does
   not grade its own output.
-model: opus
+model: sonnet
 color: green
 skills: authoring-prototype
 ---

@@ -18,6 +18,29 @@ the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md`
 the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
 `git show 62aa99d:plugins/mochiko/skills/mochiko/SKILL.md`. -->
 
+## [v0.110.0] `patterns-model-tiering` router row widened to the seat default key
+
+- **Disposition:** superseded → the reworded row: the WHEN clause gains "and when spawning a
+  rostered seat"; the class-key clause re-keyed from "stay session tier" to "stay seat tier"
+  (the rule `patterns-model-tiering.class-key-session-tier` was reworded from "Session tier" to
+  "Seat tier" in the same landing, its id surviving); and the D5 jurisdiction clause replaced by
+  a seat-default-key clause (each rostered persona pins a ruled default tier alias in frontmatter
+  · six `opus`, four `sonnet` · only the lead deviates a seat for one run · the reason stated in
+  that seat's brief and in the run report's roster line · no seat below `sonnet` · `haiku` never
+  a seat · no `inherit`).
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/brainstorms/orchestrator-model-selection/record.md` D1–D5; `DECISIONS.md`
+  2026-09-19 row; supersedes `model-tiered-seats` D5 and its fold F6).
+- **Content:** verbatim superseded spans — "WHEN dispatching exploration, fact-finding, or
+  bounded execution work in any run" · "completeness-sensitive enumerations stay session tier" ·
+  "judgment legs never tier down; rostered seats never change tier (model-tiered-seats D5); third
+  sibling".
+- **Kept deliberately:** the rest of the row byte for byte — the cheap rung and its 2026-08-19
+  retarget clause, the override-is-the-pin parenthetical, the dispatch ladder, the brief
+  obligation, the weak-negative watch, the whole worker-rung clause and its 2026-09-05 ruling
+  citation, and the closing sibling line.
+- **Consumers assessed:** router-only text; no command or skill quotes the row.
+
 ## [v0.108.0] `patterns-model-tiering` router row widened to the worker rung
 
 - **Disposition:** superseded → the reworded row: the WHEN clause gains "or bounded execution

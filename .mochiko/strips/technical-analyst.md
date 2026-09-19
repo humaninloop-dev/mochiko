@@ -9,6 +9,40 @@ The seat survives whole — it is now a design-phase producer inside `/mochiko:i
 (D1 mechanic c). The "mounted on `plan`" phrasing in the header above is frozen wave context
 from v0.15.0, not a live pointer. -->
 
+## [v0.110.0] Frontmatter `model: opus` superseded — the seat default key sends this seat to `sonnet`
+
+- **Disposition:** superseded → `model: sonnet` on the same frontmatter key. The seat default key
+  (`orchestrator-model-selection` D1) assigns this persona the `down` class on one criterion —
+  does a structurally independent seat stand between this seat's output and the run's verdict —
+  and D2 pins the class default in the persona file as a tier alias, never `inherit` and never an
+  absent `model:`. D3's ground for this row: "design producer, graded by feasibility +
+  plan-artifacts reviews".
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/brainstorms/orchestrator-model-selection/record.md` D3, the ten-row seat class table,
+  with D1/D2 as its mechanism and D8 as its alias rule; `DECISIONS.md` 2026-09-19 row). The same
+  ruling supersedes `model-tiered-seats` D5 and its fold F6 — the deferral this table discharges.
+- **Content:** verbatim — `model: opus` (frontmatter, line 9).
+- **Kept deliberately:** every other byte of the file — the frontmatter `description:` value
+  (v0.63.0 protected prose framing), `name:`, `color:`, the
+  `skills: authoring-technical-requirements, patterns-technical-decisions, patterns-entity-modeling, patterns-api-contracts`
+  mount, and the whole body including `## Delegating Cheap Reads`. That section's `model: haiku`
+  override sentence is the reads rung, a different key from the seat default; D7 item 2 states the
+  persona sections are unchanged by this ruling. D8 also keeps the new value a family alias, never
+  a full id such as `claude-sonnet-5`.
+- **Consumers assessed:** `plugins/mochiko/.claude-plugin/plugin.json` agents list — path-only
+  entries with no model axis, unchanged · the router's agents table
+  (`plugins/mochiko/skills/mochiko/SKILL.md`, the `technical-analyst` design-phase PRODUCER row) —
+  no persona row names a model; the row is role text and stays as it is · `ARCHITECTURE.md` agents
+  row (line 61 after this wave), which read "Personas (all `model: opus`)" — corrected in this same
+  wave ·
+  `plugins/mochiko/skills/patterns-model-tiering/` and its floor set — superseded by migration
+  `0007-seat-default-key`, which records the schema content by construction and takes no entry
+  here · the persona eval kit `evals/agents/technical-analyst/` and the runner constant
+  `ARM_MODEL` in `evals/commands/agents.py` — both live on the `primitive-evals-v2` branch, not on
+  `main`; noted, not edited (D7 item 4, deferred to the branch merge) · this persona has no file
+  under `.mochiko/benchmarks/guardrails-vs-detail/variants/agents/`, so no frozen benchmark copy
+  carries the superseded line.
+
 ## [v0.91.0] Skill-pointer artifact list: `requirements.md` + TR-XXX dropped — plan-stage retirement D3
 
 - **Disposition:** superseded → the re-keyed pointer naming the skill's re-scoped artifact set:

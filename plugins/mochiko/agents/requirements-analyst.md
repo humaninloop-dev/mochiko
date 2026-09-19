@@ -5,7 +5,7 @@ description: |
   specifications — eliciting requirements through structured discovery, surfacing
   assumptions, and producing clear user stories with measurable acceptance criteria.
   Authors the specification; does not grade its own output.
-model: opus
+model: sonnet
 color: green
 skills: authoring-requirements, authoring-user-stories
 ---

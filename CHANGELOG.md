@@ -5,6 +5,52 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.110.0] — 2026-09-19
+
+**Seat default key — orchestrator-selected seat models** (record
+`.mochiko/brainstorms/orchestrator-model-selection/record.md` D1–D8 as review-amended;
+`DECISIONS.md` 2026-09-19; supersedes `model-tiered-seats` D5 and its fold F6). Persona files stop
+pinning a uniform `model: opus`. A two-value **seat default key** (`strong` / `down`), keyed on
+whether a structurally independent seat stands between a seat's output and the run's verdict, pins
+each persona's default tier as an alias in its own frontmatter: six stay `opus` (`validator` ·
+`devils-advocate` · `tech-lead` · `qa-engineer` · `staff-engineer` · `principal-architect`), four
+move to `sonnet` (`requirements-analyst` · `technical-analyst` · `product-manager` ·
+`product-engineer`). The lead deviates a seat for one run only by passing `model:` on the spawn,
+the reason stated in the seat's brief and the deviation named in the run report's roster line; a
+default spawn carries no `model:`; `inherit` and an absent `model:` are out of floor. Bounds: no
+seat below `sonnet`, `haiku` never a seat, a grader never below the tier its producer ran at, one
+tier per seat per loop, a `fable` deviation names its refusal and prompting risks; nested persona
+spawns take their default. Version floor: frontmatter outranks `CLAUDE_CODE_SUBAGENT_MODEL` from
+Claude Code v2.1.251; `CLAUDE_CODE_SUBAGENT_MODEL_FORCE=1` and an organization `availableModels`
+substitution override every choice here and are left as the consumer's own environment, undetected
+in-run (user-ruled, `Contested`). Evidence gate: dogfood only — review-round counts and grader
+first-round findings per down-tiered seat, revert = one alias flip (D4); the deviation lane's
+observable is the disclosure plus the user's gate (G2 accepted as is). Aliases, never full model
+ids (D8). Probed this session: a spawn-time `model` override beats a persona's frontmatter on the
+subagent transport (`claude-sonnet-5` / `claude-haiku-4-5-20251001` in the sidechain transcripts)
+and the frontmatter pin holds on the in-process teammate transport under a Fable lead
+(`claude-opus-5`); every persona spawn pays a ~54K-token instantiation floor before any work.
+
+Migration **`0007-seat-default-key.yaml`** (sequence 7 — 0005 and 0006 are claimed on the
+`primitive-evals-v2` branch): one `supersede-rule` under the anchor (`rostered-seats-never-retier`,
+the floor this ruling retires), five mints — `seat-default-key` (floor) · `seat-deviation-lane` ·
+`seat-deviation-bounds` (floor) · `seat-version-floor` · `seat-roster-disclosure` — three floor
+rewords under the anchor (`override-is-the-pin` gains the seat clause; `class-key-session-tier`
+becomes the seat tier, "or another rostered seat does"; `worker-seat-set-reserved` re-cited), two
+section rewords; the skill's floor pin 6 → 7 and the contract suite's frozen set replaced by ruling
+(`floor_ids` / `floor_pin` only). `patterns-model-tiering` description (998 → 1,208 chars), tagline
+and Overview widened to the key; the router row likewise; strips in `strips/patterns-model-tiering.md`
+and `strips/mochiko.md`. Four persona frontmatter flips with one supersession strip each.
+`ARCHITECTURE.md`: the agents row states the ruled tiers; the stale `plugins/mochiko/schemas/`
+references (deleted at v0.107.0) repaired on sight. Deferred to the `primitive-evals-v2` merge: the
+persona-kit runner's `ARM_MODEL` constant → per-persona default (the runner is not on `main`).
+Payload 14,696 → 17,864 (body 3,112 + render 14,752): +7,012 over the 10,852 budget, ruled HOLDS
+by V1 as a genuine new obligation set (the log replayed without 0007 and every rendered block
+word-diffed; nothing restored) — recorded in `.mochiko/memory/primitive-cost-budgets.md`. Audits: V1 (skill pair) + V2 (personas,
+strips, ARCHITECTURE.md) — verdicts in
+`.mochiko/brainstorms/orchestrator-model-selection/reports/`. Gates: `mochiko-cli migrate validate`
+0 rejecting · `cargo test -p mochiko-cli` 11/11 · contract suite host cases 4/4 · full sandbox run: contract suite: 82/82 cases passed, 82 ran, 285 measurements recorded and not asserted (exit 0).
+
 ## [0.108.0] — 2026-09-05
 
 **Sonnet worker rung** (ADR `.mochiko/decisions/2026-09-05-sonnet-worker-rung.md`; `DECISIONS.md`
