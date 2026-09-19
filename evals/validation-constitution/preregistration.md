@@ -388,3 +388,20 @@ Two readings are available to the user, and the choice is the spend:
 Standing finding either way, carried from the voided fill and unchanged by this run: both arms
 drop VALIDATION RESULT accounting lines on a minority of runs, `post` on one of nine.
 
+### Ruling — user, 2026-09-19
+
+**Accepted as read; no extra replicate.** The user accepted the re-run and declined the
+pre-registered remedy, so the kit closes here at US$ 16.70.
+
+- Ship bars (a), (b) and (d) are met and stand as met: no floor lost, no must lost, coverage
+  as authored.
+- Bar (c) stays recorded as NOT met at 16.4 %. The gain — 19/25 live rules against 16/25, and
+  13/14 floors against 11/14 — is **kept as the run's result but not claimed as a measured
+  pre/post difference**, because the band rule forbids reading a difference from an arm above
+  its bar. Nothing turns on the distinction here: there is no loss to adjudicate in either
+  direction, and **no re-add decision arises; none taken.**
+- The standing finding carries forward unchanged: both arms drop VALIDATION RESULT accounting
+  lines on a minority of runs, `post` on one of nine.
+
+Status: **accepted — closed.**
+

@@ -424,3 +424,29 @@ Counting rule for the stopping clause: this run is the kit's first *readable-ins
 failure, not a re-key. Two consecutive re-keys without a detectable control would return the
 target to the user; that budget is untouched.
 
+### Ruling — user, 2026-09-19
+
+**Deterministic layer accepted; judged layer closed as unreadable; no re-key, no extra
+replicate.** The user took the first of the three options, so the kit closes here at US$ 17.41
+with no further sessions authorised.
+
+What the acceptance carries:
+
+- The scripted layer is the read: `pre` 8/9 and `post` 8/9 clean sessions against `noskill`
+  0/9, 80 of 81 assertions on each skill arm against 33 of 81 on the control. On that layer the
+  skill plainly works and the bare model plainly does not.
+- The judged coverage layer is **recorded as unreadable for this kit** — both arms at roughly
+  twice the cap, 36.8 % and 46.0 %. Ship bars (a) and (b) stay **unreadable**, not met and not
+  breached.
+- **The runner's KILLED verdict is void as a finding.** The five lost rules and three lost
+  floors came from the unreadable layer and are not claims about this skill. **No strips-path
+  re-add arises; none taken.** A later edit that wants to revisit any of those five needs a
+  readable instrument first.
+- The diagnosis stands on the record for whoever re-keys this kit: the control arm is the
+  steady one at 11.5 %, which points at the skill arms' own long, structurally varied review
+  artifacts rather than at judge-wide instability. The re-key candidates stay listed above.
+- The severity-regex assertion is vindicated and stays uncut.
+
+Status: **accepted on the deterministic layer — closed.** The stopping-rule budget is
+untouched: this run was a first instrument failure, not a re-key.
+
