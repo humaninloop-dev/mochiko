@@ -1,0 +1,21 @@
+{
+  "account": { "id": "acc_01", "name": "Halcyon Studio Ltd", "currency": "GBP", "invoices_total": 214, "clients_total": 9 },
+  "clients": [
+    { "id": "cl_01", "name": "Bramblewood Landscape Architecture & Garden Design Partnership LLP", "archived": false },
+    { "id": "cl_02", "name": "Okafor Dental", "archived": false },
+    { "id": "cl_03", "name": "Tŷ Newydd Holiday Cottages", "archived": false },
+    { "id": "cl_04", "name": "Meridian Fintech GmbH", "archived": false },
+    { "id": "cl_05", "name": "Sunrise Yoga Collective CIC", "archived": true, "archived_at": "2026-08-30" },
+    { "id": "cl_06", "name": "Fenwick & Daughters", "archived": false }
+  ],
+  "recurring_schedules": [
+    { "id": "rs_01", "client_id": "cl_01", "source_invoice": "INV-0187", "amount": 2400.00, "currency": "GBP", "cadence": "monthly",   "first_send": "2026-06-01", "ends": { "type": "date", "value": "2027-05-31" },  "next_send": "2026-10-01", "status": "active",  "sent_count": 4,  "failure": null },
+    { "id": "rs_02", "client_id": "cl_02", "source_invoice": "INV-0152", "amount": 180.00,  "currency": "GBP", "cadence": "monthly",   "first_send": "2026-03-15", "ends": { "type": "count", "value": 12 },         "next_send": "2026-09-15", "status": "active",  "sent_count": 6,  "failure": null },
+    { "id": "rs_03", "client_id": "cl_03", "source_invoice": "INV-0099", "amount": 950.00,  "currency": "GBP", "cadence": "quarterly", "first_send": "2026-01-01", "ends": { "type": "none" },                       "next_send": "2026-10-01", "status": "paused", "sent_count": 3,  "failure": null },
+    { "id": "rs_04", "client_id": "cl_04", "source_invoice": "INV-0203", "amount": 6200.00, "currency": "EUR", "cadence": "monthly",   "first_send": "2026-09-01", "ends": { "type": "count", "value": 6 },          "next_send": "2026-10-01", "status": "active",  "sent_count": 1,  "failure": null },
+    { "id": "rs_05", "client_id": "cl_05", "source_invoice": "INV-0071", "amount": 120.00,  "currency": "GBP", "cadence": "monthly",   "first_send": "2025-11-01", "ends": { "type": "none" },                       "next_send": "2026-09-01", "status": "failed", "sent_count": 10, "failure": { "at": "2026-09-01T06:00:04Z", "reason": "client_archived" } },
+    { "id": "rs_06", "client_id": "cl_06", "source_invoice": "INV-0044", "amount": 75.00,   "currency": "GBP", "cadence": "monthly",   "first_send": "2025-06-01", "ends": { "type": "date", "value": "2026-08-01" }, "next_send": null,         "status": "ended",  "sent_count": 15, "failure": null },
+    { "id": "rs_07", "client_id": "cl_01", "source_invoice": "INV-0210", "amount": 480.00,  "currency": "GBP", "cadence": "quarterly", "first_send": "2026-09-30", "ends": { "type": "count", "value": 4 },          "next_send": "2026-09-30", "status": "active",  "sent_count": 0,  "failure": null }
+  ],
+  "notes": "Live shape, September 2026: accounts with recurring on have a median of 5 schedules (p95: 23). Amounts range 15.00–18,500.00. Two accounts in the beta have a schedule whose generated invoice is still in draft because the account has manual-send on."
+}

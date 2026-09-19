@@ -1,0 +1,60 @@
+openapi: 3.1.0
+info:
+  title: notify-svc — FEAT-011 excerpt
+  version: 0.1.0
+  x-produced-by: technical-analyst seat (analyst-1)
+paths:
+  /shipments/{id}/windows:
+    get:
+      summary: Offered windows for a shipment (FR-001)
+      responses:
+        '200':
+          description: The carrier's currently offered windows
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Window' }
+  /shipments/{id}/window:
+    put:
+      summary: Move the delivery window (FR-002, FR-003, FR-004)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/WindowChangeRequest' }
+      responses:
+        '200':
+          description: New window, confirmed by the carrier (FR-003)
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/WindowChangeResult' }
+        '409':
+          description: Inside the two-hour cut-off (FR-004) — Problem Details
+        '502':
+          description: Carrier did not confirm — Problem Details
+components:
+  schemas:
+    Window:
+      type: object
+      required: [start, end]
+      properties:
+        start: { type: string, format: date-time }
+        end: { type: string, format: date-time }
+    WindowChangeRequest:
+      type: object
+      required: [window, recipient_email, window_version]
+      properties:
+        window: { $ref: '#/components/schemas/Window' }
+        recipient_email:
+          type: string
+          format: email
+          description: Where the carrier sends its confirmation; stored on the change record.
+        window_version: { type: integer }
+    WindowChangeResult:
+      type: object
+      required: [window, carrier_confirmation_id, recipient_email]
+      properties:
+        window: { $ref: '#/components/schemas/Window' }
+        carrier_confirmation_id: { type: string }
+        recipient_email: { type: string, format: email }

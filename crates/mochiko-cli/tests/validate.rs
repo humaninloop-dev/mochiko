@@ -988,7 +988,11 @@ fn shipped_documents() -> Vec<(DocRef, serde_norway::Value)> {
             let declared = value.get("kind").and_then(|v| v.as_str());
             let kind = match declared.and_then(DocKind::parse) {
                 Some(kind) => kind,
+                // Neither a template nor a home view carries a `kind:` discriminator, so each is
+                // recognised by the key that names it. Without the `home` arm a home view would
+                // read as shelf data and the kind-coverage assert below could never see it.
                 None if value.get("template").is_some() => DocKind::Template,
+                None if value.get("home").is_some() => DocKind::Home,
                 None => DocKind::Shelf,
             };
             (DocRef::new(kind, stem), value)
@@ -1091,7 +1095,8 @@ fn each_empty_enforces_mirror_still_carries_its_reason_as_a_note() {
 #[test]
 fn the_shipped_corpus_matches_its_recorded_census() {
     let state = shipped_state();
-    assert_eq!(state.docs.len(), 50, "the schema class is 50 files");
+    // 50 through wave 6; `0005-artifact-homes` added twenty `home` documents and three templates.
+    assert_eq!(state.docs.len(), 73, "the schema class is 73 files");
 
     let census = census(&state);
     let (command_rules, command_floors) =
@@ -1099,15 +1104,18 @@ fn the_shipped_corpus_matches_its_recorded_census() {
     let (skill_rules, skill_floors) = census.get(&DocKind::Skill).copied().unwrap_or_default();
 
     // `0004` (the sonnet worker rung, 2026-09-05) minted six skill rules on
-    // `patterns-model-tiering`, two of them floors; the command side is untouched.
-    assert_eq!(command_rules, 321, "live command rules");
-    assert_eq!(skill_rules, 701, "live skill rules");
-    assert_eq!(command_rules + skill_rules, 1022, "live rules in total");
-    assert_eq!(skill_floors, 228, "skill floors");
+    // `patterns-model-tiering`, two of them floors; the command side was untouched. `0005` (the
+    // artifact-home census, 2026-09-13) minted one floor per producing primitive: six commands,
+    // eleven skills.
+    assert_eq!(command_rules, 327, "live command rules");
+    assert_eq!(skill_rules, 712, "live skill rules");
+    assert_eq!(command_rules + skill_rules, 1039, "live rules in total");
+    assert_eq!(skill_floors, 239, "skill floors");
     // The record's 112 is a `grep -c 'class: floor'` figure. Two of those matches are prose
     // inside rule text (architecture.yaml and implement.yaml each name `class: floor` in a
-    // sentence), so the declared floors are 110 — the same figure the shipped checker reports.
-    assert_eq!(command_floors, 110, "declared command floors");
+    // sentence), so the declared floors were 110 — the same figure the shipped checker reported —
+    // and `0005`'s six command mints carry it to 116.
+    assert_eq!(command_floors, 116, "declared command floors");
 
     let fail_nodes = state
         .docs
@@ -1120,12 +1128,31 @@ fn the_shipped_corpus_matches_its_recorded_census() {
     assert_eq!(fail_nodes, 36, "command fail nodes");
 }
 
+/// The kinds the shipped corpus does not carry yet, each with the wave that lands it.
+///
+/// This list exists so the coverage assert below can stay exact while a kind is in flight, and it
+/// is written to **fail when the gap closes**. It did: `0005-artifact-homes` landed the first
+/// twenty `home` documents at wave 3, the second assert tripped, and the list shrank to empty —
+/// every kind the store holds is now carried by a shipped document. A plain skip would have rotted
+/// silently instead.
+const KINDS_NOT_SHIPPED_YET: [DocKind; 0] = [];
+
 #[test]
 fn the_shipped_corpus_covers_every_document_kind_the_store_holds() {
     let state = shipped_state();
     let kinds: BTreeSet<DocKind> = state.docs.keys().map(|d| d.kind).collect();
     for kind in DocKind::ALL {
+        if KINDS_NOT_SHIPPED_YET.contains(&kind) {
+            continue;
+        }
         assert!(kinds.contains(&kind), "no shipped document of kind {kind}");
+    }
+    for kind in KINDS_NOT_SHIPPED_YET {
+        assert!(
+            !kinds.contains(&kind),
+            "the corpus now carries a {kind} document — drop {kind} from KINDS_NOT_SHIPPED_YET so \
+             this assert covers it again"
+        );
     }
 }
 
@@ -1384,6 +1411,61 @@ fn log_codes(tag: &str, files: &[(&str, String)]) -> BTreeSet<Code> {
 
 fn change(intent: &str, body: &str) -> String {
     format!("grammar: 1\nid: 0002-change\nsequence: 2\nintent: {intent}\nchanges:\n{body}")
+}
+
+#[test]
+fn a_template_less_deliverable_may_declare_no_bound_when_it_says_why() {
+    // The C1 amendment: some artifacts are as long as their subject — a decision record's
+    // length is the session's — so a bound may be declared absent. Absent *and* explained
+    // validates; absent and silent does not, which is the probe in the rejecting-code set.
+    let mut state = corpus();
+    let yaml = [
+        "home: probe-unbounded-ok",
+        "title: Declared unbounded",
+        "path: [.mochiko, probe-unbounded-ok]",
+        "bounds: whole-file",
+        "deliverables:",
+        "  - file: record.md",
+        "    bound_reason: the session it records",
+    ]
+    .join("\n");
+    let value: serde_norway::Value = serde_norway::from_str(&yaml).expect("the probe parses");
+    state.docs.insert(
+        DocRef::new(DocKind::Home, "probe-unbounded-ok".to_string()),
+        Document::from_value(DocKind::Home, &value).expect("a home is opaque"),
+    );
+    assert!(
+        !codes(&state).contains(&Code::HomeBounds),
+        "a declared-unbounded deliverable that says why is legal: {:?}",
+        rejecting(&state)
+    );
+}
+
+#[test]
+fn a_deliverable_carrying_both_a_bound_and_a_reason_to_have_none_is_rejected() {
+    // Both is not belt and braces, it is two contradicting rulings in one row, and a reader
+    // has no way to tell which was meant.
+    let mut state = corpus();
+    let yaml = [
+        "home: probe-bound-both",
+        "title: Contradictory bound",
+        "path: [.mochiko, probe-bound-both]",
+        "bounds: whole-file",
+        "deliverables:",
+        "  - file: x.md",
+        "    max_lines: 10",
+        "    bound_reason: but also unbounded",
+    ]
+    .join("\n");
+    let value: serde_norway::Value = serde_norway::from_str(&yaml).expect("the probe parses");
+    state.docs.insert(
+        DocRef::new(DocKind::Home, "probe-bound-both".to_string()),
+        Document::from_value(DocKind::Home, &value).expect("a home is opaque"),
+    );
+    assert!(
+        codes(&state).contains(&Code::HomeBounds),
+        "a bound and a reason to have none contradict"
+    );
 }
 
 /// A2: the guard that keeps coverage complete as codes are added.
@@ -1655,6 +1737,66 @@ fn every_rejecting_code_is_raised_by_some_probe() {
             ("0002-x.yaml", change("X.", "  - {op: supersede-rule, schema: command/demo, id: demo.floor, disposition: d, anchor: nope}\n")),
         ],
     ));
+
+    // --- the home checks, each needing a home document in the state ---
+    // A home is opaque, so a probe is one YAML document inserted beside the corpus rather than a
+    // string replacement inside one. Five shapes, five codes; `home-bounds` has three arms and the
+    // template-less one is probed here.
+    for (tag, yaml) in [
+        // home-shape: `path` is not a list, so the document does not decode as a home at all.
+        ("shape", "home: broken\ntitle: Not a home\npath: .mochiko/broken\nbounds: whole-file\n"),
+        // home-pattern: a segment that looks like a token but is not one of `home::TOKENS`.
+        (
+            "pattern",
+            "home: probe-pattern\ntitle: Bad token\npath: [.mochiko, <bogus>]\nbounds: whole-file\n\
+             deliverables:\n  - file: x.md\n    max_lines: 10\n",
+        ),
+        // home-binding: a deliverable naming a template the log does not carry.
+        (
+            "binding",
+            "home: probe-binding\ntitle: Dangling binding\npath: [.mochiko, probe-binding]\n\
+             bounds: template\ndeliverables:\n  - file: x.md\n    template: absent-template\n",
+        ),
+        // home-bounds: `bounds: elsewhere` with no `bounds_cite` naming where they live.
+        (
+            "bounds-cite",
+            "home: probe-bounds\ntitle: Uncited exemption\npath: [.mochiko, probe-bounds]\n\
+             bounds: elsewhere\ndeliverables:\n  - file: x.md\n",
+        ),
+        // home-bounds: a template-less deliverable with no whole-file bound.
+        (
+            "bounds-unbounded",
+            "home: probe-unbounded\ntitle: Unbounded deliverable\npath: [.mochiko, probe-unbounded]\n\
+             bounds: whole-file\ndeliverables:\n  - file: x.md\n",
+        ),
+    ] {
+        let value: serde_norway::Value =
+            serde_norway::from_str(yaml).unwrap_or_else(|e| panic!("{tag} probe parses: {e}"));
+        let mut state = corpus();
+        state.docs.insert(
+            DocRef::new(DocKind::Home, format!("probe-{tag}")),
+            Document::from_value(DocKind::Home, &value).expect("a home is opaque"),
+        );
+        raised.extend(codes(&state));
+    }
+    // home-duplicate: two homes declaring the identical path is an ambiguity the log owns, so it
+    // takes two documents rather than one.
+    {
+        let mut state = corpus();
+        for name in ["probe-dup-a", "probe-dup-b"] {
+            let yaml = format!(
+                "home: {name}\ntitle: Duplicate path\npath: [.mochiko, probe-dup]\n\
+                 bounds: whole-file\ndeliverables:\n  - file: x.md\n    max_lines: 10\n"
+            );
+            let value: serde_norway::Value =
+                serde_norway::from_str(&yaml).expect("the duplicate probe parses");
+            state.docs.insert(
+                DocRef::new(DocKind::Home, name),
+                Document::from_value(DocKind::Home, &value).expect("a home is opaque"),
+            );
+        }
+        raised.extend(codes(&state));
+    }
 
     let expected: BTreeSet<Code> = Code::REJECTING.into_iter().collect();
     let missing: Vec<&str> = expected.difference(&raised).map(|c| c.as_str()).collect();

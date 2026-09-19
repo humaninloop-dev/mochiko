@@ -167,12 +167,12 @@ fn the_log_replays_into_a_deliverable_state() {
             .collect();
         panic!("the log is deliverable:\n{}", lines.join("\n"));
     });
-    assert_eq!(replay.state.docs.len(), 50);
+    assert_eq!(replay.state.docs.len(), 73);
     assert_eq!(
         replay.sequences(),
-        vec![1, 2, 3, 4],
+        vec![1, 2, 3, 4, 5, 6],
         "genesis, wave 4's fail-conditions reword, wave 6's two-arm retirement, the sonnet \
-         worker rung"
+         worker rung, the artifact-home census, and the lead's-pen copy loophole"
     );
 }
 
@@ -587,12 +587,16 @@ fn the_corpus_census_holds_through_the_log() {
     }
 
     // `0004` (the sonnet worker rung, 2026-09-05) minted six skill rules on
-    // `patterns-model-tiering`, two of them floors; the command side is untouched.
-    assert_eq!(command_rules, 321, "live command rules");
-    assert_eq!(skill_rules, 701, "live skill rules");
-    assert_eq!(command_rules + skill_rules, 1022, "live rules in total");
-    assert_eq!(skill_floors, 228, "skill floors");
-    assert_eq!(command_floors, 110, "declared command floors");
+    // `patterns-model-tiering`, two of them floors; the command side was untouched.
+    // `0005` (the artifact-home census, 2026-09-13) minted the authoring-time home rule on every
+    // producing primitive the log carries: six command floors and eleven skill floors, one per
+    // document, so both rule counts and both floor counts move by the mint count and the fail set
+    // does not move at all.
+    assert_eq!(command_rules, 327, "live command rules");
+    assert_eq!(skill_rules, 712, "live skill rules");
+    assert_eq!(command_rules + skill_rules, 1039, "live rules in total");
+    assert_eq!(skill_floors, 239, "skill floors");
+    assert_eq!(command_floors, 116, "declared command floors");
     assert_eq!(fail_nodes, 36, "command fail nodes");
 }
 

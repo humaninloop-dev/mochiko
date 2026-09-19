@@ -1,0 +1,2019 @@
+grammar: 1
+id: 0005-artifact-homes
+sequence: 5
+intent: >-
+  Declare the artifact homes the census found, give five templates their conformance blocks,
+  import the report envelope and the split architecture templates, and mint the authoring-time
+  home rule on every producing primitive the log carries.
+anchor: 2026-09-13 hook-enforced-artifact-schema D3
+hash: sha256:a9af4a1953c4b01d9cc43bf41030c1e7df6f91cd9f47ad3442d116e3b4c66b7a
+changes:
+  - op: import-document
+    kind: home
+    name: brainstorms-index
+    content:
+      home: brainstorms-index
+      title: The brainstorm session index
+      path: [.mochiko, brainstorms]
+      bounds: elsewhere
+      bounds_cite: .mochiko/memory/knowledge-management.md
+      deliverables:
+        - file: index.md
+  - op: import-document
+    kind: home
+    name: brainstorm-session
+    content:
+      home: brainstorm-session
+      title: One thinking session's home
+      path: [.mochiko, brainstorms, <slug>]
+      bounds: whole-file
+      deliverables:
+        - file: record.md
+          bound_reason: >-
+            a decision record is as long as the session it records; the cold review grades it, and
+            a line count invented for it would be enforced against work it cannot measure
+        - file: synthesis.md
+          bound_reason: >-
+            a decision record is as long as the session it records; the cold review grades it, and
+            a line count invented for it would be enforced against work it cannot measure
+        - file: build-log.md
+          form: log
+          entry_max_lines: 60
+        - file: wave<n>-<slug>.md
+          max_lines: 300
+      subdirs: [inputs, research, referents]
+      reports:
+        envelope: report-envelope
+        by_type: {}
+  - op: import-document
+    kind: home
+    name: decisions
+    content:
+      home: decisions
+      title: Standalone decision records
+      path: [.mochiko, decisions]
+      bounds: whole-file
+      deliverables:
+        - file: <date-slug>.md
+          max_lines: 150
+  - op: import-document
+    kind: home
+    name: specs-index
+    content:
+      home: specs-index
+      title: The specification index
+      path: [.mochiko, specs]
+      bounds: elsewhere
+      bounds_cite: .mochiko/memory/knowledge-management.md
+      deliverables:
+        - file: index.md
+  - op: import-document
+    kind: home
+    name: spec
+    content:
+      home: spec
+      title: One feature specification's home
+      path: [.mochiko, specs, <slug>]
+      bounds: template
+      deliverables:
+        - file: spec.md
+          template: spec
+        - file: derivation.md
+          max_lines: 300
+        - file: data-model.md
+          max_lines: 300
+        - file: constraints-and-decisions.md
+          max_lines: 300
+        - file: quickstart.md
+          max_lines: 300
+      subdirs: [stories, contracts, prototype, map-delta]
+      reports:
+        envelope: report-envelope
+        by_type: {}
+  - op: import-document
+    kind: home
+    name: spec-stories
+    content:
+      home: spec-stories
+      title: Per-story files under a spec
+      path: [.mochiko, specs, <slug>, stories]
+      bounds: whole-file
+      deliverables:
+        - file: US-<n>.md
+          max_lines: 150
+  - op: import-document
+    kind: home
+    name: spec-contracts
+    content:
+      home: spec-contracts
+      title: Interface contracts under a spec
+      path: [.mochiko, specs, <slug>, contracts]
+      bounds: elsewhere
+      bounds_cite: the contract's own interface, per mochiko:patterns-api-contracts
+      deliverables:
+        - file: <slug>.md
+        - file: api.yaml
+        - file: README.md
+  - op: import-document
+    kind: home
+    name: spec-map-delta
+    content:
+      home: spec-map-delta
+      title: The feature-map delta staged by a spec run
+      path: [.mochiko, specs, <slug>, map-delta]
+      bounds: whole-file
+      deliverables:
+        - file: FEATURES.md
+          template: features-index
+          max_lines: 150
+        - file: <FEAT-ID>.md
+          template: feature-entry
+        - file: README.md
+          max_lines: 150
+        - file: selection-card.md
+          max_lines: 150
+        - file: specs-index.md
+          max_lines: 150
+  - op: import-document
+    kind: home
+    name: features-index
+    content:
+      home: features-index
+      title: The capability map's entry files
+      path: [.mochiko, features]
+      bounds: template
+      deliverables:
+        - file: <FEAT-ID>.md
+          template: feature-entry
+      subdirs: [desk]
+  - op: import-document
+    kind: home
+    name: feature
+    content:
+      home: feature
+      title: One capability's work home
+      path: [.mochiko, features, <FEAT-ID>]
+      bounds: template
+      deliverables:
+        - file: tasks.md
+          template: tasks
+        - file: plan.md
+          max_lines: 300
+        - file: requirements.md
+          max_lines: 300
+        - file: design-closure.md
+          max_lines: 300
+        - file: baseline-delta.md
+          max_lines: 300
+        - file: sufficiency-report.md
+          max_lines: 300
+        - file: data-model.md
+          max_lines: 300
+        - file: constraints-and-decisions.md
+          max_lines: 300
+        - file: architecture.md
+          max_lines: 300
+        - file: proposal.md
+          max_lines: 300
+        - file: contest-brief.md
+          max_lines: 300
+        - file: gates.md
+          max_lines: 150
+      subdirs: [contracts]
+      reports:
+        envelope: report-envelope
+        by_type: {}
+  - op: import-document
+    kind: home
+    name: feature-contracts
+    content:
+      home: feature-contracts
+      title: Interface contracts under a capability
+      path: [.mochiko, features, <FEAT-ID>, contracts]
+      bounds: elsewhere
+      bounds_cite: the contract's own interface, per mochiko:patterns-api-contracts
+      deliverables:
+        - file: <slug>.md
+        - file: api.yaml
+        - file: README.md
+  - op: import-document
+    kind: home
+    name: feature-desk
+    content:
+      home: feature-desk
+      title: One specify-desk sitting
+      path: [.mochiko, features, desk, <date-slug>]
+      bounds: whole-file
+      deliverables:
+        - file: derivation.md
+          max_lines: 300
+      reports:
+        envelope: report-envelope
+        by_type: {}
+  - op: import-document
+    kind: home
+    name: epic
+    content:
+      home: epic
+      title: One epic's home
+      path: [.mochiko, epics, <EPIC-ID>]
+      bounds: template
+      deliverables:
+        - file: manifest.md
+          max_lines: 300
+        - file: proposal.md
+          max_lines: 300
+        - file: contest-brief.md
+          max_lines: 300
+        - file: architecture.md
+          max_lines: 300
+        - file: data-model.md
+          max_lines: 300
+        - file: constraints-and-decisions.md
+          max_lines: 300
+        - file: quickstart.md
+          max_lines: 300
+        - file: build-order.md
+          max_lines: 300
+        - file: screens-and-flows.md
+          max_lines: 300
+        - file: implement-log.md
+          form: log
+          entry_max_lines: 60
+      subdirs: [contracts]
+      reports:
+        envelope: report-envelope
+        by_type: {}
+  - op: import-document
+    kind: home
+    name: epic-contracts
+    content:
+      home: epic-contracts
+      title: Interface contracts under an epic
+      path: [.mochiko, epics, <EPIC-ID>, contracts]
+      bounds: elsewhere
+      bounds_cite: the contract's own interface, per mochiko:patterns-api-contracts
+      deliverables:
+        - file: <slug>.md
+        - file: api.yaml
+        - file: README.md
+  - op: import-document
+    kind: home
+    name: product
+    content:
+      home: product
+      title: The product baselines
+      path: [.mochiko, product]
+      bounds: template
+      deliverables:
+        - file: data-model.md
+          max_lines: 300
+        - file: constraints-and-decisions.md
+          max_lines: 300
+        - file: quickstart.md
+          max_lines: 300
+      subdirs: [architecture, contracts]
+  - op: import-document
+    kind: home
+    name: product-architecture
+    content:
+      home: product-architecture
+      title: The product architecture store
+      path: [.mochiko, product, architecture]
+      bounds: template
+      deliverables:
+        - file: spine.md
+          template: architecture-spine
+        - file: concerns.md
+          template: architecture-concerns
+      subdirs: [concerns]
+  - op: import-document
+    kind: home
+    name: product-concerns
+    content:
+      home: product-concerns
+      title: Graduated concern files
+      path: [.mochiko, product, architecture, concerns]
+      bounds: whole-file
+      deliverables:
+        - file: <AX-ID>.md
+          max_lines: 150
+  - op: import-document
+    kind: home
+    name: product-contracts
+    content:
+      home: product-contracts
+      title: Interface contracts at product scope
+      path: [.mochiko, product, contracts]
+      bounds: elsewhere
+      bounds_cite: the contract's own interface, per mochiko:patterns-api-contracts
+      deliverables:
+        - file: <slug>.md
+        - file: api.yaml
+        - file: README.md
+  - op: import-document
+    kind: home
+    name: product-lane
+    content:
+      home: product-lane
+      title: One product-lane run
+      path: [.mochiko, product, <slug>]
+      bounds: whole-file
+      deliverables:
+        - file: sufficiency-report.md
+          max_lines: 300
+        - file: baseline-delta.md
+          max_lines: 300
+      reports:
+        envelope: report-envelope
+        by_type: {}
+  - op: import-document
+    kind: home
+    name: memory
+    content:
+      home: memory
+      title: The durable memory surfaces
+      path: [.mochiko, memory]
+      bounds: elsewhere
+      bounds_cite: .mochiko/memory/knowledge-management.md
+      deliverables:
+        - file: governance-intent.md
+          template: governance-intent
+        - file: governance-ledger.md
+        - file: governance-trace-summary.md
+        - file: knowledge-management.md
+        - file: codebase-analysis.md
+          template: codebase-analysis
+        - file: primitive-cost-budgets.md
+  - op: import-document
+    kind: template
+    name: report-envelope
+    content:
+      template: report-envelope
+      title: Report Envelope
+      form: report-format.md
+      register: ultra
+      overview: >-
+        The envelope every mochiko report opens with, and the only part of a report this schema
+        grades. A report lands in its home's `reports/` directory under a free name; its type is
+        the frontmatter's `report:` field, drawn from the closed set below. Payload fields per
+        type live in that type's own home — the producing skill's reference or a per-type
+        template named by the home's `by_type` binding — never here. The prose set is closed: a
+        failure narrative where the report carries a FAIL or blocking finding, notes of note where
+        a non-obvious decision or blocker needs saying, and a null-exit reasoning block where the
+        workflow defines one. A clean report is frontmatter-only, and an empty section is omitted
+        rather than written as "None". Full shared rules: `templates/report-format.md`.
+      conformance:
+        frontmatter:
+          required: [report]
+          enum:
+            report: [cycle, verification, final-validation, review, feasibility, disclosure]
+        placeholders: [<feature-id>, <n>]
+        extra_headings: allow
+      sections:
+        - name: Header
+          required: true
+          contract: >-
+            The YAML frontmatter block, machine-first: `report:` from the closed type set,
+            `feature:` where the run has one (a cycle report carries `cycle:` and `attempt:`
+            instead of `round:`), `round:` where a lead counts rounds. Unknown extra fields are
+            permitted; a missing required payload field is not. Governs no heading of its own.
+          check: >-
+            Is the frontmatter present, typed by `report:`, with every consumed datum a field?
+        - name: Failure narrative
+          heading: Failure narrative
+          required: false
+          max_lines: 15
+          contract: >-
+            Mandatory where the report carries a FAIL or a blocking finding, absent otherwise:
+            what failed, why, and what was tried. Debug value concentrates here, which is why it
+            is the one prose section that is ever required.
+          check: >-
+            Where the report fails, does the narrative say what failed, why, and what was tried?
+        - name: Notes of note
+          heading: Notes of note
+          required: false
+          max_lines: 15
+          contract: >-
+            Non-obvious decisions, difficulties, and flagged blockers — only when non-empty. A
+            fact that fits a frontmatter field belongs in the field, not here.
+          check: Are the notes non-obvious, or are they restating fields?
+        - name: Null-exit reasoning
+          heading: Null-exit reasoning
+          required: false
+          max_lines: 15
+          contract: >-
+            Present only where the workflow defines a null exit: why the run produced nothing, in
+            the terms that workflow names.
+          check: Where a null exit fired, is its reasoning stated in the workflow's own terms?
+      skeleton: |
+        ---
+        report: cycle
+        feature: <feature-id>
+        round: <n>
+        ---
+
+        ## Failure narrative
+
+        ## Notes of note
+  - op: import-document
+    kind: template
+    name: architecture-spine
+    content:
+      template: architecture-spine
+      title: Architecture Spine
+      form: artifact-format.md
+      register: full
+      overview: >-
+        `spine.md` — the product's topology deep view, one of the two hand-written files in the
+        architecture store at `.mochiko/product/architecture/`. It carries the container diagram,
+        the element table (containers, boundaries and flows, each with a lifecycle status), the
+        sequence diagrams for qualifying flows, and the as-built notes a landing fold writes. The
+        concern catalog is its sibling file, `concerns.md`, and the repo-root `ARCHITECTURE.md` is
+        a derived view of both — regenerated on every store write, never hand-edited. Authored
+        per mochiko:authoring-architecture-store; diagram craft and altitude per
+        mochiko:patterns-system-design.
+      conformance:
+        extra_headings: deny
+      sections:
+        - name: Header
+          required: true
+          contract: >-
+            Title "# Architecture Spine" plus the scope line naming the product shape the spine
+            describes. Governs no heading of its own.
+          check: Is the title present with a scope line?
+        - name: Container diagram
+          heading: Container diagram
+          required: true
+          max_lines: 30
+          contract: >-
+            One C4-container view as a mermaid block: the containers and how they communicate,
+            with in-flight-class elements marked. One diagram, not a gallery — a second view
+            earns its place only where the first cannot carry it.
+          check: Is there exactly one container view, with in-flight elements marked?
+        - name: Elements
+          heading: Elements
+          required: true
+          max_lines: 40
+          contract: >-
+            The element table, one row per element: `SPN-XXX` id · kind (container | boundary |
+            flow) · name · one-line responsibility · what it talks to and in which style ·
+            lifecycle status. One line per element; a row that needs a paragraph is hiding a
+            concern row or a graduated file.
+          check: Is every element one row with an id, a kind, a responsibility and a status?
+        - name: Key flows
+          heading: Key flows
+          required: true
+          max_lines: 30
+          contract: >-
+            Sequence diagrams for the flows that qualify — selection and altitude per
+            mochiko:patterns-system-design. A flow that reads off the container diagram does not
+            qualify.
+          check: Does each diagram earn its place, or does the container view already say it?
+        - name: As-built notes
+          heading: As-built notes
+          required: false
+          max_lines: 15
+          contract: >-
+            What the landing fold recorded about the built state where it differs from the
+            approved shape — one line per element, id-keyed. Drift itself lives on the element's
+            row; this section is the fold's own note.
+          check: Is each note one line, keyed to an element id?
+      skeleton: |
+        # Architecture Spine
+
+        **Scope**: backend-service
+
+        ## Container diagram
+
+        ```mermaid
+        flowchart TD
+            [containers and their communication; in-flight-class elements marked]
+        ```
+
+        ## Elements
+
+        | ID | Kind | Name | Responsibility | Talks to (style) | Status |
+        |----|------|------|----------------|------------------|--------|
+        | SPN-001 | container | [name] | [one line] | SPN-002 (sync REST) | built |
+        | SPN-002 | container | [name] | [one line] | SPN-003 (queue) | in-flight (FEAT-012) |
+        | SPN-003 | boundary | [name] | [what changes across it — trust, ownership, tenancy] | — | ruled |
+
+        ## Key flows
+
+        [Sequence diagrams for qualifying flows — selection and altitude per mochiko:patterns-system-design.]
+
+        ## As-built notes
+
+        - SPN-002 — [what the fold found built, one line]
+  - op: import-document
+    kind: template
+    name: architecture-concerns
+    content:
+      template: architecture-concerns
+      title: Concern Ledger
+      form: artifact-format.md
+      register: full
+      overview: >-
+        `concerns.md` — the architecture store's concern catalog, one `##` entry per `AX-XXX`
+        row. The row set is the product's, so this kind declares no heading grammar and takes no
+        size bound: a ledger's length is the concern count, which the product owns, and a cap
+        there would be a verbosity lever over the wrong thing. What is bound is the row's own
+        shape — the fields below, compact by default, with depth graduating to
+        `concerns/AX-XXX-<slug>.md` only where a row earned its own file. Its sibling file is
+        `spine.md`; the repo-root `ARCHITECTURE.md` is a derived view of both. Authored per
+        mochiko:authoring-architecture-store.
+      sections:
+        - name: Header
+          required: true
+          contract: Title "# Concern Ledger" and nothing else above the first row.
+          check: Is the title present?
+        - name: Concern rows
+          required: true
+          contract: >-
+            One `## AX-XXX <concern>` entry per row, in id order. Each carries **Stance** (decided
+            | not-now | n-a | open) · **Status** (the lifecycle state) · **Ruling** with its
+            date where the stance is decided · **Rationale** · **Upgrade trigger** where the
+            stance is not-now · **Owned by** where the stance is n-a — handled elsewhere ·
+            **Targets** (NFR-XXX, with the measurement point) · **As-built** · **Drift** ·
+            **Work** (FEAT/EPIC ids). One line per field; a field with nothing to say is omitted,
+            never written as "none" prose — except **Drift**, where `none` is the finding.
+          check: Does every row carry a stance, a status and a rationale, one line per field?
+        - name: Graduated rows
+          required: false
+          contract: >-
+            A row that earned its own file keeps its summary here and links to
+            `concerns/AX-XXX-<slug>.md`. The graduated file holds the depth the row could not —
+            never a copy of the row.
+          check: Does each graduated row keep a summary and a link, with no duplicated depth?
+      skeleton: |
+        # Concern Ledger
+
+        ## AX-001 Tenancy
+
+        - **Stance**: decided
+        - **Status**: built
+        - **Ruling**: pooled multi-tenant, `tenant_id` row-level scoping (ruled [DATE])
+        - **Rationale**: [why this, and what it costs]
+        - **Upgrade trigger**: first enterprise deal requiring silo OR >[N] tenants
+        - **Targets**: NFR-014 (from SC-007) — tenant-scoped read p95 < 200ms, at the gateway histogram
+        - **As-built**: pooled; `tenant_id` on 14 tables
+        - **Drift**: none
+        - **Work**: FEAT-012, EPIC-004
+
+        ## AX-002 SSO
+
+        - **Stance**: not-now
+        - **Status**: ruled
+        - **Rationale**: [real concern, consciously deferred — why now is not the time]
+        - **Upgrade trigger**: first prospect whose security review demands SAML
+  - op: replace-document
+    kind: template
+    name: spec
+    content:
+      template: spec
+      title: Feature Specification
+      form: artifact-format.md
+      register: full
+      overview: |
+        The feature specification deliverable (spec.md). Dense by construction, human-legible.
+        Follows the deliverable envelope (artifact-format.md). Omit empty sections. Section density
+        norms: Overview <= 3 lines; stories per authoring-user-stories (scenarios one line each, 2-3
+        per story); FR/SC/edge-case entries one line each; entities conceptual and compact.
+      sections:
+        - name: Intent
+          required: true
+          density: one line per ruling
+          contract: |
+            The confirmed one-screen synthesis from the intent stage — elicited rulings, one line
+            each, confirmed by the user before authoring began. Governs the authoring depth, the
+            feature derivation, and the stress-test rigor. Omit a line only if the probe was
+            genuinely not applicable. Lines: Scope boundary; Delivery (whole vs subset now, first
+            shippable value, sequencing constraints); Depth / rigor; UX-bearing (yes -> Screens &
+            Flows + prototype obligated; no -> the waiver line); Constraints; Out of scope.
+          check: >-
+            Is the Intent present with its six ruling lines (scope boundary, delivery,
+            depth/rigor, UX-bearing, constraints, out of scope), each confirmed with the user, or
+            a per-line not-applicable note?
+          heading: Intent
+          max_lines: 10
+        - name: Overview
+          required: true
+          density: <= 3 lines
+          contract: |
+            A compact synthesis of what the feature is. No more than three lines.
+          check: Is the Overview present and <= 3 lines?
+          heading: Overview
+          max_lines: 6
+        - name: User Stories
+          required: true
+          contract: |
+            An INDEX only. Story content lives in per-story files: stories/US-*.md — each carries the
+            story text, its acceptance scenarios, and its FEAT-ID mapping. The only story-native
+            status is `rejected` (the derivation filter's verdict, with the why, recorded in the story
+            file); every other status is derived by following the story's FEAT-ID to the feature map.
+            One row per story. Columns: ID (linked to stories/US-N.md), Story (one breath), Priority
+            (P1/P2/P3), Feature (FEAT-XXX or —), Disposition (homed | rejected — why).
+          check: >-
+            Is the User Stories section an index (one linked row per story, no inline story
+            bodies), with each row carrying priority, FEAT-ID (or —), and disposition, and every
+            rejected row a one-line why?
+          heading: User Stories
+        - name: Edge Cases
+          required: true
+          density: one line each
+          contract: |
+            The boundary and failure conditions the feature must handle — one line each.
+          check: Are edge cases enumerated, one line each?
+          heading: Edge Cases
+        - name: Functional Requirements
+          required: true
+          density: one line each
+          contract: |
+            Technology-agnostic functional requirements (FR-XXX), one line each, per
+            authoring-requirements. RFC 2119 language.
+          check: >-
+            Are functional requirements present in FR-XXX form, one line each,
+            technology-agnostic?
+          heading: Functional Requirements
+        - name: Key Entities
+          required: true
+          contract: |
+            The feature's domain nouns — conceptual and compact, not an OpenAPI schema.
+          check: Are key entities listed conceptually and compactly?
+          heading: Key Entities
+          max_lines: 15
+        - name: Success Criteria
+          required: true
+          density: one line each
+          contract: |
+            Measurable success criteria (SC-XXX), one line each, per authoring-requirements.
+          check: Are success criteria present in SC-XXX form and measurable?
+          heading: Success Criteria
+        - name: Screens & Flows
+          required: true
+          contract: |
+            Authored per mochiko:authoring-prototype from the Intent section's UX-bearing ruling. Not
+            UX-bearing -> the single line "No UX surface — prototype waived at intent." and nothing
+            else. UX-bearing -> both tables + the prototype pointer, in full. The manifest is binding
+            (screens, data, actions); the prototype's pixels are advisory. Feature column lands at
+            derivation as a re-tag pass (FEAT-XXX per row); screens of unselected features greyed
+            coming-soon; a filter-rejected story's screens kept, greyed, marked rejected.
+          good: |
+            UX-bearing form:
+
+            | ID | Screen | Purpose | Data shown | Feature |
+            |----|--------|---------|------------|---------|
+            | SCR-001 | [name] | [one line] | [fields/collections rendered] | FEAT-001 |
+
+            | ID | Flow | Steps | Story scenario | Feature |
+            |----|------|-------|----------------|---------|
+            | FLOW-001 | [name] | SCR-001 -> [action] -> SCR-002 | US-1 / [scenario] | FEAT-001 |
+
+            **Prototype:** `prototype/` — clickable low-fi rendering of this manifest; serve with bun
+            or open `prototype/index.html` directly. Flows and data are binding; layout and styling
+            advisory.
+          check: >-
+            If the spec is UX-bearing, are both the SCR-XXX and FLOW-XXX tables present with a
+            Feature column and the prototype pointer? If not UX-bearing, is the single waiver line
+            present and nothing else?
+          heading: Screens & Flows
+          max_lines: 30
+        - name: Feature Selection
+          required: true
+          contract: |
+            Authored per mochiko:authoring-feature-map after stories are drafted. Derivation output
+            (proposed entries, deltas, index-line drafts) stages in this spec workspace; the live map
+            is written only at spec acceptance, as one atomic batch. The selection itself is the
+            user's ruling — the derived table and filter verdicts are the producer's, the Selected
+            line records the user's choice. Three sub-parts: Derived features (table: FEAT-ID,
+            Feature, New/delta, Stories, SCs verified); Filter rejections (one line per rejected story
+            — the why verbatim from its story file; omit when none); Selection (Selected build-now in
+            dependency order; Deferred proposed entries carrying their SCs + seam obligations;
+            Deferred SCs — the ones covered only by unselected features, shown at the moment of
+            choice, never discovered at close).
+          check: >-
+            Does Feature Selection carry the derived-features table, the filter rejections (or
+            none), and a Selection recording the user's ruling with deferred features and deferred
+            SCs surfaced?
+          heading: Feature Selection
+          max_lines: 20
+        - name: Assumptions
+          required: false
+          contract: |
+            Assumptions the specification rests on. Omit if empty.
+          check: Are material assumptions recorded (or the section omitted when none)?
+          heading: Assumptions
+          max_lines: 10
+        - name: Open Questions
+          required: false
+          contract: |
+            Unresolved questions carried out of authoring. Omit if empty.
+          check: Are open questions recorded (or the section omitted when none)?
+          heading: Open Questions
+          max_lines: 10
+      skeleton: |
+        # {{spec_title}}
+
+        > Spec: {{spec_id}}
+        > Created: {{created}}
+        > Status: {{status}}
+
+        ---
+
+        ## Intent
+
+        - **Scope boundary:** {{intent_scope}}
+        - **Delivery:** {{intent_delivery}}
+        - **Depth / rigor:** {{intent_depth}}
+        - **UX-bearing:** {{intent_ux_bearing}}
+        - **Constraints:** {{intent_constraints}}
+        - **Out of scope:** {{intent_out_of_scope}}
+
+        ---
+
+        ## Overview
+
+        {{overview}}
+
+        ---
+
+        ## User Stories
+
+        | ID | Story (one breath) | Priority | Feature | Disposition |
+        |----|--------------------|----------|---------|-------------|
+        | [US-1](stories/US-1.md) | {{story_hook}} | P1 | FEAT-XXX | homed |
+        | [US-2](stories/US-2.md) | {{story_hook}} | P2 | — | rejected — {{why, one line}} |
+
+        ---
+
+        ## Edge Cases
+
+        {{edge_cases}}
+
+        ---
+
+        ## Functional Requirements
+
+        {{functional_requirements}}
+
+        ---
+
+        ## Key Entities
+
+        {{key_entities}}
+
+        ---
+
+        ## Success Criteria
+
+        {{success_criteria}}
+
+        ---
+
+        ## Screens & Flows
+
+        {{screens_and_flows}}
+
+        ---
+
+        ## Feature Selection
+
+        ### Derived features
+
+        | FEAT-ID | Feature | New / delta | Stories | SCs verified |
+        |---------|---------|-------------|---------|--------------|
+        | FEAT-XXX | [name] | new (`proposed`) | US-1, US-3 | SC-1, SC-2 |
+        | FEAT-YYY | [name] | delta on delivered | US-2 | SC-3 |
+
+        ### Filter rejections
+
+        - US-4 — rejected: {{why, one line}}
+
+        ### Selection
+
+        - **Selected (build now, dependency order):** FEAT-XXX, FEAT-YYY
+        - **Deferred (`proposed` on the map):** FEAT-ZZZ — carries SC-4, SC-5 and [seam obligations]
+        - **Deferred SCs:** SC-4, SC-5 — wait until FEAT-ZZZ builds
+
+        ---
+
+        ## Assumptions
+
+        {{assumptions}}
+
+        ---
+
+        ## Open Questions
+
+        {{open_questions}}
+      conformance:
+        extra_headings: deny
+  - op: replace-document
+    kind: template
+    name: tasks
+    content:
+      template: tasks
+      title: Implementation Cycles (cycle cards)
+      form: artifact-format.md
+      register: full
+      overview: |
+        This file is CYCLE CARDS, not a task list. Each card is a coherent bundle of named test cases
+        (the card's content); the builder decomposes each card into concrete tasks at build time, with
+        the code in view — the decomposition is disclosed in the cycle report, never pre-written here.
+        Cite spec/design content by ID (US-#, FR-#, SC-#, C-#) — never re-quote it; each test case cites
+        the ID(s) it covers. Structure and slicing judgment come from mochiko:patterns-vertical-tdd (the
+        cycle-card shape). The card's checkbox is the progress surface, flipped when the cycle's named
+        cases show green against real infrastructure.
+      sections:
+        - name: Header
+          required: true
+          contract: |
+            Title "# Implementation Cycles: [FEAT-XXX — FEATURE NAME]" plus two generated-from
+            pointers: (1) the spec folder and the design inputs the cards were authored from —
+            spec.md, features/FEAT-XXX/sufficiency-report.md, and whichever of
+            constraints-and-decisions.md, data-model.md, contracts/ and the signed store delta the
+            design phase produced (on a zero-gap verdict no design phase ran, so the cards are
+            authored from spec.md, the report, and the product baselines); (2) Structure:
+            mochiko:patterns-vertical-tdd (cycle-card shape, slicing judgment).
+          check: >-
+            Is the header present with the FEAT-XXX title and both provenance pointers (source
+            artifacts and the patterns-vertical-tdd structure note)?
+        - name: Overview
+          required: true
+          contract: |
+            Metric table (Metric | Value): Cycles = [N]; Stories covered = [US-# list — every P1/P2
+            story on at least one card]. There is no foundation/feature split in the count.
+          check: >-
+            Does the Overview table report the cycle count and the covered US-# list, with every
+            P1/P2 story on at least one card?
+          heading: Overview
+          max_lines: 8
+        - name: Cycle Format
+          required: true
+          contract: |
+            Each card is one vertical increment: a coherent bundle of named test cases (expected behaviour,
+            in the `**TEST:**` grammar — see patterns-vertical-tdd/references/TEST-GRAMMAR.md for the
+            canonical Setup/Action/Assert/Capture grammar) that demonstrate together. The builder
+            implements the card test-first (red/green/refactor per mochiko:executing-tdd-cycle,
+            decomposition at build time), and the cycle is done when its named cases show green against
+            real infrastructure. The card's checkbox is the progress surface, flipped when the bundle's
+            cases pass. Where the work opens a new end-to-end path (greenfield / new path), the first
+            cycle is a walking skeleton; growth on an already-standing path skips it. There is no
+            foundation/feature card type — `[P]` parallel eligibility derives from a card's
+            dependencies, not from a type column. Each named test case cites the spec/design ID(s) it
+            covers.
+          check: >-
+            Does the Cycle Format explain the card as a bundle of named test cases, the test-first
+            flow, cycle-done when named cases pass on real infrastructure, the
+            checkbox-as-progress rule, the walking-skeleton first cycle where a new end-to-end
+            path opens, no foundation/feature type with `[P]` derived from dependencies, and
+            per-case ID citation?
+          heading: Cycle Format
+          max_lines: 6
+        - name: Cycle Cards
+          required: true
+          contract: |
+            Cards are listed directly, not grouped by foundation/feature type. Each card carries:
+            checkbox + title; Stories (US-# — why these stories/cases form one demonstrable bundle,
+            <= 2 lines); Depends on; Case (Simple | Split — why, one line | Merge — why, one line);
+            Brownfield exposure (none | extends `path` | modifies `path` — cycle-level surfaces only);
+            and the closing `**TEST:**` bundle — one or more named test cases, each opening with
+            `**Covers**: <spec/design IDs>` (the acceptance-ID citation lives per-case, never a standalone
+            Acceptance-criteria field) then Setup/Action/Assert/Capture fields per TEST-GRAMMAR.md.
+            Where a new end-to-end path opens, the first card is a walking skeleton (thinnest path, one
+            trivial case green). `[P]` marks parallel-eligible cards, derived from dependencies.
+          good: |
+            SAMPLE (illustration only — replace with actual cycles; DO NOT keep the samples in the generated tasks.md):
+
+            ### - [ ] Cycle 1: Walking skeleton — [thinnest end-to-end path]
+            - **Stories:** US-1 — thinnest end-to-end path through all layers, one trivial case green; establishes the production-shaped stack [<= 2 lines]
+            - **Depends on:** —
+            - **Case:** Simple
+            - **Brownfield exposure:** none
+
+            **TEST:** [entity] round-trips through the full stack
+            - **Covers**: US-1 / SC-1
+            - **Action**: `curl -X POST localhost:3000/api/[entity] -d '{"name":"Test"}'`
+            - **Assert**: Response status: 201
+            - **Assert**: Console contains "[entity]_id"
+            - **Capture**: console
+
+            ### - [ ] Cycle 2: [Feature bundle title] `[P]`
+            - **Stories:** US-2 — [why these stories/cases form one demonstrable bundle, <= 2 lines]
+            - **Depends on:** C1
+            - **Case:** [Simple | Split — why | Merge — why]
+            - **Brownfield exposure:** extends `src/models/[entity].py`
+
+            **TEST:** [behavior] works end to end via API
+            - **Covers**: US-2 / SC-2 scenario 1
+            - **Setup**: Seed prerequisite [entity] data
+            - **Action**: `curl -X POST localhost:3000/api/[endpoint] -d '{"[field]":"value"}'`
+            - **Assert**: Response status: 200
+            - **Assert**: Console contains "[expected field]"
+            - **Capture**: console
+
+            **TEST:** [behavior] rejects [invalid case]
+            - **Covers**: US-2 / SC-2 scenario 2
+            - **Setup**: Seed prerequisite [entity] data
+            - **Action**: `curl -X POST localhost:3000/api/[endpoint] -d '{"[field]":"invalid"}'`
+            - **Assert**: Response status: 400
+            - **Capture**: console
+          check: >-
+            Are cards listed directly (no foundation/feature grouping), each a bundle of named
+            `**TEST:**` cases with per-case `**Covers**:` IDs (never a standalone
+            acceptance-criteria field), carrying Stories/Depends-on/Case/Brownfield-exposure; is
+            the first cycle a walking skeleton where a new end-to-end path opens; is `[P]` used
+            only where dependencies allow; and is no illustrative sample or pre-written task list
+            / file path left in?
+          heading: Cycle Cards
+      skeleton: |
+        # Implementation Cycles: [FEAT-XXX — FEATURE NAME]
+
+        > Generated from the spec folder and the design inputs the cards were authored from: spec.md, features/FEAT-XXX/sufficiency-report.md, and whichever of constraints-and-decisions.md, data-model.md, contracts/ and the signed store delta the design phase produced
+        > Structure: `mochiko:patterns-vertical-tdd` (cycle-card shape, slicing judgment)
+
+        ## Overview
+
+        | Metric | Value |
+        |--------|-------|
+        | Cycles | [N] |
+        | Stories covered | [US-# list — every P1/P2 story on at least one card] |
+
+        ## Cycle Format
+
+        Each card is one vertical increment: a coherent bundle of **named test cases** (expected behaviour,
+        in the `**TEST:**` grammar — see [`TEST-GRAMMAR.md`](../skills/patterns-vertical-tdd/references/TEST-GRAMMAR.md)
+        for the canonical Setup/Action/Assert/Capture grammar) that demonstrate together. The builder
+        implements the card test-first (red/green/refactor per `mochiko:executing-tdd-cycle`,
+        decomposition at build time), and the cycle is done when its named cases show green against real
+        infrastructure. **The card's checkbox is the progress surface**, flipped when the bundle's cases
+        pass. Where the work opens a new end-to-end path (greenfield / new path), the **first cycle is a
+        walking skeleton**; growth on an already-standing path skips it. There is no foundation/feature
+        card type — `[P]` parallel eligibility derives from a card's dependencies, not from a type
+        column. Each named test case cites the spec/design ID(s) it covers.
+
+        ---
+
+        ## Cycle Cards
+
+        ### - [ ] Cycle 1: Walking skeleton — [thinnest end-to-end path]
+
+        - **Stories:** US-# — [thinnest end-to-end path through all layers; establishes the production-shaped stack, <= 2 lines]
+        - **Depends on:** —
+        - **Case:** Simple
+        - **Brownfield exposure:** none
+
+        **TEST:** [behavior] round-trips through the full stack
+        - **Covers**: US-# / SC-#
+        - **Action**: `[command]`
+        - **Assert**: [expected]
+        - **Capture**: console
+
+        ---
+
+        ### - [ ] Cycle N: [Feature bundle title] `[P]`
+
+        - **Stories:** US-# — [why these stories/cases form one demonstrable bundle, <= 2 lines]
+        - **Depends on:** [cycle refs]
+        - **Case:** [Simple | Split | Merge]
+        - **Brownfield exposure:** [none | extends `path` | modifies `path`]
+
+        **TEST:** [behavior] works end to end via real infrastructure
+        - **Covers**: US-# / SC-#
+        - **Setup**: [preconditions]
+        - **Action**: `[command]`
+        - **Assert**: [expected]
+        - **Capture**: console
+      conformance:
+        placeholders:
+          - '[thinnest end-to-end path]'
+          - '[Feature bundle title]'
+        extra_headings: deny
+  - op: replace-document
+    kind: template
+    name: feature-entry
+    content:
+      template: feature-entry
+      title: Feature Map Entry (per-capability)
+      form: artifact-format.md
+      register: full
+      overview: |
+        One file per capability: .mochiko/features/FEAT-XXX-<slug>.md. Authored and amended per
+        mochiko:authoring-feature-map — the skill carries the derivation method, the work-row and
+        fold rules, and the write timing; this shape carries only the structure. An entry is a
+        durable capability plus a block of transient work rows (its delivery increments); there is
+        NO parent/leaf nesting — capabilities are flat, grouped by domains only at the soft cap
+        (mochiko:patterns-map-minimalism). Status is owned HERE (and mirrored one-line in
+        FEATURES.md): story files derive theirs by following the FEAT-ID. Omit empty sections per
+        artifact-format.md rule 6.
+      sections:
+        - name: Header & Status
+          required: true
+          contract: |
+            Title "# FEAT-{{XXX}} — {{capability_name}}" plus a Status line
+            (proposed | in-flight | delivered | retired) and one status-dependent detail line:
+              in-flight  -> since {{date}} · live work rows in run(s): `.mochiko/specs/{{spec-slug}}/`
+                            (or the owning lane run, for feature-command growth-door work)
+              delivered  -> since {{date}} · sticky — live rows may still be visible below
+              retired    -> {{date}} · ruling: {{pointer}}  (or, on a merge: merged-into FEAT-{{YYY}})
+              proposed   -> surfaced by {{spec-slug}} ({{date}}) — or, for a capability stub,
+                            minted by /mochiko:feature ({{date}}) · marked `unrefined`
+            Reconstructed entries add: `reconstructed-from-code ({{date}}) — first touching spec
+            re-verifies extent` — cleared at that spec's acceptance. `unrefined` stubs carry name +
+            one-breath hook only — no Extent, no work rows; only specify's derivation fills them and
+            makes the entry selectable.
+          check: >-
+            Is the header FEAT-XXX + capability name present, with a Status
+            (proposed/in-flight/delivered/retired) and the matching one-line status detail (and
+            the unrefined/reconstructed markers where they apply)?
+        - name: Capability
+          required: true
+          density: 1-3 lines
+          contract: |
+            1-3 lines, the system's own language — what the product does, standing on its own without
+            reference to any story or spec. More than ~3 lines of extent below usually means this is
+            two capabilities, or its bulk is undelivered work rows.
+          check: >-
+            Is the Capability statement 1-3 lines in the system's own language, standing without
+            reference to a story or spec?
+          heading: Capability
+          max_lines: 6
+        - name: Extent
+          required: true
+          density: one line each
+          contract: |
+            What is in, and what is notably NOT in — one line each. This is where stories sharpen the
+            capability over time, and where a delivered work row folds in at its landing. (Absent on
+            an `unrefined` stub.)
+          check: >-
+            Does Extent state what is in and what is notably not in, one line each (or is the
+            entry an unrefined stub, which has no Extent)?
+          heading: Extent
+          max_lines: 6
+        - name: Work rows
+          required: false
+          density: one line each, newest first
+          contract: |
+            Transient delivery increments under this capability — one line each, newest first. Each
+            row carries a state and its run pointer; a `live` row folds into Extent above at its
+            acceptance landing and leaves this list, a `pending` row persists as open obligation
+            (deferred work never silently disappears). Grammar:
+              - `pending` — {{increment}} · acceptance: {{criteria}} · cut by {{spec-slug or lane-run}}
+              - `live`    — {{increment}} · acceptance: {{criteria}} · in {{spec-slug or lane-run}}
+            Story-shaped increments are fine here; a story-shaped *capability* is not.
+          check: >-
+            Are work rows one line each (newest first), each carrying a state (`live`/`pending`),
+            acceptance, and run pointer — with `live` rows folding into Extent at landing and
+            `pending` rows persisting?
+          heading: Work rows
+          max_lines: 20
+        - name: Relations
+          required: false
+          density: one line per relation
+          contract: |
+            One line per relation to another FEAT-ID: depends-on / extends / composes-with. A work row
+            may depend on another capability's row — note it here; row-level dependencies order the
+            two capability-batch runs.
+          check: >-
+            Is each relation one line to a FEAT-ID with a relation kind
+            (depends-on/extends/composes-with) and a one-line why?
+          heading: Relations
+          max_lines: 20
+        - name: Architecture
+          required: false
+          contract: |
+            Which architecture-store elements realize this capability, named by id: SPN-XXX spine
+            elements — any kind (container | boundary | flow) — and/or AX-XXX concern rows, at
+            .mochiko/product/architecture/. Pointers only, navigable both directions; never restate
+            the element. (Domain -> element mapping is dormant: it lands only at the soft cap, per
+            mochiko:patterns-map-minimalism.)
+          check: >-
+            Does Architecture point at the realizing store elements by id — SPN-XXX spine
+            elements of any kind (container/boundary/flow) and/or AX-XXX concern rows (pointers
+            only, no restated element content)?
+          heading: Architecture
+          max_lines: 20
+        - name: Story trace
+          required: false
+          density: IDs and pointers only, newest first
+          contract: |
+            Accumulating provenance: which specs/stories informed this capability — IDs and pointers
+            only, newest first.
+          check: Is the story trace IDs-and-pointers only, newest first (accumulating provenance)?
+          heading: Story trace
+          max_lines: 20
+        - name: Obligations
+          required: false
+          density: one line each
+          contract: |
+            Deferred completeness pointers riding this entry until the work builds — one line each,
+            distinct from work rows (which are cut delivery increments): deferred SC-XXX (travels here
+            when its covering capability went unselected) · deferred seams ("when built, verify seam
+            against FEAT-XXX") · cross-cutting extend obligations from stories homed elsewhere.
+          check: >-
+            Are obligations one line each, distinct from work rows — deferred SCs, deferred
+            seams, and cross-cutting extend obligations?
+          heading: Obligations
+          max_lines: 20
+      skeleton: |
+        # FEAT-{{XXX}} — {{capability_name}}
+
+        > Status: {{status}}  <!-- proposed | in-flight | delivered | retired -->
+        > {{status_line_detail}}
+
+        ## Capability
+
+        {{capability_statement}}
+
+        ## Extent
+
+        - {{in_scope_line}}
+        - Not: {{out_of_scope_line}}
+
+        ## Work rows
+
+        - `live` — {{increment}} · acceptance: {{criteria}} · in {{spec_or_lane_run}}
+
+        ## Relations
+
+        - depends-on: {{FEAT-ID}} — {{one_line_why}}
+
+        ## Architecture
+
+        - {{SPN-XXX | AX-XXX}} — {{element_name}} (`.mochiko/product/architecture/`)
+
+        ## Story trace
+
+        - {{spec-slug}}: US-{{n}}, US-{{n}}
+
+        ## Obligations
+
+        - {{obligation_line}}
+      conformance:
+        extra_headings: deny
+  - op: replace-document
+    kind: template
+    name: governance-intent
+    content:
+      template: governance-intent
+      title: Governance Intent (the session synthesis — traceable contract)
+      form: artifact-format.md
+      register: full
+      overview: |
+        GOVERNANCE INTENT — the session synthesis (fill target)
+        ========================================================
+        Written by the /mochiko:setup lead at the close of the interrogation session and ratified at the
+        synthesis-confirmation checkpoint BEFORE any authoring. Lives durably at
+        `.mochiko/memory/governance-intent.md`, beside the governance ledger of the surface set it
+        governs (there is no constitution.md — governance lands on native surfaces).
+
+        This artifact is a TRACEABLE CONTRACT on the surface-set producer, not a brief:
+        - Every principle in the authored surface set MUST trace to exactly one element here
+          (its GI-ID), and every principle-bearing element here MUST be realized on a surface
+          or surfaced as a flagged proposal at the acceptance gate.
+        - Producer latitude is confined to FORMULATION (wording, enforcement mechanics, three-part
+          structure with real commands) — never SELECTION.
+        - The validator string-matches trace-IDs both ways (deterministic). Semantic fidelity of a
+          stamped trace is judgment-grade residual risk, mitigated by the synthesis-confirmation
+          checkpoint and the acceptance gate's trace summary.
+
+        AMEND RUNS UPDATE THIS FILE DELTA-WISE: touched elements are edited or superseded (never
+        renumbered), new elements take fresh IDs, untouched elements keep their IDs, and the Amendment
+        Log records each delta. The traceability cross-check always runs against this persisted,
+        updated file. LEGACY MIGRATION: an amend run meeting a tier declaration (the retired axis)
+        supersedes it — never renumbered — elicits the fact profile once, and re-records existing
+        waivers under the D4 model. An existing single-floor synthesis that carries NO depth-level
+        declaration defaults to `high` on its next amend (adaptive-depth 2026-08-11, review fold #7) —
+        recorded as the declared level without a flip ceremony, since it never operated at `low`.
+
+        GI-ID rule: sequential GI-001, GI-002, … — unique forever within this file; never reuse a
+        retired ID.
+
+        CONFIDENCE MARKS: every GI element carries a mark from
+        `Confident / Assumed / Contested / Unsure / Deferred`, assigned by the lead at assembly from the
+        session's own indicators — updated DELTA-WISE on amend (untouched elements keep their marks).
+        The marks are the G3 intent review's prioritization substrate; they are lead-self-reported, so
+        the review audits them rather than trusting them. `Contested` = the user overruled a recorded
+        challenge with the steelman in view — the recorded basis is required, or the mark is a defect.
+
+        THE REVIEW SECTION is this file's durable record of the sized pre-G3 review (or its waiver) —
+        recovery keys off its state. The reviewers produce lead-adjudicated input; the Tier-2 validator
+        downstream issues the authoritative grade on the authored surface set (both still human-gated).
+      sections:
+        - name: Header
+          required: true
+          contract: |
+            Title "# Governance Intent — [PROJECT_NAME]" plus:
+            **Session date:** [YYYY-MM-DD] · **Mode:** [greenfield | brownfield | amend]
+            **Confirmed at synthesis checkpoint:** [YYYY-MM-DD] by [user]
+            **Governs:** the governance surface set v[X.Y.Z] (CLAUDE.md governance region · `.claude/rules/mochiko/` · `.mochiko/memory/governance-ledger.md`)
+          check: >-
+            Is the header present with project name, session date, mode
+            (greenfield/brownfield/amend), the synthesis-checkpoint confirmation line, and the
+            Governs line naming the surface-set version?
+        - name: Fact profile
+          required: true
+          contract: |
+            The module-driving facts (interrogation dimension 2), each with its consequence-stated
+            confirmation — negatives are recorded facts too (the S4 fail-safe, per
+            `authoring-constitution/references/COMPLIANCE-MODULES.md`):
+
+            - **GI-001 — Facts:** industry: [x] · data classes: [x] · jurisdictions/markets: [x] ·
+              contractual commitments: [x] · **Mark:** [Confident | Assumed | Contested | Unsure | Deferred]
+            - **Modules triggered (mechanical):** [module list with trigger fact each, or "none — negatives
+              confirmed: (each negative + its stated consequence)"]
+            - **Brownfield cross-check:** [declared facts vs `codebase-analysis.md` / DS-XXX / detected
+              integrations — "consistent" or the confrontation's ruling] *(brownfield only)*
+          check: >-
+            Does the Fact profile carry GI-001 (industry, data classes, jurisdictions, contractual
+            commitments, with a mark), the mechanically-triggered modules (or 'none' with each
+            negative + its stated consequence), and — brownfield only — the
+            declared-facts-vs-codebase cross-check?
+          heading: Fact profile
+          max_lines: 15
+        - name: Project identity & type
+          required: true
+          contract: |
+            - **GI-002 — Type:** [frontend | backend | fullstack | service | mobile | desktop] → shelves
+              dealt: [list] · **Mark:** [Confident | Assumed | Contested | Unsure | Deferred]
+            - **Identity:** [what's being built, for whom, lifespan — 2-3 sentences]
+            - **Risk surface:** [what failure costs — honest context for the floor's expression]
+            - **Team reality:** [solo/team, review culture — what enforcement can lean on]
+          check: >-
+            Does Project identity & type carry GI-002 (type + shelves dealt + mark), the identity
+            (what/for whom/lifespan), the risk surface, and the team reality?
+          heading: Project identity & type
+          max_lines: 10
+        - name: Depth level declaration
+          required: true
+          contract: |
+            The floor's single depth dial (adaptive-depth, 2026-08-11) — **one project-wide declaration, not
+            a per-check negotiation**. Breadth is invariant: every floor category is present at both levels;
+            the level tunes only how strictly the asserted *code* standards are authored (process rigor is
+            uniform — D8), and compliance modules are level-blind (full strength at either level — D7). The
+            level is the user's declaration alone — never fact-derived (D1); setup recommends, the user rules.
+
+            - **GI-0XX — Declared level:** [low | high] · **Declared:** [YYYY-MM-DD] by [user] ·
+              **Mark:** [Confident | Assumed | Contested | Unsure | Deferred]
+            - **Rationale:** [why this level — setup recommends `low` for greenfield, `high` where reality
+              warrants it; the user's ruling, recorded]
+            - **Ratchet:** one-way — `high` is terminal; a later `low`→`high` move happens only through a
+              flip ceremony (a conscious `/mochiko:setup` rerun in high mode), never silently, never reversed.
+          check: >-
+            Is there one project-wide Depth level declaration (GI-0XX: low|high, declared date +
+            by user, mark, rationale, one-way ratchet), the user's declaration alone (never
+            fact-derived)?
+          heading: Depth level declaration
+          max_lines: 6
+        - name: Convergence skips
+          required: false
+          contract: |
+            [Named skips only — a dimension left unasked because an earlier answer settled it ("dimension 5
+            settled by dimension 1: solo founder"). A skip is convergence bookkeeping, never a scope ruling
+            — there is no pruning license. Or "none".]
+          check: >-
+            Are convergence skips named-only (each a dimension settled by an earlier answer) or
+            'none' — with no skip used as a scope/pruning ruling?
+          heading: Convergence skips
+          max_lines: 10
+        - name: Real commands
+          required: true
+          contract: |
+            (dimension 6/8 → the validator's placeholder bar)
+
+            | Purpose | Command | Source |
+            |---------|---------|--------|
+            | Lint | `[actual command]` | [detected / declared] |
+            | Test | `[actual command]` | [detected / declared] |
+            | [etc.] | | |
+          check: >-
+            Are real commands (lint, test, etc.) captured as ACTUAL commands with a
+            detected/declared source — no placeholders — meeting the validator's placeholder
+            bar?
+          heading: Real commands
+          max_lines: 12
+        - name: Floor expression & deck rulings
+          required: true
+          contract: |
+            Floor cards enter asserted — their rows record *expression* (type translation), never a level
+            ruling; arbitrated cards (architecture-opinion and kin) record the user's ruling. **Dropped
+            arbitrated cards are rulings too:**
+
+            | GI-ID | Card | Layer | Ruling / Expression | Mark |
+            |-------|------|-------|---------------------|------|
+            | GI-0XX | FLOOR-SEC | floor-asserted | [expression shaped how, or "at floor level"] | [Confident] |
+            | GI-0XX | BE-HEX | arbitrated | [kept/tightened/dropped + user's stated reason] | [Confident] |
+            | … | | | | |
+
+            *(On a fact-profile or un-waive amend, affected rulings are re-dealt on the event's agenda
+            slice or force-re-marked — a stale `Confident` never carries an unexamined ruling forward.)*
+          check: >-
+            Does Floor expression & deck rulings record each floor card's expression (type
+            translation, not a level ruling) and each arbitrated card's user ruling
+            (kept/tightened/dropped with reason — dropped cards recorded too), each with a GI-ID
+            and mark?
+          heading: Floor expression & deck rulings
+          max_lines: 25
+        - name: Minted principle intents
+          required: false
+          contract: |
+            One element per minted intent — traced to the elicited answer, never to prompting:
+
+            - **GI-0XX — [Intent name]:** [what to enforce, how strictly — the user's words distilled]
+              · **Mark:** [Confident | Assumed | Contested | Unsure | Deferred]
+              *Elicited from:* [dimension 9 answer, quoted or closely paraphrased]
+          check: >-
+            Is each minted principle intent one element (GI-0XX, what to enforce + how strictly,
+            mark) traced to an elicited answer (never to prompting)?
+          heading: Minted principle intents
+          max_lines: 25
+        - name: Waivers
+          required: false
+          contract: |
+            Any asserted standard may be waived with a recorded justification (D4) — **except legal-mandate
+            module obligations (D4.2)**. Waivers are permanent pending the D4.1 revisit; a revisit trigger
+            is the user's option, never a default.
+
+            **Interim transition delta (D6).** After a `low`→`high` flip, a category the project does not yet
+            meet at the high level rides a waiver as a **bounded transition exception** — transition-scoped,
+            naming its delta item, and dying when that item conforms. It is a staged-adoption record, never a
+            depth valve: it does not lower the declared level, and the level stays `high`.
+
+            Every waiver is auditable:
+
+            | GI-ID | Standard (floor category / card / non-legal module obligation) | Justification | Revisit trigger (optional) | Mark |
+            |-------|---------------------------------------------------------------|---------------|---------------------------|------|
+            | GI-0XX | [e.g. FLOOR-TEST coverage gate] | [recorded reason] | [or "permanent (D4.1 pending)"] | [Confident] |
+            | GI-0XX | [e.g. FLOOR-OBS SLO formalization] | interim transition delta (high declared [date]) | transition — dies when the item conforms | [Confident] |
+          check: >-
+            Is every waiver auditable (GI-ID, standard, justification, revisit-or-permanent,
+            mark), with none naming a legal-mandate module obligation (D4.2), and interim
+            transition deltas (D6) recorded as bounded transition-scoped exceptions that do not
+            lower the declared level?
+          heading: Waivers
+          max_lines: 25
+        - name: Module selections
+          required: true
+          contract: |
+            **Template modules** (the operating-docs layer — knowledge-management, layer-rules,
+            release-gates), ruled in session; *compliance modules attach mechanically in the Fact profile
+            above, never here.* **Declines are rulings too** (recorded, durable: amend runs offer only
+            modules with *no* recorded ruling here; a recorded decline is never re-asked until the user
+            reopens it). The validator checks core + exactly the adopted modules:
+
+            | GI-ID | Module | Ruling | Because | Mark |
+            |-------|--------|--------|---------|------|
+            | GI-0XX | [layer-rules] | adopted | [BE-HEX kept \| layered intent minted] | [Confident] |
+            | GI-0XX | [knowledge-management] | [adopted \| declined] | [offered default-on at dimension 7; a decline also memorializes in dimension 10] | [Confident] |
+            | … | | | | |
+          check: >-
+            Does Module selections rule the template modules in-session (adopted/declined, each
+            with a why + GI-ID + mark), with declines recorded as durable rulings, and compliance
+            modules NOT listed here (they attach mechanically in Fact profile)?
+          heading: Module selections
+          max_lines: 25
+        - name: Domain-dependency seeds
+          required: false
+          contract: |
+            (only when `layer-rules` is adopted)
+
+            Session-arbitrated registry seeds per `authoring-constitution/references/DOMAIN-DEPENDENCIES.md`
+            — domain-relevance filtered, trust-ranked, each level-cited; rejected seeds are rulings too:
+
+            | GI-ID | Dependency | Signal level | Ruling | Mark |
+            |-------|------------|--------------|--------|------|
+            | GI-0XX | [equatable] | [1 — Flutter Favorites, live-verified] | [kept \| dropped] | [Confident] |
+            | … | | | | |
+          check: >-
+            When layer-rules is adopted, are domain-dependency seeds session-arbitrated
+            (domain-relevance filtered, trust-ranked, level-cited), with rejected seeds recorded
+            as rulings too, each GI-ID'd and marked?
+          heading: Domain-dependency seeds
+          max_lines: 10
+        - name: Deliberate exclusions
+          required: false
+          contract: |
+            (dimension 10)
+
+            - **GI-0XX:** [what governance will not cover + why — never a floor category (the floor leaves
+              only by recorded waiver, above)]
+              · **Mark:** [Confident | Assumed | Contested | Unsure | Deferred]
+          check: >-
+            Is each deliberate exclusion (dimension 10) recorded with what governance will not
+            cover + why + a mark, and never a floor category (the floor leaves only by recorded
+            waiver)?
+          heading: Deliberate exclusions
+          max_lines: 10
+        - name: Review
+          required: true
+          contract: |
+            <!-- The durable record of the sized pre-G3 intent review — one block per run (amend runs append
+            a new block, event-scaled). Recovery keys off this section's state: no sizing ruling → open the
+            gate; sized but survivors undispositioned → respawn/continue the review; folded but unverified →
+            verify pass; waived or verified → G3. -->
+
+            **[YYYY-MM-DD] — [first ratification | amend]**
+
+            - **Sizing:** lead stated weight [element count · mark mix · reality-surface load]; the default
+              [pair on first ratification | event-scaled on amend: governance event → pair · lighter
+              substantive delta → single · wording-level → none-with-recorded-waiver]; **lead sized:**
+              [pair | single | none], the sizing composed by the lead in its run plan — below the default
+              also takes a departure-trail line.
+            - *(if none)* **Waiver:** this record is lead-penned, so `none` is not the lead's to take —
+              waived by [user] as an explicit reserved ruling, [stated reason]. The synthesis proceeds to
+              G3 unreviewed; this record is the audit trail.
+            - *(otherwise)* **Review:** reviewer(s) [coverage / coherence lenses | solo]; **tally** [N raised
+              → M merged survivors]; recommended status [ready | needs-revision | critical-gaps]
+            - **Survivor dispositions** (every survivor carries one):
+
+              | # | Sev | GI element(s) | Finding | Disposition |
+              |---|-----|---------------|---------|-------------|
+              | S1 | [Critical] | [GI-0XX] | [one line] | [resolved / user-ruled / recorded-open — overruled → element marked `Contested`] |
+
+            - **Verify pass:** [PASS — folds confirmed by the coherence-lens/sole reviewer | pending]
+            - *(if any)* **G3-edit delta-pass:** [edited elements + the still-seated reviewer's outcome]
+          check: >-
+            Is the Review section present as the durable pre-G3 review record — one block per
+            run with sizing (and departure trail if below default), or a user-reserved waiver,
+            else reviewer/tally/recommended-status, every survivor carrying a disposition, plus
+            the verify-pass and any G3-edit delta-pass?
+          heading: Review
+          max_lines: 25
+        - name: Amendment Log
+          required: true
+          contract: |
+            [Empty on first ratification. Amend runs append one entry per delta:]
+            - [YYYY-MM-DD] — [GI-IDs added/edited/superseded] — [one-line rationale] — re-confirmed at
+              synthesis checkpoint [date]
+          check: >-
+            Is the Amendment Log present (empty on first ratification; one appended entry per
+            delta on amend — date, GI-IDs added/edited/superseded, rationale, re-confirmation
+            date)?
+          heading: Amendment Log
+          max_lines: 25
+      skeleton: |
+        # Governance Intent — [PROJECT_NAME]
+
+        **Session date:** [YYYY-MM-DD] · **Mode:** [greenfield | brownfield | amend]
+        **Confirmed at synthesis checkpoint:** [YYYY-MM-DD] by [user]
+        **Governs:** the governance surface set v[X.Y.Z] (CLAUDE.md governance region · `.claude/rules/mochiko/` · `.mochiko/memory/governance-ledger.md`)
+
+        ## Fact profile
+
+        - **GI-001 — Facts:** industry: [x] · data classes: [x] · jurisdictions/markets: [x] · contractual commitments: [x] · **Mark:** [Confident | Assumed | Contested | Unsure | Deferred]
+        - **Modules triggered (mechanical):** [module list with trigger fact each, or "none — negatives confirmed: (each negative + its stated consequence)"]
+        - **Brownfield cross-check:** [declared facts vs `codebase-analysis.md` / DS-XXX / detected integrations — "consistent" or the confrontation's ruling] *(brownfield only)*
+
+        ## Project identity & type
+
+        - **GI-002 — Type:** [frontend | backend | fullstack | service | mobile | desktop] → shelves dealt: [list] · **Mark:** [...]
+        - **Identity:** [what's being built, for whom, lifespan — 2-3 sentences]
+        - **Risk surface:** [what failure costs]
+        - **Team reality:** [solo/team, review culture]
+
+        ## Depth level declaration
+
+        - **GI-0XX — Declared level:** [low | high] · **Declared:** [YYYY-MM-DD] by [user] · **Mark:** [...]
+        - **Rationale:** [why this level]
+        - **Ratchet:** one-way — `high` is terminal; a later `low`→`high` move happens only through a flip ceremony.
+
+        ## Convergence skips
+
+        [Named skips only, or "none".]
+
+        ## Real commands
+
+        | Purpose | Command | Source |
+        |---------|---------|--------|
+        | Lint | `[actual command]` | [detected / declared] |
+        | Test | `[actual command]` | [detected / declared] |
+
+        ## Floor expression & deck rulings
+
+        | GI-ID | Card | Layer | Ruling / Expression | Mark |
+        |-------|------|-------|---------------------|------|
+        | GI-0XX | FLOOR-SEC | floor-asserted | [expression, or "at floor level"] | [Confident] |
+        | GI-0XX | BE-HEX | arbitrated | [kept/tightened/dropped + reason] | [Confident] |
+
+        ## Minted principle intents
+
+        - **GI-0XX — [Intent name]:** [what to enforce, how strictly] · **Mark:** [...] *Elicited from:* [dimension 9 answer]
+
+        ## Waivers
+
+        | GI-ID | Standard | Justification | Revisit trigger (optional) | Mark |
+        |-------|----------|---------------|---------------------------|------|
+        | GI-0XX | [e.g. FLOOR-TEST coverage gate] | [recorded reason] | [or "permanent (D4.1 pending)"] | [Confident] |
+
+        ## Module selections
+
+        | GI-ID | Module | Ruling | Because | Mark |
+        |-------|--------|--------|---------|------|
+        | GI-0XX | [layer-rules] | adopted | [reason] | [Confident] |
+        | GI-0XX | [knowledge-management] | [adopted | declined] | [reason] | [Confident] |
+
+        ## Domain-dependency seeds
+
+        *(only when `layer-rules` is adopted)*
+
+        | GI-ID | Dependency | Signal level | Ruling | Mark |
+        |-------|------------|--------------|--------|------|
+        | GI-0XX | [equatable] | [1 — Flutter Favorites, live-verified] | [kept | dropped] | [Confident] |
+
+        ## Deliberate exclusions
+
+        - **GI-0XX:** [what governance will not cover + why] · **Mark:** [...]
+
+        ## Review
+
+        **[YYYY-MM-DD] — [first ratification | amend]**
+
+        - **Sizing:** [...]
+        - **Review / Waiver:** [...]
+        - **Survivor dispositions:**
+
+          | # | Sev | GI element(s) | Finding | Disposition |
+          |---|-----|---------------|---------|-------------|
+          | S1 | [Critical] | [GI-0XX] | [one line] | [disposition] |
+
+        - **Verify pass:** [PASS | pending]
+
+        ## Amendment Log
+
+        [Empty on first ratification. Amend runs append one entry per delta.]
+      conformance:
+        extra_headings: allow
+  - op: replace-document
+    kind: template
+    name: codebase-analysis
+    content:
+      template: codebase-analysis
+      title: Codebase Analysis (brownfield-setup)
+      form: artifact-format.md
+      register: full
+      overview: |
+        The structure for brownfield codebase-analysis output (.mochiko/memory/codebase-analysis.md).
+        Follows the deliverable envelope SLIMMED but legible: findings as file-cited table rows, one
+        line each; the judgment prose (strengths, recommendations) stays prose — the analysis
+        checkpoint's human reader needs it. Status values: `draft` (initial generation), `confirmed`
+        (user approved at checkpoint). Essential Floor statuses: `present` (fully implemented),
+        `partial` (some coverage, gaps exist), `absent` (not implemented). Severity levels: `low`
+        (cosmetic), `medium` (should fix), `high` (blocking). This is a reference structure — the
+        agent produces actual content following it.
+      sections:
+        - name: Header
+          required: true
+          contract: |
+            Title "# Codebase Analysis" plus Generated timestamp, Mode: brownfield-setup, and Status
+            (draft | confirmed).
+          check: >-
+            Is the header present with generated timestamp, Mode brownfield-setup, and a Status of
+            draft or confirmed?
+        - name: Part 1 — Inventory (Factual)
+          required: true
+          density: findings as file-cited table rows, one line each
+          contract: |
+            Factual inventory, file-cited. Sub-parts:
+            - Project Identity table (Name, Primary Language + version, Framework + version, Package
+              Manager, Entry Points) each with its Source.
+            - Directory Structure (tree with per-dir purpose comments).
+            - Detected Patterns: Architecture Pattern (pattern | evidence); Naming Conventions (Files/
+              Variables/Functions/Classes — convention + example); Error Handling Pattern (pattern |
+              evidence); Test Pattern (Framework, Location, Naming, Coverage Config).
+            - Domain Entities (Entity | File | Field Count | Relationships).
+            - External Dependencies (Service | Access Pattern | Config Location).
+          check: >-
+            Is Part 1 a factual, file-cited inventory covering project identity, directory
+            structure, detected patterns (architecture, naming, error-handling, test), domain
+            entities, and external dependencies — each finding one line and sourced?
+          heading: 'Part 1: Inventory (Factual)'
+          max_lines: 40
+        - name: Part 2 — Assessment (Judgment)
+          required: true
+          contract: |
+            Judgment layer; prose where the human reader needs it. Sub-parts:
+            - Strengths to Preserve (numbered prose: strength -> why it matters).
+            - Inconsistencies Found (Area | Finding | Severity low|medium|high | Location).
+            - Essential Floor Status — the twelve-check table (Category | Check | Status present|
+              partial|absent | Evidence, file-cited, one line) across Security (Auth at boundaries,
+              Secrets from env, Input validation), Testing (Test framework configured, Test files
+              present, CI runs tests), Error Handling (Explicit error types, Context preservation,
+              Appropriate status codes), Observability (Structured logging, Correlation IDs, No PII in
+              logs) — followed by the Category rollup line (Security · Testing · Error Handling ·
+              Observability).
+            - Recommended Constitution Focus (numbered recommendations).
+          check: >-
+            Does Part 2 carry the strengths prose, the inconsistencies table with severities, the
+            twelve-row Essential Floor Status table (present/partial/absent, file-cited evidence)
+            with the category rollup, and the recommended constitution focus?
+          heading: 'Part 2: Assessment (Judgment)'
+          max_lines: 40
+        - name: Appendix — Detection Method
+          required: true
+          contract: |
+            Table (Aspect | Method Used): Tech Stack — `detect-stack.sh` script; Architecture —
+            Directory pattern matching; Entities — ORM/framework-specific patterns; Conventions —
+            File sampling and pattern inference.
+          check: >-
+            Is the Detection Method appendix present, naming the method per aspect
+            (detect-stack.sh, directory pattern matching, ORM patterns, file sampling)?
+          heading: 'Appendix: Detection Method'
+          max_lines: 15
+      skeleton: |
+        # Codebase Analysis
+
+        > Generated: {{timestamp}}
+        > Mode: brownfield-setup
+        > Status: {{status}}
+
+        ---
+
+        ## Part 1: Inventory (Factual)
+
+        ### Project Identity
+
+        | Aspect | Value | Source |
+        |--------|-------|--------|
+        | Name | {{project_name}} | {{source_file}} |
+        | Primary Language | {{language}} {{version}} | {{source_file}} |
+        | Framework | {{framework}} {{version}} | {{source_file}} |
+        | Package Manager | {{package_manager}} | {{source_file}} |
+        | Entry Points | {{entry_points}} | {{detection}} |
+
+        ### Directory Structure
+
+        ```
+        {{project_root}}/
+        ├── {{dir_1}}/            # {{purpose_1}}
+        ├── {{dir_2}}/            # {{purpose_2}}
+        └── ...
+        ```
+
+        ### Detected Patterns
+
+        #### Architecture Pattern
+
+        | Pattern | Evidence |
+        |---------|----------|
+        | {{pattern_name}} | {{files_or_dirs_indicating_pattern}} |
+
+        #### Naming Conventions
+
+        | Element | Convention | Example |
+        |---------|------------|---------|
+        | Files | {{file_convention}} | {{example}} |
+        | Variables | {{var_convention}} | {{example}} |
+        | Functions | {{func_convention}} | {{example}} |
+        | Classes | {{class_convention}} | {{example}} |
+
+        #### Error Handling Pattern
+
+        | Pattern | Evidence |
+        |---------|----------|
+        | {{error_pattern}} | {{files_showing_pattern}} |
+
+        #### Test Pattern
+
+        | Aspect | Value |
+        |--------|-------|
+        | Framework | {{test_framework}} |
+        | Location | {{test_dir}} |
+        | Naming | {{test_naming_convention}} |
+        | Coverage Config | {{coverage_config_file}} |
+
+        ### Domain Entities
+
+        | Entity | File | Field Count | Relationships |
+        |--------|------|-------------|---------------|
+        | {{entity_name}} | {{file_path}} | {{count}} | {{relationship_list}} |
+
+        ### External Dependencies
+
+        | Service | Access Pattern | Config Location |
+        |---------|---------------|-----------------|
+        | {{service_name}} | {{how_accessed}} | {{config_file}} |
+
+        ---
+
+        ## Part 2: Assessment (Judgment)
+
+        ### Strengths to Preserve
+
+        1. **{{strength_1}}**: {{why_it_matters}}
+        2. **{{strength_2}}**: {{why_it_matters}}
+
+        ### Inconsistencies Found
+
+        | Area | Finding | Severity | Location |
+        |------|---------|----------|----------|
+        | {{area}} | {{what_inconsistent}} | low\|medium\|high | {{files}} |
+
+        ### Essential Floor Status
+
+        | Category | Check | Status | Evidence (file-cited, one line) |
+        |----------|-------|--------|--------------------------------|
+        | Security | Auth at boundaries | {{present\|partial\|absent}} | {{evidence}} |
+        | Security | Secrets from env | {{status}} | {{evidence}} |
+        | Security | Input validation | {{status}} | {{evidence}} |
+        | Testing | Test framework configured | {{status}} | {{evidence}} |
+        | Testing | Test files present | {{status}} | {{count}} files found |
+        | Testing | CI runs tests | {{status}} | {{evidence}} |
+        | Error Handling | Explicit error types | {{status}} | {{evidence}} |
+        | Error Handling | Context preservation | {{status}} | {{evidence}} |
+        | Error Handling | Appropriate status codes | {{status}} | {{evidence}} |
+        | Observability | Structured logging | {{status}} | {{evidence}} |
+        | Observability | Correlation IDs | {{status}} | {{evidence}} |
+        | Observability | No PII in logs | {{status}} | {{evidence}} |
+
+        **Category rollup:** Security {{status}} · Testing {{status}} · Error Handling {{status}} · Observability {{status}}
+
+        ### Recommended Constitution Focus
+
+        1. {{recommendation_1}}
+        2. {{recommendation_2}}
+
+        ---
+
+        ## Appendix: Detection Method
+
+        | Aspect | Method Used |
+        |--------|-------------|
+        | Tech Stack | `detect-stack.sh` script |
+        | Architecture | Directory pattern matching |
+        | Entities | ORM/framework-specific patterns |
+        | Conventions | File sampling and pattern inference |
+      conformance:
+        extra_headings: deny
+  - op: mint-rule
+    schema: command/brainstorm
+    section: brainstorm.sec.ways-of-working
+    rule:
+      id: brainstorm.artifact-home
+      labels: [binding]
+      class: floor
+      kind: binding
+      text: >-
+        Session artifacts go only where the log declares: render `mochiko-cli home
+        .mochiko/brainstorms/<slug>` before the first write and hold what it returns. `record.md`,
+        `synthesis.md`, `build-log.md` and `wave<n>-<slug>.md` are the closed set; other working
+        material rides `inputs/`, `research/` or `referents/`; a report lands in `reports/` under
+        its envelope type. A name the set does not carry is raised to the user, never invented
+        mid-session, and the index entry is written in the index home, not here.
+      anchor: 2026-09-13 hook-enforced-artifact-schema D1
+  - op: mint-rule
+    schema: command/setup
+    section: setup.sec.ways-of-working
+    rule:
+      id: setup.artifact-home
+      labels: [binding]
+      class: floor
+      kind: binding
+      text: >-
+        The surfaces a governance run writes have a declared home: render `mochiko-cli home
+        .mochiko/memory` before the first write. `governance-intent.md` binds the
+        `governance-intent` template and `codebase-analysis.md` binds `codebase-analysis` — take
+        each one's section shape from `mochiko-cli template <kind>` before drafting, not after.
+        The memory home's size bounds live in the knowledge-management invariants it cites, and
+        the ledger and trace manifest are declared files there, not free names.
+      anchor: 2026-09-13 hook-enforced-artifact-schema D1
+  - op: mint-rule
+    schema: command/specify
+    section: spec.sec.ways-of-working
+    rule:
+      id: spec.artifact-home
+      labels: [binding]
+      class: floor
+      kind: binding
+      text: >-
+        A spec run writes into declared homes only: render `mochiko-cli home
+        .mochiko/specs/<slug>` before the first write. `spec.md` binds the `spec` template, whose
+        per-section budgets come from `mochiko-cli template spec` before drafting; `stories/`,
+        `contracts/`, `prototype/` and `map-delta/` are the admitted sub-directories, each with
+        its own declared set. A file name the home does not carry is raised to the user rather
+        than created beside the ones that are.
+      anchor: 2026-09-13 hook-enforced-artifact-schema D1
+  - op: mint-rule
+    schema: command/feature
+    section: feat.sec.ways-of-working
+    rule:
+      id: feat.artifact-home
+      labels: [binding]
+      class: floor
+      kind: binding
+      text: >-
+        Map stewardship writes into two declared homes: render `mochiko-cli home
+        .mochiko/features` and, for a desk sitting, `mochiko-cli home
+        .mochiko/features/desk/<date-slug>` before the first write. A capability entry is
+        `<FEAT-ID>.md` bound to the `feature-entry` template; the desk's own output is
+        `derivation.md`; a review of either is a report in that home's `reports/`. An id outside
+        the `FEAT-XXX` shape has no home and is raised, never written.
+      anchor: 2026-09-13 hook-enforced-artifact-schema D1
+  - op: mint-rule
+    schema: command/architecture
+    section: arch.sec.ways-of-working
+    rule:
+      id: arch.artifact-home
+      labels: [binding]
+      class: floor
+      kind: binding
+      text: >-
+        The store's files have a declared home: render `mochiko-cli home
+        .mochiko/product/architecture` before the first write. `spine.md` binds the
+        `architecture-spine` template and takes its per-section budgets from `mochiko-cli template
+        architecture-spine`; `concerns.md` binds `architecture-concerns`, whose length is the
+        concern count and carries no file bound; a graduated row's file is `<AX-ID>.md` in
+        `concerns/`. The repo-root index is derived, never hand-written.
+      anchor: 2026-09-13 hook-enforced-artifact-schema D1
+  - op: mint-rule
+    schema: command/implement
+    section: impl.sec.ways-of-working
+    rule:
+      id: impl.artifact-home
+      labels: [binding]
+      class: floor
+      kind: binding
+      text: >-
+        Build-run artifacts have a declared home: render `mochiko-cli home
+        ${features_dir}/FEAT-XXX` — an epic run, the epic home; a lane run, the lane home —
+        before the first write. `tasks.md` binds the `tasks` template; every report lands in that
+        home's `reports/` typed by its envelope; `implement-log.md` is bounded per entry, never
+        per file. A name the home's set does not carry is raised to the lead, never minted from a
+        sibling run.
+      anchor: 2026-09-13 hook-enforced-artifact-schema D1
+  - op: mint-rule
+    schema: skill/authoring-architecture-store
+    section: authoring-architecture-store.sec.artifact
+    rule:
+      id: authoring-architecture-store.artifact-home
+      labels: [binding]
+      class: floor
+      kind: binding
+      text: >-
+        Every store write goes to a declared file: render `mochiko-cli home
+        .mochiko/product/architecture` before the first one. `spine.md` and `concerns.md` are the
+        hand-written pair, `concerns/<AX-ID>.md` is a graduated row's file in the sub-home, and
+        the repo-root index is the derived view this skill regenerates rather than authors. Take
+        the spine's per-section budgets from `mochiko-cli template architecture-spine`.
+      anchor: 2026-09-13 hook-enforced-artifact-schema D1
+  - op: mint-rule
+    schema: skill/authoring-feature-map
+    section: authoring-feature-map.sec.artifact
+    rule:
+      id: authoring-feature-map.artifact-home
+      labels: [binding]
+      class: floor
+      kind: binding
+      text: >-
+        The map's files are declared: render `mochiko-cli home .mochiko/features` before the first
+        entry write. A capability entry is `<FEAT-ID>.md` bound to the `feature-entry` template
+        — its section shape and per-section budgets come from `mochiko-cli template
+        feature-entry` before drafting. A spec run's staged delta writes the same shapes in the
+        spec home's `map-delta/`, never over the live map.
+      anchor: 2026-09-13 hook-enforced-artifact-schema D1
+  - op: mint-rule
+    schema: skill/authoring-user-stories
+    section: authoring-user-stories.sec.artifact
+    rule:
+      id: authoring-user-stories.artifact-home
+      labels: [binding]
+      class: floor
+      kind: binding
+      text: >-
+        Stories land in the declared spec home, never beside it: the story set rides `spec.md`'s
+        own section under the `spec` template, and a per-story file is `stories/US-<n>.md` in the
+        sub-home. Render `mochiko-cli home .mochiko/specs/<slug>` before the first write, and take
+        the section's budget from `mochiko-cli template spec` — the story count is the
+        feature's, the section's length is not.
+      anchor: 2026-09-13 hook-enforced-artifact-schema D1
+  - op: mint-rule
+    schema: skill/authoring-requirements
+    section: authoring-requirements.sec.artifact
+    rule:
+      id: authoring-requirements.artifact-home
+      labels: [binding]
+      class: floor
+      kind: binding
+      text: >-
+        The functional layer is written into `spec.md` in the declared spec home, not into a file
+        of its own: render `mochiko-cli home .mochiko/specs/<slug>` before the first write and
+        take the Functional Requirements, Edge Cases and Success Criteria section shapes from
+        `mochiko-cli template spec`. A requirement set that wants its own file is a sign the
+        capability is two.
+      anchor: 2026-09-13 hook-enforced-artifact-schema D1
+  - op: mint-rule
+    schema: skill/authoring-technical-requirements
+    section: authoring-technical-requirements.sec.artifact
+    rule:
+      id: authoring-technical-requirements.artifact-home
+      labels: [binding]
+      class: floor
+      kind: binding
+      text: >-
+        `constraints-and-decisions.md` is a declared file in whichever home the run owns — the
+        spec, the feature, the epic or the product baseline: render `mochiko-cli home <that path>`
+        before the first write and hold the bound it returns. The NFR rows this skill authors ride
+        the architecture store's concern rows, in the store's home, never as a second file here.
+      anchor: 2026-09-13 hook-enforced-artifact-schema D1
+  - op: mint-rule
+    schema: skill/authoring-epic
+    section: authoring-epic.sec.artifact
+    rule:
+      id: authoring-epic.artifact-home
+      labels: [binding]
+      class: floor
+      kind: binding
+      text: >-
+        An epic's files are declared: render `mochiko-cli home .mochiko/epics/<EPIC-ID>` before
+        the first write. The manifest and the spine artifacts are the closed set, `contracts/` is
+        the one admitted sub-directory, every report lands in `reports/` typed by its envelope,
+        and `implement-log.md` is bounded per entry. A landing or review directory is not a
+        sub-home — its files are reports.
+      anchor: 2026-09-13 hook-enforced-artifact-schema D1
+  - op: mint-rule
+    schema: skill/authoring-prototype
+    section: authoring-prototype.sec.artifact
+    rule:
+      id: authoring-prototype.artifact-home
+      labels: [binding]
+      class: floor
+      kind: binding
+      text: >-
+        The prototype is written under the spec home's declared `prototype/` sub-directory, which
+        no home document governs: render `mochiko-cli home .mochiko/specs/<slug>` before the first
+        write to confirm that, and keep the screens and flows the prototype renders in `spec.md`'s
+        own section under the `spec` template. Nothing outside that sub-directory is the
+        prototype's to write.
+      anchor: 2026-09-13 hook-enforced-artifact-schema D1
+  - op: mint-rule
+    schema: skill/authoring-constitution
+    section: authoring-constitution.sec.artifact
+    rule:
+      id: authoring-constitution.artifact-home
+      labels: [binding]
+      class: floor
+      kind: binding
+      text: >-
+        The governance surfaces this skill lands — the CLAUDE.md region, the scope-bound rules
+        files, the output-style file — sit outside every declared home by ruling, and their
+        bounds are the knowledge-management invariants. The ledger and the trace manifest are
+        declared files in the memory home: render `mochiko-cli home .mochiko/memory` before
+        writing either, and raise a name it does not carry rather than adding one.
+      anchor: 2026-09-13 hook-enforced-artifact-schema D1
+  - op: mint-rule
+    schema: skill/patterns-vertical-tdd
+    section: patterns-vertical-tdd.sec.disclosure
+    rule:
+      id: patterns-vertical-tdd.artifact-home
+      labels: [binding]
+      class: floor
+      kind: binding
+      text: >-
+        The cards are written into `tasks.md` in the declared feature or epic home, under its `##
+        Cycle Cards` heading with each card a `###` of its own: render `mochiko-cli home <that
+        path>` before the first write and take the section shape from `mochiko-cli template
+        tasks`. The card count is the work's; a second `##` of the author's own invention is a
+        shape the kind does not carry.
+      anchor: 2026-09-13 hook-enforced-artifact-schema D1
+  - op: mint-rule
+    schema: skill/executing-tdd-cycle
+    section: executing-tdd-cycle.sec.output
+    rule:
+      id: executing-tdd-cycle.artifact-home
+      labels: [binding]
+      class: floor
+      kind: binding
+      text: >-
+        The cycle report lands in the owning home's `reports/` directory, typed `report: cycle` in
+        its frontmatter: render `mochiko-cli home <the feature, epic or lane path>` before writing
+        it, and take the envelope from `mochiko-cli template report-envelope` — clean is
+        frontmatter-only. A report written beside the home rather than in its `reports/` is a
+        misfiled report, not a new convention.
+      anchor: 2026-09-13 hook-enforced-artifact-schema D1
+  - op: mint-rule
+    schema: skill/analysis-codebase
+    section: analysis-codebase.sec.output
+    rule:
+      id: analysis-codebase.artifact-home
+      labels: [binding]
+      class: floor
+      kind: binding
+      text: >-
+        The analysis lands at the one declared path: `codebase-analysis.md` in the memory home,
+        bound to the `codebase-analysis` template. Render `mochiko-cli home .mochiko/memory`
+        before the write and take the section shape from `mochiko-cli template codebase-analysis`
+        — the three parts and the appendix are the kind's headings, and the detection layer's
+        output belongs inside them, not in a file of its own.
+      anchor: 2026-09-13 hook-enforced-artifact-schema D1
+  - op: reword-rule
+    schema: command/implement
+    id: impl.reports-envelope
+    text: >-
+      All reports land in the owning home's `reports/` directory —
+      ${features_dir}/FEAT-XXX/reports/ (a product-lane run: ${product_dir}/lane-<slug>/reports/,
+      an epic run: the epic home's): the sufficiency report, cycle reports, verification reports,
+      the final-validation report, the built-vs-signed diff. Every one carries the
+      `report-envelope` frontmatter (machine-first, typed by `report:`, ultra register, clean =
+      frontmatter-only; bounce an envelope-breaking report per templates/report-format.md rule 9),
+      and each producing seat's brief names the home's `reports/` path. Repeat runs append, dated;
+      delta files overwrite only via the graded fold.

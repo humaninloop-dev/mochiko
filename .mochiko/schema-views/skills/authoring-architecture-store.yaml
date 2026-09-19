@@ -209,6 +209,17 @@ sections:
           silently invents.
         when: {ruled_content: absent}
         anchor: 2026-08-19 product-architecture-schema D16
+      - id: authoring-architecture-store.artifact-home
+        labels: [binding]
+        class: floor
+        kind: binding
+        text: >-
+          Every store write goes to a declared file: render `mochiko-cli home
+          .mochiko/product/architecture` before the first one. `spine.md` and `concerns.md` are
+          the hand-written pair, `concerns/<AX-ID>.md` is a graduated row's file in the sub-home,
+          and the repo-root index is the derived view this skill regenerates rather than authors.
+          Take the spine's per-section budgets from `mochiko-cli template architecture-spine`.
+        anchor: 2026-09-13 hook-enforced-artifact-schema D1
   - id: authoring-architecture-store.sec.output
     title: Output — the derived index and the health view
     intent: The projection every write regenerates and the bar it must clear.

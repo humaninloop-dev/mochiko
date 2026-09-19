@@ -1,0 +1,74 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Venue {
+  id        String   @id @default(cuid())
+  name      String
+  timezone  String
+  members   Member[]
+  staff     StaffUser[]
+}
+
+model StaffUser {
+  id        String   @id @default(cuid())
+  venueId   String
+  venue     Venue    @relation(fields: [venueId], references: [id])
+  email     String   @unique
+  role      String   // owner | front-desk
+  sessions  StaffSession[]
+}
+
+model StaffSession {
+  token     String   @id
+  userId    String
+  user      StaffUser @relation(fields: [userId], references: [id])
+  expiresAt DateTime
+}
+
+model Member {
+  id         String      @id @default(cuid())
+  venueId    String
+  venue      Venue       @relation(fields: [venueId], references: [id])
+  name       String
+  email      String
+  phone      String?
+  membership Membership?
+  bookings   Booking[]
+}
+
+model Membership {
+  id               String   @id @default(cuid())
+  memberId         String   @unique
+  member           Member   @relation(fields: [memberId], references: [id])
+  planId           String
+  plan             Plan     @relation(fields: [planId], references: [id])
+  stripeCustomerId String
+  status           String   // active | past_due | cancelled
+  paidThrough      DateTime
+  graceDays        Int      @default(3)
+}
+
+model Plan {
+  id          String       @id @default(cuid())
+  name        String
+  memberships Membership[]
+}
+
+model Booking {
+  id        String   @id @default(cuid())
+  memberId  String
+  member    Member   @relation(fields: [memberId], references: [id])
+  classAt   DateTime
+}
+
+model StripeEvent {
+  id      String @id
+  type    String
+  payload Json
+}

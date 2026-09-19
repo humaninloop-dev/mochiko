@@ -1,0 +1,4 @@
+# copy to .envrc.local (gitignored) and fill from the team vault: Paylane sandbox (tallyhouse)
+export PAYLANE_SANDBOX_KEY=
+export PAYLANE_WEBHOOK_SECRET=
+export DATABASE_URL=postgresql://tally:tally@localhost:5433/tally

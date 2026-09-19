@@ -1,5 +1,12 @@
 # Compression pass report — `review-brainstorm`
 
+> **Evidence.** The grids cited below (`runs/20260826-110222` and its siblings) are not carried in
+> the working tree — this kit's `.gitignore` ignores every `runs/` directory, and these grids were
+> never committed at all until 2026-09-19. They are archived at the tag `eval-evidence-2026-09-19`:
+>
+>     git fetch origin tag eval-evidence-2026-09-19
+>     git show eval-evidence-2026-09-19:evals/review-brainstorm/runs/20260826-110222/report.md
+
 Pass opened and ratified 2026-08-26. Compressor: session lead. Mode: **user-directed cut** on
 the `review-feasibility` v0.82.0 precedent ("cut now, eval validates later" — the pre-cut eval
 is superseded as an instrument and re-purposed as a post-cut regression check; `rules.json` +

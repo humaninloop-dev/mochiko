@@ -6,7 +6,7 @@ this `.claude/rules/` surface; earlier edits rode their decision rows.
 <!-- Wave context: the command-schema ontology wave (v0.98.0). Ruling:
 `.mochiko/brainstorms/command-schema-ontology/record.md` D1–D11 as amended →
 `DECISIONS.md` 2026-08-27. Clause inventory:
-`.mochiko/brainstorms/command-schema-ontology/conversion-inventory.md` (section H carries
+`.mochiko/brainstorms/command-schema-ontology/research/conversion-inventory.md` (section H carries
 the re-keyed form and names this file as a downstream consumer). -->
 
 <!-- Wave context: the near-dup convergence wave (v0.99.0). Ruling:

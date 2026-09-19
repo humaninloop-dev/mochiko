@@ -172,6 +172,17 @@ sections:
           `references/TEST-GRAMMAR.md`.
         pointer: references/TEST-GRAMMAR.md
         anchor: 2026-08-16 vertical-tdd-complexity-and-qa-role D4
+      - id: patterns-vertical-tdd.artifact-home
+        labels: [binding]
+        class: floor
+        kind: binding
+        text: >-
+          The cards are written into `tasks.md` in the declared feature or epic home, under its
+          `## Cycle Cards` heading with each card a `###` of its own: render `mochiko-cli home
+          <that path>` before the first write and take the section shape from `mochiko-cli
+          template tasks`. The card count is the work's; a second `##` of the author's own
+          invention is a shape the kind does not carry.
+        anchor: 2026-09-13 hook-enforced-artifact-schema D1
   - id: patterns-vertical-tdd.sec.reserved
     title: Reserved — who holds which pen
     intent: The seat split no run re-decides.

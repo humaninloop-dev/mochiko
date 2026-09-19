@@ -1,0 +1,5 @@
+# copy to .envrc.local (gitignored); values from the team vault: Textline sandbox (shiftbook)
+export TEXTLINE_API_KEY=
+export TEXTLINE_FROM=
+export TEXTLINE_TEST_NUMBERS="+447700900001,+447700900002,+447700900003"   # sandbox-registered handsets
+export DATABASE_URL=postgresql://shiftbook:shiftbook@localhost:5435/shiftbook

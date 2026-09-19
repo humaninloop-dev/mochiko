@@ -208,7 +208,7 @@ mochiko-cli rules end · <primitive> · <id> · <N> rules
    integration` for every existing file.
 3. **Pen discipline.** Write only the owned files; a needed change outside them is routed
    to the lead as a delta, never made.
-4. **Report.** A cycle report at `.mochiko/brainstorms/cli-schema-delivery/wave1-reports/
+4. **Report.** A cycle report at `.mochiko/brainstorms/cli-schema-delivery/reports/
    <seat>.md`: what was built, the test tally, ladder disclosures, deviations from this
    plan (each named), open items.
 5. **Attempt bound:** 3 verification attempts per seat unit; a rework is test-first.

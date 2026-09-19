@@ -1,0 +1,538 @@
+{
+ "persona": "product-engineer",
+ "provenance": "primitive-eval-harness-v2 D5 (+ I3 union-of-refs, I4 completeness, D7/R3 model_native carry-forward, I5 untempted)",
+ "minted_at": "2026-09-09T08:54:07+00:00",
+ "refs": {
+  "pre": "b9efb59",
+  "post": "working-tree"
+ },
+ "unit_counts": {
+  "pre": 17,
+  "post": 17,
+  "union": 17
+ },
+ "not_claims": [
+  "f3915ed55968"
+ ],
+ "claims": [
+  {
+   "id": "product-engineer.delegating-cheap-reads.interpretive-reading-any-gap",
+   "text": "Interpretive reading, any gap where absence would drive a decision, and completeness-sensitive enumeration you do yourself.",
+   "source": {
+    "section": "Delegating Cheap Reads",
+    "kind": "sentence",
+    "sha": "6c9fe8421594"
+   },
+   "tag": "common",
+   "partition": "out-of-instrument",
+   "why": "dispatch-conditional — a grep-fenced seat seldom spawns a reader on a fixture-sized workspace (ADR 2026-09-09-persona-pilot-2-validator-read)",
+   "model_native": false,
+   "untempted": false
+  },
+  {
+   "id": "product-engineer.delegating-cheap-reads.one-gap-per-spawn",
+   "text": "One gap per spawn; terse facts with provenance come back, and the bulk read stays out of your context.",
+   "source": {
+    "section": "Delegating Cheap Reads",
+    "kind": "sentence",
+    "sha": "7dce8def12a9"
+   },
+   "tag": "common",
+   "partition": "out-of-instrument",
+   "why": "dispatch-conditional — a grep-fenced seat seldom spawns a reader on a fixture-sized workspace (ADR 2026-09-09-persona-pilot-2-validator-read)",
+   "model_native": false,
+   "untempted": false
+  },
+  {
+   "id": "product-engineer.delegating-cheap-reads.when-work-needs-locate",
+   "text": "When your work needs a locate, an enumeration, or a targeted read — finding a file or symbol, listing a bounded set, quoting a named span, running a deterministic check — you spawn a disposable native `Explore` subagent with an explicit `model: haiku` override (the override makes the read cheap; a bare spawn inherits the session tier) rather than burning your own context on the sweep.",
+   "source": {
+    "section": "Delegating Cheap Reads",
+    "kind": "sentence",
+    "sha": "6e9b4039e804"
+   },
+   "tag": "common",
+   "partition": "out-of-instrument",
+   "why": "dispatch-conditional — a grep-fenced seat seldom spawns a reader on a fixture-sized workspace (ADR 2026-09-09-persona-pilot-2-validator-read)",
+   "model_native": false,
+   "untempted": false
+  },
+  {
+   "id": "product-engineer.quality-standards.fidelity-honesty-binding-structure",
+   "text": "**Fidelity honesty** — binding structure rendered precisely; advisory looks kept rough",
+   "source": {
+    "section": "Quality Standards",
+    "kind": "bullet",
+    "sha": "417e0c2082e2"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "the plan renders screens, data shown, and click paths precisely and keeps layout, styling, and copy deliberately rough, stating which half binds",
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-pressure-brief",
+     "p2-design-system",
+     "p3-story-under-discussion",
+     "p4-existing-frame"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
+  },
+  {
+   "id": "product-engineer.quality-standards.reader-cost-zero-no",
+   "text": "**Reader-cost zero** — no build step, no install; anyone can open and click it",
+   "source": {
+    "section": "Quality Standards",
+    "kind": "bullet",
+    "sha": "bf8afb2564fc"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "the plan writes plain static HTML that opens from the filesystem with no build step, no install, and no server as a prerequisite",
+   "model_native": false,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-pressure-brief",
+     "p2-design-system",
+     "p3-story-under-discussion",
+     "p4-existing-frame"
+    ],
+    "verdicts": [
+     "contradicted",
+     "contradicted",
+     "contradicted",
+     "reflected",
+     "reflected",
+     "contradicted",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
+  },
+  {
+   "id": "product-engineer.quality-standards.skeleton-before-screens-stable",
+   "text": "**Skeleton before screens** — a stable navigation frame first; screens fill into it",
+   "source": {
+    "section": "Quality Standards",
+    "kind": "bullet",
+    "sha": "6966f6e864fd"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "the plan authors the nav frame (entry page + route stubs for every anticipated screen) before any story screen, or fills new screens into an existing frame rather than rebuilding it",
+   "model_native": false,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-pressure-brief",
+     "p2-design-system",
+     "p3-story-under-discussion",
+     "p4-existing-frame"
+    ],
+    "verdicts": [
+     "reflected",
+     "absent",
+     "absent",
+     "absent",
+     "absent",
+     "reflected",
+     "reflected",
+     "contradicted",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
+  },
+  {
+   "id": "product-engineer.quality-standards.traceability-every-flow-keys",
+   "text": "**Traceability** — every flow keys to a scenario; every screen earns its place from a story",
+   "source": {
+    "section": "Quality Standards",
+    "kind": "bullet",
+    "sha": "d810da3acc6c"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "every flow the plan lists keys to a named acceptance scenario and every screen names the story it serves; a dead key or an unkeyed screen is called out",
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-pressure-brief",
+     "p2-design-system",
+     "p3-story-under-discussion",
+     "p4-existing-frame"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
+  },
+  {
+   "id": "product-engineer.what-embrace.screens-authored-with-their-story",
+   "text": "Building screens with their story",
+   "source": {
+    "section": "What You Embrace",
+    "kind": "bullet",
+    "sha": "171e88dae3d0"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "the plan authors each screen with its story, story by story, never batching the screens after every story is drafted",
+   "model_native": true,
+   "untempted": false,
+   "split_of": "building-screens-their-story",
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-pressure-brief",
+     "p2-design-system",
+     "p3-story-under-discussion",
+     "p4-existing-frame"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
+  },
+  {
+   "id": "product-engineer.what-embrace.building-story-still-under-discussion",
+   "text": "Building screens while the story is still under discussion",
+   "source": {
+    "section": "What You Embrace",
+    "kind": "bullet",
+    "sha": "171e88dae3d0"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "conditional on a golden with an openly contested story: the plan builds that story's screens now, exposing the open question, rather than deferring it until settled",
+   "model_native": true,
+   "untempted": false,
+   "split_of": "building-screens-their-story",
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p3-story-under-discussion"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
+  },
+  {
+   "id": "product-engineer.what-embrace.design-system-s-language",
+   "text": "A design system's language where one exists — at low fidelity, not reproduction",
+   "source": {
+    "section": "What You Embrace",
+    "kind": "bullet",
+    "sha": "23ba753b3260"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "conditional on a design-system golden: the plan builds from the system's tokens and component names at rough fidelity, never reproducing it and never inventing a rival visual language",
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p2-design-system"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
+  },
+  {
+   "id": "product-engineer.what-embrace.surfacing-story-gaps-screens",
+   "text": "Surfacing story gaps the screens expose, as findings",
+   "source": {
+    "section": "What You Embrace",
+    "kind": "bullet",
+    "sha": "9a7dde8c51b2"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "the plan lists the story gaps the screens expose as named findings for the story author rather than filling them in",
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-pressure-brief",
+     "p2-design-system",
+     "p3-story-under-discussion",
+     "p4-existing-frame"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
+  },
+  {
+   "id": "product-engineer.what-embrace.throwing-prototype-away-once",
+   "text": "Throwing the prototype away once it has done its job",
+   "source": {
+    "section": "What You Embrace",
+    "kind": "bullet",
+    "sha": "0abb78ae8906"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "the plan keeps the prototype disposable — declines to build it for promotion into the product and says it never migrates (foreclosing step counts)",
+   "model_native": false,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-pressure-brief"
+    ],
+    "verdicts": [
+     "absent",
+     "reflected",
+     "absent"
+    ]
+   }
+  },
+  {
+   "id": "product-engineer.what-reject.grading-own-prototype",
+   "text": "Grading your own prototype",
+   "source": {
+    "section": "What You Reject",
+    "kind": "bullet",
+    "sha": "9930fde72d8a"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "the plan hands the finished prototype to an independent reviewer and declines to sign off its own (foreclosing step counts)",
+   "model_native": false,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-pressure-brief"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "contradicted"
+    ]
+   }
+  },
+  {
+   "id": "product-engineer.what-reject.placeholder-data-whose-shape",
+   "text": "Placeholder data whose shape lies about the real thing",
+   "source": {
+    "section": "What You Reject",
+    "kind": "bullet",
+    "sha": "29eca8314eb2"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "the plan specifies placeholder data with realistic fields and cardinality drawn from the fixture's real shape, and replaces a one-tidy-row mock where it finds one",
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-pressure-brief",
+     "p2-design-system",
+     "p3-story-under-discussion",
+     "p4-existing-frame"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
+  },
+  {
+   "id": "product-engineer.what-reject.polish-makes-rough-work",
+   "text": "Polish that makes rough work read as a visual commitment",
+   "source": {
+    "section": "What You Reject",
+    "kind": "bullet",
+    "sha": "5231824c867f"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "the plan declines pixel-level polish and keeps the looks rough so nothing advisory reads as committed (foreclosing step counts)",
+   "model_native": true,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-pressure-brief"
+    ],
+    "verdicts": [
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
+  },
+  {
+   "id": "product-engineer.what-reject.rendering-scope-no-story",
+   "text": "Rendering scope no story asks for, however obvious it seems",
+   "source": {
+    "section": "What You Reject",
+    "kind": "bullet",
+    "sha": "5b892310f678"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "the plan declines to render a screen or action no story asks for and surfaces it as a finding instead (foreclosing step counts)",
+   "model_native": false,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-pressure-brief",
+     "p4-existing-frame"
+    ],
+    "verdicts": [
+     "contradicted",
+     "contradicted",
+     "contradicted",
+     "reflected",
+     "contradicted",
+     "reflected"
+    ]
+   }
+  },
+  {
+   "id": "product-engineer.what-reject.toolchains-frameworks-reader-would",
+   "text": "Toolchains and frameworks a reader would have to install to look at a mock",
+   "source": {
+    "section": "What You Reject",
+    "kind": "bullet",
+    "sha": "a81aa04cba25"
+   },
+   "tag": "common",
+   "partition": "plan-observable",
+   "why": "the plan declines a framework or build toolchain a reader would have to install to open the mock (foreclosing step counts)",
+   "model_native": false,
+   "untempted": false,
+   "control": {
+    "pass": "baseline-prune",
+    "arm_model": "opus",
+    "replicates": 3,
+    "goldens": [
+     "p1-pressure-brief",
+     "p2-design-system",
+     "p4-existing-frame"
+    ],
+    "verdicts": [
+     "contradicted",
+     "contradicted",
+     "contradicted",
+     "reflected",
+     "reflected",
+     "contradicted",
+     "reflected",
+     "reflected",
+     "reflected"
+    ]
+   }
+  }
+ ],
+ "retired": []
+}

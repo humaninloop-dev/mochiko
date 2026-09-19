@@ -79,7 +79,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 Ruling for every entry below: skill-content-schema D3 (obligations move, procedure stays
 prose) / D8/C4 (protected transfers), `DECISIONS.md` 2026-09-01 rows (Skill-content schema
 ruled · Skill-schema wave-2 family doors ruled — the small-families door); census:
-`.mochiko/brainstorms/skill-content-schema/census-small-families.md` §A (BI) + §B (BI rows
+`.mochiko/brainstorms/skill-content-schema/research/census-small-families.md` §A (BI) + §B (BI rows
 1–11). Schema home: `plugins/mochiko/skills/brownfield-integration/schema.yaml`. Minted IDs
 carry the `brownfield-integration.` prefix (omitted below). Map — census §B row → minted ID:
 1 `consumes-classification-never-decides` · 2 `extend-interface-impact` ·

@@ -309,6 +309,18 @@ sections:
       - id: arch.rulings-plain-text
         class: must
         extends: common.acceptance-plain-text
+      - id: arch.artifact-home
+        labels: [binding]
+        class: floor
+        kind: binding
+        text: >-
+          The store's files have a declared home: render `mochiko-cli home
+          .mochiko/product/architecture` before the first write. `spine.md` binds the
+          `architecture-spine` template and takes its per-section budgets from `mochiko-cli
+          template architecture-spine`; `concerns.md` binds `architecture-concerns`, whose length
+          is the concern count and carries no file bound; a graduated row's file is `<AX-ID>.md`
+          in `concerns/`. The repo-root index is derived, never hand-written.
+        anchor: 2026-09-13 hook-enforced-artifact-schema D1
   - id: arch.sec.boundaries
     title: Boundaries — the non-waivable floor
     intent: Floor obligations no seat and no in-visit ruling can waive.

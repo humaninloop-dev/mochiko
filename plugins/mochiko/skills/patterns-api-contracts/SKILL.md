@@ -135,6 +135,19 @@ Each entry in `failure_modes`:
 
 **Every external dependency gets a documented fallback.** A `Critical` integration with no fallback is an outage waiting to happen; an `Optional` one with no fallback silently breaks the happy path. The `x-integration` extension keeps each boundary attached to the exact operation it governs, so it travels with the contract.
 
+## Where the Artifact Lives
+
+`api.yaml` and the per-endpoint contract files are declared files in the `contracts/` home under
+whichever scope the run owns — the spec, the feature, the epic or the product baseline — and each of
+those homes declares its bound as the contract's own interface rather than a line count.
+`quickstart.md` is a declared file one level up, in the spec, the epic or the product home; the
+feature home does not carry it. Render `mochiko-cli home <that path>` for the file you are about to
+write, before the first write, and hold the file set and the bound it returns. Do not copy a sibling
+file instead: one already on disk may itself predate the declared shape.
+
+A write to a name a home does not carry is refused at write time. A new deliverable kind takes a
+migration in the plugin's log, never a local exception.
+
 ## OpenAPI Structure
 
 See [OPENAPI-TEMPLATE.yaml](references/OPENAPI-TEMPLATE.yaml) for a complete, copy-ready template with all sections (including an `x-integration` example on an endpoint that wraps an external system).

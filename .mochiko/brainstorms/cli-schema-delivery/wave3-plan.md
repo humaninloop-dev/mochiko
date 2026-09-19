@@ -308,7 +308,7 @@ the wave lands and waves 4–5 open on the user's word.
    inject on Read), and returns a short plan; the lead approves before any write.
 2. **Test-first where there is a test layer** (crate, suite); the `.md` and hooks are graded
    by V2 and exercised by P3's cases.
-3. **Reports** land at `.mochiko/brainstorms/cli-schema-delivery/wave3-reports/<seat>.md`: what
+3. **Reports** land at `.mochiko/brainstorms/cli-schema-delivery/reports/<seat>.md`: what
    was built, the tally, deviations from this plan with reasons, anything left undone.
 4. **No git mutations by seats**; the lead commits at the user's word.
 5. **Attempt bound:** 3 verification attempts per seat unit; rework is test-first.

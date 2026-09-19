@@ -23,12 +23,16 @@ sections:
       Is the Intent present with its six ruling lines (scope boundary, delivery, depth/rigor,
       UX-bearing, constraints, out of scope), each confirmed with the user, or a per-line
       not-applicable note?
+    heading: Intent
+    max_lines: 10
   - name: Overview
     required: true
     density: <= 3 lines
     contract: |
       A compact synthesis of what the feature is. No more than three lines.
     check: Is the Overview present and <= 3 lines?
+    heading: Overview
+    max_lines: 6
   - name: User Stories
     required: true
     contract: |
@@ -42,12 +46,14 @@ sections:
       Is the User Stories section an index (one linked row per story, no inline story bodies),
       with each row carrying priority, FEAT-ID (or —), and disposition, and every rejected row a
       one-line why?
+    heading: User Stories
   - name: Edge Cases
     required: true
     density: one line each
     contract: |
       The boundary and failure conditions the feature must handle — one line each.
     check: Are edge cases enumerated, one line each?
+    heading: Edge Cases
   - name: Functional Requirements
     required: true
     density: one line each
@@ -55,17 +61,21 @@ sections:
       Technology-agnostic functional requirements (FR-XXX), one line each, per
       authoring-requirements. RFC 2119 language.
     check: Are functional requirements present in FR-XXX form, one line each, technology-agnostic?
+    heading: Functional Requirements
   - name: Key Entities
     required: true
     contract: |
       The feature's domain nouns — conceptual and compact, not an OpenAPI schema.
     check: Are key entities listed conceptually and compactly?
+    heading: Key Entities
+    max_lines: 15
   - name: Success Criteria
     required: true
     density: one line each
     contract: |
       Measurable success criteria (SC-XXX), one line each, per authoring-requirements.
     check: Are success criteria present in SC-XXX form and measurable?
+    heading: Success Criteria
   - name: Screens & Flows
     required: true
     contract: |
@@ -93,6 +103,8 @@ sections:
       If the spec is UX-bearing, are both the SCR-XXX and FLOW-XXX tables present with a Feature
       column and the prototype pointer? If not UX-bearing, is the single waiver line present and
       nothing else?
+    heading: Screens & Flows
+    max_lines: 30
   - name: Feature Selection
     required: true
     contract: |
@@ -110,16 +122,22 @@ sections:
       Does Feature Selection carry the derived-features table, the filter rejections (or none),
       and a Selection recording the user's ruling with deferred features and deferred SCs
       surfaced?
+    heading: Feature Selection
+    max_lines: 20
   - name: Assumptions
     required: false
     contract: |
       Assumptions the specification rests on. Omit if empty.
     check: Are material assumptions recorded (or the section omitted when none)?
+    heading: Assumptions
+    max_lines: 10
   - name: Open Questions
     required: false
     contract: |
       Unresolved questions carried out of authoring. Omit if empty.
     check: Are open questions recorded (or the section omitted when none)?
+    heading: Open Questions
+    max_lines: 10
 skeleton: |
   # {{spec_title}}
 
@@ -215,3 +233,5 @@ skeleton: |
   ## Open Questions
 
   {{open_questions}}
+conformance:
+  extra_headings: deny

@@ -29,7 +29,7 @@ const FIXTURE_DIR: &str = concat!(env!("CARGO_MANIFEST_DIR"), "/tests/fixtures/t
 
 /// The eight templates the log carries. This is the fixture's own manifest, not a production
 /// constant: the closed `TEMPLATE_NAMES` set left the crate when the templates became log data.
-const SHIPPED_TEMPLATES: [&str; 8] = [
+const SHIPPED_TEMPLATES: [&str; 11] = [
     "spec",
     "tasks",
     "feature-entry",
@@ -38,6 +38,12 @@ const SHIPPED_TEMPLATES: [&str; 8] = [
     "governance-intent",
     "governance-surfaces",
     "architecture-store",
+    // `0005-artifact-homes` imported these three: the report envelope every `reports/` directory
+    // binds, and the spine/concerns split the store template's five file-named sections could not
+    // bind per file.
+    "report-envelope",
+    "architecture-spine",
+    "architecture-concerns",
 ];
 
 // ---------------------------------------------------------------------------
@@ -1064,12 +1070,15 @@ fn no_shipped_section_renders_past_the_inline_ceiling() {
 /// `implement`'s floor set, the corpus's largest, in render order. Written out rather than
 /// derived: a floor rule added, renamed or reordered should break a test here, because the
 /// converted `.md`'s read-back and the contract suite's frozen expectations both key on this set.
-const IMPLEMENT_FLOORS: [&str; 34] = [
+const IMPLEMENT_FLOORS: [&str; 35] = [
     "impl.gate-design-checkpoint",
     "impl.gate-card-confirm",
     "impl.gate-final-acceptance",
     "impl.graded-fold",
     "impl.author-grader-default-fail",
+    // `0005-artifact-homes` minted this one into `ways-of-working`, which renders here between the
+    // author-grader floor and the baselines floor.
+    "impl.artifact-home",
     "impl.baselines-never-in-place",
     "impl.deviation-gate",
     "impl.constitution-supremacy",
@@ -1178,7 +1187,8 @@ fn the_widest_shipped_floor_index_is_the_size_the_wave_recorded() {
     }
     assert_eq!(
         (widest.0.as_str(), widest.1, widest.2),
-        ("implement", 945, 978),
+        // Re-measured after `0005-artifact-homes` added `impl.artifact-home` to the set.
+        ("implement", 966, 1000),
         "the widest floor index moved"
     );
 }

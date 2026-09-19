@@ -1,0 +1,51 @@
+{
+  "week_start": "2026-08-31",
+  "people": {
+    "contractors": [
+      { "id": 7,  "name": "Ximena Aranguren-Castellanos", "role": "contractor" },
+      { "id": 12, "name": "Piotr Zieliński", "role": "contractor" },
+      { "id": 19, "name": "Grace Achieng", "role": "contractor" }
+    ],
+    "account_managers": [
+      { "id": 3, "name": "Dana Whitcombe" },
+      { "id": 4, "name": "Marco Bellini" },
+      { "id": 5, "name": "Sunita Rao-Fernandes" }
+    ]
+  },
+  "projects": [
+    { "code": "BRM-2026-04", "name": "Bramblewood — site relaunch phase 2", "client": "Bramblewood Landscape Architecture", "account_manager": 3, "hourly_rate": 95.00 },
+    { "code": "OKD-2026-01", "name": "Okafor Dental — booking flow", "client": "Okafor Dental", "account_manager": 4, "hourly_rate": 85.00 },
+    { "code": "MFG-2026-09", "name": "Meridian — onboarding experiments (retainer)", "client": "Meridian Fintech GmbH", "account_manager": 5, "hourly_rate": 110.00 }
+  ],
+  "timesheets": [
+    {
+      "contractor": 7, "status": "submitted", "submitted_at": "2026-09-06T17:42:00Z",
+      "entries": [
+        { "date": "2026-08-31", "project": "BRM-2026-04", "hours": 4.00, "note": "Homepage hero variants, reviewed with Dana" },
+        { "date": "2026-08-31", "project": "OKD-2026-01", "hours": 3.50, "note": "Booking calendar edge cases (DST, bank holidays)" },
+        { "date": "2026-09-01", "project": "BRM-2026-04", "hours": 7.75, "note": "" },
+        { "date": "2026-09-02", "project": "MFG-2026-09", "hours": 2.00, "note": "Experiment readout call + notes" },
+        { "date": "2026-09-02", "project": "OKD-2026-01", "hours": 5.25, "note": "Slot-picker refactor — took longer than estimated because the existing component assumed 30-minute slots and the dentist wants 10/20/40; wrote it up in the ticket" },
+        { "date": "2026-09-03", "project": "BRM-2026-04", "hours": 8.00, "note": "" },
+        { "date": "2026-09-03", "project": "MFG-2026-09", "hours": 4.00, "note": "Onboarding copy test setup" },
+        { "date": "2026-09-04", "project": "OKD-2026-01", "hours": 6.50, "note": "" },
+        { "date": "2026-09-04", "project": "BRM-2026-04", "hours": 1.25, "note": "Standup + PR review" },
+        { "date": "2026-09-05", "project": "MFG-2026-09", "hours": 0.50, "note": "Slack support" }
+      ]
+    },
+    {
+      "contractor": 12, "status": "rejected", "submitted_at": "2026-09-05T09:10:00Z",
+      "rejection_comment": "Wednesday shows 12 h on OKD — was that the on-site day? Please split travel out.",
+      "entries": [
+        { "date": "2026-09-02", "project": "OKD-2026-01", "hours": 12.00, "note": "On-site at the practice, incl. travel" },
+        { "date": "2026-09-03", "project": "OKD-2026-01", "hours": 6.00, "note": "" },
+        { "date": "2026-09-04", "project": "OKD-2026-01", "hours": 7.00, "note": "" }
+      ]
+    },
+    {
+      "contractor": 19, "status": "draft", "submitted_at": null,
+      "entries": []
+    }
+  ],
+  "notes": "Live shape: a contractor's week has 8–22 entries across 1–4 projects; 60% of submitted weeks span more than one account manager. A rejected week is edited and resubmitted within a day in most cases."
+}

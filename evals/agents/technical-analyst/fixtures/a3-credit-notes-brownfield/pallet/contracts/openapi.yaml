@@ -1,0 +1,145 @@
+openapi: 3.1.0
+info:
+  title: Pallet API
+  version: 2.14.0
+  description: |
+    Conventions, every endpoint:
+    - ids are prefixed ULIDs (`inv_01J8Q2V7X0P3S9Z6M1K4H2R5T8`, `ord_…`, `rtl_…`, `sup_…`, `pay_…`, `adj_…`, `doc_…`)
+    - money is `{ "amount_minor": <integer>, "currency": "GBP" | "EUR" }`, never a decimal
+    - JSON fields are snake_case; timestamps are RFC 3339 in UTC
+    - list endpoints paginate with `limit` (max 100, default 25) and an opaque `cursor`; the response carries `next_cursor`
+    - every POST that creates a record requires an `Idempotency-Key` header; a repeated key within 24 h returns the stored response
+    - errors are RFC 7807 Problem Details (`application/problem+json`): `type` under `https://pallet.dev/problems/`, `title`, `status`, `detail`, `correlation_id`
+    - every response carries `X-Pallet-Request-Id`
+servers:
+  - url: https://api.pallet.dev/v2
+paths:
+  /invoices:
+    get:
+      summary: List invoices visible to the caller (supplier or retailer)
+      parameters:
+        - { name: limit, in: query, schema: { type: integer, maximum: 100, default: 25 } }
+        - { name: cursor, in: query, schema: { type: string } }
+        - { name: status, in: query, schema: { $ref: '#/components/schemas/InvoiceStatus' } }
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [data, next_cursor]
+                properties:
+                  data: { type: array, items: { $ref: '#/components/schemas/Invoice' } }
+                  next_cursor: { type: [string, 'null'] }
+  /invoices/{invoice_id}:
+    get:
+      summary: One invoice
+      responses:
+        '200': { content: { application/json: { schema: { $ref: '#/components/schemas/Invoice' } } } }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /invoices/{invoice_id}/document:
+    get:
+      summary: The invoice PDF, rendered by the documents pipeline
+      responses:
+        '200': { content: { application/pdf: {} } }
+        '202': { description: Still rendering; retry after `Retry-After` seconds }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /orders/{order_id}/adjustments:
+    post:
+      summary: Record a delivery quantity adjustment noted at the door (before invoicing)
+      parameters:
+        - { name: Idempotency-Key, in: header, required: true, schema: { type: string } }
+      requestBody:
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/AdjustmentRequest' }
+      responses:
+        '201': { content: { application/json: { schema: { $ref: '#/components/schemas/Adjustment' } } } }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '409':
+          description: "The order is already invoiced — `type: https://pallet.dev/problems/order-already-invoiced`"
+          content: { application/problem+json: { schema: { $ref: '#/components/schemas/Problem' } } }
+        '422':
+          description: "The adjusted quantity would go below zero — `type: https://pallet.dev/problems/quantity-below-zero`"
+          content: { application/problem+json: { schema: { $ref: '#/components/schemas/Problem' } } }
+components:
+  schemas:
+    Money:
+      type: object
+      required: [amount_minor, currency]
+      properties:
+        amount_minor: { type: integer, description: pence or cents }
+        currency: { type: string, enum: [GBP, EUR] }
+    InvoiceStatus:
+      type: string
+      enum: [draft, issued, paid, void]
+    Invoice:
+      type: object
+      required: [id, order_id, supplier_id, retailer_id, status, issued_at, due_at, total, amount_paid, amount_outstanding, lines]
+      properties:
+        id: { type: string }
+        order_id: { type: string }
+        supplier_id: { type: string }
+        retailer_id: { type: string }
+        status: { $ref: '#/components/schemas/InvoiceStatus' }
+        issued_at: { type: [string, 'null'], format: date-time }
+        due_at: { type: [string, 'null'], format: date-time }
+        total: { $ref: '#/components/schemas/Money' }
+        amount_paid: { $ref: '#/components/schemas/Money' }
+        amount_outstanding: { $ref: '#/components/schemas/Money' }
+        lines: { type: array, items: { $ref: '#/components/schemas/InvoiceLine' } }
+      example:
+        id: inv_01J8Q2V7X0P3S9Z6M1K4H2R5T8
+        order_id: ord_01J8Q0N3D4W7B2X8F6C1Y5K9M2
+        supplier_id: sup_01J5R8T2M6K9V1B4N7X0C3Z5Q8
+        retailer_id: rtl_01J6W3K9P2N5X8M1V4B7C0D3F6
+        status: issued
+        issued_at: '2026-09-02T06:15:12Z'
+        due_at: '2026-10-02T00:00:00Z'
+        total: { amount_minor: 18640, currency: GBP }
+        amount_paid: { amount_minor: 0, currency: GBP }
+        amount_outstanding: { amount_minor: 18640, currency: GBP }
+        lines:
+          - { id: inl_01J8Q2V7X1A2B3C4D5E6F7G8H9, product_id: prd_01J5S1M4K7N0P3R6T9W2X5Y8Z1, description: 'Sourdough tin loaf, case of 12', quantity: 4, unit_price: { amount_minor: 2880, currency: GBP }, line_total: { amount_minor: 11520, currency: GBP } }
+          - { id: inl_01J8Q2V7X1A2B3C4D5E6F7G8J0, product_id: prd_01J5S1M4K7N0P3R6T9W2X5Y8Z2, description: 'Seeded rye, case of 8', quantity: 2, unit_price: { amount_minor: 3560, currency: GBP }, line_total: { amount_minor: 7120, currency: GBP } }
+    InvoiceLine:
+      type: object
+      required: [id, product_id, description, quantity, unit_price, line_total]
+      properties:
+        id: { type: string }
+        product_id: { type: string }
+        description: { type: string }
+        quantity: { type: integer, minimum: 1 }
+        unit_price: { $ref: '#/components/schemas/Money' }
+        line_total: { $ref: '#/components/schemas/Money' }
+    AdjustmentRequest:
+      type: object
+      required: [order_line_id, delta_quantity, reason]
+      properties:
+        order_line_id: { type: string }
+        delta_quantity: { type: integer }
+        reason: { type: string, enum: [short, over, damaged] }
+    Adjustment:
+      type: object
+      required: [id, order_id, order_line_id, delta_quantity, reason, noted_by, noted_at]
+      properties:
+        id: { type: string }
+        order_id: { type: string }
+        order_line_id: { type: string }
+        delta_quantity: { type: integer }
+        reason: { type: string, enum: [short, over, damaged] }
+        noted_by: { type: string }
+        noted_at: { type: string, format: date-time }
+    Problem:
+      type: object
+      required: [type, title, status, detail, correlation_id]
+      properties:
+        type: { type: string, format: uri }
+        title: { type: string }
+        status: { type: integer }
+        detail: { type: string }
+        correlation_id: { type: string }
+  responses:
+    NotFound:
+      description: "No such record visible to the caller — `type: https://pallet.dev/problems/not-found`"
+      content: { application/problem+json: { schema: { $ref: '#/components/schemas/Problem' } } }

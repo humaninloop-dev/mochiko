@@ -494,7 +494,7 @@ Boundaries build-gate confirmation restated to the user at the acceptance gate.
 One wave, landing the earlier-approved simplified rewrite and the schema together:
 
 0. **Durable referent first (C4):** the simplified rewrite lands at
-   `.mochiko/brainstorms/command-content-schema/implement-rewrite.md` as a session artifact —
+   `.mochiko/brainstorms/command-content-schema/research/implement-rewrite.md` as a session artifact —
    the build's source text and the fidelity audit's referent (done in-session). Without this
    step the wave is not cold-buildable. **The build wave's user gate explicitly confirms the
    Ways of Working + Boundaries text** — the two sections whose approval rides that gate per

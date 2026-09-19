@@ -1,0 +1,128 @@
+# FEAT-031 contract delta over .mochiko/product/contracts/api.yaml — technical-analyst, 2026-09-09.
+# Paths below are added; baseline paths are unchanged. Session-cookie auth and RFC 7807 errors
+# as the baseline. Traceability per operation in the summary line.
+openapi: 3.0.3
+info:
+  title: Halyard API — FEAT-031 waitlist delta
+  version: "1.10.0-feat031"
+paths:
+  /marinas/{marinaId}/waitlist:
+    post:
+      summary: Join the waitlist for a berth class over a date range (FR-001, US-1)
+      operationId: joinWaitlist
+      parameters:
+        - {name: marinaId, in: path, required: true, schema: {type: string, format: uuid}}
+      requestBody:
+        required: true
+        content: {application/json: {schema: {$ref: '#/components/schemas/JoinWaitlistRequest'}}}
+      responses:
+        '201': {description: Entry created, content: {application/json: {schema: {$ref: '#/components/schemas/WaitlistEntry'}}}}
+        '400': {$ref: '#/components/responses/BadRequest'}
+        '404': {$ref: '#/components/responses/NotFound'}
+        '409': {description: A berth of the class is available for the range; book it instead, content: {application/problem+json: {schema: {$ref: '#/components/schemas/Problem'}}}}
+  /waitlist/{entryId}:
+    delete:
+      summary: Leave the waitlist (FR-002, US-1)
+      operationId: leaveWaitlist
+      parameters:
+        - {name: entryId, in: path, required: true, schema: {type: string, format: uuid}}
+      responses:
+        '204': {description: Entry removed; an open offer on it is withdrawn}
+        '404': {$ref: '#/components/responses/NotFound'}
+  /offers/{offerId}/accept:
+    post:
+      summary: Accept an open offer; charges the saved method and books the berth (FR-004, US-2)
+      operationId: acceptOffer
+      parameters:
+        - {name: offerId, in: path, required: true, schema: {type: string, format: uuid}}
+      responses:
+        '200': {description: Booked and charged, content: {application/json: {schema: {$ref: '#/components/schemas/HoldReceipt'}}}}
+        '404': {$ref: '#/components/responses/NotFound'}
+      x-integration:
+        system: Stripe (EU entity)
+        protocol: HTTPS
+        api_version: "2024-06-20"
+        criticality: Critical
+        auth: Restricted API key from the secrets manager
+  /offers/{offerId}/decline:
+    post:
+      summary: Decline an open offer (FR-005, US-3)
+      operationId: declineOffer
+      parameters:
+        - {name: offerId, in: path, required: true, schema: {type: string, format: uuid}}
+      responses:
+        '200': {description: Offer declined, content: {application/json: {schema: {$ref: '#/components/schemas/Offer'}}}}
+        '404': {$ref: '#/components/responses/NotFound'}
+        '409': {description: Offer is not open, content: {application/problem+json: {schema: {$ref: '#/components/schemas/Problem'}}}}
+  /berths/{berthId}/availability-forecast:
+    get:
+      summary: Projected availability of a berth for the next 90 days from bookings and waitlist pressure (US-5)
+      operationId: berthAvailabilityForecast
+      parameters:
+        - {name: berthId, in: path, required: true, schema: {type: string, format: uuid}}
+      responses:
+        '200': {description: Forecast, content: {application/json: {schema: {$ref: '#/components/schemas/AvailabilityForecast'}}}}
+        '404': {$ref: '#/components/responses/NotFound'}
+components:
+  responses:
+    BadRequest: {description: Invalid request, content: {application/problem+json: {schema: {$ref: '#/components/schemas/Problem'}}}}
+    NotFound: {description: Not found, content: {application/problem+json: {schema: {$ref: '#/components/schemas/Problem'}}}}
+  schemas:
+    Problem:
+      type: object
+      required: [type, title, status, correlationId]
+      properties:
+        type: {type: string, format: uri}
+        title: {type: string}
+        status: {type: integer}
+        detail: {type: string}
+        correlationId: {type: string}
+    JoinWaitlistRequest:
+      type: object
+      required: [vesselId, berthClass, fromDate, toDate]
+      properties:
+        vesselId: {type: string, format: uuid}
+        berthClass: {type: string, enum: [pontoon, finger, swing]}
+        fromDate: {type: string, format: date}
+        toDate: {type: string, format: date}
+    WaitlistEntry:
+      type: object
+      required: [id, marinaId, berthClass, fromDate, toDate, position, status]
+      properties:
+        id: {type: string, format: uuid}
+        marinaId: {type: string, format: uuid}
+        vesselId: {type: string, format: uuid}
+        berthClass: {type: string, enum: [pontoon, finger, swing]}
+        fromDate: {type: string, format: date}
+        toDate: {type: string, format: date}
+        position: {type: integer, minimum: 1}
+        status: {type: string, enum: [waiting, offered, fulfilled, left, expired]}
+    Offer:
+      type: object
+      required: [id, waitlistEntryId, berthId, issuedAt, expiresAt, status]
+      properties:
+        id: {type: string, format: uuid}
+        waitlistEntryId: {type: string, format: uuid}
+        berthId: {type: string, format: uuid}
+        issuedAt: {type: string, format: date-time}
+        expiresAt: {type: string, format: date-time}
+        status: {type: string, enum: [open, accepted, declined]}
+    HoldReceipt:
+      type: object
+      required: [receiptId, bookingId, chargedMinor, currency]
+      properties:
+        receiptId: {type: string, format: uuid}
+        bookingId: {type: string, format: uuid}
+        chargedMinor: {type: integer}
+        currency: {type: string}
+    AvailabilityForecast:
+      type: object
+      properties:
+        berthId: {type: string, format: uuid}
+        days:
+          type: array
+          items:
+            type: object
+            properties:
+              date: {type: string, format: date}
+              likelihoodFree: {type: number, minimum: 0, maximum: 1}

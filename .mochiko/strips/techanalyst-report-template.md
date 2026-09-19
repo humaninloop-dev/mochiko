@@ -3,6 +3,30 @@
 Entry formats: `strips/README.md`. Wave context: workflow-token-reduction wave 1 (rulings
 ratified 2026-07-23: producer disclosures machine-first).
 
+<!-- Wave context: wave 4 of the hook-enforced-artifact-schema build (v0.109.0) — the write-time
+artifact gate ships. Every `.mochiko/` path a shipped primitive names was resolved against the homes
+the migration log declares (`plugins/mochiko/migrations/0005-artifact-homes.yaml`, wave 3), and a
+path the homes do not carry is re-pointed rather than left to be denied at write time. Ruling for
+the [v0.109.0] entry below: `.mochiko/brainstorms/hook-enforced-artifact-schema/record.md` D2 (a
+report lands in its home's `reports/` directory) and D3 (the homes as the migration declares them),
+with that session's `wave4-plan.md` section (c). Pre-edit verbatim text:
+`git show 794cea8:plugins/mochiko/templates/techanalyst-report-template.md`. -->
+
+## [v0.109.0] Usage Note 7's output location sits at an undeclared name in the spec home
+
+- **Disposition:** superseded → `.mochiko/specs/<slug>/reports/techanalyst-report.md`, the spec
+  home's declared `reports/` directory, where a report is admitted under any name by its `report:`
+  type
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/brainstorms/hook-enforced-artifact-schema/record.md` D2; migration
+  `0005-artifact-homes.yaml`, the `spec` home's `reports:` block)
+- **Content:** ``7. **Output location** — `.mochiko/specs/<feature>/techanalyst-report.md`, seeded
+  and collected by the lead, alongside the analysis/design artifacts.``
+- **Kept deliberately:** the seeded-and-collected clause and the alongside-the-analysis/design-
+  artifacts clause, and the template's existing `report: disclosure` frontmatter.
+- **Consumers assessed:** the path appears in this template only. The sibling
+  `analyst-report-template.md` carries the same defect and is re-pointed in the same wave.
+
 ## [v0.91.0] Usage Note 2's ID list drops the dead `TR-` class (second site, same ruling)
 
 - **Disposition:** superseded → the surviving id classes. Usage Note 2 told the producer to cite

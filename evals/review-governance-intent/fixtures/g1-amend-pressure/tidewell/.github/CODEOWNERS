@@ -1,0 +1,5 @@
+# Money-moving code needs the founder's review (governance GI-012)
+src/ledger/**   @priya-tidewell
+src/import/**   @priya-tidewell
+web/**          @sam-tidewell @ines-tidewell
+*               @priya-tidewell @sam-tidewell @ines-tidewell @kofi-tidewell

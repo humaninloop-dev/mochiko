@@ -301,6 +301,18 @@ sections:
       - id: feat.rulings-plain-text
         class: must
         extends: common.acceptance-plain-text
+      - id: feat.artifact-home
+        labels: [binding]
+        class: floor
+        kind: binding
+        text: >-
+          Map stewardship writes into two declared homes: render `mochiko-cli home
+          .mochiko/features` and, for a desk sitting, `mochiko-cli home
+          .mochiko/features/desk/<date-slug>` before the first write. A capability entry is
+          `<FEAT-ID>.md` bound to the `feature-entry` template; the desk's own output is
+          `derivation.md`; a review of either is a report in that home's `reports/`. An id outside
+          the `FEAT-XXX` shape has no home and is raised, never written.
+        anchor: 2026-09-13 hook-enforced-artifact-schema D1
   - id: feat.sec.boundaries
     title: Boundaries — the non-waivable floor
     intent: Floor obligations no visit and no seat can waive.

@@ -1,0 +1,1 @@
+"""Shiftbook — rotas for cafés."""

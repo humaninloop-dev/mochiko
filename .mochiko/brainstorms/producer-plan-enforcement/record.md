@@ -46,7 +46,7 @@ nothing kernel-class") is in scope to be re-examined, not assumed.
   plan-first producer seats, P1–P5 approvals lead-verified), but transport and mechanism
   went unrecorded; `teammate-message-races` F5, verbatim: "The main authoring phase (seats on
   approved plans, rulings at user gates) ran clean."
-- **R5** — Maintainer-side precedent: `evals/commands` elicits a command lead's plan
+- **R5** — Maintainer-side precedent: `evals/plan` elicits a command lead's plan
   without execution and judges it against schema rules — advisory, and the lead's plan,
   not a seat's.
 
@@ -94,7 +94,7 @@ nothing kernel-class") is in scope to be re-examined, not assumed.
   `.claude/worktrees/`; the sweep leaves it in place while it still holds work, so it
   clears only by `git worktree remove`.
 - **P9** *(added at review)* — In-repo precedent for a structural tool fence:
-  `evals/commands/run.py:280` runs headless with `--allowedTools Read,Grep,Glob` (its probe
+  `evals/plan/run.py:280` runs headless with `--allowedTools Read,Grep,Glob` (its probe
   report: "unlisted tools are denied at call time… Structural denial holds"). The seat
   analog is static `tools:` frontmatter; the Agent tool carries no per-spawn tools
   parameter. No agent file in the library declares `tools:` or `disallowedTools:`, so F1

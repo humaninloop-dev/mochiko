@@ -177,7 +177,7 @@ entries are supersessions per R4. -->
 block, `enforces:` on fail nodes, and `extends: common.<slug>` (D1–D8). Ruling for every
 [v0.98.0] entry below: `.mochiko/brainstorms/command-schema-ontology/record.md` D1–D11 as
 amended → `DECISIONS.md` 2026-08-27 row. Clause inventory and audit referent:
-`.mochiko/brainstorms/command-schema-ontology/conversion-inventory.md` — sections A.6
+`.mochiko/brainstorms/command-schema-ontology/research/conversion-inventory.md` — sections A.6
 (kinds), B.6 (the `when:` extraction), C.6 / D.6 (the declared blocks), E.6 (`enforces:`),
 F (bindings), G (the canonical header), H (the Not-done re-key).
 

@@ -1,0 +1,30 @@
+app = "fieldnote-prod"
+primary_region = "lhr"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[processes]
+  api = "/app/fieldnote api"
+  worker = "/app/fieldnote worker"
+
+[[services]]
+  processes = ["api"]
+  internal_port = 8080
+  protocol = "tcp"
+  [[services.ports]]
+    port = 443
+    handlers = ["tls", "http"]
+  [[services.http_checks]]
+    path = "/healthz"
+    interval = "15s"
+
+[[vm]]
+  processes = ["api"]
+  size = "shared-cpu-1x"
+  count = 2
+
+[[vm]]
+  processes = ["worker"]
+  size = "shared-cpu-1x"
+  count = 1

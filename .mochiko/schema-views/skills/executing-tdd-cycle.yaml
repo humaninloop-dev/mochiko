@@ -242,6 +242,17 @@ sections:
           narrative, per `references/CYCLE-REPORT-FORMAT.md`.
         pointer: references/CYCLE-REPORT-FORMAT.md
         anchor: 2026-08-01 verbosity-caveman-ops-separation D4
+      - id: executing-tdd-cycle.artifact-home
+        labels: [binding]
+        class: floor
+        kind: binding
+        text: >-
+          The cycle report lands in the owning home's `reports/` directory, typed `report: cycle`
+          in its frontmatter: render `mochiko-cli home <the feature, epic or lane path>` before
+          writing it, and take the envelope from `mochiko-cli template report-envelope` — clean
+          is frontmatter-only. A report written beside the home rather than in its `reports/` is a
+          misfiled report, not a new convention.
+        anchor: 2026-09-13 hook-enforced-artifact-schema D1
   - id: executing-tdd-cycle.sec.reserved
     title: Reserved — the lead's routing, the human's registry gate
     intent: Decisions this seat never takes.

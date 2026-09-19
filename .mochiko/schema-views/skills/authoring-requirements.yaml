@@ -156,6 +156,17 @@ sections:
           concepts not columns, relationships not foreign keys; no data types, constraints, or
           indexes — the full model is `data-model.md`, downstream.
         anchor: 2026-07-23 workflow-token-reduction
+      - id: authoring-requirements.artifact-home
+        labels: [binding]
+        class: floor
+        kind: binding
+        text: >-
+          The functional layer is written into `spec.md` in the declared spec home, not into a
+          file of its own: render `mochiko-cli home .mochiko/specs/<slug>` before the first write
+          and take the Functional Requirements, Edge Cases and Success Criteria section shapes
+          from `mochiko-cli template spec`. A requirement set that wants its own file is a sign
+          the capability is two.
+        anchor: 2026-09-13 hook-enforced-artifact-schema D1
   - id: authoring-requirements.sec.output
     title: Output — checking the produced layer
     intent: The advisory check available over the finished artifact.

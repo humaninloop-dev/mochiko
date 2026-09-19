@@ -107,7 +107,7 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
 Ruling for every entry below: skill-content-schema D3 (obligations move, procedure stays
 prose) / D8/C4 (protected transfers), `DECISIONS.md` 2026-09-01 rows (Skill-content schema
 ruled · Skill-schema wave-2 family doors ruled — the small-families door); census:
-`.mochiko/brainstorms/skill-content-schema/census-small-families.md` §A (AC) + §B (AC rows
+`.mochiko/brainstorms/skill-content-schema/research/census-small-families.md` §A (AC) + §B (AC rows
 1–13). Schema home: `plugins/mochiko/skills/analysis-codebase/schema.yaml`. Minted IDs
 carry the `analysis-codebase.` prefix (omitted below). Map — census §B row → minted ID:
 1 `deliverable-two-arm-binding` · 2 `artifact-envelope-slimmed-legible` ·

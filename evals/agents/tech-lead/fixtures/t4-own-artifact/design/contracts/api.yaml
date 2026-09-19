@@ -1,0 +1,58 @@
+openapi: 3.1.0
+info:
+  title: notify-svc — FEAT-013 excerpt
+  version: 0.1.0
+  x-produced-by: technical-analyst seat (analyst-1)
+paths:
+  /subscriptions:
+    post:
+      summary: Register an endpoint (FR-001)
+      responses:
+        '201':
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/SubscriptionCreated' }
+    get:
+      summary: List the shop's endpoints
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Subscription' }
+  /subscriptions/{id}/deliveries:
+    get:
+      summary: Deliveries of the last seven days (FR-004)
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Delivery' }
+components:
+  schemas:
+    Subscription:
+      type: object
+      required: [id, url, events, status, secret]
+      properties:
+        id: { type: string, format: uuid }
+        url: { type: string, format: uri }
+        events: { type: array, items: { type: string } }
+        status: { type: string, enum: [active, paused] }
+        secret:
+          type: string
+          description: The signing secret, returned so integrators can re-read it after rotation.
+    SubscriptionCreated:
+      allOf:
+        - $ref: '#/components/schemas/Subscription'
+    Delivery:
+      type: object
+      required: [id, event_id, attempt, status]
+      properties:
+        id: { type: string, format: uuid }
+        event_id: { type: string, format: uuid }
+        attempt: { type: integer }
+        status: { type: string, enum: [pending, delivered, dead] }
+        response_code: { type: integer }

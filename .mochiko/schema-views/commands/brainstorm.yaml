@@ -190,6 +190,18 @@ sections:
       - id: brainstorm.acceptance-plain-text
         class: must
         extends: common.acceptance-plain-text
+      - id: brainstorm.artifact-home
+        labels: [binding]
+        class: floor
+        kind: binding
+        text: >-
+          Session artifacts go only where the log declares: render `mochiko-cli home
+          .mochiko/brainstorms/<slug>` before the first write and hold what it returns.
+          `record.md`, `synthesis.md`, `build-log.md` and `wave<n>-<slug>.md` are the closed set;
+          other working material rides `inputs/`, `research/` or `referents/`; a report lands in
+          `reports/` under its envelope type. A name the set does not carry is raised to the user,
+          never invented mid-session, and the index entry is written in the index home, not here.
+        anchor: 2026-09-13 hook-enforced-artifact-schema D1
   - id: brainstorm.sec.boundaries
     title: Boundaries — the non-waivable floor
     intent: Floor obligations no seat and no in-run ruling can waive.
