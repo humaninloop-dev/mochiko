@@ -5,9 +5,14 @@ refuses a grid without this file. Amending it after results exist is a recorded,
 never a quiet retro-fit.
 
 Third command on the instrument, after the `implement` pilot (D5) and `setup`. This is a
-**baseline kit**: no edit to the `/mochiko:feature` pair is under read at authoring, so there is
-no positive control. The kit fixes the rubric, the fixtures, and the noise band so that the pair's
-next edit gets a `pre`/`post` read on day one. Fields marked **[measured at baseline]** are filled
+**baseline kit**: no edit to the `/mochiko:feature` pair is under read at authoring. At authoring
+the pre arm was pinned to the branch base, where pre and post are text-identical and the kit
+therefore carried **no positive control** — it could not tell "no regression because nothing
+changed" from "no regression because the judge or render pipeline is silently broken". The kit
+audit of 2026-09-19 ruled that kit-failing, and the pin moved: `794cea8` carries a genuine
+one-rule delta, so the baseline grid now runs against a known difference. The kit fixes the
+rubric, the fixtures, and the noise band so that the pair's next edit gets a `pre`/`post` read on
+day one. Fields marked **[measured at baseline]** are filled
 from the baseline grid.
 
 ## Command under test and arms
@@ -17,12 +22,39 @@ from the baseline grid.
   for the rubric is `.mochiko/schema-views/commands/feature.yaml` — 50 rules, six sections,
   one `kind: fail` rule.
 - **`post`** — the working tree's pair.
-- **`pre`** — the pair at `--old-ref`. At the baseline grid the ref is the authoring pin
-  **`49acf05`** (pre = post; every rule lands in the unchanged bucket and the grid measures
-  replicate spread only). The next pair edit names its own pre-edit SHA — `HEAD` is never the
-  pre arm once the edit lands.
+- **`pre`** — the pair at `--old-ref`. At the baseline grid the ref is **`794cea8`** (plugin
+  v0.108.0), which partitions as **unchanged 49 · changed 0 · removed 0 · added 1 —
+  `feat.artifact-home`**, the same positive control the `architecture` and `brainstorm` kits
+  use. The next pair edit names its own pre-edit SHA — `HEAD` is never the pre arm once the
+  edit lands.
+- **Positive control (pre-registered, D11):** `feat.artifact-home` is absent from the `pre`
+  pair and present in the `post` pair. The grid is only readable if it **LANDS** — the rule
+  reads `absent` under `pre` and `reflected` pass^k under `post`, localized to that id with
+  evidence quotes. A control that does not land is an instrument failure, not a command
+  finding: the read stops and the runner, the rubric or a golden is re-keyed, under the
+  **What this control does and does not prove (audit re-grade 2026-09-19, traced in
+  `cmd_report`):** an added rule exercises the *adoption* path — `passk(post, rid)` alone.
+  The regression path the tolerance band and the ship bars actually gate on is a different
+  branch: `rid` in the unchanged bucket, `passk(pre, rid)` true and `passk(post, rid)` false.
+  No real `--old-ref` can control that branch, here or in the sibling kits, because it fires
+  only when the command has genuinely regressed. Detecting new text appearing is the easy
+  direction; detecting a standing obligation quietly vanishing is the failure-prone one, and
+  it stays unproven until a synthetic mutation probe runs. **Pre-registered:** before this
+  kit's first *regression* read — not before its baseline grid — run one probe pair that
+  weakens a single rule's text in the post tree and confirm the report names exactly that id
+  in `unchanged-bucket regressions`. A probe that fails to localize is an instrument failure
+  under the stopping rule.
+
+  stopping rule below. Two other refs were checked and rejected: `49acf05`, `0a03626` and
+  `5d8fc69` carry no delta at all, and `9cdac97` carries two (`feat.artifact-home` added plus
+  `feat.delta-cards` changed) at the cost of a three-version gap whose unrelated changes would
+  muddy attribution.
 - **`nocmd`** — the bare-model control (`--control`, +9 sessions), run once at baseline: each
-  golden's `control_prompt` asks for the same plan with no command invoked. Rules that read
+  golden's `control_prompt` asks for the same plan with no command invoked. The three control
+  prompts were rewritten on 2026-09-19 (kit audit, second high finding): each had asked the bare
+  model to keep "the product's capability map truthful", rubric vocabulary that three rules turn
+  on and that the real command's `args` never carry, which would have steered the dead-zone read
+  it exists to measure. Rules that read
   `reflected` pass^k under `nocmd` are the instrument's dead zone (prune candidates, D4 I5),
   disclosed in the fill log and excluded from the next edit's regression read — never deleted
   from the rubric.
@@ -164,7 +196,9 @@ lane-never-widens (s1). A flaky read on any of them is one pair, not a trend.
 ## Run precondition (binary range)
 
 Every plan session renders the pair's rules from the provisioned plugin's migration log with the
-`mochiko-cli` on PATH. The log at `49acf05` runs to migration 0005; a binary whose grammar range
+`mochiko-cli` on PATH. The log at `794cea8` and at the working tree runs to migration 0005; both
+render clean under the binary rebuilt on 2026-09-19, verified before this kit's first grid. A
+binary whose grammar range
 predates it halts every session at first use (`mochiko-cli rules not delivered`) and the grid
 records invalid runs, not plans. Before the baseline grid, run one `plan-run feature
 s1-bug-delta-lane --arm post` and confirm the init event's plugin pin and a plan with numbered
