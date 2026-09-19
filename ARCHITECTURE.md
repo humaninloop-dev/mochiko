@@ -1,6 +1,6 @@
 # Architecture — the mochiko plugin
 
-Current-state map of the shipped plugin at [`plugins/mochiko/`](plugins/mochiko/) (v0.91.0,
+Current-state map of the shipped plugin at [`plugins/mochiko/`](plugins/mochiko/) (v0.110.0,
 [`plugin.json`](plugins/mochiko/.claude-plugin/plugin.json)). Scope is the plugin only — the
 repo-side knowledge plane (`.mochiko/`, the operating docs) is covered by
 [`CLAUDE.md`](CLAUDE.md). Rationale for every boundary here lives in the decisions layer
@@ -26,11 +26,12 @@ flowchart LR
     agents["agents/ — 10 personas"]
     skills["skills/ — 38 skills"]
     templates["templates/ — report schemas + envelopes"]
-    schemas["schemas/ — artifact schemas (YAML)"]
+    migrations["migrations/ — the rule + artifact-schema log"]
     commands -->|"spawn seats, each dispatch self-briefed"| agents
     agents -->|"carry procedure from"| skills
     commands -->|"fill-targets"| templates
-    skills -->|"render via mochiko-cli,<br/>or Read raw when absent"| schemas
+    commands -->|"rules rendered at fire<br/>by mochiko-cli"| migrations
+    skills -->|"rules rendered at fire<br/>by mochiko-cli"| migrations
   end
   agents -->|"author / grade"| target[("target project: .mochiko/ artifacts,<br/>governance surfaces, working code")]
 ```
@@ -56,15 +57,16 @@ pinned in [`CLAUDE.md`](CLAUDE.md#skill-library-conventions-five-axes).
 
 | Layer | Home | Count | Role |
 |---|---|---|---|
-| **Commands** | [`plugins/mochiko/commands/`](plugins/mochiko/commands/) | 6 | User-invoked contracts (`disable-model-invocation: true`), all six on **one canonical scaffold** (v0.97.0): Identity & Mission · the obligated first read of the command's own schema · Adaptive Goal Protocol (Entry · Goal · the count-pinned `Not done — default FAIL` line, last). Each ships as a `.md` + `plugins/mochiko/schemas/<cmd>.yaml` pair; the rule content — roles · reserved · tools · ways-of-working · boundaries · fail-conditions — lives in the schema, all six sections always present. The desks (`feature`, `architecture`) converge a done condition per visit; the runs (`brainstorm`, `implement`, `setup`, `specify`) carry a fixed one. `plan` retired at v0.91.0. The lead plans and orchestrates the run — teammates or subagents per seat is its call. |
-| **Agents** | [`plugins/mochiko/agents/`](plugins/mochiko/agents/) | 10 | Personas (all `model: opus`) that carry judgment and declare `skills:`. A persona contains no trace of any workflow — decoupling by absence; caller-side context rides the dispatch brief. |
-| **Skills** | [`plugins/mochiko/skills/`](plugins/mochiko/skills/) | 38 | Procedure. One user-invoked router ([`skills/mochiko/`](plugins/mochiko/skills/mochiko/SKILL.md)) indexes the other 37, which are model-invoked with graded MUST/SHOULD triggers in their descriptions. Deterministic sub-checks ride as `scripts/` inside skills (e.g. `analysis-codebase`'s `detect-stack.sh`); depth rides as `references/`. |
-| **Templates** | [`plugins/mochiko/templates/`](plugins/mochiko/templates/) | 7 + `constitution-modules/` | **Report schemas** (per-seat reports) over the shared `report-format.md` envelope, plus that envelope and its deliverable-side twin `artifact-format.md`, and `output-style.md`. The **artifact schemas** re-homed to [`plugins/mochiko/schemas/`](plugins/mochiko/schemas/) as YAML data at v0.76.0 — the source of truth the `mochiko-cli` binary renders over and agents Read raw when it is absent (7 pipeline schemas after `plan.yaml` retired at v0.91.0, plus the two architecture-store schemas). The former doctrine homes (`workflow-contract.md`, `agent-dispatch.md`, `sized-end-stage-review.md`) were deleted at the doctrine purge (v0.46.0–v0.47.0) — their mechanics live inline in each command. `constitution-modules/` is setup's module library (knowledge-management, layer-rules, release-gates, evolution-notes). |
+| **Commands** | [`plugins/mochiko/commands/`](plugins/mochiko/commands/) | 6 | User-invoked contracts (`disable-model-invocation: true`), all six on **one canonical scaffold** (v0.97.0): Identity & Mission · `## Rules — delivered by mochiko-cli` · Adaptive Goal Protocol (Entry · Goal · the count-pinned `Not done — default FAIL` line, last). Each ships as a `.md` alone; its rule content — roles · reserved · tools · ways-of-working · boundaries · fail-conditions, all six sections always present — lives in the migration log at [`plugins/mochiko/migrations/`](plugins/mochiko/migrations/) and is rendered at fire by `mochiko-cli`. No schema file ships (v0.107.0). The desks (`feature`, `architecture`) converge a done condition per visit; the runs (`brainstorm`, `implement`, `setup`, `specify`) carry a fixed one. `plan` retired at v0.91.0. The lead plans and orchestrates the run — teammates or subagents per seat is its call. |
+| **Agents** | [`plugins/mochiko/agents/`](plugins/mochiko/agents/) | 10 | Personas that carry judgment and declare `skills:`, each pinning a ruled default tier — six `model: opus`, four `model: sonnet` (seat default key, 2026-09-19). A persona contains no trace of any workflow — decoupling by absence; caller-side context rides the dispatch brief. |
+| **Skills** | [`plugins/mochiko/skills/`](plugins/mochiko/skills/) | 38 | Procedure. One user-invoked router ([`skills/mochiko/`](plugins/mochiko/skills/mochiko/SKILL.md)) indexes the other 37, which are model-invoked with graded MUST/SHOULD triggers in their descriptions. The thirty schema-bearing skills carry a `## Rules — delivered by mochiko-cli` block over rules held in the migration log, exactly as the commands do; the seven prose skills and the router carry no rule set. Deterministic sub-checks ride as `scripts/` inside skills (e.g. `analysis-codebase`'s `detect-stack.sh`); depth rides as `references/`. |
+| **Templates** | [`plugins/mochiko/templates/`](plugins/mochiko/templates/) | 7 + `constitution-modules/` | **Report schemas** (per-seat reports) over the shared `report-format.md` envelope, plus that envelope and its deliverable-side twin `artifact-format.md`, and `output-style.md`. The **artifact schemas** left `templates/` at v0.76.0 and now live in the migration log at [`plugins/mochiko/migrations/`](plugins/mochiko/migrations/), delivered at fire by `mochiko-cli` — no schema file ships and no agent Reads one (v0.107.0, the wave-6 end state). The former doctrine homes (`workflow-contract.md`, `agent-dispatch.md`, `sized-end-stage-review.md`) were deleted at the doctrine purge (v0.46.0–v0.47.0) — their mechanics live inline in each command. `constitution-modules/` is setup's module library (knowledge-management, layer-rules, release-gates, evolution-notes). |
 
 The plugin manifest, [`.claude-plugin/plugin.json`](plugins/mochiko/.claude-plugin/plugin.json),
 registers the command, agent, and skill directories and carries the version — packaging,
-outside the four layers (`templates/` and `schemas/` are referenced by commands and skills,
-not registered; `schemas/` is data the Templates row above accounts for).
+outside the four layers (`templates/` is referenced by commands and skills, not registered;
+`migrations/` is the rule log `mochiko-cli` reads, carried by the plugin and likewise not
+registered).
 
 ### Boundaries between layers
 
@@ -91,12 +93,13 @@ approval before any producing seat works, author ≠ grader independence, the de
 reserved to the user — and the homes the lead cannot invent (paths, templates, entry
 conditions). All six carry it in **one canonical scaffold** (v0.97.0,
 `command-md-scaffold-standardization` D1/D2): `# <Name> — <epithet>` title ·
-`## Identity & Mission` · `## Rules — load the schema first` · `## Adaptive Goal Protocol`,
+`## Identity & Mission` · `## Rules — delivered by mochiko-cli` · `## Adaptive Goal Protocol`,
 whose three steps are Entry (`$ARGUMENTS` and gating) · Goal (the done condition) ·
 `Not done — default FAIL` (count-pinned, always last). The rule-shaped content sits on the
-pair's other surface, `plugins/mochiko/schemas/<cmd>.yaml`, in the six sections every schema
-carries — roles · reserved · tools · ways-of-working · boundaries · fail-conditions, an
-unpopulated one marked deliberately empty rather than omitted (D4/D5).
+pair's other surface — the command's rules in the migration log, rendered at fire by
+`mochiko-cli` — in the six sections every schema carries: roles · reserved · tools ·
+ways-of-working · boundaries · fail-conditions, an unpopulated one marked deliberately empty
+rather than omitted (D4/D5).
 
 The scaffold superseded an earlier two-anatomy split — the v8 **goal + harness** form for
 `setup` / `specify` / `brainstorm` (Goal · Harness · Bindings; v8 rebuild v0.48.0, task layer

@@ -1006,8 +1006,15 @@ fn the_detector_reproduces_the_live_runs_figures_over_the_corpus() {
     // dropped — both ids still resolve, and the sibling reword that would re-converge the pair is
     // an open backlog item, deliberately deferred. The cluster count holding at zero is what says
     // the now-unsuppressed pair did not re-surface as a finding.
-    assert_eq!(report.scanned, 1039, "rules scanned");
-    assert_eq!(report.scored, 150_665, "in-kind pairs scored");
+    // Re-measured after `0007` (the seat default key): one rule superseded, five minted on
+    // `patterns-model-tiering`, moving the scan from 1,039 to 1,043. The pair count falls even as
+    // the rule count rises because pairs are scored within a kind: the retired rule declared no
+    // kind and so sat in the large `constraint` bucket, while the five mints land in the small
+    // `binding`, `latitude`, `bound` and `duty` buckets, so the pairs lost from the big bucket
+    // outnumber the pairs gained in the small ones. No new cluster surfaced and the suppressed
+    // set is unchanged — the allowlist was not touched.
+    assert_eq!(report.scanned, 1043, "rules scanned");
+    assert_eq!(report.scored, 150_489, "in-kind pairs scored");
     assert_eq!(report.clusters.len(), 0, "clusters");
     assert_eq!(report.suppressed_hits, 168, "allowlist-suppressed edges");
 }

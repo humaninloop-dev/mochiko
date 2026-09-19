@@ -13,6 +13,67 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 `DECISIONS.md` 2026-09-04 row. Pre-edit verbatim text:
 `git show 7d098b9:plugins/mochiko/skills/patterns-model-tiering/SKILL.md`. -->
 
+## [v0.110.0] description, tagline, and Overview widened to the seat default key
+
+- **Disposition:** superseded → the reworded `description:` (the trigger gains spawning a rostered
+  seat; the class-key sentence re-keyed from "session tier" to "seat tier"; 'seat tier' and
+  'deviate a seat' trigger phrases added; the closing jurisdiction clause replaced by the seat
+  default key), the reworded tagline ("Every read, every bounded task, and every seat rides the
+  lowest tier where its result can be trusted."), and the reworded Overview opening sentence,
+  which now states the ruled per-persona default and the lead's disclosed deviation lane before
+  the dispatch jurisdiction. The rule changes themselves are migration
+  `plugins/mochiko/migrations/0007-seat-default-key.yaml` (one `supersede-rule` under the header
+  anchor — `rostered-seats-never-retier` — five mints, two of them floors, three floor rewords —
+  `override-is-the-pin`, `class-key-session-tier`, `worker-seat-set-reserved` — and two section
+  rewords) and take no strip: the prior text is in the log by construction.
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/brainstorms/orchestrator-model-selection/record.md` D1–D5 and D8 as review-amended;
+  `DECISIONS.md` 2026-09-19 row; the prior `model-tiered-seats` D5 and its fold F6 are superseded
+  by that ruling).
+- **Content:** verbatim —
+
+  description (parsed value, 998 chars): `This skill MUST be invoked when dispatching
+  exploration, fact-finding, or bounded execution work in any mochiko run — routing each read or
+  task by the class key. locate/enumerate/targeted-read gaps go to a native `Explore` subagent
+  spawned with an explicit `model: haiku` override; decided, mechanically-checkable coding and
+  verification tasks go from the staff-engineer and qa-engineer seats to a disposable
+  general-purpose subagent spawned `model: sonnet`, read back by the seat before they count;
+  interpretive reads, decision-driving absences, completeness-sensitive enumerations, and every
+  judgment leg of producing, reviewing, and grading stay on the session tier. SHOULD also invoke
+  on 'model tiering', 'cheap explorer', 'worker subagent', 'offload to sonnet', 'which model',
+  'explore the code', 'targeted read', or 'fact-find dispatch'. Governs dispatch tier only —
+  rostered seats never change model (model-tiered-seats D5); third sibling of
+  patterns-sound-loop and patterns-transport-floor.`
+
+  tagline: `**Every read and every bounded task rides the lowest tier where its result can be
+  trusted.**`
+
+  Overview opening sentence: `Rostered mochiko personas run on the strong tier and stay there;
+  this floor governs the *reads they and the lead dispatch along the way* and, for the two
+  build-time seats — staff-engineer and qa-engineer — the *decided coding and verification tasks
+  they hand down to a Sonnet worker* (2026-09-05 sonnet-worker-rung ruling).`
+
+- **Kept deliberately:** the `## Rules — delivered by mochiko-cli` block — its halt clause, seven
+  `!` lines, and read-back sentence — byte for byte; the Overview's economics sentence and its
+  `model-tiered-seats D1` citation, unchanged ("Haiku is ~5× cheaper than Opus and ~10× cheaper
+  than Fable per token both directions, Sonnet sits between the two, and on subscription seats
+  cheaper-model work preserves Opus-cap headroom"); the description's whole worker-rung clause —
+  the 2026-09-05 sonnet-worker-rung ruling stands and both build seats stay `opus`
+  (orchestrator-model-selection D3 holds `staff-engineer` and `qa-engineer` in the strong class);
+  the description's cheap-rung clause and its `model: haiku` override, unchanged.
+- **Consumers assessed:** the router row (`skills/mochiko/SKILL.md`, reworded in the same landing —
+  entry in `strips/mochiko.md`); the six rendered command rule sets — all six were rendered
+  section by section and searched for `roster`, `seat roster` and `run report`, and none carries
+  roster grammar, so under the ruling's G13 single-source branch no command section is edited and
+  each keeps only its `*.model-tiering` pointer rule, which references this skill and restates
+  nothing; the two command-common blocks (`common.model-tiering`, `arch.model-tiering`) —
+  unchanged for the same reason; the ten persona `## Delegating Cheap Reads` sections and the two
+  `## Delegating Bounded Work` sections — unchanged (the four persona frontmatter flips are their
+  own primitive edits with their own strip entries); the contract suite's frozen floor set for
+  this skill replaced by ruling (`evals/contract/expected-skills.json`, `floor_ids` 6 → 7 —
+  `rostered-seats-never-retier` out, `seat-default-key` and `seat-deviation-bounds` in — and
+  `floor_pin` 6 → 7, every byte column untouched, per `evals/contract/README.md` "Criterion (1)").
+
 ## [v0.108.0] description, tagline, and Overview widened to the worker rung
 
 - **Disposition:** superseded → the reworded `description:` (bounded execution work joins the

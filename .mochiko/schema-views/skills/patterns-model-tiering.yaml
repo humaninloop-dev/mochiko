@@ -19,18 +19,19 @@ sections:
         labels: [boundary, floor-pointer]
         class: floor
         text: >-
-          Session tier — the dispatching seat does it itself, or a strong seat does:
+          Seat tier — the dispatching seat does it itself, or another rostered seat does:
           interpretive reading (what a design implies, whether patterns conflict, what quality a
           surface has); any gap where absence would drive a decision — a weak negative that
-          would mislead a producer stays on the strong tier; an enumeration whose completeness
-          would drive a decision (the cheap tier takes only spot-checkable enumerations); and
-          every judgment leg of producing, reviewing, and grading — card decomposition and the
+          would mislead a producer stays with the seat; an enumeration whose completeness would
+          drive a decision (the cheap tier takes only spot-checkable enumerations); and every
+          judgment leg of producing, reviewing, and grading — card decomposition and the
           pre-code ladder, the red-phase test and its failure-reason check, refactor and
           brownfield-interface calls, every assert evaluation and auto-approve-versus-checkpoint
           classification, the code-shape audit, every finding, verdict, checkbox flip, and report
-          — never tiered down (model-tiered-seats D5; the worker rung takes only the execution
-          legs the 2026-09-05 sonnet-worker-rung ruling names, and the seat stays the producer of
-          record). The sound-loop floor (`mochiko:patterns-sound-loop`) governs those seats.
+          — never tiered down (orchestrator-model-selection D1/D3; the worker rung takes only
+          the execution legs the 2026-09-05 sonnet-worker-rung ruling names, and the seat stays
+          the producer of record). The sound-loop floor (`mochiko:patterns-sound-loop`) governs
+          those seats.
         pointer: mochiko:patterns-sound-loop
         anchor: 2026-08-16 model-tiered-seats
       - id: patterns-model-tiering.class-key-worker-tier
@@ -47,17 +48,27 @@ sections:
           decides one.
         anchor: 2026-09-05 sonnet-worker-rung
   - id: patterns-model-tiering.sec.scope
-    title: Scope — dispatch tier only
-    intent: The jurisdiction line away from the seat roster.
+    title: Scope — dispatch tier and the seat default
+    intent: >-
+      The two jurisdictions: the tier of every dispatch, and the default tier each rostered seat
+      runs at.
     rules:
-      - id: patterns-model-tiering.rostered-seats-never-retier
+      - id: patterns-model-tiering.seat-default-key
         labels: [boundary]
         class: floor
+        kind: binding
         text: >-
-          This floor governs dispatch tier only — rostered personas keep their declared models;
-          retiering a rostered seat is deferred to its own reliability-gated brainstorm
-          (model-tiered-seats D5), never done ad hoc.
-        anchor: 2026-08-16 model-tiered-seats
+          The seat default key — sibling of the class key, keyed on one question: does a
+          structurally independent seat stand between this seat's output and the run's verdict?
+          Where one does, the seat's default is `down`; where the seat IS that check, `strong`.
+          Each rostered persona pins its ruled default in its own frontmatter as a tier alias,
+          never a full model id — `strong` = `opus`: validator · devils-advocate · tech-lead
+          · qa-engineer · staff-engineer · principal-architect; `down` = `sonnet`:
+          requirements-analyst · technical-analyst · product-manager · product-engineer. The
+          two rows held `strong` against the criterion — staff-engineer and principal-architect
+          — are argued in the ruling and never re-argued in a run. A persona carrying `inherit`
+          or no `model:` has failed this floor.
+        anchor: 2026-09-19 orchestrator-model-selection D3
   - id: patterns-model-tiering.sec.discipline
     title: Discipline — the cheap rung, the worker rung, and the dispatch ladder
     intent: >-
@@ -98,9 +109,12 @@ sections:
         class: floor
         kind: duty
         text: >-
-          The override is the pin — every tiered dispatch MUST pass its rung's model explicitly
-          on the Agent tool call: `model: haiku` on the cheap rung, `model: sonnet` on the worker
-          rung; a spawn without the override inherits the session tier and has failed this floor.
+          The override is the pin. On the dispatch rungs every tiered dispatch MUST pass its
+          rung's model explicitly on the Agent tool call: `model: haiku` on the cheap rung,
+          `model: sonnet` on the worker rung; a spawn without the override inherits the session
+          tier and has failed this floor. On a seat spawn the persona file is the pin — the
+          spawn carries `model:` only as a disclosed deviation; an undisclosed override has failed
+          it too.
         anchor: 2026-08-19 explorer-retarget-native
       - id: patterns-model-tiering.worker-rung-sonnet
         labels: [binding]
@@ -113,6 +127,42 @@ sections:
           class key bounds what may go down and never obliges a dispatch. A worker never spawns a
           worker.
         anchor: 2026-09-05 sonnet-worker-rung
+      - id: patterns-model-tiering.seat-deviation-lane
+        labels: [reporting]
+        class: must
+        kind: latitude
+        text: >-
+          The lead may deviate any seat from its default for one run by passing `model:` on the
+          spawn — only when deviating; a default spawn carries no `model:`. The reason is stated
+          in that seat's brief and the deviation is named in the run report's roster line. The
+          lane is the lead's alone: a persona a seat spawns takes its own default, disclosed in
+          the spawning seat's report.
+        anchor: 2026-09-19 orchestrator-model-selection D2
+      - id: patterns-model-tiering.seat-deviation-bounds
+        labels: [boundary]
+        class: floor
+        kind: bound
+        text: >-
+          Bounds on the lane: no seat runs below `sonnet`, and `haiku` is never a seat — it
+          stays the cheap reads rung, and a persona spawned on it has failed this floor. A grader
+          or reviewer never runs below the tier its producer ran at in the same run, so deviating
+          the build pair down drops the Sonnet worker rung for that run. One tier per seat per
+          loop — a change is a disclosed respawn, never a mid-loop switch. A `fable` deviation
+          states as disclosed risks that the persona was prompted for Opus, that thinking is
+          always on with effort the only depth control, and that a `refusal` stop reason is
+          handled as a seat failure.
+        anchor: 2026-09-19 orchestrator-model-selection D5
+      - id: patterns-model-tiering.seat-version-floor
+        labels: [binding]
+        class: must
+        kind: bound
+        text: >-
+          Persona frontmatter outranks `CLAUDE_CODE_SUBAGENT_MODEL` from Claude Code v2.1.251 —
+          below it the env var silently retiers every seat (the transport floor's own bound is ≥
+          v2.1.224). `CLAUDE_CODE_SUBAGENT_MODEL_FORCE=1` and an organization `availableModels`
+          substitution beat every model choice on both transports; both are the consumer's own
+          environment, ruled undetected in-run.
+        anchor: 2026-09-19 orchestrator-model-selection D2
   - id: patterns-model-tiering.sec.inputs
     title: Inputs — how tiered returns are read
     intent: >-
@@ -193,13 +243,23 @@ sections:
           result — so the lead and the reviewing seat can see what a worker touched. The seat
           authors that report itself; a report is never a delegated task.
         anchor: 2026-09-05 sonnet-worker-rung
+      - id: patterns-model-tiering.seat-roster-disclosure
+        labels: [reporting]
+        class: must
+        kind: duty
+        text: >-
+          Every run report's seat roster line carries each seat's tier — the default it took, or
+          the deviation and its reason. This skill is that duty's single home; a command restates
+          it only where that command's own rules already carry roster grammar.
+        anchor: 2026-09-19 orchestrator-model-selection D2
   - id: patterns-model-tiering.sec.reserved
     title: Reserved
     intent: Decisions no run takes on its own.
     note: >-
-      Two reserved decision classes, each riding its rule: retiering a rostered seat rides
-      `patterns-model-tiering.rostered-seats-never-retier` in `sec.scope` (census-patterns §B: MT
-      rows 1–11); widening the worker rung's seat set rides
+      Two reserved decision classes, each riding its rule: which tier each rostered seat defaults
+      to rides `patterns-model-tiering.seat-default-key` in `sec.scope` — the table is ruled,
+      never run-decided, and the lead's only lane is the disclosed per-run deviation of
+      `patterns-model-tiering.seat-deviation-lane`; widening the worker rung's seat set rides
       `patterns-model-tiering.worker-seat-set-reserved` below (2026-09-05 sonnet-worker-rung).
     rules:
       - id: patterns-model-tiering.worker-seat-set-reserved
@@ -210,5 +270,15 @@ sections:
           Which seats hold the worker rung is ruled, never run-decided: the staff-engineer and
           qa-engineer seats (2026-09-05 sonnet-worker-rung). A run never extends it to another
           seat, and a worker below a seat does not retier the seat — its model, judgment, and
-          ownership of the output are unchanged (model-tiered-seats D5).
+          ownership of the output are unchanged (orchestrator-model-selection D3: both build seats
+          are `strong`).
         anchor: 2026-09-05 sonnet-worker-rung
+tombstones:
+  - id: patterns-model-tiering.rostered-seats-never-retier
+    disposition: >-
+      superseded by patterns-model-tiering.seat-default-key — rostered-seat tier is ruled per
+      seat by the seat default key, and the lead deviates per run with disclosure
+      (orchestrator-model-selection D1-D3). The deferral to a reliability-gated brainstorm is
+      discharged by that session, whose evidence gate is dogfood observation with a per-seat
+      one-alias revert (D4), superseding model-tiered-seats D5 and its fold F6. (2026-09-19
+      orchestrator-model-selection D1)

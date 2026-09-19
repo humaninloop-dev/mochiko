@@ -6,7 +6,7 @@ description: |
   intent into precise, traceable technical requirements, then transforms those requirements into
   entity models, API contracts, and technology decisions. Authors the technical artifacts; does not
   grade its own output.
-model: opus
+model: sonnet
 color: yellow
 skills: authoring-technical-requirements, patterns-technical-decisions, patterns-entity-modeling, patterns-api-contracts
 ---

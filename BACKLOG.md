@@ -719,12 +719,18 @@ together. Model-tiered D4 explorer build DELIVERED 2026-08-16 at v0.77.0, retarg
 `mochiko:explorer` seat deleted (agent-team teammates cannot spawn plugin-scoped agents),
 native `Explore` + explicit `model: haiku` override now the rung (ADR
 `2026-08-19-explorer-retarget-native`); D5 seat-tiering stays deferred (Later), D6's three watches
-ride the probe below — D6-ii already positively evidenced by the in-session spawn test. **Worker rung ADDED 2026-09-05 at v0.108.0** — `staff-engineer` and `qa-engineer` may hand decided coding/verification tasks to a disposable `model: sonnet` general-purpose subagent, read back before it counts (ADR `2026-09-05-sonnet-worker-rung`; migration `0004`); D5 still untouched — seats stay opus. Seam note (2026-08-01, `verbosity-caveman-ops-separation` D8): epic D3's
+ride the probe below — D6-ii already positively evidenced by the in-session spawn test. **Worker rung ADDED 2026-09-05 at v0.108.0** — `staff-engineer` and `qa-engineer` may hand decided coding/verification tasks to a disposable `model: sonnet` general-purpose subagent, read back before it counts (ADR `2026-09-05-sonnet-worker-rung`; migration `0004`); D5 still untouched — seats stay opus. **D5 SUPERSEDED 2026-09-19** by `orchestrator-model-selection` D1–D4 — the seat default key (six `opus` / four `sonnet`, lead deviation with disclosure, dogfood-gated); build item below. Seam note (2026-08-01, `verbosity-caveman-ops-separation` D8): epic D3's
 conditional-prose intent was **finished by the output-style build wave 1** (v0.44.0) — never a
 wave-3 candidate again; the always-read floor re-baselined at that build (−4,490 B/run on
 `command-shape.md`). Epic D5 (sizing-gate generalization) closed 2026-08-04 — superseded at
 the v8 rebuild (trail; ADR `2026-08-04-groom-epic-closures`).
 
+- [ ] **Seat default dogfood watch** (2026-09-19; `orchestrator-model-selection` D4) — per
+  down-tiered producer seat: review-round count vs the ≤3 cap and grader first-round FAIL findings;
+  revert trigger (`Assumed`, confirm at first trip): a seat hits the round cap, or a grader catches
+  a defect class its Opus-era runs never produced, in two runs — revert = one alias flip + strip.
+  Confound on record: seats run at the lead's inherited effort. Deviation lane has no observable by
+  ruling (G2 accepted as is). OQ2 split-pane probe · OQ3 instantiation floor · OQ7/OQ8 ride here.
 - [ ] **D2 upgrade — the one-shot OTel probe** — enable documented config in a dogfood run;
   observe console/per-run aggregation/teammate attribution; automation graduates on probe
   evidence only. Standing-seat D4 + model-tiered D6 probe questions ride it, plus TC's three

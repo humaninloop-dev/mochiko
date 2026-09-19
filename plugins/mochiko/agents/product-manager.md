@@ -7,7 +7,7 @@ description: |
   and advising which capabilities align with the product need now. Recommends and
   gives reasons; selection is always the user's ruling. Authors the feature map;
   does not grade its own output.
-model: opus
+model: sonnet
 color: green
 skills: authoring-feature-map
 ---
