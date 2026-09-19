@@ -1,0 +1,93 @@
+=== validation-result.md ===
+# Validation Result — Tessellate governance surface set v1.0.0
+
+**Validator:** independent (no authorship of any graded artifact) · **Date:** 2026-09-19
+**Graded set:** CLAUDE.md governance region · `.claude/rules/mochiko/*.md` · `.mochiko/memory/governance-ledger.md`, read together as one deliverable, against `.mochiko/memory/governance-intent.md` (ratified synthesis) and `.mochiko/memory/governance-trace-summary.md` (producer's manifest). All findings below are read from these files directly, not from the producer's hand-off account.
+
+## VALIDATION RESULT: FAIL
+
+### On the hand-off note
+
+Two of its factual claims do not hold up against the files, and one instruction was not followed:
+
+- **"no waivers"** — false. `governance-ledger.md`'s Waivers table carries one row (GI-012, the PCI-DSS quarterly ASV scan), and it is not a harmless one (see Issue 1).
+- **"all three modules landed and stamped"** — false for the region. The CLAUDE.md `**Ratified:**` line lists only `gdpr · a11y`; `pci-dss` is missing from the stamp (Issue 4).
+- **"the anti-pattern table... does not really apply here, so I would not spend time on it"** — this is exactly the rationalization this process is built to refuse. The scan ran anyway and found real instances: a literal `GI-XXX` placeholder (Placeholder Syndrome, Issue 3), a Vague Principle with no enforcement (GI-011, Issue 7), and a principle that inverts a ratified exclusion (GI-016, Issue 5).
+- The founder's sign-off does not substitute for this grade — and two of the things it was told ("no waivers," "all three modules stamped") were themselves wrong.
+
+### Checklist items: 30/45 passed (core + 2 applicable module fragments: release-gates, knowledge-management; layer-rules correctly declined, evolution-notes correctly n/a — greenfield)
+
+- Principle Quality: 3/7 passed
+- Traceability: 3/6 passed
+- Floor & Module Accounting: 6/8 passed
+- Structure Quality — universal core: 7/10 passed
+- Structure Quality — selected modules: 2/2 passed (release-gates ✓, knowledge-management ✓)
+- Rules-File Scope & Delivery: 1/2 passed
+- No Placeholders Rule: 5/6 passed
+- Governance Quality: 3/4 passed
+- Brownfield-Specific: n/a (greenfield)
+
+### Surface integrity
+
+- Region markers: present, correctly bounded (`<!-- mochiko:governance:begin -->` / `:end`); no setup-owned content leaks outside them.
+- Index → home resolution: mostly closes, **except GI-004** — two separate region principle lines both carry `<!-- GI-004 -->` (Issue 9).
+- Rules files paths-scoped: yes, all four carry a `paths:` frontmatter block.
+- Scope coverage: **fails for `cardholder-data.md`** — glob omits `src/checkout/`, where the PAN first lands (Issue 2).
+- New-file read line: present (CLAUDE.md governance-operations block, the "Read, not Write" line).
+- Universal-in-rules violations: none found — `security.md`'s `**/*` scope matches its designed role as GI-004's companion, consistent with how GI-009/GI-013/GI-014 route detail to companions elsewhere in the same set.
+
+### Trace closure
+
+- Manifest rows: 16/16, matching the synthesis's own sizing note ("16 elements"). Primary home + companions recorded for each.
+- Synthesis elements realized-or-flagged: all principle-bearing elements (GI-004–011, 013, 014) are realized as principles; none silently dropped; flagged-proposals list is empty and that's accurate.
+- Waivers matched: GI-012 appears once in the synthesis and once in the ledger — one-for-one. **But the waiver itself is illegal** (Issue 1).
+- Modules matched: ledger header lists all three compliance modules with strata, matching the fact profile one-for-one. **The region stamp does not** (Issue 4).
+- **Trace validity failures:** the `GI-XXX` line traces to no real ID (Issue 3); GI-016's principle traces to a synthesis element that is a *deliberate exclusion*, not a principle-bearing element (Issue 5) — both are deterministic Traceability-checklist failures, not fidelity nuance.
+
+### Floor/module accounting
+
+- Floor + declared level asserted: production floor, depth `high`, correctly stamped in both CLAUDE.md and the ledger.
+- Region stamp = ledger: **fails** — pci-dss present in the ledger header, absent from the region stamp (Issue 4).
+- Modules matched to the fact profile: ledger-side pass (all three present with strata); region-side fail (above).
+- Floor categories principled at the declared level or waived: Security/Testing/Error-Handling/Observability all carry a `high`-row principle — no waivers needed there. **But** GI-005's number doesn't match the declared row and no override was recorded (Issue 6), and GI-012 waives a legal-mandate obligation, which D4.2 forbids outright (Issue 1).
+
+### Anti-patterns found
+
+- **Placeholder Syndrome** — literal `GI-XXX` trace stamp (Issue 3).
+- **Vague Principle / Missing Enforcement** — GI-011 ("Pages SHOULD load quickly"; ledger Testability: "Pass: pages feel quick. Fail: complaints.") (Issue 7).
+- **Excess/contradicted governance** — GI-016 principle contradicts the synthesis's own recorded exclusion under the same ID (Issue 5).
+- No cargo-cult rules, no over-engineering (9 principles for a 7-person team plus 3 unwaivable legal mandates is proportionate), no missing secret-management language, no generic-threshold language beyond the two numeric issues above.
+
+### Version bump
+
+First ratification (v1.0.0) — no prior version to bump from. Version is stamped consistently across the CLAUDE.md region, the ledger header, and the ledger's amendment log (1.0.0 throughout). No bump determination needed this round; once Issues 1–9 are fixed and re-ratified, that revision round will need its own determination (most of these fixes are within-principle corrections = PATCH/MINOR territory, except any module-list correction, which — per the region stamp itself finally reflecting pci-dss correctly — is not a new attach, just a stamp fix, so still not MAJOR).
+
+### Issues requiring fix (ranked by severity)
+
+1. **[CRITICAL] Waiver of a legal-mandate obligation.** `governance-ledger.md` Waivers table: GI-012 waives the PCI-DSS quarterly ASV scan (Requirement 11.3.2). The checklist is unconditional: a waiver naming a legal-mandate module obligation is a FAIL, no exception. The synthesis's own review caught this and marked it Critical; the founder overruling the reviewer doesn't cure it — a legal-mandate obligation isn't the founder's or the session's to waive by ruling, that's the entire point of the unwaivable stratum. **Fix:** remove the GI-012 row from the ledger's Waivers table. If the ASV cadence genuinely can't be met pre-launch, that's a compliance decision to take outside this mechanism (e.g., actually schedule the first scan before the card-data-in-scope launch, or get real legal sign-off that SAQ D permits the gap) — not something a governance waiver row can paper over.
+
+2. **[CRITICAL] Cardholder-data rules file doesn't cover where the PAN first lands.** `.claude/rules/mochiko/cardholder-data.md` scopes only `src/payments/**/*.ts`. Both `README.md` and the ratified GI-009 text agree the PAN transits Tessellate's own `src/checkout/` handler before it ever reaches `src/payments/`'s tokeniser — the synthesis's own review (S2) already caught this exact scope gap and "resolved" it in the element text, but the rules-file glob was never updated to match. As shipped, editing or creating a file under `src/checkout/` never injects the "PAN must not be logged/persisted/queued, functions must be named `*Untokenised`" rules — exactly where a raw card number is handled first. **Fix:** add `"src/checkout/**/*.ts"` to the file's `paths` list.
+
+3. **[HIGH] Literal placeholder trace stamp.** CLAUDE.md, the WCAG/a11y principle line: `<!-- GI-XXX -->` instead of `<!-- GI-010 -->`. This is the No-Placeholders-Rule anti-pattern by name. **Fix:** correct to `GI-010`.
+
+4. **[HIGH] Ratified stamp omits an attached legal-mandate module.** CLAUDE.md's `**Ratified:**` line: `modules: gdpr · a11y` — `pci-dss` is missing, despite being attached (ledger header, fact profile, and GI-009's own principle all agree it's attached). A reader who only reads the stamp line would conclude Tessellate carries no PCI-DSS governance. **Fix:** `modules: gdpr · pci-dss · a11y`.
+
+5. **[HIGH] GI-016 inverts a ratified exclusion.** The synthesis's Deliberate Exclusions section records GI-016 as *"Documentation language and style are not governed... nobody is going to police it"* (Inês, dimension 10, Confident). The delivered set instead mints a principle under the same ID — "All internal documentation MUST be written in British English," fully enforced via `cspell`/en-GB in CI. This isn't a drift in wording; it's the opposite ruling, filed under the ID of the thing it contradicts. **Fix:** delete the GI-016 principle line, its Quality-gates implications, and its ledger Three-Part record. The exclusion in the synthesis needs no principle tracing to it — that's what "excluded" means.
+
+6. **[MEDIUM] Coverage blocking threshold doesn't match the declared row, and no override is recorded.** The floor card's `high` row: "≥80% warning, ≥60% blocking (session-overridable)." The synthesis's own Floor Expression table records the high row explicitly with **"no session override."** The delivered principle (CLAUDE.md, Quality gates, and ledger GI-005) enforces ≥70% blocking — a number matching neither the card row nor a recorded override. **Fix:** either change the blocking threshold to 60% to match the ratified, unoverridden row, or take an explicit session override to Inês and record it in `governance-intent.md` before keeping 70%.
+
+7. **[MEDIUM] GI-011 drops the ratified, numeric commitment.** The synthesis records a Confident, fully specified minted principle: LCP ≤2.5s at p75 on the product and checkout pages, measured by Lighthouse CI on every PR, blocking merge on regression — the founder's own number from prior bounce data. The delivered region line reads "Pages SHOULD load quickly" (no threshold, no tool, `SHOULD` not `MUST`). The ledger's Enforcement/Testability sections for GI-011 are equally non-measurable ("Engineers watch the Lighthouse scores" / "Pass: pages feel quick. Fail: complaints."), and `npm run lhci` — present in the synthesis's Real Commands table — never appears in CLAUDE.md's Quality gates. **Fix:** restate GI-011 with the 2.5s/p75/Lighthouse-CI/merge-blocking language from the synthesis; add `npm run lhci` to Quality gates; rewrite the ledger's Enforcement/Testability to match.
+
+8. **[MEDIUM] Ledger is missing the required Exception registry section.** Shape 3 requires: Governance Floor header · Waivers · Amendment policy · **Exception registry** · Three-Part records · amendment log. No `## Exception registry` heading exists in `governance-ledger.md` (Waivers is a distinct, separate section in the shape, not a substitute). **Fix:** add the section — an empty table with "[none yet]" is sufficient if there's nothing to record.
+
+9. **[LOW] GI-004 is claimed by two principle-index lines.** CLAUDE.md carries both "Secrets MUST stay out of the repository..." and "Security at boundaries — see `.claude/rules/mochiko/security.md`" tagged `<!-- GI-004 -->`, and the ledger's single GI-004 record conflates both bodies of content (secrets management and boundary auth) under one Three-Part entry. This breaks "one line per principle." **Fix:** either give boundary-auth its own GI-ID (add a row to the trace summary and ledger) or collapse the "Secrets" line's substantive content into `security.md` and leave a single companion-pointer line in the region, matching the pattern already used for GI-009/GI-013/GI-014.
+
+### Advisory (judgment-grade, non-blocking)
+
+- `.mochiko/memory/knowledge-management.md` (the project-pinned copy) compresses some template prose — e.g., it doesn't restate "superseded rows compress one line per decision, status preserved" or the evolution-roadmap disambiguation. The module's own instructions call this a summarized "PROJECT-PINNED copy," so this is likely fine, but worth a human glance to confirm nothing load-bearing was dropped in the compression.
+- `docs/engineering-norms.md`, checked at the lead's request: this is explicitly an informal, non-normative document ("Not rules, just how we like to work. Edit freely.") and sits outside the validator's graded input set (it's not part of the surface set defined by `validation-constitution.input-set`). Read against the ratified principles and the ledger, nothing in it contradicts them — "Fridays after 3pm are for docs, tidying, and not deploying" is compatible with the manual-promotion release-gate model; "ask in `#payments` before you write code" is compatible with the payments-boundary pointer at the top of CLAUDE.md. No conflict found, but this file was not held to the same checklist as the governance set and shouldn't be read as validated in that sense.
+- No superseded `.mochiko/memory/constitution.md` found on disk — nothing to flag there.
+
+### What to do next
+
+This is not close to a marginal PASS — Issue 1 alone (an explicit waiver of a legal-mandate PCI-DSS obligation, sitting in the ledger of a set that ships a card checkout form in two weeks) is disqualifying on its own, and Issue 2 is a real coverage gap in exactly the code that touches raw card numbers. Recommend the producer revise against Issues 1–9 above and resubmit for re-validation before this goes anywhere near the founder for a second sign-off — the first sign-off was given against an inaccurate account of the artifact (see "On the hand-off note").
