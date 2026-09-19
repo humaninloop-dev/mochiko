@@ -997,10 +997,19 @@ fn the_detector_reproduces_the_live_runs_figures_over_the_corpus() {
     // Re-measured after `0005` (the artifact-home census): seventeen home rules — six command,
     // eleven skill — move the scan from 1,022 to 1,039 and the in-kind pair count with it. No new
     // cluster surfaced and the suppressed set is unchanged, so the allowlist was not touched.
+    // Re-measured after `0006` (the lead's-pen copy loophole): a reword mints no rule, so the scan
+    // and the pair count are unmoved, and the suppressed count falls from 169 to 168. The single
+    // edge is the allowlisted pair `review-brainstorm.findings-through-leads-pen` ↔
+    // `review-governance-intent.findings-through-leads-pen`: `0006` added the patched-copy clause
+    // to the governance-intent side alone, which is enough to pull the pair back under the
+    // threshold, so its row no longer has an edge to suppress. The row is kept rather than
+    // dropped — both ids still resolve, and the sibling reword that would re-converge the pair is
+    // an open backlog item, deliberately deferred. The cluster count holding at zero is what says
+    // the now-unsuppressed pair did not re-surface as a finding.
     assert_eq!(report.scanned, 1039, "rules scanned");
     assert_eq!(report.scored, 150_665, "in-kind pairs scored");
     assert_eq!(report.clusters.len(), 0, "clusters");
-    assert_eq!(report.suppressed_hits, 169, "allowlist-suppressed edges");
+    assert_eq!(report.suppressed_hits, 168, "allowlist-suppressed edges");
 }
 
 // ---------------------------------------------------------------------------
