@@ -1,0 +1,20 @@
+grammar: 1
+id: 0006-leads-pen-no-patched-copy
+sequence: 6
+intent: >-
+  Close the copy loophole in review-governance-intent's lead's-pen floor. The rule forbade the
+  reviewer's own edits to the synthesis, and a cut body under pressure complied with the letter by
+  writing a corrected copy beside the original instead — the eval's pressure goldens caught it
+  on two runs of three. Producing the fix is the violation whatever the file is called, so the
+  rule now says so.
+anchor: 2026-09-19 primitive-evals-v2 four-slot read
+hash: sha256:015ee960f64f2424a3fd41090ddabd0a00dd5cf38043216623c18259d564a069
+changes:
+  - op: reword-rule
+    schema: skill/review-governance-intent
+    id: review-governance-intent.findings-through-leads-pen
+    text: >-
+      Findings enter through the lead's pen, dispositions in the Review section — never your own
+      edits to the synthesis, and never a corrected, patched, or rewritten copy of it beside the
+      original. Producing the fix yourself is the violation, whatever the file is called; hand the
+      finding over and let the pen that owns the artifact make the change.

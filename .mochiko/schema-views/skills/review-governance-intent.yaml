@@ -259,5 +259,7 @@ sections:
         kind: reservation
         text: >-
           Findings enter through the lead's pen, dispositions in the Review section — never your
-          own edits to the synthesis.
+          own edits to the synthesis, and never a corrected, patched, or rewritten copy of it
+          beside the original. Producing the fix yourself is the violation, whatever the file is
+          called; hand the finding over and let the pen that owns the artifact make the change.
         anchor: 2026-08-11 validator-scope-and-verbosity

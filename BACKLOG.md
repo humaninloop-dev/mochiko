@@ -846,6 +846,16 @@ Raw captures (2026-08-01) — to triage/brainstorm; grooming may re-key into fin
 
 ## Defects & empirical checks
 
+- [ ] **`review-brainstorm.findings-through-leads-pen` carries the copy loophole its sibling just
+  closed** (2026-09-19) — the governance-intent floor was reworded at v0.110.0 after the eval
+  caught a cut body writing a corrected copy of the synthesis beside the original, which its old
+  words ("never your own edits to the synthesis") did not forbid. The brainstorm floor still reads
+  "never your own edits to the record" and has the same hole. **Deliberately not amended**: the
+  evidence is from the governance-intent kit alone and no eval has put `review-brainstorm` under
+  pressure goldens. Close it either by building that kit's pressure golden and measuring, or by
+  ruling the reword across the pair on the textual argument alone — the second is a one-line
+  migration, and it should say which of the two it is.
+
 - [ ] **`check-artifacts.py` heading grammar vs the entity-modeling template** (found 2026-09-11 by the
   review-plan-artifacts kit author and auditor; provenance: `evals/review-plan-artifacts/preregistration.md`
   §Disclosures 13) — `plugins/mochiko/skills/review-plan-artifacts/scripts/check-artifacts.py` requires

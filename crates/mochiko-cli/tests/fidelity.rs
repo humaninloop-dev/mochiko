@@ -170,9 +170,9 @@ fn the_log_replays_into_a_deliverable_state() {
     assert_eq!(replay.state.docs.len(), 73);
     assert_eq!(
         replay.sequences(),
-        vec![1, 2, 3, 4, 5],
+        vec![1, 2, 3, 4, 5, 6],
         "genesis, wave 4's fail-conditions reword, wave 6's two-arm retirement, the sonnet \
-         worker rung, and the artifact-home census"
+         worker rung, the artifact-home census, and the lead's-pen copy loophole"
     );
 }
 
